@@ -1,0 +1,733 @@
+{
+  "schema_version": "barrot.xrp.relationship-research.v1",
+  "artifact_id": "20261103T030205Z-circle-coinbase-ousd-sbi-ripple-network",
+  "created_at_utc": "2026-11-03T03:02:05Z",
+  "data_cutoff_utc": "2026-11-03T03:02:05Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "forecast_status": "NOT_ISSUED",
+  "research_scope": [
+    "Circle, Coinbase, Ripple, SBI Holdings, SBI Shinsei Bank, Binance, Open Standard, Bridge, OUSD, JPYSC, USDC on XRPL, RLUSD distribution",
+    "institutional ownership and commercial incentives",
+    "stablecoin reserve-income economics and distribution concentration",
+    "direct versus indirect relationships and XRP-specific causal pathways"
+  ],
+  "classification_legend": {
+    "confirmed_fact": "Primary filing or official statement directly establishes the fact.",
+    "sourced_claim": "An entity's own statement or a secondary report establishes that the claim was made, not necessarily independently audited.",
+    "inference": "A reasoned interpretation supported by multiple facts but not explicitly stated by the entities.",
+    "speculation": "A plausible mechanism without sufficient evidence; not used as a factual edge.",
+    "unknown": "Not established from reviewed public evidence.",
+    "disconfirming_evidence": "Evidence that limits or contradicts an otherwise plausible hypothesis."
+  },
+  "claims": [
+    {
+      "id": "C01",
+      "class": "confirmed_fact",
+      "claim": "SBI Holdings and SBI Shinsei Bank each invested USD 25 million in Circle Internet Group in connection with Circle's June 5, 2025 NYSE listing; combined investment USD 50 million.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "C02",
+      "class": "confirmed_fact",
+      "claim": "SBI Holdings states it holds approximately 9% of Ripple Labs shares as Ripple's largest external shareholder; this is corporate equity, not a disclosed 9% XRP-token holding.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "C03",
+      "class": "confirmed_fact",
+      "claim": "Circle subsidiaries and Binance entered a five-year commercial arrangement on September 17, 2026. Circle pays Binance a monthly incentive fee based on USDC held through Circle's Modular Smart Contract Wallet infrastructure; Binance undertakes activities to promote USDC on its platform.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "C04",
+      "class": "confirmed_fact",
+      "claim": "Circle issued 1,237,011 Class A shares to Binance at USD 80.84 per share for USD 100 million. Binance agreed to a two-year restriction on transfers and hedging subject to exceptions and retains shareholder voting rights.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "C05",
+      "class": "confirmed_fact",
+      "claim": "Coinbase's Q3 2026 10-Q says its arrangement with Circle was renewed on the same terms and average USDC held in Coinbase products reached an all-time high.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "C06",
+      "class": "confirmed_fact",
+      "claim": "Coinbase reported Q3 2026 stablecoin revenue of USD 306.905 million versus USD 324.534 million in Q3 2025, a reported 5% decline; nine-month stablecoin revenue was USD 904.487 million versus USD 907.485 million. Coinbase attributed Q3 change partly to +USD 84.6 million from higher average USDC balances and -USD 52.8 million from lower average interest rates.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "C07",
+      "class": "confirmed_fact",
+      "claim": "Coinbase's Q3 2026 filing identifies fair-value remeasurement of its investment in Circle Internet Group as a major driver of the period's investment gains/losses. The filing excerpt reviewed does not disclose Coinbase's Circle share count or ownership percentage.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "C08",
+      "class": "confirmed_fact",
+      "claim": "Circle's Q2 2026 10-Q reports USD 655.3 million of distribution costs under its Coinbase agreements for the first half of 2026, including USD 324.6 million in Q2. The agreement allocates Coinbase economics based on USDC held on its platform after issuer retention and a share of remaining ecosystem-growth economics after approved third-party payouts.",
+      "source_ids": [
+        "S04"
+      ]
+    },
+    {
+      "id": "C09",
+      "class": "sourced_claim",
+      "claim": "Circle's October 16 corporate explanation says H1 2026 revenue was approximately USD 1.4 billion; USD 819 million went to distribution partners and transaction costs; approximately USD 473 million was reinvested; and Circle retained about USD 0.07 net profit per revenue dollar. Circle calls Coinbase its largest and longest-standing partner and says Binance signed a five-year commercial agreement and invested USD 100 million.",
+      "source_ids": [
+        "S05"
+      ]
+    },
+    {
+      "id": "C10",
+      "class": "confirmed_fact",
+      "claim": "Open Standard announced OUSD on June 30, 2026 and stated on September 30 that OUSD was live. The OUSD issuer is Bridge Building Inc., a Stripe company. Coinbase's integration path began October 1, 2026.",
+      "source_ids": [
+        "S06",
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "id": "C11",
+      "class": "confirmed_fact",
+      "claim": "Open Standard's October 21, 2026 public partner roster lists Coinbase, Ripple and SBI Holdings. The public roster does not list Circle. Partner-list membership is not proof of a disclosed equity stake, board seat, production transaction volume or XRP usage.",
+      "source_ids": [
+        "S09"
+      ]
+    },
+    {
+      "id": "C12",
+      "class": "confirmed_fact",
+      "claim": "OUSD's documented native networks are Base, Ethereum, Solana and Tempo. The official integration page does not list the XRP Ledger. Coinbase's OUSD integration options include 1:1 conversions, wallets, payment orchestration, on/off-ramps, trading, custody and financing.",
+      "source_ids": [
+        "S08"
+      ]
+    },
+    {
+      "id": "C13",
+      "class": "confirmed_fact",
+      "claim": "SBI Holdings and Startale announced that they joined Open Standard and would explore a pilot connecting JPYSC with OUSD. The announcement expressly says this is only exploration of a pilot, not a new commercial service or production settlement/trading.",
+      "source_ids": [
+        "S10"
+      ]
+    },
+    {
+      "id": "C14",
+      "class": "confirmed_fact",
+      "claim": "Circle announced native USDC on the XRP Ledger mainnet on June 12, 2025, with Circle Mint and Circle APIs supporting XRPL USDC; the announcement states no bridge is required.",
+      "source_ids": [
+        "S11"
+      ]
+    },
+    {
+      "id": "C15",
+      "class": "confirmed_fact",
+      "claim": "Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and the Coinbase app on October 28, 2026. The listing announcement alone does not establish RLUSD collateral or margin eligibility.",
+      "source_ids": [
+        "S12"
+      ]
+    },
+    {
+      "id": "C16",
+      "class": "inference",
+      "claim": "Coinbase appears to be pursuing multi-rail stablecoin distribution rather than exclusive dependence on Circle: it renewed Circle economics, holds a Circle investment, joined Open Standard as a founding partner and OUSD integration provider, and listed RLUSD. Management's stated motivation is diversification and product expansion; the specific intent to hedge issuer concentration is an inference.",
+      "source_ids": [
+        "S03",
+        "S07",
+        "S08",
+        "S12"
+      ]
+    },
+    {
+      "id": "C17",
+      "class": "inference",
+      "claim": "SBI's disclosed investments and products form a multi-stablecoin strategy: approximately 9% Ripple equity, USD 50 million Circle equity investment, USDC/RLUSD distribution in Japan, JPYSC issuance and Open Standard participation. This is consistent with multi-rail optionality, not an exclusive XRP strategy.",
+      "source_ids": [
+        "S02",
+        "S10",
+        "S13"
+      ]
+    },
+    {
+      "id": "C18",
+      "class": "inference",
+      "claim": "Circle and Open Standard present competing stablecoin distribution-economics models. Circle shares reserve economics with distribution partners while retaining funds for issuer infrastructure; OUSD markets reserve-income sharing and partner governance. No evidence establishes that Coinbase has terminated or materially reduced its Circle relationship in favor of OUSD.",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "id": "C19",
+      "class": "confirmed_fact",
+      "claim": "XRP Ledger transaction costs are specified and destroyed in XRP; they are not paid to Ripple or another party. Thus an XRPL USDC transfer can create small protocol-level XRP fee consumption, but the payment asset itself remains USDC.",
+      "source_ids": [
+        "S13",
+        "S11"
+      ]
+    },
+    {
+      "id": "C20",
+      "class": "disconfirming_evidence",
+      "claim": "OUSD is not listed as natively supported on XRPL in the reviewed official integration documentation. Ripple's Open Standard partner status and SBI's JPYSC-OUSD pilot do not establish an XRP bridge, XRP collateral role or XRPL settlement path.",
+      "source_ids": [
+        "S08",
+        "S09",
+        "S10"
+      ]
+    },
+    {
+      "id": "C21",
+      "class": "disconfirming_evidence",
+      "claim": "Circle's native USDC deployment on XRPL allows stablecoin settlement on XRPL without requiring USDC users to treat XRP as the settlement asset. XRP is still required for protocol transaction costs, but this does not establish material incremental XRP market demand.",
+      "source_ids": [
+        "S11",
+        "S13"
+      ]
+    },
+    {
+      "id": "C22",
+      "class": "unknown",
+      "claim": "Coinbase's exact Circle equity share count, ownership percentage, voting rights and current fair value are not established by the filing excerpts reviewed.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "C23",
+      "class": "unknown",
+      "claim": "OUSD actual supply, transfer volume, Coinbase-sourced balances, and Ripple-sourced balances as of the research cutoff have not been independently reconciled from chain data. No future-dated website metrics are imported into the November 3 feature store.",
+      "source_ids": [
+        "S07",
+        "S08",
+        "S09"
+      ]
+    },
+    {
+      "id": "C24",
+      "class": "unknown",
+      "claim": "No direct Circle-Ripple commercial agreement or direct Circle-Open Standard partnership was established in the reviewed sources. Circle is absent from the October 21 Open Standard public partner roster; absence from a roster is not proof no private or later relationship exists.",
+      "source_ids": [
+        "S09",
+        "S11"
+      ]
+    },
+    {
+      "id": "C25",
+      "class": "confirmed_fact",
+      "claim": "The relevant Japanese SBIC acronym resolves to the Small and Medium Business Investment & Consultation companies established in Tokyo, Nagoya and Osaka under Japan's 1963 statutory framework. They are distinct from SBI Holdings and SBI VC Trade.",
+      "source_ids": [
+        "S14",
+        "S15",
+        "S16",
+        "S17"
+      ]
+    },
+    {
+      "id": "C26",
+      "class": "confirmed_fact",
+      "claim": "Tokyo SBIC's official June 2025 generative-AI training programme included a module on ChatGPT. This explains one literal SBIC/ChatGPT association but does not establish an XRP or Ripple integration.",
+      "source_ids": [
+        "S18"
+      ]
+    },
+    {
+      "id": "C27",
+      "class": "disconfirming_evidence",
+      "claim": "CoinMarketCap's Ask Coin exchange listing is marked inactive, with untracked volume and unavailable reserve data. This is distinct from Permission Coin, whose token ticker is ASK; Permission Coin's published chains are Base and Polygon, not XRPL. Neither result establishes an XRP integration.",
+      "source_ids": [
+        "S19",
+        "S20"
+      ]
+    },
+    {
+      "id": "C28",
+      "class": "unknown",
+      "claim": "The exact source context of the phrase 'actual capital' remains unresolved. This artifact operationalizes the distinction among cash-funded purchases, in-kind contributions, equity stakes, reserve assets, stablecoin circulation and gross transaction volume, but does not claim to have identified the original phrase's intended meaning.",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "to": "Circle Internet Group",
+      "relationship": "equity investment",
+      "amount_usd": 25000000,
+      "status": "confirmed",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Bank",
+      "to": "Circle Internet Group",
+      "relationship": "equity investment",
+      "amount_usd": 25000000,
+      "status": "confirmed",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple Labs",
+      "relationship": "equity ownership",
+      "amount_or_percent": "approximately 9%",
+      "status": "confirmed_company_disclosure",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "from": "SBI Holdings / SBI Shinsei Bank",
+      "to": "Circle",
+      "relationship": "USDC strategic partnership and Circle SBI Japan JV plan",
+      "status": "confirmed_agreement_and_launch_steps",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relationship": "USDC distribution/economic agreement",
+      "status": "confirmed_renewed_same_terms_Q3_2026",
+      "source_ids": [
+        "S03",
+        "S04"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle Internet Group",
+      "relationship": "equity investment",
+      "status": "confirmed_holding_exists_amount_unknown",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relationship": "distribution economics",
+      "amount_usd_h1_2026": 655300000,
+      "status": "confirmed_SEC_filing",
+      "source_ids": [
+        "S04"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open Standard",
+      "relationship": "founding partner and OUSD integration path",
+      "status": "confirmed",
+      "source_ids": [
+        "S06",
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "from": "Open Standard",
+      "to": "Bridge Building Inc.",
+      "relationship": "OUSD issuer relationship",
+      "status": "confirmed",
+      "source_ids": [
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Open Standard",
+      "relationship": "listed network partner",
+      "status": "confirmed_roster_membership_production_scope_unknown",
+      "source_ids": [
+        "S09"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Open Standard",
+      "relationship": "listed network partner",
+      "status": "confirmed_roster_membership",
+      "source_ids": [
+        "S09",
+        "S10"
+      ]
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "JPYSC-OUSD",
+      "relationship": "pilot exploration",
+      "status": "exploratory_not_production",
+      "source_ids": [
+        "S10"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "XRP Ledger",
+      "relationship": "native USDC issuance and Circle Mint/API support",
+      "status": "confirmed",
+      "source_ids": [
+        "S11"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple RLUSD",
+      "relationship": "Prime/Exchange/app listing",
+      "status": "confirmed_listing_not_collateral_eligibility",
+      "source_ids": [
+        "S12"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "relationship": "five-year USDC promotion and incentive arrangement",
+      "status": "confirmed",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "from": "Binance",
+      "to": "Circle Internet Group",
+      "relationship": "equity investment",
+      "amount_usd": 100000000,
+      "status": "confirmed_2_year_transfer_hedge_restriction",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "from": "XRP Ledger transactions",
+      "to": "XRP",
+      "relationship": "protocol fee destruction",
+      "status": "confirmed_protocol_mechanic",
+      "source_ids": [
+        "S13"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H01",
+      "hypothesis": "Coinbase is diversifying stablecoin distribution and monetization across USDC, RLUSD and OUSD while preserving incumbent USDC economics.",
+      "supporting_claims": [
+        "C05",
+        "C06",
+        "C07",
+        "C10",
+        "C15",
+        "C16"
+      ],
+      "counter_evidence": [
+        "C05"
+      ],
+      "test": "Track quarterly USDC balances/revenue, RLUSD volumes and Coinbase OUSD mint/burn/transfer data; identify any change to Circle contract terms."
+    },
+    {
+      "id": "H02",
+      "hypothesis": "SBI is constructing a multi-issuer, multi-currency settlement network rather than betting exclusively on XRP.",
+      "supporting_claims": [
+        "C01",
+        "C02",
+        "C13",
+        "C17"
+      ],
+      "counter_evidence": [],
+      "test": "Track JPYSC, USDC, RLUSD and OUSD production flows, legal entities, settlement routes and actual capital deployed."
+    },
+    {
+      "id": "H03",
+      "hypothesis": "Circle is using equity and commercial incentives to secure large exchange distribution, with Binance and Coinbase as strategically important channels.",
+      "supporting_claims": [
+        "C03",
+        "C04",
+        "C05",
+        "C08",
+        "C09"
+      ],
+      "counter_evidence": [],
+      "test": "Compare distributor-specific USDC balances, incentive costs, concentration, redemption flows and contract renewals."
+    },
+    {
+      "id": "H04",
+      "hypothesis": "OUSD's reserve-income-sharing model may pressure incumbent stablecoin distribution economics and could benefit Coinbase and other partners.",
+      "supporting_claims": [
+        "C09",
+        "C10",
+        "C11",
+        "C18"
+      ],
+      "counter_evidence": [
+        "C05"
+      ],
+      "test": "Compare actual partner rewards, OUSD supply/velocity, Circle partner costs and net issuer economics after infrastructure/compliance spending."
+    },
+    {
+      "id": "H05",
+      "hypothesis": "USDC native issuance on XRPL may increase XRPL activity without producing material XRP spot demand beyond protocol fees and account-reserve effects.",
+      "supporting_claims": [
+        "C14",
+        "C19",
+        "C21"
+      ],
+      "counter_evidence": [],
+      "test": "Measure XRPL USDC transfer counts/value, XRP fee burn, new account reserves, AMM/pathfinding use and XRP bridge volume separately."
+    },
+    {
+      "id": "H06",
+      "hypothesis": "Ripple's Open Standard membership may create indirect stablecoin distribution opportunities, but current evidence does not show OUSD using XRP or XRPL.",
+      "supporting_claims": [
+        "C11",
+        "C12",
+        "C20"
+      ],
+      "counter_evidence": [
+        "C14"
+      ],
+      "test": "Require official integration documentation, contract addresses, issuer statements and independently verified onchain flows before adding an XRP/OUSD edge."
+    },
+    {
+      "id": "H07",
+      "hypothesis": "SBI's equity positions in Ripple and Circle create cross-ecosystem strategic exposure but do not prove coordinated token inventory, capital transfers or common price objectives.",
+      "supporting_claims": [
+        "C01",
+        "C02",
+        "C17"
+      ],
+      "counter_evidence": [],
+      "test": "Review subsequent filings, board/management disclosures, intercompany agreements and actual treasury movements."
+    }
+  ],
+  "data_quality_controls": {
+    "source_priority": [
+      "SEC filings",
+      "official issuer/company disclosures",
+      "official protocol documentation",
+      "independent chain data",
+      "independent market data",
+      "secondary reporting",
+      "public discussion"
+    ],
+    "do_not_merge": [
+      "Circle corporate equity investment vs USDC reserve assets",
+      "SBI's Ripple equity vs XRP token holdings",
+      "Coinbase's Circle equity vs Coinbase USDC distribution revenue",
+      "OUSD partner status vs OUSD equity ownership or production transaction volume",
+      "USDC on XRPL vs XRP as a payment/bridge asset",
+      "OUSD native chains vs XRPL",
+      "announced pilot vs production settlement",
+      "stablecoin reserve income vs distributor incentive costs vs issuer net income"
+    ],
+    "future_dated_source_guard": "OpenUSD marketing pages contain November 12, 2026 launch-event text, later than this November 3 cutoff. Such future-dated content and metrics are excluded. OUSD live status is grounded in Open Standard's September 30, 2026 announcement.",
+    "issuer_claim_guard": "Circle's H1 2026 revenue split and transaction-volume figures are retained as Circle's own claims, not independently audited transaction-level measurements.",
+    "roster_guard": "Public partner rosters establish listed participation only; they do not prove production use, equity ownership, board control or XRP-specific flows."
+  },
+  "source_records": [
+    {
+      "id": "S01",
+      "publisher": "Circle / SEC",
+      "type": "Form 8-K",
+      "date": "2026-09-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm"
+    },
+    {
+      "id": "S02",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "type": "official announcement",
+      "date": "2025-06-09",
+      "url": "https://corp.sbishinseibank.co.jp/en/news/news/20250609a.html"
+    },
+    {
+      "id": "S03",
+      "publisher": "Coinbase / SEC",
+      "type": "Form 10-Q",
+      "date": "2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "S04",
+      "publisher": "Circle / SEC",
+      "type": "Form 10-Q",
+      "date": "2026-08-10",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "id": "S05",
+      "publisher": "Circle",
+      "type": "official corporate explanation",
+      "date": "2026-10-16",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win"
+    },
+    {
+      "id": "S06",
+      "publisher": "Open Standard",
+      "type": "official product announcement",
+      "date": "2026-06-30",
+      "url": "https://joinopenstandard.com/blog/introducing-open-usd"
+    },
+    {
+      "id": "S07",
+      "publisher": "Open Standard",
+      "type": "official launch announcement",
+      "date": "2026-09-30",
+      "url": "https://joinopenstandard.com/blog/ousd-is-live"
+    },
+    {
+      "id": "S08",
+      "publisher": "Open Standard",
+      "type": "official integration documentation",
+      "date": "retrieved 2026-11-03",
+      "url": "https://joinopenstandard.com/integrate/"
+    },
+    {
+      "id": "S09",
+      "publisher": "Open Standard",
+      "type": "public network partner roster",
+      "date": "last updated 2026-10-21",
+      "url": "https://joinopenstandard.com/partners/"
+    },
+    {
+      "id": "S10",
+      "publisher": "Startale",
+      "type": "official SBI/Startale announcement",
+      "date": "2026-10-16",
+      "url": "https://www.startale.com/en/blog/openstandard-startale-sbi"
+    },
+    {
+      "id": "S11",
+      "publisher": "Circle",
+      "type": "official XRPL USDC launch announcement",
+      "date": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+    },
+    {
+      "id": "S12",
+      "publisher": "Coinbase",
+      "type": "official asset listing announcement",
+      "date": "2026-10-28",
+      "url": "https://www.coinbase.com/en-es/blog/landing"
+    },
+    {
+      "id": "S13",
+      "publisher": "XRP Ledger documentation",
+      "type": "protocol documentation",
+      "date": "retrieved 2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost"
+    },
+    {
+      "id": "S14",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation",
+      "type": "official company profile",
+      "date": "retrieved 2026-11-03",
+      "url": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "id": "S15",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation",
+      "type": "official company profile",
+      "date": "retrieved 2026-11-03",
+      "url": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    {
+      "id": "S16",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation",
+      "type": "official company profile",
+      "date": "retrieved 2026-11-03",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+    },
+    {
+      "id": "S17",
+      "publisher": "Japan METI",
+      "type": "official policy description",
+      "date": "retrieved 2026-11-03",
+      "url": "https://www.meti.go.jp/policy/investment/pdf/02guidline.pdf"
+    },
+    {
+      "id": "S18",
+      "publisher": "Tokyo SBIC",
+      "type": "official training programme",
+      "date": "2025-06-12",
+      "url": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    {
+      "id": "S19",
+      "publisher": "CoinMarketCap",
+      "type": "exchange listing status",
+      "date": "retrieved 2026-11-03",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/"
+    },
+    {
+      "id": "S20",
+      "publisher": "CoinMarketCap",
+      "type": "token profile",
+      "date": "retrieved 2026-11-03",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/"
+    }
+  ],
+  "next_actions": [
+    "Capture Circle Q3 2026 results on November 4 and reconcile Circle distribution economics with Coinbase Q3 disclosures.",
+    "Measure OUSD actual circulating supply and transaction activity from Sep 30 onward using official contract addresses and independent chain data; do not use future-dated homepage metrics.",
+    "Determine whether Ripple's Open Standard membership has any disclosed OUSD integration, and whether that integration uses XRP, XRPL, or neither.",
+    "Measure XRPL USDC transfers and protocol XRP fee burn separately; do not treat USDC supply as XRP demand.",
+    "Track Circle-Binance USDC incentives and Binance's Circle equity lockup/ownership disclosures.",
+    "Track SBI's JPYSC-OUSD pilot from announcement to documented production status.",
+    "Continue exact SBIC, ASK Coin, actual-capital and Camilla Stephenson source resolution."
+  ],
+  "platform_status": {
+    "ChatGPT": "verified active in this conversation",
+    "GitHub": "repository access verified",
+    "Claude": "not verified as Barrot collaborator",
+    "Grok": "not verified as Barrot collaborator",
+    "Gemini": "not verified as Barrot collaborator",
+    "Copilot": "not verified as Barrot collaborator",
+    "Codex": "not verified as Barrot collaborator",
+    "HuggingFace": "workflow references exist; live authentication/collaboration not verified",
+    "Kaggle": "workflow references exist; live authentication/collaboration not verified",
+    "Databricks": "workflow references exist; live authentication/collaboration not verified"
+  },
+  "prediction_policy": {
+    "status": "NOT_ISSUED",
+    "no_directional_forecast": true,
+    "no_paper_position_created": true,
+    "prerequisites": [
+      "synchronized immutable feature store",
+      "fixed-horizon walk-forward testing",
+      "leakage prevention",
+      "baseline comparison",
+      "probability calibration",
+      "drift monitoring",
+      "independent evaluation attestation"
+    ]
+  }
+}
