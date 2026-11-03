@@ -157,6 +157,17 @@
         "S3",
         "S4"
       ]
+    },
+    {
+      "id": "E15",
+      "classification": "reported",
+      "claim": "The same article reports XRP market value around $79.1B at its November 2, 2026 snapshot.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Secondary article market-cap snapshot; not an exchange-level market-cap reconstruction."
+      ]
     }
   ],
   "capital_ledger": {
@@ -175,7 +186,8 @@
       "Underlying XRP units held, creations, redemptions, fees, cash balances and derivative hedges must be separate features.",
       "Positive ETF flows do not imply the net marginal buyer dominates all other spot, OTC, distribution and derivative-related selling.",
       "Do not convert reported net flows into a direct buy-pressure feature until source methodology and timing are documented."
-    ]
+    ],
+    "reported_xrp_market_cap_usd": 79100000000
   },
   "relationship_edges": [
     {
@@ -344,7 +356,8 @@
         "Article lines 81-85 summary",
         "Lines 89-90 launch-day and latest price comparison",
         "Lines 99-106 cumulative flows, AUM and daily/weekly flows",
-        "Lines 112-119 performance and limitations"
+        "Lines 112-119 performance and limitations",
+        "Article lines 112-114: all-time-high distance, market value about $79.1B and net inflows comparison"
       ]
     },
     {
