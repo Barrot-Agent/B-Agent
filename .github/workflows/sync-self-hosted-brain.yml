@@ -1,14 +1,23 @@
-name: Sync Self-Hosted Brain
+name: Sync Self-Hosted Brain (explicit approval required)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "self_hosted_brain/**"
   workflow_dispatch:
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this specific external action."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -16,28 +25,19 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install huggingface_hub
-      - name: Deploy self_hosted_brain/ to its own Space
+      - name: Deploy self_hosted_brain to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           python3 - << 'SCRIPT'
           from huggingface_hub import HfApi
           import os
-          api = HfApi(token=os.environ["HF_TOKEN"])
+          token = os.environ.get("HF_TOKEN", "")
+          if not token:
+              raise SystemExit("HF_TOKEN is required for the explicitly approved deployment")
+          api = HfApi(token=token)
           repo_id = "Scribedpengenius/Barrot-Brain-SelfHosted"
-          try:
-              api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
-          except Exception as e:
-              print("create_repo note:", e)
-          api.upload_folder(
-              folder_path="self_hosted_brain",
-              repo_id=repo_id,
-              repo_type="space",
-              commit_message="Deploy self-hosted brain",
-          )
-          secret = os.environ.get("BRAIN_SHARED_SECRET", "")
-          if secret:
-              api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
-              print("shared secret propagated")
+          api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
+          api.upload_folder(folder_path="self_hosted_brain", repo_id=repo_id, repo_type="space", commit_message="Deploy self-hosted brain after explicit approval")
           print("DEPLOYED")
           SCRIPT
