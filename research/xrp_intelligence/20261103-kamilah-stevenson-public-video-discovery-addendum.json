@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "artifact_type": "public_youtube_video_discovery_addendum",
+  "captured_on_utc_date": "2026-11-03",
+  "capture_time_precision": "date_only_search_results",
+  "channel_candidate": {
+    "display_name": "Kamilah Stevenson",
+    "handle": "@drkamilahstevenson",
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "identity_status": "likely_match_not_canonically_confirmed",
+    "basis": "Indexed video pages identify Kamilah Stevenson; available transcript snippets use the spoken spelling Camila Stevenson. This is consistent with the existing interview-based identity hypothesis, but the channel's own canonical upload metadata was not available in this search."
+  },
+  "videos": [
+    {
+      "video_id": "QslbjGQD0MU",
+      "youtube_url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published_date": "2025-12-14",
+      "indexed_page": "https://glasp.co/youtube/QslbjGQD0MU",
+      "evidence": "Indexed page names Kamilah Stevenson; transcript begins with the speaker identifying herself as Camila Stevenson.",
+      "classification": "likely_channel_match"
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "youtube_url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published_date": "2026-01-13",
+      "indexed_page": "https://glasp.co/youtube/ci0FH73lbCs",
+      "evidence": "Indexed page names Kamilah Stevenson; transcript snippet begins with the speaker identifying herself as Camila Stevenson.",
+      "classification": "likely_channel_match"
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "youtube_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "published_date": "2026-01-15",
+      "indexed_page": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "evidence": "Indexed page names Kamilah Stevenson and links to other summaries attributed to the same creator.",
+      "classification": "likely_channel_match"
+    },
+    {
+      "video_id": "rv0BAV0vLgo",
+      "youtube_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "published_date": "2026-03-19",
+      "indexed_page": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "evidence": "Indexed page names Kamilah Stevenson.",
+      "classification": "likely_channel_match"
+    }
+  ],
+  "source_quality": {
+    "primary_youtube_metadata": "not obtained",
+    "transcript_provider": "Glasp third-party indexed pages",
+    "published_dates": "reported by indexed pages; not independently confirmed from canonical YouTube metadata",
+    "view_counts": "omitted because third-party snapshots may be stale and are not canonical",
+    "vidIQ": "channel upload listing could not run; connected account reported insufficient credits and no credits were charged",
+    "youtube_channel_page": "public videos page was reachable but returned no upload inventory",
+    "rss_feed": "feed retrieval failed in the current research environment"
+  },
+  "scope_and_limits": {
+    "newly_indexed_video_pages": 4,
+    "exhaustive_inventory": false,
+    "reason": "Search results expose only a subset of indexed videos. The public channel index previously reported approximately 1.2K uploads, but this figure is third-party metadata and no complete enumerated upload list was retrieved.",
+    "do_not_infer": "Do not infer that these four videos are the only uploads, that every indexed result is owned by the candidate channel, or that any video claim is independently verified."
+  },
+  "next_actions": [
+    "Obtain a paginated canonical public upload inventory through an authorized YouTube Data API or a vidIQ channel-videos call when credits are available.",
+    "Resolve each upload against canonical YouTube channel ID and publishedAt metadata before adding it to the confirmed inventory.",
+    "Prioritize transcript capture for XRP price-mechanism, ETF-flow, collateral, institutional adoption and capital-flow claims; record each creator claim separately from independently verified facts.",
+    "Compare creator forecasts with contemporaneous timestamps and later outcomes only when a specific, testable target and horizon are explicit."
+  ],
+  "safety": {
+    "public_content_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_action": true
+  }
+}
