@@ -100,3 +100,15 @@ def test_public_signal_accuracy_api_does_not_serve_legacy_score():
     assert "UNVALIDATED_VARIABLE_HORIZON" in tool
     assert 'fetch("signal_accuracy.json")' not in tool
     assert "accuracy_unavailable" not in tool
+
+
+def test_public_accuracy_json_is_status_only_and_legacy_metrics_are_archived():
+    public_status = json.loads((REPO_ROOT / "web" / "signal_accuracy.json").read_text(encoding="utf-8"))
+    legacy = json.loads((REPO_ROOT / "web" / "legacy" / "signal_accuracy_unvalidated.json").read_text(encoding="utf-8"))
+    assert public_status["status"] == "BLOCKED_NO_VALIDATED_FIXED_HORIZON_DATA"
+    assert public_status["legacy_summary_validity"] == "UNVALIDATED_VARIABLE_HORIZON"
+    assert "accuracy_pct" not in public_status
+    assert legacy["status"] == "UNVALIDATED_VARIABLE_HORIZON"
+    assert legacy["checked_count"] == 1697
+    assert legacy["correct_count"] == 772
+    assert legacy["accuracy_pct"] == 45.5
