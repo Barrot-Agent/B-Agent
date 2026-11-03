@@ -70,8 +70,8 @@
     {
       "id": "F7",
       "class": "CONFIRMED_OFFICIAL_COMPANY_DISCLOSURE",
-      "finding": "On November 2, 2026 SBI VC Trade reported JPYSC handling balance above ¥30B and JPYSC Lending balance above ¥10B. The lending product is customers lending JPYSC to SBI VC Trade for a fee, not customers borrowing against JPYSC.",
-      "implication": "The two balances must not be summed as new capital or interpreted as collateralized borrowing. Beneficial ownership and overlap between the measures are not disclosed.",
+      "finding": "On November 2, 2026 SBI VC Trade reported JPYSC handling balance above ¥30B and JPYSC Lending balance above ¥10B. The official footnote defines the handling balance as the sum of on-chain balance plus lending balance, so the >¥10B lending figure is included in, not additional to, the >¥30B handling total. Customers lend JPYSC to SBI VC Trade for a fee; they are not borrowing against JPYSC.",
+      "implication": "Do not add the two balances or treat them as independent capital. The exact split between on-chain and lent JPYSC is not disclosed. Lending is not a bank deposit and is not covered by Japan's deposit-insurance system; early termination is generally unavailable during the term.",
       "sources": [
         "sbi-jpysc-balances-20261102"
       ]
@@ -179,6 +179,15 @@
       "implication": "XRP liquidity is not represented by one exchange. Coinbase's near-touch depth may be strategically relevant, but the report is a multi-period study, not a synchronized November 2 order-book snapshot.",
       "sources": [
         "coingecko-cex-liquidity-2026-0930"
+      ]
+    },
+    {
+      "id": "F19",
+      "class": "CONFIRMED_OFFICIAL_PRODUCT_TERMS",
+      "finding": "SBI VC Trade's November 2 JPYSC Lending disclosure lists three term/rate courses: 168 days at up to 3%, 84 days at up to 2.5%, and 28 days at up to 2%, with weekly solicitation. SBI says the terms may change with market conditions, early cancellation is generally unavailable, and JPYSC Lending is not a yen bank deposit and is not covered by deposit insurance.",
+      "implication": "The product is a customer-to-SBI VC Trade token lending arrangement, not a deposit and not a collateralized customer loan. The maximum rates are variable programme terms, not guaranteed risk-free yields.",
+      "sources": [
+        "sbi-jpysc-balances-20261102"
       ]
     }
   ],
@@ -620,14 +629,14 @@
     {
       "item": "JPYSC handling balance",
       "amount": "above ¥30B on 2026-11-02",
-      "type": "company-reported token handling balance",
-      "not": "public-chain circulating supply or XRP liquidity"
+      "type": "company-reported aggregate equal to on-chain balance plus lending balance",
+      "not": "an amount separate from JPYSC Lending; not XRP liquidity"
     },
     {
       "item": "JPYSC Lending balance",
       "amount": "above ¥10B on 2026-11-02",
-      "type": "customer JPYSC lent to SBI VC Trade",
-      "not": "customers borrowing JPYSC or collateralized debt"
+      "type": "subset of JPYSC handling balance; customer token loan to SBI VC Trade",
+      "not": "additional capital to add to the >¥30B total; customer borrowing or deposit-insured cash"
     },
     {
       "item": "SBI Remit XRP corridors",
@@ -861,7 +870,7 @@
     "Do not treat SBI's Circle and Ripple equity interests as direct Circle-Ripple ownership or partnership.",
     "Do not assume JPYSC is issued on XRPL; initial launch was account-restricted and official release did not identify a public-chain deployment.",
     "Do not assume RLUSD on SBI VC Trade is supported on XRPL; official captured announcement did not specify network. A secondary report says initial Japanese listing was Ethereum-only; retain as secondary-reported.",
-    "Do not add JPYSC handling balance to JPYSC Lending balance; measures may overlap and have different meanings.",
+    "JPYSC handling balance is explicitly defined by SBI as on-chain balance plus lending balance; the >¥10B Lending balance is included in the >¥30B handling total, not additive.",
     "Do not treat customer JPYSC lending to SBI VC Trade as customers borrowing against JPYSC.",
     "Do not infer XRP spot purchases from stablecoin issuance, balances, exchange reserves or corporate equity investments.",
     "Do not infer XRP bridge usage from XRPL deployment or tokenization PoCs.",
@@ -1078,7 +1087,7 @@
       "type": "official_company_metric",
       "date": "2026-11-02",
       "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
-      "observation": "JPYSC handling balance >¥30B and customer JPYSC Lending balance >¥10B; customers lend JPYSC to SBI VC Trade."
+      "observation": "JPYSC handling balance >¥30B and customer JPYSC Lending balance >¥10B. The official footnote defines handling balance as on-chain balance plus lending balance. Lending terms: 168 days up to 3%, 84 days up to 2.5%, 28 days up to 2%; weekly solicitations; not a bank deposit or deposit-insured; early cancellation generally unavailable."
     },
     {
       "id": "sbi-open-standard-jpysc-ousd-20261016",
@@ -1223,6 +1232,14 @@
       "date": "2026-09-30",
       "url": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
       "observation": "XRP CEX depth distributed across eight venues; approximately $18M bids and $14M asks within ±2%; Coinbase exceeds Binance at ±0.1% band; multi-period report, not a live snapshot."
+    },
+    {
+      "id": "sbi-jpysc-lending-terms-20261102",
+      "publisher": "SBI VC Trade",
+      "type": "official_product_terms",
+      "date": "2026-11-02",
+      "url": "https://www.sbivc.co.jp/jpysc?tab=lending",
+      "observation": "Product page describes customer JPYSC lending to SBI VC Trade, variable terms and rates, and risk/early-cancellation limitations. The November 2 release is the authoritative source for the reported balance thresholds and their inclusion in the handling total."
     }
   ],
   "architecture_state": {
@@ -1272,7 +1289,7 @@
     "Obtain actual SBI Remit XRP corridor volumes, settlement routes, XRP bridge inventory and counterparty exchange data.",
     "Determine whether RLUSD on SBI VC Trade is supported on XRPL, Ethereum or both; official captured listing text does not specify network.",
     "Determine whether JPYSC public-chain deployment occurred after the account-restricted launch; the November 2 balance announcement does not establish external transfers.",
-    "Reconcile JPYSC handling balance and Lending balance definitions and overlap before deriving a capital ratio.",
+    "Determine the exact on-chain versus lending split within the >¥30B JPYSC handling total; SBI discloses the formula but not the exact component amounts.",
     "Obtain production USDC/RLUSD mint, redemption, deposit, withdrawal and settlement data through SBI VC Trade.",
     "Determine whether Circle and Ripple have any direct bilateral agreement, cross-holding, board rights or technical interoperability beyond SBI's common-investor/JV network.",
     "Reconcile Coinbase's 50% USDC economics statement with Circle distribution expenses, Coinbase rewards, reserve yield and net contribution.",
@@ -1299,7 +1316,8 @@
     "october_29_30_liquidations_usd": 45300000,
     "coinbase_q3_stablecoin_revenue_yoy_change_pct": -5.43,
     "coinbase_q3_usdc_rewards_expense_yoy_change_pct": 15.84,
-    "notes": "OI ratios compare different provider snapshots and are descriptive only. Coinbase percentage changes are derived from SEC filing amounts; stablecoin revenue is not net profit."
+    "notes": "OI ratios compare different provider snapshots and are descriptive only. Coinbase percentage changes are derived from SEC filing amounts; stablecoin revenue is not net profit.",
+    "jpysc_balance_rule": "JPYSC handling balance = on-chain balance + JPYSC Lending balance. The >¥10B lending balance is a subset of the >¥30B handling total; do not add them."
   },
   "limitations": [
     "No private Databricks data was accessed.",
