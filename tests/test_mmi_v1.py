@@ -414,6 +414,15 @@ def test_missing_corroboration_prevents_completion():
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
 
 
+def test_unstructured_checked_result_is_not_corroboration():
+    record = complete_record_with_two_sources()
+    record.corroboration_results = [{"status": "checked"}]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
+    report = MMICompletenessReport.build(record)
+    assert report["protocol_complete"] is False
+
+
 def test_zero_independent_sources_cannot_complete_corroboration():
     record = complete_record_with_two_sources()
     record.corroboration_results = [{
