@@ -1,0 +1,107 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "xrp-etf-flow-settlement-and-methodology-20261103T133429Z",
+  "captured_at_utc": "2026-11-03T13:34:29Z",
+  "data_cutoff_utc": "2026-11-03T13:34:29Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "supersedes_artifact_ids": [
+    "xrp-evernorth-cantor-equity-line-and-etf-flow-quality-20261103",
+    "xrp-spot-perpetual-oi-provider-reconciliation-20261103T133204Z"
+  ],
+  "corrections": [
+    {
+      "id": "ETF-CORR-001",
+      "field": "xrp_insights_nov_2_row_status",
+      "previous": "PROVISIONAL",
+      "corrected": "SETTLED_FOR_AVAILABLE_COMPUTED_FLOWS",
+      "evidence": {
+        "generated_at_utc": "2026-11-03T12:19:10.322Z",
+        "data_as_of": "2026-11-02",
+        "latest_row_date": "2026-11-02",
+        "provisional_row_date": null,
+        "dashboard_statement": "1 settled trading day"
+      },
+      "limitation": "The dataset's per-fund CSV was not retrievable through the current web reader because it serves text/csv. The JSON metadata and methodology page were retrieved; the exact per-fund Nov 2 rows were not independently parsed."
+    },
+    {
+      "id": "ETF-CORR-002",
+      "field": "xrp_insights_nov_2_flow_coverage",
+      "corrected": "AGGREGATE_OF_COMPUTED_FUND_HOLDINGS_CHANGES_WITH_GXRP_FLOW_EXCLUDED",
+      "reported_net_flow_xrp": -32825,
+      "reported_usd_approx": -41000,
+      "holdings_total_xrp": 1196567361,
+      "exclusions": {
+        "ticker": "GXRP",
+        "reason": "Issuer page capture gap from 2026-09-02 to 2026-09-28; four-week catch-up would distort day-by-day flows.",
+        "treatment": "GXRP holdings and AUM remain in total holdings/AUM, but GXRP flow is withheld (flow_status=excluded) across the history."
+      },
+      "limitation": "The -32,825 XRP is not a complete seven-fund flow. The dataset sums computed per-fund holdings changes; initial and excluded rows contribute nothing."
+    },
+    {
+      "id": "ETF-CORR-003",
+      "field": "cryptoetf_vs_xrp_insights_comparison",
+      "corrected": "NONCOMPARABLE_METHODS_AND_UNIVERSES",
+      "cryptoetf": {
+        "publication_time_utc": "2026-11-03T05:47:00Z",
+        "observation_date": "2026-11-02",
+        "reported_flow_usd": -500000,
+        "funds_reported": 3,
+        "funds_in_universe": 5,
+        "reported_detail": "XRPC -$0.5M; XRPZ and GXRP not reported; Bitwise XRP and TOXR zero.",
+        "methodology": "Fund share creations/redemptions at NAV; not ETF trading volume."
+      },
+      "xrp_insights": {
+        "generated_at_utc": "2026-11-03T12:19:10.322Z",
+        "observation_date": "2026-11-02",
+        "reported_flow_xrp": -32825,
+        "reported_usd_approx": -41000,
+        "universe": "Six US spot XRP ETFs plus BITW",
+        "methodology": "Day-over-day change in issuer-reported XRP holdings; changes can include non-creation/redemption effects such as BITW index rebalancing and XRP-denominated fee accruals; GXRP flow excluded."
+      },
+      "interpretation": "Different fund universe, data completeness, publication time and calculation method. The values are not a like-for-like contradiction and must not be averaged."
+    }
+  ],
+  "corrected_feature_rules": [
+    "Store XRP Insights Nov 2 as settled for its available computed flows as of 2026-11-03T12:19:10.322Z; do not label it provisional after this capture.",
+    "Keep GXRP holdings/AUM in totals but mark GXRP flow as excluded; never impute the missing flow as zero.",
+    "Store CryptoETF's 3/5 observation as partial, with XRPZ and GXRP missing at its 05:47 UTC publication.",
+    "Do not compare CryptoETF share-creation/redemption NAV flows directly with XRP Insights holdings deltas as if they were the same measure.",
+    "Do not interpret either aggregate as confirmed open-market XRP purchases or net new external capital.",
+    "Retain per-fund provenance, universe, methodology, capture time, publication time, completeness and revision state."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "sources": [
+    {
+      "id": "S1",
+      "type": "SECONDARY_DATASET_JSON_METADATA",
+      "publisher": "XRP Insights",
+      "title": "XRP ETF daily holdings and flows JSON metadata, generated 2026-11-03 12:19:10.322 UTC",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json"
+    },
+    {
+      "id": "S2",
+      "type": "SECONDARY_METHODOLOGY_PAGE",
+      "publisher": "XRP Insights",
+      "title": "XRP ETF data downloads and flow methodology",
+      "url": "https://xrp-insights.com/data"
+    },
+    {
+      "id": "S3",
+      "type": "SECONDARY_AGGREGATOR_PARTIAL",
+      "publisher": "CryptoETF.today",
+      "title": "XRP ETF flows for 2026-11-02, published 2026-11-03 05:47 UTC",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows"
+    }
+  ],
+  "provenance_notes": [
+    "XRP Insights reads holdings and net assets from fund issuer websites but computes flows as holdings deltas; it is not an issuer flow report.",
+    "CryptoETF describes flows as shares created or redeemed at NAV and reports only 3/5 funds for the Nov 2 observation.",
+    "No CSV rows were reconstructed or inferred from the summary. The exact per-fund rows remain unparsed."
+  ],
+  "next_actions": [
+    "Retrieve each fund's issuer-reported Nov 2 XRP holdings and compare with the previous issuer observation.",
+    "Retrieve the per-fund JSON/CSV through a supported authorized data path and inspect every row's flow_status and row_status.",
+    "Keep GXRP flow excluded until its issuer holdings history can be reconstructed without allocating the catch-up to one day.",
+    "Reconcile fund holdings changes with actual custody wallet movements and authorized participant creations/redemptions before using them as capital-flow features."
+  ]
+}
