@@ -24,6 +24,7 @@ Or from ~/.kaggle/kaggle.json / $KAGGLE_CONFIG_DIR/kaggle.json.
 import io
 import logging
 import os
+import re
 import sys
 import zipfile
 from pathlib import Path
@@ -82,11 +83,22 @@ def _build_api() -> KaggleApiExtended:
     return api
 
 
-def _list_active_competitions(api: KaggleApiExtended) -> list:
-    """Return competitions that are still accepting submissions."""
+def _list_active_competitions(
+    api: KaggleApiExtended,
+    allowlist: set[str],
+) -> list:
+    """Return only active competitions explicitly named in the allowlist."""
     comps = api.competitions_list(sort_by="latestDeadline")
-    active = [c for c in comps if not getattr(c, "isKernelsSubmissionsOnly", False)]
-    log.info("Found %d active competitions (showing up to %d).", len(active), MAX_COMPETITIONS)
+    active = [
+        c for c in comps
+        if not getattr(c, "isKernelsSubmissionsOnly", False)
+        and (c.ref if hasattr(c, "ref") else str(c)).strip().lower() in allowlist
+    ]
+    log.info(
+        "Found %d allowlisted active competitions (showing up to %d).",
+        len(active),
+        MAX_COMPETITIONS,
+    )
     return active[:MAX_COMPETITIONS]
 
 
@@ -193,7 +205,31 @@ def _train_and_predict(comp_dir: Path) -> Optional[Path]:
     return out_path
 
 
+def _approved_competitions() -> set[str]:
+    """Parse exact competition slugs approved for this single run."""
+    raw = os.environ.get("KAGGLE_COMPETITION_ALLOWLIST", "")
+    values = [item.strip().lower() for item in raw.split(",") if item.strip()]
+    if len(values) != len(set(values)):
+        raise SystemExit("KAGGLE_COMPETITION_ALLOWLIST contains duplicate slugs")
+    if any(not re.fullmatch(r"[a-z0-9][a-z0-9-]*", item) for item in values):
+        raise SystemExit("KAGGLE_COMPETITION_ALLOWLIST contains an invalid slug")
+    return set(values)
+
+
+def _submission_authorized(competition: str | None = None) -> bool:
+    if os.environ.get("KAGGLE_ALLOW_SUBMISSIONS", "").strip().lower() != "true":
+        return False
+    allowlist = _approved_competitions()
+    if not allowlist:
+        return False
+    return competition is None or competition.strip().lower() in allowlist
+
+
 def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> None:
+    if not _submission_authorized(competition):
+        raise RuntimeError(
+            "KAGGLE_ALLOW_SUBMISSIONS=true and an exact competition allowlist entry are required"
+        )
     try:
         api.competition_submit(
             file_name=str(submission_path),
@@ -211,8 +247,14 @@ def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> 
 
 
 def main() -> None:
+    approved = _approved_competitions()
+    if not _submission_authorized() or not approved:
+        raise SystemExit(
+            "KAGGLE_ALLOW_SUBMISSIONS=true and a non-empty exact "
+            "KAGGLE_COMPETITION_ALLOWLIST are required before any Kaggle API call"
+        )
     api = _build_api()
-    competitions = _list_active_competitions(api)
+    competitions = _list_active_competitions(api, approved)
 
     results: list[dict] = []
     for comp in competitions:
