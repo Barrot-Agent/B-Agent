@@ -1,0 +1,173 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "evernorth-cantor-prospectus-price-and-fee-scope-correction-20261103T140314Z",
+  "captured_at_utc": "2026-11-03T14:03:14Z",
+  "data_cutoff_utc": "2026-11-03T14:03:14Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "supersedes_artifact_id": "evernorth-cantor-facility-fee-cap-and-net-proceeds-20261103T133621Z",
+  "correction_scope": "Clarify the scope of the $1.701M specified Cantor/StoneX fee envelope and independently reconcile the prospectus's $14.71 illustrative share price, 97% VWAP purchase-price footnote, $76.8M table value and $74.4M net-proceeds narrative.",
+  "findings": [
+    {
+      "id": "EVLOC-FEE-SCOPE-001",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The prospectus states that Evernorth will bear all other registration-related costs, including registration and filing fees, Nasdaq listing fees, and counsel and independent registered public accountant fees. These are separate from the specified Cantor/CF&CO and StoneX caps.",
+      "source_id": "S1",
+      "location": "Use of Proceeds, p. 67"
+    },
+    {
+      "id": "EVLOC-FEE-SCOPE-002",
+      "classification": "DERIVED_ARITHMETIC_WITH_LIMITATION",
+      "claim": "The previously calculated $1.701M amount is only the sum of the specified Cantor commitment-fee cap ($1.0M), Cantor/CF&CO expense cap ($500K), StoneX fee ($200K) and StoneX expense cap ($1K). It is not a cap on all facility, registration or offering costs because other costs are separately payable and not capped by those provisions.",
+      "calculation": {
+        "cantor_commitment_fee_cap_usd": 1000000,
+        "cantor_cfco_expense_cap_usd": 500000,
+        "stonex_fee_usd": 200000,
+        "stonex_expense_cap_usd": 1000,
+        "specified_cantor_stonex_cap_total_usd": 1701000
+      },
+      "source_id": "S1",
+      "location": "pp. 67–69 and Plan of Distribution"
+    },
+    {
+      "id": "EVLOC-FEE-SCOPE-003",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The prospectus's illustrative table lists 5,218,935 shares at an assumed $14.71 trading price and displays $76.8M as the aggregate purchase price, while footnote 3 says the purchase price assumes a VWAP Purchase Price equal to 97% of the assumed trading price.",
+      "source_id": "S1",
+      "location": "pp. 73–74"
+    },
+    {
+      "id": "EVLOC-FEE-SCOPE-004",
+      "classification": "DERIVED_ARITHMETIC",
+      "claim": "Applying the stated 97% factor to 5,218,935 × $14.71 yields $74,467,417.83, not $76.8M. The un-discounted multiplication is $76,768,433.85, which rounds to the displayed $76.8M.",
+      "calculation": {
+        "shares": 5218935,
+        "assumed_price_usd": 14.71,
+        "undiscounted_value_usd": 76770533.85000001,
+        "vwap_factor": 0.97,
+        "discounted_97pct_value_usd": 74467417.8345,
+        "table_display_usd": 76800000,
+        "table_vs_97pct_difference_usd": 2332582.1655
+      },
+      "source_id": "S1",
+      "location": "p. 74, table and footnote (3)"
+    },
+    {
+      "id": "EVLOC-FEE-SCOPE-005",
+      "classification": "DERIVED_ARITHMETIC_WITH_LIMITATION",
+      "claim": "The $74.4M narrative net-proceeds estimate is only $67,417.83 below the independently calculated $74.467M 97%-of-$14.71 amount, while the prospectus separately discloses a $521,893.50 non-refundable upfront commitment fee. The stated net estimate therefore does not arithmetically reconcile to the stated 97% purchase-price formula and disclosed upfront fee under the same full-capacity/$14.71 assumptions.",
+      "calculation": {
+        "discounted_97pct_value_usd": 74467417.8345,
+        "narrative_net_estimate_usd": 74400000,
+        "difference_usd": 67417.83449999988,
+        "upfront_commitment_fee_usd": 521893.5,
+        "upfront_fee_exceeds_difference_usd": 454475.6655000001
+      },
+      "source_id": "S1",
+      "location": "pp. 67–69"
+    },
+    {
+      "id": "EVLOC-FEE-SCOPE-006",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The $521,893.50 upfront commitment fee is fully earned and non-refundable as of the Purchase Agreement date regardless of whether any VWAP purchases occur, with payment due within five business days following the Upfront Determination Date. The prospectus separately states that the aggregate upfront plus additional commitment fee cannot exceed $1M.",
+      "source_id": "S1",
+      "location": "pp. 67–68"
+    },
+    {
+      "id": "EVLOC-FEE-SCOPE-007",
+      "classification": "UNKNOWN_NOT_VERIFIED",
+      "claim": "No actual Upfront Determination Date, payment, true-up amount, Cantor drawdown, share issuance/settlement, total registration cost or facility-funded XRP acquisition was verified in this review.",
+      "source_id": "S1",
+      "location": "Prospectus terms; absence of a verified subsequent settlement disclosure in the reviewed materials"
+    }
+  ],
+  "interpretation": {
+    "status": "PROSPECTUS_ARITHMETIC_REMAINS_UNRECONCILED",
+    "table_value_usd": 76800000,
+    "discounted_97pct_calculated_value_usd": 74467417.8345,
+    "narrative_net_estimate_usd": 74400000,
+    "specified_cantor_stonex_fee_cap_usd": 1701000,
+    "specified_fee_cap_is_total_offering_cost_cap": false,
+    "total_offering_cost_cap": "NOT_ESTABLISHED",
+    "actual_cash_received": "NOT_VERIFIED",
+    "actual_xrp_purchased_with_facility": "NOT_VERIFIED",
+    "conclusion": "The $76.8M table figure appears to reflect 100% of the assumed $14.71 price despite the 97% footnote. The $74.4M narrative figure is close to the 97%-discounted amount before the separately disclosed upfront fee. The filing does not explain the discrepancy. Do not silently replace issuer figures with a model estimate; preserve all three observations and seek a subsequent issuer clarification or settlement disclosure."
+  },
+  "model_rules": [
+    "Label $1.701M as the specified Cantor/StoneX fee and reimbursement cap sum only; never call it the total offering-cost cap.",
+    "Track registration, filing, Nasdaq, counsel, audit and other offering expenses separately where disclosed.",
+    "Keep 100%-of-price arithmetic, 97%-of-VWAP purchase-price arithmetic and the issuer's stated net-proceeds estimate as separate values.",
+    "Do not infer actual facility drawdown, cash received, share issuance or XRP purchases from registered capacity.",
+    "Treat the $521,893.50 fee as contractually non-refundable/earned but do not mark it paid without payment evidence.",
+    "Do not use the facility as a positive XRP demand feature until cash settlement and XRP acquisition are independently verified."
+  ],
+  "hypotheses": [
+    {
+      "id": "H-CANTOR-1",
+      "statement": "The table's $76.8M is an illustrative gross market-value calculation that omitted the 97% discount in the displayed value.",
+      "status": "PLAUSIBLE_ARITHMETIC_EXPLANATION",
+      "support": [
+        "The displayed value matches 5,218,935 × $14.71 rounded.",
+        "Footnote 3 separately requires 97%."
+      ],
+      "disconfirming_or_limits": [
+        "The prospectus labels the column purchase price and does not provide an erratum."
+      ]
+    },
+    {
+      "id": "H-CANTOR-2",
+      "statement": "The $74.4M net narrative applies approximately the 97% discount but fails to subtract the separately disclosed upfront fee and other costs.",
+      "status": "PLAUSIBLE_ARITHMETIC_EXPLANATION",
+      "support": [
+        "The 97%-discounted calculation is $74.467M, close to $74.4M.",
+        "The upfront fee alone is $521,893.50."
+      ],
+      "disconfirming_or_limits": [
+        "Actual VWAP, sale timing and other estimates may differ from the static $14.71 illustration; the filing does not explain the computation."
+      ]
+    },
+    {
+      "id": "H-CANTOR-3",
+      "statement": "The figures use different internal assumptions not fully reproduced in the prospectus table/narrative.",
+      "status": "POSSIBLE_UNRESOLVED",
+      "support": [
+        "The facility uses future VWAP periods and variable draw frequency."
+      ],
+      "disconfirming_or_limits": [
+        "The prospectus expressly ties both illustrations to the $14.71 cover price and full share capacity."
+      ]
+    },
+    {
+      "id": "H-CANTOR-4",
+      "statement": "The facility is drawn and a substantial portion of proceeds becomes actual XRP spot demand.",
+      "status": "CONDITIONAL_NOT_OBSERVED",
+      "support": [
+        "Management states it expects a substantial portion of any proceeds to acquire XRP."
+      ],
+      "disconfirming_or_limits": [
+        "No commencement, drawdown, settlement or facility-funded XRP purchase was verified; proceeds are discretionary and may fund working capital and other purposes."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_SEC_424B3",
+      "publisher": "Evernorth Holdings Inc.",
+      "title": "Final prospectus for up to 5,218,935 Class A shares under Cantor committed equity facility, filed 2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "source_locations": [
+        "p. 67: $76.8M gross and $74.4M net proceeds; general corporate uses; other registration costs",
+        "pp. 67–68: upfront fee, true-up, commitment fee cap and expenses",
+        "p. 69: 97% VWAP purchase price",
+        "pp. 73–74: $14.71 table and footnote 3"
+      ]
+    }
+  ],
+  "next_actions": [
+    "Monitor SEC filings for the Upfront Determination Date, fee payment, drawdown notices, share issuances and cash settlement.",
+    "Look for issuer amendment or clarification of the table/narrative arithmetic before promoting a facility proceeds estimate.",
+    "Keep actual XRP purchase evidence separate from proceeds or management intention.",
+    "Update the equity dilution model only when issued shares and subsequent share counts are confirmed."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}
