@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "scheduled_writer_security_audit",
+  "capture_time_utc": "2026-11-03T21:00:31.525Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_commit": "fada1c0712894e92f301e2cb5e6aa098280bfbe8",
+  "status": "EXECUTED_PENDING_CI_AND_REVIEW",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 is execution and verification foundation",
+  "classification": "observed_repository_facts_and_proposed_containment",
+  "sources": [
+    {
+      "path": ".github/workflows/subscriber_sync.yml",
+      "blob_sha": "584fd4e8c064fa49316b0968f0f9158119969b38",
+      "observation": "Hourly Gumroad API read; selected sales emails were normalized and SHA-256 hashed; hashes and count were committed to public web/subscribers.json."
+    },
+    {
+      "path": "web/subscribers.json",
+      "blob_sha": "03b1293765cb89c152aa1a06c56c3cb67c327cea",
+      "observation": "JSON parsed successfully; emails array length 0 and count 0 at capture. No subscriber hashes were exposed in this audit output."
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "blob_sha": "ec7a42d6b58a5067f15a9ae9ef54ede9b80580d1",
+      "observation": "15-minute scheduled executor had contents:write and actions:write, invoked scripts/scheduler.py with GITHUB_TOKEN, and pushed queue updates to main."
+    },
+    {
+      "path": ".github/workflows/daily-digest.yml",
+      "blob_sha": "740b1960e1877e74f422c5cf69aa10e8ad8028e1",
+      "observation": "Scheduled issue creation with issues:write; public digest may propagate the legacy unvalidated signal-accuracy claim."
+    },
+    {
+      "path": ".github/workflows/auto-resolve-issues.yml",
+      "blob_sha": "974b67a330956d63536ae020994b1c2c43920953",
+      "observation": "Scheduled batch issue resolver had issues:write and could close matching issues."
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "blob_sha": "df932bb34cd8b7c1c3b01f51a28aceb539c04145",
+      "observation": "Hourly autonomous issue/PR resolver could create issues and assign unassigned items."
+    },
+    {
+      "path": ".github/workflows/self-schedule.yml",
+      "blob_sha": "b4ce740e94ef3546ec4fe49e7670c3a43637748",
+      "observation": "Scheduled gap detector could create and label GitHub issues."
+    },
+    {
+      "path": "tests/test_v3_scripts.py",
+      "blob_sha": "b5e50e3ee1fc7c4a48588225dc4804e570042063",
+      "observation": "Existing CI-included test module; two new workflow-containment regression tests are appended in this proposal."
+    }
+  ],
+  "findings": [
+    {
+      "id": "SW-01",
+      "severity": "high",
+      "status": "confirmed",
+      "summary": "Unrestricted scheduler can dispatch arbitrary workflow files every 15 minutes and persist queue state directly to main."
+    },
+    {
+      "id": "SW-02",
+      "severity": "high",
+      "status": "confirmed",
+      "summary": "Subscriber sync publishes unsalted SHA-256 email hashes. Such hashes are pseudonymous and dictionary-matchable, not anonymization."
+    },
+    {
+      "id": "SW-03",
+      "severity": "medium",
+      "status": "confirmed",
+      "summary": "Scheduled digest and autonomous issue workflows perform public issue/PR mutations without per-item user authorization."
+    },
+    {
+      "id": "SW-04",
+      "severity": "low",
+      "status": "confirmed_current_file_empty",
+      "summary": "web/subscribers.json currently contains zero hashes; no subscriber identifiers were exposed by this audit."
+    }
+  ],
+  "proposed_controls": [
+    "Disable the 15-minute scheduler workflow until a reviewed workflow allowlist and durable non-main queue store exist.",
+    "Disable the hourly subscriber export pending privacy review and a non-public, access-controlled subscriber store.",
+    "Disable scheduled digest and autonomous issue/PR mutation pending explicit authorization, deduplication and bounded scopes.",
+    "Use permissions: {}, workflow_dispatch-only and a job-level false guard; remove credential references and mutation commands.",
+    "Add regression tests to tests/test_v3_scripts.py, which is explicitly enumerated in core CI."
+  ],
+  "limitations": [
+    "This PR does not erase prior Git objects, forks, caches or external copies.",
+    "The current subscriber JSON is empty; prior versions/history were not audited for previously published hashes.",
+    "No Gumroad API call, secret access, workflow dispatch, issue mutation, deployment, merge, paper trade or real-money action was performed.",
+    "Manual workflow dispatch remains visible but the job is disabled; administrative branch protection is not changed.",
+    "Merge Queue, Dump Brain Corpus, Cross Analysis and legacy signal-accuracy workflows remain separate unresolved main-branch risks."
+  ],
+  "next_actions": [
+    "Run exact-head core CI and confirm both new test names are collected.",
+    "Run the fail-closed gate and verify automatic merge remains disabled.",
+    "Audit Git history for prior subscriber hashes through authorized public repository history; do not rewrite history without explicit approval.",
+    "Prepare separate fresh-main containment for Merge Queue and Dump Brain Corpus.",
+    "Continue the point-in-time XRP feature store and fixed-horizon evaluation work."
+  ]
+}
