@@ -1,0 +1,189 @@
+{
+  "schema_version": "barrot.workflow-security-audit.v1",
+  "captured_at_utc": "2026-11-03T10:00:48Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "c10df2896572a7df7daebfa4f43899f76c31b100",
+  "pull_request": 1573,
+  "topic": "Autonomous Resolver opened false-positive workflow-failure issues from failed PR-branch YAML validation runs",
+  "evidence_policy": {
+    "classes": [
+      "CONFIRMED_PRIMARY_SOURCE",
+      "CONFIRMED_RUNTIME_SIDE_EFFECT",
+      "INFERENCE",
+      "UNKNOWN"
+    ],
+    "no_issue_closure_or_edit": true,
+    "no_workflow_dispatch": true,
+    "no_secret_access": true
+  },
+  "main_workflow": {
+    "path": ".github/workflows/barrot-autonomous-resolver.yml",
+    "current_main_behavior": "Hourly schedule; contents:read, issues:write and pull-requests:write; scans failed workflow runs and may create public issues, then optionally assign unassigned issues and PRs.",
+    "source_observed_run_id": 41615777310,
+    "source_run_event": "schedule",
+    "source_run_branch": "main",
+    "source_run_sha": "c10df2896572a7df7daebfa4f43899f76c31b100",
+    "source_run_created_at_utc": "2026-11-03T10:01:31Z",
+    "source_run_conclusion": "success",
+    "source_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41615777310"
+  },
+  "root_cause": {
+    "class": "CONFIRMED_PRIMARY_SOURCE",
+    "description": "The workflow comment says it scans failures from the last 24 hours, but the gh run list command uses --status failure --limit 100 and does not pass --created, --branch main or an event filter. It aggregates distinct workflow names from failed runs across branches. For each name, a second gh run list --workflow NAME --status failure --limit 1 also lacks a branch/event filter. Consequently a failed pull-request validation run can be treated as a main-branch operational failure and create a public issue.",
+    "evidence_from_main_source": ".github/workflows/barrot-autonomous-resolver.yml was retrieved from main c10df289. The query contains --status failure and --limit 100; no time, branch or event filter is present.",
+    "additional_risk": "The body says 'most recent failed run', not 'latest run overall'. A later successful run does not prevent issue creation if an older failure remains in the returned set."
+  },
+  "false_positive_runs": [
+    {
+      "workflow": "Auto-Resolve Workflow Issues",
+      "run_id": 41609099275,
+      "event": "push",
+      "branch": "security/quarantine-external-writers-20261103T0820Z",
+      "sha": "a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae",
+      "created_at_utc": "2026-11-03T09:12:13Z",
+      "conclusion": "failure",
+      "jobs": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41609099275"
+    },
+    {
+      "workflow": "Barrot Autonomous Resolver",
+      "run_id": 41609102361,
+      "event": "push",
+      "branch": "security/quarantine-external-writers-20261103T0820Z",
+      "sha": "a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae",
+      "created_at_utc": "2026-11-03T09:12:15Z",
+      "conclusion": "failure",
+      "jobs": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41609102361"
+    },
+    {
+      "workflow": "Barrot Self-Scheduling",
+      "run_id": 41609106814,
+      "event": "push",
+      "branch": "security/quarantine-external-writers-20261103T0820Z",
+      "sha": "a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae",
+      "created_at_utc": "2026-11-03T09:12:16Z",
+      "conclusion": "failure",
+      "jobs": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41609106814"
+    },
+    {
+      "workflow": "Daily Digest",
+      "run_id": 41609103844,
+      "event": "push",
+      "branch": "security/quarantine-external-writers-20261103T0820Z",
+      "sha": "a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae",
+      "created_at_utc": "2026-11-03T09:12:15Z",
+      "conclusion": "failure",
+      "jobs": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41609103844"
+    },
+    {
+      "workflow": "Gumroad Metrics",
+      "run_id": 41609100965,
+      "event": "push",
+      "branch": "security/quarantine-external-writers-20261103T0820Z",
+      "sha": "a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae",
+      "created_at_utc": "2026-11-03T09:12:14Z",
+      "conclusion": "failure",
+      "jobs": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41609100965"
+    },
+    {
+      "workflow": "WebMCP Monetization Enrichment",
+      "run_id": 41609097559,
+      "event": "push",
+      "branch": "security/quarantine-external-writers-20261103T0820Z",
+      "sha": "a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae",
+      "created_at_utc": "2026-11-03T09:12:12Z",
+      "conclusion": "failure",
+      "jobs": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41609097559"
+    }
+  ],
+  "issue_side_effects": [
+    {
+      "issue": 1574,
+      "workflow": "Auto-Resolve Workflow Issues",
+      "state": "open",
+      "created_at_utc": "2026-11-03T10:01:44Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1574"
+    },
+    {
+      "issue": 1575,
+      "workflow": "Barrot Autonomous Resolver",
+      "state": "open",
+      "created_at_utc": "2026-11-03T10:01:46Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1575"
+    },
+    {
+      "issue": 1576,
+      "workflow": "Barrot Self-Scheduling",
+      "state": "open",
+      "created_at_utc": "2026-11-03T10:01:48Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1576"
+    },
+    {
+      "issue": 1577,
+      "workflow": "Daily Digest",
+      "state": "open",
+      "created_at_utc": "2026-11-03T10:01:51Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1577"
+    },
+    {
+      "issue": 1578,
+      "workflow": "Gumroad Metrics",
+      "state": "open",
+      "created_at_utc": "2026-11-03T10:01:53Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1578"
+    },
+    {
+      "issue": 1579,
+      "workflow": "WebMCP Monetization Enrichment",
+      "state": "open",
+      "created_at_utc": "2026-11-03T10:01:58Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1579"
+    }
+  ],
+  "correction_history": {
+    "earlier_branch_commit": "6697ebedc62912eafa2abed62f2895ac0b218a71",
+    "earlier_issue": "The first quarantine revision used plain scalar run: echo text containing colon-space, which caused YAML parsing to fail before jobs were created.",
+    "observed_effect": "All six referenced runs have zero jobs and were push events on the PR branch, not main scheduled executions.",
+    "corrected_pr_head": "42520c0b7ac7036c2a49f4abc4b5f0d458ba5289",
+    "corrected_validation": "PR #1573 later passed exact-head CI with 345 tests plus 8 subtests and its fail-closed gate. This proves the corrected PR head passed its suite; it does not change the earlier failed-run history."
+  },
+  "assignment_behavior": {
+    "result": "No assignments performed",
+    "evidence": "The resolver job log printed 'No COPILOT_ASSIGNEE repository variable configured; skipping issue assignment' and the equivalent message for pull requests."
+  },
+  "related_auto_resolve_workflow": {
+    "path": ".github/workflows/auto-resolve-issues.yml",
+    "main_behavior": "Daily schedule, issues:write, runs scripts/resolve_issue.py --all. The script comments and closes matching issues when the latest run for a workflow succeeds, without a per-issue human approval step.",
+    "risk": "The six newly created issues are not necessarily safe for automated closure. They should be reviewed against their exact branch/event evidence; do not infer that a workflow is fixed or was broken on main from these issue titles alone.",
+    "containment": "PR #1573 replaces this workflow with a manual-only disabled job and permissions: {}."
+  },
+  "remediation": {
+    "immediate": "Keep the resolver quarantined pending review; do not automatically close issues #1574-#1579.",
+    "future_safe_reenablement_requirements": [
+      "Filter runs to the default branch and approved event types.",
+      "Apply an explicit --created cutoff matching the stated window.",
+      "For each workflow, inspect the latest completed run overall on main; create an issue only if that latest run failed.",
+      "Record workflow ID, run ID, branch, event, head SHA, created_at and conclusion in the issue body.",
+      "Deduplicate by workflow ID plus default-branch failure episode, not only display name.",
+      "Use a bounded issue-creation limit and idempotency key.",
+      "Do not auto-assign unless an explicit reviewed assignee is configured.",
+      "Keep automatic issue closure disabled until each issue has a separate approval boundary and auditable resolution evidence.",
+      "Add tests with PR-branch failure followed by main success, stale failure, cancelled run and same-name workflow cases."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Retain PR #1573 as the quarantine candidate; its current head is 42520c0b7ac7036c2a49f4abc4b5f0d458ba5289.",
+    "Review the six false-positive issues manually before any closure.",
+    "If the user later authorizes re-enablement, implement and test branch/event/time/latest-run filtering in a separate reviewed change.",
+    "Keep main unchanged until the user authorizes the security PR."
+  ],
+  "safety": "No issue was edited or closed; no workflow was dispatched; no credentials or subscriber/corpus records were accessed; no main-branch mutation was performed."
+}
