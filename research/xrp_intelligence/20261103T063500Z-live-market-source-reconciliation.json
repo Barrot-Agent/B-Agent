@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-11-03T06:35:00Z",
+  "correction_of": "research/xrp_intelligence/20261103T062500Z-market-liquidity-derivatives-etf-reconciliation.json",
+  "correction_reason": "Directly opened source pages exposed updated provider timestamps and a newer partial ETF observation. Earlier snapshots remain preserved but are superseded for current-state interpretation.",
+  "spot": {
+    "provider": "TradRadar",
+    "price_usd": 1.2515,
+    "observed_update_utc": "2026-11-03T05:30:00Z",
+    "source": "https://tradradar.io/markets/xrp",
+    "caveat": "15-minute delayed aggregator snapshot; not a consolidated spot benchmark."
+  },
+  "derivatives": {
+    "current_observations": [
+      {
+        "provider": "TradRadar",
+        "open_interest_usd": 1960000000,
+        "exchanges": 7,
+        "updated_at_utc": "2026-11-03T05:30:00Z",
+        "oi_change_24h_pct": 2.05,
+        "weighted_funding_8h_pct": 0.0064,
+        "long_short_account_ratio": 2.94,
+        "long_account_share_pct": 74.6,
+        "liquidations_24h_usd_min": 2560000,
+        "long_liquidations_usd": 2280000,
+        "short_liquidations_usd": 284130,
+        "source": "https://tradradar.io/markets/xrp",
+        "venue_oi_usd": {
+          "Binance": 494130000,
+          "Bybit": 353970000,
+          "MEXC": 272480000,
+          "Gate": 267320000,
+          "Bitget": 249670000,
+          "Hyperliquid": 208790000,
+          "OKX": 114760000
+        }
+      },
+      {
+        "provider": "Kodexius",
+        "open_interest_usd": 827140000,
+        "contracts": 7,
+        "exchanges": 5,
+        "updated_at_utc": "2026-11-03T03:39:00Z",
+        "weighted_funding_8h_pct": 0.0073,
+        "volume_24h_usd": 1110000000,
+        "oi_volume_ratio": 0.75,
+        "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+        "venue_oi_usd": {
+          "Binance": 435350000,
+          "Bybit": 155240000,
+          "Hyperliquid": 104500000,
+          "OKX": 104020000,
+          "HTX": 28020000
+        },
+        "venue_funding_8h_pct": {
+          "Binance": 0.01,
+          "Bybit": -0.0038,
+          "Hyperliquid": 0.01,
+          "OKX": 0.0091,
+          "HTX": 0.01
+        }
+      },
+      {
+        "provider": "JustScreener",
+        "open_interest_usd": 1600000000,
+        "exchanges": 9,
+        "updated_at_utc": "2026-10-31T14:18:00Z",
+        "status": "STALE_HISTORICAL_OBSERVATION",
+        "oi_change_24h_pct": 2.16,
+        "source": "https://justscreener.com/en/market/XRP/open-interest",
+        "caveat": "Direct page now displays Oct 31 14:18 UTC. Do not treat search snippets or cached summaries as a Nov 3 snapshot."
+      }
+    ],
+    "current_pairwise_ratio_tradradar_to_kodexius": 2.37,
+    "interpretation": [
+      "Current TradRadar and Kodexius observations are 1 hour 51 minutes apart but still have different venue and contract coverage; their 2.37x ratio is a data-quality discrepancy, not a single synchronized market-wide OI truth.",
+      "TradRadar covers seven venues and includes MEXC, Gate and Bitget; Kodexius lists seven contracts across Binance, Bybit, Hyperliquid, OKX and HTX, including different USDT/USDC contracts.",
+      "Funding is not uniform: Kodexius shows Bybit negative while Binance, Hyperliquid, OKX and HTX are positive.",
+      "Long/short is account ratio, not notional exposure. Liquidations are exchange-reported partials and TradRadar labels the total as a lower bound.",
+      "JustScreener's $1.6B value is now classified as an Oct 31 historical observation, not a Nov 3 current value."
+    ]
+  },
+  "etf_flows": {
+    "crypto_keyhole": {
+      "observed_updated_utc": "2026-11-03T06:14:00Z",
+      "daily_funds": 4,
+      "nov_2_partial": {
+        "funds_reported": 3,
+        "funds_total": 4,
+        "net_flow_xrp": -3339,
+        "missing": "Franklin Templeton XRPZ"
+      },
+      "oct_30_complete_net_flow_xrp": -1123743,
+      "oct_30_complete_net_flow_usd": -1400000,
+      "last_5_complete_days_net_flow_xrp": 3387862,
+      "holdings_xrp_on_oct_30": 1076819240,
+      "methodology": "Issuer-published holdings files; day-over-day XRP holdings delta. Daily total is partial until all daily-collected issuers publish. No forward-fill or estimate.",
+      "exclusions": "Grayscale GXRP not collected daily due automated-reader bot challenge; quarterly SEC holdings only. REX-Osprey XRPR not counted because it holds part of coins through other ETPs and its direct-holdings file is not total holdings/flow.",
+      "source": "https://cryptokeyhole.com/etf-flows/xrp/"
+    },
+    "xrp_insights": {
+      "tracked_universe": "6 US spot XRP ETFs plus BITW XRP sleeve",
+      "data_as_of": "2026-10-30",
+      "nov_2_row_status": "PROVISIONAL",
+      "oct_26_to_oct_30_settled_net_flow_xrp": 3390356,
+      "oct_30_holdings_xrp": 1196600186,
+      "rows": 1569,
+      "methodology": "Issuer holdings day-over-day delta. flow_status separates computed, initial and excluded; row_status separates settled, provisional and reconstructed. GXRP daily flows excluded over Sep 2-28 capture gap; XRPR treatment differs from CryptoKeyhole.",
+      "source": "https://xrp-insights.com/data"
+    },
+    "interpretation": [
+      "CryptoKeyhole's Nov 2 partial is -3,339 XRP across 3/4 funds, not a complete daily total.",
+      "CryptoKeyhole's four daily funds and XRP Insights' six spot funds plus BITW are different universes. Their Oct 30 holdings totals differ by about 119.8M XRP; this is not automatically a data error.",
+      "XRP Insights' +3.390M XRP five-day total includes BITW's XRP sleeve and uses flow-excluded funds as no contribution; its Nov 2 row is provisional.",
+      "ETF holdings delta is not identical to unhedged investor conviction, exchange spot buying or secondary-market volume."
+    ]
+  },
+  "coinbase_liquidity": {
+    "source": "CoinGecko 2026 Crypto Liquidity on CEXes Report",
+    "study_window_utc": "2026-07-06 to 2026-09-03",
+    "snapshot_time": "16:00 UTC+8 daily",
+    "method": "60-day public-API order-book snapshots of the most liquid spot ticker for each asset/exchange; median daily depth.",
+    "exchanges": [
+      "Binance",
+      "Bybit",
+      "Bitget",
+      "OKX",
+      "Kraken",
+      "Crypto.com",
+      "Coinbase",
+      "MEXC"
+    ],
+    "xrp_median_depth_plus_minus_2pct_usd_approx": 30000000,
+    "xrp_bids_usd_approx": 18000000,
+    "xrp_asks_usd_approx": 14000000,
+    "findings": [
+      "Binance had the largest XRP depth at the market price.",
+      "Coinbase surpassed Binance at approximately ±$0.0025 (0.1%) and retained the strongest median depth through the ±$0.025 (about 2%) range.",
+      "On September 1 Coinbase had roughly $8M combined depth through most of the ±2% interval; Crypto.com surpassed it beyond ±2%.",
+      "On July 31 the XRP escrow unlock coincided with about $7M additional buy-side liquidity on Coinbase and Crypto.com beyond ±1%, while overall depth remained near the daily median; consistent with order repositioning, not proof of new capital.",
+      "On August 23 Coinbase displayed unusually large sell-side orders at +$0.0025 and +$0.0125, pushing cumulative sell-side liquidity above $5M."
+    ],
+    "interpretation": "Coinbase has a documented tactical near-mid and median depth-range liquidity strength; Binance remains deepest at the touch. This supports an execution/market-quality role, not price control, guaranteed executable size or proof of a causal XRP price effect.",
+    "source_page": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
+    "source_pdf": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "data_policy": [
+    "Never average asynchronous OI provider totals.",
+    "Persist provider timestamp, retrieval timestamp, exchange set, contract set, quote currency, unit and raw snapshot hash.",
+    "ETF daily flow is valid only when the selected fund universe is complete; provisional rows remain separate.",
+    "Use holdings deltas only with issuer-file provenance and fund-level inclusion/exclusion rules.",
+    "Order-book depth is a cancellable snapshot, not executed volume or committed capital."
+  ],
+  "sources": [
+    "https://tradradar.io/markets/xrp",
+    "https://kodexius.com/data/crypto-derivatives/XRP",
+    "https://justscreener.com/en/market/XRP/open-interest",
+    "https://cryptokeyhole.com/etf-flows/xrp/",
+    "https://xrp-insights.com/data",
+    "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
+    "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf"
+  ]
+}
