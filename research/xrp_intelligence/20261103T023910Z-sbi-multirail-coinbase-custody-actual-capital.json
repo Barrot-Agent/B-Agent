@@ -109,6 +109,17 @@
       "classification": "separately reported restricted cash; not included in the $214.0M XRP acquisition calculation",
       "aggregation_role": "restricted_cash",
       "source": "Evernorth SEC 10-Q"
+    },
+    {
+      "asset_or_capital": "Evernorth committed equity financing facility",
+      "quantity_shares": 5218935,
+      "current_class_a_shares": 26094680,
+      "derived_maximum_dilution_pct": 20,
+      "classification": "maximum potential Class A issuance under ELOC; not realized dilution and not XRP token capital",
+      "aggregation_role": "potential_equity_supply",
+      "date": "2026-10-22",
+      "source": "Evernorth SEC 424B3",
+      "note": "Holder had no beneficial ownership before the offering; actual issuance is at company discretion and subject to conditions."
     }
   ],
   "evidence_claims": [
@@ -389,6 +400,17 @@
       "limitations": [
         "ETF creations/redemptions do not identify the beneficial investor or prove unhedged conviction."
       ]
+    },
+    {
+      "id": "EVN-FIN-002",
+      "classification": "confirmed_primary",
+      "claim": "Evernorth's prospectus registers up to 5,218,935 Class A shares for possible issuance/resale under a committed equity financing with CF Principal Investments/Cantor; this equals approximately 20.0% of the 26,094,680 Class A shares outstanding as of October 22, 2026.",
+      "source_ids": [
+        "SEC-EVN-424B3"
+      ],
+      "limitations": [
+        "This is a maximum potential issuance, not completed dilution. The prospectus says the holder owned no shares before the offering and Evernorth is not required to issue the full amount; actual issuance depends on company discretion and contractual conditions. Proceeds use is not established here."
+      ]
     }
   ],
   "relationship_edges": [
@@ -493,6 +515,13 @@
       "to": "RLUSD",
       "relationship": "retail/institutional distribution listing",
       "classification": "confirmed_in_prior_research"
+    },
+    {
+      "from": "Evernorth",
+      "to": "CF Principal Investments/Cantor",
+      "relationship": "committed equity financing; prospectus registers up to 5,218,935 potential Class A shares",
+      "classification": "confirmed_primary",
+      "limitation": "Potential issuance only; no current holder position and no full draw established."
     }
   ],
   "hypotheses": [
@@ -580,6 +609,17 @@
         "Future rate, balance and distribution terms can change; Circle Q3 results remain pending."
       ],
       "status": "confirmed_company_reported"
+    },
+    {
+      "id": "H7",
+      "statement": "The Cantor committed-equity facility could finance future operations or XRP strategy deployment, but it also creates a potential XRPN equity-supply overhang.",
+      "supporting_evidence": [
+        "EVN-FIN-002"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No actual draw or use of proceeds is established; the full 5.219M shares need not be issued."
+      ],
+      "status": "testable_financing_hypothesis"
     }
   ],
   "data_quality": [
@@ -595,7 +635,8 @@
     "Erebor's $7B deposits are total bank deposits, not stablecoin deposits.",
     "Open Standard and BlackRock/JPYSC arrangements are PoC/MOU stages, not production settlement flows.",
     "TradRadar and Kodexius derivatives totals differ materially due to coverage/methodology and non-synchronized timestamps.",
-    "The SEC filing reports approximately $214.1M cash raised but approximately $214.0M cash used to acquire XRP; approximately $0.1M is separately described as restricted cash. The purchase average uses $214.0M / 84,365,876 XRP = approximately $2.53657; the $214.1M funding figure is not used as the purchase numerator."
+    "The SEC filing reports approximately $214.1M cash raised but approximately $214.0M cash used to acquire XRP; approximately $0.1M is separately described as restricted cash. The purchase average uses $214.0M / 84,365,876 XRP = approximately $2.53657; the $214.1M funding figure is not used as the purchase numerator.",
+    "The 5,218,935-share Cantor ELOC is a maximum registered potential issuance, approximately 20.0% of the 26,094,680 Class A shares outstanding as of October 22; it is not actual dilution and must not be treated as XRP token supply."
   ],
   "source_registry": [
     {
