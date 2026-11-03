@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "barrot-v3-security-containment-20261103-run14",
+  "captured_at_utc": "2026-11-03T03:59:00Z",
+  "data_cutoff_utc": "2026-11-03T03:59:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_branch": "main",
+  "base_commit": "bbd33f9511be12dfe20fe69c7ba5c7eda8643187",
+  "evidence_classification": {
+    "confirmed_facts": [
+      "The repository is public. The current main branch object reports protected=true; this does not establish which required checks are enforced.",
+      "Current main contains brain_corpus/dump.json (353950 bytes) and brain_corpus/dump.md (296527 bytes). No individual corpus records were read.",
+      "The active dump-brain-corpus workflow is manually dispatchable, grants contents:write, references DATABRICKS_TOKEN, queries workspace.barrot.brain through scripts/dump_brain_corpus.py, and commits/pushes the generated corpus files.",
+      "The exporter reads timestamp, topic, insight and session fields and filters only text matching error and Rate limit. Individual-record sensitivity remains unclassified.",
+      "The active merge-queue workflow accepts mode=all, max_prs=0 (unlimited), and defaults dry_run=false; its code can update branches and merge pull requests when manually dispatched.",
+      "The active 15-minute scheduler workflow grants contents:write and actions:write, runs scripts/scheduler.py and commits/pushes schedule_queue.jsonl.",
+      "Current main's scripts/scheduler.py accepts any workflow file present in .github/workflows and forwards arbitrary queued inputs to gh workflow run; it does not enforce a fixed dispatch allowlist.",
+      "The active Cross Analysis workflow is triggered by workflow_run, schedule and manual dispatch, grants contents:write, and commits/pushes generated outputs to main.",
+      "A scheduled Cross Analysis run completed successfully at 2026-11-03T03:51:41Z on the prior main head; main then advanced to the current bb... commit at 03:51:48Z with message Cross-analysis refresh [skip ci].",
+      "The current main branch SHA is bbd33f9511be12dfe20fe69c7ba5c7eda8643187. Its branch object reports protected=true.",
+      "The repository rulesets endpoint returns a ruleset named Fall Back with enforcement disabled. The branch-protection endpoint returns 403 to the connected integration; required-check enforcement remains unverified.",
+      "The open-PR search returned 100 results, which is a capped result set rather than a complete open-PR count."
+    ],
+    "not_established": [
+      "Whether any individual corpus record contains personal, confidential, credential, customer or otherwise sensitive information.",
+      "Whether historical Git objects, forks, caches, clones, backups or external copies contain the same corpus records.",
+      "Whether DATABRICKS_TOKEN or other referenced credentials are valid, exposed elsewhere or have been used by this workflow.",
+      "Whether a branch-protection administrator has configured required checks outside the integration's visible permissions.",
+      "Whether the successful Cross Analysis commit contained sensitive content; generated output content was not inspected in this run."
+    ]
+  },
+  "proposed_changes": [
+    "Disable public brain-corpus export with an inert workflow that has no permissions and a false job guard.",
+    "Replace scripts/dump_brain_corpus.py with an inert status-only entry point that reads no credentials, makes no network calls and writes no files.",
+    "Remove dump.json and dump.md from the proposed current tree without rewriting Git history.",
+    "Disable the broad manual merge queue and remove branch-update, approval, comment and merge capabilities.",
+    "Restrict unattended scheduler dispatch to two input-free read-only validation workflows; reject tampered entries, unapproved workflow names, non-empty inputs and timezone-naive timestamps.",
+    "Serialize scheduler ticks and bound their execution time.",
+    "Make Cross Analysis read-only and publish bounded workflow artifacts instead of committing or pushing generated data to main.",
+    "Register four focused regression test modules in the repository's explicit core CI list."
+  ],
+  "verification": {
+    "branch": "security/fresh-main-containment-20261103T0400Z",
+    "base_commit": "bbd33f9511be12dfe20fe69c7ba5c7eda8643187",
+    "local_tests": "NOT_EXECUTED; container could not resolve github.com for a local clone. GitHub exact-head CI is the execution path.",
+    "exact_head_ci": "PENDING",
+    "fail_closed_gate": "PENDING",
+    "main_modified": false,
+    "merge": "NOT_AUTHORIZED"
+  },
+  "limitations": [
+    "The scheduler still requires contents:write to persist its queue and actions:write to dispatch the two allowlisted validation workflows; it is constrained, not fully read-only.",
+    "The two corpus files are removed only from the proposed current tree. Historical Git objects, forks, caches and external copies are not erased.",
+    "No individual corpus records were inspected, classified, redacted or relocated.",
+    "Administrative branch-protection and required-check enforcement remain unverified.",
+    "Cross Analysis outputs move to bounded workflow artifacts; a separately approved private durable destination is not established by this PR."
+  ],
+  "next_actions": [
+    "Run exact-head CI and the fail-closed gate after PR creation.",
+    "Verify the new head and all changed files from GitHub after the commit is published.",
+    "Obtain administrator confirmation of required-check enforcement before relying on CI as a merge gate.",
+    "Perform a separate authorized historical exposure and retention assessment.",
+    "Keep XRP forecast issuance blocked until immutable point-in-time inputs and independent fixed-horizon evaluation attestation exist."
+  ]
+}
