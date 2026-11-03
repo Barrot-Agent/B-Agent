@@ -1,0 +1,139 @@
+{
+  "schema_version": "barrot.workflow-execution-audit.v1",
+  "captured_at_utc": "2026-11-03T09:20:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha_observed": "21169aa3dee70b9cbf39f4ddb10a231f37c553b1",
+  "observations": [
+    {
+      "workflow": "Cross Analysis",
+      "run_id": 41606404173,
+      "observed_at": "2026-11-03T08:51:28Z",
+      "result": "success",
+      "effects": [
+        "wrote entity_cooccurrence.json",
+        "wrote sentiment_shift.json",
+        "wrote entity_sentiment_profile.json",
+        "committed and pushed main"
+      ],
+      "exact_push": "ba121a1..21169aa main -> main",
+      "classification": "VERIFIED_MAIN_BRANCH_MUTATION",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41606404173"
+    },
+    {
+      "workflow": "Barrot Subscriber Sync",
+      "run_id": 41604380277,
+      "observed_at": "2026-11-03T08:35:15Z",
+      "result": "success",
+      "effects": [
+        "Gumroad subscriber fetch step succeeded",
+        "commit step completed"
+      ],
+      "classification": "EXECUTED_NO_MAIN_COMMIT_OBSERVED",
+      "limitation": "The subsequent Cross Analysis push started from ba121a and moved main directly to 21169aa, so this run did not leave an intervening main commit. Subscriber output content was not inspected; no claim is made about the existing public subscriber file.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41604380277"
+    },
+    {
+      "workflow": "Barrot Cognitive PingPong Engine",
+      "run_id": 41587684300,
+      "observed_at": "2026-11-03T06:05:17Z",
+      "result": "success",
+      "effects": [
+        "analysis, ping and pong jobs succeeded",
+        "commit job's git add Barrot-Agent/logs/ reported a missing pathspec; failure was suppressed by || true",
+        "git push origin main returned Everything up-to-date"
+      ],
+      "classification": "EXECUTED_BUT_NO_MAIN_MUTATION",
+      "implication": "The workflow reported success while its claimed persistence path was absent and no new main commit was pushed.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41587684300"
+    },
+    {
+      "workflow": "Scheduler Tick",
+      "run_ids": [
+        41608441423,
+        41609966747
+      ],
+      "observed_at": [
+        "2026-11-03T09:07:24Z",
+        "2026-11-03T09:18:33Z"
+      ],
+      "result": "success",
+      "effects": [
+        "queue tick and commit steps completed",
+        "both push attempts returned Everything up-to-date"
+      ],
+      "classification": "EXECUTED_NO_MAIN_COMMIT_OBSERVED",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41608441423"
+    },
+    {
+      "workflow": "Barrot Autonomous Resolver",
+      "run_id": 41607710252,
+      "observed_at": "2026-11-03T09:01:51Z",
+      "result": "success",
+      "effects": [
+        "checked failures and found existing open issues for ten named workflows",
+        "reported no unassigned open issues and no unassigned open pull requests"
+      ],
+      "classification": "EXECUTED_NO_NEW_ISSUE_OR_ASSIGNMENT_OBSERVED",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41607710252"
+    },
+    {
+      "workflow": "Auto-Resolve Workflow Issues",
+      "run_id": 41588632287,
+      "observed_at": "2026-11-03T06:14:25Z",
+      "result": "success",
+      "effects": [
+        "closed issue #1545 OMEGA-BENCHMARK-STRIKE",
+        "closed issue #1514 XRP Evidence Gate",
+        "closed issue #1492 CI"
+      ],
+      "classification": "VERIFIED_EXTERNAL_ISSUE_STATE_MUTATION",
+      "reason_reported_by_script": "Most recent workflow run succeeded",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41588632287",
+      "caution": "These were auto-generated workflow-failure issues. Automatic closure still occurred without per-issue human approval."
+    },
+    {
+      "workflow": "Barrot Self-Scheduling",
+      "run_id": 41590033931,
+      "observed_at": "2026-11-03T06:27:51Z",
+      "result": "success",
+      "effects": [
+        "academic, ping_pong_cycles and video_audio gaps already tracked",
+        "reported no gaps detected"
+      ],
+      "classification": "EXECUTED_NO_NEW_ISSUE_OBSERVED",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41590033931"
+    },
+    {
+      "workflow": "Daily Digest",
+      "run_id": 41553841287,
+      "observed_at": "2026-11-03T00:34:35Z",
+      "result": "success",
+      "effects": [
+        "created public issue #1538",
+        "issue reported latest sentiment score 44/100 with confidence 0.0 and missing-token/Groq-429 fallback",
+        "issue published 45.5% correct over 1,697 checked signals"
+      ],
+      "classification": "VERIFIED_PUBLIC_MISLEADING_METRIC_PUBLICATION",
+      "issue": "https://github.com/Barrot-Agent/B-Agent/issues/1538",
+      "correction": "The 45.5% aggregate is unvalidated because the legacy scorer used variable horizons and mutable prices and lacks reproducible row-level history. PR #1572 proposes blocking this publication.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41553841287"
+    }
+  ],
+  "current_main_controls": {
+    "protected": true,
+    "required_status_checks": {
+      "enforcement_level": "non_admins",
+      "contexts": [],
+      "checks": []
+    },
+    "visible_ruleset_enforcement": "disabled",
+    "interpretation": "Main has a protection flag, but no required status checks are configured in the visible branch-protection payload. Do not claim CI is enforced before merge."
+  },
+  "proposed_containment": [
+    "PR #1570 disables Cross Analysis and Scheduler Tick writers and the public corpus exporter.",
+    "PR #1573 disables subscriber sync, autonomous resolver, auto-resolve, daily digest, self-schedule, Riemann harvest, Gumroad metrics, WebMCP monetization enrichment and Cognitive PingPong.",
+    "Both proposals remain open/draft/unmerged; current main is still exposed until authorized merges."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "safety": "No workflow was dispatched, no issue was reopened/edited, no subscriber file content was inspected, no main ref was changed, no secrets were accessed and no external deployment or financial action occurred."
+}
