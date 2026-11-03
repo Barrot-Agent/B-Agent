@@ -129,3 +129,29 @@ A June 12, 2026 gumi issuer presentation and June 26 AI-management announcement 
 - gumi AI Labs had invested in 17 Silicon Valley AI startups, including an AI-agent market-research automation company; no technical integration with Barrot is disclosed.
 
 This makes gumi a relevant institutional comparator for Barrot's AI-driven XRP research and portfolio-management architecture. The research artifact now contains 37 sources, 31 observations, 30 relationship edges and 9 competing hypotheses.
+
+
+## Latest repository-state, prediction integrity and dependency audit — 2026-11-03 16:53 UTC
+
+### Current main and open proposals
+- Current main is `09466f945b8b9a658e0b2a03e70c05d78c33b765`.
+- Its latest commit is `Cross-analysis refresh [skip ci]`, which modified `ping-pongings/knowledge-base/sentiment_shift.json`. This is direct evidence that the scheduled Cross Analysis writer still commits generated data to main.
+- PR #1590 head `f6a4687976a6d9ca5a2d530255609212fc4a031f` and PR #1591 head `fd595a612351ef40034dc93b61c096a627a9d2a3` are each one commit behind current main and remain mergeable. Their diffs do not overlap the generated sentiment file. Neither branch was updated or merged.
+- PR #1585 (38 commits/62 files), #1587, #1588 and #1589 (2 commits each) remain draft/open/unmerged, are behind current main, and GitHub currently reports them non-mergeable. Their containment is not active on main.
+- No main-branch write, force-push, merge or deployment was performed by this run.
+
+### Dependency and security review
+- `pyproject.toml` and `requirements.txt` duplicate direct dependencies with lower-bound-only version ranges. `requirements-dev.txt` also uses lower-bound-only versions for pytest, coverage, linting, typing and documentation packages.
+- No Python lock/constraints file or JavaScript package manifest was found at repository root.
+- This makes dependency resolution non-reproducible and exposes CI to future version drift. Do not add speculative pins; derive constraints from a tested environment and validate the ML/CUDA compatibility matrix.
+- The available GitHub access did not expose Dependabot, code-scanning or secret-scanning alert inventories. Their state remains unverified; do not claim there are zero alerts.
+
+### Latest prediction-engine status
+PR #1590 is draft/open/unmerged, 14 commits and 25 changed files, one commit behind current main. Exact-head checks on `f6a4687976a6d9ca5a2d530255609212fc4a031f`:
+- Core CI [41677360156](https://github.com/Barrot-Agent/B-Agent/actions/runs/41677360156): 342 tests + 8 subtests passed.
+- Prediction Integrity Tests [41677360053](https://github.com/Barrot-Agent/B-Agent/actions/runs/41677360053): 41 tests passed.
+- Fail-closed gate [41677360103](https://github.com/Barrot-Agent/B-Agent/actions/runs/41677360103): passed; automatic merge disabled and no repository content changed.
+
+The forecast ledger now rejects reference-price look-ahead/staleness and prevents pooled metrics across unlike asset/venue/horizon/model/baseline/target/flat-band/tolerance cohorts. Top-level metrics are null when multiple cohorts exist; the regression suite includes a 1h-versus-4h non-pooling test. Remaining model-integrity blockers are immutable source/snapshot hash resolution, deterministic cross-venue normalization, historical feature ingestion, leakage-safe walk-forward tests and calibration.
+
+This handoff update itself changes the research PR head; its new exact head must receive a fresh CI and fail-closed gate run. The prior PR #1591 check results apply only to `fd595a612351ef40034dc93b61c096a627a9d2a3`.
