@@ -1,0 +1,101 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "evernorth-cantor-facility-fee-cap-and-net-proceeds-20261103T133621Z",
+  "captured_at_utc": "2026-11-03T13:36:21Z",
+  "data_cutoff_utc": "2026-11-03T13:36:21Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "supersedes_artifact_id": "xrp-evernorth-cantor-equity-line-and-etf-flow-quality-20261103",
+  "correction_scope": "Expand the Cantor facility fee schedule and the arithmetic envelope used to assess the issuer's estimated net proceeds.",
+  "findings": [
+    {
+      "id": "EVLOC-FEE-001",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The initial Cantor commitment fee is $521,893.50, is fully earned and non-refundable as of the Purchase Agreement date regardless of whether any VWAP purchases occur, and is payable within five business days after the Upfront Determination Date.",
+      "source_id": "S1"
+    },
+    {
+      "id": "EVLOC-FEE-002",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "At the Measurement Date, the fee is recalculated as 1.0% of 5,218,935 shares multiplied by Purchase VWAP; if no shares have been purchased by that date, the true-up uses the closing sale price on the Upfront Determination Date. Aggregate Upfront Commitment Fee plus Additional Commitment Fee may not exceed $1,000,000.",
+      "source_id": "S1"
+    },
+    {
+      "id": "EVLOC-FEE-003",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Evernorth agreed to reimburse Cantor and CF&CO for reasonable documented out-of-pocket/legal expenses, with $250,000 for entry and $50,000 per fiscal quarter for ongoing review, subject to a $500,000 aggregate cap.",
+      "source_id": "S1"
+    },
+    {
+      "id": "EVLOC-FEE-004",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "StoneX receives a $200,000 qualified-independent-underwriter fee plus expense reimbursements not exceeding $1,000 in aggregate.",
+      "source_id": "S1"
+    },
+    {
+      "id": "EVLOC-FEE-005",
+      "classification": "DERIVED_ARITHMETIC_WITH_LIMITATION",
+      "claim": "The maximum disclosed facility-related fee/reimbursement envelope is $1,701,000: $1,000,000 aggregate Cantor commitment fee cap + $500,000 Cantor/CF&CO expense cap + $200,000 StoneX fee + $1,000 StoneX expenses. This is a cap envelope, not a statement that all amounts have been paid or incurred.",
+      "calculation": {
+        "cantor_commitment_fee_aggregate_cap_usd": 1000000,
+        "cantor_cfco_expense_cap_usd": 500000,
+        "stonex_fee_usd": 200000,
+        "stonex_expense_cap_usd": 1000,
+        "total_max_disclosed_fee_and_expense_envelope_usd": 1701000
+      },
+      "source_id": "S1"
+    },
+    {
+      "id": "EVLOC-FEE-006",
+      "classification": "DERIVED_ARITHMETIC_WITH_LIMITATION",
+      "claim": "At the $14.71 reference price, 5,218,935 shares at 97% calculate to $74,467,417.83 before fees. Subtracting the maximum disclosed $1.701M fee/expense envelope gives approximately $72,766,417.83. This is an illustrative upper-capacity cost envelope only, not expected or actual net proceeds.",
+      "calculation": {
+        "shares": 5218935,
+        "reference_price_usd": 14.71,
+        "vwap_factor": 0.97,
+        "purchase_price_before_fees_usd": 74467417.8345,
+        "maximum_disclosed_fee_expense_envelope_usd": 1701000,
+        "illustrative_after_maximum_disclosed_costs_usd": 72766417.8345
+      },
+      "source_id": "S1"
+    }
+  ],
+  "interpretation": {
+    "prospectus_narrative_net_proceeds_usd": 74400000,
+    "status": "NOT_RECONCILED_TO_THE_97_PERCENT_PURCHASE_PRICE_AND_DISCLOSED_FEE_SCHEDULE",
+    "table_14_71_row_usd": 76800000,
+    "table_footnote_97pct": true,
+    "actual_fee_payment_status": "NOT_VERIFIED",
+    "actual_drawdown_status": "NOT_VERIFIED",
+    "actual_xrp_purchase_status": "NOT_VERIFIED",
+    "caution": "The $74.4M net estimate is not replaced with the illustrative $72.77M maximum-cost calculation. The issuer's estimate, the 97%-of-VWAP formula and the disclosed fee schedule are retained as separate observations until an issuer amendment/clarification or actual settlement evidence reconciles them."
+  },
+  "model_rules": [
+    "Track the initial Cantor commitment fee, possible true-up/additional fee, Cantor/CF&CO expense reimbursements and StoneX fee separately.",
+    "Do not assume the upfront fee was paid merely because the agreement requires payment; verify payment/filing evidence.",
+    "Do not treat the $1.701M maximum fee/expense envelope as actual cost or expected cost.",
+    "Do not treat $74.4M narrative net proceeds as realized capital or XRP buying.",
+    "Do not infer facility drawdown, XRP acquisition quantity or spot execution from registered share capacity."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_SEC_424B3",
+      "publisher": "Evernorth Holdings Inc.",
+      "title": "Final prospectus for up to 5,218,935 Class A shares under Cantor committed equity facility, filed 2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "source_locations": [
+        "pp. 67-68: proceeds and upfront/true-up fee",
+        "p. 68: fee cap and reimbursement expense cap",
+        "p. 1 and Plan of Distribution: StoneX $200,000 fee plus $1,000 expense cap",
+        "pp. 73-74: 97% purchase price table"
+      ]
+    }
+  ],
+  "next_actions": [
+    "Verify the Upfront Determination Date and any payment/true-up disclosure through official SEC filings.",
+    "Monitor for amendments or 8-K disclosures reconciling the stated $74.4M net estimate to the 97% VWAP and fee terms.",
+    "Record actual Cantor share purchases and cash settlements separately from facility capacity.",
+    "Require separate verified XRP purchase evidence before recording any proceeds as XRP acquisition."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}
