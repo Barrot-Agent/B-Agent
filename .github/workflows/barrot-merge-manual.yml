@@ -1,11 +1,20 @@
 name: Barrot Superior Merge
 
-"on":
+on:
   workflow_dispatch:
     inputs:
-      model_name:
-        description: "Merged model name"
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this specific model upload"
         required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+      model_name:
+        description: "New model repository name (lowercase letters, digits and hyphens only)"
+        required: true
+        type: string
         default: "barrot-superior-v1"
 
 permissions:
@@ -13,44 +22,61 @@ permissions:
 
 jobs:
   merge:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Install deps
         run: |
+          set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y git-lfs
           git lfs install
           python3 -m pip install --upgrade pip
           pip install -U "huggingface_hub[cli]" "mergekit>=0.0.4.6" safetensors sentencepiece protobuf
 
-      - name: Configure git auth for HF
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" && exit 1)
-          git config --global credential.helper store
-          printf "https://__token__:%s@huggingface.co\n" "$HF_TOKEN" > ~/.git-credentials
-          chmod 600 ~/.git-credentials
-
       - name: Merge
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
+          MODEL_NAME: ${{ inputs.model_name }}
         run: |
-          mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
+          set -euo pipefail
+          if [[ ! "$MODEL_NAME" =~ ^[a-z0-9][a-z0-9-]{0,63}$ ]]; then
+            echo "Invalid model_name; expected 1-64 lowercase letters, digits or hyphens." >&2
+            exit 1
+          fi
+          test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" >&2 && exit 1)
+          mergekit-yaml merges/barrot-superior/config.yaml "output/$MODEL_NAME" \
             --copy-tokenizer --out-shard-size 2B --trust-remote-code
 
       - name: Verify
+        env:
+          MODEL_NAME: ${{ inputs.model_name }}
         run: |
-          ls -lah output/${{ github.event.inputs.model_name }}
+          set -euo pipefail
+          if [[ ! "$MODEL_NAME" =~ ^[a-z0-9][a-z0-9-]{0,63}$ ]]; then
+            echo "Invalid model_name." >&2
+            exit 1
+          fi
+          test -d "output/$MODEL_NAME"
+          ls -lah "output/$MODEL_NAME"
 
       - name: Upload
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
+          MODEL_NAME: ${{ inputs.model_name }}
         run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
+          set -euo pipefail
+          if [[ ! "$MODEL_NAME" =~ ^[a-z0-9][a-z0-9-]{0,63}$ ]]; then
+            echo "Invalid model_name." >&2
+            exit 1
+          fi
+          test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" >&2 && exit 1)
+          hf upload "Barrot-Agent/$MODEL_NAME" "output/$MODEL_NAME" . --repo-type model
