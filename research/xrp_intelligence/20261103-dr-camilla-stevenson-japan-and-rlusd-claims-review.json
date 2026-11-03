@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "artifact_type": "creator_and_host_claim_audit",
+  "captured_on_utc_date": "2026-11-03",
+  "media_source": {
+    "publisher": "iHeart",
+    "show": "The XRP Podcast with Paul Barron",
+    "episode": "Crypto Panics! with Dr. Kamilah Stevenson",
+    "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+    "published_on": "2026-06-11",
+    "speakers": {
+      "speaker_2": "Paul Barron, host",
+      "speaker_3": "Dr. Kamilah Stevenson, guest"
+    },
+    "identity_evidence": "At 40:07 the guest says her YouTube presence is 'doctor Camilla Stevenson' and warns that fake pages exist. This supports a probable match to the requested Camilla Stephenson, but the surname spelling differs and the exact canonical channel ID is not authenticated."
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "speaker": "Paul Barron (host, Speaker 2)",
+      "transcript_time": "23:18-24:17",
+      "claim": "SBI Shinsei Bank would let customers convert a portion of deposit interest into Bitcoin, Ethereum or XRP, with a pilot beginning June 10, 2026.",
+      "status": "secondary_reported_not_primary_verified",
+      "supporting_sources": [
+        {
+          "publisher": "Bitcoin.com News",
+          "url": "https://news.bitcoin.com/sbi-shinsei-bank-plans-to-let-customers-stack-btc-eth-or-xrp-on-top-of-deposit-interest/",
+          "type": "secondary_report_citing_Nikkei"
+        },
+        {
+          "publisher": "SBI Shinsei Bank",
+          "url": "https://www.sbishinseibank.co.jp/info/news2510_sbihyper_2000.html",
+          "type": "official_prior_campaign"
+        }
+      ],
+      "findings": [
+        "Secondary reports describe a three-month pilot in which 20% of deposit interest on SBI Hyper Deposit balances is converted into vouchers redeemable for BTC, ETH or XRP through SBI VC Trade.",
+        "The 20% applies to interest, not 20% of the deposit principal.",
+        "SBI Shinsei Bank's official 2025 Hyper Deposit campaign did include crypto vouchers, including XRP, and reported rapid deposit growth. That is a separate campaign and does not independently prove the 2026 pilot.",
+        "The bank's public 2026 news archive did not surface a direct official notice for the 20% pilot in this retrieval."
+      ],
+      "interpretation": "If the reported pilot operated as described, it is a retail distribution incentive. XRP demand occurs only when customers select and redeem XRP vouchers; it is not a direct bank XRP purchase, reserve allocation or institutional collateral program.",
+      "unknowns": [
+        "Official 2026 pilot terms",
+        "Actual pilot start/end dates",
+        "Eligible deposit base and participating accounts",
+        "Total interest converted to vouchers",
+        "Voucher redemptions by BTC, ETH and XRP",
+        "Any permanent fall 2026 rollout"
+      ]
+    },
+    {
+      "id": "C2",
+      "speaker": "Dr. Kamilah Stevenson (guest, Speaker 3)",
+      "transcript_time": "25:55-26:15",
+      "claim": "Japan's government approved reclassifying XRP and more than 100 other crypto assets as financial instruments.",
+      "status": "partly_corroborated_but_asset_specific_claim_unverified",
+      "supporting_sources": [
+        {
+          "publisher": "Japan Financial Services Agency",
+          "url": "https://www.fsa.go.jp/en/conference/minister/2026/20260410.html",
+          "type": "official_press_conference"
+        },
+        {
+          "publisher": "Reuters",
+          "url": "https://www.reuters.com/legal/government/japan-recognise-cryptocurrency-financial-assets-nhk-says-2026-07-15/",
+          "type": "news_report_of_Diet_action"
+        },
+        {
+          "publisher": "Cryptoassets.gi",
+          "url": "https://cryptoassets.gi/japan-passes-fiea-crypto-reclassification-law/",
+          "type": "secondary_legal_analysis"
+        }
+      ],
+      "findings": [
+        "The FSA's April 10, 2026 press conference confirms Cabinet approval of a bill to amend the Financial Instruments and Exchange Act and related law.",
+        "Reuters reported Diet passage on July 15, 2026.",
+        "Secondary legal reporting describes approximately 105 specified crypto assets, but a primary official final list naming XRP was not retrieved."
+      ],
+      "interpretation": "The broad regulatory transition is real, but the transcript's specific assertion that XRP is on a finalized list of more than 100 designated financial instruments is not confirmed by the primary sources retrieved. Do not state XRP inclusion as settled until the official designation list is located.",
+      "unknowns": [
+        "Final promulgated law and effective date",
+        "Cabinet/FSA designation list of specified crypto assets",
+        "Whether XRP is explicitly included",
+        "How exchange eligibility, disclosure and market-abuse rules apply to XRP"
+      ]
+    },
+    {
+      "id": "C3",
+      "speaker": "Dr. Kamilah Stevenson (guest, Speaker 3)",
+      "transcript_time": "28:25-29:03",
+      "claim": "RLUSD is a stablecoin Ripple can freeze and claw back, while XRP is different; RLUSD may increase demand for XRP.",
+      "status": "mixed_confirmed_control_features_and_unproven_demand_hypothesis",
+      "supporting_sources": [
+        {
+          "publisher": "Ripple",
+          "url": "https://ripple.com/legal/rlusd-terms/",
+          "type": "issuer_terms"
+        },
+        {
+          "publisher": "Ripple",
+          "url": "https://github.com/ripple/rlusd-issuer-settings/blob/main/config.json",
+          "type": "issuer_configuration"
+        },
+        {
+          "publisher": "XRPL.org",
+          "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezing-tokens",
+          "type": "protocol_documentation"
+        },
+        {
+          "publisher": "XRPL.org",
+          "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/clawing-back-tokens",
+          "type": "protocol_documentation"
+        }
+      ],
+      "findings": [
+        "Ripple's RLUSD terms permit issuer controls including blacklisting/freezing and other legally required actions.",
+        "Ripple's public RLUSD issuer configuration enables the global-freeze and trust-line-clawback flags; the issuer can use these controls under the applicable rules.",
+        "XRP is the native XRPL asset and does not have an issuer that can freeze or claw back XRP at the protocol level. Custodians and exchanges can still restrict assets held in their custody.",
+        "The statement that RLUSD usage necessarily increases material XRP demand is not established. RLUSD is the stated settlement asset in the C2FO Instant Pay design; XRP is used for XRPL transaction fees, but product-specific XRP fee demand has not been measured."
+      ],
+      "interpretation": "The control distinction is technically supported. The price/demand implication is a hypothesis, not a verified causal result.",
+      "unknowns": [
+        "Actual RLUSD freeze/clawback events",
+        "Actual XRPL XRP fees attributable to RLUSD activity",
+        "Any XRP bridge-liquidity or collateral requirement in RLUSD products",
+        "Whether RLUSD growth increases net spot XRP purchases or merely stablecoin/network activity"
+      ]
+    },
+    {
+      "id": "C4",
+      "speaker": "Dr. Kamilah Stevenson (guest, Speaker 3)",
+      "transcript_time": "28:25-29:03",
+      "claim": "RLUSD is a bank-friendly stable settlement asset and is not the same as XRP.",
+      "status": "partly_supported",
+      "findings": [
+        "RLUSD is issuer-backed and subject to issuer/legal controls; XRP is the native XRPL asset.",
+        "Ripple's trust-bank approval is centered on RLUSD reserve management, collateral trusteeship and custody, not a disclosed XRP reserve requirement.",
+        "The distinction is accurate; any assertion that banks will use RLUSD at scale requires actual balance, settlement and redemption data."
+      ],
+      "interpretation": "Stablecoin adoption and native XRP demand must be modeled as separate variables."
+    }
+  ],
+  "entity_disambiguation": {
+    "requested_name": "Camilla Stephenson",
+    "likely_creator": "Dr. Kamilah Stevenson, also spoken as Camila/Camilla Stevenson",
+    "channel_candidate": "@drkamilahstevenson",
+    "identity_status": "probable_not_canonically_confirmed",
+    "sbic_distinction": "The host discusses SBI Shinsei Bank and SBI VC Trade, not SBIC East Japan. SBIC East Japan is a separate Tokyo SME investment/consultation company and must not be conflated with SBI Holdings, SBI Shinsei Bank or SBI VC Trade.",
+    "chatgpt_sbic": "No evidence in this episode or the retrieved sources establishes an OpenAI partnership with SBIC East Japan or SBI Shinsei Bank."
+  },
+  "evidence_classification": {
+    "confirmed": [
+      "FSA Cabinet approval of the FIEA amendment bill",
+      "Reuters report of Diet passage",
+      "Ripple issuer controls for RLUSD",
+      "Official 2025 SBI Shinsei XRP-voucher campaign"
+    ],
+    "sourced_claims": [
+      "2026 SBI Shinsei 20%-of-interest crypto voucher pilot, reported by secondary outlets citing Nikkei"
+    ],
+    "inference": [
+      "A retail voucher program could create incremental XRP purchases if customers redeem for XRP"
+    ],
+    "speculation": [
+      "That the program will materially increase XRP demand or cause other Japanese banks to copy it"
+    ],
+    "unknown": [
+      "Final list of 105 assets and XRP inclusion",
+      "2026 pilot actual volumes and permanent rollout",
+      "Creator's canonical YouTube channel identity"
+    ]
+  },
+  "next_actions": [
+    "Find the final Japanese FIEA amendment text and official specified-crypto-asset designation list; verify XRP by name.",
+    "Search SBI Shinsei's official site and SBI VC Trade disclosures for the 2026 pilot terms, actual redemption counts and any permanent launch.",
+    "Verify the canonical YouTube channel through an authenticated social-profile cross-link before enumerating all videos.",
+    "Extract the guest's public YouTube video claims and score each against independent official evidence; keep host claims separate from guest claims.",
+    "Track RLUSD supply, issuer controls, XRPL fees and XRP spot flows as separate time series."
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_action": true
+  }
+}
