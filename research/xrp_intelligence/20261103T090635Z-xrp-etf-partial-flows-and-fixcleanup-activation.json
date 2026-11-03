@@ -1,0 +1,248 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T09:06:35Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-exchange-liquidity-binance-phase2-20261103T0812Z",
+  "topic": "XRP ETF partial reporting, point-in-time spot reference, XRPL fixCleanup3_4_0 activation window and separate lending amendment status",
+  "evidence_policy": {
+    "classes": [
+      "CONFIRMED_PRIMARY_SOURCE",
+      "CONFIRMED_SOURCE_CLAIM",
+      "AGGREGATOR_REPORTED",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "no_forecast": true,
+    "no_synthetic_averaging": true,
+    "partial_data_not_final": true
+  },
+  "claims": [
+    {
+      "id": "XRPL-340-REL-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The official XRPL release notes state xrpld 3.4.0 introduced fixCleanup3_4_0 as a bundle of amendment-gated fixes and separately introduced LendingProtocolV1_1. Software availability does not activate either amendment; activation requires the validator amendment process.",
+      "source": "https://xrpl.org/blog/2026/xrpld-3.4.0",
+      "source_location": "published 2026-09-16; release summary and full changelog",
+      "implications": [
+        "fixCleanup3_4_0 is not a lending launch",
+        "LendingProtocolV1_1 is a distinct amendment"
+      ]
+    },
+    {
+      "id": "XRPL-340-STATUS-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "XRPL Dashboard's own-node snapshot at voting ledger 108085247, flag ledger 108085248, 2026-11-03 08:51 UTC, heard 34 of 35 trusted validators. Its current-round tally was 32 yes; including 24-hour carry it reported 33 yes against 28 required for the 34 heard, with five votes to spare. It reported the majority countdown at 12 days 18 hours of 14 and projected the earliest activation at 2026-11-04 14:46 UTC.",
+      "source": "https://xrpldashboard.com/amendments",
+      "source_location": "captured live state; voting ledger 108085247; lines 117-133 and 164-183 in captured page",
+      "limitations": [
+        "single node vantage",
+        "24-hour vote carry is explicitly part of the displayed tally",
+        "not an EnableAmendment transaction"
+      ]
+    },
+    {
+      "id": "XRPL-340-STATUS-02",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "XRPLWin's separate tracker reports 33 of 35 trusted validators supporting fixCleanup3_4_0, 29 required, and earliest activation 2026-11-04 14:46:22 UTC if the majority remains continuous. Its page identifies its own ledger and voting-ledger observations.",
+      "source": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "source_location": "live tracker, current page observation",
+      "limitations": [
+        "separate tracker/node vantage over the same public ledger",
+        "not independent underlying consensus evidence",
+        "projected activation remains conditional"
+      ]
+    },
+    {
+      "id": "XRPL-340-STATUS-03",
+      "class": "INFERENCE",
+      "claim": "The apparent difference between 33/35 on XRPLWin and 33/34 heard with 32 current-round yes on XRPL Dashboard is not evidence of a validator disagreement by itself. The trackers use different node hearing sets, denominators and vote-carry presentation. Preserve both raw observations rather than normalize them to a single count.",
+      "sources": [
+        "https://xrpldashboard.com/amendments",
+        "https://xrplwin.com/amendment/fixCleanup3_4_0"
+      ],
+      "disconfirming_test": "Compare raw validation messages, the exact UNL and the same flag-ledger vote window from independently operated nodes."
+    },
+    {
+      "id": "XRPL-340-ACT-01",
+      "class": "INFERENCE",
+      "claim": "The projected end of the 14-day period is 2026-11-04 14:46 UTC. The first eligible flag ledger is projected around 15:03 UTC; the network records EnableAmendment in the following ledger and applies the amendment from the next ledger. Activation must be verified from the actual validated-ledger pseudo-transaction and subsequent ledger, not the countdown display.",
+      "source": "https://xrpldashboard.com/amendments",
+      "source_location": "amendment process timeline",
+      "required_verification": "Retrieve the validated ledger containing the EnableAmendment pseudo-transaction for amendment ID 98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76 and confirm the following ledger."
+    },
+    {
+      "id": "XRPL-LENDING-STATUS-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "At the same XRPL Dashboard snapshot, SingleAssetVault had 20 current-round yes and 21 including carry, LendingProtocol had 18 and 19, and LendingProtocolV1_1 had 18 and 19, each below the displayed 28-of-34 requirement. They are not projected to activate with fixCleanup3_4_0.",
+      "source": "https://xrpldashboard.com/amendments",
+      "source_location": "amendment vote table, voting ledger 108085247",
+      "implication": "Do not model native XRPL LendingProtocol as live collateral capacity on the November 4 fixCleanup3_4_0 event."
+    },
+    {
+      "id": "XRPL-PAYMENTBURN-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "XRPL's official documentation warns that until fixCleanup3_4_0 activates, delegating PaymentBurn can under certain conditions allow creation of issued trust-line tokens or MPTs. The issue concerns issued assets and does not affect native XRP supply.",
+      "source": "https://xrpl.org/docs/references/protocol/data-types/permission-values",
+      "required_followup": "Re-read official documentation after activation and verify the on-ledger amendment before changing the risk state."
+    },
+    {
+      "id": "ETF-NOV2-PARTIAL-01",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "Crypto ETF's XRP page, published 2026-11-03 05:47 UTC for the 2026-11-02 T+1 session, reports zero net flow among the two of five spot funds that had reported. It explicitly lists XRPZ, XRPC and GXRP as not yet reported. Its site defines zero as reported/no movement and a dash as incomplete reporting.",
+      "source": "https://cryptoetf.today/en/xrp-etf-flows",
+      "source_location": "data for Mon 2 Nov; published Tue 3 Nov 05:47 UTC; partial 2/5 funds",
+      "limitation": "Not a final five-fund daily total; zero from two reporting funds cannot be extrapolated to the three missing funds."
+    },
+    {
+      "id": "ETF-NOV2-PARTIAL-02",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "The same XRP page reports five-fund net assets of approximately $1.43B, cumulative net flow +$1.81B, YTD net flow +$648.4M and a 30-trading-day net flow of +$140.2M. These are aggregator calculations and must retain the provider's five-fund universe and T+1 cutoff.",
+      "source": "https://cryptoetf.today/en/xrp-etf-flows",
+      "source_location": "latest day in context and 30-day summary",
+      "limitations": [
+        "not issuer-level attestation",
+        "not all figures share the same time basis",
+        "AUM is not net flow"
+      ]
+    },
+    {
+      "id": "ETF-OCT30-01",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "TradingDigits' five-fund table reports 2026-10-30 flows in USD millions of XRP -0.69, GXRP -0.72, TOXR 0, XRPC +0.92 and XRPZ 0, totaling -$0.49M. Its page retrieval timestamp was 2026-11-03 00:43:34 GMT.",
+      "source": "https://www.tradingdigits.io/ar/xrp-etf-inflows-tracker",
+      "source_location": "daily XRP ETF flow table, 2026-10-30 row",
+      "arithmetic_check": "-0.69 - 0.72 + 0 + 0.92 + 0 = -0.49"
+    },
+    {
+      "id": "ETF-UNIVERSE-01",
+      "class": "UNKNOWN",
+      "claim": "TheXRPInvestor's November 3 page advertises 12 products while its displayed category counts read 6 Spot, 4 Derivative and 1 Index, which sum to 11. It reports $1.49B total AUM and 1.19B XRP in trust, but the product count and inclusion universe require clarification before use.",
+      "source": "https://thexrpinvestor.com/xrp-etf-flows",
+      "source_location": "page last updated 2026-11-03",
+      "treatment": "Retain as a provider-specific observation; do not combine with the five-spot-fund dataset."
+    },
+    {
+      "id": "XRP-PRICE-REF-01",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "Investing.com's historical table reports the 2026-11-02 XRP daily row: open $1.2505, high $1.2635, low $1.2357 and close $1.2497. Its 2026-11-03 row was still intraday when retrieved and is not treated as a settled daily close.",
+      "source": "https://nl.investing.com/crypto/xrp/historical-data",
+      "source_location": "daily historical table, 2 Nov and 3 Nov 2026 rows",
+      "limitation": "Volume units and source exchange aggregation are not sufficiently specified in the retrieved view; volume excluded."
+    },
+    {
+      "id": "CIRCLE-Q3-EVENT-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle scheduled Q3 2026 results for 2026-11-04 at 08:00 ET (13:00 UTC). Its shareholder Q&A closes 2026-11-03 at 09:00 ET. No Q3 result is available in this snapshot.",
+      "source": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "implication": "Treat the webcast and subsequent SEC filing as an event-study checkpoint, not as known financial results."
+    }
+  ],
+  "event_timeline": [
+    {
+      "time_utc": "2026-10-09T09:34:00Z",
+      "event": "First fixCleanup3_4_0 majority attempt began",
+      "status": "HISTORICAL"
+    },
+    {
+      "time_utc": "2026-10-21T12:54:52Z",
+      "event": "First majority lost at flag ledger; 26 yes, below 29 of 35",
+      "status": "HISTORICAL"
+    },
+    {
+      "time_utc": "2026-10-21T14:46:22Z",
+      "event": "Second majority began",
+      "status": "HISTORICAL"
+    },
+    {
+      "time_utc": "2026-11-03T08:51:00Z",
+      "event": "XRPL Dashboard own-node snapshot; 32 current-round yes, 33 including 24h carry, 34 validators heard",
+      "status": "OBSERVED"
+    },
+    {
+      "time_utc": "2026-11-04T14:46:22Z",
+      "event": "Earliest projected 14-day majority completion",
+      "status": "CONDITIONAL_NOT_EXECUTED"
+    },
+    {
+      "time_utc": "2026-11-04T15:03:00Z",
+      "event": "Approximate first eligible flag-ledger window and subsequent EnableAmendment sequence",
+      "status": "CONDITIONAL_NOT_EXECUTED"
+    },
+    {
+      "time_utc": "2026-11-04T13:00:00Z",
+      "event": "Circle Q3 2026 results webcast",
+      "status": "SCHEDULED"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-ETF-01",
+      "hypothesis": "The apparent Nov 2 zero-flow observation indicates a genuine pause in marginal US spot XRP ETF demand.",
+      "supporting_evidence": [
+        "Two reporting funds show zero net creation/redemption in the partial feed."
+      ],
+      "disconfirming_evidence": [
+        "Three of five funds had not reported; Oct 30 was a modest net outflow; 30-day and cumulative flow measures remain positive."
+      ],
+      "test": "Wait for all five funds' final issuer holdings/share data; compare daily creations/redemptions with price and total shares outstanding."
+    },
+    {
+      "id": "H-ETF-02",
+      "hypothesis": "The apparent zero is a reporting-completeness artifact, not a demand shift.",
+      "supporting_evidence": [
+        "Only 2/5 funds reported; page labels the day partial and names three missing funds."
+      ],
+      "disconfirming_evidence": [
+        "The two reporting funds genuinely reported no net movement."
+      ],
+      "test": "Reconcile final T+1 rows across issuer disclosures and a second aggregator with explicit fund coverage."
+    },
+    {
+      "id": "H-AMEND-01",
+      "hypothesis": "fixCleanup3_4_0 activation could modestly improve issuer confidence in XRPL issued-asset permissions and vault/AMM edge cases.",
+      "supporting_evidence": [
+        "Official release describes bundled fixes; PaymentBurn warning concerns issued trust-line tokens/MPTs."
+      ],
+      "disconfirming_evidence": [
+        "It is a maintenance amendment, not a new feature; no identified issuer exploitation is established; native lending amendments remain below threshold."
+      ],
+      "test": "Measure issuer announcements, new trust-line/MPT issuance, XRPL stablecoin balances and transaction activity after verified activation, controlling for broader market changes."
+    },
+    {
+      "id": "H-AMEND-02",
+      "hypothesis": "Activation has negligible near-term XRP price effect because it changes issued-token edge-case behavior rather than native XRP utility or supply.",
+      "supporting_evidence": [
+        "Official release calls it bundled fixes; native XRP supply is not the affected token class; lending remains separately unapproved."
+      ],
+      "disconfirming_evidence": [
+        "A security fix may reduce perceived operational risk for issuers even without changing token supply."
+      ],
+      "test": "Event study around actual activation with BTC/ETH/XLM controls, market-wide risk variables and pre-registered windows."
+    }
+  ],
+  "feature_store_rules": [
+    "Store each ETF provider/fund universe separately; never merge spot, derivative and index products without explicit labels.",
+    "Represent missing fund reports as null/incomplete, not zero.",
+    "Preserve T+1 publication time, underlying trading date, retrieval time and revision status separately.",
+    "Treat AUM, XRP held, cumulative net flow and daily net flow as distinct variables.",
+    "Preserve XRPL tracker node identity, ledger index, flag ledger, validator heard count, current-round votes and 24-hour carried votes separately.",
+    "Do not call fixCleanup3_4_0 activated until the validated ledger contains its EnableAmendment pseudo-transaction and the following ledger applies it.",
+    "Keep native LendingProtocol, SingleAssetVault and LendingProtocolV1_1 vote states separate from fixCleanup3_4_0.",
+    "Do not promote historical Coinbase depth observations to live liquidity features."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No validated predictive edge established; ETF report is partial and the amendment is not active.",
+    "paper_trading": false,
+    "real_money": false
+  },
+  "next_actions": [
+    "At the next flag-ledger checkpoints, capture XRPL Dashboard and XRPLWin observations with exact ledger indices and validator-count methodology.",
+    "After the November 4 activation window, query an independent public XRPL node for the exact EnableAmendment transaction and the following validated ledger.",
+    "Wait for all five spot ETF funds to report November 2 before calculating the final daily flow.",
+    "Reconcile issuer-level creations/redemptions against fund XRP holdings; do not treat AUM changes as flows.",
+    "Capture Circle Q3 results after the November 4 webcast and SEC filing; compare actual USDC reserve income, distribution economics and Arc/CPN metrics with Coinbase's disclosed Circle economics.",
+    "Continue contract-level XRP derivatives reconciliation; no aggregator OI average."
+  ]
+}
