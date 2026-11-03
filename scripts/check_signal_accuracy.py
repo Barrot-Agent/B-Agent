@@ -20,7 +20,7 @@ def build_status() -> dict:
         "evaluation_executed": False,
         "paper_trading": "NOT_STARTED",
         "legacy_history_file": "web/signal_history.jsonl",
-        "legacy_summary_file": "web/signal_accuracy.json",
+        "legacy_summary_file": "web/legacy/signal_accuracy_unvalidated.json",
         "legacy_summary_validity": "UNVALIDATED_VARIABLE_HORIZON",
         "legacy_files_modified": False,
         "reason": (
