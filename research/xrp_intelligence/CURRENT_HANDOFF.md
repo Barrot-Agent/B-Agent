@@ -4,7 +4,7 @@
 **Mission priority:** XRP intelligence and prediction-engine mastery  
 **Execution foundation:** Barrot V3  
 **Repository:** [Barrot-Agent/B-Agent](https://github.com/Barrot-Agent/B-Agent)  
-**Current main:** `00b3213fbffb274581a58c35ab146b1da884a80d`
+**Current main:** `fe3f12d67f5508be501464548c6477ec23a3b648`
 
 ## Mission state
 
@@ -84,6 +84,7 @@ This is **not** a valid fixed-horizon out-of-sample skill estimate. The legacy e
 2. **Autonomous merge/scheduler capability remains active.** Main's merge queue can be manually dispatched with broad `mode=all`, unlimited PR count and `dry_run=false`. The scheduler has write permissions and no robust workflow allowlist on main. Queue state: one completed entry, zero pending; latest tick fired zero entries. [PR #1532](https://github.com/Barrot-Agent/B-Agent/pull/1532) passed 357 tests + 8 subtests and its fail-closed gate, but is unmerged.
 3. **External action workflows remain active on main.** The Kaggle scheduled workflow failed before script execution because it invoked the script from the wrong path; no Kaggle API authentication or submission occurred. The same script can submit to up to five active competitions if that path is fixed without an approval guard. Hugging Face force-deploy and Databricks token-rotation/deploy paths also remain active. [PR #1539](https://github.com/Barrot-Agent/B-Agent/pull/1539) removes the schedule, requires explicit opt-in plus exact competition allowlist, guards both duplicate Kaggle scripts, and disables the Hugging Face/Databricks workflows. Exact-head CI passed 353 tests + 8 subtests; fail-closed gate passed. PR remains unmerged.
 4. **Branch ruleset enforcement is disabled.** The visible `Fall Back` ruleset has enforcement disabled. The full branch-protection endpoint returned 403, so the complete administrative configuration remains unknown.
+5. **Cross Analysis still writes to main on schedule.** The November 3 00:51 UTC run committed `fe3f12d`, changing only the generated_at timestamp in `ping-pongings/knowledge-base/sentiment_shift.json`. This was an existing scheduled workflow run, not a manual dispatch in this research run. PR #1532 proposes making the workflow read-only.
 
 ## PR and verification ledger
 
@@ -128,4 +129,4 @@ Verified live access: ChatGPT and GitHub. Claude, Grok, Gemini, Copilot, Codex, 
 
 ## Safety and preservation
 
-Main remains at `00b3213fbffb274581a58c35ab146b1da884a80d`. No main edits, merges, force-pushes, manual workflow dispatches, secret access, external deployments, Kaggle submissions, paper-position mutations or real-money transactions occurred.
+Main advanced from `00b3213fbffb274581a58c35ab146b1da884a80d` to `fe3f12d67f5508be501464548c6477ec23a3b648` through the scheduled Cross Analysis workflow; the only changed file was the generated_at timestamp in `sentiment_shift.json`. No manual main edits, merges, force-pushes, manual workflow dispatches, secret access, external deployments, Kaggle submissions, paper-position mutations or real-money transactions occurred in this run.
