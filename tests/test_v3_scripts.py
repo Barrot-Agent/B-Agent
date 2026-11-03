@@ -740,7 +740,8 @@ def test_public_subscriber_and_scheduled_issue_writers_are_quarantined() -> None
             assert token not in workflow, f"{relative} still contains {token!r}"
 
 
-def test_checkout_branch_refuses_protected_branches() -> None:
+def test_checkout_branch_refuses_protected_branches(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
         "barrot_agent_protected_branch_guard_test",
