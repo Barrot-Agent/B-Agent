@@ -1,0 +1,623 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "sbi_multirail_capital_and_jpysc_reserve_research",
+  "snapshot_id": "sbi-multirail-jpysc-capital-ledger-20261103-run11",
+  "captured_at_utc": "2026-11-03T02:12:06Z",
+  "data_cutoff_utc": "2026-11-03T02:12:06Z",
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "Does SBI Holdings' disclosed capital allocation and the JPYSC ecosystem indicate an exclusive XRP strategy, or a multi-rail Japanese digital-finance strategy involving Ripple, Circle, Startale, BlackRock, SMBC, Coinbase's Open Standard network and yen-stablecoin collateral?",
+  "executive_assessment": {
+    "classification": "MULTI_RAIL_STRATEGY_STRONGLY_SUPPORTED",
+    "conclusion": "New official SBI disclosures materially strengthen the multi-rail interpretation. SBI has disclosed approximately $50M of investment in Startale, previously disclosed $50M of Circle equity purchases and approximately 9% Ripple corporate equity, and now has JPYSC-related initiatives with BlackRock, SMBC and Open Standard participants including Coinbase. JPYSC's trust reserve has begun allocating to short-term Japanese government bonds under the amended Japanese legal framework, while customer lending balances have grown. These are distinct corporate equity, reserve, distribution and exploratory partnership exposures. They do not establish SBI's native XRP token holdings, a direct SBI-Coinbase bilateral partnership, or a production JPYSC/OUSD bridge.",
+    "confidence": "HIGH for official disclosed investments, equity percentages, MOUs and JPYSC figures; MODERATE for multi-rail strategic interpretation; LOW for direct XRP price impact."
+  },
+  "findings": [
+    {
+      "id": "SM-01",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "SBI Holdings announced on March 26, 2026 that the SBI Group would invest approximately $50M in Startale Group through a subsidiary and expected Startale to become an equity-method affiliate.",
+      "implication": "This is disclosed corporate equity capital, separate from XRP tokens, Circle shares or JPYSC reserves. Startale co-develops JPYSC with SBI and is developing Strium, an L1 for 24/7 tokenized securities and RWA trading.",
+      "unknowns": [
+        "Exact funding date(s) and final paid-in amount if different from the announced approximately $50M",
+        "SBI's current carrying value and ownership percentage in Startale"
+      ],
+      "sources": [
+        "SBI-STARTALE-INVESTMENT-20260326"
+      ]
+    },
+    {
+      "id": "SM-02",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE_PREVIOUSLY_ARCHIVED",
+      "claim": "SBI Holdings and SBI Shinsei Bank disclosed a combined $50M Circle share purchase at Circle's June 2025 NYSE listing, $25M each. The same SBI release disclosed that SBI had invested in Ripple in 2016 and held approximately 9% of Ripple as an outside largest shareholder.",
+      "implication": "SBI has corporate equity exposure to both Circle and Ripple. The approximately 9% figure is Ripple corporate equity, not XRP token inventory or a quantified XRP treasury.",
+      "unknowns": [
+        "Current mark and current exact ownership after subsequent financing/dilution",
+        "SBI's native XRP holdings quantity"
+      ],
+      "sources": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "id": "SM-03",
+      "classification": "CONFIRMED_OFFICIAL_BASIC_AGREEMENT",
+      "claim": "On October 27, 2026, SBI Holdings, Startale and BlackRock entered a basic agreement to explore connections between tokenized money-market funds and JPYSC. The stated workstreams cover technology/infrastructure, business/distribution and regulatory/market development.",
+      "implication": "This creates a direct exploratory relationship between SBI/Startale and BlackRock around JPYSC and tokenized MMFs. It is not a live product, reserve guarantee, or XRP/XLedger integration.",
+      "unknowns": [
+        "Specific tokenized MMF product and share class",
+        "Custody, redemption, collateral and settlement design",
+        "Launch timetable, client commitments and balances"
+      ],
+      "disconfirming_evidence": [
+        "The official release describes a basic agreement and exploration of possibilities; it discloses no live product or capital amount."
+      ],
+      "sources": [
+        "SBI-BLACKROCK-JPYSC-MOU-20261027"
+      ]
+    },
+    {
+      "id": "SM-04",
+      "classification": "CONFIRMED_OFFICIAL_CAPITAL_BUSINESS_ALLIANCE",
+      "claim": "On October 30, 2026, SBI Holdings and SMBC Group signed a capital/business alliance to study financial services using stablecoins. SMBC agreed to acquire a 5% equity stake in SBI Startale Marketing, the SBI/Startale joint venture established to promote JPYSC and create usage opportunities.",
+      "implication": "A major Japanese banking group has taken a direct minority equity position in the JPYSC commercialization vehicle. This is a corporate investment and stablecoin-use-case study, not an XRP purchase.",
+      "unknowns": [
+        "Cash amount or valuation associated with the 5% stake",
+        "Governance rights, closing date and any further capital commitments",
+        "Whether future services will use XRP, RLUSD, USDC, JPYSC or other settlement assets"
+      ],
+      "disconfirming_evidence": [
+        "The release does not disclose an XRP or Ripple role in the alliance."
+      ],
+      "sources": [
+        "SBI-SMBC-JPYSC-ALLIANCE-20261030"
+      ]
+    },
+    {
+      "id": "SM-05",
+      "classification": "CONFIRMED_MEMBERSHIP_AND_PROPOSED_INTEROPERABILITY_POC",
+      "claim": "SBI Holdings and Startale announced participation in Open Standard, a consortium of more than 140 companies including Visa, Stripe, Mastercard, BlackRock and Coinbase, and said they were considering a proof of concept for interoperability between JPYSC and Open USD (OUSD).",
+      "implication": "SBI/Startale are entering a multi-issuer, multi-rail stablecoin interoperability ecosystem that includes Coinbase and BlackRock as participants.",
+      "caveats": [
+        "Membership in the same consortium does not prove a bilateral SBI-Coinbase, SBI-BlackRock or SBI-Visa commercial contract.",
+        "The JPYSC/OUSD work is a proposed proof of concept, not a production bridge or completed settlement flow."
+      ],
+      "sources": [
+        "SBI-OPEN-STANDARD-OUSD-20261016"
+      ]
+    },
+    {
+      "id": "SM-06",
+      "classification": "CONFIRMED_OFFICIAL_RESERVE_ALLOCATION",
+      "claim": "On September 7, 2026, SBI Shinsei Trust Bank and SBI VC Trade reported that JPYSC trust assets included ¥10B invested in short-term Japanese government bonds. JPYSC issuance was approximately ¥20.1B at that date. The release states that the amended Payment Services Act framework allows up to 50% of issuance to be invested in qualifying short-term government securities or time deposits with maturity not exceeding three months.",
+      "implication": "Approximately 49.75% of the reported JPYSC issuance was represented by the disclosed ¥10B short-term JGB allocation at that snapshot. This is an issuer-reported reserve allocation, not XRP collateral or a claim that all JPYSC reserves are JGBs.",
+      "unknowns": [
+        "Subsequent reserve allocation and maturity ladder",
+        "Current cash/JGB split and independent trust-account reconciliation",
+        "Liquidity buffers and stress-redemption performance"
+      ],
+      "sources": [
+        "SBI-JPYSC-JGB-RESERVES-20260907"
+      ]
+    },
+    {
+      "id": "SM-07",
+      "classification": "CONFIRMED_OFFICIAL_LENDING_AND_HANDLING_BALANCES",
+      "claim": "SBI VC Trade reported on November 2, 2026 that JPYSC lending balances exceeded ¥10B and JPYSC handling balances exceeded ¥30B. The handling balance is defined as on-chain balance plus lending balance, so the lending balance is included rather than additional.",
+      "implication": "JPYSC has reached material platform-handling and customer-lending scale. These figures do not represent XRP collateral or borrowing by JPYSC holders.",
+      "caveats": [
+        "The lending service has 28-day, 84-day and 168-day courses with stated annual rates of 2%, 2.5% and 3% respectively as of November 2.",
+        "Customers lend JPYSC to SBI VC Trade and receive a usage fee; this is not customers borrowing against XRP.",
+        "The company warns JPYSC lending is not a bank deposit, is not covered by deposit insurance and generally cannot be cancelled early."
+      ],
+      "sources": [
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "id": "SM-08",
+      "classification": "CONFIRMED_OFFICIAL_LAUNCH_WITH_STATUS_LIMITATION",
+      "claim": "SBI Group, SBI Shinsei Trust Bank, SBI VC Trade and Startale launched JPYSC on June 24, 2026. The initial service was restricted to balances within SBI VC Trade accounts, with external-wallet withdrawals unavailable at launch; public-chain circulation was described as a future step after legal, tax and practical arrangements.",
+      "implication": "JPYSC's >¥30B handling figure must not automatically be interpreted as freely transferable public-chain circulation. The public-chain status needs a current technical and legal confirmation.",
+      "unknowns": [
+        "Whether public-chain issuance/withdrawal was enabled after the June 24 launch",
+        "Current chain, token contract, redemption route and on-chain supply"
+      ],
+      "sources": [
+        "SBI-JPYSC-LAUNCH-20260624",
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "id": "SM-09",
+      "classification": "INFERENCE",
+      "claim": "SBI's approximately $50M Startale investment, $50M Circle equity purchase, approximately 9% Ripple corporate equity, JPYSC issuance/lending, BlackRock tokenized-MMF MOU, SMBC 5% investment in SBI Startale Marketing and Open Standard participation are most consistent with a multi-rail digital-finance strategy.",
+      "implication": "SBI's business and capital exposure spans XRP/Ripple, Circle/USDC, JPYSC, Startale/Strium, tokenized MMFs, SMBC and a stablecoin consortium that includes Coinbase. An exclusive 'SBI chooses XRP' or 'SBI abandons XRP for USDC' model is not supported.",
+      "disconfirming_evidence": [
+        "No single SBI document explicitly describes every activity as one integrated strategy.",
+        "Separate subsidiaries, investment vehicles and counterparties may have different objectives.",
+        "No quantified SBI native XRP inventory or XRP-specific JPYSC settlement volume was disclosed."
+      ],
+      "sources": [
+        "SBI-STARTALE-INVESTMENT-20260326",
+        "SBI-CIRCLE-EQUITY-20250609",
+        "SBI-BLACKROCK-JPYSC-MOU-20261027",
+        "SBI-SMBC-JPYSC-ALLIANCE-20261030",
+        "SBI-OPEN-STANDARD-OUSD-20261016",
+        "SBI-JPYSC-JGB-RESERVES-20260907",
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "id": "SM-10",
+      "classification": "UNKNOWN_NOT_ESTABLISHED",
+      "claim": "The reviewed SBI disclosures do not quantify SBI Group native XRP holdings or establish that JPYSC, OUSD, tokenized MMF or SMBC alliance settlement will use XRP.",
+      "implication": "Corporate equity in Ripple must not be counted as XRP holdings; JPYSC supply/lending must not be counted as XRP liquidity; Open Standard membership must not be represented as a direct Coinbase partnership.",
+      "sources": [
+        "SBI-CIRCLE-EQUITY-20250609",
+        "SBI-OPEN-STANDARD-OUSD-20261016",
+        "SBI-SMBC-JPYSC-ALLIANCE-20261030"
+      ]
+    }
+  ],
+  "capital_and_financial_metrics_ledger": [
+    {
+      "item": "SBI Group investment in Startale",
+      "amount_usd": 50000000,
+      "as_of": "2026-03-26",
+      "metric_type": "announced_corporate_equity_investment",
+      "classification": "CONFIRMED_APPROXIMATE",
+      "detail": "Announced through an SBI subsidiary; Startale expected to become an equity-method affiliate."
+    },
+    {
+      "item": "SBI Holdings / SBI Shinsei Bank Circle equity",
+      "amount_usd": 50000000,
+      "as_of": "2025-06-09",
+      "metric_type": "corporate_equity_purchase",
+      "classification": "CONFIRMED",
+      "detail": "$25M each at Circle's June 2025 NYSE listing."
+    },
+    {
+      "item": "SBI Ripple corporate equity",
+      "amount_usd": null,
+      "amount_percentage": 9,
+      "as_of": "2025-06-09 disclosure",
+      "metric_type": "corporate_equity_ownership",
+      "classification": "CONFIRMED_APPROXIMATE",
+      "detail": "Approximately 9% of Ripple corporate equity disclosed; not native XRP token inventory."
+    },
+    {
+      "item": "SMBC equity in SBI Startale Marketing",
+      "amount_usd": null,
+      "amount_percentage": 5,
+      "as_of": "2026-10-30",
+      "metric_type": "joint_venture_equity_stake",
+      "classification": "CONFIRMED_PERCENTAGE_AMOUNT_UNKNOWN",
+      "detail": "SMBC Group agreed to a 5% capital participation; cash amount and valuation not disclosed."
+    },
+    {
+      "item": "JPYSC issuance",
+      "amount_jpy": 20100000000,
+      "as_of": "2026-09-07",
+      "metric_type": "stablecoin_issued_liability",
+      "classification": "ISSUER_REPORTED_APPROXIMATE",
+      "detail": "JPYSC outstanding at September 7, 2026."
+    },
+    {
+      "item": "JPYSC short-term JGB allocation",
+      "amount_jpy": 10000000000,
+      "as_of": "2026-09-07",
+      "metric_type": "reserve_asset_allocation",
+      "classification": "ISSUER_REPORTED",
+      "detail": "Short-term Japanese government bonds within trust assets; approximately 49.75% of reported issuance at that snapshot."
+    },
+    {
+      "item": "JPYSC lending applications",
+      "amount_jpy": 6900000000,
+      "as_of": "2026-09-07",
+      "metric_type": "customer_lending_applications_not_confirmed_outstanding",
+      "classification": "ISSUER_REPORTED_APPLICATIONS",
+      "detail": "The September 7 release reports applications, not necessarily completed lending balance."
+    },
+    {
+      "item": "JPYSC handling balance",
+      "amount_jpy": 30000000000,
+      "as_of": "2026-11-02",
+      "metric_type": "on_chain_plus_lending_handling_balance",
+      "classification": "ISSUER_REPORTED_THRESHOLD",
+      "detail": "Above ¥30B; includes lending balance and must not be added to it."
+    },
+    {
+      "item": "JPYSC lending balance",
+      "amount_jpy": 10000000000,
+      "as_of": "2026-11-02",
+      "metric_type": "customer_lending_balance_subset",
+      "classification": "ISSUER_REPORTED_THRESHOLD",
+      "detail": "Above ¥10B; customers lend JPYSC to SBI VC Trade."
+    },
+    {
+      "item": "SBI BlackRock tokenized-MMF/JPYSC MOU",
+      "amount_usd": null,
+      "as_of": "2026-10-27",
+      "metric_type": "exploratory_agreement_not_capital_investment",
+      "classification": "CONFIRMED_MOU_AMOUNT_NOT_APPLICABLE",
+      "detail": "No committed investment amount or live product disclosed."
+    },
+    {
+      "item": "SBI/SMBC stablecoin alliance",
+      "amount_usd": null,
+      "as_of": "2026-10-30",
+      "metric_type": "capital_business_alliance",
+      "classification": "CONFIRMED_AMOUNT_UNKNOWN",
+      "detail": "SMBC takes 5% of SBI Startale Marketing; transaction amount not disclosed."
+    },
+    {
+      "item": "SBI native XRP holdings",
+      "amount_xrp": null,
+      "as_of": null,
+      "metric_type": "unknown_token_inventory",
+      "classification": "UNKNOWN",
+      "detail": "No quantified native XRP inventory found in reviewed official disclosures."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "to": "Startale Group",
+      "relationship": "approximately $50M equity investment through subsidiary; equity-method affiliate expected",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-STARTALE-INVESTMENT-20260326"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple Labs",
+      "relationship": "approximately 9% corporate equity disclosed",
+      "classification": "CONFIRMED_APPROXIMATE",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle Internet Group",
+      "relationship": "$25M Circle equity purchase",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Bank",
+      "to": "Circle Internet Group",
+      "relationship": "$25M Circle equity purchase",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI Startale Marketing",
+      "relationship": "joint venture with Startale to promote JPYSC and develop usage cases",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-SMBC-JPYSC-ALLIANCE-20261030"
+      ]
+    },
+    {
+      "from": "SMBC Group",
+      "to": "SBI Startale Marketing",
+      "relationship": "5% equity participation",
+      "classification": "CONFIRMED_AMOUNT_UNKNOWN",
+      "source_ids": [
+        "SBI-SMBC-JPYSC-ALLIANCE-20261030"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "BlackRock",
+      "relationship": "basic agreement to explore tokenized MMF and JPYSC connection",
+      "classification": "CONFIRMED_EXPLORATORY",
+      "source_ids": [
+        "SBI-BLACKROCK-JPYSC-MOU-20261027"
+      ]
+    },
+    {
+      "from": "Startale Group",
+      "to": "JPYSC",
+      "relationship": "co-developer and on-chain infrastructure partner",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-JPYSC-LAUNCH-20260624",
+        "SBI-STARTALE-INVESTMENT-20260326"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relationship": "trust-based issuer and reserve manager",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-JPYSC-LAUNCH-20260624",
+        "SBI-JPYSC-JGB-RESERVES-20260907"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relationship": "distribution and customer lending counterparty",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "Japanese short-term government bonds",
+      "relationship": "¥10B JGB allocation within JPYSC trust reserves at September 7 snapshot",
+      "classification": "CONFIRMED_ISSUER_REPORTED",
+      "source_ids": [
+        "SBI-JPYSC-JGB-RESERVES-20260907"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Open Standard",
+      "relationship": "consortium participation with Startale",
+      "classification": "CONFIRMED_MEMBERSHIP",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "Open Standard",
+      "to": "Coinbase",
+      "relationship": "Coinbase named among more than 140 participating companies",
+      "classification": "CONFIRMED_MEMBERSHIP_NOT_BILATERAL",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "Open Standard",
+      "to": "BlackRock",
+      "relationship": "BlackRock named among more than 140 participating companies",
+      "classification": "CONFIRMED_MEMBERSHIP_NOT_BILATERAL",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "OUSD",
+      "relationship": "considering JPYSC-OUSD interoperability proof of concept",
+      "classification": "PROPOSED_POC_NOT_PRODUCTION",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SMBC Group",
+      "relationship": "capital/business alliance to study stablecoin financial services",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-SMBC-JPYSC-ALLIANCE-20261030"
+      ]
+    }
+  ],
+  "competing_causal_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "SBI is pursuing a multi-rail digital-finance strategy across Ripple/XRPL, Circle/USDC, Startale/Strium, JPYSC, tokenized MMFs and consortium stablecoin interoperability.",
+      "status": "BEST_SUPPORTED_INFERENCE",
+      "supporting": [
+        "SBI's disclosed Ripple equity and Circle equity",
+        "SBI's approximately $50M Startale investment",
+        "JPYSC issuance/lending and short-term JGB reserve allocation",
+        "BlackRock tokenized-MMF/JPYSC MOU",
+        "SMBC 5% stake in SBI Startale Marketing",
+        "Open Standard participation and JPYSC/OUSD PoC consideration"
+      ],
+      "disconfirming": [
+        "No single official document describes all activities as one integrated strategy.",
+        "Separate legal entities and subsidiaries may pursue independent objectives."
+      ]
+    },
+    {
+      "id": "H2",
+      "hypothesis": "SBI's Ripple corporate equity implies a large native XRP treasury or direct XRP price support.",
+      "status": "UNSUPPORTED",
+      "supporting": [],
+      "disconfirming": [
+        "Ripple equity is not XRP token inventory.",
+        "No native XRP holdings quantity, purchase schedule or treasury disclosure was found.",
+        "JPYSC and Startale/Strium activities are separate assets and networks."
+      ]
+    },
+    {
+      "id": "H3",
+      "hypothesis": "JPYSC will replace XRP or Ripple rails for Japan cross-border settlement.",
+      "status": "UNSUPPORTED",
+      "supporting": [],
+      "disconfirming": [
+        "No SBI disclosure says JPYSC replaces XRP or Ripple payments.",
+        "JPYSC is a yen-denominated trust stablecoin and has different use cases and legal structure.",
+        "No production JPYSC/XRPL or JPYSC/OUSD settlement volume was disclosed."
+      ]
+    },
+    {
+      "id": "H4",
+      "hypothesis": "SBI's Open Standard membership creates a direct SBI-Coinbase partnership.",
+      "status": "UNSUPPORTED",
+      "supporting": [
+        "Coinbase is named as one of more than 140 Open Standard participants."
+      ],
+      "disconfirming": [
+        "Consortium co-membership is not a bilateral commercial agreement.",
+        "The announced JPYSC/OUSD work is a proposed proof of concept."
+      ]
+    },
+    {
+      "id": "H5",
+      "hypothesis": "JPYSC reserve assets can support a regulated yen stablecoin with a material short-term JGB allocation.",
+      "status": "CONFIRMED_WITH_SCOPE_LIMITS",
+      "supporting": [
+        "SBI reports ¥10B in short-term JGBs against approximately ¥20.1B issuance at September 7.",
+        "The disclosed legal framework permits qualifying short-term securities up to 50% of issuance."
+      ],
+      "disconfirming": [
+        "Only one dated allocation snapshot is available here.",
+        "Current reserve composition and redemption stress performance are unknown."
+      ]
+    },
+    {
+      "id": "H6",
+      "hypothesis": "SBI/BlackRock tokenized MMF integration and SBI/SMBC stablecoin services will create new collateral and payment channels.",
+      "status": "PLAUSIBLE_EXPLORATORY",
+      "supporting": [
+        "Both parties have official basic agreements/capital-business arrangements and named JPYSC use cases."
+      ],
+      "disconfirming": [
+        "No production product, client balance, collateral haircut or settlement volume is disclosed."
+      ]
+    }
+  ],
+  "sbic_resolution": {
+    "confirmed_distinct_entities": [
+      "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC)",
+      "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (Nagoya SBIC)",
+      "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (Osaka SBIC)"
+    ],
+    "distinction": "These regional SBIC companies are not SBI Holdings, SBI VC Trade, SBI Ripple Asia, SBI Startale Marketing or Circle SBI Japan. The new investments and JPYSC relationships in this artifact belong to SBI Group entities, not the regional SBIC corporations.",
+    "sources": [
+      "TOKYO-SBIC-OFFICIAL",
+      "NAGOYA-SBIC-OFFICIAL",
+      "OSAKA-SBIC-OFFICIAL"
+    ]
+  },
+  "source_registry": [
+    {
+      "id": "SBI-STARTALE-INVESTMENT-20260326",
+      "publisher": "SBI Holdings",
+      "type": "official_company_release",
+      "date": "2026-03-26",
+      "url": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-CIRCLE-EQUITY-20250609",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "type": "official_company_release",
+      "date": "2025-06-09",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-BLACKROCK-JPYSC-MOU-20261027",
+      "publisher": "SBI Holdings, Startale and BlackRock",
+      "type": "official_basic_agreement",
+      "date": "2026-10-27",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "independence_group": "sbi-blackrock-startale"
+    },
+    {
+      "id": "SBI-SMBC-JPYSC-ALLIANCE-20261030",
+      "publisher": "SBI Holdings and SMBC Group",
+      "type": "official_capital_business_alliance",
+      "date": "2026-10-30",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "independence_group": "sbi-smbc"
+    },
+    {
+      "id": "SBI-OPEN-STANDARD-OUSD-20261016",
+      "publisher": "SBI Holdings and Startale",
+      "type": "official_consortium_membership_and_proposed_poc",
+      "date": "2026-10-16",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "independence_group": "sbi-startale"
+    },
+    {
+      "id": "SBI-JPYSC-JGB-RESERVES-20260907",
+      "publisher": "SBI Shinsei Trust Bank and SBI VC Trade",
+      "type": "official_reserve_allocation_release",
+      "date": "2026-09-07",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-JPYSC-LENDING-20261102",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "type": "official_company_release",
+      "date": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-JPYSC-LAUNCH-20260624",
+      "publisher": "SBI Holdings, SBI Shinsei Bank, SBI Shinsei Trust Bank, SBI VC Trade and Startale",
+      "type": "official_joint_launch_release",
+      "date": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "independence_group": "sbi-startale-joint"
+    },
+    {
+      "id": "TOKYO-SBIC-OFFICIAL",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation",
+      "type": "official_company_profile",
+      "date": null,
+      "url": "https://www.sbic.co.jp/",
+      "independence_group": "tokyo-sbic"
+    },
+    {
+      "id": "NAGOYA-SBIC-OFFICIAL",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation",
+      "type": "official_company_profile",
+      "date": null,
+      "url": "https://www.nagoya-sbic.co.jp/",
+      "independence_group": "nagoya-sbic"
+    },
+    {
+      "id": "OSAKA-SBIC-OFFICIAL",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation",
+      "type": "official_company_profile",
+      "date": null,
+      "url": "https://www.osaka-sbic.co.jp/",
+      "independence_group": "osaka-sbic"
+    }
+  ],
+  "data_quality": [
+    "The approximately $50M Startale investment is an announced corporate equity investment through an SBI subsidiary; it is not an XRP or JPYSC purchase.",
+    "The approximately 9% Ripple figure is corporate equity, not XRP token inventory.",
+    "SMBC's 5% stake in SBI Startale Marketing is disclosed as a percentage; no cash amount or valuation is stated.",
+    "The BlackRock/JPYSC tokenized-MMF relationship is a basic agreement to explore possibilities, not a live fund integration.",
+    "Open Standard membership with Coinbase and BlackRock is consortium co-membership, not a bilateral SBI-Coinbase or SBI-BlackRock commercial contract.",
+    "The September 7 JPYSC lending amount of approximately ¥6.9B is described as applications, not confirmed completed/outstanding loans.",
+    "The November 2 JPYSC handling balance includes lending balance; do not add the >¥10B lending balance again.",
+    "The September 7 ¥10B JGB allocation and November 2 >¥30B handling balance are different dates and different measures; do not combine them as a current reserve reconciliation.",
+    "The June 24 JPYSC launch was account-restricted with external-wallet withdrawals unavailable; current public-chain status requires a fresh technical check."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "implication_for_model": "Treat SBI's investments and JPYSC growth as structural institutional variables, not directional XRP signals. Separate corporate equity, reserve assets, stablecoin liabilities, customer lending and actual XRP flows. Any XRP-price effect requires measured flows and controlled event studies."
+  },
+  "limitations": [
+    "No SBI native XRP token inventory was quantified in the reviewed disclosures.",
+    "No direct production settlement between JPYSC and XRP/XRPL was established.",
+    "No production JPYSC/OUSD bridge or tokenized-MMF integration was established.",
+    "No SMBC alliance cash amount or valuation for the 5% stake was disclosed.",
+    "No current JPYSC public-chain contract/supply reconciliation was executed in this run.",
+    "Regional SBIC companies remain distinct from SBI Group entities."
+  ],
+  "safety": {
+    "public_authorized_sources_only": true,
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "external_transaction": false,
+    "forecast_issued": false
+  }
+}
