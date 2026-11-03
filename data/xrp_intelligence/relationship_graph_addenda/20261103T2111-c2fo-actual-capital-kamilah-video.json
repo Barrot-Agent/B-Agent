@@ -1,0 +1,440 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261103-C2FO-ACTUAL-CAPITAL-KAMILAH-VIDEO",
+  "captured_at_utc": "2026-11-03T21:08:11.114Z",
+  "observed_main_sha": "fada1c0712894e92f301e2cb5e6aa098280bfbe8",
+  "evidence_classes": [
+    "CONFIRMED_PRIMARY_SOURCE",
+    "CONFIRMED_CONTRACT_TERM",
+    "ISSUER_REPORTED_HISTORICAL_FLOW",
+    "SECONDARY_VIDEO_INDEX",
+    "SECONDARY_VIDEO_SUMMARY",
+    "INFERENCE",
+    "UNKNOWN",
+    "DISCONFIRMING_EVIDENCE"
+  ],
+  "nodes": [
+    {
+      "id": "C2FO",
+      "label": "C2FO",
+      "kind": "WORKING_CAPITAL_PLATFORM"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple Labs",
+      "kind": "BLOCKCHAIN_AND_PAYMENT_COMPANY"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_DISTRIBUTED_LEDGER"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "C2FO_INSTANT_PAY",
+      "label": "C2FO Instant Pay",
+      "kind": "ANNOUNCED_TRADE_FINANCE_PRODUCT"
+    },
+    {
+      "id": "C2FO_CAPITAL_PROVIDERS",
+      "label": "Participating Instant Pay capital providers",
+      "kind": "UNNAMED_FINANCIAL_PROVIDERS"
+    },
+    {
+      "id": "C2FO_EARLY_PAY",
+      "label": "C2FO Early Pay programs",
+      "kind": "EXISTING_WORKING_CAPITAL_PROGRAMS"
+    },
+    {
+      "id": "EVERNORTH",
+      "label": "Evernorth Holdings Inc.",
+      "kind": "PUBLIC_XRP_TREASURY_COMPANY"
+    },
+    {
+      "id": "CANTOR_CFPI",
+      "label": "CF Principal Investments LLC / Cantor",
+      "kind": "EQUITY_FACILITY_INVESTOR"
+    },
+    {
+      "id": "ELOC",
+      "label": "Evernorth committed equity facility",
+      "kind": "CONDITIONAL_EQUITY_FINANCING"
+    },
+    {
+      "id": "XRPN",
+      "label": "Evernorth Class A common stock",
+      "kind": "PUBLIC_EQUITY_SECURITY"
+    },
+    {
+      "id": "ACTUAL_CAPITAL",
+      "label": "Phrase: actual capital",
+      "kind": "AMBIGUOUS_RESEARCH_PHRASE"
+    },
+    {
+      "id": "KAMILAH_STEVENSON",
+      "label": "Kamilah Stevenson XRP video creator candidate",
+      "kind": "PUBLIC_VIDEO_CREATOR_CANDIDATE"
+    },
+    {
+      "id": "CAMILLA_STEPHENSON",
+      "label": "Camilla Stephenson exact-name candidate",
+      "kind": "PUBLIC_NAME_CANDIDATE"
+    },
+    {
+      "id": "VIDEO_QXOX",
+      "label": "The Secret XRP Update Everyone's Panicking About (Debunked)",
+      "kind": "YOUTUBE_VIDEO_CANDIDATE"
+    },
+    {
+      "id": "XRPL_SECURITY_REPORT_341",
+      "label": "XRPL vulnerability disclosure report for xrpld 3.4.1",
+      "kind": "OFFICIAL_SECURITY_ADVISORY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "C2FO-RIPPLE-PARTNERSHIP",
+      "source": "C2FO",
+      "target": "RIPPLE",
+      "relationship": "ANNOUNCED_TRADE_FINANCE_COLLABORATION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "On 2026-10-27 C2FO and Ripple announced an initiative to move financing and settlement activity supporting C2FO Instant Pay onto XRPL using RLUSD settlement.",
+      "source_ids": [
+        "SRC-C2FO-OCT27",
+        "SRC-RIPPLE-OCT27"
+      ]
+    },
+    {
+      "id": "C2FO-INSTANTPAY-XRPL",
+      "source": "C2FO_INSTANT_PAY",
+      "target": "XRPL",
+      "relationship": "ANNOUNCED_LEDGER_RAIL",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The announced Instant Pay financing and settlement activity is intended to use XRPL; public production throughput is not yet disclosed.",
+      "source_ids": [
+        "SRC-C2FO-OCT27"
+      ]
+    },
+    {
+      "id": "C2FO-INSTANTPAY-RLUSD",
+      "source": "C2FO_INSTANT_PAY",
+      "target": "RLUSD",
+      "relationship": "ANNOUNCED_SETTLEMENT_ASSET",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "RLUSD is named as the settlement asset in the joint announcement.",
+      "source_ids": [
+        "SRC-C2FO-OCT27",
+        "SRC-RIPPLE-OCT27"
+      ]
+    },
+    {
+      "id": "C2FO-PROVIDERS-FUNDING",
+      "source": "C2FO_CAPITAL_PROVIDERS",
+      "target": "C2FO_INSTANT_PAY",
+      "relationship": "FUNDING_SOURCE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The release says participating capital providers fund the accelerated supplier payments; their identities, capital commitments and transaction volumes are not disclosed.",
+      "source_ids": [
+        "SRC-C2FO-OCT27"
+      ]
+    },
+    {
+      "id": "C2FO-EARLYPAY-LEGACY-VOLUME",
+      "source": "C2FO_EARLY_PAY",
+      "target": "ACTUAL_CAPITAL",
+      "relationship": "HISTORICAL_WORKING_CAPITAL_VOLUME_NOT_INSTANTPAY_CAPACITY",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "C2FO's page says more than $525B in working capital accessed through existing Early Pay programs; Ripple's copy says more than $520B. This is a wording discrepancy and not Instant Pay throughput, XRPL flow, RLUSD settlement or XRP purchases.",
+      "source_ids": [
+        "SRC-C2FO-OCT27",
+        "SRC-RIPPLE-OCT27"
+      ]
+    },
+    {
+      "id": "C2FO-XRP-ROLE-UNKNOWN",
+      "source": "C2FO_INSTANT_PAY",
+      "target": "XRP",
+      "relationship": "NO_BRIDGE_OR_COLLATERAL_ROLE_DISCLOSED",
+      "evidence_class": "UNKNOWN",
+      "claim": "The announcement names RLUSD for settlement and does not state that XRP is used as bridge asset, collateral or provider inventory. XRP may still be used for network fees or undisclosed liquidity arrangements; these are not established by the release.",
+      "source_ids": [
+        "SRC-C2FO-OCT27",
+        "SRC-RIPPLE-OCT27"
+      ]
+    },
+    {
+      "id": "EVERNORTH-CANTOR-ELOC",
+      "source": "EVERNORTH",
+      "target": "ELOC",
+      "relationship": "OPTIONAL_CONDITIONAL_EQUITY_FINANCING",
+      "evidence_class": "CONFIRMED_CONTRACT_TERM",
+      "claim": "Evernorth may elect to issue up to 5,218,935 new shares to Cantor at 97% of applicable VWAP, subject to conditions, ordinary daily-volume limits and a 4.99% beneficial-ownership cap.",
+      "source_ids": [
+        "SRC-ELOC-8K",
+        "SRC-ELOC-424B3"
+      ]
+    },
+    {
+      "id": "ELOC-REGISTRATION-EFFECTIVE",
+      "source": "ELOC",
+      "target": "CANTOR_CFPI",
+      "relationship": "REGISTRATION_STATEMENT_EFFECTIVE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SEC Notice of Effectiveness confirms file 333-299620 became effective 2026-10-30 at 4:00 p.m. ET. This clears the registration condition but not all commencement/purchase conditions.",
+      "source_ids": [
+        "SRC-ELOC-EFFECT",
+        "SRC-ELOC-424B3"
+      ]
+    },
+    {
+      "id": "ELOC-TO-XRP-PURCHASE-INTENT",
+      "source": "ELOC",
+      "target": "XRP",
+      "relationship": "POTENTIAL_USE_OF_PROCEEDS",
+      "evidence_class": "ISSUER_STATED_INTENT_NOT_REALIZED_FLOW",
+      "claim": "Evernorth says a substantial portion of any facility proceeds is expected to be used to acquire additional XRP, but no ELOC draw, share issuance, cash receipt or specific XRP purchase was located in this review.",
+      "source_ids": [
+        "SRC-ELOC-424B3"
+      ]
+    },
+    {
+      "id": "EVERNORTH-HISTORICAL-XRP-ACQUISITION",
+      "source": "EVERNORTH",
+      "target": "XRP",
+      "relationship": "HISTORICAL_CASH_PURCHASE_AND_IN_KIND_CONTRIBUTIONS",
+      "evidence_class": "ISSUER_REPORTED_HISTORICAL_FLOW",
+      "claim": "Evernorth reports $214.1M private-placement cash used to purchase 84,365,876 XRP, approximately 261,919,096 XRP from private-placement subscriptions, and approximately 473M XRP held as of 2026-10-09.",
+      "source_ids": [
+        "SRC-ELOC-424B3"
+      ]
+    },
+    {
+      "id": "ELOC-FEE-COST",
+      "source": "EVERNORTH",
+      "target": "CANTOR_CFPI",
+      "relationship": "UPFRONT_COMMITMENT_FEE",
+      "evidence_class": "CONFIRMED_CONTRACT_TERM",
+      "claim": "The $521,893.50 non-refundable upfront fee is due within five business days after the October 30 effectiveness date (approximately November 6). Payment is not verified and the fee is a cash outflow, not capital raised.",
+      "source_ids": [
+        "SRC-ELOC-424B3",
+        "SRC-ELOC-EFFECT"
+      ]
+    },
+    {
+      "id": "ELOC-ARITHMETIC-DISCREPANCY",
+      "source": "ELOC",
+      "target": "XRPN",
+      "relationship": "ILLUSTRATIVE_PROCEEDS_TABLE_MISMATCH",
+      "evidence_class": "CONFIRMED_ARITHMETIC_UNRESOLVED_DESCRIPTION",
+      "claim": "At 5,218,935 shares and $14.71, full-price value is $76,770,533.85; 97% equals $74,467,417.83. The prospectus table reports $76.8M while its footnote says 97%; discrepancy remains unresolved.",
+      "source_ids": [
+        "SRC-ELOC-424B3"
+      ]
+    },
+    {
+      "id": "KAMILAH-VIDEO-INDEX",
+      "source": "KAMILAH_STEVENSON",
+      "target": "VIDEO_QXOX",
+      "relationship": "SECONDARY_INDEX_ATTRIBUTION",
+      "evidence_class": "SECONDARY_VIDEO_INDEX",
+      "claim": "BitPeaks lists Kamilah Stevenson as the creator of a video titled 'The Secret XRP Update Everyone's Panicking About (Debunked)' and its thumbnail URL embeds candidate video ID QXOxXikifLU. Direct YouTube metadata was not verified.",
+      "source_ids": [
+        "SRC-BITPEAKS-XRP-INDEX",
+        "SRC-DAILYCOIN-VIDEO-REPORT"
+      ]
+    },
+    {
+      "id": "KAMILAH-CAMILLA-IDENTITY",
+      "source": "CAMILLA_STEPHENSON",
+      "target": "KAMILAH_STEVENSON",
+      "relationship": "IDENTITY_EQUIVALENCE_UNRESOLVED",
+      "evidence_class": "UNKNOWN",
+      "claim": "The existing research file labels the Kamilah channel as a probable match to a public XRP creator, but does not establish that Kamilah Stevenson is the exact Camilla Stephenson requested. Keep the identities distinct until primary evidence resolves the spelling/name mismatch.",
+      "source_ids": [
+        "SRC-KAMILAH-CHANNEL-RESEARCH",
+        "SRC-BITPEAKS-XRP-INDEX"
+      ]
+    },
+    {
+      "id": "VIDEO-SECURITY-CLAIMS-CORROBORATED",
+      "source": "VIDEO_QXOX",
+      "target": "XRPL_SECURITY_REPORT_341",
+      "relationship": "VIDEO_TOPIC_CORROBORATED_BY_PRIMARY_REPORT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_FOR_TECHNICAL_TIMELINE",
+      "claim": "DailyCoin's November 2 article summarizes the video's account of the xrpld 3.4.1 emergency fix. The official XRPL October 9 report independently confirms the payment-engine XRP-overflow vulnerability, the September 22 report date, September 25 3.4.1 release, more than 80% default-UNL upgrade on release day, no evidence of exploitation on public networks, and October 9 activation of fixBatchV1_2 and BatchV1_1. This corroborates the technical timeline, not every creator interpretation.",
+      "source_ids": [
+        "SRC-DAILYCOIN-VIDEO-REPORT",
+        "SRC-XRPL-SECURITY-REPORT"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-C2FO-SETTLEMENT-NOT-XRP-DEMAND",
+      "statement": "C2FO Instant Pay can create commercial XRPL/RLUSD settlement activity without material XRP bridge demand.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "RLUSD is explicitly named as settlement asset.",
+        "Participating capital providers fund the invoices."
+      ],
+      "disconfirming": [
+        "A future disclosed XRP bridge-liquidity or collateral mechanism could create direct XRP demand."
+      ],
+      "tests": [
+        "Obtain production volume, settlement currency, provider identities, XRP bridge-routing records and XRP inventory requirements."
+      ]
+    },
+    {
+      "id": "H-ELOC-OPTIONAL-XRP-BUYING",
+      "statement": "Evernorth's effective ELOC may finance additional XRP purchases, but capacity is conditional and optional.",
+      "status": "PLAUSIBLE_BUT_UNVERIFIED",
+      "support": [
+        "Registration statement became effective.",
+        "Issuer states expected substantial use of any proceeds for XRP."
+      ],
+      "disconfirming": [
+        "No drawdown or purchase evidence located; share issuance can dilute; fee and operating needs consume capital."
+      ],
+      "tests": [
+        "Track fee payment, commencement, VWAP notices, share issuance, cash receipt, and XRPL wallet/venue purchases separately."
+      ]
+    },
+    {
+      "id": "H-ACTUAL-CAPITAL-DISCIPLINE",
+      "statement": "Market-cap change, legacy working-capital volume, prospective ELOC capacity and actual XRP purchases are distinct economic quantities.",
+      "status": "CONFIRMED_ANALYTICAL_RULE",
+      "support": [
+        "C2FO's $520B-$525B figure relates to existing Early Pay programs.",
+        "ELOC is conditional and optional; prospectus arithmetic has unresolved mismatch.",
+        "Evernorth discloses historical cash-funded XRP purchases and a separate 473M XRP balance."
+      ],
+      "disconfirming": [
+        "None; only a change in source definitions or a new realized transaction could alter the classifications."
+      ],
+      "tests": [
+        "Use cash receipts, settlement statements, executed purchase notices and reconciled wallet flows as realized capital evidence."
+      ]
+    },
+    {
+      "id": "H-KAMILAH-VIDEO-CLAIM-ACCURACY",
+      "statement": "The security-fix video appears to describe a real XRPL emergency patch, but the video itself and its full claims remain unverified.",
+      "status": "PARTIALLY_CORROBORATED",
+      "support": [
+        "Official XRPL security disclosure confirms the core vulnerability and incident timeline."
+      ],
+      "disconfirming": [
+        "DailyCoin is a secondary summary; no direct YouTube metadata/transcript was retrieved."
+      ],
+      "tests": [
+        "Verify candidate video ID against canonical channel metadata and obtain permitted transcript before scoring any forecasts or opinions."
+      ]
+    }
+  ],
+  "notes": [
+    "C2FO's $520B versus $525B wording discrepancy is preserved; do not average the figures.",
+    "The $521,893.50 Cantor fee is a contractual outflow due after effectiveness, not capital raised; payment remains unverified.",
+    "The SEC Notice of Effectiveness is specific to registration file 333-299620; do not confuse it with Evernorth's separate 73,688,162-share selling-securityholder registration.",
+    "Evernorth's historical 473M XRP balance as of October 9 is not proof of current freely available float or subsequent ELOC-funded buying.",
+    "The prospectus $76.8M table versus 97% footnote discrepancy is unresolved and should remain a data-quality flag.",
+    "The Kamilah channel inventory remains partial. The exact-name Camilla/Kamilah equivalence is not verified.",
+    "Public video search through vidIQ returned zero results for the candidate channel and a Kamilah Stevenson query; video metadata lookup was blocked by insufficient credits, with no retry. Direct YouTube page retrieval was throttled/cache-missed.",
+    "A third-party thumbnail URL supplied candidate video ID QXOxXikifLU; do not promote it to verified until direct video metadata or canonical channel inventory confirms it."
+  ],
+  "provenance": {
+    "public_sources": [
+      {
+        "id": "SRC-C2FO-OCT27",
+        "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+        "publisher": "C2FO",
+        "published_at": "2026-10-27"
+      },
+      {
+        "id": "SRC-RIPPLE-OCT27",
+        "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+        "publisher": "Ripple",
+        "published_at": "2026-10-27"
+      },
+      {
+        "id": "SRC-ELOC-8K",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/exhibit101-8xk.htm",
+        "publisher": "SEC EDGAR",
+        "published_at": "2026-10-23"
+      },
+      {
+        "id": "SRC-ELOC-424B3",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+        "publisher": "SEC EDGAR",
+        "published_at": "2026-10-30"
+      },
+      {
+        "id": "SRC-ELOC-EFFECT",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/xslEFFECTX01/primary_doc.xml",
+        "publisher": "SEC EDGAR",
+        "published_at": "2026-10-30"
+      },
+      {
+        "id": "SRC-XRPL-SECURITY-REPORT",
+        "url": "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-20261009",
+        "publisher": "XRPL.org",
+        "published_at": "2026-10-09"
+      },
+      {
+        "id": "SRC-DAILYCOIN-VIDEO-REPORT",
+        "url": "https://dailycoin.com/xrps-security-fix-puts-validator-trust-under-scrutiny",
+        "publisher": "DailyCoin",
+        "published_at": "2026-11-02"
+      },
+      {
+        "id": "SRC-BITPEAKS-XRP-INDEX",
+        "url": "https://www.bitpeaks.com/videos/xrp",
+        "publisher": "BitPeaks",
+        "published_at": null
+      },
+      {
+        "id": "SRC-KAMILAH-CHANNEL-RESEARCH",
+        "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+        "publisher": "YouTube channel candidate",
+        "published_at": null
+      }
+    ],
+    "tool_access": {
+      "vidiq_channel_videos_long_recent": "returned_zero_results",
+      "vidiq_channel_videos_shorts_recent": "returned_zero_results",
+      "vidiq_channel_videos_live_recent": "returned_zero_results",
+      "vidiq_youtube_search_channel_filter": "returned_zero_results",
+      "vidiq_youtube_search_name_query": "returned_zero_results",
+      "vidiq_video_metadata_lookup": "not_executed_due_insufficient_credits_no_retry",
+      "youtube_direct_page": "throttled_or_cache_miss"
+    },
+    "exact_phrase_status": {
+      "ASK Coin": "Two candidates remain distinct: inactive Ask Coin exchange listing and Permission Coin ASK token; no XRP edge established.",
+      "actual capital": "Operational meaning now refined: distinguish actual cash/XRP acquisition from C2FO historical working-capital volume, prospective ELOC capacity, illustrative proceeds and fees.",
+      "SBIC, ChatGPT SBIC": "Existing addendum resolves three regional Japanese SBIC SME investment-development companies; West Japan has ChatGPT/generative-AI training material; no OpenAI partnership or XRP connection established."
+    }
+  },
+  "next_actions": [
+    "By approximately November 6, verify whether the $521,893.50 Cantor fee was paid and whether any ELOC drawdown or purchase notice occurred.",
+    "Track C2FO Instant Pay waitlist conversion, named providers, committed capital, production throughput and whether any XRP bridge/collateral function is actually used.",
+    "Reconcile C2FO's $520B/$525B historical Early Pay figure and Evernorth's ELOC table arithmetic with any later issuer clarification.",
+    "Verify candidate video ID QXOxXikifLU through canonical YouTube metadata when a permitted source becomes available; then ingest its transcript and score only explicit forecasts.",
+    "Continue complete public-video inventory using channel pagination or an authorized YouTube API; current 10-video seed list plus this candidate is not exhaustive.",
+    "Continue exact phrase and SBIC entity graph updates without collapsing unrelated entities."
+  ],
+  "forecast_policy": {
+    "no_directional_forecast_issued": true,
+    "no_market_cap_to_cash_inflow_conversion": true,
+    "no_c2fo_legacy_volume_as_xrp_flow": true,
+    "no_eloc_capacity_as_realized_proceeds": true,
+    "no_creator_claim_as_ground_truth": true
+  }
+}
