@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "scheduled-writer-and-subscriber-privacy-containment-20261103",
+  "created_at_utc": "2026-11-03T12:16:07Z",
+  "base_main_sha": "0acd6407dcd5bdc2ce31f4519d83716fc08da322",
+  "status": {
+    "audit": "EXECUTED",
+    "workflow_changes": "EXECUTED_ON_BRANCH_ONLY",
+    "main_changed": false,
+    "merge": "NOT_PERFORMED"
+  },
+  "findings": [
+    {
+      "id": "SEC-001",
+      "class": "CONFIRMED_WORKFLOW_BEHAVIOR",
+      "workflow": ".github/workflows/subscriber_sync.yml",
+      "finding": "Main-branch workflow schedules hourly, reads GUMROAD_ACCESS_TOKEN, queries Gumroad sales, hashes subscriber email addresses with unsalted SHA-256, writes web/subscribers.json, and commits/pushes main.",
+      "risk": "Low-entropy email addresses can be dictionary-matched against unsalted hashes. Pseudonymized data may remain linkable.",
+      "limitations": [
+        "web/subscribers.json contents were not inspected.",
+        "No plaintext email disclosure was established.",
+        "No current Gumroad token was read or used."
+      ],
+      "proposal": "Disable schedule and job, set permissions empty, remove secret reference and all API/write commands pending privacy review."
+    },
+    {
+      "id": "SEC-002",
+      "class": "CONFIRMED_WORKFLOW_BEHAVIOR",
+      "workflow": ".github/workflows/daily-digest.yml",
+      "finding": "Main-branch workflow schedules a daily public issue using issues:write and scripts/daily_digest.py.",
+      "risk": "Publicly publishing an unvalidated historical accuracy claim.",
+      "evidence": [
+        "Public issue #1538 contains the legacy 45.5% accuracy claim over 1,697 signals while also reporting confidence 0.0, missing provider credentials and a Groq 429."
+      ],
+      "limitations": [
+        "The issue was not edited or closed.",
+        "The underlying accuracy statistic is not validated from reproducible row-level outcomes."
+      ],
+      "proposal": "Disable schedule and job, remove write permission and credential access until fixed-horizon evaluation status is accurate."
+    },
+    {
+      "id": "SEC-003",
+      "class": "CONFIRMED_WORKFLOW_BEHAVIOR",
+      "workflow": ".github/workflows/auto-resolve-issues.yml",
+      "finding": "Main-branch workflow schedules scripts/resolve_issue.py --all with issues:write.",
+      "risk": "Batch comments/closures can be applied without per-issue human authorization.",
+      "evidence": [
+        "Earlier observed run closed issues #1545, #1514 and #1492 without per-issue approval."
+      ],
+      "limitations": [
+        "No new issue mutation was executed in this run."
+      ],
+      "proposal": "Disable schedule and job pending per-issue authorization, auditable evidence and protected approval."
+    },
+    {
+      "id": "SEC-004",
+      "class": "CONFIRMED_WORKFLOW_BEHAVIOR",
+      "workflow": ".github/workflows/barrot-autonomous-resolver.yml",
+      "finding": "Main-branch hourly workflow has issues:write and pull-requests:write; it scans failed workflow runs and creates issues/assignments.",
+      "root_cause": "The implementation comment claimed a 24-hour scan, but the gh run list command used --status failure --limit 100 without a createdAt cutoff or default-branch/event filter.",
+      "evidence": [
+        "An earlier main run created issues #1574–#1579 for failed PR-branch validation runs that had zero jobs and failed before execution; the corrected PR head later passed."
+      ],
+      "limitations": [
+        "No issue was created or assigned in this run."
+      ],
+      "proposal": "Disable hourly workflow pending a time-bounded, default-branch/event-filtered scanner, duplicate/rate-limit controls and protected approval."
+    },
+    {
+      "id": "SEC-005",
+      "class": "CONFIRMED_WORKFLOW_BEHAVIOR",
+      "workflow": ".github/workflows/self-schedule.yml",
+      "finding": "Main-branch workflow runs every six hours with issues:write and executes scripts/self_schedule.py, which can create and label source-gap issues.",
+      "evidence": [
+        "Earlier observed run found no new gaps and created no issue."
+      ],
+      "limitations": [
+        "A prior no-op does not remove future write capability."
+      ],
+      "proposal": "Disable schedule and job until deduplication, issue limits and downstream task-trigger authorization are reviewed."
+    }
+  ],
+  "containment_scope": [
+    ".github/workflows/subscriber_sync.yml",
+    ".github/workflows/daily-digest.yml",
+    ".github/workflows/auto-resolve-issues.yml",
+    ".github/workflows/barrot-autonomous-resolver.yml",
+    ".github/workflows/self-schedule.yml",
+    "tests/test_v3_scripts.py"
+  ],
+  "regression_tests": {
+    "file": "tests/test_v3_scripts.py",
+    "test": "test_public_subscriber_and_scheduled_issue_writers_are_quarantined",
+    "checks": [
+      "manual workflow_dispatch only",
+      "permissions empty",
+      "job if false",
+      "no schedule",
+      "no secrets or Gumroad token",
+      "no git push",
+      "no issue/PR mutation commands",
+      "no contents/actions/issues/pull-requests write permissions"
+    ],
+    "ci_registration": "tests/test_v3_scripts.py is already included in the repository's core CI test command; no CI workflow change was required."
+  },
+  "source_records": [
+    {
+      "id": "S1",
+      "type": "CURRENT_MAIN_WORKFLOW",
+      "path": ".github/workflows/subscriber_sync.yml",
+      "ref": "0acd6407dcd5bdc2ce31f4519d83716fc08da322"
+    },
+    {
+      "id": "S2",
+      "type": "CURRENT_MAIN_WORKFLOW",
+      "path": ".github/workflows/daily-digest.yml",
+      "ref": "0acd6407dcd5bdc2ce31f4519d83716fc08da322"
+    },
+    {
+      "id": "S3",
+      "type": "CURRENT_MAIN_WORKFLOW",
+      "path": ".github/workflows/auto-resolve-issues.yml",
+      "ref": "0acd6407dcd5bdc2ce31f4519d83716fc08da322"
+    },
+    {
+      "id": "S4",
+      "type": "CURRENT_MAIN_WORKFLOW",
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "ref": "0acd6407dcd5bdc2ce31f4519d83716fc08da322"
+    },
+    {
+      "id": "S5",
+      "type": "CURRENT_MAIN_WORKFLOW",
+      "path": ".github/workflows/self-schedule.yml",
+      "ref": "0acd6407dcd5bdc2ce31f4519d83716fc08da322"
+    },
+    {
+      "id": "S6",
+      "type": "PUBLIC_ISSUE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1538"
+    },
+    {
+      "id": "S7",
+      "type": "PUBLIC_ISSUE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1574"
+    },
+    {
+      "id": "S8",
+      "type": "PUBLIC_ISSUE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/issues/1579"
+    }
+  ],
+  "limitations": [
+    "The existing public web/subscribers.json file was not inspected; its metadata was previously 26 bytes.",
+    "Unsalted SHA-256 does not anonymize email addresses against dictionary attacks.",
+    "Quarantining workflows on a PR branch does not disable them on main; approval and merge are still required.",
+    "No secret values were accessed; no external API calls, issue closures, assignments, deployments or commits to main were executed."
+  ],
+  "next_actions": [
+    "Obtain approval before merging PR #1584; all five workflows remain active on main until then.",
+    "Review public issue #1538 and correct/remove the unvalidated accuracy claim through authorized action.",
+    "Inspect subscriber file contents only after explicit privacy review/authorization; do not reproduce subscriber identifiers in research artifacts.",
+    "Replace unsalted email hashes with an approved privacy-preserving design and non-public storage if subscriber analytics remain required.",
+    "Add a bounded default-branch-only resolver scan with per-issue authorization and duplicate/rate-limit controls before re-enabling.",
+    "Continue main branch protection and required-check enforcement audit."
+  ]
+}
