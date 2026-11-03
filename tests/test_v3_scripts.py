@@ -417,13 +417,16 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert ("push", "origin", "HEAD:main") not in git_in_calls
 
 
-def test_self_upgrade_workflow_verifies_same_ref_without_branch_switch() -> None:
+def test_self_upgrade_workflow_is_quarantined_pending_protected_approval() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
-    assert 'ref: ${{ github.ref_name }}' in workflow
-    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' in workflow
-    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' in workflow
-    assert "git checkout main" not in workflow
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    assert "No credentials are read" in workflow
+    assert "secrets." not in workflow
+    assert "git push" not in workflow
+    assert "schedule:" not in workflow
 
 
 def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
@@ -704,3 +707,49 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+def test_public_subscriber_and_scheduled_issue_writers_are_quarantined() -> None:
+    workflow_paths = (
+        ".github/workflows/subscriber_sync.yml",
+        ".github/workflows/daily-digest.yml",
+        ".github/workflows/auto-resolve-issues.yml",
+        ".github/workflows/barrot-autonomous-resolver.yml",
+        ".github/workflows/self-schedule.yml",
+    )
+    forbidden = (
+        "schedule:",
+        "secrets.",
+        "GUMROAD_ACCESS_TOKEN",
+        "git push",
+        "gh issue create",
+        "gh issue close",
+        "gh issue comment",
+        "gh pr edit",
+        "contents: write",
+        "actions: write",
+        "issues: write",
+        "pull-requests: write",
+    )
+    for relative in workflow_paths:
+        workflow = (REPO_ROOT / relative).read_text(encoding="utf-8")
+        assert "workflow_dispatch: {}" in workflow, relative
+        assert "permissions: {}" in workflow, relative
+        assert "if: false" in workflow, relative
+        assert "No credentials are read" in workflow, relative
+        for token in forbidden:
+            assert token not in workflow, f"{relative} still contains {token!r}"
+
+
+def test_checkout_branch_refuses_protected_branches(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_protected_branch_guard_test",
+    )
+    for branch in ("main", "master", "MAIN", "refs/heads/main", "refs/heads/master"):
+        try:
+            module.checkout_branch(branch)
+        except ValueError as exc:
+            assert "protected branch" in str(exc).lower()
+        else:
+            raise AssertionError(f"Protected branch {branch!r} was accepted")

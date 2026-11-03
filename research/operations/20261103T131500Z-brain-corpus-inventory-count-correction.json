@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "brain_corpus_inventory_count_correction",
+  "recorded_at_utc": "2026-11-03T13:15:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "32d3a1ad997384db71f0f37def77deb1c19c7fad",
+  "verified_inventory": {
+    "current_main_entries": 16,
+    "generated_public_dumps": [
+      "brain_corpus/dump.json",
+      "brain_corpus/dump.md"
+    ],
+    "remaining_unclassified_entries": 14,
+    "remaining_polymath_json_count": 13,
+    "remaining_other_files": [
+      "brain_corpus/topics.txt"
+    ],
+    "remaining_file_names": [
+      "polymath_biology_epigenetics_and_environmental_gene_contr.json",
+      "polymath_chemistry_complete_chemistry_and_periodic_table_ma.json",
+      "polymath_cinematography_complete_visual_language_mastery.json",
+      "polymath_dance_universal_dance_mastery.json",
+      "polymath_languages_universal_language_acquisition.json",
+      "polymath_martial_arts_complete_combat_system_mastery.json",
+      "polymath_mathematics_complete_mathematical_mastery.json",
+      "polymath_music_and_audio_production_complete_audio_architecture.json",
+      "polymath_philosophy_epistemology_and_philosophy_of_science.json",
+      "polymath_physics_complete_physics_mastery.json",
+      "polymath_sciences_universal_science_mastery.json",
+      "polymath_synthesis_unlimited_cross-domain_synthesis_engine.json",
+      "polymath_vocal_science_vocal_cartography_and_extended_technique.json",
+      "topics.txt"
+    ]
+  },
+  "correction": "Earlier handoff text described 13 remaining entries. Exact directory listing shows 14: 13 polymath JSON files plus topics.txt. The two public generated dumps are separate. This correction supersedes the earlier count.",
+  "limitations": [
+    "No remaining file contents were inspected.",
+    "The proposal removes only dump.json and dump.md.",
+    "Historical Git objects, forks, caches and external copies are not removed."
+  ]
+}

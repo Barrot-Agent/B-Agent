@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "barrot_operations_root_cause_audit",
+  "recorded_at_utc": "2026-11-03T13:03:29Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "32d3a1ad997384db71f0f37def77deb1c19c7fad",
+  "findings": [
+    {
+      "id": "OPS-001",
+      "classification": "CONFIRMED",
+      "claim": "Cross Analysis has contents:write, scheduled and workflow_run triggers, and commits/pushes generated outputs to main.",
+      "evidence": [
+        ".github/workflows/cross-analysis.yml at main 32d3a1ad",
+        "run 41639227879 succeeded on prior main 0acd6407 at 12:51:24Z",
+        "commit 32d3a1ad at 12:51:33Z changed ping-pongings/knowledge-base/sentiment_shift.json generated_at only"
+      ],
+      "impact": "Hourly main-branch commits invalidate fresh-main PR bases and create avoidable branch churn.",
+      "proposed_control": "Use contents:read, checkout with persist-credentials:false, upload bounded workflow artifacts, remove all git add/commit/push commands."
+    },
+    {
+      "id": "OPS-002",
+      "classification": "CONFIRMED",
+      "claim": "Pillars Consistency Check failed because GitHub App environment values were empty, Databricks SQL returned HTTP 403, and Hugging Face Space runtime returned BUILD_ERROR.",
+      "evidence": [
+        "run 41640691162",
+        "job 125933137136 log: GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY and GITHUB_INSTALLATION_ID empty",
+        "log: [FAIL] databricks: HTTP 403",
+        "log: [FAIL] hf_space: stage=BUILD_ERROR",
+        "deploy_sync and system_prompt_fiction checks passed"
+      ],
+      "impact": "The workflow currently conflates missing authentication, denied authorization and a real external runtime failure into one nonzero exit. The HF BUILD_ERROR is a genuine service-state failure; missing GitHub App configuration and Databricks 403 need permission/configuration diagnosis.",
+      "proposedControl": "Keep failures visible; later split checks into PASS/BLOCKED/FAIL with explicit thresholds rather than suppressing them. Do not read or change secrets without authorization."
+    },
+    {
+      "id": "OPS-003",
+      "classification": "CONFIRMED",
+      "claim": "PRs #1582, #1583 and #1584 are based on 0acd6407, while main advanced to 32d3a1ad; GitHub currently reports mergeable=false.",
+      "evidence": [
+        "get_pr_info #1582/#1583/#1584",
+        "main ref 32d3a1ad"
+      ],
+      "impact": "Their previous exact-head CI results do not make their stale bases current.",
+      "proposedControl": "Create fresh-main successors only where needed; do not merge stale proposals."
+    },
+    {
+      "id": "OPS-004",
+      "classification": "CONFIRMED",
+      "claim": "The main branch-protection endpoint returns HTTP 403 to the connected GitHub integration.",
+      "evidence": [
+        "GET branches/main/protection returned Resource not accessible by integration"
+      ],
+      "impact": "Required-check enforcement remains unverified.",
+      "proposedControl": "Request only the specific administrative permission needed for branch-protection read/inspection when available; do not infer protection from protected=true alone."
+    }
+  ],
+  "limitations": [
+    "No secrets were read.",
+    "No workflow was dispatched.",
+    "No main file was changed.",
+    "No local worktree was available through GitHub; local dirty state is unknown.",
+    "The exact reason for the Hugging Face BUILD_ERROR was not inspected in Hugging Face logs."
+  ],
+  "next_actions": [
+    "Review the read-only Cross Analysis proposal and exact-head CI.",
+    "Inspect HF runtime failure through authorized public/runtime evidence.",
+    "Diagnose Databricks 403 without exposing tokens.",
+    "Resolve stale ETF Nov 2 provisional row after issuer settlement.",
+    "Verify fixCleanup3_4_0 through validated-ledger EnableAmendment pseudo-transaction and following ledger."
+  ]
+}

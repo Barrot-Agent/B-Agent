@@ -1,0 +1,96 @@
+{
+  "schema_version": "barrot.protected-branch-write-boundary.v1",
+  "captured_at_utc": "2026-11-03T15:22:15Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "0c2323231fefd3d9b5166b25cf6d4bd808b4a5b7",
+  "target_pull_request": 1585,
+  "target_branch": "security/cross-analysis-readonly-32d3a1ad-20261103T1303Z",
+  "target_parent_sha": "ac8a3ab8c7c47e3895e6847caaf1ddea967e7cea",
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "HIGH",
+      "path": "barrot_agent/orchestration/repository_repair.py:GitGateway.push",
+      "finding": "The generic push gateway called DefensiveWatchdog.authorize with authorization='repository_sync', but DefensiveWatchdog's default capability set includes EXTERNAL_ACTION and authorize did not require a signed/human approval for that label. The gateway did not independently reject main/master targets.",
+      "impact": "A caller passing main or master could push directly to a protected branch if its other preconditions succeeded.",
+      "status": "FIXED_IN_PROPOSED_BRANCH"
+    },
+    {
+      "id": "F02",
+      "severity": "HIGH",
+      "path": "barrot_agent/orchestration/repository_repair.py:GitGateway.commit",
+      "finding": "The commit gateway staged and committed expected paths without checking the current branch.",
+      "impact": "A caller could commit locally while the workspace was checked out to main/master.",
+      "status": "FIXED_IN_PROPOSED_BRANCH"
+    },
+    {
+      "id": "F03",
+      "severity": "HIGH",
+      "path": "barrot_agent/orchestration/repository_repair.py:RepositoryRepairController.run",
+      "finding": "The controller accepted a caller-supplied branch target but did not verify it matched the actual checked-out branch before planning and patching.",
+      "impact": "A mismatch between requested target and workspace branch could allow unintended local changes and later synchronization to the named target.",
+      "status": "FIXED_IN_PROPOSED_BRANCH"
+    },
+    {
+      "id": "F04",
+      "severity": "HIGH",
+      "path": "scripts/barrot_agent.py:checkout_branch",
+      "finding": "The core worker checked out the configured BRANCH but did not reject main/master before fetching and using git checkout -B.",
+      "impact": "A misconfigured or altered BRANCH could reset the runner's local main/master branch and subsequent direct push paths could target it.",
+      "status": "FIXED_IN_PROPOSED_BRANCH"
+    },
+    {
+      "id": "F05",
+      "severity": "MEDIUM",
+      "path": "barrot_agent/mcp_approval.py and repository_repair.py",
+      "finding": "MCPApprovalGate defaults to always_deny, but the GitGateway/RepositoryRepairController path uses DefensiveWatchdog instead; the existence of MCPApprovalGate does not mean repository pushes are approval-gated.",
+      "impact": "Non-protected task-branch pushes remain authorized by the worker's GitHub token and workflow design, not by the MCP approval token.",
+      "status": "RESIDUAL_DESIGN_LIMITATION"
+    }
+  ],
+  "controls_added": [
+    "is_protected_branch normalizes refs/heads/ and rejects main/master case-insensitively.",
+    "RepositoryRepairController blocks protected target branches before audit, planning, patching or committing.",
+    "RepositoryRepairController verifies the checked-out branch exactly matches the requested non-protected target before work begins.",
+    "GitGateway.commit rejects protected current branches before staging.",
+    "GitGateway.push rejects protected targets before watchdog authorization or remote execution.",
+    "scripts/barrot_agent.py rejects protected branches before checkout and refuses protected pull-request head refs.",
+    "Task-branch push behavior remains available; the core worker's configured barrot/task-* path is unaffected."
+  ],
+  "tests_added_or_updated": [
+    "test_repository_repair_blocks_protected_branch_before_patch_or_commit",
+    "test_repository_repair_blocks_when_checked_out_branch_mismatches_target",
+    "test_git_gateway_refuses_protected_branch_push (main/master/uppercase/refs/heads variants)",
+    "test_git_gateway_allows_non_protected_task_branch_push",
+    "test_git_gateway_commit_refuses_protected_branch_before_staging",
+    "test_checkout_branch_refuses_protected_branches"
+  ],
+  "evidence": [
+    {
+      "source": "main:barrot_agent/orchestration/shared_runtime.py",
+      "observation": "DefensiveWatchdog defaults to READ, WRITE, EXECUTE, NETWORK and EXTERNAL_ACTION; authorize returns allowed after capability, bypass and secret-pattern checks."
+    },
+    {
+      "source": "main:barrot_agent/orchestration/repository_repair.py",
+      "observation": "GitGateway.push previously passed authorization='repository_sync' but did not check target branch; RepositoryRepairController.run previously did not compare target and checked-out branch."
+    },
+    {
+      "source": "main:scripts/barrot_agent.py",
+      "observation": "checkout_branch previously accepted any syntactically valid branch and used git fetch plus git checkout -B."
+    },
+    {
+      "source": "main:.github/workflows/barrot-agent.yml",
+      "observation": "The normal worker workflow supplies a barrot/task-${issue_number} branch; the guard preserves that task-branch path."
+    }
+  ],
+  "preservation": {
+    "main_modified": false,
+    "force_push": false,
+    "merge_performed": false,
+    "workflow_dispatch_performed": false,
+    "external_deployment_performed": false,
+    "secrets_read": false,
+    "paper_trade_or_real_money_action": false
+  },
+  "validation_status": "PENDING_EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE"
+}

@@ -1,17 +1,18 @@
-name: Restart Barrot Space
+name: Restart Barrot Space (disabled pending protected approval)
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
+
+permissions: {}
 
 jobs:
-  restart:
+  disabled:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - name: Factory-restart the Space via stored HF_TOKEN
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      - name: Explain disabled state
+        shell: bash
         run: |
-          echo "=== restarting Barrot-Omega ==="
-          curl -s -X POST "https://huggingface.co/api/spaces/Scribedpengenius/Barrot-Omega/restart?factory=true" \
-            -H "Authorization: Bearer $HF_TOKEN" \
-            -w "\nHTTP:%{http_code}\n"
+          set -euo pipefail
+          echo "Disabled: factory restart is an external mutation. Re-enable only through a protected Environment with a required reviewer and explicit approval."
+          echo "No credentials are read and no external or repository mutation is performed."

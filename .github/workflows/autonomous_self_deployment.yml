@@ -1,32 +1,18 @@
-name: Barrot Autonomous Self-Deployment
+name: Barrot Autonomous Self-Deployment (disabled pending protected approval)
 
 on:
-  schedule:
-    - cron: "0 */6 * * *"
-  workflow_dispatch:
+  workflow_dispatch: {}
+
+permissions: {}
 
 jobs:
-  barrot-autonomous:
+  disabled:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - name: Telemetry report (write access restricted to report file only)
+      - name: Explain disabled state
+        shell: bash
         run: |
-          python3 - << 'SCRIPT'
-          import datetime
-          from pathlib import Path
-          report = f"""# BARROT AUTONOMOUS DEPLOYMENT
-          **Timestamp:** {datetime.datetime.utcnow().isoformat()}Z
-          **Status:** OPERATIONAL
-          - Mode: telemetry-only
-          - Policy: web/, core/, hf_space/ are human-managed. Workflow generation of product pages revoked 2026-07-04 after landing-page clobber incident.
-          """
-          Path("AUTONOMOUS_DEPLOYMENT_REPORT.md").write_text(report)
-          print(report)
-          SCRIPT
-      - name: Commit
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add AUTONOMOUS_DEPLOYMENT_REPORT.md
-          git diff --staged --quiet || (git commit -m "chore: Barrot telemetry report" && git push origin main)
+          set -euo pipefail
+          echo "Disabled: prior six-hour schedule wrote and pushed telemetry reports to main."
+          echo "No credentials are read and no external or repository mutation is performed."
