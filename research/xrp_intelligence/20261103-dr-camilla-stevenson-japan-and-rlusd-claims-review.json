@@ -54,8 +54,14 @@
       "speaker": "Dr. Kamilah Stevenson (guest, Speaker 3)",
       "transcript_time": "25:55-26:15",
       "claim": "Japan's government approved reclassifying XRP and more than 100 other crypto assets as financial instruments.",
-      "status": "partly_corroborated_but_asset_specific_claim_unverified",
+      "status": "law_enacted_asset_specific_and_effective_date_claim_unverified",
       "supporting_sources": [
+        {
+          "publisher": "House of Councillors / National Diet of Japan",
+          "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221057.htm",
+          "type": "official_legislative_summary",
+          "evidence": "The official bill summary describes the regulatory changes and staggered commencement; it does not name XRP or publish a list of 105 assets."
+        },
         {
           "publisher": "House of Councillors / National Diet of Japan",
           "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221057.htm",
@@ -80,15 +86,17 @@
       ],
       "findings": [
         "The FSA's April 10, 2026 press conference confirms Cabinet approval of the bill to amend the Financial Instruments and Exchange Act and Payment Services Act.",
-        "The official Diet record confirms the bill passed the House of Representatives on 2026-06-11, passed the House of Councillors on 2026-07-15, and was promulgated on 2026-07-23 as Law No. 64.",
-        "Secondary legal reporting describes approximately 105 specified crypto assets, but a primary official final list naming XRP was not retrieved."
+        "The official Diet record confirms passage on 2026-07-15 and promulgation on 2026-07-23 as Law No. 64.",
+        "The official legislative summary says crypto-asset sales, offerings of specified crypto assets and crypto-asset borrowing conducted as a business are brought into Financial Instruments Business; insider-trading provisions are added for certain crypto-asset transactions; and crypto-asset regulation is removed from the Payment Services Act.",
+        "The summary states that key crypto provisions commence on a date set by Cabinet Order within one year of promulgation; therefore passage/promulgation does not mean every provision was already in force on 2026-11-03.",
+        "The official summary does not name XRP or publish a list of 105 assets. The approximately 105-asset figure is secondary reporting only."
       ],
-      "interpretation": "Japan did enact the broad FIEA/Payment Services Act amendment. The transcript's specific assertion that XRP is on a finalized list of more than 100 designated financial instruments remains unverified until the official designation list is located.",
+      "interpretation": "Japan did enact a broad crypto-asset regulatory amendment under the FIEA framework. The transcript materially overstates the evidence by naming XRP as a finalized designated asset and by implying immediate implementation. The exact asset designation and commencement dates require the relevant Cabinet Orders/FSA rules.",
       "unknowns": [
-        "Final promulgated law and effective date",
-        "Cabinet/FSA designation list of specified crypto assets",
-        "Whether XRP is explicitly included",
-        "How exchange eligibility, disclosure and market-abuse rules apply to XRP"
+        "Cabinet Order commencement date for the key crypto provisions",
+        "FSA/Cabinet designation list for specified crypto assets",
+        "Whether XRP is explicitly included in any final designated list",
+        "Detailed transition rules for existing registered exchanges"
       ]
     },
     {
