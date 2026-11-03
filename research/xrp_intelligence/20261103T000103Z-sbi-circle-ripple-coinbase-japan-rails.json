@@ -218,6 +218,26 @@
       "sources": [
         "coinbase-global-exchange-collateral-networks-20261103"
       ]
+    },
+    {
+      "id": "F23",
+      "class": "CONFIRMED_OFFICIAL_CUSTODY_AND_BANKING_RELATIONSHIPS",
+      "finding": "BNY is a common institutional custody node for Circle and Ripple, but under separate mandates. Circle's June 29, 2026 announcement says BNY expanded its relationship with Circle, became primary custodian of USDC reserves, and added USDC as the first stablecoin on BNY's Digital Asset Custody platform with institutional custody, transfer, mint and burn capabilities. Ripple's July 9, 2025 announcement selected BNY as primary custodian of RLUSD reserves and described BNY transaction-banking support.",
+      "implication": "This creates an indirect institutional connection between Circle and Ripple through BNY. It does not establish a direct Circle-Ripple agreement, shared reserve pool, common issuer or shared settlement arrangement.",
+      "sources": [
+        "circle-bny-stablecoin-services-20260629",
+        "ripple-bny-rlusd-reserve-custody-20250709"
+      ]
+    },
+    {
+      "id": "F24",
+      "class": "CONFIRMED_OCC_CHARTER_STATUS_AND_RIPPLE_DISCLOSURE",
+      "finding": "Ripple announced on October 26, 2026 that Ripple National Trust Bank (RNTB) received final OCC approval. Ripple says approved activities include managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders and providing fiduciary digital-asset custody. It also says RLUSD continues to be issued by Standard Custody & Trust Company and BNY remains primary reserve custodian. OCC's Corporate Applications Search records the RNTB charter as approved December 12, 2025 and consummated/effective October 26, 2026.",
+      "implication": "The federal trust-bank charter is a significant regulatory and custody milestone, but the announcement says custody capabilities will be provided upon opening and that RNTB will begin operations. Do not assume all approved activities are already live or that RNTB replaces BNY as primary reserve custodian.",
+      "sources": [
+        "ripple-national-trust-bank-final-occ-approval-20261026",
+        "occ-ripple-national-trust-bank-effective-20261026"
+      ]
     }
   ],
   "identity_resolution": {
@@ -362,6 +382,14 @@
       {
         "id": "ethereum",
         "type": "layer_1_network"
+      },
+      {
+        "id": "bny",
+        "type": "global_custodian_and_bank"
+      },
+      {
+        "id": "ripple_national_trust_bank",
+        "type": "federally_supervised_national_trust_bank_charter"
       }
     ],
     "edges": [
@@ -744,6 +772,74 @@
           "coinbase-cbxrp-proof-of-reserves",
           "coinbase-cbxrp-base-network"
         ]
+      },
+      {
+        "id": "E35",
+        "from": "circle",
+        "to": "bny",
+        "relation": "expanded_usdc_reserve_custody_and_institutional_mint_burn_custody_services",
+        "class": "OFFICIAL_CIRCLE_ANNOUNCEMENT",
+        "as_of": "2026-06-29",
+        "sources": [
+          "circle-bny-stablecoin-services-20260629"
+        ]
+      },
+      {
+        "id": "E36",
+        "from": "ripple",
+        "to": "bny",
+        "relation": "selected_bny_as_primary_rlusd_reserve_custodian_and_transaction_banking_provider",
+        "class": "OFFICIAL_RIPPLE_ANNOUNCEMENT",
+        "as_of": "2025-07-09",
+        "sources": [
+          "ripple-bny-rlusd-reserve-custody-20250709"
+        ]
+      },
+      {
+        "id": "E37",
+        "from": "bny",
+        "to": "usdc",
+        "relation": "primary_reserve_custody_and_institutional_digital_custody_transfer_mint_burn_services",
+        "class": "OFFICIAL_CIRCLE_ANNOUNCEMENT",
+        "as_of": "2026-06-29",
+        "sources": [
+          "circle-bny-stablecoin-services-20260629"
+        ]
+      },
+      {
+        "id": "E38",
+        "from": "bny",
+        "to": "rlusd",
+        "relation": "primary_reserve_custodian",
+        "class": "OFFICIAL_RIPPLE_ANNOUNCEMENT",
+        "as_of": "2025-07-09",
+        "sources": [
+          "ripple-bny-rlusd-reserve-custody-20250709"
+        ]
+      },
+      {
+        "id": "E39",
+        "from": "ripple",
+        "to": "ripple_national_trust_bank",
+        "relation": "federal_national_trust_bank_charter_final_approval_and_effective_date",
+        "class": "RIPPLE_RELEASE_AND_OCC_CAS",
+        "as_of": "2026-10-26",
+        "sources": [
+          "ripple-national-trust-bank-final-occ-approval-20261026",
+          "occ-ripple-national-trust-bank-effective-20261026"
+        ]
+      },
+      {
+        "id": "E40",
+        "from": "ripple_national_trust_bank",
+        "to": "rlusd",
+        "relation": "approved_future_reserve_management_and_collateral_trustee_role; operational_start_not_verified",
+        "class": "RIPPLE_RELEASE_AND_OCC_CAS",
+        "as_of": "2026-10-26",
+        "sources": [
+          "ripple-national-trust-bank-final-occ-approval-20261026",
+          "occ-ripple-national-trust-bank-effective-20261026"
+        ]
       }
     ],
     "interpretation": "SBI is the common strategic node linking Ripple and Circle through disclosed equity interests and separate joint ventures. SBI VC Trade distributes USDC and RLUSD and handles JPYSC. SBI Ripple Asia has documented XRP remittance and XRPL PoC activity. These links do not establish a direct Ripple-Circle agreement, shared token, common settlement ledger or coordinated market strategy."
@@ -820,6 +916,12 @@
       "amount": "Coinbase proof-of-reserves page; separate supply/collateral snapshots",
       "type": "wrapped XRP representation and DeFi collateral",
       "not": "native XRP on XRPL or direct XRP spot demand"
+    },
+    {
+      "item": "BNY custody of USDC and RLUSD reserves",
+      "amount": "Not a token issuance or XRP flow; reserve totals are issuer liabilities held under separate custody mandates",
+      "type": "custody and institutional banking service",
+      "not": "shared Circle/Ripple reserves, BNY-owned XRP or direct Circle-Ripple partnership"
     }
   ],
   "market_observations": {
@@ -959,6 +1061,29 @@
       "xrpl_in_global_exchange_usdc_network_list": false,
       "observation_date": "2026-11-03",
       "classification": "OFFICIAL_COINBASE_HELP_AND_PRODUCT_DISCLOSURE"
+    },
+    "institutional_custody": {
+      "bny_circle": {
+        "announced": "2026-06-29",
+        "role": "Primary custodian of USDC reserves; USDC first stablecoin on BNY Digital Asset Custody platform; institutional clients can store, transfer, mint and burn USDC through BNY."
+      },
+      "bny_ripple": {
+        "announced": "2025-07-09",
+        "role": "Primary reserve custodian for RLUSD and transaction-banking provider to Ripple."
+      },
+      "ripple_national_trust_bank": {
+        "final_occ_approval": "2026-10-26",
+        "occ_effective_date": "2026-10-26",
+        "approved_roles": [
+          "manage segregated RLUSD reserves",
+          "act as collateral trustee for RLUSD holders",
+          "provide fiduciary digital-asset custody upon opening"
+        ],
+        "current_operational_status": "Final approval/effective status confirmed; commencement of all approved operations not independently verified. Ripple says RNTB will begin operations.",
+        "existing_issuer": "Standard Custody & Trust Company continues to issue RLUSD according to Ripple's announcement.",
+        "bny_role": "Ripple still identifies BNY as primary RLUSD reserve custodian."
+      },
+      "interpretation": "BNY is a common custodian for Circle USDC and Ripple RLUSD under separate mandates. This is an indirect institutional link, not direct Circle-Ripple ownership, a joint venture, shared reserves or a common issuer."
     }
   },
   "competing_causal_hypotheses": [
@@ -1125,6 +1250,26 @@
         "Track product-by-product network/collateral support changes, cbXRP supply/reserves, exchange collateral balances and XRP liquidation flows"
       ],
       "status": "SUPPORTED_PRODUCT_POSITIONING_INFERENCE"
+    },
+    {
+      "id": "H10",
+      "hypothesis": "BNY's separate USDC and RLUSD custody/mint-burn relationships may lower institutional operational friction and create a common traditional-finance gateway for competing stablecoins.",
+      "support": [
+        "BNY is primary USDC reserve custodian and offers institutional USDC custody/mint/burn",
+        "BNY is primary RLUSD reserve custodian and provides Ripple transaction banking",
+        "Ripple National Trust Bank has final OCC approval for reserve management/collateral trustee and fiduciary custody roles"
+      ],
+      "disconfirming": [
+        "Separate issuer mandates and segregated reserves remain",
+        "No shared reserve pool or direct Circle-Ripple agreement is established",
+        "RNTB operational commencement and any transition of reserve-management responsibilities remain unverified"
+      ],
+      "tests": [
+        "Track BNY USDC mint/burn/custody product adoption",
+        "Track RLUSD reserve reports and any RNTB commencement notices",
+        "Look for direct Circle-Ripple contracts, board rights or technical integration rather than inferring them from BNY"
+      ],
+      "status": "COMMON_CUSTODIAN_LINK_CONFIRMED; STRATEGIC_EFFECT_UNMEASURED"
     }
   ],
   "data_quality_controls": [
@@ -1142,7 +1287,10 @@
     "Distinguish issuer-supported blockchain networks from each exchange product's deposit/withdrawal network list.",
     "Distinguish a token listing and deposit/withdrawal support from collateral eligibility; Coinbase explicitly deferred RLUSD collateral on Global Exchange at launch.",
     "Coinbase Global Exchange's USDC network list excludes XRPL even though Circle issues native USDC on XRPL; do not generalize this product-specific limitation to every Coinbase product.",
-    "Native USDC or RLUSD on XRPL does not establish that XRP is used as the bridge asset in a payment or cross-chain transfer."
+    "Native USDC or RLUSD on XRPL does not establish that XRP is used as the bridge asset in a payment or cross-chain transfer.",
+    "Treat BNY's USDC and RLUSD custody mandates as separate issuer-specific arrangements; common custodian does not mean common reserves or a direct Circle-Ripple agreement.",
+    "Distinguish Ripple National Trust Bank's final charter approval/effective status from commencement of all approved operating activities; Ripple says RNTB will begin operations.",
+    "Do not infer that RNTB replaces BNY as RLUSD primary reserve custodian; Ripple's October 26 release still identifies BNY in that role."
   ],
   "event_timeline": [
     {
@@ -1249,6 +1397,21 @@
       "date": "2026-10-21",
       "event": "OCC issues final GENIUS Act rule, effective January 18, 2027.",
       "status": "OFFICIAL_FINAL_RULE"
+    },
+    {
+      "date": "2025-07-09",
+      "event": "Ripple selects BNY as primary custodian for RLUSD reserves and transaction-banking provider.",
+      "status": "OFFICIAL_RIPPLE_ANNOUNCEMENT"
+    },
+    {
+      "date": "2026-06-29",
+      "event": "Circle and BNY expand relationship; BNY becomes primary USDC reserve custodian and offers institutional USDC custody, transfer, mint and burn services.",
+      "status": "OFFICIAL_CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "date": "2026-10-26",
+      "event": "Ripple announces final OCC approval for Ripple National Trust Bank; OCC CAS records the charter as consummated/effective on the same date.",
+      "status": "RIPPLE_RELEASE_AND_OCC_CAS"
     }
   ],
   "source_records": [
@@ -1560,6 +1723,38 @@
       "type": "official_supported_networks_help_page",
       "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/sending-or-receiving-cryptocurrency/coinbase-wrapped-btc",
       "observation": "Coinbase's wrapped-assets table identifies cbXRP as representing XRP on Base; Coinbase says wrapped assets are backed 1:1 by the original asset."
+    },
+    {
+      "id": "circle-bny-stablecoin-services-20260629",
+      "publisher": "Circle",
+      "type": "official_company_announcement",
+      "date": "2026-06-29",
+      "url": "https://www.circle.com/pressroom/bny-expands-relationship-with-circle-and-adds-to-institutional-grade-stablecoin-enablement-services",
+      "observation": "BNY becomes primary custodian of USDC reserves; USDC first stablecoin on BNY Digital Asset Custody platform; institutional clients can store, transfer, mint and burn USDC through BNY."
+    },
+    {
+      "id": "ripple-bny-rlusd-reserve-custody-20250709",
+      "publisher": "Ripple",
+      "type": "official_company_announcement",
+      "date": "2025-07-09",
+      "url": "https://ripple.com/ripple-press/ripple-selects-bny-to-custody-ripple-usd-reserves/",
+      "observation": "Ripple selects BNY as primary custodian for RLUSD reserves and uses BNY transaction-banking services."
+    },
+    {
+      "id": "ripple-national-trust-bank-final-occ-approval-20261026",
+      "publisher": "Ripple",
+      "type": "official_company_and_regulatory_announcement",
+      "date": "2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "observation": "Ripple says RNTB received final OCC approval; approved activities include managing segregated RLUSD reserves, acting as collateral trustee and providing fiduciary digital-asset custody upon opening; Standard Custody continues to issue RLUSD; BNY remains primary reserve custodian."
+    },
+    {
+      "id": "occ-ripple-national-trust-bank-effective-20261026",
+      "publisher": "Office of the Comptroller of the Currency",
+      "type": "official_corporate_applications_search_record",
+      "date": "2026-10-26",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "observation": "OCC Corporate Applications Search shows Ripple National Trust Bank charter approved December 12, 2025 and consummated/effective October 26, 2026."
     }
   ],
   "architecture_state": {
@@ -1620,9 +1815,16 @@
     "Determine when RLUSD becomes eligible as collateral on Coinbase Global Exchange and whether eligible assets or haircuts change.",
     "Determine whether Coinbase adds native XRPL USDC deposits/withdrawals to Global Exchange or other Coinbase products.",
     "Measure current XRPL USDC versus RLUSD supply, AMM/DEX depth, spreads, velocity, redemptions and cross-chain flows at pinned ledger heights.",
-    "Reconcile cbXRP proof-of-reserves supply and reserve addresses against Base token supply and Morpho collateral at synchronized block heights."
+    "Reconcile cbXRP proof-of-reserves supply and reserve addresses against Base token supply and Morpho collateral at synchronized block heights.",
+    "Verify the operational commencement date and first live services of Ripple National Trust Bank after its October 26, 2026 final OCC approval.",
+    "Determine how RNTB reserve-management/collateral-trustee responsibilities coexist with BNY's continuing primary reserve-custodian role.",
+    "Measure BNY institutional USDC custody, mint/burn and transfer activity, and determine whether any XRPL-specific flows are disclosed.",
+    "Verify whether BNY's RLUSD custody mandate covers all supported chains or reserve assets only; do not infer custody of customer RLUSD balances."
   ],
   "next_actions": [
+    "Track RNTB opening and first operational OCC-supervised services; reconcile its role with BNY's RLUSD primary custody.",
+    "Track BNY's USDC custody/mint/burn product adoption and Circle's disclosed institutional flows.",
+    "Add BNY as a shared institutional node in the Circle/Ripple relationship graph while retaining separate issuer mandates.",
     "Capture pinned-ledger XRPL USDC and RLUSD balances, issuer mint/burn events, AMM/DEX depth and transfer velocity.",
     "Track Coinbase Global Exchange collateral eligibility and network support separately from retail/Prime listings.",
     "Reconcile cbXRP reserve addresses and supply against Base/Morpho collateral at a common block height.",
