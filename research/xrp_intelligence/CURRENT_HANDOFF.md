@@ -57,6 +57,7 @@ All artifacts are append-only and preserve source URLs, publication dates, evide
 - [SBI/Circle/Ripple/Coinbase/Japan rails](20261103T000103Z-sbi-circle-ripple-coinbase-japan-rails.json)
 - [SBI/Circle/Arc cross-rail graph](20261103T004500Z-sbi-circle-arc-cross-rail.json)
 - [SBI Japan multi-rail payment rails](20261103T005000Z-sbi-japan-multirail-payment-rails.json)
+- [ASK Coin entity disambiguation](20261103T005500Z-ask-coin-entity-disambiguation.json)
 - [Binance incident and XRP market microstructure — PR #1534](https://github.com/Barrot-Agent/B-Agent/pull/1534)
 - [Sentora/Firelight and XRP collateral risk — PR #1533](https://github.com/Barrot-Agent/B-Agent/pull/1533)
 
@@ -108,7 +109,7 @@ Verified live access: ChatGPT and GitHub. Claude, Grok, Gemini, Copilot, Codex, 
 ## Identity and exact-phrase investigations
 
 - **SBIC:** Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies are distinct from SBI Holdings, SBI VC Trade and SBI Ripple Asia. Tokyo SBIC's ChatGPT/Copilot training programme is a separate education reference, not an XRP institution.
-- **ASK Coin:** unresolved; Permission Coin ASK remains a candidate. No XRP integration established.
+- **ASK Coin:** ambiguous, not one resolved entity. Candidates now separately tracked: the inactive/untracked askcoin.net exchange listing (no reserve data), Permission Coin's ASK token (Polygon/Base, LayerZero OFT), a Telegram rewards bot with no identified contract, and a low-confidence separate ASK ticker associated with aosika.info. No XRP integration or SBI/Circle/Coinbase relationship is verified. Do not merge these identities.
 - **Actual capital:** distinguish equity purchases, token inventories, collateral, stablecoin liabilities, reserves, gross turnover, net purchases and POC flows. Do not convert the 9% Ripple equity stake into an XRP-token balance.
 - **Camilla Stephenson:** WholesomeMils remains a plausible but unconfirmed identity candidate. One public video is verified; the full channel inventory is incomplete. No XRP connection established.
 
