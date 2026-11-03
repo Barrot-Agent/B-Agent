@@ -1,0 +1,226 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T10:18:00Z",
+  "topic": "November 3 XRP market reference, derivatives provider/venue reconciliation and latest ETF flow completeness",
+  "evidence_policy": {
+    "preserve_raw_provider_values": true,
+    "normalize_native_intervals_without_overwriting": true,
+    "missing_is_null": true,
+    "no_aggregate_average": true,
+    "no_forecast": true
+  },
+  "market_reference": {
+    "class": "AGGREGATOR_REPORTED",
+    "observations": [
+      {
+        "source": "https://coinmarketcap.com/currencies/xrp/",
+        "retrieved_date": "2026-11-03",
+        "price_usd": 1.25,
+        "market_cap_usd": 79300000000,
+        "volume_24h_usd": 1460000000,
+        "circulating_supply_xrp": 63350000000
+      },
+      {
+        "source": "https://totalmarketcap.com/crypto/xrp-xrp",
+        "as_of_utc": "2026-11-03T03:17:00Z",
+        "price_usd": 1.25,
+        "market_cap_usd": 79181000000,
+        "change_24h_pct": -0.33,
+        "change_7d_pct": -3.99,
+        "change_30d_pct": -16.14,
+        "circulating_supply_xrp": 63351197653
+      }
+    ],
+    "interpretation": "The two aggregators place XRP around $1.25 and market capitalization around $79.2-$79.3B. Their different timestamps and vendor paths are preserved; no composite spot price is created."
+  },
+  "derivatives": {
+    "tradradar": {
+      "observed_at_utc": "2026-11-03T04:05:00Z",
+      "source": "https://tradradar.io/markets/xrp",
+      "price_mark_usd": 1.2503,
+      "price_change_24h_pct": -0.78,
+      "open_interest_usd": 1960000000,
+      "exchanges": 7,
+      "open_interest_change_24h_pct": 1.89,
+      "weighted_funding_pct_per_8h": 0.0064,
+      "liquidation_24h_usd_lower_bound": 2490000,
+      "long_liquidations_usd": 2300000,
+      "short_liquidations_usd": 187570,
+      "long_short_account_ratio": 3.46,
+      "long_account_share_pct": 77.6,
+      "exchange_oi_usd": {
+        "Binance": 492030000,
+        "Bybit": 353970000,
+        "Gate": 271590000,
+        "MEXC": 265590000,
+        "Bitget": 250050000,
+        "Hyperliquid": 209170000,
+        "OKX": 115210000
+      },
+      "exchange_funding_pct_per_8h": {
+        "Binance": 0.01,
+        "Bybit": -0.0054,
+        "Gate": 0.0082,
+        "MEXC": 0.01,
+        "Bitget": 0.0056,
+        "Hyperliquid": 0.01,
+        "OKX": 0.0092
+      },
+      "coverage_notes": [
+        "OI coverage is seven exchanges",
+        "Liquidation and long/short summary covers five exchanges",
+        "Long/short ratio counts accounts, not notional exposure",
+        "15-minute publication delay stated by provider"
+      ]
+    },
+    "kodexius": {
+      "observed_at_utc": "2026-11-03T06:04:00Z",
+      "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "open_interest_usd": 834520000,
+      "contracts": 7,
+      "exchanges": 5,
+      "weighted_funding_pct_per_8h": 0.0072,
+      "volume_24h_usd": 1110000000,
+      "oi_to_volume_ratio": 0.75,
+      "exchange_oi_usd": {
+        "Binance": 441060000,
+        "Bybit": 157440000,
+        "Hyperliquid": 104270000,
+        "OKX": 103710000,
+        "HTX": 28030000
+      },
+      "funding_examples_pct_per_8h": {
+        "Bybit": -0.0027,
+        "Binance": 0.01
+      },
+      "coverage_notes": [
+        "Seven linear perpetual contracts across five exchanges",
+        "Coverage is not equivalent to TradRadar's seven-exchange aggregate"
+      ]
+    },
+    "derived_discrepancy": {
+      "class": "DERIVED_RECONCILIATION",
+      "aggregate_ratio_tradradar_to_kodexius": 2.3486555145472847,
+      "aggregate_difference_usd": 1125480000,
+      "overlapping_venues": {
+        "Binance": {
+          "tradradar_usd": 492030000,
+          "kodexius_usd": 441060000,
+          "ratio": 1.1155604677363662
+        },
+        "Bybit": {
+          "tradradar_usd": 353970000,
+          "kodexius_usd": 157440000,
+          "ratio": 2.248096446700203
+        },
+        "Hyperliquid": {
+          "tradradar_usd": 209170000,
+          "kodexius_usd": 104270000,
+          "ratio": 2.006331607167867
+        },
+        "OKX": {
+          "tradradar_usd": 115210000,
+          "kodexius_usd": 103710000,
+          "ratio": 1.110878408256194
+        }
+      },
+      "interpretation": "The aggregate difference is not explained by exchange-set coverage alone. Binance and OKX are relatively close, while Bybit is about 2.25x and Hyperliquid about 2.01x across the two provider snapshots. The observations are 1 hour 59 minutes apart, so a real intraperiod change remains possible. Contract mapping, units, stale cache and aggregation rules also remain candidate causes.",
+      "next_test": "Obtain exact contract identifiers, native open-interest units, mark/index prices and synchronized timestamps from each venue's public API; recompute USD notional independently. Keep provider observations separate until this is done."
+    },
+    "hypotheses": [
+      {
+        "id": "H-OI-MAPPING",
+        "hypothesis": "Venue-specific contract mapping or unit conversion explains most of the Bybit/Hyperliquid discrepancy.",
+        "support": "Large discrepancies are concentrated in Bybit and Hyperliquid while Binance and OKX are much closer.",
+        "counterevidence": "Provider snapshots are not synchronized; real OI may have moved between 04:05 and 06:04 UTC.",
+        "test": "Recompute each exact contract from native exchange units and mark prices at matched timestamps."
+      },
+      {
+        "id": "H-OI-REAL-CHANGE",
+        "hypothesis": "A genuine venue-specific OI change occurred during the roughly two-hour observation gap.",
+        "support": "The provider timestamps differ by almost two hours and open interest can change quickly.",
+        "counterevidence": "The near-stability of Binance/OKX alongside 2x changes on Bybit/Hyperliquid makes a broad market move less likely.",
+        "test": "Compare five-minute exchange-native history around both cutoffs."
+      },
+      {
+        "id": "H-CROWDED-LONGS",
+        "hypothesis": "The market has meaningful long-account crowding and long liquidation exposure.",
+        "support": "TradRadar reports 77.6% long accounts and $2.30M long liquidations out of at least $2.49M total.",
+        "counterevidence": "Account counts are not notional; Bybit funding is negative while aggregate funding is positive; OI itself is not reconciled.",
+        "test": "Measure account and notional positioning separately and test liquidation sensitivity out of sample."
+      }
+    ]
+  },
+  "etf_flows": {
+    "cryptoetf": {
+      "source": "https://cryptoetf.today/en/xrp-etf-flows",
+      "published_at_utc": "2026-11-03T05:47:00Z",
+      "trading_date": "2026-11-02",
+      "universe": "Five US spot XRP ETFs",
+      "funds_reporting": 2,
+      "funds_total": 5,
+      "partial_net_flow_usd": 0,
+      "missing_funds": [
+        "XRPZ",
+        "XRPC",
+        "GXRP"
+      ],
+      "holdings_xrp_as_of": "2026-11-02",
+      "holdings_xrp": 1142172991,
+      "aum_usd_approx": 1430000000,
+      "cumulative_net_flow_usd_approx": 1810000000,
+      "ytd_net_flow_usd_approx": 648400000,
+      "thirty_trading_day_flow_usd_approx": 140200000,
+      "treatment": "Nov 2 zero is partial; never fill missing three funds with zero."
+    },
+    "completed_oct30": {
+      "sources": [
+        {
+          "name": "TradingDigits",
+          "source": "https://www.tradingdigits.io/ar/xrp-etf-inflows-tracker",
+          "updated_at_utc": "2026-11-03T00:43:34Z",
+          "flow_usd_millions": -0.49,
+          "components_usd_millions": {
+            "XRP": -0.69,
+            "GXRP": -0.72,
+            "TOXR": 0,
+            "XRPC": 0.92,
+            "XRPZ": 0
+          }
+        },
+        {
+          "name": "ByKaranteli",
+          "source": "https://bykaranteli.com/etf/xrp",
+          "refreshed_at_utc": "2026-11-01T22:49:00Z",
+          "flow_usd": -496000,
+          "five_day_flow_usd": 4300000,
+          "net_assets_usd": 1420000000,
+          "cumulative_flow_usd": 1810000000
+        }
+      ],
+      "interpretation": "Two aggregators are consistent on an October 30 net outflow of approximately $0.49-$0.496M. They are not independent primary sources because both rely on issuer disclosures."
+    },
+    "coverage_warning": "The five-fund spot-ETF series is distinct from XRP Insights' six-spot-plus-BITW seven-product holdings universe. Preserve universe IDs and do not sum their holdings or flows without look-through adjustment."
+  },
+  "feature_store_rules": [
+    "Store each provider's aggregate OI separately; do not average TradRadar and Kodexius.",
+    "Store OI in native contract units, USD notional, contract type, venue, mark price and exact observation timestamp.",
+    "Store venue overlap and contract coverage; same venue name does not prove same contract set or methodology.",
+    "Keep funding native interval and standardized interval fields separately.",
+    "Keep long/short account ratios distinct from notional long/short exposure.",
+    "Store liquidation coverage count and missing venues; a five-exchange liquidation total is not a seven-exchange total.",
+    "ETF missing fund observations remain null; partial zero is not final zero.",
+    "Keep five-fund ETF flows separate from six-spot-plus-BITW holdings."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Provider OI is not reconciled and ETF Nov 2 flows are incomplete; no calibrated directional edge is established."
+  },
+  "next_actions": [
+    "Obtain synchronized exchange-native OI snapshots for Binance, Bybit, Hyperliquid and OKX.",
+    "Reconcile contract identifiers and unit conversions, especially Bybit and Hyperliquid.",
+    "Capture final Nov 2 ETF flows after all five funds report.",
+    "Continue event-study and fixed-horizon walk-forward design; do not issue forecasts from the current aggregate indicators."
+  ],
+  "safety": "Public market data only. No trading, market manipulation, private data, exchange authentication or real-money action."
+}
