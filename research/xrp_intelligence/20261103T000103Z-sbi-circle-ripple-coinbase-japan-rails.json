@@ -117,8 +117,8 @@
     {
       "id": "F12",
       "class": "CONFIRMED_OFFICIAL_COMPANY_DISCLOSURE",
-      "finding": "Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and the Coinbase app on October 28, 2026.",
-      "implication": "Coinbase now distributes both USDC and RLUSD. This is a direct product listing, not proof of a Ripple-Coinbase equity partnership or universal RLUSD collateral eligibility.",
+      "finding": "Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and the Coinbase app for supported regions on October 28, 2026. At launch, deposits and withdrawals are supported on XRPL, Base and Ethereum. Coinbase explicitly says availability for Coinbase Global Exchange customers, including using RLUSD as collateral, will follow. Ripple says it will provide liquidity on Base.",
+      "implication": "RLUSD is present on XRPL and Coinbase distribution rails, but listing and network support are distinct from Global Exchange collateral eligibility. The launch does not establish that RLUSD is already accepted as margin collateral.",
       "sources": [
         "coinbase-rlusd-listing-20261028"
       ]
@@ -188,6 +188,34 @@
       "implication": "The product is a customer-to-SBI VC Trade token lending arrangement, not a deposit and not a collateralized customer loan. The maximum rates are variable programme terms, not guaranteed risk-free yields.",
       "sources": [
         "sbi-jpysc-balances-20261102"
+      ]
+    },
+    {
+      "id": "F20",
+      "class": "CONFIRMED_OFFICIAL_CIRCLE_PRODUCT_DISCLOSURE",
+      "finding": "Circle launched native USDC on XRPL mainnet on June 12, 2025. Circle Mint and Circle APIs support USDC on XRPL without a third-party bridge. Circle's current USDC page lists 38 natively supported blockchains as of September 16, 2026, including XRPL, and reports $70.0B USDC in circulation as of October 29, 2026 with reserves equal to or exceeding circulation.",
+      "implication": "USDC and RLUSD are both native stablecoin options on XRPL. This creates potential dollar-liquidity competition and complementarity on XRPL, but native issuance alone does not prove active DEX depth, institutional usage or XRP bridge-asset demand.",
+      "sources": [
+        "circle-usdc-xrpl-native-20250612",
+        "circle-usdc-supported-networks-20260916"
+      ]
+    },
+    {
+      "id": "F21",
+      "class": "CONFIRMED_OFFICIAL_COINBASE_PRODUCT_DISCLOSURE",
+      "finding": "Coinbase's October 28, 2026 RLUSD listing supports deposits and withdrawals on XRPL, Base and Ethereum for supported regions through Coinbase Prime, Coinbase Exchange and the retail app. Coinbase says Global Exchange availability, including RLUSD collateral use, will follow. Ripple separately says it will provide liquidity on Base.",
+      "implication": "Coinbase provides a multi-chain RLUSD access channel, while RLUSD margin collateral on Coinbase Global Exchange was not available at launch. Ripple's Base liquidity commitment is not proof of XRP spot purchases.",
+      "sources": [
+        "coinbase-rlusd-listing-20261028"
+      ]
+    },
+    {
+      "id": "F22",
+      "class": "CONFIRMED_OFFICIAL_COINBASE_GLOBAL_EXCHANGE_PRODUCT_DISCLOSURE",
+      "finding": "Coinbase Global Exchange's current help page lists XRP and USDC among eligible collateral assets but does not list RLUSD. The same page lists USDC deposit networks as Ethereum, Arbitrum, Avalanche C-Chain, Polygon, Solana, Base and Optimism; XRPL is not on that Global Exchange USDC network list.",
+      "implication": "Coinbase's Global Exchange product currently distinguishes XRP collateral from stablecoin network access: native XRP is an eligible collateral asset, while Circle-native USDC on XRPL is not listed as a supported Global Exchange USDC deposit network and RLUSD collateral is deferred. This is product-specific and may change.",
+      "sources": [
+        "coinbase-global-exchange-collateral-networks-20261103"
       ]
     }
   ],
@@ -317,6 +345,22 @@
       {
         "id": "chatgpt",
         "type": "AI_service"
+      },
+      {
+        "id": "xrp",
+        "type": "native_crypto_asset"
+      },
+      {
+        "id": "cbxrp",
+        "type": "coinbase_wrapped_asset"
+      },
+      {
+        "id": "base",
+        "type": "layer_2_network"
+      },
+      {
+        "id": "ethereum",
+        "type": "layer_1_network"
       }
     ],
     "edges": [
@@ -597,6 +641,105 @@
           "tokyo-sbic-profile",
           "tokyo-sbic-chatgpt-training-20250612"
         ]
+      },
+      {
+        "id": "E26",
+        "from": "circle",
+        "to": "usdc",
+        "relation": "issuer_of",
+        "class": "OFFICIAL_CIRCLE_PRODUCT_DISCLOSURE",
+        "as_of": "2026-10-29",
+        "sources": [
+          "circle-usdc-supported-networks-20260916"
+        ]
+      },
+      {
+        "id": "E27",
+        "from": "usdc",
+        "to": "xrpl",
+        "relation": "native_issuance_and_circle_mint_api_support",
+        "class": "OFFICIAL_CIRCLE_LAUNCH",
+        "as_of": "2025-06-12",
+        "sources": [
+          "circle-usdc-xrpl-native-20250612"
+        ]
+      },
+      {
+        "id": "E28",
+        "from": "coinbase",
+        "to": "rlusd",
+        "relation": "supports_deposit_withdrawal_on_xrpl_base_ethereum_for_supported_regions",
+        "class": "OFFICIAL_COINBASE_LISTING",
+        "as_of": "2026-10-28",
+        "sources": [
+          "coinbase-rlusd-listing-20261028"
+        ]
+      },
+      {
+        "id": "E29",
+        "from": "ripple",
+        "to": "base",
+        "relation": "announced_rlusd_liquidity_support",
+        "class": "OFFICIAL_COINBASE_LISTING_DISCLOSURE",
+        "as_of": "2026-10-28",
+        "sources": [
+          "coinbase-rlusd-listing-20261028"
+        ]
+      },
+      {
+        "id": "E30",
+        "from": "coinbase",
+        "to": "xrp",
+        "relation": "eligible_collateral_on_coinbase_global_exchange",
+        "class": "OFFICIAL_COINBASE_HELP_PAGE",
+        "as_of": "2026-11-03",
+        "sources": [
+          "coinbase-global-exchange-collateral-networks-20261103"
+        ]
+      },
+      {
+        "id": "E31",
+        "from": "coinbase",
+        "to": "usdc",
+        "relation": "global_exchange_accepts_as_collateral_but_supported_network_list_excludes_xrpl",
+        "class": "OFFICIAL_COINBASE_HELP_PAGE",
+        "as_of": "2026-11-03",
+        "sources": [
+          "coinbase-global-exchange-collateral-networks-20261103"
+        ]
+      },
+      {
+        "id": "E32",
+        "from": "coinbase",
+        "to": "cbxrp",
+        "relation": "issues_wrapped_xrp_on_base",
+        "class": "OFFICIAL_COINBASE_PROOF_OF_RESERVES",
+        "as_of": "2026-11-03",
+        "sources": [
+          "coinbase-cbxrp-proof-of-reserves"
+        ]
+      },
+      {
+        "id": "E33",
+        "from": "cbxrp",
+        "to": "xrp",
+        "relation": "one_to_one_reserve_backing_claim",
+        "class": "OFFICIAL_COINBASE_PROOF_OF_RESERVES",
+        "as_of": "2026-11-03",
+        "sources": [
+          "coinbase-cbxrp-proof-of-reserves"
+        ]
+      },
+      {
+        "id": "E34",
+        "from": "cbxrp",
+        "to": "base",
+        "relation": "wrapped_asset_deployment",
+        "class": "OFFICIAL_COINBASE_PROOF_OF_RESERVES",
+        "as_of": "2026-11-03",
+        "sources": [
+          "coinbase-cbxrp-proof-of-reserves"
+        ]
       }
     ],
     "interpretation": "SBI is the common strategic node linking Ripple and Circle through disclosed equity interests and separate joint ventures. SBI VC Trade distributes USDC and RLUSD and handles JPYSC. SBI Ripple Asia has documented XRP remittance and XRPL PoC activity. These links do not establish a direct Ripple-Circle agreement, shared token, common settlement ledger or coordinated market strategy."
@@ -655,6 +798,24 @@
       "amount": "not disclosed",
       "type": "conceptual proof of concept",
       "not": "production issuance or capital deployed"
+    },
+    {
+      "item": "Native USDC on XRPL",
+      "amount": "Included in Circle multi-chain USDC circulation; XRPL-specific supply not captured",
+      "type": "issuer stablecoin liability on XRPL",
+      "not": "XRP spot purchases or XRP collateral"
+    },
+    {
+      "item": "RLUSD on XRPL/Base/Ethereum",
+      "amount": "Coinbase network support confirmed; chain-specific supply not captured",
+      "type": "issuer stablecoin distribution",
+      "not": "RLUSD collateral eligibility on Coinbase Global Exchange at launch"
+    },
+    {
+      "item": "cbXRP on Base",
+      "amount": "Coinbase proof-of-reserves page; separate supply/collateral snapshots",
+      "type": "wrapped XRP representation and DeFi collateral",
+      "not": "native XRP on XRPL or direct XRP spot demand"
     }
   ],
   "market_observations": {
@@ -735,6 +896,65 @@
       },
       "classification": "THIRD_PARTY_MULTI_PERIOD_RESEARCH_NOT_LIVE_SNAPSHOT",
       "limitation": "The approximate bid and ask figures and total-depth figure are rounded report summaries; do not force them into an exact arithmetic identity or treat them as November 2 executable depth."
+    },
+    "circle_usdc": {
+      "native_network_count": 38,
+      "network_snapshot_date": "2026-09-16",
+      "xrpl_native": true,
+      "circulation_usd": 70000000000,
+      "circulation_as_of": "2026-10-29",
+      "reserve_claim": "Circle states reserves equal or exceed circulation; monthly Big Four attestations.",
+      "circle_mint_and_api_support": "USDC on XRPL native; Circle Mint/APIs support XRPL and cross-chain access without a third-party bridge.",
+      "classification": "OFFICIAL_ISSUER_DISCLOSURE"
+    },
+    "coinbase_product_support": {
+      "rlusd": {
+        "products": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase retail app"
+        ],
+        "supported_regions_only": true,
+        "deposit_withdraw_networks": [
+          "XRPL",
+          "Base",
+          "Ethereum"
+        ],
+        "global_exchange_collateral": "NOT_AT_LAUNCH; Coinbase said Global Exchange availability including collateral use would follow.",
+        "ripple_base_liquidity": "Ripple announced it would provide liquidity on Base."
+      },
+      "global_exchange_collateral_assets": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "EURC",
+        "XRP",
+        "ADA",
+        "cbETH",
+        "DOGE",
+        "HBAR",
+        "LINK",
+        "AAVE",
+        "NEAR",
+        "TAO",
+        "HYPE",
+        "PAXG",
+        "USDT",
+        "USDC"
+      ],
+      "rlusd_in_global_exchange_collateral_list": false,
+      "global_exchange_usdc_networks": [
+        "Ethereum",
+        "Arbitrum",
+        "Avalanche C-Chain",
+        "Polygon",
+        "Solana",
+        "Base",
+        "Optimism"
+      ],
+      "xrpl_in_global_exchange_usdc_network_list": false,
+      "observation_date": "2026-11-03",
+      "classification": "OFFICIAL_COINBASE_HELP_AND_PRODUCT_DISCLOSURE"
     }
   },
   "competing_causal_hypotheses": [
@@ -862,6 +1082,44 @@
         "Trace corridor settlement legs, XRP inventory/turnover and end-to-end payment costs"
       ],
       "status": "COMPETING_USE_CASES_NOT_RESOLVED"
+    },
+    {
+      "id": "H8",
+      "hypothesis": "Native USDC and RLUSD on XRPL may deepen dollar liquidity and institutional choice, but may also fragment liquidity across issuers, venues and chains.",
+      "support": [
+        "Circle launched native USDC on XRPL",
+        "Coinbase RLUSD deposits/withdrawals include XRPL",
+        "Circle supports 38 native networks and Circle Mint/API cross-chain access"
+      ],
+      "disconfirming": [
+        "No synchronized XRPL DEX/order-book depth or issuer-level net flows captured",
+        "Token availability does not prove active use",
+        "Coinbase Global Exchange USDC network list excludes XRPL"
+      ],
+      "tests": [
+        "Measure issuer-specific XRPL balances, AMM/DEX depth, transfer velocity, redemption and cross-chain mint/burn flows at pinned ledger heights"
+      ],
+      "status": "PLAUSIBLE_COMPETITION_AND_COMPLEMENTARITY_NOT_MEASURED"
+    },
+    {
+      "id": "H9",
+      "hypothesis": "Coinbase's combination of native XRP collateral, cbXRP on Base and multi-chain RLUSD distribution gives it distinct access and collateral roles across XRP and stablecoin markets.",
+      "support": [
+        "XRP is listed as Coinbase Global Exchange collateral",
+        "cbXRP is a Coinbase-wrapped asset on Base with proof-of-reserves page",
+        "RLUSD deposits/withdrawals supported on XRPL/Base/Ethereum",
+        "RLUSD collateral on Global Exchange deferred at launch",
+        "USDC on XRPL not listed in Global Exchange supported network list"
+      ],
+      "disconfirming": [
+        "Different Coinbase products and regional availability must not be conflated",
+        "Collateral eligibility and supported networks can change",
+        "No evidence of coordinated market conduct or XRP price support"
+      ],
+      "tests": [
+        "Track product-by-product network/collateral support changes, cbXRP supply/reserves, exchange collateral balances and XRP liquidation flows"
+      ],
+      "status": "SUPPORTED_PRODUCT_POSITIONING_INFERENCE"
     }
   ],
   "data_quality_controls": [
@@ -875,7 +1133,11 @@
     "Do not infer XRP spot purchases from stablecoin issuance, balances, exchange reserves or corporate equity investments.",
     "Do not infer XRP bridge usage from XRPL deployment or tokenization PoCs.",
     "Do not average XRP OI providers or infer independence from brand names; capture raw venue-level inputs.",
-    "Do not treat Binance outflows, Circle freezes or XRP liquidations as direct XRP selling without transaction and venue-flow linkage."
+    "Do not treat Binance outflows, Circle freezes or XRP liquidations as direct XRP selling without transaction and venue-flow linkage.",
+    "Distinguish issuer-supported blockchain networks from each exchange product's deposit/withdrawal network list.",
+    "Distinguish a token listing and deposit/withdrawal support from collateral eligibility; Coinbase explicitly deferred RLUSD collateral on Global Exchange at launch.",
+    "Coinbase Global Exchange's USDC network list excludes XRPL even though Circle issues native USDC on XRPL; do not generalize this product-specific limitation to every Coinbase product.",
+    "Native USDC or RLUSD on XRPL does not establish that XRP is used as the bridge asset in a payment or cross-chain transfer."
   ],
   "event_timeline": [
     {
@@ -1240,6 +1502,45 @@
       "date": "2026-11-02",
       "url": "https://www.sbivc.co.jp/jpysc?tab=lending",
       "observation": "Product page describes customer JPYSC lending to SBI VC Trade, variable terms and rates, and risk/early-cancellation limitations. The November 2 release is the authoritative source for the reported balance thresholds and their inclusion in the handling total."
+    },
+    {
+      "id": "circle-usdc-xrpl-native-20250612",
+      "publisher": "Circle",
+      "type": "official_product_launch",
+      "date": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "observation": "USDC launched natively on XRPL mainnet; Circle Mint and APIs support XRPL; no third-party bridge required."
+    },
+    {
+      "id": "circle-usdc-supported-networks-20260916",
+      "publisher": "Circle",
+      "type": "official_issuer_product_and_supply_disclosure",
+      "date": "2026-09-16",
+      "url": "https://www.circle.com/usdc",
+      "observation": "Circle says USDC is natively issued on 38 blockchains as of September 16, 2026, including XRPL; reports $70.0B circulation as of October 29, 2026 and reserves equal to or greater than circulation."
+    },
+    {
+      "id": "coinbase-rlusd-listing-20261028",
+      "publisher": "Coinbase",
+      "type": "official_product_listing",
+      "date": "2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "observation": "RLUSD on Prime, Coinbase Exchange and retail app for supported regions; deposits/withdrawals on XRPL, Base and Ethereum; Global Exchange and RLUSD collateral support to follow; Ripple to provide liquidity on Base."
+    },
+    {
+      "id": "coinbase-global-exchange-collateral-networks-20261103",
+      "publisher": "Coinbase",
+      "type": "official_product_support_disclosure",
+      "date": "2026-11-03",
+      "url": "https://help.coinbase.com/en/global-exchange/trading-deposits-withdrawals/deposit-funds",
+      "observation": "Global Exchange lists XRP and USDC as collateral assets but not RLUSD; USDC supported deposit networks listed as Ethereum, Arbitrum, Avalanche C-Chain, Polygon, Solana, Base and Optimism, not XRPL."
+    },
+    {
+      "id": "coinbase-cbxrp-proof-of-reserves",
+      "publisher": "Coinbase",
+      "type": "official_proof_of_reserves_page",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "observation": "Coinbase publishes cbXRP reserve and supply information; cbXRP is a wrapped XRP representation on Base. This is distinct from native XRP on XRPL."
     }
   ],
   "architecture_state": {
@@ -1296,9 +1597,16 @@
     "Capture Circle Q3 results on November 4 and compare USDC circulation, reserve yield, distribution expenses and revenue sharing.",
     "Reconcile XRP OI from raw venue APIs at a common UTC cutoff and fixed contract universe.",
     "Verify WholesomeMils identity and enumerate all public videos; current inventory is incomplete.",
-    "Resolve 'ASK Coin', 'actual capital' and 'SBIC, ChatGPT SBIC' with source-level evidence."
+    "Resolve 'ASK Coin', 'actual capital' and 'SBIC, ChatGPT SBIC' with source-level evidence.",
+    "Determine when RLUSD becomes eligible as collateral on Coinbase Global Exchange and whether eligible assets or haircuts change.",
+    "Determine whether Coinbase adds native XRPL USDC deposits/withdrawals to Global Exchange or other Coinbase products.",
+    "Measure current XRPL USDC versus RLUSD supply, AMM/DEX depth, spreads, velocity, redemptions and cross-chain flows at pinned ledger heights.",
+    "Reconcile cbXRP proof-of-reserves supply and reserve addresses against Base token supply and Morpho collateral at synchronized block heights."
   ],
   "next_actions": [
+    "Capture pinned-ledger XRPL USDC and RLUSD balances, issuer mint/burn events, AMM/DEX depth and transfer velocity.",
+    "Track Coinbase Global Exchange collateral eligibility and network support separately from retail/Prime listings.",
+    "Reconcile cbXRP reserve addresses and supply against Base/Morpho collateral at a common block height.",
     "Track the OCC GENIUS Act rule's January 18, 2027 effective date and separate AML/OFAC rulemaking; map issuer-specific applicability to Circle, Ripple and exchange custody/distribution.",
     "Track Japan FSA foreign trust-equivalence implementation and distinguish regulator rulemaking from SBI VC Trade's own RLUSD classification.",
     "Capture SBI VC Trade token/network support and deposit/withdrawal instructions for USDC, RLUSD and JPYSC.",
@@ -1317,7 +1625,8 @@
     "coinbase_q3_stablecoin_revenue_yoy_change_pct": -5.43,
     "coinbase_q3_usdc_rewards_expense_yoy_change_pct": 15.84,
     "notes": "OI ratios compare different provider snapshots and are descriptive only. Coinbase percentage changes are derived from SEC filing amounts; stablecoin revenue is not net profit.",
-    "jpysc_balance_rule": "JPYSC handling balance = on-chain balance + JPYSC Lending balance. The >¥10B lending balance is a subset of the >¥30B handling total; do not add them."
+    "jpysc_balance_rule": "JPYSC handling balance = on-chain balance + JPYSC Lending balance. The >¥10B lending balance is a subset of the >¥30B handling total; do not add them.",
+    "coinbase_product_distinction": "XRP is listed as Global Exchange collateral; RLUSD collateral is deferred at launch; USDC collateral is listed but the Global Exchange USDC network list excludes XRPL."
   },
   "limitations": [
     "No private Databricks data was accessed.",
