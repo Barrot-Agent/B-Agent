@@ -34,3 +34,34 @@ Artifact: `research/xrp_intelligence/20261103T131821Z-evernorth-cantor-equity-li
 
 ## Next action
 After exact-head CI/gate verification, continue monitoring SEC facility commencement/drawdowns and reconcile issuer-level ETF flow data. Do not count capacity as capital, equity issuance as XRP buying, or partial/provisional ETF flows as final.
+
+
+## Continuation update — 2026-11-03 13:25 UTC
+
+### Verified pull requests
+- Research: [PR #1586](https://github.com/Barrot-Agent/B-Agent/pull/1586), initial content head `f77c3f349780afc90151d5435ca8ec9cb4e02455`.
+  - Core CI [41643574732](https://github.com/Barrot-Agent/B-Agent/actions/runs/41643574732) completed successfully.
+  - Fail-closed gate [41643574897](https://github.com/Barrot-Agent/B-Agent/actions/runs/41643574897) completed successfully with merge disabled.
+- Merge-queue containment: [PR #1587](https://github.com/Barrot-Agent/B-Agent/pull/1587), head `b278f6401bcd3d20ebf8e117b93d467a3843cad2`.
+  - Core CI [41643909051](https://github.com/Barrot-Agent/B-Agent/actions/runs/41643909051): 343 tests and 8 subtests passed in 7.76 seconds.
+  - Fail-closed gate [41643908807](https://github.com/Barrot-Agent/B-Agent/actions/runs/41643908807) passed.
+- Cross-analysis read-only containment: [PR #1588](https://github.com/Barrot-Agent/B-Agent/pull/1588), head `db74f2eaea3481903d000d85a543fd7969897e6d`.
+  - Core CI [41644072882](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644072882): 343 tests and 8 subtests passed in 7.94 seconds.
+  - Fail-closed gate [41644072696](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644072696) passed.
+- All three PRs remain draft/open/unmerged. No merge or deployment occurred.
+- PR #1587 disables the workflow that could update branches and merge all open PRs with `mode=all`.
+- PR #1588 retains Cross Analysis outputs as 30-day workflow artifacts and removes direct commits/pushes to main.
+
+### Main preservation
+- Main remains `6f0a4c34d21c6aa20c344b4b4107d2f59f7b29a1` at the latest search in this run.
+- New branches were created from that exact main SHA.
+- No main files were written or changed by this continuation.
+- No reset, clean, stash, discard, force-push, merge, deployment or trading operation occurred.
+
+### Remaining main risks
+- Scheduler Tick still has write-capable permissions and a scheduled queue commit/push path.
+- Subscriber Sync, public brain-corpus export, scheduled issue writers and the legacy merge queue still require current-main containment/review. PR #1585 is broad and remains a proposal; its generated corpus deletions are not authorized for merge.
+- A controlled-approval zero-job workflow run remains a separate unresolved trigger/reporting issue.
+
+### Next action
+Continue from live main, not stale PR bases. Prioritize the scheduler's main-branch write path and remaining external-data/issue writers, while keeping XRP facility capacity distinct from realized cash and confirmed XRP acquisitions.
