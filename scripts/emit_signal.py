@@ -38,7 +38,7 @@ def _score_from_text(text: str):
             label = "neutral"
         return score, confidence, label
     except Exception:
-        return 50, 0.5, "neutral"
+        return 50, 0.0, "neutral"
 
 
 
@@ -55,6 +55,8 @@ def _sentiment_feature_metadata(label: str, confidence: float):
         "sentiment_label": normalized,
         "confidence_is_calibrated_probability": False,
         "confidence_semantics": "Uncalibrated LLM sentiment-classifier confidence; not a probability of price direction.",
+        "sentiment_score_semantics": "0-100 blended LLM/news sentiment index; not a return forecast or probability.",
+        "sentiment_label_source": "LLM sentiment classifier output.",
         "target": None,
         "horizon_seconds": None,
         "source_cutoff_utc": None,

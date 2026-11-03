@@ -54,3 +54,12 @@ def test_public_tool_labels_sentiment_as_not_a_forecast():
     assert 'title: "Latest XRP Sentiment Feature"' in landing
     assert "not a price forecast" in landing
     assert "do not validate Barrot's current sentiment feature" in landing
+
+
+
+def test_malformed_model_response_does_not_invent_confidence():
+    module = _load_emit_signal()
+    score, confidence, label = module._score_from_text("not valid json")
+    assert score == 50
+    assert confidence == 0.0
+    assert label == "neutral"

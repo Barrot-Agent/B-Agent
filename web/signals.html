@@ -54,7 +54,7 @@ async function verify() {
     const sig = await s.json();
     const d = document.getElementById('dir');
     const valid = sig && sig.signal_kind === 'sentiment_feature_only';
-    const unavailable = !valid || String(sig.source || '').toLowerCase().includes('unavailable');
+    const unavailable = !valid || String(sig.source || '').toLowerCase().includes('unavailable') || !Number.isFinite(Number(sig.confidence)) || Number(sig.confidence) <= 0;
     d.textContent = unavailable ? 'UNAVAILABLE' : String(sig.sentiment_label || 'UNCLASSIFIED').toUpperCase();
     d.className = unavailable ? 'unavailable' : 'sentiment';
     document.getElementById('score').textContent = 'Sentiment score (0-100): ' + (valid && Number.isFinite(Number(sig.score)) ? sig.score : '—');

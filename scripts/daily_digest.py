@@ -40,7 +40,7 @@ def main():
     signal = _read_json("web/latest_signal.json")
     lines = ["## Barrot Daily Digest", ""]
 
-    if signal.get("signal_kind") == "sentiment_feature_only":
+    if signal.get("signal_kind") == "sentiment_feature_only" and float(signal.get("confidence", 0) or 0) > 0:
         lines.append(f"**Latest XRP sentiment feature (not a price forecast):** label {signal.get('sentiment_label', 'unclassified')}, score {signal.get('score')}/100, source `{signal.get('source')}`")
         lines.append("**Confidence semantics:** uncalibrated model-reported sentiment confidence; not a probability of price direction.")
     else:
