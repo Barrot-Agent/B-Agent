@@ -213,6 +213,10 @@ def _approved_competitions() -> set[str]:
         raise SystemExit("KAGGLE_COMPETITION_ALLOWLIST contains duplicate slugs")
     if any(not re.fullmatch(r"[a-z0-9][a-z0-9-]*", item) for item in values):
         raise SystemExit("KAGGLE_COMPETITION_ALLOWLIST contains an invalid slug")
+    if len(values) > MAX_COMPETITIONS:
+        raise SystemExit(
+            f"KAGGLE_COMPETITION_ALLOWLIST exceeds KAGGLE_MAX_COMPETITIONS={MAX_COMPETITIONS}"
+        )
     return set(values)
 
 
