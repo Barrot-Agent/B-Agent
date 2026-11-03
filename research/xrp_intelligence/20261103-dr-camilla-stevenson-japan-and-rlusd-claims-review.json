@@ -94,32 +94,37 @@
       "supporting_sources": [
         {
           "publisher": "Ripple",
-          "url": "https://ripple.com/legal/rlusd-terms/",
-          "type": "issuer_terms"
+          "url": "https://ripple.com/legal/stablecoin/",
+          "type": "issuer_terms",
+          "evidence": "Section 11.5 permits address blacklisting/freezing and burning/reissuing RLUSD in specified legal/compliance circumstances."
         },
         {
           "publisher": "Ripple",
-          "url": "https://github.com/ripple/rlusd-issuer-settings/blob/main/config.json",
-          "type": "issuer_configuration"
+          "url": "https://github.com/ripple/RLUSD-Implementation/blob/main/doc/rlusd-xrpl-settings.md",
+          "type": "issuer_configuration",
+          "evidence": "Global Freeze enabled; No Freeze disabled; Allow Trust Line Clawback enabled."
         },
         {
           "publisher": "XRPL.org",
-          "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezing-tokens",
-          "type": "protocol_documentation"
+          "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
+          "type": "protocol_documentation",
+          "evidence": "Issuer can freeze issued tokens; XRP is native and cannot be frozen at protocol level."
         },
         {
           "publisher": "XRPL.org",
           "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/clawing-back-tokens",
-          "type": "protocol_documentation"
+          "type": "protocol_documentation",
+          "evidence": "Trust-line tokens can be clawed back if issuer enables Allow Clawback; XRP is not a token and cannot be clawed back."
         }
       ],
       "findings": [
-        "Ripple's RLUSD terms permit issuer controls including blacklisting/freezing and other legally required actions.",
-        "Ripple's public RLUSD issuer configuration enables the global-freeze and trust-line-clawback flags; the issuer can use these controls under the applicable rules.",
-        "XRP is the native XRPL asset and does not have an issuer that can freeze or claw back XRP at the protocol level. Custodians and exchanges can still restrict assets held in their custody.",
-        "The statement that RLUSD usage necessarily increases material XRP demand is not established. RLUSD is the stated settlement asset in the C2FO Instant Pay design; XRP is used for XRPL transaction fees, but product-specific XRP fee demand has not been measured."
+        "Ripple's RLUSD user terms, last updated October 14, 2026, allow Ripple to blacklist addresses and freeze RLUSD; they also describe burning RLUSD and minting replacement tokens in specified legal/compliance circumstances.",
+        "Ripple's public RLUSD XRPL implementation settings explicitly show lsfGlobalFreeze enabled, lsfNoFreeze disabled, and lsfAllowTrustLineClawback enabled.",
+        "XRPL documentation states issuers can freeze issued trust-line tokens and claw back them if the issuer enabled the clawback flag in advance; XRP is the native asset and cannot be frozen or clawed back at protocol level.",
+        "Custodial exchanges can still restrict XRP they custody, which is distinct from freezing XRP at the ledger protocol level.",
+        "The claim that RLUSD usage necessarily creates material XRP demand is not established. RLUSD is the stated settlement asset in the C2FO Instant Pay design; XRP is used for XRPL transaction fees, but product-specific XRP fee demand has not been measured."
       ],
-      "interpretation": "The control distinction is technically supported. The price/demand implication is a hypothesis, not a verified causal result.",
+      "interpretation": "The issuer-control distinction is technically supported and the clawback flag is enabled on Ripple's public RLUSD XRPL configuration. The price/demand implication is a hypothesis, not a verified causal result.",
       "unknowns": [
         "Actual RLUSD freeze/clawback events",
         "Actual XRPL XRP fees attributable to RLUSD activity",
