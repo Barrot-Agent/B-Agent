@@ -273,8 +273,8 @@
     {
       "id": "EV-22",
       "classification": "CONFIRMED_SEC_INTERNAL_DATA_DISCREPANCY",
-      "claim": "The SEC 10-Q summary reports 261,919,096 XRP relating to private-placement subscription agreements, while Item 15's detailed components sum to 262,119,096.061435 XRP, a 200,000-XRP difference. The detailed amount plus Ripple's 126,791,458 XRP contribution yields approximately 388,910,554 XRP in kind; the summary amount plus Ripple's contribution yields approximately 388,710,554 XRP. Both still round to the reported approximately 473M total when the 84,365,876 cash-purchased XRP is added.",
-      "implication": "The 200,000-XRP difference must remain an explicit reconciliation item; do not silently choose one component or assign it to fees/rounding.",
+      "claim": "The SEC 10-Q summary reports 261,919,096 XRP relating to private-placement subscription agreements, while Item 15's detailed components sum to 262,119,096.061435 XRP, a 200,000-XRP difference. The detailed Item 15 components include 600,000 XRP with Advance Funding, 200,000 XRP with Delayed Funding, 211,319,096.061435 XRP with Series C, and 50,000,000 XRP with the Contributor Related Party Entity. The summary amount equals the detailed components excluding the 200,000 XRP Delayed Funding component, but the filing does not explain this scope difference. Adding Ripple's separate 126,791,458 XRP contribution yields approximately 388,910,554 XRP in kind; combined with the 84,365,876 cash-purchased XRP, this reconciles to approximately 473.276M XRP, rounded to 473M.",
+      "implication": "The 200,000-XRP difference exactly matches the separately disclosed Delayed Funding XRP component. This is a plausible scope explanation, not a confirmed reconciliation; preserve both SEC values until the issuer explains the summary treatment.",
       "sources": [
         "EVERNORTH-SEC-10Q-20260930"
       ]
@@ -473,6 +473,22 @@
       "metric_type": "accounting_reference_market",
       "classification": "CONFIRMED_COMPANY_SELECTION",
       "detail": "Evernorth selected Coinbase as principal market for XRP for financial-reporting impairment purposes; not a claim that Coinbase is the global principal market."
+    },
+    {
+      "item": "Delayed Funding cash consideration",
+      "amount_usd": 10500000,
+      "as_of": "2026-10-09",
+      "metric_type": "subscription_cash_consideration",
+      "classification": "CONFIRMED_SEC_ITEM15",
+      "detail": "Separate from the $214.05M Advance Funding cash proceeds used to purchase 84,365,876 XRP; do not add to that purchase-price denominator without evidence of use."
+    },
+    {
+      "item": "Delayed Funding XRP consideration",
+      "amount_xrp": 200000,
+      "as_of": "2026-10-09",
+      "metric_type": "subscription_XRP_component",
+      "classification": "CONFIRMED_SEC_ITEM15",
+      "detail": "This exact 200,000 XRP matches the difference between the SEC summary private-placement amount and detailed Item 15 components; scope explanation remains unconfirmed."
     }
   ],
   "relationship_edges": [
@@ -927,6 +943,18 @@
       "disconfirming": [
         "The statements may refer to different times or to limited/non-custodial strategies; no amount or transaction was disclosed."
       ]
+    },
+    {
+      "id": "H13",
+      "hypothesis": "The SEC's 200,000-XRP private-placement summary discrepancy is caused by the summary excluding the separately disclosed 200,000-XRP Delayed Funding component.",
+      "status": "PLAUSIBLE_UNCONFIRMED_RECONCILIATION",
+      "supporting": [
+        "Detailed Item 15 components exceed the summary by exactly 200,000 XRP.",
+        "Item 15 separately identifies 200,000 XRP under Delayed Funding."
+      ],
+      "disconfirming": [
+        "The filing does not explain whether the summary intentionally excludes the Delayed Funding component or whether another correction applies."
+      ]
     }
   ],
   "event_timeline": [
@@ -1164,7 +1192,8 @@
     "The SEC 10-Q's summary private-placement XRP total (261,919,096) differs by 200,000 XRP from the detailed Item 15 components (262,119,096.061435). Preserve both values until the issuer reconciles.",
     "Evernorth says 100% of XRP was in BitGo cold storage as of the prospectus date while also saying yield strategies commenced after closing. No deployed quantity or custody reallocation was disclosed; do not infer a live deployed balance.",
     "BitGo's $250M cold-wallet insurance is shared among eligible clients and was approximately 36.9% of Evernorth's Oct 9 XRP holdings value; it is not dedicated full-value coverage.",
-    "Evernorth's new Nasdaq ticker XRPN began trading October 12, 2026, not October 8; October 8 was the prior SPAC securities' last trading date."
+    "Evernorth's new Nasdaq ticker XRPN began trading October 12, 2026, not October 8; October 8 was the prior SPAC securities' last trading date.",
+    "SEC Item 15 separately lists $214.05M cash and 600,000 XRP under Advance Funding, plus $10.5M cash and 200,000 XRP under Delayed Funding. The $214.1M summary cash proceeds used to purchase 84,365,876 XRP appear to correspond to Advance Funding only; do not include the separate $10.5M in the derived cash-purchase cost unless its use is confirmed."
   ],
   "prediction_status": {
     "status": "NOT_ISSUED",
