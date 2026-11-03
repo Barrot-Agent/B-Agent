@@ -257,6 +257,105 @@
       "limitations": [
         "This is a ratio of aggregate disclosed cash and units, not a verified lot-level cost basis or realized/unrealized loss. Evernorth's impairment policy uses the lowest observable intraday price on its selected principal market since acquisition, not this simple average. The dashboard price is a third-party mark, not an executable quote."
       ]
+    },
+    {
+      "id": "A27",
+      "classification": "confirmed",
+      "claim": "SBI VC Trade and Ripple announced RLUSD trading/handling on VCTRADE beginning June 24, 2026; SBI described it as Japan's first Category 4 electronic payment instrument and stated deposits and withdrawals were free.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "This is an exchange listing/handling announcement, not proof of large realized trading volume or XRP purchases."
+      ]
+    },
+    {
+      "id": "A28",
+      "classification": "confirmed",
+      "claim": "SBI Remit, SBI VC Trade, SBI Ripple Asia and Ripple announced an XRP-based international remittance service expansion to the Philippines, Vietnam and Indonesia in September 2023.",
+      "source_ids": [
+        "S9"
+      ],
+      "limitations": [
+        "The announcement establishes the service launch/expansion, not current corridor volumes or the amount of XRP held by liquidity providers."
+      ]
+    },
+    {
+      "id": "A29",
+      "classification": "confirmed",
+      "claim": "SBI Ripple Asia announced a conceptual proof of concept for tokenized deposits and deposit-based digital money using the existing MoneyTap infrastructure and XRPL on February 26, 2026.",
+      "source_ids": [
+        "S10"
+      ],
+      "limitations": [
+        "A conceptual proof of concept is not evidence of production deployment, live deposits or material XRP liquidity demand."
+      ]
+    },
+    {
+      "id": "A30",
+      "classification": "confirmed",
+      "claim": "SBI Group, Aplus and Visa announced a crypto-rewards credit card on May 1, 2026; card points are automatically exchanged into BTC, ETH or XRP.",
+      "source_ids": [
+        "S11"
+      ],
+      "limitations": [
+        "This is a rewards/conversion rail, not proof merchants accept XRP or that the card settles purchases directly in XRP. Actual XRP conversion volumes are unknown."
+      ]
+    },
+    {
+      "id": "A31",
+      "classification": "reported",
+      "claim": "SBI VC Trade reported more than two million registered crypto accounts as of July 6, 2026 and described its offering as including USDC, JPYSC, RLUSD and stablecoin lending.",
+      "source_ids": [
+        "S12"
+      ],
+      "limitations": [
+        "Registered accounts are not equivalent to active traders, funded accounts or XRP holders."
+      ]
+    },
+    {
+      "id": "A32",
+      "classification": "confirmed",
+      "claim": "SBI VC Trade announced a temporary XRP/JPY leveraged-trading campaign from June 22 through July 3, 2026 with a stated standard spread of 0.5 yen.",
+      "source_ids": [
+        "S13"
+      ],
+      "limitations": [
+        "A time-limited promotional spread is not evidence of persistent market depth or normal-period liquidity."
+      ]
+    },
+    {
+      "id": "A33",
+      "classification": "unknown",
+      "claim": "Current XRP-based remittance volumes and the current operational status/market share of the Philippines, Vietnam and Indonesia corridors announced in 2023.",
+      "source_ids": [
+        "S9"
+      ],
+      "limitations": [
+        "The retrieved announcement does not provide current transaction counts, XRP inventory, spreads or corridor-level volume."
+      ]
+    },
+    {
+      "id": "A34",
+      "classification": "unknown",
+      "claim": "Actual XRP reward-conversion volume, execution venue and hedging/treasury process for the SBI/Visa crypto-rewards card.",
+      "source_ids": [
+        "S11"
+      ],
+      "limitations": [
+        "The card announcement confirms conversion eligibility, not realized volume or whether conversion creates net spot demand."
+      ]
+    },
+    {
+      "id": "A35",
+      "classification": "unknown",
+      "claim": "Whether the tokenized-deposit proof of concept has progressed into production or created measurable XRPL transaction and XRP liquidity demand.",
+      "source_ids": [
+        "S10"
+      ],
+      "limitations": [
+        "No production launch or usage metrics were identified in the retrieved announcement."
+      ]
     }
   ],
   "capital_ledger": {
@@ -481,6 +580,82 @@
         "A26"
       ],
       "confidence": "derived_mark_comparison"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "RLUSD",
+      "relation": "Japan_exchange_listing_and_handling_from_2026_06_24",
+      "claim_ids": [
+        "A27"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Ripple",
+      "to": "SBI_VC_Trade",
+      "relation": "RLUSD_distribution_and_handling_partnership",
+      "claim_ids": [
+        "A27"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "SBI_Remit",
+      "to": "XRP_based_cross_border_remittance",
+      "relation": "corridor_service_expansion_Philippines_Vietnam_Indonesia",
+      "claim_ids": [
+        "A28",
+        "A33"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP_based_cross_border_remittance",
+      "relation": "exchange_liquidity_partner",
+      "claim_ids": [
+        "A28",
+        "A33"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "XRPL",
+      "relation": "tokenized_deposit_and_deposit_money_conceptual_PoC",
+      "claim_ids": [
+        "A29",
+        "A35"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_Group_Aplus_Visa",
+      "to": "XRP",
+      "relation": "crypto_rewards_card_auto_conversion_option",
+      "claim_ids": [
+        "A30",
+        "A34"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP_JPY_leverage_market",
+      "relation": "temporary_0_5_yen_spread_campaign",
+      "claim_ids": [
+        "A32"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "stablecoin_and_crypto_accounts",
+      "relation": "2M_registered_accounts_and_multi_stablecoin_offering",
+      "claim_ids": [
+        "A31"
+      ],
+      "confidence": "high_as_reported"
     }
   ],
   "competing_hypotheses": [
@@ -581,6 +756,65 @@
       ],
       "counter": [],
       "status": "supported_accounting_and_rate_sensitivity"
+    },
+    {
+      "id": "HEV10",
+      "hypothesis": "SBI Group has a multi-rail digital-asset strategy spanning XRP remittances, RLUSD/USDC/JPYSC, XRPL tokenized-deposit exploration and Visa crypto rewards.",
+      "support": [
+        "A15",
+        "A16",
+        "A27",
+        "A28",
+        "A29",
+        "A30",
+        "A31"
+      ],
+      "counter": [],
+      "status": "network_of_announced_relationships_confirmed_coordination_unproven"
+    },
+    {
+      "id": "HEV11",
+      "hypothesis": "The announced XRP remittance corridors create real utility but may have limited current impact on global XRP liquidity absent current corridor volumes and inventory data.",
+      "support": [
+        "A28"
+      ],
+      "counter": [
+        "A33"
+      ],
+      "status": "production_service_announced_current_scale_unknown"
+    },
+    {
+      "id": "HEV12",
+      "hypothesis": "The Visa rewards card may create incremental retail XRP conversion demand.",
+      "support": [
+        "A30"
+      ],
+      "counter": [
+        "A34"
+      ],
+      "status": "plausible_mechanism_volume_unknown"
+    },
+    {
+      "id": "HEV13",
+      "hypothesis": "SBI's RLUSD listing and JPYSC/USDC activities may expand stablecoin usage without necessarily increasing native XRP demand.",
+      "support": [
+        "A16",
+        "A27",
+        "A31"
+      ],
+      "counter": [],
+      "status": "plausible_separate_asset_rails"
+    },
+    {
+      "id": "HEV14",
+      "hypothesis": "The XRPL tokenized-deposit PoC will become a production use case with measurable XRP demand.",
+      "support": [
+        "A29"
+      ],
+      "counter": [
+        "A35"
+      ],
+      "status": "speculative_until_production_metrics"
     }
   ],
   "sources": [
@@ -649,10 +883,13 @@
     {
       "id": "S6",
       "publisher": "SBI Holdings",
-      "title": "SBI/Ripple and RLUSD Japan-related announcements",
-      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
-      "published_at": "2026-11-02",
-      "source_type": "primary_company_announcement"
+      "title": "SBI Group/Ripple RLUSD Japan distribution MOU and relationship",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "published_at": "2025-08-22",
+      "source_type": "primary_company_announcement",
+      "supporting_locations": [
+        "SBI Group, SBI VC Trade, Ripple Labs and Standard Custody MOU for RLUSD distribution in Japan"
+      ]
     },
     {
       "id": "S7",
@@ -667,6 +904,54 @@
       "limitations": [
         "Third-party mark, not an executable exchange quote or direct node query."
       ]
+    },
+    {
+      "id": "S8",
+      "publisher": "SBI Holdings / SBI VC Trade / Ripple",
+      "title": "RLUSD handling begins on SBI VC Trade",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at": "2026-06-24",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S9",
+      "publisher": "SBI Remit / SBI VC Trade / SBI Ripple Asia / Ripple",
+      "title": "Expansion of XRP-powered remittance service to the Philippines, Vietnam and Indonesia",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "published_at": "2023-09-06",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S10",
+      "publisher": "SBI Ripple Asia",
+      "title": "Conceptual proof of concept for tokenized deposits and deposit-based digital money using XRPL",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "published_at": "2026-02-26",
+      "source_type": "primary_company_poc_announcement"
+    },
+    {
+      "id": "S11",
+      "publisher": "SBI VC Trade / Aplus / Visa",
+      "title": "SBI VISA crypto rewards card",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "published_at": "2026-05-01",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S12",
+      "publisher": "SBI VC Trade",
+      "title": "Crypto account registrations exceed two million",
+      "url": "https://www.sbigroup.co.jp/news/2026/0707_16468.html",
+      "published_at": "2026-07-07",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S13",
+      "publisher": "SBI VC Trade",
+      "title": "XRP/JPY leverage trading campaign and 0.5-yen standard spread",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0622_16420.html",
+      "published_at": "2026-06-22",
+      "source_type": "primary_company_announcement"
     }
   ],
   "forecast_status": "NOT_ISSUED",
