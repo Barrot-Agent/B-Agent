@@ -83,3 +83,12 @@ The previously recorded 20.0% is the arithmetic ratio using the October 22 denom
 - Its fail-closed gate [41644394934](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644394934) passed with merging disabled.
 - Core CI [41644395374](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644395374) was still running at this handoff update; do not claim it passed until its final job result is retrieved.
 - PR #1589 is draft/open/unmerged. The scheduler implementation and queue file are preserved; only the workflow executor is proposed disabled.
+
+
+## Scheduler safety verification update — 2026-11-03 13:28 UTC
+
+PR #1589 final exact-head verification completed:
+- Head: `422e0043585ce15325dd0eeab3550342cb276403`.
+- Core CI [41644395374](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644395374): 343 tests and 8 subtests passed in 7.85 seconds.
+- Fail-closed gate [41644394934](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644394934): passed; merge remained disabled.
+- PR #1589 remains draft/open/unmerged.
