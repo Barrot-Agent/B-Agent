@@ -29,22 +29,37 @@ def _extract_text(resp_json: dict) -> str:
         return ""
 
 
+def _normalize_confidence(value) -> float:
+    try:
+        confidence = float(value)
+    except (TypeError, ValueError):
+        return 0.0
+    if not math.isfinite(confidence):
+        return 0.0
+    return max(0.0, min(1.0, confidence))
+
+
+def _normalize_score(value) -> int:
+    try:
+        score = float(value)
+    except (TypeError, ValueError):
+        return 50
+    if not math.isfinite(score):
+        return 50
+    return int(round(max(0.0, min(100.0, score))))
+
+
 def _score_from_text(text: str):
     try:
         data = json.loads(text)
-        score = int(max(0, min(100, int(data.get("score", 50)))))
-        confidence = float(data.get("confidence"))
-        if not math.isfinite(confidence):
-            confidence = 0.0
-        confidence = max(0.0, min(1.0, confidence))
-        label = str(data.get("label", "neutral")).strip().lower()
-        if label not in {"bullish", "neutral", "bearish"}:
-            label = "neutral"
-        return score, confidence, label
     except Exception:
         return 50, 0.0, "neutral"
-
-
+    score = _normalize_score(data.get("score", 50))
+    confidence = _normalize_confidence(data.get("confidence"))
+    label = str(data.get("label", "neutral")).strip().lower()
+    if label not in {"bullish", "neutral", "bearish"}:
+        label = "neutral"
+    return score, confidence, label
 
 
 def _sentiment_feature_metadata(label: str, confidence: float):
@@ -201,6 +216,8 @@ def main():
     else:
         signal_text = os.getenv("BARROT_SIGNAL_TEXT", "market sideways; low conviction")
     score, confidence, label, source = analyze_signal(signal_text)
+    score = _normalize_score(score)
+    confidence = _normalize_confidence(confidence)
     if news_score is not None:
         # blend: LLM read of headlines + weighted news score, equal weight
         score = int(round((score + news_score) / 2))
