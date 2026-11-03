@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "main_branch_preservation_incident",
+  "recorded_at_utc": "2026-11-03T13:15:30Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "pre_incident_main": "32d3a1ad997384db71f0f37def77deb1c19c7fad",
+  "accidental_add_commit": "817a955f39ecc39ef59ad73c91371b6ce6b8d0d6",
+  "removal_commit": "6f0a4c34d21c6aa20c344b4b4107d2f59f7b29a1",
+  "current_main": "6f0a4c34d21c6aa20c344b4b4107d2f59f7b29a1",
+  "compare": {
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "changed_paths": 0
+  },
+  "classification": "REVERTED_TREE_NEUTRAL_HISTORY_RETAINED",
+  "cause": "A GitHub create_file call omitted the explicit feature-branch argument and therefore used the default branch.",
+  "remediation": "The exact accidentally added file was deleted using its current blob SHA. No reset, force-push or history rewrite was used.",
+  "limitations": [
+    "The main tree is restored but history retains the add/revert commits.",
+    "No other main path changed in the compare from the pre-incident SHA.",
+    "The PR branch remains separate and unmerged."
+  ]
+}
