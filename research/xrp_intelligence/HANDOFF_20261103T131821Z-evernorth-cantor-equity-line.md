@@ -150,3 +150,19 @@ CryptoETF remains a separate observation published at 05:47 UTC:
 XRP Insights computes day-over-day changes in issuer-reported XRP holdings. Its methodology notes that changes can include effects other than creations/redemptions, including BITW index rebalancing and XRP-denominated fee accruals. The two providers therefore differ in universe, completeness, publication time and measurement method. Do not average or treat the figures as equivalent measures of actual spot purchases or new external capital.
 
 The CSV row-level file was not retrievable through the current web reader (unsupported text/csv content type); no per-fund rows were reconstructed. The JSON metadata and methodology page were retrieved directly. Forecast remains `NOT_ISSUED`.
+
+
+## Cantor facility fee-cap correction — 2026-11-03 13:36 UTC
+
+New append-only correction:
+`research/xrp_intelligence/20261103T133621Z-evernorth-cantor-fee-cap-net-proceeds-correction.json`
+
+The SEC prospectus discloses more than the initial $521,893.50 Cantor fee:
+- The initial fee is fully earned/non-refundable as of the Purchase Agreement date, regardless of whether purchases occur, and is payable within five business days after the Upfront Determination Date.
+- At the Measurement Date, the fee is recalculated to 1% of maximum shares times Purchase VWAP (or, if no shares were purchased, the Upfront Determination Date closing price). The aggregate initial plus additional commitment fee is capped at $1,000,000.
+- Cantor/CF&CO documented expense reimbursements are capped at $500,000 aggregate.
+- StoneX's qualified-independent-underwriter fee is $200,000 plus up to $1,000 expenses.
+
+The maximum disclosed fee/expense envelope is therefore $1.701M, not merely the initial $521,893.50. At $14.71 and 97% of price, the full-share purchase-price arithmetic is $74.467M before fees; subtracting the maximum disclosed fee/expense envelope gives an illustrative $72.766M. This is a cost-cap scenario, not an actual or expected net-proceeds estimate.
+
+The prospectus's $74.4M stated net estimate remains unreconciled to the 97% price formula and the disclosed fee schedule. No replacement estimate is asserted. Actual payment, facility drawdown and XRP purchases remain unverified.
