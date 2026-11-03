@@ -30,34 +30,47 @@ def complete_stages():
 
 
 def add_valid_corroboration(record):
+    source_specs = [
+        ("s1", "https://source-a.example/report", ProvenanceClass.EXTERNAL_PRIMARY, "source-a.example"),
+        ("s2", "https://source-b.example/report", ProvenanceClass.EXTERNAL_SECONDARY, "source-b.example"),
+    ]
     source_by_id = {source.source_id: source for source in record.source_graph}
-    if "s1" not in source_by_id:
-        record.source_graph.append(
-            SourceRecord(
-                source_id="s1",
-                uri="https://source-a.example/report",
-                provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
-                independence_group="publisher-a",
+    for source_id, uri, provenance_class, group in source_specs:
+        if source_id in source_by_id:
+            source = source_by_id[source_id]
+            source.uri = uri
+            source.provenance_class = provenance_class
+            source.independence_group = group
+        else:
+            record.source_graph.append(
+                SourceRecord(
+                    source_id=source_id,
+                    uri=uri,
+                    provenance_class=provenance_class,
+                    independence_group=group,
+                )
             )
-        )
-    else:
-        source_by_id["s1"].independence_group = "publisher-a"
 
-    source_by_id = {source.source_id: source for source in record.source_graph}
-    if "s2" not in source_by_id:
-        record.source_graph.append(
-            SourceRecord(
-                source_id="s2",
-                uri="https://source-b.example/report",
-                provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
-                independence_group="publisher-b",
-            )
-        )
-    else:
-        source_by_id["s2"].independence_group = "publisher-b"
-
+    record.evidence.extend([
+        EvidenceRecord(
+            evidence_id="corroboration-e1",
+            claim="test claim",
+            claim_id="claim-001",
+            state=ParseState.OBSERVED,
+            source_ids=["s1"],
+        ),
+        EvidenceRecord(
+            evidence_id="corroboration-e2",
+            claim="test claim",
+            claim_id="claim-001",
+            state=ParseState.OBSERVED,
+            source_ids=["s2"],
+        ),
+    ])
     record.corroboration_results.append({
         "status": "CORROBORATED",
+        "claim_id": "claim-001",
+        "supporting_evidence_ids": ["corroboration-e1", "corroboration-e2"],
         "independent_source_ids": ["s1", "s2"],
         "independent_sources": 2,
     })
@@ -72,14 +85,6 @@ def complete_record_with_two_sources():
     record.stages = complete_stages()
     record.provenance = {"source": "fixture"}
     add_valid_corroboration(record)
-    record.evidence.append(
-        EvidenceRecord(
-            evidence_id="e1",
-            claim="test claim",
-            state=ParseState.OBSERVED,
-            source_ids=["s1", "s2"],
-        )
-    )
     return record
 
 
@@ -94,8 +99,9 @@ def test_mmi_complete_requires_all_protocol_stages():
     record.source_graph.append(
         SourceRecord(
             source_id="s1",
-            uri="fixture://test",
+            uri="https://source-a.example/test",
             provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
+            independence_group="source-a.example",
         )
     )
     record.evidence.append(
@@ -378,6 +384,7 @@ def test_missing_evidence_prevents_completion():
     )
     record.evidence.clear()
     add_valid_corroboration(record)
+    record.evidence.clear()
 
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
 
@@ -444,7 +451,7 @@ def test_zero_independent_sources_cannot_complete_corroboration():
 
 def test_same_publisher_group_is_not_independent_corroboration():
     record = complete_record_with_two_sources()
-    record.source_graph[1].independence_group = "publisher-a"
+    record.source_graph[1].independence_group = "source-a.example"
     record.corroboration_results = [{
         "status": "CORROBORATED",
         "independent_source_ids": ["s1", "s2"],
@@ -490,13 +497,28 @@ def test_multiple_sources_from_one_group_do_not_inflate_independent_count():
     record.source_graph.append(
         SourceRecord(
             source_id="s3",
-            uri="https://source-b.example/second-report",
+            uri="https://api.source-b.example:443/second-report",
             provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
-            independence_group="publisher-b",
+            independence_group="source-b.example",
+        )
+    )
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="corroboration-e3",
+            claim="test claim",
+            claim_id="claim-001",
+            state=ParseState.OBSERVED,
+            source_ids=["s3"],
         )
     )
     record.corroboration_results = [{
         "status": "CORROBORATED",
+        "claim_id": "claim-001",
+        "supporting_evidence_ids": [
+            "corroboration-e1",
+            "corroboration-e2",
+            "corroboration-e3",
+        ],
         "independent_source_ids": ["s1", "s2", "s3"],
         "independent_sources": 2,
     }]
@@ -507,28 +529,83 @@ def test_multiple_sources_from_one_group_do_not_inflate_independent_count():
 
 def test_contradictory_independent_evidence_can_complete_without_forced_unanimity():
     record = complete_record_with_two_sources()
-    record.evidence.append(
+    claim_id = "claim-contradictory"
+    record.evidence = [
         EvidenceRecord(
-            evidence_id="e2",
-            claim="contrary claim",
+            evidence_id="e-support",
+            claim="test claim",
+            claim_id=claim_id,
+            state=ParseState.OBSERVED,
+            source_ids=["s1"],
+            supporting=True,
+        ),
+        EvidenceRecord(
+            evidence_id="e-conflict",
+            claim="test claim",
+            claim_id=claim_id,
             state=ParseState.OBSERVED,
             source_ids=["s2"],
             supporting=False,
-        )
-    )
+        ),
+    ]
     record.corroboration_results = [{
         "status": "CONTRADICTORY",
+        "claim_id": claim_id,
         "independent_source_ids": ["s1", "s2"],
-        "supporting_evidence": ["e1"],
-        "contradicting_evidence": ["e2"],
+        "independent_sources": 2,
+        "supporting_evidence_ids": ["e-support"],
+        "contradicting_evidence_ids": ["e-conflict"],
     }]
     record.reconciliation.append({
         "relationship": Reconciliation.CONTRADICTS_EXISTING.value,
-        "evidence_ids": ["e1", "e2"],
+        "evidence_ids": ["e-support", "e-conflict"],
     })
 
     assert record.corroboration_complete() is True
     assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
+
+
+def test_corroboration_sources_must_be_linked_to_claim_evidence():
+    record = complete_record_with_two_sources()
+    record.source_graph.extend([
+        SourceRecord(
+            source_id="s3",
+            uri="https://source-c.example/unrelated",
+            provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
+            independence_group="source-c.example",
+        ),
+        SourceRecord(
+            source_id="s4",
+            uri="https://source-d.example/unrelated",
+            provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
+            independence_group="source-d.example",
+        ),
+    ])
+    record.corroboration_results[0]["independent_source_ids"] = ["s3", "s4"]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_corroboration_evidence_must_share_claim_id():
+    record = complete_record_with_two_sources()
+    record.evidence[-1].claim_id = "different-claim"
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_hypotheses_cannot_count_as_observed_corroboration():
+    record = complete_record_with_two_sources()
+    record.evidence[-1].state = ParseState.HYPOTHESIZED
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_uri_derived_publisher_identity_overrides_forged_group():
+    record = complete_record_with_two_sources()
+    record.source_graph[0].uri = "https://api.source-b.example:8443/republished"
+    record.source_graph[0].independence_group = "source-a.example"
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
 
 
 def test_corroboration_not_applicable_requires_reason():
