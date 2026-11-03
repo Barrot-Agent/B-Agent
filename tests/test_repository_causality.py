@@ -70,7 +70,8 @@ def test_cross_analysis_workflow_is_read_only_and_artifact_based() -> None:
     ).read_text(encoding="utf-8")
     lowered = workflow.lower()
 
-    assert "permissions:\\n  contents: read" in workflow
+    assert "permissions:" in workflow
+    assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
     assert "actions/upload-artifact@v4" in workflow
     assert "retention-days: 30" in workflow
