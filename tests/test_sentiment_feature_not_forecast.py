@@ -119,3 +119,56 @@ def test_subscriber_page_labels_signal_text_as_context_not_price():
     assert 'id="price"' not in page
     assert "Sentiment context:" in page
     assert "getElementById('price')" not in page
+
+def test_score_parser_rejects_non_object_json():
+    module = _load_emit_signal()
+    for raw in ("[]", "null", "42", '"bullish"'):
+        assert module._score_from_text(raw) == (50, 0.0, "neutral")
+
+
+def test_news_score_skips_invalid_timestamps_and_malformed_records(tmp_path):
+    import json
+    from datetime import datetime, timezone
+
+    module = _load_emit_signal()
+    valid = {
+        "distilled": True,
+        "distill": {"xrp_relevance": 0.5, "sentiment": "bullish"},
+        "ingested_at": datetime.now(timezone.utc).isoformat(),
+        "title": "valid recent item",
+    }
+    records = [
+        valid,
+        {
+            "distilled": True,
+            "distill": {"xrp_relevance": 0.9, "sentiment": "bearish"},
+            "title": "missing timestamp",
+        },
+        {
+            "distilled": True,
+            "distill": {"xrp_relevance": 0.9, "sentiment": "bearish"},
+            "ingested_at": "not-a-timestamp",
+            "title": "invalid timestamp",
+        },
+        {
+            "distilled": True,
+            "distill": {"xrp_relevance": 0.9, "sentiment": "bearish"},
+            "ingested_at": "2026-11-03T10:00:00",
+            "title": "timezone-naive timestamp",
+        },
+        {
+            "distilled": True,
+            "distill": {"xrp_relevance": "not-a-number", "sentiment": "bearish"},
+            "ingested_at": datetime.now(timezone.utc).isoformat(),
+            "title": "invalid relevance",
+        },
+        ["not", "an", "object"],
+    ]
+    path = tmp_path / "knowledge.jsonl"
+    path.write_text("\n".join(json.dumps(record) for record in records) + "\n", encoding="utf-8")
+
+    score, used, headlines = module._news_score(path=str(path))
+
+    assert score == 100
+    assert used == 1
+    assert headlines == ["[bullish] valid recent item"]

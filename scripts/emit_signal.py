@@ -54,6 +54,8 @@ def _score_from_text(text: str):
         data = json.loads(text)
     except Exception:
         return 50, 0.0, "neutral"
+    if not isinstance(data, dict):
+        return 50, 0.0, "neutral"
     score = _normalize_score(data.get("score", 50))
     confidence = _normalize_confidence(data.get("confidence"))
     label = str(data.get("label", "neutral")).strip().lower()
@@ -171,7 +173,7 @@ def analyze_signal(signal_text: str):
 
 
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
-    """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
+    """Return a relevance-weighted sentiment feature using only valid recent UTC timestamps."""
     from datetime import timedelta
 
     if not os.path.exists(path):
@@ -180,30 +182,42 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
     num = den = 0.0
     used = 0
     heads = []
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         for line in f:
             try:
                 e = json.loads(line)
             except Exception:
                 continue
-            if not e.get("distilled"):
+            if not isinstance(e, dict) or not e.get("distilled"):
                 continue
             d = e.get("distill", {})
-            w = float(d.get("xrp_relevance", 0) or 0)
-            if w <= 0:
+            if not isinstance(d, dict):
                 continue
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
-                if ts < cutoff:
+                w = float(d.get("xrp_relevance", 0) or 0)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if not math.isfinite(w) or w <= 0:
+                continue
+            raw_timestamp = e.get("ingested_at")
+            if not isinstance(raw_timestamp, str) or not raw_timestamp.strip():
+                continue
+            try:
+                ts = datetime.fromisoformat(raw_timestamp.strip().replace("Z", "+00:00"))
+                if ts.tzinfo is None or ts.utcoffset() is None:
                     continue
-            except Exception:
-                pass
-            s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
+                ts = ts.astimezone(timezone.utc)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if ts < cutoff:
+                continue
+            sentiment = str(d.get("sentiment", "")).strip().lower()
+            s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(sentiment, 0.0)
             num += s * w
             den += w
             used += 1
             if w >= 0.5 and len(heads) < 6:
-                heads.append(f"[{d.get('sentiment')}] {e.get('title','')[:80]}")
+                heads.append(f"[{sentiment or 'unknown'}] {str(e.get('title', ''))[:80]}")
     if den == 0:
         return None, 0, []
     return int(round((num / den + 1) * 50)), used, heads
