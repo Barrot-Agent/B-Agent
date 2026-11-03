@@ -1,6 +1,6 @@
 {
   "schema_version": "barrot.xrp-research.v1",
-  "captured_at_utc": "2026-11-03T10:20:00Z",
+  "captured_at_utc": "2026-11-03T10:15:17Z",
   "topic": "Evernorth closing capital reconciliation, XRP custody and wallet attribution, Coinbase personnel/execution links, and correction to pre-close Goldman-Armada interpretation",
   "evidence_policy": {
     "source_priority": [
@@ -290,5 +290,11 @@
     "Compute official XRP per share only when same-date treasury and share counts are available.",
     "Update Goldman post-close exposure only from a later filing; do not assume June30 Armada shares remained held."
   ],
-  "safety": "Public SEC filings, company announcements and public ledger attribution only. No private custody access, credentials, exchange access, trading, or real-money activity."
+  "safety": "Public SEC filings, company announcements and public ledger attribution only. No private custody access, credentials, exchange access, trading, or real-money activity.",
+  "timestamp_correction": {
+    "prior_declared_capture_time_utc": "2026-11-03T10:20:00Z",
+    "authoritative_initial_commit_time_utc": "2026-11-03T10:15:17Z",
+    "verified_current_retrieval_time_local": "2026-11-03T05:16:13-05:00",
+    "note": "The original filename/captured_at label was set five minutes ahead of the GitHub commit timestamp. The GitHub commit timestamp is the authoritative archive time; source-specific ledger, filing and announcement timestamps are unchanged."
+  }
 }
