@@ -2,7 +2,7 @@
   "schema_version": 1,
   "artifact_type": "capital_flow_claim_review",
   "captured_on_utc_date": "2026-11-03",
-  "claim_id": "hyperliquid-xrp-0x243-2026-07-04",
+  "claim_id": "hyperliquid-xrp-0x243-2026-07-04-separate-lead",
   "claim": {
     "subject": "New Hyperliquid wallet identified by prefix 0x243",
     "reported_event_date": "2026-07-04",
@@ -74,10 +74,23 @@
       "Multiple secondary outlets repeat the same Onchain Lens item and therefore do not constitute independent source corroboration."
     ]
   },
-  "conclusion": "The strongest supported interpretation is that approximately $3.26m of BTC was reported deposited to Hyperliquid and a $16.3m XRP notional position was opened at 20x. The actual capital/equity allocated to that position remains unknown. The phrase 'actual capital' is still ambiguous and this event remains a candidate context, not a resolved identification.",
+  "conclusion": "Separately from the original 'actual capital' research thread, ChainCatcher reports approximately $3.26m of BTC deposited to Hyperliquid and a $16.3m XRP notional position opened at 20x. The $815,000 figure is only notional divided by 20 under a simplified isolated-margin assumption; actual account equity and capital allocated remain unknown. This event is not established as the source of the user's phrase.",
   "safety": {
     "public_sources_only": true,
     "no_private_data": true,
     "no_trading_or_market_action": true
-  }
+  },
+  "exact_phrase_context": {
+    "status": "not_linked_to_original_user_phrase",
+    "finding": "Prior conversation retrieval associates the user's unresolved 'actual capital' research thread with Ripple Prime/Hidden Road regulatory net capital, customer-segregated funds, repo financing and parent capital contributions. No evidence links the original phrase to this Hyperliquid position.",
+    "handling": "Keep this Hyperliquid event as a separate leveraged-position lead. Do not use it as the resolution of the original phrase."
+  },
+  "do_not_conflate": [
+    "Ripple Prime/Hidden Road regulatory net capital and parent contributions",
+    "Customer-segregated balances",
+    "Gross repo/reverse-repo financing balances",
+    "Hyperliquid wallet deposits",
+    "XRP position notional",
+    "Initial margin inferred from leverage"
+  ]
 }
