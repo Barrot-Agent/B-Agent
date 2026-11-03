@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "captured_at_utc": "2026-11-03T07:13:36.963Z",
+  "research_thread": "Camilla Stephenson / Wholesome Mils public YouTube inventory",
+  "identity": {
+    "official_public_record": {
+      "name": "Camilla (Millie) Stephenson",
+      "market": "UK",
+      "type": "Content Creator",
+      "brand": "Wholesome Mils",
+      "source": "https://fyi.org.nz/request/28272/response/109134/attach/2/fyi.org%20OIA%20response%20Stargrazing%20campaign.pdf",
+      "classification": "PRIMARY_PUBLIC_GOVERNMENT_RECORD"
+    },
+    "creator_linktree": {
+      "handle": "@wholesome.mils",
+      "url": "https://linktr.ee/wholesome.mils",
+      "youtube_channel_url": "https://www.youtube.com/channel/UCT9sgvs8a8v72klcSY1znBQ",
+      "channel_id": "UCT9sgvs8a8v72klcSY1znBQ",
+      "source_role": "Creator-linked profile; links directly to YouTube channel and video"
+    },
+    "secondary_corroboration": {
+      "name": "Millie Stephenson",
+      "brand": "wholesome.mils",
+      "source": "https://www.famousbirthdays.com/people/millie-stephenson.html",
+      "note": "Secondary entertainment profile; corroborative only, not legal identity evidence."
+    },
+    "resolution": "The official OIA list and creator-linked Linktree support treating Camilla (Millie) Stephenson / Wholesome Mils as the intended public creator identity. The channel itself uses WholesomeMils. Do not infer any XRP, Ripple, Circle, Coinbase or crypto relationship."
+  },
+  "verified_video_links": [
+    {
+      "title": "Total Body 15 Min Vinyasa Flow for Stress Relief | Beginner Friendly",
+      "url": "https://www.youtube.com/watch?v=FQTOensuU-Y",
+      "video_id": "FQTOensuU-Y",
+      "verification": "DIRECT_LINK_FROM_CREATOR_LINKTREE"
+    }
+  ],
+  "previously_indexed_candidate_titles": [
+    {
+      "title": "Come on a chatty 10km run with me",
+      "verification": "PREVIOUS_CHANNEL_INDEX_CANDIDATE; direct video URL not verified"
+    },
+    {
+      "title": "HOW to get a 1:1 in your diss, let me know if you want more vids on this",
+      "verification": "PREVIOUS_CHANNEL_INDEX_CANDIDATE; exact title retained as indexed; direct URL not verified"
+    },
+    {
+      "title": "I Quit Alcohol For A Year and Heres How My Life Changed - Sober at 21",
+      "verification": "PREVIOUS_CHANNEL_INDEX_CANDIDATE; direct video URL not verified"
+    },
+    {
+      "title": "How I Stay Happy & Productive at Uni | Day In The Life Final Year Durham (Yoga, Recipes & Workout)",
+      "verification": "PREVIOUS_CHANNEL_INDEX_CANDIDATE; direct video URL not verified"
+    }
+  ],
+  "retrieval_status": {
+    "channel_page": "YouTube channel page returned only generic shell through current retrieval path; video listing unavailable.",
+    "rss": "Public YouTube channel RSS endpoint returned DisabledError.",
+    "search": "Exact channel-ID/title searches did not surface a complete indexed inventory.",
+    "exhaustive_inventory": "NOT_VERIFIED",
+    "next_safe_method": "Use the public YouTube Data API with an authorized API key or manually inspect the public channel Videos tab; do not bypass access controls or use private data."
+  },
+  "source_register": [
+    {
+      "url": "https://fyi.org.nz/request/28272/response/109134/attach/2/fyi.org%20OIA%20response%20Stargrazing%20campaign.pdf",
+      "kind": "official public information response",
+      "supports": "Camilla (Millie) Stephenson, UK, Wholesome Mils, content creator"
+    },
+    {
+      "url": "https://linktr.ee/wholesome.mils",
+      "kind": "creator-linked profile",
+      "supports": "Wholesome.mils handle, YouTube channel and direct video link"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCT9sgvs8a8v72klcSY1znBQ",
+      "kind": "public YouTube channel",
+      "supports": "channel identity and channel ID"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=FQTOensuU-Y",
+      "kind": "public YouTube video",
+      "supports": "directly verified video URL"
+    },
+    {
+      "url": "https://www.famousbirthdays.com/people/millie-stephenson.html",
+      "kind": "secondary profile",
+      "supports": "corroborative public creator identity"
+    }
+  ],
+  "xrp_relationship": "NONE_ESTABLISHED",
+  "privacy_boundary": "Only public creator/business content is catalogued. No private account, location, contact, or personal data is sought."
+}
