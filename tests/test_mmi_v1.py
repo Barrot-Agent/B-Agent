@@ -385,6 +385,7 @@ def test_missing_evidence_prevents_completion():
     record.evidence.clear()
     add_valid_corroboration(record)
     record.evidence.clear()
+    record.corroboration_results.clear()
 
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
 
