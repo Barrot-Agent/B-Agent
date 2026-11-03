@@ -1,5 +1,10 @@
 {
-  "checked_count": 1697,
-  "correct_count": 772,
-  "accuracy_pct": 45.5
+  "schema_version": "barrot.signal-evaluation-status.v1",
+  "status": "BLOCKED_NO_VALIDATED_FIXED_HORIZON_DATA",
+  "forecast_issuance": "BLOCKED",
+  "evaluation_executed": false,
+  "paper_trading": "NOT_STARTED",
+  "legacy_summary_validity": "UNVALIDATED_VARIABLE_HORIZON",
+  "legacy_archive": "legacy/signal_accuracy_unvalidated.json",
+  "reason": "The historical accuracy percentage used variable horizons and mutable live prices. It is preserved in the legacy archive and must not be presented as predictive performance."
 }
