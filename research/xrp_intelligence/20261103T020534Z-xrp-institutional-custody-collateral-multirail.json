@@ -1,0 +1,721 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_institutional_custody_collateral_multirail_research",
+  "snapshot_id": "xrp-institutional-custody-collateral-20261103-run11",
+  "captured_at_utc": "2026-11-03T02:05:34Z",
+  "data_cutoff_utc": "2026-11-03T02:05:34Z",
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "What do the October-November 2026 custody, collateral, stablecoin-distribution and issuer-economics disclosures establish about XRP, RLUSD, USDC, Coinbase, Circle, BNY, Standard Chartered, LMAX and SBI?",
+  "executive_assessment": {
+    "classification": "INSTITUTIONAL_RAILS_EXPANDING_WITH_DISTINCT_ASSET_ROLES",
+    "conclusion": "Primary disclosures establish that BNY now supports institutional custody of native XRP and RLUSD for eligible clients; Standard Chartered supports custody of RLUSD issued on XRPL and is working on a future collateral-mirroring arrangement with LMAX; Coinbase has added RLUSD to Prime, Exchange and its app with XRPL, Base and Ethereum deposit/withdrawal support, while Global Exchange collateral eligibility is explicitly future rather than live at launch. Circle USDC is natively issued on XRPL. BNY also custodies the Circle Reserve Fund portfolio, managed by BlackRock, while separately serving as primary reserve custodian for RLUSD. These are separate custody mandates, not a common reserve pool or proof of a direct Circle-Ripple commercial agreement. Coinbase's Q3 filing says its Circle arrangement was renewed on the same terms while Coinbase added RLUSD, supporting a multi-stablecoin distribution strategy rather than a Circle exit. The announcements establish institutional access and infrastructure, not incremental XRP purchases, XRP collateral eligibility in the announced RLUSD arrangements, or disclosed custody balances.",
+    "confidence": "HIGH for disclosed products, custody roles and reported financial figures; MODERATE for multi-rail strategic interpretation; LOW for incremental XRP demand or price impact.",
+    "key_distinction": "XRP, RLUSD and USDC are separate assets. RLUSD collateral eligibility is not XRP collateral eligibility. Stablecoin or XRPL adoption must not be counted as native XRP accumulation."
+  },
+  "findings": [
+    {
+      "id": "IC-01",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "BNY announced on October 27, 2026 that it now supports native XRP and RLUSD on its Digital Asset Custody platform for eligible institutional clients. BNY's release describes its pre-existing role as primary reserve custodian for RLUSD and its custody relationship with Ripple Prime.",
+      "implication": "This is a live institutional custody capability for XRP and RLUSD, reducing custody-access friction for eligible clients.",
+      "unknowns": [
+        "XRP and RLUSD assets under custody",
+        "Number and identity of eligible clients",
+        "Whether custody onboarding has produced net new XRP purchases",
+        "Whether clients will use the assets as collateral or only safekeeping/transfer"
+      ],
+      "sources": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "id": "IC-02",
+      "classification": "ANNOUNCED_FUTURE_CAPABILITY",
+      "claim": "BNY intends to broaden support for tokenized assets and investment products issued on XRPL and work with Ripple to enable clients to mint and redeem RLUSD directly through BNY. BNY states that intended future plans are subject to final BNY and regulatory approvals.",
+      "implication": "The proposed operating model could connect bank custody, stablecoin issuance/redemption and XRPL-based tokenized assets.",
+      "unknowns": [
+        "Launch date",
+        "Final approval status",
+        "Mint/redeem limits and fees",
+        "Client demand and actual volumes"
+      ],
+      "sources": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "id": "IC-03",
+      "classification": "EXPLORATORY_NOT_PRODUCTION",
+      "claim": "Ripple and BNY say they are exploring tokenized trade finance on XRPL, including a supply-chain-finance initiative with C2FO, subject to client requirements.",
+      "implication": "The parties are investigating tokenization of working-capital assets such as approved receivables, but this is not evidence of a live receivables market or completed settlement flow.",
+      "unknowns": [
+        "Named receivables issuers or buyers",
+        "Pilot volume and timetable",
+        "Whether XRP, RLUSD, bank money or another asset would settle the transactions",
+        "Credit underwriting, servicing and legal ownership structure"
+      ],
+      "disconfirming_evidence": [
+        "The official release uses exploratory language and discloses no client, amount, pilot date or settlement asset."
+      ],
+      "sources": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "id": "IC-04",
+      "classification": "CONFIRMED_LIVE_CUSTODY_AND_ANNOUNCED_FUTURE_COLLATERAL",
+      "claim": "Standard Chartered announced on October 12, 2026 that institutional custody support for RLUSD issued on XRPL is live through its DIFC Branch, regulated by the DFSA. Standard Chartered is working with Ripple and LMAX Group to enable RLUSD as eligible collateral and extend its collateral-mirroring model to LMAX.",
+      "implication": "RLUSD has a bank-custody pathway and a proposed institutional collateral workflow. The collateral asset named is RLUSD, not native XRP.",
+      "unknowns": [
+        "Final product documentation",
+        "Collateral haircuts and concentration limits",
+        "Eligible LMAX products",
+        "Operational launch date and volumes"
+      ],
+      "caveats": [
+        "The bank explicitly says future capabilities remain subject to final documentation, successful testing, applicable laws, regulatory requirements, internal approvals and jurisdictional readiness."
+      ],
+      "sources": [
+        "SC-RLUSD-CUSTODY-LMAX-20261012"
+      ]
+    },
+    {
+      "id": "IC-05",
+      "classification": "CONFIRMED_LIVE_DISTRIBUTION_WITH_COLLATERAL_DEFERRED",
+      "claim": "Coinbase announced on October 28, 2026 that RLUSD is available on Coinbase Prime, Coinbase Exchange and the Coinbase app. At launch, supported-region customers can deposit and withdraw RLUSD on XRPL, Base and Ethereum and convert USD to RLUSD at 1:1. Coinbase says Global Exchange availability, including RLUSD collateral use, will follow.",
+      "implication": "Coinbase is a distribution and access channel for Ripple's stablecoin across three networks, but the launch announcement does not establish live RLUSD collateral eligibility on Global Exchange.",
+      "caveats": [
+        "Ripple will provide liquidity on Base to support RLUSD use there.",
+        "Supported-region and product eligibility restrictions apply."
+      ],
+      "sources": [
+        "COINBASE-RLUSD-LAUNCH-20261028"
+      ]
+    },
+    {
+      "id": "IC-06",
+      "classification": "CONFIRMED_NATIVE_ISSUANCE",
+      "claim": "Circle announced that USDC became natively available on XRPL mainnet on June 12, 2025, with Circle Mint and Circle APIs supporting the network. No third-party bridge is required for native issuance.",
+      "implication": "Circle is both a stablecoin competitor to Ripple's RLUSD and an issuer whose USDC can operate directly on XRPL. This creates network-level complementarity without making USDC an XRP asset.",
+      "disconfirming_evidence": [
+        "Native USDC issuance on XRPL does not establish that Circle holds XRP as treasury, that USDC balances create material XRP buying, or that Circle has a broader bilateral corporate agreement with Ripple."
+      ],
+      "sources": [
+        "CIRCLE-USDC-XRPL-20250612"
+      ]
+    },
+    {
+      "id": "IC-07",
+      "classification": "CONFIRMED_OFFICIAL_RESERVE_DESCRIPTION",
+      "claim": "Circle's USDC page reports $70.0B USDC in circulation as of October 29, 2026 and lists 38 native blockchain networks, including XRPL. Circle states that the majority of USDC reserves is invested in the Circle Reserve Fund, whose portfolio is custodied at BNY and managed by BlackRock; cash is held at regulated financial institutions.",
+      "implication": "BNY and BlackRock are important nodes in Circle's reserve infrastructure, but BNY custody of the Circle Reserve Fund portfolio must not be described as custody of every USDC reserve asset.",
+      "caveats": [
+        "The $70.0B figure is Circle-reported and time-specific.",
+        "The 38-network list is a company-published network-support statement."
+      ],
+      "sources": [
+        "CIRCLE-USDC-RESERVES-NETWORKS-20261029"
+      ]
+    },
+    {
+      "id": "IC-08",
+      "classification": "CONFIRMED_SEPARATE_CUSTODY_MANDATES",
+      "claim": "BNY is named by Ripple as primary reserve custodian for RLUSD and separately by Circle as custodian of the Circle Reserve Fund portfolio, which BlackRock manages.",
+      "implication": "BNY is a common institutional infrastructure node across Ripple and Circle reserve ecosystems. The custody mandates, underlying assets, legal beneficiaries and reserve pools remain separate.",
+      "disconfirming_evidence": [
+        "No evidence of pooled reserves, cross-guarantees, shared redemption liabilities or a direct Circle-Ripple agreement was established by these custody disclosures."
+      ],
+      "sources": [
+        "BNY-RIPPLE-CUSTODY-20261027",
+        "CIRCLE-USDC-RESERVES-NETWORKS-20261029"
+      ]
+    },
+    {
+      "id": "IC-09",
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Circle's Q2 2026 Form 10-Q reports reserve income was 95.2% of total revenue in Q2 and 94.6% for H1 2026. Average USDC in circulation was $76.524B in Q2 and $75.865B for H1; period-end Q2 circulation was $73.269B. The Q2 reserve return rate was 3.5%.",
+      "implication": "Circle's economics remained predominantly reserve-income-driven at the Q2 reporting date, making circulation and short-term interest rates material business variables.",
+      "caveats": [
+        "These are Q2/H1 values, not Q3 results.",
+        "The Q3 Circle results were scheduled for November 4, 2026 and were not available at this data cutoff."
+      ],
+      "sources": [
+        "CIRCLE-10Q-20260630"
+      ]
+    },
+    {
+      "id": "IC-10",
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Circle's Q2 2026 Form 10-Q reports Coinbase-held USDC of $12.442B at June 30 and a 19.5% daily weighted-average share of USDC in circulation held on Coinbase during Q2. Circle incurred $324.6M of distribution costs under its Coinbase agreements in Q2 and $655.3M in H1 2026. The agreement allocates amounts based on USDC held on Coinbase after issuer retention and gives Coinbase half of the remaining broader ecosystem-growth amount after approved third-party participants.",
+      "implication": "Coinbase is a financially material USDC distribution partner. The commercial arrangement ties Circle's distribution expense to balances and ecosystem economics rather than being a simple fixed listing fee.",
+      "caveats": [
+        "Circle-reported distribution costs are not automatically equal to Coinbase-recognized revenue.",
+        "The amounts must not be directly added to Coinbase's reported stablecoin revenue; they are different accounting measures and periods."
+      ],
+      "sources": [
+        "CIRCLE-10Q-20260630"
+      ]
+    },
+    {
+      "id": "IC-11",
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Coinbase's Q3 2026 Form 10-Q reports $306.905M stablecoin revenue for Q3, down 5% year over year, and $904.487M for the first nine months. Coinbase says higher average USDC balances contributed $84.6M of Q3 stablecoin revenue growth while lower average interest rates reduced it by $52.8M. Coinbase also says it renewed its Circle arrangement on the same terms, expanded tradable assets, saw resilience in derivatives trading, grew prediction markets and DEX activity, and grew balances borrowed and lent through Coinbase.",
+      "implication": "Coinbase is diversifying beyond spot trading into stablecoins, derivatives, prediction markets, DEX and credit. The Q3 Circle renewal and RLUSD listing support a multi-stablecoin distribution strategy, not an exit from Circle.",
+      "caveats": [
+        "Coinbase's Q3 stablecoin revenue is not the same measure as Circle's distribution costs.",
+        "Coinbase Q3 net revenue was $1.160B; transaction revenue was $590.224M and subscription/services revenue was $570.238M. Net income of $718.7M includes non-operating and fair-value effects and should not be read as recurring operating profit."
+      ],
+      "sources": [
+        "COINBASE-10Q-20260930"
+      ]
+    },
+    {
+      "id": "IC-12",
+      "classification": "CONFIRMED_OFFICIAL_JAPAN_RELEASE",
+      "claim": "SBI VC Trade reported on November 2 that JPYSC lending balances exceeded ¥10B and JPYSC handling balances exceeded ¥30B. SBI's footnote defines handling balance as on-chain balance plus lending balance, so the >¥10B lending amount is included in the >¥30B handling figure rather than additional.",
+      "implication": "SBI's Japanese digital-asset strategy includes a growing yen-stablecoin lending/distribution rail alongside its separate Ripple, RLUSD and Circle relationships.",
+      "caveats": [
+        "JPYSC lending is customers lending JPYSC to SBI VC Trade, not borrowing against XRP or proof of native XRP purchases.",
+        "JPYSC balances are not XRP collateral or XRP liquidity."
+      ],
+      "sources": [
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "id": "IC-13",
+      "classification": "INFERENCE",
+      "claim": "The strongest supported institutional interpretation is a multi-rail ecosystem: Ripple supplies XRP, RLUSD and XRPL enterprise infrastructure; Circle supplies USDC and Arc; Coinbase distributes multiple stablecoins while retaining Circle economics; BNY and Standard Chartered provide custody; LMAX is a proposed RLUSD collateral venue; SBI distributes and invests across several rails.",
+      "implication": "A binary XRP-versus-USDC thesis is inadequate. The same institutions can support competing and complementary rails simultaneously.",
+      "disconfirming_evidence": [
+        "No official source states that all these arrangements are one coordinated master plan.",
+        "Separate business lines, jurisdictions and counterparties may operate independently."
+      ],
+      "sources": [
+        "BNY-RIPPLE-CUSTODY-20261027",
+        "SC-RLUSD-CUSTODY-LMAX-20261012",
+        "COINBASE-RLUSD-LAUNCH-20261028",
+        "CIRCLE-USDC-XRPL-20250612",
+        "CIRCLE-10Q-20260630",
+        "COINBASE-10Q-20260930",
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "id": "IC-14",
+      "classification": "UNKNOWN_NOT_ESTABLISHED",
+      "claim": "No disclosed custody balances, collateral amounts, LMAX haircuts, BNY XRP purchases, incremental Coinbase XRP inventory, or XRP-specific client flows were found in the reviewed announcements and filings.",
+      "implication": "Institutional infrastructure announcements are not a proxy for incremental XRP spot demand or price impact.",
+      "sources": [
+        "BNY-RIPPLE-CUSTODY-20261027",
+        "SC-RLUSD-CUSTODY-LMAX-20261012",
+        "COINBASE-RLUSD-LAUNCH-20261028"
+      ]
+    }
+  ],
+  "actual_capital_ledger": [
+    {
+      "item": "Circle USDC circulation",
+      "amount_usd": 70000000000,
+      "as_of": "2026-10-29",
+      "classification": "ISSUER_REPORTED_STABLECOIN_LIABILITY",
+      "detail": "Circle's current USDC page reports $70.0B in circulation; this is not XRP market capitalization or XRP capital inflow."
+    },
+    {
+      "item": "Circle average USDC in circulation",
+      "amount_usd": 76524000000,
+      "as_of": "2026-Q2",
+      "classification": "PERIOD_AVERAGE_STABLECOIN_LIABILITY",
+      "detail": "Circle Q2 2026 Form 10-Q."
+    },
+    {
+      "item": "Circle USDC on Coinbase at period end",
+      "amount_usd": 12442000000,
+      "as_of": "2026-06-30",
+      "classification": "DISTRIBUTION_PLATFORM_BALANCE",
+      "detail": "Circle Q2 2026 Form 10-Q; not an XRP position."
+    },
+    {
+      "item": "Circle distribution costs under Coinbase agreements",
+      "amount_usd": 324600000,
+      "as_of": "2026-Q2",
+      "classification": "ISSUER_REPORTED_DISTRIBUTION_COST",
+      "detail": "Circle-reported Q2 cost; not assumed equal to Coinbase revenue."
+    },
+    {
+      "item": "Circle distribution costs under Coinbase agreements",
+      "amount_usd": 655300000,
+      "as_of": "2026-H1",
+      "classification": "ISSUER_REPORTED_DISTRIBUTION_COST",
+      "detail": "Six-month total through June 30, 2026; includes Q2 and is not additive to the Q2 amount."
+    },
+    {
+      "item": "Coinbase stablecoin revenue",
+      "amount_usd": 306905000,
+      "as_of": "2026-Q3",
+      "classification": "EXCHANGE_REPORTED_REVENUE",
+      "detail": "Coinbase Q3 2026 10-Q; distinct accounting measure from Circle distribution costs."
+    },
+    {
+      "item": "Coinbase total net revenue",
+      "amount_usd": 1160462000,
+      "as_of": "2026-Q3",
+      "classification": "EXCHANGE_REPORTED_REVENUE",
+      "detail": "Coinbase Q3 2026 10-Q."
+    },
+    {
+      "item": "BNY assets under custody/administration",
+      "amount_usd": 63400000000000,
+      "as_of": "2026-09-30",
+      "classification": "CUSTODIAN_WIDE_CORPORATE_SCALE",
+      "detail": "BNY-wide figure; not digital-asset AUC, XRP holdings or Ripple client balances."
+    },
+    {
+      "item": "SBI JPYSC handling balance",
+      "amount_jpy": 30000000000,
+      "as_of": "2026-11-02",
+      "classification": "STABLECOIN_HANDLING_BALANCE",
+      "detail": "Includes the lending balance; do not add the >¥10B lending balance again."
+    },
+    {
+      "item": "SBI JPYSC lending balance",
+      "amount_jpy": 10000000000,
+      "as_of": "2026-11-02",
+      "classification": "CUSTOMER_LENDING_BALANCE",
+      "detail": "Subset of handling balance; customers lend JPYSC to SBI VC Trade."
+    },
+    {
+      "item": "BNY XRP custody balances",
+      "amount_xrp": null,
+      "classification": "UNKNOWN",
+      "detail": "No XRP-specific assets-under-custody amount disclosed."
+    },
+    {
+      "item": "Standard Chartered / LMAX RLUSD collateral capacity",
+      "amount_usd": null,
+      "classification": "UNKNOWN_FUTURE_PRODUCT",
+      "detail": "Collateral integration is announced as future work; no amount, haircut or live balance disclosed."
+    },
+    {
+      "item": "Coinbase RLUSD collateral balance",
+      "amount_usd": null,
+      "classification": "NOT_LIVE_AT_LAUNCH_UNKNOWN",
+      "detail": "Coinbase says Global Exchange RLUSD collateral availability will follow."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "BNY",
+      "to": "Ripple",
+      "relationship": "institutional custody relationship for native XRP and RLUSD; Ripple Prime custody relationship",
+      "classification": "CONFIRMED_LIVE_FOR_ELIGIBLE_CLIENTS",
+      "source_ids": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD",
+      "relationship": "primary reserve custodian and institutional custody provider",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "XRP",
+      "relationship": "institutional custody on Digital Asset Custody platform",
+      "classification": "CONFIRMED_LIVE_FOR_ELIGIBLE_CLIENTS",
+      "source_ids": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Circle Reserve Fund",
+      "relationship": "custodian of Circle Reserve Fund portfolio",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "CIRCLE-USDC-RESERVES-NETWORKS-20261029"
+      ]
+    },
+    {
+      "from": "BlackRock",
+      "to": "Circle Reserve Fund",
+      "relationship": "portfolio manager",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "CIRCLE-USDC-RESERVES-NETWORKS-20261029"
+      ]
+    },
+    {
+      "from": "Standard Chartered",
+      "to": "RLUSD on XRPL",
+      "relationship": "institutional custody through DIFC Branch",
+      "classification": "CONFIRMED_LIVE",
+      "source_ids": [
+        "SC-RLUSD-CUSTODY-LMAX-20261012"
+      ]
+    },
+    {
+      "from": "Standard Chartered",
+      "to": "LMAX Group",
+      "relationship": "planned collateral-mirroring integration for RLUSD",
+      "classification": "ANNOUNCED_FUTURE_CAPABILITY",
+      "source_ids": [
+        "SC-RLUSD-CUSTODY-LMAX-20261012"
+      ]
+    },
+    {
+      "from": "LMAX Group",
+      "to": "RLUSD",
+      "relationship": "intended eligible collateral for agreed products",
+      "classification": "ANNOUNCED_NOT_LIVE",
+      "source_ids": [
+        "SC-RLUSD-CUSTODY-LMAX-20261012"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relationship": "Prime, Exchange and app distribution; deposits/withdrawals on XRPL, Base and Ethereum",
+      "classification": "CONFIRMED_LIVE_AT_LAUNCH",
+      "source_ids": [
+        "COINBASE-RLUSD-LAUNCH-20261028"
+      ]
+    },
+    {
+      "from": "Coinbase Global Exchange",
+      "to": "RLUSD collateral",
+      "relationship": "collateral availability announced for a future phase",
+      "classification": "ANNOUNCED_NOT_LIVE_AT_LAUNCH",
+      "source_ids": [
+        "COINBASE-RLUSD-LAUNCH-20261028"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relationship": "issuer",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "CIRCLE-USDC-RESERVES-NETWORKS-20261029",
+        "CIRCLE-10Q-20260630"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "XRP Ledger",
+      "relationship": "native USDC issuance and Circle Mint/API support",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "CIRCLE-USDC-XRPL-20250612"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relationship": "USDC distribution and commercial revenue-sharing arrangement renewed on same terms in Q3 2026",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "COINBASE-10Q-20260930",
+        "CIRCLE-10Q-20260630"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relationship": "RLUSD distribution listing across retail and institutional products",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "COINBASE-RLUSD-LAUNCH-20261028"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relationship": "distribution and customer lending product",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "C2FO",
+      "relationship": "exploratory tokenized supply-chain finance initiative with BNY on XRPL",
+      "classification": "EXPLORATORY",
+      "source_ids": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Circle",
+      "relationship": "indirect common institutional infrastructure through Circle Reserve Fund portfolio custody",
+      "classification": "CONFIRMED_SEPARATE_MANDATES",
+      "source_ids": [
+        "CIRCLE-USDC-RESERVES-NETWORKS-20261029",
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple",
+      "relationship": "separate RLUSD reserve custody and XRP/RLUSD client custody",
+      "classification": "CONFIRMED_SEPARATE_MANDATES",
+      "source_ids": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    }
+  ],
+  "competing_causal_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "Institutional custody expansion at BNY and Standard Chartered lowers operational friction and may precede increased institutional XRP/RLUSD holdings.",
+      "status": "PLAUSIBLE_NOT_YET_MEASURED",
+      "supporting": [
+        "BNY supports XRP and RLUSD custody for eligible clients.",
+        "Standard Chartered has live RLUSD custody on XRPL."
+      ],
+      "disconfirming": [
+        "No balances, client names, incremental purchases or XRP-specific custody flows were disclosed."
+      ]
+    },
+    {
+      "id": "H2",
+      "hypothesis": "RLUSD collateral mirroring through Standard Chartered and LMAX could increase institutional stablecoin utility and capital efficiency.",
+      "status": "ANNOUNCED_FUTURE_CAPABILITY",
+      "supporting": [
+        "The bank and LMAX describe a model that mirrors eligible collateral value without transferring RLUSD directly to the trading venue."
+      ],
+      "disconfirming": [
+        "Final documents, successful testing, legal approvals, haircuts, limits and production launch remain outstanding.",
+        "The named collateral is RLUSD, not XRP."
+      ]
+    },
+    {
+      "id": "H3",
+      "hypothesis": "Coinbase is pursuing a multi-stablecoin distribution strategy while retaining USDC economics with Circle.",
+      "status": "BEST_SUPPORTED_INFERENCE",
+      "supporting": [
+        "Coinbase added RLUSD across Prime, Exchange and app.",
+        "Coinbase Q3 filing says its Circle arrangement was renewed on the same terms.",
+        "Coinbase Q3 average USDC held in products reached an all-time high."
+      ],
+      "disconfirming": [
+        "No disclosed RLUSD market-share target or Coinbase commitment to prefer RLUSD over USDC."
+      ]
+    },
+    {
+      "id": "H4",
+      "hypothesis": "BNY functions as a common institutional trust/custody bridge across Circle and Ripple stablecoin reserve ecosystems.",
+      "status": "CONFIRMED_COMMON_PROVIDER_WITH_SEPARATE_MANDATES",
+      "supporting": [
+        "Circle identifies BNY as custodian of the Circle Reserve Fund portfolio.",
+        "Ripple/BNY identify BNY as primary RLUSD reserve custodian and XRP/RLUSD custody provider."
+      ],
+      "disconfirming": [
+        "No shared reserve pool, common guarantee, cross-liability or direct Circle-Ripple agreement was established."
+      ]
+    },
+    {
+      "id": "H5",
+      "hypothesis": "Circle and Ripple compete for stablecoin market share while their assets can coexist on XRPL and across Coinbase distribution.",
+      "status": "BEST_SUPPORTED_INFERENCE",
+      "supporting": [
+        "USDC is natively issued on XRPL.",
+        "RLUSD is issued by Ripple and listed by Coinbase.",
+        "Coinbase renewed Circle terms while adding RLUSD."
+      ],
+      "disconfirming": [
+        "No disclosed exclusive arrangement or evidence that either issuer's growth directly displaces the other on XRPL."
+      ]
+    },
+    {
+      "id": "H6",
+      "hypothesis": "SBI's simultaneous exposure to Ripple, Circle, RLUSD, USDC and JPYSC is a multi-rail strategy rather than an exclusive XRP bet.",
+      "status": "BEST_SUPPORTED_INFERENCE",
+      "supporting": [
+        "SBI's Ripple and Circle relationships, Japan distribution and JPYSC lending balance are documented in separate official disclosures."
+      ],
+      "disconfirming": [
+        "No single SBI disclosure explicitly describes these businesses as one integrated strategy.",
+        "The >¥10B JPYSC lending amount is included within the >¥30B handling balance and is not additional capital."
+      ]
+    },
+    {
+      "id": "H7",
+      "hypothesis": "These institutional announcements will produce a measurable positive XRP price effect.",
+      "status": "SPECULATION_UNSUPPORTED",
+      "supporting": [],
+      "disconfirming": [
+        "No XRP purchase, custody balance, collateral balance, settlement volume, net flow or event-study result was disclosed.",
+        "RLUSD/USDC adoption is not equivalent to native XRP demand."
+      ]
+    }
+  ],
+  "event_timeline": [
+    {
+      "date": "2025-06-12",
+      "event": "Circle native USDC launch on XRPL; Circle Mint and APIs support the network.",
+      "source_ids": [
+        "CIRCLE-USDC-XRPL-20250612"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "event": "Standard Chartered announces live RLUSD custody on XRPL and future collateral-mirroring work with LMAX.",
+      "source_ids": [
+        "SC-RLUSD-CUSTODY-LMAX-20261012"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "event": "BNY announces live eligible-client custody for XRP and RLUSD and exploratory tokenized trade-finance work with Ripple/C2FO.",
+      "source_ids": [
+        "BNY-RIPPLE-CUSTODY-20261027"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "event": "Coinbase adds RLUSD to Prime, Exchange and app; RLUSD Global Exchange collateral is deferred to a future phase.",
+      "source_ids": [
+        "COINBASE-RLUSD-LAUNCH-20261028"
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "event": "SBI VC Trade reports JPYSC handling balance above ¥30B and lending balance above ¥10B; lending is included in handling balance.",
+      "source_ids": [
+        "SBI-JPYSC-LENDING-20261102"
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "event": "Circle Q3 2026 results scheduled for 8:00 AM Eastern; not yet available at this snapshot cutoff.",
+      "source_ids": [
+        "CIRCLE-Q3-RESULTS-SCHEDULE-20261104"
+      ]
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "BNY-RIPPLE-CUSTODY-20261027",
+      "publisher": "BNY newsroom / Ripple",
+      "type": "official_company_press_release",
+      "date": "2026-10-27",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "independence_group": "bny-ripple-joint"
+    },
+    {
+      "id": "SC-RLUSD-CUSTODY-LMAX-20261012",
+      "publisher": "Standard Chartered",
+      "type": "official_bank_press_release",
+      "date": "2026-10-12",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "independence_group": "standard-chartered"
+    },
+    {
+      "id": "COINBASE-RLUSD-LAUNCH-20261028",
+      "publisher": "Coinbase",
+      "type": "official_company_blog",
+      "date": "2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "independence_group": "coinbase"
+    },
+    {
+      "id": "CIRCLE-USDC-XRPL-20250612",
+      "publisher": "Circle",
+      "type": "official_company_blog",
+      "date": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "independence_group": "circle"
+    },
+    {
+      "id": "CIRCLE-USDC-RESERVES-NETWORKS-20261029",
+      "publisher": "Circle",
+      "type": "official_product_and_reserve_disclosure",
+      "date": "2026-10-29",
+      "url": "https://www.circle.com/usdc",
+      "independence_group": "circle"
+    },
+    {
+      "id": "CIRCLE-10Q-20260630",
+      "publisher": "Circle Internet Group",
+      "type": "SEC_form_10-Q",
+      "date": "2026-08-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "independence_group": "sec-circle-filing"
+    },
+    {
+      "id": "COINBASE-10Q-20260930",
+      "publisher": "Coinbase Global",
+      "type": "SEC_form_10-Q",
+      "date": "2026-10-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "independence_group": "sec-coinbase-filing"
+    },
+    {
+      "id": "SBI-JPYSC-LENDING-20261102",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "type": "official_company_release",
+      "date": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "CIRCLE-Q3-RESULTS-SCHEDULE-20261104",
+      "publisher": "Circle",
+      "type": "official_earnings_schedule",
+      "date": "2026-10",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "independence_group": "circle"
+    }
+  ],
+  "data_quality": [
+    "BNY's $63.4T assets-under-custody/administration figure is BNY-wide corporate scale, not XRP or digital-asset custody balances.",
+    "BNY custody of the Circle Reserve Fund portfolio and BNY's RLUSD reserve/client custody are separate mandates; do not infer pooled reserves.",
+    "Circle's Q2 2026 metrics and Coinbase's Q3 2026 metrics are different reporting periods.",
+    "Circle's distribution costs incurred under Coinbase agreements are not directly equivalent to Coinbase's stablecoin revenue.",
+    "Coinbase's RLUSD collateral availability on Global Exchange was explicitly future at launch; do not mark it live without a subsequent product notice.",
+    "Standard Chartered/LMAX RLUSD collateral mirroring remains future work subject to documentation, testing and approvals; no haircut or collateral capacity is disclosed.",
+    "Circle's $70.0B USDC circulation is issuer-reported as of October 29; Q2 circulation metrics are separate historical observations.",
+    "SBI JPYSC lending balance is a subset of handling balance, not an additional amount.",
+    "No individual BNY or Standard Chartered XRP custody client balances were disclosed."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "implication_for_model": "Treat custody launches, collateral announcements and stablecoin listings as event features with separate live/planned/exploratory statuses. Do not infer XRP purchases from custody access or RLUSD/USDC distribution. Any price-impact hypothesis requires synchronized spot/derivatives/ETF data, controls, pre-registered horizons and walk-forward event-study evaluation."
+  },
+  "event_study": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "design": "For each event, define event timestamp and asset-specific treatment: native XRP custody (BNY), RLUSD custody (BNY/Standard Chartered), RLUSD distribution (Coinbase), and future collateral availability (LMAX/Coinbase only after actual launch). Compare XRP, RLUSD, USDC-on-XRPL and control assets; measure venue-level spot net flows, order-book depth, spread, volume, derivatives OI/funding/basis, ETF flows and XRPL activity. Use pre-event windows, post-event fixed horizons, matched control assets, placebo dates, leakage checks and source-quality flags.",
+    "failure_conditions": [
+      "No synchronized raw data",
+      "Event timing ambiguity",
+      "No suitable control",
+      "Confounding market-wide macro or exchange incident",
+      "Provider coverage changes"
+    ]
+  },
+  "limitations": [
+    "No direct XRP Ledger RPC replay or institutional custody account balances were accessed in this run.",
+    "No Circle Q3 2026 financial results were available at the data cutoff.",
+    "No RLUSD collateral mirroring launch, haircuts, LMAX balances or eligible product list was independently verified.",
+    "No BNY XRP custody quantity, client count or transaction volume was disclosed.",
+    "No inference is made that native USDC issuance on XRPL creates material XRP demand.",
+    "No direct Circle-Ripple corporate agreement beyond the documented network-level USDC availability on XRPL was established."
+  ],
+  "safety": {
+    "public_authorized_sources_only": true,
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "external_transaction": false,
+    "forecast_issued": false
+  }
+}
