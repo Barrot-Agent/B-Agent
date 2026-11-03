@@ -117,7 +117,7 @@
     "base_commit": "5e82b27205285257edef5ece404356c8900be73d",
     "branch": "security/fresh-main-external-gates-20261103T0512Z",
     "local_tests": "NOT_EXECUTED",
-    "exact_head_ci": "RERUN_PENDING_AFTER_TEST_INVARIANT_FIX",
+    "exact_head_ci": "RERUN_PENDING_AFTER_DEPENDENCY_AUDIT_APPEND",
     "fail_closed_gate": "PENDING",
     "main_modified": false,
     "external_actions_executed": false,
@@ -129,6 +129,13 @@
       "root_cause": "Existing test encoded the previous active self-upgrade workflow invariant (same-ref checkout and push). The new containment intentionally disables that workflow, so the old assertion was contradictory.",
       "correction": "Replaced the obsolete test with assertions that the self-upgrade workflow is inert, has empty permissions, exposes no provider token and contains no push capability.",
       "rerun": "PENDING"
+    },
+    "previous_verified_head": {
+      "sha": "ba5c3eebcb10f549473de779db70c54979dd9fb9",
+      "ci_run": 41582816162,
+      "ci_result": "351 passed, 8 subtests passed in 7.87s",
+      "fail_closed_run": 41582816052,
+      "fail_closed_result": "success"
     }
   },
   "next_actions": [
@@ -136,5 +143,56 @@
     "Verify exact-head CI and fail-closed gate and inspect logs.",
     "Audit remaining active workflow files for external mutation and broad write permissions.",
     "Keep all changes unmerged until explicit approval."
-  ]
+  ],
+  "dependency_audit": {
+    "captured_at_utc": "2026-11-03T05:18:47Z",
+    "files": {
+      "requirements.txt": {
+        "blob_sha": "8c81e45483ed5092afe836070d8aee1d28e6567d",
+        "direct_dependencies": 11,
+        "version_constraints": "lower bounds only; no exact pins"
+      },
+      "pyproject.toml": {
+        "blob_sha": "ff06168717ee64e0a729aee87d7b0aef62523bf8",
+        "direct_dependencies": 11,
+        "version_constraints": "duplicates requirements.txt lower bounds"
+      },
+      "Dockerfile": {
+        "blob_sha": "a5f493275128ceb9ca08f195dad25d9aaf520b62",
+        "base_image": "python:3.10-slim",
+        "pip_install": "pip install --upgrade pip && pip install -r requirements.txt"
+      },
+      "a2a/package.json": {
+        "blob_sha": "ffe7e96d77892a96e7540985bf01c3169383a3be",
+        "dependencies": []
+      }
+    },
+    "lockfiles_not_found": [
+      "uv.lock",
+      "poetry.lock",
+      "Pipfile.lock",
+      "package-lock.json",
+      "a2a/package-lock.json"
+    ],
+    "ci": {
+      "python_version": "3.11",
+      "installs": "pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests",
+      "does_not_install_full_production_requirements": true,
+      "coverage_gap": "Torch, Transformers, Streamlit, Accelerate, bitsandbytes, safetensors, Pillow and python-dotenv production compatibility is not validated by core CI."
+    },
+    "risks": [
+      "Unbounded direct dependency versions and no Python lockfile reduce reproducibility.",
+      "Python project declares >=3.10, Docker uses mutable python:3.10-slim, and CI tests only Python 3.11.",
+      "Docker upgrades pip without pinning and installs current apt packages at build time.",
+      "GitHub Actions are referenced by major-version tags rather than immutable commit SHAs."
+    ],
+    "non_findings": [
+      "a2a/package.json declares no npm dependencies, so the missing npm lockfile is not presently evidence of unresolved npm packages.",
+      "No specific dependency compromise was identified by this limited manifest inspection."
+    ],
+    "not_executed": [
+      "No pip-audit, OSV, Dependabot-alert, SBOM or full dependency vulnerability scan was run.",
+      "No dependency pins or upgrades were applied because runtime, architecture and GPU/bitsandbytes compatibility were not validated."
+    ]
+  }
 }
