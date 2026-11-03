@@ -33,7 +33,7 @@
     {
       "id": "SCA-03",
       "classification": "CONFIRMED_OFFICIAL_PRESENTATION",
-      "claim": "SBI's June 2, 2025 investor presentation depicts SBI Holdings and Circle with 50% ownership each in the SBI Circle Holdings / Circle SBI Japan structure.",
+      "claim": "SBI's June 2, 2025 investor presentation depicts SBI Holdings and Circle each holding 50% of SBI Circle Holdings, the Japan-focused joint venture. Circle SBI Japan is a related operating entity in the same partnership structure.",
       "implication": "The Japan distribution venture is a jointly owned corporate vehicle, distinct from SBI's separate $50 million Circle share purchase.",
       "sources": [
         "SBI-CIRCLE-JV-50-50-PRESENTATION"
@@ -191,7 +191,7 @@
     {
       "from": "SBI Holdings",
       "to": "SBI Circle Holdings",
-      "relationship": "50% ownership",
+      "relationship": "50% ownership in the joint venture",
       "classification": "CONFIRMED",
       "source_ids": [
         "SBI-CIRCLE-JV-50-50-PRESENTATION"
@@ -430,7 +430,7 @@
       "publisher": "SBI Holdings and SBI VC Trade",
       "type": "official_company_release",
       "date": "2026-06-24",
-      "url": "https://www.sbigroup.co.jp/news/2026/0624_16399.html",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
       "independence_group": "sbi-group"
     },
     {
@@ -438,7 +438,7 @@
       "publisher": "SBI Holdings and SBI VC Trade",
       "type": "official_company_release",
       "date": "2025-03-12",
-      "url": "https://www.sbigroup.co.jp/news/2025/0312_15345.html",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15332.html",
       "independence_group": "sbi-group"
     },
     {
@@ -446,7 +446,7 @@
       "publisher": "Circle and Ripple",
       "type": "official_joint_announcement",
       "date": "2025-06-12",
-      "url": "https://www.circle.com/pressroom/usdc-now-available-on-xrp-ledger",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
       "independence_group": "circle-ripple-joint"
     }
   ],
