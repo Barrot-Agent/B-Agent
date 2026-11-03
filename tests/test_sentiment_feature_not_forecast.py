@@ -63,3 +63,10 @@ def test_malformed_model_response_does_not_invent_confidence():
     assert score == 50
     assert confidence == 0.0
     assert label == "neutral"
+
+
+
+def test_daily_digest_uses_real_newlines_and_validates_confidence():
+    digest = (ROOT / "scripts" / "daily_digest.py").read_text(encoding="utf-8")
+    assert 'body = "\\n".join(lines)' in digest
+    assert "math.isfinite(confidence_value)" in digest

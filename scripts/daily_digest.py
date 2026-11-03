@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import math
 import time
 from datetime import datetime
 from pathlib import Path
@@ -40,7 +41,12 @@ def main():
     signal = _read_json("web/latest_signal.json")
     lines = ["## Barrot Daily Digest", ""]
 
-    if signal.get("signal_kind") == "sentiment_feature_only" and float(signal.get("confidence", 0) or 0) > 0:
+    try:
+        confidence_value = float(signal.get("confidence", 0) or 0)
+    except (TypeError, ValueError):
+        confidence_value = 0.0
+
+    if signal.get("signal_kind") == "sentiment_feature_only" and math.isfinite(confidence_value) and 0 < confidence_value <= 1:
         lines.append(f"**Latest XRP sentiment feature (not a price forecast):** label {signal.get('sentiment_label', 'unclassified')}, score {signal.get('score')}/100, source `{signal.get('source')}`")
         lines.append("**Confidence semantics:** uncalibrated model-reported sentiment confidence; not a probability of price direction.")
     else:
@@ -49,7 +55,7 @@ def main():
     lines.append("**Directional forecast status:** NOT_ISSUED — this pipeline does not publish a validated fixed-horizon price forecast.")
     lines.append(f"**New knowledge base entries (24h):** {_count_recent_kb()}")
     lines.append(f"**New content drafts (24h):** {_count_recent_content()}")
-    body = "\\n".join(lines)
+    body = "\n".join(lines)
     Path("digest_body.md").write_text(body, encoding="utf-8")
     print(body)
 
