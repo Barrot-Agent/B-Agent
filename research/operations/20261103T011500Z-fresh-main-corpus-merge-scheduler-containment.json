@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "fresh_main_corpus_merge_scheduler_containment",
+  "snapshot_id": "fresh-main-corpus-merge-scheduler-containment-20261103-run11",
+  "captured_at_utc": "2026-11-03T01:15:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "fe3f12d67f5508be501464548c6477ec23a3b648",
+  "open_pull_requests": 304,
+  "workflow_files_scanned": 77,
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "forecast_status": "NOT_ISSUED",
+  "confirmed_main_findings": [
+    {
+      "severity": "CRITICAL",
+      "path": "brain_corpus/dump.json",
+      "bytes": 353950,
+      "finding": "Public repository contains a generated brain-corpus dump."
+    },
+    {
+      "severity": "CRITICAL",
+      "path": "brain_corpus/dump.md",
+      "bytes": 296527,
+      "finding": "Public repository contains a Markdown brain-corpus dump."
+    },
+    {
+      "severity": "CRITICAL",
+      "path": ".github/workflows/dump-brain-corpus.yml",
+      "finding": "Main workflow remains manually dispatchable, has repository write permission, references DATABRICKS_TOKEN, queries workspace.barrot.brain and exports records to the public repository."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/merge-queue.yml",
+      "finding": "Manual dispatch permits mode=all, max_prs=0 (unlimited) and dry_run=false; it can merge and delete branches with write permissions."
+    },
+    {
+      "severity": "HIGH",
+      "path": "scripts/scheduler.py",
+      "finding": "Main scheduler accepts an existing workflow filename and caller-supplied dispatch inputs rather than a fixed reviewed allowlist."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/scheduler-tick.yml",
+      "finding": "Scheduled every 15 minutes with contents/actions write permissions and invokes the scheduler."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/cross-analysis.yml",
+      "finding": "Scheduled workflow writes generated artifacts and commits/pushes them to main."
+    }
+  ],
+  "evidence_scope": {
+    "prior_aggregate_record_count": 958,
+    "individual_record_sensitivity": "NOT_CLASSIFIED",
+    "current_run_content_inspection": "METADATA_AND_WORKFLOW_CODE_ONLY; no individual brain-corpus records opened",
+    "limitation": "Removing files from the current branch does not erase historical Git objects, forks, caches or external copies."
+  },
+  "consolidated_changes": {
+    "pull_request": 1544,
+    "fresh_main_base": "fe3f12d67f5508be501464548c6477ec23a3b648",
+    "changes": [
+      "Disable public brain-corpus export workflow and exporter path.",
+      "Remove the two generated corpus dumps from the proposed current tree.",
+      "Add regression test preventing the public export from being re-enabled.",
+      "Disable the autonomous merge queue and its broad manual all-PR mode.",
+      "Make Cross Analysis read-only with respect to main.",
+      "Constrain scheduler dispatch to a fixed allowlist of validation workflows.",
+      "Add regression tests for merge queue, Cross Analysis and scheduler allowlist.",
+      "Register all four security tests in core CI."
+    ],
+    "source_proposals": [
+      1531,
+      1532
+    ],
+    "source_proposal_status": "Both remain open/draft/mergeable but are seven commits behind current main; the consolidated branch is based directly on current main."
+  },
+  "residual_risks": [
+    "Historical corpus objects and forks/caches are not purged by this PR.",
+    "Individual corpus sensitivity remains unclassified.",
+    "Other scheduled and manual main writers remain outside this PR and are tracked in PR #1543's audit backlog.",
+    "GitHub administrative branch-protection details remain unverified through the current integration."
+  ],
+  "verification": {
+    "state": "PENDING_EXACT_HEAD_CI",
+    "local_test_execution": "NOT_EXECUTED",
+    "prior_source_pr_tests": "PR #1531 exact-head 345 tests + 8 subtests passed; PR #1532 exact-head 357 tests + 8 subtests passed. These are not claimed for the combined fresh-main head.",
+    "fail_closed_gate": "PENDING"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployments": false,
+    "paper_trading": false,
+    "real_money": false
+  }
+}
