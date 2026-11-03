@@ -1,0 +1,484 @@
+{
+  "schema_version": "barrot.institutional-network-research.v1",
+  "artifact_id": "japan-sbi-ripple-circle-coinbase-stablecoin-network-20261103T141200Z",
+  "captured_at_utc": "2026-11-03T14:12:00Z",
+  "data_cutoff_utc": "2026-11-03T14:12:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "topic": "Japan institutional stablecoin and tokenization network: SBI, Ripple, Circle, Coinbase, Startale, BlackRock, SMFG, Visa and SBIC",
+  "summary": "SBI is simultaneously involved in distinct Ripple/RLUSD, Circle/USDC, Startale/JPYSC, BlackRock/tokenized-MMF, SMFG/SBI Startale Marketing, and Open Standard/OUSD initiatives. These relationships are not interchangeable. A key implementation constraint is that SBI VC Trade's RLUSD service initially supports Ethereum only, while JPYSC's public-chain circulation remains conditional. Coinbase and SBI/Startale share Open Standard consortium participation, but no bilateral XRP-specific Coinbase–SBI integration is established.",
+  "claims": [
+    {
+      "id": "JP-NET-001",
+      "classification": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claim": "SBI VC Trade and Ripple announced RLUSD handling in VCTRADE beginning June 24, 2026. SBI VC Trade classified it, for Japanese-law handling purposes, as the first No. 4 electronic payment instrument; this is the operator's stated legal classification, not a claim that RLUSD is a Japanese trust-issued token.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "JP-NET-002",
+      "classification": "CONFIRMED_PRIMARY_PRODUCT_SCOPE",
+      "claim": "At the RLUSD launch, VCTRADE supported Ethereum-chain RLUSD only; deposits or withdrawals of RLUSD on other chains were not supported at that time. Deposits and withdrawals were listed as fee-free, with a 1 million yen per-withdrawal cap and other daily deposit/issuer-redemption safeguards.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "JP-NET-003",
+      "classification": "CONFIRMED_PRIMARY_ISSUER_DESCRIPTION",
+      "claim": "SBI's RLUSD announcement identifies Standard Custody & Trust Company, a Ripple subsidiary and New York-chartered limited-purpose trust company, as RLUSD issuer; it describes reserves as dollar deposits, short-term US Treasuries and cash equivalents with monthly third-party verification.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "JP-NET-004",
+      "classification": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claim": "JPYSC was launched June 24, 2026 as a trust-type yen stablecoin issued by SBI Shinsei Trust Bank; SBI VC Trade distributes it; Startale Group co-developed it with SBI. Initial availability was restricted to VCTRADE customer accounts and external-wallet withdrawals were disabled pending legal/tax treatment and regulatory confirmation for public-chain circulation.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "JP-NET-005",
+      "classification": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claim": "As of November 2, 2026, SBI VC Trade reported JPYSC lending balances above ¥10B and total JPYSC handled balances above ¥30B. The company defines handled balance as onchain balance plus lending balance; this must not be interpreted as freely transferable public-chain circulating supply.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "JP-NET-006",
+      "classification": "CONFIRMED_PRIMARY_PRODUCT_TERMS",
+      "claim": "On November 2, SBI VC Trade listed JPYSC lending courses of 28 days at 2%, 84 days at 2.5% and 168 days at 3% annualized. It states JPYSC lending is not a bank deposit, is not covered by deposit insurance and generally cannot be terminated early.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "JP-NET-007",
+      "classification": "CONFIRMED_PRIMARY_RESERVE_DISCLOSURE",
+      "claim": "On September 7, SBI Shinsei Trust Bank and SBI VC Trade reported approximately ¥20.1B JPYSC issuance and began investing ¥10B of trust backing in short-term Japanese government bills. The same announcement reported approximately ¥6.9B of JPYSC lending applications; applications must not be relabeled as settled lending balances.",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "id": "JP-NET-008",
+      "classification": "CONFIRMED_PRIMARY_MEMORANDUM",
+      "claim": "On October 27, SBI Holdings, Startale and BlackRock Financial Management/BlackRock Japan signed a basic agreement to explore a digital-asset ecosystem linking tokenized money-market funds and JPYSC across technology/infrastructure, business/distribution and regulatory/market development. This is an exploratory agreement, not evidence of a production tokenized-MMF/JPYSC service.",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "id": "JP-NET-009",
+      "classification": "CONFIRMED_PRIMARY_CONSORTIUM_MEMBERSHIP",
+      "claim": "On October 16, SBI Holdings and Startale announced participation in Open Standard. The announcement names Coinbase, Mastercard, Shopify, Stripe and Visa as founding partners and says more than 140 companies participate in the initiative.",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "id": "JP-NET-010",
+      "classification": "CONFIRMED_PRIMARY_PROPOSED_POC",
+      "claim": "SBI and Startale said they would consider a proof-of-concept for interoperability between JPYSC and Open USD (OUSD). The announcement explicitly says this is consideration of an experiment and does not mean a new service or production settlement has started.",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "id": "JP-NET-011",
+      "classification": "CONFIRMED_PRIMARY_CONSORTIUM_SCOPE",
+      "claim": "Open Standard's stated founding partners include Coinbase, Mastercard, Shopify, Stripe and Visa; its initiative is centered on OUSD. SBI/Startale's participation establishes shared consortium membership with Coinbase, not a disclosed bilateral commercial agreement or XRP integration.",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "id": "JP-NET-012",
+      "classification": "CONFIRMED_PRIMARY_CAPITAL_ALLIANCE",
+      "claim": "On October 30, SBI Holdings and SMFG agreed to a capital/business alliance for joint research and proof-of-concept work on stablecoin financial services. SMFG agreed to a 5% capital participation in SBI Startale Marketing, the SBI/Startale joint venture focused on JPYSC promotion and use-case development.",
+      "source_ids": [
+        "S7"
+      ]
+    },
+    {
+      "id": "JP-NET-013",
+      "classification": "CONFIRMED_PRIMARY_RETAIL_DISTRIBUTION",
+      "claim": "On May 1, SBI VC Trade, Aplus and Visa announced SBI Visa Crypto Cards under which card points are automatically exchanged into crypto assets including XRP, BTC and ETH. This is a retail distribution/reward channel; the announcement does not disclose whether XRP rewards are sourced through market purchases, inventory or another mechanism, nor the XRP reward volume.",
+      "source_ids": [
+        "S8"
+      ]
+    },
+    {
+      "id": "JP-NET-014",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Circle's Q2 2026 Form 10-Q says Circle and SBI Holdings each contributed Japanese yen equivalent to approximately $1.5M to Circle SBI Japan K.K. in November 2025. Circle owns 50%, consolidates the entity as a VIE because it directs significant activities and bears potentially significant benefits/losses, and reported no significant operating results to date as of June 30, 2026.",
+      "source_ids": [
+        "S9"
+      ]
+    },
+    {
+      "id": "JP-NET-015",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Circle's filing describes Circle SBI Japan K.K. as established to support USDC distribution in Japan. This USDC joint venture is distinct from SBI VC Trade's RLUSD distribution relationship with Ripple and from the JPYSC venture with Startale.",
+      "source_ids": [
+        "S9"
+      ]
+    },
+    {
+      "id": "JP-NET-016",
+      "classification": "CONFIRMED_PRIMARY_IDENTITY",
+      "claim": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) is the entity behind the Japanese SBIC acronym in the prior ChatGPT-seminar research. It is distinct from SBI Holdings; no ownership or operating relationship between the two was established in the reviewed official sources.",
+      "source_ids": [
+        "S10",
+        "S11"
+      ]
+    },
+    {
+      "id": "JP-NET-017",
+      "classification": "UNKNOWN_NOT_ESTABLISHED",
+      "claim": "No direct XRP integration, XRP collateral use or XRP acquisition mandate was established for JPYSC, the SBI/BlackRock tokenized-MMF memorandum, the SBI/SMFG alliance, or the JPYSC/OUSD interoperability proposal.",
+      "source_ids": [
+        "S2",
+        "S5",
+        "S6",
+        "S7"
+      ]
+    },
+    {
+      "id": "JP-NET-018",
+      "classification": "UNKNOWN_NOT_ESTABLISHED",
+      "claim": "No bilateral Coinbase–SBI XRP commercial agreement was established by Open Standard participation. Shared consortium membership is an indirect network edge only.",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "id": "JP-NET-019",
+      "classification": "CONFIRMED_DISTINCT_PARTNERSHIP",
+      "claim": "SBI's Circle/USDC relationship, SBI's Ripple/RLUSD relationship and SBI/Startale's JPYSC relationship are separate corporate and product arrangements. Their coexistence does not establish exclusivity, common reserve backing or coordinated XRP market activity.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S9"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI VC Trade",
+      "to": "Ripple / Standard Custody & Trust",
+      "relation": "RLUSD distribution in Japan",
+      "status": "LIVE_PRODUCT_ANNOUNCED_2026-06-24",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "VCTRADE supports Ethereum-chain RLUSD only at launch",
+      "status": "PRODUCT_SCOPE_CONFIRMED",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "from": "Standard Custody & Trust",
+      "to": "RLUSD",
+      "relation": "issuer",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relation": "trust issuer",
+      "status": "LIVE_ISSUANCE_ANNOUNCED",
+      "source_ids": [
+        "S2",
+        "S4"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relation": "distribution and lending",
+      "status": "LIVE_ACCOUNT_RESTRICTED_SERVICE",
+      "source_ids": [
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "from": "Startale Group",
+      "to": "JPYSC",
+      "relation": "co-development and ecosystem support",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S2",
+        "S5"
+      ]
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "BlackRock",
+      "relation": "exploratory tokenized-MMF and JPYSC memorandum",
+      "status": "MOU_NOT_PRODUCTION",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "Open Standard / OUSD",
+      "relation": "consortium participation and proposed JPYSC-OUSD PoC",
+      "status": "PROPOSED_POC_NOT_PRODUCTION",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open Standard / OUSD",
+      "relation": "founding partner",
+      "status": "CONSORTIUM_MEMBERSHIP",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "Coinbase",
+      "relation": "shared Open Standard consortium",
+      "status": "INDIRECT_SHARED_MEMBERSHIP_ONLY",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "from": "SMFG",
+      "to": "SBI Startale Marketing",
+      "relation": "5% capital participation",
+      "status": "AGREED_2026-10-30",
+      "source_ids": [
+        "S7"
+      ]
+    },
+    {
+      "from": "SBI VC Trade / Aplus / Visa",
+      "to": "XRP",
+      "relation": "consumer card reward conversion option",
+      "status": "PROGRAM_ANNOUNCED_2026-05-01",
+      "source_ids": [
+        "S8"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "SBI Holdings",
+      "relation": "50/50 Circle SBI Japan K.K. JV for USDC distribution support",
+      "status": "SEC_CONFIRMED_NO_SIGNIFICANT_RESULTS_THROUGH_2026-06-30",
+      "source_ids": [
+        "S9"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "long-term digital-asset partnership and RLUSD distribution",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "from": "Tokyo SBIC East Japan",
+      "to": "SBI Holdings",
+      "relation": "no relationship established; distinct legal entities",
+      "status": "DO_NOT_CONFLATE",
+      "source_ids": [
+        "S10",
+        "S11"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-JP-1",
+      "statement": "SBI's regulated RLUSD distribution increases access to Ripple's USD stablecoin in Japan but does not by itself increase XRPL activity or XRP demand because VCTRADE initially supports Ethereum only.",
+      "status": "SUPPORTED_PRODUCT_SCOPE; XRP_EFFECT_UNKNOWN",
+      "support": [
+        "SBI and Ripple announced RLUSD handling.",
+        "The VCTRADE announcement specifies Ethereum-only chain support."
+      ],
+      "disconfirming_or_limits": [
+        "Future chain support may expand; no usage/volume split or XRP bridge flow disclosed."
+      ]
+    },
+    {
+      "id": "H-JP-2",
+      "statement": "SBI is building a multi-issuer, multi-currency stablecoin and tokenization network rather than an exclusive XRP-only strategy.",
+      "status": "SUPPORTED_BY_MULTIPLE_SEPARATE_ANNOUNCEMENTS",
+      "support": [
+        "Circle/USDC JV, Ripple/RLUSD distribution, JPYSC/Startale, BlackRock memorandum, Open Standard/OUSD and SMFG alliance."
+      ],
+      "disconfirming_or_limits": [
+        "The separate projects may have different scopes, timelines and commercial importance; no unified operating plan is disclosed."
+      ]
+    },
+    {
+      "id": "H-JP-3",
+      "statement": "JPYSC lending and tokenized-MMF plans may create yen-denominated onchain liquidity and collateral infrastructure that could later interoperate with XRP-related payment rails.",
+      "status": "POSSIBLE_FUTURE_SCENARIO_NOT_CONFIRMED",
+      "support": [
+        "JPYSC lending has reported scale; BlackRock/Startale/SBI are exploring tokenized-MMF integration."
+      ],
+      "disconfirming_or_limits": [
+        "JPYSC public-chain transfer remains conditional; no XRP bridge, XRP collateral or XRPL deployment is disclosed."
+      ]
+    },
+    {
+      "id": "H-JP-4",
+      "statement": "SBI/Startale's Open Standard participation creates an indirect institutional network edge to Coinbase.",
+      "status": "CONFIRMED_SHARED_CONSORTIUM_MEMBERSHIP_ONLY",
+      "support": [
+        "SBI/Startale joined Open Standard; Coinbase is a founding partner."
+      ],
+      "disconfirming_or_limits": [
+        "No bilateral Coinbase-SBI contract or XRP-specific integration is disclosed."
+      ]
+    },
+    {
+      "id": "H-JP-5",
+      "statement": "SBI Visa Crypto Card rewards could create retail XRP distribution and recurring small XRP allocations.",
+      "status": "PROGRAM_CONFIRMED; MARKET_FLOW_UNKNOWN",
+      "support": [
+        "Official announcement lists XRP among card-reward conversion assets."
+      ],
+      "disconfirming_or_limits": [
+        "No XRP reward volumes, sourcing, hedging or net market purchases disclosed."
+      ]
+    },
+    {
+      "id": "H-JP-6",
+      "statement": "Circle SBI Japan K.K. may become an operational USDC distribution channel in Japan.",
+      "status": "CORPORATE_VEHICLE_CONFIRMED; COMMERCIAL_SCALE_NOT_OBSERVED",
+      "support": [
+        "Circle's SEC filing confirms 50% ownership and the USDC distribution purpose."
+      ],
+      "disconfirming_or_limits": [
+        "No significant operating results through June 30, 2026; later results not yet verified."
+      ]
+    }
+  ],
+  "feature_store_rules": [
+    "Represent stablecoin issuer, legal classification, chain, distributor, custody, redemption route, public/private transferability and product status as separate dimensions.",
+    "Do not infer XRPL usage from RLUSD distribution where the supported VCTRADE chain is Ethereum only.",
+    "Separate JPYSC issued supply, internal account balances, lending balances, trust backing, public-chain circulation and handled-balance metrics.",
+    "Treat JPYSC lending applications as applications, not settled loans or new issuance.",
+    "Treat MoUs and proposed proof-of-concepts as DESIGNED/PROPOSED, not EXECUTED or VERIFIED production flows.",
+    "Treat shared consortium membership as an indirect relationship, not a bilateral contract.",
+    "Do not infer XRP demand from card reward eligibility without reward quantities, sourcing and execution evidence.",
+    "Keep Circle SBI Japan K.K. USDC distribution purpose separate from Ripple/SBI RLUSD distribution and SBI/Startale JPYSC.",
+    "Keep Tokyo SBIC East Japan distinct from SBI Holdings unless primary evidence establishes a relationship."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "publisher": "SBI VC Trade and Ripple",
+      "title": "RLUSD handling begins in VCTRADE; Japanese-law No. 4 electronic payment instrument classification, 2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+    },
+    {
+      "id": "S2",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "publisher": "SBI Holdings, SBI Shinsei Trust Bank, SBI VC Trade and Startale",
+      "title": "JPYSC issuance and account-restricted initial service, 2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "id": "S3",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "publisher": "SBI VC Trade",
+      "title": "JPYSC lending balance exceeds ¥10B and handled balance exceeds ¥30B, 2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+    },
+    {
+      "id": "S4",
+      "type": "PRIMARY_RESERVE_DISCLOSURE",
+      "publisher": "SBI Shinsei Trust Bank and SBI VC Trade",
+      "title": "JPYSC reserve assets and short-term Japanese government bill investment, 2026-09-07",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+    },
+    {
+      "id": "S5",
+      "type": "PRIMARY_MEMORANDUM",
+      "publisher": "SBI Holdings, Startale and BlackRock",
+      "title": "Exploration of tokenized MMF and JPYSC ecosystem, 2026-10-27",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+    },
+    {
+      "id": "S6",
+      "type": "PRIMARY_CONSORTIUM_ANNOUNCEMENT",
+      "publisher": "SBI Holdings and Startale",
+      "title": "Open Standard participation and proposed JPYSC/OUSD interoperability PoC, 2026-10-16",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    },
+    {
+      "id": "S7",
+      "type": "PRIMARY_CAPITAL_ALLIANCE_ANNOUNCEMENT",
+      "publisher": "SBI Holdings and SMFG",
+      "title": "Stablecoin financial-services alliance and 5% SBI Startale Marketing participation, 2026-10-30",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html"
+    },
+    {
+      "id": "S8",
+      "type": "PRIMARY_RETAIL_PRODUCT_ANNOUNCEMENT",
+      "publisher": "SBI VC Trade, Aplus and Visa",
+      "title": "SBI Visa Crypto Card with XRP/BTC/ETH reward conversion, 2026-05-01",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html"
+    },
+    {
+      "id": "S9",
+      "type": "PRIMARY_SEC_10Q",
+      "publisher": "Circle Internet Group, Inc.",
+      "title": "Q2 2026 Form 10-Q; Circle SBI Japan K.K.",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "id": "S10",
+      "type": "PRIMARY_COMPANY_PROFILE",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Official company profile identifying SBIC East Japan",
+      "url": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "id": "S11",
+      "type": "PRIMARY_SEMINAR_DOCUMENT",
+      "publisher": "Tokyo SBIC and Taito Chamber of Commerce",
+      "title": "Generative AI and ChatGPT seminar, 2025-02-26",
+      "url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf"
+    }
+  ],
+  "next_actions": [
+    "Verify whether VCTRADE has expanded RLUSD support beyond Ethereum after the June 24 launch terms.",
+    "Monitor JPYSC public-chain enablement and obtain chain-specific supply/transfer data before treating handled balance as circulating supply.",
+    "Track SBI/Startale/BlackRock and SBI/SMFG PoCs for executed production transactions and any XRP/XRPL references.",
+    "Measure SBI Visa Crypto Card XRP reward issuance/settlement only if public aggregate data becomes available.",
+    "Revisit Circle SBI Japan K.K. after Circle's Q3 results on November 4, 2026."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "limitations": [
+    "The official SBI Japanese pages are search-indexed; some direct page opens expose only a script iframe. The underlying official announcement text was retrieved through search results.",
+    "No FSA register result was obtained for Circle SBI Japan K.K.; its legal status here is based on Circle's SEC filing and SBI's public announcements.",
+    "No actual XRP purchases, collateral balances, RLUSD/JPYSC transfer volumes or XRP reward flows were quantified by these announcements.",
+    "No bilateral Coinbase-SBI contract was established by consortium membership.",
+    "No direct XRP integration was established for JPYSC, OUSD or the BlackRock tokenized-MMF memorandum."
+  ]
+}
