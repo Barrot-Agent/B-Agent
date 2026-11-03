@@ -704,3 +704,34 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+def test_public_subscriber_and_scheduled_issue_writers_are_quarantined() -> None:
+    workflow_paths = (
+        ".github/workflows/subscriber_sync.yml",
+        ".github/workflows/daily-digest.yml",
+        ".github/workflows/auto-resolve-issues.yml",
+        ".github/workflows/barrot-autonomous-resolver.yml",
+        ".github/workflows/self-schedule.yml",
+    )
+    forbidden = (
+        "schedule:",
+        "secrets.",
+        "GUMROAD_ACCESS_TOKEN",
+        "git push",
+        "gh issue create",
+        "gh issue close",
+        "gh issue comment",
+        "gh pr edit",
+        "contents: write",
+        "actions: write",
+        "issues: write",
+        "pull-requests: write",
+    )
+    for relative in workflow_paths:
+        workflow = (REPO_ROOT / relative).read_text(encoding="utf-8")
+        assert "workflow_dispatch: {}" in workflow, relative
+        assert "permissions: {}" in workflow, relative
+        assert "if: false" in workflow, relative
+        assert "No credentials are read" in workflow, relative
+        for token in forbidden:
+            assert token not in workflow, f"{relative} still contains {token!r}"
