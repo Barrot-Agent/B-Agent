@@ -1,6 +1,8 @@
 # Barrot XRP Intelligence — Evernorth close, custody and Coinbase execution handoff
 
-Captured: 2026-11-03 10:20 UTC
+Captured: 2026-11-03 10:15:17 UTC (authoritative initial GitHub commit time)
+
+Timestamp correction: the file path contains a planned 10:20Z label, but the initial commit was created at 10:15:17Z. The initial commit time is authoritative; source-specific timestamps remain unchanged.
 
 ## Mission
 
