@@ -352,51 +352,131 @@ class ForecastLedger:
             """).fetchall()
         finally:
             db.close()
+
         resolved = [json.loads(row["outcome"]) for row in rows if row["outcome"]]
-        scored = [(json.loads(row["forecast"]), json.loads(row["outcome"])) for row in rows if row["outcome"] and json.loads(row["outcome"])["status"] == "scored"]
+        scored = [
+            (json.loads(row["forecast"]), json.loads(row["outcome"]))
+            for row in rows
+            if row["outcome"] and json.loads(row["outcome"])["status"] == "scored"
+        ]
+        counts = {
+            "forecasts": total,
+            "resolved": len(resolved),
+            "scored": len(scored),
+            "unscorable": sum(x["status"] == "unscorable" for x in resolved),
+            "unresolved": total - len(resolved),
+        }
+        empty_metrics = {
+            "directional_accuracy": None,
+            "top_class_accuracy": None,
+            "baseline_directional_accuracy": None,
+            "baseline_top_class_accuracy": None,
+            "mean_brier_score": None,
+            "mean_log_loss": None,
+            "baseline_mean_brier_score": None,
+            "baseline_mean_log_loss": None,
+            "brier_improvement_vs_baseline": None,
+            "calibration_bins": [],
+            "weighted_calibration_error": None,
+            "scoring_method": "three_class_brier_mean_squared_error_v1",
+            "accuracy_definition": "top-class classification accuracy across down/flat/up; includes the flat class",
+        }
         if not scored:
             return {
-                "forecasts": total, "resolved": len(resolved), "scored": 0,
-                "unscorable": sum(x["status"] == "unscorable" for x in resolved),
-                "unresolved": total - len(resolved), "directional_accuracy": None,
-                "mean_brier_score": None, "mean_log_loss": None,
-                "baseline_directional_accuracy": None, "baseline_mean_brier_score": None,
-                "baseline_mean_log_loss": None, "calibration_bins": [],
+                **counts,
+                **empty_metrics,
+                "cohort_summaries": [],
+                "aggregation_policy": (
+                    "Top-level scoring metrics are populated only when all scored records share "
+                    "the same asset, venue, horizon, model, baseline, target definition, flat band "
+                    "and outcome tolerance; otherwise consult cohort_summaries."
+                ),
             }
-        accuracy = sum(x["directional_correct"] for _, x in scored) / len(scored)
-        baseline_accuracy = sum(x["baseline_directional_correct"] for _, x in scored) / len(scored)
-        mean_brier = sum(x["brier_score"] for _, x in scored) / len(scored)
-        mean_loss = sum(x["log_loss"] for _, x in scored) / len(scored)
-        base_brier = sum(x["baseline_brier_score"] for _, x in scored) / len(scored)
-        base_loss = sum(x["baseline_log_loss"] for _, x in scored) / len(scored)
-        bins: dict[int, list[float]] = {}
+
+        def metrics(items: list[tuple[dict[str, Any], dict[str, Any]]]) -> dict[str, Any]:
+            accuracy = sum(bool(outcome["directional_correct"]) for _, outcome in items) / len(items)
+            baseline_accuracy = sum(bool(outcome["baseline_directional_correct"]) for _, outcome in items) / len(items)
+            mean_brier = sum(outcome["brier_score"] for _, outcome in items) / len(items)
+            mean_loss = sum(outcome["log_loss"] for _, outcome in items) / len(items)
+            base_brier = sum(outcome["baseline_brier_score"] for _, outcome in items) / len(items)
+            base_loss = sum(outcome["baseline_log_loss"] for _, outcome in items) / len(items)
+            bins: dict[int, list[float]] = {}
+            for forecast, outcome in items:
+                confidence = max(forecast["probabilities"].values())
+                index = min(int(confidence * 10), 9)
+                bucket = bins.setdefault(index, [0, 0.0, 0.0])
+                bucket[0] += 1
+                bucket[1] += confidence
+                bucket[2] += float(outcome["directional_correct"])
+            calibration = []
+            weighted_error = 0.0
+            for index, (count, confidence_sum, correct_sum) in sorted(bins.items()):
+                mean_conf = confidence_sum / count
+                observed = correct_sum / count
+                gap = abs(mean_conf - observed)
+                weighted_error += count / len(items) * gap
+                calibration.append({
+                    "lower_bound": index / 10,
+                    "upper_bound": (index + 1) / 10,
+                    "count": int(count),
+                    "mean_confidence": mean_conf,
+                    "observed_accuracy": observed,
+                    "absolute_gap": gap,
+                })
+            return {
+                "scored": len(items),
+                "directional_accuracy": accuracy,
+                "top_class_accuracy": accuracy,
+                "baseline_directional_accuracy": baseline_accuracy,
+                "baseline_top_class_accuracy": baseline_accuracy,
+                "mean_brier_score": mean_brier,
+                "mean_log_loss": mean_loss,
+                "baseline_mean_brier_score": base_brier,
+                "baseline_mean_log_loss": base_loss,
+                "brier_improvement_vs_baseline": base_brier - mean_brier,
+                "calibration_bins": calibration,
+                "weighted_calibration_error": weighted_error,
+                "scoring_method": "three_class_brier_mean_squared_error_v1",
+                "accuracy_definition": "top-class classification accuracy across down/flat/up; includes the flat class",
+            }
+
+        cohorts: dict[tuple[Any, ...], list[tuple[dict[str, Any], dict[str, Any]]]] = {}
         for forecast, outcome in scored:
-            confidence = max(forecast["probabilities"].values())
-            index = min(int(confidence * 10), 9)
-            bucket = bins.setdefault(index, [0, 0.0, 0.0])
-            bucket[0] += 1
-            bucket[1] += confidence
-            bucket[2] += float(outcome["directional_correct"])
-        calibration = []
-        weighted_error = 0.0
-        for index, (count, confidence_sum, correct_sum) in sorted(bins.items()):
-            mean_conf = confidence_sum / count
-            observed = correct_sum / count
-            gap = abs(mean_conf - observed)
-            weighted_error += count / len(scored) * gap
-            calibration.append({
-                "lower_bound": index / 10, "upper_bound": (index + 1) / 10,
-                "count": int(count), "mean_confidence": mean_conf,
-                "observed_accuracy": observed, "absolute_gap": gap,
+            key = (
+                forecast["asset"],
+                forecast["venue"],
+                forecast["horizon_seconds"],
+                forecast["model_version"],
+                forecast["baseline_model_version"],
+                forecast["target_definition"],
+                forecast["flat_band_bps"],
+                forecast["outcome_tolerance_seconds"],
+            )
+            cohorts.setdefault(key, []).append((forecast, outcome))
+
+        cohort_summaries = []
+        for key, items in sorted(cohorts.items()):
+            cohort_summaries.append({
+                "asset": key[0],
+                "venue": key[1],
+                "horizon_seconds": key[2],
+                "model_version": key[3],
+                "baseline_model_version": key[4],
+                "target_definition": key[5],
+                "flat_band_bps": key[6],
+                "outcome_tolerance_seconds": key[7],
+                **metrics(items),
             })
+
+        # Never pool unlike horizons, venues, models or target definitions.
+        top_level_metrics = metrics(scored) if len(cohorts) == 1 else empty_metrics
         return {
-            "forecasts": total, "resolved": len(resolved), "scored": len(scored),
-            "unscorable": sum(x["status"] == "unscorable" for x in resolved),
-            "unresolved": total - len(resolved), "directional_accuracy": accuracy,
-            "mean_brier_score": mean_brier, "mean_log_loss": mean_loss,
-            "baseline_directional_accuracy": baseline_accuracy,
-            "baseline_mean_brier_score": base_brier, "baseline_mean_log_loss": base_loss,
-            "brier_improvement_vs_baseline": base_brier - mean_brier,
-            "calibration_bins": calibration, "weighted_calibration_error": weighted_error,
-            "scoring_method": "three_class_brier_mean_squared_error_v1",
+            **counts,
+            **top_level_metrics,
+            "cohort_summaries": cohort_summaries,
+            "aggregation_policy": (
+                "Top-level scoring metrics are populated only when all scored records share "
+                "the same asset, venue, horizon, model, baseline, target definition, flat band "
+                "and outcome tolerance; otherwise consult cohort_summaries."
+            ),
         }
