@@ -704,3 +704,48 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+def test_remaining_barrot_scheduled_writers_are_quarantined() -> None:
+    workflow_paths = (
+        ".github/workflows/check-signal-accuracy.yml",
+        ".github/workflows/cross-analysis.yml",
+        ".github/workflows/autonomous_self_deployment.yml",
+        ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+        ".github/workflows/barrot-transparency-audit.yml",
+        ".github/workflows/riemann-harvest.yml",
+        ".github/workflows/webmcp-live-sandbox.yml",
+        ".github/workflows/webmcp-monetization-enrich.yml",
+    )
+    forbidden = (
+        "schedule:", "workflow_run:", "push:", "contents: write",
+        "actions: write", "issues: write", "pull-requests: write",
+        "secrets.", "git push", "gh issue create", "gh issue close",
+    )
+    for relative in workflow_paths:
+        workflow = (REPO_ROOT / relative).read_text(encoding="utf-8")
+        assert "workflow_dispatch: {}" in workflow, relative
+        assert "permissions: {}" in workflow, relative
+        assert "if: false" in workflow, relative
+        assert "No credentials are read" in workflow, relative
+        for token in forbidden:
+            assert token not in workflow, f"{relative} still contains {token!r}"
+
+
+def test_kaggle_submission_and_external_deploy_workflows_require_explicit_confirmation() -> None:
+    workflow_paths = (
+        ".github/workflows/kaggle-competitions.yml",
+        ".github/workflows/sync-self-hosted-brain.yml",
+        ".github/workflows/deploy-a2a-worker.yml",
+    )
+    for relative in workflow_paths:
+        workflow = (REPO_ROOT / relative).read_text(encoding="utf-8")
+        assert "workflow_dispatch:" in workflow, relative
+        assert "confirm_external_change:" in workflow, relative
+        assert "default: NO" in workflow, relative
+        assert "if: ${{ inputs.confirm_external_change == 'YES' }}" in workflow, relative
+        assert "schedule:" not in workflow, relative
+        assert "push:" not in workflow, relative
+        assert "workflow_run:" not in workflow, relative
+        assert "permissions:" in workflow, relative
+        assert "contents: read" in workflow, relative
+

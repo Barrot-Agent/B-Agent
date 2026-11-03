@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "remaining_autonomous_workflow_and_external_action_audit",
+  "captured_at_utc": "2026-11-03T21:12:04.720Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_commit": "fada1c0712894e92f301e2cb5e6aa098280bfbe8",
+  "status": "EXECUTED_PENDING_CI_AND_REVIEW",
+  "findings": [
+    {
+      "id": "WF-01",
+      "severity": "high",
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "finding": "Daily mutable-price/variable-horizon evaluator writes unvalidated accuracy to main."
+    },
+    {
+      "id": "WF-02",
+      "severity": "high",
+      "path": ".github/workflows/cross-analysis.yml",
+      "finding": "Scheduled and workflow-run triggers commit generated analysis to main."
+    },
+    {
+      "id": "WF-03",
+      "severity": "high",
+      "path": ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+      "finding": "Six-hour schedule and push triggers write synthetic quality labels and memory/log data with contents/issues/PR write scopes."
+    },
+    {
+      "id": "WF-04",
+      "severity": "medium",
+      "path": ".github/workflows/autonomous_self_deployment.yml",
+      "finding": "Six-hour telemetry writer commits directly to main."
+    },
+    {
+      "id": "WF-05",
+      "severity": "medium",
+      "path": ".github/workflows/barrot-transparency-audit.yml",
+      "finding": "Weekly audit writer commits summaries directly to main."
+    },
+    {
+      "id": "WF-06",
+      "severity": "medium",
+      "path": ".github/workflows/riemann-harvest.yml",
+      "finding": "Weekly research harvester commits corpus updates directly to main."
+    },
+    {
+      "id": "WF-07",
+      "severity": "medium",
+      "path": ".github/workflows/webmcp-live-sandbox.yml",
+      "finding": "Weekly Playwright sandbox commits logs directly to main."
+    },
+    {
+      "id": "WF-08",
+      "severity": "medium",
+      "path": ".github/workflows/webmcp-monetization-enrich.yml",
+      "finding": "Workflow-run and scheduled triggers commit generated monetization data to main."
+    },
+    {
+      "id": "EXT-01",
+      "severity": "critical",
+      "path": ".github/workflows/kaggle-competitions.yml",
+      "finding": "Daily scheduled workflow uses Kaggle credentials and calls competition_submit for up to five competitions using DummyClassifier/DummyRegressor baselines."
+    },
+    {
+      "id": "EXT-02",
+      "severity": "high",
+      "path": ".github/workflows/sync-self-hosted-brain.yml",
+      "finding": "Matching push to main automatically creates/updates a Hugging Face Space and uploads self_hosted_brain using HF_TOKEN."
+    },
+    {
+      "id": "EXT-03",
+      "severity": "high",
+      "path": ".github/workflows/deploy-a2a-worker.yml",
+      "finding": "Matching push to main automatically deploys Cloudflare Worker and uploads GROQ_API_KEY and BRAIN_SHARED_SECRET."
+    },
+    {
+      "id": "OUT-01",
+      "severity": "medium",
+      "path": ".github/workflows/hover_bike_updates.yml",
+      "finding": "Unrelated scheduled/push writer left unchanged pending separate project review."
+    },
+    {
+      "id": "OUT-02",
+      "severity": "high",
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "finding": "Manual-only PAT rotation workflow updates GitHub secret and dispatches deployment; not used."
+    }
+  ],
+  "controls": [
+    "Disable eight unattended main writers.",
+    "Require per-run YES for Kaggle submissions.",
+    "Require per-run YES for Hugging Face and Cloudflare deployments; remove push triggers.",
+    "Preserve all scripts/data; only workflow entrypoints and CI tests change."
+  ],
+  "limitations": [
+    "hover_bike_updates remains out of scope.",
+    "Manual Rotate Databricks Token remains for separate security review.",
+    "Manual-only workflows that write main remain; none was dispatched.",
+    "No Kaggle submission, HF upload, Cloudflare deployment, token rotation, credential read or external mutation occurred."
+  ],
+  "next_actions": [
+    "Exact-head CI and fail-closed gate.",
+    "Review remaining manual write workflows.",
+    "Continue point-in-time XRP feature store and realized-capital research."
+  ]
+}
