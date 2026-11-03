@@ -381,3 +381,50 @@ The 14 research artifacts from the original research branch were copied without 
 - Continue the point-in-time multi-venue XRP feature store and fixed-horizon outcome dataset; compare against naive and volatility-aware baselines with leakage controls before issuing a directional forecast.
 - Reconcile Coinbase XRP collateral eligibility with actual utilization; keep RLUSD, USDC and JPYSC lanes separate.
 - Revisit Circle Q3 2026 results after the scheduled November 4, 2026 08:00 ET release.
+
+
+## Circle / XRPL stablecoin evidence and repository verification — 2026-11-03
+
+### Circle, USDC and RLUSD on XRPL
+New artifact: `20261103-circle-usdc-xrpl-rlusd-cpn-snapshot.json` (14 sources, 14 observations, 15 relationship edges, 5 competing hypotheses; JSON parse verified).
+
+Confirmed from Circle:
+- USDC is natively issued on XRPL. Qualified businesses can use Circle Mint to convert fiat directly to USDC on XRPL and redeem back to fiat; Circle supports cross-chain USDC swaps without a third-party bridge.
+- Global USDC circulation was $70.0B with $71.4B reserves as of 2026-10-29. Circle's own transparency page showed net circulation change of -$0.8B over 7 days, -$3.1B over 30 days and -$5.0B over 365 days.
+- Circle Payments Network Managed Payments lets banks, PSPs and fintechs settle cross-border transactions in USDC while interacting only in fiat; Circle handles mint/burn, orchestration, compliance and blockchain infrastructure. This is a direct competitor/alternative to other payment stacks, but does not prove displacement of Ripple or XRP.
+- Circle signed a definitive agreement to acquire Tazapay on September 8. Closing is expected in 2027 subject to approvals. Circle reports $25B annualized volume, 60+ banking/fintech partners, 100+ payout markets and about 60% stablecoin-inclusive volume for Tazapay as of July 31. This is a proposed acquisition, not a completed one.
+- Circle launched Arc mainnet on September 16 with more than 100 institutional/ecosystem builders. Arc is a separate Circle-led chain, not XRPL.
+- Circle's Q3 2026 results webcast is officially scheduled for November 4 at 08:00 ET. No Q3 results are included yet.
+
+Third-party XRPL snapshots are preserved separately:
+- XRPL.to at 2026-11-03 16:38 UTC: RLUSD $857.26M on XRPL, $1.71B on Ethereum, $2.57B total; 33.4% XRPL / 66.6% Ethereum; 67,957 XRPL holders and 13,088 Ethereum holders.
+- XRPL.to's separate tracker displayed 855.3M RLUSD, 67,960 accounts and $3.2M 24-hour trading. These are separate page snapshots, not averaged.
+- XRPLDashboard at 17:56:32 UTC reported RLUSD supply growth of $140.6M (+19.75%) over 24 hours and AMM TVL down $49K (-0.14%). The unusually large supply change requires mint/burn transaction reconciliation.
+- XRPLWin displayed 6.02M USDC, 10,806 holders, 17,631 trust lines, 1,756 trades and 107,537 USDC 24-hour volume, but its last-activity field was 2026-11-01 16:00 UTC. Treat these rolling activity values as potentially stale. A separate search snapshot showed 6.13M and 10,812 holders, further evidence that provider/time cutoffs must be preserved.
+- Cross-provider asynchronous snapshots imply an indicative RLUSD/USDC supply ratio near 142:1 on XRPL, but this is not a precise market-share statistic.
+- The observed Circle USDC footprint on XRPL is much smaller than its global $70B circulation. Neither native issuance nor stablecoin growth proves material XRP spot demand.
+
+### Competing causal hypotheses retained
+1. USDC/RLUSD growth can increase XRPL transaction, reserve and AMM activity and create some marginal XRP fee/reserve/route demand.
+2. Stablecoins can also displace XRP as the value-transfer asset for some dollar-denominated payment paths.
+3. Circle CPN, Arc and the proposed Tazapay acquisition strengthen a competing USDC settlement stack outside Ripple/XRPL, while Circle's native USDC support on XRPL remains complementary.
+4. Ripple RLUSD and Circle USDC can coexist on XRPL while competing for stablecoin liquidity and institutional payment flows.
+5. Coinbase distribution of RLUSD can improve access/liquidity without proving XRP demand or current collateral utilization.
+
+The current data cannot distinguish these hypotheses. Model inputs must separate global supply, chain-specific supply, issuance/redemption flows, holders, DEX/AMM depth, actual payment volume and XRP spot purchases. Provider snapshots are not synchronized and must not be averaged.
+
+### Current repository status
+Main remains `63ebacfed11e2ac4e50515f783353ed9fccb7475`; no main content was written by this run.
+
+- PR #1597 — research packet: draft/open/unmerged, 16 files, latest head `a2e3fafdf5b4c6c56d2755544cadbfcb83d4486f`. The original exact-head CI/gate passed before the latest evidence-only additions; the new ASK, Circle and video JSON artifacts parse successfully, but no CI run is claimed on the latest head.
+- PR #1599 — Cross Analysis containment: draft/open/unmerged, exact-head CI `41690978911` passed 343 tests + 8 subtests; exact test `test_cross_analysis_workflow_is_read_only_and_artifact_based` appears in the log; fail-closed gate `41690978764` passed. PR #1598 is the earlier draft whose standalone test was not collected by CI; #1599 is the CI-covered successor.
+- PR #1600 — prediction-integrity first iteration: core CI and gate passed, but dedicated Prediction Integrity Tests failed 1 of 42 because an older test expected `contents: read` while the stronger selected workflow is fully disabled with `permissions: {}`. Preserve as failure evidence; do not merge.
+- PR #1601 — corrected prediction-integrity successor: draft/open/unmerged, current head `1207127e8dd58f0ba584c87a6442acaddf97e549`. Exact-head core CI `41691566829`: 342 tests + 8 subtests passed. Dedicated Prediction Integrity Tests `41691566598`: 42/42 passed, including `test_accuracy_workflow_is_disabled_until_fixed_horizon_evaluator_is_verified`. Fail-closed gate `41691566568` passed; log explicitly states automatic merging is disabled and no repository content changed. GitHub reports mergeable; no merge was performed.
+- Main still contains the old mutable-live-price scorer and write-enabled scheduled workflow until an approved PR is merged. The correction is proposed, not deployed.
+
+### Next actions
+1. Monitor Circle's November 4 Q3 release and webcast; reconcile USDC circulation, reserve income, CPN metrics, distribution economics and any Arc/Tazapay updates against the current baseline.
+2. Reconcile XRPL RLUSD mints/burns and USDC activity using direct ledger queries and synchronized timestamps; do not scrape xrpl.to's UI. Its page directs automated users to the documented API at `https://api.xrpl.to/v1`.
+3. Build the point-in-time XRP feature/outcome dataset and walk-forward baselines. The ledger is storage/verification infrastructure only; no directional model has been validated.
+4. Keep PR #1597, #1599 and #1601 draft/open until explicit user approval. Do not merge. Preserve PR #1598 and #1600 as superseded/failed iteration records.
+5. Reconcile CI workflow overlaps with PR #1585 before any merge recommendation.
