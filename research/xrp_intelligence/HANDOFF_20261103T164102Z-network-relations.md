@@ -6,7 +6,7 @@ XRP ecosystem intelligence and prediction-engine mastery remain the highest-prio
 ## New research artifact
 - Artifact: `research/xrp_intelligence/20261103T164102Z-coinbase-circle-sbi-xrp-network-update.json`
 - Captured: 2026-11-03 16:41:02 UTC
-- Source register: 20 primary/official sources
+- Source register: 23 sources (including official corporate/product documents and one peer-reviewed acronym-disambiguation paper)
 - Observations: 12
 - Relationship edges: 12
 - Competing hypotheses: 5
@@ -73,3 +73,13 @@ Containment proposals remain unmerged:
 - VERIFIED: source links and claims cited in the artifact; PR #1590 exact-head CI, 40 targeted tests and fail-closed gate.
 - NOT VERIFIED: live nine-platform collaboration, XRP price-prediction skill, walk-forward results, calibrated forecasts, paper/shadow performance or actual XRP collateral utilization.
 - No forecast, trade, merge, deployment or real-money action was performed.
+
+
+## Source-quality refinement — 2026-11-03 16:43 UTC
+
+The research artifact was strengthened with three additional sources:
+- Circle's March 2025 Japan launch notice, confirming SBI VC Trade began full-scale USDC distribution on March 26, 2025.
+- Coinbase's International Exchange eligibility page, clarifying that the platform is limited to non-U.S. institutions in selected jurisdictions; XRP collateral eligibility must not be generalized to U.S. retail customers.
+- An ACL Anthology research paper using SBIC to mean Social Bias Inference Corpus, documenting an acronym collision without implying any relationship to the Japanese SBIC company.
+
+The artifact now contains 23 sources, 12 observations, 12 relationship edges and 5 competing hypotheses. JSON was parsed successfully after the update. The new research PR remains draft and unmerged; CI status is checked separately.
