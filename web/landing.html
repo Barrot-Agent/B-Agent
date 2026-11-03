@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barrot-Ω · XRP Signal Service</title>
-<meta name="description" content="Ternary XRP trading signals from multi-source perception: order book depth, sentiment, and price structure. $9.99/mo.">
+<title>Barrot-Ω · XRP Sentiment Features</title>
+<meta name="description" content="XRP-relevant news and LLM sentiment classification. Uncalibrated sentiment features only; no price forecast or trading instruction. $9.99/mo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -32,9 +32,9 @@ h1{font-size:clamp(32px,6vw,54px);font-weight:800;line-height:1.08;margin-bottom
 .state{background:var(--panel);padding:26px 12px;text-align:center}
 .state .val{font-size:clamp(26px,5vw,40px);font-weight:600;display:block;margin-bottom:6px}
 .state .lbl{font-size:11px;letter-spacing:0.24em;color:var(--dim)}
-.state.sell .val{color:var(--sell)}
-.state.null .val{color:var(--null)}
-.state.buy .val{color:var(--buy)}
+.state.bearish .val{color:var(--sell)}
+.state.neutral .val{color:var(--null)}
+.state.bullish .val{color:var(--buy)}
 .ternary-cap{font-size:11px;color:var(--dim);letter-spacing:0.1em;margin:-28px 0 40px;text-align:center}
 .cta{display:inline-block;background:var(--amber);color:var(--ink);font-weight:600;font-size:14px;letter-spacing:0.08em;padding:16px 34px;text-decoration:none}
 .cta:hover{filter:brightness(1.1)}
@@ -83,51 +83,53 @@ footer strong{color:var(--text)}
 </header>
 <div class="hero">
   <div class="wrap">
-    <div class="eyebrow">AUTONOMOUS XRP SIGNAL SERVICE</div>
-    <h1>Every hour, XRP resolves to one of three states.</h1>
-    <p class="sub">Barrot-Ω reads order book depth, market sentiment, and price structure through multi-source perception — then outputs a single ternary decision. No noise, no charts to interpret. One state.</p>
+    <div class="eyebrow">XRP MARKET SENTIMENT SERVICE</div>
+    <h1>Barrot classifies XRP-relevant news into three sentiment labels.</h1>
+    <p class="sub">Barrot summarizes recent XRP-relevant news and applies an LLM sentiment classifier to produce bullish, neutral, or bearish labels. The score is a sentiment index and the model-reported confidence is uncalibrated. This service does not analyze order-book depth or price structure and does not issue a price forecast or trade instruction.</p>
     <div class="ternary">
-      <div class="state sell"><span class="val">−1</span><span class="lbl">SELL</span></div>
-      <div class="state null"><span class="val">0</span><span class="lbl">NULL</span></div>
-      <div class="state buy"><span class="val">+1</span><span class="lbl">BUY</span></div>
+      <div class="state bearish"><span class="val">−1</span><span class="lbl">BEARISH</span></div>
+      <div class="state neutral"><span class="val">0</span><span class="lbl">NEUTRAL</span></div>
+      <div class="state bullish"><span class="val">+1</span><span class="lbl">BULLISH</span></div>
     </div>
-    <p class="ternary-cap">THE THREE SIGNAL STATES — 1.58-BIT TERNARY LOGIC</p>
-    <a class="cta" href="https://prostarelite.gumroad.com/l/opvxi">GET SIGNALS — $9.99/MO</a>
+    <p class="ternary-cap">THREE SENTIMENT LABELS — NOT PRICE SIGNALS OR PROBABILITIES</p>
+    <a class="cta" href="https://prostarelite.gumroad.com/l/opvxi">GET SENTIMENT FEATURES — $9.99/MO</a>
     <span class="cta-note">Cancel anytime via Gumroad. Access within one hour of purchase.</span>
   </div>
 </div>
-<div class="wrap"><div class="anchor">STABILITY ANCHOR · 0.707106781186548</div></div>
+<div class="wrap"><div class="anchor">INTERPRETATION RULE · SENTIMENT IS NOT PREDICTION</div></div>
 <section>
   <div class="wrap">
-    <h2>How the signal is built</h2>
+    <h2>How the sentiment feature is built</h2>
     <div class="grid3">
       <div class="card">
-        <h3>Multi-source perception</h3>
-        <p>Order book depth, live price structure, and sentiment feeds are ingested in parallel. No single source can drive a decision alone.</p>
+        <h3>News context</h3>
+        <p>Recent XRP-relevant knowledge-base headlines are selected by relevance and recency. This feature does not ingest order-book depth or technical price structure.</p>
       </div>
       <div class="card">
-        <h3>Ternary resolution</h3>
-        <p>All inputs collapse to one of three states: −1, 0, +1. When sources conflict, the system holds at NULL rather than forcing a call.</p>
+        <h3>LLM sentiment classification</h3>
+        <p>The classifier returns bullish, neutral, or bearish sentiment plus a 0–100 blended sentiment index. Model-reported confidence is uncalibrated and is not a probability of future XRP returns.</p>
       </div>
       <div class="card">
-        <h3>Override protection</h3>
-        <p>A pre-anchor filter screens every decision before it publishes. Panic conditions resolve to NULL, not to a cascade.</p>
+        <h3>Fail-closed interpretation</h3>
+        <p>Malformed or unavailable classifier output is treated as neutral with zero confidence. No price forecast or BUY/SELL instruction is issued by this pipeline.</p>
       </div>
     </div>
   </div>
 </section>
 <section>
   <div class="wrap">
-    <h2>What a signal looks like</h2>
+    <h2>What a sentiment feature looks like</h2>
     <div class="sample">
       <span class="tag">SAMPLE FORMAT</span>
       <pre>
-<span class="d">timestamp:</span>  2026-07-02T14:00:00Z
-<span class="d">asset:</span>      XRP/USD
-<span class="d">state:</span>      <span class="g">+1 BUY</span>
-<span class="d">confidence:</span> <span class="a">0.81</span>
-<span class="d">basis:</span>      bid-side depth 2.3x ask · sentiment positive
-            · price holding above structure</pre>
+<span class="d">generated_at_utc:</span> &lt;timestamp&gt;
+<span class="d">asset:</span>              XRP
+<span class="d">signal_kind:</span>        sentiment_feature_only
+<span class="d">sentiment_label:</span>    bullish | neutral | bearish
+<span class="d">sentiment_score:</span>    0–100 index
+<span class="d">model_confidence:</span>   uncalibrated; not a price probability
+<span class="d">target / horizon:</span>  none / none
+<span class="d">forecast_status:</span>   NOT_A_FORECAST</pre>
     </div>
   </div>
 </section>
@@ -137,7 +139,7 @@ footer strong{color:var(--text)}
     <div class="steps">
       <div class="step"><span><b>Subscribe on Gumroad</b> with the email you'll use for access.</span></div>
       <div class="step"><span><b>Automatic sync.</b> Your email is verified into the subscriber list within one hour — no manual step.</span></div>
-      <div class="step"><span><b>Open the signals page</b> and enter your email. That's it. Signals update continuously while you're subscribed.</span></div>
+      <div class="step"><span><b>Open the sentiment page</b> and enter your email. That's it. The page shows the latest available sentiment feature after successful ingestion and classification runs.</span></div>
     </div>
   </div>
 </section>
@@ -146,9 +148,9 @@ footer strong{color:var(--text)}
     <div class="price-card">
       <div class="price">$9.99<small>/month</small></div>
       <ul>
-        <li>Live ternary XRP signals</li>
-        <li>Confidence score + plain-language basis per signal</li>
-        <li>Order book + sentiment analysis, fused</li>
+        <li>Latest available bullish/neutral/bearish XRP sentiment feature</li>
+        <li>0–100 sentiment index and uncalibrated model-reported confidence</li>
+        <li>Recent XRP-relevant news context and source label</li>
         <li>Cancel anytime, no lock-in</li>
       </ul>
       <a class="cta" href="https://prostarelite.gumroad.com/l/opvxi">SUBSCRIBE NOW</a>
@@ -157,7 +159,7 @@ footer strong{color:var(--text)}
 </section>
 <footer>
   <div class="wrap">
-    <strong>Disclaimer:</strong> Barrot-Ω signals are algorithmic outputs provided for informational purposes only. They are not financial, investment, or trading advice. Cryptocurrency markets are volatile; you can lose money. Past signal performance does not guarantee future results. Trade only with capital you can afford to lose.<br><br>
+    <strong>Disclaimer:</strong> Barrot-Ω currently publishes sentiment features, not validated price forecasts, BUY/SELL instructions or trading advice. Model-reported confidence is uncalibrated and must not be interpreted as a probability of price direction. No out-of-sample predictive performance is currently claimed. Cryptocurrency markets are volatile; you can lose money.<br><br>
     © 2026 Barrot-Ω · <a href="article.html" style="color:var(--dim)">Read the XRP analysis</a>
   </div>
 </footer>
@@ -182,20 +184,13 @@ footer strong{color:var(--text)}
 
   <h3>Sentiment and news-driven signals</h3>
   <p>
-    Published research on cryptocurrency sentiment has consistently found real predictive
-    power for future returns — with one key condition: it only works when sentiment is
-    measured with a domain-specific methodology, not generic scoring. Studies analyzing
-    Twitter sentiment across major cryptocurrencies (XRP included) found genuine predictive
-    power for several of them. The Crypto Fear and Greed Index has separately been shown to
-    Granger-predict returns for major coins, with a stable long-term relationship between
-    sentiment and price.
+    Some published studies report predictive associations between cryptocurrency sentiment and returns in particular datasets, periods, and methodologies. Results vary by asset, horizon, sample, and market regime. These findings provide research context only; they do not validate Barrot's current sentiment feature or establish out-of-sample predictive performance for XRP.
   </p>
 
   <p class="disclaimer">
     This section summarizes published academic findings for informational purposes and does
     not constitute financial advice. Cryptocurrency markets are volatile and speculative.
-    Signals derived from sentiment or research context are one input among many and carry no
-    guarantee of future performance.
+    Sentiment features are descriptive context, not validated forecasts. Their presence does not establish predictive value or guarantee future performance.
   </p>
 </section>
 
@@ -213,8 +208,8 @@ footer strong{color:var(--text)}
 
   mcp.registerTool({
     name: "getLatestXRPSignal",
-    title: "Latest XRP Signal",
-    description: "Fetch Barrot's latest XRP market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis. Use this instead of reading the page visually.",
+    title: "Latest XRP Sentiment Feature",
+    description: "Fetch Barrot's latest XRP sentiment feature. Its score and model-reported confidence are uncalibrated sentiment outputs, not a price forecast, calibrated probability, BUY/SELL instruction, or trade recommendation.",
     inputSchema: { type: "object", properties: {
         license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
     annotations: { readOnlyHint: true },
@@ -230,7 +225,7 @@ footer strong{color:var(--text)}
   mcp.registerTool({
     name: "getResearchBasis",
     title: "Research Basis",
-    description: "Get the peer-reviewed academic citations backing Barrot's XRP signal methodology, covering cross-border settlement efficiency and sentiment-prediction research.",
+    description: "Get academic research context for XRP settlement and sentiment studies. These citations do not validate Barrot's current sentiment feature or establish out-of-sample predictive performance.",
     inputSchema: { type: "object", properties: {} },
     annotations: { readOnlyHint: true },
     execute: async function() {
@@ -251,8 +246,8 @@ footer strong{color:var(--text)}
 
   mcp.registerTool({
     name: "subscribeToXRPSignals",
-    title: "Subscribe to XRP Signals",
-    description: "Open the checkout page to subscribe to Barrot's XRP signal service.",
+    title: "Subscribe to XRP Sentiment Features",
+    description: "Open the checkout page to subscribe to Barrot's XRP sentiment-feature service; it does not provide a validated price forecast.",
     inputSchema: { type: "object", properties: {} },
     execute: async function() {
       window.open("https://prostarelite.gumroad.com/l/opvxi", "_blank");
@@ -261,17 +256,21 @@ footer strong{color:var(--text)}
   });
   mcp.registerTool({
     name: "getSignalAccuracy",
-    title: "Signal Accuracy Record",
-    description: "Get the tracked accuracy record: how often past XRP signals were directionally correct against real price movement.",
+    title: "Signal Evaluation Status",
+    description: "Historical XRP signal accuracy is not validated: the legacy score used variable horizons and mutable live prices. Fixed-horizon evaluation is blocked; this tool returns status only.",
     inputSchema: { type: "object", properties: {
         license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
       if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getSignalAccuracy');
-      var res = await fetch("signal_accuracy.json");
-      if (!res.ok) return { error: "accuracy_unavailable" };
-      return await res.json();
+      return {
+        status: "BLOCKED_NO_VALIDATED_FIXED_HORIZON_DATA",
+        forecast_issuance: "BLOCKED",
+        evaluation_executed: false,
+        legacy_summary_validity: "UNVALIDATED_VARIABLE_HORIZON",
+        reason: "The legacy accuracy file is retained for provenance and is not served as a valid accuracy record."
+      };
     }
   });
   mcp.registerTool({
