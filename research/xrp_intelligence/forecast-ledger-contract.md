@@ -19,7 +19,7 @@ The flat band is recorded in basis points before the outcome is known. The ledge
 
 Every forecast records:
 - asset, venue and explicit target definition;
-- reference price and immutable data cutoff;
+- reference price, its exact UTC observation timestamp, the registered source ID that supplied it, a declared maximum age, and immutable data cutoff;
 - issue timestamp, fixed horizon and derived target timestamp;
 - model version and baseline model version;
 - a complete down / flat / up probability distribution for both model and baseline;
@@ -28,7 +28,7 @@ Every forecast records:
 - explicit assumptions and at least one alternative/counter-hypothesis;
 - optional point target price.
 
-All timestamps must be timezone-aware UTC. feature_max_timestamp_utc cannot exceed data_cutoff_utc; target_time_utc must equal cutoff plus the declared horizon; issuance must occur after cutoff and before target time. Forecast IDs are deterministic SHA-256 hashes of canonicalized records, making identical retries idempotent.
+All timestamps must be timezone-aware UTC. The reference-price observation must not be later than data_cutoff_utc, must be no older than reference_price_max_age_seconds (bounded to 0–3,600 seconds), and its reference_price_source_id must appear in source_ids. feature_max_timestamp_utc cannot exceed data_cutoff_utc; target_time_utc must equal cutoff plus the declared horizon; issuance must occur after cutoff and before target time. These checks close a leakage path where the reference price used to calculate realized return could previously be timestamped after the forecast cutoff. Forecast IDs are deterministic SHA-256 hashes of canonicalized records, making identical retries idempotent.
 
 ## Outcome and scoring rules
 
