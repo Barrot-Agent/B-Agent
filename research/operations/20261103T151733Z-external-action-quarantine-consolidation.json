@@ -1,0 +1,220 @@
+{
+  "schema_version": "barrot.workflow-security-quarantine-consolidation.v1",
+  "captured_at_utc": "2026-11-03T15:17:33Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "0c2323231fefd3d9b5166b25cf6d4bd808b4a5b7",
+  "target_pull_request": 1585,
+  "target_branch": "security/cross-analysis-readonly-32d3a1ad-20261103T1303Z",
+  "target_parent_sha": "ee6a4d2117cc942130bb03faba3a57de2b606705",
+  "source_pull_request": 1573,
+  "source_branch": "security/quarantine-external-writers-20261103T0820Z",
+  "source_head_sha": "43324f7c89557ee9fba527f785027932d66a6ffd",
+  "status": "PROPOSED_IN_UNMERGED_PR",
+  "scope": {
+    "workflow_count": 19,
+    "workflows": [
+      {
+        "path": ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/autonomous_self_deployment.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/barrot-hf-admin.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/barrot-merge-manual.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/barrot-merge.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/barrot-ops.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/barrot-restart-space.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/barrot-self-upgrade.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/capability-9-data-resolver.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/databricks-bundle.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/deploy-a2a-worker.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/deploy-databricks.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/force-deploy-space.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/gumroad-metrics.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/riemann-harvest.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/rotate-databricks-token.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/sync-huggingface.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/sync-self-hosted-brain.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      },
+      {
+        "path": ".github/workflows/webmcp-monetization-enrich.yml",
+        "main_risk": "Active external mutation, direct-main writer, scheduled writer, or credential-bearing deployment path identified in current main.",
+        "proposed_control": "Manual-only inert stub; empty permissions; disabled job; no credentials; no scheduled, push or workflow_run trigger."
+      }
+    ]
+  },
+  "root_cause_groups": [
+    {
+      "risk": "CRITICAL",
+      "group": "Destructive Hugging Face operations",
+      "paths": [
+        ".github/workflows/barrot-hf-admin.yml",
+        ".github/workflows/barrot-restart-space.yml",
+        ".github/workflows/force-deploy-space.yml"
+      ],
+      "finding": "Current main can delete/create a Space, factory-restart a Space, or force-push an external Space repository using HF_TOKEN."
+    },
+    {
+      "risk": "HIGH",
+      "group": "External model and application deployment",
+      "paths": [
+        ".github/workflows/barrot-merge-manual.yml",
+        ".github/workflows/barrot-merge.yml",
+        ".github/workflows/barrot-ops.yml",
+        ".github/workflows/databricks-bundle.yml",
+        ".github/workflows/deploy-a2a-worker.yml",
+        ".github/workflows/deploy-databricks.yml",
+        ".github/workflows/sync-huggingface.yml",
+        ".github/workflows/sync-self-hosted-brain.yml"
+      ],
+      "finding": "Current main exposes manual or push-triggered workflows that upload models, deploy Cloudflare Workers, mutate Databricks workspaces, sync Hugging Face Spaces or propagate secrets. A self-entered YES input is not a protected-environment approval."
+    },
+    {
+      "risk": "HIGH",
+      "group": "Credential mutation and self-modification",
+      "paths": [
+        ".github/workflows/rotate-databricks-token.yml",
+        ".github/workflows/barrot-self-upgrade.yml",
+        ".github/workflows/capability-9-data-resolver.yml"
+      ],
+      "finding": "Current main accepts a PAT as a workflow input and interpolates it into a shell command, self-upgrades code with write credentials, and commits resolver output to main."
+    },
+    {
+      "risk": "HIGH",
+      "group": "Unattended main-branch writers",
+      "paths": [
+        ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+        ".github/workflows/autonomous_self_deployment.yml",
+        ".github/workflows/gumroad-metrics.yml",
+        ".github/workflows/riemann-harvest.yml",
+        ".github/workflows/webmcp-monetization-enrich.yml"
+      ],
+      "finding": "Current main schedules or push-triggers workflows that write generated telemetry, metrics or research outputs directly to main; the Cognitive PingPong workflow writes placeholder 'Optimal'/'High' status claims without measurement evidence."
+    }
+  ],
+  "proposed_controls": [
+    "Each listed workflow retains only a discoverable workflow_dispatch stub.",
+    "Each listed workflow has permissions: {} and a job-level if: false.",
+    "No workflow secret references remain in the quarantined stubs.",
+    "No schedule, push or workflow_run trigger remains.",
+    "The stubs state that no credentials are read and no repository or external mutation is performed.",
+    "The prior self-upgrade workflow test is changed to assert quarantine; script-level unit tests remain in place.",
+    "YAML syntax coverage is expanded to all 19 quarantined workflow files.",
+    "The existing core CI explicit test list is extended to include the two new quarantine test modules."
+  ],
+  "regression_tests": [
+    "tests/test_external_writers_quarantined.py",
+    "tests/test_scheduled_mutation_workflows_quarantined.py",
+    "tests/test_external_deploys_require_confirmation.py",
+    "tests/test_workflow_yaml_syntax.py",
+    "tests/test_v3_scripts.py"
+  ],
+  "residual_risks_not_changed": [
+    {
+      "path": ".github/workflows/barrot-agent.yml",
+      "risk": "Core agent runner retains contents:write, pull-requests:write and issues:write. Issue-label invocation is restricted to Barrot-Agent or repository_owner; manual workflow_dispatch remains available to authorized dispatchers. Its schedule-handling code is unreachable because no schedule trigger is declared. This workflow was not disabled because it is the current PR-producing execution path; it requires a separate least-privilege and branch-only-write review."
+    },
+    {
+      "path": ".github/workflows/ask-barrot.yml",
+      "risk": "Manual workflow creates a public issue and pushes memory directly to main. It needs an artifact/PR-only output path or an explicit protected approval mechanism."
+    },
+    {
+      "path": ".github/workflows/free-image-gen.yml",
+      "risk": "Manual workflow reads HF_TOKEN and pushes generated_images to main. It needs artifact/PR-only output or protected approval."
+    },
+    {
+      "path": ".github/workflows/subagent-spawn.yml",
+      "risk": "Manual workflow uses GROQ_API_KEY and pushes generated subagent records to main. It needs branch/PR or artifact output before unattended use."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "risk": "Manual workflow applies an 'approved' label and posts a comment; this is not a GitHub review and does not itself merge. The actual merge queue is proposed disabled; keep this distinction explicit."
+    },
+    {
+      "path": ".github/workflows/barrot-auto-pr.yml",
+      "risk": "The job only prints a status message but grants pull-requests:write; permission can be removed in a separate least-privilege patch."
+    },
+    {
+      "path": ".github/workflows/barrot-controlled-feature-validation.yml",
+      "risk": "Observed read-only permissions and artifact-only evidence path; retain, subject to exact-SHA validation."
+    }
+  ],
+  "preservation": {
+    "main_modified": false,
+    "force_push": false,
+    "merge_performed": false,
+    "workflow_dispatch_performed": false,
+    "external_deployment_performed": false,
+    "credentials_or_secrets_read": false,
+    "paper_trade_or_real_money_action": false,
+    "source_pr_1573_closed": false
+  },
+  "validation_status": "PENDING_EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE"
+}

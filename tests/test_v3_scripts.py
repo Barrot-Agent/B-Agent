@@ -417,13 +417,16 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert ("push", "origin", "HEAD:main") not in git_in_calls
 
 
-def test_self_upgrade_workflow_verifies_same_ref_without_branch_switch() -> None:
+def test_self_upgrade_workflow_is_quarantined_pending_protected_approval() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
-    assert 'ref: ${{ github.ref_name }}' in workflow
-    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' in workflow
-    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' in workflow
-    assert "git checkout main" not in workflow
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    assert "No credentials are read" in workflow
+    assert "secrets." not in workflow
+    assert "git push" not in workflow
+    assert "schedule:" not in workflow
 
 
 def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
