@@ -6,7 +6,7 @@ XRP ecosystem intelligence and prediction-engine mastery remain the highest-prio
 ## New research artifact
 - Artifact: `research/xrp_intelligence/20261103T164102Z-coinbase-circle-sbi-xrp-network-update.json`
 - Captured: 2026-11-03 16:41:02 UTC
-- Source register: 28 sources (official corporate/product documents, protocol documentation and one peer-reviewed acronym-disambiguation paper)
+- Source register: 35 sources (regulatory filings, official corporate/product documents, protocol documentation, public interview and secondary reports)
 - Observations: 12
 - Relationship edges: 12
 - Competing hypotheses: 5
@@ -95,3 +95,25 @@ The phrase thread is more resolved, but the entities must remain separate:
 - 'actual capital' remains unresolved.
 
 The research artifact now contains 28 sources, 17 observations, 16 relationship edges and 5 competing hypotheses. It was serialized and parsed successfully after these additions.
+
+
+## Evernorth, SBI ownership and capital-flow update — 2026-11-03 16:49 UTC
+
+The new SEC prospectus and closing 8-K materially deepen the SBI/Ripple/XRP relationship map:
+- Evernorth held approximately 473 million XRP as of October 9, 2026 and began Nasdaq trading as XRPN on October 12.
+- Only 84.365876 million XRP was explicitly purchased with $214.1 million cash at an average $2.53657058. Another 388.910554 million XRP was contributed in kind. Therefore the 473 million treasury figure is not 473 million of fresh open-market demand; the explicitly cash-funded purchase is about 17.8% of the total.
+- The in-kind closing contributions reconcile to 211.319096 million XRP from Arrington XRP Capital Fund, 50 million from a Ripple-affiliated trust, 126.791458 million from Ripple, 600,000 from advance subscribers and 200,000 from delayed-funding subscribers.
+- SBI-controlled entities held 9,431,914 Class A voting shares (36.1% of Class A) and 2,359,038 Class C non-voting economic shares (7.5% of Class C) as of October 22. The 39.9% threshold is a cap, not the final reported ownership percentage. Class A and Class C percentages have different denominators.
+- Ripple provided a related-party credit facility originally $7 million and increased to a $10 million limit; $9.7 million was borrowed as of October 7 at 3.81% and became repayable within five business days after closing. This is debt, separate from Ripple's XRP contribution and its affiliate trust's subscription.
+- At closing, Evernorth reported $272.6 million gross cash proceeds ($224.6 million private-placement investments plus $48 million released from the trust after redemptions) before transaction expenses. About 80.3% of public shares were redeemed for approximately $195.39 million. The gross proceeds are not equivalent to remaining unrestricted cash because $214.1 million had already been used to buy XRP.
+- A $30 million convertible note generated $29 million net after a $1 million advisor fee. The October 23 Cantor ELOC allows up to 5,218,935 shares, estimated at $76.8 million gross/$74.4 million net at the prospectus reference price if fully used. It is discretionary capacity, not capital already received or XRP already purchased.
+- Evernorth reported no revenue through June 30, 2026, $0.1 million unrestricted cash and a $696.1 million working-capital deficit at that pre-close date; its first-half loss was primarily impairment and fair-value changes. Its future XRP accumulation, collateral, lending and yield strategies are plans, not verified operating revenue.
+- gumi disclosed a $5 million Evernorth PIPE investment alongside SBI and Ripple, a board-approved ¥2.5 billion XRP purchase plan, and a separate ¥16 million BTC/XRP shareholder-benefit program through SBI VC Trade. The purchase plan is not proof of full execution; the shareholder-benefit asset split is undisclosed.
+
+### 'Actual capital' phrase remains ambiguous
+One secondary report describes a Hyperliquid wallet with prefix 0x243 depositing 52.67 BTC (about $3.26 million) before opening a $16.3 million XRP long at 20x. The often-derived ~$815,000 figure is notional divided by leverage, not verified total capital or total collateral. The underlying X post could not be fetched and the wallet is truncated. Keep this candidate unverified. The Evernorth $214.1 million cash-funded XRP purchase is a separate, fully sourced capital-flow context; no unique intended meaning for the phrase has been established.
+
+### Camilla/Kamilah Stevenson channel identity
+The strongest candidate is Kamilah Stevenson, handle `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`. A public interview transcript supports the creator's Camila/Camilla spoken spelling and her reference to Doctor Camilla Stevenson on YouTube. Third-party video-count estimates conflict (633 versus about 1.2K), so the existing 13-video transcript inventory is still partial. vidIQ's channel lookup could not run because the connected account had no credits; it was not retried. Do not claim an exhaustive video inventory.
+
+The research artifact now contains 35 sources, 27 observations, 26 relationship edges and 8 competing hypotheses. JSON was parsed successfully after the update.
