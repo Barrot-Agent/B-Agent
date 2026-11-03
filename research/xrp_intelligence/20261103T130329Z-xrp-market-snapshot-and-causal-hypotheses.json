@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_market_snapshot_and_hypotheses",
+  "recorded_at_utc": "2026-11-03T13:03:29Z",
+  "forecast_status": "NOT_ISSUED",
+  "observations": [
+    {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "observed_at_utc": "2026-11-03T13:03Z",
+      "underlying_date": "2026-11-02",
+      "measure": "six US spot ETFs plus BITW holdings",
+      "xrp": 1196570000,
+      "flow_xrp": -32825,
+      "net_assets_usd": 1507450000,
+      "classification": "SECONDARY_AGGREGATION_OF_ISSUER_HOLDINGS",
+      "caveat": "The separate dataset metadata marks the Nov 2 row provisional pending re-settlement; do not promote to settled canonical flow."
+    },
+    {
+      "source": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "observed_at_utc": "2026-11-03T12:15:00Z",
+      "measure": "XRP perpetual futures",
+      "price_usd": 1.2619,
+      "open_interest_usd": 1980000000,
+      "venues": 7,
+      "oi_change_24h_pct": 2.41,
+      "funding_pct_per_8h": 0.0091,
+      "long_account_share_pct": 77.7,
+      "liquidations_24h_usd_min": 2430000,
+      "classification": "PROVIDER_AGGREGATE",
+      "caveat": "Liquidations are incomplete minimums; account ratio is not notional exposure."
+    },
+    {
+      "source": "XRPL Dashboard",
+      "url": "https://xrpldashboard.com/amendments",
+      "observed_at_utc": "2026-11-03T12:47:00Z",
+      "measure": "XRP reference price and amendment countdown",
+      "price_usd": 1.283,
+      "amendment": "fixCleanup3_4_0",
+      "majority_start_utc": "2026-10-21T14:46:00Z",
+      "countdown_elapsed": "12 days 22 hours of 14",
+      "earliest_activation_utc": "2026-11-04T14:46:00Z",
+      "first_flag_ledger_estimate_utc": "2026-11-04T15:03:00Z",
+      "classification": "LIVE_DASHBOARD_OBSERVATION",
+      "caveat": "Activation is conditional on uninterrupted >80% support; actual EnableAmendment ledger transaction has not yet been observed."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Positive price change with rising OI reflects incremental directional positioning.",
+      "support": [
+        "TradRadar reports OI +2.41% over 24h",
+        "TradRadar reports price +0.59% over 24h"
+      ],
+      "counterevidence": [
+        "Funding positive and long-account share 77.7% may indicate crowding",
+        "Open interest can include hedged positions"
+      ],
+      "test": "Compare venue-level signed taker flow, spot volume, basis and liquidations at synchronized cutoffs."
+    },
+    {
+      "id": "H2",
+      "claim": "Crowded long positioning increases downside liquidation/volatility risk.",
+      "support": [
+        "77.7% long-account share",
+        "Positive funding +0.0091% per 8h",
+        "Long liquidations exceed short liquidations in provider snapshot"
+      ],
+      "counterevidence": [
+        "Price and OI are both positive over the provider's 24h window",
+        "Spot demand may absorb derivatives deleveraging"
+      ],
+      "test": "Measure funding percentile, long/short notional, liquidation clusters and spot depth during subsequent drawdowns."
+    },
+    {
+      "id": "H3",
+      "claim": "Nov 2 ETF flow is immaterial to short-horizon direction.",
+      "support": [
+        "Reported net outflow only 32,825 XRP against ~1.1966B holdings"
+      ],
+      "counterevidence": [
+        "ETF creations/redemptions may be lumpy and issuer settlement may revise values"
+      ],
+      "test": "Wait for final issuer holdings and compare flow size with daily spot volume and market depth."
+    },
+    {
+      "id": "H4",
+      "claim": "fixCleanup3_4_0 may improve XRPL operational confidence but does not directly create new XRP demand.",
+      "support": [
+        "Official amendment description is a bundle of maintenance fixes",
+        "Native LendingProtocol remains separately gated"
+      ],
+      "counterevidence": [
+        "Specific application developers may value corrected vault/lending code once features activate"
+      ],
+      "test": "Verify activation first; monitor application deployments, actual TVL and transaction usage separately."
+    },
+    {
+      "id": "H5",
+      "claim": "Collateral eligibility on Coinbase Global Exchange and Deribit expands potential XRP utility but not necessarily spot demand.",
+      "support": [
+        "Product documentation lists XRP as eligible collateral",
+        "Deribit lists 15% X:SM haircut"
+      ],
+      "counterevidence": [
+        "No actual XRP collateral utilization series identified",
+        "Coinbase Prime CFM collateral list differs"
+      ],
+      "test": "Seek venue disclosures of posted XRP balances, margin utilization, collateral conversion and net spot acquisition."
+    }
+  ],
+  "decisions": [
+    "Do not average asynchronous price/OI sources.",
+    "Do not treat provisional ETF flow as settled.",
+    "Separate eligibility, posted collateral, collateral utilization and spot acquisition.",
+    "No directional forecast until fixed-horizon, point-in-time features and validated outcome data exist."
+  ]
+}
