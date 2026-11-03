@@ -28,7 +28,7 @@ button { background: #00ffcc; color: #0a0a0f; border: none; padding: 12px 30px; 
   <div id="dir" class="sentiment">LOADING</div>
   <p id="score"></p>
   <p id="confidence"></p>
-  <p id="price"></p>
+  <p id="signal-text" class="note"></p>
   <p id="source" class="note"></p>
   <p id="ts" class="note"></p>
 </div>
@@ -59,7 +59,7 @@ async function verify() {
     d.className = unavailable ? 'unavailable' : 'sentiment';
     document.getElementById('score').textContent = 'Sentiment score (0-100): ' + (valid && Number.isFinite(Number(sig.score)) ? sig.score : '—');
     document.getElementById('confidence').textContent = 'Model-reported confidence (uncalibrated; not a probability): ' + (valid && Number.isFinite(Number(sig.confidence)) ? sig.confidence : '—');
-    document.getElementById('price').textContent = sig.signal_text || '—';
+    document.getElementById('signal-text').textContent = 'Sentiment context: ' + (sig.signal_text || '—');
     document.getElementById('source').textContent = 'Source: ' + (sig.source || '—');
     document.getElementById('ts').textContent = 'Generated: ' + (sig.generated_at_utc || sig.timestamp || '—');
     document.getElementById('signal').style.display = 'block';

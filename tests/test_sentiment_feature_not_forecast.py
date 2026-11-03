@@ -111,3 +111,11 @@ def test_ask_barrot_does_not_repeat_legacy_accuracy_as_model_performance():
     assert "UNVALIDATED_VARIABLE_HORIZON" in source
     assert "NOT_ISSUED" in source
     assert "uncalibrated; not a price probability" in source
+
+
+def test_subscriber_page_labels_signal_text_as_context_not_price():
+    page = (ROOT / "web" / "signals.html").read_text(encoding="utf-8")
+    assert 'id="signal-text"' in page
+    assert 'id="price"' not in page
+    assert "Sentiment context:" in page
+    assert "getElementById('price')" not in page
