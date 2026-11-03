@@ -114,7 +114,7 @@ The new SEC prospectus and closing 8-K materially deepen the SBI/Ripple/XRP rela
 One secondary report describes a Hyperliquid wallet with prefix 0x243 depositing 52.67 BTC (about $3.26 million) before opening a $16.3 million XRP long at 20x. The often-derived ~$815,000 figure is notional divided by leverage, not verified total capital or total collateral. The underlying X post could not be fetched and the wallet is truncated. Keep this candidate unverified. The Evernorth $214.1 million cash-funded XRP purchase is a separate, fully sourced capital-flow context; no unique intended meaning for the phrase has been established.
 
 ### Camilla/Kamilah Stevenson channel identity
-The strongest candidate is Kamilah Stevenson, handle `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`. A public interview transcript supports the creator's Camila/Camilla spoken spelling and her reference to Doctor Camilla Stevenson on YouTube. Third-party video-count estimates conflict (633 versus about 1.2K), so the existing 13-video transcript inventory is still partial. vidIQ's channel lookup could not run because the connected account had no credits; it was not retried. Do not claim an exhaustive video inventory.
+The strongest candidate is Kamilah Stevenson, handle `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`. A public interview transcript supports the creator's Camila/Camilla spoken spelling and her reference to Doctor Camilla Stevenson on YouTube. Vling currently estimates about 1.3K videos and 143K subscribers; this is third-party metadata, not an enumerated upload list, so the existing 13-video transcript inventory is still partial. vidIQ's channel lookup could not run because the connected account had no credits; it was not retried. Do not claim an exhaustive video inventory.
 
 The research artifact now contains 35 sources, 27 observations, 26 relationship edges and 8 competing hypotheses. JSON was parsed successfully after the update.
 
@@ -165,3 +165,8 @@ SBI's FY2025 investor presentation confirms a broader internal AI environment th
 - The internal SBI AI Portal lists Google Gemini 1.5 Flash and Preferred Networks PLaMo 1.0 Prime among available LLMs.
 
 This is a confirmed corporate AI-adoption map within SBI Group, separate from SBIC East Japan's ChatGPT seminars. It does not establish access to those systems for Barrot, nor any XRP-specific workflow. The nine-platform Barrot map remains unverified except for the already tested ChatGPT and GitHub access.
+
+
+## Stevenson channel identity refinement — 2026-11-03 16:59 UTC
+
+The identity match is now stronger. The June 11, 2026 iHeart interview is titled for Dr. Kamilah Stevenson; the host addresses the guest as Camilla, and at 40:07 the guest says her YouTube is “Doctor Camilla Stevenson” and gives X/Instagram spelling variants. Vling indexes channel ID `UCqUPJMQdkCN6lsLVDnichPA` as Kamilah Stevenson and estimates 1.3K videos / 143K subscribers. The official YouTube handle URL resolves to “Kamilah Stevenson.” This is a strong identity match for the user's “Camilla Stephenson” reference, but the 1.3K count is third-party metadata and the complete public upload inventory remains unfinished.
