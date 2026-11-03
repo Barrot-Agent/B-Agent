@@ -42,7 +42,10 @@ The prototype reports:
 - top-class directional accuracy;
 - the same scores for the declared baseline;
 - improvement versus baseline;
-- coarse confidence bins comparing the highest class probability with observed top-class accuracy.
+- coarse confidence bins comparing the highest class probability with observed top-class accuracy;
+- separate metric cohorts keyed by asset, venue, horizon, model version, baseline version, target definition, flat band and outcome timestamp tolerance.
+
+The summary never pools metrics across unlike cohorts. Top-level metrics are populated only when all scored forecasts belong to one cohort; otherwise top-level score fields are null and consumers must use the per-cohort summaries. This prevents 1-hour, 24-hour, 7-day or different-model forecasts from being combined into a misleading single accuracy or calibration figure. The accuracy field is top-class classification accuracy over down/flat/up and includes the flat class; it is not a binary directional win rate.
 
 The Brier normalization is explicitly versioned as three_class_brier_mean_squared_error_v1; compare only like-for-like scoring versions. Confidence bins are a coarse diagnostic, not full class-wise multiclass calibration.
 
