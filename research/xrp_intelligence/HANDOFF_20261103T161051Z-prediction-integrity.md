@@ -138,3 +138,13 @@ Additional review items retained for the next pass:
 3. Source IDs and feature snapshot IDs are syntactically required but are not yet resolved against an immutable registry or content hashes. The point-in-time feature store remains unimplemented.
 
 Current PR #1590 branch: `prediction/fresh-main-integrity-0c232323-20261103T1536Z`. The next exact-head CI/gate run must cover all commits above. No merge or main-branch write was performed.
+
+
+## Exact-head verification of reference-price hardening — 2026-11-03 16:42 UTC
+
+The reference-price timestamp/source fix and its three regression tests were verified on PR #1590 head `96130c105c30a84396225ab81243a647476f3b73`:
+- Core CI [41676323273](https://github.com/Barrot-Agent/B-Agent/actions/runs/41676323273): 342 tests + 8 subtests passed.
+- Dedicated Prediction Integrity Tests [41676323178](https://github.com/Barrot-Agent/B-Agent/actions/runs/41676323178): 40 tests passed.
+- Fail-closed gate [41676323084](https://github.com/Barrot-Agent/B-Agent/actions/runs/41676323084): passed. Its log explicitly says automatic merge is disabled, no approval/label/merge is performed, and no repository content is changed.
+
+This handoff-only commit changes the branch head; the updated exact head must receive its own fresh CI and gate run before the latest PR state is marked VERIFIED. The prior successful runs above apply only to `96130c105c30a84396225ab81243a647476f3b73`.
