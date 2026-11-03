@@ -98,7 +98,21 @@ The existing barrot_agent/evolution/confidence_calibration.py is not suitable fo
 - It rejects look-ahead feature timestamps, invalid horizons, non-UTC timestamps, mismatched target times and invalid probability distributions. Forecast IDs are deterministic; identical retries are idempotent.
 - Outcomes must be timestamped within a predeclared target tolerance. Cross-venue outcomes require explicit normalization. Missing outcomes are marked unscorable, not misses. Database triggers prohibit updating/deleting forecasts, outcomes and events.
 - Scoring includes three-class Brier mean-squared error, log loss, top-class accuracy, baseline comparison and coarse confidence bins. This is an evaluation ledger only, not a prediction model.
-- Local isolated tests: 17 passed. Exact-head GitHub CI and the dedicated regression workflow are pending for this new commit.
+- Local isolated tests: 17 passed. Exact-head core CI: 342 tests + 8 subtests passed. Dedicated prediction-integrity workflow: 37 tests passed. Fail-closed gate passed; see the verification section below.
 - Known limits: the maximum feature timestamp is currently a single aggregate; fees/slippage are recorded but not applied to the market-return class; confidence bins are not full class-wise calibration; no ingestion, feature store, walk-forward training, drift monitoring or paper/shadow execution exists yet.
 
 Next implementation step is a point-in-time XRP feature store and walk-forward dataset builder that writes immutable snapshots and resolves each forecast only from the predeclared venue/time rule.
+
+
+## Exact-head forecast-ledger verification — 2026-11-03 16:25 UTC
+
+- PR #1590 head at this verification: b65ba013562f2df3c266158df62856b68d41e616; base main: 2bc91a58699cd023d7d017be4c13b77cf3a2e069.
+- Core CI [41673920755](https://github.com/Barrot-Agent/B-Agent/actions/runs/41673920755): 342 tests + 8 subtests passed.
+- Dedicated prediction-integrity workflow [41673920749](https://github.com/Barrot-Agent/B-Agent/actions/runs/41673920749): 37 tests passed, including all 17 forecast-ledger tests.
+- Fail-closed gate [41673920585](https://github.com/Barrot-Agent/B-Agent/actions/runs/41673920585): passed; automatic merge remains disabled.
+- Core CI intentionally enumerates its test files and does not include the new forecast-ledger test file. The dedicated read-only workflow explicitly includes it; this keeps the existing core CI workflow unchanged and avoids overlap with PR #1585.
+- PR remains draft/open/unmerged. Main was not modified.
+
+## Creator source manifest update — 2026-11-03 16:25 UTC
+
+Updated data/xrp_intelligence/sources/kamilah_stevenson_channel.json in this PR branch: identity is now classified as a likely match, not confirmed, with Kamilah/Camila/Camilla spelling variants and the exact user spelling mismatch preserved. The indexed seed inventory now contains 13 video IDs; the full channel inventory remains incomplete. The fixed-horizon list now matches the ledger's 1h, 4h, 24h, 7d and 30d horizons. Candidate video ID QXOxXikifLU remains uncounted until canonical YouTube metadata verifies it.
