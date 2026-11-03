@@ -451,6 +451,26 @@ def test_two_distinct_external_groups_can_corroborate():
     assert report["result"] == MMIResult.COMPLETE.value
 
 
+def test_multiple_sources_from_one_group_do_not_inflate_independent_count():
+    record = complete_record_with_two_sources()
+    record.source_graph.append(
+        SourceRecord(
+            source_id="s3",
+            uri="https://source-b.example/second-report",
+            provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
+            independence_group="publisher-b",
+        )
+    )
+    record.corroboration_results = [{
+        "status": "CORROBORATED",
+        "independent_source_ids": ["s1", "s2", "s3"],
+        "independent_sources": 2,
+    }]
+
+    assert record.corroboration_complete() is True
+    assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
+
+
 def test_contradictory_independent_evidence_can_complete_without_forced_unanimity():
     record = complete_record_with_two_sources()
     record.evidence.append(
