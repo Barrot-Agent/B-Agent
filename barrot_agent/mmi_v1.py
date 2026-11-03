@@ -29,7 +29,7 @@ def canonical_claim_id(claim: str) -> str:
     )
     if not normalized:
         return ""
-    payload = f"{CLAIM_ID_VERSION}\\0{normalized}".encode("utf-8")
+    payload = f"{CLAIM_ID_VERSION}:{normalized}".encode("utf-8")
     return "sha256:" + sha256(payload).hexdigest()
 
 
