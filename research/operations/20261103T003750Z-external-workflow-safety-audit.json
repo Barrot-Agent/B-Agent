@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "barrot_external_workflow_safety_audit",
+  "snapshot_id": "external-workflow-safety-20261103-run11",
+  "captured_at_utc": "2026-11-03T00:37:50Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_commit_at_audit": "00b3213fbffb274581a58c35ab146b1da884a80d",
+  "forecast_status": "NOT_ISSUED",
+  "findings": [
+    {
+      "id": "KAGGLE-2026-11-03-RUN209",
+      "classification": "CONFIRMED_WORKFLOW_FAILURE_AND_EXTERNAL_ACTION_CAPABILITY",
+      "workflow_run": 41551480515,
+      "job_id": 125639876492,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41551480515",
+      "event": "schedule",
+      "created_at_utc": "2026-11-03T00:14:56Z",
+      "result": "failure",
+      "root_cause": "The workflow invoked python kaggle_competitions_automation.py from the repository root, but the script exists under scripts/kaggle_competitions_automation.py. The runner exited with code 2 before the script opened.",
+      "exact_error": "python: can't open file '/home/runner/work/B-Agent/B-Agent/kaggle_competitions_automation.py': [Errno 2] No such file or directory",
+      "consequence": "The Python script did not execute. The log shows no Kaggle API authentication, competition download or submission occurred in this run.",
+      "latent_risk": "The workflow scheduled daily at 00:00 UTC, supplied KAGGLE_USERNAME and KAGGLE_KEY, and set KAGGLE_MAX_COMPETITIONS=5. Both repository copies of the script lacked an opt-in guard and call competition_submit. If the path alone were corrected, the script would select up to five active competitions sorted by latest deadline and attempt submissions where rules had already been accepted."
+    },
+    {
+      "id": "HF-FORCE-DEPLOY",
+      "classification": "CONFIRMED_PRIVILEGED_EXTERNAL_WRITE_PATH",
+      "workflow": ".github/workflows/force-deploy-space.yml",
+      "main_sha": "099b77fc5946e60488e1929da4e09c1193e66416",
+      "behavior": "Manual dispatch reads HF_TOKEN and performs git push -f to the Barrot-Omega Hugging Face Space main branch.",
+      "consequence": "A manual workflow dispatch can overwrite the external Space branch without a per-run approval gate."
+    },
+    {
+      "id": "DATABRICKS-TOKEN-ROTATION",
+      "classification": "CONFIRMED_SECRET_HANDLING_AND_DEPLOY_DISPATCH_RISK",
+      "workflow": ".github/workflows/rotate-databricks-token.yml",
+      "main_sha": "a00ddc83422fb4f62e84a8621edee7611495592e",
+      "behavior": "Manual workflow input accepts new_token, interpolates it into a gh secret set command, writes DATABRICKS_TOKEN and dispatches the Databricks deployment workflow.",
+      "consequence": "A credential is handled through workflow input and shell interpolation, followed by a consequential deployment dispatch."
+    }
+  ],
+  "proposed_containment": {
+    "status": "IMPLEMENTED_AWAITING_EXACT_HEAD_CI",
+    "branch": "security/external-mutation-gates-fresh-main-20261103-run11",
+    "base_commit": "00b3213fbffb274581a58c35ab146b1da884a80d",
+    "changes": [
+      "Disable the Hugging Face force-deploy workflow with permissions empty and no token access or force-push.",
+      "Disable Databricks token rotation with permissions empty, no token input, no secret read/write and no deployment dispatch.",
+      "Remove the Kaggle daily schedule; require manual boolean opt-in defaulting false.",
+      "Require a comma-separated exact competition allowlist; reject empty, duplicate, malformed or over-cap allowlists.",
+      "Require both explicit opt-in and a non-empty allowlist before Kaggle API authentication.",
+      "Filter active competitions to the exact allowlist before downloading or training.",
+      "Recheck the exact competition slug immediately before competition_submit.",
+      "Apply the same guarded implementation to scripts/kaggle_competitions_automation.py and the duplicate barrot_agent/tools/kaggle_competitions_automation.py.",
+      "Add fake-API tests; tests do not authenticate to Kaggle or submit anything.",
+      "Register the external-workflow safety tests in core CI."
+    ],
+    "max_competitions": 5,
+    "external_submissions_during_audit": 0,
+    "workflow_dispatch_during_audit": 0,
+    "secrets_accessed": 0
+  },
+  "prior_proposal": {
+    "pr": 1523,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1523",
+    "exact_head": "eda3d5affcb388075c436a7ea4606a468aff5e14",
+    "ci": "PASS",
+    "fail_closed_gate": "PASS",
+    "base_drift_at_audit": {
+      "ahead": 8,
+      "behind": 12
+    },
+    "note": "The prior branch is mergeable but stale. The fresh-main successor reapplies the containment to the current main commit and adds exact per-competition approval."
+  },
+  "verification": {
+    "current_main_workflow_run": "FAILED_BEFORE_SCRIPT_EXECUTION",
+    "fresh_main_branch_tests": "NOT_YET_EXECUTED_BY_CI",
+    "fresh_main_exact_head_ci": "PENDING",
+    "fresh_main_fail_closed_gate": "PENDING",
+    "pull_request": "NOT_CREATED_YET",
+    "merge_status": "NOT_MERGED"
+  },
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "merge": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "Kaggle_API_authentication": false,
+    "Kaggle_submission": false,
+    "Hugging_Face_deployment": false,
+    "Databricks_token_rotation": false,
+    "paper_position_mutation": false,
+    "real_money_transaction": false
+  },
+  "next_actions": [
+    "Create a draft fresh-main PR and await exact-head CI and fail-closed gate.",
+    "Review the fake-API tests and confirm the duplicate Kaggle script matches the guarded primary script.",
+    "Keep all three external-action workflows disabled or gated until the user explicitly approves the relevant operation.",
+    "Do not merge without approval."
+  ]
+}
