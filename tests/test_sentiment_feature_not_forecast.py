@@ -81,6 +81,9 @@ def test_missing_or_nonfinite_classifier_confidence_is_zero():
     ):
         _, confidence, _ = module._score_from_text(raw)
         assert confidence == 0.0
+    assert module._normalize_confidence(1.5) == 1.0
+    assert module._normalize_confidence(-0.5) == 0.0
+    assert module._normalize_score(float("nan")) == 50
 
 
 def test_emitter_does_not_attach_a_live_price_as_a_sentiment_feature_anchor():
