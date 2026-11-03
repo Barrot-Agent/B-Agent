@@ -303,3 +303,10 @@ Main is still `09466f945b8b9a658e0b2a03e70c05d78c33b765`. No PR has been merged.
 - PR #1590 passed core tests, prediction-integrity tests and the gate on its exact head.
 - PR #1591 passed tests and gate on the exact code/data head; the latest handoff update is documentation-only.
 - No automatic merge was enabled, no manual workflow dispatch was run, and no trading or deployment action occurred.
+
+
+### Final institutional relationship graph addendum
+- `20261103-institutional-custody-collateral-and-rlusd-network.json` adds 11 explicit edges and four competing hypotheses across BNY, Ripple/Ripple Prime, Ripple National Trust Bank, Circle's trust bank, Coinbase, C2FO, Nodal Clear and XRP.
+- BNY states it now supports XRP and RLUSD custody for eligible institutional clients, is RLUSD's primary reserve custodian, and has a custody relationship with Ripple Prime. Direct RLUSD mint/redeem through BNY and broader XRPL tokenized-asset support remain future intentions subject to approvals.
+- Ripple's October 26 release states RLUSD is used as collateral within Ripple Prime. This is a corporate claim; no amount, haircut, client balance or independent collateral schedule is disclosed.
+- Keep RLUSD reserve/collateral/settlement use distinct from XRP custody, XRP futures and XRP spot demand. The institutional network is expanding, but measurable XRP demand from these links remains unproven.
