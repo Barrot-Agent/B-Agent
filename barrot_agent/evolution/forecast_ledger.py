@@ -136,7 +136,8 @@ class ForecastLedger:
         if not isinstance(r, Mapping):
             raise ForecastLedgerError("forecast must be a mapping")
         required = (
-            "asset", "venue", "target_definition", "reference_price_usd", "data_cutoff_utc", "issued_at_utc",
+            "asset", "venue", "target_definition", "reference_price_usd", "reference_price_timestamp_utc",
+            "reference_price_source_id", "reference_price_max_age_seconds", "data_cutoff_utc", "issued_at_utc",
             "target_time_utc", "horizon_seconds", "model_version", "baseline_model_version",
             "probabilities", "baseline_probabilities", "flat_band_bps",
             "outcome_tolerance_seconds", "feature_max_timestamp_utc",
@@ -150,9 +151,17 @@ class ForecastLedger:
         if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon not in HORIZONS:
             raise ForecastLedgerError(f"horizon_seconds must be one of {HORIZONS}")
         cutoff, cutoff_s = _utc(r["data_cutoff_utc"], "data_cutoff_utc")
+        reference_time, reference_time_s = _utc(r["reference_price_timestamp_utc"], "reference_price_timestamp_utc")
         issued, issued_s = _utc(r["issued_at_utc"], "issued_at_utc")
         target, target_s = _utc(r["target_time_utc"], "target_time_utc")
         feature_max, feature_s = _utc(r["feature_max_timestamp_utc"], "feature_max_timestamp_utc")
+        if reference_time > cutoff:
+            raise ForecastLedgerError("reference_price_timestamp_utc exceeds data cutoff (look-ahead leakage)")
+        reference_max_age = r["reference_price_max_age_seconds"]
+        if isinstance(reference_max_age, bool) or not isinstance(reference_max_age, int) or not 0 <= reference_max_age <= 3600:
+            raise ForecastLedgerError("reference_price_max_age_seconds must be 0..3600")
+        if (cutoff - reference_time).total_seconds() > reference_max_age:
+            raise ForecastLedgerError("reference price is older than the declared maximum age")
         if issued < cutoff or issued >= target:
             raise ForecastLedgerError("issued_at_utc must be >= cutoff and < target time")
         if feature_max > cutoff:
@@ -168,10 +177,20 @@ class ForecastLedger:
         asset, venue = r["asset"].strip().upper(), r["venue"].strip()
         target_definition = r["target_definition"].strip()
         model, baseline = r["model_version"].strip(), r["baseline_model_version"].strip()
+        reference_source = r["reference_price_source_id"]
+        if not isinstance(reference_source, str) or not reference_source.strip():
+            raise ForecastLedgerError("reference_price_source_id must be a non-empty string")
+        reference_source = reference_source.strip()
+        source_ids = _strings(r["source_ids"], "source_ids")
+        if reference_source not in source_ids:
+            raise ForecastLedgerError("reference_price_source_id must be included in source_ids")
         return {
             "schema_version": 1, "asset": asset, "venue": venue,
             "target_definition": target_definition,
             "reference_price_usd": _number(r["reference_price_usd"], "reference_price_usd", 1e-12),
+            "reference_price_timestamp_utc": reference_time_s,
+            "reference_price_source_id": reference_source,
+            "reference_price_max_age_seconds": reference_max_age,
             "data_cutoff_utc": cutoff_s, "issued_at_utc": issued_s, "target_time_utc": target_s,
             "horizon_seconds": horizon, "model_version": model, "baseline_model_version": baseline,
             "probabilities": _probs(r["probabilities"], "probabilities"),
@@ -179,7 +198,7 @@ class ForecastLedger:
             "flat_band_bps": _number(r["flat_band_bps"], "flat_band_bps"),
             "outcome_tolerance_seconds": tolerance, "feature_max_timestamp_utc": feature_s,
             "feature_snapshot_ids": _strings(r["feature_snapshot_ids"], "feature_snapshot_ids"),
-            "source_ids": _strings(r["source_ids"], "source_ids"),
+            "source_ids": source_ids,
             "assumptions": _strings(r["assumptions"], "assumptions"),
             "alternatives": _strings(r["alternatives"], "alternatives"),
             "fee_bps": _number(r["fee_bps"], "fee_bps"),
