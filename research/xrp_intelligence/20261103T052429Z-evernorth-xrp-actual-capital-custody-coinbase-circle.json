@@ -653,6 +653,20 @@
       "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
       "published_at": "2026-11-02",
       "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S7",
+      "publisher": "XRPL Dashboard",
+      "title": "XRP Ledger and amendment status dashboard",
+      "url": "https://xrpldashboard.com/amendments",
+      "captured_at": "2026-11-03T05:05:00Z",
+      "source_type": "third_party_dashboard",
+      "supporting_locations": [
+        "XRP mark displayed as $1.2533 at 05:05 UTC"
+      ],
+      "limitations": [
+        "Third-party mark, not an executable exchange quote or direct node query."
+      ]
     }
   ],
   "forecast_status": "NOT_ISSUED",
