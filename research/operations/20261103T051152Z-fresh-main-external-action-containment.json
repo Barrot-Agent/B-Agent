@@ -102,9 +102,8 @@
     ".github/workflows/rotate-databricks-token.yml",
     ".github/workflows/barrot-self-upgrade.yml",
     "tests/test_external_deploys_require_confirmation.py",
-    ".github/workflows/force-deploy-space.yml",
-    ".github/workflows/rotate-databricks-token.yml",
-    ".github/workflows/barrot-self-upgrade.yml"
+    "research/operations/20261103T051152Z-fresh-main-external-action-containment.json",
+    "research/xrp_intelligence/HANDOFF_20261103T051152Z.md"
   ],
   "limitations": [
     "YES input gates are per-run operator confirmations, not protected GitHub Environment reviewer approvals.",
