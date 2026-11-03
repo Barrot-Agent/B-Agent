@@ -86,3 +86,17 @@ def test_accuracy_workflow_is_read_only_and_does_not_push():
     assert "git push" not in workflow
     assert "git add" not in workflow
     assert "pip install requests" not in workflow
+
+
+
+def test_public_signal_accuracy_api_does_not_serve_legacy_score():
+    html = (REPO_ROOT / "web" / "landing.html").read_text(encoding="utf-8")
+    start = html.index('name: "getSignalAccuracy"')
+    end = html.index("\n  });", start)
+    tool = html[start:end]
+
+    assert 'title: "Signal Evaluation Status"' in tool
+    assert "BLOCKED_NO_VALIDATED_FIXED_HORIZON_DATA" in tool
+    assert "UNVALIDATED_VARIABLE_HORIZON" in tool
+    assert 'fetch("signal_accuracy.json")' not in tool
+    assert "accuracy_unavailable" not in tool
