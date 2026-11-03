@@ -7,6 +7,8 @@ from pathlib import Path
 import json
 import time
 
+from barrot_agent.evolution.source_independence import canonical_publisher_group
+
 
 class ParseState(str, Enum):
     OBSERVED = "OBSERVED"
@@ -118,6 +120,7 @@ class EvidenceRecord:
     independent: bool = False
     content_hash: str = ""
     observed_at: str = ""
+    claim_id: str = ""
 
     def lineage_key(self) -> str:
         source = self.source_ids[0] if self.source_ids else "none"
@@ -193,26 +196,24 @@ class MMIRecord:
         source_classes = {
             s.source_id: s.provenance_class for s in self.source_graph
         }
+        if len(source_classes) != len(self.source_graph):
+            errors.append("duplicate source IDs in source graph")
+
+        evidence_ids = [e.evidence_id for e in self.evidence]
+        if len(set(evidence_ids)) != len(evidence_ids):
+            errors.append("duplicate evidence IDs")
 
         for index, result in enumerate(self.corroboration_results):
             if not isinstance(result, dict):
                 errors.append(f"invalid corroboration result: {index}")
                 continue
-            if str(result.get("status", "")).upper() == "CORROBORATED":
-                source_ids = result.get("independent_source_ids")
-                if not self._has_independent_source_set(source_ids):
+            status = str(result.get("status", "")).upper()
+            if status in {"CORROBORATED", "CONTRADICTORY"}:
+                if not self._claim_bound_corroboration(result):
                     errors.append(
-                        "CORROBORATED result requires at least two known "
-                        "external source IDs from distinct independence groups"
-                    )
-                elif (
-                    result.get("independent_sources") is not None
-                    and result.get("independent_sources")
-                    != len(self._independence_groups_for(source_ids))
-                ):
-                    errors.append(
-                        "corroboration independent_sources count does not "
-                        "match independent_source_ids"
+                        f"{status} result requires claim-bound observed evidence, "
+                        "source-linked publisher identities, and at least two "
+                        "distinct independence groups"
                     )
 
         for evidence in self.evidence:
@@ -250,69 +251,150 @@ class MMIRecord:
         if any(source_id not in source_by_id for source_id in source_ids):
             return None
 
-        sources = [source_by_id[source_id] for source_id in source_ids]
-        group_values = []
-        for source in sources:
-            group = source.independence_group
-            if not isinstance(group, str) or not group.strip():
-                return None
-            group_values.append(group.strip().casefold())
-        return set(group_values)
-
-    def _has_independent_source_set(self, source_ids) -> bool:
-        groups = self._independence_groups_for(source_ids)
-        if groups is None or len(groups) < 2:
-            return False
-
         external_classes = {
             ProvenanceClass.EXTERNAL_PRIMARY,
             ProvenanceClass.EXTERNAL_SECONDARY,
             ProvenanceClass.INDEPENDENT_EXTERNAL,
         }
-        source_by_id = {source.source_id: source for source in self.source_graph}
-        return all(
-            source_by_id[source_id].provenance_class in external_classes
-            for source_id in source_ids
-        )
+        groups = set()
+        for source_id in source_ids:
+            source = source_by_id[source_id]
+            if source.provenance_class not in external_classes:
+                return None
+            resolved = canonical_publisher_group(source.uri)
+            declared = source.independence_group
+            if not resolved or not isinstance(declared, str):
+                return None
+            if declared.strip().casefold() != resolved.casefold():
+                return None
+            groups.add(resolved.casefold())
+        return groups
+
+    def _claim_bound_corroboration(self, result: dict) -> bool:
+        status = str(result.get("status", "")).upper()
+        claim_id = result.get("claim_id")
+        if not isinstance(claim_id, str) or not claim_id.strip():
+            return False
+
+        evidence_by_id = {}
+        for evidence in self.evidence:
+            if not evidence.evidence_id or evidence.evidence_id in evidence_by_id:
+                return False
+            evidence_by_id[evidence.evidence_id] = evidence
+
+        if status == "CORROBORATED":
+            supporting_ids = result.get("supporting_evidence_ids")
+            if (
+                not isinstance(supporting_ids, list)
+                or len(supporting_ids) < 2
+                or len(set(supporting_ids)) != len(supporting_ids)
+            ):
+                return False
+            if any(
+                not isinstance(evidence_id, str)
+                or evidence_id not in evidence_by_id
+                for evidence_id in supporting_ids
+            ):
+                return False
+            evidence_records = [evidence_by_id[eid] for eid in supporting_ids]
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not True
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not evidence.source_ids
+                for evidence in evidence_records
+            ):
+                return False
+            if any(
+                evidence.claim_id == claim_id and evidence.supporting is False
+                for evidence in self.evidence
+            ):
+                return False
+            required_evidence_ids = set(supporting_ids)
+        elif status == "CONTRADICTORY":
+            supporting_ids = result.get("supporting_evidence_ids")
+            contradicting_ids = result.get("contradicting_evidence_ids")
+            if (
+                not isinstance(supporting_ids, list)
+                or not supporting_ids
+                or not isinstance(contradicting_ids, list)
+                or not contradicting_ids
+            ):
+                return False
+            all_ids = supporting_ids + contradicting_ids
+            if len(set(all_ids)) != len(all_ids):
+                return False
+            if any(
+                not isinstance(evidence_id, str)
+                or evidence_id not in evidence_by_id
+                for evidence_id in all_ids
+            ):
+                return False
+            supporting_records = [evidence_by_id[eid] for eid in supporting_ids]
+            contradicting_records = [evidence_by_id[eid] for eid in contradicting_ids]
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not True
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not evidence.source_ids
+                for evidence in supporting_records
+            ):
+                return False
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not False
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not evidence.source_ids
+                for evidence in contradicting_records
+            ):
+                return False
+            required_evidence_ids = set(all_ids)
+            reconciled_ids = set()
+            for item in self.reconciliation:
+                if not isinstance(item, dict):
+                    continue
+                evidence_ids = item.get("evidence_ids")
+                if isinstance(evidence_ids, list):
+                    reconciled_ids.update(
+                        evidence_id
+                        for evidence_id in evidence_ids
+                        if isinstance(evidence_id, str) and evidence_id.strip()
+                    )
+            if not required_evidence_ids.issubset(reconciled_ids):
+                return False
+            evidence_records = supporting_records + contradicting_records
+        else:
+            return False
+
+        source_ids = {
+            source_id
+            for evidence in evidence_records
+            for source_id in evidence.source_ids
+            if isinstance(source_id, str) and source_id.strip()
+        }
+        declared_source_ids = result.get("independent_source_ids")
+        if (
+            not isinstance(declared_source_ids, list)
+            or len(set(declared_source_ids)) != len(declared_source_ids)
+            or set(declared_source_ids) != source_ids
+        ):
+            return False
+
+        groups = self._independence_groups_for(declared_source_ids)
+        if groups is None or len(groups) < 2:
+            return False
+        if result.get("independent_sources") != len(groups):
+            return False
+        return True
 
     def corroboration_complete(self) -> bool:
-        for result in self.corroboration_results:
-            if not isinstance(result, dict):
-                continue
-            status = str(result.get("status", "")).upper()
-            if not self._has_independent_source_set(
-                result.get("independent_source_ids")
-            ):
-                continue
-            if status == "CORROBORATED":
-                return True
-            if status == "CONTRADICTORY":
-                supporting = result.get("supporting_evidence")
-                contradicting = result.get("contradicting_evidence")
-                if not isinstance(supporting, list) or not supporting:
-                    continue
-                if not isinstance(contradicting, list) or not contradicting:
-                    continue
-                if any(
-                    not isinstance(evidence_id, str) or not evidence_id.strip()
-                    for evidence_id in supporting + contradicting
-                ):
-                    continue
-                required_ids = set(supporting + contradicting)
-                reconciled_ids = set()
-                for item in self.reconciliation:
-                    if not isinstance(item, dict):
-                        continue
-                    evidence_ids = item.get("evidence_ids")
-                    if isinstance(evidence_ids, list):
-                        reconciled_ids.update(
-                            evidence_id
-                            for evidence_id in evidence_ids
-                            if isinstance(evidence_id, str) and evidence_id.strip()
-                        )
-                if required_ids and required_ids.issubset(reconciled_ids):
-                    return True
-        return False
+        return any(
+            isinstance(result, dict)
+            and str(result.get("status", "")).upper()
+            in {"CORROBORATED", "CONTRADICTORY"}
+            and self._claim_bound_corroboration(result)
+            for result in self.corroboration_results
+        )
 
 
 class MMIStateMachine:
