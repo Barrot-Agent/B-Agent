@@ -73,3 +73,18 @@ def test_environment_requires_credentials(monkeypatch):
     monkeypatch.delenv("BARROT_SMS_ALLOWED_FROM", raising=False)
     with pytest.raises(RuntimeError):
         MODULE.build_adapter_from_environment(lambda _: "ok")
+
+
+def test_termux_signed_message_routes_to_chain():
+    adapter = MODULE.BarrotSmsAdapter(
+        lambda text: f"reply:{text}", auth_token="secret", allowed_from={"+15550001111"}
+    )
+    message_id, sender, body = "42", "+15550001111", "hello"
+    signature = hmac.new(
+        b"secret", f"{message_id}:{sender}:{body}".encode(), hashlib.sha256
+    ).hexdigest()
+    status, reply = adapter.handle_termux(
+        message_id=message_id, sender=sender, body=body, signature=signature
+    )
+    assert status == 200
+    assert b"reply:hello" in reply

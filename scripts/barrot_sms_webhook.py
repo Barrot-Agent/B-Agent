@@ -12,13 +12,14 @@ import base64
 import hashlib
 import hmac
 import html
+import json
 import logging
 import os
 import time
 from collections import defaultdict, deque
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from typing import Callable, Mapping
-from urllib.parse import parse_qs, urlencode
+from urllib.parse import parse_qs
 
 LOGGER = logging.getLogger("barrot.sms")
 MAX_REPLY_CHARS = 1400
@@ -108,6 +109,34 @@ class BarrotSmsAdapter:
             return 200, twiml_message("Barrot is temporarily unavailable. Please try again.")
         return 200, twiml_message(reply or "Barrot did not produce a response.")
 
+    def handle_termux(
+        self, *, message_id: str, sender: str, body: str, signature: str
+    ) -> tuple[int, bytes]:
+        """Handle a signed message forwarded by the Android Termux bridge."""
+        payload = f"{message_id}:{sender}:{body}"
+        expected = hmac.new(
+            self.auth_token.encode("utf-8"), payload.encode("utf-8"), hashlib.sha256
+        ).hexdigest()
+        if not hmac.compare_digest(expected, signature):
+            return 403, b"Unauthorized."
+        return self.handle(
+            url="termux://sms",
+            params={"From": sender, "MessageSid": message_id, "Body": body},
+            signature=base64.b64encode(
+                hmac.new(
+                    self.auth_token.encode("utf-8"),
+                    b"termux://sms"
+                    + "".join(
+                        f"{key}{value}"
+                        for key, value in sorted(
+                            {"From": sender, "MessageSid": message_id, "Body": body}.items()
+                        )
+                    ).encode("utf-8"),
+                    hashlib.sha1,
+                ).digest()
+            ).decode("ascii"),
+        )
+
 
 def default_chain(task: str) -> str:
     from pingpong import run_chain
@@ -134,6 +163,20 @@ class SmsRequestHandler(BaseHTTPRequestHandler):
     def do_POST(self) -> None:  # noqa: N802
         length = int(self.headers.get("Content-Length", "0"))
         raw = self.rfile.read(length)
+        if self.headers.get("Content-Type", "").split(";", 1)[0] == "application/json":
+            payload = json.loads(raw.decode("utf-8"))
+            status, response = self.adapter.handle_termux(
+                message_id=str(payload.get("id", "")),
+                sender=str(payload.get("from", "")),
+                body=str(payload.get("body", "")),
+                signature=self.headers.get("X-Barrot-Signature", ""),
+            )
+            self.send_response(status)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Length", str(len(response)))
+            self.end_headers()
+            self.wfile.write(response)
+            return
         params = {
             key: values[0]
             for key, values in parse_qs(raw.decode("utf-8"), keep_blank_values=True).items()

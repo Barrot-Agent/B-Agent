@@ -65,3 +65,20 @@ replay and rate abuse, bounds replies, redacts request logging, and returns a
 generic failure response when the Barrot chain is unavailable. Keep credentials
 in the hosting provider's secret store; never commit them. Twilio must be
 configured to POST URL-encoded messages to the deployed endpoint.
+
+### T-Mobile/Termux alternative
+
+Twilio is not required when an Android phone with the T-Mobile SIM is
+available. Install Termux and Termux:API from a trusted source, grant SMS
+permissions, and run `scripts/termux_sms_bridge.py` with:
+
+- `BARROT_SMS_ENDPOINT`: the Barrot HTTPS JSON endpoint
+- `BARROT_SMS_SHARED_SECRET`: a deployment-only random secret
+- `BARROT_SMS_REPLY_TO`: the phone number that receives replies
+
+The bridge polls `termux-sms-list`, forwards new messages with an HMAC
+signature, and sends the response using `termux-sms-send`. Configure these
+variables in Termux's private environment, not in Git. The repository cannot
+activate the T-Mobile line, install Android apps, grant permissions, or verify
+delivery; those steps require the physical phone and a reachable HTTPS
+deployment.
