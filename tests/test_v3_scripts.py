@@ -704,3 +704,26 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_scheduler_tick_is_disabled_until_safe_state_store_and_allowlist_exist() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "scheduler-tick.yml"
+    ).read_text(encoding="utf-8")
+
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    for forbidden in (
+        "schedule:",
+        "contents: write",
+        "actions: write",
+        "GH_TOKEN",
+        "secrets.",
+        "scripts/scheduler.py",
+        "git add",
+        "git commit",
+        "git push",
+        "pull --no-rebase",
+    ):
+        assert forbidden not in workflow
