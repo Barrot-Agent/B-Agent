@@ -451,6 +451,27 @@ def test_two_distinct_external_groups_can_corroborate():
     assert report["result"] == MMIResult.COMPLETE.value
 
 
+def test_missing_independence_group_blocks_corroboration():
+    record = complete_record_with_two_sources()
+    record.source_graph[1].independence_group = ""
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_model_generated_source_cannot_corroborate_external_claim():
+    record = complete_record_with_two_sources()
+    record.source_graph[1].provenance_class = ProvenanceClass.BARROT_GENERATED
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_independent_group_count_must_match_declared_count():
+    record = complete_record_with_two_sources()
+    record.corroboration_results[0]["independent_sources"] = 1
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
 def test_multiple_sources_from_one_group_do_not_inflate_independent_count():
     record = complete_record_with_two_sources()
     record.source_graph.append(
@@ -520,6 +541,17 @@ def test_corroboration_not_applicable_requires_reason():
             source_ids=["s1"],
         )
     )
+    record.stages = [
+        StageRecord(
+            name,
+            StageOutcome.NOT_APPLICABLE if name == "CORROBORATION" else StageOutcome.COMPLETE,
+            "",
+        )
+        for name in MMIStateMachine.ORDER
+    ]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
+
     record.stages = [
         StageRecord(
             name,
