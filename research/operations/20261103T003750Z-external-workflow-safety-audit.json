@@ -39,7 +39,7 @@
     }
   ],
   "proposed_containment": {
-    "status": "IMPLEMENTED_AWAITING_EXACT_HEAD_CI",
+    "status": "IMPLEMENTED_AND_EXACT_HEAD_VERIFIED",
     "branch": "security/external-mutation-gates-fresh-main-20261103-run11",
     "base_commit": "00b3213fbffb274581a58c35ab146b1da884a80d",
     "changes": [
@@ -73,11 +73,17 @@
   },
   "verification": {
     "current_main_workflow_run": "FAILED_BEFORE_SCRIPT_EXECUTION",
-    "fresh_main_branch_tests": "NOT_YET_EXECUTED_BY_CI",
-    "fresh_main_exact_head_ci": "PENDING",
-    "fresh_main_fail_closed_gate": "PENDING",
-    "pull_request": "NOT_CREATED_YET",
-    "merge_status": "NOT_MERGED"
+    "run_id": "41551480515",
+    "fresh_main_branch_core_ci": "PASS: 353 tests + 8 subtests",
+    "fresh_main_core_ci_run": "41554314323",
+    "fresh_main_fail_closed_gate": "PASS",
+    "fresh_main_gate_run": "41554314212",
+    "fresh_main_exact_head": "c1664e4a8ffb5f5c7c4f1e7bf272db2127044c86",
+    "pull_request": 1539,
+    "pull_request_url": "https://github.com/Barrot-Agent/B-Agent/pull/1539",
+    "merge_status": "OPEN_DRAFT_MERGEABLE_UNMERGED",
+    "main_modified": false,
+    "verification_recorded_at_utc": "2026-11-03T00:38:36Z"
   },
   "safety": {
     "main_modified": false,
@@ -93,9 +99,9 @@
     "real_money_transaction": false
   },
   "next_actions": [
-    "Create a draft fresh-main PR and await exact-head CI and fail-closed gate.",
-    "Review the fake-API tests and confirm the duplicate Kaggle script matches the guarded primary script.",
-    "Keep all three external-action workflows disabled or gated until the user explicitly approves the relevant operation.",
-    "Do not merge without approval."
+    "Retain the exact competition allowlist and opt-in guard; do not restore a scheduled submission path.",
+    "Keep Hugging Face force deployment disabled until separately approved.",
+    "Keep Databricks token rotation/deployment disabled until a safer credential-rotation workflow is designed and approved.",
+    "Do not merge PR #1539 without user approval."
   ]
 }
