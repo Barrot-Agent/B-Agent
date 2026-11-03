@@ -597,6 +597,9 @@ def test_required_core_stage_cannot_be_not_applicable():
     ]
 
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
+    report = MMICompletenessReport.build(record)
+    assert report["protocol_complete"] is False
+    assert report["protocol_completeness"] < 1.0
 
 
 def test_contradictory_evidence_is_preserved():
