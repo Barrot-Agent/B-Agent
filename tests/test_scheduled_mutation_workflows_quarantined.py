@@ -12,6 +12,7 @@ WORKFLOWS = (
     ".github/workflows/riemann-harvest.yml",
     ".github/workflows/gumroad-metrics.yml",
     ".github/workflows/webmcp-monetization-enrich.yml",
+    ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
 )
 
 
