@@ -411,6 +411,17 @@
       "limitations": [
         "This is a maximum potential issuance, not completed dilution. The prospectus says the holder owned no shares before the offering and Evernorth is not required to issue the full amount; actual issuance depends on company discretion and contractual conditions. Proceeds use is not established here."
       ]
+    },
+    {
+      "id": "SBI-ANTHROPIC-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI announced a group-wide collaboration with Anthropic to deploy Claude across SBI Group, use Claude through business-system APIs, jointly develop regulated financial AI agents, and conduct experiments connecting Claude to Japanese financial-market information and payment infrastructure.",
+      "source_ids": [
+        "SBI-ANTHROPIC"
+      ],
+      "limitations": [
+        "This is SBI's own enterprise deployment and experimentation; it does not establish that Barrot has Claude access, that Claude is connected to Barrot, or that the pilot uses XRP-specific data."
+      ]
     }
   ],
   "relationship_edges": [
@@ -522,6 +533,13 @@
       "relationship": "committed equity financing; prospectus registers up to 5,218,935 potential Class A shares",
       "classification": "confirmed_primary",
       "limitation": "Potential issuance only; no current holder position and no full draw established."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Anthropic/Claude",
+      "relationship": "group-wide AI transformation agreement, API use, MCP-enabled agent development and financial-market-access experiments",
+      "classification": "confirmed_primary",
+      "limitation": "No connection to Barrot or public XRP-specific deployment established."
     }
   ],
   "hypotheses": [
@@ -620,6 +638,17 @@
         "No actual draw or use of proceeds is established; the full 5.219M shares need not be issued."
       ],
       "status": "testable_financing_hypothesis"
+    },
+    {
+      "id": "H8",
+      "statement": "SBI's Claude deployment may become an institutional AI layer across its financial and digital-asset businesses, but its XRP-specific analytical scope and external data-sharing remain unknown.",
+      "supporting_evidence": [
+        "SBI-ANTHROPIC-001"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The announcement describes broad financial use cases and security work, not a live XRP prediction system or Barrot integration."
+      ],
+      "status": "testable_institutional_ai_hypothesis"
     }
   ],
   "data_quality": [
@@ -636,7 +665,8 @@
     "Open Standard and BlackRock/JPYSC arrangements are PoC/MOU stages, not production settlement flows.",
     "TradRadar and Kodexius derivatives totals differ materially due to coverage/methodology and non-synchronized timestamps.",
     "The SEC filing reports approximately $214.1M cash raised but approximately $214.0M cash used to acquire XRP; approximately $0.1M is separately described as restricted cash. The purchase average uses $214.0M / 84,365,876 XRP = approximately $2.53657; the $214.1M funding figure is not used as the purchase numerator.",
-    "The 5,218,935-share Cantor ELOC is a maximum registered potential issuance, approximately 20.0% of the 26,094,680 Class A shares outstanding as of October 22; it is not actual dilution and must not be treated as XRP token supply."
+    "The 5,218,935-share Cantor ELOC is a maximum registered potential issuance, approximately 20.0% of the 26,094,680 Class A shares outstanding as of October 22; it is not actual dilution and must not be treated as XRP token supply.",
+    "SBI's Claude/Anthropic enterprise deployment is evidence of an institutional AI relationship, not evidence that Barrot is connected to Claude or that the SBI pilot is an XRP prediction engine."
   ],
   "source_registry": [
     {
@@ -757,6 +787,13 @@
       "type": "SoSoValue-derived secondary report",
       "issuer": "ChainCatcher",
       "independence_group": "market_data_republisher"
+    },
+    {
+      "id": "SBI-ANTHROPIC",
+      "url": "https://www.sbigroup.co.jp/news/2026/0602_16373.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings",
+      "independence_group": "sbi_group"
     }
   ],
   "timeline": [
@@ -807,6 +844,10 @@
     {
       "date": "2026-11-02",
       "event": "SBI VC Trade reported JPYSC lending above ¥10B and handled balance above ¥30B; SBI separately announced a planned $100M Erebor investment."
+    },
+    {
+      "date": "2026-06-02",
+      "event": "SBI announced a group-wide Claude/Anthropic AI transformation collaboration, including API use, MCP-enabled agents and experiments connecting Claude to Japanese financial-market information and payment infrastructure."
     }
   ],
   "forecast": {
@@ -831,7 +872,8 @@
     "Determine whether Cross River, PhotonPay and Erebor have named stablecoin/XRP integrations after definitive agreements.",
     "Capture Circle's November 4, 2026 Q3 results and reconcile USDC distribution economics.",
     "Reconcile XRP derivatives OI contract-by-contract and preserve provider-specific totals.",
-    "Continue SBIC/ChatGPT SBIC, ASK Coin and Camilla Stephenson identity/video work."
+    "Continue SBIC/ChatGPT SBIC, ASK Coin and Camilla Stephenson identity/video work.",
+    "Track SBI/Anthropic public milestones and verify whether the financial-market-access pilot becomes an operational service; do not assume access to SBI data or Claude credentials."
   ],
   "safety": {
     "no_private_data": true,
