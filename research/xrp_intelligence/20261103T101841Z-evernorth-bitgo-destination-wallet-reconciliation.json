@@ -1,0 +1,292 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T10:18:41Z",
+  "topic": "Evernorth's 2026-10-22 outbound XRP transfers: destination-wallet activation and multisig cross-check",
+  "evidence_policy": {
+    "primary_issuer_custody": "SEC EDGAR",
+    "ledger_attribution": "XRP Insights public rippled JSON-RPC snapshot",
+    "destination_activation": "Bithomp public account pages",
+    "classify_internal_custody_as_inference_not_issuer_confirmation": true
+  },
+  "source_snapshot": {
+    "publisher": "XRP Insights",
+    "source": "https://xrp-insights.com/xrp-radar/evernorth/data.json",
+    "ledger_index": 108085599,
+    "ledger_hash": "35F3873D704037D514AF236A7F3095CC0B9627E9E1BA8F8F4BDFA41F8958B840",
+    "ledger_close_time_utc": "2026-11-03T09:14:31Z",
+    "history_complete_as_reported": true,
+    "current_attributed_balance_xrp": 103129904.54985002,
+    "reported_external_outflow_xrp": 370346663.22975004,
+    "external_payment_count": 19,
+    "limitation": "XRP Insights is a secondary attribution layer. Its source/destination wallet labels are publisher classifications; transaction hashes and balances are public ledger observations, but the full history was not independently replayed in this run."
+  },
+  "destination_reconciliation": {
+    "class": "DERIVED_RECONCILIATION",
+    "external_payments_sum_xrp": 370346663.22975,
+    "sum_matches_publisher_external_outflow": true,
+    "destinations": [
+      {
+        "address": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+        "payments_xrp": [
+          44033470.43,
+          30476204.955276,
+          9856202.18
+        ],
+        "total_received_xrp": 84365877.565276,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-20T01:11:22Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 96200000,
+        "bithomp_source": "https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf",
+        "payments_xrp": [
+          7208894.61,
+          45620880.6
+        ],
+        "total_received_xrp": 52829775.21,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-20T02:02:01Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 52800000,
+        "bithomp_source": "https://bithomp.com/account/rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+        "payments_xrp": [
+          46280907.416866,
+          6548867.8
+        ],
+        "total_received_xrp": 52829775.216866,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-20T02:02:42Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 52800000,
+        "bithomp_source": "https://bithomp.com/account/rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW",
+        "payments_xrp": [
+          45995776.04,
+          6833999.17
+        ],
+        "total_received_xrp": 52829775.21,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-20T02:03:31Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 52800000,
+        "bithomp_source": "https://bithomp.com/account/rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW",
+        "payments_xrp": [
+          42263820.41
+        ],
+        "total_received_xrp": 42263820.41,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-20T02:05:10Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 42263821.61,
+        "bithomp_source": "https://bithomp.com/account/rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh",
+        "payments_xrp": [
+          42263820.41
+        ],
+        "total_received_xrp": 42263820.41,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-20T02:05:41Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 42263821.61,
+        "bithomp_source": "https://bithomp.com/account/rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw",
+        "payments_xrp": [
+          199999.997608,
+          200000
+        ],
+        "total_received_xrp": 399999.997608,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-12T18:38:52Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 200000,
+        "bithomp_source": "https://bithomp.com/account/rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rHuRnnWDUB4UBy8Sf2XvJDMEC4rFgts1xi",
+        "payments_xrp": [
+          200000
+        ],
+        "total_received_xrp": 200000,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-12T18:38:11Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 200000,
+        "bithomp_source": "https://bithomp.com/account/rHuRnnWDUB4UBy8Sf2XvJDMEC4rFgts1xi",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rLMYD4r2WMsReN42naTzDLc8MAmHAbjyw5",
+        "payments_xrp": [
+          100000
+        ],
+        "total_received_xrp": 100000,
+        "activation_wallet": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+        "activation_label": "BitGo",
+        "activated_at_utc": "2026-10-12T18:01:12Z",
+        "control": "multisig",
+        "username": "none",
+        "bithomp_balance_approx_xrp": 100000,
+        "bithomp_source": "https://bithomp.com/account/rLMYD4r2WMsReN42naTzDLc8MAmHAbjyw5",
+        "class": "BITGO_ACTIVATED_MULTISIG_SUPPORTED"
+      },
+      {
+        "address": "rPjKkBTutrvvoboPUuaxSaeXNki5XvjDei",
+        "payments_xrp": [
+          299993.21,
+          41963819,
+          5,
+          2
+        ],
+        "total_received_xrp": 42263819.21,
+        "activation_wallet": "unknown; Bithomp account page retrieval failed",
+        "activation_label": "unknown",
+        "activated_at_utc": null,
+        "control": "unknown",
+        "username": "not established",
+        "bithomp_balance_approx_xrp": 42263820.41,
+        "bithomp_source": "https://bithomp.com/distribution",
+        "class": "UNATTRIBUTED_DESTINATION"
+      }
+    ],
+    "bitgo_activated_destinations_received_xrp": 328082844.01975,
+    "bitgo_activated_share_of_external_outflow_pct": 88.58803834185458,
+    "unresolved_destination_received_xrp": 42263819.21,
+    "unresolved_destination_share_pct": 11.41196165814542,
+    "method": "Sum all 19 source transactions by destination. For nine destinations, Bithomp public account pages show activation by the same BitGo-labelled wallet rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix and multisig account control. The remaining destination rPjK has a matching ~42.26382M balance in Bithomp's rich list, but its account page could not be retrieved; no BitGo activation claim is made for it."
+  },
+  "custody_interpretation": {
+    "class": "STRONG_INFERENCE_NOT_ISSUER_CONFIRMED",
+    "finding": "At least 328.083M XRP, or 88.59% of the 370.347M gross outbound transfers reported by XRP Insights, was sent to nine destination accounts that Bithomp says were activated by a BitGo-labelled wallet and have multisig control. Six large destinations were activated within a 4m20s window on October 20; three smaller destinations were activated on October 12. This pattern strongly supports BitGo-created custody/multisig redistribution rather than ordinary exchange deposits or demonstrated sale.",
+    "primary_context": "Evernorth's SEC prospectus says all XRP was initially held in BitGo custody accounts, 100% offline/cold as of prospectus date, and segregated for Evernorth's benefit.",
+    "not_established": [
+      "BitGo's legal beneficial ownership or ongoing signer control of each destination",
+      "That every destination is still within BitGo custody today",
+      "The identity/control of the remaining rPjK destination",
+      "Whether any funds were subsequently deployed, pledged or lent under an expressly directed yield strategy",
+      "Whether any destination later transferred XRP to an exchange or counterparty"
+    ],
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+      "https://bithomp.com/account/rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf",
+      "https://bithomp.com/account/rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+      "https://bithomp.com/account/rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW",
+      "https://bithomp.com/account/rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW",
+      "https://bithomp.com/account/rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh",
+      "https://bithomp.com/account/rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw",
+      "https://bithomp.com/account/rHuRnnWDUB4UBy8Sf2XvJDMEC4rFgts1xi",
+      "https://bithomp.com/account/rLMYD4r2WMsReN42naTzDLc8MAmHAbjyw5"
+    ]
+  },
+  "accounting_warning": {
+    "closing_xrp_approx": 473276430,
+    "attributed_current_balance_xrp": 103129904.54985002,
+    "gross_external_outflow_xrp": 370346663.22975004,
+    "current_plus_gross_outflow_xrp": 473476567.7796001,
+    "excess_over_closing_xrp": 200137.77960008383,
+    "explanation": "The gross outbound amount is the sum of 19 payments, not a unique net-disposition figure. Some destinations are BitGo-activated multisig wallets, so subsequent custody transfers can be intermediate hops. The 200,138 XRP excess remains unresolved and must not be forced into the 200,000 delayed-funding tranche.",
+    "required_reconciliation": "Trace all destination histories through a later validated ledger; deduplicate intermediate transfers, classify returned flows, and reconcile each wallet's balance changes to the SEC closing holdings."
+  },
+  "hypotheses": [
+    {
+      "id": "H-BITGO-CUSTODY-RESHUFFLE",
+      "hypothesis": "The majority of Evernorth's reported external outflows were internal BitGo custody/multisig redistribution.",
+      "support": [
+        "Nine destination accounts receiving 328.083M XRP were activated by the same BitGo-labelled wallet",
+        "Those nine accounts show multisig control and no usernames",
+        "SEC prospectus identifies BitGo as custodian and states 100% cold storage",
+        "Six large destinations were activated within a 4m20s window on Oct20"
+      ],
+      "counterevidence": [
+        "Bithomp activation by BitGo does not independently prove legal custody or current signer control",
+        "Destination transaction histories were not fully replayed",
+        "11.41% of gross outflow goes to an address whose activation could not be verified"
+      ],
+      "test": "Obtain destination account transaction histories and signer lists at pinned ledgers; compare to BitGo custody disclosure and subsequent Evernorth filings."
+    },
+    {
+      "id": "H-PARTNER-EXECUTION",
+      "hypothesis": "Some XRP may have moved to an execution or yield strategy partner as part of Q4 deployment.",
+      "support": [
+        "Evernorth announced Q4 deployment with Ripple, Kraken, Coinbase and BitGo",
+        "Large outbound transfers occurred in October"
+      ],
+      "counterevidence": [
+        "At least 88.59% of gross outflows target BitGo-activated multisig accounts",
+        "No destination is attributed to Coinbase, Kraken or Ripple in the current evidence"
+      ],
+      "test": "Require partner-specific public disclosure or a verified destination/transaction attribution before assigning an execution edge."
+    },
+    {
+      "id": "H-SALE",
+      "hypothesis": "The outflows represent XRP sales or exchange deposits.",
+      "support": [
+        "Transfers left the original 13-wallet attributed set"
+      ],
+      "counterevidence": [
+        "Nine destinations are BitGo-activated multisig accounts",
+        "No exchange deposit address has been identified",
+        "SEC custody disclosure and multisig pattern support custody movement"
+      ],
+      "test": "Do not accept without exchange/dealer attribution, subsequent fiat/stablecoin consideration or issuer disclosure."
+    }
+  ],
+  "feature_store_rules": [
+    "Track source wallet, destination wallet, transaction hash, amount, ledger index, timestamp, BitGo activation wallet, activation timestamp and multisig status separately.",
+    "A destination outside the issuer-attributed wallet set is not automatically an external custodian, exchange, counterparty or sale.",
+    "Classify BitGo-activated multisig destinations as strong custody inference, not issuer-confirmed custody.",
+    "Keep gross transfer volume separate from unique net outflow and ending balance.",
+    "Deduplicate intermediate hops before computing treasury disposition or sale metrics.",
+    "Preserve the 11.41% unresolved destination as unknown until direct public-ledger replay or issuer evidence resolves it.",
+    "Do not infer deployment to Coinbase/Kraken/Ripple from the mere fact of a transfer."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "The evidence changes the custody interpretation but does not establish a directional price edge."
+  },
+  "next_actions": [
+    "Replay all nine BitGo-activated destinations and the unresolved rPjK address at the latest validated ledger.",
+    "Verify signer lists and subsequent outgoing transactions for each destination.",
+    "Trace whether any destination later sends XRP to Coinbase, Kraken, Ripple, exchanges, AMMs, vaults or loan brokers.",
+    "Reconcile the 200,138 XRP gross-flow excess and distinguish intermediate custody hops from unique final disposition.",
+    "Update Evernorth custody graph only to STRONG_INFERENCE until issuer confirmation is available."
+  ],
+  "safety": "Public SEC filings, public XRPL transaction data and public account explorer metadata only. No private custody access, credential use, exchange access, trading or real-money activity."
+}
