@@ -209,7 +209,7 @@ def test_snapshot_uses_only_latest_eligible_revision_for_a_feature():
         value=1.28,
         known_at_utc="2026-11-03T16:00:00Z",
         source_data_as_of_utc="2026-11-03T16:00:00Z",
-        ingested_at_utc="2026-11-03T16:00:01Z",
+        ingested_at_utc="2026-11-03T16:00:00Z",
         revision_available_at_utc="2026-11-03T16:00:00Z",
         revision_status="revised",
         supersedes_record_id="v1",
