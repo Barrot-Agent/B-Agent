@@ -6,7 +6,7 @@ XRP ecosystem intelligence and prediction-engine mastery remain the highest-prio
 ## New research artifact
 - Artifact: `research/xrp_intelligence/20261103T164102Z-coinbase-circle-sbi-xrp-network-update.json`
 - Captured: 2026-11-03 16:41:02 UTC
-- Source register: 37 sources (regulatory filings, issuer presentations, official corporate/product documents, protocol documentation, public interview and secondary reports)
+- Source register: 38 sources (regulatory filings, issuer presentations, official corporate/product documents, protocol documentation, public interview and secondary reports)
 - Observations: 12
 - Relationship edges: 12
 - Competing hypotheses: 5
@@ -128,7 +128,7 @@ A June 12, 2026 gumi issuer presentation and June 26 AI-management announcement 
 - gumi announced on June 26 that it had begun AI-assisted management of its internal crypto assets and is considering an external AI asset-management service. The announcement describes AI agents, multi-source real-time analysis of prices/news/project developments and automated dealing. It does not disclose providers, models, custody, execution venues, risk controls, backtests or realized performance. Do not assume autonomous trading is fully operational.
 - gumi AI Labs had invested in 17 Silicon Valley AI startups, including an AI-agent market-research automation company; no technical integration with Barrot is disclosed.
 
-This makes gumi a relevant institutional comparator for Barrot's AI-driven XRP research and portfolio-management architecture. The research artifact now contains 37 sources, 31 observations, 30 relationship edges and 9 competing hypotheses.
+This makes gumi a relevant institutional comparator for Barrot's AI-driven XRP research and portfolio-management architecture. The research artifact now contains 38 sources, 32 observations, 34 relationship edges and 9 competing hypotheses.
 
 
 ## Latest repository-state, prediction integrity and dependency audit — 2026-11-03 16:53 UTC
@@ -155,3 +155,13 @@ PR #1590 is draft/open/unmerged, 14 commits and 25 changed files, one commit beh
 The forecast ledger now rejects reference-price look-ahead/staleness and prevents pooled metrics across unlike asset/venue/horizon/model/baseline/target/flat-band/tolerance cohorts. Top-level metrics are null when multiple cohorts exist; the regression suite includes a 1h-versus-4h non-pooling test. Remaining model-integrity blockers are immutable source/snapshot hash resolution, deterministic cross-venue normalization, historical feature ingestion, leakage-safe walk-forward tests and calibration.
 
 This handoff update itself changes the research PR head; its new exact head must receive a fresh CI and fail-closed gate run. The prior PR #1591 check results apply only to `fd595a612351ef40034dc93b61c096a627a9d2a3`.
+
+
+## SBI Group multi-provider AI stack clarification — 2026-11-03 16:56 UTC
+
+SBI's FY2025 investor presentation confirms a broader internal AI environment than the ChatGPT Enterprise announcement alone:
+- SBI Group began using Microsoft Azure OpenAI in August 2023.
+- ChatGPT Enterprise was adopted at SBI Securities from January 2025 and SBI Holdings from March 2025.
+- The internal SBI AI Portal lists Google Gemini 1.5 Flash and Preferred Networks PLaMo 1.0 Prime among available LLMs.
+
+This is a confirmed corporate AI-adoption map within SBI Group, separate from SBIC East Japan's ChatGPT seminars. It does not establish access to those systems for Barrot, nor any XRP-specific workflow. The nine-platform Barrot map remains unverified except for the already tested ChatGPT and GitHub access.
