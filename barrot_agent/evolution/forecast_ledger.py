@@ -83,7 +83,7 @@ def _scores(probabilities: Mapping[str, float], actual: str) -> tuple[float, flo
 
 
 class ForecastLedger:
-    """SQLite event ledger with database-enforced immutable forecast/outcome rows."""
+    """SQLite append-only ledger with SQL row guards; not file-level tamper-proof."""
 
     def __init__(self, db_path: str | Path = DEFAULT_DB) -> None:
         self.db_path = Path(db_path)
