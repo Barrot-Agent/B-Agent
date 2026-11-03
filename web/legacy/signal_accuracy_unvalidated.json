@@ -1,0 +1,8 @@
+{
+  "checked_count": 1697,
+  "correct_count": 772,
+  "accuracy_pct": 45.5,
+  "status": "UNVALIDATED_VARIABLE_HORIZON",
+  "archive_note": "Preserved historical output from the legacy scorer. It is not a valid out-of-sample performance measure because entries were evaluated at the first run after a 24-hour minimum using a mutable live price, not at a fixed horizon with an immutable point-in-time outcome. The current main-branch web/signal_history.jsonl was 0 bytes at the inspected cutoff, so the 1,697/772 aggregate cannot be independently reproduced from row-level records in the current tree.",
+  "source_file_sha": "0c186b904ec3ae668ac53da42087931ccf483d0e"
+}
