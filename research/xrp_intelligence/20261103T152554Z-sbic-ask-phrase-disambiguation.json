@@ -400,5 +400,83 @@
     "No investment conclusion or price prediction is issued from these phrase-disambiguation findings.",
     "Permission's buyback statements are not independently verified by on-chain transaction analysis in this artifact.",
     "No exhaustive YouTube channel inventory was completed."
+  ],
+  "sources": [
+    {
+      "id": "SRC-SBIC-PROFILE",
+      "publisher": "SBIC East Japan",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "official_company_profile"
+    },
+    {
+      "id": "SRC-SBIC-ABOUT",
+      "publisher": "SBIC East Japan",
+      "url": "https://www.sbic.co.jp/about/",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "official_company_description"
+    },
+    {
+      "id": "SRC-SBIC-ORIGINAL-PAPER",
+      "publisher": "arXiv",
+      "title": "Social Bias Frames: Reasoning about Social and Power Implications of Language",
+      "url": "https://arxiv.org/abs/1911.03891",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "original_academic_paper"
+    },
+    {
+      "id": "SRC-CHATGPT-SBIC-PAPER",
+      "publisher": "Amazon Science / AAAI",
+      "title": "Efficient Toxic Content Detection by Bootstrapping and Distilling Large Language Models",
+      "url": "https://cdn.amazon.science/29/72/2c9b990944c7944f1f3a7c790798/efficient-toxic-content-detection-by-bootstrapping-and-distilling-large-language-models.pdf",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "academic_paper_pdf"
+    },
+    {
+      "id": "SRC-PERMISSION-TOKENOMICS",
+      "publisher": "Permission",
+      "url": "https://docs.permission.ai/ask-token/ask-tokenomics",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "official_tokenomics_documentation",
+      "evidence_class": "issuer_claims"
+    },
+    {
+      "id": "SRC-PERMISSION-CONTRACTS",
+      "publisher": "Permission",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "official_contract_registry_page"
+    },
+    {
+      "id": "SRC-PERMISSION-BASE-LAUNCH",
+      "publisher": "Permission",
+      "title": "ASK Token is Now Live on Base",
+      "url": "https://www.permission.ai/blog?ac38c330_page=2&dc6c17df_page=11",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "publication_date": "2025-01-10",
+      "source_type": "issuer_blog"
+    },
+    {
+      "id": "SRC-COINMARKETCAP",
+      "publisher": "CoinMarketCap",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "third_party_token_listing"
+    },
+    {
+      "id": "SRC-COINGECKO",
+      "publisher": "CoinGecko",
+      "url": "https://www.coingecko.com/en/coins/permission-coin/eth",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "third_party_token_listing"
+    },
+    {
+      "id": "SRC-YOUTUBE-SEARCH",
+      "publisher": "YouTube search endpoint",
+      "url": "https://www.youtube.com/results?search_query=Camilla%20Stephenson",
+      "retrieved_at_utc": "2026-11-03T15:25:54Z",
+      "source_type": "search_attempt",
+      "limitation": "The page was not reliably readable; absence of indexed results is not proof that no channel or videos exist."
+    }
   ]
 }

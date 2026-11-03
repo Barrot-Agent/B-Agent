@@ -29,3 +29,16 @@ Permission's tokenomics page also claims that part of parent subscription revenu
 
 ## Prediction status
 `NOT_ISSUED`. These findings are entity-disambiguation evidence, not XRP price predictors.
+
+
+## Sources consulted
+- [SBIC East Japan official profile](https://www.sbic.co.jp/company/profile/)
+- [SBIC East Japan official description](https://www.sbic.co.jp/about/)
+- [Original Social Bias Frames / SBIC paper](https://arxiv.org/abs/1911.03891)
+- [2024 ChatGPT-on-SBIC paper](https://cdn.amazon.science/29/72/2c9b990944c7944f1f3a7c790798/efficient-toxic-content-detection-by-bootstrapping-and-distilling-large-language-models.pdf)
+- [Permission ASK tokenomics](https://docs.permission.ai/ask-token/ask-tokenomics)
+- [Permission official ASK contracts](https://docs.permission.ai/ask-token/contract-addresses)
+- [Permission ASK-on-Base launch post](https://www.permission.ai/blog?ac38c330_page=2&dc6c17df_page=11)
+- [CoinMarketCap Permission Coin listing](https://coinmarketcap.com/currencies/permission-coin/)
+- [CoinGecko Permission Coin listing](https://www.coingecko.com/en/coins/permission-coin/eth)
+- [Attempted YouTube search for Camilla Stephenson](https://www.youtube.com/results?search_query=Camilla%20Stephenson) — page not reliably readable.
