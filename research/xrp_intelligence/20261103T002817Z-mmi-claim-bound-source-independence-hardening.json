@@ -41,7 +41,7 @@
     ]
   },
   "proposed_fix_in_branch": {
-    "status": "IMPLEMENTED_AWAITING_EXACT_HEAD_CI",
+    "status": "IMPLEMENTED_AND_EXACT_HEAD_VERIFIED",
     "branch": "security/mmi-claim-bound-source-provenance-20261103-run11",
     "base": "security/mmi-corroboration-independent-source-gate-20261103-run11",
     "base_commit": "675b138c6bb5811900f15ea84445dd2cb1c88491",
@@ -87,11 +87,18 @@
   "verification": {
     "parent_pr_1536_exact_head_ci": "PASS: 353 tests + 8 subtests",
     "parent_pr_1536_fail_closed_gate": "PASS",
-    "followup_local_tests": "NOT_EXECUTED_IN_THIS_RUNTIME",
-    "followup_exact_head_ci": "PENDING",
-    "followup_fail_closed_gate": "PENDING",
-    "pull_request": "NOT_CREATED_YET",
-    "merge_status": "NOT_MERGED"
+    "followup_core_ci": "PASS: 362 tests + 8 subtests",
+    "followup_core_ci_run": "41554376153",
+    "followup_fail_closed_gate": "PASS",
+    "followup_fail_closed_run": "41554376136",
+    "followup_exact_head": "a68432399b957f008c4288c3fa0d73e9e6b16240",
+    "followup_pull_request": 1540,
+    "followup_pull_request_url": "https://github.com/Barrot-Agent/B-Agent/pull/1540",
+    "stacked_followup_pull_request": 1537,
+    "stacked_followup_note": "The stacked PR base was a feature branch and did not trigger core CI. The same exact head was verified by consolidated fresh-main PR #1540.",
+    "merge_status": "OPEN_DRAFT_MERGEABLE_UNMERGED",
+    "main_modified": false,
+    "verification_recorded_at_utc": "2026-11-03T00:39:10Z"
   },
   "safety": {
     "main_modified": false,
@@ -104,10 +111,10 @@
     "real_money_transaction": false
   },
   "next_actions": [
-    "Create a draft follow-up PR targeting the parent PR #1536 branch.",
-    "Run exact-head CI and fail-closed verification.",
-    "Inspect all application-level MMI adapter call sites before claiming live ingestion integration.",
-    "Add source lineage/origin IDs to distinguish genuinely independent reporting from syndicated or common-origin material.",
-    "Keep forecast issuance blocked until independent evaluation attestation is implemented and verified."
+    "Add source lineage_id/origin_source_id to collapse syndicated reporting and common-origin datasets.",
+    "Expand and review the publisher alias registry as source coverage grows.",
+    "Locate and verify application-level MMI adapter call sites; live ingestion integration is not yet established.",
+    "Keep forecast issuance blocked until independent fixed-horizon evaluation attestation is implemented.",
+    "Do not merge PR #1540 without user approval."
   ]
 }
