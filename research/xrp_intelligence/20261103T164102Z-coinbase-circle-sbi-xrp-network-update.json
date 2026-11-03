@@ -215,6 +215,36 @@
       "source_type": "official_corporate_notice",
       "reliability": "high",
       "notes": "SBI notice reports a USD 50 million strategic investment in Circle and participation in ARC token presale."
+    },
+    {
+      "id": "S21",
+      "publisher": "Circle",
+      "title": "Circle Strengthens Commitment to Japan with New Investment and Expanded USDC Access",
+      "published_or_period": "2025-03-24",
+      "url": "https://www.circle.com/fr/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Confirms SBI VC Trade full-scale USDC launch on 2025-03-26 and Circle-SBI Japan partnership."
+    },
+    {
+      "id": "S22",
+      "publisher": "Coinbase",
+      "title": "Coinbase International Exchange",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://www.coinbase.com/international-exchange",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "States International Exchange is for non-U.S. institutions in select eligible jurisdictions."
+    },
+    {
+      "id": "S23",
+      "publisher": "Association for Computational Linguistics",
+      "title": "Experimental Setup paper referencing the Social Bias Inference Corpus (SBIC)",
+      "published_or_period": "2025",
+      "url": "https://aclanthology.org/anthology-files/pdf/woah/2025.woah-1.21.pdf",
+      "source_type": "peer_reviewed_research_paper",
+      "reliability": "high",
+      "notes": "Uses SBIC to mean Social Bias Inference Corpus; demonstrates acronym collision, not a link to the Japanese company."
     }
   ],
   "observations": [
@@ -252,7 +282,8 @@
       "statement": "Coinbase Global Exchange documentation lists XRP as an accepted collateral asset for perpetual-futures margin. XRP perpetual futures are USDC-settled.",
       "evidence": [
         "S4",
-        "S5"
+        "S5",
+        "S22"
       ],
       "limitations": [
         "The product is associated with Coinbase International Exchange and eligible jurisdictions; it is not evidence that all Coinbase customers, especially U.S. retail customers, can use XRP as collateral.",
@@ -295,7 +326,8 @@
       "evidence": [
         "S8",
         "S11",
-        "S20"
+        "S20",
+        "S21"
       ],
       "limitations": [
         "A validator-cohort announcement and presale participation do not by themselves establish production payment volume or XRP demand."
@@ -332,7 +364,8 @@
       "statement": "The exact SBIC entity identified by the Japanese company profile is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), established in 1963. Its official 2025 training listing includes ChatGPT and Copilot in a generative-AI/ML course. No OpenAI partnership, SBI Holdings affiliation or XRP relationship is established by those pages.",
       "evidence": [
         "S14",
-        "S15"
+        "S15",
+        "S23"
       ],
       "limitations": [
         "SBIC is an acronym with other meanings, including Social Bias Inference Corpus in NLP research. The phrase 'ChatGPT SBIC' remains ambiguous without the originating context."
@@ -438,7 +471,8 @@
       "xrp_relevance": "direct_product_link",
       "evidence": [
         "S4",
-        "S5"
+        "S5",
+        "S22"
       ],
       "note": "Eligibility is documented; actual XRP collateral balances and utilization are unknown."
     },
@@ -452,7 +486,8 @@
       "evidence": [
         "S8",
         "S11",
-        "S20"
+        "S20",
+        "S21"
       ],
       "note": "SBI has USDC distribution, Arc validator-cohort participation and reported $50m Circle strategic investment."
     },
@@ -615,7 +650,8 @@
     "unresolved_phrase": "The user's exact phrase 'SBIC, ChatGPT SBIC' remains unresolved without its original source/context.",
     "evidence": [
       "S14",
-      "S15"
+      "S15",
+      "S23"
     ]
   },
   "phrase_watch": {
