@@ -11,6 +11,7 @@ from .mmi_v1 import (
     ProvenanceClass,
     SourceRecord,
 )
+from barrot_agent.evolution.source_independence import canonical_publisher_group
 
 
 class MMIExistingSystemsAdapter:
@@ -101,6 +102,15 @@ class MMIExistingSystemsAdapter:
         observed_at: str = "",
         independence_group: str = "",
     ) -> SourceRecord:
+        resolved_group = canonical_publisher_group(uri)
+        if not resolved_group:
+            raise ValueError("source URI must resolve to an HTTP(S) publisher identity")
+        if (
+            independence_group
+            and independence_group.strip().casefold() != resolved_group.casefold()
+        ):
+            raise ValueError("independence_group must match the URI-derived publisher identity")
+
         content_hash = ""
         if content:
             content_hash = (
@@ -115,7 +125,7 @@ class MMIExistingSystemsAdapter:
             depth=depth,
             content_hash=content_hash,
             observed_at=observed_at,
-            independence_group=independence_group,
+            independence_group=resolved_group,
         )
 
     @staticmethod
@@ -128,6 +138,7 @@ class MMIExistingSystemsAdapter:
         independent: bool = False,
         content: str = "",
         observed_at: str = "",
+        claim_id: str = "",
     ) -> EvidenceRecord:
         content_hash = ""
         if content:
@@ -144,6 +155,7 @@ class MMIExistingSystemsAdapter:
             independent=independent,
             content_hash=content_hash,
             observed_at=observed_at,
+            claim_id=claim_id,
         )
 
     def create_record(
