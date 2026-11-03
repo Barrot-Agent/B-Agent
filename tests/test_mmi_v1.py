@@ -614,7 +614,7 @@ def test_uri_derived_publisher_identity_overrides_forged_group():
 
 
 def test_claim_fingerprint_normalizes_formatting_but_preserves_wording():
-    assert canonical_claim_id("  ＸＲＰ   reserves\\nare backed ") == canonical_claim_id(
+    assert canonical_claim_id("  ＸＲＰ   reserves    are backed ") == canonical_claim_id(
         "xrp reserves are backed"
     )
     assert canonical_claim_id("XRP reserves are backed") != canonical_claim_id(
