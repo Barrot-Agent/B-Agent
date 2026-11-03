@@ -1,0 +1,105 @@
+{
+  "schema_version": "barrot.operations-audit.v1",
+  "captured_at_utc": "2026-11-03T10:59:20Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "9283d6741754ced75da3ce8e6199db246c0c7fa9",
+  "base_tree_sha": "ee95d21219882b9a4f5259093d976c02a25a8500",
+  "topic": "Fresh-main containment of public brain-corpus export and autonomous repository writers",
+  "evidence_class": "DIRECT_GITHUB_REPOSITORY_OBSERVATION",
+  "observations": [
+    {
+      "id": "MAIN-9283",
+      "classification": "VERIFIED",
+      "claim": "The observed main ref resolved to 9283d6741754ced75da3ce8e6199db246c0c7fa9. That commit is a Cross-analysis refresh modifying only ping-pongings/knowledge-base/sentiment_shift.json and has parent c10df2896572a7df7daebfa4f43899f76c31b100.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/commit/9283d6741754ced75da3ce8e6199db246c0c7fa9"
+    },
+    {
+      "id": "BRAIN-EXPORT-01",
+      "classification": "VERIFIED",
+      "claim": "Main dump-brain-corpus.yml is manually dispatchable, grants contents:write, injects DATABRICKS_TOKEN into scripts/dump_brain_corpus.py, stages brain_corpus/, commits and pushes the corpus to public main.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/dump-brain-corpus.yml",
+      "blob_sha": "3427669a1aa8115ad4c786b67b561ebcbaa08c4d"
+    },
+    {
+      "id": "BRAIN-EXPORT-02",
+      "classification": "VERIFIED",
+      "claim": "The exporter queries workspace.barrot.brain for timestamp, topic, insight and session, then writes brain_corpus/dump.json and dump.md. No Databricks secret value was accessed and no query was run during this audit.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/dump_brain_corpus.py",
+      "blob_sha": "8b68f919b076f94c857f45c72bc065ac90f2b618"
+    },
+    {
+      "id": "BRAIN-TREE-01",
+      "classification": "VERIFIED",
+      "claim": "The current public brain_corpus directory contains dump.json (353950 bytes), dump.md (296527 bytes), 12 polymath_*.json files and topics.txt (25154 bytes). The 13 non-dump files remain unclassified; their contents were not inspected and are not removed by this proposal.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/tree/main/brain_corpus"
+    },
+    {
+      "id": "MERGE-QUEUE-01",
+      "classification": "VERIFIED",
+      "claim": "Main merge-queue.yml is manually dispatchable with mode=all, max_prs=0 meaning unlimited, dry_run=false by default, contents:write and pull-requests:write, and code that can invoke gh pr merge.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1"
+    },
+    {
+      "id": "SCHEDULER-01",
+      "classification": "VERIFIED",
+      "claim": "Main scheduler-tick.yml runs every 15 minutes with contents:write and actions:write, executes scripts/scheduler.py tick and commits queue updates to main.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/scheduler-tick.yml",
+      "blob_sha": "ec7a42d6b58a5067f15a9ae9ef54ede9b80580d1"
+    },
+    {
+      "id": "SCHEDULER-02",
+      "classification": "VERIFIED",
+      "claim": "Main scripts/scheduler.py accepts any existing workflow filename rather than an explicit allowlist; a queue entry can therefore target any workflow present in .github/workflows.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/scheduler.py",
+      "blob_sha": "84878a6a1ec32064ec3f11995134c91c4fdc4199"
+    },
+    {
+      "id": "CROSS-ANALYSIS-01",
+      "classification": "VERIFIED",
+      "claim": "Main cross-analysis.yml grants contents:write and commits/pushes generated entity co-occurrence and sentiment artifacts. The current main head itself is a Cross-analysis refresh commit.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/cross-analysis.yml",
+      "blob_sha": "143bb2ed89ef4e2d85071a583896adad2c37c81b"
+    },
+    {
+      "id": "TASK-ALLOCATOR-01",
+      "classification": "VERIFIED",
+      "claim": "Main task-allocator.yml references Groq, OpenAI and ChatGPT tokens and has contents:write and pull-requests:write permissions. A verified nine-platform adapter/permission map is not established.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/task-allocator.yml",
+      "blob_sha": "f057a74242ceb01a0f223767db327b97793a8e52"
+    },
+    {
+      "id": "KAGGLE-01",
+      "classification": "VERIFIED",
+      "claim": "Main Kaggle workflow runs on a daily schedule and references kaggle_competitions_automation.py at repository root, which returns 404; the implementation exists under scripts/. No submission was made by this audit.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/kaggle-competitions.yml",
+      "blob_sha": "5fed12c7ab40678f0b35aed22190091868868b59"
+    },
+    {
+      "id": "SUBSCRIBER-01",
+      "classification": "VERIFIED",
+      "claim": "Main subscriber_sync.yml reads Gumroad sale email fields, hashes them with unsalted SHA-256, and commits the resulting list to public web/subscribers.json. The current public file is exactly {\"emails\": [], \"count\": 0}; no subscriber identifiers are present in the current file. The workflow remains a separate privacy risk.",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/subscriber_sync.yml",
+      "blob_sha": "584fd4e8c064fa49316b0968f0f9158119969b38"
+    }
+  ],
+  "proposed_changes": [
+    "Disable public brain-corpus export with empty workflow permissions and an inert job.",
+    "Remove only brain_corpus/dump.json and brain_corpus/dump.md from the proposed current tree; retain the other 13 directory entries pending classification.",
+    "Disable broad merge queue and its branch/merge mutation path.",
+    "Disable the 15-minute Scheduler Tick pending a durable non-main state store and per-action authorization.",
+    "Make Cross Analysis read-only and retain outputs as bounded workflow artifacts.",
+    "Disable unverified multi-provider task allocator and scheduled Kaggle submission workflow.",
+    "Restrict scheduler.py to a fixed allowlist of input-free read-only validation workflows.",
+    "Add focused regression tests and parse all six changed workflows as YAML in CI."
+  ],
+  "limitations": [
+    "No local worktree was available through the GitHub connector; dirty local files and local branches were not inspected.",
+    "No Databricks, Gumroad, Hugging Face, Kaggle or model-provider credentials were read or used.",
+    "The 13 non-dump brain_corpus entries were not inspected or classified.",
+    "Removing files from the current tree does not erase historical Git objects, forks, caches or external copies.",
+    "This proposal does not contain subscriber_sync.yml, Daily Digest, Auto-Resolve or other PR #1573 paths; those remain separately active on main.",
+    "No merge, force-push, privileged workflow dispatch, deployment, paper trade or real-money action occurred."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}
