@@ -894,34 +894,6 @@
       "publisher": "SBI VC Trade",
       "type": "official_product_status_page",
       "date": null,
-      "retrieval_window_utc": {
-        "start": "2026-11-03T02:12:06Z",
-        "end": "2026-11-03T02:16:58Z"
-      },
-      "url": "https://home.sbivc.co.jp/jpysc",
-      "independence_group": "sbi-vc-trade"
-    },
-    {
-      "id": "SBI-JPYSC-CURRENT-TRANSFER-STATUS-20261102",
-      "publisher": "SBI VC Trade",
-      "type": "official_product_status_page",
-      "date": null,
-      "url": "https://home.sbivc.co.jp/jpysc",
-      "independence_group": "sbi-vc-trade"
-    },
-    {
-      "id": "SBI-JPYSC-LENDING-20261102",
-      "publisher": "SBI VC Trade / SBI Holdings",
-      "type": "official_company_release",
-      "date": "2026-11-02",
-      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
-      "independence_group": "sbi-group"
-    },
-    {
-      "id": "SBI-JPYSC-CURRENT-TRANSFER-STATUS-20261102",
-      "publisher": "SBI VC Trade",
-      "type": "official_product_status_page",
-      "date": null,
       "url": "https://home.sbivc.co.jp/jpysc",
       "independence_group": "sbi-vc-trade"
     },
@@ -932,6 +904,32 @@
       "date": "2026-10-16",
       "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
       "independence_group": "sbi-startale"
+    },
+    {
+      "id": "COINBASE-RLUSD-LAUNCH-20261028",
+      "publisher": "Coinbase",
+      "type": "official_company_blog",
+      "date": "2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "independence_group": "coinbase"
+    },
+    {
+      "id": "COINBASE-10Q-20260930",
+      "publisher": "Coinbase Global",
+      "type": "SEC_form_10-Q",
+      "date": "2026-09-30",
+      "date_semantics": "reporting period end; filing date not asserted",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "independence_group": "sec-coinbase-filing"
+    },
+    {
+      "id": "CIRCLE-10Q-20260630",
+      "publisher": "Circle Internet Group",
+      "type": "SEC_form_10-Q",
+      "date": "2026-08-05",
+      "date_semantics": "SEC EDGAR directory timestamp for filing accession",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "independence_group": "sec-circle-filing"
     }
   ],
   "data_quality": [
