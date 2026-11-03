@@ -1,0 +1,295 @@
+{
+  "schema_version": "barrot.permission_ask_onchain_sample.v1",
+  "captured_at_utc": "2026-11-03T15:29:30Z",
+  "forecast_status": "NOT_ISSUED",
+  "subject": "Permission Coin (ASK) on-chain sample, Base and Polygon",
+  "question": "Does the issuer's stated subscription-revenue buyback mechanism have identifiable public on-chain evidence?",
+  "issuer_claim": {
+    "source": "https://docs.permission.ai/ask-token/ask-tokenomics",
+    "statement": "Permission says a portion of parent subscription revenue is used to buy ASK on the open market and the acquired ASK funds ecosystem rewards.",
+    "evidence_class": "ISSUER_CLAIM",
+    "independent_verification": "NOT_ESTABLISHED"
+  },
+  "official_contracts": {
+    "base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+    "polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+    "standard": "LayerZero OFT-20",
+    "stargate_support": "Issuer documentation states live."
+  },
+  "transaction_observations": [
+    {
+      "id": "T01",
+      "chain": "Base",
+      "tx_hash": "0xf3be1dadf33c8f4f500c85297be9dfb6bd75b62f8fe7b85ebc3ea155bc5c6de2",
+      "observed_at_utc": "2026-05-12T06:37:27Z",
+      "from": "0xF5c299316699131d29Adcb7eF87AF8E97bbC7eAD",
+      "to": "0x0000000000000000000000000000000000000000",
+      "token_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "amount_ask": 916922.574548,
+      "additional_observation": "BaseScan search result also shows an internal 0.000037479691370671 ETH transfer from the ASK token contract to LayerZero EndpointV2.",
+      "classification": "BURN_OR_OFT_RELATED_MOVEMENT_NOT_BUYBACK_EVIDENCE",
+      "limitations": [
+        "BaseScan transaction page returned 403 on direct open; observation comes from indexed transaction details.",
+        "No source-wallet identity or economic purpose was established."
+      ]
+    },
+    {
+      "id": "T02",
+      "chain": "Base",
+      "tx_hash": "0xf5873d3310d0ff5ce786a96a995a251b0da09257c0f490e92337292622b08cec",
+      "observed_at_utc": null,
+      "from": "0x350254DA53d5C6AB6A27a446582fA60fe120930c",
+      "to": "0x0000000000000000000000000000000000000000",
+      "token_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "amount_ask": 551026.043904,
+      "additional_observation": "Indexed BaseScan result shows an internal 0.000037479691370671 ETH transfer from the ASK token contract to LayerZero EndpointV2.",
+      "classification": "BURN_OR_OFT_RELATED_MOVEMENT_NOT_BUYBACK_EVIDENCE",
+      "limitations": [
+        "Exact transaction timestamp was not exposed in the retrieved search result.",
+        "Direct BaseScan page open returned 403."
+      ]
+    },
+    {
+      "id": "T03",
+      "chain": "Base",
+      "tx_hash": "0x09b6a61c42a6aa73b2027d28fe528421864190143df8a9b88534a21cd50c844c",
+      "observed_at_utc": null,
+      "from": "0x350254DA53d5C6AB6A27a446582fA60fe120930c",
+      "event": "OFTSent",
+      "token_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "amount_sent_ask": 551003.115694,
+      "amount_received_ask": 551003.115694,
+      "destination_endpoint_id": 30109,
+      "classification": "LAYERZERO_OFT_CROSSCHAIN_SEND",
+      "limitations": [
+        "Timestamp and destination chain label were not exposed in the retrieved indexed result.",
+        "This is a separate transaction hash from T02; similar sender/amount is not sufficient to assert they are the same bridge event."
+      ]
+    },
+    {
+      "id": "T04",
+      "chain": "Polygon",
+      "tx_hash": "0x5f5aa96741d07483e6d091d35c8f5722454534aabec57d691429852bd42262d5",
+      "observed_at_utc": "2025-04-25T14:50:14Z",
+      "from": "0x94A62fD9C228a2637fe5553Cc0b8FFfBa41AbCB7",
+      "to": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+      "approved_spender": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "action": "Approve unlimited ASK allowance for the Base ASK contract",
+      "classification": "BRIDGE_OR_ROUTER_ALLOWANCE_NOT_BUYBACK_EVIDENCE",
+      "limitations": [
+        "The approval alone does not prove a later transfer or purchase."
+      ]
+    },
+    {
+      "id": "T05",
+      "chain": "Polygon",
+      "tx_hash": "0x35b0cfa20614adfe5f48c0548d3fa4bb79f88b74f5df1716b632034e56d122dd",
+      "observed_at_utc": null,
+      "from": "0x350254DA53d5C6AB6A27a446582fA60fe120930c",
+      "to": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "token_contract": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+      "amount_ask": 550873.235508,
+      "classification": "CROSSCHAIN_OR_ROUTER_TRANSFER_CANDIDATE",
+      "limitations": [
+        "Timestamp not exposed in indexed result.",
+        "Recipient is the official Base token address; this alone does not identify a buyback or the destination chain action."
+      ]
+    },
+    {
+      "id": "T06",
+      "chain": "Base",
+      "tx_hash": "0x851c53e5e3573fcf3c1625916f035a57f563e5be089666a7ed68ac0648fec976",
+      "observed_at_utc": null,
+      "observed_events": [
+        {
+          "token": "ASK",
+          "from": "0x306B7e51db2026C0aec193371dFfC1DeC03366dd",
+          "to": "0xB502eDEaeFed85BA345B7E6CF8bBcE491AAb4f80",
+          "amount": 368629.22180850967
+        },
+        {
+          "token": "USDC",
+          "from": "0x306B7e51db2026C0aec193371dFfC1DeC03366dd",
+          "to": "0xC3b0fbbDB449762888f865B4f49Cf11c1e1ad9C0",
+          "amount": null
+        }
+      ],
+      "classification": "UNRESOLVED_MULTI_TOKEN_TRANSACTION",
+      "limitations": [
+        "USDC amount and full transaction context were not available in the indexed snippet.",
+        "Could be a swap, pool interaction or another multi-token operation; it is not classified as a Permission buyback."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "status": "ISSUER_CLAIM",
+      "detail": "Permission's tokenomics page says subscription revenue is used in part to buy ASK from the open market; no buyback wallet or reconciliation is identified on that page.",
+      "sources": [
+        "SRC-PERMISSION-TOKENOMICS"
+      ]
+    },
+    {
+      "id": "C02",
+      "status": "ONCHAIN_OBSERVATION",
+      "detail": "A BaseScan-indexed transaction on 2026-05-12 shows 916,922.574548 ASK transferred from 0xF5c299... to the zero address, with an internal ETH transfer to LayerZero EndpointV2.",
+      "sources": [
+        "SRC-BASESCAN-T01"
+      ]
+    },
+    {
+      "id": "C03",
+      "status": "ONCHAIN_OBSERVATION",
+      "detail": "A separate BaseScan-indexed transaction shows 551,026.043904 ASK from 0x350254... transferred to the zero address, with a LayerZero EndpointV2 fee transfer.",
+      "sources": [
+        "SRC-BASESCAN-T02"
+      ]
+    },
+    {
+      "id": "C04",
+      "status": "ONCHAIN_OBSERVATION",
+      "detail": "A BaseScan-indexed OFTSent event shows 551,003.115694 ASK sent from 0x350254... with destination endpoint ID 30109; it is a separate hash from the similar-sized burn and is not assumed to be the same transfer.",
+      "sources": [
+        "SRC-BASESCAN-T03"
+      ]
+    },
+    {
+      "id": "C05",
+      "status": "ONCHAIN_OBSERVATION",
+      "detail": "A PolygonScan transaction shows an unlimited ASK allowance from 0x94A62... to the official Base ASK contract on 2025-04-25; an approval is not proof of a purchase.",
+      "sources": [
+        "SRC-POLYGONSCAN-T04"
+      ]
+    },
+    {
+      "id": "C06",
+      "status": "UNRESOLVED_ONCHAIN_OBSERVATION",
+      "detail": "A BaseScan-indexed transaction includes both ASK and USDC transfer events, but the full context and USDC amount were not available; no buyback classification is made.",
+      "sources": [
+        "SRC-BASESCAN-T06"
+      ]
+    },
+    {
+      "id": "C07",
+      "status": "DERIVED_LIMITED_CONCLUSION",
+      "detail": "The sampled burns and OFTSent/allowance events are consistent with LayerZero OFT cross-chain mechanics; they do not establish subscription-funded ASK buybacks or actual net capital inflows.",
+      "sources": [
+        "SRC-BASESCAN-T01",
+        "SRC-BASESCAN-T02",
+        "SRC-BASESCAN-T03",
+        "SRC-POLYGONSCAN-T04"
+      ]
+    },
+    {
+      "id": "C08",
+      "status": "UNKNOWN",
+      "detail": "No identifiable Permission revenue wallet, buyback wallet, DEX purchase route or on-chain reconciliation between subscription revenue and ASK purchases was established in this sample.",
+      "sources": [
+        "SRC-PERMISSION-TOKENOMICS",
+        "SRC-BASESCAN-T06"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Permission",
+      "relation": "claims_subscription_revenue_buybacks_of",
+      "to": "ASK",
+      "claim_ids": [
+        "C01"
+      ],
+      "strength": "issuer_claim"
+    },
+    {
+      "from": "ASK on Base",
+      "relation": "uses_LayerZero_OFT_mechanics_with",
+      "to": "LayerZero EndpointV2",
+      "claim_ids": [
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "strength": "transaction_observed"
+    },
+    {
+      "from": "ASK on Polygon",
+      "relation": "has_allowance_to",
+      "to": "official ASK Base contract",
+      "claim_ids": [
+        "C05"
+      ],
+      "strength": "transaction_observed"
+    },
+    {
+      "from": "ASK",
+      "relation": "verified_buyback_wallet_or_flow",
+      "to": "UNKNOWN",
+      "claim_ids": [
+        "C07",
+        "C08"
+      ],
+      "strength": "unresolved"
+    }
+  ],
+  "conclusions": [
+    "Observed zero-address transfers and OFTSent events are not evidence of a market buyback; they are consistent with OFT burn/bridge mechanics.",
+    "An allowance or a multi-token transaction does not establish a buyback without full call decoding, wallet attribution and a verified funding path.",
+    "The issuer's subscription-funded buyback claim remains unverified at transaction level.",
+    "No XRP Ledger deployment or Ripple relationship is established by these observations."
+  ],
+  "next_actions": [
+    "Obtain complete Base and Polygon transaction traces for the observed hashes; direct explorer page access was blocked in this pass.",
+    "Identify Permission's publicly disclosed treasury, revenue and buyback wallet addresses, if any.",
+    "Search the full ASK token transfer history for ASK acquisitions from DEX pools followed by transfers to known Permission treasury/rewards wallets; do not label a trade as a buyback without wallet attribution.",
+    "Reconcile any identified ASK buyback against the issuer's reported subscription revenue and reward distribution; distinguish token burns, bridge movements, liquidity operations and market purchases.",
+    "Keep 'actual capital' unresolved until a specific cash-to-token path is evidenced."
+  ],
+  "sources": [
+    {
+      "id": "SRC-PERMISSION-TOKENOMICS",
+      "publisher": "Permission",
+      "url": "https://docs.permission.ai/ask-token/ask-tokenomics",
+      "retrieved_at_utc": "2026-11-03T15:29:30Z",
+      "source_type": "issuer_tokenomics_claim"
+    },
+    {
+      "id": "SRC-BASESCAN-T01",
+      "publisher": "BaseScan",
+      "url": "https://basescan.org/tx/0xf3be1dadf33c8f4f500c85297be9dfb6bd75b62f8fe7b85ebc3ea155bc5c6de2",
+      "retrieved_at_utc": "2026-11-03T15:29:30Z",
+      "source_type": "indexed_transaction_details",
+      "access_note": "Search result readable; direct open returned 403."
+    },
+    {
+      "id": "SRC-BASESCAN-T02",
+      "publisher": "BaseScan",
+      "url": "https://basescan.org/tx/0xf5873d3310d0ff5ce786a96a995a251b0da09257c0f490e92337292622b08cec",
+      "retrieved_at_utc": "2026-11-03T15:29:30Z",
+      "source_type": "indexed_transaction_details",
+      "access_note": "Search result readable; direct open returned 403."
+    },
+    {
+      "id": "SRC-BASESCAN-T03",
+      "publisher": "BaseScan",
+      "url": "https://basescan.org/tx/0x09b6a61c42a6aa73b2027d28fe528421864190143df8a9b88534a21cd50c844c",
+      "retrieved_at_utc": "2026-11-03T15:29:30Z",
+      "source_type": "indexed_event_details"
+    },
+    {
+      "id": "SRC-POLYGONSCAN-T04",
+      "publisher": "PolygonScan",
+      "url": "https://polygonscan.com/tx/0x5f5aa96741d07483e6d091d35c8f5722454534aabec57d691429852bd42262d5",
+      "retrieved_at_utc": "2026-11-03T15:29:30Z",
+      "source_type": "indexed_transaction_details"
+    },
+    {
+      "id": "SRC-BASESCAN-T06",
+      "publisher": "BaseScan",
+      "url": "https://basescan.org/tx/0x851c53e5e3573fcf3c1625916f035a57f563e5be089666a7ed68ac0648fec976",
+      "retrieved_at_utc": "2026-11-03T15:29:30Z",
+      "source_type": "indexed_transaction_event_summary",
+      "access_note": "Search result readable; direct open returned 403."
+    }
+  ]
+}
