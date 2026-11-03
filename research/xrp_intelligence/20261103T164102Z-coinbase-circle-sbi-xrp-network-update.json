@@ -365,6 +365,26 @@
       "source_type": "public_interview_transcript",
       "reliability": "medium_high",
       "notes": "Transcript host calls guest Camilla; guest states YouTube is under Doctor Camilla Stevenson and gives social handles, supporting spelling/identity variants."
+    },
+    {
+      "id": "S36",
+      "publisher": "gumi Inc. (TDnet disclosure; PDF mirrored by Minkabu)",
+      "title": "FY2026 full-year and Q4 results presentation",
+      "published_or_period": "2026-06-12",
+      "url": "https://assets.minkabu.jp/news/article_media_content/urn%3Anewsml%3Atdnet.info%3A20260612569071/140120260612569071.pdf",
+      "source_type": "issuer_investor_presentation",
+      "reliability": "high",
+      "notes": "Issuer presentation: gumi-group crypto assets excluding funds ¥14.133bn at 2026-04-30; group including funds about ¥26bn at 2026-03-31 (fund figures unaudited); XRP-concentration strategy, covered calls and SBI Crypto Fund."
+    },
+    {
+      "id": "S37",
+      "publisher": "gumi Inc.",
+      "title": "gumi begins AI-enabled crypto asset management and considers external AI management services",
+      "published_or_period": "2026-06-26",
+      "url": "https://gu3.co.jp/news/archives/9215/",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Official statement on internal AI-assisted crypto management, AI agents, multi-source real-time market analysis, automated dealing and future external service development."
     }
   ],
   "observations": [
@@ -715,6 +735,54 @@
       "limitations": [
         "Third-party channel-count estimates conflict (633 versus approximately 1.2K videos). The complete public upload inventory has not been enumerated; the current 13-video transcript set remains partial."
       ]
+    },
+    {
+      "id": "O28",
+      "classification": "confirmed_fact",
+      "subject": "gumi crypto treasury size",
+      "statement": "gumi's June 12, 2026 issuer presentation reports group crypto assets excluding funds of ¥14.133 billion at April 30, 2026, up 86.4% year over year. It separately reports about ¥26 billion in crypto assets held/managed including funds as of March 31, 2026; fund figures are unaudited and include token-acquisition SAFE investments but exclude equity investments. The presentation also shows the gumi×SBI SBI Crypto Fund at several billion yen as of March 31.",
+      "evidence": [
+        "S36"
+      ],
+      "limitations": [
+        "The ¥14.133bn and ¥26bn figures have different scopes and dates. Neither is an XRP-only balance. Do not treat the full portfolio as XRP or as directly attributable to gumi shareholders."
+      ]
+    },
+    {
+      "id": "O29",
+      "classification": "confirmed_fact",
+      "subject": "gumi XRP concentration and covered-call strategy",
+      "statement": "gumi's issuer presentation says it intends to move its own crypto holdings in principle toward XRP, continue acquiring XRP while monitoring market prices, and use covered calls and other options strategies to seek more stable income. It frames XRP-focused crypto operations as one half of a hybrid company alongside its entertainment business, with entertainment cash flows potentially reinvested into XRP operations. This is a stated strategy, not proof that the entire ¥14.133bn portfolio had already converted to XRP.",
+      "evidence": [
+        "S36"
+      ],
+      "limitations": [
+        "The presentation does not disclose an exact XRP balance, completed conversion schedule, option notionals, strike/expiry distribution or realized covered-call returns."
+      ]
+    },
+    {
+      "id": "O30",
+      "classification": "confirmed_fact",
+      "subject": "gumi AI-managed crypto operations",
+      "statement": "On June 26, 2026 gumi announced that it had begun using current AI technology in the management of its internally held crypto assets, with a longer-term goal of developing an external AI asset-management service. Its announcement describes AI agents, multi-source real-time analysis of price data, news and project developments, and automation of dealing to reduce decision errors and missed opportunities.",
+      "evidence": [
+        "S37"
+      ],
+      "limitations": [
+        "The announcement does not identify models, providers, datasets, execution venues, risk limits, custody arrangements, live deployment scope, backtest results or verified investment performance. It does not prove autonomous trading is fully operational."
+      ]
+    },
+    {
+      "id": "O31",
+      "classification": "confirmed_fact",
+      "subject": "gumi-SBI Crypto Fund and AI investment network",
+      "statement": "gumi's issuer presentation describes SBI Crypto Fund as a gumi×SBI fund investing in listed crypto assets, with several billion yen of assets as of March 31, 2026 and a possible expansion toward individual-investor products. The same presentation says gumi AI Labs had invested in 17 Silicon Valley AI startups, including an AI-agent market-research automation company.",
+      "evidence": [
+        "S36"
+      ],
+      "limitations": [
+        "The presentation does not disclose the SBI Crypto Fund's XRP allocation or the AI startups' names/technical integration. These are portfolio and strategic signals, not proof of a Barrot connection."
+      ]
     }
   ],
   "relationship_edges": [
@@ -1045,6 +1113,55 @@
         "S35"
       ],
       "note": "Name/spelling variants appear in a public interview; third-party channel ID and count are not exhaustive verification."
+    },
+    {
+      "from": "gumi",
+      "to": "SBI Group",
+      "relation": "strategic_business_synergy_and_SBI_Crypto_Fund",
+      "asset": "listed crypto assets / XRP strategy",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_corporate_strategy_and_capital",
+      "evidence": [
+        "S31",
+        "S36"
+      ],
+      "note": "gumi describes itself as a core company in SBI's neomedia strategy and identifies SBI Crypto Fund as a gumi×SBI vehicle."
+    },
+    {
+      "from": "gumi",
+      "to": "XRP",
+      "relation": "planned_treasury_concentration_and_covered_call_management",
+      "asset": "XRP",
+      "classification": "confirmed_strategy_not_completed_conversion",
+      "xrp_relevance": "direct_treasury_demand_potential",
+      "evidence": [
+        "S36"
+      ],
+      "note": "gumi reports ¥14.133bn total group crypto holdings excluding funds at Apr 30, but does not say all of this is already XRP."
+    },
+    {
+      "from": "gumi",
+      "to": "AI_crypto_management",
+      "relation": "internal_AI_assisted_asset_management",
+      "asset": "AI agents / automated dealing",
+      "classification": "confirmed_announcement_execution_scope_unverified",
+      "xrp_relevance": "direct_competitive_benchmark",
+      "evidence": [
+        "S37"
+      ],
+      "note": "gumi says it began AI-enabled management of its own crypto assets and may commercialize an external service; providers and performance are undisclosed."
+    },
+    {
+      "from": "gumi",
+      "to": "gumi AI Labs",
+      "relation": "venture_investment_in_AI_startups",
+      "asset": "AI research and agent technologies",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect_capability",
+      "evidence": [
+        "S36"
+      ],
+      "note": "17 startup investments, including an AI agent for market-research automation; no disclosed Barrot integration."
     }
   ],
   "competing_hypotheses": [
@@ -1164,6 +1281,23 @@
         "The company reported no revenue and a large pre-close working-capital deficit through June 30, 2026."
       ],
       "status": "plausible_future_capital_channel_not_yet_verified"
+    },
+    {
+      "id": "H9",
+      "name": "gumi is developing a Japan-based AI-managed crypto treasury with an XRP concentration strategy",
+      "thesis": "gumi's AI-assisted crypto management, ¥14.133bn group crypto portfolio excluding funds, planned XRP concentration, covered-call strategy and SBI partnership make it a relevant institutional comparator and possible future source of XRP acquisition demand. It may also become a competitor in AI-managed digital-asset services.",
+      "supporting_evidence": [
+        "O28",
+        "O29",
+        "O30",
+        "O31"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The portfolio is not all XRP; exact XRP holdings and acquisition flows are undisclosed.",
+        "The AI announcement provides no model architecture, performance, risk limits, custody or execution evidence.",
+        "The planned external AI service is not confirmed launched."
+      ],
+      "status": "confirmed_strategy_and_AI_launch_announcement_performance_unverified"
     }
   ],
   "sbic_disambiguation": {
@@ -1245,6 +1379,14 @@
             "S30"
           ],
           "detail": "$214.1m cash was used to buy 84.365876m XRP; 388.910554m XRP was contributed in kind. This is a verified capital-flow distinction, but not a confirmed match to the exact phrase."
+        },
+        {
+          "context": "gumi corporate crypto treasury",
+          "evidence": [
+            "S36",
+            "S37"
+          ],
+          "detail": "gumi's issuer presentation reports ¥14.133bn group crypto assets excluding funds at 2026-04-30 and a plan to shift the portfolio toward XRP. This is actual portfolio value, not proof of an XRP-only balance or a match to the exact phrase."
         }
       ],
       "note": "No unique intended meaning has been established."
