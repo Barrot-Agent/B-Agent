@@ -413,6 +413,7 @@ def test_missing_corroboration_prevents_completion():
 
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
 
+
 def test_zero_independent_sources_cannot_complete_corroboration():
     record = complete_record_with_two_sources()
     record.corroboration_results = [{
@@ -421,7 +422,10 @@ def test_zero_independent_sources_cannot_complete_corroboration():
         "scope": "LOCAL_DETERMINISTIC_FIXTURE",
     }]
 
-    assert any("distinct independence groups" in error for error in record.validate())
+    assert any(
+        "distinct independence groups" in error
+        for error in record.validate()
+    )
     assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
     report = MMICompletenessReport.build(record)
     assert report["protocol_complete"] is False
@@ -544,7 +548,11 @@ def test_corroboration_not_applicable_requires_reason():
     record.stages = [
         StageRecord(
             name,
-            StageOutcome.NOT_APPLICABLE if name == "CORROBORATION" else StageOutcome.COMPLETE,
+            (
+                StageOutcome.NOT_APPLICABLE
+                if name == "CORROBORATION"
+                else StageOutcome.COMPLETE
+            ),
             "",
         )
         for name in MMIStateMachine.ORDER
