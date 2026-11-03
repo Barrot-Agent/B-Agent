@@ -38,15 +38,15 @@
     {
       "id": "EVLOC-FEE-SCOPE-004",
       "classification": "DERIVED_ARITHMETIC",
-      "claim": "Applying the stated 97% factor to 5,218,935 × $14.71 yields $74,467,417.83, not $76.8M. The un-discounted multiplication is $76,768,433.85, which rounds to the displayed $76.8M.",
+      "claim": "Applying the stated 97% factor to 5,218,935 × $14.71 yields $74,467,417.83, not $76.8M. The un-discounted multiplication is $76,770,533.85, which rounds to the displayed $76.8M.",
       "calculation": {
         "shares": 5218935,
         "assumed_price_usd": 14.71,
         "undiscounted_value_usd": 76770533.85000001,
         "vwap_factor": 0.97,
         "discounted_97pct_value_usd": 74467417.8345,
-        "table_display_usd": 76800000,
-        "table_vs_97pct_difference_usd": 2332582.1655
+        "table_display_usd_rounded": 76800000,
+        "undiscounted_vs_discounted_difference_usd": 2303116.015500009
       },
       "source_id": "S1",
       "location": "p. 74, table and footnote (3)"
