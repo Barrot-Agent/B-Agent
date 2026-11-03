@@ -4,11 +4,13 @@
   "captured_on_utc_date": "2026-11-03",
   "capture_time_precision": "date_only_search_results",
   "channel_candidate": {
-    "display_name": "Kamilah Stevenson",
+    "display_name": "Dr. Kamilah Stevenson (spoken variants: Camila Stevenson / Camilla Stevenson)",
     "handle": "@drkamilahstevenson",
     "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
-    "identity_status": "likely_match_not_canonically_confirmed",
-    "basis": "Indexed video pages identify Kamilah Stevenson; available transcript snippets use the spoken spelling Camila Stevenson. This is consistent with the existing interview-based identity hypothesis, but the channel's own canonical upload metadata was not available in this search."
+    "identity_status": "probable_match_but_not_canonically_confirmed",
+    "name_mismatch": "The requested spelling is 'Camilla Stephenson'; the indexed channel uses 'Kamilah Stevenson' and the transcript uses 'Camila/Camilla Stevenson'. The surname spelling differs (Stephenson vs Stevenson).",
+    "basis": "A June 11, 2026 iHeart episode identifies the guest as Dr. Kamilah Stevenson. In the transcript she says her YouTube presence is 'doctor Camilla Stevenson' and explicitly warns that fake pages exist. The four Glasp-indexed videos are attributed to Kamilah Stevenson and their transcripts introduce the speaker as Camila Stevenson. This is strong consistency evidence, but no official cross-link from her authenticated social account to the exact YouTube channel ID was retrieved.",
+    "caution": "Do not include similarly named duplicate channels or assume every Kamilah/Camila/Camilla account is the same person."
   },
   "videos": [
     {
@@ -60,10 +62,11 @@
   "scope_and_limits": {
     "newly_indexed_video_pages": 4,
     "exhaustive_inventory": false,
-    "reason": "Search results expose only a subset of indexed videos. The public channel index previously reported approximately 1.2K uploads, but this figure is third-party metadata and no complete enumerated upload list was retrieved.",
+    "reason": "Search results expose only a subset of indexed videos. The requested name 'Camilla Stephenson' does not exactly match the indexed channel spelling 'Kamilah Stevenson'; the iHeart interview supports a probable identity match but the creator explicitly warns of fake pages, so the canonical YouTube channel still requires direct cross-link verification. The public channel index previously reported approximately 1.2K uploads, but this figure is third-party metadata and no complete enumerated upload list was retrieved.",
     "do_not_infer": "Do not infer that these four videos are the only uploads, that every indexed result is owned by the candidate channel, or that any video claim is independently verified."
   },
   "next_actions": [
+    "Resolve the surname and canonical channel identity: verify whether the user means the creator publicly styled Dr. Kamilah/Camila/Camilla Stevenson, and confirm the exact YouTube channel ID from an authenticated social profile or official website before treating the upload inventory as complete.",
     "Obtain a paginated canonical public upload inventory through an authorized YouTube Data API or a vidIQ channel-videos call when credits are available.",
     "Resolve each upload against canonical YouTube channel ID and publishedAt metadata before adding it to the confirmed inventory.",
     "Prioritize transcript capture for XRP price-mechanism, ETF-flow, collateral, institutional adoption and capital-flow claims; record each creator claim separately from independently verified facts.",
@@ -74,5 +77,16 @@
     "no_private_data": true,
     "no_unauthorized_access": true,
     "no_market_action": true
-  }
+  },
+  "user_requested_identity": "Camilla Stephenson",
+  "identity_sources": [
+    {
+      "publisher": "iHeart",
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson — The XRP Podcast with Paul Barron",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_date": "2026-06-11",
+      "evidence": "The host identifies the guest as Dr. Kamilah Stevenson; at approximately 40:07 the guest says her YouTube presence is 'doctor Camilla Stevenson' and warns that fake pages exist.",
+      "limitation": "Automatically generated transcript; spoken spelling and handle are not independently authenticated."
+    }
+  ]
 }
