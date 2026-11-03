@@ -1,0 +1,186 @@
+{
+  "schema_version": "barrot.xrp-market-snapshot.v1",
+  "artifact_id": "xrp-kraken-spot-ticker-20261103T140314Z",
+  "captured_at_utc": "2026-11-03T14:03:14Z",
+  "retrieved_at_utc": "2026-11-03T14:03:14Z",
+  "source_event_timestamp_utc": null,
+  "repository": "Barrot-Agent/B-Agent",
+  "topic": "XRP spot market point-in-time snapshot and source-timestamp quality",
+  "observations": [
+    {
+      "source_id": "S1",
+      "publisher": "Kraken",
+      "instrument": "XRP/USD",
+      "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "internal_pair_key": "XXRPZUSD",
+      "source_timestamp_utc": null,
+      "retrieval_timestamp_utc": "2026-11-03T14:03:14Z",
+      "fields": {
+        "best_bid_usd": 1.28436,
+        "best_ask_usd": 1.28437,
+        "last_trade_usd": 1.28437,
+        "utc_day_open_usd": 1.24803,
+        "day_high_usd": 1.28923,
+        "day_low_usd": 1.24333,
+        "rolling_24h_high_usd": 1.28923,
+        "rolling_24h_low_usd": 1.23364,
+        "rolling_24h_base_volume_xrp": 20977305.00313761,
+        "rolling_24h_vwap_usd": 1.25999712,
+        "rolling_24h_trade_count": 23294
+      },
+      "derived": {
+        "midpoint_usd": 1.284365,
+        "quoted_spread_usd": 0.00001,
+        "quoted_spread_bps_of_mid": 0.07785948698435034,
+        "approximate_rolling_24h_notional_usd": 26431343.88931498,
+        "last_vs_utc_day_open_pct": 2.9117889794315843
+      },
+      "limitations": [
+        "Kraken payload contains no server/event timestamp; retrieval time is not the exact quote timestamp.",
+        "The ticker reports best bid/ask, not full order-book depth or executable size at the displayed prices.",
+        "Approximate notional is derived from reported base volume multiplied by reported 24-hour VWAP.",
+        "The UTC-day open comparison is not a rolling 24-hour return."
+      ]
+    },
+    {
+      "source_id": "S2",
+      "publisher": "TradRadar",
+      "instrument": "XRP perpetual-futures aggregate / mark price",
+      "url": "https://tradradar.io/markets/xrp",
+      "observation_timestamp_utc": "2026-11-03T07:20:00Z",
+      "fields": {
+        "mark_price_usd": 1.2523,
+        "open_interest_usd": 1980000000,
+        "open_interest_24h_change_pct": 2.84,
+        "oi_weighted_funding_pct_per_8h": 0.0062,
+        "minimum_reported_24h_liquidations_usd": 2430000,
+        "reported_long_liquidations_usd": 2150000
+      },
+      "limitations": [
+        "Provider states figures are delayed by 15 minutes.",
+        "This is an earlier derivatives mark-price observation, not synchronized with the Kraken spot ticker.",
+        "Open-interest universe is seven exchanges; no instrument-level raw constituents were captured in this snapshot."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "XSPOT-001",
+      "classification": "OBSERVED_PUBLIC_EXCHANGE_API",
+      "claim": "Kraken's retrieved XRP/USD ticker returned a best bid of $1.28436, best ask of $1.28437 and last trade of $1.28437; the payload did not expose a server timestamp.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "XSPOT-002",
+      "classification": "DERIVED_ARITHMETIC",
+      "claim": "The displayed best bid/ask imply a $0.00001 spread, approximately 0.078 basis points of the midpoint. This is top-of-book only and does not establish depth or market impact.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "XSPOT-003",
+      "classification": "DERIVED_ARITHMETIC_WITH_LIMITATION",
+      "claim": "Kraken's reported rolling 24-hour XRP volume of 20.977M multiplied by its reported 24-hour VWAP of $1.25999712 implies approximately $26.43M notional; this is venue-specific and provider-reported.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "XSPOT-004",
+      "classification": "OBSERVED_SECONDARY_MARKET_DATA",
+      "claim": "TradRadar's earlier 07:20 UTC observation reported XRP perpetual mark price $1.2523 and open interest $1.98B across seven exchanges, with positive weighted funding and at least $2.43M reported liquidations.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "XSPOT-005",
+      "classification": "UNKNOWN_NOT_SYNCHRONIZED",
+      "claim": "The difference between Kraken's retrieved spot last price and TradRadar's earlier perpetual mark price cannot be interpreted as a realized return, arbitrage spread or venue migration because timestamps and instrument types differ.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-XSPOT-1",
+      "statement": "Kraken displayed a very narrow best bid/ask spread at the retrieval point.",
+      "status": "SUPPORTED_FOR_SINGLE_QUOTE_ONLY",
+      "support": [
+        "The returned best bid and ask differ by $0.00001."
+      ],
+      "disconfirming_or_limits": [
+        "No full depth, executable size or persistence sample was captured."
+      ]
+    },
+    {
+      "id": "H-XSPOT-2",
+      "statement": "Kraken's 24-hour reported activity is a useful venue-specific liquidity feature.",
+      "status": "PLAUSIBLE_FEATURE_CANDIDATE",
+      "support": [
+        "The API returns rolling 24-hour volume, VWAP and trade count."
+      ],
+      "disconfirming_or_limits": [
+        "One observation does not establish representativeness or total XRP market activity."
+      ]
+    },
+    {
+      "id": "H-XSPOT-3",
+      "statement": "The Kraken spot quote and earlier TradRadar mark price reveal a cross-venue pricing dislocation.",
+      "status": "NOT_ESTABLISHED",
+      "support": [],
+      "disconfirming_or_limits": [
+        "Observations are asynchronous and compare spot last with perpetual mark; synchronized bid/ask and contract-level data are absent."
+      ]
+    }
+  ],
+  "feature_store_rules": [
+    "Store retrieval_timestamp_utc separately from source_event_timestamp_utc; never substitute retrieval time for an unavailable exchange event timestamp.",
+    "Keep spot last, best bid/ask, perpetual mark, index and oracle prices as separate instrument/price types.",
+    "Do not infer market depth from a best bid/ask quote without size and depth levels.",
+    "Keep venue-specific volume and VWAP separate from global volume.",
+    "Do not calculate cross-venue returns or arbitrage features from asynchronous observations.",
+    "Use this snapshot for provenance and data-quality testing only; it is not a forecast input until synchronized capture and quality validation exist."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_EXCHANGE_PUBLIC_API",
+      "publisher": "Kraken",
+      "title": "Get Ticker Information — XRP/USD",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "documentation_url": "https://docs.kraken.com/api-reference/market-data/get-ticker-information"
+    },
+    {
+      "id": "S2",
+      "type": "SECONDARY_MARKET_DATA",
+      "publisher": "TradRadar",
+      "title": "XRP perpetual market snapshot, updated 2026-11-03 07:20 UTC",
+      "url": "https://tradradar.io/markets/xrp"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "source": "Coinbase Exchange public ticker API",
+      "url": "https://api.exchange.coinbase.com/products/XRP-USD/ticker",
+      "status": "NOT_ACCESSIBLE_THROUGH_CURRENT_WEB_RETRIEVAL_PATH",
+      "data_used": false
+    },
+    {
+      "source": "Binance spot/perpetual public APIs",
+      "url": "https://api.binance.com/ and https://fapi.binance.com/",
+      "status": "NOT_ACCESSIBLE_THROUGH_CURRENT_WEB_RETRIEVAL_PATH",
+      "data_used": false
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "paper_trade_created": false,
+    "real_money_action": false
+  }
+}
