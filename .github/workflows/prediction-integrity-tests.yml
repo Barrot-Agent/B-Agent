@@ -1,0 +1,37 @@
+name: Prediction Integrity Tests
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  prediction-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: python -m pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
+
+      - name: Run prediction-integrity regression tests
+        run: >-
+          python -m pytest
+          tests/test_signal_evaluation_status.py
+          tests/test_signal_accuracy_workflow_safety.py
+          tests/test_sentiment_feature_not_forecast.py
+          tests/test_forecast_ledger.py
+          -v --no-cov

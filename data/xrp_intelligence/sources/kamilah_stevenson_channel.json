@@ -6,20 +6,26 @@
   "creator": {
     "display_name": "Kamilah Stevenson",
     "alternate_spelling_seen_in_transcripts": [
-      "Camila Stevenson"
+      "Camila Stevenson",
+      "Camilla Stevenson",
+      "Dr. Camilla Stevenson"
     ],
     "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
     "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
-    "identity_status": "PROBABLE_MATCH",
+    "identity_status": "LIKELY_MATCH_NAME_VARIANT_NOT_USER_CONFIRMED",
     "identity_evidence": [
-      "Public channel listing for Kamilah Stevenson points to this channel ID.",
+      "Public channel listing for Kamilah Stevenson points to channel ID UCqUPJMQdkCN6lsLVDnichPA.",
       "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
-      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved."
+      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains unresolved.",
+      "The XRP Podcast/iHeart transcript uses Camilla Stevenson as a spoken-name variant and records the guest identifying her YouTube presence as Doctor Camilla Stevenson.",
+      "Glasp transcript pages for videos QslbjGQD0MU and ci0FH73lbCs show the creator self-identifying as Camila Stevenson."
     ],
     "caveats": [
+      "The user's literal spelling 'Camilla Stephenson' is not verified as the canonical creator name; Kamilah Stevenson is the likely XRP-channel match, not user-confirmed.",
       "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
-      "Do not conflate this creator with other similarly named accounts without channel-ID verification."
+      "The podcast transcript is automatically generated and may contain spelling errors.",
+      "The creator warns about fake pages; use channel ID for deduplication and do not conflate similarly named accounts."
     ]
   },
   "ingestion_policy": {
@@ -57,7 +63,7 @@
     "status": "PARTIAL_INDEXED_INVENTORY",
     "completeness_verified": false,
     "discovered_total_count": null,
-    "indexed_seed_video_count": 10,
+    "indexed_seed_video_count": 13,
     "missing_work": [
       "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
       "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
@@ -65,7 +71,9 @@
       "Extract each explicit claim and forecast separately; preserve source wording and classify fact, interpretation, forecast, opinion, and promotional claim.",
       "Verify numeric claims using official XRPL/Ripple/issuer data and reproducible on-chain or market datasets.",
       "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp, and baseline.",
-      "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed."
+      "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed.",
+      "Resolve the exact requested spelling 'Camilla Stephenson' against the likely channel identity Kamilah Stevenson before treating the match as certain.",
+      "Verify candidate video ID QXOxXikifLU from the third-party thumbnail URL against canonical YouTube metadata before counting it."
     ]
   },
   "seed_videos": [
@@ -256,6 +264,50 @@
         "Verify the 100-million figure against timestamped, independently reproducible on-chain and bridge data."
       ],
       "disclosure_note": "Description includes affiliate disclosures and financial/DeFi risk disclaimer."
+    },
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "canonical_url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "published_date_reported": "2026-03-06",
+      "source": "YouTube indexed video result",
+      "source_url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "themes": [
+        "XRP",
+        "global finance",
+        "yen carry trade",
+        "macro liquidity"
+      ],
+      "claim_status": "TITLE_AND_DESCRIPTION_INDEXED; FULL_TRANSCRIPT_REVIEW_PENDING"
+    },
+    {
+      "video_id": "xkrcSsIHh0Q",
+      "title": "Congress Still Hasn't Passed the Crypto Bill. XRP Already Has CLARITY",
+      "canonical_url": "https://www.youtube.com/watch?v=xkrcSsIHh0Q",
+      "published_date_reported": "2026-08-15",
+      "source": "YouTube indexed video result",
+      "source_url": "https://www.youtube.com/watch?v=xkrcSsIHh0Q",
+      "themes": [
+        "U.S. crypto legislation",
+        "XRP regulatory status",
+        "market structure"
+      ],
+      "claim_status": "TITLE_AND_DESCRIPTION_INDEXED; FULL_TRANSCRIPT_REVIEW_PENDING"
+    },
+    {
+      "video_id": "1ICh2cuBKmM",
+      "title": "1,196 Cold Wallets Drained in 41 Minutes but XRP Holders Had One Thing DIFFERENT",
+      "canonical_url": "https://www.youtube.com/watch?v=1ICh2cuBKmM",
+      "published_date_reported": "2026-08-08",
+      "source": "YouTube indexed video result",
+      "source_url": "https://www.youtube.com/watch?v=1ICh2cuBKmM",
+      "themes": [
+        "wallet security",
+        "custody",
+        "XRP holder security",
+        "exchange risk"
+      ],
+      "claim_status": "TITLE_AND_DESCRIPTION_INDEXED; FULL_TRANSCRIPT_REVIEW_PENDING"
     }
   ],
   "required_cross_corroboration_domains": [
@@ -271,6 +323,8 @@
   "forecast_scoring": {
     "immutable_forecast_id": true,
     "fixed_horizons": [
+      "1h",
+      "4h",
       "24h",
       "7d",
       "30d"
@@ -296,11 +350,15 @@
       "https://www.youtube.com/watch?v=8xiy8w2YlfY",
       "https://www.youtube.com/watch?v=pFru4idBTMA",
       "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
-      "https://www.youtube.com/watch?v=qtT2hLeFkM0"
+      "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "https://www.youtube.com/watch?v=xkrcSsIHh0Q",
+      "https://www.youtube.com/watch?v=1ICh2cuBKmM"
     ],
-    "last_updated_at_utc": "2026-10-26T23:35:00Z"
+    "last_updated_at_utc": "2026-11-03T16:25:46.996Z"
   },
-  "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
+  "status": "IDENTITY_RECONCILED_AS_LIKELY_MATCH; PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
     {
       "finding_id": "XRPL-CONFIDENTIAL-TRANSFERS-001",

@@ -72,3 +72,9 @@ npm-debug.log*
 
 # apex_lattice local audit scratch (regenerated each run, not meant to be committed)
 .apex_lattice/
+
+# Local XRP forecast ledger state (generated database; never commit runtime records)
+data/xrp_intelligence/forecast_ledger.sqlite3
+data/xrp_intelligence/forecast_ledger.sqlite3-wal
+data/xrp_intelligence/forecast_ledger.sqlite3-shm
+data/xrp_intelligence/forecast_ledger.sqlite3-journal

@@ -1,0 +1,89 @@
+{
+  "schema_version": "barrot.prediction-integrity-current-main-rebase.v1",
+  "captured_at_utc": "2026-11-03T15:36:03Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "current_main_sha": "0c2323231fefd3d9b5166b25cf6d4bd808b4a5b7",
+  "current_main_tree_sha": "7ef8fc9c941f9f8f89767502b79a845ba6f924ca",
+  "source_pr": 1572,
+  "source_pr_head": "d58c5975b6fa2cfbadf2caee8e3864070e41f78e",
+  "source_pr_base_sha": "ba121a1051c84ceb311e5c65e38a18659dcd7f0e",
+  "source_pr_base_comparison": {
+    "ahead_by": 3,
+    "behind_by": 10,
+    "status": "diverged"
+  },
+  "path_reconciliation": {
+    "method": "Compare Git tree blob SHAs for every source-PR changed path at the source base and current main.",
+    "source_changed_path_count": 16,
+    "paths_changed_on_current_main_since_source_base": [],
+    "result": "All 16 paths changed by the source PR are byte-identical between its base and current main, or absent from both sides where the source PR adds them. No intervening current-main change is overwritten.",
+    "verified": true
+  },
+  "fresh_branch": "prediction/fresh-main-integrity-0c232323-20261103T1536Z",
+  "inherited_paths": [
+    ".github/workflows/check-signal-accuracy.yml",
+    ".github/workflows/ci.yml",
+    "research/operations/20261103T071149Z-fresh-main-prediction-integrity.json",
+    "research/operations/20261103T081400Z-fresh-main-prediction-integrity-rebase.json",
+    "research/xrp_intelligence/HANDOFF_20261103T071149Z.md",
+    "research/xrp_intelligence/HANDOFF_20261103T081400Z-prediction-integrity.md",
+    "scripts/ask_barrot.py",
+    "scripts/check_signal_accuracy.py",
+    "scripts/daily_digest.py",
+    "scripts/emit_signal.py",
+    "tests/test_sentiment_feature_not_forecast.py",
+    "tests/test_signal_evaluation_status.py",
+    "web/landing.html",
+    "web/legacy/signal_accuracy_unvalidated.json",
+    "web/signal_accuracy.json",
+    "web/signals.html"
+  ],
+  "added_handoff_paths": [
+    "research/operations/20261103T153603Z-prediction-integrity-current-main-rebase.json",
+    "research/xrp_intelligence/HANDOFF_20261103T153603Z-prediction-integrity-current-main.md"
+  ],
+  "prior_exact_head_verification": {
+    "commit": "d58c5975b6fa2cfbadf2caee8e3864070e41f78e",
+    "core_ci_run": 41660742611,
+    "core_ci_result": "362 passed; 8 subtests passed; 6.98 seconds",
+    "fail_closed_gate_run": 41660742873,
+    "fail_closed_gate_result": "passed; automatic merge disabled; no repository content changed"
+  },
+  "ci_overlap": {
+    "other_pr": 1585,
+    "shared_path": ".github/workflows/ci.yml",
+    "reason": "PR #1585 adds its security regression tests and PyYAML to the same CI workflow; this branch adds two prediction-integrity test files.",
+    "resolution": "Reconcile both CI edits before merging either PR. Do not merge stale overlapping branches independently."
+  },
+  "controls": {
+    "forecast_issuance": "BLOCKED_NO_VALIDATED_FIXED_HORIZON_DATA",
+    "legacy_accuracy": "PRESERVED_AS_UNVALIDATED_ONLY",
+    "sentiment": "FEATURE_ONLY_NOT_FORECAST",
+    "workflow_permissions": "contents:read",
+    "network_scoring": "DISABLED",
+    "automated_history_writes": "DISABLED",
+    "paper_trading": "NOT_STARTED",
+    "real_money": "NO_ACTION"
+  },
+  "preservation": {
+    "main_modified": false,
+    "force_push": false,
+    "reset_clean_stash_or_overwrite": false,
+    "merge": false,
+    "deployment": false,
+    "workflow_dispatch": false,
+    "secret_access": false,
+    "paper_or_real_trade": false
+  },
+  "verification_status": {
+    "source_head": "VERIFIED_BY_EXISTING_EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE",
+    "current_main_transplant": "EXECUTED_PENDING_NEW_EXACT_HEAD_CI",
+    "new_branch_head": "PENDING"
+  },
+  "next_actions": [
+    "Verify the new branch commit is based directly on current main.",
+    "Open a draft pull request and require exact-head CI plus the fail-closed gate.",
+    "Inspect the complete diff, especially CI overlap with PR #1585.",
+    "Keep forecast issuance blocked until point-in-time fixed-horizon data, independent outcome attestation, walk-forward evaluation, leakage controls, baseline and calibration are implemented and measured."
+  ]
+}

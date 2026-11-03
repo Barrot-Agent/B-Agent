@@ -1,0 +1,128 @@
+{
+  "schema_version": "barrot.prediction-integrity-rebase.v1",
+  "captured_at_utc": "2026-11-03T08:14:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "current_main_sha": "ba121a1051c84ceb311e5c65e38a18659dcd7f0e",
+  "predecessor_pr": 1569,
+  "predecessor_base": "60aef00405f26badabd4ac15807df163756204cc",
+  "predecessor_head": "2da8b38aaba35db9cea5e8ac1b699d4f0847e600",
+  "fresh_branch": "prediction/fresh-main-integrity-20261103T0814Z",
+  "preserved_concurrent_main_change": {
+    "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "action": "PRESERVE_CURRENT_MAIN_BLOB",
+    "blob_sha": "cc8c3c2a0586b2781971e41eded76aad3c24b6d9"
+  },
+  "inherited_paths": [
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "36ef6d143fafe2bb844af1a02258ecccbd359bc8"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "776ad01c0f0875e6e6ee0214af83ef2a5a4235ae"
+    },
+    {
+      "path": "scripts/ask_barrot.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "df2b5386a141f4236e3bcfbc79c4c2e0c3eda0f4"
+    },
+    {
+      "path": "scripts/check_signal_accuracy.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "972152eb653aabfc11c8bc0f4c78b35bc4cf2b18"
+    },
+    {
+      "path": "scripts/daily_digest.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "03f9fba1641c8d7516bafb122b2163f0e75aee78"
+    },
+    {
+      "path": "scripts/emit_signal.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "84ac354e279c16334236710a7fa72771f62725a3"
+    },
+    {
+      "path": "web/landing.html",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "22d8938b2712ac5f6dffd12aabf22b094af9eff1"
+    },
+    {
+      "path": "web/signal_accuracy.json",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "a1846d210d4039c81e4563ae1471db2dfe62c62a"
+    },
+    {
+      "path": "web/signals.html",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "8e187be6a7171c40c52f9e6d4d77ca27c7895f55"
+    },
+    {
+      "path": "research/operations/20261103T071149Z-fresh-main-prediction-integrity.json",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "3791242261f80ce67a5bc30d756d8d31ff144dc7"
+    },
+    {
+      "path": "research/xrp_intelligence/HANDOFF_20261103T071149Z.md",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "211070022046c078e685e6f3fc12965ebc162ed3"
+    },
+    {
+      "path": "tests/test_sentiment_feature_not_forecast.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "8ec99b385747b1b839cd5456edf193e9a710fa54"
+    },
+    {
+      "path": "tests/test_signal_evaluation_status.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "616eab36459baa4f1f867073589330bbbd6edd8c"
+    },
+    {
+      "path": "web/legacy/signal_accuracy_unvalidated.json",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "32fa5dda9fcbd31976deb71c9c603f1b830ee8ca"
+    }
+  ],
+  "legacy_failure": {
+    "status": "UNVALIDATED",
+    "reported_accuracy_pct": 45.5,
+    "reported_checked": 1697,
+    "reported_correct": 772,
+    "known_problems": [
+      "variable elapsed evaluation horizon after a 24-hour minimum",
+      "mutable live-price anchor",
+      "historical result files rewritten by scoring job",
+      "current main row-level history file empty",
+      "aggregate accuracy cannot be reproduced from current-tree records"
+    ]
+  },
+  "proposed_controls": [
+    "disable network-dependent variable-horizon scorer and scheduled scoring workflow",
+    "replace with deterministic status-only, read-only evaluation status",
+    "archive legacy aggregate explicitly as unvalidated rather than silently deleting its historical claim",
+    "set forecast issuance BLOCKED_NO_VALIDATED_FIXED_HORIZON_DATA",
+    "mark sentiment features forecast-ineligible",
+    "treat missing/nonfinite classifier confidence as zero",
+    "remove unsupported BUY/SELL and accuracy marketing claims",
+    "add regression tests"
+  ],
+  "verification": {
+    "predecessor_exact_head": "359 tests + 8 subtests passed on predecessor head; fail-closed gate passed",
+    "fresh_head_ci": "PENDING",
+    "fresh_head_gate": "PENDING",
+    "local_tests": "NOT_EXECUTED",
+    "path_overlap_review": "PASSED; only generated sentiment_shift.json overlapped and current-main version was preserved"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "preservation": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secret_access": false,
+    "deployment": false,
+    "paper_trade": false,
+    "real_money": false
+  }
+}
