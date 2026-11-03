@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_institutional_flows_identity_and_creator_research",
+  "captured_at_utc": "2026-11-03T22:16:00Z",
+  "research_scope": [
+    "Japan SBIC identity and ChatGPT references",
+    "actual capital phrase and capital-deployment evidence",
+    "Kamilah/Camila/Camilla Stevenson public video candidates",
+    "XRP ETF actual flows and 13F holders",
+    "ASK Coin identity disambiguation"
+  ],
+  "findings": [
+    {
+      "id": "SBIC-JP-IDENTITY-001",
+      "status": "confirmed",
+      "claim": "Japan's SBIC in the reviewed official source is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社), established under the Small and Medium Business Investment & Consultation Companies Act promulgated June 10, 1963. It describes itself as a policy-implementing investment-development organization; its own FAQ says it is now a privately incorporated independent investment company.",
+      "interpretation": "Do not conflate this entity with SBI Holdings, SBI Securities, or SoftBank Group.",
+      "sources": [
+        "https://www.sbic.co.jp/",
+        "https://www.sbic.co.jp/about/",
+        "https://www.sbic.co.jp/company/history/",
+        "https://www.sbic.co.jp/investment/faq/"
+      ]
+    },
+    {
+      "id": "SBIC-CHATGPT-TRAINING-001",
+      "status": "confirmed",
+      "claim": "SBIC's official June 12-13, 2025 training program for investee companies covered generative AI and ChatGPT usage. Its November 29, 2023 workshop PDF also referenced ChatGPT in a problem-solving/ideation context.",
+      "interpretation": "This proves SBIC-hosted education and training, not an OpenAI partnership, ChatGPT Enterprise procurement, or an XRP integration.",
+      "sources": [
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic.co.jp/wordpress/file/231129triz%E7%A2%BA%E8%AA%8D%E6%B8%88%E3%81%BF.pdf"
+      ]
+    },
+    {
+      "id": "SBI-OPENAI-ENTERPRISE-001",
+      "status": "confirmed",
+      "claim": "SBI Holdings and SBI Securities separately announced adoption of OpenAI ChatGPT Enterprise on May 1, 2025. SBI Holdings said rollout began for selected employees in March 2025; SBI Securities had begun in January 2025.",
+      "interpretation": "This is a direct SBI Holdings/SBI Securities-to-OpenAI enterprise deployment. It is not evidence that Tokyo Small and Medium Business Investment & Consultation Co., Ltd. is the contracting entity or an SBI Holdings subsidiary.",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2025/0501_15410.html"
+      ]
+    },
+    {
+      "id": "SBIC-SBIH-RELATION-001",
+      "status": "unknown",
+      "claim": "No direct ownership, control, commercial contract or XRP relationship between Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and SBI Holdings was established in the reviewed primary sources.",
+      "interpretation": "Treat the shared SBI/SBIC lettering as an identity-resolution problem, not evidence of affiliation.",
+      "sources": [
+        "https://www.sbic.co.jp/",
+        "https://www.sbic.co.jp/company/history/",
+        "https://www.sbigroup.co.jp/news/2025/0501_15410.html"
+      ]
+    },
+    {
+      "id": "XRP-ETF-FLOW-20261102-001",
+      "status": "provisional_partial",
+      "claim": "CryptoETF.today reported Nov 2, 2026 XRP spot ETF net outflow of approximately $0.5M, all from Canary XRPC; only 3 of 5 funds had reported (Bitwise XRP, Canary XRPC and 21Shares TOXR). Franklin XRPZ and Grayscale GXRP were still missing. It was the second consecutive outflow day, approximately $1.0M over the two-day run.",
+      "interpretation": "Do not treat -$0.5M as a final full-complex daily flow. It is a T+1 partial observation published Nov 3 at 05:47 UTC.",
+      "sources": [
+        "https://cryptoetf.today/en/xrp-etf-flows"
+      ]
+    },
+    {
+      "id": "XRP-ETF-HOLDINGS-20261102-001",
+      "status": "provider_reported",
+      "claim": "The same provider reported approximately $1.43B net assets, $1.81B cumulative net flow and 1,141,749,781 XRP held across five US spot funds as of Nov 2, 2026.",
+      "interpretation": "Provider aggregation, not a single audited issuer statement. Reconcile against issuer holdings files before using as a model target.",
+      "sources": [
+        "https://cryptoetf.today/en/xrp-etf-flows",
+        "https://xrp-insights.com/data"
+      ]
+    },
+    {
+      "id": "XRP-13F-Q2-2026-001",
+      "status": "provider_aggregated",
+      "claim": "CryptoETF.today's Q2 2026 13F aggregation reported 127 institutional filers with $179M in XRP ETF shares at June 30, 2026. It attributed $86.5M (48% of the reported total) to Goldman Sachs, $16.4M to Jane Street, $16.2M to Millennium Management and $14.4M to Intesa Sanpaolo.",
+      "interpretation": "13F positions are long ETF-share disclosures, not direct XRP-wallet ownership, net exposure, beneficial ownership of underlying XRP, or proof of directional conviction. Bank/broker and market-maker positions may reflect facilitation. 13F omits shorts, futures and retail positions.",
+      "sources": [
+        "https://cryptoetf.today/en/xrp-etf-flows"
+      ]
+    },
+    {
+      "id": "XRP-ETF-CROSS-CHECK-20261029-001",
+      "status": "cross_provider_agreement",
+      "claim": "Alpha Finance reported +$8.4M XRP ETF net flow on Oct 29, 2026, matching CryptoETF.today's Oct 29 figure. Alpha reported +$1.73B cumulative net flow through that session.",
+      "interpretation": "Useful cross-provider agreement for Oct 29 only; it does not validate the later partial Nov 2 figure.",
+      "sources": [
+        "https://alphafinance.io/etf/xrp/",
+        "https://cryptoetf.today/en/xrp-etf-flows"
+      ]
+    },
+    {
+      "id": "ACTUAL-CAPITAL-PHRASE-001",
+      "status": "unresolved",
+      "claim": "Exact-phrase searches for 'actual capital' tied to the candidate creator's accessible video summaries did not identify a unique term, person, company or XRP transaction. Accessible Glasp summaries do not contain the exact phrase in the checked transcripts.",
+      "interpretation": "For Barrot, operationalize actual capital as confirmed ETF creations/redemptions and issuer holdings changes, filed positions with scope limitations, recognized collateral actually pledged/utilized, balance-sheet deployment, and settled on-chain flows. Surveys, waitlists, eligibility, announced facilities and projected commitments are not deployed capital.",
+      "possible_false_positive": "Some candidate video descriptions promote iTrust Capital; this is a company/affiliate reference, not the phrase 'actual capital'. Do not equate them.",
+      "sources": [
+        "https://glasp.co/youtube/QslbjGQD0MU",
+        "https://glasp.co/youtube/ci0FH73lbCs",
+        "https://glasp.co/youtube/cxeX_eu_2H0",
+        "https://glasp.co/youtube/rv0BAV0vLgo",
+        "https://www.youtube.com/watch?v=iwhpNT73zpk"
+      ]
+    },
+    {
+      "id": "CREATOR-IDENTITY-001",
+      "status": "candidate_identity_not_exact_match",
+      "claim": "A Glasp page links a YouTube channel with ID UCqUPJMQdkCN6lsLVDnichPA and labels it Kamilah Stevenson. Several indexed video transcripts self-introduce the speaker as 'Camila Stevenson'. The user's requested spelling 'Camilla Stephenson' is not an exact match.",
+      "interpretation": "Kamilah/Camila is a strong candidate for the intended creator, but do not assert identity with Camilla Stephenson until direct channel metadata or a self-identification resolves the spelling.",
+      "sources": [
+        "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "https://www.youtube.com/watch?v=iwhpNT73zpk",
+        "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+        "https://dailycoin.com/analyst-moves-xrp-off-exchanges-citing-structure-ahead-of-volatility/"
+      ]
+    },
+    {
+      "id": "ASK-COIN-IDENTITY-001",
+      "status": "ambiguous_candidate",
+      "claim": "Permission Coin (ticker ASK) remains one candidate for 'ASK Coin'; reviewed public documentation describes Base and Polygon deployments. No XRPL/XRP integration was established.",
+      "interpretation": "ASK is non-unique. Do not attach the ticker to XRP without issuer, contract-address and chain confirmation.",
+      "sources": [
+        "https://permission.io/",
+        "https://coinmarketcap.com/currencies/permission-coin/"
+      ]
+    }
+  ],
+  "creator_video_candidates": [
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published": "2025-12-14",
+      "attribution": "Glasp channel/video page: Kamilah Stevenson",
+      "transcript_note": "Transcript self-introduces as Camila Stevenson.",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU"
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published": "2026-01-13",
+      "attribution": "Glasp channel/video page: Kamilah Stevenson",
+      "transcript_note": "Transcript self-introduces as Camila Stevenson.",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs"
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They’re Right)",
+      "published": "2026-01-15",
+      "attribution": "Glasp channel/video page: Kamilah Stevenson",
+      "transcript_note": "Transcript self-introduces as Camila Stevenson.",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0"
+    },
+    {
+      "video_id": "rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "published": "2026-03-19",
+      "attribution": "Glasp channel/video page: Kamilah Stevenson",
+      "transcript_note": "Video page identified; transcript not available in retrieved page.",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo"
+    },
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It’s Connected to XRP",
+      "published": "2026-03-06",
+      "attribution": "YouTube search result: Kamilah Stevenson",
+      "transcript_note": "Description links oil shocks, yen carry trade and global liquidity to XRP; this is the creator's thesis, not verified causal evidence.",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That’s Exactly Why It Matters",
+      "published": "2025-12-24",
+      "attribution": "YouTube search result: Kamilah Stevenson",
+      "transcript_note": "Description contrasts XRP payment/liquidity utility with Bitcoin treasury framing; claims require independent verification.",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+    },
+    {
+      "video_id": "TfFx0g2IgGg",
+      "title": "I Moved My XRP Off The Exchanges",
+      "published": "2026-05-21",
+      "attribution": "DailyCoin article attributes the embedded video to Dr. Kamilah Stevenson",
+      "transcript_note": "Direct YouTube metadata fetch was throttled; channel ownership not verified.",
+      "url": "https://www.youtube.com/watch?v=TfFx0g2IgGg"
+    }
+  ],
+  "guest_appearance_candidates": [
+    {
+      "title": "Why Liquidity Comes Before Price XRP Explained",
+      "published": "2025-12-21",
+      "channel": "STOCK UP! with LARRY JONES",
+      "attribution": "Description says Camila Stevenson steps in for Larry; this is a guest appearance, not her channel upload.",
+      "url": "https://www.youtube.com/results?search_query=Why+Liquidity+Comes+Before+Price+XRP+Explained"
+    }
+  ],
+  "inventory_status": {
+    "identified_authored_candidates": 7,
+    "guest_appearances_separate": 1,
+    "exhaustive": false,
+    "reason": "The official YouTube channel page and RSS feed were throttled/disabled in this research session. Third-party channel-size estimates conflict; indexed video results and Glasp summaries are partial."
+  },
+  "disconfirming_or_limiting_evidence": [
+    "SBIC-hosted ChatGPT training does not establish an OpenAI partnership.",
+    "SBI Holdings/SBI Securities ChatGPT Enterprise adoption does not establish SBIC ownership or an XRP relationship.",
+    "Nov 2 ETF flow is partial: 3/5 issuers reported.",
+    "13F ETF-share holdings are not direct XRP holdings and do not reveal shorts/futures or intent.",
+    "Creator macro narratives about yen carry trades and XRP are commentary, not proof of actual XRP settlement demand.",
+    "No exact Camilla Stephenson identity match or exhaustive upload inventory has been verified.",
+    "No unique ASK Coin identity or XRP integration has been established."
+  ],
+  "next_actions": [
+    "Reconcile Nov 2 and subsequent ETF flows with issuer-by-issuer holdings and creations/redemptions.",
+    "Verify the Kamilah/Camila/Camilla identity from direct YouTube channel metadata and continue indexed video discovery.",
+    "Search full transcripts for the exact phrase 'actual capital'; keep iTrust Capital separate.",
+    "Resolve ASK using issuer and contract address before graphing any XRP relationship.",
+    "Trace SBIC and SBI Holdings corporate records separately; do not infer affiliation from acronym similarity."
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "private_data_accessed": false,
+    "unauthorized_access": false,
+    "market_manipulation": false,
+    "investment_action": false
+  }
+}
