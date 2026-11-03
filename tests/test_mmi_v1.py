@@ -498,8 +498,28 @@ def test_contradictory_independent_evidence_can_complete_without_forced_unanimit
 
 
 def test_corroboration_not_applicable_requires_reason():
-    record = complete_record_with_two_sources()
-    record.corroboration_results = []
+    record = MMIEngine().create_record(
+        "corroboration-not-applicable-001",
+        {"name": "single-source-fixture"},
+        {"source": "fixture://primary"},
+    )
+    record.provenance = {"source": "fixture://primary"}
+    record.source_graph.append(
+        SourceRecord(
+            source_id="s1",
+            uri="https://primary.example/source",
+            provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
+            independence_group="primary-publisher",
+        )
+    )
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="e1",
+            claim="single-source primary record",
+            state=ParseState.OBSERVED,
+            source_ids=["s1"],
+        )
+    )
     record.stages = [
         StageRecord(
             name,
@@ -513,6 +533,21 @@ def test_corroboration_not_applicable_requires_reason():
     assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
     report = MMICompletenessReport.build(record)
     assert report["protocol_complete"] is True
+
+
+
+def test_required_core_stage_cannot_be_not_applicable():
+    record = complete_record_with_two_sources()
+    record.stages = [
+        StageRecord(
+            name,
+            StageOutcome.NOT_APPLICABLE if name == "PROVENANCE_CAPTURED" else StageOutcome.COMPLETE,
+            "Not applicable" if name == "PROVENANCE_CAPTURED" else "",
+        )
+        for name in MMIStateMachine.ORDER
+    ]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
 
 
 def test_contradictory_evidence_is_preserved():
