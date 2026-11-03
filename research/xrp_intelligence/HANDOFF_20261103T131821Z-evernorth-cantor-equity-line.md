@@ -112,3 +112,20 @@ Do not sum these into a fully diluted share count. Class C is already issued; un
 A separate arithmetic correction artifact,
 `research/xrp_intelligence/20261103T133112Z-evernorth-sbi-classc-ratio-arithmetic-correction.json`,
 corrects the simple SBI-affiliated Class C / issued A+C ratio from 4.1039% to 4.1036% (2,359,038 / 57,487,426). The approximate 4.10% interpretation is unchanged. This is not a beneficial-ownership or voting-power percentage.
+
+
+## XRP market-data quality snapshot — 2026-11-03 13:32 UTC
+
+New artifact:
+`research/xrp_intelligence/20261103T133204Z-xrp-spot-perpetual-oi-provider-reconciliation.json`
+
+Public data retrieval found:
+- Kraken XRP/USD ticker: bid 1.28085, ask 1.28086, last 1.27986; no exchange timestamp in payload, so the retrieval time is not treated as the exact quote time.
+- Kodexius XRP perpetual OI: $834.52M, updated 06:04 UTC; weighted funding +0.0072%/8h.
+- TradRadar: $1.98B OI, updated 07:20 UTC with 15-minute delay; weighted funding +0.0062%/8h; long/short account ratio 2.96 (74.8% long); 24h liquidations at least $2.43M, mostly longs.
+- CoinGlass: approximately $2.84B OI on the English page and $2.92B on the Italian page; the same provider's localized pages also differ in futures volume.
+- CryptoETF: November 2 remains partial at 3/5 funds, -$0.5M, all attributed to XRPC; XRPZ and GXRP not yet reported.
+
+The 3.5x range between the smallest and largest OI provider observations is quarantined. The providers do not expose a harmonized contract universe, exchange set, update time or calculation method. No averaging or directional inference is permitted. The single Kraken quote is not synchronized with the older aggregator observations. Coinbase and Binance raw API requests were inaccessible through this retrieval path; no substitute values were invented.
+
+Forecast remains `NOT_ISSUED`. Next market task is a fixed-universe, timestamped per-exchange capture of spot L2, perpetual OI/funding/liquidations, and regulated CME futures kept as a separate universe.
