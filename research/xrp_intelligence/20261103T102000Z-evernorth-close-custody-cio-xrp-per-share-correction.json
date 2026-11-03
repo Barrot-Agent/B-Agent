@@ -1,0 +1,294 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T10:20:00Z",
+  "topic": "Evernorth closing capital reconciliation, XRP custody and wallet attribution, Coinbase personnel/execution links, and correction to pre-close Goldman-Armada interpretation",
+  "evidence_policy": {
+    "source_priority": [
+      "SEC_EDGAR_PRIMARY",
+      "ISSUER_ANNOUNCEMENT",
+      "SECONDARY_PUBLIC_LEDGER_ATTRIBUTION"
+    ],
+    "preserve_exact_dates": true,
+    "no_sale_inference_from_unattributed_transfers": true,
+    "no_same_date_xrp_per_share_claim": true,
+    "no_forecast": true
+  },
+  "transaction_timeline": [
+    {
+      "date": "2026-09-30",
+      "event": "Armada shareholders approved the Evernorth business combination",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000095010326014952/dp254370_425.htm"
+    },
+    {
+      "date": "2026-10-09",
+      "event": "Business combination consummated; SPAC merger and Pathfinder merger closed",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm"
+    },
+    {
+      "date": "2026-10-12",
+      "event": "XRPN Class A began trading on Nasdaq; Evernorth announced former Coinbase Asset Management co-CIO Hugo Jeandesboz as CIO",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629dex991.htm"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "event": "Evernorth announced Ripple, Kraken, Coinbase and BitGo as inaugural institutional execution partners; deployment expected to begin in Q4 2026",
+      "source": "https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-with-ripple-kraken-coinbase-and-bitgo"
+    },
+    {
+      "date": "2026-10-22",
+      "event": "Evernorth prospectus reports 26,094,680 Class A and 31,392,746 Class C shares outstanding as of this date",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm"
+    }
+  ],
+  "holdings_reconciliation": {
+    "class": "CONFIRMED_PRIMARY_SOURCE_PLUS_DERIVED_RECONCILIATION",
+    "official_reported_total_xrp": 473276430,
+    "exact_components": {
+      "cash_funded_purchase_xrp": 84365876.3625,
+      "private_placement_in_kind_xrp": 261919096,
+      "ripple_contribution_xrp": 126791458,
+      "delayed_funding_in_kind_xrp": 200000,
+      "total_xrp": 473276430.3625
+    },
+    "in_kind_total_xrp": 388910554,
+    "arithmetic": "84,365,876.3625 cash-funded XRP + 261,919,096 private-placement in-kind XRP + 126,791,458 Ripple contribution + 200,000 delayed-funding XRP = 473,276,430.3625 XRP.",
+    "correction_to_prior_research": "The earlier 473,076,430 derived total omitted the separate 200,000 XRP delayed-funding contribution. The SEC prospectus states approximately 388,910,554 XRP was contributed in kind; that amount includes the additional 200,000. The reconciled total is approximately 473,276,430 XRP, consistent with XRP Insights' reported figure.",
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "https://xrp-insights.com/xrp-radar/evernorth"
+    ],
+    "limitations": [
+      "The SEC prospectus describes the company as holding approximately 473 million XRP as of October 9; exact component arithmetic above is rounded to the nearest XRP.",
+      "The total is a closing-date treasury figure, not proof that all tokens remained in the same addresses or were never deployed after closing."
+    ]
+  },
+  "custody": {
+    "class": "CONFIRMED_PRIMARY_SOURCE",
+    "custodian": "BitGo Bank & Trust, National Association",
+    "all_xrp_initially_held_in_bitgo_custody_accounts": true,
+    "storage_as_of_prospectus": "100% offline/cold storage",
+    "custody_accounts": "One or more accounts on BitGo's books; XRP may be deposited/withdrawn through custody instructions; BitGo may refuse or cancel transactions for legal/compliance/threshold reasons.",
+    "segregation": "SEC prospectus says assets are held for Evernorth's benefit in segregated accounts and are not BitGo property.",
+    "insurance_usd_approx": 250000000,
+    "insurance_scope": "Aggregate policy shared among eligible BitGo clients, not dedicated to Evernorth.",
+    "coverage_pct_of_xrp_holdings_2026_10_09": 36.9,
+    "use_restriction": "Evernorth states it has committed not to permit BitGo or affiliates to pledge, lend or otherwise use its XRP unless expressly directed as part of Evernorth yield-generation strategies.",
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm"
+    ],
+    "source_location": "prospectus lines 1028-1031 and 2671-2705"
+  },
+  "onchain_attribution": {
+    "class": "SECONDARY_PUBLIC_LEDGER_ATTRIBUTION",
+    "publisher": "XRP Insights",
+    "ledger_index": 108082781,
+    "ledger_closed_at_utc": "2026-11-03T06:06:00Z",
+    "attributed_wallet_count": 13,
+    "attributed_current_balance_xrp": 103129905,
+    "payment_linked_to_two_wallets_labelled_evernorth_xrp": 103129900,
+    "bitgo_tranche_wallet_balance_xrp": 5,
+    "publisher_reported_outgoing_to_addresses_outside_attributed_set_xrp": 370346663,
+    "latest_outgoing_observation_date": "2026-10-22",
+    "destination_attribution": "Unknown; publisher excludes destinations not attributed to Evernorth.",
+    "interpretation": "Only 103.13M XRP is currently visible in the 13 attributed wallets at the cited ledger. The publisher reports 370.35M XRP moved to addresses outside its attributed set. The SEC separately says all Evernorth XRP is initially held through BitGo and 100% cold as of the prospectus. Unattributed destinations may be other BitGo custody/cold wallets, a custody reorganization, partner/strategy deployment or another transfer; none is established by the available address attribution.",
+    "arithmetic_warning": {
+      "naive_sum_current_attributed_balance_plus_reported_moved_amount_xrp": 473476568,
+      "official_approx_closing_holdings_xrp": 473276430,
+      "excess_xrp": 200138,
+      "explanation": "The 370.35M 'moved' figure is not established as a unique net-outflow balance. It may be gross, overlapping or otherwise non-additive. The 200,138 XRP difference is unresolved and must not be forced into the 200,000 delayed-funding explanation.",
+      "required_test": "Replay each source transaction and destination at pinned ledger heights; deduplicate transaction hashes and payment paths; classify self-transfers, intermediate wallets and final destination balances before attempting reconciliation."
+    },
+    "source": "https://xrp-insights.com/xrp-radar/evernorth",
+    "limitations": [
+      "Publisher's wallet labels and attribution methodology are secondary claims, not issuer confirmation.",
+      "No direct XRPL RPC replay of the 13 wallets was executed in this run.",
+      "Movement outside an attributed set is not proof of sale, loss, pledge or a change of custodian."
+    ]
+  },
+  "coinbase_relationships": {
+    "class": "CONFIRMED_PRIMARY_SOURCE",
+    "corporate_execution_edge": {
+      "from": "Evernorth Holdings Inc.",
+      "to": [
+        "Ripple",
+        "Kraken",
+        "Coinbase",
+        "BitGo"
+      ],
+      "relation": "inaugural institutional execution partners for accumulation/deployment from the XRP treasury",
+      "announced_date": "2026-10-14",
+      "deployment_timing": "Q4 2026 expected",
+      "amounts_by_partner": "Not disclosed",
+      "source": "https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-with-ripple-kraken-coinbase-and-bitgo"
+    },
+    "personnel_edge": {
+      "person": "Hugo Jeandesboz",
+      "prior_role": "Co-Chief Investment Officer and Head of Solutions at Coinbase Asset Management; previously Coinbase lead derivatives trader",
+      "current_role": "Evernorth Chief Investment Officer, appointed 2026-10-12",
+      "current_responsibilities": [
+        "XRP treasury allocation",
+        "Liquidity management",
+        "Active management of Evernorth XRP holdings",
+        "Senior contact for trading counterparties and custodians"
+      ],
+      "reports_to": "Asheesh Birla",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629dex991.htm"
+    },
+    "interpretation": "Coinbase's connection to Evernorth is more direct than a conventional XRP listing or historical order-book role: Coinbase is a named institutional execution partner, and Evernorth's CIO previously co-led Coinbase Asset Management and Coinbase derivatives trading. This does not establish that Coinbase controls Evernorth's treasury strategy, owns its XRP or has deployed a specific quantity.",
+    "counterevidence_and_unknowns": [
+      "No partner-specific execution amount, venue, price, fee or trade date has been disclosed in the cited announcement.",
+      "Hugo Jeandesboz's former Coinbase role does not establish current Coinbase agency or control.",
+      "BitGo's separate custodian role is documented; the exact allocation of execution, settlement and custody tasks among all four partners is not fully specified."
+    ]
+  },
+  "capital_and_share_structure": {
+    "closing_gross_cash_proceeds_usd_approx": 272600000,
+    "closing_in_kind_xrp": 388910554,
+    "cash_funded_xrp_purchase": 84365876.3625,
+    "spac_redemptions": {
+      "shares": 18463753,
+      "cash_usd_approx": 193599920
+    },
+    "remaining_public_spac_shares_converted_to_pubco_class_a": 4536247,
+    "trust_cash_released_usd": 47564385,
+    "convertible_note": {
+      "principal_usd": 30000000,
+      "coupon_pct_pik": 4,
+      "issued_date": "2026-10-12",
+      "initial_conversion_price_usd": 10.2,
+      "initial_conversion_shares": 2941176,
+      "maximum_shares_with_maximum_pik_interest": 3585278,
+      "conversion_eligibility": "On or after the first anniversary of the closing/effectiveness date, subject to note terms",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm"
+    },
+    "share_count_as_of_2026_10_22": {
+      "class_a": 26094680,
+      "class_c": 31392746,
+      "class_a_plus_class_c": 57487426,
+      "class_c_rights": "Economic/distribution rights, no ordinary voting rights, not listed and not transferable",
+      "company_units_redeemable_or_exchangeable_for_class_a": 22953128,
+      "warrants": 9283847,
+      "e_loc_potential_new_class_a_shares": 5218935,
+      "incentive_plan_reserved_shares": 8930929,
+      "espp_reserved_shares": 1786185,
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm"
+    },
+    "official_xrp_per_share_definition": "XRP attributable to Pubco divided by aggregate Class A and Class C shares outstanding.",
+    "indicative_cross_date_xrp_per_share": 8.232694746151967,
+    "indicative_cross_date_calculation": "473,276,430 XRP as of closing October 9 divided by 57,487,426 Class A plus Class C shares as of October 22.",
+    "warning": "8.23 is a derived cross-date approximation, not a company-reported same-date KPI. Company Units, warrants, convertible notes, ELOC capacity, incentive/ESPP reserves and other possible issuance must be tracked separately; do not silently mix basic, economic, exchangeable and fully diluted denominators.",
+    "market_data_warning": {
+      "xrpn_close_nov2_usd": 11.7,
+      "xrpn_nov2_change_pct": -17.61,
+      "provider_share_count_disagreement": {
+        "stockanalysis_shares_outstanding": 55030000,
+        "chartexchange_shares_outstanding": 66530000,
+        "sec_oct22_class_a_plus_class_c": 57487426
+      },
+      "market_cap_disagreement_usd": {
+        "stockanalysis": 643870000,
+        "chartexchange": 778420000
+      },
+      "treatment": "Do not calculate a canonical NAV premium/discount until share-class treatment, share counts, Company Units, potential dilution, cash, debt and liabilities are reconciled."
+    },
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "https://stockanalysis.com/stocks/xrpn/",
+      "https://chartexchange.com/symbol/nasdaq-xrpn/"
+    ]
+  },
+  "correction_to_goldman_armada_edge": {
+    "previous_interpretation": "Goldman's Q2 13F Armada position was described as exposure to a proposed Evernorth business combination.",
+    "current_status": "The transaction is no longer proposed: it closed on 2026-10-09; XRPN began trading on Nasdaq on 2026-10-12.",
+    "merger_mechanics": "Each non-redeemed outstanding Armada Class A share converted one-for-one into Pubco Class A common stock. 18,463,753 public shares were redeemed; 4,536,247 remained and converted.",
+    "goldman_q2_13f_position": {
+      "report_date": "2026-06-30",
+      "shares": 365976,
+      "value_usd": 3813470
+    },
+    "post_close_goldman_position": "Unknown. The 13F is a June 30 snapshot; it does not show whether Goldman redeemed, sold or held the shares through October 9. If held through closing, the shares would have converted one-for-one, but no post-close Goldman holding is asserted.",
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H-UNATTRIBUTED-CUSTODY",
+      "hypothesis": "Most XRP outside the 13 publicly attributed wallets may remain in BitGo custody in unlabelled cold-storage addresses or book-entry custody accounts.",
+      "support": [
+        "Evernorth's SEC prospectus says all XRP is initially held at BitGo and 100% cold as of the prospectus",
+        "BitGo may maintain one or more custody accounts; addresses need not be publicly labelled"
+      ],
+      "counterevidence": [
+        "370.35M XRP moved to addresses outside the attributed set and the destinations are not attributed",
+        "No independent address-to-BitGo mapping for those destinations was established"
+      ],
+      "test": "Replay source transactions and seek public address-label evidence; do not infer custody solely from source wallet tags."
+    },
+    {
+      "id": "H-PARTNER-DEPLOYMENT",
+      "hypothesis": "Some unattributed XRP movements may relate to Evernorth's announced Q4 institutional deployment program with Ripple, Kraken, Coinbase and BitGo.",
+      "support": [
+        "Evernorth publicly announced Q4 treasury deployment with these partners",
+        "The onchain source reports large transfers outside the attributed wallet set"
+      ],
+      "counterevidence": [
+        "No destination address or transaction has been linked to a named partner or strategy",
+        "Transfers may be internal custody operations"
+      ],
+      "test": "Match transaction timing, destination ownership evidence and later public partner/issuer disclosures."
+    },
+    {
+      "id": "H-GROSS-FLOW-OVERLAP",
+      "hypothesis": "The 370.35M moved figure is a gross or overlapping transfer measure, not a unique net outflow.",
+      "support": [
+        "Naive addition of 103.129905M current attributed balance and 370.346663M moved amount exceeds the official closing total by 200,138 XRP",
+        "The publisher does not provide a transaction-level unique-destination reconciliation in the summary"
+      ],
+      "counterevidence": [
+        "Full transaction-level history has not yet been replayed"
+      ],
+      "test": "Deduplicate hashes and account for intermediate transfers, returned flows and address-set changes."
+    },
+    {
+      "id": "H-COINBASE-EXECUTION",
+      "hypothesis": "Coinbase has a meaningful operational position in institutional XRP treasury deployment through its named Evernorth execution partnership and the former Coinbase CIO now leading Evernorth's treasury.",
+      "support": [
+        "Official Evernorth partner announcement names Coinbase",
+        "SEC-filed release confirms Hugo Jeandesboz's former Coinbase roles and current Evernorth CIO duties"
+      ],
+      "counterevidence": [
+        "Partner-specific executed volume, mandate, fees and current employee involvement at Coinbase are undisclosed"
+      ],
+      "test": "Monitor filings and partner disclosures for actual execution, custody, strategy and volume details."
+    }
+  ],
+  "feature_store_rules": [
+    "Store Evernorth holdings as a dated company-reported treasury balance, separate from public-wallet attributed balances.",
+    "Store wallet attribution confidence, ledger index, transaction hash, source/destination tags and evidence lineage.",
+    "Do not classify outgoing transfers from labelled wallets as sales without final destination and exchange/dealer attribution.",
+    "Store BitGo custody status and insurance limits as issuer-disclosed facts with prospectus date; do not infer a wallet balance from offchain custody books.",
+    "Keep cash-funded XRP purchases, in-kind contributions, delayed funding, trust proceeds, redemptions, PIK debt, ELOC capacity and share issuance in separate capital ledgers.",
+    "Calculate XRP per share only with same-date attributable XRP and Class A/Class C outstanding shares; separately report Company Units and fully diluted potential shares.",
+    "Keep Coinbase's principal-market accounting role, execution-partner relationship and former-employee personnel link as three distinct graph edges.",
+    "Keep Goldman Armada Q2 position as historical pre-close exposure; post-close ownership is unknown until a later filing verifies it."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Treasury attribution and capital-structure data are descriptive and contain unresolved custody/denominator issues; no calibrated price edge is established."
+  },
+  "next_actions": [
+    "Replay all 13 attributed Evernorth wallets at ledger 108082781 and follow every outbound transaction through Oct22; deduplicate intermediate transfers.",
+    "Investigate the 200,138 XRP arithmetic excess without assuming it is the delayed-funding tranche.",
+    "Reconcile 473,276,430 XRP closing total against the 388,910,554 in-kind and 84,365,876 cash-funded components.",
+    "Track Evernorth Q4 execution with Ripple, Kraken, Coinbase and BitGo; record actual amounts only when disclosed or transaction-attributed.",
+    "Track XRPN Class A/Class C share counts, Company Unit exchanges, ELOC draws, note conversion, warrants and lock-ups.",
+    "Compute official XRP per share only when same-date treasury and share counts are available.",
+    "Update Goldman post-close exposure only from a later filing; do not assume June30 Armada shares remained held."
+  ],
+  "safety": "Public SEC filings, company announcements and public ledger attribution only. No private custody access, credentials, exchange access, trading, or real-money activity."
+}
