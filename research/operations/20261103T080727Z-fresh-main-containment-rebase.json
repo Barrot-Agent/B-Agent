@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "captured_at_utc": "2026-11-03T08:07:27Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "current_main_sha": "ba121a1051c84ceb311e5c65e38a18659dcd7f0e",
+  "current_main_parent": "60aef00405f26badabd4ac15807df163756204cc",
+  "predecessor_security_pr": 1567,
+  "predecessor_head_sha": "cacb06f45a149fb5b005c0299f0de375bc49cf41",
+  "fresh_branch": "security/fresh-main-containment-20261103T0807Z",
+  "preserved_concurrent_main_change": {
+    "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "main_blob_sha": "cc8c3c2a0586b2781971e41eded76aad3c24b6d9",
+    "action": "PRESERVED_CURRENT_MAIN_VERSION",
+    "reason": "The scheduled Cross Analysis refresh changed only this generated timestamp after the predecessor PR base. Its current-main version is retained."
+  },
+  "inherited_changes": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "ce5fcd7f650ac9e9f9041e412fdf84bacb85e9a5"
+    },
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "33b0cd94dac6d83c215a7959620e0c0e7dafe6f7"
+    },
+    {
+      "path": ".github/workflows/dump-brain-corpus.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "04e9a120d5311d435fd3d527cba5b08f5ea37bd0"
+    },
+    {
+      "path": ".github/workflows/kaggle-competitions.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "47ab8a5a7fbe6ce6eabb99d622bb46680600e91b"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "91d7403b7f5e3343a9ad758fe8082235441a42d5"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "2905cf7561c636352a6dbb9af70ec0fe5a815d3f"
+    },
+    {
+      "path": ".github/workflows/task-allocator.yml",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "6ba53ae4adb5a912636676b3cecd29823286450d"
+    },
+    {
+      "path": "brain_corpus/dump.json",
+      "action": "DELETE",
+      "blob_sha": null
+    },
+    {
+      "path": "brain_corpus/dump.md",
+      "action": "DELETE",
+      "blob_sha": null
+    },
+    {
+      "path": "scripts/dump_brain_corpus.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "6b43e8f18cc480b7a1cd516ed38db728d66cf70a"
+    },
+    {
+      "path": "scripts/scheduler.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "4af969dc9ac6515ec3e4502257fc3a1c95fdaec0"
+    },
+    {
+      "path": "research/operations/20261103T070200Z-fresh-main-writer-containment.json",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "bf2943611461323893ab4bb1bae7aa0db2c09463"
+    },
+    {
+      "path": "research/operations/20261103T071900Z-provider-task-allocator-kaggle-audit.json",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "da0954a9c2f8064b0753d3892a151700832e24d7"
+    },
+    {
+      "path": "research/xrp_intelligence/HANDOFF_20261103T070200Z.md",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "95d210f6dc5678b0d230c7eed8c896ca1c9c3db6"
+    },
+    {
+      "path": "research/xrp_intelligence/HANDOFF_20261103T071900Z.md",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "04c6c61beaa3a1660f368e7a65ed39b259d30329"
+    },
+    {
+      "path": "tests/test_cross_analysis_workflow_safety.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "a098a72ee6cc2bf0cc4ba985696e25a8774247eb"
+    },
+    {
+      "path": "tests/test_dump_brain_corpus_disabled.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "99ca9f3358a0fc9d9ab7ca86b60c99e2cea5df2b"
+    },
+    {
+      "path": "tests/test_merge_queue_disabled.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "8a5ea61f3a2a48a0fa38f073082949e03d5c126c"
+    },
+    {
+      "path": "tests/test_scheduler_workflow_allowlist.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "3c8c0e52b4ba41ed4882e0accc5584fd2bf760b6"
+    },
+    {
+      "path": "tests/test_task_allocator_and_kaggle_disabled.py",
+      "action": "ADD_OR_UPDATE",
+      "blob_sha": "1b15f93e71b4894065b6f410b8b332fdb0fb57b1"
+    }
+  ],
+  "confirmed_main_risks": [
+    {
+      "severity": "CRITICAL",
+      "path": ".github/workflows/dump-brain-corpus.yml",
+      "detail": "Manual dispatch, contents:write, Databricks token reference, SQL export of timestamp/topic/insight/session fields, and git push to public main."
+    },
+    {
+      "severity": "HIGH",
+      "path": "brain_corpus/dump.json and brain_corpus/dump.md",
+      "detail": "Raw generated corpus files remain publicly accessible on current main; individual records were not inspected in this run."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/merge-queue.yml",
+      "detail": "Manual mode=all, max_prs=0 unlimited, dry_run=false default, repository write credentials and merge loop."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/scheduler-tick.yml",
+      "detail": "15-minute schedule, contents/actions write, queue commit and push."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/cross-analysis.yml",
+      "detail": "workflow_run, hourly schedule and manual dispatch with contents:write and generated-file commit/push."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/task-allocator.yml",
+      "detail": "Manual dispatch with provider credentials, repository and PR write permissions, task dispatch and main push."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/kaggle-competitions.yml",
+      "detail": "Daily schedule and manual dispatch with Kaggle credentials; referenced root script is missing, so the prior recorded failure stopped before submission."
+    }
+  ],
+  "controls_proposed": [
+    "Disable public corpus export and remove generated raw dumps from current tree; this does not erase Git history, forks, caches or external copies.",
+    "Disable broad manual merge queue.",
+    "Pause Scheduler Tick until durable non-main queue storage and a separately reviewed dispatch design exist.",
+    "Make Cross Analysis read-only and preserve the current generated sentiment_shift artifact.",
+    "Disable unverified provider task allocator with empty permissions and no provider credentials.",
+    "Disable scheduled/manual Kaggle submissions with empty permissions and no Kaggle credentials pending protected-environment approval, exact competition allowlist and verified execution path."
+  ],
+  "verification": {
+    "inherited_predecessor_ci": "362 tests + 8 subtests passed on predecessor head; this fresh head requires new CI.",
+    "fresh_head_ci": "PENDING",
+    "fail_closed_gate": "PENDING",
+    "local_tests": "NOT_EXECUTED",
+    "path_overlap_review": "PASSED; only generated sentiment_shift.json overlapped and was deliberately excluded.",
+    "tree_base": "CURRENT_MAIN"
+  },
+  "preservation": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secret_access": false,
+    "deployment": false,
+    "corpus_records_inspected": false
+  }
+}

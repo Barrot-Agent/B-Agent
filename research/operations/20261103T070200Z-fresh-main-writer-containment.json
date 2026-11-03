@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-11-03T07:02:07Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery",
+  "foundation": "Barrot V3 execution, security, verification and preservation",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "60aef00405f26badabd4ac15807df163756204cc",
+  "base_tree_sha": "4512094681bfc3e2bf1ec2fe34e01f9022dd13db",
+  "source_proposal": {
+    "pr": 1563,
+    "head": "9867973419afbadf8261cfed797de9cda2a3c144",
+    "base": "91b66a388cbb03010f590159919d18aadcaa42cc",
+    "prior_exact_head_ci": "passed: 360 tests + 8 subtests",
+    "prior_fail_closed_gate": "passed; automatic merge disabled",
+    "fresh_main_reverification_required": true
+  },
+  "confirmed_main_findings": [
+    {
+      "id": "public-brain-corpus-export",
+      "status": "CONFIRMED",
+      "evidence": [
+        "brain_corpus/dump.json",
+        "brain_corpus/dump.md",
+        ".github/workflows/dump-brain-corpus.yml",
+        "scripts/dump_brain_corpus.py"
+      ],
+      "detail": "The current public tree contains dump.json (353950 bytes, blob f5397bc2868a0a4a7f832b7f33c7624226f6a08a) and dump.md (296527 bytes, blob d2ccf44fdb0331b8dd0271bb1ca5d9bc7e27581e). The manually dispatchable workflow grants contents:write, references DATABRICKS_TOKEN, queries workspace.barrot.brain, and commits/pushes the generated corpus. Individual record contents were not inspected; sensitivity is unclassified."
+    },
+    {
+      "id": "autonomous-merge-queue",
+      "status": "CONFIRMED",
+      "evidence": [
+        ".github/workflows/merge-queue.yml"
+      ],
+      "detail": "Manual dispatch exposes mode=all, max_prs=0 (unlimited), dry_run=false by default, contents:write and pull-requests:write, and includes branch-update/merge logic."
+    },
+    {
+      "id": "main-writing-scheduler",
+      "status": "CONFIRMED",
+      "evidence": [
+        ".github/workflows/scheduler-tick.yml",
+        "scripts/scheduler.py"
+      ],
+      "detail": "A 15-minute schedule and manual dispatch grant contents:write and actions:write; the workflow commits schedule_queue.jsonl to main and pushes."
+    },
+    {
+      "id": "cross-analysis-main-writer",
+      "status": "CONFIRMED",
+      "evidence": [
+        ".github/workflows/cross-analysis.yml"
+      ],
+      "detail": "Scheduled, workflow_run and manual triggers run with contents:write and commit/push generated analysis files to main. The latest main commit 60aef00405f26badabd4ac15807df163756204cc was authored 2026-11-03T06:51:35Z, message Cross-analysis refresh [skip ci], and changed only ping-pongings/knowledge-base/sentiment_shift.json generated_at."
+    }
+  ],
+  "proposed_changes": [
+    "Disable public brain-corpus workflow with empty permissions and an inert job.",
+    "Replace the Databricks exporter with a no-network/no-write disabled entry point.",
+    "Remove the two generated corpus dumps from the proposed current tree without rewriting Git history.",
+    "Disable the broad manual merge queue and remove all mutation/merge capability.",
+    "Disable Scheduler Tick until a separately reviewed durable non-main state store and approval model exist.",
+    "Restrict local scheduler dispatch to two input-free read-only validation workflows.",
+    "Make Cross Analysis contents-read only, remove all git commit/push behavior, and retain bounded 30-day workflow artifacts.",
+    "Add four regression suites and register them in core CI."
+  ],
+  "verification": {
+    "source_pr_1563_head": "9867973419afbadf8261cfed797de9cda2a3c144",
+    "source_head_ci": "passed: 360 tests + 8 subtests",
+    "source_head_fail_closed_gate": "passed",
+    "fresh_main_head_ci": "PENDING",
+    "fresh_main_fail_closed_gate": "PENDING",
+    "local_tests": "NOT_EXECUTED_IN_THIS_ENVIRONMENT",
+    "branch_tree_reconstruction": "Uses source PR blob objects for reviewed code/test files; new audit/handoff blobs are based on current main 60aef00405f26badabd4ac15807df163756204cc."
+  },
+  "limitations": [
+    "Removing files from the current tree does not erase historical Git objects, forks, caches or external copies.",
+    "Individual brain-corpus record sensitivity remains unclassified; no record content was inspected.",
+    "Disabling Scheduler Tick pauses pending queue execution.",
+    "Cross Analysis outputs become bounded workflow artifacts, not a permanent private archive; artifact access/visibility must be treated as repository-accessible.",
+    "Administrative branch-protection and required-check enforcement remain unverified; previous administrative endpoint access returned 403.",
+    "Workflow action references remain tag-based rather than commit-SHA pinned.",
+    "Regression tests assert workflow safety invariants but do not replace a protected-environment approval policy or independent workflow review."
+  ],
+  "preservation": {
+    "main_unchanged": true,
+    "base_sha": "60aef00405f26badabd4ac15807df163756204cc",
+    "no_force_push": true,
+    "no_merge": true,
+    "no_privileged_workflow_dispatch": true,
+    "no_secret_access": true,
+    "no_external_deployment": true,
+    "no_paper_trade_or_real_money": true,
+    "explicit_authorization_required_for_merge": true
+  }
+}

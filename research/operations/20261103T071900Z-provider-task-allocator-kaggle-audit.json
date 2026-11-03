@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "captured_at_utc": "2026-11-03T07:09:46.780Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "60aef00405f26badabd4ac15807df163756204cc",
+  "branch": "security/fresh-main-containment-20261103T0702Z",
+  "parent_head_sha": "740950904bb369abe1543ee19b04d25e2f1d9695",
+  "findings": [
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/task-allocator.yml",
+      "status": "CONFIRMED_ON_MAIN",
+      "detail": "Manual workflow accepted a free-form goal, granted contents:write and pull-requests:write, read GROQ_API_KEY, OPENAI_API_KEY, CHATGPT_TOKEN and GITHUB_TOKEN, invoked scripts/barrot_task_allocator.py, and committed/pushed allocation results. No tested nine-platform adapters or verified live provider collaboration existed. Proposed branch version is inert with empty permissions and no secret references."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/kaggle-competitions.yml",
+      "status": "CONFIRMED_ON_MAIN",
+      "detail": "Daily 00:00 UTC schedule plus manual dispatch supplied KAGGLE_USERNAME and KAGGLE_KEY. It invoked a nonexistent repository-root kaggle_competitions_automation.py; the actual scripts are under scripts/ and barrot_agent/tools/. The latest scheduled failure previously recorded in PR #1539 stopped at the missing path before script execution, so no submission was made in that run. A future path correction would turn the latent scheduled submission capability live. Proposed branch version is inert, removes schedule and credentials, and has empty permissions pending protected-environment review."
+    }
+  ],
+  "decisions": [
+    "Disable unverified provider orchestration until capability/authentication/permission/data-flow adapters are independently tested.",
+    "Disable scheduled Kaggle submissions until a protected GitHub Environment with required reviewers, exact competition slug allowlist, reproducible script path and per-run approval are verified.",
+    "Do not use a workflow input alone as equivalent to independent reviewer approval."
+  ],
+  "verification": {
+    "parent_security_head": "740950904bb369abe1543ee19b04d25e2f1d9695",
+    "prior_parent_ci": "360 tests + 8 subtests passed",
+    "new_exact_head_ci": "PENDING",
+    "new_fail_closed_gate": "PENDING",
+    "new_regression_tests": 2,
+    "local_tests": "NOT_EXECUTED_IN_THIS_ENVIRONMENT"
+  },
+  "preservation": {
+    "main_unchanged": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_workflow_dispatch": true,
+    "no_secret_access": true,
+    "no_external_submission": true
+  }
+}
