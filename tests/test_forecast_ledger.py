@@ -20,6 +20,9 @@ def forecast(**overrides):
         "venue": "kraken:XRP/USD",
         "target_definition": "XRP/USD mid-price return at exact target timestamp; three-class thresholded outcome",
         "reference_price_usd": 1.27,
+        "reference_price_timestamp_utc": CUTOFF,
+        "reference_price_source_id": "kraken-001",
+        "reference_price_max_age_seconds": 60,
         "data_cutoff_utc": CUTOFF,
         "issued_at_utc": ISSUED,
         "target_time_utc": TARGET,
@@ -67,6 +70,24 @@ def test_rejects_feature_lookahead(tmp_path):
     ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="look-ahead"):
         ledger.record_forecast(forecast(feature_max_timestamp_utc="2026-11-03T16:00:01Z"))
+
+
+def test_rejects_reference_price_after_cutoff(tmp_path):
+    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="reference_price_timestamp_utc exceeds data cutoff"):
+        ledger.record_forecast(forecast(reference_price_timestamp_utc="2026-11-03T16:00:01Z"))
+
+
+def test_rejects_stale_reference_price(tmp_path):
+    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="older than the declared maximum age"):
+        ledger.record_forecast(forecast(reference_price_timestamp_utc="2026-11-03T15:58:59Z"))
+
+
+def test_reference_price_source_must_be_in_source_manifest(tmp_path):
+    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="included in source_ids"):
+        ledger.record_forecast(forecast(reference_price_source_id="unregistered-reference-source"))
 
 
 def test_rejects_target_time_mismatch(tmp_path):
