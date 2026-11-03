@@ -29,7 +29,15 @@
           "result": "MMI_COMPLETE"
         }
       ],
-      "interpretation": "These are historical local deterministic fixture/gate records, not evidence that an external XRP dataset was corroborated. They are preserved unchanged. The new validator makes the same unsupported completion claim fail closed when evaluated under the strengthened code."
+      "interpretation": "These are historical local deterministic fixture/gate records, not evidence that an external XRP dataset was corroborated. They are preserved unchanged. The new validator makes the same unsupported completion claim fail closed when evaluated under the strengthened code.",
+      "ledger_sha256": "b65d4325ccc907d4f7304e9d9e0154efbb6930b7",
+      "event_counts": {
+        "MMI_RECEIVED": 3,
+        "MMI_CORROBORATION_RECORDED": 2,
+        "MMI_COMPLETED": 2,
+        "MMI_COMPLETENESS_REPORTED": 2
+      },
+      "repeated_unsupported_cycles": 2
     },
     "root_cause": [
       {
@@ -69,16 +77,22 @@
     ],
     "tests_added": [
       "Zero independent sources cannot complete corroboration.",
+      "Unstructured status='checked' is not corroboration.",
       "Two source IDs in the same publisher group are not independent.",
+      "Missing independence-group metadata blocks corroboration.",
+      "Model-generated source records cannot corroborate an external claim.",
+      "Declared independent-source count must match distinct groups.",
       "Two distinct external source groups can corroborate.",
       "Multiple source records from one publisher group do not inflate the independent-source count.",
       "Contradictory independent evidence can complete with explicit reconciliation; unanimity is not forced.",
-      "NOT_APPLICABLE requires a reason."
+      "CORROBORATION NOT_APPLICABLE requires a reason.",
+      "Core MMI stages cannot be marked NOT_APPLICABLE."
     ],
     "changed_files": [
       "barrot_agent/mmi_v1.py",
       "barrot_agent/mmi_adapter.py",
-      "tests/test_mmi_v1.py"
+      "tests/test_mmi_v1.py",
+      "tests/test_mmi_integration.py"
     ]
   },
   "validation_design": {
