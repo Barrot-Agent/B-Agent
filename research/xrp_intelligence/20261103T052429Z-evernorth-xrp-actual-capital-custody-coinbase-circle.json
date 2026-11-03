@@ -205,6 +205,46 @@
       "source_ids": [
         "S1"
       ]
+    },
+    {
+      "id": "A21",
+      "classification": "confirmed",
+      "claim": "Coinbase's Q3 2026 filing states its three top product priorities are to grow the everything exchange, scale stablecoins and payments, and expand onchain adoption.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A22",
+      "classification": "confirmed",
+      "claim": "Coinbase reports Q3 resilience in crypto derivatives volume, expanded tradable assets, growth in equities and prediction markets, increased DEX trading, and growth in balances borrowed and lent through Coinbase.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A23",
+      "classification": "confirmed",
+      "claim": "Coinbase says average USDC held in Coinbase products reached an all-time high and that its arrangement with Circle was renewed on the same terms.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A24",
+      "classification": "confirmed",
+      "claim": "Coinbase reported Q3 2026 stablecoin revenue of $306.905M versus $324.534M in Q3 2025, a 5% decline; it also reclassified corporate payment-stablecoin-balance revenue to corporate interest and other income in Q1 2026 and reclassified prior periods for comparison.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A25",
+      "classification": "confirmed",
+      "claim": "Coinbase states 84% of total revenue for the three and nine months ended September 30, 2026 was generated in the U.S., and stablecoin revenue was substantially all attributed to the U.S.",
+      "source_ids": [
+        "S3"
+      ]
     }
   ],
   "capital_ledger": {
@@ -383,6 +423,38 @@
         "A18"
       ],
       "confidence": "unknown_not_negative_proof"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Crypto_derivatives",
+      "relation": "Q3_strategy_and_volume_resilience",
+      "claim_ids": [
+        "A21",
+        "A22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Onchain_Dex_and_lending",
+      "relation": "Q3_product_expansion",
+      "claim_ids": [
+        "A21",
+        "A22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Coinbase",
+      "to": "U.S._stablecoin_market",
+      "relation": "revenue_and_distribution_exposure",
+      "claim_ids": [
+        "A14",
+        "A23",
+        "A24",
+        "A25"
+      ],
+      "confidence": "high"
     }
   ],
   "competing_hypotheses": [
@@ -461,6 +533,28 @@
         "A18"
       ],
       "status": "network_relationships_confirmed_coordination_unproven"
+    },
+    {
+      "id": "HEV8",
+      "hypothesis": "Coinbase's strategic posture is broadening from a spot exchange into an integrated exchange, stablecoin/payment, derivatives, onchain, lending and prediction-market platform.",
+      "support": [
+        "A21",
+        "A22",
+        "A23"
+      ],
+      "counter": [],
+      "status": "confirmed_company_strategy"
+    },
+    {
+      "id": "HEV9",
+      "hypothesis": "Record average USDC balances can coexist with lower stablecoin revenue when rates, revenue presentation and product mix change; balance growth alone is not a revenue forecast.",
+      "support": [
+        "A14",
+        "A23",
+        "A24"
+      ],
+      "counter": [],
+      "status": "supported_accounting_and_rate_sensitivity"
     }
   ],
   "sources": [
@@ -499,7 +593,11 @@
       "supporting_locations": [
         "Q3 stablecoin revenue",
         "Circle arrangement renewed on same terms",
-        "Average USDC balances held in Coinbase products at all-time high"
+        "Average USDC balances held in Coinbase products at all-time high",
+        "Lines 1520-1522: Coinbase's top three product priorities, derivatives, equities, prediction markets, USDC balances, Circle renewal and DEX/lending growth",
+        "Lines 1545: 84% U.S. revenue and stablecoin revenue substantially all U.S.",
+        "Lines 1578-1580: Q3 stablecoin revenue $306.905M vs $324.534M, down 5%",
+        "Lines 1595 onward: Q1 2026 reclassification of corporate payment-stablecoin-balance revenue"
       ]
     },
     {
