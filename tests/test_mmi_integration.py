@@ -144,25 +144,35 @@ def test_protocol_and_knowledge_completeness_are_separate():
             source_id="s1",
             uri="https://publisher-a.example/integration",
             provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
-            independence_group="publisher-a",
+            independence_group="publisher-a.example",
         ),
         SourceRecord(
             source_id="s2",
             uri="https://publisher-b.example/integration",
             provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
-            independence_group="publisher-b",
+            independence_group="publisher-b.example",
         ),
     ])
-    record.evidence.append(
+    record.evidence.extend([
         EvidenceRecord(
             evidence_id="e1",
             claim="integration test claim",
+            claim_id="integration-claim-003",
             state=ParseState.OBSERVED,
-            source_ids=["s1", "s2"],
-        )
-    )
+            source_ids=["s1"],
+        ),
+        EvidenceRecord(
+            evidence_id="e2",
+            claim="integration test claim",
+            claim_id="integration-claim-003",
+            state=ParseState.OBSERVED,
+            source_ids=["s2"],
+        ),
+    ])
     record.corroboration_results.append({
         "status": "CORROBORATED",
+        "claim_id": "integration-claim-003",
+        "supporting_evidence_ids": ["e1", "e2"],
         "independent_source_ids": ["s1", "s2"],
         "independent_sources": 2,
     })
@@ -193,28 +203,38 @@ def test_mmi_cycle_persists_corroboration_and_ledger(tmp_path):
             source_id="s1",
             uri="https://publisher-a.example/ledger",
             provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
-            independence_group="publisher-a",
+            independence_group="publisher-a.example",
         ),
         SourceRecord(
             source_id="s2",
             uri="https://publisher-b.example/ledger",
             provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
-            independence_group="publisher-b",
+            independence_group="publisher-b.example",
         ),
     ])
-    record.evidence.append(
+    record.evidence.extend([
         EvidenceRecord(
             evidence_id="e1",
             claim="ledger test claim",
+            claim_id="ledger-claim-001",
             state=ParseState.OBSERVED,
-            source_ids=["s1", "s2"],
-        )
-    )
+            source_ids=["s1"],
+        ),
+        EvidenceRecord(
+            evidence_id="e2",
+            claim="ledger test claim",
+            claim_id="ledger-claim-001",
+            state=ParseState.OBSERVED,
+            source_ids=["s2"],
+        ),
+    ])
 
     engine.record_corroboration(
         record,
         {
             "status": "CORROBORATED",
+            "claim_id": "ledger-claim-001",
+            "supporting_evidence_ids": ["e1", "e2"],
             "independent_source_ids": ["s1", "s2"],
             "independent_sources": 2,
         },
@@ -226,6 +246,8 @@ def test_mmi_cycle_persists_corroboration_and_ledger(tmp_path):
     assert completed.result == MMIResult.COMPLETE
     assert completed.corroboration_results == [{
         "status": "CORROBORATED",
+        "claim_id": "ledger-claim-001",
+        "supporting_evidence_ids": ["e1", "e2"],
         "independent_source_ids": ["s1", "s2"],
         "independent_sources": 2,
     }]
