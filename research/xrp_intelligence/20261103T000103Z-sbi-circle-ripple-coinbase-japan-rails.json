@@ -238,6 +238,54 @@
         "ripple-national-trust-bank-final-occ-approval-20261026",
         "occ-ripple-national-trust-bank-effective-20261026"
       ]
+    },
+    {
+      "id": "F25",
+      "class": "CONFIRMED_OFFICIAL_MACRO_POLICY_SNAPSHOT",
+      "finding": "The Federal Reserve's latest retrieved policy-rate page reports a 3.75%-4.00% federal funds target range as of October 29, 2026. The Bank of Japan's October 30, 2026 statement maintained the uncollateralized overnight call rate around 1.25%, with an 8-1 vote and one member preferring 1.50%. The nominal policy-rate differential is therefore approximately 2.50-2.75 percentage points.",
+      "implication": "The rate differential is relevant to USD/JPY funding, yen carry incentives, Japanese portfolio allocation and the relative appeal of yen-denominated token products. It is not a direct XRP demand or price signal.",
+      "sources": [
+        "fed-policy-rate-20261029",
+        "boj-monetary-policy-20261030"
+      ]
+    },
+    {
+      "id": "F26",
+      "class": "CONFIRMED_OFFICIAL_BOJ_BALANCE_SHEET_POLICY_CHANGE",
+      "finding": "The Bank of Japan decided in October 2026 to increase ETF sales from approximately ¥330B per year book value (about ¥620B market value) to approximately ¥860B per year book value (about ¥2.46T market value), effective January 2027. The BOJ estimates the new pace at about 0.1% of trading value, versus about 0.05% before, and retains the ability to temporarily adjust or suspend sales in response to market conditions.",
+      "implication": "This is a material Japanese equity-liquidity and portfolio-rebalancing change. Any effect on crypto or XRP would be indirect through broader risk appetite, yen funding and portfolio allocation; no direct crypto flow is established.",
+      "sources": [
+        "boj-etf-sales-pace-change-20261030"
+      ]
+    },
+    {
+      "id": "F27",
+      "class": "THIRD_PARTY_TOKEN_IDENTITY_AND_MARKET_SNAPSHOT",
+      "finding": "The strongest current candidate for the phrase 'ASK Coin' is Permission Coin (ticker ASK). CoinMarketCap describes it as a consent-based data/AI exchange utility token using LayerZero OFT, with official contracts on Base and Polygon and markets on Gate.io, Aerodrome and Uniswap. Its November 3 snapshot reports about $1.41M market capitalization, $79.89 24-hour volume, 16.16B circulating tokens and 100B total/max supply.",
+      "implication": "The tiny reported 24-hour volume indicates very thin measured trading activity at the snapshot. No direct XRP/XRPL integration was found in the reviewed Permission materials. This remains a candidate identity, not proof that Permission Coin is the user's intended 'ASK Coin'.",
+      "sources": [
+        "permission-coin-ask-cmc-20261103"
+      ]
+    },
+    {
+      "id": "F28",
+      "class": "CONFIRMED_PROMOTIONAL_PHRASE_CONTEXT",
+      "finding": "Flare's May 2, 2025 'An Introduction to XRP DeFi' article uses the phrase 'actual capital deployment and liquidity provision' when describing stablecoins as a bridge from interest in XRPFi to DeFi liquidity. It presents USD₮0 as a capital base and FXRP as the composable XRP representation.",
+      "implication": "'Actual capital' in this source is descriptive/promotional language, not a standardized accounting measure, proof of net XRP purchases, or a verified capital-flow metric. The research ledger keeps reserves, deposits, borrowing, collateral, liquidity provision, turnover and net spot purchases separate.",
+      "sources": [
+        "flare-xrp-defi-actual-capital-20250502"
+      ]
+    },
+    {
+      "id": "F29",
+      "class": "PLAUSIBLE_CREATOR_IDENTITY_CANDIDATE_NOT_CONFIRMED",
+      "finding": "A New Zealand public-information disclosure identifies Camilla (Millie) Stephenson, UK, as a content creator associated with Wholesome Mils. The Wholesome.mils Linktree links to a YouTube channel, and one linked video was verified: 'Total Body 15 Min Vinyasa Flow for Stress Relief | Beginner Friendly' (video ID FQTOensuU-Y). The full public video inventory could not be retrieved reliably.",
+      "implication": "WholesomeMils is a plausible identity candidate, not conclusive proof that this is the Camilla Stephenson intended in the XRP research. No XRP-related content connection is established. Do not merge this identity with other similarly named people.",
+      "sources": [
+        "camilla-stephenson-wholesome-mils-disclosure",
+        "wholesome-mils-linktree",
+        "wholesome-mils-youtube-video-20210616"
+      ]
     }
   ],
   "identity_resolution": {
@@ -255,18 +303,33 @@
       "xrp_relationship": "No direct XRP, Ripple or XRPL relationship established for the regional SBIC corporations in reviewed sources."
     },
     "camilla_stephenson": {
-      "candidate": "Camilla (Millie) Stephenson / WholesomeMils",
-      "status": "PLAUSIBLE_IDENTITY_MATCH_NOT_CONCLUSIVE",
+      "candidate": "Camilla (Millie) Stephenson / Wholesome Mils",
+      "confidence": "PLAUSIBLE_NOT_CONFIRMED",
       "channel_id": "UCT9sgvs8a8v72klcSY1znBQ",
-      "verified_video_count": 1,
-      "verified_video_url": "https://www.youtube.com/watch?v=FQTOensuU-Y",
+      "verified_video_ids": [
+        "FQTOensuU-Y"
+      ],
       "inventory_status": "INCOMPLETE",
-      "xrp_connection": "None established"
+      "xrp_connection": "NONE_ESTABLISHED",
+      "source_ids": [
+        "camilla-stephenson-wholesome-mils-disclosure",
+        "wholesome-mils-linktree",
+        "wholesome-mils-youtube-video-20210616"
+      ]
     },
     "ask_coin": {
-      "status": "UNRESOLVED",
-      "candidate": "Permission Coin ASK",
-      "xrp_integration": "NOT_VERIFIED"
+      "candidate": "Permission Coin (ASK)",
+      "confidence": "PLAUSIBLE_CANDIDATE_ONLY",
+      "ticker": "ASK",
+      "networks": [
+        "Base",
+        "Polygon"
+      ],
+      "no_xrp_link_found": true,
+      "market_liquidity_note": "CMC snapshot shows approximately $79.89 24-hour volume against $1.41M market cap; extremely thin and not a reliable executable-price source.",
+      "source_ids": [
+        "permission-coin-ask-cmc-20261103"
+      ]
     }
   },
   "relationship_graph": {
@@ -922,6 +985,12 @@
       "amount": "Not a token issuance or XRP flow; reserve totals are issuer liabilities held under separate custody mandates",
       "type": "custody and institutional banking service",
       "not": "shared Circle/Ripple reserves, BNY-owned XRP or direct Circle-Ripple partnership"
+    },
+    {
+      "item": "JPYSC Lending maximum annualized product rate",
+      "amount": "Up to 3% for 168 days; up to 2.5% for 84 days; up to 2% for 28 days",
+      "type": "variable customer token-lending product terms",
+      "not": "risk-free bank deposit yield or guaranteed return; compare with BOJ policy rate only as a rough nominal spread"
     }
   ],
   "market_observations": {
@@ -1084,6 +1153,66 @@
         "bny_role": "Ripple still identifies BNY as primary RLUSD reserve custodian."
       },
       "interpretation": "BNY is a common custodian for Circle USDC and Ripple RLUSD under separate mandates. This is an indirect institutional link, not direct Circle-Ripple ownership, a joint venture, shared reserves or a common issuer."
+    },
+    "macro": {
+      "fed_policy_rate": {
+        "target_range_percent": [
+          3.75,
+          4
+        ],
+        "as_of": "2026-10-29",
+        "publisher": "Federal Reserve",
+        "classification": "OFFICIAL_POLICY_RATE_PAGE"
+      },
+      "bank_of_japan": {
+        "policy_rate_percent": 1.25,
+        "decision_date": "2026-10-30",
+        "vote": "8-1",
+        "dissent": "One member preferred 1.50%.",
+        "classification": "OFFICIAL_STATEMENT"
+      },
+      "derived_us_japan_policy_rate_differential_percentage_points": [
+        2.5,
+        2.75
+      ],
+      "boj_outlook": {
+        "underlying_inflation": "Generally projected to be at a level consistent with the 2% price-stability target toward the second half of the projection period.",
+        "risk_balance": "Risks to prices skewed to the upside.",
+        "forecast_horizon": "FY2026-FY2028",
+        "classification": "OFFICIAL_BOJ_OUTLOOK"
+      },
+      "boj_etf_sales": {
+        "effective_from": "2027-01",
+        "prior_annual_book_value_yen": 330000000000,
+        "new_annual_book_value_yen": 860000000000,
+        "new_annual_market_value_yen_approx": 2460000000000,
+        "prior_share_of_trading_value_percent": 0.05,
+        "new_share_of_trading_value_percent": 0.1,
+        "years_to_complete_estimate": 43,
+        "classification": "OFFICIAL_BOJ_DECISION"
+      },
+      "interpretation": "Macro context for JPY funding and Japanese risk allocation only; no direct XRP price direction inferred."
+    },
+    "permission_coin_ask": {
+      "candidate": "Permission Coin (ASK)",
+      "as_of": "2026-11-03",
+      "price_usd_approx": 0.0000875,
+      "market_cap_usd_approx": 1410000,
+      "volume_24h_usd": 79.89,
+      "circulating_supply": 16160000000,
+      "total_and_max_supply": 100000000000,
+      "networks": [
+        "Base",
+        "Polygon"
+      ],
+      "reported_markets": [
+        "Gate.io",
+        "Aerodrome",
+        "Uniswap"
+      ],
+      "reported_volume_to_market_cap_ratio": 0.00005647,
+      "classification": "THIRD_PARTY_DYNAMIC_MARKET_SNAPSHOT",
+      "limitation": "CMC page is dynamic and the reported 24-hour volume is extremely small; do not use as a reliable executable-price source."
     }
   },
   "competing_causal_hypotheses": [
@@ -1270,6 +1399,27 @@
         "Look for direct Circle-Ripple contracts, board rights or technical integration rather than inferring them from BNY"
       ],
       "status": "COMMON_CUSTODIAN_LINK_CONFIRMED; STRATEGIC_EFFECT_UNMEASURED"
+    },
+    {
+      "id": "H11",
+      "hypothesis": "Higher Japanese policy rates and JPYSC lending yields may influence yen-denominated token balances and the relative appeal of JPYSC lending, while BOJ ETF sales may indirectly affect Japanese risk-asset allocation.",
+      "support": [
+        "BOJ policy rate 1.25% as of October 30",
+        "JPYSC Lending maximum term rate up to 3% for 168 days",
+        "BOJ ETF sales pace rises to ¥860B book value/year from January 2027"
+      ],
+      "disconfirming": [
+        "JPYSC lending is not a deposit and is not deposit-insured",
+        "Maximum lending rates are variable product terms with issuer, liquidity and term risk",
+        "No historical JPYSC flow series or XRP-linked conversion data has been measured",
+        "BOJ ETF sales are equity-market transactions, not direct crypto sales"
+      ],
+      "tests": [
+        "Track JPYSC lending and on-chain balances against BOJ policy-rate and JGB changes",
+        "Track SBI VC Trade JPYSC mint/burn/transfer activity",
+        "Measure any XRP corridor flows separately from JPYSC lending"
+      ],
+      "status": "MACRO_TRANSMISSION_HYPOTHESIS_NOT_CAUSALLY_ESTIMATED"
     }
   ],
   "data_quality_controls": [
@@ -1290,7 +1440,11 @@
     "Native USDC or RLUSD on XRPL does not establish that XRP is used as the bridge asset in a payment or cross-chain transfer.",
     "Treat BNY's USDC and RLUSD custody mandates as separate issuer-specific arrangements; common custodian does not mean common reserves or a direct Circle-Ripple agreement.",
     "Distinguish Ripple National Trust Bank's final charter approval/effective status from commencement of all approved operating activities; Ripple says RNTB will begin operations.",
-    "Do not infer that RNTB replaces BNY as RLUSD primary reserve custodian; Ripple's October 26 release still identifies BNY in that role."
+    "Do not infer that RNTB replaces BNY as RLUSD primary reserve custodian; Ripple's October 26 release still identifies BNY in that role.",
+    "Fed and BOJ policy rates are macro context, not direct XRP predictors; the derived rate differential must be timestamped and not used without historical testing.",
+    "BOJ ETF sales are book-value and market-value measures; do not confuse the ¥860B book-value pace with approximately ¥2.46T market value.",
+    "Permission Coin ASK's CMC volume snapshot is extremely thin; do not treat a displayed price as executable liquidity.",
+    "The Camilla Stephenson / WholesomeMils match remains a candidate identity; only one public video is verified and the inventory is incomplete."
   ],
   "event_timeline": [
     {
@@ -1412,6 +1566,16 @@
       "date": "2026-10-26",
       "event": "Ripple announces final OCC approval for Ripple National Trust Bank; OCC CAS records the charter as consummated/effective on the same date.",
       "status": "RIPPLE_RELEASE_AND_OCC_CAS"
+    },
+    {
+      "date": "2026-10-30",
+      "event": "BOJ maintains policy rate around 1.25% by 8-1 vote; one member prefers 1.50%.",
+      "status": "OFFICIAL_BOJ_MONETARY_POLICY"
+    },
+    {
+      "date": "2026-10-30",
+      "event": "BOJ announces ETF sales pace to rise from ¥330B to ¥860B annual book value from January 2027.",
+      "status": "OFFICIAL_BOJ_BALANCE_SHEET_POLICY"
     }
   ],
   "source_records": [
@@ -1747,6 +1911,76 @@
       "date": "2026-10-26",
       "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
       "observation": "OCC Corporate Applications Search shows Ripple National Trust Bank charter approved December 12, 2025 and consummated/effective October 26, 2026."
+    },
+    {
+      "id": "fed-policy-rate-20261029",
+      "publisher": "Federal Reserve",
+      "type": "official_policy_rate_page",
+      "date": "2026-10-29",
+      "url": "https://www.federalreserve.gov/economy-at-a-glance-policy-rate.htm",
+      "observation": "Latest retrieved target range for federal funds rate is 3.75%-4.00% as of October 29, 2026."
+    },
+    {
+      "id": "boj-monetary-policy-20261030",
+      "publisher": "Bank of Japan",
+      "type": "official_monetary_policy_statement",
+      "date": "2026-10-30",
+      "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+      "observation": "BOJ maintains uncollateralized overnight call rate around 1.25%; vote 8-1; one member preferred 1.50%."
+    },
+    {
+      "id": "boj-outlook-20261030",
+      "publisher": "Bank of Japan",
+      "type": "official_outlook_report",
+      "date": "2026-10-30",
+      "url": "https://www.boj.or.jp/en/mopo/outlook/gor2610a.pdf",
+      "observation": "October 2026 Outlook for Economic Activity and Prices; underlying inflation expected to align with 2% target over projection horizon; price risks skewed upward."
+    },
+    {
+      "id": "boj-etf-sales-pace-change-20261030",
+      "publisher": "Bank of Japan",
+      "type": "official_policy_decision_reference",
+      "date": "2026-10-30",
+      "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030c.pdf",
+      "observation": "From January 2027, ETF sales increase from about ¥330B to about ¥860B annual book value; about ¥2.46T market value; estimated share of trading value rises from 0.05% to 0.1%; temporary adjustment/suspension remains possible."
+    },
+    {
+      "id": "permission-coin-ask-cmc-20261103",
+      "publisher": "CoinMarketCap",
+      "type": "third_party_dynamic_token_identity_and_market_snapshot",
+      "date": "2026-11-03",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "observation": "Permission Coin ticker ASK; Base and Polygon LayerZero OFT contracts; consent-based data/AI exchange utility; approximately $1.41M market cap, $79.89 24-hour volume, 16.16B circulating and 100B total/max supply at capture."
+    },
+    {
+      "id": "flare-xrp-defi-actual-capital-20250502",
+      "publisher": "Flare",
+      "type": "official_ecosystem_article",
+      "date": "2025-05-02",
+      "url": "https://flare.network/news/introduction-to-xrp-defi",
+      "observation": "Uses phrase 'actual capital deployment and liquidity provision' to describe stablecoins as a bridge from XRPFi interest to DeFi liquidity; presents USD₮0 as a capital base and FXRP as composable XRP representation."
+    },
+    {
+      "id": "camilla-stephenson-wholesome-mils-disclosure",
+      "publisher": "New Zealand Official Information Act disclosure hosted by FYI",
+      "type": "public_information_disclosure",
+      "url": "https://fyi.org.nz/request/28272/response/109134/attach/2/fyi.org%20OIA%20response%20Stargrazing%20campaign.pdf",
+      "observation": "Lists Camilla (Millie) Stephenson, UK, as a confirmed content creator associated with Wholesome Mils; candidate identity evidence only."
+    },
+    {
+      "id": "wholesome-mils-linktree",
+      "publisher": "Wholesome.mils",
+      "type": "creator_link_hub",
+      "url": "https://linktr.ee/wholesome.mils",
+      "observation": "Public Linktree includes a YouTube channel link and a 15-minute Vinyasa Flow video link; supports candidate channel connection."
+    },
+    {
+      "id": "wholesome-mils-youtube-video-20210616",
+      "publisher": "WholesomeMils",
+      "type": "public_youtube_video",
+      "date": "2021-06-16",
+      "url": "https://www.youtube.com/watch?v=FQTOensuU-Y",
+      "observation": "Verified public video titled 'Total Body 15 Min Vinyasa Flow for Stress Relief | Beginner Friendly'; channel ID UCT9sgvs8a8v72klcSY1znBQ."
     }
   ],
   "architecture_state": {
@@ -1811,9 +2045,16 @@
     "Verify the operational commencement date and first live services of Ripple National Trust Bank after its October 26, 2026 final OCC approval.",
     "Determine how RNTB reserve-management/collateral-trustee responsibilities coexist with BNY's continuing primary reserve-custodian role.",
     "Measure BNY institutional USDC custody, mint/burn and transfer activity, and determine whether any XRPL-specific flows are disclosed.",
-    "Verify whether BNY's RLUSD custody mandate covers all supported chains or reserve assets only; do not infer custody of customer RLUSD balances."
+    "Verify whether BNY's RLUSD custody mandate covers all supported chains or reserve assets only; do not infer custody of customer RLUSD balances.",
+    "Test whether JPYSC Lending balances respond to the BOJ policy-rate differential or to issuer-specific incentives and liquidity constraints.",
+    "Determine whether the Permission Coin ASK candidate is the exact token meant by the original phrase; no XRP integration has been identified.",
+    "Retrieve the full public video inventory for the WholesomeMils channel through a reliable public channel feed/API; current list is incomplete."
   ],
   "next_actions": [
+    "Track the BOJ January 2027 ETF sales pace and compare Japanese equity/risk-asset flows with crypto market conditions without assuming causation.",
+    "Track JPYSC Lending terms and balances against BOJ policy changes.",
+    "Continue Permission Coin ASK identity and liquidity verification; require a verified XRP link before adding it to the XRP relationship graph.",
+    "Complete the WholesomeMils public YouTube video inventory only after identity confirmation and reliable channel listing retrieval.",
     "Track RNTB opening and first operational OCC-supervised services; reconcile its role with BNY's RLUSD primary custody.",
     "Track BNY's USDC custody/mint/burn product adoption and Circle's disclosed institutional flows.",
     "Add BNY as a shared institutional node in the Circle/Ripple relationship graph while retaining separate issuer mandates.",
@@ -1892,6 +2133,45 @@
         "fsa-foreign-trust-e-payment-amendment-20260519",
         "sbi-ripple-rlusd-japan-20260624"
       ]
+    }
+  },
+  "exact_phrase_research": {
+    "ASK Coin": {
+      "status": "CANDIDATE_NOT_CONFIRMED",
+      "candidate": "Permission Coin (ASK)",
+      "reason": "Ticker, consent-based data/AI platform and LayerZero OFT deployment fit the phrase, but no direct XRP/XRPL integration or user-intended identity is established.",
+      "source_ids": [
+        "permission-coin-ask-cmc-20261103"
+      ]
+    },
+    "actual capital": {
+      "status": "SOURCE_CONTEXT_RESOLVED",
+      "meaning": "Flare article wording for stablecoins converting XRPFi interest into capital deployment/liquidity provision; not an accounting standard or proof of net XRP buying.",
+      "source_ids": [
+        "flare-xrp-defi-actual-capital-20250502"
+      ]
+    },
+    "SBIC, ChatGPT SBIC": {
+      "status": "PLAUSIBLE_CONTEXT_FOUND",
+      "meaning": "Tokyo SBIC's official 2025 generative-AI training course included ChatGPT and Copilot. It is not an XRP project or SBI Holdings partnership.",
+      "source_ids": [
+        "tokyo-sbic-profile",
+        "tokyo-sbic-chatgpt-training-20250612"
+      ]
+    },
+    "Camilla Stephenson": {
+      "status": "PLAUSIBLE_IDENTITY_CANDIDATE_VIDEO_INVENTORY_INCOMPLETE",
+      "candidate": "Camilla (Millie) Stephenson / Wholesome Mils",
+      "verified_video_ids": [
+        "FQTOensuU-Y"
+      ],
+      "channel_id": "UCT9sgvs8a8v72klcSY1znBQ",
+      "source_ids": [
+        "camilla-stephenson-wholesome-mils-disclosure",
+        "wholesome-mils-linktree",
+        "wholesome-mils-youtube-video-20210616"
+      ],
+      "limitation": "Only one video is verified; no exhaustive channel video list and no XRP-related content connection established."
     }
   }
 }
