@@ -428,3 +428,34 @@ Main remains `63ebacfed11e2ac4e50515f783353ed9fccb7475`; no main content was wri
 3. Build the point-in-time XRP feature/outcome dataset and walk-forward baselines. The ledger is storage/verification infrastructure only; no directional model has been validated.
 4. Keep PR #1597, #1599 and #1601 draft/open until explicit user approval. Do not merge. Preserve PR #1598 and #1600 as superseded/failed iteration records.
 5. Reconcile CI workflow overlaps with PR #1585 before any merge recommendation.
+
+
+## SBIC identity resolution and ledger safety follow-up — 2026-11-03
+
+### Japan SBIC / ChatGPT SBIC
+New artifact: `20261103-sbic-east-japan-chatgpt-identity-review.json` (4 official sources, 7 observations, 7 relationship edges, 2 competing hypotheses; JSON parse verified).
+
+The Japan-specific entity is officially identified as **Tokyo Small and Medium Business Investment & Consultation Co., Ltd.**, English name **SBIC East Japan**, corporate number `9011001030621`. Its official profile reports establishment on 1963-11-15, capital of JPY 6,673,400,000, 96 employees, and shareholders drawn from local governments, chambers of commerce, financial institutions and operating companies.
+
+Official SBIC pages show multiple ChatGPT/generative-AI seminars:
+- February 26, 2025, Ueno: co-hosted with the Taito branch of the Tokyo Chamber of Commerce, supported by Japan Finance Corporation Tokyo/Ueno; speaker was a Microsoft Japan executive evangelist who demonstrated ChatGPT.
+- June 6, 2025: generative AI in business, with science writer Kaoru Takeuchi.
+- March 5, 2026, Hamamatsu: hosted by SBIC East Japan and co-hosted by Hamamatsu Iwata Shinkin; Microsoft Japan executive evangelist demonstrated ChatGPT.
+
+This establishes public education/seminar activity, not an OpenAI partnership, product partnership, investment or proprietary ChatGPT arrangement. SBIC East Japan is a distinct legal entity from SBI Holdings. No XRP, Ripple, Circle or Coinbase connection was found in the reviewed official sources. Keep it out of the XRP relationship graph.
+
+### Prediction-ledger safety follow-up
+- PR #1602: https://github.com/Barrot-Agent/B-Agent/pull/1602
+- Current head: `dc92ae40c467782e5e35fb640df20a49e07030b1`; base main `63ebacfed11e2ac4e50515f783353ed9fccb7475`.
+- Adds explicit Git ignores for the SQLite forecast ledger database and WAL/SHM/journal sidecars, plus a regression test in the dedicated test suite.
+- Clarifies that SQLite triggers block ordinary row updates/deletes but do not make the database cryptographically tamper-proof against direct file replacement, schema/trigger modification or host compromise. Stronger tamper evidence needs periodic hash verification and an independently anchored/signed export.
+- Dedicated Prediction Integrity Tests run `41692292279`: 43/43 passed, including `test_default_forecast_ledger_database_and_sidecars_are_gitignored`.
+- Fail-closed gate `41692292225`: passed; log confirms automatic merge disabled and no repository content changed.
+- Core CI `41692292091` was still in progress at the last check. PR #1602 remains draft/open/unmerged.
+
+### Updated next actions
+1. Recheck PR #1602 core CI on its exact head before calling the branch fully verified.
+2. Monitor Circle's November 4, 08:00 ET Q3 webcast and reconcile the official results against the October 29 USDC supply/reserve baseline.
+3. Continue synchronized XRPL USDC/RLUSD ledger snapshots and mint/burn reconciliation; keep provider disagreement visible.
+4. Preserve the distinction between stablecoin activity on XRPL and XRP spot demand. No directional forecast is issued.
+5. Keep PR #1597, #1599, #1601 and #1602 draft/open until explicit approval; no merge has occurred.
