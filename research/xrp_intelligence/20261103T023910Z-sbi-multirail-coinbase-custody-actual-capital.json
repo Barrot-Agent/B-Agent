@@ -1,0 +1,789 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "sbi_multirail_xrp_treasury_custody_and_actual_capital_reconciliation",
+  "snapshot_id": "20261103T023910Z",
+  "captured_at_utc": "2026-11-03T02:39:10.599Z",
+  "data_cutoff_utc": "2026-11-03T02:39:10.599Z",
+  "repository_main_sha": "e67708d203bff98e469ee0dbe8e0166358800109",
+  "research_scope": [
+    "XRP treasury capital formation",
+    "SBI Holdings and Japanese payment rails",
+    "Coinbase market and accounting role",
+    "Circle and USDC distribution",
+    "custody and collateral",
+    "institutional execution partners",
+    "actual capital classification"
+  ],
+  "executive_assessment": "Primary SEC filings show that Evernorth held approximately 473 million XRP as of October 9, 2026, selected Coinbase as its principal market solely for XRP impairment accounting, and held its XRP through BitGo with cold storage reported as 100% at prospectus date. SBI's $200 million Evernorth investment is a corporate equity investment and must not be equated with an equal amount of XRP spot purchases. New SBI announcements show a broad multi-rail strategy spanning JPYSC, USDC, RLUSD, Open Standard/OUSD, BlackRock tokenized MMF, Cross River, PhotonPay and Erebor. Several are MOUs, planned investments or PoCs rather than production flows.",
+  "evidence_classifications": {
+    "confirmed_primary": "SEC filing facts, published transaction terms, official issuer/company announcements",
+    "issuer_reported": "Company-reported metrics or strategy not independently audited in this artifact",
+    "inference": "Reasonable interpretation of multiple confirmed relationships; not transaction-level proof",
+    "unknown": "Not established by the sources retrieved",
+    "speculation": "Excluded from factual claims; retained only as testable scenario"
+  },
+  "actual_capital_ledger": [
+    {
+      "asset_or_capital": "Evernorth in-kind private-placement XRP",
+      "quantity_xrp": 261919096,
+      "classification": "in-kind XRP contribution; not spot-market buying",
+      "cutoff": "2026-10-09",
+      "source": "Evernorth SEC 10-Q filed 2026-10-30"
+    },
+    {
+      "asset_or_capital": "Evernorth cash-funded XRP acquisition",
+      "cash_usd": 214100000,
+      "quantity_xrp": 84365876,
+      "classification": "cash used to acquire XRP; execution venue/route not specified",
+      "derived_average_price_usd": 2.53657,
+      "cutoff": "2026-10-09",
+      "source": "Evernorth SEC 10-Q filed 2026-10-30"
+    },
+    {
+      "asset_or_capital": "Ripple contribution to Evernorth",
+      "quantity_xrp": 126791458,
+      "classification": "in-kind strategic contribution; not a spot purchase",
+      "cutoff": "2026-10-09",
+      "source": "Evernorth SEC 10-Q"
+    },
+    {
+      "asset_or_capital": "Evernorth approximate treasury",
+      "quantity_xrp": 473000000,
+      "derived_component_sum_xrp": 473076430,
+      "classification": "company-reported approximate holdings as of 2026-10-09",
+      "cutoff": "2026-10-09",
+      "source": "Evernorth SEC 10-Q"
+    },
+    {
+      "asset_or_capital": "Delayed funding subscription",
+      "quantity_xrp": 200000,
+      "date": "2026-10-12",
+      "classification": "post-2026-10-09 filing event; do not add to Oct 9 holdings without custody confirmation",
+      "source": "Evernorth SEC 424B3"
+    },
+    {
+      "asset_or_capital": "SBI investment in Evernorth",
+      "cash_usd": 200000000,
+      "classification": "equity investment into Evernorth; not evidence that the full amount bought XRP",
+      "date": "2025-10-21",
+      "source": "SBI Holdings official release and Evernorth SEC registration statement"
+    },
+    {
+      "asset_or_capital": "Ripple revolving facility",
+      "facility_limit_usd": 10000000,
+      "drawn_usd": 9700000,
+      "classification": "related-party credit/working-capital liquidity; not XRP spot demand",
+      "as_of": "2026-10-07",
+      "source": "Evernorth SEC 10-Q"
+    },
+    {
+      "asset_or_capital": "JPYSC lending balance",
+      "amount_jpy": 10000000000,
+      "classification": "customers lend JPYSC to SBI VC Trade for a fee; not customers borrowing against XRP",
+      "as_of": "2026-11-02",
+      "source": "SBI VC Trade official release"
+    },
+    {
+      "asset_or_capital": "JPYSC handled balance",
+      "amount_jpy": 30000000000,
+      "classification": "on-chain balance plus lending balance; not equivalent to circulating supply or net new issuance",
+      "as_of": "2026-11-02",
+      "source": "SBI VC Trade official release"
+    },
+    {
+      "asset_or_capital": "PhotonPay annualized transaction volume",
+      "amount_usd": 65000000000,
+      "classification": "platform-wide annualized throughput as of Aug 2026; not stablecoin-only volume and not XRP volume",
+      "source": "SBI Holdings official release"
+    }
+  ],
+  "evidence_claims": [
+    {
+      "id": "EVN-XRP-001",
+      "classification": "confirmed_primary",
+      "claim": "Evernorth reported approximately 473 million XRP held as of October 9, 2026.",
+      "source_ids": [
+        "SEC-EVN-10Q"
+      ],
+      "limitations": [
+        "Approximate amount; not a live November 3 balance."
+      ]
+    },
+    {
+      "id": "EVN-XRP-002",
+      "classification": "confirmed_primary",
+      "claim": "The reported 473 million is arithmetically consistent with 261,919,096 in-kind XRP, 84,365,876 XRP acquired using $214.1 million cash, and 126,791,458 XRP contributed by Ripple; component sum 473,076,430.",
+      "source_ids": [
+        "SEC-EVN-10Q"
+      ],
+      "limitations": [
+        "Cash acquisition venue and whether each acquisition was exchange, OTC or another route are not specified."
+      ]
+    },
+    {
+      "id": "EVN-XRP-003",
+      "classification": "confirmed_primary",
+      "claim": "A separate 200,000 XRP delayed-funding subscription is disclosed for October 12, after the October 9 holdings cutoff.",
+      "source_ids": [
+        "SEC-EVN-424B3"
+      ],
+      "limitations": [
+        "Do not add it to the October 9 holdings total without confirmation of receipt and custody."
+      ]
+    },
+    {
+      "id": "EVN-CUSTODY-001",
+      "classification": "confirmed_primary",
+      "claim": "BitGo Bank & Trust is Evernorth's primary XRP custodian; the prospectus says 100% of XRP was in cold storage as of the prospectus date.",
+      "source_ids": [
+        "SEC-EVN-424B3"
+      ],
+      "limitations": [
+        "Cold storage does not eliminate all operational/counterparty risk."
+      ]
+    },
+    {
+      "id": "EVN-CUSTODY-002",
+      "classification": "confirmed_primary",
+      "claim": "BitGo's approximately $250 million cold-storage insurance is shared among eligible BitGo clients and was stated to equal approximately 36.9% of the value of Evernorth's XRP holdings as of October 9.",
+      "source_ids": [
+        "SEC-EVN-424B3"
+      ],
+      "limitations": [
+        "Not dedicated to Evernorth; claims, deductibles, limits and allocation rules apply."
+      ]
+    },
+    {
+      "id": "COIN-EVN-001",
+      "classification": "confirmed_primary",
+      "claim": "Evernorth selected Coinbase as its principal XRP market for financial-reporting impairment purposes after considering volume/activity, quote consistency and regulatory/AML/KYC factors.",
+      "source_ids": [
+        "SEC-EVN-10Q"
+      ],
+      "limitations": [
+        "This is Evernorth's accounting determination, not independent proof that Coinbase dominates every XRP market or is its custodian."
+      ]
+    },
+    {
+      "id": "COIN-EVN-002",
+      "classification": "confirmed_primary",
+      "claim": "Evernorth accounts for XRP at cost less impairment and uses the lowest observable intraday XRP price on the selected principal market since acquisition when assessing impairment; this is not recurring fair-value accounting.",
+      "source_ids": [
+        "SEC-EVN-10Q"
+      ],
+      "limitations": [
+        "Accounting sensitivity does not prove Coinbase controls price or Evernorth's trading execution."
+      ]
+    },
+    {
+      "id": "COIN-EVN-003",
+      "classification": "issuer_reported",
+      "claim": "Evernorth announced Ripple, Kraken, Coinbase and BitGo as inaugural institutional execution partners, with strategies expected to begin in Q4 2026.",
+      "source_ids": [
+        "EVN-PARTNER-RELEASE"
+      ],
+      "limitations": [
+        "Partner-specific duties, amounts and executed transactions are not disclosed; agreements remain subject to customary conditions and approvals."
+      ]
+    },
+    {
+      "id": "SBI-EVN-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI announced a $200 million investment in Evernorth; the SEC ownership table reports approximately 21.4% of total common stock and 39.9% of voting power at closing.",
+      "source_ids": [
+        "SBI-EVN-INVESTMENT",
+        "SEC-EVN-424B3"
+      ],
+      "limitations": [
+        "Per-class percentages differ: 36.1% of Class A and 7.5% of Class C. Class C is non-voting. Voting power is not a majority and does not establish unilateral control."
+      ]
+    },
+    {
+      "id": "RIPPLE-EVN-001",
+      "classification": "confirmed_primary",
+      "claim": "Ripple contributed 126,791,458 XRP to Evernorth and the transaction documents cap the Contributor Related Parties' combined voting power at 9.9%.",
+      "source_ids": [
+        "SEC-EVN-10Q",
+        "SEC-EVN-424B3"
+      ],
+      "limitations": [
+        "Contribution and governance cap do not prove ongoing market purchases."
+      ]
+    },
+    {
+      "id": "EVN-FIN-001",
+      "classification": "confirmed_primary",
+      "claim": "Evernorth reported no revenue through June 30, 2026 and a $188.1 million net loss for January-June 2026, with a $264.1 million digital-asset impairment charge among the non-cash reconciling items.",
+      "source_ids": [
+        "SEC-EVN-10Q"
+      ],
+      "limitations": [
+        "The 10-Q's financial statements are through June 30; later events are separately dated."
+      ]
+    },
+    {
+      "id": "SBI-STARTALE-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI announced an approximately $50 million Startale investment, with Startale expected to become an equity-method affiliate.",
+      "source_ids": [
+        "SBI-STARTALE-INVESTMENT"
+      ],
+      "limitations": [
+        "Announcement is not evidence of a completed investment closing in this artifact."
+      ]
+    },
+    {
+      "id": "JPYSC-001",
+      "classification": "confirmed_primary",
+      "claim": "On November 2, SBI VC Trade reported JPYSC lending balances above ¥10 billion and handled balances above ¥30 billion; handled balance explicitly equals on-chain balance plus lending balance.",
+      "source_ids": [
+        "SBI-JPYSC-LENDING"
+      ],
+      "limitations": [
+        "Lending is customers lending JPYSC to SBI VC Trade. The product is not a bank deposit, is not deposit-insured, and early withdrawal is generally unavailable."
+      ]
+    },
+    {
+      "id": "JPYSC-002",
+      "classification": "confirmed_primary",
+      "claim": "JPYSC is currently handled through SBI VC Trade; public-chain circulation remains a future step subject to legal/operational readiness.",
+      "source_ids": [
+        "SBI-JPYSC-LAUNCH",
+        "SBI-JPYSC-LENDING"
+      ],
+      "limitations": [
+        "Do not count the handled balance as public on-chain circulation."
+      ]
+    },
+    {
+      "id": "SBI-OUSD-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI and Startale joined Open Standard; Coinbase is named among founding partners. SBI and Startale are considering a PoC for interoperability between JPYSC and OUSD.",
+      "source_ids": [
+        "SBI-OPEN-STANDARD"
+      ],
+      "limitations": [
+        "PoC consideration is not a production settlement service or evidence of a live Coinbase-SBI integration."
+      ]
+    },
+    {
+      "id": "SBI-BLK-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI, Startale and BlackRock signed a basic agreement/MOU to explore a tokenized MMF and JPYSC ecosystem.",
+      "source_ids": [
+        "SBI-BLACKROCK-MOU"
+      ],
+      "limitations": [
+        "MOU, not a launched product."
+      ]
+    },
+    {
+      "id": "SBI-CRB-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI and CRB Group, parent of Cross River Bank, signed a basic agreement to explore a Japanese JV, cross-border payments, tokenized receivables/RWA and JPYSC use on Cross River's platform; SBI also plans a strategic investment.",
+      "source_ids": [
+        "SBI-CROSS-RIVER"
+      ],
+      "limitations": [
+        "Subject to definitive agreements and regulatory approvals; no production flow is established."
+      ]
+    },
+    {
+      "id": "SBI-PHOTON-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI decided to invest in PhotonPay through the SBI-Sygnum-Azimut Digital Asset Opportunity Fund; PhotonPay integrates fiat and stablecoin cross-border payment rails.",
+      "source_ids": [
+        "SBI-PHOTONPAY"
+      ],
+      "limitations": [
+        "Investment amount is undisclosed; PhotonPay's reported $65 billion annualized volume is platform-wide, not stablecoin-only or XRP volume."
+      ]
+    },
+    {
+      "id": "SBI-EREBOR-001",
+      "classification": "issuer_reported",
+      "claim": "SBI announced a planned $100 million investment in Erebor Bank; SBI describes the bank as supporting stablecoin deposits/withdrawals and blockchain-based 24/7 settlement, with deposits above $7 billion in September 2026.",
+      "source_ids": [
+        "SBI-EREBOR"
+      ],
+      "limitations": [
+        "Planned investment and prospective cooperation; no specific XRP, USDC or RLUSD integration disclosed."
+      ]
+    },
+    {
+      "id": "SBI-CIRCLE-001",
+      "classification": "confirmed_primary",
+      "claim": "SBI announced an agreement to establish a joint venture with a Circle affiliate to accelerate USDC adoption in Japan.",
+      "source_ids": [
+        "SBI-CIRCLE-JV"
+      ],
+      "limitations": [
+        "The retrieved agreement announcement does not independently establish current operational volumes or a direct Circle-Evernorth relationship."
+      ]
+    },
+    {
+      "id": "COIN-CIRCLE-001",
+      "classification": "confirmed_primary",
+      "claim": "Coinbase's Q3 2026 10-Q says its arrangement with Circle was renewed on the same terms and average USDC held in Coinbase products reached an all-time high.",
+      "source_ids": [
+        "COIN-Q3-10Q"
+      ],
+      "limitations": [
+        "The filing does not quantify the average USDC balance in the cited passage."
+      ]
+    },
+    {
+      "id": "COIN-CIRCLE-002",
+      "classification": "confirmed_primary",
+      "claim": "Coinbase reported Q3 2026 stablecoin revenue of $306.905 million versus $324.534 million a year earlier, down approximately 5.4%; higher average USDC balances added $84.6 million while lower average interest rates reduced revenue by $52.8 million.",
+      "source_ids": [
+        "COIN-Q3-10Q"
+      ],
+      "limitations": [
+        "Stablecoin revenue is not identical to Circle-only revenue; do not attribute the entire line to USDC."
+      ]
+    },
+    {
+      "id": "XRP-MKT-001",
+      "classification": "issuer_reported",
+      "claim": "A November 2 TradRadar snapshot reported XRP at $1.2505, seven-exchange open interest of $1.92 billion, weighted funding +0.0077% per eight hours and a long/short account ratio of 3.58.",
+      "source_ids": [
+        "TRADRADAR-XRP"
+      ],
+      "limitations": [
+        "Aggregator snapshot with delayed and partial liquidation coverage."
+      ]
+    },
+    {
+      "id": "XRP-MKT-002",
+      "classification": "issuer_reported",
+      "claim": "Kodexius reported XRP perpetual open interest of $775.59 million across seven contracts at 17:49 UTC on November 2.",
+      "source_ids": [
+        "KODEXIUS-XRP"
+      ],
+      "limitations": [
+        "Different contract/exchange coverage and timestamp from TradRadar; not directly comparable or to be averaged."
+      ]
+    },
+    {
+      "id": "XRP-ETF-001",
+      "classification": "issuer_reported",
+      "claim": "A SoSoValue-derived October 29 report showed approximately $8.4316 million of XRP spot ETF net inflows.",
+      "source_ids": [
+        "XRP-ETF-OCT29"
+      ],
+      "limitations": [
+        "ETF creations/redemptions do not identify the beneficial investor or prove unhedged conviction."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "to": "Evernorth",
+      "relationship": "$200M investment; approximately 21.4% total common stock and 39.9% voting power at closing",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "Ripple",
+      "to": "Evernorth",
+      "relationship": "126,791,458 XRP contribution; related-party credit facility; execution partner",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "Evernorth",
+      "to": "BitGo",
+      "relationship": "primary XRP custody; cold storage; shared insurance",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Coinbase",
+      "relationship": "principal market for impairment accounting and named execution partner",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Kraken",
+      "relationship": "named institutional execution partner; exact role undisclosed",
+      "classification": "issuer_reported"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Startale",
+      "relationship": "approximately $50M announced investment; equity-method affiliate expected",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "SBI Holdings and Startale",
+      "to": "JPYSC",
+      "relationship": "joint development; issued by SBI Shinsei Trust; SBI VC Trade handles distribution/lending",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle affiliate",
+      "relationship": "agreement to establish JV to expand USDC adoption in Japan",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relationship": "USDC arrangement renewed on same terms; USDC product distribution and revenue-sharing",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "SBI and Startale",
+      "to": "Open Standard/OUSD",
+      "relationship": "membership and contemplated JPYSC-OUSD interoperability PoC; Coinbase is a founding partner",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "SBI and Startale",
+      "to": "BlackRock",
+      "relationship": "MOU exploring tokenized MMF and JPYSC",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "CRB Group/Cross River",
+      "relationship": "strategic alliance, planned investment and contemplated Japan JV/payment/RWA/JPYSC integration",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "SBI-Sygnum-Azimut fund",
+      "to": "PhotonPay",
+      "relationship": "investment decision in a fiat/stablecoin cross-border payment platform",
+      "classification": "confirmed_primary"
+    },
+    {
+      "from": "SBI Holdings USA",
+      "to": "Erebor Bank",
+      "relationship": "planned $100M investment; future cooperation to be explored",
+      "classification": "issuer_reported"
+    },
+    {
+      "from": "Circle USDC",
+      "to": "cbXRP/USDC collateral market",
+      "relationship": "USDC is the stablecoin debt/supply asset in the documented cbXRP lending market",
+      "classification": "confirmed_in_prior_research"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relationship": "wrapped XRP issuance/reserve reporting and collateral distribution",
+      "classification": "confirmed_in_prior_research"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relationship": "retail/institutional distribution listing",
+      "classification": "confirmed_in_prior_research"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "SBI is building a multi-rail digital-finance stack in which XRP treasury exposure, JPYSC, USDC, RLUSD, OUSD, tokenized MMF, bank settlement and cross-border payment providers are complementary components.",
+      "supporting_evidence": [
+        "SBI-EVN-001",
+        "SBI-STARTALE-001",
+        "JPYSC-001",
+        "SBI-OUSD-001",
+        "SBI-BLK-001",
+        "SBI-CRB-001",
+        "SBI-PHOTON-001",
+        "SBI-EREBOR-001",
+        "SBI-CIRCLE-001"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Several are planned investments, MOUs or PoCs; public-chain JPYSC circulation is not yet established."
+      ],
+      "status": "plausible_inference"
+    },
+    {
+      "id": "H2",
+      "statement": "Evernorth's institutional yield deployment could increase XRP utility and institutional balance-sheet use without requiring immediate spot sales.",
+      "supporting_evidence": [
+        "EVN-XRP-001",
+        "COIN-EVN-003",
+        "EVN-CUSTODY-001"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Q4 strategy announcement is not proof of executed deployment; partner roles and deployed quantities are undisclosed; Evernorth had no revenue through June 30."
+      ],
+      "status": "testable_hypothesis"
+    },
+    {
+      "id": "H3",
+      "statement": "Evernorth treasury growth should not be treated as equivalent to net new spot-market demand.",
+      "supporting_evidence": [
+        "EVN-XRP-002",
+        "RIPPLE-EVN-001",
+        "SBI-EVN-001"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Cash-funded XRP acquisition of 84.37M XRP is real acquisition activity, but route and market impact are unknown."
+      ],
+      "status": "strongly_supported"
+    },
+    {
+      "id": "H4",
+      "statement": "Coinbase has material reference-market significance for at least one large public XRP treasury, but this does not establish price control or exclusive execution.",
+      "supporting_evidence": [
+        "COIN-EVN-001",
+        "COIN-EVN-002",
+        "COIN-EVN-003"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Evernorth says it does not actively trade XRP on digital asset markets; it assesses multiple venues and selects Coinbase for impairment accounting."
+      ],
+      "status": "confirmed_limited_scope"
+    },
+    {
+      "id": "H5",
+      "statement": "SBI's payment and stablecoin rails may compete with XRP as a bridge/settlement asset in some corridors while complementing XRP in others.",
+      "supporting_evidence": [
+        "JPYSC-001",
+        "SBI-OUSD-001",
+        "SBI-CRB-001",
+        "SBI-PHOTON-001",
+        "SBI-EREBOR-001"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No corridor-level transaction flows, XRP conversion paths or comparative settlement economics were established."
+      ],
+      "status": "unresolved"
+    },
+    {
+      "id": "H6",
+      "statement": "Coinbase and Circle's economics are sensitive to both USDC balances and interest rates, so balance growth alone does not predict revenue growth.",
+      "supporting_evidence": [
+        "COIN-CIRCLE-001",
+        "COIN-CIRCLE-002"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Future rate, balance and distribution terms can change; Circle Q3 results remain pending."
+      ],
+      "status": "confirmed_company_reported"
+    }
+  ],
+  "data_quality": [
+    "Evernorth 473M XRP is an October 9 approximate snapshot, not a current November 3 balance.",
+    "The derived component sum 473,076,430 is close to, but not a substitute for, the reported approximate 473M.",
+    "The 200,000 XRP delayed funding event is dated October 12 and must not be silently added to the October 9 balance.",
+    "SBI's $200M Evernorth investment is equity capital; no evidence attributes all of it to XRP spot purchases.",
+    "The $214.1M cash acquisition and 84.365M XRP are reported in the SEC filing, but execution venue and transaction dates are not fully enumerated here.",
+    "BitGo's $250M insurance is shared and not dedicated; 36.9% is a company-disclosed coverage-to-holdings-value ratio, not a guarantee of recovery.",
+    "Coinbase's stablecoin revenue line is not exclusively USDC revenue.",
+    "JPYSC handled balance includes lending balances and must not be described as circulating supply.",
+    "PhotonPay's $65B annualized throughput is total platform activity, not stablecoin-only volume.",
+    "Erebor's $7B deposits are total bank deposits, not stablecoin deposits.",
+    "Open Standard and BlackRock/JPYSC arrangements are PoC/MOU stages, not production settlement flows.",
+    "TradRadar and Kodexius derivatives totals differ materially due to coverage/methodology and non-synchronized timestamps."
+  ],
+  "source_registry": [
+    {
+      "id": "SEC-EVN-10Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "type": "SEC 10-Q",
+      "issuer": "Evernorth Holdings",
+      "independence_group": "regulatory_filing"
+    },
+    {
+      "id": "SEC-EVN-424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "type": "SEC prospectus",
+      "issuer": "Evernorth Holdings",
+      "independence_group": "regulatory_filing"
+    },
+    {
+      "id": "EVN-PARTNER-RELEASE",
+      "url": "https://www.globenewswire.com/news-release/2026/10/14/3380648/0/en/Evernorth-to-Begin-Deploying-from-473-Million-XRP-Treasury-with-Ripple-Kraken-Coinbase-and-BitGo.html",
+      "type": "company press release",
+      "issuer": "Evernorth",
+      "independence_group": "issuer_statement"
+    },
+    {
+      "id": "SBI-EVN-INVESTMENT",
+      "url": "https://www.sbigroup.co.jp/news/2025/1021_15831.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-STARTALE-INVESTMENT",
+      "url": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-OPEN-STANDARD",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings/Startale",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-BLACKROCK-MOU",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings/Startale",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-JPYSC-LENDING",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "type": "company press release",
+      "issuer": "SBI VC Trade",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-JPYSC-LAUNCH",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings/SBI Shinsei Trust/SBI VC Trade",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-EREBOR",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16705.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings/SBI Holdings USA",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-CROSS-RIVER",
+      "url": "https://www.sbigroup.co.jp/news/2026/1028_16686.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-PHOTONPAY",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16693.html",
+      "type": "company press release",
+      "issuer": "SBI Holdings",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "SBI-CIRCLE-JV",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0325_c_en.pdf",
+      "type": "company press release PDF",
+      "issuer": "SBI Holdings",
+      "independence_group": "sbi_group"
+    },
+    {
+      "id": "COIN-Q3-10Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "type": "SEC 10-Q",
+      "issuer": "Coinbase",
+      "independence_group": "regulatory_filing"
+    },
+    {
+      "id": "TRADRADAR-XRP",
+      "url": "https://tradradar.io/markets/xrp",
+      "type": "market-data aggregator",
+      "issuer": "TradRadar",
+      "independence_group": "market_data_provider_a"
+    },
+    {
+      "id": "KODEXIUS-XRP",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "type": "market-data aggregator",
+      "issuer": "Kodexius",
+      "independence_group": "market_data_provider_b"
+    },
+    {
+      "id": "XRP-ETF-OCT29",
+      "url": "https://www.chaincatcher.com/en/article/2300227",
+      "type": "SoSoValue-derived secondary report",
+      "issuer": "ChainCatcher",
+      "independence_group": "market_data_republisher"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2025-03-25",
+      "event": "SBI announced agreement to establish a JV with a Circle affiliate to expand USDC adoption in Japan."
+    },
+    {
+      "date": "2025-10-21",
+      "event": "SBI announced a $200M investment in Evernorth."
+    },
+    {
+      "date": "2026-03-26",
+      "event": "SBI announced an approximately $50M investment in Startale."
+    },
+    {
+      "date": "2026-06-24",
+      "event": "SBI Group announced JPYSC launch through SBI Shinsei Trust and SBI VC Trade; initial use is VCTRADE-limited."
+    },
+    {
+      "date": "2026-10-08",
+      "event": "Evernorth began trading on Nasdaq under XRPN."
+    },
+    {
+      "date": "2026-10-09",
+      "event": "Evernorth reported approximately 473M XRP holdings."
+    },
+    {
+      "date": "2026-10-14",
+      "event": "Evernorth announced Ripple, Kraken, Coinbase and BitGo as inaugural institutional execution partners; Q4 strategy start expected."
+    },
+    {
+      "date": "2026-10-16",
+      "event": "SBI and Startale joined Open Standard and said they were considering JPYSC-OUSD interoperability PoC."
+    },
+    {
+      "date": "2026-10-27",
+      "event": "SBI, Startale and BlackRock signed an MOU on tokenized MMF and JPYSC."
+    },
+    {
+      "date": "2026-10-28",
+      "event": "SBI and CRB Group announced strategic alliance and contemplated Japan JV with Cross River."
+    },
+    {
+      "date": "2026-10-30",
+      "event": "SBI announced PhotonPay investment through a managed fund."
+    },
+    {
+      "date": "2026-11-02",
+      "event": "SBI VC Trade reported JPYSC lending above ¥10B and handled balance above ¥30B; SBI separately announced a planned $100M Erebor investment."
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "The evidence establishes institutional relationships and capital structure but does not yet provide calibrated, leakage-free predictive skill.",
+    "required_fields": [
+      "data cutoff",
+      "horizon",
+      "target",
+      "assumptions",
+      "probability/confidence",
+      "alternatives",
+      "outcome"
+    ],
+    "paper_trading": "NOT_STARTED"
+  },
+  "next_actions": [
+    "Verify Evernorth's current XRP balance and actual deployments using disclosed addresses, custody statements or subsequent SEC filings; do not infer from the October 9 snapshot.",
+    "Track Q4 strategy activation by partner and separate cash purchases, in-kind contributions, loans, lending collateral and derivative exposures.",
+    "Reconstruct Evernorth impairment sensitivity from Coinbase intraday lows and compare with alternate venue lows; do not assume Coinbase price control.",
+    "Monitor SBI JPYSC public-chain activation, lending terms, outstanding supply and actual payment flows.",
+    "Determine whether Cross River, PhotonPay and Erebor have named stablecoin/XRP integrations after definitive agreements.",
+    "Capture Circle's November 4, 2026 Q3 results and reconcile USDC distribution economics.",
+    "Reconcile XRP derivatives OI contract-by-contract and preserve provider-specific totals.",
+    "Continue SBIC/ChatGPT SBIC, ASK Coin and Camilla Stephenson identity/video work."
+  ],
+  "safety": {
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_deception": true,
+    "no_market_manipulation": true,
+    "no_real_money": true,
+    "no_forecast_issued": true,
+    "main_modified": false
+  }
+}
