@@ -34,3 +34,24 @@ def test_dump_brain_corpus_script_is_inert_without_network_or_file_writes(tmp_pa
 def test_public_brain_corpus_dumps_are_absent_from_current_tree():
     assert not (ROOT / "brain_corpus" / "dump.json").exists()
     assert not (ROOT / "brain_corpus" / "dump.md").exists()
+
+
+def test_unclassified_brain_corpus_entries_are_preserved_by_containment():
+    expected = {
+        "polymath_biology_epigenetics_and_environmental_gene_contr.json",
+        "polymath_chemistry_complete_chemistry_and_periodic_table_ma.json",
+        "polymath_cinematography_complete_visual_language_mastery.json",
+        "polymath_dance_universal_dance_mastery.json",
+        "polymath_languages_universal_language_acquisition.json",
+        "polymath_martial_arts_complete_combat_system_mastery.json",
+        "polymath_mathematics_complete_mathematical_mastery.json",
+        "polymath_music_and_audio_production_complete_audio_architecture.json",
+        "polymath_philosophy_epistemology_and_philosophy_of_science.json",
+        "polymath_physics_complete_physics_mastery.json",
+        "polymath_sciences_universal_science_mastery.json",
+        "polymath_synthesis_unlimited_cross-domain_synthesis_engine.json",
+        "polymath_vocal_science_vocal_cartography_and_extended_technique.json",
+        "topics.txt",
+    }
+    actual = {path.name for path in (ROOT / "brain_corpus").iterdir()}
+    assert actual == expected
