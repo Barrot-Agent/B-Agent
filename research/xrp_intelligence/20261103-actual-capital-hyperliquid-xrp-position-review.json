@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "artifact_type": "capital_flow_claim_review",
+  "captured_on_utc_date": "2026-11-03",
+  "claim_id": "hyperliquid-xrp-0x243-2026-07-04",
+  "claim": {
+    "subject": "New Hyperliquid wallet identified by prefix 0x243",
+    "reported_event_date": "2026-07-04",
+    "reported_btc_deposit": 52.67,
+    "reported_btc_deposit_usd": 3260000,
+    "reported_xrp_position": 14189000,
+    "reported_position_notional_usd": 16300000,
+    "reported_leverage": 20,
+    "reported_unrealized_pnl_usd": 477000,
+    "primary_attribution": "Onchain Lens",
+    "original_post_url": "https://x.com/OnchainLens/status/2073266579631124528",
+    "original_post_access": "403 Forbidden in this research environment; post content not independently fetched"
+  },
+  "sources": [
+    {
+      "id": "S33",
+      "publisher": "ChainCatcher",
+      "url": "https://www.chaincatcher.com/en/article/2274906",
+      "published_at": "2026-07-04T14:18:55",
+      "source_type": "secondary_republication",
+      "reported_facts": [
+        "52.67 BTC deposited, reported value $3.26m",
+        "14.189m XRP long, reported notional $16.3m",
+        "20x leverage",
+        "approximately $477k unrealized profit"
+      ],
+      "limitations": [
+        "wallet shown only as prefix 0x243",
+        "attributes data to Onchain Lens",
+        "no full account state, margin mode, liquidation price or complete transaction path"
+      ]
+    },
+    {
+      "id": "S39",
+      "publisher": "KuCoin News",
+      "url": "https://www.kucoin.com/news/flash/whale-20x-leverages-14-189m-xrp-worth-16-3m-on-hyperliquid",
+      "published_at": "2026-07-04",
+      "source_type": "secondary_republication",
+      "reported_facts": [
+        "same 52.67 BTC deposit and 14.189m XRP 20x long"
+      ],
+      "limitations": [
+        "repeats Onchain Lens / Huo Xing Finance reporting; not independent on-chain corroboration"
+      ]
+    }
+  ],
+  "calculations": {
+    "implied_initial_margin_usd_at_exact_20x_notional_only": 815000,
+    "formula": "16,300,000 / 20",
+    "interpretation": "Approximately $815,000 is the arithmetic implied initial margin only under a simplified 20x isolated-position assumption. It is not verified actual capital, account equity or cash invested.",
+    "btc_deposit_vs_implied_margin_usd": 2445000,
+    "interpretation_of_difference": "The reported $3.26m BTC deposit exceeds the simplified $815k margin estimate by about $2.445m. That difference is not proof of unused cash; margin mode, other positions, account-level collateral, subsequent transfers, haircuts and timing are unknown."
+  },
+  "evidence_classification": {
+    "sourced_claim": "The secondary article reports a 52.67 BTC deposit followed by a 14.189m XRP long with $16.3m notional and 20x leverage.",
+    "inference": "$815,000 is notional divided by 20 under the stated simplifying assumption.",
+    "unknown": [
+      "Full wallet address and full Hyperliquid account history",
+      "Actual account equity at entry",
+      "Isolated versus cross margin",
+      "Whether all deposited BTC was converted and/or allocated to this position",
+      "Other collateral, open positions, transfers, fees, funding and liquidation level",
+      "Whether the user’s exact phrase 'actual capital' refers to this event"
+    ],
+    "disconfirming_or_limiting_evidence": [
+      "The 52.67 BTC deposit is a gross transfer/deposit figure, not proof that all $3.26m became position margin.",
+      "The $16.3m figure is position notional, not capital contributed.",
+      "The $815k calculation is not an observed account balance and may not match the platform's actual margin accounting.",
+      "Multiple secondary outlets repeat the same Onchain Lens item and therefore do not constitute independent source corroboration."
+    ]
+  },
+  "conclusion": "The strongest supported interpretation is that approximately $3.26m of BTC was reported deposited to Hyperliquid and a $16.3m XRP notional position was opened at 20x. The actual capital/equity allocated to that position remains unknown. The phrase 'actual capital' is still ambiguous and this event remains a candidate context, not a resolved identification.",
+  "safety": {
+    "public_sources_only": true,
+    "no_private_data": true,
+    "no_trading_or_market_action": true
+  }
+}
