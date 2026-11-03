@@ -65,3 +65,21 @@ After exact-head CI/gate verification, continue monitoring SEC facility commence
 
 ### Next action
 Continue from live main, not stale PR bases. Prioritize the scheduler's main-branch write path and remaining external-data/issue writers, while keeping XRP facility capacity distinct from realized cash and confirmed XRP acquisitions.
+
+
+## Append-only correction — 2026-11-03 13:27 UTC
+
+New correction artifact:
+`research/xrp_intelligence/20261103T132735Z-evernorth-facility-19-99pct-denominator-correction.json`
+
+The October 30 SEC 424B3 separately states:
+- 5,218,935 facility shares represent 19.99% of Class A shares outstanding immediately before the October 23 agreement.
+- 26,094,680 Class A shares were outstanding on October 22 and are used for the prospectus dilution table.
+
+The previously recorded 20.0% is the arithmetic ratio using the October 22 denominator. The issuer's 19.99% refers to the immediately-before-signing denominator, which is not numerically stated in that note. Preserve both as separately dated observations; do not call them contradictory or infer the October 23 denominator. The original research artifact remains unchanged.
+
+## Additional safety PR
+- [PR #1589](https://github.com/Barrot-Agent/B-Agent/pull/1589), head `422e0043585ce15325dd0eeab3550342cb276403`, disables the 15-minute Scheduler Tick until it has an explicit read-only workflow allowlist and a durable queue store that does not write to main.
+- Its fail-closed gate [41644394934](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644394934) passed with merging disabled.
+- Core CI [41644395374](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644395374) was still running at this handoff update; do not claim it passed until its final job result is retrieved.
+- PR #1589 is draft/open/unmerged. The scheduler implementation and queue file are preserved; only the workflow executor is proposed disabled.
