@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import math
 import os
 import time
 from datetime import datetime, timezone
@@ -28,16 +29,58 @@ def _extract_text(resp_json: dict) -> str:
         return ""
 
 
+def _normalize_confidence(value) -> float:
+    try:
+        confidence = float(value)
+    except (TypeError, ValueError):
+        return 0.0
+    if not math.isfinite(confidence):
+        return 0.0
+    return max(0.0, min(1.0, confidence))
+
+
+def _normalize_score(value) -> int:
+    try:
+        score = float(value)
+    except (TypeError, ValueError):
+        return 50
+    if not math.isfinite(score):
+        return 50
+    return int(round(max(0.0, min(100.0, score))))
+
+
 def _score_from_text(text: str):
     try:
         data = json.loads(text)
-        score = int(max(0, min(100, int(data.get("score", 50)))))
-        confidence = float(max(0.0, min(1.0, float(data.get("confidence", 0.5)))))
-        label = str(data.get("label", "neutral"))
-        return score, confidence, label
     except Exception:
-        return 50, 0.5, "neutral"
+        return 50, 0.0, "neutral"
+    score = _normalize_score(data.get("score", 50))
+    confidence = _normalize_confidence(data.get("confidence"))
+    label = str(data.get("label", "neutral")).strip().lower()
+    if label not in {"bullish", "neutral", "bearish"}:
+        label = "neutral"
+    return score, confidence, label
 
+
+def _sentiment_feature_metadata(label: str, confidence: float):
+    """Metadata that prevents sentiment output being mistaken for a forecast."""
+    normalized = str(label or "neutral").strip().lower()
+    if normalized not in {"bullish", "neutral", "bearish"}:
+        normalized = "neutral"
+    return {
+        "signal_kind": "sentiment_feature_only",
+        "forecast_eligible": False,
+        "forecast_status": "NOT_A_FORECAST",
+        "sentiment_label": normalized,
+        "confidence_is_calibrated_probability": False,
+        "confidence_semantics": "Uncalibrated LLM sentiment-classifier confidence; not a probability of price direction.",
+        "sentiment_score_semantics": "0-100 blended LLM/news sentiment index; not a return forecast or probability.",
+        "sentiment_label_source": "LLM sentiment classifier output.",
+        "target": None,
+        "horizon_seconds": None,
+        "source_cutoff_utc": None,
+        "source_snapshot_ids": [],
+    }
 
 def _build_messages(signal_text: str):
     return [
@@ -74,7 +117,7 @@ def _call_github_models(signal_text: str):
     data = _post_json(GITHUB_MODELS_ENDPOINT, headers, payload)
     txt = _extract_text(data)
     score, conf, label = _score_from_text(txt)
-    return score, conf, f"github:{label}"
+    return score, conf, label, f"github:{label}"
 
 
 def _call_groq(signal_text: str):
@@ -91,7 +134,7 @@ def _call_groq(signal_text: str):
         try:
             from groq_chain import classify_with_self_consistency
             result = classify_with_self_consistency(signal_text)
-            return result["score"], result["confidence"], f"groq_sc:{result['label']}"
+            return result["score"], result["confidence"], str(result["label"]).strip().lower(), f"groq_sc:{result['label']}"
         except Exception:
             pass  # fall through to the original single-shot call below
 
@@ -108,7 +151,7 @@ def _call_groq(signal_text: str):
     data = _post_json(GROQ_ENDPOINT, headers, payload)
     txt = _extract_text(data)
     score, conf, label = _score_from_text(txt)
-    return score, conf, f"groq:{label}"
+    return score, conf, label, f"groq:{label}"
 
 
 def analyze_signal(signal_text: str):
@@ -124,7 +167,7 @@ def analyze_signal(signal_text: str):
     except Exception as e:
         last_err = f"{last_err}; groq_failed:{e}"
 
-    return 0, 0.0, f"sentiment unavailable ({last_err})"
+    return 50, 0.0, "neutral", f"sentiment unavailable ({last_err})"
 
 
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
@@ -172,14 +215,18 @@ def main():
         signal_text = "Recent XRP-relevant headlines: " + " | ".join(headlines)
     else:
         signal_text = os.getenv("BARROT_SIGNAL_TEXT", "market sideways; low conviction")
-    score, confidence, source = analyze_signal(signal_text)
+    score, confidence, label, source = analyze_signal(signal_text)
+    score = _normalize_score(score)
+    confidence = _normalize_confidence(confidence)
     if news_score is not None:
         # blend: LLM read of headlines + weighted news score, equal weight
         score = int(round((score + news_score) / 2))
         source = f"{source}+news({n_news})"
 
+    generated_at = datetime.now(timezone.utc).isoformat()
     out = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": generated_at,
+        "generated_at_utc": generated_at,
         "signal_text": signal_text,
         "score": score,
         "confidence": confidence,
@@ -187,22 +234,13 @@ def main():
         "news_score": news_score,
         "news_entries": n_news,
         "generated_at_unix": int(time.time()),
+        **_sentiment_feature_metadata(label, confidence),
     }
 
     os.makedirs("web", exist_ok=True)
     with open("web/latest_signal.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
-    try:
-        _pr = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "ripple", "vs_currencies": "usd"},
-            timeout=6,
-        )
-        price_now = float(_pr.json().get("ripple", {}).get("usd", 0))
-    except Exception:
-        price_now = 0.0
     hist_entry = dict(out)
-    hist_entry["price_at_emission"] = price_now
     with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
         print(json.dumps(hist_entry), file=hf)
 

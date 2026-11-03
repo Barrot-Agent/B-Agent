@@ -19,32 +19,32 @@ MEMORY_INJECT_COUNT = 5
 
 LATEST_SIGNAL_XRP = "web/latest_signal.json"
 LATEST_SIGNAL_BTC = "web/latest_signal_btc.json"
-SIGNAL_ACCURACY = "web/signal_accuracy.json"
 GUMROAD_METRICS = "ping-pongings/knowledge-base/gumroad_metrics.json"
 GROQ_USAGE_LOG = "ping-pongings/knowledge-base/groq_usage_log.jsonl"
 
 SYSTEM_BASE = (
     "You are Barrot, an autonomous crypto/fintech AI agent built and run "
-    "by Sean. Real, current facts about you: you run hourly knowledge "
-    "ingestion and distillation cycles for both XRP and BTC, each "
-    "extracting sentiment (bullish/bearish/neutral), catalyst, relevance, "
-    "and named entities from real news via Groq, then emit a blended "
-    "trading signal per asset; you draft articles automatically from that "
-    "knowledge base; you have a signal accuracy tracker that logs price "
-    "at signal emission and checks real directional correctness after 24 "
-    "hours; your XRP signal tools are gated behind a Gumroad license as "
-    "your monetized product. You do not have technical indicators (RSI, "
-    "moving averages), a dedicated ML/forecasting model beyond LLM "
-    "classification, real-time (sub-hourly) data, or risk/position-sizing "
-    "logic. You have a real persistent memory: barrot_memory.jsonl records "
-    "every question you're asked and how you answered it, and your most "
-    "recent reflections are shown to you below so you have real continuity "
-    "across conversations, not a fresh start each time. You also see your "
-    "real, current signal emission and accuracy data below - use it to "
-    "check your own claims rather than assume them. Answer honestly "
-    "and specifically about your own project, using these real facts, not "
-    "outdated assumptions. Do not be vague or grandiose."
-)
+    "by Sean. Real, current facts about you: you run automated knowledge "
+    "ingestion and distillation workflows for XRP and BTC, extracting "
+    "sentiment (bullish/neutral/bearish), catalysts, relevance and named "
+    "entities from news via LLM classification; the XRP output is a "
+    "sentiment feature, not a validated price forecast or trading instruction; "
+    "its 0-100 score and model-reported confidence are not calibrated return "
+    "probabilities; the legacy variable-horizon accuracy summary is "
+    "unvalidated and must never be reported as model performance; your XRP "
+    "sentiment-feature tools are gated behind a Gumroad license as your "
+    "monetized product. You do not have technical indicators (RSI, moving "
+    "averages), a validated fixed-horizon forecasting model, calibrated price "
+    "probabilities, real-time (sub-hourly) data, or risk/position-sizing logic. "
+    "You have a real persistent memory: barrot_memory.jsonl records every "
+    "question you're asked and how you answered it, and your most recent "
+    "reflections are shown to you below so you have real continuity across "
+    "conversations, not a fresh start each time. You also see your real, "
+    "current sentiment-feature and evaluation-status data below - use it to "
+    "check your own claims rather than assume them. Answer honestly and "
+    "specifically about your own project, using these real facts, not outdated "
+    "assumptions. Do not be vague or grandiose."
+
 
 
 CURRENT_QUESTION_PRIORITY = (
@@ -107,7 +107,9 @@ def format_memory_block(entries):
 
 
 def load_signal_snapshot():
-    lines = []
+    lines = [
+        "- Directional XRP forecast status: NOT_ISSUED. Legacy accuracy summary is UNVALIDATED_VARIABLE_HORIZON and is not a valid model-performance measure."
+    ]
     for label, path in (("XRP", LATEST_SIGNAL_XRP), ("BTC", LATEST_SIGNAL_BTC)):
         if not os.path.exists(path):
             continue
@@ -116,27 +118,19 @@ def load_signal_snapshot():
                 d = json.load(f)
         except Exception:
             continue
-        lines.append(
-            f'- Latest {label} signal (as of {d.get("timestamp", "unknown")}): '
-            f'score={d.get("score")}, confidence={d.get("confidence")}, '
-            f'source={d.get("source")}'
-        )
-    if os.path.exists(SIGNAL_ACCURACY):
-        try:
-            with open(SIGNAL_ACCURACY) as f:
-                acc = json.load(f)
+        if d.get("signal_kind") == "sentiment_feature_only":
             lines.append(
-                f'- XRP signal accuracy tracker: {acc.get("checked_count", 0)} signals '
-                f'checked so far, {acc.get("correct_count", 0)} correct '
-                f'({acc.get("accuracy_pct")}% if available). Low or zero counts mean '
-                f'not enough signals have reached the 24-hour check window yet, or '
-                f'the pipeline is newly fixed - not a claim of poor performance.'
+                f'- Latest {label} sentiment feature (as of {d.get("generated_at_utc", d.get("timestamp", "unknown"))}): '
+                f'label={d.get("sentiment_label", "unclassified")}, score={d.get("score")}/100, '
+                f'model_confidence={d.get("confidence")} (uncalibrated; not a price probability), '
+                f'source={d.get("source")}'
             )
-        except Exception:
-            pass
-    if not lines:
-        return ""
-    return "\n\nYour real, current signal data:\n" + "\n".join(lines)
+        else:
+            lines.append(
+                f'- Latest {label} record is not classified as a verified sentiment feature or forecast; '
+                f'do not interpret its score/confidence as a price probability.'
+            )
+    return "\n\nYour real, current sentiment-feature and evaluation-status data:\n" + "\n".join(lines)
 
 
 def load_gumroad_metrics():

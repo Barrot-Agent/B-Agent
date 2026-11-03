@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "captured_at_utc": "2026-11-03T07:11:49.908Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "60aef00405f26badabd4ac15807df163756204cc",
+  "source_pr": 1564,
+  "source_head": "9fb63506859c5887bdda04e5af9682e0342576a4",
+  "source_base": "91b66a388cbb03010f590159919d18aadcaa42cc",
+  "findings": [
+    {
+      "id": "variable-horizon-scorer",
+      "status": "CONFIRMED",
+      "severity": "HIGH",
+      "paths": [
+        "scripts/check_signal_accuracy.py",
+        ".github/workflows/check-signal-accuracy.yml"
+      ],
+      "detail": "Legacy scorer evaluated records at the first scheduled run after a 24-hour minimum, not at one fixed horizon; it compared immutable emission references with mutable live CoinGecko prices and rewrote history and summary."
+    },
+    {
+      "id": "unreproducible-accuracy-summary",
+      "status": "CONFIRMED",
+      "severity": "HIGH",
+      "paths": [
+        "web/signal_accuracy.json",
+        "web/signal_history.jsonl"
+      ],
+      "detail": "Current main publishes 45.5% (772/1,697) but the current-tree row-level history file is 0 bytes. The aggregate cannot be independently reproduced from current-tree row records and is not valid out-of-sample performance evidence."
+    },
+    {
+      "id": "self-description-leak",
+      "status": "CONFIRMED",
+      "severity": "HIGH",
+      "paths": [
+        "scripts/ask_barrot.py",
+        "scripts/daily_digest.py"
+      ],
+      "detail": "Barrot's prompt and daily digest repeated the unvalidated percentage as predictive accuracy, allowing a misleading metric to feed back into system context."
+    },
+    {
+      "id": "sentiment-forecast-conflation",
+      "status": "CONFIRMED",
+      "severity": "HIGH",
+      "paths": [
+        "scripts/emit_signal.py",
+        "web/landing.html",
+        "web/signals.html"
+      ],
+      "detail": "An LLM sentiment classifier's bullish/neutral/bearish label and score were presented as BUY/SELL trading signals despite no target, horizon, point-in-time cutoff, source snapshot IDs, calibrated probability or independent outcome evaluation."
+    }
+  ],
+  "proposed_changes": [
+    "Replace the mutable network scorer with a deterministic status-only compatibility entry point; do not access the network or modify history/summary.",
+    "Change the scheduled evaluation workflow to contents-read only and upload a bounded status artifact; no git push.",
+    "Preserve 45.5% and 772/1,697 in a clearly labeled unvalidated legacy archive.",
+    "Set public signal_accuracy.json to BLOCKED_NO_VALIDATED_FIXED_HORIZON_DATA and NOT_ISSUED.",
+    "Label sentiment output as a sentiment feature only, not a price forecast or trading instruction.",
+    "Remove legacy accuracy claims from Barrot system prompt and daily digest.",
+    "Make missing/nonfinite classifier confidence zero; do not invent a default probability.",
+    "Update landing/subscriber pages to remove unsupported BUY/SELL and predictive-performance claims.",
+    "Add fixed-horizon evaluation contract and no-network/no-write regression tests."
+  ],
+  "verification": {
+    "source_pr_1564_exact_head_ci": "passed: 359 tests + 8 subtests",
+    "source_pr_1564_fail_closed_gate": "passed",
+    "fresh_main_head_ci": "PENDING",
+    "fresh_main_fail_closed_gate": "PENDING",
+    "local_tests": "NOT_EXECUTED_IN_THIS_ENVIRONMENT"
+  },
+  "limitations": [
+    "This proposal blocks the invalid scorer; it does not yet implement a validated fixed-horizon prediction model.",
+    "The emitted sentiment feature has no immutable source cutoff or source snapshot IDs and is explicitly forecast-ineligible.",
+    "No probability calibration, walk-forward performance, baseline comparison or drift result is claimed.",
+    "The legacy accuracy percentage remains preserved as unvalidated history, not deleted.",
+    "A future forecast pipeline needs point-in-time source snapshots, target/horizon contracts, independent outcome attestation and paper/shadow evaluation."
+  ],
+  "preservation": {
+    "main_unchanged": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_workflow_dispatch": true,
+    "no_secret_access": true,
+    "no_deployment": true,
+    "no_paper_trade": true,
+    "no_real_money": true
+  }
+}
