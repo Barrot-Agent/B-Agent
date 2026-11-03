@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "mmi_claim_bound_source_independence_hardening_audit",
+  "snapshot_id": "mmi-claim-bound-source-independence-20261103-run11",
+  "captured_at_utc": "2026-11-03T00:28:17Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "inspected_main": "00b3213fbffb274581a58c35ab146b1da884a80d",
+  "parent_pull_request": 1536,
+  "parent_head": "675b138c6bb5811900f15ea84445dd2cb1c88491",
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "forecast_status": "NOT_ISSUED",
+  "finding": {
+    "classification": "CONFIRMED_CODE_PATH_GAP_IN_PARENT_PROPOSAL",
+    "summary": "PR #1536 blocks a CORROBORATED result with zero independent sources, but its proposed validator still trusts caller-supplied independence_group values and does not bind declared source IDs to specific evidence records for the same claim. The existing SourceIndependenceEngine was also not used by the MMI validator.",
+    "observed_gaps": [
+      {
+        "id": "G1",
+        "file": "barrot_agent/mmi_v1.py",
+        "behavior": "_independence_groups_for accepted the free-form SourceRecord.independence_group field without deriving or checking it against the source URI.",
+        "consequence": "Two records from the same publisher could be assigned different group strings and pass the two-group check."
+      },
+      {
+        "id": "G2",
+        "file": "barrot_agent/mmi_v1.py",
+        "behavior": "CORROBORATED validation checked independent_source_ids against the source graph but did not require those source IDs to appear in named EvidenceRecord objects supporting the same claim.",
+        "consequence": "Unrelated external source records could be named in the corroboration result while the actual evidence records referred to different sources."
+      },
+      {
+        "id": "G3",
+        "file": "barrot_agent/mmi_v1.py",
+        "behavior": "CONTRADICTORY validation checked non-empty evidence-ID strings and reconciliation references but did not require the IDs to resolve to actual evidence records with matching claim identity and support polarity.",
+        "consequence": "A contradiction could be marked reconciled using placeholder or unrelated evidence identifiers."
+      },
+      {
+        "id": "G4",
+        "file": "barrot_agent/evolution/source_independence.py",
+        "behavior": "The existing engine grouped by raw URL netloc, so ports and subdomains could split one publisher into multiple identities. It was not connected to MMI validation.",
+        "consequence": "False independence could be counted across subdomains or alternate ports."
+      }
+    ]
+  },
+  "proposed_fix_in_branch": {
+    "status": "IMPLEMENTED_AWAITING_EXACT_HEAD_CI",
+    "branch": "security/mmi-claim-bound-source-provenance-20261103-run11",
+    "base": "security/mmi-corroboration-independent-source-gate-20261103-run11",
+    "base_commit": "675b138c6bb5811900f15ea84445dd2cb1c88491",
+    "changes": [
+      "Resolve publisher identity from validated HTTP(S) URI hostnames, normalize IDNA, ports, www and common multi-label public suffixes.",
+      "Collapse known SBI Holdings, SBI Shinsei Bank, SBI VC Trade and SBI Ripple Asia domains into one SBI publisher group while keeping Tokyo SBIC separate.",
+      "Require each declared independence_group to equal the URI-derived canonical publisher identity.",
+      "Add claim_id to EvidenceRecord and require CORROBORATED results to identify at least two existing supporting evidence records for the same claim.",
+      "Require the corroboration source-ID set to equal the exact union of source IDs attached to those supporting evidence records.",
+      "Require corroborating evidence to be OBSERVED or PARSED, not inferred or hypothesized.",
+      "Require CONTRADICTORY results to reference existing supporting and contradicting evidence records with the same claim_id, correct support polarity, independently sourced evidence, and explicit reconciliation of both sides.",
+      "Make the MMI adapter derive publisher identity from the source URI and reject caller-supplied mismatches.",
+      "Preserve the existing append-only MMI execution ledger."
+    ],
+    "changed_files": [
+      "barrot_agent/evolution/source_independence.py",
+      "barrot_agent/mmi_v1.py",
+      "barrot_agent/mmi_adapter.py",
+      "tests/test_source_independence.py",
+      "tests/test_mmi_v1.py",
+      "tests/test_mmi_integration.py",
+      "research/xrp_intelligence/20261103T002817Z-mmi-claim-bound-source-independence-hardening.json"
+    ]
+  },
+  "tests_added_or_updated": [
+    "Normalize www, subdomains, ports and country-code public suffixes to one publisher identity.",
+    "Collapse known SBI corporate domains while keeping Tokyo SBIC separate.",
+    "Reject non-HTTP(S) source URIs as external publisher identities.",
+    "Reject forged independence_group values that conflict with URI-derived identity.",
+    "Reject source IDs not linked to the named claim's evidence records.",
+    "Reject evidence records with mismatched claim IDs.",
+    "Reject HYPOTHESIZED evidence from counting as observed corroboration.",
+    "Preserve valid two-publisher corroboration.",
+    "Preserve contradictory evidence only when both existing sides are reconciled."
+  ],
+  "residual_limitations": [
+    "Canonical publisher identity is a domain-level heuristic, not proof of independent reporting lineage. Syndicated or derivative articles from different publishers can still share one upstream source.",
+    "A future lineage_id/origin_source_id is needed to collapse republished material and multiple reports derived from the same press release or dataset.",
+    "The publisher alias registry is intentionally small and requires reviewed maintenance as source coverage expands.",
+    "GitHub code search surfaced the MMI adapter definition but no verified application-level production instantiation; end-to-end live ingestion integration remains unverified.",
+    "This branch is stacked on PR #1536 and must not be merged before its parent is merged and verified."
+  ],
+  "verification": {
+    "parent_pr_1536_exact_head_ci": "PASS: 353 tests + 8 subtests",
+    "parent_pr_1536_fail_closed_gate": "PASS",
+    "followup_local_tests": "NOT_EXECUTED_IN_THIS_RUNTIME",
+    "followup_exact_head_ci": "PENDING",
+    "followup_fail_closed_gate": "PENDING",
+    "pull_request": "NOT_CREATED_YET",
+    "merge_status": "NOT_MERGED"
+  },
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "merge": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "deployment": false,
+    "paper_position_mutation": false,
+    "real_money_transaction": false
+  },
+  "next_actions": [
+    "Create a draft follow-up PR targeting the parent PR #1536 branch.",
+    "Run exact-head CI and fail-closed verification.",
+    "Inspect all application-level MMI adapter call sites before claiming live ingestion integration.",
+    "Add source lineage/origin IDs to distinguish genuinely independent reporting from syndicated or common-origin material.",
+    "Keep forecast issuance blocked until independent evaluation attestation is implemented and verified."
+  ]
+}
