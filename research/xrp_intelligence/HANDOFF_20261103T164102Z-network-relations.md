@@ -279,3 +279,27 @@ Coinbase Financial Markets Inc. (separate Coinbase FCM entity), CFTC 2026-08-31:
 4. Track Coinbase RLUSD collateral activation and XRP futures utilization separately.
 5. Build the point-in-time historical feature store and fixed-horizon forecast dataset only after the source/vintage contract is stable.
 6. Continue the exhaustive YouTube inventory after canonical channel identity and a paginated public source are available.
+
+
+## Final safety verification — 2026-11-03
+
+### Fresh-main containment PRs
+All four fresh-main containment PRs below are draft/open/unmerged and have passing Tests plus the fail-closed gate on their exact heads:
+- [#1594 Scheduler Tick containment](https://github.com/Barrot-Agent/B-Agent/pull/1594), head `37f00934515688ad6f7b0eab629adc2b00b89b4a`.
+- [#1595 Autonomous Resolver containment](https://github.com/Barrot-Agent/B-Agent/pull/1595), head `a2b8d32a53080e5dc82657621e9d10ca65db0ada`.
+- [#1596 Legacy Signal Accuracy containment](https://github.com/Barrot-Agent/B-Agent/pull/1596), head `84f19b5b6ad8ccea6a6cbd3799a860873cf7efb6`.
+- [#1592 Cross Analysis read-only containment](https://github.com/Barrot-Agent/B-Agent/pull/1592), head `4a1dd095a0e0a60f9e49c5c8a48f70b4f548903d`.
+
+The broader prediction-integrity PR [#1590](https://github.com/Barrot-Agent/B-Agent/pull/1590), head `f6a4687976a6d9ca5a2d530255609212fc4a031f`, also has passing core Tests, dedicated prediction-integrity checks and the fail-closed gate. Research PR #1591 passed Tests and the gate on code/data head `33dc41cf0cb91a004a2a7fadca66aff95fcecb84`. PR #1590 and #1591 remain one commit behind current main; the four containment PRs are based directly on current main.
+
+### Resolver-generated issue
+The scheduled resolver run created [issue #1593](https://github.com/Barrot-Agent/B-Agent/issues/1593) for the intermediate PR #1590 test failure. The failure was caused by fixtures missing three newly required reference-price provenance fields; later commits passed. The issue remains open and untouched. The resolver containment PR #1595 prevents further unattended issue creation/assignment after an authorized merge.
+
+### Live-state boundary
+Main is still `09466f945b8b9a658e0b2a03e70c05d78c33b765`. No PR has been merged. Therefore the scheduler tick, autonomous resolver, Cross Analysis writer and legacy signal-accuracy writer remain active on main until their respective containment PRs are explicitly approved and merged. Passing PR checks do not change live main behavior.
+
+### Verification discipline
+- The four containment PRs above passed their own Tests and fail-closed gate.
+- PR #1590 passed core tests, prediction-integrity tests and the gate on its exact head.
+- PR #1591 passed tests and gate on the exact code/data head; the latest handoff update is documentation-only.
+- No automatic merge was enabled, no manual workflow dispatch was run, and no trading or deployment action occurred.
