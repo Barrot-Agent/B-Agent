@@ -1,0 +1,404 @@
+{
+  "schema_version": "barrot.xrp.phrase-and-entity-disambiguation.v1",
+  "captured_at_utc": "2026-11-03T15:25:54Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "forecast_status": "NOT_ISSUED",
+  "scope": [
+    "SBIC",
+    "ChatGPT SBIC",
+    "ASK Coin",
+    "actual capital",
+    "Camilla Stephenson YouTube inventory"
+  ],
+  "entities": [
+    {
+      "id": "SBIC-JP",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "type": "Japanese SME investment and growth-support company",
+      "identity_status": "CONFIRMED_BY_OFFICIAL_COMPANY_PROFILE",
+      "jurisdiction": "Japan",
+      "facts": {
+        "established": "1963-11-15",
+        "employees": 96,
+        "capital_jpy": 6673400000,
+        "operating_area_prefectures": 18
+      },
+      "distinction": "The company's official site says it is an independent private corporation established under the Small and Medium Business Investment & Consultation Companies Act, not a government-owned financial institution and not SBI Holdings.",
+      "xrp_relation": "No XRP, Ripple, Coinbase or Circle relationship established in this research pass."
+    },
+    {
+      "id": "SBIC-DATASET",
+      "name": "Social Bias Inference Corpus (SBIC)",
+      "type": "Academic dataset",
+      "identity_status": "CONFIRMED_BY_ORIGINAL_PAPER",
+      "facts": {
+        "original_paper_year": 2019,
+        "posts": 44671,
+        "structured_annotations_approx": 150000
+      },
+      "distinction": "A dataset of social-media posts and inferred social implications. It is unrelated to the Japanese SBIC company."
+    },
+    {
+      "id": "CHATGPT-SBIC-PAPER",
+      "name": "Efficient Toxic Content Detection by Bootstrapping and Distilling Large Language Models",
+      "type": "2024 academic paper",
+      "identity_status": "CONFIRMED",
+      "facts": {
+        "chatgpt_model": "gpt-3.5-turbo",
+        "dataset": "Social Bias Inference Corpus",
+        "sbic_sample_training": 4000,
+        "sbic_sample_test": 1000,
+        "chatgpt_cot_accuracy_pct": 68.5,
+        "chatgpt_cot_f1_pct": 72.82,
+        "distilled_method_accuracy_pct": 72,
+        "distilled_method_f1_pct": 74.91
+      },
+      "distinction": "The paper evaluates ChatGPT and distilled variants on SBIC for toxic-content classification. This is a research benchmark use of the phrase 'ChatGPT SBIC', not an OpenAI partnership, a finance company, or an XRP project."
+    },
+    {
+      "id": "ASK-PERMISSION",
+      "name": "Permission Coin (ASK)",
+      "type": "AI-agent/family-rewards ecosystem token",
+      "identity_status": "PLAUSIBLE_TICKER_MATCH_NOT_USER_CONFIRMED",
+      "facts": {
+        "official_networks": [
+          "Base",
+          "Polygon"
+        ],
+        "token_standard": "LayerZero OFT-20",
+        "base_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "polygon_contract": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+        "stargate_support": true,
+        "total_supply_claim": 100000000000,
+        "official_uses": [
+          "family rewards and incentives",
+          "permissioned participation",
+          "agent-to-agent value exchange",
+          "future governance and staking"
+        ]
+      },
+      "distinction": "Official Permission documentation lists only Base and Polygon as current networks. It does not list an XRP Ledger contract. This is a candidate interpretation of 'ASK Coin', not confirmation that it is the asset the user meant."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "status": "CONFIRMED_OFFICIAL_SOURCE",
+      "detail": "SBIC East Japan's official profile names the company Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), established in 1963, with 96 employees, ¥6.6734B capital and an 18-prefecture operating area.",
+      "sources": [
+        "SRC-SBIC-PROFILE"
+      ]
+    },
+    {
+      "id": "C02",
+      "status": "CONFIRMED_OFFICIAL_SOURCE",
+      "detail": "The Japanese company describes itself as an independent private corporation and policy-implementing institution established under the 1963 Small and Medium Business Investment & Consultation Companies Act; it is not SBI Holdings.",
+      "sources": [
+        "SRC-SBIC-ABOUT",
+        "SRC-SBIC-PROFILE"
+      ]
+    },
+    {
+      "id": "C03",
+      "status": "CONFIRMED_ACADEMIC_SOURCE",
+      "detail": "The original 2019 paper defines SBIC as Social Bias Inference Corpus and describes 44,671 social-media posts with approximately 150,000 structured annotations.",
+      "sources": [
+        "SRC-SBIC-ORIGINAL-PAPER"
+      ]
+    },
+    {
+      "id": "C04",
+      "status": "CONFIRMED_ACADEMIC_SOURCE",
+      "detail": "A 2024 paper explicitly evaluates ChatGPT (gpt-3.5-turbo) on the SBIC dataset, using a 4,000-item training sample and a 1,000-item test sample; the paper reports 68.5% accuracy and 72.82 F1 for its ChatGPT CoT baseline, with higher results for its distilled method.",
+      "sources": [
+        "SRC-CHATGPT-SBIC-PAPER"
+      ]
+    },
+    {
+      "id": "C05",
+      "status": "STRONG_CONTEXTUAL_MATCH",
+      "detail": "The exact phrase 'ChatGPT SBIC' has a verified academic use referring to ChatGPT evaluated on the Social Bias Inference Corpus. This is the strongest located match for that phrase, but does not prove it is the user's intended context.",
+      "sources": [
+        "SRC-CHATGPT-SBIC-PAPER",
+        "SRC-SBIC-ORIGINAL-PAPER"
+      ]
+    },
+    {
+      "id": "C06",
+      "status": "CONFIRMED_ISSUER_DOCUMENTATION",
+      "detail": "Permission's official tokenomics documentation describes ASK as its native token and claims it supports family rewards, permissioned participation, agent-to-agent value exchange, and future governance/staking.",
+      "sources": [
+        "SRC-PERMISSION-TOKENOMICS"
+      ]
+    },
+    {
+      "id": "C07",
+      "status": "CONFIRMED_ISSUER_DOCUMENTATION",
+      "detail": "Permission's official contract page lists ASK as a LayerZero OFT-20 on Base and Polygon, with official contracts 0xBB146326778227A8498b105a18f84E0987A684b4 and 0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff, and states that Stargate support is live.",
+      "sources": [
+        "SRC-PERMISSION-CONTRACTS"
+      ]
+    },
+    {
+      "id": "C08",
+      "status": "ISSUER_CLAIM_NOT_INDEPENDENTLY_VERIFIED",
+      "detail": "Permission's tokenomics page says a portion of parent subscription revenue is used to buy ASK on the open market and that purchased ASK funds rewards. No transaction-level buyback evidence or audited cash-flow reconciliation was established in this pass.",
+      "sources": [
+        "SRC-PERMISSION-TOKENOMICS"
+      ]
+    },
+    {
+      "id": "C09",
+      "status": "ISSUER_REPORTED_WALLET_ROUTE",
+      "detail": "Permission's January 10, 2025 blog says ASK launched on Base and could be swapped through Coinbase Wallet. This supports a wallet-interface route on Base, not a Coinbase exchange listing, Coinbase investment, custody relationship or endorsement.",
+      "sources": [
+        "SRC-PERMISSION-BASE-LAUNCH"
+      ]
+    },
+    {
+      "id": "C10",
+      "status": "NEGATIVE_EVIDENCE_LIMITED_TO_OFFICIAL_DOCS",
+      "detail": "Permission's official contract page lists Base and Polygon only; searches within its tokenomics and contract documentation returned no XRP or Ripple reference. No XRP Ledger deployment or direct XRP relationship was established.",
+      "sources": [
+        "SRC-PERMISSION-CONTRACTS",
+        "SRC-PERMISSION-TOKENOMICS"
+      ]
+    },
+    {
+      "id": "C11",
+      "status": "UNRESOLVED",
+      "detail": "The exact phrase 'actual capital' did not resolve to a verified XRP-specific entity, project, filing or transaction in this search pass. It may describe a general capital-flow concept rather than a proper name.",
+      "sources": []
+    },
+    {
+      "id": "C12",
+      "status": "UNRESOLVED_SEARCH_RESULT",
+      "detail": "Searches for an exact-name Camilla Stephenson YouTube channel or videos, including XRP/ASK/SBIC terms, did not surface a verifiable channel or video. Direct YouTube search results were not reliably readable; this is not proof that no such videos exist.",
+      "sources": [
+        "SRC-YOUTUBE-SEARCH"
+      ]
+    },
+    {
+      "id": "C13",
+      "status": "UNCONFIRMED_IDENTITY",
+      "detail": "Permission Coin (ASK) is a plausible ticker match for 'ASK Coin', but no evidence confirms that this is the user's intended ASK asset; other unrelated ASK tickers or projects may exist.",
+      "sources": [
+        "SRC-PERMISSION-TOKENOMICS",
+        "SRC-PERMISSION-CONTRACTS",
+        "SRC-COINMARKETCAP",
+        "SRC-COINGECKO"
+      ]
+    },
+    {
+      "id": "C14",
+      "status": "NO_DIRECT_RELATIONSHIP_ESTABLISHED",
+      "detail": "No direct Permission-Coin relationship to Ripple, XRP, Circle, SBI/SBIC or Coinbase as a corporate counterparty was established. The only Coinbase-adjacent evidence found is Permission's statement that ASK could be swapped through Coinbase Wallet on Base.",
+      "sources": [
+        "SRC-PERMISSION-BASE-LAUNCH",
+        "SRC-PERMISSION-CONTRACTS"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "id": "E01",
+      "from": "ChatGPT (gpt-3.5-turbo)",
+      "relation": "evaluated_on",
+      "to": "Social Bias Inference Corpus (SBIC)",
+      "claim_ids": [
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "strength": "direct_academic_evidence"
+    },
+    {
+      "id": "E02",
+      "from": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "relation": "uses_acronym",
+      "to": "SBIC East Japan",
+      "claim_ids": [
+        "C01",
+        "C02"
+      ],
+      "strength": "direct_official_evidence"
+    },
+    {
+      "id": "E03",
+      "from": "Permission",
+      "relation": "issues",
+      "to": "Permission Coin (ASK)",
+      "claim_ids": [
+        "C06",
+        "C07"
+      ],
+      "strength": "direct_issuer_documentation"
+    },
+    {
+      "id": "E04",
+      "from": "Permission Coin (ASK)",
+      "relation": "deployed_as_LayerZero_OFT20_on",
+      "to": "Base and Polygon",
+      "claim_ids": [
+        "C07"
+      ],
+      "strength": "direct_issuer_documentation"
+    },
+    {
+      "id": "E05",
+      "from": "Permission Coin (ASK)",
+      "relation": "integrated_with",
+      "to": "Stargate",
+      "claim_ids": [
+        "C07"
+      ],
+      "strength": "direct_issuer_documentation"
+    },
+    {
+      "id": "E06",
+      "from": "Permission",
+      "relation": "reports_wallet_swap_route_through",
+      "to": "Coinbase Wallet on Base",
+      "claim_ids": [
+        "C09"
+      ],
+      "strength": "issuer_reported"
+    },
+    {
+      "id": "E07",
+      "from": "Permission Coin (ASK)",
+      "relation": "no_verified_deployment_on",
+      "to": "XRP Ledger",
+      "claim_ids": [
+        "C10"
+      ],
+      "strength": "official_contract_page_scope_only"
+    },
+    {
+      "id": "E08",
+      "from": "SBIC East Japan",
+      "relation": "distinct_from",
+      "to": "Social Bias Inference Corpus",
+      "claim_ids": [
+        "C01",
+        "C03"
+      ],
+      "strength": "entity_disambiguation"
+    },
+    {
+      "id": "E09",
+      "from": "Camilla Stephenson",
+      "relation": "YouTube channel/video identity",
+      "to": "UNKNOWN",
+      "claim_ids": [
+        "C12"
+      ],
+      "strength": "unresolved"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H01",
+      "statement": "The user's phrase 'ChatGPT SBIC' refers to ChatGPT evaluation on the Social Bias Inference Corpus.",
+      "supporting_claims": [
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "disconfirming_evidence": [],
+      "status": "STRONGLY_SUPPORTED_CONTEXTUAL_MATCH",
+      "limitation": "The user's intended context is not explicitly confirmed."
+    },
+    {
+      "id": "H02",
+      "statement": "The user's phrase 'ASK Coin' refers to Permission Coin (ASK), an agent-to-agent and family-rewards token on Base/Polygon.",
+      "supporting_claims": [
+        "C06",
+        "C07",
+        "C13"
+      ],
+      "disconfirming_evidence": [
+        "No XRP Ledger contract is listed; no direct Ripple/XRP relationship found."
+      ],
+      "status": "POSSIBLE_NOT_CONFIRMED"
+    },
+    {
+      "id": "H03",
+      "statement": "Permission Coin's Coinbase relationship is limited to wallet-interface access on Base rather than direct corporate or exchange integration.",
+      "supporting_claims": [
+        "C09",
+        "C14"
+      ],
+      "disconfirming_evidence": [],
+      "status": "BEST_SUPPORTED_CURRENT_INTERPRETATION",
+      "limitation": "Only Permission's own blog statement was located; no Coinbase-side confirmation or listing evidence was found."
+    },
+    {
+      "id": "H04",
+      "statement": "The phrase 'actual capital' may refer to verifiable capital entering a token ecosystem, potentially including Permission's claimed subscription-funded ASK buybacks.",
+      "supporting_claims": [
+        "C08",
+        "C11"
+      ],
+      "disconfirming_evidence": [
+        "No transaction-level buyback proof and no exact phrase link to Permission were found."
+      ],
+      "status": "SPECULATIVE_LEAD_ONLY"
+    }
+  ],
+  "source_independence": {
+    "SRC-SBIC-PROFILE": "Primary company website; authoritative for company identity and profile details.",
+    "SRC-SBIC-ABOUT": "Primary company website; authoritative for the company's stated legal/operational character.",
+    "SRC-SBIC-ORIGINAL-PAPER": "Original academic paper hosted on arXiv; authoritative for dataset name and construction.",
+    "SRC-CHATGPT-SBIC-PAPER": "Academic paper hosted by Amazon Science; reports its own experimental results, not an independent benchmark certification.",
+    "SRC-PERMISSION-TOKENOMICS": "Permission's own documentation; issuer claims, not independent proof of buybacks or adoption.",
+    "SRC-PERMISSION-CONTRACTS": "Permission's own official contract documentation; authoritative for the contracts it designates official, not an independent audit.",
+    "SRC-PERMISSION-BASE-LAUNCH": "Permission's own blog; issuer-reported Coinbase Wallet route, not Coinbase confirmation.",
+    "SRC-COINMARKETCAP": "Third-party market-data listing; useful for candidate discovery, not issuer authority.",
+    "SRC-COINGECKO": "Third-party market-data listing; useful for candidate discovery, not issuer authority.",
+    "SRC-YOUTUBE-SEARCH": "Search-result inventory only; absence of returned results is not proof of nonexistence."
+  },
+  "search_log": [
+    {
+      "query": "\"Camilla Stephenson\" YouTube channel",
+      "result": "No verifiable exact-name channel returned."
+    },
+    {
+      "query": "site:youtube.com \"Camilla Stephenson\" XRP",
+      "result": "No verifiable exact-name XRP video returned."
+    },
+    {
+      "query": "site:youtube.com/watch \"Camilla Stephenson\" XRP",
+      "result": "No verifiable exact-name video returned."
+    },
+    {
+      "query": "\"ASK Coin\" token XRPL issuer",
+      "result": "No reliable XRPL token identity resolved; Permission Coin is one plausible ticker candidate."
+    },
+    {
+      "query": "\"Permission Coin\" Ripple XRP Ledger",
+      "result": "No direct relationship surfaced."
+    },
+    {
+      "query": "\"actual capital\" XRP Ripple Coinbase Circle",
+      "result": "No verified XRP-specific entity or transaction resolved."
+    },
+    {
+      "query": "\"ChatGPT SBIC\" academic paper",
+      "result": "Located a 2024 paper explicitly evaluating ChatGPT on the Social Bias Inference Corpus."
+    }
+  ],
+  "next_actions": [
+    "Verify whether Permission's claimed subscription-funded ASK buybacks appear as identifiable on-chain transactions on Base or Polygon; distinguish issuer claims from observed capital flows.",
+    "Check Coinbase-side documentation for the exact scope of Coinbase Wallet support and whether any exchange listing or custody relationship exists; do not infer one from wallet access.",
+    "Continue Camilla Stephenson inventory using alternate spellings, channel identifiers and public video metadata; current search is incomplete.",
+    "Continue exact-phrase research for 'actual capital' without attaching it to Permission or XRP absent evidence.",
+    "Keep the Japanese SBIC corporate entity separate from the academic SBIC dataset and from SBI Holdings."
+  ],
+  "limitations": [
+    "No user intent was inferred from acronym matches.",
+    "No investment conclusion or price prediction is issued from these phrase-disambiguation findings.",
+    "Permission's buyback statements are not independently verified by on-chain transaction analysis in this artifact.",
+    "No exhaustive YouTube channel inventory was completed."
+  ]
+}
