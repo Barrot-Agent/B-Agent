@@ -583,6 +583,15 @@ class MMICompletenessReport:
             and not record.corroboration_complete()
         ):
             completed_stages = max(0, completed_stages - 1)
+        for stage_name in (
+            "RECEIVED",
+            "PROVENANCE_CAPTURED",
+            "EVIDENCE_NORMALIZED",
+            "VERIFICATION",
+        ):
+            if required_stages.get(stage_name) != StageOutcome.COMPLETE.value:
+                if required_stages.get(stage_name) == StageOutcome.NOT_APPLICABLE.value:
+                    completed_stages = max(0, completed_stages - 1)
         completed_stages = max(
             0,
             completed_stages - sum(not present for present in artifact_presence.values()),
