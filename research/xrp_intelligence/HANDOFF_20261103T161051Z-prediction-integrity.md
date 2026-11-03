@@ -84,3 +84,21 @@ Only ChatGPT and the GitHub repository connection were exercised and verified in
 The XRP creator most likely intended by the phrase “Camilla Stephenson” is **Kamilah Stevenson**, not a verified person whose canonical name is Camilla Stephenson. The likely channel ID is `UCqUPJMQdkCN6lsLVDnichPA`; the handle page is `https://www.youtube.com/@drkamilahstevenson/videos`. A Vling channel listing associates that channel ID with Kamilah Stevenson and reports 1.3K videos, but the count is third-party and conflicts with another analytics provider. An iHeart/XRP Podcast transcript and several Glasp video transcripts use Camila/Camilla Stevenson as spoken-name variants. The podcast transcript also records a warning about fake pages. Keep channel ID, not name spelling, as the provisional identity key; do not assume the user meant this person without confirmation.
 
 A new machine-readable inventory artifact is added at `research/xrp_intelligence/20261103T161619Z-kamilah-stevenson-identity-and-video-inventory.json`. It contains 13 video IDs with public indexed evidence and one candidate ID that is not counted because direct YouTube verification failed. This is a partial seed inventory, not all 1.3K videos; complete enumeration, transcripts and forecast scoring remain pending.
+
+
+## Fixed-horizon forecast-ledger prototype — 2026-11-03 16:20 UTC
+
+### Existing calibration-engine audit
+The existing barrot_agent/evolution/confidence_calibration.py is not suitable for XRP price-forecast performance. It stores only claim_id, scalar confidence, status and a Boolean outcome; its summary applies a 0.5 threshold and reports binary accuracy. It lacks data cutoff, horizon, target, source/feature provenance, probability distributions, baselines, Brier/log loss and calibration diagnostics. The current JSON file contains repeated claim IDs; malformed JSON is silently treated as an empty list and a later save can overwrite the file. It must not be used to substantiate XRP forecast skill.
+
+### New deterministic ledger
+- Added barrot_agent/evolution/forecast_ledger.py and tests/test_forecast_ledger.py.
+- Added contract document research/xrp_intelligence/forecast-ledger-contract.md.
+- The SQLite prototype records 1h, 4h, 24h, 7d and 30d forecasts with cutoff, issue time, exact target time, venue, model/baseline versions, three-class probabilities, feature/source IDs, max feature timestamp, assumptions, alternatives, flat band, fees and slippage.
+- It rejects look-ahead feature timestamps, invalid horizons, non-UTC timestamps, mismatched target times and invalid probability distributions. Forecast IDs are deterministic; identical retries are idempotent.
+- Outcomes must be timestamped within a predeclared target tolerance. Cross-venue outcomes require explicit normalization. Missing outcomes are marked unscorable, not misses. Database triggers prohibit updating/deleting forecasts, outcomes and events.
+- Scoring includes three-class Brier mean-squared error, log loss, top-class accuracy, baseline comparison and coarse confidence bins. This is an evaluation ledger only, not a prediction model.
+- Local isolated tests: 17 passed. Exact-head GitHub CI and the dedicated regression workflow are pending for this new commit.
+- Known limits: the maximum feature timestamp is currently a single aggregate; fees/slippage are recorded but not applied to the market-return class; confidence bins are not full class-wise calibration; no ingestion, feature store, walk-forward training, drift monitoring or paper/shadow execution exists yet.
+
+Next implementation step is a point-in-time XRP feature store and walk-forward dataset builder that writes immutable snapshots and resolves each forecast only from the predeclared venue/time rule.
