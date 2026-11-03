@@ -341,3 +341,43 @@ The 14 research artifacts from the original research branch were copied without 
 4. Obtain Circle Q3 2026 results after the scheduled November 4, 2026 08:00 ET release; compare USDC circulation, reserve income, distribution costs, and Coinbase economics using matching period definitions.
 5. Monitor C2FO Instant Pay for named funders, first production invoice and disclosed deployed capital; do not infer XRP spot demand from RLUSD/XRPL settlement design.
 6. Keep the SBIC East Japan identity separate from SBI Holdings, SBI Shinsei, and the Social Bias Inference Corpus; canonical YouTube identity and exhaustive upload inventory remain unverified.
+
+
+## Research continuation delta — 2026-11-03
+
+### ASK Coin disambiguation
+- New artifact: `20261103-ask-coin-identity-and-xrp-relation-review.json`.
+- Best-supported candidate: Permission Coin / ASK, but intended identity remains unconfirmed because the phrase is non-unique and no original context was supplied.
+- Permission's current official site identifies $ASK as its family-friendly rewards token. Its official documentation describes a 100B fixed supply, LayerZero OFT deployment on Base and Polygon, agent-to-agent coordination as utility, and governance/staking as future functionality.
+- Official contract addresses: Base `0xBB146326778227A8498b105a18f84E0987A684b4`; Polygon `0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff`.
+- No direct or indirect XRP/XRPL/Ripple/Coinbase/Circle relationship was found in the reviewed official sources. Permission ASK is therefore not added to the XRP relationship graph.
+
+### Public-video discovery
+- Updated `20261103-kamilah-stevenson-public-video-discovery-addendum.json` from 4 to 15 candidate video IDs.
+- Four earlier Glasp-indexed candidates remain classified as likely channel matches.
+- Eleven additional YouTube video IDs were extracted from DailyCoin articles that attribute the embedded videos to Dr. Kamilah Stevenson. These are classified as `third_party_attribution_channel_unverified`; article-level attribution does not prove ownership by the candidate channel ID.
+- The exact channel identity remains probable but not canonically confirmed. The requested spelling "Camilla Stephenson" differs from "Kamilah Stevenson"; the creator reportedly warns about fake pages. No complete upload inventory is claimed.
+- New IDs include `QXOxXikifLU`, `TfFx0g2IgGg`, `T_v5uDLgi0Y`, `AJqjwT5ueG4`, `vRlw4BV-cGE`, `iYklFzVy6Ts`, `IWheKjfaRNQ`, `9fApLwtijGI`, `Vvp6832R49A`, `Y5rESnxoSIA`, and `Jq6YpwAeJs4`.
+
+### Fresh-main research PR verification
+- PR #1597: https://github.com/Barrot-Agent/B-Agent/pull/1597
+- Current research head before this handoff append: `0dc04e2ef0c927a07dc4759365a0d23ecc92cc53`.
+- CI run `41690077511`: 342 tests and 8 subtests passed.
+- Fail-closed gate run `41690077593`: passed. Its log states automatic merge is intentionally disabled and no repository content was changed.
+- PR remains draft/open/unmerged. Main is now `63ebacfed11e2ac4e50515f783353ed9fccb7475`, one telemetry-report commit ahead of the research branch. The commit changed only the timestamp in `AUTONOMOUS_DEPLOYMENT_REPORT.md`; GitHub reports PR #1597 mergeable after recalculation. No merge was performed.
+
+### Cross-analysis containment PR
+- PR #1598: https://github.com/Barrot-Agent/B-Agent/pull/1598
+- Head: `1e44072662147ea5189b375194e7becf245cee9f`.
+- It changes only `.github/workflows/cross-analysis.yml` and adds `tests/test_cross_analysis_readonly_containment.py`.
+- Fail-closed gate run `41690174765`: passed; automatic merge remains disabled.
+- CI run `41690174325` was still in progress at the last check.
+- Main still contains the old `contents: write` Cross Analysis workflow; containment is proposed, not deployed.
+
+### Safety and next actions
+- No main-branch content was written by this research run. No merge, force-push, secret access, deployment, workflow dispatch, paper trade or real-money transaction occurred.
+- Recheck PR #1598 exact-head CI before reporting it verified.
+- Reconcile overlapping CI workflow edits in PR #1585 and the older prediction-integrity PR before any merge recommendation.
+- Continue the point-in-time multi-venue XRP feature store and fixed-horizon outcome dataset; compare against naive and volatility-aware baselines with leakage controls before issuing a directional forecast.
+- Reconcile Coinbase XRP collateral eligibility with actual utilization; keep RLUSD, USDC and JPYSC lanes separate.
+- Revisit Circle Q3 2026 results after the scheduled November 4, 2026 08:00 ET release.
