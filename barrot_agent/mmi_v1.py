@@ -293,12 +293,12 @@ class MMIRecord:
                     continue
                 if not isinstance(contradicting, list) or not contradicting:
                     continue
-                required_ids = set(supporting + contradicting)
                 if any(
                     not isinstance(evidence_id, str) or not evidence_id.strip()
                     for evidence_id in supporting + contradicting
                 ):
                     continue
+                required_ids = set(supporting + contradicting)
                 reconciled_ids = set()
                 for item in self.reconciliation:
                     if not isinstance(item, dict):
@@ -343,14 +343,18 @@ class MMIStateMachine:
             "RECEIVED",
             "PROVENANCE_CAPTURED",
             "EVIDENCE_NORMALIZED",
-            "CORROBORATION",
             "VERIFICATION",
         ]
 
         if any(outcomes.get(x) == StageOutcome.BLOCKED for x in required):
             return MMIResult.BLOCKED
 
-        if any(outcomes.get(x) == StageOutcome.PARTIAL for x in required):
+        if any(outcomes.get(x) != StageOutcome.COMPLETE for x in required):
+            return MMIResult.PARTIAL
+
+        if outcomes.get("CORROBORATION") == StageOutcome.BLOCKED:
+            return MMIResult.BLOCKED
+        if outcomes.get("CORROBORATION") == StageOutcome.PARTIAL:
             return MMIResult.PARTIAL
 
         # A COMPLETE label is not sufficient proof by itself.
@@ -562,7 +566,10 @@ class MMICompletenessReport:
                 artifact_presence["corroboration_results"] = True
 
         state_result = MMIStateMachine.evaluate(record)
-        protocol_complete = state_result == MMIResult.COMPLETE
+        protocol_complete = (
+            state_result == MMIResult.COMPLETE
+            and all(artifact_presence.values())
+        )
 
         completed_stages = sum(
             outcome in {
@@ -576,6 +583,10 @@ class MMICompletenessReport:
             and not record.corroboration_complete()
         ):
             completed_stages = max(0, completed_stages - 1)
+        completed_stages = max(
+            0,
+            completed_stages - sum(not present for present in artifact_presence.values()),
+        )
 
         protocol_completeness = (
             completed_stages / len(required_stages)
