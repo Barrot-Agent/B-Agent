@@ -6,8 +6,31 @@ from hashlib import sha256
 from pathlib import Path
 import json
 import time
+import unicodedata
 
 from barrot_agent.evolution.source_independence import canonical_publisher_group
+
+
+CLAIM_ID_VERSION = "barrot-mmi-claim-v1"
+
+
+def canonical_claim_id(claim: str) -> str:
+    """Return a versioned SHA-256 identity for normalized claim text.
+
+    NFKC, case-folding and whitespace collapse make harmless formatting
+    differences stable. Punctuation and wording remain significant. This
+    binds evidence records to one exact normalized proposition; it does not
+    prove that the proposition is true or that its sources are independent.
+    """
+    if not isinstance(claim, str):
+        return ""
+    normalized = " ".join(
+        unicodedata.normalize("NFKC", claim).casefold().split()
+    )
+    if not normalized:
+        return ""
+    payload = f"{CLAIM_ID_VERSION}\\0{normalized}".encode("utf-8")
+    return "sha256:" + sha256(payload).hexdigest()
 
 
 class ParseState(str, Enum):
@@ -364,6 +387,11 @@ class MMIRecord:
                 return False
             evidence_records = supporting_records + contradicting_records
         else:
+            return False
+
+        # The opaque claim_id supplied by a caller must equal the fingerprint
+        # of every named evidence record's normalized claim text.
+        if any(canonical_claim_id(evidence.claim) != claim_id for evidence in evidence_records):
             return False
 
         source_ids = {
