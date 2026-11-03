@@ -116,3 +116,25 @@ Next implementation step is a point-in-time XRP feature store and walk-forward d
 ## Creator source manifest update — 2026-11-03 16:25 UTC
 
 Updated data/xrp_intelligence/sources/kamilah_stevenson_channel.json in this PR branch: identity is now classified as a likely match, not confirmed, with Kamilah/Camila/Camilla spelling variants and the exact user spelling mismatch preserved. The indexed seed inventory now contains 13 video IDs; the full channel inventory remains incomplete. The fixed-horizon list now matches the ledger's 1h, 4h, 24h, 7d and 30d horizons. Candidate video ID QXOxXikifLU remains uncounted until canonical YouTube metadata verifies it.
+
+
+## Reference-price point-in-time hardening — 2026-11-03 16:35 UTC
+
+A code review of the fixed-horizon ledger found a material leakage gap: the model's `reference_price_usd` was used to calculate the realized return, but the record did not require the reference price's own observation timestamp or source identity. The maximum feature timestamp alone did not prevent a reference price captured after the forecast cutoff from entering the outcome calculation.
+
+Implemented on the PR #1590 branch:
+- Require `reference_price_timestamp_utc`, `reference_price_source_id` and `reference_price_max_age_seconds`.
+- Reject a reference-price observation later than the immutable data cutoff.
+- Reject a reference price older than its declared maximum age (0–3,600 seconds).
+- Require the reference-price source ID to be present in the forecast's source manifest.
+- Add three regression tests for post-cutoff prices, stale prices and unregistered source IDs.
+- Update the forecast-ledger contract to describe the new provenance and leakage rules.
+
+These edits are EXECUTED on the PR branch but are not yet VERIFIED by CI. The earlier successful checks apply to the previous head only and must not be carried forward as proof for the new head.
+
+Additional review items retained for the next pass:
+1. `summary()` currently pools scored forecasts across assets, venues, horizons and model/baseline versions. Before using it for model selection, metrics must be cohort-separated and top-level aggregates suppressed when multiple cohorts exist.
+2. A non-empty cross-venue normalization string is a declaration, not proof that prices were actually normalized. Keep such outcomes flagged as manually attested until a deterministic normalization implementation and audit record exist.
+3. Source IDs and feature snapshot IDs are syntactically required but are not yet resolved against an immutable registry or content hashes. The point-in-time feature store remains unimplemented.
+
+Current PR #1590 branch: `prediction/fresh-main-integrity-0c232323-20261103T1536Z`. The next exact-head CI/gate run must cover all commits above. No merge or main-branch write was performed.
