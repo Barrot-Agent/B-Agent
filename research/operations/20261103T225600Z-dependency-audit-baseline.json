@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "dependency_manifest_and_security_audit_baseline",
+  "captured_at_utc": "2026-11-03T22:56:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_base": "34248159231cc469ac7c95c919b336615ceab10e",
+  "complete_tree": {
+    "entries": 1350,
+    "truncated": false
+  },
+  "manifests": [
+    {
+      "path": "requirements.txt",
+      "runtime_declarations": 11,
+      "sha": "8c81e45483ed5092afe836070d8aee1d28e6567d"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "entries": 12,
+      "includes": "requirements.txt",
+      "sha": "91dc840aaf5f7f402efbaf2179d701031aa2ecf3"
+    },
+    {
+      "path": "hf_space/requirements.txt",
+      "entries": 4,
+      "sha": "497f2247b7b01393470f8e0b4f2ca42e2f5805e8"
+    },
+    {
+      "path": "legacy/requirements_legacy.txt",
+      "entries": 12,
+      "sha": "0be66b71fd3334eb297be2c85a7c2fa48141b5bc"
+    }
+  ],
+  "lockfiles_found": [],
+  "current_controls": {
+    "dependabot": {
+      "pip": "weekly",
+      "github_actions": "weekly",
+      "open_pull_requests_limit": 5
+    },
+    "core_ci_installs_only_subset": true,
+    "dedicated_pip_audit_workflow": false,
+    "immutable_action_sha_pinning": "not verified; inspected workflows use major tags"
+  },
+  "risks": [
+    "No lockfiles: dependency resolution is not fully reproducible.",
+    "Legacy and Hugging Face Space manifests need separate audits.",
+    "Core CI does not install the complete runtime set.",
+    "No dedicated vulnerability audit was found on inspected main."
+  ],
+  "planned_audit": {
+    "workflow_path": ".github/workflows/dependency-audit.yml",
+    "tool": "pip-audit",
+    "manifests": [
+      "requirements-dev.txt",
+      "hf_space/requirements.txt",
+      "legacy/requirements_legacy.txt"
+    ],
+    "triggers": [
+      "pull_request on dependency manifest changes",
+      "weekly schedule",
+      "workflow_dispatch"
+    ],
+    "permissions": {
+      "contents": "read"
+    },
+    "secrets": false,
+    "writes": false,
+    "deployments": false
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "external_deployment": false
+  }
+}
