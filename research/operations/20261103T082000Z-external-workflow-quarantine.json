@@ -1,0 +1,125 @@
+{
+  "schema_version": "barrot.external-workflow-quarantine.v1",
+  "captured_at_utc": "2026-11-03T08:20:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "ba121a1051c84ceb311e5c65e38a18659dcd7f0e",
+  "workflows": [
+    ".github/workflows/barrot-hf-admin.yml",
+    ".github/workflows/barrot-merge-manual.yml",
+    ".github/workflows/barrot-merge.yml",
+    ".github/workflows/barrot-restart-space.yml",
+    ".github/workflows/barrot-self-upgrade.yml",
+    ".github/workflows/capability-9-data-resolver.yml",
+    ".github/workflows/deploy-a2a-worker.yml",
+    ".github/workflows/force-deploy-space.yml",
+    ".github/workflows/rotate-databricks-token.yml",
+    ".github/workflows/sync-self-hosted-brain.yml",
+    ".github/workflows/barrot-ops.yml",
+    ".github/workflows/deploy-databricks.yml",
+    ".github/workflows/sync-huggingface.yml",
+    ".github/workflows/databricks-bundle.yml",
+    ".github/workflows/autonomous_self_deployment.yml",
+    ".github/workflows/subscriber_sync.yml"
+  ],
+  "findings": [
+    {
+      "severity": "CRITICAL",
+      "workflow": ".github/workflows/rotate-databricks-token.yml",
+      "finding": "Accepts a new Databricks PAT through workflow input and interpolates it into a shell command before changing a repository secret; unsafe secret-entry channel and shell injection risk.",
+      "action": "Disable; no token read or change."
+    },
+    {
+      "severity": "CRITICAL",
+      "workflow": ".github/workflows/subscriber_sync.yml",
+      "finding": "Hourly workflow reads Gumroad customer emails, hashes them with SHA-256 and commits the resulting email-hash list to public web/subscribers.json. Individual file contents were not inspected.",
+      "action": "Disable; require privacy review and authorized retention/removal decision."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/barrot-hf-admin.yml",
+      "finding": "Deletes a Hugging Face Space repository and creates another using HF_TOKEN.",
+      "action": "Disable destructive action."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/force-deploy-space.yml",
+      "finding": "Uses git push -f to overwrite a Hugging Face Space main ref.",
+      "action": "Disable force deployment."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/deploy-a2a-worker.yml",
+      "finding": "Push to main triggers Cloudflare Worker deployment and uploads GROQ_API_KEY and BRAIN_SHARED_SECRET.",
+      "action": "Disable push-triggered external deployment."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/sync-self-hosted-brain.yml",
+      "finding": "Push to main triggers Hugging Face Space creation/upload.",
+      "action": "Disable push-triggered external deployment."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/barrot-self-upgrade.yml",
+      "finding": "Contents/PR write permissions, provider token, and push to dispatched ref including potential main.",
+      "action": "Disable self-upgrade."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/capability-9-data-resolver.yml",
+      "finding": "Provider token plus caller-supplied dataset and push of resolver output to main.",
+      "action": "Disable until adapter and provenance controls are verified."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/sync-huggingface.yml",
+      "finding": "Uploads Space contents and propagates HF, Groq and Databricks secrets to an external Space.",
+      "action": "Disable pending secret minimization and protected approval."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/barrot-ops.yml",
+      "finding": "Manual orchestrator runs Databricks/Kaggle operations using stored credentials; YES input is not a protected Environment reviewer gate.",
+      "action": "Disable pending verified adapters and approval."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/deploy-databricks.yml and databricks-bundle.yml",
+      "finding": "Manual Databricks workspace deployment using stored tokens; YES input alone is not independent approval.",
+      "action": "Disable pending protected Environment."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/barrot-merge.yml and barrot-merge-manual.yml",
+      "finding": "Duplicate model merge/upload workflows with HF credentials and trust_remote_code; YES input alone is not protected reviewer approval.",
+      "action": "Disable both until provenance and protected approval are established."
+    },
+    {
+      "severity": "HIGH",
+      "workflow": ".github/workflows/barrot-restart-space.yml",
+      "finding": "Manual factory restart of external Hugging Face Space.",
+      "action": "Disable pending protected approval."
+    },
+    {
+      "severity": "MEDIUM",
+      "workflow": ".github/workflows/autonomous_self_deployment.yml",
+      "finding": "Six-hour scheduled job commits telemetry report directly to main.",
+      "action": "Disable scheduled main writer; use bounded artifacts in future design."
+    }
+  ],
+  "privacy_note": "The public web/subscribers.json contents were not read. The workflow source establishes that hashes are written publicly; treat them as potentially linkable pseudonymous personal data pending privacy review, not as confirmed plaintext exposure.",
+  "verification": {
+    "ci": "PENDING",
+    "fail_closed_gate": "PENDING",
+    "local_tests": "NOT_EXECUTED"
+  },
+  "preservation": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secret_access": false,
+    "deployment": false,
+    "subscriber_file_read": false
+  }
+}
