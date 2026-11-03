@@ -1,0 +1,474 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "sbi_ripple_circle_arc_cross_rail_research",
+  "snapshot_id": "sbi-ripple-circle-arc-cross-rail-20261103-run11",
+  "captured_at_utc": "2026-11-03T00:45:34.365Z",
+  "data_cutoff_utc": "2026-11-03T00:45:00Z",
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "Does SBI's position in Ripple, Circle, USDC, RLUSD, JPYSC and Circle's Arc indicate a single XRP-centric strategy, a multi-rail strategy, or a strategic hedge?",
+  "executive_assessment": {
+    "classification": "MULTI_RAIL_STRATEGY_BEST_SUPPORTED",
+    "conclusion": "Primary disclosures establish that SBI has substantial corporate exposure to both Ripple and Circle, distributes both XRP-ecosystem and Circle stablecoin products, and has participated in Circle's ARC token presale and Arc founding-validator cohort. The strongest supported interpretation is a multi-rail strategy, not an exclusive XRP bet. Arc and XRPL overlap in institutional payments and tokenized-finance use cases, but no direct Arc-XRPL bridge or displacement of XRP settlement has been established.",
+    "confidence": "HIGH for the disclosed relationships; MODERATE for the multi-rail strategic interpretation; LOW for any claim of direct Arc-XRPL competition or integration."
+  },
+  "findings": [
+    {
+      "id": "SCA-01",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "SBI Holdings and SBI Shinsei Bank acquired a combined $50 million of Circle shares at Circle's June 2025 NYSE listing, split $25 million each.",
+      "implication": "SBI has direct equity exposure to Circle, not merely a distribution or technology partnership.",
+      "sources": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "id": "SCA-02",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "The same SBI release states that SBI invested in Ripple in 2016 and held approximately 9% of Ripple as an outside largest shareholder.",
+      "implication": "The 9% figure refers to Ripple corporate equity, not an XRP token inventory. The release does not disclose SBI's native XRP holdings quantity.",
+      "sources": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "id": "SCA-03",
+      "classification": "CONFIRMED_OFFICIAL_PRESENTATION",
+      "claim": "SBI's June 2, 2025 investor presentation depicts SBI Holdings and Circle with 50% ownership each in the SBI Circle Holdings / Circle SBI Japan structure.",
+      "implication": "The Japan distribution venture is a jointly owned corporate vehicle, distinct from SBI's separate $50 million Circle share purchase.",
+      "sources": [
+        "SBI-CIRCLE-JV-50-50-PRESENTATION"
+      ]
+    },
+    {
+      "id": "SCA-04",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "SBI announced on May 12, 2026 that it participated through a consolidated subsidiary in Circle's ARC token presale.",
+      "implication": "SBI's Circle relationship extends from USDC distribution and Circle equity into Circle's own blockchain-token ecosystem.",
+      "unknowns": [
+        "SBI's exact ARC token purchase amount",
+        "Token allocation and vesting schedule attributable to SBI",
+        "Whether the investment was made by SBI Holdings directly or which consolidated subsidiary funded it"
+      ],
+      "sources": [
+        "SBI-ARC-PRESALE-20260512"
+      ]
+    },
+    {
+      "id": "SCA-05",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "Circle launched Arc public mainnet on September 16, 2026. Circle describes Arc as an open Layer 1 for financial markets and real-time money movement, with USDC gas, sub-second deterministic finality, opt-in privacy capabilities, tokenized-asset support and Circle StableFX integration.",
+      "implication": "Arc is a live institutional settlement network, not merely a testnet proposal. Its USDC-denominated gas model directly anchors network activity to Circle's stablecoin.",
+      "caveats": [
+        "Circle's launch materials state that Arc is operated by a permissioned validator set.",
+        "The release's validator and application figures are company-reported."
+      ],
+      "sources": [
+        "CIRCLE-ARC-MAINNET-20260916"
+      ]
+    },
+    {
+      "id": "SCA-06",
+      "classification": "CONFIRMED_ANNOUNCED_VALIDATOR_ROLE",
+      "claim": "SBI Group is named in Circle's Arc founding-validator cohort. SBI's chairman states that SBI intends to contribute to Arc operation and governance as a founding validator.",
+      "implication": "SBI's Arc relationship is operationally deeper than holding a presale allocation, although actual node uptime, signing participation and governance votes were not independently verified in this research.",
+      "sources": [
+        "CIRCLE-ARC-VALIDATORS-20260805",
+        "CIRCLE-ARC-MAINNET-20260916"
+      ]
+    },
+    {
+      "id": "SCA-07",
+      "classification": "CONFIRMED_OFFICIAL_PROFILE",
+      "claim": "SBI Group held 60% of voting rights in SBI Ripple Asia as of March 31, 2026.",
+      "implication": "SBI retains a controlling voting position in the Japan/Asia Ripple joint venture. This is not proof that SBI controls Ripple Labs itself.",
+      "sources": [
+        "SBI-RIPPLE-ASIA-PROFILE-20260331"
+      ]
+    },
+    {
+      "id": "SCA-08",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "SBI VC Trade began offering USDC trading in Japan in March 2025 and began offering RLUSD in June 2026.",
+      "implication": "SBI's distribution business supports both Circle-issued USDC and Ripple-issued RLUSD, rather than a single stablecoin issuer.",
+      "sources": [
+        "SBI-USDC-LAUNCH-202503",
+        "SBI-RLUSD-LAUNCH-202606"
+      ]
+    },
+    {
+      "id": "SCA-09",
+      "classification": "CONFIRMED_OFFICIAL_INTEGRATION",
+      "claim": "Circle and Ripple announced native USDC support on the XRP Ledger in June 2025.",
+      "implication": "Circle is not simply an external competitor to XRP. Its stablecoin is also an asset available on XRPL, creating direct network-level complementarity.",
+      "sources": [
+        "CIRCLE-USDC-XRPL-202506"
+      ]
+    },
+    {
+      "id": "SCA-10",
+      "classification": "INFERENCE",
+      "claim": "SBI's combined Ripple equity, Circle equity, 50/50 Japan JV, USDC/RLUSD distribution, ARC presale participation and announced Arc validator role are most consistent with a diversified multi-rail digital-finance strategy.",
+      "implication": "A binary 'SBI chooses XRP or USDC' model is contradicted by SBI's simultaneous commitments across both ecosystems.",
+      "disconfirming_evidence": [
+        "No public SBI disclosure found that explicitly labels this portfolio a single integrated multi-rail strategy.",
+        "Separate subsidiaries and business lines may pursue independent objectives."
+      ],
+      "sources": [
+        "SBI-CIRCLE-EQUITY-20250609",
+        "SBI-CIRCLE-JV-50-50-PRESENTATION",
+        "SBI-ARC-PRESALE-20260512",
+        "CIRCLE-ARC-MAINNET-20260916",
+        "SBI-RLUSD-LAUNCH-202606"
+      ]
+    }
+  ],
+  "actual_capital_ledger": [
+    {
+      "item": "SBI Holdings / SBI Shinsei Bank Circle equity",
+      "amount_usd": 50000000,
+      "classification": "CONFIRMED_EQUITY_PURCHASE",
+      "detail": "$25 million each, acquired at Circle's June 2025 NYSE listing."
+    },
+    {
+      "item": "SBI Holdings Ripple equity",
+      "amount_usd": null,
+      "classification": "CONFIRMED_APPROXIMATE_OWNERSHIP",
+      "detail": "Approximately 9% Ripple equity disclosed; original purchase price and current mark are not provided by the cited release."
+    },
+    {
+      "item": "SBI Circle Holdings joint venture",
+      "amount_usd": null,
+      "classification": "CONFIRMED_50_PERCENT_OWNERSHIP",
+      "detail": "SBI and Circle each shown at 50% in SBI's investor presentation; capital contributed by each party is not stated in that presentation."
+    },
+    {
+      "item": "SBI participation in ARC token presale",
+      "amount_usd": null,
+      "classification": "CONFIRMED_PARTICIPATION_AMOUNT_UNKNOWN",
+      "detail": "SBI confirms participation through a consolidated subsidiary. The $222 million figure is the total presale consortium raise, not SBI's contribution."
+    },
+    {
+      "item": "SBI Group Arc founding-validator role",
+      "amount_usd": null,
+      "classification": "ANNOUNCED_OPERATIONAL_COMMITMENT",
+      "detail": "A validator role is not automatically a cash investment or an ARC token purchase."
+    },
+    {
+      "item": "SBI native XRP holdings",
+      "amount_xrp": null,
+      "classification": "UNKNOWN",
+      "detail": "The 9% Ripple equity stake must not be represented as XRP tokens or as a quantified XRP treasury."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple Labs",
+      "relationship": "equity ownership approximately 9%",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle Internet Group",
+      "relationship": "$25M Circle share purchase",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Bank",
+      "to": "Circle Internet Group",
+      "relationship": "$25M Circle share purchase",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI Circle Holdings",
+      "relationship": "50% ownership",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-JV-50-50-PRESENTATION"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "SBI Circle Holdings",
+      "relationship": "50% ownership",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-JV-50-50-PRESENTATION"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "ARC token presale",
+      "relationship": "participation through consolidated subsidiary; amount undisclosed",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-ARC-PRESALE-20260512"
+      ]
+    },
+    {
+      "from": "Circle Technology Services",
+      "to": "Arc",
+      "relationship": "develops Arc L1 through Circle subsidiary",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-ARC-PRESALE-20260512",
+        "CIRCLE-ARC-MAINNET-20260916"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Arc",
+      "relationship": "named founding-validator cohort; operational participation announced",
+      "classification": "CONFIRMED_ANNOUNCED",
+      "source_ids": [
+        "CIRCLE-ARC-VALIDATORS-20260805",
+        "CIRCLE-ARC-MAINNET-20260916"
+      ]
+    },
+    {
+      "from": "Arc",
+      "to": "USDC",
+      "relationship": "USDC-denominated gas and native Circle platform integration",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "CIRCLE-ARC-MAINNET-20260916"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "SBI Ripple Asia",
+      "relationship": "60% voting rights as of 2026-03-31",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-RIPPLE-ASIA-PROFILE-20260331"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relationship": "Japan distribution/trading",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-USDC-LAUNCH-202503"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relationship": "Japan distribution/trading",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-RLUSD-LAUNCH-202606"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "XRP Ledger",
+      "relationship": "native USDC issuance/support on XRPL",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "CIRCLE-USDC-XRPL-202506"
+      ]
+    },
+    {
+      "from": "Arc",
+      "to": "XRP Ledger",
+      "relationship": "direct bridge/interoperability",
+      "classification": "UNKNOWN_NOT_ESTABLISHED",
+      "source_ids": []
+    }
+  ],
+  "competing_causal_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "SBI is pursuing a multi-rail digital-finance strategy across XRPL, USDC, RLUSD, JPYSC and Arc.",
+      "status": "BEST_SUPPORTED_INFERENCE",
+      "supporting": [
+        "SBI has direct equity exposure to Ripple and Circle.",
+        "SBI distributes USDC and RLUSD.",
+        "SBI participates in ARC presale and is in Arc's founding-validator cohort.",
+        "SBI Ripple Asia has separate XRPL-oriented payment and tokenization work."
+      ],
+      "disconfirming": [
+        "No single official SBI document explicitly describes all these activities as one integrated strategy."
+      ]
+    },
+    {
+      "id": "H2",
+      "hypothesis": "Arc is a strategic competitor to XRPL for institutional settlement, tokenized assets and cross-border payments.",
+      "status": "PLAUSIBLE_INFERENCE",
+      "supporting": [
+        "Arc and XRPL both target financial-market infrastructure, payments and tokenized assets.",
+        "Arc uses USDC as gas and has institutional validator participation."
+      ],
+      "disconfirming": [
+        "No direct displacement of XRPL settlement by Arc is documented.",
+        "Circle USDC is already supported natively on XRPL.",
+        "The networks have different governance, fee assets and operational models."
+      ]
+    },
+    {
+      "id": "H3",
+      "hypothesis": "Arc and XRPL may become complementary through stablecoin liquidity and cross-chain settlement.",
+      "status": "SPECULATION",
+      "supporting": [
+        "USDC is available on XRPL and is central to Arc's fee model."
+      ],
+      "disconfirming": [
+        "No direct Arc-XRPL bridge, settlement contract or production interoperability arrangement was verified."
+      ]
+    },
+    {
+      "id": "H4",
+      "hypothesis": "SBI's equity exposure to both Ripple and Circle creates aligned financial incentives across the two ecosystems and potential governance/conflict questions.",
+      "status": "INFERENCE",
+      "supporting": [
+        "SBI disclosed approximately 9% Ripple equity and $50M Circle equity."
+      ],
+      "disconfirming": [
+        "No evidence of improper coordination, undisclosed control or misconduct was found."
+      ]
+    },
+    {
+      "id": "H5",
+      "hypothesis": "SBI's ARC presale participation signals a financial commitment to Circle's Arc network beyond ordinary stablecoin distribution.",
+      "status": "PARTIALLY_CONFIRMED",
+      "supporting": [
+        "SBI officially confirms presale participation and Circle names SBI as a founding validator."
+      ],
+      "disconfirming": [
+        "The SBI contribution amount, allocation, lockup and realized position are undisclosed."
+      ]
+    },
+    {
+      "id": "H6",
+      "hypothesis": "SBI is replacing XRP with Arc for Japan-Asia remittances.",
+      "status": "UNSUPPORTED",
+      "supporting": [],
+      "disconfirming": [
+        "SBI continues to disclose XRP-based Ripple payment activity and XRPL work.",
+        "No public SBI announcement says Arc replaces XRP or XRPL.",
+        "Arc's public launch announcement positions it as additional infrastructure, not a replacement for SBI Ripple Asia."
+      ]
+    }
+  ],
+  "sbic_resolution": {
+    "confirmed_distinct_entities": [
+      "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC)",
+      "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (Nagoya SBIC)",
+      "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (Osaka SBIC)"
+    ],
+    "distinction": "These regional SBIC companies are not SBI Holdings, SBI VC Trade, SBI Ripple Asia or Circle SBI Japan. Tokyo SBIC's ChatGPT/Copilot training programme is a separate training reference, not proof that 'ChatGPT SBIC' is a financial institution or XRP project.",
+    "sources": [
+      "TOKYO-SBIC-OFFICIAL",
+      "NAGOYA-SBIC-OFFICIAL",
+      "OSAKA-SBIC-OFFICIAL",
+      "TOKYO-SBIC-GENAI-TRAINING"
+    ]
+  },
+  "source_registry": [
+    {
+      "id": "SBI-CIRCLE-EQUITY-20250609",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "type": "official_company_release",
+      "date": "2025-06-09",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-CIRCLE-JV-50-50-PRESENTATION",
+      "publisher": "SBI Holdings",
+      "type": "official_investor_presentation",
+      "date": "2025-06-02",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-ARC-PRESALE-20260512",
+      "publisher": "SBI Holdings",
+      "type": "official_company_release",
+      "date": "2026-05-12",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "CIRCLE-ARC-VALIDATORS-20260805",
+      "publisher": "Circle",
+      "type": "official_company_release",
+      "date": "2026-08-05",
+      "url": "https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch",
+      "independence_group": "circle"
+    },
+    {
+      "id": "CIRCLE-ARC-MAINNET-20260916",
+      "publisher": "Circle",
+      "type": "official_company_release",
+      "date": "2026-09-16",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "independence_group": "circle"
+    },
+    {
+      "id": "SBI-RIPPLE-ASIA-PROFILE-20260331",
+      "publisher": "SBI Holdings",
+      "type": "official_company_profile",
+      "date": "2026-03-31",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-RLUSD-LAUNCH-202606",
+      "publisher": "SBI Holdings and SBI VC Trade",
+      "type": "official_company_release",
+      "date": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16399.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-USDC-LAUNCH-202503",
+      "publisher": "SBI Holdings and SBI VC Trade",
+      "type": "official_company_release",
+      "date": "2025-03-12",
+      "url": "https://www.sbigroup.co.jp/news/2025/0312_15345.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "CIRCLE-USDC-XRPL-202506",
+      "publisher": "Circle and Ripple",
+      "type": "official_joint_announcement",
+      "date": "2025-06-12",
+      "url": "https://www.circle.com/pressroom/usdc-now-available-on-xrp-ledger",
+      "independence_group": "circle-ripple-joint"
+    }
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "implication_for_model": "Do not treat SBI's simultaneous investments as evidence of a near-term XRP price catalyst without measurable flows, adoption data or an event-study control. The Arc/XRPL relationship is a structural ecosystem variable, not a standalone directional signal."
+  },
+  "limitations": [
+    "SBI's ARC presale contribution amount, token allocation and lockup are undisclosed.",
+    "Circle's validator list is an announced founding cohort with phased rollout; SBI's actual validator node operation and onchain signing history were not queried.",
+    "No direct Arc-XRPL bridge or production interoperability was established.",
+    "The 9% Ripple stake is a corporate equity holding and must not be counted as XRP token inventory.",
+    "SBI's $50M Circle equity purchase is separate from the SBI Circle Holdings JV capitalization.",
+    "A multi-rail strategy is the best-supported interpretation, but it is an inference rather than a quoted SBI corporate strategy statement."
+  ],
+  "safety": {
+    "public_authorized_sources_only": true,
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "external_transaction": false
+  }
+}
