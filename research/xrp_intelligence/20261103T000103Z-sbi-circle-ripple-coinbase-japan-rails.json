@@ -197,7 +197,8 @@
       "implication": "USDC and RLUSD are both native stablecoin options on XRPL. This creates potential dollar-liquidity competition and complementarity on XRPL, but native issuance alone does not prove active DEX depth, institutional usage or XRP bridge-asset demand.",
       "sources": [
         "circle-usdc-xrpl-native-20250612",
-        "circle-usdc-supported-networks-20260916"
+        "circle-usdc-supported-networks-20260916",
+        "circle-usdc-xrpl-multichain-20261103"
       ]
     },
     {
@@ -661,7 +662,8 @@
         "class": "OFFICIAL_CIRCLE_LAUNCH",
         "as_of": "2025-06-12",
         "sources": [
-          "circle-usdc-xrpl-native-20250612"
+          "circle-usdc-xrpl-native-20250612",
+          "circle-usdc-xrpl-multichain-20261103"
         ]
       },
       {
@@ -716,7 +718,8 @@
         "class": "OFFICIAL_COINBASE_PROOF_OF_RESERVES",
         "as_of": "2026-11-03",
         "sources": [
-          "coinbase-cbxrp-proof-of-reserves"
+          "coinbase-cbxrp-proof-of-reserves",
+          "coinbase-cbxrp-base-network"
         ]
       },
       {
@@ -738,7 +741,8 @@
         "class": "OFFICIAL_COINBASE_PROOF_OF_RESERVES",
         "as_of": "2026-11-03",
         "sources": [
-          "coinbase-cbxrp-proof-of-reserves"
+          "coinbase-cbxrp-proof-of-reserves",
+          "coinbase-cbxrp-base-network"
         ]
       }
     ],
@@ -904,7 +908,7 @@
       "circulation_usd": 70000000000,
       "circulation_as_of": "2026-10-29",
       "reserve_claim": "Circle states reserves equal or exceed circulation; monthly Big Four attestations.",
-      "circle_mint_and_api_support": "USDC on XRPL native; Circle Mint/APIs support XRPL and cross-chain access without a third-party bridge.",
+      "circle_mint_and_api_support": "USDC on XRPL is native; Circle Mint/APIs support XRPL, and Circle's XRPL page says qualified businesses can redeem 1:1 and Circle Mint can swap USDC across supported chains without a third-party bridge.",
       "classification": "OFFICIAL_ISSUER_DISCLOSURE"
     },
     "coinbase_product_support": {
@@ -1089,7 +1093,8 @@
       "support": [
         "Circle launched native USDC on XRPL",
         "Coinbase RLUSD deposits/withdrawals include XRPL",
-        "Circle supports 38 native networks and Circle Mint/API cross-chain access"
+        "Circle supports 38 native networks and Circle Mint/API cross-chain access",
+        "Circle Mint's official XRPL page describes cross-chain USDC swaps across supported networks without a third-party bridge."
       ],
       "disconfirming": [
         "No synchronized XRPL DEX/order-book depth or issuer-level net flows captured",
@@ -1541,6 +1546,20 @@
       "type": "official_proof_of_reserves_page",
       "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
       "observation": "Coinbase publishes cbXRP reserve and supply information; cbXRP is a wrapped XRP representation on Base. This is distinct from native XRP on XRPL."
+    },
+    {
+      "id": "circle-usdc-xrpl-multichain-20261103",
+      "publisher": "Circle",
+      "type": "official_product_support_disclosure",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "observation": "USDC on XRPL is native; qualified Circle Mint businesses can redeem 1:1 for USD; Circle Mint supports swaps across supported blockchains without a third-party bridge."
+    },
+    {
+      "id": "coinbase-cbxrp-base-network",
+      "publisher": "Coinbase",
+      "type": "official_supported_networks_help_page",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/sending-or-receiving-cryptocurrency/coinbase-wrapped-btc",
+      "observation": "Coinbase's wrapped-assets table identifies cbXRP as representing XRP on Base; Coinbase says wrapped assets are backed 1:1 by the original asset."
     }
   ],
   "architecture_state": {
