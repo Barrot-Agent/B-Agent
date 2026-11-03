@@ -351,6 +351,30 @@
       "limitations": [
         "The minimum fee and reserve mechanics do not imply material XRP price demand; sponsorship and the very small standard fee reduce direct end-user acquisition requirements."
       ]
+    },
+    {
+      "id": "O11",
+      "classification": "confirmed_fact",
+      "subject": "Circle-Binance distribution and capital relationship",
+      "statement": "Circle and Binance announced a USD 100 million strategic equity investment by Binance and a renewed five-year commercial agreement focused on expanding USDC access, especially in emerging markets. This demonstrates Circle's distribution strategy extends beyond Coinbase.",
+      "evidence": [
+        "S19"
+      ],
+      "limitations": [
+        "The announcement does not establish XRP integration, XRPL transaction volume or any direct relationship with Ripple."
+      ]
+    },
+    {
+      "id": "O12",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase strategic operating priorities",
+      "statement": "Coinbase's Q3 2026 filing identifies its three product priorities as growing the everything exchange, scaling stablecoins and payments, and expanding onchain adoption. It reports resilient crypto derivatives trading volume, expanded tradable assets, record average USDC balances in Coinbase products, renewed Circle arrangements on the same terms, and growth in DEX trading and balances borrowed and lent through Coinbase.",
+      "evidence": [
+        "S1"
+      ],
+      "limitations": [
+        "Management's strategy description is not proof of future results or XRP-specific adoption."
+      ]
     }
   ],
   "relationship_edges": [
@@ -493,6 +517,18 @@
         "S7"
       ],
       "note": "Both issuers have stablecoins on XRPL; no direct Circle-Ripple corporate agreement was located in this pass."
+    },
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "relation": "strategic_equity_investment_and_five_year_USDC_distribution_agreement",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S19"
+      ],
+      "note": "Binance announced a USD 100 million strategic investment in Circle and a five-year USDC commercial agreement; this broadens Circle's distribution relationships beyond Coinbase."
     }
   ],
   "competing_hypotheses": [
@@ -603,7 +639,7 @@
     "Whether and when RLUSD becomes usable as collateral on Coinbase Global Exchange after the announced future availability.",
     "Coinbase-specific RLUSD deposits, withdrawals, trading and chain-level balances.",
     "Native USDC and RLUSD active balances and transaction volumes on XRPL, separated from other chains.",
-    "SBI VC Trade's actual USDC/RLUSD/J​​PYSC transaction volumes, custody balances and corridor-level settlement paths.",
+    "SBI VC Trade's actual USDC/RLUSD/JPYSC transaction volumes, custody balances and corridor-level settlement paths.",
     "Whether any specific SBI/Ripple payment flow uses XRP as a bridge asset rather than fiat or stablecoin settlement.",
     "Circle Q3 2026 financial results and updated USDC circulation/reserve data, scheduled for 2026-11-04 08:00 ET.",
     "The originating context for 'SBIC, ChatGPT SBIC', 'ASK Coin' and 'actual capital'.",
