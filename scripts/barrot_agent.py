@@ -34,6 +34,7 @@ from barrot_agent.orchestration.repository_repair import (
     ProjectIdentity,
     RepositoryRepairController,
     WorkQueueController,
+    is_protected_branch,
 )
 from barrot_agent.orchestration.bundle_engineering import (
     BundleEngineeringController,
@@ -716,6 +717,8 @@ def configure_git() -> None:
 
 
 def checkout_branch(branch: str) -> None:
+    if is_protected_branch(branch):
+        raise ValueError(f"Protected branch {branch!r} cannot be used as a Barrot task branch")
     if not re.fullmatch(r"[A-Za-z0-9._/-]+", branch) or ".." in branch or branch.startswith("-"):
         raise ValueError("Invalid Barrot task branch name")
     remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
@@ -782,6 +785,8 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         or str(cycle_data.get("issue", {}).get("branch", "")).strip()
         or BRANCH
     )
+    if is_protected_branch(head_branch):
+        raise ValueError(f"Protected branch {head_branch!r} cannot be used as a pull-request head")
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",

@@ -9,6 +9,7 @@ import pytest
 
 from barrot_agent.orchestration.repository_repair import (
     FailureEvidence,
+    GitGateway,
     ProjectIdentity,
     RemoteSyncEvidence,
     RepairCycleEvidence,
@@ -860,3 +861,90 @@ def test_controlled_end_to_end_workflow_persists_sync_evidence(tmp_path: Path) -
     assert work.queue_advanced is True
     assert work.sync_operation["status"] == RepairState.COMPLETE.value
     assert work.sync_operation["last_valid_project"]["path_with_namespace"] == "Barrot-Agent/B-Agent"
+
+def test_repository_repair_blocks_protected_branch_before_patch_or_commit(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    controller = make_controller(workspace, FakeBrain(repair_payload(path)))
+
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="main",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "PROTECTED_BRANCH_WRITE_DENIED"
+    assert (workspace / path).read_text(encoding="utf-8") == 'FLAG = "BROKEN"\n'
+    assert git(workspace, "status", "--short").stdout.strip() == ""
+    assert git(workspace, "log", "-1", "--format=%s").stdout.strip() == "initial"
+
+
+@pytest.mark.parametrize("branch", ["main", "master", "MAIN", "refs/heads/main", "refs/heads/master"])
+def test_git_gateway_refuses_protected_branch_push(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, branch: str) -> None:
+    gateway = GitGateway(tmp_path)
+    calls: list[tuple[str, ...]] = []
+
+    def fake_run(*args: str):
+        calls.append(args)
+        return subprocess.CompletedProcess(["git", *args], 0, stdout="pushed", stderr="")
+
+    monkeypatch.setattr(gateway, "_run", fake_run)
+
+    result = gateway.push("origin", branch)
+
+    assert result.success is False
+    assert result.returncode is None
+    assert "protected branch" in result.error.lower()
+    assert calls == []
+
+
+def test_git_gateway_allows_non_protected_task_branch_push(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    gateway = GitGateway(tmp_path)
+    calls: list[tuple[str, ...]] = []
+
+    def fake_run(*args: str):
+        calls.append(args)
+        return subprocess.CompletedProcess(["git", *args], 0, stdout="pushed", stderr="")
+
+    monkeypatch.setattr(gateway, "_run", fake_run)
+
+    result = gateway.push("origin", "barrot/task-123")
+
+    assert result.success is True
+    assert calls == [("push", "origin", "HEAD:barrot/task-123")]
+
+def test_repository_repair_blocks_when_checked_out_branch_mismatches_target(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    controller = make_controller(workspace, FakeBrain(repair_payload(path)))
+
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="barrot/task-123",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "TARGET_BRANCH_MISMATCH"
+    assert (workspace / path).read_text(encoding="utf-8") == 'FLAG = "BROKEN"\n'
+    assert git(workspace, "status", "--short").stdout.strip() == ""
+    assert git(workspace, "log", "-1", "--format=%s").stdout.strip() == "initial"
+
+
+def test_git_gateway_commit_refuses_protected_branch_before_staging(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    assert git(workspace, "checkout", "main").returncode == 0
+    gateway = GitGateway(workspace)
+
+    with pytest.raises(RepairError, match="Protected branch commit denied"):
+        gateway.commit("must not commit", [path])
+
+    assert git(workspace, "status", "--short").stdout.strip() == ""
+    assert git(workspace, "log", "-1", "--format=%s").stdout.strip() == "initial"

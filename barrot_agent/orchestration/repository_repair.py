@@ -19,6 +19,17 @@ from typing import Any, Callable, ClassVar
 from .shared_runtime import Capability, DefensiveWatchdog
 from ..repository.causality import RepositoryCausality
 
+PROTECTED_BRANCHES = {"main", "master"}
+
+
+def is_protected_branch(branch: str) -> bool:
+    """Return whether a target ref resolves to a protected default branch."""
+    target = str(branch).strip()
+    if target.startswith("refs/heads/"):
+        target = target[len("refs/heads/"):]
+    return target.casefold() in PROTECTED_BRANCHES
+
+
 
 class RepairState(str, Enum):
     IDLE = "IDLE"
@@ -1340,6 +1351,11 @@ class GitGateway:
         return result.stdout.strip()
 
     def commit(self, message: str, expected_paths: list[str]) -> CommitEvidence:
+        branch = self.current_branch()
+        if is_protected_branch(branch):
+            raise RepairError(
+                f"Protected branch commit denied for {branch!r}; use a task branch and pull request."
+            )
         sanitized = " ".join(str(message).split()).strip()[:120] or "Barrot autonomous repair"
         add = self._run("add", "--", *expected_paths)
         if add.returncode != 0:
@@ -1365,7 +1381,6 @@ class GitGateway:
         sha = sha_result.stdout.strip()
 
         exists = self._run("cat-file", "-e", f"{sha}^{{commit}}")
-        branch = self.current_branch()
 
         return CommitEvidence(
             created=True,
@@ -1385,23 +1400,43 @@ class GitGateway:
         )
 
     def push(self, remote: str, branch: str) -> CommandEvidence:
+        target_branch = str(branch).strip()
+        command_args = ["push", remote, f"HEAD:{target_branch}"]
+        command = {"program": "git", "args": command_args}
+        if not target_branch:
+            return CommandEvidence(
+                command=command,
+                success=False,
+                returncode=None,
+                error="Push target branch is empty.",
+            )
+        if is_protected_branch(target_branch):
+            return CommandEvidence(
+                command=command,
+                success=False,
+                returncode=None,
+                error=(
+                    f"Protected branch push denied for {target_branch!r}. "
+                    "Use a task branch and open a pull request instead."
+                ),
+            )
         if self.watchdog is not None:
             decision = self.watchdog.authorize(
                 Capability.EXTERNAL_ACTION,
-                f"git push {remote} HEAD:{branch}",
+                f"git push {remote} HEAD:{target_branch}",
                 authorization="repository_sync",
                 process="git push",
             )
             if not decision.allowed:
                 return CommandEvidence(
-                    command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
+                    command=command,
                     success=False,
                     returncode=None,
                     error=decision.reason or "Push blocked by watchdog.",
                 )
-        result = self._run("push", remote, f"HEAD:{branch}")
+        result = self._run("push", remote, f"HEAD:{target_branch}")
         return CommandEvidence(
-            command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
+            command=command,
             success=result.returncode == 0,
             returncode=result.returncode,
             stdout=result.stdout[-4000:],
@@ -1659,6 +1694,51 @@ actually observed.
                 "Repository and branch must both be non-empty.",
                 failed_operation="initialize_cycle",
                 required_external_action="Provide a non-empty repository and branch for the repair cycle.",
+            )
+        if is_protected_branch(branch_name):
+            cycle.project_identity = {
+                "repository": repo_name,
+                "branch": branch_name,
+            }
+            self._persist(cycle)
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "PROTECTED_BRANCH_WRITE_DENIED",
+                f"Autonomous repair cannot modify protected branch {branch_name!r}.",
+                failed_operation="validate_target_branch",
+                required_external_action="Use a non-protected task branch and submit a pull request for human review.",
+            )
+        try:
+            checked_out_branch = self.git_gateway.current_branch()
+        except Exception as exc:  # noqa: BLE001
+            cycle.project_identity = {
+                "repository": repo_name,
+                "branch": branch_name,
+            }
+            self._persist(cycle)
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "CURRENT_BRANCH_UNAVAILABLE",
+                str(exc),
+                failed_operation="validate_checked_out_branch",
+                required_external_action="Check out the intended task branch before starting autonomous repair.",
+            )
+        expected_branch = branch_name.removeprefix("refs/heads/")
+        if checked_out_branch != expected_branch:
+            cycle.project_identity = {
+                "repository": repo_name,
+                "branch": branch_name,
+            }
+            self._persist(cycle)
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "TARGET_BRANCH_MISMATCH",
+                f"Requested target {expected_branch!r} does not match checked-out branch {checked_out_branch!r}.",
+                failed_operation="validate_checked_out_branch",
+                required_external_action="Check out the exact non-protected task branch before starting autonomous repair.",
             )
         cycle.project_identity = {
             "repository": repo_name,

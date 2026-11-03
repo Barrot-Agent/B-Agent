@@ -738,3 +738,17 @@ def test_public_subscriber_and_scheduled_issue_writers_are_quarantined() -> None
         assert "No credentials are read" in workflow, relative
         for token in forbidden:
             assert token not in workflow, f"{relative} still contains {token!r}"
+
+
+def test_checkout_branch_refuses_protected_branches() -> None:
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_protected_branch_guard_test",
+    )
+    for branch in ("main", "master", "MAIN", "refs/heads/main", "refs/heads/master"):
+        try:
+            module.checkout_branch(branch)
+        except ValueError as exc:
+            assert "protected branch" in str(exc).lower()
+        else:
+            raise AssertionError(f"Protected branch {branch!r} was accepted")
