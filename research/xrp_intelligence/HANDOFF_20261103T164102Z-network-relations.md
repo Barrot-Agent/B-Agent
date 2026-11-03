@@ -319,3 +319,25 @@ Main is still `09466f945b8b9a658e0b2a03e70c05d78c33b765`. No PR has been merged.
 - Ripple's RLUSD User Terms permit address blacklisting/freezing and burning/reissuing in specified legal/compliance circumstances. Ripple's public issuer settings enable global freeze and trust-line clawback. XRP cannot be frozen or clawed back at the XRPL protocol level, although custodians/exchanges can restrict XRP they hold. The claim that RLUSD activity necessarily creates material XRP demand remains unproven.
 - The June 11 iHeart episode is an identity source, not a YouTube upload. The guest says her YouTube presence is "doctor Camilla Stevenson" and warns about fake pages. The requested surname "Stephenson" still differs from the candidate "Stevenson"; canonical channel ID remains unverified.
 - PR #1591 code/data head `213f4a5f6416d3270cc4004dabf1861b8b118abe` passed Tests and the fail-closed gate. The handoff update itself is documentation-only and does not change code.
+
+
+## Fresh-main preservation handoff — 2026-11-03
+
+The 14 research artifacts from the original research branch were copied without altering their contents onto a new branch based on current main commit `5a4b1984cd2745c9775de60e5c567272caef420b`.
+
+- Fresh-main branch: `research/xrp-network-relations-fresh-main-5a4b1984-20261103`
+- Source research branch: `research/xrp-coinbase-circle-sbi-20261103T164102Z`
+- Current branch head before this handoff update: `3e77e6f425e0ba2b527c53b3e7734b79d9021787`
+- Copied files: 13 JSON research artifacts plus this handoff (14 files total).
+- Aggregate artifact parses as valid JSON: 38 sources, 32 observations, 34 relationship edges, 9 competing hypotheses.
+- Source capture remains `2026-11-03T16:41:02Z`; the repository-base field inside that artifact intentionally remains the original evidence-branch base. This transfer does not change source timestamps or imply a new market observation.
+- The source branch's PR #1591 remains draft/open/unmerged and GitHub currently reports it non-mergeable against its older base. This fresh-main branch is a clean evidence-preserving transfer, not a merge or rewrite of that branch.
+- Exact-head CI and fail-closed verification are pending on the fresh-main PR. No merge, main-branch write, force-push, deployment, secret access, or trade occurred.
+
+### Immediate research priorities
+1. Build a point-in-time multi-venue XRP/USDC/USD feature store with immutable source snapshots and explicit venue/time/quote-unit normalization.
+2. Add fixed-horizon target/reference-price observations, then perform walk-forward evaluation against naive and volatility-aware baselines. No directional forecast is issued until leakage and calibration tests pass.
+3. Reconcile Coinbase Q3 collateral disclosures with Global Exchange product eligibility and separate actual utilization from product capability.
+4. Obtain Circle Q3 2026 results after the scheduled November 4, 2026 08:00 ET release; compare USDC circulation, reserve income, distribution costs, and Coinbase economics using matching period definitions.
+5. Monitor C2FO Instant Pay for named funders, first production invoice and disclosed deployed capital; do not infer XRP spot demand from RLUSD/XRPL settlement design.
+6. Keep the SBIC East Japan identity separate from SBI Holdings, SBI Shinsei, and the Social Bias Inference Corpus; canonical YouTube identity and exhaustive upload inventory remain unverified.
