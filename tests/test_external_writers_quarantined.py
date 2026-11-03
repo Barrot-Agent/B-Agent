@@ -36,7 +36,9 @@ def test_external_mutation_and_public_data_writer_workflows_are_quarantined():
 def test_subscriber_sync_cannot_publish_customer_hashes_without_review():
     workflow = (ROOT / ".github/workflows/subscriber_sync.yml").read_text(encoding="utf-8")
     assert "GUMROAD_ACCESS_TOKEN" not in workflow
-    assert "web/subscribers.json" not in workflow
+    assert "requests.get(" not in workflow
+    assert "write_text(" not in workflow
+    assert "git push" not in workflow
     assert "permissions: {}" in workflow
     assert "if: false" in workflow
 
