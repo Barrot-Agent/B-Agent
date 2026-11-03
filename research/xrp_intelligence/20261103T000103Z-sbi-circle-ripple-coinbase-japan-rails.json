@@ -133,11 +133,23 @@
         "kodexius-xrp-20261102-2219",
         "liqwall-xrp-20261102-2352"
       ]
+    },
+    {
+      "id": "F14",
+      "class": "CONFIRMED_OFFICIAL_SBIC_TRAINING_CATALOG",
+      "finding": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC) published a June 12-13, 2025 introductory generative-AI and machine-learning training course for its investee companies. Its official curriculum explicitly included ChatGPT use and Microsoft Copilot. This is a plausible source behind the phrase 'ChatGPT SBIC', but not evidence of an XRP, SBI Holdings or Circle partnership.",
+      "implication": "The phrase has a concrete Tokyo SBIC/ChatGPT training lead. Keep the training relationship separate from SBI Holdings and the XRP institutional graph.",
+      "sources": [
+        "tokyo-sbic-profile",
+        "tokyo-sbic-chatgpt-training-20250612"
+      ]
     }
   ],
   "identity_resolution": {
     "sbic": {
-      "relevant_japanese_company_meaning": "Small and Medium Business Investment & Consultation companies, including separate Tokyo, Nagoya and Osaka regional corporations.",
+      "relevant_japanese_company_meaning": "Small and Medium Business Investment & Consultation companies, including Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC) and sister companies in Nagoya and Osaka. These are distinct regional corporations.",
+      "official_identity": "Tokyo SBIC's official company profile uses the English name Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and identifies Nagoya and Osaka as sister companies.",
+      "chatgpt_phrase_candidate": "Tokyo SBIC's official June 12-13, 2025 generative-AI/ML training curriculum included ChatGPT use and Copilot. This is a plausible context for 'ChatGPT SBIC', but the exact phrase is not established as a named initiative, product, partnership or XRP project.",
       "not_the_same_as": [
         "SBI Holdings",
         "SBI VC Trade",
@@ -145,8 +157,7 @@
         "SBI Circle Holdings",
         "Circle SBI Japan"
       ],
-      "xrp_relationship": "No direct XRP, Ripple or XRPL relationship established for the regional SBIC corporations in reviewed sources.",
-      "chatgpt_sbi_phrase": "The exact phrase 'ChatGPT SBIC' remains unresolved. Do not conflate a regional SBIC company or an AI-training reference with SBI Holdings or an XRP partnership."
+      "xrp_relationship": "No direct XRP, Ripple or XRPL relationship established for the regional SBIC corporations in reviewed sources."
     },
     "camilla_stephenson": {
       "candidate": "Camilla (Millie) Stephenson / WholesomeMils",
@@ -252,6 +263,14 @@
       {
         "id": "dsrv",
         "type": "blockchain_infrastructure"
+      },
+      {
+        "id": "tokyo_sbic",
+        "type": "regional_investment_consultation_company"
+      },
+      {
+        "id": "chatgpt",
+        "type": "AI_service"
       }
     ],
     "edges": [
@@ -519,6 +538,18 @@
         "as_of": "2026-02-24",
         "sources": [
           "sbi-ripple-asia-dsrv-research-20260224"
+        ]
+      },
+      {
+        "id": "E25",
+        "from": "tokyo_sbic",
+        "to": "chatgpt",
+        "relation": "ChatGPT_included_in_2025_investee_company_training_curriculum",
+        "class": "OFFICIAL_TRAINING_COURSE_NOT_XRP_PARTNERSHIP",
+        "as_of": "2025-06-12",
+        "sources": [
+          "tokyo-sbic-profile",
+          "tokyo-sbic-chatgpt-training-20250612"
         ]
       }
     ],
@@ -1074,6 +1105,21 @@
       "date": "2026-10-07",
       "url": "https://www.circle.com/pressroom",
       "observation": "Circle Q3 2026 results scheduled for November 4, 2026 at 8:00 AM Eastern; results not yet available at snapshot."
+    },
+    {
+      "id": "tokyo-sbic-profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "official_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "observation": "Official profile identifies the company as Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) and names Nagoya and Osaka as sister companies."
+    },
+    {
+      "id": "tokyo-sbic-chatgpt-training-20250612",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "official_training_catalog",
+      "date": "2025-06-12/2025-06-13",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "observation": "Two-day introductory generative-AI/machine-learning course for investee companies; curriculum includes ChatGPT use, Copilot features, code generation and information-leakage risk."
     }
   ],
   "architecture_state": {
