@@ -31,3 +31,26 @@ def test_unknown_sentiment_label_is_normalized_to_neutral():
     module = _load_emit_signal()
     metadata = module._sentiment_feature_metadata("BUY", 0.99)
     assert metadata["sentiment_label"] == "neutral"
+
+
+def test_subscriber_page_does_not_convert_score_to_buy_or_sell():
+    page = (ROOT / "web" / "signals.html").read_text(encoding="utf-8")
+    assert "_m={'1':'BUY','0':'NULL','-1':'SELL'}" not in page
+    assert "signal_kind === 'sentiment_feature_only'" in page
+    assert "not a price forecast" in page
+    assert "not a probability" in page
+
+
+def test_daily_digest_does_not_publish_legacy_accuracy_metric():
+    digest = (ROOT / "scripts" / "daily_digest.py").read_text(encoding="utf-8")
+    assert "signal_accuracy.json" not in digest
+    assert "accuracy_pct" not in digest
+    assert "NOT_ISSUED" in digest
+    assert "not a price forecast" in digest
+
+
+def test_public_tool_labels_sentiment_as_not_a_forecast():
+    landing = (ROOT / "web" / "landing.html").read_text(encoding="utf-8")
+    assert 'title: "Latest XRP Sentiment Feature"' in landing
+    assert "not a price forecast" in landing
+    assert "do not validate Barrot's current sentiment feature" in landing

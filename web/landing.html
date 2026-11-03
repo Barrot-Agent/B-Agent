@@ -213,8 +213,8 @@ footer strong{color:var(--text)}
 
   mcp.registerTool({
     name: "getLatestXRPSignal",
-    title: "Latest XRP Signal",
-    description: "Fetch Barrot's latest XRP market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis. Use this instead of reading the page visually.",
+    title: "Latest XRP Sentiment Feature",
+    description: "Fetch Barrot's latest XRP sentiment feature. Its score and model-reported confidence are uncalibrated sentiment outputs, not a price forecast, calibrated probability, BUY/SELL instruction, or trade recommendation.",
     inputSchema: { type: "object", properties: {
         license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
     annotations: { readOnlyHint: true },
@@ -230,7 +230,7 @@ footer strong{color:var(--text)}
   mcp.registerTool({
     name: "getResearchBasis",
     title: "Research Basis",
-    description: "Get the peer-reviewed academic citations backing Barrot's XRP signal methodology, covering cross-border settlement efficiency and sentiment-prediction research.",
+    description: "Get academic research context for XRP settlement and sentiment studies. These citations do not validate Barrot's current sentiment feature or establish out-of-sample predictive performance.",
     inputSchema: { type: "object", properties: {} },
     annotations: { readOnlyHint: true },
     execute: async function() {

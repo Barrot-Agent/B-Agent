@@ -80,4 +80,5 @@ jobs:
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
             tests/test_signal_evaluation_status.py \
+            tests/test_sentiment_feature_not_forecast.py \
             -v --no-cov

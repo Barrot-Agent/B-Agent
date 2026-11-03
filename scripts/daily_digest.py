@@ -38,22 +38,18 @@ def _count_recent_kb(hours=24):
 
 def main():
     signal = _read_json("web/latest_signal.json")
-    accuracy = _read_json("web/signal_accuracy.json")
     lines = ["## Barrot Daily Digest", ""]
-    if signal:
-        lines.append(f"**Latest signal:** score {signal.get('score')}/100, confidence {signal.get('confidence')}, source `{signal.get('source')}`")
+
+    if signal.get("signal_kind") == "sentiment_feature_only":
+        lines.append(f"**Latest XRP sentiment feature (not a price forecast):** label {signal.get('sentiment_label', 'unclassified')}, score {signal.get('score')}/100, source `{signal.get('source')}`")
+        lines.append("**Confidence semantics:** uncalibrated model-reported sentiment confidence; not a probability of price direction.")
     else:
-        lines.append("**Latest signal:** none yet")
-    lines.append("")
-    checked = accuracy.get("checked_count", 0)
-    if checked:
-        lines.append(f"**Signal accuracy:** {accuracy.get('accuracy_pct')}% correct over {checked} checked signals")
-    else:
-        lines.append("**Signal accuracy:** no signals have crossed the 24h check window yet")
-    lines.append("")
+        lines.append("**Latest XRP sentiment feature:** unavailable or unclassified")
+
+    lines.append("**Directional forecast status:** NOT_ISSUED — this pipeline does not publish a validated fixed-horizon price forecast.")
     lines.append(f"**New knowledge base entries (24h):** {_count_recent_kb()}")
     lines.append(f"**New content drafts (24h):** {_count_recent_content()}")
-    body = "\n".join(lines)
+    body = "\\n".join(lines)
     Path("digest_body.md").write_text(body, encoding="utf-8")
     print(body)
 
