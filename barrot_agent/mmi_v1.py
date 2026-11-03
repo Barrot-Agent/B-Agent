@@ -206,7 +206,8 @@ class MMIRecord:
                     )
                 elif (
                     result.get("independent_sources") is not None
-                    and result.get("independent_sources") != len(source_ids)
+                    and result.get("independent_sources")
+                    != len(self._independence_groups_for(source_ids))
                 ):
                     errors.append(
                         "corroboration independent_sources count does not "
@@ -233,19 +234,33 @@ class MMIRecord:
 
         return errors
 
-    def _has_independent_source_set(self, source_ids) -> bool:
+    def _independence_groups_for(self, source_ids):
         if not isinstance(source_ids, list) or len(source_ids) < 2:
-            return False
+            return None
         if any(
             not isinstance(source_id, str) or not source_id.strip()
             for source_id in source_ids
         ):
-            return False
+            return None
         if len(set(source_ids)) != len(source_ids):
-            return False
+            return None
 
         source_by_id = {source.source_id: source for source in self.source_graph}
         if any(source_id not in source_by_id for source_id in source_ids):
+            return None
+
+        sources = [source_by_id[source_id] for source_id in source_ids]
+        group_values = []
+        for source in sources:
+            group = source.independence_group
+            if not isinstance(group, str) or not group.strip():
+                return None
+            group_values.append(group.strip().casefold())
+        return set(group_values)
+
+    def _has_independent_source_set(self, source_ids) -> bool:
+        groups = self._independence_groups_for(source_ids)
+        if groups is None or len(groups) < 2:
             return False
 
         external_classes = {
@@ -253,21 +268,11 @@ class MMIRecord:
             ProvenanceClass.EXTERNAL_SECONDARY,
             ProvenanceClass.INDEPENDENT_EXTERNAL,
         }
-        sources = [source_by_id[source_id] for source_id in source_ids]
-        groups = {
-            source.independence_group.strip().casefold()
-            for source in sources
-            if isinstance(source.independence_group, str)
-            and source.independence_group.strip()
-        }
-        if len(groups) < 2 or len(groups) != len(sources):
-            return False
-        if any(
-            source.provenance_class not in external_classes
-            for source in sources
-        ):
-            return False
-        return True
+        source_by_id = {source.source_id: source for source in self.source_graph}
+        return all(
+            source_by_id[source_id].provenance_class in external_classes
+            for source_id in source_ids
+        )
 
     def corroboration_complete(self) -> bool:
         for result in self.corroboration_results:
