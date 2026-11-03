@@ -3,7 +3,7 @@
   "artifact_type": "sbi_multirail_capital_and_jpysc_reserve_research",
   "snapshot_id": "sbi-multirail-jpysc-capital-ledger-20261103-run11",
   "captured_at_utc": "2026-11-03T02:12:06Z",
-  "data_cutoff_utc": "2026-11-03T02:12:06Z",
+  "data_cutoff_utc": "2026-11-03T02:16:58Z",
   "priority": "XRP intelligence and prediction-engine mastery",
   "research_question": "Does SBI Holdings' disclosed capital allocation and the JPYSC ecosystem indicate an exclusive XRP strategy, or a multi-rail Japanese digital-finance strategy involving Ripple, Circle, Startale, BlackRock, SMBC, Coinbase's Open Standard network and yen-stablecoin collateral?",
   "executive_assessment": {
@@ -593,9 +593,14 @@
       "publisher": "SBI VC Trade",
       "type": "official_product_status_page",
       "date": null,
-      "retrieved_at_utc": "2026-11-03T02:12:06Z",
+      "retrieved_at_utc": null,
       "url": "https://home.sbivc.co.jp/jpysc",
-      "independence_group": "sbi-vc-trade"
+      "independence_group": "sbi-vc-trade",
+      "retrieval_window_utc": {
+        "start": "2026-11-03T02:12:06Z",
+        "end": "2026-11-03T02:16:58Z"
+      },
+      "retrieval_note": "The official product page was discovered and its search-result content inspected during this run window; a direct page-open attempt returned HTTP 502, so an exact retrieval instant is not asserted."
     }
   ],
   "data_quality": [
@@ -640,5 +645,9 @@
     "external_wallet_transfers_supported": false,
     "public_chain_circulation": "future/pending legal and tax clarification plus supervisory confirmation",
     "interpretation": "Do not count JPYSC handling balance as public-chain circulating supply or XRP liquidity."
+  },
+  "snapshot_window_utc": {
+    "start": "2026-11-03T02:12:06Z",
+    "end": "2026-11-03T02:16:58Z"
   }
 }
