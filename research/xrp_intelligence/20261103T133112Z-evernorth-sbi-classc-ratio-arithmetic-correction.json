@@ -1,0 +1,33 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "evernorth-sbi-class-c-a-plus-c-ratio-arithmetic-20261103T133112Z",
+  "captured_at_utc": "2026-11-03T13:31:12Z",
+  "supersedes_artifact_id": "evernorth-equity-instrument-inventory-and-sbi-affiliate-class-c-20261103",
+  "correction": {
+    "field": "capital_structure.sbi_affiliate_class_c_pct_of_issued_a_plus_c",
+    "prior_recorded_value": 4.1039,
+    "corrected_value": 4.1036,
+    "formula": "2,359,038 / (26,094,680 + 31,392,746) * 100",
+    "exact_calculation": 4.103572144628636,
+    "reason": "The prior artifact rounded the intermediate ratio incorrectly. This is an arithmetic-only correction; the source share counts and the approximately 4.10% interpretation are unchanged.",
+    "scope": "This ratio is only the SBI-affiliated Class C issuance divided by the simple issued Class A plus Class C share count. It is not total beneficial ownership, voting power, or a fully diluted ownership percentage."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_SEC_424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+    },
+    {
+      "id": "S2",
+      "type": "PRIMARY_SEC_8K",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm"
+    }
+  ],
+  "status": {
+    "arithmetic": "RECOMPUTED",
+    "source_counts": "UNCHANGED",
+    "fully_diluted_count": "NOT_COMPUTED",
+    "forecast": "NOT_ISSUED"
+  }
+}
