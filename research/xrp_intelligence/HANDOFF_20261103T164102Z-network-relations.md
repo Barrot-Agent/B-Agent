@@ -6,7 +6,7 @@ XRP ecosystem intelligence and prediction-engine mastery remain the highest-prio
 ## New research artifact
 - Artifact: `research/xrp_intelligence/20261103T164102Z-coinbase-circle-sbi-xrp-network-update.json`
 - Captured: 2026-11-03 16:41:02 UTC
-- Source register: 35 sources (regulatory filings, official corporate/product documents, protocol documentation, public interview and secondary reports)
+- Source register: 37 sources (regulatory filings, issuer presentations, official corporate/product documents, protocol documentation, public interview and secondary reports)
 - Observations: 12
 - Relationship edges: 12
 - Competing hypotheses: 5
@@ -117,3 +117,15 @@ One secondary report describes a Hyperliquid wallet with prefix 0x243 depositing
 The strongest candidate is Kamilah Stevenson, handle `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`. A public interview transcript supports the creator's Camila/Camilla spoken spelling and her reference to Doctor Camilla Stevenson on YouTube. Third-party video-count estimates conflict (633 versus about 1.2K), so the existing 13-video transcript inventory is still partial. vidIQ's channel lookup could not run because the connected account had no credits; it was not retried. Do not claim an exhaustive video inventory.
 
 The research artifact now contains 35 sources, 27 observations, 26 relationship edges and 8 competing hypotheses. JSON was parsed successfully after the update.
+
+
+## gumi AI-managed crypto treasury — 2026-11-03 16:51 UTC
+
+A June 12, 2026 gumi issuer presentation and June 26 AI-management announcement add a direct competitor/benchmark to Barrot's XRP mission:
+- gumi reported ¥14.133 billion in group crypto assets excluding funds at April 30, 2026, up 86.4% year over year. It separately reported about ¥26 billion including funds as of March 31; fund figures were unaudited and include token-acquisition SAFE investments. These totals are not XRP-only balances.
+- gumi states that it intends to move its own crypto portfolio in principle toward XRP, continue XRP acquisition while monitoring market prices, and use covered calls/options to improve recurring returns. It frames entertainment cash flows as a potential source for XRP operations. This is a strategy, not evidence that the full portfolio has already converted to XRP.
+- The gumi×SBI SBI Crypto Fund held several billion yen in listed crypto assets as of March 31, 2026, according to the presentation. The exact XRP allocation is not disclosed.
+- gumi announced on June 26 that it had begun AI-assisted management of its internal crypto assets and is considering an external AI asset-management service. The announcement describes AI agents, multi-source real-time analysis of prices/news/project developments and automated dealing. It does not disclose providers, models, custody, execution venues, risk controls, backtests or realized performance. Do not assume autonomous trading is fully operational.
+- gumi AI Labs had invested in 17 Silicon Valley AI startups, including an AI-agent market-research automation company; no technical integration with Barrot is disclosed.
+
+This makes gumi a relevant institutional comparator for Barrot's AI-driven XRP research and portfolio-management architecture. The research artifact now contains 37 sources, 31 observations, 30 relationship edges and 9 competing hypotheses.
