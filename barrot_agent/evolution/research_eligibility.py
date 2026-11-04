@@ -78,7 +78,10 @@ def _timestamp(value: Any, field: str) -> datetime:
     return parsed.astimezone(timezone.utc)
 
 
-def _source_registry(source_document: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+def _source_registry(
+    source_document: Mapping[str, Any],
+    raw_receipt_bytes: Mapping[str, bytes],
+) -> dict[str, dict[str, Any]]:
     raw_sources = source_document.get("source_registry")
     if not isinstance(raw_sources, list) or not raw_sources:
         raise ResearchEligibilityError("eligible source artifact needs a non-empty source_registry")
@@ -105,6 +108,15 @@ def _source_registry(source_document: Mapping[str, Any]) -> dict[str, dict[str, 
         if capture_status != "byte_complete":
             raise ResearchEligibilityError(
                 f"source_registry[{index}] raw_capture_status must be byte_complete"
+            )
+        raw_bytes = raw_receipt_bytes.get(receipt_id.strip())
+        if not isinstance(raw_bytes, bytes) or not raw_bytes:
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] raw receipt bytes are missing"
+            )
+        if _sha256(raw_bytes) != digest:
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] raw receipt bytes do not match raw_content_sha256"
             )
         independence_group = source.get("independence_group")
         if not isinstance(independence_group, str) or not independence_group.strip():
@@ -141,13 +153,16 @@ def _source_registry(source_document: Mapping[str, Any]) -> dict[str, dict[str, 
 
 def _observation_index(
     source_document: Mapping[str, Any],
+    raw_receipt_bytes: Mapping[str, bytes],
 ) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     if source_document.get("model_eligible") is not True:
         raise ResearchEligibilityError("source artifact is not explicitly model eligible")
     if source_document.get("quality_status") != "verified":
         raise ResearchEligibilityError("source artifact quality_status must be verified")
 
-    registry = _source_registry(source_document)
+    if not isinstance(raw_receipt_bytes, Mapping):
+        raise ResearchEligibilityError("raw_receipt_bytes must map receipt IDs to exact bytes")
+    registry = _source_registry(source_document, raw_receipt_bytes)
     observations = source_document.get("observations")
     if not isinstance(observations, list) or not observations:
         raise ResearchEligibilityError("source artifact must contain a non-empty observations array")
@@ -296,6 +311,7 @@ def build_feature_snapshot_with_research_overlay(
     source_artifact_bytes: bytes,
     overlay_artifact_path: str,
     overlay_artifact_bytes: bytes,
+    raw_receipt_bytes: Mapping[str, bytes],
     cutoff_utc: str,
     captured_at_utc: str,
     asset_scope: list[str] | None = None,
@@ -351,7 +367,7 @@ def build_feature_snapshot_with_research_overlay(
     if preservation.get("consumer_application_status") != "NOT_EXECUTED":
         raise ResearchEligibilityError("overlay must disclose that consumer application was not previously executed")
 
-    observation_index, source_registry = _observation_index(source_document)
+    observation_index, source_registry = _observation_index(source_document, raw_receipt_bytes)
     source_ids = set(observation_index)
     correction = overlay_document.get("correction")
     if not isinstance(correction, Mapping):
@@ -442,6 +458,7 @@ def build_feature_snapshot_with_research_overlay(
             "raw_receipt_id": source_registry[source_id]["raw_receipt_id"],
             "raw_content_sha256": source_registry[source_id]["raw_content_sha256"],
             "raw_capture_status": source_registry[source_id]["raw_capture_status"],
+            "raw_receipt_sha256_verified": True,
             "independence_group": source_registry[source_id]["independence_group"],
             "source_uri": source_registry[source_id]["source_uri"],
             "source_data_as_of_utc": source_registry[source_id]["source_data_as_of_utc"].isoformat().replace("+00:00", "Z"),
