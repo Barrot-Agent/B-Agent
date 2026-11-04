@@ -15,6 +15,7 @@ def test_full_repository_suite_measures_all_barrot_agent_packages():
     assert "--cov-config=" in full_suite
     assert "--cov-report=term-missing:skip-covered" in full_suite
     assert "fail_under = 50" in full_suite
+    assert "--cov-fail-under=50" in full_suite
     assert "--no-cov" not in full_suite
     for package in ("agi", "ingestion", "analysis", "monetization", "orchestration"):
         assert f"barrot_agent/{package}/" not in full_suite

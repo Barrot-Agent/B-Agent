@@ -198,3 +198,9 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - The report included 18,315 statements, 8,494 missed, 4,592 branches and 618 partial branches. AGI, analysis and monetization packages were included and exposed large 0%-coverage areas; many legacy ingestion/orchestration modules also remain untested. New MMI ingestion modules show roughly 83–96%.
 - The #1640 successor now sets an explicit **50%** floor in the temporary inclusive coverage config and regression-tests that setting. This preserves the expanded coverage report while preventing the legacy 70% threshold from failing the baseline. The new exact-head run remains pending.
 - #1640 gate 41864987391 passed but explicitly disabled merge; dependency audit 41864987404 was queued. #1643 exact-head CI/gate remain queued. No merge.
+
+
+## Run 17 — pytest-cov threshold override (2026-11-04T16:21:20Z)
+
+- The first custom-config-only change still inherited `pyproject.toml`'s 70% `fail_under` and failed at 51.68% after all 820 tests + 8 subtests passed.
+- The next #1640 head adds explicit `--cov-fail-under=50` to the pytest command and a regression assertion. This is the intended 50% full-package baseline floor; exact-head CI is pending.

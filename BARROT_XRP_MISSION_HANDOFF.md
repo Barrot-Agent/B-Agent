@@ -1174,3 +1174,10 @@ Wait for exact-head CI, full-suite coverage, dependency audit and fail-closed ga
 - The #1640 gate run [41864987391](https://github.com/Barrot-Agent/B-Agent/actions/runs/41864987391) passed its fail-closed job and explicitly kept merging disabled. The five-manifest dependency audit [41864987404](https://github.com/Barrot-Agent/B-Agent/actions/runs/41864987404) was still queued at this cutoff.
 - The coverage-threshold correction and this handoff update create a new successor head. Its exact-head core/full-suite, dependency audit and gate results must be checked before merge. The prior 646e963 results do not transfer to the new head.
 - No merge, deployment, paper trade, secret change, Space restart, Kaggle submission, funds transfer or real-money action occurred.
+
+
+## Run 22 — explicit pytest-cov threshold override (2026-11-04T16:21:20Z)
+
+- The first 50% configuration correction was insufficient: pytest still applied the repository's `pyproject.toml` `[tool.coverage.report] fail_under = 70`, and the inclusive run on `646e9630e74950861a29b4f434ea61015b93b829` failed at 51.68% despite 820 tests + 8 subtests passing.
+- The next #1640 successor now also passes `--cov-fail-under=50` explicitly on the pytest command line, which overrides the legacy 70% threshold. The workflow regression test asserts both the config value and CLI override. This preserves a 50% minimum baseline while exposing all subpackages.
+- Exact-head CI, full-suite coverage, dependency audit and gate on the new successor must still pass. No test result is transferred from the earlier head.

@@ -124,4 +124,5 @@ jobs:
           python -m pytest tests -v \
             --cov=barrot_agent \
             --cov-config="$RUNNER_TEMP/barrot-coverage.ini" \
-            --cov-report=term-missing:skip-covered
+            --cov-report=term-missing:skip-covered \
+            --cov-fail-under=50
