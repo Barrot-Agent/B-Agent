@@ -15,6 +15,7 @@ def test_destructive_or_secret_input_workflows_are_disabled() -> None:
         "rotate-databricks-token.yml",
         "gumroad-metrics.yml",
         "barrot-merge-manual.yml",
+        "task-allocator.yml",
     )
     for name in disabled:
         content = _read(name)
@@ -25,6 +26,7 @@ def test_destructive_or_secret_input_workflows_are_disabled() -> None:
         assert "git push" not in content
         assert "curl " not in content
         assert "gh secret set" not in content
+        assert "gh secret list" not in content
 
 
 def test_databricks_pat_is_not_a_workflow_dispatch_input() -> None:
