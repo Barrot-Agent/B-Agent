@@ -19,7 +19,8 @@ Target: PR #1623, branch `security/external-action-gates-162f43d-20261104T0212Z`
 ## Verification state
 
 - Changes are committed to PR #1623 only.
-- Exact-head CI and fail-closed verification are pending.
+- Exact-head CI run [41766316465](https://github.com/Barrot-Agent/B-Agent/actions/runs/41766316465) passed **357 tests + 8 subtests** on `641d1770d641b3a8dd32d39e8fa866217acdace0`.
+- Fail-closed gate [41766316446](https://github.com/Barrot-Agent/B-Agent/actions/runs/41766316446) passed; automatic merge remained disabled and the gate changed no repository content.
 - Main has not been changed.
 - No Kaggle submission, live WebMCP execution, deployment, merge or external write was performed.
 
