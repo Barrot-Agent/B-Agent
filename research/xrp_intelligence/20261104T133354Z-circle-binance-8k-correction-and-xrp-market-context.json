@@ -40,7 +40,13 @@
         "ARC presale revenue",
         "net income and adjusted EBITDA",
         "Circle Payments Network annualized TPV",
-        "Binance strategic equity investment announcement"
+        "Binance strategic equity investment announcement",
+        "definitive agreement to acquire Tazapay with expected 2027 closing subject to regulatory approvals",
+        "issuer-reported Tazapay annualized payment volume, partner count, local payout-market coverage and stablecoin transaction share",
+        "Samsung Wallet USDC cross-border transfers to qualifying bank accounts in 60+ countries",
+        "Visa Direct USDC stablecoin prefunding commercial deployment through Inyo Global",
+        "Arc public mainnet launch, institutional/ecosystem builder count and ARC genesis supply",
+        "issuer-disclosed stablecoin, distribution, interest-rate and Arc execution/legal risks"
       ]
     },
     {
@@ -210,7 +216,49 @@
         "limitation": "Annualized trailing-period measure, not actual quarterly settled value."
       }
     ],
-    "interpretation": "Circle's Q3 headline revenue and adjusted EBITDA growth was materially influenced by ARC token presale revenue while reserve income declined 8% year over year. The $13.9 trillion on-chain volume metric must not be described as $13.9 trillion of new capital or real-economy payments. CPN's $41.3 billion is annualized TPV, not quarterly settled capital."
+    "interpretation": "Circle's Q3 headline revenue and adjusted EBITDA growth was materially influenced by ARC token presale revenue while reserve income declined 8% year over year. The $13.9 trillion on-chain volume metric must not be described as $13.9 trillion of new capital or real-economy payments. CPN's $41.3 billion is annualized TPV, not quarterly settled capital.",
+    "business_highlights": {
+      "tazapay_acquisition": {
+        "status": "definitive_agreement_signed_not_closed",
+        "expected_closing_year": 2027,
+        "closing_conditions": [
+          "regulatory approvals"
+        ],
+        "issuer_reported_annualized_payment_volume_usd": 25000000000,
+        "issuer_reported_partner_count": 60,
+        "issuer_reported_local_payout_market_count": 100,
+        "issuer_reported_stablecoin_share_pct": 60,
+        "interpretation": "These are Circle's reported Tazapay scale figures. They are not Circle's own realized quarterly volume and the acquisition has not closed."
+      },
+      "samsung_wallet_usdc": {
+        "status": "announced_enabled_for_eligible_users",
+        "user_scope": "eligible Samsung Galaxy users in the United States",
+        "destination_scope": "qualifying bank accounts in more than 60 countries",
+        "asset": "USDC",
+        "interpretation": "USDC payment access through Samsung Wallet; no XRP use or XRPL settlement was established by this announcement."
+      },
+      "visa_direct_usdc": {
+        "status": "commercial_deployment",
+        "channel": "Visa Direct stablecoin prefunding through Inyo Global",
+        "asset": "USDC",
+        "issuer_reported_country_coverage": 180,
+        "interpretation": "Circle describes a move from pilots to commercial deployment. The announcement does not quantify realized XRP-related payment volume."
+      },
+      "arc_mainnet": {
+        "launch_date": "2026-09-16",
+        "issuer_reported_day_one_institutional_and_ecosystem_builders": 100,
+        "native_usdc_integration": true,
+        "arc_genesis_supply_tokens": 10000000000,
+        "interpretation": "Arc is a separate Circle-associated layer-one network with its own ARC token. It is not XRPL and does not establish an XRP demand relationship."
+      }
+    },
+    "issuer_disclosed_risk_factors": [
+      "Competition from yield-bearing tokenized money-market funds may reduce demand for Circle stablecoins.",
+      "Stablecoin confidence shocks or redemption runs could cause rapid redemption requests and operational pressure.",
+      "Less favorable distribution arrangements or loss of distribution partners could adversely affect USDC circulation and financial results.",
+      "Interest-rate changes affect reserve income.",
+      "Arc and ARC token execution, security, regulatory, governance and adoption risks are material."
+    ]
   },
   "binance_circle_transaction": {
     "equity": {
@@ -385,7 +433,11 @@
     "The ARC presale contributed $182 million of Q3 other revenue and is non-recurring.",
     "The Circle/Binance SEC filing contains no XRP purchase, XRP collateral or XRP payment-volume commitment.",
     "Derivatives OI provider totals are not comparable without a common contract and venue universe.",
-    "The account long/short ratio does not establish notional directional exposure."
+    "The account long/short ratio does not establish notional directional exposure.",
+    "The Tazapay acquisition is a definitive agreement expected to close in 2027 subject to regulatory approvals; it is not a completed acquisition.",
+    "Tazapay's $25B+ annualized payment volume and approximately 60% stablecoin share are Circle-reported metrics, not independently reconciled actual capital flows.",
+    "Samsung Wallet and Visa Direct announcements describe USDC rails; they do not establish XRP usage or XRP-related settlement demand.",
+    "Arc mainnet and ARC token are a separate network/token ecosystem; do not merge Arc activity into XRPL or XRP metrics."
   ],
   "prediction_status": {
     "status": "NOT_ISSUED",
@@ -404,6 +456,14 @@
     "Reconcile Coinbase and Binance USDC distribution concentration with primary issuer and exchange disclosures.",
     "Build exchange-specific XRP perpetual contracts and raw OI/funding/liquidation collectors with a common venue universe, source timestamps and immutable receipts.",
     "Capture spot trades and spot-only order-book depth from multiple exchanges with synchronized timestamps; keep spot and perpetual depth separate.",
-    "Do not issue a directional forecast until the point-in-time feature store, chronological walk-forward evaluation, baseline comparison, calibration and drift checks pass."
-  ]
+    "Do not issue a directional forecast until the point-in-time feature store, chronological walk-forward evaluation, baseline comparison, calibration and drift checks pass.",
+    "Track the Tazapay acquisition through regulatory approval and closing; separately verify post-close payment volume, stablecoin share and actual settlement.",
+    "Seek transaction-level or issuer-reported actual throughput for Samsung Wallet and Visa Direct rather than annualized addressable-market claims.",
+    "Monitor Circle's disclosed interest-rate, distribution concentration, redemption-run and Arc execution risks as separate event features."
+  ],
+  "artifact_revision": {
+    "revised_at_utc": "2026-11-04T13:39:06Z",
+    "revision_reason": "Expanded the Circle Q3 primary-source review to include newly verified payment-rail, acquisition, Arc and issuer-risk disclosures. Original capture timestamp and raw-source policy are unchanged.",
+    "revision_status": "append_only_artifact_revision"
+  }
 }
