@@ -1,0 +1,433 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-circle-binance-coinbase-arc-bny-sbic-20261103-run13",
+  "captured_at_utc": "2026-11-03T03:50:00Z",
+  "data_cutoff_utc": "2026-11-03T03:50:00Z",
+  "repository_base_commit": "d01f67708c6a68ee8b840ad46f8d3ae9cbeed739",
+  "classification_legend": {
+    "confirmed": "Primary official statement or SEC filing",
+    "reported": "Credible secondary report or issuer-reported metric",
+    "inference": "Reasoned interpretation, not direct evidence",
+    "speculation": "Testable hypothesis only",
+    "unknown": "Not established by reviewed sources"
+  },
+  "observations": [
+    {
+      "id": "C01",
+      "class": "confirmed",
+      "claim": "Circle and Binance announced a five-year commercial agreement focused on global USDC access, with Binance committing to promote and integrate USDC on its platform, especially in emerging markets.",
+      "as_of": "2026-09-22",
+      "source": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx"
+    },
+    {
+      "id": "C02",
+      "class": "confirmed",
+      "claim": "Binance made a $100 million strategic equity investment in Circle through a private placement; Circle says Binance agreed not to transfer the shares for up to two years, subject to customary exceptions.",
+      "as_of": "2026-09-22",
+      "source": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx"
+    },
+    {
+      "id": "C03",
+      "class": "reported",
+      "claim": "Coinbase reported Q3 2026 crypto trading-volume market share of 10.7%, its fourth consecutive quarter of share gains, and assets on platform equal to 12.5% of total crypto market capitalization.",
+      "as_of": "2026-Q3",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+    },
+    {
+      "id": "C04",
+      "class": "reported",
+      "claim": "Coinbase reported average USDC held in Coinbase products of $22 billion in Q3 2026, up 49% year over year and approximately 30% of average USDC market capitalization; Coinbase said it captured approximately 50% of USDC economics over the prior year.",
+      "as_of": "2026-Q3",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+    },
+    {
+      "id": "C05",
+      "class": "reported",
+      "claim": "Coinbase reported prediction markets above $200 million in annualized revenue and 82% quarterly compound revenue growth since launch; this is company-reported annualized revenue, not audited full-year revenue.",
+      "as_of": "2026-10-29",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+    },
+    {
+      "id": "C06",
+      "class": "confirmed",
+      "claim": "Coinbase's Q3 2026 Form 10-Q states that it renewed its arrangement with Circle on the same terms.",
+      "as_of": "2026-09-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C07",
+      "class": "confirmed",
+      "claim": "Coinbase reported Q3 stablecoin revenue of $306.905 million versus $324.534 million a year earlier, a derived decline of approximately 5.43%; nine-month stablecoin revenue was $904.487 million versus $907.485 million.",
+      "as_of": "2026-Q3",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C08",
+      "class": "confirmed",
+      "claim": "Coinbase's filing attributes a $84.6 million Q3 increase in stablecoin revenue to higher average USDC balances and a $52.8 million decrease to lower average interest rates. These are disclosed drivers, not a complete bridge of the year-over-year revenue change.",
+      "as_of": "2026-Q3",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C09",
+      "class": "confirmed",
+      "claim": "Coinbase's filing says one unnamed counterparty accounted for 27% of Q3 2026 total revenue, versus 19% in Q3 2025. The filing excerpt does not identify the counterparty; it must not be assumed to be Circle or Binance.",
+      "as_of": "2026-Q3",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C10",
+      "class": "confirmed",
+      "claim": "Coinbase reported $1.958539 billion in fiat/payment-stablecoin loan receivables and $17.598 million in crypto-asset loan receivables at September 30, 2026; three counterparties each represented more than 10% of loan receivables.",
+      "as_of": "2026-09-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C11",
+      "class": "confirmed",
+      "claim": "Coinbase said collateral requirements for all loans outstanding ranged from 100% to 250% of the fair value of the loan. The filing's collateral table lists primarily BTC and ETH; other crypto collateral was $9.903 million and no single other asset exceeded 5% of crypto collateral fair value. It does not identify XRP as a material collateral asset.",
+      "as_of": "2026-09-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C12",
+      "class": "reported",
+      "claim": "Circle's transparency page reports USDC circulation of $70.0 billion and total reserves of $71.4 billion as of October 29, 2026. The derived reserve-to-circulation ratio is 102.0%; this is not a claim that the difference is freely available operating capital.",
+      "as_of": "2026-10-29",
+      "source": "https://www.circle.com/transparency"
+    },
+    {
+      "id": "C13",
+      "class": "reported",
+      "claim": "Circle's October 29 transparency snapshot reports net USDC circulation change of -$0.8 billion over seven days and -$3.1 billion over 30 days. The 365-day displayed net change is -$5.0 billion; displayed rounded issuance of $362.1 billion and redemptions of $367.2 billion arithmetically differ by $5.1 billion, retained as a rounding discrepancy.",
+      "as_of": "2026-10-29",
+      "source": "https://www.circle.com/transparency"
+    },
+    {
+      "id": "C14",
+      "class": "confirmed",
+      "claim": "Circle says USDC is natively available on XRPL mainnet since June 12, 2025, with no third-party bridge required; Circle Mint and APIs support it. Qualified Circle Mint businesses can redeem 1:1 for USD; non-Circle-Mint end users rely on secondary-market/on-off-ramp providers.",
+      "as_of": "2025-06-12",
+      "source": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+    },
+    {
+      "id": "C15",
+      "class": "confirmed",
+      "claim": "Circle launched Arc public mainnet on September 16, 2026. Arc is a separate open Layer-1 network purpose-built for financial markets and money movement; its transaction fees are paid in USDC, not XRP.",
+      "as_of": "2026-09-16",
+      "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet"
+    },
+    {
+      "id": "C16",
+      "class": "reported",
+      "claim": "Circle identifies SBI Group, Standard Chartered, Sumitomo Corporation and other institutions as founding Arc validators. SBI Chairman Yoshitaka Kitao said SBI VC Trade began USDC distribution in Japan in March 2025 and SBI would contribute to Arc operation and governance while using both USDC and JPYSC in its regional strategy.",
+      "as_of": "2026-09-16",
+      "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet"
+    },
+    {
+      "id": "C17",
+      "class": "reported",
+      "claim": "Circle lists Coinbase, Binance, Kraken and other exchanges among Arc ecosystem participants. The release describes more than 100 builders live on or exploring Arc; it does not specify each exchange's precise integration scope or make them validators.",
+      "as_of": "2026-09-16",
+      "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet"
+    },
+    {
+      "id": "C18",
+      "class": "confirmed",
+      "claim": "BNY is Circle's primary USDC reserve custodian and added institutional USDC custody plus mint/burn instructions through BNY's Digital Asset Custody platform.",
+      "as_of": "2026-06-29",
+      "source": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-expands-relationship-circle-adds-institutional-grade-stablecoin-enablement-services.html"
+    },
+    {
+      "id": "C19",
+      "class": "confirmed",
+      "claim": "BNY says it is the primary reserve custodian for RLUSD, now supports XRP and RLUSD custody for eligible institutional clients, and is exploring RLUSD mint/redeem through BNY plus tokenized trade finance with Ripple and C2FO. The mint/redeem and trade-finance initiatives are future plans subject to approvals.",
+      "as_of": "2026-10-27",
+      "source": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html"
+    },
+    {
+      "id": "C20",
+      "class": "confirmed",
+      "claim": "Standard Chartered's DIFC branch has live institutional custody support for RLUSD issued on XRPL. The planned LMAX collateral-mirroring arrangement remains subject to final documentation, testing, law, internal approvals and jurisdictional readiness.",
+      "as_of": "2026-10-12",
+      "source": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group"
+    },
+    {
+      "id": "C21",
+      "class": "confirmed",
+      "claim": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC) describes itself as implementing Japan's SME investment-development policy, supporting SME equity capitalization and acting as a long-term stable shareholder without management interference. Its official page reports 6,136 beneficiary companies as of March 31, 2026.",
+      "as_of": "2026-03-31",
+      "source": "https://www.sbic.co.jp/"
+    },
+    {
+      "id": "C22",
+      "class": "confirmed",
+      "claim": "Tokyo SBIC's official June 12-13, 2025 training for investee companies included ChatGPT and Copilot instruction. This is a training programme, not evidence of an SBIC-Coinbase, SBIC-Ripple, SBI Holdings or ChatGPT corporate partnership.",
+      "as_of": "2025-06-12",
+      "source": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    {
+      "id": "C23",
+      "class": "reported",
+      "claim": "Permission Coin ASK is a candidate interpretation of 'ASK Coin'; CoinMarketCap describes it as a multi-chain token with official Base and Polygon contracts using LayerZero OFT. No XRP Ledger deployment or XRP integration was established in the reviewed source.",
+      "as_of": "2026-11-03",
+      "source": "https://coinmarketcap.com/currencies/permission-coin/"
+    },
+    {
+      "id": "C24",
+      "class": "unknown",
+      "claim": "The intended meaning of 'ASK Coin' remains unresolved; Permission Coin ASK is only a candidate and may not be the user's intended reference.",
+      "as_of": "2026-11-03"
+    },
+    {
+      "id": "C25",
+      "class": "unknown",
+      "claim": "No direct evidence reviewed establishes that Circle's USDC reserves are held in XRP, that USDC on XRPL is backed by XRP, or that Circle's Arc uses XRP as gas or collateral.",
+      "as_of": "2026-11-03"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "type": "five_year_USDC_commercial_agreement_and_100M_equity_investment",
+      "status": "confirmed"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "type": "USDC_distribution_economics_and_renewed_agreement",
+      "status": "confirmed"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "type": "native_USDC_issuance",
+      "status": "confirmed"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "type": "RLUSD_listing_on_Prime_Exchange_and_app",
+      "status": "confirmed",
+      "as_of": "2026-10-28"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Arc",
+      "type": "founding_validator",
+      "status": "issuer_announced"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "Circle",
+      "type": "USDC_distribution_in_Japan",
+      "status": "issuer_announced"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Arc",
+      "type": "listed_exchange_ecosystem_participant",
+      "status": "issuer_announced_scope_unspecified"
+    },
+    {
+      "from": "Binance",
+      "to": "Arc",
+      "type": "listed_exchange_ecosystem_participant",
+      "status": "issuer_announced_scope_unspecified"
+    },
+    {
+      "from": "BNY",
+      "to": "Circle",
+      "type": "USDC_reserve_custody_and_institutional_mint_burn",
+      "status": "confirmed"
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple",
+      "type": "RLUSD_reserve_custody_XRP_RLUSD_custody_and_future_trade_finance_exploration",
+      "status": "confirmed_with_future_components"
+    },
+    {
+      "from": "Standard_Chartered",
+      "to": "Ripple",
+      "type": "live_RLUSD_XRPL_custody_and_planned_LMAX_collateral_mirroring",
+      "status": "mixed_live_and_planned"
+    },
+    {
+      "from": "Tokyo_SBI C",
+      "to": "ChatGPT",
+      "type": "investee_company_training",
+      "status": "confirmed_training_only"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Circle's expansion is a multi-rail strategy: USDC is native on XRPL while Arc is a separate USDC-native institutional L1; these rails can coexist and may compete for some use cases.",
+      "evidence": [
+        "C14",
+        "C15",
+        "C16"
+      ],
+      "disconfirming_or_missing": [
+        "No disclosed XRPL migration to Arc",
+        "No chain-level capital migration series",
+        "No evidence Circle is discontinuing XRPL support"
+      ],
+      "status": "testable_inference"
+    },
+    {
+      "id": "H2",
+      "statement": "Coinbase's RLUSD listing is multi-stablecoin diversification rather than abandonment of Circle; the Circle agreement was renewed on the same terms and Coinbase reports record USDC balances.",
+      "evidence": [
+        "C04",
+        "C06",
+        "C07"
+      ],
+      "disconfirming_or_missing": [
+        "Future stablecoin listing, delisting and distribution terms could change",
+        "No product-level RLUSD balance series yet"
+      ],
+      "status": "testable_inference"
+    },
+    {
+      "id": "H3",
+      "statement": "Circle's Binance investment and five-year USDC agreement align equity incentives with distribution reach; actual USDC adoption depends on realized balances and flows, not announcement size.",
+      "evidence": [
+        "C01",
+        "C02",
+        "C12",
+        "C13"
+      ],
+      "disconfirming_or_missing": [
+        "No current Binance-specific USDC balance or incremental flow attribution in this snapshot",
+        "No proof the investment changes exchange execution or XRP liquidity"
+      ],
+      "status": "testable_inference"
+    },
+    {
+      "id": "H4",
+      "statement": "The October USDC contraction may reflect redemptions, market-cycle or treasury reallocations; it is not evidence of XRP rotation without wallet/venue flow linkage.",
+      "evidence": [
+        "C12",
+        "C13"
+      ],
+      "disconfirming_or_missing": [
+        "No chain-by-chain mint/burn and exchange-flow reconciliation in this run"
+      ],
+      "status": "counter_hypothesis_required"
+    },
+    {
+      "id": "H5",
+      "statement": "BNY is a shared institutional custody node across Circle USDC and Ripple XRP/RLUSD, but shared custody does not imply cross-collateralization or coordinated capital deployment.",
+      "evidence": [
+        "C18",
+        "C19"
+      ],
+      "disconfirming_or_missing": [
+        "No BNY client-level balance, pledge or transfer data",
+        "No evidence USDC reserve assets are pledged against XRP"
+      ],
+      "status": "testable_inference"
+    },
+    {
+      "id": "H6",
+      "statement": "SBI's Arc validator, USDC distribution, JPYSC and Evernorth relationships indicate a multi-rail digital-finance strategy rather than an exclusive XRP position.",
+      "evidence": [
+        "C16",
+        "C21",
+        "C22"
+      ],
+      "disconfirming_or_missing": [
+        "No public SBI capital allocation series by chain or token",
+        "Arc validator participation does not establish production transaction volume"
+      ],
+      "status": "testable_inference"
+    }
+  ],
+  "data_quality": [
+    "Circle transparency values are explicitly dated October 29, 2026, although retrieved November 3; they are not live November 3 balances.",
+    "Circle's displayed 365-day rounded issuance/redemption totals imply -$5.1B while the page displays -$5.0B; preserve displayed value and arithmetic discrepancy.",
+    "Coinbase company-reported market-share and USDC-economics metrics are not independent third-party measurements.",
+    "Coinbase's unnamed 27% revenue counterparty must not be attributed to Circle or Binance.",
+    "Coinbase collateral disclosure is aggregate; no XRP-specific collateral amount is identified.",
+    "Circle's Arc ecosystem list does not specify each named exchange's integration depth.",
+    "Arc is a separate network from XRPL; USDC gas on Arc is not XRP demand.",
+    "RLUSD custody and planned collateral mirroring are not equivalent to native XRP collateral adoption."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "evaluation_status": "DESIGNED_NOT_EXECUTED",
+  "source_provenance": [
+    {
+      "url": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published": "2026-09-22",
+      "class": "primary"
+    },
+    {
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "publisher": "Coinbase Investor Relations",
+      "published": "2026-10-29",
+      "class": "primary_company_report"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "SEC EDGAR",
+      "published": "2026-10-29",
+      "class": "regulatory_filing"
+    },
+    {
+      "url": "https://www.circle.com/transparency",
+      "publisher": "Circle",
+      "as_of": "2026-10-29",
+      "class": "primary_operational_snapshot"
+    },
+    {
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publisher": "Circle",
+      "published": "2025-06-12",
+      "class": "primary"
+    },
+    {
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "publisher": "Circle",
+      "published": "2026-09-16",
+      "class": "primary"
+    },
+    {
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-expands-relationship-circle-adds-institutional-grade-stablecoin-enablement-services.html",
+      "publisher": "BNY",
+      "published": "2026-06-29",
+      "class": "primary"
+    },
+    {
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publisher": "BNY",
+      "published": "2026-10-27",
+      "class": "primary"
+    },
+    {
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group",
+      "publisher": "Standard Chartered",
+      "published": "2026-10-12",
+      "class": "primary"
+    },
+    {
+      "url": "https://www.sbic.co.jp/",
+      "publisher": "Tokyo SBIC",
+      "class": "primary"
+    },
+    {
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo SBIC",
+      "published": "2025-06-12",
+      "class": "primary"
+    },
+    {
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "publisher": "CoinMarketCap",
+      "class": "secondary_candidate_identification"
+    }
+  ]
+}
