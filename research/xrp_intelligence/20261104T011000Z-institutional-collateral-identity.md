@@ -301,3 +301,6 @@ The phrase does not identify one unique project. Three separate public candidate
 - **Ask Coin (askcoin.net):** a separate exchange listing, marked inactive/untracked by CoinMarketCap and BitDegree, with no reserve or tracked volume data.
 
 These candidates must not be conflated. No XRP Ledger deployment, Ripple relationship, XRP pair, or SBI/Circle/Coinbase link was verified for either Askcoin candidate. The user's intended ASK entity remains unresolved.
+
+
+Addendum captured 2026-11-04 02:10:41 UTC. The original 01:10 UTC data cutoff is preserved; later discoveries are timestamped in the JSON addenda rather than backdated into the original snapshot.
