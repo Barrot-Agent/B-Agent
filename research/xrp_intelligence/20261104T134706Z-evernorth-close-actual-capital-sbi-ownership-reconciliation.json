@@ -110,6 +110,25 @@
         "Coinbase was selected as the principal market for XRP fair-value/impairment accounting; BitGo Bank & Trust was the digital-asset custodian.",
         "The prospectus describes planned XRP lending, covered calls, basis trades, DeFi lending and liquidity provision as strategies, not as proof those strategies were already operating."
       ]
+    },
+    {
+      "id": "evernorth_committed_equity_facility_424b3",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "primary SEC Form 424B3 prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "prospectus_date": "2026-10-30",
+      "retrieved_at_utc": "2026-11-04T13:47:06Z",
+      "source_independence_group": "evernorth_issuer_disclosure",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_html_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Cantor committed equity facility registration for up to 5,218,935 Class A shares",
+        "Potential gross proceeds of up to approximately $76.8 million if all shares are sold to Cantor at the assumed cover-page stock price",
+        "The company may elect whether and when to issue shares to Cantor, subject to conditions",
+        "The company agreed to a $521,893.50 upfront commitment fee",
+        "The company does not receive proceeds from Cantor's subsequent resale of registered shares"
+      ]
     }
   ],
   "transaction_timeline": [
@@ -185,14 +204,28 @@
         "cash_receipt_status": "issuer reports completed issuance; not equity and not proof proceeds were spent on XRP"
       },
       {
-        "source": "Ripple Labs related-party revolving credit facility",
+        "source": "Ripple Labs related-party Company Facility (Pathfinder)",
         "limit_usd": 10000000,
         "drawn_as_of": "2026-10-07",
         "drawn_usd": 9700000,
         "interest_rate_pct": 3.81,
         "repayment_terms": "Due within five business days after the October 9 closing or upon lender demand, according to the prospectus.",
         "capital_class": "short_term_related_party_debt",
-        "repayment_status": "not confirmed in the reviewed post-close disclosure"
+        "repayment_status": "not confirmed in the reviewed post-close disclosure; due within five business days after October 9 closing or upon demand",
+        "borrower": "Pathfinder Digital Assets LLC (operating subsidiary)",
+        "original_limit_usd": 7000000,
+        "drawn_as_of_2026_10_07_usd": 9700000,
+        "use_of_facility": "Working capital, transaction expenses and general corporate purposes; the October 7 amendment also included payments made by Ripple to third parties on behalf of Pathfinder and Evernorth."
+      },
+      {
+        "source": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+        "borrower": "Evernorth Holdings Inc. (Pubco)",
+        "limit_usd": 1000000,
+        "drawn_as_of_2026_06_30_usd": 0,
+        "interest_rate_pct": 3.81,
+        "repayment_terms": "If drawn, due within five business days after the October 9, 2026 closing or earlier on five business days' notice of demand.",
+        "post_close_draw_status": "not disclosed",
+        "capital_class": "short_term_related_party_debt"
       }
     ],
     "optional_equity_capacity": {
@@ -208,14 +241,18 @@
       ],
       "upfront_commitment_fee_usd": 521893.5,
       "additional_expense_cap_usd": 500000,
-      "actual_proceeds_status": "no proceeds established in the reviewed prospectus; capacity is optional, not funded capital"
+      "actual_proceeds_status": "no proceeds established in the reviewed prospectus; capacity is optional, not funded capital",
+      "upfront_commitment_fee_timing": "Payable within five business days after the defined Upfront Determination Date; do not assume it was already paid without a subsequent cash disclosure.",
+      "potential_gross_proceeds_usd_at_assumed_cover_price": 76800000,
+      "potential_proceeds_caveat": "Approximately $76.8 million is a hypothetical maximum at the prospectus cover-page stock price, not guaranteed or already received. The company controls whether to issue shares to Cantor; Cantor's subsequent resale proceeds do not go to the company."
     },
     "expenses_and_net_cash": {
       "known_items": [
         "advisory fee",
         "placement fee of 4% on eligible proceeds",
         "transaction and legal expenses",
-        "Cantor commitment fee and expense reimbursements"
+        "Cantor commitment fee and expense reimbursements",
+        "A separate $521,893.50 Cantor upfront commitment fee is payable under the ELOC agreement after the defined determination date."
       ],
       "exact_post_close_cash_balance": "not disclosed in the reviewed extracts",
       "warning": "Do not equate gross proceeds with net unrestricted cash or deployable XRP-buying capacity."
@@ -399,6 +436,25 @@
       "evidence": [
         "evernorth_registration_statement_prospectus_20261030"
       ]
+    },
+    {
+      "from": "Ripple Labs",
+      "to": "Evernorth Holdings Inc. (Pubco)",
+      "relation": "separate $1.0M Evernorth Facility",
+      "status": "undrawn as of June 30; post-close draw status not disclosed",
+      "evidence": [
+        "evernorth_registration_statement_prospectus_20261030"
+      ]
+    },
+    {
+      "from": "Ripple Labs",
+      "to": "Pathfinder Digital Assets LLC",
+      "relation": "Company Facility revolving credit",
+      "status": "$10M amended limit; $9.7M drawn as of October 7; repayment status not disclosed",
+      "evidence": [
+        "evernorth_registration_statement_prospectus_20261030"
+      ],
+      "notes": "This is distinct from the $1M Evernorth Facility and the $30M NH/Kyobo note."
     }
   ],
   "strategic_and_risk_context": {
@@ -423,7 +479,7 @@
     ]
   },
   "capital_flow_interpretation": {
-    "actual_capital_summary": "The closing documents support approximately $272.6 million of gross cash proceeds, but $214.05 million of the private-placement cash had already been used to buy 84.365876 million XRP. Approximately $48 million came from the SPAC trust after 80.3% redemptions and $10.5 million from delayed funding at close, before fees. A separate $30 million convertible note was issued on October 12. The company also had a $9.7 million Ripple-related short-term draw as of October 7. In addition, approximately 388.91 million XRP was contributed in kind, bringing the reported treasury to approximately 473 million XRP.",
+    "actual_capital_summary": "The closing documents support approximately $272.6 million of gross cash proceeds, but $214.05 million of the private-placement cash had already been used to buy 84.365876 million XRP. Approximately $48 million came from the SPAC trust after 80.3% redemptions and $10.5 million from delayed funding at close, before fees. A separate $30 million convertible PIK note was issued on October 12. Ripple also provided two distinct short-term facilities: a $1 million Evernorth Facility (undrawn as of June 30) and a $10 million Company Facility to Pathfinder, of which $9.7 million was drawn as of October 7. The post-close repayment status of the $9.7 million draw is not disclosed. In addition, approximately 388.91 million XRP was contributed in kind, bringing the reported treasury to approximately 473 million XRP.",
     "actual_vs_announced": "SBI announced a $200 million cash commitment in 2025. The SEC closing filing confirms SBI Holdings' post-close ownership but does not itemize its individual cash contribution. Aggregate private-placement proceeds must not be attributed wholly to SBI.",
     "actual_vs_optional": "The Cantor equity line is an option to issue shares, not cash received. The resale registration is not a company financing. The $30 million note is debt, and the $9.7 million Ripple facility is short-term related-party borrowing.",
     "actual_vs_xrp_demand": "Only the 84.365876 million XRP purchase is a disclosed cash-funded open-market acquisition. The remaining approximately 388.91 million XRP was contributed in kind. The in-kind transfers increase treasury concentration but are not equivalent to contemporaneous exchange-market buying."
@@ -529,18 +585,48 @@
     "Use the actual 84.365876 million XRP purchase as a historical event feature dated 2025, not as current 2026 demand.",
     "Use the October 12 post-close Form 8-K share table rather than earlier pro forma cap tables when calculating SBI's voting and non-voting ownership.",
     "Reconcile the $214.05 million advance cash against the 84,365,876 XRP purchase exactly once in any balance-sheet or flow model.",
-    "Treat the $1.43069 contractual closing reference price as a sensitivity input, not a live market quote or realized liquidation value."
+    "Treat the $1.43069 contractual closing reference price as a sensitivity input, not a live market quote or realized liquidation value.",
+    "Verify the separate $1 million Evernorth Facility's post-close draw status and the $9.7 million Company Facility repayment status; the prospectus does not confirm either post-close status.",
+    "Verify whether the Cantor $521,893.50 upfront commitment fee was paid and whether any ELOC purchase notices or share issuances occurred after the prospectus date."
   ],
   "data_quality": {
     "filing_precedence": "Use the October 12 post-close Form 8-K for actual post-close share counts and transaction completion. Use the October 30 prospectus for the later capital-structure, debt, ELOC and custody disclosures. Earlier pro forma share tables are not the final post-close cap table.",
     "investor_level_cash": "The SEC filings reviewed here disclose aggregate advance and delayed subscription amounts, not an investor-by-investor cash schedule. SBI's announced $200 million cannot be reconciled to a precise funded amount from these extracts.",
     "cash_vs_xrp": "The $214.05 million advance cash was converted into 84.365876 million XRP before close. It is not both a cash balance and an XRP asset at the same time.",
     "entity_boundaries": "Ripple Labs, RippleWorks Foundation, Larsen Lam Children's Remainder Trust, Arrington XRP Capital Fund LP, SBI Holdings and SBI regional SBIC companies are distinct legal entities.",
-    "raw_receipts": "All filing extracts in this artifact lack byte-complete raw-source SHA-256 receipts; they remain model-ineligible."
+    "raw_receipts": "All filing extracts in this artifact lack byte-complete raw-source SHA-256 receipts; they remain model-ineligible.",
+    "credit_facility_distinction": "The $9.7 million draw is under the $10 million Company Facility to Pathfinder, not the separate $1 million Evernorth Facility. The latter was undrawn as of June 30. Do not collapse these facilities into one loan."
   },
   "artifact_revision": {
-    "revised_at_utc": "2026-11-04T13:49:00Z",
-    "revision_reason": "Corrected the full legal names of SBI-controlled entities, separated the post-close 8-K share table from pre-close pro forma tables, and added a clearly labeled closing-reference-price sensitivity.",
+    "revised_at_utc": "2026-11-04T13:50:00Z",
+    "revision_reason": "Added the separate $1M Evernorth Facility, distinguished it from the $10M Pathfinder Company Facility with $9.7M drawn, and added the SEC 424B3 ELOC prospectus terms.",
     "revision_status": "append_only_artifact_revision"
-  }
+  },
+  "additional_credit_facilities": [
+    {
+      "facility_name": "Evernorth Facility",
+      "borrower": "Evernorth Holdings Inc. (Pubco)",
+      "lender": "Ripple Labs Inc.",
+      "limit_usd": 1000000,
+      "interest_rate_pct": 3.81,
+      "status_as_of_2026_06_30": "undrawn",
+      "repayment_terms": "Amounts borrowed were due within five business days after the October 9, 2026 closing or earlier upon five business days' notice of demand by Ripple.",
+      "post_close_draw_status": "not disclosed in the reviewed prospectus",
+      "capital_class": "short_term_related_party_revolver"
+    },
+    {
+      "facility_name": "Company Facility (Pathfinder)",
+      "borrower": "Pathfinder Digital Assets LLC, which became Evernorth's operating subsidiary",
+      "lender": "Ripple Labs Inc.",
+      "original_limit_usd": 7000000,
+      "amended_limit_usd": 10000000,
+      "amendment_date": "2026-10-07",
+      "drawn_as_of_2026_10_07_usd": 9700000,
+      "interest_rate_pct": 3.81,
+      "repayment_terms": "Amounts borrowed were due within five business days after the October 9, 2026 closing or earlier upon five business days' notice of demand by Ripple.",
+      "use_of_facility": "Working capital, transaction expenses and general corporate purposes; the October 7 amendment also included third-party payments made by Ripple on behalf of Pathfinder and Evernorth.",
+      "post_close_repayment_status": "not disclosed in the reviewed prospectus; contractual due date was approximately October 16, 2026",
+      "capital_class": "short_term_related_party_revolver"
+    }
+  ]
 }
