@@ -346,3 +346,29 @@ def test_circle_q3_and_fixcleanup_events_are_not_mislabeled_as_completed() -> No
     assert fix["threshold_votes"] == 29
     assert fix["active_at_cutoff"] is False
     assert _parse_utc(fix["earliest_activation_utc"]) > cutoff
+
+
+ETF_FLOW_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T050900Z-etf-flow-source-disagreement.json"
+)
+
+
+def test_etf_flow_provider_disagreement_is_preserved_not_averaged() -> None:
+    data = json.loads(ETF_FLOW_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_etf_flow_source_disagreement_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    source_ids = [item["id"] for item in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+    for observation in data["observations"]:
+        assert observation["evidence"]
+        assert set(observation["evidence"]) <= known
+    snapshot = data["market_snapshot"]
+    assert snapshot["xrp_insights"]["net_flow_xrp"] == -32825
+    assert snapshot["bykaranteli"]["net_flow_usd"] == -530000
+    assert snapshot["discrepancy"]["approx_ratio"] > 10
+    assert "Do not average" in data["data_quality"]["no_averaging_policy"]
+    assert data["predictions"]["issued"] is False
