@@ -2177,3 +2177,72 @@ All new web-source records are rendered extracts only. Raw source bytes, SHA-256
 6. Continue byte-complete source capture, durable cross-run storage, synchronized historical XRP features, full exchange-flow/depth coverage, leakage-safe walk-forward evaluation, probability calibration, drift monitoring and shadow evaluation.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Automation run — 2026-11-04T23:18:42Z (SBI rail update and architecture verification)
+
+### Current exact heads and test evidence
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- #1640 current pre-append documentation head: `bd18035a1a96dd2ef8c1d43a62f07c4f6f3bce7a`, 99 commits ahead of main, 0 behind, 71 changed files.
+- #1640 CI on that exact head: run 41931842307; core 581 passed + 8 subtests; full suite 857 passed + 8 subtests; inclusive coverage 53.01% with the 50% floor.
+- #1640 dependency audit on that exact head: run 41931842071; all five declared dependency sets passed strict audit, no known vulnerabilities.
+- #1640 fail-closed gate on that exact head: run 41931842322 passed, but explicitly leaves automatic merging disabled. The gate performs no approval or merge.
+- #1643 current research head: `1f4a47692352b12dfd982d241e0606814c7f350f`, 86 commits ahead of main, 0 behind, 88 changed files.
+- #1643 CI on that exact head: run 41932350474; core 495 passed + 8 subtests; full suite 796 passed + 8 subtests. All three newly added regression tests passed.
+- #1643 fail-closed gate on that exact head: run 41932350401 passed, with automatic merging disabled. No dependency manifest changed in #1643, so no dependency audit was required.
+- #1640 and #1643 have no changed-path overlap. Both are open, non-draft and mergeable. #1640 has 22/22 review threads resolved; #1643 has 14/14 resolved. Both have zero approving reviews.
+- This handoff append will create a new documentation-only #1640 successor head. The exact-head CI, full suite, dependency audit and gate must be checked again on that new SHA; the results above apply to the stated pre-append #1640 head.
+
+### New SBI institutional, stablecoin and bank-rail evidence appended to #1643
+
+New artifact: `research/xrp_intelligence/20261104T231520Z-sbi-jpysc-erebor-institutional-rail-update.json`.
+
+- SBI VC Trade reported JPYSC handling balances above JPY 30 billion and JPYSC Lending balances above JPY 10 billion as of November 2, 2026. These are operator-reported service balances, not independently verified public-chain supply.
+- JPYSC is issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. Initial availability was within VCTRADE accounts; public-chain circulation was conditional on legal and tax matters. A September 7 SBI disclosure reported approximately JPY 20.1 billion issuance balance and JPY 1.0 billion of short-term Japanese government-bond backing. These are separate dated measures.
+- SBI Holdings says SBI Holdings USA will invest USD 100 million in Erebor Bank. The announcement is future-tense; closing and funding are not verified. OCC CAS lists Erebor's charter as consummated/effective February 6, 2026, and FDIC records deposit-insurance approval on December 16, 2025 and institution certificate 59378.
+- SBI and Startale's October 27 agreement with BlackRock concerns a proposed tokenized money-market-fund/JPYSC ecosystem; it is an MOU, not a live settlement product.
+- SBI and Startale joined Open Standard and proposed a JPYSC/Open USD interoperability proof of concept. Coinbase is among Open Standard participants, but this does not establish a direct SBI-Coinbase bilateral contract.
+- SBI says a subsidiary participated in Circle's ARC token presale consortium; the consortium total was USD 222 million, but SBI's own contribution was not disclosed. Do not attribute the whole consortium raise to SBI.
+- The prior relationship map remains authoritative for older evidence: SBI's approximately 9% Ripple shareholding was stated in its 2025 information meeting; SBI Group had 60% voting rights in SBI Ripple Asia as of March 31, 2026; SBI Remit announced XRP-bridge remittance corridors; SBI separately invested USD 50 million in Circle and formed SBI Circle Holdings; SBI VC Trade later began RLUSD handling.
+- Interpretation: SBI has real XRP/Ripple equity and payment relationships, but its current strategy also scales JPYSC, USDC, RLUSD, Circle/ARC, tokenized money-market funds, Open Standard and bank/payment rails. These may complement or substitute for XRP in different corridors. No measured corridor-level substitution or XRP demand impact is established.
+- The SBI artifact preserves all issuer claims as SBI-origin evidence, and OCC/FDIC as separate regulator sources. Rendered extracts were used; raw source bytes, SHA-256 hashes and independent timestamp anchors were not captured. The artifact is model-ineligible.
+
+### Verified implementation state on #1640
+
+- `data/missions/primary_mission.json` sets `xrp_intelligence_prediction_engine` to active priority 1. `LearningCurriculum.next_goal()` consults `MissionRegistry` before generic curriculum work. Barrot V3 execution/orchestration/safety/verification invariants remain explicit.
+- `.github/workflows/xrp-public-ingestion.yml` is designed for hourly read-only capture at minute 3, with nine public endpoints across Binance, Coinbase and Kraken. It is on #1640, not main; it has not run on main.
+- `RawReceiptArchive` writes content-addressed SHA-256 raw files with write-once creation, fsync and append-only JSONL receipts. The workflow uploads one artifact per run with 90-day retention. No cross-run durable object store or independent timestamp anchor is configured.
+- `HistoricalFeatureStore` uses local SQLite snapshots, manifest hashes and SQL no-update/no-delete triggers. The scheduled workflow creates the database inside each run artifact; this is not a durable cross-run store and the SQLite file itself is not file-level tamper-proof.
+- Current endpoint scope is limited to Binance spot ticker/1-hour candles, Binance perpetual premium and open interest, Coinbase spot ticker/candles/book, Kraken depth and Binance depth. It does not yet ingest wallet exchange flows, ETF/issuer files, collateral, stablecoin supply/mint/burn, custody, payment rails, regulation, macro or geopolitical event vintages.
+- Coinbase and Binance order-book snapshots remain raw-only because a valid snapshot timestamp/sequence bridge is not maintained. Kraken depth can become eligible only with a fresh HTTP Date; it remains one venue, not consolidated liquidity. USDT quotes are not converted to USD, perpetual open interest remains in contracts, and Coinbase candle pagination is incomplete. Historical candles are known to this collector at capture time and cannot be backdated into earlier cutoffs.
+- The research-eligibility adapter requires byte-complete source bytes, matching SHA-256, receipt IDs, source independence, event/capture times and exact feature lineage. It exists and is tested but is not wired into the scheduled collector.
+- The forecast ledger is an append-only SQLite ledger with SQL guards, not file-level tamper-proof. Its readiness policy requires at least 100 training samples, 100 independent out-of-sample samples, 100 shadow samples, evaluation spans of at least 10 forecast horizons, at least two independently receipted source groups, leakage checks, calibration PASS, stable drift, shadow PASS, weighted calibration error at most 0.05, and model improvement over naive/class-prior, momentum, mean-reversion and volatility baselines on both Brier score and log loss.
+- No complete readiness report exists. No directional forecast has been issued. The scheduled ingestion, feature store, research overlay and forecast ledger are not yet a connected production pipeline.
+
+### Backlog and merge state
+
+- Open inventory remains 369 PRs: 354 drafts, 15 non-drafts.
+- #1642 is an exact ancestor/superseded source for #1640. #1644–#1650 dependency updates are represented in #1640. Do not close them until #1640 content is merged and verified on main.
+- #1615 remains unique/unreviewed on a stale base. #1641 and #1269 remain unique. #1597, #1605, #1608 and #1614 retain unique portions. No bulk closures.
+- Main baseline CI run 41799856459 passed 485 core tests and 718 full-suite tests.
+- Main reports protected=true, but the branch-protection API returns HTTP 403; the visible ruleset is disabled and required review/check configuration cannot be independently read. GitHub Pages is enabled and a prior main merge triggered a Pages deployment. That side effect is not authorized for another merge.
+- No merge is permitted yet: zero approvals on both integration PRs, branch-protection requirements unverified, Pages deployment authorization unresolved, and both gates intentionally disable automatic merge. Do not bypass checks or protections.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** XRP-first mission registry, hourly read-only public collector, byte-addressed receipt contract, point-in-time feature store, research eligibility, strict forecast readiness policy and nine-platform evidence map.
+- **EXECUTED:** full repository/PR/ancestry/workflow/dependency/security audit; current code inspection; three append-only Circle/Ripple/SBI research artifacts on the existing #1643 branch; regression tests; exact-head full-suite CI.
+- **VERIFIED:** priority-1 mission wiring; #1640 code-head full suite, inclusive coverage and five-manifest audit; #1643 research-head full suite and all new artifact tests; source URL content for Circle SEC, Binance/Circle equity, OCC, SBI and FDIC records; #1640/#1643 non-overlap.
+- **NOT VERIFIED:** durable cross-run ingestion, byte-complete raw-source archives for the web research artifacts, independent timestamp anchoring, complete exchange flows/order-book depth, live nine-platform integrations, current SBI Remit XRP volume, Erebor investment closing, and out-of-sample XRP predictive performance.
+
+### Next concrete action
+
+1. Verify exact-head CI, full suite, dependency audit and fail-closed gate on the documentation-only #1640 successor created by this append.
+2. Obtain independent reviews and authorized branch-protection/ruleset verification; resolve Pages deployment authorization.
+3. When all gates are satisfied, merge #1640, verify merge commit and files on freshly fetched main, and run main CI.
+4. Reconcile #1643 against the resulting main with a non-destructive merge, never force-push, rerun its exact-head suite/gate, then merge only after its own approvals and gates pass.
+5. After main verification, close only #1642 and exact dependency PRs whose content is confirmed on main; preserve unique research work.
+6. Build durable cross-run raw-source storage and independent timestamping; extend synchronized historical XRP coverage; connect research eligibility to ingestion; run leakage-safe walk-forward tests, calibration, drift and shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
