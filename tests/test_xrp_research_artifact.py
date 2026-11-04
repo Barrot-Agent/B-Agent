@@ -61,6 +61,9 @@ def test_xrp_hypotheses_and_prediction_boundary_are_explicit() -> None:
     assert len(hypothesis_ids) == len(set(hypothesis_ids))
     assert any(item["id"] == "H7-sponsored-fees-shifts-xrp-demand" for item in data["competing_hypotheses"])
     assert any(item["id"] == "H8-institutional-privacy-mpt-not-xrp" for item in data["competing_hypotheses"])
+    assert any(item["id"] == "H9-gross-volume-distortion" for item in data["competing_hypotheses"])
+    assert any(item["id"] == "H10-custody-is-not-xrp-demand" for item in data["competing_hypotheses"])
+    assert any(item["id"] == "H11-bank-rail-adoption-throughput-unknown" for item in data["competing_hypotheses"])
 
     for hypothesis in data["competing_hypotheses"]:
         assert hypothesis["claim"]

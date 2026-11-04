@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
   "artifact_type": "xrp_ecosystem_evidence_reconciliation",
-  "captured_at_utc": "2026-11-04T01:15:00Z",
-  "data_cutoff_utc": "2026-11-04T01:15:00Z",
+  "captured_at_utc": "2026-11-04T01:20:00Z",
+  "data_cutoff_utc": "2026-11-04T01:20:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "mission": {
     "priority": "XRP intelligence and prediction-engine mastery",
@@ -320,6 +320,78 @@
       "published": "2026-10-23; vote snapshot 2026-10-17",
       "type": "amendment vote snapshot",
       "independence": "secondary; cites XRPScan"
+    },
+    {
+      "id": "crossriver_rlusd",
+      "url": "https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses",
+      "publisher": "Cross River",
+      "published": "2026-10-15",
+      "type": "bank press release",
+      "independence": "partner primary statement"
+    },
+    {
+      "id": "bitquery_rlusd_dust",
+      "url": "https://www.bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "publisher": "Bitquery",
+      "published": "2026-10-19",
+      "type": "on-chain investigation",
+      "independence": "blockchain analytics provider; wallet clustering is its analysis"
+    },
+    {
+      "id": "tokenpost_xrpl_q3_stables",
+      "url": "https://www.tokenpost.com/news/investing/45984",
+      "publisher": "TokenPost",
+      "published": "2026-11-01",
+      "type": "secondary report citing Blockworks commissioned report",
+      "independence": "secondary; underlying research commissioned by Ripple"
+    },
+    {
+      "id": "stablescool_xrpl_snapshot",
+      "url": "https://stables.cool/USD/chains/xrp-ledger",
+      "publisher": "stables.cool",
+      "observed": "2026-11-01T21:05:00Z",
+      "type": "third-party stablecoin supply snapshot",
+      "independence": "on-chain tracker"
+    },
+    {
+      "id": "xrplto_rlusd_tracker",
+      "url": "https://xrpl.to/insights/rlusd-supply-tracker",
+      "publisher": "XRPL.to",
+      "observed": "2026-11-04T01:20:00Z approx",
+      "type": "hourly on-chain tracker",
+      "independence": "third-party on-chain tracker; page directs integrations to documented API"
+    },
+    {
+      "id": "ripple_bny_custody",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple",
+      "published": "2026-10-27",
+      "type": "issuer/partner press release",
+      "independence": "joint commercial announcement"
+    },
+    {
+      "id": "ripple_sc_custody",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publisher": "Ripple",
+      "published": "2026-10-12",
+      "type": "issuer/partner press release",
+      "independence": "joint commercial announcement"
+    },
+    {
+      "id": "ripple_c2fo_instantpay",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "publisher": "Ripple",
+      "published": "2026-10-27",
+      "type": "issuer/partner press release",
+      "independence": "joint commercial announcement"
+    },
+    {
+      "id": "ripple_rntb_final_oct26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "publisher": "Ripple",
+      "published": "2026-10-26",
+      "type": "issuer press release describing OCC final approval",
+      "independence": "issuer statement; OCC final decision document not located"
     }
   ],
   "market_snapshot": {
@@ -507,11 +579,12 @@
     {
       "id": "Ripple-National-Trust-Bank",
       "class": "mixed_regulatory_and_issuer_evidence",
-      "detail": "OCC granted only preliminary conditional approval on 2025-12-12; the letter says Ripple National Trust Bank could not begin business until all pre-opening requirements were met and final approval was granted. Ripple announced on 2026-10-28 that it had received final approval on 2026-10-27. The OCC decision index captured in this run still listed the 2025 conditional approval and did not expose a separate final decision document; exact OCC final letter and actual commencement of bank operations were not independently located. Treat final approval as issuer-reported pending the OCC document.",
+      "detail": "OCC granted preliminary conditional approval on 2025-12-12. Ripple's official October 26, 2026 press release says the OCC announced final approval that day; Ripple's October 28 event release repeats that final approval was received. The separate OCC final decision document and actual commencement date were not independently located in the OCC decision index captured in this run. RNTB's approved activities are reserve management, collateral trustee and fiduciary custody; RLUSD continues to be issued by Standard Custody & Trust Company (SCTC), the NYDFS-regulated issuer. Classify final approval as Ripple-reported pending the OCC final order.",
       "evidence": [
         "occ_rntb_conditional",
         "ripple_rntb_final_claim",
-        "occ_decisions_index"
+        "occ_decisions_index",
+        "ripple_rntb_final_oct26"
       ]
     },
     {
@@ -585,6 +658,64 @@
       "evidence": [
         "xrpl_dynamicmpt_sep4",
         "xrpl_standards_index"
+      ]
+    },
+    {
+      "id": "XRPL-Q3-stablecoin-supply-and-volume",
+      "class": "secondary_report_of_issuer_commissioned_research",
+      "detail": "TokenPost reports Blockworks figures for Q3 2026: XRPL stablecoin supply rose 25.2% to $1.03B, RLUSD reached $1.01B (98.1%), and gross stablecoin transfer value reached $14.09B. The report explicitly says transfer value does not identify unique users or recurring commercial settlement. Treat these as gross network measures, not net new capital or XRP demand.",
+      "evidence": [
+        "tokenpost_xrpl_q3_stables"
+      ]
+    },
+    {
+      "id": "RLUSD-dust-cluster-and-value-concentration",
+      "class": "on_chain_analytics_investigation",
+      "detail": "Bitquery's Oct 19 investigation of Sep 19-Oct 18 found 7.821M RLUSD payments; 7.789M (99.6%) came from a 110-wallet dust cluster sending about 0.00099 RLUSD per payment to three collectors, carrying only 7,722 RLUSD. The cluster paid 495 XRP in fees for 8.6M transactions and accounted for 45.6% of all XRPL account-to-account payments during Oct 8-14. Excluding dust, 14,600 payments of at least 1 RLUSD moved $7.33B; ten senders accounted for 82%, issuer mint/redemption loops were about one fifth, and one $424M round-trip pair added gross volume without net economic transfer. Bitquery inferred a coordinated automated cluster from shared funding/destinations and timing; operator identity and motive are unknown. The cluster tapered around Oct 14-16, near Cross River's Oct 15 announcement; causality is unknown.",
+      "evidence": [
+        "bitquery_rlusd_dust",
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "id": "RLUSD-supply-snapshot-reconciliation",
+      "class": "non_synchronous_provider_snapshots",
+      "detail": "stables.cool reported total XRPL USD stablecoins of $716.8M on 2026-11-01 21:05 UTC (RLUSD $711.8M, USDC $5.0M). XRPL.to's page captured around 2026-11-04 01:20 UTC reported 855.3M RLUSD, 67,960 holders, 101,818 trust lines, top ten accounts holding 82%, and $3.2M 24h exchange volume; its page says the supply refreshes hourly but does not display an exact capture timestamp. These are non-synchronous and potentially methodologically different snapshots; do not average or infer a precise net flow without direct issuer obligations and same-time ledger queries.",
+      "evidence": [
+        "stablescool_xrpl_snapshot",
+        "xrplto_rlusd_tracker"
+      ]
+    },
+    {
+      "id": "CrossRiver-RLUSD-integration",
+      "class": "confirmed_partner_announcement",
+      "detail": "Cross River announced on 2026-10-15 that RLUSD on XRPL is integrated into its Core Operating System, with one API for business USD/RLUSD conversion, cross-border settlement, treasury movement and traditional ACH/wire/real-time rails. Cross River says availability is currently limited to certain states. No production transaction volume, active customer count or net settlement value was disclosed.",
+      "evidence": [
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "id": "StandardChartered-RLUSD-custody",
+      "class": "confirmed_partner_announcement",
+      "detail": "Standard Chartered announced RLUSD custody on XRPL is live for eligible clients through its DIFC Branch, regulated by the DFSA. It is also working with Ripple and LMAX Group on a planned RLUSD collateral integration and collateral-mirroring model; that collateral capability is not yet stated as live.",
+      "evidence": [
+        "ripple_sc_custody"
+      ]
+    },
+    {
+      "id": "BNY-XRP-RLUSD-custody",
+      "class": "confirmed_partner_announcement",
+      "detail": "Ripple announced on 2026-10-27 that BNY's Digital Asset Custody platform supports XRP and RLUSD. BNY is RLUSD's primary reserve custodian. BNY intends to enable clients to mint/redeem RLUSD directly through BNY and is exploring tokenized trade finance with Ripple and C2FO; future activities remain subject to approvals.",
+      "evidence": [
+        "ripple_bny_custody"
+      ]
+    },
+    {
+      "id": "C2FO-InstantPay",
+      "class": "announced_initiative_not_verified_throughput",
+      "detail": "C2FO and Ripple announced on 2026-10-27 that financing and settlement activity for C2FO Instant Pay will use XRPL with RLUSD settlement. C2FO's historical $520B+ working-capital access refers to its existing Early Pay programs, not Instant Pay throughput, committed capital or XRP purchases. Production launch, transaction volume, capital providers and XRP bridge use remain unknown.",
+      "evidence": [
+        "ripple_c2fo_instantpay"
       ]
     }
   ],
@@ -749,6 +880,71 @@
       "evidence": [
         "xrpl_fixcleanup_vote"
       ]
+    },
+    {
+      "from": "Cross River Bank",
+      "to": "Ripple/RLUSD",
+      "relation": "RLUSD integrated into Cross River core banking system for API-based business payments on XRPL; limited-state availability",
+      "status": "confirmed partner announcement; throughput unknown",
+      "evidence": [
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "from": "Cross River Bank",
+      "to": "X Money",
+      "relation": "Cross River separately announced it would power X Money",
+      "status": "confirmed separate relationship; no RLUSD integration established",
+      "evidence": [
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "from": "Standard Chartered",
+      "to": "RLUSD",
+      "relation": "institutional custody for RLUSD issued on XRPL live through DIFC Branch regulated by DFSA",
+      "status": "confirmed partner announcement",
+      "evidence": [
+        "ripple_sc_custody"
+      ]
+    },
+    {
+      "from": "Standard Chartered",
+      "to": "LMAX Group",
+      "relation": "planned RLUSD collateral integration and collateral-mirroring model",
+      "status": "planned; subject to approvals",
+      "evidence": [
+        "ripple_sc_custody"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple/XRP",
+      "relation": "BNY Digital Asset Custody supports XRP and RLUSD; BNY is primary RLUSD reserve custodian",
+      "status": "confirmed partner announcement",
+      "evidence": [
+        "ripple_bny_custody",
+        "ripple_rntb_final_oct26"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "C2FO",
+      "relation": "exploring tokenized trade-finance/supplier-finance initiative on XRPL",
+      "status": "exploratory; not completed product",
+      "evidence": [
+        "ripple_bny_custody",
+        "ripple_c2fo_instantpay"
+      ]
+    },
+    {
+      "from": "C2FO",
+      "to": "Ripple/RLUSD",
+      "relation": "Instant Pay financing/settlement activity intended for XRPL with RLUSD settlement",
+      "status": "announced initiative; production volume unknown",
+      "evidence": [
+        "ripple_c2fo_instantpay"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -874,11 +1070,64 @@
         "Measure MPT issuance/holders and confidential transfer usage after activation",
         "Separate MPT turnover from native XRP bridge and reserve demand"
       ]
+    },
+    {
+      "id": "H9-gross-volume-distortion",
+      "claim": "XRPL stablecoin payment counts and gross transfer volume can materially overstate independent economic activity because of dust clusters, issuer mint/redemption loops, exchange sweeps and round trips.",
+      "support": [
+        "Bitquery found 99.6% of RLUSD payment count from a 110-wallet dust cluster",
+        "Top ten senders accounted for 82% of $7.33B in non-dust payments",
+        "Issuer loops and a $424M round-trip pair inflate gross volume"
+      ],
+      "disconfirming_or_missing": [
+        "Bitquery's clustering is an analytics inference; operator motive is unknown",
+        "The $7.33B non-dust value remains substantial, but economic purpose is not fully known"
+      ],
+      "tests": [
+        "Track net rather than gross transfers",
+        "Remove dust, issuer loops and round trips",
+        "Cluster counterparties and measure concentration",
+        "Compare bank/API settlement records where public"
+      ]
+    },
+    {
+      "id": "H10-custody-is-not-xrp-demand",
+      "claim": "Institutional custody and RLUSD banking integrations increase operational access but do not automatically create proportional XRP purchases or collateral utilization.",
+      "support": [
+        "Standard Chartered custody is for RLUSD",
+        "BNY custody supports XRP and RLUSD but does not disclose balances",
+        "Cross River integration settles RLUSD, with no public XRP bridge-use data"
+      ],
+      "disconfirming_or_missing": [
+        "XRP remains required for XRPL fees/reserves and may be used in some bridge routes",
+        "No disclosed customer-level flow attribution"
+      ],
+      "tests": [
+        "Track custody balances by asset",
+        "Measure XRP reserve/fee demand and bridge legs separately",
+        "Measure institutional XRP inventory and collateral balances"
+      ]
+    },
+    {
+      "id": "H11-bank-rail-adoption-throughput-unknown",
+      "claim": "Cross River's RLUSD integration can connect stablecoin settlement with bank rails, but its real economic importance depends on production throughput, jurisdiction and active client usage.",
+      "support": [
+        "Cross River announced a live core-banking integration and one-API access",
+        "Availability is limited to certain states"
+      ],
+      "disconfirming_or_missing": [
+        "No public production volume or customer counts",
+        "No evidence X Money uses RLUSD"
+      ],
+      "tests": [
+        "Track disclosed production launch, jurisdictions, API customers and settled value",
+        "Keep Cross River's X Money relationship separate unless an RLUSD link is disclosed"
+      ]
     }
   ],
   "source_quality": {
     "primary_vs_secondary": "SEC filings and regulator releases are primary for disclosed facts; issuer product pages are primary for what the issuer says it offers, not independent proof of usage; market-data providers are single-source observations; DailyCoin/Glasp/channel directories are secondary.",
-    "independence_warning": "Coinbase press release and Coinbase 10-Q are not independent sources. Circle SEC filing and Circle product pages are not independent sources. Bitnomial product pages and Bitnomial press releases are one operator's statements.",
+    "independence_warning": "Coinbase press release and Coinbase 10-Q are not independent sources. Circle SEC filing and Circle product pages are not independent sources. Bitnomial product pages and Bitnomial press releases are one operator's statements. Bitquery's on-chain clustering is a detailed third-party analysis, but the bot label is an inference from transaction patterns; do not attribute operator identity or motive. TokenPost's Q3 stablecoin figures cite Ripple-commissioned Blockworks research. XRPL.to asks data users to use its documented API for integrations; its page snapshot is not a substitute for direct ledger reconstruction.",
     "timestamp_warning": "Market snapshots have exact provider timestamps. Event PDFs and filings have publication dates, not necessarily ingestion timestamps. Never substitute publication date for data availability time."
   },
   "predictions": {
@@ -892,9 +1141,17 @@
     "The exact Camilla Stephenson identity and complete channel inventory remain unresolved.",
     "The intended ASK Coin identity and the exact source/meaning of 'actual capital' remain unresolved.",
     "Ripple's October 28, 2026 final RNTB approval announcement was not matched to a separate final OCC decision document in the OCC index at capture; actual bank commencement date is unknown.",
-    "XRPL Sponsor and DynamicMPT current validator-vote counts were not independently retrieved; retain dated statuses and do not infer current activation."
+    "XRPL Sponsor and DynamicMPT current validator-vote counts were not independently retrieved; retain dated statuses and do not infer current activation.",
+    "XRPL stablecoin supply providers show non-synchronous snapshots: $716.8M total stablecoins on Nov 1 versus 855.3M RLUSD on XRPL.to around Nov 4; exact net flows require direct same-time ledger/issuer-obligation reconstruction.",
+    "Bitquery's RLUSD dust cluster classification is based on public ledger patterns; wallet operator identity and motive remain unknown.",
+    "Cross River, Standard Chartered, BNY and C2FO announced institutional integrations, but public production throughput and XRP-specific flow attribution are not disclosed."
   ],
   "next_actions": [
+    "Reconstruct RLUSD and USDC supply from issuer obligations on the validated XRPL ledger at fixed hourly/daily cutoffs; reconcile stables.cool and XRPL.to snapshots without averaging.",
+    "Build robust stablecoin activity features: dust ratio, unique senders/receivers, concentration, issuer mint/redemption, exchange-tagged deposits, round-trip cycles, net flows and fee cost.",
+    "Track Cross River's RLUSD production volumes and state availability; keep its X Money partnership separate absent a direct RLUSD statement.",
+    "Track BNY XRP/RLUSD custody balances, Standard Chartered RLUSD custody and planned LMAX collateral integration separately by asset and status.",
+    "Track C2FO Instant Pay launch, capital providers and realized invoice settlement; do not use C2FO's historical Early Pay total as Instant Pay capital.",
     "Recheck fixCleanup3_4_0 after its scheduled 2026-11-04 14:46 UTC activation window and verify the on-ledger EnableAmendment record.",
     "Recheck Sponsor, ConfidentialTransfer, DynamicMPT, SingleAssetVault and LendingProtocol directly from the validated Amendments ledger object; record the exact ledger index, voting ledger, majority-start timestamp and activation ledger.",
     "Obtain OCC's final Ripple National Trust Bank decision letter and commencement status; reconcile Ripple's 2026-10-28 issuer announcement with regulator records.",
