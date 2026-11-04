@@ -1,0 +1,351 @@
+{
+  "artifact_type": "xrp_live_market_and_event_update",
+  "captured_at_utc": "2026-11-04T06:59:09Z",
+  "data_cutoff_utc": "2026-11-04T06:59:09Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "18da9c9981c744c2cf91bb936ecfddce96d3236d"
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "hypothesis_id_namespace": "20261104T065909Z",
+  "source_registry": [
+    {
+      "id": "coinmarketcap_xrp_20261104",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "publisher": "CoinMarketCap",
+      "observed_at_utc": null,
+      "captured_at_utc": "2026-11-04T06:59:09Z",
+      "type": "rendered aggregate market page",
+      "independence": "single aggregator",
+      "limitations": [
+        "Displayed $1.28 quote and 24-hour metrics without exact quote timestamp.",
+        "Not eligible for strict point-in-time short-horizon modeling."
+      ]
+    },
+    {
+      "id": "kodexius_xrp_perps_20261104_0019z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "publisher": "Kodexius",
+      "observed_at_utc": "2026-11-04T00:19:00Z",
+      "type": "aggregated perpetual market-data page",
+      "independence": "single provider aggregation",
+      "limitations": [
+        "Seven contracts across five venues; not full exchange universe.",
+        "Not exchange-native raw data.",
+        "Approximately 6h40 old at capture; not suitable for short-horizon features without refresh."
+      ]
+    },
+    {
+      "id": "xrp_insights_etf_20261104",
+      "url": "https://xrp-insights.com/data",
+      "publisher": "XRP Insights",
+      "observed_at_utc": "2026-11-04T06:59:09Z",
+      "type": "issuer-holdings-derived ETF tracker",
+      "independence": "secondary tracker using issuer holdings pages",
+      "limitations": [
+        "Six spot funds plus BITW XRP sleeve.",
+        "Nov 3 row provisional until re-settled.",
+        "Not comparable with trackers using ten funds or different indirect holdings."
+      ]
+    },
+    {
+      "id": "corpstacking_xrp_funds_20261103",
+      "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "publisher": "CorpStacking",
+      "observed_at_utc": "2026-11-03",
+      "type": "fund holdings aggregation",
+      "independence": "secondary aggregation",
+      "limitations": [
+        "Reports ten funds and 1.415B XRP as of Nov 3, but displayed fund rows have mixed observation dates.",
+        "Direct/indirect holdings require issuer-level reconciliation."
+      ]
+    },
+    {
+      "id": "cryptoetf_today_xrp_20261103",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "publisher": "Crypto ETF Today",
+      "observed_at_utc": "2026-11-03",
+      "type": "ETF holdings/flows dashboard",
+      "independence": "secondary aggregation",
+      "limitations": [
+        "Reports 1.1419B XRP held as of Nov 3; exact fund universe requires reconciliation."
+      ]
+    },
+    {
+      "id": "binance_official_incident_20261103",
+      "url": "https://www.binance.com/en/square/post/384336744180903",
+      "publisher": "Binance",
+      "observed_at_utc": "2026-11-03",
+      "type": "official security incident update",
+      "independence": "issuer statement",
+      "limitations": [
+        "Binance reported 98% of affected token assets restored as of Oct 31.",
+        "Denominator and asset-level breakdown not reconciled with later Reuters 95% statement."
+      ]
+    },
+    {
+      "id": "reuters_binance_replenishment_20261103",
+      "url": "https://www.reuters.com/world/asia-pacific/binance-co-ceo-says-company-is-very-strong-financial-health-after-63-billion-2026-11-03/",
+      "publisher": "Reuters",
+      "observed_at_utc": "2026-11-03",
+      "type": "independent reporting of Binance co-CEO remarks",
+      "independence": "independent news reporting",
+      "limitations": [
+        "Reports 95% replenished on Nov 3; denominator and exact asset scope not supplied in reviewed report."
+      ]
+    },
+    {
+      "id": "circle_q3_event_20261104",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "observed_at_utc": "2026-11-04",
+      "type": "official investor-relations event listing",
+      "independence": "primary issuer source",
+      "limitations": [
+        "Confirms scheduled webcast only; results not yet available at this cutoff."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup_20261104",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "publisher": "XRPLWin",
+      "observed_at_utc": "2026-11-04",
+      "type": "third-party amendment tracker",
+      "independence": "third-party explorer",
+      "limitations": [
+        "Last surfaced tracker snapshot reports 33/35 and earliest conditional activation at 14:46:22 UTC.",
+        "Actual activation requires validated ledger and EnabledAmendments verification."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "xrp_spot": {
+      "provider": "CoinMarketCap",
+      "value_usd": 1.28,
+      "change_24h_pct": 3.41,
+      "market_cap_usd": 81120000000,
+      "volume_24h_usd": 1790000000,
+      "quote_timestamp_utc": null,
+      "source_id": "coinmarketcap_xrp_20261104",
+      "model_eligible": false,
+      "reason": "No exact quote timestamp in the captured result."
+    },
+    "derivatives": {
+      "provider": "Kodexius",
+      "as_of_utc": "2026-11-04T00:19:00Z",
+      "open_interest_usd": 860790000,
+      "contract_count": 7,
+      "venue_count": 5,
+      "funding_pct_per_8h": 0.01,
+      "volume_24h_usd": 1210000000,
+      "exchange_open_interest_share_pct": {
+        "Binance": 54,
+        "Bybit": 18.4,
+        "Hyperliquid": 12.2,
+        "OKX": 12.1,
+        "HTX": 3.3
+      },
+      "model_eligible": false,
+      "reason": "Single-provider aggregate and stale for short-horizon modeling at 06:59Z."
+    },
+    "etf_observations": [
+      {
+        "source_id": "xrp_insights_etf_20261104",
+        "fund_universe": "6 US spot funds plus BITW XRP sleeve",
+        "xrp_held_approx": 1200000000,
+        "as_of_date": "2026-11-02",
+        "nov_3_status": "provisional_until_resettled",
+        "model_eligible": false
+      },
+      {
+        "source_id": "corpstacking_xrp_funds_20261103",
+        "fund_universe": "10 funds",
+        "xrp_held": 1415102062,
+        "as_of_date": "2026-11-03",
+        "holdings_rows_have_mixed_dates": true,
+        "model_eligible": false
+      },
+      {
+        "source_id": "cryptoetf_today_xrp_20261103",
+        "fund_universe": "provider scope requires reconciliation",
+        "xrp_held": 1141947909,
+        "as_of_date": "2026-11-03",
+        "model_eligible": false
+      }
+    ],
+    "binance_replenishment": [
+      {
+        "source_id": "binance_official_incident_20261103",
+        "reported_pct": 98,
+        "as_of_date": "2026-10-31",
+        "scope": "affected token assets restored",
+        "denominator_reconciled": false
+      },
+      {
+        "source_id": "reuters_binance_replenishment_20261103",
+        "reported_pct": 95,
+        "as_of_date": "2026-11-03",
+        "scope": "affected tokens replenished as described by co-CEO; denominator not specified",
+        "denominator_reconciled": false
+      }
+    ],
+    "upcoming_events": [
+      {
+        "id": "circle_q3_2026_results",
+        "scheduled_at_utc": "2026-11-04T13:00:00Z",
+        "status_at_cutoff": "future_scheduled_event",
+        "source_id": "circle_q3_event_20261104"
+      },
+      {
+        "id": "xrpl_fixCleanup3_4_0_earliest_activation",
+        "scheduled_at_utc": "2026-11-04T14:46:22Z",
+        "status_at_cutoff": "future_scheduled_event",
+        "conditional": true,
+        "reported_validator_support": "33/35",
+        "source_id": "xrplwin_fixcleanup_20261104"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "id": "OBS-XRP-SPOT-20261104-01",
+      "classification": "provider_reported_quote_without_exact_timestamp",
+      "claim": "CoinMarketCap displayed XRP at $1.28, +3.41% over 24 hours, approximately $81.12B market capitalization and $1.79B 24-hour volume.",
+      "evidence": [
+        "coinmarketcap_xrp_20261104"
+      ],
+      "disconfirming_or_limiting": [
+        "Exact quote timestamp is not exposed.",
+        "Do not use as a strict point-in-time feature."
+      ]
+    },
+    {
+      "id": "OBS-XRP-OI-20261104-01",
+      "classification": "single_provider_derivatives_snapshot",
+      "claim": "Kodexius reported $860.79M XRP perpetual open interest across seven contracts, +0.0100% funding per eight hours and $1.21B 24-hour volume as of 00:19 UTC.",
+      "evidence": [
+        "kodexius_xrp_perps_20261104_0019z"
+      ],
+      "disconfirming_or_limiting": [
+        "Contract and venue coverage differs from other aggregators.",
+        "Snapshot is stale for short-horizon modeling."
+      ]
+    },
+    {
+      "id": "OBS-XRP-ETF-20261104-01",
+      "classification": "non_comparable_fund_universe_disagreement",
+      "claim": "Three trackers display materially different XRP fund holdings because they use different fund universes, dates and indirect-holding treatment; XRP Insights also marks Nov 3 provisional.",
+      "evidence": [
+        "xrp_insights_etf_20261104",
+        "corpstacking_xrp_funds_20261103",
+        "cryptoetf_today_xrp_20261103"
+      ],
+      "disconfirming_or_limiting": [
+        "Issuer-level holdings and NAV files have not been reconstructed at one common close.",
+        "Do not average these totals."
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-REPLENISHMENT-20261104-01",
+      "classification": "issuer_and_press_report_scope_disagreement",
+      "claim": "Binance's Nov 3 official update says 98% of affected token assets had been restored as of Oct 31, while Reuters reported the co-CEO saying 95% had been replenished on Nov 3.",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "reuters_binance_replenishment_20261103"
+      ],
+      "disconfirming_or_limiting": [
+        "Dates differ.",
+        "Denominators or asset scopes may differ.",
+        "Do not infer recovery regressed from 98% to 95%."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-20261104-01",
+      "classification": "confirmed_scheduled_event",
+      "claim": "Circle's Q3 2026 results webcast is scheduled for Nov 4 at 08:00 ET / 13:00 UTC.",
+      "evidence": [
+        "circle_q3_event_20261104"
+      ],
+      "disconfirming_or_limiting": [
+        "At 06:59 UTC the event had not occurred; no results or guidance are inferred."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "five Binance hot wallets transferred approximately 233.46M XRP during the Oct 29 security incident",
+      "status": "officially_reported_and_public_ledger_correlated",
+      "evidence": [
+        "binance_official_incident_20261103"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261104T065909Z::H1-binance-replenishment-scope-difference",
+      "claim": "The 98% and 95% replenishment reports reflect different dates or denominators rather than a true reversal.",
+      "support": [
+        "Binance specifies 98% as of Oct 31.",
+        "Reuters reports 95% on Nov 3 without the denominator."
+      ],
+      "disconfirming_or_missing": [
+        "No common asset-level denominator or reconciled schedule is public in reviewed sources."
+      ],
+      "test": "Obtain Binance post-mortem and asset-level replenishment table; compare a fixed token universe and valuation timestamp."
+    },
+    {
+      "id": "20261104T065909Z::H2-etf-holdings-scope-difference",
+      "claim": "ETF holdings disagreement is primarily driven by fund universe, mixed dates and indirect-holding treatment.",
+      "support": [
+        "XRP Insights tracks six spot funds plus BITW.",
+        "CorpStacking reports ten funds with mixed dates.",
+        "Crypto ETF Today displays a third total."
+      ],
+      "disconfirming_or_missing": [
+        "No same-close issuer-level reconstruction has been completed."
+      ],
+      "test": "Rebuild daily holdings from issuer files at one common US market close; classify direct, indirect and stale holdings."
+    },
+    {
+      "id": "20261104T065909Z::H3-derivatives-aggregator-not-direction",
+      "claim": "Positive funding and large open interest are insufficient to infer XRP direction.",
+      "support": [
+        "Kodexius reports +0.0100% funding and $860.79M OI across seven contracts."
+      ],
+      "disconfirming_or_missing": [
+        "No synchronized exchange-native order-book, basis and liquidation panel is available in this snapshot."
+      ],
+      "test": "Compare exchange-native funding, OI, basis and liquidation series with spot depth and taker imbalance using point-in-time joins."
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average market snapshots, ETF holdings or incident-replenishment percentages with different timestamps, scopes, units or denominators.",
+    "model_eligibility": "The displayed quote, Kodexius aggregate, ETF totals and XRPLWin amendment status are research observations only; none is approved as a short-horizon model feature.",
+    "binance_replenishment": "98% as of Oct 31 and 95% reported Nov 3 are preserved separately; no regression or recovery conclusion is drawn.",
+    "event_clock": "Circle Q3 webcast and fixCleanup3_4_0 earliest activation are future events at the 06:59:09Z cutoff."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "Historical feature population, exchange-native reconciliation, baseline walk-forward evaluation and calibration remain incomplete."
+  },
+  "blockers": [
+    "No synchronized exchange-native XRP spot/perpetual history.",
+    "ETF issuer holdings need same-close reconstruction.",
+    "Binance replenishment percentages lack a common denominator.",
+    "fixCleanup3_4_0 actual activation is not yet due and not verified from ledger state.",
+    "Circle Q3 results not yet released at cutoff."
+  ],
+  "next_actions": [
+    "Review Circle Q3 release, 10-Q and webcast after 13:00 UTC; distinguish reserve income, distribution costs, USDC circulation and payments throughput.",
+    "Verify fixCleanup3_4_0 from validated ledger state and EnabledAmendments after its conditional activation window.",
+    "Reconstruct ETF holdings from issuer files at a common close.",
+    "Reconcile Binance post-mortem asset-level recovery and original XRP wallet movements.",
+    "Populate historical spot, derivatives, collateral, stablecoin, macro and event features before walk-forward evaluation."
+  ]
+}

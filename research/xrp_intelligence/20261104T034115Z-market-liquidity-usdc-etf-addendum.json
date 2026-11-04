@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_market_liquidity_usdc_etf_addendum",
+  "captured_at_utc": "2026-11-04T03:41:15Z",
+  "data_cutoff_utc": "2026-11-04T03:41:15Z",
+  "repository_state": {
+    "inspected_main_sha": "d89cc363812a9a9d04d076d6ef5a09f7cf736285",
+    "research_pr_head_before_addendum": "10ed693164ef7cb7ba80092e72851dc270475d2a",
+    "main_advanced_by_one_generated_cross_analysis_commit": true,
+    "changed_path_overlap_with_main_advance": false
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "coinmarketcap_xrp_dynamic_20261104_0341z",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "publisher": "CoinMarketCap",
+      "retrieved_at_utc": "2026-11-04T03:41:15Z",
+      "provider_timestamp_utc": null,
+      "type": "dynamic aggregate spot-market page",
+      "independence": "single secondary market-data aggregator",
+      "limitations": [
+        "The page did not expose an exact provider quote timestamp at retrieval.",
+        "Price, market capitalization, volume and supply are dynamic aggregate fields, not an exchange-native snapshot.",
+        "Captured for context only; excluded from strict historical model features until a timestamped raw feed is acquired."
+      ]
+    },
+    {
+      "id": "bykaranteli_xrp_etf_20261103_0909z",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "publisher": "ByKaranteli",
+      "published_or_as_of": "2026-11-03T09:09:00Z",
+      "type": "secondary US spot XRP ETF flow aggregation",
+      "independence": "secondary tracker using issuer-published holdings",
+      "limitations": [
+        "Reports a November 2 net outflow of approximately USD 530,000, cumulative net inflows of approximately USD 1.81 billion and net assets of approximately USD 1.42 billion.",
+        "The page says six spot funds, while the visible table at capture listed five ticker rows; fund-universe completeness is unresolved.",
+        "November 2 figures are described as provisional until settled."
+      ]
+    },
+    {
+      "id": "cryptokeyhole_xrp_etf_20261103_0518z",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "publisher": "CryptoKeyhole",
+      "published_or_as_of": "2026-11-03T05:18:00Z",
+      "type": "issuer-file-based ETF holdings and flow tracker",
+      "independence": "secondary tracker reading issuer files",
+      "limitations": [
+        "Its displayed universe contains four funds, not the same universe as ByKaranteli.",
+        "Reports October 30 net flow of -1,123,743 XRP, approximately -USD 1.4 million, and 1,076,819,240 XRP held by those four funds.",
+        "November 2 is partial at three of four funds; the tracker explicitly waits for the missing issuer file."
+      ]
+    },
+    {
+      "id": "kodexius_xrp_perps_20261103_1754z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "publisher": "Kodexius",
+      "published_or_as_of": "2026-11-03T17:54:00Z",
+      "type": "aggregated XRP perpetual market-data page",
+      "independence": "single provider aggregation",
+      "limitations": [
+        "Reports seven contract instruments; this is not necessarily the same universe as other providers' seven-exchange aggregates.",
+        "Not an exchange-native raw-data export.",
+        "Do not average with TradRadar or other providers without matching contract, venue, timestamp and methodology."
+      ]
+    },
+    {
+      "id": "circle_transparency_usdc_20261029",
+      "url": "https://www.circle.com/transparency",
+      "publisher": "Circle Internet Group",
+      "published_or_as_of": "2026-10-29",
+      "type": "official issuer reserve and circulation disclosure",
+      "independence": "primary issuer disclosure",
+      "limitations": [
+        "Reports global USDC circulation and reserves across supported chains; it is not an XRPL-only supply measure.",
+        "Aggregate issuance and redemption totals are not XRP purchases, XRP bridge volume or net risk capital.",
+        "Issuer-reported reserve/circulation disclosure; chain-specific balances require separate ledger reconciliation."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_event_20261007",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "publisher": "Circle Investor Relations",
+      "published_or_as_of": "2026-10-07",
+      "type": "official earnings-event announcement",
+      "independence": "primary issuer event source",
+      "limitations": [
+        "Confirms a scheduled November 4, 2026 webcast at 08:00 ET / 13:00 UTC only.",
+        "At this artifact cutoff the event is still in the future; Q3 results, guidance and management commentary are not yet available."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "xrp_spot_aggregate": {
+      "provider": "CoinMarketCap",
+      "retrieved_at_utc": "2026-11-04T03:41:15Z",
+      "provider_timestamp_utc": null,
+      "price_usd": 1.28,
+      "change_24h_pct": 3.41,
+      "market_cap_usd": 81122952802,
+      "volume_24h_usd": 1798321517,
+      "circulating_supply_xrp": 63351197653,
+      "model_eligible": false,
+      "exclusion_reason": "No exact provider quote timestamp or raw exchange constituent set exposed."
+    },
+    "derivatives": [
+      {
+        "source_id": "kodexius_xrp_perps_20261103_1754z",
+        "as_of_utc": "2026-11-03T17:54:00Z",
+        "open_interest_usd": 876570000,
+        "contracts_count": 7,
+        "funding_pct_per_8h": 0.01,
+        "volume_24h_usd": 1350000000,
+        "exchange_open_interest_share_pct": {
+          "Binance": 54.1,
+          "Bybit": 18.5,
+          "Hyperliquid": 12.1,
+          "OKX": 12,
+          "HTX": 3.3
+        },
+        "model_eligible": false,
+        "exclusion_reason": "Single provider aggregate; contract/venue universe and raw exchange snapshots are not independently reconciled."
+      }
+    ],
+    "etf_flows": [
+      {
+        "source_id": "bykaranteli_xrp_etf_20261103_0909z",
+        "observation_date": "2026-11-02",
+        "net_flow_usd": -530000,
+        "cumulative_net_inflow_usd": 1810000000,
+        "net_assets_usd": 1420000000,
+        "status": "provisional",
+        "fund_scope": "Page states six US spot ETFs; visible table listed five ticker rows at capture."
+      },
+      {
+        "source_id": "cryptokeyhole_xrp_etf_20261103_0518z",
+        "observation_date": "2026-10-30",
+        "net_flow_xrp": -1123743,
+        "net_flow_usd": -1400000,
+        "xrp_held": 1076819240,
+        "fund_scope": "Four funds",
+        "status": "reported_complete_day",
+        "later_day_status": "November 2 partial, three of four funds"
+      }
+    ],
+    "circle_usdc": {
+      "source_id": "circle_transparency_usdc_20261029",
+      "as_of_date": "2026-10-29",
+      "circulation_usd": 70000000000,
+      "total_reserves_usd": 71400000000,
+      "issued_7d_usd": 10900000000,
+      "redeemed_7d_usd": 11700000000,
+      "net_change_7d_usd": -800000000,
+      "issued_30d_usd": 47900000000,
+      "redeemed_30d_usd": 51000000000,
+      "net_change_30d_usd": -3100000000,
+      "issued_365d_usd": 362100000000,
+      "redeemed_365d_usd": 367200000000,
+      "net_change_365d_usd": -5000000000,
+      "scope": "Global USDC circulation across supported chains, not XRPL-specific."
+    },
+    "upcoming_events": [
+      {
+        "source_id": "circle_q3_2026_event_20261007",
+        "event": "Circle Q3 2026 results webcast",
+        "scheduled_at_utc": "2026-11-04T13:00:00Z",
+        "status_at_cutoff": "future_scheduled_event"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "id": "OBS-CMC-XRP-20261104-01",
+      "classification": "dynamic_provider_snapshot_not_model_eligible",
+      "claim": "CoinMarketCap displayed XRP at USD 1.28, market capitalization USD 81.12 billion and 24-hour volume USD 1.798 billion at retrieval.",
+      "evidence": [
+        "coinmarketcap_xrp_dynamic_20261104_0341z"
+      ],
+      "limitations": [
+        "Exact provider quote timestamp unavailable; aggregate constituent methodology not reconstructed."
+      ]
+    },
+    {
+      "id": "OBS-ETF-BYK-20261104-01",
+      "classification": "secondary_tracker_provisional_flow",
+      "claim": "ByKaranteli reported approximately USD 530,000 net outflow on November 2, cumulative net inflows around USD 1.81 billion and net assets around USD 1.42 billion.",
+      "evidence": [
+        "bykaranteli_xrp_etf_20261103_0909z"
+      ],
+      "limitations": [
+        "Fund-count discrepancy: six spot funds stated but five visible ticker rows; provisional daily flow."
+      ]
+    },
+    {
+      "id": "OBS-ETF-CKH-20261104-01",
+      "classification": "secondary_tracker_partial_universe",
+      "claim": "CryptoKeyhole's four-fund series reported -1,123,743 XRP on October 30 and only three of four fund files for November 2 at its latest capture.",
+      "evidence": [
+        "cryptokeyhole_xrp_etf_20261103_0518z"
+      ],
+      "limitations": [
+        "Different fund universe and unit basis from ByKaranteli; do not combine or average."
+      ]
+    },
+    {
+      "id": "OBS-KODEX-OI-20261104-01",
+      "classification": "single_provider_derivatives_snapshot",
+      "claim": "Kodexius reported USD 876.57 million XRP perpetual open interest across seven contracts, 0.0100% funding per eight hours and USD 1.35 billion 24-hour volume.",
+      "evidence": [
+        "kodexius_xrp_perps_20261103_1754z"
+      ],
+      "limitations": [
+        "Contract universe differs from other providers; positive funding and OI do not determine price direction."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-USDC-20261104-01",
+      "classification": "confirmed_issuer_disclosure",
+      "claim": "Circle's October 29 transparency page reported USD 70.0 billion USDC circulation, USD 71.4 billion reserves, and net circulation reductions of USD 0.8 billion over seven days and USD 3.1 billion over 30 days.",
+      "evidence": [
+        "circle_transparency_usdc_20261029"
+      ],
+      "limitations": [
+        "Global all-chain USDC data; not an XRPL supply change, XRP capital flow or causal XRP signal."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-20261104-01",
+      "classification": "confirmed_scheduled_event",
+      "claim": "Circle's Q3 2026 results webcast is scheduled for November 4 at 08:00 ET / 13:00 UTC, which is after this cutoff.",
+      "evidence": [
+        "circle_q3_2026_event_20261007"
+      ],
+      "limitations": [
+        "Results and guidance were not yet available at this cutoff."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Circle Internet Group",
+      "to": "USDC",
+      "relation": "issues_and_redeems",
+      "status": "confirmed_fact",
+      "evidence": [
+        "circle_transparency_usdc_20261029"
+      ],
+      "scope": "Issuer-level global circulation and reserve disclosure."
+    },
+    {
+      "from": "US spot XRP ETF issuers",
+      "to": "XRP",
+      "relation": "reported_fund_holdings_and_creation_redemption_flows",
+      "status": "sourced_claim_with_scope_disagreement",
+      "evidence": [
+        "bykaranteli_xrp_etf_20261103_0909z",
+        "cryptokeyhole_xrp_etf_20261103_0518z"
+      ],
+      "scope": "Different fund universes, observation dates and completeness states."
+    },
+    {
+      "from": "XRP perpetual venues",
+      "to": "XRP derivatives market",
+      "relation": "open_interest_and_funding",
+      "status": "single_provider_observation",
+      "evidence": [
+        "kodexius_xrp_perps_20261103_1754z"
+      ],
+      "scope": "Seven contracts in one provider's aggregate."
+    },
+    {
+      "from": "Global USDC circulation",
+      "to": "XRP market liquidity",
+      "relation": "possible_cross_asset_dollar_liquidity_channel",
+      "status": "hypothesis_not_established",
+      "evidence": [
+        "circle_transparency_usdc_20261029",
+        "coinmarketcap_xrp_dynamic_20261104_0341z"
+      ],
+      "scope": "No causal relationship or XRPL-specific transmission is established."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261104T034115Z::H14-usdc-contraction-cross-asset-risk",
+      "claim": "Global USDC circulation contraction may coincide with reduced dollar liquidity or risk appetite and could correlate with XRP market depth.",
+      "support": [
+        "circle_transparency_usdc_20261029"
+      ],
+      "disconfirming_or_missing": [
+        "No XRPL-only USDC supply or redemption route data in this snapshot.",
+        "No matched historical XRP returns, market depth or control assets were tested."
+      ],
+      "test": "Reconstruct daily USDC supply by chain and issuer, XRP order-book depth and cross-asset returns; test lagged relationships controlling for BTC, rates, USD and market-wide crypto flows."
+    },
+    {
+      "id": "20261104T034115Z::H15-etf-outflow-noise",
+      "claim": "The reported November 2 USD 530,000 outflow may be immaterial noise relative to cumulative inflows rather than a regime change.",
+      "support": [
+        "bykaranteli_xrp_etf_20261103_0909z"
+      ],
+      "disconfirming_or_missing": [
+        "Other tracker universes report different dates and units; issuer-level complete files not reconciled."
+      ],
+      "test": "Rebuild daily XRP-unit holdings from every issuer file on a common fund universe and calculate rolling net flows, AUM-adjusted flows and persistence."
+    },
+    {
+      "id": "20261104T034115Z::H16-derivatives-leverage-amplifies-not-directions",
+      "claim": "Perpetual open interest and positive funding may amplify short-term volatility but do not independently establish a bullish forecast.",
+      "support": [
+        "kodexius_xrp_perps_20261103_1754z"
+      ],
+      "disconfirming_or_missing": [
+        "No same-cutoff spot depth, options skew, liquidation ladder or exchange-native position data in this observation."
+      ],
+      "test": "Join exchange-native OI, funding, basis, liquidations and spot depth at synchronized intervals; test volatility and direction separately."
+    },
+    {
+      "id": "20261104T034115Z::H17-provider-universe-explains-dispersion",
+      "claim": "Differences in ETF flow and derivatives OI totals may be driven primarily by incompatible fund/contract universes and timestamps rather than bad arithmetic.",
+      "support": [
+        "bykaranteli_xrp_etf_20261103_0909z",
+        "cryptokeyhole_xrp_etf_20261103_0518z",
+        "kodexius_xrp_perps_20261103_1754z"
+      ],
+      "disconfirming_or_missing": [
+        "No common raw constituent dataset has been assembled to test this explanation."
+      ],
+      "test": "Normalize provider constituents, identifiers, contract multipliers, fund coverage and timestamps; compare only matched intersections and preserve unmatched residuals."
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average ETF flows or derivatives open interest across providers unless date, unit, fund/contract universe, venue coverage and methodology match.",
+    "quarantined_or_ineligible": [
+      "coinmarketcap_xrp_dynamic_20261104_0341z: no exact provider timestamp; context only, not model eligible.",
+      "bykaranteli_xrp_etf_20261103_0909z: provisional November 2 row and visible fund-count discrepancy.",
+      "cryptokeyhole_xrp_etf_20261103_0518z: four-fund universe and partial November 2 coverage.",
+      "kodexius_xrp_perps_20261103_1754z: provider-specific seven-contract universe, not exchange-native."
+    ],
+    "circle_scope_warning": "Circle's USD 70.0B circulation figure is global USDC, not XRPL-only supply or XRP capital flow."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "No synchronized point-in-time spot, derivatives, ETF, stablecoin and macro feature panel or walk-forward baseline evidence is available. This addendum records observations only."
+  },
+  "next_actions": [
+    "After 2026-11-04 13:00 UTC, retrieve Circle's official Q3 release, SEC filing, webcast transcript and guidance; compare with the October 29 USDC baseline.",
+    "Rebuild ETF flows from issuer holdings files on one fixed fund universe and common UTC cutoff.",
+    "Acquire exchange-native XRP perpetual OI/funding snapshots with contract identifiers and synchronized timestamps.",
+    "Reconcile USDC and RLUSD supply by XRPL issuer/contract/ledger; separate gross transfers, mints, burns, redemption and net external flows.",
+    "Keep the local SQLite feature-store prototype unpopulated until adapters and source registry checks are implemented."
+  ],
+  "hypothesis_id_namespace": "20261104T034115Z"
+}
