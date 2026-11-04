@@ -69,7 +69,7 @@ jobs:
           HF_SPACE: ${{ steps.hf_space.outcome }}
           LEGACY: ${{ steps.legacy.outcome }}
         run: |
-          printf 'main/dev=%s supplemental=%s hf_space=%s legacy=%s\\n' "$MAIN_DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY"
+          printf 'main/dev=%s supplemental=%s hf_space=%s legacy=%s\n' "$MAIN_DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY"
           if [ "$MAIN_DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ]; then
             exit 1
           fi
