@@ -1009,3 +1009,41 @@ def test_circle_sec_and_ripple_occ_primary_source_correction_preserves_measure_s
         assert set(item["evidence"]) <= source_ids
     for edge in data["relationship_graph"]:
         assert set(edge["evidence"]) <= source_ids
+
+
+CIRCLE_BINANCE_8K_CLOSE_VERIFICATION = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T230818Z-binance-circle-private-placement-close-verification.json"
+)
+
+
+def test_binance_circle_private_placement_is_verified_actual_equity_not_xrp_flow() -> None:
+    data = json.loads(CIRCLE_BINANCE_8K_CLOSE_VERIFICATION.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "circle_binance_actual_equity_capital_and_usdc_commercial_agreement_verification"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == 3
+    sec = sources["sec_circle_binance_private_placement_8k"]
+    assert "/000187604226000276/crcl-20260917.htm" in sec["url"]
+    assert sec["raw_content_sha256"] is None
+    assert sec["model_eligible"] is False
+    capital = data["capital_flow"]
+    assert capital["shares_issued"] == 1237011
+    assert capital["price_per_share_usd"] == 80.84
+    assert capital["gross_proceeds_usd"] == 100000000
+    assert capital["event_date"] == "2026-09-17"
+    assert capital["closing_status"] == "CLOSED_PER_CIRCLE_FORM_8K"
+    assert capital["reciprocal_commercial_arrangement"]["term_years"] == 5
+    assert "monthly incentive fee" in capital["reciprocal_commercial_arrangement"]["circle_payment_to_binance"]
+    assert capital["xrp_implication"] == "NONE_ESTABLISHED"
+    assert data["correction_overlay"]["prior_artifact_modified"] is False
+    assert data["predictions"]["issued"] is False
+    assert data["data_quality"]["model_eligible"] is False
+    assert all(item["model_eligible"] is False for item in sources.values())
+    source_ids = set(sources)
+    for item in data["findings"]:
+        assert set(item["evidence"]) <= source_ids
+    for edge in data["relationship_graph"]:
+        assert set(edge["evidence"]) <= source_ids
