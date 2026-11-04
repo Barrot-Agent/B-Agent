@@ -1,0 +1,513 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp-evernorth-cantor-equity-line-and-etf-flow-quality-20261103",
+  "captured_at_utc": "2026-11-03T13:18:21Z",
+  "data_cutoff_utc": "2026-11-03T13:18:21Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "6f0a4c34d21c6aa20c344b4b4107d2f59f7b29a1",
+  "topic": "Evernorth/Cantor committed equity facility: conditional XRP capital capacity, share dilution, prospectus arithmetic reconciliation, and incomplete XRP ETF flow coverage",
+  "status": {
+    "research": "EXECUTED",
+    "source_retrieval": "VERIFIED_FOR_LISTED_DOCUMENTS",
+    "arithmetic_reconciliation": "EXECUTED_WITH_INTERNAL_FILING_DISCREPANCY",
+    "facility_commencement": "NOT_VERIFIED",
+    "facility_drawdown": "NOT_VERIFIED",
+    "incremental_xrp_acquisition": "NOT_VERIFIED",
+    "etf_flow_coverage": "PARTIAL_AND_NONCOMPARABLE",
+    "predictive_validation": "NOT_ESTABLISHED",
+    "forecast": "NOT_ISSUED"
+  },
+  "summary": [
+    "Evernorth's October 30 2026 SEC 424B3 describes a conditional committed equity facility with CF Principal Investments LLC (Cantor), allowing Evernorth at its option to issue and sell up to 5,218,935 new Class A shares after the Commencement Date.",
+    "The filing says a substantial portion of proceeds is expected to fund additional XRP acquisition, but proceeds are not ring-fenced and may also fund working capital and other general corporate/XRP-ecosystem purposes.",
+    "The facility is potential financing capacity, not actual capital received and not proof of XRP spot purchases. No facility drawdown or incremental XRP purchase was verified in the documents reviewed.",
+    "The prospectus contains an arithmetic inconsistency: at the stated October 29 reference price of $14.71, 5,218,935 shares at 97% of price calculate to approximately $74.467M, while the narrative cites $76.8M gross and $74.4M net; the table's $14.71 row also shows $76.8M despite a footnote saying the 97% purchase price is used.",
+    "The $74.4M narrative net estimate is not reconciled to the disclosed $521,893.50 Cantor commitment fee, $200,000 StoneX qualified-independent-underwriter fee, and reimbursable expenses. This is flagged as an internal disclosure/arithmetic reconciliation issue, not evidence of misconduct.",
+    "November 2 XRP ETF flow readings are incomplete and use different fund universes: CryptoETF reports -$0.5M across 3 of 5 spot funds, while XRP Insights reports -32,825 XRP across 6 spot funds plus BITW and labels the row provisional. Neither is admitted as a final whole-market flow feature."
+  ],
+  "timeline": [
+    {
+      "date": "2026-10-23",
+      "event": "Evernorth and Cantor enter the common-stock purchase agreement for a conditional equity facility."
+    },
+    {
+      "date": "2026-10-29",
+      "event": "Evernorth prospectus uses $14.71 as the Class A reference closing price."
+    },
+    {
+      "date": "2026-10-30",
+      "event": "Evernorth files the final 424B3 prospectus for up to 5,218,935 Class A shares."
+    },
+    {
+      "date": "2026-11-03",
+      "event": "T+1 aggregators publish incomplete/provisional November 2 XRP ETF flow observations."
+    }
+  ],
+  "facility": {
+    "issuer": "Evernorth Holdings Inc.",
+    "counterparty": "CF Principal Investments LLC (Cantor)",
+    "agreement_date": "2026-10-23",
+    "prospectus_filed": "2026-10-30",
+    "maximum_new_class_a_shares": 5218935,
+    "class_a_shares_outstanding_reference_date": "2026-10-22",
+    "class_a_shares_outstanding_before_facility": 26094680,
+    "maximum_shares_as_pct_pre_issue_class_a": 20,
+    "maximum_shares_as_pct_post_issue_class_a": 16.6667,
+    "term": "Until the first day of the month next following the 14-month anniversary of the Purchase Agreement, unless earlier terminated.",
+    "purchase_price": "97% of the applicable VWAP, subject to the prospectus's special provision for accepted requests exceeding 20% of volume.",
+    "per_purchase_volume_limit": "The lesser of the requested percentage and 20% of Class A trading volume, unless Evernorth and Cantor expressly agree to a higher percentage.",
+    "beneficial_ownership_cap_pct": 4.99,
+    "issuer_option": "Evernorth has the right but not the obligation to direct purchases, at its sole discretion, after the Commencement Date and subject to conditions.",
+    "commencement_conditions": "Include an effective registration statement usable by Cantor for resale, current SEC filings, accurate representations and warranties, covenant compliance, Nasdaq listing conditions, no continuing material adverse effect, and customary legal/auditor deliverables.",
+    "cantors_resale": "Cantor may resell all, some or none of acquired shares at its discretion and at different prices.",
+    "cantor_short_sale_restriction": "Cantor agreed not to short the Class A stock or establish a net short hedge during the facility term.",
+    "proceeds_use": "General corporate purposes, including XRP acquisition and other XRP-ecosystem activities, plus working capital. Evernorth says it expects a substantial portion to acquire additional XRP, while retaining broad discretion.",
+    "actual_commencement_status": "UNKNOWN",
+    "actual_shares_sold_status": "NOT_VERIFIED_IN_DOCUMENTS_REVIEWED",
+    "actual_cash_received_status": "NOT_VERIFIED_IN_DOCUMENTS_REVIEWED",
+    "actual_xrp_acquired_status": "NOT_VERIFIED"
+  },
+  "arithmetic_reconciliation": {
+    "shares": 5218935,
+    "reference_class_a_price_usd": 14.71,
+    "full_price_calculation_usd": 76770533.85,
+    "calculation_at_97pct_vwap_usd": 74467417.8345,
+    "prospectus_narrative_gross_usd": 76800000,
+    "prospectus_narrative_net_usd": 74400000,
+    "prospectus_table_14_71_row_usd": 76800000,
+    "table_footnote_says_97pct_vwap": true,
+    "discrepancy_table_row_vs_97pct_calculation_usd": 2303116.0155,
+    "upfront_cantor_commitment_fee_usd": 521893.5,
+    "stonex_qualified_independent_underwriter_fee_usd": 200000,
+    "stonex_expense_reimbursement_cap_usd": 1000,
+    "cantor_and_cfco_reimbursable_expense_aggregate_cap_usd": 500000,
+    "calculated_97pct_proceeds_less_only_cantor_and_stonex_fixed_fees_usd": 73745524.3345,
+    "narrative_net_minus_calculated_amount_after_only_these_fixed_fees_usd": 654475.6655,
+    "interpretation": "The 14.71 table row equals shares multiplied by 100% of 14.71, not 97%. The 97% calculation is approximately 74.467M before fees. The stated 74.4M net estimate is approximately that pre-fee 97% amount and does not reconcile to the separately disclosed fixed fees and expense caps. The prospectus's own figures are preserved; no corrected proceeds estimate is substituted."
+  },
+  "capital_classification": {
+    "potential_facility_capacity_usd": "UP_TO_APPROXIMATELY_76.8M_NARRATIVE_GROSS; ACTUAL DEPENDS ON SHARE SALES, VWAP, CONDITIONS AND FEES",
+    "issuer_estimated_net_proceeds_usd": 74400000,
+    "realized_capital_usd": null,
+    "realized_capital_status": "UNKNOWN_NOT_VERIFIED",
+    "incremental_xrp_purchase_units": null,
+    "incremental_xrp_purchase_status": "UNKNOWN_NOT_VERIFIED",
+    "rule": "Do not enter facility capacity, registered resale shares, expected proceeds or management intent as actual capital inflow, XRP purchases, exchange spot demand or net XRP buying."
+  },
+  "prior_closing_capital_crosscheck": {
+    "october_9_2026_sec_8k_components_xrp": {
+      "cash_funded_xrp_purchase": 84365876,
+      "advance_funding_subscriber_in_kind_xrp": 600000,
+      "delayed_funding_subscriber_in_kind_xrp": 200000,
+      "arrington_sponsor_in_kind_xrp": 211319096.061435,
+      "ripple_affiliated_entity_in_kind_xrp": 50000000,
+      "ripple_contribution_xrp": 126791458
+    },
+    "calculated_total_xrp": 473276430.061435,
+    "issuer_approximate_closing_total_xrp": 473276430,
+    "october_12_share_count_correction": "The later 8-K corrects delayed-funding Class A shares from 663,510 to 1,078,613 due to a clerical error. The correction describes share counts; it does not revise the 200,000 XRP delayed-funding contribution or the separate 600,000 XRP advance-funding contribution.",
+    "custody_mapping_status": "The prior ten-destination public-ledger mapping accounted for 472,676,430.061435 XRP and left the separately disclosed 600,000 advance-funding subscriber XRP unmapped. That unresolved custody-location gap remains open; no wallet is assigned by inference."
+  },
+  "etf_flow_quality": {
+    "observation_date": "2026-11-02",
+    "cryptoetf_today": {
+      "reported_flow_usd": -500000,
+      "reported_funds": 3,
+      "total_funds_in_universe": 5,
+      "reporting_status": "PARTIAL",
+      "reporting_detail": "XRPC -$0.5M; Bitwise XRP and TOXR report zero; XRPZ and GXRP have not reported.",
+      "source_id": "S4"
+    },
+    "xrp_insights": {
+      "reported_flow_xrp": -32825,
+      "estimated_usd": -41000,
+      "fund_universe": "Six US spot XRP ETFs plus BITW",
+      "reporting_status": "PROVISIONAL",
+      "caveat": "The tracker labels the November 2 row provisional until re-settled; its downloadable data page also flags the row as provisional.",
+      "source_id": "S5"
+    },
+    "comparability": "NOT_COMPARABLE_WITHOUT_FUND_UNIVERSE_AND_TIMESTAMP_NORMALIZATION",
+    "feature_rule": "Store each issuer/fund observation separately with source publication time, underlying date, coverage count, revision status and calculation method. Do not treat missing funds as zero, do not compare different universes as a market-wide disagreement, and do not admit partial/provisional aggregate flow into directional forecasts."
+  },
+  "claims": [
+    {
+      "id": "EVLOC-001",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Evernorth entered a Common Stock Purchase Agreement with CF Principal Investments LLC on October 23, 2026 for a committed equity facility covering up to 5,218,935 newly issued Class A shares.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "EVLOC-002",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The company may direct Cantor to purchase shares only after the Commencement Date, at Evernorth's option and subject to contractual conditions; Evernorth may elect to sell some, all or none.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EVLOC-003",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Evernorth states that proceeds may be used for general corporate purposes including XRP acquisition, XRP-ecosystem activity and working capital, and that it expects a substantial portion to be used for additional XRP acquisition; the filing also grants broad discretion over proceeds.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EVLOC-004",
+      "class": "DERIVED_ARITHMETIC",
+      "claim": "The 5,218,935-share maximum equals 20% of 26,094,680 Class A shares outstanding before issuance and approximately 16.7% of the post-issuance Class A total if all shares are issued.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EVLOC-005",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The agreement uses 97% of applicable VWAP, normally limits each purchase to the lesser of the requested amount and 20% of trading volume unless the parties agree otherwise, and caps Cantor beneficial ownership at 4.99%.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EVLOC-006",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Cantor agreed not to short Evernorth Class A shares or establish a net short hedge during the facility term, but may resell shares it acquires at its discretion.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EVLOC-007",
+      "class": "DISCLOSURE_ARITHMETIC_DISCREPANCY",
+      "claim": "At $14.71, the maximum shares multiplied by 97% of price calculate to $74.467M, while the prospectus table shows $76.8M for the $14.71 row even though its footnote says the table uses 97% of assumed trading price. The $76.8M figure equals the undiscounted 100% calculation.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EVLOC-008",
+      "class": "DISCLOSURE_RECONCILIATION_LIMITATION",
+      "claim": "The stated $74.4M net proceeds estimate is not reconciled to the $521,893.50 Cantor fee, $200,000 StoneX fee and disclosed reimbursable-expense caps; after only the Cantor and StoneX fixed fees, the 97%-of-$14.71 calculation is approximately $73.746M before additional expenses.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EVLOC-009",
+      "class": "UNKNOWN_NOT_VERIFIED",
+      "claim": "The Commencement Date, actual shares sold to Cantor, cash settled under the facility and additional XRP purchased with any facility proceeds were not verified in the documents reviewed.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "EVLOC-010",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The October 12 8-K corrects the delayed-funding share count from 663,510 to 1,078,613 due to a clerical error; it does not state a revision to the 200,000 XRP contribution.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "EVLOC-011",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The October 9 8-K separately records 600,000 XRP from advance-funding subscribers and 200,000 XRP from delayed-funding subscribers, in addition to 84,365,876 XRP purchased with cash and the sponsor, affiliate and Ripple XRP contributions.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "EVLOC-012",
+      "class": "PARTIAL_AGGREGATOR_OBSERVATION",
+      "claim": "CryptoETF reported November 2 net outflow of $0.5M across three of five tracked spot funds, all attributed to XRPC, while XRPZ and GXRP were not yet reported.",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "id": "EVLOC-013",
+      "class": "PROVISIONAL_AGGREGATOR_OBSERVATION",
+      "claim": "XRP Insights reported November 2 net flow of -32,825 XRP across six spot funds plus BITW, but labels the row provisional pending re-settlement.",
+      "source_ids": [
+        "S5",
+        "S6"
+      ]
+    },
+    {
+      "id": "EVLOC-014",
+      "class": "INFERENCE",
+      "claim": "The November 2 ETF aggregate differences are not a confirmed market-data contradiction because the providers use different fund universes, timestamps and completion states.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Evernorth Holdings",
+      "to": "CF Principal Investments LLC (Cantor)",
+      "type": "CONDITIONAL_EQUITY_FINANCING_AGREEMENT",
+      "evidence": [
+        "EVLOC-001",
+        "EVLOC-002"
+      ]
+    },
+    {
+      "from": "Evernorth Holdings",
+      "to": "XRPN Class A shareholders",
+      "type": "POTENTIAL_CLASS_A_DILUTION",
+      "evidence": [
+        "EVLOC-004",
+        "EVLOC-007"
+      ]
+    },
+    {
+      "from": "Cantor",
+      "to": "XRPN Class A shares",
+      "type": "MAY_PURCHASE_NEWLY_ISSUED_SHARES",
+      "evidence": [
+        "EVLOC-001",
+        "EVLOC-002"
+      ]
+    },
+    {
+      "from": "Cantor",
+      "to": "XRPN public market",
+      "type": "MAY_RESell_ACQUIRED_SHARES",
+      "evidence": [
+        "EVLOC-006"
+      ]
+    },
+    {
+      "from": "Evernorth facility proceeds",
+      "to": "XRP acquisition",
+      "type": "MANAGEMENT_INTENDED_USE_NOT_RING_FENCED",
+      "evidence": [
+        "EVLOC-003"
+      ]
+    },
+    {
+      "from": "Evernorth facility proceeds",
+      "to": "Working capital and general corporate purposes",
+      "type": "ALTERNATIVE_PERMITTED_USE",
+      "evidence": [
+        "EVLOC-003"
+      ]
+    },
+    {
+      "from": "ETF issuers",
+      "to": "CryptoETF and XRP Insights",
+      "type": "UNDERLYING_HOLDINGS_AND_CREATION_REDEMPTION_DATA",
+      "evidence": [
+        "EVLOC-012",
+        "EVLOC-013"
+      ]
+    },
+    {
+      "from": "CryptoETF",
+      "to": "XRP Insights",
+      "type": "DIFFERENT_FUND_UNIVERSE_AND_COMPLETENESS",
+      "evidence": [
+        "EVLOC-012",
+        "EVLOC-013",
+        "EVLOC-014"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-ELOC-1",
+      "statement": "Evernorth draws some or all of the Cantor facility and uses a substantial portion of net proceeds to acquire additional XRP.",
+      "status": "PLAUSIBLE_CONDITIONAL_NOT_OBSERVED",
+      "support": [
+        "Management states a substantial portion of proceeds is expected to fund XRP acquisition."
+      ],
+      "disconfirming_or_limits": [
+        "No drawdown or incremental XRP purchase was verified.",
+        "Evernorth retains broad discretion over proceeds.",
+        "Commencement and purchase conditions apply."
+      ]
+    },
+    {
+      "id": "H-ELOC-2",
+      "statement": "Evernorth draws the facility but allocates a material share to working capital or other corporate/XRP-ecosystem activity rather than XRP purchases.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "The prospectus expressly permits broad general-corporate and working-capital uses."
+      ],
+      "disconfirming_or_limits": [
+        "Management says it expects a substantial portion to be used for XRP acquisition; actual allocation remains unknown."
+      ]
+    },
+    {
+      "id": "H-ELOC-3",
+      "statement": "The facility is not drawn or is only lightly used during its term.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "Evernorth has no obligation to direct purchases; conditions and market-price/volume thresholds apply."
+      ],
+      "disconfirming_or_limits": [
+        "The facility was entered into and shares were registered for potential resale; future use remains possible."
+      ]
+    },
+    {
+      "id": "H-ELOC-4",
+      "statement": "The facility's immediate market effect is more visible through potential XRPN equity dilution/resale overhang than through direct XRP spot demand.",
+      "status": "SUPPORTED_AS_A_CHANNEL_DISTINCTION",
+      "support": [
+        "New Class A shares can dilute existing Class A holders and Cantor may resell acquired shares."
+      ],
+      "disconfirming_or_limits": [
+        "Actual share issuance and resale quantities are not verified; XRP price impact is not established."
+      ]
+    },
+    {
+      "id": "H-ETF-1",
+      "statement": "The November 2 partial ETF outflow observations will change as missing issuer reports arrive or provisional holdings are re-settled.",
+      "status": "SUPPORTED_BY_PUBLISHED_COMPLETENESS_FLAGS",
+      "support": [
+        "CryptoETF reports 3/5 funds; XRP Insights marks its broader-universe row provisional."
+      ],
+      "disconfirming_or_limits": [
+        "Final issuer-level observations are not yet reconciled in this artifact."
+      ]
+    },
+    {
+      "id": "H-ETF-2",
+      "statement": "The apparent difference between the ETF trackers is a true directional disagreement in the same fund universe.",
+      "status": "NOT_ESTABLISHED",
+      "support": [],
+      "disconfirming_or_limits": [
+        "The trackers cover different funds and have different completion/revision states."
+      ]
+    }
+  ],
+  "feature_store_rules": [
+    {
+      "feature": "evernorth_facility_capacity_usd",
+      "treatment": "POTENTIAL_CAPACITY_ONLY",
+      "must_not_be_treated_as": "cash_inflow_or_XRP_buying"
+    },
+    {
+      "feature": "evernorth_facility_drawdown_usd",
+      "treatment": "UNKNOWN_UNTIL_SHARE_ISSUANCE_AND_CASH_SETTLEMENT_ARE_VERIFIED"
+    },
+    {
+      "feature": "evernorth_xrp_acquired_units",
+      "treatment": "REQUIRE_SEPARATE_COMPANY_FILING_OR_VERIFIED_EXECUTION_AND_WALLET_EVIDENCE"
+    },
+    {
+      "feature": "xrpn_class_a_share_supply",
+      "treatment": "SEPARATE_FROM_XRP_TOKEN_SUPPLY_AND_XRP_SPOT_FLOAT"
+    },
+    {
+      "feature": "xrp_etf_flow_by_fund",
+      "treatment": "PRESERVE_ISSUER_FUND_UNIVERSE_PUBLICATION_TIME_COMPLETENESS_AND_REVISION_STATUS"
+    },
+    {
+      "feature": "xrp_etf_aggregate_flow",
+      "treatment": "DO_NOT_ADMIT_PARTIAL_OR_PROVISIONAL_DAILY_TOTALS_TO_DIRECTIONAL_FORECASTS"
+    }
+  ],
+  "limitations": [
+    "The facility's Commencement Date and actual drawdowns were not verified.",
+    "No incremental XRP purchase funded by the facility was verified.",
+    "The prospectus's $14.71 row and 97% footnote do not reconcile arithmetically; no replacement net-proceeds estimate is asserted.",
+    "The prospectus's $74.4M net estimate does not reconcile to all separately disclosed fees and expense caps.",
+    "The 600,000 advance-funding subscriber XRP remains unmapped in the prior public-ledger destination table; the 200,000 delayed-funding tranche is separately mapped in that prior analysis.",
+    "November 2 ETF aggregate observations are partial or provisional and use different fund universes.",
+    "No synchronized venue-level XRP prices, spreads, depth, actual spot executions or post-event response are included here.",
+    "The evidence does not establish a directional XRP price effect."
+  ],
+  "next_actions": [
+    "Monitor SEC EDGAR for a commencement/effectiveness confirmation, VWAP purchase notices, new share issuances, 8-K disclosures and updated shares outstanding.",
+    "Reconcile the $14.71 / 97% / $76.8M / $74.4M prospectus figures against any subsequent amendment or issuer clarification.",
+    "Track actual Cantor share purchases, resale activity and Class A dilution separately from XRP token supply.",
+    "Require a separate confirmed XRP acquisition quantity and execution/custody trace before recording facility proceeds as XRP buying.",
+    "Collect issuer-level November 2 ETF holdings/creation-redemption files for all funds in a single declared universe; retain late/missing data rather than imputing zero.",
+    "Continue synchronized spot, derivatives, ETF, custody and stablecoin observations before any directional forecast."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "This artifact documents potential equity-financing capacity and incomplete ETF flows, not realized XRP purchases or synchronized market response.",
+    "horizon": null,
+    "target": null,
+    "probability": null,
+    "confidence": null
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_SEC_424B3",
+      "publisher": "Evernorth Holdings Inc.",
+      "title": "Final prospectus for up to 5,218,935 Class A shares under Cantor committed equity facility, filed 2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "source_locations": [
+        "pp. 67-71: proceeds, facility terms, purchase price and conditions",
+        "pp. 73-74: dilution and illustrative table",
+        "p. 1: upfront commitment fee"
+      ]
+    },
+    {
+      "id": "S2",
+      "type": "PRIMARY_SEC_8K",
+      "publisher": "Evernorth Holdings Inc.",
+      "title": "Form 8-K, closing and subscription contributions, 2026-10-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "source_locations": [
+        "Items describing advance funding, delayed funding, Arrington, Larsen Lam trust and Ripple contributions"
+      ]
+    },
+    {
+      "id": "S3",
+      "type": "PRIMARY_SEC_8K",
+      "publisher": "Evernorth Holdings Inc.",
+      "title": "Form 8-K, delayed-funding share-count correction, 2026-10-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629d8k.htm",
+      "source_locations": [
+        "Item 8.01: 1,078,613 corrected shares versus 663,510 previously reported"
+      ]
+    },
+    {
+      "id": "S4",
+      "type": "SECONDARY_AGGREGATOR_PARTIAL",
+      "publisher": "CryptoETF.today",
+      "title": "XRP ETF flows, November 2 2026 T+1 partial observation",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "source_locations": [
+        "Lines 138-145, 153-154, 218-222, 247-268"
+      ]
+    },
+    {
+      "id": "S5",
+      "type": "SECONDARY_AGGREGATOR_PROVISIONAL",
+      "publisher": "XRP Insights",
+      "title": "XRP ETF tracker, November 2 2026 provisional flow",
+      "url": "https://xrp-insights.com/",
+      "source_locations": [
+        "Dashboard and daily flow summary; six spot funds plus BITW"
+      ]
+    },
+    {
+      "id": "S6",
+      "type": "SECONDARY_DATASET_METADATA",
+      "publisher": "XRP Insights",
+      "title": "XRP ETF historical data download and revision metadata",
+      "url": "https://xrp-insights.com/data",
+      "source_locations": [
+        "Dataset coverage and November 2 provisional/re-settlement notice"
+      ]
+    }
+  ],
+  "provenance_notes": [
+    "All SEC facts above are attributed to the listed primary filings; calculated values are explicitly marked as derived arithmetic.",
+    "The two ETF aggregators are not independent primary sources; both depend on issuer disclosures and their own coverage/methodology.",
+    "No account credentials, private data, non-public information or unauthorized access were used."
+  ]
+}
