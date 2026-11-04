@@ -57,6 +57,7 @@ ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
+DRY_RUN = os.environ.get("DRY_RUN", "").strip().lower() in {"1", "true", "yes"}
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 MAX_TOOL_ROUNDS = 4
 MAX_SEARCH_RESULTS = 50
@@ -65,6 +66,19 @@ NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
 
 
 def run(args: list[str], *, check: bool = True, quiet: bool = False) -> subprocess.CompletedProcess[str]:
+    normalized = [str(part).strip().lower() for part in args]
+    joined = " ".join(normalized)
+    forbidden = False
+    if normalized and normalized[0] == "git":
+        forbidden = any(token in normalized[1:] for token in ("push", "commit", "merge", "reset", "clean"))
+    elif normalized and normalized[0] == "gh":
+        forbidden = normalized[1:3] in (
+            ["pr", "create"],
+            ["issue", "comment"],
+            ["issue", "edit"],
+        )
+    if DRY_RUN and forbidden:
+        raise RuntimeError("DRY_RUN_WRITE_GUARD: blocked attempted mutation: " + joined)
     print("+", " ".join(args))
     result = subprocess.run(
         args,
@@ -252,6 +266,34 @@ class RepoBrowser:
             },
             sort_keys=True,
         )
+
+
+def _bound_groq_messages(messages: list[dict[str, Any]], max_chars: int = 16000) -> list[dict[str, Any]]:
+    """Keep provider input comfortably below small per-minute token budgets.
+
+    Preserve the system instruction and newest user request first. If context
+    exceeds the budget, discard older history before trimming the newest
+    request; never silently send an oversized prompt.
+    """
+    if max_chars < 1000:
+        raise ValueError("max_chars must leave room for task instructions.")
+    bounded = [dict(message) for message in messages]
+    def size(items: list[dict[str, Any]]) -> int:
+        return sum(len(str(item.get("content", ""))) for item in items)
+    while len(bounded) > 2 and size(bounded) > max_chars:
+        bounded.pop(1)
+    if size(bounded) > max_chars:
+        system = bounded[0] if bounded and bounded[0].get("role") == "system" else None
+        latest = bounded[-1] if bounded else {"role": "user", "content": ""}
+        system_text = str(system.get("content", "")) if system else ""
+        marker = "\n[Context truncated to respect provider token budget.]"
+        available = max(0, max_chars - len(system_text) - len(marker))
+        latest_text = str(latest.get("content", ""))
+        if len(latest_text) > available:
+            latest = dict(latest)
+            latest["content"] = latest_text[:available] + marker
+        bounded = ([system] if system else []) + [latest]
+    return bounded
 
 
 def _groq_payload(
@@ -492,8 +534,9 @@ class ScriptBrain:
             self.enable_tools if use_tools is None else bool(use_tools) and bool(self.tools)
         )
         for _ in range(self.max_tool_rounds):
+            request_messages = _bound_groq_messages(messages)
             payload = _groq_payload(
-                messages,
+                request_messages,
                 tools=self.tools if tools_enabled else None,
                 max_tokens=max_output_tokens or (1536 if tools_enabled else 1024),
                 json_mode=not tools_enabled,
@@ -607,6 +650,9 @@ def build_file_context(task_title: str, task_body: str) -> str:
 
 
 def run_gh(args: list[str]) -> subprocess.CompletedProcess[str]:
+    normalized = [str(part).strip().lower() for part in args]
+    if DRY_RUN and normalized[0:2] in (["pr", "create"], ["issue", "comment"], ["issue", "edit"]):
+        raise RuntimeError("DRY_RUN_WRITE_GUARD: blocked attempted gh mutation: " + " ".join(normalized))
     return subprocess.run(
         ["gh", *args],
         cwd=ROOT,
@@ -728,6 +774,9 @@ def checkout_branch(branch: str) -> None:
 
 
 def post_issue_comment(message: str) -> None:
+    if DRY_RUN:
+        print("DRY_RUN: issue comment suppressed; message follows:\\n" + message[:3000])
+        return
     if not ISSUE or ISSUE == "0":
         return
     import tempfile
@@ -775,6 +824,9 @@ def _is_research_cycle(payload: dict[str, Any]) -> bool:
 
 
 def create_pull_request(cycle: dict[str, object] | Any) -> None:
+    if DRY_RUN:
+        print("DRY_RUN: pull request creation suppressed.")
+        return
     cycle_data = _extract_cycle_data(cycle)
     safe_title = TITLE.replace('"', "'").replace("`", "'").replace("$", "")
     head_branch = (
@@ -1442,6 +1494,39 @@ def main() -> None:
         print(message)
         raise SystemExit(1)
 
+    if DRY_RUN:
+        # Stop after real provider-backed bundle generation/review. Never enter the
+        # repository-repair executor in dry-run mode.
+        report = {
+            "status": "DRY_RUN_PLAN_READY",
+            "provider": f"groq:{MODEL}",
+            "repository": REPO,
+            "branch": BRANCH,
+            "task_title": TITLE,
+            "bundle": bundle_result.to_dict(),
+            "bundle_plan_path": str(lifecycle_path),
+            "working_tree_diff": run(["git", "diff", "--", ".github/workflows/barrot-agent.yml"], check=False, quiet=True).stdout,
+            "write_actions_performed": [],
+            "repair_execution_started": False,
+            "pull_request_created": False,
+            "issue_comment_posted": False,
+            "note": "Provider-backed planning and deterministic review completed. Repair execution is intentionally not started in dry-run mode.",
+        }
+        rendered_report = json.dumps(report, indent=2, default=str)
+        report_path = Path(os.environ.get("RUNNER_TEMP", "/tmp")) / "barrot-dry-run.json"
+        report_path.write_text(rendered_report, encoding="utf-8")
+        summary_path = os.environ.get("GITHUB_STEP_SUMMARY", "")
+        if summary_path:
+            with open(summary_path, "a", encoding="utf-8") as summary:
+                summary.write("# Barrot dry-run evidence\\n\\n")
+                summary.write("- Status: **" + report["status"] + "**\\n")
+                summary.write("- Provider: `" + report["provider"] + "`\\n")
+                summary.write("- Bundle quality score: `" + str(bundle_result.review.quality_score) + "`\\n")
+                summary.write("- Repair executor started: `false`\\n")
+                summary.write("- Repository/issue write actions: `none`\\n\\n")
+                summary.write("The complete bundle plan and evidence are in the uploaded artifact.\\n")
+        print(rendered_report[:50000])
+        return
     task_work_scope = request_fingerprint.split(":", 1)[-1][:16]
     controller = RepositoryRepairController(
         brain=brain,
