@@ -186,6 +186,8 @@ def test_controlled_pr_approval_requires_yes_and_never_merges() -> None:
     assert "expected_head_sha" in content
     assert "APPROVAL_REASON" in content
     assert "Target PR must be open and non-draft." in content
+    assert "mergeable_state" in content
+    assert 'if [[ "$mergeable_state" != "clean" ]]' in content
     assert "gh pr merge" not in content
     assert "MERGE_PERFORMED=FALSE" in content
 
