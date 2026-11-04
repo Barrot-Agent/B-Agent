@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
   "artifact_type": "xrp_ecosystem_evidence_reconciliation",
-  "captured_at_utc": "2026-11-04T01:22:00Z",
-  "data_cutoff_utc": "2026-11-04T01:22:00Z",
+  "captured_at_utc": "2026-11-04T01:25:00Z",
+  "data_cutoff_utc": "2026-11-04T01:25:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "mission": {
     "priority": "XRP intelligence and prediction-engine mastery",
@@ -392,6 +392,22 @@
       "published": "2026-10-26",
       "type": "issuer press release describing OCC final approval",
       "independence": "issuer statement; OCC final decision document not located"
+    },
+    {
+      "id": "xrpbreadcrumbs_supply_sep29",
+      "url": "https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/",
+      "publisher": "XRP Breadcrumbs",
+      "published": "2026-10-01",
+      "type": "secondary tracker reconciliation",
+      "independence": "secondary analysis citing DefiLlama and RWA.xyz snapshots"
+    },
+    {
+      "id": "coindesk_q2_activity",
+      "url": "https://www.coindesk.com/markets/2026/09/05/xrp-ledger-has-fewer-active-accounts-but-bigger-trades-and-more-value",
+      "publisher": "CoinDesk",
+      "published": "2026-09-05",
+      "type": "market/network analysis",
+      "independence": "secondary reporting"
     }
   ],
   "market_snapshot": {
@@ -716,6 +732,23 @@
       "detail": "C2FO and Ripple announced on 2026-10-27 that financing and settlement activity for C2FO Instant Pay will use XRPL with RLUSD settlement. C2FO's historical $520B+ working-capital access refers to its existing Early Pay programs, not Instant Pay throughput, committed capital or XRP purchases. Production launch, transaction volume, capital providers and XRP bridge use remain unknown.",
       "evidence": [
         "ripple_c2fo_instantpay"
+      ]
+    },
+    {
+      "id": "XRPL-supply-provider-discrepancy",
+      "class": "cross_provider_methodology_discrepancy",
+      "detail": "The Ripple-commissioned Blockworks Q3 report, repeated by TokenPost, says Q3 stablecoin supply was $1.03B. XRP Breadcrumbs' October 1 reconciliation cites September 29 snapshots of $1.213B from DefiLlama and $1.19B from RWA.xyz. These are $160M-$183M higher (about 13.4%-15.1%) than the Q3 report figure. The cutoff dates are close but not identical, and the provider universes/methods are not reconciled. Treat $1.03B, $1.19B and $1.213B as separate provider observations; do not average or use them as a single canonical supply series.",
+      "evidence": [
+        "tokenpost_xrpl_q3_stables",
+        "xrpbreadcrumbs_supply_sep29"
+      ]
+    },
+    {
+      "id": "XRPL-active-account-concentration-Q2",
+      "class": "secondary_market_structure_report",
+      "detail": "CoinDesk's September 5, 2026 Q2 review reported average daily active XRPL accounts down 24% year over year, new accounts down 25%, and daily order-book traders down about 41%, while order-book trading volume rose 79%. Average tokenized-asset and RLUSD balances reached about $4.26B. This supports a concentration hypothesis (fewer accounts moving more value), not proof of broad retail adoption or XRP demand.",
+      "evidence": [
+        "coindesk_q2_activity"
       ]
     }
   ],
@@ -1123,6 +1156,24 @@
         "Track disclosed production launch, jurisdictions, API customers and settled value",
         "Keep Cross River's X Money relationship separate unless an RLUSD link is disclosed"
       ]
+    },
+    {
+      "id": "H12-value-concentration-not-broad-adoption",
+      "claim": "XRPL institutional/tokenized value and gross trading volume can rise while active-account participation falls, concentrating activity among fewer large entities.",
+      "support": [
+        "CoinDesk Q2 report: order-book volume +79% YoY while active accounts -24%, new accounts -25%, daily order-book traders -41%",
+        "Bitquery RLUSD investigation: top ten senders accounted for 82% of non-dust value"
+      ],
+      "disconfirming_or_missing": [
+        "CoinDesk's aggregate metrics do not identify entity type or beneficial owners",
+        "Q3 figures may use different universes and measurement methods"
+      ],
+      "tests": [
+        "Track active economic entities separately from raw accounts",
+        "Measure top-10/top-100 concentration and Herfindahl index",
+        "Separate exchange, issuer, market-maker, bank and retail clusters",
+        "Compare value growth with unique counterparties and net flows"
+      ]
     }
   ],
   "source_quality": {
@@ -1147,6 +1198,8 @@
     "Cross River, Standard Chartered, BNY and C2FO announced institutional integrations, but public production throughput and XRP-specific flow attribution are not disclosed."
   ],
   "next_actions": [
+    "Reconcile the Q3 stablecoin supply figure ($1.03B Ripple-commissioned Blockworks) against September 29 DefiLlama ($1.213B) and RWA.xyz ($1.19B) snapshots using a common issuer-obligation query and identical cutoff.",
+    "Add active-entity concentration, top-10/top-100 shares, HHI, net flow, dust ratio and round-trip removal to XRPL feature engineering; do not use raw account counts or gross transfer volume as adoption proxies.",
     "Build the nine-platform capability/authentication/permission/data-flow adapters one at a time; do not claim collaboration until each adapter returns a verifiable signed/traceable handoff.",
     "Run independent red-team tasks only after Claude/Grok/Gemini/Copilot/Codex/Hugging Face/Kaggle/Databricks access is explicitly authenticated and scoped.",
     "Reconstruct RLUSD and USDC supply from issuer obligations on the validated XRPL ledger at fixed hourly/daily cutoffs; reconcile stables.cool and XRPL.to snapshots without averaging.",
@@ -1251,5 +1304,35 @@
     "disagreement_policy": "No forced unanimity. Preserve minority objections and independent red-team findings. Resolve factual disputes by source quality, independence, temporal fit and reproducibility, not agent majority vote.",
     "least_privilege_policy": "Read-only by default; no credentials or private data in prompts; adapters must be separately authenticated and scoped; writes, deployments, submissions, merges and financial actions require explicit user approval.",
     "adapter_status": "Architecture designed; only ChatGPT-to-GitHub repository access was tested in this run. All other adapters remain unconnected or unverified."
+  },
+  "data_quality": {
+    "discrepancies": [
+      {
+        "metric": "XRPL Q3 stablecoin supply",
+        "observations": [
+          {
+            "source": "Ripple-commissioned Blockworks as reported by TokenPost",
+            "value_usd": 1030000000,
+            "period": "Q3 2026"
+          },
+          {
+            "source": "DefiLlama snapshot as reported by XRP Breadcrumbs",
+            "value_usd": 1213000000,
+            "period": "2026-09-29"
+          },
+          {
+            "source": "RWA.xyz snapshot as reported by XRP Breadcrumbs",
+            "value_usd": 1190000000,
+            "period": "2026-09-29"
+          }
+        ],
+        "difference_usd_range": [
+          160000000,
+          183000000
+        ],
+        "classification": "unreconciled provider/methodology and cutoff discrepancy",
+        "rule": "Do not average; reconstruct from issuer obligations and a common cutoff."
+      }
+    ]
   }
 }

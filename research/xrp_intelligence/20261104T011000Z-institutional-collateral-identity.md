@@ -230,3 +230,18 @@ Only ChatGPT's current GitHub connector access was exercised in this run (reposi
 | Databricks | Workflow references credentials; no workspace session tested; public brain export quarantined by #1620 | Historical feature store and ETL after least-privilege authorization |
 
 Evidence packets should carry claim IDs, source IDs, publication/observation/ingestion timestamps, data cutoff, classification, support, disconfirmation, assumptions, confidence, minority objections and a content hash. Read-only is the default. No credentials or private data go into prompts. No forced unanimity: retain minority objections and independent red-team findings; resolve disputes through source quality, independence, temporal fit and reproducibility.
+
+
+## Stablecoin supply and account activity: a second independent reconciliation issue
+
+The Q3 Ripple-commissioned Blockworks figure repeated by TokenPost is **$1.03B**. XRP Breadcrumbs' October 1 reconciliation cites September 29 snapshots of **$1.213B from DefiLlama** and **$1.19B from RWA.xyz**. Those are $160M–$183M higher (about 13.4%–15.1%) than the Q3 report figure.
+
+The dates are close but not identical, and the provider universes/methodologies are not reconciled. These values must remain separate observations. Do not average them or treat one as canonical until issuer obligations are reconstructed at the same ledger cutoff.
+
+CoinDesk's September 5 Q2 network analysis reported average daily active XRPL accounts down 24% year over year, new accounts down 25%, and daily order-book traders down about 41%, while order-book trading volume rose 79%. Average tokenized-asset and RLUSD balances reached about $4.26B.
+
+Together with Bitquery's finding that the top ten RLUSD senders accounted for 82% of non-dust value, this supports a concentration hypothesis: more value may be moving through fewer large entities while broad account participation weakens. It does not establish beneficial-owner identities or prove institutional adoption.
+
+Sources:
+- https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/
+- https://www.coindesk.com/markets/2026/09/05/xrp-ledger-has-fewer-active-accounts-but-bigger-trades-and-more-value
