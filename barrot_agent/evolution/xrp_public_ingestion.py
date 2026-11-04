@@ -23,8 +23,8 @@ from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com"}
-ADAPTER_VERSION = "xrp-public-market-v1"
-PARSER_VERSION = "xrp-public-market-v1"
+ADAPTER_VERSION = "xrp-public-market-v2"
+PARSER_VERSION = "xrp-public-market-v2"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
