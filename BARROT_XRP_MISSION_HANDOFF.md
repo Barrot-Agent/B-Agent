@@ -642,3 +642,61 @@ Cutoff: **2026-11-04 11:05 UTC**. The latest public observations below are earli
 ### Next concrete action
 
 Complete exact-head verification for the documentation-only handoff commit, reconcile the handoff overlap with draft PR #1642, obtain a real required approval (not an approval label), and confirm branch-protection requirements before any merge. Then build immutable source receipts for the new XRP observations and admit only reconciled, point-in-time data into the feature store. Preserve all unique research PRs until one consolidated fresh-main successor is ready.
+
+
+---
+
+## Run 11 — verification 2026-11-04T11:25:00Z; public-data cutoff 2026-11-04T11:05:00Z
+
+### Exact-head repository verification
+
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- PR #1640 code commit `9514735deecd6c07c5f40c4e6e3c67273a8cb463` is clean and mergeable against current main.
+- Exact-head CI [41820431622](https://github.com/Barrot-Agent/B-Agent/actions/runs/41820431622) passed on `9514735d`: **553 core tests + 8 subtests; 788 full-repository tests + 8 subtests**.
+- Exact-head dependency audit [41820431661](https://github.com/Barrot-Agent/B-Agent/actions/runs/41820431661) passed across four manifests with no known vulnerabilities.
+- Exact-head fail-closed gate [41820431619](https://github.com/Barrot-Agent/B-Agent/actions/runs/41820431619) passed; merge remained disabled and no repository content was changed.
+- All inline review threads are now resolved. The SHA-256 clarification was posted with the exact 2,588-byte ledger hash and its separate Git blob SHA-1. Copilot/CodeRabbit reviews remain `COMMENTED`, not `APPROVED`; there are **zero approving reviews**.
+- This update is a documentation-only child of the tested code commit. Its own exact-head workflows must complete before the PR is considered fully verified.
+- No branch was created, no new PR was opened, and no merge, deployment, external write, secret rotation, restart, Kaggle submission, paper trade or real-money action was performed.
+
+### Additional institutional capital and custody findings
+
+**Evernorth is now a major direct bridge between SBI, Ripple, Coinbase and BitGo.**
+
+- Evernorth's Oct 2026 SEC filing and Oct 14 launch coverage describe a Nasdaq-listed XRP treasury vehicle with approximately **473M XRP** at closing. The SEC filing identifies **126.79M XRP contributed by Ripple** and **50M XRP from a Chris Larsen-related entity**; the treasury is not simply 473M XRP bought on the open market.
+- The SEC filing says the XRP was held in **BitGo cold storage** and that the company did not expect material XRP-ecosystem deployment before Q4 2026. No evidence in this run establishes that the planned Q4 deployment has actually begun.
+- The filing identifies Coinbase as the principal market used for XRP valuation. That does not make Coinbase the custodian: BitGo is the named custodian.
+- The filing's post-closing beneficial-ownership table shows SBI-affiliated holders with **36.1% of Class A voting shares** and **7.5% of Class C non-voting shares**. The 39.9% figure is a voting-ownership cap, not Evernorth's actual total economic ownership. SBI announced a $200M Evernorth subscription in 2025; the precise cash funded under the closing agreements was not reconciled to that headline in this pass.
+- The Block reported that Evernorth planned Q4 treasury strategies with Ripple, Coinbase, Kraken and BitGo. Treat that partner list as secondary reporting and the strategies as planned, not executed. Covered-call/cash-secured-put activity or XRPL lending could alter future exposure, but no current positions or deployment amounts were verified.
+- BitGo's disclosed insurance is shared across its client base; it is not a dedicated $250M policy ring-fenced to Evernorth. Compare the coverage with the reported XRP treasury value before treating custody as fully insured.
+- Primary source: [Evernorth SEC filing, Oct 30 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm). Secondary source for the planned execution-partner group: [The Block, Oct 14 2026](https://www.theblock.co/news/deals/2026-10-14-evernorth-taps-ripple-kraken-coinbase-bitgo-xrp-treasury-work-418503).
+
+### SBI's current XRP/stablecoin distribution network
+
+- **SBI–Ripple:** SBI's 2025 investor materials describe an approximately 9% Ripple stake. The current SBI Ripple Asia company profile reports **60% SBI Group voting rights as of March 31 2026**; retain the historical 60/40 formation description only as historical, not as a current cap-table statement. SBI Remit has operated XRP-bridge remittance corridors, and SBI VC Trade began retail RLUSD handling on **June 24 2026** in a direct SBI/Ripple announcement. RLUSD is treated by SBI VC Trade as a Japanese category-4 electronic payment instrument; its customer balance and transaction limits are materially capped by domestic rules.
+- **SBI–Circle:** SBI's investor presentation describes SBI Circle Holdings as a **50/50 joint venture**. SBI and SBI Shinsei Bank together announced a **$50M Circle share investment**. SBI VC Trade distributes USDC in Japan, and SBI Group joined Circle's Arc as a founding validator. These are direct investment, distribution and infrastructure links.
+- **SBI–XRP retail distribution:** SBI Holdings' 2026 shareholder programme offered XRP coupons worth **¥2,000 or ¥8,000** through SBI VC Trade; SBI Shinsei Bank separately offered an approximately **¥2,000 XRP coupon**. SBI Global Asset Management and SBI ARUHI also disclosed XRP shareholder-benefit programmes. These are distribution programmes, not proof of equivalent spot-market purchases; the inventory/source of distributed XRP is not disclosed.
+- **SBI–Visa:** SBI's May 1 2026 presentation describes an MOU to explore USDC/JPYSC stablecoin settlement for card payments and an SBI Visa Crypto Card. Treat the card as planned, not confirmed live. Separately, SBI VC Trade and Aplus already support exchanging Aplus card points for BTC, ETH and XRP.
+- **SBI–Erebor:** On Nov 2 SBI announced a **$100M investment** in Erebor Bank, a US digital bank with stablecoin deposit/withdrawal support and blockchain-enabled 24/7 settlement. This is adjacent digital-asset banking infrastructure; no XRP integration or XRP exposure was disclosed.
+- SBI VC Trade reported **2M registered accounts** in July 2026. This is an account count, not a measure of active XRP holders or trading volume.
+- SBI's Nov 2 JPYSC update reported more than **¥10B lending balances** and **¥30B handling balances**. JPYSC is a separate yen stablecoin; those figures are not XRP collateral or XRP demand.
+
+### Macro and regulatory context
+
+- AP and other major outlets reported on Nov 4 that Democrats had gained control of both US congressional chambers in the midterm results; final certification and individual races remained in progress at the cutoff. Treat this as a potential change in legislative probability, not an immediate change in law.
+- The CLARITY Act had failed to advance in September 2026. The GENIUS Act remains enacted law. A changed Congress could alter timing or amendments to market-structure legislation, but no new XRP-specific legal status follows automatically from election results.
+- The Federal Reserve's next scheduled FOMC meeting is **Dec 8–9 2026**, not Nov 4. The October target range remains 3.75%–4.00% in the latest retrieved sources.
+- The Bank of Japan's policy rate is reported at **1.25%**, with its next scheduled meeting in December. Yen funding/carry conditions matter to Japanese capital allocation, but no direct XRP flow was established.
+- Election-related USD/yield moves, tariffs and geopolitical risk are broad risk factors. No reliable source in this pass isolates their causal effect on XRP.
+
+### Corrections and evidence discipline
+
+- Current SBI Ripple Asia control is recorded as **60% SBI voting rights**, not a blanket current 60/40 cap table.
+- Evernorth's 473M XRP treasury, SBI's ownership, Ripple's XRP contribution and BitGo custody are institutional balance-sheet facts. They are not equivalent to current exchange inflows, spot buying or deployed yield positions.
+- The Coinbase/Evernorth valuation relationship is not a custody relationship. BitGo custody is separate. The reported Coinbase/Ripple/Kraken/BitGo strategy group remains planned until an execution receipt or filing proves otherwise.
+- Market snapshots, third-party stablecoin supplies and transfer aggregators remain outside the feature store until raw payloads, immutable SHA-256 receipts, timestamps, venue scope and reconciliation checks are captured.
+
+### Forecast and next action
+
+- **Forecast status: NOT_ISSUED.** No directional XRP forecast is justified by the current non-synchronized snapshots. No point-in-time feature rows or out-of-sample evaluation were created from this run.
+- Next: finish the documentation-only head's exact CI; then reconcile the Evernorth/SBI/Ripple/Coinbase/BitGo relationships into a sourced entity graph and ingest primary SEC/SBI/OCC records as immutable raw receipts. Verify whether Evernorth's Q4 strategy has actually begun before treating any planned treasury deployment as a flow.
