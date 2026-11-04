@@ -70,6 +70,7 @@ jobs:
             tests/test_mmi_v1.py \
             tests/test_source_acquisition.py \
             tests/test_source_registry.py \
+            tests/test_scheduler_workflow_allowlist.py \
             tests/test_data_registry.py \
             tests/test_repository_causality.py \
             tests/test_bundle_delivery.py \

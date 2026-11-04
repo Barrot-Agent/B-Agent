@@ -9,9 +9,9 @@ practical reliable minimum - exact-minute firing is NOT guaranteed,
 run_after is a lower bound not an exact time) and dispatches due
 entries via `gh workflow run`.
 
-SAFETY: only workflows already present in .github/workflows/ can be
-targeted - the queue cannot invoke arbitrary commands even if the
-file were tampered with. This adds *when*, never *what*.
+SAFETY: unattended dispatch is restricted to an explicit allowlist of
+read-only validation workflows. Queue tampering cannot select deploy,
+merge, post, submit or other mutating workflows.
 """
 import json
 import os
@@ -22,6 +22,13 @@ from datetime import datetime, timezone
 
 QUEUE_PATH = "ping-pongings/knowledge-base/schedule_queue.jsonl"
 WORKFLOWS_DIR = ".github/workflows"
+
+# Only read-only validation workflows may be dispatched by the unattended queue.
+# Anything that writes data, deploys, posts, submits or calls external services is excluded.
+SAFE_WORKFLOWS = frozenset({
+    "ci.yml",
+    "barrot-bundle-operational-smoke.yml",
+})
 
 
 def _now():
@@ -48,12 +55,18 @@ def _save(entries):
 
 
 def _valid_workflow(name):
-    return os.path.isfile(os.path.join(WORKFLOWS_DIR, name))
+    return (
+        isinstance(name, str)
+        and name in SAFE_WORKFLOWS
+        and os.path.isfile(os.path.join(WORKFLOWS_DIR, name))
+    )
 
 
 def schedule(workflow, run_after_iso, note="", inputs=None):
     if not _valid_workflow(workflow):
-        sys.exit(f"Refusing to schedule: '{workflow}' is not a real file in {WORKFLOWS_DIR}/")
+        sys.exit(f"Refusing to schedule: '{workflow}' is not in the safe workflow allowlist")
+    if inputs is not None and inputs != {}:
+        sys.exit("Refusing to schedule workflow inputs; allowlisted workflows must be input-free")
     try:
         datetime.fromisoformat(run_after_iso.replace("Z", "+00:00"))
     except ValueError:
@@ -93,15 +106,20 @@ def tick():
             continue
         if due > now:
             continue
-        if not _valid_workflow(e["workflow"]):
+        workflow = e.get("workflow")
+        if not _valid_workflow(workflow):
             e["status"] = "failed"
-            e["error"] = f"workflow '{e['workflow']}' no longer exists"
+            e["error"] = "workflow is not in the safe dispatch allowlist or no longer exists"
+            changed = True
+            continue
+        inputs = e.get("inputs", {})
+        if not isinstance(inputs, dict) or inputs:
+            e["status"] = "failed"
+            e["error"] = "workflow inputs are disabled for unattended scheduled dispatch"
             changed = True
             continue
 
-        cmd = ["gh", "workflow", "run", e["workflow"]]
-        for k, v in e.get("inputs", {}).items():
-            cmd += ["-f", f"{k}={v}"]
+        cmd = ["gh", "workflow", "run", workflow]
         result = subprocess.run(cmd, capture_output=True, text=True)
         e["fired_at"] = now.isoformat()
         if result.returncode == 0:
