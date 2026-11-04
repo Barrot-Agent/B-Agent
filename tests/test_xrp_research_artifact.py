@@ -604,3 +604,23 @@ def test_coinbase_q3_sec_collateral_disclosures_do_not_imply_xrp_utilization() -
     assert data["coinbase_q3"]["unrecognized_borrower_collateral"]["crypto_asset_breakdown_by_token_available"] is False
     assert data["data_quality"]["quarter_end_precedes_october_1_xrp_collateral_policy_update"]
     assert data["predictions"]["issued"] is False
+
+
+def test_rntb_approval_release_dates_are_separately_attributed() -> None:
+    path = REPO_ROOT / "research" / "xrp_intelligence" / "20261104T011000Z-institutional-collateral-identity.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    sources = {source["id"]: source for source in data["source_registry"]}
+    assert sources["ripple_rntb_final_oct26"]["published"] == "2026-10-26"
+    assert sources["ripple_rntb_final_claim"]["published"] == "2026-10-28"
+    edge = next(item for item in data["relationship_graph"] if item.get("to") == "Ripple National Trust Bank")
+    assert "October 26" in edge["relation"]
+    assert "October 28" in edge["relation"]
+
+
+def test_coinbase_q3_relationship_edges_use_only_supported_sources() -> None:
+    path = REPO_ROOT / "research" / "xrp_intelligence" / "20261104T071800Z-coinbase-q3-collateral-sec-addendum.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    source_ids = {source["id"] for source in data["source_registry"]}
+    for edge in data["relationship_graph"]:
+        assert set(edge["evidence"]) <= source_ids
+    assert not any(edge["from"] == "Coinbase" and edge["to"] == "Ripple/RLUSD" for edge in data["relationship_graph"])
