@@ -41,7 +41,9 @@ def test_xrp_research_evidence_references_are_resolvable() -> None:
     for observation in data["observations"]:
         assert observation["id"]
         assert observation["class"]
-        assert observation["evidence"]
+        assert "evidence" in observation
+        if observation["class"] != "unknown":
+            assert observation["evidence"]
         assert set(observation["evidence"]) <= known
 
     for edge in data["relationship_graph"]:

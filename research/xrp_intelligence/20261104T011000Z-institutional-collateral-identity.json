@@ -181,6 +181,29 @@
       "published": "2026-02-23",
       "type": "secondary video summary",
       "independence": "secondary attribution"
+    },
+    {
+      "id": "kamilah_video_wealth",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-01-15",
+      "type": "public video summary/transcript index",
+      "independence": "creator content; Glasp transcript index"
+    },
+    {
+      "id": "kamilah_video_how_much",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-03-19",
+      "type": "public video summary",
+      "independence": "creator content; Glasp transcript index"
+    },
+    {
+      "id": "kamilah_channel_glasp",
+      "url": "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "publisher": "Glasp",
+      "type": "third-party channel summary index",
+      "independence": "secondary channel index"
     }
   ],
   "market_snapshot": {
@@ -346,19 +369,23 @@
     {
       "id": "Kamilah-channel-candidate",
       "class": "candidate_identity_not_confirmed_as_Camilla",
-      "detail": "Indexed YouTube videos and secondary channel directories attribute XRP content to Kamilah Stevenson; some transcripts self-introduce as 'Camila'. The exact requested identity 'Camilla Stephenson' has not been verified as this same person. Channel ID surfaced through a third-party channel index: UCqUPJMQdkCN6lsLVDnichPA.",
+      "detail": "Indexed YouTube videos and a Glasp channel-summary page attribute XRP content to Kamilah Stevenson (channel ID UCqUPJMQdkCN6lsLVDnichPA); some transcripts self-introduce the speaker as 'Camila Stevenson'. This is a plausible candidate for the user's phonetic 'Camilla Stephenson' reference, but exact legal/identity equivalence is not verified. Seven public video candidates are indexed; this is not an exhaustive channel archive.",
       "evidence": [
         "kamilah_video_collateral",
         "kamilah_video_etf",
         "kamilah_video_neutral_bridge",
         "kamilah_video_amendments",
-        "kamilah_dailycoin"
+        "kamilah_dailycoin",
+        "kamilah_video_wealth",
+        "kamilah_video_how_much",
+        "kamilah_channel_glasp"
       ]
     },
     {
       "id": "Actual-capital-phrase",
       "class": "unknown",
-      "detail": "Exact phrase searches for 'actual capital' with XRP/Kamilah/Camila/ASK/SBIC did not identify a verifiable source. Do not infer a meaning or source."
+      "detail": "Exact public searches for the phrase 'actual capital' with XRP, Kamilah/Camila, ASK and SBIC did not locate a verifiable source. A separate video title uses the word 'ACTUALLY' ('How Much XRP Do You ACTUALLY Need?'), but that does not establish the phrase 'actual capital' or the intended reference.",
+      "evidence": []
     }
   ],
   "relationship_graph": [

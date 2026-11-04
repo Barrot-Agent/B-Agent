@@ -67,18 +67,20 @@ Exact public searches for "actual capital" with XRP, Kamilah/Camila, ASK and SBI
 
 ### Camilla Stephenson / Kamilah Stevenson video identity
 
-Search results surfaced a Kamilah Stevenson YouTube channel candidate, with some indexed transcripts self-introducing the speaker as "Camila." The exact requested identity "Camilla Stephenson" has not been verified as the same person. Do not merge the names without confirmation.
+Search results and a Glasp channel-summary page identify a Kamilah Stevenson channel (channel ID `UCqUPJMQdkCN6lsLVDnichPA`). Indexed transcripts from two videos self-introduce the speaker as "Camila Stevenson." That makes this a plausible candidate for the phonetic reference "Camilla Stephenson," but exact identity equivalence is not verified. Do not merge identities as a confirmed fact.
 
 Identified public video candidates:
-- [XRP collateral video](https://www.youtube.com/watch?v=M8TmDXO7B-0), 2025-12-06.
+- [XRP collateral video](https://www.youtube.com/watch?v=M8TmDXO7B-0), 2025-12-06; exact title not independently recovered.
 - [Ripple Just Became a BANK](https://www.youtube.com/watch?v=QslbjGQD0MU), 2025-12-14.
 - [XRP ETFs Are Here. Price Isn't Moving](https://www.youtube.com/watch?v=ci0FH73lbCs), 2026-01-13.
+- [Why Most People Will Lose Their Crypto Wealth](https://www.youtube.com/watch?v=cxeX_eu_2H0), 2026-01-15.
 - [XRP Was Built for What's Coming](https://www.youtube.com/watch?v=ywQEoYPzhlQ), 2026-03-03.
+- [How Much XRP Do You ACTUALLY Need?](https://www.youtube.com/watch?v=rv0BAV0vLgo), 2026-03-19.
 - [XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This](https://www.youtube.com/watch?v=8xiy8w2YlfY), 2026-07-30.
 
 The December 6, 2025 collateral video's framing that XRP had just become acceptable collateral "in the same class as gold, U.S. Treasuries and major FX" needs qualification: Bitnomial's venue-specific XRP collateral schedule is real, but the CFTC's later pilot initial list excluded XRP and Bitnomial lists a 40% haircut and $15M cap. This is not evidence of equal regulatory treatment or broad institutional utilization.
 
-This is a candidate inventory, **not** an exhaustive channel archive. Exact Camilla identity and complete public-video list remain unresolved.
+The Glasp channel page exposes four summaries; cross-search surfaces additional candidates. This is a **candidate inventory, not an exhaustive archive**. Exact Camilla identity and complete public-video list remain unresolved.
 
 ## Competing hypotheses
 
