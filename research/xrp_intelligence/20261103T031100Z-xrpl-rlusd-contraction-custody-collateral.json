@@ -1,0 +1,482 @@
+{
+  "schema_version": "barrot.xrpl.stablecoin-liquidity-and-custody.v1",
+  "artifact_id": "20261103T031100Z-xrpl-rlusd-contraction-custody-collateral",
+  "created_at_utc": "2026-11-03T03:11:00Z",
+  "data_cutoff_utc": "2026-11-03T03:11:00Z",
+  "focus": "XRPL stablecoin supply contraction, RLUSD issuer returns, market liquidity, custody and collateral",
+  "forecast_status": "NOT_ISSUED",
+  "claims": [
+    {
+      "id": "R01",
+      "class": "sourced_claim",
+      "claim": "DefiLlama's November 2, 2026 XRPL stablecoin snapshot reports total stablecoin market capitalization USD 803.56M, down 24.12% over seven days and 39.05% over 30 days. RLUSD is USD 711.97M and 88.59% of the total; USDV USD 72.77M; EURCV USD 11.21M; USDC USD 4.96M; smaller EURQ, USDQ, EUROP and AUDD balances are also listed.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "R02",
+      "class": "sourced_claim",
+      "claim": "Coindaro's November 2 transaction-level investigation reports XRPL RLUSD obligations falling USD 284.4M (28.7%) on October 30, from approximately USD 991.7M to USD 707.4M. Twelve large returns to the issuer totalled about USD 306.4M, while two new issues totalled USD 22M.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "R03",
+      "class": "sourced_claim",
+      "claim": "Coindaro reports one unidentified XRPL wallet handled all twelve large returns to the RLUSD issuer. Five feeder wallets funded it on October 30. One feeder sent 106.5M and 42.9M RLUSD; another sent 50M. The funnel wallet is unlabeled and beneficial ownership is unknown.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "R04",
+      "class": "sourced_claim",
+      "claim": "Coindaro reports the issuer-return funnel has been active at month-end since April 2026, with earlier monthly returns of USD 162.8M to USD 339.3M and rebounds in subsequent daily supply observations. October's USD 1.08B across 101 payments was reported as roughly three times the prior monthly high. This is an observed calendar pattern, not proof of a scheduled treasury process.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "R05",
+      "class": "sourced_claim",
+      "claim": "Ethereum RLUSD supply increased approximately USD 92.7M over the same daily window while XRPL supply fell USD 284.4M, leaving reported total cross-chain supply down approximately USD 191.7M. Opposing chain changes do not prove that the same funds migrated.",
+      "source_ids": [
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "id": "R06",
+      "class": "sourced_claim",
+      "claim": "CryptoSlate reports DefiLlama's daily series stamped the 28.7% decline on October 31, while Coindaro's XRPL ledger replay dates the underlying transactions to October 30. The date difference is attributable to daily aggregation/cutoff conventions, not necessarily conflicting token quantities.",
+      "source_ids": [
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "id": "R07",
+      "class": "sourced_claim",
+      "claim": "A sampled XRP/RLUSD AMM pool held 1,883,641.61 XRP and 2,327,587.15 RLUSD at October 29 23:59:51 UTC, and 1,871,106.09 XRP and 2,335,993.08 RLUSD at October 31 13:11:11 UTC: XRP reserve -0.67%, RLUSD reserve +0.36%. One pool did not lose a proportionate share of the reported ledger-wide RLUSD supply.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "R08",
+      "class": "sourced_claim",
+      "claim": "CryptoSlate/NOSHASHI's October 31 sample reports funded RLUSD asks available to an XRP seller rising from 62,952.98 to 112,162.55 RLUSD, while funded offers to buy RLUSD with XRP fell from 71,292.22 to 40,870.63 before recovering to 59,593.01. A 10,000-RLUSD resting-offer estimate was 0.14% above mid for a buy and 0.08% below mid for a sale; these were modeled resting offers, not executed trades or guaranteed quotes.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "R09",
+      "class": "sourced_claim",
+      "claim": "Ripple's official transparency page reports USD 2,627.0M total circulating RLUSD and USD 2,758.6M reserve funds as of October 29, 2026. This issuer page observation predates the October 30 returns and is not a simultaneous post-event reserve snapshot.",
+      "source_ids": [
+        "S04"
+      ]
+    },
+    {
+      "id": "R10",
+      "class": "confirmed_fact",
+      "claim": "The September 2026 independent CPA attestation examined Standard Custody management's reserve assertion at September 21 and September 30 17:00 Eastern. Outstanding RLUSD was 2,425,816,183 and 2,399,995,528 respectively; reserve market value was USD 2,558,148,227 and USD 2,524,008,274. The accountant concluded the assertion was fairly stated in all material respects under AICPA attestation standards.",
+      "source_ids": [
+        "S05"
+      ]
+    },
+    {
+      "id": "R11",
+      "class": "confirmed_fact",
+      "claim": "The September attestation describes RLUSD reserves as segregated from issuer proprietary assets and held with regulated financial institutions/custodians, with eligible asset classes including short-term U.S. Treasury bills, qualifying reverse repos, government money-market funds and deposit accounts subject to NYDFS conditions.",
+      "source_ids": [
+        "S05"
+      ]
+    },
+    {
+      "id": "R12",
+      "class": "confirmed_fact",
+      "claim": "Standard Chartered's DIFC Branch launched institutional custody support for RLUSD issued on XRPL on October 12, 2026. Standard Chartered, Ripple and LMAX Group are working toward RLUSD collateral eligibility and collateral mirroring for agreed LMAX products; the future capabilities remain subject to documentation, testing, law, internal approvals and jurisdictional readiness.",
+      "source_ids": [
+        "S06"
+      ]
+    },
+    {
+      "id": "R13",
+      "class": "confirmed_fact",
+      "claim": "Ripple announced final OCC approval on October 26, 2026 for Ripple National Trust Bank. The approved business plan includes reserve management, collateral-trustee functions for RLUSD holders and fiduciary digital-asset custody upon opening. RLUSD continues to be issued by Standard Custody & Trust Company under NYDFS supervision; the national trust bank is not represented as already operational.",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "id": "R14",
+      "class": "confirmed_fact",
+      "claim": "XRPL gateway_balances reports issued trust-line obligations at a specified ledger and can optionally exclude known operational/hot-wallet addresses. XRPL documentation states that when issued tokens are returned to their issuer, those tokens are destroyed and issuer obligations fall; for a stablecoin this is the first step of redemption, not proof that off-ledger dollars were paid out.",
+      "source_ids": [
+        "S08",
+        "S09"
+      ]
+    },
+    {
+      "id": "R15",
+      "class": "inference",
+      "claim": "The October 30 returns may represent month-end treasury/inventory management, market-maker inventory returns or customer redemptions. The recurring month-end pattern supports the first two possibilities, but the unusually large net cross-chain supply decline and absence of a full rebound at the November 2 observation prevent selecting one explanation.",
+      "source_ids": [
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "id": "R16",
+      "class": "disconfirming_evidence",
+      "claim": "The sampled XRP/RLUSD AMM pool reserves changed by less than 1% despite the reported 28.7% ledger-wide RLUSD contraction. This argues against assuming the entire supply reduction immediately removed comparable liquidity from that pool, but one pool cannot represent all XRPL liquidity.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "R17",
+      "class": "unknown",
+      "claim": "The funnel wallet's beneficial owner, the feeder wallets' beneficial owners, whether the returned RLUSD was redeemed for dollars, and the exact amount of reserve assets paid out are unknown.",
+      "source_ids": [
+        "S02",
+        "S04"
+      ]
+    },
+    {
+      "id": "R18",
+      "class": "unknown",
+      "claim": "The October 2026 independent CPA attestation covering the October 30 returns was not yet available at the cutoff. Ripple's October 29 live transparency values predate the contraction.",
+      "source_ids": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "R19",
+      "class": "inference",
+      "claim": "Institutional custody and planned collateral mirroring may improve RLUSD's usability for institutions without requiring assets to move to an exchange, but neither announcement proves that LMAX collateral eligibility is live or that the new Ripple National Trust Bank has begun operations.",
+      "source_ids": [
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "id": "R20",
+      "class": "disconfirming_evidence",
+      "claim": "RLUSD supply growth/contraction on XRPL is not itself a directional XRP signal. Stablecoin principal can be returned to issuer or held in RLUSD while XRP/RLUSD pool balances and funded order-book liquidity evolve separately.",
+      "source_ids": [
+        "S03",
+        "S08",
+        "S09"
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "source": "DefiLlama",
+    "as_of_date": "2026-11-02",
+    "total_xrpl_stablecoin_mcap_usd": 803560000,
+    "seven_day_change_pct": -24.12,
+    "thirty_day_change_pct": -39.05,
+    "assets": [
+      {
+        "symbol": "RLUSD",
+        "market_cap_usd": 711970000,
+        "share_pct": 88.59
+      },
+      {
+        "symbol": "USDV",
+        "market_cap_usd": 72770000
+      },
+      {
+        "symbol": "EURCV",
+        "market_cap_usd": 11210000
+      },
+      {
+        "symbol": "USDC",
+        "market_cap_usd": 4960000
+      },
+      {
+        "symbol": "EURQ",
+        "market_cap_usd": 1120000
+      },
+      {
+        "symbol": "USDQ",
+        "market_cap_usd": 1000000
+      }
+    ],
+    "notes": "Provider snapshot, not a direct RPC replay; values may reflect provider-specific circulating-supply definitions."
+  },
+  "reserve_snapshot": {
+    "issuer_transparency_as_of": "2026-10-29",
+    "circulating_rlusd_usd": 2627000000,
+    "reserve_funds_usd": 2758600000,
+    "implied_coverage_ratio_pct": 105.01,
+    "independent_attestation_latest_available": "2026-09-30 17:00 America/New_York",
+    "note": "Do not combine the October 29 live issuer page with the September 30 attestation as if simultaneous."
+  },
+  "hypotheses": [
+    {
+      "id": "H01",
+      "hypothesis": "Recurring month-end issuer/market-maker inventory management caused the October 30 XRPL supply drop, with reissuance expected after month-end.",
+      "supporting_claims": [
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "counter_evidence": [
+        "R05",
+        "R18"
+      ],
+      "test": "Track the funnel and issuer obligations through Nov 3-5; compare reissue timing and amounts with January-September month-end cycles."
+    },
+    {
+      "id": "H02",
+      "hypothesis": "A substantial portion of the October 30 return was genuine customer redemption, reducing global RLUSD supply.",
+      "supporting_claims": [
+        "R02",
+        "R05"
+      ],
+      "counter_evidence": [
+        "R04"
+      ],
+      "test": "Reconcile issuer obligations, Ethereum totalSupply, Ripple transparency updates, reserve report and any public redemption statements."
+    },
+    {
+      "id": "H03",
+      "hypothesis": "Some RLUSD was reallocated from XRPL to Ethereum, but chain migration explains only part of the observed XRPL reduction.",
+      "supporting_claims": [
+        "R05"
+      ],
+      "counter_evidence": [
+        "R05"
+      ],
+      "test": "Replay exact XRPL issuer returns and Ethereum mint events at aligned timestamps; identify mirrored transaction amounts rather than infer from daily totals."
+    },
+    {
+      "id": "H04",
+      "hypothesis": "The supply decline is a ledger-wide liquidity shock that materially impaired XRP/RLUSD execution.",
+      "supporting_claims": [
+        "R01",
+        "R02"
+      ],
+      "counter_evidence": [
+        "R07",
+        "R08"
+      ],
+      "test": "Measure multiple AMM pools, full funded order-book depth and fixed-size slippage in both directions at synchronized ledger heights."
+    },
+    {
+      "id": "H05",
+      "hypothesis": "The supply decline is operational/issuer-side and has limited immediate effect on XRP market liquidity.",
+      "supporting_claims": [
+        "R03",
+        "R04",
+        "R07",
+        "R16"
+      ],
+      "counter_evidence": [
+        "R05",
+        "R08"
+      ],
+      "test": "Monitor actual pool balances, order-book depth, issuer returns and exchange/OTC liquidity after month-end."
+    },
+    {
+      "id": "H06",
+      "hypothesis": "MiCA transition risk may influence issuer or distributor inventory management.",
+      "supporting_claims": [],
+      "counter_evidence": [
+        "R17",
+        "R18"
+      ],
+      "test": "Treat as speculation only unless a regulator, Ripple, custodian or distributor explicitly connects the event to compliance action."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Standard Custody & Trust Company",
+      "to": "RLUSD",
+      "relationship": "issuer under NYDFS supervision",
+      "status": "confirmed",
+      "source_ids": [
+        "S05",
+        "S07"
+      ]
+    },
+    {
+      "from": "Ripple National Trust Bank",
+      "to": "RLUSD reserves",
+      "relationship": "approved future reserve-management and collateral-trustee role",
+      "status": "approved_not_yet_operational",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD reserves",
+      "relationship": "primary reserve custodian per Ripple announcement",
+      "status": "company_disclosed",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "from": "Standard Chartered DIFC Branch",
+      "to": "RLUSD on XRPL",
+      "relationship": "institutional custody",
+      "status": "live_since_2026_10_12",
+      "source_ids": [
+        "S06"
+      ]
+    },
+    {
+      "from": "Standard Chartered",
+      "to": "LMAX Group",
+      "relationship": "planned collateral mirroring for eligible RLUSD",
+      "status": "conditional_not_live",
+      "source_ids": [
+        "S06"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relationship": "Prime/Exchange/retail app listing",
+      "status": "announced_2026_10_28",
+      "source_ids": [
+        "S10"
+      ]
+    },
+    {
+      "from": "RLUSD issuer",
+      "to": "XRP Ledger obligations",
+      "relationship": "issue and destroy trust-line token balances",
+      "status": "protocol_confirmed",
+      "source_ids": [
+        "S08",
+        "S09"
+      ]
+    },
+    {
+      "from": "XRP/RLUSD AMM pool",
+      "to": "XRP and RLUSD liquidity",
+      "relationship": "sampled pool reserves stable during ledger-wide RLUSD supply contraction",
+      "status": "single_pool_observation",
+      "source_ids": [
+        "S03"
+      ]
+    }
+  ],
+  "feature_store_rules": [
+    "Store issuer obligations at exact ledger hashes and indexes, not only daily provider market-cap snapshots.",
+    "Query gateway_balances with known operational wallets excluded and preserve both gross and adjusted obligations.",
+    "Store gross returns, gross issues, net obligations, Ethereum totalSupply, cross-chain net supply and reserve attestations as separate measures.",
+    "Do not equate issuer returns with completed cash redemption.",
+    "Track RLUSD/USDC issuer concentration separately from XRP principal demand.",
+    "Measure AMM pool balances, order-book funded depth and fixed-size execution cost in both trade directions at synchronized ledger heights.",
+    "Treat Standard Chartered custody as live, LMAX collateral mirroring as conditional, and Ripple National Trust Bank as approved but not yet operational.",
+    "Do not issue a price forecast from a stablecoin supply contraction without out-of-sample evidence."
+  ],
+  "source_records": [
+    {
+      "id": "S01",
+      "publisher": "DefiLlama",
+      "type": "XRPL stablecoin market dashboard",
+      "observed": "2026-11-02",
+      "url": "https://defillama.com/stablecoins/xrpl"
+    },
+    {
+      "id": "S02",
+      "publisher": "Coindaro",
+      "type": "transaction-level XRPL issuer-return investigation",
+      "published": "2026-11-02",
+      "url": "https://www.coindaro.com/rlusd-supply-xrp-ledger-burns/"
+    },
+    {
+      "id": "S03",
+      "publisher": "CryptoSlate",
+      "type": "market/liquidity analysis with NOSHASHI ledger readings",
+      "published": "2026-11-02",
+      "url": "https://cryptoslate.com/rlusd-supply-fell-29-on-xrpl-one-xrp-trading-pool-barely-changed/"
+    },
+    {
+      "id": "S04",
+      "publisher": "Ripple",
+      "type": "issuer transparency page",
+      "observed": "2026-10-29",
+      "url": "https://ripple.com/products/stablecoin/transparency/"
+    },
+    {
+      "id": "S05",
+      "publisher": "Standard Custody & Trust Company / independent accountant",
+      "type": "September 2026 RLUSD reserve attestation",
+      "report_dates": [
+        "2026-09-21",
+        "2026-09-30"
+      ],
+      "url": "https://cdn.sanity.io/files/ior4a5y3/production/850ed07e8f0556b3b1c1d43eb2a0fc4ef6538ce1.pdf/RLUSD%20Attestation%20Report%20%28Sep%29_Final%20Signed.pdf"
+    },
+    {
+      "id": "S06",
+      "publisher": "Ripple / Standard Chartered / LMAX",
+      "type": "official custody and planned collateral announcement",
+      "published": "2026-10-12",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/"
+    },
+    {
+      "id": "S07",
+      "publisher": "Ripple",
+      "type": "official OCC national trust bank final approval announcement",
+      "published": "2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/"
+    },
+    {
+      "id": "S08",
+      "publisher": "XRP Ledger documentation",
+      "type": "gateway_balances API",
+      "retrieved": "2026-11-03",
+      "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances"
+    },
+    {
+      "id": "S09",
+      "publisher": "XRP Ledger documentation",
+      "type": "issuer/operational account funds lifecycle",
+      "retrieved": "2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/accounts/account-types"
+    },
+    {
+      "id": "S10",
+      "publisher": "Coinbase",
+      "type": "official RLUSD listing announcement",
+      "published": "2026-10-28",
+      "url": "https://www.coinbase.com/en-es/blog/landing"
+    },
+    {
+      "id": "S11",
+      "publisher": "XRP Breadcrumbs",
+      "type": "September 29 XRPL stablecoin supply cross-provider comparison",
+      "published": "2026-10-01",
+      "url": "https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/"
+    }
+  ],
+  "next_actions": [
+    "Replay RLUSD issuer gateway_balances at pinned ledger heights covering Oct 29, Oct 30, Oct 31, Nov 2 and Nov 3; record ledger hashes and exclude known operational wallets separately.",
+    "Identify the 12 public transaction hashes and the five feeder wallets; retain labels as unknown unless independently verified.",
+    "Reconcile Ethereum RLUSD totalSupply and mint/burn events at aligned UTC timestamps; separate chain reallocation from net global contraction.",
+    "Track the issuer-return funnel for reissuance after the first business day of November; compare with prior month-end cycles.",
+    "Capture October 2026 independent CPA reserve attestation when published and reconcile it with Ripple's Oct 29 live transparency page.",
+    "Measure multiple XRP/RLUSD AMM pools and funded order books at fixed 10,000-RLUSD size in both directions.",
+    "Monitor Standard Chartered custody usage, LMAX collateral activation and Ripple National Trust Bank operational opening.",
+    "Keep RLUSD/USDC supply, XRP fee burn and XRP bridge liquidity as separate features."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "paper_position": false
+  }
+}

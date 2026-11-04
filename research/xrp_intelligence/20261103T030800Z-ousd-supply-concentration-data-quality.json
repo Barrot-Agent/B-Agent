@@ -1,0 +1,325 @@
+{
+  "schema_version": "barrot.stablecoin.capital-data-quality.v1",
+  "artifact_id": "20261103T030800Z-ousd-supply-concentration-data-quality",
+  "created_at_utc": "2026-11-03T03:08:00Z",
+  "data_cutoff_utc": "2026-11-03T03:08:00Z",
+  "focus": "Open Standard OUSD actual circulation, reserve coverage, partner concentration, economic activity and source reconciliation",
+  "relation_to_xrp": "OUSD is an indirect stablecoin ecosystem/competition variable. It is not natively listed on XRPL in the reviewed official documentation; no direct XRP usage is established.",
+  "forecast_status": "NOT_ISSUED",
+  "claims": [
+    {
+      "id": "O01",
+      "class": "sourced_claim",
+      "claim": "Crystal Intelligence's October 6 first-week analysis reports OUSD circulating supply of USD 666.3M as of October 5 04:00 UTC; Bridge had minted approximately USD 717M and burned approximately USD 51M.",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "id": "O02",
+      "class": "sourced_claim",
+      "claim": "Crystal Intelligence reports Coinbase received USD 200M of OUSD as four equal USD 50M legs, one per chain, and that all USD 200M remained in Coinbase custody at the October 5 observation. This does not establish beneficial ownership or active use.",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "id": "O03",
+      "class": "sourced_claim",
+      "claim": "Crystal Intelligence reports ten wallets held 74% of OUSD and 64 wallets holding at least USD 1M held 99.5% of supply at the October 5 observation.",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "id": "O04",
+      "class": "sourced_claim",
+      "claim": "Crystal Intelligence reports approximately USD 4.1M of DEX trading over the first six days, about 0.6% of the USD 666.3M supply.",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "id": "O05",
+      "class": "sourced_claim",
+      "claim": "Crystal Intelligence reports 8,377 of 11,544 Tempo OUSD transfers (about 72.6%) were fee payments worth approximately USD 3.33 because Tempo permits stablecoin-denominated transaction fees. Raw transfer counts therefore overstate economic payment activity.",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "id": "O06",
+      "class": "sourced_claim",
+      "claim": "Bridge's OUSD transparency snapshot saved for October 23 22:50 UTC reports USD 839,812,712.74 reserve assets against USD 837,812,596.33 supply, 100.24% coverage and USD 2,000,116.41 surplus. Reported reserve composition: USD 736,949,721.75 Treasuries (87.96%) and USD 100,862,877 cash (12.04%). The dashboard explicitly says it is informational and not an independent reserve attestation.",
+      "source_ids": [
+        "S06"
+      ]
+    },
+    {
+      "id": "O07",
+      "class": "sourced_claim",
+      "claim": "DefiLlama's OUSD stablecoin page reports total circulating supply of 893.12M as of November 1, 2026, distributed as Tempo 599.93M, Ethereum 120.27M, Base 92.26M and Solana 80.66M.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "O08",
+      "class": "sourced_claim",
+      "claim": "OUSD.watch reports 678.2M total supply as of November 3, 2026 02:18 UTC, with Tempo 471.798452M, Solana 81.060773M, Base 65.021340M and Ethereum 60.279906M.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "O09",
+      "class": "sourced_claim",
+      "claim": "CoinMarketCap's retrieved OUSD page reports 880.79M total/circulating supply; CoinGecko's November 2 historical row reports approximately USD 893.088M market capitalization. These values are much closer to DefiLlama than OUSD.watch; the providers may share upstream supply sources and are not assumed independent.",
+      "source_ids": [
+        "S03",
+        "S04"
+      ]
+    },
+    {
+      "id": "O10",
+      "class": "sourced_claim",
+      "claim": "Solscan's OUSD Solana token page reports current supply 80,615,511.66664, close to OUSD.watch's 81.060773M and DefiLlama's 80.66M Solana values.",
+      "source_ids": [
+        "S05"
+      ]
+    },
+    {
+      "id": "O11",
+      "class": "derived",
+      "claim": "Using the displayed chain totals, DefiLlama's 893.12M exceeds OUSD.watch's 678.160471M by approximately 214.959529M, or 24.07% of the DefiLlama total. Per-chain differences are approximately +128.131548M Tempo, +59.990094M Ethereum, +27.238660M Base and -0.400773M Solana.",
+      "source_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "O12",
+      "class": "data_quality_warning",
+      "claim": "OUSD.watch's daily history shows Tempo 471.8M, Base 65.0M and Ethereum 60.3M unchanged from early October through November 3, while DefiLlama and the cached Bridge October 23 snapshot show materially higher values on those EVM chains. This pattern is consistent with stale indexing, contract/address mapping differences or a circulation-definition mismatch. It is not resolved.",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ]
+    },
+    {
+      "id": "O13",
+      "class": "disconfirming_evidence",
+      "claim": "The Solana component is broadly consistent across OUSD.watch, DefiLlama and Solscan. The main discrepancy is concentrated on Tempo, Ethereum and Base, so the conflict is not simply a uniform all-chain valuation difference.",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ]
+    },
+    {
+      "id": "O14",
+      "class": "unknown",
+      "claim": "The exact cause of the 214.96M supply discrepancy is unknown. Direct totalSupply/balance replay at pinned block heights for all four official contracts has not been executed in this run.",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ]
+    },
+    {
+      "id": "O15",
+      "class": "unknown",
+      "claim": "The beneficial owner(s) of the USD 200M held in Coinbase custody in Crystal Intelligence's October 5 analysis are not established. Custody must not be equated with Coinbase proprietary inventory.",
+      "source_ids": [
+        "S07"
+      ]
+    },
+    {
+      "id": "O16",
+      "class": "inference",
+      "claim": "OUSD headline circulation and partner count materially overstate broad end-user adoption if the first-week concentration and low DEX volume remained representative. Later supply growth must be separated from actual payments, turnover and independent holders before drawing adoption conclusions.",
+      "source_ids": [
+        "S01",
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "id": "O17",
+      "class": "disconfirming_evidence",
+      "claim": "OUSD's official native chain list is Base, Ethereum, Solana and Tempo, not XRPL. OUSD partner relationships involving Coinbase, Ripple and SBI do not establish XRP as OUSD collateral, bridge asset or settlement currency.",
+      "source_ids": [
+        "S08",
+        "S09"
+      ]
+    },
+    {
+      "id": "O18",
+      "class": "methodological_rule",
+      "claim": "Do not select a canonical OUSD supply from these conflicting providers until direct contract reads and mint/burn reconciliation are completed. Store each provider's value, chain coverage, timestamp and methodology separately.",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ]
+    }
+  ],
+  "calculations": {
+    "defillama_total_m": 893.12,
+    "ousd_watch_chain_sum_m": 678.160471,
+    "absolute_difference_m": 214.959529,
+    "difference_pct_of_defillama": 24.067,
+    "chain_differences_m": {
+      "tempo": 128.131548,
+      "ethereum": 59.990094,
+      "base": 27.23866,
+      "solana": -0.400773
+    },
+    "first_week_dex_volume_pct_of_supply": 0.615,
+    "tempo_fee_transfer_share_pct": 72.6
+  },
+  "hypotheses": [
+    {
+      "id": "H01",
+      "hypothesis": "OUSD.watch's EVM chain data is stale or mapped to older contract addresses; DefiLlama/CMC/CoinGecko and Bridge's October 23 snapshot are closer to current circulation.",
+      "supporting_claims": [
+        "O06",
+        "O07",
+        "O09",
+        "O12"
+      ],
+      "counter_evidence": [
+        "O10",
+        "O13"
+      ],
+      "test": "Call totalSupply and enumerate mint/burn events for official Tempo, Ethereum and Base contracts at pinned block heights; compare exact addresses to each indexer's mappings."
+    },
+    {
+      "id": "H02",
+      "hypothesis": "DefiLlama/CMC/CoinGecko are overstating circulation through duplicate, wrapped, locked or otherwise non-circulating representations.",
+      "supporting_claims": [
+        "O08",
+        "O14"
+      ],
+      "counter_evidence": [
+        "O06",
+        "O07"
+      ],
+      "test": "Reconcile token contract totalSupply against circulating definitions, Bridge issuer API, bridge escrow balances and cross-chain lock/mint relationships."
+    },
+    {
+      "id": "H03",
+      "hypothesis": "OUSD supply is concentrated in launch/partner custody rather than broad end-user payments.",
+      "supporting_claims": [
+        "O02",
+        "O03",
+        "O04",
+        "O05"
+      ],
+      "counter_evidence": [],
+      "test": "Track beneficial-owner disclosures where public, holder concentration, net active holders, economic transfers excluding fee payments, DEX depth and redemption/mint flows."
+    },
+    {
+      "id": "H04",
+      "hypothesis": "OUSD can be a meaningful competitor for stablecoin distribution economics without creating material XRP token demand.",
+      "supporting_claims": [
+        "O17"
+      ],
+      "counter_evidence": [],
+      "test": "Measure production integrations and settlement paths; require XRPL contract deployment or XRP-denominated liquidity/bridge evidence before adding an XRP demand edge."
+    }
+  ],
+  "source_records": [
+    {
+      "id": "S01",
+      "publisher": "DefiLlama",
+      "type": "stablecoin supply dashboard",
+      "observed": "2026-11-01",
+      "url": "https://defillama.com/stablecoin/open-usd"
+    },
+    {
+      "id": "S02",
+      "publisher": "OUSD.watch",
+      "type": "multi-chain mint/burn dashboard",
+      "observed": "2026-11-03T02:18:00Z",
+      "url": "https://ousd.watch/"
+    },
+    {
+      "id": "S03",
+      "publisher": "CoinMarketCap",
+      "type": "token market-data page",
+      "observed": "retrieved 2026-11-03; exact seconds unavailable",
+      "url": "https://coinmarketcap.com/currencies/open-usd/"
+    },
+    {
+      "id": "S04",
+      "publisher": "CoinGecko",
+      "type": "historical market-data row",
+      "observed": "2026-11-02",
+      "url": "https://www.coingecko.com/en/coins/open-usd/historical_data"
+    },
+    {
+      "id": "S05",
+      "publisher": "Solscan",
+      "type": "Solana token explorer",
+      "observed": "retrieved 2026-11-03; exact seconds unavailable",
+      "url": "https://solscan.io/token/ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB"
+    },
+    {
+      "id": "S06",
+      "publisher": "Bridge / OUSD transparency dashboard",
+      "type": "issuer reserve and supply snapshot",
+      "observed": "2026-10-23T22:50:00Z",
+      "url": "https://ousd.fyi/"
+    },
+    {
+      "id": "S07",
+      "publisher": "Crystal Intelligence",
+      "type": "independent first-week onchain analysis",
+      "observed": "balances as of 2026-10-05T04:00:00Z",
+      "url": "https://crystalintelligence.com/stablecoin/ousd-stablecoin-first-week-on-chain-analysis/"
+    },
+    {
+      "id": "S08",
+      "publisher": "Open Standard",
+      "type": "official integration documentation",
+      "observed": "retrieved 2026-11-03",
+      "url": "https://joinopenstandard.com/integrate/"
+    },
+    {
+      "id": "S09",
+      "publisher": "Open Standard",
+      "type": "public network partner roster",
+      "observed": "last updated 2026-10-21",
+      "url": "https://joinopenstandard.com/partners/"
+    }
+  ],
+  "feature_store_rules": [
+    "Keep DefiLlama, OUSD.watch, CMC, CoinGecko, Bridge and Solscan observations in separate provider-specific series.",
+    "Use pinned block heights and exact contract addresses for each network.",
+    "Track totalSupply, circulating definition, bridge/escrow balances, mint/burn events, holders, active holders, concentration, DEX liquidity and economic transfer volume separately.",
+    "Exclude Tempo fee-payment transfers from economic payment counts and record their fee value separately.",
+    "Do not equate launch commitments, issuer reserve assets, circulating supply, partner custody balances or DEX turnover.",
+    "Do not use OUSD supply as an XRP price signal until a measured out-of-sample relationship is established."
+  ],
+  "next_actions": [
+    "Directly query official OUSD contracts on Tempo, Ethereum, Base and Solana at pinned block heights.",
+    "Resolve the 214.96M total-supply difference and per-chain address mapping.",
+    "Reconcile Bridge's issuer transparency API with independent chain balances and reserve coverage.",
+    "Reconstruct Coinbase's four USD 50M OUSD legs and subsequent custody movements without inferring beneficial ownership.",
+    "Update the stablecoin feature store with fee-adjusted economic transfer counts and holder concentration.",
+    "Continue Circle, Coinbase, Ripple, SBI and Open Standard relationship monitoring."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "paper_position": false
+  }
+}
