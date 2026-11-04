@@ -234,6 +234,13 @@ def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> 
 
 
 def main() -> None:
+    if not SUBMISSION_ALLOWLIST:
+        log.warning(
+            "No explicit KAGGLE_SUBMISSION_ALLOWLIST supplied; "
+            "skipping before Kaggle authentication or API calls."
+        )
+        return
+
     api = _build_api()
     competitions = _list_active_competitions(api)
 
