@@ -1,17 +1,32 @@
-name: Restart Barrot Space
+name: Restart Barrot Space (explicit approval required)
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit approval for this factory restart"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+
+permissions:
+  contents: read
 
 jobs:
   restart:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: Factory-restart the Space via stored HF_TOKEN
+      - name: Factory-restart the Space after approval
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          echo "=== restarting Barrot-Omega ==="
-          curl -s -X POST "https://huggingface.co/api/spaces/Scribedpengenius/Barrot-Omega/restart?factory=true" \
-            -H "Authorization: Bearer $HF_TOKEN" \
-            -w "\nHTTP:%{http_code}\n"
+          set -euo pipefail
+          test -n "$HF_TOKEN"
+          curl --fail --show-error --silent -X POST \
+            "https://huggingface.co/api/spaces/Scribedpengenius/Barrot-Omega/restart?factory=true" \
+            -H "Authorization: Bearer $HF_TOKEN"
