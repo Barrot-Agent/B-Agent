@@ -26,3 +26,17 @@ No `uv.lock`, `poetry.lock`, `Pipfile.lock`, npm lockfile, Cargo lockfile, or ot
 There are no lockfiles. `pip-audit -r` resolves current compatible package versions from declared ranges; it does not prove which exact package builds are installed in every deployed environment. The legacy and supplemental manifest deployment use remains partly unresolved. Results are resolver snapshots, not a reproducible deployed SBOM.
 
 The workflow uses the repository's current major-tag action convention (`actions/checkout@v4`, `actions/setup-python@v5`). Immutable SHA pinning of third-party actions remains a separate supply-chain hardening task.
+
+
+## 2026-11-04 integrated branch verification
+
+Current exact-head baseline: `integration/security-preservation-dependency-current-main-20261104` at `38aaeff1cc1ab7cf2f1b2fdbd5821ed089e7bd69`.
+
+- Full repository suite: 718 passed, 8 subtests passed (CI run 41798985021).
+- Core suite: 484 passed, 8 subtests passed (same CI run).
+- Fail-closed gate: passed (41798985066).
+- Read-only dependency audit: all four manifests passed (41798985116).
+- The current baseline snapshot is recorded in `research/operations/20261104T082624Z-dependency-audit-baseline.json`.
+- Runtime dependencies PyJWT, cryptography, numpy and websockets are declared in both `requirements.txt` and `pyproject.toml`.
+- The supplemental `requirements.tx` manifest remains separately audited because its distinct consumer is unresolved.
+- No lockfiles were found; pip-audit results are current resolver snapshots, not proof of exact deployed package builds.
