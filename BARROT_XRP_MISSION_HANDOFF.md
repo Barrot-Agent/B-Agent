@@ -371,3 +371,22 @@ A documentation-only successor commit `0a3585740382f88c85a0d2d474eef478a4815e65`
 **Governance/side effects:** classic branch-protection inspection returned 403 and the visible fallback ruleset is disabled; required approvals/checks cannot be independently confirmed. GitHub Actions history shows a Pages build/deployment after the previous main update; the Pages settings endpoint was not accessible through the current connector. No further merge is authorized while an unapproved automatic deployment side effect remains unresolved. Do not disable Pages or take a deployment action without specific approval.
 
 **Current run outcome:** no PR merged, no deployment, no paper trade, no secret rotation, no Kaggle submission and no real-money action. Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Continue in #1640 and do not create another PR for the same integration. Next action: verify the new exact-head tests, then consolidate the remaining direct-main writers and push-triggered deployment gates into the same integrated review path or a single explicitly superseding security successor if the diff becomes incoherent.
+
+
+## 2026-11-04 09:25 UTC — Exact-head test results and deployment containment
+
+The latest code-hardening commit is `891f98cda2c4c35d2ae1e67e1cea9cc226c578e7`, four commits ahead of current main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Exact-head verification completed:
+- Core CI: **536 passed, 8 subtests passed**.
+- Full repository suite: **769 passed, 8 subtests passed**.
+- Four-manifest dependency audit: passed.
+- Fail-closed gate: passed; the gate still explicitly reports merge disabled pending gate verification.
+
+The MMI validation, ledger, structural-empty-constraint and legacy paper-trader corrections are now covered by those exact-head results. The BTC paper-trader workflow has a main-ref and explicit-YES gate on the PR branch; it was not executed.
+
+Two previously push-triggered external deployments are being changed on this same integration branch to manual, exact-main-SHA, explicit-YES dispatches:
+- Cloudflare A2A Worker deployment.
+- Hugging Face self-hosted brain synchronization.
+
+They remain push-triggered on current main until this branch is approved and merged. The Hugging Face workflow also had a missing `BRAIN_SHARED_SECRET` environment mapping; the integration adds it only to the post-confirmation deployment step.
+
+The full workflow audit still identifies the direct-main writers listed above. These are not yet contained on main. Pages deployment settings remain inaccessible and a Pages build/deployment was observed after a previous main update. No merge is made while these unapproved side effects remain unresolved.

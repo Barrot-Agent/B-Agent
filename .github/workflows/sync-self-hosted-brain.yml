@@ -1,17 +1,39 @@
 name: Sync Self-Hosted Brain
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "self_hosted_brain/**"
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: Type YES to approve this Hugging Face Space deployment
+        required: true
+        type: choice
+        options: ["NO", "YES"]
+      expected_main_sha:
+        description: Exact 40-character current main commit SHA
+        required: true
+        type: string
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm == 'YES'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Verify explicit approval and exact main revision
+        env:
+          CONFIRM: ${{ inputs.confirm }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -euo pipefail
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::Dispatch from main is required"; exit 1; }
+          [[ "$CONFIRM" == "YES" ]] || { echo "::error::Explicit YES confirmation required"; exit 1; }
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::A full main SHA is required"; exit 1; }
+          git fetch --no-tags origin main
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::Checked-out SHA differs from approval"; exit 1; }
+          [[ "$(git rev-parse origin/main)" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::main advanced after approval"; exit 1; }
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
@@ -19,6 +41,7 @@ jobs:
       - name: Deploy self_hosted_brain/ to its own Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}
         run: |
           python3 - << 'SCRIPT'
           from huggingface_hub import HfApi
