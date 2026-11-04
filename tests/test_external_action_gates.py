@@ -154,10 +154,10 @@ def test_no_active_scheduled_workflow_can_write_or_merge() -> None:
 
     for path in WORKFLOWS.glob("*.yml"):
         content = path.read_text(encoding="utf-8")
-        if not re.search(r"^\\s{2}schedule:", content, flags=re.MULTILINE):
+        if not re.search(r"^\s{2}schedule:", content, flags=re.MULTILINE):
             continue
         assert not re.search(
-            r"^\\s+(?:contents|actions|issues|pull-requests):\\s*write\\b",
+            r"^\s+(?:contents|actions|issues|pull-requests):\s*write\b",
             content,
             flags=re.MULTILINE,
         ), path.name
