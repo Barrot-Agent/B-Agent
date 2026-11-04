@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "coinbase_circle_stablecoin_strategy_snapshot",
+  "captured_at_utc": "2026-11-02T15:00:00Z",
+  "evidence_cutoff_utc": "2026-11-02T15:00:00Z",
+  "primary_sources": [
+    {
+      "publisher": "Coinbase",
+      "date": "2026-10-29",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "type": "official_earnings_release"
+    },
+    {
+      "publisher": "SEC",
+      "date": "2026-10-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/coin-20261029.htm",
+      "type": "Form_8-K_with_earnings_presentation"
+    },
+    {
+      "publisher": "Reuters",
+      "date": "2026-10-28",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "type": "independent_listing_report"
+    },
+    {
+      "publisher": "Investing.com",
+      "date": "2026-10-29",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-coinbase-posts-q3-2026-eps-beat-as-stock-falls-after-hours-93CH-4985391",
+      "type": "earnings_call_transcript_secondary_publication"
+    },
+    {
+      "publisher": "SEC",
+      "date": "2026-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "type": "Circle_Q2_2026_Form_10_Q"
+    }
+  ],
+  "company_reported_q3_2026_metrics": {
+    "crypto_trading_volume_market_share_percent": 10.7,
+    "assets_on_platform_share_of_total_crypto_market_cap_percent": 12.5,
+    "average_usdc_held_in_coinbase_products_usd_billion": 22,
+    "average_usdc_held_share_of_average_usdc_market_cap_percent": 30,
+    "average_usdc_market_cap_usd_billion_approx": 73,
+    "stablecoin_revenue_usd_million": 306.9,
+    "subscription_and_services_share_of_net_revenue_percent": 49,
+    "two_year_derivatives_volume_cagr_percent": 179,
+    "average_daily_loan_book_growth_yoy_percent": 74,
+    "prediction_markets_annualized_revenue_usd_million": 200,
+    "base_positioning": "Coinbase describes Base as the leading L2 for spot crypto trading and DeFi TVL as of Q3 2026"
+  },
+  "management_commentary_from_call": {
+    "classification": "MANAGEMENT_STATEMENT_IN_PUBLISHED_CALL_TRANSCRIPT",
+    "points": [
+      "Coinbase described its listing/support approach as asset-agnostic: it intends to support assets customers want to trade or transact with.",
+      "Coinbase said its commercial relationship with Circle gives it a strong economic interest in growing USDC.",
+      "Coinbase described its role as distribution, customer relationships and infrastructure, with deeper USDC integration into product transaction flows.",
+      "Management said USDC is used as collateral with its derivatives exchange and is integrated into Base payments and the Coinbase Developer Platform.",
+      "Management said Coinbase and Circle compete in some areas of stablecoin payment infrastructure while remaining mutually incentivized to grow the overall USDC market.",
+      "Management stated Coinbase captured approximately 50% of overall USDC economics over the preceding year and held approximately 30% of USDC circulation as assets on its platform."
+    ],
+    "limits": [
+      "The transcript is hosted by a third-party transcript publisher; the statements are attributed to Coinbase executives but are not a substitute for the SEC filing.",
+      "The 50% figure refers to the commercial economics of USDC under Coinbase/Circle arrangements, not 50% of Circle revenue, equity ownership or all stablecoin economics.",
+      "The 30% figure is an approximate average-balance share, not a point-in-time legal ownership or reserve ratio."
+    ]
+  },
+  "rlusd_listing": {
+    "classification": "CONFIRMED_REPORTED",
+    "source": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+    "availability_start": "2026-10-28",
+    "scope": "Coinbase retail and institutional platforms",
+    "context": [
+      "Coinbase had USDC as its flagship stablecoin and had expanded support to PYUSD and Open USD before adding RLUSD.",
+      "RLUSD market capitalization was reported above USD 2.5B at the time of the Reuters article."
+    ],
+    "limits": [
+      "Listing does not establish net new RLUSD issuance, deposits, order-book depth, settlement volume or XRP demand.",
+      "The publication-time market capitalization is not a current value.",
+      "No evidence establishes that the RLUSD listing terminated or materially reduced Coinbase's USDC distribution agreement with Circle."
+    ]
+  },
+  "circle_relationship_context": {
+    "classification": "CONFIRMED_FROM_COINBASE_MANAGEMENT_AND_CIRCLE_SEC_FILING",
+    "claims": [
+      "Coinbase publicly describes a commercial relationship with Circle and an economic interest in growing USDC.",
+      "Circle's Q2 2026 SEC filing describes Coinbase distribution-cost arrangements linked to USDC held on Coinbase and broader ecosystem growth.",
+      "Coinbase's Q3 2026 statement that it captured about 50% of USDC economics is a management-reported commercial metric; Circle's distribution-cost disclosures are a separate accounting view and should not be directly equated without reconciliation."
+    ],
+    "limits": [
+      "Circle's Q3 2026 results are not yet published at this evidence cutoff; the Q2 filing remains the latest detailed Circle SEC cost disclosure.",
+      "Coinbase and Circle can cooperate on USDC distribution while competing in payment infrastructure; neither relationship should be simplified to pure partnership or pure competition."
+    ]
+  },
+  "relationship_graph": {
+    "edges": [
+      {
+        "from": "Coinbase",
+        "to": "Circle",
+        "relation": "USDC_distribution_and_revenue_sharing_commercial_agreement",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "USDC",
+        "relation": "distribution_custody_and_product_integration",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "Circle",
+        "to": "USDC",
+        "relation": "issuer",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "RLUSD",
+        "relation": "retail_and_institutional_exchange_listing",
+        "status": "CONFIRMED_REPORTED"
+      },
+      {
+        "from": "Ripple",
+        "to": "RLUSD",
+        "relation": "issuer",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "PYUSD",
+        "relation": "exchange_support",
+        "status": "CONFIRMED_REPORTED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "Open_USD",
+        "relation": "exchange_support_and_issuer_JV_association",
+        "status": "CONFIRMED_REPORTED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "Base",
+        "relation": "L2_ecosystem_operator_and_product_integration",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "USDC",
+        "relation": "uses_as_derivatives_collateral_and_Base_payment_asset",
+        "status": "MANAGEMENT_STATEMENT"
+      },
+      {
+        "from": "Coinbase",
+        "to": "XRP",
+        "relation": "cbXRP_reserve_wrapping_and_Morpho_collateral_path",
+        "status": "CONFIRMED_FROM_PRIOR_ARTIFACT"
+      },
+      {
+        "from": "Coinbase",
+        "to": "XRP",
+        "relation": "XRP_cross_collateral_and_derivatives_products",
+        "status": "CONFIRMED_FROM_PRIOR_RESEARCH"
+      }
+    ],
+    "absent_or_unknown_edges": [
+      {
+        "from": "Coinbase",
+        "to": "Circle",
+        "relation": "exclusive_distribution_or_exclusivity",
+        "status": "NOT_ESTABLISHED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "Ripple",
+        "relation": "direct_equity_or_strategic_ownership",
+        "status": "NOT_ESTABLISHED"
+      },
+      {
+        "from": "Coinbase",
+        "to": "RLUSD",
+        "relation": "issuer_or_reserve_custodian",
+        "status": "NOT_ESTABLISHED"
+      },
+      {
+        "from": "Circle",
+        "to": "RLUSD",
+        "relation": "issuer_or_reserve_custodian",
+        "status": "NOT_ESTABLISHED"
+      }
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_COINBASE_ASSET_AGNOSTIC_DISTRIBUTOR",
+      "statement": "Coinbase seeks to distribute multiple regulated stablecoins and monetize custody, trading, payments and collateral across assets, while maintaining a strong economic incentive to grow USDC.",
+      "support": [
+        "Q3 company results show USDC scale; management described asset-agnostic support and Circle economic relationship; Coinbase listed RLUSD."
+      ],
+      "disconfirming": [
+        "No product-level revenue or flow disclosure for RLUSD after listing; USDC remains economically dominant in Coinbase metrics."
+      ],
+      "tests": [
+        "Stablecoin balances by asset and chain",
+        "RLUSD and USDC order-book depth and venue share",
+        "Coinbase revenue and incentives by stablecoin",
+        "Issuer mint/redemption flows"
+      ]
+    },
+    {
+      "id": "H2_RLUSD_LISTING_REDIRECTS_USDC_SHARE",
+      "statement": "RLUSD listing could divert some Coinbase stablecoin activity from USDC to RLUSD.",
+      "support": [
+        "Coinbase now distributes RLUSD across retail and institutional platforms."
+      ],
+      "disconfirming": [
+        "Coinbase's Q3 USDC balances reached a record $22B and management described a strong economic incentive to grow USDC."
+      ],
+      "tests": [
+        "Post-listing RLUSD balances and volume",
+        "USDC balances on Coinbase before/after listing",
+        "Stablecoin net issuance and redemption by chain"
+      ]
+    },
+    {
+      "id": "H3_COMPLEMENTARY_MULTI_ISSUER_EXPANSION",
+      "statement": "Coinbase's multi-issuer listing may expand overall stablecoin choice and total activity without materially cannibalizing USDC.",
+      "support": [
+        "Management said Coinbase is asset-agnostic and supports customer choice; Coinbase and Circle remain incentivized to grow USDC."
+      ],
+      "disconfirming": [
+        "The same executives acknowledge competition in payment infrastructure; stablecoin supply and customer demand can shift between issuers."
+      ],
+      "tests": [
+        "Total stablecoin balances and transactions on Coinbase",
+        "Net new issuance versus issuer substitution",
+        "Payment route share and end-user retention"
+      ]
+    }
+  ],
+  "prediction_policy": {
+    "status": "NOT_ISSUED",
+    "reason": "Company strategy and listing announcements are not quantified XRP demand. Product balances and USDC economics do not identify incremental XRP spot purchases or XRPL settlement.",
+    "features_to_track": [
+      "Coinbase XRP and cbXRP balances",
+      "Coinbase RLUSD and USDC balances by chain",
+      "RLUSD/USDC trading pairs and depth",
+      "Morpho cbXRP collateral and liquidation activity",
+      "Ripple Prime derivatives volume",
+      "BNY custody and RLUSD mint/redeem disclosures"
+    ]
+  },
+  "upcoming_checkpoint": {
+    "circle_q3_results": "2026-11-04T13:00:00Z",
+    "source": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026"
+  }
+}
