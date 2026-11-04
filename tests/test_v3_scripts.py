@@ -718,7 +718,7 @@ def test_high_risk_automated_writers_are_quarantined_until_reviewed() -> None:
         content = path.read_text(encoding="utf-8")
         assert "workflow_dispatch:" in content
         assert "permissions: {}" in content
-        assert "if: \${{ false }}" in content
+        assert ("if: " + "$" + "{{ false }}") in content
         assert "schedule:" not in content
         assert "workflow_run:" not in content
         assert "push:" not in content
