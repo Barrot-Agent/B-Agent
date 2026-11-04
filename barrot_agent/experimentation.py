@@ -208,7 +208,7 @@ class DockerSandboxRunner:
         return ignored
 
     def _run_one(self, workspace: Path, spec: ExperimentSpec,
-                 command: Sequence[str]) -> SandboxResult:
+                 command: Sequence[str], variant: Mapping[str, str] | None = None) -> SandboxResult:
         check = subprocess.run([self.docker, "image", "inspect", spec.image],
                                capture_output=True, text=True, timeout=15, check=False)
         if check.returncode:
@@ -220,7 +220,9 @@ class DockerSandboxRunner:
                 "--tmpfs", "/tmp:rw,noexec,nosuid,size=64m",
                 "--mount", f"type=bind,src={workspace},dst=/workspace,rw",
                 "--workdir", "/workspace", "--env", "HOME=/tmp", "--env", "TMPDIR=/tmp",
-                "--env", "PYTHONDONTWRITEBYTECODE=1", spec.image, *command]
+                "--env", "PYTHONDONTWRITEBYTECODE=1",
+                "--env", "BARROT_EXPERIMENT_VARIANT=" + json.dumps(dict(variant or {}), sort_keys=True),
+                spec.image, *command]
         started = datetime.now(timezone.utc)
         try:
             result = subprocess.run(args, capture_output=True, text=True,
@@ -245,11 +247,11 @@ class DockerSandboxRunner:
             with tempfile.TemporaryDirectory(prefix=f"barrot-exp-{sandbox_id[:8]}-") as tmp:
                 workspace = Path(tmp) / "workspace"
                 shutil.copytree(self.repo_root, workspace, ignore=self._ignore, symlinks=False)
-                execution = self._run_one(workspace, spec, spec.command)
+                execution = self._run_one(workspace, spec, spec.command, variant)
                 if not execution.passed:
                     execution.sandbox_id = sandbox_id
                     return execution
-                verification = self._run_one(workspace, spec, spec.verification_command)
+                verification = self._run_one(workspace, spec, spec.verification_command, variant)
                 verification.stdout = (execution.stdout + "\n" + verification.stdout)[-self.output_limit:]
                 verification.stderr = (execution.stderr + "\n" + verification.stderr)[-self.output_limit:]
                 verification.duration_seconds += execution.duration_seconds
@@ -269,9 +271,22 @@ class ExperimentOrchestrator:
 
     def discover(self, max_candidates: int = 50) -> list[dict[str, Any]]:
         candidates = self.discovery.discover(max_candidates)
+        known = set()
+        if self.knowledge.path.exists():
+            with self.knowledge.path.open(encoding="utf-8") as stream:
+                for line in stream:
+                    payload = json.loads(line).get("payload", {})
+                    if payload.get("kind") == "discovery_candidate":
+                        known.add(payload.get("candidate_id"))
+        fresh = []
         for candidate in candidates:
+            candidate_id = _hash(_canonical(candidate))
+            if candidate_id in known:
+                continue
+            candidate["candidate_id"] = candidate_id
             self.knowledge.append({"timestamp": _now(), "kind": "discovery_candidate", **candidate})
-        return candidates
+            fresh.append(candidate)
+        return fresh
 
     def plan_variations(self, dimensions: Mapping[str, Sequence[str]],
                         max_variants: int = 24) -> list[dict[str, str]]:
