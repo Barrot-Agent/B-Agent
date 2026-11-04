@@ -200,3 +200,30 @@ def test_sbic_regional_entities_and_sbi_holdings_are_distinct():
     assert "not an OpenAI partnership" in distinctions
     assert "ChatGPT Enterprise adoption" in distinctions
     assert "Ethereum-only" in distinctions
+
+
+
+def test_occ_news_release_2026_29_is_not_a_charter_approval():
+    data = load_artifact()
+    entry = correction(data, "C01_SOURCE_CITATION_CROSSWALK")
+    replacement = next(x for x in entry["replacements"] if x["old_url"].endswith("nr-occ-2026-29.html"))
+    assert replacement["canonical_url"].endswith("/cd1370.pdf")
+    source = source_map(data)["occ_model_risk_2026_29"]
+    assert source["published_at_utc"] == "2026-04-17"
+    assert "Model Risk Management Guidance" in source["claims_supported"][0]
+
+
+def test_circle_arc_is_a_usdc_gas_counter_hypothesis_not_xrp_evidence():
+    data = load_artifact()
+    entry = correction(data, "C14_CIRCLE_ARC_USDC_NATIVE_COUNTERHYPOTHESIS")
+    source = source_map(data)["circle_arc_mainnet_launch"]
+    assert any("fees are paid in USDC" in claim for claim in source["claims_supported"])
+    assert "NO_DIRECTIONAL_XRP_EFFECT_ADMITTED" == entry["forecast_effect"]
+    assert entry["model_eligible"] is False
+
+
+def test_unverified_publication_dates_remain_unknown():
+    data = load_artifact()
+    sources = source_map(data)
+    assert sources["ripple_occ_cas_correct"]["published_at_utc"] is None
+    assert sources["coinbase_global_derivatives_cross_collateral"]["published_at_utc"] is None
