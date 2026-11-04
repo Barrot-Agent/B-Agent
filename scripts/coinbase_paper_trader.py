@@ -16,6 +16,7 @@ STARTING_BALANCE_USD = float(os.environ.get("STARTING_BALANCE_USD", "10000"))
 
 STATE_FILE = Path("web/paper_trading_state.json")
 LOG_FILE = Path("web/paper_trading_log.jsonl")
+MIN_POSITION_SIZE = 1e-8
 
 
 def fetch_ticker(product_id):
@@ -149,7 +150,9 @@ def validate_position_product(state, product_id):
     position_size = float(state["position_size"])
     position_product = state.get("position_product")
     avg_entry_price = state.get("avg_entry_price")
-    if position_size > 1e-8:
+    if 0 < position_size <= MIN_POSITION_SIZE:
+        return "aborted -- open position is below minimum size"
+    if position_size > MIN_POSITION_SIZE:
         if not isinstance(position_product, str) or not position_product.strip():
             return "aborted -- open position has no product identity"
         if position_product != product_id:
@@ -205,7 +208,9 @@ def execute_paper_trade(state, decision, current_price, product_id):
             or not math.isfinite(new_avg_entry_price)
         ):
             return "aborted -- buy quantity and resulting position must be finite"
-        if state["position_size"] <= 1e-8:
+        if total_qty <= MIN_POSITION_SIZE:
+            return "hold -- buy would create a dust position"
+        if state["position_size"] <= MIN_POSITION_SIZE:
             state["position_product"] = product_id
         state["avg_entry_price"] = new_avg_entry_price
         state["position_size"] = total_qty
@@ -218,7 +223,7 @@ def execute_paper_trade(state, decision, current_price, product_id):
         proceeds = sell_qty * current_price
         state["cash_usd"] += proceeds
         state["position_size"] -= sell_qty
-        if state["position_size"] <= 0.00000001:
+        if state["position_size"] <= MIN_POSITION_SIZE:
             state["position_size"] = 0.0
             state["avg_entry_price"] = None
             state["position_product"] = None
