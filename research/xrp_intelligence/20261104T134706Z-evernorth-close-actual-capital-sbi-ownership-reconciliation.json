@@ -172,7 +172,7 @@
     ],
     "private_placement_total_cash_usd": 224550000,
     "private_placement_xrp_in_kind": 800000,
-    "gross_cash_proceeds_definition": "Approximately $272.6 million equals approximately $224.6 million of private-placement cash plus $48 million of trust proceeds. It is not the post-fee cash balance. The $214.05 million advance cash had already been converted into XRP before closing.",
+    "gross_cash_proceeds_definition": "Approximately $272.6 million equals approximately $224.6 million of private-placement cash plus $48 million of trust proceeds. It is not the post-fee cash balance. The $214.05 million advance cash had already been converted into XRP before closing, so the gross-proceeds figure must not be read as $272.6 million of unspent cash.",
     "gross_non_predeployed_cash_sources_before_fees_usd": 58500000,
     "additional_debt_capital": [
       {
@@ -219,7 +219,8 @@
       ],
       "exact_post_close_cash_balance": "not disclosed in the reviewed extracts",
       "warning": "Do not equate gross proceeds with net unrestricted cash or deployable XRP-buying capacity."
-    }
+    },
+    "sbi_cash_amount_caveat": "The SBI press release announces $200 million. The post-close 8-K confirms the SBI entities' share count and ownership percentages, but does not itemize their cash contribution. The aggregate advance/delayed funding amounts cannot be allocated to SBI without an investor-level schedule."
   },
   "xrp_asset_reconciliation": {
     "in_kind_contributions": [
@@ -255,17 +256,27 @@
       "xrp_purchased": 84365876,
       "implied_average_cost_usd_per_xrp": 2.53657058,
       "execution_period": "2025-10-31 to 2025-11-06",
-      "status": "issuer disclosure states the advance cash was used to purchase this XRP; exact venues, order schedule, counterparties and order-book impact were not captured"
+      "status": "issuer disclosure states the advance cash was used to purchase this XRP; exact venues, order schedule, counterparties and order-book impact were not captured",
+      "implied_average_cost_status": "derived_from_214050000_usd_divided_by_84365876_xrp; not separately stated as an execution VWAP in the reviewed prospectus"
     },
     "total_xrp_held_as_of_2026_10_09_approx": 473276430.061435,
-    "reconciliation_note": "The sum of the disclosed in-kind contributions and the cash-funded purchase is approximately 473.276 million XRP, consistent with the issuer's rounded statement that it held approximately 473 million XRP at closing. Do not count the $214.05 million cash again as cash after it was converted into XRP."
+    "reconciliation_note": "The sum of the disclosed in-kind contributions and the cash-funded purchase is approximately 473.276 million XRP, consistent with the issuer's rounded statement that it held approximately 473 million XRP at closing. Do not count the $214.05 million cash again as cash after it was converted into XRP.",
+    "closing_reference_price": {
+      "value_usd_per_xrp": 1.43069,
+      "definition": "Closing XRP price used in the subscription adjustment formula; not represented here as an independently captured exchange closing price.",
+      "total_treasury_indicative_mark_usd": 677111855.72,
+      "cash_purchased_lot_indicative_mark_usd": 120701415.13,
+      "cash_purchased_lot_change_vs_214050000_cost_pct": -43.61,
+      "warning": "Derived sensitivity only. Not a realized sale, independently observed market mark, or audited net asset value."
+    }
   },
   "redemptions_and_liquidity": {
     "public_share_redemption_pct": 80.3,
     "public_shares_redeemed": 18463753,
     "redemption_price_per_share_usd_approx": 10.6,
     "trust_proceeds_after_redemptions_usd": 48000000,
-    "implication": "The SPAC trust contribution to closing liquidity was much smaller than a no-redemption scenario. The $48 million is gross before transaction expenses."
+    "implication": "The SPAC trust contribution to closing liquidity was much smaller than a no-redemption scenario. The $48 million is gross before transaction expenses.",
+    "cash_reconciliation_note": "The prospectus states approximately $48 million of trust proceeds after redemptions and approximately $272.6 million gross cash proceeds in total. The redemption-price multiplication is approximate; do not treat it as an exact cash statement."
   },
   "sbi_holdings_ownership": {
     "announced_cash_commitment_usd": 200000000,
@@ -282,14 +293,15 @@
     },
     "beneficial_owner": "SBI Holdings, Inc.",
     "controlled_entities": [
-      "SBI Venture Fund 2023A Investment LPS",
-      "SBI Venture Fund 2023B Investment LPS",
+      "SBI Venture Fund 2023A Investment Limited Partnership",
+      "SBI Venture Fund 2023B Investment Limited Partnership",
       "SBI PE Holdings Co., Ltd.",
       "SBI Holdings USA, Inc."
     ],
     "interpretation": "The 8-K confirms SBI Holdings' actual post-close voting and non-voting share position. Class A is 39.9% of the voting class; Class C is 9.0% of the non-voting class. Combined Class A and Class C shares are approximately 21.64% of the two classes outstanding, but Class C does not carry the same voting rights.",
     "cash_reconciliation_status": "The $200 million SBI cash commitment is documented in SBI's 2025 issuer announcement. The closing 8-K reports aggregate advance/delayed subscriber amounts but does not break out the exact cash funded by each investor. Do not attribute all $214.05 million advance cash or all $224.55 million private-placement cash to SBI.",
-    "sbic_distinction": "The four Evernorth investor entities are controlled by SBI Holdings. They are not SBIC East, SBIC Central or SBIC West, which are separate Japanese regional SME investment/consultation companies."
+    "sbic_distinction": "The four Evernorth investor entities are controlled by SBI Holdings. They are not SBIC East, SBIC Central or SBIC West, which are separate Japanese regional SME investment/consultation companies.",
+    "post_close_share_count_source_note": "The post-close October 12 Form 8-K is used for the actual share counts. Earlier pre-close/pro forma share tables in the October 30 prospectus may show different Class A/Class C allocations; do not substitute those pro forma counts for the post-close 8-K table."
   },
   "ownership_and_relationship_graph": [
     {
@@ -428,7 +440,8 @@
       "disconfirming_or_missing": [
         "The SEC closing filing does not itemize cash by investor",
         "The $214.05 million aggregate includes other subscribers and 600,000 XRP",
-        "No investor-by-investor subscription schedule or bank receipt was captured"
+        "No investor-by-investor subscription schedule or bank receipt was captured",
+        "The final post-close 8-K provides share allocations but not an investor-level cash ledger; no exact funded SBI cash amount can be certified."
       ],
       "status": "plausible_but_not_individually_reconciled"
     },
@@ -513,6 +526,21 @@
     "Reconcile BitGo custody balances and public XRPL wallet movements with the approximately 473 million XRP reported at close.",
     "Separate Ripple Labs, RippleWorks Foundation, Larsen Lam Trust, Arrington Sponsor and SBI-controlled entities in all relationship graphs and flow accounting.",
     "Track actual XRP lending, collateral pledges, DeFi deployment, covered-call and basis-trade activity only after public evidence of execution.",
-    "Use the actual 84.365876 million XRP purchase as a historical event feature dated 2025, not as current 2026 demand."
-  ]
+    "Use the actual 84.365876 million XRP purchase as a historical event feature dated 2025, not as current 2026 demand.",
+    "Use the October 12 post-close Form 8-K share table rather than earlier pro forma cap tables when calculating SBI's voting and non-voting ownership.",
+    "Reconcile the $214.05 million advance cash against the 84,365,876 XRP purchase exactly once in any balance-sheet or flow model.",
+    "Treat the $1.43069 contractual closing reference price as a sensitivity input, not a live market quote or realized liquidation value."
+  ],
+  "data_quality": {
+    "filing_precedence": "Use the October 12 post-close Form 8-K for actual post-close share counts and transaction completion. Use the October 30 prospectus for the later capital-structure, debt, ELOC and custody disclosures. Earlier pro forma share tables are not the final post-close cap table.",
+    "investor_level_cash": "The SEC filings reviewed here disclose aggregate advance and delayed subscription amounts, not an investor-by-investor cash schedule. SBI's announced $200 million cannot be reconciled to a precise funded amount from these extracts.",
+    "cash_vs_xrp": "The $214.05 million advance cash was converted into 84.365876 million XRP before close. It is not both a cash balance and an XRP asset at the same time.",
+    "entity_boundaries": "Ripple Labs, RippleWorks Foundation, Larsen Lam Children's Remainder Trust, Arrington XRP Capital Fund LP, SBI Holdings and SBI regional SBIC companies are distinct legal entities.",
+    "raw_receipts": "All filing extracts in this artifact lack byte-complete raw-source SHA-256 receipts; they remain model-ineligible."
+  },
+  "artifact_revision": {
+    "revised_at_utc": "2026-11-04T13:49:00Z",
+    "revision_reason": "Corrected the full legal names of SBI-controlled entities, separated the post-close 8-K share table from pre-close pro forma tables, and added a clearly labeled closing-reference-price sensitivity.",
+    "revision_status": "append_only_artifact_revision"
+  }
 }
