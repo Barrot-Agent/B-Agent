@@ -1,0 +1,52 @@
+{
+  "schema_version": "barrot.xrp.research-correction.v1",
+  "artifact_id": "xrp_derivatives_etf_observation_model_eligibility_overlay_20261104T193100Z",
+  "artifact_type": "append_only_observation_eligibility_correction",
+  "captured_at_utc": "2026-11-04T19:31:00Z",
+  "source_artifact": "research/xrp_intelligence/20261104T001118Z-xrp-derivatives-and-etf-flow-reconciliation.json",
+  "source_artifact_blob_sha": "7c6a9a6f0d8b0e5e",
+  "preservation": {
+    "source_artifact_modified": false,
+    "raw_source_receipts_modified": false,
+    "correction_mode": "append_only_observation_overlay",
+    "forecast_issued": false,
+    "consumer_application_status": "NOT_EXECUTED"
+  },
+  "correction": {
+    "rule": "Every observation in the source artifact is research-only and model-ineligible. None has a raw immutable receipt, synchronized point-in-time admission, or full primary-source reconciliation adequate for training.",
+    "observations": [
+      {
+        "observation_id": "liqwall-xrp-perps-20261103-2342",
+        "model_eligible": false,
+        "reason": "Secondary aggregate; exchange and contract inclusion and quote conversion are not reconciled; raw payload receipt and synchronized capture are absent."
+      },
+      {
+        "observation_id": "tradradar-xrp-perps-20261103-2250",
+        "model_eligible": false,
+        "reason": "Secondary seven-venue aggregate with stated delay; raw payload receipt, exact instrument-level constituents and synchronized exchange-native validation are absent."
+      },
+      {
+        "observation_id": "kodexius-xrp-contracts-20261103-2204",
+        "model_eligible": false,
+        "reason": "Secondary seven-contract aggregate; raw payload receipt and synchronized exchange-native contract reconciliation are absent."
+      },
+      {
+        "observation_id": "cryptokeyhole-xrp-etf-20261102",
+        "model_eligible": false,
+        "reason": "Holdings-derived secondary estimate; issuer-file raw receipts, common-close reconciliation and creation/redemption attribution are incomplete."
+      },
+      {
+        "observation_id": "xrp-insights-etf-20261102",
+        "model_eligible": false,
+        "reason": "Holdings-derived secondary estimate with indirect exposure and issuer capture gaps; raw receipts and common-universe reconciliation are incomplete."
+      },
+      {
+        "observation_id": "xrpl-stablecoin-q3-2026-secondary",
+        "model_eligible": false,
+        "reason": "Secondary quarterly report; primary ledger-state and issuer-level supply/transfer reconciliation are absent."
+      }
+    ]
+  },
+  "interpretation": "These observations remain usable for qualitative research and hypothesis generation only. They must not enter the point-in-time feature store or forecast training through this overlay until a separately verified correction/ingestion process applies the eligibility restriction.",
+  "next_action": "Teach the research-to-feature-store admission adapter to require an explicit model_eligible=true on each observation and reject absent, false or unverified eligibility."
+}
