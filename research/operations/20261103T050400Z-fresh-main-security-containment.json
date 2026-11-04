@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "barrot-v3-security-containment-20261103-run11",
+  "captured_at_utc": "2026-11-03T05:04:54Z",
+  "data_cutoff_utc": "2026-11-03T05:04:54Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "base_commit": "5e82b27205285257edef5ece404356c8900be73d",
+  "evidence_classification": {
+    "confirmed_facts": [
+      "Repository metadata identifies Barrot-Agent/B-Agent as public, default branch main; connected GitHub access reports admin/push permissions.",
+      "The latest main commit observed is 5e82b27205285257edef5ece404356c8900be73d, message Cross-analysis refresh [skip ci].",
+      "Current main contains brain_corpus/dump.json (353950 bytes) and brain_corpus/dump.md (296323 bytes). Individual records were not inspected.",
+      "Current dump-brain-corpus workflow is manually dispatchable, grants contents:write, references DATABRICKS_TOKEN and commits/pushes the exported corpus.",
+      "Current scripts/dump_brain_corpus.py queries workspace.barrot.brain and writes timestamp/topic/insight/session records to the public repository.",
+      "Current Cross Analysis workflow has workflow_run, schedule and manual triggers, contents:write permission, and commits/pushes generated outputs to main.",
+      "Current Scheduler Tick runs every 15 minutes, grants contents:write and actions:write, executes scripts/scheduler.py and commits/pushes queue updates.",
+      "Current scripts/scheduler.py accepts any existing workflow file and forwards queued inputs to gh workflow run; no fixed workflow allowlist is enforced on main.",
+      "Current Merge Queue is manually dispatchable, offers mode=all, max_prs=0 (unlimited), defaults dry_run=false and contains branch-update and PR-merge logic.",
+      "PR #1555 already contains a tested containment proposal on head 010e3363ae2f6cd6d9d3b0b744cd7cf229b18b9c; its exact-head CI passed 360 tests plus 8 subtests and its fail-closed gate passed.",
+      "PR #1555 is based on bbd33f9511be12dfe20fe69c7ba5c7eda8643187. Comparing that base to current main shows one intervening commit changing only ping-pongings/knowledge-base/sentiment_shift.json.",
+      "The new successor branch was created from exact current main SHA 5e82b27205285257edef5ece404356c8900be73d. No main ref was modified."
+    ],
+    "not_established": [
+      "Whether individual corpus records contain personal, confidential, credential, customer or otherwise sensitive information.",
+      "Whether historical Git objects, forks, caches, clones, backups or external copies retain the same corpus records.",
+      "Whether DATABRICKS_TOKEN is valid, exposed elsewhere or has been used by the exporter.",
+      "Whether required branch-protection checks are enforced administratively; the connected integration has not verified the required-check configuration.",
+      "Whether the Cross Analysis output content itself contains sensitive material; generated output contents were not inspected."
+    ]
+  },
+  "proposed_changes": [
+    "Disable public brain-corpus export with an inert workflow and no permissions.",
+    "Replace the exporter with an inert entry point that reads no credentials, makes no network calls and writes no files.",
+    "Remove the two generated corpus dumps from the proposed current tree without rewriting Git history.",
+    "Disable the broad manual merge queue and remove branch-update, approval, comment and merge capabilities.",
+    "Restrict unattended scheduler dispatch to two input-free read-only validation workflows; reject tampered entries, unapproved names, inputs and timezone-naive timestamps.",
+    "Serialize scheduler ticks and bound execution time.",
+    "Make Cross Analysis read-only and upload bounded artifacts instead of committing generated data to main.",
+    "Register four focused regression test modules in core CI."
+  ],
+  "changed_paths": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/cross-analysis.yml",
+    ".github/workflows/dump-brain-corpus.yml",
+    ".github/workflows/merge-queue.yml",
+    ".github/workflows/scheduler-tick.yml",
+    "scripts/dump_brain_corpus.py",
+    "scripts/scheduler.py",
+    "tests/test_cross_analysis_workflow_safety.py",
+    "tests/test_dump_brain_corpus_disabled.py",
+    "tests/test_merge_queue_disabled.py",
+    "tests/test_scheduler_workflow_allowlist.py",
+    "brain_corpus/dump.json",
+    "brain_corpus/dump.md"
+  ],
+  "limitations": [
+    "Scheduler retains contents:write and actions:write for queue persistence and allowlisted dispatch; it is constrained, not fully read-only.",
+    "Current-tree deletion does not erase historical Git objects, forks, caches or external copies.",
+    "No individual corpus records were inspected, classified, redacted or relocated.",
+    "Administrative branch-protection and required-check enforcement remain unverified.",
+    "Cross Analysis outputs move to bounded workflow artifacts; a separately approved private durable destination is not established by this PR.",
+    "The proposed changes were copied from the previously exact-head-tested PR #1555; this new head still requires its own GitHub CI and fail-closed verification."
+  ],
+  "verification": {
+    "branch": "security/fresh-main-containment-20261103T0505Z",
+    "base_commit": "5e82b27205285257edef5ece404356c8900be73d",
+    "local_tests": "NOT_EXECUTED; repository clone was not available in this execution path.",
+    "exact_head_ci": "PENDING",
+    "fail_closed_gate": "PENDING",
+    "main_modified": false,
+    "merge": "NOT_AUTHORIZED"
+  },
+  "next_actions": [
+    "Open a draft PR against main and verify the exact new head.",
+    "Wait for exact-head core CI and fail-closed gate; inspect job logs and test counts.",
+    "Re-read current main and PR refs after CI; do not merge or update main.",
+    "Obtain explicit approval before any merge.",
+    "Perform a separate authorized historical exposure and retention assessment."
+  ]
+}
