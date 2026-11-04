@@ -32,6 +32,27 @@
       "claims_supported": [
         "Kraken's ticker o field is today's UTC-day open, not a rolling 24-hour open."
       ]
+    },
+    {
+      "id": "evernorth_sec_424b3_lender_and_xrp_cost_crosscheck",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "authority": "primary SEC Form 424B3 prospectus and incorporated financial-statement disclosures",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "published_at_utc": "2026-10-30",
+      "retrieved_at_utc": "2026-11-04T18:35:00Z",
+      "source_independence_group": "sec_edgar_evernorth",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_SEC_filing_extract_only",
+      "model_eligible": false,
+      "source_locators": [
+        "Sections discussing the Evernorth Facility and Company Facility, lines 3086-3098 and 3947-3953",
+        "Historical cost table and purchase-price disclosure, lines 4832-4834 and 6121-6129"
+      ],
+      "claims_supported": [
+        "Ripple Labs is the lender under both the $1 million Evernorth Facility to Evernorth Holdings Inc. and the separate Company Facility to Pathfinder; the $1 million facility was undrawn as of June 30, 2026.",
+        "NH Investment & Securities as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3 is the purchaser of the separate $30 million 4.00% convertible senior PIK notes, not the lender under the $1 million Evernorth Facility.",
+        "The $214,049,995 advance-funding cash subscription is distinct from the $214,000,000 rounded historical cost recorded for the XRP purchase lot; the exact quantity is 84,365,876.3625 XRP and the incorporated issuer press release reports an average purchase price of $2.53657058 per XRP."
+      ]
     }
   ],
   "correction_overlay": {
@@ -91,6 +112,63 @@
         "rule": "Every source URL replacement must identify exactly one target JSON field and one legal-entity scope; no old_url-only replacement is canonical.",
         "model_eligible": false,
         "application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
+      },
+      {
+        "correction_id": "C20_EVERNORTH_FACILITY_LENDER",
+        "target_artifact": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+        "target_field": "$.capital_reconciliation.additional_debt_capital[2].source",
+        "original_value": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+        "canonical_field_name": "lender",
+        "canonical_path": "$.capital_reconciliation.additional_debt_capital[2].lender",
+        "canonical_value": "Ripple Labs Inc.",
+        "borrower": "Evernorth Holdings Inc. (Pubco)",
+        "facility_name": "Evernorth Facility",
+        "facility_limit_usd": 1000000,
+        "status_as_of_2026_06_30": "undrawn",
+        "post_close_draw_status": "not disclosed in the reviewed prospectus",
+        "supersedes_interpretation": "The original source field incorrectly names NH Investment & Securities/Kyobo as the counterparty for the $1 million facility.",
+        "rule": "Keep NH Investment/Kyobo as purchaser of the $30 million PIK notes only. Ripple Labs is lender under both the separate $1 million Evernorth Facility and $10 million Pathfinder Company Facility.",
+        "evidence_source_ids": [
+          "evernorth_sec_424b3_lender_and_xrp_cost_crosscheck"
+        ],
+        "model_eligible": false,
+        "application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
+      },
+      {
+        "correction_id": "C21_ADVANCE_CASH_VS_XRP_PURCHASE_COST",
+        "target_artifact": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+        "target_fields": [
+          "$.capital_reconciliation.private_placement_total_cash_usd",
+          "$.xrp_asset_reconciliation.cash_funded_market_purchase.funding_cash_usd",
+          "$.xrp_asset_reconciliation.cash_funded_market_purchase.xrp_purchased",
+          "$.xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_usd_per_xrp",
+          "$.xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_status"
+        ],
+        "original_values": {
+          "advance_funding_subscription_cash_usd": 214050000,
+          "xrp_purchase_quantity": 84365876,
+          "average_price": 2.53657058,
+          "derivation_status": "derived_from_214050000_usd_divided_by_84365876_xrp; not separately stated as an execution VWAP in the reviewed prospectus"
+        },
+        "canonical_values": {
+          "advance_funding_subscription_cash_usd": 214049995,
+          "rounded_historical_xrp_purchase_cost_usd": 214000000,
+          "exact_xrp_purchase_quantity": 84365876.3625,
+          "issuer_reported_average_purchase_price_usd_per_xrp": 2.53657058,
+          "arithmetic_check": 2.5365705807463335
+        },
+        "interpretation": "The $214,049,995 is the advance-funding cash subscription, not the purchase-cost numerator. The SEC filing's historical-cost table records $214,000,000 for the 84,365,876.3625 XRP lot, and the incorporated issuer press release reports $2.53657058 per XRP. That reported price reconciles to the rounded $214,000,000 historical cost, not to the full $214,049,995 subscription cash. The disclosure reviewed here does not itemize the $49,995 difference; do not assign it to fees or claim the full subscription cash was spent on the XRP lot.",
+        "supersedes_interpretation": "The original artifact incorrectly labels $214,050,000 as funding_cash_usd and says the reported average was derived from $214,050,000 divided by 84,365,876.",
+        "evidence_source_ids": [
+          "evernorth_sec_424b3_lender_and_xrp_cost_crosscheck"
+        ],
+        "source_locators": [
+          "Advance funding subscription cash: lines 88-90 and 5946-5948",
+          "XRP purchase quantity and reported price: lines 4832-4834",
+          "Historical cost table: lines 6121-6129"
+        ],
+        "model_eligible": false,
+        "application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
       }
     ]
   },
@@ -100,6 +178,7 @@
   "notes": [
     "This correction overlay does not rewrite original research artifacts or raw-source receipts.",
     "Consumers must apply the newest entity-scoped correction before using the affected source fields.",
-    "Rendered web sources remain research-only and are not admitted to the XRP feature store."
+    "Rendered web sources remain research-only and are not admitted to the XRP feature store.",
+    "C20 corrects the lender attribution for the $1M Evernorth Facility; the original artifact is preserved. C21 separates advance-funding subscription cash from the rounded historical XRP purchase cost and issuer-reported average purchase price; the $49,995 difference is not assigned to an unstated use."
   ]
 }
