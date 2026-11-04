@@ -866,6 +866,8 @@ def run_ingestion(
     summary = {
         "schema_version": 1,
         "artifact_type": "xrp_public_market_ingestion_run",
+        "adapter_version": ADAPTER_VERSION,
+        "parser_version": PARSER_VERSION,
         "captured_at_utc": captured_s,
         "data_cutoff_utc": captured_s,
         "source_receipt_count": len(receipts),

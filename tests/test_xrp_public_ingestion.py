@@ -181,8 +181,15 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
+    assert summary["adapter_version"] == "xrp-public-market-v2"
+    assert summary["parser_version"] == "xrp-public-market-v2"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
-    assert any(item["feature_id"] == "xrp.spot.coinbase.1h.close_price" for item in snapshot["records"])
+    coinbase_closes = [
+        item for item in snapshot["records"]
+        if item["feature_id"] == "xrp.spot.coinbase.1h.close_price"
+    ]
+    assert len(coinbase_closes) == 2
+    assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
 
     raw_only = json.loads((tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8"))
