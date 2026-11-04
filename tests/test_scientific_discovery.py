@@ -816,7 +816,7 @@ def test_scientific_track_output_fails_closed_after_bad_retry(monkeypatch) -> No
         def think(self, message, system=None):
             return "still not JSON"
 
-    with pytest.raises(RuntimeError, match="invalid JSON after one compact retry"):
+    with pytest.raises(RuntimeError, match="invalid response after one compact retry"):
         module._parse_scientific_track_output(
             "not JSON",
             FakeBrain(),
