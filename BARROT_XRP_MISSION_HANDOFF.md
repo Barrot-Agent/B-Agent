@@ -1243,3 +1243,52 @@ Wait for exact-head CI, full-suite coverage, dependency audit and fail-closed ga
 - The latest handoff/backlog documentation commit changes no executable code or dependency manifests. Its successor head will receive its own exact-head CI/gate run; the test evidence above is tied to the exact tested code heads named above and is not silently transferred to a different SHA.
 - No merge, deployment, secret change, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push, reset, clean, stash or discard occurred. Forecast status remains **NOT_ISSUED**.
 - **Next action:** verify the exact-head CI and fail-closed gate on this documentation-only successor; keep both PRs open until required independent approvals, branch-protection policy and Pages side effects are resolved through authorized controls. Then continue durable cross-run ingestion and leakage-safe walk-forward evaluation; forecasts stay disabled until measured out-of-sample performance and calibration justify them.
+
+
+## Run 25 — exact-head regression repair, capital-ledger correction and macro event update (2026-11-04T18:42:00Z)
+
+### Current main and inventory
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree has **1,403 entries**, `truncated=false`.
+- Open PR inventory: **372 total; 357 drafts; 15 non-drafts**. Non-drafts: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+- No new branch or PR was created. #1640 remains the sole V3/core integration branch; #1643 remains the sole XRP research archive branch. Their changed-path sets have no intersection.
+
+### #1640 — V3/core integration
+- Tested code head: `c7bf52196955e4931ee8e2bc507d9e333cd4950a`; **59 commits ahead, 0 behind**, 61 changed files; base is current main.
+- Exact-head CI run [41888211023](https://github.com/Barrot-Agent/B-Agent/actions/runs/41888211023): **572 core tests + 8 subtests passed**; **821 full-repository tests + 8 subtests passed**. Full-suite coverage: **51.68%**, with an explicit temporary 50% floor. Coverage remains weak in major AGI/analysis/monetization and legacy packages; passing the floor is not adequate coverage proof.
+- Five-manifest dependency audit [41888210788](https://github.com/Barrot-Agent/B-Agent/actions/runs/41888210788) passed; no known vulnerabilities reported, including 15 materialized PEP 621 dependencies.
+- Fail-closed gate [41888211072](https://github.com/Barrot-Agent/B-Agent/actions/runs/41888211072) passed while explicitly reporting **merge disabled pending gate verification**.
+- Two full-suite regressions on the preceding head were repaired: the stale manual-confirmation test now asserts the self-upgrade workflow remains quarantined (`workflow_dispatch` only, `permissions: {}`, job `if: false`, no credentials or repository writes); `tests/test_signal_summary.py` now imports `Path` for the disabled signal-accuracy workflow test.
+- This handoff/backlog update is documentation-only. The resulting documentation successor must receive its own exact-head CI and fail-closed-gate run; the evidence above is tied to the tested code head `c7bf521`, not silently transferred to a later SHA.
+
+### #1643 — XRP research integration
+- Current tested head: `b8b628cd524a0891ef929922106542ec444ac686`; **52 commits ahead, 0 behind**, 67 changed files, 19,705 additions; base is current main.
+- Exact-head CI run [41889352520](https://github.com/Barrot-Agent/B-Agent/actions/runs/41889352520): **489 core tests + 8 subtests passed**; **769 full-repository tests + 8 subtests passed**. The full suite explicitly executed the new Evernorth lender/cost-basis and macro-event regression tests.
+- Fail-closed gate [41889352386](https://github.com/Barrot-Agent/B-Agent/actions/runs/41889352386) passed while explicitly disabling merge. No dependency manifest changed on #1643; no dedicated dependency audit was triggered for this exact head.
+- Added append-only correction entries C20/C21 in `20261104T180409Z-xrp-research-followup-corrections.json`. C20 corrects the duplicated $1M Evernorth Facility lender attribution: Ripple Labs is the lender; NH Investment/Kyobo purchased the separate $30M PIK notes. C21 separates the $214,049,995 advance-funding subscription cash from the $214M rounded historical XRP purchase cost and the exact 84,365,876.3625 XRP lot; the issuer-reported $2.53657058 average price reconciles to the rounded $214M cost. The $49,995 difference is not assigned to fees or an unstated use. The original artifact remains unchanged; the overlay is research-only and model-ineligible.
+- Added `20261104T183900Z-macro-geopolitical-market-update.json`: U.S. midterm result, Treasury's Nov 4 refunding guidance, TBAC's assessment of AI financing/Treasury demand, and Reuters' 16:58Z oil observation (Brent $94.29, WTI $88.54) amid unresolved Iran risk. It preserves four competing hypotheses and distinguishes official guidance from executed operations. All rendered sources remain model-ineligible; no XRP-specific causal effect is asserted.
+- All 14 inline review threads are resolved; six submitted reviews are COMMENTED; **zero approvals**.
+
+### Fresh public market and research observations (not model inputs)
+- Kraken XRP/USD ticker retrieval: last **$1.31431**, best bid **$1.31395** (6,156 XRP), best ask **$1.31396** (707 XRP), spread **0.0761 bps**, 24-hour volume **43.071M XRP**, 24-hour VWAP **$1.28922729**, high **$1.34000**, low **$1.24016**, UTC-day open **$1.27513**. Last is +3.07% versus UTC-day open and +1.95% versus 24-hour VWAP. The API response has no exchange event timestamp; this is a one-venue top-of-book/ticker observation, not synchronized depth or a return series. Rendered retrieval only; no raw receipt/hash; model-ineligible. [Kraken public ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+- Circle Q3 addendum records $73.3B average USDC circulation (+8% YoY), $73.9B quarter-end circulation (flat YoY), $13.9T gross on-chain volume (+49%), $864.9M revenue and reserve income (+17%), $657.6M reserve income (-8%), $207.3M other revenue including $182M ARC presale, and $41.3B annualized CPN TPV. Gross volume, annualized TPV, presale revenue and USDC scale are not net new capital or XRP demand.
+- Exact-phrase work remains unresolved: Permission Coin is a candidate for ticker ASK, but no XRP/XRPL relationship is evidenced; \"actual capital\" results remain secondary/generic and do not establish XRP-specific deployed capital; \"SBIC, ChatGPT SBIC\" does not establish an OpenAI partnership. The 12 Kamilah/Camila candidate videos remain non-attributed pending first-party identity verification.
+
+### Integration, security and authorization state
+- #1640 and #1643 are non-draft and GitHub reports them mergeable against current main. #1640 has eight COMMENTED reviews and #1643 six COMMENTED reviews; neither has an approving review. #1640 has 22/22 resolved inline threads; #1643 has 14/14 resolved.
+- Repository rulesets are empty/disabled; classic branch-protection details remain inaccessible (403). GitHub security-alert endpoints did not expose repository settings. Do not infer their state from the passing pip-audit.
+- A prior main push triggered successful automatic GitHub Pages build and deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), including a completed `deploy` job. This is an external deployment side effect of merging to main. No deployment approval was given. Do not merge while this automatic side effect remains unapproved.
+- The latest known main core/full-suite CI passed 485 + 8 and 718 + 8 respectively. The scheduled Cross Analysis run [41881177882](https://github.com/Barrot-Agent/B-Agent/actions/runs/41881177882) passed; the earlier main Pillars check [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956) failed. #1640 adds HTTP-status checks in `scripts/pillars_check.py`, but that fix is not on main.
+- Nine-platform map: only ChatGPT-to-GitHub access is verified in this runtime. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not verified live Barrot integrations. Databricks previously returned 403; the Hugging Face Space reported BUILD_ERROR. No secrets changed and no Space restarted.
+
+### DESIGNED / EXECUTED / VERIFIED
+- **DESIGNED:** scheduled public ingestion, immutable source receipts, point-in-time feature store, forecast ledger, event timelines, independent evidence, counter-hypotheses, nine-platform map and leakage-safe walk-forward evaluation.
+- **EXECUTED:** repaired two #1640 test regressions; added C20/C21 Evernorth correction overlay and regression tests; added macro/geopolitical event artifact and tests; verified the current Kraken ticker; reconciled dependency PR overlaps against #1640. No new PR/branch.
+- **VERIFIED:** #1640 code-head core/full suite and five-manifest dependency audit; #1643 current-head core/full suite including new research tests; both fail-closed gates; current main SHA/tree and full open-PR inventory; all inline threads resolved.
+- **NOT VERIFIED:** approval and deployment controls; exact-head CI for the documentation-only #1640 successor created by this handoff; persistent cross-run point-in-time XRP history; externally anchored/WORM raw receipts; synchronized multi-venue depth/flows; actual XRP collateral utilization; leakage-safe walk-forward results; required baselines; probability calibration; drift monitoring; shadow evaluation; predictive advantage.
+- Forecast status remains **NOT_ISSUED**. No directional forecast, paper trade or real-money action occurred.
+
+### Next concrete actions
+1. Verify exact-head core/full-suite CI and fail-closed gate on the documentation-only #1640 successor; update the PR description with that successor SHA and run evidence without another repository commit.
+2. Keep #1640 and #1643 open; do not merge until required independent approval and Pages deployment side-effect controls are resolved through authorized controls.
+3. After an authorized merge, fetch main, verify every merged path and merge commit, run main CI, then close only exact duplicates/superseded source PRs with cross-references. Do not bulk-close unique research work.
+4. Continue durable cross-run ingestion and synchronized macro/spot/derivatives/flow/collateral/stablecoin/custody/payment history; only then begin chronological walk-forward tests and calibration. Forecasts remain disabled.

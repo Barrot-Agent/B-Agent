@@ -243,3 +243,30 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 ### Safety
 - No merge, branch rewrite, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 - Forecast status remains **NOT_ISSUED**. The rendered Kraken/ETF/derivatives observations are model-ineligible and are not feature-store inputs.
+
+
+## Run 19 — exact-path dependency overlap and current backlog classification (2026-11-04T18:42:00Z)
+
+### Current inventory
+- Main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree 1,403 entries, not truncated.
+- Open PRs: **372 total; 357 drafts; 15 non-drafts**. Non-drafts: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+- Active coherent integration workstreams: #1640 (V3/core) and #1643 (XRP research). Their path sets are disjoint. No new branch or PR.
+
+### Classification
+- **#1640 — blocked:** current code head `c7bf52196955e4931ee8e2bc507d9e333cd4950a`; exact-head core 572 + 8 and full suite 821 + 8 passed; five-manifest dependency audit passed with no known vulnerabilities. Fail-closed gate explicitly disables merge; zero approvals; automatic Pages deployment side effect remains unapproved. Documentation successor from this handoff requires its own exact-head checks.
+- **#1643 — blocked:** current head `b8b628cd524a0891ef929922106542ec444ac686`; exact-head core 489 + 8 and full suite 769 + 8 passed, including C20/C21 and macro event tests. Fail-closed gate explicitly disables merge; zero approvals. No dependency manifest changed; no dedicated audit on this head.
+- **#1644–#1650 — blocked, expected superseded by #1640 after merge verification:**
+  - #1644 checkout@v7: all eight paths overlap #1640; seven workflows have checkout@v7 in #1640. The eighth, `.github/workflows/barrot-self-upgrade.yml`, is intentionally quarantined by #1640 (`workflow_dispatch: {}`, `permissions: {}`, job `if: false`) and must not be restored merely to apply a dependency bump.
+  - #1645 download-artifact@v8: its sole workflow file is byte-for-byte identical to #1640.
+  - #1647 upload-artifact@v7: all six workflow paths already use upload-artifact@v7 in #1640.
+  - #1646 types-requests and #1648 pytest: their requested dependency floors are already present in #1640's `requirements-dev.txt`.
+  - #1649 databricks-sdk and #1650 huggingface-hub: their requested floors are already present in #1640's `legacy/requirements_legacy.txt`.
+  - Keep all source PRs open until #1640 is merged and exact paths are verified on main; then close only these exact superseded proposals with a cross-reference.
+- **#1317, #1318, #1320, #1254, #1255 — blocked, expected superseded by #1640:** prior exact-path/manifest overlaps are recorded in earlier triage. Keep open until post-merge path verification.
+- **#1597, #1605, #1608, #1614 — blocked/partially represented by #1643:** preserve non-overlapping identity, C2FO/actual-capital graph, feature-validator and handoff material; do not close entire source PRs on title similarity.
+- **#1269 — unique/unreviewed:** geometry/OBJ mesh topology; no overlap with current integration workstreams.
+- **All remaining drafts — unique/unreviewed or blocked:** exact paths and ancestry not exhaustively classified. No bulk closure.
+
+### Safety and closure rule
+- No PR merged or closed. Do not close #1644–#1650 until #1640 is merged and every corresponding path is verified on main. Do not close partially overlapping research PRs wholesale. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or branch rewrite.
+- Forecast status remains **NOT_ISSUED**.
