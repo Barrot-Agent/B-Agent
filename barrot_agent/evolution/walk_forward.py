@@ -291,7 +291,10 @@ def evaluate_chronological_walk_forward(
     if isinstance(max_age, bool) or not isinstance(max_age, int) or max_age <= 0:
         raise WalkForwardEvaluationError("max_origin_age_seconds must be a positive integer")
 
-    raw = [dict(item) for item in records if isinstance(item, Mapping)]
+    raw_input = list(records)
+    if not raw_input or any(not isinstance(item, Mapping) for item in raw_input):
+        raise WalkForwardEvaluationError("records must be a non-empty iterable of feature-record objects")
+    raw = [dict(item) for item in raw_input]
     selected = [
         item for item in raw
         if item.get("feature_id") == feature_id and str(item.get("asset", "")).upper() == asset
@@ -300,13 +303,15 @@ def evaluate_chronological_walk_forward(
         raise WalkForwardEvaluationError("no records match the requested asset and feature_id")
 
     venues = {item.get("venue") for item in selected}
-    pairs = {item.get("currency_pair") for item in selected}
     if venue is None:
         if len(venues) != 1:
             raise WalkForwardEvaluationError("select one venue; mixed or missing venue scope is not allowed")
         venue = next(iter(venues))
     else:
         selected = [item for item in selected if item.get("venue") == venue]
+    if not selected:
+        raise WalkForwardEvaluationError("no records remain after venue filtering")
+    pairs = {item.get("currency_pair") for item in selected}
     if currency_pair is None:
         if len(pairs) != 1:
             raise WalkForwardEvaluationError("select one currency_pair; mixed or missing pair scope is not allowed")

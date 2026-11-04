@@ -110,15 +110,16 @@ def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics()
 
 
 def test_backfilled_history_known_only_at_one_capture_time_cannot_fake_walk_forward():
-    capture = BASE + timedelta(days=3)
+    capture = BASE + timedelta(hours=23, seconds=3)
     records = [
         _bar(index, 1.0 + index * 0.001, capture_at=capture)
         for index in range(24)
     ]
+    records.append(_bar(24, 1.025, capture_at=capture + timedelta(hours=1)))
     result = evaluate_chronological_walk_forward(
         records,
         feature_id=FEATURE_ID,
-        evaluation_as_of_utc=_stamp(capture + timedelta(hours=2)),
+        evaluation_as_of_utc=_stamp(capture + timedelta(hours=1)),
         horizon_seconds=3600,
         min_train_samples=5,
         target_tolerance_seconds=5,
@@ -137,6 +138,7 @@ def test_future_price_record_cannot_be_available_before_its_event_time():
     event = _stamp(BASE + timedelta(hours=11))
     early = _stamp(BASE + timedelta(hours=10, seconds=30))
     future["known_at_utc"] = early
+    future["source_data_as_of_utc"] = early
     future["revision_available_at_utc"] = early
     future["ingested_at_utc"] = early
     with pytest.raises(WalkForwardEvaluationError, match="available before its event time"):
@@ -171,7 +173,7 @@ def test_insufficient_future_outcomes_never_create_unscored_directional_forecast
     result = evaluate_chronological_walk_forward(
         records[:7],
         feature_id=FEATURE_ID,
-        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=6, seconds=3)),
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=1, seconds=2)),
         horizon_seconds=3600,
         min_train_samples=3,
         target_tolerance_seconds=5,
