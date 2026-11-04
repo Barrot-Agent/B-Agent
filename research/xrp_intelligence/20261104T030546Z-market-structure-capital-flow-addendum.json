@@ -168,6 +168,20 @@
         "December rate-hike probability is a CME FedWatch market-implied estimate reported by Reuters, not a Fed commitment",
         "Single-day gold/dollar/yield moves do not establish an XRP beta"
       ]
+    },
+    {
+      "id": "ripple_corporate_strategy_20261028",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "published_or_as_of": "2026-10-28",
+      "type": "issuer corporate strategy and product partnership announcement",
+      "independence": "issuer statement",
+      "limitations": [
+        "Annualized product revenue run rate is a company-reported run-rate, not audited realized revenue.",
+        "Transactions enabled and lifetime payment volume are across Ripple products and are not XRP-only or XRPL-only.",
+        "RLUSD market capitalization and use claims require independent reconciliation.",
+        "Partner announcements do not establish production throughput, actual XRP bridge use or net XRP buying."
+      ]
     }
   ],
   "market_snapshot": {
@@ -417,6 +431,94 @@
         "The Fed's official October 28 statement held rates",
         "Cross-asset one-day correlation is not causation"
       ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-01",
+      "claim": "Ripple reported a $900M annualized product-revenue run rate approaching year-end, more than $16T of transactions enabled across its products in 2025, 1,700+ institutions/corporates/enterprises and 3x growth in customers and partners using multiple solutions.",
+      "classification": "issuer_sourced_corporate_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Run-rate is not audited realized revenue",
+        "Transaction volume is across Ripple products, not XRP or XRPL-only",
+        "Institution/customer counts do not disclose active XRP usage or capital deployed"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-02",
+      "claim": "Ripple said its Payments and Custody network had 60+ payout markets and was approaching $150B lifetime volume by year-end.",
+      "classification": "issuer_sourced_network_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Lifetime network volume is not annual volume, current throughput or XRP settlement volume",
+        "Route-level asset mix and XRP bridge share are undisclosed"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-03",
+      "claim": "Ripple reported RLUSD at a $2.6B market capitalization, up more than 88% year to date, and said RLUSD is used across Ripple solutions and in onchain repo markets.",
+      "classification": "issuer_sourced_stablecoin_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Issuer market-cap figure needs same-cutoff supply reconciliation",
+        "RLUSD adoption is not direct evidence of XRP demand",
+        "Repo collateral asset and utilization breakdown is not disclosed"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-04",
+      "claim": "Ripple announced 24/7 Returns for corporate treasury, using RLUSD, tokenized money-market funds on XRPL and Ripple institutional liquidity infrastructure.",
+      "classification": "issuer_announced_product",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Product announcement does not disclose production assets, client balances, yields or realized throughput",
+        "RLUSD and tokenized MMFs may be used without XRP as the bridge asset"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-05",
+      "claim": "Ripple described BNY/Ripple expansion into tokenized trade finance on XRPL beginning with a C2FO supplier-finance initiative; Privy programmable wallets support XRP, RLUSD and other XRPL assets; Mastercard partnership was described as expanding RLUSD payment settlement.",
+      "classification": "issuer_announced_partner_relationships",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "No production throughput or capital deployed disclosed",
+        "Privy support establishes wallet capability, not actual XRP balances or transactions",
+        "Mastercard relationship is described in the context of RLUSD settlement, not XRP bridge demand"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-PRIME-20261104-01",
+      "claim": "Ripple said Ripple Prime supports event contracts and RWA perpetual futures through settlement, financing and clearing with named partners including Jump Trading, Kalshi, Hyperliquid, Virtu and Rothera.",
+      "classification": "issuer_sourced_prime_brokerage_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "No asset-by-asset XRP collateral, financing or settlement utilization disclosed",
+        "Partner access and product support do not prove actual volume"
+      ]
+    },
+    {
+      "id": "OBS-RNTB-20261104-02",
+      "claim": "Ripple's Oct 26 and Oct 28 issuer releases both report final OCC approval for Ripple National Trust Bank; the Oct 28 release places the approval in a broader corporate-strategy announcement.",
+      "classification": "issuer_sourced_regulatory_claim",
+      "evidence": [
+        "ripple_rntb_final_approval_20261026",
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "The direct OCC final decision document was not located in this run",
+        "The bank's opening and operational commencement remain unverified"
+      ]
     }
   ],
   "relationship_graph": [
@@ -511,6 +613,60 @@
         "reuters_gold_rates_midterms_20261103",
         "federal_reserve_fomc_20261028"
       ]
+    },
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "relation": "expanded tokenized trade-finance collaboration on XRPL",
+      "status": "issuer_announced",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple/BNY",
+      "to": "C2FO",
+      "relation": "supplier-finance initiative on XRPL",
+      "status": "issuer_announced_not_throughput_verified",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Privy (Stripe company)",
+      "to": "XRP and RLUSD on XRPL",
+      "relation": "programmable wallet support",
+      "status": "issuer_announced_capability",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Mastercard",
+      "relation": "RLUSD payment-settlement partnership expansion",
+      "status": "issuer_announced",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple Prime",
+      "to": "Jump/Kalshi/Hyperliquid/Virtu/Rothera",
+      "relation": "event-contract and RWA-perpetual settlement, financing and clearing partner access",
+      "status": "issuer_sourced_product_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple Treasury 24/7 Returns",
+      "to": "RLUSD and tokenized money-market funds on XRPL",
+      "relation": "corporate treasury cash-management product design",
+      "status": "issuer_announced_product",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -602,6 +758,20 @@
         "The December meeting and intervening data have not occurred"
       ],
       "test": "Archive CME FedWatch probabilities at fixed daily cutoffs and compare with subsequent FOMC outcomes; calibrate probabilities separately from XRP forecasts."
+    },
+    {
+      "id": "H21-ripple-enterprise-stack-not-token-demand",
+      "claim": "Ripple's integrated payments, custody, stablecoin, prime brokerage and treasury strategy may grow corporate revenue and network throughput without proportional XRP demand; direct XRP use must be measured separately.",
+      "support": [
+        "Ripple reports 1,700+ institutions/corporates/enterprises, 60+ payout markets and a $900M annualized product revenue run-rate",
+        "RLUSD, tokenized MMFs, custody and prime brokerage provide several revenue/use paths that do not necessarily require XRP"
+      ],
+      "disconfirming_or_missing": [
+        "Privy wallet support explicitly includes XRP",
+        "XRPL tokenized trade-finance and treasury initiatives may create XRP reserve/fee or market-maker activity",
+        "No asset-level production throughput or XRP bridge/collateral utilization disclosed"
+      ],
+      "test": "Track route-level asset composition, XRP bridge inventory, XRP fees/reserves, custody balances, repo collateral by asset and realized customer throughput."
     }
   ],
   "data_quality": {
@@ -620,7 +790,8 @@
     "Nov 2 ETF flow disagreement requires issuer-level daily holdings reconstruction.",
     "Ripple National Trust Bank final approval needs a directly located OCC decision/charter record and operational commencement confirmation.",
     "Circle Q3 2026 results are scheduled for Nov 4 at 08:00 ET; not yet available at this capture cutoff.",
-    "No synchronized point-in-time macro feature panel yet; Fed policy, Treasury yields, DXY, oil and geopolitics have not been joined to XRP returns."
+    "No synchronized point-in-time macro feature panel yet; Fed policy, Treasury yields, DXY, oil and geopolitics have not been joined to XRP returns.",
+    "Ripple's Oct 26 and Oct 28 issuer releases both report final OCC approval for RNTB; a direct OCC final decision document and bank commencement record remain unlocated."
   ],
   "next_actions": [
     "Reconstruct TradRadar/Kodexius open-interest universes from exchange-native contract endpoints.",
@@ -628,6 +799,7 @@
     "Review Circle Q3 2026 earnings and compare with its Oct 16 H1 economics statement.",
     "Locate direct OCC Ripple National Trust Bank decision and verify opening/commencement.",
     "Keep forecasts NOT_ISSUED until the historical feature store and walk-forward evaluation are operational.",
-    "Add official FOMC target range, Treasury curve, DXY, Brent/WTI and event timestamps to the historical macro feature panel; evaluate rolling and event-conditioned XRP sensitivities."
+    "Add official FOMC target range, Treasury curve, DXY, Brent/WTI and event timestamps to the historical macro feature panel; evaluate rolling and event-conditioned XRP sensitivities.",
+    "Reconcile Ripple's Oct 28 corporate metrics ($900M run-rate, $16T transactions enabled, $150B lifetime network volume, $2.6B RLUSD market cap) to audited financial statements and independent on-chain/route-level data; keep issuer claims separate from realized XRP demand."
   ]
 }
