@@ -131,6 +131,43 @@
         "The page footer update timestamp also did not align with the current-session display.",
         "Quarantined; not used as a market feature or price input."
       ]
+    },
+    {
+      "id": "federal_reserve_fomc_20261028",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "published_or_as_of": "2026-10-28",
+      "type": "official FOMC statement",
+      "independence": "primary regulator source",
+      "limitations": [
+        "Policy decision is a macro input, not an XRP-specific signal",
+        "FOMC statement says inflation remains elevated and policy remains data dependent"
+      ]
+    },
+    {
+      "id": "reuters_oil_geopolitics_20261103",
+      "url": "https://www.reuters.com/markets/commodities/oil-rises-after-report-us-strike-irans-qeshm-island-2026-11-03/",
+      "publisher": "Reuters",
+      "published_or_as_of": "2026-11-03T01:27:00Z",
+      "type": "reported macro/geopolitical market event",
+      "independence": "independent news reporting",
+      "limitations": [
+        "Reuters reports market prices and official/market-source statements; not a direct commodity feed",
+        "Oil prices declined on the day despite ongoing geopolitical risk",
+        "No direct XRP causal effect established"
+      ]
+    },
+    {
+      "id": "reuters_gold_rates_midterms_20261103",
+      "url": "https://www.reuters.com/world/india/gold-eases-ahead-us-midterm-elections-2026-11-03/",
+      "publisher": "Reuters",
+      "published_or_as_of": "2026-11-03T04:16:00Z",
+      "type": "reported cross-asset macro market context",
+      "independence": "independent news reporting",
+      "limitations": [
+        "December rate-hike probability is a CME FedWatch market-implied estimate reported by Reuters, not a Fed commitment",
+        "Single-day gold/dollar/yield moves do not establish an XRP beta"
+      ]
     }
   ],
   "market_snapshot": {
@@ -341,6 +378,45 @@
       "disconfirming_or_limiting": [
         "Swiftedge was not added as a usable market input; a later synchronized capture is required"
       ]
+    },
+    {
+      "id": "OBS-MACRO-20261104-01",
+      "claim": "On Oct 28 the FOMC held the federal funds target range at 3.75%-4.00% by a 10-2 vote; two dissenters preferred a 25 bp hike. The statement said inflation remained elevated and geopolitical uncertainty remained elevated.",
+      "classification": "confirmed_official_policy_statement",
+      "evidence": [
+        "federal_reserve_fomc_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "The majority held rather than hiked",
+        "The statement is data dependent and does not pre-commit to December action",
+        "No XRP-specific effect is established"
+      ]
+    },
+    {
+      "id": "OBS-MACRO-20261104-02",
+      "claim": "Reuters reported Brent settled at $103.60 and WTI at $96.09 on Nov 3, down about 1% and near multi-week lows, while US strikes on Iran's Qeshm Island and uncertain negotiations maintained energy-supply risk.",
+      "classification": "reported_market_and_geopolitical_event",
+      "evidence": [
+        "reuters_oil_geopolitics_20261103"
+      ],
+      "disconfirming_or_limiting": [
+        "Prices fell rather than surged on the day",
+        "Peace-talk progress could reduce the risk premium",
+        "No direct XRP impact measured"
+      ]
+    },
+    {
+      "id": "OBS-MACRO-20261104-03",
+      "claim": "Reuters reported the dollar and Treasury yields strengthened on Nov 3 and cited a 79% CME FedWatch probability of a December Fed hike.",
+      "classification": "reported_market_pricing_observation",
+      "evidence": [
+        "reuters_gold_rates_midterms_20261103"
+      ],
+      "disconfirming_or_limiting": [
+        "Market-implied probabilities change and are not policy decisions",
+        "The Fed's official October 28 statement held rates",
+        "Cross-asset one-day correlation is not causation"
+      ]
     }
   ],
   "relationship_graph": [
@@ -406,6 +482,35 @@
       "evidence": [
         "tokyo_sbic_chatgpt_seminar_20250226"
       ]
+    },
+    {
+      "from": "Federal Reserve FOMC",
+      "to": "US dollar funding and discount-rate conditions",
+      "relation": "sets federal funds target range and communicates policy stance",
+      "status": "confirmed_official_policy_action",
+      "evidence": [
+        "federal_reserve_fomc_20261028"
+      ]
+    },
+    {
+      "from": "US-Iran conflict",
+      "to": "Global oil supply risk",
+      "relation": "geopolitical disruption and uncertainty around Strait of Hormuz",
+      "status": "reported_event_and_market_risk",
+      "evidence": [
+        "reuters_oil_geopolitics_20261103"
+      ]
+    },
+    {
+      "from": "Oil and inflation expectations",
+      "to": "Fed rate expectations",
+      "relation": "energy-price risk can affect inflation and expected policy path",
+      "status": "causal_inference_not_proven_for_XRP",
+      "evidence": [
+        "reuters_oil_geopolitics_20261103",
+        "reuters_gold_rates_midterms_20261103",
+        "federal_reserve_fomc_20261028"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -469,6 +574,34 @@
         "Direct OCC decision not located; bank opening and operating status unknown; no XRP demand data"
       ],
       "test": "Locate OCC decision and charter record, verify opening, audit reserve/custody operations, then test for independently measured XRP activity changes."
+    },
+    {
+      "id": "H19-macro-liquidity-risk-channel",
+      "claim": "A restrictive Fed stance, elevated long-end rates and geopolitical energy risk can pressure speculative assets through discount rates, dollar liquidity and risk appetite; the effect on XRP must be measured rather than assumed.",
+      "support": [
+        "FOMC held at 3.75%-4.00% with two hike dissents and elevated inflation language",
+        "Reuters reported stronger dollar/yields and market pricing for a December hike",
+        "Iran conflict and Strait of Hormuz risk remain relevant to energy supply"
+      ],
+      "disconfirming_or_missing": [
+        "Oil settled lower on Nov 3 as peace-talk hopes offset supply fears",
+        "FOMC majority held rates and future policy remains data dependent",
+        "No synchronized XRP-versus-macro event study has been run"
+      ],
+      "test": "Build point-in-time BTC/XRP/DXY/Treasury/oil return panels; test rolling beta, event windows, lag structure and conditional effects without look-ahead."
+    },
+    {
+      "id": "H20-market-rate-pricing-not-policy",
+      "claim": "The reported 79% December hike probability is a market-implied price, not a Fed commitment; policy outcomes can diverge from futures pricing.",
+      "support": [
+        "Reuters cites CME FedWatch 79% hike probability",
+        "Official Oct 28 FOMC decision held rates by 10-2"
+      ],
+      "disconfirming_or_missing": [
+        "Two dissenters preferred a hike and inflation remains elevated",
+        "The December meeting and intervening data have not occurred"
+      ],
+      "test": "Archive CME FedWatch probabilities at fixed daily cutoffs and compare with subsequent FOMC outcomes; calibrate probabilities separately from XRP forecasts."
     }
   ],
   "data_quality": {
@@ -486,13 +619,15 @@
     "No synchronized exchange-native XRP spot/perpetual raw-data history yet.",
     "Nov 2 ETF flow disagreement requires issuer-level daily holdings reconstruction.",
     "Ripple National Trust Bank final approval needs a directly located OCC decision/charter record and operational commencement confirmation.",
-    "Circle Q3 2026 results are scheduled for Nov 4 at 08:00 ET; not yet available at this capture cutoff."
+    "Circle Q3 2026 results are scheduled for Nov 4 at 08:00 ET; not yet available at this capture cutoff.",
+    "No synchronized point-in-time macro feature panel yet; Fed policy, Treasury yields, DXY, oil and geopolitics have not been joined to XRP returns."
   ],
   "next_actions": [
     "Reconstruct TradRadar/Kodexius open-interest universes from exchange-native contract endpoints.",
     "Download and reconcile each XRP ETF issuer's Nov 2 holdings and creation/redemption data.",
     "Review Circle Q3 2026 earnings and compare with its Oct 16 H1 economics statement.",
     "Locate direct OCC Ripple National Trust Bank decision and verify opening/commencement.",
-    "Keep forecasts NOT_ISSUED until the historical feature store and walk-forward evaluation are operational."
+    "Keep forecasts NOT_ISSUED until the historical feature store and walk-forward evaluation are operational.",
+    "Add official FOMC target range, Treasury curve, DXY, Brent/WTI and event timestamps to the historical macro feature panel; evaluate rolling and event-conditioned XRP sensitivities."
   ]
 }
