@@ -258,3 +258,21 @@ def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None
     approval = _read("barrot-approve-pr.yml")
     assert "github.ref == 'refs/heads/main'" in approval
 
+def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() -> None:
+    workflow = _read("dependency-audit.yml")
+    for manifest in (
+        "requirements.txt",
+        "requirements-dev.txt",
+        "requirements.tx",
+        "pyproject.toml",
+        "hf_space/requirements.txt",
+        "legacy/requirements_legacy.txt",
+    ):
+        assert f'"{manifest}"' in workflow
+    assert "pip-audit -r requirements.tx --strict" in workflow
+
+    requirements = (ROOT / "requirements.txt").read_text(encoding="utf-8")
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    for dependency in ("numpy", "PyJWT", "cryptography", "websockets"):
+        assert dependency in requirements
+        assert dependency in pyproject
