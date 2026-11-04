@@ -3,6 +3,7 @@ from __future__ import annotations
 import builtins
 import importlib.util
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -719,7 +720,8 @@ def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
 
     assert "contents: read" in lowered
     assert "persist-credentials: false" in lowered
-    assert "actions/upload-artifact@v4" in lowered
+    upload_ref = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", lowered)
+    assert upload_ref and int(upload_ref.group(1)) >= 7
     assert "retention-days: 30" in lowered
     assert "if-no-files-found: error" in lowered
     assert "conclusion == 'success'" in lowered

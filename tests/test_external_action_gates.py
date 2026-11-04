@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -152,8 +153,6 @@ def test_pillars_check_uses_read_only_github_installation_lookup() -> None:
 
 
 def test_no_active_scheduled_workflow_can_write_or_merge() -> None:
-    import re
-
     for path in WORKFLOWS.glob("*.yml"):
         content = path.read_text(encoding="utf-8")
         if not re.search(r"^\s{2}schedule:", content, flags=re.MULTILINE):
@@ -230,7 +229,8 @@ def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -
     assert "github.event.workflow_run.conclusion == 'success'" in content
     assert "actions: read" in content
     assert "contents: read" in content
-    assert "actions/download-artifact@v7" in content
+    download_ref = re.search(r"uses:\s*actions/download-artifact@v(\d+)", content)
+    assert download_ref and int(download_ref.group(1)) >= 8
     assert "github.event.workflow_run.id" in content
     assert "github.event.workflow_run.run_number" in content
     assert "webmcp-trend-digest-${{ github.run_number }}" in trend
@@ -290,3 +290,38 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
     for dependency in ("numpy", "PyJWT", "cryptography", "websockets"):
         assert dependency in requirements
         assert dependency in pyproject
+
+
+ 
+def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() -> None:
+    checkout_workflows = (
+        "barrot-bundle-operational-smoke.yml",
+        "barrot-controlled-feature-validation.yml",
+        "barrot-self-upgrade.yml",
+        "ci.yml",
+        "dependency-audit.yml",
+        "formal-verification-benchmarks.yml",
+        "ibm-bob-barrot-audit.yml",
+        "subagent-matrix.yml",
+    )
+    for name in checkout_workflows:
+        content = _read(name)
+        match = re.search(r"uses:\s*actions/checkout@v(\d+)", content)
+        assert match and int(match.group(1)) >= 7, name
+
+    upload_workflows = (
+        "barrot-controlled-feature-validation.yml",
+        "cross-analysis.yml",
+        "formal-verification-benchmarks.yml",
+        "ibm-bob-barrot-audit.yml",
+        "signal-summary.yml",
+        "subagent-matrix.yml",
+    )
+    for name in upload_workflows:
+        content = _read(name)
+        match = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", content)
+        assert match and int(match.group(1)) >= 7, name
+
+    webmcp = _read("webmcp-monetization-enrich.yml")
+    match = re.search(r"uses:\s*actions/download-artifact@v(\d+)", webmcp)
+    assert match and int(match.group(1)) >= 8

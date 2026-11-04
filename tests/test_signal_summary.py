@@ -1,4 +1,5 @@
 import json
+import re
 
 from scripts import signal_summary
 
@@ -149,7 +150,8 @@ def test_signal_summary_workflow_is_manual_read_only_and_artifact_based():
     assert "workflow_run:" not in workflow
     assert "permissions:" in workflow
     assert "contents: read" in workflow
-    assert "actions/upload-artifact@v4" in workflow
+    upload_ref = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", workflow)
+    assert upload_ref and int(upload_ref.group(1)) >= 7
     assert "retention-days: 30" in workflow
     assert "git commit" not in workflow
     assert "git push" not in workflow
