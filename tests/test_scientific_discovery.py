@@ -566,23 +566,22 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     assert "scientific discovery recorded" in str(calls["comment"]).lower()
 
 
-def test_checkout_branch_resumes_remote_branch_and_rejects_unsafe_names(monkeypatch) -> None:
+def test_checkout_branch_uses_safe_task_branch_helper_and_rejects_unsafe_names(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script_module("barrot_agent_resume_branch_test")
-    calls: list[list[str]] = []
+    calls: list[tuple[Path, str]] = []
 
-    def fake_run(args, *, check=True, quiet=False):
-        calls.append(args)
-        return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+    def fake_safe_checkout(workspace, branch):
+        calls.append((Path(workspace), branch))
+        if branch == "../main":
+            raise ValueError("Invalid task branch name")
 
-    monkeypatch.setattr(module, "run", fake_run)
+    monkeypatch.setattr(module, "safe_checkout_branch", fake_safe_checkout)
     module.checkout_branch("barrot/task-42")
-    assert calls[0][1] == "fetch"
-    assert "refs/remotes/origin/barrot/task-42" in calls[0][3]
-    assert calls[1] == ["git", "checkout", "-B", "barrot/task-42", "origin/barrot/task-42"]
+    assert calls == [(module.ROOT, "barrot/task-42")]
 
     import pytest
-    with pytest.raises(ValueError, match="Invalid Barrot task branch"):
+    with pytest.raises(RuntimeError, match="Safe task-branch checkout blocked"):
         module.checkout_branch("../main")
 
 

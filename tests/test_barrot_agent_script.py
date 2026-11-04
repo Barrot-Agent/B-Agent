@@ -296,8 +296,9 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
     monkeypatch.setattr(module, "run_gh", fake_run_gh)
     module.create_pull_request(cycle)
 
-    assert calls["args"][8] == "--head"
-    assert calls["args"][9] == "repair/from-cycle"
+    assert "--draft" in calls["args"]
+    head_index = calls["args"].index("--head")
+    assert calls["args"][head_index + 1] == "repair/from-cycle"
     assert calls["body_exists_during_call"] is True
     assert "cycle-123" in str(calls["body_text"])
     assert "abc123" in str(calls["body_text"])
@@ -403,3 +404,14 @@ def test_repo_browser_open_file_is_bounded_and_confined(tmp_path: Path, monkeypa
     escaped = json.loads(browser.open_file({"path": "../outside.txt"}))
     assert escaped["success"] is False
     assert "escapes the repository root" in escaped["error"]
+
+
+def test_barrot_agent_manual_dispatch_requires_explicit_confirmation() -> None:
+    workflow = (
+        Path(__file__).resolve().parents[1] / ".github" / "workflows" / "barrot-agent.yml"
+    ).read_text(encoding="utf-8")
+    assert "confirm:" in workflow
+    assert "type: boolean" in workflow
+    assert "required: true" in workflow
+    assert "default: false" in workflow
+    assert "(github.event_name == 'workflow_dispatch' && inputs.confirm == true)" in workflow

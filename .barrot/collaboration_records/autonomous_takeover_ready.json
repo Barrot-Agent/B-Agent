@@ -77,7 +77,8 @@
   "evidence": {
     "repair_cycle_store": ".git/barrot_repair/repair_cycles/",
     "work_queue_store": ".git/barrot_repair/work_queue/",
-    "runtime_collaboration_record": ".barrot/collaboration_records/latest_repository_repair.json",
+    "runtime_collaboration_record": ".git/barrot_repair/collaboration_records/latest_repository_repair.json",
+    "legacy_historical_record": ".barrot/collaboration_records/latest_repository_repair.json",
     "machine_readable_record": ".barrot/collaboration_records/autonomous_takeover_ready.json"
   },
   "final_state": "READY",

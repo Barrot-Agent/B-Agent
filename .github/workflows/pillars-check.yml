@@ -1,18 +1,27 @@
 name: Pillars Consistency Check
+
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 13 * * *"
+
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
       - run: pip install requests pyjwt
-      - run: python scripts/pillars_check.py
+      - name: Run read-only pillars checks
+        run: python scripts/pillars_check.py
         env:
           GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
           GITHUB_APP_PRIVATE_KEY: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}
