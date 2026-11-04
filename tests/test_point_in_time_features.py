@@ -574,13 +574,13 @@ def test_revision_cannot_supersede_a_different_event_or_market_identity(identity
         "aggregation_window": "1m",
     }
     original = feature(record_id="v1", feature_version=1, **dimensions)
+    revised_dimensions = {**dimensions, **identity_change}
     revised = feature(
         record_id="v2",
         feature_version=2,
         revision_status="revised",
         supersedes_record_id="v1",
-        **dimensions,
-        **identity_change,
+        **revised_dimensions,
     )
     with pytest.raises(FeatureSnapshotError, match="same feature and asset at the same event time"):
         build_feature_snapshot([original, revised], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED)
