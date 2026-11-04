@@ -22,7 +22,7 @@ jobs:
         run: python3 scripts/signal_summary.py
       - name: Upload summary artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: signal-summary-${{ github.run_id }}
           path: |
