@@ -1,0 +1,448 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_institutional_defi_collateral_risk_graph",
+  "created_at_utc": "2026-11-02T20:05:09Z",
+  "data_cutoff_utc": "2026-11-02T20:05:09Z",
+  "forecast_status": "NOT_ISSUED",
+  "scope": [
+    "XRP-backed stablecoin credit",
+    "Sentora institutional risk curation",
+    "Ripple and Flare investment relationships",
+    "Firelight FXRP cover capital",
+    "Coinbase-Circle distribution economics",
+    "Coinbase Q3 2026 financial quality"
+  ],
+  "market_observations": {
+    "cbxrp_usdc_base": {
+      "provider": "MorphoWatch, using Morpho API",
+      "updated_at_utc": "2026-11-02T18:21:00Z",
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "supplied_usdc_usd": 66810000,
+      "borrowed_usdc_usd": 59300000,
+      "utilization_pct": 88.8,
+      "available_usdc_usd": 7510000,
+      "available_with_vault_liquidity_usd": 8380000,
+      "collateral_cbxrp": 118790000,
+      "collateral_value_usd": 146600000,
+      "borrowers_reported": 12064,
+      "top_three_borrower_debt_usd_approx": 615000,
+      "top_three_borrower_debt_share_pct_approx": 1.0371,
+      "top_three_lender_vault_allocations_usd": [
+        20190000,
+        14820000,
+        9040000
+      ],
+      "top_three_lender_vault_share_pct_approx": 65.93,
+      "top_ten_lender_vault_allocations_usd": 58380000,
+      "top_ten_lender_vault_share_pct_approx": 87.38,
+      "borrow_apy_pct": 6.86,
+      "supply_apy_pct": 6.06,
+      "liquidation_ltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "oracle": "ChainlinkOracleV2",
+      "oracle_cbxrp_price_usdc": 1.24,
+      "rate_model_target_utilization_pct": 90,
+      "liquidations_30d_count": 1118,
+      "debt_repaid_through_liquidations_30d_usd": 3940000,
+      "source_url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/"
+    },
+    "fxrp_rlusd_ethereum": {
+      "provider": "MorphoWatch, using Morpho API",
+      "updated_at_utc": "2026-11-02T15:51:00Z",
+      "market_id": "0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96",
+      "supplied_rlusd_usd": 9360000,
+      "borrowed_rlusd_usd": 8450000,
+      "utilization_pct": 90.3,
+      "available_rlusd_usd": 908000,
+      "collateral_fxrp": 13490000,
+      "collateral_value_usd": 16930000,
+      "borrowers_reported": 57,
+      "top_three_borrower_debt_usd": 7670000,
+      "top_three_borrower_debt_share_pct": 90.77,
+      "top_three_borrower_health_factors": [
+        1.68,
+        1.5,
+        1.27
+      ],
+      "top_three_borrower_price_declines_to_liquidation_pct": [
+        40.5,
+        33.4,
+        21.4
+      ],
+      "largest_lending_vault": "Sentora RLUSD Main V2",
+      "largest_lending_vault_allocation_usd": 9270000,
+      "largest_lending_vault_share_of_market_supply_pct_approx": 99.04,
+      "largest_lending_vault_total_deposits_usd": 408800000,
+      "borrow_apy_pct": 7.92,
+      "supply_apy_pct": 7.12,
+      "liquidation_ltv_pct": 77,
+      "liquidation_bonus_pct": 7.41,
+      "oracle": "ChainlinkOracleV2",
+      "oracle_fxrp_price_rlusd": 1.25,
+      "rate_model_target_utilization_pct": 90,
+      "liquidations_30d_count_reported": 2,
+      "debt_repaid_through_liquidations_30d_usd_reported": 1700,
+      "source_url": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/"
+    },
+    "derived_comparison": {
+      "borrowed_usdc_to_rlusd_ratio_approx": 7.02,
+      "fxrp_top_three_borrower_share_to_cbxrp_top_three_share_multiple_approx": 87.5,
+      "cbxrp_collateral_to_coinbase_reported_supply_pct_approx": 78.7,
+      "utilization_interpretation": "Both markets are near Morpho's stated 90% target utilization. Similar utilization is not independent evidence of synchronized demand; the rate model itself targets 90%.",
+      "timestamp_warning": "The two Morpho observations are 2 hours 30 minutes apart and must not be represented as simultaneous."
+    }
+  },
+  "firelight_fxrp_cover_capital": {
+    "official_launch_date": "2026-10-06",
+    "network": "Flare",
+    "incubator": "Sentora",
+    "developer_and_maintainer": "Sentinel Labs",
+    "first_covered_products": [
+      "Sentora USD Protected Vault",
+      "Sentora Protected RWA Vaults"
+    ],
+    "staked_asset": "FXRP",
+    "aggregate_staked_position_cap_usd": 115000000,
+    "cover_model": "Shared onchain cover vault backed by staked FXRP; defined exploit, oracle, governance, bad-debt, depeg and redemption-failure events are reviewed by an independent Risk Consortium.",
+    "staker_risk": "Staked FXRP and compounded rewards are slashable; stakers provide economic security and do not themselves receive cover.",
+    "exit_constraint": "Cover periods are 30 days; unstaking and withdrawal windows extend as coverage accrues.",
+    "receipt_token": {
+      "name": "stXRP",
+      "description": "Flare Smart Accounts credit stXRP after minting and depositing FXRP; historical design materials describe it as a liquid receipt token redeemable for FXRP.",
+      "composability_warning": "If stXRP is subsequently used as collateral or in LPs, aggregate protocol TVL can double-count the same underlying FXRP exposure."
+    },
+    "defillama_observation": {
+      "daily_history_nov_2_tvl_usd": 64470000,
+      "faq_current_tvl_usd": 64390000,
+      "tvl_30d_change_pct_reported": -13.6,
+      "all_time_high_tvl_usd": 90770000,
+      "all_time_high_date": "2026-05-15",
+      "methodology": "Counts FXRP tokens held in the Firelight vault.",
+      "limitation": "TVL is not Total Value Covered, not an insurance payout reserve, and not proof of net withdrawals. The two current page values differ by $80,000 and are preserved without averaging."
+    },
+    "source_urls": [
+      "https://flare.network/news/firelight-is-live-backed-by-staked-fxrp-on-flare",
+      "https://defillama.com/protocol/firelight",
+      "https://defillama.com/research/spotlight/sentora-raises-firelight-deposit-cap-to-65-million-fxrp"
+    ]
+  },
+  "sentora_investment_and_underwriting_relationship": {
+    "series_a_usd": 25000000,
+    "announcement_date": "2025-05-06",
+    "merger": "IntoTheBlock and Trident Digital formed Sentora.",
+    "reported_investors": [
+      {
+        "entity": "Ripple",
+        "relation": "strategic ecosystem investor",
+        "evidence_class": "secondary_reported"
+      },
+      {
+        "entity": "Flare",
+        "relation": "strategic ecosystem investor",
+        "evidence_class": "secondary_reported"
+      },
+      {
+        "entity": "New Form Capital",
+        "relation": "Series A lead",
+        "evidence_class": "secondary_reported"
+      }
+    ],
+    "source_quality": "The Block reports the investor list based on a statement shared with it. Sentora's own launch announcement confirms the $25M Series A and merger but does not name all investors. FinanceFeeds repeats the investor claim in a sponsored press release and is not treated as independent corroboration.",
+    "conflict_of_interest_question": "Ripple issues RLUSD and Flare issues FXRP; both are reported strategic investors in Sentora, which curates the RLUSD Main vault and approved FXRP as collateral. This creates a potential commercial-alignment/conflict-of-interest question for independent review.",
+    "disconfirming_and_limiting_evidence": [
+      "No evidence in the reviewed sources establishes that Ripple or Flare controls Sentora's risk decisions.",
+      "No evidence establishes that the FXRP risk assessment was compromised.",
+      "Sentora's institutional risk review is described by Flare, but this research did not independently audit Sentora's models or governance firewalls.",
+      "Sentora says it does not take custody of RLUSD; deposits remain in the MetaMorpho vault contract."
+    ],
+    "source_urls": [
+      "https://www.theblock.co/news/deals/2025-05-06-intotheblock-trident-merger-institutional-defi-platform-sentora-25-million-usd-series-a-353220",
+      "https://sentora.com/research/articles/announcing-sentora-a-new-institutional-defi-platform-born-from-the-merger-of-intotheblock-and-trident-digital",
+      "https://financefeeds.com/fxrp-collateral-sentora-rlusd-vault-morpho-ethereum/"
+    ]
+  },
+  "coinbase_circle_corporate_and_distribution_update": {
+    "coinbase_q3_2026": {
+      "net_income_usd": 718697000,
+      "adjusted_ebitda_usd": 332900000,
+      "net_revenue_usd": 1160000000,
+      "transaction_revenue_usd": 590224000,
+      "subscription_and_services_revenue_usd": 570238000,
+      "stablecoin_revenue_usd": 306905000,
+      "stablecoin_revenue_yoy_change_pct": -5,
+      "average_usdc_held_in_coinbase_products_usd": 22000000000,
+      "average_usdc_held_yoy_growth_pct": 49,
+      "crypto_trading_volume_market_share_pct": 10.7,
+      "assets_on_platform_share_pct": 12.5,
+      "crypto_held_for_investment_fair_value_gain_usd": 715022000,
+      "fair_value_gain_description": "SEC 10-Q says gains primarily reflect fair-value remeasurement of investment crypto assets, mainly Bitcoin and Ethereum.",
+      "circle_arrangement": "Coinbase's Q3 2026 10-Q says it renewed its arrangement with Circle on the same terms.",
+      "interpretation": "GAAP net income materially includes investment-asset fair-value gains; adjusted EBITDA and revenue mix are more informative for recurring operating performance. Stablecoin revenue declined year over year despite record average USDC balances, partly because lower average interest rates offset balance growth.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+        "https://business.woonsocketcall.com/woonsocketcall/article/bizwire-2026-10-29-coinbase-q3-2026-earnings-show-all-time-high-coinbase-one-subscribers-and-prediction-markets-surpassing-200-million-in-annualized-revenue"
+      ]
+    },
+    "circle_q2_2026": {
+      "usdc_circulation_quarter_end_usd": 73300000000,
+      "q2_onchain_transaction_volume_usd": 14800000000000,
+      "q2_reserve_income_usd": 668000000,
+      "q2_distribution_costs_to_coinbase_usd": 324600000,
+      "h1_distribution_costs_to_coinbase_usd": 655300000,
+      "agreement_mechanics": "Coinbase receives allocations based on USDC held on its platform after issuer retention, plus half the remaining payment base after amounts paid to approved third-party ecosystem participants.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    "rlusd_coinbase_listing": {
+      "date": "2026-10-28",
+      "availability": "Coinbase retail and institutional platforms, including Prime and app distribution, with support reported across XRP Ledger, Ethereum and Base.",
+      "collateral_status": "RLUSD listing is confirmed; eligibility as collateral on Coinbase Global Exchange derivatives was not established by the reviewed announcement.",
+      "source_urls": [
+        "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+        "https://www.theblock.co/news/business/2026-10-28-coinbase-adds-ripple-rlusd-stablecoin-432009"
+      ]
+    }
+  },
+  "relationship_edges": [
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer",
+      "evidence_class": "confirmed"
+    },
+    {
+      "from": "Flare",
+      "to": "FXRP/FAssets",
+      "relation": "protocol issuer and operator",
+      "evidence_class": "confirmed"
+    },
+    {
+      "from": "Ripple",
+      "to": "Sentora",
+      "relation": "strategic ecosystem investor in 2025 Series A",
+      "evidence_class": "secondary_reported"
+    },
+    {
+      "from": "Flare",
+      "to": "Sentora",
+      "relation": "strategic ecosystem investor in 2025 Series A",
+      "evidence_class": "secondary_reported"
+    },
+    {
+      "from": "Sentora",
+      "to": "Morpho RLUSD Main V2",
+      "relation": "vault curator and collateral-risk assessor",
+      "evidence_class": "confirmed_by_Flare_product_announcement"
+    },
+    {
+      "from": "FXRP",
+      "to": "Morpho FXRP/RLUSD market",
+      "relation": "collateral",
+      "evidence_class": "onchain_aggregator_observation"
+    },
+    {
+      "from": "RLUSD",
+      "to": "Morpho FXRP/RLUSD market",
+      "relation": "debt asset",
+      "evidence_class": "onchain_aggregator_observation"
+    },
+    {
+      "from": "Sentora",
+      "to": "Firelight",
+      "relation": "incubator",
+      "evidence_class": "confirmed_by_Flare"
+    },
+    {
+      "from": "Sentinel Labs",
+      "to": "Firelight",
+      "relation": "developer and maintainer",
+      "evidence_class": "confirmed_by_Flare"
+    },
+    {
+      "from": "FXRP",
+      "to": "Firelight vault",
+      "relation": "staked cover capital",
+      "evidence_class": "confirmed_by_Flare"
+    },
+    {
+      "from": "Firelight",
+      "to": "Sentora USD Protected Vault and Protected RWA Vaults",
+      "relation": "onchain cover layer",
+      "evidence_class": "confirmed_by_Flare"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC collaboration and distribution agreement renewed Q3 2026 on same terms",
+      "evidence_class": "Coinbase_SEC_10Q"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "retail and institutional distribution listing",
+      "evidence_class": "confirmed_by_Reuters_and_The_Block"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP/USDC Morpho market",
+      "relation": "consumer loan product interface and distribution",
+      "evidence_class": "Coinbase_product_documentation"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "S1",
+      "claim": "Sentora's institutional curation and risk infrastructure may help expand XRP-backed access to RLUSD credit.",
+      "support": "FXRP/RLUSD market is live, with $8.45M borrowed and 13.49M FXRP posted in the latest observation.",
+      "disconfirming": "The market remains small relative to the wider RLUSD vault; borrower destinations are unknown; no incremental native XRP purchase is established.",
+      "status": "plausible_inference"
+    },
+    {
+      "id": "S2",
+      "claim": "Ripple and Flare's reported strategic investments in Sentora may align commercial incentives around RLUSD/FXRP DeFi adoption.",
+      "support": "The Block's 2025 funding report identifies both as strategic ecosystem investors; Sentora curates the RLUSD vault that accepts FXRP.",
+      "disconfirming": "No evidence of control over risk decisions, preferential terms, or compromised underwriting; the investor list is not reproduced on Sentora's official launch page.",
+      "status": "sourced_relationship_plus_inference"
+    },
+    {
+      "id": "S3",
+      "claim": "The shared investor-curator-issuer structure creates a potential conflict-of-interest that should be evaluated in governance and model review.",
+      "support": "Ripple issues the debt asset and Flare issues the collateral representation; both are reported investors in the curator.",
+      "disconfirming": "Potential conflict is not proof of misconduct; isolated Morpho markets, independent risk consortiums and published parameters provide some controls, but do not eliminate commercial alignment.",
+      "status": "red_team_question"
+    },
+    {
+      "id": "S4",
+      "claim": "Firelight adds a distinct XRP capital-use case: FXRP becomes slashable cover capital supporting protection for other DeFi vaults.",
+      "support": "Firelight is live, staked FXRP backs shared cover, and Sentora products are among its first covered vaults.",
+      "disconfirming": "TVL is down 13.6% over 30 days in USD terms; price effects versus net FXRP withdrawals are unresolved; staked capital is slashable and exit-constrained.",
+      "status": "confirmed_mechanism_with_unresolved_net_flows"
+    },
+    {
+      "id": "S5",
+      "claim": "Near-90% utilization in both Morpho markets may partly reflect a 90% target utilization rate model rather than independent synchronized demand.",
+      "support": "Both market pages explicitly state a 90% target utilization.",
+      "disconfirming": "Both markets have genuine outstanding loans and collateral; target utilization does not explain all borrower behavior.",
+      "status": "counter_hypothesis"
+    },
+    {
+      "id": "S6",
+      "claim": "FXRP/RLUSD has higher displayed borrower and supply concentration than cbXRP/USDC in the captured snapshots.",
+      "support": "FXRP top three borrowers are approximately 90.77% of debt and one named vault supplies approximately 99.04% of market supply; cbXRP top three borrowers are approximately 1.04% of debt and top ten named vaults supply approximately 87.38%.",
+      "disconfirming": "Addresses are not beneficial owners; one vault can be diversified; market pages are one provider family and timestamps differ.",
+      "status": "provisional_onchain_inference"
+    },
+    {
+      "id": "S7",
+      "claim": "Coinbase's RLUSD distribution listing diversifies its stablecoin inventory while its USDC economics remain contractually important.",
+      "support": "RLUSD listing on October 28; Coinbase renewed Circle agreement on same terms; Circle Q2 filing documents substantial Coinbase distribution payments.",
+      "disconfirming": "No evidence of customer substitution from USDC to RLUSD, or of RLUSD collateral use on Coinbase derivatives; listing alone may be a customer-choice feature.",
+      "status": "confirmed_relationships_plus_competing_strategy_hypotheses"
+    }
+  ],
+  "source_independence": {
+    "morphowatch": "One Morpho API-backed provider family for both markets; not independent corroboration.",
+    "coinbase_sec": "Primary issuer filing for Coinbase results and Circle agreement renewal.",
+    "circle_sec": "Primary issuer filing for USDC distribution economics and Coinbase payment mechanics.",
+    "flare": "Primary protocol announcement for Firelight and FXRP mechanics; project claims not independently audited by this research.",
+    "defillama": "Independent aggregator for Firelight TVL; its current page shows two slightly different Nov 2 values.",
+    "sentora": "Primary source for merger and Series A, but not complete investor list.",
+    "the_block": "Editorial secondary source reporting investor participation based on a statement shared with it.",
+    "financefeeds": "Sponsored press-release page; not treated as independent confirmation."
+  },
+  "data_quality_flags": [
+    "MorphoWatch pages share a provider family; do not count them as independent corroboration.",
+    "Base and Ethereum market timestamps differ by 150 minutes.",
+    "Morpho target utilization is 90% for both markets; similar utilization is not a standalone demand signal.",
+    "Borrower addresses do not identify beneficial owners.",
+    "No proceeds tracing proves borrowed stablecoins were used to buy XRP.",
+    "No liquidation-to-native-XRP-sale chain is established.",
+    "Firelight DefiLlama page shows $64.47M in daily history and $64.39M in FAQ; values retained separately.",
+    "Firelight USD TVL changes can reflect FXRP price as well as token inflows/outflows.",
+    "Firelight TVL counts FXRP in its vault; it is not Total Value Covered or an insurance payout reserve.",
+    "stXRP composability can create cross-protocol TVL double counting.",
+    "Sentora investor identities are sourced from The Block's report, not a complete official Sentora investor roster.",
+    "Coinbase Q3 GAAP net income includes substantial fair-value gains on investment crypto holdings; it is not a pure operating earnings measure."
+  ],
+  "prediction_engine_policy": {
+    "status": "NOT_ISSUED",
+    "reason": "This artifact documents market structure and corporate relationships, not a validated predictive edge. There is no trusted fixed-horizon evaluation attestation.",
+    "next_required_work": [
+      "Capture Morpho states at pinned Base and Ethereum block heights.",
+      "Track Firelight FXRP unit balance, not only USD TVL, and separate slashing, deposits, withdrawals and price effects.",
+      "Track stXRP issuance, redemption and downstream collateral use to prevent double counting.",
+      "Obtain full Sentora investor and governance disclosures; inspect independent risk-committee processes without assuming misconduct.",
+      "Track Circle Q3 results on November 4, 2026 and reconcile Coinbase distribution economics.",
+      "Track Coinbase RLUSD support and separately verify any derivatives-collateral eligibility.",
+      "Build fixed-horizon point-in-time features and independent evaluation attestation before any forecast."
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "publisher": "MorphoWatch",
+      "updated_at_utc": "2026-11-02T18:21:00Z",
+      "class": "secondary_onchain_aggregator"
+    },
+    {
+      "url": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/",
+      "publisher": "MorphoWatch",
+      "updated_at_utc": "2026-11-02T15:51:00Z",
+      "class": "secondary_onchain_aggregator"
+    },
+    {
+      "url": "https://flare.network/news/firelight-is-live-backed-by-staked-fxrp-on-flare",
+      "publisher": "Flare",
+      "published_at": "2026-10-06",
+      "class": "protocol_primary_announcement"
+    },
+    {
+      "url": "https://defillama.com/protocol/firelight",
+      "publisher": "DefiLlama",
+      "captured_at_utc": "2026-11-02T20:05:09Z",
+      "class": "secondary_aggregator"
+    },
+    {
+      "url": "https://www.theblock.co/news/deals/2025-05-06-intotheblock-trident-merger-institutional-defi-platform-sentora-25-million-usd-series-a-353220",
+      "publisher": "The Block",
+      "published_at": "2025-05-06",
+      "class": "editorial_secondary_reporting"
+    },
+    {
+      "url": "https://sentora.com/research/articles/announcing-sentora-a-new-institutional-defi-platform-born-from-the-merger-of-intotheblock-and-trident-digital",
+      "publisher": "Sentora",
+      "published_at": "2025-05-06",
+      "class": "company_primary_announcement"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "SEC/ Coinbase",
+      "filed_at": "2026-10-29",
+      "class": "regulatory_filing"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publisher": "SEC/ Circle",
+      "filed_at": "2026-08-05",
+      "class": "regulatory_filing"
+    },
+    {
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "publisher": "Reuters",
+      "published_at": "2026-10-28",
+      "class": "editorial_secondary_reporting"
+    },
+    {
+      "url": "https://www.theblock.co/news/business/2026-10-28-coinbase-adds-ripple-rlusd-stablecoin-432009",
+      "publisher": "The Block",
+      "published_at": "2026-10-28",
+      "class": "editorial_secondary_reporting"
+    }
+  ],
+  "limitations": [
+    "No investment advice or forecast.",
+    "No private identities inferred from public wallet addresses.",
+    "No real-money or paper-trading positions changed.",
+    "No claim that Ripple or Flare control Sentora risk decisions.",
+    "No claim that Firelight TVL is protected notional or insurance."
+  ]
+}

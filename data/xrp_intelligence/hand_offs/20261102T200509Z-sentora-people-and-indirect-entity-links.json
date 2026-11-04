@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_ecosystem_people_and_indirect_entity_links",
+  "created_at_utc": "2026-11-02T20:05:09Z",
+  "data_cutoff_utc": "2026-11-02T20:05:09Z",
+  "forecast_status": "NOT_ISSUED",
+  "people": [
+    {
+      "name": "Anthony DeMartino",
+      "entity": "Sentora",
+      "current_role_reported": "Chief Executive Officer",
+      "other_role": "Trident Digital co-founder",
+      "prior_role": "Former Head of Risk at Coinbase",
+      "source": "https://www.theblock.co/news/deals/2025-05-06-intotheblock-trident-merger-institutional-defi-platform-sentora-25-million-usd-series-a-353220",
+      "evidence_class": "secondary_editorial_reporting",
+      "confidence": "high_for_reported_roles",
+      "limitations": [
+        "Former Coinbase role does not establish current Coinbase affiliation, investment, control or endorsement.",
+        "The source is dated May 6, 2025; current employment should be rechecked against Sentora's current leadership page."
+      ]
+    },
+    {
+      "name": "Jesus Rodriguez",
+      "entity": "Sentora",
+      "current_role_reported": "Co-founder and CTO",
+      "other_role": "IntoTheBlock co-founder",
+      "sources": [
+        "https://www.theblock.co/news/deals/2025-05-06-intotheblock-trident-merger-institutional-defi-platform-sentora-25-million-usd-series-a-353220",
+        "https://sentora.com/research/articles/announcing-sentora-a-new-institutional-defi-platform-born-from-the-merger-of-intotheblock-and-trident-digital"
+      ],
+      "evidence_class": "company_primary_and_editorial_secondary"
+    },
+    {
+      "name": "Hugo Philion",
+      "entity": "Flare",
+      "current_role_reported": "Co-founder and CEO",
+      "source": "https://flare.network/es/news/fxrp-collateral-expands-sentoras-rlusd-vault-on-morpho",
+      "evidence_class": "protocol_primary_announcement"
+    },
+    {
+      "name": "Jack McDonald",
+      "entity": "Ripple",
+      "current_role_reported": "Senior Vice President, Stablecoins",
+      "source": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "evidence_class": "editorial_secondary_reporting"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Anthony DeMartino",
+      "to": "Sentora",
+      "relation": "CEO; Trident Digital co-founder",
+      "evidence_class": "secondary_editorial_reporting"
+    },
+    {
+      "from": "Anthony DeMartino",
+      "to": "Coinbase",
+      "relation": "former Head of Risk",
+      "evidence_class": "secondary_editorial_reporting"
+    },
+    {
+      "from": "Jesus Rodriguez",
+      "to": "Sentora",
+      "relation": "co-founder and CTO",
+      "evidence_class": "company_primary_and_editorial_secondary"
+    },
+    {
+      "from": "Jesus Rodriguez",
+      "to": "IntoTheBlock",
+      "relation": "co-founder",
+      "evidence_class": "company_primary_and_editorial_secondary"
+    },
+    {
+      "from": "Hugo Philion",
+      "to": "Flare",
+      "relation": "co-founder and CEO",
+      "evidence_class": "protocol_primary_announcement"
+    },
+    {
+      "from": "Jack McDonald",
+      "to": "Ripple",
+      "relation": "SVP Stablecoins",
+      "evidence_class": "editorial_secondary_reporting"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Sentora",
+      "relation": "indirect historical personnel connection through Anthony DeMartino; no current corporate relationship established",
+      "evidence_class": "inference_from_reported_personnel_history"
+    },
+    {
+      "from": "Ripple",
+      "to": "Sentora",
+      "relation": "strategic ecosystem investor in 2025 Series A, as reported by The Block",
+      "evidence_class": "secondary_editorial_reporting"
+    },
+    {
+      "from": "Flare",
+      "to": "Sentora",
+      "relation": "strategic ecosystem investor in 2025 Series A, as reported by The Block",
+      "evidence_class": "secondary_editorial_reporting"
+    }
+  ],
+  "interpretation": {
+    "confirmed_scope": "The Block reported that Sentora CEO Anthony DeMartino was a former Head of Risk at Coinbase and that Ripple and Flare participated as strategic ecosystem investors in Sentora's $25M Series A.",
+    "indirect_coinbase_link": "Coinbase is connected to Sentora through a former executive who became Sentora CEO. This is a personnel-history edge, not evidence of a current Coinbase-Sentora partnership, investment, board seat or operational control.",
+    "potential_alignment_question": "Sentora curates the RLUSD Main vault and approved FXRP collateral. Ripple and Flare are reported Sentora investors and are the issuer/operator sides of RLUSD and FXRP respectively. The former Coinbase risk executive at Sentora adds another historical institutional link. These facts justify enhanced disclosure and independent review; they do not establish biased underwriting or misconduct.",
+    "unknowns": [
+      "Sentora cap table and precise investment amounts",
+      "Board seats, voting rights, vetoes or investor information rights",
+      "Risk committee independence and recusals",
+      "Whether Anthony DeMartino's prior Coinbase role has any continuing advisory or contractual relationship",
+      "Any direct Coinbase investment in or commercial agreement with Sentora"
+    ],
+    "disconfirming_evidence": [
+      "No reviewed source establishes current Coinbase ownership or governance rights in Sentora.",
+      "No reviewed source establishes Ripple or Flare control over Sentora's risk decisions.",
+      "No evidence was found that the FXRP collateral approval was manipulated or improperly influenced."
+    ]
+  },
+  "source_independence": {
+    "the_block": "Editorial secondary reporting based on a statement shared with the publication.",
+    "sentora": "Primary company announcement confirms merger and Series A but does not enumerate the full investor list.",
+    "flare": "Primary protocol source for Hugo Philion's role and Sentora's product relationship.",
+    "reuters": "Independent editorial report for Jack McDonald's Ripple role."
+  },
+  "limitations": [
+    "Names and roles are used only as publicly reported professional affiliations.",
+    "No private data, personal contact details or unsupported identity matching included.",
+    "No investment advice or prediction."
+  ]
+}
