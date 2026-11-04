@@ -401,7 +401,7 @@ def test_binance_incident_addendum_preserves_xrp_flow_exclusion() -> None:
     assert data["market_snapshot"]["xrp_outflow"]["amount_xrp"] == 233461943.1
     assert data["market_snapshot"]["xrp_repartition_as_of_20261103"]["main_recipient_wallets"] == 6
     assert data["predictions"]["issued"] is False
-    assert "Exclude it from organic exchange-flow" in data["data_quality"]["incident_exclusion_rule"]
+    assert "exclude it from organic exchange-flow" in data["data_quality"]["incident_exclusion_rule"].lower()
 
 
 def test_binance_incident_keeps_attribution_and_freeze_scope_distinct() -> None:
