@@ -48,13 +48,13 @@ def test_whale_alert_80m_pair_is_subset_and_hash_timestamp_conflict_is_preserved
     assert claim["subset_of"] == "NOV2-FULL-REDISTRIBUTION"
     assert claim["verified_timestamp_for_first_hash_utc"] == "2026-11-02T03:56:21Z"
     assert claim["second_hash_timestamp_utc"] is None
-    assert "timestamp" in claim["timestamp_mapping_conflict"].lower()
+    assert "03:55:31" in claim["timestamp_mapping_conflict"]
 
 
 def test_competing_recipient_ownership_hypotheses_remain_unresolved():
     data = load()
     claim = next(x for x in data["claims"] if x["id"] == "OWNERSHIP-INTERPRETATIONS")
-    assert claim["status"] == "unresolved_competing_interpretations"
+    assert claim["status"] == "unresolved_competing_hypotheses"
     ids = {x["id"] for x in claim["hypotheses"]}
     assert {"attacker_distribution", "binance_internal_custody_sweep", "third_party_intermediary"}.issubset(ids)
     assert "No first-party Binance statement" in claim["hypotheses"][1]["limitation"]
@@ -97,3 +97,28 @@ def test_correction_is_research_only_and_raw_capture_gaps_are_explicit():
     assert data["source_capture"]["raw_source_sha256"] is None
     assert data["data_quality"]["recipient_beneficial_ownership_verified"] is False
     assert data["data_quality"]["balance_reconciliation_gap_xrp"] == 0.59905
+
+
+def test_binance_recovery_percentages_are_not_silently_reconciled():
+    data = load()
+    claim = next(x for x in data["claims"] if x["id"] == "BINANCE-RECOVERY-PERCENTAGE-DISAGREEMENT")
+    values = [x["reported_pct"] for x in claim["observations"]]
+    assert values == [90, 98, 98]
+    assert "Do not average" in claim["conclusion"]
+
+
+def test_binance_ai_tool_was_a_pivot_not_proof_of_model_compromise():
+    data = load()
+    claim = next(x for x in data["claims"] if x["id"] == "BINANCE-SECURITY-CHAIN-AND-AI-TOOL")
+    assert "internal AI tool used as a lateral-movement springboard" in claim["claim"]
+    assert "AI model itself was compromised" in claim["interpretation"]
+    assert claim["implementation_status"] == "DESIGN_GUIDANCE_ONLY_NOT_VERIFIED_AS_IMPLEMENTED"
+
+
+def test_official_binance_recovery_urls_are_exact_and_canonical():
+    data = load()
+    sources = {x["id"]: x for x in data["sources"]}
+    assert sources["BINANCE-POR-UPDATE-5"]["url"] == "https://www.binance.bh/en/support/announcement/detail/185bd9a4717f44088b3be70287b8237f"
+    assert sources["BINANCE-RECOVERY-UPDATE-6"]["url"] == "https://www.binance.bh/en/support/announcement/detail/2d83c325ab6e49c6bd6c5de8803b11a6"
+    assert sources["BINANCE-POR-UPDATE-7"]["url"] == "https://www.binance.bh/en/support/announcement/detail/c6ba9aa726974fc6b9332a2c8f63b405"
+    assert any(x["source_id"] == "FBI-TRADERTRAITOR-ADVISORY" for x in data["source_link_corrections"])

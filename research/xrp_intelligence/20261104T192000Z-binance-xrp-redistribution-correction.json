@@ -93,7 +93,7 @@
       "publisher": "Binance",
       "independence_group": "binance_primary",
       "type": "issuer_primary_announcement",
-      "url": "https://www.binance.com/en/support/announcement/detail/4e4a9e4d3f6b4e9d8c7a6b5f4e3d2c1a",
+      "url": "https://www.binance.bh/en/support/announcement/detail/185bd9a4717f44088b3be70287b8237f",
       "published_at_utc": "2026-11-02T12:45:00Z",
       "supports": "Zero-knowledge Proof of Reserves for the October 31 00:00 UTC snapshot covering ten assets including XRP and RLUSD; users can verify 1:1 balance inclusion."
     },
@@ -102,7 +102,7 @@
       "publisher": "Binance",
       "independence_group": "binance_primary",
       "type": "issuer_primary_announcement",
-      "url": "https://www.binance.com/en/support/announcement/detail/c6ba9aa726974fc6b9332a2c8f63b405",
+      "url": "https://www.binance.bh/en/support/announcement/detail/c6ba9aa726974fc6b9332a2c8f63b405",
       "published_at_utc": "2026-11-04T15:23:00Z",
       "supports": "Binance reports 98% replenishment, 100%+ funds set aside, a 44-token November 4 snapshot, and proof expected in 50-60 hours."
     },
@@ -111,7 +111,7 @@
       "publisher": "Binance",
       "independence_group": "binance_primary",
       "type": "issuer_primary_announcement",
-      "url": "https://www.binance.com/en-BH/support/announcement/detail/2d83c325ab6e49c6bd6c5de8803b11a6",
+      "url": "https://www.binance.bh/en/support/announcement/detail/2d83c325ab6e49c6bd6c5de8803b11a6",
       "published_at_utc": "2026-11-03T02:40:00Z",
       "supports": "Phased withdrawal restoration; the XRP network entry names RLUSD as the asset, while the BSC list separately includes XRP."
     },
@@ -122,6 +122,34 @@
       "type": "protocol_documentation",
       "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
       "supports": "Native XRP cannot be frozen; issued trust-line tokens can have issuer freeze controls; custodial exchanges can freeze assets they custody."
+    },
+    {
+      "id": "BINANCE-RECOVERY-UPDATE-3",
+      "publisher": "Binance",
+      "independence_group": "binance_primary",
+      "type": "issuer_primary_announcement",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "updated_at_utc": "2026-10-31T15:23:00Z",
+      "supports": "Binance reported 90% of the impacted amount covered, ten named assets including XRP and RLUSD fully backed, and the remaining 10% consisted of less-liquid assets to be sourced through market and OTC channels."
+    },
+    {
+      "id": "BINANCE-INITIAL-REPORT",
+      "publisher": "Binance",
+      "independence_group": "binance_primary",
+      "type": "issuer_primary_report",
+      "url": "https://www.binance.com/en/blog/community/3229153443759566763",
+      "published_at_utc": "2026-11-03",
+      "supports": "Binance reported approximately 6.34B USD impacted, 2.85B USD frozen or intercepted, more than 100% of required coverage set aside, 98% of impacted token assets replenished as of October 31, and a multi-stage compromise involving endpoints, credentials, internal AI tooling, a container deployment token and wallet signing infrastructure."
+    },
+    {
+      "id": "FBI-TRADERTRAITOR",
+      "publisher": "Federal Bureau of Investigation",
+      "independence_group": "law_enforcement_primary",
+      "type": "government_primary_advisory",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "published_at_utc": "2026-10-31",
+      "supports": "FBI attribution to DPRK TraderTraitor activity and observation that stolen assets were being converted primarily into ETH."
     }
   ],
   "claims": [
@@ -393,6 +421,76 @@
       "limitations": [
         "This is the XRP network with RLUSD as the asset, not a claim that native XRP withdrawals on XRPL resumed at that time."
       ]
+    },
+    {
+      "id": "BINANCE-RECOVERY-PERCENTAGE-DISAGREEMENT",
+      "status": "issuer_reporting_scope_or_cutoff_not_reconciled",
+      "observations": [
+        {
+          "source_id": "BINANCE-RECOVERY-UPDATE-3",
+          "published_at_utc": "2026-10-31T14:24:00Z",
+          "reported_pct": 90,
+          "scope": "impacted amount covered; ten named top assets separately stated as 100% backed"
+        },
+        {
+          "source_id": "BINANCE-INITIAL-REPORT",
+          "published_at_utc": "2026-11-03",
+          "reported_pct": 98,
+          "scope": "impacted token assets replenished as of 2026-10-31"
+        },
+        {
+          "source_id": "BINANCE-POR-UPDATE-7",
+          "published_at_utc": "2026-11-04T15:23:00Z",
+          "reported_pct": 98,
+          "scope": "impacted amount replenished; 44-token PoR snapshot proof pending"
+        }
+      ],
+      "conclusion": "Do not average or silently reconcile 90% and 98%. The October 31 update #3 reported 90%; the November 3 report retrospectively stated 98% as of October 31; November 4 update #7 again reported 98%. Denominators, cutoff times and scope were not fully reconciled in the retrieved disclosures."
+    },
+    {
+      "id": "BINANCE-SECURITY-CHAIN-AND-AI-TOOL",
+      "status": "issuer_reported_incident_chain",
+      "claim": "Binance's November 3 report says attackers combined a tampered developer-tool installation, social engineering, endpoint compromise, stolen credentials, an internal AI tool used as a lateral-movement springboard, discovery of a container-deployment permission token on an engineer's device, container deployment and malicious access to the internal wallet-signing service. Binance said it found no evidence of wallet private-key leakage. The same report describes 50 signing transactions used to manipulate nonce state and establish malicious EIP-7702 authorizations on Ethereum.",
+      "source_ids": [
+        "BINANCE-INITIAL-REPORT",
+        "BINANCE-INITIAL-FINDINGS"
+      ],
+      "interpretation": "The disclosed chain is an endpoint, identity, credential, deployment-permission and signing-service compromise. It is not evidence that an AI model itself was compromised or that XRPL consensus was exploited.",
+      "barrot_v3_security_design_implications": [
+        "Never place exchange signing keys or deployment credentials in prompts, model context or agent-readable files.",
+        "Separate read-only research credentials from code-write, deployment and signing permissions.",
+        "Use short-lived, scoped tokens; keep deployment tokens off developer workstations where possible.",
+        "Require independent human authorization for deployment, signing, funds movement and other high-impact external actions.",
+        "Log tool identity, user identity, scope, request, approval, result and artifact hash.",
+        "Treat internal AI tools and all nine external platforms as untrusted execution surfaces unless their authentication and data flows are verified."
+      ],
+      "implementation_status": "DESIGN_GUIDANCE_ONLY_NOT_VERIFIED_AS_IMPLEMENTED"
+    },
+    {
+      "id": "BINANCE-10-ASSET-POR-DETAIL",
+      "status": "issuer_reported_user_verifiable_zk_proof",
+      "snapshot_time_utc": "2026-10-31T00:00:00Z",
+      "proof_generated_at_utc": "2026-11-02T12:45:00Z",
+      "assets": [
+        "BTC",
+        "ETH",
+        "BNB",
+        "XRP",
+        "SOL",
+        "USDT",
+        "USDC",
+        "RLUSD",
+        "USD1",
+        "ZEC"
+      ],
+      "user_verifiable_minimum_1_to_1_balance_inclusion": true,
+      "source_ids": [
+        "BINANCE-POR-UPDATE-5"
+      ],
+      "limitations": [
+        "This proves inclusion and 1:1 backing for covered user balances at a dated snapshot; it does not prove that stolen XRP was recovered or that Binance bought the XRP in the spot market.",
+        "It is not a full solvency audit of all liabilities and all assets."
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -465,6 +563,45 @@
     "raw_source_sha256": null,
     "forecast_issued": false,
     "model_eligible": false,
-    "reason_model_ineligible": "The full ledger transaction set was not directly retrieved in this run; recipient ownership is unresolved; a 0.59905 XRP balance reconciliation gap remains; and raw source bytes were not retained."
+    "reason_model_ineligible": "The full ledger transaction set was not directly retrieved in this run; recipient ownership is unresolved; a 0.59905 XRP balance reconciliation gap remains; and raw source bytes were not retained.",
+    "source_link_corrections_applied": true,
+    "recovery_percentage_disagreement_preserved": true,
+    "security_chain_is_issuer_reported_not_independently_audited": true
+  },
+  "source_link_corrections": [
+    {
+      "artifact_id": "20261104T191500Z-binance-security-incident-xrp-flow-and-recovery",
+      "source_id": "FBI-TRADERTRAITOR-ADVISORY",
+      "prior_url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack/layout_view",
+      "corrected_url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack"
+    },
+    {
+      "artifact_id": "20261104T191500Z-binance-security-incident-xrp-flow-and-recovery",
+      "source_id": "BINANCE-RECOVERY-UPDATE-6",
+      "corrected_url": "https://www.binance.bh/en/support/announcement/detail/2d83c325ab6e49c6bd6c5de8803b11a6"
+    },
+    {
+      "artifact_id": "20261104T191500Z-binance-security-incident-xrp-flow-and-recovery",
+      "source_id": "BINANCE-RECOVERY-UPDATE-7",
+      "corrected_url": "https://www.binance.bh/en/support/announcement/detail/c6ba9aa726974fc6b9332a2c8f63b405"
+    }
+  ],
+  "security_implications": {
+    "threat_model": "Compromised developer endpoint and credentials -> internal AI tool as pivot -> container deployment token -> malicious container -> wallet signing service -> valid on-chain transactions.",
+    "not_established": [
+      "AI model weights or model provider compromised",
+      "XRPL consensus or XRP Ledger protocol exploited",
+      "XRP native-asset freeze or clawback available"
+    ],
+    "required_barrot_controls": [
+      "least-privilege connector scopes",
+      "separate credentials per platform and task",
+      "ephemeral deployment credentials",
+      "no signing secrets in model context",
+      "human approval for deployment and financial actions",
+      "immutable tool-call and evidence receipts",
+      "independent review of high-impact tool actions"
+    ],
+    "status": "DESIGN_GUIDANCE_ONLY"
   }
 }
