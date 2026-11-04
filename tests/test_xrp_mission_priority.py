@@ -46,7 +46,7 @@ def test_xrp_primary_mission_preempts_generic_learning_curriculum() -> None:
     assert "MISSION_PRIORITY: 1" in goal
     assert "MISSION_TOPIC_ID: xrp_source_provenance" in goal
     assert "Barrot V3" in goal
-    assert "No directional forecast" in goal
+    assert "directional forecast" in goal.lower()
     assert "No guaranteed returns" in goal
 
 

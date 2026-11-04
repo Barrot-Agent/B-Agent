@@ -53,7 +53,7 @@ class MissionRegistry:
         if not isinstance(payload.get("title"), str) or not payload["title"].strip():
             raise MissionRegistryError("Primary mission title is required.")
 
-        if payload.get("priority") != 1:
+        if type(payload.get("priority")) is not int or payload["priority"] != 1:
             raise MissionRegistryError("The primary mission must have priority 1.")
 
         if payload.get("status") not in {"active", "paused", "complete"}:
@@ -68,6 +68,12 @@ class MissionRegistry:
             raise MissionRegistryError(
                 "Barrot V3 must remain the preserved execution foundation."
             )
+
+        invariants = foundation.get("invariants")
+        if not isinstance(invariants, list) or not all(
+            isinstance(item, str) and item.strip() for item in invariants
+        ):
+            raise MissionRegistryError("Barrot V3 foundation invariants are required.")
 
         guardrails = payload.get("guardrails")
         if not isinstance(guardrails, list) or not all(
@@ -94,7 +100,7 @@ class MissionRegistry:
             priority = workstream.get("priority")
             if not isinstance(topic_id, str) or not topic_id.strip():
                 raise MissionRegistryError("Every workstream needs a topic id.")
-            if not isinstance(priority, int) or priority < 1:
+            if type(priority) is not int or priority < 1:
                 raise MissionRegistryError(f"Invalid workstream priority for {topic_id}.")
             if topic_id in seen_topics or priority in seen_priorities:
                 raise MissionRegistryError("Workstream topic ids and priorities must be unique.")
@@ -103,10 +109,17 @@ class MissionRegistry:
             seen_topics.add(topic_id)
             seen_priorities.add(priority)
 
+        acceptance = payload.get("acceptance_criteria")
+        if not isinstance(acceptance, list) or not acceptance or not all(
+            isinstance(item, str) and item.strip() for item in acceptance
+        ):
+            raise MissionRegistryError("Primary mission acceptance criteria are required.")
+
         continuation = payload.get("continuation_goal")
         if (
             not isinstance(continuation, dict)
             or not isinstance(continuation.get("topic_id"), str)
+            or not continuation["topic_id"].strip()
             or not isinstance(continuation.get("goal"), str)
             or not continuation["goal"].strip()
         ):
