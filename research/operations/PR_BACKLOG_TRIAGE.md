@@ -1,10 +1,10 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
-**Snapshot:** 2026-11-04T13:57:10Z, after fresh-main inspection, exact-head CI review and complete 373-PR inventory.
+**Snapshot:** 2026-11-04T19:04:38Z, after fresh-main inspection, exact-head CI review and complete 372-PR inventory.
 
-- Open pull requests: 373
-- Draft: 359
-- Non-draft: 14
+- Open pull requests: 372
+- Draft: 357
+- Non-draft: 15
 
 ## Current-main integration work
 
@@ -270,3 +270,36 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 ### Safety and closure rule
 - No PR merged or closed. Do not close #1644–#1650 until #1640 is merged and every corresponding path is verified on main. Do not close partially overlapping research PRs wholesale. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or branch rewrite.
 - Forecast status remains **NOT_ISSUED**.
+
+
+## Run 20 — exact-head verification, current XRP event state and updated backlog (2026-11-04T19:04:38Z)
+
+### Current inventory
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree: 1,403 entries, 1,298 blobs, not truncated.
+- Open PRs: **372 total; 357 drafts; 15 non-drafts** across four populated API pages.
+- Active integration workstreams remain #1640 (V3/core) and #1643 (XRP research). They have 0 changed-path overlap and both are based directly on current main. No new branch or PR.
+
+### Exact-head status
+- **#1640 — blocked from merge:** head `19352e13447b5d51e5f070bec2733ba01e1d0fbd`, 60 commits ahead, 0 behind, 61 changed files. Exact-head CI 41889890970: 572 core + 8 subtests and 821 full-suite + 8 subtests passed; inclusive coverage 51.68% against the explicit 50% floor. Dependency audit 41889890897 passed across five manifests/15 PEP 621 dependencies with no known vulnerabilities. Gate 41889890902 passed but explicitly disables merge. 22/22 review threads resolved; seven reviews COMMENTED; zero approvals.
+- **#1643 — blocked from merge:** head `b8b628cd524a0891ef929922106542ec444ac686`, 52 commits ahead, 0 behind, 67 changed files. Exact-head CI 41889352520: 489 core + 8 subtests and 769 full-suite + 8 subtests passed. Gate 41889352386 passed but disables merge. 14/14 review threads resolved; six reviews COMMENTED; zero approvals. No dependency manifests changed on this branch.
+- The handoff/backlog documentation commit in this run creates a new #1640 head. Re-run exact-head CI, full suite, dependency audit and fail-closed gate on that resulting SHA; do not transfer results from `19352e1`.
+
+### Backlog classification
+- **Superseded-pending-#1640-merge:** #1644–#1650; #1317, #1318, #1320, #1254 and #1255. Their exact workflow/dependency paths are represented in #1640. Keep open until #1640 is merged and every included path is verified on main.
+- **Partially superseded-pending-#1643-merge:** #1597, #1605, #1608 and #1614. Preserve unique identity, C2FO/actual-capital, feature-validator and handoff content; no wholesale closure.
+- **Unique/unreviewed:** #1269 geometry/OBJ topology; #1641 bounded autonomous experimentation.
+- **Blocked or unique/unreviewed:** all remaining stale-base drafts until their exact ancestry and changed paths are inspected. No bulk closure.
+- Non-draft inventory: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+
+### New evidence
+- Kraken XRP/USD: last 1.30113, bid 1.30104, ask 1.30105, spread approximately 0.0769 bps, 24h volume 43.398M XRP, 24h VWAP 1.28950461, UTC-day open 1.27513. The ticker has no exchange event timestamp; model-ineligible.
+- OKX XRP-USDT: timestamp 2026-11-04T18:59:55.970Z, last 1.3058, bid 1.3058, ask 1.3059, 24h volume 37.9028M XRP. Kraken and OKX observations are not synchronized; no arbitrage or executable-depth inference.
+- XRPL `fixCleanup3_4_0` enabled 2026-11-04 14:52:00 UTC at ledger 108112129; two node-backed public trackers report the same EnableAmendment transaction. LendingProtocol remains 19/35 and SingleAssetVault 21/35; no lending launch.
+- Circle's SEC Q3 release reports average USDC 73.3B USD, end-period 73.9B USD, gross on-chain volume 13.9T USD, 864.888M USD revenue/reserve income, 657.624M USD reserve income and 41.3B USD annualized CPN TPV. Binance announced a 100M USD equity investment and five-year USDC partnership. None is XRP-specific deployed capital.
+- Macro evidence includes Treasury's 125B USD refunding and planned buyback capacities, TBAC's no-crowd-out assessment for 2026 technology issuance, and Reuters' intraday Brent/WTI decline amid election/Iran uncertainty. No XRP causal attribution.
+
+### Merge and safety
+- The visible fallback ruleset is disabled; classic branch-protection endpoint returns 403; zero approvals on both integration PRs.
+- GitHub Pages is enabled and prior main push 41799855489 completed the deploy job. No authorization exists for that automatic deployment side effect. No merge.
+- No PR was closed; no force-push, deployment, secret change, Space restart, Kaggle submission, paper trade, funds transfer or real-money action.
+- Forecast remains **NOT_ISSUED**. Market/issuer-rendered observations are research-only and model-ineligible.
