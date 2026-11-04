@@ -62,13 +62,14 @@ jobs:
         run: |
           set -euo pipefail
           repo="$GITHUB_REPOSITORY"
-          pr_json="$(gh api "repos/${repo}/pulls/${PR_NUMBER}" --jq '{number,state,draft,base_ref:.base.ref,head_sha:.head.sha,head_ref:.head.ref,head_repo:.head.repo.full_name}')"
+          pr_json="$(gh api "repos/${repo}/pulls/${PR_NUMBER}" --jq '{number,state,draft,mergeable_state,base_ref:.base.ref,head_sha:.head.sha,head_ref:.head.ref,head_repo:.head.repo.full_name}')"
           echo "$pr_json"
           state="$(printf '%s' "$pr_json" | jq -r '.state')"
           draft="$(printf '%s' "$pr_json" | jq -r '.draft')"
           base_ref="$(printf '%s' "$pr_json" | jq -r '.base_ref')"
           head_sha="$(printf '%s' "$pr_json" | jq -r '.head_sha')"
           head_repo="$(printf '%s' "$pr_json" | jq -r '.head_repo')"
+          mergeable_state="$(printf '%s' "$pr_json" | jq -r '.mergeable_state')"
           if [[ "$state" != "open" || "$draft" != "false" ]]; then
             echo "Target PR must be open and non-draft." >&2
             exit 1
@@ -83,6 +84,10 @@ jobs:
           fi
           if [[ "$head_repo" != "$repo" ]]; then
             echo "Cross-repository PRs are not eligible." >&2
+            exit 1
+          fi
+          if [[ "$mergeable_state" != "clean" ]]; then
+            echo "Required checks/mergeability are not clean; approval label withheld." >&2
             exit 1
           fi
 
