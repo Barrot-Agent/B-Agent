@@ -157,12 +157,12 @@ def call_groq(prompt: str) -> str:
 
 
 _PROHIBITED_OUTPUT_PATTERNS = (
-    re.compile(r"\\b(?:buy|sell|short|long)\\s+(?:all\\s+)?(?:xrp|bitcoin|btc|ethereum|eth|crypto(?:currency)?|now|here)\\b", re.IGNORECASE),
-    re.compile(r"\\b(?:buy|sell|hold)\\s+(?:signal|call|recommendation)\\b", re.IGNORECASE),
-    re.compile(r"\\b(?:price\\s+)?target(?:\\s+price)?\\s*(?:is|at|of|:|=)?\\s*\\$?\\s*\\d+(?:\\.\\d+)?\\b", re.IGNORECASE),
-    re.compile(r"\\b(?:will(?:\\s+not)?|is\\s+expected\\s+to|are\\s+expected\\s+to|expected\\s+to|is\\s+likely\\s+to|are\\s+likely\\s+to|should)\\s+(?:rise|fall|rally|drop|surge|decline|break|reach|hit|trade|move)\\b", re.IGNORECASE),
-    re.compile(r"\\b(?:entry|exit)\\s+(?:price|level)\\s*(?:is|at|of|:|=)?\\s*\\$?\\s*\\d+(?:\\.\\d+)?\\b", re.IGNORECASE),
-    re.compile(r"\\b(?:stop[- ]loss|take[- ]profit)\\b", re.IGNORECASE),
+    re.compile(r"\b(?:buy|sell|short|long)\s+(?:all\s+)?(?:xrp|bitcoin|btc|ethereum|eth|crypto(?:currency)?|now|here)\b", re.IGNORECASE),
+    re.compile(r"\b(?:buy|sell|hold)\s+(?:signal|call|recommendation)\b", re.IGNORECASE),
+    re.compile(r"\b(?:price\s+)?target(?:\s+price)?\s*(?:is|at|of|:|=)?\s*\$?\s*\d+(?:\.\d+)?\b", re.IGNORECASE),
+    re.compile(r"\b(?:will(?:\s+not)?|is\s+expected\s+to|are\s+expected\s+to|expected\s+to|is\s+likely\s+to|are\s+likely\s+to|should)\s+(?:rise|fall|rally|drop|surge|decline|break|reach|hit|trade|move)\b", re.IGNORECASE),
+    re.compile(r"\b(?:entry|exit)\s+(?:price|level)\s*(?:is|at|of|:|=)?\s*\$?\s*\d+(?:\.\d+)?\b", re.IGNORECASE),
+    re.compile(r"\b(?:stop[- ]loss|take[- ]profit)\b", re.IGNORECASE),
 )
 
 
