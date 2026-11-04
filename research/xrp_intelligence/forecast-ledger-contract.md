@@ -1,7 +1,7 @@
 # XRP fixed-horizon forecast ledger contract v1
 
 ## Status
-The deterministic SQLite recording/scoring prototype is EXECUTED in `barrot_agent/evolution/forecast_ledger.py` and covered by `tests/test_forecast_ledger.py`. It does not generate forecasts, ingest live data, train a model or trade. The database is runtime state and is excluded from Git.
+The deterministic SQLite recording/scoring prototype is EXECUTED in `barrot_agent/evolution/forecast_ledger.py` and covered by `tests/test_forecast_ledger.py`. The ledger itself does not ingest data, generate forecasts, train a model or trade. A first read-only public XRP market adapter is implemented on PR #1640, but is not merged or verified on main; it produces one artifact per run and does not create a durable historical dataset. The database is runtime state and is excluded from Git.
 
 The ledger is restricted to live/shadow issuance: each immutable issuance event records the actual ledger receipt time and `recording_mode=live_shadow`; the target must still be in the future at receipt; caller-supplied issue time cannot be after receipt or more than five minutes old. Historical backtests must use separate evaluation artifacts and must not be inserted as live forecasts.
 
@@ -24,4 +24,9 @@ The prototype reports three-class Brier mean-squared error, log loss, top-class 
 SQLite transactions and triggers reject ordinary SQL UPDATE/DELETE of forecast, outcome and event rows. They are not cryptographically tamper-proof against database-file replacement, schema modification or host compromise. Stronger tamper evidence requires signed/independently anchored exports. Runtime DB and sidecars are ignored by Git.
 
 ## Not implemented
-No public-data ingestion, scheduled historical feature population, forecast generator, model training, walk-forward evaluation, baseline superiority, class-wise calibration, uncertainty intervals, drift detection, shadow scheduler or trading integration is included. The ledger is a recorder/scorer only; no directional forecast is authorized until populated point-in-time data and leakage-safe out-of-sample evaluation support it. The separate local SQLite feature-store prototype exists but is not yet populated with historical XRP data.
+The first scheduled read-only public-market adapter exists on PR #1640, but it is not merged or operational on main and currently produces a per-run artifact rather than a cross-run historical dataset. No scheduled historical feature population, forecast generator, model training, walk-forward evaluation, baseline superiority, class-wise calibration, uncertainty intervals, drift detection, shadow scheduler or trading integration is included. The ledger is a recorder/scorer only; no directional forecast is authorized until populated point-in-time data and leakage-safe out-of-sample evaluation support it. The separate local SQLite feature-store prototype exists but is not yet populated with a durable historical XRP dataset.
+
+
+## First public adapter boundary
+
+The first read-only scheduled Binance/Kraken adapter is implemented in PR #1640 and is separate from the forecast ledger. It writes content-addressed raw receipts and a point-in-time snapshot, but has not been merged to main and has no verified scheduled run. Its output explicitly sets `forecast_status=NOT_ISSUED` and `forecast_model_eligible=false`. The adapter does not train or issue forecasts; it is not evidence of model quality or predictive edge.
