@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "record_id": "sbi-openstandard-jpysc-multirail-network-20261104T002441Z",
-  "captured_at_utc": "2026-11-04T00:24:41Z",
+  "captured_at_utc": "2026-11-04T00:26:37Z",
   "scope": "SBI Group's emerging JPYSC, Open Standard/OUSD, Startale, SMBC and BlackRock relationships; implications for XRP and Circle",
   "observations": [
     {
@@ -303,7 +303,10 @@
     "JPYSC lending applications are not funded loans; do not add them to circulating supply.",
     "SBI/BlackRock and SBI/SMBC are MoU/capital-participation relationships; they are not production integrations.",
     "SBI's $50M Startale investment was announced as an investment contract; completed payment/closing was not independently verified.",
-    "No official source reviewed established Circle as an Open Standard partner or Ripple as an official OUSD partner; secondary partner lists must not override official sources."
+    "No official source reviewed established Circle as an Open Standard partner or Ripple as an official OUSD partner; secondary partner lists must not override official sources.",
+    "The >$1B founding-partner liquidity commitment is a reported forward commitment over coming months, not the current OUSD supply or proof that the full amount has been funded.",
+    "The Block reports Ripple among Open Standard launch participants, while the official OpenUSD selected-partner page does not list Ripple; retain as a secondary sourced claim pending primary confirmation.",
+    "CoinDesk CC reports Circle is not an Open Standard partner; the official selected-partner page also omits Circle, but neither source establishes a complete legal membership register."
   ],
   "next_actions": [
     "Reconcile Bridge's OUSD reserve/supply dashboard with OpenUSD's marketing metrics and obtain latest independent attestation.",
@@ -311,6 +314,33 @@
     "Track JPYSC outstanding versus lending applications and any migration from SBI VC Trade internal balances to public chains.",
     "Track JPYSC-OUSD interoperability PoC status and SBI/BlackRock tokenized-MMF integration.",
     "Track SMBC's 5% SBI Startale Marketing investment amount and governance terms if disclosed.",
-    "Measure whether these rails replace, complement or coexist with XRP bridge use; no directional XRP forecast until route-level evidence exists."
+    "Measure whether these rails replace, complement or coexist with XRP bridge use; no directional XRP forecast until route-level evidence exists.",
+    "Seek an official Open Standard partner roster or legal disclosure confirming Ripple and Circle membership status.",
+    "Reconcile the reported >$1B founder liquidity commitment with Bridge's live OUSD supply and actual funded balances by partner."
+  ],
+  "sourced_claims": [
+    {
+      "id": "ripple-openstandard-participation",
+      "claim": "Ripple was among the launch participants/partners for Open Standard, according to The Block's June 30, 2026 report.",
+      "source": "https://www.theblock.co/news/markets/2026-06-30-visa-stripe-coinbase-join-open-usd-stablecoin-shares-reserve-revenue-406736",
+      "classification": "secondary-source claim",
+      "corroboration": "The official OpenUSD partner page's selected-partner list does not show Ripple; because the page is not an exhaustive roster, this is unresolved rather than a contradiction.",
+      "confidence": "sourced but not primary-confirmed"
+    },
+    {
+      "id": "circle-openstandard-membership",
+      "claim": "Circle is not a partner in Open Standard, according to CoinDesk CC's September 30, 2026 launch report.",
+      "source": "https://coindesk.cc/story/2026/09/open-usd-stablecoin-goes-live-as-stripe-visa-and-mastercard-open-it-to-businesses",
+      "classification": "secondary-source claim",
+      "corroboration": "The official OpenUSD selected-partner page does not list Circle; partner list is not stated to be exhaustive.",
+      "confidence": "sourced; official confirmation of absence not available"
+    },
+    {
+      "id": "ousd-liquidity-commitment",
+      "claim": "The five founding partners committed more than $1B to seed OUSD liquidity over the coming months; each reportedly received an equal initial equity stake.",
+      "source": "https://www.coindesk.com/business/2026/09/24/open-usd-takes-on-tether-circle-with-a-different-stablecoin-model-that-s-building-money",
+      "classification": "reported commitment, not current funded supply",
+      "confidence": "secondary report; exact individual contributions and timing undisclosed"
+    }
   ]
 }

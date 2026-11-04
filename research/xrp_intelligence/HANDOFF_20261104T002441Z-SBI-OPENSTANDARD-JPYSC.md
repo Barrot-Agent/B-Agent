@@ -54,3 +54,10 @@ No public route-level data yet establishes which hypothesis dominates.
 - JPYSC supply, lending applications and JGB allocation: https://www.sbigroup.co.jp/news/2026/0907_16567.html
 - JPYSC launch and distribution roles: https://www.sbigroup.co.jp/news/2026/0624_16425.html
 - SBI Startale investment contract: https://www.sbigroup.co.jp/news/2026/0326_16202.html
+
+
+## Partner-status source reconciliation — 2026-11-04 00:26 UTC
+
+- The Block's June 30 launch report lists Ripple among launch participants. The official OpenUSD page's selected-partner list does not list Ripple. Treat Ripple participation as a secondary sourced claim pending primary confirmation, not as a confirmed direct relationship.
+- CoinDesk CC's September 30 launch report says Circle is not an Open Standard partner; the official selected-partner page also omits Circle. The page does not claim its selected list is exhaustive, so retain this as a sourced claim rather than a definitive legal-membership conclusion.
+- CoinDesk reports the five founding partners committed more than $1B to seed OUSD liquidity over coming months and received equal initial equity stakes. This is a forward commitment, not the current funded supply; individual contributions and timing remain undisclosed.
