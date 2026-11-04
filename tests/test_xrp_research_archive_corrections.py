@@ -266,3 +266,45 @@ def test_circle_and_ripple_occ_replacements_are_entity_scoped():
     assert "D79Z71vmerN8" in by_id["circle_occ_cas_final"]["canonical_url"]
     assert "RjzoD2gxmYOv" in by_id["ripple_occ_cas_correct"]["canonical_url"]
 
+
+
+ 
+def test_circle_q3_results_are_post_event_append_only_and_not_model_eligible():
+    path = ROOT / "research" / "xrp_intelligence" / "20261104T150819Z-circle-q3-2026-results-primary-release-and-xrp-counterhypothesis.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert data["forecast_issued"] is False
+    assert data["prediction_status"] == "NOT_ISSUED"
+    assert data["model_eligible"] is False
+    assert data["data_quality"]["raw_content_sha256_available"] is False
+    assert sources["circle_q3_2026_earnings_release"]["model_eligible"] is False
+    assert sources["circle_q3_2026_earnings_release"]["raw_content_sha256"] is None
+    assert data["financial_observations"][0]["value_usd_billions"] == 73.3
+    assert data["financial_observations"][1]["value_usd_billions"] == 73.9
+    assert data["financial_observations"][2]["value_usd_trillions"] == 13.9
+    other = next(x for x in data["financial_observations"] if x["id"] == "CIRCLE-Q3-OTHER-REVENUE-2026")
+    assert other["includes_arc_token_presale_usd_millions"] == 182
+    assert other["derived_other_revenue_ex_arc_usd_millions"] == 25.264
+    assert other["derived_arc_presale_share_of_other_revenue_pct"] > 87
+    assert data["arc_token_economics"]["genesis_mint_tokens_billions"] == 10
+    assert data["arc_token_economics"]["gas_fee_asset"] == "USDC"
+    assert data["xrp_implications"]["directional_effect"] == "UNRESOLVED_NO_DIRECTIONAL_XRP_EFFECT_ADMITTED"
+    assert all(not x["model_eligible"] for x in data["financial_observations"])
+
+
+def test_circle_q3_post_event_overlay_preserves_original_cutoff():
+    data = load_artifact()
+    entry = correction(data, "C15_CIRCLE_Q3_2026_RESULTS_POST_EVENT")
+    assert entry["prior_status_at_original_cutoff"] == "future_scheduled_event"
+    assert entry["canonical_status"] == "RESULTS_RELEASED_2026-11-04T13:00:00Z"
+    assert entry["original_artifact_modified"] is False
+    assert entry["superseding_artifact"].endswith("20261104T150819Z-circle-q3-2026-results-primary-release-and-xrp-counterhypothesis.json")
+    assert entry["source_id"] == "circle_q3_2026_earnings_release"
+
+
+def test_arc_token_context_is_updated_without_relabeling_usdc_gas():
+    data = load_artifact()
+    entry = correction(data, "C14_CIRCLE_ARC_USDC_NATIVE_COUNTERHYPOTHESIS")
+    assert entry["additional_evidence_source_ids"] == ["circle_q3_2026_earnings_release"]
+    assert "10B ARC genesis mint" in entry["token_context_update"]
+    assert "transaction fees are paid in USDC" in entry["token_context_update"]

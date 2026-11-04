@@ -2,8 +2,8 @@
   "schema_version": "barrot.xrp.research-correction.v1",
   "artifact_id": "xrp_archive_review_correction_20261104T144241Z",
   "artifact_type": "append_only_review_correction_and_pit_quarantine",
-  "captured_at_utc": "2026-11-04T15:08:19Z",
-  "data_cutoff_utc": "2026-11-04T15:08:19Z",
+  "captured_at_utc": "2026-11-04T15:15:12Z",
+  "data_cutoff_utc": "2026-11-04T15:15:12Z",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-evidence-archive-20261104",
   "review_pr": 1643,
@@ -450,11 +450,31 @@
         "The OCC CAS record identifies First National Digital Currency Bank, N.A., Circle's national trust bank, under control number 2025-Charter-342299.",
         "The record lists an approved action dated 2025-12-12 and a consummated/effective date of 2026-07-24; the separate Circle Q2 2026 Form 10-Q records final OCC approval on 2026-07-09 and opening on 2026-07-24."
       ]
+    },
+    {
+      "id": "circle_q3_2026_earnings_release",
+      "publisher": "Circle Internet Group, Inc.",
+      "authority": "primary issuer Q3 2026 earnings press release PDF linked from Circle Investor Relations",
+      "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/earnings-result/3Q26-Earnings-Release.pdf",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T15:08:19Z",
+      "source_independence_group": "circle_issuer",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Q3 2026 average USDC circulation was $73.3B (+8% YoY), quarter-end circulation was $73.9B (flat YoY), and Q3 on-chain transaction volume was $13.9T (+49% YoY).",
+        "Q3 total revenue and reserve income was $864.888M; reserve income was $657.624M and other revenue was $207.264M, including $182M of ARC token presale revenue.",
+        "Q3 net income from continuing operations was $226.012M and adjusted EBITDA was reported as $317M (+85% YoY).",
+        "Circle Payments Network reached $41.3B annualized TPV; the Tazapay acquisition agreement remains subject to regulatory approval and is expected to close in 2027.",
+        "Circle reported a 10B ARC genesis mint; ARC is designed for network security, utility and governance, with a transition to Proof of Stake targeted for 2027.",
+        "Circle reported $104B of USDC minted and $104B redeemed during Q3, 27% stablecoin market share (down 183 bps), and 7.3M meaningful wallets."
+      ]
     }
   ],
   "correction_overlay": {
     "consumer_application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY",
-    "consumer_note": "This is an append-only research correction overlay. Entity-specific source replacements now carry exact target_field pointers; Kraken field corrections carry canonical_path pointers. No production parser applies this overlay automatically, so corrected values remain research-only until a tested consumer applies them.",
+    "consumer_note": "This is an append-only research correction overlay. Entity-specific OCC replacements carry exact target_field pointers; Kraken corrections carry canonical_path pointers; the Circle Q3 event is superseded only by a later timestamped addendum. No production parser applies this overlay automatically, so corrected values remain research-only until a tested consumer applies them.",
     "entries": [
       {
         "correction_id": "C01_SOURCE_CITATION_CROSSWALK",
@@ -906,8 +926,30 @@
           "No XRPL-versus-Arc transaction-cost, liquidity, user-flow or settlement-volume comparison is supplied."
         ],
         "model_eligible": false,
-        "forecast_effect": "NO_DIRECTIONAL_XRP_EFFECT_ADMITTED"
+        "forecast_effect": "NO_DIRECTIONAL_XRP_EFFECT_ADMITTED",
+        "additional_evidence_source_ids": [
+          "circle_q3_2026_earnings_release"
+        ],
+        "token_context_update": "Circle's Q3 2026 release reports a 10B ARC genesis mint and says ARC is designed for security, utility and governance, with a Proof-of-Stake transition targeted for 2027. This means Arc is not tokenless; it does not contradict the earlier statement that transaction fees are paid in USDC and no volatile native token is required for gas."
+      },
+      {
+        "correction_id": "C15_CIRCLE_Q3_2026_RESULTS_POST_EVENT",
+        "target_artifact": "research/xrp_intelligence/20261104T131226Z-circle-q3-coinbase-ripple-bny-sbic-market-addendum.json",
+        "correction_type": "post_event_append_only_supersession",
+        "prior_event_id": "circle_q3_2026_results_webcast",
+        "prior_status_at_original_cutoff": "future_scheduled_event",
+        "canonical_status": "RESULTS_RELEASED_2026-11-04T13:00:00Z",
+        "superseding_artifact": "research/xrp_intelligence/20261104T150819Z-circle-q3-2026-results-primary-release-and-xrp-counterhypothesis.json",
+        "source_id": "circle_q3_2026_earnings_release",
+        "evidence_source_ids": [
+          "circle_q3_2026_earnings_release"
+        ],
+        "original_artifact_modified": false,
+        "reason": "The 13:12:26Z artifact correctly recorded the Circle Q3 webcast as future at its cutoff. The 15:08:19Z issuer earnings release is a later observation; preserve the earlier artifact and use the new addendum for post-event facts."
       }
+    ],
+    "evidence_source_ids": [
+      "circle_q3_2026_earnings_release"
     ]
   },
   "research_hypotheses": [
@@ -1055,11 +1097,11 @@
     "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "f9075237e4d8f4298a66655491d279947c6ff45d",
-    "prior_captured_at_utc": "2026-11-04T14:50:50Z",
-    "revised_at_utc": "2026-11-04T15:08:19Z",
-    "revision_reason": "Scoped OCC citation replacements to exact Circle, Ripple and Coinbase fields; added Circle-specific OCC CAS evidence; made Kraken canonical field paths explicit; strengthened nested evidence-reference tests. Prior research artifacts and raw-source receipts remain preserved.",
-    "revision_status": "append_only_entity_scoped_source_crosswalk_and_test_revision",
+    "prior_blob_sha": "f6dff1afe4819cf0955b6916bd9e60a1bad9c70d",
+    "prior_captured_at_utc": "2026-11-04T15:08:19Z",
+    "revised_at_utc": "2026-11-04T15:15:12Z",
+    "revision_reason": "Appended the post-webcast Circle Q3 2026 results addendum, recorded the ARC genesis token alongside USDC-denominated gas, and superseded the earlier pre-event Circle webcast status without rewriting the earlier cutoff artifact.",
+    "revision_status": "append_only_post_event_results_addendum",
     "source_registry_unchanged": false
   },
   "artifact_revision_history": [
@@ -1085,6 +1127,14 @@
       "revised_at_utc": "2026-11-04T14:50:50Z",
       "revision_reason": "Aligned the new OCC News Release 2026-29 source receipt and artifact capture cutoff after the page was opened; no source claim or raw artifact changed.",
       "revision_status": "append_only_timestamp_alignment",
+      "source_registry_unchanged": false
+    },
+    {
+      "prior_blob_sha": "f9075237e4d8f4298a66655491d279947c6ff45d",
+      "prior_captured_at_utc": "2026-11-04T14:50:50Z",
+      "revised_at_utc": "2026-11-04T15:08:19Z",
+      "revision_reason": "Scoped OCC citation replacements to exact Circle, Ripple and Coinbase fields; added Circle-specific OCC CAS evidence; made Kraken canonical field paths explicit; strengthened nested evidence-reference tests. Prior research artifacts and raw-source receipts remain preserved.",
+      "revision_status": "append_only_entity_scoped_source_crosswalk_and_test_revision",
       "source_registry_unchanged": false
     }
   ]
