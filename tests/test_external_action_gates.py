@@ -48,16 +48,18 @@ def test_model_upload_requires_approval_and_validated_destination() -> None:
     assert "--trust-remote-code" not in content
 
 
-def test_self_upgrade_requires_explicit_approval_and_main_base() -> None:
-    content = _read("barrot-self-upgrade.yml")
-    assert "confirm_external_change" in content
-    assert "default: NO" in content
-    assert "inputs.confirm_external_change == 'YES'" in content
-    assert "github.ref == 'refs/heads/main'" in content
-    assert "ref: ${{ github.ref_name }}" in content
-    assert "python3 scripts/barrot_self_upgrade.py" in content
-    assert "--persist-audit-report" not in content
-    assert "gh pr merge" not in content
+def test_pr_generating_automation_is_quarantined_until_integration_dedup_is_verified() -> None:
+    for name in ("barrot-agent.yml", "barrot-self-upgrade.yml"):
+        content = _read(name)
+        assert "workflow_dispatch: {}" in content, name
+        assert "permissions: {}" in content, name
+        assert "if: ${{ false }}" in content, name
+        assert "issues:" not in content, name
+        assert "schedule:" not in content, name
+        assert "push:" not in content, name
+        assert "contents: write" not in content, name
+        assert "pull-requests: write" not in content, name
+        assert "gh pr create" not in content, name
 
 
 def test_factory_restart_requires_explicit_approval() -> None:
@@ -297,7 +299,6 @@ def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() ->
     checkout_workflows = (
         "barrot-bundle-operational-smoke.yml",
         "barrot-controlled-feature-validation.yml",
-        "barrot-self-upgrade.yml",
         "ci.yml",
         "dependency-audit.yml",
         "formal-verification-benchmarks.yml",

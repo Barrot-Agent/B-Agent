@@ -22,6 +22,7 @@ def test_push_triggered_external_deployments_require_manual_main_approval():
         assert '[[ "$GITHUB_REF" == "refs/heads/main" ]]' in content
         assert '[[ "$(git rev-parse origin/main)" == "$EXPECTED_MAIN_SHA" ]]' in content
         assert "permissions:\n  contents: read" in content
+        assert "persist-credentials: false" in content
 
 
 def test_self_hosted_brain_secret_is_only_mapped_in_confirmed_deploy_step():
