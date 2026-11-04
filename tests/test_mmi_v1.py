@@ -1077,3 +1077,37 @@ def test_execution_ledger_append_skips_trailing_blank_lines(tmp_path):
     records = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     assert records[-1]["previous_hash"] == first_hash
     assert records[-1]["event_hash"] == second_hash
+
+def test_malformed_source_provenance_class_fails_closed_without_type_error():
+    record = MMIEngine().create_record(
+        "malformed-source-provenance-class",
+        {"name": "fixture"},
+        {"source": "fixture://source"},
+    )
+    record.source_graph = [
+        SourceRecord(
+            source_id="bad",
+            uri="https://source-a.example/report",
+            provenance_class={},
+            independence_group="source-a.example",
+        ),
+        SourceRecord(
+            source_id="good",
+            uri="https://source-b.example/report",
+            provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
+            independence_group="source-b.example",
+        ),
+    ]
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="independent-malformed-class",
+            claim="malformed provenance class",
+            state=ParseState.OBSERVED,
+            source_ids=["bad", "good"],
+            independent=True,
+        )
+    )
+
+    assert any("invalid source provenance class" in error for error in record.validate())
+    assert record._independence_groups_for(["bad", "good"]) is None
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED

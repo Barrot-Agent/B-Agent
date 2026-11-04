@@ -43,7 +43,7 @@ def test_persist_job_rechecks_main_and_limits_writes_to_two_state_files():
     persist = content.split("  persist:", 1)[1]
     assert persist.count("git fetch --no-tags --depth=1 origin main") == 1
     assert '[[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" && "$current_main" == "$EXPECTED_MAIN_SHA" ]]' in persist
-    assert "git status --porcelain" in persist
+    assert '["git", "status", "--porcelain=v1", "-z", "--untracked-files=all"]' in persist
     assert "web/paper_trading_state.json" in persist
     assert "web/paper_trading_log.jsonl" in persist
     assert "git push origin HEAD:main" in persist

@@ -241,7 +241,10 @@ class MMIRecord:
             if source_id in source_classes:
                 errors.append("duplicate source IDs in source graph")
             else:
-                source_classes[source_id] = getattr(item, "provenance_class", None)
+                provenance_class = getattr(item, "provenance_class", None)
+                source_classes[source_id] = provenance_class
+                if not isinstance(provenance_class, ProvenanceClass):
+                    errors.append(f"invalid source provenance class: {source_id}")
             if isinstance(depth, bool) or not isinstance(depth, int) or not 1 <= depth <= self.source_max_depth:
                 errors.append(f"source depth out of range: {source_id}")
             if not isinstance(getattr(item, "uri", None), str):
@@ -288,7 +291,11 @@ class MMIRecord:
                     errors.append(f"independent evidence cannot be independent without a valid source: {evidence_id}")
                 elif any(source_id not in source_classes for source_id in valid_source_ids):
                     errors.append(f"independent evidence cannot be independent with an unknown source: {evidence_id}")
-                elif any(source_classes[source_id] not in external_classes for source_id in valid_source_ids):
+                elif any(
+                    not isinstance(source_classes[source_id], ProvenanceClass)
+                    or source_classes[source_id] not in external_classes
+                    for source_id in valid_source_ids
+                ):
                     errors.append(f"independent evidence cannot be independent unless it references only external sources: {evidence_id}")
 
         if self.structural_signature:
@@ -341,10 +348,17 @@ class MMIRecord:
         groups = set()
         for source_id in source_ids:
             source = source_by_id[source_id]
-            if source.provenance_class not in external_classes:
+            provenance_class = getattr(source, "provenance_class", None)
+            if (
+                not isinstance(provenance_class, ProvenanceClass)
+                or provenance_class not in external_classes
+            ):
                 return None
-            resolved = canonical_publisher_group(source.uri)
-            declared = source.independence_group
+            uri = getattr(source, "uri", None)
+            if not isinstance(uri, str) or not uri.strip():
+                return None
+            resolved = canonical_publisher_group(uri)
+            declared = getattr(source, "independence_group", None)
             if not resolved or not isinstance(declared, str):
                 return None
             if declared.strip().casefold() != resolved.casefold():
