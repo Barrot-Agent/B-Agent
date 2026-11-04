@@ -534,6 +534,34 @@
       "publisher": "CryptoKrios third-party creator index",
       "type": "secondary channel analytics index",
       "independence": "secondary index; claims 633 videos analyzed but does not prove exhaustive channel inventory"
+    },
+    {
+      "id": "askcoin_token_cmc",
+      "url": "https://coinmarketcap.com/es/currencies/askcoin/",
+      "publisher": "CoinMarketCap",
+      "type": "third-party token preview/listing",
+      "independence": "market-data aggregator; page reports zero supply and preview status"
+    },
+    {
+      "id": "askcoin_token_bitdegree",
+      "url": "https://www.bitdegree.org/cryptocurrency-prices/askcoin-ask-price/price-history",
+      "publisher": "BitDegree",
+      "type": "third-party token listing",
+      "independence": "secondary market-data index; labels Askcoin ASK inactive/untracked"
+    },
+    {
+      "id": "askcoin_exchange_cmc",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "publisher": "CoinMarketCap",
+      "type": "third-party exchange listing",
+      "independence": "market-data aggregator; labels exchange inactive/untracked with no reserve data"
+    },
+    {
+      "id": "askcoin_exchange_bitdegree",
+      "url": "https://www.bitdegree.org/top-crypto-exchanges/ask-coin",
+      "publisher": "BitDegree",
+      "type": "third-party exchange listing",
+      "independence": "secondary exchange directory; labels exchange inactive and untracked"
     }
   ],
   "market_snapshot": {
@@ -980,6 +1008,31 @@
         "kamilah_creator_social_index",
         "kamilah_creator_aggregate_index"
       ]
+    },
+    {
+      "id": "ASK-Coin-name-disambiguation",
+      "class": "multiple_candidate_entities_not_resolved_to_user_intent",
+      "detail": "The exact phrase ASK Coin is ambiguous in public listings. Three distinct candidates are now documented: Permission Coin (ticker ASK), an active token with official Base and Polygon LayerZero OFT deployments; Askcoin (ASK), a separate CMC preview listing that shows zero supply and a third-party index marks inactive/untracked; and Ask Coin, a separate exchange listing for askcoin.net marked inactive/untracked with no reserve data. These are not interchangeable and none is confirmed as the user's intended reference.",
+      "evidence": [
+        "permission_ask_docs",
+        "permission_ask_cmc",
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree",
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree"
+      ]
+    },
+    {
+      "id": "ASK-XRPL-relationship-status",
+      "class": "no_verified_xrpl_link_in_reviewed_sources",
+      "detail": "Reviewed Permission Coin sources identify Base and Polygon deployments, while the separate Askcoin token preview references askcoin.me and explorer.askcoin.me. The Ask Coin exchange listing points to askcoin.net. Direct attempts to open askcoin.me and explorer.askcoin.me were inaccessible, and exact searches did not establish an XRP Ledger deployment, Ripple relationship, XRP trading pair, or SBI/Circle/Coinbase connection. This is a bounded search result, not proof that no relationship can exist.",
+      "evidence": [
+        "permission_ask_docs",
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree",
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree"
+      ]
     }
   ],
   "relationship_graph": [
@@ -1338,6 +1391,36 @@
       "status": "public_video_metadata_candidate",
       "evidence": [
         "kamilah_video_cold_wallet"
+      ]
+    },
+    {
+      "from": "Permission Coin (ASK)",
+      "to": "Base and Polygon",
+      "relation": "official token deployment",
+      "status": "documented",
+      "evidence": [
+        "permission_ask_docs",
+        "permission_ask_cmc"
+      ]
+    },
+    {
+      "from": "Askcoin (ASK) preview listing",
+      "to": "askcoin.me / explorer.askcoin.me",
+      "relation": "listed website and explorer",
+      "status": "third-party listing; inactive/untracked",
+      "evidence": [
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree"
+      ]
+    },
+    {
+      "from": "Ask Coin exchange listing",
+      "to": "askcoin.net",
+      "relation": "listed exchange website",
+      "status": "third-party listing; inactive/untracked",
+      "evidence": [
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree"
       ]
     }
   ],
