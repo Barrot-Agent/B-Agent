@@ -57,6 +57,7 @@ ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
+DRY_RUN = os.environ.get("DRY_RUN", "").strip().lower() in {"1", "true", "yes"}
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 MAX_TOOL_ROUNDS = 4
 MAX_SEARCH_RESULTS = 50
@@ -64,7 +65,109 @@ MAX_SEARCH_RESULTS = 50
 NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
 
 
+def _git_subcommand(args: list[str]) -> tuple[str, list[str]]:
+    if not args or str(args[0]).strip().lower() != "git":
+        return "", []
+    tokens = [str(part).strip().lower() for part in args[1:]]
+    value_options = {"-c", "-C", "--git-dir", "--work-tree", "--namespace", "--exec-path", "--super-prefix", "--config-env"}
+    flag_options = {"--no-pager", "--no-replace-objects", "--literal-pathspecs", "--no-optional-locks", "--bare"}
+    index = 0
+    while index < len(tokens):
+        token = tokens[index]
+        if token in value_options:
+            index += 2
+            continue
+        if any(token.startswith(option + "=") for option in ("--git-dir", "--work-tree", "--namespace", "--exec-path", "--super-prefix", "--config-env")):
+            index += 1
+            continue
+        if token in flag_options:
+            index += 1
+            continue
+        if token.startswith("-"):
+            index += 1
+            continue
+        return token, tokens[index + 1:]
+    return "", []
+
+
+def _is_mutating_git(args: list[str]) -> bool:
+    command, rest = _git_subcommand(args)
+    if not command:
+        return False
+    if command in {
+        "add", "am", "apply", "bisect", "checkout", "cherry-pick", "clean",
+        "clone", "commit", "fetch", "init", "merge", "mv", "pull", "push",
+        "rebase", "reset", "restore", "revert", "rm", "stash", "switch",
+        "update-index", "update-ref", "write-tree", "read-tree", "commit-tree",
+        "gc", "maintenance", "repack", "prune", "replace", "filter-branch",
+        "filter-repo", "rerere",
+    }:
+        return True
+    if command == "config":
+        read_only = {"--get", "--get-all", "--get-regexp", "--get-urlmatch", "--list", "-l", "--show-origin", "--show-scope", "--name-only"}
+        return not rest or rest[0] not in read_only
+    if command == "branch":
+        read_only = {"--show-current", "--list", "-l", "-a", "-r", "--all", "--remotes", "--contains", "--merged", "--no-merged", "--format", "--sort", "--verbose", "-v", "--column", "--no-column"}
+        return any((not token.startswith("-")) or token not in read_only for token in rest)
+    if command == "remote":
+        return bool(rest and rest[0] not in {"-v", "--verbose"})
+    if command == "worktree":
+        return not (rest and rest[0] == "list")
+    if command == "tag":
+        read_only = {"-l", "--list", "-n", "--contains", "--merged", "--no-merged", "--points-at", "--sort", "--format", "--column", "--no-column"}
+        return any((not token.startswith("-")) or token not in read_only for token in rest)
+    if command == "notes":
+        return not (rest and rest[0] in {"list", "show"})
+    if command == "submodule":
+        return bool(rest and rest[0] not in {"status", "summary"})
+    if command == "reflog":
+        return not (rest and rest[0] in {"show", "list"})
+    return False
+
+
+def _is_mutating_gh(args: list[str]) -> bool:
+    tokens = [str(part).strip().lower() for part in args]
+    if not tokens:
+        return True
+    root = tokens[0]
+    sub = tokens[1] if len(tokens) > 1 else ""
+    read_only = {
+        "pr": {"list", "view", "diff", "status", "checks"},
+        "issue": {"list", "view", "status"},
+        "repo": {"view", "list"},
+        "run": {"list", "view"},
+        "workflow": {"list", "view"},
+        "search": {"code", "issues", "prs", "commits", "repos"},
+        "auth": {"status"},
+    }
+    if root == "api":
+        method = "GET"
+        has_body = False
+        index = 1
+        while index < len(tokens):
+            token = tokens[index]
+            if token in {"-x", "--method"} and index + 1 < len(tokens):
+                method = tokens[index + 1].upper()
+                index += 2
+                continue
+            if token.startswith("--method="):
+                method = token.split("=", 1)[1].upper()
+            if token in {"-f", "-F", "--field", "--raw-field", "--input"} or token.startswith(("--field=", "--raw-field=", "--input=")):
+                has_body = True
+            index += 1
+        return method not in {"GET", "HEAD"} or has_body
+    if root in read_only:
+        return sub not in read_only[root]
+    return True
+
+
 def run(args: list[str], *, check: bool = True, quiet: bool = False) -> subprocess.CompletedProcess[str]:
+    normalized = [str(part).strip().lower() for part in args]
+    joined = " ".join(normalized)
+    if DRY_RUN and normalized and normalized[0] == "git" and _is_mutating_git(args):
+        raise RuntimeError("DRY_RUN_WRITE_GUARD: blocked attempted git mutation: " + joined)
+    if DRY_RUN and normalized and normalized[0] == "gh" and _is_mutating_gh(args[1:]):
+        raise RuntimeError("DRY_RUN_WRITE_GUARD: blocked attempted gh mutation: " + joined)
     print("+", " ".join(args))
     result = subprocess.run(
         args,
@@ -252,6 +355,34 @@ class RepoBrowser:
             },
             sort_keys=True,
         )
+
+
+def _bound_groq_messages(messages: list[dict[str, Any]], max_chars: int = 16000) -> list[dict[str, Any]]:
+    """Keep provider input comfortably below small per-minute token budgets.
+
+    Preserve the system instruction and newest user request first. If context
+    exceeds the budget, discard older history before trimming the newest
+    request; never silently send an oversized prompt.
+    """
+    if max_chars < 1000:
+        raise ValueError("max_chars must leave room for task instructions.")
+    bounded = [dict(message) for message in messages]
+    def size(items: list[dict[str, Any]]) -> int:
+        return sum(len(str(item.get("content", ""))) for item in items)
+    while len(bounded) > 2 and size(bounded) > max_chars:
+        bounded.pop(1)
+    if size(bounded) > max_chars:
+        system = bounded[0] if bounded and bounded[0].get("role") == "system" else None
+        latest = bounded[-1] if bounded else {"role": "user", "content": ""}
+        system_text = str(system.get("content", "")) if system else ""
+        marker = "\n[Context truncated to respect provider token budget.]"
+        available = max(0, max_chars - len(system_text) - len(marker))
+        latest_text = str(latest.get("content", ""))
+        if len(latest_text) > available:
+            latest = dict(latest)
+            latest["content"] = latest_text[:available] + marker
+        bounded = ([system] if system else []) + [latest]
+    return bounded
 
 
 def _groq_payload(
@@ -492,8 +623,9 @@ class ScriptBrain:
             self.enable_tools if use_tools is None else bool(use_tools) and bool(self.tools)
         )
         for _ in range(self.max_tool_rounds):
+            request_messages = _bound_groq_messages(messages)
             payload = _groq_payload(
-                messages,
+                request_messages,
                 tools=self.tools if tools_enabled else None,
                 max_tokens=max_output_tokens or (1536 if tools_enabled else 1024),
                 json_mode=not tools_enabled,
@@ -607,6 +739,9 @@ def build_file_context(task_title: str, task_body: str) -> str:
 
 
 def run_gh(args: list[str]) -> subprocess.CompletedProcess[str]:
+    normalized = [str(part).strip().lower() for part in args]
+    if DRY_RUN and _is_mutating_gh(args):
+        raise RuntimeError("DRY_RUN_WRITE_GUARD: blocked attempted gh mutation: " + " ".join(normalized))
     return subprocess.run(
         ["gh", *args],
         cwd=ROOT,
@@ -727,7 +862,41 @@ def checkout_branch(branch: str) -> None:
         raise RuntimeError(result.stderr.strip() or f"Unable to checkout branch {branch}")
 
 
+def prepare_workspace() -> None:
+    """Avoid even local Git configuration/ref/worktree mutation in dry-run mode."""
+    if DRY_RUN:
+        print("DRY_RUN: skipped git configuration and branch checkout")
+        return
+    configure_git()
+    checkout_branch(BRANCH)
+
+
+def persist_bundle_plan(
+    lifecycle_store: BundleLifecycleStore,
+    work_id: str,
+    result: Any,
+    *,
+    request_fingerprint: str,
+) -> Path:
+    """Keep dry-run plan artifacts outside the repository and .git metadata."""
+    if not DRY_RUN:
+        return lifecycle_store.save_plan(
+            work_id, result, request_fingerprint=request_fingerprint
+        )
+    temp_root = Path(os.environ.get("RUNNER_TEMP", "/tmp")).resolve()
+    temp_root.mkdir(parents=True, exist_ok=True)
+    path = temp_root / "barrot-dry-run-bundle.json"
+    path.write_text(
+        json.dumps(result.to_dict(), indent=2, ensure_ascii=False, default=str) + "\n",
+        encoding="utf-8",
+    )
+    return path
+
+
 def post_issue_comment(message: str) -> None:
+    if DRY_RUN:
+        print("DRY_RUN: issue comment suppressed; message follows:\\n" + message[:3000])
+        return
     if not ISSUE or ISSUE == "0":
         return
     import tempfile
@@ -775,6 +944,9 @@ def _is_research_cycle(payload: dict[str, Any]) -> bool:
 
 
 def create_pull_request(cycle: dict[str, object] | Any) -> None:
+    if DRY_RUN:
+        print("DRY_RUN: pull request creation suppressed.")
+        return
     cycle_data = _extract_cycle_data(cycle)
     safe_title = TITLE.replace('"', "'").replace("`", "'").replace("$", "")
     head_branch = (
@@ -1215,8 +1387,7 @@ def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
 
 def main() -> None:
     global MAX_SEARCH_RESULTS
-    configure_git()
-    checkout_branch(BRANCH)
+    prepare_workspace()
 
     if should_route_scientific_discovery(TASK_MODE, TITLE, TASK):
         if not GROQ_KEY:
@@ -1419,10 +1590,14 @@ def main() -> None:
             post_issue_comment(message)
             raise SystemExit(message) from exc
 
-    lifecycle_path = lifecycle_store.save_plan(
-        work_id, bundle_result, request_fingerprint=request_fingerprint
+    lifecycle_path = persist_bundle_plan(
+        lifecycle_store, work_id, bundle_result, request_fingerprint=request_fingerprint
     )
-    print(f"Bundle plan persisted: {lifecycle_path}")
+    print(
+        f"Dry-run bundle artifact: {lifecycle_path}"
+        if DRY_RUN
+        else f"Bundle plan persisted: {lifecycle_path}"
+    )
     print(
         "Bundle gate:",
         bundle_result.status,
@@ -1442,6 +1617,39 @@ def main() -> None:
         print(message)
         raise SystemExit(1)
 
+    if DRY_RUN:
+        # Stop after real provider-backed bundle generation/review. Never enter the
+        # repository-repair executor in dry-run mode.
+        report = {
+            "status": "DRY_RUN_PLAN_READY",
+            "provider": f"groq:{MODEL}",
+            "repository": REPO,
+            "branch": BRANCH,
+            "task_title": TITLE,
+            "bundle": bundle_result.to_dict(),
+            "bundle_plan_path": str(lifecycle_path),
+            "working_tree_diff": run(["git", "diff", "--", ".github/workflows/barrot-agent.yml"], check=False, quiet=True).stdout,
+            "write_actions_performed": [],
+            "repair_execution_started": False,
+            "pull_request_created": False,
+            "issue_comment_posted": False,
+            "note": "Provider-backed planning and deterministic review completed. Repair execution is intentionally not started in dry-run mode.",
+        }
+        rendered_report = json.dumps(report, indent=2, default=str)
+        report_path = Path(os.environ.get("RUNNER_TEMP", "/tmp")) / "barrot-dry-run.json"
+        report_path.write_text(rendered_report, encoding="utf-8")
+        summary_path = os.environ.get("GITHUB_STEP_SUMMARY", "")
+        if summary_path:
+            with open(summary_path, "a", encoding="utf-8") as summary:
+                summary.write("# Barrot dry-run evidence\\n\\n")
+                summary.write("- Status: **" + report["status"] + "**\\n")
+                summary.write("- Provider: `" + report["provider"] + "`\\n")
+                summary.write("- Bundle quality score: `" + str(bundle_result.review.quality_score) + "`\\n")
+                summary.write("- Repair executor started: `false`\\n")
+                summary.write("- Repository/issue write actions: `none`\\n\\n")
+                summary.write("The complete bundle plan and evidence are in the uploaded artifact.\\n")
+        print(rendered_report[:50000])
+        return
     task_work_scope = request_fingerprint.split(":", 1)[-1][:16]
     controller = RepositoryRepairController(
         brain=brain,
