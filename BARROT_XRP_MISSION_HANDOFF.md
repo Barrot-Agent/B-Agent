@@ -1477,3 +1477,28 @@ Corrected official source links are recorded in `research/xrp_intelligence/20261
 - Backlog: #1644–#1650 and #1317/#1318/#1320/#1254/#1255 remain superseded-pending-#1640-merge; #1597/#1605/#1608/#1614 remain partially superseded with unique content preserved; #1269 and #1641 remain unique. Remaining drafts are blocked or unique/unreviewed; no bulk closure.
 - No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 - Next: verify exact-head checks on this handoff successor; resolve independent approval and Pages deployment authorization without bypass; then merge only after all gates and approvals pass, fetch main, verify every merged path and commit, run main CI, and close only exact duplicates. Continue durable public-data history and chronological walk-forward evaluation before enabling forecasts.
+
+
+---
+
+## 2026-11-04 19:34 UTC — latest integration verification and XRP observation quarantine
+
+**Mission priority:** XRP intelligence and prediction-engine mastery. **Foundation:** Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Repository state — verified from live GitHub
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree contains 1,403 entries.
+- #1640 remains the single V3/core integration PR, branch `integration/core-capabilities-mmi-structural-paper-20261104`, 62 commits ahead / 0 behind, 61 changed files, non-draft and mergeable. Current head: `2272b069ed8035011d957e5ed503a7e4b588c1ad`. Its exact-head CI, dependency audit and fail-closed gate completed successfully. The gate disables merging. Full-suite result on the documented exact head: 821 passed plus 8 subtests; inclusive coverage 51.68%; dependency audit passed with no known vulnerabilities reported.
+- #1643 remains the single XRP research integration PR, branch `research/xrp-evidence-archive-20261104`, 56 commits ahead / 0 behind, 71 changed files, non-draft and mergeable. Its previous exact head `6f1d0b51cdb87123f025d0c8dab78a60a76cedda` had successful CI and fail-closed gate. A new append-only eligibility overlay and regression test were committed afterward; new exact head is `5e3993d405d1306785b1f8fed8f56b4a00d9876b`. CI for this new head was not yet visible at handoff capture and must be verified before merge consideration.
+- All currently listed inline review threads are resolved: #1640 18/18 and #1643 14/14. Reviews are COMMENTED rather than approving; no approval is claimed.
+
+### New XRP research correction — executed, not yet consumer-applied
+Added `research/xrp_intelligence/20261104T193100Z-derivatives-etf-model-eligibility-overlay.json` and `tests/test_xrp_derivatives_etf_model_eligibility.py` on the existing #1643 branch. The overlay binds to the exact source artifact blob SHA `e8230d867a4e058246c47dfd0499bace0217b9b1` and explicitly marks all six observations in `20261104T001118Z-xrp-derivatives-and-etf-flow-reconciliation.json` model-ineligible, each with a distinct reason. It preserves the source artifact and raw receipts; consumer application is explicitly NOT_EXECUTED. Regression test asserts exact observation-ID coverage, false eligibility for all six, non-empty reasons, and preservation flags. Commit sequence: `6b1e1df2998637f4a7053c4ca2ae959b33e2f8d1`, `a95fd1c418e6345c85cd3aca09944564a423c4a3`, `5e3993d405d1306785b1f8fed8f56b4a00d9876b`.
+
+### Merge and authorization status
+No merge, PR closure, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred. #1640 and #1643 remain unmerged. The fail-closed gates disable merge; approval requirements remain unsatisfied. GitHub Pages is enabled and a prior main push completed an automatic deployment job. Do not merge until required approvals/checks and the Pages side-effect authorization are resolved. Never bypass branch protection or gates.
+
+### Prediction status
+No directional XRP forecast issued. The new overlay is a research correction, not proof of historical model performance. Scheduled ingestion, immutable raw retention beyond workflow artifacts, durable cross-run feature history, chronological walk-forward tests, baselines, calibration, drift monitoring and shadow evaluation remain incomplete or unverified. No real-money actions.
+
+### Next concrete action
+Verify CI and the fail-closed gate on exact #1643 head `5e3993d405d1306785b1f8fed8f56b4a00d9876b`; then review remaining CodeRabbit/Copilot findings and integrate the explicit per-observation eligibility requirement into feature-store admission. Keep #1640 and #1643 as the only active V3/core and XRP research integration branches. Re-fetch main and all open PRs before any later merge decision.
