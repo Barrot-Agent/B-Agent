@@ -458,6 +458,7 @@ def test_historical_feature_store_verify_detects_source_lineage_tampering(tmp_pa
     [
         ("data_cutoff_utc", "2026-11-03T15:00:00.000000Z"),
         ("captured_at_utc", "2026-11-03T16:06:00.000000Z"),
+        ("stored_at_utc", "2026-11-03T16:04:00.000000Z"),
         ("asset_scope_json", '["BTC"]'),
     ],
 )
@@ -487,3 +488,39 @@ def test_historical_feature_store_verify_detects_snapshot_metadata_tampering(
     assert verified["snapshot_columns_ok"] is False
     assert verified["records_ok"] is True
     assert verified["lineage_ok"] is True
+
+
+def test_historical_feature_store_as_of_refuses_unverified_manifest_tampering(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    database = tmp_path / "tampered-manifest-read.sqlite3"
+    store = HistoricalFeatureStore(database)
+    store.append_snapshot(snapshot)
+
+    connection = sqlite3.connect(database)
+    try:
+        connection.execute("DROP TRIGGER snapshots_no_update")
+        row = connection.execute(
+            "SELECT manifest_json FROM snapshots WHERE snapshot_id = ?",
+            (snapshot["snapshot_id"],),
+        ).fetchone()
+        manifest = json.loads(row[0])
+        manifest["records"][0]["value"] = 9.99
+        connection.execute(
+            "UPDATE snapshots SET manifest_json = ? WHERE snapshot_id = ?",
+            (
+                json.dumps(manifest, sort_keys=True, separators=(",", ":")),
+                snapshot["snapshot_id"],
+            ),
+        )
+        connection.commit()
+    finally:
+        connection.close()
+
+    with pytest.raises(FeatureStoreError, match="snapshot integrity verification failed"):
+        store.snapshot_as_of("XRP", "2030-01-01T00:00:00Z")
+    with pytest.raises(FeatureStoreError, match="snapshot integrity verification failed"):
+        store.features_as_of("XRP", "2030-01-01T00:00:00Z")
+    with pytest.raises(FeatureStoreError, match="snapshot integrity verification failed"):
+        store.source_lineage(snapshot["snapshot_id"])
