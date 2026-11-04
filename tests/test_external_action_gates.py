@@ -274,6 +274,8 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
     assert "pip-audit -r requirements.tx --strict" in workflow
     assert "tomllib.loads" in workflow
     assert 'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict' in workflow
+    assert 'target.write_text("\\n".join(dependencies) + "\\n", encoding="utf-8")' in workflow
+    assert "pyproject=%s" in workflow
     assert "PYPROJECT: ${{ steps.pyproject.outcome }}" in workflow
     assert '"$PYPROJECT" != "success"' in workflow
     assert "--ignore-vuln PYSEC-2024-232" not in workflow

@@ -75,7 +75,7 @@ jobs:
           if not dependencies:
               raise SystemExit("pyproject.toml contains no [project].dependencies to audit")
           target = Path(os.environ["RUNNER_TEMP"]) / "pyproject-requirements.txt"
-          target.write_text("\\n".join(dependencies) + "\\n", encoding="utf-8")
+          target.write_text("\n".join(dependencies) + "\n", encoding="utf-8")
           print(f"Materialized {len(dependencies)} PEP 621 dependencies for pip-audit")
           PY
           pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict
@@ -89,7 +89,7 @@ jobs:
           LEGACY: ${{ steps.legacy.outcome }}
           PYPROJECT: ${{ steps.pyproject.outcome }}
         run: |
-          printf 'main/dev=%s supplemental=%s hf_space=%s legacy=%s\n' "$MAIN_DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY"
+          printf 'main/dev=%s supplemental=%s hf_space=%s legacy=%s pyproject=%s\n' "$MAIN_DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY" "$PYPROJECT"
           if [ "$MAIN_DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ]; then
             exit 1
           fi
