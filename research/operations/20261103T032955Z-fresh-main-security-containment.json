@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "barrot-v3-security-containment-20261103-run13",
+  "captured_at_utc": "2026-11-03T03:29:55Z",
+  "data_cutoff_utc": "2026-11-03T03:29:55Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_branch": "main",
+  "base_commit": "d01f67708c6a68ee8b840ad46f8d3ae9cbeed739",
+  "evidence_classification": {
+    "confirmed_facts": [
+      "Main contains brain_corpus/dump.json and brain_corpus/dump.md; their contents were not inspected in this run.",
+      "The public corpus workflow is manually dispatchable, has contents:write, references DATABRICKS_TOKEN, queries workspace.barrot.brain, and commits/pushes brain_corpus files.",
+      "The manual merge queue accepts mode=all, max_prs=0 (unlimited), and dry_run=false by default; its code can update branches, comment and merge pull requests.",
+      "The 15-minute scheduler has contents:write and actions:write and commits/pushes its queue; main's scheduler did not enforce a fixed workflow allowlist.",
+      "Cross Analysis has contents:write and commits/pushes generated outputs to main.",
+      "Main advanced from e67708d203bff98e469ee0dbe8e0166358800109 to d01f67708c6a68ee8b840ad46f8d3ae9cbeed739 through one Cross-analysis refresh changing only ping-pongings/knowledge-base/sentiment_shift.json.",
+      "Current-tree sizes are 353950 bytes for dump.json and 296323 bytes for dump.md."
+    ],
+    "not_established": [
+      "Sensitivity of individual corpus records; no record content was inspected.",
+      "Whether historical Git objects, forks, caches or external copies contain the same data.",
+      "Administrative branch-protection enforcement and required-check enforcement.",
+      "Whether referenced credentials are valid or have been used."
+    ]
+  },
+  "proposed_changes": [
+    "Disable public corpus export with empty workflow permissions and a false job guard.",
+    "Replace the exporter with an inert status-only implementation that reads no credentials, makes no network calls and writes no files.",
+    "Remove the two generated corpus dumps from the proposal's current tree; Git history is not rewritten.",
+    "Disable the broad manual merge queue and remove merge/update/comment capabilities.",
+    "Restrict unattended scheduler dispatch to two input-free read-only validation workflows; reject tampered entries, unapproved workflow names, non-empty inputs and timezone-naive timestamps.",
+    "Serialize scheduler ticks and bound execution time.",
+    "Make Cross Analysis read-only and publish bounded artifacts instead of committing or pushing to main.",
+    "Register four focused regression test modules in core CI."
+  ],
+  "verification": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "exact_head_ci": "PENDING",
+    "fail_closed_gate": "PENDING",
+    "local_tests": "NOT_EXECUTED",
+    "merge": "NOT_AUTHORIZED",
+    "main_modified": false
+  },
+  "limitations": [
+    "Scheduler retains contents/actions write permissions for queue persistence and allowlisted dispatch; it is constrained, not fully read-only.",
+    "Current-tree deletion does not erase historical Git objects, forks, caches or external copies.",
+    "Administrative branch-protection and required-check enforcement remain unverified.",
+    "No individual corpus records were inspected, classified, redacted or relocated."
+  ],
+  "next_actions": [
+    "Run exact-head CI and fail-closed verification after PR creation.",
+    "Verify required-check enforcement with an administrator.",
+    "Perform a separate authorized historical exposure and retention assessment.",
+    "Keep XRP forecast issuance fail-closed until independent fixed-horizon evaluation attestation exists."
+  ]
+}
