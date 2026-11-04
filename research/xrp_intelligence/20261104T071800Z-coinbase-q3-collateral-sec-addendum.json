@@ -1,0 +1,250 @@
+{
+  "artifact_type": "coinbase_q3_2026_sec_collateral_and_strategy_addendum",
+  "captured_at_utc": "2026-11-04T07:18:00Z",
+  "data_cutoff_utc": "2026-11-04T07:18:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "18da9c9981c744c2cf91bb936ecfddce96d3236d"
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "hypothesis_id_namespace": "20261104T071800Z",
+  "source_registry": [
+    {
+      "id": "coinbase_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase Global, Inc. / U.S. SEC",
+      "filed_date": "2026-10-29",
+      "period_end": "2026-09-30",
+      "observed_at_utc": "2026-11-04T07:18:00Z",
+      "type": "Form 10-Q",
+      "independence": "primary regulatory filing",
+      "limitations": [
+        "Quarter-end snapshot predates the October 1, 2026 Global Exchange collateral-policy update.",
+        "The filing aggregates several other crypto assets and does not identify XRP.",
+        "Customer collateral not recognized on balance sheet is not broken down by token."
+      ]
+    },
+    {
+      "id": "coinbase_global_cross_collateral_policy",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "publisher": "Coinbase",
+      "observed_at_utc": "2026-11-04T07:18:00Z",
+      "type": "product/risk documentation",
+      "independence": "primary product documentation",
+      "limitations": [
+        "Eligibility, haircut and ADQ caps do not disclose actual XRP pledged or utilized.",
+        "Policy applies only to supported products, customer types and jurisdictions."
+      ]
+    }
+  ],
+  "coinbase_q3": {
+    "filing": {
+      "filed_date": "2026-10-29",
+      "period_end": "2026-09-30",
+      "currency": "USD",
+      "amounts_unit": "USD"
+    },
+    "lending": {
+      "fiat_and_payment_stablecoin_loan_receivables_usd": 1958539000,
+      "crypto_asset_loan_receivables_usd": 17598000,
+      "total_loan_receivables_usd": 1976137000,
+      "loan_collateral_requirement_pct_of_fair_value": {
+        "minimum": 100,
+        "maximum": 250
+      }
+    },
+    "recognized_lending_collateral": {
+      "fiat_and_payment_stablecoin_usd": 11740000,
+      "bitcoin_usd": 920649000,
+      "ethereum_usd": 67005000,
+      "other_crypto_assets_aggregate_usd": 9903000,
+      "total_crypto_assets_usd": 997557000,
+      "total_recognized_lending_collateral_usd": 1009297000,
+      "xrp_specific_amount_usd": null,
+      "conditional_xrp_upper_bound_if_in_other_bucket_usd": 9903000,
+      "interpretation": "The entire $9.903M other-crypto aggregate includes various assets and is not attributed to XRP. If XRP is among them, its amount is no greater than this aggregate; actual XRP may be zero."
+    },
+    "unrecognized_borrower_collateral": {
+      "fiat_and_payment_stablecoin_usd": 480450000,
+      "crypto_assets_usd": 2804112000,
+      "total_usd": 3284562000,
+      "crypto_asset_breakdown_by_token_available": false
+    },
+    "recognized_derivatives_collateral": {
+      "bitcoin_usd": 298212000,
+      "ethereum_usd": 3731000,
+      "total_usd": 301943000,
+      "xrp_line_disclosed": false,
+      "period_end": "2026-09-30"
+    },
+    "coinbase_own_assets_pledged_against_short_term_borrowings": {
+      "payment_stablecoins_usd": 58678000,
+      "crypto_assets_usd": 375485000,
+      "total_usd": 434163000,
+      "classification": "Coinbase's own pledged assets; not customer-pledged collateral."
+    },
+    "stablecoin_economics": {
+      "stablecoin_revenue_q3_2026_usd": 306905000,
+      "stablecoin_revenue_q3_2025_usd": 324534000,
+      "average_usdc_held_in_coinbase_products": "all-time high (10-Q does not state exact average balance)",
+      "circle_arrangement": "renewed on same terms",
+      "accounting_change_q1_2026": "Revenue on corporate payment-stablecoin balances moved from Stablecoin revenue to Corporate interest and other income; Coinbase states there was no change to the Circle arrangement or revenue generated."
+    },
+    "strategy_and_operating_metrics": {
+      "product_priorities_2026": [
+        "grow the everything exchange",
+        "scale stablecoins and payments",
+        "expand onchain adoption"
+      ],
+      "total_revenue_q3_2026_usd": 1215582000,
+      "net_revenue_q3_2026_usd": 1160462000,
+      "transaction_revenue_q3_2026_usd": 590224000,
+      "subscription_and_services_q3_2026_usd": 570238000,
+      "net_income_q3_2026_usd": 718700000,
+      "adjusted_ebitda_q3_2026_usd": 332900000,
+      "assets_on_platform_usd": 376600000000,
+      "assets_on_platform_prior_year_usd": 515900000000,
+      "monthly_transacting_users_millions": 7.4,
+      "monthly_transacting_users_prior_year_millions": 9.3
+    }
+  },
+  "relationship_graph": [
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC commercial arrangement renewed on the same terms; Q3 10-Q says the accounting reclassification of corporate payment-stablecoin revenue did not change the arrangement or revenue generated.",
+      "status": "confirmed_in_primary_filing",
+      "evidence": [
+        "coinbase_q3_2026_10q"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "XRP is listed in supported Global Exchange cross-collateral documentation; actual XRP utilization is undisclosed.",
+      "status": "product_eligibility_confirmed_utilization_unknown",
+      "evidence": [
+        "coinbase_global_cross_collateral_policy"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "The Sep 30 recognized derivatives-collateral table lists BTC and ETH only; no XRP line is disclosed.",
+      "status": "confirmed_filing_scope_not_universal_absence",
+      "evidence": [
+        "coinbase_q3_2026_10q"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-COINBASE-LOAN-MIX-20261104-01",
+      "classification": "confirmed_sec_filing",
+      "claim": "As of Sep 30, 2026, Coinbase reported $1.976137B loan receivables, of which $17.598M were crypto-asset loans and $1.958539B were fiat/payment-stablecoin loans.",
+      "evidence": [
+        "coinbase_q3_2026_10q"
+      ],
+      "disconfirming_or_limiting": [
+        "This is a quarter-end snapshot, not current post-Oct1 product utilization."
+      ]
+    },
+    {
+      "id": "OBS-COINBASE-XRP-RECOGNIZED-COLLATERAL-20261104-01",
+      "classification": "unknown_asset_with_conditional_aggregate_bound",
+      "claim": "The filing does not identify XRP in recognized lending or derivatives collateral. The entire other-crypto recognized lending bucket is $9.903M; if XRP is included, its recognized lending-collateral amount cannot exceed that aggregate.",
+      "evidence": [
+        "coinbase_q3_2026_10q"
+      ],
+      "disconfirming_or_limiting": [
+        "XRP may be absent from the other-crypto bucket; actual amount may be zero.",
+        "The quarter end predates the Oct 1 policy update.",
+        "The $2.804112B unrecognized borrower crypto-collateral pool has no token-level breakdown."
+      ]
+    },
+    {
+      "id": "OBS-COINBASE-CIRCLE-ACCOUNTING-20261104-01",
+      "classification": "confirmed_primary_filing",
+      "claim": "Coinbase reported $306.905M Q3 stablecoin revenue and renewed its Circle arrangement on the same terms. Corporate payment-stablecoin balance revenue was reclassified to Corporate interest and other income in Q1 2026 without changing the arrangement or revenue generated.",
+      "evidence": [
+        "coinbase_q3_2026_10q"
+      ],
+      "disconfirming_or_limiting": [
+        "The Stablecoin revenue line alone no longer captures all corporate payment-stablecoin balance economics."
+      ]
+    },
+    {
+      "id": "OBS-COINBASE-STRATEGY-20261104-01",
+      "classification": "issuer_reported_strategy_and_metrics",
+      "claim": "Coinbase identifies the everything exchange, stablecoins/payments and onchain adoption as its 2026 priorities; average USDC held in Coinbase products reached an all-time high, while AOP and MTUs were lower year over year.",
+      "evidence": [
+        "coinbase_q3_2026_10q"
+      ],
+      "disconfirming_or_limiting": [
+        "AOP decline was primarily attributed to crypto prices; it is not a direct customer outflow measure.",
+        "The 10-Q does not disclose an exact average USDC balance."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261104T071800Z::H1-xrp-product-eligibility-with-low-or-unproven-use",
+      "claim": "XRP collateral eligibility exists, but material XRP utilization is not demonstrated by the Sep 30 filing.",
+      "support": [
+        "No XRP line in recognized derivatives collateral.",
+        "The aggregate other-crypto lending-collateral bucket is $9.903M.",
+        "Crypto-asset loan receivables are $17.598M."
+      ],
+      "disconfirming_or_missing": [
+        "The filing predates the Oct 1 policy update.",
+        "Unrecognized borrower crypto collateral of $2.804112B is not broken down by token."
+      ],
+      "test": "Seek later quarter-end filings, product-specific utilization disclosures and asset-level collateral reports."
+    },
+    {
+      "id": "20261104T071800Z::H2-post-oct1-xrp-utilization-may-differ",
+      "claim": "XRP collateral utilization may have changed after the October 1 policy update, but public eligibility documentation alone cannot establish the amount.",
+      "support": [
+        "Coinbase product documentation lists XRP in supported cross-collateral terms."
+      ],
+      "disconfirming_or_missing": [
+        "No post-Oct1 XRP-specific pledged balance or loan utilization has been disclosed in the reviewed filing."
+      ],
+      "test": "Compare subsequent quarter-end collateral schedules and public product-specific utilization data."
+    },
+    {
+      "id": "20261104T071800Z::H3-usdc-economics-are-broader-than-stablecoin-revenue-line",
+      "claim": "Coinbase's USDC economics are understated if Stablecoin revenue is read without Corporate interest and other income after the Q1 2026 reclassification.",
+      "support": [
+        "The 10-Q explicitly reclassifies corporate payment-stablecoin balance revenue.",
+        "Coinbase says Circle arrangement and revenue generated did not change."
+      ],
+      "disconfirming_or_missing": [
+        "The 10-Q does not provide a single consolidated USDC-only revenue figure across both lines."
+      ],
+      "test": "Reconcile Stablecoin revenue and Corporate interest and other income disclosures across filings and earnings decks."
+    }
+  ],
+  "data_quality": {
+    "quarter_end_precedes_october_1_xrp_collateral_policy_update": true,
+    "xrp_specific_recognized_collateral_usd": null,
+    "conditional_upper_bound_only_if_xrp_is_in_other_bucket_usd": 9903000,
+    "unrecognized_borrower_crypto_collateral_token_breakdown": false,
+    "recognized_derivatives_table_has_no_xrp_line": true,
+    "no_averaging_or_asset_attribution": "Do not assign any portion of Other crypto assets or unrecognized borrower crypto collateral to XRP without asset-level disclosure.",
+    "accounting_reclassification": "Do not compare the Stablecoin revenue line alone across periods without including corporate payment-stablecoin balance revenue reclassified to Corporate interest and other income."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "This filing improves institutional/collateral features but does not provide a verified XRP utilization series or support a directional forecast."
+  },
+  "next_actions": [
+    "Seek post-Oct1 and later-quarter XRP-specific collateral utilization disclosures.",
+    "Reconcile Coinbase stablecoin revenue with Corporate interest and other income across filings.",
+    "Keep XRP product eligibility separate from actual collateral balances and from RLUSD/USDC distribution."
+  ]
+}

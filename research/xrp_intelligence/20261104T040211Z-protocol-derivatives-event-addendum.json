@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_protocol_derivatives_event_addendum",
+  "captured_at_utc": "2026-11-04T04:02:11Z",
+  "data_cutoff_utc": "2026-11-04T04:02:11Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "77069f8969a38d6ad0d91bfd68e799cf39769b5c",
+    "research_branch_before_addendum": "2384265d1cda7bec0e4af2f87f70254590442131",
+    "main_advanced_by_two_generated_cross_analysis_commits": true,
+    "observed_main_advance_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "research_branch_main_path_overlap_observed": false
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "kodexius_xrp_perps_20261104_0354z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "publisher": "Kodexius",
+      "retrieved_at_utc": "2026-11-04T04:02:11Z",
+      "provider_timestamp_utc": "2026-11-04T03:54:00Z",
+      "type": "public multi-exchange perpetual aggregation",
+      "independence": "single secondary aggregator",
+      "limitations": [
+        "Seven contracts across five venues; not an exhaustive global universe.",
+        "Funding normalized to an eight-hour equivalent; Hyperliquid native interval is one hour.",
+        "Exact contract membership continuity needs verification."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup3_4_0_ledger_108101949",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "publisher": "XRPLWin Explorer",
+      "retrieved_at_utc": "2026-11-04T04:02:11Z",
+      "type": "third-party live amendment and validator snapshot",
+      "independence": "single ledger explorer",
+      "limitations": [
+        "Snapshot reads ledger 108101949 and voting ledger 108101887.",
+        "Support may change before the two-week period completes; listed activation is earliest possible, not confirmation."
+      ]
+    },
+    {
+      "id": "xrpl_official_known_amendments_fixCleanup3_4_0",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "publisher": "XRP Ledger official documentation",
+      "retrieved_at_utc": "2026-11-04T04:02:11Z",
+      "type": "official protocol amendment documentation",
+      "independence": "primary protocol source",
+      "limitations": [
+        "Dynamic mainnet status did not render in retrieved text; used for technical scope and developer warning, not live votes."
+      ]
+    },
+    {
+      "id": "coindesk_fixCleanup3_4_0_20261102",
+      "url": "https://www.coindesk.com/tech/2026/11/02/xrp-ledger-set-to-fix-flaw-that-could-have-let-stablecoin-partners-print-new-tokens",
+      "publisher": "CoinDesk",
+      "published_at": "2026-11-02T12:37:00Z",
+      "retrieved_at_utc": "2026-11-04T04:02:11Z",
+      "type": "secondary protocol-security reporting",
+      "independence": "journalistic source cross-checked against official XRPL docs",
+      "limitations": [
+        "No-public-report finding is not proof of no exploitation.",
+        "Lending vote counts are time-sensitive and require ledger refresh."
+      ]
+    },
+    {
+      "id": "coindesk_xrp_dynamic_ticker_20261104_0402z",
+      "url": "https://www.coindesk.com/tech/2026/11/02/xrp-ledger-set-to-fix-flaw-that-could-have-let-stablecoin-partners-print-new-tokens",
+      "publisher": "CoinDesk embedded ticker",
+      "retrieved_at_utc": "2026-11-04T04:02:11Z",
+      "type": "dynamic embedded market ticker",
+      "independence": "same webpage as CoinDesk article; not independent corroboration",
+      "limitations": [
+        "Displayed USD 1.26 and +0.38% 24h at retrieval; no exact quote timestamp or venue constituents; context only."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_event_20261007",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published_at": "2026-10-07",
+      "retrieved_at_utc": "2026-11-04T04:02:11Z",
+      "type": "official earnings-event notice",
+      "independence": "primary issuer source",
+      "limitations": [
+        "Confirms only the 2026-11-04 13:00 UTC webcast; results are not available at this cutoff."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "observed_at_utc": "2026-11-04T04:02:11Z",
+    "derivatives": {
+      "source_id": "kodexius_xrp_perps_20261104_0354z",
+      "as_of_utc": "2026-11-04T03:54:00Z",
+      "open_interest_usd": 843900000,
+      "contracts_count": 7,
+      "funding_pct_per_8h": 0.0099,
+      "volume_24h_usd": 1510000000,
+      "open_interest_to_volume_ratio": 0.56,
+      "exchange_open_interest_share_pct": {
+        "Binance": 55,
+        "Bybit": 17.9,
+        "OKX": 12,
+        "Hyperliquid": 11.8,
+        "HTX": 3.3
+      },
+      "native_funding_intervals": {
+        "Hyperliquid": "1h, provider scales to 8h equivalent",
+        "other_listed_contracts": "8h"
+      },
+      "model_eligible": false,
+      "exclusion_reason": "Single-provider aggregate; raw exchange snapshots, contract continuity and global venue coverage are not reconciled."
+    },
+    "same_provider_comparison": {
+      "prior_as_of_utc": "2026-11-03T17:54:00Z",
+      "prior_open_interest_usd": 876570000,
+      "current_open_interest_usd": 843900000,
+      "indicative_open_interest_change_pct": -3.727,
+      "prior_volume_24h_usd": 1350000000,
+      "current_volume_24h_usd": 1510000000,
+      "indicative_volume_change_pct": 11.852,
+      "comparability": "Same provider and seven-contract count, but exact instrument membership continuity is not verified; 24-hour volume windows overlap.",
+      "model_eligible": false
+    },
+    "spot_context": {
+      "source_id": "coindesk_xrp_dynamic_ticker_20261104_0402z",
+      "retrieved_at_utc": "2026-11-04T04:02:11Z",
+      "provider_timestamp_utc": null,
+      "price_usd": 1.26,
+      "change_24h_pct": 0.38,
+      "model_eligible": false,
+      "exclusion_reason": "Dynamic embedded ticker without exact quote timestamp or venue constituents."
+    },
+    "xrpl_amendment": {
+      "name": "fixCleanup3_4_0",
+      "amendment_id": "98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76",
+      "status_at_cutoff": "activating_not_yet_enabled",
+      "validators_for": 33,
+      "validators_against": 2,
+      "tracked_validators": 35,
+      "votes_required": 29,
+      "support_pct": 94.29,
+      "majority_since_utc": "2026-10-21T14:46:22Z",
+      "current_ledger_index": 108101949,
+      "voting_ledger_index": 108101887,
+      "earliest_activation_utc": "2026-11-04T14:46:22Z",
+      "technical_scope": [
+        "PaymentBurn-only delegated payments cannot cross zero into a mint unless the delegate also has PaymentMint.",
+        "Vault rounding/asset-delivery, loan due-date/default, AMM, permissioned DEX, trust-line, NFT, MPT, escrow, sponsorship, signing and permission-delegation fixes."
+      ],
+      "native_xrp_supply_affected_by_paymentburn_bug": false,
+      "evidence_source_ids": [
+        "xrplwin_fixcleanup3_4_0_ledger_108101949",
+        "xrpl_official_known_amendments_fixCleanup3_4_0",
+        "coindesk_fixCleanup3_4_0_20261102"
+      ]
+    },
+    "lending_protocol": {
+      "status_at_cutoff": "not_enabled",
+      "reported_lending_protocol_votes": 19,
+      "reported_single_asset_vault_votes": 21,
+      "votes_needed_to_begin_activation_window": 29,
+      "source_id": "coindesk_fixCleanup3_4_0_20261102",
+      "limitation": "Nov 2 CoinDesk report citing XRPL Dashboard; refresh vote counts from ledger. The cleanup amendment does not activate separate lending/vault amendments."
+    },
+    "upcoming_events": [
+      {
+        "source_id": "circle_q3_2026_event_20261007",
+        "event": "Circle Q3 2026 results webcast",
+        "scheduled_at_utc": "2026-11-04T13:00:00Z",
+        "status_at_cutoff": "future_scheduled_event"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "id": "OBS-DERIV-OI-20261104-01",
+      "class": "secondary_provider_snapshot_not_model_eligible",
+      "claim": "Kodexius reported USD 843.90M XRP perpetual OI across seven contracts at 03:54 UTC, USD 1.51B 24-hour volume and +0.0099% funding per eight-hour equivalent.",
+      "evidence": [
+        "kodexius_xrp_perps_20261104_0354z"
+      ],
+      "limitations": [
+        "Provider-specific universe.",
+        "Hyperliquid's native funding interval is one hour.",
+        "OI/funding alone do not establish price direction."
+      ]
+    },
+    {
+      "id": "OBS-DERIV-CHANGE-20261104-01",
+      "class": "same_provider_indicative_comparison_not_model_eligible",
+      "claim": "Same provider OI changed from USD 876.57M at 2026-11-03 17:54 UTC to USD 843.90M at 2026-11-04 03:54 UTC (-3.727%); rolling 24h volume changed from USD 1.35B to USD 1.51B (11.852%).",
+      "evidence": [
+        "kodexius_xrp_perps_20261104_0354z"
+      ],
+      "limitations": [
+        "Both captures list seven contracts but exact membership continuity is unverified.",
+        "Rolling 24h windows overlap; not an incremental ten-hour flow.",
+        "Do not label as confirmed deleveraging or capital exit."
+      ]
+    },
+    {
+      "id": "OBS-DERIV-CONCENTRATION-20261104-01",
+      "class": "provider_universe_concentration_observation",
+      "claim": "Binance represented 55.0% of the provider's reported XRP perpetual OI; Bybit 17.9%, OKX 12.0%, Hyperliquid 11.8% and HTX 3.3%.",
+      "evidence": [
+        "kodexius_xrp_perps_20261104_0354z"
+      ],
+      "limitations": [
+        "Provider universe only; does not reveal global market or beneficial-owner concentration."
+      ]
+    },
+    {
+      "id": "OBS-XRPL-AMENDMENT-20261104-01",
+      "class": "third_party_ledger_snapshot_cross_checked_to_official_specification",
+      "claim": "XRPLWin showed fixCleanup3_4_0 at 33/35 validators (94.29%) above the 29-vote threshold, with earliest activation 2026-11-04 14:46:22 UTC if support holds.",
+      "evidence": [
+        "xrplwin_fixcleanup3_4_0_ledger_108101949",
+        "xrpl_official_known_amendments_fixCleanup3_4_0"
+      ],
+      "limitations": [
+        "Pre-activation snapshot; not proof of later activation.",
+        "Live vote count is from one explorer vantage."
+      ]
+    },
+    {
+      "id": "OBS-PAYMENTBURN-20261104-01",
+      "class": "official_protocol_documentation",
+      "claim": "Official XRPL docs warn against delegating PaymentBurn until fixCleanup3_4_0 is enabled because a burn-only delegate can otherwise mint issued fungible tokens in certain circumstances; the amendment rejects a PaymentBurn-only payment crossing zero into a mint.",
+      "evidence": [
+        "xrpl_official_known_amendments_fixCleanup3_4_0"
+      ],
+      "limitations": [
+        "Issued trust-line tokens/MPTs, not native XRP issuance.",
+        "No evidence that Circle, Ripple or a named issuer delegated this permission or suffered exploitation."
+      ]
+    },
+    {
+      "id": "OBS-EXPLOIT-REPORTING-20261104-01",
+      "class": "journalistic_public_record_review_not_proof_of_absence",
+      "claim": "CoinDesk reported it found no public records or reports of the flaw being exploited.",
+      "evidence": [
+        "coindesk_fixCleanup3_4_0_20261102"
+      ],
+      "limitations": [
+        "Absence of public reports is not proof of no exploitation; not an issuer audit."
+      ]
+    },
+    {
+      "id": "OBS-LENDING-ACTIVATION-20261104-01",
+      "class": "reported_validator_status_not_launch",
+      "claim": "CoinDesk reported the separate LendingProtocol and SingleAssetVault amendments at 19 and 21 votes respectively, below the 29-vote threshold; fixCleanup3_4_0 does not itself launch XRPL lending.",
+      "evidence": [
+        "coindesk_fixCleanup3_4_0_20261102",
+        "xrpl_official_known_amendments_fixCleanup3_4_0"
+      ],
+      "limitations": [
+        "Counts need a fresh ledger check after Nov 2.",
+        "Code fixes do not establish a live lending market or XRP collateral demand."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-20261104-01",
+      "class": "confirmed_scheduled_event",
+      "claim": "Circle Investor Relations scheduled Q3 2026 results for 2026-11-04 08:00 ET / 13:00 UTC; event was future at cutoff.",
+      "evidence": [
+        "circle_q3_2026_event_20261007"
+      ],
+      "limitations": [
+        "No results or guidance included."
+      ]
+    },
+    {
+      "id": "OBS-SPOT-CONTEXT-20261104-01",
+      "class": "dynamic_ticker_context_not_model_eligible",
+      "claim": "CoinDesk's embedded ticker displayed XRP at USD 1.26 and +0.38% over 24 hours at retrieval.",
+      "evidence": [
+        "coindesk_xrp_dynamic_ticker_20261104_0402z"
+      ],
+      "limitations": [
+        "No exact quote timestamp or exchange constituents; context only."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "XRPL validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "vote_on_amendment",
+      "status": "33_of_35_supporting_at_cutoff",
+      "evidence": [
+        "xrplwin_fixcleanup3_4_0_ledger_108101949"
+      ]
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "PaymentBurn delegated permission",
+      "relation": "closes_burn_only_mint_boundary",
+      "status": "not_yet_enabled_at_cutoff",
+      "evidence": [
+        "xrpl_official_known_amendments_fixCleanup3_4_0"
+      ]
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "SingleAssetVault and LendingProtocol code",
+      "relation": "includes_safety_and_accounting_fixes",
+      "status": "does_not_activate_separate_amendments",
+      "evidence": [
+        "xrpl_official_known_amendments_fixCleanup3_4_0",
+        "coindesk_fixCleanup3_4_0_20261102"
+      ]
+    },
+    {
+      "from": "Kodexius",
+      "to": "XRP perpetual contracts",
+      "relation": "aggregates_public_market_data",
+      "status": "single_provider_snapshot",
+      "evidence": [
+        "kodexius_xrp_perps_20261104_0354z"
+      ]
+    },
+    {
+      "from": "Binance",
+      "to": "Kodexius XRP perpetual OI universe",
+      "relation": "reported_share_of_open_interest",
+      "status": "55_percent_at_cutoff",
+      "evidence": [
+        "kodexius_xrp_perps_20261104_0354z"
+      ]
+    },
+    {
+      "from": "Circle Investor Relations",
+      "to": "Q3 2026 results webcast",
+      "relation": "scheduled_public_disclosure",
+      "status": "future_event_at_cutoff",
+      "evidence": [
+        "circle_q3_2026_event_20261007"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261104T040211Z::H14-protocol-security-not-token-demand",
+      "claim": "fixCleanup3_4_0 may reduce issuer/delegate operational risk for issued XRPL assets without creating direct incremental XRP demand.",
+      "support": [
+        "xrpl_official_known_amendments_fixCleanup3_4_0"
+      ],
+      "disconfirming_or_missing": [
+        "No issuer-specific PaymentBurn deployment or post-activation data identified.",
+        "No measured change in stablecoin issuance, XRP bridge routing or XRP purchases."
+      ],
+      "test": "After activation, monitor issuer/delegate permissions, stablecoin issuance/redemption and XRP bridge legs separately."
+    },
+    {
+      "id": "20261104T040211Z::H15-cleanup-is-not-lending-launch",
+      "claim": "The cleanup amendment must not be interpreted as activation of native XRPL lending or collateral markets.",
+      "support": [
+        "xrpl_official_known_amendments_fixCleanup3_4_0",
+        "coindesk_fixCleanup3_4_0_20261102"
+      ],
+      "disconfirming_or_missing": [
+        "Fresh ledger vote counts for LendingProtocol and SingleAssetVault are still needed."
+      ],
+      "test": "Read both amendment vote records and activation flags directly from validated ledger state."
+    },
+    {
+      "id": "20261104T040211Z::H16-oi-volume-turnover-ambiguous",
+      "claim": "The same-provider OI decline with higher rolling volume is consistent with turnover or partial deleveraging but does not identify direction or net capital flow.",
+      "support": [
+        "kodexius_xrp_perps_20261104_0354z"
+      ],
+      "disconfirming_or_missing": [
+        "Contract continuity, signed aggressor flow, liquidations and exchange-native raw OI history are missing."
+      ],
+      "test": "Reconstruct per-instrument OI, funding, basis, liquidations and signed trade flow at synchronized timestamps."
+    },
+    {
+      "id": "20261104T040211Z::H17-venue-concentration-provider-scoped",
+      "claim": "Binance's 55% share is concentration within Kodexius's current XRP perpetual universe, not necessarily all venues or beneficial owners.",
+      "support": [
+        "kodexius_xrp_perps_20261104_0354z"
+      ],
+      "disconfirming_or_missing": [
+        "OTC, CME/institutional products, cross-margin and missing venues may change the denominator."
+      ],
+      "test": "Build an exchange-native instrument-normalized global venue panel."
+    },
+    {
+      "id": "20261104T040211Z::H18-circle-results-update-stablecoin-thesis",
+      "claim": "Circle's Q3 disclosures may update USDC distribution and reserve economics but do not automatically imply XRPL or XRP demand.",
+      "support": [
+        "circle_q3_2026_event_20261007"
+      ],
+      "disconfirming_or_missing": [
+        "Results and XRPL-specific volumes unavailable at cutoff."
+      ],
+      "test": "Extract circulation, reserve income, distribution costs, CPN activity, Arc adoption and chain-specific metrics after webcast."
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average provider OI, funding, ETF or spot figures unless instrument/fund universe, units, timestamps, methodology and coverage match.",
+    "quarantined_sources": [],
+    "feature_eligibility": "New observations are not model-eligible until raw timestamps, source lineage and historical continuity are validated.",
+    "clock_policy": "Capture time, provider-as-of time, ledger index, publication time and event time remain distinct.",
+    "source_independence": "XRPLWin and CoinDesk are not independent live-validator feeds; official XRPL docs are primary for protocol semantics."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "Market data are provider-scoped and incomplete; amendment is pre-activation at cutoff; no calibrated out-of-sample predictive edge is established."
+  },
+  "blockers": [
+    "Exchange-native instrument-level XRP derivatives history and contract continuity.",
+    "Fresh validated ledger check after 2026-11-04 14:46:22 UTC.",
+    "Circle Q3 results and chain-specific disclosures after 2026-11-04 13:00 UTC.",
+    "XRP spot reference with exact exchange timestamp and venue constituents.",
+    "Separate current vote/activation status for LendingProtocol and SingleAssetVault."
+  ],
+  "next_actions": [
+    "Verify fixCleanup3_4_0 activation from validated ledger state after its earliest window.",
+    "Review Circle Q3 release, SEC filing and transcript after the 08:00 ET webcast; separate global USDC economics from XRPL flows.",
+    "Capture synchronized exchange-native XRP OI, funding, basis, liquidation and trade-flow data.",
+    "Populate the point-in-time feature store only with raw timestamps and source provenance."
+  ],
+  "hypothesis_id_namespace": "20261104T040211Z"
+}

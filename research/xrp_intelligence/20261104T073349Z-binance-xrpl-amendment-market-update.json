@@ -1,0 +1,641 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_binance_xrpl_amendment_market_update",
+  "captured_at_utc": "2026-11-04T07:33:49Z",
+  "data_cutoff_utc": "2026-11-04T07:33:49Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "main_sha": "18da9c9981c744c2cf91bb936ecfddce96d3236d",
+    "branch": "research/xrp-binance-amendment-update-18da9c-20261104T0733Z"
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, safety, provenance and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "binance_incident_initial_20261103",
+      "publisher": "Binance",
+      "source_type": "official_incident_statement",
+      "url": "https://www.binance.com/en-AE/square/post/11-03-2026-binance-initial-report-fbi-attributes-6-34-billion-attack-to-north-korea-which-used-fake-job-interviews-and-an-ai-tool-to-reach-hot-wallets-users-fully-covered-384321660235967",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "binance_primary",
+      "limitations": [
+        "Exchange-reported investigation and replenishment percentages are not independently audited in this artifact.",
+        "Customer balance replenishment is not recovery of the original stolen XRP."
+      ]
+    },
+    {
+      "id": "reuters_binance_attack_chain_20261103",
+      "publisher": "Reuters",
+      "source_type": "independent_press_reporting",
+      "url": "https://www.reuters.com/world/binance-says-hackers-used-fake-job-interview-compromise-computer-before-63-2026-11-03/",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "reuters_reporting",
+      "limitations": [
+        "Attack-chain details partly rely on Binance statements; the full forensic report is not public.",
+        "FBI attribution and North Korean denial are competing official positions."
+      ]
+    },
+    {
+      "id": "tibane_binance_xrp_repartition_20261103",
+      "publisher": "Tibane Labs",
+      "source_type": "public_onchain_analysis",
+      "url": "https://www.tibane.net/research/binance-hack",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "tibane_chain_analysis",
+      "limitations": [
+        "Its explicit no-outbound XRP statement is bounded to 2026-11-03 07:27 UTC, not a live 2026-11-04 RPC check.",
+        "Beneficial ownership of recipient wallets is not established.",
+        "Its page says some XRP-chain source reads were not refreshed live; do not treat every displayed chain state as current."
+      ]
+    },
+    {
+      "id": "qeternal_xrp_repartition_20261102",
+      "publisher": "Q-Eternal",
+      "source_type": "public_ledger_reconstruction",
+      "url": "https://q-eternal.com/blog/2026-11-02/",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "qeternal_chain_analysis",
+      "limitations": [
+        "Ledger index 108064685 is a dated snapshot, not a current November 4 check.",
+        "Rounded balance descriptions leave a 0.59905 XRP reconciliation difference against the initial reported transfer amount."
+      ]
+    },
+    {
+      "id": "whalealert_xrp_transfer_3aaa_20261102",
+      "publisher": "Whale Alert",
+      "source_type": "transaction_monitoring_record",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "whalealert_transaction_monitor",
+      "limitations": [
+        "This transaction is one redistribution payment; it does not establish sale, exchange deposit or beneficial ownership."
+      ]
+    },
+    {
+      "id": "panews_binance_hack_tracker_20261104",
+      "publisher": "PANews",
+      "source_type": "dynamic_public_chain_tracker",
+      "url": "https://bn-hack.panewslab.com/",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "panews_chain_tracker",
+      "limitations": [
+        "The page displayed a relative refresh label rather than a precise ledger index in the captured result.",
+        "This tracker reads the same public ledgers as other analysts; organizationally separate does not mean independent underlying data."
+      ]
+    },
+    {
+      "id": "shridlock_public_tracker_20261104_0412z",
+      "publisher": "Shridlock public posts indexed by Sotwe",
+      "source_type": "public_discussion_and_chain_monitoring_claim",
+      "url": "https://www.sotwe.com/shridlock",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "shridlock_public_analysis",
+      "limitations": [
+        "Third-party social index, not the original platform API or a raw ledger response.",
+        "The indexed post states a 04:12 UTC observation; this run did not independently query all six addresses through raw XRPL RPC."
+      ]
+    },
+    {
+      "id": "xrplto_amendment_ledger_read_20261104",
+      "publisher": "XRPL.to",
+      "source_type": "public_ledger_amendment_tracker",
+      "url": "https://xrpl.to/insights/xrpl-amendments-explained",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "xrplto_ledger_indexer",
+      "limitations": [
+        "The page identifies a November 4 ledger read but the captured result does not expose an exact ledger index or timestamp.",
+        "Validator denominator differs from XRPLWin's earlier 35-validator snapshot; compare dates and trusted-validator sets."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup_20261103",
+      "publisher": "XRPLWin",
+      "source_type": "public_amendment_tracker",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "xrplwin_ledger_indexer",
+      "limitations": [
+        "The 33/35 figure is a prior dated snapshot; it is not averaged with the newer 34/36 observation.",
+        "14:46:22 UTC is an earliest conditional activation time, not proof of activation."
+      ]
+    },
+    {
+      "id": "coindesk_fixcleanup_bug_20261102",
+      "publisher": "CoinDesk",
+      "source_type": "technical_reporting",
+      "url": "https://www.coindesk.com/tech/2026/11/02/xrp-ledger-set-to-fix-flaw-that-could-let-stablecoin-partners-print-new-tokens",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "coindesk_reporting",
+      "limitations": [
+        "The article describes a potential bug and reports no public evidence of exploitation; it is not a formal incident finding.",
+        "Amendment vote counts are dated observations and can change."
+      ]
+    },
+    {
+      "id": "yahoo_xrp_history_20261103",
+      "publisher": "Yahoo Finance",
+      "source_type": "historical_market_data",
+      "url": "https://finance.yahoo.com/quote/XRP-USD/history/?p=XRP-USD",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "yahoo_market_data",
+      "limitations": [
+        "Daily rows are date-based; exact exchange composition and intraday timestamp are not supplied in the rendered table.",
+        "Daily close is not a synchronized live quote."
+      ]
+    },
+    {
+      "id": "coingecko_xrp_market_20261104",
+      "publisher": "CoinGecko",
+      "source_type": "aggregated_market_and_derivatives_data",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "coingecko_market_aggregator",
+      "limitations": [
+        "The captured page does not expose an exact quote timestamp.",
+        "The page summary open-interest metric and first ten displayed market rows have different coverage; 120 additional rows are not visible in the snippet.",
+        "Do not treat the page summary as exchange-native consolidated open interest without reconstructing venue and contract coverage."
+      ]
+    },
+    {
+      "id": "altcoinlog_xrp_market_20261104_0126z",
+      "publisher": "Altcoinlog",
+      "source_type": "aggregated_market_data",
+      "url": "https://altcoinlog.com/coins/xrp/",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "altcoinlog_market_aggregator",
+      "limitations": [
+        "Displayed observation timestamp is 2026-11-04 01:26 UTC, over six hours before this artifact capture.",
+        "Not a synchronized quote with CoinGecko's page-level snapshot."
+      ]
+    },
+    {
+      "id": "circle_q3_event_20261104",
+      "publisher": "Circle",
+      "source_type": "official_scheduled_event",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "retrieved_at_utc": "2026-11-04T07:33:49Z",
+      "independence_group": "circle_primary",
+      "limitations": [
+        "The webcast is scheduled for 13:00 UTC; no Q3 result is inferred before publication."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "xrp_daily_history": [
+      {
+        "date": "2026-11-03",
+        "close_usd": 1.2802,
+        "volume_usd": 1856976640,
+        "source_id": "yahoo_xrp_history_20261103",
+        "model_eligible": false,
+        "reason": "Date-based daily bar; exact close timestamp and exchange composition not verified in this capture."
+      },
+      {
+        "date": "2026-10-30",
+        "close_usd": 1.2544,
+        "volume_usd": 3896970079,
+        "source_id": "yahoo_xrp_history_20261103",
+        "model_eligible": false,
+        "reason": "Date-based daily bar; use only after timezone and vendor methodology are normalized."
+      },
+      {
+        "date": "2026-10-29",
+        "close_usd": 1.2349,
+        "volume_usd": 3434227329,
+        "source_id": "yahoo_xrp_history_20261103",
+        "model_eligible": false,
+        "reason": "Date-based daily bar; incident-day coincidence is not causal evidence."
+      }
+    ],
+    "xrp_market_aggregates": {
+      "coingecko": {
+        "price_usd_displayed": 1.28,
+        "range_24h_usd": [
+          1.24,
+          1.29
+        ],
+        "range_7d_usd": [
+          1.2,
+          1.34
+        ],
+        "open_interest_usd": 4137000000,
+        "funding_rate_pct_per_8h": 0.0099,
+        "open_interest_to_market_cap_pct": 5.18,
+        "perps_to_spot_volume_ratio": 14.3,
+        "top_10_visible_venue_open_interest_sum_usd": 2333853858,
+        "displayed_market_rows": 10,
+        "total_market_rows_reported": 130,
+        "source_id": "coingecko_xrp_market_20261104",
+        "model_eligible": false,
+        "reason": "No exact quote timestamp; page-level open interest has broader coverage than the ten visible rows and is not yet reconciled to exchange-native contracts."
+      },
+      "altcoinlog": {
+        "price_usd": 1.2529,
+        "observed_at_utc": "2026-11-04T01:26:00Z",
+        "change_24h_pct": 0.34,
+        "change_7d_pct": -5.15,
+        "change_30d_pct": -17.02,
+        "source_id": "altcoinlog_xrp_market_20261104_0126z",
+        "model_eligible": false,
+        "reason": "Stale relative to this artifact capture and not synchronized with CoinGecko."
+      }
+    },
+    "binance_xrp_incident": {
+      "initial_transfer_xrp": 233461943.1,
+      "sending_hot_wallet_count": 5,
+      "transfer_start_utc": "2026-10-29T20:05:00Z",
+      "transfer_end_utc": "2026-10-29T20:09:20Z",
+      "original_receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "recipient_wallets": [
+        {
+          "address": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+          "reported_balance_xrp": 40001000
+        },
+        {
+          "address": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+          "reported_balance_xrp": 40001000
+        },
+        {
+          "address": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+          "reported_balance_xrp": 40001000
+        },
+        {
+          "address": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+          "reported_balance_xrp": 40001000
+        },
+        {
+          "address": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+          "reported_balance_xrp": 40001000
+        },
+        {
+          "address": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+          "reported_balance_xrp": 33455920
+        }
+      ],
+      "separate_test_destination": {
+        "address": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+        "reported_balance_xrp": 1000
+      },
+      "original_receiver_residual_xrp": 23.69905,
+      "recipient_state_claim_as_of_utc": "2026-11-04T04:12:00Z",
+      "recipient_outbound_transactions_reported_as_of_0412z": 0,
+      "latest_tracker_display_at_retrieval": {
+        "source_id": "panews_binance_hack_tracker_20261104",
+        "reported_xrp_remaining": 233000000,
+        "reported_remaining_pct": 100,
+        "refresh_label": "1 minute ago"
+      },
+      "reported_recipient_sum_xrp": 233461920,
+      "arithmetic_difference_vs_initial_after_residual_xrp": 0.59905,
+      "sale_or_exchange_deposit_verified": false,
+      "model_treatment": "Exclude the original hot-wallet transfer and redistribution from organic exchange-flow/whale-accumulation features. Track as a separate security-incident and custody event."
+    },
+    "xrpl_amendments": {
+      "fixCleanup3_4_0": {
+        "newer_tracker_votes_for": 34,
+        "newer_tracker_trusted_validator_count": 36,
+        "required_votes": 29,
+        "earlier_tracker_votes_for": 33,
+        "earlier_tracker_trusted_validator_count": 35,
+        "status_at_cutoff": "conditional_earliest_activation_window_not_yet_reached",
+        "earliest_activation_utc": "2026-11-04T14:46:22Z",
+        "active_verified": false,
+        "sources": [
+          "xrplto_amendment_ledger_read_20261104",
+          "xrplwin_fixcleanup_20261103"
+        ]
+      },
+      "lending_protocol_votes_for": 19,
+      "single_asset_vault_votes_for": 21,
+      "votes_required_in_newer_tracker": 29,
+      "lending_or_vault_activation_verified": false,
+      "source_ids": [
+        "xrplto_amendment_ledger_read_20261104",
+        "coindesk_fixcleanup_bug_20261102"
+      ]
+    },
+    "upcoming_events": [
+      {
+        "id": "circle_q3_2026_results",
+        "scheduled_at_utc": "2026-11-04T13:00:00Z",
+        "status_at_cutoff": "future_scheduled_event",
+        "source_id": "circle_q3_event_20261104"
+      },
+      {
+        "id": "fixCleanup3_4_0_earliest_activation",
+        "scheduled_at_utc": "2026-11-04T14:46:22Z",
+        "status_at_cutoff": "future_conditional_window",
+        "source_id": "xrplwin_fixcleanup_20261103"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "id": "OBS-BINANCE-XRP-01",
+      "classification": "exchange_reported_and_ledger_reconstructed",
+      "claim": "Five Binance hot wallets transferred 233,461,943.1 XRP to one receiver between 20:05 and 20:09:20 UTC on October 29. Binance attributes the event to unauthorized access to its internal wallet-signing service, not an XRPL consensus failure.",
+      "evidence": [
+        "binance_incident_initial_20261103",
+        "tibane_binance_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-XRP-02",
+      "classification": "secondary_onchain_reconstruction",
+      "claim": "On November 2 the original receiver redistributed approximately 233.46M XRP into six newly created destination accounts and a separate 1,000 XRP test destination. Q-Eternal lists five destination balances of 40,001,000 XRP and one of 33,455,920 XRP.",
+      "evidence": [
+        "qeternal_xrp_repartition_20261102",
+        "tibane_binance_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-XRP-03",
+      "classification": "public_tracker_claim_with_bounded_cutoff",
+      "claim": "A public post indexed by Sotwe states that all six destination accounts still held their received XRP and had zero outbound transactions as of 04:12 UTC on November 4. PANews' dynamic tracker separately displayed approximately 233M XRP remaining and listed the six destination accounts at retrieval.",
+      "evidence": [
+        "shridlock_public_tracker_20261104_0412z",
+        "panews_binance_hack_tracker_20261104"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-XRP-04",
+      "classification": "unreconciled_arithmetic",
+      "claim": "The six listed balances plus the separate 1,000 XRP test destination total 233,461,920 XRP. The initial transfer amount less the reported 23.69905 XRP residual implies 233,461,919.40095 XRP distributed, leaving a 0.59905 XRP discrepancy. The rounded/secondary source figures are not silently forced to reconcile.",
+      "evidence": [
+        "qeternal_xrp_repartition_20261102",
+        "tibane_binance_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-ATTACK-CHAIN-01",
+      "classification": "independent_press_reporting_of_exchange_investigation",
+      "claim": "Reuters reports a multi-stage compromise beginning with a tampered Homebrew installation in June, a fake recruiter/malicious repository in September, use of an internal AI tool on October 20 as a springboard to a container-deployment token, and malicious container execution on October 29. The AI tool is not established as the initial compromise vector.",
+      "evidence": [
+        "reuters_binance_attack_chain_20261103",
+        "binance_incident_initial_20261103"
+      ]
+    },
+    {
+      "id": "OBS-XRPL-CLEANUP-01",
+      "classification": "ledger_tracker_observation",
+      "claim": "XRPL.to's November 4 ledger view reports 34 of 36 trusted validators supporting fixCleanup3_4_0, with 29 required. XRPLWin's earlier 35-validator snapshot reports 33 of 35. The denominator difference is preserved; neither is treated as a direct raw-RPC verification by this run.",
+      "evidence": [
+        "xrplto_amendment_ledger_read_20261104",
+        "xrplwin_fixcleanup_20261103"
+      ]
+    },
+    {
+      "id": "OBS-XRPL-CLEANUP-02",
+      "classification": "technical_reporting_and_scheduled_event",
+      "claim": "fixCleanup3_4_0 addresses an issued-token permission bug involving burn-only authorization and includes vault/AMM cleanup. Its earliest conditional activation is 14:46:22 UTC on November 4. It does not establish that the amendment is active or that native XRP supply changed.",
+      "evidence": [
+        "coindesk_fixcleanup_bug_20261102",
+        "xrplwin_fixcleanup_20261103"
+      ]
+    },
+    {
+      "id": "OBS-XRPL-LENDING-01",
+      "classification": "ledger_tracker_observation",
+      "claim": "The newer XRPL.to view reports 19 votes for LendingProtocol and 21 for SingleAssetVault against 29 required. fixCleanup3_4_0 does not itself launch native XRPL lending.",
+      "evidence": [
+        "xrplto_amendment_ledger_read_20261104",
+        "coindesk_fixcleanup_bug_20261102"
+      ]
+    },
+    {
+      "id": "OBS-XRP-MARKET-01",
+      "classification": "historical_market_data",
+      "claim": "Yahoo Finance's November 3 daily row reports a $1.2802 XRP close and approximately $1.857B volume. October 29 and October 30 rows show unusually high reported daily volumes of approximately $3.434B and $3.897B respectively; coincidence with the Binance incident is not proof of causation.",
+      "evidence": [
+        "yahoo_xrp_history_20261103"
+      ]
+    },
+    {
+      "id": "OBS-XRP-DERIVATIVES-01",
+      "classification": "aggregated_provider_claim",
+      "claim": "CoinGecko's November 4 page displays approximately $4.137B XRP perpetual open interest, 0.0099% funding per eight hours, and a 14.3x perps-to-spot volume ratio. Its first ten visible venue rows sum to approximately $2.334B while the page reports 130 market rows; contract/venue coverage and exact quote time require reconciliation.",
+      "evidence": [
+        "coingecko_xrp_market_20261104"
+      ]
+    },
+    {
+      "id": "OBS-XRP-QUOTE-01",
+      "classification": "aggregated_provider_claim_not_synchronized",
+      "claim": "Altcoinlog displayed $1.2529 at 01:26 UTC on November 4, while CoinGecko's page displayed approximately $1.28 without an exact quote timestamp. These observations are preserved separately and are not averaged.",
+      "evidence": [
+        "altcoinlog_xrp_market_20261104_0126z",
+        "coingecko_xrp_market_20261104"
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-01",
+      "classification": "confirmed_scheduled_event",
+      "claim": "Circle's Q3 2026 results webcast is scheduled for 13:00 UTC on November 4. At this artifact cutoff the event remains in the future; no result, USDC supply change or guidance is inferred.",
+      "evidence": [
+        "circle_q3_event_20261104"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Binance hot wallets",
+      "to": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "relation": "transferred 233,461,943.1 XRP during the October 29 security incident",
+      "status": "confirmed_exchange_statement_and_public_ledger_reconstruction",
+      "evidence": [
+        "binance_incident_initial_20261103",
+        "tibane_binance_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "to": "Six newly created XRPL accounts",
+      "relation": "redistributed approximately 233.46M XRP on November 2",
+      "status": "public_ledger_reconstruction",
+      "evidence": [
+        "qeternal_xrp_repartition_20261102",
+        "tibane_binance_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "to": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+      "relation": "sent a separate 1,000 XRP test payment",
+      "status": "public_ledger_reconstruction",
+      "evidence": [
+        "qeternal_xrp_repartition_20261102",
+        "tibane_binance_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "from": "Six redistributed XRP accounts",
+      "to": "XRP exchange/DEX markets",
+      "relation": "no sale or exchange deposit established by the bounded 04:12 UTC tracker snapshot",
+      "status": "unknown_future_movement_not_excluded",
+      "evidence": [
+        "shridlock_public_tracker_20261104_0412z",
+        "panews_binance_hack_tracker_20261104"
+      ]
+    },
+    {
+      "from": "XRPL trusted validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "34/36 support in newer November 4 tracker; earlier tracker 33/35",
+      "status": "conditional_vote_snapshot_not_activation",
+      "evidence": [
+        "xrplto_amendment_ledger_read_20261104",
+        "xrplwin_fixcleanup_20261103"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer-controlled freeze capability on supported networks",
+      "status": "confirmed_asset_design_and_prior_incident_response",
+      "evidence": [
+        "binance_incident_initial_20261103"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer-controlled freeze capability on supported networks",
+      "status": "confirmed_asset_design_and_prior_incident_response",
+      "evidence": [
+        "binance_incident_initial_20261103"
+      ]
+    },
+    {
+      "from": "Native XRP",
+      "to": "Issuer freeze control",
+      "relation": "no issuer-level freeze mechanism",
+      "status": "confirmed_protocol_asset_design",
+      "evidence": [
+        "tibane_binance_xrp_repartition_20261103",
+        "coindesk_fixcleanup_bug_20261102"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-security-flow-contamination",
+      "claim": "The Binance incident materially contaminates ordinary exchange-outflow and whale-accumulation features.",
+      "support": [
+        "Five Binance hot wallets transferred 233.46M XRP to an attacker receiver.",
+        "The receiver redistributed the funds into six new wallets."
+      ],
+      "disconfirming_or_missing": [
+        "The incident transfer is identifiable and can be excluded from organic flows.",
+        "No sale or exchange deposit was established by the bounded recipient snapshot."
+      ],
+      "tests": [
+        "Reconstruct every incident transaction hash and exclude it from organic exchange-flow features.",
+        "Compare incident-adjusted flows with issuer/venue inventory changes."
+      ]
+    },
+    {
+      "id": "H2-redistribution-not-sale",
+      "claim": "The November 2 split is currently evidence of wallet-layering/custody redistribution, not a verified sale.",
+      "support": [
+        "Six new recipient accounts were funded; a separate 1,000 XRP test destination was used.",
+        "A public tracker claim reports no outgoing transactions from the six recipients as of 04:12 UTC November 4."
+      ],
+      "disconfirming_or_missing": [
+        "The observation is bounded and not a raw RPC check in this run.",
+        "Later transfers, DEX trades, cross-chain swaps or OTC activity remain possible."
+      ],
+      "tests": [
+        "Query each recipient with independent XRPL RPC/indexers at a common ledger index.",
+        "Monitor destination tags, DEX offers/trades and subsequent exchange deposit labels without inferring identity."
+      ]
+    },
+    {
+      "id": "H3-cleanup-not-xrp-demand",
+      "claim": "fixCleanup3_4_0 is primarily a protocol safety/maintenance change and does not itself create immediate XRP buying demand or launch native lending.",
+      "support": [
+        "The amendment repairs issued-token permission and other cleanup logic.",
+        "LendingProtocol and SingleAssetVault remain below the 29-vote threshold in the newer tracker."
+      ],
+      "disconfirming_or_missing": [
+        "Improved institutional confidence could have an indirect longer-term effect.",
+        "Actual activation and downstream issuer adoption have not yet been measured."
+      ],
+      "tests": [
+        "Verify EnabledAmendments after the activation window.",
+        "Track issuer integrations, stablecoin issuance and actual XRP bridge/collateral usage separately."
+      ]
+    },
+    {
+      "id": "H4-derivatives-amplification-not-direction",
+      "claim": "High reported perpetual open interest and positive funding may amplify volatility but do not establish the next XRP price direction.",
+      "support": [
+        "CoinGecko reports $4.137B open interest and 14.3x perps/spot volume.",
+        "The page's visible venue rows cover only 10 of 130 reported markets."
+      ],
+      "disconfirming_or_missing": [
+        "The aggregate may be coverage-dependent or stale.",
+        "Funding, OI and spot flows are not synchronized in the page capture."
+      ],
+      "tests": [
+        "Reconstruct venue-native contract OI, funding and liquidations at common timestamps.",
+        "Compare liquidation cascades and spot depth against volatility-aware baselines."
+      ]
+    },
+    {
+      "id": "H5-stablecoin-freeze-asymmetry",
+      "claim": "Issuer-controlled USDC/RLUSD freezes create a recovery asymmetry relative to native XRP, but this is a custody/recovery distinction rather than a direct price signal.",
+      "support": [
+        "Circle and Ripple can freeze their issued stablecoin balances on supported networks.",
+        "Native XRP has no issuer-level freeze control."
+      ],
+      "disconfirming_or_missing": [
+        "Freeze reach depends on chain, token contract, legal authority and issuer operations.",
+        "No direct causal price effect is established."
+      ],
+      "tests": [
+        "Track frozen balances by token, chain, issuer and exact transaction.",
+        "Keep stablecoin freeze events separate from XRP supply and exchange-flow features."
+      ]
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average provider values with different cutoffs, venue universes, ledger indexes or definitions.",
+    "limitations": [
+      "The 0.59905 XRP discrepancy between rounded/secondary recipient totals and the initial transfer/residual arithmetic remains unresolved.",
+      "The six recipient balances are not a direct raw-RPC verification by this run; latest no-outbound claim is bounded to 04:12 UTC.",
+      "Tibane's explicit XRP no-outbound check is only through 2026-11-03 07:27 UTC; its page also warns that some XRP-chain reads were not refreshed live.",
+      "XRPL.to reports 34/36 validators on November 4 while XRPLWin's earlier snapshot reports 33/35; trusted-validator denominator and observation time differ.",
+      "No direct EnabledAmendments ledger query was executed; fixCleanup3_4_0 is not marked active.",
+      "CoinGecko's price and derivatives aggregates have no exact synchronized timestamp; its visible top-ten venue sum does not equal its broader page-level OI figure.",
+      "Yahoo daily bars are date-based and not yet normalized into point-in-time intraday features.",
+      "No recipient beneficial owner, sale, exchange deposit or OTC transaction is inferred from wallet creation or transfer alone."
+    ],
+    "quarantined_or_not_model_eligible": [
+      "CoinGecko live price and perpetual aggregates until exact timestamps and venue/contract coverage are normalized.",
+      "Altcoinlog price snapshot because it is stale relative to the artifact cutoff.",
+      "Yahoo date-only daily bars until the provider's close timestamp and exchange methodology are normalized.",
+      "All Binance incident transfers from organic exchange-flow/whale-accumulation features."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "No directional XRP forecast is issued. The incident recipient state, market quotes, derivatives universe and amendment activation are not sufficiently synchronized for a point-in-time model forecast."
+  },
+  "blockers": [
+    "No direct multi-provider raw XRPL RPC query for all seven recipient accounts in this run.",
+    "No exact synchronized exchange-native XRP spot/depth/OI/funding/liquidation dataset.",
+    "No issuer-level ETF holdings reconstruction at a common close.",
+    "Circle Q3 results have not yet been released at the cutoff.",
+    "fixCleanup3_4_0 earliest activation window is still in the future."
+  ],
+  "next_actions": [
+    "Re-query all six XRP recipient wallets and the separate test destination from at least two independent XRPL indexers at a recorded common ledger index.",
+    "Verify fixCleanup3_4_0 through validated ledger EnabledAmendments after 2026-11-04 14:46:22 UTC; do not infer activation from the clock.",
+    "Review Circle Q3 2026 release and 10-Q after the 13:00 UTC webcast; separate USDC circulation, reserve income, Coinbase distribution costs and actual payment throughput.",
+    "Reconstruct exchange-native XRP derivatives and spot features at common timestamps; retain provider disagreements.",
+    "Populate historical point-in-time features and run chronological walk-forward tests against naive, momentum, mean-reversion and volatility-aware baselines."
+  ]
+}

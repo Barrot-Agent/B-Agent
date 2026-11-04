@@ -1,0 +1,883 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_market_structure_capital_flow_addendum",
+  "captured_at_utc": "2026-11-04T03:05:46Z",
+  "data_cutoff_utc": "2026-11-04T03:05:46Z",
+  "repository_state": {
+    "inspected_main_sha": "d89cc363812a9a9d04d076d6ef5a09f7cf736285",
+    "research_pr_base_sha": "162f43d29970db9abebfec1b7872601a9d659037",
+    "research_pr_head_before_addendum": "b09aae906139824ae2bc71b351348115e2ba6d46",
+    "main_advanced_by_one_generated_cross_analysis_commit": true,
+    "changed_path_overlap_with_main_advance": false
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "tradradar_xrp_perps_20261104_0225z",
+      "url": "https://tradradar.io/markets/xrp",
+      "publisher": "TradRadar",
+      "published_or_as_of": "2026-11-04T02:25:00Z",
+      "type": "aggregated derivatives market-data page",
+      "independence": "single provider aggregation",
+      "limitations": [
+        "Provider reports seven exchange coverage and a 15-minute delay",
+        "Liquidation totals are lower bounds because exchange publication is incomplete",
+        "Not an exchange-native raw-data export"
+      ]
+    },
+    {
+      "id": "kodexius_xrp_perps_20261103_2204z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "publisher": "Kodexius",
+      "published_or_as_of": "2026-11-03T22:04:00Z",
+      "type": "aggregated derivatives market-data page",
+      "independence": "single provider aggregation",
+      "limitations": [
+        "Seven contract instruments rather than the same seven-exchange universe as TradRadar",
+        "Provider methodology and contract inclusion differ",
+        "Not directly comparable to TradRadar aggregate"
+      ]
+    },
+    {
+      "id": "xrp_insights_etf_20261102",
+      "url": "https://xrp-insights.com/data",
+      "publisher": "XRP Insights",
+      "published_or_as_of": "2026-11-02",
+      "type": "ETF holdings and flow dataset documentation",
+      "independence": "secondary tracker using issuer holdings pages",
+      "limitations": [
+        "Six US spot funds plus BITW XRP sleeve",
+        "Nov 3 row provisional and subject to next-morning resettlement",
+        "Funds with excluded/capture-gap flows contribute zero to aggregate flow",
+        "Not every provider tracks identical fund scope"
+      ]
+    },
+    {
+      "id": "bykaranteli_etf_20261103_2249z",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "publisher": "ByKaranteli",
+      "published_or_as_of": "2026-11-03T22:49:00Z",
+      "type": "ETF flow aggregation",
+      "independence": "secondary tracker with separately recorded daily series",
+      "limitations": [
+        "Aggregate begins 2026-09-08; XRPC issuer series begins 2025-11-13",
+        "Nov 2 row provisional until settled",
+        "Fund universe and treatment of excluded funds differ from XRP Insights"
+      ]
+    },
+    {
+      "id": "circle_usdc_economics_20261016",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "publisher": "Circle Internet Group",
+      "published_or_as_of": "2026-10-16",
+      "type": "issuer-authored commercial economics disclosure",
+      "independence": "issuer statement",
+      "limitations": [
+        "Company-authored framing and unaudited blog summary",
+        "H1 settlement volume is not XRP volume or net capital inflow",
+        "Partner and transaction costs are not equivalent to Coinbase net profit"
+      ]
+    },
+    {
+      "id": "ripple_rntb_final_approval_20261026",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "publisher": "Ripple",
+      "published_or_as_of": "2026-10-26",
+      "type": "issuer press release about regulatory approval",
+      "independence": "issuer statement pending direct OCC document confirmation",
+      "limitations": [
+        "Ripple reports OCC final approval; a separate OCC final decision document was not located in this run",
+        "Approval does not establish bank opening or commencement of operations",
+        "RLUSD issuance remains attributed to Standard Custody & Trust Company in the release"
+      ]
+    },
+    {
+      "id": "tokyo_sbic_official_home_20261104",
+      "url": "https://www.sbic.co.jp/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published_or_as_of": "2026-11-04",
+      "type": "official corporate website",
+      "independence": "primary organization source",
+      "limitations": [
+        "Establishes Tokyo entity identity and stated SME role only",
+        "Does not establish affiliation with SBI Holdings or any XRP relationship"
+      ]
+    },
+    {
+      "id": "tokyo_sbic_chatgpt_seminar_20250226",
+      "url": "https://www.sbic.co.jp/seminar/20250226ym/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published_or_as_of": "2025-02-26",
+      "type": "official event page",
+      "independence": "primary event source",
+      "limitations": [
+        "Documents a ChatGPT/generative-AI seminar with a Microsoft Japan speaker",
+        "Does not establish an OpenAI partnership, SBIC investment in AI, or an XRP connection"
+      ]
+    },
+    {
+      "id": "swiftedge_xrp_perps_dynamic_20261104_0305z",
+      "url": "https://swiftedge.uk/xrp/2026-11-03",
+      "publisher": "Swiftedge ApS",
+      "published_or_as_of": "dynamic page observed at 2026-11-04T03:05:46Z",
+      "type": "dynamic perpetual market-structure page",
+      "independence": "single provider observation",
+      "limitations": [
+        "The page displayed a session high at 2026-11-04T04:25:00Z, later than this run's 2026-11-04T03:05:00Z data cutoff.",
+        "The page footer update timestamp also did not align with the current-session display.",
+        "Quarantined; not used as a market feature or price input."
+      ]
+    },
+    {
+      "id": "federal_reserve_fomc_20261028",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "published_or_as_of": "2026-10-28",
+      "type": "official FOMC statement",
+      "independence": "primary regulator source",
+      "limitations": [
+        "Policy decision is a macro input, not an XRP-specific signal",
+        "FOMC statement says inflation remains elevated and policy remains data dependent"
+      ]
+    },
+    {
+      "id": "reuters_oil_geopolitics_20261103",
+      "url": "https://www.reuters.com/markets/commodities/oil-rises-after-report-us-strike-irans-qeshm-island-2026-11-03/",
+      "publisher": "Reuters",
+      "published_or_as_of": "2026-11-03T01:27:00Z",
+      "type": "reported macro/geopolitical market event",
+      "independence": "independent news reporting",
+      "limitations": [
+        "Reuters reports market prices and official/market-source statements; not a direct commodity feed",
+        "Oil prices declined on the day despite ongoing geopolitical risk",
+        "No direct XRP causal effect established"
+      ]
+    },
+    {
+      "id": "reuters_gold_rates_midterms_20261103",
+      "url": "https://www.reuters.com/world/india/gold-eases-ahead-us-midterm-elections-2026-11-03/",
+      "publisher": "Reuters",
+      "published_or_as_of": "2026-11-03T04:16:00Z",
+      "type": "reported cross-asset macro market context",
+      "independence": "independent news reporting",
+      "limitations": [
+        "December rate-hike probability is a CME FedWatch market-implied estimate reported by Reuters, not a Fed commitment",
+        "Single-day gold/dollar/yield moves do not establish an XRP beta"
+      ]
+    },
+    {
+      "id": "ripple_corporate_strategy_20261028",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "published_or_as_of": "2026-10-28",
+      "type": "issuer corporate strategy and product partnership announcement",
+      "independence": "issuer statement",
+      "limitations": [
+        "Annualized product revenue run rate is a company-reported run-rate, not audited realized revenue.",
+        "Transactions enabled and lifetime payment volume are across Ripple products and are not XRP-only or XRPL-only.",
+        "RLUSD market capitalization and use claims require independent reconciliation.",
+        "Partner announcements do not establish production throughput, actual XRP bridge use or net XRP buying."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_event_listing",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published_or_as_of": "observed at 2026-11-04T03:05:46Z",
+      "type": "official investor-relations event listing",
+      "independence": "primary issuer event source",
+      "limitations": [
+        "Confirms scheduled event time only; results were not available at capture",
+        "Event listing does not establish results or management guidance"
+      ]
+    },
+    {
+      "id": "kamilah_channel_glasp",
+      "url": "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "publisher": "Glasp",
+      "published_or_as_of": "observed at 2026-11-04T03:05:46Z",
+      "type": "third-party YouTube channel index",
+      "independence": "third-party index",
+      "limitations": [
+        "Channel ID and Kamilah Stevenson label are third-party indexed; first-party identity and complete video inventory not verified",
+        "Does not prove equivalence with Camilla Stephenson"
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "price": {
+      "value_usd": 1.2532,
+      "as_of_utc": "2026-11-04T02:25:00Z",
+      "instrument": "TradRadar XRP perpetual mark price",
+      "not_spot_index": true,
+      "source_id": "tradradar_xrp_perps_20261104_0225z"
+    },
+    "derivatives": [
+      {
+        "source_id": "tradradar_xrp_perps_20261104_0225z",
+        "open_interest_usd": 1950000000,
+        "open_interest_change_24h_pct": 0.1,
+        "funding_pct_per_8h": 0.01,
+        "long_short_accounts_ratio": 3.41,
+        "long_accounts_share_pct": 77.3,
+        "liquidations_24h_lower_bound_usd": 5370000,
+        "long_liquidations_usd": 2630000,
+        "short_liquidations_usd": 2740000,
+        "exchange_coverage": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ],
+        "as_of_utc": "2026-11-04T02:25:00Z"
+      },
+      {
+        "source_id": "kodexius_xrp_perps_20261103_2204z",
+        "open_interest_usd": 870320000,
+        "funding_pct_per_8h": 0.01,
+        "volume_24h_usd": 1190000000,
+        "open_interest_to_volume": 0.73,
+        "instrument_count": 7,
+        "as_of_utc": "2026-11-03T22:04:00Z",
+        "exchange_or_contract_coverage": [
+          "Binance XRPUSDT",
+          "Bybit XRPUSDT",
+          "Hyperliquid XRP-USDC",
+          "OKX XRP-USDT-SWAP",
+          "Binance XRPUSDC",
+          "HTX XRP-USDT",
+          "Bybit XRPPERP-USDC"
+        ]
+      }
+    ],
+    "etf_flows": [
+      {
+        "source_id": "xrp_insights_etf_20261102",
+        "date": "2026-11-02",
+        "net_flow_xrp": -32825,
+        "approx_value_usd": -42000,
+        "total_holdings_xrp": 1196567361,
+        "scope": "six US spot ETFs plus BITW XRP sleeve",
+        "status": "one settled trading day; Nov 3 row provisional"
+      },
+      {
+        "source_id": "bykaranteli_etf_20261103_2249z",
+        "date": "2026-11-02",
+        "net_flow_usd": -530000,
+        "cumulative_net_inflow_usd": 1810000000,
+        "net_assets_usd": 1420000000,
+        "five_day_net_usd": 7400000,
+        "status": "provider reports Nov 2 provisional until settled"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "id": "OBS-DERIV-20261104-01",
+      "claim": "TradRadar reported approximately $1.95B XRP perpetual open interest across seven exchanges at 02:25 UTC, with +0.10% 24-hour OI change and +0.0100% funding per eight hours.",
+      "classification": "provider_observation",
+      "evidence": [
+        "tradradar_xrp_perps_20261104_0225z"
+      ],
+      "disconfirming_or_limiting": [
+        "Not exchange-native independently reconstructed",
+        "Seven-exchange coverage is provider-specific",
+        "Liquidation figures are lower bounds"
+      ]
+    },
+    {
+      "id": "OBS-DERIV-20261104-02",
+      "claim": "Kodexius reported approximately $870.32M open interest across seven contract instruments at 22:04 UTC on Nov 3, with +0.0100% funding per eight hours.",
+      "classification": "provider_observation",
+      "evidence": [
+        "kodexius_xrp_perps_20261103_2204z"
+      ],
+      "disconfirming_or_limiting": [
+        "Instrument universe differs from TradRadar's seven-exchange aggregate",
+        "Snapshots are 4h21m apart",
+        "Do not average or treat the difference as an error without reconstructing venue/instrument coverage"
+      ]
+    },
+    {
+      "id": "OBS-DERIV-20261104-03",
+      "claim": "TradRadar's reported long-account share was 77.3%, while long and short liquidations were similar at the snapshot.",
+      "classification": "provider_observation",
+      "evidence": [
+        "tradradar_xrp_perps_20261104_0225z"
+      ],
+      "disconfirming_or_limiting": [
+        "Account ratio is not position notional or beneficial-owner exposure",
+        "A single snapshot does not establish crowding persistence or directional outcome"
+      ]
+    },
+    {
+      "id": "OBS-ETF-20261104-01",
+      "claim": "XRP Insights reported -32,825 XRP net holdings change on Nov 2 and 1,196,567,361 XRP held across six spot funds plus BITW sleeve.",
+      "classification": "provider_observation",
+      "evidence": [
+        "xrp_insights_etf_20261102"
+      ],
+      "disconfirming_or_limiting": [
+        "Nov 3 row is provisional",
+        "Excluded/capture-gap fund flows contribute zero",
+        "Fund scope includes BITW XRP sleeve"
+      ]
+    },
+    {
+      "id": "OBS-ETF-20261104-02",
+      "claim": "ByKaranteli reported a -$530K Nov 2 net flow, +$1.81B cumulative net inflow and $1.42B net assets.",
+      "classification": "provider_observation",
+      "evidence": [
+        "bykaranteli_etf_20261103_2249z"
+      ],
+      "disconfirming_or_limiting": [
+        "Nov 2 data marked provisional",
+        "Provider's visible per-fund table and aggregate fund scope need reconciliation against issuer source files"
+      ]
+    },
+    {
+      "id": "OBS-ETF-20261104-03",
+      "claim": "The two ETF trackers report materially different Nov 2 flow magnitudes and units: approximately -$42K equivalent from -32,825 XRP versus -$530K.",
+      "classification": "unreconciled_discrepancy",
+      "evidence": [
+        "xrp_insights_etf_20261102",
+        "bykaranteli_etf_20261103_2249z"
+      ],
+      "disconfirming_or_limiting": [
+        "Different fund universes, provisional status, excluded funds and reference-price/methodology may explain the gap",
+        "Do not average; reconstruct issuer-level holdings at a common close"
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-20261104-01",
+      "claim": "Circle stated that USDC settled more than $36T on-chain in H1 2026, Circle minted/redeemed more than $315B, and it paid $819M in distribution-partner and transaction costs; it said USDC represented about 77% of global stablecoin transaction volume by June.",
+      "classification": "issuer_sourced_claim",
+      "evidence": [
+        "circle_usdc_economics_20261016"
+      ],
+      "disconfirming_or_limiting": [
+        "Issuer-authored blog",
+        "Gross on-chain settlement is not net new capital or XRP transaction volume",
+        "Mint/redeem totals are gross two-way flows, not net issuance"
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-20261104-02",
+      "claim": "Circle said it reinvested about $473M in licenses, banking relationships, settlement liquidity, compliance, product investment and integrations, and earned seven cents of net profit per dollar of revenue in H1 2026.",
+      "classification": "issuer_sourced_claim",
+      "evidence": [
+        "circle_usdc_economics_20261016"
+      ],
+      "disconfirming_or_limiting": [
+        "Company-authored economics summary; reconcile with SEC statements before modeling profitability",
+        "No XRP-specific revenue or volume is disclosed"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-20261104-01",
+      "claim": "Ripple announced on Oct 26 that Ripple National Trust Bank received final OCC approval to manage RLUSD segregated reserves, act as collateral trustee and provide fiduciary digital-asset custody; Ripple says RLUSD remains issued by Standard Custody & Trust Company.",
+      "classification": "issuer_sourced_claim",
+      "evidence": [
+        "ripple_rntb_final_approval_20261026"
+      ],
+      "disconfirming_or_limiting": [
+        "Direct OCC final decision document not located in this run",
+        "Approval is not evidence that the bank has opened or begun operations",
+        "Issuer claim about RLUSD market cap is not independently reconciled here"
+      ]
+    },
+    {
+      "id": "OBS-SBIC-20261104-01",
+      "claim": "Tokyo SBIC identifies itself as Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and describes a Japanese SME equity-support role; its Feb 26, 2025 event page documents a ChatGPT/generative-AI seminar.",
+      "classification": "primary_source_fact_about_entity_and_event",
+      "evidence": [
+        "tokyo_sbic_official_home_20261104",
+        "tokyo_sbic_chatgpt_seminar_20250226"
+      ],
+      "disconfirming_or_limiting": [
+        "No SBI Holdings affiliation or XRP relationship is established by these sources",
+        "The seminar is not evidence of an OpenAI partnership"
+      ]
+    },
+    {
+      "id": "OBS-SWIFTEDGE-20261104-01",
+      "claim": "A Swiftedge XRP perpetual page returned internally inconsistent timestamps, including a session high timestamp later than this run's capture cutoff and a separate 'updated' time that did not align with the current-session display.",
+      "classification": "quarantined_source_observation",
+      "evidence": [
+        "swiftedge_xrp_perps_dynamic_20261104_0305z"
+      ],
+      "disconfirming_or_limiting": [
+        "Swiftedge was not added as a usable market input; a later synchronized capture is required"
+      ]
+    },
+    {
+      "id": "OBS-MACRO-20261104-01",
+      "claim": "On Oct 28 the FOMC held the federal funds target range at 3.75%-4.00% by a 10-2 vote; two dissenters preferred a 25 bp hike. The statement said inflation remained elevated and geopolitical uncertainty remained elevated.",
+      "classification": "confirmed_official_policy_statement",
+      "evidence": [
+        "federal_reserve_fomc_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "The majority held rather than hiked",
+        "The statement is data dependent and does not pre-commit to December action",
+        "No XRP-specific effect is established"
+      ]
+    },
+    {
+      "id": "OBS-MACRO-20261104-02",
+      "claim": "Reuters reported Brent settled at $103.60 and WTI at $96.09 on Nov 3, down about 1% and near multi-week lows, while US strikes on Iran's Qeshm Island and uncertain negotiations maintained energy-supply risk.",
+      "classification": "reported_market_and_geopolitical_event",
+      "evidence": [
+        "reuters_oil_geopolitics_20261103"
+      ],
+      "disconfirming_or_limiting": [
+        "Prices fell rather than surged on the day",
+        "Peace-talk progress could reduce the risk premium",
+        "No direct XRP impact measured"
+      ]
+    },
+    {
+      "id": "OBS-MACRO-20261104-03",
+      "claim": "Reuters reported the dollar and Treasury yields strengthened on Nov 3 and cited a 79% CME FedWatch probability of a December Fed hike.",
+      "classification": "reported_market_pricing_observation",
+      "evidence": [
+        "reuters_gold_rates_midterms_20261103"
+      ],
+      "disconfirming_or_limiting": [
+        "Market-implied probabilities change and are not policy decisions",
+        "The Fed's official October 28 statement held rates",
+        "Cross-asset one-day correlation is not causation"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-01",
+      "claim": "Ripple reported a $900M annualized product-revenue run rate approaching year-end, more than $16T of transactions enabled across its products in 2025, 1,700+ institutions/corporates/enterprises and 3x growth in customers and partners using multiple solutions.",
+      "classification": "issuer_sourced_corporate_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Run-rate is not audited realized revenue",
+        "Transaction volume is across Ripple products, not XRP or XRPL-only",
+        "Institution/customer counts do not disclose active XRP usage or capital deployed"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-02",
+      "claim": "Ripple said its Payments and Custody network had 60+ payout markets and was approaching $150B lifetime volume by year-end.",
+      "classification": "issuer_sourced_network_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Lifetime network volume is not annual volume, current throughput or XRP settlement volume",
+        "Route-level asset mix and XRP bridge share are undisclosed"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-03",
+      "claim": "Ripple reported RLUSD at a $2.6B market capitalization, up more than 88% year to date, and said RLUSD is used across Ripple solutions and in onchain repo markets.",
+      "classification": "issuer_sourced_stablecoin_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Issuer market-cap figure needs same-cutoff supply reconciliation",
+        "RLUSD adoption is not direct evidence of XRP demand",
+        "Repo collateral asset and utilization breakdown is not disclosed"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-04",
+      "claim": "Ripple announced 24/7 Returns for corporate treasury, using RLUSD, tokenized money-market funds on XRPL and Ripple institutional liquidity infrastructure.",
+      "classification": "issuer_announced_product",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "Product announcement does not disclose production assets, client balances, yields or realized throughput",
+        "RLUSD and tokenized MMFs may be used without XRP as the bridge asset"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-CORP-20261104-05",
+      "claim": "Ripple described BNY/Ripple expansion into tokenized trade finance on XRPL beginning with a C2FO supplier-finance initiative; Privy programmable wallets support XRP, RLUSD and other XRPL assets; Mastercard partnership was described as expanding RLUSD payment settlement.",
+      "classification": "issuer_announced_partner_relationships",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "No production throughput or capital deployed disclosed",
+        "Privy support establishes wallet capability, not actual XRP balances or transactions",
+        "Mastercard relationship is described in the context of RLUSD settlement, not XRP bridge demand"
+      ]
+    },
+    {
+      "id": "OBS-RIPPLE-PRIME-20261104-01",
+      "claim": "Ripple said Ripple Prime supports event contracts and RWA perpetual futures through settlement, financing and clearing with named partners including Jump Trading, Kalshi, Hyperliquid, Virtu and Rothera.",
+      "classification": "issuer_sourced_prime_brokerage_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "No asset-by-asset XRP collateral, financing or settlement utilization disclosed",
+        "Partner access and product support do not prove actual volume"
+      ]
+    },
+    {
+      "id": "OBS-RNTB-20261104-02",
+      "claim": "Ripple's Oct 26 and Oct 28 issuer releases both report final OCC approval for Ripple National Trust Bank; the Oct 28 release places the approval in a broader corporate-strategy announcement.",
+      "classification": "issuer_sourced_regulatory_claim",
+      "evidence": [
+        "ripple_rntb_final_approval_20261026",
+        "ripple_corporate_strategy_20261028"
+      ],
+      "disconfirming_or_limiting": [
+        "The direct OCC final decision document was not located in this run",
+        "The bank's opening and operational commencement remain unverified"
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-20261104-01",
+      "claim": "Circle Investor Relations lists its Q3 2026 results webcast for November 4, 2026 at 08:00 ET (13:00 UTC); at this addendum's 03:05:46 UTC capture, the event had not yet occurred.",
+      "classification": "confirmed_scheduled_event",
+      "evidence": [
+        "circle_q3_2026_event_listing"
+      ],
+      "disconfirming_or_limiting": [
+        "A scheduled event is not evidence of the results",
+        "Any later reschedule or delayed publication must be detected before ingesting results"
+      ]
+    },
+    {
+      "id": "OBS-IDENTITY-20261104-01",
+      "claim": "Exact-name searches for 'Camilla Stephenson' did not identify a verified YouTube channel. A Kamilah Stevenson channel candidate is indexed under channel ID UCqUPJMQdkCN6lsLVDnichPA; a transcript on a candidate video has the speaker introduce herself as 'Camila Stevenson'. These spellings differ and do not establish that the channel owner is the exact person requested.",
+      "classification": "unresolved_identity",
+      "evidence": [
+        "kamilah_channel_glasp"
+      ],
+      "disconfirming_or_limiting": [
+        "Requested spelling is Camilla Stephenson; channel label is Kamilah Stevenson; transcript says Camila Stevenson",
+        "No first-party channel About metadata or cross-linked verified identity was obtained",
+        "Do not attribute the candidate channel's videos to the exact requested person without identity evidence",
+        "Only a third-party Glasp index was available at this artifact cutoff; no first-party channel About metadata or verified cross-link was obtained."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer and reserve/economic operator",
+      "status": "confirmed_by_issuer_filings_and_product_disclosures",
+      "evidence": [
+        "circle_usdc_economics_20261016"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC distribution partners",
+      "relation": "partner economics and distribution payments",
+      "status": "issuer_sourced",
+      "evidence": [
+        "circle_usdc_economics_20261016"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Ripple National Trust Bank",
+      "relation": "issuer-reported OCC final approval and proposed reserve/collateral-trustee/custody roles",
+      "status": "issuer_sourced_regulatory_claim_pending_direct_OCC_document",
+      "evidence": [
+        "ripple_rntb_final_approval_20261026"
+      ]
+    },
+    {
+      "from": "Ripple National Trust Bank",
+      "to": "RLUSD",
+      "relation": "issuer-reported segregated reserve management and collateral trustee",
+      "status": "issuer_sourced_pending_operational_commencement",
+      "evidence": [
+        "ripple_rntb_final_approval_20261026"
+      ]
+    },
+    {
+      "from": "Standard Custody & Trust Company",
+      "to": "RLUSD",
+      "relation": "continues as issuer according to Ripple release",
+      "status": "issuer_sourced",
+      "evidence": [
+        "ripple_rntb_final_approval_20261026"
+      ]
+    },
+    {
+      "from": "Tokyo SBIC",
+      "to": "Japanese SMEs",
+      "relation": "equity support and long-term stable-shareholder model",
+      "status": "primary_organization_description",
+      "evidence": [
+        "tokyo_sbic_official_home_20261104"
+      ]
+    },
+    {
+      "from": "Tokyo SBIC",
+      "to": "ChatGPT",
+      "relation": "hosted a 2025 generative-AI/ChatGPT seminar",
+      "status": "primary_event_record_only",
+      "evidence": [
+        "tokyo_sbic_chatgpt_seminar_20250226"
+      ]
+    },
+    {
+      "from": "Federal Reserve FOMC",
+      "to": "US dollar funding and discount-rate conditions",
+      "relation": "sets federal funds target range and communicates policy stance",
+      "status": "confirmed_official_policy_action",
+      "evidence": [
+        "federal_reserve_fomc_20261028"
+      ]
+    },
+    {
+      "from": "US-Iran conflict",
+      "to": "Global oil supply risk",
+      "relation": "geopolitical disruption and uncertainty around Strait of Hormuz",
+      "status": "reported_event_and_market_risk",
+      "evidence": [
+        "reuters_oil_geopolitics_20261103"
+      ]
+    },
+    {
+      "from": "Oil and inflation expectations",
+      "to": "Fed rate expectations",
+      "relation": "energy-price risk can affect inflation and expected policy path",
+      "status": "causal_inference_not_proven_for_XRP",
+      "evidence": [
+        "reuters_oil_geopolitics_20261103",
+        "reuters_gold_rates_midterms_20261103",
+        "federal_reserve_fomc_20261028"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "relation": "expanded tokenized trade-finance collaboration on XRPL",
+      "status": "issuer_announced",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple/BNY",
+      "to": "C2FO",
+      "relation": "supplier-finance initiative on XRPL",
+      "status": "issuer_announced_not_throughput_verified",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Privy (Stripe company)",
+      "to": "XRP and RLUSD on XRPL",
+      "relation": "programmable wallet support",
+      "status": "issuer_announced_capability",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Mastercard",
+      "relation": "RLUSD payment-settlement partnership expansion",
+      "status": "issuer_announced",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple Prime",
+      "to": "Jump/Kalshi/Hyperliquid/Virtu/Rothera",
+      "relation": "event-contract and RWA-perpetual settlement, financing and clearing partner access",
+      "status": "issuer_sourced_product_claim",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    },
+    {
+      "from": "Ripple Treasury 24/7 Returns",
+      "to": "RLUSD and tokenized money-market funds on XRPL",
+      "relation": "corporate treasury cash-management product design",
+      "status": "issuer_announced_product",
+      "evidence": [
+        "ripple_corporate_strategy_20261028"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261104T030546Z::H14-derivatives-universe-mismatch",
+      "claim": "The large open-interest difference between provider aggregates is primarily caused by instrument/exchange coverage and capture-time differences.",
+      "support": [
+        "TradRadar reports seven exchanges; Kodexius lists seven specific contract instruments with a different venue mix",
+        "The capture times differ by 4h21m"
+      ],
+      "disconfirming_or_missing": [
+        "No exchange-native reconstruction has been run"
+      ],
+      "test": "Normalize contract IDs, multipliers, quote currencies, venue lists and timestamps using exchange-native public endpoints."
+    },
+    {
+      "id": "20261104T030546Z::H15-crowded-long-fragility",
+      "claim": "A high long-account share and positive funding may increase liquidation sensitivity, but do not by themselves imply a bearish or bullish outcome.",
+      "support": [
+        "TradRadar reported 77.3% long accounts and +0.0100% funding per 8h",
+        "Liquidations were approximately balanced at the same snapshot"
+      ],
+      "disconfirming_or_missing": [
+        "Account counts are not notional exposure",
+        "Only one timestamped aggregate is available",
+        "No complete liquidation tape or order-book reconstruction"
+      ],
+      "test": "Track venue-level OI, funding, basis, liquidations, CVD, depth and price changes in synchronized 5m/1h panels."
+    },
+    {
+      "id": "20261104T030546Z::H16-etf-flow-methodology-gap",
+      "claim": "The Nov 2 ETF flow disagreement is a scope, provisional-settlement or capture-methodology discrepancy rather than proof of hidden capital movement.",
+      "support": [
+        "XRP Insights reports holdings-delta XRP and includes BITW sleeve",
+        "ByKaranteli reports USD flow and a different visible fund series; both mark recent data provisional"
+      ],
+      "disconfirming_or_missing": [
+        "Issuer source files have not yet been reconciled line by line"
+      ],
+      "test": "Rebuild each issuer's daily holdings and share creation/redemption at the same US market close, excluding reconstructed or missing rows."
+    },
+    {
+      "id": "20261104T030546Z::H17-circle-scale-not-xrp-demand",
+      "claim": "USDC's large gross settlement and mint/redeem volumes demonstrate Circle network scale but cannot be interpreted as XRP demand.",
+      "support": [
+        "Circle reports USDC gross settlement and mint/redeem totals",
+        "USDC is a dollar stablecoin with direct settlement routes"
+      ],
+      "disconfirming_or_missing": [
+        "Route-level XRP bridge use could exist on specific corridors but is not quantified"
+      ],
+      "test": "Separate gross stablecoin transfer, net supply change, fiat mint/redemption, XRP bridge legs, market-maker inventory and fees by route."
+    },
+    {
+      "id": "20261104T030546Z::H18-rntb-regulatory-de-risking",
+      "claim": "A federally supervised Ripple trust-bank reserve/custody structure could strengthen institutional confidence in RLUSD, but any XRP benefit is indirect and unproven.",
+      "support": [
+        "Ripple announced final OCC approval and defined reserve/collateral-trustee/custody roles"
+      ],
+      "disconfirming_or_missing": [
+        "Direct OCC decision not located; bank opening and operating status unknown; no XRP demand data"
+      ],
+      "test": "Locate OCC decision and charter record, verify opening, audit reserve/custody operations, then test for independently measured XRP activity changes."
+    },
+    {
+      "id": "20261104T030546Z::H19-macro-liquidity-risk-channel",
+      "claim": "A restrictive Fed stance, elevated long-end rates and geopolitical energy risk can pressure speculative assets through discount rates, dollar liquidity and risk appetite; the effect on XRP must be measured rather than assumed.",
+      "support": [
+        "FOMC held at 3.75%-4.00% with two hike dissents and elevated inflation language",
+        "Reuters reported stronger dollar/yields and market pricing for a December hike",
+        "Iran conflict and Strait of Hormuz risk remain relevant to energy supply"
+      ],
+      "disconfirming_or_missing": [
+        "Oil settled lower on Nov 3 as peace-talk hopes offset supply fears",
+        "FOMC majority held rates and future policy remains data dependent",
+        "No synchronized XRP-versus-macro event study has been run"
+      ],
+      "test": "Build point-in-time BTC/XRP/DXY/Treasury/oil return panels; test rolling beta, event windows, lag structure and conditional effects without look-ahead."
+    },
+    {
+      "id": "20261104T030546Z::H20-market-rate-pricing-not-policy",
+      "claim": "The reported 79% December hike probability is a market-implied price, not a Fed commitment; policy outcomes can diverge from futures pricing.",
+      "support": [
+        "Reuters cites CME FedWatch 79% hike probability",
+        "Official Oct 28 FOMC decision held rates by 10-2"
+      ],
+      "disconfirming_or_missing": [
+        "Two dissenters preferred a hike and inflation remains elevated",
+        "The December meeting and intervening data have not occurred"
+      ],
+      "test": "Archive CME FedWatch probabilities at fixed daily cutoffs and compare with subsequent FOMC outcomes; calibrate probabilities separately from XRP forecasts."
+    },
+    {
+      "id": "20261104T030546Z::H21-ripple-enterprise-stack-not-token-demand",
+      "claim": "Ripple's integrated payments, custody, stablecoin, prime brokerage and treasury strategy may grow corporate revenue and network throughput without proportional XRP demand; direct XRP use must be measured separately.",
+      "support": [
+        "Ripple reports 1,700+ institutions/corporates/enterprises, 60+ payout markets and a $900M annualized product revenue run-rate",
+        "RLUSD, tokenized MMFs, custody and prime brokerage provide several revenue/use paths that do not necessarily require XRP"
+      ],
+      "disconfirming_or_missing": [
+        "Privy wallet support explicitly includes XRP",
+        "XRPL tokenized trade-finance and treasury initiatives may create XRP reserve/fee or market-maker activity",
+        "No asset-level production throughput or XRP bridge/collateral utilization disclosed"
+      ],
+      "test": "Track route-level asset composition, XRP bridge inventory, XRP fees/reserves, custody balances, repo collateral by asset and realized customer throughput."
+    }
+  ],
+  "data_quality": {
+    "non_comparable_derivatives": true,
+    "non_comparable_etf_flows": true,
+    "gross_volume_not_net_capital": true,
+    "issuer_claims_not_independent_regulatory_confirmation": true,
+    "quarantined_sources": [
+      "swiftedge_xrp_perps_dynamic_20261104_0305z"
+    ],
+    "no_averaging_policy": "Do not average provider snapshots with different timestamps, exchange universes, contract sets, units or fund scope.",
+    "source_independence": "Circle blog and Circle filings are the same issuer lineage; Ripple release is an issuer claim; provider aggregators are separate vendors but not independent exchange-native data.",
+    "post_cutoff_search_scope_excluded": true,
+    "note": "The 03:21:00.103Z identity/phrase search and two later third-party channel-index observations are preserved in a separate later-captured addendum, not this 03:05:46Z snapshot."
+  },
+  "blockers": [
+    "No synchronized exchange-native XRP spot/perpetual raw-data history yet.",
+    "Nov 2 ETF flow disagreement requires issuer-level daily holdings reconstruction.",
+    "Ripple National Trust Bank final approval needs a directly located OCC decision/charter record and operational commencement confirmation.",
+    "No synchronized point-in-time macro feature panel yet; Fed policy, Treasury yields, DXY, oil and geopolitics have not been joined to XRP returns.",
+    "Ripple's Oct 26 and Oct 28 issuer releases both report final OCC approval for RNTB; a direct OCC final decision document and bank commencement record remain unlocated.",
+    "Circle Q3 2026 results webcast is scheduled for 2026-11-04 08:00 ET / 13:00 UTC; results and guidance are not yet available at the 03:05:46 UTC capture."
+  ],
+  "next_actions": [
+    "Reconstruct TradRadar/Kodexius open-interest universes from exchange-native contract endpoints.",
+    "Download and reconcile each XRP ETF issuer's Nov 2 holdings and creation/redemption data.",
+    "Review Circle Q3 2026 earnings and compare with its Oct 16 H1 economics statement.",
+    "Locate direct OCC Ripple National Trust Bank decision and verify opening/commencement.",
+    "Keep forecasts NOT_ISSUED until the historical feature store and walk-forward evaluation are operational.",
+    "Add official FOMC target range, Treasury curve, DXY, Brent/WTI and event timestamps to the historical macro feature panel; evaluate rolling and event-conditioned XRP sensitivities.",
+    "Reconcile Ripple's Oct 28 corporate metrics ($900M run-rate, $16T transactions enabled, $150B lifetime network volume, $2.6B RLUSD market cap) to audited financial statements and independent on-chain/route-level data; keep issuer claims separate from realized XRP demand.",
+    "At/after the official Circle Q3 webcast, ingest the press release, 10-Q, reserve metrics, distribution costs, Coinbase economics, USDC circulation and management guidance with exact publication/capture times.",
+    "Keep the 12 Kamilah/Camila candidate videos in a separate, non-attributed index; obtain first-party channel identity evidence before calling them videos by Camilla Stephenson or claiming the inventory is exhaustive."
+  ],
+  "identity_disambiguation": {
+    "requested_identity": "Camilla Stephenson",
+    "candidate_identity": "Kamilah Stevenson / transcript speaker says Camila Stevenson",
+    "status": "UNRESOLVED_NOT_EQUIVALENT",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "existing_candidate_video_ids": [
+      "M8TmDXO7B-0",
+      "QslbjGQD0MU",
+      "ci0FH73lbCs",
+      "ywQEoYPzhlQ",
+      "8xiy8w2YlfY",
+      "cxeX_eu_2H0",
+      "rv0BAV0vLgo",
+      "pmJTrXJQ8Vw",
+      "I5OkewTVrgA",
+      "iwhpNT73zpk",
+      "TfFx0g2IgGg",
+      "1ICh2cuBKmM"
+    ],
+    "candidate_video_count": 12,
+    "inventory_exhaustive": false,
+    "attribution_rule": "Keep these 12 videos in a separate Kamilah/Camila candidate index. Do not label them as videos by Camilla Stephenson until a first-party channel identity link is verified."
+  },
+  "hypothesis_id_namespace": "20261104T030546Z"
+}
