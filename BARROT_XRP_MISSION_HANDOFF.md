@@ -1795,3 +1795,31 @@ Next concrete actions:
 5. Obtain independent approving reviews, verify actual branch-protection requirements and resolve the automatic Pages deployment side effect before any merge. After an authorized merge, fetch main again, verify the merge commit/files, rerun main CI and only then close exact superseded source PRs.
 
 **Forecast status: NOT_ISSUED.** No directional forecast, paper trade, real-money action, secret rotation, Space restart, Kaggle submission, funds transfer, deployment or merge occurred in this run. DESIGNED, EXECUTED and VERIFIED remain distinct; #1640 and #1643 implementations are not on main.
+
+
+## Run 19.1 — exact integration-head verification and main-side safety exposure (2026-11-04T21:44:50Z)
+
+### Exact #1640 verification after handoff-only commits
+
+- Code-bearing and handoff-updated PR head: `f1e6a0336be131d063f9bbd4eecf940e3d3378eb`; 91 commits ahead of current main, 0 behind; 66 changed files. Compared with the original code-tested head `f371868271a796075be332625b120a5062fccc4b`, the only changed path is `BARROT_XRP_MISSION_HANDOFF.md`; no executable code or workflow changed.
+- Exact-head CI run [41918630938](https://github.com/Barrot-Agent/B-Agent/actions/runs/41918630938): **581 core tests + 8 subtests passed; 850 full-repository tests + 8 subtests passed**. Inclusive `barrot_agent` coverage remained 52.82%. The post-test cache could not be saved because the configured cache budget is read-only; the test job itself succeeded.
+- Exact-head dependency audit [41918631177](https://github.com/Barrot-Agent/B-Agent/actions/runs/41918631177): all five declared manifests passed; each pip-audit invocation reported **No known vulnerabilities found**.
+- Exact-head fail-closed gate [41918631114](https://github.com/Barrot-Agent/B-Agent/actions/runs/41918631114): passed while explicitly keeping automatic merge disabled.
+- The two handoff-only commits are documentation changes only. If GitHub starts another CI run for the resulting documentation-only tip, verify it before any merge; do not describe the tip as tested until its run completes.
+
+### Main-side deployment and write exposure — not executed
+
+The current main still contains workflows that the #1640 branch changes to safer, quarantined or manually approved behavior:
+- `.github/workflows/task-allocator.yml`: manual dispatch, `contents:write` and `pull-requests:write`; the current main version can commit allocation records directly to main without a separate YES input. The #1640 branch disables this workflow and preserves the allocator code.
+- `.github/workflows/sync-self-hosted-brain.yml`: push to `self_hosted_brain/**` triggers a Hugging Face Space deployment; the current main version can propagate `BRAIN_SHARED_SECRET`. The #1640 branch removes the push trigger and requires manual dispatch.
+- `.github/workflows/deploy-a2a-worker.yml`: push to `a2a/**` triggers Cloudflare deployment and secret upload on current main. The #1640 branch removes the push trigger and makes deployment manual.
+- `.github/workflows/barrot-agent.yml` on main accepts owner-labelled issue events and has repository write permissions to claim work and create draft pull requests. The current run did not label issues or dispatch this workflow.
+- None of these deployment/write workflows ran in this audit. No matching code paths were pushed, no secret was read or rotated, no Space was restarted, and no Cloudflare/Hugging Face deployment was attempted.
+- The #1640 merge itself changes workflow files, not the `self_hosted_brain/**` or `a2a/**` trigger paths, so those two path-triggered deployments are not expected to fire from the merge. GitHub Pages is different: its automatic deployment did run after the previous main merge and remains an unapproved side effect. Do not merge until the Pages effect is explicitly authorized or safely disabled by an authorized administrator.
+
+### Final disposition for this run
+
+- #1640 exact code-bearing head `f1e6a0336be131d063f9bbd4eecf940e3d3378eb`: core/full-suite CI and five-manifest dependency audit passed; fail-closed merge gate remains disabled; zero approving reviews.
+- #1643 exact head `7e12cbf18a56d2d000c2d6f90f8f7351471dad73`: 489 core tests + 8 subtests and 790 full-suite tests + 8 subtests passed; fail-closed gate remains disabled; zero approving reviews.
+- No merge, PR closure, deployment, secret operation, paper trade, funds movement or directional forecast was performed.
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. The next action is to obtain independent approvals and resolve the Pages deployment authorization, then re-fetch the current heads and merge only after all gates are green. After merge, verify the merge commit and files on main, rerun main CI, then close only exact superseded source PRs.
