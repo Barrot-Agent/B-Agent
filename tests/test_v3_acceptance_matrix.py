@@ -264,6 +264,8 @@ def test_v3_acceptance_matrix(tmp_path: Path) -> None:
 def _case_healthy_repository(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path)
     (workspace / path).write_text('FLAG = "FIXED"\n', encoding="utf-8")
+    assert git(workspace, "add", path).returncode == 0
+    assert git(workspace, "commit", "-m", "mark repository healthy").returncode == 0
     cycle = run_cycle(workspace, FakeBrain(repair_payload(path)))
     assert cycle.status == "no_repair_required"
     assert cycle.current_state == RepairState.NO_REPAIR_REQUIRED.value
