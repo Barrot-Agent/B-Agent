@@ -290,3 +290,14 @@ The channel candidate is attributed by YouTube metadata to Kamilah Stevenson; at
 The new video topics are creator claims, not independent evidence: XRP versus Bitcoin's role, pre-Clarity-Act timing, oil/yen-carry liquidity stress, personal exchange withdrawals, and cold-wallet seed-generation risk. The last video description explicitly says the reported Bitcoin incident was not an XRP theft.
 
 The exact phrase “actual capital” remains unresolved. New indexed posts contain the adjacent phrase “patient capital”; these phrases are not interchangeable.
+
+
+## ASK Coin disambiguation — 2026-11-04
+
+The phrase does not identify one unique project. Three separate public candidates are recorded:
+
+- **Permission Coin (ASK):** active token with official Base and Polygon LayerZero OFT deployments. The reviewed sources do not establish an XRPL deployment or XRP relationship.
+- **Askcoin (ASK):** separate token preview at CoinMarketCap; its page shows zero supply, while a third-party index marks it inactive/untracked. The listed website and explorer are askcoin.me and explorer.askcoin.me; both were inaccessible during this run.
+- **Ask Coin (askcoin.net):** a separate exchange listing, marked inactive/untracked by CoinMarketCap and BitDegree, with no reserve or tracked volume data.
+
+These candidates must not be conflated. No XRP Ledger deployment, Ripple relationship, XRP pair, or SBI/Circle/Coinbase link was verified for either Askcoin candidate. The user's intended ASK entity remains unresolved.
