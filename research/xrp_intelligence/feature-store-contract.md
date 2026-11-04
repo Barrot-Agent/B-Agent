@@ -91,3 +91,12 @@ Research observations must not enter the point-in-time feature store through an 
 7. Unknown IDs, missing feature mappings, duplicate IDs, mismatched source bytes, modified preservation declarations, absent reasons and all-ineligible snapshots fail closed.
 
 This adapter binds and applies an eligibility overlay; it does not itself authenticate the original provider, reconstruct missing raw receipts, or make an otherwise weak observation eligible. The research archive remains research-only until normalized records meet the existing source, quality and time contracts.
+
+
+## Chronological walk-forward baseline evaluation
+
+`evaluate_chronological_walk_forward` is a deterministic, backtest-only evaluator over one XRP spot feature series, venue and currency pair. It reconstructs a point-in-time feature snapshot at every actual availability cutoff; availability is the maximum of known, source-as-of, ingestion and revision-availability timestamps. Training returns are admitted only when their target observations were available by that cutoff. The future test outcome is selected from a later evaluation snapshot and is never included in the training snapshot.
+
+The initial baseline set is historical class prior, momentum-sign, mean-reversion-sign and a normal-distribution volatility baseline. The evaluator records the exact data cutoff, horizon, target event time, assumptions, probabilities, alternative classes, realized outcome and Brier/log-loss/accuracy metrics. Class-wise reliability bins are diagnostic only; no probability recalibration is performed.
+
+Historical backfill captured at one later time cannot manufacture earlier forecast origins: it yields INSUFFICIENT_HISTORY until enough observations have genuinely distinct point-in-time availability. The evaluator is single-feature/single-venue/single-pair, rejects future price records available before their event time, and does not issue live forecasts or execute paper trades. Baseline superiority, calibration stability and drift resistance remain unproven until a sufficiently large synchronized history is accumulated and evaluated chronologically.
