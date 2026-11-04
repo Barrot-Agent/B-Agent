@@ -273,8 +273,7 @@
     },
     {
       "claim_id": "BINANCE-RECOVERY-UPDATE-6-XRPL-RLUSD",
-      "status": "issuer_reported_withdrawal_restoration",
-      "event_time_utc": "2026-11-03T04:00:00Z",
+      "status": "issuer_reported_planned_withdrawal_restoration",
       "network": "XRP",
       "asset": "RLUSD",
       "source_ids": [
@@ -283,8 +282,11 @@
       "claim": "Binance listed RLUSD on the XRP network among assets for phased withdrawal restoration. The same table separately listed XRP as an asset on BSC.",
       "limitations": [
         "Network= XPR and asset=RLUSD must not be collapsed into a claim that native XRP withdrawals on XRPL resumed.",
-        "The announcement says rollout is progressive; check live network status before asserting every account could withdraw at that time."
-      ]
+        "The announcement says rollout is progressive; check live network status before asserting every account could withdraw at that time.",
+        "The 04:00 UTC value is the announced start of a phased rollout, not a verified exact activation time."
+      ],
+      "scheduled_start_utc": "2026-11-03T04:00:00Z",
+      "actual_activation_verified": false
     },
     {
       "claim_id": "BINANCE-RECOVERY-UPDATE-7-98PCT",
