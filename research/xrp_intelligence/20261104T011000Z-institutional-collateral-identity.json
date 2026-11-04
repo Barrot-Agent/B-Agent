@@ -1894,5 +1894,33 @@
         "rule": "Do not average; reconstruct from issuer obligations and a common cutoff."
       }
     ]
-  }
+  },
+  "last_updated_at_utc": "2026-11-04T02:10:41Z",
+  "addenda": [
+    {
+      "captured_at_utc": "2026-11-04T02:10:41Z",
+      "data_cutoff_utc": "2026-11-04T02:10:41Z",
+      "updates": [
+        "Five additional direct YouTube video candidates and two third-party creator indexes added; exact Camilla/Kamilah identity remains unverified.",
+        "ASK identity expanded to three distinct candidates: Permission Coin, Askcoin token preview and Ask Coin exchange listing.",
+        "XRPL RLUSD supply observations added from xrpldashboard and Sologenic with explicit panel/ledger timestamp and supply-scope discrepancies."
+      ],
+      "new_source_ids": [
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet",
+        "kamilah_creator_social_index",
+        "kamilah_creator_aggregate_index",
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree",
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree",
+        "xrpldashboard_home",
+        "sologenic_rlusd_asset_index"
+      ],
+      "forecast_status": "NOT_ISSUED"
+    }
+  ]
 }
