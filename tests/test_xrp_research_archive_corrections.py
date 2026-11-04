@@ -308,3 +308,41 @@ def test_arc_token_context_is_updated_without_relabeling_usdc_gas():
     assert entry["additional_evidence_source_ids"] == ["circle_q3_2026_earnings_release"]
     assert "10B ARC genesis mint" in entry["token_context_update"]
     assert "transaction fees are paid in USDC" in entry["token_context_update"]
+
+
+
+def test_xrpl_fixcleanup_activation_is_confirmed_by_two_node_backed_trackers():
+    path = ROOT / "research" / "xrp_intelligence" / "20261104T152533Z-xrpl-fixcleanup-activation-post-window-verification.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    amendment = data["amendment"]
+    assert amendment["status"] == "ENABLED_CONFIRMED_BY_TWO_NODE_BACKED_PUBLIC_TRACKERS"
+    assert amendment["enablement_ledger"] == 108112129
+    assert amendment["actual_enablement_utc"] == "2026-11-04T14:52:00Z"
+    assert amendment["reported_yes_votes_at_enablement"] == 33
+    assert amendment["threshold_yes_votes"] == 29
+    assert amendment["enable_amendment_transaction"] == "F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C"
+    assert data["xrp_implications"]["native_xrp_supply_effect"] is False
+    assert data["xrp_implications"]["directional_price_signal"] == "NONE_ADMITTED"
+    assert data["forecast_issued"] is False
+    assert data["model_eligible"] is False
+    assert data["data_quality"]["independent_node_backed_observers"] == 2
+
+
+def test_xrpl_fixcleanup_does_not_activate_lending_or_single_asset_vault():
+    path = ROOT / "research" / "xrp_intelligence" / "20261104T152533Z-xrpl-fixcleanup-activation-post-window-verification.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    states = {item["name"]: item for item in data["other_amendment_status_at_capture"]}
+    assert states["SingleAssetVault"]["yes_votes"] == 21
+    assert states["LendingProtocol"]["yes_votes"] == 19
+    assert states["LendingProtocolV1_1"]["yes_votes"] == 19
+    assert all(states[name]["status"] == "NOT_ENABLED" for name in ("SingleAssetVault", "LendingProtocol", "LendingProtocolV1_1"))
+
+
+def test_xrpl_activation_overlay_preserves_official_docs_warning_as_stale_not_live_status():
+    data = load_artifact()
+    entry = correction(data, "C16_XRPL_FIXCLEANUP_POST_WINDOW_ACTIVATION")
+    assert entry["canonical_status"] == "ENABLED_2026-11-04T14:52:00Z_LEDGER_108112129"
+    assert entry["original_artifact_modified"] is False
+    assert "xrpldashboard_fixcleanup_activation" in entry["evidence_source_ids"]
+    assert "xrplwin_fixcleanup_activation" in entry["evidence_source_ids"]
+    assert "xrpl_official_permission_values" in entry["evidence_source_ids"]

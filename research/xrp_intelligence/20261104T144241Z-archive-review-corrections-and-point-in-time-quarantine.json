@@ -2,8 +2,8 @@
   "schema_version": "barrot.xrp.research-correction.v1",
   "artifact_id": "xrp_archive_review_correction_20261104T144241Z",
   "artifact_type": "append_only_review_correction_and_pit_quarantine",
-  "captured_at_utc": "2026-11-04T15:15:12Z",
-  "data_cutoff_utc": "2026-11-04T15:15:12Z",
+  "captured_at_utc": "2026-11-04T15:25:33Z",
+  "data_cutoff_utc": "2026-11-04T15:25:33Z",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-evidence-archive-20261104",
   "review_pr": 1643,
@@ -470,11 +470,76 @@
         "Circle reported a 10B ARC genesis mint; ARC is designed for network security, utility and governance, with a transition to Proof of Stake targeted for 2027.",
         "Circle reported $104B of USDC minted and $104B redeemed during Q3, 27% stablecoin market share (down 183 bps), and 7.3M meaningful wallets."
       ]
+    },
+    {
+      "id": "xrpldashboard_fixcleanup_activation",
+      "publisher": "XRPL Dashboard",
+      "authority": "independent public explorer with its own sovereign rippled node and canonical Amendments ledger object",
+      "url": "https://xrpldashboard.com/amendments",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T15:25:33Z",
+      "source_independence_group": "xrpldashboard_sovereign_node",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Reports fixCleanup3_4_0 enabled on mainnet at ledger 108112129 at 2026-11-04 14:52:00 UTC, with EnableAmendment transaction F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C.",
+        "Reports 33/35 trusted validators at the 2026-11-04 14:52 UTC roll call; SingleAssetVault 21/35 and LendingProtocol/LendingProtocolV1_1 19/35, below the 29-vote threshold.",
+        "States its amendment status reflects its own sovereign rippled node's feature RPC and canonical Amendments ledger object."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup_activation",
+      "publisher": "XRPLWin Explorer",
+      "authority": "public node-backed amendment explorer",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T15:25:33Z",
+      "source_independence_group": "xrplwin_node",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Reports fixCleanup3_4_0 enabled on 2026-11-04 at 14:52:00 UTC, ledger 108112129, and marks status Enabled.",
+        "Reports the same amendment identifier 98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76 and an EnableAmendment record."
+      ]
+    },
+    {
+      "id": "xrpl_official_permission_values",
+      "publisher": "XRP Ledger documentation",
+      "authority": "official XRPL protocol documentation",
+      "url": "https://xrpl.org/docs/references/protocol/data-types/permission-values",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T15:15:12Z",
+      "source_independence_group": "xrpl_official_docs",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Warns not to delegate PaymentBurn until fixCleanup3_4_0 is enabled because the permission could in certain circumstances also mint fungible tokens.",
+        "The page reports it was last updated one month earlier; its remaining warning is therefore treated as documentation lag after the later node-backed activation records."
+      ]
+    },
+    {
+      "id": "coindesk_fixcleanup_2026_11_02",
+      "publisher": "CoinDesk",
+      "authority": "secondary technical reporting",
+      "url": "https://www.coindesk.com/tech/2026/11/02/xrp-ledger-set-to-fix-flaw-that-could-let-stablecoin-partners-print-new-tokens",
+      "published_at_utc": "2026-11-02",
+      "retrieved_at_utc": "2026-11-04T15:25:33Z",
+      "source_independence_group": "coindesk_reporting",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_search_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Reports the permission flaw affects issued tokens, including stablecoins, and does not affect XRP's native supply.",
+        "Reports the expected activation window and the security rationale; this is secondary context, not the activation proof."
+      ]
     }
   ],
   "correction_overlay": {
     "consumer_application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY",
-    "consumer_note": "This is an append-only research correction overlay. Entity-specific OCC replacements carry exact target_field pointers; Kraken corrections carry canonical_path pointers; the Circle Q3 event is superseded only by a later timestamped addendum. No production parser applies this overlay automatically, so corrected values remain research-only until a tested consumer applies them.",
+    "consumer_note": "This is an append-only research correction overlay. Entity-specific source replacements carry exact target_field pointers; Kraken corrections carry canonical_path pointers; Circle Q3 and XRPL amendment events are superseded only by later timestamped addenda. No production parser applies this overlay automatically, so corrected values remain research-only until a tested consumer applies them.",
     "entries": [
       {
         "correction_id": "C01_SOURCE_CITATION_CROSSWALK",
@@ -946,10 +1011,31 @@
         ],
         "original_artifact_modified": false,
         "reason": "The 13:12:26Z artifact correctly recorded the Circle Q3 webcast as future at its cutoff. The 15:08:19Z issuer earnings release is a later observation; preserve the earlier artifact and use the new addendum for post-event facts."
+      },
+      {
+        "correction_id": "C16_XRPL_FIXCLEANUP_POST_WINDOW_ACTIVATION",
+        "target_artifact": "research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json",
+        "correction_type": "post_window_activation_status_confirmation",
+        "prior_status_at_original_cutoff": "SCHEDULED_OR_EARLIEST_ACTIVATION_NOT_YET_VERIFIED",
+        "canonical_status": "ENABLED_2026-11-04T14:52:00Z_LEDGER_108112129",
+        "superseding_artifact": "research/xrp_intelligence/20261104T152533Z-xrpl-fixcleanup-activation-post-window-verification.json",
+        "source_id": "xrpldashboard_fixcleanup_activation",
+        "evidence_source_ids": [
+          "xrpldashboard_fixcleanup_activation",
+          "xrplwin_fixcleanup_activation",
+          "xrpl_official_permission_values",
+          "coindesk_fixcleanup_2026_11_02"
+        ],
+        "original_artifact_modified": false,
+        "reason": "Two node-backed public explorers report the same EnableAmendment ledger and UTC time. The older pre-window artifact remains valid at its own cutoff; the official docs warning is preserved as stale documentation."
       }
     ],
     "evidence_source_ids": [
-      "circle_q3_2026_earnings_release"
+      "circle_q3_2026_earnings_release",
+      "xrpldashboard_fixcleanup_activation",
+      "xrplwin_fixcleanup_activation",
+      "xrpl_official_permission_values",
+      "coindesk_fixcleanup_2026_11_02"
     ]
   },
   "research_hypotheses": [
@@ -1097,11 +1183,11 @@
     "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "f6dff1afe4819cf0955b6916bd9e60a1bad9c70d",
-    "prior_captured_at_utc": "2026-11-04T15:08:19Z",
-    "revised_at_utc": "2026-11-04T15:15:12Z",
-    "revision_reason": "Appended the post-webcast Circle Q3 2026 results addendum, recorded the ARC genesis token alongside USDC-denominated gas, and superseded the earlier pre-event Circle webcast status without rewriting the earlier cutoff artifact.",
-    "revision_status": "append_only_post_event_results_addendum",
+    "prior_blob_sha": "7388b28ab8d23f0e086270339e1a64de35ec55b2",
+    "prior_captured_at_utc": "2026-11-04T15:15:12Z",
+    "revised_at_utc": "2026-11-04T15:25:33Z",
+    "revision_reason": "Appended post-window node-backed confirmation that fixCleanup3_4_0 was enabled at ledger 108112129 at 14:52 UTC; preserved stale official-doc warning as documentation lag and distinguished the still-inactive lending/vault amendments.",
+    "revision_status": "append_only_protocol_activation_confirmation",
     "source_registry_unchanged": false
   },
   "artifact_revision_history": [
@@ -1135,6 +1221,14 @@
       "revised_at_utc": "2026-11-04T15:08:19Z",
       "revision_reason": "Scoped OCC citation replacements to exact Circle, Ripple and Coinbase fields; added Circle-specific OCC CAS evidence; made Kraken canonical field paths explicit; strengthened nested evidence-reference tests. Prior research artifacts and raw-source receipts remain preserved.",
       "revision_status": "append_only_entity_scoped_source_crosswalk_and_test_revision",
+      "source_registry_unchanged": false
+    },
+    {
+      "prior_blob_sha": "f6dff1afe4819cf0955b6916bd9e60a1bad9c70d",
+      "prior_captured_at_utc": "2026-11-04T15:08:19Z",
+      "revised_at_utc": "2026-11-04T15:15:12Z",
+      "revision_reason": "Appended the post-webcast Circle Q3 2026 results addendum, recorded the ARC genesis token alongside USDC-denominated gas, and superseded the earlier pre-event Circle webcast status without rewriting the earlier cutoff artifact.",
+      "revision_status": "append_only_post_event_results_addendum",
       "source_registry_unchanged": false
     }
   ]
