@@ -386,6 +386,11 @@ class HistoricalFeatureStore:
             assets = json.loads(row["asset_scope_json"])
             if asset.strip().upper() not in assets:
                 continue
+            verification = self.verify_snapshot(row["snapshot_id"])
+            if not verification["valid"]:
+                raise FeatureStoreError(
+                    f"snapshot integrity verification failed for {row['snapshot_id']}"
+                )
             return {
                 "snapshot_id": row["snapshot_id"],
                 "data_cutoff_utc": row["data_cutoff_utc"],
@@ -407,6 +412,11 @@ class HistoricalFeatureStore:
         ]
 
     def source_lineage(self, snapshot_id: str) -> list[dict[str, str]]:
+        verification = self.verify_snapshot(snapshot_id)
+        if not verification["valid"]:
+            raise FeatureStoreError(
+                f"snapshot integrity verification failed for {snapshot_id}"
+            )
         with self._connect() as connection:
             rows = connection.execute(
                 """
@@ -423,7 +433,7 @@ class HistoricalFeatureStore:
         with self._connect() as connection:
             row = connection.execute(
                 "SELECT manifest_json, manifest_sha256, record_count, source_count, "
-                "data_cutoff_utc, captured_at_utc, asset_scope_json "
+                "data_cutoff_utc, captured_at_utc, stored_at_utc, asset_scope_json "
                 "FROM snapshots WHERE snapshot_id = ?",
                 (snapshot_id,),
             ).fetchone()
@@ -452,9 +462,15 @@ class HistoricalFeatureStore:
         snapshot_columns_ok = False
         try:
             manifest = json.loads(manifest_json)
+            captured_at, captured_at_s = _utc(
+                manifest["captured_at_utc"], "captured_at_utc"
+            )
+            stored_at, stored_at_s = _utc(row["stored_at_utc"], "stored_at_utc")
             snapshot_columns_ok = (
                 row["data_cutoff_utc"] == _utc(manifest["cutoff_utc"], "cutoff_utc")[1]
-                and row["captured_at_utc"] == _utc(manifest["captured_at_utc"], "captured_at_utc")[1]
+                and row["captured_at_utc"] == captured_at_s
+                and row["stored_at_utc"] == stored_at_s
+                and stored_at >= captured_at
                 and row["asset_scope_json"] == _canonical(
                     sorted({asset.strip().upper() for asset in manifest["asset_scope"]})
                 )
