@@ -1,10 +1,10 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
-**Snapshot:** 2026-11-04T12:02:20Z, after fresh-main inspection and #1642 source-history integration into #1640.
+**Snapshot:** 2026-11-04T13:57:10Z, after fresh-main inspection, exact-head CI review and complete 373-PR inventory.
 
-- Open pull requests: 366
+- Open pull requests: 373
 - Draft: 359
-- Non-draft: 7
+- Non-draft: 14
 
 ## Current-main integration work
 
@@ -117,3 +117,16 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - Copilot's review-only pass found a reproducible integrity issue in #1640's feature store: a record could be normalized before persistence while the manifest retained the noncanonical value. The store now rejects any record that differs from its normalized representation; a regression test recomputes the outer manifest hash and asserts append rejection. Copilot made no code changes.
 - Final combined head after these changes requires a fresh exact-head full-suite, dependency audit and fail-closed-gate run. Previous exact-head results do not transfer to this new head.
 - Merge remains blocked: zero approving reviews; branch-protection requirement unverified; fail-closed gate keeps merge disabled.
+
+
+## Run 16 — current snapshot (2026-11-04T13:57:10Z)
+
+- Open PRs: 373; draft: 359; non-draft: 14. Complete recursive main tree: 1,403 entries; main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- #1640 is **blocked**: its pre-documentation head `30c3f0b4ec2c2edd40d9a1d369b9cc0841eb3bf6` passed 563 core tests + 8 subtests, 814 full-suite tests + 8 subtests and the five-manifest dependency audit. Its fail-closed gate explicitly disabled merge; 22 inline threads are resolved but there are zero approving reviews. This run adds a documentation-only commit; its new head requires exact-head CI before merge.
+- #1643 is **unique/unreviewed, draft**: head `5621a2fe0e0d5033fd5da2ba689b615e4977047e` passed 486 core tests + 8 subtests and 719 full-suite tests + 8 subtests. It has no review submissions and no changed-path overlap with #1640. Keep #1597, #1605, #1608 and #1614 open until #1643 is merged and all included paths are verified.
+- #1642, #1317, #1318, #1320, #1255 and #1254 remain **superseded-pending-successor-merge** by #1640. Keep them open until post-merge path verification.
+- #1641, #1269 and #1611 remain **unique/unreviewed** in their separate workstreams.
+- Dependency PRs #1644-#1650: #1644, #1646, #1648, #1649 and #1650 passed their observed CI/dependency-audit runs but have no approving review; #1644 overlaps #1640 workflow files; #1646/#1648 both change `requirements-dev.txt`; #1649/#1650 both change `legacy/requirements_legacy.txt`, which #1640 also changes. #1645 fails one full-suite assertion because the test hard-codes download-artifact v7 while the PR uses v8. #1647 fails three assertions because tests hard-code upload-artifact v4 while the PR uses v7. Do not merge overlapping updates separately or merge failed checks.
+- All remaining drafts not individually reconciled by exact path/ancestry remain **blocked or unique/unreviewed** pending comparison. No bulk closure.
+- Main CI passed on exact main SHA (485 core, 718 full-suite tests; each with 8 subtests). The separate Pillars check failed on missing GitHub App credentials, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. No secret, deployment or restart action was taken.
+- Prediction status remains **NOT_ISSUED**. No populated durable multi-run XRP dataset or leakage-safe out-of-sample predictive evaluation exists.
