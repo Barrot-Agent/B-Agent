@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_incident_flow_and_event_integrity_addendum",
+  "captured_at_utc": "2026-11-04T06:12:00Z",
+  "data_cutoff_utc": "2026-11-04T06:12:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "7f07db962be7d5adff7db347f0c297951d1d56c7",
+    "branch_before_addendum": "86d233a13bf8c53ac01a0d030cea9e5466ab1d3e",
+    "pr": 1627,
+    "main_unchanged": true
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "binance_official_incident_20261103",
+      "url": "https://www.binance.bh/en/blog/community/3229153443759566763",
+      "publisher": "Binance",
+      "published": "2026-11-03",
+      "type": "official affected-exchange incident report",
+      "independence": "primary affected-exchange statement",
+      "limitations": [
+        "Binance describes the report as initial and subject to independent review.",
+        "Gross impacted assets, frozen/intercepted assets, customer-balance replenishment and recovery of original stolen assets are different measures."
+      ]
+    },
+    {
+      "id": "reuters_attack_chain_20261103",
+      "url": "https://www.reuters.com/world/binance-says-hackers-used-fake-job-interview-compromise-computer-before-63-2026-11-03/",
+      "publisher": "Reuters",
+      "published": "2026-11-03",
+      "type": "independent reporting",
+      "independence": "independent reporting",
+      "limitations": [
+        "Reuters reports Binance's incident account and separately attributes the FBI's North Korea allegation; no judicial finding is asserted."
+      ]
+    },
+    {
+      "id": "trackwhale_xrp_flow_20261104_0559",
+      "url": "https://trackwhale.io/xrp-whale-tracker",
+      "publisher": "TrackWhale",
+      "published": "2026-11-04",
+      "type": "public third-party XRP flow snapshot",
+      "independence": "independent provider calculation",
+      "limitations": [
+        "Public preview exposes aggregate counts and amounts but not the full transaction-hash membership of the seven-day exchange-flow totals.",
+        "Provider labels and USD estimates may be incomplete or revised."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup_20261104_0603",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "publisher": "XRPLWin",
+      "published": "2026-11-04",
+      "type": "public XRPL amendment and validator snapshot",
+      "independence": "third-party ledger-derived tracker",
+      "limitations": [
+        "Activation is conditional on uninterrupted validator support and must be verified from ledger EnabledAmendments after the earliest window."
+      ]
+    },
+    {
+      "id": "circle_q3_schedule_20261007",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "publisher": "Circle",
+      "published": "2026-10-07",
+      "type": "official investor-relations event notice",
+      "independence": "primary issuer disclosure",
+      "limitations": [
+        "At the November 4 06:12 UTC cutoff, the webcast was scheduled for the future; no Q3 results or management statements are inferred."
+      ]
+    },
+    {
+      "id": "xrp_insights_etf_20261104",
+      "url": "https://xrp-insights.com/data",
+      "publisher": "XRP Insights",
+      "published": "2026-11-04",
+      "type": "issuer-page-derived ETF holdings and flow dataset",
+      "independence": "secondary aggregation of issuer-reported holdings",
+      "limitations": [
+        "Latest settled aggregate is November 2; the November 3 row is provisional and may be re-settled.",
+        "The tracker includes six US spot ETFs plus the BITW XRP sleeve; this universe must not be mixed with other trackers."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "observed_at_utc": "2026-11-04T05:59:00Z",
+    "binance_incident": {
+      "gross_impacted_assets_usd": 6340000000,
+      "frozen_or_intercepted_usd": 2850000000,
+      "replenished_impacted_token_assets_percent_as_of_2026_10_31": 98,
+      "original_xrp_outflow": {
+        "amount_xrp": 233461943.1,
+        "sending_hot_wallets": 5,
+        "start_utc": "2026-10-29T20:05:00Z",
+        "end_utc": "2026-10-29T20:09:20Z"
+      }
+    },
+    "trackwhale_seven_day_xrp_flows": {
+      "gross_exchange_outflows_xrp": 466810000,
+      "gross_exchange_outflows_transfer_count": 13,
+      "gross_exchange_inflows_xrp": 210950000,
+      "gross_exchange_inflows_transfer_count": 14,
+      "net_exchange_flow_xrp": -255860000,
+      "snapshot_at_utc": "2026-11-04T05:59:00Z",
+      "latest_indexed_transfer_at_utc": "2026-11-03T15:01:00Z"
+    },
+    "conditional_incident_contamination": {
+      "incident_xrp_divided_by_reported_gross_outflows_percent": 50,
+      "incident_xrp_divided_by_reported_net_outflow_percent": 91.2,
+      "inclusion_in_provider_aggregate": "unknown",
+      "model_treatment": "quarantine aggregate from organic exchange-flow features pending transaction-hash reconciliation"
+    },
+    "xrpl_amendment": {
+      "name": "fixCleanup3_4_0",
+      "validators_for": 33,
+      "trusted_validators": 35,
+      "votes_required": 29,
+      "status_at_cutoff": "activating_not_yet_enabled",
+      "earliest_activation_utc": "2026-11-04T14:46:22Z",
+      "active_at_cutoff": false,
+      "ledger_snapshot": 108103879
+    },
+    "circle_q3_event": {
+      "scheduled_at_utc": "2026-11-04T13:00:00Z",
+      "status_at_cutoff": "future_scheduled_event"
+    },
+    "xrp_etf_holdings": {
+      "date": "2026-11-02",
+      "total_xrp_including_bitw": 1196567361,
+      "net_flow_xrp": -32825,
+      "november_3_row_status": "provisional"
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS-BINANCE-SCOPE-20261104-01",
+      "class": "exchange_reported_initial_findings",
+      "detail": "Binance reported approximately $6.34B in impacted digital assets, approximately $2.85B frozen or intercepted, and 98% of impacted token assets replenished as of October 31. It said more than 100% of funds needed to cover the loss were set aside and outstanding illiquid assets were still being purchased. These values do not establish the amount of original stolen assets recovered.",
+      "evidence": [
+        "binance_official_incident_20261103"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-XRP-20261104-01",
+      "class": "exchange_reported_and_independently_reported",
+      "detail": "Five Binance hot wallets sent 233,461,943.1 XRP to an attacker-controlled address between 20:05 and 20:09 UTC on October 29.",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "reuters_attack_chain_20261103"
+      ]
+    },
+    {
+      "id": "OBS-ATTACK-CHAIN-20261104-01",
+      "class": "exchange_reported_with_independent_press_corroboration",
+      "detail": "Binance describes a multi-stage chain: a tampered Homebrew installation downloaded in June while setting up an AI coding tool; a fake recruiter and malicious assignment repository in September; an internal AI tool used on October 20 as a springboard to a container-deployment token; and a malicious container deployed on October 29. The AI tool is not established as the initial entry point.",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "reuters_attack_chain_20261103"
+      ]
+    },
+    {
+      "id": "OBS-TRACKWHALE-FLOW-20261104-01",
+      "class": "provider_reported_aggregate",
+      "detail": "TrackWhale's 05:59 UTC November 4 public preview reports 466.81M XRP gross exchange outflows across 13 transfers, 210.95M XRP gross inflows across 14 transfers, and net exchange flow of -255.86M XRP over the preceding seven days.",
+      "evidence": [
+        "trackwhale_xrp_flow_20261104_0559"
+      ]
+    },
+    {
+      "id": "OBS-FLOW-CONTAMINATION-20261104-01",
+      "class": "conditional_inference_not_verified_membership",
+      "detail": "The 233.46M XRP Binance incident transfer occurred within the provider's seven-day window. If the five incident payments are included in TrackWhale's 466.81M gross outflows, they would represent approximately 50.0% of gross outflows and 91.2% of reported net outflow. The public preview does not disclose transaction-hash membership, so inclusion remains unknown.",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "trackwhale_xrp_flow_20261104_0559"
+      ]
+    },
+    {
+      "id": "OBS-FIXCLEANUP-20261104-01",
+      "class": "ledger_derived_tracker_snapshot",
+      "detail": "At the captured snapshot XRPLWin reported fixCleanup3_4_0 at 33 of 35 validators, 29 required, status Activating, with earliest activation at 2026-11-04 14:46:22 UTC. It was not enabled at the 06:12 UTC research cutoff.",
+      "evidence": [
+        "xrplwin_fixcleanup_20261104_0603"
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-20261104-01",
+      "class": "confirmed_scheduled_event",
+      "detail": "Circle's Q3 2026 results webcast was scheduled for November 4 at 08:00 ET / 13:00 UTC. The event was still in the future at the research cutoff; no results are claimed.",
+      "evidence": [
+        "circle_q3_schedule_20261007"
+      ]
+    },
+    {
+      "id": "OBS-ETF-HOLDINGS-20261104-01",
+      "class": "issuer_page_derived_aggregate",
+      "detail": "XRP Insights reports 1,196,567,361 XRP held across six US spot XRP ETFs plus the BITW XRP sleeve on November 2, with aggregate net flow of -32,825 XRP. Its November 3 row is provisional.",
+      "evidence": [
+        "xrp_insights_etf_20261104"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Five Binance XRP hot wallets",
+      "to": "Attacker-controlled XRPL account",
+      "relation": "233,461,943.1 XRP transferred during the October 29 incident",
+      "status": "exchange_reported_and_independently_reported",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "reuters_attack_chain_20261103"
+      ]
+    },
+    {
+      "from": "Binance internal AI tool",
+      "to": "Container-deployment token",
+      "relation": "used as a springboard during the reported October 20 attack stage",
+      "status": "exchange_reported",
+      "evidence": [
+        "binance_official_incident_20261103"
+      ]
+    },
+    {
+      "from": "Binance incident XRP transfers",
+      "to": "TrackWhale seven-day exchange-flow aggregate",
+      "relation": "potential constituent of reported exchange outflows; transaction-hash membership not exposed in preview",
+      "status": "unverified_possible_contamination",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "trackwhale_xrp_flow_20261104_0559"
+      ]
+    },
+    {
+      "from": "XRPL trusted validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "33 of 35 support at snapshot; activation window remains conditional",
+      "status": "activating_not_yet_enabled",
+      "evidence": [
+        "xrplwin_fixcleanup_20261104_0603"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Investors",
+      "relation": "Q3 2026 results webcast scheduled for November 4 at 13:00 UTC",
+      "status": "confirmed_scheduled_event",
+      "evidence": [
+        "circle_q3_schedule_20261007"
+      ]
+    },
+    {
+      "from": "US spot XRP ETFs plus BITW XRP sleeve",
+      "to": "XRP holdings",
+      "relation": "1,196,567,361 XRP reported held as of November 2",
+      "status": "secondary_aggregation_of_issuer_reports",
+      "evidence": [
+        "xrp_insights_etf_20261104"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-binance-incident-dominates-observed-exchange-outflow",
+      "claim": "The Binance theft transfer may account for a large fraction of the seven-day XRP exchange-outflow aggregate.",
+      "support": [
+        "The 233.46M XRP incident transfer occurred within the seven-day window.",
+        "Conditional arithmetic is approximately 50.0% of gross outflows if included."
+      ],
+      "disconfirming_or_missing": [
+        "TrackWhale's public preview does not expose transaction-hash membership.",
+        "The provider may exclude security incidents or use a different exchange-label universe."
+      ],
+      "tests": [
+        "Retrieve the 13 transaction hashes behind gross outflows.",
+        "Match all five Binance incident payments by hash and ledger index.",
+        "Recompute organic flows after excluding confirmed incident transfers."
+      ]
+    },
+    {
+      "id": "H2-organic-exchange-outflow-persists-after-incident-exclusion",
+      "claim": "A material organic exchange outflow may remain after the Binance incident is removed.",
+      "support": [
+        "TrackWhale reports 466.81M XRP gross outflows and 210.95M XRP gross inflows over seven days."
+      ],
+      "disconfirming_or_missing": [
+        "Exact transaction membership and counterparty attribution are not available in the public preview.",
+        "Other exchange-to-custody and internal wallet rotations may be mislabeled."
+      ],
+      "tests": [
+        "Reconstruct flows from exchange-labelled addresses and raw XRPL transactions.",
+        "Separate incident, custody rotation, internal transfers, user withdrawals and exchange deposits."
+      ]
+    },
+    {
+      "id": "H3-binance-incident-has-no-identifiable-directional-price-effect",
+      "claim": "The incident may affect measured flows and exchange confidence without producing a separable XRP price effect after market-wide controls.",
+      "support": [
+        "The transfer is a custody/security event rather than a verified sale.",
+        "Native XRP cannot be issuer-frozen, but transfer alone does not prove liquidation."
+      ],
+      "disconfirming_or_missing": [
+        "No event-study with synchronized spot, order-book depth, venue basis and BTC/macro controls has been run."
+      ],
+      "tests": [
+        "Run an event study with pre-registered windows and BTC/ETH controls.",
+        "Measure venue-specific spread, depth, basis and realized volatility.",
+        "Do not infer sale from wallet redistribution alone."
+      ]
+    },
+    {
+      "id": "H4-fixcleanup-is-protocol-risk-reduction-not-xrp-demand",
+      "claim": "fixCleanup3_4_0 is a protocol maintenance and permission-safety event, not evidence of new XRP demand or a lending launch.",
+      "support": [
+        "The amendment is a cleanup bundle and was not enabled at the research cutoff.",
+        "The separate lending amendments remain distinct."
+      ],
+      "disconfirming_or_missing": [
+        "Post-activation software and validator behavior still need verification.",
+        "Downstream applications may change operational behavior after activation."
+      ],
+      "tests": [
+        "Verify EnabledAmendments after the activation window.",
+        "Inspect release notes and amendment-specific tests.",
+        "Track separate LendingProtocol and SingleAssetVault votes."
+      ]
+    },
+    {
+      "id": "H5-circle-q3-event-may-change-stablecoin-market-assumptions",
+      "claim": "Circle's Q3 results may update assumptions about USDC distribution, reserve income, Arc and payment-network economics, but will not by themselves establish XRP demand.",
+      "support": [
+        "Circle has a confirmed Q3 disclosure event scheduled for 13:00 UTC."
+      ],
+      "disconfirming_or_missing": [
+        "The event had not occurred at cutoff; no results or guidance are available in this artifact."
+      ],
+      "tests": [
+        "Capture the release, 10-Q, prepared remarks and transcript after publication.",
+        "Separate USDC global circulation, XRPL-specific supply, distribution costs and actual payment throughput.",
+        "Require explicit XRP-specific disclosures before changing XRP-demand features."
+      ]
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average provider aggregates with different transaction universes, timestamps, label sets or ETF fund coverage.",
+    "incident_exclusion_rule": "Exclude the five Binance incident transfers and their known redistribution from organic exchange-flow and whale-flow features unless modeled as a separately flagged security-incident variable.",
+    "conditional_flow_contamination": "TrackWhale transaction-hash membership is unknown; quarantine its seven-day organic exchange-flow aggregate until the five incident transactions are reconciled.",
+    "future_event_policy": "Circle Q3 webcast and fixCleanup3_4_0 earliest activation are future events at the data cutoff; do not encode their outcomes before observation.",
+    "provisional_data_policy": "XRP Insights November 3 ETF row is provisional and excluded from settled-flow training labels."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "No leakage-safe historical feature store, synchronized transaction-level exchange-flow reconstruction, or validated out-of-sample model result supports a directional XRP forecast."
+  },
+  "blockers": [
+    "TrackWhale seven-day aggregate transaction-hash membership is not exposed in its public preview.",
+    "Circle Q3 results had not been published at the research cutoff.",
+    "fixCleanup3_4_0 had not reached its earliest activation window at the research cutoff.",
+    "Historical point-in-time XRP feature population and walk-forward evaluation remain incomplete."
+  ],
+  "next_actions": [
+    "Reconcile the five Binance incident transaction hashes against TrackWhale's seven-day flow universe.",
+    "Verify all seven known XRP recipient addresses and subsequent ledger activity without inferring beneficial ownership.",
+    "Verify fixCleanup3_4_0 in ledger EnabledAmendments after 14:46:22 UTC.",
+    "Capture Circle's Q3 release and transcript after the 13:00 UTC webcast.",
+    "Reconstruct settled ETF holdings by issuer and common trading-day cutoff.",
+    "Populate the historical feature store and run chronological evaluation against fixed baselines."
+  ]
+}

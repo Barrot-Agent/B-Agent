@@ -414,3 +414,64 @@ def test_binance_incident_keeps_attribution_and_freeze_scope_distinct() -> None:
     assert freeze["circle_usdc_reuters_20261102"] == "more than $1.1B"
     assert freeze["circle_usdc_xrplwin_20261030"] == "$823M"
     assert "different dated snapshots" in data["data_quality"]["discrepancies"][1]["classification"]
+
+
+INCIDENT_EVENT_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T061200Z-binance-flow-event-integrity-addendum.json"
+)
+
+
+def test_incident_event_addendum_has_resolvable_provenance_and_cutoff() -> None:
+    data = json.loads(INCIDENT_EVENT_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_incident_flow_and_event_integrity_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    assert data["repository_state"]["inspected_main_sha"] == (
+        "7f07db962be7d5adff7db347f0c297951d1d56c7"
+    )
+    source_ids = [item["id"] for item in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+    for observation in data["observations"]:
+        assert observation["id"] and observation["class"] and observation["detail"]
+        assert set(observation["evidence"]) <= known
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"] and edge["status"]
+        assert set(edge["evidence"]) <= known
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"] and hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"] and hypothesis["tests"]
+    assert data["predictions"]["issued"] is False
+
+
+def test_incident_flow_contamination_is_conditional_and_quarantined() -> None:
+    data = json.loads(INCIDENT_EVENT_ADDENDUM.read_text(encoding="utf-8"))
+    incident = data["market_snapshot"]["binance_incident"]["original_xrp_outflow"]
+    flows = data["market_snapshot"]["trackwhale_seven_day_xrp_flows"]
+    contamination = data["market_snapshot"]["conditional_incident_contamination"]
+    assert incident["amount_xrp"] == 233461943.1
+    assert contamination["inclusion_in_provider_aggregate"] == "unknown"
+    assert contamination["model_treatment"].startswith("quarantine aggregate")
+    assert abs(
+        incident["amount_xrp"] / flows["gross_exchange_outflows_xrp"] * 100
+        - contamination["incident_xrp_divided_by_reported_gross_outflows_percent"]
+    ) < 0.1
+    assert abs(
+        incident["amount_xrp"] / abs(flows["net_exchange_flow_xrp"]) * 100
+        - contamination["incident_xrp_divided_by_reported_net_outflow_percent"]
+    ) < 0.1
+
+
+def test_fixcleanup_and_circle_events_remain_future_at_cutoff() -> None:
+    data = json.loads(INCIDENT_EVENT_ADDENDUM.read_text(encoding="utf-8"))
+    cutoff = _parse_utc(data["data_cutoff_utc"])
+    amendment = data["market_snapshot"]["xrpl_amendment"]
+    circle = data["market_snapshot"]["circle_q3_event"]
+    assert amendment["status_at_cutoff"] == "activating_not_yet_enabled"
+    assert amendment["active_at_cutoff"] is False
+    assert _parse_utc(amendment["earliest_activation_utc"]) > cutoff
+    assert circle["status_at_cutoff"] == "future_scheduled_event"
+    assert _parse_utc(circle["scheduled_at_utc"]) > cutoff
+    assert data["predictions"]["issued"] is False
