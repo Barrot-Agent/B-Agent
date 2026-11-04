@@ -51,7 +51,7 @@ def test_self_upgrade_requires_explicit_approval_and_main_base() -> None:
     assert "default: NO" in content
     assert "inputs.confirm_external_change == 'YES'" in content
     assert "github.ref == 'refs/heads/main'" in content
-    assert "ref: main" in content
+    assert "ref: ${{ github.ref_name }}" in content
     assert "python3 scripts/barrot_self_upgrade.py" in content
     assert "--persist-audit-report" not in content
     assert "gh pr merge" not in content
