@@ -427,3 +427,38 @@ def test_latest_live_market_snapshot_has_exact_raw_hashes_and_no_directional_for
     assert data["prediction_status"] == "NOT_ISSUED"
     assert data["model_eligible"] is False
 
+
+
+def test_circle_q3_market_update_source_correction_points_to_primary_issuer_pdfs():
+    market_path = ROOT / "research" / "xrp_intelligence" / "20261104T180409Z-xrp-market-and-circle-q3-update.json"
+    correction_path = ROOT / "research" / "xrp_intelligence" / "20261104T200200Z-circle-q3-source-correction.json"
+    market = json.loads(market_path.read_text(encoding="utf-8"))
+    correction_data = json.loads(correction_path.read_text(encoding="utf-8"))
+    sources = {item["id"]: item for item in market["source_registry"]}
+    entries = {item["correction_id"]: item for item in correction_data["correction_overlay"]["entries"]}
+
+    original = sources["circle_q3_2026_8k_ex99_1_20261104"]
+    assert original["source_type"] == "primary_sec_8k_exhibit_99_1"
+    assert "000187604226000309" in original["url"]
+
+    release = entries["C22_CIRCLE_Q3_RELEASE_SOURCE_ID_AND_URL"]
+    assert release["target_artifact"] == "research/xrp_intelligence/20261104T180409Z-xrp-market-and-circle-q3-update.json"
+    assert release["target_field"] == "$.source_registry[2]"
+    assert release["canonical_source_id"] == "circle_q3_2026_earnings_release_pdf"
+    assert release["canonical_value"]["source_type"] == "primary_issuer_earnings_release_pdf"
+    assert release["canonical_value"]["url"].endswith("3Q26-Earnings-Release.pdf")
+    assert release["model_eligible"] is False
+
+    presentation = entries["C23_CIRCLE_Q3_PRESENTATION_CANONICAL_SOURCE"]
+    assert presentation["target_field"] == "$.source_registry[3]"
+    assert presentation["canonical_source_id"] == "circle_q3_2026_earnings_presentation_pdf"
+    assert presentation["canonical_value"]["url"].endswith("3Q26-Earnings-Presentation.pdf")
+    assert "secondary copy" in presentation["treatment"]
+
+    sec = next(x for x in correction_data["source_registry"] if x["id"] == "sec_edgar_circle_company_directory_20261104")
+    assert sec["visible_latest_circle_accession"] == "0001876042-26-000291"
+    assert "not verified" in " ".join(sec["claims_supported"]).lower()
+    assert correction_data["correction_overlay"]["consumer_application_status"] == "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
+    assert correction_data["forecast_issued"] is False
+    assert correction_data["prediction_status"] == "NOT_ISSUED"
+    assert correction_data["model_eligible"] is False
