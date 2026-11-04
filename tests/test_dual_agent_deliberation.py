@@ -56,7 +56,7 @@ def test_dual_agent_requires_both_independent_reports(tmp_path):
         _report("BARRETT", "use_safe_temporary_directory", "hard-coded temporary path is non-portable", ["test_barrot_agent_script.py"]),
     )
 
-    assert d.get_case(case.case_id).status == "AWAITING_EXTERNAL_AGENT_INPUT"
+    assert d.load(case.case_id).status == "AWAITING_EXTERNAL_AGENT_INPUT"
 
 
 def test_agreement_does_not_equal_verification(tmp_path):
@@ -78,7 +78,7 @@ def test_agreement_does_not_equal_verification(tmp_path):
             _report(agent, "use_safe_temporary_directory", "hard-coded temporary path is non-portable", ["test_barrot_agent_script.py"]),
         )
 
-    result = d.get_case(case.case_id)
+    result = d.load(case.case_id)
 
     assert result.status == "AGREED_AWAITING_VALIDATION"
     assert d.can_execute(case.case_id) is True
@@ -89,7 +89,7 @@ def test_agreement_does_not_equal_verification(tmp_path):
         evidence_refs=["298 tests passed"],
     )
 
-    result = d.get_case(case.case_id)
+    result = d.load(case.case_id)
 
     assert result.status == "VALIDATED"
 
@@ -117,7 +117,7 @@ def test_disagreement_blocks_execution(tmp_path):
         _report("CHATGPT", "leave_existing_path", "path is acceptable", ["none"]),
     )
 
-    result = d.get_case(case.case_id)
+    result = d.load(case.case_id)
 
     assert result.status == "DISPUTED"
     assert d.can_execute(case.case_id) is False
