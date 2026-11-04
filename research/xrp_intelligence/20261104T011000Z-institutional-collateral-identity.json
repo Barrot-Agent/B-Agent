@@ -576,6 +576,22 @@
       "publisher": "Sologenic",
       "type": "XRPL token market-index page",
       "independence": "third-party index; displayed supply scope and exact underlying ledger timestamp not specified"
+    },
+    {
+      "id": "kamilah_exchange_move_dailycoin",
+      "url": "https://dailycoin.com/analyst-moves-xrp-off-exchanges-citing-structure-ahead-of-volatility/",
+      "publisher": "DailyCoin Team",
+      "published": "2026-05-21",
+      "type": "secondary article quoting creator about personal XRP custody choice",
+      "independence": "secondary reporting; repeats the creator's self-report, not on-chain evidence"
+    },
+    {
+      "id": "kamilah_social_index_cryptitalk",
+      "url": "https://cryptitalk.com/tokens/xrp/2026-10-01",
+      "publisher": "CryptiTalk",
+      "published": "2026-10-01",
+      "type": "third-party social-post index",
+      "independence": "secondary index; attributes one XRP post to @kamilahsteven21"
     }
   ],
   "market_snapshot": {
@@ -1051,13 +1067,14 @@
     {
       "id": "Kamilah-video-claims-separate-from-facts",
       "class": "creator_claims_unverified",
-      "detail": "The newly indexed videos present creator theses about XRP as a value-movement asset, possible pre-Clarity-Act repricing, oil shocks and yen-carry unwind, personal exchange withdrawals, and cold-wallet seed-generation vulnerabilities. Treat these as claims to test, not independent evidence of XRP demand, a forecast, a verified custody flow, or a confirmed wallet incident. The cold-wallet description explicitly says the reported Bitcoin incident was not an XRP theft.",
+      "detail": "The indexed videos present creator theses about XRP as a value-movement asset, possible pre-Clarity-Act repricing, oil shocks and yen-carry unwind, personal exchange withdrawals, and cold-wallet seed-generation vulnerabilities. DailyCoin's May 21, 2026 article quotes the creator saying she moved XRP and other long-term positions off exchanges to separate custody from trading behavior. This remains a personal self-report; no wallet addresses, transfer set or aggregate exchange outflow was independently verified. The cold-wallet description explicitly says the reported Bitcoin incident was not an XRP theft.",
       "evidence": [
         "kamilah_video_xrp_vs_btc",
         "kamilah_video_clarity_act",
         "kamilah_video_yen_carry_oil",
         "kamilah_video_exchange_custody",
-        "kamilah_video_cold_wallet"
+        "kamilah_video_cold_wallet",
+        "kamilah_exchange_move_dailycoin"
       ]
     },
     {
@@ -1102,6 +1119,15 @@
         "xrpldashboard_home",
         "sologenic_rlusd_asset_index",
         "xrplto_rlusd_tracker"
+      ]
+    },
+    {
+      "id": "Kamilah-social-handle-ambiguity",
+      "class": "multiple_unverified_social_handles",
+      "detail": "Two third-party indexes surface different handles: Teapawt lists @iamkamstevenson, while CryptiTalk attributes an XRP post to @kamilahsteven21. Neither source establishes that either account is controlled by the owner of the Kamilah Stevenson YouTube channel, and the two handles are not assumed to be the same person. Preserve them as separate unverified account candidates.",
+      "evidence": [
+        "kamilah_creator_social_index",
+        "kamilah_social_index_cryptitalk"
       ]
     }
   ],
@@ -1510,6 +1536,16 @@
       "evidence": [
         "sologenic_rlusd_asset_index"
       ]
+    },
+    {
+      "from": "DailyCoin Team",
+      "to": "I Moved My XRP Off The Exchanges",
+      "relation": "secondary coverage quotes creator's personal custody claim",
+      "status": "secondary report; no on-chain corroboration",
+      "evidence": [
+        "kamilah_exchange_move_dailycoin",
+        "kamilah_video_exchange_custody"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -1895,7 +1931,7 @@
       }
     ]
   },
-  "last_updated_at_utc": "2026-11-04T02:10:41Z",
+  "last_updated_at_utc": "2026-11-04T02:20:41Z",
   "addenda": [
     {
       "captured_at_utc": "2026-11-04T02:10:41Z",
@@ -1919,6 +1955,19 @@
         "askcoin_exchange_bitdegree",
         "xrpldashboard_home",
         "sologenic_rlusd_asset_index"
+      ],
+      "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "captured_at_utc": "2026-11-04T02:20:41Z",
+      "data_cutoff_utc": "2026-11-04T02:20:41Z",
+      "updates": [
+        "DailyCoin secondary coverage added for the creator's self-reported XRP exchange withdrawal; it is not treated as aggregate exchange-flow evidence.",
+        "A second third-party social index lists a different Kamilah-related handle; @iamkamstevenson and @kamilahsteven21 are kept separate and unverified."
+      ],
+      "new_source_ids": [
+        "kamilah_exchange_move_dailycoin",
+        "kamilah_social_index_cryptitalk"
       ],
       "forecast_status": "NOT_ISSUED"
     }
