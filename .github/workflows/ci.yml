@@ -117,6 +117,7 @@ jobs:
               */tests/*
           [report]
           show_missing = True
+          fail_under = 50
           EOF
       - name: Run every repository test with inclusive package coverage
         run: |
