@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_trackwhale_cross_view_consistency_addendum",
+  "captured_at_utc": "2026-11-04T06:14:00Z",
+  "data_cutoff_utc": "2026-11-04T06:14:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "7f07db962be7d5adff7db347f0c297951d1d56c7",
+    "branch_before_addendum": "0363d40be443a9d8bbad64aac5740f6ed7650f15",
+    "pr": 1627,
+    "main_unchanged": true
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "trackwhale_xrp_exchange_flows_20261104_0552",
+      "url": "https://trackwhale.io/xrp-exchange-flows",
+      "publisher": "TrackWhale",
+      "observed_at_utc": "2026-11-04T05:52:00Z",
+      "type": "public seven-day XRP exchange-flow snapshot",
+      "independence": "third-party provider calculation",
+      "limitations": [
+        "Public page reports aggregate totals and per-exchange totals but does not expose all transaction hashes in the visible preview.",
+        "It says transfers are tracked large transfers, not every exchange transfer."
+      ]
+    },
+    {
+      "id": "trackwhale_binance_exchange_flows_20261104_0558",
+      "url": "https://trackwhale.io/binance-exchange-flows",
+      "publisher": "TrackWhale",
+      "observed_at_utc": "2026-11-04T05:58:00Z",
+      "type": "public 30-day Binance exchange-flow and asset-mix snapshot",
+      "independence": "same provider as XRP exchange-flow page; not an independent corroborating source",
+      "limitations": [
+        "Asset-mix values and the seven-day XRP page are not demonstrated to use identical inclusion rules or coverage.",
+        "Public preview does not expose the complete transaction-level membership of the asset mix."
+      ]
+    },
+    {
+      "id": "binance_official_incident_20261103",
+      "url": "https://www.binance.bh/en/blog/community/3229153443759566763",
+      "publisher": "Binance",
+      "published": "2026-11-03",
+      "type": "official incident report",
+      "independence": "primary affected-exchange statement",
+      "limitations": [
+        "Binance describes its report as initial and subject to independent review."
+      ]
+    },
+    {
+      "id": "xrplwin_binance_xrp_drain_20261030",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "publisher": "XRPLWin",
+      "published": "2026-10-30",
+      "type": "public-ledger incident reconstruction",
+      "independence": "third-party ledger analysis",
+      "limitations": [
+        "Approximate USD valuation depends on the transfer-time XRP price and is not an exact realized loss."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "xrp_exchange_flows_7d": {
+      "observed_at_utc": "2026-11-04T05:52:00Z",
+      "total_outflow_xrp": 466810000,
+      "total_outflow_usd": 589790000,
+      "total_outflow_transfers": 13,
+      "total_inflow_xrp": 210950000,
+      "total_inflow_usd": 262620000,
+      "total_inflow_transfers": 14,
+      "netflow_xrp": -255860000,
+      "binance_outflow_xrp": 340120000,
+      "binance_outflow_usd": 431780000,
+      "binance_inflow_xrp": 199950000,
+      "binance_inflow_usd": 248870000,
+      "binance_netflow_xrp": -140170000
+    },
+    "binance_exchange_flows_30d": {
+      "observed_at_utc": "2026-11-04T05:58:00Z",
+      "page_reports_xrp_asset_outflow_usd": 215300000,
+      "total_coin_outflow_usd": 4600000000,
+      "total_coin_inflow_usd": 4100000000,
+      "stablecoin_outflow_usd": 10300000000,
+      "stablecoin_inflow_usd": 5700000000,
+      "page_window_days": 30
+    },
+    "incident_reference": {
+      "binance_xrp_transfer_xrp": 233461943.1,
+      "transfer_time_value_usd_approx": 296000000,
+      "transfer_date": "2026-10-29"
+    },
+    "cross_view_checks": {
+      "seven_day_binance_xrp_outflow_exceeds_30_day_xrp_asset_outflow_usd": true,
+      "seven_day_xrp_outflow_usd_exceeds_30_day_xrp_asset_outflow_usd": true,
+      "incident_transfer_time_value_exceeds_30_day_xrp_asset_outflow_usd": true,
+      "transaction_level_membership_confirmed": false,
+      "same_metric_universe_confirmed": false
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS-TRACKWHALE-XRP-7D-20261104-01",
+      "class": "provider_reported_aggregate",
+      "detail": "TrackWhale's XRP exchange-flow page reports seven-day total outflows of 466.81M XRP ($589.79M) and inflows of 210.95M XRP ($262.62M). Its Binance row reports 340.12M XRP outflow and 199.95M XRP inflow.",
+      "evidence": [
+        "trackwhale_xrp_exchange_flows_20261104_0552"
+      ]
+    },
+    {
+      "id": "OBS-TRACKWHALE-BINANCE-30D-20261104-01",
+      "class": "provider_reported_asset_mix",
+      "detail": "TrackWhale's Binance page reports 30-day XRP asset outflow of $215.3M, while its seven-day XRP exchange-flow page reports Binance outflow of $431.78M. The pages do not establish that these values share the same inclusion universe.",
+      "evidence": [
+        "trackwhale_binance_exchange_flows_20261104_0558",
+        "trackwhale_xrp_exchange_flows_20261104_0552"
+      ]
+    },
+    {
+      "id": "OBS-TRACKWHALE-CROSSVIEW-INCONSISTENCY-20261104-01",
+      "class": "provider_cross_view_inconsistency",
+      "detail": "A seven-day Binance XRP outflow of $431.78M is larger than the same provider's displayed 30-day XRP asset outflow of $215.3M. If both are cumulative measurements of the same transfer universe, the subset relationship is violated. The discrepancy indicates differing scope, coverage, valuation or a provider error; the public pages do not explain which.",
+      "evidence": [
+        "trackwhale_binance_exchange_flows_20261104_0558",
+        "trackwhale_xrp_exchange_flows_20261104_0552"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-INCIDENT-COVERAGE-20261104-01",
+      "class": "incident_to_provider_membership_unknown",
+      "detail": "Binance reports 233,461,943.1 XRP transferred from five hot wallets during the October 29 incident. XRPLWin valued it at approximately $296M at transfer time. TrackWhale's displayed 30-day XRP asset outflow is only $215.3M. This is evidence against assuming the incident is included in that asset-mix measure, but it does not establish whether the separate seven-day XRP flow page includes it.",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "xrplwin_binance_xrp_drain_20261030",
+        "trackwhale_binance_exchange_flows_20261104_0558"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "TrackWhale XRP exchange-flow page",
+      "to": "TrackWhale Binance asset-mix page",
+      "relation": "same provider, different time windows and displayed XRP outflow totals that are not subset-consistent",
+      "status": "provider_cross_view_inconsistency",
+      "evidence": [
+        "trackwhale_xrp_exchange_flows_20261104_0552",
+        "trackwhale_binance_exchange_flows_20261104_0558"
+      ]
+    },
+    {
+      "from": "Binance five hot wallets",
+      "to": "Attacker-controlled XRPL account",
+      "relation": "233,461,943.1 XRP transferred during October 29 incident",
+      "status": "exchange_reported",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "xrplwin_binance_xrp_drain_20261030"
+      ]
+    },
+    {
+      "from": "Binance incident transfer",
+      "to": "TrackWhale 30-day XRP asset-mix aggregate",
+      "relation": "likely excluded or not measured on the same basis; exact transaction membership unknown",
+      "status": "inference_from_cross_view_discrepancy",
+      "evidence": [
+        "binance_official_incident_20261103",
+        "xrplwin_binance_xrp_drain_20261030",
+        "trackwhale_binance_exchange_flows_20261104_0558"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-trackwhale-pages-use-different-universes",
+      "claim": "The seven-day XRP exchange-flow page and the 30-day Binance asset-mix page use different inclusion rules, wallet coverage or valuation logic.",
+      "support": [
+        "The seven-day Binance XRP outflow is larger than the displayed 30-day XRP asset outflow."
+      ],
+      "disconfirming_or_missing": [
+        "TrackWhale has not published a field-level definition proving the exact source of the difference."
+      ],
+      "tests": [
+        "Obtain transaction-level records and metric definitions for both pages.",
+        "Compare address registry versions and valuation timestamps."
+      ]
+    },
+    {
+      "id": "H2-30day-xrp-asset-mix-excludes-incident",
+      "claim": "The Binance October 29 incident transfer is not included in the 30-day XRP asset-mix value or is excluded by its asset-flow methodology.",
+      "support": [
+        "The approximate transfer-time value of the 233.46M XRP incident transfer exceeds the displayed 30-day XRP asset outflow."
+      ],
+      "disconfirming_or_missing": [
+        "The displayed asset-mix amount may be a partial bucket or use an undocumented valuation/inclusion rule."
+      ],
+      "tests": [
+        "Match the five incident transaction hashes against provider records.",
+        "Check whether the provider labels the receiving account and source hot wallets."
+      ]
+    },
+    {
+      "id": "H3-seven-day-flow-includes-incident",
+      "claim": "The separate seven-day XRP exchange-flow page may include some or all of the Binance incident payments.",
+      "support": [
+        "The incident occurred within the seven-day window and the page reports Binance external outflows."
+      ],
+      "disconfirming_or_missing": [
+        "No transaction hashes or address-level membership are visible in the public page.",
+        "The 30-day cross-view discrepancy makes simple inclusion assumptions unsafe."
+      ],
+      "tests": [
+        "Retrieve the 13 tracked outflow transactions and match ledger hashes.",
+        "Recompute totals after explicitly removing confirmed incident transfers."
+      ]
+    },
+    {
+      "id": "H4-provider-aggregate-is-not-model-eligible",
+      "claim": "TrackWhale's current aggregate XRP exchange-flow metrics should be excluded from organic flow features until the cross-view discrepancy is explained.",
+      "support": [
+        "The seven-day and 30-day pages are not subset-consistent on their displayed XRP outflow values.",
+        "Transaction-level membership is unavailable in the public preview."
+      ],
+      "disconfirming_or_missing": [
+        "A documented scope difference could reconcile the figures without an underlying calculation error."
+      ],
+      "tests": [
+        "Require documented metric scope, point-in-time wallet registry and transaction-level reconciliation before restoring model eligibility."
+      ]
+    }
+  ],
+  "data_quality": {
+    "model_eligibility": "quarantined",
+    "no_averaging_policy": "Do not average TrackWhale's seven-day XRP flow and 30-day Binance asset-mix values; they are not demonstrated to be comparable.",
+    "correction_to_prior_conditional_calculation": "The prior conditional 50.0% gross-outflow and 91.2% net-outflow arithmetic must not be used as an estimate of actual incident contribution. It assumed compatible aggregate scope and possible inclusion without transaction-level proof. New cross-view evidence shows TrackWhale's displayed seven-day and 30-day XRP outflow values are not subset-consistent.",
+    "incident_membership": "unknown",
+    "quarantine_rule": "Exclude both TrackWhale aggregate pages from model-facing organic XRP exchange-flow features until the provider's cross-view scope and transaction-hash membership are reconciled."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "The current provider's XRP exchange-flow aggregates fail cross-view consistency checks; no directional forecast is justified."
+  },
+  "blockers": [
+    "TrackWhale does not expose all transaction hashes behind the public aggregate preview.",
+    "The provider's seven-day XRP flow and 30-day Binance asset-mix values are not subset-consistent.",
+    "The Binance incident transfer's inclusion in either provider aggregate is unverified."
+  ],
+  "next_actions": [
+    "Quarantine TrackWhale exchange-flow aggregates from the historical feature store.",
+    "Obtain transaction-level hashes and point-in-time wallet registry versions for both TrackWhale views.",
+    "Match the five Binance incident transfers against the seven-day and 30-day datasets.",
+    "Use XRPL raw ledger records and independent exchange-label sources for a separate reconstruction.",
+    "Restore TrackWhale features only after documented scope reconciliation and deterministic cross-window tests."
+  ]
+}

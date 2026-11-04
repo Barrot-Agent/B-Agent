@@ -475,3 +475,44 @@ def test_fixcleanup_and_circle_events_remain_future_at_cutoff() -> None:
     assert circle["status_at_cutoff"] == "future_scheduled_event"
     assert _parse_utc(circle["scheduled_at_utc"]) > cutoff
     assert data["predictions"]["issued"] is False
+
+
+TRACKWHALE_CROSSVIEW_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T061400Z-trackwhale-crossview-consistency-addendum.json"
+)
+
+
+def test_trackwhale_crossview_addendum_quarantines_inconsistent_aggregates() -> None:
+    data = json.loads(TRACKWHALE_CROSSVIEW_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_trackwhale_cross_view_consistency_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    source_ids = [item["id"] for item in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+    for observation in data["observations"]:
+        assert observation["id"] and observation["class"] and observation["detail"]
+        assert set(observation["evidence"]) <= known
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"] and edge["status"]
+        assert set(edge["evidence"]) <= known
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"] and hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"] and hypothesis["tests"]
+    snapshot = data["market_snapshot"]
+    assert (
+        snapshot["xrp_exchange_flows_7d"]["binance_outflow_usd"]
+        > snapshot["binance_exchange_flows_30d"]["page_reports_xrp_asset_outflow_usd"]
+    )
+    assert data["data_quality"]["model_eligibility"] == "quarantined"
+    assert data["predictions"]["issued"] is False
+
+
+def test_trackwhale_incident_membership_is_unknown_not_assumed() -> None:
+    data = json.loads(TRACKWHALE_CROSSVIEW_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["market_snapshot"]["cross_view_checks"]["transaction_level_membership_confirmed"] is False
+    assert data["data_quality"]["incident_membership"] == "unknown"
+    assert "must not be used" in data["data_quality"]["correction_to_prior_conditional_calculation"]
+    assert data["predictions"]["issued"] is False
