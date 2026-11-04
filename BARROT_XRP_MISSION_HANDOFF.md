@@ -1,3 +1,63 @@
+# Current integrated Barrot handoff — 2026-11-04 08:12 UTC
+
+**Mission priority:** XRP intelligence and prediction-engine mastery.
+**Foundation:** Barrot V3 remains the execution, orchestration, safety and verification foundation.
+**Current main:** `58425d038a0a16082267d9de28757fd5c4eb499d`.
+**Merged:** PR #1635 (Cross Analysis read-only containment) and PR #1638 (XRP feature store, forecast ledger and research packet).
+**PR #1638 verification:** CI run [41796063794](https://github.com/Barrot-Agent/B-Agent/actions/runs/41796063794): **441 passed, 8 subtests passed**; fail-closed gate [41796063614](https://github.com/Barrot-Agent/B-Agent/actions/runs/41796063614): passed. Main post-merge CI run [41796170241](https://github.com/Barrot-Agent/B-Agent/actions/runs/41796170241) was still running at the last poll.
+**Repository inventory:** 1,389 tracked tree entries, 85 Python test files. At least 300 open PRs appear across the first three 100-item GitHub result pages; many are stale or duplicate successors. Do not bulk-merge or bulk-close them.
+
+## Integrated security and preservation successor in progress
+
+Branch: `integration/security-preservation-dependency-current-main-20261104`
+Initial integration commit: `2bce46af67190879abffe8320e4a65c8da2272c8`
+Current base: main `58425d038a0a16082267d9de28757fd5c4eb499d`.
+
+This branch consolidates 62 non-overlapping paths from:
+- PR #1623: 51 current-main security/external-action paths. The three overlapping files were deliberately excluded: `.github/workflows/ci.yml`, `.github/workflows/cross-analysis.yml`, and `tests/test_v3_scripts.py`.
+- PR #1618: 8 dirty-worktree, task-branch and compare-and-swap patch-safety paths.
+- PR #1616: 3 read-only dependency-audit paths.
+
+Manual reconciliations:
+- Keep the already-merged PR #1635 Cross Analysis workflow.
+- Keep PR #1638 XRP test registration in CI.
+- Carry the new automation-containment and external-action regression modules into core CI.
+- Use the security successor's updated self-upgrade regression test, while preserving the current-main Cross Analysis regression test.
+- Add a full-repository test job that installs `requirements-dev.txt` and runs all tests under `tests/`. The existing core CI only lists 53 of 85 test files; this new job is intended to expose failures in the 32 omitted files before merge.
+
+Exact-head CI and fail-closed verification for this integrated branch are still pending. No previous PR result is substituted.
+
+## Whole-repository findings
+
+- The current CI's core job explicitly listed 53 of 85 test modules; 32 were not in that job.
+- `pyproject.toml`'s 70% coverage gate excludes major `barrot_agent/agi`, `ingestion`, `analysis`, `monetization` and `orchestration` packages. Whole-repository coverage is not established.
+- README describes a broad agent platform, but `barrot_agent/core.py` is a small configuration wrapper. `SmartAgent` explicitly uses built-in non-LLM responses by default and is designed for subclassing. The repository repair worker, work queue, bundle system, research system and workflows are separate components; a single end-to-end autonomous runtime has not yet been verified.
+- Main previously contained active scheduled writers for scheduler queue, merge queue, public brain-corpus export, subscriber sync, legacy variable-horizon signal scoring and Gumroad metrics, plus privileged external workflows. The new security branch quarantines or gates these paths; those protections are not active until the integrated PR merges.
+- Main's current Cross Analysis workflow is already read-only on main after PR #1635.
+- The repository reports approximately 700 MB size. GitHub tree/file retrieval was used; no local clone or dirty-worktree mutation was performed through this integration.
+
+## Prediction-engine truth
+
+**Implemented on main:** SQLite feature-store prototype; fixed-horizon forecast ledger; point-in-time feature and source checks; append-only receipt events; model-facing manifest verification; timestamped XRP evidence and competing hypotheses.
+
+**Not yet implemented/verified:** production public-data ingestion, populated synchronized historical XRP data, immutable externally anchored raw-source archive, chronological walk-forward evaluation, baseline superiority, probability calibration, drift monitoring and shadow/paper performance.
+
+No directional XRP forecast is issued. No paper trade or real-money transaction has occurred.
+
+## Next actions
+
+1. Complete exact-head CI, including the new full-repository suite; diagnose and fix every failure before merge.
+2. Inspect the complete workflow diff and run the containment regression against every active scheduled workflow.
+3. Verify main CI after PR #1638 completes.
+4. After the integrated security PR merges, close only source PRs whose complete changes are now present in main; retain unique research PRs.
+5. Implement public XRP exchange/ETF/stablecoin/collateral ingestion and populate the feature store.
+6. Run chronological walk-forward evaluation against naive, momentum, mean-reversion and volatility-aware baselines.
+7. Continue Circle Q3, XRPL amendment, Binance recipient-wallet, SBI/SBIC, ASK Coin, exact "actual capital" and first-party YouTube identity work.
+
+Treat DESIGNED, EXECUTED and VERIFIED as separate. Append future handoffs; do not erase historical evidence or outcomes.
+
+---
+
 # Barrot XRP Mission Handoff
 
 **Mission priority:** XRP intelligence and prediction-engine mastery.  
