@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 
 import pytest
@@ -393,3 +394,59 @@ def test_historical_feature_store_rejects_capture_time_after_store_receipt(tmp_p
 
     with pytest.raises(FeatureStoreError, match="cannot be later than store receipt"):
         store.append_snapshot(snapshot)
+
+
+def test_historical_feature_store_verify_detects_record_tampering_after_trigger_removal(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    database = tmp_path / "tampered-record.sqlite3"
+    store = HistoricalFeatureStore(database)
+    store.append_snapshot(snapshot)
+
+    connection = sqlite3.connect(database)
+    try:
+        connection.execute("DROP TRIGGER feature_records_no_update")
+        row = connection.execute(
+            "SELECT record_json FROM feature_records WHERE snapshot_id = ?",
+            (snapshot["snapshot_id"],),
+        ).fetchone()
+        record = json.loads(row[0])
+        record["value"] = 9.99
+        connection.execute(
+            "UPDATE feature_records SET record_json = ? WHERE snapshot_id = ?",
+            (json.dumps(record, sort_keys=True, separators=(",", ":")), snapshot["snapshot_id"]),
+        )
+        connection.commit()
+    finally:
+        connection.close()
+
+    verified = store.verify_snapshot(snapshot["snapshot_id"])
+    assert verified["valid"] is False
+    assert verified["records_ok"] is False
+    assert verified["lineage_ok"] is True
+
+
+def test_historical_feature_store_verify_detects_source_lineage_tampering(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    database = tmp_path / "tampered-lineage.sqlite3"
+    store = HistoricalFeatureStore(database)
+    store.append_snapshot(snapshot)
+
+    connection = sqlite3.connect(database)
+    try:
+        connection.execute("DROP TRIGGER source_snapshots_no_update")
+        connection.execute(
+            "UPDATE source_snapshots SET raw_content_sha256 = ? WHERE snapshot_id = ?",
+            ("c" * 64, snapshot["snapshot_id"]),
+        )
+        connection.commit()
+    finally:
+        connection.close()
+
+    verified = store.verify_snapshot(snapshot["snapshot_id"])
+    assert verified["valid"] is False
+    assert verified["records_ok"] is True
+    assert verified["lineage_ok"] is False

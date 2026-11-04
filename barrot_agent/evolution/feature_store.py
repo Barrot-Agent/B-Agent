@@ -1,9 +1,13 @@
-"""Append-only SQLite storage for point-in-time feature snapshots.
+"""Local SQLite storage for point-in-time feature snapshots.
 
 The store records the exact validated manifest and its source lineage. A
 snapshot is visible to an as-of query only after its store receipt time, which
 prevents a historical backfill created today from masquerading as data that
-Barrot possessed in the past.
+Barrot possessed in the past. SQL triggers deter ordinary application-level
+updates/deletes, and verify_snapshot cross-checks rows against the manifest.
+This is not an adversarial tamper-proof boundary: a file owner can drop triggers
+or rewrite the database and recompute unkeyed hashes. Production use needs an
+external signed/checkpointed receipt or independently controlled immutable log.
 """
 from __future__ import annotations
 
@@ -424,33 +428,113 @@ class HistoricalFeatureStore:
             ).fetchone()
             if row is None:
                 raise FeatureStoreError(f"unknown snapshot_id {snapshot_id}")
-            record_count = connection.execute(
-                "SELECT COUNT(*) FROM feature_records WHERE snapshot_id = ?",
+            record_rows = connection.execute(
+                "SELECT record_id, feature_id, asset, event_time_utc, known_at_utc, "
+                "source_data_as_of_utc, ingested_at_utc, revision_available_at_utc, "
+                "quality_status, model_eligible, source_ids_json, record_json "
+                "FROM feature_records WHERE snapshot_id = ? ORDER BY record_id",
                 (snapshot_id,),
-            ).fetchone()[0]
-            source_count = connection.execute(
-                "SELECT COUNT(*) FROM source_snapshots WHERE snapshot_id = ?",
+            ).fetchall()
+            source_rows = connection.execute(
+                "SELECT source_id, independence_group, source_uri, raw_content_sha256 "
+                "FROM source_snapshots WHERE snapshot_id = ? ORDER BY source_id",
                 (snapshot_id,),
-            ).fetchone()[0]
+            ).fetchall()
             integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
 
         manifest_json = row["manifest_json"]
-        manifest = json.loads(manifest_json)
-        base = dict(manifest)
-        stored_id = base.pop("snapshot_id", None)
-        digest_ok = stored_id == snapshot_id and _sha256(_canonical(base)) == snapshot_id
         manifest_hash_ok = _sha256(manifest_json) == row["manifest_sha256"]
-        counts_ok = (
-            record_count == row["record_count"] == manifest["eligible_record_count"]
-            and source_count == row["source_count"] == len(manifest["source_ids"])
-        )
+        digest_ok = False
+        counts_ok = False
+        records_ok = False
+        lineage_ok = False
+        try:
+            manifest = json.loads(manifest_json)
+            base = dict(manifest)
+            stored_id = base.pop("snapshot_id", None)
+            digest_ok = (
+                stored_id == snapshot_id
+                and _sha256(_canonical(base)) == snapshot_id
+            )
+            expected_records = sorted(
+                manifest["records"], key=lambda item: item["record_id"]
+            )
+            actual_records = []
+            columns_ok = True
+            for stored in record_rows:
+                record = json.loads(stored["record_json"])
+                actual_records.append(record)
+                expected_columns = {
+                    "record_id": record["record_id"],
+                    "feature_id": record["feature_id"],
+                    "asset": record["asset"],
+                    "event_time_utc": record["event_time_utc"],
+                    "known_at_utc": record["known_at_utc"],
+                    "source_data_as_of_utc": record["source_data_as_of_utc"],
+                    "ingested_at_utc": record["ingested_at_utc"],
+                    "revision_available_at_utc": record["revision_available_at_utc"],
+                    "quality_status": record["quality_status"],
+                    "model_eligible": 1 if record["model_eligible"] else 0,
+                    "source_ids_json": _canonical(
+                        [source["source_id"] for source in record["sources"]]
+                    ),
+                    "record_json": _canonical(record),
+                }
+                columns_ok = columns_ok and all(
+                    stored[key] == value for key, value in expected_columns.items()
+                )
+
+            actual_records.sort(key=lambda item: item["record_id"])
+            records_ok = (
+                columns_ok
+                and _canonical(actual_records) == _canonical(expected_records)
+            )
+
+            expected_sources_by_id: dict[str, dict[str, str]] = {}
+            for record in expected_records:
+                for source in record["sources"]:
+                    source_id = source["source_id"]
+                    previous = expected_sources_by_id.get(source_id)
+                    if previous is not None and previous != source:
+                        raise ValueError("conflicting source provenance in manifest")
+                    expected_sources_by_id[source_id] = {
+                        "source_id": source_id,
+                        "independence_group": source["independence_group"],
+                        "source_uri": source["source_uri"],
+                        "raw_content_sha256": source["raw_content_sha256"],
+                    }
+            expected_sources = [
+                expected_sources_by_id[key] for key in sorted(expected_sources_by_id)
+            ]
+            actual_sources = [dict(source) for source in source_rows]
+            lineage_ok = _canonical(actual_sources) == _canonical(expected_sources)
+
+            counts_ok = (
+                len(record_rows) == row["record_count"] == manifest["eligible_record_count"]
+                and len(source_rows) == row["source_count"] == len(manifest["source_ids"])
+            )
+        except (KeyError, TypeError, ValueError, json.JSONDecodeError):
+            digest_ok = False
+            records_ok = False
+            lineage_ok = False
+            counts_ok = False
+
         return {
             "snapshot_id": snapshot_id,
-            "valid": bool(digest_ok and manifest_hash_ok and counts_ok and integrity == "ok"),
+            "valid": bool(
+                digest_ok
+                and manifest_hash_ok
+                and counts_ok
+                and records_ok
+                and lineage_ok
+                and integrity == "ok"
+            ),
             "digest_ok": digest_ok,
             "manifest_hash_ok": manifest_hash_ok,
             "counts_ok": counts_ok,
+            "records_ok": records_ok,
+            "lineage_ok": lineage_ok,
             "sqlite_integrity": integrity,
-            "record_count": record_count,
-            "source_count": source_count,
+            "record_count": len(record_rows),
+            "source_count": len(source_rows),
         }
