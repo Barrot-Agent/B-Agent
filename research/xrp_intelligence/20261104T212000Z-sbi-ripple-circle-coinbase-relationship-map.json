@@ -478,6 +478,20 @@
     "The 2026 tokenized-deposit proof of concept uses XRPL as infrastructure; tokenized bank deposits are not equivalent to XRP being the payment asset.",
     "The SBI Visa Crypto Card's XRP rewards and SBI VC Trade account counts are retail distribution indicators, not institutional XRP custody, collateral balances or market depth."
   ],
+  "circle_arc_competitive_context": {
+    "public_mainnet_launch_date": "2026-09-16",
+    "gas_asset": "USDC",
+    "native_volatile_gas_token_required": false,
+    "circle_payments_network_integrated": true,
+    "issuer_reported_agent_transaction_share": {
+      "asset": "USDC",
+      "share_pct": 98.8,
+      "scope": "agent-driven transaction volume settling over x402 since Circle Agent Stack launched in May 2026",
+      "source_id": "sbi_circle_arc_validator_202610",
+      "model_eligible": false
+    },
+    "xrp_interpretation": "Arc is a competing Circle payment and agentic infrastructure rail; SBI's validator participation and USDC gas do not create XRP gas demand or establish an XRP bridge requirement."
+  },
   "unresolved_items": [
     "Obtain current SBI Remit corridor throughput, XRP conversion volumes, inventory/settlement data and active corridor status from authorized disclosures.",
     "Establish whether Coinbase Global Exchange RLUSD collateral eligibility has actually launched; the October 28 announcement said it would follow.",
