@@ -99,3 +99,18 @@ This quarter ended September 30, before the October 1 Global Exchange collateral
 Coinbase reported $306.905M Q3 stablecoin revenue, renewed its Circle arrangement on the same terms, and disclosed that corporate payment-stablecoin balance revenue was reclassified to Corporate interest and other income in Q1 2026 without changing the Circle arrangement or revenue generated. Its 2026 priorities are the everything exchange, stablecoins/payments and onchain adoption.
 
 Source: [Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm). No directional forecast was issued.
+
+
+## 2026-11-04 07:33:49 UTC — Binance XRP recipient, XRPL amendment and market update
+
+Added `research/xrp_intelligence/20261104T073349Z-binance-xrpl-amendment-market-update.json` and its Markdown companion.
+
+- The October 29 233.4619431M XRP transfer is kept separate from organic exchange outflows.
+- Q-Eternal's November 2 reconstruction lists six main recipient accounts plus a separate 1,000 XRP test destination. A public tracker indexed a 04:12 UTC November 4 no-outbound claim for the six main accounts; this run did not query raw XRPL RPC, so the claim remains bounded and secondary.
+- The reported recipient total and original transfer/residual arithmetic differ by 0.59905 XRP. The discrepancy is preserved.
+- Reuters' November 3 reporting clarifies the AI tool's role as a later springboard in a multi-stage compromise, not the initial entry vector.
+- XRPL.to's November 4 page reports 34/36 support for fixCleanup3_4_0, while XRPLWin's earlier snapshot reports 33/35. Earliest conditional activation remains 14:46:22 UTC; active state is not verified. LendingProtocol (19) and SingleAssetVault (21) remain below the 29-vote threshold in the newer tracker.
+- CoinGecko's page-level XRP derivatives aggregate is not reconciled to the ten visible rows out of 130; Altcoinlog's quote is stale and unsynchronized. Neither is model-eligible.
+- Circle's Q3 webcast at 13:00 UTC and fixCleanup3_4_0's 14:46:22 UTC earliest activation remain future events at this cutoff.
+
+The artifact preserves source timestamps, source-independence groups, eight relationship edges, five competing hypotheses, disconfirming evidence and next tests. Forecast remains NOT_ISSUED. No paper or real-money transaction occurred.
