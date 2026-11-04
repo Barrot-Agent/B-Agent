@@ -11,7 +11,7 @@ import hashlib
 import json
 import re
 import sqlite3
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -261,14 +261,14 @@ class HistoricalFeatureStore:
                 connection.execute(f"PRAGMA user_version = {_SCHEMA_VERSION}")
 
     def append_snapshot(self, snapshot: Mapping[str, Any]) -> dict[str, Any]:
-        """Validate and append a complete feature manifest; identical retries are idempotent."""
+        """Validate and append a complete manifest; receipt time cannot precede capture."""
         validated = _validate_manifest(snapshot)
         stored_at = datetime.now(timezone.utc)
         captured = datetime.fromisoformat(
             validated["captured_at_utc"].replace("Z", "+00:00")
         )
-        if captured > stored_at + timedelta(seconds=60):
-            raise FeatureStoreError("captured_at_utc is more than 60 seconds in the future")
+        if captured > stored_at:
+            raise FeatureStoreError("captured_at_utc cannot be later than store receipt time")
         stored_at_s = stored_at.isoformat(timespec="microseconds").replace("+00:00", "Z")
 
         with self._connect() as connection:

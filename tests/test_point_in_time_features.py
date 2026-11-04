@@ -375,3 +375,21 @@ def test_historical_feature_store_rejects_unknown_schema_and_unknown_snapshot(tm
     connection.close()
     with pytest.raises(FeatureStoreError, match="unsupported feature-store schema"):
         HistoricalFeatureStore(database)
+
+
+
+def test_historical_feature_store_rejects_capture_time_after_store_receipt(tmp_path):
+    from datetime import datetime, timedelta, timezone
+
+    future_capture = (
+        datetime.now(timezone.utc) + timedelta(seconds=30)
+    ).isoformat(timespec="microseconds").replace("+00:00", "Z")
+    snapshot = build_feature_snapshot(
+        [feature()],
+        cutoff_utc="2026-11-04T06:00:00Z",
+        captured_at_utc=future_capture,
+    )
+    store = HistoricalFeatureStore(tmp_path / "future-capture.sqlite3")
+
+    with pytest.raises(FeatureStoreError, match="cannot be later than store receipt"):
+        store.append_snapshot(snapshot)
