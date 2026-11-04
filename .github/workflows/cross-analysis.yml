@@ -1,12 +1,12 @@
 name: Cross Analysis
 
 on:
-  # Fire immediately after the Knowledge Signal Cycle produces fresh log.jsonl data
+  # Analyze only after a successful Knowledge Signal Cycle on main.
   workflow_run:
     workflows: ["Knowledge Signal Cycle"]
     types: [completed]
     branches: [main]
-  # Fallback cron kept as safety net
+  # Scheduled read-only refresh.
   schedule:
     - cron: '50 * * * *'
   workflow_dispatch:
