@@ -2,6 +2,7 @@ from pathlib import Path
 import subprocess
 
 from barrot_agent.collaboration.dual_agent_deliberation import (
+    AgentReport,
     DualAgentDeliberation,
 )
 
@@ -27,6 +28,16 @@ def _init_git_repo(root: Path) -> str:
     return run("rev-parse", "HEAD")
 
 
+def _report(agent: str, proposed_action: str, interpretation: str, evidence_refs: list[str]) -> AgentReport:
+    return AgentReport(
+        agent=agent,
+        status="COMPLETE",
+        proposed_action=proposed_action,
+        interpretation=interpretation,
+        evidence_refs=evidence_refs,
+    )
+
+
 def test_dual_agent_requires_both_independent_reports(tmp_path):
     repo_root = tmp_path / "repo"
     commit = _init_git_repo(repo_root)
@@ -42,10 +53,7 @@ def test_dual_agent_requires_both_independent_reports(tmp_path):
 
     d.add_report(
         case.case_id,
-        agent="BARRETT",
-        proposed_action="use_safe_temporary_directory",
-        interpretation="hard-coded temporary path is non-portable",
-        evidence_refs=["test_barrot_agent_script.py"],
+        _report("BARRETT", "use_safe_temporary_directory", "hard-coded temporary path is non-portable", ["test_barrot_agent_script.py"]),
     )
 
     assert d.get_case(case.case_id).status == "AWAITING_EXTERNAL_AGENT_INPUT"
@@ -67,10 +75,7 @@ def test_agreement_does_not_equal_verification(tmp_path):
     for agent in ("BARRETT", "CHATGPT"):
         d.add_report(
             case.case_id,
-            agent=agent,
-            proposed_action="use_safe_temporary_directory",
-            interpretation="hard-coded temporary path is non-portable",
-            evidence_refs=["test_barrot_agent_script.py"],
+            _report(agent, "use_safe_temporary_directory", "hard-coded temporary path is non-portable", ["test_barrot_agent_script.py"]),
         )
 
     result = d.get_case(case.case_id)
@@ -104,18 +109,12 @@ def test_disagreement_blocks_execution(tmp_path):
 
     d.add_report(
         case.case_id,
-        agent="BARRETT",
-        proposed_action="use_safe_temporary_directory",
-        interpretation="hard-coded temporary path is non-portable",
-        evidence_refs=["test_barrot_agent_script.py"],
+        _report("BARRETT", "use_safe_temporary_directory", "hard-coded temporary path is non-portable", ["test_barrot_agent_script.py"]),
     )
 
     d.add_report(
         case.case_id,
-        agent="CHATGPT",
-        proposed_action="leave_existing_path",
-        interpretation="path is acceptable",
-        evidence_refs=["none"],
+        _report("CHATGPT", "leave_existing_path", "path is acceptable", ["none"]),
     )
 
     result = d.get_case(case.case_id)
