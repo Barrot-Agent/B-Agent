@@ -86,3 +86,16 @@ No main commit, merge, force-push, deployment, secret rotation or external submi
 8. Obtain a genuine independent review of #1634; CodeRabbit could not be requested because it is not a collaborator.
 
 Treat DESIGNED, EXECUTED and VERIFIED as separate states. Update this handoff append-only on future runs; do not erase prior evidence or outcomes.
+
+
+## 2026-11-04 07:18 UTC — Coinbase Q3 10-Q collateral reconciliation
+
+Added `research/xrp_intelligence/20261104T071800Z-coinbase-q3-collateral-sec-addendum.json` and its Markdown companion, based on Coinbase's October 29, 2026 Form 10-Q.
+
+The filing reports $1.976137B loan receivables, of which $17.598M are crypto-asset loans and $1.958539B are fiat/payment-stablecoin loans. Recognized lending collateral totals $1.009297B; the aggregate other-crypto component is only $9.903M and is not attributed to XRP. If XRP is included in that bucket, its recognized lending-collateral value cannot exceed the aggregate; actual XRP may be zero. The $2.804112B of unrecognized borrower crypto collateral has no token-level breakdown. The $301.943M recognized derivatives-collateral table lists BTC and ETH only, with no XRP line.
+
+This quarter ended September 30, before the October 1 Global Exchange collateral-policy update. The filing therefore does not measure post-update XRP usage. Product eligibility remains distinct from actual utilization.
+
+Coinbase reported $306.905M Q3 stablecoin revenue, renewed its Circle arrangement on the same terms, and disclosed that corporate payment-stablecoin balance revenue was reclassified to Corporate interest and other income in Q1 2026 without changing the Circle arrangement or revenue generated. Its 2026 priorities are the everything exchange, stablecoins/payments and onchain adoption.
+
+Source: [Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm). No directional forecast was issued.

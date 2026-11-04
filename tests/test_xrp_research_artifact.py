@@ -544,6 +544,7 @@ def test_research_hypothesis_ids_are_namespaced_across_artifacts() -> None:
         "20261104T061200Z-binance-flow-event-integrity-addendum.json",
         "20261104T061400Z-trackwhale-crossview-consistency-addendum.json",
         "20261104T065909Z-live-market-event-update.json",
+        "20261104T071800Z-coinbase-q3-collateral-sec-addendum.json",
     ]
     seen = set()
     for name in names:
@@ -586,3 +587,20 @@ def test_live_market_event_update_preserves_disagreements_and_future_events() ->
     for event in data["market_snapshot"]["upcoming_events"]:
         assert event["status_at_cutoff"] == "future_scheduled_event"
         assert _parse_utc(event["scheduled_at_utc"]) > cutoff
+
+
+def test_coinbase_q3_sec_collateral_disclosures_do_not_imply_xrp_utilization() -> None:
+    path = REPO_ROOT / "research" / "xrp_intelligence" / "20261104T071800Z-coinbase-q3-collateral-sec-addendum.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    lending = data["coinbase_q3"]["lending"]
+    assert lending["period_end"] == "2026-09-30"
+    assert lending["total_loan_receivables_usd"] == 1_976_137_000
+    assert lending["crypto_asset_loan_receivables_usd"] == 17_598_000
+    collateral = data["coinbase_q3"]["recognized_lending_collateral"]
+    assert collateral["other_crypto_assets_aggregate_usd"] == 9_903_000
+    assert collateral["xrp_specific_amount_usd"] is None
+    assert collateral["conditional_xrp_upper_bound_if_in_other_bucket_usd"] == 9_903_000
+    assert data["coinbase_q3"]["recognized_derivatives_collateral"]["xrp_line_disclosed"] is False
+    assert data["coinbase_q3"]["unrecognized_borrower_collateral"]["crypto_asset_breakdown_by_token_available"] is False
+    assert data["data_quality"]["quarter_end_precedes_october_1_xrp_collateral_policy_update"]
+    assert data["predictions"]["issued"] is False
