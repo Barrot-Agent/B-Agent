@@ -1,4 +1,4 @@
-# Current verified Barrot handoff — 2026-11-04T12:02:20Z
+# Current verified Barrot handoff — 2026-11-04T12:13:30Z
 
 ## Mission and repository truth
 
@@ -10,14 +10,14 @@
   - #1635 — Cross Analysis read-only containment; merge commit `7650b5ce5be65f0826bc6171e8079a1fd266ad04`.
   - #1638 — XRP point-in-time validator, SQLite feature store, fixed-horizon forecast ledger and research archive; merge commit `58425d038a0a16082267d9de28757fd5c4eb499d`.
   - #1639 — scheduled-writer containment, dirty-worktree preservation, dependency audit and full-suite CI; merge commit `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
-- Main exact-head CI on `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`: 485 core tests + 8 subtests passed; 718 full-repository tests + 8 subtests passed. All 11 main check runs observed in this inspection completed successfully. The legacy combined-status endpoint still reports `pending` with no legacy status entries, so do not treat that endpoint as an independent pass.
-- The current tree contains 1,403 tracked paths, 493 Python files, 196 `barrot_agent` Python files, 78 workflow YAML files and 87 test modules. The full-suite job executes `python -m pytest tests -v --no-cov`.
-- Branch-protection endpoint returned 403. The only visible repository ruleset is disabled. Required approval enforcement therefore remains unverified.
+- Main exact-head CI on `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`: 485 core tests + 8 subtests passed; 718 full-repository tests + 8 subtests passed. All 11 main check runs observed in this inspection completed successfully. The legacy combined-status endpoint still reports `pending` with no legacy status entries, so do not treat it as an independent pass.
+- Main tree: 1,403 tracked paths, 493 Python files, 196 `barrot_agent` Python files, 78 workflow YAML files and 87 test modules. Full-suite CI executes `python -m pytest tests -v --no-cov`.
+- Branch-protection endpoint returned 403; the visible repository ruleset is disabled. Required approval enforcement remains unverified.
 - No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 
 ## Integrated current-main workstream
 
-The existing #1640 branch, `integration/core-capabilities-mmi-structural-paper-20261104`, now incorporates the exact #1642 snapshot-integrity commit as a second parent. This preserves both source histories without creating another branch or PR.
+The existing #1640 branch, `integration/core-capabilities-mmi-structural-paper-20261104`, incorporates the exact #1642 snapshot-integrity commit as a second parent. This preserves both source histories without creating another branch or PR.
 
 Included capabilities:
 - MMI publisher/source-independence grouping and claim-bound corroboration.
@@ -25,12 +25,25 @@ Included capabilities:
 - Strict scientific-discovery response-schema validation.
 - Paper-trader product-identity preflight and manual, exact-main-SHA, explicit-confirmation workflow gates. Persisted state remains untouched; the open position's product identity is still unknown, so no simulation is authorized.
 - Databricks SDK and Hugging Face Hub dependency-floor updates.
-- Exact verified feature-snapshot lookup, injectable receipt clock for deterministic tests, and fail-closed forecast-ledger preflight. Forecast issuance now requires a real `HistoricalFeatureStore`; every referenced SHA-256 snapshot must verify, cover the asset, have data cutoff/capture/store receipt no later than forecast cutoff, and match exact source lineage and feature-availability maximum timestamps.
+- Exact verified feature-snapshot lookup, injectable receipt clock for deterministic tests, and fail-closed forecast-ledger preflight. Forecast issuance requires an injected `HistoricalFeatureStore`; every referenced SHA-256 snapshot must verify, cover the asset, have data cutoff/capture/store receipt no later than forecast cutoff, and match exact source lineage and feature-availability maximum timestamps.
 
-The merge commit combines first parent `4407cbde1cd70bd2818f2860a50ddb59fbd64b63` (#1640 integration work) and second parent `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` (#1642 prediction-integrity work). The combined head requires fresh exact-head CI, full-suite, dependency/security audit and fail-closed-gate verification. Earlier component-head results are not substitutes for combined-head results:
-- #1640 pre-combination head `4407cbde1cd70bd2818f2860a50ddb59fbd64b63`: 553 core + 8 subtests; 788 full-suite + 8 subtests; four-manifest pip-audit passed; fail-closed gate passed while explicitly keeping merge disabled.
-- #1642 source head `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1`: 492 core + 8 subtests; 725 full-suite + 8 subtests; fail-closed gate passed. No dependency manifest changed in that source PR.
-- All 19 existing inline review threads on #1640 were resolved at the last inspection. Reviews are COMMENTED, not APPROVED; there are zero approving reviews. The fail-closed gate explicitly says merging is disabled. Do not merge or bypass it.
+The integrated code head `e0c039385471ee7afed9050435089eba181110f4` passed:
+- Core CI: **560 passed + 8 subtests** — run 41826921875, job 126563907233.
+- Full repository suite: **795 passed + 8 subtests** — run 41826921875, job 126563907479.
+- Four-manifest `pip-audit`: **passed; no known vulnerabilities** — run 41826922107, job 126563907923.
+- Fail-closed gate: **passed, but merge explicitly disabled** — run 41826921964, job 126563907170.
+The current handoff refresh is documentation-only and follows that tested code head; its own exact-head checks must also pass before merge.
+
+All 19 existing inline review threads on #1640 are resolved. Existing reviews are COMMENTED, not APPROVED; there are zero approving reviews. The gate explicitly says merging is disabled. Do not merge or bypass branch protection.
+
+Source-path coverage against #1640:
+- #1540: 8/8 paths.
+- #1317: 6/6.
+- #1318: 2/2.
+- #1320: 5/5.
+- #1255: 1/1.
+- #1254: 1/1.
+Keep these source PRs open until #1640 is merged and every included path is verified on main.
 
 ## Prediction-engine truth
 
@@ -40,7 +53,7 @@ The merge commit combines first parent `4407cbde1cd70bd2818f2860a50ddb59fbd64b63
 - Fixed-horizon forecast ledger with outcome/event recording and scoring.
 - Repository full-suite CI and scheduled-writer containment.
 
-**EXECUTED on the combined integration branch, not yet on main**
+**EXECUTED on the #1640 integration branch, not yet on main**
 - Cross-store snapshot verification before forecast-ledger issuance.
 - MMI claim-bound source corroboration and structural-analysis primitives.
 - Additional workflow and product-identity safety gates.
@@ -53,22 +66,23 @@ The merge commit combines first parent `4407cbde1cd70bd2818f2860a50ddb59fbd64b63
 - Probability calibration, uncertainty evaluation, drift monitoring and shadow/paper performance.
 - Unified runtime wiring of the structural-analysis library into the full Barrot V3 reasoning/orchestration path.
 
-**Forecast status: NOT_ISSUED.** No directional forecast is supported. Existing legacy sentiment/accuracy counters are not a substitute for leakage-safe predictive evaluation. No real-money action is permitted.
+**Forecast status: NOT_ISSUED.** No directional forecast is supported. Legacy sentiment/accuracy counters are not a substitute for leakage-safe predictive evaluation. No real-money action is permitted.
 
 ## Current XRP evidence status
 
-Research successor #1643, `research/xrp-evidence-archive-20261104`, contains 39 preserved historical JSON artifacts plus six current-run evidence addenda. Exact current head: `53c05e378a1b1e92d95e2de5d48b55236ece8d27`.
+Research successor #1643, `research/xrp-evidence-archive-20261104`, contains 39 preserved historical JSON artifacts plus six current-run evidence addenda. Exact head: `53c05e378a1b1e92d95e2de5d48b55236ece8d27`.
 - Exact-head CI: 485 core + 8 subtests and 718 full-suite + 8 subtests passed; fail-closed gate passed. No dependency manifests changed, so no dependency-audit run was triggered. PR remains draft and unmerged.
-- At 2026-11-04 11:38:45 UTC, Kraken XRP/USD and Binance XRPUSDT perpetual API response bodies were captured with SHA-256 receipts. Kraken showed last $1.2922, best bid/ask $1.29259/$1.29260 and about 35.19M XRP 24h volume. Binance perpetual mark was $1.2936 with +0.0100% funding per 8h. Both are single-venue observations, not a synchronized multi-venue feature set, and remain model-ineligible.
-- XRP open-interest aggregators reported about $0.88B, $1.48B and $2.03B with different contract/venue universes. Preserve the disagreement; never average these totals.
-- November 3 ETF-flow reports are incomplete or inconsistent in coverage/settlement. CryptoKeyhole's -3,339 XRP covered only 3 of 4 daily-reporting funds; XRP Insights' seven-ticker data metadata and landing-page provisional status conflict. No final full-universe daily flow is asserted.
+- At 2026-11-04 11:38:45 UTC, Kraken XRP/USD and Binance XRPUSDT perpetual API response bodies were captured with SHA-256 receipts. Kraken showed last $1.2922, best bid/ask $1.29259/$1.29260 and about 35.19M XRP 24h volume. Binance perpetual mark was $1.2936 with +0.0100% funding per 8h. These are single-venue observations, not a synchronized multi-venue feature set, and remain model-ineligible.
+- XRP open-interest aggregators reported about $0.88B, $1.48B and $2.03B with different contract/venue universes. Preserve disagreement; never average these totals.
+- November 3 ETF-flow reports are incomplete or inconsistent in coverage/settlement. CryptoKeyhole's -3,339 XRP covered only 3 of 4 daily-reporting funds; XRP Insights' seven-ticker metadata and landing-page provisional status conflict. No final full-universe daily flow is asserted.
 - XRP Insights' 08:00 UTC labeled-wallet snapshot covered 701 wallets across 24 exchanges, not a complete exchange ledger. Balance changes are not proof of customer withdrawals or accumulation.
 - The 233.46M XRP Binance incident transfer remains quarantined from organic exchange-flow features pending transaction-hash membership and recipient-wallet reconciliation.
-- `fixCleanup3_4_0` had an earliest conditional activation time of 2026-11-04 14:46:22 UTC; it was not yet active at the 11:42:54 UTC research cutoff. Verify the actual ledger after the window. The amendment is a maintenance fix, not the XRPL lending-protocol launch.
+- `fixCleanup3_4_0` had an earliest conditional activation time of 2026-11-04 14:46:22 UTC; it was not yet active at the 11:42:54 UTC research cutoff. Verify actual ledger activation after the window. The amendment is a maintenance fix, not the XRPL lending-protocol launch.
 - Circle's Q3 2026 results webcast was scheduled for 13:00 UTC on November 4; no results are claimed before publication.
 - Japan's SBIC East/Central/West are three separate regional SME investment-development companies, not SBI Holdings. SBIC East's June 2025 official course included ChatGPT training delivered by an external VOST instructor; this is not evidence of an OpenAI partnership or XRP relationship.
+- Exact-phrase work: `ASK Coin` remains ambiguous; Permission Coin (ASK) on Base/Polygon is one candidate, with no XRP/XRPL integration found in reviewed official documentation. The strongest `actual capital` evidence concerns Ripple Prime/Hidden Road and Coinbase FCM regulatory net capital/customer-segregation figures; these are legal-entity measures, not consolidated capital or XRP exposure. C2FO's $520B/$525B historical Early Pay volume is not Instant Pay capital committed or deployed. Evernorth's conditional equity facility is not cash received or realized XRP purchases. The original exact spoken sentence remains unresolved.
 - Coinbase, Circle, Ripple and SBI relationships are mapped with product-specific collateral and custody boundaries. Collateral eligibility is not proof of actual XRP utilization, borrowing, trading or payment volume.
-- Kamilah/Camila/Camilla candidate YouTube channel IDs remain unlinked by first-party identity evidence. No video inventory or attribution was created.
+- Kamilah/Camila/Camilla candidate YouTube channel IDs remain unlinked by first-party identity evidence. Candidate video leads are preserved outside the confirmed archive; no video inventory or attribution was created.
 
 ## Nine-platform coordination
 
@@ -76,21 +90,21 @@ Only ChatGPT-to-GitHub repository access is tested. Claude, Grok, Gemini, Copilo
 
 ## Open PR classifications and next actions
 
-- #1640 — single integrated core/prediction workstream; blocked pending combined-head exact CI, full-suite, dependency/security audit, fail-closed gate, independent review/approval and verified branch-protection conditions.
-- #1642 — its source commit is now a second parent of #1640. Keep the source PR open until #1640 merges and every included path is verified on main; do not merge #1642 independently.
-- #1643 — unique/unreviewed XRP evidence archive; keep draft until review and all exact-head gates are satisfied. Source PRs #1597, #1605, #1608 and #1614 remain open until its included paths are on main.
+- #1640 — single integrated core/prediction workstream; code head `e0c039385471ee7afed9050435089eba181110f4` passed core/full-suite/four-manifest dependency audit/fail-closed gate. It remains blocked for merge because the gate explicitly disables merging, branch-protection/approval enforcement is unverified, and there are zero approving reviews.
+- #1642 — its source commit is a second parent of #1640. Keep the source PR open until #1640 merges and every included path is verified on main; do not merge #1642 independently.
+- #1643 — unique/unreviewed XRP evidence archive; keep draft until review and all exact-head gates are satisfied. Source-path coverage is partial: #1597 15/17, #1605 1/1, #1608 1/3, #1614 22/57. #1597's candidate video inventory, #1608's C2FO/actual-capital graph addendum and #1614's unique handoffs/identity seed remain outside this archive. Do not close these source PRs merely because #1643 merges.
 - #1641 — unique/unreviewed bounded experimentation foundation; exact-head CI passed, but it does not establish XRP predictive performance. Keep separate.
-- #1317, #1318, #1320, #1255 and #1254 — stale source proposals represented in #1640; close only after #1640 is merged and each source path is verified on main. #1314 remains a predecessor to #1317 until that verification.
+- #1317, #1318, #1320, #1255 and #1254 — stale source proposals represented in #1640; close only after #1640 is merged and each source path is verified on main. #1314 remains a separate predecessor and is not yet path-verified as superseded.
 - #1611 remains a unique predecessor/research branch; preserve pending a separate path-level comparison.
 - #1269 remains a separate geometry/OBJ workstream.
-- The complete open inventory is 366 PRs: 359 drafts and 7 non-drafts; four are based on current main and 362 have stale base SHAs. The other stale-base PRs remain individually unreviewed until exact path/commit overlap is checked. Do not bulk-close.
+- Complete open inventory: 366 PRs (359 drafts, 7 non-drafts); four are based on current main and 362 have stale base SHAs. The remaining stale-base PRs are individually unreviewed until exact path/commit overlap is checked. Do not bulk-close.
 
 Next concrete actions:
-1. Verify the combined #1640 head's new CI, full repository suite, four-manifest dependency audit and fail-closed gate; resolve any failures on that same branch.
-2. Obtain actual independent review and verify the required-approval/branch-protection condition without bypassing the fail-closed gate.
+1. Verify the documentation-refresh child of #1640 on its exact head; preserve the full-suite, four-manifest audit and fail-closed results.
+2. Obtain actual independent review and verify required approval/branch-protection conditions without bypassing the fail-closed gate.
 3. Review and integrate the unique #1643 research archive; after the Circle webcast and XRPL amendment window, capture issuer results and verify amendment activation from the ledger.
 4. Build public exchange-native ingestion and immutable raw receipts before populating the historical feature store.
-5. Run chronological out-of-sample evaluation against the required baselines; calibrate and monitor drift only after sufficient observations exist.
+5. Run chronological out-of-sample evaluation against required baselines; calibrate and monitor drift only after sufficient observations exist.
 
 DESIGNED, EXECUTED and VERIFIED remain separate. Historical handoffs below are preserved; this current block supersedes their older main SHAs, PR states and test counts.
 

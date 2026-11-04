@@ -98,3 +98,14 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - No merge, force-push, branch rewrite, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 - Forecast status remains NOT_ISSUED. No populated historical point-in-time XRP dataset or leakage-safe out-of-sample predictive evaluation exists.
 - Only ChatGPT-to-GitHub authentication/data flow is tested; the other eight platforms are not claimed live.
+
+
+## Run 14 — verified integrated code head and source-path reconciliation (2026-11-04T12:13:30Z)
+
+- #1640 integrated code head `e0c039385471ee7afed9050435089eba181110f4`: 560 core tests + 8 subtests; 795 full-repository tests + 8 subtests; four-manifest pip-audit passed with no known vulnerabilities; fail-closed gate passed while reporting merge disabled. All 19 pre-existing inline review threads are resolved, but zero approving reviews exist. Main ruleset is disabled and classic branch-protection detail is unavailable (403). No merge.
+- #1642 commit `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` is preserved as the second parent of #1640. Keep #1642 open until #1640 is merged and all paths are verified on main.
+- #1640 source-path coverage: #1540 8/8; #1317 6/6; #1318 2/2; #1320 5/5; #1255 1/1; #1254 1/1. Close those exact source PRs only after post-merge path verification.
+- #1643 source-path coverage: #1597 15/17; #1605 1/1; #1608 1/3; #1614 22/57. #1597's candidate-video discovery file and handoff are excluded; #1608's C2FO/actual-capital graph addendum and handoff are excluded; #1614 has additional code/contract/test files handled by #1640 and unique handoffs/identity-seed material outside #1643. Keep #1597, #1608 and #1614 open after #1643 merges until every excluded item is separately dispositioned. #1605 may be closed only after its sole path is verified on main.
+- #1314 remains a separate predecessor: none of its six changed paths were represented in #1640's changed-path list in this inspection. Do not close it without a fresh content comparison.
+- Open inventory remains 366 (359 drafts, 7 non-drafts), with four PRs based on current main and 362 stale-base PRs. No bulk closure.
+- Prediction remains NOT_ISSUED; no populated historical XRP dataset or leakage-safe out-of-sample results exist. No external or real-money action occurred.
