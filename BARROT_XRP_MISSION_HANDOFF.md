@@ -1913,3 +1913,65 @@ A prior handoff over-classified several security PRs as superseded by #1640. The
 7. Keep forecasts disabled; no paper-trading or real-money actions without separate approval.
 
 DESIGNED, EXECUTED and VERIFIED remain distinct. No merge, PR closure, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred in this run.
+
+
+## Run 21 — exact-head revalidation and security-backlog correction (2026-11-04T22:20Z)
+
+### Current integrated branches
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- PR #1640: head `0eaf585aed2000cadefe9cb56b542d341009c4f7`, 93 commits ahead, 0 behind, 66 changed files; non-draft, GitHub-reported mergeable.
+- PR #1643: head `d779f8944eb5e417955af05e779838c082bcd63a`, 76 commits ahead, 0 behind, 84 changed files; non-draft, GitHub-reported mergeable.
+- The two active integration PRs have **zero overlapping changed paths** (150 unique paths combined).
+- Open PR inventory after exact duplicate closures: **369 total, 354 drafts, 15 non-drafts**.
+
+### Exact-head CI after the handoff and research updates
+
+**#1640 — exact head `0eaf585aed2000cadefe9cb56b542d341009c4f7`**
+
+- [CI run 41923255618](https://github.com/Barrot-Agent/B-Agent/actions/runs/41923255618): core suite **581 passed + 8 subtests**; full repository suite **850 passed + 8 subtests**; `barrot_agent` coverage **52.82%**, above the 50% floor.
+- [Dependency audit 41923255930](https://github.com/Barrot-Agent/B-Agent/actions/runs/41923255930): five manifests; no known vulnerabilities reported.
+- [Fail-closed gate 41923255655](https://github.com/Barrot-Agent/B-Agent/actions/runs/41923255655): succeeded while explicitly keeping automatic merge disabled.
+- The only branch change since the prior exact code head was this append-only handoff update; this run validates the resulting branch head.
+
+**#1643 — exact head `d779f8944eb5e417955af05e779838c082bcd63a`**
+
+- [CI run 41923683791](https://github.com/Barrot-Agent/B-Agent/actions/runs/41923683791): core suite **490 passed + 8 subtests**; full repository suite **791 passed + 8 subtests**.
+- [Fail-closed gate 41923683798](https://github.com/Barrot-Agent/B-Agent/actions/runs/41923683798): succeeded while keeping automatic merging disabled.
+- The new test validates the append-only Kraken ticker observation's timestamp bounds, spread arithmetic, source limitations and explicit non-eligibility. The cache-save warning did not affect the test result.
+- New artifact: `research/xrp_intelligence/20261104T221315Z-kraken-xrpusd-ticker-followup.json`. Kraken's rendered ticker shows last **$1.30504**, bid **$1.30503** (615 XRP), ask **$1.30504** (6,575 XRP), spread about **0.077 bps**, 24-hour volume **40.449M XRP**, VWAP **$1.29159664**, high **$1.34**, low **$1.24016**, and UTC-day open **$1.27513**. Relative to the 21:05Z same-venue snapshot, last price is about **+0.342% over 68m15s**. The one-level quote-size configuration changed materially, but this is not sustained order flow or consolidated depth.
+- This artifact deliberately has **no raw HTTP byte receipt, no raw SHA-256, no exchange event timestamp, and possible web-cache reuse**. It is descriptive and **not model-eligible**. No forecast was issued.
+
+### Merge eligibility remains blocked
+
+- #1640 has 22/22 resolved inline threads; #1643 has 14/14. Both have only COMMENTED reviews and **zero APPROVED reviews**.
+- Repository fallback ruleset remains disabled; classic branch-protection inspection still returns HTTP 403.
+- Main push previously triggered GitHub Pages deployment run 41799855489. That external deployment has not been authorized for another merge.
+- Therefore neither PR was merged. No branch-protection bypass, deployment, secret operation, Space restart, Kaggle submission, paper trade or financial action occurred.
+
+### Security backlog correction — Run 20's provisional classification is superseded
+
+Run 20 compared source PR path lists to the two integration branches but did not sufficiently account for changes already merged into current main. The following current-main evidence corrects that classification:
+
+- Merged PR **#1635** delivered read-only Cross Analysis; merge commit `7650b5ce5be65f0826bc6171e8079a1fd266ad04`.
+- Merged PR **#1639** delivered the broader unattended-writer containment; main merge commit `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- On current main, the PingPong Engine, autonomous self-deployment, autonomous resolver, auto-resolve, daily digest, public brain-corpus export, merge queue, Scheduler Tick, self-schedule and subscriber sync are quarantined. Cross Analysis remains available as a read-only artifact workflow. The main tests cover the quarantine set in `tests/test_automation_containment.py` and `tests/test_v3_scripts.py`.
+- **PRs #1617, #1609 and #1613 were verified as superseded by #1635/#1639 and closed with explicit cross-references.** Their source branches were not rewritten or deleted.
+- **PR #1615 remains open** because its four timestamped `research/operations` audit/handoff documents are unique and are not on main. Its workflow changes are already on main, its `scripts/dump_brain_corpus.py` blob matches main, and its test additions are functionally covered by the merged main containment tests. Preserve its unique research evidence; do not close it as an exact duplicate.
+- PR #1610 and older broad security proposals (#1585, #1573, #1584, #1582, #1606, #1607, and related predecessors) remain stale/partially superseded or unique/unreviewed. Their source changes require exact per-file comparison against current main and #1640 before disposition. No bulk closure.
+- The earlier Run 20 residual-path counts for #1597, #1608 and #1614 are provisional because they were not fully reconciled against current main's merged commits. Keep them open pending a current-main tree/diff audit; do not close them based on those counts.
+- #1642 remains an exact ancestor of #1640. #1644–#1650 remain represented by #1640's current changed paths and dependency/action updates; close only after #1640 is merged and its content is verified on main. #1605 remains represented by #1643 but must remain open until #1643 is merged and verified.
+
+### Remaining active main safety exposure
+
+Main has already received the #1635/#1639 containment. The residual high-risk workflows still addressed by #1640 include `barrot-agent.yml`, `task-allocator.yml` and `barrot-self-upgrade.yml`. #1640 also constrains external A2A and self-hosted-brain actions to explicit manual confirmation. These changes are not on main until #1640 is safely merged.
+
+### Next actions
+
+1. Obtain independent approvals for #1640 and #1643; verify required branch-protection checks with an authorized repository administrator.
+2. Resolve the automatic Pages deployment authorization before any merge.
+3. If #1640 merges first, fetch main and reconcile #1643 against the new main without force-pushing; the branches are currently path-disjoint, but exact-head CI must be rerun after any base update.
+4. Complete a current-main per-file audit of #1610 and older security proposals; preserve unique audit documents and close only exact source duplicates whose replacement is already merged and verified.
+5. Keep the research pipeline's cross-run archive, independent timestamp/signature anchor, research-overlay runtime admission, complete historical datasets and calibrated walk-forward evidence as explicit blockers. No directional forecast until those gates pass.
+
+This section supersedes Run 20's provisional security-source classification where they conflict. All branch and CI states above are verified at the stated exact SHAs; no completion is inferred from a plan or a different head.
