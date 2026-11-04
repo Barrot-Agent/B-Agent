@@ -700,3 +700,49 @@ Complete exact-head verification for the documentation-only handoff commit, reco
 
 - **Forecast status: NOT_ISSUED.** No directional XRP forecast is justified by the current non-synchronized snapshots. No point-in-time feature rows or out-of-sample evaluation were created from this run.
 - Next: finish the documentation-only head's exact CI; then reconcile the Evernorth/SBI/Ripple/Coinbase/BitGo relationships into a sourced entity graph and ingest primary SEC/SBI/OCC records as immutable raw receipts. Verify whether Evernorth's Q4 strategy has actually begun before treating any planned treasury deployment as a flow.
+
+
+---
+
+## Run 12 — verification 2026-11-04T11:42:54Z; live market cutoff 2026-11-04T11:38:45Z
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** The point-in-time feature-store, forecast-ledger, evidence-quality, and no-forecast-before-walk-forward requirements remain the governing design. No new forecast logic is treated as operational merely because its contract or tests exist.
+- **EXECUTED:** Re-inspected current main, repository tree, all 366 open PRs, relevant source branches, PR ancestry/diffs, CI workflows, branch protection state, exact-head checks, and this handoff. No worktree reset, stash, force-push, branch rewrite, deployment, secret change, paper trade, Kaggle submission or funds action occurred.
+- **EXECUTED:** Created one fresh-main research archive successor, draft PR [#1643](https://github.com/Barrot-Agent/B-Agent/pull/1643), based on main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. It consolidates 39 valid historical JSON artifacts from #1597, #1605, #1608 and #1614, plus one live market-reconciliation artifact. Current head: `9d40454d6882d0ea32c5682f593a16a1f9806586`; 40 files; no code or dependency manifests changed.
+- **EXECUTED:** Captured exact public API response bodies for Kraken XRP/USD and Binance XRPUSDT perpetual. SHA-256 receipts are stored in `research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json`: Kraken `45b3f02bdf70f154046e32ddc514efae83fb8dfa2827df5e2594bcc2a2dad57f`; Binance `8714decc959674329bc35a00e6b29e7d972ecefd638f6a60b37d69d38cc1ab8c`. The hashes cover exact UTF-8 response bodies, not HTTP headers.
+- **EXECUTED:** Candidate Camilla/Kamilah video inventories and candidate video lists were deliberately excluded from #1643. First-party identity and canonical channel ownership remain unverified. No video attribution or exhaustive inventory is claimed.
+- **VERIFIED:** Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main CI run [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459) passed 485 core tests plus 8 subtests and 718 full-repository tests plus 8 subtests.
+- **VERIFIED:** PR #1640 exact head `b654e6c7884f0ba002f0b285ace57098b422916d) passed 553 core tests plus 8 subtests, 788 full-repository tests plus 8 subtests, four-manifest pip-audit with no known vulnerabilities, and the fail-closed gate. It is non-draft and mergeable; all inline review threads are resolved, but there are zero approving reviews. The branch is protected; the detailed protection endpoint returned 403, so the required-approval policy cannot be confirmed. Do not merge until the required approval condition is established and satisfied.
+- **VERIFIED:** PR #1642 exact head `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` passed 492 core tests plus 8 subtests, 725 full-repository tests plus 8 subtests, and the fail-closed gate. It remains draft. Its handoff-file diff overlaps #1640; reconcile the shared handoff before merging either branch in an order that could overwrite the other.
+- **VERIFIED:** PR #1641 exact head `5e064a12409230762d35360430ececb90f7a97c3` passed 485 core tests plus 8 subtests, 728 full-repository tests plus 8 subtests, and the fail-closed gate. It remains draft and unique/unreviewed.
+- **PARTIALLY VERIFIED:** PR #1643 exact head `9d40454d6882d0ea32c5682f593a16a1f9806586` passed 485 core tests plus 8 subtests and the fail-closed gate. The full-repository suite was still running at the cutoff. The dependency-audit workflow did not trigger because no dependency manifests changed; do not claim an exact-head audit for #1643. It remains draft and unmerged.
+- **VERIFIED:** The open-PR inventory is 366 total: 359 drafts and 7 non-drafts (#1640, #1318, #1320, #1317, #1269, #1255, #1254). No bulk closure or source-branch rewrite was performed.
+
+### Live XRP observations — not forecasts
+
+- Kraken XRP/USD at approximately 11:38:45 UTC: last $1.2922; best bid/ask $1.29259/$1.29260; 24-hour volume 35.19M XRP; 24-hour VWAP $1.27239; 24-hour high/low $1.29666/$1.24016. This is one venue and a top-of-book ticker, not a synchronized depth curve.
+- Binance XRPUSDT perpetual at 11:38:45 UTC: mark $1.2936, index $1.29349763, funding +0.0100% per eight hours; next funding timestamp 16:00 UTC.
+- Derivatives aggregators reported OI of approximately $0.880B (Kodexius, five exchanges/seven contracts), $1.48B (Liqwall, all-exchange scope not enumerated) and $2.03B (TradRadar, seven named exchanges). Do not average these. The venue/contract universe and collection method need reconciliation. Funding is consistently around +0.0100%/8h; this is positive but below TradRadar's stated >0.015% overheating threshold.
+- Nov 3 ETF flows remain partial and provider-dependent: CryptoKeyhole reported -3,339 XRP across 3/4 daily-reporting funds at 11:17 UTC; CryptoETF.today's earlier 05:47 UTC capture showed zero across 2/5 funds. XRP Insights' later metadata and landing-page provisional status disagree. No final full-universe flow is asserted.
+- XRP Insights attributed 22.33B XRP to 701 wallets across 24 exchanges at 08:00 UTC; same-wallet balances were down 290.7M XRP over seven days. This is a tracked-wallet balance change, not proof of net exchange withdrawals, selling or available float; Coinbase cbXRP and Binance-Peg reserves are included.
+- CoinGecko's Sep 30 report is a historical depth benchmark: roughly $18M bids versus $14M asks within +/-2% across eight CEXs, with Coinbase stronger near +/-0.1% and Binance leading at +/-2%. It is not live Nov 4 depth.
+- Circle's Q3 2026 results webcast was scheduled for 13:00 UTC on Nov 4, after this data cutoff. No result or XRP impact is inferred before the issuer disclosure.
+
+### Research archive and backlog disposition
+
+- PR #1643 preserves unique research from #1597, #1605, #1608 and #1614 on a current-main base. Those source PRs remain open and untouched until #1643 is merged and every included path is verified on main. The candidate video-list files were excluded; the excluded material remains preserved in the source branches.
+- The old #1614 implementation/tests/contracts/CI edits were not copied because current main already contains the point-in-time validator and artifact clock, while #1642 is the current feature-snapshot integrity successor. #1611 remains a predecessor/unique-unreviewed source until its remaining content is separately reconciled.
+- The nine-platform map remains capability/permission documentation only. GitHub access through this ChatGPT session was tested. No live authentication/data-flow evidence exists here for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks.
+- All observations in the new market snapshot are marked model-ineligible. Secondary aggregator pages do not yet have byte-complete raw receipts. No point-in-time feature rows, walk-forward scores, calibration results, drift measurements or shadow outcomes were created from these snapshots.
+- **Forecast status: NOT_ISSUED.** No directional XRP forecast is supported by this capture.
+
+### Next concrete actions
+
+1. Finish and inspect PR #1643's full-suite run; verify every included path on the branch and obtain a security review appropriate to the data-only change. Do not merge while draft or before all required checks and approvals are known.
+2. Resolve the required-approval policy for protected main and obtain the actual required approval for #1640; then merge only if its exact current head still satisfies all gates.
+3. Reconcile the shared handoff-file overlap between #1640 and #1642 before merging the prediction-snapshot work.
+4. Capture synchronized full-depth books and native OI for a fixed exchange/contract universe; complete Nov 3 issuer ETF files; resolve the XRP Insights provisional-status discrepancy; classify exchange-wallet transfers.
+5. After #1643 merges, fetch main again, verify all 40 archived paths and run main CI. Only then close the exact superseded source PRs, with cross-references; keep excluded video candidates and any unique work open.
+6. Admit no market observation to the feature store until raw payload receipts, source timestamps, independence groups, quality checks and point-in-time cutoffs are verified. Keep forecasts disabled until chronological walk-forward tests beat appropriate baselines and calibration/drift checks pass.
