@@ -905,3 +905,55 @@ def test_kraken_ticker_followup_is_timestamp_bounded_and_not_model_eligible() ->
     assert data["data_quality"]["model_eligible"] is False
     assert data["predictions"]["issued"] is False
     assert "cache reuse cannot be excluded" in source["limitations"][2]
+
+
+POST_ACTIVATION_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T224049Z-post-activation-xrpl-ledger-market-update.json"
+)
+
+
+def test_post_activation_addendum_confirms_fix_without_claiming_lending_activation() -> None:
+    data = json.loads(POST_ACTIVATION_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "post_activation_xrpl_protocol_state_and_market_microstructure_update"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    sources = {item["id"] for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    fix = data["protocol_status"]["fixCleanup3_4_0"]
+    assert fix["status"] == "ENABLED"
+    assert fix["enablement_ledger"] == 108112129
+    assert fix["enablement_utc"] == "2026-11-04T14:52:00Z"
+    assert fix["amendment_id"] == "98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76"
+    assert fix["enable_amendment_transaction_hash"] == "F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C"
+    assert {"xrpldashboard_amendments_live_20261104T2240Z", "xrplwin_fixcleanup3_4_0_live_20261104T2240Z"} <= sources
+    lending = data["protocol_status"]["native_lending"]
+    assert lending["status"] == "NOT_ACTIVE"
+    assert lending["required_yes_votes"] == 29
+    assert lending["yes_votes"] == {"SingleAssetVault": 21, "LendingProtocol": 19, "LendingProtocolV1_1": 19}
+    assert lending["activation_countdown_active"] is False
+    assert data["predictions"]["issued"] is False
+    assert all(item["model_eligible"] is False for item in data["source_registry"])
+
+
+def test_post_activation_market_snapshot_preserves_timestamp_and_scope_disagreement() -> None:
+    data = json.loads(POST_ACTIVATION_ADDENDUM.read_text(encoding="utf-8"))
+    market = data["market_snapshot"]
+    assert market["currency_pair"] == "XRP/USD"
+    assert market["venue"] == "Kraken"
+    assert market["best_bid_usd"] == 1.31376
+    assert market["best_ask_usd"] == 1.31387
+    assert market["last_trade_usd"] == 1.31352
+    assert market["spread_bps"] == 0.8370
+    assert market["volume_24h_xrp"] == 41189420.05610191
+    assert market["vwap_24h_usd"] == 1.29201409
+    assert market["utc_daily_open_usd"] == 1.27513
+    assert market["provider_event_timestamp_utc"] is None
+    assert market["dashboard_quote"]["price_usd"] == 1.3076
+    assert "Do not average" in market["comparison_policy"]
+    quality = data["data_quality"]["dashboard_current_ledger_indicator_disagreement"]
+    assert quality["header_ledger"] == 108118734
+    assert quality["body_validated_ledger_at_fetch"] == 108118715
+    assert data["preservation"]["raw_source_bytes_archived"] is False
+    assert data["preservation"]["immutable_raw_receipts_created"] is False
