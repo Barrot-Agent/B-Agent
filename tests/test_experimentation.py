@@ -80,6 +80,9 @@ def test_docker_runner_enforces_network_and_privilege_limits(tmp_path, monkeypat
     run = calls[1]
     assert run[run.index("--network") + 1] == "none"
     assert "--read-only" in run and "--cap-drop" in run and "--security-opt" in run
+    variant_arg = run[run.index("--env", run.index("--env") + 1) + 1]
+    assert variant_arg.startswith("BARROT_EXPERIMENT_VARIANT=")
+    assert "model" in variant_arg and "base" in variant_arg
     assert len([x for x in calls if x[1:3] == ["run", "--rm"]]) == 2
 
 def test_orchestrator_records_lifecycle_and_requires_approval(tmp_path):
@@ -100,4 +103,6 @@ def test_scheduler_persists_discovery_tick(tmp_path):
     engine = ExperimentOrchestrator(tmp_path, runner=object())
     result = ContinuousDiscoveryScheduler(engine, 5).run_once()
     assert result["status"] == "EXECUTED" and result["candidate_count"] >= 1
+    second = ContinuousDiscoveryScheduler(engine, 5).run_once()
+    assert second["candidate_count"] == 0
     assert result["ledger"]["valid"]
