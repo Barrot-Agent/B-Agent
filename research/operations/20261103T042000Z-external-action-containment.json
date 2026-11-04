@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "barrot-v3-external-action-containment-20261103-run14",
+  "captured_at_utc": "2026-11-03T04:20:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_commit": "bbd33f9511be12dfe20fe69c7ba5c7eda8643187",
+  "confirmed_findings": [
+    {
+      "path": ".github/workflows/barrot-merge.yml",
+      "risk": "Manual Hugging Face model upload used caller-controlled model_name in shell while HF_TOKEN was available; no explicit per-run approval."
+    },
+    {
+      "path": ".github/workflows/barrot-merge-manual.yml",
+      "risk": "Duplicate manual Hugging Face model upload workflow with same shell interpolation and token exposure."
+    },
+    {
+      "path": ".github/workflows/barrot-hf-admin.yml",
+      "risk": "Manual workflow could delete/create a Hugging Face Space repository using HF_TOKEN without an explicit confirmation gate."
+    },
+    {
+      "path": ".github/workflows/barrot-restart-space.yml",
+      "risk": "Manual factory restart called Hugging Face endpoint without per-run confirmation."
+    },
+    {
+      "path": ".github/workflows/sync-self-hosted-brain.yml",
+      "risk": "Push-to-main deployment to Hugging Face with token; no explicit human confirmation."
+    },
+    {
+      "path": ".github/workflows/deploy-a2a-worker.yml",
+      "risk": "Push-to-main Cloudflare deployment and secret upload; no explicit human confirmation."
+    },
+    {
+      "path": ".github/workflows/task-allocator.yml",
+      "risk": "Unverified multi-provider allocator exposed provider secrets, had write permissions and committed allocation records to main."
+    },
+    {
+      "path": ".github/workflows/capability-9-data-resolver.yml",
+      "risk": "Manual workflow passed caller-supplied dataset to Groq using GROQ_API_KEY and attempted to commit/push results; workflow did not declare least-privilege permissions or explicit data classification."
+    },
+    {
+      "path": ".github/workflows/barrot-pr-automerge.yml",
+      "risk": "Current main version is already fail-closed, read-only and does not merge PRs."
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "risk": "Current run found no failing workflows; COPILOT_ASSIGNEE was unset, so no issues or PRs were assigned. Workflow has issues/pull-requests write permissions but no contents write."
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "Current run fired zero queue entries; one entry remained. Scheduler still has contents/actions write permissions and unrestricted dispatch on main until PR #1555 is merged."
+    }
+  ],
+  "proposed_changes": [
+    "Gate both model upload workflows behind an explicit confirm_external_change=YES input; validate a strict model-name slug using an environment variable, quote shell paths and disable checkout credential persistence.",
+    "Make destructive Hugging Face administration inert pending target-specific migration review.",
+    "Require explicit per-run confirmation for factory restart.",
+    "Remove push-triggered deployment paths for the self-hosted brain and A2A Worker; retain only manually confirmed deployments.",
+    "Disable the unverified multi-platform task allocator and remove provider-token access.",
+    "Disable Capability 9 data contradiction resolution until provider authentication, data classification, provenance and review are implemented.",
+    "Add regression checks to the already CI-listed tests/test_external_deploys_require_confirmation.py; do not modify ci.yml, avoiding overlap with fresh-main PRs #1555 and #1557."
+  ],
+  "limitations": [
+    "A YES workflow input is a per-run confirmation gate, not a substitute for a GitHub Environment with required reviewers or a separately verified approval policy.",
+    "No external deployment, model upload, restart, repository deletion, provider call or secret access was performed.",
+    "Existing credentials were not read or tested.",
+    "The scripts/data_contradiction_resolver.py source remains in the repository; its workflow is inert in the proposal."
+  ],
+  "verification": {
+    "local_tests": "NOT_EXECUTED; GitHub exact-head CI pending",
+    "exact_head_ci": "PENDING",
+    "fail_closed_gate": "PENDING",
+    "main_modified": false,
+    "merge": "NOT_AUTHORIZED"
+  }
+}
