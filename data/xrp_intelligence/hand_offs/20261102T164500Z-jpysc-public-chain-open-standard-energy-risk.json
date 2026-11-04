@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T164500Z-jpysc-public-chain-open-standard-energy-risk",
+  "captured_at_utc": "2026-11-02T16:45:00Z",
+  "data_cutoff_utc": "2026-11-02T16:45:00Z",
+  "status": "RESEARCH_ONLY",
+  "sources": [
+    {
+      "source_id": "sbi-jpysc-launch-20260624",
+      "publisher": "SBI Holdings, SBI Shinsei Trust Bank, SBI VC Trade and Startale",
+      "published_at": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "source_type": "official_joint_launch_announcement",
+      "claims": [
+        "JPYSC began initial service inside SBI VC Trade accounts only.",
+        "The announcement said public-chain circulation would follow after relevant legal and tax practices were clarified.",
+        "SBI Shinsei Trust Bank is the issuer; SBI VC Trade handles distribution."
+      ],
+      "limitations": [
+        "The exact internal ledger or chain used for the initial account-limited service is not identified in the cited announcement.",
+        "Do not equate SBI's later 'on-chain balance' wording with public XRPL, Base, Ethereum or Arc circulation."
+      ]
+    },
+    {
+      "source_id": "sbi-open-standard-jpysc-ousd-20261016",
+      "publisher": "SBI Holdings / Startale Group",
+      "published_at": "2026-10-16",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "source_type": "official_joint_announcement",
+      "claims": [
+        "SBI Holdings and Startale joined Open Standard, whose participants include Coinbase and more than 140 companies.",
+        "SBI and Startale said they were considering a proof of concept for interoperability between JPYSC and Open USD (OUSD).",
+        "The announcement conditions the work on OUSD's on-chain availability and applicable legal requirements."
+      ],
+      "limitations": [
+        "The announcement describes a proposed PoC, not a completed integration or production settlement.",
+        "Coinbase is named as an Open Standard founding partner; this does not prove a direct bilateral Coinbase-JPYSC integration."
+      ]
+    },
+    {
+      "source_id": "sbi-blackrock-jpysc-mmf-mou-20261027",
+      "publisher": "SBI Holdings / Startale Group",
+      "published_at": "2026-10-27",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "source_type": "official_mou_announcement",
+      "claims": [
+        "SBI Holdings and Startale signed an MOU with BlackRock entities to explore a tokenized money-market-fund and JPYSC digital-asset ecosystem."
+      ],
+      "limitations": [
+        "An MOU is exploratory and does not establish an issued tokenized fund, deployed settlement rail or capital allocation."
+      ]
+    },
+    {
+      "source_id": "reuters-energy-risk-20261102",
+      "publisher": "Reuters",
+      "published_at": "2026-11-02",
+      "url": "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/",
+      "source_type": "news_report",
+      "claims": [
+        "ADNOC's CEO said nearly one billion barrels had been drawn from global inventories since the Strait of Hormuz disruption.",
+        "The report described diesel inventories in some regions at 35-year seasonal lows and an LNG supply gap of approximately 600 billion cubic feet.",
+        "The report placed Brent near USD 110 per barrel, approximately 50% above its prewar February level."
+      ],
+      "limitations": [
+        "The inventory and LNG figures are attributed to the named executive and should be treated as sourced claims, not independently reconstructed balances.",
+        "The report does not identify an XRP-specific transmission channel."
+      ]
+    },
+    {
+      "source_id": "reuters-oil-price-reaction-20261102",
+      "publisher": "Reuters via Euronext news relay",
+      "published_at": "2026-11-02",
+      "url": "https://live.euronext.com/en/financial-news/oil-drops-almost-4-hopes-progress-talks-ending-us-iran-war",
+      "source_type": "news_report",
+      "claims": [
+        "At 09:00 GMT on November 2, Brent was reported down 3.7% to USD 109.23 and WTI down 3.8% to USD 100.14 amid renewed US-Iran negotiation hopes."
+      ],
+      "limitations": [
+        "This is a timestamp-specific observation; later providers reported different prices and percentage moves. Do not average non-synchronized quotes."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "to": "Open Standard",
+      "relationship": "member alongside Startale",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Startale",
+      "to": "Open Standard",
+      "relationship": "member and SBI's JPYSC ecosystem partner",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open Standard",
+      "relationship": "founding partner named in SBI/Startale announcement",
+      "status": "SOURCED_CLAIM"
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "JPYSC / OUSD",
+      "relationship": "considering interoperability PoC",
+      "status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "BlackRock",
+      "relationship": "MOU to explore tokenized MMF and JPYSC ecosystem",
+      "status": "CONFIRMED_AS_MOU"
+    },
+    {
+      "from": "JPYSC",
+      "to": "public blockchain circulation",
+      "relationship": "not yet publicly available per June 24 and November 2 SBI disclosures",
+      "status": "SOURCED_CLAIM"
+    },
+    {
+      "from": "Circle",
+      "to": "ACI Worldwide / Bre-B",
+      "relationship": "USDC settlement demonstration in Colombia",
+      "status": "CONFIRMED_AS_ANNOUNCED"
+    },
+    {
+      "from": "XRP",
+      "to": "JPYSC/OUSD interoperability",
+      "relationship": "no direct XRP integration disclosed; possible future bridge-rail competition is speculative",
+      "status": "UNKNOWN"
+    },
+    {
+      "from": "XRP",
+      "to": "USDC Colombia pilot",
+      "relationship": "no direct XRP integration disclosed; possible corridor substitution/complementarity is untested",
+      "status": "UNKNOWN"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H5",
+      "statement": "If JPYSC/OUSD interoperability becomes production, it could provide a direct yen-dollar stablecoin settlement route and reduce the need for XRP as a bridge on some JPY/USD corridors.",
+      "status": "SPECULATIVE",
+      "support": [
+        "SBI and Startale announced they are considering a JPYSC/OUSD interoperability PoC.",
+        "Coinbase is a founding Open Standard partner."
+      ],
+      "disconfirming": [
+        "No completed PoC, public-chain JPYSC circulation, OUSD route volume or XRP corridor baseline is disclosed."
+      ]
+    },
+    {
+      "id": "H6",
+      "statement": "SBI's JPYSC/BlackRock MOU could connect yen stablecoin settlement to tokenized money-market-fund distribution and treasury workflows.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "support": [
+        "Official MOU announcement names tokenized MMF and JPYSC ecosystem exploration."
+      ],
+      "disconfirming": [
+        "No issued fund token, subscriptions, redemptions or settlement volume are disclosed."
+      ]
+    },
+    {
+      "id": "H7",
+      "statement": "Energy supply disruption can transmit to crypto through inflation expectations, central-bank rate expectations, USD funding and global risk appetite; November 2 oil declines may reflect de-escalation repricing while physical supply buffers remain depleted.",
+      "status": "MACRO_CAUSAL_HYPOTHESIS",
+      "support": [
+        "Reuters reports large inventory drawdowns and constrained diesel/LNG buffers.",
+        "Reuters reports oil fell on negotiation hopes."
+      ],
+      "disconfirming": [
+        "No measured XRP-specific sensitivity or causal event study is supplied in this artifact.",
+        "Oil-price observations are timestamp-specific and news-driven; other macro variables may dominate."
+      ]
+    }
+  ],
+  "critical_distinctions": [
+    "JPYSC's November 2 handled balance is on-chain balance plus SBI VC Trade lending balance; it is not equivalent to publicly transferable circulating supply.",
+    "SBI's June 24 launch announcement says initial availability was restricted to SBI VC Trade accounts and public-chain circulation was deferred pending legal/tax arrangements.",
+    "The exact chain or ledger behind the initial JPYSC account service is unknown; do not label it XRPL, Base, Ethereum or Arc.",
+    "Open Standard membership, an interoperability PoC, an MOU and a production settlement route are four different evidence states.",
+    "Oil price changes on November 2 must be stored as provider/timestamp-specific observations, not averaged into one daily fact."
+  ],
+  "feature_store_additions": [
+    {
+      "feature": "jpysc_public_chain_status",
+      "value_as_of": "2026-11-02",
+      "value": "NOT_PUBLICLY_AVAILABLE_PER_SBI_DISCLOSURES",
+      "type": "categorical_event"
+    },
+    {
+      "feature": "jpysc_internal_ledger_identity",
+      "value_as_of": "2026-11-02",
+      "value": "UNKNOWN",
+      "type": "categorical_unknown"
+    },
+    {
+      "feature": "jpysc_ousd_interoperability_status",
+      "value_as_of": "2026-11-02",
+      "value": "POC_CONSIDERED_NOT_COMPLETED",
+      "type": "categorical_event"
+    },
+    {
+      "feature": "jpysc_tokenized_mmf_mou_status",
+      "value_as_of": "2026-11-02",
+      "value": "MOU_EXPLORATORY",
+      "type": "categorical_event"
+    },
+    {
+      "feature": "brent_price_observation",
+      "timestamp_utc": "2026-11-02T09:00:00Z",
+      "value_usd_per_barrel": 109.23,
+      "change_percent": -3.7,
+      "source_id": "reuters-oil-price-reaction-20261102"
+    },
+    {
+      "feature": "hormuz_energy_supply_risk",
+      "timestamp_utc": "2026-11-02",
+      "value": "ELEVATED_SUPPLY_BUFFER_STRESS",
+      "source_id": "reuters-energy-risk-20261102"
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No completed JPYSC/OUSD integration, no public JPYSC ledger series, no ACI production corridor volumes and no calibrated XRP macro response model are available."
+  },
+  "next_actions": [
+    "Verify whether any JPYSC public-chain deployment or exact chain identifier is announced after the initial account-limited launch.",
+    "Track Open Standard PoC milestones and distinguish membership from live OUSD/JPYSC settlement.",
+    "Track BlackRock MOU milestones separately from tokenized MMF issuance and actual fund assets.",
+    "Build timestamped oil, gas, shipping, inflation-expectation, USD and JPY rate features before testing XRP macro sensitivity.",
+    "Retain an explicit no-XRP-link finding unless a primary source or on-chain trace establishes a direct relationship."
+  ]
+}
