@@ -10,7 +10,6 @@
       "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
       "display_name": "Kamilah Stevenson | XRP & Stocks",
       "handle": "@KamilahStevensonXrpStocks",
-      "search_result_subscriber_count": 137000,
       "source_id": "youtube_channel_search_result",
       "identity_status": "UNVERIFIED_CANDIDATE",
       "notes": [
@@ -75,6 +74,22 @@
       "limitations": [
         "Not a first-party identity verification or verified badge.",
         "No About-page contact details or linked official site were retrievable."
+      ]
+    },
+    {
+      "id": "youtube_video_search_result_137k",
+      "publisher": "YouTube search index",
+      "source_type": "platform_video_search_result",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "retrieved_at_utc": "2026-11-04T11:54:46Z",
+      "capture_method": "YouTube search-index video result",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "A search result attributes one video to Kamilah Stevenson and displays approximately 137,000 followers/subscribers."
+      ],
+      "limitations": [
+        "The result does not expose the channel ID in the captured snippet; do not assign this count to UCXm6KAr1WHF6UN7g5b2W7wg or UCqUPJMQdkCN6lsLVDnichPA.",
+        "Audience count is not identity proof."
       ]
     },
     {
