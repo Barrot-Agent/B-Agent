@@ -1578,3 +1578,103 @@ Only ChatGPT-to-GitHub repository access is verified in this runtime. The curren
 - Other stale-base PRs remain blocked or unique/unreviewed until individually compared; no bulk closure.
 
 **Next concrete action:** implement and test the research-overlay admission adapter against the canonical observation/feature-record contract, then rerun exact-head full-suite CI and dependency/security checks on the existing integration workstream. Keep forecasts disabled until synchronized historical features and leakage-safe out-of-sample baseline evaluation exist.
+
+
+---
+
+## Run 18 — current XRP research, exact-head integration and repository audit (2026-11-04T20:16:00Z)
+
+### Repository and branch truth
+
+- Repository: `Barrot-Agent/B-Agent`.
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree: 1,403 entries, not truncated.
+- No merge or PR closure occurred in this run.
+- Open PR inventory: **372 total; 357 drafts; 15 non-drafts**. Four populated API pages were inspected. Twelve open PRs are based on current main (nine non-draft and three draft); no bulk closure was performed.
+- #1640 and #1643 remain the only active non-draft integration workstreams based on current main. Their changed-path sets are disjoint.
+- #1640 branch `integration/core-capabilities-mmi-structural-paper-20261104`: code-bearing head `d3034374e698f8baba79382b44f7349b27d5d1b6`, 69 commits ahead, 0 behind, 66 changed files, mergeable according to GitHub.
+- #1643 branch `research/xrp-evidence-archive-20261104`: head `f82eaf4b379a1474b0bdd910760f516e8ac388ff`, 67 commits ahead, 0 behind, 73 changed files, mergeable according to GitHub.
+- Main is marked protected. The classic branch-protection endpoint returned HTTP 403; the visible repository ruleset is disabled. Required-approval enforcement cannot be verified from this connection. No bypass was attempted.
+
+### Exact-head CI and review status
+
+**#1640 code-bearing head `d3034374e698f8baba79382b44f7349b27d5d1b6`:**
+- CI run [41901535895](https://github.com/Barrot-Agent/B-Agent/actions/runs/41901535895): **580 core tests + 8 subtests passed; 842 full-repository tests + 8 subtests passed**.
+- Inclusive `barrot_agent` package coverage: **52.34%**, above the temporary 50% floor.
+- Five-manifest Dependency Audit [41901535834](https://github.com/Barrot-Agent/B-Agent/actions/runs/41901535834): passed.
+- Fail-closed gate [41901535781](https://github.com/Barrot-Agent/B-Agent/actions/runs/41901535781): job succeeded while explicitly reporting **Merge disabled pending gate verification**.
+- All **22/22** inline review threads are now resolved. The PR conversation contains a fix-to-test mapping comment. Review submissions are COMMENTED, not approvals; zero approving reviews are claimed.
+
+**#1643 exact head `f82eaf4b379a1474b0bdd910760f516e8ac388ff`:**
+- CI run [41904169601](https://github.com/Barrot-Agent/B-Agent/actions/runs/41904169601): **489 core tests + 8 subtests passed; 789 full-repository tests + 8 subtests passed**.
+- The full-suite cache save emitted a warning after the test command passed; the job conclusion is success.
+- Fail-closed gate [41904169957](https://github.com/Barrot-Agent/B-Agent/actions/runs/41904169957): job succeeded while explicitly keeping merge disabled.
+- No dependency manifest changed on #1643; no separate dependency audit was triggered.
+- All **14/14** inline review threads are resolved. The PR body was updated with Run 9 and the new source corrections.
+
+The handoff-only commit appended after the #1640 code-bearing test run is documentation-only. Its own exact-head CI is pending; do not treat the prior run as verification of that later documentation commit.
+
+### Integrated architecture and implementation state
+
+- Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- MMI includes provenance capture, source-independence grouping, claim-bound corroboration, component/source lineage and fail-closed validation. Malformed parent IDs, source-ID lists and provenance classes are rejected before unsafe dictionary/set operations. The execution ledger verifies its hash chain before append and skips blank JSONL lines.
+- Structural analysis uses complete canonical records for deterministic identity hashes, rejects non-finite values, validates finite non-negative tolerances, freezes mutable signature content and has import/regression coverage.
+- The source-independence layer rejects IP-literal hosts and keeps same-publisher evidence in one independence group.
+- The paper-trader workflow is manual-only, requires explicit `YES` and exact-main-SHA validation, checks product identity and state, rejects dust positions, and commits only validated paper state. It was not dispatched; no paper trade occurred.
+- The self-hosted-brain Space workflow is manual-only, requires explicit `YES`, exact main SHA, both secrets, a private destination Space and secret registration before upload. It was not dispatched; no Space was restarted or deployed.
+- Cross Analysis remains read-only. The V3 integration branch adds regression coverage for automation containment, full-suite scope, dependency audit, paper-trader safety, structural analysis, MMI, feature-store integrity and forecast issuance gates.
+
+### XRP ingestion and prediction engine
+
+**Designed on #1640, not yet live-executed:**
+- The hourly public collector is a six-endpoint Binance/Kraken prototype: Binance spot ticker, one-hour klines, perpetual premium/funding, open interest, Kraken depth and Binance depth (raw-only pending sequence validation).
+- It allowlists HTTPS hosts, records raw response bytes and SHA-256 receipts, creates point-in-time observations and a local SQLite snapshot, and uploads a run artifact with 90-day retention.
+- The workflow is not on main and has not run against live sources. Its workflow definition checks out main, so the new code is not executable from its unmerged feature branch. After an authorized merge it can run on main; no manual dispatch was attempted.
+- The SQLite store is per-run and the workflow artifact retention is 90 days. There is no verified cross-run durable historical store, WORM archive or independent timestamping service. This remains a material blocker for long-horizon training.
+- The collector does not yet cover synchronized Coinbase order books, multi-exchange depth, exchange flows, institutional collateral, stablecoin issuance/redemptions, custody, payments, macro or geopolitical series.
+- The point-in-time feature store, forecast ledger, research-eligibility checks and chronological walk-forward harness exist on the integration branch. The harness has fixture tests, not a verified historical XRP backtest. No baseline comparison, probability calibration, drift score or shadow/paper evaluation on real data has been established.
+- No directional XRP forecast was issued. Forecast issuance remains blocked until byte-complete raw receipts, persistent point-in-time history, source/overlay admission, chronological out-of-sample evaluation, naive/momentum/mean-reversion/volatility baselines, calibration and drift monitoring are verified.
+
+### Current XRP and connected-ecosystem evidence on #1643
+
+- **Spot/liquidity:** Kraken's rendered ticker observation around 20:02 UTC showed XRP/USD last $1.30374, bid $1.30384, ask $1.30393, 24-hour volume about 42.811M XRP, 24-hour VWAP $1.28997429, high $1.34, low $1.24016 and UTC-day open $1.27513. XRPL Dashboard displayed $1.2998 at 20:04 UTC. These are different providers/timestamps; there is no synchronized multi-venue or full-depth capture. Both rendered observations are model-ineligible.
+- **XRPL amendment:** `fixCleanup3_4_0` is enabled at ledger 108112129, 2026-11-04 14:52 UTC; the same amendment ID and ledger are displayed by XRPL Dashboard, XRPLWin and Bithomp. This is a protocol cleanup/fix, not native lending activation.
+- **Native lending:** SingleAssetVault 21/35, LendingProtocol 19/35 and LendingProtocolV1_1 19/35 against a 29-vote threshold; no current 14-day activation countdown. The broker board remains inactive. No native lending utilization or yield should be inferred.
+- **Price oracles:** XRPL Dashboard's curated production view reports one provider and two Oracle objects; the DIA feed's LastUpdateTime was 18:57:53 UTC and was stale by approximately 1.1 hours at retrieval. The second object was cold. XRPLWin's broader directory lists four providers and 153 pairs, but its visible provider updates are dated November 1. The scopes and timestamps differ; do not average them or treat a native Oracle object as automatically fresh or institutionally accepted collateral.
+- **Circle Q3 2026:** the November 4 issuer release reports average USDC circulation $73.3B, end-period $73.9B, on-chain volume $13.9T, total revenue and reserve income $864.888M, reserve income $657.624M, other revenue $207.264M (including $182M ARC presale), RLDC about $453M / 52%, and CPN annualized TPV $41.3B. The official issuer PDF is now canonical; the earlier 000309 SEC accession URL remains unverified and is not represented as a verified filing.
+- **Coinbase/Circle:** Circle's presentation shows 31% of USDC end-period location on Coinbase, 19% on Circle and 50% off-platform. This is platform/location mix, not beneficial ownership, custody or collateral. The Q3 metrics are kept separate from Coinbase distribution economics.
+- **Ripple/Coinbase:** Ripple's October 28 RLUSD announcement supports Coinbase Prime, Exchange and Retail availability on XRPL, Base and Ethereum. Global Exchange collateral availability was described as forthcoming; it is not evidence that XRP collateral was used or that RLUSD collateral was already live at announcement time.
+- **Binance incident:** the archive preserves the reported 233.46M XRP movement from five hot wallets and the later six-recipient redistribution as separate claims. The full ledger transaction set was not directly retrieved; recipient beneficial ownership and later outflows remain unverified; a 0.59905 XRP reconciliation gap remains. Recovery percentages and attribution disagreements are retained. No recipient-flow forecast is eligible.
+- **SBIC identity:** SBIC East (Tokyo), SBIC Central (Nagoya) and SBIC West (Osaka) are distinct regional Small and Medium Business Investment & Consultation companies that list one another as sister companies. They are not SBI Holdings. The SBIC East ChatGPT seminar is separate from SBI Holdings/SBI Securities' ChatGPT Enterprise adoption announcement.
+- **ASK / actual capital:** Permission ASK is the best-supported “ASK Coin” candidate, with Base and Polygon contracts; no XRP/XRPL relation was found in its official sources. “Actual capital” remains ambiguous; notional divided by leverage is not account equity or actual capital at risk.
+- **Creator identity:** Camilla/Kamilah Stevenson channel ownership remains unverified. No video inventory was created pending first-party identity evidence.
+
+### Nine-platform coordination
+
+- ChatGPT: current conversation session verified; no separate persistent Barrot adapter verified.
+- GitHub: repository access is authenticated and was used for this audit and branch work.
+- Copilot: one review-event observation only; not a persistent agent connection.
+- Hugging Face: public runtime probe reachable but BUILD_ERROR; no write credential or deployment authorization verified.
+- Databricks: read-only SQL probe returned HTTP 403; no successful workspace data flow.
+- Claude, Grok, Gemini, Codex and Kaggle: no authenticated session/connector verified.
+- Grok and Groq are distinct providers. No live nine-platform coordination channel is claimed.
+
+### Open-PR backlog classification
+
+- **Active / blocked integration:** #1640 (V3/core) and #1643 (XRP research). Both have green exact code-bearing CI and resolved inline threads, but both fail-closed gates disable merge and main's Pages deployment side effect is not authorized.
+- **Integrated source, do not merge independently:** #1642 snapshot-integrity source commit is incorporated into #1640; keep open until #1640 is merged and its content is verified on main.
+- **Unique/unreviewed:** #1641 bounded autonomous experimentation (draft) and #1269 mesh/OBJ topology. Preserve.
+- **Duplicate/superseded pending successor verification:** #1617 writer-quarantine proposal; #1317 structural/MMI; #1318 schema hardening; #1320 paper-trader pause. Do not close until #1640's exact paths and tests are on main.
+- **Dependency candidates requiring exact path comparison:** #1644 checkout@v7 and #1647 upload-artifact@7 overlap the integration workflow area; #1649 databricks-sdk may overlap the integration dependency floor. #1645 download-artifact@8, #1646 types-requests, #1648 pytest and #1650 huggingface-hub remain distinct candidates until individually tested. Older #1254/#1255 are stale-base candidates relative to newer dependency work; do not bulk close.
+- **Partially superseded research source work:** #1597, #1605, #1608 and #1614 have some content represented in #1643; preserve non-overlapping identity, C2FO/actual-capital and feature-validator work. Do not close entire source PRs based on partial overlap.
+- The remaining draft and stale-base PRs are unreviewed/blocked until individually compared. No bulk close.
+
+### Merge and side-effect authorization
+
+- Main is marked protected; detailed classic protection returned HTTP 403, visible ruleset is disabled, and required-approval enforcement is not verified. Do not bypass any protection.
+- GitHub Pages automatically deployed after the prior main push: run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) succeeded on main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. This is a real deployment side effect. No authorization for future automatic Pages deployments has been granted. Do not merge until that side effect is authorized or safely disabled through an approved change.
+- The #1640 and #1643 gates explicitly keep merge disabled. No merge, force-push, branch rewrite, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- GitHub repository/PR writes did occur: append-only research commits on #1643, this handoff update on #1640, a PR comment, PR-body update and review-thread resolutions. These are GitHub writes, not third-party deployments or market actions.
+
+### Next concrete action
+
+Build and test the research-artifact/overlay-to-feature-store admission adapter on the existing integration workstream. It must fail closed on missing/false model eligibility, unresolved overlay identity, absent raw SHA-256 receipts, stale/unsynchronized timestamps, unverified quality or source-lineage gaps. Then solve durable cross-run storage and expand synchronized public market coverage. Keep forecasts disabled. Do not merge until exact-head CI, dependency/security gates, required approvals and the GitHub Pages side effect are all resolved.
