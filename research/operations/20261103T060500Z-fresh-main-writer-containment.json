@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-11-03T06:05:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, security, verification and preservation",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_branch": "main",
+  "base_commit": "91b66a388cbb03010f590159919d18aadcaa42cc",
+  "prior_security_successor": {
+    "pr": 1559,
+    "base_commit": "5e82b27205285257edef5ece404356c8900be73d",
+    "head_commit": "6d265b4de699d1a2c4483f7002ec50fd6a1c509e",
+    "exact_head_ci": "passed",
+    "tests": "360 tests + 8 subtests",
+    "limitation": "Its scheduler workflow retained contents/actions write permissions and committed queue state to main; this successor disables that workflow pending a durable non-main state store."
+  },
+  "confirmed_main_findings": [
+    {
+      "id": "corpus-export",
+      "status": "CONFIRMED",
+      "evidence": [
+        ".github/workflows/dump-brain-corpus.yml",
+        "scripts/dump_brain_corpus.py",
+        "brain_corpus/dump.json",
+        "brain_corpus/dump.md"
+      ],
+      "detail": "Manual workflow had contents:write, DATABRICKS_TOKEN reference, workspace.barrot.brain query and git push. Current-tree dump files measured 353950 and 296323 bytes. Individual records were not inspected."
+    },
+    {
+      "id": "merge-queue",
+      "status": "CONFIRMED",
+      "evidence": [
+        ".github/workflows/merge-queue.yml"
+      ],
+      "detail": "Manual workflow exposed mode=all, max_prs=0 (unlimited), dry_run=false default, branch update and merge operations."
+    },
+    {
+      "id": "scheduler-main-writer",
+      "status": "CONFIRMED",
+      "evidence": [
+        ".github/workflows/scheduler-tick.yml",
+        "scripts/scheduler.py"
+      ],
+      "detail": "15-minute schedule plus manual dispatch; contents/actions write; queue commit and push to main. This is a main-branch automated writer even if dispatched workflows are allowlisted."
+    },
+    {
+      "id": "cross-analysis-main-writer",
+      "status": "CONFIRMED",
+      "evidence": [
+        ".github/workflows/cross-analysis.yml"
+      ],
+      "detail": "Scheduled, workflow_run and manual triggers; contents:write; generated analysis files committed and pushed to main."
+    },
+    {
+      "id": "main-advanced",
+      "status": "CONFIRMED",
+      "evidence": [
+        "91b66a388cbb03010f590159919d18aadcaa42cc",
+        "d15735f222f75fda312933093e4208b6c895d7c6"
+      ],
+      "detail": "Main is two commits ahead of prior security base 5e82b272. Intervening changed paths are AUTONOMOUS_DEPLOYMENT_REPORT.md and ping-pongings/knowledge-base/sentiment_shift.json. New branch starts from 91b66 and preserves both."
+    }
+  ],
+  "proposed_controls": [
+    "Disable public brain-corpus workflow with empty permissions and false job guard.",
+    "Replace exporter script with inert status-only entry point that reads no credentials, makes no network request and writes no files.",
+    "Remove brain_corpus/dump.json and brain_corpus/dump.md from proposed current tree without rewriting history.",
+    "Disable manual merge queue and remove merge/update/comment capabilities.",
+    "Make Cross Analysis contents:read only, disable persistent Git pushes and retain outputs as bounded 30-day workflow artifacts.",
+    "Disable scheduled and manual Scheduler Tick entirely until durable non-main state storage and approval semantics are separately reviewed.",
+    "Retain the local scheduler's input-free read-only workflow allowlist; regression test asserts the active scheduler workflow cannot write, dispatch or push.",
+    "Register four containment regression suites in core CI."
+  ],
+  "market_research_update": {
+    "cutoff_utc": "2026-11-03T06:00:00Z",
+    "findings": [
+      {
+        "topic": "ETF reporting universe conflict",
+        "status": "SOURCED_CLAIM",
+        "detail": "CryptoETF.today reports five spot products and says only one of five had reported for Nov 2, with no net creation/redemption in that one fund and four funds still partial. TheXRPInvestor reports a different 12-product universe including spot, derivatives and index products and $1.49B AUM. These universes and reporting states are not comparable; no canonical aggregate daily flow is promoted.",
+        "sources": [
+          "https://cryptoetf.today/en/xrp-etf-flows",
+          "https://thexrpinvestor.com/xrp-etf-flows"
+        ]
+      },
+      {
+        "topic": "XRPL fixCleanup3_4_0",
+        "status": "CONDITIONAL_PROJECTION",
+        "detail": "Third-party tracker projects Nov 4 2026 14:46 UTC if validator support remains above threshold. This is not verified activation; the validated-ledger EnableAmendment sequence must be observed.",
+        "sources": [
+          "https://xrplwin.com/amendment/fixCleanup3_4_0",
+          "https://xrpl.org/docs/concepts/networks-and-servers/amendments"
+        ]
+      },
+      {
+        "topic": "PaymentBurn scope",
+        "status": "OFFICIAL_DOCUMENTATION",
+        "detail": "The permission issue concerns issued trust-line tokens and MPTs; it does not change native XRP supply. Issuers should not delegate PaymentBurn until the amendment is active.",
+        "sources": [
+          "https://xrpl.org/docs/references/protocol/data-types/permission-values"
+        ]
+      }
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platform_status": {
+    "verified_live": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "note": "SBI's external Claude relationship is not a Barrot integration."
+  },
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "merge": false,
+    "workflow_dispatch": false,
+    "secrets_read": false,
+    "deployment": false,
+    "paper_trade": false,
+    "real_money": false,
+    "local_worktree_mutation": false,
+    "historical_git_rewrite": false
+  },
+  "validation": {
+    "inherited_source_pr_ci": "PR #1559 exact head passed 360 tests + 8 subtests; this does not verify the new head.",
+    "new_exact_head_ci": "PENDING",
+    "local_tests": "NOT_RUN",
+    "fetch_back": "PENDING"
+  },
+  "residual_risks": [
+    "Current-main public corpus exposure remains active until this proposal is reviewed and merged.",
+    "Removing current-tree dumps does not erase historical Git objects, forks, caches or external copies.",
+    "Individual corpus record sensitivity remains unclassified; no records were inspected.",
+    "Scheduler automation is intentionally disabled in this proposal; queue entries are not autonomously fired until a safe durable state store is designed.",
+    "Branch-protection required-check enforcement remains unverified because administrative API access returned 403 and the visible ruleset is enforcement-disabled.",
+    "GitHub Actions artifact retention is 30 days, not a permanent research archive."
+  ],
+  "next_actions": [
+    "Run exact-head GitHub CI and fail-closed gate on the fresh-main PR.",
+    "Inspect the PR diff and verify all changes are limited to intended containment paths plus regression tests and handoff.",
+    "Keep PR draft/unmerged pending human review and explicit merge authorization.",
+    "Build a durable non-main scheduler state store before restoring unattended scheduling.",
+    "Verify fixCleanup3_4_0 by observing the actual validated-ledger EnableAmendment transaction after the projected window.",
+    "Reconcile ETF provider universe, T+1 reporting and holdings-delta methodology before using ETF flows as model features.",
+    "Continue contract-level derivatives reconciliation and immutable fixed-horizon feature-store work."
+  ]
+}
