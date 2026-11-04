@@ -106,7 +106,8 @@
     "no_merge": true,
     "no_force_push": true,
     "no_secret_access": true,
-    "no_deployment": true
+    "no_deployment": true,
+    "proposed_changes": "11 high-risk workflows quarantined in the integrated containment, Cross Analysis retained as read-only/artifact-only, eight residual external-action workflows adjusted, one new regression test plus the existing containment test registered in CI, and two append-only audit artifacts."
   },
   "prediction_status": "NOT_ISSUED",
   "next_actions": [
