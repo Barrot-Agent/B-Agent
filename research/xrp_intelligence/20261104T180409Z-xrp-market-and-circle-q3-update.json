@@ -59,18 +59,21 @@
       ]
     },
     {
-      "id": "circle_q3_2026_earnings_presentation_20261104",
-      "publisher": "Circle Internet Group, Inc.",
-      "source_type": "primary_issuer_earnings_presentation",
-      "url": "https://investor.circle.com/",
+      "id": "circle_q3_2026_presentation_mirror_20261104",
+      "publisher": "MarketScreener / Publicnow republication of Circle Investor Relations presentation",
+      "original_publisher": "Circle Investor Relations",
+      "source_type": "secondary_hosted_issuer_presentation_mirror",
+      "url": "https://www.marketscreener.com/news/circle-internet-third-quarter-2026-earnings-presentation-ce785fdfdb8cf626",
+      "canonical_origin_url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/presentation/3Q26-Earnings-Presentation.pdf",
       "retrieved_at_utc": "2026-11-04T18:04:09Z",
       "independence_group": "circle_issuer_presentation",
-      "raw_capture_status": "secondary_hosted_text_extract",
+      "raw_capture_status": "web_rendered_mirror_excerpt",
       "raw_content_sha256": null,
       "model_eligible": false,
       "limitations": [
-        "Presentation values are company-reported and not independent verification.",
-        "Only figures explicitly reconciled to the SEC exhibit are admitted as financial facts."
+        "The readable text was obtained from a third-party republication of Circle's issuer presentation; the canonical PDF URL is recorded but direct retrieval failed in this run.",
+        "Issuer presentation is not independent of the SEC filing.",
+        "Distribution/location percentages are issuer-defined platform mix, not proof of beneficial ownership, custody, or collateral."
       ]
     }
   ],
@@ -259,7 +262,18 @@
       "restructuring_warning": "A 5% workforce reduction and $9.145M restructuring expense are disclosed; the filing attributes the action to organizational alignment, not AI or distress."
     },
     "source_id": "circle_q3_2026_8k_ex99_1_20261104",
-    "model_eligible": false
+    "model_eligible": false,
+    "presentation_metrics": {
+      "usdc_share_of_stablecoin_transaction_volume_pct": 79,
+      "usdc_end_period_location_mix_pct": {
+        "circle": 19,
+        "coinbase": 31,
+        "off_platform": 50
+      },
+      "location_mix_interpretation": "Issuer-reported USDC end-of-period location/distribution mix for Q3 2026. This is not a statement that Coinbase or Circle beneficially owns the USDC, nor a direct collateral or XRP-utilization measure.",
+      "source_id": "circle_q3_2026_presentation_mirror_20261104",
+      "model_eligible": false
+    }
   },
   "competing_hypotheses": [
     {

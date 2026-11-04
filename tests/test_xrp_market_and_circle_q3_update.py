@@ -48,4 +48,9 @@ def test_circle_q3_filing_separates_recurring_reserve_income_from_arc_presale():
     assert workforce["restructuring_expenses_usd_m"] == 9.145
     assert workforce["ai_causation_claim"] == "not stated in the filing"
     assert q3["model_eligible"] is False
+    presentation = q3["presentation_metrics"]
+    assert presentation["usdc_share_of_stablecoin_transaction_volume_pct"] == 79
+    assert presentation["usdc_end_period_location_mix_pct"] == {"circle": 19, "coinbase": 31, "off_platform": 50}
+    assert sum(presentation["usdc_end_period_location_mix_pct"].values()) == 100
+    assert presentation["model_eligible"] is False
     assert data["forecast_issued"] is False
