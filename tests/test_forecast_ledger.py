@@ -1,3 +1,5 @@
+import hashlib
+import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -67,6 +69,131 @@ FEATURE_SNAPSHOT = build_feature_snapshot(
     captured_at_utc=FEATURE_CAPTURED,
 )
 
+
+def _readiness_fixture(asset, horizon_seconds):
+    """Synthetic test-only evidence; never represents real XRP model readiness."""
+    raw_receipt_bytes = {
+        "receipt-kraken-001": b'{"pair":"XRP/USD","mid":1.27}',
+        "receipt-macro-001": b'{"series":"DFF","value":"4.00"}',
+    }
+    receipts = [
+        {
+            "source_id": "kraken-001",
+            "receipt_id": "receipt-kraken-001",
+            "raw_content_sha256": hashlib.sha256(raw_receipt_bytes["receipt-kraken-001"]).hexdigest(),
+            "raw_capture_status": "byte_complete",
+            "raw_receipt_sha256_verified": True,
+            "independence_group": "kraken.com",
+            "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+            "source_data_as_of_utc": FEATURE_CUTOFF,
+            "captured_at_utc": FEATURE_CAPTURED,
+        },
+        {
+            "source_id": "macro-001",
+            "receipt_id": "receipt-macro-001",
+            "raw_content_sha256": hashlib.sha256(raw_receipt_bytes["receipt-macro-001"]).hexdigest(),
+            "raw_capture_status": "byte_complete",
+            "raw_receipt_sha256_verified": True,
+            "independence_group": "fred.stlouisfed.org",
+            "source_uri": "https://api.stlouisfed.org/fred/series/observations",
+            "source_data_as_of_utc": FEATURE_CUTOFF,
+            "captured_at_utc": FEATURE_CAPTURED,
+        },
+    ]
+    dataset_manifest = {
+        "model_eligible": True,
+        "quality_status": "verified",
+        "asset": asset,
+        "venue": "kraken:XRP/USD",
+        "feature_ids": ["xrp.spot.mid_price"],
+        "feature_snapshot_ids": [FEATURE_SNAPSHOT["snapshot_id"]],
+        "source_ids": ["kraken-001", "macro-001"],
+        "source_independence_groups": ["fred.stlouisfed.org", "kraken.com"],
+        "raw_source_receipts": receipts,
+        "data_cutoff_utc": FEATURE_CUTOFF,
+    }
+    canonical_dataset = json.dumps(
+        dataset_manifest,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    report = {
+        "schema_version": "barrot.xrp.model-readiness.v1",
+        "evaluation_type": "chronological_walk_forward_model_evaluation",
+        "status": "PASS",
+        "policy_id": "xrp_forecast_readiness_v1",
+        "evaluation_id": f"test-evaluation-{asset.lower()}-{horizon_seconds}",
+        "model_version": "xrp-test-v1",
+        "baseline_model_version": "naive-frequency-v1",
+        "asset": asset,
+        "venue": "kraken:XRP/USD",
+        "horizon_seconds": horizon_seconds,
+        "dataset_receipt_id": f"test-dataset-receipt-{asset.lower()}-{horizon_seconds}",
+        "dataset_sha256": hashlib.sha256(canonical_dataset).hexdigest(),
+        "dataset_manifest": dataset_manifest,
+        "source_independence_group_count": 2,
+        "training_sample_count": 1000,
+        "out_of_sample_sample_count": 200,
+        "shadow_evaluation_sample_count": 200,
+        "out_of_sample_start_utc": "2026-10-01T00:00:00Z",
+        "out_of_sample_end_utc": "2026-10-20T00:00:00Z",
+        "shadow_evaluation_start_utc": "2026-10-20T00:00:00Z",
+        "shadow_evaluation_end_utc": "2026-11-03T15:00:00Z",
+        "leakage_check_status": "PASS",
+        "calibration_status": "PASS",
+        "drift_status": "STABLE",
+        "shadow_evaluation_status": "PASS",
+        "weighted_calibration_error": 0.02,
+        "model_metrics": {"mean_brier_score": 0.15, "mean_log_loss": 0.42},
+        "baseline_metrics": {
+            "naive_class_prior": {"mean_brier_score": 0.24, "mean_log_loss": 0.65},
+            "momentum_sign": {"mean_brier_score": 0.22, "mean_log_loss": 0.61},
+            "mean_reversion_sign": {"mean_brier_score": 0.23, "mean_log_loss": 0.63},
+            "volatility_normal": {"mean_brier_score": 0.21, "mean_log_loss": 0.59},
+        },
+        "evaluation_data_cutoff_utc": FEATURE_CUTOFF,
+        "evaluation_completed_at_utc": "2026-11-03T16:00:30Z",
+    }
+    report_bytes = json.dumps(
+        report,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    receipt_id = f"test-readiness-receipt-{asset.lower()}-{horizon_seconds}"
+    report_sha256 = hashlib.sha256(report_bytes).hexdigest()
+    return {
+        "report_bytes": report_bytes,
+        "receipt_id": receipt_id,
+        "raw_receipt_bytes": raw_receipt_bytes,
+        "certificate": {
+            "report_sha256": report_sha256,
+            "receipt_id": receipt_id,
+            "policy_id": "xrp_forecast_readiness_v1",
+            "status": "PASS",
+        },
+    }
+
+
+READINESS_FIXTURES = {
+    ("XRP", 3600): _readiness_fixture("XRP", 3600),
+    ("XRP", 14400): _readiness_fixture("XRP", 14400),
+    ("BTC", 3600): _readiness_fixture("BTC", 3600),
+}
+
+
+def _register_readiness_fixtures(ledger):
+    for fixture in READINESS_FIXTURES.values():
+        ledger.register_readiness_report(
+            fixture["report_bytes"],
+            receipt_id=fixture["receipt_id"],
+            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+        )
+
+
 class MutableClock:
     def __init__(self, current):
         self.current = current
@@ -86,6 +213,7 @@ def make_ledger(path, *, now=TEST_NOW, store_clock=STORE_RECEIPT, snapshot=FEATU
     )
     store.append_snapshot(snapshot)
     ledger = ForecastLedger(path, clock=clock, feature_store=store)
+    _register_readiness_fixtures(ledger)
     ledger._test_clock = clock
     ledger._test_feature_store = store
     ledger._test_snapshot_id = snapshot["snapshot_id"]
@@ -124,6 +252,10 @@ def forecast(**overrides):
         "slippage_bps": 5.0,
     }
     value.update(overrides)
+    if "readiness_certificate" not in value:
+        fixture_key = (str(value["asset"]).strip().upper(), value["horizon_seconds"])
+        fixture = READINESS_FIXTURES.get(fixture_key, READINESS_FIXTURES[("XRP", 3600)])
+        value["readiness_certificate"] = fixture["certificate"]
     return value
 
 
@@ -502,6 +634,7 @@ def test_unscorable_outcome_waits_until_tolerance_window_closes(tmp_path):
 
 def test_forecast_recording_requires_a_verified_feature_store(tmp_path):
     ledger = ForecastLedger(tmp_path / "forecasts.sqlite3", clock=MutableClock(TEST_NOW))
+    _register_readiness_fixtures(ledger)
     with pytest.raises(ForecastLedgerError, match="verified HistoricalFeatureStore"):
         ledger.record_forecast(forecast())
 
