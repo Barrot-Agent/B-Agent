@@ -480,6 +480,60 @@
       "published": "2025-03-25",
       "type": "official USDC distribution launch notice",
       "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "kamilah_video_xrp_vs_btc",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2025-12-24",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_clarity_act",
+      "url": "https://www.youtube.com/watch?v=I5OkewTVrgA",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-01-23",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_yen_carry_oil",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-03-06",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_exchange_custody",
+      "url": "https://www.youtube.com/watch?v=TfFx0g2IgGg",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-05-20",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator personal claim"
+    },
+    {
+      "id": "kamilah_video_cold_wallet",
+      "url": "https://www.youtube.com/watch?v=1ICh2cuBKmM",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-08-08",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim; underlying incident requires independent verification"
+    },
+    {
+      "id": "kamilah_creator_social_index",
+      "url": "https://teapawt.org/iamkamstevenson",
+      "publisher": "Teapawt third-party social index",
+      "type": "secondary social profile index",
+      "independence": "secondary index; original X profile not fetched"
+    },
+    {
+      "id": "kamilah_creator_aggregate_index",
+      "url": "https://cryptokrios.com/creators/kamilah-stevenson",
+      "publisher": "CryptoKrios third-party creator index",
+      "type": "secondary channel analytics index",
+      "independence": "secondary index; claims 633 videos analyzed but does not prove exhaustive channel inventory"
     }
   ],
   "market_snapshot": {
@@ -645,7 +699,7 @@
     {
       "id": "Kamilah-channel-candidate",
       "class": "candidate_identity_not_confirmed_as_Camilla",
-      "detail": "Indexed YouTube videos and a Glasp channel-summary page attribute XRP content to Kamilah Stevenson (channel ID UCqUPJMQdkCN6lsLVDnichPA); some transcripts self-introduce the speaker as 'Camila Stevenson'. This is a plausible candidate for the user's phonetic 'Camilla Stephenson' reference, but exact identity equivalence is not verified. Seven public video candidates are indexed; this is not an exhaustive channel archive.",
+      "detail": "Indexed YouTube videos and a Glasp channel-summary page attribute XRP content to Kamilah Stevenson (candidate channel ID UCqUPJMQdkCN6lsLVDnichPA); at least one transcript self-introduces the speaker as 'Camila Stevenson'. A third-party social index lists @iamkamstevenson, and another third-party creator index reports 633 videos analyzed. These are corroborating discovery clues, not a verified cross-platform identity link. Twelve direct YouTube video candidates are now indexed, but the inventory is not exhaustive. Exact identity equivalence to the user's 'Camilla Stephenson' reference remains unverified.",
       "evidence": [
         "kamilah_video_collateral",
         "kamilah_video_etf",
@@ -655,7 +709,14 @@
         "kamilah_video_wealth",
         "kamilah_video_how_much",
         "kamilah_channel_glasp",
-        "kamilah_video_ripple_bank"
+        "kamilah_video_ripple_bank",
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet",
+        "kamilah_creator_social_index",
+        "kamilah_creator_aggregate_index"
       ]
     },
     {
@@ -884,6 +945,40 @@
       "evidence": [
         "sbi_circle_arc",
         "sbi_jpysc"
+      ]
+    },
+    {
+      "id": "Kamilah-video-index-expansion",
+      "class": "public_video_metadata_candidates_not_exhaustive",
+      "detail": "Five additional direct YouTube IDs were found: XRP Is Not Bitcoin (2025-12-24), Why XRP Could Move Before the Clarity Act (2026-01-23), Something Just Broke in Global Finance (2026-03-06), I Moved My XRP Off The Exchanges (2026-05-20), and 1,196 Cold Wallets Drained in 41 Minutes (2026-08-08). These establish discoverable public video candidates, not truth of the creator's market or incident claims. The direct YouTube channel videos page was throttled during this run; no exhaustive inventory is claimed.",
+      "evidence": [
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet",
+        "kamilah_creator_aggregate_index"
+      ]
+    },
+    {
+      "id": "Kamilah-video-claims-separate-from-facts",
+      "class": "creator_claims_unverified",
+      "detail": "The newly indexed videos present creator theses about XRP as a value-movement asset, possible pre-Clarity-Act repricing, oil shocks and yen-carry unwind, personal exchange withdrawals, and cold-wallet seed-generation vulnerabilities. Treat these as claims to test, not independent evidence of XRP demand, a forecast, a verified custody flow, or a confirmed wallet incident. The cold-wallet description explicitly says the reported Bitcoin incident was not an XRP theft.",
+      "evidence": [
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet"
+      ]
+    },
+    {
+      "id": "Actual-capital-phrase-recheck",
+      "class": "unknown",
+      "detail": "A new search of the candidate creator's indexed public posts surfaced the adjacent phrase 'patient capital' and a claim about SBI's Ripple equity stake, but no exact, attributable 'actual capital' phrase. Do not substitute 'patient capital', actual XRP collateral utilization, or corporate equity value for the unresolved phrase.",
+      "evidence": [
+        "kamilah_creator_social_index",
+        "kamilah_creator_aggregate_index"
       ]
     }
   ],
@@ -1198,6 +1293,51 @@
         "sbic_tokyo_chatgpt",
         "sbic_west_chatgpt",
         "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_xrp_vs_btc"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "Why XRP Could Move Before the Clarity Act",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_clarity_act"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "Something Just Broke in Global Finance",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_yen_carry_oil"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "I Moved My XRP Off The Exchanges",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_exchange_custody"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "1,196 Cold Wallets Drained in 41 Minutes but XRP Holders Had One Thing DIFFERENT",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_cold_wallet"
       ]
     }
   ],
