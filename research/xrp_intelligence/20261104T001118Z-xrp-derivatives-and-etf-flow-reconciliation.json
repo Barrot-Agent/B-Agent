@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "record_id": "xrp-market-microstructure-etf-flow-reconciliation-20261104T001118Z",
+  "captured_at_utc": "2026-11-04T00:11:18Z",
+  "research_scope": "XRP perpetual-futures open interest, funding, liquidations, long/short account ratios, and US-listed XRP ETF holdings-derived flows",
+  "forecast_issued": false,
+  "market_cutoff_notes": "Provider snapshots are asynchronous and do not share a common exact cutoff. Preserve each provider timestamp; do not average or pool incompatible universes.",
+  "observations": [
+    {
+      "observation_id": "liqwall-xrp-perps-20261103-2342",
+      "source_id": "liqwall-xrp-live",
+      "independence_group": "market-data-aggregator-liqwall",
+      "metric": "perpetual_open_interest",
+      "value": 1.47,
+      "unit": "USD billions",
+      "source_data_as_of_utc": "2026-11-03T23:42:00Z",
+      "quality_status": "provisional",
+      "methodology": "Provider-reported all-exchange aggregate; underlying exchange/contract inclusion and quote conversion require reconciliation.",
+      "notes": [
+        "24h OI change +2.9%.",
+        "Funding +0.0102% per 8h average; Binance +0.0100%.",
+        "24h liquidations $3.4M: $734K longs, $2.7M shorts.",
+        "Binance account ratio 69.9% long; account counts are not notional position weights."
+      ]
+    },
+    {
+      "observation_id": "tradradar-xrp-perps-20261103-2250",
+      "source_id": "tradradar-xrp-live",
+      "independence_group": "market-data-aggregator-tradradar",
+      "metric": "perpetual_open_interest",
+      "value": 2,
+      "unit": "USD billions",
+      "source_data_as_of_utc": "2026-11-03T22:50:00Z",
+      "quality_status": "provisional",
+      "methodology": "Provider-reported seven-venue aggregate: Binance, Bybit, Gate, Bitget, MEXC, Hyperliquid and OKX; 15-minute delay stated.",
+      "notes": [
+        "24h OI change +4.10%.",
+        "OI-weighted funding +0.0100% per 8h.",
+        "24h liquidations at least $3.46M: $725.69K longs, $2.74M shorts.",
+        "Five-exchange account long/short ratio 3.14 (75.9% long).",
+        "Liquidations are explicitly incomplete because exchanges publish only part of their data."
+      ]
+    },
+    {
+      "observation_id": "kodexius-xrp-contracts-20261103-2204",
+      "source_id": "kodexius-xrp-perps",
+      "independence_group": "market-data-aggregator-kodexius",
+      "metric": "perpetual_open_interest",
+      "value": 870.32,
+      "unit": "USD millions",
+      "source_data_as_of_utc": "2026-11-03T22:04:00Z",
+      "quality_status": "provisional",
+      "methodology": "Seven-contract universe, not seven exchanges: Binance XRPUSDT and XRPUSDC; Bybit XRPUSDT and XRPPERP-USDC; Hyperliquid XRP-USDC; OKX XRP-USDT-SWAP; HTX XRP-USDT.",
+      "notes": [
+        "24h contract volume $1.19B; OI/volume 0.73.",
+        "Funding +0.0100% per 8h weighted by OI.",
+        "Its listed contract universe omits Gate, Bitget and MEXC, which appear in TradRadar's aggregate."
+      ]
+    },
+    {
+      "observation_id": "cryptokeyhole-xrp-etf-20261102",
+      "source_id": "cryptokeyhole-xrp-etf-flows",
+      "independence_group": "issuer-holdings-derived-etf-flow-aggregator-cryptokeyhole",
+      "metric": "spot_etf_net_holdings_change",
+      "value": -3339,
+      "unit": "XRP",
+      "source_data_as_of_utc": "2026-11-02",
+      "quality_status": "reported",
+      "methodology": "Daily change in issuer-published holdings for four funds: XRP (Bitwise), XRPZ (Franklin Templeton), XRPC (Canary Capital), TOXR (21Shares).",
+      "notes": [
+        "Nov 2 net flow -3,339 XRP, approximately -$4K.",
+        "Nov 2 holdings 1,076,815,901 XRP across the four funds.",
+        "Oct 30 flow -1,123,743 XRP, approximately -$1.4M.",
+        "Last five complete trading days through Nov 2: +6,178,709 XRP."
+      ]
+    },
+    {
+      "observation_id": "xrp-insights-etf-20261102",
+      "source_id": "xrp-insights-etf-dataset",
+      "independence_group": "issuer-holdings-derived-etf-flow-aggregator-xrp-insights",
+      "metric": "spot_etf_and_index_product_net_holdings_change",
+      "value": -32825,
+      "unit": "XRP",
+      "source_data_as_of_utc": "2026-11-02",
+      "quality_status": "reported_with_scope_caveats",
+      "methodology": "Holdings-derived daily changes across six spot XRP ETFs plus the XRP sleeve of multi-asset index fund BITW; includes XRPR where part of XRP exposure is held through another ETP; GXRP flows excluded because of a documented issuer-page capture gap.",
+      "notes": [
+        "Nov 2 aggregate -32,825 XRP, approximately -$42K; total holdings 1,196,567,361 XRP.",
+        "BITW changes may reflect index rebalancing; holdings changes may include fee accruals or XRP fee payments, not only creations/redemptions.",
+        "Latest settled data_as_of Nov 2; Nov 3 not yet settled at the time of the dataset generation."
+      ]
+    },
+    {
+      "observation_id": "xrpl-stablecoin-q3-2026-secondary",
+      "source_id": "tokenpost-xrpl-stablecoin-q3",
+      "independence_group": "secondary-news-report-tokenpost",
+      "metric": "xrpl_stablecoin_supply",
+      "value": 1.03,
+      "unit": "USD billions",
+      "source_data_as_of_utc": "2026-09-30",
+      "quality_status": "secondary_report_not_primary_chain_reconciliation",
+      "methodology": "Secondary report of Q3 ledger-wide stablecoin supply and transfer value.",
+      "notes": [
+        "Reported RLUSD $1.01B and 98.1% share; reported Q3 stablecoin transfer value $14.09B.",
+        "Do not infer XRP spot demand from stablecoin supply or transfer value; validate against issuer contracts and ledger-level data before model use."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Most of the observed perpetual OI spread is explained by venue/contract coverage differences.",
+      "supporting_evidence": [
+        "Kodexius explicitly enumerates seven contracts and omits Gate, Bitget and MEXC from its current list; TradRadar includes those venues."
+      ],
+      "disconfirming_evidence": [
+        "Liqwall's $1.47B aggregate remains materially below TradRadar's $2.00B despite its broader all-exchange label."
+      ],
+      "test": "Normalize native exchange contract IDs, quote currency, multiplier, mark price, timestamp and venue inclusion; compare only the common contract set."
+    },
+    {
+      "id": "H2",
+      "claim": "Residual OI differences reflect provider collection, contract mapping, quote conversion or stale-data differences.",
+      "supporting_evidence": [
+        "Provider timestamps differ by up to 98 minutes and aggregate totals are not defined by one shared instrument manifest."
+      ],
+      "disconfirming_evidence": [
+        "All providers show positive funding near +0.0100% per 8h, indicating some qualitative convergence in funding direction."
+      ],
+      "test": "Capture raw exchange-native open-interest endpoints and metadata at synchronized UTC cutoffs; calculate USD OI from contract-native units."
+    },
+    {
+      "id": "H3",
+      "claim": "ETF flow differences are largely scope/methodology differences rather than a direct contradiction.",
+      "supporting_evidence": [
+        "CryptoKeyhole covers four spot funds; XRP Insights covers six spot funds plus BITW and documents indirect XRPR exposure, GXRP capture gaps and holdings changes that can include fees/index rebalancing."
+      ],
+      "disconfirming_evidence": [
+        "The two aggregates still need a common-ticker reconciliation because they share several issuer holdings series."
+      ],
+      "test": "Join per-fund issuer-reported XRP holdings by ticker/date, preserve excluded/initial/reconstructed statuses, then calculate the exact four-fund common subset."
+    },
+    {
+      "id": "H4",
+      "claim": "Positive funding and long-heavy account ratios indicate leveraged long crowding that could amplify downside if spot weakens.",
+      "supporting_evidence": [
+        "Funding is positive across three providers; account-long shares range from 69.9% on Binance to 75.9% across five exchanges in TradRadar."
+      ],
+      "disconfirming_evidence": [
+        "Reported 24h liquidations are short-dominated ($2.7M-$2.74M shorts versus about $0.73M longs), consistent with short squeeze pressure during the observed price rise; account ratios are not position notional."
+      ],
+      "test": "Track venue-level OI changes, funding, basis, taker flow, notional long/short positioning, liquidation data completeness and spot depth through synchronized time windows."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "relation": "issues",
+      "to": "USDC",
+      "evidence_class": "confirmed_general_issuer_relationship",
+      "scope_note": "USDC issuer identity does not imply Circle operates or guarantees third-party XRP derivative contracts."
+    },
+    {
+      "from": "USDC",
+      "relation": "quote_or_margin_asset_for_observed_XRP_perpetual_contracts",
+      "to": "XRP",
+      "evidence_class": "observed_product_listing",
+      "scope_note": "Kodexius lists Hyperliquid XRP-USDC and Binance XRPUSDC contracts, plus Bybit XRPPERP-USDC. This is an indirect USDC/XRP market-structure link, not evidence of Circle-directed XRP buying."
+    },
+    {
+      "from": "US-listed XRP funds",
+      "relation": "hold_reported_XRP_exposure",
+      "to": "XRP",
+      "evidence_class": "issuer-holdings-derived",
+      "scope_note": "Holdings changes are not identical to cash inflows; product scope, indirect holdings, fee effects, index rebalancing and data gaps matter."
+    },
+    {
+      "from": "XRPL stablecoin activity",
+      "relation": "requires_XRP_for_network_fees_and_account_reserves",
+      "to": "XRP",
+      "evidence_class": "protocol_mechanics_secondary_source_pending_primary_recheck",
+      "scope_note": "Fee/reserve requirements create bounded network-level XRP utility, not proportional spot demand."
+    }
+  ],
+  "data_quality_controls": [
+    "Never average provider OI totals until contract universe and timestamps are normalized.",
+    "Long/short account ratios are not position-size ratios.",
+    "Liquidation feeds may be incomplete and are not directly comparable without coverage.",
+    "ETF flow is derived from holdings changes and can include non-creation/redemption effects.",
+    "Exclude provisional, reconstructed or capture-gap rows from strict primary training unless explicitly modeled as lower-quality features.",
+    "Provider aggregators share underlying exchange and issuer data; they are not independent primary sources."
+  ],
+  "next_actions": [
+    "Build synchronized exchange-native OI by contract with exact instrument metadata and quote conversion.",
+    "Reconcile the four common ETF tickers across both aggregators from issuer holdings files.",
+    "Fetch issuer primary holdings and preserve source capture timestamps and revisions.",
+    "Keep all current derivatives and ETF readings as features/observations only; no directional forecast."
+  ]
+}
