@@ -780,3 +780,47 @@ def test_evernorth_cantor_facility_keeps_capacity_pricing_fees_and_actual_capita
     assert actual["facility_funded_xrp_purchase"] == "not_established_in_reviewed_prospectus"
     assert actual["cantors_subsequent_resale_proceeds_to_issuer"] is False
     assert data["data_quality"]["reconciliation_status"] == "UNRESOLVED_ASSUMPTION_AND_FEE_BASIS"
+
+
+NINE_PLATFORM_CAPABILITY_AUDIT = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T141402Z-nine-platform-capability-authentication-observation.json"
+)
+
+
+def test_nine_platform_capability_audit_separates_session_and_connector_evidence() -> None:
+    data = json.loads(NINE_PLATFORM_CAPABILITY_AUDIT.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "barrot_nine_platform_capability_authentication_audit"
+    assert data["predictions"]["issued"] is False
+    assert data["data_quality"]["model_eligible"] is False
+    assert data["source_registry"][0]["raw_content_sha256"] is None
+
+    platforms = {item["name"]: item for item in data["platforms"]}
+    assert set(platforms) == {
+        "ChatGPT", "Claude", "Grok", "Gemini", "Copilot",
+        "Codex", "Hugging Face", "Kaggle", "Databricks",
+    }
+    assert all(item["live_barrot_adapter_verified"] is False for item in platforms.values())
+    assert platforms["ChatGPT"]["observed_status"] == "current_chat_session_only"
+    assert platforms["Grok"]["provider"] == "xAI"
+    assert "Groq is a separate provider" in platforms["Grok"]["identity_note"]
+    assert platforms["Copilot"]["observed_status"] == "single_use_review_event_observed"
+    assert platforms["Hugging Face"]["observed_status"] == "public_runtime_probe_reachable_build_error"
+    assert platforms["Databricks"]["observed_status"] == "sql_probe_http_403"
+    assert platforms["Kaggle"]["observed_status"] == "not_verified"
+
+    github = data["separate_integrations"]["github_repository_connector"]
+    assert github["observed_status"] == "verified_repository_access"
+    app = data["separate_integrations"]["github_app_pillars_probe"]
+    assert app["observed_status"] == "environment_variables_not_available_to_job"
+
+    checks = {item["id"]: item for item in data["workflow_observations"]}
+    assert checks["PILLARS-REPO-SOURCE-MARKER-01"]["status"] == "PASS_SOURCE_ONLY"
+    assert checks["PILLARS-REPO-SOURCE-FICTION-01"]["status"] == "PASS_SOURCE_ONLY"
+    assert checks["PILLARS-HF-RUNTIME-01"]["status"] == "FAIL"
+    assert checks["PILLARS-DATABRICKS-01"]["status"] == "FAIL"
+    assert all(item["model_eligible"] is False for item in data["workflow_observations"])
+    assert "DATABRICKS_TOKEN" not in json.dumps(data)
+    assert "PRIVATE_KEY_VALUE" not in json.dumps(data)
