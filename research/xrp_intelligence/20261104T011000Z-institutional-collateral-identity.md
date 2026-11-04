@@ -273,3 +273,20 @@ Official sources:
 - USDC Japan distribution: https://www.sbigroup.co.jp/news/2025/0325_15332.html
 - Arc validator and JPYSC: https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx
 - JPYSC reserves and outstanding: https://www.sbigroup.co.jp/news/2026/0907_16567.html
+
+
+## Expanded public-video candidate index — 2026-11-04
+
+Five additional direct YouTube video IDs were discovered. The direct channel videos page was throttled, so the list remains non-exhaustive and the exact match to “Camilla Stephenson” remains unverified.
+
+- 2025-12-24 — [XRP Is Not Bitcoin. And That's Exactly Why It Matters](https://www.youtube.com/watch?v=pmJTrXJQ8Vw)
+- 2026-01-23 — [Why XRP Could Move Before the Clarity Act](https://www.youtube.com/watch?v=I5OkewTVrgA)
+- 2026-03-06 — [Something Just Broke in Global Finance — And It's Connected to XRP](https://www.youtube.com/watch?v=iwhpNT73zpk)
+- 2026-05-20 — [I Moved My XRP Off The Exchanges](https://www.youtube.com/watch?v=TfFx0g2IgGg)
+- 2026-08-08 — [1,196 Cold Wallets Drained in 41 Minutes but XRP Holders Had One Thing DIFFERENT](https://www.youtube.com/watch?v=1ICh2cuBKmM)
+
+The channel candidate is attributed by YouTube metadata to Kamilah Stevenson; at least one indexed transcript self-introduces the speaker as “Camila Stevenson.” A third-party social index lists @iamkamstevenson, and a separate creator index claims 633 videos analyzed. Neither third-party index establishes a verified cross-platform identity link or an exhaustive video inventory.
+
+The new video topics are creator claims, not independent evidence: XRP versus Bitcoin's role, pre-Clarity-Act timing, oil/yen-carry liquidity stress, personal exchange withdrawals, and cold-wallet seed-generation risk. The last video description explicitly says the reported Bitcoin incident was not an XRP theft.
+
+The exact phrase “actual capital” remains unresolved. New indexed posts contain the adjacent phrase “patient capital”; these phrases are not interchangeable.
