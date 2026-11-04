@@ -64,3 +64,12 @@ A dynamic Swiftedge page returned internally inconsistent timestamps, including 
 - Review Circle Q3 2026 results after the scheduled Nov 4 08:00 ET release.
 - Locate the direct OCC decision and verify Ripple National Trust Bank commencement.
 - Preserve all provider disagreement and minority hypotheses.
+
+
+## Macro, rates and geopolitics addendum
+
+- The Federal Reserve's Oct 28, 2026 FOMC statement held the target range at 3.75%-4.00% by 10-2; two dissenters preferred a 25 bp hike. The statement says inflation remains elevated and geopolitical uncertainty remains elevated. This is a confirmed policy decision, not a forecast of the next meeting.
+- Reuters reported Nov 3 Brent settled at $103.60 and WTI at $96.09, both lower on the day and near multi-week lows, while US strikes on Iran's Qeshm Island and uncertain negotiations kept energy-supply risks in focus. The lower close is disconfirming evidence against a simple one-way oil-shock narrative.
+- Reuters also reported a stronger dollar and Treasury yields and cited a 79% CME FedWatch market-implied probability of a December hike. This is a time-stamped market price, not an FOMC commitment.
+
+**Causal hypothesis:** restrictive rates and energy/geopolitical risk can affect speculative assets through discount rates, dollar funding and risk appetite. This is not an XRP-specific causal finding. The next feature-store task is to join timestamped XRP returns with Fed decisions, Treasury curve, DXY, Brent/WTI and event windows, then estimate rolling and conditional relationships with out-of-sample validation.
