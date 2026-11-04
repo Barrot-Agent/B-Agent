@@ -730,3 +730,53 @@ def test_circle_arc_cpn_metrics_keep_gross_volume_and_annualized_tpv_separate():
         assert hypothesis["tests"]
     assert any("USDC is also natively available on XRPL" in item for item in data["explicit_disconfirming_evidence"])
     assert any("Do not interpret gross transfer volume as net new capital" in item for item in data["data_quality"]["scope_controls"])
+
+
+EVERNORTH_CANTOR_ELOC_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T140144Z-evernorth-cantor-eloc-pricing-fee-reconciliation.json"
+)
+
+
+def test_evernorth_cantor_facility_keeps_capacity_pricing_fees_and_actual_capital_separate() -> None:
+    data = json.loads(EVERNORTH_CANTOR_ELOC_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_evernorth_cantor_eloc_pricing_fee_reconciliation_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    assert data["predictions"]["issued"] is False
+
+    sources = {item["id"] for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"]) == 1
+    assert data["source_registry"][0]["raw_content_sha256"] is None
+    assert data["source_registry"][0]["model_eligible"] is False
+
+    for observation in data["observations"]:
+        assert observation["id"] and observation["claim"] and observation["evidence"]
+        assert set(observation["evidence"]) <= sources
+        assert observation["model_eligible"] is False
+
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"] and edge["status"]
+        assert set(edge["evidence"]) <= sources
+
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["id"].startswith(data["hypothesis_id_namespace"] + "::")
+        assert hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"]
+        assert hypothesis["tests"]
+
+    calc = data["capital_reconciliation"]["derived_scenarios"]
+    shares = data["capital_reconciliation"]["reference_assumptions"]["maximum_new_class_a_shares"]
+    price = data["capital_reconciliation"]["reference_assumptions"]["cover_page_closing_price_usd_per_share"]
+    assert abs(calc["full_shares_at_cover_price_gross_usd"] - shares * price) < 0.00001
+    assert abs(calc["hypothetical_proceeds_at_97pct_before_issuer_fees_usd"] - shares * price * 0.97) < 0.00001
+    assert calc["specified_upfront_plus_stoneX_fee_usd"] > calc["difference_97pct_proxy_proceeds_minus_stated_net_usd"]
+    assert calc["maximum_disclosed_capped_fee_items_usd"] == 1_701_000
+
+    actual = data["capital_reconciliation"]["actual_capital"]
+    assert actual["facility_drawdown_status"] == "not_established_in_reviewed_prospectus"
+    assert actual["issuer_cash_receipt_from_facility"] == "not_established_in_reviewed_prospectus"
+    assert actual["facility_funded_xrp_purchase"] == "not_established_in_reviewed_prospectus"
+    assert actual["cantors_subsequent_resale_proceeds_to_issuer"] is False
+    assert data["data_quality"]["reconciliation_status"] == "UNRESOLVED_ASSUMPTION_AND_FEE_BASIS"
