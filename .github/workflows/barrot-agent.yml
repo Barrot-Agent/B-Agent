@@ -19,6 +19,11 @@ on:
           - scientific_discovery
         default: engineering
         required: true
+      confirm:
+        description: Authorize one task-branch run; the generated pull request will remain draft
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: write
@@ -32,7 +37,7 @@ concurrency:
 jobs:
   agent:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_dispatch' && inputs.confirm == true) ||
       github.event_name == 'schedule' ||
       ((github.event.label.name == 'barrot-task' || github.event.label.name == 'barrot-scientific-discovery') &&
        (github.event.sender.login == 'Barrot-Agent' || github.event.sender.login == github.repository_owner))

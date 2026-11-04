@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "artifact_type": "residual_workflow_security_audit",
+  "captured_at_utc": "2026-11-04T03:18:31.270Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "inspected_main_sha": "d89cc363812a9a9d04d076d6ef5a09f7cf736285",
+  "target_pr": 1623,
+  "target_branch": "security/external-action-gates-162f43d-20261104T0212Z",
+  "status": {
+    "designed": true,
+    "executed": true,
+    "verified": true,
+    "verification": {
+      "ci_run": 41766316465,
+      "ci_head": "641d1770d641b3a8dd32d39e8fa866217acdace0",
+      "tests_passed": 357,
+      "subtests_passed": 8,
+      "gate_run": 41766316446,
+      "gate_conclusion": "success",
+      "automatic_merge": "disabled",
+      "repository_content_changed_by_gate": false
+    }
+  },
+  "findings": [
+    {
+      "path": ".github/workflows/riemann-harvest.yml",
+      "prior_risk": "Weekly scheduled workflow had contents:write and committed harvested JSON/A2A corpus directly to main.",
+      "change": "Retain scheduled public research ingestion and validation, remove write permission and git push, upload generated files as a 30-day artifact.",
+      "side_effects": "Public arXiv GET requests only; no repository mutation."
+    },
+    {
+      "path": ".github/workflows/webmcp-live-sandbox.yml",
+      "prior_risk": "Weekly schedule invoked every registered WebMCP tool execute({}) in Playwright, then committed logs; push-conflict path performed git pull --no-rebase followed by push.",
+      "change": "Remove schedule, require manual confirm_live_execution=YES, contents:read, checkout credentials disabled, artifact-only log.",
+      "side_effects": "Tool invocation can still call external APIs; now manual-only with explicit per-run approval."
+    },
+    {
+      "path": ".github/workflows/hover_bike_updates.yml",
+      "prior_risk": "Local simulations and artifact generation requested contents:write despite no repository push step.",
+      "change": "Downgrade to contents:read and persist-credentials:false; retain push/schedule/manual triggers and artifact output.",
+      "side_effects": "Local simulation and artifact upload only."
+    },
+    {
+      "path": ".github/workflows/barrot-transparency-audit.yml",
+      "prior_risk": "Weekly local audit and benchmark summaries committed multiple JSON/JSONL files to main with git push and pull/rebase fallback.",
+      "change": "Read-only checkout and workflow artifact output; remove commit and push.",
+      "side_effects": "Local analysis only; audit script explicitly passes github_token=None and github_repo=None."
+    },
+    {
+      "path": ".github/workflows/webmcp-monetization-enrich.yml",
+      "prior_risk": "workflow_run plus weekly schedule used contents:write, injected GITHUB_TOKEN, and pushed GitHub/NPM search results to main.",
+      "change": "Keep scheduled/public GET enrichment, remove GITHUB_TOKEN secret and repository write, upload results as artifact.",
+      "side_effects": "Unauthenticated GitHub/NPM search may rate-limit; script already records errors; no repository mutation."
+    },
+    {
+      "path": ".github/workflows/pillars-check.yml",
+      "prior_risk": "Scheduled check minted a GitHub App installation access token via POST even though the script only checked the response; Databricks SQL used a hard-coded SELECT 1 but token scope was unknown.",
+      "change": "Add contents:read and persist-credentials:false; change GitHub App check to GET installation metadata, avoiding token minting.",
+      "side_effects": "Databricks SQL SELECT 1 remains a POST API call; read-only intent is explicit but actual token scope is not verifiable from repository evidence."
+    },
+    {
+      "path": ".github/workflows/kaggle-competitions.yml",
+      "prior_risk": "Daily schedule authenticated to Kaggle and intended to download/train/submit up to five baseline competition entries without per-run approval. Workflow command referenced a nonexistent root script; actual script is under scripts/.",
+      "change": "Remove schedule; require confirm_external_submission=YES and exact comma-separated competition slug allowlist; contents:read; correct script path; both script copies refuse before authentication when allowlist is empty.",
+      "side_effects": "A manually approved run can still submit to exact allowlisted Kaggle competitions. No data/submission files are uploaded as artifacts."
+    }
+  ],
+  "tests_added": [
+    "Kaggle submission requires per-run YES and exact competition allowlist.",
+    "Scheduled public research jobs write workflow artifacts rather than main.",
+    "WebMCP live sandbox requires manual approval.",
+    "Hover Bike simulation uses read-only repository access.",
+    "Pillars check uses a read-only GitHub installation lookup.",
+    "Duplicate Kaggle runner copy also refuses before authentication without allowlist."
+  ],
+  "residual_risks": [
+    "The changes are only on PR #1623; all corresponding workflows remain active on main until approved merge.",
+    "Databricks token scope for the scheduled SELECT 1 check is not observable from repository code; verify it is a dedicated read-only SQL token.",
+    "Other manual-only workflows with write permissions and release/tag-triggered workflows require a separate review.",
+    "No full workflow inventory has yet been exhaustively classified by trigger, permission, external side effect and secret scope.",
+    "Root requirements.tx appears unreferenced in inspected build/docs/workflows; no lockfiles exist; CI installs only a subset of app dependencies."
+  ],
+  "next_actions": [
+    "Run exact-head CI and fail-closed gate after all changes.",
+    "Inspect job logs to verify the new tests were collected and passed.",
+    "Audit remaining manual workflows and tag-triggered release actions.",
+    "Confirm Databricks token is restricted to read-only SQL warehouse use.",
+    "Keep main untouched and do not merge without explicit approval."
+  ]
+}

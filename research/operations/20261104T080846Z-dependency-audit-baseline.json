@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "dependency_manifest_and_security_audit_baseline",
+  "captured_at_utc": "2026-11-04T08:08:46.084Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_base": "58425d038a0a16082267d9de28757fd5c4eb499d",
+  "integration_branch": "integration/security-preservation-dependency-current-main-20261104",
+  "complete_tree": {
+    "entries": 1389,
+    "truncated": false
+  },
+  "manifests": [
+    {
+      "path": "requirements.txt",
+      "runtime_declarations": 15,
+      "sha": "5aac957859bcd98af60aac37c35736b26df3fd87",
+      "status": "canonical_runtime"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "development_declarations": 12,
+      "includes": "requirements.txt",
+      "sha": "91dc840aaf5f7f402efbaf2179d701031aa2ecf3",
+      "status": "development"
+    },
+    {
+      "path": "requirements.tx",
+      "declarations": 6,
+      "sha": "9f13549ed231e05c8258f218598c95cde34c974a",
+      "status": "supplemental_compatibility_manifest",
+      "consumer_status": "not referenced by README; intended consumer unresolved"
+    },
+    {
+      "path": "pyproject.toml",
+      "project_dependency_declarations": 15,
+      "sha": "186fe90fbb28f54e67060897be732e9f9a90b389",
+      "status": "package_metadata"
+    },
+    {
+      "path": "hf_space/requirements.txt",
+      "declarations": 4,
+      "sha": "497f2247b7b01393470f8e0b4f2ca42e2f5805e8",
+      "status": "deployment"
+    },
+    {
+      "path": "legacy/requirements_legacy.txt",
+      "declarations": 12,
+      "sha": "0be66b71fd3334eb297be2c85a7c2fa48141b5bc",
+      "status": "legacy_deployment"
+    }
+  ],
+  "lockfiles_found": [],
+  "current_controls": {
+    "dependabot": {
+      "pip": "weekly",
+      "github_actions": "weekly",
+      "open_pull_requests_limit": 5
+    },
+    "core_ci_explicit_test_files": 55,
+    "full_suite_test_files": 85,
+    "full_suite_job": "added; initial collection failed because PyJWT was absent from requirements-dev; PyJWT, cryptography, numpy and websockets are now declared in requirements.txt and pyproject.toml; exact-head rerun pending",
+    "dependency_audit_workflow": {
+      "path": ".github/workflows/dependency-audit.yml",
+      "sha": "2584bef5a1e352bf6dc517e507e3f2471eb2886b",
+      "permissions": {
+        "contents": "read"
+      },
+      "audits": [
+        "requirements-dev.txt",
+        "requirements.tx",
+        "hf_space/requirements.txt",
+        "legacy/requirements_legacy.txt"
+      ],
+      "status": "integrated branch; exact-head audit pending"
+    },
+    "immutable_action_sha_pinning": "not implemented; workflows still use major-version action tags"
+  },
+  "risks": [
+    "No lockfiles: dependency resolution is not fully reproducible.",
+    "requirements.tx is retained and audited, but its separate consumer is unresolved.",
+    "The first full-suite run exposed a missing PyJWT declaration; the dependency fix requires a fresh exact-head run.",
+    "pip-audit resolves current compatible versions and does not prove deployed package builds.",
+    "Third-party GitHub Actions are not yet pinned to immutable commit SHAs."
+  ],
+  "audit": {
+    "tool": "pip-audit",
+    "strict": true,
+    "manifests": [
+      "requirements-dev.txt",
+      "requirements.tx",
+      "hf_space/requirements.txt",
+      "legacy/requirements_legacy.txt"
+    ],
+    "triggers": [
+      "dependency-related pull requests",
+      "weekly schedule",
+      "workflow_dispatch"
+    ],
+    "secrets": false,
+    "writes": false,
+    "deployments": false
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "external_deployment": false
+  }
+}

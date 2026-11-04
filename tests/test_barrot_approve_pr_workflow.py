@@ -23,7 +23,7 @@ def test_barrot_approval_requires_explicit_pr_inputs():
 
 def test_barrot_approval_validates_open_main_pr_and_sha():
     text = WORKFLOW.read_text()
-    assert '[[ "$state" != "open" ]]' in text
+    assert '[[ "$state" != "open" || "$draft" != "false" ]]' in text
     assert '[[ "$base_ref" != "main" ]]' in text
     assert '[[ "$head_sha" != "$EXPECTED_HEAD_SHA" ]]' in text
 

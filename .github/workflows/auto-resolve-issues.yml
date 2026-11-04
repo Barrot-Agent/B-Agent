@@ -1,25 +1,16 @@
-name: Auto-Resolve Workflow Issues
+name: auto-resolve-issues (disabled pending reviewed automation policy)
 
 on:
-  schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
-permissions:
-  contents: read
-  issues: write
-  actions: read
+permissions: {}
 
 jobs:
-  resolve:
+  disabled:
+    if: false
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-      - run: pip install requests
-      - name: Resolve all matching open issues
-        run: python3 scripts/resolve_issue.py --all
+      - name: Explain disabled state
+        run: |
+          echo "The previous batch workflow could comment on and close matching open issues based on workflow status. Re-enable only with per-issue authorization, auditable evidence and a protected approval boundary."
+          echo "No credentials are read and no repository mutation is performed."

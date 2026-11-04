@@ -121,7 +121,11 @@ def test_watchdog_records_runtime_incident_lifecycle(tmp_path: Path) -> None:
     assert payload["final_state"]["status"] == "human_authorization_required"
 
 
-def test_defensive_security_matrix(tmp_path: Path) -> None:
+def test_defensive_security_matrix(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    artifact_dir = tmp_path / ".barrot" / "collaboration_records" / "defensive_security_matrix"
+    summary_path = tmp_path / ".barrot" / "collaboration_records" / "barrot_defensive_security_matrix.json"
+    monkeypatch.setattr(sys.modules[__name__], "ARTIFACT_DIR", artifact_dir)
+    monkeypatch.setattr(sys.modules[__name__], "SUMMARY_PATH", summary_path)
     ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
     for path in ARTIFACT_DIR.glob("case-*.json"):
         path.unlink()

@@ -417,12 +417,17 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert ("push", "origin", "HEAD:main") not in git_in_calls
 
 
-def test_self_upgrade_workflow_verifies_same_ref_without_branch_switch() -> None:
+def test_self_upgrade_workflow_requires_approval_and_restores_main() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
     assert 'ref: ${{ github.ref_name }}' in workflow
-    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' in workflow
-    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' in workflow
+    assert "confirm_external_change" in workflow
+    assert "inputs.confirm_external_change == 'YES'" in workflow
+    assert "github.ref == 'refs/heads/main'" in workflow
+    assert "python3 scripts/barrot_self_upgrade.py" in workflow
+    assert "--persist-audit-report" not in workflow
+    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' not in workflow
+    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' not in workflow
     assert "git checkout main" not in workflow
 
 
@@ -704,6 +709,7 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
 
 def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
     workflow = (
