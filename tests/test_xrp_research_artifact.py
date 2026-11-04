@@ -173,3 +173,24 @@ def test_market_addendum_quarantines_internally_inconsistent_source() -> None:
     )
     assert observation["evidence"] == [source["id"]]
     assert observation["classification"] == "quarantined_source_observation"
+
+
+def test_ripple_corporate_claims_are_not_mislabeled_as_xrp_flows() -> None:
+    data = json.loads(ADDENDUM.read_text(encoding="utf-8"))
+    source_ids = {source["id"] for source in data["source_registry"]}
+    assert "ripple_corporate_strategy_20261028" in source_ids
+    claims = [
+        item for item in data["observations"]
+        if item["id"].startswith("OBS-RIPPLE-CORP-")
+    ]
+    assert len(claims) >= 5
+    assert all(item["classification"].startswith("issuer_") for item in claims)
+    assert all("not" in " ".join(item["disconfirming_or_limiting"]).lower()
+               or "undisclosed" in " ".join(item["disconfirming_or_limiting"]).lower()
+               for item in claims)
+    rntb = next(
+        item for item in data["observations"]
+        if item["id"] == "OBS-RNTB-20261104-02"
+    )
+    assert "ripple_rntb_final_approval_20261026" in rntb["evidence"]
+    assert "ripple_corporate_strategy_20261028" in rntb["evidence"]
