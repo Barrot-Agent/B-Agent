@@ -127,7 +127,13 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
     summary = run_ingestion(tmp_path / "run", fetcher=_fake_fetcher(captured), now=captured)
 
-    assert summary["snapshot_status"] == "verified"
+    assert summary["snapshot_status"] == "verified", (
+        summary,
+        (tmp_path / "run" / "snapshot_blocked.json").read_text(encoding="utf-8")
+        if (tmp_path / "run" / "snapshot_blocked.json").exists()
+        else None,
+        (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
+    )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
     assert summary["source_receipt_count"] == 6
