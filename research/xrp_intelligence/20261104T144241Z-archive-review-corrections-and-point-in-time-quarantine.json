@@ -2,8 +2,8 @@
   "schema_version": "barrot.xrp.research-correction.v1",
   "artifact_id": "xrp_archive_review_correction_20261104T144241Z",
   "artifact_type": "append_only_review_correction_and_pit_quarantine",
-  "captured_at_utc": "2026-11-04T14:42:41Z",
-  "data_cutoff_utc": "2026-11-04T14:42:41Z",
+  "captured_at_utc": "2026-11-04T14:44:31Z",
+  "data_cutoff_utc": "2026-11-04T14:44:31Z",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-evidence-archive-20261104",
   "review_pr": 1643,
@@ -548,7 +548,7 @@
         "correction_type": "field_value_and_semantics",
         "field_corrections": [
           {
-            "path": "$.product_scope_matrix[0].haircut_cross_portfolio_margin_pct",
+            "path": "$.product_scope_matrix[1].haircut_cross_portfolio_margin_pct",
             "canonical_value": null,
             "displayed_source_cell": "—"
           },
@@ -930,5 +930,13 @@
     "The Kraken ticker response has no event timestamp; its open field is correctly labelled UTC daily open, not rolling 24-hour open.",
     "Coinbase's X:PM dash is not a numeric haircut and does not prove eligibility.",
     "No synchronized multi-venue XRP dataset or leakage-safe out-of-sample forecast evaluation is supplied by this artifact."
-  ]
+  ],
+  "artifact_revision": {
+    "prior_blob_sha": "302377fd75c2ada1de9da2eae6848ba22b7c8186",
+    "prior_captured_at_utc": "2026-11-04T14:42:41Z",
+    "revised_at_utc": "2026-11-04T14:44:31Z",
+    "revision_reason": "Corrected the canonical JSON pointer for the XRP X:PM haircut field to product_scope_matrix[1]. No source record or raw receipt was changed; the original research artifacts remain preserved.",
+    "revision_status": "append_only_metadata_and_path_correction",
+    "source_registry_unchanged": true
+  }
 }
