@@ -177,3 +177,16 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - No PR merged, no deployment authorized or performed, no Space restarted, no secret rotated, no Kaggle entry submitted, no paper trade, no funds transfer, no real-money action, no force-push and no branch rewrite.
 - No directional XRP forecast. Research snapshots remain model-ineligible until raw-source receipt, point-in-time feature and out-of-sample evaluation requirements are met.
 
+
+
+## Run 15 — live snapshot 2026-11-04T16:21:20Z
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree remains 1,403 entries.
+- Open PR inventory: 373 total, 358 drafts, 15 non-drafts. The two active current-main integration PRs remain #1640 (V3/core) and #1643 (XRP research). No new PR or bulk closure.
+- #1640 current code head before handoff-only update: `646e9630e74950861a29b4f434ea61015b93b829`, 47 commits ahead, 0 behind, 59 files. Exact-head CI 41864987477, dependency audit 41864987404 and fail-closed gate 41864987391 were queued. Full-suite coverage now measures all `barrot_agent` subpackages using an override config; no coverage threshold yet. Active CI/dependency/ingestion workflows use setup-python@v7; XRP ingestion uses checkout@v7.
+- #1643 current head: `a515d11ebebdb43e24b0ef150ea329742c80d043`, 40 commits ahead, 0 behind, 62 files (58 JSON, 4 tests). Exact-head CI 41865602468 and gate 41865602426 were queued. Previous head 512488 passed 489 core + 8 subtests; its full suite remained queued. Older ebc21 full-suite result (742 + 8) is historical only.
+- Live GitHub review-thread inspection reports 22 unresolved threads on #1640 and 14 on #1643, with zero approving reviews on either. Earlier entries claiming all #1640 threads were resolved are superseded by this live inspection.
+- Visible repository ruleset disabled; classic branch-protection endpoint 403. Main pushes automatically trigger Pages deployment; no deployment approval exists. No merge.
+- #1642, #1644–#1650, #1317/#1318/#1320/#1254/#1255 and #1506/#1507 remain superseded-pending-#1640-merge; keep open until post-merge path verification. #1597/#1605/#1608/#1614 are partially superseded-pending-#1643-merge; preserve excluded unique material. #1269 and #1641 remain unique/unreviewed. Other stale-base PRs remain blocked or unique/unreviewed pending exact diff/ancestry review.
+- New #1643 research records direct Kraken/OKX/CoinGecko disagreement, XRP Insights Nov 3 holdings-derived ETF flows, XRPL fixCleanup activation, Permission ASK candidate, ambiguous "actual capital" reports, Kamilah candidate handle/channel ID without identity verification, and corrected SBIC/SBI ChatGPT dates. All web-rendered excerpts are model-ineligible; no video inventory.
+- Prediction remains NOT_ISSUED. No durable multi-run point-in-time dataset, WORM receipts or out-of-sample predictive performance is verified.
