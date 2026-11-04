@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_binance_hot_wallet_incident_addendum",
+  "captured_at_utc": "2026-11-04T05:11:39Z",
+  "data_cutoff_utc": "2026-11-04T05:11:39Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "25114c1b0dc8abcc4dd0c0a60bc5ac3486a04f5c",
+    "branch_before_addendum": "ac1a742397f0a84771a85443dabf0eeff272928a",
+    "pr": 1626,
+    "main_unchanged": true
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "binance_initial_report_20261103",
+      "url": "https://www.binance.com/en-AE/square/post/11-03-2026-binance-initial-report-fbi-attributes-6-34-billion-attack-to-north-korea-which-used-fake-job-interviews-and-an-ai-tool-to-reach-hot-wallets-users-fully-covered-384321660235967",
+      "publisher": "Binance News verified official account",
+      "published": "2026-11-03",
+      "type": "official exchange incident report",
+      "independence": "primary affected-exchange statement",
+      "limitations": [
+        "Binance estimates and investigation remain subject to independent review.",
+        "98% replenishment is customer-token backing, not recovery of the original stolen XRP."
+      ]
+    },
+    {
+      "id": "fbi_tradertraitor_20261031",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "publisher": "FBI",
+      "published": "2026-10-31",
+      "type": "official law-enforcement attribution",
+      "independence": "primary government attribution",
+      "limitations": [
+        "North Korea publicly denied the attribution; no judicial finding is claimed."
+      ]
+    },
+    {
+      "id": "reuters_binance_replenishment_20261031",
+      "url": "https://www.reuters.com/legal/government/binance-says-90-stolen-assets-replenished-2026-10-31/",
+      "publisher": "Reuters",
+      "published": "2026-10-31",
+      "type": "independent reporting",
+      "independence": "independent reporting",
+      "limitations": [
+        "Earlier dated snapshot than Binance's November 3 report; percentages are not averaged."
+      ]
+    },
+    {
+      "id": "reuters_binance_flows_20261102",
+      "url": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+      "publisher": "Reuters",
+      "published": "2026-11-02",
+      "type": "independent exchange-flow report",
+      "independence": "independent reporting",
+      "limitations": [
+        "Exchange-wide flows are not XRP-specific."
+      ]
+    },
+    {
+      "id": "xrplwin_xrp_drain_20261030",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "publisher": "XRPLWin",
+      "published": "2026-10-30",
+      "type": "public-ledger forensic analysis",
+      "independence": "secondary ledger reconstruction",
+      "limitations": [
+        "Its no-outbound statement is an October 30 snapshot and was superseded by November 2 redistribution."
+      ]
+    },
+    {
+      "id": "tibane_xrp_repartition_20261103",
+      "url": "https://www.tibane.net/research/binance-hack",
+      "publisher": "Tibane Labs",
+      "published": "2026-11-03",
+      "type": "public-ledger transaction reconstruction",
+      "independence": "secondary public-ledger analysis",
+      "limitations": [
+        "Recipient beneficial ownership is not established; no-outbound state is bounded to November 3 07:27 UTC."
+      ]
+    },
+    {
+      "id": "whale_alert_xrp_40m_20261102",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "publisher": "Whale Alert",
+      "published": "2026-11-02",
+      "type": "transaction index",
+      "independence": "secondary index of public XRPL transaction",
+      "limitations": [
+        "One 40M transfer only; service address labels do not prove beneficial ownership."
+      ]
+    },
+    {
+      "id": "ap_north_korea_denial_20261103",
+      "url": "https://apnews.com/article/01c9b80d938dd67c747e268c410f265d",
+      "publisher": "Associated Press",
+      "published": "2026-11-03",
+      "type": "independent reporting of official denial",
+      "independence": "independent reporting",
+      "limitations": [
+        "The denial is a government position, not independent disproof of FBI attribution."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "incident_date": "2026-10-29",
+    "binance_gross_affected_usd": 6340000000,
+    "binance_frozen_or_intercepted_usd_as_reported_20261103": 2850000000,
+    "binance_replenishment_percent_as_of_20261031": 98,
+    "xrp_outflow": {
+      "amount_xrp": 233461943.1,
+      "sending_hot_wallets": 5,
+      "start_utc": "2026-10-29T20:05:00Z",
+      "end_utc": "2026-10-29T20:09:20Z",
+      "receiving_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "transfer_time_value_usd_approx": 296000000
+    },
+    "xrp_repartition_as_of_20261103": {
+      "main_recipient_wallets": 6,
+      "separate_1000_xrp_test_destination": 1,
+      "main_transfers": 9,
+      "recipient_outbound_state_as_of_utc": "2026-11-03T07:27:00Z",
+      "reported_outbound_transactions": 0,
+      "original_account_residual_xrp_approx": 23.7
+    },
+    "binance_customer_flows_as_reported_20261102": {
+      "net_outflows_usd": 4720000000,
+      "outflows_percent_of_platform_assets": 3,
+      "customer_inflows_since_sunday_usd": 2700000000,
+      "withdrawals": "Reported stabilizing after initial spike",
+      "largest_withdrawal_asset": "USDT"
+    },
+    "issuer_freezes": {
+      "ripple_rlusd_ethereum_usd_approx": 40500000,
+      "circle_usdc_reuters_20261102": "more than $1.1B",
+      "circle_usdc_xrplwin_20261030": "$823M",
+      "native_xrp_issuer_freeze": false
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS-BINANCE-GROSS-01",
+      "class": "exchange_reported",
+      "detail": "Binance estimates approximately $6.34B in digital assets were affected and about $2.85B frozen or intercepted, subject to reconciliation. It says 98% of affected token assets were replenished as of October 31.",
+      "evidence": [
+        "binance_initial_report_20261103"
+      ]
+    },
+    {
+      "id": "OBS-XRP-DRAIN-01",
+      "class": "exchange_statement_and_ledger_reconstruction",
+      "detail": "Five Binance hot wallets sent 233,461,943.1 XRP to one receiving account between 20:05 and 20:09 UTC on October 29. XRPLWin values the transfer at about $296M at the time.",
+      "evidence": [
+        "binance_initial_report_20261103",
+        "xrplwin_xrp_drain_20261030"
+      ]
+    },
+    {
+      "id": "OBS-ROOT-CAUSE-01",
+      "class": "exchange_reported_not_protocol_exploit",
+      "detail": "Binance attributes the transfers to unauthorized access to its internal wallet signing service. XRPLWin reports valid signed XRPL payments; evidence points to exchange authorization compromise, not an XRPL protocol exploit.",
+      "evidence": [
+        "binance_initial_report_20261103",
+        "xrplwin_xrp_drain_20261030"
+      ]
+    },
+    {
+      "id": "OBS-XRP-REDISTRIBUTION-01",
+      "class": "public_ledger_analysis_as_of_20261103",
+      "detail": "Tibane Labs reports the original 233.46M XRP was redistributed on November 2 through nine main payments to six new wallets plus a separate 1,000 XRP test destination. None of the seven recipient addresses had outbound transactions as of November 3 07:27 UTC; this is not a live November 4 check.",
+      "evidence": [
+        "tibane_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-FLOWS-01",
+      "class": "independent_exchange_flow_report",
+      "detail": "Reuters reported $4.72B net customer outflows since Binance reopened, around 3% of platform assets, while Binance reported $2.7B customer inflows since Sunday and stabilizing withdrawals. Most withdrawals were in USDT.",
+      "evidence": [
+        "reuters_binance_flows_20261102"
+      ]
+    },
+    {
+      "id": "OBS-FREEZE-ASYMMETRY-01",
+      "class": "asset_design_and_issuer_action",
+      "detail": "Ripple reportedly froze about 40.5M RLUSD on Ethereum. Reuters later reported Circle had frozen more than $1.1B USDC by November 2, versus XRPLWin's earlier October 30 $823M snapshot. Native XRP has no issuer freeze control.",
+      "evidence": [
+        "xrplwin_xrp_drain_20261030",
+        "reuters_binance_flows_20261102"
+      ]
+    },
+    {
+      "id": "OBS-FBI-ATTRIBUTION-01",
+      "class": "official_law_enforcement_attribution",
+      "detail": "The FBI formally attributed the theft to North Korea's TraderTraitor activity.",
+      "evidence": [
+        "fbi_tradertraitor_20261031"
+      ]
+    },
+    {
+      "id": "OBS-NK-DENIAL-01",
+      "class": "official_denial_reported_by_independent_press",
+      "detail": "North Korea publicly denied the FBI attribution on November 3. The denial is preserved as a competing claim; no judicial finding is asserted.",
+      "evidence": [
+        "ap_north_korea_denial_20261103"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Binance internal signing service",
+      "to": "Binance XRP hot wallets",
+      "relation": "unauthorized signing access used to initiate outflows, according to Binance",
+      "status": "exchange_reported",
+      "evidence": [
+        "binance_initial_report_20261103"
+      ]
+    },
+    {
+      "from": "Five Binance XRP hot wallets",
+      "to": "Attacker receiving account",
+      "relation": "233,461,943.1 XRP transferred in five valid signed payments",
+      "status": "exchange statement and ledger reconstruction",
+      "evidence": [
+        "binance_initial_report_20261103",
+        "xrplwin_xrp_drain_20261030"
+      ]
+    },
+    {
+      "from": "Original attacker receiving account",
+      "to": "Six new XRP wallets",
+      "relation": "redistribution of stolen XRP on November 2",
+      "status": "third-party public-ledger analysis as of November 3",
+      "evidence": [
+        "tibane_xrp_repartition_20261103"
+      ]
+    },
+    {
+      "from": "Binance",
+      "to": "Binance customers",
+      "relation": "replacement of affected token backing using company resources",
+      "status": "issuer claim",
+      "evidence": [
+        "binance_initial_report_20261103",
+        "reuters_binance_replenishment_20261031"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC attacker-linked balances",
+      "relation": "issuer freeze action reported at more than $1.1B by November 2",
+      "status": "reported issuer action",
+      "evidence": [
+        "reuters_binance_flows_20261102"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD attacker-linked balance on Ethereum",
+      "relation": "approximately 40.5M RLUSD frozen",
+      "status": "ledger-derived issuer action",
+      "evidence": [
+        "xrplwin_xrp_drain_20261030"
+      ]
+    },
+    {
+      "from": "Native XRP",
+      "to": "Issuer freeze control",
+      "relation": "no issuer can freeze or claw back native XRP",
+      "status": "protocol design property",
+      "evidence": [
+        "xrplwin_xrp_drain_20261030"
+      ]
+    },
+    {
+      "from": "FBI",
+      "to": "TraderTraitor / North Korea",
+      "relation": "official attribution",
+      "status": "official attribution",
+      "evidence": [
+        "fbi_tradertraitor_20261031"
+      ]
+    },
+    {
+      "from": "North Korea",
+      "to": "FBI attribution",
+      "relation": "public denial",
+      "status": "official denial",
+      "evidence": [
+        "ap_north_korea_denial_20261103"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H21-exchange-outflow-is-not-market-selling",
+      "claim": "The 233.46M XRP outflow is a custody/security incident, not organic selling or whale distribution.",
+      "support": [
+        "Binance says unauthorized internal signing access initiated the transfers.",
+        "The original receiving account later split funds across six wallets; no outbound activity was reported by Tibane at its November 3 cutoff.",
+        "Binance says customer backing was replenished from company resources."
+      ],
+      "disconfirming_or_missing": [
+        "Later recipient activity after November 3 07:27 UTC is unknown.",
+        "Stolen XRP could later reach exchanges or swap services."
+      ],
+      "tests": [
+        "Exclude the incident amount from organic exchange-flow and whale-flow features.",
+        "Refresh recipient addresses with ledger indices and raw transaction hashes.",
+        "Separate movement, exchange deposit, DEX swap and confirmed sale labels."
+      ]
+    },
+    {
+      "id": "H22-native-xrp-freeze-asymmetry",
+      "claim": "Native XRP's non-freezable design changes recovery and institutional risk behavior relative to issuer-controlled RLUSD and USDC.",
+      "support": [
+        "Ripple reportedly froze 40.5M RLUSD on Ethereum.",
+        "Circle reportedly froze more than $1.1B USDC by November 2.",
+        "Native XRP has no issuer freeze or clawback control."
+      ],
+      "disconfirming_or_missing": [
+        "Non-freezability is also a decentralization and censorship-resistance property.",
+        "No final recovery outcome for stolen XRP is established."
+      ],
+      "tests": [
+        "Track freezes and recoveries separately by issuer, asset and chain.",
+        "Measure institutional custody policy changes and exchange screening."
+      ]
+    },
+    {
+      "id": "H23-binance-confidence-shock-limited-contagion",
+      "claim": "The hack caused a material Binance-specific confidence shock, but current evidence does not establish systemic exchange contagion.",
+      "support": [
+        "Reuters reports $4.72B net outflows, about 3% of Binance assets.",
+        "Binance also reported $2.7B customer inflows and stabilizing withdrawals."
+      ],
+      "disconfirming_or_missing": [
+        "Reuters observed falling stablecoin market capitalizations and possible cash movement.",
+        "XRP-specific venue migration has not been reconstructed."
+      ],
+      "tests": [
+        "Compare exchange-level XRP balances, market share, spreads, depth and withdrawals on synchronized cutoffs.",
+        "Control for broad market and macro movements."
+      ]
+    },
+    {
+      "id": "H24-ai-toolchain-least-privilege",
+      "claim": "The incident shows that internal AI tooling, compromised endpoints and wallet-signing permissions must be treated as one security boundary.",
+      "support": [
+        "Binance describes compromised devices, fake recruitment/interviews, internal AI tooling and unauthorized signing-service access.",
+        "Already-created on-chain authorizations were not stopped merely by pausing ordinary withdrawals."
+      ],
+      "disconfirming_or_missing": [
+        "The AI tool is not established as the initial vulnerability; Binance's root-cause investigation and independent review remain incomplete.",
+        "No evidence ties the incident to an XRPL protocol flaw."
+      ],
+      "tests": [
+        "Use least-privilege identities, scoped credentials, device posture, allowlists, time-bound approval, independent signing and immutable audit logs.",
+        "Keep Barrot external actions fail-closed and source-SHA-bound."
+      ]
+    },
+    {
+      "id": "H25-tradertraitor-attribution-contested",
+      "claim": "The FBI attribution is an official law-enforcement assessment, while North Korea's denial remains a competing official claim.",
+      "support": [
+        "FBI issued an official TraderTraitor attribution.",
+        "Binance cites the FBI assessment."
+      ],
+      "disconfirming_or_missing": [
+        "North Korea publicly denied responsibility.",
+        "No public judicial adjudication was located."
+      ],
+      "tests": [
+        "Track official FBI/USSS/IRS-CI updates, sanctions, indictments, independent analytics and official responses."
+      ]
+    },
+    {
+      "id": "H26-xrp-repartition-not-proof-of-sale",
+      "claim": "The November 2 split of stolen XRP is consistent with preparation for further laundering but does not itself prove sale or exchange deposit.",
+      "support": [
+        "Tibane reports six new recipient wallets and no outbound transfers as of November 3 07:27 UTC.",
+        "The indexed 40M transfer points to an unidentified wallet, not a confirmed exchange deposit."
+      ],
+      "disconfirming_or_missing": [
+        "The ledger status is stale after November 3 07:27 UTC.",
+        "Future movement through exchanges, DEXs or bridges remains possible."
+      ],
+      "tests": [
+        "Refresh all seven addresses from public XRPL ledgers.",
+        "Check exchange deposit labels, destination tags, DEX swaps and bridge interactions."
+      ]
+    }
+  ],
+  "data_quality": {
+    "incident_exclusion_rule": "Flag the 233,461,943.1 XRP incident movement and exclude it from organic exchange-flow, whale accumulation/distribution and market-selling features unless modeled as a separate incident variable.",
+    "no_averaging_policy": "Do not average gross affected assets, frozen/intercepted amounts, customer-balance replenishment, stolen-token recovery and net customer withdrawals.",
+    "discrepancies": [
+      {
+        "metric": "Binance gross affected value",
+        "values": [
+          {
+            "source": "Binance",
+            "usd": 6340000000
+          },
+          {
+            "source": "TRM as cited by XRPLWin",
+            "usd": 6360000000
+          },
+          {
+            "source": "Elliptic as cited by XRPLWin",
+            "usd": 6430000000
+          },
+          {
+            "source": "Chainalysis as cited by XRPLWin",
+            "usd": 5900000000
+          }
+        ],
+        "classification": "different scope and valuation cutoffs; do not average"
+      },
+      {
+        "metric": "Circle USDC freeze",
+        "values": [
+          {
+            "source": "XRPLWin October 30",
+            "usd": 823000000
+          },
+          {
+            "source": "Reuters November 2",
+            "usd": 1100000000,
+            "qualifier": "more than"
+          }
+        ],
+        "classification": "different dated snapshots; reconcile address scope before comparison"
+      },
+      {
+        "metric": "Binance replenishment",
+        "values": [
+          {
+            "source": "Reuters October 31",
+            "description": "about $6B covered of $6.3B"
+          },
+          {
+            "source": "Binance November 3",
+            "description": "98% of affected token assets replenished as of October 31"
+          }
+        ],
+        "classification": "replenishment is not recovery of stolen XRP"
+      }
+    ],
+    "limitations": [
+      "The latest recipient-wallet status is bounded to November 3 07:27 UTC, not a live November 4 ledger query.",
+      "FBI attribution is official but contested; no judicial finding is claimed.",
+      "$6.34B is gross affected value, not audited net loss.",
+      "98% replenishment is not proof the original stolen XRP was recovered."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "The incident is a high-impact event flag and feature-exclusion requirement, not a standalone directional XRP signal. Historical feature reconstruction and leakage-safe evaluation remain incomplete."
+  },
+  "blockers": [
+    "Direct fresh ledger query for all seven recipient addresses after November 3 07:27 UTC remains outstanding.",
+    "Binance's independent cybersecurity review and full root-cause report remain outstanding.",
+    "No synchronized XRP venue-flow series has yet separated this incident from organic exchange movements."
+  ],
+  "next_actions": [
+    "Refresh all seven recipient addresses using public XRPL ledger data; preserve exact ledger index and raw transaction hashes.",
+    "Add an incident flag and exclude 233.46M XRP from organic exchange-flow and whale-flow features.",
+    "Track post-hack Binance net flows, XRP venue share, stablecoin balances and order-book depth using common cutoffs.",
+    "Reconcile Circle and Ripple freeze amounts by issuer, chain, address and timestamp.",
+    "Review Binance's independent security review and Proof of Reserves; distinguish customer-balance replenishment from stolen-asset recovery."
+  ]
+}
