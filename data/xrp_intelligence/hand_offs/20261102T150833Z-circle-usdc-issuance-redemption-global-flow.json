@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T150833Z-circle-usdc-issuance-redemption-global-flow",
+  "captured_at_utc": "2026-11-02T15:08:33Z",
+  "evidence_cutoff_utc": "2026-10-29T23:59:59Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "What do Circle's latest public USDC issuance and redemption data imply for stablecoin liquidity, and what does it not establish about XRPL or XRP?",
+  "key_findings": [
+    {
+      "id": "CIRCLE-USDC-GLOBAL-CIRCULATION-AND-FLOWS-2026-10-29",
+      "classification": "official_issuer_transparency_dashboard",
+      "publisher": "Circle",
+      "as_of": "2026-10-29",
+      "metrics": {
+        "circulation_usd": 70000000000,
+        "total_reserves_usd": 71400000000,
+        "reserve_minus_circulation_usd": 1400000000,
+        "seven_day": {
+          "issued_usd": 10900000000,
+          "redeemed_usd": 11700000000,
+          "displayed_net_change_usd": -800000000
+        },
+        "thirty_day": {
+          "issued_usd": 47900000000,
+          "redeemed_usd": 51000000000,
+          "displayed_net_change_usd": -3100000000
+        },
+        "three_hundred_sixty_five_day": {
+          "issued_usd": 362100000000,
+          "redeemed_usd": 367200000000,
+          "displayed_net_change_usd": -5000000000
+        }
+      },
+      "interpretation": "Circle's issuer-level USDC circulation contracted over the displayed 7-day, 30-day and 365-day windows as of October 29, 2026. Gross issuance and redemption are large in both directions; the displayed net changes are the more relevant supply-delta features. This is a global issuer measure, not XRPL supply or XRP capital flow.",
+      "limits": [
+        "The transparency dashboard aggregates USDC across supported chains.",
+        "The $70.0B circulation and $71.4B reserves are not XRPL-specific.",
+        "Net global USDC circulation change does not identify the chain, venue, wallet, holder or asset receiving redeemed fiat.",
+        "A decline in USDC circulation does not prove XRP outflows, and a rise would not prove XRP inflows.",
+        "The dashboard reports rounded figures; displayed annual net change may not equal subtraction of rounded issued and redeemed totals."
+      ],
+      "source": "https://www.circle.com/transparency"
+    },
+    {
+      "id": "CIRCLE-USDC-MULTICHAIN-SCOPE",
+      "classification": "official_issuer_product_documentation",
+      "publisher": "Circle",
+      "as_of": "2026-10-29",
+      "claims": [
+        "Circle describes USDC as natively issued on 38 blockchains.",
+        "Circle Mint supports institutional minting/redemption and cross-chain movement across supported networks."
+      ],
+      "limits": [
+        "A multichain transfer capability does not imply XRP is the intermediary.",
+        "No chain-specific XRPL supply or crosschain route volume is inferred from the global dashboard."
+      ],
+      "source": "https://www.circle.com/usdc"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "to": "USDC global circulation",
+      "relation": "issuer and global supply reporting",
+      "classification": "official_issuer_transparency_dashboard"
+    },
+    {
+      "from": "USDC global circulation",
+      "to": "USDC on XRPL",
+      "relation": "global aggregate includes multiple chains; XRPL component not isolated by this dashboard",
+      "classification": "scope_boundary"
+    },
+    {
+      "from": "Circle Mint",
+      "to": "supported USDC chains",
+      "relation": "institutional mint/redemption and documented multichain movement",
+      "classification": "official_issuer_product_documentation"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "USDC distribution economics depend partly on balances held on Coinbase platforms",
+      "classification": "SEC_filing; detailed separately in Q2 2026 crosswalk"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "USDC-GLOBAL-FLOW-H1",
+      "claim": "A sustained global USDC circulation contraction could indicate a reduction in dollar-stablecoin liquidity available to crypto markets.",
+      "support": "Circle's official dashboard shows negative displayed net circulation changes over 7, 30 and 365 days.",
+      "counterevidence_or_limit": "Other stablecoins, fiat balances, bank credit, derivatives collateral and chain-specific flows are not included. The change may reflect issuer, regulatory, seasonal or portfolio-specific factors.",
+      "status": "GLOBAL_LIQUIDITY_CONTEXT; MARKET_CAUSALITY_UNTESTED"
+    },
+    {
+      "id": "USDC-GLOBAL-FLOW-H2",
+      "claim": "Coinbase may retain or grow a larger share of USDC distribution even during global USDC contraction.",
+      "support": "Coinbase reported record Q3 average USDC balances; Circle's SEC filing links distributor economics to platform balances.",
+      "counterevidence_or_limit": "Coinbase's Q3 average and Circle's October 29 point-in-time global circulation are different periods and measurement types. A synchronized share series is required.",
+      "status": "PLAUSIBLE; NOT_QUANTIFIED"
+    },
+    {
+      "id": "USDC-GLOBAL-FLOW-H3",
+      "claim": "Global USDC contraction predicts XRP price weakness.",
+      "support": "Stablecoin liquidity can be a broad crypto-market condition.",
+      "counterevidence_or_limit": "No synchronized XRP market, exchange, derivatives, ETF, macro and competing stablecoin features or calibrated out-of-sample evidence is supplied here.",
+      "status": "NOT_ADMITTED; NO_DIRECTIONAL_INFERENCE"
+    }
+  ],
+  "feature_admission": {
+    "circle_global_usdc_circulation": "Issuer-level global supply feature only; preserve as-of date and issuer scope.",
+    "circle_global_usdc_net_issuance": "Issuer-level net circulation delta feature; use displayed rounded net change and retain gross issuance/redemption separately.",
+    "xrpl_usdc_supply": "Not admitted from global Circle dashboard; requires pinned-ledger issuer/holder reconciliation.",
+    "coinbase_usdc_share": "Not admitted from non-synchronized Q3 average Coinbase balance and October 29 global circulation; require same-period measurements.",
+    "xrp_price_forecast": "No directional forecast from this artifact."
+  },
+  "next_actions": [
+    "Build a daily, synchronized issuer-level USDC circulation and issuance/redemption series.",
+    "Separate global USDC supply from chain-specific issuer balances, transfers, minting, redemption and crosschain movement.",
+    "Align Coinbase average/period-end USDC balances with Circle's same-period global supply before estimating distribution share.",
+    "Compare USDC with USDT and other major stablecoin net issuance, exchange reserves, derivatives collateral and fiat funding.",
+    "Test lagged relationships with XRP spot liquidity, order-book depth, futures basis/funding, ETF flows and realized returns using walk-forward evaluation."
+  ],
+  "sources": [
+    {
+      "publisher": "Circle",
+      "date": "2026-10-29",
+      "url": "https://www.circle.com/transparency",
+      "class": "official_issuer_transparency_dashboard"
+    },
+    {
+      "publisher": "Circle",
+      "date": "current documentation accessed 2026-11-02",
+      "url": "https://www.circle.com/usdc",
+      "class": "official_issuer_product_documentation"
+    },
+    {
+      "publisher": "Coinbase",
+      "date": "2026-10-29",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "class": "official_company_earnings_release"
+    },
+    {
+      "publisher": "Circle Internet Group",
+      "date": "2026-08-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "class": "SEC_filing"
+    }
+  ],
+  "safety": {
+    "append_only": true,
+    "no_prior_artifact_overwrite": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_external_mutation": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}

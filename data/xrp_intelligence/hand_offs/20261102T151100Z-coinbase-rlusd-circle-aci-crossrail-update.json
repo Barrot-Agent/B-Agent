@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T151100Z-coinbase-rlusd-circle-aci-crossrail-update",
+  "captured_at_utc": "2026-11-02T15:11:00Z",
+  "evidence_cutoff_utc": "2026-11-02T15:11:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "purpose": "Record the October 27-28 institutional payment-rail announcements involving Coinbase, Ripple, RLUSD, Circle, ACI Worldwide and Colombia; distinguish operational availability, pilot/evaluation, roadmap and unknown actual capital.",
+  "evidence": [
+    {
+      "id": "COINBASE-RLUSD-MULTICHAIN-LAUNCH-2026-10-28",
+      "classification": "official_joint_partner_announcement",
+      "publishers": [
+        "Coinbase",
+        "Ripple"
+      ],
+      "published_at": "2026-10-28",
+      "source_family": "COINBASE_RIPPLE_JOINT_ANNOUNCEMENT",
+      "claims": [
+        "Coinbase made RLUSD available to supported-region retail and institutional customers through Coinbase Prime, Coinbase Exchange and the Coinbase retail app.",
+        "At launch, deposits and withdrawals were supported on the XRP Ledger, Base and Ethereum.",
+        "Customers could convert USD into RLUSD at a 1:1 rate.",
+        "Ripple said it would provide liquidity on Base to support RLUSD use on that network.",
+        "Coinbase Global Exchange customer availability, including use of RLUSD as collateral, was described as a future phase with no launch date stated."
+      ],
+      "source_urls": [
+        "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+        "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+      ],
+      "corroboration": {
+        "publisher": "Reuters",
+        "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+        "classification": "independent_reporting_of_same_announced_event",
+        "independence_note": "Reuters independently reports the announcement but the product terms originate from the same Coinbase/Ripple launch; do not count as a separate executed transaction dataset."
+      },
+      "confirmed_edges": [
+        {
+          "from": "Coinbase",
+          "to": "RLUSD",
+          "relation": "retail, exchange and Prime distribution; trade/manage access",
+          "status": "announced_available"
+        },
+        {
+          "from": "Coinbase",
+          "to": "XRPL",
+          "relation": "RLUSD deposit/withdrawal network support",
+          "status": "announced_available"
+        },
+        {
+          "from": "Coinbase",
+          "to": "Base",
+          "relation": "RLUSD deposit/withdrawal network support",
+          "status": "announced_available"
+        },
+        {
+          "from": "Coinbase",
+          "to": "Ethereum",
+          "relation": "RLUSD deposit/withdrawal network support",
+          "status": "announced_available"
+        },
+        {
+          "from": "Ripple",
+          "to": "RLUSD on Base",
+          "relation": "liquidity provision",
+          "status": "announced_commitment"
+        },
+        {
+          "from": "Coinbase Global Exchange",
+          "to": "RLUSD collateral",
+          "relation": "future collateral support",
+          "status": "announced_future_not_yet_available"
+        }
+      ],
+      "limits": [
+        "Supported-region and product eligibility restrictions apply.",
+        "Availability on three networks does not establish equal liquidity, depth, settlement volume or redemption speed on each network.",
+        "No chain-specific Coinbase RLUSD balances, net deposits, withdrawals, market-maker inventory or executed settlement volumes were disclosed in the launch announcement.",
+        "The future Coinbase Global Exchange collateral phase is not treated as live.",
+        "RLUSD transfers on XRPL do not by themselves prove that XRP was used as the bridge asset.",
+        "1:1 USD conversion is a product conversion feature; it is not evidence of an independent secondary-market price always remaining exactly one dollar."
+      ],
+      "actual_capital_status": "NOT_MEASURED"
+    },
+    {
+      "id": "CIRCLE-ACI-COLOMBIA-USDC-PILOT-2026-10-27",
+      "classification": "joint_official_announcement_about_pilot",
+      "publishers": [
+        "Circle",
+        "ACI Worldwide"
+      ],
+      "published_at": "2026-10-27",
+      "source_family": "CIRCLE_ACI_JOINT_PILOT_ANNOUNCEMENT",
+      "claims": [
+        "Circle and ACI Worldwide announced a collaboration to demonstrate USDC settlement integrated into existing banking and payment infrastructure.",
+        "The initiative initially focuses on Colombia and uses ACI Connetic.",
+        "The announcement situates the work alongside Bre-B, Colombia's interoperable instant account-to-account payment ecosystem, whose central infrastructure ACI says it built.",
+        "The stated purpose is to help financial institutions evaluate USDC settlement within familiar payment operations, treasury processes and governance frameworks.",
+        "ACI describes Connetic as supporting traditional payment types, digital assets and card payments through a unified orchestration platform."
+      ],
+      "source_urls": [
+        "https://investor.circle.com/news/news-details/2026/ACI-Worldwide-and-Circle-Collaborate-to-Bring-USDC-Settlement-to-Existing-Payments-Infrastructure-in-Latin-America/default.aspx",
+        "https://investor.aciworldwide.com/news-releases/news-release-details/aci-worldwide-and-circle-collaborate-bring-usdc-settlement"
+      ],
+      "limits": [
+        "This is described as a pilot/initiative to demonstrate and evaluate integration, not proof of production-scale settlement.",
+        "No named participating bank, merchant, end customer, transaction count, settlement value, corridor volume or production go-live date is disclosed.",
+        "No XRP, XRPL, Ripple or Coinbase role is identified in this pilot announcement.",
+        "The platform's ability to support an evolving multi-rail ecosystem is not evidence that any specific non-USDC asset is integrated."
+      ],
+      "actual_capital_status": "NOT_DISCLOSED"
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "RLUSD distribution partnership",
+      "classification": "confirmed_official_announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "trade/manage and supported-network deposit/withdrawal access",
+      "classification": "confirmed_official_announcement"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer",
+      "classification": "confirmed_product_relationship"
+    },
+    {
+      "from": "Ripple",
+      "to": "Base RLUSD liquidity",
+      "relation": "liquidity provision commitment",
+      "classification": "announced_commitment"
+    },
+    {
+      "from": "Circle",
+      "to": "ACI Worldwide",
+      "relation": "USDC settlement integration pilot",
+      "classification": "confirmed_joint_announcement"
+    },
+    {
+      "from": "ACI Connetic",
+      "to": "Bre-B Colombia",
+      "relation": "payment orchestration infrastructure context",
+      "classification": "company_statement"
+    },
+    {
+      "from": "USDC",
+      "to": "Colombia payment pilot",
+      "relation": "stablecoin settlement asset under evaluation",
+      "classification": "confirmed_pilot_scope"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "existing USDC distribution/economic partnership",
+      "classification": "SEC_filing_and_company_disclosures"
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relation": "major distribution and product-balance channel",
+      "classification": "company_disclosures"
+    },
+    {
+      "from": "RLUSD on XRPL",
+      "to": "XRP",
+      "relation": "same ledger, but XRP bridge usage not established by listing",
+      "classification": "explicit_non_inference"
+    },
+    {
+      "from": "ACI Connetic",
+      "to": "XRP/XRPL",
+      "relation": "no integration disclosed in the Colombia pilot",
+      "classification": "unknown_not_established"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_RLUSD_COINBASE_DISTRIBUTION_EXPANDS_XRPL_LIQUIDITY",
+      "claim": "Coinbase's RLUSD support could expand RLUSD access and liquidity on XRPL.",
+      "supporting_evidence": "Coinbase explicitly supports RLUSD deposits and withdrawals on XRPL and makes the token available through retail, Exchange and Prime.",
+      "disconfirming_or_limiting_evidence": "No synchronized Coinbase XRPL RLUSD deposit/withdrawal series, XRPL order-book/AMM depth change, issuer minting attributable to Coinbase or net external settlement volume is disclosed.",
+      "measurable_tests": [
+        "Coinbase-tagged XRPL issuer/holder balances where publicly attributable",
+        "RLUSD XRPL mint, redemption and transfer history",
+        "XRPL DEX/AMM depth and executed volume",
+        "Coinbase RLUSD deposits/withdrawals by network if publicly disclosed"
+      ],
+      "status": "PLAUSIBLE_CHANNEL; EFFECT_NOT_MEASURED"
+    },
+    {
+      "id": "H2_RLUSD_GROWTH_CREATES_XRP_BRIDGE_DEMAND",
+      "claim": "More RLUSD activity on XRPL necessarily increases demand for XRP as a bridge asset.",
+      "supporting_evidence": "XRP is native to XRPL and can serve as a bridge asset in some multi-asset paths.",
+      "disconfirming_or_limiting_evidence": "RLUSD can transfer directly as a stablecoin; the Coinbase announcement supports RLUSD on XRPL, Base and Ethereum but does not state that XRP is used in transfers or conversion routes.",
+      "measurable_tests": [
+        "Path-level XRPL DEX swaps involving XRP",
+        "AMM and order-book route selection",
+        "Executed XRP intermediary volume versus direct RLUSD transfer volume"
+      ],
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "H3_CIRCLE_ACI_USDC_PILOT_COMPETES_WITH_XRP_CROSS_BORDER_RAILS",
+      "claim": "ACI/Circle's Colombia USDC integration could compete with some cross-border or account-to-account payment use cases where XRP-based liquidity routes might otherwise be considered.",
+      "supporting_evidence": "The pilot is designed to orchestrate USDC settlement alongside existing payment infrastructure and Bre-B.",
+      "disconfirming_or_limiting_evidence": "No XRP route, named bank, production corridor, payment volume, FX spread or cost comparison is disclosed. ACI describes a multi-rail platform and could theoretically support multiple assets.",
+      "measurable_tests": [
+        "Pilot go-live and named participants",
+        "USDC settlement value and transaction count",
+        "USD/COP and corridor FX costs",
+        "Alternative rail settlement time and liquidity cost",
+        "Any explicit ACI support for XRP or Ripple Payments"
+      ],
+      "status": "COMPETITIVE_SCENARIO; NOT_PROVEN"
+    },
+    {
+      "id": "H4_COINBASE_MULTI_ISSUER_STRATEGY",
+      "claim": "Coinbase is reducing single-issuer dependence while retaining strong economics from USDC distribution.",
+      "supporting_evidence": "Coinbase launched RLUSD across major product surfaces while continuing its USDC commercial relationship and listing other stablecoins.",
+      "disconfirming_or_limiting_evidence": "No issuer-level revenue share, customer migration, stablecoin balance substitution or net distribution economics for RLUSD are disclosed.",
+      "measurable_tests": [
+        "Same-period USDC and RLUSD balances on Coinbase",
+        "Coinbase stablecoin revenue/distribution costs by issuer",
+        "Prime and Exchange RLUSD trading/deposit/withdrawal activity",
+        "USDC-to-RLUSD conversion and net flow data"
+      ],
+      "status": "STRATEGIC_DIVERSIFICATION_SUPPORTED; ECONOMIC_SUBSTITUTION_UNKNOWN"
+    }
+  ],
+  "feature_admission": {
+    "coinbase_rlusd_network_availability": "Categorical product-availability feature, with region/product scope and announcement date.",
+    "coinbase_rlusd_collateral": "NOT_ADMITTED as live until Coinbase Global Exchange announces and documents the collateral phase.",
+    "ripple_base_liquidity_commitment": "Announced commitment only; require actual pool/market-maker/chain data before quantifying.",
+    "circle_aci_colombia_pilot": "Pilot-status event feature only; no production volume or XRP demand inferred.",
+    "xrp_bridge_demand": "NOT_ADMITTED without path-level executed XRP intermediary swaps.",
+    "usdc_competitive_impact": "Scenario variable only until actual pilot volumes, cost and route shares are measured."
+  },
+  "source_independence": {
+    "coinbase_and_ripple_launch_releases": "Same partner announcement family; two official pages are not two independent executed-volume sources.",
+    "reuters_coinbase_rlusd_report": "Independent journalism about the same announced event, not independent on-chain evidence.",
+    "circle_and_aci_pilot_releases": "Same joint announcement family; two publisher pages do not independently establish live settlement volumes."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "The announcements establish distribution and pilot scope, not synchronized XRP market flows, chain-specific settlement volumes or validated causal effects. No calibrated out-of-sample model evidence supports a directional XRP forecast."
+  },
+  "next_actions": [
+    "Capture Coinbase RLUSD supported-network balances and any publicly attributable XRPL deposits/withdrawals after launch.",
+    "Monitor Coinbase Global Exchange collateral documentation and record the date only if the future phase becomes operational.",
+    "Track Ripple-provided Base RLUSD liquidity using identified pools, market-maker addresses and synchronized reserves where public data permits.",
+    "Track Circle/ACI Colombia pilot go-live, named participants and measured settlement values; do not count the announcement as executed capital.",
+    "Compare USDC and RLUSD network-specific supply, depth, redemption and settlement without assuming substitution.",
+    "Test whether XRP appears as an actual intermediary asset in executed XRPL swaps rather than inferring bridge use from co-location.",
+    "Reconcile these developments with SBI/Startale's exploratory JPYSC-OUSD interoperability; shared Open Standard membership is not a live Coinbase-JPYSC integration."
+  ],
+  "safety": {
+    "append_only": true,
+    "no_prior_artifact_overwrite": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_manual_workflow_dispatch": true,
+    "no_secret_access": true,
+    "no_external_mutation": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}

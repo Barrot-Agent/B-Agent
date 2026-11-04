@@ -1,0 +1,418 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T154424Z-circle-usdc-gross-net-coinbase-bny-xrp-market",
+  "artifact_type": "xrp_actual_capital_and_institutional_rail_snapshot",
+  "captured_at_utc": "2026-11-02T15:44:24Z",
+  "evidence_cutoff_utc": "2026-11-02T15:44:24Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status": {
+    "research": "EXECUTED",
+    "source_readback": "PENDING",
+    "chain_reconciliation": "NOT_EXECUTED",
+    "forecast": "NOT_ISSUED",
+    "real_money_use": "PROHIBITED_PENDING_OUT_OF_SAMPLE_AND_SHADOW_VALIDATION"
+  },
+  "sources": [
+    {
+      "source_id": "CIRCLE_Q2_RELEASE",
+      "publisher": "Circle",
+      "evidence_class": "official_company_results",
+      "published_at": "2026-08-05",
+      "retrieved_at_utc": "2026-11-02T15:44:24Z",
+      "independence_group": "CIRCLE_Q2_ISSUER_DISCLOSURE",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "source_id": "CIRCLE_Q2_10Q",
+      "publisher": "Circle / SEC EDGAR",
+      "evidence_class": "official_sec_filing",
+      "filed_at": "2026-08-05",
+      "retrieved_at_utc": "2026-11-02T15:44:24Z",
+      "independence_group": "CIRCLE_Q2_ISSUER_DISCLOSURE",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "source_id": "COINBASE_Q3_RELEASE",
+      "publisher": "Coinbase",
+      "evidence_class": "official_company_results",
+      "published_at": "2026-10-29",
+      "retrieved_at_utc": "2026-11-02T15:44:24Z",
+      "independence_group": "COINBASE_Q3_ISSUER_DISCLOSURE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+    },
+    {
+      "source_id": "BNY_RIPPLE_OCT27",
+      "publisher": "BNY and Ripple",
+      "evidence_class": "joint_official_announcement",
+      "published_at": "2026-10-27",
+      "retrieved_at_utc": "2026-11-02T15:44:24Z",
+      "independence_group": "BNY_RIPPLE_JOINT_ANNOUNCEMENT",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html"
+    },
+    {
+      "source_id": "ALPHA_XRP_ETF",
+      "publisher": "Alpha Finance",
+      "evidence_class": "third_party_aggregated_market_data",
+      "observation_through": "2026-10-29",
+      "retrieved_at_utc": "2026-11-02T15:44:24Z",
+      "independence_group": "ALPHA_FINANCE_ETF_DATA",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "source_id": "TRADRADAR_XRP",
+      "publisher": "TradRadar",
+      "evidence_class": "third_party_exchange_aggregation",
+      "observation_at_utc": "2026-11-02T14:55:00Z",
+      "retrieved_at_utc": "2026-11-02T15:44:24Z",
+      "independence_group": "TRADRADAR_DERIVATIVES_DATA",
+      "url": "https://tradradar.io/markets/xrp"
+    }
+  ],
+  "circle_q2": {
+    "metrics": [
+      {
+        "metric": "USDC circulation end-period",
+        "value": 73300000000,
+        "unit": "USD",
+        "date": "2026-06-30",
+        "classification": "supply_stock"
+      },
+      {
+        "metric": "USDC average circulation",
+        "value": 76500000000,
+        "unit": "USD",
+        "period": "2026-Q2",
+        "classification": "period_average_supply"
+      },
+      {
+        "metric": "USDC gross onchain transaction volume",
+        "value": 14800000000000,
+        "unit": "USD",
+        "period": "2026-Q2",
+        "yoy_growth_percent": 151,
+        "classification": "gross_repeated_activity"
+      },
+      {
+        "metric": "USDC gross minted",
+        "value": 83000000000,
+        "unit": "USD",
+        "period": "2026-Q2",
+        "classification": "gross_issuance"
+      },
+      {
+        "metric": "USDC gross redeemed",
+        "value": 87000000000,
+        "unit": "USD",
+        "period": "2026-Q2",
+        "classification": "gross_redemption"
+      },
+      {
+        "metric": "Circle Payments Network transaction volume",
+        "value": 14700000000,
+        "unit": "USD_annualized",
+        "measurement": "trailing_30_days_as_of_2026-06-30",
+        "classification": "annualized_run_rate"
+      },
+      {
+        "metric": "CPN institutions enrolled",
+        "value": 175,
+        "date": "2026-06-30",
+        "classification": "enrollment_not_active_count"
+      },
+      {
+        "metric": "Circle Agent Stack x402 volume settling in USDC",
+        "value": 99.3,
+        "unit": "percent",
+        "classification": "ecosystem_specific_share"
+      },
+      {
+        "metric": "Circle Agent Stack paid services",
+        "value": 900,
+        "qualifier": "more_than",
+        "classification": "service_catalog_count"
+      }
+    ],
+    "derived": [
+      {
+        "metric": "gross_volume_to_average_supply_multiple",
+        "value": 193.4641,
+        "formula": "14.8T / 76.5B",
+        "classification": "gross_turnover_proxy",
+        "caveat": "Not unique-customer velocity, net settlement or new capital; repeated/internal/DeFi/exchange transfers may contribute."
+      },
+      {
+        "metric": "gross_mint_minus_redemption",
+        "value": -4000000000,
+        "unit": "USD_approximate",
+        "formula": "83B - 87B",
+        "classification": "rounded_gross_flow_difference",
+        "caveat": "Rounded company-reported totals; not chain-specific and not a replacement for point-in-time supply reconciliation."
+      }
+    ],
+    "institutional_use_cases": [
+      {
+        "entity": "BNY",
+        "relationship": "Primary USDC reserve custodian; Circle says BNY added USDC minting/redemption within Digital Asset Custody.",
+        "status": "official_company_statement",
+        "unknown": "No client balance or BNY mint/redemption volume disclosed."
+      },
+      {
+        "entity": "Marex",
+        "relationship": "USDC used as initial-margin collateral for CFTC-regulated derivatives under a December 2025 no-action letter.",
+        "status": "company_reported_use_case",
+        "unknown": "Collateral amount and client count undisclosed."
+      },
+      {
+        "entity": "Nium",
+        "relationship": "USDC settlement connected to payout infrastructure across 190+ countries via CPN.",
+        "status": "company_reported_integration",
+        "unknown": "Country coverage is not proof of active route volume."
+      },
+      {
+        "entity": "JCB",
+        "relationship": "Circle stablecoin infrastructure combined with JCB merchant network for treasury transfers and in-store payment experiences in Japan.",
+        "status": "company_reported_collaboration",
+        "unknown": "Production go-live, value and XRP role undisclosed."
+      },
+      {
+        "entity": "SBI Group",
+        "relationship": "Named as founding third-party validator in Arc cohort.",
+        "status": "official_company_statement",
+        "unknown": "Does not prove JPYSC deployment or XRP purchases; SBIC regional companies are separate."
+      }
+    ],
+    "capital_definitions": {
+      "14.8T_onchain_volume": "Gross repeated onchain activity, not net external settlement or new capital.",
+      "83B_minted_87B_redeemed": "Gross issuer flows; approximate -4B difference from rounded inputs.",
+      "14.7B_CPN": "Annualized trailing-30-day run rate, not a separately disclosed quarter settlement total.",
+      "175_enrolled": "Enrollment, not active production users.",
+      "99.3_percent_x402": "Circle Agent Stack x402 context, not global agentic-payment share."
+    }
+  },
+  "coinbase_circle_economics": {
+    "circle_sec": {
+      "q2_2026_coinbase_related_distribution_costs_usd": 324600000,
+      "h1_2026_coinbase_related_distribution_costs_usd": 655300000,
+      "classification": "Circle-reported expenses in connection with Coinbase agreements; not Coinbase net profit.",
+      "contract_mechanics": "Circle's 10-Q says Coinbase receives allocations based on USDC held on its platform after issuer retention and half of remaining broader-ecosystem growth economics after approved third-party participant payments."
+    },
+    "coinbase_q3": {
+      "average_usdc_held_in_products_usd": 22000000000,
+      "yoy_growth_percent": 49,
+      "crypto_trading_volume_market_share_percent": 10.7,
+      "assets_on_platform_share_percent": 12.5,
+      "derivatives_volume_two_year_cagr_percent": 179,
+      "prediction_market_annualized_revenue_usd": 200000000,
+      "qualifier": "more than",
+      "company_reported_share_of_usdc_economics_over_prior_year_percent": 50,
+      "caveat": "Company-reported metrics; average balances, end-period balances, reserve income and net flows have different definitions."
+    },
+    "interpretation": "Coinbase has a material economic incentive to grow USDC while also expanding multi-issuer availability, including RLUSD. Direct USDC alignment is confirmed; actual issuer substitution and RLUSD net economics are unknown."
+  },
+  "bny_shared_institutional_node": {
+    "edges": [
+      {
+        "from": "Circle",
+        "to": "BNY",
+        "relation": "USDC reserve custody and mint/redemption access",
+        "status": "official company statement"
+      },
+      {
+        "from": "Ripple",
+        "to": "BNY",
+        "relation": "RLUSD primary reserve custody and Ripple Prime custody relationship",
+        "status": "official joint announcement"
+      },
+      {
+        "from": "BNY",
+        "to": "XRP",
+        "relation": "Digital Asset Custody supports native XRP for eligible institutional clients",
+        "status": "official joint announcement"
+      },
+      {
+        "from": "BNY",
+        "to": "RLUSD",
+        "relation": "Digital Asset Custody supports RLUSD; BNY is primary reserve custodian",
+        "status": "official joint announcement"
+      }
+    ],
+    "unknowns": [
+      "BNY XRP custody AUC/A",
+      "BNY client XRP purchases",
+      "XRP collateral eligibility at BNY",
+      "Shared reserve accounts or client overlap",
+      "Actual tokenized receivables settlement"
+    ],
+    "non_inference": "A shared custodian does not prove shared reserves, coordinated strategy, client overlap, exclusivity or XRP collateral acceptance."
+  },
+  "xrp_market": {
+    "tradradar": {
+      "observation_at_utc": "2026-11-02T14:55:00Z",
+      "mark_price_usd": 1.2528,
+      "change_24h_percent": -0.05,
+      "open_interest_usd": 1910000000,
+      "venues": 7,
+      "oi_change_24h_percent": 0.7,
+      "funding_per_8h_percent": 0.0074,
+      "liquidations_24h_usd_at_least": 1310000,
+      "long_liquidations_usd": 922600,
+      "short_liquidations_usd": 389470,
+      "long_short_account_ratio": 3.57,
+      "long_account_share_percent": 78.1,
+      "caveat": "15-minute delayed; liquidation feed is partial; account ratio is not notional exposure."
+    },
+    "alpha_finance_etf": {
+      "observation_through": "2026-10-29",
+      "funds_covered": 5,
+      "latest_daily_net_flow_usd": 8400000,
+      "latest_session": "2026-10-29",
+      "last_30_sessions_net_flow_usd": 98900000,
+      "cumulative_net_flow_usd": 1730000000,
+      "cumulative_net_flow_xrp": 989100000,
+      "fund_cumulative_flows_usd": {
+        "Bitwise": 679500000,
+        "Franklin": 529200000,
+        "Canary": 478600000,
+        "Grayscale": 61500000,
+        "21Shares": -18400000
+      },
+      "caveat": "Flow series only; no fund net assets or holdings. Five-fund coverage is not directly comparable to trackers including additional products."
+    },
+    "provider_disagreement": [
+      {
+        "provider": "TradRadar",
+        "open_interest_usd": 1910000000,
+        "coverage": "7 exchanges"
+      },
+      {
+        "provider": "Kodexius",
+        "open_interest_usd": 770130000,
+        "coverage": "7 contracts"
+      }
+    ],
+    "admission": "Retain provider-specific series; do not average. Funding and long skew are crowding/risk features, not directional signals."
+  },
+  "relationship_graph": [
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "regulated-affiliate issuer"
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relation": "major distributor and platform-balance partner with contractual economic allocations"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "distribution and ecosystem economics agreement"
+    },
+    {
+      "from": "Circle",
+      "to": "BNY",
+      "relation": "USDC reserve custody and mint/redemption access"
+    },
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "relation": "RLUSD reserve custody and Ripple Prime custody relationship"
+    },
+    {
+      "from": "BNY",
+      "to": "XRP",
+      "relation": "eligible institutional custody support"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "stablecoin issuer through regulated affiliate"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "retail, Exchange and Prime distribution; supported XRPL/Base/Ethereum rails announced October 28"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native USDC availability; XRP bridge use not implied"
+    },
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "network operator and USDC-native gas ecosystem"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Arc",
+      "relation": "founding validator"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Arc",
+      "relation": "exchange-access participant, not founding validator"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1_GROSS_ACTIVITY_NOT_CAPITAL",
+      "claim": "Large USDC onchain volume is gross repeated turnover rather than net new capital.",
+      "support": "14.8T gross volume vs 76.5B average supply; 83B minted vs 87B redeemed.",
+      "counter": "Some activity is genuine external settlement; route-level classification is absent.",
+      "status": "gross activity confirmed; net external settlement unknown"
+    },
+    {
+      "id": "H2_COINBASE_CIRCLE_ALIGNMENT_AND_MULTI_ISSUER",
+      "claim": "Coinbase's USDC economics align it with Circle while RLUSD availability diversifies issuer exposure.",
+      "support": "SEC-filed Coinbase distribution formula and Coinbase RLUSD listing.",
+      "counter": "No issuer-level Coinbase net revenue or substitution series.",
+      "status": "direct economic alignment confirmed; substitution unknown"
+    },
+    {
+      "id": "H3_BNY_SHARED_INSTITUTIONAL_NODE",
+      "claim": "BNY is a shared custody/infrastructure node for USDC and RLUSD and supports native XRP custody.",
+      "support": "Circle Q2 release and BNY/Ripple October 27 announcement.",
+      "counter": "No XRP AUC/A, client overlap, common reserves or collateral acceptance disclosed.",
+      "status": "service relationships confirmed; capital scale unknown"
+    },
+    {
+      "id": "H4_USDC_COMPETES_AND_COMPLEMENTS_XRP",
+      "claim": "USDC payment/collateral rails may displace XRP bridge usage on some routes while native USDC on XRPL can complement XRPL activity.",
+      "support": "Marex, Nium, JCB, Arc and USDC on XRPL.",
+      "counter": "No route-level cost, settlement, depth or executed XRP bridge comparison.",
+      "status": "competing scenarios; causal effect unmeasured"
+    }
+  ],
+  "source_independence": {
+    "circle_release_and_10q": "Same issuer disclosure family; SEC filing supplies contractual/accounting detail, not independent corroboration.",
+    "coinbase_release": "Company-reported metrics.",
+    "bny_ripple_release": "Joint announcement, not independent client custody data.",
+    "tradradar": "Single provider aggregation.",
+    "alpha_finance": "Single third-party ETF flow aggregation."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized XRP net flows, path-level bridge usage, consolidated spot depth or calibrated out-of-sample causal evidence."
+  },
+  "next_actions": [
+    "Reconcile Circle Q2 gross mint/redemption against daily supply snapshots and SEC balance-sheet changes.",
+    "Capture Circle Q3 results on November 4 and compare USDC circulation, reserve yield, Coinbase distribution costs and platform concentration.",
+    "Track Coinbase RLUSD by XRPL, Base and Ethereum separately; do not infer XRP bridge demand from RLUSD transfers.",
+    "Reconcile BNY XRP custody claims against disclosed AUC/A or public reserve addresses; do not infer client purchases.",
+    "Normalize ETF trackers by fund coverage, date and holdings-versus-flow definitions.",
+    "Normalize XRP open interest contract-by-contract and retain provider disagreement.",
+    "Continue fixed-horizon point-in-time evaluation and shadow forecasts; no live recommendation."
+  ],
+  "safety": {
+    "no_secrets_accessed": true,
+    "no_privileged_workflow_dispatched": true,
+    "no_deployment": true,
+    "no_main_branch_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_transaction": true
+  }
+}

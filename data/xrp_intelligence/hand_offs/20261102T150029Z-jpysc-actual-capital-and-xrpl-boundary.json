@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T150029Z-jpysc-actual-capital-and-xrpl-boundary",
+  "captured_at_utc": "2026-11-02T15:00:29Z",
+  "evidence_cutoff_utc": "2026-11-02T15:00:29Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "What does SBI VC Trade's newly reported JPYSC balance and lending activity measure, and does it establish XRP, XRPL or Circle-linked capital flows?",
+  "key_findings": [
+    {
+      "id": "JPYSC-VC-TRADE-HANDLED-BALANCE-2026-11-02",
+      "classification": "official_company_statement",
+      "publisher": "SBI VC Trade",
+      "published_at": "2026-11-02",
+      "as_of": "2026-11-02",
+      "metrics": {
+        "lending_balance_jpy_greater_than": 10000000000,
+        "handled_balance_jpy_greater_than": 30000000000,
+        "lending_courses": [
+          {
+            "term_days": 168,
+            "annual_rate_pct": 3
+          },
+          {
+            "term_days": 84,
+            "annual_rate_pct": 2.5
+          },
+          {
+            "term_days": 28,
+            "annual_rate_pct": 2
+          }
+        ]
+      },
+      "definitions": {
+        "handled_balance": "SBI VC Trade explicitly defines JPYSC handled balance as on-chain balance plus lending balance.",
+        "lending_balance": "JPYSC lent by customers to SBI VC Trade in exchange for a rental fee.",
+        "scope": "VCTRADE service only; BITPOINT service excluded."
+      },
+      "interpretation": "These are outstanding platform balances and a customer-to-exchange lending exposure. They are not transaction turnover, public-chain settlement volume, external net capital inflow, XRP collateral, XRP purchases or evidence of XRP demand.",
+      "limits": [
+        "The two reported figures are lower-bound thresholds (exceeded), not exact balances.",
+        "The handled balance already includes the lending balance; never add the two figures together.",
+        "The lending asset's deployment by SBI VC Trade is not disclosed in this release.",
+        "The published rates and terms are the offers as of November 2, 2026 and can change with market conditions.",
+        "The product is not a bank deposit, is not covered by deposit insurance, and early cancellation during the lending term is generally unavailable."
+      ],
+      "source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+    },
+    {
+      "id": "JPYSC-ISSUANCE-AND-PUBLIC-CHAIN-STATUS",
+      "classification": "official_company_statement",
+      "publisher": "SBI Holdings / SBI Shinsei Trust Bank / SBI VC Trade / Startale",
+      "published_at": "2026-06-24",
+      "claims": [
+        "SBI Shinsei Trust Bank is the JPYSC issuer.",
+        "SBI VC Trade distributes JPYSC and initially limited use to VCTRADE accounts.",
+        "External-wallet withdrawals were unavailable at initial launch.",
+        "Public-chain circulation was a future step after legal, tax and supervisory matters were resolved; no specific public chain was named in the announcement."
+      ],
+      "interpretation": "The November 2 handled/lending balance does not establish public XRPL supply. The launch conditions are incompatible with treating JPYSC as an already-live public XRPL asset at that date.",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "id": "JPYSC-TRUST-ASSET-AND-LENDING-BASELINE",
+      "classification": "official_company_statement",
+      "publisher": "SBI Shinsei Trust Bank / SBI VC Trade",
+      "published_at": "2026-09-07",
+      "metrics": {
+        "issued_balance_jpy_approx": 20100000000,
+        "lending_applications_jpy_approx": 6900000000,
+        "combined_issued_plus_lending_jpy_approx": 27000000000,
+        "short_term_japanese_government_bonds_jpy": 1000000000
+      },
+      "claims": [
+        "The issuer began managing a portion of JPYSC trust assets in short-term Japanese government bonds.",
+        "The announcement described approximately JPY20.1 billion issued, approximately JPY6.9 billion in JPYSC lending applications, and approximately JPY27 billion combined.",
+        "The release described a statutory framework allowing eligible short-term government bonds or deposits within specified limits."
+      ],
+      "limits": [
+        "The figures are a September 7 snapshot, not November 2 reserve composition.",
+        "The November 2 handled-balance definition is on-chain balance plus lending balance; do not silently equate every prior issued-balance definition with a later on-chain balance.",
+        "The JPY1 billion figure is a portion of trust assets, not the entirety of JPYSC reserves."
+      ],
+      "source": "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+    },
+    {
+      "id": "JPYSC-OPEN-STANDARD-EXPLORATION",
+      "classification": "official_company_statement_about_exploration",
+      "publisher": "SBI Holdings / Startale",
+      "published_at": "2026-10-16",
+      "claims": [
+        "SBI Holdings and Startale joined the Open Standard initiative, which SBI described as having more than 140 participating companies, including Coinbase.",
+        "SBI and Startale said they were considering a proof of concept for interoperability between JPYSC and Open USD (OUSD), subject to OUSD's on-chain launch."
+      ],
+      "limits": [
+        "Shared initiative membership does not establish a bilateral Coinbase-JPYSC agreement.",
+        "The JPYSC-OUSD work is exploration, not a live bridge, production route or measured settlement volume.",
+        "No XRP or XRPL route is stated."
+      ],
+      "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relation": "issuer",
+      "classification": "official_company_statement"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relation": "distributor and customer-lending counterparty",
+      "classification": "official_company_statement"
+    },
+    {
+      "from": "Startale Group",
+      "to": "JPYSC",
+      "relation": "co-developer",
+      "classification": "official_company_statement"
+    },
+    {
+      "from": "JPYSC",
+      "to": "VCTRADE accounts",
+      "relation": "initial distribution/use scope",
+      "classification": "official_company_statement"
+    },
+    {
+      "from": "JPYSC",
+      "to": "public blockchains",
+      "relation": "future circulation subject to legal/tax/regulatory resolution; chain unspecified",
+      "classification": "official_company_statement"
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "Open Standard",
+      "relation": "initiative participants; exploring JPYSC-OUSD interoperability",
+      "classification": "official_company_statement_about_exploration"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open Standard",
+      "relation": "named participant in shared initiative",
+      "classification": "official_company_statement_about_participant_cohort"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle SBI Japan K.K.",
+      "relation": "separate 50 percent joint-venture interest for USDC distribution support",
+      "classification": "SEC_filing"
+    },
+    {
+      "from": "SBI Holdings / SBI Remit / SBI VC Trade / SBI Ripple Asia",
+      "to": "Ripple XRP remittance",
+      "relation": "separate XRP-using remittance channel announced for selected corridors",
+      "classification": "official_company_statement"
+    },
+    {
+      "from": "JPYSC",
+      "to": "XRP / XRPL",
+      "relation": "no direct integration or XRP demand established by these sources",
+      "classification": "explicit_non_inference"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "JPYSC-H1-MULTIRAIL",
+      "claim": "SBI is developing a multi-rail digital-money strategy spanning XRP-using remittance, JPYSC, RLUSD/USDC distribution and broader tokenized-asset initiatives.",
+      "support": "Separate official SBI, Ripple, Circle and Startale announcements.",
+      "counterevidence": "The separate products and partnerships do not prove shared liquidity, common settlement routes or integrated production flows.",
+      "status": "STRATEGIC_POSITIONING_SUPPORTED; CROSS-RAIL_FLOW_UNQUANTIFIED"
+    },
+    {
+      "id": "JPYSC-H2-XRP-DEMAND",
+      "claim": "JPYSC handled-balance growth creates direct XRP spot demand.",
+      "support": "SBI has separate XRP remittance activity and XRPL research.",
+      "counterevidence": "JPYSC's initial VCTRADE-only scope, no public-chain deployment, no stated XRP collateral, no XRP bridge route and no disclosed XRP purchases.",
+      "status": "NOT_SUPPORTED_BY_CURRENT_EVIDENCE"
+    },
+    {
+      "id": "JPYSC-H3-EXTERNAL-CAPITAL",
+      "claim": "JPYSC lending balances represent new external capital entering crypto markets.",
+      "support": "Customers lend JPYSC to SBI VC Trade and receive a rental fee.",
+      "counterevidence": "The reported balance is a platform lending exposure; the release does not disclose use of proceeds, onward deployment, market purchases or external settlement.",
+      "status": "CUSTOMER_TO_EXCHANGE_FUNDING_EXPOSURE_CONFIRMED; DOWNSTREAM_USE_UNKNOWN"
+    },
+    {
+      "id": "JPYSC-H4-CIRCLE-COINBASE",
+      "claim": "JPYSC growth is already operationally connected to Circle's SBI JV or Coinbase distribution.",
+      "support": "SBI separately participates in Open Standard and has a Circle SBI Japan JV; Coinbase is an Open Standard participant.",
+      "counterevidence": "No bilateral JPYSC-Coinbase integration, JPYSC-Circle settlement route or production interoperability is disclosed. Circle's Q2 2026 filing says Circle SBI Japan had no significant operating results through June 30.",
+      "status": "NOT_ESTABLISHED"
+    }
+  ],
+  "feature_admission": {
+    "jpysc_handled_balance": "Platform-specific outstanding balance feature only; preserve the official definition (on-chain balance plus lending balance), service scope and as-of timestamp.",
+    "jpysc_lending_balance": "Separate customer-to-SBI-VC-Trade lending exposure and product-uptake feature; not transaction volume or deployed capital.",
+    "jpysc_reserve_composition": "Use only dated trust-asset disclosures; do not carry September 7 composition forward to November 2.",
+    "jpysc_public_chain_supply": "NOT_ADMITTED until issuer identifies chain, contract, deployment date, public transfer capability and reconciled ledger supply.",
+    "xrp_spot_demand": "NOT_ADMITTED from JPYSC balances or lending alone.",
+    "circle_coinbase_crossrail": "Categorical relationship only until executed route, chain, contract, volume and timestamps are independently verified."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "JPYSC product balances are not synchronized XRP market/flow features and provide no validated causal link to XRP price."
+  },
+  "next_actions": [
+    "Track exact daily JPYSC issued, on-chain, lending and handled balances without double counting.",
+    "Obtain issuer trust-asset composition updates and maturity/eligibility details for short-term Japanese government bonds.",
+    "Verify any public-chain migration announcement, chain ID, issuer account/contract and external transfer availability before recording public supply.",
+    "Verify whether JPYSC-OUSD interoperability advances beyond exploration and identify actual transactions and counterparties.",
+    "Keep JPYSC lending, Circle USDC distribution and SBI XRP remittance as separate graph and feature families.",
+    "Do not infer XRP spot demand without synchronized XRP acquisition, disposal, bridge and market-liquidity observations."
+  ],
+  "sources": [
+    {
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "published_at": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Holdings / SBI Shinsei Bank / SBI Shinsei Trust Bank / SBI VC Trade / Startale",
+      "published_at": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Shinsei Trust Bank / SBI VC Trade",
+      "published_at": "2026-09-07",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Holdings / Startale",
+      "published_at": "2026-10-16",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "Circle Internet Group",
+      "published_at": "2026-08-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "class": "SEC_filing"
+    },
+    {
+      "publisher": "SBI Remit / SBI VC Trade / SBI Ripple Asia",
+      "published_at": "2023-09-06",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "class": "official_company_statement"
+    }
+  ],
+  "safety": {
+    "append_only": true,
+    "no_prior_artifact_overwrite": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_external_mutation": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}

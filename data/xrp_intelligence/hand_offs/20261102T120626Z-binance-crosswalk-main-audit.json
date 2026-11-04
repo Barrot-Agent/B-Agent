@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T120626Z-binance-xrp-crosswalk-main-security-audit",
+  "captured_at_utc": "2026-11-02T12:06:26Z",
+  "evidence_cutoff_utc": "2026-11-02T12:06:26Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "repository_observation": {
+    "repository": "Barrot-Agent/B-Agent",
+    "visibility": "public",
+    "default_branch": "main",
+    "observed_main_sha": "59c815f364fd1eda854e4256b2cc00b8677a7ae2",
+    "latest_observed_commit": {
+      "message": "chore: Barrot telemetry report",
+      "committed_at_utc": "2026-11-02T12:04:02Z",
+      "changed_file": "AUTONOMOUS_DEPLOYMENT_REPORT.md"
+    },
+    "comparison_from_prior_research_base": {
+      "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+      "head_sha": "59c815f364fd1eda854e4256b2cc00b8677a7ae2",
+      "ahead_by": 2,
+      "behind_by": 0,
+      "net_changed_files": [
+        "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ]
+    },
+    "access_observation": "GitHub connector returned repository permission admin=true. This confirms the available integration's repository permission; it does not authorize merging or changing main.",
+    "no_main_write_by_this_run": true
+  },
+  "binance_xrp_transfer_crosswalk": {
+    "classification": "confirmed_transaction_reports_with_partial_hash_mapping",
+    "original_attacker_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "original_incoming_xrp_reported_by_trm": 233461943.1,
+    "previously_reconciled_distribution_total_xrp": 233454920,
+    "previously_reported_successful_outgoing_payments": 9,
+    "previously_reported_recipient_accounts": 6,
+    "reported_distribution_window_utc": "2026-11-02T03:52:41Z/2026-11-02T04:00:31Z",
+    "newly_crosswalked_pair": {
+      "total_xrp": 80000000,
+      "transfers": [
+        {
+          "amount_xrp": 40000000,
+          "reported_time_utc": "2026-11-02T03:55:31Z"
+        },
+        {
+          "amount_xrp": 40000000,
+          "reported_time_utc": "2026-11-02T03:56:21Z"
+        }
+      ],
+      "common_sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "whale_alert_transaction_hashes": [
+        "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+        "DC8D39BC98DB7EDB76EE18E7DD6B0874DA83B51091E2BBFD6C4C70C156A0436A"
+      ],
+      "hash_time_mapping": "UNRESOLVED: TheCryptoBasic's link associated with 03:55:31 redirects to the 3AAA hash, while Whale Alert's indexed transaction record for that same 3AAA hash reports 03:56:21. The second article link redirects to DC8D. Preserve both hashes and both reported times without assigning the disputed mapping.",
+      "one_indexed_transaction_detail": {
+        "hash": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+        "whale_alert_reported_time_utc": "2026-11-02T03:56:21Z",
+        "receiver": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+        "amount_xrp": 40000000
+      }
+    },
+    "accounting_relationship": "The 80M pair is a subset of the approximately 233.45492M XRP distribution from the original attacker account, not an additional 80M on top. The pair falls within the previously reported nine-payment distribution window. One Whale Alert-identified receiver, rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD, is one of the six previously recorded large-tranche recipients.",
+    "independent_source_limits": [
+      "Whale Alert provides transaction-level alert metadata but the raw pinned-ledger history was not independently retrieved in this run.",
+      "TheCryptoBasic, U.Today and CoinDesk CC repeat the same Whale Alert transfer pair and are not three independent blockchain observations.",
+      "CoinDesk CC identifies itself as an AI desk and states that its linked-source checks do not independently verify every claim.",
+      "The previous Bithomp capture at 06:25 UTC reported no subsequent outbound payments from the six recipients; this is historical, not a fresh current balance check."
+    ],
+    "current_recipient_balances": "UNKNOWN: no fresh raw validated-ledger AccountRoot/account_tx snapshot for all six recipients was obtained in this run.",
+    "sale_or_dex_conversion_established": false,
+    "separate_binance_labeled_50m_transfer": "The November 1 50M XRP transfer from a different Binance-labeled source remains separate. No direct connection to the attacker account or proof of purchase is established."
+  },
+  "current_main_security_audit": {
+    "scheduler_tick": {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "blob_sha": "ec7a42d6b58a5067f15a9ae9ef54ede9b80580d1",
+      "triggers": "Every 15 minutes and manual workflow_dispatch",
+      "permissions": {
+        "contents": "write",
+        "actions": "write"
+      },
+      "behavior": "Runs scripts/scheduler.py tick, commits schedule_queue.jsonl and pushes main.",
+      "main_scheduler_script_sha": "84878a6a1ec32064ec3f11995134c91c4fdc4199",
+      "root_cause": "Main _valid_workflow accepts any existing workflow filename; tick dispatches that workflow with queue-provided inputs. Existence is not a safe workflow allowlist.",
+      "proposed_control_pr": 1505
+    },
+    "merge_queue": {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "trigger": "Manual workflow_dispatch",
+      "risky_defaults": {
+        "mode": "label",
+        "max_prs": "0 (unlimited)",
+        "dry_run": "false",
+        "merge_method": "squash"
+      },
+      "permissions": {
+        "contents": "write",
+        "pull_requests": "write",
+        "checks": "read",
+        "statuses": "read"
+      },
+      "behavior": "Can enumerate all open PRs in mode=all, update branches, merge PRs and delete branches.",
+      "proposed_control_pr": 1502
+    },
+    "cross_analysis": {
+      "path": ".github/workflows/cross-analysis.yml",
+      "blob_sha": "143bb2ed89ef4e2d85071a583896adad2c37c81b",
+      "triggers": [
+        "successful Knowledge Signal Cycle workflow_run",
+        "hourly schedule",
+        "manual workflow_dispatch"
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "behavior": "Generates entity/sentiment artifacts, commits and pushes them to main.",
+      "proposed_control_pr": 1504
+    },
+    "current_proposals": {
+      "1502": {
+        "state": "open",
+        "draft": true,
+        "merged": false,
+        "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+        "head_sha": "471eda6cff82e3425c0d458d591fdbbc7e49d2de",
+        "ci": "success",
+        "fail_closed_gate": "success",
+        "purpose": "Replace merge queue with read-only disabled notice."
+      },
+      "1504": {
+        "state": "open",
+        "draft": true,
+        "merged": false,
+        "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+        "head_sha": "3a1348e0f90b792c0bc818605ebabf1ac8dc228d",
+        "ci": "success",
+        "fail_closed_gate": "success",
+        "purpose": "Make Cross Analysis read-only and artifact-based."
+      },
+      "1505": {
+        "state": "open",
+        "draft": true,
+        "merged": false,
+        "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+        "head_sha": "a8a10e6709555ec6167ae97d8ce003317d1f7b74",
+        "ci": "success",
+        "fail_closed_gate": "success",
+        "purpose": "Restrict unattended scheduler dispatch to two exact read-only validation workflows with empty inputs."
+      }
+    },
+    "proposal_limitation": "All three proposals are based on 57a7e9a, while main is now two commits ahead at 59c815f. Their exact branch-head CI and fail-closed runs passed, but those checks did not run against the updated main tree. GitHub currently reports each PR mergeable=true. No branch update or merge was performed.",
+    "scheduler_pr_residual": "PR #1505 changes scripts/scheduler.py to allow only ci.yml and barrot-bundle-operational-smoke.yml and rejects workflow inputs. The scheduler workflow still retains contents:write/actions:write and commits queue updates; this is a constrained dispatcher, not a read-only scheduler.",
+    "allowlisted_workflow_review": "On PR #1505, ci.yml declares contents:read and runs tests; barrot-bundle-operational-smoke.yml declares contents:read and runs four deterministic tests. The latter has a push trigger limited to a historical feature branch plus manual dispatch. Neither file contains an external deployment, submission or merge action in the inspected content."
+  },
+  "prediction_integrity": {
+    "legacy_evaluator": {
+      "path": "scripts/check_signal_accuracy.py",
+      "blob_sha": "f7630d5655a66001d9de19c30451e5d6e53940a4",
+      "defects": [
+        "Fetches the current CoinGecko XRP price at evaluation time.",
+        "Scores each signal at any elapsed time of at least 24 hours rather than one fixed horizon.",
+        "Uses direction/neutral thresholds that are not a calibrated probability target.",
+        "Mutates and rewrites signal_history.jsonl with checked/correct/price_at_check fields.",
+        "Does not use an immutable point-in-time outcome snapshot or verify a source registration cutoff."
+      ],
+      "conclusion": "The legacy 45.5% result is NOT_COMPARABLE to fixed-horizon out-of-sample predictive skill.",
+      "proposed_control_pr": 1488
+    },
+    "paper_trading_state": {
+      "path": "web/paper_trading_state.json",
+      "blob_sha": "5c087f411582aa1c24f7ff351e92e796f0eea657",
+      "cash_usd": 9009.936613782476,
+      "position_size": 0.012445158497236623,
+      "position_product": null,
+      "avg_entry_price": 80436.84,
+      "trade_count": 126,
+      "interpretation": "Product identity is null; the position cannot be attributed to XRP, BTC or another asset. This file alone does not establish valid executed paper trades.",
+      "proposed_control_pr": 1498
+    },
+    "sentiment_quality": {
+      "sentiment_shift_generated_at_utc": "2026-11-02T11:52:09.488881Z",
+      "xrp_recent_24h_entries": 0,
+      "xrp_prior_24h_entries": 0,
+      "xrp_recent_score": null,
+      "xrp_prior_score": null,
+      "btc_recent_24h_entries": 0,
+      "btc_prior_24h_entries": 0,
+      "entity_profile_xrp_entries": 1208,
+      "entity_profile_xrp_mentions": 286,
+      "entity_profile_xrp_score": 0.455,
+      "admission": "The 286-mention aggregate has no rolling-window timestamp distribution and is not current sentiment. Neither this aggregate nor the empty rolling window is admitted as a predictive feature."
+    }
+  },
+  "hypotheses": {
+    "H1": "The 80M transfer headlines describe two components of the previously observed 233.45492M attacker-account distribution, not a new additional 80M outflow.",
+    "H2": "The two new recipient wallets may be staging addresses, but beneficial ownership, control and purpose are unknown.",
+    "H3": "The separate Binance-labeled 50M transfer may be customer withdrawal, internal custody reorganization or treasury settlement; no purchase or hack linkage is established.",
+    "H4": "The attacker's redistribution creates future market-supply risk, but no exchange deposit, DEX sale or realized monetization is established by the captured evidence."
+  },
+  "source_provenance": [
+    {
+      "id": "COINDESK-CC-2026-11-02",
+      "url": "https://coindesk.cc/story/2026/11/xrp-hit-first-in-binance-hack-five-wallets-drained-in-about-four-minutes",
+      "published_at_utc": "2026-11-02T06:06:00Z",
+      "classification": "secondary AI-desk synthesis",
+      "independence": "Repackages Bitcoin.com News and U.Today; not independent on-chain corroboration."
+    },
+    {
+      "id": "THECRYPTOBASIC-2026-11-02",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/",
+      "published_at_utc": "2026-11-02",
+      "classification": "secondary reporting citing Whale Alert",
+      "independence": "Same underlying Whale Alert data as U.Today; transaction-hash/time mapping conflict noted."
+    },
+    {
+      "id": "UTODAY-2026-11-02",
+      "url": "https://u.today/40-million-xrp-moved-from-binance-hacker-wallet",
+      "published_at_utc": "2026-11-02",
+      "classification": "secondary reporting citing Whale Alert",
+      "independence": "Same alert stream; not independent of TheCryptoBasic."
+    },
+    {
+      "id": "WHALE-ALERT-3AAA",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "classification": "transaction alert detail",
+      "claim": "40M XRP from original attacker account to rhXtRtpf...; indexed timestamp 03:56:21 UTC."
+    },
+    {
+      "id": "GITHUB-MAIN-COMMIT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/59c815f364fd1eda854e4256b2cc00b8677a7ae2",
+      "classification": "primary repository state"
+    },
+    {
+      "id": "GITHUB-PR-1502",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1502",
+      "classification": "proposed code; not merged"
+    },
+    {
+      "id": "GITHUB-PR-1504",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1504",
+      "classification": "proposed code; not merged"
+    },
+    {
+      "id": "GITHUB-PR-1505",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1505",
+      "classification": "proposed code; not merged"
+    }
+  ],
+  "next_actions": [
+    "Obtain two independent raw XRPL/Clio account_tx and AccountRoot observations at the same validated ledger for the attacker and all six recipient accounts.",
+    "Resolve the 0.5992 XRP residual using exact delivered amounts, activation transfers and transaction fees.",
+    "Reconcile the two 40M hashes against raw validated ledger metadata and resolve the Whale Alert/TheCryptoBasic timestamp mapping conflict.",
+    "Track the six recipients for exchange, DEX or bridge deposits; do not label transfers as sales without conversion evidence.",
+    "Refresh the separate Binance-labeled 50M destination and downstream history without conflating it with the attacker wallet.",
+    "Update or create fresh-main successors for PRs #1502, #1504 and #1505 only if review confirms the current main delta and tests remain compatible; do not merge automatically.",
+    "Retire the live-price variable-horizon evaluator and keep the legacy score NOT_COMPARABLE.",
+    "Keep XRP forecasts NOT_ISSUED until immutable point-in-time features, fixed-horizon outcomes, baseline comparisons, calibration and shadow evaluation exist."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No validated XRP point-in-time feature store, fixed-horizon out-of-sample baseline, calibrated probability record or resolved shadow outcome."
+  },
+  "safety": {
+    "branch_only_append": true,
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "deployment": false,
+    "paper_position_mutated": false,
+    "real_money_trade": false
+  }
+}

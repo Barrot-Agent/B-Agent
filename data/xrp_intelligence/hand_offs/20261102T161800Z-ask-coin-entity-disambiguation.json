@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T161800Z-ask-coin-entity-disambiguation",
+  "artifact_type": "exact_phrase_entity_resolution",
+  "captured_at_utc": "2026-11-02T16:18:00Z",
+  "evidence_cutoff_utc": "2026-11-02T16:18:00Z",
+  "exact_phrase": "ASK Coin",
+  "status": {
+    "research": "EXECUTED",
+    "source_readback": "PENDING",
+    "identity_resolution": "MULTIPLE_DISTINCT_CANDIDATES",
+    "xrp_relationship": "NO_DIRECT_RELATIONSHIP_ESTABLISHED"
+  },
+  "candidates": [
+    {
+      "id": "ASK_COIN_EXCHANGE_ASKCOIN_NET",
+      "entity_type": "centralized_exchange_brand_listing",
+      "name": "Ask Coin",
+      "domain": "askcoin.net",
+      "source": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "source_observations": {
+        "status": "Inactive",
+        "listing_tier": "Untracked Listing",
+        "volume_data": "Untracked",
+        "reserve_data": "Unavailable",
+        "financial_reserves": "No data",
+        "token_allocation": "No data",
+        "market_table": "No data available now"
+      },
+      "domain_observation": "Opening askcoin.net redirected to a HugeDomains domain-profile page that was inaccessible to the web retrieval tool. This is consistent with an inactive or parked domain at retrieval, but no registrar/WHOIS record was independently obtained.",
+      "xrp_relationship": "No XRP market pair or XRP-specific relationship is visible in the current CoinMarketCap market table because the exchange page contains no market data. Historical XRP listing status is unknown.",
+      "confidence": "HIGH for the current CoinMarketCap inactive/untracked display; MEDIUM for the domain-parked interpretation."
+    },
+    {
+      "id": "ASKCOIN_TOKEN_ASKCOIN_ME",
+      "entity_type": "cryptoasset_listing",
+      "name": "Askcoin",
+      "ticker": "ASK",
+      "domain": "askcoin.me",
+      "explorer": "https://explorer.askcoin.me",
+      "sources": [
+        "https://coinmarketcap.com/currencies/askcoin/",
+        "https://www.bitdegree.org/cryptocurrency-prices/askcoin-ask-price/price-history"
+      ],
+      "source_observations": {
+        "coinmarketcap_page": "Preview page",
+        "coinmarketcap_uc_id": 4640,
+        "total_supply": 0,
+        "circulating_supply": 0,
+        "max_supply": "Not shown",
+        "listed_explorer": "explorer.askcoin.me",
+        "bitdegree_status": "Untracked/inactive",
+        "public_social_accounts": "Not found/submitted in the inspected listing",
+        "public_github_repository": "Not found/submitted in the inspected listing"
+      },
+      "access_limitations": "askcoin.me and explorer.askcoin.me were inaccessible to the web retrieval tool during this run. No contract address, chain, issuer, or live ledger was verified.",
+      "xrp_relationship": "No XRPL deployment, XRP trading pair or direct XRP integration was found in the inspected sources. This is an absence-of-evidence statement, not proof that no historical relationship ever existed.",
+      "confidence": "HIGH for the displayed zero-supply/preview metadata; LOW for project identity and technical details because primary domain/explorer access was unavailable."
+    },
+    {
+      "id": "PERMISSION_COIN_ASK",
+      "entity_type": "cryptoasset_and_data_permission_platform",
+      "name": "Permission Coin",
+      "ticker": "ASK",
+      "website": "https://permission.io",
+      "source": "https://coinmarketcap.com/currencies/permission-coin/",
+      "source_observations": {
+        "total_supply": 100000000000,
+        "max_supply": 100000000000,
+        "circulating_supply": 16166619298,
+        "holders_approx": 206190,
+        "market_cap_usd_approx": 1410000,
+        "reported_24h_volume_usd_approx": 13.97,
+        "official_networks_listed": [
+          "Base",
+          "Polygon"
+        ],
+        "token_standard": "LayerZero OFT",
+        "integrations_listed": [
+          "Stargate"
+        ],
+        "reported_markets": [
+          "Gate.io",
+          "Aerodrome",
+          "Uniswap"
+        ]
+      },
+      "interpretation": "This is a distinct, identified token/platform candidate. Its reported deployment on Base and Polygon does not establish an XRPL deployment or XRP integration. The very low reported 24-hour volume is a liquidity warning, not a liquidity-depth measurement.",
+      "xrp_relationship": "No direct XRPL contract or XRP integration was identified in the inspected official/aggregator sources.",
+      "confidence": "HIGH that this is a distinct Permission project; market values are third-party provider snapshots and require independent contract/DEX reconciliation."
+    }
+  ],
+  "disambiguation_conclusion": "The exact phrase ASK Coin does not resolve to one entity. At least three distinct candidates appear in public sources: an inactive/untracked exchange brand at askcoin.net, a separate inactive/untracked Askcoin token listing at askcoin.me, and Permission Coin (ASK) on Base/Polygon. Earlier research that treated Permission Coin as the leading candidate is downgraded: it remains one candidate, not the assumed intended referent.",
+  "relationship_edges": [
+    {
+      "from": "Ask Coin exchange / askcoin.net",
+      "to": "XRP",
+      "relation": "No current pair evidence in available listing",
+      "status": "unknown_historical_relationship"
+    },
+    {
+      "from": "Askcoin token / askcoin.me",
+      "to": "XRPL",
+      "relation": "No XRPL contract verified",
+      "status": "not_established"
+    },
+    {
+      "from": "Permission Coin / ASK",
+      "to": "Base and Polygon",
+      "relation": "Listed token deployment",
+      "status": "third_party_listing_claim"
+    },
+    {
+      "from": "Permission Coin / ASK",
+      "to": "XRP",
+      "relation": "No direct integration identified",
+      "status": "not_established"
+    }
+  ],
+  "next_actions": [
+    "Keep the three candidates separate in every later exact-phrase search.",
+    "If askcoin.net is mentioned in a historical document, identify the legal operator from contemporaneous terms, archived pages and official corporate records before assigning identity.",
+    "If askcoin.me is mentioned, verify historical domain records, explorer chain identity and any archived contract before attributing the token.",
+    "For Permission Coin, verify Base and Polygon contract addresses from Permission's own documentation and inspect actual liquidity pools before making any market claim.",
+    "Do not infer XRP exposure from ticker collision or the word ASK."
+  ],
+  "safety": {
+    "no_wallet_interaction": true,
+    "no_private_data": true,
+    "no_domain_purchase": true,
+    "no_account_creation": true,
+    "no_real_money_transaction": true
+  }
+}

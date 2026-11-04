@@ -1,0 +1,89 @@
+{
+  "schema": "barrot.xrp-intelligence.handoff.v1",
+  "artifact_id": "20261102T131830Z-binance-xrp-proof-of-reserves-snapshot-window.json",
+  "captured_at_utc": "2026-11-02T13:18:30Z",
+  "topic": "Binance XRP Proof of Reserves after the October 29 incident",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "status": "append_only_evidence_addendum",
+  "primary_facts": [
+    {
+      "claim": "Binance's incident Recovery Update No. 3 says BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC were each fully backed at 1:1 or better, while overall replenishment/coverage had reached approximately 90%.",
+      "class": "company_statement",
+      "date": "2026-10-31",
+      "source": "https://www.binance.com/en/square/post/383334058248881"
+    },
+    {
+      "claim": "The new Proof of Reserves snapshot was taken at 2026-10-31 00:00 UTC. Binance says generation of the complete zero-knowledge proof takes approximately 40-50 hours and expects user-verifiable proof by Tuesday, 2026-11-03 UTC.",
+      "class": "company_statement",
+      "date": "2026-10-31",
+      "source": "https://www.binance.com/en/square/post/383334058248881"
+    },
+    {
+      "claim": "Binance says replenishment used part of SAFU, part of the Futures Insurance Fund and corporate funds. It says it will continue purchasing the remaining affected tokens through market and OTC channels; the remaining approximately 10% is outside the ten fully backed top assets and consists of less-liquid tokens.",
+      "class": "company_statement",
+      "source": "https://www.binance.com/en/square/post/383334058248881"
+    },
+    {
+      "claim": "Binance's Proof of Reserves explainer describes customer-level verification using a Merkle tree and zk-SNARK proof files.",
+      "class": "official_methodology",
+      "source": "https://www.binance.com/en/proof-of-reserves"
+    }
+  ],
+  "secondary_observation": {
+    "claim": "A secondary report attributes an XRP reserve ratio of 100.99% to the October 31 snapshot.",
+    "class": "secondary_sourced_claim",
+    "source": "https://www.cryptotimes.io/2026/10/31/binance-reports-90-replenishment-updates-por-after-6-3b-hack/",
+    "verification_status": "not independently re-read from Binance's underlying downloadable PoR data in this run",
+    "treatment": "Do not elevate 100.99% to verified primary-source fact. The primary Binance statement confirms only that XRP was fully backed at 1:1 or better."
+  },
+  "critical_time_scope": {
+    "snapshot_time_utc": "2026-10-31T00:00:00Z",
+    "withdrawal_reopening_time_utc": "2026-11-01T06:00:00Z",
+    "later_reuters_outflow_observation": {
+      "captured_by_reuters_at": "2026-11-02T01:53:00Z",
+      "net_customer_outflow_since_reopening_usd": 4720000000,
+      "share_of_reported_platform_assets_pct": 2.8,
+      "source": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/"
+    },
+    "interpretation": "The October 31 PoR snapshot predates the November 1 withdrawal reopening and the subsequent reported $4.72B net customer outflow. It cannot be treated as a post-withdrawal balance snapshot or as proof of current November 2 reserve balances."
+  },
+  "distinctions": [
+    "Replenishment/coverage is not the same as recovery or return of stolen assets.",
+    "XRP being listed among fully backed customer assets does not disclose the amount or timing of any XRP-specific spot or OTC purchases.",
+    "A 1:1 snapshot supports coverage of the included customer balances at that snapshot time; it does not by itself establish current balances after later withdrawals.",
+    "A PoR snapshot does not alone prove overall corporate solvency, absence of encumbrances, complete off-balance-sheet obligations, or the security of signing infrastructure.",
+    "The October 31 snapshot is separate from the attacker-controlled 233.45492M XRP redistribution on November 2."
+  ],
+  "prediction_features": {
+    "include_as_features": [
+      "snapshot_timestamp",
+      "xrp_customer_liability_coverage_ratio",
+      "xrp_reserve_balance",
+      "proof_generation_status",
+      "proof_publication_timestamp",
+      "post_snapshot_net_customer_withdrawals",
+      "XRP-specific replenishment evidence"
+    ],
+    "do_not_infer": [
+      "new XRP spot demand from a 1:1 backing claim",
+      "the attacker XRP has been recovered",
+      "post-November-1 solvency from the October-31 snapshot",
+      "XRP purchases from the aggregate 90% replenishment figure"
+    ]
+  },
+  "next_actions": [
+    "On or after November 3, retrieve Binance's completed proof and the October 31 snapshot files.",
+    "Check whether the proof explicitly covers XRP and exposes the relevant asset reserve/liability values.",
+    "Record proof generation time separately from the October 31 snapshot time.",
+    "Compare the October 31 XRP customer-liability and reserve figures only with same-time XRP reserve addresses and definitions.",
+    "Obtain a later snapshot before making claims about post-withdrawal coverage.",
+    "Continue tracing the six attacker XRP recipient accounts independently; PoR coverage does not resolve stolen-asset recovery."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "no_trade": true,
+    "no_real_money_action": true,
+    "no_exchange_or_account_access": true,
+    "no_secret_access": true
+  }
+}
