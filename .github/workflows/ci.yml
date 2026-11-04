@@ -74,6 +74,7 @@ jobs:
             tests/test_repository_causality.py \
             tests/test_bundle_delivery.py \
             tests/test_verified_bundle_delivery.py \
+            tests/test_hf_merge_workflow_safety.py \
             tests/test_termux_self_drop.py \
             tests/test_autonomous_bundle_delivery.py \
             tests/test_autonomous_real_bundle.py \
