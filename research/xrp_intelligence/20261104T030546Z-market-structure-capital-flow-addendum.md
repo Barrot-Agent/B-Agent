@@ -96,3 +96,6 @@ The requested name is **Camilla Stephenson**. Current public searches did not ve
 Two third-party indexes disagree materially: Vling reports 143K subscribers and 1.2K videos, while CryptoKrios reports 103K and 633 videos without a matched channel ID. The existing 12 candidate video IDs remain a non-exhaustive Kamilah/Camila index, not a verified inventory of videos by Camilla Stephenson.
 
 The exact phrase searches for **"actual capital"** did not establish an XRP, ASK Coin or Japanese SBIC meaning. Results included unrelated regulatory-capital tables. Preserve the phrase as unresolved; do not infer that it means XRP market inflows or SBIC investment capital.
+
+
+The channel ID reference above is from a Glasp third-party channel index. It does not establish first-party ownership or identity equivalence.
