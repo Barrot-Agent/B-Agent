@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "fresh_main_consolidated_security_containment_audit",
+  "snapshot_id": "fresh-main-corpus-merge-scheduler-containment-20261103-run12",
+  "captured_at_utc": "2026-11-03T02:30:11Z",
+  "data_cutoff_utc": "2026-11-03T02:30:11Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "e67708d203bff98e469ee0dbe8e0166358800109",
+  "proposal_parent_sha": "d6cee31b81da7f41d16a9e8afd854f7200562dcb",
+  "current_state": {
+    "workflow_directory_entries": 85,
+    "open_pull_requests": {
+      "page_counts": [
+        100,
+        100,
+        100,
+        8
+      ],
+      "total_returned": 308
+    },
+    "main_branch_protected_flag": true,
+    "visible_required_status_check_contexts": [],
+    "visible_required_status_checks": [],
+    "visible_repository_rulesets": [
+      {
+        "id": 10863829,
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      }
+    ],
+    "branch_protection_details_endpoint": "HTTP 403; administrative configuration not verified",
+    "brain_corpus": {
+      "dump_json_bytes": 353950,
+      "dump_md_bytes": 296527,
+      "active_export_workflow": ".github/workflows/dump-brain-corpus.yml",
+      "workflow_permissions": [
+        "contents:write"
+      ],
+      "databricks_token_reference": true,
+      "query": "workspace.barrot.brain",
+      "individual_record_sensitivity": "NOT_CLASSIFIED",
+      "prior_aggregate_record_count": 958
+    },
+    "merge_queue": {
+      "path": ".github/workflows/merge-queue.yml",
+      "dispatch_mode_all": true,
+      "max_prs_default": 0,
+      "dry_run_default": false,
+      "can_merge_and_delete_branches": true,
+      "trigger": "manual workflow_dispatch"
+    },
+    "scheduler": {
+      "workflow": ".github/workflows/scheduler-tick.yml",
+      "schedule": "*/15 * * * *",
+      "permissions": [
+        "contents:write",
+        "actions:write"
+      ],
+      "script": "scripts/scheduler.py",
+      "current_validation": "_valid_workflow checks file existence only",
+      "queue_path": "ping-pongings/knowledge-base/schedule_queue.jsonl",
+      "queue_entries": 1,
+      "pending_entries": 0,
+      "only_entry_status": "done",
+      "only_entry_workflow": "ask-barrot.yml",
+      "latest_run_id": 41565677877,
+      "latest_run_result": "success; 0 entries fired; 1 total in queue; push reported Everything up-to-date"
+    },
+    "cross_analysis": {
+      "path": ".github/workflows/cross-analysis.yml",
+      "permissions": [
+        "contents:write"
+      ],
+      "behavior": "scheduled/workflow_run analysis commits and pushes generated artifacts to main",
+      "latest_observed_run_id": 41562474512,
+      "latest_observed_result": "success on parent SHA fe3f12d67f5508be501464548c6477ec23a3b648"
+    }
+  },
+  "root_causes": [
+    "The scheduler trusts any existing workflow filename, allowing queued entries to dispatch workflows beyond read-only validation.",
+    "The merge queue exposes an all-open-PR mode with unlimited processing and actual merging enabled by default.",
+    "Cross Analysis has repository write permission and commits/pushes generated outputs to main.",
+    "The public brain-corpus export is independently addressed by inherited PR #1546 changes."
+  ],
+  "proposed_controls": [
+    "Disable the autonomous merge queue with read-only permissions and no branch updates, approvals, comments or merges.",
+    "Constrain scheduler dispatch to ci.yml and barrot-bundle-operational-smoke.yml only; reject workflow inputs and timezone-naive timestamps.",
+    "Serialize scheduler ticks and add a bounded timeout; preserve the existing queue mechanism with its limited contents/actions write permissions.",
+    "Make Cross Analysis read-only, prevent credential persistence, and upload bounded artifacts rather than committing/pushing to main.",
+    "Register regression tests for all controls in core CI.",
+    "Retain PR #1546's tested brain-corpus export disablement and current-tree dump removal."
+  ],
+  "residual_risks": [
+    "Scheduler retains contents/actions write permissions for queue persistence and allowlisted workflow dispatch; it is constrained, not fully read-only.",
+    "Historical Git objects, forks, caches and external copies of brain-corpus dumps are not erased by current-tree removal.",
+    "Other external-action workflows are covered by separate open proposals #1539 and #1543 and remain active on main until authorized containment.",
+    "Branch-protection administrative details and required-check enforcement remain incompletely verified."
+  ],
+  "verification": {
+    "source_pr_1546_exact_head": "345 tests + 8 subtests passed; fail-closed gate passed",
+    "source_pr_1544_exact_head": "360 tests + 8 subtests passed; fail-closed gate passed",
+    "combined_fresh_head": "PENDING_EXACT_HEAD_CI",
+    "local_test_execution": "NOT_EXECUTED",
+    "automatic_merge": "DISABLED"
+  },
+  "safety": {
+    "main_modified": false,
+    "source_branches_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}
