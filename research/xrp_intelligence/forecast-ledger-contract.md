@@ -1,7 +1,7 @@
 # XRP fixed-horizon forecast ledger contract v1
 
 ## Status
-Proposed in draft PR #1611. Deterministic recording/scoring prototype only. It does not generate forecasts, ingest live data, train a model or trade. The SQLite database is runtime state and is excluded from Git.
+Proposed in draft PR #1622 (fresh-main research and prediction-foundation successor). Deterministic recording/scoring prototype only. It does not generate forecasts, ingest live data, train a model or trade. The SQLite database is runtime state and is excluded from Git.
 
 ## Forecast definition
 Supported horizons: 1 hour, 4 hours, 24 hours, 7 days and 30 days. Every record defines the exact XRP/USD target measure, venue convention, flat band and target timestamp. Down/flat/up classes are determined by a flat band fixed before the outcome is known.
