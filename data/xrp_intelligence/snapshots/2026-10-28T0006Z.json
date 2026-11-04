@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_institutional_tokenization_event_snapshot",
+  "snapshot_id": "XRP-AVIVA-TOKENIZED-GBP-FUND-2026-10-28T000616Z",
+  "captured_at_utc": "2026-10-28T00:06:16Z",
+  "data_cutoff_utc": "2026-10-28T00:06:16Z",
+  "event_date": "2026-10-26",
+  "event_summary": "Aviva Investors and Ripple announced a live tokenized share class of Aviva Investors Sterling (GBP) Liquidity Fund on XRPL. Aviva stated it invested £50 million in the new share class. The underlying conventional fund has approximately £22 billion AUM; that figure is not the amount tokenized on XRPL.",
+  "confirmed_primary_source_facts": [
+    {
+      "claim": "A tokenized share class for the Sterling Liquidity Fund launched on XRPL on 2026-10-26.",
+      "source_id": "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+      "status": "CONFIRMED_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "claim": "Aviva invested £50 million in the new tokenized share class.",
+      "source_id": "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+      "status": "CONFIRMED_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "claim": "The existing Sterling Liquidity Fund has approximately £22 billion in assets under management; this is the whole conventional fund's AUM, not the on-ledger share-class value.",
+      "source_id": "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+      "status": "CONFIRMED_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "claim": "Across Aviva's USD and GBP tokenized share classes, the company reports more than £86 million ($116 million) invested.",
+      "source_id": "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+      "status": "CONFIRMED_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "claim": "BNY Mellon is identified as custodian of the fund's underlying assets; Komainu and Licuido supported the tokenized share-class launch, with Komainu described as a regulated institutional digital-asset custodian and Licuido as tokenization infrastructure.",
+      "source_id": "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+      "status": "CONFIRMED_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "claim": "A separate USD Liquidity Fund tokenized share class launched in July 2026, after Aviva and Ripple announced their broader tokenization partnership in February 2026.",
+      "source_ids": [
+        "SRC-AVIVA-USD-TOKENIZED-SHARE-CLASS-2026-07-29",
+        "SRC-RIPPLE-AVIVA-TOKENIZATION-PARTNERSHIP-2026-02-11"
+      ],
+      "status": "CONFIRMED_PRIMARY_ANNOUNCEMENTS"
+    }
+  ],
+  "source_records": [
+    {
+      "source_id": "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+      "publisher": "Aviva Investors",
+      "source_type": "official company announcement",
+      "url": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/",
+      "published_at": "2026-10-26",
+      "retrieved_at_utc": "2026-10-28T00:06:16Z",
+      "independence_class": "primary issuer/asset-manager source",
+      "claims_supported": [
+        "Launch of the GBP Liquidity Fund tokenized share class on XRPL",
+        "Aviva's £50 million investment in the share class",
+        "Approximately £22 billion AUM for the conventional Sterling Liquidity Fund",
+        "More than £86 million invested across Aviva's two tokenized share classes",
+        "BNY Mellon, Komainu and Licuido roles as described by Aviva"
+      ]
+    },
+    {
+      "source_id": "SRC-AVIVA-USD-TOKENIZED-SHARE-CLASS-2026-07-29",
+      "publisher": "Aviva Investors",
+      "source_type": "official company announcement",
+      "url": "https://www.avivainvestors.com/en-se/about/company-news/2026/07/aviva-investors-launches-tokenised-share-class-for-usd-liquidity-fund/",
+      "published_at": "2026-07-29",
+      "retrieved_at_utc": "2026-10-28T00:06:16Z",
+      "independence_class": "primary issuer/asset-manager source",
+      "claims_supported": [
+        "Earlier USD Liquidity Fund tokenized share class on XRPL",
+        "Komainu and Licuido support roles",
+        "BNY Mellon custody of underlying fund assets as described by Aviva"
+      ]
+    },
+    {
+      "source_id": "SRC-RIPPLE-AVIVA-TOKENIZATION-PARTNERSHIP-2026-02-11",
+      "publisher": "Ripple",
+      "source_type": "official partnership announcement",
+      "url": "https://ripple.com/ripple-press/aviva-investors-seeks-to-tokenise-products-on-the-xrp-ledger-in-collaboration-with-ripple/",
+      "published_at": "2026-02-11",
+      "retrieved_at_utc": "2026-10-28T00:06:16Z",
+      "independence_class": "primary vendor/partner source",
+      "claims_supported": [
+        "Ripple and Aviva announced a collaboration to tokenize traditional fund structures on XRPL"
+      ],
+      "limitation": "A vendor/partner announcement corroborates the relationship but is not an independent evaluation of commercial impact."
+    },
+    {
+      "source_id": "SRC-XRPLTO-AVIVA-ONCHAIN-ANALYSIS-2026-10-26",
+      "publisher": "XRPL.to",
+      "source_type": "third-party public-ledger analytics",
+      "url": "https://xrpl.to/insights/aviva-investors-tokenized-funds-xrp-ledger",
+      "published_at": "2026-10-26",
+      "retrieved_at_utc": "2026-10-28T00:06:16Z",
+      "independence_class": "secondary derived on-chain analysis",
+      "status": "SOURCED_CLAIM_PENDING_INDEPENDENT_REPRODUCTION",
+      "claims_supported": [
+        "The analyst reports two XRPL Multi-Purpose Token share-class instruments and a small number of approved holder wallets.",
+        "The analyst reports transfer authorization restrictions and specific token-unit balances."
+      ],
+      "limitations": [
+        "Not a primary issuer filing or issuer confirmation.",
+        "Exact issuer account, token IDs, balances, transfer outcomes and holder count must be independently reproduced from XRPL ledger data before use as model features.",
+        "Token units representing fund shares are not XRP units."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Aviva Investors",
+      "relation": "partnered_with",
+      "to": "Ripple",
+      "evidence": [
+        "SRC-RIPPLE-AVIVA-TOKENIZATION-PARTNERSHIP-2026-02-11",
+        "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Aviva Investors",
+      "relation": "launched_and_invested_50m_GBP_in",
+      "to": "GBP Liquidity Fund tokenized share class on XRPL",
+      "evidence": [
+        "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "XRPL",
+      "relation": "records_tokenized_share_class_ownership_for",
+      "to": "Aviva Investors Sterling Liquidity Fund share class",
+      "evidence": [
+        "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+      ],
+      "status": "CONFIRMED_ANNOUNCEMENT"
+    },
+    {
+      "from": "BNY Mellon",
+      "relation": "custodies_underlying_fund_assets_for",
+      "to": "Aviva Investors Liquidity Fund",
+      "evidence": [
+        "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+      ],
+      "status": "CONFIRMED_ANNOUNCEMENT"
+    },
+    {
+      "from": "Komainu",
+      "relation": "supports_digital_asset_custody_for",
+      "to": "Aviva tokenized share-class launch",
+      "evidence": [
+        "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+      ],
+      "status": "CONFIRMED_ANNOUNCEMENT"
+    },
+    {
+      "from": "Licuido",
+      "relation": "provides_tokenization_infrastructure_for",
+      "to": "Aviva tokenized share-class launch",
+      "evidence": [
+        "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+      ],
+      "status": "CONFIRMED_ANNOUNCEMENT"
+    },
+    {
+      "from": "Aviva tokenized share-class investment",
+      "relation": "does_not_establish",
+      "to": "XRP spot purchase, XRP collateral position, or XRP bridge-asset usage",
+      "evidence": [
+        "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+      ],
+      "status": "IMPORTANT_LIMITATION"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H-AVIVA-XRPL-INSTITUTIONAL-UTILITY",
+      "hypothesis": "A regulated asset manager's live tokenized share class can increase XRPL institutional credibility, application activity and demand for compliant tokenization infrastructure.",
+      "supporting_evidence": [
+        "Aviva's primary announcement confirms a live GBP tokenized share class on XRPL and a £50 million sponsor investment in that share class.",
+        "The earlier USD share class and the February partnership announcement establish continuity beyond a one-off announcement."
+      ],
+      "disconfirming_evidence_or_alternatives": [
+        "The tokenized class may have limited approved-holder participation and transfer activity.",
+        "The conventional fund assets remain under existing off-chain fund arrangements.",
+        "A rise in XRPL tokenization activity does not automatically produce net XRP accumulation."
+      ],
+      "discriminating_tests": [
+        "Reproduce token IDs, issuer accounts, outstanding units, holders and successful transfer events directly from public XRPL ledger data.",
+        "Measure XRPL transaction counts and fees attributable to these instruments and compare with baseline network activity.",
+        "Check for documented XRP liquidity, collateral or bridge use separately from token issuance."
+      ],
+      "status": "INFERENCE_TO_TEST"
+    },
+    {
+      "id": "H-AVIVA-XRP-DEMAND-NULL",
+      "hypothesis": "The £50 million is an investment in tokenized fund shares, not a purchase of XRP; the announcement may have little or no direct XRP price effect.",
+      "supporting_evidence": [
+        "Aviva's official announcement describes the £50 million investment as being in the tokenized share class.",
+        "The approximately £22 billion figure refers to the underlying conventional fund's AUM, not the on-ledger tokenized amount.",
+        "The announcement does not disclose an XRP acquisition, XRP collateral position or XRP-denominated fund settlement."
+      ],
+      "disconfirming_evidence_or_alternatives": [
+        "Indirect XRP effects could occur through network fees, account reserves, liquidity provision or other market participants, but those channels are unmeasured."
+      ],
+      "discriminating_tests": [
+        "Search subsequent primary disclosures for XRP holdings or XRP collateral use.",
+        "Measure XRP liquidity and payment-path changes around the event with controls for market-wide price and volume movements.",
+        "Compare event response with similar tokenized fund launches on other ledgers."
+      ],
+      "status": "NULL_HYPOTHESIS_TO_RETAIN"
+    },
+    {
+      "id": "H-AVIVA-ANNOUNCEMENT-VS-FLOWS",
+      "hypothesis": "Market reaction may be driven by announcement attention and expectations rather than realized on-chain use or persistent capital flows.",
+      "supporting_evidence": [
+        "The public announcement establishes launch and sponsor investment but does not disclose continuing external subscriptions, secondary-market turnover or XRP inventory."
+      ],
+      "disconfirming_evidence_or_alternatives": [
+        "Public-ledger records may establish actual issuance and transfer activity, though they still do not by themselves prove XRP price causality."
+      ],
+      "discriminating_tests": [
+        "Separate announcement timestamp from actual token issuance, holder transfers and ongoing use.",
+        "Use event-time windows and out-of-sample controls; avoid interpreting one-day price moves as causal proof."
+      ],
+      "status": "ALTERNATIVE"
+    }
+  ],
+  "data_quality_gates": [
+    {
+      "id": "DQ-AVIVA-AUM-VS-TOKENIZED-VALUE",
+      "finding": "The underlying GBP fund's approximately £22B AUM is not the amount tokenized on XRPL; the new share class has a disclosed £50M Aviva investment.",
+      "decision": "Never use £22B as XRPL tokenized value or as XRP capital inflow."
+    },
+    {
+      "id": "DQ-AVIVA-SHARE-VS-XRP",
+      "finding": "The disclosed £50M investment is in a tokenized share class, not XRP.",
+      "decision": "Do not classify the event as an XRP purchase, collateral inflow or bridge-asset flow without separate evidence."
+    },
+    {
+      "id": "DQ-AVIVA-ONCHAIN-REPRODUCIBILITY",
+      "finding": "Third-party ledger analytics report token IDs and holder balances, but those claims have not been independently reproduced in this run.",
+      "decision": "Keep secondary on-chain claims out of model features until token IDs, issuer account, balances and transfer events are reproduced from ledger data."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Independently reproduce the Aviva GBP and USD tokenized share-class issuer accounts, token IDs, supply and transfer history from public XRPL ledger data.",
+    "Quantify network fees/reserves and XRP liquidity implications separately from the GBP/USD fund-share balances.",
+    "Search for public evidence of external subscriptions, holder counts and transfer restrictions; retain the null hypothesis that tokenization does not create meaningful XRP demand.",
+    "Add the event to the institutional adoption timeline with announcement date, on-ledger issue dates, observed balances, source provenance and later outcomes.",
+    "Do not convert the £50M tokenized-share investment or £22B underlying AUM into an XRP price target."
+  ],
+  "safety": {
+    "lawful_public_sources_only": true,
+    "private_data_used": false,
+    "market_manipulation": false,
+    "forecast_issued": false
+  }
+}

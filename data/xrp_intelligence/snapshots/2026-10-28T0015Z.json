@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_and_v3_run_handoff",
+  "snapshot_id": "XRP-RUN-HANDOFF-2026-10-28T001531Z",
+  "captured_at_utc": "2026-10-28T00:15:31Z",
+  "data_cutoff_utc": "2026-10-28T00:15:31Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution and verification foundation.",
+  "research_delta": {
+    "aviva_tokenization": {
+      "official_facts": "Aviva announced a live GBP Liquidity Fund tokenized share class on XRPL and a £50M investment in that share class. Approximately £22B is the underlying fund AUM, not the tokenized value or XRP inflow.",
+      "protocol_fact": "Official XRPL docs state MPT DEX trading is not currently implemented; CanTransfer controls holder-to-holder transfers, while CanTrade is an issuance capability flag.",
+      "unresolved": "Third-party pages conflict on the GBP MPT's outstanding amount and transfer/trading flags. The exact MPTokenIssuance object has not been independently queried from a permitted public ledger source.",
+      "model_admission": "BLOCKED"
+    },
+    "usdc_and_derivatives": {
+      "circle_usdc_as_of": "2026-10-22",
+      "circulation_usd": 72000000000,
+      "reserves_usd": 72200000000,
+      "net_change_30d_usd": -3200000000,
+      "interpretation": "Global USDC contraction is a liquidity-context observation only; destination, XRPL-native supply and XRP flows are unknown.",
+      "coinbase_derivatives_scope": "The displayed aggregate is provider-defined and all-asset; not XRP-specific or a complete global market-share measure.",
+      "feature_admission": "BLOCKED_PENDING_SAME_PROVIDER_DAILY_SERIES_AND_VENUE_HARMONIZATION"
+    },
+    "unresolved_threads": [
+      "ASK Coin",
+      "actual capital",
+      "SBIC, ChatGPT SBIC",
+      "canonical Camilla Stephenson YouTube identity and exhaustive public-video inventory"
+    ]
+  },
+  "repository_state": {
+    "current_main_sha": "da52a95c17ac2cffc55197593620360ebedd5dea",
+    "current_main_commit": {
+      "message": "Paper trade cycle [skip ci]",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/da52a95c17ac2cffc55197593620360ebedd5dea",
+      "observed_scope": "Appended one BTC-USD paper-trading log row; no XRP telemetry source-code change in this commit."
+    },
+    "previous_main_sha": "f315177c24dc64fc0b49957ea5643f2f7d868701",
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "pr_1228": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1228",
+      "purpose": "Replace fabricated XRP telemetry with explicit UNAVAILABLE states and preserve existing report files.",
+      "tested_head": "649d3f60a4a2924e5124607c43609908ad1ed4c7",
+      "ci": {
+        "run_id": 40607508291,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607508291",
+        "result": "PASSED",
+        "tests_passed": 146,
+        "duration_seconds": 4.9
+      },
+      "gate": {
+        "run_id": 40607508342,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607508342",
+        "result": "PASSED"
+      },
+      "branch_comparison": {
+        "ahead_by": 3,
+        "behind_by": 1,
+        "merge_base": "f315177c24dc64fc0b49957ea5643f2f7d868701"
+      },
+      "initial_failure": {
+        "head": "b0aa43ee44e8c3d8ccad9ecaeed6ce2768d98dc5",
+        "ci_run_id": 40607415360,
+        "tests_passed": 145,
+        "tests_failed": 1,
+        "root_cause": "Regression assertion expected unformatted 'Forecast status: NOT_ISSUED', but report correctly rendered Markdown bold around the field label. Assertion was corrected; current exact head passed."
+      },
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr_1227": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
+      "purpose": "Fresh-main XRP research ledger and timestamped snapshots.",
+      "tested_head": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab",
+      "ci": {
+        "run_id": 40607241515,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607241515",
+        "result": "PASSED",
+        "tests_passed": 145,
+        "duration_seconds": 5.92
+      },
+      "gate": {
+        "run_id": 40607241496,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607241496",
+        "result": "PASSED"
+      },
+      "branch_comparison": {
+        "ahead_by": 5,
+        "behind_by": 2,
+        "merge_base": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+      },
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr_1226": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1226",
+      "purpose": "Make scheduled signal workflows read-only and artifact-based.",
+      "tested_head": "ae17e56ab245f575317beab35b96178dff4732a4",
+      "ci": {
+        "run_id": 40606115034,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606115034",
+        "result": "PASSED",
+        "tests_passed": 146,
+        "duration_seconds": 5.98
+      },
+      "gate": {
+        "run_id": 40606115488,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606115488",
+        "result": "PASSED"
+      },
+      "branch_comparison": {
+        "ahead_by": 3,
+        "behind_by": 2,
+        "merge_base": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+      },
+      "state": "OPEN_DRAFT_UNMERGED",
+      "limitation": "Current main still has direct generated-data writes until a reviewed fix is merged; 30-day artifacts are not a permanent feature store."
+    },
+    "pr_1195": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "tested_head": "2ef149c52745e44b60044bc5cd6d47efc05ff6d1",
+      "ci": {
+        "run_id": 40607240200,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607240200",
+        "result": "PASSED"
+      },
+      "gate": {
+        "run_id": 40607240290,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607240290",
+        "result": "PASSED"
+      },
+      "branch_comparison": {
+        "ahead_by": 48,
+        "behind_by": 61,
+        "merge_base": "e1da2cdb3bc371364ca81af76915f5b84237a5cf"
+      },
+      "state": "OPEN_DRAFT_HISTORICAL_BRANCH; PRESERVE; DO NOT MERGE"
+    },
+    "telemetry_integrity_finding": {
+      "file": "barrot_agent/analysis/xrp_telemetry_matrix.py",
+      "previous_main_blob_sha": "6bcf98e7b8816a8875c3b262b08d84d253e239f7",
+      "finding": "Main hardcoded sentiment 0.94, market price 1.185, shear variance 0.233 and MAX_LIQUIDITY, then recommended accumulation without source-backed measurements.",
+      "proposed_fix": "PR #1228 replaces those fields with explicit UNAVAILABLE values, sets NOT_ISSUED, removes trade language and avoids overwriting existing COUNCIL_REVIEW.md."
+    },
+    "upgrade_bundle_risk": {
+      "file": "barrot_agent/tools/upgrade_bundle.py",
+      "blob_sha": "bf845288b57c4f43d2b085ec1cb9f9219976a1f5",
+      "line_count": 497,
+      "status": "INSPECTED_NOT_EXECUTED",
+      "findings": [
+        "Writes to ~/barrot/xrp_telemetry_matrix.py, barrot_brain.py, barrot_agent/ternary.py and ~/.github/workflows/telemetry.yml using Path.write_text without backups or overwrite protection.",
+        "Embedded telemetry implementation turns price/order-book/on-chain/sentiment inputs into BUY/SELL/NULL using uncalibrated thresholds and maps provider failures to zero-valued numeric inputs.",
+        "Embedded workflow schedules hourly report generation and git push; printed next step runs git add -A, commit and push origin main.",
+        "Not executed because it can overwrite user files and installs an automated generated-data push path."
+      ],
+      "next_action": "Review and redesign this bundle separately before use; do not run it."
+    },
+    "approval_workflow_anomaly": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607500983",
+      "event": "push",
+      "head_sha": "649d3f60a4a2924e5124607c43609908ad1ed4c7",
+      "jobs_returned": 0,
+      "workflow_path": ".github/workflows/barrot-approve-pr.yml",
+      "observed_definition": "workflow_dispatch-only; identical blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4 on main and the tested branch.",
+      "status": "ROOT_CAUSE_UNRESOLVED",
+      "note": "Repeated push-event failure with zero jobs; no code change is claimed to fix it."
+    }
+  },
+  "platform_map": {
+    "verified_live": [
+      "ChatGPT conversation",
+      "GitHub repository connector"
+    ],
+    "unverified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "rule": "Do not claim live collaboration without authenticated end-to-end evidence and documented permissions/data flows."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Keep PR #1228 draft and unmerged; its current exact head passed 146 tests and the fail-closed gate.",
+    "Review PR #1226 to stop scheduled signal writers from committing generated data to main; no merge without approval.",
+    "Review fresh-main research PR #1227 and preserve original PR #1195 as historical; current main advances through generated artifacts.",
+    "Do not run upgrade_bundle.py until its overwrite behavior, uncalibrated signal path and direct-push workflow are redesigned.",
+    "Independently query the exact Aviva GBP MPT issuance object through a permitted public XRPL ledger source; do not scrape or mirror XRPL.to derived data.",
+    "Normalize XRP spot/derivatives/USDC features at fixed UTC cutoffs, preserve raw payload hashes and block features with unresolved universe/metadata conflicts.",
+    "Resolve the exact SBIC phrase and canonical Camilla Stephenson identity; keep public video inventory incomplete until verified.",
+    "Keep all nine platform adapters explicitly unverified except the tested ChatGPT/GitHub access.",
+    "Do not issue a directional forecast until fixed-horizon walk-forward tests, leakage controls, baseline comparison, calibration and shadow evaluation pass."
+  ],
+  "safety": {
+    "main_write": false,
+    "merge": false,
+    "force_push": false,
+    "deployment": false,
+    "upgrade_bundle_executed": false,
+    "real_money_action": false
+  }
+}

@@ -1,0 +1,422 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_run_snapshot",
+  "snapshot_id": "XRP-INTELLIGENCE-2026-10-28T000211Z",
+  "captured_at_utc": "2026-10-28T00:02:11Z",
+  "data_cutoff_utc": "2026-10-28T00:02:11Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "status_labels": {
+    "designed": "Architecture or control specified but not executed.",
+    "executed": "Action or collection ran; outcome recorded.",
+    "verified": "Outcome independently checked against explicit evidence."
+  },
+  "market_observations": [
+    {
+      "metric": "USDC circulation",
+      "value_usd": 72000000000,
+      "as_of_date": "2026-10-22",
+      "source_id": "SRC-CIRCLE-TRANSPARENCY-USDC-2026-10-22",
+      "status": "PRIMARY_SOURCE_REPORTED",
+      "caveat": "Issuer webpage value is rounded; not a minute-level market snapshot."
+    },
+    {
+      "metric": "USDC reserve assets",
+      "value_usd": 72200000000,
+      "as_of_date": "2026-10-22",
+      "source_id": "SRC-CIRCLE-TRANSPARENCY-USDC-2026-10-22",
+      "status": "PRIMARY_SOURCE_REPORTED",
+      "caveat": "Rounded issuer display. Difference from circulation is not a substitute for reserve composition, attestation, redemption-liquidity, or legal analysis."
+    },
+    {
+      "metric": "USDC net change",
+      "period": "7 days",
+      "value_usd": -600000000,
+      "as_of_date": "2026-10-22",
+      "source_id": "SRC-CIRCLE-TRANSPARENCY-USDC-2026-10-22",
+      "status": "PRIMARY_SOURCE_REPORTED",
+      "caveat": "Issuer display rounds issued and redeemed amounts; rounded components do not necessarily arithmetically reproduce displayed net."
+    },
+    {
+      "metric": "USDC net change",
+      "period": "30 days",
+      "value_usd": -3200000000,
+      "as_of_date": "2026-10-22",
+      "source_id": "SRC-CIRCLE-TRANSPARENCY-USDC-2026-10-22",
+      "status": "PRIMARY_SOURCE_REPORTED",
+      "caveat": "Global USDC circulation change does not identify redemption destinations or XRP-related capital flows."
+    },
+    {
+      "metric": "USDC net change",
+      "period": "365 days",
+      "value_usd": -4400000000,
+      "as_of_date": "2026-10-22",
+      "source_id": "SRC-CIRCLE-TRANSPARENCY-USDC-2026-10-22",
+      "status": "PRIMARY_SOURCE_REPORTED",
+      "caveat": "Global supply change is not equivalent to stablecoin liquidity on any one chain or exchange."
+    },
+    {
+      "metric": "Derivatives open interest, platform-displayed aggregate",
+      "value_usd": 39670000000,
+      "as_of_date": "2026-10-27",
+      "source_id": "SRC-COINBASE-DERIVATIVES-AGGREGATE-2026-10-27",
+      "status": "PRIMARY_PLATFORM_DISPLAY",
+      "caveat": "Not XRP-specific and not a complete industry-wide market-share measure. The page groups Deribit and Coinbase Derivatives."
+    },
+    {
+      "metric": "Deribit component of Coinbase-displayed derivatives aggregate",
+      "value_usd": 38330000000,
+      "as_of_date": "2026-10-27",
+      "source_id": "SRC-COINBASE-DERIVATIVES-AGGREGATE-2026-10-27",
+      "status": "PRIMARY_PLATFORM_DISPLAY",
+      "caveat": "Provider-reported component; do not interpret as independent validation of the full venue universe."
+    },
+    {
+      "metric": "Coinbase Derivatives component of Coinbase-displayed derivatives aggregate",
+      "value_usd": 1340000000,
+      "as_of_date": "2026-10-27",
+      "source_id": "SRC-COINBASE-DERIVATIVES-AGGREGATE-2026-10-27",
+      "status": "PRIMARY_PLATFORM_DISPLAY",
+      "caveat": "All-asset platform aggregate, not XRP-specific OI or Coinbase's share of the global derivatives market."
+    },
+    {
+      "metric": "XRP perpetual futures open interest",
+      "value_usd": 23400000,
+      "as_of_utc": "2026-10-27T00:23:00Z",
+      "source_id": "SRC-KRAKEN-XRP-PERP-2026-10-27T0023Z",
+      "status": "PRIMARY_EXCHANGE_DISPLAY_STALE",
+      "caveat": "Single venue and approximately one day old at snapshot time; exclude from current synchronized feature row."
+    }
+  ],
+  "source_records": [
+    {
+      "source_id": "SRC-CIRCLE-TRANSPARENCY-USDC-2026-10-22",
+      "publisher": "Circle",
+      "source_type": "issuer transparency page",
+      "url": "https://www.circle.com/transparency",
+      "published_or_as_of": "2026-10-22",
+      "retrieved_at_utc": "2026-10-28T00:02:11Z",
+      "independence_class": "primary issuer source",
+      "claims_supported": [
+        "USDC circulation and reserve totals as displayed for October 22, 2026",
+        "Issuer-displayed 7-day, 30-day, and 365-day issuance/redemption changes",
+        "USDC is natively supported on XRPL among Circle-listed networks"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-DERIVATIVES-AGGREGATE-2026-10-27",
+      "publisher": "Coinbase",
+      "source_type": "platform derivatives market-data page",
+      "url": "https://www.coinbase.com/market-data/derivatives",
+      "published_or_as_of": "2026-10-27",
+      "retrieved_at_utc": "2026-10-28T00:02:11Z",
+      "independence_class": "primary platform display",
+      "claims_supported": [
+        "Page-displayed aggregate open interest and venue components for the platform's tracked derivatives universe"
+      ],
+      "limitations": [
+        "Aggregate is not XRP-specific",
+        "Venue universe is provider-defined",
+        "Do not treat the page as independent market-wide share"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-XRP-FUTURES-PRODUCT-2026-10-27",
+      "publisher": "Coinbase",
+      "source_type": "product contract page",
+      "url": "https://www.coinbase.com/futures/XRP-30OCT26-CDE",
+      "retrieved_at_utc": "2026-10-28T00:02:11Z",
+      "independence_class": "primary platform display",
+      "status": "QUARANTINED_FOR_FEATURE_USE",
+      "reason": "The page label and displayed expiry metadata conflict: the page title identifies an October 2026 contract while the displayed expiry field says October 1, 2026, already past at retrieval. Do not use its displayed price, volume, or OI until the contract identifier and expiry are reconciled."
+    },
+    {
+      "source_id": "SRC-KRAKEN-XRP-PERP-2026-10-27T0023Z",
+      "publisher": "Kraken",
+      "source_type": "exchange derivatives product page",
+      "url": "https://www.kraken.com/features/futures/xrp/usdt",
+      "published_or_as_of": "2026-10-27T00:23:00Z",
+      "retrieved_at_utc": "2026-10-28T00:02:11Z",
+      "independence_class": "primary exchange display",
+      "status": "HISTORICAL_SINGLE_VENUE_OBSERVATION",
+      "claims_supported": [
+        "XRP perpetual mark/index price, funding and open-interest display at the source timestamp"
+      ],
+      "limitations": [
+        "Not current at this snapshot cutoff",
+        "Single venue",
+        "USD-equivalent OI may change with price and contract conventions"
+      ]
+    },
+    {
+      "source_id": "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-28",
+      "publisher": "SBIC East Japan",
+      "source_type": "official company profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "retrieved_at_utc": "2026-10-28T00:02:11Z",
+      "independence_class": "primary corporate source",
+      "claims_supported": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. is the legal name associated with SBIC East Japan",
+        "Profile lists establishment in 1963, corporate number 9011001030621, 96 employees, and shareholders including local governments, chambers of commerce, financial institutions, and operating companies"
+      ],
+      "limitations": [
+        "Does not establish any direct relationship with XRP, Ripple, SBI Holdings, or the historical SBI Capital entity"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-USDC-XRPL-2025-06-12",
+      "publisher": "Circle",
+      "source_type": "official product announcement",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "published_or_as_of": "2025-06-12",
+      "retrieved_at_utc": "2026-10-28T00:02:11Z",
+      "independence_class": "primary issuer source",
+      "claims_supported": [
+        "Native USDC was announced live on XRPL mainnet",
+        "Circle Mint and Circle APIs support USDC access on XRPL"
+      ],
+      "limitations": [
+        "Availability does not prove current chain-level supply, transfer activity, DEX depth, or XRP bridge-path usage"
+      ]
+    },
+    {
+      "source_id": "SRC-CME-XRP-FUTURES-PRODUCT-2026-10-25",
+      "publisher": "CME Group",
+      "source_type": "regulated exchange product page",
+      "url": "https://www.cmegroup.com/markets/cryptocurrencies/xrp/xrp.html",
+      "retrieved_at_utc": "2026-10-28T00:02:11Z",
+      "independence_class": "primary exchange source",
+      "claims_supported": [
+        "CME lists CFTC-regulated XRP futures contracts"
+      ],
+      "limitations": [
+        "Product availability alone does not establish current open interest, institutional net buying, or spot price impact"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "relation": "issues_and_reports_supply_of",
+      "to": "USDC",
+      "evidence": [
+        "SRC-CIRCLE-TRANSPARENCY-USDC-2026-10-22"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Circle",
+      "relation": "supports_native_issuance_access_to",
+      "to": "USDC on XRPL",
+      "evidence": [
+        "SRC-CIRCLE-USDC-XRPL-2025-06-12"
+      ],
+      "status": "CONFIRMED_ANNOUNCEMENT; CURRENT_CHAIN_FLOWS_UNKNOWN"
+    },
+    {
+      "from": "XRPL",
+      "relation": "has_native_asset",
+      "to": "XRP",
+      "evidence": [
+        "SRC-CIRCLE-USDC-XRPL-2025-06-12"
+      ],
+      "status": "PROTOCOL_FACT"
+    },
+    {
+      "from": "Coinbase",
+      "relation": "publishes_platform_defined_aggregate_for",
+      "to": "Deribit and Coinbase Derivatives",
+      "evidence": [
+        "SRC-COINBASE-DERIVATIVES-AGGREGATE-2026-10-27"
+      ],
+      "status": "CONFIRMED_PLATFORM_DISPLAY; NOT_XRP_SPECIFIC"
+    },
+    {
+      "from": "SBIC East Japan",
+      "relation": "identity_distinguished_from",
+      "to": "SBI Holdings / SBI Ripple Asia / SBI VC Trade",
+      "evidence": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-28"
+      ],
+      "status": "ENTITY_SEPARATION_REQUIRED; NO_DIRECT_XRP_LINK_ESTABLISHED"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H-USDC-CONTRACTION-RISK-OFF",
+      "hypothesis": "A broad contraction in USDC circulation may be consistent with tighter dollar-token liquidity or lower risk appetite and could coincide with reduced demand for crypto assets including XRP.",
+      "supporting_evidence": [
+        "Circle displayed a 30-day USDC circulation change of -$3.2B and a 365-day change of -$4.4B as of 2026-10-22."
+      ],
+      "disconfirming_evidence_or_alternatives": [
+        "Global USDC supply does not identify redemption destinations or the stablecoin balances available on XRPL or specific exchanges.",
+        "XRP may rise or fall for unrelated BTC, macro, regulatory, derivatives, or idiosyncratic reasons.",
+        "No XRP-specific causal effect is established."
+      ],
+      "discriminating_tests": [
+        "Align daily USDC issuance/redemption with XRP spot volume, exchange net flows, BTC returns, rates, and risk proxies.",
+        "Separate global USDC supply from chain-specific supply and exchange-held balances.",
+        "Use out-of-sample event studies with matched control periods."
+      ],
+      "status": "INFERENCE_TO_TEST"
+    },
+    {
+      "id": "H-USDC-REDEMPTION-DESTINATION-UNKNOWN",
+      "hypothesis": "USDC contraction may reflect redemption to fiat, migration to other stablecoins/chains, or portfolio rotation rather than capital leaving crypto or entering XRP.",
+      "supporting_evidence": [
+        "The issuer's global supply series does not provide destination attribution."
+      ],
+      "disconfirming_evidence_or_alternatives": [
+        "Persistent declines across exchange balances and broad stablecoin supply could support a wider liquidity contraction, but must be measured."
+      ],
+      "discriminating_tests": [
+        "Track issuer mint/burn events, chain bridge/transfer flows, exchange stablecoin balances, and competing stablecoin supply.",
+        "Do not infer XRP flows from global USDC net changes alone."
+      ],
+      "status": "LIVE_ALTERNATIVE"
+    },
+    {
+      "id": "H-XRPL-USDC-COMPLEMENT-VS-SUBSTITUTE",
+      "hypothesis": "Native USDC on XRPL may complement XRP by increasing dollar settlement/application activity, while substituting for XRP as a bridge asset on some dollar-denominated routes.",
+      "supporting_evidence": [
+        "Circle officially announced native USDC availability on XRPL and support through Circle Mint/APIs."
+      ],
+      "disconfirming_evidence_or_alternatives": [
+        "Availability does not show meaningful usage.",
+        "Stablecoin transfers can settle without a corresponding increase in XRP holdings or market purchases.",
+        "Some routes may continue to use XRP for liquidity or inventory reasons."
+      ],
+      "discriminating_tests": [
+        "Measure native USDC supply and transfers on XRPL, DEX depth, payment-path composition, and XRP bridge-path share.",
+        "Compare pre/post adoption while controlling for total crypto market conditions."
+      ],
+      "status": "UNRESOLVED_COMPETING_HYPOTHESES"
+    },
+    {
+      "id": "H-DERIVATIVES-ACCESS-NOT-SPOT-DEMAND",
+      "hypothesis": "Expanded regulated XRP derivatives access can improve hedging and price discovery without necessarily creating net spot XRP demand.",
+      "supporting_evidence": [
+        "Coinbase lists XRP futures products and CME lists regulated XRP futures."
+      ],
+      "disconfirming_evidence_or_alternatives": [
+        "Persistent basis, dealer hedging, delivery/collateral rules, or spot-futures arbitrage can create spot-market effects, but their direction depends on positioning and hedging."
+      ],
+      "discriminating_tests": [
+        "Harmonize contract-level OI, funding, basis, liquidation and spot order-book data at the same UTC cutoff.",
+        "Measure spot/derivative lead-lag and basis changes without assuming OI is directional."
+      ],
+      "status": "INFERENCE_TO_TEST"
+    }
+  ],
+  "data_quality_gates": [
+    {
+      "id": "DQ-USDC-CHAIN-ATTRIBUTION",
+      "finding": "Issuer-level USDC contraction is not a chain-specific or XRP-flow feature.",
+      "decision": "EXCLUDE_FROM_XRP_DIRECTIONAL_FEATURES until destination and XRPL/exchange-level data are joined."
+    },
+    {
+      "id": "DQ-COINBASE-XRP-CONTRACT-EXPIRY",
+      "finding": "Coinbase XRP product page displays a contract label/expiry mismatch; its displayed expiry is already past at retrieval.",
+      "decision": "QUARANTINE page-derived price/volume/OI until contract ID, expiry and current contract status are verified."
+    },
+    {
+      "id": "DQ-DERIVATIVES-COVERAGE",
+      "finding": "Coinbase's derivatives aggregate is all-asset and provider-defined; Kraken's XRP OI snapshot is single-venue and stale at this cutoff.",
+      "decision": "Do not merge into a single XRP market row. Rebuild a per-venue/per-contract panel with a common UTC cutoff."
+    },
+    {
+      "id": "DQ-SBIC-ENTITY",
+      "finding": "SBIC East Japan's official identity is established, but the phrase's intended referent and any direct XRP relationship are not.",
+      "decision": "Keep SBIC East Japan separate from SBI Holdings, SBI Capital, SBI Ripple Asia, SBI Remit and SBI VC Trade."
+    }
+  ],
+  "repository_state": {
+    "inspected_at_utc": "2026-10-28T00:02:11Z",
+    "main_sha_observed": "a960255f2b7b0418694ee428bc82fbbeed6622dd",
+    "main_write_performed": false,
+    "merge_performed": false,
+    "pr_1226": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1226",
+      "title": "Safety: make scheduled signal writers artifact-only",
+      "branch": "safety/signal-writers-artifact-only-20261028-0000z",
+      "head_sha": "ae17e56ab245f575317beab35b96178dff4732a4",
+      "state": "OPEN_DRAFT",
+      "change": "Both scheduled workflows are contents:read and upload generated outputs as 30-day artifacts; regression test added.",
+      "verification": {
+        "workflow_files_re_read": true,
+        "test_added": true,
+        "exact_head_ci": "IN_PROGRESS_AT_LAST_CHECK",
+        "fail_closed_gate": "PASSED_AT_LAST_CHECK"
+      },
+      "limitation": "Thirty-day artifacts are not a durable long-term feature store; a reviewed promotion/retention design is still required."
+    },
+    "pr_1225": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1225",
+      "title": "Add dependency-aware bundle task execution and durable resume",
+      "head_sha_observed": "b84deb8a2ab17130479c7fff1ce28bd1646d7ac4",
+      "state": "OPEN_DRAFT",
+      "verification": {
+        "ci": "IN_PROGRESS_AT_LAST_CHECK",
+        "fail_closed_gate": "PASSED_AT_LAST_CHECK"
+      },
+      "review_note": "The dispatcher requires status='complete' plus queue advancement, local validation, remote verification, and resolution verification before resume skips a task. Confirm production repair-cycle status vocabulary matches this exact completion predicate before considering merge."
+    },
+    "pr_1224": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1224",
+      "state": "OPEN_DRAFT",
+      "note": "Fresh-main XRP signal-integrity repair; previous exact-head tests are not a substitute for current exact-head verification."
+    },
+    "pr_1195": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "branch": "research/xrp-ledger-20261027-1902z",
+      "state": "OPEN_DRAFT",
+      "note": "This snapshot is an append-only new file on the research branch; no historical snapshot was overwritten."
+    }
+  },
+  "platform_map": {
+    "verified_live_in_this_run": [
+      "ChatGPT conversation",
+      "GitHub repository connector"
+    ],
+    "not_verified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "policy": "No agent is represented as collaborating live without a tested authenticated request/response and documented permission/data-flow evidence."
+  },
+  "unresolved_research": {
+    "exact_phrases": [
+      "ASK Coin",
+      "actual capital",
+      "SBIC, ChatGPT SBIC"
+    ],
+    "exact_creator_name": "Camilla Stephenson",
+    "creator_identity_status": "UNRESOLVED; Kamilah/Camila Stevenson channel candidates are not treated as canonical without a first-party cross-link.",
+    "public_video_inventory_status": "INCOMPLETE; do not claim exhaustive coverage until canonical identity is verified and public uploads are enumerated."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Wait for exact-head CI on PR #1226; if it fails, inspect logs and repair only the failing assertion or workflow syntax on its branch.",
+    "Re-read current main before every subsequent repository mutation because scheduled jobs continue advancing generated files.",
+    "Reconstruct XRP derivatives per contract and venue at a common UTC cutoff; quarantine mismatched contract metadata and stale snapshots.",
+    "Join Circle global USDC issuance/redemption to XRPL-native USDC supply, exchange balances and payment-route data before using it as an XRP feature.",
+    "Keep the complement-versus-substitute USDC/XRP hypotheses separate and seek disconfirming evidence.",
+    "Resolve the exact SBIC phrase and creator identity through primary-source cross-links; then inventory public videos by video ID and publication timestamp.",
+    "Do not issue a directional forecast until fixed-horizon, leakage-controlled walk-forward evaluation and calibration gates pass."
+  ],
+  "safety": {
+    "unauthorized_access": false,
+    "private_data_used": false,
+    "market_manipulation": false,
+    "main_branch_modified": false,
+    "force_push": false,
+    "merge": false,
+    "deployment": false,
+    "real_money_action": false
+  }
+}

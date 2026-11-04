@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_delta_snapshot",
+  "snapshot_id": "XRP-DELTA-2026-10-27T200611Z",
+  "captured_at_utc": "2026-10-27T20:06:11Z",
+  "data_cutoff_utc": "2026-10-27T20:06:11Z",
+  "append_only": true,
+  "previous_snapshot_id": "XRP-RUN-2026-10-27T200220Z",
+  "purpose": "Record new public evidence on the likely Kamilah/Camila/Camilla Stevenson identity and the exact-head CI result for the isolated Databricks workflow-path fix.",
+  "video_identity_delta": {
+    "requested_name": "Camilla Stephenson",
+    "status": "LIKELY_CREATOR_FAMILY_IDENTIFIED; CANONICAL_CHANNEL_NOT_PROVEN; FULL_INVENTORY_INCOMPLETE",
+    "spelling_variants_observed": [
+      "Kamilah Stevenson",
+      "Camila Stevenson",
+      "Camilla Stevenson"
+    ],
+    "strongest_channel_candidate": {
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "display_name": "Kamilah Stevenson",
+      "public_handle_candidate": "@drkamilahstevenson",
+      "third_party_index_metrics": {
+        "subscriber_count_reported": 139000,
+        "video_count_reported": 1100,
+        "country_reported": "United States",
+        "channel_created_at_reported": "2015-08-25"
+      },
+      "source_id": "SRC-KAMILAH-CHANNEL-UCQUP",
+      "confidence": "MODERATE_CANDIDATE",
+      "limitation": "The metrics and handle are from a third-party channel index; direct creator-owned cross-link verification is still required."
+    },
+    "alternate_channel_candidate": {
+      "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "Kamilah Stevenson | XRP & Stocks",
+      "handle": "@KamilahStevensonXrpStocks",
+      "source_id": "SRC-KAMILAH-CHANNEL-UCXM",
+      "status": "POSSIBLE_ALTERNATE_OR_DUPLICATE; NOT_MERGED_WITH_STRONGEST_CANDIDATE"
+    },
+    "identity_corroboration": {
+      "source_id": "SRC-KAMILAH-INTERVIEW-2026",
+      "finding": "An indexed podcast transcript titled 'Crypto Panics! with Dr. Kamilah Stevenson' uses Camilla/Camila variants in the spoken transcript and reports that the guest warned about fake pages. This supports checking aliases carefully but does not authenticate either channel ID by itself.",
+      "evidence_class": "SECONDARY_TRANSCRIPT"
+    },
+    "indexed_video_leads": [
+      {
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+        "published_at": "2025-12-14",
+        "source_id": "SRC-KAMILAH-VIDEO-2025-12-14"
+      },
+      {
+        "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+        "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+        "published_at": "2026-01-13",
+        "source_id": "SRC-KAMILAH-VIDEO-2026-01-13"
+      },
+      {
+        "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+        "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+        "published_at": "2026-03-06",
+        "source_id": "SRC-KAMILAH-VIDEO-2026-03-06"
+      },
+      {
+        "title": "How Much XRP Do You ACTUALLY Need?",
+        "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+        "published_at": "2026-03-19",
+        "source_id": "SRC-KAMILAH-VIDEO-2026-03-19"
+      }
+    ],
+    "exact_phrase_results": {
+      "ASK Coin": "UNRESOLVED; no reliable exact-match definition in indexed results reviewed.",
+      "actual capital": "UNRESOLVED; do not conflate this exact phrase with the separate video title 'How Much XRP Do You ACTUALLY Need?'.",
+      "SBIC, ChatGPT SBIC": "UNRESOLVED; no source establishes the phrase as an entity, partnership, acronym expansion, or instruction."
+    },
+    "completeness": {
+      "all_public_uploads_enumerated": false,
+      "reported_channel_scale": "A third-party index reports approximately 1,100 videos for the strongest candidate; this is not an audited count of public long-form videos, Shorts, live streams, and archives.",
+      "missing_work": "Canonical identity verification, exhaustive pagination by channel ID, duplicate/impersonator filtering, transcript availability, timestamped claim extraction, and source corroboration.",
+      "rule": "Do not claim the inventory is complete until every supported upload type and page has been enumerated and coverage totals reconcile."
+    }
+  },
+  "repository_execution_delta": {
+    "observed_main_sha": "e9f85f5cd074944337aaa5ffa1f8751e308eb48e",
+    "pull_request": {
+      "number": 1202,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1202",
+      "title": "Fix Databricks deployment script path",
+      "state": "OPEN_DRAFT_NOT_MERGED",
+      "head_sha": "e2defad51375a3dece0b2e3e9b64a3b1fabddd8f",
+      "base_sha": "e9f85f5cd074944337aaa5ffa1f8751e308eb48e",
+      "changes": [
+        "Changed the workflow command to python scripts/deploy_databricks.py.",
+        "Added a regression assertion in tests/test_v3_scripts.py that the referenced script exists and the old root-level command is absent."
+      ],
+      "verification": {
+        "Tests": "PASS",
+        "Merge disabled pending gate verification": "PASS",
+        "tests_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40574900477",
+        "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40574900508",
+        "deployment_executed": false,
+        "merge_performed": false
+      }
+    },
+    "main_branch_modified": false
+  },
+  "source_registry": [
+    {
+      "id": "SRC-KAMILAH-CHANNEL-UCQUP",
+      "title": "Kamilah Stevenson public channel metadata index",
+      "publisher": "Vling third-party channel index",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-27T20:06:11Z",
+      "evidence_class": "SECONDARY_CHANNEL_METADATA",
+      "independence_group": "Vling",
+      "claim": "Reports channel ID UCqUPJMQdkCN6lsLVDnichPA, approximately 139K subscribers, approximately 1.1K videos, United States, and creation date 2015-08-25.",
+      "limitation": "Third-party index; counts may be stale and do not establish canonical ownership."
+    },
+    {
+      "id": "SRC-KAMILAH-CHANNEL-UCXM",
+      "title": "Kamilah Stevenson | XRP & Stocks public YouTube channel page",
+      "publisher": "YouTube",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-27T20:06:11Z",
+      "evidence_class": "SECONDARY_INDEXED_CHANNEL_METADATA",
+      "independence_group": "YouTube indexed page",
+      "claim": "Public indexed page exposes the title and handle @KamilahStevensonXrpStocks.",
+      "limitation": "Relationship to UCqUPJMQdkCN6lsLVDnichPA is unresolved."
+    },
+    {
+      "id": "SRC-KAMILAH-INTERVIEW-2026",
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-27T20:06:11Z",
+      "evidence_class": "SECONDARY_TRANSCRIPT",
+      "independence_group": "iHeart transcript index",
+      "claim": "Indexed transcript uses Camilla/Camila variants for the guest and reports a warning about fake pages.",
+      "limitation": "Speech-to-text spelling may be imperfect; not a canonical channel ownership proof."
+    },
+    {
+      "id": "SRC-KAMILAH-VIDEO-2025-12-14",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "publisher": "Kamilah Stevenson via indexed YouTube transcript",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "published_at": "2025-12-14",
+      "retrieved_at_utc": "2026-10-27T20:06:11Z",
+      "evidence_class": "SECONDARY_INDEXED_VIDEO",
+      "independence_group": "Kamilah Stevenson",
+      "claim": "Indexed video/transcript lead.",
+      "limitation": "Creator claims require independent verification; upload ownership should be confirmed against the canonical channel."
+    },
+    {
+      "id": "SRC-KAMILAH-VIDEO-2026-01-13",
+      "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+      "publisher": "Kamilah Stevenson via indexed YouTube summary",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "published_at": "2026-01-13",
+      "retrieved_at_utc": "2026-10-27T20:06:11Z",
+      "evidence_class": "SECONDARY_INDEXED_VIDEO",
+      "independence_group": "Kamilah Stevenson",
+      "claim": "Indexed video-summary lead.",
+      "limitation": "Not an exhaustive upload inventory; claims require independent verification."
+    },
+    {
+      "id": "SRC-KAMILAH-VIDEO-2026-03-06",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "publisher": "Kamilah Stevenson via indexed YouTube result",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "published_at": "2026-03-06",
+      "retrieved_at_utc": "2026-10-27T20:06:11Z",
+      "evidence_class": "SECONDARY_INDEXED_VIDEO",
+      "independence_group": "Kamilah Stevenson",
+      "claim": "Video description links oil shocks, yen carry-trade unwinds, global liquidity, and XRP.",
+      "limitation": "Creator thesis, not independent causal evidence."
+    },
+    {
+      "id": "SRC-KAMILAH-VIDEO-2026-03-19",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "publisher": "Kamilah Stevenson via indexed YouTube summary",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "published_at": "2026-03-19",
+      "retrieved_at_utc": "2026-10-27T20:06:11Z",
+      "evidence_class": "SECONDARY_INDEXED_VIDEO",
+      "independence_group": "Kamilah Stevenson",
+      "claim": "Indexed video title and publication date lead.",
+      "limitation": "The word ACTUALLY in this title is not evidence that the separate phrase 'actual capital' appears in the video."
+    }
+  ],
+  "validation": {
+    "json_parse": "PASS",
+    "source_ids_unique": "PASS",
+    "video_source_reference_integrity": "PASS",
+    "canonical_identity": "NOT_VERIFIED",
+    "full_video_inventory": "NOT_COMPLETE",
+    "PR1202_exact_head_CI": "PASS",
+    "main_modified": false,
+    "merged": false
+  }
+}
