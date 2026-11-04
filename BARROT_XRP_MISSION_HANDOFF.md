@@ -1,3 +1,46 @@
+# Current verified state — 2026-11-04T10:31Z
+
+**Mission:** XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+## Repository truth
+- Repository: `Barrot-Agent/B-Agent`
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`
+- Merged and verified on main: #1635 (Cross Analysis read-only containment), #1638 (XRP point-in-time feature validator, SQLite feature store and fixed-horizon forecast ledger), and #1639 (automation containment, dirty-worktree preservation, dependency audit and full-suite CI).
+- Main's integrated CI was built from #1639 code head `38aaeff1cc1ab7cf2f1b2fdbd5821ed089e7bd69`: 484 core tests and 718 full-repository tests passed, plus 8 subtests; fail-closed gate and four-manifest dependency audit passed. The merge commit is `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- The full repository CI job now runs `python -m pytest tests -v --no-cov`; it is distinct from the selected core CI list. Coverage exclusions remain a separate quality gap.
+- Classic branch-protection inspection returned 403 and the visible ruleset was disabled in the last verified repository audit. Green CI is not evidence that approval requirements are enforced.
+
+## Current integration PRs
+- #1640, `integration/core-capabilities-mmi-structural-paper-20261104`, is the single active MMI/structural-analysis/paper-trader-safety integration PR. Current head `c8a31a94ec85b38ab22a5cdca6d498af3fcd049f`; full-suite, core CI, four-manifest dependency audit and fail-closed gate passed on that exact head. Copilot submitted COMMENTED, not APPROVED; CodeRabbit review threads still require disposition. Do not merge until review/approval requirements are genuinely satisfied.
+- #1641 is a separate draft experimentation-foundation proposal; do not merge or treat it as XRP predictive performance.
+- #1614 and #1611 are stale prediction-contract/validator predecessors. Their unique research artifacts remain preserved; their old code overlaps the now-merged #1638 implementation. #1614 diverges from current main (36 commits ahead, 41 behind) and must not be merged as-is.
+- Numerous older XRP, signal-safety and research drafts remain unique/unreviewed or stale. Do not bulk-close. Classify by exact path/commit overlap before cleanup.
+
+## Prediction-engine status
+**EXECUTED on main:** deterministic point-in-time validator; append-only SQLite feature-store prototype; fixed-horizon forecast ledger; source lineage and timestamp checks; forecast/outcome event receipts; full-repository test job.
+
+**Not yet implemented or verified:** production exchange/ETF/derivatives/stablecoin/collateral adapters; scheduled ingestion; populated synchronized historical XRP dataset; immutable raw-payload archive with independent timestamp anchoring; feature-snapshot/forecast cross-store verification (proposed in the current branch below); leakage-safe chronological walk-forward evaluation; naive/momentum/mean-reversion/volatility baselines; class-wise calibration; drift monitoring; shadow performance.
+
+**Forecast status:** NOT_ISSUED. No directional forecast is justified. The ledger records/scorers only; no model or forecast generator is enabled. No paper trade or real-money action has occurred.
+
+## Nine-platform coordination
+Only ChatGPT-to-GitHub repository access is tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are capability-mapped only; no live authentication/data flow is claimed. Preserve least privilege, structured evidence exchange, minority objections and red-team review.
+
+## Current branch work
+Branch `prediction/verified-feature-snapshot-gate-20261104` is based directly on current main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. It adds an exact verified-snapshot lookup, a deterministic feature-store receipt-clock seam for tests, and a fail-closed forecast-ledger preflight binding snapshot IDs, asset scope, cutoff/receipt times, source lineage and feature maximum timestamps. The implementation is EXECUTED on this branch but is not VERIFIED until exact-head core/full-suite CI and dependency/security gates pass. It does not populate data or issue forecasts.
+
+## Next concrete actions
+1. Complete exact-head CI and full-repository tests for the feature-snapshot gate; fix any failures on the same branch.
+2. Resolve PR #1640's review comments and obtain actual required approval before any merge; verify main again after merge.
+3. Implement public exchange-native spot/order-book/derivatives adapters with immutable raw receipts, synchronized timestamps, quality checks and rate limits.
+4. Populate the historical feature store, then run chronological walk-forward tests with purged/embargoed horizons against no-change, momentum, mean-reversion and volatility-aware baselines.
+5. Add class-wise calibration and drift monitoring only after enough independent out-of-sample observations exist.
+6. Continue primary-source work on Coinbase, Circle, Ripple, SBI/SBIC, ASK Coin, "actual capital", ETF flows, XRPL amendments, Binance recipient wallets and the verified Camilla/Kamilah Stevenson identity.
+
+**DESIGNED, EXECUTED and VERIFIED remain separate.** The historical handoff snapshots below are preserved and superseded by this current-state block; do not use their older main SHAs or PR states as current.
+
+---
+
 # Current integrated Barrot handoff — 2026-11-04T08:26:24.140Z
 
 ## Mission and execution rule
