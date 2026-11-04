@@ -83,3 +83,24 @@ def test_artifact_is_research_only_and_preserves_source_quality_gaps():
     assert quality["recipient_exchange_attribution_verified"] is False
     assert quality["whale_alert_and_secondary_article_independent"] is False
     assert sum(item["amount_xrp"] for item in data["claims"] if item["claim_id"] in {"XRP-TRANSFER-3AAA", "XRP-TRANSFER-DC8D"}) == 80_000_000
+
+
+
+def test_reuters_binance_withdrawal_metric_is_not_promoted_to_xrp_flow():
+    path = ROOT / "research" / "xrp_intelligence" / "20261104T213307Z-binance-recovery-withdrawal-flow-addendum.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    sources = {item["source_id"]: item for item in data["source_registry"]}
+    claims = {item["claim_id"]: item for item in data["claims"]}
+    reuters = claims["REUTERS-NET-WITHDRAWALS-472B"]
+    assert reuters["net_customer_withdrawals_usd"] == 4_720_000_000
+    assert reuters["approximate_share_of_platform_assets_pct"] == 3
+    assert reuters["majority_withdrawal_asset"] == "USDT"
+    assert reuters["affected_tokens_replenished_pct"] == 95
+    assert "Reuters" in sources["REUTERS-BINANCE-NET-WITHDRAWALS-20261103"]["publisher"]
+    assert claims["BINANCE-98PCT-44TOKEN-POR"]["replenished_pct"] == 98
+    assert data["reporting_disagreement"][0]["observations"][0]["reported_pct"] == 95
+    assert data["reporting_disagreement"][0]["observations"][1]["reported_pct"] == 98
+    assert data["xrp_interpretation"]["direct_xrp_net_withdrawals_xrp"] is None
+    assert data["xrp_interpretation"]["xrp_specific_market_or_otc_purchase_confirmed"] is False
+    assert data["model_eligible"] is False
+    assert data["forecast_issued"] is False
