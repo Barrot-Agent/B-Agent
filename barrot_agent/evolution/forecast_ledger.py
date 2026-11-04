@@ -164,6 +164,10 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             raise ForecastLedgerError("readiness dataset contains duplicate raw receipt IDs")
         if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
             raise ForecastLedgerError(f"raw_source_receipts[{index}] needs a SHA-256 digest")
+        if receipt.get("raw_capture_status") != "byte_complete":
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] must be byte_complete")
+        if receipt.get("raw_receipt_sha256_verified") is not True:
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] has not verified its raw bytes")
         if not isinstance(group, str) or not group.strip():
             raise ForecastLedgerError(f"raw_source_receipts[{index}] needs independence_group")
         if not isinstance(uri, str) or not uri.strip():
@@ -185,6 +189,8 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         raise ForecastLedgerError(
             f"readiness dataset needs at least {_MIN_SOURCE_GROUPS} independently receipted source groups"
         )
+    if report.get("source_independence_group_count") != len(receipt_groups):
+        raise ForecastLedgerError("readiness report source_independence_group_count does not match dataset receipts")
     if dataset.get("data_cutoff_utc") is None:
         raise ForecastLedgerError("readiness dataset data_cutoff_utc is required")
     dataset_cutoff = _utc(dataset["data_cutoff_utc"], "dataset data_cutoff_utc")[0]
@@ -335,7 +341,13 @@ class ForecastLedger:
             raise ForecastLedgerError("ledger clock must return a timezone-aware datetime")
         return now.astimezone(timezone.utc)
 
-    def register_readiness_report(self, report_bytes: bytes, *, receipt_id: str) -> str:
+    def register_readiness_report(
+        self,
+        report_bytes: bytes,
+        *,
+        receipt_id: str,
+        raw_receipt_bytes: Mapping[str, bytes],
+    ) -> str:
         """Register one immutable, byte-addressed model-readiness report."""
         if not isinstance(report_bytes, bytes) or not report_bytes:
             raise ForecastLedgerError("readiness report bytes are required")
@@ -345,7 +357,17 @@ class ForecastLedger:
             report = json.loads(report_bytes)
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
             raise ForecastLedgerError("readiness report bytes must contain valid JSON") from exc
-        _validate_readiness_report(report)
+        validated_report = _validate_readiness_report(report)
+        if not isinstance(raw_receipt_bytes, Mapping):
+            raise ForecastLedgerError("raw_receipt_bytes must map raw receipt IDs to exact bytes")
+        for index, receipt in enumerate(validated_report["dataset_manifest"]["raw_source_receipts"]):
+            raw_bytes = raw_receipt_bytes.get(receipt["receipt_id"])
+            if not isinstance(raw_bytes, bytes) or not raw_bytes:
+                raise ForecastLedgerError(f"readiness raw receipt {receipt['receipt_id']!r} bytes are missing")
+            if hashlib.sha256(raw_bytes).hexdigest() != receipt["raw_content_sha256"]:
+                raise ForecastLedgerError(
+                    f"readiness raw receipt {receipt['receipt_id']!r} bytes do not match its SHA-256"
+                )
         report_sha256 = hashlib.sha256(report_bytes).hexdigest()
         registered_at = self._now().isoformat(timespec="microseconds").replace("+00:00", "Z")
         db = self._connect()
