@@ -60,13 +60,14 @@ jobs:
               api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
           except Exception as e:
               print("create_repo note:", e)
+          # Register the runtime secret before uploading code that may boot immediately.
+          api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
           api.upload_folder(
               folder_path="self_hosted_brain",
               repo_id=repo_id,
               repo_type="space",
               commit_message="Deploy self-hosted brain",
           )
-          api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
-          print("shared secret propagated")
+          print("shared secret registered before deployment")
           print("DEPLOYED")
           SCRIPT
