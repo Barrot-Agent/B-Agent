@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import sqlite3
+
 import pytest
 
+from barrot_agent.evolution.feature_store import FeatureStoreError, HistoricalFeatureStore
 from barrot_agent.evolution.point_in_time_features import (
     FeatureSnapshotError,
     build_feature_snapshot,
@@ -286,3 +289,89 @@ def test_artifact_clock_rejects_naive_or_malformed_timestamps():
         validate_capture_before_commit(
             "not-a-time", "2026-11-03T22:00:01Z"
         )
+
+
+def test_historical_feature_store_is_idempotent_and_preserves_lineage(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    store = HistoricalFeatureStore(tmp_path / "feature_store.sqlite3")
+
+    first = store.append_snapshot(snapshot)
+    second = store.append_snapshot(snapshot)
+
+    assert first["created"] is True
+    assert second["created"] is False
+    assert first["snapshot_id"] == snapshot["snapshot_id"]
+    assert first["stored_at_utc"] == second["stored_at_utc"]
+
+    future_as_of = "2030-01-01T00:00:00Z"
+    stored = store.snapshot_as_of("XRP", future_as_of)
+    assert stored is not None
+    assert stored["snapshot_id"] == snapshot["snapshot_id"]
+    assert store.features_as_of("XRP", future_as_of)[0]["value"] == 1.27
+
+    lineage = store.source_lineage(snapshot["snapshot_id"])
+    assert len(lineage) == 1
+    assert lineage[0]["source_id"] == "provider-a"
+    assert lineage[0]["raw_content_sha256"] == HASH_A
+    assert "raw_content" not in lineage[0]
+
+    verified = store.verify_snapshot(snapshot["snapshot_id"])
+    assert verified["valid"] is True
+    assert verified["sqlite_integrity"] == "ok"
+
+
+def test_historical_feature_store_hides_backfilled_snapshot_before_store_receipt(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    store = HistoricalFeatureStore(tmp_path / "feature_store.sqlite3")
+    saved = store.append_snapshot(snapshot)
+
+    # The source data is old, but the store did not receive this snapshot until now.
+    assert saved["stored_at_utc"] > CAPTURED
+    assert store.snapshot_as_of("XRP", CAPTURED) is None
+    assert store.features_as_of("XRP", CAPTURED) == []
+    assert store.snapshot_as_of("BTC", "2030-01-01T00:00:00Z") is None
+
+
+def test_historical_feature_store_rejects_tampered_manifest_and_append_mutation(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    store = HistoricalFeatureStore(tmp_path / "feature_store.sqlite3")
+    store.append_snapshot(snapshot)
+
+    tampered = dict(snapshot)
+    tampered["records"] = [dict(snapshot["records"][0], value=9.99)]
+    with pytest.raises(FeatureStoreError, match="snapshot_id does not match"):
+        store.append_snapshot(tampered)
+
+    connection = sqlite3.connect(tmp_path / "feature_store.sqlite3")
+    try:
+        with pytest.raises(sqlite3.IntegrityError, match="append-only"):
+            connection.execute(
+                "UPDATE snapshots SET manifest_json = '{}' WHERE snapshot_id = ?",
+                (snapshot["snapshot_id"],),
+            )
+        with pytest.raises(sqlite3.IntegrityError, match="append-only"):
+            connection.execute(
+                "DELETE FROM feature_records WHERE snapshot_id = ?",
+                (snapshot["snapshot_id"],),
+            )
+    finally:
+        connection.close()
+
+
+def test_historical_feature_store_rejects_unknown_schema_and_unknown_snapshot(tmp_path):
+    database = tmp_path / "feature_store.sqlite3"
+    store = HistoricalFeatureStore(database)
+    with pytest.raises(FeatureStoreError, match="unknown snapshot_id"):
+        store.verify_snapshot("f" * 64)
+
+    connection = sqlite3.connect(database)
+    connection.execute("PRAGMA user_version = 99")
+    connection.close()
+    with pytest.raises(FeatureStoreError, match="unsupported feature-store schema"):
+        HistoricalFeatureStore(database)
