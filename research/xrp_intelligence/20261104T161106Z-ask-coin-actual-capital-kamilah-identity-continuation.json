@@ -117,7 +117,7 @@
     {
       "phrase": "SBIC, ChatGPT SBIC",
       "status": "NO_VERIFIED_OPENAI_OR_CHATGPT_PARTNERSHIP",
-      "finding": "The reviewed official SBIC East material describes an educational generative-AI/ChatGPT seminar for investee companies. That does not establish an OpenAI partnership. SBIC East/Central/West remain distinct from SBI Holdings; SBI Holdings' own ChatGPT Enterprise adoption is a separate corporate relationship.",
+      "finding": "SBIC East's official 2026-03-05 seminar page documents a generative-AI/ChatGPT seminar with a Microsoft Japan speaker and a ChatGPT-use demonstration. Separately, SBI Holdings and SBI Securities announced ChatGPT Enterprise adoption on 2025-05-01 (SBI Securities from January 2025; SBI Holdings from March 2025). Neither fact establishes an SBIC-East/OpenAI partnership or a ChatGPT integration with XRP prediction systems.",
       "source_ids": [
         "sbic_east_chatgpt_education_notice",
         "sbi_holdings_chatgpt_enterprise_notice"
@@ -300,18 +300,26 @@
       "retrieved_at_utc": null,
       "capture_status": "prior_primary_source_artifact_reference",
       "raw_content_sha256": null,
-      "model_eligible": false
+      "model_eligible": false,
+      "published_at_date": "2026-03-05",
+      "claims_supported": [
+        "Official SBIC East seminar titled 'Current State and Future of Generative AI (ChatGPT)' on 2026-03-05; hosted by Tokyo Small and Medium Business Investment & Consultation Co., Ltd., co-hosted by Hamamatsu Iwata Shinkin; Microsoft Japan speaker demonstrated ChatGPT use cases."
+      ]
     },
     {
       "id": "sbi_holdings_chatgpt_enterprise_notice",
       "publisher": "SBI Holdings",
-      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "url": "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
       "source_type": "official_company_notice",
       "source_data_as_of_utc": null,
       "retrieved_at_utc": null,
       "capture_status": "prior_primary_source_artifact_reference",
       "raw_content_sha256": null,
-      "model_eligible": false
+      "model_eligible": false,
+      "published_at_date": "2025-05-01",
+      "claims_supported": [
+        "SBI Holdings and SBI Securities announced ChatGPT Enterprise adoption; SBI Securities had begun use in January 2025 and SBI Holdings began limited employee use in March 2025."
+      ]
     }
   ],
   "source_independence": {

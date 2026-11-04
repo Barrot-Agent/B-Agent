@@ -45,4 +45,4 @@ def test_sbic_chatgpt_event_and_sbi_holdings_enterprise_notice_are_separate():
     data = load()
     sources = {source["id"]: source for source in data["source_registry"]}
     assert sources["sbic_east_chatgpt_education_notice"]["url"] == "https://www.sbic.co.jp/seminar/20260305js/"
-    assert sources["sbi_holdings_chatgpt_enterprise_notice"]["url"] == "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
+    assert sources["sbi_holdings_chatgpt_enterprise_notice"]["url"] == "https://www.sbigroup.co.jp/news/2025/0501_15410.html"
