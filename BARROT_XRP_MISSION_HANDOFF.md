@@ -390,3 +390,90 @@ Two previously push-triggered external deployments are being changed on this sam
 They remain push-triggered on current main until this branch is approved and merged. The Hugging Face workflow also had a missing `BRAIN_SHARED_SECRET` environment mapping; the integration adds it only to the post-confirmation deployment step.
 
 The full workflow audit still identifies the direct-main writers listed above. These are not yet contained on main. Pages deployment settings remain inaccessible and a Pages build/deployment was observed after a previous main update. No merge is made while these unapproved side effects remain unresolved.
+
+
+---
+
+## 2026-11-04T09:27:51Z — Run 9 integrated audit and XRP research delta
+
+### Repository and exact-head verification
+
+- Repository: `Barrot-Agent/B-Agent`.
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main tree: 1,403 entries, 493 Python files, 90 Python test files, 78 GitHub workflow files. Repository size reported by GitHub: 699,850 KB.
+- Main CI run [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459): **485 core tests passed + 8 subtests; 718 full-repository tests passed + 8 subtests**. The full-suite job ran every test under `tests/`.
+- Main Cross Analysis run [41802742299](https://github.com/Barrot-Agent/B-Agent/actions/runs/41802742299): succeeded on main SHA `9100dbac`; workflow is read-only and uploads artifacts.
+- Current open PR inventory: **363 open, 357 draft, 6 non-draft**. Only PR #1640 is based directly on current main.
+
+### PR #1640 exact-head evidence
+
+- PR: [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640).
+- Base: main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Exact head: `ffa17cbbc6d6bbb6f755236beb9f7eb9e17372e4`.
+- Scope: 26 changed paths, 2,388 additions, 139 deletions.
+- Core CI: [41807076920](https://github.com/Barrot-Agent/B-Agent/actions/runs/41807076920) — **536 passed, 8 subtests passed**.
+- Full repository suite, same exact head and same CI run — **771 passed, 8 subtests passed**. The job installs complete development dependencies and runs every repository test.
+- Fail-closed gate: [41807076932](https://github.com/Barrot-Agent/B-Agent/actions/runs/41807076932) — passed; it explicitly keeps automatic merging disabled.
+- Four-manifest dependency audit: [41807076934](https://github.com/Barrot-Agent/B-Agent/actions/runs/41807076934) — all four audits passed.
+- `pip-audit` check: passed; no known vulnerabilities found in the audited resolved environments.
+- GitHub reports the PR mergeable, but it is still draft and has **zero submitted reviews**. CodeRabbit review was skipped. No approval is claimed.
+- Main is marked protected, but the classic branch-protection endpoint returns 403; the visible fallback ruleset is disabled and the branch summary exposes no required status contexts. Required approval policy therefore remains unverified. Do not bypass it. PR #1640 is not merged.
+
+### Main-branch safety state and remaining guard gap
+
+Verified on current main:
+- Scheduler Tick, self-schedule, autonomous resolver, issue resolver, subscriber sync, public brain-corpus export and legacy signal-accuracy workflows are disabled with no permissions.
+- Cross Analysis is read-only, uses non-persisted checkout credentials and uploads results as artifacts.
+- Signal Ledger is manual and artifact-only.
+- Main still has a manual paper-trader workflow that lacks a per-run confirmation and exact-main-SHA gate, and its persistence job can push paper state to main. Main also retains push-triggered A2A-worker and self-hosted-brain deployments. PR #1640 changes these to explicit manual approval plus exact-main-SHA checks.
+- Current persisted paper state is `position_size=0.012445158497236623`, `position_product=null`, `avg_entry_price=80436.84`, `trade_count=126`. The #1640 preflight refuses to call a market-data provider or Groq, or mutate state, while an open position has no verified product identity. State was not modified and no workflow was run.
+- No deployment, provider workflow, paper-trading workflow, Kaggle submission, secret operation or real-money action was performed.
+
+### New XRP research observations (capture cutoff 09:27:51Z)
+
+**Japan SBIC identity — primary-source resolution**
+- Tokyo Small and Medium Business Investment & Consultation Co., Ltd. identifies itself as **SBIC East Japan**, corporate number `9011001030621`, founded in 1963. Its official profile lists Nagoya and Osaka as sister companies: [SBIC East Japan profile](https://www.sbic.co.jp/company/profile/).
+- The official company-law explanation names exactly three separate companies—Tokyo, Nagoya and Osaka—with their respective head-office cities: [Small and Medium Business Investment & Consultation Companies Act](https://www.sbic.co.jp/company/history/knowhow/).
+- These are the Tokyo/Nagoya/Osaka SME investment-development companies, not SBI Holdings. Do not merge their publisher identity or corporate relationships with SBI Holdings merely because both use the letters SBI/SBIC.
+
+**SBI/Ripple and JPYSC**
+- SBI Holdings' official SBI Ripple Asia profile reports SBI Group at **60% of voting rights** as of 2026-03-31: [SBI Ripple Asia company profile](https://www.sbigroup.co.jp/company/group/sbirippleasia.html). This is a governance relationship, not an XRP capital-flow measure.
+- SBI's 2026-09-07 JPYSC announcement reports approximately **¥20.1B issued**, **¥6.9B in JPYSC lending applications**, and **¥27B combined scale** at that date. It also says ¥1B of trust assets began being invested in short-term Japanese government bonds. SBI Shinsei Trust Bank is the issuer; SBI VC Trade directs the specified asset operation and handles the distribution business: [SBI JPYSC release](https://www.sbigroup.co.jp/news/2026/0907_16567.html).
+- This supports an SBI multi-rail stablecoin and traditional-asset strategy. It does not prove XRP purchases, XRP collateral utilization or XRP bridge demand.
+
+**ETF-flow disagreement**
+- XRP Insights' issuer-derived data page says its latest Nov 3 row is provisional, its settled data cutoff is Nov 2, and its six spot funds plus BITW total about 1.196B XRP. GXRP flow is excluded because of an issuer-data gap, while holdings remain included. Some historical rows are reconstructed and holdings changes can include more than creations/redemptions: [XRP Insights data and methodology](https://xrp-insights.com/data).
+- CryptoKeyhole's Nov 4 05:22Z capture says Nov 3 is partial, with 3 of 4 funds reported and Franklin XRPZ missing: [CryptoKeyhole XRP ETF flows](https://cryptokeyhole.com/etf-flows/xrp/).
+- Crypto ETF Today showed a partial Nov 3 update at 05:47Z with 2 of 5 funds reported, while other text on the same dynamically updated page later showed a different reporting count: [Crypto ETF Today](https://cryptoetf.today/en/xrp-etf-flows).
+- These are different fund universes, data cuts and settlement states. Do not interpret an incomplete zero as a final zero, average the aggregates or label all holdings changes as creations/redemptions.
+
+**Upcoming events and market-data eligibility**
+- Circle's official Q3 2026 results webcast is scheduled for **2026-11-04 08:00 ET / 13:00 UTC**. It had not occurred at this capture cutoff: [Circle announcement](https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026).
+- XRPL `fixCleanup3_4_0` still has only a conditional earliest activation of **2026-11-04 14:46:22 UTC**; XRPLWin displayed 33/35 support against a 29-validator threshold. It is not marked active. The lending and single-asset-vault amendments remain below threshold in the cited tracker: [XRPLWin amendment tracker](https://xrplwin.com/amendment/fixCleanup3_4_0). A direct ledger `EnabledAmendments` check remains required after the activation window.
+- Binance's official initial report says the October 29 incident involved five hot wallets sending approximately **233.46M XRP**, 98% of affected token assets replenished as of October 31, and about $2.85B frozen/intercepted at its report cutoff: [Binance initial report](https://www.binance.com/en/square/post/11-03-2026-binance-releases-initial-investigation-report-on-security-incident-98-of-stolen-assets-recovered-detailed-explanation-of-multi-stage-attack-384312335801732). Reuters' November 3 reconstruction describes a multi-stage compromise; the internal AI tool was a later springboard, not the established initial access vector: [Reuters](https://www.reuters.com/world/binance-says-hackers-used-fake-job-interview-compromise-computer-before-63-2026-11-03/).
+- No synchronized, exchange-native XRP spot/depth/derivatives snapshot at the 09:27:51Z cutoff was established. The latest repository market snapshot is older and provider-disagreeing. Do not use it for a directional forecast.
+
+**Unresolved research**
+- No new primary evidence resolved the exact phrase `actual capital`, the phrase `SBIC, ChatGPT SBIC`, or an XRP-linked `ASK Coin` asset/integration in this run.
+- Kamilah/Camilla Stevenson identity and the completeness of the public video inventory remain unverified; keep candidate channels separate.
+- Nine-platform coordination remains a capability map. Only ChatGPT-to-GitHub access is tested; no live Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks collaboration is claimed.
+
+### Backlog classification at this cutoff
+
+- **Current integration / ready for review:** #1640 consolidates #1540, #1317, #1318, #1320, #1255 and #1254. Its exact-head tests and security/dependency gates pass; it remains draft pending review and branch-protection/approval verification.
+- **Superseded source proposals, preserve until #1640 merges:** #1540, #1317, #1318, #1320, #1255 and #1254. Close only after every source path is verified on main.
+- **Unique/unreviewed XRP work, preserve:** #1614 (57 paths, including `point_in_time_features.py` and unique institutional/identity research); #1605 (market-microstructure snapshot); #1608 (C2FO/Evernorth capital reconciliation); #1597 (Coinbase/Circle/SBI/XRPL relationship archive). Do not bulk-close these.
+- **Predecessor:** #1611 overlaps the older forecast-ledger work in #1614; preserve until #1614's unique evidence and validator changes are reconciled.
+- **Separate blocked workstream:** #1269 OBJ topology/triangulation has a stale base and needs a fresh-main review and full-suite verification.
+- **Unreviewed backlog:** the remaining drafts were not all individually classified in this run. Preserve branches and history; no bulk close.
+
+### Prediction-engine status and next concrete work
+
+- **VERIFIED on main:** SQLite feature-store prototype, fixed-horizon forecast ledger, point-in-time feature/source checks, receipt-time records, evidence chronology checks and timestamped research artifacts.
+- **VERIFIED on PR #1640 exact head:** MMI publisher grouping and claim-bound corroboration, structural-analysis primitives, strict scientific-response schema validation, guarded paper-trader product identity and manual external-action gates; exact-head tests/gates listed above.
+- **NOT IMPLEMENTED/VERIFIED:** production public XRP adapters; a populated synchronized historical feature store; independently anchored immutable raw-source receipts; chronological walk-forward results; baseline superiority; class-wise probability calibration; drift monitoring; and measured shadow/paper performance.
+- **Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action is justified.
+- Next: complete PR #1640 review without bypassing protection; then reconcile #1614's unique point-in-time validator and research records into one fresh-main prediction-engine integration. Populate historical spot/depth/flows/OI/funding/liquidation/collateral/ETF/stablecoin features with source lineage and receipt times. Only then run chronological walk-forward evaluation against naive, momentum, mean-reversion and volatility-aware baselines.
+- After 13:00Z, capture Circle's Q3 release and webcast; after 14:46:22Z, verify XRPL ledger state and `EnabledAmendments` directly. Keep both event observations separate from price predictions.
+
+DESIGNED, EXECUTED and VERIFIED remain distinct. This handoff is on the PR #1640 branch, not yet on main.
