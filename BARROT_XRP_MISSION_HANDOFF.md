@@ -283,3 +283,8 @@ Added `research/xrp_intelligence/20261104T073349Z-binance-xrpl-amendment-market-
 - Circle's Q3 webcast at 13:00 UTC and fixCleanup3_4_0's 14:46:22 UTC earliest activation remain future events at this cutoff.
 
 The artifact preserves source timestamps, source-independence groups, eight relationship edges, five competing hypotheses, disconfirming evidence and next tests. Forecast remains NOT_ISSUED. No paper or real-money transaction occurred.
+
+
+## Exact-head documentation successor
+
+A documentation-only successor commit `0a3585740382f88c85a0d2d474eef478a4815e65` records the final 718-test full-suite result, 4-manifest audit, current PR backlog and integrated architecture findings. Re-run exact-head CI and the fail-closed gate on the resulting branch head before merging; the preceding code head `38aaeff1cc1ab7cf2f1b2fdbd5821ed089e7bd69` passed 484 core tests, 718 full-suite tests, 8 subtests, the fail-closed gate and dependency audit.
