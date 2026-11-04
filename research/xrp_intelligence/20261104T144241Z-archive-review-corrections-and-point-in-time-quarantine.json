@@ -620,8 +620,8 @@
             "source_id": "ripple_rntb_final_approval",
             "old_url": "https://ripple.com/ripple-press/2026/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
             "canonical_url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
-            "reason": "Canonical non-date-prefixed Ripple press path.",
-            "target_field": "$.bank_charter_status.ripple.sources[1]"
+            "reason": "Retained as an unlinked candidate URL; the original target artifact instead contains the BusinessWire URL, which is handled by the separate target-bearing replacement.",
+            "target_field_status": "candidate_url_not_present_in_original_target_artifact"
           },
           {
             "source_id": "ripple_coinbase_rlusd",
@@ -670,8 +670,8 @@
             "source_id": "ripple_occ_cas_correct",
             "old_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/",
             "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
-            "reason": "Replace generic OCC year index with the institution-specific Ripple CAS record.",
-            "target_field": "$.bank_charter_status.ripple.sources[0]"
+            "reason": "Retained as an unlinked generic OCC index candidate; the original target artifact contains the CAAS_CATS URL, handled by the separate target-bearing replacement.",
+            "target_field_status": "candidate_url_not_present_in_original_target_artifact"
           },
           {
             "source_id": "coinbase_occ_decision_1370",
@@ -702,7 +702,14 @@
           "sbivc_rlusd_announcement",
           "circle_occ_cas_final"
         ],
-        "evidence_classification": "PRIMARY_SOURCE_CITATION_CORRECTION"
+        "evidence_classification": "PRIMARY_SOURCE_CITATION_CORRECTION",
+        "preimage_validation": {
+          "status": "VERIFIED_BY_REGRESSION_TEST",
+          "target_artifact": "research/xrp_intelligence/20261103T223100Z-circle-ripple-coinbase-bank-charter-stablecoin-network.json",
+          "targeted_replacement_count": 6,
+          "non_targeted_candidate_count": 2,
+          "rule": "Every replacement with target_field must have an old_url exactly equal to the value at that JSON path in the original target artifact. Candidate URLs absent from the original artifact remain untargeted."
+        }
       },
       {
         "correction_id": "C02_DANGLING_HANDOFF_REFERENCE",
@@ -1266,6 +1273,11 @@
       "comment_id": 5770095321,
       "status": "CORRECTED_BY_C11_C12",
       "finding": "Pillars HTTP status and per-observation eligibility"
+    },
+    {
+      "comment_id": 5770918594,
+      "status": "CORRECTED_C01_TARGET_PREIMAGE_VALIDATION",
+      "finding": "Every target-bearing C01 replacement is checked against the exact old value at its declared path in the original artifact; unmatched candidate URLs are explicitly untargeted."
     }
   ],
   "prediction_status": "NOT_ISSUED",
@@ -1284,12 +1296,12 @@
     "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "121b515e2b09131fd35b31b18e53e02c203316fb",
+    "prior_blob_sha": "97b9a458a5571dd45038deff8b30d6441a9eeca8",
     "prior_captured_at_utc": "2026-11-04T15:25:33Z",
-    "revised_at_utc": "2026-11-04T15:47:05Z",
-    "revision_reason": "Appended a primary-source cross-filing reconciliation of Evernorth's closing Form 8-K and later October 30 prospectus ownership tables. Preserved both dated share-class snapshots, separated class percentages from total voting power, and left the 546,621-share class allocation change unexplained rather than inferring a conversion or purchase.",
-    "revision_status": "append_only_sbi_share_class_cross_filing_reconciliation",
-    "source_registry_unchanged": false
+    "revised_at_utc": "2026-11-04T16:11:06Z",
+    "revision_reason": "Corrected two C01 candidate URL entries that did not match the original target artifact, removed their target pointers, and added generic exact-preimage regression coverage for every target-bearing replacement. Original research artifacts and source receipts remain unchanged.",
+    "revision_status": "append_only_c01_target_preimage_crosswalk_and_test_correction",
+    "source_registry_unchanged": true
   },
   "artifact_revision_history": [
     {
@@ -1338,6 +1350,14 @@
       "revised_at_utc": "2026-11-04T15:25:33Z",
       "revision_reason": "Appended post-window node-backed confirmation that fixCleanup3_4_0 was enabled at ledger 108112129 at 14:52 UTC; preserved stale official-doc warning as documentation lag and distinguished the still-inactive lending/vault amendments.",
       "revision_status": "append_only_protocol_activation_confirmation",
+      "source_registry_unchanged": false
+    },
+    {
+      "prior_blob_sha": "121b515e2b09131fd35b31b18e53e02c203316fb",
+      "prior_captured_at_utc": "2026-11-04T15:25:33Z",
+      "revised_at_utc": "2026-11-04T15:47:05Z",
+      "revision_reason": "Appended a primary-source cross-filing reconciliation of Evernorth's closing Form 8-K and later October 30 prospectus ownership tables. Preserved both dated share-class snapshots, separated class percentages from total voting power, and left the 546,621-share class allocation change unexplained rather than inferring a conversion or purchase.",
+      "revision_status": "append_only_sbi_share_class_cross_filing_reconciliation",
       "source_registry_unchanged": false
     }
   ]

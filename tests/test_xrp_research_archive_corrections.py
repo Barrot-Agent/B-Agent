@@ -23,6 +23,18 @@ def source_map(artifact):
     return {item["id"]: item for item in artifact["source_registry"]}
 
 
+def json_path_value(root, path):
+    assert path.startswith("$.")
+    value = root
+    for segment in path[2:].split("."):
+        if "[" in segment:
+            key, index = segment[:-1].split("[", 1)
+            value = value[key][int(index)]
+        else:
+            value = value[segment]
+    return value
+
+
 def parse_utc(value):
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
@@ -110,6 +122,19 @@ def test_circle_q2_sec_accession_and_occ_records_are_distinct():
     assert coinbase_decision["target_field"] == "$.bank_charter_status.coinbase.sources[0]"
     assert source_map(data)["circle_occ_cas_final"]["model_eligible"] is False
     assert "2026-07-24" in " ".join(source_map(data)["circle_occ_cas_final"]["claims_supported"])
+
+    target_path = ROOT / entry["target_artifact"]
+    target = json.loads(target_path.read_text(encoding="utf-8"))
+    targeted_paths = set()
+    for replacement in replacements:
+        target_field = replacement.get("target_field")
+        if not target_field:
+            continue
+        assert target_field not in targeted_paths
+        targeted_paths.add(target_field)
+        assert json_path_value(target, target_field) == replacement["old_url"]
+    assert len(targeted_paths) == entry["preimage_validation"]["targeted_replacement_count"]
+    assert entry["preimage_validation"]["non_targeted_candidate_count"] == 2
 
 
 def test_dangling_handoff_is_not_referenced_as_existing():
