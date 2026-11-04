@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T01:04:16.852Z",
+  "purpose": "Disambiguate the exact research phrases 'SBIC', 'ChatGPT SBIC', and the requested 'Camilla Stephenson' public-video identity without conflating unrelated entities.",
+  "sbic_candidates": [
+    {
+      "id": "SBIC_EAST_JAPAN",
+      "name_ja": "東京中小企業投資育成株式会社",
+      "official_english_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "classification": "CONFIRMED_JAPANESE_COMPANY",
+      "official_profile": "https://www.sbic.co.jp/company/profile/",
+      "official_homepage": "https://www.sbic.co.jp/",
+      "company_number": "9011001030621",
+      "founded": "1963-11-15",
+      "function": "Japanese policy-implementation investment company supporting capitalization and long-term growth of medium and small businesses.",
+      "chatgpt_connection": {
+        "official_training": "https://www.sbic.co.jp/training/20250612co/",
+        "dates": [
+          "2025-06-12",
+          "2025-06-13"
+        ],
+        "content": [
+          "Day 1 included generative-AI fundamentals and ChatGPT usage.",
+          "Day 2 included Copilot, prompt application, RAG, APIs and implementation topics."
+        ],
+        "classification": "EDUCATIONAL_TRAINING_FOR_INVESTEE_COMPANIES",
+        "not_evidence_of": [
+          "OpenAI corporate partnership",
+          "OpenAI investment",
+          "XRP or Ripple relationship",
+          "SBI Holdings identity equivalence"
+        ]
+      },
+      "distinction": "This company is not SBI Holdings, SBI Remit, SBI VC Trade or SBI Ripple Asia."
+    },
+    {
+      "id": "SBIC_SOCIAL_BIAS_INFERENCE_CORPUS",
+      "name": "Social Bias Inference Corpus (SBIC)",
+      "classification": "CONFIRMED_RESEARCH_DATASET",
+      "source_paper": "Can Large Language Models Transform Computational Social Science?",
+      "source_url": "https://calebziems.com/assets/pdf/preprints/css_chatgpt.pdf",
+      "authors": [
+        "Caleb Ziems",
+        "William Held",
+        "Omar Shaikh",
+        "Jiaao Chen",
+        "Zhehao Zhang",
+        "Diyi Yang"
+      ],
+      "findings": [
+        "The paper defines Social Bias Inference Corpus (SBIC) as a task involving free-text explanations of the implicit social meaning of hateful or biased statements.",
+        "Section 3.4.3 states the corpus contains approximately 34,000 inferences and cites Sap et al. (2020).",
+        "Table 4 reports ChatGPT at 65.9% in the SBIC column for expert human evaluations of zero-shot generation."
+      ],
+      "metric_interpretation": "65.9% is the share of pairwise expert rankings in which the authors unanimously preferred a model-generated explanation as more accurate or preferable to the human gold explanation. It is not 65.9% classification accuracy, forecast accuracy, or a financial prediction metric.",
+      "source_lines": {
+        "dataset_definition": "PDF lines 187-189",
+        "table_and_metric": "PDF lines 409-426"
+      },
+      "relevance": "A plausible referent for the exact phrase 'ChatGPT SBIC'; unrelated to the Japanese investment company and unrelated to XRP."
+    },
+    {
+      "id": "SBIC_COVID_SOCIAL_BEHAVIOURAL",
+      "classification": "UNRESOLVED_ALTERNATE_LABEL",
+      "source_url": "https://dds.sciengine.com/cfs/files/pdfs/2096-9732/F828194D488B4F0AB7E9E09F97E262FF.pdf",
+      "note": "A Chinese-language PDF search extraction describes an SBIC label as social and behavioral impacts of COVID-19 and shows a ChatGPT preference table. The original dataset title and acronym expansion have not been verified against the paper's source-language text. Do not merge this candidate with Social Bias Inference Corpus."
+    }
+  ],
+  "creator_identity": {
+    "requested_spelling": "Camilla Stephenson",
+    "probable_candidate": {
+      "channel_name": "Kamilah Stevenson",
+      "spoken_self_introduction": "Camila Stevenson",
+      "handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "third_party_channel_page": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "third_party_snapshot": {
+        "subscribers": 143000,
+        "video_count": 1300,
+        "country": "United States",
+        "crawl": "2026-11-02"
+      },
+      "identity_status": "PROBABLE_MATCH_NOT_EXACTLY_CONFIRMED",
+      "reason": "The channel title and external video listings use Kamilah Stevenson; multiple video transcripts introduce the speaker as Camila Stevenson. The exact spelling 'Camilla Stephenson' has not been corroborated by a primary channel statement."
+    },
+    "source_quality_note": "Third-party channel analytics and transcript mirrors are discovery aids, not authoritative YouTube upload inventories. Creator commentary is primary evidence of the creator's claims, not independent evidence of the institutions or market events discussed.",
+    "candidate_public_uploads": [
+      {
+        "video_id": "iwhpNT73zpk",
+        "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+        "published_at": "2026-03-06",
+        "source": "YouTube search result identifies Kamilah Stevenson as creator",
+        "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+      },
+      {
+        "video_id": "ci0FH73lbCs",
+        "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing",
+        "published_at": "2026-01-13",
+        "source": "Glasp transcript mirror identifies Kamilah Stevenson; transcript intro says Camila",
+        "url": "https://www.youtube.com/watch?v=ci0FH73lbCs"
+      },
+      {
+        "video_id": "cxeX_eu_2H0",
+        "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+        "published_at": "2026-01-15",
+        "source": "Glasp transcript mirror identifies Kamilah Stevenson; transcript intro says Camila",
+        "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0"
+      },
+      {
+        "video_id": "pmJTrXJQ8Vw",
+        "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+        "published_at": "2025-12-24",
+        "source": "YouTube search result identifies Kamilah Stevenson as creator",
+        "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+      },
+      {
+        "video_id": "QslbjGQD0MU",
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "published_at": "2025-12-14",
+        "source": "Glasp transcript mirror identifies Kamilah Stevenson; transcript intro says Camila",
+        "url": "https://www.youtube.com/watch?v=QslbjGQD0MU"
+      },
+      {
+        "video_id": "rv0BAV0vLgo",
+        "title": "How Much XRP Do You ACTUALLY Need?",
+        "published_at": null,
+        "source": "Previously indexed transcript/video summary; publication date not independently rechecked",
+        "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo"
+      },
+      {
+        "video_id": "IUkOKRkbkNo",
+        "title": "Why I Moved My XRP Off Exchanges",
+        "published_at": null,
+        "source": "Previously indexed candidate video; publication date not independently rechecked",
+        "url": "https://www.youtube.com/watch?v=IUkOKRkbkNo"
+      },
+      {
+        "video_id": "8xiy8w2YlfY",
+        "title": "XRP's Biggest Upgrade Yet?",
+        "published_at": null,
+        "source": "Previously indexed candidate video; publication date not independently rechecked",
+        "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+      }
+    ],
+    "excluded_guest_appearance": [
+      {
+        "video_id": "Sulo54IlQ60",
+        "title": "Crypto Panics! W/ Dr. Kamilah Stevenson",
+        "published_at": "2026-06-11",
+        "channel": "Paul Barron Podcast",
+        "reason": "Guest appearance on another channel, not an upload posted by the candidate creator.",
+        "url": "https://www.youtube.com/watch?v=Sulo54IlQ60"
+      }
+    ],
+    "completeness": "INCOMPLETE",
+    "access_blockers": [
+      "vidIQ channel lookup was attempted for the known channel ID but returned NOT_ENOUGH_CREDITS; no credits were charged; its response says credits refresh November 27, 2026. The tool explicitly said not to retry.",
+      "The public YouTube RSS endpoint could not be fetched through the available web reader.",
+      "Search-engine indexing returns candidate videos but does not establish a complete public-upload inventory."
+    ],
+    "next_method": "When an authorized public channel inventory source is available, enumerate long-form, Shorts and live uploads separately, page until exhaustion, deduplicate by video ID, and retain visibility, publish time and retrieval timestamp."
+  },
+  "exact_phrase_conclusions": {
+    "SBIC": "Ambiguous acronym. For Japan, the confirmed entity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. For 'ChatGPT SBIC', the strongest research match is Social Bias Inference Corpus and the Ziems et al. evaluation.",
+    "ChatGPT SBIC": "The 65.9% result is an expert-preference ranking metric for generated explanations on a social-bias dataset, not a financial or forecasting accuracy result.",
+    "Camilla Stephenson": "Likely intended reference may be Kamilah Stevenson, who says 'Camila Stevenson' in transcripts, but the exact spelling/identity match remains unconfirmed."
+  },
+  "provenance": [
+    {
+      "id": "P1",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "type": "official_company_profile",
+      "supports": "Japanese entity legal name, English name, company number and establishment date"
+    },
+    {
+      "id": "P2",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "type": "official_training_listing",
+      "supports": "ChatGPT training dates and curriculum"
+    },
+    {
+      "id": "P3",
+      "url": "https://calebziems.com/assets/pdf/preprints/css_chatgpt.pdf",
+      "type": "academic_paper",
+      "supports": "Social Bias Inference Corpus definition and ChatGPT 65.9% expert preference result"
+    },
+    {
+      "id": "P4",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "type": "third_party_channel_metadata",
+      "supports": "candidate channel ID, title, description and approximate counts"
+    },
+    {
+      "id": "P5",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "type": "youtube_video_metadata",
+      "supports": "creator attribution and March 6, 2026 publication date"
+    },
+    {
+      "id": "P6",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "type": "youtube_video_metadata",
+      "supports": "creator attribution and December 24, 2025 publication date"
+    }
+  ],
+  "status": "APPEND_ONLY_RESEARCH; NO_FORECAST; NO_IDENTITY_CONFLATION"
+}

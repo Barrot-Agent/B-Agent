@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-02T02:17:00Z",
+  "topic": "SBI Holdings: Ripple equity versus XRP token holdings; official supply taxonomy",
+  "source": {
+    "publisher": "SBI Holdings, Inc.",
+    "document": "Financial Results — Fiscal Year Ended March 31, 2026",
+    "publication_date": "2026-05-01",
+    "relevant_page": 58,
+    "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+    "source_class": "PRIMARY_COMPANY_PRESENTATION",
+    "data_as_of": "2026-04-27"
+  },
+  "findings": {
+    "sbi_ripple_equity": {
+      "reported_ownership_pct": 9,
+      "description": "SBI states that it owns approximately 9% of Ripple, and that the valuation of this equity stake does not reflect the recent increase in Ripple's corporate valuation.",
+      "classification": "COMPANY_REPORTED_EQUITY_OWNERSHIP",
+      "distinction": "This is ownership of Ripple corporate equity, not direct ownership of 9% of XRP supply and not a $10B XRP token treasury."
+    },
+    "ripple_xrp_supply_chart": {
+      "max_supply_xrp": 100000000000,
+      "burned_xrp_approx": 10000000,
+      "circulated_in_market_xrp_approx": 61680000000,
+      "ripple_holdings_not_in_circulation_value_jpy_approx": 8800000000000,
+      "ripple_holdings_labelled_actual_xrp_approx": 5100000000,
+      "ripple_holdings_under_escrow_xrp_approx": 33200000000,
+      "sum_check_xrp_approx": 99990000000,
+      "classification": "SBI_PRESENTATION_TAXONOMY_NOT_INDEPENDENT_LEDGER_RECONCILIATION",
+      "caveats": [
+        "SBI's 'circulated in the market' is not the same as freely tradable float.",
+        "The 5.10B and 33.20B categories are Ripple holdings, not SBI holdings.",
+        "The 33.20B escrow figure is a company-presentation snapshot as of 2026-04-27, not the current escrow balance.",
+        "The JPY 8.8T valuation is a price-dependent company estimate, not cash proceeds or actual capital deployed.",
+        "The chart's categories require reconciliation against validated XRPL account balances and escrow objects before model admission."
+      ]
+    }
+  },
+  "relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple Labs",
+      "relation": "Approximately 9% corporate equity ownership",
+      "status": "COMPANY_REPORTED",
+      "economic_exposure": "Ripple corporate value, not direct XRP token balance."
+    },
+    {
+      "from": "Ripple Labs",
+      "to": "XRP",
+      "relation": "Company-reported XRP holdings and escrow",
+      "status": "COMPANY_PRESENTATION_SNAPSHOT_2026_04_27",
+      "economic_exposure": "5.10B XRP labelled actual holdings outside escrow; 33.20B XRP under escrow."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "SBI-SUPPLY-H1",
+      "statement": "Ripple's non-circulating holdings and escrow create a material potential future supply overhang.",
+      "status": "PLAUSIBLE_SUPPLY_RISK",
+      "supporting_evidence": [
+        "SBI's April 27 presentation shows 33.20B XRP under escrow and 5.10B XRP held outside escrow."
+      ],
+      "disconfirming_evidence": [
+        "Escrow release does not equal market sale; re-escrow, internal transfers, grants, lending and custody movements must be distinguished."
+      ]
+    },
+    {
+      "id": "SBI-SUPPLY-H2",
+      "statement": "The 'circulated' figure overstates immediately tradable supply and cannot be used as a direct liquidity measure.",
+      "status": "STRONG_MEASUREMENT_WARNING",
+      "supporting_evidence": [
+        "SBI's category is a market-circulation taxonomy, not an exchange order-book or free-float measure."
+      ],
+      "disconfirming_evidence": [
+        "A reconciled account-level holder classification could improve the estimate, but no such reconciliation is contained in the presentation."
+      ]
+    }
+  ],
+  "reconciliation_tasks": [
+    "Reconcile SBI's 61.68B circulated estimate with CMC, XRPL Insights and validated-ledger supply definitions.",
+    "Reconcile 5.10B Ripple-held XRP against public Ripple-controlled account balances and custody evidence.",
+    "Reconcile 33.20B escrow against all current and historical EscrowCreate/EscrowFinish/EscrowCancel objects at validated ledger indices.",
+    "Keep SBI's 9% Ripple equity value separate from direct XRP holdings, Evernorth equity exposure, and XRP token flows."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "rule": "Do not convert SBI's Ripple equity stake, Ripple's token holdings, escrow releases, or market-circulation estimates into net XRP capital inflows without validated account-level and transaction-level reconciliation."
+}
