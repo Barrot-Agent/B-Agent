@@ -411,7 +411,7 @@ class ForecastLedger:
         db = self._connect()
         try:
             row = db.execute(
-                "SELECT receipt_id,payload FROM readiness_reports WHERE report_sha256=?",
+                "SELECT receipt_id,payload,registered_at_utc FROM readiness_reports WHERE report_sha256=?",
                 (report_sha256,),
             ).fetchone()
         finally:
