@@ -76,3 +76,18 @@ The uppercase `FEATURE_STORE_CONTRACT.md` file is a compatibility pointer to thi
 - Output: one GitHub Actions artifact per run with 90-day retention. No persistent cross-run store, external WORM archive, independent timestamp authority, backup/restore process or signed manifest is configured.
 - Limits: Binance depth is raw-only because its payload has no event timestamp; historical candles are first known at capture time; USDT is not converted to USD; open interest remains in contracts; only Binance/Kraken are covered. This adapter does not cover exchange wallet flows, ETF flows, institutional collateral, stablecoin supply, custody, payment rails, macro or regulatory/geopolitical events.
 - The run summary sets `forecast_status=NOT_ISSUED` and `forecast_model_eligible=false`. Passing adapter tests does not establish live schedule operation or predictive performance.
+
+
+## Append-only research eligibility overlay admission
+
+Research observations must not enter the point-in-time feature store through an unverified side path. Use `build_feature_snapshot_with_research_overlay` when converting a source artifact into normalized feature records:
+
+1. Supply the exact UTF-8 source artifact bytes and repository-relative path. The adapter computes the Git blob SHA-1 and SHA-256 from those exact bytes.
+2. Supply the exact overlay bytes, parsed mapping and repository-relative path. The mapping must match the overlay bytes; the overlay must name the exact source path and Git blob SHA-1.
+3. The source artifact must contain unique observation IDs. Every overlay correction must resolve to a source observation and exactly one normalized feature record bound to that source path/blob.
+4. Overlays are downgrade-only. Every correction must state `model_eligible: false` and a non-empty reason. Promotion to eligible is rejected.
+5. Preservation declarations must confirm that the source artifact and raw receipts were not modified and that the correction is append-only.
+6. The adapter applies corrections before point-in-time validation, records overlay/source blob IDs, SHA-256 content hashes and per-observation reasons in the snapshot manifest, then recomputes the snapshot ID. The existing feature validator still requires explicit eligibility, verified quality, raw-source SHA-256 lineage and point-in-time timestamps.
+7. Unknown IDs, missing feature mappings, duplicate IDs, mismatched source bytes, modified preservation declarations, absent reasons and all-ineligible snapshots fail closed.
+
+This adapter binds and applies an eligibility overlay; it does not itself authenticate the original provider, reconstruct missing raw receipts, or make an otherwise weak observation eligible. The research archive remains research-only until normalized records meet the existing source, quality and time contracts.
