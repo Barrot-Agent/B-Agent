@@ -118,6 +118,19 @@
         "Documents a ChatGPT/generative-AI seminar with a Microsoft Japan speaker",
         "Does not establish an OpenAI partnership, SBIC investment in AI, or an XRP connection"
       ]
+    },
+    {
+      "id": "swiftedge_xrp_perps_dynamic_20261104_0305z",
+      "url": "https://swiftedge.uk/xrp/2026-11-03",
+      "publisher": "Swiftedge ApS",
+      "published_or_as_of": "dynamic page observed at 2026-11-04T03:05:46Z",
+      "type": "dynamic perpetual market-structure page",
+      "independence": "single provider observation",
+      "limitations": [
+        "The page displayed a session high at 2026-11-04T04:25:00Z, later than this run's 2026-11-04T03:05:00Z data cutoff.",
+        "The page footer update timestamp also did not align with the current-session display.",
+        "Quarantined; not used as a market feature or price input."
+      ]
     }
   ],
   "market_snapshot": {
@@ -323,7 +336,7 @@
       "claim": "A Swiftedge XRP perpetual page returned internally inconsistent timestamps, including a session high timestamp later than this run's capture cutoff and a separate 'updated' time that did not align with the current-session display.",
       "classification": "quarantined_source_observation",
       "evidence": [
-        "tradradar_xrp_perps_20261104_0225z"
+        "swiftedge_xrp_perps_dynamic_20261104_0305z"
       ],
       "disconfirming_or_limiting": [
         "Swiftedge was not added as a usable market input; a later synchronized capture is required"
@@ -464,7 +477,7 @@
     "gross_volume_not_net_capital": true,
     "issuer_claims_not_independent_regulatory_confirmation": true,
     "quarantined_sources": [
-      "Swiftedge 2026-11-03 dynamic page due timestamp inconsistency"
+      "swiftedge_xrp_perps_dynamic_20261104_0305z"
     ],
     "no_averaging_policy": "Do not average provider snapshots with different timestamps, exchange universes, contract sets, units or fund scope.",
     "source_independence": "Circle blog and Circle filings are the same issuer lineage; Ripple release is an issuer claim; provider aggregators are separate vendors but not independent exchange-native data."
