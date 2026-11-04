@@ -338,3 +338,33 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - Main Pages deployment is automatic on push and was verified in run 41799855489. No deployment approval. No merge or external action.
 - Classifications unchanged: #1644–#1650 and #1317/#1318/#1320/#1254/#1255 superseded-pending-#1640-merge; #1597/#1605/#1608/#1614 partially superseded with unique content preserved; #1269 and #1641 unique; remaining drafts blocked or unique/unreviewed.
 - Forecast remains **NOT_ISSUED**.
+
+
+---
+
+## Run 17 — live backlog snapshot (2026-11-04T19:35:55Z)
+
+- Main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; complete recursive tree: 1,403 entries.
+- Open inventory: **372 PRs — 357 drafts, 15 non-drafts**. Non-drafts: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+- Only active current-main integration workstreams: #1640 (V3/core) and #1643 (XRP research); their changed paths are disjoint. No branch or PR created.
+
+### Exact-head evidence
+
+- **#1640 — blocked:** head `9bb5883e5a26a6eeab196f159d76db2063e08c96`, 63 ahead, 0 behind, 61 files. Exact-head CI [41898063479](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898063479): 572 core + 8 subtests and 821 full-suite + 8 subtests; inclusive coverage 51.68% against explicit 50% floor. Dependency audit [41898063493](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898063493) passed across five manifests and 15 PEP 621 dependencies, no known vulnerabilities. Fail-closed gate [41898063623](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898063623) passed but disables merge. 22/22 inline threads resolved; zero approvals.
+- **#1643 — blocked:** head `5e3993d405d1306785b1f8fed8f56b4a00d9876b`, 59 ahead, 0 behind, 73 files. Exact-head CI [41898008042](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898008042): 489 core + 8 subtests and 785 full-suite + 8 subtests. Fail-closed gate [41898007947](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898007947) passed but disables merge. No dependency manifest changed; no dedicated audit triggered. 14/14 inline threads resolved; zero approvals.
+
+### Classification updates
+
+- **#1617 — duplicate/superseded pending #1640 merge.** Its four distinct high-risk workflow stubs are already identical to main. Its Cross Analysis disable proposal is superseded by the read-only artifact-only main implementation. #1640 carries the regression test for the quarantined workflow set and Cross Analysis read-only behavior. Keep #1617 open until #1640 merges and these paths/tests are verified on main; then close only #1617 with a cross-reference.
+- **Superseded-pending-#1640-merge:** #1642; #1644–#1650; #1317, #1318, #1320, #1254 and #1255. All exact source paths must be verified on main before closure.
+- **Partially superseded-pending-#1643-merge:** #1597, #1605, #1608 and #1614. Preserve excluded creator-identity, C2FO/actual-capital, feature-validator and handoff content; no wholesale closure.
+- **Unique/unreviewed:** #1269 (geometry/OBJ topology) and #1641 (bounded autonomous experimentation). Preserve.
+- All remaining stale-base PRs stay blocked or unique/unreviewed until individual ancestry/path comparison. No bulk closure.
+
+### Merge blockers and prediction boundary
+
+- Both active integration PRs have zero approving reviews. Their fail-closed gates explicitly disable merge.
+- The repository's only visible ruleset is disabled; classic branch protection returns 403 through this integration.
+- A prior main push completed GitHub Pages deployment run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). No deployment authorization; no merge.
+- The #1643 19:31Z append-only overlay marks six secondary derivatives/ETF observations model-ineligible, but consumer application is NOT_EXECUTED. A research-to-feature-store admission adapter remains unimplemented.
+- No directional XRP forecast. No paper trade or real-money action.

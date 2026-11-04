@@ -1502,3 +1502,79 @@ No directional XRP forecast issued. The new overlay is a research correction, no
 
 ### Next concrete action
 Verify CI and the fail-closed gate on exact #1643 head `5e3993d405d1306785b1f8fed8f56b4a00d9876b`; then review remaining CodeRabbit/Copilot findings and integrate the explicit per-observation eligibility requirement into feature-store admission. Keep #1640 and #1643 as the only active V3/core and XRP research integration branches. Re-fetch main and all open PRs before any later merge decision.
+
+
+---
+
+## Run 17 — exact-head integration and XRP eligibility audit (2026-11-04T19:35:55Z)
+
+**Mission:** XRP intelligence and prediction-engine mastery remains the highest-priority research mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Repository snapshot
+
+- Repository: `Barrot-Agent/B-Agent`.
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; main was re-fetched and remains unchanged.
+- Complete recursive main tree: 1,403 entries.
+- Open PR inventory: 372 total, 357 drafts, 15 non-drafts. The four populated API pages were read; no PR was created or closed.
+- Active current-main integration branches remain #1640 (V3/core) and #1643 (XRP research). Their changed-path sets are disjoint.
+
+### PR #1640 — V3/core integration
+
+- Exact current head: `9bb5883e5a26a6eeab196f159d76db2063e08c96`.
+- 63 commits ahead, 0 behind; 61 changed files; non-draft and GitHub reports mergeable.
+- Exact-head CI run [41898063479](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898063479): **572 core tests + 8 subtests passed; 821 full-repository tests + 8 subtests passed**.
+- Inclusive `barrot_agent` package coverage: **51.68%**, above the explicit temporary 50% floor. The legacy 70% setting is not a whole-repository coverage claim; major package gaps remain.
+- Five-manifest dependency audit [41898063493](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898063493): passed; 15 PEP 621 dependencies materialized; no known vulnerabilities reported.
+- Fail-closed gate [41898063623](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898063623): passed while explicitly reporting automatic merge disabled.
+- The full-suite cache save emitted a read-only/cache-budget warning after the test command passed; it did not fail the test job.
+
+### PR #1643 — XRP evidence archive
+
+- Exact current head: `5e3993d405d1306785b1f8fed8f56b4a00d9876b`.
+- 59 commits ahead, 0 behind; 73 changed files; non-draft and GitHub reports mergeable.
+- Exact-head CI run [41898008042](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898008042): **489 core tests + 8 subtests passed; 785 full-repository tests + 8 subtests passed**.
+- Fail-closed gate [41898007947](https://github.com/Barrot-Agent/B-Agent/actions/runs/41898007947): passed while explicitly disabling merge.
+- No dependency manifest changed on #1643; a separate dependency audit was not triggered.
+
+### Review and merge status
+
+- #1640: 22/22 inline review threads resolved; eight review submissions are COMMENTED; zero approving reviews.
+- #1643: 14/14 inline review threads resolved; six review submissions are COMMENTED; zero approving reviews.
+- The visible repository ruleset is disabled. The classic branch-protection endpoint returns HTTP 403 `Resource not accessible by integration`; required-approval enforcement therefore cannot be verified from this connection.
+- The fail-closed gates disable merge on both branches. A prior main push completed the automatic GitHub Pages deployment run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489); deployment authorization has not been granted. No merge or deployment was performed.
+- No force-push, branch rewrite, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Security-source PR #1617 disposition
+
+A fresh path comparison was made against main and #1640:
+
+- `Barrot.Cognitive.PingPong.Engine.yml`, `autonomous_self_deployment.yml`, `barrot-autonomous-resolver.yml` and `check-signal-accuracy.yml` are already present on main as inert/manual-only, empty-permission, false-guard stubs. Their blob SHAs match the #1617 branch for these paths.
+- Main's `cross-analysis.yml` is already the safer read-only artifact-producing implementation: `contents: read`, checkout credentials not persisted, outputs uploaded as artifacts, no Git push. #1617's proposal to disable Cross Analysis entirely is not required.
+- #1640 includes `tests/test_automation_containment.py`, which asserts quarantine of the high-risk automation set and separately verifies that Cross Analysis remains read-only.
+- Therefore #1617 is **duplicate/superseded pending #1640 merge and post-merge verification**. Keep it open until the successor's paths and regression tests are verified on main; then close only #1617 with a cross-reference. Do not merge its stale branch independently.
+
+### Prediction-engine and data-admission truth
+
+**Executed / verified on #1640:** point-in-time feature records require an explicit boolean `model_eligible`; eligible records require `quality_status=verified`; source URIs, SHA-256 digests, UTC availability/ingestion times, revisions and disconfirming-evidence IDs are validated. The feature store rejects ineligible records from model-facing snapshots.
+
+**Executed on #1643, not consumer-applied:** the 2026-11-04T19:31Z append-only derivatives/ETF eligibility overlay binds to the exact source-artifact blob SHA and marks all six secondary observations model-ineligible with distinct reasons. Its consumer-application status is `NOT_EXECUTED`.
+
+**Not implemented:** a research-artifact-to-feature-store admission adapter that consumes these overlays. Until that adapter exists, the overlay is evidence/quarantine metadata, not an enforced downstream filter. The next adapter must fail closed on absent/false eligibility, unresolved overlay identity, missing raw receipt hashes, unverified quality, stale/unsynchronized timestamps and source-lineage gaps; it must never promote an observation merely because a correction record exists.
+
+The public XRP collector remains a six-endpoint Binance/Kraken prototype on #1640. It creates per-run content-addressed raw receipts and a local SQLite snapshot, but GitHub artifacts have 90-day retention. This is not cross-run durable history, WORM storage or an independently timestamped archive. It is not active on main.
+
+No leakage-safe chronological walk-forward results, baseline superiority, calibrated probabilities, drift performance or shadow-evaluation results have been established. **Forecast status: NOT_ISSUED.** No directional XRP forecast, paper trade or real-money action occurred.
+
+### Nine-platform map
+
+Only ChatGPT-to-GitHub repository access is verified in this runtime. The current research map records Hugging Face Space `BUILD_ERROR`, Databricks SQL probe HTTP 403, Copilot as review-event evidence only, and Claude, xAI Grok, Gemini, Codex and Kaggle as unverified. Do not claim nine live integrations. Grok and Groq remain distinct.
+
+### Backlog classifications and next action
+
+- **Blocked pending merge gates/approval/Pages authorization:** #1640 and #1643.
+- **Superseded-pending-#1640-merge:** #1642; #1644–#1650; #1317, #1318, #1320, #1254, #1255; #1617. Verify exact paths on main before closing any.
+- **Partially superseded-pending-#1643-merge:** #1597, #1605, #1608 and #1614. Preserve excluded Kamilah/Camilla identity candidates, C2FO/actual-capital material and any non-overlapping feature-validator/handoff files. Do not close whole source PRs on partial overlap.
+- **Unique/unreviewed:** #1269 geometry/OBJ topology and #1641 bounded autonomous experimentation; preserve.
+- Other stale-base PRs remain blocked or unique/unreviewed until individually compared; no bulk closure.
+
+**Next concrete action:** implement and test the research-overlay admission adapter against the canonical observation/feature-record contract, then rerun exact-head full-suite CI and dependency/security checks on the existing integration workstream. Keep forecasts disabled until synchronized historical features and leakage-safe out-of-sample baseline evaluation exist.
