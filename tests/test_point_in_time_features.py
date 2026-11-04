@@ -323,6 +323,12 @@ def test_historical_feature_store_is_idempotent_and_preserves_lineage(tmp_path):
     assert verified["snapshot_columns_ok"] is True
     assert verified["sqlite_integrity"] == "ok"
 
+    exact = store.verified_snapshot(snapshot["snapshot_id"])
+    assert exact["snapshot_id"] == snapshot["snapshot_id"]
+    assert exact["asset_scope"] == ["XRP"]
+    assert exact["manifest"]["snapshot_id"] == snapshot["snapshot_id"]
+    assert exact["verification"]["valid"] is True
+
 
 def test_historical_feature_store_hides_backfilled_snapshot_before_store_receipt(tmp_path):
     snapshot = build_feature_snapshot(

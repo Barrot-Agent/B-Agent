@@ -1,66 +1,98 @@
-# Current post-merge Barrot handoff — 2026-11-04T08:35:47.603Z
+# Current verified Barrot handoff — 2026-11-04T12:02:20Z
 
-## Current state
+## Mission and repository truth
 
-- Highest-priority mission: XRP intelligence and prediction-engine mastery.
-- Foundation: Barrot V3 execution, orchestration, safety and verification.
-- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
-- PR #1639 has been merged with individual commit history preserved.
-- Its three source proposals #1623, #1618 and #1616 were closed only after all source paths were verified on main.
-- Main post-merge: core CI passed; the full-suite job is still installing development dependencies at this handoff cutoff. The PR's exact code head `38aaeff1cc1ab7cf2f1b2fdbd5821ed089e7bd69` had already passed 484 core tests and 718 full-suite tests, each with 8 subtests.
-- GitHub Pages build/deployment after the merge succeeded automatically. The Barrot Auto PR workflow completed its read-only validation successfully; no PR creation or write occurred.
-- No manual deployment, force-push, paper trade, Kaggle submission, token rotation or real-money transaction occurred.
+- Priority: XRP intelligence and prediction-engine mastery.
+- Foundation: Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Repository: `Barrot-Agent/B-Agent`.
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Merged on main:
+  - #1635 — Cross Analysis read-only containment; merge commit `7650b5ce5be65f0826bc6171e8079a1fd266ad04`.
+  - #1638 — XRP point-in-time validator, SQLite feature store, fixed-horizon forecast ledger and research archive; merge commit `58425d038a0a16082267d9de28757fd5c4eb499d`.
+  - #1639 — scheduled-writer containment, dirty-worktree preservation, dependency audit and full-suite CI; merge commit `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main exact-head CI on `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`: 485 core tests + 8 subtests passed; 718 full-repository tests + 8 subtests passed. All 11 main check runs observed in this inspection completed successfully. The legacy combined-status endpoint still reports `pending` with no legacy status entries, so do not treat that endpoint as an independent pass.
+- The current tree contains 1,403 tracked paths, 493 Python files, 196 `barrot_agent` Python files, 78 workflow YAML files and 87 test modules. The full-suite job executes `python -m pytest tests -v --no-cov`.
+- Branch-protection endpoint returned 403. The only visible repository ruleset is disabled. Required approval enforcement therefore remains unverified.
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 
-## Next current-main capability integration
+## Integrated current-main workstream
 
-Working branch: `integration/core-capabilities-mmi-structural-paper-20261104`, based on main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+The existing #1640 branch, `integration/core-capabilities-mmi-structural-paper-20261104`, now incorporates the exact #1642 snapshot-integrity commit as a second parent. This preserves both source histories without creating another branch or PR.
 
-The branch consolidates the remaining ready core proposals rather than opening fragmented successors:
-- #1540: MMI claim-bound corroboration and source-independence grouping, including explicit separation of SBIC from SBI Holdings.
-- #1317: deterministic structural-analysis core, documentation and source manifest.
-- #1318: strict scientific-discovery response-schema validation, manually applied to current-main `scripts/barrot_agent.py` while preserving the current worktree-safety code.
-- #1320: paper-trader position-product identity validation. The current workflow is manual-dispatch only, not scheduled. The persisted state has a nonzero position size but `position_product=null`; the new script and workflow fail closed before any provider call.
-- #1255 and #1254: combined Databricks SDK and Hugging Face Hub minimum-version updates in the legacy manifest.
+Included capabilities:
+- MMI publisher/source-independence grouping and claim-bound corroboration.
+- Deterministic structural-analysis primitives and source manifest.
+- Strict scientific-discovery response-schema validation.
+- Paper-trader product-identity preflight and manual, exact-main-SHA, explicit-confirmation workflow gates. Persisted state remains untouched; the open position's product identity is still unknown, so no simulation is authorized.
+- Databricks SDK and Hugging Face Hub dependency-floor updates.
+- Exact verified feature-snapshot lookup, injectable receipt clock for deterministic tests, and fail-closed forecast-ledger preflight. Forecast issuance now requires a real `HistoricalFeatureStore`; every referenced SHA-256 snapshot must verify, cover the asset, have data cutoff/capture/store receipt no later than forecast cutoff, and match exact source lineage and feature-availability maximum timestamps.
 
-The paper-trader workflow is strengthened beyond the source PR: manual `YES` confirmation, exact main SHA, two separate jobs, model API key only in the simulation job, write permission only in the persistence job, artifact-only handoff between jobs, a second main-SHA check immediately before push, and a strict two-file write allowlist. The current state remains unchanged and no workflow was run.
+The merge commit combines first parent `4407cbde1cd70bd2818f2860a50ddb59fbd64b63` (#1640 integration work) and second parent `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` (#1642 prediction-integrity work). The combined head requires fresh exact-head CI, full-suite, dependency/security audit and fail-closed-gate verification. Earlier component-head results are not substitutes for combined-head results:
+- #1640 pre-combination head `4407cbde1cd70bd2818f2860a50ddb59fbd64b63`: 553 core + 8 subtests; 788 full-suite + 8 subtests; four-manifest pip-audit passed; fail-closed gate passed while explicitly keeping merge disabled.
+- #1642 source head `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1`: 492 core + 8 subtests; 725 full-suite + 8 subtests; fail-closed gate passed. No dependency manifest changed in that source PR.
+- All 19 existing inline review threads on #1640 were resolved at the last inspection. Reviews are COMMENTED, not APPROVED; there are zero approving reviews. The fail-closed gate explicitly says merging is disabled. Do not merge or bypass it.
 
-Core CI adds four test modules: source independence, structural analysis, paper-trader product-state safety and paper-trader workflow safety. Full-suite CI automatically collects all test files.
+## Prediction-engine truth
 
-## PR backlog after integration
+**EXECUTED on main**
+- Deterministic point-in-time feature-record validation.
+- Local append-only SQLite feature-store prototype with manifest/row/lineage verification.
+- Fixed-horizon forecast ledger with outcome/event recording and scoring.
+- Repository full-suite CI and scheduled-writer containment.
 
-Latest inventory: 362 open PRs, 356 drafts, 6 non-drafts. Do not bulk-close drafts. The six non-drafts are the stale source proposals #1317, #1318, #1320, #1255, #1254 and geometry #1269. The first five are being reconciled on the fresh-main integration branch; #1269 remains a separate geometry workstream.
+**EXECUTED on the combined integration branch, not yet on main**
+- Cross-store snapshot verification before forecast-ledger issuance.
+- MMI claim-bound source corroboration and structural-analysis primitives.
+- Additional workflow and product-identity safety gates.
 
-Other preserved unique work:
-- #1614: 57-path XRP research archive with unique evidence not yet reconciled; do not close until its unique research records are appended to the canonical archive.
-- #1611: older predecessor to #1614; preserve until archive reconciliation.
-- #1314: predecessor to structural-analysis #1317; close only after successor integration.
-- #1269: geometry/OBJ topology feature; refresh separately against current main and run full suite.
-- #1540, #1317, #1318, #1320, #1255, #1254 source branches remain preserved until #1640 (or its successor) is merged and their paths are verified.
+**NOT IMPLEMENTED or NOT VERIFIED**
+- Production exchange-native spot, order-book, trades, derivatives, ETF, exchange-flow, collateral, stablecoin and payment-rail adapters.
+- Scheduled ingestion and a populated synchronized historical XRP feature store.
+- Durable raw-payload object storage with independently anchored timestamps/signatures.
+- Leakage-safe chronological walk-forward tests with purging/embargo, naive/no-change, momentum, mean-reversion and volatility baselines.
+- Probability calibration, uncertainty evaluation, drift monitoring and shadow/paper performance.
+- Unified runtime wiring of the structural-analysis library into the full Barrot V3 reasoning/orchestration path.
 
-Fifteen obsolete/duplicate proposals were previously closed with comments and their branches/history preserved: #1637, #1636, #1634, #1627, #1626, #1622, #1621, #1628, #1625, #1624, #1537, #1181, #1252, #1137 and #758.
+**Forecast status: NOT_ISSUED.** No directional forecast is supported. Existing legacy sentiment/accuracy counters are not a substitute for leakage-safe predictive evaluation. No real-money action is permitted.
 
-## Architecture and prediction truth
+## Current XRP evidence status
 
-- MMI source-independence and claim-bound corroboration are being integrated; source grouping must not conflate SBIC East Japan with SBI Holdings.
-- Structural analysis is a deterministic library capability; wiring it into the unified Barrot reasoning/runtime pipeline remains future work.
-- Scientific discovery now validates exact output keys and required array types and retries once on schema violations.
-- The paper-trading state currently has an open position with unknown product identity; the guarded workflow must abort until the identity is independently verified.
-- No production XRP ingestion adapter, populated synchronized historical feature store, leakage-safe walk-forward result, calibrated model or verified shadow/paper performance exists yet.
-- No directional XRP forecast is issued.
-- Only ChatGPT-to-GitHub access is tested. The other eight platform collaborations are not claimed live.
-- Whole-repository coverage remains unverified: major packages are excluded and CI uses `--no-cov`. No lockfiles are present; third-party Actions are not yet pinned to immutable commit SHAs. Branch-protection enforcement remains unverified.
+Research successor #1643, `research/xrp-evidence-archive-20261104`, contains 39 preserved historical JSON artifacts plus six current-run evidence addenda. Exact current head: `53c05e378a1b1e92d95e2de5d48b55236ece8d27`.
+- Exact-head CI: 485 core + 8 subtests and 718 full-suite + 8 subtests passed; fail-closed gate passed. No dependency manifests changed, so no dependency-audit run was triggered. PR remains draft and unmerged.
+- At 2026-11-04 11:38:45 UTC, Kraken XRP/USD and Binance XRPUSDT perpetual API response bodies were captured with SHA-256 receipts. Kraken showed last $1.2922, best bid/ask $1.29259/$1.29260 and about 35.19M XRP 24h volume. Binance perpetual mark was $1.2936 with +0.0100% funding per 8h. Both are single-venue observations, not a synchronized multi-venue feature set, and remain model-ineligible.
+- XRP open-interest aggregators reported about $0.88B, $1.48B and $2.03B with different contract/venue universes. Preserve the disagreement; never average these totals.
+- November 3 ETF-flow reports are incomplete or inconsistent in coverage/settlement. CryptoKeyhole's -3,339 XRP covered only 3 of 4 daily-reporting funds; XRP Insights' seven-ticker data metadata and landing-page provisional status conflict. No final full-universe daily flow is asserted.
+- XRP Insights' 08:00 UTC labeled-wallet snapshot covered 701 wallets across 24 exchanges, not a complete exchange ledger. Balance changes are not proof of customer withdrawals or accumulation.
+- The 233.46M XRP Binance incident transfer remains quarantined from organic exchange-flow features pending transaction-hash membership and recipient-wallet reconciliation.
+- `fixCleanup3_4_0` had an earliest conditional activation time of 2026-11-04 14:46:22 UTC; it was not yet active at the 11:42:54 UTC research cutoff. Verify the actual ledger after the window. The amendment is a maintenance fix, not the XRPL lending-protocol launch.
+- Circle's Q3 2026 results webcast was scheduled for 13:00 UTC on November 4; no results are claimed before publication.
+- Japan's SBIC East/Central/West are three separate regional SME investment-development companies, not SBI Holdings. SBIC East's June 2025 official course included ChatGPT training delivered by an external VOST instructor; this is not evidence of an OpenAI partnership or XRP relationship.
+- Coinbase, Circle, Ripple and SBI relationships are mapped with product-specific collateral and custody boundaries. Collateral eligibility is not proof of actual XRP utilization, borrowing, trading or payment volume.
+- Kamilah/Camila/Camilla candidate YouTube channel IDs remain unlinked by first-party identity evidence. No video inventory or attribution was created.
 
-## Immediate next steps
+## Nine-platform coordination
 
-1. Finish the current branch with MMI, structural analysis, schema validation, paper-trader safety and dependency updates.
-2. Run exact-head core CI, the full repository suite, fail-closed gate and four-manifest dependency audit.
-3. Create one PR for the integrated capability set; merge only after all checks pass.
-4. Verify main and close #1540/#1317/#1318/#1320/#1255/#1254 plus predecessor #1314 only after their changes are present.
-5. Reconcile unique evidence from #1614 into the canonical research archive; only then close #1614/#1611.
-6. Reconcile geometry #1269 separately.
-7. Implement the unified long-horizon Barrot runtime and production XRP data-ingestion pipeline.
+Only ChatGPT-to-GitHub repository access is tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain capability-mapped only; no live authentication or data flow is claimed. Use least privilege, structured evidence exchange, independent review and retained minority objections.
 
-Treat DESIGNED, EXECUTED and VERIFIED as separate. Append handoffs; never erase historical evidence or outcomes.
+## Open PR classifications and next actions
+
+- #1640 — single integrated core/prediction workstream; blocked pending combined-head exact CI, full-suite, dependency/security audit, fail-closed gate, independent review/approval and verified branch-protection conditions.
+- #1642 — its source commit is now a second parent of #1640. Keep the source PR open until #1640 merges and every included path is verified on main; do not merge #1642 independently.
+- #1643 — unique/unreviewed XRP evidence archive; keep draft until review and all exact-head gates are satisfied. Source PRs #1597, #1605, #1608 and #1614 remain open until its included paths are on main.
+- #1641 — unique/unreviewed bounded experimentation foundation; exact-head CI passed, but it does not establish XRP predictive performance. Keep separate.
+- #1317, #1318, #1320, #1255 and #1254 — stale source proposals represented in #1640; close only after #1640 is merged and each source path is verified on main. #1314 remains a predecessor to #1317 until that verification.
+- #1611 remains a unique predecessor/research branch; preserve pending a separate path-level comparison.
+- #1269 remains a separate geometry/OBJ workstream.
+- The complete open inventory is 366 PRs: 359 drafts and 7 non-drafts; four are based on current main and 362 have stale base SHAs. The other stale-base PRs remain individually unreviewed until exact path/commit overlap is checked. Do not bulk-close.
+
+Next concrete actions:
+1. Verify the combined #1640 head's new CI, full repository suite, four-manifest dependency audit and fail-closed gate; resolve any failures on that same branch.
+2. Obtain actual independent review and verify the required-approval/branch-protection condition without bypassing the fail-closed gate.
+3. Review and integrate the unique #1643 research archive; after the Circle webcast and XRPL amendment window, capture issuer results and verify amendment activation from the ledger.
+4. Build public exchange-native ingestion and immutable raw receipts before populating the historical feature store.
+5. Run chronological out-of-sample evaluation against the required baselines; calibrate and monitor drift only after sufficient observations exist.
+
+DESIGNED, EXECUTED and VERIFIED remain separate. Historical handoffs below are preserved; this current block supersedes their older main SHAs, PR states and test counts.
 
 ---
 

@@ -3,11 +3,13 @@ from pathlib import Path
 
 import pytest
 
+from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.forecast_ledger import (
     ForecastAlreadyResolvedError,
     ForecastLedger,
     ForecastLedgerError,
 )
+from barrot_agent.evolution.point_in_time_features import build_feature_snapshot
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -18,6 +20,52 @@ OUTCOME_TIME = "2026-11-03T17:00:30Z"
 RESOLVED = "2026-11-03T17:01:00Z"
 TEST_NOW = datetime(2026, 11, 3, 16, 1, 30, tzinfo=timezone.utc)
 
+
+FEATURE_CUTOFF = "2026-11-03T15:59:30Z"
+FEATURE_CAPTURED = "2026-11-03T15:59:35Z"
+STORE_RECEIPT = datetime(2026, 11, 3, 15, 59, 40, tzinfo=timezone.utc)
+FEATURE_RECORD = {
+    "record_id": "xrp:spot:mid:2026-11-03T15:59:30Z:v1",
+    "feature_id": "xrp.spot.mid_price",
+    "feature_version": 1,
+    "asset": "XRP",
+    "feature_name": "spot_mid_price",
+    "value": 1.27,
+    "unit": "USD/XRP",
+    "event_time_utc": FEATURE_CUTOFF,
+    "known_at_utc": FEATURE_CUTOFF,
+    "source_data_as_of_utc": FEATURE_CUTOFF,
+    "ingested_at_utc": FEATURE_CUTOFF,
+    "revision_available_at_utc": FEATURE_CUTOFF,
+    "sources": [
+        {
+            "source_id": "kraken-001",
+            "independence_group": "kraken.com",
+            "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+            "raw_content_sha256": "a" * 64,
+        },
+        {
+            "source_id": "macro-001",
+            "independence_group": "fred.stlouisfed.org",
+            "source_uri": "https://api.stlouisfed.org/fred/series/observations",
+            "raw_content_sha256": "b" * 64,
+        },
+    ],
+    "quality_status": "verified",
+    "model_eligible": True,
+    "eligibility_reason": "",
+    "revision_status": "original",
+    "supersedes_record_id": None,
+    "adapter_version": "test-adapter-v1",
+    "parser_version": "test-parser-v1",
+    "limitations": [],
+    "disconfirming_evidence_ids": [],
+}
+FEATURE_SNAPSHOT = build_feature_snapshot(
+    [FEATURE_RECORD],
+    cutoff_utc=FEATURE_CUTOFF,
+    captured_at_utc=FEATURE_CAPTURED,
+)
 
 class MutableClock:
     def __init__(self, current):
@@ -30,10 +78,17 @@ class MutableClock:
         self.current = current
 
 
-def make_ledger(path, *, now=TEST_NOW):
+def make_ledger(path, *, now=TEST_NOW, store_clock=STORE_RECEIPT, snapshot=FEATURE_SNAPSHOT):
     clock = MutableClock(now)
-    ledger = ForecastLedger(path, clock=clock)
+    store = HistoricalFeatureStore(
+        Path(path).parent / "feature_store.sqlite3",
+        clock=lambda: store_clock,
+    )
+    store.append_snapshot(snapshot)
+    ledger = ForecastLedger(path, clock=clock, feature_store=store)
     ledger._test_clock = clock
+    ledger._test_feature_store = store
+    ledger._test_snapshot_id = snapshot["snapshot_id"]
     return ledger
 
 
@@ -47,7 +102,7 @@ def forecast(**overrides):
         "venue": "kraken:XRP/USD",
         "target_definition": "XRP/USD mid-price return at exact target timestamp; three-class thresholded outcome",
         "reference_price_usd": 1.27,
-        "reference_price_timestamp_utc": CUTOFF,
+        "reference_price_timestamp_utc": FEATURE_CUTOFF,
         "reference_price_source_id": "kraken-001",
         "reference_price_max_age_seconds": 60,
         "data_cutoff_utc": CUTOFF,
@@ -60,8 +115,8 @@ def forecast(**overrides):
         "baseline_probabilities": {"down": 0.3, "flat": 0.4, "up": 0.3},
         "flat_band_bps": 25.0,
         "outcome_tolerance_seconds": 60,
-        "feature_max_timestamp_utc": "2026-11-03T15:59:00Z",
-        "feature_snapshot_ids": ["snapshot-001"],
+        "feature_max_timestamp_utc": FEATURE_CUTOFF,
+        "feature_snapshot_ids": [FEATURE_SNAPSHOT["snapshot_id"]],
         "source_ids": ["kraken-001", "macro-001"],
         "assumptions": ["No venue outage during horizon"],
         "alternatives": ["Derivatives deleveraging overwhelms spot demand"],
@@ -443,3 +498,64 @@ def test_unscorable_outcome_waits_until_tolerance_window_closes(tmp_path):
     assert outcome["status"] == "unscorable"
     assert outcome["recorded_at_utc"] == "2026-11-03T17:01:00.000000Z"
     assert ledger.events(forecast_id)[-1]["recorded_at_utc"] == "2026-11-03T17:01:00.000000Z"
+
+
+def test_forecast_recording_requires_a_verified_feature_store(tmp_path):
+    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3", clock=MutableClock(TEST_NOW))
+    with pytest.raises(ForecastLedgerError, match="verified HistoricalFeatureStore"):
+        ledger.record_forecast(forecast())
+
+
+def test_rejects_unknown_or_non_sha256_feature_snapshot(tmp_path):
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="SHA-256 snapshot IDs"):
+        ledger.record_forecast(forecast(feature_snapshot_ids=["snapshot-001"]))
+    with pytest.raises(ForecastLedgerError, match="unavailable or failed integrity"):
+        ledger.record_forecast(forecast(feature_snapshot_ids=["f" * 64]))
+
+
+def test_rejects_feature_snapshot_for_another_asset(tmp_path):
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="does not cover asset BTC"):
+        ledger.record_forecast(forecast(asset="BTC"))
+
+
+def test_rejects_forecast_source_manifest_that_differs_from_snapshot_lineage(tmp_path):
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="do not exactly match referenced feature lineage"):
+        ledger.record_forecast(forecast(source_ids=["kraken-001", "macro-001", "unregistered"]))
+
+
+def test_rejects_underreported_feature_information_timestamp(tmp_path):
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="must equal the maximum feature information"):
+        ledger.record_forecast(forecast(feature_max_timestamp_utc="2026-11-03T15:59:29Z"))
+
+
+def test_rejects_feature_snapshot_received_after_forecast_cutoff(tmp_path):
+    late_store_receipt = datetime(2026, 11, 3, 16, 0, 1, tzinfo=timezone.utc)
+    ledger = make_ledger(
+        tmp_path / "forecasts.sqlite3",
+        store_clock=late_store_receipt,
+    )
+    with pytest.raises(ForecastLedgerError, match="not captured and stored by the forecast cutoff"):
+        ledger.record_forecast(forecast())
+
+
+def test_rejects_feature_snapshot_data_cutoff_after_forecast_cutoff(tmp_path):
+    later_snapshot = build_feature_snapshot(
+        [FEATURE_RECORD],
+        cutoff_utc="2026-11-03T16:00:01Z",
+        captured_at_utc="2026-11-03T16:00:02Z",
+    )
+    ledger = make_ledger(
+        tmp_path / "forecasts.sqlite3",
+        store_clock=datetime(2026, 11, 3, 16, 0, 3, tzinfo=timezone.utc),
+        snapshot=later_snapshot,
+    )
+    with pytest.raises(ForecastLedgerError, match="data cutoff exceeds forecast cutoff"):
+        ledger.record_forecast(
+            forecast(feature_snapshot_ids=[later_snapshot["snapshot_id"]])
+        )
+
+

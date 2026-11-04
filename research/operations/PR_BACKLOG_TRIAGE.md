@@ -1,6 +1,6 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
-**Snapshot:** 2026-11-04T11:42:54Z, after creation of PR #1643.
+**Snapshot:** 2026-11-04T12:02:20Z, after fresh-main inspection and #1642 source-history integration into #1640.
 
 - Open pull requests: 366
 - Draft: 359
@@ -66,3 +66,35 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 
 - Open PRs: 366; drafts: 359; non-drafts: 7. The seven non-drafts are #1640, #1318, #1320, #1317, #1269, #1255 and #1254.
 - No branches were force-pushed or rewritten. No user work was reset, stashed or discarded. No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade or real-money action occurred.
+
+
+## Run 13 — current classification (2026-11-04T12:02:20Z)
+
+### Inventory and repository state
+
+- Main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Open PRs: 366; drafts: 359; non-drafts: 7.
+- Four open PRs are based on current main: #1640, #1641, #1642 and #1643. The other 362 have stale base SHAs and require individual path/ancestry review; do not infer duplicate status from title similarity alone.
+- Main exact-head CI: 485 core tests + 8 subtests and 718 full-suite tests + 8 subtests passed. The full suite is distinct from the selected core subset. The combined-status endpoint remains pending/empty; all 11 observed main check runs completed successfully.
+- Visible repository ruleset is disabled; classic branch-protection details return 403. Required approval enforcement is unverified.
+
+### Current-main integration
+
+- **#1640 — blocked / integrated workstream:** one current-main branch now combines MMI, structural analysis, scientific-schema validation, paper-trader safety, dependency updates and #1642's feature-snapshot/forecast-ledger cross-store gate. The #1642 commit is preserved as a second parent; no new branch or PR was created. The combined head must pass fresh exact-head CI, full-suite, dependency audit and fail-closed gate. Its 19 existing inline review threads were resolved, but there are zero approving reviews. The gate explicitly keeps merging disabled. Do not merge or bypass.
+- **#1642 — superseded as a standalone integration candidate; source PR retained:** its code commit `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` is now included as the second parent of #1640. Keep #1642 open until #1640 is merged and all seven changed paths are verified on main; do not merge it independently.
+- **#1641 — unique/unreviewed:** bounded experimentation foundation. Exact head `5e064a12409230762d35360430ececb90f7a97c3` passed 485 core + 8 subtests and 728 full-suite + 8 subtests, plus the fail-closed gate. It is not model-backed XRP predictive performance; keep draft.
+- **#1643 — unique/unreviewed:** current-main XRP evidence archive, 45 changed paths (39 historical JSON artifacts + 6 current-run addenda). Exact head `53c05e378a1b1e92d95e2de5d48b55236ece8d27` passed 485 core + 8 subtests and 718 full-suite + 8 subtests, plus the fail-closed gate. No dependency manifests changed, so no dependency audit was triggered. Keep draft until review and all merge conditions are met.
+
+### Source and backlog classifications
+
+- **Superseded pending #1640 merge:** #1317, #1318, #1320, #1255 and #1254. Their changes are represented in #1640; close only after #1640 is merged and every source path is verified on main. #1314 is a predecessor to #1317 and remains open until the same verification.
+- **Superseded pending #1643 merge:** included portions of #1597, #1605, #1608 and #1614. Keep all source PRs open until #1643 is merged and every included path is verified on main. Unique/excluded material remains preserved.
+- **Unique/unreviewed:** #1611 predecessor/research branch; #1269 separate geometry/OBJ workstream; #1641 experimentation foundation; #1643 XRP evidence archive.
+- **Duplicate/superseded already closed with cross-references:** #1637, #1636, #1634, #1627, #1626, #1622, #1621, #1628, #1625, #1624, #1537, #1181, #1252, #1137 and #758. PR #1639 was merged and source PRs #1623, #1618 and #1616 were closed only after their paths were verified.
+- The remaining stale-base PRs are not individually classified by exact diff in this run. Retain as blocked or unique/unreviewed until commit/path comparison establishes duplicate or supersession. No bulk closure.
+
+### Safety and prediction status
+
+- No merge, force-push, branch rewrite, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- Forecast status remains NOT_ISSUED. No populated historical point-in-time XRP dataset or leakage-safe out-of-sample predictive evaluation exists.
+- Only ChatGPT-to-GitHub authentication/data flow is tested; the other eight platforms are not claimed live.
