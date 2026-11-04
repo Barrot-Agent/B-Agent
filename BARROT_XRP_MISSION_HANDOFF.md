@@ -2021,3 +2021,68 @@ The previous handoff documented XRP as the strategic priority but the code audit
 5. After the mission manifest reaches main, verify the runtime learning loop selects `xrp_source_provenance` first; then continue the data-integrity and historical-ingestion workstreams. Do not issue a forecast until the out-of-sample, calibration, drift and shadow gates pass.
 
 This run implements the primary mission selector on the integration branch; it does not claim that the mission is live on main or that Barrot's daemon is running.
+
+
+## Run 23 — post-activation XRP evidence and exact-head integration audit (2026-11-04T22:45:44Z)
+
+### Repository state — EXECUTED and VERIFIED
+
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. The recursive Git tree returned **1,403 entries** (1,298 blobs; not truncated).
+- Current open-PR inventory: **369 open, 354 drafts, 15 non-drafts**; 11 target the current main SHA. The 15 non-drafts are #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- #1640 and #1643 are the only active non-draft integration workstreams based on current main. Their changed-path intersection is **empty** (71 versus 85 paths). No new branch or PR was created.
+- **#1640 V3/core integration:** current code head `574444b81fadbd761905f74cff59cc8f95c626ca`, base main, 97 commits, 71 changed files, GitHub mergeable state `clean`. Exact-head CI [41925893964](https://github.com/Barrot-Agent/B-Agent/actions/runs/41925893964) passed **581 core tests + 8 subtests** and **857 full-repository tests + 8 subtests**. Inclusive `barrot_agent` coverage was **53.01%**, above the 50% floor. Dependency audit [41925893919](https://github.com/Barrot-Agent/B-Agent/actions/runs/41925893919) passed all five declared manifests with no known vulnerabilities. Fail-closed gate [41925894007](https://github.com/Barrot-Agent/B-Agent/actions/runs/41925894007) passed while explicitly disabling automatic merge.
+- **#1643 XRP research:** current head `8dd3ac8d733dfe26a3432ba12d7a621a4d515bfb`, base main, 79 commits, 85 changed files, GitHub mergeable state `clean`. Exact-head CI [41927559964](https://github.com/Barrot-Agent/B-Agent/actions/runs/41927559964) passed **492 core tests + 8 subtests** and **793 full-repository tests + 8 subtests**. Fail-closed gate [41927559925](https://github.com/Barrot-Agent/B-Agent/actions/runs/41927559925) passed while explicitly disabling automatic merge. No dependency manifest changed in #1643; no dependency-audit result is claimed for it.
+- Review state: #1640 has **22/22 resolved inline threads** and eight COMMENTED review submissions; #1643 has **14/14 resolved inline threads** and six COMMENTED review submissions. Both have **zero approving reviews**. A resolved thread is not an approval.
+- Main's latest full CI on the current SHA, [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459), passed **485 core + 8 subtests** and **718 full-suite + 8 subtests**. The latest scheduled read-only Cross Analysis run [41919990345](https://github.com/Barrot-Agent/B-Agent/actions/runs/41919990345) succeeded.
+- Main's Pillars Consistency Check [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956) failed on the same main SHA: the job reported missing `GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID`, Databricks HTTP 403 and Hugging Face Space `BUILD_ERROR`. These are unverified/failed platform paths, not successful connections.
+- Main's prior push triggered GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), which succeeded. That automatic deployment side effect remains unapproved for another merge. The visible `Fall Back` ruleset is disabled; classic branch-protection inspection returns HTTP 403. Required protection policy therefore remains unverified.
+- This append changes the #1640 documentation branch head. The new documentation-only head must receive its own exact-head CI and fail-closed checks before any merge decision; the code-head results above are not transferred to a later SHA.
+
+### Primary XRP mission — EXECUTED on #1640, not yet on main
+
+- `data/missions/primary_mission.json` sets `xrp_intelligence_prediction_engine` to active priority **1**, with seven ordered workstreams: source provenance; scheduled public ingestion; institutional ecosystem; durable point-in-time storage; walk-forward baselines; calibration/drift/shadow evaluation; forecast/outcome ledger.
+- `MissionRegistry` is called by `LearningCurriculum.next_goal()`. The learning filter stores the full goal, including its `MISSION_TOPIC_ID`, so verified lessons can advance through the ordered workstreams. The continuation goal keeps XRP as the highest-priority mission after the initial workstreams.
+- Barrot V3 remains the declared execution, orchestration, safety and verification foundation. The manifest preserves branch history, evidence gates and explicit external-action/forecast restrictions.
+- `.github/workflows/xrp-public-ingestion.yml` is designed for hourly public-data capture at minute 3, read-only GitHub permissions, serialized runs, and per-run artifacts with 90-day retention. It checks out `main` when invoked. The workflow is on #1640 only; it is not yet on main and no scheduled production ingestion run is claimed.
+- The collector currently covers nine public Binance/Coinbase/Kraken market endpoints and writes content-addressed raw payloads and receipts inside each run. The archive remains per-run; 90-day artifact retention is not durable cross-run WORM storage. The research-overlay eligibility adapter is not yet wired into the scheduled collector. No independent timestamp/signature anchor or durable cross-run feature store is verified.
+- The walk-forward framework and four baselines exist and are tested, but no complete historical XRP dataset has been admitted for a genuine out-of-sample evaluation. Calibration, drift and shadow-evaluation acceptance gates are not met. The learning daemon is not scheduled or running.
+- Therefore the ingestion/forecast architecture is **DESIGNED**, repository code and tests are **EXECUTED**, but live scheduled ingestion and measured XRP predictive performance are **NOT VERIFIED**. No directional forecast is issued.
+
+### New append-only post-activation research — EXECUTED and VERIFIED on #1643
+
+Added `research/xrp_intelligence/20261104T224049Z-post-activation-xrpl-ledger-market-update.json` and regression tests. The exact #1643 head above passed both tests in the core job and the full repository suite.
+
+- XRPL Dashboard and XRPLWin both report `fixCleanup3_4_0` enabled on mainnet at **2026-11-04 14:52:00 UTC**, ledger **108112129**, amendment ID `98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76`, and EnableAmendment transaction `F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C`. These are separate tracker/node retrieval paths over the same public ledger, not independent protocol events. Barrot did not capture raw JSON-RPC or transaction bytes, so the record remains model-ineligible.
+- This is a cleanup/fix amendment, **not** a native lending launch. The latest readable validator snapshot, timestamped 22:06 UTC, showed SingleAssetVault 21/35, LendingProtocol 19/35 and LendingProtocolV1_1 19/35 against 29 required; no 14-day countdown was displayed. No vault utilization, lending yield, XRP collateral deployment or XRP demand is inferred.
+- Kraken's rendered XRP/USD ticker retrieved at 22:40:49 UTC showed last $1.31352, bid $1.31376, ask $1.31387, displayed spread 0.8373 bps, 24-hour volume 41.189M XRP, 24-hour VWAP $1.29201409, high $1.34, low $1.24016 and UTC-day open $1.27513. It contains no exchange event timestamp and provides top-of-book, not full depth or market impact.
+- XRPL Dashboard separately displayed $1.3076 as of 22:19 UTC without disclosing its market-data source. It is not synchronized with Kraken; no quote averaging or arbitrage inference is made.
+- The dashboard rendering itself showed two different current-ledger indicators (header 108118734; body validated-ledger-at-fetch 108118715). Both are preserved as a page freshness/cache discrepancy; neither is substituted for the independently repeated activation ledger 108112129.
+- The new artifact contains rendered web extracts only, no byte-complete raw receipts or SHA-256 source hashes. All new observations remain **model-ineligible**. Forecast status remains **NOT_ISSUED**.
+
+### Existing research scope and platform status
+
+- #1643 retains primary-source entity separation for SBIC East/Central/West versus SBI Holdings, and the Coinbase/Circle/Ripple/SBI relationship map. ASK Coin remains a candidate identity rather than a confirmed intended asset; “actual capital” remains separated into notional, margin, customer funds and regulatory net capital. Camilla/Kamilah Stevenson identity remains unresolved; no YouTube video inventory or attribution was created.
+- Nine-platform map: ChatGPT is current-session only; GitHub repository access is verified separately; Copilot evidence is a review event, not a persistent adapter; Hugging Face reported `BUILD_ERROR`; Databricks returned HTTP 403; Claude, Grok, Gemini, Codex and Kaggle remain unverified. No nine-platform live coordination is claimed.
+
+### Backlog classification — current inventory
+
+- **Active / blocked:** #1640 V3/core and #1643 XRP research. Both are exact-head green at the stated SHAs but lack approving reviews; fail-closed gates disable merge; branch protection is unverified and Pages deployment authorization is unresolved.
+- **Superseded pending #1640 merge and main verification:** #1642 is a draft exact ancestor of #1640 (compare: #1640 is 96 commits ahead, 0 behind); #1644–#1650 are seven current-main Dependabot PRs whose exact changes are already present in #1640: checkout v7, download-artifact v8, upload-artifact v7, pytest 9.2.0, types-requests 20261030, huggingface-hub 2.4.0 and databricks-sdk 0.158.0. The older #1254/#1255 dependency updates are superseded by the newer included versions. Close only after #1640 is merged and each path/version is verified on main.
+- **Unique/unreviewed:** #1641 (bounded autonomous experimentation) and #1269 (OBJ topology). Preserve.
+- **Unique evidence to preserve:** #1615's operations audit/handoff documents. Do not close as a duplicate.
+- **Partially superseded; preserve unique material:** #1597, #1605, #1608 and #1614. Do not bulk-close.
+- **Stale-base / individual review still required:** #1320, #1318, #1317 and other older proposals. Do not close until each remaining path and commit is compared against current main and the active integration branches.
+- #1617, #1609 and #1613 were already closed with explicit cross-references to merged #1635/#1639. No PR was closed in this run.
+
+### Merge decision and next concrete actions
+
+No merge is authorized by the current evidence. Both exact-head suites and the #1640 dependency audit pass, but both PRs have zero approvals; the visible ruleset is disabled, branch-protection requirements cannot be read through the current integration, and a main push automatically triggers a Pages deployment that has not been approved.
+
+1. Obtain independent approving reviews and an authorized branch-protection/ruleset verification for #1640 and #1643.
+2. Resolve the automatic Pages deployment authorization before merging.
+3. Verify the new #1640 handoff-documentation head's exact-head CI, full suite, dependency audit and fail-closed gate.
+4. When all stated merge gates are satisfied, merge #1640; fetch main again, verify its merge commit and files, run main CI, and account for Pages side effects.
+5. Reconcile #1643 against the resulting main without force-pushing, then rerun its full suite and gate on the exact successor head.
+6. Continue durable cross-run raw-source storage, independent timestamp anchoring, research-overlay runtime admission, historical XRP dataset accumulation, calibration, drift and shadow evaluation.
+
+No merge, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred. The objective remains a working integrated Barrot build with measured XRP predictive performance, not more PRs or unverified forecasts.
