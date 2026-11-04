@@ -1,4 +1,4 @@
-"""Fixed-horizon XRP forecast ledger; records only, never predicts or trades."""
+"""Fixed-horizon XRP forecast ledger; records only after verified OOS readiness, never predicts or trades."""
 from __future__ import annotations
 
 import hashlib
@@ -15,6 +15,13 @@ from .feature_store import FeatureStoreError, HistoricalFeatureStore
 HORIZONS = (3600, 14400, 86400, 604800, 2592000)
 CLASSES = ("down", "flat", "up")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
+READINESS_POLICY_ID = "xrp_forecast_readiness_v1"
+_REQUIRED_BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
+_MIN_OOS_SAMPLES = 100
+_MIN_SHADOW_SAMPLES = 100
+_MIN_HORIZON_MULTIPLE = 10
+_MIN_SOURCE_GROUPS = 2
+_MAX_WEIGHTED_CALIBRATION_ERROR = 0.05
 DEFAULT_DB = Path(__file__).resolve().parents[2] / "data" / "xrp_intelligence" / "forecast_ledger.sqlite3"
 
 
@@ -86,6 +93,100 @@ def _scores(probabilities: Mapping[str, float], actual: str) -> tuple[float, flo
     return brier, log_loss, predicted == actual, predicted
 
 
+def _validate_readiness_report(report: Any) -> dict[str, Any]:
+    """Validate an independent model evaluation before it can authorize a directional record."""
+    if not isinstance(report, Mapping):
+        raise ForecastLedgerError("readiness report must be a JSON object")
+    if report.get("schema_version") != "barrot.xrp.model-readiness.v1":
+        raise ForecastLedgerError("readiness report schema is unsupported")
+    if report.get("evaluation_type") != "chronological_walk_forward_model_evaluation":
+        raise ForecastLedgerError("baseline-only or non-chronological evaluation cannot authorize a forecast")
+    if report.get("status") != "PASS" or report.get("policy_id") != READINESS_POLICY_ID:
+        raise ForecastLedgerError("readiness report has not passed the active forecast policy")
+
+    for field in ("evaluation_id", "model_version", "baseline_model_version", "asset", "venue", "dataset_receipt_id"):
+        if not isinstance(report.get(field), str) or not report[field].strip():
+            raise ForecastLedgerError(f"readiness report {field} must be a non-empty string")
+    if report["model_version"] == report["baseline_model_version"]:
+        raise ForecastLedgerError("evaluated model must be distinct from its baseline model")
+    if not isinstance(report.get("dataset_sha256"), str) or not _SHA256.fullmatch(report["dataset_sha256"]):
+        raise ForecastLedgerError("readiness report dataset_sha256 must be a SHA-256 digest")
+
+    horizon = report.get("horizon_seconds")
+    if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon not in HORIZONS:
+        raise ForecastLedgerError("readiness report horizon_seconds is unsupported")
+
+    def sample_count(field: str, minimum: int) -> int:
+        value = report.get(field)
+        if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
+            raise ForecastLedgerError(f"readiness report {field} must be at least {minimum}")
+        return value
+
+    sample_count("training_sample_count", _MIN_OOS_SAMPLES)
+    sample_count("out_of_sample_sample_count", _MIN_OOS_SAMPLES)
+    sample_count("shadow_evaluation_sample_count", _MIN_SHADOW_SAMPLES)
+    groups = report.get("source_independence_group_count")
+    if isinstance(groups, bool) or not isinstance(groups, int) or groups < _MIN_SOURCE_GROUPS:
+        raise ForecastLedgerError(f"readiness report needs at least {_MIN_SOURCE_GROUPS} independent source groups")
+
+    def span(start_field: str, end_field: str, label: str) -> tuple[datetime, datetime]:
+        start = _utc(report.get(start_field), f"readiness report {start_field}")[0]
+        end = _utc(report.get(end_field), f"readiness report {end_field}")[0]
+        if end <= start or (end - start).total_seconds() < horizon * _MIN_HORIZON_MULTIPLE:
+            raise ForecastLedgerError(
+                f"readiness report {label} span must cover at least {_MIN_HORIZON_MULTIPLE} forecast horizons"
+            )
+        return start, end
+
+    oos_start, oos_end = span("out_of_sample_start_utc", "out_of_sample_end_utc", "out-of-sample")
+    shadow_start, shadow_end = span("shadow_evaluation_start_utc", "shadow_evaluation_end_utc", "shadow")
+    if shadow_start < oos_end:
+        raise ForecastLedgerError("shadow evaluation must follow the independent out-of-sample window")
+
+    if report.get("leakage_check_status") != "PASS":
+        raise ForecastLedgerError("readiness report leakage check did not pass")
+    if report.get("calibration_status") != "PASS":
+        raise ForecastLedgerError("readiness report calibration did not pass")
+    if report.get("drift_status") != "STABLE":
+        raise ForecastLedgerError("readiness report drift status is not stable")
+    if report.get("shadow_evaluation_status") != "PASS":
+        raise ForecastLedgerError("readiness report shadow evaluation did not pass")
+    calibration_error = _number(
+        report.get("weighted_calibration_error"), "readiness report weighted_calibration_error"
+    )
+    if calibration_error > _MAX_WEIGHTED_CALIBRATION_ERROR:
+        raise ForecastLedgerError(
+            f"readiness report weighted calibration error exceeds {_MAX_WEIGHTED_CALIBRATION_ERROR}"
+        )
+
+    model_metrics = report.get("model_metrics")
+    baseline_metrics = report.get("baseline_metrics")
+    if not isinstance(model_metrics, Mapping) or not isinstance(baseline_metrics, Mapping):
+        raise ForecastLedgerError("readiness report must include model and baseline metrics")
+    if not set(_REQUIRED_BASELINES).issubset(baseline_metrics):
+        raise ForecastLedgerError("readiness report is missing one or more required baselines")
+    model_brier = _number(model_metrics.get("mean_brier_score"), "model mean_brier_score")
+    model_log_loss = _number(model_metrics.get("mean_log_loss"), "model mean_log_loss")
+    for baseline in _REQUIRED_BASELINES:
+        metrics = baseline_metrics[baseline]
+        if not isinstance(metrics, Mapping):
+            raise ForecastLedgerError(f"baseline metrics for {baseline} must be an object")
+        _number(metrics.get("mean_brier_score"), f"{baseline} mean_brier_score")
+        _number(metrics.get("mean_log_loss"), f"{baseline} mean_log_loss")
+    naive = baseline_metrics["naive_class_prior"]
+    if (
+        model_brier >= _number(naive.get("mean_brier_score"), "naive mean_brier_score")
+        or model_log_loss >= _number(naive.get("mean_log_loss"), "naive mean_log_loss")
+    ):
+        raise ForecastLedgerError("model must outperform the naive baseline on both Brier score and log loss")
+
+    data_cutoff = _utc(report.get("evaluation_data_cutoff_utc"), "evaluation_data_cutoff_utc")[0]
+    completed = _utc(report.get("evaluation_completed_at_utc"), "evaluation_completed_at_utc")[0]
+    if completed < data_cutoff or completed < oos_end or completed < shadow_end:
+        raise ForecastLedgerError("readiness evaluation completion precedes its evaluated data window")
+    return dict(report)
+
+
 class ForecastLedger:
     """SQLite append-only ledger with SQL row guards; not file-level tamper-proof."""
 
@@ -112,6 +213,10 @@ class ForecastLedger:
                     forecast_id TEXT PRIMARY KEY, payload TEXT NOT NULL,
                     target_time_utc TEXT NOT NULL, venue TEXT NOT NULL
                 );
+                CREATE TABLE IF NOT EXISTS readiness_reports(
+                    report_sha256 TEXT PRIMARY KEY, receipt_id TEXT NOT NULL,
+                    payload BLOB NOT NULL, registered_at_utc TEXT NOT NULL
+                );
                 CREATE TABLE IF NOT EXISTS outcomes(
                     forecast_id TEXT PRIMARY KEY REFERENCES forecasts(forecast_id),
                     status TEXT NOT NULL CHECK(status IN ('scored','unscorable')),
@@ -125,6 +230,10 @@ class ForecastLedger:
                     BEGIN SELECT RAISE(ABORT,'forecast records are immutable'); END;
                 CREATE TRIGGER IF NOT EXISTS forecasts_no_delete BEFORE DELETE ON forecasts
                     BEGIN SELECT RAISE(ABORT,'forecast records are immutable'); END;
+                CREATE TRIGGER IF NOT EXISTS readiness_reports_no_update BEFORE UPDATE ON readiness_reports
+                    BEGIN SELECT RAISE(ABORT,'readiness reports are immutable'); END;
+                CREATE TRIGGER IF NOT EXISTS readiness_reports_no_delete BEFORE DELETE ON readiness_reports
+                    BEGIN SELECT RAISE(ABORT,'readiness reports are immutable'); END;
                 CREATE TRIGGER IF NOT EXISTS outcomes_no_update BEFORE UPDATE ON outcomes
                     BEGIN SELECT RAISE(ABORT,'outcome records are immutable'); END;
                 CREATE TRIGGER IF NOT EXISTS outcomes_no_delete BEFORE DELETE ON outcomes
@@ -152,6 +261,94 @@ class ForecastLedger:
             raise ForecastLedgerError("ledger clock must return a timezone-aware datetime")
         return now.astimezone(timezone.utc)
 
+    def register_readiness_report(self, report_bytes: bytes, *, receipt_id: str) -> str:
+        """Register one immutable, byte-addressed model-readiness report."""
+        if not isinstance(report_bytes, bytes) or not report_bytes:
+            raise ForecastLedgerError("readiness report bytes are required")
+        if not isinstance(receipt_id, str) or not receipt_id.strip():
+            raise ForecastLedgerError("readiness report receipt_id is required")
+        try:
+            report = json.loads(report_bytes)
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ForecastLedgerError("readiness report bytes must contain valid JSON") from exc
+        _validate_readiness_report(report)
+        report_sha256 = hashlib.sha256(report_bytes).hexdigest()
+        registered_at = self._now().isoformat(timespec="microseconds").replace("+00:00", "Z")
+        db = self._connect()
+        try:
+            db.execute("BEGIN IMMEDIATE")
+            existing = db.execute(
+                "SELECT receipt_id,payload FROM readiness_reports WHERE report_sha256=?",
+                (report_sha256,),
+            ).fetchone()
+            if existing:
+                if existing["receipt_id"] != receipt_id.strip() or bytes(existing["payload"]) != report_bytes:
+                    raise ForecastLedgerError("readiness report hash collision")
+                db.commit()
+                return report_sha256
+            db.execute(
+                "INSERT INTO readiness_reports(report_sha256,receipt_id,payload,registered_at_utc) VALUES(?,?,?,?)",
+                (report_sha256, receipt_id.strip(), report_bytes, registered_at),
+            )
+            db.commit()
+            return report_sha256
+        except Exception:
+            db.rollback()
+            raise
+        finally:
+            db.close()
+
+    def _verify_readiness_certificate(self, payload: Mapping[str, Any]) -> None:
+        certificate = payload.get("readiness_certificate")
+        if not isinstance(certificate, Mapping):
+            raise ForecastLedgerError("a verified out-of-sample readiness certificate is required")
+        report_sha256 = certificate.get("report_sha256")
+        receipt_id = certificate.get("receipt_id")
+        if not isinstance(report_sha256, str) or not _SHA256.fullmatch(report_sha256):
+            raise ForecastLedgerError("readiness certificate report_sha256 must be a SHA-256 digest")
+        if not isinstance(receipt_id, str) or not receipt_id.strip():
+            raise ForecastLedgerError("readiness certificate receipt_id is required")
+        if certificate.get("policy_id") != READINESS_POLICY_ID or certificate.get("status") != "PASS":
+            raise ForecastLedgerError("readiness certificate does not match the active forecast policy")
+
+        db = self._connect()
+        try:
+            row = db.execute(
+                "SELECT receipt_id,payload FROM readiness_reports WHERE report_sha256=?",
+                (report_sha256,),
+            ).fetchone()
+        finally:
+            db.close()
+        if not row:
+            raise ForecastLedgerError("readiness report is not registered in the immutable ledger")
+        if row["receipt_id"] != receipt_id.strip():
+            raise ForecastLedgerError("readiness certificate receipt_id does not match the registered report")
+        report_bytes = bytes(row["payload"])
+        if hashlib.sha256(report_bytes).hexdigest() != report_sha256:
+            raise ForecastLedgerError("registered readiness report failed SHA-256 verification")
+        try:
+            report = json.loads(report_bytes)
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ForecastLedgerError("registered readiness report is not valid JSON") from exc
+        _validate_readiness_report(report)
+
+        if report["model_version"] != payload["model_version"]:
+            raise ForecastLedgerError("readiness report model_version does not match forecast")
+        if report["asset"].strip().upper() != payload["asset"]:
+            raise ForecastLedgerError("readiness report asset does not match forecast")
+        if report["venue"].strip() != payload["venue"]:
+            raise ForecastLedgerError("readiness report venue does not match forecast")
+        if report["horizon_seconds"] != payload["horizon_seconds"]:
+            raise ForecastLedgerError("readiness report horizon does not match forecast")
+        evaluation_cutoff = _utc(report["evaluation_data_cutoff_utc"], "evaluation_data_cutoff_utc")[0]
+        evaluation_completed = _utc(report["evaluation_completed_at_utc"], "evaluation_completed_at_utc")[0]
+        forecast_cutoff = _utc(payload["data_cutoff_utc"], "data_cutoff_utc")[0]
+        forecast_issued = _utc(payload["issued_at_utc"], "issued_at_utc")[0]
+        if evaluation_cutoff > forecast_cutoff:
+            raise ForecastLedgerError("readiness evaluation data cutoff exceeds forecast cutoff")
+        if evaluation_completed > forecast_issued:
+            raise ForecastLedgerError("readiness evaluation completed after forecast issue time")
+
     def _normalize(self, r: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(r, Mapping):
             raise ForecastLedgerError("forecast must be a mapping")
@@ -162,7 +359,7 @@ class ForecastLedger:
             "probabilities", "baseline_probabilities", "flat_band_bps",
             "outcome_tolerance_seconds", "feature_max_timestamp_utc",
             "feature_snapshot_ids", "source_ids", "assumptions", "alternatives",
-            "fee_bps", "slippage_bps",
+            "fee_bps", "slippage_bps", "readiness_certificate",
         )
         missing = [k for k in required if k not in r]
         if missing:
@@ -201,6 +398,17 @@ class ForecastLedger:
         if not isinstance(reference_source, str) or not reference_source.strip():
             raise ForecastLedgerError("reference_price_source_id must be a non-empty string")
         reference_source = reference_source.strip()
+        certificate = r["readiness_certificate"]
+        if not isinstance(certificate, Mapping):
+            raise ForecastLedgerError("readiness_certificate must be an object")
+        report_sha256 = certificate.get("report_sha256")
+        receipt_id = certificate.get("receipt_id")
+        if not isinstance(report_sha256, str) or not _SHA256.fullmatch(report_sha256):
+            raise ForecastLedgerError("readiness_certificate report_sha256 must be a SHA-256 digest")
+        if not isinstance(receipt_id, str) or not receipt_id.strip():
+            raise ForecastLedgerError("readiness_certificate receipt_id is required")
+        if certificate.get("policy_id") != READINESS_POLICY_ID or certificate.get("status") != "PASS":
+            raise ForecastLedgerError("readiness_certificate does not match the active policy")
         source_ids = _strings(r["source_ids"], "source_ids")
         if reference_source not in source_ids:
             raise ForecastLedgerError("reference_price_source_id must be included in source_ids")
@@ -223,6 +431,12 @@ class ForecastLedger:
             "alternatives": _strings(r["alternatives"], "alternatives"),
             "fee_bps": _number(r["fee_bps"], "fee_bps"),
             "slippage_bps": _number(r["slippage_bps"], "slippage_bps"),
+            "readiness_certificate": {
+                "report_sha256": report_sha256,
+                "receipt_id": receipt_id.strip(),
+                "policy_id": READINESS_POLICY_ID,
+                "status": "PASS",
+            },
             "point_target_price_usd": (
                 _number(r["point_target_price_usd"], "point_target_price_usd", 1e-12)
                 if r.get("point_target_price_usd") is not None else None
@@ -333,6 +547,7 @@ class ForecastLedger:
     def record_forecast(self, record: Mapping[str, Any]) -> str:
         """Record a live/shadow forecast once; historical backtests use separate artifacts."""
         payload = self._normalize(record)
+        self._verify_readiness_certificate(payload)
         self._verify_feature_snapshots(payload)
         payload_s = _json(payload)
         forecast_id = _hash(payload)
