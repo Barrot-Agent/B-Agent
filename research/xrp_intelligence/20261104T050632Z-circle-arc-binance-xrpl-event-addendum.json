@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_circle_arc_and_protocol_event_addendum",
+  "captured_at_utc": "2026-11-04T05:06:32Z",
+  "data_cutoff_utc": "2026-11-04T05:06:32Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "25114c1b0dc8abcc4dd0c0a60bc5ac3486a04f5c",
+    "research_branch_before_addendum": "bc463228a5d3c44cd11de34338798e3ab4fbca80",
+    "fresh_main_successor_pr": 1626,
+    "main_unchanged": true
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "circle_binance_100m_20260922",
+      "url": "https://www.circle.com/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years",
+      "publisher": "Circle Internet Group",
+      "published": "2026-09-22",
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "type": "official issuer press release",
+      "independence": "primary issuer statement",
+      "limitations": [
+        "Circle states Binance made a $100 million strategic equity investment and entered a five-year USDC commercial agreement; no independent closing document was separately inspected in this run.",
+        "The announcement does not specify XRP purchase, XRP collateral, XRPL routing or XRP bridge use."
+      ]
+    },
+    {
+      "id": "circle_arc_mainnet_20260916",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "publisher": "Circle Internet Group",
+      "published": "2026-09-16",
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "type": "official issuer press release",
+      "independence": "primary issuer statement",
+      "limitations": [
+        "The reported 100+ apps/builders and institutional participation are issuer-reported launch metrics, not independently reconstructed production transaction volume.",
+        "Arc's USDC gas and finality design does not establish a direct XRP or XRPL integration."
+      ]
+    },
+    {
+      "id": "circle_arc_validator_cohort_20260805",
+      "url": "https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch",
+      "publisher": "Circle Internet Group",
+      "published": "2026-08-05",
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "type": "official issuer press release",
+      "independence": "primary issuer statement",
+      "limitations": [
+        "Circle identifies SBI Group as an Arc founding validator; this does not identify Tokyo SBIC and does not establish SBI Group's exclusive network strategy.",
+        "Validator participation does not by itself establish payment volume, token holdings or XRP demand."
+      ]
+    },
+    {
+      "id": "circle_aci_colombia_pilot_20261027",
+      "url": "https://investor.circle.com/news/news-details/2026/ACI-Worldwide-and-Circle-Collaborate-to-Bring-USDC-Settlement-to-Existing-Payments-Infrastructure-in-Latin-America/default.aspx",
+      "publisher": "Circle Internet Group / ACI Worldwide",
+      "published": "2026-10-27",
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "type": "joint official company announcement",
+      "independence": "primary joint statement",
+      "limitations": [
+        "The announcement describes an initial Colombian pilot/demonstration, not verified scaled production throughput.",
+        "No XRP or XRPL use is disclosed."
+      ]
+    },
+    {
+      "id": "circle_tereina_sap_20261007",
+      "url": "https://investor.circle.com/news/news-details/2026/Tereina-an-SAP-Backed-Company-and-Circle-Bring-USDC-and-EURC-into-Enterprise-Workflows-Starting-with-the-SAP-Ecosystem-Behind-84-of-Global-Commerce/default.aspx",
+      "publisher": "Circle Internet Group / Tereina",
+      "published": "2026-10-07",
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "type": "joint official company announcement",
+      "independence": "primary joint statement",
+      "limitations": [
+        "The companies say proof-of-value programs and customer training will follow; announcement alone does not prove production adoption or settlement volumes.",
+        "No XRP or XRPL integration is disclosed."
+      ]
+    },
+    {
+      "id": "circle_q3_event_schedule_20261007",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "publisher": "Circle Internet Group",
+      "published": "2026-10-07",
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "type": "official investor-event notice",
+      "independence": "primary issuer notice",
+      "limitations": [
+        "At this artifact cutoff the event is in the future; no Q3 result, management commentary or guidance is inferred."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup_ledger_108102924",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "publisher": "XRPLWin Explorer",
+      "published": null,
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "provider_ledger_index": 108102924,
+      "type": "ledger-derived amendment and validator snapshot",
+      "independence": "secondary explorer reading public XRPL ledger state",
+      "limitations": [
+        "No separate raw-node RPC query was performed in this run.",
+        "The 33/35 vote count and 14-day timer are a snapshot, not a guarantee of activation; a further support drop can reset the timer."
+      ]
+    },
+    {
+      "id": "xrplf_rippled_340_release_notes",
+      "url": "https://github.com/XRPLF/rippled/releases",
+      "publisher": "XRPL Foundation / rippled maintainers",
+      "published": "2026-09-16",
+      "retrieved_at_utc": "2026-11-04T05:06:32Z",
+      "type": "official software release notes",
+      "independence": "primary project release record",
+      "limitations": [
+        "Release notes describe the amendment contents, not its later live activation state.",
+        "fixCleanup3_4_0 is not the same as activation of the separate LendingProtocol amendments."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "observed_at_utc": "2026-11-04T05:06:32Z",
+    "xrpl_amendment": {
+      "name": "fixCleanup3_4_0",
+      "state_at_cutoff": "Activating",
+      "votes_for": 33,
+      "trusted_validators": 35,
+      "threshold_votes": 29,
+      "support_percent": 94.29,
+      "majority_since_utc": "2026-10-21T14:46:22Z",
+      "earliest_activation_utc": "2026-11-04T14:46:22Z",
+      "active_at_cutoff": false,
+      "ledger_index": 108102924
+    },
+    "circle_q3_event": {
+      "scheduled_at_utc": "2026-11-04T13:00:00Z",
+      "status_at_cutoff": "scheduled_future_event"
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS-BINANCE-CIRCLE-EQUITY-20261104-01",
+      "class": "confirmed_from_issuer_statement",
+      "detail": "Circle's September 22 announcement says Binance made a $100 million strategic equity investment in Circle through a private placement, at a 5% discount to the pre-closing CRCL market price, with a transfer restriction of up to two years subject to customary exceptions.",
+      "evidence": [
+        "circle_binance_100m_20260922"
+      ]
+    },
+    {
+      "id": "OBS-BINANCE-USDC-COMMERCIAL-20261104-01",
+      "class": "confirmed_from_issuer_statement",
+      "detail": "Circle and Binance announced a five-year commercial agreement focused on expanding USDC access in emerging markets; Binance is to promote and integrate USDC on its platform while Circle provides supporting infrastructure.",
+      "evidence": [
+        "circle_binance_100m_20260922"
+      ]
+    },
+    {
+      "id": "OBS-ARC-MAINNET-20261104-01",
+      "class": "issuer_reported_mainnet_launch",
+      "detail": "Circle announced Arc public mainnet on September 16 with USDC-denominated gas, sub-second deterministic finality and more than 100 applications/builders or institutional/ecosystem participants reported at launch. These are Circle's launch claims, not independently measured throughput.",
+      "evidence": [
+        "circle_arc_mainnet_20260916"
+      ]
+    },
+    {
+      "id": "OBS-SBI-ARC-VALIDATOR-20261104-01",
+      "class": "confirmed_from_issuer_statement",
+      "detail": "Circle's August 5 founding-validator announcement lists SBI Group among Arc's founding validators alongside financial-market institutions. This is a direct SBI Group–Arc relationship and an indirect SBI Group–Circle network relationship; it is not evidence that Tokyo SBIC is involved.",
+      "evidence": [
+        "circle_arc_validator_cohort_20260805"
+      ]
+    },
+    {
+      "id": "OBS-ACI-USDC-COLOMBIA-20261104-01",
+      "class": "announced_pilot_not_scaled_production",
+      "detail": "ACI Worldwide and Circle announced a Colombian pilot to demonstrate USDC settlement within existing payment operations using ACI Connetic and the Bre-B instant-payments infrastructure context.",
+      "evidence": [
+        "circle_aci_colombia_pilot_20261027"
+      ]
+    },
+    {
+      "id": "OBS-TEREINA-SAP-USDC-EURC-20261104-01",
+      "class": "announced_enterprise_integration",
+      "detail": "Tereina and Circle announced integration of USDC and EURC into Tereina's enterprise payment infrastructure beginning with SAP Cloud ERP; proof-of-value programs were planned for subsequent months.",
+      "evidence": [
+        "circle_tereina_sap_20261007"
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-20261104-02",
+      "class": "confirmed_scheduled_event",
+      "detail": "Circle's Q3 2026 results webcast is scheduled for November 4 at 08:00 ET / 13:00 UTC. It is still in the future at this artifact cutoff; results and management statements are unknown.",
+      "evidence": [
+        "circle_q3_event_schedule_20261007"
+      ]
+    },
+    {
+      "id": "OBS-FIXCLEANUP-STATE-20261104-01",
+      "class": "ledger_derived_current_status",
+      "detail": "XRPLWin reports fixCleanup3_4_0 at 33 of 35 trusted validators (94.29%), with 29 required. The majority timestamp is October 21 14:46:22 UTC and the earliest activation is November 4 14:46:22 UTC, conditional on continuous support. At 05:06:32 UTC the amendment is not yet active.",
+      "evidence": [
+        "xrplwin_fixcleanup_ledger_108102924"
+      ]
+    },
+    {
+      "id": "OBS-FIXCLEANUP-NOT-LENDING-LAUNCH-20261104-01",
+      "class": "confirmed_from_official_release_scope",
+      "detail": "The official rippled 3.4.0 release notes describe fixCleanup3_4_0 as a bundle of amendment-gated bug fixes, including PaymentBurn and vault/AMM/lending refinements. This amendment does not itself activate the separate LendingProtocol amendments.",
+      "evidence": [
+        "xrplf_rippled_340_release_notes"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Binance",
+      "to": "Circle",
+      "relation": "$100M strategic equity investment announced by Circle; five-year USDC commercial agreement",
+      "status": "confirmed_from_issuer_statement",
+      "evidence": [
+        "circle_binance_100m_20260922"
+      ]
+    },
+    {
+      "from": "Binance",
+      "to": "USDC",
+      "relation": "platform promotion and integration under five-year commercial agreement",
+      "status": "confirmed_from_issuer_statement",
+      "evidence": [
+        "circle_binance_100m_20260922"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "issuer/platform operator; USDC gas and native platform integration",
+      "status": "confirmed_from_issuer_statement",
+      "evidence": [
+        "circle_arc_mainnet_20260916"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Arc",
+      "relation": "founding validator cohort member",
+      "status": "confirmed_from_issuer_statement",
+      "evidence": [
+        "circle_arc_validator_cohort_20260805"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "ACI Worldwide",
+      "relation": "USDC settlement integration pilot in Colombia via ACI Connetic",
+      "status": "announced_pilot",
+      "evidence": [
+        "circle_aci_colombia_pilot_20261027"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Tereina",
+      "relation": "USDC/EURC enterprise payment integration beginning with SAP Cloud ERP",
+      "status": "announced_integration",
+      "evidence": [
+        "circle_tereina_sap_20261007"
+      ]
+    },
+    {
+      "from": "XRPL trusted validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "33 of 35 votes in favor at ledger 108102924; activation window remains conditional",
+      "status": "ledger_derived_snapshot",
+      "evidence": [
+        "xrplwin_fixcleanup_ledger_108102924"
+      ]
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "XRPL",
+      "relation": "conditional protocol maintenance amendment; not active at cutoff",
+      "status": "activating_not_enabled_at_cutoff",
+      "evidence": [
+        "xrplwin_fixcleanup_ledger_108102924",
+        "xrplf_rippled_340_release_notes"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H14-circle-arc-institutional-alternative",
+      "claim": "Arc and USDC may compete with XRPL/Ripple for some institutional settlement and payment workflows, especially where dollar-denominated gas and institutional validator participation are valued.",
+      "support": [
+        "Arc public mainnet launched with USDC gas and Circle-reported institutional/ecosystem participation.",
+        "Circle announced enterprise and payments integrations with ACI and Tereina."
+      ],
+      "disconfirming_or_missing": [
+        "No corridor-level production volume or market-share data in the cited announcements.",
+        "No evidence that Arc replaces Ripple Payments, XRPL, RLUSD or XRP in a specific customer route."
+      ],
+      "tests": [
+        "Track Arc mainnet transaction counts, USDC gas, institutional users and production settlement volumes.",
+        "Compare disclosed customer corridors and throughput across Arc, XRPL/Ripple and traditional rails."
+      ]
+    },
+    {
+      "id": "H15-sbi-multinetwork-diversification",
+      "claim": "SBI Group's Arc validator role alongside its separately documented Ripple/XRP ecosystem relationships is more consistent with multi-network diversification than an exclusive XRP strategy.",
+      "support": [
+        "Circle lists SBI Group as an Arc founding validator.",
+        "Separate SBI/Ripple corporate and remittance relationships are documented in earlier evidence records."
+      ],
+      "disconfirming_or_missing": [
+        "Validator membership does not prove active payment flows or strategic preference.",
+        "No disclosed SBI routing allocation across Arc, XRPL, USDC, RLUSD, JPYSC or XRP."
+      ],
+      "tests": [
+        "Monitor SBI disclosures, validator operations, product integrations and corridor-specific settlement data.",
+        "Distinguish SBI Group, SBI Holdings, SBI Ripple Asia, SBI VC Trade and regional SBIC legal entities in every record."
+      ]
+    },
+    {
+      "id": "H16-binance-usdc-distribution-effect",
+      "claim": "Binance's five-year USDC agreement and $100 million Circle investment may strengthen USDC distribution and Circle's exchange reach, potentially affecting competing stablecoin share; an XRP-specific effect is not established.",
+      "support": [
+        "Circle reports Binance will promote and integrate USDC, especially across emerging markets.",
+        "Circle reports a $100 million Binance equity investment."
+      ],
+      "disconfirming_or_missing": [
+        "No XRP spot, derivative, collateral or bridge-flow change is disclosed in the agreement.",
+        "No stablecoin market-share or route-level outcome is measured in the announcement."
+      ],
+      "tests": [
+        "Track Binance USDC/RLUSD balances, pairs, spreads, collateral policies and issuer-specific net flows.",
+        "Measure XRP bridge usage separately from stablecoin transfers and exchange trading volume."
+      ]
+    },
+    {
+      "id": "H17-fixcleanup-maintenance-not-demand",
+      "claim": "fixCleanup3_4_0 activation would improve protocol correctness but should not be treated as a direct XRP demand catalyst or native lending launch.",
+      "support": [
+        "The amendment is a maintenance/fix bundle in the official release notes.",
+        "At cutoff the amendment is still only in its conditional activation window.",
+        "The separate LendingProtocol amendments are not activated by fixCleanup3_4_0."
+      ],
+      "disconfirming_or_missing": [
+        "A future bug fix may indirectly improve confidence or enable subsequent features, but that effect is not quantified.",
+        "Post-activation developer and institutional behavior remains unknown."
+      ],
+      "tests": [
+        "Verify EnabledAmendments and ledger state after the activation window.",
+        "Track separate LendingProtocol votes and later vault/lending utilization; do not infer activation from fixCleanup3_4_0."
+      ]
+    },
+    {
+      "id": "H18-circle-enterprise-announcements-to-production-gap",
+      "claim": "Circle's enterprise and payment announcements could expand USDC utility, but the observed announcements are pilots or integration plans and do not yet establish scaled production settlement.",
+      "support": [
+        "ACI describes an initial Colombian pilot.",
+        "Tereina says proof-of-value programs and customer training will follow."
+      ],
+      "disconfirming_or_missing": [
+        "No production throughput, active customer count or recurring revenue attributable to these integrations is disclosed in the cited releases."
+      ],
+      "tests": [
+        "Look for production launch announcements, customer case studies, measured transaction volume and audited revenue contributions."
+      ]
+    }
+  ],
+  "data_quality": {
+    "classification_policy": "Separate confirmed issuer statements, issuer-reported operating claims, ledger-derived explorer snapshots, inference, speculation, unknowns and disconfirming evidence.",
+    "no_averaging_policy": "Do not average or combine observations from different rails, product scopes, ledger indices, time cutoffs or issuer definitions.",
+    "limitations": [
+      "Circle press releases are primary evidence that the companies made the announcements, not independent verification of subsequent production activity.",
+      "Arc's 100+ launch participants are not a proxy for active users, settlement volume or assets under management.",
+      "SBI Group's Arc validator role is not evidence of Tokyo SBIC involvement or an exclusive XRP strategy.",
+      "Binance's investment and USDC commercial agreement do not establish XRP purchases, collateralization or payment-route substitution.",
+      "XRPLWin is a secondary explorer; a direct XRPL node RPC confirmation remains outstanding.",
+      "The 14:46:22 UTC amendment activation time is earliest conditional activation, not a guaranteed activation."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "No leakage-safe populated historical XRP feature set, walk-forward evaluation, baseline comparison or calibrated out-of-sample performance has been verified."
+  },
+  "blockers": [
+    "Direct XRPL RPC confirmation of fixCleanup3_4_0 after its 14:46:22 UTC activation window remains pending.",
+    "Circle Q3 2026 results have not been released at the 05:06:32 UTC cutoff.",
+    "No independently measured Arc institutional production throughput is available in the cited launch announcements.",
+    "No XRP-specific collateral utilization or route-level XRP bridge demand is disclosed by the Circle/Binance/Arc announcements."
+  ],
+  "next_actions": [
+    "After 13:00 UTC, capture Circle Q3 results, SEC filing, webcast transcript and management commentary; compare USDC circulation, reserve income, distribution costs, CPN activity and Arc metrics to the prior baseline.",
+    "After 14:46:22 UTC, query validated XRPL ledger state and EnabledAmendments directly; record the ledger index, amendment status and validator votes.",
+    "Keep Circle/Arc and XRP/XRPL routes separate in the feature store; measure actual route-level volumes before claiming complementarity or substitution.",
+    "Continue SBI Group versus regional SBIC identity separation and investigate any disclosed cross-network operating flows.",
+    "Do not issue a directional XRP forecast until historical features and leakage-safe walk-forward evaluation are complete."
+  ]
+}
