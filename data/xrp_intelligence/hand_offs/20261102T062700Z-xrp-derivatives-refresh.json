@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_derivatives_snapshot",
+  "title": "XRP derivatives refresh: Kodexius 06:19 UTC and TradRadar 05:55 UTC",
+  "captured_at_utc": "2026-11-02T06:26:39.416Z",
+  "observations": [
+    {
+      "provider": "Kodexius",
+      "observed_at_utc": "2026-11-02T06:19:00Z",
+      "open_interest_usd": 766340000,
+      "contract_count": 7,
+      "funding_weighted_8h_pct": 0.0072,
+      "volume_24h_usd": 670860000,
+      "oi_to_volume": 1.14,
+      "exchange_oi": [
+        {
+          "exchange": "Binance",
+          "usd": 376010000,
+          "share_pct": 49.1
+        },
+        {
+          "exchange": "Bybit",
+          "usd": 158520000,
+          "share_pct": 20.7
+        },
+        {
+          "exchange": "OKX",
+          "usd": 103930000,
+          "share_pct": 13.6
+        },
+        {
+          "exchange": "Hyperliquid",
+          "usd": 99600000,
+          "share_pct": 13
+        },
+        {
+          "exchange": "HTX",
+          "usd": 28280000,
+          "share_pct": 3.7
+        }
+      ],
+      "contracts": [
+        {
+          "exchange": "Binance",
+          "contract": "XRPUSDT",
+          "quote": "USDT",
+          "oi_usd": 345310000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "exchange": "Bybit",
+          "contract": "XRPUSDT",
+          "quote": "USDT",
+          "oi_usd": 155840000,
+          "funding_8h_pct": -0.0029
+        },
+        {
+          "exchange": "OKX",
+          "contract": "XRP-USDT-SWAP",
+          "quote": "USDT",
+          "oi_usd": 103930000,
+          "funding_8h_pct": 0.009
+        },
+        {
+          "exchange": "Hyperliquid",
+          "contract": "XRP",
+          "quote": "USDC",
+          "oi_usd": 99600000,
+          "funding_8h_pct": 0.01,
+          "settlement_period": "1h",
+          "native_period_rate_pct": 0.0013
+        },
+        {
+          "exchange": "Binance",
+          "contract": "XRPUSDC",
+          "quote": "USDC",
+          "oi_usd": 30700000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "exchange": "HTX",
+          "contract": "XRP-USDT",
+          "quote": "USDT",
+          "oi_usd": 28280000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "exchange": "Bybit",
+          "contract": "XRPPERP",
+          "quote": "USDC",
+          "oi_usd": 2680000,
+          "funding_8h_pct": 0.01
+        }
+      ],
+      "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "source_notes": "The page says it reads public data from Binance, Bybit, OKX, Hyperliquid and HTX, refreshed every five minutes. Funding is normalized to 8h; native funding intervals are also shown."
+    },
+    {
+      "provider": "TradRadar",
+      "observed_at_utc": "2026-11-02T05:55:00Z",
+      "delay_minutes": 15,
+      "mark_price_usd": 1.2549,
+      "open_interest_usd": 1930000000,
+      "open_interest_24h_change_pct": 1.98,
+      "funding_oi_weighted_8h_pct": 0.0077,
+      "liquidations_24h_lower_bound_usd": 1210000,
+      "long_liquidations_usd": 910320,
+      "short_liquidations_usd": 301890,
+      "long_short_ratio": 3.07,
+      "long_account_share_pct": 75.5,
+      "exchanges": [
+        "Binance",
+        "Bybit",
+        "OKX",
+        "Bitget",
+        "Gate",
+        "MEXC",
+        "Hyperliquid"
+      ],
+      "source": "https://tradradar.io/markets/xrp",
+      "source_notes": "The page states its liquidation total is a lower bound because exchanges publish only part of liquidations in real time."
+    }
+  ],
+  "comparability": {
+    "open_interest": "Do not average or directly compare the $1.93B seven-exchange TradRadar aggregate and the $766.34M seven-contract Kodexius aggregate. TradRadar includes seven venues; Kodexius lists seven contracts across five venues, with USDT/USDC split. Their OI universes differ.",
+    "funding": "Both providers show positive weighted funding, but their contract universes and normalization differ. Hyperliquid's native 1-hour rate must be preserved separately from its 8-hour normalized rate.",
+    "timing": "TradRadar is timestamped 05:55 UTC with a 15-minute delay; Kodexius is timestamped 06:19 UTC. They are not synchronized."
+  },
+  "interpretation": {
+    "observed": "Positive OI-weighted funding across both providers; TradRadar reports 75.5% long accounts and long liquidations exceeding short liquidations.",
+    "inference": "The TradRadar universe appears long-skewed and could be vulnerable to a downside liquidation cascade if price weakens, but current data do not establish that such a move is imminent.",
+    "disconfirming": "The provider universes differ, and account ratios are not notional exposure. Liquidation totals are incomplete. A long-skewed ratio can persist during rising markets.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Capture synchronized exchange contract OI/funding snapshots with contract IDs, quote currency, interval, timestamp and provider methodology.",
+    "Add liquidation asymmetry and long-account share only as separate features; do not treat account ratios as notional leverage.",
+    "Collect historical provider coverage and backfill only with timestamped source snapshots; no current-value substitution into historical features."
+  ],
+  "safety": {
+    "public_data_only": true,
+    "no_trading": true,
+    "no_market_manipulation": true
+  }
+}

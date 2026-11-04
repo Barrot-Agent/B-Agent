@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_market_structure_snapshot",
+  "title": "November 2 XRP derivatives snapshot and cbXRP collateral source-freshness audit",
+  "captured_at_utc": "2026-11-02T06:22:25.564Z",
+  "market_cutoff_utc": "2026-11-02T05:55:00Z",
+  "spot_and_derivatives": {
+    "tradradar": {
+      "updated_at_utc": "2026-11-02T05:55:00Z",
+      "page_delay_minutes": 15,
+      "xrp_mark_price_usd": 1.2549,
+      "open_interest_usd": 1930000000,
+      "open_interest_24h_change_pct": 1.98,
+      "oi_weighted_funding_8h_pct": 0.0077,
+      "liquidations_24h_lower_bound_usd": 1210000,
+      "long_liquidations_usd": 910320,
+      "short_liquidations_usd": 301890,
+      "long_short_account_ratio": 3.07,
+      "long_account_share_pct": 75.5,
+      "exchanges": [
+        {
+          "name": "Binance",
+          "open_interest_usd": 429840000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "name": "Bybit",
+          "open_interest_usd": 355690000,
+          "funding_8h_pct": -0.0024
+        },
+        {
+          "name": "MEXC",
+          "open_interest_usd": 299700000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "name": "Gate",
+          "open_interest_usd": 273610000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "name": "Bitget",
+          "open_interest_usd": 251510000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "name": "Hyperliquid",
+          "open_interest_usd": 199400000,
+          "funding_8h_pct": 0.01
+        },
+        {
+          "name": "OKX",
+          "open_interest_usd": 115310000,
+          "funding_8h_pct": 0.0096
+        }
+      ],
+      "methodology": "Seven exchange perpetual futures aggregation; 15-minute delay; liquidation totals are lower bounds because exchange disclosures are incomplete.",
+      "source": "https://tradradar.io/markets/xrp"
+    },
+    "kodexius": {
+      "updated_at_utc": "2026-11-02T05:29:00Z",
+      "open_interest_usd": 765030000,
+      "contract_count": 7,
+      "oi_weighted_funding_8h_pct": 0.0074,
+      "volume_24h_usd": 669230000,
+      "oi_to_volume_ratio": 1.14,
+      "exchanges": [
+        {
+          "name": "Binance",
+          "open_interest_usd": 375580000,
+          "share_pct": 49.1
+        },
+        {
+          "name": "Bybit",
+          "open_interest_usd": 158340000,
+          "share_pct": 20.7
+        },
+        {
+          "name": "OKX",
+          "open_interest_usd": 103980000,
+          "share_pct": 13.6
+        },
+        {
+          "name": "Hyperliquid",
+          "open_interest_usd": 98850000,
+          "share_pct": 12.9
+        },
+        {
+          "name": "HTX",
+          "open_interest_usd": 28280000,
+          "share_pct": 3.7
+        }
+      ],
+      "methodology": "Seven listed contracts across five venues; USDT and USDC contracts are separately enumerated.",
+      "source": "https://kodexius.com/data/crypto-derivatives/XRP"
+    },
+    "comparability": "Do not average the $1.93B TradRadar total and $765.03M Kodexius total. The provider universes differ by exchanges, contract count, contract currency and coverage. The difference is not evidence of a market data error by itself."
+  },
+  "collateral_data_quality": {
+    "cbxrp_proof_of_reserves": {
+      "statement": "Coinbase describes cbXRP as a wrapped token backed 1:1 by XRP held by Coinbase.",
+      "last_page_refresh_utc": "2026-09-07T01:50:00Z",
+      "age_at_capture_hours": 1349,
+      "prior_snapshot_supply_xrp": 150940089.8,
+      "prior_snapshot_reserves_xrp": 150942337.33,
+      "status": "STALE_NOT_CURRENT",
+      "interpretation": "The previously recorded 150.94M supply/reserve figures are historical observations from a page whose displayed refresh time is September 7. Do not treat them as November 2 balances or current proof of reserves.",
+      "source": "https://www.coinbase.com/en-br/cbxrp/proof-of-reserves"
+    },
+    "morphowatch_cbxrp_usdc": {
+      "displayed_update_utc": "2026-10-31T06:51:00Z",
+      "page_age_hours_at_capture": 48,
+      "supplied_usdc_usd": 65210000,
+      "borrowed_usdc_usd": 59140000,
+      "utilization_pct": 90.7,
+      "available_to_borrow_usd": 6070000,
+      "collateral_cbxrp": 118600000,
+      "collateral_usd": 147600000,
+      "supply_apy_pct": 7.52,
+      "borrow_apy_pct": 8.32,
+      "liquidation_ltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "oracle_price_usdc": 1.24,
+      "oracle": "ChainlinkOracleV2",
+      "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "status": "STALE_OR_TIMESTAMP_CONFLICT",
+      "conflict": "The prior research handoff recorded a later MorphoWatch observation at 2026-11-01T22:11Z with approximately $65.8M supplied, $59.3M borrowed, 90.1% utilization and 118.77M cbXRP collateral. The currently retrievable page reports an earlier update time (2026-10-31T06:51Z) and slightly different values. These are retained as separate observations; no direct Morpho API response was captured in this run."
+    }
+  },
+  "feature_admission": {
+    "permitted": "Timestamped derivatives observations may enter the feature store with provider universe/methodology metadata and explicit staleness.",
+    "blocked": "Do not admit Coinbase cbXRP reserve figures as current; do not treat Morpho collateral/utilization values as current until a fresh raw Morpho API snapshot is captured and reconciled.",
+    "forecast": "NOT_ISSUED"
+  },
+  "interpretations": [
+    "TradRadar shows open interest rising 1.98% over 24 hours while funding remains positive and 75.5% of tracked accounts are long. This indicates a crowded-long risk condition in that provider's universe, not a directional price forecast.",
+    "Liquidations are reported as a lower bound; missing exchange liquidation disclosures make the true total uncertain.",
+    "The cbXRP/USDC market provides a concrete XRP-collateral-to-USDC-credit pathway, but the currently retrievable reserve and Morpho pages are too stale or conflicting for live collateral-flow conclusions."
+  ],
+  "next_actions": [
+    "Capture Morpho's raw market API response and pin block number, timestamp, market ID, supplied/borrowed amounts, collateral amount, oracle and liquidation events.",
+    "Capture Coinbase cbXRP proof-of-reserves page refresh metadata and reserve values again when Coinbase publishes a newer observation.",
+    "Normalize exchange-level OI by contract ID, quote asset, venue, open/close methodology and timestamp.",
+    "Add long/short account share, funding dispersion, liquidation asymmetry and OI/volume to shadow features only after historical coverage and provider methodology are stable.",
+    "Keep the Binance attacker-wallet event separate from aggregate exchange-wallet flows and actual sale estimates."
+  ],
+  "safety": {
+    "public_data_only": true,
+    "no_trading": true,
+    "no_market_manipulation": true,
+    "no_wallet_interaction": true,
+    "no_main_write": true
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_wallet_monitoring_snapshot",
+  "title": "Post-redistribution recipient wallet recheck",
+  "captured_at_utc": "2026-11-02T06:25:04.536Z",
+  "validated_event_cutoff_utc": "2026-11-02T04:00:31Z",
+  "source_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+  "source_account_transactions": {
+    "url": "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx/transactions",
+    "page_observation": "The latest nine large outbound Payments remain visible, ending with 33,454,920 XRP at 04:00:31 UTC. Page reports 1-9 of many because the account has additional activation/dust activity; the nine large-payment set is unchanged."
+  },
+  "recipients": [
+    {
+      "account": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "history_url": "https://bithomp.com/account/ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx/transactions",
+      "history_rows": 3,
+      "only_inbound_from_source": true,
+      "outbound_rows": 0
+    },
+    {
+      "account": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+      "history_url": "https://bithomp.com/account/rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F/transactions",
+      "history_rows": 3,
+      "only_inbound_from_source": true,
+      "outbound_rows": 0
+    },
+    {
+      "account": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+      "history_url": "https://bithomp.com/account/rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB/transactions",
+      "history_rows": 3,
+      "only_inbound_from_source": true,
+      "outbound_rows": 0
+    },
+    {
+      "account": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+      "history_url": "https://bithomp.com/account/rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW/transactions",
+      "history_rows": 2,
+      "only_inbound_from_source": true,
+      "outbound_rows": 0
+    },
+    {
+      "account": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "history_url": "https://bithomp.com/account/rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD/transactions",
+      "history_rows": 2,
+      "only_inbound_from_source": true,
+      "outbound_rows": 0
+    },
+    {
+      "account": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+      "history_url": "https://bithomp.com/account/raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t/transactions",
+      "history_rows": 2,
+      "only_inbound_from_source": true,
+      "outbound_rows": 0
+    },
+    {
+      "account": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+      "history_url": "https://bithomp.com/account/rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b/transactions",
+      "history_rows": 1,
+      "only_inbound_from_source": true,
+      "outbound_rows": 0
+    }
+  ],
+  "summary": {
+    "large_recipient_wallets": 6,
+    "additional_activation_only_wallets": 1,
+    "total_large_xrp_redistributed": 233454920,
+    "child_activation_xrp": 7000,
+    "new_outbound_from_recipient_histories_observed": false,
+    "exchange_deposit_observed": false,
+    "dex_swap_observed": false,
+    "bridge_transfer_observed": false,
+    "sale_observed": false
+  },
+  "interpretation": "At this capture, all seven child account histories still show only inbound transfers from the source account and no outbound rows. This is a point-in-time observation, not proof that the balances will remain inactive. Wallet segmentation is confirmed; sale/monetization is not.",
+  "cross_check": "Whale Alert independently lists the 40,000,000 XRP transfer to rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD at 03:56:21 UTC with matching hash 3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D.",
+  "next_actions": [
+    "Recheck the seven recipient histories at a pinned validated ledger index using independent rippled/Clio account_tx calls.",
+    "Monitor for exchange/DEX/bridge routing; do not infer sale from wallet transfers.",
+    "Preserve event timestamps and source-specific freshness in the historical feature store."
+  ],
+  "safety": {
+    "public_data_only": true,
+    "no_wallet_interaction": true,
+    "no_signing": true,
+    "no_private_data": true,
+    "no_trading": true
+  }
+}
