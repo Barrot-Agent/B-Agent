@@ -23,6 +23,10 @@ from .verified_learning_store import (
 from .learning_curriculum import (
     LearningCurriculum,
 )
+from .mission_registry import (
+    MissionRegistry,
+    MissionRegistryError,
+)
 from .validated_publisher import (
     ValidatedPublisher,
     PublishResult,
@@ -78,6 +82,8 @@ __all__ = [
     "LearningRecord",
     "VerifiedLearningStore",
     "LearningCurriculum",
+    "MissionRegistry",
+    "MissionRegistryError",
     "ValidatedPublisher",
     "PublishResult",
     "Artifact",

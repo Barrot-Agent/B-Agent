@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from .verified_learning_store import VerifiedLearningStore
+from .mission_registry import MissionRegistry
 
 
 class LearningCurriculum:
@@ -14,12 +15,14 @@ class LearningCurriculum:
         self,
         workspace: str = ".",
         learning_store: VerifiedLearningStore | None = None,
+        mission_registry: MissionRegistry | None = None,
     ):
         self.workspace = Path(workspace)
         self.learning_store = (
             learning_store
             or VerifiedLearningStore()
         )
+        self.mission_registry = mission_registry or MissionRegistry()
 
     def _known_text(self) -> str:
         try:
@@ -34,6 +37,9 @@ class LearningCurriculum:
 
     def next_goal(self) -> str:
         known = self._known_text().lower()
+        mission_goal = self.mission_registry.next_goal(known)
+        if mission_goal:
+            return mission_goal
 
         candidates = [
             (
