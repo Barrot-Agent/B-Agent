@@ -156,6 +156,29 @@ def call_groq(prompt: str) -> str:
         raise RuntimeError("Groq response did not contain a message") from None
 
 
+_PROHIBITED_OUTPUT_PATTERNS = (
+    re.compile(r"\\b(?:buy|sell|short|long)\\s+(?:all\\s+)?(?:xrp|bitcoin|btc|ethereum|eth|crypto(?:currency)?|now|here)\\b", re.IGNORECASE),
+    re.compile(r"\\b(?:buy|sell|hold)\\s+(?:signal|call|recommendation)\\b", re.IGNORECASE),
+    re.compile(r"\\b(?:price\\s+)?target(?:\\s+price)?\\s*(?:is|at|of|:|=)?\\s*\\$?\\s*\\d+(?:\\.\\d+)?\\b", re.IGNORECASE),
+    re.compile(r"\\b(?:will(?:\\s+not)?|is\\s+expected\\s+to|are\\s+expected\\s+to|expected\\s+to|is\\s+likely\\s+to|are\\s+likely\\s+to|should)\\s+(?:rise|fall|rally|drop|surge|decline|break|reach|hit|trade|move)\\b", re.IGNORECASE),
+    re.compile(r"\\b(?:entry|exit)\\s+(?:price|level)\\s*(?:is|at|of|:|=)?\\s*\\$?\\s*\\d+(?:\\.\\d+)?\\b", re.IGNORECASE),
+    re.compile(r"\\b(?:stop[- ]loss|take[- ]profit)\\b", re.IGNORECASE),
+)
+
+
+def _validate_descriptive_text(result: dict) -> None:
+    text_fields = ("summary", "observations", "data_quality", "competing_hypotheses", "validation_gaps")
+    for field in text_fields:
+        values = result[field] if isinstance(result[field], list) else [result[field]]
+        for value in values:
+            if not isinstance(value, str):
+                continue
+            if any(pattern.search(value) for pattern in _PROHIBITED_OUTPUT_PATTERNS):
+                raise ValueError(
+                    f"{field} contains prohibited forecast or trading language"
+                )
+
+
 def validate_analysis_response(text: str) -> dict:
     try:
         result = json.loads(text)
@@ -173,6 +196,7 @@ def validate_analysis_response(text: str) -> dict:
         values = result.get(key)
         if not isinstance(values, list) or any(not isinstance(value, str) for value in values):
             raise ValueError(f"{key} must be a list of strings")
+    _validate_descriptive_text(result)
     return result
 
 
