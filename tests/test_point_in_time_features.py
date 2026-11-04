@@ -550,3 +550,37 @@ def test_historical_feature_store_rejects_noncanonical_manifest_record_before_no
     store = HistoricalFeatureStore(tmp_path / "noncanonical-record.sqlite3")
     with pytest.raises(FeatureStoreError, match="canonical normalized form"):
         store.append_snapshot(tampered)
+
+
+@pytest.mark.parametrize(
+    "identity_change",
+    [
+        {"event_time_utc": "2026-11-03T15:58:00Z"},
+        {"feature_name": "perpetual_open_interest"},
+        {"unit": "USD/BTC"},
+        {"venue": "binance"},
+        {"instrument": "XRP-USDT-SWAP"},
+        {"currency_pair": "XRP/USDT"},
+        {"market_type": "perpetual"},
+        {"aggregation_window": "5m"},
+    ],
+)
+def test_revision_cannot_supersede_a_different_event_or_market_identity(identity_change):
+    dimensions = {
+        "venue": "kraken",
+        "instrument": "XRP/USD",
+        "currency_pair": "XRP/USD",
+        "market_type": "spot",
+        "aggregation_window": "1m",
+    }
+    original = feature(record_id="v1", feature_version=1, **dimensions)
+    revised = feature(
+        record_id="v2",
+        feature_version=2,
+        revision_status="revised",
+        supersedes_record_id="v1",
+        **dimensions,
+        **identity_change,
+    )
+    with pytest.raises(FeatureSnapshotError, match="same feature and asset at the same event time"):
+        build_feature_snapshot([original, revised], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED)

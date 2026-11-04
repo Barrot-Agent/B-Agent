@@ -137,7 +137,8 @@ def test_overlay_downgrades_exact_observation_and_snapshot_commits_overlay_prove
         tmp_path / "features.sqlite3",
         clock=lambda: datetime(2026, 11, 4, 12, 2, tzinfo=timezone.utc),
     )
-    store.store_snapshot(snapshot)
+    receipt = store.append_snapshot(snapshot)
+    assert receipt["created"] is True
     assert store.verify_snapshot(snapshot["snapshot_id"])["valid"] is True
 
 
@@ -231,7 +232,7 @@ def test_feature_records_must_bind_to_exact_source_artifact_and_blob():
 
 def test_overlay_bytes_must_match_the_supplied_overlay_mapping():
     source_bytes, overlay, overlay_bytes = _documents()
-    changed_bytes = overlay_bytes + b" "
+    changed_bytes = overlay_bytes.replace(b"Secondary observation", b"Altered observation")
     source_sha = git_blob_sha1(source_bytes)
     with pytest.raises(ResearchEligibilityError, match="mapping does not match"):
         _build(
