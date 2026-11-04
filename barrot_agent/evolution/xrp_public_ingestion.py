@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+from email.utils import parsedate_to_datetime
 import json
 import math
 import os
@@ -21,7 +22,7 @@ from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com"}
+ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com"}
 ADAPTER_VERSION = "xrp-public-market-v1"
 PARSER_VERSION = "xrp-public-market-v1"
 MAX_LIVE_AGE_SECONDS = 300
@@ -32,6 +33,9 @@ ENDPOINTS = (
     ("binance_spot_klines", "https://api.binance.com/api/v3/klines?symbol=XRPUSDT&interval=1h&limit=1000"),
     ("binance_perp_premium", "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT"),
     ("binance_perp_open_interest", "https://fapi.binance.com/fapi/v1/openInterest?symbol=XRPUSDT"),
+    ("coinbase_spot_ticker", "https://api.exchange.coinbase.com/products/XRP-USD/ticker"),
+    ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
+    ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
     ("binance_spot_depth", "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100"),
 )
@@ -83,6 +87,30 @@ def _from_seconds(value: Any, field: str) -> datetime:
         raise XRPIngestionError(f"{field} is outside the supported timestamp range") from None
 
 
+def _from_iso8601(value: Any, field: str) -> datetime:
+    if not isinstance(value, str) or not value.strip():
+        raise XRPIngestionError(f"{field} must be an ISO-8601 timestamp")
+    try:
+        parsed = datetime.fromisoformat(value.strip().replace("Z", "+00:00"))
+    except ValueError:
+        raise XRPIngestionError(f"{field} must be an ISO-8601 timestamp") from None
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise XRPIngestionError(f"{field} must include a timezone")
+    return parsed.astimezone(timezone.utc)
+
+
+def _from_http_date(value: Any) -> datetime | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    try:
+        parsed = parsedate_to_datetime(value)
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        return None
+    return parsed.astimezone(timezone.utc)
+
+
 def _number(value: Any, field: str, *, allow_zero: bool = True) -> float:
     if isinstance(value, bool):
         raise XRPIngestionError(f"{field} must be numeric")
@@ -119,7 +147,7 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
         payload = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, ValueError):
         raise XRPIngestionError(f"response is not valid JSON for {source_id}") from None
-    return {"raw_bytes": raw, "payload": payload}
+    return {"raw_bytes": raw, "payload": payload, "http_date": response.headers.get("Date")}
 
 
 class RawReceiptArchive:
@@ -435,7 +463,202 @@ def _parse_binance_open_interest(payload: Any, *, source_id: str, url: str, dige
     return [record], event_s, eligible, reason
 
 
-def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+def _parse_coinbase_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError("Coinbase ticker response must be an object")
+    trade_time = _from_iso8601(payload.get("time"), "Coinbase ticker trade time")
+    if trade_time > captured:
+        raise XRPIngestionError("Coinbase ticker trade time is later than capture time")
+    server_time = _from_http_date(http_date)
+    trade_eligible, trade_reason, trade_quality = _live_eligibility(
+        trade_time, captured, MAX_LIVE_AGE_SECONDS
+    )
+    quote_time = server_time or captured
+    quote_eligible, quote_reason, quote_quality = (
+        _live_eligibility(quote_time, captured, MAX_LIVE_AGE_SECONDS)
+        if server_time is not None
+        else (False, "missing_or_invalid_http_date_snapshot_time", "unverified")
+    )
+    price = _number(payload.get("price"), "Coinbase ticker price", allow_zero=False)
+    size = _number(payload.get("size"), "Coinbase ticker size", allow_zero=False)
+    bid = _number(payload.get("bid"), "Coinbase ticker bid", allow_zero=False)
+    ask = _number(payload.get("ask"), "Coinbase ticker ask", allow_zero=False)
+    volume = _number(payload.get("volume"), "Coinbase ticker 24h volume")
+    if ask <= bid:
+        raise XRPIngestionError("Coinbase ticker bid/ask is crossed or locked")
+    trade_s, quote_s, captured_s = _iso(trade_time), _iso(quote_time), _iso(captured)
+    mid = (bid + ask) / 2.0
+    spread_bps = (ask - bid) / mid * 10000.0
+    limitations = [
+        "Single Coinbase Exchange XRP/USD spot venue; not consolidated liquidity.",
+        "Ticker trade time timestamps the last trade; bid/ask snapshot time uses the HTTP Date response header.",
+        "The HTTP Date header is server response time, not an exchange matching-engine sequence timestamp.",
+    ]
+    records = [
+        _feature_record(
+            feature_id="xrp.spot.coinbase.last_price",
+            value=price,
+            unit="USD/XRP",
+            event_time_utc=trade_s,
+            source_data_as_of_utc=trade_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="coinbase",
+            venue="Coinbase",
+            instrument="XRP-USD spot",
+            currency_pair="XRP/USD",
+            market_type="spot",
+            model_eligible=trade_eligible,
+            eligibility_reason=trade_reason,
+            quality_status=trade_quality,
+            limitations=limitations,
+        ),
+        _feature_record(
+            feature_id="xrp.spot.coinbase.last_trade_size",
+            value=size,
+            unit="XRP",
+            event_time_utc=trade_s,
+            source_data_as_of_utc=trade_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="coinbase",
+            venue="Coinbase",
+            instrument="XRP-USD spot",
+            currency_pair="XRP/USD",
+            market_type="spot",
+            model_eligible=trade_eligible,
+            eligibility_reason=trade_reason,
+            quality_status=trade_quality,
+            limitations=limitations,
+        ),
+    ]
+    for name, value, unit in (
+        ("best_bid", bid, "USD/XRP"),
+        ("best_ask", ask, "USD/XRP"),
+        ("mid_price", mid, "USD/XRP"),
+        ("spread_bps", spread_bps, "bps"),
+        ("base_volume_24h", volume, "XRP/24h"),
+    ):
+        records.append(
+            _feature_record(
+                feature_id=f"xrp.spot.coinbase.{name}",
+                value=value,
+                unit=unit,
+                event_time_utc=quote_s,
+                source_data_as_of_utc=quote_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="coinbase",
+                venue="Coinbase",
+                instrument="XRP-USD spot",
+                currency_pair="XRP/USD",
+                market_type="spot",
+                aggregation_window="24h" if name == "base_volume_24h" else "",
+                model_eligible=quote_eligible,
+                eligibility_reason=quote_reason,
+                quality_status=quote_quality,
+                limitations=limitations,
+            )
+        )
+    source_time = max(trade_time, server_time) if server_time is not None else trade_time
+    source_eligible = trade_eligible or quote_eligible
+    source_reason = "" if source_eligible else "coinbase_ticker_has_no_fresh_timestamp"
+    return records, _iso(source_time), source_eligible, source_reason
+
+
+def _parse_coinbase_candles(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+    if not isinstance(payload, list) or not payload:
+        raise XRPIngestionError("Coinbase candle response must be a non-empty array")
+    captured_s = _iso(captured)
+    records = []
+    latest_close = None
+    incomplete = 0
+    limitations = [
+        "Historical Coinbase candles were first observed at this capture time; they are not known at historical event times.",
+        "The public Coinbase endpoint returns at most 300 candles per request; pagination is not yet implemented.",
+    ]
+    metrics = (
+        (1, "low_price", "USD/XRP"),
+        (2, "high_price", "USD/XRP"),
+        (3, "open_price", "USD/XRP"),
+        (4, "close_price", "USD/XRP"),
+        (5, "base_volume", "XRP"),
+    )
+    for row in payload:
+        if not isinstance(row, list) or len(row) < 6:
+            raise XRPIngestionError("Coinbase candle row does not match the documented schema")
+        open_time = _from_seconds(row[0], "Coinbase candle open time")
+        close_time = open_time + timedelta(seconds=3600)
+        if close_time > captured:
+            incomplete += 1
+            continue
+        open_s, close_s = _iso(open_time), _iso(close_time)
+        latest_close = close_s if latest_close is None or close_s > latest_close else latest_close
+        for index, name, unit in metrics:
+            value = _number(
+                row[index],
+                f"Coinbase candle {name}",
+                allow_zero=name == "base_volume",
+            )
+            records.append(
+                _feature_record(
+                    feature_id=f"xrp.spot.coinbase.1h.{name}",
+                    value=value,
+                    unit=unit,
+                    event_time_utc=open_s,
+                    source_data_as_of_utc=close_s,
+                    captured_at_utc=captured_s,
+                    source_id=source_id,
+                    source_uri=url,
+                    raw_sha256=digest,
+                    independence_group="coinbase",
+                    venue="Coinbase",
+                    instrument="XRP-USD spot",
+                    currency_pair="XRP/USD",
+                    market_type="spot",
+                    aggregation_window="1h",
+                    limitations=limitations,
+                )
+            )
+    if not records:
+        raise XRPIngestionError("Coinbase candle response contains no completed hourly candles")
+    reason = f"incomplete_current_candles_skipped:{incomplete}" if incomplete else ""
+    return records, latest_close, True, reason
+
+
+def _raw_only_coinbase_book(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError("Coinbase order-book response must be an object")
+    sequence = payload.get("sequence")
+    if isinstance(sequence, bool) or not isinstance(sequence, int) or sequence <= 0:
+        raise XRPIngestionError("Coinbase order-book sequence is invalid")
+    bids, asks = payload.get("bids"), payload.get("asks")
+    if not isinstance(bids, list) or not bids or not isinstance(asks, list) or not asks:
+        raise XRPIngestionError("Coinbase order book must contain bids and asks")
+    for side, rows in (("bid", bids), ("ask", asks)):
+        for row in rows:
+            if not isinstance(row, list) or len(row) < 2:
+                raise XRPIngestionError(f"Coinbase {side} level schema mismatch")
+            _number(row[0], f"Coinbase {side} price", allow_zero=False)
+            _number(row[1], f"Coinbase {side} quantity", allow_zero=False)
+    return [], None, False, "coinbase_book_snapshot_has_no_timestamp_or_websocket_sequence_bridge"
+
+
+def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime, http_date: str | None = None):
     if not isinstance(payload, Mapping) or payload.get("error") not in ([], None):
         raise XRPIngestionError("Kraken depth response contains an API error")
     result = payload.get("result")
@@ -464,11 +687,23 @@ def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, 
     best_ask = min(level[0] for level in asks)
     if best_ask <= best_bid:
         raise XRPIngestionError("Kraken order book is crossed or locked")
-    # Use the oldest included level timestamp so the feature cutoff is conservative.
-    source_time = min([level[2] for level in bids + asks])
-    if source_time > captured:
-        raise XRPIngestionError("Kraken order-book timestamp is later than capture time")
-    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_ORDERBOOK_AGE_SECONDS)
+    # Level timestamps describe when each price level last changed, not when this
+    # complete REST snapshot was produced. Use the server HTTP Date for snapshot time.
+    # Without it, retain the raw receipt but do not admit the depth features.
+    source_time = _from_http_date(http_date)
+    if source_time is None:
+        source_time = captured
+        eligible, reason, quality = (
+            False,
+            "missing_or_invalid_http_date_snapshot_time",
+            "unverified",
+        )
+    else:
+        if source_time > captured:
+            raise XRPIngestionError("Kraken HTTP Date is later than capture time")
+        eligible, reason, quality = _live_eligibility(
+            source_time, captured, MAX_ORDERBOOK_AGE_SECONDS
+        )
     event_s, captured_s = _iso(source_time), _iso(captured)
     mid = (best_bid + best_ask) / 2.0
     spread_bps = (best_ask - best_bid) / mid * 10000.0
@@ -493,6 +728,7 @@ def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, 
     limitations = [
         "Single Kraken spot order-book snapshot; not global or consolidated liquidity.",
         "Snapshot continuity is not established by a sequence bridge; use only as a timestamped observation.",
+        "Per-level timestamps are last-update times, not snapshot time; snapshot freshness uses the HTTP Date header.",
     ]
     records = [
         _feature_record(
@@ -531,6 +767,9 @@ PARSERS = {
     "binance_spot_klines": _parse_binance_klines,
     "binance_perp_premium": _parse_binance_premium,
     "binance_perp_open_interest": _parse_binance_open_interest,
+    "coinbase_spot_ticker": _parse_coinbase_ticker,
+    "coinbase_spot_candles": _parse_coinbase_candles,
+    "coinbase_spot_book": _raw_only_coinbase_book,
     "kraken_spot_depth": _parse_kraken_depth,
     "binance_spot_depth": _raw_only_binance_depth,
 }
@@ -568,12 +807,17 @@ def run_ingestion(
                 raise XRPIngestionError("fetcher raw_bytes must be bytes")
             digest = hashlib.sha256(raw_bytes).hexdigest()
             parser = PARSERS[source_id]
+            parser_kwargs = {
+                "source_id": source_id,
+                "url": url,
+                "digest": digest,
+                "captured": captured,
+            }
+            if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"}:
+                parser_kwargs["http_date"] = response.get("http_date")
             parsed_records, source_as_of, source_eligible, reason = parser(
                 payload,
-                source_id=source_id,
-                url=url,
-                digest=digest,
-                captured=captured,
+                **parser_kwargs,
             )
             receipt = archive.store(
                 source_id=source_id,
@@ -588,7 +832,7 @@ def run_ingestion(
             records.extend(parsed_records)
             if reason and not source_eligible:
                 raw_only.append({"source_id": source_id, "reason": reason})
-            elif reason and source_id == "binance_spot_klines":
+            elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
                 raw_only.append({"source_id": source_id, "reason": reason})
         except Exception as exc:
             failures.append({"source_id": source_id, "error_type": type(exc).__name__})
@@ -639,10 +883,10 @@ def run_ingestion(
         "storage_scope": "one GitHub Actions artifact per run; no cross-run durable store is configured",
         "artifact_retention_days": 90,
         "limitations": [
-            "Only Binance spot/perpetual and Kraken spot order-book public endpoints are collected in this first adapter.",
+            "Spot coverage now includes Binance, Coinbase and Kraken; perpetual coverage remains Binance-only in this adapter.",
             "USDT quotes are not converted to USD; open interest remains in contracts.",
-            "Binance order-book depth is raw-only because this endpoint has no source timestamp in the returned payload.",
-            "Historical Binance candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs.",
+            "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header.",
+            "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase candle pagination is not yet implemented.",
             "Raw files are content-addressed and hashed, but independent external timestamp anchoring and long-term immutable object storage are not configured.",
             "No exchange wallet flows, ETF flows, institutional collateral, stablecoin supply, custody, payment rails, or regulatory events are inferred by this adapter.",
             "This collector does not issue directional forecasts, trading signals, or recommendations.",

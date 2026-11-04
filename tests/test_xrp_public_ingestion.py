@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 from datetime import datetime, timedelta, timezone
+from email.utils import format_datetime
 from pathlib import Path
 
 import pytest
@@ -23,6 +24,7 @@ def _fake_fetcher(captured: datetime):
     captured_ms = _iso_ms(captured)
 
     def fetcher(source_id: str, url: str):
+        http_date = format_datetime(captured - timedelta(seconds=5), usegmt=True)
         if source_id == "binance_spot_ticker":
             payload = {
                 "symbol": "XRPUSDT",
@@ -52,8 +54,31 @@ def _fake_fetcher(captured: datetime):
             }
         elif source_id == "binance_perp_open_interest":
             payload = {"symbol": "XRPUSDT", "time": captured_ms - 3000, "openInterest": "2500000"}
+        elif source_id == "coinbase_spot_ticker":
+            payload = {
+                "trade_id": 123456,
+                "price": "1.2900",
+                "size": "125",
+                "time": (captured - timedelta(seconds=6)).isoformat().replace("+00:00", "Z"),
+                "bid": "1.2899",
+                "ask": "1.2901",
+                "volume": "500000",
+            }
+        elif source_id == "coinbase_spot_candles":
+            captured_seconds = int(captured.timestamp())
+            payload = [
+                [captured_seconds - 7200, "1.20", "1.30", "1.21", "1.27", "1000"],
+                [captured_seconds - 3600, "1.25", "1.31", "1.27", "1.30", "1200"],
+                [captured_seconds, "1.29", "1.31", "1.30", "1.30", "100"],
+            ]
+        elif source_id == "coinbase_spot_book":
+            payload = {
+                "sequence": 123456,
+                "bids": [["1.289", "1000", 3]],
+                "asks": [["1.291", "1200", 2]],
+            }
         elif source_id == "kraken_spot_depth":
-            ts = captured.timestamp() - 5
+            ts = captured.timestamp() - 1800
             payload = {
                 "error": [],
                 "result": {
@@ -72,7 +97,10 @@ def _fake_fetcher(captured: datetime):
         else:
             raise AssertionError(source_id)
         raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
-        return {"raw_bytes": raw, "payload": payload}
+        response = {"raw_bytes": raw, "payload": payload}
+        if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"}:
+            response["http_date"] = http_date
+        return response
 
     return fetcher
 
@@ -136,7 +164,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 6
+    assert summary["source_receipt_count"] == 9
     assert summary["source_failure_count"] == 0
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
@@ -150,8 +178,13 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
+    assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.coinbase.1h.close_price" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
+
     raw_only = json.loads((tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8"))
     assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
+    assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
     receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     assert all(len(item["raw_content_sha256"]) == 64 for item in receipts)
     assert (tmp_path / "run" / "feature_store.sqlite3").exists()
@@ -181,6 +214,36 @@ def test_stale_live_sources_are_excluded_but_historical_backfill_remains_known_a
         record["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
         for record in snapshot["records"]
     )
+
+
+def test_kraken_level_timestamps_do_not_define_rest_snapshot_freshness(tmp_path):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    summary = run_ingestion(tmp_path / "old-levels", fetcher=_fake_fetcher(captured), now=captured)
+    snapshot = json.loads((tmp_path / "old-levels" / "snapshot.json").read_text(encoding="utf-8"))
+    kraken = next(
+        item for item in snapshot["records"]
+        if item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price"
+    )
+    assert kraken["model_eligible"] is True
+    assert summary["snapshot_status"] == "verified"
+
+
+def test_kraken_depth_without_server_date_is_raw_only(tmp_path):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+
+    def no_date(source_id: str, url: str):
+        response = fetcher(source_id, url)
+        if source_id == "kraken_spot_depth":
+            response.pop("http_date", None)
+        return response
+
+    summary = run_ingestion(tmp_path / "no-date", fetcher=no_date, now=captured)
+    snapshot = json.loads((tmp_path / "no-date" / "snapshot.json").read_text(encoding="utf-8"))
+    raw_only = json.loads((tmp_path / "no-date" / "raw_only_sources.json").read_text(encoding="utf-8"))
+    assert summary["snapshot_status"] == "verified"
+    assert any(item["source_id"] == "kraken_spot_depth" for item in raw_only)
+    assert not any(item["feature_id"].startswith("xrp.spot.kraken.orderbook.") for item in snapshot["records"])
 
 
 def test_scheduled_ingestion_workflow_is_read_only_artifact_only():
