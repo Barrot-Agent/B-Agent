@@ -97,6 +97,7 @@ def test_kaggle_submissions_require_per_run_approval_and_exact_allowlist() -> No
     assert "SUBMISSION_ALLOWLIST" in script
     assert "if not SUBMISSION_ALLOWLIST" in script
     assert "in SUBMISSION_ALLOWLIST" in script
+    assert script.index("if not SUBMISSION_ALLOWLIST") < script.index("api = _build_api()")
 
 
 def test_scheduled_research_jobs_write_artifacts_not_main() -> None:
