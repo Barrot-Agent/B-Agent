@@ -1,0 +1,375 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T10:00:48Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-exchange-liquidity-binance-phase2-20261103T0812Z",
+  "topic": "XRP ETF holdings universe reconciliation, estimated fund cost basis, Q2 institutional 13F ownership and Goldman Sachs indirect Evernorth transaction exposure",
+  "evidence_policy": {
+    "classes": [
+      "CONFIRMED_PRIMARY_SOURCE",
+      "CONFIRMED_SOURCE_CLAIM",
+      "AGGREGATOR_REPORTED",
+      "DERIVED_RECONCILIATION",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "preserve_provider_universes": true,
+    "missing_is_not_zero": true,
+    "no_synthetic_averaging": true,
+    "no_forecast": true
+  },
+  "claims": [
+    {
+      "id": "ETF-CRYPTOETF-NOV2-01",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "CryptoETF.today's XRP page published 2026-11-03 05:47 UTC for the 2026-11-02 T+1 session reports 2 of 5 spot ETFs. The two reporting funds (Bitwise XRP and 21Shares TOXR) each report zero net creations/redemptions; XRPZ, XRPC and GXRP are explicitly missing. The displayed zero is partial, not a final five-fund daily total.",
+      "values": {
+        "trading_date": "2026-11-02",
+        "published_at_utc": "2026-11-03T05:47:00Z",
+        "funds_reporting": 2,
+        "funds_in_universe": 5,
+        "partial_net_flow_usd": 0,
+        "missing_funds": [
+          "XRPZ",
+          "XRPC",
+          "GXRP"
+        ],
+        "xrp_holdings_reported": 1142172991,
+        "net_assets_usd_approx": 1430000000,
+        "cumulative_net_flow_usd_approx": 1810000000,
+        "ytd_net_flow_usd_approx": 648400000,
+        "thirty_trading_day_net_flow_usd_approx": 140200000
+      },
+      "source": "https://cryptoetf.today/en/xrp-etf-flows",
+      "source_location": "page lines 132-150, 173-191, 203-215, 235-269 and 338-342",
+      "limitations": [
+        "T+1 aggregator observation, not a final five-fund daily total",
+        "The page's five-fund universe excludes XRPR and BITW",
+        "AUM, cumulative flow, YTD flow and daily flow are different measures"
+      ]
+    },
+    {
+      "id": "ETF-XRPINSIGHTS-OCT30-01",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "XRP Insights reports 1,196,600,186 XRP held on 2026-10-30 across six US spot XRP ETFs plus BITW's XRP sleeve. Its seven-product universe includes XRPR and BITW in addition to the five products in CryptoETF.today's five-fund universe.",
+      "values": {
+        "as_of_date": "2026-10-30",
+        "products": 7,
+        "total_xrp_holdings": 1196600186,
+        "xrpr_xrp": 33385276,
+        "bitw_xrp_sleeve": 20950574
+      },
+      "source": "https://xrp-insights.com/data",
+      "source_location": "page lines 19-32, 45-62, 131-142",
+      "limitations": [
+        "XRPR includes some exposure through another XRP ETP, creating look-through duplication risk if combined with the underlying ETP",
+        "BITW is a multi-asset index fund; its XRP sleeve changes with index rebalancing",
+        "The holdings snapshot is dated October 30, not November 2"
+      ]
+    },
+    {
+      "id": "ETF-UNIVERSE-RECON-01",
+      "class": "DERIVED_RECONCILIATION",
+      "claim": "The approximately 54.34M XRP difference between the two headline holdings totals is almost entirely explained by the two products present in XRP Insights but absent from CryptoETF.today's five-fund universe. Adding XRP Insights' October 30 XRPR and BITW quantities to CryptoETF.today's November 2 five-fund holdings gives 1,196,508,841 XRP, only 91,345 XRP (about 0.0076%) below XRP Insights' October 30 seven-product total. Because the two five-fund observations have different dates, the 91,345 XRP residual is not an error finding and is not attributed to a specific fund.",
+      "calculation": {
+        "cryptoetf_five_fund_holdings_nov2": 1142172991,
+        "xrpr_oct30": 33385276,
+        "bitw_oct30": 20950574,
+        "combined": 1196508841,
+        "xrp_insights_seven_product_oct30": 1196600186,
+        "residual_xrp": 91345,
+        "residual_pct_of_xrp_insights_total": 0.007633710997935613
+      },
+      "sources": [
+        "https://cryptoetf.today/en/xrp-etf-flows",
+        "https://xrp-insights.com/data"
+      ],
+      "disconfirming_test": "Recompute using same-date issuer-reported holdings for all seven products. Until then, preserve the near-reconciliation as cross-date arithmetic, not an exact reconciliation."
+    },
+    {
+      "id": "ETF-COST-BASIS-01",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "CryptoETF.today estimates a five-fund average entry of approximately $1.72 and unrealized aggregate loss of approximately $476.7M at the November 2 XRP close around $1.25. XRP Insights estimates a seven-product average break-even of $1.7092, with approximately 1.20B XRP and $2.05B estimated cost, about $550M below cost at the October 30 reference price around $1.25.",
+      "sources": [
+        "https://cryptoetf.today/en/xrp-etf-flows",
+        "https://xrp-insights.com/data"
+      ],
+      "limitations": [
+        "Both are provider-calculated estimates, not issuer-reported fund accounting or individual investor cost bases",
+        "The universes and dates differ",
+        "XRP Insights uses an average-cost method and its own holdings/price reconstruction",
+        "An underwater estimated fund cost basis does not establish future redemptions or selling pressure"
+      ]
+    },
+    {
+      "id": "ETF-13F-AGGREGATE-01",
+      "class": "AGGREGATOR_REPORTED",
+      "claim": "CryptoETF.today's institutional-holder section reports 127 institutions with approximately $179M in XRP ETF positions across five funds as of 2026-06-30. It reports Goldman Sachs at $86.5M, Jane Street $16.4M, Millennium Management $16.2M, Intesa Sanpaolo $14.4M and Marex $8.1M. The provider classifies some positions as banks/brokers and market makers; those classifications and aggregate holder count remain provider-derived.",
+      "values": {
+        "report_date": "2026-06-30",
+        "institutions": 127,
+        "reported_value_usd": 179000000,
+        "largest_holders_usd": {
+          "Goldman_Sachs": 86500000,
+          "Jane_Street": 16400000,
+          "Millennium_Management": 16200000,
+          "Intesa_Sanpaolo": 14400000,
+          "Marex": 8100000
+        }
+      },
+      "source": "https://cryptoetf.today/en/xrp-etf-flows",
+      "source_location": "page lines 351-401",
+      "limitations": [
+        "13F is a quarter-end snapshot, not current holdings",
+        "13F does not show the holder's full hedge book, short exposure, futures or all client relationships",
+        "Positions may reflect market making, basis trading, facilitation or other non-directional activity"
+      ]
+    },
+    {
+      "id": "GOLDMAN-13F-XRP-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Goldman Sachs Group Inc's SEC Form 13F-HR filed 2026-08-14 for the 2026-06-30 report date lists five XRP ETF positions totaling $86,506,129 and 7,390,191 shares.",
+      "values": {
+        "filing_date": "2026-08-14",
+        "report_date": "2026-06-30",
+        "positions": [
+          {
+            "issuer": "21SHARES XRP ETF",
+            "cusip": "90137T103",
+            "shares": 806126,
+            "value_usd": 8206363
+          },
+          {
+            "issuer": "BITWISE XRP ETF",
+            "cusip": "09174F107",
+            "shares": 2208949,
+            "value_usd": 25756345
+          },
+          {
+            "issuer": "CANARY XRP ETF",
+            "cusip": "13723M100",
+            "shares": 1759090,
+            "value_usd": 19490717
+          },
+          {
+            "issuer": "FRANKLIN XRP TRUST",
+            "cusip": "355233107",
+            "shares": 2238407,
+            "value_usd": 25405919
+          },
+          {
+            "issuer": "GRAYSCALE XRP TR ETF",
+            "cusip": "38965L106",
+            "shares": 377619,
+            "value_usd": 7646785
+          }
+        ],
+        "total_shares": 7390191,
+        "total_value_usd": 86506129
+      },
+      "source": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm",
+      "information_table": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+      "source_location": "SEC accession 0000886982-26-000519; information-table rows 38, 1672, 2182, 4973 and 5516",
+      "arithmetic_check": "8,206,363 + 25,756,345 + 19,490,717 + 25,405,919 + 7,646,785 = 86,506,129",
+      "limitations": [
+        "13F reports reportable long securities positions at quarter end; it does not prove beneficial economic direction after hedges",
+        "The filing does not disclose why the positions were held",
+        "It does not establish that Goldman purchased or custodies the underlying XRP"
+      ]
+    },
+    {
+      "id": "GOLDMAN-ARMADA-13F-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The same Goldman Sachs Q2 2026 Form 13F lists 365,976 shares of Armada Acquisition Corp II valued at $3,813,470. Evernorth's SEC filing identifies Armada, Evernorth, Pathfinder and Ripple as parties to the proposed business combination. This is a disclosed Goldman equity position in the SPAC involved in the Evernorth transaction, not direct XRP ownership and not direct ownership of Evernorth XRP.",
+      "values": {
+        "issuer": "ARMADA ACQUISITION CORP II",
+        "shares": 365976,
+        "value_usd": 3813470,
+        "filing_date": "2026-08-14",
+        "report_date": "2026-06-30"
+      },
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/R71.htm"
+      ],
+      "source_location": "Goldman information-table row 1065; Evernorth SEC filing, organization and business-combination agreement note",
+      "interpretation": "Indirect transaction exposure through the SPAC equity; motive and hedging are unknown."
+    },
+    {
+      "id": "GOLDMAN-CONCENTRATION-01",
+      "class": "DERIVED_RECONCILIATION",
+      "claim": "Goldman's SEC-verified $86.506M XRP ETF position equals approximately 48.3% of CryptoETF.today's provider-reported $179M aggregate 13F value across the five funds. This is a concentration statistic within that provider's reported institutional sample, not 48.3% ownership of ETF shares or XRP supply.",
+      "calculation": {
+        "goldman_value_usd": 86506129,
+        "provider_aggregate_usd": 179000000,
+        "share_pct": 48.32744636871508
+      },
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+        "https://cryptoetf.today/en/xrp-etf-flows"
+      ]
+    },
+    {
+      "id": "13F-Q3-AVAILABILITY-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "The latest Goldman filing verified in this capture is its Q2 2026 13F-HR filed August 14 for June 30. The institutional-holder tracker says its next Q3 update is after November 14, 2026. Q2 positions must not be represented as current November holdings.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm",
+        "https://cryptoetf.today/en/xrp-etf-flows"
+      ],
+      "treatment": "Set position_available_at to filing acceptance time (2026-08-14T17:15:03Z), while preserving report_date 2026-06-30. Do not backdate knowledge to quarter end in a point-in-time model."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Goldman Sachs Group Inc",
+      "to": "21Shares XRP ETF",
+      "relation": "reported_13f_long_position",
+      "value_usd": 8206363,
+      "as_of": "2026-06-30",
+      "evidence": "SEC 13F-HR"
+    },
+    {
+      "from": "Goldman Sachs Group Inc",
+      "to": "Bitwise XRP ETF",
+      "relation": "reported_13f_long_position",
+      "value_usd": 25756345,
+      "as_of": "2026-06-30",
+      "evidence": "SEC 13F-HR"
+    },
+    {
+      "from": "Goldman Sachs Group Inc",
+      "to": "Canary XRP ETF",
+      "relation": "reported_13f_long_position",
+      "value_usd": 19490717,
+      "as_of": "2026-06-30",
+      "evidence": "SEC 13F-HR"
+    },
+    {
+      "from": "Goldman Sachs Group Inc",
+      "to": "Franklin XRP Trust",
+      "relation": "reported_13f_long_position",
+      "value_usd": 25405919,
+      "as_of": "2026-06-30",
+      "evidence": "SEC 13F-HR"
+    },
+    {
+      "from": "Goldman Sachs Group Inc",
+      "to": "Grayscale XRP Trust ETF",
+      "relation": "reported_13f_long_position",
+      "value_usd": 7646785,
+      "as_of": "2026-06-30",
+      "evidence": "SEC 13F-HR"
+    },
+    {
+      "from": "Goldman Sachs Group Inc",
+      "to": "Armada Acquisition Corp II",
+      "relation": "reported_13f_long_position_in_spac",
+      "value_usd": 3813470,
+      "shares": 365976,
+      "as_of": "2026-06-30",
+      "evidence": "SEC 13F-HR"
+    },
+    {
+      "from": "Armada Acquisition Corp II",
+      "to": "Evernorth Holdings Inc",
+      "relation": "party_to_proposed_business_combination",
+      "evidence": "Evernorth SEC filing"
+    },
+    {
+      "from": "Evernorth Holdings Inc",
+      "to": "Ripple Labs Inc",
+      "relation": "wholly_owned_subsidiary_at_2026-06-30_filing",
+      "evidence": "Evernorth SEC filing"
+    },
+    {
+      "from": "Evernorth Holdings Inc",
+      "to": "XRP",
+      "relation": "purpose_built_xrp_treasury_vehicle",
+      "evidence": "Evernorth SEC filings"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-ETF-UNIVERSE-01",
+      "hypothesis": "The apparent ~54.4M XRP difference between aggregator holdings totals is primarily a product-universe difference, not a missing-reserve discrepancy.",
+      "supporting_evidence": [
+        "XRP Insights includes XRPR and BITW while CryptoETF.today's five-fund page does not",
+        "Adding XRPR and BITW's October 30 holdings to CryptoETF's November 2 five-fund total leaves only a 91,345 XRP cross-date residual"
+      ],
+      "disconfirming_evidence": [
+        "The observations are not same-date; exact reconciliation remains unproven"
+      ],
+      "test": "Fetch same-date issuer-reported XRP holdings for all seven products and recompute the five-common-fund subset."
+    },
+    {
+      "id": "H-ETF-UNDERWATER-01",
+      "hypothesis": "Estimated ETF acquisition cost above spot may create redemption sensitivity if XRP remains below the fund-complex average cost.",
+      "supporting_evidence": [
+        "Two aggregators estimate average fund-level acquisition prices around $1.71-$1.72 while spot was around $1.25"
+      ],
+      "disconfirming_evidence": [
+        "The estimates are not issuer accounting or individual investor lots",
+        "The five-fund provider reports +$140.2M net flow over 30 trading days and +$648.4M YTD",
+        "Investors can maintain exposure while underwater; market makers may hedge elsewhere"
+      ],
+      "test": "Measure subsequent share creations/redemptions and XRP holdings changes conditional on price-to-estimated-cost-basis gap, controlling for volatility, BTC returns and market-wide ETF flows."
+    },
+    {
+      "id": "H-13F-INSTITUTIONAL-01",
+      "hypothesis": "Q2 13F positions demonstrate institutional access and participation in XRP-linked listed products.",
+      "supporting_evidence": [
+        "127 institutions and $179M reported across five funds by the tracker",
+        "Goldman's $86.506M across five XRP ETFs is directly verified in its SEC filing"
+      ],
+      "disconfirming_evidence": [
+        "13F omits short positions, futures, many hedges and client-level intent",
+        "Goldman could be market making, arbitrage, facilitation or directional; motive is undisclosed",
+        "The position is dated June 30 and filed August 14"
+      ],
+      "test": "Compare Q3 13F filings after November 14, fund share creations, AP/market-maker disclosures where public, and any corresponding futures/options positions disclosed elsewhere."
+    },
+    {
+      "id": "H-GOLDMAN-EVERNORTH-01",
+      "hypothesis": "Goldman's Armada shares create an additional indirect financial connection to the Evernorth transaction alongside its XRP ETF holdings.",
+      "supporting_evidence": [
+        "Goldman disclosed 365,976 Armada shares worth $3.813M",
+        "Evernorth's SEC filing identifies Armada as a party to the proposed business combination and Ripple as a party"
+      ],
+      "disconfirming_evidence": [
+        "Armada is a SPAC; the 13F does not disclose investment motive, hedges or current holding",
+        "The $3.813M SPAC position is much smaller than the $86.506M ETF positions",
+        "This does not establish direct Evernorth ownership or direct XRP purchases"
+      ],
+      "test": "Track subsequent 13F changes, transaction closing filings, share conversions and any post-combination XRPN position."
+    }
+  ],
+  "feature_store_rules": [
+    "Keep CryptoETF's five-spot-fund universe separate from XRP Insights' six-spot-plus-BITW seven-product universe.",
+    "Store each product's XRP holdings, AUM, daily flow, cumulative flow and trading volume as separate measures.",
+    "Missing fund rows are null/incomplete, never zero.",
+    "Store publication/retrieval time separately from underlying trading date and issuer holdings date.",
+    "Store estimated cost basis with provider, universe, method, price source and limitations; never label it investor cost basis.",
+    "Store 13F report_date and filing acceptance timestamp separately; model information availability no earlier than the filing timestamp.",
+    "Treat 13F positions as reportable listed-security exposure, not direct XRP holdings or unhedged directional conviction.",
+    "Store Goldman Armada/SPAC equity exposure separately from its XRP ETF positions; do not convert SPAC shares into XRP exposure.",
+    "Do not use Q2 13F positions as current Q4 holdings.",
+    "No forecast feature is promoted until point-in-time availability, revision policy and out-of-sample usefulness are tested."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "These observations improve ownership and supply accounting but do not establish a calibrated directional edge.",
+    "paper_trading": false,
+    "real_money": false
+  },
+  "next_actions": [
+    "Reconcile same-date issuer holdings across the five common funds plus XRPR and BITW.",
+    "Wait for the complete November 2 five-fund flow before treating the daily total as final.",
+    "Capture Q3 13F filings after November 14, 2026; compare Goldman, Jane Street, Millennium, Intesa and market-maker positions with Q2.",
+    "Track Armada-to-Evernorth transaction completion and any conversion of SPAC holdings into XRPN.",
+    "Test whether price-to-estimated-fund-cost-basis predicts subsequent redemptions; retain it as descriptive until walk-forward evidence exists.",
+    "Keep Coinbase execution depth, ETF ownership, ETF flows and institutional 13F holdings as distinct capital/liquidity layers."
+  ],
+  "safety": "Research-only. No forecast, paper position, real-money transaction, merge, force-push, workflow dispatch, secret access or deployment."
+}

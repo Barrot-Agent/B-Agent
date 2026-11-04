@@ -1,0 +1,310 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T10:15:00Z",
+  "topic": "Primary-source cross-check of Q2 2026 XRP ETF institutional positions: Goldman Sachs, Jane Street, Millennium Management and Intesa Sanpaolo",
+  "evidence_policy": {
+    "source_priority": [
+      "SEC_EDGAR_PRIMARY",
+      "SEC_FORM_13F_FAQ",
+      "AGGREGATOR_CROSSCHECK"
+    ],
+    "preserve_report_date_and_filing_date": true,
+    "no_net_exposure_inference": true,
+    "no_current_holdings_inference": true,
+    "no_forecast": true
+  },
+  "filings": [
+    {
+      "institution": "Goldman Sachs Group Inc",
+      "cik": "0000886982",
+      "accession": "0000886982-26-000519",
+      "report_date": "2026-06-30",
+      "filed_at_utc": "2026-08-14T17:15:03Z",
+      "index": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm"
+    },
+    {
+      "institution": "Jane Street Group LLC",
+      "cik": "0001595888",
+      "accession": "0001595888-26-000108",
+      "report_date": "2026-06-30",
+      "filed_at_utc": "2026-08-14T16:18:51Z",
+      "index": "https://www.sec.gov/Archives/edgar/data/1595888/0001595888-26-000108-index.html"
+    },
+    {
+      "institution": "Millennium Management LLC",
+      "cik": "0001273087",
+      "accession": "0001273087-26-000007",
+      "report_date": "2026-06-30",
+      "filed_at_utc": "2026-08-14T16:05:03Z",
+      "index": "https://www.sec.gov/Archives/edgar/data/127308726000007/0001273087-26-000007-index.htm"
+    },
+    {
+      "institution": "Intesa Sanpaolo S.p.A.",
+      "cik": "0001374384",
+      "accession": "0001374384-26-000007",
+      "report_date": "2026-06-30",
+      "filed_at_utc": "2026-07-31T09:11:45Z",
+      "index": "https://www.sec.gov/Archives/edgar/data/1374384/000137438426000007/0001374384-26-000007-index.html"
+    }
+  ],
+  "positions": [
+    {
+      "institution": "Goldman Sachs Group Inc",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "share_positions": [
+        {
+          "fund": "21Shares XRP ETF",
+          "cusip": "90137T103",
+          "shares": 806126,
+          "value_usd": 8206363
+        },
+        {
+          "fund": "Bitwise XRP ETF",
+          "cusip": "09174F107",
+          "shares": 2208949,
+          "value_usd": 25756345
+        },
+        {
+          "fund": "Canary XRP ETF",
+          "cusip": "13723M100",
+          "shares": 1759090,
+          "value_usd": 19490717
+        },
+        {
+          "fund": "Franklin XRP Trust",
+          "cusip": "355233107",
+          "shares": 2238407,
+          "value_usd": 25405919
+        },
+        {
+          "fund": "Grayscale XRP Trust ETF",
+          "cusip": "38965L106",
+          "shares": 377619,
+          "value_usd": 7646785
+        }
+      ],
+      "total_shares": 7390191,
+      "total_value_usd": 86506129,
+      "additional_security": {
+        "issuer": "Armada Acquisition Corp II",
+        "shares": 365976,
+        "value_usd": 3813470,
+        "relation": "separate SPAC equity position; Armada is a party to Evernorth's proposed business combination"
+      },
+      "interpretation": "Direct listed XRP ETF share exposure plus separate indirect SPAC transaction exposure. Neither establishes direct XRP token ownership, Evernorth XRP custody or unhedged directional conviction.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/R71.htm"
+      ]
+    },
+    {
+      "institution": "Jane Street Group LLC",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "share_positions": [
+        {
+          "fund": "21Shares XRP ETF",
+          "cusip": "90137T103",
+          "shares": 64529,
+          "value_usd": 656905
+        },
+        {
+          "fund": "Bitwise XRP ETF",
+          "cusip": "09174F107",
+          "shares": 1205000,
+          "value_usd": 14050300
+        },
+        {
+          "fund": "Canary XRP ETF",
+          "cusip": "13723M100",
+          "shares": 30205,
+          "value_usd": 334671
+        },
+        {
+          "fund": "Franklin XRP Trust",
+          "cusip": "355233107",
+          "shares": 40185,
+          "value_usd": 456100
+        },
+        {
+          "fund": "Grayscale XRP Trust ETF",
+          "cusip": "38965L106",
+          "shares": 45891,
+          "value_usd": 929293
+        }
+      ],
+      "total_shares": 1380810,
+      "total_value_usd": 16427269,
+      "separate_reported_option_rows": [
+        {
+          "fund": "Bitwise XRP ETF",
+          "option": "CALL",
+          "underlying_shares": 15100,
+          "column5_value_usd": 176066
+        },
+        {
+          "fund": "Canary XRP ETF",
+          "option": "CALL",
+          "underlying_shares": 732500,
+          "column5_value_usd": 8116100
+        },
+        {
+          "fund": "Canary XRP ETF",
+          "option": "PUT",
+          "underlying_shares": 732700,
+          "column5_value_usd": 8118316
+        },
+        {
+          "fund": "Franklin XRP Trust",
+          "option": "CALL",
+          "underlying_shares": 11000,
+          "column5_value_usd": 124850
+        }
+      ],
+      "interpretation": "The share-only sum matches the approximately $16.4M aggregator figure. The same filing also lists long call/put options. SEC Form 13F reports the underlying security reference for options; written/short options are not reported. Do not infer net delta or market direction.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1595888/000159588826000108/xslForm13F_X02/q2-2026-13f-hr.xml",
+        "https://www.sec.gov/rules-regulations/staff-guidance/frequently-asked-questions-about-form-13f"
+      ]
+    },
+    {
+      "institution": "Millennium Management LLC",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "share_positions": [
+        {
+          "fund": "Bitwise XRP ETF",
+          "cusip": "09174F107",
+          "shares": 495856,
+          "value_usd": 5781681
+        },
+        {
+          "fund": "Canary XRP ETF",
+          "cusip": "13723M100",
+          "shares": 772054,
+          "value_usd": 8554358
+        },
+        {
+          "fund": "Franklin XRP Trust",
+          "cusip": "355233107",
+          "shares": 88661,
+          "value_usd": 1006302
+        },
+        {
+          "fund": "Grayscale XRP Trust ETF",
+          "cusip": "38965L106",
+          "shares": 42575,
+          "value_usd": 862144
+        }
+      ],
+      "absent_cusips_checked": [
+        "90137T103"
+      ],
+      "total_shares": 1399146,
+      "total_value_usd": 16204485,
+      "interpretation": "The share-only total matches the approximately $16.2M aggregator figure. No 21Shares XRP ETF CUSIP was found in this filing. This is a Q2 listed-security snapshot, not a current or net position.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/127308726000007/xslForm13F_X02/MLP_Filing_20260630.xml",
+        "https://www.sec.gov/Archives/edgar/data/1273087/000127308726000007/0001273087-26-000007-index.htm"
+      ]
+    },
+    {
+      "institution": "Intesa Sanpaolo S.p.A.",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "share_positions": [
+        {
+          "fund": "Grayscale XRP Trust ETF",
+          "cusip": "38965L106",
+          "shares": 712319,
+          "value_usd": 14424320
+        }
+      ],
+      "absent_cusips_checked": [
+        "90137T103",
+        "09174F107",
+        "13723M100",
+        "355233107"
+      ],
+      "total_shares": 712319,
+      "total_value_usd": 14424320,
+      "interpretation": "The approximately $14.4M aggregator figure is a single Grayscale XRP ETF position, not a basket across all five ETFs. The other four ETF CUSIPs were not found in Intesa's Q2 filing.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1374384/000137438426000007/xslForm13F_X02/isp_2026q2informationtable.xml",
+        "https://www.sec.gov/Archives/edgar/data/1374384/000137438426000007/0001374384-26-000007-index.html"
+      ]
+    }
+  ],
+  "derived_concentration": {
+    "class": "DERIVED_RECONCILIATION",
+    "institutions": [
+      "Goldman Sachs Group Inc",
+      "Jane Street Group LLC",
+      "Millennium Management LLC",
+      "Intesa Sanpaolo S.p.A."
+    ],
+    "q2_2026_sec_verified_value_usd": 133562203,
+    "provider_reported_five_fund_institutional_total_usd": 179000000,
+    "top_four_share_of_provider_reported_total_pct": 74.61575586592178,
+    "goldman_share_of_provider_reported_total_pct": 48.32744636871508,
+    "limitation": "The denominator is CryptoETF.today's aggregator-reported $179M, not an SEC consolidated total. Concentration percentages are conditional on that provider's universe, manager mapping and coverage."
+  },
+  "sec_13f_methodology": {
+    "report_date": "2026-06-30",
+    "publication_lag": "Filings became public July 31 or August 14, 2026",
+    "q3_2026_deadline": "2026-11-16",
+    "q3_deadline_basis": "45 days after September 30 falls on Saturday November 14; SEC Rule 0-3 moves the deadline to the next business day, Monday November 16.",
+    "short_positions": "Not included and not netted against long positions.",
+    "written_options": "Short/written options are not reported.",
+    "held_options": "Long put/call options may be reported separately; columns refer to the underlying security, not the option premium.",
+    "accuracy": "SEC states EDGAR acceptance does not establish substantive accuracy or correctness; filings are filer-submitted and not SEC-endorsed.",
+    "official_sources": [
+      "https://www.sec.gov/rules-regulations/staff-guidance/frequently-asked-questions-about-form-13f",
+      "https://www.sec.gov/data-research/sec-markets-data/form-13f-data-sets"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H-INSTITUTIONAL-ACCESS",
+      "hypothesis": "Large institutional managers and a European bank had reportable long exposure to XRP ETFs by June 30, 2026.",
+      "supporting": "SEC filings directly verify Goldman, Jane Street, Millennium and Intesa positions.",
+      "counterevidence": "13F does not establish beneficial client ownership, investment motive, custody of XRP or net economic exposure."
+    },
+    {
+      "id": "H-MARKET-MAKING-HEDGE",
+      "hypothesis": "Some reported positions may be associated with liquidity provision, options strategies, basis trading or facilitation rather than outright bullish conviction.",
+      "supporting": "Jane Street's 13F includes common ETF shares and separate calls/puts; SEC rules omit short positions and written options.",
+      "counterevidence": "The filings do not disclose the full strategy or all hedge instruments; directional and non-directional components cannot be separated."
+    },
+    {
+      "id": "H-GOLDMAN-EVERNORTH",
+      "hypothesis": "Goldman's separate Armada SPAC position creates an additional indirect financial connection to Evernorth alongside its XRP ETF holdings.",
+      "supporting": "Goldman's SEC 13F reports $3.813M in Armada; Evernorth SEC filing identifies Armada as a business-combination party.",
+      "counterevidence": "The SPAC position is not direct Evernorth equity or XRP; motive and hedges are unknown."
+    },
+    {
+      "id": "H-INTESA-CONCENTRATION",
+      "hypothesis": "Intesa's disclosed XRP ETF exposure is concentrated in Grayscale rather than distributed across the five-fund universe.",
+      "supporting": "SEC filing lists $14.424M Grayscale XRP ETF; the other four fund CUSIPs were not found.",
+      "counterevidence": "The 13F may omit confidentially treated or otherwise non-reportable positions and does not cover direct non-13F token exposure."
+    }
+  ],
+  "feature_store_rules": [
+    "Store report_date separately from filing_acceptance_timestamp; make the position available to a point-in-time model only after filing acceptance.",
+    "Keep common ETF shares and option rows separate. Do not sum option underlying values into share holdings or interpret them as option premiums.",
+    "Do not infer net exposure: Form 13F omits short positions and written options.",
+    "Keep SPAC equity exposure separate from XRP ETF and direct token holdings.",
+    "Store CUSIP-level holdings to prevent institution-name-only misattribution.",
+    "Use Q3 2026 Form 13F updates only after their November 16, 2026 deadline and actual EDGAR acceptance; do not assume all managers file on the deadline.",
+    "Treat manager motives, client allocation and custody as unknown unless separately documented."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Quarterly lagged listed-security ownership is descriptive institutional adoption evidence, not a calibrated short-horizon price signal."
+  },
+  "next_actions": [
+    "Capture Q3 2026 13F filings after November 16 and compare the same CUSIPs and manager entities.",
+    "Check whether Goldman, Jane Street, Millennium and Intesa amended Q2 filings before calculating quarter-over-quarter changes.",
+    "Cross-check Marex and the remaining top institutions directly against SEC CIK/13F information tables.",
+    "Track whether Jane Street's paired option rows persist, change or disappear in Q3; do not infer net delta from 13F alone.",
+    "Reconcile the institutional-holder aggregator's entity mapping and five-fund denominator before publishing aggregate concentration."
+  ],
+  "safety": "Public SEC filings only. No private account data, access circumvention, trading, forecasting or real-money action."
+}

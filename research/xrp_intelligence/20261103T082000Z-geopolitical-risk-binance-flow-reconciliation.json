@@ -1,0 +1,163 @@
+{
+  "schema_version": "barrot.xrp-macro-event-study.v1",
+  "captured_at_utc": "2026-11-03T08:20:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "ba121a1051c84ceb311e5c65e38a18659dcd7f0e",
+  "event_window": "2026-11-03 UTC",
+  "claims": [
+    {
+      "id": "GEO-IRAN-01",
+      "class": "REUTERS_REPORTED_EVENT",
+      "claim": "Reuters reported on Nov 3 at 03:03 UTC that reports of fresh US strikes on Iran's Qeshm Island led Brent crude to rebound about 2% to $107/bbl after falling roughly 11% in the previous session on diplomatic hopes. The precise time of the alleged strike itself is not established by this article.",
+      "source": "https://www.reuters.com/world/india/rupee-benefit-oil-plunge-while-facing-technical-resistance-dollar-strength-2026-11-03/",
+      "source_location": "published 03:03 UTC; paragraphs 160–168"
+    },
+    {
+      "id": "GEO-IRAN-02",
+      "class": "REUTERS_REPORTED_STATEMENT",
+      "claim": "A senior Iranian official told Reuters that Tehran and Washington remained far from a deal and Iran would not accept Washington's excessive demands. This is an attributed official statement, not an independently verified negotiation record.",
+      "source": "https://www.reuters.com/world/india/rupee-benefit-oil-plunge-while-facing-technical-resistance-dollar-strength-2026-11-03/"
+    },
+    {
+      "id": "GEO-ELECTION-01",
+      "class": "CONFIRMED_EVENT",
+      "claim": "US midterm elections occur November 3, 2026. Reuters reports investors viewed the outcome as relevant to AI policy, fiscal policy and the future trajectory of the Iran conflict; Senate control remained uncertain in its report.",
+      "source": "https://www.reuters.com/world/india/rupee-benefit-oil-plunge-while-facing-technical-resistance-dollar-strength-2026-11-03/"
+    },
+    {
+      "id": "BIN-FLOW-02",
+      "class": "REUTERS_REPORTED_COMPANY_STATEMENT",
+      "claim": "Binance co-CEO Richard Teng said on Nov 3 that hourly inflows/outflows had largely normalized, approximately 95% of affected tokens were replenished, and the remaining 5% were less-liquid tokens being sourced through OTC providers. He said the loss was covered by SAFU and other company funds.",
+      "source": "https://www.reuters.com/world/asia-pacific/binance-co-ceo-says-company-is-very-strong-financial-health-after-63-billion-2026-11-03/",
+      "source_location": "published 07:35 UTC; paragraphs 158–165"
+    },
+    {
+      "id": "BIN-FLOW-03",
+      "class": "REUTERS_REPORTED_BINANCE_FIGURE",
+      "claim": "Reuters reports Binance said customers had withdrawn a net $4.72B as of Monday, approximately 3% of platform assets, with most withdrawals in USDT. This is an exchange-wide cumulative figure at a later cutoff than the Nov 1 phase-1 window.",
+      "source": "https://www.reuters.com/world/asia-pacific/binance-co-ceo-says-company-is-very-strong-financial-health-after-63-billion-2026-11-03/"
+    },
+    {
+      "id": "BIN-FLOW-04",
+      "class": "BINANCE_OFFICIAL_SELF_REPORTED",
+      "claim": "Binance's official profile separately reported $4.649B withdrawals and $1.01B deposits from Nov 1 14:00 to 23:30 UTC+8, net outflows ~$3.64B, 2.1% of its stated $171B AUM reference. This is a shorter, explicitly bounded window.",
+      "source": "https://www.binance.com/en/square/profile/binancezh/"
+    },
+    {
+      "id": "GEO-NK-01",
+      "class": "REPORTED_COUNTERCLAIM",
+      "claim": "Reuters reports North Korea rejected the FBI's attribution as absurd rhetoric. This is a denial, not independent forensic evidence disproving the attribution.",
+      "source": "https://www.reuters.com/world/asia-pacific/binance-co-ceo-says-company-is-very-strong-financial-health-after-63-billion-2026-11-03/"
+    }
+  ],
+  "reconciliations": [
+    {
+      "pair": [
+        "BIN-FLOW-03",
+        "BIN-FLOW-04"
+      ],
+      "status": "NOT_DIRECTLY_COMPARABLE",
+      "reason": "The $4.72B Reuters-reported net outflow is as of Monday and described as cumulative; the $3.64B Binance figure covers Nov 1 14:00–23:30 UTC+8 only. Do not subtract them or call the difference a data error without aligned start/end cutoffs, gross flow definitions and asset scope."
+    },
+    {
+      "pair": [
+        "GEO-IRAN-01"
+      ],
+      "status": "EVENT_TIME_UNKNOWN",
+      "reason": "Reuters publication time is known (03:03 UTC), but the precise time of the reported strike is not. Event studies must distinguish information-arrival time from physical event time."
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H-GEO-1",
+      "hypothesis": "Oil-price escalation can raise inflation and term-premium expectations, tightening financial conditions and pressuring high-beta crypto assets including XRP.",
+      "support": "Brent rebound to $107 after geopolitical reports; rate-sensitive market context.",
+      "counter": "A single commodity move does not establish a Fed-path repricing; XRP may decouple and oil supply impact may prove temporary.",
+      "status": "PLAUSIBLE_TRANSMISSION_NOT_ESTABLISHED"
+    },
+    {
+      "id": "H-GEO-2",
+      "hypothesis": "Geopolitical escalation can increase risk aversion and dollar demand, reducing crypto liquidity.",
+      "support": "Reuters describes investor anxiety and cautious positioning.",
+      "counter": "Safe-haven flows can favor gold, Treasuries or USD; crypto's response is regime-dependent.",
+      "status": "PLAUSIBLE_NOT_XRP_SPECIFIC"
+    },
+    {
+      "id": "H-ELECT-1",
+      "hypothesis": "Midterm results can alter perceived regulatory/fiscal/AI-policy uncertainty and create short-lived cross-asset volatility.",
+      "support": "Reuters reports market focus on election implications.",
+      "counter": "Election outcomes may be priced in; XRP-specific transmission is indirect.",
+      "status": "EVENT_STUDY_CANDIDATE"
+    },
+    {
+      "id": "H-BIN-1",
+      "hypothesis": "Binance flow normalization and withdrawal restoration may reduce exchange-specific counterparty friction.",
+      "support": "Teng's reported statement that hourly flows normalized; Binance phase-1 withdrawals include native XRP/XRPL.",
+      "counter": "The reported $4.72B net outflow remains substantial; aggregate flows are mostly USDT and not XRP-specific.",
+      "status": "OPERATIONAL_NORMALIZATION_REPORTED_NOT_INDEPENDENTLY_VERIFIED"
+    }
+  ],
+  "event_study_design": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "information_arrival_cutoffs_utc": [
+      "2026-11-03T03:03:00Z Reuters Iran/Qeshm report",
+      "2026-11-03T07:35:00Z Reuters Binance co-CEO report"
+    ],
+    "targets": [
+      "XRP/BTC relative return",
+      "XRP/ETH relative return",
+      "XRP/XLM relative return",
+      "XRP realized volatility at 5m/1h/24h",
+      "venue-specific XRP spread/depth/slippage"
+    ],
+    "controls": [
+      "BTC",
+      "ETH",
+      "XLM",
+      "SOL",
+      "DXY",
+      "Brent crude",
+      "gold",
+      "US 2-year and 10-year Treasury yields",
+      "S&P 500 futures"
+    ],
+    "controls_and_leakage": [
+      "Use actual source publication time as information arrival; do not substitute guessed strike time.",
+      "Freeze source timestamps and venue data cutoffs.",
+      "Avoid using end-of-day values before the day has completed.",
+      "Use matched event and non-event windows, placebo dates and walk-forward evaluation.",
+      "Do not infer causal impact from a single coincident price move."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://www.reuters.com/world/india/rupee-benefit-oil-plunge-while-facing-technical-resistance-dollar-strength-2026-11-03/",
+      "publisher": "Reuters",
+      "published_at_utc": "2026-11-03T03:03:00Z",
+      "type": "geopolitical/macro reporting"
+    },
+    {
+      "id": "S2",
+      "url": "https://www.reuters.com/world/asia-pacific/binance-co-ceo-says-company-is-very-strong-financial-health-after-63-billion-2026-11-03/",
+      "publisher": "Reuters",
+      "published_at_utc": "2026-11-03T07:35:00Z",
+      "type": "exchange recovery/company statement reporting"
+    },
+    {
+      "id": "S3",
+      "url": "https://www.binance.com/en/square/profile/binancezh/",
+      "publisher": "Binance verified official account",
+      "date": "2026-11-03",
+      "type": "exchange withdrawal data update"
+    }
+  ],
+  "limitations": [
+    "No synchronized XRP/BTC/ETH/XLM, orderbook, DXY, yield or Brent time series were downloaded in this run.",
+    "Reuters' reported strike time is unknown; only article publication time is available.",
+    "Binance recovery metrics are company statements reported by Reuters or Binance, not an independent audit.",
+    "No asset-level XRP withdrawals or deposits are disclosed in the cited exchange-wide flow totals.",
+    "North Korea's denial is a counterclaim, not independent forensic disconfirmation."
+  ]
+}

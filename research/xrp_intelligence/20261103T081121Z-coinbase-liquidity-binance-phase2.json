@@ -1,0 +1,395 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T08:11:21Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "ba121a1051c84ceb311e5c65e38a18659dcd7f0e",
+  "topic": "Coinbase XRP execution liquidity; Binance post-incident withdrawal matrix; XRPL stablecoin mobility",
+  "claims": [
+    {
+      "id": "CG26-METH-01",
+      "class": "CONFIRMED_SOURCE_METHOD",
+      "claim": "CoinGecko's 2026 CEX liquidity report uses public exchange APIs, the most liquid spot ticker per asset/venue, eight CEXs, daily snapshots at 16:00 UTC+8 over July 6–September 3, 2026 (60 days), and median daily depth curves.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF pp. 3, 14–15"
+    },
+    {
+      "id": "CG26-XRP-DEPTH-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "The 2026 study reports approximately $18M XRP bids and $14M asks across the ±2% range, about $30M total depth. Binance leads at the touch; Coinbase surpasses at approximately 0.1% deviation and retains the strongest median curve through the studied ±2% range.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 14"
+    },
+    {
+      "id": "CG26-XRP-DEPTH-02",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "CoinGecko reports Bybit and Kraken below $100,000 depth at the market price in its XRP sample.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 14"
+    },
+    {
+      "id": "CG26-XRP-DEPTH-03",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "On September 1, Coinbase held roughly $8M combined depth through most of ±2%; Crypto.com rose above $5M beyond ±2% and surpassed Coinbase in that tail range.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 15"
+    },
+    {
+      "id": "CG26-XRP-DEPTH-04",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "On July 31, Coinbase and Crypto.com showed a cumulative ~$7M increase in buy-side depth beyond ±1%, while total XRP depth remained near its daily median. CoinGecko interprets this as likely order repositioning by existing traders rather than new participants.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 15"
+    },
+    {
+      "id": "CG26-XRP-DEPTH-05",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "On August 23, Coinbase showed unusually large sell-side orders, pushing cumulative sell depth above $5M at the +0.2% and +1.0% intervals in the study snapshot.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 15"
+    },
+    {
+      "id": "CG26-XRP-VOLUME-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "CoinGecko reports average XRP daily trading volume around $1.8B during the study period, a peak near $11.3B in late August and about $2.2B in early September.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 13"
+    },
+    {
+      "id": "CG26-XRP-RWA-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "CoinGecko reports XRPL RWA market capitalization reached approximately $494M in July 2026.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 13"
+    },
+    {
+      "id": "CG26-XRP-ETF-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "CoinGecko reports XRP spot ETFs recorded a weekly high inflow of approximately $110.5M for the week ending August 28, 2026.",
+      "source": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "source_location": "PDF p. 13"
+    },
+    {
+      "id": "CG25-XRP-01",
+      "class": "CONFIRMED_SOURCE_CLAIM",
+      "claim": "CoinGecko's 2025 report described XRP depth at approximately ±1% as concentrated among Bitget, Binance and Coinbase, which together represented about 67% of the studied depth.",
+      "source": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2025",
+      "source_location": "Report page, XRP section"
+    },
+    {
+      "id": "CG-COMP-01",
+      "class": "INFERENCE_WITH_LIMITATION",
+      "claim": "CoinGecko's 2026 description of a more evenly distributed XRP liquidity curve may indicate a broader venue distribution than the 2025 report, but the reported depth bands differ (2025 ±1%; 2026 ±2%) and the sample periods/methods must be reconciled before making a strict concentration-change claim.",
+      "source": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026"
+    },
+    {
+      "id": "BIN-PH1-XRP-01",
+      "class": "CONFIRMED_OFFICIAL_STATEMENT",
+      "claim": "Binance's official verified account lists XRP withdrawals on the XRP network as restored in Phase 1 on November 1, 2026.",
+      "source": "https://www.binance.com/en/square/profile/binancezh/",
+      "source_location": "official verified profile, latest withdrawal-status post"
+    },
+    {
+      "id": "BIN-PH1-FLOW-01",
+      "class": "BINANCE_REPORTED_NOT_INDEPENDENTLY_AUDITED",
+      "claim": "Binance reports that between 14:00 and 23:30 UTC+8 on November 1 it processed $4.649B withdrawals and $1.01B deposits, net outflows approximately $3.64B, 2.1% of its stated $171B AUM reference as of October 28. This is exchange-wide, not XRP-specific.",
+      "source": "https://www.binance.com/en/square/profile/binancezh/",
+      "source_location": "official verified profile, withdrawal data update"
+    },
+    {
+      "id": "BIN-PH2-MATRIX-01",
+      "class": "CONFIRMED_OFFICIAL_SCHEDULE_NOT_COMPLETION",
+      "claim": "Binance Recovery Update #6 dated November 3 schedules additional withdrawal restoration beginning 12:00 UTC+8 in batches. Its published asset/network matrix includes BSC:XRP and XRP-network:RLUSD. It does not establish that every listed pair was already reopened at the time of publication.",
+      "source": "https://www.binance.com/en/square/post/384157084694985",
+      "source_location": "official verified post and linked matrix image"
+    },
+    {
+      "id": "BIN-PH2-REP-01",
+      "class": "UNKNOWN_REQUIRES_CONTRACT_VERIFICATION",
+      "claim": "The BSC asset labelled XRP in Update #6 is a BSC-network asset; its contract/issuer is not identified in the retrieved post. Do not equate it with native XRP on XRPL or assume a particular wrapped-XRP issuer without contract verification.",
+      "source": "https://www.binance.com/en/square/post/384157084694985"
+    },
+    {
+      "id": "BIN-PH2-RLUSD-01",
+      "class": "CONFIRMED_SCHEDULED_NOT_LIVE_VERIFIED",
+      "claim": "Binance's Update #6 schedules RLUSD withdrawal availability on the XRP network, but the profile's later restored-assets summary only explicitly confirms RLUSD on Ethereum at the retrieved cutoff. XRPL RLUSD withdrawal completion remains unverified.",
+      "source": "https://www.binance.com/en/square/profile/binancezh/"
+    },
+    {
+      "id": "REU-BIN-PH2-01",
+      "class": "CONFIRMED_REPORTING_WITH_MAPPING_LIMIT",
+      "claim": "Reuters reports additional Binance withdrawals beginning 04:00 GMT November 3 across BSC, Ethereum, Solana, XRP and Sui networks, plus selected assets on Arbitrum, Optimism, Tron and Base. Reuters explicitly says its report does not map each individual asset to each network.",
+      "source": "https://www.reuters.com/technology/binance-reopen-withdrawals-more-assets-several-networks-2026-11-03/"
+    },
+    {
+      "id": "CIRCLE-Q3-01",
+      "class": "CONFIRMED_SCHEDULE",
+      "claim": "Circle scheduled its Q3 2026 results webcast for November 4, 2026 at 08:00 ET (13:00 UTC). No Q3 results are included in this artifact.",
+      "source": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026"
+    }
+  ],
+  "market_display_snapshot": {
+    "retrieved_during_run_utc_window": "2026-11-03T08:07:00Z/2026-11-03T08:11:00Z",
+    "source": "https://www.coindesk.com/tech/2026/11/02/xrp-ledger-set-to-fix-flaw-that-could-let-stablecoin-partners-print-new-tokens",
+    "displayed_prices_usd": {
+      "BTC": 76714.5,
+      "ETH": 2251.96,
+      "XRP": 1.25,
+      "SOL": 91.94
+    },
+    "displayed_24h_change_pct": {
+      "BTC": -1.66,
+      "ETH": -1.31,
+      "XRP": 0.17,
+      "SOL": -2.37
+    },
+    "timestamp_quality": "Page display at retrieval; exact exchange/time aggregation timestamp not exposed. Not canonical market close."
+  },
+  "event_timeline": [
+    {
+      "time_utc": "2026-11-01T06:00:00Z/2026-11-01T09:00:00Z",
+      "event": "Binance phase-1 withdrawal restoration window; official account later lists native XRP on XRP network as restored.",
+      "asset_network": "XRP/XRPL",
+      "status": "RESTORED_PER_BINANCE_OFFICIAL_STATUS"
+    },
+    {
+      "time_utc": "2026-11-01T06:00:00Z/2026-11-01T15:30:00Z",
+      "event": "Binance-reported $4.649B withdrawals and $1.01B deposits; net outflow ~$3.64B.",
+      "asset_network": "EXCHANGE_WIDE",
+      "status": "BINANCE_REPORTED"
+    },
+    {
+      "time_utc": "2026-11-03T04:00:00Z",
+      "event": "Phase-2 withdrawal restoration schedule begins in batches.",
+      "asset_network": "MULTIPLE_NETWORKS",
+      "status": "SCHEDULED_NOT_ALL_PAIRS_CONFIRMED"
+    },
+    {
+      "time_utc": "2026-11-03T04:00:00Z",
+      "event": "Update #6 matrix includes BSC:XRP and XRPL:RLUSD as scheduled asset/network pairs.",
+      "asset_network": "BSC:XRP; XRPL:RLUSD",
+      "status": "SCHEDULED_NOT_COMPLETION"
+    },
+    {
+      "time_utc": "2026-11-04T13:00:00Z",
+      "event": "Circle Q3 2026 results webcast scheduled.",
+      "asset_network": "CIRCLE_USDC_ECOSYSTEM",
+      "status": "FUTURE_EVENT"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "CoinGecko",
+      "to": "Binance",
+      "relation": "measures_XRP_spot_orderbook_depth"
+    },
+    {
+      "from": "CoinGecko",
+      "to": "Coinbase",
+      "relation": "measures_XRP_spot_orderbook_depth"
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "spot_orderbook_liquidity_in_2026_sample"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "native_XRPL_withdrawals_restored_phase1"
+    },
+    {
+      "from": "Binance",
+      "to": "BSC_XRP_asset",
+      "relation": "phase2_withdrawal_reopening_scheduled"
+    },
+    {
+      "from": "Binance",
+      "to": "RLUSD_on_XRPL",
+      "relation": "phase2_withdrawal_reopening_scheduled"
+    },
+    {
+      "from": "Circle",
+      "to": "RLUSD_on_XRPL",
+      "relation": "no_issuer_relationship_established; separate issuer"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_distribution_economics_documented_elsewhere_in_ledger"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "RLUSD_distribution_listing_documented_elsewhere_in_ledger"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "Coinbase's median depth advantage beyond the touch can improve execution quality for larger orders in the sampled price bands.",
+      "supporting_evidence": [
+        "CoinGecko 2026 median curve",
+        "Coinbase ~$8M combined depth on most of ±2% on Sep 1"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "One daily snapshot per day",
+        "Depth is cancellable resting liquidity",
+        "Binance leads at the touch",
+        "Crypto.com can dominate tail depth"
+      ],
+      "status": "PLAUSIBLE_NOT_CAUSAL"
+    },
+    {
+      "id": "H2",
+      "hypothesis": "The observed bid-side depth and escrow-day order changes reflect order repositioning by existing traders rather than fresh external capital.",
+      "supporting_evidence": [
+        "CoinGecko July 31 total depth near median despite ~$7M extra bids on Coinbase/Crypto.com"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No order-level trader identity or executions; alternative explanation remains possible"
+      ],
+      "status": "SOURCE_INTERPRETATION_NOT_PROVEN"
+    },
+    {
+      "id": "H3",
+      "hypothesis": "XRP orderbook liquidity became more distributed across venues between the 2025 and 2026 CoinGecko studies.",
+      "supporting_evidence": [
+        "2025 report says Bitget/Binance/Coinbase ~67% at ±1%; 2026 report describes broader distribution at ±2%"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Depth bands differ; sample periods and methodology must be reconciled; no raw venue-level panel extracted"
+      ],
+      "status": "INFERENCE_REQUIRES_REANALYSIS"
+    },
+    {
+      "id": "H4",
+      "hypothesis": "Binance withdrawal restoration can normalize transfer/arbitrage access and reduce platform-specific withdrawal friction.",
+      "supporting_evidence": [
+        "Native XRP/XRPL is listed as restored in Phase 1",
+        "Phase 1 processed all 15 initial network/asset combinations"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Exchange-wide net outflows are not XRP-specific",
+        "No asset-level withdrawal amounts or post-restoration arbitrage data"
+      ],
+      "status": "MECHANISM_PLAUSIBLE_EFFECT_UNMEASURED"
+    },
+    {
+      "id": "H5",
+      "hypothesis": "RLUSD withdrawal support on XRPL can improve stablecoin mobility on XRPL, while BSC XRP support affects a separate representation.",
+      "supporting_evidence": [
+        "Update #6 lists XRP-network:RLUSD and BSC:XRP"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Update #6 is a schedule, not proof all pairs are live",
+        "BSC XRP contract identity unknown",
+        "No flow/volume data for either pair"
+      ],
+      "status": "SCHEDULED_CAPABILITY_NOT_ADOPTION"
+    },
+    {
+      "id": "H6",
+      "hypothesis": "XRP showed relative strength versus BTC/ETH/SOL in the retrieved CoinDesk display snapshot.",
+      "supporting_evidence": [
+        "XRP +0.17% while BTC/ETH/SOL displayed negative changes"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Single page snapshot, exact market cutoff unknown, no synchronized venue data"
+      ],
+      "status": "DESCRIPTIVE_ONLY_NOT_SIGNAL"
+    }
+  ],
+  "feature_store_requirements": [
+    "venue-specific bid/ask depth at fixed bps and percent bands",
+    "top-of-book spread and quote age",
+    "depth persistence and cancellation/replenishment rate",
+    "executed notional and realized slippage by standardized order size",
+    "venue-level trade imbalance and market impact",
+    "asset/network withdrawal status with exact representation/contract identifiers",
+    "withdrawal queue latency and completion status by asset/network",
+    "XRPL RWA supply/capitalization separate from XRP spot demand",
+    "ETF flow universe identifier, settlement status and issuer holdings cutoff"
+  ],
+  "evaluation_design": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "recommendation": "Build market-quality targets (standardized execution slippage and next-interval realized volatility) separately from directional XRP return forecasts. A depth model should not be called predictive of price direction unless fixed-horizon out-of-sample tests establish that relationship.",
+    "controls": [
+      "point-in-time book snapshots",
+      "no look-ahead from future orderbook changes",
+      "venue and asset universe frozen per experiment",
+      "walk-forward splits",
+      "simple baselines",
+      "probability calibration where classification is used",
+      "drift monitoring",
+      "independent red-team review"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://assets.coingecko.com/reports/2026/CoinGecko-2026-Crypto-Liquidity-on-CEXes-Report.pdf",
+      "publisher": "CoinGecko",
+      "date": "2026-09-30",
+      "type": "research report",
+      "independence_note": "Single source for historical depth analysis; exchange API data underlying report."
+    },
+    {
+      "id": "S2",
+      "url": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2025",
+      "publisher": "CoinGecko",
+      "date": "2026-05-04",
+      "type": "research report",
+      "independence_note": "Same publisher; useful historical comparison but not independent corroboration."
+    },
+    {
+      "id": "S3",
+      "url": "https://www.binance.com/en/square/profile/binancezh/",
+      "publisher": "Binance verified account",
+      "date": "2026-11-03",
+      "type": "official exchange statement",
+      "independence_note": "Primary source for Binance's own withdrawal status and flow disclosures; not independent audit."
+    },
+    {
+      "id": "S4",
+      "url": "https://www.binance.com/en/square/post/384157084694985",
+      "publisher": "Binance verified account",
+      "date": "2026-11-03",
+      "type": "official exchange announcement",
+      "independence_note": "Phase-2 asset/network matrix; schedule only."
+    },
+    {
+      "id": "S5",
+      "url": "https://www.reuters.com/technology/binance-reopen-withdrawals-more-assets-several-networks-2026-11-03/",
+      "publisher": "Reuters",
+      "date": "2026-11-03",
+      "type": "independent reporting",
+      "independence_note": "Confirms broader reopening but explicitly does not map each asset to network."
+    },
+    {
+      "id": "S6",
+      "url": "https://www.coindesk.com/tech/2026/11/02/xrp-ledger-set-to-fix-flaw-that-could-let-stablecoin-partners-print-new-tokens",
+      "publisher": "CoinDesk",
+      "date": "2026-11-02",
+      "type": "market/news page",
+      "independence_note": "Used only for displayed cross-asset price snapshot and XRPL amendment context; exact quote timestamp not exposed."
+    },
+    {
+      "id": "S7",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "publisher": "Circle",
+      "date": "2026-10-07",
+      "type": "official investor event notice",
+      "independence_note": "Primary source for future reporting schedule."
+    }
+  ],
+  "limitations": [
+    "No raw orderbook snapshots were downloaded in this run; the CoinGecko PDF is a historical aggregate report.",
+    "Daily 16:00 UTC+8 snapshots miss intraday liquidity changes and order cancellations.",
+    "Orderbook depth is not executed capital, beneficial ownership or proof of institutional intent.",
+    "Binance withdrawal amounts are exchange-wide and self-reported, not XRP-specific.",
+    "Phase-2 asset/network rows are scheduled; actual enablement must be checked per pair.",
+    "The BSC XRP asset's contract and issuer remain unidentified.",
+    "No direct causal relationship between Coinbase's Circle economics and XRP demand is established."
+  ]
+}
