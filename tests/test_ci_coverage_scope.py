@@ -17,3 +17,11 @@ def test_full_repository_suite_measures_all_barrot_agent_packages():
     assert "--no-cov" not in full_suite
     for package in ("agi", "ingestion", "analysis", "monetization", "orchestration"):
         assert f"barrot_agent/{package}/" not in full_suite
+
+    audit = (ROOT / ".github" / "workflows" / "dependency-audit.yml").read_text(encoding="utf-8")
+    ingestion = (ROOT / ".github" / "workflows" / "xrp-public-ingestion.yml").read_text(encoding="utf-8")
+    for workflow in (content, audit, ingestion):
+        assert "actions/setup-python@v7" in workflow
+        assert "actions/setup-python@v5" not in workflow
+    assert "actions/checkout@v7" in ingestion
+    assert "actions/checkout@v4" not in ingestion
