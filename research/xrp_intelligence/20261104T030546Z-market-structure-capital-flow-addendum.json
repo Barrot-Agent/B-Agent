@@ -194,6 +194,32 @@
         "Confirms scheduled event time only; results were not available at capture",
         "Event listing does not establish results or management guidance"
       ]
+    },
+    {
+      "id": "kamilah_channel_vling_20261104",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "publisher": "Vling",
+      "published_or_as_of": "2026-11-04T03:21:00.103Z",
+      "type": "third-party YouTube channel metadata index",
+      "independence": "third-party index",
+      "limitations": [
+        "Reports Kamilah Stevenson channel ID UCqUPJMQdkCN6lsLVDnichPA, 143K subscribers and 1.2K videos at its crawl",
+        "Not YouTube first-party channel metadata",
+        "Does not establish identity as the exact requested Camilla Stephenson"
+      ]
+    },
+    {
+      "id": "kamilah_channel_cryptokrios_20261104",
+      "url": "https://cryptokrios.com/creators/kamilah-stevenson",
+      "publisher": "CryptoKrios",
+      "published_or_as_of": "2026-11-04T03:21:00.103Z",
+      "type": "third-party creator analytics page",
+      "independence": "third-party index",
+      "limitations": [
+        "Reports 103K subscribers and 633 videos, a different count from Vling",
+        "Channel ID is not stated on the page",
+        "Its reliability score is an opaque third-party model and is not adopted as evidence of prediction accuracy"
+      ]
     }
   ],
   "market_snapshot": {
@@ -543,6 +569,22 @@
         "A scheduled event is not evidence of the results",
         "Any later reschedule or delayed publication must be detected before ingesting results"
       ]
+    },
+    {
+      "id": "OBS-IDENTITY-20261104-01",
+      "claim": "Exact-name searches for 'Camilla Stephenson' did not identify a verified YouTube channel. A Kamilah Stevenson channel candidate is indexed under channel ID UCqUPJMQdkCN6lsLVDnichPA; a transcript on a candidate video has the speaker introduce herself as 'Camila Stevenson'. These spellings differ and do not establish that the channel owner is the exact person requested.",
+      "classification": "unresolved_identity",
+      "evidence": [
+        "kamilah_channel_glasp",
+        "kamilah_channel_vling_20261104",
+        "kamilah_channel_cryptokrios_20261104"
+      ],
+      "disconfirming_or_limiting": [
+        "Requested spelling is Camilla Stephenson; channel label is Kamilah Stevenson; transcript says Camila Stevenson",
+        "No first-party channel About metadata or cross-linked verified identity was obtained",
+        "Vling reports 143K subscribers/1.2K videos while CryptoKrios reports 103K/633; channel IDs and capture scopes are not matched",
+        "Do not attribute the candidate channel's videos to the exact requested person without identity evidence"
+      ]
     }
   ],
   "relationship_graph": [
@@ -825,6 +867,55 @@
     "Keep forecasts NOT_ISSUED until the historical feature store and walk-forward evaluation are operational.",
     "Add official FOMC target range, Treasury curve, DXY, Brent/WTI and event timestamps to the historical macro feature panel; evaluate rolling and event-conditioned XRP sensitivities.",
     "Reconcile Ripple's Oct 28 corporate metrics ($900M run-rate, $16T transactions enabled, $150B lifetime network volume, $2.6B RLUSD market cap) to audited financial statements and independent on-chain/route-level data; keep issuer claims separate from realized XRP demand.",
-    "At/after the official Circle Q3 webcast, ingest the press release, 10-Q, reserve metrics, distribution costs, Coinbase economics, USDC circulation and management guidance with exact publication/capture times."
-  ]
+    "At/after the official Circle Q3 webcast, ingest the press release, 10-Q, reserve metrics, distribution costs, Coinbase economics, USDC circulation and management guidance with exact publication/capture times.",
+    "Keep the 12 Kamilah/Camila candidate videos in a separate, non-attributed index; obtain first-party channel identity evidence before calling them videos by Camilla Stephenson or claiming the inventory is exhaustive."
+  ],
+  "identity_disambiguation": {
+    "requested_identity": "Camilla Stephenson",
+    "candidate_identity": "Kamilah Stevenson / transcript speaker says Camila Stevenson",
+    "status": "UNRESOLVED_NOT_EQUIVALENT",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "third_party_metadata": [
+      {
+        "source_id": "kamilah_channel_vling_20261104",
+        "reported_subscribers": 143000,
+        "reported_videos": 1200
+      },
+      {
+        "source_id": "kamilah_channel_cryptokrios_20261104",
+        "reported_subscribers": 103000,
+        "reported_videos": 633
+      }
+    ],
+    "existing_candidate_video_ids": [
+      "M8TmDXO7B-0",
+      "QslbjGQD0MU",
+      "ci0FH73lbCs",
+      "ywQEoYPzhlQ",
+      "8xiy8w2YlfY",
+      "cxeX_eu_2H0",
+      "rv0BAV0vLgo",
+      "pmJTrXJQ8Vw",
+      "I5OkewTVrgA",
+      "iwhpNT73zpk",
+      "TfFx0g2IgGg",
+      "1ICh2cuBKmM"
+    ],
+    "candidate_video_count": 12,
+    "inventory_exhaustive": false,
+    "attribution_rule": "Keep these 12 videos in a separate Kamilah/Camila candidate index. Do not label them as videos by Camilla Stephenson until a first-party channel identity link is verified."
+  },
+  "search_scope": {
+    "captured_at_utc": "2026-11-04T03:21:00.103Z",
+    "exact_name_queries": [
+      "site:youtube.com \"Camilla Stephenson\" XRP",
+      "site:youtube.com/@ \"Camilla Stephenson\" XRP"
+    ],
+    "actual_capital_queries": [
+      "site:youtube.com/watch \"actual capital\" XRP",
+      "\"actual capital\" XRP \"Kamilah Stevenson\" OR \"Camila Stevenson\" OR \"Camilla Stephenson\"",
+      "\"actual capital\" \"SBIC\" ChatGPT"
+    ],
+    "result": "No exact Camilla Stephenson channel or XRP/ASK/SBIC-specific 'actual capital' meaning was verified. Search results included a Kamilah Stevenson candidate and unrelated bank regulatory-capital disclosures. This is a bounded search result, not proof that no such material exists."
+  }
 }
