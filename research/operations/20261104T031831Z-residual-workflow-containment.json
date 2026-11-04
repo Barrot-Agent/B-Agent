@@ -9,8 +9,17 @@
   "status": {
     "designed": true,
     "executed": true,
-    "verified": false,
-    "reason": "Changes committed to PR branch; exact-head CI and fail-closed gate pending."
+    "verified": true,
+    "verification": {
+      "ci_run": 41766316465,
+      "ci_head": "641d1770d641b3a8dd32d39e8fa866217acdace0",
+      "tests_passed": 357,
+      "subtests_passed": 8,
+      "gate_run": 41766316446,
+      "gate_conclusion": "success",
+      "automatic_merge": "disabled",
+      "repository_content_changed_by_gate": false
+    }
   },
   "findings": [
     {
