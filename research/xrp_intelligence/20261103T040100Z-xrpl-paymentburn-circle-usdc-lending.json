@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrpl-paymentburn-fixcleanup-lending-circle-usdc-20261103-run14",
+  "captured_at_utc": "2026-11-03T04:01:00Z",
+  "data_cutoff_utc": "2026-11-03T04:01:00Z",
+  "repository_base_commit": "bbd33f9511be12dfe20fe69c7ba5c7eda8643187",
+  "claims": [
+    {
+      "id": "P01",
+      "class": "confirmed",
+      "claim": "Circle announced native USDC on the XRP Ledger mainnet on June 12, 2025. Circle Mint and Circle APIs support USDC on XRPL; Circle states no third-party bridge is required for access through its supported services.",
+      "as_of": "2025-06-12",
+      "source": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+    },
+    {
+      "id": "P02",
+      "class": "confirmed",
+      "claim": "Circle's current USDC-on-XRPL documentation identifies USDC as a native XRPL fungible token and describes access through exchanges, ecosystem apps and qualified Circle Mint customers.",
+      "as_of": "2026-11-03",
+      "source": "https://www.circle.com/multi-chain-usdc/xrpl"
+    },
+    {
+      "id": "P03",
+      "class": "reported_issuer_disclosure",
+      "claim": "Circle's transparency page is dated October 29, 2026 and displays approximately $70.0B USDC in circulation and $71.4B total reserves. It reports 7-day net circulation change -$0.8B and 30-day -$3.1B.",
+      "as_of": "2026-10-29",
+      "source": "https://www.circle.com/transparency"
+    },
+    {
+      "id": "P04",
+      "class": "reported_issuer_disclosure_with_rounding_discrepancy",
+      "claim": "Circle's 365-day transparency display shows $362.1B issued and $367.2B redeemed, with displayed net change -$5.0B. Direct subtraction gives -$5.1B; preserve the $0.1B display/arithmetic discrepancy rather than silently normalizing it.",
+      "as_of": "2026-10-29",
+      "source": "https://www.circle.com/transparency"
+    },
+    {
+      "id": "P05",
+      "class": "confirmed_protocol_documentation",
+      "claim": "XRPL official documentation warns that until fixCleanup3_4_0 is enabled, a delegate holding PaymentBurn can in certain circumstances mint fungible trust-line tokens or MPTs. XRPL docs recommend not delegating PaymentBurn before activation; other granular permissions are not affected by this specific warning.",
+      "as_of": "2026-11-03",
+      "source": "https://xrpl.org/docs/references/protocol/data-types/permission-values"
+    },
+    {
+      "id": "P06",
+      "class": "confirmed_protocol_documentation",
+      "claim": "The fixCleanup3_4_0 amendment changes PaymentBurn-only delegated payments so they reject an amount crossing a zero balance into a mint unless the delegate also holds PaymentMint. The amendment also bundles other fixes for vaults, AMMs, permissioned DEX, trust lines, NFTs, MPTs, escrow, sponsorship and signing.",
+      "as_of": "2026-11-03",
+      "source": "https://xrpl.org/resources/known-amendments"
+    },
+    {
+      "id": "P07",
+      "class": "reported_on_ledger_tracker",
+      "claim": "At the XRPL Dashboard live observation 2026-11-03 04:01 UTC, ledger 108080982, fixCleanup3_4_0 remained in its 14-day countdown with 33 of 35 trusted validators voting yes; 29 of 35 are required. The projected activation is November 4, 2026 at 14:46 UTC if support remains above 80% for the full period.",
+      "as_of": "2026-11-03T04:01:00Z",
+      "source": "https://xrpldashboard.com/amendments"
+    },
+    {
+      "id": "P08",
+      "class": "reported_signed_snapshot",
+      "claim": "The XRPL Dashboard's November 1 signed daily snapshot recorded fixCleanup3_4_0 at 33/35, LendingProtocol at 19/35, LendingProtocolV1_1 at 19/35 and SingleAssetVault at 21/35. The snapshot is described as Ed25519-signed and independently re-verifiable.",
+      "as_of": "2026-11-01T01:00:00Z",
+      "source": "https://xrpldashboard.com/amendments/2026-11-01"
+    },
+    {
+      "id": "P09",
+      "class": "confirmed_protocol_documentation",
+      "claim": "XRPL LendingProtocol is a proposed fixed-term, uncollateralized loan system funded from pooled assets in a SingleAssetVault. Its specification relies on off-chain underwriting and risk management; it is not an XRP-collateralized lending primitive.",
+      "as_of": "2026-11-03",
+      "source": "https://xrpl.org/resources/known-amendments"
+    },
+    {
+      "id": "P10",
+      "class": "reported_on_ledger_tracker",
+      "claim": "At the November 3 04:01 UTC XRPL Dashboard observation, LendingProtocol had 19/35 yes votes, SingleAssetVault 21/35 and LendingProtocolV1_1 19/35. Each needs 29 yes votes and then its own uninterrupted 14-day majority period. Native XRPL lending is therefore not active and has no confirmed activation date.",
+      "as_of": "2026-11-03T04:01:00Z",
+      "source": "https://xrpldashboard.com/amendments"
+    },
+    {
+      "id": "P11",
+      "class": "reported_third_party_chain_snapshot",
+      "claim": "A third-party September 29, 2026 stablecoin snapshot listed approximately $4.54M USDC on XRPL. This is a dated, non-issuer observation and is not a current supply claim.",
+      "as_of": "2026-09-29",
+      "source": "https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/"
+    },
+    {
+      "id": "P12",
+      "class": "reported_on_ledger_tracker",
+      "claim": "The XRPL Dashboard live page reported XRP at approximately $1.2496 at 2026-11-03 04:01 UTC. This is a single source/time observation, not a consolidated exchange benchmark.",
+      "as_of": "2026-11-03T04:01:00Z",
+      "source": "https://xrpldashboard.com/amendments"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native USDC issuance and Circle Mint/API support",
+      "class": "confirmed",
+      "source": "P01"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer/reserve transparency and redemption framework",
+      "class": "confirmed_issuer_disclosure",
+      "source": "P03"
+    },
+    {
+      "from": "XRPL validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "33/35 votes; conditional 14-day activation countdown",
+      "class": "reported_on_ledger",
+      "source": "P07"
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "PaymentBurn",
+      "relation": "closes burn-only delegated payment path that could cross zero into minting",
+      "class": "confirmed_protocol_change",
+      "source": "P06"
+    },
+    {
+      "from": "XRPL validators",
+      "to": "LendingProtocol",
+      "relation": "19/35 yes; below 29-vote threshold",
+      "class": "reported_on_ledger",
+      "source": "P10"
+    },
+    {
+      "from": "XRPL validators",
+      "to": "SingleAssetVault",
+      "relation": "21/35 yes; below 29-vote threshold",
+      "class": "reported_on_ledger",
+      "source": "P10"
+    },
+    {
+      "from": "LendingProtocol",
+      "to": "SingleAssetVault",
+      "relation": "both amendments required for native fixed-term uncollateralized lending stack",
+      "class": "confirmed_protocol_design",
+      "source": "P09"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "PH01",
+      "class": "inference",
+      "hypothesis": "Activating fixCleanup3_4_0 should reduce a specific delegated-permission risk for issued trust-line tokens and MPTs on XRPL, including stablecoins that use PaymentBurn delegation.",
+      "support": [
+        "P05",
+        "P06",
+        "P07"
+      ],
+      "counter": "The risk is limited to a specific delegated permission and certain conditions. No public evidence reviewed here establishes that the flaw was exploited or that any named issuer delegated PaymentBurn."
+    },
+    {
+      "id": "PH02",
+      "class": "inference",
+      "hypothesis": "Native USDC on XRPL can complement XRP by providing a dollar-denominated asset for payments, liquidity provisioning and tokenized-asset settlement on the same ledger.",
+      "support": [
+        "P01",
+        "P02"
+      ],
+      "counter": "Native USDC supply and activity on XRPL must be measured separately; the dated September 29 third-party supply observation is only about $4.54M and does not demonstrate material XRP demand."
+    },
+    {
+      "id": "PH03",
+      "class": "inference",
+      "hypothesis": "The separate XRPL lending amendments are not ready for production use; native XRPL lending should not be treated as an active XRP collateral market.",
+      "support": [
+        "P09",
+        "P10"
+      ],
+      "counter": "Validator support can change. A 29-vote majority followed by 14 uninterrupted days could start activation; each amendment must be rechecked at its own activation."
+    },
+    {
+      "id": "PH04",
+      "class": "speculation",
+      "hypothesis": "The projected fixCleanup3_4_0 activation may increase institutional confidence in XRPL-issued stablecoin and MPT permission controls.",
+      "support": [
+        "P05",
+        "P06"
+      ],
+      "counter": "Activation is a protocol maintenance improvement, not proof of new institutional flows, issuer adoption or XRP price appreciation."
+    },
+    {
+      "id": "PH05",
+      "class": "speculation",
+      "hypothesis": "Circle's large global USDC reserve/liquidity base could make native USDC on XRPL more useful if exchange, wallet, custody and payment integrations deepen.",
+      "support": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "counter": "Global USDC supply is not XRPL-specific liquidity. The September 29 XRPL USDC observation was small relative to global circulation and may be stale."
+    }
+  ],
+  "event_timeline": [
+    {
+      "date": "2025-06-12",
+      "event": "Circle announced native USDC on XRPL mainnet; Circle Mint and APIs support it.",
+      "source": "P01"
+    },
+    {
+      "date": "2026-09-16",
+      "event": "xrpld 3.4.0 release included fixCleanup3_4_0.",
+      "source": "https://xrpl.org/blog/2026/xrpld-3.4.0"
+    },
+    {
+      "date": "2026-10-21T14:46:00Z",
+      "event": "fixCleanup3_4_0 regained the required majority and began a new 14-day countdown after an earlier dip below threshold.",
+      "source": "https://xrpldashboard.com/amendments"
+    },
+    {
+      "date": "2026-11-03T04:01:00Z",
+      "event": "fixCleanup3_4_0 still at 33/35; projected activation Nov 4 14:46 UTC if support holds. LendingProtocol 19/35; SingleAssetVault 21/35; LendingProtocolV1_1 19/35.",
+      "source": "P07"
+    },
+    {
+      "date": "2026-11-04T14:46:00Z",
+      "event": "Conditional earliest activation projection for fixCleanup3_4_0; not an accomplished event.",
+      "source": "P07"
+    }
+  ],
+  "data_quality": {
+    "supply_scope": "Circle's $70.0B circulation and $71.4B reserves are global USDC issuer figures across networks; do not attribute them to XRPL.",
+    "xrpl_usdc_supply": "The approximately $4.54M XRPL observation is from September 29 and a third-party aggregator, not a current Circle issuer statement.",
+    "amendment_status": "The 33/35 and 19/21 vote counts are time-specific ledger/tracker observations; they can change. The November 4 date is conditional, not confirmed activation.",
+    "collateral_scope": "The XRPL LendingProtocol is designed for uncollateralized fixed-term loans funded by SingleAssetVault pools. Do not confuse it with Morpho FXRP/RLUSD collateral markets on other chains."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Protocol governance and stablecoin supply observations do not establish a calibrated directional XRP signal."
+  },
+  "next_actions": [
+    "Recheck fixCleanup3_4_0 at the November 4 projected activation window and verify the actual EnableAmendment ledger transaction before marking it active.",
+    "Recheck LendingProtocol and SingleAssetVault votes separately; do not describe the protocol as live until both are enabled.",
+    "Measure native USDC and RLUSD supply, holders, transfers, DEX liquidity and exchange inventory on XRPL at pinned ledger heights.",
+    "Identify any publicly documented issuer use of PaymentBurn delegation; do not infer use from token issuance alone.",
+    "Reconcile Circle's weekly reserve/mint-burn data with the monthly assurance report and preserve rounding differences.",
+    "Keep XRPL native lending distinct from EVM-based collateralized lending and Firelight coverage."
+  ]
+}

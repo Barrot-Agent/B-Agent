@@ -1,0 +1,478 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-institutional-rails-circle-binance-sbi-jpysc-20261103-run14",
+  "captured_at_utc": "2026-11-03T03:59:27Z",
+  "data_cutoff_utc": "2026-11-03T03:59:27Z",
+  "repository_base_commit": "bbd33f9511be12dfe20fe69c7ba5c7eda8643187",
+  "classification_legend": {
+    "confirmed": "Primary official statement, official issuer disclosure or SEC filing",
+    "reported": "Credible secondary report or provider-reported market observation",
+    "inference": "Reasoned interpretation; not direct evidence",
+    "speculation": "Testable causal hypothesis only",
+    "unknown": "Not established by reviewed evidence"
+  },
+  "claims": [
+    {
+      "id": "C01",
+      "class": "confirmed",
+      "entity": [
+        "Circle",
+        "Binance"
+      ],
+      "claim": "Circle and Binance announced a five-year commercial agreement to expand USDC access, especially in emerging markets, with Binance promoting and integrating USDC and Circle providing infrastructure services.",
+      "as_of": "2026-09-22",
+      "source": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx"
+    },
+    {
+      "id": "C02",
+      "class": "confirmed",
+      "entity": [
+        "Binance",
+        "Circle"
+      ],
+      "claim": "Binance made a $100 million strategic equity investment in Circle through a private placement of Class A shares; Circle stated that transfer is restricted for up to two years subject to customary exceptions.",
+      "as_of": "2026-09-22",
+      "source": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx"
+    },
+    {
+      "id": "C03",
+      "class": "confirmed",
+      "entity": [
+        "Coinbase",
+        "Circle"
+      ],
+      "claim": "Coinbase's Q3 2026 Form 10-Q says its Circle arrangement was renewed on the same terms.",
+      "as_of": "2026-Q3",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C04",
+      "class": "reported",
+      "entity": [
+        "Coinbase",
+        "Circle",
+        "USDC"
+      ],
+      "claim": "Coinbase reported average USDC held in Coinbase products of approximately $22 billion in Q3 2026, up 49% year over year; company materials describe this as about 30% of average USDC market capitalization and Coinbase's share of USDC economics at about 50% over the prior year.",
+      "as_of": "2026-Q3",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+    },
+    {
+      "id": "C05",
+      "class": "confirmed",
+      "entity": [
+        "Coinbase",
+        "Circle"
+      ],
+      "claim": "Coinbase Q3 2026 stablecoin revenue was $306.905 million versus $324.534 million in Q3 2025. Its filing attributes a positive $84.6 million effect to higher average USDC balances and a negative $52.8 million effect to lower average interest rates.",
+      "as_of": "2026-Q3",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "id": "C06",
+      "class": "confirmed",
+      "entity": [
+        "SBI Holdings",
+        "SBI VC Trade",
+        "Ripple",
+        "RLUSD"
+      ],
+      "claim": "SBI VC Trade and Ripple announced RLUSD availability in Japan on June 24, 2026 after Japanese Financial Services Agency approval. SBI VC Trade classified it as a Type 4 electronic payment instrument under its Japanese-law interpretation.",
+      "as_of": "2026-06-24",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+    },
+    {
+      "id": "C07",
+      "class": "confirmed",
+      "entity": [
+        "SBI Holdings",
+        "SBI VC Trade",
+        "SBI Shinsei Trust Bank",
+        "Startale",
+        "JPYSC"
+      ],
+      "claim": "JPYSC issuance began June 24, 2026, with SBI Shinsei Trust Bank as issuer and SBI VC Trade handling distribution, initially limited to SBI VC Trade accounts. SBI said public-chain circulation would follow only after legal and tax-practice issues are resolved.",
+      "as_of": "2026-06-24",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "id": "C08",
+      "class": "confirmed",
+      "entity": [
+        "SBI VC Trade",
+        "JPYSC"
+      ],
+      "claim": "On November 2, SBI VC Trade reported JPYSC lending balances above ¥10 billion and a JPYSC handled balance above ¥30 billion. The handled balance is explicitly the sum of on-chain balances and lending balances; it is not equivalent to freely transferable public-chain circulation.",
+      "as_of": "2026-11-02",
+      "source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+    },
+    {
+      "id": "C09",
+      "class": "confirmed",
+      "entity": [
+        "SBI VC Trade",
+        "JPYSC"
+      ],
+      "claim": "As of November 2, SBI VC Trade offered 28-day, 84-day and 168-day JPYSC lending courses at stated annual rates of 2%, 2.5% and 3% respectively. The company states early termination is generally unavailable and the product is not a bank deposit or deposit-insured.",
+      "as_of": "2026-11-02",
+      "source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+    },
+    {
+      "id": "C10",
+      "class": "confirmed",
+      "entity": [
+        "SBI Shinsei Trust Bank",
+        "SBI VC Trade",
+        "JPYSC",
+        "Japanese Government Bills"
+      ],
+      "claim": "On September 7, SBI Shinsei Trust Bank and SBI VC Trade reported beginning to invest ¥1 billion of JPYSC trust backing in short-term Japanese government bills. JPYSC issuance was about ¥20.1 billion and lending balances about ¥6.9 billion at that date.",
+      "as_of": "2026-09-07",
+      "source": "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+    },
+    {
+      "id": "C11",
+      "class": "confirmed",
+      "entity": [
+        "SBI Holdings",
+        "SMFG",
+        "SBI Startale Marketing"
+      ],
+      "claim": "SBI Holdings and SMFG signed a capital/business alliance on October 30 to study stablecoin and tokenized-asset financial services. SMFG agreed to a 5% capital participation in SBI Startale Marketing; the stated work is research, use-case review and possible proof-of-concept, not a launched production service.",
+      "as_of": "2026-10-30",
+      "source": "https://www.sbigroup.co.jp/news/2026/1030_16698.html"
+    },
+    {
+      "id": "C12",
+      "class": "confirmed",
+      "entity": [
+        "SBI Holdings",
+        "Startale",
+        "BlackRock",
+        "JPYSC"
+      ],
+      "claim": "SBI, Startale and BlackRock signed an MOU on October 27 to explore linking a tokenized money-market fund with JPYSC. The announcement describes examination of technology, infrastructure, distribution and regulatory possibilities; it does not establish a live settlement integration.",
+      "as_of": "2026-10-27",
+      "source": "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+    },
+    {
+      "id": "C13",
+      "class": "confirmed",
+      "entity": [
+        "Tokyo SBIC"
+      ],
+      "claim": "The Japanese acronym SBIC in the investigated context resolves to Tokyo Small and Medium Business Investment & Consultation Co., Ltd., a long-term equity-investment and business-support company, not SBI Holdings.",
+      "as_of": "2026-11-03",
+      "source": "https://www.sbic.co.jp/"
+    },
+    {
+      "id": "C14",
+      "class": "confirmed",
+      "entity": [
+        "Tokyo SBIC",
+        "ChatGPT",
+        "Microsoft"
+      ],
+      "claim": "Tokyo SBIC co-hosted a February 26, 2025 seminar titled 'The Present and Future of Generative AI (ChatGPT)' with the Tokyo Chamber of Commerce Taito branch. It was free for investee and general companies and featured a Microsoft speaker. This is not evidence of an OpenAI corporate partnership or XRP integration.",
+      "as_of": "2025-02-26",
+      "source": "https://www.sbic.co.jp/seminar/20250226ym/"
+    },
+    {
+      "id": "C15",
+      "class": "confirmed",
+      "entity": [
+        "Binance",
+        "XRP Ledger"
+      ],
+      "claim": "Binance Recovery Update #4 on November 1 explicitly listed XRP as an asset for withdrawals on the XRP network in phase one, with progressive restoration after security/readiness checks.",
+      "as_of": "2026-11-01",
+      "source": "https://www.binance.com/en/square/post/383446817991353"
+    },
+    {
+      "id": "C16",
+      "class": "reported",
+      "entity": [
+        "Binance",
+        "XRP"
+      ],
+      "claim": "Reuters on November 3 reported additional withdrawals reopening across networks including BSC, Ethereum, Solana, XRP and Sui from 04:00 GMT. Reuters did not specify which individual assets were available on each named network; this does not establish a second XRP-asset reopening.",
+      "as_of": "2026-11-03",
+      "source": "https://www.reuters.com/technology/binance-reopen-withdrawals-more-assets-several-networks-2026-11-03/"
+    },
+    {
+      "id": "C17",
+      "class": "reported",
+      "entity": [
+        "Binance",
+        "Customers",
+        "Exchange liquidity"
+      ],
+      "claim": "Reuters reported approximately $4.72 billion in net customer outflows after Binance reopened withdrawals, around 3% of platform assets; Binance said flows were stabilizing and reported about $2.7 billion in customer inflows since Sunday.",
+      "as_of": "2026-11-02",
+      "source": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/"
+    },
+    {
+      "id": "C18",
+      "class": "reported",
+      "entity": [
+        "FBI",
+        "TraderTraitor",
+        "North Korea"
+      ],
+      "claim": "The FBI attributed the Binance theft to North Korea-linked TraderTraitor. AP reported on November 3 that North Korea denied involvement and President Trump said investigators did not yet know whether North Korea was responsible. Attribution remains a government allegation disputed by the accused state, not a judicial finding.",
+      "as_of": "2026-11-03",
+      "source": "https://apnews.com/article/north-korea-binance-cryptocurrency-heist-01c9b80d938dd67d747e268c410f265d"
+    },
+    {
+      "id": "C19",
+      "class": "reported",
+      "entity": [
+        "US XRP spot ETFs"
+      ],
+      "claim": "Third-party ETF aggregation reports October 30 net outflow of approximately $496,000, five-session net inflow of about $4.3 million, cumulative inflow around $1.81 billion and net assets around $1.42 billion. These are fund-flow aggregates, not identified unhedged investor exposure or proof of same-day spot purchases.",
+      "as_of": "2026-10-30",
+      "source": "https://bykaranteli.com/etf/xrp"
+    },
+    {
+      "id": "C20",
+      "class": "reported",
+      "entity": [
+        "XRP derivatives providers"
+      ],
+      "claim": "TradRadar, Kodexius and JustScreener reported approximately $1.95B, $810.65M and $1.60B XRP open interest respectively in observations around November 3. Timestamps, exchange sets and contract definitions differ; preserve each provider's observation and do not average them into a canonical total.",
+      "as_of": "2026-11-03",
+      "source": "https://tradradar.io/markets/xrp ; https://kodexius.com/data/crypto-derivatives/XRP ; https://justscreener.com/en/market/XRP/open-interest"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "relation": "five-year USDC commercial distribution/infrastructure agreement",
+      "class": "confirmed",
+      "source": "C01"
+    },
+    {
+      "from": "Binance",
+      "to": "Circle",
+      "relation": "$100M strategic equity investment",
+      "class": "confirmed",
+      "source": "C02"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC distribution/economic-sharing agreement renewed on same terms",
+      "class": "confirmed",
+      "source": "C03"
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relation": "average $22B held in Coinbase products in Q3 2026",
+      "class": "reported",
+      "source": "C04"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "Ripple",
+      "relation": "RLUSD Japan distribution partnership",
+      "class": "confirmed",
+      "source": "C06"
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relation": "trust issuer and reserve administrator",
+      "class": "confirmed",
+      "source": "C07"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relation": "distribution and lending programme",
+      "class": "confirmed",
+      "source": "C07"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SMFG",
+      "relation": "capital/business alliance via 5% participation in SBI Startale Marketing",
+      "class": "confirmed",
+      "source": "C11"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Startale",
+      "relation": "JPYSC development and marketing JV",
+      "class": "confirmed",
+      "source": "C11"
+    },
+    {
+      "from": "SBI Holdings + Startale",
+      "to": "BlackRock",
+      "relation": "MOU to explore tokenized MMF and JPYSC linkage",
+      "class": "confirmed",
+      "source": "C12"
+    },
+    {
+      "from": "Tokyo SBIC",
+      "to": "ChatGPT",
+      "relation": "co-hosted public seminar about ChatGPT",
+      "class": "confirmed",
+      "source": "C14"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP Ledger",
+      "relation": "phase-one XRP withdrawal restoration",
+      "class": "confirmed",
+      "source": "C15"
+    },
+    {
+      "from": "FBI",
+      "to": "TraderTraitor",
+      "relation": "official attribution",
+      "class": "reported_disputed",
+      "source": "C18"
+    },
+    {
+      "from": "North Korea",
+      "to": "FBI attribution",
+      "relation": "official denial",
+      "class": "confirmed_statement_counterevidence",
+      "source": "C18"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "hypothesis": "The Circle-Binance equity and five-year USDC agreement could strengthen USDC distribution on a venue that is also a major XRP trading venue, potentially changing the relative convenience of stablecoin settlement versus XRP-based liquidity.",
+      "status": "speculation",
+      "support": [
+        "C01",
+        "C02"
+      ],
+      "counter": "No asset-specific Binance flow, settlement-route, inventory or market-share evidence establishes substitution away from XRP. USDC and XRP serve different functions and may be complementary."
+    },
+    {
+      "id": "H02",
+      "hypothesis": "SBI is building a multi-rail digital-finance stack spanning JPYSC, RLUSD, USDC and tokenized money-market assets rather than a single-token XRP strategy.",
+      "status": "inference",
+      "support": [
+        "C06",
+        "C07",
+        "C11",
+        "C12"
+      ],
+      "counter": "MOUs and research programmes do not establish production interoperability or volumes. The RLUSD launch and JPYSC account-limited launch are distinct."
+    },
+    {
+      "id": "H03",
+      "hypothesis": "JPYSC's reported ¥30B handled balance signals growing customer use and balance-sheet intermediation.",
+      "status": "inference",
+      "support": [
+        "C08",
+        "C09"
+      ],
+      "counter": "The figure explicitly combines on-chain balances and lending balances. JPYSC is initially account-limited; public-chain circulation is conditional. Lending is a credit exposure to SBI VC Trade, not a deposit and not deposit-insured."
+    },
+    {
+      "id": "H04",
+      "hypothesis": "The SBI-SMFG 5% participation and SBI-Startale-BlackRock MOU could connect regulated yen liabilities with tokenized fund settlement.",
+      "status": "speculation",
+      "support": [
+        "C11",
+        "C12"
+      ],
+      "counter": "Both are exploratory arrangements; no completed production flow, collateral eligibility or transaction volume is disclosed."
+    },
+    {
+      "id": "H05",
+      "hypothesis": "Restored Binance XRP withdrawals may normalize XRP mobility and reduce venue-specific withdrawal friction after the incident.",
+      "status": "inference",
+      "support": [
+        "C15",
+        "C16"
+      ],
+      "counter": "Withdrawal availability is not evidence of net outflow, deposit recovery, order-book depth or price impact."
+    },
+    {
+      "id": "H06",
+      "hypothesis": "Binance's reported $4.72B net customer outflows may redistribute exchange liquidity toward competitors, potentially including Coinbase.",
+      "status": "speculation",
+      "support": [
+        "C17"
+      ],
+      "counter": "No destination-venue or XRP-specific flow linkage is established. Aggregate withdrawals may remain in self-custody, banks or other venues."
+    },
+    {
+      "id": "H07",
+      "hypothesis": "Spot XRP ETF creations can provide incremental spot demand and affect available float.",
+      "status": "inference",
+      "support": [
+        "C19"
+      ],
+      "counter": "ETF creations/redemptions are not necessarily unhedged directional demand; the latest daily flow was negative despite a positive five-session total."
+    },
+    {
+      "id": "H08",
+      "hypothesis": "Derivatives positioning could amplify spot moves through leverage and liquidations.",
+      "status": "inference",
+      "support": [
+        "C20"
+      ],
+      "counter": "The provider totals are non-equivalent; without synchronized contract-level data, any aggregate leverage estimate is unreliable."
+    }
+  ],
+  "market_snapshot": {
+    "etf": {
+      "observation_date": "2026-10-30",
+      "daily_net_flow_usd": -496000,
+      "five_session_net_flow_usd": 4300000,
+      "cumulative_net_inflow_usd": 1810000000,
+      "net_assets_usd": 1420000000,
+      "source": "C19"
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "observed_at_utc": "2026-11-03T01:05:00Z",
+        "open_interest_usd": 1950000000,
+        "coverage": "7 exchanges",
+        "source": "C20"
+      },
+      {
+        "provider": "Kodexius",
+        "observed_at_utc": "2026-11-02T23:44:00Z",
+        "open_interest_usd": 810650000,
+        "coverage": "7 contracts across 5 exchanges",
+        "source": "C20"
+      },
+      {
+        "provider": "JustScreener",
+        "observed_at_utc": "2026-11-03T00:46:00Z",
+        "open_interest_usd": 1600000000,
+        "coverage": "9 exchanges",
+        "source": "C20"
+      }
+    ],
+    "data_quality_policy": "No cross-provider average or canonical aggregate until contract identifiers, venue coverage, quote currencies, timestamps, mark/index methodology and duplicate contract handling are reconciled."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized historical feature store or calibrated out-of-sample edge established."
+  },
+  "source_independence": {
+    "caution": "Multiple URLs are not automatically independent sources. Official corporate releases corroborate the issuing entity's own announcement but are not independent confirmation of commercial execution. Secondary ETF and derivatives aggregators may share upstream providers.",
+    "next_requirement": "Record publisher identity, upstream origin lineage, collection time, source publication time and content hash for every observation."
+  },
+  "next_actions": [
+    "Verify whether JPYSC has moved beyond SBI VC Trade account-limited circulation and whether any public-chain issuance has occurred.",
+    "Measure JPYSC on-chain balance separately from lending balances and handled totals.",
+    "Monitor actual SBI-SMFG and BlackRock/Startale/JPYSC execution rather than treating MOUs as launched integrations.",
+    "Capture Circle Q3 results when released and reconcile Circle/Binance and Coinbase/Circle distribution economics.",
+    "Obtain synchronized exchange/contract-level XRP derivatives data and fund-level ETF creations/redemptions.",
+    "Continue SBIC, ASK Coin and Camilla Stephenson public-video identity research."
+  ]
+}
