@@ -1,7 +1,11 @@
 # XRP fixed-horizon forecast ledger contract v1
 
 ## Status
-Proposed in draft PR #1622 (fresh-main research and prediction-foundation successor). Deterministic recording/scoring prototype only. It does not generate forecasts, ingest live data, train a model or trade. The SQLite database is runtime state and is excluded from Git.
+The deterministic SQLite recording/scoring prototype is EXECUTED in `barrot_agent/evolution/forecast_ledger.py` and covered by `tests/test_forecast_ledger.py`. It does not generate forecasts, ingest live data, train a model or trade. The database is runtime state and is excluded from Git.
+
+The ledger is restricted to live/shadow issuance: each immutable issuance event records the actual ledger receipt time and `recording_mode=live_shadow`; the target must still be in the future at receipt; caller-supplied issue time cannot be after receipt or more than five minutes old. Historical backtests must use separate evaluation artifacts and must not be inserted as live forecasts.
+
+Feature snapshot IDs are currently recorded as references but are not resolved against the persistent feature store at issuance. Until that cross-store check exists, ledger entries are structurally validated records, not fully provenance-verified forecasts.
 
 ## Forecast definition
 Supported horizons: 1 hour, 4 hours, 24 hours, 7 days and 30 days. Every record defines the exact XRP/USD target measure, venue convention, flat band and target timestamp. Down/flat/up classes are determined by a flat band fixed before the outcome is known.
@@ -9,7 +13,7 @@ Supported horizons: 1 hour, 4 hours, 24 hours, 7 days and 30 days. Every record 
 ## Required record
 Asset, venue, target definition, reference price and UTC timestamp, reference source ID and maximum age, data cutoff, issue time, horizon and target time, model and baseline versions, complete three-class probabilities for both model and baseline, feature maximum timestamp, feature snapshot IDs, source IDs, assumptions, alternatives, outcome timestamp tolerance, fees and slippage. All timestamps are timezone-aware UTC.
 
-Reference price and all feature timestamps must not exceed the data cutoff. Reference price must meet the declared maximum age. Issue time must be at or after cutoff and before target time. Target time must equal cutoff plus horizon. Identical records are idempotent via canonical SHA-256 IDs.
+Reference price and all feature timestamps must not exceed the data cutoff. Reference price must meet the declared maximum age. Issue time must be at or after cutoff and before target time, and must be no later than actual ledger receipt. Target time must equal cutoff plus horizon and remain in the future when recorded. Identical records are idempotent via canonical SHA-256 IDs.
 
 ## Outcome and scoring
 Outcomes are recorded once, only after the target time. Scored outcomes require a positive price observed within the predeclared target-time tolerance, an outcome venue and source IDs. Cross-venue outcomes require an explicit normalization method. Missing outcomes are marked unscorable with a reason, never counted as misses.
@@ -20,4 +24,4 @@ The prototype reports three-class Brier mean-squared error, log loss, top-class 
 SQLite transactions and triggers reject ordinary SQL UPDATE/DELETE of forecast, outcome and event rows. They are not cryptographically tamper-proof against database-file replacement, schema modification or host compromise. Stronger tamper evidence requires signed/independently anchored exports. Runtime DB and sidecars are ignored by Git.
 
 ## Not implemented
-No public-data ingestion or persistent feature store. The point-in-time validator is an in-memory schema/eligibility component only; it does not populate historical snapshots. Walk-forward training/evaluation, leakage-safe splits, uncertainty intervals, drift detection, full class-wise calibration, shadow operation and trading remain unimplemented.
+No public-data ingestion, scheduled historical feature population, forecast generator, model training, walk-forward evaluation, baseline superiority, class-wise calibration, uncertainty intervals, drift detection, shadow scheduler or trading integration is included. The separate local SQLite feature-store prototype exists but is not yet populated with historical XRP data.

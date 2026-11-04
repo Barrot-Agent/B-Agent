@@ -244,10 +244,10 @@ class ForecastLedger:
             # only forecasts recorded before their target and within five minutes of issue.
             if issued_at > recorded_at:
                 raise ForecastLedgerError("issued_at_utc cannot be later than actual ledger recording time")
-            if (recorded_at - issued_at).total_seconds() > 300:
-                raise ForecastLedgerError("issued_at_utc is older than the five-minute live recording window")
             if target_at <= recorded_at:
                 raise ForecastLedgerError("target_time_utc must be after actual ledger recording time")
+            if (recorded_at - issued_at).total_seconds() > 300:
+                raise ForecastLedgerError("issued_at_utc is older than the five-minute live recording window")
 
             event = {
                 "forecast_id": forecast_id,
