@@ -1,10 +1,10 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
-**Snapshot:** 2026-11-04, after merge of PR #1639.
+**Snapshot:** 2026-11-04T11:42:54Z, after creation of PR #1643.
 
-- Open pull requests: 362
-- Draft: 356
-- Non-draft: 6
+- Open pull requests: 366
+- Draft: 359
+- Non-draft: 7
 
 ## Current-main integration work
 
@@ -24,8 +24,8 @@ The shared `scripts/barrot_agent.py`, `tests/test_scientific_discovery.py`, and 
 ## Separate workstreams
 
 - #1269 — OBJ mesh topology/triangulation; stale geometry workstream, requires fresh-main refresh and full-suite CI. Its duplicate predecessors #1252 and #1137 are closed.
-- #1614 — unique XRP research archive; preserve until all unique research artifacts are reconciled into the canonical append-only archive.
-- #1611 — predecessor to #1614; preserve until archive reconciliation.
+- #1597, #1605, #1608 and #1614 — unique XRP research source branches; PR #1643 is the consolidated current-main archive successor. Keep the source PRs open until all included paths are verified on main; excluded candidate video inventories remain preserved in their source branches.
+- #1611 — predecessor to #1614; preserve until its remaining code and research content is separately reconciled.
 - #1314 — predecessor to #1317; close only after the successor is merged and verified.
 - #758 — closed as stale/unreviewed because it combined self-upgrade with trading recommendations and was over 500 commits behind.
 - #1181 — closed because its temporary-payload-lifetime fix and regression test were already present on current main.
@@ -45,3 +45,24 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 5. Merge only after verification and explicit user authorization.
 6. After merge, verify main, then close source PRs only when their changes are demonstrably present.
 7. Never bulk-close drafts or discard unique work; preserve branches/history and classify each as ready, blocked, superseded, duplicate or unique/unreviewed.
+
+
+## Run 12 — current classification (2026-11-04T11:42:54Z)
+
+### Current-main integration PRs
+
+- **#1640 — blocked / nearly ready:** non-draft, 20 commits ahead of main, zero behind, 26 files. Exact code head `b654e6c7884f0ba002f0b285ace57098b422916d` passed 553 core tests + 8 subtests, 788 full-suite tests + 8 subtests, four-manifest pip-audit with no known vulnerabilities, and fail-closed gate. Zero unresolved review threads, but zero approving reviews. Main is protected and the detailed protection endpoint returned 403; required approval policy is not confirmed. A documentation-only child now records Run 12; its own exact-head checks must finish. Do not merge until required approval conditions are verified and satisfied.
+- **#1642 — unique/unreviewed; blocked on integration order:** point-in-time snapshot/forecast issuance integrity. Exact head `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` passed 492 core tests + 8 subtests, 725 full-suite tests + 8 subtests and fail-closed gate. Draft. Its handoff edit overlaps #1640's shared durable handoff; reconcile before merging.
+- **#1641 — unique/unreviewed:** bounded autonomous experimentation foundation. Exact head `5e064a12409230762d35360430ececb90f7a97c3` passed 485 core tests + 8 subtests, 728 full-suite tests + 8 subtests and fail-closed gate. Draft.
+- **#1643 — unique/unreviewed:** consolidated XRP research archive on current main, 40 files (39 historical JSON artifacts plus one live market snapshot with two exact API-body SHA-256 receipts). Head `9d40454d6882d0ea32c5682f593a16a1f9806586`; core tests passed 485 + 8 subtests; fail-closed gate passed; full suite was still running at the cutoff. No dependency manifests changed, so dependency audit did not trigger. Draft; do not merge until full suite and review finish.
+
+### Research source PRs
+
+- **#1597, #1605, #1608, #1614 — unique/unreviewed; included portions pending supersession by #1643.** Their stale branches remain untouched. Do not close until #1643 is merged, every included path is verified on main, and cross-references are posted. Candidate Kamilah/Camilla video lists were excluded because first-party identity/canonical channel ownership remains unverified.
+- **#1611 — unique/unreviewed predecessor.** Preserve until its remaining code and research are compared against current main and #1642; no closure.
+- **#1317, #1318, #1320, #1269, #1255, #1254 — non-draft, unreviewed/unique workstreams.** No bulk closure or changes in this run.
+
+### Counts and safety
+
+- Open PRs: 366; drafts: 359; non-drafts: 7. The seven non-drafts are #1640, #1318, #1320, #1317, #1269, #1255 and #1254.
+- No branches were force-pushed or rewritten. No user work was reset, stashed or discarded. No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade or real-money action occurred.
