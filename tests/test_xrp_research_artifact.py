@@ -593,7 +593,7 @@ def test_coinbase_q3_sec_collateral_disclosures_do_not_imply_xrp_utilization() -
     path = REPO_ROOT / "research" / "xrp_intelligence" / "20261104T071800Z-coinbase-q3-collateral-sec-addendum.json"
     data = json.loads(path.read_text(encoding="utf-8"))
     lending = data["coinbase_q3"]["lending"]
-    assert lending["period_end"] == "2026-09-30"
+    assert data["coinbase_q3"]["filing"]["period_end"] == "2026-09-30"
     assert lending["total_loan_receivables_usd"] == 1_976_137_000
     assert lending["crypto_asset_loan_receivables_usd"] == 17_598_000
     collateral = data["coinbase_q3"]["recognized_lending_collateral"]
