@@ -57,9 +57,12 @@ jobs:
           api = HfApi(token=token)
           repo_id = "Scribedpengenius/Barrot-Brain-SelfHosted"
           try:
-              api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
+              api.create_repo(repo_id, repo_type="space", space_sdk="docker", private=True, exist_ok=True)
           except Exception as e:
               print("create_repo note:", e)
+          space_info = api.repo_info(repo_id, repo_type="space")
+          if not bool(getattr(space_info, "private", False)):
+              raise SystemExit("ABORT: destination Space must be private; refusing to upload self-hosted brain code")
           # Register the runtime secret before uploading code that may boot immediately.
           api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
           api.upload_folder(
