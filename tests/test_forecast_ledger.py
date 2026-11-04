@@ -70,36 +70,46 @@ FEATURE_SNAPSHOT = build_feature_snapshot(
 )
 
 
-def _readiness_fixture(asset, horizon_seconds):
+def _readiness_fixture(asset, horizon_seconds, source_ids=None):
     """Synthetic test-only evidence; never represents real XRP model readiness."""
-    raw_receipt_bytes = {
-        "receipt-kraken-001": b'{"pair":"XRP/USD","mid":1.27}',
-        "receipt-macro-001": b'{"series":"DFF","value":"4.00"}',
+    source_ids = source_ids or ["kraken-001", "macro-001"]
+    source_details = {
+        "kraken-001": (
+            "kraken.com",
+            "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+            b'{"pair":"XRP/USD","mid":1.27}',
+        ),
+        "macro-001": (
+            "fred.stlouisfed.org",
+            "https://api.stlouisfed.org/fred/series/observations",
+            b'{"series":"DFF","value":"4.00"}',
+        ),
+        "unregistered": (
+            "unregistered.example",
+            "https://example.com/receipt",
+            b'{"source":"unregistered-test-only"}',
+        ),
     }
-    receipts = [
-        {
-            "source_id": "kraken-001",
-            "receipt_id": "receipt-kraken-001",
-            "raw_content_sha256": hashlib.sha256(raw_receipt_bytes["receipt-kraken-001"]).hexdigest(),
-            "raw_capture_status": "byte_complete",
-            "raw_receipt_sha256_verified": True,
-            "independence_group": "kraken.com",
-            "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
-            "source_data_as_of_utc": FEATURE_CUTOFF,
-            "captured_at_utc": FEATURE_CAPTURED,
-        },
-        {
-            "source_id": "macro-001",
-            "receipt_id": "receipt-macro-001",
-            "raw_content_sha256": hashlib.sha256(raw_receipt_bytes["receipt-macro-001"]).hexdigest(),
-            "raw_capture_status": "byte_complete",
-            "raw_receipt_sha256_verified": True,
-            "independence_group": "fred.stlouisfed.org",
-            "source_uri": "https://api.stlouisfed.org/fred/series/observations",
-            "source_data_as_of_utc": FEATURE_CUTOFF,
-            "captured_at_utc": FEATURE_CAPTURED,
-        },
-    ]
+    raw_receipt_bytes = {}
+    receipts = []
+    for source_id in source_ids:
+        group, source_uri, raw_bytes = source_details[source_id]
+        receipt_id = f"receipt-{source_id}"
+        raw_receipt_bytes[receipt_id] = raw_bytes
+        receipts.append(
+            {
+                "source_id": source_id,
+                "receipt_id": receipt_id,
+                "raw_content_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+                "raw_capture_status": "byte_complete",
+                "raw_receipt_sha256_verified": True,
+                "independence_group": group,
+                "source_uri": source_uri,
+                "source_data_as_of_utc": FEATURE_CUTOFF,
+                "captured_at_utc": FEATURE_CAPTURED,
+            }
+        )
+    independence_groups = sorted({source_details[source_id][0] for source_id in source_ids})
     dataset_manifest = {
         "model_eligible": True,
         "quality_status": "verified",
@@ -107,8 +117,8 @@ def _readiness_fixture(asset, horizon_seconds):
         "venue": "kraken:XRP/USD",
         "feature_ids": ["xrp.spot.mid_price"],
         "feature_snapshot_ids": [FEATURE_SNAPSHOT["snapshot_id"]],
-        "source_ids": ["kraken-001", "macro-001"],
-        "source_independence_groups": ["fred.stlouisfed.org", "kraken.com"],
+        "source_ids": source_ids,
+        "source_independence_groups": independence_groups,
         "raw_source_receipts": receipts,
         "data_cutoff_utc": FEATURE_CUTOFF,
     }
@@ -124,7 +134,7 @@ def _readiness_fixture(asset, horizon_seconds):
         "evaluation_type": "chronological_walk_forward_model_evaluation",
         "status": "PASS",
         "policy_id": "xrp_forecast_readiness_v1",
-        "evaluation_id": f"test-evaluation-{asset.lower()}-{horizon_seconds}",
+        "evaluation_id": f"test-evaluation-{asset.lower()}-{horizon_seconds}-{'-'.join(source_ids)}",
         "model_version": "xrp-test-v1",
         "baseline_model_version": "naive-frequency-v1",
         "asset": asset,
@@ -133,7 +143,7 @@ def _readiness_fixture(asset, horizon_seconds):
         "dataset_receipt_id": f"test-dataset-receipt-{asset.lower()}-{horizon_seconds}",
         "dataset_sha256": hashlib.sha256(canonical_dataset).hexdigest(),
         "dataset_manifest": dataset_manifest,
-        "source_independence_group_count": 2,
+        "source_independence_group_count": len(independence_groups),
         "training_sample_count": 1000,
         "out_of_sample_sample_count": 200,
         "shadow_evaluation_sample_count": 200,
@@ -163,7 +173,7 @@ def _readiness_fixture(asset, horizon_seconds):
         ensure_ascii=False,
         allow_nan=False,
     ).encode("utf-8")
-    receipt_id = f"test-readiness-receipt-{asset.lower()}-{horizon_seconds}"
+    receipt_id = f"test-readiness-receipt-{asset.lower()}-{horizon_seconds}-{'-'.join(source_ids)}"
     report_sha256 = hashlib.sha256(report_bytes).hexdigest()
     return {
         "report_bytes": report_bytes,
@@ -182,9 +192,10 @@ READINESS_FIXTURES = {
     ("XRP", 3600): _readiness_fixture("XRP", 3600),
     ("XRP", 14400): _readiness_fixture("XRP", 14400),
     ("BTC", 3600): _readiness_fixture("BTC", 3600),
+    ("XRP", 3600, "source_mismatch"): _readiness_fixture(
+        "XRP", 3600, ["kraken-001", "macro-001", "unregistered"]
+    ),
 }
-
-
 def _register_readiness_fixtures(ledger):
     for fixture in READINESS_FIXTURES.values():
         ledger.register_readiness_report(
@@ -256,6 +267,8 @@ def forecast(**overrides):
     value.update(overrides)
     if "readiness_certificate" not in value:
         fixture_key = (str(value["asset"]).strip().upper(), value["horizon_seconds"])
+        if "unregistered" in value["source_ids"]:
+            fixture_key = (*fixture_key, "source_mismatch")
         fixture = READINESS_FIXTURES.get(fixture_key, READINESS_FIXTURES[("XRP", 3600)])
         value["readiness_certificate"] = fixture["certificate"]
     return value
