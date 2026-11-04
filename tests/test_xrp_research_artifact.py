@@ -294,3 +294,55 @@ def test_protocol_addendum_provenance_graph_and_prediction_boundary() -> None:
     event = data["market_snapshot"]["upcoming_events"][0]
     assert _parse_utc(event["scheduled_at_utc"]) > _parse_utc(data["data_cutoff_utc"])
     assert data["market_snapshot"]["lending_protocol"]["status_at_cutoff"] == "not_enabled"
+
+
+EVENT_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T050632Z-circle-arc-binance-xrpl-event-addendum.json"
+)
+
+
+def test_circle_arc_binance_and_xrpl_event_addendum_is_provenance_safe() -> None:
+    data = json.loads(EVENT_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_circle_arc_and_protocol_event_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    source_ids = [item["id"] for item in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+
+    for observation in data["observations"]:
+        assert observation["id"] and observation["class"] and observation["detail"]
+        assert observation["evidence"]
+        assert set(observation["evidence"]) <= known
+
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"] and edge["status"]
+        assert set(edge["evidence"]) <= known
+
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"]
+        assert hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"]
+        assert hypothesis["tests"]
+
+    assert data["predictions"]["issued"] is False
+
+
+def test_circle_q3_and_fixcleanup_events_are_not_mislabeled_as_completed() -> None:
+    data = json.loads(EVENT_ADDENDUM.read_text(encoding="utf-8"))
+    cutoff = _parse_utc(data["data_cutoff_utc"])
+    circle_event = next(
+        item for item in data["observations"]
+        if item["id"] == "OBS-CIRCLE-Q3-20261104-02"
+    )
+    assert circle_event["class"] == "confirmed_scheduled_event"
+    assert _parse_utc("2026-11-04T13:00:00Z") > cutoff
+
+    fix = data["market_snapshot"]["xrpl_amendment"]
+    assert fix["votes_for"] == 33
+    assert fix["trusted_validators"] == 35
+    assert fix["threshold_votes"] == 29
+    assert fix["active_at_cutoff"] is False
+    assert _parse_utc(fix["earliest_activation_utc"]) > cutoff
