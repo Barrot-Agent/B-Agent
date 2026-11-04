@@ -155,6 +155,64 @@
       "claims_supported": [
         "Combined Binance spot and OKX perpetual depth bands near the market price"
       ]
+    },
+    {
+      "id": "ainvest_actual_capital_phrase_lead",
+      "publisher": "AInvest",
+      "authority": "secondary AI-assisted commentary",
+      "url": "https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/",
+      "published_at_utc": "2026-08-23",
+      "retrieved_at_utc": "2026-11-04T13:39:06Z",
+      "source_independence_group": "ainvest_secondary_commentary",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Exact phrase 'actual capital' used in a sentence about Ripple's RLUSD rather than XRP; article is AI-generated and not primary evidence"
+      ]
+    },
+    {
+      "id": "kamilah_stevenson_first_party_wealth_site",
+      "publisher": "Kamilah Stevenson / learn.kamilahstevenson.com",
+      "authority": "self-published first-party professional site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "retrieved_at_utc": "2026-11-04T13:39:06Z",
+      "source_independence_group": "kamilah_stevenson_first_party",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Site self-identifies Dr. Kamilah Stevenson as The Wealth Doctor and describes investing, stocks, crypto and a 90-day investor program",
+        "Site does not provide a verified YouTube channel link in the captured page"
+      ]
+    },
+    {
+      "id": "kamilah_stevenson_youtube_directory_candidates",
+      "publisher": "IDCrawl / third-party social profile directory",
+      "authority": "unverified third-party directory",
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "retrieved_at_utc": "2026-11-04T13:39:06Z",
+      "source_independence_group": "third_party_social_directory",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Directory lists multiple candidate YouTube profiles using the Kamilah Stevenson name and similar finance/crypto descriptions; not proof of account ownership"
+      ]
+    },
+    {
+      "id": "kamilah_stevenson_youtube_channel_metrics",
+      "publisher": "Vling / Scrumball",
+      "authority": "third-party channel analytics directories",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "retrieved_at_utc": "2026-11-04T13:39:06Z",
+      "source_independence_group": "third_party_channel_analytics",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Candidate channel ID UCqUPJMQdkCN6lsLVDnichPA is labeled Kamilah Stevenson and reported around 138K-143K subscribers; channel ownership remains unverified"
+      ]
     }
   ],
   "circle_q3_context": {
@@ -437,7 +495,10 @@
     "The Tazapay acquisition is a definitive agreement expected to close in 2027 subject to regulatory approvals; it is not a completed acquisition.",
     "Tazapay's $25B+ annualized payment volume and approximately 60% stablecoin share are Circle-reported metrics, not independently reconciled actual capital flows.",
     "Samsung Wallet and Visa Direct announcements describe USDC rails; they do not establish XRP usage or XRP-related settlement demand.",
-    "Arc mainnet and ARC token are a separate network/token ecosystem; do not merge Arc activity into XRPL or XRP metrics."
+    "Arc mainnet and ARC token are a separate network/token ecosystem; do not merge Arc activity into XRPL or XRP metrics.",
+    "The AInvest 'actual capital' phrase is a secondary AI-assisted statement about RLUSD; it is not evidence of XRP capital flows or a primary disclosure.",
+    "The candidate YouTube channel @drkamilahstevenson is not linked from the captured first-party site; subscriber counts and channel descriptions from directories do not prove identity.",
+    "Multiple same-name YouTube profiles with similar finance/crypto bios create a material risk of mistaken attribution; no public video inventory is authorized by the current evidence."
   ],
   "prediction_status": {
     "status": "NOT_ISSUED",
@@ -459,11 +520,87 @@
     "Do not issue a directional forecast until the point-in-time feature store, chronological walk-forward evaluation, baseline comparison, calibration and drift checks pass.",
     "Track the Tazapay acquisition through regulatory approval and closing; separately verify post-close payment volume, stablecoin share and actual settlement.",
     "Seek transaction-level or issuer-reported actual throughput for Samsung Wallet and Visa Direct rather than annualized addressable-market claims.",
-    "Monitor Circle's disclosed interest-rate, distribution concentration, redemption-run and Arc execution risks as separate event features."
+    "Monitor Circle's disclosed interest-rate, distribution concentration, redemption-run and Arc execution risks as separate event features.",
+    "Search for a first-party link from Kamilah Stevenson's verified website or authenticated social profile to the candidate YouTube channel before collecting video titles or attributing content.",
+    "Keep the AInvest 'actual capital' sentence as a low-confidence phrase lead only; seek primary Ripple disclosures and actual cash/issuance/settlement evidence before using the claim.",
+    "Do not conflate the health/wellness and wealth-education profiles or any same-name channel until first-party cross-link evidence resolves identity."
   ],
   "artifact_revision": {
     "revised_at_utc": "2026-11-04T13:39:06Z",
-    "revision_reason": "Expanded the Circle Q3 primary-source review to include newly verified payment-rail, acquisition, Arc and issuer-risk disclosures. Original capture timestamp and raw-source policy are unchanged.",
+    "revision_reason": "Expanded the Circle Q3 primary-source review and added exact-phrase and identity-verification leads for 'actual capital' and Kamilah Stevenson. Original capture timestamp and raw-source policy are unchanged.",
     "revision_status": "append_only_artifact_revision"
+  },
+  "exact_phrase_leads": {
+    "actual_capital": {
+      "exact_phrase": "actual capital",
+      "lead": "AInvest's 2026-08-23 article uses the phrase in the sentence 'Ripple's actual capital is flowing into its regulated stablecoin, RLUSD.'",
+      "context": "The statement refers to RLUSD and Ripple's company strategy, not to XRP token capital flows. The article is AI-generated by an AInvest author and is secondary commentary.",
+      "evidence_status": "secondary_lead_only",
+      "primary_evidence_found": false,
+      "source_id": "ainvest_actual_capital_phrase_lead",
+      "model_eligible": false
+    },
+    "ask_coin": {
+      "exact_phrase": "ASK Coin",
+      "result": "No authoritative XRP, XRPL, Ripple or SBI match established in this search pass. The previously identified Permission ASK token has Base and Polygon references but no verified XRPL deployment.",
+      "evidence_status": "unresolved",
+      "model_eligible": false
+    },
+    "sbic_chatgpt": {
+      "exact_phrase": "SBIC, ChatGPT SBIC",
+      "result": "No separate organization or OpenAI partnership established. SBIC East's public 2025 generative-AI training page includes ChatGPT training, which is evidence of a training course only.",
+      "evidence_status": "unresolved_as_partnership_claim",
+      "model_eligible": false
+    }
+  },
+  "identity_research": {
+    "subject_name_variants": [
+      "Kamilah Stevenson",
+      "Dr. Kamilah Stevenson",
+      "Camilla Stevenson"
+    ],
+    "professional_identity": "The first-party learn.kamilahstevenson.com site self-identifies Dr. Kamilah Stevenson as The Wealth Doctor and describes stocks, crypto and investing education. A separate kamilahstevenson.com presence describes health and wellness. The available pages do not conclusively establish whether every same-name professional profile and channel belongs to one person.",
+    "candidate_youtube_channels": [
+      {
+        "handle": "@drkamilahstevenson",
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "third_party_subscriber_estimate": 138000,
+        "description_match": "finance, stocks, crypto and long-term investing",
+        "first_party_cross_link": false,
+        "identity_status": "unverified"
+      },
+      {
+        "handle": "@CoachKamilahStevensonxrp",
+        "third_party_subscriber_estimate": 40,
+        "first_party_cross_link": false,
+        "identity_status": "unverified"
+      },
+      {
+        "handle": "@KamilahStevensonDigitalNetwork",
+        "third_party_subscriber_estimate": 245,
+        "first_party_cross_link": false,
+        "identity_status": "unverified"
+      },
+      {
+        "handle": "@KamilahStevensonms",
+        "third_party_subscriber_estimate": 9,
+        "first_party_cross_link": false,
+        "identity_status": "unverified"
+      },
+      {
+        "handle": "@Kamilahstevenson-r4b",
+        "third_party_subscriber_estimate": 2,
+        "first_party_cross_link": false,
+        "identity_status": "unverified"
+      }
+    ],
+    "directory_observation": "A third-party directory lists 20 YouTube profiles under the Kamilah Stevenson name, many with near-identical finance/crypto descriptions. This pattern raises impersonation/clone risk but does not prove any specific channel is fraudulent.",
+    "video_inventory_status": "NOT_STARTED_PENDING_FIRST_PARTY_CHANNEL_VERIFICATION",
+    "attribution_rule": "Do not attribute, enumerate or summarize public videos as belonging to the verified person until a first-party website or authenticated social account links to the channel, or the channel independently links back to the verified first-party domain.",
+    "source_ids": [
+      "kamilah_stevenson_first_party_wealth_site",
+      "kamilah_stevenson_youtube_directory_candidates",
+      "kamilah_stevenson_youtube_channel_metrics"
+    ]
   }
 }
