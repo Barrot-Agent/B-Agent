@@ -573,3 +573,72 @@ Interpretation:
 - SBI's visible institutional strategy is multi-rail: XRP-enabled remittance through SBI Remit/SBI Ripple Asia; JPYSC and OUSD interoperability; tokenized MMF integration; and a broader SMFG stablecoin alliance.
 - Coinbase, BlackRock, Visa and Stripe appearing in the same Open Standard membership list does not by itself prove bilateral SBI-Coinbase, SBI-BlackRock or SBI-Visa commercial agreements. The BlackRock MOU is a separately evidenced direct relationship; the Coinbase item is membership/co-presence only.
 - JPYSC's growing handling/lending figures demonstrate traction in SBI's yen-stablecoin channel, not a measurable XRP purchase, XRP collateral balance or XRPL liquidity inflow. Keep these as distinct graph edges and capital-flow categories.
+
+
+---
+
+## Run 10 — 2026-11-04T11:05:00Z — exact-head review and XRP ecosystem update
+
+### Repository state and integration evidence
+
+- Current `main`: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Integration PR: [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), base is the current main SHA. The code-fix commit tested in this run is `6183c76e4d11d9980243acf78356c329d4c48572`.
+- Exact-head CI on `6183c76e`: [run 41819583353](https://github.com/Barrot-Agent/B-Agent/actions/runs/41819583353) passed. Core job: **551 passed + 8 subtests**. Full repository job: **786 passed + 8 subtests**. The full run includes the XRP provenance, provider-disagreement, future-event and identity-gating tests.
+- Four-manifest dependency audit: [run 41819583348](https://github.com/Barrot-Agent/B-Agent/actions/runs/41819583348) passed. `requirements-dev.txt`, `requirements.tx`, `hf_space/requirements.txt`, and `legacy/requirements_legacy.txt` each reported **no known vulnerabilities**.
+- Fail-closed gate: [run 41819583351](https://github.com/Barrot-Agent/B-Agent/actions/runs/41819583351) passed and explicitly reported that no repository content was changed. Automatic merging remains disabled.
+- Current main CI: [run 41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459) passed on `9100dbac`: **485 core tests + 8 subtests; 718 full-suite tests + 8 subtests**. The same main push also triggered a GitHub Pages build/deployment workflow; that was an automatic workflow side effect, not a deployment initiated in this run.
+- The latest code-fix commit addresses review findings: malformed MMI evidence-state values now fail closed before enum membership checks; same-publisher corroboration tests use the same canonical URI host; structural comparisons preserve duplicate invariant multiplicity and integer precision above `2**53`; paper-trader buy quantities and resulting positions are checked for finiteness before state mutation; the deployment test verifies that the shared secret is scoped to the deployment step.
+- The historical MMI ledger SHA-256 in the audit record is 64 hex characters and was independently recomputed from the exact 2,588-byte ledger including its terminal newline: `f7cf0096c77a6c0ced02bf1accfa58516d07ad325270776c0110d620253887e9`. Its separate Git blob SHA-1 is `b65d4325ccc907d4f7304e9d9e0154efbb6930b7`. The ledger itself remains unchanged and its historical zero-independent-source events remain explicitly classified as local deterministic fixtures, not external XRP corroboration.
+- This handoff update is a documentation-only descendant of the tested code commit. Its own exact-head CI is pending until the new commit's workflows complete; do not transfer the `6183c76e` result to a later head without checking that head.
+
+### PR inventory, ancestry and blockers
+
+- Open PR inventory: **365 open** across the complete paginated inventory; **358 drafts and 7 non-drafts**. Do not bulk-close.
+- Current-main workstreams: #1640 is non-draft and mergeable/clean; #1641 and #1642 are drafts. All three are based on `9100dbac`.
+- #1640 and #1642 overlap only on `BARROT_XRP_MISSION_HANDOFF.md`; #1641 has no changed-path overlap with either. #1642 is the distinct point-in-time feature-store/forecast-ledger verification workstream; #1641 is the separate experimentation foundation. Keep them separate until each is reviewed and its handoff overlap is reconciled.
+- Older XRP research branches #1597, #1605, #1608 and #1614 remain unique/unreviewed research candidates. Preserve them for one consolidated fresh-main research/archive integration; do not merge or close them independently.
+- Main reports `protected=true`, but the GitHub branch-protection endpoint returns 403 to this connection. Required approval rules therefore remain unverified. CODEOWNERS assigns `* @Barrot-Agent`; Copilot and CodeRabbit comments are not approvals. No approving review is present. **PR #1640 is not authorized to merge yet**, even though its current code head is clean and checks passed.
+- The repository contains 86 workflow files. The high-risk subset reviewed includes 15 manual `workflow_dispatch` workflows capable of writing to main, plus the push-triggered A2A-worker and self-hosted-brain deployment workflows. The latter two are changed to manual, explicit-confirmation, exact-SHA operation in #1640. Other manual writers remain and require a separate containment review; no scheduled direct-main writer was confirmed in the reviewed subset. `barrot-merge.yml` is a Hugging Face upload workflow, not a GitHub PR merge; `barrot-approve-pr.yml` applies an approval label, not a GitHub review approval; `barrot-pr-automerge.yml` is disabled; `barrot-gated-merge.yml` is fail-closed.
+- Dependency manifests use minimum-version constraints and there is no single lockfile. The audit passed, but reproducible dependency locking and coverage expansion for currently excluded major packages remain backlog items.
+
+### XRP market observations — research only, not model features
+
+Cutoff: **2026-11-04 11:05 UTC**. The latest public observations below are earlier snapshots; none is a synchronized live feed at the cutoff.
+
+- Spot: ChartExchange showed Coinbase XRP/USD at **$1.2732 at 06:16 UTC**, with a displayed 24-hour range of **$1.2398–$1.2816**. Fuelmaps showed a **$1.2531** multi-venue mid at 02:00 UTC. These are dated snapshots, not a current quote.
+- Order book: Fuelmaps' 02:00 UTC six-venue snapshot was bid-heavy within 1% (**$12.8M bids vs $8.9M asks**). EdgeOrNot's 04:37 UTC Binance-spot-plus-OKX-perpetual snapshot was slightly ask-heavy (**$9.5M bids vs $10.1M asks**). Different venue sets and times; resting orders can be cancelled. Do not average them or infer a directional signal.
+- Derivatives: Seandra's Binance-only 04:15 UTC snapshot showed **$438.4M OI**, +6.1% over 24 hours and +12% over seven days while price was down 4.7% over seven days; funding was +0.0100% per period, 72% of accounts were long, and top traders were 66% long by size. TradRadar's 03:40 UTC seven-exchange aggregate showed **$1.95B OI**, +0.0% over 24 hours, +0.0100% OI-weighted funding per eight hours, 77.4% long positions and at least $6.38M liquidations. Coverage differs; the Binance figure is a subset of the multi-exchange total, not a conflicting estimate of the same universe.
+- Large-transfer flow: TrackWhale's 03:01 UTC seven-day tracked-transfer view reported **210.95M XRP inflows**, **466.81M XRP outflows**, net **−255.86M XRP**. This is a sample of large externally tracked transfers, not complete exchange-wallet balances. The Binance incident/recipient reconciliation remains unresolved; do not admit the aggregate into the feature store.
+- ETF holdings: Maketo estimated **1.14B XRP / $1.46B** across five US XRP funds as of Nov 3. Its 30-day net flow was about **+$18M**, while the Nov 3 daily figure was **$0**. XRP Insights' broader series includes BITW and reports a different universe/cutoff. Preserve provider and fund-universe differences.
+- Stablecoins: stables.cool's 03:15 UTC snapshot estimated **$2.59B total RLUSD**, including **$869.7M on XRPL** and **$1.72B on Ethereum**. XRPL USDC supply estimates differ between explorers (roughly $3.8M and $6.1M) and lack a synchronized timestamp in this pass. These are third-party snapshots, not issuer-reconciled receipts.
+- These observations are not yet backed by this run's immutable raw-source receipts and SHA-256 snapshots. They remain research notes only: no point-in-time feature rows, model training, backtest, probability update or directional forecast was produced.
+
+### Corporate, custody, payment and capital-flow relationship updates
+
+- **Coinbase ↔ Circle:** Coinbase's Q3 2026 SEC filing reports stablecoin revenue of about **$306.9M** for the quarter versus **$324.5M** a year earlier, and says the Circle arrangement was renewed on the same terms. The filing attributes a positive contribution to higher average USDC balances and a negative contribution to lower interest rates. It does not disclose an XRP-specific collateral utilization balance.
+- **Coinbase ↔ Ripple:** Coinbase announced RLUSD on Coinbase Prime, Coinbase Exchange and its retail app on Oct 28, with transfers across XRPL, Base and Ethereum. Its announcement says Global Exchange availability and RLUSD collateral support will follow. Coinbase Global Exchange's cross-collateral help page lists XRP with asset-dependent limits/haircuts; eligibility is not proof of posted collateral. Separately, Ripple Prime clients have access to Coinbase Derivatives contracts, including XRP contracts, cleared by Nodal Clear through Ripple's acquired FCM, now Ripple Prime. This is an operational distribution/clearing link, not an equity relationship.
+- **Circle ↔ Ripple/XRPL:** Circle issued native USDC on XRPL on June 12, 2025. Circle is the USDC issuer; XRP is the XRPL native asset. This is direct ecosystem deployment, not evidence that USDC is XRP or that USDC supply creates proportional XRP demand. No separate equity relationship was established in this pass.
+- **SBI ↔ Circle:** This is a direct strategic relationship: SBI announced a Circle joint venture, acquired approximately **$50M** of Circle shares at listing, made SBI VC Trade a USDC distributor in Japan, and joined Arc as a founding validator. Circle's Arc public mainnet launched Sep 16, 2026. SBI's own release describes this as an ongoing collaboration and says it intends to leverage both USDC and JPYSC.
+- **SBI ↔ Coinbase:** SBI and Startale joined Open Standard, whose participant list includes Coinbase. SBI/Startale are considering a JPYSC–OUSD interoperability proof of concept. SBI's release explicitly says this is under consideration, not a production payment or trading service. Shared membership is not a bilateral SBI–Coinbase contract.
+- **SBI ↔ Ripple:** SBI's 2025 investor presentation says SBI holds approximately **9%** of Ripple as its largest external shareholder, established SBI Ripple Asia with a **60/40 SBI/Ripple** split, and began Japan-origin remittances using XRP as a bridge currency through SBI Remit in 2021. The stake and JV are direct links; they do not prove current corridor volumes or XRP price impact.
+- **SBI JPYSC:** SBI VC Trade reported on Nov 2 that JPYSC lending balances exceeded **¥10B** and JPYSC handling balances exceeded **¥30B**. These are JPYSC product balances, not XRP collateral, XRP flows or XRP demand.
+- **Regulation:** OCC records and issuer announcements distinguish final trust-bank approvals for Ripple and Circle from Coinbase's conditional approval. A national trust-bank charter is not the same as a full commercial deposit-taking bank, and approval does not prove that every proposed service is already operational.
+- Circle's Q3 2026 results webcast is scheduled for **Nov 4, 08:00 ET / 13:00 UTC**. At this run's 11:05 UTC cutoff, the event is still upcoming; no Q3 result is assumed.
+
+### SBIC, ASK, phrase and identity gates
+
+- Japan's SBIC East, Central and West are three separate regional Small and Medium Business Investment & Consultation companies (Tokyo, Nagoya and Osaka). Their own corporate profiles identify them as sister companies; they are not SBI Holdings or SBI Group subsidiaries.
+- SBIC East's official site advertises generative-AI/ChatGPT training. This establishes a training event, not an OpenAI partnership. Exact-phrase searches for `"SBIC, ChatGPT SBIC"` did not establish a separate organization or partnership.
+- The strongest verifiable ASK candidate is Permission's ASK token: official documentation lists Base and Polygon contracts, and Permission says its ASK wallet moved to Coinbase embedded-wallet infrastructure in September 2026. No XRP Ledger deployment or Ripple/SBI link was established. Do not equate this token with an unrelated "ASK Coin" mention without contract-level evidence.
+- Exact-phrase searches for `"actual capital"` did not produce an authoritative XRP/SBI/ASK match. Keep unresolved.
+- Camilla/Kamilah Stevenson identity is not verified from first-party evidence. No YouTube video inventory was created and no candidate channel was attributed to the requested person.
+
+### Nine-platform status and forecast gate
+
+- ChatGPT is the active session; GitHub repository access is authenticated and was exercised for read and write operations. No tested authentication/data-flow evidence exists in this run for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks. Do not describe them as connected.
+- The feature-store and forecast-ledger contracts are present in the active workstream, but scheduled production ingestion, immutable source receipts, a populated point-in-time feature store, chronological walk-forward evaluation, baseline comparison, calibration, drift monitoring and measured shadow performance are not verified as operational.
+- **Forecast status: NOT_ISSUED.** No directional forecast, paper trade, real-money action, Kaggle submission, deployment, secret rotation or external write was performed.
+
+### Next concrete action
+
+Complete exact-head verification for the documentation-only handoff commit, reconcile the handoff overlap with draft PR #1642, obtain a real required approval (not an approval label), and confirm branch-protection requirements before any merge. Then build immutable source receipts for the new XRP observations and admit only reconciled, point-in-time data into the feature store. Preserve all unique research PRs until one consolidated fresh-main successor is ready.
