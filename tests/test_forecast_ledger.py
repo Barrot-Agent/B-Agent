@@ -182,6 +182,7 @@ def test_rejects_resolution_before_target(tmp_path):
 def test_scored_outcome_records_brier_and_baseline(tmp_path):
     ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
+    set_ledger_time(ledger, "2026-11-03T17:01:00Z")
     outcome = ledger.resolve_forecast(
         forecast_id,
         resolved_at_utc=RESOLVED,
@@ -220,6 +221,7 @@ def test_rejects_cross_venue_without_normalization(tmp_path):
 def test_cross_venue_requires_explicit_normalization(tmp_path):
     ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
+    set_ledger_time(ledger, "2026-11-03T17:01:00Z")
     outcome = ledger.resolve_forecast(
         forecast_id,
         resolved_at_utc=RESOLVED,
@@ -236,6 +238,7 @@ def test_cross_venue_requires_explicit_normalization(tmp_path):
 def test_missing_outcome_is_unscorable_not_a_miss(tmp_path):
     ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
+    set_ledger_time(ledger, "2026-11-03T17:05:00Z")
     outcome = ledger.resolve_forecast(
         forecast_id,
         resolved_at_utc="2026-11-03T17:05:00Z",
