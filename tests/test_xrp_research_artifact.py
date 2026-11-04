@@ -75,3 +75,32 @@ def test_xrp_hypotheses_and_prediction_boundary_are_explicit() -> None:
     assert data["predictions"]["reason"]
     assert data["blockers"]
     assert data["next_actions"]
+
+
+
+def test_nine_platform_map_does_not_overstate_live_connections() -> None:
+    data = json.loads(ARTIFACT.read_text(encoding="utf-8"))
+    platforms = data["platform_map"]
+    names = [item["platform"] for item in platforms]
+    assert len(names) == 9
+    assert len(names) == len(set(names))
+    assert set(names) == {
+        "ChatGPT", "Claude", "Grok", "Gemini", "Copilot",
+        "Codex", "Hugging Face", "Kaggle", "Databricks",
+    }
+    assert next(item for item in platforms if item["platform"] == "ChatGPT")[
+        "status"
+    ] == "tested_current_runtime"
+    for item in platforms:
+        if item["platform"] != "ChatGPT":
+            assert item["status"] in {
+                "not_tested", "workflow_reference_only"
+            }
+            authentication = item["authentication"].lower()
+            assert "no authenticated" in authentication or (
+                "no live" in authentication
+            ) or ("no separate" in authentication)
+    contract = data["agent_exchange_contract"]
+    assert contract["disagreement_policy"]
+    assert contract["least_privilege_policy"]
+    assert contract["adapter_status"].startswith("Architecture designed")

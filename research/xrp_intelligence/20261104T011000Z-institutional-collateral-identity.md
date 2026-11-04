@@ -211,3 +211,22 @@ Ripple's October 26 press release says the OCC granted final approval that day. 
 The new national trust bank's described roles are reserve management, collateral trustee and fiduciary custody. RLUSD continues to be issued by Standard Custody & Trust Company, the NYDFS-regulated issuer. Do not describe RNTB as the RLUSD issuer.
 
 Source: https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+
+
+## Nine-platform coordination status
+
+Only ChatGPT's current GitHub connector access was exercised in this run (repository read plus branch/file/PR writes; no main write or merge). No live collaboration is claimed for the other eight platforms.
+
+| Platform | Current evidence | Intended independent role |
+|---|---|---|
+| ChatGPT | GitHub connector tested | Orchestration, evidence synthesis, artifact/test authoring |
+| Claude | No authenticated session tested | Red-team and counter-hypothesis review |
+| Grok | No authenticated session tested | Public discussion/sentiment discovery with manipulation filters |
+| Gemini | No authenticated session tested | Independent source triangulation |
+| Copilot | Repository workflow reference only; assignee variable absent in inspected run | GitHub workflow/code review |
+| Codex | No separate session or handoff receipt tested | Deterministic implementation and test review |
+| Hugging Face | Workflow references credentials; no API session tested | Model/dataset hosting and reproducible evaluation |
+| Kaggle | Workflow references credentials; no session tested; submissions quarantined by #1620 | Public datasets and benchmarks; no submissions without approval |
+| Databricks | Workflow references credentials; no workspace session tested; public brain export quarantined by #1620 | Historical feature store and ETL after least-privilege authorization |
+
+Evidence packets should carry claim IDs, source IDs, publication/observation/ingestion timestamps, data cutoff, classification, support, disconfirmation, assumptions, confidence, minority objections and a content hash. Read-only is the default. No credentials or private data go into prompts. No forced unanimity: retain minority objections and independent red-team findings; resolve disputes through source quality, independence, temporal fit and reproducibility.

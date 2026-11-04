@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
   "artifact_type": "xrp_ecosystem_evidence_reconciliation",
-  "captured_at_utc": "2026-11-04T01:20:00Z",
-  "data_cutoff_utc": "2026-11-04T01:20:00Z",
+  "captured_at_utc": "2026-11-04T01:22:00Z",
+  "data_cutoff_utc": "2026-11-04T01:22:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "mission": {
     "priority": "XRP intelligence and prediction-engine mastery",
@@ -1147,6 +1147,8 @@
     "Cross River, Standard Chartered, BNY and C2FO announced institutional integrations, but public production throughput and XRP-specific flow attribution are not disclosed."
   ],
   "next_actions": [
+    "Build the nine-platform capability/authentication/permission/data-flow adapters one at a time; do not claim collaboration until each adapter returns a verifiable signed/traceable handoff.",
+    "Run independent red-team tasks only after Claude/Grok/Gemini/Copilot/Codex/Hugging Face/Kaggle/Databricks access is explicitly authenticated and scoped.",
     "Reconstruct RLUSD and USDC supply from issuer obligations on the validated XRPL ledger at fixed hourly/daily cutoffs; reconcile stables.cool and XRPL.to snapshots without averaging.",
     "Build robust stablecoin activity features: dust ratio, unique senders/receivers, concentration, issuer mint/redemption, exchange-tagged deposits, round-trip cycles, net flows and fee cost.",
     "Track Cross River's RLUSD production volumes and state availability; keep its X Money partnership separate absent a direct RLUSD statement.",
@@ -1162,5 +1164,92 @@
     "Create separate USDC/RLUSD-on-XRPL and XRP bridge-flow datasets; do not equate XRPL activity with XRP demand.",
     "Resolve Kamilah/Camila versus Camilla identity and continue channel inventory without merging identities.",
     "Continue exact-phrase searches for ASK Coin and actual capital."
-  ]
+  ],
+  "platform_map": [
+    {
+      "platform": "ChatGPT",
+      "status": "tested_current_runtime",
+      "authentication": "GitHub connector successfully used against Barrot-Agent/B-Agent; branch creation, file commits and PR creation were exercised",
+      "permissions": "Repository read plus branch/PR writes tested; main write and merge were not exercised",
+      "assigned_role": "Research orchestration, evidence synthesis, structured artifact authoring, independent hypothesis comparison and regression-test preparation"
+    },
+    {
+      "platform": "Claude",
+      "status": "not_tested",
+      "authentication": "No authenticated session tested",
+      "permissions": "None verified",
+      "assigned_role": "Independent red-team review, alternative causal hypotheses and disconfirming evidence"
+    },
+    {
+      "platform": "Grok",
+      "status": "not_tested",
+      "authentication": "No authenticated session tested",
+      "permissions": "None verified",
+      "assigned_role": "Public discussion and social-sentiment discovery with bot/manipulation and source-quality filters"
+    },
+    {
+      "platform": "Gemini",
+      "status": "not_tested",
+      "authentication": "No authenticated session tested",
+      "permissions": "None verified",
+      "assigned_role": "Independent public-source triangulation and document extraction"
+    },
+    {
+      "platform": "Copilot",
+      "status": "workflow_reference_only",
+      "authentication": "No live Copilot session tested; repository references COPILOT_ASSIGNEE but the inspected run reported it was not configured",
+      "permissions": "None verified for a live Copilot agent",
+      "assigned_role": "Independent GitHub workflow, code and PR review"
+    },
+    {
+      "platform": "Codex",
+      "status": "not_tested",
+      "authentication": "No separate Codex session or handoff receipt tested",
+      "permissions": "None verified",
+      "assigned_role": "Deterministic implementation, isolated tests and minimal patch review"
+    },
+    {
+      "platform": "Hugging Face",
+      "status": "workflow_reference_only",
+      "authentication": "Repository workflows reference HF credentials, but no authenticated HF session or API operation was tested in this run",
+      "permissions": "None verified in this runtime",
+      "assigned_role": "Model and dataset hosting, model-card provenance and reproducible evaluation"
+    },
+    {
+      "platform": "Kaggle",
+      "status": "workflow_reference_only",
+      "authentication": "Repository workflow references Kaggle credentials, but no authenticated Kaggle session was tested; competition submissions are quarantined in PR #1620",
+      "permissions": "No live Kaggle permission verified",
+      "assigned_role": "Public dataset discovery and benchmark evaluation; no submission without explicit approval"
+    },
+    {
+      "platform": "Databricks",
+      "status": "workflow_reference_only",
+      "authentication": "Repository workflows reference workspace credentials, but no authenticated workspace session was tested; public brain export is quarantined in PR #1620",
+      "permissions": "No live workspace permission verified",
+      "assigned_role": "Historical feature-store ETL and reproducible analytics after explicit least-privilege connection"
+    }
+  ],
+  "agent_exchange_contract": {
+    "schema_fields": [
+      "claim_id",
+      "source_ids",
+      "published_at",
+      "observed_at",
+      "ingested_at",
+      "data_cutoff",
+      "classification",
+      "claim",
+      "supporting_evidence",
+      "disconfirming_evidence",
+      "assumptions",
+      "confidence",
+      "minority_objections",
+      "content_hash"
+    ],
+    "data_flow": "Lawful public/authorized source -> timestamped immutable capture -> provenance/data-quality checks -> structured evidence packet -> independent platform task -> disagreement and minority-objection register -> causal hypothesis graph -> point-in-time feature store -> walk-forward evaluation -> shadow/paper evaluation.",
+    "disagreement_policy": "No forced unanimity. Preserve minority objections and independent red-team findings. Resolve factual disputes by source quality, independence, temporal fit and reproducibility, not agent majority vote.",
+    "least_privilege_policy": "Read-only by default; no credentials or private data in prompts; adapters must be separately authenticated and scoped; writes, deployments, submissions, merges and financial actions require explicit user approval.",
+    "adapter_status": "Architecture designed; only ChatGPT-to-GitHub repository access was tested in this run. All other adapters remain unconnected or unverified."
+  }
 }
