@@ -1,0 +1,105 @@
+{
+  "schema_version": "barrot.xrp.research-correction.v1",
+  "artifact_id": "xrp_research_followup_corrections_20261104T180409Z",
+  "artifact_type": "append_only_review_correction_overlay",
+  "captured_at_utc": "2026-11-04T18:04:09Z",
+  "data_cutoff_utc": "2026-11-04T18:04:09Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "reviewed_head_sha": "4003324a866d0731e5bd642acb70e900e3b8ce5e",
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "preservation": {
+    "original_artifacts_modified": false,
+    "original_raw_source_receipts_modified": false,
+    "correction_mode": "append_only_canonical_overlay",
+    "force_push": false,
+    "branch_rewrite": false,
+    "destructive_operations": false
+  },
+  "source_registry_reference": "research/xrp_intelligence/20261104T144241Z-archive-review-corrections-and-point-in-time-quarantine.json",
+  "source_registry": [
+    {
+      "id": "kraken_ticker_api_docs",
+      "publisher": "Kraken",
+      "authority": "primary exchange API documentation",
+      "url": "https://docs.kraken.com/api-reference/market-data/get-ticker-information",
+      "original_retrieved_at_utc": "2026-11-04T14:42:41Z",
+      "source_registry_reference": "research/xrp_intelligence/20261104T144241Z-archive-review-corrections-and-point-in-time-quarantine.json",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Kraken's ticker o field is today's UTC-day open, not a rolling 24-hour open."
+      ]
+    }
+  ],
+  "correction_overlay": {
+    "consumer_application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY",
+    "entries": [
+      {
+        "correction_id": "C18_KRAKEN_DAILY_OPEN_SECOND_ADDENDUM",
+        "target_artifact": "research/xrp_intelligence/20261104T131226Z-circle-q3-coinbase-ripple-bny-sbic-market-addendum.json",
+        "target_field": "$.market_observations[0].open_24h_usd",
+        "original_field_name": "open_24h_usd",
+        "original_value": 1.27513,
+        "canonical_field_name": "daily_open_usd",
+        "canonical_value": 1.27513,
+        "canonical_path": "$.market_observations[0].daily_open_usd",
+        "interpretation": "UTC-day open; not a rolling 24-hour open",
+        "derived_rolling_24h_return": "not_available",
+        "evidence_source_ids": [
+          "kraken_ticker_api_docs"
+        ],
+        "model_eligible": false,
+        "reason": "The addendum's Kraken ticker o field is the UTC-day open. Retain the captured numeric value but correct the field name and window semantics; do not manufacture a rolling 24-hour return."
+      },
+      {
+        "correction_id": "C19_OCC_CROSSWALK_ENTITY_SCOPE",
+        "target_artifact": "research/xrp_intelligence/20261103T223100Z-circle-ripple-coinbase-bank-charter-stablecoin-network.json",
+        "supersedes_correction_id": "C01_SOURCE_CITATION_CROSSWALK",
+        "superseded_replacement": {
+          "replacement_index": 11,
+          "source_id": "ripple_occ_cas_correct",
+          "old_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/",
+          "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+          "problem": "Unscoped replacement can apply Ripple's CAS URL to Circle's source field."
+        },
+        "canonical_replacements": [
+          {
+            "entity": "circle",
+            "source_id": "circle_occ_cas_final",
+            "target_field": "$.bank_charter_status.circle.sources[1]",
+            "old_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/",
+            "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2"
+          },
+          {
+            "entity": "ripple",
+            "source_id": "ripple_occ_cas_correct",
+            "target_field": "$.bank_charter_status.ripple.sources[0]",
+            "old_url": "https://apps.occ.gov/CAAS_CATS/CAAS_Details.aspx?FilingTypeID=5&FilingID=363617",
+            "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2"
+          },
+          {
+            "entity": "coinbase",
+            "source_id": "coinbase_occ_cas_correct",
+            "target_field": "$.bank_charter_status.coinbase.sources[1]",
+            "old_url": "https://apps.occ.gov/CAAS_CATS/CAAS_Details.aspx?FilingTypeID=5&FilingID=363617",
+            "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2"
+          }
+        ],
+        "rule": "Every source URL replacement must identify exactly one target JSON field and one legal-entity scope; no old_url-only replacement is canonical.",
+        "model_eligible": false,
+        "application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
+      }
+    ]
+  },
+  "forecast_issued": false,
+  "prediction_status": "NOT_ISSUED",
+  "model_eligible": false,
+  "notes": [
+    "This correction overlay does not rewrite original research artifacts or raw-source receipts.",
+    "Consumers must apply the newest entity-scoped correction before using the affected source fields.",
+    "Rendered web sources remain research-only and are not admitted to the XRP feature store."
+  ]
+}
