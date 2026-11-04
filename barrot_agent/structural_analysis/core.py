@@ -164,7 +164,7 @@ class StructuralAnalyzer:
         statuses = {c.status for c in constraints}
         region = (
             "invalid" if "violated" in statuses
-            else "unresolved" if "unknown" in statuses
+            else "unresolved" if not constraints or "unknown" in statuses
             else "valid"
         )
         constraints = sorted(constraints, key=lambda x: (x.name, x.status, x.detail))

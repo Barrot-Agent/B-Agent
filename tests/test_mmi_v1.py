@@ -949,3 +949,59 @@ def test_execution_ledger_reopens_after_valid_cycle(tmp_path):
     reopened = MMIExecutionLedger(path)
 
     assert reopened.verify() is True
+
+
+def test_unhashable_corroboration_ids_fail_closed_without_exception():
+    record = complete_record_with_two_sources()
+    result = dict(record.corroboration_results[0])
+    result["supporting_evidence_ids"] = ["corroboration-e1", {"not": "hashable"}]
+    assert record._claim_bound_corroboration(result) is False
+
+    result = dict(record.corroboration_results[0])
+    result["independent_source_ids"] = ["s1", {"not": "hashable"}]
+    assert record._claim_bound_corroboration(result) is False
+
+
+def test_duplicate_or_unknown_mmi_stages_block_completion():
+    duplicate = complete_record_with_two_sources()
+    duplicate.stages.append(StageRecord("RECEIVED", StageOutcome.COMPLETE))
+    assert MMIStateMachine.evaluate(duplicate) == MMIResult.BLOCKED
+
+    unknown = complete_record_with_two_sources()
+    unknown.stages.append(StageRecord("UNDECLARED_STAGE", StageOutcome.COMPLETE))
+    assert MMIStateMachine.evaluate(unknown) == MMIResult.BLOCKED
+
+
+def test_independent_evidence_cannot_reference_unknown_source():
+    record = MMIEngine().create_record(
+        "independent-unknown-source",
+        {"name": "fixture"},
+        {"source": "fixture://source"},
+    )
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="e-unknown-source",
+            claim="unverified independent claim",
+            state=ParseState.OBSERVED,
+            source_ids=["missing-source"],
+            independent=True,
+        )
+    )
+    assert any("unknown source" in error for error in record.validate())
+
+
+def test_tampered_execution_ledger_refuses_new_append(tmp_path):
+    path = tmp_path / "tampered_before_append.jsonl"
+    ledger = MMIExecutionLedger(path)
+    ledger.append({"event": "MMI_RECEIVED", "ingestion_id": "tamper-append"})
+    original = path.read_text(encoding="utf-8")
+    modified = original.replace("MMI_RECEIVED", "MMI_FORGED")
+    path.write_text(modified, encoding="utf-8")
+
+    try:
+        ledger.append({"event": "MMI_COMPLETED", "ingestion_id": "tamper-append"})
+    except ValueError as exc:
+        assert "integrity check failed" in str(exc)
+    else:
+        raise AssertionError("tampered ledger must reject further appends")
+    assert path.read_text(encoding="utf-8") == modified

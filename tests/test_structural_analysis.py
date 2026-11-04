@@ -73,3 +73,9 @@ def test_signature_json_is_serializable_and_provenance_bound():
     signature = StructuralAnalyzer().analyze(base)
     assert signature.to_dict()["provenance"]["source"] == "unit-test"
     assert signature.identity_hash != StructuralAnalyzer().analyze(changed).identity_hash
+
+
+
+def test_empty_constraint_set_is_unresolved_not_valid():
+    signature = StructuralAnalyzer().analyze(StructuralInput({"x": 1}, "mapping"))
+    assert signature.valid_region == "unresolved"

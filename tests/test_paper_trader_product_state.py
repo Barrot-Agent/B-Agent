@@ -125,3 +125,61 @@ def test_non_finite_position_size_fails_closed():
     for bad_size in (float("nan"), float("inf"), float("-inf")):
         error = trader.validate_position_product(make_state(size=bad_size), "BTC-USD")
         assert error == "aborted -- non-finite position size"
+
+
+
+def test_negative_sell_amount_is_rejected_without_state_mutation():
+    trader = load_trader()
+    state = make_state(cash=800.0, size=2.0, product="BTC-USD", avg=100.0, count=4)
+    before = state.copy()
+    result = trader.execute_paper_trade(
+        state, {"action": "sell", "amount_usd": -25.0}, 100.0, "BTC-USD"
+    )
+    assert result == "aborted -- model amount_usd must be finite and non-negative"
+    assert state == before
+
+
+def test_non_finite_amount_and_invalid_action_are_rejected():
+    trader = load_trader()
+    for amount in (float("nan"), float("inf"), "nan", True):
+        state = make_state()
+        before = state.copy()
+        result = trader.execute_paper_trade(
+            state, {"action": "buy", "amount_usd": amount}, 10.0, "BTC-USD"
+        )
+        assert result.startswith("aborted --")
+        assert state == before
+
+    state = make_state()
+    before = state.copy()
+    result = trader.execute_paper_trade(
+        state, {"action": "short", "amount_usd": 10.0}, 10.0, "BTC-USD"
+    )
+    assert result == "aborted -- model returned an unsupported action"
+    assert state == before
+
+
+def test_invalid_price_and_cash_fail_closed():
+    trader = load_trader()
+    state = make_state()
+    before = state.copy()
+    assert trader.execute_paper_trade(
+        state, {"action": "buy", "amount_usd": 10.0}, float("nan"), "BTC-USD"
+    ) == "aborted -- current price must be finite and positive"
+    assert state == before
+
+    bad_cash = make_state(cash=float("nan"))
+    assert trader.validate_position_product(bad_cash, "BTC-USD") == "aborted -- non-finite cash_usd"
+
+
+def test_corrupt_state_is_not_silently_reset(tmp_path, monkeypatch):
+    trader = load_trader()
+    state_file = tmp_path / "paper_state.json"
+    state_file.write_text("{not-json", encoding="utf-8")
+    monkeypatch.setattr(trader, "STATE_FILE", state_file)
+    try:
+        trader.load_state()
+    except RuntimeError as exc:
+        assert "refusing to reset" in str(exc)
+    else:
+        raise AssertionError("corrupt paper state must not be replaced with a new account")

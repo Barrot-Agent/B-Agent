@@ -5,7 +5,14 @@ from enum import Enum
 from hashlib import sha256
 from pathlib import Path
 import json
+import os
 import time
+from datetime import datetime, timezone
+
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - non-POSIX fallback is single-writer only
+    fcntl = None
 
 from barrot_agent.evolution.source_independence import canonical_publisher_group
 
@@ -160,6 +167,7 @@ class MMIRecord:
     acquisition_requests: list[str] = field(default_factory=list)
     self_upgrade_candidates: list[str] = field(default_factory=list)
     reconciliation: list[dict] = field(default_factory=list)
+    structural_signature: dict = field(default_factory=dict)
     negative_knowledge: list[dict] = field(default_factory=list)
     stages: list[StageRecord] = field(default_factory=list)
     protocol_completeness: float = 0.0
@@ -177,31 +185,110 @@ class MMIRecord:
 
         if self.component_max_depth != 4:
             errors.append("component depth must be 4")
-
         if self.source_max_depth != 4:
             errors.append("source depth must be 4")
 
+        stage_names = []
+        for index, stage in enumerate(self.stages):
+            name = getattr(stage, "name", None)
+            outcome = getattr(stage, "outcome", None)
+            if not isinstance(name, str) or name not in MMIStateMachine.ORDER:
+                errors.append(f"unknown or invalid MMI stage at index {index}")
+                continue
+            stage_names.append(name)
+            if not isinstance(outcome, StageOutcome):
+                errors.append(f"invalid stage outcome: {name}")
+        if len(stage_names) != len(set(stage_names)):
+            errors.append("duplicate MMI stage names")
+        positions = [MMIStateMachine.ORDER.index(name) for name in stage_names]
+        if positions != sorted(positions):
+            errors.append("MMI stages are not in protocol order")
+
         for item in self.scope:
-            if not isinstance(item.state, ParseState):
-                errors.append(f"invalid scope state: {item.path}")
+            if not isinstance(item, ScopeItem) or not isinstance(item.state, ParseState):
+                errors.append(f"invalid scope item: {getattr(item, 'path', '<unknown>')}")
 
+        component_ids = []
         for item in self.component_map:
-            if not 1 <= item.depth <= self.component_max_depth:
-                errors.append(f"component depth out of range: {item.component_id}")
+            component_id = getattr(item, "component_id", None)
+            depth = getattr(item, "depth", None)
+            if not isinstance(component_id, str) or not component_id.strip():
+                errors.append("component ID must be a non-empty string")
+                continue
+            component_ids.append(component_id)
+            if isinstance(depth, bool) or not isinstance(depth, int) or not 1 <= depth <= self.component_max_depth:
+                errors.append(f"component depth out of range: {component_id}")
+            if not isinstance(getattr(item, "state", None), ParseState):
+                errors.append(f"invalid component parse state: {component_id}")
+        if len(component_ids) != len(set(component_ids)):
+            errors.append("duplicate component IDs")
+        component_id_set = set(component_ids)
+        for item in self.component_map:
+            parent_id = getattr(item, "parent_id", None)
+            if parent_id is not None and parent_id not in component_id_set:
+                errors.append(f"unknown component parent: {parent_id}")
 
+        source_classes = {}
         for item in self.source_graph:
-            if not 1 <= item.depth <= self.source_max_depth:
-                errors.append(f"source depth out of range: {item.source_id}")
+            source_id = getattr(item, "source_id", None)
+            depth = getattr(item, "depth", None)
+            if not isinstance(source_id, str) or not source_id.strip():
+                errors.append("source ID must be a non-empty string")
+                continue
+            if source_id in source_classes:
+                errors.append("duplicate source IDs in source graph")
+            else:
+                source_classes[source_id] = getattr(item, "provenance_class", None)
+            if isinstance(depth, bool) or not isinstance(depth, int) or not 1 <= depth <= self.source_max_depth:
+                errors.append(f"source depth out of range: {source_id}")
+            if not isinstance(getattr(item, "uri", None), str):
+                errors.append(f"source URI must be a string: {source_id}")
 
-        source_classes = {
-            s.source_id: s.provenance_class for s in self.source_graph
-        }
-        if len(source_classes) != len(self.source_graph):
-            errors.append("duplicate source IDs in source graph")
-
-        evidence_ids = [e.evidence_id for e in self.evidence]
-        if len(set(evidence_ids)) != len(evidence_ids):
+        evidence_ids = []
+        for item in self.evidence:
+            evidence_id = getattr(item, "evidence_id", None)
+            if not isinstance(evidence_id, str) or not evidence_id.strip():
+                errors.append("evidence ID must be a non-empty string")
+                continue
+            evidence_ids.append(evidence_id)
+            if not isinstance(getattr(item, "state", None), ParseState):
+                errors.append(f"invalid evidence parse state: {evidence_id}")
+            source_ids = getattr(item, "source_ids", None)
+            if not isinstance(source_ids, list):
+                errors.append(f"evidence source_ids must be a list: {evidence_id}")
+                continue
+            for source_id in source_ids:
+                if not isinstance(source_id, str) or not source_id.strip():
+                    errors.append(f"invalid source reference in evidence: {evidence_id}")
+                elif source_id not in source_classes:
+                    errors.append(f"unknown source reference {source_id} in evidence: {evidence_id}")
+        if len(evidence_ids) != len(set(evidence_ids)):
             errors.append("duplicate evidence IDs")
+
+        external_classes = {
+            ProvenanceClass.EXTERNAL_PRIMARY,
+            ProvenanceClass.EXTERNAL_SECONDARY,
+            ProvenanceClass.INDEPENDENT_EXTERNAL,
+        }
+        for item in self.evidence:
+            if getattr(item, "independent", False):
+                source_ids = getattr(item, "source_ids", [])
+                if not source_ids:
+                    errors.append(f"independent evidence cannot be independent without a source: {getattr(item, 'evidence_id', '<unknown>')}")
+                elif any(source_id not in source_classes for source_id in source_ids):
+                    errors.append(f"independent evidence cannot be independent with an unknown source: {getattr(item, 'evidence_id', '<unknown>')}")
+                elif any(source_classes[source_id] not in external_classes for source_id in source_ids):
+                    errors.append(f"independent evidence cannot be independent unless it references only external sources: {getattr(item, 'evidence_id', '<unknown>')}")
+
+        if self.structural_signature:
+            if not isinstance(self.structural_signature, dict):
+                errors.append("structural signature must be an object")
+            else:
+                if self.structural_signature.get("valid_region") not in {"valid", "unresolved", "invalid"}:
+                    errors.append("structural signature has an invalid valid_region")
+                identity_hash = self.structural_signature.get("identity_hash")
+                if not isinstance(identity_hash, str) or len(identity_hash) != 64 or any(ch not in "0123456789abcdef" for ch in identity_hash.lower()):
+                    errors.append("structural signature identity_hash must be a 64-character SHA-256 hex digest")
 
         for index, result in enumerate(self.corroboration_results):
             if not isinstance(result, dict):
@@ -216,38 +303,22 @@ class MMIRecord:
                         "distinct independence groups"
                     )
 
-        for evidence in self.evidence:
-            if evidence.independent:
-                if not evidence.source_ids:
-                    errors.append(
-                        f"independent evidence has no source: {evidence.evidence_id}"
-                    )
-                if all(
-                    source_classes.get(s) in {
-                        ProvenanceClass.MODEL_DERIVED,
-                        ProvenanceClass.BARROT_GENERATED,
-                    }
-                    for s in evidence.source_ids
-                ):
-                    errors.append(
-                        f"Barrot-derived evidence cannot be independent: "
-                        f"{evidence.evidence_id}"
-                    )
-
         return errors
 
     def _independence_groups_for(self, source_ids):
         if not isinstance(source_ids, list) or len(source_ids) < 2:
             return None
-        if any(
-            not isinstance(source_id, str) or not source_id.strip()
-            for source_id in source_ids
-        ):
+        if any(not isinstance(source_id, str) or not source_id.strip() for source_id in source_ids):
             return None
         if len(set(source_ids)) != len(source_ids):
             return None
 
-        source_by_id = {source.source_id: source for source in self.source_graph}
+        source_by_id = {}
+        for source in self.source_graph:
+            source_id = getattr(source, "source_id", None)
+            if not isinstance(source_id, str) or not source_id.strip() or source_id in source_by_id:
+                return None
+            source_by_id[source_id] = source
         if any(source_id not in source_by_id for source_id in source_ids):
             return None
 
@@ -278,30 +349,30 @@ class MMIRecord:
 
         evidence_by_id = {}
         for evidence in self.evidence:
-            if not evidence.evidence_id or evidence.evidence_id in evidence_by_id:
+            evidence_id = getattr(evidence, "evidence_id", None)
+            if not isinstance(evidence_id, str) or not evidence_id.strip() or evidence_id in evidence_by_id:
                 return False
-            evidence_by_id[evidence.evidence_id] = evidence
+            evidence_by_id[evidence_id] = evidence
 
         if status == "CORROBORATED":
             supporting_ids = result.get("supporting_evidence_ids")
             if (
                 not isinstance(supporting_ids, list)
                 or len(supporting_ids) < 2
+                or any(not isinstance(evidence_id, str) or not evidence_id.strip() for evidence_id in supporting_ids)
                 or len(set(supporting_ids)) != len(supporting_ids)
             ):
                 return False
-            if any(
-                not isinstance(evidence_id, str)
-                or evidence_id not in evidence_by_id
-                for evidence_id in supporting_ids
-            ):
+            if any(evidence_id not in evidence_by_id for evidence_id in supporting_ids):
                 return False
             evidence_records = [evidence_by_id[eid] for eid in supporting_ids]
             if any(
                 evidence.claim_id != claim_id
                 or evidence.supporting is not True
                 or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not isinstance(evidence.source_ids, list)
                 or not evidence.source_ids
+                or any(not isinstance(source_id, str) or not source_id.strip() for source_id in evidence.source_ids)
                 for evidence in evidence_records
             ):
                 return False
@@ -310,25 +381,17 @@ class MMIRecord:
                 for evidence in self.evidence
             ):
                 return False
-            required_evidence_ids = set(supporting_ids)
         elif status == "CONTRADICTORY":
             supporting_ids = result.get("supporting_evidence_ids")
             contradicting_ids = result.get("contradicting_evidence_ids")
-            if (
-                not isinstance(supporting_ids, list)
-                or not supporting_ids
-                or not isinstance(contradicting_ids, list)
-                or not contradicting_ids
-            ):
+            if not isinstance(supporting_ids, list) or not supporting_ids or not isinstance(contradicting_ids, list) or not contradicting_ids:
                 return False
             all_ids = supporting_ids + contradicting_ids
+            if any(not isinstance(evidence_id, str) or not evidence_id.strip() for evidence_id in all_ids):
+                return False
             if len(set(all_ids)) != len(all_ids):
                 return False
-            if any(
-                not isinstance(evidence_id, str)
-                or evidence_id not in evidence_by_id
-                for evidence_id in all_ids
-            ):
+            if any(evidence_id not in evidence_by_id for evidence_id in all_ids):
                 return False
             supporting_records = [evidence_by_id[eid] for eid in supporting_ids]
             contradicting_records = [evidence_by_id[eid] for eid in contradicting_ids]
@@ -336,7 +399,9 @@ class MMIRecord:
                 evidence.claim_id != claim_id
                 or evidence.supporting is not True
                 or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not isinstance(evidence.source_ids, list)
                 or not evidence.source_ids
+                or any(not isinstance(source_id, str) or not source_id.strip() for source_id in evidence.source_ids)
                 for evidence in supporting_records
             ):
                 return False
@@ -344,23 +409,21 @@ class MMIRecord:
                 evidence.claim_id != claim_id
                 or evidence.supporting is not False
                 or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not isinstance(evidence.source_ids, list)
                 or not evidence.source_ids
+                or any(not isinstance(source_id, str) or not source_id.strip() for source_id in evidence.source_ids)
                 for evidence in contradicting_records
             ):
                 return False
-            required_evidence_ids = set(all_ids)
+            required_ids = set(all_ids)
             reconciled_ids = set()
             for item in self.reconciliation:
                 if not isinstance(item, dict):
                     continue
                 evidence_ids = item.get("evidence_ids")
                 if isinstance(evidence_ids, list):
-                    reconciled_ids.update(
-                        evidence_id
-                        for evidence_id in evidence_ids
-                        if isinstance(evidence_id, str) and evidence_id.strip()
-                    )
-            if not required_evidence_ids.issubset(reconciled_ids):
+                    reconciled_ids.update(eid for eid in evidence_ids if isinstance(eid, str) and eid.strip())
+            if not required_ids.issubset(reconciled_ids):
                 return False
             evidence_records = supporting_records + contradicting_records
         else:
@@ -370,11 +433,11 @@ class MMIRecord:
             source_id
             for evidence in evidence_records
             for source_id in evidence.source_ids
-            if isinstance(source_id, str) and source_id.strip()
         }
         declared_source_ids = result.get("independent_source_ids")
         if (
             not isinstance(declared_source_ids, list)
+            or any(not isinstance(source_id, str) or not source_id.strip() for source_id in declared_source_ids)
             or len(set(declared_source_ids)) != len(declared_source_ids)
             or set(declared_source_ids) != source_ids
         ):
@@ -554,29 +617,50 @@ class MMIExecutionLedger:
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
     def append(self, event: dict) -> str:
-        previous = ""
-        if self.path.exists():
-            lines = self.path.read_text().splitlines()
-            if lines:
-                previous = json.loads(lines[-1]).get("event_hash", "")
+        if not isinstance(event, dict):
+            raise TypeError("MMI ledger event must be an object")
+        if "event_hash" in event or "previous_hash" in event or "ledger_recorded_at" in event:
+            raise ValueError("MMI ledger hash-chain fields are reserved")
+        self.path.parent.mkdir(parents=True, exist_ok=True)
 
-        payload = dict(event)
-        payload["previous_hash"] = previous
-        canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
-        event_hash = "sha256:" + sha256(canonical.encode()).hexdigest()
-        payload["event_hash"] = event_hash
+        with self.path.open("a+", encoding="utf-8") as handle:
+            locked = False
+            try:
+                if fcntl is not None:
+                    fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+                    locked = True
+                if not self.verify():
+                    raise ValueError("MMI execution ledger integrity check failed; refusing append")
+                handle.seek(0)
+                lines = handle.read().splitlines()
+                previous = json.loads(lines[-1]).get("event_hash", "") if lines else ""
 
-        with self.path.open("a") as f:
-            f.write(json.dumps(payload, sort_keys=True) + "\n")
+                payload = dict(event)
+                payload["ledger_recorded_at"] = datetime.now(timezone.utc).isoformat()
+                payload["previous_hash"] = previous
+                canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+                event_hash = "sha256:" + sha256(canonical.encode()).hexdigest()
+                payload["event_hash"] = event_hash
 
-        return event_hash
+                handle.seek(0, os.SEEK_END)
+                handle.write(json.dumps(payload, sort_keys=True) + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+                return event_hash
+            finally:
+                if locked and fcntl is not None:
+                    fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
     def verify(self) -> bool:
         if not self.path.exists():
             return True
 
         previous = ""
-        for line in self.path.read_text().splitlines():
+        try:
+            lines = self.path.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            return False
+        for line in lines:
             if not line.strip():
                 continue
 

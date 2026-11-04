@@ -77,9 +77,12 @@ def extract_json(text):
 def load_state():
     if STATE_FILE.exists():
         try:
-            return json.loads(STATE_FILE.read_text())
-        except Exception:
-            pass
+            payload = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise RuntimeError("persisted paper-trading state is unreadable; refusing to reset it") from exc
+        if not isinstance(payload, dict):
+            raise RuntimeError("persisted paper-trading state must be a JSON object; refusing to reset it")
+        return payload
     return {
         "cash_usd": STARTING_BALANCE_USD, "position_size": 0.0,
         "position_product": None, "avg_entry_price": None,
@@ -89,7 +92,7 @@ def load_state():
 
 def save_state(state):
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    STATE_FILE.write_text(json.dumps(state, indent=2))
+    STATE_FILE.write_text(json.dumps(state, indent=2, allow_nan=False), encoding="utf-8")
 
 
 def log_decision(entry):
@@ -125,20 +128,28 @@ Output ONLY JSON: {{"action": "buy|sell|hold", "amount_usd": 0, "reasoning": "..
 
 
 def validate_position_product(state, product_id):
-    """Fail closed when an open simulated position has unknown or mismatched identity."""
-    try:
-        position_size = float(state.get("position_size", 0) or 0)
-    except (TypeError, ValueError):
-        return "aborted -- invalid position size"
+    """Validate persisted paper state before any provider call or mutation."""
+    if not isinstance(state, dict):
+        return "aborted -- paper state must be an object"
 
-    if not math.isfinite(position_size):
-        return "aborted -- non-finite position size"
+    for name in ("cash_usd", "position_size"):
+        value = state.get(name)
+        label = "position size" if name == "position_size" else name
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            return f"aborted -- invalid {label}"
+        if not math.isfinite(value):
+            return f"aborted -- non-finite {label}"
+        if value < 0:
+            return f"aborted -- negative {label}"
 
-    if position_size < 0:
-        return "aborted -- negative position size"
+    trade_count = state.get("trade_count")
+    if isinstance(trade_count, bool) or not isinstance(trade_count, int) or trade_count < 0:
+        return "aborted -- invalid trade_count"
 
+    position_size = float(state["position_size"])
+    position_product = state.get("position_product")
+    avg_entry_price = state.get("avg_entry_price")
     if position_size > 1e-8:
-        position_product = state.get("position_product")
         if not isinstance(position_product, str) or not position_product.strip():
             return "aborted -- open position has no product identity"
         if position_product != product_id:
@@ -146,16 +157,37 @@ def validate_position_product(state, product_id):
                 f"aborted -- configured product {product_id} does not match "
                 f"open position {position_product}"
             )
+        if isinstance(avg_entry_price, bool) or not isinstance(avg_entry_price, (int, float)):
+            return "aborted -- open position has invalid average entry price"
+        if not math.isfinite(avg_entry_price) or avg_entry_price <= 0:
+            return "aborted -- open position has invalid average entry price"
+    elif position_product not in (None, ""):
+        return "aborted -- product identity exists without an open position"
 
     return None
+
 
 def execute_paper_trade(state, decision, current_price, product_id):
     identity_error = validate_position_product(state, product_id)
     if identity_error:
         return identity_error
+    if isinstance(current_price, bool) or not isinstance(current_price, (int, float)):
+        return "aborted -- invalid current price"
+    if not math.isfinite(current_price) or current_price <= 0:
+        return "aborted -- current price must be finite and positive"
+    if not isinstance(decision, dict):
+        return "aborted -- model decision must be an object"
 
     action = decision.get("action", "hold")
-    amount_usd = float(decision.get("amount_usd", 0) or 0)
+    if not isinstance(action, str) or action not in {"buy", "sell", "hold"}:
+        return "aborted -- model returned an unsupported action"
+    amount_value = decision.get("amount_usd", 0)
+    if isinstance(amount_value, bool) or not isinstance(amount_value, (int, float)):
+        return "aborted -- model amount_usd must be numeric"
+    if not math.isfinite(amount_value) or amount_value < 0:
+        return "aborted -- model amount_usd must be finite and non-negative"
+    amount_usd = float(amount_value)
+    current_price = float(current_price)
 
     if action == "buy" and amount_usd > 0:
         amount_usd = min(amount_usd, state["cash_usd"] * 0.2, state["cash_usd"])
@@ -193,7 +225,11 @@ def portfolio_value(state, current_price):
 
 def run():
     # Validate persisted state before any provider/network call or model invocation.
-    state = load_state()
+    try:
+        state = load_state()
+    except RuntimeError as exc:
+        print(str(exc))
+        raise SystemExit(2) from exc
     identity_error = validate_position_product(state, PRODUCT_ID)
     if identity_error:
         print(identity_error)
@@ -207,13 +243,29 @@ def run():
     if not ticker:
         print("Could not fetch real ticker data -- aborting this cycle")
         raise SystemExit(1)
-    current_price = float(ticker["price"])
+    try:
+        current_price = float(ticker["price"])
+    except (KeyError, TypeError, ValueError):
+        print("Invalid ticker price -- aborting before model invocation")
+        raise SystemExit(2)
+    if not math.isfinite(current_price) or current_price <= 0:
+        print("Non-finite or non-positive ticker price -- aborting before model invocation")
+        raise SystemExit(2)
     recent_trades = fetch_recent_trades(PRODUCT_ID)
+    if not isinstance(recent_trades, list):
+        print("Invalid recent-trade response -- aborting before model invocation")
+        raise SystemExit(2)
 
     starting_value = portfolio_value(state, current_price)
 
     decision = decide(PRODUCT_ID, ticker, recent_trades, state)
+    if not isinstance(decision, dict):
+        print("Invalid model decision -- aborting without state mutation")
+        raise SystemExit(2)
     result = execute_paper_trade(state, decision, current_price, PRODUCT_ID)
+    if result.startswith("aborted --"):
+        print(result)
+        raise SystemExit(2)
 
     ending_value = portfolio_value(state, current_price)
 
@@ -228,7 +280,10 @@ def run():
     save_state(state)
 
     print(f"Price: ${current_price:.2f}")
-    print(f"Decision: {decision.get('action')} -- {decision.get('reasoning', '')[:150]}")
+    reasoning = decision.get("reasoning", "")
+    if not isinstance(reasoning, str):
+        reasoning = str(reasoning)
+    print(f"Decision: {decision.get('action')} -- {reasoning[:150]}")
     print(f"Result: {result}")
     print(f"Portfolio value: ${ending_value:.2f} ({entry['cumulative_return_pct']:+.3f}% since start)")
 

@@ -48,3 +48,11 @@ def test_persist_job_rechecks_main_and_limits_writes_to_two_state_files():
     assert "web/paper_trading_log.jsonl" in persist
     assert "git push origin HEAD:main" in persist
     assert "needs: simulate" in content
+
+
+
+def test_paper_trader_jobs_require_main_ref_and_explicit_confirmation():
+    content = _workflow_text()
+    required = "if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm == 'YES'"
+    assert content.count(required) == 2
+    assert '[[ "$GITHUB_REF" == "refs/heads/main" ]]' in content
