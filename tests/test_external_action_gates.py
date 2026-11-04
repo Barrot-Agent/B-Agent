@@ -236,3 +236,25 @@ def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -
     assert "contents: write" not in content
     assert "git push" not in content
     assert "schedule:" not in content
+
+def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None:
+    names = (
+        "barrot-merge.yml",
+        "sync-huggingface.yml",
+        "deploy-databricks.yml",
+        "kaggle-competitions.yml",
+        "barrot-restart-space.yml",
+        "webmcp-live-sandbox.yml",
+    )
+    for name in names:
+        content = _read(name)
+        assert "expected_source_sha" in content, name
+        assert "github.ref == 'refs/heads/main'" in content, name
+        assert "EXPECTED_SOURCE_SHA" in content, name
+        assert "git rev-parse HEAD" in content, name
+        assert "ref: main" in content, name
+        assert "persist-credentials: false" in content, name
+
+    approval = _read("barrot-approve-pr.yml")
+    assert "github.ref == 'refs/heads/main'" in approval
+

@@ -11,6 +11,10 @@ on:
           - NO
           - YES
         default: NO
+      expected_source_sha:
+        description: "Expected exact main commit approved for this external action"
+        required: true
+        type: string
       model_name:
         description: "Destination model name suffix (letters, numbers, dot, underscore, hyphen only)"
         required: true
@@ -22,7 +26,7 @@ permissions:
 
 jobs:
   merge:
-    if: ${{ inputs.confirm_external_change == 'YES' }}
+    if: ${{ inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
@@ -38,6 +42,25 @@ jobs:
           fi
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Verify exact approved main commit
+        env:
+          EXPECTED_SOURCE_SHA: ${{ inputs.expected_source_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$EXPECTED_SOURCE_SHA" =~ ^[0-9a-fA-F]{40}$ ]]; then
+            echo "Expected source SHA must be a full commit hash." >&2
+            exit 1
+          fi
+          actual="$(git rev-parse HEAD)"
+          if [[ "$actual" != "$EXPECTED_SOURCE_SHA" ]]; then
+            echo "Checked-out main commit does not match the approved source SHA." >&2
+            exit 1
+          fi
+
       - name: Install dependencies
         run: |
           sudo apt-get update

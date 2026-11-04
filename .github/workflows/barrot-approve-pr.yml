@@ -30,7 +30,7 @@ permissions:
 
 jobs:
   approve:
-    if: ${{ inputs.confirm_approval == 'YES' }}
+    if: ${{ inputs.confirm_approval == 'YES' && github.ref == 'refs/heads/main' }}
     name: Barrot controlled approval
     runs-on: ubuntu-latest
     env:
