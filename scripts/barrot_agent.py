@@ -1002,6 +1002,27 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
         parsed = json.loads(content)
         if not isinstance(parsed, dict):
             raise ValueError("Model response must be a JSON object.")
+
+        required_keys = ("findings", "open_questions", "counterarguments", "recommended_checks")
+        if set(parsed) != set(required_keys):
+            missing = sorted(set(required_keys) - set(parsed))
+            unexpected = sorted(set(parsed) - set(required_keys))
+            raise ValueError(
+                f"Model response keys mismatch (missing={missing}, unexpected={unexpected})."
+            )
+
+        for key in required_keys:
+            values = parsed[key]
+            if not isinstance(values, list):
+                raise ValueError(f"Model response field {key!r} must be an array.")
+            if len(values) > 3:
+                raise ValueError(f"Model response field {key!r} exceeds the three-item limit.")
+            for index, value in enumerate(values):
+                if not isinstance(value, str):
+                    raise ValueError(f"Model response field {key!r}[{index}] must be a string.")
+                if len(value) > 300:
+                    raise ValueError(f"Model response field {key!r}[{index}] exceeds 300 characters.")
+
         return parsed
 
     try:
@@ -1035,7 +1056,7 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
             return decode_object(retry_raw)
         except (json.JSONDecodeError, ValueError) as retry_error:
             raise RuntimeError(
-                "Model returned invalid JSON after one compact retry: "
+                "Model returned invalid response after one compact retry: "
                 f"{str(retry_error)[:250]}; initial response rejected: {str(first_error)[:250]}"
             ) from retry_error
 
