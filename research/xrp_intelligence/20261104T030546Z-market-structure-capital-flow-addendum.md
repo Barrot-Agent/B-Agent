@@ -73,3 +73,12 @@ A dynamic Swiftedge page returned internally inconsistent timestamps, including 
 - Reuters also reported a stronger dollar and Treasury yields and cited a 79% CME FedWatch market-implied probability of a December hike. This is a time-stamped market price, not an FOMC commitment.
 
 **Causal hypothesis:** restrictive rates and energy/geopolitical risk can affect speculative assets through discount rates, dollar funding and risk appetite. This is not an XRP-specific causal finding. The next feature-store task is to join timestamped XRP returns with Fed decisions, Treasury curve, DXY, Brent/WTI and event windows, then estimate rolling and conditional relationships with out-of-sample validation.
+
+
+## Ripple's October 28, 2026 corporate strategy release
+
+Ripple reported a $900M annualized product-revenue run rate approaching year-end, more than $16T of transactions enabled across its products in 2025, 1,700+ institutions/corporates/enterprises, 60+ payout markets and a network approaching $150B lifetime volume by year-end. These are issuer claims. The revenue figure is a run-rate, not audited realized revenue; the transaction and lifetime-volume figures are not XRP-only or XRPL-only.
+
+Ripple also reported RLUSD at $2.6B market capitalization, described RLUSD use in onchain repo markets, and announced 24/7 Returns for corporate treasury using RLUSD, tokenized money-market funds on XRPL and institutional liquidity infrastructure. It described BNY/Ripple tokenized trade-finance work beginning with a C2FO supplier-finance initiative, Privy programmable wallets supporting XRP and RLUSD on XRPL, Mastercard-related RLUSD settlement expansion, and Ripple Prime access for event contracts and RWA perpetual futures with named partners.
+
+These announcements strengthen the integrated enterprise-stack hypothesis. They do not establish actual XRP bridge volume, XRP collateral utilization, XRP purchases or production throughput. The same release also repeats Ripple's claim of final OCC approval for Ripple National Trust Bank; a direct OCC final decision and commencement record remain unlocated.
