@@ -250,14 +250,12 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         metrics = baseline_metrics[baseline]
         if not isinstance(metrics, Mapping):
             raise ForecastLedgerError(f"baseline metrics for {baseline} must be an object")
-        _number(metrics.get("mean_brier_score"), f"{baseline} mean_brier_score")
-        _number(metrics.get("mean_log_loss"), f"{baseline} mean_log_loss")
-    naive = baseline_metrics["naive_class_prior"]
-    if (
-        model_brier >= _number(naive.get("mean_brier_score"), "naive mean_brier_score")
-        or model_log_loss >= _number(naive.get("mean_log_loss"), "naive mean_log_loss")
-    ):
-        raise ForecastLedgerError("model must outperform the naive baseline on both Brier score and log loss")
+        baseline_brier = _number(metrics.get("mean_brier_score"), f"{baseline} mean_brier_score")
+        baseline_log_loss = _number(metrics.get("mean_log_loss"), f"{baseline} mean_log_loss")
+        if model_brier >= baseline_brier or model_log_loss >= baseline_log_loss:
+            raise ForecastLedgerError(
+                f"model must outperform the {baseline} baseline on both Brier score and log loss"
+            )
 
     data_cutoff = _utc(report.get("evaluation_data_cutoff_utc"), "evaluation_data_cutoff_utc")[0]
     completed = _utc(report.get("evaluation_completed_at_utc"), "evaluation_completed_at_utc")[0]

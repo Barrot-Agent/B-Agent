@@ -10,6 +10,7 @@ from barrot_agent.evolution.forecast_ledger import (
     ForecastAlreadyResolvedError,
     ForecastLedger,
     ForecastLedgerError,
+    _validate_readiness_report,
 )
 from barrot_agent.evolution.point_in_time_features import build_feature_snapshot
 
@@ -654,6 +655,14 @@ def test_forecast_recording_requires_a_verified_feature_store(tmp_path):
     clock.set(TEST_NOW)
     with pytest.raises(ForecastLedgerError, match="verified HistoricalFeatureStore"):
         ledger.record_forecast(forecast())
+
+
+def test_readiness_requires_candidate_to_beat_every_baseline():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["baseline_metrics"]["momentum_sign"]["mean_brier_score"] = 0.14
+    report["baseline_metrics"]["momentum_sign"]["mean_log_loss"] = 0.40
+    with pytest.raises(ForecastLedgerError, match="momentum_sign"):
+        _validate_readiness_report(report)
 
 
 def test_rejects_unknown_or_non_sha256_feature_snapshot(tmp_path):
