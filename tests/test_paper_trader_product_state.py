@@ -60,6 +60,28 @@ def test_buy_records_product_identity():
     assert state["cash_usd"] == 900.0
 
 
+def test_buy_that_would_create_a_dust_position_is_rejected_without_state_mutation():
+    trader = load_trader()
+    state = make_state()
+    before = state.copy()
+
+    result = trader.execute_paper_trade(
+        state, {"action": "buy", "amount_usd": 1.0}, 100_000_000.0, "XRP-USD"
+    )
+
+    assert result == "hold -- buy would create a dust position"
+    assert state == before
+
+
+def test_existing_dust_position_fails_closed():
+    trader = load_trader()
+    state = make_state(size=1e-8, avg=100_000_000.0)
+
+    assert trader.validate_position_product(state, "XRP-USD") == (
+        "aborted -- open position is below minimum size"
+    )
+
+
 def test_mismatched_product_trade_does_not_mutate_state():
     trader = load_trader()
     state = make_state(cash=500.0, size=2.0, product="BTC-USD", avg=100.0, count=4)
