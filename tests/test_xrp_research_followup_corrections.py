@@ -128,3 +128,31 @@ def test_evernorth_subscription_cash_is_separate_from_xrp_purchase_cost():
     assert "does not itemize the $49,995 difference" in entry["interpretation"]
     assert entry["model_eligible"] is False
     assert correction["forecast_issued"] is False
+
+
+def test_macro_geopolitical_update_preserves_event_times_and_counterhypotheses():
+    artifact = load_json(
+        ROOT / "research" / "xrp_intelligence" / "20261104T183900Z-macro-geopolitical-market-update.json"
+    )
+    assert artifact["prediction_status"] == "NOT_ISSUED"
+    assert artifact["forecast_issued"] is False
+    assert artifact["model_eligible"] is False
+    assert len({source["id"] for source in artifact["source_registry"]}) == len(artifact["source_registry"])
+    assert {source["source_independence_group"] for source in artifact["source_registry"]} == {
+        "us_treasury_primary", "reuters_news", "associated_press"
+    }
+    treasury = artifact["treasury_snapshot"]
+    assert sum(treasury["auction_sizes_usd_bn"].values()) == 125
+    assert treasury["estimated_new_cash_usd_bn"] == 28
+    assert treasury["buyback_capacity_usd_bn"]["liquidity_support"] == 70
+    assert treasury["buyback_capacity_usd_bn"]["cash_management_1m_to_2y"] == 25
+    assert "next several quarters" in treasury["nominal_coupon_and_frn_guidance"]
+    energy = artifact["energy_snapshot"]
+    assert energy["observation_time_utc"] == "2026-11-04T16:58:00Z"
+    assert energy["brent_usd_per_barrel"] == 94.29
+    assert energy["wti_usd_per_barrel"] == 88.54
+    assert len(artifact["competing_hypotheses"]) >= 4
+    assert all(item["support"] and item["disconfirming_or_missing"] and item["test"] for item in artifact["competing_hypotheses"])
+    assert artifact["xrp_relevance"]["causal_claim"] == "NONE_ESTABLISHED"
+    assert artifact["data_quality"]["raw_source_bytes_captured"] is False
+    assert artifact["data_quality"]["rendered_web_content_model_eligible"] is False
