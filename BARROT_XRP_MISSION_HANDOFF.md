@@ -32,7 +32,7 @@ The integrated code head `e0c039385471ee7afed9050435089eba181110f4` passed:
 - Full repository suite: **795 passed + 8 subtests** — run 41826921875, job 126563907479.
 - Four-manifest `pip-audit`: **passed; no known vulnerabilities** — run 41826922107, job 126563907923.
 - Fail-closed gate: **passed, but merge explicitly disabled** — run 41826921964, job 126563907170.
-The current handoff refresh is documentation-only and follows that tested code head; its own exact-head checks must also pass before merge.
+The current handoff refresh is documentation-only and follows that tested code head. Subsequent safety changes disabled the legacy market-analysis writer and added a canonical-record integrity fix; their final combined head requires fresh exact-head CI, full-suite, dependency audit and gate verification.
 
 All 19 existing inline review threads on #1640 are resolved. Existing reviews are COMMENTED, not APPROVED; there are zero approving reviews. The gate explicitly says merging is disabled. Do not merge or bypass branch protection.
 
@@ -44,6 +44,12 @@ Source-path coverage against #1640:
 - #1255: 1/1.
 - #1254: 1/1.
 Keep these source PRs open until #1640 is merged and every included path is verified on main.
+
+## Additional safety hardening after the tested code head
+
+- `.github/workflows/capability-1-market-analysis.yml` is disabled. It previously invoked a legacy Groq/Databricks script that requested actionable trades and committed results directly to main without a validated XRP model. The script is now descriptive-only, requires a separate local opt-in, validates strict JSON, forces `forecast_status=NOT_ISSUED` and an empty `trade_recommendations` list, and uses the Databricks Statement Execution API's required `statement`, `warehouse_id`, bounded wait and result manifest. No Databricks or Groq authentication was tested and no workflow was dispatched.
+- Copilot's review-only pass on `e5a1df572ca4333e6671bca6761bceade4c66733` found a real feature-store integrity edge case: a noncanonical record (for example lower-case asset) could be normalized before row persistence while the original manifest remained unchanged. The store now rejects any record that differs from its normalized representation; a regression test recomputes the outer snapshot ID and confirms append rejection. Copilot did not modify repository code.
+- The new canonical-record fix follows branch parent `8ba2e89754ea70bf399f111d20f399b45cb4ceeb`; exact-head CI is pending for the resulting combined head. The earlier `e0c039...` and `e5a1...` passes remain component-head evidence only.
 
 ## Prediction-engine truth
 
@@ -100,7 +106,7 @@ Only ChatGPT-to-GitHub repository access is tested. Claude, Grok, Gemini, Copilo
 - Complete open inventory: 366 PRs (359 drafts, 7 non-drafts); four are based on current main and 362 have stale base SHAs. The remaining stale-base PRs are individually unreviewed until exact path/commit overlap is checked. Do not bulk-close.
 
 Next concrete actions:
-1. Verify the documentation-refresh child of #1640 on its exact head; preserve the full-suite, four-manifest audit and fail-closed results.
+1. Verify the final #1640 head after legacy market-analysis containment and canonical feature-record rejection; require exact-head core/full-suite, four-manifest dependency audit and fail-closed-gate passes.
 2. Obtain actual independent review and verify required approval/branch-protection conditions without bypassing the fail-closed gate.
 3. Review and integrate the unique #1643 research archive; after the Circle webcast and XRPL amendment window, capture issuer results and verify amendment activation from the ledger.
 4. Build public exchange-native ingestion and immutable raw receipts before populating the historical feature store.

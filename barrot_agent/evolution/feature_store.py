@@ -126,6 +126,8 @@ def _validate_manifest(snapshot: Mapping[str, Any]) -> dict[str, Any]:
                 + ",".join(checked["exclusion_reasons"])
             )
         normalized = checked["record"]
+        if record != normalized:
+            raise FeatureStoreError("feature record must be in canonical normalized form")
         if record.get("normalized_content_sha256") != normalized["normalized_content_sha256"]:
             raise FeatureStoreError("normalized feature content hash does not match")
         record_ids.append(normalized["record_id"])

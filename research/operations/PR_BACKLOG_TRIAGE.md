@@ -109,3 +109,11 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - #1314 remains a separate predecessor: none of its six changed paths were represented in #1640's changed-path list in this inspection. Do not close it without a fresh content comparison.
 - Open inventory remains 366 (359 drafts, 7 non-drafts), with four PRs based on current main and 362 stale-base PRs. No bulk closure.
 - Prediction remains NOT_ISSUED; no populated historical XRP dataset or leakage-safe out-of-sample results exist. No external or real-money action occurred.
+
+
+## Run 15 — market-analysis containment and feature-store review fix (2026-11-04T12:22Z)
+
+- Legacy `.github/workflows/capability-1-market-analysis.yml` previously invoked a Groq/Databricks script that requested actionable trades and pushed output to main. It is now disabled with no permissions or secrets. The script is descriptive-only, requires a separate local opt-in, uses bounded read-only SQL Statement Execution, validates a strict response schema, forces `forecast_status=NOT_ISSUED` and empty trade recommendations. No Databricks/Groq auth was tested and the workflow was not dispatched.
+- Copilot's review-only pass found a reproducible integrity issue in #1640's feature store: a record could be normalized before persistence while the manifest retained the noncanonical value. The store now rejects any record that differs from its normalized representation; a regression test recomputes the outer manifest hash and asserts append rejection. Copilot made no code changes.
+- Final combined head after these changes requires a fresh exact-head full-suite, dependency audit and fail-closed-gate run. Previous exact-head results do not transfer to this new head.
+- Merge remains blocked: zero approving reviews; branch-protection requirement unverified; fail-closed gate keeps merge disabled.

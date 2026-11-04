@@ -5,7 +5,12 @@ import sqlite3
 
 import pytest
 
-from barrot_agent.evolution.feature_store import FeatureStoreError, HistoricalFeatureStore
+from barrot_agent.evolution.feature_store import (
+    FeatureStoreError,
+    HistoricalFeatureStore,
+    _canonical,
+    _sha256,
+)
 from barrot_agent.evolution.point_in_time_features import (
     FeatureSnapshotError,
     build_feature_snapshot,
@@ -530,3 +535,18 @@ def test_historical_feature_store_as_of_refuses_unverified_manifest_tampering(tm
         store.features_as_of("XRP", "2030-01-01T00:00:00Z")
     with pytest.raises(FeatureStoreError, match="snapshot integrity verification failed"):
         store.source_lineage(snapshot["snapshot_id"])
+
+
+def test_historical_feature_store_rejects_noncanonical_manifest_record_before_normalizing(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    tampered = json.loads(json.dumps(snapshot))
+    tampered["records"][0]["asset"] = "xrp"
+    manifest_without_id = dict(tampered)
+    manifest_without_id.pop("snapshot_id")
+    tampered["snapshot_id"] = _sha256(_canonical(manifest_without_id))
+
+    store = HistoricalFeatureStore(tmp_path / "noncanonical-record.sqlite3")
+    with pytest.raises(FeatureStoreError, match="canonical normalized form"):
+        store.append_snapshot(tampered)
