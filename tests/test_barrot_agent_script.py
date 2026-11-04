@@ -406,12 +406,21 @@ def test_repo_browser_open_file_is_bounded_and_confined(tmp_path: Path, monkeypa
     assert "escapes the repository root" in escaped["error"]
 
 
-def test_barrot_agent_manual_dispatch_requires_explicit_confirmation() -> None:
+def test_barrot_agent_dispatch_remains_quarantined_until_integration_gates_are_verified() -> None:
     workflow = (
         Path(__file__).resolve().parents[1] / ".github" / "workflows" / "barrot-agent.yml"
     ).read_text(encoding="utf-8")
-    assert "confirm:" in workflow
-    assert "type: boolean" in workflow
-    assert "required: true" in workflow
-    assert "default: false" in workflow
-    assert "(github.event_name == 'workflow_dispatch' && inputs.confirm == true)" in workflow
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: \u0024{{ false }}" in workflow
+    assert "confirm:" not in workflow
+    for forbidden in (
+        "schedule:",
+        "issues:",
+        "contents: write",
+        "pull-requests: write",
+        "GROQ_API_KEY",
+        "GH_TOKEN",
+        "scripts/barrot_agent.py",
+    ):
+        assert forbidden not in workflow
