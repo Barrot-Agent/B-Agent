@@ -80,7 +80,7 @@ def test_docker_runner_enforces_network_and_privilege_limits(tmp_path, monkeypat
     run = calls[1]
     assert run[run.index("--network") + 1] == "none"
     assert "--read-only" in run and "--cap-drop" in run and "--security-opt" in run
-    variant_arg = run[run.index("--env", run.index("--env") + 1) + 1]
+    variant_arg = next(value for value in run if value.startswith("BARROT_EXPERIMENT_VARIANT="))
     assert variant_arg.startswith("BARROT_EXPERIMENT_VARIANT=")
     assert "model" in variant_arg and "base" in variant_arg
     assert len([x for x in calls if x[1:3] == ["run", "--rm"]]) == 2
