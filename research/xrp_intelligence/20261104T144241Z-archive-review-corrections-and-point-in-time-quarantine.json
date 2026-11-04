@@ -2,8 +2,8 @@
   "schema_version": "barrot.xrp.research-correction.v1",
   "artifact_id": "xrp_archive_review_correction_20261104T144241Z",
   "artifact_type": "append_only_review_correction_and_pit_quarantine",
-  "captured_at_utc": "2026-11-04T14:50:04Z",
-  "data_cutoff_utc": "2026-11-04T14:50:04Z",
+  "captured_at_utc": "2026-11-04T14:50:50Z",
+  "data_cutoff_utc": "2026-11-04T14:50:50Z",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-evidence-archive-20261104",
   "review_pr": 1643,
@@ -426,7 +426,7 @@
       "authority": "primary OCC news release",
       "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-29.html",
       "published_at_utc": "2026-04-17",
-      "retrieved_at_utc": "2026-11-04T14:50:04Z",
+      "retrieved_at_utc": "2026-11-04T14:50:50Z",
       "source_independence_group": "occ_regulatory_release",
       "raw_content_sha256": null,
       "raw_capture_status": "web_rendered_extract_only",
@@ -1000,11 +1000,11 @@
     "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "2993e70f909b24d19d7c0f8b2b046246e1a762f0",
-    "prior_captured_at_utc": "2026-11-04T14:44:31Z",
-    "revised_at_utc": "2026-11-04T14:50:04Z",
-    "revision_reason": "Corrected two source publication-date fields to unknown, added an OCC source that demonstrates News Release 2026-29 is unrelated model-risk guidance, and expanded the Arc counter-hypothesis. No original source artifact or raw receipt was modified.",
-    "revision_status": "append_only_metadata_and_source_crosswalk_revision",
+    "prior_blob_sha": "98cdaa98a6b3bd05003184cdcac6fd0ffc1b9ab9",
+    "prior_captured_at_utc": "2026-11-04T14:50:04Z",
+    "revised_at_utc": "2026-11-04T14:50:50Z",
+    "revision_reason": "Aligned the new OCC News Release 2026-29 source receipt and artifact capture cutoff after the page was opened; no source claim or raw artifact changed.",
+    "revision_status": "append_only_timestamp_alignment",
     "source_registry_unchanged": false
   },
   "artifact_revision_history": [
@@ -1015,6 +1015,14 @@
       "revision_reason": "Corrected the canonical JSON pointer for the XRP X:PM haircut field to product_scope_matrix[1]. No source record or raw receipt was changed; the original research artifacts remain preserved.",
       "revision_status": "append_only_metadata_and_path_correction",
       "source_registry_unchanged": true
+    },
+    {
+      "prior_blob_sha": "2993e70f909b24d19d7c0f8b2b046246e1a762f0",
+      "prior_captured_at_utc": "2026-11-04T14:44:31Z",
+      "revised_at_utc": "2026-11-04T14:50:04Z",
+      "revision_reason": "Corrected two source publication-date fields to unknown, added an OCC source that demonstrates News Release 2026-29 is unrelated model-risk guidance, and expanded the Arc counter-hypothesis. No original source artifact or raw receipt was modified.",
+      "revision_status": "append_only_metadata_and_source_crosswalk_revision",
+      "source_registry_unchanged": false
     }
   ]
 }
