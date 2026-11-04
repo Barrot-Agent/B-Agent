@@ -288,7 +288,7 @@ class StructuralAnalyzer:
                         ensure_ascii=False,
                     ),
                 )
-            if hasattr(item, "__dict__")
+            if hasattr(item, "__dict__"):
                 return normalize(vars(item))
             return item
 
