@@ -198,13 +198,13 @@ def _feature_record(
     instrument: str,
     currency_pair: str,
     market_type: str,
-    aggregation_window: str = "",
+    aggregation_window: str | None = None,
     model_eligible: bool = True,
     eligibility_reason: str = "",
     quality_status: str = "verified",
     limitations: list[str] | None = None,
 ) -> dict[str, Any]:
-    return {
+    record = {
         "record_id": f"{feature_id}:{event_time_utc}:{source_id}",
         "feature_id": feature_id,
         "feature_version": 1,
@@ -238,8 +238,10 @@ def _feature_record(
         "instrument": instrument,
         "currency_pair": currency_pair,
         "market_type": market_type,
-        "aggregation_window": aggregation_window,
     }
+    if aggregation_window:
+        record["aggregation_window"] = aggregation_window
+    return record
 
 
 def _live_eligibility(source_time: datetime, captured: datetime, max_age: int) -> tuple[bool, str, str]:
