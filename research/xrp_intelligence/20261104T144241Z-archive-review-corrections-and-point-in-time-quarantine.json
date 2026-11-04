@@ -2,8 +2,8 @@
   "schema_version": "barrot.xrp.research-correction.v1",
   "artifact_id": "xrp_archive_review_correction_20261104T144241Z",
   "artifact_type": "append_only_review_correction_and_pit_quarantine",
-  "captured_at_utc": "2026-11-04T14:50:50Z",
-  "data_cutoff_utc": "2026-11-04T14:50:50Z",
+  "captured_at_utc": "2026-11-04T15:08:19Z",
+  "data_cutoff_utc": "2026-11-04T15:08:19Z",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-evidence-archive-20261104",
   "review_pr": 1643,
@@ -434,11 +434,27 @@
       "claims_supported": [
         "OCC News Release 2026-29 is titled 'OCC Issues Updated Model Risk Management Guidance' and is dated April 17, 2026; it is unrelated to Ripple or Coinbase national trust bank charter approvals."
       ]
+    },
+    {
+      "id": "circle_occ_cas_final",
+      "publisher": "Office of the Comptroller of the Currency",
+      "authority": "primary OCC Corporate Applications Search record",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T15:08:19Z",
+      "source_independence_group": "occ_regulatory_record",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "The OCC CAS record identifies First National Digital Currency Bank, N.A., Circle's national trust bank, under control number 2025-Charter-342299.",
+        "The record lists an approved action dated 2025-12-12 and a consummated/effective date of 2026-07-24; the separate Circle Q2 2026 Form 10-Q records final OCC approval on 2026-07-09 and opening on 2026-07-24."
+      ]
     }
   ],
   "correction_overlay": {
     "consumer_application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY",
-    "consumer_note": "The original JSON artifacts remain unchanged. Downstream consumers must apply this overlay before treating corrected fields or relationships as canonical. No production parser currently applies this overlay automatically.",
+    "consumer_note": "This is an append-only research correction overlay. Entity-specific source replacements now carry exact target_field pointers; Kraken field corrections carry canonical_path pointers. No production parser applies this overlay automatically, so corrected values remain research-only until a tested consumer applies them.",
     "entries": [
       {
         "correction_id": "C01_SOURCE_CITATION_CROSSWALK",
@@ -449,25 +465,29 @@
             "source_id": "circle_q2_2026_10q_correct",
             "old_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000045/crcl-20260630.htm",
             "canonical_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
-            "reason": "Accession 0001876042-26-000045 is a Form 4 filed 2026-03-04; accession 0001876042-26-000248 is the Q2 2026 Form 10-Q."
+            "reason": "Accession 0001876042-26-000045 is a Form 4 filed 2026-03-04; accession 0001876042-26-000248 is the Q2 2026 Form 10-Q.",
+            "target_field": "$.bank_charter_status.circle.sources[0]"
           },
           {
             "source_id": "ripple_occ_cas_correct",
             "old_url": "https://apps.occ.gov/CAAS_CATS/CAAS_Details.aspx?FilingTypeID=5&FilingID=363617",
             "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
-            "reason": "Use the Ripple-specific CAS record."
+            "reason": "Use the Ripple-specific CAS record.",
+            "target_field": "$.bank_charter_status.ripple.sources[0]"
           },
           {
             "source_id": "coinbase_occ_cas_correct",
             "old_url": "https://apps.occ.gov/CAAS_CATS/CAAS_Details.aspx?FilingTypeID=5&FilingID=363617",
             "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
-            "reason": "Use the distinct Coinbase-specific CAS record; pair with OCC Conditional Approval 1370 for its preliminary conditional status."
+            "reason": "Use the distinct Coinbase-specific CAS record; pair with OCC Conditional Approval 1370 for its preliminary conditional status.",
+            "target_field": "$.bank_charter_status.coinbase.sources[1]"
           },
           {
             "source_id": "ripple_rntb_final_approval",
             "old_url": "https://ripple.com/ripple-press/2026/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
             "canonical_url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
-            "reason": "Canonical non-date-prefixed Ripple press path."
+            "reason": "Canonical non-date-prefixed Ripple press path.",
+            "target_field": "$.bank_charter_status.ripple.sources[1]"
           },
           {
             "source_id": "ripple_coinbase_rlusd",
@@ -509,19 +529,29 @@
             "source_id": "ripple_rntb_final_approval",
             "old_url": "https://www.businesswire.com/news/home/20261026123456/en/Ripple-Receives-Final-OCC-Approval-to-Establish-National-Trust-Bank",
             "canonical_url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
-            "reason": "BusinessWire URL was not independently resolvable in this run; use Ripple's primary announcement."
+            "reason": "BusinessWire URL was not independently resolvable in this run; use Ripple's primary announcement.",
+            "target_field": "$.bank_charter_status.ripple.sources[1]"
           },
           {
             "source_id": "ripple_occ_cas_correct",
             "old_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/",
             "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
-            "reason": "Replace generic OCC year index with the institution-specific Ripple CAS record."
+            "reason": "Replace generic OCC year index with the institution-specific Ripple CAS record.",
+            "target_field": "$.bank_charter_status.ripple.sources[0]"
           },
           {
             "source_id": "coinbase_occ_decision_1370",
             "old_url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-29.html",
             "canonical_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
-            "reason": "OCC News Release 2026-29 is unrelated model-risk guidance; Corporate Decision 1370 is the Coinbase preliminary conditional approval."
+            "reason": "OCC News Release 2026-29 is unrelated model-risk guidance; Corporate Decision 1370 is the Coinbase preliminary conditional approval.",
+            "target_field": "$.bank_charter_status.coinbase.sources[0]"
+          },
+          {
+            "source_id": "circle_occ_cas_final",
+            "old_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/",
+            "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+            "target_field": "$.bank_charter_status.circle.sources[1]",
+            "reason": "Use Circle's institution-specific OCC CAS record, not Ripple's record. The CAS entry records the 2025-12-12 conditional-approval action and 2026-07-24 consummated/effective date; Circle's corrected Q2 2026 Form 10-Q separately supports final approval on 2026-07-09 and opening on 2026-07-24."
           }
         ],
         "evidence_source_ids": [
@@ -535,7 +565,8 @@
           "ripple_c2fo_instant_pay",
           "ripple_robinhood_rlusd",
           "sbi_group_anthropic_announcement",
-          "sbivc_rlusd_announcement"
+          "sbivc_rlusd_announcement",
+          "circle_occ_cas_final"
         ],
         "evidence_classification": "PRIMARY_SOURCE_CITATION_CORRECTION"
       },
@@ -548,7 +579,13 @@
           "research/xrp_intelligence/20261103T223519Z-research-artifact-clock-audit.json",
           "https://github.com/Barrot-Agent/B-Agent/pull/1643"
         ],
-        "reason": "The Markdown handoff does not exist in this branch. Preserve the resolvable clock-audit JSON and the PR permalink; do not create a fabricated file."
+        "reason": "The Markdown handoff does not exist in this branch. Preserve the resolvable clock-audit JSON and the PR permalink; do not create a fabricated file.",
+        "target_field": "$.provenance_correction.references",
+        "canonical_value": [
+          "research/xrp_intelligence/20261103T223519Z-research-artifact-clock-audit.json",
+          "https://github.com/Barrot-Agent/B-Agent/pull/1643"
+        ],
+        "application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
       },
       {
         "correction_id": "C03_KRAKEN_UTC_DAILY_OPEN",
@@ -561,18 +598,21 @@
           {
             "path": "$.market_snapshot.spot[0].open_24h_usd",
             "canonical_name": "daily_open_usd",
-            "canonical_value": 1.27513
+            "canonical_value": 1.27513,
+            "canonical_path": "$.market_snapshot.spot[0].daily_open_usd"
           },
           {
             "path": "$.market_snapshot.spot[0].last_vs_open_pct",
             "canonical_name": "last_vs_daily_open_pct",
             "canonical_value": 1.3387,
-            "formula": "(1.2922 / 1.27513 - 1) * 100"
+            "formula": "(1.2922 / 1.27513 - 1) * 100",
+            "canonical_path": "$.market_snapshot.spot[0].last_vs_daily_open_pct"
           },
           {
             "path": "$.market_observations[0].open_24h_usd",
             "canonical_name": "daily_open_usd",
-            "canonical_value": 1.27513
+            "canonical_value": 1.27513,
+            "canonical_path": "$.market_observations[0].daily_open_usd"
           }
         ],
         "source_id": "kraken_ticker_api_docs",
@@ -622,7 +662,21 @@
           "circle_arc_mainnet_launch"
         ],
         "canonical_status": "ANNOUNCED_FOUNDING_COHORT; VALIDATOR_RUNTIME_NOT_INDEPENDENTLY_VERIFIED",
-        "reason": "Circle's 2026-09-16 launch release names SBI Group in the founding validator cohort. This is not proof that a validator instance was independently observed operating."
+        "reason": "Circle's 2026-09-16 launch release names SBI Group in the founding validator cohort. This is not proof that a validator instance was independently observed operating.",
+        "superseded_evidence_source_ids": [
+          "circle_q3_2026_presentation",
+          "sbi_circle_jv"
+        ],
+        "canonical_edge": {
+          "from": "SBI Group",
+          "to": "Circle Arc",
+          "relation": "named in founding validator cohort",
+          "evidence_source_ids": [
+            "circle_arc_mainnet_launch"
+          ],
+          "status": "ANNOUNCED_FOUNDING_COHORT; VALIDATOR_RUNTIME_NOT_INDEPENDENTLY_VERIFIED",
+          "scope": "Corporate announcement of cohort membership; not independent proof of a live validator instance or production transaction volume."
+        }
       },
       {
         "correction_id": "C07_EVERNORTH_CAPITAL_LEDGER",
@@ -745,7 +799,8 @@
         "canonical_status": "INCONCLUSIVE_HTTP_STATUS_UNVERIFIED",
         "reason": "Main's scripts/pillars_check.py reads response text without checking HTTP status. The 2026-11-04 13:01:45Z run did not record the raw HTTP status for this source scan. The #1640 branch adds a status_code==200 check, but it is unmerged and therefore not active on main.",
         "related_pr": 1640,
-        "related_pr_head": "3ccbcafc30450f1cc669d6f016c1ba196eed57fe"
+        "related_pr_head": "398a2e8a3664f638416923cd0665f1f2a8d1389a",
+        "branch_status": "HTTP_STATUS_GUARD_PRESENT_ON_UNMERGED_PR_BRANCH; MAIN_REMAINS_UNCHANGED"
       },
       {
         "correction_id": "C12_DERIVATIVES_AND_ETF_OBSERVATION_ELIGIBILITY",
@@ -1000,11 +1055,11 @@
     "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "98cdaa98a6b3bd05003184cdcac6fd0ffc1b9ab9",
-    "prior_captured_at_utc": "2026-11-04T14:50:04Z",
-    "revised_at_utc": "2026-11-04T14:50:50Z",
-    "revision_reason": "Aligned the new OCC News Release 2026-29 source receipt and artifact capture cutoff after the page was opened; no source claim or raw artifact changed.",
-    "revision_status": "append_only_timestamp_alignment",
+    "prior_blob_sha": "f9075237e4d8f4298a66655491d279947c6ff45d",
+    "prior_captured_at_utc": "2026-11-04T14:50:50Z",
+    "revised_at_utc": "2026-11-04T15:08:19Z",
+    "revision_reason": "Scoped OCC citation replacements to exact Circle, Ripple and Coinbase fields; added Circle-specific OCC CAS evidence; made Kraken canonical field paths explicit; strengthened nested evidence-reference tests. Prior research artifacts and raw-source receipts remain preserved.",
+    "revision_status": "append_only_entity_scoped_source_crosswalk_and_test_revision",
     "source_registry_unchanged": false
   },
   "artifact_revision_history": [
@@ -1022,6 +1077,14 @@
       "revised_at_utc": "2026-11-04T14:50:04Z",
       "revision_reason": "Corrected two source publication-date fields to unknown, added an OCC source that demonstrates News Release 2026-29 is unrelated model-risk guidance, and expanded the Arc counter-hypothesis. No original source artifact or raw receipt was modified.",
       "revision_status": "append_only_metadata_and_source_crosswalk_revision",
+      "source_registry_unchanged": false
+    },
+    {
+      "prior_blob_sha": "98cdaa98a6b3bd05003184cdcac6fd0ffc1b9ab9",
+      "prior_captured_at_utc": "2026-11-04T14:50:04Z",
+      "revised_at_utc": "2026-11-04T14:50:50Z",
+      "revision_reason": "Aligned the new OCC News Release 2026-29 source receipt and artifact capture cutoff after the page was opened; no source claim or raw artifact changed.",
+      "revision_status": "append_only_timestamp_alignment",
       "source_registry_unchanged": false
     }
   ]

@@ -47,6 +47,13 @@ def test_all_source_ids_are_unique_and_resolve():
             assert source_id in known
         if entry.get("source_id"):
             assert entry["source_id"] in known
+        for source_id in entry.get("canonical_evidence_source_ids", []):
+            assert source_id in known
+        for entity in entry.get("canonical_entities", []):
+            for source_id in entity.get("evidence_source_ids", []):
+                assert source_id in known
+        for source_id in entry.get("canonical_edge", {}).get("evidence_source_ids", []):
+            assert source_id in known
 
 
 def test_rendered_sources_are_not_misrepresented_as_raw_receipts():
@@ -87,11 +94,21 @@ def test_circle_q2_sec_accession_and_occ_records_are_distinct():
     circle = next(x for x in replacements if x["source_id"] == "circle_q2_2026_10q_correct")
     ripple = next(x for x in replacements if x["source_id"] == "ripple_occ_cas_correct")
     coinbase = next(x for x in replacements if x["source_id"] == "coinbase_occ_cas_correct")
+    circle_occ = next(x for x in replacements if x["source_id"] == "circle_occ_cas_final")
+    coinbase_decision = next(x for x in replacements if x["source_id"] == "coinbase_occ_decision_1370")
     assert "000187604226000248" in circle["canonical_url"]
     assert "000187604226000045" in circle["old_url"]
     assert "RjzoD2gxmYOv" in ripple["canonical_url"]
     assert "3RAoRRek6o4j" in coinbase["canonical_url"]
+    assert "D79Z71vmerN8" in circle_occ["canonical_url"]
     assert ripple["canonical_url"] != coinbase["canonical_url"]
+    assert circle["target_field"] == "$.bank_charter_status.circle.sources[0]"
+    assert circle_occ["target_field"] == "$.bank_charter_status.circle.sources[1]"
+    assert ripple["target_field"] == "$.bank_charter_status.ripple.sources[0]"
+    assert coinbase["target_field"] == "$.bank_charter_status.coinbase.sources[1]"
+    assert coinbase_decision["target_field"] == "$.bank_charter_status.coinbase.sources[0]"
+    assert source_map(data)["circle_occ_cas_final"]["model_eligible"] is False
+    assert "2026-07-24" in " ".join(source_map(data)["circle_occ_cas_final"]["claims_supported"])
 
 
 def test_dangling_handoff_is_not_referenced_as_existing():
@@ -99,6 +116,9 @@ def test_dangling_handoff_is_not_referenced_as_existing():
     entry = correction(data, "C02_DANGLING_HANDOFF_REFERENCE")
     assert entry["invalid_reference"].endswith("HANDOFF_20261103T223519Z-PROVENANCE-CLOCK-AUDIT.md")
     assert all(ref.endswith("20261103T223519Z-research-artifact-clock-audit.json") or ref.startswith("https://github.com/") for ref in entry["canonical_references"])
+    assert entry["target_field"] == "$.provenance_correction.references"
+    assert entry["canonical_value"] == entry["canonical_references"]
+    assert entry["application_status"] == "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
 
 
 def test_kraken_open_is_daily_not_rolling_24h():
@@ -108,7 +128,9 @@ def test_kraken_open_is_daily_not_rolling_24h():
     daily = fields["$.market_snapshot.spot[0].open_24h_usd"]
     derived = fields["$.market_snapshot.spot[0].last_vs_open_pct"]
     assert daily["canonical_name"] == "daily_open_usd"
+    assert daily["canonical_path"] == "$.market_snapshot.spot[0].daily_open_usd"
     assert derived["canonical_name"] == "last_vs_daily_open_pct"
+    assert derived["canonical_path"] == "$.market_snapshot.spot[0].last_vs_daily_open_pct"
     expected = (1.2922 / 1.27513 - 1) * 100
     assert math.isclose(derived["canonical_value"], expected, rel_tol=0, abs_tol=0.00005)
 
@@ -139,6 +161,9 @@ def test_circle_arc_validator_claim_uses_circle_launch_source_and_limits_status(
     assert entry["canonical_evidence_source_ids"] == ["circle_arc_mainnet_launch"]
     assert "SBI Group is named" in sources["circle_arc_mainnet_launch"]["claims_supported"][0]
     assert "RUNTIME_NOT_INDEPENDENTLY_VERIFIED" in entry["canonical_status"]
+    assert entry["superseded_evidence_source_ids"] == ["circle_q3_2026_presentation", "sbi_circle_jv"]
+    assert entry["canonical_edge"]["evidence_source_ids"] == ["circle_arc_mainnet_launch"]
+    assert entry["canonical_edge"]["to"] == "Circle Arc"
 
 
 def test_evernorth_facility_lender_cost_basis_and_graph_are_reconciled():
@@ -180,6 +205,8 @@ def test_pillars_fiction_scan_is_inconclusive_until_http_200_is_verified():
     assert entry["original_status"] == "PASS_SOURCE_ONLY"
     assert entry["canonical_status"] == "INCONCLUSIVE_HTTP_STATUS_UNVERIFIED"
     assert entry["related_pr"] == 1640
+    assert entry["related_pr_head"] == "398a2e8a3664f638416923cd0665f1f2a8d1389a"
+    assert entry["branch_status"].startswith("HTTP_STATUS_GUARD_PRESENT")
 
 
 def test_each_derivatives_etf_observation_is_explicitly_model_ineligible():
@@ -227,3 +254,15 @@ def test_unverified_publication_dates_remain_unknown():
     sources = source_map(data)
     assert sources["ripple_occ_cas_correct"]["published_at_utc"] is None
     assert sources["coinbase_global_derivatives_cross_collateral"]["published_at_utc"] is None
+
+
+def test_circle_and_ripple_occ_replacements_are_entity_scoped():
+    data = load_artifact()
+    replacements = correction(data, "C01_SOURCE_CITATION_CROSSWALK")["replacements"]
+    by_id = {item["source_id"]: item for item in replacements}
+    assert by_id["circle_occ_cas_final"]["target_field"] == "$.bank_charter_status.circle.sources[1]"
+    assert by_id["ripple_occ_cas_correct"]["target_field"] == "$.bank_charter_status.ripple.sources[0]"
+    assert by_id["circle_occ_cas_final"]["target_field"] != by_id["ripple_occ_cas_correct"]["target_field"]
+    assert "D79Z71vmerN8" in by_id["circle_occ_cas_final"]["canonical_url"]
+    assert "RjzoD2gxmYOv" in by_id["ripple_occ_cas_correct"]["canonical_url"]
+
