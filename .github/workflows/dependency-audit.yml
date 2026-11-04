@@ -6,6 +6,7 @@ on:
     paths:
       - "requirements.txt"
       - "requirements-dev.txt"
+      - "requirements.tx"
       - "pyproject.toml"
       - "hf_space/requirements.txt"
       - "legacy/requirements_legacy.txt"
@@ -45,6 +46,11 @@ jobs:
         continue-on-error: true
         run: pip-audit -r requirements-dev.txt --strict
 
+      - name: Audit supplemental requirements.tx declarations
+        id: supplemental
+        continue-on-error: true
+        run: pip-audit -r requirements.tx --strict
+
       - name: Audit Hugging Face Space declarations
         id: hf_space
         continue-on-error: true
@@ -59,10 +65,11 @@ jobs:
         if: always()
         env:
           MAIN_DEV: ${{ steps.main_dev.outcome }}
+          SUPPLEMENTAL: ${{ steps.supplemental.outcome }}
           HF_SPACE: ${{ steps.hf_space.outcome }}
           LEGACY: ${{ steps.legacy.outcome }}
         run: |
-          printf 'main/dev=%s hf_space=%s legacy=%s\n' "$MAIN_DEV" "$HF_SPACE" "$LEGACY"
-          if [ "$MAIN_DEV" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ]; then
+          printf 'main/dev=%s supplemental=%s hf_space=%s legacy=%s\\n' "$MAIN_DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY"
+          if [ "$MAIN_DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ]; then
             exit 1
           fi
