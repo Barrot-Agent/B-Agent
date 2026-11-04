@@ -1,0 +1,39 @@
+name: XRP Public Market Ingestion
+
+on:
+  schedule:
+    - cron: '3 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: xrp-public-market-ingestion
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Capture public XRP market sources
+        run: python -m barrot_agent.evolution.xrp_public_ingestion --output-dir artifacts/xrp_ingestion
+      - name: Upload immutable run artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-market-${{ github.run_id }}
+          path: artifacts/xrp_ingestion/**
+          if-no-files-found: error
+          retention-days: 90
