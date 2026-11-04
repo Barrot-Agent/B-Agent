@@ -106,3 +106,70 @@ def test_nine_platform_map_does_not_overstate_live_connections() -> None:
     assert contract["disagreement_policy"]
     assert contract["least_privilege_policy"]
     assert contract["adapter_status"].startswith("Architecture designed")
+
+
+ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T030546Z-market-structure-capital-flow-addendum.json"
+)
+
+
+def test_market_addendum_source_references_and_graph_are_resolvable() -> None:
+    data = json.loads(ADDENDUM.read_text(encoding="utf-8"))
+    source_ids = [source["id"] for source in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+    assert len(data["observations"]) >= 8
+    assert len(data["relationship_graph"]) >= 5
+    assert len(data["competing_hypotheses"]) >= 4
+
+    for observation in data["observations"]:
+        assert observation["id"]
+        assert observation["claim"]
+        assert set(observation["evidence"]) <= known
+
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert set(edge["evidence"]) <= known
+
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"]
+        assert hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"]
+        assert hypothesis["test"]
+
+
+def test_market_addendum_preserves_provider_and_etf_disagreements() -> None:
+    data = json.loads(ADDENDUM.read_text(encoding="utf-8"))
+    cutoff = _parse_utc(data["data_cutoff_utc"])
+    for item in data["market_snapshot"]["derivatives"]:
+        assert _parse_utc(item["as_of_utc"]) <= cutoff
+
+    oi = data["market_snapshot"]["derivatives"]
+    assert oi[0]["open_interest_usd"] != oi[1]["open_interest_usd"]
+    assert "Do not average" in data["data_quality"]["no_averaging_policy"]
+
+    etf = data["market_snapshot"]["etf_flows"]
+    assert len(etf) == 2
+    assert etf[0]["net_flow_xrp"] != 0
+    assert etf[1]["net_flow_usd"] != 0
+    assert data["mission"]["prediction_status"] == "NOT_ISSUED"
+
+
+def test_market_addendum_quarantines_internally_inconsistent_source() -> None:
+    data = json.loads(ADDENDUM.read_text(encoding="utf-8"))
+    quarantined = set(data["data_quality"]["quarantined_sources"])
+    assert "swiftedge_xrp_perps_dynamic_20261104_0305z" in quarantined
+    source = next(
+        item for item in data["source_registry"]
+        if item["id"] == "swiftedge_xrp_perps_dynamic_20261104_0305z"
+    )
+    assert any("later than this run" in limitation for limitation in source["limitations"])
+    observation = next(
+        item for item in data["observations"]
+        if item["id"] == "OBS-SWIFTEDGE-20261104-01"
+    )
+    assert observation["evidence"] == [source["id"]]
+    assert observation["classification"] == "quarantined_source_observation"
