@@ -89,3 +89,42 @@ def test_occ_cas_crosswalk_is_entity_scoped_and_supersedes_unscoped_replacement(
     assert correction["correction_overlay"]["consumer_application_status"] == "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
     assert correction["forecast_issued"] is False
     assert correction["model_eligible"] is False
+
+
+def test_evernorth_facility_lender_is_ripple_not_nh_kyobo():
+    correction = load_json(FOLLOWUP)
+    target = load_json(
+        ROOT / "research" / "xrp_intelligence" / "20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json"
+    )
+    entry = next(
+        item for item in correction["correction_overlay"]["entries"]
+        if item["correction_id"] == "C20_EVERNORTH_FACILITY_LENDER"
+    )
+    original = target["capital_reconciliation"]["additional_debt_capital"][2]
+    assert original["source"] == entry["original_value"]
+    assert original["borrower"] == "Evernorth Holdings Inc. (Pubco)"
+    assert target["additional_credit_facilities"][0]["lender"] == "Ripple Labs Inc."
+    assert entry["canonical_value"] == "Ripple Labs Inc."
+    assert entry["canonical_path"] == "$.capital_reconciliation.additional_debt_capital[2].lender"
+    assert entry["facility_name"] == "Evernorth Facility"
+    assert entry["facility_limit_usd"] == 1_000_000
+    assert entry["status_as_of_2026_06_30"] == "undrawn"
+    assert correction["correction_overlay"]["consumer_application_status"] == "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
+    assert correction["model_eligible"] is False
+
+
+def test_evernorth_subscription_cash_is_separate_from_xrp_purchase_cost():
+    correction = load_json(FOLLOWUP)
+    entry = next(
+        item for item in correction["correction_overlay"]["entries"]
+        if item["correction_id"] == "C21_ADVANCE_CASH_VS_XRP_PURCHASE_COST"
+    )
+    values = entry["canonical_values"]
+    assert values["advance_funding_subscription_cash_usd"] == 214_049_995
+    assert values["rounded_historical_xrp_purchase_cost_usd"] == 214_000_000
+    assert values["exact_xrp_purchase_quantity"] == 84_365_876.3625
+    assert values["issuer_reported_average_purchase_price_usd_per_xrp"] == 2.53657058
+    assert abs(values["arithmetic_check"] - values["issuer_reported_average_purchase_price_usd_per_xrp"]) < 0.000001
+    assert "does not itemize the $49,995 difference" in entry["interpretation"]
+    assert entry["model_eligible"] is False
+    assert correction["forecast_issued"] is False
