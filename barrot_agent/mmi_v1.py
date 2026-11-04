@@ -302,7 +302,8 @@ class MMIRecord:
             if not isinstance(self.structural_signature, dict):
                 errors.append("structural signature must be an object")
             else:
-                if self.structural_signature.get("valid_region") not in {"valid", "unresolved", "invalid"}:
+                valid_region = self.structural_signature.get("valid_region")
+                if not isinstance(valid_region, str) or valid_region not in {"valid", "unresolved", "invalid"}:
                     errors.append("structural signature has an invalid valid_region")
                 identity_hash = self.structural_signature.get("identity_hash")
                 if not isinstance(identity_hash, str) or len(identity_hash) != 64 or any(ch not in "0123456789abcdef" for ch in identity_hash.lower()):
@@ -435,6 +436,7 @@ class MMIRecord:
             if any(
                 evidence.claim_id != claim_id
                 or evidence.supporting is not False
+                or not isinstance(evidence.state, ParseState)
                 or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
                 or not isinstance(evidence.source_ids, list)
                 or not evidence.source_ids

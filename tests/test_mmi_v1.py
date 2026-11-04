@@ -574,6 +574,53 @@ def test_contradictory_independent_evidence_can_complete_without_forced_unanimit
     assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
 
 
+def test_contradictory_unhashable_evidence_state_fails_closed():
+    record = complete_record_with_two_sources()
+    claim_id = "claim-contradictory-unhashable"
+    record.evidence = [
+        EvidenceRecord(
+            evidence_id="e-support",
+            claim="test claim",
+            claim_id=claim_id,
+            state=ParseState.OBSERVED,
+            source_ids=["s1"],
+            supporting=True,
+        ),
+        EvidenceRecord(
+            evidence_id="e-conflict",
+            claim="test claim",
+            claim_id=claim_id,
+            state=[],
+            source_ids=["s2"],
+            supporting=False,
+        ),
+    ]
+    record.corroboration_results = [{
+        "status": "CONTRADICTORY",
+        "claim_id": claim_id,
+        "independent_source_ids": ["s1", "s2"],
+        "independent_sources": 2,
+        "supporting_evidence_ids": ["e-support"],
+        "contradicting_evidence_ids": ["e-conflict"],
+    }]
+
+    errors = record.validate()
+    assert any("invalid evidence parse state" in error for error in errors)
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_structural_signature_unhashable_valid_region_fails_closed():
+    record = complete_record_with_two_sources()
+    record.structural_signature = {
+        "valid_region": [],
+        "identity_hash": "a" * 64,
+    }
+
+    errors = record.validate()
+    assert any("invalid valid_region" in error for error in errors)
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
 def test_corroboration_sources_must_be_linked_to_claim_evidence():
     record = complete_record_with_two_sources()
     record.source_graph.extend([
