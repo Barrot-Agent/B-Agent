@@ -29,7 +29,7 @@ def test_all_derivatives_and_etf_observations_are_explicitly_model_ineligible():
 
 def test_overlay_is_bound_to_exact_git_blob_of_original_source_artifact():
     source_bytes = SOURCE.read_bytes()
-    git_object = f"blob {len(source_bytes)}\\0".encode("ascii") + source_bytes
+    git_object = f"blob {len(source_bytes)}\0".encode("ascii") + source_bytes
     expected_blob_sha = hashlib.sha1(git_object).hexdigest()
     overlay = json.loads(OVERLAY.read_text(encoding="utf-8"))
 
