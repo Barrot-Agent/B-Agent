@@ -204,3 +204,42 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 
 - The first custom-config-only change still inherited `pyproject.toml`'s 70% `fail_under` and failed at 51.68% after all 820 tests + 8 subtests passed.
 - The next #1640 head adds explicit `--cov-fail-under=50` to the pytest command and a regression assertion. This is the intended 50% full-package baseline floor; exact-head CI is pending.
+
+
+## Run 18 — current-main integration and exact-path backlog state (2026-11-04T17:11:09Z)
+
+### Inventory
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree: 1,403 entries, not truncated.
+- Open PRs: **373 total; 358 drafts; 15 non-drafts**.
+- Non-draft inventory: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+
+### Current integration PRs
+- **#1640 — blocked from merge:** head `f3e353d7f998de5f2eec3e56d7250cd013694a61`, 50 commits, 59 changed files, base is current main. Exact-head CI 41867021921 passed 571 core + 8 subtests and 820 full-suite + 8 subtests. Inclusive coverage is 51.68% over all measured packages; 50% is the explicit floor, and AGI/analysis/monetization plus many legacy modules remain under-covered. Five-manifest dependency audit 41867021911 passed with no known vulnerabilities, including 15 materialized PEP 621 dependencies. Fail-closed gate 41867021755 passes but disables merge. All 22 inline threads are resolved; zero approving reviews.
+- **#1643 — blocked from merge:** head `4003324a866d0731e5bd642acb70e900e3b8ce5e`, 43 commits, 62 changed files, 18,662 additions, base is current main. Exact-head CI 41874753101 passed 489 core + 8 subtests and 761 full-suite + 8 subtests. Fail-closed gate 41874753081 passes but disables merge. All 14 inline threads are resolved; zero approving reviews. No dependency manifest changed on this branch, so a dedicated dependency audit did not run on this exact head.
+- Both PRs are mergeable/conflict-free according to GitHub metadata, but no approval exists. Repository rulesets are empty/disabled; classic branch-protection detail returns 403. Pages is enabled and a prior main Pages deployment succeeded after a main push. Do not merge until required approval and deployment side-effect controls are independently verified and authorized.
+
+### Superseded-pending-successor-merge
+- **#1642:** all seven changed paths overlap #1640.
+- **#1644:** all eight changed workflow paths overlap #1640.
+- **#1645:** its single workflow path overlaps #1640; its source-head test has a stale download-artifact version assertion.
+- **#1646 and #1648:** both overlap `requirements-dev.txt` in #1640.
+- **#1647:** all six changed workflow paths overlap #1640; its source-head tests retain stale upload-artifact assertions.
+- **#1649 and #1650:** both overlap `legacy/requirements_legacy.txt` in #1640.
+- **#1317:** all six changed paths overlap #1640.
+- **#1318:** both changed paths overlap #1640.
+- **#1320:** all five changed paths overlap #1640.
+- **#1254 and #1255:** older dependency proposals on the same legacy requirements manifest; newer dependency floors are present in #1640.
+- Keep these source PRs open until #1640 is merged and every exact path is verified on main. Then close only the exact duplicates/superseded sources with a cross-reference.
+
+### Partially superseded-pending-#1643-merge
+- #1597, #1605, #1608 and #1614 contain paths represented in #1643. Preserve #1597's candidate-video identity work, #1608's C2FO/actual-capital graph addenda, and #1614's non-overlapping feature-validator/handoff material. Do not close an entire source PR based on title similarity or partial overlap. Verify each included path on main after #1643 merges.
+
+### Unique/unreviewed or blocked pending exact diff
+- **#1641:** bounded autonomous experimentation draft; unique.
+- **#1269:** geometry/OBJ mesh topology; unique.
+- **#1314:** predecessor with no confirmed path coverage in the current #1640 file list; preserve until separately compared.
+- Other stale-base drafts remain blocked or unique/unreviewed until commit ancestry and changed paths are inspected. No bulk closure.
+
+### Safety
+- No merge, branch rewrite, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- Forecast status remains **NOT_ISSUED**. The rendered Kraken/ETF/derivatives observations are model-ineligible and are not feature-store inputs.
