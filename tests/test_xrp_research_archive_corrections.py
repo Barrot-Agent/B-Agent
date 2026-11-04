@@ -288,9 +288,13 @@ def test_circle_and_ripple_occ_replacements_are_entity_scoped():
     by_id = {item["source_id"]: item for item in replacements}
     assert by_id["circle_occ_cas_final"]["target_field"] == "$.bank_charter_status.circle.sources[1]"
     assert by_id["ripple_occ_cas_correct"]["target_field"] == "$.bank_charter_status.ripple.sources[0]"
+    assert by_id["ripple_rntb_final_approval"]["target_field"] == "$.bank_charter_status.ripple.sources[1]"
     assert by_id["circle_occ_cas_final"]["target_field"] != by_id["ripple_occ_cas_correct"]["target_field"]
     assert "D79Z71vmerN8" in by_id["circle_occ_cas_final"]["canonical_url"]
     assert "RjzoD2gxmYOv" in by_id["ripple_occ_cas_correct"]["canonical_url"]
+    assert "ripple_rntb_press_slug_candidate" in {item["candidate_id"] for item in replacements}
+    assert "occ_generic_interpretations_index_candidate" in {item["candidate_id"] for item in replacements}
+    assert all("source_id" not in item and "target_field" not in item for item in replacements if item.get("candidate_id"))
 
 
 
