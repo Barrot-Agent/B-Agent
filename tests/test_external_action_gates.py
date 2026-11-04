@@ -163,3 +163,36 @@ def test_no_active_scheduled_workflow_can_write_or_merge() -> None:
         ), path.name
         assert "git push" not in content.lower(), path.name
         assert "gh pr merge" not in content.lower(), path.name
+
+
+def test_content_and_entity_workflows_require_confirmation_and_preserve_artifacts() -> None:
+    for name in ("content-pipeline.yml", "entity-relations.yml"):
+        content = _read(name)
+        assert "confirm_external_change" in content, name
+        assert "default: NO" in content, name
+        assert "inputs.confirm_external_change == 'YES'" in content, name
+        assert "contents: read" in content, name
+        assert "contents: write" not in content, name
+        assert "persist-credentials: false" in content, name
+        assert "upload-artifact@v7" in content, name
+        assert "git push" not in content, name
+
+
+def test_controlled_pr_approval_requires_yes_and_never_merges() -> None:
+    content = _read("barrot-approve-pr.yml")
+    assert "confirm_approval" in content
+    assert "default: NO" in content
+    assert "inputs.confirm_approval == 'YES'" in content
+    assert "expected_head_sha" in content
+    assert "APPROVAL_REASON" in content
+    assert "Target PR must be open and non-draft." in content
+    assert "gh pr merge" not in content
+    assert "MERGE_PERFORMED=FALSE" in content
+
+
+def test_barrot_auto_pr_has_no_unnecessary_pull_request_write_permission() -> None:
+    content = _read("barrot-auto-pr.yml")
+    assert "contents: read" in content
+    assert "pull-requests: write" not in content
+    assert "gh pr create" not in content
+    assert "gh pr merge" not in content
