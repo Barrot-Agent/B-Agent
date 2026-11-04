@@ -520,3 +520,39 @@ The strongest current candidate is **Permission Coin (ASK)**, but the intended i
 - These are secondary, non-synchronized, already several hours old at the 09:27:51Z research cutoff. The order-book sample mixes spot and perpetual venues; walls can be cancelled. The account ratio is not position-weighted. Preserve as low-confidence context only; exclude from model-eligible features until venue-native raw snapshots, timestamps, contract units and collection receipts are obtained.
 
 No change to forecast status: **NOT_ISSUED**.
+
+
+---
+
+## Run 9 primary-source extensions: SBIC entities, SBI ownership, and creator identity controls
+
+### Three Japanese SBIC companies — official corporate profiles
+
+The official company profiles independently confirm the three separate corporations and their regional identities:
+
+- **East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. / SBIC East Japan; established 1963-11-15; corporate number 9011001030621. https://www.sbic.co.jp/company/profile/
+- **Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. / SBIC Central Japan; established 1963-11-18; regional remit covers Aichi, Gifu, Mie, Toyama and Ishikawa. https://www.sbic-cj.co.jp/company/about/
+- **West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. / SBIC West Japan; established 1963-11-20; regional remit covers 24 prefectures west of Fukui, Shiga, Nara and Wakayama. https://www.sbic-wj.co.jp/profiles/profile/
+
+Each profile names the other two as sister companies. They are three separately incorporated policy-implementing investment-development companies established under the 1963 law. This resolves the East/Central/West naming; none should be conflated with SBI Holdings.
+
+### SBI Holdings ↔ Ripple ↔ SBI Ripple Asia — ownership and operating evidence
+
+- SBI Holdings' 2025-02-07 investor presentation states that SBI Group held approximately **9% of Ripple** based on actual holdings at that reporting date and described itself as Ripple's largest external shareholder. This is a historical disclosed stake, not a verified November 2026 cap table: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf
+- SBI's 2016 establishment announcement states the SBI Ripple Asia joint venture was planned at **60% SBI Holdings / 40% Ripple Labs**: https://www.sbigroup.co.jp/english/news/pdf/2016/0519_a_en.pdf
+- SBI's current group profile reports **60% SBI Group voting rights as of 2026-03-31**. Its footnote aggregates voting rights held by SBI and entities/funds treated as subsidiaries under IFRS: https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- SBI's 2025 presentation says SBI Remit began an international-remittance service using XRP as a bridge currency in 2021. SBI's 2023 notice identifies expansion to the Philippines, Vietnam and Indonesia. These establish real XRP-enabled corridors, but not that all SBI Remit remittance volume uses XRP or that gross remittance throughput equals net XRP purchases: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf and https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- Keep separate: SBI's equity stake in Ripple, SBI Ripple Asia JV governance, SBI Remit's XRP bridge usage, SBI VC Trade distribution/custody, JPYSC issuance/lending, and SBI's other stablecoin/tokenization initiatives. They are related corporate strategies but not one pool of XRP capital.
+
+### SBIC and ChatGPT — relationship boundary
+
+Official SBIC East Japan pages document ChatGPT/generative-AI seminars and training, including a Microsoft Japan speaker/demo. This is evidence of education and business training, not an OpenAI partnership, ChatGPT Enterprise procurement by SBIC, or an XRP agreement. SBI Holdings and SBI Securities' separate ChatGPT Enterprise adoption is a distinct SBI-group relationship; do not attribute it to SBIC East/Central/West.
+
+### Kamilah/Camilla Stevenson — inventory remains gated
+
+- The candidate channel handle `@drkamilahstevenson` is associated by third-party indexes with Kamilah Stevenson and by multiple indexed video transcripts with a speaker introducing herself as “Camila Stevenson.”
+- The exact legal identity and channel-ID/handle mapping are still not verified by authoritative channel metadata. Search results also expose lookalike channels with different IDs/handles and copied descriptions.
+- The public channel page did not yield a usable primary video inventory in this capture. The vidIQ channel-search attempt was blocked because the connected account had no remaining credits; it was not retried.
+- Therefore, do not present a complete video inventory or collapse similarly named channels. Preserve known candidate video IDs and transcripts as unverified leads until the original channel metadata and self-identification align.
+
+No new direct SBIC-to-XRP capital flow or SBIC-to-OpenAI commercial relationship was established.
