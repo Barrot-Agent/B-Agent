@@ -1,4 +1,4 @@
-# Current Barrot handoff — 2026-11-04T19:04:38Z
+# Current Barrot handoff — 2026-11-04T19:27:02Z
 
 ## Mission and repository truth
 
@@ -1391,3 +1391,89 @@ Forecast status remains **NOT_ISSUED**. No directional XRP forecast is supported
 4. After authorized merge, fetch main, verify merge commit and every included path, run main CI, then close only exact duplicate/superseded source PRs.
 5. Activate the scheduled collector only after integration; expand it to durable historical exchange, derivatives, ETF, flow, collateral, stablecoin, custody, payment and event sources.
 6. Run chronological walk-forward comparisons against all required baselines; keep forecasts disabled until out-of-sample performance and calibration support them.
+
+
+## Run 8 — Binance incident, reserve proof, Coinbase/Circle economics and integrated state (2026-11-04T19:27:02Z)
+
+### Current repository state
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; complete recursive tree: 1,403 entries, 1,298 blobs.
+- Main CI on that SHA: 485 core tests + 8 subtests; 718 full-suite tests + 8 subtests (run 41799856459).
+- Open PR inventory: 372 total, 357 drafts, 15 non-drafts (four API pages: 100, 100, 100, 72).
+- Merged main work remains #1635, #1638 and #1639. No merge in this run.
+
+### Active integration PRs — exact heads before this handoff refresh
+
+**#1640 — Barrot V3/core integration**
+- Head `c27d47490b80ea66b114e77445df9d45bd4a0e82`, base main; 61 commits ahead, 0 behind; 61 changed files.
+- Exact-head core: 572 passed + 8 subtests; full repository suite: 821 passed + 8 subtests (run 41894288920).
+- Inclusive coverage 51.68% against the explicit 50% threshold.
+- Dependency audit run 41894288776 passed across four requirements manifests and 15 materialized PEP 621 dependencies; no known vulnerabilities reported.
+- Fail-closed gate run 41894288762 passed while explicitly disabling merge.
+- 22/22 inline threads resolved; eight submitted reviews are COMMENTED; zero approvals.
+
+**#1643 — XRP research integration**
+- Head `6f1d0b51cdb87123f025d0c8dab78a60a76cedda`, base main; 56 commits ahead, 0 behind; 71 changed files.
+- Exact-head core: 489 passed + 8 subtests; full repository suite: 784 passed + 8 subtests (run 41896500786).
+- Fail-closed gate run 41896500812 passed while explicitly disabling merge. No dependency manifests changed, so no separate dependency audit was triggered.
+- 14/14 inline threads resolved; six reviews are COMMENTED; zero approvals.
+- Path intersection between #1640 and #1643 remains empty. Keep both existing branches; create no new PR.
+
+This handoff refresh changes the #1640 branch head. Re-run exact-head core/full-suite CI, coverage, dependency audit and fail-closed gate on the resulting documentation successor. Do not transfer evidence from `c27d474` to its successor.
+
+### Binance security incident — XRP tranche and redistribution
+
+Primary Binance reporting and independent TRM Labs analysis identify approximately 233.46M XRP (about 296M USD at the time) transferred from five Binance hot wallets to one attacker-controlled XRPL account during October 29 20:05–20:09 UTC. Binance's November 3 report describes a multi-stage compromise of developer endpoints, credentials, container-deployment permissions and the internal wallet-signing service. The evidence points to custodial signing infrastructure, not an XRPL consensus or ledger-protocol exploit.
+
+- Binance's total incident estimate is approximately 6.34B USD across chains; it reported approximately 2.85B USD frozen or intercepted.
+- The FBI attributed the incident to DPRK TraderTraitor activity and said stolen assets were converted primarily into ETH. North Korea denied the attribution in Reuters reporting. Preserve the attribution and denial separately; this is not a judicial finding.
+- The two Whale Alert 40M XRP transfers on November 2 are only a subset. Q-Eternal and TokenPost ledger-derived reconstructions report nine bulk transfers totaling 233,454,920 XRP to six newly created recipient accounts plus seven 1,000-XRP test payments. The recipient total is 233,461,920 XRP. The source account reportedly retained 23.69905 XRP at ledger 108064685 (2026-11-02 10:02 UTC).
+- At that snapshot, the six bulk recipients had no outgoing transactions, no destination tags, no registered account names, and no on-ledger DEX offers. No exchange deposit was identified. This does not rule out later transfers, OTC activity or subsequent bridge/swap activity.
+- The reported recipient total plus source residual exceeds the initial 233,461,943.1 XRP by 0.59905 XRP. Preserve this discrepancy; no explanation is assigned.
+- Recipient ownership is unresolved. Q-Eternal describes attacker distribution; Coinotag/U.Today interpret the final 80M as a Binance internal-custody sweep. No first-party Binance statement identifies the six recipient addresses as Binance-controlled. A third-party/intermediary hypothesis remains.
+- The 3AAA Whale Alert page timestamps one 40M transfer at 03:56:21 UTC, while The Crypto Basic's link ordering associates that link with 03:55:31. The second hash DC8D was not independently opened. Do not assign an exact event time to DC8D.
+- Native XRP cannot be frozen by Ripple or another issuer. Ripple froze 40.5M ERC-20 RLUSD on Ethereum after 48M RLUSD was swapped through DEX liquidity, according to TRM. A separate 51.17M RLUSD movement from a compromised Binance hot wallet on XRPL had an unresolved purpose; do not conflate the Ethereum and XRPL events.
+- Binance's November 3 initial report says an internal AI tool was used as a lateral-movement springboard after endpoint/credential compromise, leading to a container-deployment token and wallet-signing service. This is not evidence that an AI model provider or model weights were compromised. Barrot V3 design implications: least-privilege scopes, separate credentials, short-lived deployment tokens, no signing secrets in model context, human approval for high-impact actions, and immutable tool-call receipts.
+
+### Binance recovery and Proof of Reserves — keep scopes distinct
+
+- Recovery update #3 (October 31, 14:24 UTC) reported 90% of the impacted amount covered and ten named assets including XRP and RLUSD fully backed.
+- The November 3 initial report retrospectively stated 98% of impacted token assets had been replenished as of October 31.
+- Recovery update #7 (November 4, 15:23 UTC) again reported 98% replenishment, with a November 4 00:00 UTC PoR snapshot covering 44 tokens and zero-knowledge proof expected in 50–60 hours.
+- Preserve the 90% versus 98% reporting difference. The denominators and cutoffs were not reconciled in the retrieved disclosures.
+- Recovery update #5 reports a completed user-verifiable 1:1 ZK PoR proof for the October 31 00:00 UTC snapshot covering ten assets, including XRP and RLUSD. This is proof of covered user-balance inclusion, not proof that the stolen XRP was recovered or bought in the market.
+- Recovery update #6 listed RLUSD on the XRP network for a phased withdrawal-restoration plan beginning November 3 04:00 UTC. This is not a claim that native XRP withdrawals on XRPL resumed at that time; actual activation was not verified.
+
+Corrected official source links are recorded in `research/xrp_intelligence/20261104T192000Z-binance-xrp-redistribution-correction.json`. The original source capture remains unmodified; the correction overlay supersedes the earlier 80M-only interpretation and preserves source-link corrections.
+
+### Coinbase, Circle, Ripple and SBI — Q3 evidence
+
+**Coinbase and Circle**
+- Coinbase's Q3 2026 10-Q reports stablecoin revenue of 306.905M USD, down approximately 5.4% year over year. It says average USDC balances held in Coinbase products reached an all-time high and the Circle collaboration was renewed on the same terms. The 10-Q attributes a 84.6M USD revenue increase to higher average USDC balances and a 52.8M USD decrease to lower average interest rates.
+- Coinbase's Q3 earnings materials report average USDC held in Coinbase products of approximately 22B USD, up 49% year over year, roughly 30% of average USDC circulation, and state Coinbase captured approximately 50% of USDC economics over the prior year. Treat the 50% statement as Coinbase's characterization of the economics, not as a standalone audited revenue-share percentage.
+- Coinbase's 10-Q also reports fair-value remeasurement of its investment in Circle Internet Group after Circle's IPO. The cited note does not disclose the exact share count or ownership percentage.
+- Circle's Q2 2026 10-Q directly describes the Collaboration Agreement: Coinbase receives allocations based on USDC held on Coinbase's platform after issuer retention, plus half of the remaining amount tied to broader ecosystem growth after approved third-party participants. Circle reports Coinbase-related distribution costs of 324.6M USD in Q2 2026 and 655.3M USD for H1 2026.
+- Circle's Q3 2026 SEC 8-K exhibit (November 4) reports average USDC circulation of 73.3B USD, quarter-end circulation of 73.9B USD, gross on-chain volume of 13.9T USD, reserve income of 657.624M USD, other revenue of 207.264M USD including 182M USD ARC presale revenue, total revenue/reserve income of 864.888M USD, distribution/transaction/other costs of 411.634M USD, and revenue less distribution costs of 453.254M USD (52% RLDC margin). CPN annualized TPV is 41.3B USD.
+- Circle's Q3 reserve return rate was 3.5%, down 61 basis points year over year; average USDC circulation grew 8%, while reserve income fell 8%. Gross on-chain volume is not net settlement or new capital; annualized CPN TPV is not realized quarterly settlement.
+- Circle announced a 100M USD Binance equity investment and a five-year USDC partnership expansion. This is an announcement, not proof that the equity transaction had closed by this capture.
+- Relationship conclusion: Coinbase and Circle are both commercial partners and economically interdependent; Coinbase also holds a Circle equity investment. Binance is a major USDC distributor and announced investor. Higher USDC balances can increase distribution economics while lower reserve rates compress reserve income. None of these amounts is XRP demand.
+
+**Ripple and SBI**
+- Coinbase's RLUSD distribution and selected XRP collateral support are distinct from actual XRP collateral utilization or net XRP purchases.
+- Ripple's RLUSD freeze on Ethereum illustrates issuer controls over issued stablecoins; native XRP has no issuer freeze function.
+- SBI Holdings' Ripple equity relationship, SBI Ripple Asia joint venture, historical SBI Remit/ODL corridors, SBI VC Trade RLUSD distribution in Japan, and SBI/USDC/Arc participation support a multi-rail strategy. They do not establish exclusive XRP alignment. Japan's SBIC East/Central/West are separate regional SME investment/development corporations, not SBI Holdings.
+
+### Current spot, protocol and forecast status
+
+- Kraken XRP/USD retrieval during this run: last 1.30113 USD; bid 1.30104; ask 1.30105; 24-hour volume 43.398M XRP; VWAP 1.28950461 USD. The response has no exchange event timestamp.
+- OKX XRP-USDT ticker timestamp 2026-11-04T18:59:55.970Z: last 1.3058 USDT; bid 1.3058; ask 1.3059; 24-hour volume 37.9028M XRP. These are not synchronized observations; no arbitrage or executable-depth inference.
+- XRPL `fixCleanup3_4_0` is ENABLED at ledger 108112129, 2026-11-04 14:52 UTC, corroborated by XRPL Dashboard and XRPLWin. This is a maintenance amendment, not an XRP demand or lending launch.
+- Forecast status remains **NOT_ISSUED**. No walk-forward edge, calibrated probabilities, drift controls or shadow performance have been demonstrated. No paper trade or real-money action occurred.
+
+### Merge, security and next action
+
+- #1640 and #1643 remain open, non-draft and GitHub reports mergeable. Both have zero approving reviews; both fail-closed gates explicitly disable merging.
+- The visible fallback ruleset is disabled; classic main branch-protection details return HTTP 403. GitHub Pages is enabled, and main push run 41799855489 completed the deployment job. No deployment authorization exists. Do not merge while this automatic external deployment side effect is unresolved.
+- Backlog: #1644–#1650 and #1317/#1318/#1320/#1254/#1255 remain superseded-pending-#1640-merge; #1597/#1605/#1608/#1614 remain partially superseded with unique content preserved; #1269 and #1641 remain unique. Remaining drafts are blocked or unique/unreviewed; no bulk closure.
+- No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- Next: verify exact-head checks on this handoff successor; resolve independent approval and Pages deployment authorization without bypass; then merge only after all gates and approvals pass, fetch main, verify every merged path and commit, run main CI, and close only exact duplicates. Continue durable public-data history and chronological walk-forward evaluation before enabling forecasts.

@@ -1,6 +1,6 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
-**Snapshot:** 2026-11-04T19:04:38Z, after fresh-main inspection, exact-head CI review and complete 372-PR inventory.
+**Snapshot:** 2026-11-04T19:27:02Z, after fresh-main inspection, exact-head CI review and complete 372-PR inventory.
 
 - Open pull requests: 372
 - Draft: 357
@@ -303,3 +303,38 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - GitHub Pages is enabled and prior main push 41799855489 completed the deploy job. No authorization exists for that automatic deployment side effect. No merge.
 - No PR was closed; no force-push, deployment, secret change, Space restart, Kaggle submission, paper trade, funds transfer or real-money action.
 - Forecast remains **NOT_ISSUED**. Market/issuer-rendered observations are research-only and model-ineligible.
+
+
+## Run 21 — updated exact-head research and integration state (2026-11-04T19:27:02Z)
+
+### Repository inventory
+- Main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; 1,403 recursive tree entries, 1,298 blobs.
+- Open PRs: **372 total; 357 drafts; 15 non-drafts**. No PR was created or closed.
+- Main CI: 485 core + 8 subtests; 718 full-suite + 8 subtests (run 41799856459).
+
+### Current active integration PRs
+- **#1640 V3/core:** head `c27d47490b80ea66b114e77445df9d45bd4a0e82`, 61 ahead, 0 behind, 61 files. Exact-head run 41894288920: 572 core + 8 subtests; 821 full + 8 subtests; coverage 51.68% against 50% floor. Audit 41894288776 passed; fail-closed gate 41894288762 passed but disables merge. 22/22 threads resolved; eight COMMENTED reviews; zero approvals.
+- **#1643 XRP research:** head `6f1d0b51cdb87123f025d0c8dab78a60a76cedda`, 56 ahead, 0 behind, 71 files. Exact-head run 41896500786: 489 core + 8 subtests; 784 full + 8 subtests. Gate 41896500812 passed but disables merge. No dependency manifests changed. 14/14 threads resolved; six COMMENTED reviews; zero approvals.
+- Changed-path intersection remains empty. Do not create another integration branch or PR.
+- The current handoff/backlog documentation commit will create a new #1640 head. Exact-head tests, coverage, audit and fail-closed gate must rerun on that successor.
+
+### New Binance/XRPL research classification
+- Primary Binance and TRM sources confirm approximately 233.46M XRP (about 296M USD at the time) drained from five hot wallets to one attacker-controlled XRPL address on October 29.
+- November 2 secondary ledger reconstructions report nine bulk transfers to six new recipients, plus seven 1,000-XRP tests. The two 40M Whale Alert transfers are only a subset. Recipient ownership is unresolved; no outgoing/DEX activity was observed through ledger 108064685. Preserve the 0.59905 XRP reconciliation discrepancy.
+- The 80M-only narrative is superseded by the append-only correction overlay. Coinotag/U.Today's Binance internal-custody interpretation remains a hypothesis, not an official attribution.
+- Binance recovery reports 90% in update #3, 98% retrospectively as of October 31 in the November 3 report, and 98% in November 4 update #7. Do not average or reconcile without a disclosed denominator/cutoff. Ten-token PoR proof generated; 44-token proof pending.
+- RLUSD on Ethereum: 88.5M affected, 48M DEX-swapped, 40.5M frozen by Ripple. Separate 51.17M RLUSD movement on XRPL remains unexplained. Native XRP cannot be frozen.
+- Binance's disclosed internal-AI-tool lateral-movement path is a V3 security-design input only. It is not evidence of model-provider compromise or an XRPL protocol exploit.
+
+### Coinbase/Circle evidence
+- Coinbase Q3 2026 10-Q: stablecoin revenue 306.905M USD, down about 5.4% YoY; Circle arrangement renewed on the same terms; average USDC balances at an all-time high; higher balances added 84.6M USD while lower rates reduced revenue by 52.8M USD.
+- Circle Q2 2026 10-Q: Coinbase collaboration allocation formula is tied to USDC held on Coinbase plus broader ecosystem growth; Circle paid 324.6M USD Q2 and 655.3M USD H1 in Coinbase-related distribution costs.
+- Coinbase's Q3 materials report 22B USD average USDC held on platform, +49% YoY, about 30% of average USDC circulation, and characterize Coinbase as capturing roughly 50% of USDC economics. Coinbase's Q3 10-Q reports a direct Circle equity investment fair-value remeasurement; exact share count not disclosed in the cited note.
+- Circle Q3 2026 SEC 8-K exhibit: 73.3B USD average USDC, 73.9B USD period-end, 13.9T USD gross on-chain volume, 657.624M USD reserve income, 207.264M USD other revenue including 182M USD ARC presale, 864.888M USD total revenue/reserve income, 411.634M USD distribution/transaction/other costs, 453.254M USD revenue less distribution costs and 41.3B USD annualized CPN TPV.
+- Circle announced a 100M USD Binance equity investment and five-year USDC partnership expansion. Treat as announced, not verified closed. These are stablecoin distribution and corporate-economics links, not XRP demand.
+
+### Merge and safety
+- Both integration PRs remain non-draft and mergeable but have zero approvals; custom gates explicitly disable merge.
+- Main Pages deployment is automatic on push and was verified in run 41799855489. No deployment approval. No merge or external action.
+- Classifications unchanged: #1644–#1650 and #1317/#1318/#1320/#1254/#1255 superseded-pending-#1640-merge; #1597/#1605/#1608/#1614 partially superseded with unique content preserved; #1269 and #1641 unique; remaining drafts blocked or unique/unreviewed.
+- Forecast remains **NOT_ISSUED**.
