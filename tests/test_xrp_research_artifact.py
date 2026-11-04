@@ -65,6 +65,7 @@ def test_xrp_hypotheses_and_prediction_boundary_are_explicit() -> None:
     assert any(item["id"] == "H10-custody-is-not-xrp-demand" for item in data["competing_hypotheses"])
     assert any(item["id"] == "H11-bank-rail-adoption-throughput-unknown" for item in data["competing_hypotheses"])
     assert any(item["id"] == "H12-value-concentration-not-broad-adoption" for item in data["competing_hypotheses"])
+    assert any(item["id"] == "H13-SBI-multirail-hub" for item in data["competing_hypotheses"])
 
     for hypothesis in data["competing_hypotheses"]:
         assert hypothesis["claim"]

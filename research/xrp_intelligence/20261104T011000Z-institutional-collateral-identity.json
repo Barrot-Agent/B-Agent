@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
   "artifact_type": "xrp_ecosystem_evidence_reconciliation",
-  "captured_at_utc": "2026-11-04T01:25:00Z",
-  "data_cutoff_utc": "2026-11-04T01:25:00Z",
+  "captured_at_utc": "2026-11-04T01:28:00Z",
+  "data_cutoff_utc": "2026-11-04T01:28:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "mission": {
     "priority": "XRP intelligence and prediction-engine mastery",
@@ -408,6 +408,78 @@
       "published": "2026-09-05",
       "type": "market/network analysis",
       "independence": "secondary reporting"
+    },
+    {
+      "id": "sbi_circle_jv_pdf",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+      "publisher": "SBI Holdings",
+      "published": "2025-08-22",
+      "type": "official joint-venture announcement",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_circle_equity",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "published": "2025-06-09",
+      "type": "official strategic investment announcement",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_circle_arc",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published": "2026-10",
+      "type": "issuer mainnet launch announcement",
+      "independence": "primary issuer/partner statement"
+    },
+    {
+      "id": "sbi_ripple_stake",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "publisher": "SBI Holdings",
+      "published": "2025-06-02",
+      "type": "official investor presentation",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_ripple_asia_ownership",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "publisher": "SBI Holdings",
+      "observed": "2026-03-31",
+      "type": "official subsidiary profile",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_remit_xrp",
+      "url": "https://www.sbigroup.co.jp/english/company/group/sbiremit.html",
+      "publisher": "SBI Remit / SBI Holdings",
+      "observed": "2026-08-28",
+      "type": "official subsidiary profile",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_rlusd_japan",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publisher": "SBI VC Trade / SBI Holdings / Ripple",
+      "published": "2026-06-24",
+      "type": "joint product launch announcement",
+      "independence": "primary partner disclosure"
+    },
+    {
+      "id": "sbi_jpysc",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "publisher": "SBI Shinsei Trust / SBI VC Trade",
+      "published": "2026-09-07",
+      "type": "official stablecoin reserve disclosure",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_usdc_retail",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15332.html",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "published": "2025-03-25",
+      "type": "official USDC distribution launch notice",
+      "independence": "primary corporate disclosure"
     }
   ],
   "market_snapshot": {
@@ -750,6 +822,69 @@
       "evidence": [
         "coindesk_q2_activity"
       ]
+    },
+    {
+      "id": "SBIC-vs-SBI-Holdings",
+      "class": "identity_resolution_from_official_records",
+      "detail": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and Osaka Small and Medium Business Investment & Consultation Co., Ltd. are regional SME investment/consultation entities that publish ChatGPT/GenAI seminars. SBI Holdings is a separate Japanese financial group with distinct subsidiaries and partnerships. No corporate affiliation between the reviewed SBIC entities and SBI Holdings was found in the reviewed official records. Do not conflate SBIC with SBI.",
+      "evidence": [
+        "sbic_tokyo_chatgpt",
+        "sbic_west_chatgpt",
+        "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "id": "SBI-Ripple-equity-and-JV",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI investor materials report that SBI Group holds approximately 9% of Ripple equity as its largest external shareholder. SBI Group and Ripple jointly established SBI Ripple Asia; SBI Group holds 60% of voting rights and Ripple 40%. This is corporate equity/JV ownership, not SBI ownership of 9% of XRP supply.",
+      "evidence": [
+        "sbi_ripple_stake",
+        "sbi_ripple_asia_ownership"
+      ]
+    },
+    {
+      "id": "SBI-Remit-XRP-bridge",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI Remit states it began Ripple DLT remittances in 2017 and SBI investor materials identify its 2021 service as Japan's first international remittance using XRP as bridge currency. Later official materials describe expansion to Philippines, Vietnam and Indonesia. Public corridor-level XRP volume and net XRP inventory are not disclosed.",
+      "evidence": [
+        "sbi_remit_xrp",
+        "sbi_ripple_stake"
+      ]
+    },
+    {
+      "id": "SBI-Circle-JV-and-equity",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI Holdings and Circle Holdings established a joint venture in 2025 following a 2023 MOU focused on USDC circulation, banking relationships and Circle Web3 services in Japan. SBI Holdings and SBI Shinsei Bank separately disclosed a $50M strategic Circle equity investment, split $25M each. The cited joint-venture announcement does not specify the ownership split; do not assume 50/50 from this source.",
+      "evidence": [
+        "sbi_circle_jv_pdf",
+        "sbi_circle_equity"
+      ]
+    },
+    {
+      "id": "SBI-USDC-distribution",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI VC Trade registered as Japan's first Electronic Payment Instruments Service Provider in March 2025 and began USDC distribution. This is a Circle/SBI relationship separate from XRP bridge remittance.",
+      "evidence": [
+        "sbi_usdc_retail",
+        "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "id": "SBI-RLUSD-Japan",
+      "class": "confirmed_from_partner_announcement",
+      "detail": "SBI VC Trade launched RLUSD in Japan on 2026-06-24 following JFSA approval, as a Japanese electronic payment instrument classification. The launch supports RLUSD distribution, not proof of XRP bridge utilization or XRP collateral use.",
+      "evidence": [
+        "sbi_rlusd_japan"
+      ]
+    },
+    {
+      "id": "SBI-Arc-and-JPYSC",
+      "class": "confirmed_from_issuer_and_SBI_disclosures",
+      "detail": "SBI Group says it is a founding validator of Circle's Arc mainnet and plans to use USDC and JPYSC. SBI Shinsei Trust's JPYSC is a separate trust-type yen stablecoin; SBI disclosed about ¥20.1B outstanding on 2026-09-07, about ¥6.9B of lending applications and ¥10B of backing assets allocated to short-term Japanese government bonds. No direct XRPL/XRP bridge between JPYSC and Arc was established by these sources.",
+      "evidence": [
+        "sbi_circle_arc",
+        "sbi_jpysc"
+      ]
     }
   ],
   "relationship_graph": [
@@ -978,6 +1113,92 @@
       "evidence": [
         "ripple_c2fo_instantpay"
       ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "approximately 9% equity stake reported by SBI as largest external shareholder",
+      "status": "confirmed corporate equity; not XRP ownership",
+      "evidence": [
+        "sbi_ripple_stake"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI Ripple Asia",
+      "relation": "60% voting rights; Ripple holds 40%",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_ripple_asia_ownership"
+      ]
+    },
+    {
+      "from": "SBI Remit",
+      "to": "XRP",
+      "relation": "XRP used as bridge currency in remittance service since 2021",
+      "status": "confirmed service history; current corridor volume unknown",
+      "evidence": [
+        "sbi_remit_xrp",
+        "sbi_ripple_stake"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relation": "USDC-focused JV and $50M strategic equity investment with SBI Shinsei Bank",
+      "status": "confirmed; JV ownership split not stated in cited announcement",
+      "evidence": [
+        "sbi_circle_jv_pdf",
+        "sbi_circle_equity"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "Japanese distribution began March 2025",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_usdc_retail",
+        "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "Japanese distribution launched June 24, 2026 after JFSA approval",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_rlusd_japan"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relation": "founding validator; intends to use USDC and JPYSC",
+      "status": "confirmed issuer/partner statement",
+      "evidence": [
+        "sbi_circle_arc"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Trust",
+      "to": "JPYSC",
+      "relation": "issuer of trust-type yen stablecoin",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_jpysc"
+      ]
+    },
+    {
+      "from": "Tokyo/Osaka SBIC",
+      "to": "SBI Holdings",
+      "relation": "no corporate affiliation established in reviewed official records",
+      "status": "unconfirmed/no evidence found; keep entities separate",
+      "evidence": [
+        "sbic_tokyo_chatgpt",
+        "sbic_west_chatgpt",
+        "sbi_circle_jv_pdf"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -1174,6 +1395,28 @@
         "Separate exchange, issuer, market-maker, bank and retail clusters",
         "Compare value growth with unique counterparties and net flows"
       ]
+    },
+    {
+      "id": "H13-SBI-multirail-hub",
+      "claim": "SBI Group is a multi-rail institutional hub with strategic equity links to both Ripple and Circle, distribution of XRP-related remittance and RLUSD/USDC products, and participation in Circle Arc/JPYSC. This may support a broad digital-finance ecosystem but is not an exclusive XRP thesis.",
+      "support": [
+        "SBI reports ~9% Ripple equity and 60/40 SBI Ripple Asia JV",
+        "SBI Remit uses XRP as bridge currency",
+        "SBI has a Circle JV and $50M Circle equity investment",
+        "SBI VC Trade distributes both USDC and RLUSD",
+        "SBI Group is a founding validator of Arc and SBI Shinsei Trust issues JPYSC"
+      ],
+      "disconfirming_or_missing": [
+        "No route-level capital-flow data across XRP, USDC, RLUSD and JPYSC",
+        "The SBIC Tokyo/Osaka seminar entities are not shown to be affiliates of SBI Holdings",
+        "Arc/JPYSC and XRPL/XRP rails may be operationally separate"
+      ],
+      "tests": [
+        "Measure SBI Remit XRP route volumes and counterparties",
+        "Track SBI VC Trade USDC/RLUSD balances and turnover separately",
+        "Verify Arc/JPYSC issuance and redemption activity",
+        "Trace any direct bridge or custody links between Arc, XRPL and XRP"
+      ]
     }
   ],
   "source_quality": {
@@ -1195,9 +1438,13 @@
     "XRPL Sponsor and DynamicMPT current validator-vote counts were not independently retrieved; retain dated statuses and do not infer current activation.",
     "XRPL stablecoin supply providers show non-synchronous snapshots: $716.8M total stablecoins on Nov 1 versus 855.3M RLUSD on XRPL.to around Nov 4; exact net flows require direct same-time ledger/issuer-obligation reconstruction.",
     "Bitquery's RLUSD dust cluster classification is based on public ledger patterns; wallet operator identity and motive remain unknown.",
-    "Cross River, Standard Chartered, BNY and C2FO announced institutional integrations, but public production throughput and XRP-specific flow attribution are not disclosed."
+    "Cross River, Standard Chartered, BNY and C2FO announced institutional integrations, but public production throughput and XRP-specific flow attribution are not disclosed.",
+    "The official SBI-Circle joint-venture announcement confirms establishment but does not state the JV ownership split; do not call it 50/50 without a separate filing."
   ],
   "next_actions": [
+    "Disambiguate SBIC regional SME investment companies from SBI Holdings in all future research and entity graphs.",
+    "Track SBI's multi-rail activity separately: XRP bridge remittances, RLUSD distribution, USDC distribution, Arc validator role and JPYSC issuance/redemption.",
+    "Verify the SBI-Circle JV ownership split from corporate filings before recording a percentage.",
     "Reconcile the Q3 stablecoin supply figure ($1.03B Ripple-commissioned Blockworks) against September 29 DefiLlama ($1.213B) and RWA.xyz ($1.19B) snapshots using a common issuer-obligation query and identical cutoff.",
     "Add active-entity concentration, top-10/top-100 shares, HHI, net flow, dust ratio and round-trip removal to XRPL feature engineering; do not use raw account counts or gross transfer volume as adoption proxies.",
     "Build the nine-platform capability/authentication/permission/data-flow adapters one at a time; do not claim collaboration until each adapter returns a verifiable signed/traceable handoff.",

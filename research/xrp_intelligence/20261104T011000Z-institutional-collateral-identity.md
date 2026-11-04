@@ -245,3 +245,31 @@ Together with Bitquery's finding that the top ten RLUSD senders accounted for 82
 Sources:
 - https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/
 - https://www.coindesk.com/markets/2026/09/05/xrp-ledger-has-fewer-active-accounts-but-bigger-trades-and-more-value
+
+
+## SBIC is not SBI Holdings: Japan identity and relationship resolution
+
+The ChatGPT seminar clue points to **Tokyo Small and Medium Business Investment & Consultation Co., Ltd.** Its official February 26, 2025 event PDF documents a seminar on generative AI/ChatGPT with a Microsoft Japan speaker. A separate Osaka/SBIC West Japan company also published a ChatGPT/GenAI seminar. These are regional SME investment and consultation organizations. The reviewed official records do not establish that either is an SBI Holdings subsidiary or affiliate.
+
+**SBI Holdings is a different entity** with a separate, well-documented network:
+
+- SBI's investor materials report approximately **9% Ripple equity ownership** as its largest external shareholder. This is Ripple corporate equity, not XRP supply.
+- SBI Group holds **60% of SBI Ripple Asia voting rights**, with Ripple holding 40%.
+- SBI Remit has used Ripple technology since 2017; SBI materials identify its 2021 remittance service as Japan's first using XRP as a bridge currency. Current corridor-level XRP volumes are not disclosed.
+- SBI VC Trade launched RLUSD distribution in Japan on June 24, 2026 after JFSA approval.
+- SBI VC Trade began USDC distribution in March 2025.
+- SBI Holdings and Circle Holdings established a USDC-focused joint venture in 2025 following a 2023 MOU. SBI Holdings and SBI Shinsei Bank separately disclosed a **$50M Circle equity investment**, $25M each. The cited joint-venture announcement does not specify the ownership split; no 50/50 claim is made here.
+- SBI Group says it is a founding validator of Circle's Arc mainnet and plans to use USDC and JPYSC. JPYSC is a separate trust-type yen stablecoin issued by SBI Shinsei Trust; SBI reported about ¥20.1B outstanding on September 7, 2026, about ¥6.9B in lending applications and ¥10B of backing assets allocated to short-term Japanese government bonds.
+
+This makes SBI Holdings a **multi-rail institutional hub** linking Ripple/XRP, Circle/USDC, RLUSD and JPYSC/Arc. It does not establish that all rails interoperate or that USDC/JPYSC growth creates XRP demand.
+
+Official sources:
+- SBI/Circle JV: https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf
+- SBI/Circle $50M investment: https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- SBI/Ripple equity and SBI Ripple Asia: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf
+- SBI Ripple Asia ownership: https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- SBI Remit: https://www.sbigroup.co.jp/english/company/group/sbiremit.html
+- RLUSD Japan launch: https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+- USDC Japan distribution: https://www.sbigroup.co.jp/news/2025/0325_15332.html
+- Arc validator and JPYSC: https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx
+- JPYSC reserves and outstanding: https://www.sbigroup.co.jp/news/2026/0907_16567.html
