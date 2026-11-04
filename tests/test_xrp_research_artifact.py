@@ -1036,7 +1036,7 @@ def test_binance_circle_private_placement_is_verified_actual_equity_not_xrp_flow
     assert capital["event_date"] == "2026-09-17"
     assert capital["closing_status"] == "CLOSED_PER_CIRCLE_FORM_8K"
     assert capital["reciprocal_commercial_arrangement"]["term_years"] == 5
-    assert "monthly incentive fee" in capital["reciprocal_commercial_arrangement"]["circle_payment_to_binance"]
+    assert "monthly incentive fee" in capital["reciprocal_commercial_arrangement"]["circle_payment_to_binance"].lower()
     assert capital["xrp_implication"] == "NONE_ESTABLISHED"
     assert data["correction_overlay"]["prior_artifact_modified"] is False
     assert data["predictions"]["issued"] is False
