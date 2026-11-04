@@ -272,6 +272,16 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
     ):
         assert f'"{manifest}"' in workflow
     assert "pip-audit -r requirements.tx --strict" in workflow
+    assert "tomllib.loads" in workflow
+    assert 'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict' in workflow
+    assert "PYPROJECT: ${{ steps.pyproject.outcome }}" in workflow
+    assert '"$PYPROJECT" != "success"' in workflow
+    assert "--ignore-vuln PYSEC-2024-232" not in workflow
+    active_ci = _read("ci.yml")
+    assert "--ignore-vuln PYSEC-2024-232" not in active_ci
+    security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
+    assert "temporarily ignored in CI" not in security
+    assert "archived backup" in security
 
     requirements = (ROOT / "requirements.txt").read_text(encoding="utf-8")
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
