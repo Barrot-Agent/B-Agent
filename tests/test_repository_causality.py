@@ -61,3 +61,39 @@ def test_causality_builds_dependencies_and_related_tests(tmp_path: Path) -> None
     assert "pathlib" in impact.dependencies
     assert impact.related_tests == ["tests/test_target.py"]
     assert impact.risk_level == "low"
+
+
+def test_cross_analysis_workflow_is_read_only_and_artifact_based() -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    workflow = (
+        repo_root / ".github" / "workflows" / "cross-analysis.yml"
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "permissions:" in workflow
+    assert "contents: read" in workflow
+    assert "persist-credentials: false" in workflow
+    assert "actions/upload-artifact@v4" in workflow
+    assert "retention-days: 30" in workflow
+    assert "if-no-files-found: error" in workflow
+    assert "conclusion == 'success'" in workflow
+
+    for output in (
+        "ping-pongings/knowledge-base/entity_cooccurrence.json",
+        "ping-pongings/knowledge-base/sentiment_shift.json",
+        "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+        "web/entity_cooccurrence.json",
+        "web/sentiment_shift.json",
+        "web/entity_sentiment_profile.json",
+    ):
+        assert output in workflow
+
+    for forbidden in (
+        "contents: write",
+        "git add",
+        "git commit",
+        "git push",
+        "persist-credentials: true",
+        "secrets.",
+    ):
+        assert forbidden not in lowered
