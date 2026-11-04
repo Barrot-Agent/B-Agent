@@ -94,7 +94,7 @@ def _scores(probabilities: Mapping[str, float], actual: str) -> tuple[float, flo
 
 
 def _validate_readiness_report(report: Any) -> dict[str, Any]:
-    """Validate an independent model evaluation before it can authorize a directional record."""
+    """Validate an independent model evaluation and its point-in-time dataset manifest."""
     if not isinstance(report, Mapping):
         raise ForecastLedgerError("readiness report must be a JSON object")
     if report.get("schema_version") != "barrot.xrp.model-readiness.v1":
@@ -116,6 +116,81 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon not in HORIZONS:
         raise ForecastLedgerError("readiness report horizon_seconds is unsupported")
 
+    dataset = report.get("dataset_manifest")
+    if not isinstance(dataset, Mapping):
+        raise ForecastLedgerError("readiness report needs an immutable dataset_manifest")
+    if dataset.get("model_eligible") is not True or dataset.get("quality_status") != "verified":
+        raise ForecastLedgerError("readiness dataset manifest is not verified and model eligible")
+    if dataset.get("asset") != report["asset"] or dataset.get("venue") != report["venue"]:
+        raise ForecastLedgerError("readiness dataset manifest asset/venue does not match report")
+
+    def string_list(value: Any, field: str) -> list[str]:
+        if (
+            not isinstance(value, list)
+            or not value
+            or any(not isinstance(item, str) or not item.strip() for item in value)
+        ):
+            raise ForecastLedgerError(f"readiness dataset {field} must be a non-empty string list")
+        cleaned = [item.strip() for item in value]
+        if len(cleaned) != len(set(cleaned)):
+            raise ForecastLedgerError(f"readiness dataset {field} contains duplicates")
+        return cleaned
+
+    feature_ids = string_list(dataset.get("feature_ids"), "feature_ids")
+    source_ids = string_list(dataset.get("source_ids"), "source_ids")
+    feature_snapshot_ids = string_list(dataset.get("feature_snapshot_ids"), "feature_snapshot_ids")
+    if any(not _SHA256.fullmatch(item) for item in feature_snapshot_ids):
+        raise ForecastLedgerError("readiness dataset feature_snapshot_ids must be SHA-256 IDs")
+
+    receipts = dataset.get("raw_source_receipts")
+    if not isinstance(receipts, list) or not receipts:
+        raise ForecastLedgerError("readiness dataset needs byte-addressed raw_source_receipts")
+    receipt_sources: set[str] = set()
+    receipt_groups: set[str] = set()
+    receipt_ids: set[str] = set()
+    for index, receipt in enumerate(receipts):
+        if not isinstance(receipt, Mapping):
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] must be an object")
+        source_id = receipt.get("source_id")
+        receipt_id = receipt.get("receipt_id")
+        digest = receipt.get("raw_content_sha256")
+        group = receipt.get("independence_group")
+        uri = receipt.get("source_uri")
+        if not isinstance(source_id, str) or not source_id.strip():
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] needs source_id")
+        if not isinstance(receipt_id, str) or not receipt_id.strip():
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] needs receipt_id")
+        if receipt_id in receipt_ids:
+            raise ForecastLedgerError("readiness dataset contains duplicate raw receipt IDs")
+        if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] needs a SHA-256 digest")
+        if not isinstance(group, str) or not group.strip():
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] needs independence_group")
+        if not isinstance(uri, str) or not uri.strip():
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] needs source_uri")
+        parsed_uri = urlsplit(uri.strip())
+        if parsed_uri.scheme not in {"http", "https"} or not parsed_uri.netloc:
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] source_uri must be HTTP(S)")
+        source_as_of = _utc(receipt.get("source_data_as_of_utc"), f"raw_source_receipts[{index}].source_data_as_of_utc")[0]
+        captured_at = _utc(receipt.get("captured_at_utc"), f"raw_source_receipts[{index}].captured_at_utc")[0]
+        if captured_at < source_as_of:
+            raise ForecastLedgerError(f"raw_source_receipts[{index}] capture precedes source data as-of")
+        receipt_sources.add(source_id.strip())
+        receipt_groups.add(group.strip())
+        receipt_ids.add(receipt_id.strip())
+    if receipt_sources != set(source_ids):
+        raise ForecastLedgerError("readiness dataset source_ids do not exactly match raw receipt sources")
+    declared_groups = string_list(dataset.get("source_independence_groups"), "source_independence_groups")
+    if set(declared_groups) != receipt_groups or len(receipt_groups) < _MIN_SOURCE_GROUPS:
+        raise ForecastLedgerError(
+            f"readiness dataset needs at least {_MIN_SOURCE_GROUPS} independently receipted source groups"
+        )
+    if dataset.get("data_cutoff_utc") is None:
+        raise ForecastLedgerError("readiness dataset data_cutoff_utc is required")
+    dataset_cutoff = _utc(dataset["data_cutoff_utc"], "dataset data_cutoff_utc")[0]
+    if _hash(dict(dataset)) != report["dataset_sha256"]:
+        raise ForecastLedgerError("readiness dataset manifest SHA-256 does not match dataset_sha256")
+
     def sample_count(field: str, minimum: int) -> int:
         value = report.get(field)
         if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
@@ -125,9 +200,6 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     sample_count("training_sample_count", _MIN_OOS_SAMPLES)
     sample_count("out_of_sample_sample_count", _MIN_OOS_SAMPLES)
     sample_count("shadow_evaluation_sample_count", _MIN_SHADOW_SAMPLES)
-    groups = report.get("source_independence_group_count")
-    if isinstance(groups, bool) or not isinstance(groups, int) or groups < _MIN_SOURCE_GROUPS:
-        raise ForecastLedgerError(f"readiness report needs at least {_MIN_SOURCE_GROUPS} independent source groups")
 
     def span(start_field: str, end_field: str, label: str) -> tuple[datetime, datetime]:
         start = _utc(report.get(start_field), f"readiness report {start_field}")[0]
@@ -138,7 +210,7 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             )
         return start, end
 
-    oos_start, oos_end = span("out_of_sample_start_utc", "out_of_sample_end_utc", "out-of-sample")
+    _, oos_end = span("out_of_sample_start_utc", "out_of_sample_end_utc", "out-of-sample")
     shadow_start, shadow_end = span("shadow_evaluation_start_utc", "shadow_evaluation_end_utc", "shadow")
     if shadow_start < oos_end:
         raise ForecastLedgerError("shadow evaluation must follow the independent out-of-sample window")
@@ -182,6 +254,8 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
 
     data_cutoff = _utc(report.get("evaluation_data_cutoff_utc"), "evaluation_data_cutoff_utc")[0]
     completed = _utc(report.get("evaluation_completed_at_utc"), "evaluation_completed_at_utc")[0]
+    if data_cutoff < dataset_cutoff:
+        raise ForecastLedgerError("evaluation data cutoff precedes dataset manifest cutoff")
     if completed < data_cutoff or completed < oos_end or completed < shadow_end:
         raise ForecastLedgerError("readiness evaluation completion precedes its evaluated data window")
     return dict(report)
@@ -278,7 +352,7 @@ class ForecastLedger:
         try:
             db.execute("BEGIN IMMEDIATE")
             existing = db.execute(
-                "SELECT receipt_id,payload FROM readiness_reports WHERE report_sha256=?",
+                "SELECT receipt_id,payload,registered_at_utc FROM readiness_reports WHERE report_sha256=?",
                 (report_sha256,),
             ).fetchone()
             if existing:
@@ -298,7 +372,7 @@ class ForecastLedger:
         finally:
             db.close()
 
-    def _verify_readiness_certificate(self, payload: Mapping[str, Any]) -> None:
+    def _verify_readiness_certificate(self, payload: Mapping[str, Any]) -> dict[str, Any]:
         certificate = payload.get("readiness_certificate")
         if not isinstance(certificate, Mapping):
             raise ForecastLedgerError("a verified out-of-sample readiness certificate is required")
@@ -348,6 +422,12 @@ class ForecastLedger:
             raise ForecastLedgerError("readiness evaluation data cutoff exceeds forecast cutoff")
         if evaluation_completed > forecast_issued:
             raise ForecastLedgerError("readiness evaluation completed after forecast issue time")
+        registered_at = _utc(row["registered_at_utc"], "readiness report registered_at_utc")[0]
+        if registered_at > forecast_issued:
+            raise ForecastLedgerError("readiness report was registered after forecast issue time")
+        if set(report["dataset_manifest"]["source_ids"]) != set(payload["source_ids"]):
+            raise ForecastLedgerError("readiness dataset source_ids do not match forecast source_ids")
+        return report
 
     def _normalize(self, r: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(r, Mapping):
@@ -443,7 +523,9 @@ class ForecastLedger:
             ),
         }
 
-    def _verify_feature_snapshots(self, payload: Mapping[str, Any]) -> None:
+    def _verify_feature_snapshots(
+        self, payload: Mapping[str, Any], readiness_report: Mapping[str, Any]
+    ) -> None:
         """Fail closed unless every referenced snapshot is exact, verified and available by cutoff."""
         store = self.feature_store
         if store is None:
@@ -463,6 +545,7 @@ class ForecastLedger:
         )[0]
         expected_sources: set[str] = set()
         maximum_information_time: datetime | None = None
+        observed_feature_ids: set[str] = set()
         asset = payload["asset"]
 
         for snapshot_id in snapshot_ids:
@@ -511,6 +594,10 @@ class ForecastLedger:
                 )
 
             for record in asset_records:
+                feature_id = record.get("feature_id")
+                if not isinstance(feature_id, str) or not feature_id.strip():
+                    raise ForecastLedgerError("feature record contains an invalid feature_id")
+                observed_feature_ids.add(feature_id.strip())
                 sources = record.get("sources")
                 if not isinstance(sources, list):
                     raise ForecastLedgerError("feature record source lineage is malformed")
@@ -543,12 +630,14 @@ class ForecastLedger:
             raise ForecastLedgerError(
                 "feature_max_timestamp_utc must equal the maximum feature information-availability timestamp"
             )
+        if not observed_feature_ids.issubset(set(readiness_report["dataset_manifest"]["feature_ids"])):
+            raise ForecastLedgerError("feature snapshots contain feature IDs absent from the evaluated dataset")
 
     def record_forecast(self, record: Mapping[str, Any]) -> str:
         """Record a live/shadow forecast once; historical backtests use separate artifacts."""
         payload = self._normalize(record)
-        self._verify_readiness_certificate(payload)
-        self._verify_feature_snapshots(payload)
+        readiness_report = self._verify_readiness_certificate(payload)
+        self._verify_feature_snapshots(payload, readiness_report)
         payload_s = _json(payload)
         forecast_id = _hash(payload)
         db = self._connect()
