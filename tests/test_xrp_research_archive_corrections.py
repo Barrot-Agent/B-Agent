@@ -462,3 +462,35 @@ def test_circle_q3_market_update_source_correction_points_to_primary_issuer_pdfs
     assert correction_data["forecast_issued"] is False
     assert correction_data["prediction_status"] == "NOT_ISSUED"
     assert correction_data["model_eligible"] is False
+
+
+def test_exact_phrase_addendum_distinguishes_sbic_entities_and_keeps_ask_and_creator_unresolved():
+    path = ROOT / "research" / "xrp_intelligence" / "20261104T200600Z-exact-phrase-entity-resolution-addendum.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+
+    sbic = data["identity_resolution"]["sbic_entities"]
+    assert [item["identity"] for item in sbic] == [
+        "SBIC East Japan", "SBIC Central Japan", "SBIC West Japan"
+    ]
+    assert sbic[0]["legal_name"] == "Tokyo Small and Medium Business Investment & Consultation Co., Ltd."
+    assert sbic[1]["legal_name"] == "Nagoya Small and Medium Business Investment & Consultation Co., Ltd."
+    assert sbic[2]["legal_name"] == "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+    assert "not SBI Holdings" in data["identity_resolution"]["conclusion"]
+    assert "SBI Holdings and SBI Securities" in data["identity_resolution"]["sbi_holdings"]["chatgpt_enterprise_status"]
+
+    ask = next(item for item in data["exact_phrase_findings"] if item["phrase"] == "ASK Coin")
+    assert ask["status"] == "AMBIGUOUS_BEST_SUPPORTED_CANDIDATE_NOT_CONFIRMED"
+    assert ask["contract_scope"]["Base"] == "0xBB146326778227A8498b105a18f84E0987A684b4"
+    assert ask["contract_scope"]["Polygon"] == "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+    assert "No deployment" in ask["contract_scope"]["XRPL"]
+
+    capital = next(item for item in data["exact_phrase_findings"] if item["phrase"] == "actual capital")
+    assert capital["status"] == "AMBIGUOUS_NO_USER_INTENT_LINKED"
+    assert capital["model_eligible"] is False
+
+    creator = data["creator_identity_audit"]
+    assert creator["identity_status"] == "UNVERIFIED_CANDIDATE_ONLY"
+    assert creator["video_inventory_status"].startswith("NOT_CREATED")
+    assert data["forecast_issued"] is False
+    assert data["prediction_status"] == "NOT_ISSUED"
+    assert data["model_eligible"] is False
