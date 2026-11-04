@@ -1,11 +1,10 @@
 name: Sync Self-Hosted Brain
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "self_hosted_brain/**"
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
