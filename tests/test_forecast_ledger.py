@@ -16,6 +16,11 @@ ISSUED = "2026-11-03T16:01:00Z"
 TARGET = "2026-11-03T17:00:00Z"
 OUTCOME_TIME = "2026-11-03T17:00:30Z"
 RESOLVED = "2026-11-03T17:01:00Z"
+TEST_NOW = datetime(2026, 11, 3, 16, 1, 30, tzinfo=timezone.utc)
+
+
+def make_ledger(path, *, now=TEST_NOW):
+    return ForecastLedger(path, clock=lambda: now)
 
 
 def forecast(**overrides):
@@ -50,7 +55,7 @@ def forecast(**overrides):
 
 
 def test_record_is_idempotent_and_append_only(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     first = ledger.record_forecast(forecast())
     second = ledger.record_forecast(forecast())
     assert first == second
@@ -58,62 +63,91 @@ def test_record_is_idempotent_and_append_only(tmp_path):
     assert ledger.get_forecast(first)["forecast_id"] == first
 
 
+def test_live_shadow_issue_event_records_actual_ledger_receipt_time(tmp_path):
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
+    forecast_id = ledger.record_forecast(forecast())
+    event = ledger.events(forecast_id)[0]
+    assert event["recorded_at_utc"] == "2026-11-03T16:01:30.000000Z"
+    assert event["recording_mode"] == "live_shadow"
+
+
+def test_live_shadow_ledger_rejects_backdated_forecast_after_target(tmp_path):
+    now = datetime(2026, 11, 4, 3, 30, tzinfo=timezone.utc)
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3", now=now)
+    with pytest.raises(ForecastLedgerError, match="target_time_utc must be after actual ledger recording time"):
+        ledger.record_forecast(forecast())
+
+
+def test_live_shadow_ledger_rejects_backdated_issue_before_future_target(tmp_path):
+    now = datetime(2026, 11, 3, 16, 10, tzinfo=timezone.utc)
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3", now=now)
+    with pytest.raises(ForecastLedgerError, match="older than the five-minute live recording window"):
+        ledger.record_forecast(forecast())
+
+
+def test_live_shadow_ledger_rejects_future_issue_timestamp(tmp_path):
+    now = datetime(2026, 11, 3, 16, 0, 30, tzinfo=timezone.utc)
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3", now=now)
+    with pytest.raises(ForecastLedgerError, match="cannot be later than actual ledger recording time"):
+        ledger.record_forecast(forecast())
+
+
 def test_rejects_unsupported_horizon(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="horizon_seconds"):
         ledger.record_forecast(forecast(horizon_seconds=7200))
 
 
 def test_rejects_naive_timestamp(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="UTC timezone"):
         ledger.record_forecast(forecast(data_cutoff_utc="2026-11-03T16:00:00"))
 
 
 def test_rejects_feature_lookahead(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="look-ahead"):
         ledger.record_forecast(forecast(feature_max_timestamp_utc="2026-11-03T16:00:01Z"))
 
 
 def test_rejects_reference_price_after_cutoff(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="reference_price_timestamp_utc exceeds data cutoff"):
         ledger.record_forecast(forecast(reference_price_timestamp_utc="2026-11-03T16:00:01Z"))
 
 
 def test_rejects_stale_reference_price(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="older than the declared maximum age"):
         ledger.record_forecast(forecast(reference_price_timestamp_utc="2026-11-03T15:58:59Z"))
 
 
 def test_reference_price_source_must_be_in_source_manifest(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="included in source_ids"):
         ledger.record_forecast(forecast(reference_price_source_id="unregistered-reference-source"))
 
 
 def test_rejects_target_time_mismatch(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="target_time_utc"):
         ledger.record_forecast(forecast(target_time_utc="2026-11-03T17:01:00Z"))
 
 
 def test_rejects_probabilities_that_do_not_sum_to_one(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="sum to 1"):
         ledger.record_forecast(forecast(probabilities={"down": 0.2, "flat": 0.2, "up": 0.2}))
 
 
 def test_rejects_missing_alternative(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="alternatives"):
         ledger.record_forecast(forecast(alternatives=[]))
 
 
 def test_rejects_resolution_before_target(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     with pytest.raises(ForecastLedgerError, match="precedes target"):
         ledger.resolve_forecast(
@@ -127,7 +161,7 @@ def test_rejects_resolution_before_target(tmp_path):
 
 
 def test_scored_outcome_records_brier_and_baseline(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     outcome = ledger.resolve_forecast(
         forecast_id,
@@ -150,7 +184,7 @@ def test_scored_outcome_records_brier_and_baseline(tmp_path):
 
 
 def test_rejects_cross_venue_without_normalization(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     with pytest.raises(ForecastLedgerError, match="cross-venue"):
         ledger.resolve_forecast(
@@ -164,7 +198,7 @@ def test_rejects_cross_venue_without_normalization(tmp_path):
 
 
 def test_cross_venue_requires_explicit_normalization(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     outcome = ledger.resolve_forecast(
         forecast_id,
@@ -180,7 +214,7 @@ def test_cross_venue_requires_explicit_normalization(tmp_path):
 
 
 def test_missing_outcome_is_unscorable_not_a_miss(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     outcome = ledger.resolve_forecast(
         forecast_id,
@@ -198,7 +232,7 @@ def test_missing_outcome_is_unscorable_not_a_miss(tmp_path):
 
 
 def test_outcome_is_immutable(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     ledger.resolve_forecast(
         forecast_id,
@@ -221,7 +255,7 @@ def test_outcome_is_immutable(tmp_path):
 
 
 def test_rejects_outcome_timestamp_outside_tolerance(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     with pytest.raises(ForecastLedgerError, match="tolerance"):
         ledger.resolve_forecast(
@@ -235,7 +269,7 @@ def test_rejects_outcome_timestamp_outside_tolerance(tmp_path):
 
 
 def test_calibration_bins_are_reported(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     forecast_id = ledger.record_forecast(forecast())
     ledger.resolve_forecast(
         forecast_id,
@@ -251,7 +285,7 @@ def test_calibration_bins_are_reported(tmp_path):
 
 
 def test_summary_does_not_pool_different_horizons(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     one_hour_id = ledger.record_forecast(forecast())
     four_hour_id = ledger.record_forecast(
         forecast(
@@ -290,7 +324,7 @@ def test_database_rejects_mutation_of_ledger_records(tmp_path):
     import sqlite3
 
     db_path = tmp_path / "forecasts.sqlite3"
-    ledger = ForecastLedger(db_path)
+    ledger = make_ledger(db_path)
     forecast_id = ledger.record_forecast(forecast())
     connection = sqlite3.connect(db_path)
     try:
@@ -311,7 +345,7 @@ def test_database_rejects_mutation_of_ledger_records(tmp_path):
 
 
 def test_rejects_boolean_probability(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="not boolean"):
         ledger.record_forecast(
             forecast(probabilities={"down": True, "flat": 0.0, "up": 0.0})

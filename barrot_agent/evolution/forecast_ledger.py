@@ -7,7 +7,7 @@ import math
 import sqlite3
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 HORIZONS = (3600, 14400, 86400, 604800, 2592000)
 CLASSES = ("down", "flat", "up")
@@ -85,8 +85,15 @@ def _scores(probabilities: Mapping[str, float], actual: str) -> tuple[float, flo
 class ForecastLedger:
     """SQLite append-only ledger with SQL row guards; not file-level tamper-proof."""
 
-    def __init__(self, db_path: str | Path = DEFAULT_DB) -> None:
+    def __init__(
+        self,
+        db_path: str | Path = DEFAULT_DB,
+        *,
+        clock: Callable[[], datetime] | None = None,
+    ) -> None:
         self.db_path = Path(db_path)
+        # Injectable only as a deterministic test seam; production defaults to UTC wall time.
+        self._clock = clock or (lambda: datetime.now(timezone.utc))
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         db = self._connect()
         try:
@@ -210,12 +217,10 @@ class ForecastLedger:
         }
 
     def record_forecast(self, record: Mapping[str, Any]) -> str:
-        """Record once; an identical retry returns the same forecast ID."""
+        """Record a live/shadow forecast once; historical backtests use separate artifacts."""
         payload = self._normalize(record)
         payload_s = _json(payload)
         forecast_id = _hash(payload)
-        event = {"forecast_id": forecast_id, "forecast": payload}
-        event_id = _hash({"event_type": "forecast_issued", "payload": event})
         db = self._connect()
         try:
             db.execute("BEGIN IMMEDIATE")
@@ -225,6 +230,32 @@ class ForecastLedger:
                     raise ForecastLedgerError("forecast ID collision")
                 db.commit()
                 return forecast_id
+
+            recorded_at = self._clock()
+            if not isinstance(recorded_at, datetime) or recorded_at.tzinfo is None or recorded_at.utcoffset() is None:
+                raise ForecastLedgerError("ledger clock must return a timezone-aware datetime")
+            recorded_at = recorded_at.astimezone(timezone.utc)
+            recorded_at_s = recorded_at.isoformat(timespec="microseconds").replace("+00:00", "Z")
+            issued_at = _utc(payload["issued_at_utc"], "issued_at_utc")[0]
+            target_at = _utc(payload["target_time_utc"], "target_time_utc")[0]
+
+            # A caller-supplied historical issued_at must not make a past outcome look
+            # like a forecast that existed before the outcome. The live ledger accepts
+            # only forecasts recorded before their target and within five minutes of issue.
+            if issued_at > recorded_at:
+                raise ForecastLedgerError("issued_at_utc cannot be later than actual ledger recording time")
+            if (recorded_at - issued_at).total_seconds() > 300:
+                raise ForecastLedgerError("issued_at_utc is older than the five-minute live recording window")
+            if target_at <= recorded_at:
+                raise ForecastLedgerError("target_time_utc must be after actual ledger recording time")
+
+            event = {
+                "forecast_id": forecast_id,
+                "forecast": payload,
+                "recorded_at_utc": recorded_at_s,
+                "recording_mode": "live_shadow",
+            }
+            event_id = _hash({"event_type": "forecast_issued", "payload": event})
             db.execute(
                 "INSERT INTO forecasts(forecast_id,payload,target_time_utc,venue) VALUES(?,?,?,?)",
                 (forecast_id, payload_s, payload["target_time_utc"], payload["venue"]),
