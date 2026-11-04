@@ -874,3 +874,34 @@ def test_market_amendment_preactivation_snapshot_keeps_cutoffs_and_trackers_dist
     assert dashboard["signed_at_utc"] == "2026-11-04T01:00:00Z"
     assert dashboard["signed_snapshot_leaf_hash"] != dashboard["raw_content_sha256"]
     assert any("timezone is unspecified" in x for x in next(s for s in data["source_registry"] if s["id"].startswith("bithomp_"))["limitations"])
+
+
+LIVE_TICKER_FOLLOWUP = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T221315Z-kraken-xrpusd-ticker-followup.json"
+)
+
+
+def test_kraken_ticker_followup_is_timestamp_bounded_and_not_model_eligible() -> None:
+    data = json.loads(LIVE_TICKER_FOLLOWUP.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "append_only_single_venue_spot_ticker_followup"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    source = data["source_registry"][0]
+    assert source["source_event_timestamp_utc"] is None
+    assert source["raw_content_sha256"] is None
+    assert source["model_eligible"] is False
+    market = data["market_snapshot"]
+    assert market["venue"] == "Kraken"
+    assert market["best_bid_usd"] < market["best_ask_usd"]
+    assert abs(
+        market["spread_bps"]
+        - (market["best_ask_usd"] - market["best_bid_usd"])
+        / market["midpoint_usd"] * 10000
+    ) < 1e-7
+    assert market["best_ask_to_bid_size_ratio"] > 10
+    assert data["prior_same_venue_comparison"]["elapsed_seconds"] == 4095
+    assert data["data_quality"]["model_eligible"] is False
+    assert data["predictions"]["issued"] is False
+    assert "cache reuse cannot be excluded" in source["limitations"][2]
