@@ -198,3 +198,41 @@ def test_barrot_auto_pr_has_no_unnecessary_pull_request_write_permission() -> No
     assert "pull-requests: write" not in content
     assert "gh pr create" not in content
     assert "gh pr merge" not in content
+
+
+def test_groq_research_pipelines_require_yes_and_upload_artifacts() -> None:
+    names = (
+        "webmcp-trend-digest.yml",
+        "self-benchmark.yml",
+        "knowledge-signal-cycle.yml",
+        "financial-data-refresh.yml",
+        "research-topics.yml",
+        "frontier-digest.yml",
+    )
+    for name in names:
+        content = _read(name)
+        assert "confirm_external_research" in content, name
+        assert "default: NO" in content, name
+        assert "inputs.confirm_external_research == 'YES'" in content, name
+        assert "contents: read" in content, name
+        assert "contents: write" not in content, name
+        assert "persist-credentials: false" in content, name
+        assert "upload-artifact@v7" in content, name
+        assert "git push" not in content, name
+
+
+def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -> None:
+    content = _read("webmcp-monetization-enrich.yml")
+    trend = _read("webmcp-trend-digest.yml")
+    assert 'workflows: ["WebMCP Trend Digest"]' in content
+    assert "github.event.workflow_run.conclusion == 'success'" in content
+    assert "actions: read" in content
+    assert "contents: read" in content
+    assert "actions/download-artifact@v7" in content
+    assert "github.event.workflow_run.id" in content
+    assert "github.event.workflow_run.run_number" in content
+    assert "webmcp-trend-digest-${{ github.run_number }}" in trend
+    assert "webmcp-trend-digest-${{ github.event.workflow_run.run_number }}" in content
+    assert "contents: write" not in content
+    assert "git push" not in content
+    assert "schedule:" not in content
