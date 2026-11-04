@@ -252,7 +252,23 @@
       "raw_capture_status": "web_rendered_extract_only",
       "model_eligible": false,
       "claims_supported": [
-        "NH Investment/Kyobo purchased the $30M 4% convertible senior PIK notes; Ripple is lender under the separate $1M Evernorth Facility and the $10M Pathfinder Company Facility; the $1M facility was undrawn as of 2026-06-30; $9.7M was drawn under the Company Facility as of 2026-10-07; the prospectus reports $214.1M cash proceeds used to purchase 84,365,876 XRP."
+        "NH Investment/Kyobo purchased the $30M 4% convertible senior PIK notes; Ripple is lender under the separate $1M Evernorth Facility and the $10M Pathfinder Company Facility; the $1M facility was undrawn as of 2026-06-30; $9.7M was drawn under the Company Facility as of 2026-10-07; the prospectus reports $214.1M cash proceeds used to purchase 84,365,876 XRP.",
+        "The October 30, 2026 prospectus beneficial-ownership table, using shares outstanding as of October 22, reports SBI-controlled holders with 9,431,914 Class A shares (36.1% of class) and 2,359,038 Class C shares (7.5% of class).",
+        "The prospectus separately reports 39.9% of total voting power for SBI in its at-closing pro forma capitalization table; this is not the same denominator as the class-specific percentages."
+      ],
+      "source_locators": [
+        {
+          "lines": "2350-2360",
+          "claims": "At-closing pro forma capitalization table: SBI 9,431,914 Class A and 2,359,038 Class C shares; 21.4% of outstanding common stock and 39.9% of voting power."
+        },
+        {
+          "lines": "3391-3412",
+          "claims": "Beneficial-ownership table based on shares outstanding as of October 22, 2026: SBI 9,431,914 Class A shares at 36.1% of class and 2,359,038 Class C shares at 7.5% of class."
+        },
+        {
+          "lines": "3467-3469",
+          "claims": "Class C-to-Class A conversion is subject to the SBI Group Ownership Percentage limit; SBI Group Ownership Percentage was approximately 39.9% of voting power as of October 9, 2026."
+        }
       ]
     },
     {
@@ -534,6 +550,39 @@
       "claims_supported": [
         "Reports the permission flaw affects issued tokens, including stablecoins, and does not affect XRP's native supply.",
         "Reports the expected activation window and the security rationale; this is secondary context, not the activation proof."
+      ]
+    },
+    {
+      "id": "evernorth_business_combination_closing_8k_20261012",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "primary SEC Form 8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "event_date_utc": "2026-10-09",
+      "filed_at_utc": "2026-10-12",
+      "retrieved_at_utc": "2026-11-04T13:47:06Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "source_locators": [
+        {
+          "lines": "258-295",
+          "claims": "Closing-date beneficial ownership table for SBI Holdings and other holders, with share counts and class percentages."
+        },
+        {
+          "lines": "313-317",
+          "claims": "SBI stockholder entities and attribution of voting/investment power to SBI Holdings."
+        }
+      ],
+      "claims_supported": [
+        "The business combination closed on October 9, 2026.",
+        "Advance funding subscribers exchanged approximately $214.05 million cash and 600,000 XRP for Class A and Class C shares.",
+        "Delayed funding subscribers exchanged $10.5 million cash and 200,000 XRP for Class A shares.",
+        "Arrington XRP Capital Fund LP contributed 211,319,096.061435 XRP.",
+        "Larsen Lam Children's Remainder Trust contributed 50,000,000 XRP.",
+        "Ripple contributed 126,791,458 XRP to Pathfinder for units.",
+        "The post-close SBI Holdings group held 8,885,293 Class A shares and 2,905,659 Class C shares.",
+        "SBI's Class A holding represented 39.9% of Class A common stock; its Class C holding represented 9.0% of Class C common stock.",
+        "SBI beneficial ownership was attributed to four SBI-controlled entities."
       ]
     }
   ],
@@ -1028,6 +1077,56 @@
         ],
         "original_artifact_modified": false,
         "reason": "Two node-backed public explorers report the same EnableAmendment ledger and UTC time. The older pre-window artifact remains valid at its own cutoff; the official docs warning is preserved as stale documentation."
+      },
+      {
+        "correction_id": "C17_SBI_EVERNORTH_SHARE_CLASS_CROSSWALK",
+        "target_artifact": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+        "target_fields": [
+          "$.sbi_holdings_ownership.post_close_shares.class_a_shares",
+          "$.sbi_holdings_ownership.post_close_shares.class_c_shares",
+          "$.sbi_holdings_ownership.post_close_shares.class_a_pct_of_class",
+          "$.sbi_holdings_ownership.post_close_shares.class_c_pct_of_class"
+        ],
+        "original_artifact_modified": false,
+        "prior_closing_8k_observation": {
+          "as_of": "2026-10-09",
+          "class_a_shares": 8885293,
+          "class_a_pct_of_class": 39.9,
+          "class_c_shares": 2905659,
+          "class_c_pct_of_class": 9,
+          "combined_shares": 11790952,
+          "source_id": "evernorth_business_combination_closing_8k_20261012"
+        },
+        "later_prospectus_observation": {
+          "as_of": "2026-10-22",
+          "class_a_shares": 9431914,
+          "class_a_pct_of_class": 36.1,
+          "class_c_shares": 2359038,
+          "class_c_pct_of_class": 7.5,
+          "combined_shares": 11790952,
+          "pro_forma_common_stock_pct": 21.4,
+          "pro_forma_voting_power_pct": 39.9,
+          "source_id": "evernorth_sec_424b3"
+        },
+        "reconciliation": {
+          "class_a_delta_shares": 546621,
+          "class_c_delta_shares": -546621,
+          "combined_delta_shares": 0,
+          "interpretation": "The later prospectus reports 546,621 more Class A shares and 546,621 fewer Class C shares than the closing 8-K, while the combined SBI share count is unchanged. The prospectus describes a Class C-to-Class A conversion mechanism subject to the SBI Group Ownership Percentage limit, but the reviewed disclosures do not identify a transaction that explains this exact change. Do not infer that the 546,621 shares were converted, transferred, or newly purchased without a transaction-level record."
+        },
+        "denominator_distinction": {
+          "later_beneficial_ownership_class_percentages": "36.1% of Class A and 7.5% of Class C, using the October 22, 2026 outstanding-share denominators.",
+          "at_closing_pro_forma_voting_power_pct": 39.9,
+          "october_9_sbi_group_ownership_percentage_pct": 39.9,
+          "warning": "The 39.9% voting-power figure is not the same denominator as the class-specific percentages. Do not relabel it as current Class A ownership."
+        },
+        "class_c_rights": "The prospectus describes Class C as non-voting except as required by Nevada law; it is not listed for trading or transferable.",
+        "evidence_source_ids": [
+          "evernorth_business_combination_closing_8k_20261012",
+          "evernorth_sec_424b3"
+        ],
+        "model_eligible": false,
+        "forecast_effect": "NONE_ADMITTED"
       }
     ],
     "evidence_source_ids": [
@@ -1035,7 +1134,9 @@
       "xrpldashboard_fixcleanup_activation",
       "xrplwin_fixcleanup_activation",
       "xrpl_official_permission_values",
-      "coindesk_fixcleanup_2026_11_02"
+      "coindesk_fixcleanup_2026_11_02",
+      "evernorth_business_combination_closing_8k_20261012",
+      "evernorth_sec_424b3"
     ]
   },
   "research_hypotheses": [
@@ -1183,11 +1284,11 @@
     "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "7388b28ab8d23f0e086270339e1a64de35ec55b2",
-    "prior_captured_at_utc": "2026-11-04T15:15:12Z",
-    "revised_at_utc": "2026-11-04T15:25:33Z",
-    "revision_reason": "Appended post-window node-backed confirmation that fixCleanup3_4_0 was enabled at ledger 108112129 at 14:52 UTC; preserved stale official-doc warning as documentation lag and distinguished the still-inactive lending/vault amendments.",
-    "revision_status": "append_only_protocol_activation_confirmation",
+    "prior_blob_sha": "121b515e2b09131fd35b31b18e53e02c203316fb",
+    "prior_captured_at_utc": "2026-11-04T15:25:33Z",
+    "revised_at_utc": "2026-11-04T15:47:05Z",
+    "revision_reason": "Appended a primary-source cross-filing reconciliation of Evernorth's closing Form 8-K and later October 30 prospectus ownership tables. Preserved both dated share-class snapshots, separated class percentages from total voting power, and left the 546,621-share class allocation change unexplained rather than inferring a conversion or purchase.",
+    "revision_status": "append_only_sbi_share_class_cross_filing_reconciliation",
     "source_registry_unchanged": false
   },
   "artifact_revision_history": [
@@ -1229,6 +1330,14 @@
       "revised_at_utc": "2026-11-04T15:15:12Z",
       "revision_reason": "Appended the post-webcast Circle Q3 2026 results addendum, recorded the ARC genesis token alongside USDC-denominated gas, and superseded the earlier pre-event Circle webcast status without rewriting the earlier cutoff artifact.",
       "revision_status": "append_only_post_event_results_addendum",
+      "source_registry_unchanged": false
+    },
+    {
+      "prior_blob_sha": "7388b28ab8d23f0e086270339e1a64de35ec55b2",
+      "prior_captured_at_utc": "2026-11-04T15:15:12Z",
+      "revised_at_utc": "2026-11-04T15:25:33Z",
+      "revision_reason": "Appended post-window node-backed confirmation that fixCleanup3_4_0 was enabled at ledger 108112129 at 14:52 UTC; preserved stale official-doc warning as documentation lag and distinguished the still-inactive lending/vault amendments.",
+      "revision_status": "append_only_protocol_activation_confirmation",
       "source_registry_unchanged": false
     }
   ]

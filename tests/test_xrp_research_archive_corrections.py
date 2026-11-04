@@ -1,6 +1,7 @@
 """Regression tests for append-only XRP archive review corrections."""
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from datetime import datetime
@@ -346,3 +347,54 @@ def test_xrpl_activation_overlay_preserves_official_docs_warning_as_stale_not_li
     assert "xrpldashboard_fixcleanup_activation" in entry["evidence_source_ids"]
     assert "xrplwin_fixcleanup_activation" in entry["evidence_source_ids"]
     assert "xrpl_official_permission_values" in entry["evidence_source_ids"]
+
+
+def test_evernorth_sbi_share_class_crosswalk_preserves_both_primary_snapshots():
+    data = load_artifact()
+    entry = correction(data, "C17_SBI_EVERNORTH_SHARE_CLASS_CROSSWALK")
+    assert entry["original_artifact_modified"] is False
+    old = entry["prior_closing_8k_observation"]
+    new = entry["later_prospectus_observation"]
+    assert old["as_of"] == "2026-10-09"
+    assert (old["class_a_shares"], old["class_c_shares"]) == (8885293, 2905659)
+    assert (old["class_a_pct_of_class"], old["class_c_pct_of_class"]) == (39.9, 9.0)
+    assert new["as_of"] == "2026-10-22"
+    assert (new["class_a_shares"], new["class_c_shares"]) == (9431914, 2359038)
+    assert (new["class_a_pct_of_class"], new["class_c_pct_of_class"]) == (36.1, 7.5)
+    assert old["combined_shares"] == new["combined_shares"] == 11790952
+    assert entry["reconciliation"]["class_a_delta_shares"] == 546621
+    assert entry["reconciliation"]["class_c_delta_shares"] == -546621
+    assert entry["reconciliation"]["combined_delta_shares"] == 0
+    assert entry["denominator_distinction"]["at_closing_pro_forma_voting_power_pct"] == 39.9
+    assert "evernorth_business_combination_closing_8k_20261012" in entry["evidence_source_ids"]
+    assert "evernorth_sec_424b3" in entry["evidence_source_ids"]
+    assert data["model_eligible"] is False
+
+
+def test_latest_live_market_snapshot_has_exact_raw_hashes_and_no_directional_forecast():
+    path = ROOT / "research" / "xrp_intelligence" / "20261104T154705Z-live-spot-derivatives-etf-snapshot.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    sources = {item["id"]: item for item in data["source_registry"]}
+    for source_id in ("kraken_xrpusd_ticker_20261104T154705Z", "binance_xrpusdt_premium_index_20261104T153541Z"):
+        source = sources[source_id]
+        digest = hashlib.sha256(source["raw_response_body"].encode("utf-8")).hexdigest()
+        assert digest == source["raw_content_sha256"]
+        assert source["model_eligible"] is False
+    spot = data["market_snapshot"]["spot"]
+    assert spot["last_usd"] == 1.32744
+    assert spot["daily_open_utc_usd"] == 1.27513
+    assert abs(spot["last_vs_daily_open_pct"] - 4.1023) < 0.001
+    assert spot["spread_basis_points"] < 1.0
+    assert data["market_snapshot"]["order_book_depth"]["status"] == "NOT_CAPTURED"
+    perp = data["market_snapshot"]["perpetuals"]
+    assert perp["source_time_utc"] == "2026-11-04T15:35:41Z"
+    assert perp["age_at_capture_seconds"] == 684
+    assert perp["stale_at_capture"] is True
+    etf = data["market_snapshot"]["etf_flows"]
+    assert etf["partial_funds_reported"] == 3
+    assert etf["daily_reporting_funds_expected"] == 4
+    assert etf["partial_day_is_final"] is False
+    assert data["forecast_issued"] is False
+    assert data["prediction_status"] == "NOT_ISSUED"
+    assert data["model_eligible"] is False
+
