@@ -1,56 +1,88 @@
-name: Barrot Superior Merge
+name: Barrot Superior Merge (explicitly approved upload)
 
-"on":
+on:
   workflow_dispatch:
     inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit approval for this specific Hugging Face model upload"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+      expected_source_sha:
+        description: "Expected exact main commit approved for this external action"
+        required: true
+        type: string
       model_name:
-        description: "Merged model name"
+        description: "Destination model name suffix (letters, numbers, dot, underscore, hyphen only)"
         required: true
         default: "barrot-superior-v1"
+        type: string
 
 permissions:
   contents: read
 
 jobs:
   merge:
+    if: ${{ inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      MODEL_NAME: ${{ inputs.model_name }}
     steps:
+      - name: Validate destination name
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$MODEL_NAME" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]]; then
+            echo "Invalid model name; path separators and shell metacharacters are prohibited." >&2
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Verify exact approved main commit
+        env:
+          EXPECTED_SOURCE_SHA: ${{ inputs.expected_source_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$EXPECTED_SOURCE_SHA" =~ ^[0-9a-fA-F]{40}$ ]]; then
+            echo "Expected source SHA must be a full commit hash." >&2
+            exit 1
+          fi
+          actual="$(git rev-parse HEAD)"
+          if [[ "$actual" != "$EXPECTED_SOURCE_SHA" ]]; then
+            echo "Checked-out main commit does not match the approved source SHA." >&2
+            exit 1
+          fi
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y git-lfs
           git lfs install
           python3 -m pip install --upgrade pip
           pip install -U "huggingface_hub[cli]" "mergekit>=0.0.4.6" safetensors sentencepiece protobuf
-
-      - name: Configure git auth for HF
+      - name: Verify Hugging Face credential
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" && exit 1)
-          git config --global credential.helper store
-          printf "https://__token__:%s@huggingface.co\n" "$HF_TOKEN" > ~/.git-credentials
-          chmod 600 ~/.git-credentials
-
-      - name: Merge
+        run: test -n "$HF_TOKEN"
+      - name: Merge without trusting remote model code
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
-            --copy-tokenizer --out-shard-size 2B --trust-remote-code
-
-      - name: Verify
-        run: |
-          ls -lah output/${{ github.event.inputs.model_name }}
-
-      - name: Upload
+          mergekit-yaml merges/barrot-superior/config.yaml "output/$MODEL_NAME" \
+            --copy-tokenizer --out-shard-size 2B
+      - name: Verify output directory
+        run: test -d "output/$MODEL_NAME" && find "output/$MODEL_NAME" -maxdepth 2 -type f -print
+      - name: Upload approved model artifact
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
+        run: hf upload "Barrot-Agent/$MODEL_NAME" "output/$MODEL_NAME" . --repo-type model

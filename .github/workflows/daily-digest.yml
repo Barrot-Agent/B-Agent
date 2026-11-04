@@ -1,25 +1,16 @@
-name: Daily Digest
+name: daily-digest (disabled pending reviewed automation policy)
 
 on:
-  schedule:
-    - cron: '10 0 * * *'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
-permissions:
-  contents: read
-  issues: write
+permissions: {}
 
 jobs:
-  digest:
+  disabled:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-      - name: Build digest
-        run: python3 scripts/daily_digest.py
-      - name: Post as issue
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh issue create --title "Barrot Daily Digest - $(date -u +%Y-%m-%d)" --body-file digest_body.md
+      - name: Explain disabled state
+        run: |
+          echo "The previous scheduled digest could publish the legacy unvalidated signal-accuracy percentage in a public issue. Re-enable only after fixed-horizon evaluation status and the public digest are corrected."
+          echo "No credentials are read and no repository mutation is performed."

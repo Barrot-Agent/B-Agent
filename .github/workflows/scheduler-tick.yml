@@ -1,35 +1,17 @@
-name: Scheduler Tick
+name: Scheduler Tick (disabled pending safe durable state store)
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
   workflow_dispatch: {}
 
-permissions:
-  contents: write
-  actions: write
+permissions: {}
 
 jobs:
-  tick:
+  disabled:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 30
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Run scheduler tick
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/scheduler.py tick
-
-      - name: Commit queue updates
+      - name: Explain disabled state
         run: |
-          git config user.name "Barrot-Agent"
-          git config user.email "barrot@barrot-agent.com"
-          git add ping-pongings/knowledge-base/schedule_queue.jsonl
-          git diff --cached --quiet || git commit -m "Scheduler tick [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          echo "The previous scheduled tick had contents:write and actions:write, dispatched any workflow present in the repository, and committed queue updates directly to main."
+          echo "It is disabled until queue dispatch is restricted to an explicit read-only allowlist and queue state is stored without unattended main-branch writes."
+          echo "No credentials are read and no repository mutation is performed."

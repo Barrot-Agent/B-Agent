@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "live_automation_containment_handoff",
+  "captured_at_utc": "2026-11-04T01:03:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_base": "0b6005dcb714f794d120b95d7412a0814d006221",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "evidence": [
+    {
+      "id": "repo-main",
+      "class": "confirmed",
+      "detail": "Default branch main at 0b6005dcb714f794d120b95d7412a0814d006221 at inspection."
+    },
+    {
+      "id": "scheduler-run",
+      "class": "confirmed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41749988225",
+      "detail": "Scheduler Tick completed successfully; log reported 0 entries fired and 1 total queued. It retained contents:write/actions:write and arbitrary workflow dispatch in main."
+    },
+    {
+      "id": "subscriber-run",
+      "class": "confirmed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41749182476",
+      "detail": "Subscriber Sync completed and reported 0 active subscribers hashed. Main workflow still reads Gumroad sale email fields and writes hashes to public web/subscribers.json."
+    },
+    {
+      "id": "cross-analysis-run",
+      "class": "confirmed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41749976015",
+      "detail": "Cross Analysis completed its generated-data commit path; main latest commit 0b6005d is a Cross-analysis refresh."
+    },
+    {
+      "id": "resolver-run",
+      "class": "confirmed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41751128042",
+      "detail": "Autonomous Resolver completed; logs show existing issues caused workflow issue creation to be skipped and no COPILOT_ASSIGNEE variable was configured."
+    },
+    {
+      "id": "merge-queue",
+      "class": "confirmed",
+      "detail": "Main merge-queue.yml offers mode=all and can update and merge every open PR when manually dispatched with dry_run=false."
+    },
+    {
+      "id": "brain-export",
+      "class": "confirmed",
+      "detail": "Main dump-brain-corpus.yml queries Databricks and commits full brain-corpus output to the public repository."
+    },
+    {
+      "id": "unresolved-external",
+      "class": "confirmed",
+      "detail": "Additional main workflows still require separate review: force-deploy-space force-pushes to Hugging Face; barrot-hf-admin performs DELETE/POST repo operations; rotate-databricks-token accepts a PAT as a workflow input; gumroad-metrics has scheduled main-write permissions."
+    }
+  ],
+  "safeguards": [
+    "All edits are proposed on a new branch based on the exact inspected main commit.",
+    "No main ref update, merge, force-push, deployment, secret access, external dispatch, Kaggle submission, or financial transaction.",
+    "Cross Analysis is retained as scheduled read-only artifact output rather than disabled.",
+    "Legacy mutable signal-accuracy scoring is quarantined pending fixed-horizon evaluation.",
+    "Public brain export script is made inert without deleting historical dumps or rewriting Git history."
+  ],
+  "verification": {
+    "designed": true,
+    "executed": true,
+    "exact_head_ci": "pending",
+    "fail_closed_gate": "pending",
+    "merge": "not performed"
+  },
+  "next_actions": [
+    "Run exact-head CI and fail-closed gate for this integrated successor.",
+    "Audit and separately contain force-deploy-space, barrot-hf-admin, rotate-databricks-token, gumroad-metrics, barrot-self-upgrade and remaining external writers.",
+    "Reconcile stale source PRs #1613, #1615 and #1617 only after the integrated successor passes.",
+    "Continue point-in-time XRP feature-store population and walk-forward evaluation."
+  ]
+}

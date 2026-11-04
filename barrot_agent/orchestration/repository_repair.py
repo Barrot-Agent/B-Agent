@@ -314,6 +314,143 @@ class RepairError(RuntimeError):
     """Raised when the repair controller cannot advance safely."""
 
 
+PROTECTED_BRANCH_NAMES = frozenset({"main", "master", "production", "release", "stable"})
+
+
+def _is_protected_branch_target(branch: str) -> bool:
+    """Recognize protected destinations in both short and fully qualified ref form."""
+    value = str(branch).strip().casefold()
+    while value.startswith("refs/heads/"):
+        value = value[len("refs/heads/"):]
+    return value in PROTECTED_BRANCH_NAMES
+
+
+def _assert_clean_worktree(workspace: str | Path) -> None:
+    """Refuse mutation when staged, unstaged, or untracked user work exists."""
+    result = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=all"],
+        cwd=Path(workspace).resolve(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise RepairError(
+            "Unable to verify worktree cleanliness; refusing repository mutation: "
+            + (result.stderr.strip() or f"git status exited {result.returncode}")
+        )
+    changes = [line for line in result.stdout.splitlines() if line.strip()]
+    if changes:
+        preview = "\n".join(changes[:20])
+        raise RepairError(
+            "Refusing repository mutation because the worktree/index contains pre-existing changes. "
+            "Preserve them and retry from a clean isolated worktree; no reset, clean, stash, or restore "
+            "was attempted.\n" + preview
+        )
+
+
+def safe_checkout_branch(workspace: str | Path, branch: str) -> str:
+    """Switch to/create a task branch without resetting or force-updating any ref."""
+    root = Path(workspace).resolve()
+    name = str(branch).strip()
+    if not name or not re.fullmatch(r"[A-Za-z0-9._/-]+", name) or ".." in name or name.startswith("-"):
+        raise RepairError("Invalid task branch name.")
+    if _is_protected_branch_target(name):
+        raise RepairError(f"Refusing to use protected branch {name!r} as an autonomous task branch.")
+    if name.casefold().startswith("refs/"):
+        raise RepairError("Task branch names must be short branch names, not fully qualified Git refs.")
+
+    _assert_clean_worktree(root)
+    current = subprocess.run(
+        ["git", "branch", "--show-current"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if current.returncode != 0:
+        raise RepairError(current.stderr.strip() or "Unable to determine current branch.")
+    current_name = current.stdout.strip()
+    if current_name == name:
+        return name
+    if current_name.casefold() not in {"main", "master"}:
+        raise RepairError(
+            f"Refusing to switch away from existing branch {current_name!r}; "
+            "run from main/master or the requested task branch."
+        )
+
+    local = subprocess.run(
+        ["git", "show-ref", "--verify", "--quiet", f"refs/heads/{name}"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if local.returncode == 0:
+        result = subprocess.run(
+            ["git", "switch", name],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    else:
+        remotes = subprocess.run(
+            ["git", "remote"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if remotes.returncode != 0:
+            raise RepairError(remotes.stderr.strip() or "Unable to inspect configured remotes.")
+        origin_configured = "origin" in {item.strip() for item in remotes.stdout.splitlines()}
+        fetched = False
+        if origin_configured:
+            fetch = subprocess.run(
+                ["git", "fetch", "origin", f"refs/heads/{name}:refs/remotes/origin/{name}"],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            fetched = fetch.returncode == 0
+            if not fetched:
+                remote = subprocess.run(
+                    ["git", "ls-remote", "--heads", "origin", f"refs/heads/{name}"],
+                    cwd=root,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                if remote.returncode != 0:
+                    raise RepairError(remote.stderr.strip() or "Unable to verify remote task branch.")
+                if remote.stdout.strip():
+                    raise RepairError(
+                        "Remote task branch exists but could not be fetched without a forced ref update; "
+                        "refusing to reset or overwrite it."
+                    )
+        if fetched:
+            result = subprocess.run(
+                ["git", "switch", "--track", "-c", name, f"origin/{name}"],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+        else:
+            result = subprocess.run(
+                ["git", "switch", "-c", name],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+    if result.returncode != 0:
+        raise RepairError(result.stderr.strip() or f"Unable to switch to task branch {name!r}.")
+    return name
+
+
 class ModelFailure(RepairError):
     """Raised when the model response or provider cannot be used safely."""
 
@@ -1112,14 +1249,45 @@ class PatchExecutor:
     def __init__(self, workspace: str | Path, *, watchdog: DefensiveWatchdog | None = None):
         self.workspace = Path(workspace).resolve()
         self.watchdog = watchdog
+        self._last_applied_content: dict[str, str] = {}
 
     def _resolve_path(self, relative_path: str) -> Path:
-        if not relative_path or Path(relative_path).is_absolute():
+        relative = Path(relative_path)
+        if (
+            not relative_path
+            or relative.is_absolute()
+            or ".." in relative.parts
+        ):
             raise RepairError(f"Invalid patch path: {relative_path}")
-        target = (self.workspace / relative_path).resolve()
-        if self.workspace not in target.parents:
+
+        target = self.workspace
+        for part in relative.parts:
+            if part in {"", "."}:
+                continue
+            target = target / part
+            if target.is_symlink():
+                raise RepairError(f"Patch path traverses a symbolic link: {relative_path}")
+
+        target = target.absolute()
+        if target == self.workspace or self.workspace not in target.parents:
             raise RepairError(f"Patch path escapes workspace: {relative_path}")
         return target
+
+    def _assert_preimage_unchanged(
+        self,
+        relative_path: str,
+        target: Path,
+        original: str | None,
+    ) -> None:
+        """Compare-and-swap guard: refuse a patch if its planned preimage changed."""
+        if self._resolve_path(relative_path) != target:
+            raise RepairError(f"Patch target path changed after planning: {relative_path}")
+        if original is None:
+            if target.exists():
+                raise RepairError(f"Patch target appeared after planning: {relative_path}")
+            return
+        if not target.is_file() or target.read_text(encoding="utf-8") != original:
+            raise RepairError(f"Patch target changed after planning: {relative_path}")
 
     def _verify_content(self, path: str, content: str) -> None:
         suffix = Path(path).suffix.lower()
@@ -1142,16 +1310,39 @@ class PatchExecutor:
             snapshots[path] = target.read_text(encoding="utf-8") if target.exists() else None
         return snapshots
 
+    def verify_applied_content(self) -> None:
+        """Fail closed if a target changed after Barrot applied its patch."""
+        if not self._last_applied_content:
+            raise RepairError("No applied patch content is available for commit verification.")
+        for path, expected in self._last_applied_content.items():
+            target = self._resolve_path(path)
+            if not target.is_file() or target.read_text(encoding="utf-8") != expected:
+                raise RepairError(
+                    f"Refusing to commit because {path} changed after patch application."
+                )
+
     def rollback(self, snapshots: dict[str, str | None]) -> bool:
+        """Restore only files still byte-for-byte equal to this executor's patch."""
+        changed = {
+            path: (snapshots[path], expected)
+            for path, expected in self._last_applied_content.items()
+            if path in snapshots
+        }
         try:
-            for path, original in snapshots.items():
+            # Compare every changed path before restoring any path. If a user or
+            # another process edited/deleted one after validation began, preserve it.
+            for path, (_, expected) in changed.items():
+                target = self._resolve_path(path)
+                if not target.is_file() or target.read_text(encoding="utf-8") != expected:
+                    return False
+            for path, (original, _) in changed.items():
                 target = self._resolve_path(path)
                 if original is None:
-                    if target.exists():
-                        target.unlink()
-                    continue
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_text(original, encoding="utf-8")
+                    target.unlink()
+                else:
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_text(original, encoding="utf-8")
+            self._last_applied_content.clear()
             return True
         except Exception:
             return False
@@ -1164,10 +1355,12 @@ class PatchExecutor:
         if not isinstance(raw_expected, list) or not raw_expected:
             raise RepairError("Changeset must contain a non-empty expected_files list.")
 
+        _assert_clean_worktree(self.workspace)
+        self._last_applied_content.clear()
         operations = [PatchOperation.from_dict(item) for item in raw_operations]
         expected_files = [str(item) for item in raw_expected if isinstance(item, str) and item]
         evidence: list[dict[str, Any]] = []
-        pending_writes: list[tuple[Path, str]] = []
+        pending_writes: list[tuple[str, Path, str | None, str]] = []
 
         for operation in operations:
             if operation.type != "replace":
@@ -1175,7 +1368,40 @@ class PatchExecutor:
             if any(operation.path.startswith(prefix) for prefix in self.PROTECTED_WRITE):
                 raise RepairError(f"Protected path cannot be modified: {operation.path}")
             target = self._resolve_path(operation.path)
-            current = target.read_text(encoding="utf-8") if target.exists() else ""
+            if target.exists():
+                tracked = subprocess.run(
+                    ["git", "ls-files", "--error-unmatch", "--", operation.path],
+                    cwd=self.workspace,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                if tracked.returncode == 1:
+                    raise RepairError(
+                        f"Refusing to overwrite a pre-existing untracked or ignored file: {operation.path}"
+                    )
+                if tracked.returncode != 0:
+                    raise RepairError(
+                        tracked.stderr.strip() or f"Unable to verify tracked status for {operation.path}"
+                    )
+            else:
+                ignored = subprocess.run(
+                    ["git", "check-ignore", "-q", "--", operation.path],
+                    cwd=self.workspace,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                if ignored.returncode == 0:
+                    raise RepairError(
+                        f"Refusing to create a new path ignored by Git: {operation.path}"
+                    )
+                if ignored.returncode != 1:
+                    raise RepairError(
+                        ignored.stderr.strip() or f"Unable to verify ignore status for {operation.path}"
+                    )
+            target_existed = target.exists()
+            current = target.read_text(encoding="utf-8") if target_existed else ""
             occurrences = current.count(operation.old)
             if occurrences == 0:
                 raise RepairError(f"Patch precondition failed; old text not found in {operation.path}")
@@ -1189,7 +1415,9 @@ class PatchExecutor:
                 if not decision.allowed:
                     raise RepairError(decision.reason or f"Watchdog blocked patch for {operation.path}")
             self._verify_content(operation.path, updated)
-            pending_writes.append((target, updated))
+            pending_writes.append(
+                (operation.path, target, current if target_existed else None, updated)
+            )
             evidence.append(
                 {
                     "type": "replace",
@@ -1200,8 +1428,18 @@ class PatchExecutor:
                 }
             )
 
-        for target, updated in pending_writes:
+        # Check every planned preimage before the first write. This prevents a
+        # concurrent edit made while later operations were being prepared from
+        # being overwritten by an earlier planned patch.
+        for operation_path, target, original, _ in pending_writes:
+            self._assert_preimage_unchanged(operation_path, target, original)
+
+        # Recheck each target immediately before writing it. This narrows the
+        # remaining race window and keeps rollback keys aligned with snapshot paths.
+        for operation_path, target, original, updated in pending_writes:
+            self._assert_preimage_unchanged(operation_path, target, original)
             target.write_text(updated, encoding="utf-8")
+            self._last_applied_content[operation_path] = updated
 
         changed = subprocess.run(
             ["git", "status", "--porcelain"],
@@ -1341,6 +1579,14 @@ class GitGateway:
 
     def commit(self, message: str, expected_paths: list[str]) -> CommitEvidence:
         sanitized = " ".join(str(message).split()).strip()[:120] or "Barrot autonomous repair"
+        staged_before = self._run("diff", "--cached", "--name-only")
+        if staged_before.returncode != 0:
+            raise RepairError(staged_before.stderr.strip() or "Unable to inspect the Git index.")
+        if staged_before.stdout.strip():
+            raise RepairError(
+                "Refusing to commit because the Git index already contains staged changes: "
+                + ", ".join(staged_before.stdout.splitlines()[:20])
+            )
         add = self._run("add", "--", *expected_paths)
         if add.returncode != 0:
             raise RepairError(add.stderr.strip() or "git add failed")
@@ -1385,6 +1631,13 @@ class GitGateway:
         )
 
     def push(self, remote: str, branch: str) -> CommandEvidence:
+        if _is_protected_branch_target(branch):
+            return CommandEvidence(
+                command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
+                success=False,
+                returncode=None,
+                error=f"Push to protected branch {branch!r} is blocked.",
+            )
         if self.watchdog is not None:
             decision = self.watchdog.authorize(
                 Capability.EXTERNAL_ACTION,
@@ -1665,6 +1918,36 @@ actually observed.
             "branch": branch_name,
             "task_title": task_title,
         }
+        try:
+            _assert_clean_worktree(self.workspace)
+            current_branch = self.git_gateway.current_branch()
+        except Exception as exc:
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "WORKTREE_PREFLIGHT_FAILED",
+                str(exc),
+                failed_operation="preflight_worktree",
+                required_external_action="Preserve the existing worktree and retry only from a clean isolated task branch.",
+            )
+        if _is_protected_branch_target(branch_name):
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "PROTECTED_BRANCH",
+                f"Autonomous repair is forbidden from pushing to protected branch {branch_name!r}.",
+                failed_operation="preflight_branch",
+                required_external_action="Use a separate task branch; no protected branch was modified.",
+            )
+        if current_branch != branch_name:
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "BRANCH_MISMATCH",
+                f"Current branch {current_branch!r} does not match requested task branch {branch_name!r}.",
+                failed_operation="preflight_branch",
+                required_external_action="Switch safely to the requested task branch from a clean main/master checkout; no branch reset was attempted.",
+            )
         self.watchdog.set_context(repository=repo_name, task=task_title, session=cycle.cycle_id)
         if latest.get("project_identity", {}) == cycle.project_identity:
             cycle.attempt_number = int(latest.get("attempt_number") or 0) + 1
@@ -1951,6 +2234,7 @@ actually observed.
         self._persist(cycle)
         expected_files = [str(item) for item in changeset.get("expected_files", []) if isinstance(item, str)]
         try:
+            self.patch_executor.verify_applied_content()
             cycle.commit = self.git_gateway.commit(
                 str(changeset.get("commit_message", "")).strip(),
                 expected_files,
