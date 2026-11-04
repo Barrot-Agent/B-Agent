@@ -1,3 +1,69 @@
+# Current post-merge Barrot handoff — 2026-11-04T08:35:47.603Z
+
+## Current state
+
+- Highest-priority mission: XRP intelligence and prediction-engine mastery.
+- Foundation: Barrot V3 execution, orchestration, safety and verification.
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- PR #1639 has been merged with individual commit history preserved.
+- Its three source proposals #1623, #1618 and #1616 were closed only after all source paths were verified on main.
+- Main post-merge: core CI passed; the full-suite job is still installing development dependencies at this handoff cutoff. The PR's exact code head `38aaeff1cc1ab7cf2f1b2fdbd5821ed089e7bd69` had already passed 484 core tests and 718 full-suite tests, each with 8 subtests.
+- GitHub Pages build/deployment after the merge succeeded automatically. The Barrot Auto PR workflow completed its read-only validation successfully; no PR creation or write occurred.
+- No manual deployment, force-push, paper trade, Kaggle submission, token rotation or real-money transaction occurred.
+
+## Next current-main capability integration
+
+Working branch: `integration/core-capabilities-mmi-structural-paper-20261104`, based on main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+
+The branch consolidates the remaining ready core proposals rather than opening fragmented successors:
+- #1540: MMI claim-bound corroboration and source-independence grouping, including explicit separation of SBIC from SBI Holdings.
+- #1317: deterministic structural-analysis core, documentation and source manifest.
+- #1318: strict scientific-discovery response-schema validation, manually applied to current-main `scripts/barrot_agent.py` while preserving the current worktree-safety code.
+- #1320: paper-trader position-product identity validation. The current workflow is manual-dispatch only, not scheduled. The persisted state has a nonzero position size but `position_product=null`; the new script and workflow fail closed before any provider call.
+- #1255 and #1254: combined Databricks SDK and Hugging Face Hub minimum-version updates in the legacy manifest.
+
+The paper-trader workflow is strengthened beyond the source PR: manual `YES` confirmation, exact main SHA, two separate jobs, model API key only in the simulation job, write permission only in the persistence job, artifact-only handoff between jobs, a second main-SHA check immediately before push, and a strict two-file write allowlist. The current state remains unchanged and no workflow was run.
+
+Core CI adds four test modules: source independence, structural analysis, paper-trader product-state safety and paper-trader workflow safety. Full-suite CI automatically collects all test files.
+
+## PR backlog after integration
+
+Latest inventory: 362 open PRs, 356 drafts, 6 non-drafts. Do not bulk-close drafts. The six non-drafts are the stale source proposals #1317, #1318, #1320, #1255, #1254 and geometry #1269. The first five are being reconciled on the fresh-main integration branch; #1269 remains a separate geometry workstream.
+
+Other preserved unique work:
+- #1614: 57-path XRP research archive with unique evidence not yet reconciled; do not close until its unique research records are appended to the canonical archive.
+- #1611: older predecessor to #1614; preserve until archive reconciliation.
+- #1314: predecessor to structural-analysis #1317; close only after successor integration.
+- #1269: geometry/OBJ topology feature; refresh separately against current main and run full suite.
+- #1540, #1317, #1318, #1320, #1255, #1254 source branches remain preserved until #1640 (or its successor) is merged and their paths are verified.
+
+Fifteen obsolete/duplicate proposals were previously closed with comments and their branches/history preserved: #1637, #1636, #1634, #1627, #1626, #1622, #1621, #1628, #1625, #1624, #1537, #1181, #1252, #1137 and #758.
+
+## Architecture and prediction truth
+
+- MMI source-independence and claim-bound corroboration are being integrated; source grouping must not conflate SBIC East Japan with SBI Holdings.
+- Structural analysis is a deterministic library capability; wiring it into the unified Barrot reasoning/runtime pipeline remains future work.
+- Scientific discovery now validates exact output keys and required array types and retries once on schema violations.
+- The paper-trading state currently has an open position with unknown product identity; the guarded workflow must abort until the identity is independently verified.
+- No production XRP ingestion adapter, populated synchronized historical feature store, leakage-safe walk-forward result, calibrated model or verified shadow/paper performance exists yet.
+- No directional XRP forecast is issued.
+- Only ChatGPT-to-GitHub access is tested. The other eight platform collaborations are not claimed live.
+- Whole-repository coverage remains unverified: major packages are excluded and CI uses `--no-cov`. No lockfiles are present; third-party Actions are not yet pinned to immutable commit SHAs. Branch-protection enforcement remains unverified.
+
+## Immediate next steps
+
+1. Finish the current branch with MMI, structural analysis, schema validation, paper-trader safety and dependency updates.
+2. Run exact-head core CI, the full repository suite, fail-closed gate and four-manifest dependency audit.
+3. Create one PR for the integrated capability set; merge only after all checks pass.
+4. Verify main and close #1540/#1317/#1318/#1320/#1255/#1254 plus predecessor #1314 only after their changes are present.
+5. Reconcile unique evidence from #1614 into the canonical research archive; only then close #1614/#1611.
+6. Reconcile geometry #1269 separately.
+7. Implement the unified long-horizon Barrot runtime and production XRP data-ingestion pipeline.
+
+Treat DESIGNED, EXECUTED and VERIFIED as separate. Append handoffs; never erase historical evidence or outcomes.
+
+---
+
 # Current integrated Barrot handoff — 2026-11-04T08:26:24.140Z
 
 ## Mission and execution rule

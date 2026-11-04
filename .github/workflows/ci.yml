@@ -84,6 +84,10 @@ jobs:
             tests/test_point_in_time_features.py \
             tests/test_automation_containment.py \
             tests/test_external_action_gates.py \
+            tests/test_source_independence.py \
+            tests/test_structural_analysis.py \
+            tests/test_paper_trader_product_state.py \
+            tests/test_paper_trader_workflow_safety.py \
             -v --no-cov
 
   full-suite:
