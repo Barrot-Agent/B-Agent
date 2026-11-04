@@ -44,3 +44,8 @@ Primary source URLs:
 - https://xrp-insights.com/data
 - https://xrp-insights.com/data/xrp-etf-flows.json
 - https://www.tokenpost.com/news/investing/45984
+
+
+## Timestamp-field correction
+
+The ETF observations use calendar trading dates, not precise UTC instants. The JSON now stores those values as `source_data_as_of_date`; page refresh, issuer-file read and dataset-generation instants are separate UTC fields. The Q3 stablecoin figure is likewise marked with a calendar quarter-end date and its secondary-source publication timestamp. This prevents date-only values from masquerading as point-in-time UTC timestamps.

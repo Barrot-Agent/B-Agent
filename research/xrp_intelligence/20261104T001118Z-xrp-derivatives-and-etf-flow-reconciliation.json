@@ -64,7 +64,6 @@
       "metric": "spot_etf_net_holdings_change",
       "value": -3339,
       "unit": "XRP",
-      "source_data_as_of_utc": "2026-11-02",
       "quality_status": "reported",
       "methodology": "Daily change in issuer-published holdings for four funds: XRP (Bitwise), XRPZ (Franklin Templeton), XRPC (Canary Capital), TOXR (21Shares).",
       "notes": [
@@ -72,7 +71,10 @@
         "Nov 2 holdings 1,076,815,901 XRP across the four funds.",
         "Oct 30 flow -1,123,743 XRP, approximately -$1.4M.",
         "Last five complete trading days through Nov 2: +6,178,709 XRP."
-      ]
+      ],
+      "source_data_as_of_date": "2026-11-02",
+      "provider_page_updated_at_utc": "2026-11-03T23:57:00Z",
+      "issuer_file_read_at_utc": "2026-11-03T23:52:00Z"
     },
     {
       "observation_id": "xrp-insights-etf-20261102",
@@ -81,14 +83,15 @@
       "metric": "spot_etf_and_index_product_net_holdings_change",
       "value": -32825,
       "unit": "XRP",
-      "source_data_as_of_utc": "2026-11-02",
       "quality_status": "reported_with_scope_caveats",
       "methodology": "Holdings-derived daily changes across six spot XRP ETFs plus the XRP sleeve of multi-asset index fund BITW; includes XRPR where part of XRP exposure is held through another ETP; GXRP flows excluded because of a documented issuer-page capture gap.",
       "notes": [
         "Nov 2 aggregate -32,825 XRP, approximately -$42K; total holdings 1,196,567,361 XRP.",
         "BITW changes may reflect index rebalancing; holdings changes may include fee accruals or XRP fee payments, not only creations/redemptions.",
         "Latest settled data_as_of Nov 2; Nov 3 not yet settled at the time of the dataset generation."
-      ]
+      ],
+      "source_data_as_of_date": "2026-11-02",
+      "dataset_generated_at_utc": "2026-11-03T22:04:47.234Z"
     },
     {
       "observation_id": "xrpl-stablecoin-q3-2026-secondary",
@@ -97,13 +100,14 @@
       "metric": "xrpl_stablecoin_supply",
       "value": 1.03,
       "unit": "USD billions",
-      "source_data_as_of_utc": "2026-09-30",
       "quality_status": "secondary_report_not_primary_chain_reconciliation",
       "methodology": "Secondary report of Q3 ledger-wide stablecoin supply and transfer value.",
       "notes": [
         "Reported RLUSD $1.01B and 98.1% share; reported Q3 stablecoin transfer value $14.09B.",
         "Do not infer XRP spot demand from stablecoin supply or transfer value; validate against issuer contracts and ledger-level data before model use."
-      ]
+      ],
+      "source_data_as_of_date": "2026-09-30",
+      "source_publication_at_utc": "2026-11-01T20:51:00Z"
     }
   ],
   "competing_hypotheses": [
@@ -188,7 +192,8 @@
     "Liquidation feeds may be incomplete and are not directly comparable without coverage.",
     "ETF flow is derived from holdings changes and can include non-creation/redemption effects.",
     "Exclude provisional, reconstructed or capture-gap rows from strict primary training unless explicitly modeled as lower-quality features.",
-    "Provider aggregators share underlying exchange and issuer data; they are not independent primary sources."
+    "Provider aggregators share underlying exchange and issuer data; they are not independent primary sources.",
+    "Calendar-date-only source periods are stored as source_data_as_of_date, never mislabeled as UTC timestamps; publication/refresh timestamps are separate fields."
   ],
   "next_actions": [
     "Build synchronized exchange-native OI by contract with exact instrument metadata and quote conversion.",
