@@ -372,3 +372,45 @@ def test_etf_flow_provider_disagreement_is_preserved_not_averaged() -> None:
     assert snapshot["discrepancy"]["approx_ratio"] > 10
     assert "Do not average" in data["data_quality"]["no_averaging_policy"]
     assert data["predictions"]["issued"] is False
+
+
+BINANCE_INCIDENT_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T051139Z-binance-hot-wallet-incident.json"
+)
+
+
+def test_binance_incident_addendum_preserves_xrp_flow_exclusion() -> None:
+    data = json.loads(BINANCE_INCIDENT_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_binance_hot_wallet_incident_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    source_ids = [item["id"] for item in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+    for observation in data["observations"]:
+        assert observation["evidence"]
+        assert set(observation["evidence"]) <= known
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"] and edge["status"]
+        assert set(edge["evidence"]) <= known
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"] and hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"] and hypothesis["tests"]
+    assert data["market_snapshot"]["xrp_outflow"]["amount_xrp"] == 233461943.1
+    assert data["market_snapshot"]["xrp_repartition_as_of_20261103"]["main_recipient_wallets"] == 6
+    assert data["predictions"]["issued"] is False
+    assert "Exclude it from organic exchange-flow" in data["data_quality"]["incident_exclusion_rule"]
+
+
+def test_binance_incident_keeps_attribution_and_freeze_scope_distinct() -> None:
+    data = json.loads(BINANCE_INCIDENT_ADDENDUM.read_text(encoding="utf-8"))
+    classes = {item["class"] for item in data["observations"]}
+    assert "official_law_enforcement_attribution" in classes
+    assert "official_denial_reported_by_independent_press" in classes
+    freeze = data["market_snapshot"]["issuer_freezes"]
+    assert freeze["ripple_rlusd_ethereum_usd_approx"] == 40500000
+    assert freeze["circle_usdc_reuters_20261102"] == "more than $1.1B"
+    assert freeze["circle_usdc_xrplwin_20261030"] == "$823M"
+    assert "different dated snapshots" in data["data_quality"]["discrepancies"][1]["classification"]
