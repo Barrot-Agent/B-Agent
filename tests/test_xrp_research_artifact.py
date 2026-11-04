@@ -208,3 +208,20 @@ def test_circle_q3_event_is_future_at_research_cutoff() -> None:
     cutoff = _parse_utc(data["captured_at_utc"])
     event_time = _parse_utc("2026-11-04T13:00:00Z")
     assert event_time > cutoff
+
+
+def test_requested_camilla_identity_is_not_conflated_with_kamilah_candidate() -> None:
+    data = json.loads(ADDENDUM.read_text(encoding="utf-8"))
+    identity = data["identity_disambiguation"]
+    assert identity["requested_identity"] == "Camilla Stephenson"
+    assert identity["candidate_identity"].startswith("Kamilah Stevenson")
+    assert identity["status"] == "UNRESOLVED_NOT_EQUIVALENT"
+    assert identity["candidate_video_count"] == 12
+    assert identity["inventory_exhaustive"] is False
+    assert "Do not label" in identity["attribution_rule"]
+    source_ids = {source["id"] for source in data["source_registry"]}
+    observation = next(
+        item for item in data["observations"]
+        if item["id"] == "OBS-IDENTITY-20261104-01"
+    )
+    assert set(observation["evidence"]) <= source_ids
