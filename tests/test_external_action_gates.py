@@ -98,6 +98,10 @@ def test_kaggle_submissions_require_per_run_approval_and_exact_allowlist() -> No
     assert "if not SUBMISSION_ALLOWLIST" in script
     assert "in SUBMISSION_ALLOWLIST" in script
     assert script.index("if not SUBMISSION_ALLOWLIST") < script.index("api = _build_api()")
+    duplicate = (ROOT / "barrot_agent" / "tools" / "kaggle_competitions_automation.py").read_text(encoding="utf-8")
+    assert "SUBMISSION_ALLOWLIST" in duplicate
+    assert "if not SUBMISSION_ALLOWLIST" in duplicate
+    assert duplicate.index("if not SUBMISSION_ALLOWLIST") < duplicate.index("api = _build_api()")
 
 
 def test_scheduled_research_jobs_write_artifacts_not_main() -> None:
