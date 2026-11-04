@@ -3,6 +3,7 @@ import time
 
 from barrot_agent.mmi_v1 import (
     BoundedTraversal,
+    ComponentRecord,
     EvidenceRecord,
     Freshness,
     FreshnessPolicy,
@@ -452,13 +453,10 @@ def test_zero_independent_sources_cannot_complete_corroboration():
 
 def test_same_publisher_group_is_not_independent_corroboration():
     record = complete_record_with_two_sources()
-    record.source_graph[1].independence_group = "source-a.example"
-    record.corroboration_results = [{
-        "status": "CORROBORATED",
-        "independent_source_ids": ["s1", "s2"],
-        "independent_sources": 2,
-    }]
+    record.source_graph[1].independence_group = record.source_graph[0].independence_group
 
+    assert record.corroboration_complete() is False
+    assert any("distinct independence groups" in error for error in record.validate())
     assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
 
 
@@ -1005,3 +1003,77 @@ def test_tampered_execution_ledger_refuses_new_append(tmp_path):
     else:
         raise AssertionError("tampered ledger must reject further appends")
     assert path.read_text(encoding="utf-8") == modified
+
+def test_unhashable_component_parent_id_fails_validation_without_exception():
+    record = MMIEngine().create_record(
+        "unhashable-parent-id",
+        {"name": "fixture"},
+        {"source": "fixture://source"},
+    )
+    record.component_map.append(
+        ComponentRecord(
+            component_id="child",
+            parent_id={},
+            depth=1,
+            state=ParseState.OBSERVED,
+        )
+    )
+
+    assert any("component parent ID" in error for error in record.validate())
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_unhashable_independent_source_id_fails_closed_without_exception():
+    record = MMIEngine().create_record(
+        "unhashable-independent-source-id",
+        {"name": "fixture"},
+        {"source": "fixture://source"},
+    )
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="malformed-independent",
+            claim="malformed source reference",
+            state=ParseState.OBSERVED,
+            source_ids=[{}],
+            independent=True,
+        )
+    )
+
+    assert any("invalid source reference" in error for error in record.validate())
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_non_list_independent_source_ids_fail_closed_without_exception():
+    record = MMIEngine().create_record(
+        "non-list-independent-source-ids",
+        {"name": "fixture"},
+        {"source": "fixture://source"},
+    )
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="malformed-independent-container",
+            claim="malformed source container",
+            state=ParseState.OBSERVED,
+            source_ids=5,
+            independent=True,
+        )
+    )
+
+    assert any("source_ids must be a list" in error for error in record.validate())
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_execution_ledger_append_skips_trailing_blank_lines(tmp_path):
+    path = tmp_path / "ledger_with_blank_line.jsonl"
+    ledger = MMIExecutionLedger(path)
+    first_hash = ledger.append({"event": "MMI_RECEIVED", "ingestion_id": "blank-line-001"})
+
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write("\n")
+
+    assert ledger.verify() is True
+    second_hash = ledger.append({"event": "MMI_COMPLETED", "ingestion_id": "blank-line-001"})
+    assert ledger.verify() is True
+    records = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    assert records[-1]["previous_hash"] == first_hash
+    assert records[-1]["event_hash"] == second_hash

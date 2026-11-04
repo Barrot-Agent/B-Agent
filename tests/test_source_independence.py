@@ -45,3 +45,8 @@ def test_tokyo_sbic_is_not_misclassified_as_sbi_holdings():
 def test_non_http_urls_cannot_establish_external_publisher_identity():
     assert canonical_publisher_group("fixture://publisher-a") == ""
     assert canonical_publisher_group("barrot://generated/source") == ""
+
+def test_ip_literal_hosts_do_not_create_publisher_groups():
+    assert canonical_publisher_group("https://10.0.0.5/report") == ""
+    assert canonical_publisher_group("https://1.2.3.4/report") == ""
+    assert canonical_publisher_group("https://[2001:db8::1]/report") == ""

@@ -225,8 +225,11 @@ class MMIRecord:
         component_id_set = set(component_ids)
         for item in self.component_map:
             parent_id = getattr(item, "parent_id", None)
-            if parent_id is not None and parent_id not in component_id_set:
-                errors.append(f"unknown component parent: {parent_id}")
+            if parent_id is not None:
+                if not isinstance(parent_id, str) or not parent_id.strip():
+                    errors.append("component parent ID must be a non-empty string or null")
+                elif parent_id not in component_id_set:
+                    errors.append(f"unknown component parent: {parent_id}")
 
         source_classes = {}
         for item in self.source_graph:
@@ -272,13 +275,21 @@ class MMIRecord:
         }
         for item in self.evidence:
             if getattr(item, "independent", False):
-                source_ids = getattr(item, "source_ids", [])
-                if not source_ids:
-                    errors.append(f"independent evidence cannot be independent without a source: {getattr(item, 'evidence_id', '<unknown>')}")
-                elif any(source_id not in source_classes for source_id in source_ids):
-                    errors.append(f"independent evidence cannot be independent with an unknown source: {getattr(item, 'evidence_id', '<unknown>')}")
-                elif any(source_classes[source_id] not in external_classes for source_id in source_ids):
-                    errors.append(f"independent evidence cannot be independent unless it references only external sources: {getattr(item, 'evidence_id', '<unknown>')}")
+                source_ids = getattr(item, "source_ids", None)
+                evidence_id = getattr(item, "evidence_id", "<unknown>")
+                if not isinstance(source_ids, list):
+                    # The first evidence pass records the malformed container.
+                    continue
+                valid_source_ids = [
+                    source_id for source_id in source_ids
+                    if isinstance(source_id, str) and source_id.strip()
+                ]
+                if not valid_source_ids:
+                    errors.append(f"independent evidence cannot be independent without a valid source: {evidence_id}")
+                elif any(source_id not in source_classes for source_id in valid_source_ids):
+                    errors.append(f"independent evidence cannot be independent with an unknown source: {evidence_id}")
+                elif any(source_classes[source_id] not in external_classes for source_id in valid_source_ids):
+                    errors.append(f"independent evidence cannot be independent unless it references only external sources: {evidence_id}")
 
         if self.structural_signature:
             if not isinstance(self.structural_signature, dict):
@@ -633,7 +644,8 @@ class MMIExecutionLedger:
                     raise ValueError("MMI execution ledger integrity check failed; refusing append")
                 handle.seek(0)
                 lines = handle.read().splitlines()
-                previous = json.loads(lines[-1]).get("event_hash", "") if lines else ""
+                last_record = next((line for line in reversed(lines) if line.strip()), None)
+                previous = json.loads(last_record).get("event_hash", "") if last_record else ""
 
                 payload = dict(event)
                 payload["ledger_recorded_at"] = datetime.now(timezone.utc).isoformat()

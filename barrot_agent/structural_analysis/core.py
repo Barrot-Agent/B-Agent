@@ -6,11 +6,12 @@ proof. Domain-specific evaluators must be supplied by a caller.
 """
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field, replace
 from enum import Enum
 from hashlib import sha256
 import json
 import math
+from types import MappingProxyType
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
 
@@ -122,7 +123,7 @@ class StructuralSignature:
     identity_hash: str
 
     def to_dict(self) -> dict[str, Any]:
-        return json.loads(StructuralAnalyzer._canonical(asdict(self)))
+        return json.loads(StructuralAnalyzer._canonical(self))
 
 
 ConstraintFn = Callable[[Any], ConstraintResult]
@@ -167,38 +168,68 @@ class StructuralAnalyzer:
             else "unresolved" if not constraints or "unknown" in statuses
             else "valid"
         )
-        constraints = sorted(constraints, key=lambda x: (x.name, x.status, x.detail))
-        invariants = sorted(invariants, key=lambda x: (x.name, self._canonical(x.value)))
-        relations = sorted(
-            obj.relations, key=lambda x: (x.source_id, x.target_id, x.relation.value)
-        )
+        constraints = sorted(constraints, key=self._canonical)
+        invariants = [
+            replace(item, value=self._freeze(item.value))
+            for item in invariants
+        ]
+        invariants = sorted(invariants, key=self._canonical)
+        relations = sorted(obj.relations, key=self._canonical)
         symmetries = tuple(sorted(obj.symmetries))
+        provenance = self._freeze(obj.provenance)
         payload = {
             "representation_type": obj.representation_type,
-            "constraints": [asdict(c) for c in constraints],
-            "invariants": [asdict(i) for i in invariants],
-            "relations": [asdict(r) for r in relations],
+            "constraints": constraints,
+            "invariants": invariants,
+            "relations": relations,
             "dimension": obj.dimension,
             "codimension": obj.codimension,
             "symmetries": list(symmetries),
-            "provenance": dict(obj.provenance),
+            "provenance": provenance,
             "valid_region": region,
         }
         identity = sha256(self._canonical(payload).encode()).hexdigest()
         return StructuralSignature(
             obj.representation_type, tuple(constraints), tuple(invariants),
             tuple(relations), obj.dimension, obj.codimension, symmetries,
-            dict(obj.provenance), region, identity,
+            provenance, region, identity,
         )
 
     @staticmethod
     def compare_invariants(
         a: StructuralSignature, b: StructuralSignature
     ) -> dict[str, Any]:
-        left = {i.name: i.value for i in a.invariants}
-        right = {i.name: i.value for i in b.invariants}
+        left = {item.name: item for item in a.invariants}
+        right = {item.name: item for item in b.invariants}
         common = sorted(set(left) & set(right))
-        matches = [name for name in common if left[name] == right[name]]
+
+        def matches_invariant(left_item: InvariantResult, right_item: InvariantResult) -> bool:
+            left_value, right_value = left_item.value, right_item.value
+            if left_item.exact or right_item.exact:
+                return left_value == right_value
+            numeric = (
+                isinstance(left_value, (int, float))
+                and not isinstance(left_value, bool)
+                and isinstance(right_value, (int, float))
+                and not isinstance(right_value, bool)
+            )
+            if not numeric:
+                return left_value == right_value
+            tolerances = [
+                value for value in (left_item.tolerance, right_item.tolerance)
+                if value is not None
+            ]
+            if not tolerances:
+                return left_value == right_value
+            return math.isclose(
+                float(left_value), float(right_value),
+                rel_tol=0.0, abs_tol=min(tolerances),
+            )
+
+        matches = [
+            name for name in common
+            if matches_invariant(left[name], right[name])
+        ]
         return {
             "common_invariants": common,
             "matching_invariants": matches,
@@ -210,12 +241,37 @@ class StructuralAnalyzer:
         }
 
     @staticmethod
+    def _freeze(value: Any) -> Any:
+        """Snapshot and recursively freeze mutable descriptor inputs."""
+        if isinstance(value, Enum):
+            return value
+        if isinstance(value, Mapping):
+            return MappingProxyType({
+                key: StructuralAnalyzer._freeze(item)
+                for key, item in value.items()
+            })
+        if isinstance(value, list):
+            return tuple(StructuralAnalyzer._freeze(item) for item in value)
+        if isinstance(value, tuple):
+            return tuple(StructuralAnalyzer._freeze(item) for item in value)
+        if isinstance(value, (set, frozenset)):
+            return frozenset(StructuralAnalyzer._freeze(item) for item in value)
+        if hasattr(value, "__dict__"):
+            return MappingProxyType({
+                key: StructuralAnalyzer._freeze(item)
+                for key, item in vars(value).items()
+            })
+        return value
+
+    @staticmethod
     def _canonical(value: Any) -> str:
         def normalize(item: Any) -> Any:
             if isinstance(item, Enum):
                 return item.value
             if isinstance(item, float):
-                return item if math.isfinite(item) else str(item)
+                if not math.isfinite(item):
+                    raise ValueError("non-finite float values are not supported in structural descriptors")
+                return item
             if isinstance(item, Mapping):
                 return {
                     str(key): normalize(val)
@@ -223,7 +279,16 @@ class StructuralAnalyzer:
                 }
             if isinstance(item, (list, tuple)):
                 return [normalize(val) for val in item]
-            if hasattr(item, "__dict__"):
+            if isinstance(item, (set, frozenset)):
+                normalized = [normalize(val) for val in item]
+                return sorted(
+                    normalized,
+                    key=lambda val: json.dumps(
+                        val, sort_keys=True, separators=(",", ":"),
+                        ensure_ascii=False,
+                    ),
+                )
+            if hasattr(item, "__dict__")
                 return normalize(vars(item))
             return item
 

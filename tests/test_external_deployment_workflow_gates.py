@@ -27,4 +27,12 @@ def test_push_triggered_external_deployments_require_manual_main_approval():
 def test_self_hosted_brain_secret_is_only_mapped_in_confirmed_deploy_step():
     content = DEPLOYMENT_WORKFLOWS[1].read_text(encoding="utf-8")
     assert "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}" in content
+    assert content.count("BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}") == 1
+    assert "persist-credentials: false" in content
+    deploy = content.split("Deploy self_hosted_brain/", 1)[1]
+    assert 'secret = os.environ.get("BRAIN_SHARED_SECRET", "")' in deploy
+    assert 'if not secret.strip():' in deploy
+    assert deploy.index("if not secret.strip():") < deploy.index("api.create_repo")
+    assert deploy.index("if not secret.strip():") < deploy.index("api.upload_folder")
+    assert deploy.index("api.upload_folder") < deploy.index('api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)')
     assert content.index("Verify explicit approval and exact main revision") < content.index("Deploy self_hosted_brain/")

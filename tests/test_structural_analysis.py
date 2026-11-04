@@ -79,3 +79,90 @@ def test_signature_json_is_serializable_and_provenance_bound():
 def test_empty_constraint_set_is_unresolved_not_valid():
     signature = StructuralAnalyzer().analyze(StructuralInput({"x": 1}, "mapping"))
     assert signature.valid_region == "unresolved"
+
+def test_complete_descriptor_records_are_used_as_deterministic_sort_tiebreakers():
+    constraints = (
+        ConstraintResult(
+            "same", "satisfied",
+            verification=VerificationStatus.VERIFIED,
+        ),
+        ConstraintResult(
+            "same", "satisfied",
+            verification=VerificationStatus.FAILED,
+        ),
+    )
+    invariants = (
+        InvariantResult("same", 1, method="method-a"),
+        InvariantResult("same", 1, method="method-b"),
+    )
+    relations = (
+        StructuralRelation("A", "B", RelationType.EQUAL, witness="witness-a"),
+        StructuralRelation("A", "B", RelationType.EQUAL, witness="witness-b"),
+    )
+    first = StructuralInput(
+        "representation", "test",
+        constraints=constraints, invariants=invariants, relations=relations,
+    )
+    second = StructuralInput(
+        "representation", "test",
+        constraints=tuple(reversed(constraints)),
+        invariants=tuple(reversed(invariants)),
+        relations=tuple(reversed(relations)),
+    )
+
+    assert StructuralAnalyzer().analyze(first).identity_hash == (
+        StructuralAnalyzer().analyze(second).identity_hash
+    )
+
+
+def test_inexact_numeric_invariants_use_declared_tolerance():
+    analyzer = StructuralAnalyzer()
+    left = analyzer.analyze(StructuralInput(
+        1, "scalar",
+        invariants=(InvariantResult("measurement", 1.0, exact=False, tolerance=0.001),),
+    ))
+    right = analyzer.analyze(StructuralInput(
+        1, "scalar",
+        invariants=(InvariantResult("measurement", 1.0005, exact=False, tolerance=0.001),),
+    ))
+
+    result = analyzer.compare_invariants(left, right)
+    assert result["matching_invariants"] == ["measurement"]
+
+
+def test_signature_snapshots_and_recursively_freezes_nested_inputs():
+    provenance = {"origin": {"labels": ["original"]}}
+    invariant_value = {"measurements": [{"value": 1}]}
+    signature = StructuralAnalyzer().analyze(StructuralInput(
+        1, "scalar",
+        provenance=provenance,
+        invariants=(InvariantResult("nested", invariant_value),),
+    ))
+    original_hash = signature.identity_hash
+
+    provenance["origin"]["labels"].append("mutated")
+    invariant_value["measurements"][0]["value"] = 99
+
+    rendered = signature.to_dict()
+    assert signature.identity_hash == original_hash
+    assert rendered["provenance"]["origin"]["labels"] == ["original"]
+    assert rendered["invariants"][0]["value"]["measurements"][0]["value"] == 1
+
+    try:
+        signature.provenance["origin"]["new"] = "blocked"
+    except TypeError:
+        pass
+    else:
+        raise AssertionError("signature provenance must be immutable")
+
+
+def test_non_finite_float_values_are_rejected_not_string_coerced():
+    for value in (float("nan"), float("inf"), float("-inf")):
+        try:
+            StructuralAnalyzer().analyze(StructuralInput(
+                1, "scalar",
+                invariants=(InvariantResult("value", value),),
+            ))
+        except ValueError:
+            continue
+        raise AssertionError("non-finite descriptor floats must be rejected")

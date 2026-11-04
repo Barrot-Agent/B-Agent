@@ -30,7 +30,9 @@
         }
       ],
       "interpretation": "These are historical local deterministic fixture/gate records, not evidence that an external XRP dataset was corroborated. They are preserved unchanged. The new validator makes the same unsupported completion claim fail closed when evaluated under the strengthened code.",
-      "ledger_sha256": "b65d4325ccc907d4f7304e9d9e0154efbb6930b7",
+      "ledger_sha256": "f7cf0096c77a6c0ced02bf1accfa58516d07ad325270776c0110d620253887e9",
+      "ledger_git_blob_sha1": "b65d4325ccc907d4f7304e9d9e0154efbb6930b7",
+      "ledger_git_blob_sha1_algorithm": "SHA-1 over Git blob framing and file content",
       "event_counts": {
         "MMI_RECEIVED": 3,
         "MMI_CORROBORATION_RECORDED": 2,

@@ -8,6 +8,7 @@ are explicit because one organization may publish from multiple domains.
 
 from __future__ import annotations
 
+import ipaddress
 from urllib.parse import urlsplit
 
 
@@ -51,6 +52,12 @@ def canonical_publisher_group(source_url: str) -> str:
         return ""
 
     if not hostname or hostname.startswith(".") or ".." in hostname:
+        return ""
+    try:
+        ipaddress.ip_address(hostname)
+    except ValueError:
+        pass
+    else:
         return ""
 
     for domain, publisher in PUBLISHER_DOMAIN_ALIASES.items():

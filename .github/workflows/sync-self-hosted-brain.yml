@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Verify explicit approval and exact main revision
         env:
           CONFIRM: ${{ inputs.confirm }}
@@ -46,7 +48,13 @@ jobs:
           python3 - << 'SCRIPT'
           from huggingface_hub import HfApi
           import os
-          api = HfApi(token=os.environ["HF_TOKEN"])
+          secret = os.environ.get("BRAIN_SHARED_SECRET", "")
+          token = os.environ.get("HF_TOKEN", "")
+          if not secret.strip():
+              raise SystemExit("ABORT: BRAIN_SHARED_SECRET is required before deployment")
+          if not token.strip():
+              raise SystemExit("ABORT: HF_TOKEN is required before deployment")
+          api = HfApi(token=token)
           repo_id = "Scribedpengenius/Barrot-Brain-SelfHosted"
           try:
               api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
@@ -58,9 +66,7 @@ jobs:
               repo_type="space",
               commit_message="Deploy self-hosted brain",
           )
-          secret = os.environ.get("BRAIN_SHARED_SECRET", "")
-          if secret:
-              api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
-              print("shared secret propagated")
+          api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
+          print("shared secret propagated")
           print("DEPLOYED")
           SCRIPT

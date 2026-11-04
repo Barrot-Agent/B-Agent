@@ -116,9 +116,27 @@ jobs:
           git fetch --no-tags --depth=1 origin main
           current_main="$(git rev-parse FETCH_HEAD)"
           [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" && "$current_main" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::main advanced after simulation; refusing state write"; exit 1; }
-          changed="$(git status --porcelain | awk '{print $2}' | sort)"
-          expected="$(printf '%s\n' web/paper_trading_log.jsonl web/paper_trading_state.json | sort)"
-          [[ "$changed" == "$expected" ]] || { echo "::error::artifact contains unexpected paths"; exit 1; }
+          python3 - <<'PY'
+          import subprocess
+          allowed = {"web/paper_trading_state.json", "web/paper_trading_log.jsonl"}
+          raw = subprocess.check_output(
+              ["git", "status", "--porcelain=v1", "-z", "--untracked-files=all"]
+          )
+          entries = raw.decode("utf-8").split("\0")
+          changed = set()
+          for entry in entries:
+              if not entry:
+                  continue
+              if len(entry) < 4:
+                  raise SystemExit("ABORT: malformed git status entry")
+              status, path = entry[:2], entry[3:]
+              if "R" in status or "C" in status:
+                  raise SystemExit("ABORT: rename/copy status is not allowed")
+              if path not in allowed:
+                  raise SystemExit(f"ABORT: unexpected changed path: {path}")
+              changed.add(path)
+          print("Validated paper-state paths:", ", ".join(sorted(changed)) or "no changes")
+          PY
           python3 - <<'PY'
           import json
           import math
@@ -150,5 +168,6 @@ jobs:
           git config user.name "Barrot-Agent"
           git add -- web/paper_trading_state.json web/paper_trading_log.jsonl
           if git diff --cached --quiet; then echo "No paper-state changes to persist"; exit 0; fi
+          git commit -m "Persist validated paper-trading state"
           gh auth setup-git
           git push origin HEAD:main
