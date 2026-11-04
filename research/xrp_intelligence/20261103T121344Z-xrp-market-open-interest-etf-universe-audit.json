@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-market-open-interest-etf-universe-audit-20261103",
+  "created_at_utc": "2026-11-03T12:13:44Z",
+  "data_cutoff_utc": "2026-11-03T12:13:44Z",
+  "status": {
+    "research": "EXECUTED",
+    "source_retrieval": "VERIFIED",
+    "forecast": "NOT_ISSUED",
+    "predictive_validation": "NOT_ESTABLISHED"
+  },
+  "claims": [
+    {
+      "id": "MKT-001",
+      "class": "SOURCED_MARKET_SNAPSHOT",
+      "claim": "TotalMarketCap/CoinGecko reports XRP market capitalization $79.181B, price about $1.25, circulating supply 63.351B, 24h -0.33%, 7d -3.99%, 30d -16.14%, and ATH $3.65 on July 17 2025.",
+      "observed_at_utc": "2026-11-03T03:17:00Z",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Aggregator snapshot; not a direct exchange tick.",
+        "Price/market cap values are timestamped, not current at artifact creation."
+      ]
+    },
+    {
+      "id": "MKT-002",
+      "class": "SOURCED_DERIVATIVES_SNAPSHOT",
+      "claim": "TradRadar reports $1.96B XRP open interest across seven exchanges, +1.89% 24h, weighted funding +0.0064% per eight hours, at least $2.49M 24h liquidations (about $2.30M longs), and long/short account ratio 3.46.",
+      "observed_at_utc": "2026-11-03T04:05:00Z",
+      "source_ids": [
+        "S2"
+      ],
+      "limitations": [
+        "15-minute display delay stated by provider.",
+        "Five-exchange liquidation/ratio coverage differs from seven-exchange OI coverage.",
+        "Account ratio is not notional positioning."
+      ]
+    },
+    {
+      "id": "MKT-003",
+      "class": "SOURCED_DERIVATIVES_SNAPSHOT",
+      "claim": "Kodexius reports $834.52M OI across seven linear perpetual contracts on five exchanges, weighted funding +0.0072%/8h and 24h volume $1.11B.",
+      "observed_at_utc": "2026-11-03T06:04:00Z",
+      "source_ids": [
+        "S3"
+      ],
+      "limitations": [
+        "Contract and venue universe differs from TradRadar and Loris.",
+        "Seven contracts are not a complete derivatives market census."
+      ]
+    },
+    {
+      "id": "MKT-004",
+      "class": "SOURCED_DERIVATIVES_SNAPSHOT",
+      "claim": "Loris Tools reports $2.24B OI and $1.78B 24h volume across 39 venues; 8h-normalized funding ranges from -1.40 bps to +8.00 bps across 38 reporting venues.",
+      "observed_at_utc": "2026-11-03T07:20:00Z",
+      "source_ids": [
+        "S4"
+      ],
+      "limitations": [
+        "Broad aggregator coverage; instrument and venue mapping requires validation.",
+        "Not directly comparable to seven-exchange provider totals."
+      ]
+    },
+    {
+      "id": "MKT-005",
+      "class": "SOURCED_DERIVATIVES_SNAPSHOT",
+      "claim": "Swiftedge reports approximately $212M OI on on-chain XRP perpetual venues, about 169.0M XRP, with Hyperliquid approximately 99% and Lighter 1%; OI +5.5% over 24h while price -0.2%.",
+      "observed_at_utc": "2026-11-03T04:38:00Z",
+      "source_ids": [
+        "S5"
+      ],
+      "limitations": [
+        "Subset of on-chain venues, not global XRP derivatives OI.",
+        "Provider timestamp describes 04:38 UTC despite a confusing local-time label."
+      ]
+    },
+    {
+      "id": "MKT-006",
+      "class": "INFERENCE_FROM_COVERAGE",
+      "claim": "The OI range $834.52M–$2.24B is not a demonstrated contradiction in one synchronized metric; provider universe, contract coverage, timestamp and methodology differ.",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "limitations": [
+        "A common contract-level normalized reconciliation is still required."
+      ]
+    },
+    {
+      "id": "ETF-001",
+      "class": "SOURCED_HOLDINGS_SNAPSHOT",
+      "claim": "CryptoETF reports 1,142,172,991 XRP across its five-fund US spot ETF universe as of November 2; it reports 1.80% of total XRP held by those ETFs.",
+      "observed_at_utc": "2026-11-02",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "Five-fund universe; not six spot funds plus BITW.",
+        "Holdings are not net creations/redemptions or direct market purchases."
+      ]
+    },
+    {
+      "id": "ETF-002",
+      "class": "SOURCED_HOLDINGS_SNAPSHOT",
+      "claim": "XRP Insights reports approximately 1.20B XRP across six US spot ETFs plus BITW; the individual issuer holdings dates vary from September 28 to November 2.",
+      "observed_at_utc": "2026-11-03",
+      "source_ids": [
+        "S7"
+      ],
+      "limitations": [
+        "Mixed per-fund observation dates.",
+        "Its Nov 2 flow row is provisional until re-settled."
+      ]
+    },
+    {
+      "id": "ETF-003",
+      "class": "RECONCILED_UNIVERSE_DIFFERENCE",
+      "claim": "The roughly 54.4M XRP difference between the two reported holdings universes is approximately explained by XRPR (33.39M) plus BITW (20.92M) included in XRP Insights but not in CryptoETF's five-fund total; remaining small residual is consistent with cross-date and rounding differences.",
+      "source_ids": [
+        "S6",
+        "S7"
+      ],
+      "limitations": [
+        "Near-reconciliation, not exact same-date issuer-by-issuer reconciliation."
+      ]
+    },
+    {
+      "id": "ETF-004",
+      "class": "SOURCED_FLOW_OBSERVATION",
+      "claim": "TradingDigits reports October 30 aggregate flow of -$0.49M across its five-fund table and October 29 +$8.43M; October 26 shows -$3.61M.",
+      "observed_at_utc": "2026-11-03T00:43:34Z",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "Secondary aggregator; five-fund universe.",
+        "Must be reconciled to official issuer holdings and share creations/redemptions."
+      ]
+    },
+    {
+      "id": "SUP-001",
+      "class": "SOURCED_ONCHAIN_AGGREGATION",
+      "claim": "XRP Insights reports 31.10B XRP in Ripple-owned escrow objects as of ledger 108073992 (Nov 2 20:20 UTC), with 1B scheduled for Dec 1 and approximately 70% re-locked over the preceding 12 months.",
+      "observed_at_utc": "2026-11-02T20:20:00Z",
+      "source_ids": [
+        "S7"
+      ],
+      "limitations": [
+        "Provider reads XRPL escrow objects; third-party aggregation.",
+        "Monthly unlock is not equivalent to sale or net market supply."
+      ]
+    },
+    {
+      "id": "SUP-002",
+      "class": "SOURCED_HISTORICAL_VOLUME",
+      "claim": "CoinGecko's historical table reports Oct 31 XRP volume $3.160B, Oct 30 $2.709B, Oct 29 $1.846B, Oct 28 $1.427B, and Oct 27 $1.375B; Nov 2 volume $808.8M with close not yet available in the captured table.",
+      "observed_at_utc": "2026-11-03T03:17:00Z",
+      "source_ids": [
+        "S9"
+      ],
+      "limitations": [
+        "Aggregated spot market volume; exchange wash trading and venue coverage are not independently audited."
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-OI-1",
+      "statement": "The provider OI discrepancy is mainly a coverage/methodology artifact.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "Loris covers 39 venues; TradRadar seven exchanges; Kodexius seven contracts on five exchanges; Swiftedge on-chain venues only."
+      ],
+      "disconfirming_test": "Match venue, contract, unit, timestamp and open-interest definition across raw exchange APIs; residual mismatch would indicate source error or stale data."
+    },
+    {
+      "id": "H-OI-2",
+      "statement": "Rising OI with mildly negative spot returns and positive aggregate funding could indicate increasing long-side crowding.",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "support": [
+        "TradRadar +1.89% OI 24h, +0.0064%/8h funding, 3.46 account ratio; Swiftedge +5.5% OI while price -0.2%."
+      ],
+      "disconfirming_evidence": [
+        "Funding differs by venue; Bybit is negative in Kodexius while others positive.",
+        "Account counts are not notional exposure.",
+        "Hedged basis and market-maker inventory can raise OI without directional long bets."
+      ]
+    },
+    {
+      "id": "H-OI-3",
+      "statement": "The $212M on-chain perp OI is a meaningful but limited subset of global XRP derivatives risk.",
+      "status": "SUPPORTED_BY_SCOPE",
+      "support": [
+        "Swiftedge explicitly tracks Hyperliquid and Lighter only."
+      ],
+      "disconfirming_test": "Reconcile all on-chain perp venues and avoid summing overlapping aggregators."
+    },
+    {
+      "id": "H-ETF-1",
+      "statement": "The ETF holdings discrepancy is largely explained by different product universes, not necessarily bad data.",
+      "status": "SUPPORTED_INTERPRETATION",
+      "support": [
+        "Five-fund CryptoETF universe vs six spot ETFs plus BITW at XRP Insights; XRPR+BITW approximate the difference."
+      ],
+      "disconfirming_test": "Compare same-date issuer-reported holdings for every product and preserve fund-of-fund exposure."
+    }
+  ],
+  "feature_store_rules": [
+    "Store OI per exchange, instrument, contract type, settlement currency, base units, USD conversion, source timestamp and provider coverage.",
+    "Never average provider totals until the same contract universe and timestamp are reconciled.",
+    "Keep account long/short ratios, notional long/short exposure, funding and liquidations as separate fields.",
+    "Store on-chain perp OI as a subset, not as a competing global total.",
+    "Store ETF holdings by product and issuer observation date; store flows separately from holdings changes and creations/redemptions.",
+    "Treat ETF fund-of-fund holdings separately to prevent double-counting underlying XRP exposure.",
+    "Store Ripple escrow releases, re-escrows and net escrow change separately; do not equate unlocks with market sales."
+  ],
+  "prediction": {
+    "status": "NOT_ISSUED",
+    "reason": "Provider disagreement, non-synchronized snapshots and unresolved positioning composition do not support a calibrated directional forecast."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "TotalMarketCap / CoinGecko",
+      "url": "https://totalmarketcap.com/crypto/xrp-xrp",
+      "type": "secondary_market_aggregation",
+      "observed_at_utc": "2026-11-03T03:17:00Z"
+    },
+    {
+      "id": "S2",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "type": "secondary_derivatives_aggregation",
+      "observed_at_utc": "2026-11-03T04:05:00Z"
+    },
+    {
+      "id": "S3",
+      "publisher": "Kodexius",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "type": "secondary_derivatives_aggregation",
+      "observed_at_utc": "2026-11-03T06:04:00Z"
+    },
+    {
+      "id": "S4",
+      "publisher": "Loris Tools",
+      "url": "https://loris.tools/markets/perps/xrp",
+      "type": "secondary_derivatives_aggregation",
+      "observed_at_utc": "2026-11-03T07:20:00Z"
+    },
+    {
+      "id": "S5",
+      "publisher": "Swiftedge",
+      "url": "https://swiftedge.uk/xrp/open-interest",
+      "type": "onchain_perps_subset",
+      "observed_at_utc": "2026-11-03T04:38:00Z"
+    },
+    {
+      "id": "S6",
+      "publisher": "CryptoETF",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "type": "secondary_etf_holdings_aggregation",
+      "observed_at": "2026-11-02"
+    },
+    {
+      "id": "S7",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/data",
+      "type": "issuer-holdings-derived_etf_and_onchain_aggregation",
+      "retrieved_at_utc": "2026-11-03T12:13:44Z"
+    },
+    {
+      "id": "S8",
+      "publisher": "TradingDigits",
+      "url": "https://www.tradingdigits.io/ar/xrp-etf-inflows-tracker",
+      "type": "secondary_etf_flow_aggregation",
+      "observed_at_utc": "2026-11-03T00:43:34Z"
+    },
+    {
+      "id": "S9",
+      "publisher": "CoinGecko",
+      "url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+      "type": "historical_market_aggregation",
+      "observed_at_utc": "2026-11-03T03:17:00Z"
+    }
+  ],
+  "next_actions": [
+    "Capture Circle Q3 results at the scheduled November 4, 2026 13:00 UTC event and reconcile USDC distribution economics.",
+    "Verify fixCleanup3_4_0 actual activation via validated EnableAmendment transaction and following ledger.",
+    "Reconcile OI contract-by-contract using exchange-native APIs and a synchronized cutoff.",
+    "Reconcile same-date ETF holdings by issuer, including XRPR and BITW fund-of-fund exposure.",
+    "Continue fixed-horizon walk-forward evaluation; no forecast until data-quality, leakage, baseline and calibration gates pass."
+  ]
+}
