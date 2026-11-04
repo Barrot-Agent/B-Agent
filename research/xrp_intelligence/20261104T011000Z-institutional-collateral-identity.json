@@ -562,6 +562,20 @@
       "publisher": "BitDegree",
       "type": "third-party exchange listing",
       "independence": "secondary exchange directory; labels exchange inactive and untracked"
+    },
+    {
+      "id": "xrpldashboard_home",
+      "url": "https://xrpldashboard.com/",
+      "publisher": "xrpldashboard",
+      "type": "public XRPL on-chain dashboard with stated own-node methodology",
+      "independence": "independent analytics implementation; methodology self-described"
+    },
+    {
+      "id": "sologenic_rlusd_asset_index",
+      "url": "https://sologenic.org/market-index/524C555344000000000000000000000000000000%2BrMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "publisher": "Sologenic",
+      "type": "XRPL token market-index page",
+      "independence": "third-party index; displayed supply scope and exact underlying ledger timestamp not specified"
     }
   ],
   "market_snapshot": {
@@ -588,6 +602,52 @@
       "Snapshot is approximately nine hours old at the artifact cutoff.",
       "Resting walls can be cancelled and are not committed demand/supply.",
       "Not a directional signal."
+    ],
+    "onchain_observations": [
+      {
+        "provider": "xrpldashboard",
+        "retrieved_at_utc": "2026-11-04T02:10:41Z",
+        "latest_ledger": 108098286,
+        "latest_ledger_close_observed_at_utc": "2026-11-03T23:36:28Z",
+        "reported_close_interval_seconds": 4.1,
+        "secondary_panel_as_of_ledger": 108079173,
+        "secondary_panel_as_of_utc": "2026-11-03T11:50:00Z",
+        "reported_rlusd_supply_change_24h_usd": 140600000,
+        "reported_rlusd_supply_change_24h_pct": 19.75,
+        "reported_amm_tvl_change_usd": -49000,
+        "reported_amm_tvl_change_pct": -0.14,
+        "reported_mpt_change": -3,
+        "limitations": [
+          "The page's latest-ledger preview and its 'What's new' panel have different as-of ledger/time values; do not treat them as one synchronized snapshot.",
+          "The reported supply change is provider-derived; issuer-level obligations and same-ledger balances were not independently reconstructed."
+        ]
+      },
+      {
+        "provider": "Sologenic",
+        "retrieved_at_utc": "2026-11-04T02:10:41Z",
+        "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+        "currency_hex": "524C555344000000000000000000000000000000",
+        "displayed_total_supply": 1030304053.541164,
+        "displayed_market_cap_usd": 1027452043.13,
+        "displayed_holders": 67215,
+        "displayed_trustlines": 100209,
+        "source_timestamp": "not disclosed",
+        "limitations": [
+          "The page's displayed supply scope is not explicit and its underlying ledger timestamp is not disclosed.",
+          "Holder/trustline counts are similar to XRPL.to while displayed supply differs materially; do not assume the supply fields have identical scope or freshness."
+        ]
+      },
+      {
+        "provider": "XRPL.to",
+        "observed_at_utc": "2026-11-04T01:20:00Z approx",
+        "displayed_rlusd_supply": 855300000,
+        "displayed_holders": 67960,
+        "displayed_trustlines": 101818,
+        "limitations": [
+          "Hourly tracker; exact ledger index and timestamp were not displayed in the reviewed snapshot.",
+          "Provider methodology differs from Sologenic and xrpldashboard."
+        ]
+      }
     ]
   },
   "observations": [
@@ -1033,6 +1093,16 @@
         "askcoin_exchange_cmc",
         "askcoin_exchange_bitdegree"
       ]
+    },
+    {
+      "id": "RLUSD-XRPL-supply-nov4-provider-disagreement",
+      "class": "non_synchronous_provider_snapshot_disagreement",
+      "detail": "A new xrpldashboard snapshot reports +$140.6M (+19.75%) RLUSD supply over 24h in a panel as of ledger 108079173 / 2026-11-03 11:50 UTC, while its homepage preview shows latest ledger 108098286 / 2026-11-03 23:36:28 UTC. XRPL.to around 2026-11-04 01:20 UTC displayed approximately $855.3M RLUSD, 67,960 holders and 101,818 trustlines. Sologenic's RLUSD index, retrieved 2026-11-04 02:10 UTC but without a disclosed underlying ledger timestamp or supply scope, displayed 1.0303B RLUSD, 67,215 holders and 100,209 trustlines. Holder/trustline counts are similar while displayed supply differs materially. This may reflect stale data, scope differences or indexing errors; it is not a verified $175M mint or net capital inflow. Same-ledger issuer balance reconciliation is required.",
+      "evidence": [
+        "xrpldashboard_home",
+        "sologenic_rlusd_asset_index",
+        "xrplto_rlusd_tracker"
+      ]
     }
   ],
   "relationship_graph": [
@@ -1422,6 +1492,24 @@
         "askcoin_exchange_cmc",
         "askcoin_exchange_bitdegree"
       ]
+    },
+    {
+      "from": "xrpldashboard",
+      "to": "RLUSD on XRPL",
+      "relation": "reports 24h supply-change and AMM activity metrics",
+      "status": "provider observation with panel timestamp mismatch",
+      "evidence": [
+        "xrpldashboard_home"
+      ]
+    },
+    {
+      "from": "Sologenic",
+      "to": "RLUSD issuer/currency on XRPL",
+      "relation": "indexes asset supply, holders and trustlines",
+      "status": "third-party index; supply scope/timestamp unresolved",
+      "evidence": [
+        "sologenic_rlusd_asset_index"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -1430,11 +1518,13 @@
       "claim": "USDC/RLUSD availability on XRPL increases network utility and liquidity, while XRP remains useful in some bridge or market-making paths.",
       "support": [
         "Circle native USDC on XRPL",
-        "Coinbase RLUSD XRPL deposits/withdrawals"
+        "Coinbase RLUSD XRPL deposits/withdrawals",
+        "xrpldashboard panel reports a 24h RLUSD supply increase of $140.6M (+19.75%), but the panel's as-of time differs from the homepage latest-ledger preview and is not independently reconciled."
       ],
       "disconfirming_or_missing": [
         "No route-level proof that XRP is used in these stablecoin transfers",
-        "No XRP-specific incremental buy/hold demand disclosed"
+        "No XRP-specific incremental buy/hold demand disclosed",
+        "Sologenic, XRPL.to and xrpldashboard show non-synchronous or differently scoped supply observations; no same-ledger issuer-obligation reconstruction confirms the magnitude."
       ],
       "tests": [
         "Measure XRPL USDC transfer routes and counterparties",
