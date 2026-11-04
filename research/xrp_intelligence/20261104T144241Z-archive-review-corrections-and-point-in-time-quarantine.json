@@ -617,11 +617,11 @@
             "target_field": "$.bank_charter_status.coinbase.sources[1]"
           },
           {
-            "source_id": "ripple_rntb_final_approval",
             "old_url": "https://ripple.com/ripple-press/2026/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
             "canonical_url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
             "reason": "Retained as an unlinked candidate URL; the original target artifact instead contains the BusinessWire URL, which is handled by the separate target-bearing replacement.",
-            "target_field_status": "candidate_url_not_present_in_original_target_artifact"
+            "target_field_status": "candidate_url_not_present_in_original_target_artifact",
+            "candidate_id": "ripple_rntb_press_slug_candidate"
           },
           {
             "source_id": "ripple_coinbase_rlusd",
@@ -667,11 +667,11 @@
             "target_field": "$.bank_charter_status.ripple.sources[1]"
           },
           {
-            "source_id": "ripple_occ_cas_correct",
             "old_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/",
             "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
             "reason": "Retained as an unlinked generic OCC index candidate; the original target artifact contains the CAAS_CATS URL, handled by the separate target-bearing replacement.",
-            "target_field_status": "candidate_url_not_present_in_original_target_artifact"
+            "target_field_status": "candidate_url_not_present_in_original_target_artifact",
+            "candidate_id": "occ_generic_interpretations_index_candidate"
           },
           {
             "source_id": "coinbase_occ_decision_1370",
@@ -1296,11 +1296,11 @@
     "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "97b9a458a5571dd45038deff8b30d6441a9eeca8",
+    "prior_blob_sha": "88fecf90f8c987da483a66be04d5da0e5213896d",
     "prior_captured_at_utc": "2026-11-04T15:25:33Z",
-    "revised_at_utc": "2026-11-04T16:11:06Z",
-    "revision_reason": "Corrected two C01 candidate URL entries that did not match the original target artifact, removed their target pointers, and added generic exact-preimage regression coverage for every target-bearing replacement. Original research artifacts and source receipts remain unchanged.",
-    "revision_status": "append_only_c01_target_preimage_crosswalk_and_test_correction",
+    "revised_at_utc": "2026-11-04T17:00:35Z",
+    "revision_reason": "Removed duplicate evidence source IDs from two explicitly unlinked candidate URL rows. The candidates now use candidate_id rather than reusing the source IDs of the separate, target-bearing Ripple records. Expanded the regression test to assert candidate/target separation and verify all target preimages, including Ripple final approval. No original source artifact or raw receipt was changed.",
+    "revision_status": "append_only_candidate_id_deduplication_and_complete_target_preimage_test",
     "source_registry_unchanged": true
   },
   "artifact_revision_history": [
@@ -1359,6 +1359,14 @@
       "revision_reason": "Appended a primary-source cross-filing reconciliation of Evernorth's closing Form 8-K and later October 30 prospectus ownership tables. Preserved both dated share-class snapshots, separated class percentages from total voting power, and left the 546,621-share class allocation change unexplained rather than inferring a conversion or purchase.",
       "revision_status": "append_only_sbi_share_class_cross_filing_reconciliation",
       "source_registry_unchanged": false
+    },
+    {
+      "prior_blob_sha": "97b9a458a5571dd45038deff8b30d6441a9eeca8",
+      "prior_captured_at_utc": "2026-11-04T15:25:33Z",
+      "revised_at_utc": "2026-11-04T16:11:06Z",
+      "revision_reason": "Corrected two C01 candidate URL entries that did not match the original target artifact, removed their target pointers, and added generic exact-preimage regression coverage for every target-bearing replacement. Original research artifacts and source receipts remain unchanged.",
+      "revision_status": "append_only_c01_target_preimage_crosswalk_and_test_correction",
+      "source_registry_unchanged": true
     }
   ]
 }
