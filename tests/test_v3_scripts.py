@@ -418,18 +418,18 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert ("push", "origin", "HEAD:main") not in git_in_calls
 
 
-def test_self_upgrade_workflow_requires_approval_and_restores_main() -> None:
+def test_self_upgrade_workflow_has_no_active_execution_path_until_dedup_is_verified() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
-    assert 'ref: ${{ github.ref_name }}' in workflow
-    assert "confirm_external_change" in workflow
-    assert "inputs.confirm_external_change == 'YES'" in workflow
-    assert "github.ref == 'refs/heads/main'" in workflow
-    assert "python3 scripts/barrot_self_upgrade.py" in workflow
-    assert "--persist-audit-report" not in workflow
-    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' not in workflow
-    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' not in workflow
-    assert "git checkout main" not in workflow
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "issues:" not in workflow
+    assert "schedule:" not in workflow
+    assert "push:" not in workflow
+    assert "contents: write" not in workflow
+    assert "pull-requests: write" not in workflow
+    assert "scripts/barrot_self_upgrade.py" not in workflow
 
 
 def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
