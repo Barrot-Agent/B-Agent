@@ -704,3 +704,24 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_high_risk_automated_writers_are_quarantined_until_reviewed() -> None:
+    workflow_paths = (
+        REPO_ROOT / ".github" / "workflows" / "check-signal-accuracy.yml",
+        REPO_ROOT / ".github" / "workflows" / "cross-analysis.yml",
+        REPO_ROOT / ".github" / "workflows" / "autonomous_self_deployment.yml",
+        REPO_ROOT / ".github" / "workflows" / "Barrot.Cognitive.PingPong.Engine.yml",
+        REPO_ROOT / ".github" / "workflows" / "barrot-autonomous-resolver.yml",
+    )
+    for path in workflow_paths:
+        content = path.read_text(encoding="utf-8")
+        assert "workflow_dispatch:" in content
+        assert "permissions: {}" in content
+        assert "if: \${{ false }}" in content
+        assert "schedule:" not in content
+        assert "workflow_run:" not in content
+        assert "push:" not in content
+        assert "uses:" not in content
+        assert "secrets." not in content
+        assert "git push" not in content
