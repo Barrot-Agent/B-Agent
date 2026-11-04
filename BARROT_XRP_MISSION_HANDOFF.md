@@ -1975,3 +1975,49 @@ Main has already received the #1635/#1639 containment. The residual high-risk wo
 5. Keep the research pipeline's cross-run archive, independent timestamp/signature anchor, research-overlay runtime admission, complete historical datasets and calibrated walk-forward evidence as explicit blockers. No directional forecast until those gates pass.
 
 This section supersedes Run 20's provisional security-source classification where they conflict. All branch and CI states above are verified at the stated exact SHAs; no completion is inferred from a plan or a different head.
+
+
+## Run 22 — XRP primary mission wired into Barrot's learning curriculum (2026-11-04T22:31Z)
+
+### Mission priority — EXECUTED on #1640, not yet on main
+
+The previous handoff documented XRP as the strategic priority but the code audit found that `LearningCurriculum.next_goal()` still selected generic repository topics. This run closes that implementation gap on the existing #1640 integration branch; no new branch or PR was created.
+
+- Added `data/missions/primary_mission.json` with mission id `xrp_intelligence_prediction_engine`, status `active`, top-level priority **1** (the highest), and seven ordered workstreams: source provenance, public-data ingestion, institutional/ecosystem verification, durable point-in-time storage, leakage-safe walk-forward baselines, calibration/drift/shadow evaluation, and forecast/outcome ledger.
+- Added `barrot_agent/orchestration/mission_registry.py`. It loads and validates the manifest, rejects missing/invalid priority, requires Barrot V3 to remain preserved, requires forecast and real-money guardrails, validates unique workstream priorities, and returns the highest-priority incomplete mission goal. After the initial workstreams are verified, it continues with a mission-review goal rather than falling back to generic learning.
+- Updated `LearningCurriculum.next_goal()` to ask the mission registry before its previous generic curriculum.
+- Exported the registry from `barrot_agent/orchestration/__init__.py`.
+- Verified the runtime path: `BarrotActionLoop.run_next_learning_goal()` calls `LearningCurriculum.next_goal()`; the primary XRP mission therefore preempts generic learning goals whenever this Barrot learning loop is invoked.
+- Added `tests/test_xrp_mission_priority.py`: primary mission preemption, advancement after a verified lesson, continuous mission review, paused-mission fallback, and fail-closed safety-manifest validation.
+- Barrot V3 remains the preserved execution, orchestration, safety and verification foundation. The mission manifest explicitly prohibits unapproved deployments, external publication, secret operations, real-money actions and forecast issuance before the evidence gates pass.
+
+**Execution limitation:** this config is on #1640 only; current main does not yet contain it. No Barrot learning daemon was started. No GitHub Actions workflow schedules `scripts/barrot_learning_daemon.py` in the current tree. The mission selector is wired into the learning loop, but unattended execution has not been activated.
+
+**Separate publishing defect discovered:** `scripts/barrot_learning_daemon.py` calls `ValidatedPublisher.publish(message=...)` without the required explicit `paths` argument. The exception is caught by the daemon loop, so local learning can be recorded but the publishing step fails; no GitHub or GitLab push occurred. Do not start or authorize automatic publishing until a separate explicit path-validation and approval flow is implemented. This defect was not changed in this run.
+
+### Exact-head verification — #1640 code head `0b073a117f5b927caf02e343a3291b7fac35bdfe`
+
+- [CI run 41925423322](https://github.com/Barrot-Agent/B-Agent/actions/runs/41925423322): core suite **581 passed + 8 subtests**; full repository suite **857 passed + 8 subtests**; inclusive `barrot_agent` coverage **53.01%**, above the 50% floor.
+- [Dependency audit 41925423320](https://github.com/Barrot-Agent/B-Agent/actions/runs/41925423320): all five manifests passed; no known vulnerabilities reported.
+- [Fail-closed gate 41925423308](https://github.com/Barrot-Agent/B-Agent/actions/runs/41925423308): succeeded while explicitly keeping automatic merge disabled.
+- The five new mission-priority regression tests are included in the full repository run; the exact head completed successfully.
+- This section is an append-only documentation update. The resulting handoff commit becomes a new branch head and must itself receive exact-head CI before any merge decision.
+
+### Current state and blockers
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- #1640 code head above is non-draft and GitHub-reported mergeable, 96 commits ahead, 0 behind, 71 changed files.
+- #1643 remains at `d779f8944eb5e417955af05e779838c082bcd63a`; its exact-head CI passed **490 core + 8 subtests** and **791 full-suite + 8 subtests**. Its new Kraken ticker artifact is descriptive only and model-ineligible.
+- #1640 has 22/22 resolved review threads; #1643 has 14/14. Both have zero approving reviews.
+- The repository ruleset remains disabled and classic branch-protection inspection remains HTTP 403. Main's previous push successfully triggered GitHub Pages deployment 41799855489; another merge would trigger an unapproved deployment. Neither PR is merge-authorized.
+- Exact duplicate source PRs #1617, #1609 and #1613 are closed with cross-references to merged #1635/#1639. #1615 remains open for its unique operations audit/handoff documents. No other stale or unique research PRs were bulk-closed.
+
+### Next concrete actions
+
+1. Revalidate exact-head CI on the documentation commit produced by this append.
+2. Obtain independent approvals and branch-protection verification for #1640 and #1643; resolve Pages deployment authorization before merging.
+3. If #1640 merges first, fetch main and reconcile #1643 without force-pushing, then rerun all checks on the reconciled head.
+4. Keep the learning daemon stopped until its publishing signature/path defect is corrected and any external push is explicitly authorized.
+5. After the mission manifest reaches main, verify the runtime learning loop selects `xrp_source_provenance` first; then continue the data-integrity and historical-ingestion workstreams. Do not issue a forecast until the out-of-sample, calibration, drift and shadow gates pass.
+
+This run implements the primary mission selector on the integration branch; it does not claim that the mission is live on main or that Barrot's daemon is running.
