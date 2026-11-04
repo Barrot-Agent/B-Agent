@@ -71,7 +71,7 @@ jobs:
 
       - name: Checkout the validated commit
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ steps.validate.outputs.validated_sha }}
           persist-credentials: false
