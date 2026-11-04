@@ -117,7 +117,7 @@ def test_coinbase_xpm_dash_is_null_not_zero():
     data = load_artifact()
     entry = correction(data, "C04_COINBASE_XPM_DASH_NOT_ZERO")
     fields = {item["path"]: item for item in entry["field_corrections"]}
-    xpm = fields["$.product_scope_matrix[0].haircut_cross_portfolio_margin_pct"]
+    xpm = fields["$.product_scope_matrix[1].haircut_cross_portfolio_margin_pct"]
     assert xpm["canonical_value"] is None
     assert xpm["displayed_source_cell"] == "—"
     assert "15%" in fields["$.relationships[3].notes"]["canonical_value"]
