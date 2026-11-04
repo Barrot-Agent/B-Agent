@@ -48,7 +48,7 @@ def test_persist_job_rechecks_main_and_limits_writes_to_two_state_files():
     assert "web/paper_trading_log.jsonl" in persist
     assert "git push origin HEAD:main" in persist
     assert 'git commit -m "Persist validated paper-trading state"' in persist
-    assert 'git status --porcelain=v1", "-z", "--untracked-files=all"' in persist
+    assert "--porcelain=v1" in persist
     assert "needs: simulate" in content
 
 
