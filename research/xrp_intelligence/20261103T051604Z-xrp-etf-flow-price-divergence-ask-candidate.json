@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-etf-flow-price-divergence-and-ask-candidate-20261103T051604Z",
+  "captured_at_utc": "2026-11-03T05:16:04Z",
+  "data_cutoff": {
+    "etf_flows": "2026-10-30",
+    "etf_article_published": "2026-11-02T16:57:00Z",
+    "ask_market_snapshot": "2026-11-03T05:15:00Z",
+    "permission_docs_retrieved": "2026-11-03T05:16:04Z"
+  },
+  "claims": [
+    {
+      "id": "E01",
+      "classification": "reported",
+      "claim": "U.S. spot XRP ETFs recorded approximately $1.81B cumulative net inflows from launch through October 30, 2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Secondary article attributes the figure to SoSoValue; raw SoSoValue daily dataset was not independently downloaded in this run."
+      ]
+    },
+    {
+      "id": "E02",
+      "classification": "reported",
+      "claim": "The same report states total ETF net assets were approximately $1.42B on October 30, down from a reported peak around $1.70B on October 6.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "AUM is a mark-to-market stock; it is not equivalent to cumulative subscriptions or redemptions."
+      ]
+    },
+    {
+      "id": "E03",
+      "classification": "reported",
+      "claim": "The article reports XRP closed at $2.32 on the November 13, 2025 ETF launch day and traded around $1.25 by November 2, 2026, a 46.1% decline.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Secondary-source price points; exchange-specific closing conventions were not independently reconciled."
+      ]
+    },
+    {
+      "id": "E04",
+      "classification": "reported",
+      "claim": "The week leading to October 30 had approximately $4.3M net XRP ETF inflows; October 29 was about +$8.4M and October 26 about -$3.6M.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Secondary source citing SoSoValue."
+      ]
+    },
+    {
+      "id": "E05",
+      "classification": "reported",
+      "claim": "For the same week, the article reports Bitcoin ETF outflows of $203M, Ethereum outflows of $432M and Solana outflows of $72M, while XRP ETFs were the only major spot crypto ETF group with positive weekly flows.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Provider definitions and session windows must be reconciled before cross-asset event-study use."
+      ]
+    },
+    {
+      "id": "E06",
+      "classification": "inference",
+      "claim": "Positive cumulative XRP ETF net flows did not guarantee XRP price appreciation over the reported period; price fell materially despite net inflows.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Temporal coexistence is not proof that ETF buying had zero positive price impact or that flows caused the decline."
+      ]
+    },
+    {
+      "id": "E07",
+      "classification": "inference",
+      "claim": "The decline in ETF AUM from $1.70B to $1.42B cannot be treated as $280M of investor redemptions without separating mark-to-market losses, creations, redemptions and fees.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Requires daily shares outstanding, XRP units held and fund-level flow series."
+      ]
+    },
+    {
+      "id": "E08",
+      "classification": "confirmed",
+      "claim": "Permission's official documentation identifies ASK as the native token of the Permission ecosystem and describes rewards, consent-based participation and agent-to-agent value exchange as intended utility.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "E09",
+      "classification": "confirmed",
+      "claim": "Permission's official ASK documentation states a fixed 100,000,000,000 token supply and identifies ASK as a LayerZero OFT live on Stargate.",
+      "source_ids": [
+        "S2"
+      ],
+      "limitations": [
+        "Tokenomics and future governance/staking features are issuer statements, not independent evidence of realized demand."
+      ]
+    },
+    {
+      "id": "E10",
+      "classification": "confirmed",
+      "claim": "Permission's official documentation lists Base and Polygon contract addresses for ASK; it does not list XRPL as an active ASK network.",
+      "source_ids": [
+        "S2"
+      ],
+      "limitations": [
+        "Absence from listed active networks does not prove that no future bridge or indirect integration could exist."
+      ]
+    },
+    {
+      "id": "E11",
+      "classification": "confirmed",
+      "claim": "Permission's official website describes $ASK as a rewards token and says users can redeem it for gift cards through a rewards partner.",
+      "source_ids": [
+        "S3"
+      ],
+      "limitations": [
+        "Issuer description of utility; realized redemption volume was not measured."
+      ]
+    },
+    {
+      "id": "E12",
+      "classification": "reported",
+      "claim": "CoinMarketCap's retrieved Permission Coin page reports ASK around $0.00008750, approximately $1.41M market capitalization, approximately $79.89 24-hour volume, 100B maximum supply and 16.16B circulating supply.",
+      "source_ids": [
+        "S4"
+      ],
+      "limitations": [
+        "Aggregator snapshot without a precise market-data timestamp; liquidity and market-cap figures can change quickly."
+      ]
+    },
+    {
+      "id": "E13",
+      "classification": "inference",
+      "claim": "Permission Coin is a plausible identity candidate for the phrase 'ASK Coin', but the phrase alone is ambiguous and does not establish that this is the user's intended reference.",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "id": "E14",
+      "classification": "unknown",
+      "claim": "Whether Permission ASK has any direct or indirect commercial, technical, treasury or payment integration with Ripple, XRP, XRPL, Coinbase, Circle or SBI.",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "id": "E15",
+      "classification": "reported",
+      "claim": "The same article reports XRP market value around $79.1B at its November 2, 2026 snapshot.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Secondary article market-cap snapshot; not an exchange-level market-cap reconstruction."
+      ]
+    }
+  ],
+  "capital_ledger": {
+    "reported_cumulative_etf_net_inflows_usd": 1810000000,
+    "reported_etf_net_assets_usd": 1420000000,
+    "reported_peak_etf_net_assets_usd": 1700000000,
+    "reported_peak_date": "2026-10-06",
+    "reported_aum_date": "2026-10-30",
+    "reported_xrp_launch_day_price_usd": 2.32,
+    "reported_latest_price_usd": 1.25,
+    "derived_price_change_percent": -46.12,
+    "derived_net_inflows_as_percent_of_reported_xrp_market_cap": 2.29,
+    "accounting_rules": [
+      "Cumulative net flows are a flow measure, not a point-in-time asset balance.",
+      "ETF net assets are a mark-to-market stock, not cumulative subscriptions.",
+      "Underlying XRP units held, creations, redemptions, fees, cash balances and derivative hedges must be separate features.",
+      "Positive ETF flows do not imply the net marginal buyer dominates all other spot, OTC, distribution and derivative-related selling.",
+      "Do not convert reported net flows into a direct buy-pressure feature until source methodology and timing are documented."
+    ],
+    "reported_xrp_market_cap_usd": 79100000000
+  },
+  "relationship_edges": [
+    {
+      "from": "U.S._spot_XRP_ETFs",
+      "to": "XRP",
+      "relation": "hold_spot_exposure_and_report_net_flows",
+      "claim_ids": [
+        "E01",
+        "E02"
+      ],
+      "confidence": "high_as_reported"
+    },
+    {
+      "from": "XRP_ETF_net_flows",
+      "to": "XRP_spot_price",
+      "relation": "candidate_demand_feature_not_sufficient_cause",
+      "claim_ids": [
+        "E03",
+        "E04",
+        "E06"
+      ],
+      "confidence": "low_causal_confidence"
+    },
+    {
+      "from": "Permission",
+      "to": "ASK",
+      "relation": "issues_native_ecosystem_token",
+      "claim_ids": [
+        "E08",
+        "E09"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "ASK",
+      "to": "Base",
+      "relation": "official_OFT_contract",
+      "claim_ids": [
+        "E10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "ASK",
+      "to": "Polygon",
+      "relation": "official_OFT_contract",
+      "claim_ids": [
+        "E10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "ASK",
+      "to": "LayerZero_Stargate",
+      "relation": "OFT_cross_chain_transport",
+      "claim_ids": [
+        "E09",
+        "E10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "ASK",
+      "to": "XRP_XRPL",
+      "relation": "no_verified_edge_identified",
+      "claim_ids": [
+        "E10",
+        "E14"
+      ],
+      "confidence": "unknown_not_negative_proof"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HETF1",
+      "hypothesis": "ETF net buying was positive but too small to offset broader spot distribution and macro risk-off selling.",
+      "support": [
+        "E01",
+        "E03",
+        "E04",
+        "E05"
+      ],
+      "counter": [
+        "E06"
+      ],
+      "status": "plausible_not_tested"
+    },
+    {
+      "id": "HETF2",
+      "hypothesis": "ETF creations absorbed some supply and may have reduced downside relative to a no-ETF counterfactual, even while absolute price declined.",
+      "support": [
+        "E01",
+        "E04"
+      ],
+      "counter": [
+        "E03"
+      ],
+      "status": "plausible_counterfactual_unobserved"
+    },
+    {
+      "id": "HETF3",
+      "hypothesis": "AUM decline primarily reflects mark-to-market losses rather than investor redemptions.",
+      "support": [
+        "E02",
+        "E03",
+        "E07"
+      ],
+      "counter": [
+        "E04"
+      ],
+      "status": "requires_unit_and_share_count_reconciliation"
+    },
+    {
+      "id": "HETF4",
+      "hypothesis": "ETF flows are lagged or confounded by broader market returns, leverage, market-maker hedging, treasury distributions and OTC flows.",
+      "support": [
+        "E03",
+        "E04",
+        "E05"
+      ],
+      "counter": [],
+      "status": "high_priority_event_study"
+    },
+    {
+      "id": "HASK1",
+      "hypothesis": "The exact phrase 'ASK Coin' refers to Permission Coin's ASK token.",
+      "support": [
+        "E08",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "counter": [],
+      "status": "candidate_only_phrase_ambiguous"
+    },
+    {
+      "id": "HASK2",
+      "hypothesis": "Permission ASK is directly integrated with XRP/XRPL.",
+      "support": [],
+      "counter": [
+        "E10",
+        "E14"
+      ],
+      "status": "not_established"
+    }
+  ],
+  "model_requirements": [
+    "Use daily and intraday ETF creations/redemptions, shares outstanding, XRP units held, custody addresses where disclosed, and net asset value separately.",
+    "Align ETF flow timestamps to exchange spot, futures OI/funding, liquidation, order-book depth and macro events.",
+    "Test contemporaneous, lagged and lead relationships without look-ahead; include BTC/ETH/XLM and broad risk proxies as controls.",
+    "Evaluate whether flows predict returns beyond price momentum, volatility, funding, OI, dollar strength, rates and supply/distribution variables.",
+    "Keep ASK candidate identity separate from XRP token graph until an official integration announcement or verified on-chain path exists."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "24/7 Wall St.",
+      "title": "XRP ETFs Mark Their First Year This Month. Have They Delivered What XRP Holders Expected?",
+      "url": "https://247wallst.com/investing/cryptocurrency/2026/11/02/xrp-etfs-mark-their-first-year-this-month-have-they-delivered-what-xrp-holders-expected/",
+      "published_at": "2026-11-02T16:57:00Z",
+      "source_type": "secondary_market_analysis",
+      "underlying_data_provider": "SoSoValue",
+      "supporting_locations": [
+        "Article lines 81-85 summary",
+        "Lines 89-90 launch-day and latest price comparison",
+        "Lines 99-106 cumulative flows, AUM and daily/weekly flows",
+        "Lines 112-119 performance and limitations",
+        "Article lines 112-114: all-time-high distance, market value about $79.1B and net inflows comparison"
+      ]
+    },
+    {
+      "id": "S2",
+      "publisher": "Permission",
+      "title": "ASK Token Documentation",
+      "url": "https://docs.permission.ai/ask-token",
+      "source_type": "primary_issuer_documentation",
+      "supporting_locations": [
+        "ASK token purpose and utility",
+        "Fixed 100B supply",
+        "LayerZero OFT and Stargate",
+        "Base and Polygon contract addresses"
+      ]
+    },
+    {
+      "id": "S3",
+      "publisher": "Permission",
+      "title": "Official Permission website",
+      "url": "https://www.permission.ai/",
+      "source_type": "primary_issuer_website",
+      "supporting_locations": [
+        "$ASK rewards description",
+        "Gift-card redemption statement"
+      ]
+    },
+    {
+      "id": "S4",
+      "publisher": "CoinMarketCap",
+      "title": "Permission Coin (ASK)",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "captured_at": "2026-11-03T05:15:00Z",
+      "source_type": "market_data_aggregator",
+      "limitations": [
+        "No exact exchange-level volume or market-depth reconciliation in this run."
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Acquire raw SoSoValue daily XRP ETF flow and holdings data and reconcile with issuer filings or fund share/holdings disclosures.",
+    "Separate subscriptions, redemptions, AUM changes, XRP units held, custody balances and hedging.",
+    "Run a fixed-horizon event study with BTC/ETH/XLM controls and leakage-safe walk-forward validation.",
+    "Verify Permission ASK contract addresses and current chain activity from Base/Polygon explorers if its identity becomes material to the intended ASK Coin reference.",
+    "Do not add a Permission ASK to XRP relationship edge without a primary-source integration announcement or verified cross-chain transaction path."
+  ]
+}

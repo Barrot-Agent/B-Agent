@@ -1,0 +1,589 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-regulatory-protocol-security-20261103T0505Z",
+  "captured_at_utc": "2026-11-03T05:09:23Z",
+  "data_cutoff_utc": "2026-11-03T05:05:00Z",
+  "repository_base_commit": "5e82b27205285257edef5ece404356c8900be73d",
+  "subject": "XRP U.S. regulatory classification, CLARITY Act Senate status, XRPL PaymentBurn risk and fixCleanup3_4_0 activation timing",
+  "classification_legend": {
+    "confirmed": "Primary official document, official ledger documentation or exact official vote record",
+    "reported": "Timestamped third-party dashboard or market-provider observation",
+    "inference": "Reasoned implication from confirmed facts; not directly asserted by source",
+    "speculation": "Plausible causal hypothesis without sufficient direct evidence",
+    "unknown": "Not established at the captured cutoff"
+  },
+  "claims": [
+    {
+      "id": "R01",
+      "classification": "confirmed",
+      "claim": "The SEC issued interpretive Release 33-11412 and the CFTC provided related guidance on March 17, 2026; the release became effective March 23, 2026.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "limitations": [
+        "Interpretive release/guidance, not a Congressional market-structure statute."
+      ]
+    },
+    {
+      "id": "R02",
+      "classification": "confirmed",
+      "claim": "The SEC release expressly lists XRP among digital commodity examples and states that, based on the characteristics, terms and functions understood as of the release date, the Commission concludes those listed assets are digital commodities.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "This is the Commission's interpretive position as of March 17, 2026; do not overstate it as a statute or permanent classification immune from future change."
+      ]
+    },
+    {
+      "id": "R03",
+      "classification": "confirmed",
+      "claim": "The release states that digital commodities are not themselves securities under the described framework, while a non-security crypto asset can still be offered or sold subject to an investment contract.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Asset classification and the legal characterization of a particular offer, sale or transaction are distinct."
+      ]
+    },
+    {
+      "id": "R04",
+      "classification": "confirmed",
+      "claim": "The SEC release explicitly says it does not supersede or replace the Howey test; the interpretation conveys the Commission's views and does not alter the statutory authorities of the SEC or CFTC.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "The document states the Commission and staff will administer federal securities laws consistently with the interpretation."
+      ]
+    },
+    {
+      "id": "R05",
+      "classification": "confirmed",
+      "claim": "The SEC release describes the digital-commodity category as assets intrinsically linked to a functional crypto system and deriving value from system operation and supply/demand rather than essential managerial efforts of others.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "The release's general category definition should not be converted into a claim that every XRP-related product or transaction is exempt from securities law."
+      ]
+    },
+    {
+      "id": "R06",
+      "classification": "confirmed",
+      "claim": "U.S. Senate Roll Call Vote 234 on September 15, 2026 rejected cloture on the motion to proceed to H.R. 3633 by 49 yeas to 50 nays, with one senator not voting; three-fifths support was required.",
+      "source_ids": [
+        "S3"
+      ],
+      "limitations": [
+        "This was a cloture vote on the motion to proceed, not a final vote on passage of the bill."
+      ]
+    },
+    {
+      "id": "R07",
+      "classification": "confirmed",
+      "claim": "The Senate floor record states that Senator Tillis moved to reconsider the vote after cloture on the motion to proceed was rejected.",
+      "source_ids": [
+        "S4"
+      ],
+      "limitations": [
+        "A motion to reconsider is a procedural possibility, not evidence that a later vote is scheduled or that the bill will pass."
+      ]
+    },
+    {
+      "id": "R08",
+      "classification": "inference",
+      "claim": "The September 15 cloture failure did not enact the CLARITY Act and did not advance the bill to full floor debate on that vote; the motion to reconsider means the vote should not be described as a definitive permanent death of the bill.",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "limitations": [
+        "Later legislative activity after the retrieved official records must be checked before any current-status claim beyond this event."
+      ]
+    },
+    {
+      "id": "R09",
+      "classification": "confirmed",
+      "claim": "XRPL documentation warns that until fixCleanup3_4_0 is enabled, PaymentBurn granular permission should not be delegated because a delegate may, in certain circumstances, mint fungible trust-line tokens or MPTs.",
+      "source_ids": [
+        "S5"
+      ],
+      "limitations": [
+        "The documented issue concerns issued tokens, not native XRP supply."
+      ]
+    },
+    {
+      "id": "R10",
+      "classification": "confirmed",
+      "claim": "XRPL 3.4.0 release notes describe fixCleanup3_4_0 as a bundle of amendment-gated fixes, including rejection of PaymentBurn payments that cross a zero balance.",
+      "source_ids": [
+        "S6",
+        "S7"
+      ],
+      "limitations": [
+        "The bundle also contains other offer, escrow, signature, vault, freeze, authorization and destination-handling fixes."
+      ]
+    },
+    {
+      "id": "R11",
+      "classification": "confirmed",
+      "claim": "The XRPL Dashboard explains that amendments require more than 80 percent of trusted validators voting yes for 14 consecutive days; if support falls to 80 percent or less, the countdown restarts.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "This dashboard is a third-party monitoring source; the validated ledger and EnableAmendment transaction remain the authoritative activation evidence."
+      ]
+    },
+    {
+      "id": "R12",
+      "classification": "reported",
+      "claim": "At the dashboard observation labelled 05:05 UTC on November 3, 2026, fixCleanup3_4_0 was shown with 33 of 35 trusted validators voting yes, against a 29-of-35 threshold, with four votes of headroom.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "A third-party node/dashboard observation, not an independent direct node query performed in this run."
+      ]
+    },
+    {
+      "id": "R13",
+      "classification": "reported",
+      "claim": "The dashboard reports the 14-day majority window began October 21, 2026 at 14:46 UTC and reaches its 14-day mark on November 4, 2026 at 14:46 UTC if support holds.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "The 14-day threshold time is not itself the activation ledger."
+      ]
+    },
+    {
+      "id": "R14",
+      "classification": "reported",
+      "claim": "The dashboard's process description says the first flag ledger after the 14-day period starts activation processing, EnableAmendment is inserted at flag-ledger plus one, and the amendment becomes active at flag-ledger plus two; it estimates this around November 4, 2026 at 15:03 UTC.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "Approximate timing depends on flag-ledger timing and continued validator support; verify the actual validated-ledger transaction."
+      ]
+    },
+    {
+      "id": "R15",
+      "classification": "inference",
+      "claim": "A prior Barrot handoff that called 14:46 UTC the activation time conflated the 14-day majority-window endpoint with the subsequent flag-ledger activation sequence; the corrected estimate is approximately 15:03 UTC, conditional on support.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "The exact activation time cannot be known until the validated ledger records EnableAmendment."
+      ]
+    },
+    {
+      "id": "R16",
+      "classification": "reported",
+      "claim": "The dashboard displayed XRP at $1.2533 as of 05:05 UTC on November 3, 2026.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "Third-party dashboard mark; not a synchronized executable spot quote and not used to issue a forecast."
+      ]
+    },
+    {
+      "id": "R17",
+      "classification": "reported",
+      "claim": "The dashboard page displayed ledger #108081884 in its live header and ledger #108081791 in its separate 'validated ledger at fetch' metric.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "The two displayed ledger indexes conflict; neither is silently selected as canonical in this snapshot."
+      ]
+    },
+    {
+      "id": "R18",
+      "classification": "confirmed",
+      "claim": "XRPL's official 3.4.0 release describes fixCleanup3_4_0 as a bundle of maintenance and correctness fixes, not a new lending feature.",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "A protocol maintenance upgrade can still be important to token, vault, escrow and permission safety."
+      ]
+    },
+    {
+      "id": "R19",
+      "classification": "unknown",
+      "claim": "Whether fixCleanup3_4_0 will activate at the currently projected time on November 4, 2026.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "Requires direct observation of the validated ledger's EnableAmendment pseudo-transaction and post-activation amendment state."
+      ]
+    },
+    {
+      "id": "R20",
+      "classification": "unknown",
+      "claim": "Whether the SEC's XRP digital-commodity interpretation will be codified, revised or materially changed by subsequent legislation, rulemaking or court decisions.",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "limitations": [
+        "Do not infer permanence from the March 2026 interpretive release."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SEC",
+      "to": "XRP",
+      "relation": "classifies_as_digital_commodity_in_interpretive_release",
+      "claim_id": "R02",
+      "confidence": "high",
+      "as_of": "2026-03-17"
+    },
+    {
+      "from": "CFTC",
+      "to": "SEC_interpretation",
+      "relation": "provides_consistent_CEA_guidance",
+      "claim_id": "R01",
+      "confidence": "high",
+      "as_of": "2026-03-17"
+    },
+    {
+      "from": "SEC_interpretation",
+      "to": "Howey_test",
+      "relation": "does_not_supersede_or_replace",
+      "claim_id": "R04",
+      "confidence": "high"
+    },
+    {
+      "from": "H.R.3633_CLARITY_Act",
+      "to": "U.S._Senate",
+      "relation": "cloture_on_motion_to_proceed_rejected_49_50",
+      "claim_id": "R06",
+      "confidence": "high",
+      "as_of": "2026-09-15"
+    },
+    {
+      "from": "Senator_Thom_Tillis",
+      "to": "H.R.3633_vote_234",
+      "relation": "moved_to_reconsider",
+      "claim_id": "R07",
+      "confidence": "high",
+      "as_of": "2026-09-15"
+    },
+    {
+      "from": "XRPL_PermissionDelegationV1_1",
+      "to": "PaymentBurn",
+      "relation": "granular_delegated_permission",
+      "claim_id": "R09",
+      "confidence": "high"
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "PaymentBurn",
+      "relation": "rejects_zero_crossing_burn_payment",
+      "claim_id": "R10",
+      "confidence": "high"
+    },
+    {
+      "from": "PaymentBurn_pre_fix_behavior",
+      "to": "issued_trustline_tokens_and_MPTs",
+      "relation": "conditional_minting_risk",
+      "claim_id": "R09",
+      "confidence": "high"
+    },
+    {
+      "from": "XRPL_trusted_validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "14_day_amendment_vote_and_activation",
+      "claim_id": "R11",
+      "confidence": "high"
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "native_XRP_supply",
+      "relation": "no_direct_supply_minting_effect_established",
+      "claim_id": "R09",
+      "confidence": "high"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H01",
+      "hypothesis": "The SEC/CFTC interpretation reduces U.S. classification uncertainty for XRP and supports more confident exchange and institutional product decisions.",
+      "supporting_claims": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "R04",
+        "R20"
+      ],
+      "status": "plausible_not_causally_measured"
+    },
+    {
+      "id": "H02",
+      "hypothesis": "The failed CLARITY Act cloture leaves a durability gap: agency interpretation exists, but Congress has not enacted the proposed comprehensive market-structure statute.",
+      "supporting_claims": [
+        "R06",
+        "R07",
+        "R08"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "R01",
+        "R04"
+      ],
+      "status": "supported_as_policy_distinction_not_price_effect"
+    },
+    {
+      "id": "H03",
+      "hypothesis": "Activation of fixCleanup3_4_0 reduces the specific issued-token risk associated with delegated PaymentBurn permissions.",
+      "supporting_claims": [
+        "R09",
+        "R10",
+        "R11"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "R19"
+      ],
+      "status": "conditional_on_activation"
+    },
+    {
+      "id": "H04",
+      "hypothesis": "The PaymentBurn issue creates a direct native-XRP supply or consensus risk.",
+      "supporting_claims": [],
+      "disconfirming_or_limiting_evidence": [
+        "R09",
+        "R10",
+        "R18"
+      ],
+      "status": "not_supported_by_current_evidence"
+    },
+    {
+      "id": "H05",
+      "hypothesis": "The November 4 maintenance amendment should materially move XRP price because it is a bullish protocol catalyst.",
+      "supporting_claims": [
+        "R12",
+        "R13",
+        "R14"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "R10",
+        "R18",
+        "R16"
+      ],
+      "status": "speculative_no_price_forecast"
+    },
+    {
+      "id": "H06",
+      "hypothesis": "The amendment activation can be delayed if validator support falls below the strict threshold before the activation sequence completes.",
+      "supporting_claims": [
+        "R11",
+        "R12",
+        "R13",
+        "R14"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "R12"
+      ],
+      "status": "mechanically_supported_conditional"
+    }
+  ],
+  "event_timeline": [
+    {
+      "at": "2026-03-17",
+      "event": "SEC issues Release 33-11412; CFTC provides related guidance; XRP is named in the digital-commodity examples.",
+      "claim_ids": [
+        "R01",
+        "R02"
+      ]
+    },
+    {
+      "at": "2026-03-23",
+      "event": "SEC interpretive release effective date.",
+      "claim_ids": [
+        "R01"
+      ]
+    },
+    {
+      "at": "2026-09-15T18:19:00Z",
+      "event": "Senate Roll Call Vote 234 rejects cloture on the motion to proceed to H.R. 3633, 49-50; Senator Tillis moves to reconsider.",
+      "claim_ids": [
+        "R06",
+        "R07"
+      ]
+    },
+    {
+      "at": "2026-09-16",
+      "event": "XRPL publishes xrpld 3.4.0 release notes including fixCleanup3_4_0.",
+      "claim_ids": [
+        "R10",
+        "R18"
+      ]
+    },
+    {
+      "at": "2026-10-21T14:46:00Z",
+      "event": "XRPL Dashboard reports start of the 14-day majority window for fixCleanup3_4_0.",
+      "claim_ids": [
+        "R13"
+      ]
+    },
+    {
+      "at": "2026-11-03T05:05:00Z",
+      "event": "Third-party dashboard snapshot: 33/35 yes; 29 required; projected 14-day window endpoint Nov 4 14:46 UTC; activation estimate around 15:03 UTC.",
+      "claim_ids": [
+        "R12",
+        "R13",
+        "R14",
+        "R16",
+        "R17"
+      ]
+    },
+    {
+      "at": "2026-11-04T14:46:00Z",
+      "event": "Conditional end of 14-day majority period if support holds; not the activation transaction itself.",
+      "claim_ids": [
+        "R13",
+        "R14"
+      ]
+    },
+    {
+      "at": "2026-11-04T15:03:00Z",
+      "event": "Approximate dashboard estimate for flag-ledger processing and amendment activation; must be verified on-ledger.",
+      "claim_ids": [
+        "R14",
+        "R19"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "published_at": "2026-03-17",
+      "effective_at": "2026-03-23",
+      "source_type": "primary_interpretive_release",
+      "supporting_locations": [
+        "PDF pp. 13-14: digital commodity definition and XRP example",
+        "PDF p. 14: Commission conclusion as of release date",
+        "PDF pp. 7-8: Howey and statutory-authority limitations"
+      ]
+    },
+    {
+      "id": "S2",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "SEC Clarifies the Application of Federal Securities Laws to Crypto Assets",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
+      "published_at": "2026-03-17",
+      "source_type": "primary_press_release"
+    },
+    {
+      "id": "S3",
+      "publisher": "U.S. Senate",
+      "title": "Roll Call Vote 234 — cloture on motion to proceed to H.R. 3633",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm",
+      "published_at": "2026-09-15",
+      "source_type": "primary_vote_record",
+      "supporting_locations": [
+        "Vote date and question",
+        "Required 3/5 majority",
+        "YEAs 49, NAYs 50, Not Voting 1"
+      ]
+    },
+    {
+      "id": "S4",
+      "publisher": "U.S. Senate",
+      "title": "Senate Floor Activity — September 15, 2026",
+      "url": "https://www.senate.gov/legislative/LIS/floor_activity/09_15_2026_Senate_Floor.htm",
+      "published_at": "2026-09-15",
+      "source_type": "primary_floor_record",
+      "supporting_locations": [
+        "H.R. 3633 cloture not invoked 49-50",
+        "Tillis motion to reconsider entered"
+      ]
+    },
+    {
+      "id": "S5",
+      "publisher": "XRPL.org",
+      "title": "Permission Values",
+      "url": "https://xrpl.org/docs/references/protocol/data-types/permission-values",
+      "source_type": "primary_protocol_documentation",
+      "supporting_locations": [
+        "PaymentBurn warning before fixCleanup3_4_0 is enabled"
+      ]
+    },
+    {
+      "id": "S6",
+      "publisher": "XRPL.org",
+      "title": "Introducing XRP Ledger version 3.4.0",
+      "url": "https://xrpl.org/blog/2026/xrpld-3.4.0",
+      "published_at": "2026-09-16",
+      "source_type": "primary_release_notes"
+    },
+    {
+      "id": "S7",
+      "publisher": "XRPLF/rippled",
+      "title": "Releases — fixCleanup3_4_0 change list",
+      "url": "https://github.com/XRPLF/rippled/releases",
+      "source_type": "primary_implementation_release_notes",
+      "supporting_locations": [
+        "PaymentBurn zero-crossing rejection",
+        "Bundle of offer, escrow, signature and vault fixes"
+      ]
+    },
+    {
+      "id": "S8",
+      "publisher": "XRPL Dashboard",
+      "title": "Current XRPL amendment status",
+      "url": "https://xrpldashboard.com/amendments",
+      "captured_at": "2026-11-03T05:05:00Z",
+      "source_type": "third_party_live_node_dashboard",
+      "limitations": [
+        "Dashboard page displayed two different ledger indexes in separate header/metric locations",
+        "Node/dashboard observation, not a direct query performed in this run",
+        "Projected timestamps are estimates; validated-ledger EnableAmendment transaction is authoritative"
+      ]
+    }
+  ],
+  "data_quality": {
+    "dashboard_ledger_index_conflict": {
+      "displayed_header_ledger": 108081884,
+      "displayed_metric_ledger": 108081791,
+      "difference": 93,
+      "status": "unresolved"
+    },
+    "activation_time_semantics": {
+      "previous_handoff_value": "2026-11-04T14:46:00Z",
+      "corrected_meaning": "14-day majority-window endpoint",
+      "projected_activation_estimate": "2026-11-04T15:03:00Z",
+      "status": "conditional_dashboard_estimate_not_ledger_verified"
+    },
+    "market_price": {
+      "value_usd": 1.2533,
+      "observed_at_utc": "2026-11-03T05:05:00Z",
+      "provider": "XRPL Dashboard",
+      "status": "third_party_mark_not_executable_quote"
+    }
+  },
+  "forecast_status": "NOT_ISSUED",
+  "forecast_reason": "The amendment is not yet activated, the dashboard has a ledger-index inconsistency, and no measured causal price response or calibrated predictive advantage has been established.",
+  "next_actions": [
+    "On November 4, query at least two independent public XRPL endpoints for the validated ledger containing the EnableAmendment pseudo-transaction for fixCleanup3_4_0.",
+    "Confirm the amendment appears in the active Amendments ledger state after activation; do not infer activation from the countdown reaching zero.",
+    "Resolve the dashboard's two displayed ledger indexes against the node's validated-ledger response.",
+    "Monitor whether PaymentBurn is delegated by any issuer after activation; do not infer native XRP minting or supply changes.",
+    "Track any subsequent Senate action on H.R. 3633 and any SEC/CFTC amendments to the interpretive framework.",
+    "Keep price-event attribution separate from the protocol safety event; compare XRP with BTC, ETH and XLM and control for market-wide moves before any event-study conclusion."
+  ]
+}
