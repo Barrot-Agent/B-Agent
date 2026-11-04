@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_etf_flow_source_disagreement_addendum",
+  "captured_at_utc": "2026-11-04T05:09:00Z",
+  "data_cutoff_utc": "2026-11-04T05:09:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "25114c1b0dc8abcc4dd0c0a60bc5ac3486a04f5c",
+    "research_branch_before_addendum": "45b8ec931218b4aa85bc56d2a7a80a0b3266f26a",
+    "fresh_main_successor_pr": 1626,
+    "main_unchanged": true
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "xrp_insights_etf_totals_20261104_040907z",
+      "url": "https://xrp-insights.com/data/xrp-etf-totals.json",
+      "publisher": "XRP Insights",
+      "generated_at_utc": "2026-11-04T04:09:07.861Z",
+      "retrieved_at_utc": "2026-11-04T05:09:00Z",
+      "data_as_of": "2026-11-02",
+      "latest_row_date": "2026-11-03",
+      "provisional_row_date": "2026-11-03",
+      "type": "issuer-holdings-derived ETF flow dataset",
+      "independence": "secondary aggregator using issuer-reported holdings; flow computed from day-over-day holdings changes",
+      "limitations": [
+        "GXRP flow is excluded across the dataset because issuer page capture gaps from September 2–28 make daily catch-up timing unreliable.",
+        "BITW is a multi-asset index fund; changes in its XRP sleeve can reflect index rebalancing, not only creations/redemptions.",
+        "Latest Nov 3 row is provisional and may be rewritten at the next-morning issuer re-settlement; latest settled date is Nov 2.",
+        "The source computes flow from holdings changes, not issuer-reported creations/redemptions; fee accruals or rebalancing can affect the result."
+      ]
+    },
+    {
+      "id": "bykaranteli_xrp_etf_flows_20261103_2249z",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "publisher": "ByKaranteli",
+      "data_refreshed_at_utc": "2026-11-03T22:49:00Z",
+      "data_as_of": "2026-11-02",
+      "retrieved_at_utc": "2026-11-04T05:09:00Z",
+      "type": "public ETF flow aggregation",
+      "independence": "secondary aggregator with its own daily collection network",
+      "limitations": [
+        "Visible per-fund table contains five rows although page prose refers to other listed funds; exact coverage reconciliation is required.",
+        "Per-fund series on this page starts July 30, 2026, while aggregate daily series starts September 8 and is recorded daily since October 6.",
+        "Figures are in USD and are not directly comparable to XRP-unit holdings deltas without matching price, fund universe and settlement cutoffs."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "data_as_of": "2026-11-02",
+    "xrp_insights": {
+      "net_flow_xrp": -32825,
+      "approx_net_flow_usd": -42000,
+      "total_xrp_holdings": 1196567361,
+      "tracked_funds": "six US spot XRP ETFs plus BITW XRP sleeve",
+      "latest_settled_date": "2026-11-02",
+      "latest_row_date": "2026-11-03",
+      "latest_row_status": "provisional",
+      "generated_at_utc": "2026-11-04T04:09:07.861Z"
+    },
+    "bykaranteli": {
+      "net_flow_usd": -530000,
+      "cumulative_net_inflow_usd": 1810000000,
+      "total_net_assets_usd": 1420000000,
+      "visible_per_fund_rows": 5,
+      "data_refreshed_at_utc": "2026-11-03T22:49:00Z"
+    },
+    "discrepancy": {
+      "approx_absolute_difference_usd": 488000,
+      "approx_ratio": 12.6,
+      "calculation_basis": "rounded provider-reported figures: $530K versus approximately $42K",
+      "classification": "unreconciled provider/fund-universe/methodology discrepancy",
+      "rule": "Do not average, select a preferred value without issuer-level reconstruction, or treat either aggregator's derived daily flow as audited capital movement."
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS-XRI-ETF-FLOW-20261104-01",
+      "class": "provider_reported_holdings_delta",
+      "detail": "XRP Insights reports -32,825 XRP (approximately -$42K at its reference price) for November 2, with total holdings of 1,196,567,361 XRP across six spot ETFs plus BITW. November 3 is provisional; latest settled date is November 2.",
+      "evidence": [
+        "xrp_insights_etf_totals_20261104_040907z"
+      ]
+    },
+    {
+      "id": "OBS-BYK-ETF-FLOW-20261104-01",
+      "class": "provider_reported_usd_flow",
+      "detail": "ByKaranteli reports a November 2 net outflow of $530K, cumulative net inflows of $1.81B and $1.42B net assets. Its visible per-fund table attributes the -$530K daily flow to XRPC and displays five fund rows.",
+      "evidence": [
+        "bykaranteli_xrp_etf_flows_20261103_2249z"
+      ]
+    },
+    {
+      "id": "OBS-ETF-FLOW-DISAGREEMENT-20261104-01",
+      "class": "unreconciled_provider_disagreement",
+      "detail": "For the same November 2 trading date, XRP Insights' approximate -$42K derived flow and ByKaranteli's -$530K reported flow differ by approximately $488K or 12.6 times using rounded values. The cause is not established; the provider fund universes, settlement timing and flow methodologies differ.",
+      "evidence": [
+        "xrp_insights_etf_totals_20261104_040907z",
+        "bykaranteli_xrp_etf_flows_20261103_2249z"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "US spot XRP ETFs",
+      "to": "XRP",
+      "relation": "reported fund holdings and estimated daily holdings changes",
+      "status": "provider-derived exposure/flow data; not audited investor capital flow",
+      "evidence": [
+        "xrp_insights_etf_totals_20261104_040907z",
+        "bykaranteli_xrp_etf_flows_20261103_2249z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H19-etf-flow-source-disagreement",
+      "claim": "The November 2 ETF flow disagreement is primarily a measurement, fund-universe or settlement-timing problem until issuer-level holdings are reconciled.",
+      "support": [
+        "XRP Insights computes XRP-unit flows from issuer holdings and excludes GXRP flow due a known scrape gap; BITW's XRP sleeve is included.",
+        "ByKaranteli reports USD flows from its own collection network and its visible fund table has a different presentation/coverage."
+      ],
+      "disconfirming_or_missing": [
+        "Both providers show approximately $1.81B cumulative inflows, but that does not resolve daily flow differences.",
+        "No issuer-by-issuer Nov 2 holdings snapshot has been reconstructed in this addendum."
+      ],
+      "test": [
+        "Retrieve each issuer's November 2 XRP holdings and NAV/share data using a common cutoff.",
+        "Normalize each fund's holdings delta to XRP and separately identify BITW index rebalancing, fees and indirect holdings.",
+        "Reconcile excluded GXRP data without assigning the four-week catch-up to a single day."
+      ]
+    },
+    {
+      "id": "H20-etf-flow-is-not-standalone-xrp-signal",
+      "claim": "A single day's ETF flow estimate should not be used as a standalone directional XRP forecast, especially while provider disagreement is unresolved.",
+      "support": [
+        "The two aggregators disagree materially on the same date.",
+        "Cumulative inflows remain reported around $1.81B despite the negative daily estimate."
+      ],
+      "disconfirming_or_missing": [
+        "A sustained multi-day, issuer-reconciled flow trend could become a useful feature when combined with spot liquidity and macro controls."
+      ],
+      "test": [
+        "Build daily per-fund holdings deltas from issuer sources and preserve provisional/settled states.",
+        "Test whether reconciled flows add out-of-sample predictive value beyond price momentum, volume, volatility and market-wide ETF flows."
+      ]
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average or silently choose between the -$42K and -$530K provider estimates. Reconstruct from issuer holdings at a common cutoff.",
+    "limitations": [
+      "XRP Insights' daily flow is derived from holdings changes, not direct issuer flow reports.",
+      "ByKaranteli's displayed per-fund table and prose coverage need reconciliation.",
+      "The Nov 3 XRP Insights row is provisional and not yet settled at this cutoff.",
+      "Fund holdings and net asset changes can include fee accruals, index rebalancing, indirect product holdings and delayed issuer publication; they are not necessarily pure net new investor capital."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "The ETF flow feature is quarantined as disputed until issuer-level daily holdings are reconstructed; no leakage-safe model evaluation has been completed."
+  },
+  "blockers": [
+    "Issuer-by-issuer Nov 2 holdings need a common-cutoff reconciliation.",
+    "XRP Insights Nov 3 row remains provisional pending next-morning settlement.",
+    "GXRP's historical capture gap and BITW's index rebalancing require explicit treatment."
+  ],
+  "next_actions": [
+    "Reconstruct Nov 2 holdings and NAVs from each issuer page; compare with both provider series.",
+    "Wait for XRP Insights' Nov 3 re-settlement after its stated 10:00 and 13:00 UTC update windows.",
+    "Add provider-specific flow and provisional flags to the historical feature store; never collapse them into one scalar until reconciled."
+  ]
+}
