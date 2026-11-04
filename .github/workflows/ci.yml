@@ -79,4 +79,7 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
+            tests/test_xrp_research_artifact.py \
+            tests/test_forecast_ledger.py \
+            tests/test_point_in_time_features.py \
             -v --no-cov
