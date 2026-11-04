@@ -182,6 +182,18 @@
         "RLUSD market capitalization and use claims require independent reconciliation.",
         "Partner announcements do not establish production throughput, actual XRP bridge use or net XRP buying."
       ]
+    },
+    {
+      "id": "circle_q3_2026_event_listing",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published_or_as_of": "observed at 2026-11-04T03:05:46Z",
+      "type": "official investor-relations event listing",
+      "independence": "primary issuer event source",
+      "limitations": [
+        "Confirms scheduled event time only; results were not available at capture",
+        "Event listing does not establish results or management guidance"
+      ]
     }
   ],
   "market_snapshot": {
@@ -519,6 +531,18 @@
         "The direct OCC final decision document was not located in this run",
         "The bank's opening and operational commencement remain unverified"
       ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-20261104-01",
+      "claim": "Circle Investor Relations lists its Q3 2026 results webcast for November 4, 2026 at 08:00 ET (13:00 UTC); at this addendum's 03:05:46 UTC capture, the event had not yet occurred.",
+      "classification": "confirmed_scheduled_event",
+      "evidence": [
+        "circle_q3_2026_event_listing"
+      ],
+      "disconfirming_or_limiting": [
+        "A scheduled event is not evidence of the results",
+        "Any later reschedule or delayed publication must be detected before ingesting results"
+      ]
     }
   ],
   "relationship_graph": [
@@ -789,9 +813,9 @@
     "No synchronized exchange-native XRP spot/perpetual raw-data history yet.",
     "Nov 2 ETF flow disagreement requires issuer-level daily holdings reconstruction.",
     "Ripple National Trust Bank final approval needs a directly located OCC decision/charter record and operational commencement confirmation.",
-    "Circle Q3 2026 results are scheduled for Nov 4 at 08:00 ET; not yet available at this capture cutoff.",
     "No synchronized point-in-time macro feature panel yet; Fed policy, Treasury yields, DXY, oil and geopolitics have not been joined to XRP returns.",
-    "Ripple's Oct 26 and Oct 28 issuer releases both report final OCC approval for RNTB; a direct OCC final decision document and bank commencement record remain unlocated."
+    "Ripple's Oct 26 and Oct 28 issuer releases both report final OCC approval for RNTB; a direct OCC final decision document and bank commencement record remain unlocated.",
+    "Circle Q3 2026 results webcast is scheduled for 2026-11-04 08:00 ET / 13:00 UTC; results and guidance are not yet available at the 03:05:46 UTC capture."
   ],
   "next_actions": [
     "Reconstruct TradRadar/Kodexius open-interest universes from exchange-native contract endpoints.",
@@ -800,6 +824,7 @@
     "Locate direct OCC Ripple National Trust Bank decision and verify opening/commencement.",
     "Keep forecasts NOT_ISSUED until the historical feature store and walk-forward evaluation are operational.",
     "Add official FOMC target range, Treasury curve, DXY, Brent/WTI and event timestamps to the historical macro feature panel; evaluate rolling and event-conditioned XRP sensitivities.",
-    "Reconcile Ripple's Oct 28 corporate metrics ($900M run-rate, $16T transactions enabled, $150B lifetime network volume, $2.6B RLUSD market cap) to audited financial statements and independent on-chain/route-level data; keep issuer claims separate from realized XRP demand."
+    "Reconcile Ripple's Oct 28 corporate metrics ($900M run-rate, $16T transactions enabled, $150B lifetime network volume, $2.6B RLUSD market cap) to audited financial statements and independent on-chain/route-level data; keep issuer claims separate from realized XRP demand.",
+    "At/after the official Circle Q3 webcast, ingest the press release, 10-Q, reserve metrics, distribution costs, Coinbase economics, USDC circulation and management guidance with exact publication/capture times."
   ]
 }
