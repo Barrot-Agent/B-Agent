@@ -260,3 +260,37 @@ def test_liquidity_addendum_preserves_scope_and_provider_disagreement() -> None:
     assert event["status_at_cutoff"] == "future_scheduled_event"
     assert _parse_utc(event["scheduled_at_utc"]) > _parse_utc(data["data_cutoff_utc"])
 
+PROTOCOL_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T040211Z-protocol-derivatives-event-addendum.json"
+)
+
+
+def test_protocol_addendum_provenance_graph_and_prediction_boundary() -> None:
+    data = json.loads(PROTOCOL_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_protocol_derivatives_event_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    sources = {item["id"] for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    assert len(data["observations"]) >= 8
+    assert len(data["relationship_graph"]) >= 5
+    assert len(data["competing_hypotheses"]) >= 4
+    for observation in data["observations"]:
+        assert observation["id"] and observation["claim"]
+        assert set(observation["evidence"]) <= sources
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert set(edge["evidence"]) <= sources
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"] and hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"] and hypothesis["test"]
+    assert data["predictions"]["issued"] is False
+    amendment = data["market_snapshot"]["xrpl_amendment"]
+    assert amendment["status_at_cutoff"] == "activating_not_yet_enabled"
+    assert amendment["validators_for"] == 33
+    assert amendment["votes_required"] == 29
+    event = data["market_snapshot"]["upcoming_events"][0]
+    assert _parse_utc(event["scheduled_at_utc"]) > _parse_utc(data["data_cutoff_utc"])
+    assert data["market_snapshot"]["lending_protocol"]["status_at_cutoff"] == "not_enabled"
