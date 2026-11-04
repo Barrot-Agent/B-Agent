@@ -26,9 +26,41 @@ def _bytes(value):
 def _documents(corrections=None):
     source = {
         "schema_version": 1,
+        "model_eligible": True,
+        "quality_status": "verified",
+        "source_registry": [
+            {
+                "source_id": "primary-provider",
+                "raw_receipt_id": "receipt:primary-provider:2026-11-04T11:59:02Z",
+                "raw_content_sha256": "a" * 64,
+                "raw_capture_status": "byte_complete",
+                "independence_group": "primary-provider",
+                "source_uri": "https://example.com/xrp",
+                "source_data_as_of_utc": "2026-11-04T11:59:00Z",
+                "captured_at_utc": "2026-11-04T11:59:02Z",
+            }
+        ],
         "observations": [
-            {"observation_id": "blocked-observation"},
-            {"observation_id": "eligible-observation"},
+            {
+                "observation_id": "blocked-observation",
+                "model_eligible": True,
+                "quality_status": "verified",
+                "source_ids": ["primary-provider"],
+                "source_independence_groups": ["primary-provider"],
+                "event_time_utc": "2026-11-04T11:59:00Z",
+                "known_at_utc": "2026-11-04T11:59:01Z",
+                "source_data_as_of_utc": "2026-11-04T11:59:00Z",
+            },
+            {
+                "observation_id": "eligible-observation",
+                "model_eligible": True,
+                "quality_status": "verified",
+                "source_ids": ["primary-provider"],
+                "source_independence_groups": ["primary-provider"],
+                "event_time_utc": "2026-11-04T11:59:00Z",
+                "known_at_utc": "2026-11-04T11:59:01Z",
+                "source_data_as_of_utc": "2026-11-04T11:59:00Z",
+            },
         ],
     }
     source_bytes = _bytes(source)
@@ -132,6 +164,18 @@ def test_overlay_downgrades_exact_observation_and_snapshot_commits_overlay_prove
     assert applied["corrections"][0]["observation_id"] == "blocked-observation"
     assert applied["corrections"][0]["model_eligible"] is False
     assert applied["corrections"][0]["reason"].startswith("Secondary observation")
+    assert snapshot["research_source_receipts"] == [
+        {
+            "source_id": "primary-provider",
+            "raw_receipt_id": "receipt:primary-provider:2026-11-04T11:59:02Z",
+            "raw_content_sha256": "a" * 64,
+            "raw_capture_status": "byte_complete",
+            "independence_group": "primary-provider",
+            "source_uri": "https://example.com/xrp",
+            "source_data_as_of_utc": "2026-11-04T11:59:00Z",
+            "captured_at_utc": "2026-11-04T11:59:02Z",
+        }
+    ]
 
     store = HistoricalFeatureStore(
         tmp_path / "features.sqlite3",
@@ -240,4 +284,103 @@ def test_overlay_bytes_must_match_the_supplied_overlay_mapping():
             source_bytes,
             overlay,
             changed_bytes,
+        )
+
+
+def _rebind_source_document(source, overlay):
+    source_bytes = _bytes(source)
+    overlay["source_artifact_blob_sha"] = git_blob_sha1(source_bytes)
+    return source_bytes, overlay, _bytes(overlay)
+
+
+def test_source_artifact_must_be_explicitly_eligible_and_verified():
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    source["model_eligible"] = False
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    with pytest.raises(ResearchEligibilityError, match="not explicitly model eligible"):
+        _build(
+            [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)],
+            source_bytes, overlay, overlay_bytes
+        )
+
+    source = json.loads(source_bytes)
+    source["model_eligible"] = True
+    source["quality_status"] = "provisional"
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    with pytest.raises(ResearchEligibilityError, match="quality_status must be verified"):
+        _build(
+            [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)],
+            source_bytes, overlay, overlay_bytes
+        )
+
+
+def test_source_observation_must_be_explicitly_eligible_and_verified():
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    source["observations"][0]["model_eligible"] = False
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    with pytest.raises(ResearchEligibilityError, match="not explicitly model eligible"):
+        _build(
+            [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)],
+            source_bytes, overlay, overlay_bytes
+        )
+
+    source["observations"][0]["model_eligible"] = True
+    source["observations"][0]["quality_status"] = "unverified"
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    with pytest.raises(ResearchEligibilityError, match="quality_status must be verified"):
+        _build(
+            [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)],
+            source_bytes, overlay, overlay_bytes
+        )
+
+
+def test_source_receipt_must_be_byte_complete_and_feature_lineage_must_match():
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    source["source_registry"][0]["raw_capture_status"] = "web_rendered_extract_only"
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    with pytest.raises(ResearchEligibilityError, match="must be byte_complete"):
+        _build(
+            [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)],
+            source_bytes, overlay, overlay_bytes
+        )
+
+    source_bytes, overlay, overlay_bytes = _documents()
+    source_sha = git_blob_sha1(source_bytes)
+    mismatched = _feature(
+        "blocked-observation",
+        source_sha,
+        sources=[{
+            "source_id": "primary-provider",
+            "independence_group": "primary-provider",
+            "source_uri": "https://example.com/other",
+            "raw_content_sha256": "a" * 64,
+        }],
+    )
+    with pytest.raises(ResearchEligibilityError, match="source URI does not match receipt"):
+        _build(
+            [mismatched, _feature("eligible-observation", source_sha)],
+            source_bytes, overlay, overlay_bytes
+        )
+
+
+def test_feature_record_event_and_source_cutoff_must_match_observation():
+    source_bytes, overlay, overlay_bytes = _documents()
+    source_sha = git_blob_sha1(source_bytes)
+    mismatched = _feature(
+        "blocked-observation",
+        source_sha,
+        event_time_utc="2026-11-04T11:58:00Z",
+    )
+    with pytest.raises(ResearchEligibilityError, match="event time does not match"):
+        _build(
+            [mismatched, _feature("eligible-observation", source_sha)],
+            source_bytes, overlay, overlay_bytes
         )
