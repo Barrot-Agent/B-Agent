@@ -104,11 +104,11 @@ def test_circle_q2_sec_accession_and_occ_records_are_distinct():
     data = load_artifact()
     entry = correction(data, "C01_SOURCE_CITATION_CROSSWALK")
     replacements = entry["replacements"]
-    circle = next(x for x in replacements if x["source_id"] == "circle_q2_2026_10q_correct")
-    ripple = next(x for x in replacements if x["source_id"] == "ripple_occ_cas_correct")
-    coinbase = next(x for x in replacements if x["source_id"] == "coinbase_occ_cas_correct")
-    circle_occ = next(x for x in replacements if x["source_id"] == "circle_occ_cas_final")
-    coinbase_decision = next(x for x in replacements if x["source_id"] == "coinbase_occ_decision_1370")
+    circle = next(x for x in replacements if x.get("source_id") == "circle_q2_2026_10q_correct")
+    ripple = next(x for x in replacements if x.get("source_id") == "ripple_occ_cas_correct")
+    coinbase = next(x for x in replacements if x.get("source_id") == "coinbase_occ_cas_correct")
+    circle_occ = next(x for x in replacements if x.get("source_id") == "circle_occ_cas_final")
+    coinbase_decision = next(x for x in replacements if x.get("source_id") == "coinbase_occ_decision_1370")
     assert "000187604226000248" in circle["canonical_url"]
     assert "000187604226000045" in circle["old_url"]
     assert "RjzoD2gxmYOv" in ripple["canonical_url"]
@@ -285,7 +285,7 @@ def test_unverified_publication_dates_remain_unknown():
 def test_circle_and_ripple_occ_replacements_are_entity_scoped():
     data = load_artifact()
     replacements = correction(data, "C01_SOURCE_CITATION_CROSSWALK")["replacements"]
-    by_id = {item["source_id"]: item for item in replacements}
+    by_id = {item["source_id"]: item for item in replacements if item.get("source_id")}
     assert by_id["circle_occ_cas_final"]["target_field"] == "$.bank_charter_status.circle.sources[1]"
     assert by_id["ripple_occ_cas_correct"]["target_field"] == "$.bank_charter_status.ripple.sources[0]"
     assert by_id["ripple_rntb_final_approval"]["target_field"] == "$.bank_charter_status.ripple.sources[1]"
