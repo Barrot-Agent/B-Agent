@@ -1047,3 +1047,41 @@ def test_binance_circle_private_placement_is_verified_actual_equity_not_xrp_flow
         assert set(item["evidence"]) <= source_ids
     for edge in data["relationship_graph"]:
         assert set(edge["evidence"]) <= source_ids
+
+
+SBI_JPYSC_EREBOR_UPDATE = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T231520Z-sbi-jpysc-erebor-institutional-rail-update.json"
+)
+
+
+def test_sbi_jpysc_and_erebor_update_preserves_offchain_and_planned_capital_scope() -> None:
+    data = json.loads(SBI_JPYSC_EREBOR_UPDATE.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "sbi_current_stablecoin_liquidity_and_institutional_capital_relationship_update"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == 9
+    jpysc = data["dated_metrics"]["jpysc_as_of_2026_11_02"]
+    assert jpysc["handling_balance_jpy_bn_gt"] == 30
+    assert jpysc["lending_balance_jpy_bn_gt"] == 10
+    assert "not independently verified public-chain supply" in jpysc["measurement_type"]
+    erebor = data["dated_metrics"]["erebor"]
+    assert erebor["planned_sbi_investment_usd_mn"] == 100
+    assert erebor["planned_investment_status"] == "ANNOUNCED_NOT_CLOSED_OR_FUNDED"
+    assert erebor["occ_effective_date"] == "2026-02-06"
+    assert erebor["fdic_certificate"] == "59378"
+    assert "SBI Shinsei Trust Bank" in data["relationship_graph"][1]["from"] or any(
+        edge["from"] == "SBI Shinsei Trust Bank" and edge["to"] == "JPYSC"
+        for edge in data["relationship_graph"]
+    )
+    open_standard = next(edge for edge in data["relationship_graph"] if edge["to"] == "Open Standard")
+    assert open_standard["status"] == "MEMBERSHIP_AND_POC_PROPOSAL"
+    assert "Do not infer direct SBI-Coinbase agreement" in open_standard["xrp_implication"]
+    assert data["predictions"]["issued"] is False
+    assert data["data_quality"]["model_eligible"] is False
+    assert all(item["model_eligible"] is False for item in sources.values())
+    source_ids = set(sources)
+    for edge in data["relationship_graph"]:
+        assert set(edge["evidence"]) <= source_ids
