@@ -304,3 +304,10 @@ These candidates must not be conflated. No XRP Ledger deployment, Ripple relatio
 
 
 Addendum captured 2026-11-04 02:10:41 UTC. The original 01:10 UTC data cutoff is preserved; later discoveries are timestamped in the JSON addenda rather than backdated into the original snapshot.
+
+
+## Creator custody claim and social-handle ambiguity — 2026-11-04 02:20 UTC
+
+DailyCoin's May 21, 2026 report quotes Kamilah Stevenson saying she moved XRP and other long-term positions off exchanges to separate custody from trading behavior. This is a personal self-report, not proof of aggregate exchange outflows, a whale flow, or an institutional allocation. No wallet addresses or transfer set were independently verified.
+
+Two third-party social indexes show different handles: Teapawt lists @iamkamstevenson, while CryptiTalk attributes a separate XRP post to @kamilahsteven21. Neither index proves ownership by the YouTube channel owner; the handles are kept separate and unverified.
