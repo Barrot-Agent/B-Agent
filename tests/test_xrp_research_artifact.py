@@ -684,3 +684,49 @@ def test_xrp_market_provider_disagreement_is_not_averaged_or_model_eligible():
     assert market["coingecko"]["displayed_market_rows"] == 10
     assert market["coingecko"]["total_market_rows_reported"] == 130
     assert "Do not average" in data["data_quality"]["no_averaging_policy"]
+
+
+CIRCLE_ARC_CPN = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T134427Z-circle-arc-cpn-network-scale-reconciliation.json"
+)
+
+
+def test_circle_arc_cpn_metrics_keep_gross_volume_and_annualized_tpv_separate():
+    data = json.loads(CIRCLE_ARC_CPN.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_circle_arc_cpn_network_scale_reconciliation"
+    assert data["prediction_status"]["status"] == "NOT_ISSUED"
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"]) == 1
+    source = next(iter(sources.values()))
+    assert source["raw_content_sha256"] is None
+    assert source["raw_capture_status"] == "web_rendered_pdf_text_extract_only"
+    assert source["model_eligible"] is False
+
+    observations = {item["id"]: item for item in data["observations"]}
+    assert len(observations) == len(data["observations"])
+    assert observations["arc_usdc_cumulative_volume_20261030"]["value"] == 30_000_000_000
+    assert observations["arc_usdc_cumulative_volume_20261030"]["class"] == "issuer_reported_gross_transfer_metric"
+    assert observations["cpn_annualized_tpv_q3_2026"]["value"] == 41_300_000_000
+    assert observations["cpn_annualized_tpv_q3_2026"]["trailing_window_days"] == 30
+    assert observations["x402_usdc_payment_volume_share_20261025"]["underlying_provider"] == "Artemis"
+    assert observations["arc_payment_sector_tps_roadmap"]["status"] == "planned_target_not_achieved"
+    assert all(item["model_eligible"] is False for item in data["observations"])
+    for item in data["observations"]:
+        assert item["evidence"]
+        assert set(item["evidence"]) <= set(sources)
+
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert edge["evidence"]
+        assert set(edge["evidence"]) <= set(sources)
+    assert len(data["competing_hypotheses"]) >= 4
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"]
+        assert hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"]
+        assert hypothesis["tests"]
+    assert any("USDC is also natively available on XRPL" in item for item in data["explicit_disconfirming_evidence"])
+    assert any("Do not interpret gross transfer volume as net new capital" in item for item in data["data_quality"]["scope_controls"])

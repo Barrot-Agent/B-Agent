@@ -1,0 +1,420 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_circle_arc_cpn_network_scale_reconciliation",
+  "record_id": "xrp-intel-2026-11-04-circle-arc-cpn-network-throughput-and-xrpl-competition",
+  "captured_at_utc": "2026-11-04T13:44:27Z",
+  "data_cutoff_utc": "2026-11-04T13:41:14Z",
+  "subject": "Circle Arc mainnet scale, Circle Payments Network settlement strategy, Coinbase Arc integration and implications for XRP/XRPL",
+  "repository_context": {
+    "source_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "append_only": true,
+    "raw_source_policy": "The Circle Q3 presentation was retrieved as rendered PDF text. Raw PDF bytes and HTTP headers were not captured; raw_content_sha256 is null. All values remain model-ineligible pending exact raw-byte capture, independent reconciliation and point-in-time admission."
+  },
+  "source_registry": [
+    {
+      "id": "circle_q3_2026_presentation_arc_cpn",
+      "publisher": "Circle Investor Relations",
+      "authority": "primary issuer earnings presentation; underlying Arc data providers are cited by Circle but were not independently retrieved in this capture",
+      "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/presentation/3Q26-Earnings-Presentation.pdf",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T13:41:14Z",
+      "source_independence_group": "circle_issuer_disclosure",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_pdf_text_extract_only",
+      "model_eligible": false,
+      "source_locators": [
+        {
+          "page": 5,
+          "lines": "137-160",
+          "claims": "Arc launch, 11 founding validators, 100+ apps; CPN annualized TPV and enrolled financial institutions; Binance five-year renewal and $100M equity investment."
+        },
+        {
+          "page": 7,
+          "lines": "195-223",
+          "claims": "CPN annualized TPV methodology and Arc as preferred CPN settlement layer."
+        },
+        {
+          "page": 8,
+          "lines": "265-301",
+          "claims": "Arc assets, cumulative USDC volume, daily transaction count, cited data sources, Coinbase live integration and 100K+ TPS roadmap target."
+        },
+        {
+          "page": 9,
+          "lines": "302-309",
+          "claims": "x402 payment-volume share in USDC and agent marketplace endpoint count, with Artemis and Circle marketplace attribution."
+        }
+      ],
+      "claims_supported": [
+        "Arc mainnet launched September 16, 2026 with 11 founding validators and 100+ apps.",
+        "Circle reports $1.5B assets on Arc, $30B+ USDC volume since mainnet launch, approximately $1B per day over the prior week, approximately 500,000 transactions per day and 50M+ transactions since launch, as of October 30, 2026.",
+        "Circle reports Q3 CPN annualized TPV of $41.3B and 205 financial institutions enrolled; TPV uses the trailing 30 days as of quarter end.",
+        "Circle describes Arc as CPN's preferred settlement layer and says Coinbase is live on Arc through its exchange and wallets.",
+        "Circle's presentation cites Artemis for a 99.6% USDC share of x402 payment volume as of October 25, 2026; this is not all agent payments or CPN volume."
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "arc_assets_on_network_20261030",
+      "class": "issuer_reported_network_metric",
+      "metric": "assets_on_arc",
+      "value": 1500000000,
+      "unit": "USD",
+      "as_of_date": "2026-10-30",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Rounded issuer-presented total; not all assets are USDC.",
+        "Asset value is not net new capital, XRP collateral or XRP spot demand."
+      ]
+    },
+    {
+      "id": "arc_asset_composition_20261030",
+      "class": "issuer_reported_network_metric",
+      "metric": "displayed_asset_components",
+      "values_usd": {
+        "USDC": 1100000000,
+        "cirBTC": 410000000,
+        "EURC": 10000000
+      },
+      "as_of_date": "2026-10-30",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Components sum to approximately $1.52B while the slide rounds total assets to $1.5B; preserve rounding rather than force reconciliation."
+      ]
+    },
+    {
+      "id": "arc_usdc_cumulative_volume_20261030",
+      "class": "issuer_reported_gross_transfer_metric",
+      "metric": "USDC_volume_since_mainnet_launch",
+      "operator": ">",
+      "value": 30000000000,
+      "unit": "USD gross on-chain volume",
+      "launch_date": "2026-09-16",
+      "as_of_date": "2026-10-30",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Gross transfer volume is not net issuance, unique counterparties, external economic payments, net new capital or XRP demand.",
+        "Circle cites Arc RPC, CoinGecko, DefiLlama, Registrai, Dune and company data; the underlying raw datasets were not independently captured."
+      ]
+    },
+    {
+      "id": "arc_usdc_daily_volume_past_week_20261030",
+      "class": "issuer_reported_approximate_gross_transfer_metric",
+      "metric": "USDC_volume_per_day_over_prior_week",
+      "approximate": true,
+      "value": 1000000000,
+      "unit": "USD per day",
+      "period": "week preceding 2026-10-30",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Approximate issuer-presentation figure; period endpoints and transaction classification were not independently reconciled."
+      ]
+    },
+    {
+      "id": "arc_transactions_per_day_20261030",
+      "class": "issuer_reported_network_activity_metric",
+      "metric": "transactions_per_day",
+      "approximate": true,
+      "value": 500000,
+      "unit": "transactions per day",
+      "as_of_date": "2026-10-30",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Transaction count is not payment count, unique users, economic settlement or capital flow."
+      ]
+    },
+    {
+      "id": "arc_transactions_since_launch_20261030",
+      "class": "issuer_reported_network_activity_metric",
+      "metric": "transactions_since_launch",
+      "operator": ">",
+      "value": 50000000,
+      "unit": "transactions",
+      "as_of_date": "2026-10-30",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Cumulative transaction count; no transaction-type or unique-counterparty decomposition was captured."
+      ]
+    },
+    {
+      "id": "cpn_annualized_tpv_q3_2026",
+      "class": "issuer_reported_annualized_payment_metric",
+      "metric": "CPN_annualized_TPV",
+      "value": 41300000000,
+      "unit": "USD annualized",
+      "quarter_end": "2026-09-30",
+      "trailing_window_days": 30,
+      "year_over_year_multiple": 15.2,
+      "quarter_over_quarter_multiple": 2.8,
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Circle defines TPV from the trailing 30 days at quarter end and annualizes it; it is not realized Q3 settlement, net capital or XRP-related volume."
+      ]
+    },
+    {
+      "id": "cpn_enrolled_financial_institutions_q3_2026",
+      "class": "issuer_reported_enrollment_metric",
+      "metric": "financial_institutions_enrolled",
+      "value": 205,
+      "as_of_date": "2026-09-30",
+      "year_over_year_multiple": 4.4,
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Enrollment count includes customers enrolled since CPN launch across several product categories; it does not prove active monthly transactors or settled volume."
+      ]
+    },
+    {
+      "id": "x402_usdc_payment_volume_share_20261025",
+      "class": "third_party_metric_quoted_by_issuer",
+      "metric": "USDC_share_of_x402_payment_volume",
+      "value_pct": 99.6,
+      "as_of_date": "2026-10-25",
+      "underlying_provider": "Artemis",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Circle's presentation cites Artemis; the underlying Artemis dataset was not independently retrieved.",
+        "x402 payment volume is not all AI-agent payments, not Circle Payments Network TPV and not XRP settlement volume."
+      ]
+    },
+    {
+      "id": "circle_agent_marketplace_endpoints_20261025",
+      "class": "issuer_reported_directory_metric",
+      "metric": "listed_agent_endpoints",
+      "value": 2800,
+      "approximate": true,
+      "as_of_date": "2026-10-25",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Endpoint listings are not active agents, payment transactions, unique customers or revenue."
+      ]
+    },
+    {
+      "id": "arc_payment_sector_tps_roadmap",
+      "class": "future_roadmap_target",
+      "metric": "payment_sector_target_tps",
+      "operator": ">=",
+      "value": 100000,
+      "unit": "transactions per second",
+      "status": "planned_target_not_achieved",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Roadmap target only; never treat as measured current throughput."
+      ]
+    },
+    {
+      "id": "coinbase_arc_exchange_wallet_integration",
+      "class": "issuer_reported_platform_integration",
+      "metric": "Coinbase_live_on_Arc",
+      "status": "issuer_says_live_on_exchange_and_wallets",
+      "scope": "specific asset and product details not stated on the slide",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "This does not establish Coinbase XRP purchases, XRP collateral on Arc, or any XRP bridge usage."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "operates/backs a separate layer-one network with native USDC; mainnet launched 2026-09-16",
+      "status": "issuer_reported_operational",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "not_equivalent_to": "XRPL or XRP"
+    },
+    {
+      "from": "Circle Payments Network",
+      "to": "Arc",
+      "relation": "Circle identifies Arc as CPN's preferred settlement layer",
+      "status": "issuer_reported_operational",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "limitations": [
+        "Sub-second finality and sub-cent gas are issuer-described design/operational claims, not independently benchmarked here."
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Arc",
+      "relation": "Circle says Coinbase is live on Arc through its exchange and wallets",
+      "status": "issuer_reported_live_integration",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "limitations": [
+        "Exact product/asset scope and Coinbase-specific volume are not disclosed in the cited slide."
+      ]
+    },
+    {
+      "from": "Arc",
+      "to": "USDC",
+      "relation": "USDC is the principal native dollar asset reported on Arc",
+      "status": "issuer_reported",
+      "evidence": [
+        "circle_q3_2026_presentation_arc_cpn"
+      ],
+      "limitations": [
+        "USDC transfer volume is not equivalent to net new capital or XRP demand."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-ARC-CPN-USD-RAIL-SUBSTITUTION",
+      "claim": "Arc plus CPN could substitute for XRP bridge liquidity in corridors where counterparties can settle end-to-end in USDC.",
+      "support": [
+        "Circle describes Arc as CPN's preferred settlement layer.",
+        "Circle reports growing Arc USDC activity and $41.3B annualized CPN TPV."
+      ],
+      "disconfirming_or_missing": [
+        "No corridor-level evidence of former XRP routes switching to Arc.",
+        "No synchronized XRP bridge-volume, spread or counterparty data.",
+        "USDC settlement only solves routes where counterparties can hold and redeem USDC."
+      ],
+      "tests": [
+        "Compare matched corridors before/after Arc/CPN adoption.",
+        "Measure XRP bridge legs, USDC balances, settlement cost, latency and net capital by route."
+      ]
+    },
+    {
+      "id": "H-ARC-XRPL-MULTIRAIL-COMPLEMENT",
+      "claim": "Circle's Arc expansion may complement rather than displace XRPL because USDC is also native on XRPL and Coinbase supports multiple stablecoin/network combinations.",
+      "support": [
+        "Circle's prior native USDC-on-XRPL announcement.",
+        "Coinbase's RLUSD distribution on XRPL, Base and Ethereum plus its reported Arc integration."
+      ],
+      "disconfirming_or_missing": [
+        "No route-level transaction graph showing cross-network liquidity reuse.",
+        "No evidence that Arc and XRPL flows are coordinated."
+      ],
+      "tests": [
+        "Track issuer mint/burn and bridge flows by chain.",
+        "Measure whether Arc activity coincides with rising or falling XRPL USDC and XRP bridge usage."
+      ]
+    },
+    {
+      "id": "H-ARC-GROSS-VOLUME-OVERSTATES-CAPITAL",
+      "claim": "Arc's reported cumulative and daily volume may materially exceed unique external economic settlement because gross on-chain transfers can include repeated, internal or protocol-driven movements.",
+      "support": [
+        "Circle reports gross USDC on-chain volume and transaction counts, not net new capital or unique counterparties."
+      ],
+      "disconfirming_or_missing": [
+        "Circle cites multiple underlying data providers, but raw datasets and transaction classifications were not independently reproduced."
+      ],
+      "tests": [
+        "Capture Arc RPC ledger receipts and transaction hashes.",
+        "Classify exchange, bridge, issuer, protocol, treasury and user transfers; compute unique counterparties and net flows."
+      ]
+    },
+    {
+      "id": "H-CPN-ANNUALIZED-TPV-NOT-REALIZED",
+      "claim": "CPN's $41.3B annualized TPV overstates realized quarterly payment value if interpreted as actual Q3 settlement.",
+      "support": [
+        "Circle defines TPV from the trailing 30 days at quarter-end and annualizes it."
+      ],
+      "disconfirming_or_missing": [
+        "No independently captured daily CPN settlement series or quarterly realized total."
+      ],
+      "tests": [
+        "Obtain CPN daily transaction and settlement reports; reconcile with bank payouts and net settlement."
+      ]
+    },
+    {
+      "id": "H-CIRCLE-AGENT-PAYMENTS-USDC-ADVANTAGE",
+      "claim": "USDC's reported share of x402 payment volume may give Circle an early distribution advantage in agentic payments, but it does not establish an XRP exclusion or durable moat.",
+      "support": [
+        "Circle cites Artemis for 99.6% of x402 payment volume settling in USDC as of 2026-10-25.",
+        "Circle lists approximately 2,800 agent endpoints as of 2026-10-25."
+      ],
+      "disconfirming_or_missing": [
+        "The x402 universe may be narrow and early-stage.",
+        "No independently captured payment counts, economic value, repeat usage or competing-asset breakdown."
+      ],
+      "tests": [
+        "Retrieve Artemis x402 raw data and methodology.",
+        "Measure unique agents, settled value, repeat rate, fees and asset/network alternatives."
+      ]
+    }
+  ],
+  "explicit_disconfirming_evidence": [
+    "USDC is also natively available on XRPL; Arc activity alone does not prove XRP displacement.",
+    "Coinbase's RLUSD distribution across XRPL, Base and Ethereum is consistent with a multi-asset, multi-chain strategy.",
+    "No XRP purchase, XRP collateral or XRP bridge flow is disclosed in the cited Circle presentation.",
+    "Gross transfer volume, assets on network, transaction counts, enrolled institutions and annualized TPV are different measures and must not be added or treated as actual capital.",
+    "The 100K+ TPS figure is a roadmap target, not measured throughput.",
+    "The 99.6% x402 figure is limited to x402 payment volume and is attributed to Artemis by Circle; it is not all agent payments or CPN volume.",
+    "Circle's cited underlying Arc data sources were not independently retrieved in this capture; source independence is not established."
+  ],
+  "data_quality": {
+    "source_independence": "one primary issuer presentation; no independent raw-source corroboration in this artifact",
+    "raw_receipts": "not captured; raw_content_sha256 null",
+    "timestamp_quality": "presentation date is 2026-11-04; Arc metrics as of 2026-10-30, CPN quarter-end 2026-09-30, x402/agent endpoints as of 2026-10-25",
+    "scope_controls": [
+      "Do not combine Arc assets, gross transfer volume, transactions/day, CPN annualized TPV, x402 volume share or agent endpoint count.",
+      "Do not interpret gross transfer volume as net new capital.",
+      "Do not interpret CPN annualized TPV as quarterly realized settlement.",
+      "Do not treat Coinbase's Arc integration as XRP usage.",
+      "Do not treat Circle's Arc as XRPL."
+    ],
+    "model_admission": "REJECTED_PENDING_RAW_RECEIPTS_AND_INDEPENDENT_RECONCILIATION"
+  },
+  "related_artifacts": [
+    "20261104T131226Z-circle-q3-coinbase-ripple-bny-sbic-market-addendum.json",
+    "20261104T133354Z-circle-binance-8k-correction-and-xrp-market-context.json",
+    "20261103T224351Z-verified-sbi-circle-coinbase-arc-network.json"
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "reason": "These issuer-presented network metrics are not a synchronized XRP market feature set and have no raw-byte receipts, independent corroboration or validated predictive relationship."
+  },
+  "next_actions": [
+    "Capture Arc RPC block and transaction data with exact ledger/block hashes, raw response bodies, retrieval times and independent SHA-256 receipts.",
+    "Reconstruct Arc USDC gross and net flows, unique counterparties, exchange/bridge/issuer/protocol activity and economic-payment classifications.",
+    "Verify Arc assets and transaction counts independently against Arc RPC, Dune and other named providers; do not treat the Circle presentation as independent corroboration.",
+    "Obtain CPN daily realized settlement series and distinguish trailing-30-day annualized TPV from actual quarter volume.",
+    "Retrieve Artemis x402 methodology and raw observations before using the 99.6% share in any model.",
+    "Measure Coinbase's exact Arc products/assets and compare with its RLUSD distribution on XRPL/Base/Ethereum.",
+    "Test whether Arc/CPN flows substitute for or complement XRP bridge legs in matched corridors; retain both hypotheses until transaction evidence resolves them.",
+    "Do not issue a directional XRP forecast until synchronized spot/depth/derivatives and historical feature data pass walk-forward, baseline, calibration and drift checks."
+  ]
+}
