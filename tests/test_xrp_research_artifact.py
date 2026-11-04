@@ -624,3 +624,63 @@ def test_coinbase_q3_relationship_edges_use_only_supported_sources() -> None:
     for edge in data["relationship_graph"]:
         assert set(edge["evidence"]) <= source_ids
     assert not any(edge["from"] == "Coinbase" and edge["to"] == "Ripple/RLUSD" for edge in data["relationship_graph"])
+
+
+BINANCE_AMENDMENT_UPDATE = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T073349Z-binance-xrpl-amendment-market-update.json"
+)
+
+
+def test_binance_xrp_amendment_update_has_provenance_and_bounded_cutoffs():
+    data = json.loads(BINANCE_AMENDMENT_UPDATE.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_binance_xrpl_amendment_market_update"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    source_ids = [item["id"] for item in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+    for observation in data["observations"]:
+        assert observation["id"] and observation["claim"]
+        assert observation["evidence"]
+        assert set(observation["evidence"]) <= known
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert edge["status"]
+        assert set(edge["evidence"]) <= known
+    assert data["predictions"]["issued"] is False
+
+
+def test_binance_xrp_recipient_state_preserves_reconciliation_gap():
+    data = json.loads(BINANCE_AMENDMENT_UPDATE.read_text(encoding="utf-8"))
+    incident = data["market_snapshot"]["binance_xrp_incident"]
+    assert len(incident["recipient_wallets"]) == 6
+    assert incident["separate_test_destination"]["reported_balance_xrp"] == 1000
+    assert incident["recipient_state_claim_as_of_utc"] == "2026-11-04T04:12:00Z"
+    assert incident["recipient_outbound_transactions_reported_as_of_0412z"] == 0
+    assert incident["sale_or_exchange_deposit_verified"] is False
+    assert incident["arithmetic_difference_vs_initial_after_residual_xrp"] == 0.59905
+
+
+def test_xrpl_amendment_is_not_marked_active_before_conditional_window():
+    data = json.loads(BINANCE_AMENDMENT_UPDATE.read_text(encoding="utf-8"))
+    amendment = data["market_snapshot"]["xrpl_amendments"]["fixCleanup3_4_0"]
+    cutoff = _parse_utc(data["data_cutoff_utc"])
+    activation = _parse_utc(amendment["earliest_activation_utc"])
+    assert amendment["newer_tracker_votes_for"] == 34
+    assert amendment["newer_tracker_trusted_validator_count"] == 36
+    assert amendment["required_votes"] == 29
+    assert amendment["active_verified"] is False
+    assert activation > cutoff
+    assert data["market_snapshot"]["upcoming_events"][0]["status_at_cutoff"] == "future_scheduled_event"
+
+
+def test_xrp_market_provider_disagreement_is_not_averaged_or_model_eligible():
+    data = json.loads(BINANCE_AMENDMENT_UPDATE.read_text(encoding="utf-8"))
+    market = data["market_snapshot"]["xrp_market_aggregates"]
+    assert market["coingecko"]["model_eligible"] is False
+    assert market["altcoinlog"]["model_eligible"] is False
+    assert market["coingecko"]["displayed_market_rows"] == 10
+    assert market["coingecko"]["total_market_rows_reported"] == 130
+    assert "Do not average" in data["data_quality"]["no_averaging_policy"]
