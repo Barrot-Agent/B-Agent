@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from datetime import datetime, timezone
 
@@ -17,6 +18,9 @@ SOURCE_PATH = "research/xrp_intelligence/source.json"
 OVERLAY_PATH = "research/xrp_intelligence/overlay.json"
 CUTOFF = "2026-11-04T12:00:00.000000Z"
 CAPTURED = "2026-11-04T12:01:00.000000Z"
+RAW_RECEIPT_ID = "receipt:primary-provider:2026-11-04T11:59:02Z"
+RAW_RECEIPT_BYTES = b'{"asset":"XRP","price_usd":1.25,"venue":"primary-provider"}\\n'
+RAW_RECEIPT_SHA256 = hashlib.sha256(RAW_RECEIPT_BYTES).hexdigest()
 
 
 def _bytes(value):
@@ -31,8 +35,8 @@ def _documents(corrections=None):
         "source_registry": [
             {
                 "source_id": "primary-provider",
-                "raw_receipt_id": "receipt:primary-provider:2026-11-04T11:59:02Z",
-                "raw_content_sha256": "a" * 64,
+                "raw_receipt_id": RAW_RECEIPT_ID,
+                "raw_content_sha256": RAW_RECEIPT_SHA256,
                 "raw_capture_status": "byte_complete",
                 "independence_group": "primary-provider",
                 "source_uri": "https://example.com/xrp",
@@ -112,7 +116,7 @@ def _feature(observation_id, source_sha, **updates):
                 "source_id": "primary-provider",
                 "independence_group": "primary-provider",
                 "source_uri": "https://example.com/xrp",
-                "raw_content_sha256": "a" * 64,
+                "raw_content_sha256": RAW_RECEIPT_SHA256,
             }
         ],
         "quality_status": "verified",
@@ -129,7 +133,7 @@ def _feature(observation_id, source_sha, **updates):
     return record
 
 
-def _build(records, source_bytes, overlay, overlay_bytes):
+def _build(records, source_bytes, overlay, overlay_bytes, raw_receipt_bytes=None):
     return build_feature_snapshot_with_research_overlay(
         records,
         overlay=overlay,
@@ -137,6 +141,11 @@ def _build(records, source_bytes, overlay, overlay_bytes):
         source_artifact_bytes=source_bytes,
         overlay_artifact_path=OVERLAY_PATH,
         overlay_artifact_bytes=overlay_bytes,
+        raw_receipt_bytes=(
+            {RAW_RECEIPT_ID: RAW_RECEIPT_BYTES}
+            if raw_receipt_bytes is None
+            else raw_receipt_bytes
+        ),
         cutoff_utc=CUTOFF,
         captured_at_utc=CAPTURED,
         asset_scope=["XRP"],
@@ -168,8 +177,9 @@ def test_overlay_downgrades_exact_observation_and_snapshot_commits_overlay_prove
         {
             "source_id": "primary-provider",
             "raw_receipt_id": "receipt:primary-provider:2026-11-04T11:59:02Z",
-            "raw_content_sha256": "a" * 64,
+            "raw_content_sha256": RAW_RECEIPT_SHA256,
             "raw_capture_status": "byte_complete",
+            "raw_receipt_sha256_verified": True,
             "independence_group": "primary-provider",
             "source_uri": "https://example.com/xrp",
             "source_data_as_of_utc": "2026-11-04T11:59:00Z",
@@ -361,7 +371,7 @@ def test_source_receipt_must_be_byte_complete_and_feature_lineage_must_match():
             "source_id": "primary-provider",
             "independence_group": "primary-provider",
             "source_uri": "https://example.com/other",
-            "raw_content_sha256": "a" * 64,
+            "raw_content_sha256": RAW_RECEIPT_SHA256,
         }],
     )
     with pytest.raises(ResearchEligibilityError, match="source URI does not match receipt"):
@@ -383,4 +393,22 @@ def test_feature_record_event_and_source_cutoff_must_match_observation():
         _build(
             [mismatched, _feature("eligible-observation", source_sha)],
             source_bytes, overlay, overlay_bytes
+        )
+
+
+def test_raw_receipt_bytes_are_required_and_must_match_sha256():
+    source_bytes, overlay, overlay_bytes = _documents()
+    source_sha = git_blob_sha1(source_bytes)
+    records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
+
+    with pytest.raises(ResearchEligibilityError, match="raw receipt bytes are missing"):
+        _build(records, source_bytes, overlay, overlay_bytes, raw_receipt_bytes={})
+
+    with pytest.raises(ResearchEligibilityError, match="do not match raw_content_sha256"):
+        _build(
+            records,
+            source_bytes,
+            overlay,
+            overlay_bytes,
+            raw_receipt_bytes={RAW_RECEIPT_ID: b'{"asset":"XRP","price_usd":0.0}\\n'},
         )
