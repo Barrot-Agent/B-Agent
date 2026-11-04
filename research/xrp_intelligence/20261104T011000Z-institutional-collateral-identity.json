@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
   "artifact_type": "xrp_ecosystem_evidence_reconciliation",
-  "captured_at_utc": "2026-11-04T01:10:00Z",
-  "data_cutoff_utc": "2026-11-04T01:10:00Z",
+  "captured_at_utc": "2026-11-04T01:15:00Z",
+  "data_cutoff_utc": "2026-11-04T01:15:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "mission": {
     "priority": "XRP intelligence and prediction-engine mastery",
@@ -204,6 +204,122 @@
       "publisher": "Glasp",
       "type": "third-party channel summary index",
       "independence": "secondary channel index"
+    },
+    {
+      "id": "ripple_rntb_final_claim",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "published": "2026-10-28",
+      "type": "issuer press release",
+      "independence": "issuer claim; final OCC decision document not located"
+    },
+    {
+      "id": "occ_rntb_conditional",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
+      "publisher": "Office of the Comptroller of the Currency",
+      "published": "2025-12-12",
+      "type": "regulatory conditional approval letter",
+      "independence": "regulator primary"
+    },
+    {
+      "id": "occ_decisions_index",
+      "url": "https://occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "type": "regulatory decision index",
+      "independence": "regulator primary; page update lag possible"
+    },
+    {
+      "id": "xrpl_xls68_security",
+      "url": "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-aug2026",
+      "publisher": "XRPL.org",
+      "published": "2026-09-21",
+      "type": "official vulnerability disclosure",
+      "independence": "protocol maintainer primary"
+    },
+    {
+      "id": "xrpl_xls68_spec",
+      "url": "https://xls.xrpl.org/xls/XLS-0068-sponsored-fees-and-reserves.html",
+      "publisher": "XRPL Standards",
+      "type": "standard specification",
+      "independence": "standards primary"
+    },
+    {
+      "id": "xrpl_standards_index",
+      "url": "https://xls.xrpl.org/",
+      "publisher": "XRPL Standards",
+      "type": "standards registry",
+      "independence": "standards primary"
+    },
+    {
+      "id": "xrpl_confidential_vote",
+      "url": "https://xrplwin.com/amendment/ConfidentialTransfer",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_fixcleanup_vote",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_vault_vote",
+      "url": "https://xrplwin.com/amendment/SingleAssetVault",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_lending_vote",
+      "url": "https://xrplwin.com/amendment/LendingProtocol",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_permission_activation",
+      "url": "https://unchainedcrypto.com/xrp-ledger-enables-account-delegation-as-a-token-minting-fix-lacks-two-validator-votes/",
+      "publisher": "Unchained",
+      "published": "2026-10-09",
+      "type": "protocol activation reporting",
+      "independence": "secondary reporting with ledger references"
+    },
+    {
+      "id": "xrpl_batch_activation",
+      "url": "https://xrplinsights.com/articles/batch-permission-delegation-deep-dive.html",
+      "publisher": "XRPLinsights",
+      "published": "2026-10-11",
+      "type": "protocol activation reporting",
+      "independence": "secondary reporting"
+    },
+    {
+      "id": "xrpl_xls96_spec",
+      "url": "https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html",
+      "publisher": "XRPL Standards",
+      "type": "final amendment specification",
+      "independence": "standards primary"
+    },
+    {
+      "id": "xrpl_dynamicmpt_sep4",
+      "url": "https://www.jakeclaver.com/xrpl-3-3-0-amendments-status/",
+      "publisher": "Jake Claver",
+      "published": "2026-09-04",
+      "type": "independent amendment status analysis",
+      "independence": "secondary; says validated against ledger"
+    },
+    {
+      "id": "xrpl_sponsor_vote_oct17",
+      "url": "https://www.coindaro.com/xrp-ledger-amendment-23-october-lending-vote/",
+      "publisher": "Coindaro",
+      "published": "2026-10-23; vote snapshot 2026-10-17",
+      "type": "amendment vote snapshot",
+      "independence": "secondary; cites XRPScan"
     }
   ],
   "market_snapshot": {
@@ -369,7 +485,7 @@
     {
       "id": "Kamilah-channel-candidate",
       "class": "candidate_identity_not_confirmed_as_Camilla",
-      "detail": "Indexed YouTube videos and a Glasp channel-summary page attribute XRP content to Kamilah Stevenson (channel ID UCqUPJMQdkCN6lsLVDnichPA); some transcripts self-introduce the speaker as 'Camila Stevenson'. This is a plausible candidate for the user's phonetic 'Camilla Stephenson' reference, but exact legal/identity equivalence is not verified. Seven public video candidates are indexed; this is not an exhaustive channel archive.",
+      "detail": "Indexed YouTube videos and a Glasp channel-summary page attribute XRP content to Kamilah Stevenson (channel ID UCqUPJMQdkCN6lsLVDnichPA); some transcripts self-introduce the speaker as 'Camila Stevenson'. This is a plausible candidate for the user's phonetic 'Camilla Stephenson' reference, but exact identity equivalence is not verified. Seven public video candidates are indexed; this is not an exhaustive channel archive.",
       "evidence": [
         "kamilah_video_collateral",
         "kamilah_video_etf",
@@ -378,7 +494,8 @@
         "kamilah_dailycoin",
         "kamilah_video_wealth",
         "kamilah_video_how_much",
-        "kamilah_channel_glasp"
+        "kamilah_channel_glasp",
+        "kamilah_video_ripple_bank"
       ]
     },
     {
@@ -386,6 +503,89 @@
       "class": "unknown",
       "detail": "Exact public searches for the phrase 'actual capital' with XRP, Kamilah/Camila, ASK and SBIC did not locate a verifiable source. A separate video title uses the word 'ACTUALLY' ('How Much XRP Do You ACTUALLY Need?'), but that does not establish the phrase 'actual capital' or the intended reference.",
       "evidence": []
+    },
+    {
+      "id": "Ripple-National-Trust-Bank",
+      "class": "mixed_regulatory_and_issuer_evidence",
+      "detail": "OCC granted only preliminary conditional approval on 2025-12-12; the letter says Ripple National Trust Bank could not begin business until all pre-opening requirements were met and final approval was granted. Ripple announced on 2026-10-28 that it had received final approval on 2026-10-27. The OCC decision index captured in this run still listed the 2025 conditional approval and did not expose a separate final decision document; exact OCC final letter and actual commencement of bank operations were not independently located. Treat final approval as issuer-reported pending the OCC document.",
+      "evidence": [
+        "occ_rntb_conditional",
+        "ripple_rntb_final_claim",
+        "occ_decisions_index"
+      ]
+    },
+    {
+      "id": "Kamilah-Ripple-Bank-video-check",
+      "class": "disconfirming_context",
+      "detail": "The 2025-12-14 video titled 'Ripple Just Became a BANK' was published two days after OCC's preliminary conditional approval. The OCC letter explicitly said final approval and authorization to commence business had not yet been granted. The title therefore overstated legal status at publication time. Ripple later reported final approval on 2026-10-28; that later issuer claim does not retroactively make the December title accurate.",
+      "evidence": [
+        "kamilah_video_ripple_bank",
+        "occ_rntb_conditional",
+        "ripple_rntb_final_claim"
+      ]
+    },
+    {
+      "id": "XRPL-PermissionDelegation-live",
+      "class": "secondary_report_of_on_ledger_activation",
+      "detail": "PermissionDelegationV1_1 (XLS-75) activated on XRPL mainnet on 2026-10-08 at ledger 107524865, according to Unchained's ledger-referenced reporting. It replaces the earlier buggy amendment. It enables limited delegated permissions, not transfer of master-key control.",
+      "evidence": [
+        "xrpl_permission_activation"
+      ]
+    },
+    {
+      "id": "XRPL-BatchV1_1-live",
+      "class": "secondary_report_of_on_ledger_activation",
+      "detail": "BatchV1_1 (XLS-56) activated on 2026-10-09 after fixBatchV1_2, according to XRPLinsights' ledger-referenced report. It supports atomic groups of transactions; implementation and network activation are distinct from any market-demand effect.",
+      "evidence": [
+        "xrpl_batch_activation"
+      ]
+    },
+    {
+      "id": "XRPL-ConfidentialTransfer-voting",
+      "class": "on_ledger_explorer_snapshot",
+      "detail": "XRPLWin's snapshot around 2026-11-03 19:17 UTC showed ConfidentialTransfer (XLS-96) at 20 of 35 trusted validators (57.14%), below the more-than-80% threshold of 29 for 14 consecutive days. It was not active at that snapshot. XLS-96 applies to Multi-Purpose Tokens, not native XRP transfers.",
+      "evidence": [
+        "xrpl_confidential_vote",
+        "xrpl_xls96_spec",
+        "xrpl_standards_index"
+      ]
+    },
+    {
+      "id": "XRPL-Sponsor-status",
+      "class": "official_security_disclosure_plus_dated_vote",
+      "detail": "The XLS-68 Sponsor amendment was not activated on mainnet as of XRPL.org's 2026-09-21 vulnerability disclosure. A reserve-accounting flaw was found during Devnet testing; the fix shipped in xrpld 3.4.0 on 2026-09-17. A dated 2026-10-17 vote snapshot reported Sponsor at 9/32 (28.1%), still below threshold. The 2026-11-04 fixCleanup3_4_0 activation window is a separate maintenance fix and does not itself activate Sponsor. Current Sponsor vote count was not independently retrieved in this run.",
+      "evidence": [
+        "xrpl_xls68_security",
+        "xrpl_xls68_spec",
+        "xrpl_sponsor_vote_oct17",
+        "xrpl_fixcleanup_vote"
+      ]
+    },
+    {
+      "id": "XRPL-fixCleanup3_4_0",
+      "class": "on_ledger_explorer_snapshot",
+      "detail": "XRPLWin reported fixCleanup3_4_0 at 33/35 validators (94.29%), majority since 2026-10-21 14:46:22 UTC and scheduled for 2026-11-04 14:46:22 UTC if support remains above 80% continuously. It is a bundle of fixes, including sponsorship-related fixes; it is not the Sponsor feature amendment itself.",
+      "evidence": [
+        "xrpl_fixcleanup_vote"
+      ]
+    },
+    {
+      "id": "XRPL-SingleAssetVault-Lending-votes",
+      "class": "on_ledger_explorer_snapshot",
+      "detail": "At the same approximate 2026-11-03 19:17 UTC snapshot, SingleAssetVault showed 21/35 (60%) and LendingProtocol 19/35 (54.3%), both below the 29/35 sustained threshold. These were not active at that snapshot.",
+      "evidence": [
+        "xrpl_vault_vote",
+        "xrpl_lending_vote"
+      ]
+    },
+    {
+      "id": "XRPL-DynamicMPT-status",
+      "class": "dated_secondary_snapshot_and_unknown_current",
+      "detail": "A 2026-09-04 independent amendment-status analysis reported DynamicMPT at 15/35 validators (42.9%), below the 29-vote threshold. A current exact validator-vote snapshot was not retrieved in this run; current activation status remains unverified.",
+      "evidence": [
+        "xrpl_dynamicmpt_sep4",
+        "xrpl_standards_index"
+      ]
     }
   ],
   "relationship_graph": [
@@ -490,6 +690,65 @@
       "evidence": [
         "permission_ask_docs"
       ]
+    },
+    {
+      "from": "OCC",
+      "to": "Ripple National Trust Bank",
+      "relation": "preliminary conditional approval 2025-12-12; Ripple later announced final approval 2026-10-27",
+      "status": "conditional approval regulator-confirmed; final approval issuer-reported pending OCC document",
+      "evidence": [
+        "occ_rntb_conditional",
+        "ripple_rntb_final_claim",
+        "occ_decisions_index"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "PermissionDelegationV1_1",
+      "relation": "mainnet amendment activation 2026-10-08",
+      "status": "secondary report with ledger reference",
+      "evidence": [
+        "xrpl_permission_activation"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "BatchV1_1",
+      "relation": "mainnet amendment activation 2026-10-09",
+      "status": "secondary report with ledger reference",
+      "evidence": [
+        "xrpl_batch_activation"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "ConfidentialTransfer",
+      "relation": "20/35 support; below activation threshold at 2026-11-03 snapshot",
+      "status": "explorer snapshot",
+      "evidence": [
+        "xrpl_confidential_vote",
+        "xrpl_xls96_spec"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "Sponsor XLS-68",
+      "relation": "9/32 support at 2026-10-17 snapshot; activation blocked pending reserve-accounting fix; current vote count unknown",
+      "status": "official security disclosure plus dated secondary vote snapshot",
+      "evidence": [
+        "xrpl_xls68_security",
+        "xrpl_sponsor_vote_oct17",
+        "xrpl_fixcleanup_vote"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "33/35 support; scheduled 2026-11-04 14:46 UTC if majority holds",
+      "status": "explorer snapshot",
+      "evidence": [
+        "xrpl_fixcleanup_vote"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -584,6 +843,37 @@
       "tests": [
         "Estimate direct XRP demand from fees, reserves, bridge turnover and liquidity-provider inventory separately from stablecoin transaction counts"
       ]
+    },
+    {
+      "id": "H7-sponsored-fees-shifts-xrp-demand",
+      "claim": "If XLS-68 Sponsor activates, end users may transact without holding XRP while sponsors bear fee/reserve obligations; this could shift XRP demand from users to institutional sponsors rather than eliminate it.",
+      "support": [
+        "XLS-68 specification allows one account to pay another's fees/reserves"
+      ],
+      "disconfirming_or_missing": [
+        "Sponsor not activated as of 2026-09-21; dated 2026-10-17 snapshot was 9/32",
+        "No public sponsor balances, sponsored-object counts or fee flows"
+      ],
+      "tests": [
+        "Track sponsored transaction counts and sponsor XRP balances after activation",
+        "Compare new-account retention and sponsor inventory against baseline"
+      ]
+    },
+    {
+      "id": "H8-institutional-privacy-mpt-not-xrp",
+      "claim": "XLS-96 could improve institutional MPT privacy but does not make native XRP transfers confidential; any institutional tokenization effect may not translate into direct XRP demand.",
+      "support": [
+        "XLS-96 is scoped to Multi-Purpose Tokens",
+        "ConfidentialTransfer was only 20/35 at the 2026-11-03 snapshot"
+      ],
+      "disconfirming_or_missing": [
+        "MPT issuers and auditor adoption remain unknown",
+        "No activated mainnet usage or XRP demand attribution"
+      ],
+      "tests": [
+        "Measure MPT issuance/holders and confidential transfer usage after activation",
+        "Separate MPT turnover from native XRP bridge and reserve demand"
+      ]
     }
   ],
   "source_quality": {
@@ -600,9 +890,14 @@
     "Bitnomial actual XRP collateral balances and realized product usage are unknown.",
     "Circle Q3 2026 results are scheduled for 2026-11-04 08:00 ET and were not yet published at cutoff.",
     "The exact Camilla Stephenson identity and complete channel inventory remain unresolved.",
-    "The intended ASK Coin identity and the exact source/meaning of 'actual capital' remain unresolved."
+    "The intended ASK Coin identity and the exact source/meaning of 'actual capital' remain unresolved.",
+    "Ripple's October 28, 2026 final RNTB approval announcement was not matched to a separate final OCC decision document in the OCC index at capture; actual bank commencement date is unknown.",
+    "XRPL Sponsor and DynamicMPT current validator-vote counts were not independently retrieved; retain dated statuses and do not infer current activation."
   ],
   "next_actions": [
+    "Recheck fixCleanup3_4_0 after its scheduled 2026-11-04 14:46 UTC activation window and verify the on-ledger EnableAmendment record.",
+    "Recheck Sponsor, ConfidentialTransfer, DynamicMPT, SingleAssetVault and LendingProtocol directly from the validated Amendments ledger object; record the exact ledger index, voting ledger, majority-start timestamp and activation ledger.",
+    "Obtain OCC's final Ripple National Trust Bank decision letter and commencement status; reconcile Ripple's 2026-10-28 issuer announcement with regulator records.",
     "Ingest Circle Q3 2026 results after the 2026-11-04 08:00 ET release and reconcile with Q2 reserve income, USDC circulation and Coinbase distribution costs.",
     "Extract Coinbase Q3 collateral tables into a structured feature with asset-level unknowns preserved.",
     "Obtain Bitnomial rule/approval records and monitor product-specific XRP collateral schedule changes.",

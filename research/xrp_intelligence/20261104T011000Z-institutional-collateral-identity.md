@@ -111,3 +111,50 @@ At the current cutoff the results had not yet been released.
 ## Forecast status
 
 No directional XRP forecast issued. Historical feature-store completeness, exchange-native reconciliation, leakage-safe walk-forward performance and probability calibration remain unverified.
+
+
+## Ripple National Trust Bank: date-sensitive correction
+
+The Kamilah Stevenson video titled [Ripple Just Became a BANK](https://www.youtube.com/watch?v=QslbjGQD0MU) was published on **December 14, 2025**. The OCC's December 12, 2025 letter granted only **preliminary conditional approval** and explicitly said Ripple National Trust Bank could not commence business until pre-opening requirements were met and final approval was granted. The video title therefore overstated the legal status at publication.
+
+Ripple announced on October 28, 2026 that it had received final OCC approval on October 27. The OCC decision index captured in this run still exposed the December 2025 conditional approval entry, not a separate final decision letter. The correct current classification is **final approval issuer-reported; separate OCC final decision document and actual bank commencement not independently located**.
+
+Sources:
+- OCC conditional approval letter: https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf
+- Ripple October 28 announcement: https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/
+- OCC decision index: https://occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html
+
+## XRPL amendment status: code, specification, voting and activation are different states
+
+The July 30, 2026 Kamilah video [XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This](https://www.youtube.com/watch?v=8xiy8w2YlfY) discusses multiple XRPL amendments. Their status must not be collapsed into one claim that all features are live:
+
+| Feature | Latest evidence in this run | Interpretation |
+|---|---|---|
+| PermissionDelegationV1_1 / XLS-75 | Reported activated Oct 8, 2026 | Live; limited delegated permissions, not master-key transfer |
+| BatchV1_1 / XLS-56 | Reported activated Oct 9, 2026 | Live; atomic transaction batching |
+| ConfidentialTransfer / XLS-96 | 20/35 validators (57.14%) around Nov 3 19:17 UTC | Not active; applies to MPTs, not native XRP |
+| Sponsor / XLS-68 | 9/32 (28.1%) in Oct 17 vote snapshot; not active as of Sep 21 disclosure | Current vote count not retrieved |
+| DynamicMPT / XLS-94 | 15/35 (42.9%) in Sep 4 snapshot | Current vote count not retrieved |
+| SingleAssetVault / XLS-65 | 21/35 (60%) around Nov 3 19:17 UTC | Below activation threshold |
+| LendingProtocol / XLS-66 | 19/35 (54.3%) around Nov 3 19:17 UTC | Below activation threshold |
+| fixCleanup3_4_0 | 33/35 (94.29%); scheduled Nov 4 14:46 UTC if majority persists | Maintenance fix bundle, not the Sponsor feature itself |
+
+XRPLWin's explorer reads amendment votes and activation records from the ledger, but it is still a third-party presentation layer. The next run should independently query the validated Amendments ledger object and record the exact ledger index, voting ledger, majority-start timestamp and EnableAmendment record.
+
+The Sponsor amendment has a particularly important economic implication: it is designed to let one account pay another account's fees/reserves. If activated, end users could transact without personally holding XRP while the sponsor still bears the fee/reserve obligation. This could shift demand toward institutional sponsors rather than eliminate the XRP requirement. No sponsor-balance or sponsored-transaction usage data is yet available.
+
+The XLS-68 security disclosure reported a reserve-accounting flaw during Devnet testing. A fix shipped in xrpld 3.4.0, but the fixCleanup3_4_0 activation window is separate from activation of Sponsor itself.
+
+Sources:
+- XLS-68 security disclosure: https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-aug2026
+- XLS-68 specification: https://xls.xrpl.org/xls/XLS-0068-sponsored-fees-and-reserves.html
+- XLS-96 specification: https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html
+- XRPL standards registry: https://xls.xrpl.org/
+- ConfidentialTransfer vote snapshot: https://xrplwin.com/amendment/ConfidentialTransfer
+- fixCleanup3_4_0 snapshot: https://xrplwin.com/amendment/fixCleanup3_4_0
+- Sponsor Oct 17 vote snapshot: https://www.coindaro.com/xrp-ledger-amendment-23-october-lending-vote/
+- DynamicMPT Sep 4 vote analysis: https://www.jakeclaver.com/xrpl-3-3-0-amendments-status/
+- Permission delegation activation report: https://unchainedcrypto.com/xrp-ledger-enables-account-delegation-as-a-token-minting-fix-lacks-two-validator-votes/
+- Batch activation report: https://xrplinsights.com/articles/batch-permission-delegation-deep-dive.html
+
+Do not confuse a final XLS specification, code in a server release, validator voting, sustained supermajority, and the actual on-ledger EnableAmendment activation record. These are separate states.
