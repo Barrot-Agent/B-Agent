@@ -34,5 +34,6 @@ def test_self_hosted_brain_secret_is_only_mapped_in_confirmed_deploy_step():
     assert 'if not secret.strip():' in deploy
     assert deploy.index("if not secret.strip():") < deploy.index("api.create_repo")
     assert deploy.index("if not secret.strip():") < deploy.index("api.upload_folder")
-    assert deploy.index("api.upload_folder") < deploy.index('api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)')
+    assert deploy.index("api.create_repo") < deploy.index('api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)')
+    assert deploy.index('api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)') < deploy.index("api.upload_folder")
     assert content.index("Verify explicit approval and exact main revision") < content.index("Deploy self_hosted_brain/")
