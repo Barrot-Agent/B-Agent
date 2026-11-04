@@ -94,11 +94,11 @@
       "transfer_date": "2026-10-29"
     },
     "cross_view_checks": {
-      "seven_day_binance_xrp_outflow_exceeds_30_day_xrp_asset_outflow_usd": true,
       "seven_day_xrp_outflow_usd_exceeds_30_day_xrp_asset_outflow_usd": true,
       "incident_transfer_time_value_exceeds_30_day_xrp_asset_outflow_usd": true,
       "transaction_level_membership_confirmed": false,
-      "same_metric_universe_confirmed": false
+      "same_metric_universe_confirmed": false,
+      "seven_day_binance_xrp_outflow_xrp_quantity_not_directly_comparable_to_usd_value": true
     }
   },
   "observations": [
