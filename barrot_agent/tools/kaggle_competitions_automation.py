@@ -46,6 +46,11 @@ log = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 DATA_DIR = Path(os.environ.get("KAGGLE_DATA_DIR", "/tmp/kaggle_data"))
 MAX_COMPETITIONS = int(os.environ.get("KAGGLE_MAX_COMPETITIONS", "5"))
+SUBMISSION_ALLOWLIST = {
+    slug.strip()
+    for slug in os.environ.get("KAGGLE_SUBMISSION_ALLOWLIST", "").split(",")
+    if slug.strip()
+}
 SUBMISSION_MESSAGE = os.environ.get(
     "KAGGLE_SUBMISSION_MESSAGE", "Baseline submission via B-Agent automation"
 )
@@ -83,11 +88,29 @@ def _build_api() -> KaggleApiExtended:
 
 
 def _list_active_competitions(api: KaggleApiExtended) -> list:
-    """Return competitions that are still accepting submissions."""
+    """Return only active competitions explicitly approved by exact slug."""
+    if not SUBMISSION_ALLOWLIST:
+        log.warning("No KAGGLE_SUBMISSION_ALLOWLIST supplied; refusing all submissions.")
+        return []
+
     comps = api.competitions_list(sort_by="latestDeadline")
-    active = [c for c in comps if not getattr(c, "isKernelsSubmissionsOnly", False)]
-    log.info("Found %d active competitions (showing up to %d).", len(active), MAX_COMPETITIONS)
-    return active[:MAX_COMPETITIONS]
+    active = [
+        c for c in comps
+        if not getattr(c, "isKernelsSubmissionsOnly", False)
+    ]
+    available_refs = {str(getattr(c, "ref", "")) for c in active}
+    selected = [
+        c for c in active
+        if str(getattr(c, "ref", "")) in SUBMISSION_ALLOWLIST
+    ]
+    missing = sorted(SUBMISSION_ALLOWLIST - available_refs)
+    if missing:
+        log.warning("Approved competition slugs not currently active: %s", missing)
+    log.info(
+        "Found %d allowlisted active competitions (limit %d).",
+        len(selected), MAX_COMPETITIONS
+    )
+    return selected[:MAX_COMPETITIONS]
 
 
 def _download_data(api: KaggleApiExtended, competition: str, dest: Path) -> bool:
@@ -211,6 +234,13 @@ def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> 
 
 
 def main() -> None:
+    if not SUBMISSION_ALLOWLIST:
+        log.warning(
+            "No explicit KAGGLE_SUBMISSION_ALLOWLIST supplied; "
+            "skipping before Kaggle authentication or API calls."
+        )
+        return
+
     api = _build_api()
     competitions = _list_active_competitions(api)
 

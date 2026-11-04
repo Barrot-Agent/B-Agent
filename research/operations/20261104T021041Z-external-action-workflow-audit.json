@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "barrot_external_action_workflow_audit",
+  "captured_at_utc": "2026-11-04T02:10:41Z",
+  "data_cutoff_utc": "2026-11-04T02:10:41Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_base_sha": "162f43d29970db9abebfec1b7872601a9d659037",
+  "source_containment_pr": 1620,
+  "findings": [
+    {
+      "id": "force-deploy-space",
+      "severity": "critical",
+      "status": "proposed_disabled",
+      "path": ".github/workflows/force-deploy-space.yml",
+      "confirmed": "Manual workflow_dispatch used HF_TOKEN and git push -f to the Hugging Face Space main branch without per-run confirmation.",
+      "mitigation": "Permissionless fail-closed no-op; the separate sync-huggingface workflow already has explicit YES confirmation and a non-force upload path."
+    },
+    {
+      "id": "huggingface-admin-delete-create",
+      "severity": "critical",
+      "status": "proposed_disabled",
+      "path": ".github/workflows/barrot-hf-admin.yml",
+      "confirmed": "Manual workflow issued Hugging Face repository DELETE and POST calls using HF_TOKEN without per-run approval.",
+      "mitigation": "Permissionless fail-closed no-op. Any future migration requires a separately reviewed plan and explicit authorization."
+    },
+    {
+      "id": "databricks-token-input",
+      "severity": "critical",
+      "status": "proposed_disabled",
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "confirmed": "Workflow accepted a Databricks PAT as workflow_dispatch input, passed it to gh secret set, then dispatched deployment. Workflow inputs are not a secret-storage channel and may be visible in run metadata to authorized repository users.",
+      "mitigation": "Remove the input and disable the workflow. Rotate secrets through the approved secret-management interface; never put PAT values in workflow inputs, comments or command-line arguments."
+    },
+    {
+      "id": "gumroad-public-writer",
+      "severity": "high",
+      "status": "proposed_disabled",
+      "paths": [
+        ".github/workflows/gumroad-metrics.yml",
+        "scripts/gumroad_metrics.py"
+      ],
+      "confirmed": "Weekly scheduled workflow held contents:write and committed a metrics JSON file to public main. The script calls GET /products rather than GET /sales and intends product aggregates, but prints the full product response to workflow logs.",
+      "mitigation": "Disable the scheduled writer pending a privacy-reviewed allowlisted aggregate schema and artifact-only delivery. Do not infer purchaser-level exposure from the inspected products endpoint."
+    },
+    {
+      "id": "barrot-self-upgrade",
+      "severity": "high",
+      "status": "proposed_gated",
+      "paths": [
+        ".github/workflows/barrot-self-upgrade.yml",
+        "scripts/barrot_self_upgrade.py"
+      ],
+      "confirmed": "Manual workflow had contents:write and pull-requests:write, invoked Groq-assisted code generation, and could create/push a candidate branch and open a PR. Candidate validation includes syntax checking but not the target repository full CI before PR creation. A separate unused CLI mode can push an audit artifact to main if invoked with --persist-audit-report; the inspected workflow does not pass that argument.",
+      "mitigation": "Require explicit YES for each run, restrict workflow ref to main, checkout main explicitly, retain PR-only candidate generation, and verify the workflow does not invoke direct-main persistence."
+    },
+    {
+      "id": "barrot-model-upload",
+      "severity": "high",
+      "status": "proposed_gated",
+      "path": ".github/workflows/barrot-merge.yml",
+      "confirmed": "Manual workflow uploaded a merged model to Hugging Face without explicit confirmation. model_name was interpolated directly into shell commands and mergekit used --trust-remote-code.",
+      "mitigation": "Require explicit YES, pass destination through an environment variable, validate a restrictive suffix allowlist, remove --trust-remote-code and keep upload in a separately gated job."
+    },
+    {
+      "id": "duplicate-model-upload",
+      "severity": "medium",
+      "status": "proposed_disabled",
+      "path": ".github/workflows/barrot-merge-manual.yml",
+      "confirmed": "Duplicate workflow had the same model-upload body and workflow name as barrot-merge.yml.",
+      "mitigation": "Disable duplicate entry point and direct operators to the single gated workflow."
+    },
+    {
+      "id": "factory-space-restart",
+      "severity": "high",
+      "status": "proposed_gated",
+      "path": ".github/workflows/barrot-restart-space.yml",
+      "confirmed": "Manual workflow called the Hugging Face factory restart endpoint using HF_TOKEN without explicit per-run confirmation.",
+      "mitigation": "Require confirm_external_change=YES before the job can read HF_TOKEN or call the restart endpoint."
+    },
+    {
+      "id": "approved-label-semantics",
+      "severity": "medium",
+      "status": "verified_limited",
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "confirmed": "Controlled approval workflow validates PR number, expected head SHA, open state, main base, same-repository origin and reason; it adds an approved label and comment but does not submit a GitHub review or merge.",
+      "mitigation": "Preserve action but document that label/comment are audit metadata, not a GitHub review or merge authorization."
+    },
+    {
+      "id": "already-confirmed-deploys",
+      "severity": "informational",
+      "status": "preserved",
+      "paths": [
+        ".github/workflows/deploy-databricks.yml",
+        ".github/workflows/sync-huggingface.yml"
+      ],
+      "confirmed": "Both workflows require confirm_external_change=YES with default NO and a job-level condition before external mutation.",
+      "mitigation": "Preserve existing per-run confirmation gates and add regression tests."
+    }
+  ],
+  "verification": {
+    "source_state": "Read-only inspection of public current main and source PR #1620 branch.",
+    "exact_head_ci": "pending",
+    "fail_closed_gate": "pending",
+    "no_external_actions_performed": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_secret_access": true,
+    "no_deployment": true,
+    "proposed_changes": "11 high-risk workflows quarantined in the integrated containment, Cross Analysis retained as read-only/artifact-only, eight residual external-action workflows adjusted, one new regression test plus the existing containment test registered in CI, and two append-only audit artifacts."
+  },
+  "prediction_status": "NOT_ISSUED",
+  "next_actions": [
+    "Verify exact-head CI and fail-closed gate on the fresh-main successor.",
+    "Review branch-protection and environment approval settings with authorized repository administration.",
+    "Keep external deployment, restart, token rotation and model upload unexecuted until a human approves a specific run.",
+    "Revisit Gumroad metrics only after allowlisting output fields, suppressing raw product response logs and switching to artifact-only storage."
+  ]
+}
