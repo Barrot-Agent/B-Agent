@@ -1,17 +1,28 @@
 name: Sync Self-Hosted Brain
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "self_hosted_brain/**"
   workflow_dispatch:
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this Space deployment"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
@@ -20,24 +31,21 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          set -euo pipefail
           python3 - << 'SCRIPT'
           from huggingface_hub import HfApi
           import os
-          api = HfApi(token=os.environ["HF_TOKEN"])
+          token = os.environ.get("HF_TOKEN", "")
+          if not token:
+              raise SystemExit("HF_TOKEN is required for this approved deployment")
+          api = HfApi(token=token)
           repo_id = "Scribedpengenius/Barrot-Brain-SelfHosted"
-          try:
-              api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
-          except Exception as e:
-              print("create_repo note:", e)
+          api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
           api.upload_folder(
               folder_path="self_hosted_brain",
               repo_id=repo_id,
               repo_type="space",
-              commit_message="Deploy self-hosted brain",
+              commit_message="Deploy self-hosted brain after explicit approval",
           )
-          secret = os.environ.get("BRAIN_SHARED_SECRET", "")
-          if secret:
-              api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
-              print("shared secret propagated")
           print("DEPLOYED")
           SCRIPT

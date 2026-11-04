@@ -1,25 +1,14 @@
-name: Rotate Databricks Token
+name: Rotate Databricks Token (disabled pending secure secret-rotation design)
 
 on:
-  workflow_dispatch:
-    inputs:
-      new_token:
-        description: Paste the new Databricks PAT here
-        required: true
+  workflow_dispatch: {}
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
-  rotate:
+  disabled:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - name: Set new secret
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh secret set DATABRICKS_TOKEN --body "${{ inputs.new_token }}"
-      - name: Verify by re-running deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run "Deploy to Databricks"
+      - name: Explain disabled state
+        run: echo "Disabled: the previous workflow accepted a token through workflow input, interpolated it into a shell command, changed a repository secret and triggered a deployment. No token is read or changed."

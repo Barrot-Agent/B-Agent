@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "barrot-v3-fresh-main-external-workflow-containment-20261103-run11",
+  "captured_at_utc": "2026-11-03T05:11:52Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_commit": "5e82b27205285257edef5ece404356c8900be73d",
+  "findings": [
+    {
+      "severity": "critical",
+      "path": ".github/workflows/barrot-hf-admin.yml",
+      "fact": "Manual workflow used HF_TOKEN to DELETE an existing Hugging Face Space and create another without a per-run approval gate.",
+      "proposed": "Disable inertly with empty permissions."
+    },
+    {
+      "severity": "high",
+      "path": ".github/workflows/barrot-merge.yml",
+      "fact": "Caller-controlled model_name was interpolated into shell commands while HF_TOKEN was available; model upload had no explicit per-run approval or slug validation.",
+      "proposed": "Require confirm_external_change=YES, validate a strict slug, pass through environment variables, quote paths and disable checkout credential persistence."
+    },
+    {
+      "severity": "high",
+      "path": ".github/workflows/barrot-merge-manual.yml",
+      "fact": "Duplicate model upload workflow had the same unvalidated shell interpolation and token exposure.",
+      "proposed": "Apply the same confirmation and input-validation controls."
+    },
+    {
+      "severity": "high",
+      "path": ".github/workflows/barrot-restart-space.yml",
+      "fact": "Manual workflow could factory-restart a Hugging Face Space using HF_TOKEN without confirmation.",
+      "proposed": "Require explicit YES, fail on HTTP errors and grant no GITHUB_TOKEN permissions."
+    },
+    {
+      "severity": "critical",
+      "path": ".github/workflows/capability-9-data-resolver.yml",
+      "fact": "Caller-supplied dataset was passed to a Groq-backed resolver using GROQ_API_KEY; workflow pushed generated results to main without data classification or a least-privilege adapter.",
+      "proposed": "Disable pending adapter, provenance and data-classification review."
+    },
+    {
+      "severity": "high",
+      "path": ".github/workflows/deploy-a2a-worker.yml",
+      "fact": "Push-to-main changes under a2a triggered Cloudflare deployment and Worker-secret uploads without per-run approval.",
+      "proposed": "Remove push trigger, require explicit YES, use contents:read and persist-credentials:false."
+    },
+    {
+      "severity": "high",
+      "path": ".github/workflows/sync-self-hosted-brain.yml",
+      "fact": "Push-to-main triggered Hugging Face Space deployment and could propagate BRAIN_SHARED_SECRET without explicit approval.",
+      "proposed": "Remove push trigger, require explicit YES, use contents:read and stop automatic shared-secret propagation."
+    },
+    {
+      "severity": "critical",
+      "path": ".github/workflows/task-allocator.yml",
+      "fact": "Workflow exposed GROQ_API_KEY, OPENAI_API_KEY and CHATGPT_TOKEN to an unverified allocator; it had contents:write and pull-requests:write and pushed allocation output to main.",
+      "proposed": "Disable until all nine platform adapters, permissions and data flows are tested."
+    },
+    {
+      "severity": "critical",
+      "path": ".github/workflows/force-deploy-space.yml",
+      "fact": "Manual workflow force-pushed hf_space/ to a Hugging Face Space using HF_TOKEN, with no confirmation gate.",
+      "proposed": "Disable until a reviewed non-force deployment design exists."
+    },
+    {
+      "severity": "critical",
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "fact": "Workflow accepted a Databricks PAT as workflow input, interpolated it into a shell command for gh secret set, then triggered a deployment; no confirmation gate or safe input handling.",
+      "proposed": "Disable until a secure secret-rotation flow with protected review and environment-based input is designed."
+    },
+    {
+      "severity": "high",
+      "path": ".github/workflows/barrot-self-upgrade.yml",
+      "fact": "Manual workflow granted contents:write and pull-requests:write, exposed GROQ_API_KEY, ran self-upgrade code and could push an audit artifact to the dispatched ref including main.",
+      "proposed": "Disable until branch-only execution, diff review and explicit authorization are enforced."
+    },
+    {
+      "severity": "informational",
+      "path": "tests/test_external_deploys_require_confirmation.py",
+      "fact": "Existing test module already covers manual/YES-gated Barrot Ops, Databricks Deploy, Hugging Face Sync and Databricks Bundle workflows.",
+      "proposed": "Extend the same CI-listed test module to cover the newly gated and disabled workflows."
+    }
+  ],
+  "source_pr": {
+    "number": 1558,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1558",
+    "base": "bbd33f9511be12dfe20fe69c7ba5c7eda8643187",
+    "head": "0a8c34311aea72979482bb44b736b6ea29ea7324",
+    "exact_head_ci": "41576540374",
+    "tests_passed": 348,
+    "subtests_passed": 8,
+    "fail_closed_gate": "41576540429",
+    "limitation": "Source PR is based on an older main snapshot; its exact-head CI does not validate this fresh-main successor."
+  },
+  "changes": [
+    ".github/workflows/barrot-hf-admin.yml",
+    ".github/workflows/barrot-merge-manual.yml",
+    ".github/workflows/barrot-merge.yml",
+    ".github/workflows/barrot-restart-space.yml",
+    ".github/workflows/capability-9-data-resolver.yml",
+    ".github/workflows/deploy-a2a-worker.yml",
+    ".github/workflows/sync-self-hosted-brain.yml",
+    ".github/workflows/task-allocator.yml",
+    ".github/workflows/force-deploy-space.yml",
+    ".github/workflows/rotate-databricks-token.yml",
+    ".github/workflows/barrot-self-upgrade.yml",
+    "tests/test_external_deploys_require_confirmation.py",
+    "research/operations/20261103T051152Z-fresh-main-external-action-containment.json",
+    "research/xrp_intelligence/HANDOFF_20261103T051152Z.md",
+    "tests/test_v3_scripts.py"
+  ],
+  "limitations": [
+    "YES input gates are per-run operator confirmations, not protected GitHub Environment reviewer approvals.",
+    "The Hugging Face model upload and Cloudflare deploy workflows remain capable of external changes when an authorized dispatcher selects YES; no such dispatch was performed.",
+    "Disabled workflows are not deleted; their underlying scripts remain for separate review.",
+    "Other active external workflows outside this scope remain to be audited; this PR does not claim all repository workflows are safe.",
+    "No provider tokens or repository secrets were read."
+  ],
+  "verification": {
+    "base_commit": "5e82b27205285257edef5ece404356c8900be73d",
+    "branch": "security/fresh-main-external-gates-20261103T0512Z",
+    "local_tests": "NOT_EXECUTED",
+    "exact_head_ci": "RERUN_PENDING_AFTER_DEPENDENCY_AUDIT_APPEND",
+    "fail_closed_gate": "PENDING",
+    "main_modified": false,
+    "external_actions_executed": false,
+    "ci_failure_observed": {
+      "run_id": 41582715794,
+      "conclusion": "failure",
+      "summary": "350 passed, 1 failed, 8 subtests passed",
+      "failing_test": "tests/test_v3_scripts.py::test_self_upgrade_workflow_verifies_same_ref_without_branch_switch",
+      "root_cause": "Existing test encoded the previous active self-upgrade workflow invariant (same-ref checkout and push). The new containment intentionally disables that workflow, so the old assertion was contradictory.",
+      "correction": "Replaced the obsolete test with assertions that the self-upgrade workflow is inert, has empty permissions, exposes no provider token and contains no push capability.",
+      "rerun": "PENDING"
+    },
+    "previous_verified_head": {
+      "sha": "ba5c3eebcb10f549473de779db70c54979dd9fb9",
+      "ci_run": 41582816162,
+      "ci_result": "351 passed, 8 subtests passed in 7.87s",
+      "fail_closed_run": 41582816052,
+      "fail_closed_result": "success"
+    }
+  },
+  "next_actions": [
+    "Create a draft PR against main.",
+    "Verify exact-head CI and fail-closed gate and inspect logs.",
+    "Audit remaining active workflow files for external mutation and broad write permissions.",
+    "Keep all changes unmerged until explicit approval."
+  ],
+  "dependency_audit": {
+    "captured_at_utc": "2026-11-03T05:18:47Z",
+    "files": {
+      "requirements.txt": {
+        "blob_sha": "8c81e45483ed5092afe836070d8aee1d28e6567d",
+        "direct_dependencies": 11,
+        "version_constraints": "lower bounds only; no exact pins"
+      },
+      "pyproject.toml": {
+        "blob_sha": "ff06168717ee64e0a729aee87d7b0aef62523bf8",
+        "direct_dependencies": 11,
+        "version_constraints": "duplicates requirements.txt lower bounds"
+      },
+      "Dockerfile": {
+        "blob_sha": "a5f493275128ceb9ca08f195dad25d9aaf520b62",
+        "base_image": "python:3.10-slim",
+        "pip_install": "pip install --upgrade pip && pip install -r requirements.txt"
+      },
+      "a2a/package.json": {
+        "blob_sha": "ffe7e96d77892a96e7540985bf01c3169383a3be",
+        "dependencies": []
+      }
+    },
+    "lockfiles_not_found": [
+      "uv.lock",
+      "poetry.lock",
+      "Pipfile.lock",
+      "package-lock.json",
+      "a2a/package-lock.json"
+    ],
+    "ci": {
+      "python_version": "3.11",
+      "installs": "pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests",
+      "does_not_install_full_production_requirements": true,
+      "coverage_gap": "Torch, Transformers, Streamlit, Accelerate, bitsandbytes, safetensors, Pillow and python-dotenv production compatibility is not validated by core CI."
+    },
+    "risks": [
+      "Unbounded direct dependency versions and no Python lockfile reduce reproducibility.",
+      "Python project declares >=3.10, Docker uses mutable python:3.10-slim, and CI tests only Python 3.11.",
+      "Docker upgrades pip without pinning and installs current apt packages at build time.",
+      "GitHub Actions are referenced by major-version tags rather than immutable commit SHAs."
+    ],
+    "non_findings": [
+      "a2a/package.json declares no npm dependencies, so the missing npm lockfile is not presently evidence of unresolved npm packages.",
+      "No specific dependency compromise was identified by this limited manifest inspection."
+    ],
+    "not_executed": [
+      "No pip-audit, OSV, Dependabot-alert, SBOM or full dependency vulnerability scan was run.",
+      "No dependency pins or upgrades were applied because runtime, architecture and GPU/bitsandbytes compatibility were not validated."
+    ]
+  }
+}
