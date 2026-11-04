@@ -87,3 +87,12 @@ These announcements strengthen the integrated enterprise-stack hypothesis. They 
 ## Circle Q3 results event
 
 Circle Investor Relations lists Q3 2026 results for **November 4, 2026 at 08:00 ET / 13:00 UTC**. The event had not occurred at this addendum's 03:05:46 UTC capture. The next ingestion must use the actual press release, SEC filing, reserve metrics, distribution-cost disclosures, Coinbase economics and management guidance; the event listing itself is not evidence of results.
+
+
+## Exact-name YouTube and "actual capital" disambiguation
+
+The requested name is **Camilla Stephenson**. Current public searches did not verify a channel with that exact identity. The strongest candidate is a separate **Kamilah Stevenson** channel indexed with channel ID `UCqUPJMQdkCN6lsLVDnichPA`; one indexed transcript has the speaker say "Camila Stevenson." These are not assumed to be the same person.
+
+Two third-party indexes disagree materially: Vling reports 143K subscribers and 1.2K videos, while CryptoKrios reports 103K and 633 videos without a matched channel ID. The existing 12 candidate video IDs remain a non-exhaustive Kamilah/Camila index, not a verified inventory of videos by Camilla Stephenson.
+
+The exact phrase searches for **"actual capital"** did not establish an XRP, ASK Coin or Japanese SBIC meaning. Results included unrelated regulatory-capital tables. Preserve the phrase as unresolved; do not infer that it means XRP market inflows or SBIC investment capital.
