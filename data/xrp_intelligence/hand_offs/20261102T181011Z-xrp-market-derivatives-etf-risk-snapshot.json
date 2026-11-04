@@ -1,0 +1,454 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-market-derivatives-etf-20261102T181011Z",
+  "captured_at_utc": "2026-11-02T18:10:11Z",
+  "data_cutoff_utc": "2026-11-02T18:10:11Z",
+  "purpose": "Record unsynchronized XRP spot, futures positioning and ETF flow observations with explicit provider coverage and limitations.",
+  "status": "RESEARCH_ONLY",
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Provider disagreement, unsynchronized captures and partial coverage do not support a calibrated directional forecast."
+  },
+  "sources": [
+    {
+      "source_id": "liqwall-xrp-20261102",
+      "publisher": "Liqwall",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T08:32:00Z",
+      "url": "https://liqwall.com/coins/xrp",
+      "independence_group": "liqwall-market-aggregation",
+      "evidence_class": "market_data_aggregator",
+      "claims": [
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    {
+      "source_id": "tradradar-xrp-20261102",
+      "publisher": "TradRadar",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T09:45:00Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "independence_group": "tradradar-market-aggregation",
+      "evidence_class": "market_data_aggregator",
+      "claims": [
+        "M4",
+        "M5",
+        "M6"
+      ]
+    },
+    {
+      "source_id": "coinmarketcap-xrp-20261102-a",
+      "publisher": "CoinMarketCap",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": null,
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "independence_group": "coinmarketcap-market-data",
+      "evidence_class": "market_data_aggregator",
+      "claims": [
+        "M7"
+      ]
+    },
+    {
+      "source_id": "coinmarketcap-xrp-20261102-b",
+      "publisher": "CoinMarketCap",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": null,
+      "url": "https://coinmarketcap.com/currencies/xrp/?market=spot",
+      "independence_group": "coinmarketcap-market-data",
+      "evidence_class": "market_data_aggregator",
+      "claims": [
+        "M8"
+      ]
+    },
+    {
+      "source_id": "tradingdigits-xrp-etf-20261102",
+      "publisher": "TradingDigits",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T00:39:12Z",
+      "url": "https://www.tradingdigits.io/ar/xrp-etf-inflows-tracker",
+      "independence_group": "tradingdigits-etf-aggregation",
+      "evidence_class": "aggregated_fund_flow_data",
+      "claims": [
+        "M9",
+        "M10"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "O1",
+      "source_id": "liqwall-xrp-20261102",
+      "timestamp_utc": "2026-11-02T08:32:00Z",
+      "metric": "XRP/USD reference price",
+      "value": 1.25,
+      "unit": "USD",
+      "coverage": "provider page aggregate",
+      "quality": "timestamped_provider_observation"
+    },
+    {
+      "observation_id": "O2",
+      "source_id": "liqwall-xrp-20261102",
+      "timestamp_utc": "2026-11-02T08:32:00Z",
+      "metric": "XRP futures open interest",
+      "value": 1350000000,
+      "unit": "USD",
+      "coverage": "all exchanges in Liqwall's tracked set",
+      "quality": "timestamped_provider_observation"
+    },
+    {
+      "observation_id": "O3",
+      "source_id": "liqwall-xrp-20261102",
+      "timestamp_utc": "2026-11-02T08:32:00Z",
+      "metric": "XRP OI-weighted funding",
+      "value": 0.004,
+      "unit": "percent per 8 hours",
+      "coverage": "tracked exchanges",
+      "quality": "timestamped_provider_observation"
+    },
+    {
+      "observation_id": "O4",
+      "source_id": "liqwall-xrp-20261102",
+      "timestamp_utc": "2026-11-02T08:32:00Z",
+      "metric": "Binance XRP account long share",
+      "value": 71.7,
+      "unit": "percent of accounts",
+      "coverage": "Binance accounts with XRP positions",
+      "quality": "account_count_not_notional"
+    },
+    {
+      "observation_id": "O5",
+      "source_id": "liqwall-xrp-20261102",
+      "timestamp_utc": "2026-11-02T08:32:00Z",
+      "metric": "XRP liquidations",
+      "value": 1300000,
+      "unit": "USD over 24 hours",
+      "coverage": "tracked venues; approximately USD 1.0M longs and USD 273K shorts",
+      "quality": "partial_provider_coverage"
+    },
+    {
+      "observation_id": "O6",
+      "source_id": "tradradar-xrp-20261102",
+      "timestamp_utc": "2026-11-02T09:45:00Z",
+      "metric": "XRP mark price",
+      "value": 1.2518,
+      "unit": "USD",
+      "coverage": "provider mark price",
+      "quality": "15_minute_delay_reported"
+    },
+    {
+      "observation_id": "O7",
+      "source_id": "tradradar-xrp-20261102",
+      "timestamp_utc": "2026-11-02T09:45:00Z",
+      "metric": "XRP futures open interest",
+      "value": 1920000000,
+      "unit": "USD",
+      "coverage": "7 exchanges",
+      "quality": "timestamped_provider_observation"
+    },
+    {
+      "observation_id": "O8",
+      "source_id": "tradradar-xrp-20261102",
+      "timestamp_utc": "2026-11-02T09:45:00Z",
+      "metric": "XRP OI-weighted funding",
+      "value": 0.0075,
+      "unit": "percent per 8 hours",
+      "coverage": "7 exchanges",
+      "quality": "timestamped_provider_observation"
+    },
+    {
+      "observation_id": "O9",
+      "source_id": "tradradar-xrp-20261102",
+      "timestamp_utc": "2026-11-02T09:45:00Z",
+      "metric": "XRP long-account share",
+      "value": 78.1,
+      "unit": "percent of accounts",
+      "coverage": "5 exchanges",
+      "quality": "account_count_not_notional"
+    },
+    {
+      "observation_id": "O10",
+      "source_id": "tradradar-xrp-20261102",
+      "timestamp_utc": "2026-11-02T09:45:00Z",
+      "metric": "XRP liquidations",
+      "value": 1370000,
+      "unit": "USD minimum over 24 hours",
+      "coverage": "5 exchanges; approximately USD 1.05M longs and USD 317K shorts",
+      "quality": "lower_bound_partial_coverage"
+    },
+    {
+      "observation_id": "O11",
+      "source_id": "coinmarketcap-xrp-20261102-a",
+      "timestamp_utc": null,
+      "metric": "XRP spot price",
+      "value": 1.24,
+      "unit": "USD",
+      "coverage": "global aggregate page",
+      "quality": "retrieval_time_not_provider_timestamped"
+    },
+    {
+      "observation_id": "O12",
+      "source_id": "coinmarketcap-xrp-20261102-a",
+      "timestamp_utc": null,
+      "metric": "XRP market capitalization",
+      "value": 79050000000,
+      "unit": "USD",
+      "coverage": "global aggregate page",
+      "quality": "retrieval_time_not_provider_timestamped"
+    },
+    {
+      "observation_id": "O13",
+      "source_id": "coinmarketcap-xrp-20261102-a",
+      "timestamp_utc": null,
+      "metric": "XRP 24-hour spot volume",
+      "value": 778550000,
+      "unit": "USD",
+      "coverage": "global aggregate page",
+      "quality": "retrieval_time_not_provider_timestamped"
+    },
+    {
+      "observation_id": "O14",
+      "source_id": "coinmarketcap-xrp-20261102-a",
+      "timestamp_utc": null,
+      "metric": "XRP circulating supply",
+      "value": 63350000000,
+      "unit": "XRP",
+      "coverage": "global aggregate page",
+      "quality": "retrieval_time_not_provider_timestamped"
+    },
+    {
+      "observation_id": "O15",
+      "source_id": "coinmarketcap-xrp-20261102-b",
+      "timestamp_utc": null,
+      "metric": "XRP spot price",
+      "value": 1.25,
+      "unit": "USD",
+      "coverage": "spot-filtered aggregate page",
+      "quality": "retrieval_time_not_provider_timestamped"
+    },
+    {
+      "observation_id": "O16",
+      "source_id": "coinmarketcap-xrp-20261102-b",
+      "timestamp_utc": null,
+      "metric": "XRP market capitalization",
+      "value": 79430000000,
+      "unit": "USD",
+      "coverage": "spot-filtered aggregate page",
+      "quality": "retrieval_time_not_provider_timestamped"
+    },
+    {
+      "observation_id": "O17",
+      "source_id": "coinmarketcap-xrp-20261102-b",
+      "timestamp_utc": null,
+      "metric": "XRP 24-hour volume",
+      "value": 1230000000,
+      "unit": "USD",
+      "coverage": "spot-filtered aggregate page",
+      "quality": "retrieval_time_not_provider_timestamped"
+    },
+    {
+      "observation_id": "O18",
+      "source_id": "tradingdigits-xrp-etf-20261102",
+      "timestamp_utc": "2026-11-02T00:39:12Z",
+      "metric": "XRP spot ETF net flow 2026-10-26",
+      "value": -3.61,
+      "unit": "USD millions",
+      "coverage": "five listed funds",
+      "quality": "aggregated_daily_flow"
+    },
+    {
+      "observation_id": "O19",
+      "source_id": "tradingdigits-xrp-etf-20261102",
+      "timestamp_utc": "2026-11-02T00:39:12Z",
+      "metric": "XRP spot ETF net flow 2026-10-27",
+      "value": 0,
+      "unit": "USD millions",
+      "coverage": "five listed funds",
+      "quality": "aggregated_daily_flow"
+    },
+    {
+      "observation_id": "O20",
+      "source_id": "tradingdigits-xrp-etf-20261102",
+      "timestamp_utc": "2026-11-02T00:39:12Z",
+      "metric": "XRP spot ETF net flow 2026-10-28",
+      "value": 0,
+      "unit": "USD millions",
+      "coverage": "five listed funds",
+      "quality": "aggregated_daily_flow"
+    },
+    {
+      "observation_id": "O21",
+      "source_id": "tradingdigits-xrp-etf-20261102",
+      "timestamp_utc": "2026-11-02T00:39:12Z",
+      "metric": "XRP spot ETF net flow 2026-10-29",
+      "value": 8.43,
+      "unit": "USD millions",
+      "coverage": "five listed funds",
+      "quality": "aggregated_daily_flow"
+    },
+    {
+      "observation_id": "O22",
+      "source_id": "tradingdigits-xrp-etf-20261102",
+      "timestamp_utc": "2026-11-02T00:39:12Z",
+      "metric": "XRP spot ETF net flow 2026-10-30",
+      "value": -0.49,
+      "unit": "USD millions",
+      "coverage": "five listed funds",
+      "quality": "aggregated_daily_flow"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "M1",
+      "classification": "PROVIDER_REPORTED",
+      "statement": "Liqwall's 2026-11-02 08:32 UTC snapshot reports XRP at USD 1.25 and tracked futures open interest of USD 1.35B.",
+      "limitations": [
+        "Provider coverage is not identical to other aggregators."
+      ]
+    },
+    {
+      "claim_id": "M2",
+      "classification": "PROVIDER_REPORTED",
+      "statement": "Liqwall reports OI-weighted funding of +0.004% per eight hours and Binance account long share of 71.7%.",
+      "interpretation": "Positive funding means longs pay shorts; account share is not notional exposure.",
+      "limitations": [
+        "Not a directional forecast."
+      ]
+    },
+    {
+      "claim_id": "M3",
+      "classification": "PROVIDER_REPORTED",
+      "statement": "Liqwall reports at least USD 1.3M XRP liquidations over 24 hours, approximately USD 1.0M longs and USD 273K shorts.",
+      "limitations": [
+        "Partial venue coverage."
+      ]
+    },
+    {
+      "claim_id": "M4",
+      "classification": "PROVIDER_REPORTED",
+      "statement": "TradRadar's 2026-11-02 09:45 UTC snapshot reports XRP mark price USD 1.2518 and USD 1.92B open interest across seven exchanges.",
+      "limitations": [
+        "Provider coverage and contract set may differ from Liqwall."
+      ]
+    },
+    {
+      "claim_id": "M5",
+      "classification": "PROVIDER_REPORTED",
+      "statement": "TradRadar reports OI-weighted funding +0.0075% per eight hours and 78.1% long-account share across five exchanges.",
+      "interpretation": "Account counts are not notional exposure; funding is a crowding/carry measure.",
+      "limitations": [
+        "Not a directional forecast."
+      ]
+    },
+    {
+      "claim_id": "M6",
+      "classification": "PROVIDER_REPORTED",
+      "statement": "TradRadar reports at least USD 1.37M liquidations over 24 hours, approximately USD 1.05M longs and USD 317K shorts.",
+      "limitations": [
+        "Five-exchange partial coverage; lower-bound estimate."
+      ]
+    },
+    {
+      "claim_id": "M7",
+      "classification": "PROVIDER_REPORTED_UNSYNCHRONIZED",
+      "statement": "CoinMarketCap's general XRP page showed approximately USD 1.24 price, USD 79.05B market cap, USD 778.55M 24-hour volume and 63.35B circulating supply during November 2 retrieval.",
+      "limitations": [
+        "No exact provider timestamp was exposed."
+      ]
+    },
+    {
+      "claim_id": "M8",
+      "classification": "PROVIDER_REPORTED_UNSYNCHRONIZED",
+      "statement": "A separate CoinMarketCap spot-filtered page showed approximately USD 1.25 price, USD 79.43B market cap and USD 1.23B 24-hour volume during the same retrieval window.",
+      "limitations": [
+        "No exact provider timestamp; not synchronized with M7."
+      ]
+    },
+    {
+      "claim_id": "M9",
+      "classification": "AGGREGATED_DAILY_FUND_FLOW",
+      "statement": "TradingDigits reports five-fund spot ETF daily net flows of -USD 3.61M on Oct 26, zero Oct 27, zero Oct 28, +USD 8.43M Oct 29 and -USD 0.49M Oct 30.",
+      "derived_calculation": {
+        "value": 4.33,
+        "unit": "USD millions",
+        "formula": "-3.61 + 0 + 0 + 8.43 - 0.49",
+        "label": "five-session net flow"
+      },
+      "limitations": [
+        "Aggregator's five-fund scope may differ from broader ETF trackers; not an issuer-by-issuer custody reconciliation."
+      ]
+    },
+    {
+      "claim_id": "M10",
+      "classification": "DATA_QUALITY_FINDING",
+      "statement": "The two timestamped futures aggregators differ by USD 570M in open interest (USD 1.35B vs USD 1.92B) within a 73-minute observation gap.",
+      "derived_calculation": {
+        "value": 1.4222,
+        "formula": "1.92 / 1.35",
+        "label": "TradRadar total is approximately 1.42x Liqwall total"
+      },
+      "interpretation": "Do not average these values. Normalize venue/contract coverage, quote currency, mark/index methodology and timestamps first.",
+      "limitations": [
+        "The discrepancy may be explained by venue coverage and contract inclusion; it does not establish provider error."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "statement": "Positive funding and long-heavy account ratios indicate directional crowding and potential long-liquidation sensitivity, but not a price direction.",
+      "supporting_evidence": [
+        "M2",
+        "M5",
+        "M3",
+        "M6"
+      ],
+      "disconfirming_evidence": [
+        "Account counts may not reflect notional positioning; partial liquidations may omit venues"
+      ],
+      "status": "RISK_INDICATOR_ONLY"
+    },
+    {
+      "hypothesis_id": "H2",
+      "statement": "The five-session ETF net inflow of approximately USD 4.33M indicates modest positive net creations in the captured five-fund scope, but may be immaterial relative to market turnover and may not offset other flows.",
+      "supporting_evidence": [
+        "M9"
+      ],
+      "disconfirming_evidence": [
+        "Two outflow days; zero-flow days; other trackers use different product coverage"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H3",
+      "statement": "The OI gap is mainly coverage/methodology and timestamp related rather than a true market-state contradiction.",
+      "supporting_evidence": [
+        "M1",
+        "M4",
+        "M10"
+      ],
+      "disconfirming_evidence": [
+        "No provider contract-level reconciliation was captured"
+      ],
+      "status": "OPEN"
+    }
+  ],
+  "data_quality_controls": [
+    "Do not average unsynchronized CoinMarketCap price/volume observations.",
+    "Do not average Liqwall and TradRadar open interest; normalize venue and contract coverage first.",
+    "Do not interpret account long/short ratios as notional exposure.",
+    "Do not annualize funding without stating simple-versus-compounded convention.",
+    "Do not treat modelled liquidation heatmaps as actual exchange position levels.",
+    "ETF flows are daily net creations/redemptions for the stated five-fund scope; do not conflate with AUM or cumulative holdings.",
+    "No raw API payloads or cryptographic payload hashes were captured in this web-search snapshot; these records are not yet production feature-store data."
+  ],
+  "next_actions": [
+    "Capture raw exchange/aggregator API payloads with provider timestamps and hashes for a common cutoff.",
+    "Reconcile contract-level open interest across Binance, Bybit, OKX, Gate, Bitget, Hyperliquid and other included venues.",
+    "Capture funding history and liquidation event records by contract and venue.",
+    "Obtain issuer-by-issuer ETF share creations/redemptions and daily XRP trust holdings.",
+    "Join ETF flows with spot order-book depth and exchange XRP balances at common timestamps.",
+    "Do not issue forecasts until the fixed-horizon evaluation-attestation verifier and calibrated walk-forward record are operational."
+  ]
+}

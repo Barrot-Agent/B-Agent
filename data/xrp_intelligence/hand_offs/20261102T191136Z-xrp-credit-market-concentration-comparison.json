@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_credit_market_concentration_comparison",
+  "created_at_utc": "2026-11-02T19:11:36Z",
+  "forecast_status": "NOT_ISSUED",
+  "source_family": "MorphoWatch pages backed by Morpho API; both markets are one provider-independence group.",
+  "market_comparison": {
+    "cbxrp_usdc_base": {
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "provider_updated_at_utc": "2026-11-02T16:31:00Z",
+      "supplied_usdc_usd": 66420000,
+      "borrowed_usdc_usd": 59260000,
+      "utilization_pct": 89.2,
+      "borrowers_reported": 12056,
+      "top_three_borrower_amounts_usd_approx": [
+        205000,
+        205000,
+        204000
+      ],
+      "top_three_borrower_debt_usd_approx": 614000,
+      "top_three_borrower_debt_share_pct_approx": 1.04,
+      "top_three_vault_allocations_usd": [
+        20180000,
+        16380000,
+        14870000
+      ],
+      "top_three_vault_allocations_usd_total": 51430000,
+      "top_three_vault_share_of_market_supply_pct_approx": 77.43,
+      "top_ten_vault_allocations_usd_reported": 58020000,
+      "top_ten_vault_share_of_market_supply_pct_approx": 87.35,
+      "collateral_cbXRP": 118750000,
+      "collateral_value_usd": 148100000,
+      "borrow_apy_pct": 6.89,
+      "supply_apy_pct": 6.12,
+      "liquidation_ltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "source_url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/"
+    },
+    "fxrp_rlusd_ethereum": {
+      "market_id": "0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96",
+      "provider_updated_at_utc": "2026-11-02T18:11:00Z",
+      "supplied_rlusd_usd": 9350000,
+      "borrowed_rlusd_usd": 8450000,
+      "utilization_pct": 90.3,
+      "borrowers_reported": 57,
+      "top_three_borrower_amounts_usd": [
+        3150000,
+        2910000,
+        1610000
+      ],
+      "top_three_borrower_debt_usd": 7670000,
+      "top_three_borrower_debt_share_pct": 90.77,
+      "top_three_borrower_health_factors": [
+        1.68,
+        1.5,
+        1.27
+      ],
+      "top_three_price_declines_to_liquidation_pct": [
+        40.3,
+        33.2,
+        21.2
+      ],
+      "lowest_health_factor_among_displayed_top_ten": 1.19,
+      "associated_price_decline_to_liquidation_pct": 16.3,
+      "lending_vault": "Sentora RLUSD Main V2",
+      "lending_vault_amount_usd": 9260000,
+      "lending_vault_market_supply_share_pct_approx": 99.04,
+      "lending_vault_total_deposits_usd": 403400000,
+      "collateral_fxrp": 13490000,
+      "collateral_value_usd": 16770000,
+      "borrow_apy_pct": 7.92,
+      "supply_apy_pct": 7.13,
+      "liquidation_ltv_pct": 77,
+      "liquidation_bonus_pct": 7.41,
+      "source_url": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/"
+    }
+  },
+  "derived_comparison": {
+    "fxrp_top_three_borrower_share_divided_by_cbxrp_top_three_share_approx": 87.66,
+    "cbxrp_top_three_lender_vault_share_pct_approx": 77.43,
+    "fxrp_single_displayed_vault_share_pct_approx": 99.04,
+    "interpretation": "The captured cbXRP market has a much broader displayed borrower distribution but a top-three-vault supply concentration of about 77.4%. The FXRP market has a highly concentrated displayed borrower distribution and approximately 99.0% of its supply from one named vault. This is a provider-snapshot comparison, not beneficial-owner identification or a complete protocol-wide concentration analysis."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "C1",
+      "claim": "The cbXRP market's larger displayed borrower count and low top-three debt share indicate broader address-level borrowing distribution.",
+      "supporting": "12,056 reported open loans; top three displayed positions total about 1.04% of debt.",
+      "disconfirming": "Addresses are not natural persons; account splitting, aggregators, smart accounts and related-party wallets are not resolved.",
+      "status": "provisional_onchain_inference"
+    },
+    {
+      "id": "C2",
+      "claim": "The FXRP/RLUSD market is more exposed to borrower concentration and single-vault liquidity dependency.",
+      "supporting": "57 reported borrowers; top three hold about 90.77% of debt; one named vault supplies about 99.04% of market supply.",
+      "disconfirming": "A single vault can itself be diversified across depositors; positions can change quickly; no legal beneficial ownership is known.",
+      "status": "risk_hypothesis"
+    },
+    {
+      "id": "C3",
+      "claim": "The two markets' near-90% utilization is partly a function of Morpho rate-model target utilization rather than independent evidence of synchronized demand.",
+      "supporting": "MorphoWatch describes 90% target utilization for both markets.",
+      "disconfirming": "Both markets show real outstanding debt and posted collateral; the relative influence of rate-model targeting is not quantified.",
+      "status": "counter_hypothesis"
+    },
+    {
+      "id": "C4",
+      "claim": "The lower 62.5% LLTV in cbXRP/USDC provides a larger collateral buffer than FXRP/RLUSD at 77%, all else equal.",
+      "supporting": "Published Morpho market parameters.",
+      "disconfirming": "Oracle behavior, borrower leverage, collateral liquidity, bridge/redemption risk and liquidation bonus differ; LLTV alone is not a full risk ranking.",
+      "status": "parameter_comparison"
+    }
+  ],
+  "source_and_quality_limits": [
+    "Both market pages use Morpho API data and are not independent corroborating providers.",
+    "The two provider update times differ by 100 minutes.",
+    "Borrower counts and positions are onchain addresses/loans, not verified legal persons.",
+    "The largest-borrower tables are provider-displayed top positions, not a full beneficial-owner concentration analysis.",
+    "The lender-vault allocations describe Morpho market supply, not vault-wide investor concentration.",
+    "No direct trace of borrowed stablecoin proceeds into spot XRP purchases was performed.",
+    "No liquidation-to-native-XRP-sale causal chain was established."
+  ],
+  "next_actions": [
+    "Replay the Morpho market state at pinned Base and Ethereum block heights.",
+    "Resolve related-wallet and smart-account clustering only where lawful public evidence supports it; retain unknowns.",
+    "Track vault-level allocation and withdrawable liquidity separately from total deposits.",
+    "Measure changes in top-three debt concentration and health factors over time.",
+    "Trace liquidator collateral receipts before making any claim about subsequent native XRP sales."
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "fxrp-rlusd-morpho-actual-capital-20261102T181819Z",
+  "captured_at_utc": "2026-11-02T18:18:19Z",
+  "data_cutoff_utc": "2026-11-02T18:18:19Z",
+  "purpose": "Resolve the exact 'actual capital' claim and quantify the live FXRP/RLUSD collateral market using Flare's published architecture, Morpho's protocol UI and an independent Morpho API/blockchain aggregator.",
+  "status": "RESEARCH_ONLY",
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Collateral utilization and concentration describe credit-market structure and liquidation risk, not a calibrated directional XRP price forecast."
+  },
+  "sources": [
+    {
+      "source_id": "flare-fxrp-year-one-20260924",
+      "publisher": "Flare",
+      "published_at": "2026-09-24",
+      "url": "https://flare.network/news/one-year-of-fxrp-on-flare",
+      "independence_group": "flare-official",
+      "evidence_class": "project_primary",
+      "claims": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ]
+    },
+    {
+      "source_id": "flare-sentora-morpho-20260803",
+      "publisher": "Flare",
+      "published_at": "2026-08-03",
+      "url": "https://flare.network/es/news/fxrp-collateral-expands-sentoras-rlusd-vault-on-morpho",
+      "independence_group": "flare-official",
+      "evidence_class": "project_primary",
+      "claims": [
+        "F7",
+        "F8",
+        "F9"
+      ]
+    },
+    {
+      "source_id": "morphowatch-fxrp-rlusd-20261102",
+      "publisher": "MorphoWatch",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T17:21:00Z",
+      "url": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/",
+      "independence_group": "morphowatch-morpho-api-blockchain",
+      "evidence_class": "independent_aggregator_from_public_api_and_chain",
+      "claims": [
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17"
+      ]
+    },
+    {
+      "source_id": "morphowatch-sentora-vault-20261102",
+      "publisher": "MorphoWatch",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T09:01:00Z",
+      "url": "https://morphowatch.com/vaults/ethereum/sentora-rlusd-main/",
+      "independence_group": "morphowatch-morpho-api-blockchain",
+      "evidence_class": "independent_aggregator_from_public_api_and_chain",
+      "claims": [
+        "F18",
+        "F19",
+        "F20"
+      ]
+    },
+    {
+      "source_id": "morpho-protocol-ui-20261102",
+      "publisher": "Morpho Association interface",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T18:18:00Z",
+      "url": "https://app.morpho.org/ethereum/variable/0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96/rlusd-fxrp",
+      "independence_group": "morpho-protocol-interface",
+      "evidence_class": "protocol_primary_ui",
+      "claims": [
+        "F21",
+        "F22",
+        "F23"
+      ]
+    },
+    {
+      "source_id": "flare-actual-capital-phrase-20250502",
+      "publisher": "Flare",
+      "published_at": "2025-05-02",
+      "url": "https://flare.network/de/news/introduction-to-xrp-defi",
+      "independence_group": "flare-official",
+      "evidence_class": "project_primary_marketing_and_ecosystem_metrics",
+      "claims": [
+        "F24",
+        "F25"
+      ]
+    },
+    {
+      "source_id": "coindesk-fxrp-rlusd-market-20260804",
+      "publisher": "CoinDesk",
+      "published_at": "2026-08-04",
+      "url": "https://www.coindesk.com/markets/2026/08/04/flare-s-wrapped-xrp-wins-approval-in-a-usd280-million-rlusd-lending-vault",
+      "independence_group": "coindesk-independent-reporting",
+      "evidence_class": "independent_secondary",
+      "claims": [
+        "F26"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "F1",
+      "classification": "PROJECT_REPORTED_MECHANISM",
+      "statement": "Flare describes FXRP as a 1:1 representation minted only after Flare data protocols verify an XRPL payment, backed by an overcollateralized system of independent agents.",
+      "interpretation": "FXRP is not additional native XRP supply; it is a claim/representation supported by a separate collateral and agent system.",
+      "limitations": [
+        "This mechanism description is from Flare; independent agent-level collateral balances and solvency are not included in this snapshot."
+      ]
+    },
+    {
+      "claim_id": "F2",
+      "classification": "PROJECT_REPORTED_BACKING_ARCHITECTURE",
+      "statement": "Flare says FXRP's backing XRP remains on XRPL in a Core Vault, with excess XRP time-locked in native XRPL escrows releasing one batch per day.",
+      "interpretation": "The backing asset remains on XRPL while FXRP is used on Flare/Ethereum; mint/redemption and agent operations create cross-system dependencies.",
+      "limitations": [
+        "Core Vault balances, agent collateral ratios and redemption queues were not independently retrieved in this run."
+      ]
+    },
+    {
+      "claim_id": "F3",
+      "classification": "PROJECT_REPORTED_METRICS",
+      "statement": "Flare's September 24, 2026 one-year report says approximately 145.2M FXRP was minted, 130M FXRP was deployed in DeFi and about 7.8M transactions had occurred.",
+      "interpretation": "Project-reported deployed balance is more informative than minted supply alone, but is not an independently reconciled net external capital measure.",
+      "limitations": [
+        "No address-level deduplication, protocol-by-protocol decomposition or independent proof of all deployed balances is attached."
+      ]
+    },
+    {
+      "claim_id": "F4",
+      "classification": "PROJECT_REPORTED_CROSS_CHAIN_METRIC",
+      "statement": "Flare says approximately 21M FXRP was on other chains through OFT, equal to 14.4% of the reported 145.2M outstanding.",
+      "interpretation": "Cross-chain representations must not be added again to native XRP or total FXRP supply.",
+      "limitations": [
+        "The destination-chain distribution and canonical supply reconciliation are not included here."
+      ]
+    },
+    {
+      "claim_id": "F5",
+      "classification": "PROJECT_REPORTED_ECOSYSTEM_USAGE",
+      "statement": "Flare describes FXRP use in lending, collateral, stablecoin backing and yield vaults, including Kinetic, Enosys, Firelight, Spectra, Clearstar and other strategies.",
+      "interpretation": "XRP exposure is being used in several DeFi primitives; the amount and risk differ by product.",
+      "limitations": [
+        "Project ecosystem descriptions are not independent proof of each protocol's current TVL or solvency."
+      ]
+    },
+    {
+      "claim_id": "F6",
+      "classification": "PROJECT_REPORTED_FUTURE_PATH",
+      "statement": "Flare's September 24 report says a direct XRPL-wallet path to borrow RLUSD and deliver it back to an XRPL address or exchange/bank deposit address is still a next-phase direction.",
+      "interpretation": "Do not claim the entire XRPL-to-RLUSD borrowing path is live merely because FXRP/RLUSD borrowing is live on Ethereum.",
+      "limitations": [
+        "Existing one-signature wallet paths for vaults are distinct from the still-open direct borrow-and-return path."
+      ]
+    },
+    {
+      "claim_id": "F7",
+      "classification": "PROJECT_REPORTED_LIVE_MARKET",
+      "statement": "Flare announced on 2026-08-03 that an isolated FXRP/RLUSD market was live on Morpho Blue on Ethereum mainnet, curated through Sentora's RLUSD Main vault.",
+      "interpretation": "This is a direct XRP-representation-to-Ripple-stablecoin collateral/credit connection.",
+      "limitations": [
+        "Market existence is independently visible in Morpho's interface; product risk review details remain partly curator/project-reported."
+      ]
+    },
+    {
+      "claim_id": "F8",
+      "classification": "PROJECT_REPORTED_ACCESS_AND_RISK",
+      "statement": "Flare says borrowers mint FXRP, bridge to Ethereum, post it as collateral and borrow RLUSD; the market is permissionless and isolated, with a market-specific oracle and liquidation LTV.",
+      "interpretation": "FXRP/RLUSD is an isolated credit market, not a pooled cross-collateral guarantee for all Sentora vault positions.",
+      "limitations": [
+        "Liquidation can force FXRP sales/seizure even if the borrower intended to keep XRP exposure."
+      ]
+    },
+    {
+      "claim_id": "F9",
+      "classification": "PROJECT_REPORTED_RISK_REVIEW",
+      "statement": "Flare says Sentora reviewed FXRP market behavior, oracle reliability and liquidation liquidity before accepting it as collateral.",
+      "interpretation": "Institutional curation is evidence of a risk review, not a guarantee of collateral safety.",
+      "limitations": [
+        "The full independent risk report, oracle stress tests and ongoing monitoring outputs were not retrieved."
+      ]
+    },
+    {
+      "claim_id": "F10",
+      "classification": "INDEPENDENT_AGGREGATOR_OBSERVATION",
+      "statement": "MorphoWatch's 2026-11-02 17:21 UTC snapshot reports USD 9.35M (9.36M RLUSD) supplied to the FXRP/RLUSD market and USD 8.45M borrowed.",
+      "interpretation": "This is actual deployed loan-market capital reported from Morpho's public API and blockchain, not a project roadmap or market-cap estimate.",
+      "limitations": [
+        "MorphoWatch is an independent aggregator, not Morpho Labs; raw API payload and cryptographic hash were not captured."
+      ]
+    },
+    {
+      "claim_id": "F11",
+      "classification": "INDEPENDENT_AGGREGATOR_OBSERVATION",
+      "statement": "The same snapshot reports 90.3% utilization and approximately USD 907K available to borrow.",
+      "interpretation": "The market is relatively highly utilized and has limited immediate borrowing liquidity compared with outstanding debt.",
+      "limitations": [
+        "Liquidity can change quickly with repayments, new supply and rate movements."
+      ]
+    },
+    {
+      "claim_id": "F12",
+      "classification": "INDEPENDENT_AGGREGATOR_OBSERVATION",
+      "statement": "The market reports 13.49M FXRP collateral valued at approximately USD 16.84M, across 57 borrowers.",
+      "derived_calculation": {
+        "aggregate_debt_to_collateral": 0.5018,
+        "aggregate_collateral_to_debt": 1.9928,
+        "formula": "8.45M / 16.84M and 16.84M / 8.45M",
+        "labels": [
+          "approximately 50.2% aggregate debt-to-collateral LTV",
+          "approximately 199.3% aggregate collateral-to-debt coverage"
+        ]
+      },
+      "interpretation": "Aggregate collateral coverage is above the 77% liquidation LTV, but borrower-level concentration and price paths matter more than the aggregate alone.",
+      "limitations": [
+        "Derived ratios use rounded aggregator values and current oracle marks."
+      ]
+    },
+    {
+      "claim_id": "F13",
+      "classification": "INDEPENDENT_AGGREGATOR_OBSERVATION",
+      "statement": "The market's liquidation LTV is 77%, liquidation bonus is 7.41%, current borrow APY is 7.92%, and supply APY is 7.12%.",
+      "interpretation": "At high utilization, variable borrowing costs can rise; liquidators receive an incentive to repay debt and seize collateral.",
+      "limitations": [
+        "Rates are instantaneous and not fixed borrower costs."
+      ]
+    },
+    {
+      "claim_id": "F14",
+      "classification": "INDEPENDENT_AGGREGATOR_OBSERVATION",
+      "statement": "Two liquidations occurred in the last 30 days with approximately USD 1.7K debt repaid; Morpho's interface reports zero realized and unrealized bad debt at capture.",
+      "interpretation": "Liquidations are real and observable but small relative to market debt; no bad debt is reported at this capture.",
+      "limitations": [
+        "Zero reported bad debt does not mean no liquidation risk or no future losses."
+      ]
+    },
+    {
+      "claim_id": "F15",
+      "classification": "INDEPENDENT_AGGREGATOR_STRESS_SCENARIO",
+      "statement": "MorphoWatch estimates approximately USD 256K of FXRP collateral would be at risk under a 20% decline in FXRP/RLUSD price, using current loans and oracle prices.",
+      "interpretation": "This is a modelled stress exposure, not a prediction, realized liquidation or guaranteed sale amount.",
+      "limitations": [
+        "Borrowers can repay, add collateral or be liquidated before/after the scenario; market depth and slippage are not included in the displayed estimate."
+      ]
+    },
+    {
+      "claim_id": "F16",
+      "classification": "INDEPENDENT_AGGREGATOR_CONCENTRATION",
+      "statement": "The three largest borrowers owe approximately USD 3.15M, USD 2.91M and USD 1.61M, with reported health factors 1.681, 1.501 and 1.272 respectively.",
+      "derived_calculation": {
+        "value": 0.909,
+        "formula": "(3.1535M + 2.9146M + 1.6139M) / 8.45M",
+        "label": "approximately 90.9% of market debt held by the three largest borrowers"
+      },
+      "interpretation": "Borrower concentration is high; the third-largest position is materially closer to liquidation than the first two.",
+      "limitations": [
+        "Wallet labels are pseudonymous; beneficial ownership and common control are unknown."
+      ]
+    },
+    {
+      "claim_id": "F17",
+      "classification": "INDEPENDENT_AGGREGATOR_ORACLE_DETAIL",
+      "statement": "MorphoWatch reports a RedStone XRP/FXRP market-price feed with 6-hour heartbeat and 0.25% deviation setting, and a Chainlink RLUSD/USD feed with 1-day heartbeat and 0.3% deviation setting.",
+      "interpretation": "Oracle freshness and source dependencies are material to collateral risk; a heartbeat is a maximum update condition, not a promise of a new price every instant.",
+      "limitations": [
+        "Full oracle configuration and failover behavior require direct contract/source review."
+      ]
+    },
+    {
+      "claim_id": "F18",
+      "classification": "INDEPENDENT_AGGREGATOR_VAULT_OBSERVATION",
+      "statement": "Sentora RLUSD Main vault had approximately USD 410.3M deposits from 358 depositors at the 2026-11-02 09:01 UTC MorphoWatch snapshot; approximately USD 40.19M (10%) was immediately withdrawable.",
+      "interpretation": "The wider RLUSD vault is much larger than the FXRP market; vault liquidity is not equal to market-specific FXRP liquidity.",
+      "limitations": [
+        "Depositor and withdrawal figures are a time-specific snapshot."
+      ]
+    },
+    {
+      "claim_id": "F19",
+      "classification": "INDEPENDENT_AGGREGATOR_ALLOCATION",
+      "statement": "MorphoWatch reports approximately USD 9.26M allocated to FXRP/RLUSD, about 2.1% of Sentora RLUSD Main deposits; FXRP represented about 2.5% of the vault's lending collateral.",
+      "interpretation": "The FXRP market is meaningful as a live institutional-curated collateral integration but remains a small slice of the overall RLUSD vault.",
+      "limitations": [
+        "Snapshot is earlier than the 17:21 UTC market-level capture; do not combine as synchronized balances."
+      ]
+    },
+    {
+      "claim_id": "F20",
+      "classification": "INDEPENDENT_AGGREGATOR_VAULT_CONCENTRATION",
+      "statement": "The two largest Sentora RLUSD Main depositors represented approximately 39.1% and 35.8% of vault deposits in the 09:01 UTC snapshot.",
+      "derived_calculation": {
+        "value": 0.749,
+        "formula": "39.1% + 35.8%",
+        "label": "approximately 74.9% of vault deposits"
+      },
+      "interpretation": "Concentration at the vault depositor level can create withdrawal/liquidity risk distinct from borrower concentration in the FXRP market.",
+      "limitations": [
+        "Addresses are pseudonymous; beneficial ownership is unknown."
+      ]
+    },
+    {
+      "claim_id": "F21",
+      "classification": "PROTOCOL_INTERFACE_OBSERVATION",
+      "statement": "Morpho's Ethereum market interface identifies market ID 0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96, created 2026-07-28, with FXRP collateral and RLUSD debt.",
+      "interpretation": "This is the canonical market identifier for future pinned-block and event-history ingestion.",
+      "limitations": [
+        "This pass captured the interface state, not a raw RPC response or block-pinned contract state."
+      ]
+    },
+    {
+      "claim_id": "F22",
+      "classification": "PROTOCOL_INTERFACE_OBSERVATION",
+      "statement": "The Morpho interface shows 77% LLTV, 7.41% liquidation penalty, 57 borrowers, approximately USD 8.44M outstanding loans, USD 909K total liquidity, and no realized or unrealized bad debt.",
+      "interpretation": "Protocol UI independently corroborates the scale and key risk parameters reported by MorphoWatch.",
+      "limitations": [
+        "The interface values were captured during the same general observation window and are not fully independent of Morpho's own API."
+      ]
+    },
+    {
+      "claim_id": "F23",
+      "classification": "PROTOCOL_INTERFACE_ACTIVITY",
+      "statement": "Morpho's interface shows recent 2026-11-02 FXRP collateral supply and RLUSD borrowing transactions, confirming the market is active at capture.",
+      "interpretation": "This is stronger than a static listing: transactions were occurring in the market on November 2.",
+      "limitations": [
+        "The displayed transaction sample is not a full event-log export or exhaustive activity history."
+      ]
+    },
+    {
+      "claim_id": "F24",
+      "classification": "PROJECT_MARKETING_PHRASE",
+      "statement": "Flare's 2025-05-02 article uses the phrase 'actual capital deployment' to describe stablecoins turning interest into liquidity provision in XRPFi.",
+      "interpretation": "This is the likely source context for the phrase; it is a narrative description, not a standardized accounting definition.",
+      "limitations": [
+        "The article is dated 2025 and its USD 140B USDT liquidity reference is broad market liquidity, not capital deployed on Flare."
+      ]
+    },
+    {
+      "claim_id": "F25",
+      "classification": "HISTORICAL_PROJECT_REPORTED_METRICS",
+      "statement": "The same 2025 Flare article reported USD 60M USDt0 minted in a few days and Flare TVL above USD 85M during that historical launch period.",
+      "interpretation": "Historical project-reported launch metrics; not current November 2026 balances.",
+      "limitations": [
+        "Do not use as current TVL, current USDt0 supply or current available XRPFi liquidity."
+      ]
+    },
+    {
+      "claim_id": "F26",
+      "classification": "INDEPENDENT_SECONDARY_REPORTING",
+      "statement": "CoinDesk reported on 2026-08-04 that FXRP was accepted as collateral in Sentora's RLUSD vault on Morpho and described the isolated market, risk review and multi-step mint/bridge/borrow flow.",
+      "interpretation": "Independent reporting corroborates the market launch and its institutional-curation context.",
+      "limitations": [
+        "CoinDesk's article initially reported the broader USD 280M vault size, not the FXRP market's own borrow amount."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "statement": "FXRP/RLUSD credit creates a genuine complementary use case: holders can access dollar liquidity without immediately selling native XRP exposure.",
+      "supporting_evidence": [
+        "F7",
+        "F10",
+        "F12",
+        "F23"
+      ],
+      "disconfirming_evidence": [
+        "Borrowers incur variable interest and liquidation risk; collateral is FXRP rather than native XRP directly"
+      ],
+      "unknowns": [
+        "Borrower beneficial ownership",
+        "Use of borrowed RLUSD",
+        "Whether loans fund purchases, working capital, hedging or other DeFi positions"
+      ],
+      "status": "SUPPORTED_AS_PRODUCT_FUNCTION_NOT_AS_PRICE_EFFECT"
+    },
+    {
+      "hypothesis_id": "H2",
+      "statement": "The same credit market can create forced-supply pressure during sharp XRP/FXRP drawdowns because liquidators seize FXRP and may sell or redeem it.",
+      "supporting_evidence": [
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17"
+      ],
+      "disconfirming_evidence": [
+        "Current realized bad debt is zero and observed liquidations are small"
+      ],
+      "unknowns": [
+        "Liquidator routing",
+        "FXRP-to-XRP redemption timing",
+        "DEX/exchange execution depth",
+        "Correlation of collateral price and RLUSD liquidity"
+      ],
+      "status": "OPEN_RISK_HYPOTHESIS"
+    },
+    {
+      "hypothesis_id": "H3",
+      "statement": "RLUSD liquidity and XRP collateral are complementary: RLUSD is the debt asset and FXRP is the collateral asset.",
+      "supporting_evidence": [
+        "F7",
+        "F10",
+        "F12"
+      ],
+      "disconfirming_evidence": [
+        "This does not imply all RLUSD or all XRP demand benefits; market is small relative to the broader vault"
+      ],
+      "unknowns": [
+        "Net external RLUSD inflow",
+        "How much borrowed RLUSD leaves the vault or is re-deposited elsewhere"
+      ],
+      "status": "CONFIRMED_MARKET_STRUCTURE"
+    },
+    {
+      "hypothesis_id": "H4",
+      "statement": "The high utilization and borrower concentration create idiosyncratic liquidity risk even with aggregate collateral coverage near 199%.",
+      "supporting_evidence": [
+        "F11",
+        "F12",
+        "F16",
+        "F18",
+        "F20"
+      ],
+      "disconfirming_evidence": [
+        "Isolated market design limits direct contagion to other Morpho markets; current bad debt is zero"
+      ],
+      "unknowns": [
+        "Common control among top borrowers/depositors",
+        "Market depth under stress",
+        "Curator cap changes and withdrawal behavior"
+      ],
+      "status": "OPEN_RISK_HYPOTHESIS"
+    },
+    {
+      "hypothesis_id": "H5",
+      "statement": "FXRP DeFi deployment figures indicate more productive use than simple minted supply, but project-reported totals may include cross-chain representations and protocol accounting overlap.",
+      "supporting_evidence": [
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "disconfirming_evidence": [
+        "Morpho market-level collateral is independently observable and active"
+      ],
+      "unknowns": [
+        "Unique FXRP supply by chain",
+        "Unique collateral counted once across protocols",
+        "Net external capital deployed after internal transfers"
+      ],
+      "status": "OPEN_ACCOUNTING_HYPOTHESIS"
+    }
+  ],
+  "data_quality_controls": [
+    "Never add FXRP to native XRP supply; FXRP is a 1:1 representation backed by an agent/collateral system.",
+    "Do not count the same FXRP as separate economic supply when it moves across chains through OFT.",
+    "Separate FXRP supplied, RLUSD borrowed, total vault RLUSD deposits, and market utilization.",
+    "Do not infer that borrowed RLUSD was used to buy XRP; destination/use of loan proceeds is unknown.",
+    "Do not treat a liquidation as a confirmed native XRP spot sale until FXRP liquidation, transfer, redemption and execution routes are traced.",
+    "Keep project-reported Flare metrics distinct from MorphoWatch public-API/blockchain observations and Morpho protocol UI data.",
+    "Do not combine the 09:01 UTC vault snapshot and 17:21 UTC market snapshot as synchronized balances.",
+    "Treat the 20% price-drop estimate as a stress scenario, not a forecast or guaranteed liquidation amount.",
+    "Retain borrower and depositor concentration separately; pseudonymous addresses do not establish beneficial ownership.",
+    "Do not treat broad USDT market capitalization as liquidity deployed on Flare.",
+    "The phrase 'actual capital deployment' is marketing language; define actual capital using net external deposits, outstanding debt, collateral posted and realized settlement with double-count controls."
+  ],
+  "next_actions": [
+    "Pin the Morpho market state to a specific Ethereum block and retrieve raw market state, positions, oracle values and events from two independent providers.",
+    "Resolve the full FXRP token contract, FAssets Core Vault backing and agent collateral/solvency data.",
+    "Trace the 57 borrower positions, especially the top three, without inferring beneficial ownership.",
+    "Trace liquidation transactions through FXRP seizure, transfers, redemptions and any exchange/DEX execution.",
+    "Measure how much borrowed RLUSD is withdrawn, swapped, bridged, redeposited or retained.",
+    "Reconcile Flare's 145.2M minted / 130M deployed figures with unique FXRP supply across Flare and destination chains.",
+    "Track Morpho LLTV, utilization, free liquidity, borrow/supply rates, oracle heartbeat and liquidation events at fixed intervals.",
+    "Keep this credit-utility feature separate from spot net buying pressure in the XRP prediction model."
+  ]
+}
