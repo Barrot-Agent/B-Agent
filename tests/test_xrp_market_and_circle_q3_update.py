@@ -19,7 +19,8 @@ def test_kraken_observation_keeps_utc_daily_open_and_single_venue_limits():
     assert market["source_event_timestamp_utc"] is None
     assert market["model_eligible"] is False
     assert data["data_quality"]["exchange_depth_available"] is False
-    assert data["forecast_issued"] is False
+    assert data["data_quality"]["forecast_issued"] is False
+    assert data["data_quality"]["prediction_status"] == "NOT_ISSUED"
 
 
 def test_etf_provider_disagreement_is_preserved_without_averaging():
@@ -53,4 +54,5 @@ def test_circle_q3_filing_separates_recurring_reserve_income_from_arc_presale():
     assert presentation["usdc_end_period_location_mix_pct"] == {"circle": 19, "coinbase": 31, "off_platform": 50}
     assert sum(presentation["usdc_end_period_location_mix_pct"].values()) == 100
     assert presentation["model_eligible"] is False
-    assert data["forecast_issued"] is False
+    assert data["data_quality"]["forecast_issued"] is False
+    assert data["data_quality"]["prediction_status"] == "NOT_ISSUED"
