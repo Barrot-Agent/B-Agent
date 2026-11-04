@@ -1,0 +1,1975 @@
+{
+  "schema_version": "1.1",
+  "artifact_type": "xrp_ecosystem_evidence_reconciliation",
+  "captured_at_utc": "2026-11-04T01:28:00Z",
+  "data_cutoff_utc": "2026-11-04T01:28:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, safety and verification",
+    "prediction_policy": "No directional forecast without a point-in-time dataset, explicit horizon, baseline comparison, leakage-safe out-of-sample evaluation and calibration."
+  },
+  "source_registry": [
+    {
+      "id": "coinbase_q3_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase Global, Inc. / SEC EDGAR",
+      "published": "2026-10-29",
+      "type": "issuer SEC filing",
+      "independence": "primary issuer filing"
+    },
+    {
+      "id": "coinbase_q3_release",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "publisher": "Coinbase Investor Relations",
+      "published": "2026-10-29",
+      "type": "issuer press release",
+      "independence": "same issuer as SEC filing"
+    },
+    {
+      "id": "circle_q2_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publisher": "Circle Internet Group, Inc. / SEC EDGAR",
+      "published": "2026-08-05",
+      "type": "issuer SEC filing",
+      "independence": "primary issuer filing"
+    },
+    {
+      "id": "circle_q2_release",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000246/augustepr-circle_q22026f.htm",
+      "publisher": "Circle Internet Group / SEC EDGAR",
+      "published": "2026-08-05",
+      "type": "issuer earnings release",
+      "independence": "same issuer as SEC filing"
+    },
+    {
+      "id": "circle_q3_event",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published": "2026-10-07",
+      "type": "issuer event notice",
+      "independence": "primary issuer notice"
+    },
+    {
+      "id": "circle_xrpl_blog",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publisher": "Circle",
+      "published": "2025-06-12",
+      "type": "issuer product announcement",
+      "independence": "primary issuer claim"
+    },
+    {
+      "id": "circle_xrpl_product",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "publisher": "Circle",
+      "type": "issuer product documentation",
+      "independence": "primary issuer documentation"
+    },
+    {
+      "id": "coinbase_rlusd",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "publisher": "Coinbase",
+      "published": "2026-10-28",
+      "type": "issuer product announcement",
+      "independence": "primary issuer claim"
+    },
+    {
+      "id": "cftc_pilot",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+      "publisher": "U.S. Commodity Futures Trading Commission",
+      "published": "2025-12-08",
+      "type": "regulatory release",
+      "independence": "regulator"
+    },
+    {
+      "id": "bitnomial_xrp_margin",
+      "url": "https://bitnomial.com/news/2025-11-03/rlusd-xrp-margin-collateral/",
+      "publisher": "Bitnomial",
+      "published": "2025-11-03",
+      "type": "exchange/clearinghouse announcement",
+      "independence": "product operator; not independent regulator"
+    },
+    {
+      "id": "bitnomial_collateral_table",
+      "url": "https://bitnomial.com/clearinghouse/",
+      "publisher": "Bitnomial Clearinghouse",
+      "type": "product collateral schedule",
+      "independence": "product operator; subject to change"
+    },
+    {
+      "id": "sbic_tokyo_chatgpt",
+      "url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E在と未来%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published": "2025-02-26",
+      "type": "official event PDF",
+      "independence": "primary organizer record"
+    },
+    {
+      "id": "sbic_west_chatgpt",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. / SBIC West Japan",
+      "published": "2025-08; event 2025-12-04",
+      "type": "official event PDF",
+      "independence": "primary organizer record"
+    },
+    {
+      "id": "xrp_market_snapshot",
+      "url": "https://swiftedge.uk/markets/today",
+      "publisher": "Swiftedge",
+      "published": "2026-11-03 16:08 UTC snapshot",
+      "type": "single-provider order-book/trade-tape snapshot",
+      "independence": "one market-data provider"
+    },
+    {
+      "id": "permission_ask_docs",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "publisher": "Permission documentation",
+      "type": "project token documentation",
+      "independence": "primary project documentation"
+    },
+    {
+      "id": "permission_ask_cmc",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "publisher": "CoinMarketCap",
+      "type": "third-party token reference",
+      "independence": "market-data aggregator"
+    },
+    {
+      "id": "kamilah_video_collateral",
+      "url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2025-12-06",
+      "type": "public video",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_ripple_bank",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2025-12-14",
+      "type": "public video",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_etf",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-01-13",
+      "type": "public video/transcript index",
+      "independence": "creator claim; Glasp transcript index"
+    },
+    {
+      "id": "kamilah_video_neutral_bridge",
+      "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-03-03",
+      "type": "public video",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_amendments",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-07-30",
+      "type": "public video",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_dailycoin",
+      "url": "https://dailycoin.com/analyst-argues-most-xrp-holders-misjudge-what-the-token-is-for/",
+      "publisher": "DailyCoin",
+      "published": "2026-02-23",
+      "type": "secondary video summary",
+      "independence": "secondary attribution"
+    },
+    {
+      "id": "kamilah_video_wealth",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-01-15",
+      "type": "public video summary/transcript index",
+      "independence": "creator content; Glasp transcript index"
+    },
+    {
+      "id": "kamilah_video_how_much",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-03-19",
+      "type": "public video summary",
+      "independence": "creator content; Glasp transcript index"
+    },
+    {
+      "id": "kamilah_channel_glasp",
+      "url": "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "publisher": "Glasp",
+      "type": "third-party channel summary index",
+      "independence": "secondary channel index"
+    },
+    {
+      "id": "ripple_rntb_final_claim",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "published": "2026-10-28",
+      "type": "issuer press release",
+      "independence": "issuer claim; final OCC decision document not located"
+    },
+    {
+      "id": "occ_rntb_conditional",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
+      "publisher": "Office of the Comptroller of the Currency",
+      "published": "2025-12-12",
+      "type": "regulatory conditional approval letter",
+      "independence": "regulator primary"
+    },
+    {
+      "id": "occ_decisions_index",
+      "url": "https://occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "type": "regulatory decision index",
+      "independence": "regulator primary; page update lag possible"
+    },
+    {
+      "id": "xrpl_xls68_security",
+      "url": "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-aug2026",
+      "publisher": "XRPL.org",
+      "published": "2026-09-21",
+      "type": "official vulnerability disclosure",
+      "independence": "protocol maintainer primary"
+    },
+    {
+      "id": "xrpl_xls68_spec",
+      "url": "https://xls.xrpl.org/xls/XLS-0068-sponsored-fees-and-reserves.html",
+      "publisher": "XRPL Standards",
+      "type": "standard specification",
+      "independence": "standards primary"
+    },
+    {
+      "id": "xrpl_standards_index",
+      "url": "https://xls.xrpl.org/",
+      "publisher": "XRPL Standards",
+      "type": "standards registry",
+      "independence": "standards primary"
+    },
+    {
+      "id": "xrpl_confidential_vote",
+      "url": "https://xrplwin.com/amendment/ConfidentialTransfer",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_fixcleanup_vote",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_vault_vote",
+      "url": "https://xrplwin.com/amendment/SingleAssetVault",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_lending_vote",
+      "url": "https://xrplwin.com/amendment/LendingProtocol",
+      "publisher": "XRPLWin",
+      "observed": "2026-11-03T19:17:00Z approx",
+      "type": "on-ledger amendment vote snapshot",
+      "independence": "third-party explorer reading ledger"
+    },
+    {
+      "id": "xrpl_permission_activation",
+      "url": "https://unchainedcrypto.com/xrp-ledger-enables-account-delegation-as-a-token-minting-fix-lacks-two-validator-votes/",
+      "publisher": "Unchained",
+      "published": "2026-10-09",
+      "type": "protocol activation reporting",
+      "independence": "secondary reporting with ledger references"
+    },
+    {
+      "id": "xrpl_batch_activation",
+      "url": "https://xrplinsights.com/articles/batch-permission-delegation-deep-dive.html",
+      "publisher": "XRPLinsights",
+      "published": "2026-10-11",
+      "type": "protocol activation reporting",
+      "independence": "secondary reporting"
+    },
+    {
+      "id": "xrpl_xls96_spec",
+      "url": "https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html",
+      "publisher": "XRPL Standards",
+      "type": "final amendment specification",
+      "independence": "standards primary"
+    },
+    {
+      "id": "xrpl_dynamicmpt_sep4",
+      "url": "https://www.jakeclaver.com/xrpl-3-3-0-amendments-status/",
+      "publisher": "Jake Claver",
+      "published": "2026-09-04",
+      "type": "independent amendment status analysis",
+      "independence": "secondary; says validated against ledger"
+    },
+    {
+      "id": "xrpl_sponsor_vote_oct17",
+      "url": "https://www.coindaro.com/xrp-ledger-amendment-23-october-lending-vote/",
+      "publisher": "Coindaro",
+      "published": "2026-10-23; vote snapshot 2026-10-17",
+      "type": "amendment vote snapshot",
+      "independence": "secondary; cites XRPScan"
+    },
+    {
+      "id": "crossriver_rlusd",
+      "url": "https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses",
+      "publisher": "Cross River",
+      "published": "2026-10-15",
+      "type": "bank press release",
+      "independence": "partner primary statement"
+    },
+    {
+      "id": "bitquery_rlusd_dust",
+      "url": "https://www.bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "publisher": "Bitquery",
+      "published": "2026-10-19",
+      "type": "on-chain investigation",
+      "independence": "blockchain analytics provider; wallet clustering is its analysis"
+    },
+    {
+      "id": "tokenpost_xrpl_q3_stables",
+      "url": "https://www.tokenpost.com/news/investing/45984",
+      "publisher": "TokenPost",
+      "published": "2026-11-01",
+      "type": "secondary report citing Blockworks commissioned report",
+      "independence": "secondary; underlying research commissioned by Ripple"
+    },
+    {
+      "id": "stablescool_xrpl_snapshot",
+      "url": "https://stables.cool/USD/chains/xrp-ledger",
+      "publisher": "stables.cool",
+      "observed": "2026-11-01T21:05:00Z",
+      "type": "third-party stablecoin supply snapshot",
+      "independence": "on-chain tracker"
+    },
+    {
+      "id": "xrplto_rlusd_tracker",
+      "url": "https://xrpl.to/insights/rlusd-supply-tracker",
+      "publisher": "XRPL.to",
+      "observed": "2026-11-04T01:20:00Z approx",
+      "type": "hourly on-chain tracker",
+      "independence": "third-party on-chain tracker; page directs integrations to documented API"
+    },
+    {
+      "id": "ripple_bny_custody",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple",
+      "published": "2026-10-27",
+      "type": "issuer/partner press release",
+      "independence": "joint commercial announcement"
+    },
+    {
+      "id": "ripple_sc_custody",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publisher": "Ripple",
+      "published": "2026-10-12",
+      "type": "issuer/partner press release",
+      "independence": "joint commercial announcement"
+    },
+    {
+      "id": "ripple_c2fo_instantpay",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "publisher": "Ripple",
+      "published": "2026-10-27",
+      "type": "issuer/partner press release",
+      "independence": "joint commercial announcement"
+    },
+    {
+      "id": "ripple_rntb_final_oct26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "publisher": "Ripple",
+      "published": "2026-10-26",
+      "type": "issuer press release describing OCC final approval",
+      "independence": "issuer statement; OCC final decision document not located"
+    },
+    {
+      "id": "xrpbreadcrumbs_supply_sep29",
+      "url": "https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/",
+      "publisher": "XRP Breadcrumbs",
+      "published": "2026-10-01",
+      "type": "secondary tracker reconciliation",
+      "independence": "secondary analysis citing DefiLlama and RWA.xyz snapshots"
+    },
+    {
+      "id": "coindesk_q2_activity",
+      "url": "https://www.coindesk.com/markets/2026/09/05/xrp-ledger-has-fewer-active-accounts-but-bigger-trades-and-more-value",
+      "publisher": "CoinDesk",
+      "published": "2026-09-05",
+      "type": "market/network analysis",
+      "independence": "secondary reporting"
+    },
+    {
+      "id": "sbi_circle_jv_pdf",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+      "publisher": "SBI Holdings",
+      "published": "2025-08-22",
+      "type": "official joint-venture announcement",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_circle_equity",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "published": "2025-06-09",
+      "type": "official strategic investment announcement",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_circle_arc",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published": "2026-10",
+      "type": "issuer mainnet launch announcement",
+      "independence": "primary issuer/partner statement"
+    },
+    {
+      "id": "sbi_ripple_stake",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "publisher": "SBI Holdings",
+      "published": "2025-06-02",
+      "type": "official investor presentation",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_ripple_asia_ownership",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "publisher": "SBI Holdings",
+      "observed": "2026-03-31",
+      "type": "official subsidiary profile",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_remit_xrp",
+      "url": "https://www.sbigroup.co.jp/english/company/group/sbiremit.html",
+      "publisher": "SBI Remit / SBI Holdings",
+      "observed": "2026-08-28",
+      "type": "official subsidiary profile",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_rlusd_japan",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publisher": "SBI VC Trade / SBI Holdings / Ripple",
+      "published": "2026-06-24",
+      "type": "joint product launch announcement",
+      "independence": "primary partner disclosure"
+    },
+    {
+      "id": "sbi_jpysc",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "publisher": "SBI Shinsei Trust / SBI VC Trade",
+      "published": "2026-09-07",
+      "type": "official stablecoin reserve disclosure",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "sbi_usdc_retail",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15332.html",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "published": "2025-03-25",
+      "type": "official USDC distribution launch notice",
+      "independence": "primary corporate disclosure"
+    },
+    {
+      "id": "kamilah_video_xrp_vs_btc",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2025-12-24",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_clarity_act",
+      "url": "https://www.youtube.com/watch?v=I5OkewTVrgA",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-01-23",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_yen_carry_oil",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-03-06",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim"
+    },
+    {
+      "id": "kamilah_video_exchange_custody",
+      "url": "https://www.youtube.com/watch?v=TfFx0g2IgGg",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-05-20",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator personal claim"
+    },
+    {
+      "id": "kamilah_video_cold_wallet",
+      "url": "https://www.youtube.com/watch?v=1ICh2cuBKmM",
+      "publisher": "Kamilah Stevenson channel candidate",
+      "published": "2026-08-08",
+      "type": "public YouTube video metadata and description",
+      "independence": "creator claim; underlying incident requires independent verification"
+    },
+    {
+      "id": "kamilah_creator_social_index",
+      "url": "https://teapawt.org/iamkamstevenson",
+      "publisher": "Teapawt third-party social index",
+      "type": "secondary social profile index",
+      "independence": "secondary index; original X profile not fetched"
+    },
+    {
+      "id": "kamilah_creator_aggregate_index",
+      "url": "https://cryptokrios.com/creators/kamilah-stevenson",
+      "publisher": "CryptoKrios third-party creator index",
+      "type": "secondary channel analytics index",
+      "independence": "secondary index; claims 633 videos analyzed but does not prove exhaustive channel inventory"
+    },
+    {
+      "id": "askcoin_token_cmc",
+      "url": "https://coinmarketcap.com/es/currencies/askcoin/",
+      "publisher": "CoinMarketCap",
+      "type": "third-party token preview/listing",
+      "independence": "market-data aggregator; page reports zero supply and preview status"
+    },
+    {
+      "id": "askcoin_token_bitdegree",
+      "url": "https://www.bitdegree.org/cryptocurrency-prices/askcoin-ask-price/price-history",
+      "publisher": "BitDegree",
+      "type": "third-party token listing",
+      "independence": "secondary market-data index; labels Askcoin ASK inactive/untracked"
+    },
+    {
+      "id": "askcoin_exchange_cmc",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "publisher": "CoinMarketCap",
+      "type": "third-party exchange listing",
+      "independence": "market-data aggregator; labels exchange inactive/untracked with no reserve data"
+    },
+    {
+      "id": "askcoin_exchange_bitdegree",
+      "url": "https://www.bitdegree.org/top-crypto-exchanges/ask-coin",
+      "publisher": "BitDegree",
+      "type": "third-party exchange listing",
+      "independence": "secondary exchange directory; labels exchange inactive and untracked"
+    },
+    {
+      "id": "xrpldashboard_home",
+      "url": "https://xrpldashboard.com/",
+      "publisher": "xrpldashboard",
+      "type": "public XRPL on-chain dashboard with stated own-node methodology",
+      "independence": "independent analytics implementation; methodology self-described"
+    },
+    {
+      "id": "sologenic_rlusd_asset_index",
+      "url": "https://sologenic.org/market-index/524C555344000000000000000000000000000000%2BrMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "publisher": "Sologenic",
+      "type": "XRPL token market-index page",
+      "independence": "third-party index; displayed supply scope and exact underlying ledger timestamp not specified"
+    },
+    {
+      "id": "kamilah_exchange_move_dailycoin",
+      "url": "https://dailycoin.com/analyst-moves-xrp-off-exchanges-citing-structure-ahead-of-volatility/",
+      "publisher": "DailyCoin Team",
+      "published": "2026-05-21",
+      "type": "secondary article quoting creator about personal XRP custody choice",
+      "independence": "secondary reporting; repeats the creator's self-report, not on-chain evidence"
+    },
+    {
+      "id": "kamilah_social_index_cryptitalk",
+      "url": "https://cryptitalk.com/tokens/xrp/2026-10-01",
+      "publisher": "CryptiTalk",
+      "published": "2026-10-01",
+      "type": "third-party social-post index",
+      "independence": "secondary index; attributes one XRP post to @kamilahsteven21"
+    }
+  ],
+  "market_snapshot": {
+    "provider": "Swiftedge",
+    "observed_at_utc": "2026-11-03T16:08:00Z",
+    "xrp_usd": 1.2783,
+    "change_24h_pct": 2.4,
+    "net_taker_flow_pct_volume": 5.8,
+    "volume_vs_recent_daily_average": 3,
+    "funding_pct_per_8h": 0.01,
+    "open_interest_change_pct": 2.6,
+    "large_order_net_usd": -650000,
+    "nearby_bid_wall": {
+      "price": 1.275,
+      "notional_usd": 4600000
+    },
+    "nearby_ask_wall": {
+      "price": 1.285,
+      "notional_usd": 3900000
+    },
+    "classification": "provider-reported observation",
+    "limitations": [
+      "One provider only; exchange coverage and aggregation methodology are not independently reconstructed.",
+      "Snapshot is approximately nine hours old at the artifact cutoff.",
+      "Resting walls can be cancelled and are not committed demand/supply.",
+      "Not a directional signal."
+    ],
+    "onchain_observations": [
+      {
+        "provider": "xrpldashboard",
+        "retrieved_at_utc": "2026-11-04T02:10:41Z",
+        "latest_ledger": 108098286,
+        "latest_ledger_close_observed_at_utc": "2026-11-03T23:36:28Z",
+        "reported_close_interval_seconds": 4.1,
+        "secondary_panel_as_of_ledger": 108079173,
+        "secondary_panel_as_of_utc": "2026-11-03T11:50:00Z",
+        "reported_rlusd_supply_change_24h_usd": 140600000,
+        "reported_rlusd_supply_change_24h_pct": 19.75,
+        "reported_amm_tvl_change_usd": -49000,
+        "reported_amm_tvl_change_pct": -0.14,
+        "reported_mpt_change": -3,
+        "limitations": [
+          "The page's latest-ledger preview and its 'What's new' panel have different as-of ledger/time values; do not treat them as one synchronized snapshot.",
+          "The reported supply change is provider-derived; issuer-level obligations and same-ledger balances were not independently reconstructed."
+        ]
+      },
+      {
+        "provider": "Sologenic",
+        "retrieved_at_utc": "2026-11-04T02:10:41Z",
+        "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+        "currency_hex": "524C555344000000000000000000000000000000",
+        "displayed_total_supply": 1030304053.541164,
+        "displayed_market_cap_usd": 1027452043.13,
+        "displayed_holders": 67215,
+        "displayed_trustlines": 100209,
+        "source_timestamp": "not disclosed",
+        "limitations": [
+          "The page's displayed supply scope is not explicit and its underlying ledger timestamp is not disclosed.",
+          "Holder/trustline counts are similar to XRPL.to while displayed supply differs materially; do not assume the supply fields have identical scope or freshness."
+        ]
+      },
+      {
+        "provider": "XRPL.to",
+        "observed_at_utc": "2026-11-04T01:20:00Z approx",
+        "displayed_rlusd_supply": 855300000,
+        "displayed_holders": 67960,
+        "displayed_trustlines": 101818,
+        "limitations": [
+          "Hourly tracker; exact ledger index and timestamp were not displayed in the reviewed snapshot.",
+          "Provider methodology differs from Sologenic and xrpldashboard."
+        ]
+      }
+    ]
+  },
+  "observations": [
+    {
+      "id": "CB-Q3-strategy",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Coinbase states its 2026 priorities are the everything exchange, stablecoins/payments and onchain adoption; it says the Circle arrangement was renewed on the same terms.",
+      "evidence": [
+        "coinbase_q3_10q"
+      ]
+    },
+    {
+      "id": "CB-Q3-performance",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Q3 2026 net revenue was $1.2B, transaction revenue $590.2M, subscription/services $570.2M; transaction revenue fell 44% year over year. Consumer spot volume fell 59% and institutional spot volume fell 53%, with derivatives and prediction markets offsetting part of the decline.",
+      "evidence": [
+        "coinbase_q3_10q"
+      ]
+    },
+    {
+      "id": "CB-USDC-economics",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Q3 stablecoin revenue was $306.905M versus $324.534M a year earlier. Coinbase says higher average USDC balances added $84.6M to Q3 stablecoin revenue, while lower average rates reduced it by $52.8M. Q3 average USDC held in Coinbase products was reported at $22B, up 49% year over year.",
+      "evidence": [
+        "coinbase_q3_10q",
+        "coinbase_q3_release"
+      ]
+    },
+    {
+      "id": "CB-Circle-contract",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Coinbase says it renewed its Circle arrangement on the same terms. Circle's Q2 filing describes Coinbase compensation as allocations linked to USDC held on Coinbase after issuer retention plus half of certain broader ecosystem-growth amounts after approved third-party participant payments.",
+      "evidence": [
+        "coinbase_q3_10q",
+        "circle_q2_10q"
+      ]
+    },
+    {
+      "id": "Circle-to-Coinbase-cost",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Circle reported $324.6M distribution costs connected with Coinbase agreements in Q2 2026 and $655.3M for H1 2026. These are Circle expenses, not Coinbase net profit or a direct XRP flow.",
+      "evidence": [
+        "circle_q2_10q"
+      ]
+    },
+    {
+      "id": "CB-loan-book",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "At 2026-09-30 Coinbase reported $1.976B total loan receivables: $1.959B fiat/payment-stablecoin receivables and $17.598M crypto-asset loan receivables. This does not disclose XRP-specific loans.",
+      "evidence": [
+        "coinbase_q3_10q"
+      ]
+    },
+    {
+      "id": "CB-recognized-lending-collateral",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Recognized crypto lending collateral fair value was $997.557M: BTC $920.649M, ETH $67.005M and other crypto assets $9.903M. The filing does not identify XRP within the other-assets aggregate; if XRP is included, it cannot exceed that aggregate at the reported date.",
+      "evidence": [
+        "coinbase_q3_10q"
+      ]
+    },
+    {
+      "id": "CB-derivatives-collateral",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Recognized derivatives collateral at 2026-09-30 totaled $301.943M and the disclosed table lists BTC and ETH, not XRP. This does not disprove product-level XRP collateral eligibility, but it does not evidence material XRP collateral utilization.",
+      "evidence": [
+        "coinbase_q3_10q"
+      ]
+    },
+    {
+      "id": "CB-unrecognized-customer-collateral",
+      "class": "confirmed_from_issuer_filing",
+      "detail": "Coinbase separately reported $3.285B of borrower-pledged collateral it did not recognize as its own collateral/return obligation: $480.45M fiat/payment stablecoins and $2.804B crypto assets. Do not treat this as Coinbase-owned collateral or XRP utilization.",
+      "evidence": [
+        "coinbase_q3_10q"
+      ]
+    },
+    {
+      "id": "Circle-USDC-XRPL",
+      "class": "confirmed_from_issuer_documentation",
+      "detail": "Circle says USDC is native on XRPL, no third-party bridge is required, Circle Mint/APIs support it, and qualified businesses can convert fiat directly into XRPL USDC and redeem 1:1 for USD.",
+      "evidence": [
+        "circle_xrpl_blog",
+        "circle_xrpl_product"
+      ]
+    },
+    {
+      "id": "Coinbase-RLUSD",
+      "class": "confirmed_from_issuer_announcement",
+      "detail": "Coinbase launched RLUSD on Prime, Exchange and retail on 2026-10-28. Deposits/withdrawals are supported on XRPL, Base and Ethereum. The announcement says Global Exchange collateral use will follow, and Ripple will provide Base liquidity.",
+      "evidence": [
+        "coinbase_rlusd"
+      ]
+    },
+    {
+      "id": "Bitnomial-XRP-collateral",
+      "class": "issuer_claim_with_product_schedule",
+      "detail": "Bitnomial announced XRP and RLUSD margin collateral for its regulated derivatives complex, subject to applicable regulatory approvals. Its current clearinghouse page lists XRP at a 40% haircut and $15M notional limit. This is venue/product-specific, not a universal CFTC classification.",
+      "evidence": [
+        "bitnomial_xrp_margin",
+        "bitnomial_collateral_table"
+      ]
+    },
+    {
+      "id": "CFTC-initial-pilot-scope",
+      "class": "confirmed_regulatory_release",
+      "detail": "The CFTC's 2025-12-08 digital-assets pilot initial three-month eligible list for FCMs relying on the no-action position was BTC, ETH and USDC. XRP was not on that initial list. The same release discusses tokenized real-world assets and risk controls.",
+      "evidence": [
+        "cftc_pilot"
+      ]
+    },
+    {
+      "id": "SBIC-Tokyo-ChatGPT",
+      "class": "confirmed_official_event_record",
+      "detail": "Tokyo SBIC's official 2025-02-26 seminar was titled 'Current and Future of Generative AI (ChatGPT)'; it described ChatGPT and a Microsoft Japan speaker demonstrating usage. The PDF identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. as organizer and describes the SME investment-development policy role. This is an educational event, not an OpenAI partnership or XRP connection.",
+      "evidence": [
+        "sbic_tokyo_chatgpt"
+      ]
+    },
+    {
+      "id": "SBIC-West-ChatGPT",
+      "class": "confirmed_official_event_record",
+      "detail": "SBIC West Japan / Osaka Small and Medium Business Investment & Consultation Co., Ltd. published a 2025-12-04 seminar on generative AI including ChatGPT. Tokyo and Osaka are distinct regional legal entities; 'Japan SBIC' must not be treated as one unspecified corporation.",
+      "evidence": [
+        "sbic_west_chatgpt"
+      ]
+    },
+    {
+      "id": "ASK-Permission-candidate",
+      "class": "candidate_identity",
+      "detail": "Permission Coin uses ticker ASK and official documentation lists Base and Polygon LayerZero OFT contracts. No XRP or XRPL integration is established by these sources. ASK is not a unique ticker, so this candidate is not confirmed as the user's intended 'ASK Coin'.",
+      "evidence": [
+        "permission_ask_docs",
+        "permission_ask_cmc"
+      ]
+    },
+    {
+      "id": "Kamilah-channel-candidate",
+      "class": "candidate_identity_not_confirmed_as_Camilla",
+      "detail": "Indexed YouTube videos and a Glasp channel-summary page attribute XRP content to Kamilah Stevenson (candidate channel ID UCqUPJMQdkCN6lsLVDnichPA); at least one transcript self-introduces the speaker as 'Camila Stevenson'. A third-party social index lists @iamkamstevenson, and another third-party creator index reports 633 videos analyzed. These are corroborating discovery clues, not a verified cross-platform identity link. Twelve direct YouTube video candidates are now indexed, but the inventory is not exhaustive. Exact identity equivalence to the user's 'Camilla Stephenson' reference remains unverified.",
+      "evidence": [
+        "kamilah_video_collateral",
+        "kamilah_video_etf",
+        "kamilah_video_neutral_bridge",
+        "kamilah_video_amendments",
+        "kamilah_dailycoin",
+        "kamilah_video_wealth",
+        "kamilah_video_how_much",
+        "kamilah_channel_glasp",
+        "kamilah_video_ripple_bank",
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet",
+        "kamilah_creator_social_index",
+        "kamilah_creator_aggregate_index"
+      ]
+    },
+    {
+      "id": "Actual-capital-phrase",
+      "class": "unknown",
+      "detail": "Exact public searches for the phrase 'actual capital' with XRP, Kamilah/Camila, ASK and SBIC did not locate a verifiable source. A separate video title uses the word 'ACTUALLY' ('How Much XRP Do You ACTUALLY Need?'), but that does not establish the phrase 'actual capital' or the intended reference.",
+      "evidence": []
+    },
+    {
+      "id": "Ripple-National-Trust-Bank",
+      "class": "mixed_regulatory_and_issuer_evidence",
+      "detail": "OCC granted preliminary conditional approval on 2025-12-12. Ripple's official October 26, 2026 press release says the OCC announced final approval that day; Ripple's October 28 event release repeats that final approval was received. The separate OCC final decision document and actual commencement date were not independently located in the OCC decision index captured in this run. RNTB's approved activities are reserve management, collateral trustee and fiduciary custody; RLUSD continues to be issued by Standard Custody & Trust Company (SCTC), the NYDFS-regulated issuer. Classify final approval as Ripple-reported pending the OCC final order.",
+      "evidence": [
+        "occ_rntb_conditional",
+        "ripple_rntb_final_claim",
+        "occ_decisions_index",
+        "ripple_rntb_final_oct26"
+      ]
+    },
+    {
+      "id": "Kamilah-Ripple-Bank-video-check",
+      "class": "disconfirming_context",
+      "detail": "The 2025-12-14 video titled 'Ripple Just Became a BANK' was published two days after OCC's preliminary conditional approval. The OCC letter explicitly said final approval and authorization to commence business had not yet been granted. The title therefore overstated legal status at publication time. Ripple later reported final approval on 2026-10-28; that later issuer claim does not retroactively make the December title accurate.",
+      "evidence": [
+        "kamilah_video_ripple_bank",
+        "occ_rntb_conditional",
+        "ripple_rntb_final_claim"
+      ]
+    },
+    {
+      "id": "XRPL-PermissionDelegation-live",
+      "class": "secondary_report_of_on_ledger_activation",
+      "detail": "PermissionDelegationV1_1 (XLS-75) activated on XRPL mainnet on 2026-10-08 at ledger 107524865, according to Unchained's ledger-referenced reporting. It replaces the earlier buggy amendment. It enables limited delegated permissions, not transfer of master-key control.",
+      "evidence": [
+        "xrpl_permission_activation"
+      ]
+    },
+    {
+      "id": "XRPL-BatchV1_1-live",
+      "class": "secondary_report_of_on_ledger_activation",
+      "detail": "BatchV1_1 (XLS-56) activated on 2026-10-09 after fixBatchV1_2, according to XRPLinsights' ledger-referenced report. It supports atomic groups of transactions; implementation and network activation are distinct from any market-demand effect.",
+      "evidence": [
+        "xrpl_batch_activation"
+      ]
+    },
+    {
+      "id": "XRPL-ConfidentialTransfer-voting",
+      "class": "on_ledger_explorer_snapshot",
+      "detail": "XRPLWin's snapshot around 2026-11-03 19:17 UTC showed ConfidentialTransfer (XLS-96) at 20 of 35 trusted validators (57.14%), below the more-than-80% threshold of 29 for 14 consecutive days. It was not active at that snapshot. XLS-96 applies to Multi-Purpose Tokens, not native XRP transfers.",
+      "evidence": [
+        "xrpl_confidential_vote",
+        "xrpl_xls96_spec",
+        "xrpl_standards_index"
+      ]
+    },
+    {
+      "id": "XRPL-Sponsor-status",
+      "class": "official_security_disclosure_plus_dated_vote",
+      "detail": "The XLS-68 Sponsor amendment was not activated on mainnet as of XRPL.org's 2026-09-21 vulnerability disclosure. A reserve-accounting flaw was found during Devnet testing; the fix shipped in xrpld 3.4.0 on 2026-09-17. A dated 2026-10-17 vote snapshot reported Sponsor at 9/32 (28.1%), still below threshold. The 2026-11-04 fixCleanup3_4_0 activation window is a separate maintenance fix and does not itself activate Sponsor. Current Sponsor vote count was not independently retrieved in this run.",
+      "evidence": [
+        "xrpl_xls68_security",
+        "xrpl_xls68_spec",
+        "xrpl_sponsor_vote_oct17",
+        "xrpl_fixcleanup_vote"
+      ]
+    },
+    {
+      "id": "XRPL-fixCleanup3_4_0",
+      "class": "on_ledger_explorer_snapshot",
+      "detail": "XRPLWin reported fixCleanup3_4_0 at 33/35 validators (94.29%), majority since 2026-10-21 14:46:22 UTC and scheduled for 2026-11-04 14:46:22 UTC if support remains above 80% continuously. It is a bundle of fixes, including sponsorship-related fixes; it is not the Sponsor feature amendment itself.",
+      "evidence": [
+        "xrpl_fixcleanup_vote"
+      ]
+    },
+    {
+      "id": "XRPL-SingleAssetVault-Lending-votes",
+      "class": "on_ledger_explorer_snapshot",
+      "detail": "At the same approximate 2026-11-03 19:17 UTC snapshot, SingleAssetVault showed 21/35 (60%) and LendingProtocol 19/35 (54.3%), both below the 29/35 sustained threshold. These were not active at that snapshot.",
+      "evidence": [
+        "xrpl_vault_vote",
+        "xrpl_lending_vote"
+      ]
+    },
+    {
+      "id": "XRPL-DynamicMPT-status",
+      "class": "dated_secondary_snapshot_and_unknown_current",
+      "detail": "A 2026-09-04 independent amendment-status analysis reported DynamicMPT at 15/35 validators (42.9%), below the 29-vote threshold. A current exact validator-vote snapshot was not retrieved in this run; current activation status remains unverified.",
+      "evidence": [
+        "xrpl_dynamicmpt_sep4",
+        "xrpl_standards_index"
+      ]
+    },
+    {
+      "id": "XRPL-Q3-stablecoin-supply-and-volume",
+      "class": "secondary_report_of_issuer_commissioned_research",
+      "detail": "TokenPost reports Blockworks figures for Q3 2026: XRPL stablecoin supply rose 25.2% to $1.03B, RLUSD reached $1.01B (98.1%), and gross stablecoin transfer value reached $14.09B. The report explicitly says transfer value does not identify unique users or recurring commercial settlement. Treat these as gross network measures, not net new capital or XRP demand.",
+      "evidence": [
+        "tokenpost_xrpl_q3_stables"
+      ]
+    },
+    {
+      "id": "RLUSD-dust-cluster-and-value-concentration",
+      "class": "on_chain_analytics_investigation",
+      "detail": "Bitquery's Oct 19 investigation of Sep 19-Oct 18 found 7.821M RLUSD payments; 7.789M (99.6%) came from a 110-wallet dust cluster sending about 0.00099 RLUSD per payment to three collectors, carrying only 7,722 RLUSD. The cluster paid 495 XRP in fees for 8.6M transactions and accounted for 45.6% of all XRPL account-to-account payments during Oct 8-14. Excluding dust, 14,600 payments of at least 1 RLUSD moved $7.33B; ten senders accounted for 82%, issuer mint/redemption loops were about one fifth, and one $424M round-trip pair added gross volume without net economic transfer. Bitquery inferred a coordinated automated cluster from shared funding/destinations and timing; operator identity and motive are unknown. The cluster tapered around Oct 14-16, near Cross River's Oct 15 announcement; causality is unknown.",
+      "evidence": [
+        "bitquery_rlusd_dust",
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "id": "RLUSD-supply-snapshot-reconciliation",
+      "class": "non_synchronous_provider_snapshots",
+      "detail": "stables.cool reported total XRPL USD stablecoins of $716.8M on 2026-11-01 21:05 UTC (RLUSD $711.8M, USDC $5.0M). XRPL.to's page captured around 2026-11-04 01:20 UTC reported 855.3M RLUSD, 67,960 holders, 101,818 trust lines, top ten accounts holding 82%, and $3.2M 24h exchange volume; its page says the supply refreshes hourly but does not display an exact capture timestamp. These are non-synchronous and potentially methodologically different snapshots; do not average or infer a precise net flow without direct issuer obligations and same-time ledger queries.",
+      "evidence": [
+        "stablescool_xrpl_snapshot",
+        "xrplto_rlusd_tracker"
+      ]
+    },
+    {
+      "id": "CrossRiver-RLUSD-integration",
+      "class": "confirmed_partner_announcement",
+      "detail": "Cross River announced on 2026-10-15 that RLUSD on XRPL is integrated into its Core Operating System, with one API for business USD/RLUSD conversion, cross-border settlement, treasury movement and traditional ACH/wire/real-time rails. Cross River says availability is currently limited to certain states. No production transaction volume, active customer count or net settlement value was disclosed.",
+      "evidence": [
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "id": "StandardChartered-RLUSD-custody",
+      "class": "confirmed_partner_announcement",
+      "detail": "Standard Chartered announced RLUSD custody on XRPL is live for eligible clients through its DIFC Branch, regulated by the DFSA. It is also working with Ripple and LMAX Group on a planned RLUSD collateral integration and collateral-mirroring model; that collateral capability is not yet stated as live.",
+      "evidence": [
+        "ripple_sc_custody"
+      ]
+    },
+    {
+      "id": "BNY-XRP-RLUSD-custody",
+      "class": "confirmed_partner_announcement",
+      "detail": "Ripple announced on 2026-10-27 that BNY's Digital Asset Custody platform supports XRP and RLUSD. BNY is RLUSD's primary reserve custodian. BNY intends to enable clients to mint/redeem RLUSD directly through BNY and is exploring tokenized trade finance with Ripple and C2FO; future activities remain subject to approvals.",
+      "evidence": [
+        "ripple_bny_custody"
+      ]
+    },
+    {
+      "id": "C2FO-InstantPay",
+      "class": "announced_initiative_not_verified_throughput",
+      "detail": "C2FO and Ripple announced on 2026-10-27 that financing and settlement activity for C2FO Instant Pay will use XRPL with RLUSD settlement. C2FO's historical $520B+ working-capital access refers to its existing Early Pay programs, not Instant Pay throughput, committed capital or XRP purchases. Production launch, transaction volume, capital providers and XRP bridge use remain unknown.",
+      "evidence": [
+        "ripple_c2fo_instantpay"
+      ]
+    },
+    {
+      "id": "XRPL-supply-provider-discrepancy",
+      "class": "cross_provider_methodology_discrepancy",
+      "detail": "The Ripple-commissioned Blockworks Q3 report, repeated by TokenPost, says Q3 stablecoin supply was $1.03B. XRP Breadcrumbs' October 1 reconciliation cites September 29 snapshots of $1.213B from DefiLlama and $1.19B from RWA.xyz. These are $160M-$183M higher (about 13.4%-15.1%) than the Q3 report figure. The cutoff dates are close but not identical, and the provider universes/methods are not reconciled. Treat $1.03B, $1.19B and $1.213B as separate provider observations; do not average or use them as a single canonical supply series.",
+      "evidence": [
+        "tokenpost_xrpl_q3_stables",
+        "xrpbreadcrumbs_supply_sep29"
+      ]
+    },
+    {
+      "id": "XRPL-active-account-concentration-Q2",
+      "class": "secondary_market_structure_report",
+      "detail": "CoinDesk's September 5, 2026 Q2 review reported average daily active XRPL accounts down 24% year over year, new accounts down 25%, and daily order-book traders down about 41%, while order-book trading volume rose 79%. Average tokenized-asset and RLUSD balances reached about $4.26B. This supports a concentration hypothesis (fewer accounts moving more value), not proof of broad retail adoption or XRP demand.",
+      "evidence": [
+        "coindesk_q2_activity"
+      ]
+    },
+    {
+      "id": "SBIC-vs-SBI-Holdings",
+      "class": "identity_resolution_from_official_records",
+      "detail": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and Osaka Small and Medium Business Investment & Consultation Co., Ltd. are regional SME investment/consultation entities that publish ChatGPT/GenAI seminars. SBI Holdings is a separate Japanese financial group with distinct subsidiaries and partnerships. No corporate affiliation between the reviewed SBIC entities and SBI Holdings was found in the reviewed official records. Do not conflate SBIC with SBI.",
+      "evidence": [
+        "sbic_tokyo_chatgpt",
+        "sbic_west_chatgpt",
+        "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "id": "SBI-Ripple-equity-and-JV",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI investor materials report that SBI Group holds approximately 9% of Ripple equity as its largest external shareholder. SBI Group and Ripple jointly established SBI Ripple Asia; SBI Group holds 60% of voting rights and Ripple 40%. This is corporate equity/JV ownership, not SBI ownership of 9% of XRP supply.",
+      "evidence": [
+        "sbi_ripple_stake",
+        "sbi_ripple_asia_ownership"
+      ]
+    },
+    {
+      "id": "SBI-Remit-XRP-bridge",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI Remit states it began Ripple DLT remittances in 2017 and SBI investor materials identify its 2021 service as Japan's first international remittance using XRP as bridge currency. Later official materials describe expansion to Philippines, Vietnam and Indonesia. Public corridor-level XRP volume and net XRP inventory are not disclosed.",
+      "evidence": [
+        "sbi_remit_xrp",
+        "sbi_ripple_stake"
+      ]
+    },
+    {
+      "id": "SBI-Circle-JV-and-equity",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI Holdings and Circle Holdings established a joint venture in 2025 following a 2023 MOU focused on USDC circulation, banking relationships and Circle Web3 services in Japan. SBI Holdings and SBI Shinsei Bank separately disclosed a $50M strategic Circle equity investment, split $25M each. The cited joint-venture announcement does not specify the ownership split; do not assume 50/50 from this source.",
+      "evidence": [
+        "sbi_circle_jv_pdf",
+        "sbi_circle_equity"
+      ]
+    },
+    {
+      "id": "SBI-USDC-distribution",
+      "class": "confirmed_from_SBI_official_disclosure",
+      "detail": "SBI VC Trade registered as Japan's first Electronic Payment Instruments Service Provider in March 2025 and began USDC distribution. This is a Circle/SBI relationship separate from XRP bridge remittance.",
+      "evidence": [
+        "sbi_usdc_retail",
+        "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "id": "SBI-RLUSD-Japan",
+      "class": "confirmed_from_partner_announcement",
+      "detail": "SBI VC Trade launched RLUSD in Japan on 2026-06-24 following JFSA approval, as a Japanese electronic payment instrument classification. The launch supports RLUSD distribution, not proof of XRP bridge utilization or XRP collateral use.",
+      "evidence": [
+        "sbi_rlusd_japan"
+      ]
+    },
+    {
+      "id": "SBI-Arc-and-JPYSC",
+      "class": "confirmed_from_issuer_and_SBI_disclosures",
+      "detail": "SBI Group says it is a founding validator of Circle's Arc mainnet and plans to use USDC and JPYSC. SBI Shinsei Trust's JPYSC is a separate trust-type yen stablecoin; SBI disclosed about ¥20.1B outstanding on 2026-09-07, about ¥6.9B of lending applications and ¥10B of backing assets allocated to short-term Japanese government bonds. No direct XRPL/XRP bridge between JPYSC and Arc was established by these sources.",
+      "evidence": [
+        "sbi_circle_arc",
+        "sbi_jpysc"
+      ]
+    },
+    {
+      "id": "Kamilah-video-index-expansion",
+      "class": "public_video_metadata_candidates_not_exhaustive",
+      "detail": "Five additional direct YouTube IDs were found: XRP Is Not Bitcoin (2025-12-24), Why XRP Could Move Before the Clarity Act (2026-01-23), Something Just Broke in Global Finance (2026-03-06), I Moved My XRP Off The Exchanges (2026-05-20), and 1,196 Cold Wallets Drained in 41 Minutes (2026-08-08). These establish discoverable public video candidates, not truth of the creator's market or incident claims. The direct YouTube channel videos page was throttled during this run; no exhaustive inventory is claimed.",
+      "evidence": [
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet",
+        "kamilah_creator_aggregate_index"
+      ]
+    },
+    {
+      "id": "Kamilah-video-claims-separate-from-facts",
+      "class": "creator_claims_unverified",
+      "detail": "The indexed videos present creator theses about XRP as a value-movement asset, possible pre-Clarity-Act repricing, oil shocks and yen-carry unwind, personal exchange withdrawals, and cold-wallet seed-generation vulnerabilities. DailyCoin's May 21, 2026 article quotes the creator saying she moved XRP and other long-term positions off exchanges to separate custody from trading behavior. This remains a personal self-report; no wallet addresses, transfer set or aggregate exchange outflow was independently verified. The cold-wallet description explicitly says the reported Bitcoin incident was not an XRP theft.",
+      "evidence": [
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet",
+        "kamilah_exchange_move_dailycoin"
+      ]
+    },
+    {
+      "id": "Actual-capital-phrase-recheck",
+      "class": "unknown",
+      "detail": "A new search of the candidate creator's indexed public posts surfaced the adjacent phrase 'patient capital' and a claim about SBI's Ripple equity stake, but no exact, attributable 'actual capital' phrase. Do not substitute 'patient capital', actual XRP collateral utilization, or corporate equity value for the unresolved phrase.",
+      "evidence": [
+        "kamilah_creator_social_index",
+        "kamilah_creator_aggregate_index"
+      ]
+    },
+    {
+      "id": "ASK-Coin-name-disambiguation",
+      "class": "multiple_candidate_entities_not_resolved_to_user_intent",
+      "detail": "The exact phrase ASK Coin is ambiguous in public listings. Three distinct candidates are now documented: Permission Coin (ticker ASK), an active token with official Base and Polygon LayerZero OFT deployments; Askcoin (ASK), a separate CMC preview listing that shows zero supply and a third-party index marks inactive/untracked; and Ask Coin, a separate exchange listing for askcoin.net marked inactive/untracked with no reserve data. These are not interchangeable and none is confirmed as the user's intended reference.",
+      "evidence": [
+        "permission_ask_docs",
+        "permission_ask_cmc",
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree",
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree"
+      ]
+    },
+    {
+      "id": "ASK-XRPL-relationship-status",
+      "class": "no_verified_xrpl_link_in_reviewed_sources",
+      "detail": "Reviewed Permission Coin sources identify Base and Polygon deployments, while the separate Askcoin token preview references askcoin.me and explorer.askcoin.me. The Ask Coin exchange listing points to askcoin.net. Direct attempts to open askcoin.me and explorer.askcoin.me were inaccessible, and exact searches did not establish an XRP Ledger deployment, Ripple relationship, XRP trading pair, or SBI/Circle/Coinbase connection. This is a bounded search result, not proof that no relationship can exist.",
+      "evidence": [
+        "permission_ask_docs",
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree",
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree"
+      ]
+    },
+    {
+      "id": "RLUSD-XRPL-supply-nov4-provider-disagreement",
+      "class": "non_synchronous_provider_snapshot_disagreement",
+      "detail": "A new xrpldashboard snapshot reports +$140.6M (+19.75%) RLUSD supply over 24h in a panel as of ledger 108079173 / 2026-11-03 11:50 UTC, while its homepage preview shows latest ledger 108098286 / 2026-11-03 23:36:28 UTC. XRPL.to around 2026-11-04 01:20 UTC displayed approximately $855.3M RLUSD, 67,960 holders and 101,818 trustlines. Sologenic's RLUSD index, retrieved 2026-11-04 02:10 UTC but without a disclosed underlying ledger timestamp or supply scope, displayed 1.0303B RLUSD, 67,215 holders and 100,209 trustlines. Holder/trustline counts are similar while displayed supply differs materially. This may reflect stale data, scope differences or indexing errors; it is not a verified $175M mint or net capital inflow. Same-ledger issuer balance reconciliation is required.",
+      "evidence": [
+        "xrpldashboard_home",
+        "sologenic_rlusd_asset_index",
+        "xrplto_rlusd_tracker"
+      ]
+    },
+    {
+      "id": "Kamilah-social-handle-ambiguity",
+      "class": "multiple_unverified_social_handles",
+      "detail": "Two third-party indexes surface different handles: Teapawt lists @iamkamstevenson, while CryptiTalk attributes an XRP post to @kamilahsteven21. Neither source establishes that either account is controlled by the owner of the Kamilah Stevenson YouTube channel, and the two handles are not assumed to be the same person. Preserve them as separate unverified account candidates.",
+      "evidence": [
+        "kamilah_creator_social_index",
+        "kamilah_social_index_cryptitalk"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC distribution/revenue-sharing arrangement",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_q3_10q",
+        "circle_q2_10q"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native USDC issuance and Circle Mint/API support",
+      "status": "confirmed",
+      "evidence": [
+        "circle_xrpl_blog",
+        "circle_xrpl_product"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple/RLUSD",
+      "relation": "RLUSD distribution on Prime/Exchange/Retail",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_rlusd"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRPL",
+      "relation": "RLUSD deposits/withdrawals supported on XRPL",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_rlusd"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Bitnomial",
+      "relation": "commercial/product relationship cited in Bitnomial collateral announcement",
+      "status": "issuer-claimed",
+      "evidence": [
+        "bitnomial_xrp_margin"
+      ]
+    },
+    {
+      "from": "Bitnomial",
+      "to": "XRP",
+      "relation": "venue-specific margin collateral with 40% haircut and $15M notional limit",
+      "status": "product-schedule-confirmed; utilization-unknown",
+      "evidence": [
+        "bitnomial_xrp_margin",
+        "bitnomial_collateral_table"
+      ]
+    },
+    {
+      "from": "CFTC",
+      "to": "Bitnomial/FCMs",
+      "relation": "derivatives regulatory framework and initial digital-assets pilot",
+      "status": "confirmed",
+      "evidence": [
+        "cftc_pilot"
+      ]
+    },
+    {
+      "from": "Tokyo SBIC",
+      "to": "ChatGPT",
+      "relation": "public educational seminar with Microsoft Japan speaker",
+      "status": "confirmed",
+      "evidence": [
+        "sbic_tokyo_chatgpt"
+      ]
+    },
+    {
+      "from": "Osaka SBIC",
+      "to": "ChatGPT",
+      "relation": "public generative-AI seminar",
+      "status": "confirmed",
+      "evidence": [
+        "sbic_west_chatgpt"
+      ]
+    },
+    {
+      "from": "Permission Coin",
+      "to": "Base/Polygon",
+      "relation": "ASK token contracts",
+      "status": "confirmed",
+      "evidence": [
+        "permission_ask_docs"
+      ]
+    },
+    {
+      "from": "Permission Coin ASK",
+      "to": "XRP/XRPL",
+      "relation": "no link established",
+      "status": "unknown/no evidence found",
+      "evidence": [
+        "permission_ask_docs"
+      ]
+    },
+    {
+      "from": "OCC",
+      "to": "Ripple National Trust Bank",
+      "relation": "preliminary conditional approval 2025-12-12; Ripple later announced final approval 2026-10-27",
+      "status": "conditional approval regulator-confirmed; final approval issuer-reported pending OCC document",
+      "evidence": [
+        "occ_rntb_conditional",
+        "ripple_rntb_final_claim",
+        "occ_decisions_index"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "PermissionDelegationV1_1",
+      "relation": "mainnet amendment activation 2026-10-08",
+      "status": "secondary report with ledger reference",
+      "evidence": [
+        "xrpl_permission_activation"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "BatchV1_1",
+      "relation": "mainnet amendment activation 2026-10-09",
+      "status": "secondary report with ledger reference",
+      "evidence": [
+        "xrpl_batch_activation"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "ConfidentialTransfer",
+      "relation": "20/35 support; below activation threshold at 2026-11-03 snapshot",
+      "status": "explorer snapshot",
+      "evidence": [
+        "xrpl_confidential_vote",
+        "xrpl_xls96_spec"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "Sponsor XLS-68",
+      "relation": "9/32 support at 2026-10-17 snapshot; activation blocked pending reserve-accounting fix; current vote count unknown",
+      "status": "official security disclosure plus dated secondary vote snapshot",
+      "evidence": [
+        "xrpl_xls68_security",
+        "xrpl_sponsor_vote_oct17",
+        "xrpl_fixcleanup_vote"
+      ]
+    },
+    {
+      "from": "XRPL validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "33/35 support; scheduled 2026-11-04 14:46 UTC if majority holds",
+      "status": "explorer snapshot",
+      "evidence": [
+        "xrpl_fixcleanup_vote"
+      ]
+    },
+    {
+      "from": "Cross River Bank",
+      "to": "Ripple/RLUSD",
+      "relation": "RLUSD integrated into Cross River core banking system for API-based business payments on XRPL; limited-state availability",
+      "status": "confirmed partner announcement; throughput unknown",
+      "evidence": [
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "from": "Cross River Bank",
+      "to": "X Money",
+      "relation": "Cross River separately announced it would power X Money",
+      "status": "confirmed separate relationship; no RLUSD integration established",
+      "evidence": [
+        "crossriver_rlusd"
+      ]
+    },
+    {
+      "from": "Standard Chartered",
+      "to": "RLUSD",
+      "relation": "institutional custody for RLUSD issued on XRPL live through DIFC Branch regulated by DFSA",
+      "status": "confirmed partner announcement",
+      "evidence": [
+        "ripple_sc_custody"
+      ]
+    },
+    {
+      "from": "Standard Chartered",
+      "to": "LMAX Group",
+      "relation": "planned RLUSD collateral integration and collateral-mirroring model",
+      "status": "planned; subject to approvals",
+      "evidence": [
+        "ripple_sc_custody"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple/XRP",
+      "relation": "BNY Digital Asset Custody supports XRP and RLUSD; BNY is primary RLUSD reserve custodian",
+      "status": "confirmed partner announcement",
+      "evidence": [
+        "ripple_bny_custody",
+        "ripple_rntb_final_oct26"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "C2FO",
+      "relation": "exploring tokenized trade-finance/supplier-finance initiative on XRPL",
+      "status": "exploratory; not completed product",
+      "evidence": [
+        "ripple_bny_custody",
+        "ripple_c2fo_instantpay"
+      ]
+    },
+    {
+      "from": "C2FO",
+      "to": "Ripple/RLUSD",
+      "relation": "Instant Pay financing/settlement activity intended for XRPL with RLUSD settlement",
+      "status": "announced initiative; production volume unknown",
+      "evidence": [
+        "ripple_c2fo_instantpay"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "approximately 9% equity stake reported by SBI as largest external shareholder",
+      "status": "confirmed corporate equity; not XRP ownership",
+      "evidence": [
+        "sbi_ripple_stake"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI Ripple Asia",
+      "relation": "60% voting rights; Ripple holds 40%",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_ripple_asia_ownership"
+      ]
+    },
+    {
+      "from": "SBI Remit",
+      "to": "XRP",
+      "relation": "XRP used as bridge currency in remittance service since 2021",
+      "status": "confirmed service history; current corridor volume unknown",
+      "evidence": [
+        "sbi_remit_xrp",
+        "sbi_ripple_stake"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relation": "USDC-focused JV and $50M strategic equity investment with SBI Shinsei Bank",
+      "status": "confirmed; JV ownership split not stated in cited announcement",
+      "evidence": [
+        "sbi_circle_jv_pdf",
+        "sbi_circle_equity"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "Japanese distribution began March 2025",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_usdc_retail",
+        "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "Japanese distribution launched June 24, 2026 after JFSA approval",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_rlusd_japan"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relation": "founding validator; intends to use USDC and JPYSC",
+      "status": "confirmed issuer/partner statement",
+      "evidence": [
+        "sbi_circle_arc"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Trust",
+      "to": "JPYSC",
+      "relation": "issuer of trust-type yen stablecoin",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_jpysc"
+      ]
+    },
+    {
+      "from": "Tokyo/Osaka SBIC",
+      "to": "SBI Holdings",
+      "relation": "no corporate affiliation established in reviewed official records",
+      "status": "unconfirmed/no evidence found; keep entities separate",
+      "evidence": [
+        "sbic_tokyo_chatgpt",
+        "sbic_west_chatgpt",
+        "sbi_circle_jv_pdf"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_xrp_vs_btc"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "Why XRP Could Move Before the Clarity Act",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_clarity_act"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "Something Just Broke in Global Finance",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_yen_carry_oil"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "I Moved My XRP Off The Exchanges",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_exchange_custody"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson channel candidate",
+      "to": "1,196 Cold Wallets Drained in 41 Minutes but XRP Holders Had One Thing DIFFERENT",
+      "relation": "published video",
+      "status": "public_video_metadata_candidate",
+      "evidence": [
+        "kamilah_video_cold_wallet"
+      ]
+    },
+    {
+      "from": "Permission Coin (ASK)",
+      "to": "Base and Polygon",
+      "relation": "official token deployment",
+      "status": "documented",
+      "evidence": [
+        "permission_ask_docs",
+        "permission_ask_cmc"
+      ]
+    },
+    {
+      "from": "Askcoin (ASK) preview listing",
+      "to": "askcoin.me / explorer.askcoin.me",
+      "relation": "listed website and explorer",
+      "status": "third-party listing; inactive/untracked",
+      "evidence": [
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree"
+      ]
+    },
+    {
+      "from": "Ask Coin exchange listing",
+      "to": "askcoin.net",
+      "relation": "listed exchange website",
+      "status": "third-party listing; inactive/untracked",
+      "evidence": [
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree"
+      ]
+    },
+    {
+      "from": "xrpldashboard",
+      "to": "RLUSD on XRPL",
+      "relation": "reports 24h supply-change and AMM activity metrics",
+      "status": "provider observation with panel timestamp mismatch",
+      "evidence": [
+        "xrpldashboard_home"
+      ]
+    },
+    {
+      "from": "Sologenic",
+      "to": "RLUSD issuer/currency on XRPL",
+      "relation": "indexes asset supply, holders and trustlines",
+      "status": "third-party index; supply scope/timestamp unresolved",
+      "evidence": [
+        "sologenic_rlusd_asset_index"
+      ]
+    },
+    {
+      "from": "DailyCoin Team",
+      "to": "I Moved My XRP Off The Exchanges",
+      "relation": "secondary coverage quotes creator's personal custody claim",
+      "status": "secondary report; no on-chain corroboration",
+      "evidence": [
+        "kamilah_exchange_move_dailycoin",
+        "kamilah_video_exchange_custody"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-stablecoin-complement",
+      "claim": "USDC/RLUSD availability on XRPL increases network utility and liquidity, while XRP remains useful in some bridge or market-making paths.",
+      "support": [
+        "Circle native USDC on XRPL",
+        "Coinbase RLUSD XRPL deposits/withdrawals",
+        "xrpldashboard panel reports a 24h RLUSD supply increase of $140.6M (+19.75%), but the panel's as-of time differs from the homepage latest-ledger preview and is not independently reconciled."
+      ],
+      "disconfirming_or_missing": [
+        "No route-level proof that XRP is used in these stablecoin transfers",
+        "No XRP-specific incremental buy/hold demand disclosed",
+        "Sologenic, XRPL.to and xrpldashboard show non-synchronous or differently scoped supply observations; no same-ledger issuer-obligation reconstruction confirms the magnitude."
+      ],
+      "tests": [
+        "Measure XRPL USDC transfer routes and counterparties",
+        "Measure XRP bridge volume and market-maker inventory around product launches"
+      ]
+    },
+    {
+      "id": "H2-stablecoin-substitution",
+      "claim": "Stablecoins can settle USD-denominated value directly and may substitute for XRP bridge legs on some corridors.",
+      "support": [
+        "Circle Mint supports direct fiat-to-USDC on XRPL",
+        "Coinbase RLUSD available on XRPL and Base"
+      ],
+      "disconfirming_or_missing": [
+        "Some corridors may still require XRP for non-USD liquidity or pathfinding",
+        "No route-level adoption data"
+      ],
+      "tests": [
+        "Compare stablecoin-only and XRP-bridged route share by corridor",
+        "Track net XRP inventory changes at market makers"
+      ]
+    },
+    {
+      "id": "H3-collateral-capital-efficiency",
+      "claim": "XRP collateral eligibility can make existing XRP holdings more productive and reduce forced sales to raise cash.",
+      "support": [
+        "Bitnomial product collateral schedule",
+        "Coinbase product-level XRP collateral eligibility reported separately"
+      ],
+      "disconfirming_or_missing": [
+        "Bitnomial's 40% haircut and $15M notional cap limit capacity",
+        "Coinbase Q3 filing does not identify XRP in recognized derivatives collateral"
+      ],
+      "tests": [
+        "Obtain venue-specific collateral balances, haircuts, utilization and borrowing rates",
+        "Track XRP balances pledged vs spot exchange flows"
+      ]
+    },
+    {
+      "id": "H4-collateral-reflexivity",
+      "claim": "Leveraged XRP collateral can amplify drawdowns through margin calls and liquidation.",
+      "support": [
+        "Collateral value is mark-to-market and venue haircuts/limits exist"
+      ],
+      "disconfirming_or_missing": [
+        "No public XRP-specific utilization or liquidation series available in this packet"
+      ],
+      "tests": [
+        "Join collateral utilization with liquidation and order-book data",
+        "Estimate liquidation elasticity by venue and stress regime"
+      ]
+    },
+    {
+      "id": "H5-Coinbase-platform-diversification",
+      "claim": "Coinbase is building a diversified exchange, custody, derivatives, stablecoin, payments and onchain stack; XRP is one asset in a broader platform strategy.",
+      "support": [
+        "Q3 2026 product priorities",
+        "Q3 USDC balances and Circle contract renewal",
+        "RLUSD distribution and derivatives growth"
+      ],
+      "disconfirming_or_missing": [
+        "No evidence in the filing that XRP is a strategic balance-sheet focus",
+        "No XRP-specific collateral amount disclosed"
+      ],
+      "tests": [
+        "Track XRP-specific volume, balances, collateral and product adoption against platform-wide metrics"
+      ]
+    },
+    {
+      "id": "H6-adoption-not-price",
+      "claim": "Stablecoin and XRPL adoption can grow without proportional XRP price appreciation.",
+      "support": [
+        "USDC/RLUSD are dollar-denominated settlement assets on XRPL",
+        "No XRP bridge use is established for every transaction"
+      ],
+      "disconfirming_or_missing": [
+        "XRP may still be required for fees, reserves and some cross-currency paths"
+      ],
+      "tests": [
+        "Estimate direct XRP demand from fees, reserves, bridge turnover and liquidity-provider inventory separately from stablecoin transaction counts"
+      ]
+    },
+    {
+      "id": "H7-sponsored-fees-shifts-xrp-demand",
+      "claim": "If XLS-68 Sponsor activates, end users may transact without holding XRP while sponsors bear fee/reserve obligations; this could shift XRP demand from users to institutional sponsors rather than eliminate it.",
+      "support": [
+        "XLS-68 specification allows one account to pay another's fees/reserves"
+      ],
+      "disconfirming_or_missing": [
+        "Sponsor not activated as of 2026-09-21; dated 2026-10-17 snapshot was 9/32",
+        "No public sponsor balances, sponsored-object counts or fee flows"
+      ],
+      "tests": [
+        "Track sponsored transaction counts and sponsor XRP balances after activation",
+        "Compare new-account retention and sponsor inventory against baseline"
+      ]
+    },
+    {
+      "id": "H8-institutional-privacy-mpt-not-xrp",
+      "claim": "XLS-96 could improve institutional MPT privacy but does not make native XRP transfers confidential; any institutional tokenization effect may not translate into direct XRP demand.",
+      "support": [
+        "XLS-96 is scoped to Multi-Purpose Tokens",
+        "ConfidentialTransfer was only 20/35 at the 2026-11-03 snapshot"
+      ],
+      "disconfirming_or_missing": [
+        "MPT issuers and auditor adoption remain unknown",
+        "No activated mainnet usage or XRP demand attribution"
+      ],
+      "tests": [
+        "Measure MPT issuance/holders and confidential transfer usage after activation",
+        "Separate MPT turnover from native XRP bridge and reserve demand"
+      ]
+    },
+    {
+      "id": "H9-gross-volume-distortion",
+      "claim": "XRPL stablecoin payment counts and gross transfer volume can materially overstate independent economic activity because of dust clusters, issuer mint/redemption loops, exchange sweeps and round trips.",
+      "support": [
+        "Bitquery found 99.6% of RLUSD payment count from a 110-wallet dust cluster",
+        "Top ten senders accounted for 82% of $7.33B in non-dust payments",
+        "Issuer loops and a $424M round-trip pair inflate gross volume"
+      ],
+      "disconfirming_or_missing": [
+        "Bitquery's clustering is an analytics inference; operator motive is unknown",
+        "The $7.33B non-dust value remains substantial, but economic purpose is not fully known"
+      ],
+      "tests": [
+        "Track net rather than gross transfers",
+        "Remove dust, issuer loops and round trips",
+        "Cluster counterparties and measure concentration",
+        "Compare bank/API settlement records where public"
+      ]
+    },
+    {
+      "id": "H10-custody-is-not-xrp-demand",
+      "claim": "Institutional custody and RLUSD banking integrations increase operational access but do not automatically create proportional XRP purchases or collateral utilization.",
+      "support": [
+        "Standard Chartered custody is for RLUSD",
+        "BNY custody supports XRP and RLUSD but does not disclose balances",
+        "Cross River integration settles RLUSD, with no public XRP bridge-use data"
+      ],
+      "disconfirming_or_missing": [
+        "XRP remains required for XRPL fees/reserves and may be used in some bridge routes",
+        "No disclosed customer-level flow attribution"
+      ],
+      "tests": [
+        "Track custody balances by asset",
+        "Measure XRP reserve/fee demand and bridge legs separately",
+        "Measure institutional XRP inventory and collateral balances"
+      ]
+    },
+    {
+      "id": "H11-bank-rail-adoption-throughput-unknown",
+      "claim": "Cross River's RLUSD integration can connect stablecoin settlement with bank rails, but its real economic importance depends on production throughput, jurisdiction and active client usage.",
+      "support": [
+        "Cross River announced a live core-banking integration and one-API access",
+        "Availability is limited to certain states"
+      ],
+      "disconfirming_or_missing": [
+        "No public production volume or customer counts",
+        "No evidence X Money uses RLUSD"
+      ],
+      "tests": [
+        "Track disclosed production launch, jurisdictions, API customers and settled value",
+        "Keep Cross River's X Money relationship separate unless an RLUSD link is disclosed"
+      ]
+    },
+    {
+      "id": "H12-value-concentration-not-broad-adoption",
+      "claim": "XRPL institutional/tokenized value and gross trading volume can rise while active-account participation falls, concentrating activity among fewer large entities.",
+      "support": [
+        "CoinDesk Q2 report: order-book volume +79% YoY while active accounts -24%, new accounts -25%, daily order-book traders -41%",
+        "Bitquery RLUSD investigation: top ten senders accounted for 82% of non-dust value"
+      ],
+      "disconfirming_or_missing": [
+        "CoinDesk's aggregate metrics do not identify entity type or beneficial owners",
+        "Q3 figures may use different universes and measurement methods"
+      ],
+      "tests": [
+        "Track active economic entities separately from raw accounts",
+        "Measure top-10/top-100 concentration and Herfindahl index",
+        "Separate exchange, issuer, market-maker, bank and retail clusters",
+        "Compare value growth with unique counterparties and net flows"
+      ]
+    },
+    {
+      "id": "H13-SBI-multirail-hub",
+      "claim": "SBI Group is a multi-rail institutional hub with strategic equity links to both Ripple and Circle, distribution of XRP-related remittance and RLUSD/USDC products, and participation in Circle Arc/JPYSC. This may support a broad digital-finance ecosystem but is not an exclusive XRP thesis.",
+      "support": [
+        "SBI reports ~9% Ripple equity and 60/40 SBI Ripple Asia JV",
+        "SBI Remit uses XRP as bridge currency",
+        "SBI has a Circle JV and $50M Circle equity investment",
+        "SBI VC Trade distributes both USDC and RLUSD",
+        "SBI Group is a founding validator of Arc and SBI Shinsei Trust issues JPYSC"
+      ],
+      "disconfirming_or_missing": [
+        "No route-level capital-flow data across XRP, USDC, RLUSD and JPYSC",
+        "The SBIC Tokyo/Osaka seminar entities are not shown to be affiliates of SBI Holdings",
+        "Arc/JPYSC and XRPL/XRP rails may be operationally separate"
+      ],
+      "tests": [
+        "Measure SBI Remit XRP route volumes and counterparties",
+        "Track SBI VC Trade USDC/RLUSD balances and turnover separately",
+        "Verify Arc/JPYSC issuance and redemption activity",
+        "Trace any direct bridge or custody links between Arc, XRPL and XRP"
+      ]
+    }
+  ],
+  "source_quality": {
+    "primary_vs_secondary": "SEC filings and regulator releases are primary for disclosed facts; issuer product pages are primary for what the issuer says it offers, not independent proof of usage; market-data providers are single-source observations; DailyCoin/Glasp/channel directories are secondary.",
+    "independence_warning": "Coinbase press release and Coinbase 10-Q are not independent sources. Circle SEC filing and Circle product pages are not independent sources. Bitnomial product pages and Bitnomial press releases are one operator's statements. Bitquery's on-chain clustering is a detailed third-party analysis, but the bot label is an inference from transaction patterns; do not attribute operator identity or motive. TokenPost's Q3 stablecoin figures cite Ripple-commissioned Blockworks research. XRPL.to asks data users to use its documented API for integrations; its page snapshot is not a substitute for direct ledger reconstruction.",
+    "timestamp_warning": "Market snapshots have exact provider timestamps. Event PDFs and filings have publication dates, not necessarily ingestion timestamps. Never substitute publication date for data availability time."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "No leakage-safe historical feature store, calibrated baseline comparison or walk-forward results are yet verified."
+  },
+  "blockers": [
+    "Coinbase actual XRP collateral posted and utilization are not disclosed in the reviewed Q3 filing.",
+    "Bitnomial actual XRP collateral balances and realized product usage are unknown.",
+    "Circle Q3 2026 results are scheduled for 2026-11-04 08:00 ET and were not yet published at cutoff.",
+    "The exact Camilla Stephenson identity and complete channel inventory remain unresolved.",
+    "The intended ASK Coin identity and the exact source/meaning of 'actual capital' remain unresolved.",
+    "Ripple's October 28, 2026 final RNTB approval announcement was not matched to a separate final OCC decision document in the OCC index at capture; actual bank commencement date is unknown.",
+    "XRPL Sponsor and DynamicMPT current validator-vote counts were not independently retrieved; retain dated statuses and do not infer current activation.",
+    "XRPL stablecoin supply providers show non-synchronous snapshots: $716.8M total stablecoins on Nov 1 versus 855.3M RLUSD on XRPL.to around Nov 4; exact net flows require direct same-time ledger/issuer-obligation reconstruction.",
+    "Bitquery's RLUSD dust cluster classification is based on public ledger patterns; wallet operator identity and motive remain unknown.",
+    "Cross River, Standard Chartered, BNY and C2FO announced institutional integrations, but public production throughput and XRP-specific flow attribution are not disclosed.",
+    "The official SBI-Circle joint-venture announcement confirms establishment but does not state the JV ownership split; do not call it 50/50 without a separate filing."
+  ],
+  "next_actions": [
+    "Disambiguate SBIC regional SME investment companies from SBI Holdings in all future research and entity graphs.",
+    "Track SBI's multi-rail activity separately: XRP bridge remittances, RLUSD distribution, USDC distribution, Arc validator role and JPYSC issuance/redemption.",
+    "Verify the SBI-Circle JV ownership split from corporate filings before recording a percentage.",
+    "Reconcile the Q3 stablecoin supply figure ($1.03B Ripple-commissioned Blockworks) against September 29 DefiLlama ($1.213B) and RWA.xyz ($1.19B) snapshots using a common issuer-obligation query and identical cutoff.",
+    "Add active-entity concentration, top-10/top-100 shares, HHI, net flow, dust ratio and round-trip removal to XRPL feature engineering; do not use raw account counts or gross transfer volume as adoption proxies.",
+    "Build the nine-platform capability/authentication/permission/data-flow adapters one at a time; do not claim collaboration until each adapter returns a verifiable signed/traceable handoff.",
+    "Run independent red-team tasks only after Claude/Grok/Gemini/Copilot/Codex/Hugging Face/Kaggle/Databricks access is explicitly authenticated and scoped.",
+    "Reconstruct RLUSD and USDC supply from issuer obligations on the validated XRPL ledger at fixed hourly/daily cutoffs; reconcile stables.cool and XRPL.to snapshots without averaging.",
+    "Build robust stablecoin activity features: dust ratio, unique senders/receivers, concentration, issuer mint/redemption, exchange-tagged deposits, round-trip cycles, net flows and fee cost.",
+    "Track Cross River's RLUSD production volumes and state availability; keep its X Money partnership separate absent a direct RLUSD statement.",
+    "Track BNY XRP/RLUSD custody balances, Standard Chartered RLUSD custody and planned LMAX collateral integration separately by asset and status.",
+    "Track C2FO Instant Pay launch, capital providers and realized invoice settlement; do not use C2FO's historical Early Pay total as Instant Pay capital.",
+    "Recheck fixCleanup3_4_0 after its scheduled 2026-11-04 14:46 UTC activation window and verify the on-ledger EnableAmendment record.",
+    "Recheck Sponsor, ConfidentialTransfer, DynamicMPT, SingleAssetVault and LendingProtocol directly from the validated Amendments ledger object; record the exact ledger index, voting ledger, majority-start timestamp and activation ledger.",
+    "Obtain OCC's final Ripple National Trust Bank decision letter and commencement status; reconcile Ripple's 2026-10-28 issuer announcement with regulator records.",
+    "Ingest Circle Q3 2026 results after the 2026-11-04 08:00 ET release and reconcile with Q2 reserve income, USDC circulation and Coinbase distribution costs.",
+    "Extract Coinbase Q3 collateral tables into a structured feature with asset-level unknowns preserved.",
+    "Obtain Bitnomial rule/approval records and monitor product-specific XRP collateral schedule changes.",
+    "Build timestamped exchange-native XRP spot, perpetual, futures, options and liquidation history.",
+    "Create separate USDC/RLUSD-on-XRPL and XRP bridge-flow datasets; do not equate XRPL activity with XRP demand.",
+    "Resolve Kamilah/Camila versus Camilla identity and continue channel inventory without merging identities.",
+    "Continue exact-phrase searches for ASK Coin and actual capital."
+  ],
+  "platform_map": [
+    {
+      "platform": "ChatGPT",
+      "status": "tested_current_runtime",
+      "authentication": "GitHub connector successfully used against Barrot-Agent/B-Agent; branch creation, file commits and PR creation were exercised",
+      "permissions": "Repository read plus branch/PR writes tested; main write and merge were not exercised",
+      "assigned_role": "Research orchestration, evidence synthesis, structured artifact authoring, independent hypothesis comparison and regression-test preparation"
+    },
+    {
+      "platform": "Claude",
+      "status": "not_tested",
+      "authentication": "No authenticated session tested",
+      "permissions": "None verified",
+      "assigned_role": "Independent red-team review, alternative causal hypotheses and disconfirming evidence"
+    },
+    {
+      "platform": "Grok",
+      "status": "not_tested",
+      "authentication": "No authenticated session tested",
+      "permissions": "None verified",
+      "assigned_role": "Public discussion and social-sentiment discovery with bot/manipulation and source-quality filters"
+    },
+    {
+      "platform": "Gemini",
+      "status": "not_tested",
+      "authentication": "No authenticated session tested",
+      "permissions": "None verified",
+      "assigned_role": "Independent public-source triangulation and document extraction"
+    },
+    {
+      "platform": "Copilot",
+      "status": "workflow_reference_only",
+      "authentication": "No live Copilot session tested; repository references COPILOT_ASSIGNEE but the inspected run reported it was not configured",
+      "permissions": "None verified for a live Copilot agent",
+      "assigned_role": "Independent GitHub workflow, code and PR review"
+    },
+    {
+      "platform": "Codex",
+      "status": "not_tested",
+      "authentication": "No separate Codex session or handoff receipt tested",
+      "permissions": "None verified",
+      "assigned_role": "Deterministic implementation, isolated tests and minimal patch review"
+    },
+    {
+      "platform": "Hugging Face",
+      "status": "workflow_reference_only",
+      "authentication": "Repository workflows reference HF credentials, but no authenticated HF session or API operation was tested in this run",
+      "permissions": "None verified in this runtime",
+      "assigned_role": "Model and dataset hosting, model-card provenance and reproducible evaluation"
+    },
+    {
+      "platform": "Kaggle",
+      "status": "workflow_reference_only",
+      "authentication": "Repository workflow references Kaggle credentials, but no authenticated Kaggle session was tested; competition submissions are quarantined in PR #1620",
+      "permissions": "No live Kaggle permission verified",
+      "assigned_role": "Public dataset discovery and benchmark evaluation; no submission without explicit approval"
+    },
+    {
+      "platform": "Databricks",
+      "status": "workflow_reference_only",
+      "authentication": "Repository workflows reference workspace credentials, but no authenticated workspace session was tested; public brain export is quarantined in PR #1620",
+      "permissions": "No live workspace permission verified",
+      "assigned_role": "Historical feature-store ETL and reproducible analytics after explicit least-privilege connection"
+    }
+  ],
+  "agent_exchange_contract": {
+    "schema_fields": [
+      "claim_id",
+      "source_ids",
+      "published_at",
+      "observed_at",
+      "ingested_at",
+      "data_cutoff",
+      "classification",
+      "claim",
+      "supporting_evidence",
+      "disconfirming_evidence",
+      "assumptions",
+      "confidence",
+      "minority_objections",
+      "content_hash"
+    ],
+    "data_flow": "Lawful public/authorized source -> timestamped immutable capture -> provenance/data-quality checks -> structured evidence packet -> independent platform task -> disagreement and minority-objection register -> causal hypothesis graph -> point-in-time feature store -> walk-forward evaluation -> shadow/paper evaluation.",
+    "disagreement_policy": "No forced unanimity. Preserve minority objections and independent red-team findings. Resolve factual disputes by source quality, independence, temporal fit and reproducibility, not agent majority vote.",
+    "least_privilege_policy": "Read-only by default; no credentials or private data in prompts; adapters must be separately authenticated and scoped; writes, deployments, submissions, merges and financial actions require explicit user approval.",
+    "adapter_status": "Architecture designed; only ChatGPT-to-GitHub repository access was tested in this run. All other adapters remain unconnected or unverified."
+  },
+  "data_quality": {
+    "discrepancies": [
+      {
+        "metric": "XRPL Q3 stablecoin supply",
+        "observations": [
+          {
+            "source": "Ripple-commissioned Blockworks as reported by TokenPost",
+            "value_usd": 1030000000,
+            "period": "Q3 2026"
+          },
+          {
+            "source": "DefiLlama snapshot as reported by XRP Breadcrumbs",
+            "value_usd": 1213000000,
+            "period": "2026-09-29"
+          },
+          {
+            "source": "RWA.xyz snapshot as reported by XRP Breadcrumbs",
+            "value_usd": 1190000000,
+            "period": "2026-09-29"
+          }
+        ],
+        "difference_usd_range": [
+          160000000,
+          183000000
+        ],
+        "classification": "unreconciled provider/methodology and cutoff discrepancy",
+        "rule": "Do not average; reconstruct from issuer obligations and a common cutoff."
+      }
+    ]
+  },
+  "last_updated_at_utc": "2026-11-04T02:20:41Z",
+  "addenda": [
+    {
+      "captured_at_utc": "2026-11-04T02:10:41Z",
+      "data_cutoff_utc": "2026-11-04T02:10:41Z",
+      "updates": [
+        "Five additional direct YouTube video candidates and two third-party creator indexes added; exact Camilla/Kamilah identity remains unverified.",
+        "ASK identity expanded to three distinct candidates: Permission Coin, Askcoin token preview and Ask Coin exchange listing.",
+        "XRPL RLUSD supply observations added from xrpldashboard and Sologenic with explicit panel/ledger timestamp and supply-scope discrepancies."
+      ],
+      "new_source_ids": [
+        "kamilah_video_xrp_vs_btc",
+        "kamilah_video_clarity_act",
+        "kamilah_video_yen_carry_oil",
+        "kamilah_video_exchange_custody",
+        "kamilah_video_cold_wallet",
+        "kamilah_creator_social_index",
+        "kamilah_creator_aggregate_index",
+        "askcoin_token_cmc",
+        "askcoin_token_bitdegree",
+        "askcoin_exchange_cmc",
+        "askcoin_exchange_bitdegree",
+        "xrpldashboard_home",
+        "sologenic_rlusd_asset_index"
+      ],
+      "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "captured_at_utc": "2026-11-04T02:20:41Z",
+      "data_cutoff_utc": "2026-11-04T02:20:41Z",
+      "updates": [
+        "DailyCoin secondary coverage added for the creator's self-reported XRP exchange withdrawal; it is not treated as aggregate exchange-flow evidence.",
+        "A second third-party social index lists a different Kamilah-related handle; @iamkamstevenson and @kamilahsteven21 are kept separate and unverified."
+      ],
+      "new_source_ids": [
+        "kamilah_exchange_move_dailycoin",
+        "kamilah_social_index_cryptitalk"
+      ],
+      "forecast_status": "NOT_ISSUED"
+    }
+  ]
+}
