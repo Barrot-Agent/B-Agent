@@ -19,7 +19,7 @@ OVERLAY_PATH = "research/xrp_intelligence/overlay.json"
 CUTOFF = "2026-11-04T12:00:00.000000Z"
 CAPTURED = "2026-11-04T12:01:00.000000Z"
 RAW_RECEIPT_ID = "receipt:primary-provider:2026-11-04T11:59:02Z"
-RAW_RECEIPT_BYTES = b'{"asset":"XRP","price_usd":1.25,"venue":"primary-provider"}\\n'
+RAW_RECEIPT_BYTES = b'{"asset":"XRP","price_usd":1.25,"venue":"primary-provider"}'
 RAW_RECEIPT_SHA256 = hashlib.sha256(RAW_RECEIPT_BYTES).hexdigest()
 
 
@@ -410,5 +410,5 @@ def test_raw_receipt_bytes_are_required_and_must_match_sha256():
             source_bytes,
             overlay,
             overlay_bytes,
-            raw_receipt_bytes={RAW_RECEIPT_ID: b'{"asset":"XRP","price_usd":0.0}\\n'},
+            raw_receipt_bytes={RAW_RECEIPT_ID: b'{"asset":"XRP","price_usd":0.0}'},
         )
