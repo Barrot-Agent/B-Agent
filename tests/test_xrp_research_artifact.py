@@ -957,3 +957,55 @@ def test_post_activation_market_snapshot_preserves_timestamp_and_scope_disagreem
     assert quality["body_validated_ledger_at_fetch"] == 108118715
     assert data["preservation"]["raw_source_bytes_archived"] is False
     assert data["preservation"]["immutable_raw_receipts_created"] is False
+
+
+CIRCLE_SEC_RIPPLE_OCC_CORRECTION = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T230254Z-circle-sec-ripple-occ-primary-source-correction.json"
+)
+
+
+def test_circle_sec_and_ripple_occ_primary_source_correction_preserves_measure_scope() -> None:
+    data = json.loads(CIRCLE_SEC_RIPPLE_OCC_CORRECTION.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "circle_q3_sec_and_ripple_occ_effective_status_primary_source_correction"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    sec = sources["sec_circle_q3_2026_ex99_1_direct"]
+    assert "000187604226000309/finalq3epr-110326.htm" in sec["url"]
+    assert sec["filing_index_status"] == "DIRECT_EXHIBIT_URL_RESOLVED; FILING_INDEX_PAGE_NOT_INDEPENDENTLY_RETRIEVED"
+    assert sec["raw_content_sha256"] is None
+    assert sec["model_eligible"] is False
+
+    circle = data["circle_q3_metrics"]
+    assert circle["average_usdc_circulation_usd_bn"] == 73.3
+    assert circle["end_period_usdc_circulation_usd_bn"] == 73.9
+    assert circle["end_period_usdc_circulation_yoy_pct"] == 0
+    assert circle["reserve_income_yoy_pct"] == -8
+    assert circle["other_revenue_yoy_pct"] == 627
+    assert circle["arc_token_presale_revenue_usd_mn"] == 182
+    assert circle["usdc_minted_gross_usd_bn"] == 104
+    assert circle["usdc_redeemed_gross_usd_bn"] == 104
+    assert circle["usdc_onchain_transaction_volume_usd_trn"] == 13.9
+    assert circle["usdc_on_platform_end_period_usd_bn"] == 13.9
+    assert circle["binance_equity_investment"]["status"].startswith("ANNOUNCED_IN_CIRCLE_EXHIBIT")
+
+    occ = sources["occ_cas_ripple_national_trust_bank"]
+    assert occ["source_independence_group"] == "occ_primary_regulator"
+    rntb = data["ripple_rntb_status"]
+    assert rntb["occ_approved_date"] == "2025-12-12"
+    assert rntb["occ_consummated_effective_date"] == "2026-10-26"
+    assert rntb["rlusd_issuer"] == "Standard Custody & Trust Company, LLC"
+    assert "NOT_ESTABLISHED" in rntb["operational_status"]
+
+    assert data["correction_overlay"]["prior_artifact_modified"] is False
+    assert data["predictions"]["issued"] is False
+    assert data["data_quality"]["model_eligible"] is False
+    assert all(item["model_eligible"] is False for item in sources.values())
+    source_ids = set(sources)
+    for item in data["findings"]:
+        assert set(item["evidence"]) <= source_ids
+    for edge in data["relationship_graph"]:
+        assert set(edge["evidence"]) <= source_ids
