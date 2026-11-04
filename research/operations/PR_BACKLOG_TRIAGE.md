@@ -143,3 +143,37 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - #1642 remains a source commit within #1640; #1641 and #1269 remain unique/unreviewed. No bulk closure or merge.
 - Evernorth/Cantor correction is preserved in #1643. Its same-price 97%-VWAP scenario does not reconcile the stated net proceeds with disclosed fees; actual VWAP/drawdown/XRP purchases remain unknown. Raw SEC bytes/hash are unavailable; source remains model-ineligible.
 - Forecast status remains **NOT_ISSUED**. No durable synchronized multi-run dataset or out-of-sample predictive performance is verified.
+
+
+## Run 14 — current inventory and exact-path classification (2026-11-04T15:47:05Z)
+
+### Snapshot
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree: 1,403 entries, not truncated.
+- Open PRs: 373; drafts: 358; non-drafts: 15.
+- Non-draft inventory: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1641, #1320, #1318, #1317, #1269, #1255, #1254.
+- No new branch or PR was created in this run. The only active integration branches remain #1640 (V3/core) and #1643 (XRP research archive).
+
+### Core/V3 integration
+- **#1640 — blocked / ready for independent review:** 44 commits ahead, 0 behind; 58 changed paths; exact head `14b574995aeba277b79d3869e5fd7d3dee0bdfe5`. Exact-head CI passed 570 core + 8 subtests and 819 full-suite + 8 subtests. Five-manifest dependency audit passed with no known vulnerabilities. All 22 inline review threads resolved; zero approving reviews. Fail-closed gate explicitly disables merging. Main Pages auto-deployment and unverified branch-protection policy remain blockers.
+- **#1642 — superseded-pending-successor-merge:** source feature-snapshot gate commit is in #1640 ancestry. Keep open until #1640 is merged and all source paths are verified on main.
+- **#1317, #1318, #1320 — superseded-pending-successor-merge:** their structural-analysis, scientific-schema and paper-trader safety changes are represented in #1640. Do not close before post-merge path verification.
+- **#1255, #1254 — superseded-pending-successor-merge:** older Databricks SDK and Hugging Face Hub dependency proposals are superseded by the newer versions now in #1640. Keep open until post-merge verification.
+- **#1644-#1650 — superseded-pending-successor-merge:** all changed paths and latest dependency floors are represented in #1640. #1645 and #1647 fail on their source branches because tests assert older download/upload artifact versions; #1640 updates the assertions and passes the full suite. Keep source PRs open until #1640 merges and exact paths are verified on main.
+
+### XRP research integration
+- **#1643 — unique research archive / blocked pending exact-head CI and approval:** 35 commits ahead, 0 behind; 58 changed paths; current head `51248806c640f4fe91171eb82a1263b330601f8f`. Previous head passed 489 core and 749 full-suite tests, but the new market snapshot/C17 commit requires its own CI. Fail-closed gate passes while merge remains disabled; no approving review recorded.
+- **#1597, #1605, #1608, #1614 — partial supersession pending #1643 merge:** included paths must be verified on main before closing. Preserve excluded Kamilah/Camilla candidate-video identity material from #1597, C2FO/actual-capital relationship-graph addenda from #1608, and any unintegrated point-in-time feature-validator/research-clock files from #1614. #1605's market snapshot is represented in the research archive.
+- **#1611 — superseded-pending-successor-merge:** forecast-ledger predecessor is represented in #1640; keep until post-merge path verification.
+- **#1641 — unique/unreviewed:** bounded autonomous experimentation remains a separate draft workstream; do not fold into the XRP prediction engine without explicit leakage/safety review.
+- **#1269 — unique/unreviewed:** geometry/OBJ mesh topology remains separate; preserve it.
+
+### Draft clusters
+- **Duplicate/superseded candidates pending successor verification:** automation-containment drafts #1620, #1617, #1615, #1610, #1607, #1606 and #1604; cross-analysis/signal-accuracy drafts #1613, #1612, #1609, #1603 and #1599. Main already disables several scheduled writers; #1640 adds manual confirmation gates to remaining deployment/write paths and keeps cross-analysis read-only. Do not bulk-close.
+- **Prediction/feature-store drafts:** #1614, #1611, #1602, #1601 and #1600 are stale-base predecessors or partial overlaps; #1640 carries the integrated feature-store/forecast-ledger path. Preserve any non-overlapping unique code until exact-path review.
+- **Research drafts:** #1605 is represented; #1608 and #1597 are only partially represented. Preserve excluded material and do not mark entire source PRs superseded solely from title similarity.
+- All other drafts remain **unique/unreviewed** or **blocked** until their exact changed paths, ancestry and overlaps are checked. No bulk closure.
+
+### Safety
+- No PR merged, no deployment authorized or performed, no Space restarted, no secret rotated, no Kaggle entry submitted, no paper trade, no funds transfer, no real-money action, no force-push and no branch rewrite.
+- No directional XRP forecast. Research snapshots remain model-ineligible until raw-source receipt, point-in-time feature and out-of-sample evaluation requirements are met.
+
