@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_intelligence_correction_and_market_context_addendum",
+  "record_id": "xrp-intel-2026-11-04-circle-binance-8k-correction-and-derivatives-scope",
+  "captured_at_utc": "2026-11-04T13:33:54Z",
+  "subject": "Correction to Circle/Binance equity-closing status; Circle Q3 2026 financial context; XRP spot and derivatives provider-scope disagreement",
+  "repository_context": {
+    "source_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "append_only": true,
+    "raw_source_policy": "Web-rendered public-source extracts only. Raw HTTP bytes were not captured in this run; raw_content_sha256 is null for every source. All observations remain model-ineligible until the scheduled ingestion system stores exact raw bytes, SHA-256 receipts, source timestamps and immutable retrieval artifacts."
+  },
+  "correction": {
+    "corrects_record_id": "xrp-intel-2026-11-04-circle-q3-coinbase-ripple-bny-sbic-market-addendum",
+    "prior_claim": "The Binance $100 million Circle equity investment was announced, but closing should not be assumed without a subsequent filing.",
+    "correction_status": "SUPERSEDED_BY_PRIMARY_SEC_FILING",
+    "corrected_claim": "The $100 million private placement closed on 2026-09-17. Circle's Form 8-K filed 2026-09-22 states that Circle issued and sold 1,237,011 Class A shares to Binance at $80.84 per share for aggregate proceeds of $100 million. The filing says closing occurred substantially concurrently with, and immediately following, execution and delivery of the subscription agreement and expanded commercial arrangements.",
+    "evidence_source_ids": [
+      "circle_binance_2026_8k"
+    ],
+    "reason": "The SEC Form 8-K is a later primary filing that directly documents issuance, sale and closing; the prior addendum's caution is now stale."
+  },
+  "source_registry": [
+    {
+      "id": "circle_q3_2026_pressroom_release",
+      "publisher": "Circle Internet Group, Inc.",
+      "authority": "primary issuer financial release",
+      "url": "https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T13:33:54Z",
+      "source_independence_group": "circle_issuer_disclosure",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Q3 2026 average USDC circulation",
+        "Q3 2026 USDC on-chain transaction volume",
+        "revenue and reserve income",
+        "reserve income and other revenue",
+        "ARC presale revenue",
+        "net income and adjusted EBITDA",
+        "Circle Payments Network annualized TPV",
+        "Binance strategic equity investment announcement"
+      ]
+    },
+    {
+      "id": "circle_binance_2026_8k",
+      "publisher": "Circle Internet Group, Inc. via SEC EDGAR",
+      "authority": "primary SEC Form 8-K filed by Circle",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+      "event_date_utc": "2026-09-17",
+      "filed_at_utc": "2026-09-22",
+      "retrieved_at_utc": "2026-11-04T13:33:54Z",
+      "source_independence_group": "circle_issuer_disclosure",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "1,237,011 Class A shares issued to Binance",
+        "$80.84 per share",
+        "$100 million aggregate proceeds",
+        "private-placement closing",
+        "five-year USDC promotion agreement",
+        "monthly incentive fee linked to USDC held through Circle Modular Smart Contract Wallet",
+        "Binance voting rights and up-to-two-year transfer/hedging restrictions"
+      ]
+    },
+    {
+      "id": "binance_us_xrp_price_page",
+      "publisher": "Binance.US",
+      "authority": "exchange public market page",
+      "url": "https://www.binance.us/price/xrp",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T13:33:54Z",
+      "source_independence_group": "binance_us_exchange",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "source_event_timestamp_available": false,
+      "model_eligible": false,
+      "claims_supported": [
+        "Indicative XRP/USD price and trailing performance ranges"
+      ]
+    },
+    {
+      "id": "kodexius_xrp_derivatives_20261104",
+      "publisher": "Kodexius",
+      "authority": "secondary cross-venue derivatives aggregator",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "source_as_of_utc": "2026-11-04T06:54:00Z",
+      "retrieved_at_utc": "2026-11-04T13:33:54Z",
+      "source_independence_group": "kodexius_aggregator",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "XRP perpetual open interest by contract",
+        "funding rates",
+        "24-hour derivatives volume",
+        "venue and contract coverage"
+      ]
+    },
+    {
+      "id": "tradradar_xrp_derivatives_20261104",
+      "publisher": "TradRadar",
+      "authority": "secondary cross-venue derivatives aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_as_of_utc": "2026-11-04T09:25:00Z",
+      "retrieved_at_utc": "2026-11-04T13:33:54Z",
+      "source_independence_group": "tradradar_aggregator",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "XRP open interest across seven exchanges",
+        "OI change",
+        "funding",
+        "liquidations lower bound",
+        "account long/short ratio"
+      ]
+    },
+    {
+      "id": "bentleymarkets_xrp_open_interest_20261104",
+      "publisher": "Bentley Markets",
+      "authority": "secondary multi-exchange open-interest aggregator",
+      "url": "https://www.bentleymarkets.com/tools/open-interest",
+      "source_as_of_utc": "2026-11-04T08:16:00Z",
+      "retrieved_at_utc": "2026-11-04T13:33:54Z",
+      "source_independence_group": "bentleymarkets_aggregator",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "XRP open interest across 17 exchanges",
+        "24-hour OI change",
+        "largest venue share"
+      ]
+    },
+    {
+      "id": "edgeornot_xrp_orderbook_heatmap_20261104",
+      "publisher": "EdgeOrNot",
+      "authority": "secondary order-book aggregation",
+      "url": "https://edgeornot.com/order-book-heatmap/xrp",
+      "source_as_of_utc": "2026-11-04T04:37:00Z",
+      "retrieved_at_utc": "2026-11-04T13:33:54Z",
+      "source_independence_group": "edgeornot_orderbook_aggregator",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "Combined Binance spot and OKX perpetual depth bands near the market price"
+      ]
+    }
+  ],
+  "circle_q3_context": {
+    "reported_metrics": [
+      {
+        "metric": "average_USDC_circulation",
+        "value_usd": 73300000000,
+        "yoy_change_pct": 8,
+        "source_id": "circle_q3_2026_pressroom_release"
+      },
+      {
+        "metric": "USDC_onchain_transaction_volume",
+        "value_usd": 13900000000000,
+        "yoy_change_pct": 49,
+        "source_id": "circle_q3_2026_pressroom_release",
+        "limitation": "Gross on-chain transfer volume is not equivalent to net new capital, unique economic activity or XRP demand."
+      },
+      {
+        "metric": "total_revenue_and_reserve_income",
+        "value_usd": 865000000,
+        "yoy_change_pct": 17,
+        "source_id": "circle_q3_2026_pressroom_release"
+      },
+      {
+        "metric": "reserve_income",
+        "value_usd": 658000000,
+        "yoy_change_pct": -8,
+        "source_id": "circle_q3_2026_pressroom_release"
+      },
+      {
+        "metric": "other_revenue",
+        "value_usd": 207000000,
+        "source_id": "circle_q3_2026_pressroom_release",
+        "notes": "Includes approximately $182 million of ARC token presale revenue."
+      },
+      {
+        "metric": "ARC_token_presale_revenue",
+        "value_usd": 182000000,
+        "source_id": "circle_q3_2026_pressroom_release",
+        "notes": "Non-recurring presale revenue; not reserve income and not evidence of a publicly traded ARC token."
+      },
+      {
+        "metric": "net_income_from_continuing_operations",
+        "value_usd": 226000000,
+        "yoy_change_pct": 5,
+        "source_id": "circle_q3_2026_pressroom_release"
+      },
+      {
+        "metric": "adjusted_EBITDA",
+        "value_usd": 317000000,
+        "yoy_change_pct": 85,
+        "source_id": "circle_q3_2026_pressroom_release",
+        "notes": "The Q3 presentation separately reports approximately $135 million adjusted EBITDA excluding ARC presale effects; headline growth should not be treated as purely recurring stablecoin economics."
+      },
+      {
+        "metric": "Circle_Payments_Network_annualized_TPV",
+        "value_usd": 41300000000,
+        "source_id": "circle_q3_2026_pressroom_release",
+        "limitation": "Annualized trailing-period measure, not actual quarterly settled value."
+      }
+    ],
+    "interpretation": "Circle's Q3 headline revenue and adjusted EBITDA growth was materially influenced by ARC token presale revenue while reserve income declined 8% year over year. The $13.9 trillion on-chain volume metric must not be described as $13.9 trillion of new capital or real-economy payments. CPN's $41.3 billion is annualized TPV, not quarterly settled capital."
+  },
+  "binance_circle_transaction": {
+    "equity": {
+      "shares": 1237011,
+      "class": "Class A common stock",
+      "price_per_share_usd": 80.84,
+      "aggregate_proceeds_usd": 100000000,
+      "transaction_type": "private placement",
+      "agreement_date": "2026-09-17",
+      "closing_date": "2026-09-17",
+      "filing_date": "2026-09-22",
+      "voting_rights_retained": true,
+      "transfer_and_hedging_restriction": "From closing until the earlier of the second anniversary or termination of the commercial arrangements by Binance under specified circumstances, subject to customary exceptions."
+    },
+    "commercial_agreement": {
+      "term_years": 5,
+      "circle_obligation": "Pay Binance a monthly incentive fee representing a percentage of USDC held through Circle's Modular Smart Contract Wallet infrastructure service.",
+      "binance_obligation": "Undertake activities to promote USDC on its platform.",
+      "early_termination": "Either party may terminate before expiry upon specified events."
+    },
+    "interpretation": "This is a verified direct equity and commercial relationship between Binance and Circle. It may strengthen USDC distribution on Binance, but the filing does not quantify Binance's current USDC balances, incremental USDC circulation, or XRP purchases. It is not evidence of direct XRP demand."
+  },
+  "xrp_market_observations": {
+    "spot": [
+      {
+        "publisher": "Binance.US",
+        "instrument": "XRP/USD",
+        "indicative_price_usd": 1.28,
+        "change_24h_pct": 1.97,
+        "change_7d_pct": -4.03,
+        "change_30d_pct": -15.53,
+        "change_1y_pct": -43.41,
+        "source_id": "binance_us_xrp_price_page",
+        "source_event_timestamp_available": false,
+        "model_eligible": false,
+        "limitations": [
+          "Rendered price page has no explicit exchange event timestamp in the extract.",
+          "No byte-complete raw receipt was captured."
+        ]
+      }
+    ],
+    "derivatives": [
+      {
+        "publisher": "Kodexius",
+        "as_of_utc": "2026-11-04T06:54:00Z",
+        "open_interest_usd": 862540000,
+        "contract_count": 7,
+        "funding_rate_8h_pct": 0.0092,
+        "volume_24h_usd": 1610000000,
+        "venue_scope": [
+          "Binance",
+          "Bybit",
+          "Hyperliquid",
+          "OKX",
+          "HTX"
+        ],
+        "source_id": "kodexius_xrp_derivatives_20261104",
+        "model_eligible": false
+      },
+      {
+        "publisher": "TradRadar",
+        "as_of_utc": "2026-11-04T09:25:00Z",
+        "open_interest_usd": 2000000000,
+        "change_24h_pct": 0.53,
+        "funding_rate_8h_pct": 0.0096,
+        "liquidations_24h_lower_bound_usd": 6510000,
+        "long_short_account_ratio": 3.33,
+        "long_accounts_pct": 76.9,
+        "venue_scope": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ],
+        "source_id": "tradradar_xrp_derivatives_20261104",
+        "model_eligible": false,
+        "limitations": [
+          "Liquidation figure is a lower bound.",
+          "Account long/short ratio is not notional position exposure."
+        ]
+      },
+      {
+        "publisher": "Bentley Markets",
+        "as_of_utc": "2026-11-04T08:16:00Z",
+        "open_interest_usd": 1760000000,
+        "change_24h_pct": 2,
+        "venue_count": 17,
+        "largest_venue": "Binance",
+        "largest_venue_share_pct": 25,
+        "source_id": "bentleymarkets_xrp_open_interest_20261104",
+        "model_eligible": false
+      }
+    ],
+    "orderbook_context": [
+      {
+        "publisher": "EdgeOrNot",
+        "as_of_utc": "2026-11-04T04:37:00Z",
+        "bids_within_1pct_usd": 9500000,
+        "asks_within_1pct_usd": 10100000,
+        "source_id": "edgeornot_xrp_orderbook_heatmap_20261104",
+        "model_eligible": false,
+        "limitations": [
+          "Combines Binance spot and OKX perpetual books; not a spot-only depth measure.",
+          "Snapshot is stale relative to this artifact capture.",
+          "Orders can be placed or pulled rapidly."
+        ]
+      }
+    ]
+  },
+  "disagreement_and_quality": {
+    "derivatives_open_interest": {
+      "observed_range_usd": [
+        862540000,
+        2000000000
+      ],
+      "disposition": "DO_NOT_AVERAGE",
+      "explanation": "The providers enumerate different venue and contract universes. Kodexius reports seven contracts across five venues; TradRadar reports seven exchanges; Bentley Markets reports seventeen exchanges. Their totals are not a common synchronized instrument universe and cannot be averaged or treated as one validated OI series.",
+      "source_groups_are_independent": false,
+      "note": "The aggregators may consume overlapping underlying exchange feeds; separate publisher names do not establish independent primary data."
+    },
+    "spot_and_depth": "The spot price page has no explicit event timestamp; the depth heatmap combines spot and perpetual books and is stale. Neither is admissible as a synchronized point-in-time liquidity feature.",
+    "raw_receipts": "All sources in this artifact lack byte-complete raw-source SHA-256 receipts. They are research-only and excluded from model training."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H-CIRCLE-BINANCE-DISTRIBUTION-DIVERSIFICATION",
+      "claim": "The five-year Binance agreement and equity stake may broaden USDC distribution beyond Coinbase and increase access in emerging markets.",
+      "evidence_for": [
+        "Verified $100 million Circle share issuance to Binance",
+        "Five-year promotion agreement and monthly wallet-balance incentive"
+      ],
+      "disconfirming_evidence_needed": [
+        "Binance USDC balances by chain and custody type",
+        "Net new USDC issuance attributable to Binance",
+        "Actual payments and redemptions rather than promotional placement"
+      ],
+      "status": "plausible_not_quantified"
+    },
+    {
+      "id": "H-CIRCLE-BINANCE-PARTNER-CONCENTRATION",
+      "claim": "The agreement may increase Circle's reliance on a small number of large centralized distribution partners and associated incentive costs.",
+      "evidence_for": [
+        "Monthly incentive fee tied to USDC held through Binance wallet infrastructure",
+        "Circle's existing distribution economics with Coinbase"
+      ],
+      "disconfirming_evidence_needed": [
+        "Partner-level distribution-cost disclosures",
+        "USDC balances and redemption concentration by distributor"
+      ],
+      "status": "plausible_not_quantified"
+    },
+    {
+      "id": "H-USDC-TO-XRP-DEMAND",
+      "claim": "Growth in USDC on XRPL or on Binance could create more activity in XRP-related markets.",
+      "evidence_for": [
+        "Native USDC deployment on XRPL",
+        "Binance USDC promotion and distribution agreement"
+      ],
+      "disconfirming_evidence": [
+        "USDC can settle without proportional XRP purchases or XRP collateral use",
+        "No evidence here links Binance's Circle investment to XRP holdings, XRP collateral utilization or XRP order flow"
+      ],
+      "status": "not_established"
+    }
+  ],
+  "explicit_disconfirming_evidence": [
+    "Circle's $13.9 trillion USDC on-chain volume is a gross transfer metric and does not prove net new capital.",
+    "Circle Payments Network's $41.3 billion annualized TPV is not actual quarterly settlement.",
+    "The ARC presale contributed $182 million of Q3 other revenue and is non-recurring.",
+    "The Circle/Binance SEC filing contains no XRP purchase, XRP collateral or XRP payment-volume commitment.",
+    "Derivatives OI provider totals are not comparable without a common contract and venue universe.",
+    "The account long/short ratio does not establish notional directional exposure."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized spot/depth/derivatives dataset with byte-complete receipts and a leakage-safe out-of-sample evaluation is available. Provider scope disagreement remains unresolved.",
+    "prohibited_actions": [
+      "No guaranteed-return claims",
+      "No directional forecast",
+      "No paper-trading or order placement",
+      "No real-money trading"
+    ]
+  },
+  "next_actions": [
+    "Replace the stale Binance investment caveat in downstream summaries with the SEC-verified closing facts; retain this artifact as an append-only correction rather than rewriting the prior capture.",
+    "Reconcile Circle Q3 10-Q when filed and separate reserve income, ARC presale revenue and non-GAAP EBITDA adjustments.",
+    "Obtain Binance USDC balances by network, issuer supply changes, wallet custody type, and actual transfer/payment usage before quantifying distribution impact.",
+    "Reconcile Coinbase and Binance USDC distribution concentration with primary issuer and exchange disclosures.",
+    "Build exchange-specific XRP perpetual contracts and raw OI/funding/liquidation collectors with a common venue universe, source timestamps and immutable receipts.",
+    "Capture spot trades and spot-only order-book depth from multiple exchanges with synchronized timestamps; keep spot and perpetual depth separate.",
+    "Do not issue a directional forecast until the point-in-time feature store, chronological walk-forward evaluation, baseline comparison, calibration and drift checks pass."
+  ]
+}
