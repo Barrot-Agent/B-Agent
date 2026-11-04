@@ -79,3 +79,66 @@ def test_controlled_pr_approval_is_not_a_merge_action() -> None:
     assert "APPROVAL_REASON" in content
     assert "MERGE_PERFORMED=FALSE" in content
     assert "gh pr merge" not in content
+
+
+def test_kaggle_submissions_require_per_run_approval_and_exact_allowlist() -> None:
+    content = _read("kaggle-competitions.yml")
+    script = (ROOT / "scripts" / "kaggle_competitions_automation.py").read_text(encoding="utf-8")
+    assert "schedule:" not in content
+    assert "confirm_external_submission" in content
+    assert "default: NO" in content
+    assert "inputs.confirm_external_submission == 'YES'" in content
+    assert "competition_allowlist" in content
+    assert "KAGGLE_SUBMISSION_ALLOWLIST" in content
+    assert "python scripts/kaggle_competitions_automation.py" in content
+    assert "python kaggle_competitions_automation.py" not in content
+    assert "contents: read" in content
+    assert "contents: write" not in content
+    assert "SUBMISSION_ALLOWLIST" in script
+    assert "if not SUBMISSION_ALLOWLIST" in script
+    assert "in SUBMISSION_ALLOWLIST" in script
+
+
+def test_scheduled_research_jobs_write_artifacts_not_main() -> None:
+    for name in (
+        "riemann-harvest.yml",
+        "barrot-transparency-audit.yml",
+        "webmcp-monetization-enrich.yml",
+    ):
+        content = _read(name)
+        assert "contents: read" in content, name
+        assert "persist-credentials: false" in content, name
+        assert "upload-artifact@v7" in content, name
+        assert "git push" not in content, name
+        assert "contents: write" not in content, name
+
+
+def test_webmcp_live_sandbox_requires_explicit_manual_approval() -> None:
+    content = _read("webmcp-live-sandbox.yml")
+    assert "schedule:" not in content
+    assert "confirm_live_execution" in content
+    assert "default: NO" in content
+    assert "inputs.confirm_live_execution == 'YES'" in content
+    assert "contents: read" in content
+    assert "contents: write" not in content
+    assert "persist-credentials: false" in content
+    assert "git push" not in content
+    assert "upload-artifact@v7" in content
+
+
+def test_hover_bike_simulation_uses_read_only_repository_access() -> None:
+    content = _read("hover_bike_updates.yml")
+    assert "contents: read" in content
+    assert "contents: write" not in content
+    assert "persist-credentials: false" in content
+    assert "git push" not in content
+    assert "upload-artifact@v7" in content
+
+
+def test_pillars_check_uses_read_only_github_installation_lookup() -> None:
+    workflow = _read("pillars-check.yml")
+    script = (ROOT / "scripts" / "pillars_check.py").read_text(encoding="utf-8")
+    assert "contents: read" in workflow
+    assert "persist-credentials: false" in workflow
+    assert 'requests.get(f"https://api.github.com/app/installations/{inst}"' in script
+    assert 'requests.post(f"https://api.github.com/app/installations/{inst}/access_tokens"' not in script
