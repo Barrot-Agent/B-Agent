@@ -945,7 +945,7 @@ def test_post_activation_market_snapshot_preserves_timestamp_and_scope_disagreem
     assert market["best_bid_usd"] == 1.31376
     assert market["best_ask_usd"] == 1.31387
     assert market["last_trade_usd"] == 1.31352
-    assert market["spread_bps"] == 0.8370
+    assert market["spread_bps"] == 0.8373
     assert market["volume_24h_xrp"] == 41189420.05610191
     assert market["vwap_24h_usd"] == 1.29201409
     assert market["utc_daily_open_usd"] == 1.27513
