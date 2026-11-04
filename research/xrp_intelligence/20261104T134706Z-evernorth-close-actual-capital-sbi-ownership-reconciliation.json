@@ -211,11 +211,11 @@
         "interest_rate_pct": 3.81,
         "repayment_terms": "Due within five business days after the October 9 closing or upon lender demand, according to the prospectus.",
         "capital_class": "short_term_related_party_debt",
-        "repayment_status": "not confirmed in the reviewed post-close disclosure; due within five business days after October 9 closing or upon demand",
+        "repayment_status": "not confirmed in the reviewed post-close disclosure; due within five business days after October 9 closing or upon demand. The prospectus reports $9.7 million drawn as of October 7.",
         "borrower": "Pathfinder Digital Assets LLC (operating subsidiary)",
         "original_limit_usd": 7000000,
         "drawn_as_of_2026_10_07_usd": 9700000,
-        "use_of_facility": "Working capital, transaction expenses and general corporate purposes; the October 7 amendment also included payments made by Ripple to third parties on behalf of Pathfinder and Evernorth."
+        "use_of_facility": "Working capital, transaction expenses and general corporate purposes; the October 7 amendment also included third-party payments made by Ripple on behalf of Pathfinder and Evernorth. A $0.4 million additional amount was recorded as related-party payable related to draws made on Evernorth's behalf."
       },
       {
         "source": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
@@ -223,7 +223,7 @@
         "limit_usd": 1000000,
         "drawn_as_of_2026_06_30_usd": 0,
         "interest_rate_pct": 3.81,
-        "repayment_terms": "If drawn, due within five business days after the October 9, 2026 closing or earlier on five business days' notice of demand.",
+        "repayment_terms": "If drawn, due within five business days after the October 9, 2026 closing or earlier upon five business days' notice of demand by Ripple.",
         "post_close_draw_status": "not disclosed",
         "capital_class": "short_term_related_party_debt"
       }
@@ -362,16 +362,6 @@
       ]
     },
     {
-      "from": "Ripple Labs",
-      "to": "Evernorth / Pathfinder",
-      "relation": "direct in-kind XRP contribution and related-party credit facility",
-      "status": "126.791458M XRP contributed; $9.7M drawn under $10M facility by Oct 7",
-      "evidence": [
-        "evernorth_business_combination_closing_8k_20261012",
-        "evernorth_registration_statement_prospectus_20261030"
-      ]
-    },
-    {
       "from": "RippleWorks Foundation",
       "to": "Arrington XRP Capital Fund LP",
       "relation": "limited partner / voting-disposition rights over specified Sponsor shares",
@@ -455,6 +445,36 @@
         "evernorth_registration_statement_prospectus_20261030"
       ],
       "notes": "This is distinct from the $1M Evernorth Facility and the $30M NH/Kyobo note."
+    },
+    {
+      "from": "Ripple Labs",
+      "to": "Pathfinder Digital Assets LLC",
+      "relation": "direct in-kind XRP contribution",
+      "status": "126,791,458 XRP contributed to Pathfinder for Company Units",
+      "evidence": [
+        "evernorth_business_combination_closing_8k_20261012"
+      ],
+      "notes": "This is a direct Ripple Labs asset contribution; do not conflate with RippleWorks or Larsen Lam Trust contributions."
+    },
+    {
+      "from": "Ripple Labs",
+      "to": "Pathfinder Digital Assets LLC",
+      "relation": "Company Facility revolving credit",
+      "status": "$10M amended limit; $9.7M drawn as of October 7; post-close repayment not confirmed",
+      "evidence": [
+        "evernorth_registration_statement_prospectus_20261030"
+      ],
+      "notes": "Separate from the $1M Evernorth Facility."
+    },
+    {
+      "from": "Ripple Labs",
+      "to": "Evernorth Holdings Inc. (Pubco)",
+      "relation": "Evernorth Facility revolving credit",
+      "status": "$1M limit; undrawn as of June 30; post-close draw status not disclosed",
+      "evidence": [
+        "evernorth_registration_statement_prospectus_20261030"
+      ],
+      "notes": "Separate from the $10M Company Facility to Pathfinder."
     }
   ],
   "strategic_and_risk_context": {
@@ -587,7 +607,8 @@
     "Reconcile the $214.05 million advance cash against the 84,365,876 XRP purchase exactly once in any balance-sheet or flow model.",
     "Treat the $1.43069 contractual closing reference price as a sensitivity input, not a live market quote or realized liquidation value.",
     "Verify the separate $1 million Evernorth Facility's post-close draw status and the $9.7 million Company Facility repayment status; the prospectus does not confirm either post-close status.",
-    "Verify whether the Cantor $521,893.50 upfront commitment fee was paid and whether any ELOC purchase notices or share issuances occurred after the prospectus date."
+    "Verify whether the Cantor $521,893.50 upfront commitment fee was paid and whether any ELOC purchase notices or share issuances occurred after the prospectus date.",
+    "Confirm whether the $1 million Evernorth Facility was drawn after June 30; the reviewed prospectus only confirms it was undrawn as of that date."
   ],
   "data_quality": {
     "filing_precedence": "Use the October 12 post-close Form 8-K for actual post-close share counts and transaction completion. Use the October 30 prospectus for the later capital-structure, debt, ELOC and custody disclosures. Earlier pro forma share tables are not the final post-close cap table.",
@@ -595,11 +616,11 @@
     "cash_vs_xrp": "The $214.05 million advance cash was converted into 84.365876 million XRP before close. It is not both a cash balance and an XRP asset at the same time.",
     "entity_boundaries": "Ripple Labs, RippleWorks Foundation, Larsen Lam Children's Remainder Trust, Arrington XRP Capital Fund LP, SBI Holdings and SBI regional SBIC companies are distinct legal entities.",
     "raw_receipts": "All filing extracts in this artifact lack byte-complete raw-source SHA-256 receipts; they remain model-ineligible.",
-    "credit_facility_distinction": "The $9.7 million draw is under the $10 million Company Facility to Pathfinder, not the separate $1 million Evernorth Facility. The latter was undrawn as of June 30. Do not collapse these facilities into one loan."
+    "credit_facility_distinction": "There are two distinct Ripple facilities in the October 30 prospectus: a $1 million Evernorth Facility to Pubco (undrawn as of June 30) and a Company Facility to Pathfinder, originally $7 million and increased to $10 million on October 7, with $9.7 million drawn as of that date. The $9.7 million is not a draw under the $1 million Evernorth Facility."
   },
   "artifact_revision": {
-    "revised_at_utc": "2026-11-04T13:50:00Z",
-    "revision_reason": "Added the separate $1M Evernorth Facility, distinguished it from the $10M Pathfinder Company Facility with $9.7M drawn, and added the SEC 424B3 ELOC prospectus terms.",
+    "revised_at_utc": "2026-11-04T13:51:00Z",
+    "revision_reason": "Separated Ripple's direct XRP contribution, the $10M Pathfinder Company Facility and the distinct $1M Evernorth Facility in the relationship graph and debt ledger.",
     "revision_status": "append_only_artifact_revision"
   },
   "additional_credit_facilities": [
