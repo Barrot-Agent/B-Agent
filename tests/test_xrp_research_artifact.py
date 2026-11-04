@@ -194,3 +194,17 @@ def test_ripple_corporate_claims_are_not_mislabeled_as_xrp_flows() -> None:
     )
     assert "ripple_rntb_final_approval_20261026" in rntb["evidence"]
     assert "ripple_corporate_strategy_20261028" in rntb["evidence"]
+
+
+def test_circle_q3_event_is_future_at_research_cutoff() -> None:
+    data = json.loads(ADDENDUM.read_text(encoding="utf-8"))
+    event = next(
+        item for item in data["observations"]
+        if item["id"] == "OBS-CIRCLE-Q3-20261104-01"
+    )
+    source_ids = {source["id"] for source in data["source_registry"]}
+    assert event["classification"] == "confirmed_scheduled_event"
+    assert set(event["evidence"]) <= source_ids
+    cutoff = _parse_utc(data["captured_at_utc"])
+    event_time = _parse_utc("2026-11-04T13:00:00Z")
+    assert event_time > cutoff
