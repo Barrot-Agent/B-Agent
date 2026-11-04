@@ -82,3 +82,8 @@ Ripple reported a $900M annualized product-revenue run rate approaching year-end
 Ripple also reported RLUSD at $2.6B market capitalization, described RLUSD use in onchain repo markets, and announced 24/7 Returns for corporate treasury using RLUSD, tokenized money-market funds on XRPL and institutional liquidity infrastructure. It described BNY/Ripple tokenized trade-finance work beginning with a C2FO supplier-finance initiative, Privy programmable wallets supporting XRP and RLUSD on XRPL, Mastercard-related RLUSD settlement expansion, and Ripple Prime access for event contracts and RWA perpetual futures with named partners.
 
 These announcements strengthen the integrated enterprise-stack hypothesis. They do not establish actual XRP bridge volume, XRP collateral utilization, XRP purchases or production throughput. The same release also repeats Ripple's claim of final OCC approval for Ripple National Trust Bank; a direct OCC final decision and commencement record remain unlocated.
+
+
+## Circle Q3 results event
+
+Circle Investor Relations lists Q3 2026 results for **November 4, 2026 at 08:00 ET / 13:00 UTC**. The event had not occurred at this addendum's 03:05:46 UTC capture. The next ingestion must use the actual press release, SEC filing, reserve metrics, distribution-cost disclosures, Coinbase economics and management guidance; the event listing itself is not evidence of results.
