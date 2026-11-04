@@ -2086,3 +2086,94 @@ No merge is authorized by the current evidence. Both exact-head suites and the #
 6. Continue durable cross-run raw-source storage, independent timestamp anchoring, research-overlay runtime admission, historical XRP dataset accumulation, calibration, drift and shadow evaluation.
 
 No merge, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred. The objective remains a working integrated Barrot build with measured XRP predictive performance, not more PRs or unverified forecasts.
+
+
+## Automation run — 2026-11-04T23:11:45Z
+
+### Current repository state
+
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. No main merge occurred in this run.
+- Open PR inventory: 369 open; 354 drafts; 15 non-drafts.
+- #1640 V3/core integration: head `abf9de3647040d1e8551e2abc13a245f3f2c6d6f`, 98 commits ahead of main, 0 behind, 71 changed files.
+- #1643 XRP research: head `600ecf479c983da0b63f4e92a9a07dcb5081e2a0`, 84 commits ahead of main, 0 behind, 87 changed files.
+- #1640 and #1643 have no changed-path overlap. Both remain open, non-draft and GitHub reports them mergeable.
+- #1642 is an exact ancestor of #1640 (97 commits ahead from #1642 to #1640, 0 behind) and is superseded pending #1640 merge and main verification.
+- #1644–#1650 are represented in #1640: action versions, pytest 9.2.0, types-requests 20261030, huggingface-hub 2.4.0 and databricks-sdk 0.158.0. Do not merge them independently. Close only after successor content is verified on main.
+- #1615 remains unique operations/security evidence on a stale base; preserve and review individually. #1641, #1269 and the partially superseded #1597/#1605/#1608/#1614 retain unique work. No PR was closed.
+- Review threads: #1640 22/22 resolved; #1643 14/14 resolved. Approvals: zero on both.
+
+### Exact-head verification
+
+**#1640 code head `abf9de3647040d1e8551e2abc13a245f3f2c6d6f`**
+
+- CI run 41928179139: core suite 581 passed, 8 subtests passed.
+- Full repository suite: 857 passed, 8 subtests passed; inclusive `barrot_agent` coverage 53.01%, with the workflow's 50% floor and all major packages included.
+- Dependency audit run 41928179128: all five declared dependency sets passed strict `pip-audit`; no known vulnerabilities found.
+- Fail-closed gate run 41928179141 passed, but its only job explicitly says automatic merging is intentionally disabled and performs no approval or merge.
+- The handoff append in this run is documentation-only and will create a new #1640 head. The above test/audit evidence applies to the code head shown above; the new documentation head must receive its own CI/gate verification.
+
+**#1643 research head `600ecf479c983da0b63f4e92a9a07dcb5081e2a0`**
+
+- CI run 41931432675: core suite 494 passed, 8 subtests passed; full repository suite 795 passed, 8 subtests passed.
+- Fail-closed gate run 41931433120 passed and explicitly leaves automatic merging disabled.
+- Two new append-only primary-source artifacts and two regression tests were added to the existing research branch. No new branch or PR was created.
+- The research PR does not change dependency manifests; no dependency audit was triggered for this head.
+
+**Main baseline**
+
+- Main CI run 41799856459: core suite 485 passed, 8 subtests passed; full repository suite 718 passed, 8 subtests passed.
+- The main build remains behind both integration branches for the mission work described here.
+
+### New primary-source research appended to #1643
+
+1. `research/xrp_intelligence/20261104T230254Z-circle-sec-ripple-occ-primary-source-correction.json`
+   - The direct SEC-hosted Circle Q3 2026 EX-99.1 URL now resolves. The separate filing-index page was not independently retrieved.
+   - Circle Q3: average USDC circulation $73.3B (+8% YoY); end-period circulation $73.9B (flat YoY); USDC on-chain transaction volume $13.9T (+49%); reserve income $657.624M (-8%); other revenue $207.264M (+627%), including $182M ARC token presale; total revenue and reserve income $864.888M; net income $226.012M; adjusted EBITDA under the new definition $316.662M.
+   - Gross Q3 USDC minting and redemptions were each reported at $104B. This is not a net issuance or XRP-flow measure. $13.9T on-chain transaction volume is distinct from $13.9B USDC on platform at quarter-end.
+   - Circle Payments Network annualized TPV was $41.3B. Tazapay acquisition remains pending, with expected 2027 close subject to regulatory approvals.
+   - OCC CAS lists Ripple National Trust Bank approved 2025-12-12 and consummated/effective 2026-10-26. Ripple describes the action as final approval. Customer operations commencement is not established by the retrieved CAS record. Ripple says Standard Custody & Trust Company remains the RLUSD issuer; RNTB has separate reserve-management, collateral-trustee and fiduciary-custody roles.
+   - Ripple's October 28 corporate figures ($16T product transactions enabled in 2025, $900M annualized product-revenue run-rate expectation, approaching $150B lifetime volume, RLUSD $2.6B market cap) remain issuer-reported and are not XRP-only flows.
+
+2. `research/xrp_intelligence/20261104T230818Z-binance-circle-private-placement-close-verification.json`
+   - Circle Form 8-K accession 0001876042-26-000276 verifies a completed September 17, 2026 private placement: 1,237,011 Class A shares at $80.84, aggregate proceeds $100M, with closing substantially concurrent with execution of the subscription agreement.
+   - Binance's official blog independently states it purchased the shares. Circle and Binance describe a five-year USDC promotion agreement; Circle pays a monthly incentive fee tied to USDC held through its Modular Smart Contract Wallet infrastructure, while Binance promotes USDC.
+   - This is actual corporate equity capital raised by Circle. It is not XRP capital, XRP collateral or evidence of XRP purchases/settlement.
+   - The prior Q3-only artifact's closing uncertainty is preserved historically and corrected by this later append-only record; no prior artifact was overwritten.
+
+All new web-source records are rendered extracts only. Raw source bytes, SHA-256 hashes and independent timestamp anchors were not captured. Both artifacts remain model-ineligible. No directional forecast was issued.
+
+### Research and model status
+
+- SBIC East/Central/West remain distinct regional Japanese entities, not SBI Holdings. The SBIC East ChatGPT seminar and SBI Holdings' separate ChatGPT adoption remain distinct events.
+- ASK Coin remains a candidate identity, not a confirmed XRP asset. "Actual capital" remains context-dependent; the Binance-to-Circle $100M is now a verified example of corporate equity proceeds, not XRP capital.
+- Camilla/Kamilah Stevenson identity remains unverified. No YouTube inventory or attribution was created.
+- Nine-platform status remains conservative: GitHub repository access is verified; ChatGPT is current-session only; Copilot evidence is a review event, not a persistent adapter; Hugging Face previously returned BUILD_ERROR; Databricks returned HTTP 403; Claude, Grok, Gemini, Codex and Kaggle remain unverified.
+- No synchronized, byte-receipted, multi-venue XRP order-book depth or full historical exchange-flow dataset is yet model-eligible. Kraken top-of-book snapshots remain single-venue observations without provider event timestamps.
+- No leakage-safe historical XRP evaluation has established calibrated predictive lift over naive, momentum, mean-reversion and volatility baselines. Forecast status remains NOT_ISSUED.
+
+### Security, permissions and merge decision
+
+- Dependabot is configured weekly, with a five-PR limit per ecosystem.
+- The #1640 branch's SECURITY.md moves the old `PYSEC-2024-232` exception to an archived backup; it is not an active ignore in the current CI or dependency-audit workflow.
+- Strict dependency audit passed all five manifests on the exact #1640 code head.
+- Repository metadata reports `main` as protected, but the branch-protection API returned HTTP 403. The visible repository ruleset is disabled; required review/check settings could not be independently inspected. No CODEOWNERS file was found at the repository root.
+- GitHub Pages is enabled (`has_pages=true`), and the previous main merge triggered a Pages deployment. No new Pages deployment is authorized by this mission instruction.
+- No merge occurred. Zero approvals remain on both PRs, the fail-closed workflow intentionally disables automatic merge, branch-protection requirements remain unverified, and the Pages side effect remains unresolved. Do not bypass any of these gates.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** XRP-first mission registry; V3 execution/safety foundation; public ingestion, raw-source receipt contract, point-in-time feature store, forecast ledger, research eligibility, chronological walk-forward framework and nine-platform evidence map.
+- **EXECUTED:** current-main/tree/PR/workflow/dependency/security audit; exact branch ancestry and overlap checks; two new append-only research artifacts and regression tests on existing #1643; full-suite CI on the exact #1643 head.
+- **VERIFIED:** #1640 exact code-head core/full-suite CI, inclusive coverage and five-manifest dependency audit; #1643 exact research-head core/full-suite CI and fail-closed gate; all changed-path overlaps and #1642 ancestry; direct SEC 8-K and OCC CAS rendered source contents.
+- **NOT VERIFIED:** raw-source byte hashes, independent timestamp anchoring, live nine-platform connections, RNTB customer operations, XRP-specific institutional capital/collateral usage, market-wide depth, and predictive performance.
+
+### Next concrete action
+
+1. Obtain independent approvals and authorized branch-protection/ruleset verification for #1640 and #1643; resolve Pages deployment authorization.
+2. Verify the documentation-only #1640 successor head's exact CI, full suite, dependency audit and fail-closed gate.
+3. When all merge gates are satisfied, merge #1640, fetch main again, verify merge commit/files, run main CI and account for Pages effects.
+4. Reconcile #1643 against the resulting main using a non-destructive merge (never force-push), rerun exact-head CI, then merge only when its own approvals and gates are satisfied.
+5. After main verification, close only #1642 and the exact dependency PRs whose content is confirmed on main; preserve unique research/security work.
+6. Continue byte-complete source capture, durable cross-run storage, synchronized historical XRP features, full exchange-flow/depth coverage, leakage-safe walk-forward evaluation, probability calibration, drift monitoring and shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
