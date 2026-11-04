@@ -225,3 +225,38 @@ def test_requested_camilla_identity_is_not_conflated_with_kamilah_candidate() ->
         if item["id"] == "OBS-IDENTITY-20261104-01"
     )
     assert set(observation["evidence"]) <= source_ids
+
+LIQUIDITY_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T034115Z-market-liquidity-usdc-etf-addendum.json"
+)
+
+
+def test_liquidity_addendum_has_cutoff_and_resolvable_sources() -> None:
+    data = json.loads(LIQUIDITY_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_market_liquidity_usdc_etf_addendum"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+    source_ids = [item["id"] for item in data["source_registry"]]
+    assert len(source_ids) == len(set(source_ids))
+    known = set(source_ids)
+    for observation in data["observations"]:
+        assert observation["claim"]
+        assert set(observation["evidence"]) <= known
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert set(edge["evidence"]) <= known
+    assert data["predictions"]["issued"] is False
+
+
+def test_liquidity_addendum_preserves_scope_and_provider_disagreement() -> None:
+    data = json.loads(LIQUIDITY_ADDENDUM.read_text(encoding="utf-8"))
+    assert len(data["market_snapshot"]["etf_flows"]) == 2
+    assert data["market_snapshot"]["circle_usdc"]["scope"].startswith("Global USDC")
+    assert "Do not average" in data["data_quality"]["no_averaging_policy"]
+    assert data["market_snapshot"]["xrp_spot_aggregate"]["model_eligible"] is False
+    event = data["market_snapshot"]["upcoming_events"][0]
+    assert event["status_at_cutoff"] == "future_scheduled_event"
+    assert _parse_utc(event["scheduled_at_utc"]) > _parse_utc(data["data_cutoff_utc"])
+
