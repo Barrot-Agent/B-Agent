@@ -15,7 +15,7 @@
 
 - No direct Coinbase–SBI bilateral agreement or equity relationship was established in the reviewed primary sources. Their indirect connection is through shared RLUSD/USDC product ecosystems and Ripple/Circle.
 - No direct Ripple–Circle partnership was established in the reviewed sources. Both issuers separately connect to SBI and Coinbase.
-- SBI Group's Arc validator role is on Circle's separate Arc L1, not XRPL validation.
+- SBI Group's Arc validator role is on Circle's separate Arc L1, not XRPL validation. Circle's September 16, 2026 mainnet release says Arc fees are paid in USDC without a volatile native gas token and reports 98.8% of agent-driven x402 transaction volume in USDC. This is an issuer-reported counter-hypothesis for XRP payment/agent-rail demand, not independent market evidence.
 - SBI Ripple Asia's XRPL proof of concept must not be conflated with XRP bridge-asset usage.
 - SBIC East/Central/West are not SBI Holdings and are not SBI Ripple Asia.
 - SBI Group's 60% SBI Ripple Asia voting interest is disclosed; the remaining 40% is not attributed here.
@@ -38,7 +38,7 @@ The SBI Remit corridor announcement is direct evidence of an XRP bridge-asset us
 - [SBI: Circle JV establishment (2025)](https://www.sbigroup.co.jp/news/2025/0822_15679.html)
 - [SBI: Circle IPO investment (2025)](https://www.sbigroup.co.jp/news/2025/0609_15491.html)
 - [Circle: SBI partnership (2023)](https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services)
-- [Circle: Arc mainnet and founding validator cohort](https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-An-Economic-Operating-System-for-the-Internet/default.aspx)
+- [Circle: Arc mainnet and founding validator cohort](https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx)
 - [SBI Ripple Asia: XRPL tokenized-deposit proof of concept (2026)](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html)
 - [Coinbase: RLUSD launch (2026-10-28)](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase)
 - [Ripple: Coinbase RLUSD partnership (2026-10-28)](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/)
