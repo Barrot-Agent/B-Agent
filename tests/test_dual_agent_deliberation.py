@@ -83,11 +83,7 @@ def test_agreement_does_not_equal_verification(tmp_path):
     assert result.status == "AGREED_AWAITING_VALIDATION"
     assert d.can_execute(case.case_id) is True
 
-    d.record_validation(
-        case.case_id,
-        success=True,
-        evidence_refs=["298 tests passed"],
-    )
+    d.record_validation(case.case_id, ["298 tests passed"], True)
 
     result = d.load(case.case_id)
 
