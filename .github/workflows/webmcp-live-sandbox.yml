@@ -1,4 +1,4 @@
-name: WebMCP Live Sandbox
+name: WebMCP Live Sandbox (fail-closed)
 
 on:
   schedule:
@@ -8,9 +8,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: webmcp-live-sandbox
+  cancel-in-progress: false
+
 jobs:
   sandbox:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
