@@ -147,3 +147,19 @@ def test_pillars_check_uses_read_only_github_installation_lookup() -> None:
     assert "persist-credentials: false" in workflow
     assert 'requests.get(f"https://api.github.com/app/installations/{inst}"' in script
     assert 'requests.post(f"https://api.github.com/app/installations/{inst}/access_tokens"' not in script
+
+
+def test_no_active_scheduled_workflow_can_write_or_merge() -> None:
+    import re
+
+    for path in WORKFLOWS.glob("*.yml"):
+        content = path.read_text(encoding="utf-8")
+        if not re.search(r"^\\s{2}schedule:", content, flags=re.MULTILINE):
+            continue
+        assert not re.search(
+            r"^\\s+(?:contents|actions|issues|pull-requests):\\s*write\\b",
+            content,
+            flags=re.MULTILINE,
+        ), path.name
+        assert "git push" not in content.lower(), path.name
+        assert "gh pr merge" not in content.lower(), path.name
