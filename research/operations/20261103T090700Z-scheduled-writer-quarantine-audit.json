@@ -1,0 +1,106 @@
+{
+  "schema_version": "barrot.workflow-security-audit.v1",
+  "captured_at_utc": "2026-11-03T09:07:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "21169aa3dee70b9cbf39f4ddb10a231f37c553b1",
+  "pull_request": 1573,
+  "scope": "Seven scheduled or automatically triggered GitHub workflows not covered by the initial external-deployment/subscriber quarantine.",
+  "findings": [
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "classification": "AUTOMATED_ISSUE_AND_ASSIGNMENT_MUTATION",
+      "evidence": [
+        "Hourly schedule",
+        "issues:write and pull-requests:write",
+        "Creates issues for failed workflows",
+        "Can assign unassigned issues and PRs when COPILOT_ASSIGNEE is configured"
+      ],
+      "current_limitation": "Prior run reported COPILOT_ASSIGNEE unset; this does not remove the capability."
+    },
+    {
+      "path": ".github/workflows/auto-resolve-issues.yml",
+      "classification": "AUTOMATED_ISSUE_CLOSURE",
+      "evidence": [
+        "Daily schedule",
+        "issues:write",
+        "Runs scripts/resolve_issue.py --all",
+        "Resolver comments and closes a matching issue when the latest workflow run succeeds"
+      ],
+      "risk": "Closes issues without per-issue human approval."
+    },
+    {
+      "path": ".github/workflows/daily-digest.yml",
+      "classification": "PUBLIC_ISSUE_WRITER_AND_STALE_METRIC",
+      "evidence": [
+        "Daily schedule",
+        "issues:write",
+        "Creates a public GitHub issue",
+        "scripts/daily_digest.py reads web/signal_accuracy.json and can publish the legacy 45.5% / 772-of-1697 aggregate"
+      ],
+      "risk": "Can republish a metric that PR #1572 correctly identifies as unvalidated until the prediction-integrity correction is merged."
+    },
+    {
+      "path": ".github/workflows/self-schedule.yml",
+      "classification": "AUTOMATED_ISSUE_AND_LABEL_WRITER",
+      "evidence": [
+        "Every-six-hours schedule",
+        "issues:write",
+        "scripts/self_schedule.py creates issues and adds the barrot-task label"
+      ],
+      "risk": "Creates external issues and labels from automated source-gap detection; downstream task routing must be reviewed."
+    },
+    {
+      "path": ".github/workflows/riemann-harvest.yml",
+      "classification": "SCHEDULED_MAIN_BRANCH_WRITER",
+      "evidence": [
+        "Weekly Monday schedule",
+        "contents:write",
+        "Harvests and validates research files",
+        "Commits and pushes two research outputs directly to main"
+      ],
+      "risk": "Autonomous main mutation conflicts with the no-main-write preservation policy."
+    },
+    {
+      "path": ".github/workflows/gumroad-metrics.yml",
+      "classification": "SCHEDULED_MAIN_WRITER_WITH_EXTERNAL_TOKEN",
+      "evidence": [
+        "Weekly Monday schedule",
+        "GUMROAD_ACCESS_TOKEN",
+        "contents:write",
+        "Writes aggregate metrics to main",
+        "scripts/gumroad_metrics.py prints the raw product API response to job logs before extracting aggregate fields"
+      ],
+      "risk": "Unnecessary raw API logging requires privacy/output minimization review; this is not evidence that purchaser emails were returned or exposed."
+    },
+    {
+      "path": ".github/workflows/webmcp-monetization-enrich.yml",
+      "classification": "SCHEDULED_AND_UPSTREAM_TRIGGERED_MAIN_WRITER",
+      "evidence": [
+        "Weekly schedule",
+        "workflow_run after WebMCP Trend Digest",
+        "contents:write",
+        "Uses GITHUB_TOKEN",
+        "Commits enrichment outputs directly to main"
+      ],
+      "risk": "Autonomous main mutation without a separate reviewed artifact-promotion boundary."
+    }
+  ],
+  "additional_observations": [
+    "barrot-pr-automerge.yml on main is already a read-only fail-closed notice; the comment in barrot-autonomous-resolver.yml that PRs are picked up and merged is stale and inaccurate.",
+    "Manual-only main writers remain outside this quarantine: financial-data-refresh.yml, knowledge-signal-cycle.yml, knowledge-signal-cycle-btc.yml, self-benchmark.yml, entity-relations.yml, research-topics.yml and subagent-spawn.yml. They were not dispatched.",
+    "barrot-agent.yml remains an issue-label/manual task runner with contents, pull-request and issue write permissions; its event-sender condition restricts label-triggered execution to Barrot-Agent or the repository owner. It requires a separate authorization and branch-only review.",
+    "The current main advanced from PR #1573's base only by 21169aa3, which changes ping-pongings/knowledge-base/sentiment_shift.json. None of the seven added workflow paths overlaps that main change.",
+    "No workflow was dispatched; no issue was created, closed, commented on or assigned; no repository main write or external API action was performed."
+  ],
+  "proposed_controls": [
+    "Replace each of the seven workflows with a disabled, empty-permission, no-secret, no-schedule fail-closed notice.",
+    "Add regression tests asserting that schedules, upstream triggers, credentials, write permissions and mutation commands remain absent.",
+    "Keep original behavior in Git history; do not delete the scripts or historical data."
+  ],
+  "residuals": [
+    "Manual-only main writers remain to be reviewed separately.",
+    "Protected GitHub Environment approval configuration is not verified through current integration permissions.",
+    "Disabling a workflow in this PR does not affect current main until approved and merged."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "barrot.workflow-security-audit.v1",
+  "captured_at_utc": "2026-11-03T09:18:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "21169aa3dee70b9cbf39f4ddb10a231f37c553b1",
+  "finding": {
+    "workflow": ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+    "classification": "SCHEDULED_AND_PUSH_TRIGGERED_MAIN_WRITER",
+    "triggers": [
+      "every six hours",
+      "push to main paths Barrot-Agent/** and memory-bundles/**",
+      "manual workflow_dispatch"
+    ],
+    "permissions": [
+      "contents: write",
+      "issues: write",
+      "pull-requests: write"
+    ],
+    "behavior": [
+      "appends timestamps and cognitive feedback to memory-bundles/ and Barrot-Agent/logs/",
+      "checks out with GITHUB_TOKEN",
+      "pulls main with rebase and ignores pull failure",
+      "commits generated state",
+      "pushes directly to origin main"
+    ],
+    "risks": [
+      "autonomous main mutation",
+      "broad unused issue/PR permissions in this workflow",
+      "push retry suppresses failure and does not provide an independent promotion gate",
+      "push-triggered self-observation path should be assessed for redundant runs"
+    ],
+    "evidence": "Current main workflow YAML fetched and inspected; no workflow dispatch performed."
+  },
+  "action": {
+    "proposed": "Disable schedule and push triggers, remove permissions and secrets, retain only a manual fail-closed notice until branch-safe append-only artifact promotion is designed.",
+    "test": "Add this workflow to the PyYAML-parsed quarantine regression suite."
+  },
+  "residual_manual_writers": [
+    ".github/workflows/content-pipeline.yml",
+    ".github/workflows/audio-ingest.yml",
+    ".github/workflows/frontier-digest.yml",
+    ".github/workflows/webmcp-trend-digest.yml",
+    ".github/workflows/pingpong.yml",
+    ".github/workflows/capability-1-market-analysis.yml",
+    ".github/workflows/financial-data-refresh.yml"
+  ],
+  "safety": "No workflow was dispatched and no main, issue, PR, secret, deployment, paper-trading or real-money state was changed."
+}

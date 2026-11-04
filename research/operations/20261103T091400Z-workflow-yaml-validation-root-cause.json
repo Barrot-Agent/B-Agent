@@ -1,0 +1,48 @@
+{
+  "schema_version": "barrot.workflow-security-remediation.v1",
+  "captured_at_utc": "2026-11-03T09:14:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "security/quarantine-external-writers-20261103T0820Z",
+  "prior_head": "a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae",
+  "finding": {
+    "class": "VERIFIED_WORKFLOW_CONFIGURATION_FAILURE",
+    "affected_workflows": [
+      ".github/workflows/barrot-autonomous-resolver.yml",
+      ".github/workflows/auto-resolve-issues.yml",
+      ".github/workflows/daily-digest.yml",
+      ".github/workflows/self-schedule.yml",
+      ".github/workflows/riemann-harvest.yml",
+      ".github/workflows/gumroad-metrics.yml",
+      ".github/workflows/webmcp-monetization-enrich.yml"
+    ],
+    "evidence": "Seven push-event workflow runs for prior head a04b6a08acfd0598a3d6bbbfa5211762e4a7e6ae completed with conclusion=failure and zero jobs returned by the workflow-runs jobs endpoint.",
+    "root_cause": "The disabled workflow files used a plain-scalar run: echo \"Disabled: ...\" value. The colon followed by a space inside the unquoted YAML scalar made the workflow YAML invalid.",
+    "test_gap": "The first regression test checked strings and permissions but did not parse the YAML, so the core Python suite passed while GitHub Actions rejected the workflow definitions."
+  },
+  "correction": {
+    "run_steps": "Changed all seven notices to block-scalar run: | steps, keeping the command text as a shell script.",
+    "parser": "Added PyYAML to the CI test dependencies and parse each workflow with yaml.safe_load.",
+    "assertions": [
+      "workflow_dispatch is the only configured event",
+      "permissions is an empty mapping",
+      "disabled job has boolean if=false",
+      "no schedule/workflow_run/push triggers",
+      "no secrets, write permissions or mutation commands"
+    ]
+  },
+  "evidence_preservation": {
+    "failed_runs": [
+      41609102361,
+      41609099275,
+      41609103844,
+      41609100965,
+      41609097559,
+      41609105435,
+      41609106814
+    ],
+    "action_taken": "Preserved the failed runs as evidence; no rerun or external action was initiated.",
+    "prior_core_ci_run": 41609104753,
+    "prior_core_ci_result": "345 passed, 8 subtests passed in 7.65s; this did not validate GitHub workflow YAML."
+  },
+  "safety": "No main change, merge, force-push, secret access, issue mutation, deployment, paper position or real-money action."
+}
