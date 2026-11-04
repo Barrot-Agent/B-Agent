@@ -1,0 +1,319 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "binance_exchange_outflows_and_stablecoin_freeze_reconciliation",
+  "snapshot_id": "binance-exchange-outflows-freezes-20261102-221100z",
+  "created_at_utc": "2026-11-02T22:11:00Z",
+  "data_cutoff_utc": "2026-11-02T01:53:00Z",
+  "forecast_status": "NOT_ISSUED",
+  "exchange_level_observations": {
+    "binance_net_customer_outflows_since_reopening_usd": 4720000000,
+    "share_of_platform_assets_approx_pct": 3,
+    "binance_reported_customer_inflows_since_sunday_usd": 2700000000,
+    "withdrawal_volume_status": "Binance said volumes were stabilizing after an initial spike",
+    "customer_base_reported": 335000000,
+    "average_daily_spot_and_derivatives_volume_reported_usd": 95000000000,
+    "other_exchange_24h_inflows_usd": {
+      "OKX": 284870000,
+      "Gate": 93220000,
+      "Bybit": 29250000
+    },
+    "cross_exchange_flow_caveat": "DeFiLlama-reported inflows at other venues do not establish that the same customers or assets migrated from Binance; Reuters says the share attributable to Binance withdrawals was unclear.",
+    "source_id": "reuters-binance-outflows-20261102"
+  },
+  "stablecoin_freeze_reconciliation": {
+    "total_hack_value_reported_usd": 6300000000,
+    "frozen_or_rescued_total_reported_by_bitquery_usd": 2700000000,
+    "stablecoin_value_escaped_before_freezes_reported_by_bitquery_usd": 729000000,
+    "circle_usdc_freeze_early_trm_usd": 823000000,
+    "circle_usdc_freeze_later_reuters_lower_bound_usd": 1100000000,
+    "tether_usdt_freeze_reported_by_trm_usd": 1770000000,
+    "ripple_rlusd_freeze_reported_by_trm_usd": 40500000,
+    "world_liberty_usd1_freeze_reported_by_trm_usd": 27800000,
+    "timeline": {
+      "circle_initial_freeze_utc": "2026-10-29T21:04:00Z",
+      "ripple_rlusd_freeze_utc": "2026-10-29T22:01:00Z",
+      "trm_initial_snapshot_utc": "2026-10-30"
+    },
+    "interpretation": "The $823M TRM figure is an earlier incident snapshot; Reuters later reports Circle had frozen more than $1.1B USDC by November 2. These are successive measurements and must not be added. The $2.7B total frozen/rescued is a separate aggregate that includes multiple issuers and a network-governance intervention.",
+    "source_ids": [
+      "bitquery-binance-20261102",
+      "trm-20261029",
+      "reuters-binance-outflows-20261102"
+    ]
+  },
+  "event_timeline": [
+    {
+      "time_utc": "2026-10-29T20:04:00Z/23:56:00Z",
+      "event": "Bitquery reports approximately $6.3B left 17 Binance hot wallets across nine chains; the first identified major transfer was on XRPL.",
+      "classification": "onchain_analytics",
+      "source_ids": [
+        "bitquery-binance-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-10-29T21:04:00Z",
+      "event": "TRM's timeline reports Circle froze approximately $823M USDC in the main Ethereum attacker wallet.",
+      "classification": "forensic_analytics_early_snapshot",
+      "source_ids": [
+        "trm-20261029",
+        "bitquery-binance-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-10-29T22:01:00Z",
+      "event": "TRM reports Ripple froze approximately $40.5M RLUSD linked to the incident.",
+      "classification": "forensic_analytics",
+      "source_ids": [
+        "trm-20261029"
+      ]
+    },
+    {
+      "time_utc": "2026-11-01",
+      "event": "Binance resumed customer withdrawals in phases; Binance later said it had replenished or covered approximately 95% of affected assets and would cover customer losses.",
+      "classification": "company_reported",
+      "source_ids": [
+        "binance-recovery-update-4"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T01:53:00Z",
+      "event": "Reuters reports $4.72B net customer outflows since Binance reopened, approximately 3% of platform assets; Binance reports $2.7B customer inflows since Sunday and stabilizing withdrawals.",
+      "classification": "independent_media_report_of_exchange_and_company_metrics",
+      "source_ids": [
+        "reuters-binance-outflows-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02",
+      "event": "Reuters reports Circle said it had frozen more than $1.1B in USDC linked to the hack, a later count than TRM's initial $823M snapshot.",
+      "classification": "issuer_statement_reported_by_reuters",
+      "source_ids": [
+        "reuters-binance-outflows-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T03:55:31Z/03:56:21Z",
+      "event": "The two 40M XRP transfers from the original attacker account form part of the original redistribution; they are not later outflows from the six recipient wallets.",
+      "classification": "transaction_tracker_and_ledger_reconciliation",
+      "source_ids": [
+        "whale-alert-3aaa8bee",
+        "q-eternal-20261102",
+        "bitquery-binance-20261102"
+      ]
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "B1",
+      "hypothesis": "Binance's $4.72B net customer outflow represents a confidence shock that may redistribute exchange liquidity and market share.",
+      "supporting_evidence": [
+        "Reuters reports net outflows equal to approximately 3% of platform assets",
+        "Other venues recorded inflows after Binance reopened"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Binance also reported $2.7B inflows since Sunday",
+        "Withdrawals were reportedly stabilizing",
+        "Other-venue inflows are not proven to originate from Binance"
+      ],
+      "status": "supported_as_exchange_flow_event_not_xrp_specific"
+    },
+    {
+      "id": "B2",
+      "hypothesis": "The separate 50M XRP Binance-labelled transfer on November 1 was a customer withdrawal during the phased reopening.",
+      "supporting_evidence": [
+        "Reuters reports large aggregate customer outflows and phased withdrawal reopening",
+        "Q-Eternal reports a 50M decrease at a Binance-labelled account"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No transaction-level link between the 50M transfer and an identifiable customer withdrawal",
+        "Could be wallet rebalancing or internal custody movement"
+      ],
+      "status": "plausible_unconfirmed"
+    },
+    {
+      "id": "B3",
+      "hypothesis": "Stablecoin issuer freeze controls materially improve recovery odds for USDC and RLUSD relative to native XRP.",
+      "supporting_evidence": [
+        "Circle froze more than $1.1B USDC by November 2 per Reuters",
+        "Ripple froze approximately $40.5M RLUSD per TRM"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Some stablecoins escaped before freezes landed",
+        "A freeze is not equivalent to recovery or customer reimbursement",
+        "Native XRP cannot be issuer-frozen"
+      ],
+      "status": "supported_with_scope_limits"
+    },
+    {
+      "id": "B4",
+      "hypothesis": "The exchange incident will cause broad market liquidity impairment.",
+      "supporting_evidence": [
+        "Large customer outflows and $6.3B incident size",
+        "Stablecoin market capitalizations fell after Friday per Reuters"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Reuters reports little sign of broad financial-market impact as of November 2",
+        "Bitcoin and Ether recovered through the weekend",
+        "Binance said withdrawals were stabilizing"
+      ],
+      "status": "not_established"
+    },
+    {
+      "id": "B5",
+      "hypothesis": "Issuer freezes create a direct XRP spot-demand catalyst.",
+      "supporting_evidence": [
+        "Ripple and Circle controls are relevant to the XRP ecosystem and stablecoin rails"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Frozen RLUSD/USDC balances do not require XRP purchases",
+        "XRP and RLUSD are separate assets",
+        "No causal spot-demand pathway is demonstrated"
+      ],
+      "status": "unsupported_do_not_use_as_price_signal"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Binance",
+      "to": "customers",
+      "relationship": "reported $4.72B net withdrawals after reopening and $2.7B inflows since Sunday",
+      "classification": "company_metrics_reported_by_reuters",
+      "source_ids": [
+        "reuters-binance-outflows-20261102"
+      ]
+    },
+    {
+      "from": "Binance customers",
+      "to": "OKX/Gate/Bybit",
+      "relationship": "possible venue migration; aggregate inflows observed but origin not established",
+      "classification": "inference_with_explicit_unknown",
+      "source_ids": [
+        "reuters-binance-outflows-20261102"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC attacker-linked addresses",
+      "relationship": "issuer freeze control; later reported frozen amount >$1.1B",
+      "classification": "issuer_statement_reported_by_reuters",
+      "source_ids": [
+        "reuters-binance-outflows-20261102"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD attacker-linked addresses",
+      "relationship": "issuer freeze control; approximately $40.5M frozen in TRM incident timeline",
+      "classification": "forensic_sourced_claim",
+      "source_ids": [
+        "trm-20261029"
+      ]
+    },
+    {
+      "from": "Native XRP",
+      "to": "issuer freeze controls",
+      "relationship": "no issuer-level freeze/reversal mechanism",
+      "classification": "XRPL_protocol_property",
+      "source_ids": [
+        "xrpl-freeze-docs"
+      ]
+    }
+  ],
+  "data_quality_controls": [
+    "Do not add Reuters' later >$1.1B USDC freeze to TRM's earlier $823M; they are successive counts.",
+    "Do not add the $2.7B frozen/rescued aggregate to the individual issuer freeze amounts; the aggregate already includes components.",
+    "Do not treat the $4.72B net customer outflow and $2.7B customer inflow as independent gross totals without matching windows and definitions.",
+    "Do not attribute OKX, Gate or Bybit inflows to Binance customers without wallet- or account-level evidence.",
+    "Do not equate Binance's reported 95% replenishment of affected assets with 95% recovery of stolen funds or 95% customer withdrawals.",
+    "Do not infer XRP-specific market outflows from exchange-wide net withdrawal totals."
+  ],
+  "event_study_design": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "outcomes": [
+      "Binance XRP attributed-address balances",
+      "XRP net exchange flows by venue",
+      "XRP spot depth/spreads on Binance, Coinbase, Upbit and Kraken",
+      "XRP perpetual open interest/funding by venue",
+      "USDC/USDT/RLUSD stablecoin supply and venue balances",
+      "cross-exchange volume share",
+      "XRP and BTC relative returns"
+    ],
+    "controls": [
+      "BTC and ETH",
+      "other large exchanges",
+      "market-wide stablecoin supply",
+      "USD rates and broad risk assets"
+    ],
+    "confounders": [
+      "withdrawal reopening schedule",
+      "security incident coverage",
+      "issuer freezes",
+      "macro risk appetite",
+      "ETF flow updates"
+    ],
+    "leakage_controls": [
+      "timestamp each venue snapshot",
+      "keep exchange labels versioned",
+      "do not infer source of aggregate inflows",
+      "separate reported company metrics from on-chain balances"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "source_records": [
+    {
+      "id": "reuters-binance-outflows-20261102",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+      "source_type": "independent_media_report",
+      "observation": "Published November 2 at 01:53 UTC. Reports $4.72B net Binance customer outflows since reopening (~3% of platform assets), Binance-reported $2.7B customer inflows since Sunday and stabilizing withdrawals, $6B company funds raised to cover losses, venue inflows at OKX/Gate/Bybit with uncertain origin, and Circle's statement that it had frozen >$1.1B USDC.",
+      "independence_group": "reuters"
+    },
+    {
+      "id": "bitquery-binance-20261102",
+      "publisher": "Bitquery Research",
+      "url": "https://www.bitquery.io/investigations/binance-hack",
+      "source_type": "onchain_analytics",
+      "observation": "Reports $6.3B left 17 Binance hot wallets on nine chains, approximately $2.7B frozen/rescued, $729M USDT escaped before freezes and on-chain balances through 13:26 UTC November 2.",
+      "independence_group": "bitquery"
+    },
+    {
+      "id": "trm-20261029",
+      "publisher": "TRM Labs",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "source_type": "forensic_analytics",
+      "observation": "Early incident timeline includes Circle's approximately $823M USDC freeze and Ripple's approximately $40.5M RLUSD freeze; figures are earlier snapshots.",
+      "independence_group": "trm"
+    },
+    {
+      "id": "binance-recovery-update-4",
+      "publisher": "Binance",
+      "url": "https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+      "source_type": "exchange_statement",
+      "observation": "Recovery update #4; Binance reports phased withdrawal resumption and replenishment/coverage of affected assets. The announcement URL redirected to a generic support page in this retrieval, so exact 95% details are retained as previously retrieved company-reported claims, not newly reverified here.",
+      "independence_group": "binance"
+    },
+    {
+      "id": "xrpl-freeze-docs",
+      "publisher": "XRP Ledger documentation",
+      "url": "https://xrpl.org/docs/concepts/accounts/freeze",
+      "source_type": "protocol_documentation",
+      "observation": "Native XRP cannot be frozen or reversed by an issuer; issued tokens have different issuer control features.",
+      "independence_group": "xrpl-official-docs"
+    }
+  ],
+  "unresolved_questions": [
+    "Obtain a venue-specific XRP reserve and withdrawal series for Binance, Coinbase, Upbit and Kraken at common ledger/time cutoffs.",
+    "Match the November 1 50M XRP Binance-labelled transfer to an exact transaction hash and receiving account before attributing it to customer withdrawals or internal rebalancing.",
+    "Reconcile Binance's $4.72B net outflow, $2.7B inflows and 95% replenishment claims using consistent windows and denominators.",
+    "Determine whether the >$1.1B USDC freeze count includes previously frozen balances, newly frozen addresses, or both; do not infer recovery.",
+    "Track whether frozen USDC/RLUSD is later released, seized, returned or redeemed; freezes alone are not realized recovery.",
+    "Measure whether Binance market share or XRP liquidity shifted to other venues after reopening."
+  ],
+  "next_actions": [
+    "Add point-in-time venue-specific XRP order-book depth, spreads, volume and attributed wallet balances.",
+    "Reconcile Circle's >$1.1B USDC freeze statement with TRM's earlier $823M snapshot and Bitquery's total frozen/rescued accounting.",
+    "Capture Binance's November 4 proof-of-reserves expansion and match XRP liabilities to tagged wallets without treating reserves as customer flows.",
+    "Keep XRP-specific price signals separate from exchange-wide security and withdrawal events."
+  ],
+  "provenance_precision_note": "Reuters is the source for exchange-wide net outflows and Circle's later freeze statement. Bitquery and TRM are separate forensic/on-chain research sources with different cutoffs. Binance's announcement URL redirected to a generic support page in this retrieval; its detailed recovery figures are not claimed as newly reverified in this artifact."
+}

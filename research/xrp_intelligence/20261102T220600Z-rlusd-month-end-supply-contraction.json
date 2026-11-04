@@ -1,0 +1,392 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "rlusd_xrpl_month_end_supply_contraction_reconciliation",
+  "snapshot_id": "rlusd-month-end-contraction-20261102-220600z",
+  "created_at_utc": "2026-11-02T22:06:00Z",
+  "data_cutoff_utc": "2026-11-02T06:24:00Z",
+  "supplemental_later_observation": {
+    "ledger_index": 108064685,
+    "source_page_published_utc": "2026-11-02T20:13:00Z",
+    "exact_ledger_close_time_utc": null,
+    "rlusd_xrpl_supply": 711828559.43,
+    "rlusd_ethereum_supply": 1704513097.44,
+    "combined_supply": 2416341656.87,
+    "source_id": "q-eternal-20261102",
+    "classification": "secondary_public_research_reporting_direct_ledger_queries",
+    "note": "Q-Eternal reports these issuer-liability/supply values at ledger 108064685. The exact close timestamp was not obtained."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "core_observation": {
+    "event_date": "2026-10-30",
+    "chain": "XRP Ledger",
+    "rlusd_supply_before_xrp": 991700000,
+    "rlusd_supply_after_xrp": 707400000,
+    "net_xrpl_supply_change_xrp": -284300000,
+    "percentage_change_approx": -28.7,
+    "reported_large_returns_to_issuer_count": 12,
+    "reported_single_funnel_wallet_count": 1,
+    "reported_gross_october_returns_to_issuer_xrp": 1080000000,
+    "reported_october_return_payment_count": 101,
+    "ethereum_supply_change_over_same_window": 92700000,
+    "net_combined_supply_change_approx": -191600000,
+    "source_id": "coindaro-20261102",
+    "classification": "sourced_onchain_analytics_claim_not_independently_replayed"
+  },
+  "event_timeline": [
+    {
+      "time_utc": "2026-10-29",
+      "event": "Ripple's transparency page reports total RLUSD circulating supply of $2,627.0M and reserve funds of $2,758.6M as of October 29, 2026.",
+      "classification": "issuer_disclosure",
+      "source_ids": [
+        "ripple-transparency-2026-10-29"
+      ]
+    },
+    {
+      "time_utc": "2026-10-30",
+      "event": "Coindaro reports 12 large RLUSD returns from one unidentified XRPL wallet to the issuer, reducing XRPL supply from approximately 991.7M to 707.4M; Ethereum supply reportedly rose approximately 92.7M over the same window.",
+      "classification": "sourced_onchain_analytics_claim",
+      "source_ids": [
+        "coindaro-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T06:24:00Z",
+      "event": "Coindaro reports XRPL RLUSD supply remained approximately 711.8M and that the usual post-month-end rebound had not yet appeared at that cutoff.",
+      "classification": "sourced_analytics_snapshot",
+      "source_ids": [
+        "coindaro-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02",
+      "event": "Q-Eternal reports 711,828,559.43 RLUSD on XRPL and 1,704,513,097.44 RLUSD on Ethereum at ledger 108064685; the exact ledger close time is not stated.",
+      "classification": "secondary_public_research_reporting_direct_ledger_queries",
+      "source_ids": [
+        "q-eternal-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02",
+      "event": "An XRPL.to page render displayed 852,429,771 RLUSD on XRPL without an explicit as-of timestamp. This conflicts with the 711.8M snapshot and is not accepted as a canonical observation pending documented API retrieval and timestamped confirmation.",
+      "classification": "undated_dashboard_observation_not_canonical",
+      "source_ids": [
+        "xrplto-rlusd-page-undated"
+      ]
+    }
+  ],
+  "supply_reconciliation": {
+    "ripple_official_total_supply_2026_10_29": 2627000000,
+    "ripple_official_reserve_funds_2026_10_29": 2758600000,
+    "coindaro_xrpl_pre_contraction": 991700000,
+    "coindaro_xrpl_post_contraction": 707400000,
+    "coindaro_xrpl_net_change": -284300000,
+    "coindaro_ethereum_change_same_window": 92700000,
+    "derived_combined_net_change": -191600000,
+    "q_eternal_xrpl_later": 711828559.43,
+    "q_eternal_ethereum_later": 1704513097.44,
+    "q_eternal_combined_later": 2416341656.87,
+    "ripple_to_q_eternal_combined_difference": -210658343.13,
+    "note": "The official October 29 figure is an issuer-disclosed total supply/reserve snapshot. Coindaro's October 30 chain-specific changes are sourced analytics. Q-Eternal's later two-chain values are reported ledger queries. They are not identical timestamps or identical measurement methods; the derived difference is a reconciliation lead, not proof of cash redemption or reserve outflow."
+  },
+  "month_end_pattern_reported_by_coindaro": [
+    {
+      "month": "2026-01",
+      "before_m": 338,
+      "after_m": 260.8,
+      "change_pct": -22.8,
+      "rebound_m": 348
+    },
+    {
+      "month": "2026-02",
+      "before_m": 345,
+      "after_m": 256.4,
+      "change_pct": -25.7,
+      "rebound_m": 345
+    },
+    {
+      "month": "2026-03",
+      "before_m": 317.9,
+      "after_m": 189.8,
+      "change_pct": -40.3,
+      "rebound_m": 340.3
+    },
+    {
+      "month": "2026-04",
+      "before_m": 372.6,
+      "after_m": 253.3,
+      "change_pct": -32,
+      "rebound_m": 376.3
+    },
+    {
+      "month": "2026-05",
+      "before_m": 705.3,
+      "after_m": 613.3,
+      "change_pct": -13.1,
+      "rebound_m": 734.4
+    },
+    {
+      "month": "2026-06",
+      "before_m": 813.1,
+      "after_m": 676.9,
+      "change_pct": -16.7,
+      "rebound_m": 846.4
+    },
+    {
+      "month": "2026-07",
+      "before_m": 881.2,
+      "after_m": 759.7,
+      "change_pct": -13.8,
+      "rebound_m": 850.7
+    },
+    {
+      "month": "2026-08",
+      "before_m": 1040.6,
+      "after_m": 913.5,
+      "change_pct": -12.2,
+      "rebound_m": 1049.4
+    },
+    {
+      "month": "2026-09",
+      "before_m": 1124.7,
+      "after_m": 1013.5,
+      "change_pct": -9.9,
+      "rebound_m": 1235.7
+    },
+    {
+      "month": "2026-10",
+      "before_m": 991.7,
+      "after_m": 707.4,
+      "change_pct": -28.7,
+      "rebound_m": null
+    }
+  ],
+  "important_interpretation_controls": [
+    "RLUSD is a separate USD-denominated token, not XRP. A fall in RLUSD supply does not mechanically imply XRP selling or buying.",
+    "Tokens returned to the issuer reduce outstanding on-chain supply; this does not by itself prove an equivalent USD redemption, cash leaving reserve accounts, or a customer cash-out.",
+    "An increase in Ethereum supply during the same window does not prove the XRPL tokens were bridged or migrated. Separate mint/burn events can produce similar aggregate changes.",
+    "The month-end pattern is a candidate operational/treasury explanation, not a confirmed Ripple policy. Ripple has not publicly explained the October 30 contraction in the cited sources.",
+    "The October contraction is unusually large in dollar terms relative to prior reported months and merits issuer-wallet transaction replay.",
+    "The undated 852.4M XRPL.to page value is preserved as a data-quality conflict, not used to overwrite the pinned 711.8M ledger observation.",
+    "The official October 29 reserve report predates the October 30 contraction and cannot be used as a post-event attestation."
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "R1",
+      "hypothesis": "Routine month-end treasury inventory management or client settlement batching explains much of the XRPL supply reduction.",
+      "supporting_evidence": [
+        "Coindaro reports similar month-end issuer-return patterns in every month since April",
+        "Q-Eternal's later ledger observation is near 711.8M, consistent with the early post-burn level"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "October's $284.4M contraction is roughly twice the previous largest reported dollar reduction",
+        "Ripple has not confirmed the process or its purpose",
+        "The funnel wallet's beneficial owner and client relationships are unknown"
+      ],
+      "status": "plausible_unconfirmed"
+    },
+    {
+      "id": "R2",
+      "hypothesis": "Customer redemptions or institutional cash withdrawals drove the returns.",
+      "supporting_evidence": [
+        "Tokens were reportedly returned to the issuer, which extinguishes on-chain obligations"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No bank cash movement or customer redemption confirmation was obtained",
+        "Reserve balances and redemption settlements after October 29 were not independently reconciled"
+      ],
+      "status": "possible_unconfirmed"
+    },
+    {
+      "id": "R3",
+      "hypothesis": "Part of the XRPL contraction reflects chain allocation changes toward Ethereum.",
+      "supporting_evidence": [
+        "Coindaro reports Ethereum supply increased approximately $92.7M in the same window"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No matched bridge or paired mint/burn transaction path was established",
+        "Combined supply reportedly still fell approximately $191.7M"
+      ],
+      "status": "possible_but_unproven"
+    },
+    {
+      "id": "R4",
+      "hypothesis": "The supply contraction is related to the October 29 Binance incident or Ripple's stablecoin freeze activity.",
+      "supporting_evidence": [
+        "The timing is adjacent to the Binance incident and Ripple froze 40.5M stolen RLUSD on Ethereum"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "The XRPL contraction is dated October 30 and described as returns from one wallet to issuer",
+        "No transaction-level connection between the funnel wallet and Binance attacker wallets was established",
+        "Recurring month-end reductions predate the incident"
+      ],
+      "status": "weak_link_do_not_join_without_transaction_evidence"
+    },
+    {
+      "id": "R5",
+      "hypothesis": "The 852.4M XRPL.to page render reflects a later large mint/rebound after the 711.8M ledger snapshot.",
+      "supporting_evidence": [
+        "The page render displays 852,429,771 RLUSD and says 'right now'"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No explicit page timestamp",
+        "No API response or transaction-level mint evidence obtained",
+        "The value may be stale cached page data or a different aggregation state"
+      ],
+      "status": "unverified_dashboard_conflict"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Standard Custody & Trust Company",
+      "to": "RLUSD",
+      "relationship": "issuer",
+      "classification": "issuer_disclosure",
+      "source_ids": [
+        "ripple-transparency-2026-10-29"
+      ]
+    },
+    {
+      "from": "RLUSD issuer account",
+      "to": "XRPL RLUSD supply",
+      "relationship": "controls issued token liabilities and issuer-return/burn process",
+      "classification": "protocol_and_issuer_structure",
+      "source_ids": [
+        "xrplto-rlusd-page-undated",
+        "xrpl-account-tx-docs"
+      ]
+    },
+    {
+      "from": "Unknown XRPL funnel wallet",
+      "to": "RLUSD issuer account",
+      "relationship": "reportedly returned approximately 1.08B RLUSD in 101 payments during October, including 12 large payments on October 30",
+      "classification": "sourced_onchain_analytics_claim",
+      "source_ids": [
+        "coindaro-20261102"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD reserves",
+      "relationship": "reports segregated reserve funds and monthly independent CPA attestations",
+      "classification": "issuer_disclosure",
+      "source_ids": [
+        "ripple-transparency-2026-10-29"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relationship": "retail and institutional distribution listing from October 28",
+      "classification": "company_and_media_reported_listing",
+      "source_ids": [
+        "reuters-2026-10-28"
+      ]
+    }
+  ],
+  "source_records": [
+    {
+      "id": "ripple-transparency-2026-10-29",
+      "publisher": "Ripple",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "source_type": "issuer_disclosure",
+      "observation": "Total circulating RLUSD $2.627B and reserve funds $2.7586B as of 2026-10-29; page says Standard Custody is issuer and monthly independent CPA attestations validate management assertions.",
+      "independence_group": "ripple"
+    },
+    {
+      "id": "coindaro-20261102",
+      "publisher": "Coindaro",
+      "url": "https://www.coindaro.com/rlusd-supply-xrp-ledger-burns/",
+      "source_type": "independent_onchain_analytics",
+      "observation": "Reports 284.4M XRPL RLUSD contraction on October 30, 12 large returns from one wallet, 1.08B returns in 101 October payments, recurring month-end pattern, and 92.7M Ethereum supply increase in the same window. Ripple had not explained the event by publication.",
+      "independence_group": "coindaro"
+    },
+    {
+      "id": "q-eternal-20261102",
+      "publisher": "Q-Eternal XRP Fundamentals",
+      "url": "https://q-eternal.com/blog/2026-11-02/",
+      "source_type": "public_research_using_reported_direct_xrpl_queries",
+      "observation": "Reports 711,828,559.43 RLUSD XRPL liabilities and 1,704,513,097.44 Ethereum RLUSD at ledger 108064685; also reports 854,786 Ethereum RLUSD decline over its prior 24-hour comparison.",
+      "independence_group": "q-eternal"
+    },
+    {
+      "id": "stablescool-20261102",
+      "publisher": "Stables.cool",
+      "url": "https://stables.cool/RLUSD",
+      "source_type": "third_party_stablecoin_dashboard_search_snapshot",
+      "observation": "Search result reports total RLUSD approximately $2.42B with Ethereum $1.7B and XRPL $711.8M as of November 2, 09:55 AM; dashboard retrieval timed out on open.",
+      "independence_group": "stables-cool"
+    },
+    {
+      "id": "xrplto-rlusd-page-undated",
+      "publisher": "XRPL.to",
+      "url": "https://xrpl.to/insights/rlusd-supply-tracker",
+      "source_type": "third_party_token_dashboard_page_render",
+      "observation": "The opened page displayed 852,429,771 RLUSD on XRPL and 67,957 holders, but did not expose a precise as-of timestamp. Its notice directs automated clients to the documented API; no API response was obtained. Preserve as an unresolved conflicting display, not canonical data.",
+      "independence_group": "xrplto"
+    },
+    {
+      "id": "reuters-2026-10-28",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "source_type": "independent_media_company_listing_report",
+      "observation": "Coinbase began adding RLUSD to retail and institutional platforms on October 28; this is distribution evidence, not evidence of collateral eligibility or XRP demand.",
+      "independence_group": "reuters"
+    }
+  ],
+  "event_study_design": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "outcomes": [
+      "RLUSD supply by chain",
+      "issuer return/mint/burn transaction counts and sizes",
+      "XRPL holder concentration",
+      "XRPL RLUSD/XRP DEX pool reserves and depth",
+      "RLUSD/USD peg and exchange spread",
+      "XRP spot returns and order-book depth",
+      "stablecoin transfer volume and destination concentration"
+    ],
+    "controls": [
+      "Ethereum RLUSD supply",
+      "USDC and USDT chain-level supply changes",
+      "calendar month-end effects",
+      "weekend/working-day effects",
+      "issuer treasury transfers"
+    ],
+    "confounders": [
+      "Binance security incident",
+      "Ripple RLUSD freeze activity on Ethereum",
+      "Coinbase RLUSD listing",
+      "macro rates and USD liquidity",
+      "market-maker inventory changes"
+    ],
+    "leakage_controls": [
+      "Separate observation time from publication time",
+      "Preserve daily snapshots and raw ledger indices",
+      "Do not infer cash redemption from token return/burn",
+      "Do not join wallet identity without evidence",
+      "Do not backfill later dashboard values into earlier feature dates"
+    ],
+    "baselines": [
+      "prior-month-end median change",
+      "rolling 30-day supply change",
+      "Ethereum-vs-XRPL allocation baseline",
+      "stablecoin peer supply change"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "unresolved_questions": [
+    "Replay the 12 large XRPL issuer-return transactions and identify exact transaction hashes, delivered amounts, sender/issuer addresses and ledger indices.",
+    "Determine whether the single funnel wallet is an institutional client, exchange, Ripple-controlled treasury wallet, market maker or unrelated intermediary; do not infer identity from flow alone.",
+    "Reconcile the 852,429,771 XRPL.to page display with the 711,828,559.43 ledger-index observation using a timestamped documented API response and direct issuer liabilities query.",
+    "Obtain the first post-October-30 Ripple reserve attestation when published; the October 29 report predates the contraction.",
+    "Determine whether any October 30 issuer returns were accompanied by cash redemption, internal reserve reallocation or other settlement.",
+    "Check whether the monthly pattern reverses after the first business day, and whether October 2026 is an outlier after matching the same observation timestamps."
+  ],
+  "next_actions": [
+    "Acquire timestamped issuer-liability and account_tx snapshots at pinned validated ledgers from two independent providers.",
+    "Replay the 12 October 30 issuer-return payments and the wider October funnel wallet history.",
+    "Reconcile the official October 29 reserve report against post-event chain supply and the next independent attestation.",
+    "Capture Circle Q3 results November 4 and compare USDC/Coinbase distribution economics with RLUSD's chain allocation.",
+    "Keep RLUSD supply changes separate from XRP demand and keep all price forecasts NOT_ISSUED until the prediction evidence gate is independently satisfied."
+  ],
+  "provenance_precision_note": "The issuer's reserve report, Coindaro's transaction-level analysis, Q-Eternal's later ledger snapshot, Stables.cool's dashboard search snapshot and XRPL.to's undated page display are separate evidence records. They do not share identical observation times or methods. The 852.4M display is explicitly excluded from canonical features until its timestamp and underlying API response are verified."
+}
