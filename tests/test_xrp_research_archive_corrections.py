@@ -494,3 +494,32 @@ def test_exact_phrase_addendum_distinguishes_sbic_entities_and_keeps_ask_and_cre
     assert data["forecast_issued"] is False
     assert data["prediction_status"] == "NOT_ISSUED"
     assert data["model_eligible"] is False
+
+
+def test_xrpl_amendment_oracle_and_lending_update_keeps_protocol_states_separate():
+    path = ROOT / "research" / "xrp_intelligence" / "20261104T201000Z-xrpl-amendment-oracle-lending-update.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+
+    cleanup = data["protocol_status"]["fixCleanup3_4_0"]
+    assert cleanup["status"] == "ENABLED"
+    assert cleanup["enablement_ledger"] == 108112129
+    assert cleanup["enablement_utc"] == "2026-11-04T14:52:00Z"
+
+    lending = data["protocol_status"]["native_lending"]
+    assert lending["status"] == "NOT_ACTIVE"
+    assert lending["yes_votes"]["SingleAssetVault"] == 21
+    assert lending["yes_votes"]["LendingProtocol"] == 19
+    assert lending["yes_votes"]["LendingProtocolV1_1"] == 19
+    assert lending["threshold_yes_votes"] == 29
+    assert lending["in_14_day_activation_countdown"] is False
+
+    oracle = data["protocol_status"]["price_oracles"]
+    assert oracle["status"] == "LIVE_BUT_FRESHNESS_AND_COVERAGE_LIMITED"
+    assert oracle["curated_production_provider_count"] == 1
+    assert oracle["primary_dia_oracle_age_at_retrieval"] == "approximately 1.1 hours"
+    assert oracle["second_oracle_status"] == "COLD"
+    assert oracle["full_directory_disagreement"]["xrplwin_visible_provider_updates_latest"] == "2026-11-01T02:42:42Z"
+
+    assert data["forecast_issued"] is False
+    assert data["prediction_status"] == "NOT_ISSUED"
+    assert data["model_eligible"] is False
