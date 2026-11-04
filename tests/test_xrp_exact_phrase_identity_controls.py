@@ -39,3 +39,10 @@ def test_kamilah_channel_remains_candidate_only_and_no_video_inventory_is_create
     assert data["video_inventory_status"] == "NOT_CREATED_PENDING_FIRST_PARTY_IDENTITY_AND_CHANNEL_OWNERSHIP_VERIFICATION"
     assert data["candidate_channel"]["linkage_status"].startswith("CANDIDATE_HANDLE_LINKED")
     assert all(source["model_eligible"] is False for source in load()["source_registry"])
+
+
+def test_sbic_chatgpt_event_and_sbi_holdings_enterprise_notice_are_separate():
+    data = load()
+    sources = {source["id"]: source for source in data["source_registry"]}
+    assert sources["sbic_east_chatgpt_education_notice"]["url"] == "https://www.sbic.co.jp/seminar/20260305js/"
+    assert sources["sbi_holdings_chatgpt_enterprise_notice"]["url"] == "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
