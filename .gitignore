@@ -78,3 +78,9 @@ data/xrp_intelligence/forecast_ledger.sqlite3
 data/xrp_intelligence/forecast_ledger.sqlite3-wal
 data/xrp_intelligence/forecast_ledger.sqlite3-shm
 data/xrp_intelligence/forecast_ledger.sqlite3-journal
+
+# Local XRP historical feature-store runtime state (never commit)
+data/xrp_intelligence/feature_store.sqlite3
+data/xrp_intelligence/feature_store.sqlite3-wal
+data/xrp_intelligence/feature_store.sqlite3-shm
+data/xrp_intelligence/feature_store.sqlite3-journal
