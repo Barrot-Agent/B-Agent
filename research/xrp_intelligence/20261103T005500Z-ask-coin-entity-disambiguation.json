@@ -1,0 +1,217 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "ask_coin_entity_disambiguation",
+  "snapshot_id": "ask-coin-entity-resolution-20261103-run11",
+  "captured_at_utc": "2026-11-03T00:51:35.809Z",
+  "exact_phrase": "ASK Coin",
+  "executive_assessment": {
+    "classification": "AMBIGUOUS_MULTI_ENTITY_MATCH",
+    "conclusion": "The exact phrase does not resolve to one verified XRP-related asset or company. Public evidence identifies at least two distinct candidates—an inactive/untracked exchange listing named Ask Coin at askcoin.net and Permission Coin's ASK token—plus a Telegram bot called Ask Coin and a separate low-confidence ASK ticker associated with aosika.info. None has a verified XRP Ledger integration or relationship with Ripple, Circle, Coinbase or SBI.",
+    "confidence": "HIGH that the candidates are distinct; LOW that any one is the user's intended referent without the original source context."
+  },
+  "candidates": [
+    {
+      "id": "ASK-CANDIDATE-01",
+      "name": "Ask Coin",
+      "type": "centralized_exchange_listing",
+      "website": "https://askcoin.net",
+      "classification": "SECONDARY_AGGREGATOR_REPORTS_INACTIVE",
+      "observations": {
+        "coinmarketcap_status": "Inactive",
+        "listing_tier": "Untracked listing",
+        "volume_data": "Not tracked",
+        "reserve_data": "Unavailable",
+        "listed_market_categories": [
+          "Spot",
+          "Perpetual",
+          "Futures"
+        ],
+        "populated_market_rows": "None displayed in retrieved page"
+      },
+      "actual_capital": "Unknown. No reserve data or tracked volume is disclosed in the retrieved listing.",
+      "caveat": "The CoinMarketCap page is a secondary aggregator record and may be stale. The operating status and legal operator of askcoin.net were not independently verified.",
+      "sources": [
+        "CMC-ASK-COIN-EXCHANGE"
+      ]
+    },
+    {
+      "id": "ASK-CANDIDATE-02",
+      "name": "Permission Coin (ASK)",
+      "type": "crypto_token",
+      "website": "https://permission.io",
+      "classification": "CONFIRMED_DISTINCT_TOKEN_PROJECT",
+      "observations": {
+        "stated_use": "Permission-based advertising/data rewards and agentic-web utility",
+        "max_supply_reported": "100,000,000,000 ASK",
+        "reported_networks": [
+          "Polygon",
+          "Base"
+        ],
+        "bridge_standard_reported": "LayerZero OFT",
+        "historical_exchange_announcement": "Gate.io listing announced February 17, 2022"
+      },
+      "actual_capital": "Token market capitalization, circulating supply and trading volume are not company cash reserves, net capital raised or XRP purchases.",
+      "caveat": "The retrieved CoinMarketCap page is secondary market data; the Chainwire announcement is a distributed company press release. Current circulating supply and liquidity vary by source and timestamp.",
+      "xrp_relationship": "No XRPL deployment, XRP trading pair or Ripple integration was verified.",
+      "sources": [
+        "CMC-PERMISSION-COIN",
+        "PERMISSION-ASK-GATE-LISTING-20220217"
+      ]
+    },
+    {
+      "id": "ASK-CANDIDATE-03",
+      "name": "Ask Coin Telegram bot",
+      "type": "telegram_bot_or_rewards_service",
+      "website": "https://t.me/AskCoin_bot",
+      "classification": "PUBLIC_BOT_DESCRIPTION_ONLY",
+      "observations": {
+        "description": "Simply answer questions to earn coins.",
+        "token_contract": "Not identified",
+        "blockchain": "Not identified",
+        "issuer": "Not identified",
+        "exchange_listing": "Not verified"
+      },
+      "actual_capital": "Unknown; the public bot description does not establish a transferable token, reserve, funding source or monetary value.",
+      "caveat": "Do not assume that in-app points or rewards are a blockchain asset.",
+      "xrp_relationship": "No XRPL or Ripple relationship verified.",
+      "sources": [
+        "TELEGRAM-ASKCOIN-BOT"
+      ]
+    },
+    {
+      "id": "ASK-CANDIDATE-04",
+      "name": "ASK token associated with aosika.info",
+      "type": "unverified_token_ticker",
+      "website": "https://www.aosika.info",
+      "classification": "LOW_CONFIDENCE_AGGREGATOR_CANDIDATE",
+      "observations": {
+        "aggregator": "CoinCarp",
+        "reported_total_supply": "18,800,000",
+        "market_cap": "Unavailable",
+        "volume": "Unavailable"
+      },
+      "actual_capital": "Unknown. No reliable issuer, reserve or funding disclosure identified.",
+      "caveat": "The listing is not established as Permission Coin or as the Ask Coin exchange. No official issuer verification was found.",
+      "xrp_relationship": "No XRPL or Ripple relationship verified.",
+      "sources": [
+        "COINCARP-AOSIKA-ASK"
+      ]
+    }
+  ],
+  "entity_separation": [
+    {
+      "a": "Ask Coin exchange at askcoin.net",
+      "b": "Permission Coin (ASK)",
+      "relationship": "NO_VERIFIED_RELATIONSHIP",
+      "classification": "UNKNOWN_NOT_ESTABLISHED"
+    },
+    {
+      "a": "Ask Coin Telegram bot",
+      "b": "Ask Coin exchange at askcoin.net",
+      "relationship": "NO_VERIFIED_RELATIONSHIP",
+      "classification": "UNKNOWN_NOT_ESTABLISHED"
+    },
+    {
+      "a": "ASK token at aosika.info",
+      "b": "Permission Coin (ASK)",
+      "relationship": "NO_VERIFIED_RELATIONSHIP",
+      "classification": "UNKNOWN_NOT_ESTABLISHED"
+    },
+    {
+      "a": "Any ASK candidate",
+      "b": "XRP Ledger / Ripple",
+      "relationship": "NO_VERIFIED_INTEGRATION",
+      "classification": "NOT_ESTABLISHED"
+    },
+    {
+      "a": "Any ASK candidate",
+      "b": "SBI / SBIC / Circle / Coinbase",
+      "relationship": "NO_VERIFIED_CORPORATE_OR_PRODUCT_LINK",
+      "classification": "NOT_ESTABLISHED"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "ASK-H1",
+      "hypothesis": "The phrase refers to Permission Coin (ASK), because a 2022 company press release explicitly calls it 'ASK Coin'.",
+      "classification": "PLAUSIBLE",
+      "disconfirming": "The phrase could instead refer to the exchange named Ask Coin or another project."
+    },
+    {
+      "id": "ASK-H2",
+      "hypothesis": "The phrase refers to the Ask Coin exchange at askcoin.net.",
+      "classification": "PLAUSIBLE",
+      "disconfirming": "The exchange is reported inactive/untracked and has no current reserve or volume data."
+    },
+    {
+      "id": "ASK-H3",
+      "hypothesis": "The phrase refers to the Telegram Ask Coin rewards bot.",
+      "classification": "POSSIBLE_LOW_CONFIDENCE",
+      "disconfirming": "No token contract, chain or issuer is identified."
+    },
+    {
+      "id": "ASK-H4",
+      "hypothesis": "The phrase refers to the separate aosika.info ASK ticker.",
+      "classification": "LOW_CONFIDENCE",
+      "disconfirming": "Only an aggregator listing was found; issuer identity and market activity are unverified."
+    },
+    {
+      "id": "ASK-H5",
+      "hypothesis": "One of these projects has a direct XRP or SBI relationship.",
+      "classification": "UNSUPPORTED",
+      "disconfirming": "No reliable public integration, corporate relationship or XRPL issuance was identified."
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "CMC-ASK-COIN-EXCHANGE",
+      "publisher": "CoinMarketCap",
+      "type": "secondary_exchange_listing",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "independence_group": "coinmarketcap"
+    },
+    {
+      "id": "CMC-PERMISSION-COIN",
+      "publisher": "CoinMarketCap",
+      "type": "secondary_token_listing",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "independence_group": "coinmarketcap"
+    },
+    {
+      "id": "PERMISSION-ASK-GATE-LISTING-20220217",
+      "publisher": "Chainwire / Permission.io",
+      "type": "company_distributed_press_release",
+      "date": "2022-02-17",
+      "url": "https://chainwire.org/2022/02/17/permission-ios-ask-coin-listed-on-gate-io-exchange/",
+      "independence_group": "permission-chainwire"
+    },
+    {
+      "id": "TELEGRAM-ASKCOIN-BOT",
+      "publisher": "Telegram bot profile",
+      "type": "public_bot_description",
+      "url": "https://t.me/AskCoin_bot",
+      "independence_group": "telegram"
+    },
+    {
+      "id": "COINCARP-AOSIKA-ASK",
+      "publisher": "CoinCarp",
+      "type": "secondary_token_listing",
+      "url": "https://www.coincarp.com/currencies/ask/",
+      "independence_group": "coincarp"
+    }
+  ],
+  "prediction_status": "NOT_APPLICABLE_NO_XRP_SIGNAL",
+  "next_actions": [
+    "Keep the candidates separate in the relationship graph.",
+    "Do not treat ASK ticker data as XRP capital flows or XRPL liquidity.",
+    "Resolve against the original Camilla Stephenson video or exact phrase context if that source is recovered.",
+    "Do not interact with askcoin.net or the Telegram bot as part of this research."
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "account_creation": false,
+    "bot_interaction": false,
+    "transactions": false,
+    "main_modified": false
+  }
+}
