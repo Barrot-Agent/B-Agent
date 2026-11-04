@@ -206,7 +206,8 @@ class MutableClock:
 
 
 def make_ledger(path, *, now=TEST_NOW, store_clock=STORE_RECEIPT, snapshot=FEATURE_SNAPSHOT):
-    clock = MutableClock(now)
+    # Readiness evidence must be registered before the forecast issue timestamp.
+    clock = MutableClock(datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc))
     store = HistoricalFeatureStore(
         Path(path).parent / "feature_store.sqlite3",
         clock=lambda: store_clock,
@@ -214,6 +215,7 @@ def make_ledger(path, *, now=TEST_NOW, store_clock=STORE_RECEIPT, snapshot=FEATU
     store.append_snapshot(snapshot)
     ledger = ForecastLedger(path, clock=clock, feature_store=store)
     _register_readiness_fixtures(ledger)
+    clock.set(now)
     ledger._test_clock = clock
     ledger._test_feature_store = store
     ledger._test_snapshot_id = snapshot["snapshot_id"]
@@ -633,8 +635,10 @@ def test_unscorable_outcome_waits_until_tolerance_window_closes(tmp_path):
 
 
 def test_forecast_recording_requires_a_verified_feature_store(tmp_path):
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3", clock=MutableClock(TEST_NOW))
+    clock = MutableClock(datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc))
+    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3", clock=clock)
     _register_readiness_fixtures(ledger)
+    clock.set(TEST_NOW)
     with pytest.raises(ForecastLedgerError, match="verified HistoricalFeatureStore"):
         ledger.record_forecast(forecast())
 
