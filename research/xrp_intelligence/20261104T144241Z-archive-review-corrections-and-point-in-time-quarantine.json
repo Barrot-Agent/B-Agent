@@ -2,8 +2,8 @@
   "schema_version": "barrot.xrp.research-correction.v1",
   "artifact_id": "xrp_archive_review_correction_20261104T144241Z",
   "artifact_type": "append_only_review_correction_and_pit_quarantine",
-  "captured_at_utc": "2026-11-04T14:44:31Z",
-  "data_cutoff_utc": "2026-11-04T14:44:31Z",
+  "captured_at_utc": "2026-11-04T14:50:04Z",
+  "data_cutoff_utc": "2026-11-04T14:50:04Z",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-evidence-archive-20261104",
   "review_pr": 1643,
@@ -47,7 +47,7 @@
       "publisher": "Office of the Comptroller of the Currency",
       "authority": "primary OCC CAS application record",
       "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
-      "published_at_utc": "2025-12-12",
+      "published_at_utc": null,
       "retrieved_at_utc": "2026-11-04T14:42:41Z",
       "source_independence_group": "occ_regulatory_record",
       "raw_content_sha256": null,
@@ -204,7 +204,10 @@
       "raw_capture_status": "web_rendered_extract_only",
       "model_eligible": false,
       "claims_supported": [
-        "SBI Group is named in Circle Arc's founding validator cohort. This supports cohort membership as announced, not independently verified validator runtime or production activity."
+        "SBI Group is named in Circle Arc's founding validator cohort. This supports cohort membership as announced, not independently verified validator runtime or production activity.",
+        "Arc transaction fees are paid in USDC; no volatile native token is required for gas.",
+        "Coinbase is listed among digital-asset exchanges with access to Arc, and BNY is listed among banks with access; this establishes ecosystem access, not XRP settlement activity.",
+        "The source names SBI Group as a founding validator and quotes its CEO saying it will contribute to network operation and governance; independent validator runtime telemetry is still absent."
       ]
     },
     {
@@ -212,7 +215,7 @@
       "publisher": "Coinbase",
       "authority": "primary product eligibility and collateral specification",
       "url": "https://help.coinbase.com/en-in/coinbase/derivatives/global-derivatives-cross-collateral",
-      "published_at_utc": "2026-10-01",
+      "published_at_utc": null,
       "retrieved_at_utc": "2026-11-04T14:42:41Z",
       "source_independence_group": "coinbase_product_terms",
       "raw_content_sha256": null,
@@ -416,6 +419,21 @@
       "claims_supported": [
         "A candidate channel ID is labeled Kamilah Stevenson and has third-party subscriber/video metrics; identity and metric comparability remain unverified."
       ]
+    },
+    {
+      "id": "occ_model_risk_2026_29",
+      "publisher": "Office of the Comptroller of the Currency",
+      "authority": "primary OCC news release",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-29.html",
+      "published_at_utc": "2026-04-17",
+      "retrieved_at_utc": "2026-11-04T14:50:04Z",
+      "source_independence_group": "occ_regulatory_release",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "claims_supported": [
+        "OCC News Release 2026-29 is titled 'OCC Issues Updated Model Risk Management Guidance' and is dated April 17, 2026; it is unrelated to Ripple or Coinbase national trust bank charter approvals."
+      ]
     }
   ],
   "correction_overlay": {
@@ -486,6 +504,24 @@
             "old_url": "https://sbivc.co.jp/newsview/rlusd-20260624",
             "canonical_url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
             "reason": "Correct SBI VC Trade RLUSD announcement; it states Ethereum-only transfer support at launch."
+          },
+          {
+            "source_id": "ripple_rntb_final_approval",
+            "old_url": "https://www.businesswire.com/news/home/20261026123456/en/Ripple-Receives-Final-OCC-Approval-to-Establish-National-Trust-Bank",
+            "canonical_url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+            "reason": "BusinessWire URL was not independently resolvable in this run; use Ripple's primary announcement."
+          },
+          {
+            "source_id": "ripple_occ_cas_correct",
+            "old_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/2026/",
+            "canonical_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+            "reason": "Replace generic OCC year index with the institution-specific Ripple CAS record."
+          },
+          {
+            "source_id": "coinbase_occ_decision_1370",
+            "old_url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-29.html",
+            "canonical_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+            "reason": "OCC News Release 2026-29 is unrelated model-risk guidance; Corporate Decision 1370 is the Coinbase preliminary conditional approval."
           }
         ],
         "evidence_source_ids": [
@@ -795,6 +831,27 @@
           "SBI VC Trade's 2026-06-24 RLUSD notice states Ethereum-only transfer support at launch; it does not establish an XRPL route at that time."
         ],
         "no_relationship_claim": "No evidence in these records connects SBIC East/Central/West to SBI Holdings ownership/control, a Barrot adapter, or an XRP prediction system."
+      },
+      {
+        "correction_id": "C14_CIRCLE_ARC_USDC_NATIVE_COUNTERHYPOTHESIS",
+        "target_artifact": "research/xrp_intelligence/20261104T131226Z-circle-q3-coinbase-ripple-bny-sbic-market-addendum.json",
+        "correction_type": "network_economics_and_competing_hypothesis",
+        "source_id": "circle_arc_mainnet_launch",
+        "confirmed_facts": [
+          "Circle describes Arc as a separate Layer-1 network launched on 2026-09-16.",
+          "Arc transaction fees are payable in USDC; Circle states no volatile native token is required for gas.",
+          "SBI Group is named in the founding validator cohort and its CEO states SBI will contribute to Arc operation and governance.",
+          "Coinbase is listed among digital-asset exchanges with access to Arc; BNY is listed among banks with access."
+        ],
+        "counter_hypothesis": "Institutional stablecoin and payment activity may settle on Circle's USDC-native Arc rail without requiring XRP for gas or every transfer.",
+        "limitations": [
+          "The release is a Circle primary corporate statement, not independent telemetry of validator uptime or transaction volume.",
+          "Access/listing does not establish that Coinbase or BNY has processed production volume on Arc.",
+          "The absence of Ripple from the listed founding cohort/day-one ecosystem examples is not proof of no separate relationship.",
+          "No XRPL-versus-Arc transaction-cost, liquidity, user-flow or settlement-volume comparison is supplied."
+        ],
+        "model_eligible": false,
+        "forecast_effect": "NO_DIRECTIONAL_XRP_EFFECT_ADMITTED"
       }
     ]
   },
@@ -830,6 +887,14 @@
       "disconfirming_evidence": [
         "NH/Kyobo is purchaser of the $30M PIK notes; Ripple is lender under the separate $1M Evernorth Facility and $10M Pathfinder Company Facility."
       ]
+    },
+    {
+      "id": "H5",
+      "hypothesis": "Circle Arc's USDC-denominated gas and SBI/Coinbase/BNY ecosystem participation may capture institutional stablecoin/payment activity without XRP being required for gas.",
+      "status": "NETWORK_DESIGN_CONFIRMED; COMMERCIAL_FLOW_AND_XRP_SUBSTITUTION_UNQUANTIFIED",
+      "disconfirming_evidence": [
+        "No production transaction volume, actual capital flows, XRP bridge activity, or direct displacement evidence is supplied by the launch announcement."
+      ]
     }
   ],
   "source_independence": {
@@ -838,7 +903,8 @@
       "Circle Arc launch source is primary Circle issuer evidence, not independent confirmation of validator runtime.",
       "Ripple press releases are primary corporate claims; they are not independent verification of completed customer activity.",
       "SEC and OCC records are separate regulator/filing evidence groups.",
-      "Coinbase product terms establish published eligibility/haircut display, not actual collateral usage."
+      "Coinbase product terms establish published eligibility/haircut display, not actual collateral usage.",
+      "Circle Arc launch is issuer primary evidence for design and announced cohort; it is not independent validator-runtime or transaction-volume evidence."
     ]
   },
   "review_findings_disposition": [
@@ -929,14 +995,26 @@
     "Evernorth facility draws, post-close repayment and actual XRP acquisition using the $30M PIK proceeds remain unverified.",
     "The Kraken ticker response has no event timestamp; its open field is correctly labelled UTC daily open, not rolling 24-hour open.",
     "Coinbase's X:PM dash is not a numeric haircut and does not prove eligibility.",
-    "No synchronized multi-venue XRP dataset or leakage-safe out-of-sample forecast evaluation is supplied by this artifact."
+    "No synchronized multi-venue XRP dataset or leakage-safe out-of-sample forecast evaluation is supplied by this artifact.",
+    "OCC News Release 2026-29 is unrelated model-risk guidance and must not be cited as a Ripple or Coinbase charter approval.",
+    "Circle Arc's USDC gas design and announced SBI/Coinbase/BNY ecosystem roles do not quantify XRP substitution or actual payment flows."
   ],
   "artifact_revision": {
-    "prior_blob_sha": "302377fd75c2ada1de9da2eae6848ba22b7c8186",
-    "prior_captured_at_utc": "2026-11-04T14:42:41Z",
-    "revised_at_utc": "2026-11-04T14:44:31Z",
-    "revision_reason": "Corrected the canonical JSON pointer for the XRP X:PM haircut field to product_scope_matrix[1]. No source record or raw receipt was changed; the original research artifacts remain preserved.",
-    "revision_status": "append_only_metadata_and_path_correction",
-    "source_registry_unchanged": true
-  }
+    "prior_blob_sha": "2993e70f909b24d19d7c0f8b2b046246e1a762f0",
+    "prior_captured_at_utc": "2026-11-04T14:44:31Z",
+    "revised_at_utc": "2026-11-04T14:50:04Z",
+    "revision_reason": "Corrected two source publication-date fields to unknown, added an OCC source that demonstrates News Release 2026-29 is unrelated model-risk guidance, and expanded the Arc counter-hypothesis. No original source artifact or raw receipt was modified.",
+    "revision_status": "append_only_metadata_and_source_crosswalk_revision",
+    "source_registry_unchanged": false
+  },
+  "artifact_revision_history": [
+    {
+      "prior_blob_sha": "302377fd75c2ada1de9da2eae6848ba22b7c8186",
+      "prior_captured_at_utc": "2026-11-04T14:42:41Z",
+      "revised_at_utc": "2026-11-04T14:44:31Z",
+      "revision_reason": "Corrected the canonical JSON pointer for the XRP X:PM haircut field to product_scope_matrix[1]. No source record or raw receipt was changed; the original research artifacts remain preserved.",
+      "revision_status": "append_only_metadata_and_path_correction",
+      "source_registry_unchanged": true
+    }
+  ]
 }
