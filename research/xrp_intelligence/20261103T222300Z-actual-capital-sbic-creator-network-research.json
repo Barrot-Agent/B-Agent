@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.1",
+  "captured_at_utc": "2026-11-03T22:23:00Z",
+  "topic": "XRP actual capital, Coinbase/Ripple Prime, Japan SBIC, creator identity, ETF flows",
+  "actual_capital": {
+    "best_supported_context": "Ripple Prime / Hidden Road regulatory net capital and customer-segregation reporting; original exact sentence still unresolved.",
+    "cftc_period_end": "2026-08-31",
+    "ripple_prime_fcm": {
+      "entity": "Hidden Road Partners CIV US LLC",
+      "adjusted_net_capital_usd": 968424304,
+      "requirement_usd": 30689221,
+      "excess_usd": 937735083,
+      "customer_assets_segregated_usd": 720131906,
+      "segregation_requirement_usd": 657476347,
+      "excess_segregation_usd": 62655559,
+      "target_residual_interest_usd": 27300000
+    },
+    "coinbase_fcm": {
+      "entity": "Coinbase Financial Markets Inc.",
+      "adjusted_net_capital_usd": 321158656,
+      "requirement_usd": 11796995,
+      "excess_usd": 309361661,
+      "customer_assets_segregated_usd": 346894116,
+      "segregation_requirement_usd": 211435154,
+      "excess_segregation_usd": 135458962,
+      "target_residual_interest_usd": 15000000
+    },
+    "ratios": {
+      "ripple_prime_to_coinbase_adjusted_net_capital": 3.015,
+      "ripple_prime_to_coinbase_excess_net_capital": 3.031
+    },
+    "limits": [
+      "These are legal-entity FCM regulatory measures, not consolidated corporate capital, cash, profitability, credit quality or XRP exposure.",
+      "Customer-segregated assets are customer property, not proprietary capital.",
+      "No XRP-specific holdings, collateral or purchases are disclosed in the CFTC table.",
+      "A separate $100M Treasury repo is financing, not equity; a $70M parent contribution came from immediate Hidden Road HoldCo, not proven direct Ripple remittance."
+    ],
+    "other_leads": [
+      "Hyperliquid 20x XRP position: reported notional is not actual equity/margin; account equity unknown.",
+      "C2FO $525B historical Early Pay scale is not capital committed or deployed to Instant Pay.",
+      "Evernorth in-kind XRP contributions are not fresh spot purchases."
+    ]
+  },
+  "japan": {
+    "sbic_identity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社), established 1963; a policy-implementing investment-development company, not SBI Holdings.",
+    "sbic_chatgpt": "Official SBIC seminar/training records in 2025 and 2026 include ChatGPT/generative AI education; no OpenAI partnership established.",
+    "separate_sbi_openai": "SBI Holdings and SBI Securities separately adopted ChatGPT Enterprise in 2025; this relationship must not be attributed to SBIC.",
+    "shinsei_pilot": "Secondary report: 20% of deposit interest (not principal) converted into BTC/ETH/XRP vouchers via SBI VC Trade for a reported 3-month pilot beginning 2026-06-10. No primary 2026 notice or XRP redemption volume verified.",
+    "fiea": "Japan's amendment passed 2026-07-15 and was promulgated 2026-07-23 as Law No.64. Key provisions commence by Cabinet Order within one year. Official legislative summary does not name XRP or publish a 105-asset list."
+  },
+  "ripple_coinbase": {
+    "nodal_clear": "Nodal Clear's 2026-03-05 announcement confirms Ripple Prime clients can access Coinbase Derivatives contracts including XRP futures through Nodal Clear.",
+    "interpretation": "Confirmed access path only; not proof of client volume, XRP futures open interest attributable to Ripple Prime, spot purchases or XRP collateral use."
+  },
+  "rlusd_xrp": {
+    "rlusd_controls": "Ripple issuer terms/configuration include blacklisting/freezing and trust-line clawback controls.",
+    "native_xrp": "XRP is the XRPL native asset and cannot be frozen or clawed back at protocol level; custodians/exchanges can restrict custody access.",
+    "demand": "RLUSD/XRPL activity does not automatically create material XRP demand. C2FO Instant Pay names RLUSD as settlement asset; XRP bridge use, collateral and spot purchases remain unproven."
+  },
+  "etf_flows": {
+    "nov_2_partial_usd": -500000,
+    "coverage": "3 of 5 issuers reported; Canary XRPC was the only reported outflow; Franklin XRPZ and Grayscale GXRP missing.",
+    "two_day_flow_usd": -1000000,
+    "provider_reported_net_assets_usd": 1430000000,
+    "provider_reported_cumulative_net_flows_usd": 1810000000,
+    "provider_reported_xrp_held": 1141749781,
+    "q2_2026_13f": {
+      "filers": 127,
+      "etf_share_positions_usd": 179000000,
+      "goldman_sachs_usd": 86500000,
+      "jane_street_usd": 16400000
+    },
+    "limits": [
+      "Nov 2 is a partial T+1 provider snapshot, not a final daily total.",
+      "13F ETF-share positions are not direct XRP wallet holdings or net directional exposure; shorts/futures and retail are not captured.",
+      "Alpha Finance and CryptoETF.today both reported +$8.4M on Oct 29; this cross-check applies to Oct 29 only."
+    ]
+  },
+  "creator": {
+    "likely_identity": "Dr. Kamilah Stevenson, who says in a June 2026 interview that her YouTube presence is 'doctor Camilla Stevenson'.",
+    "requested_spelling": "Camilla Stephenson",
+    "status": "probable candidate identity; exact spelling and canonical channel ownership not authenticated.",
+    "channel_candidate_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "video_inventory": "15 candidate videos in PR #1597's public-video addendum plus 2 additional YouTube search-result attributions; one separate Larry Jones guest appearance. Not exhaustive.",
+    "inventory_file": "PR #1597: research/xrp_intelligence/20261103-kamilah-stevenson-public-video-discovery-addendum.json",
+    "actual_capital_phrase": "No exact match in accessible creator transcript summaries. Keep iTrust Capital (company/affiliate reference) separate from the generic phrase and from Ripple Prime regulatory capital."
+  },
+  "ask_coin": {
+    "candidate": "Permission Coin (ASK)",
+    "chains": [
+      "Base",
+      "Polygon"
+    ],
+    "xrp_integration": "none found in reviewed official documentation",
+    "status": "ticker remains ambiguous"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Ripple Prime's regulatory net capital expansion indicates increased institutional clearing capacity.",
+      "status": "CFTC-supported",
+      "disconfirming": "No XRP-specific exposure disclosed; one FCM entity is not consolidated Ripple."
+    },
+    {
+      "id": "H2",
+      "claim": "Ripple Prime access to Coinbase XRP futures can expand institutional derivatives access.",
+      "status": "access confirmed, usage unknown",
+      "disconfirming": "No attributable volume or spot demand."
+    },
+    {
+      "id": "H3",
+      "claim": "SBI Shinsei interest vouchers could create retail XRP redemptions.",
+      "status": "secondary-reported, unquantified",
+      "disconfirming": "No primary 2026 notice or redemption data."
+    },
+    {
+      "id": "H4",
+      "claim": "RLUSD growth on XRPL materially increases XRP demand.",
+      "status": "unproven",
+      "disconfirming": "RLUSD itself is settlement asset; XRP bridge/collateral use not disclosed."
+    }
+  ],
+  "sources": [
+    "https://www.cftc.gov/sites/default/files/2026-10/01%20-%20FCM%20Webpage%20Update%20-%20August%202026.pdf",
+    "https://www.cftc.gov/MarketReports/financialfcmdata/index.htm",
+    "https://www.nodalclear.com/ripple-offers-clients-access-to-coinbase-derivatives-contracts-cleared-by-nodal-clear/",
+    "https://www.sec.gov/Archives/edgar/data/2029588/000202958826000002/SOFC_Public.pdf",
+    "https://www.sbic.co.jp/company/profile/",
+    "https://www.sbic.co.jp/seminar/20250226ym/",
+    "https://www.sbic.co.jp/seminar/20260305js/",
+    "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+    "https://news.bitcoin.com/sbi-shinsei-bank-plans-to-let-customers-stack-btc-eth-or-xrp-on-top-of-deposit-interest/",
+    "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221057.htm",
+    "https://ripple.com/legal/stablecoin/",
+    "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
+    "https://xrpl.org/docs/concepts/tokens/fungible-tokens/clawing-back-tokens",
+    "https://cryptoetf.today/en/xrp-etf-flows",
+    "https://alphafinance.io/etf/xrp/",
+    "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+    "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+    "https://permission.io/"
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "private_data_accessed": false,
+    "unauthorized_access": false,
+    "market_manipulation": false,
+    "investment_action": false
+  }
+}

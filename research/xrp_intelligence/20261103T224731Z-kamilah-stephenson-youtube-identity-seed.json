@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "youtube_creator_identity_and_video_seed_inventory",
+  "captured_at_utc": "2026-11-03T22:47:31Z",
+  "requested_identity": "Camilla Stephenson",
+  "candidate_identity": {
+    "display_name": "Kamilah Stevenson",
+    "spoken_name_in_transcripts": "Camila Stevenson",
+    "probable_channel_handle": "@drkamilahstevenson",
+    "probable_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "match_status": "PROBABLE_NOT_CONFIRMED",
+    "reasons": [
+      "DailyCoin attributes multiple XRP videos to Dr. Kamilah Stevenson.",
+      "Indexed YouTube video metadata identifies the channel as Kamilah Stevenson.",
+      "Transcripts of indexed videos contain the spoken self-introduction 'Camila Stevenson'.",
+      "The user's target spelling is Camilla Stephenson, which differs from both Kamilah Stevenson and Camila Stevenson."
+    ],
+    "alternative_channels": [
+      "@CoachKamilahStevensonxrp",
+      "@KamilahStevensonDigitalNetwork"
+    ],
+    "warning": "Do not merge these spellings or lookalike channels into a single identity without direct confirmation."
+  },
+  "channel_metadata": {
+    "source": "third-party public channel indexes and YouTube video search snippets",
+    "reported_counts_conflict": true,
+    "reported_subscribers": [
+      103000,
+      137000,
+      138000,
+      143000
+    ],
+    "reported_video_counts": [
+      633,
+      1200
+    ],
+    "model_use": "Do not use these inconsistent counts as reliable time-series features."
+  },
+  "known_video_ids": [
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "published_at_utc": "2025-12-24T00:00:00Z",
+      "views_reported": 44991,
+      "likes_reported": 3100,
+      "metadata_source": "YouTube search result",
+      "confidence": "high for title/channel/date; counters are a retrieval-time snapshot"
+    },
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published_at_utc": "2026-03-06T00:00:00Z",
+      "views_reported": 32040,
+      "likes_reported": 2300,
+      "metadata_source": "YouTube search result",
+      "confidence": "high for title/channel/date; counters are a retrieval-time snapshot"
+    },
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published_at_utc": "2025-12-14T00:00:00Z",
+      "views_reported": 76000,
+      "metadata_source": "Glasp transcript index",
+      "confidence": "medium; third-party metadata"
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published_at_utc": "2026-01-13T00:00:00Z",
+      "views_reported": 20400,
+      "metadata_source": "Glasp transcript index",
+      "confidence": "medium; third-party metadata"
+    },
+    {
+      "video_id": "Ecl8C4MJi28",
+      "title": "XRP Holders: The UK Government Just Put Ripple Inside a £33 Billion Plan",
+      "published_at_utc": null,
+      "views_reported": null,
+      "metadata_source": "DailyCoin article embeds the YouTube video; YouTube metadata fetch was throttled",
+      "confidence": "medium for video identity/title; publication date and channel metadata not independently retrieved"
+    }
+  ],
+  "additional_dailycoin_video_candidates": [
+    {
+      "article": "SWIFT’s Blockchain Move Rekindles The XRP Debate",
+      "article_published_at": "2026-08-24",
+      "video_id": null
+    },
+    {
+      "article": "More Than 100 Million XRP Flows Into This DeFi System",
+      "article_published_at": "2026-08-26",
+      "video_id": null
+    },
+    {
+      "article": "Altcoin Fund Inflows Reach $90 Million as XRP Joins Institutional Rotation",
+      "article_published_at": "2026-09-04",
+      "video_id": null
+    },
+    {
+      "article": "One Bitcoin Transaction Per Decade: Analyst Says Math Favors XRP",
+      "article_published_at": "2026-06-29",
+      "video_id": null
+    },
+    {
+      "article": "Italy’s Top Bank Discloses XRP Position Via Grayscale Trust",
+      "article_published_at": "2026-06-03",
+      "video_id": null
+    },
+    {
+      "article": "Fixed Forever: Why XRP’s 100 Billion Cap Still Catches Traders Off Guard",
+      "article_published_at": null,
+      "video_id": null
+    },
+    {
+      "article": "Analyst Moves XRP Off Exchanges, Citing Structure Ahead of Volatility",
+      "article_published_at": null,
+      "video_id": null
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/@drkamilahstevenson/videos",
+      "type": "primary channel page",
+      "retrieved_at_utc": "2026-11-03T22:47:31Z",
+      "result": "page shell returned without usable video inventory"
+    },
+    {
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCqUPJMQdkCN6lsLVDnichPA",
+      "type": "primary channel RSS",
+      "retrieved_at_utc": "2026-11-03T22:47:31Z",
+      "result": "fetch failed with cache miss; no inventory obtained"
+    },
+    {
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "type": "third-party channel index",
+      "retrieved_at_utc": "2026-11-03T22:47:31Z",
+      "result": "reports Kamilah Stevenson, handle/channel identity and approx 143K subscribers / 1.2K videos"
+    },
+    {
+      "url": "https://cryptokrios.com/creators/kamilah-stevenson",
+      "type": "third-party creator index",
+      "retrieved_at_utc": "2026-11-03T22:47:31Z",
+      "result": "reports approx 103K subscribers and 633 videos; conflicting counts"
+    },
+    {
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "type": "third-party account index",
+      "retrieved_at_utc": "2026-11-03T22:47:31Z",
+      "result": "lists multiple similarly named YouTube channels; identity collisions possible"
+    },
+    {
+      "url": "https://dailycoin.com/ripple-touted-in-uk-treasurys-xrp-push-for-wholesale/",
+      "type": "secondary publication",
+      "retrieved_at_utc": "2026-11-03T22:47:31Z",
+      "result": "attributes the video commentary to Dr. Kamilah Stevenson and links video Ecl8C4MJi28"
+    }
+  ],
+  "collection_limits": [
+    "vidIQ channel search was attempted once and returned insufficient credits; balance is zero and renews 2026-11-27. The tool was not retried.",
+    "YouTube channel page did not expose the upload list through the available web fetch.",
+    "The public channel RSS request failed with a cache miss.",
+    "The five video IDs above are a seed inventory, not an exhaustive archive.",
+    "The user-specified exact identity 'Camilla Stephenson' remains unconfirmed."
+  ],
+  "research_rules": {
+    "identity_status": "Keep Kamilah/Camila Stevenson as a candidate separate from Camilla Stephenson until confirmed.",
+    "source_weight": "Primary YouTube metadata outranks third-party channel counters and secondary article attributions.",
+    "video_predictions": "Treat creator commentary as claims/opinions; verify market, institutional and regulatory assertions against primary sources before using as evidence.",
+    "prediction_model_eligibility": false
+  },
+  "next_actions": [
+    "Continue web-indexed discovery for videos linked from DailyCoin articles and verify each embedded video ID against YouTube metadata.",
+    "Search exact name spellings and channel IDs; avoid conflating lookalike channels.",
+    "If the intended creator is @drkamilahstevenson, build a date-windowed archive from public indexed results and label completeness limitations.",
+    "Extract explicit dated price forecasts separately from general opinions and test them against point-in-time prices without look-ahead."
+  ]
+}
