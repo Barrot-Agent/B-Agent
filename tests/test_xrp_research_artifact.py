@@ -824,3 +824,53 @@ def test_nine_platform_capability_audit_separates_session_and_connector_evidence
     assert all(item["model_eligible"] is False for item in data["workflow_observations"])
     assert "DATABRICKS_TOKEN" not in json.dumps(data)
     assert "PRIVATE_KEY_VALUE" not in json.dumps(data)
+
+
+MARKET_AMENDMENT_PREACTIVATION = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261104T141402Z-market-and-fixcleanup-preactivation.json"
+)
+
+
+def test_market_amendment_preactivation_snapshot_keeps_cutoffs_and_trackers_distinct() -> None:
+    data = json.loads(MARKET_AMENDMENT_PREACTIVATION.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_market_and_xrpl_amendment_pre_activation_snapshot"
+    assert data["predictions"]["issued"] is False
+    assert data["data_quality"]["model_eligibility"] == "quarantined"
+    sources = {item["id"] for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    for item in data["observations"]:
+        assert set(item["evidence"]) <= sources
+        assert item["model_eligible"] is False
+    for edge in data["relationship_graph"]:
+        assert set(edge["evidence"]) <= sources
+
+    market = data["market_snapshot"]
+    kraken = market["kraken_xrpusd"]
+    assert kraken["event_timestamp_available"] is False
+    assert kraken["last_usd"] == 1.28084
+    assert abs(kraken["spread_basis_points"] - 0.7026830782) < 1e-8
+    perp = market["binance_xrpusdt_perpetual"]
+    assert perp["event_timestamp_utc"] == "2026-11-04T13:29:55Z"
+    assert perp["last_funding_rate"] == 0.0001
+    assert perp["next_funding_time_utc"] == "2026-11-04T16:00:00Z"
+    assert perp["open_interest"] == "not captured"
+    assert perp["order_book_depth"] == "not captured"
+    assert market["synchronization"]["kraken_vs_binance_spot_perp_basis"] == "NOT_COMPUTED"
+
+    amendment = market["xrpl_amendment"]
+    assert amendment["amendment_id"] == "98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76"
+    assert amendment["xrplwin_counts"]["votes_yes"] == 33
+    assert amendment["xrplwin_counts"]["validators"] == 35
+    assert amendment["xrplwin_counts"]["required_yes"] == 29
+    assert amendment["actual_activation_verified"] is False
+    assert amendment["status_at_cutoff"] == "PENDING_WINDOW_NOT_REACHED_AND_NOT_NODE_VERIFIED"
+    assert _parse_utc(amendment["xrplwin_counts"]["earliest_activation_utc"]) > _parse_utc(data["data_cutoff_utc"])
+    assert amendment["lending_protocol_amendment_votes_reported"] < amendment["xrplwin_counts"]["required_yes"]
+    assert amendment["single_asset_vault_amendment_votes_reported"] < amendment["xrplwin_counts"]["required_yes"]
+    dashboard = next(s for s in data["source_registry"] if s["id"].startswith("xrpldashboard_"))
+    assert dashboard["signed_at_utc"] == "2026-11-04T01:00:00Z"
+    assert dashboard["signed_snapshot_leaf_hash"] != dashboard["raw_content_sha256"]
+    assert any("timezone is unspecified" in x for x in next(s for s in data["source_registry"] if s["id"].startswith("bithomp_"))["limitations"])
