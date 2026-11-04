@@ -477,3 +477,46 @@ Verified on current main:
 - After 13:00Z, capture Circle's Q3 release and webcast; after 14:46:22Z, verify XRPL ledger state and `EnabledAmendments` directly. Keep both event observations separate from price predictions.
 
 DESIGNED, EXECUTED and VERIFIED remain distinct. This handoff is on the PR #1640 branch, not yet on main.
+
+
+---
+
+## Run 9 follow-up: exact backlog diff and exact-phrase leads
+
+### PR #1614 path-level reconciliation against main
+
+A tree/blob comparison against main `9100dbac` corrects the earlier shorthand that described the point-in-time validator as unique:
+
+- PR #1614 changes 57 paths.
+- **2 paths are byte-identical to main already:** `barrot_agent/evolution/point_in_time_features.py` and `barrot_agent/evolution/research_artifact_clock.py`.
+- **7 existing paths differ from main:** `.github/workflows/ci.yml`, `.gitignore`, `barrot_agent/evolution/forecast_ledger.py`, the two feature/forecast contracts, and the two related test files. These require manual diff/reconciliation; do not copy blindly.
+- **48 paths are not present on main:** 24 timestamped research JSON artifacts and 24 matching research handoff documents. They remain unreviewed for content-level duplication and provenance reconciliation.
+- The main `forecast_ledger.py` is newer than the PR #1614 version (including the injectable deterministic clock seam); retain current main as the base and do not regress it.
+- #1611's forecast-ledger proposal is a predecessor, not a separate integration target. Preserve it until the unique records are reconciled.
+- #1597 contributes 17 new research paths; #1608 contributes 3; #1605 contributes 1. None of those changed paths exists on current main. Reconcile these together with the 48 new #1614 paths into **one** fresh-main research/archive successor after #1640. Do not open separate successor PRs. Content-level deduplication, source receipt validation and claim/source independence checks remain required before merging.
+
+### Exact phrase: “actual capital”
+
+A newly located secondary transcript contains the phrase in an unrelated/general stablecoin explanation:
+- Video title: “Flare's Plans For XRP Just Became CLEAR (ACT NOW!)”; source YouTube ID `J51if8i8Bo4`: https://www.youtube.com/watch?v=J51if8i8Bo4
+- Transcript/summary: https://opentools.ai/youtube-summary/flares-plans-for-xrp-just-became-clear-act-now
+- At approximately 13:00–13:30, the transcript says stablecoins can turn growing interest into “actual capital,” explaining that stablecoins function as cash-equivalent assets in DeFi.
+- The page labels its summary/transcription AI-generated and warns that captions may contain errors. The original video page did not expose enough metadata in this capture to independently verify the transcript or upload date.
+- Interpretation: this is generic DeFi wording, not a named fund, a quantified capital raise, a verified XRP capital inflow, or evidence of an SBIC/ChatGPT relationship. Keep it as a candidate phrase occurrence only.
+
+### Exact asset candidate: “ASK Coin”
+
+The strongest current candidate is **Permission Coin (ASK)**, but the intended identity is not confirmed:
+- Permission's official docs describe ASK as the native token for its permission/consent and agent ecosystem, including agent-to-agent coordination/value exchange: https://docs.permission.ai/ask-token
+- Its official contract page lists only Base and Polygon LayerZero OFT-20 contracts: https://docs.permission.ai/ask-token/contract-addresses
+- Base: `0xBB146326778227A8498b105a18f84E0987A684b4`.
+- Polygon: `0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff`.
+- The official documentation does not list an XRPL contract or XRP integration. No XRP relationship is verified. Do not treat this as the answer to “ASK Coin” without further identity evidence.
+
+### Additional stale market microstructure snapshot
+
+- Finderside reports Binance XRPUSDT perpetual data at **2026-11-04 04:47 UTC**: price 1.2681 USDT, open interest $437.60M, funding +0.0100%/8h, account long/short 2.63, taker buy/sell ratio 0.83 and negative taker-flow deltas. Source: https://finderside.com/symbols/XRPUSDT/
+- EdgeOrNot reports a **04:37 UTC** combined Binance spot + OKX perpetual book: within 1% of mid, $9.5M bids versus $10.1M asks; the displayed largest ask walls were around 1.2601–1.2639 and bid walls around 1.2538–1.2563. Source: https://edgeornot.com/order-book-heatmap/xrp
+- These are secondary, non-synchronized, already several hours old at the 09:27:51Z research cutoff. The order-book sample mixes spot and perpetual venues; walls can be cancelled. The account ratio is not position-weighted. Preserve as low-confidence context only; exclude from model-eligible features until venue-native raw snapshots, timestamps, contract units and collection receipts are obtained.
+
+No change to forecast status: **NOT_ISSUED**.
