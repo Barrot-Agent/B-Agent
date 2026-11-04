@@ -164,7 +164,10 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 9
+    assert summary["source_receipt_count"] == 9, (
+        summary,
+        (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
+    )
     assert summary["source_failure_count"] == 0
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
