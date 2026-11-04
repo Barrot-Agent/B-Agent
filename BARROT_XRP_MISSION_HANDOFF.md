@@ -968,3 +968,50 @@ Recheck #1640's two review threads after the handoff corrections, then verify th
 4. At/after the XRPL amendment's scheduled activation window, verify the amendment through independent public XRPL nodes and record the ledger evidence before changing its status from pending.
 5. Extend ingestion only after the integration branch is safely merged: synchronized multi-venue trades/depth, exchange wallet flows, derivatives contract-level data, ETF issuer files, collateral/utilization, stablecoin supply, custody/payment rails and dated regulatory/macro events. Capture exact raw bytes, hashes, receipts and independently anchored timestamps; establish durable cross-run storage before training.
 6. Build chronological walk-forward evaluation against naive, momentum, mean-reversion and volatility baselines; calibrate probabilities, monitor drift and shadow-evaluate. Keep forecasts disabled until out-of-sample performance supports them.
+
+
+## Run 17 — Pillars source/runtime truth, XRP financing reconciliation and integrated PR state (2026-11-04T14:11:36Z)
+
+### Repository and integration state
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; its recursive tree was 1,403 entries, not truncated. The complete open-PR inventory was 373 (359 draft, 14 non-draft).
+- #1640's pre-change head `63c204ddcdf3676f24ade09e5e4149ba11d2d971` passed 563 core tests + 8 subtests and 814 full-suite tests + 8 subtests; five-manifest pip-audit passed; fail-closed gate passed while explicitly reporting merge disabled. The following commit integrates the remaining Pillars source/runtime reporting correction and must receive its own exact-head CI, full-suite, dependency-audit and fail-closed runs.
+- #1640 remains non-draft and conflict-free, but has zero approving reviews. The visible repository ruleset is disabled; the classic branch-protection endpoint returns 403, so approval enforcement cannot be independently verified. Do not merge or bypass the gate.
+- #1643 research branch head `e9f69ed199f9a884a58ec716469b0d7beb05e56c` passed 487 core tests + 8 subtests and 720 full-suite tests + 8 subtests; fail-closed gate passed with merge disabled. It is ready for review, but no approving review is recorded. No dependency manifest changed on #1643.
+
+### Pillars check — root cause and integrated correction
+
+- Main scheduled run [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956), on main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`, failed at 2026-11-04T13:01:45Z: GitHub App variables `GITHUB_APP_ID`, `GITHUB_APP_PRIVATE_KEY` and `GITHUB_INSTALLATION_ID` were absent; Databricks SQL `SELECT 1` returned HTTP 403; Hugging Face Space runtime returned `stage=BUILD_ERROR`. The GitHub-main source marker and source fiction scan returned OK, but neither inspected the deployed Space revision.
+- Source PRs #1506 and #1507 cover the same four paths and are stale relative to current main. The read-only `contents: read` / `persist-credentials: false` workflow and GitHub App installation GET probe are already present on main. The remaining code/test correction is integrated into this existing #1640 branch; no new PR or branch was created.
+- `scripts/pillars_check.py` now labels GitHub-main checks as `repo_source_marker` and `repo_source_fiction`, explicitly states they do not verify the deployed Space, and rejects non-200 or non-object Hugging Face runtime responses. `tests/test_pillars_check_readonly.py` is added to the full suite and core CI list. The existing workflow remains read-only and credential-persistence-disabled; its action versions were preserved.
+- This correction does not restore GitHub App credentials, repair Databricks authorization or repair/restart the Hugging Face Space. Those remain external blockers and must continue to report as failures. No secret was read, created, changed or rotated by this work.
+- Keep #1506/#1507 open as superseded-pending-successor-merge. Close only after #1640 merges and all four source paths are verified on main.
+
+### XRP research correction — Evernorth/Cantor
+
+- #1643 adds `20261104T140144Z-evernorth-cantor-eloc-pricing-fee-reconciliation.json` and a regression test. It distinguishes facility capacity, issuer share issuance, cash received by Evernorth, Cantor resale and any subsequent XRP purchase.
+- At a $14.71 same-price VWAP proxy, 5,218,935 shares at 97% produce approximately $74.467M before issuer fees. The prospectus states $74.4M net, leaving about $67,418; the disclosed $521,893.50 upfront fee plus $200,000 StoneX fee alone exceed that remainder if due/paid. This is an unresolved scenario/fee-basis discrepancy, not a proven filing error: actual VWAP and the net-estimate assumptions are not disclosed.
+- The reviewed prospectus does not establish a Cantor-facility drawdown, issuer cash receipt or facility-funded XRP purchase. The SEC page was inspected as rendered web text; byte-complete raw bytes and SHA-256 receipt were unavailable. The source and derived values remain model-ineligible.
+- #1643's 50 JSON artifacts plus one test module are ready for independent review. No directional forecast is issued.
+
+### Dependency and PR backlog corrections
+
+- #1640's current legacy manifest contains `databricks-sdk>=0.157.0`; it does **not** yet contain #1649's `>=0.158.0` or #1650's Hugging Face Hub `>=2.4.0` update. Do not claim those two Dependabot updates are already integrated. Both source PRs touch the same legacy manifest that #1640 changes.
+- #1646 and #1648 both change `requirements-dev.txt`; #1644 overlaps #1640's CI/dependency-audit workflow files; #1645 and #1647 have failing action-version assertions. Keep these proposals blocked pending one reconciled dependency update and exact full-suite/security verification; do not merge them separately.
+- #1642's snapshot-integrity commit remains an ancestor of #1640. #1641 autonomous experimentation and #1269 geometry remain separate unique workstreams. No bulk PR closure.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** nine-platform capability map, source-independent evidence exchange, fixed-horizon point-in-time feature contract and calibrated walk-forward evaluation.
+- **EXECUTED:** append-only research artifacts, Evernorth scenario reconciliation, Pillars source/runtime labeling correction and six regression checks in the existing integration branch.
+- **VERIFIED:** #1643 exact-head tests and fail-closed gate passed. The #1640 pre-change head passed core/full-suite/dependency audit; the new Pillars-integrated head is pending its own exact-head checks. The scheduled Pillars failures are verified external/auth blockers, not repaired services.
+- No populated synchronized multi-run XRP feature store, leakage-safe out-of-sample baseline comparison, calibrated directional model or shadow-performance record is verified. Prediction remains `NOT_ISSUED`. No merge, deployment, paper-trading mutation, funds transfer or real-money action occurred.
+
+### Next concrete actions
+
+1. Verify exact-head core CI, full repository suite, five-manifest dependency audit and fail-closed gate on the new #1640 head.
+2. Refresh #1640's PR description with the current 42-commit/45-path state and exact test evidence; retain merge block until independent approvals and branch-protection policy are verified.
+3. Obtain independent review on #1643; preserve the source PRs until a merged successor's paths are verified on main.
+4. Reconcile the seven Dependabot proposals into one dependency change only after action compatibility and test assertions are corrected.
+5. Continue synchronized XRP spot/depth/derivatives/ETF/collateral/flows capture with exact byte hashes and independently anchored timestamps; keep all rendered-only sources model-ineligible.
+6. Build chronological walk-forward tests against naive, momentum, mean-reversion and volatility baselines; calibrate, monitor drift and shadow-evaluate before any directional forecast.

@@ -130,3 +130,16 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - All remaining drafts not individually reconciled by exact path/ancestry remain **blocked or unique/unreviewed** pending comparison. No bulk closure.
 - Main CI passed on exact main SHA (485 core, 718 full-suite tests; each with 8 subtests). The separate Pillars check failed on missing GitHub App credentials, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. No secret, deployment or restart action was taken.
 - Prediction status remains **NOT_ISSUED**. No populated durable multi-run XRP dataset or leakage-safe out-of-sample predictive evaluation exists.
+
+
+## Run 17 — Pillars correction and current integration classification (2026-11-04T14:11:36Z)
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; complete recursive tree: 1,403 entries; open PR inventory: 373 (359 draft, 14 non-draft).
+- #1640 remains the sole current-main core/V3 integration branch. Its pre-change head `63c204ddcdf3676f24ade09e5e4149ba11d2d971` passed 563 core tests + 8 subtests, 814 full-suite tests + 8 subtests, five-manifest pip-audit and the fail-closed gate. The next commit adds the remaining Pillars reporting/test correction; exact-head checks are pending for that successor. Zero approving reviews and disabled/unverified branch protection keep merge blocked.
+- #1643 is the sole current-main XRP research integration branch: head `e9f69ed199f9a884a58ec716469b0d7beb05e56c`, 20 commits, 51 paths (50 JSON + one test); 487 core and 720 full-suite tests passed, each with 8 subtests; fail-closed gate passed. It is ready for review, not approved or merged.
+- #1506/#1507 are duplicate source proposals for the same four Pillars paths. The workflow's read-only permissions and GitHub App GET probe already exist on main; the remaining source/runtime labeling, HTTP/JSON validation and test are integrated into #1640. Classify both as **superseded-pending-successor-merge**; do not close until #1640 merges and paths are verified on main.
+- Main Pillars run [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956) failed on missing GitHub App variables, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. The source checks inspected GitHub main, not the deployed Space. The correction reports that distinction; it does not repair credentials/services.
+- #1640 legacy manifest currently has `databricks-sdk>=0.157.0`, not #1649's 0.158.0 and not #1650's Hugging Face Hub 2.4.0. #1649/#1650 overlap the same legacy manifest. #1646/#1648 overlap `requirements-dev.txt`; #1644 overlaps CI/dependency-audit files; #1645/#1647 have failing action-version tests. All remain **blocked pending consolidation/review**.
+- #1642 remains a source commit within #1640; #1641 and #1269 remain unique/unreviewed. No bulk closure or merge.
+- Evernorth/Cantor correction is preserved in #1643. Its same-price 97%-VWAP scenario does not reconcile the stated net proceeds with disclosed fees; actual VWAP/drawdown/XRP purchases remain unknown. Raw SEC bytes/hash are unavailable; source remains model-ineligible.
+- Forecast status remains **NOT_ISSUED**. No durable synchronized multi-run dataset or out-of-sample predictive performance is verified.
