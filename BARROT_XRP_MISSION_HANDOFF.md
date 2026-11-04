@@ -1698,7 +1698,7 @@ Build and test the research-artifact/overlay-to-feature-store admission adapter 
 
 **#1640 — V3/core, MMI, feature-store and prediction foundation**
 - Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
-- Exact head: `f371868271a796075be332625b120a5062fccc4b`; 89 commits ahead, 0 behind; 66 changed files; non-draft and GitHub reports mergeable.
+- Code-bearing head with exact CI: `f371868271a796075be332625b120a5062fccc4b`; 89 commits ahead, 0 behind at the time of that CI; 66 code files. Subsequent commit(s) on this branch update only this durable handoff; GitHub's contents-API write did not trigger Actions. The current PR tip must be refreshed from GitHub before any merge. No exact-head CI is claimed for the handoff-only tip.
 - Exact-head CI [41915913375](https://github.com/Barrot-Agent/B-Agent/actions/runs/41915913375): **581 core tests + 8 subtests passed; 850 full-repository tests + 8 subtests passed**. Inclusive `barrot_agent` coverage is **52.82%**, above the temporary 50% floor; this is not a claim of 70% or complete repository coverage.
 - Five-manifest dependency audit [41915913492](https://github.com/Barrot-Agent/B-Agent/actions/runs/41915913492): passed for runtime/development, supplemental, Hugging Face Space, legacy and PEP 621 declarations.
 - Fail-closed gate [41915913393](https://github.com/Barrot-Agent/B-Agent/actions/runs/41915913393): job passed but explicitly says **automatic merge is intentionally disabled**.
