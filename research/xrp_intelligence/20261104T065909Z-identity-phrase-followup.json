@@ -1,0 +1,149 @@
+{
+  "artifact_type": "xrp_identity_and_exact_phrase_followup_addendum",
+  "captured_at_utc": "2026-11-04T06:59:09Z",
+  "data_cutoff_utc": "2026-11-04T03:21:00.103Z",
+  "ingested_at_utc": "2026-11-04T06:59:09Z",
+  "historical_replay_eligible_from_utc": "2026-11-04T06:59:09Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "inspected_main_sha": "18da9c9981c744c2cf91bb936ecfddce96d3236d"
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "kamilah_channel_glasp",
+      "url": "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "publisher": "Glasp",
+      "observed_at_utc": "2026-11-04T03:05:46Z",
+      "type": "third-party YouTube channel index",
+      "independence": "third-party index",
+      "limitations": [
+        "Channel ID and Kamilah Stevenson label are third-party indexed.",
+        "Does not prove first-party ownership or equivalence with Camilla Stephenson."
+      ]
+    },
+    {
+      "id": "kamilah_channel_vling_20261104",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "publisher": "Vling",
+      "observed_at_utc": "2026-11-04T03:21:00.103Z",
+      "type": "third-party YouTube channel metadata index",
+      "independence": "third-party index",
+      "limitations": [
+        "Reports 143K subscribers and 1.2K videos at its crawl.",
+        "Not YouTube first-party channel metadata.",
+        "Does not establish identity as the exact requested Camilla Stephenson."
+      ]
+    },
+    {
+      "id": "kamilah_channel_cryptokrios_20261104",
+      "url": "https://cryptokrios.com/creators/kamilah-stevenson",
+      "publisher": "CryptoKrios",
+      "observed_at_utc": "2026-11-04T03:21:00.103Z",
+      "type": "third-party creator analytics page",
+      "independence": "third-party index",
+      "limitations": [
+        "Reports 103K subscribers and 633 videos, a different count from Vling.",
+        "Channel ID is not stated on the page.",
+        "Opaque reliability score is not adopted as evidence of identity or prediction accuracy."
+      ]
+    }
+  ],
+  "search_scope": {
+    "captured_at_utc": "2026-11-04T03:21:00.103Z",
+    "exact_name_queries": [
+      "site:youtube.com \"Camilla Stephenson\" XRP",
+      "site:youtube.com/@ \"Camilla Stephenson\" XRP"
+    ],
+    "actual_capital_queries": [
+      "site:youtube.com/watch \"actual capital\" XRP",
+      "\"actual capital\" XRP \"Kamilah Stevenson\" OR \"Camila Stevenson\" OR \"Camilla Stephenson\"",
+      "\"actual capital\" \"SBIC\" ChatGPT"
+    ],
+    "result": "No exact Camilla Stephenson channel or XRP/ASK/SBIC-specific 'actual capital' meaning was verified. Search results included a Kamilah Stevenson candidate and unrelated bank regulatory-capital disclosures. This is a bounded search result, not proof that no such material exists."
+  },
+  "identity_disambiguation": {
+    "requested_identity": "Camilla Stephenson",
+    "candidate_identity": "Kamilah Stevenson / transcript speaker says Camila Stevenson",
+    "status": "UNRESOLVED_NOT_EQUIVALENT",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "third_party_metadata": [
+      {
+        "source_id": "kamilah_channel_vling_20261104",
+        "reported_subscribers": 143000,
+        "reported_videos": 1200
+      },
+      {
+        "source_id": "kamilah_channel_cryptokrios_20261104",
+        "reported_subscribers": 103000,
+        "reported_videos": 633
+      }
+    ],
+    "existing_candidate_video_ids": [
+      "M8TmDXO7B-0",
+      "QslbjGQD0MU",
+      "ci0FH73lbCs",
+      "ywQEoYPzhlQ",
+      "8xiy8w2YlfY",
+      "cxeX_eu_2H0",
+      "rv0BAV0vLgo",
+      "pmJTrXJQ8Vw",
+      "I5OkewTVrgA",
+      "iwhpNT73zpk",
+      "TfFx0g2IgGg",
+      "1ICh2cuBKmM"
+    ],
+    "candidate_video_count": 12,
+    "inventory_exhaustive": false,
+    "attribution_rule": "Keep these videos in a separate Kamilah/Camila candidate index. Do not attribute them to Camilla Stephenson until first-party channel identity evidence establishes equivalence."
+  },
+  "observations": [
+    {
+      "id": "OBS-IDENTITY-FOLLOWUP-20261104-01",
+      "classification": "third_party_metadata_disagreement",
+      "claim": "Two third-party indexes report materially different Kamilah Stevenson channel counts: Vling reports 143K subscribers and 1.2K videos, while CryptoKrios reports 103K subscribers and 633 videos. CryptoKrios does not publish a matched channel ID on the reviewed page.",
+      "evidence": [
+        "kamilah_channel_vling_20261104",
+        "kamilah_channel_cryptokrios_20261104"
+      ],
+      "disconfirming_or_limiting": [
+        "Neither source is YouTube first-party metadata.",
+        "The channel identity is not confirmed as the exact requested Camilla Stephenson.",
+        "Counts may reflect different crawl dates, channel scope or index methodology."
+      ]
+    },
+    {
+      "id": "OBS-ACTUAL-CAPITAL-FOLLOWUP-20261104-01",
+      "classification": "unresolved_phrase",
+      "claim": "The exact phrase 'actual capital' was searched in XRP, creator-name and SBIC/ChatGPT contexts; no specific XRP or SBIC meaning was verified.",
+      "evidence": [
+        "kamilah_channel_vling_20261104",
+        "kamilah_channel_cryptokrios_20261104"
+      ],
+      "disconfirming_or_limiting": [
+        "Search results included unrelated bank regulatory-capital disclosures.",
+        "No exact first-party video or document connecting the phrase to XRP, ASK Coin or SBIC was identified."
+      ]
+    }
+  ],
+  "data_quality": {
+    "third_party_counts_disagree": true,
+    "first_party_identity_verified": false,
+    "video_inventory_exhaustive": false,
+    "no_attribution_without_identity_evidence": true,
+    "historical_replay_rule": "The source pages were observed at 03:21:00.103Z but ingested at 06:59:09Z. This artifact is not eligible for Barrot historical replay before actual ingestion."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "Identity and phrase research is not a directional market feature; no XRP forecast issued."
+  },
+  "next_actions": [
+    "Check first-party YouTube channel About metadata and creator-linked social profiles for a verified cross-link.",
+    "Keep the 12 candidate videos separate until identity is established.",
+    "Search exact 'actual capital' occurrences in original public transcripts and primary documents; retain unrelated bank-capital meanings separately."
+  ]
+}

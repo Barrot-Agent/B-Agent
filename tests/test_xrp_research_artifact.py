@@ -528,7 +528,7 @@ def test_base_snapshot_moves_later_onchain_observations_to_addendum() -> None:
     addendum_cutoff = _parse_utc(addendum["data_cutoff_utc"])
     rows = addendum["market_snapshot"]["onchain_observations"]
     assert len(rows) == 3
-    assert all(_parse_utc(item.get("retrieved_at_utc", item.get("observed_at_utc", "").replace(" approx", "Z"))) <= addendum_cutoff for item in rows)
+    assert all(_parse_utc(item.get("retrieved_at_utc", item.get("observed_at_utc", "").replace(" approx", ""))) <= addendum_cutoff for item in rows)
     assert any(item["id"] == "RLUSD-XRPL-supply-nov4-provider-disagreement" for item in addendum["observations"])
 
 
