@@ -1,80 +1,228 @@
 #!/usr/bin/env python3
-"""Market analysis: pull data from Databricks, analyze via Groq, generate trading recommendations."""
-import os, json, urllib.request, sys
-from datetime import datetime
+"""Legacy signal-history review, retained as a fail-closed descriptive-only tool.
 
-GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
-DATABRICKS_HOST = os.environ.get("DATABRICKS_HOST", "dbc-82d64fee-1c2e.cloud.databricks.com")
-DATABRICKS_TOKEN = os.environ.get("DATABRICKS_TOKEN", "")
+This is not the Barrot XRP prediction engine. It cannot issue forecasts or trade
+recommendations and is disabled unless a separate explicit local opt-in is set.
+The GitHub workflow that previously invoked it is disabled.
+"""
+from __future__ import annotations
 
-def query_databricks(query):
-    """Execute SQL query on Databricks, return results."""
-    body = json.dumps({"sql": query}).encode()
-    req = urllib.request.Request(
-        f"https://{DATABRICKS_HOST}/api/2.0/sql/statements",
-        data=body,
+import hashlib
+import json
+import os
+import re
+import sys
+from datetime import datetime, timezone
+from urllib.request import Request, urlopen
+
+
+QUERY = (
+    "SELECT date, direction, confidence, accuracy "
+    "FROM workspace.barrot.signals ORDER BY date DESC LIMIT 30"
+)
+ANALYSIS_KEYS = {
+    "summary",
+    "observations",
+    "data_quality",
+    "competing_hypotheses",
+    "validation_gaps",
+    "forecast_status",
+    "trade_recommendations",
+}
+
+
+def legacy_market_analysis_enabled() -> bool:
+    return os.environ.get("BARROT_ENABLE_LEGACY_MARKET_ANALYSIS", "").strip() == "YES"
+
+
+def _required_env(name: str) -> str:
+    value = os.environ.get(name, "").strip()
+    if not value:
+        raise RuntimeError(f"Missing required configuration: {name}")
+    return value
+
+
+def query_databricks(query: str) -> dict:
+    """Run one bounded read-only SELECT and return its receipt and rows."""
+    normalized = query.strip()
+    if not normalized.lower().startswith("select ") or ";" in normalized:
+        raise ValueError("Only one read-only SELECT statement is permitted")
+
+    host = _required_env("DATABRICKS_HOST")
+    if host.startswith("https://"):
+        host = host[len("https://") :]
+    if "://" in host or "/" in host or not re.fullmatch(r"[A-Za-z0-9.-]+(?::[0-9]+)?", host):
+        raise ValueError("DATABRICKS_HOST must be a hostname without a path")
+    token = _required_env("DATABRICKS_TOKEN")
+    warehouse_id = _required_env("DATABRICKS_WAREHOUSE_ID")
+
+    request_body = {
+        "statement": normalized,
+        "warehouse_id": warehouse_id,
+        "wait_timeout": "50s",
+        "on_wait_timeout": "CANCEL",
+        "format": "JSON_ARRAY",
+        "disposition": "INLINE",
+        "row_limit": 100,
+        "byte_limit": 1048576,
+    }
+    request = Request(
+        f"https://{host}/api/2.0/sql/statements",
+        data=json.dumps(request_body).encode("utf-8"),
         headers={
-            "Authorization": f"Bearer {DATABRICKS_TOKEN}",
-            "Content-Type": "application/json"
-        }
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+        },
     )
     try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return json.load(resp)
-    except Exception as e:
-        print(f"Databricks error: {e}")
-        return None
+        with urlopen(request, timeout=60) as response:
+            raw_response = response.read()
+    except Exception:
+        # Do not print provider bodies, URLs with credentials, or raw error text.
+        raise RuntimeError("Databricks read failed; provider response suppressed") from None
 
-def call_groq(prompt):
-    body = json.dumps({
-        "model": "openai/gpt-oss-120b",
-        "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 1500,
-        "temperature": 0.5,
-    }).encode()
-    req = urllib.request.Request(
+    try:
+        payload = json.loads(raw_response)
+    except (TypeError, ValueError):
+        raise RuntimeError("Databricks returned invalid JSON") from None
+
+    state = payload.get("status", {}).get("state")
+    if state != "SUCCEEDED":
+        raise RuntimeError(f"Databricks SQL did not succeed (state={state or 'missing'})")
+
+    manifest = payload.get("manifest", {})
+    if manifest.get("truncated"):
+        raise RuntimeError("Databricks result was truncated")
+    columns = manifest.get("schema", {}).get("columns", [])
+    rows = payload.get("result", {}).get("data_array", [])
+    names = [column.get("name") for column in columns]
+    if not names or any(not isinstance(name, str) or not name for name in names):
+        raise RuntimeError("Databricks result has no valid column manifest")
+    if not isinstance(rows, list) or not rows:
+        raise RuntimeError("Databricks returned no signal-history rows")
+
+    records = []
+    for row in rows:
+        if not isinstance(row, list) or len(row) != len(names):
+            raise RuntimeError("Databricks row does not match its manifest")
+        records.append(dict(zip(names, row)))
+
+    cutoffs = [str(row["date"]) for row in records if row.get("date") is not None]
+    return {
+        "rows": records,
+        "record_count": len(records),
+        "data_cutoff_utc": max(cutoffs) if cutoffs else None,
+        "raw_response_sha256": hashlib.sha256(raw_response).hexdigest(),
+    }
+
+
+def call_groq(prompt: str) -> str:
+    key = _required_env("GROQ_API_KEY")
+    body = json.dumps(
+        {
+            "model": "openai/gpt-oss-120b",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a descriptive research analyst. This is legacy signal-history "
+                        "data, not a validated predictive model. Do not issue price forecasts, "
+                        "buy/sell/hold calls, trade instructions, position sizes, capital "
+                        "allocations, price targets, or recommendations. Return strict JSON only."
+                    ),
+                },
+                {"role": "user", "content": prompt},
+            ],
+            "max_tokens": 1500,
+            "temperature": 0.1,
+        }
+    ).encode("utf-8")
+    request = Request(
         "https://api.groq.com/openai/v1/chat/completions",
         data=body,
-        headers={"Authorization": f"Bearer {GROQ_KEY}", "Content-Type": "application/json"}
+        headers={
+            "Authorization": f"Bearer {key}",
+            "Content-Type": "application/json",
+        },
     )
     try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return json.load(resp)["choices"][0]["message"]["content"]
-    except Exception as e:
-        print(f"Groq error: {e}")
-        return ""
+        with urlopen(request, timeout=60) as response:
+            payload = json.loads(response.read())
+    except Exception:
+        raise RuntimeError("Groq analysis failed; provider response suppressed") from None
+    try:
+        return payload["choices"][0]["message"]["content"]
+    except (KeyError, IndexError, TypeError):
+        raise RuntimeError("Groq response did not contain a message") from None
 
-def analyze_market():
-    """Pull last 30 days of signal data, analyze trends, recommend actions."""
-    query = "SELECT date, direction, confidence, accuracy FROM workspace.barrot.signals ORDER BY date DESC LIMIT 30"
-    
-    data = query_databricks(query)
-    if not data:
-        print("Failed to fetch Databricks data")
-        return
-    
-    analysis_prompt = f"""Market data (last 30 days):
-{json.dumps(data, indent=2)[:1500]}
 
-Analyze this trading signal history. Identify:
-1. Trend patterns (is accuracy improving/degrading?)
-2. Confidence vs accuracy correlation
-3. Specific actionable trades within pre-approved limits ($5M total, max $500K per trade)
-4. Risk assessment and failure modes
+def validate_analysis_response(text: str) -> dict:
+    try:
+        result = json.loads(text)
+    except (TypeError, ValueError):
+        raise ValueError("Analysis response must be strict JSON") from None
+    if not isinstance(result, dict) or set(result) != ANALYSIS_KEYS:
+        raise ValueError("Analysis response schema mismatch")
+    if result.get("forecast_status") != "NOT_ISSUED":
+        raise ValueError("Legacy analysis cannot issue a forecast")
+    if result.get("trade_recommendations") != []:
+        raise ValueError("Legacy analysis cannot issue trade recommendations")
+    if not isinstance(result.get("summary"), str) or not result["summary"].strip():
+        raise ValueError("Analysis summary must be non-empty text")
+    for key in ("observations", "data_quality", "competing_hypotheses", "validation_gaps"):
+        values = result.get(key)
+        if not isinstance(values, list) or any(not isinstance(value, str) for value in values):
+            raise ValueError(f"{key} must be a list of strings")
+    return result
 
-Output JSON: {{"analysis": "...", "recommendations": [...], "confidence_score": 0.0-1.0}}"""
-    
-    analysis = call_groq(analysis_prompt)
-    
-    out_file = f"market_analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    with open(out_file, "w") as f:
-        f.write(analysis)
-    
-    print(f"Analysis saved to {out_file}")
-    return out_file
+
+def analyze_market() -> str:
+    data = query_databricks(QUERY)
+    prompt = (
+        "Review these legacy signal-history rows descriptively. Identify observed patterns, "
+        "data-quality limitations, competing explanations and validation gaps. Do not infer "
+        "predictive performance from self-reported accuracy. The required forecast status is "
+        "NOT_ISSUED and trade_recommendations must be an empty array.\n\n"
+        f"Rows:\n{json.dumps(data['rows'], indent=2)[:12000]}"
+    )
+    analysis = validate_analysis_response(call_groq(prompt))
+    captured_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    output = {
+        "schema_version": 1,
+        "artifact_type": "descriptive_legacy_signal_history_review",
+        "captured_at_utc": captured_at,
+        "data_cutoff_utc": data["data_cutoff_utc"],
+        "source": {
+            "table": "workspace.barrot.signals",
+            "record_count": data["record_count"],
+            "raw_response_sha256": data["raw_response_sha256"],
+        },
+        "analysis": analysis,
+        "forecast_status": "NOT_ISSUED",
+        "model_eligible": False,
+        "trade_recommendations": [],
+        "limitations": [
+            "This legacy signal table is not a point-in-time XRP feature store.",
+            "No leakage-safe walk-forward evaluation or baseline comparison is attached.",
+            "Self-reported historical accuracy is not verified out-of-sample performance.",
+            "This artifact is descriptive research only and is not a forecast or trading instruction.",
+        ],
+    }
+    filename = f"market_analysis_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
+    with open(filename, "w", encoding="utf-8") as output_file:
+        json.dump(output, output_file, indent=2, sort_keys=True)
+        output_file.write("\n")
+    return filename
+
+
+def main() -> None:
+    if not legacy_market_analysis_enabled():
+        raise SystemExit(
+            "Legacy market analysis is disabled. Use the verified XRP feature store and "
+            "forecast ledger after production ingestion and out-of-sample validation."
+        )
+    analyze_market()
+
 
 if __name__ == "__main__":
-    if not GROQ_KEY:
-        print("GROQ_API_KEY not set")
-        sys.exit(1)
-    analyze_market()
+    main()
