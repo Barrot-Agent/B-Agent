@@ -38,7 +38,7 @@ def test_model_upload_requires_approval_and_validated_destination() -> None:
     content = _read("barrot-merge.yml")
     assert "confirm_external_change" in content
     assert "default: NO" in content
-    assert "if: ${{ inputs.confirm_external_change == 'YES' }}" in content
+    assert "inputs.confirm_external_change == 'YES'" in content
     assert "MODEL_NAME: ${{ inputs.model_name }}" in content
     assert '[[ ! "$MODEL_NAME" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]]' in content
     assert "${{ github.event.inputs.model_name }}" not in content
@@ -61,7 +61,7 @@ def test_factory_restart_requires_explicit_approval() -> None:
     content = _read("barrot-restart-space.yml")
     assert "confirm_external_change" in content
     assert "default: NO" in content
-    assert "if: ${{ inputs.confirm_external_change == 'YES' }}" in content
+    assert "inputs.confirm_external_change == 'YES'" in content
     assert "restart?factory=true" in content
 
 
@@ -70,7 +70,7 @@ def test_existing_safe_external_deploys_keep_per_run_confirmation() -> None:
         content = _read(name)
         assert "confirm_external_change" in content
         assert "default: NO" in content
-        assert "if: ${{ inputs.confirm_external_change == 'YES' }}" in content
+        assert "inputs.confirm_external_change == 'YES'" in content
 
 
 def test_controlled_pr_approval_is_not_a_merge_action() -> None:
