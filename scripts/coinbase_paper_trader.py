@@ -193,12 +193,21 @@ def execute_paper_trade(state, decision, current_price, product_id):
         amount_usd = min(amount_usd, state["cash_usd"] * 0.2, state["cash_usd"])
         if amount_usd < 1:
             return "hold -- insufficient cash for a meaningful buy"
-        if state["position_size"] <= 1e-8:
-            state["position_product"] = product_id
         qty = amount_usd / current_price
         total_qty = state["position_size"] + qty
         prev_cost = (state["avg_entry_price"] or 0) * state["position_size"]
-        state["avg_entry_price"] = (prev_cost + amount_usd) / total_qty if total_qty else None
+        new_avg_entry_price = (prev_cost + amount_usd) / total_qty if total_qty else None
+        if (
+            not math.isfinite(qty)
+            or not math.isfinite(total_qty)
+            or not math.isfinite(prev_cost)
+            or new_avg_entry_price is None
+            or not math.isfinite(new_avg_entry_price)
+        ):
+            return "aborted -- buy quantity and resulting position must be finite"
+        if state["position_size"] <= 1e-8:
+            state["position_product"] = product_id
+        state["avg_entry_price"] = new_avg_entry_price
         state["position_size"] = total_qty
         state["cash_usd"] -= amount_usd
         state["trade_count"] += 1

@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field, replace
 from enum import Enum
 from hashlib import sha256
+from fractions import Fraction
 import json
 import math
 from types import MappingProxyType
@@ -199,8 +200,12 @@ class StructuralAnalyzer:
     def compare_invariants(
         a: StructuralSignature, b: StructuralSignature
     ) -> dict[str, Any]:
-        left = {item.name: item for item in a.invariants}
-        right = {item.name: item for item in b.invariants}
+        left: dict[str, list[InvariantResult]] = {}
+        right: dict[str, list[InvariantResult]] = {}
+        for item in a.invariants:
+            left.setdefault(item.name, []).append(item)
+        for item in b.invariants:
+            right.setdefault(item.name, []).append(item)
         common = sorted(set(left) & set(right))
 
         def matches_invariant(left_item: InvariantResult, right_item: InvariantResult) -> bool:
@@ -221,14 +226,37 @@ class StructuralAnalyzer:
             ]
             if not tolerances:
                 return left_value == right_value
-            return math.isclose(
-                float(left_value), float(right_value),
-                rel_tol=0.0, abs_tol=min(tolerances),
-            )
+            # Fraction preserves integer distinctions above 2**53 and avoids
+            # narrowing mixed int/float comparisons through float().
+            return abs(Fraction(left_value) - Fraction(right_value)) <= Fraction(min(tolerances))
+
+        def group_matches(
+            left_items: list[InvariantResult], right_items: list[InvariantResult]
+        ) -> bool:
+            if len(left_items) != len(right_items):
+                return False
+            left_items = sorted(left_items, key=StructuralAnalyzer._canonical)
+            right_items = sorted(right_items, key=StructuralAnalyzer._canonical)
+            matched_right: dict[int, int] = {}
+
+            def augment(left_index: int, seen: set[int]) -> bool:
+                for right_index, right_item in enumerate(right_items):
+                    if right_index in seen or not matches_invariant(
+                        left_items[left_index], right_item
+                    ):
+                        continue
+                    seen.add(right_index)
+                    previous = matched_right.get(right_index)
+                    if previous is None or augment(previous, seen):
+                        matched_right[right_index] = left_index
+                        return True
+                return False
+
+            return all(augment(index, set()) for index in range(len(left_items)))
 
         matches = [
             name for name in common
-            if matches_invariant(left[name], right[name])
+            if group_matches(left[name], right[name])
         ]
         return {
             "common_invariants": common,

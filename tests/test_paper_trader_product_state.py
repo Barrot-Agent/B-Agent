@@ -172,6 +172,19 @@ def test_invalid_price_and_cash_fail_closed():
     assert trader.validate_position_product(bad_cash, "BTC-USD") == "aborted -- non-finite cash_usd"
 
 
+def test_buy_quantity_overflow_aborts_without_state_mutation():
+    trader = load_trader()
+    state = make_state()
+    before = state.copy()
+
+    result = trader.execute_paper_trade(
+        state, {"action": "buy", "amount_usd": 200.0}, 1e-320, "XRP-USD"
+    )
+
+    assert result == "aborted -- buy quantity and resulting position must be finite"
+    assert state == before
+
+
 def test_corrupt_state_is_not_silently_reset(tmp_path, monkeypatch):
     trader = load_trader()
     state_file = tmp_path / "paper_state.json"

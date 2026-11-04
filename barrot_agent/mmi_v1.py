@@ -394,6 +394,7 @@ class MMIRecord:
             if any(
                 evidence.claim_id != claim_id
                 or evidence.supporting is not True
+                or not isinstance(evidence.state, ParseState)
                 or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
                 or not isinstance(evidence.source_ids, list)
                 or not evidence.source_ids
@@ -423,6 +424,7 @@ class MMIRecord:
             if any(
                 evidence.claim_id != claim_id
                 or evidence.supporting is not True
+                or not isinstance(evidence.state, ParseState)
                 or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
                 or not isinstance(evidence.source_ids, list)
                 or not evidence.source_ids

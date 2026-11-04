@@ -453,10 +453,20 @@ def test_zero_independent_sources_cannot_complete_corroboration():
 
 def test_same_publisher_group_is_not_independent_corroboration():
     record = complete_record_with_two_sources()
+    record.source_graph[1].uri = "https://source-a.example/alternate-report"
     record.source_graph[1].independence_group = record.source_graph[0].independence_group
 
     assert record.corroboration_complete() is False
     assert any("distinct independence groups" in error for error in record.validate())
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_unhashable_evidence_state_blocks_corroboration():
+    record = complete_record_with_two_sources()
+    record.evidence[0].state = []
+
+    errors = record.validate()
+    assert any("invalid evidence parse state" in error for error in errors)
     assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
 
 

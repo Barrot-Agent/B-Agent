@@ -130,6 +130,45 @@ def test_inexact_numeric_invariants_use_declared_tolerance():
     assert result["matching_invariants"] == ["measurement"]
 
 
+def test_duplicate_invariant_names_are_compared_as_complete_groups():
+    analyzer = StructuralAnalyzer()
+    left = analyzer.analyze(StructuralInput(
+        1, "scalar",
+        invariants=(InvariantResult("rank", 1), InvariantResult("rank", 2)),
+    ))
+    reordered = analyzer.analyze(StructuralInput(
+        1, "scalar",
+        invariants=(InvariantResult("rank", 2), InvariantResult("rank", 1)),
+    ))
+    missing_duplicate = analyzer.analyze(StructuralInput(
+        1, "scalar",
+        invariants=(InvariantResult("rank", 2),),
+    ))
+
+    matching = analyzer.compare_invariants(left, reordered)
+    mismatching = analyzer.compare_invariants(left, missing_duplicate)
+    assert matching["matching_invariants"] == ["rank"]
+    assert matching["descriptor_match"] is True
+    assert mismatching["matching_invariants"] == []
+    assert mismatching["descriptor_match"] is False
+
+
+def test_inexact_integer_comparison_preserves_precision_above_float_range():
+    analyzer = StructuralAnalyzer()
+    left = analyzer.analyze(StructuralInput(
+        1, "scalar",
+        invariants=(InvariantResult("count", 2**53, exact=False, tolerance=0.0),),
+    ))
+    right = analyzer.analyze(StructuralInput(
+        1, "scalar",
+        invariants=(InvariantResult("count", 2**53 + 1, exact=False, tolerance=0.0),),
+    ))
+
+    result = analyzer.compare_invariants(left, right)
+    assert result["matching_invariants"] == []
+    assert result["descriptor_match"] is False
+
+
 def test_signature_snapshots_and_recursively_freezes_nested_inputs():
     provenance = {"origin": {"labels": ["original"]}}
     invariant_value = {"measurements": [{"value": 1}]}

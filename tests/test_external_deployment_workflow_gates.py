@@ -26,10 +26,15 @@ def test_push_triggered_external_deployments_require_manual_main_approval():
 
 def test_self_hosted_brain_secret_is_only_mapped_in_confirmed_deploy_step():
     content = DEPLOYMENT_WORKFLOWS[1].read_text(encoding="utf-8")
-    assert "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}" in content
-    assert content.count("BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}") == 1
+    deploy_marker = "      - name: Deploy self_hosted_brain/"
+    assert deploy_marker in content
+    pre_deploy, deploy_tail = content.split(deploy_marker, 1)
+    secret_mapping = "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}"
+    assert secret_mapping not in pre_deploy
+    assert secret_mapping in deploy_tail
+    assert content.count(secret_mapping) == 1
     assert "persist-credentials: false" in content
-    deploy = content.split("Deploy self_hosted_brain/", 1)[1]
+    deploy = deploy_tail
     assert 'secret = os.environ.get("BRAIN_SHARED_SECRET", "")' in deploy
     assert 'if not secret.strip():' in deploy
     assert deploy.index("if not secret.strip():") < deploy.index("api.create_repo")
