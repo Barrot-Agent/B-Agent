@@ -1823,3 +1823,93 @@ The current main still contains workflows that the #1640 branch changes to safer
 - #1643 exact head `7e12cbf18a56d2d000c2d6f90f8f7351471dad73`: 489 core tests + 8 subtests and 790 full-suite tests + 8 subtests passed; fail-closed gate remains disabled; zero approving reviews.
 - No merge, PR closure, deployment, secret operation, paper trade, funds movement or directional forecast was performed.
 - Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. The next action is to obtain independent approvals and resolve the Pages deployment authorization, then re-fetch the current heads and merge only after all gates are green. After merge, verify the merge commit and files on main, rerun main CI, then close only exact superseded source PRs.
+
+
+## Run 20 — exact-head revalidation, current research and backlog correction (2026-11-04T22:08:00Z)
+
+### Repository snapshot and integration branches
+
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; latest main commit is the 2026-11-04 08:29:05Z integration of automation containment and task-work preservation. No main mutation occurred in this run.
+- Recursive main tree: 1,403 entries; GitHub reported `truncated=false`.
+- Open PR inventory: 372 total across four 100-item API pages plus a final 72-item page; 357 drafts and 15 non-drafts.
+- PR #1640 remains the sole active V3/core integration branch: head `10ccf15f3625bd64b4763620bf2fffd30a92be61`, 92 commits ahead, 0 behind, 66 changed paths, non-draft and GitHub-reported mergeable.
+- PR #1643 remains the sole active XRP evidence-archive branch: head `7e12cbf18a56d2d000c2d6f90f8f7351471dad73`, 75 commits ahead, 0 behind, 83 changed paths, non-draft and GitHub-reported mergeable.
+- The #1640 and #1643 changed-path sets are disjoint (149 unique paths combined). PR #1642's head `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` is an ancestor of #1640's current head; compare reports 91 commits ahead and 0 behind from #1642 to #1640.
+
+### Exact-head verification
+
+**PR #1640 — head `10ccf15f3625bd64b4763620bf2fffd30a92be61`**
+
+- CI run [41919050748](https://github.com/Barrot-Agent/B-Agent/actions/runs/41919050748): core suite **581 passed + 8 subtests**; full repository suite **850 passed + 8 subtests**; inclusive `barrot_agent` coverage **52.82%**, above the branch's explicit 50% floor.
+- Dependency audit [41919051175](https://github.com/Barrot-Agent/B-Agent/actions/runs/41919051175): five declared manifests audited; all five reported **no known vulnerabilities**.
+- Fail-closed gate [41919050751](https://github.com/Barrot-Agent/B-Agent/actions/runs/41919050751): job succeeded because it explicitly states automatic merging is intentionally disabled. This is not a merge authorization or approval.
+- The full-suite job completed successfully. GitHub cache reservation/save warnings are non-test cache-budget warnings; they did not change the test conclusion.
+
+**PR #1643 — head `7e12cbf18a56d2d000c2d6f90f8f7351471dad73`**
+
+- CI run [41917942991](https://github.com/Barrot-Agent/B-Agent/actions/runs/41917942991): core suite **489 passed + 8 subtests**; full repository suite **790 passed + 8 subtests**.
+- Fail-closed gate [41917942728](https://github.com/Barrot-Agent/B-Agent/actions/runs/41917942728): succeeded while keeping automatic merging disabled.
+- These results are for the exact current #1643 head, not an earlier revision.
+
+### Review and merge blockers
+
+- #1640: **22/22** inline review threads resolved. Submitted reviews are COMMENTED; there is **no APPROVED review**.
+- #1643: **14/14** inline review threads resolved. Submitted reviews are COMMENTED; there is **no APPROVED review**.
+- Both PRs are non-draft and GitHub reports them mergeable, but neither satisfies the user's merge conditions.
+- Repository fallback ruleset `10863829` is disabled. The classic branch-protection endpoint returns HTTP 403, so required approval/status-check enforcement cannot be independently confirmed. Do not infer protection from green CI.
+- Main push [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459) passed CI on the current main SHA. A main push also triggered [GitHub Pages build and deployment 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). This automatic deployment remains unapproved; do not merge while it would trigger an unapproved deployment.
+- Main Pillars Consistency Check [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956) failed for concrete external availability reasons: GitHub App variables `GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID` were missing, Databricks returned HTTP 403, and the Hugging Face Space reported `BUILD_ERROR`. No credentials were rotated and no external service was modified. The scheduled main Cross Analysis run [41919990345](https://github.com/Barrot-Agent/B-Agent/actions/runs/41919990345) completed successfully.
+
+### Implemented versus missing in the prediction pipeline
+
+**EXECUTED on #1640, not on main**
+
+- The public ingestion adapter defines nine read-only Binance, Coinbase and Kraken endpoints: Binance spot ticker/1-hour candles/perpetual premium/open interest/spot depth; Coinbase ticker/candles/level-2 book; Kraken depth.
+- `.github/workflows/xrp-public-ingestion.yml` schedules hourly capture at minute 3 UTC, has read-only contents permission, and uploads one artifact with 90-day retention. This workflow exists only on #1640; it is absent from current main and has no verified scheduled main-branch run.
+- The collector stores exact response bytes in per-run content-addressed files with SHA-256 receipts, creates a per-run SQLite feature store, verifies the snapshot, and emits a summary. Binance and Coinbase book snapshots remain raw-only without a timestamp/sequence bridge; Kraken depth requires a fresh HTTP Date header.
+- The separate research-eligibility adapter is implemented as a downgrade-only, byte-bound overlay. The current `run_ingestion()` calls `build_feature_snapshot()` directly and does **not** invoke `build_feature_snapshot_with_research_overlay()`; research-overlay admission is not yet wired into a runtime ingestion path.
+- The SQLite feature store is local to one run. The workflow artifact is retained for 90 days. There is no durable cross-run archive, WORM/object-lock storage, independent timestamp authority or externally signed receipt chain.
+- The chronological walk-forward evaluator implements expanding point-in-time windows and four baselines (naive class prior, momentum, mean reversion and volatility-normal). It has not been run on a populated, synchronized, multi-run XRP history. Backfilled candles become known to this collector only at capture time and cannot be backdated into earlier historical cutoffs.
+- Forecast-ledger readiness requires a verified dataset manifest, byte-addressed receipts, at least two independent source groups, at least 100 OOS samples, at least 100 shadow samples, a horizon span of at least ten horizon multiples, passed leakage/calibration checks, stable drift status and weighted calibration error no greater than 0.05. No qualifying XRP readiness certificate exists.
+- **Forecast status: NOT_ISSUED.** No directional XRP forecast, paper trade or real-money action is justified.
+
+### New XRP evidence and explicit disagreements
+
+- The 21:05Z Kraken XRP/USD observation in #1643 reports last **$1.30059**, best bid **$1.30041** (1,921 XRP), best ask **$1.30042** (561 XRP), 24-hour volume **42.977M XRP**, 24-hour VWAP **$1.29066544**, high **$1.34**, low **$1.24016**, and UTC-day open **$1.27513**. The displayed top-of-book spread is $0.00001, approximately 0.077 bps. The rendered response did not include original HTTP bytes, an exchange event timestamp or a SHA-256 raw receipt; this is descriptive only and is not model-eligible.
+- Secondary XRP perpetual open-interest observations at the 21:05Z artifact cutoff ranged from about **$865.53M** (Kodexius, seven-contract scope and 12:49Z provider time) to **$2.06B** (TradRadar, 15:30Z provider time) and **$2.99B** (Alpha Finance, 15:50Z provider time). Liqwall showed $1.44B at 00:32Z. Different venue universes, timestamps and contract scopes are unresolved; do not average these figures. Alpha Finance's liquidation clusters are modelled estimates, not exchange liquidation queues.
+- ETF trackers also disagree for November 3: ByKaranteli and Maketo showed zero daily flow for five visible funds, while XRP Insights showed -162,050 XRP (about -$207,400) across six spot products plus an index product. Issuer files and common-close holdings reconstruction remain outstanding; zero displayed movement is not proof of zero flow. All tracker observations are model-ineligible.
+- XRPL amendment follow-up at 20:10Z reports `fixCleanup3_4_0` enabled at ledger **108112129** at **14:52:00Z** on November 4, with the same activation shown by XRPL Dashboard, XRPLWin and Bithomp. This cleanup amendment is not native lending activation. SingleAssetVault had 21 yes votes, LendingProtocol 19 and LendingProtocolV1_1 19 against a 29-vote threshold; native XRPL lending remained inactive. The curated DIA oracle entry's LastUpdateTime was 18:57:53Z and marked stale at retrieval; the broader XRPLWin directory had different scope and older visible provider updates.
+- The 18:39Z macro/geopolitical artifact records the November 4 U.S. Treasury quarterly refunding: $125B issuance against about $97B maturing, approximately $28B new cash, and planned buyback capacity up to $70B for liquidity support plus up to $25B for cash management. These are issuance guidance and maximum planned capacity, not executed purchases. Reuters' 16:58Z intraday report showed Brent $94.29 (-8.9%) and WTI $88.54 (-7.8%) amid U.S. midterm/Iran-risk repricing; Iran-U.S. negotiations remained unresolved. No synchronized XRP event study or causal relationship has been measured. These rendered-source extracts lack raw byte receipts and remain model-ineligible.
+
+### Entity and exact-phrase resolution
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (established 1963-11-15). **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-18). **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-20). Their official company profiles identify separate regional legal entities and sister-company relationships. They are not SBI Holdings, Inc.
+- SBIC East's March 5, 2026 event notice documents a generative-AI/ChatGPT seminar with a Microsoft Japan speaker and demonstration. SBI Holdings/SBI Securities' May 1, 2025 ChatGPT Enterprise adoption announcement is a separate SBI Group event. Neither establishes an OpenAI partnership with SBIC East.
+- SBI Holdings' Ripple/SBI Ripple Asia relationships, SBI Remit's XRP remittance corridors, RLUSD distribution, SBI Circle Holdings/USDC activity and SBI's Arc/JPYSC interests are distinct legal, product and payment rails. The corporate profile reports SBI Group holding 60% of SBI Ripple Asia voting rights as of March 31, 2026; the cited excerpt does not identify the remaining 40%, so no Ripple percentage is inferred. Launch announcements do not establish current throughput, XRP inventory or collateral utilization.
+- Coinbase/Circle USDC distribution and revenue-sharing economics are separate from Ripple/Coinbase RLUSD distribution. Ripple and Coinbase announced RLUSD availability across Coinbase Prime, Exchange and Retail on XRPL, Base and Ethereum; this does not prove XRP bridge demand or actual XRP collateral utilization. Product eligibility, balances pledged and realized usage remain separate.
+- **ASK Coin:** Permission's ASK token is the strongest generic-ticker candidate; official docs list Base and Polygon, with no direct XRPL/XRP deployment in the reviewed docs. The user's intended ASK asset remains unconfirmed.
+- **"actual capital":** no single event is linked to the phrase. Leveraged position notional, simplified implied initial margin, gross deposits, account equity, regulatory net capital and segregated customer funds remain distinct. The two Hyperliquid examples are secondary reports, not verified account-state evidence.
+- **Camilla/Kamilah/Camila Stevenson:** at least two different YouTube channel IDs are attributed to the name, and third-party subscriber/video counts conflict. No creator-controlled cross-link or first-party identity proof joins the candidate channels. No video inventory is authorized or created until identity is verified.
+- Nine-platform map remains capability-only: **ChatGPT-to-GitHub is the only authenticated data path tested**. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not claimed to be live collaborators.
+
+### Backlog classification correction — do not bulk-close
+
+A prior handoff over-classified several security PRs as superseded by #1640. The current changed-path audit corrects that:
+
+- **Fully represented, close only after merge and main verification:** #1642 (ancestry confirmed); #1644–#1650 (all source changed paths are represented in #1640, and current branch files contain the corresponding dependency/action versions); #1605 (its single market-snapshot path is present in #1643).
+- **Partially represented; preserve remaining unique content:** #1597 (15/17 paths represented in #1643; two unique Kamilah video-discovery/handoff paths remain); #1608 (1/3 paths represented in #1643; its relationship-graph addendum and C2FO handoff remain unique); #1614 (29/57 paths represented across #1640+#1643; 28 unique code, test, artifact and handoff paths remain); #1609 (2/4 paths represented across the integration branches; `check-signal-accuracy.yml` and `tests/test_repository_causality.py` remain unique).
+- **Separate unresolved security-containment workstream; not superseded by #1640:** #1615 is based on old main `8007440e...`, non-mergeable, and has 13 unique paths after one overlap with #1640. #1617 is non-mergeable on current main `9100dbac...`, with four unique paths after two overlaps with #1640. #1615 and #1617 also overlap each other on `barrot-autonomous-resolver.yml` and `tests/test_v3_scripts.py`; #1617 overlaps #1609 on `check-signal-accuracy.yml` and `cross-analysis.yml`. These changes must be manually reconciled into one fresh-main security successor or an explicitly consolidated existing workstream after the full source-diff audit. Do not close these PRs or treat their unique workflows as already contained.
+- **Unique/unreviewed:** #1641 bounded experimentation and #1269 geometry/OBJ topology. Preserve.
+- The remaining 372-PR inventory is not bulk-closed. Stale-base and unique proposals require individual path/commit classification before any disposition.
+
+### Next concrete actions
+
+1. Keep #1640 and #1643 unmerged until independent approvals exist, branch-protection requirements are verified, and the automatic Pages deployment is authorized or safely gated by an authorized administrator.
+2. Reconcile the unique unattended-writer and external-action changes in #1615/#1617/#1609 into one coherent fresh-main security workstream; inspect every overlapping diff and run the entire suite on its exact head.
+3. Wire research-artifact eligibility into an explicit, byte-bound research-to-feature admission path; do not apply a research correction overlay to unrelated exchange records.
+4. Establish durable cross-run raw storage and an independent timestamp/signature anchor; the current 90-day Actions artifacts and local SQLite files are prototypes only.
+5. Add issuer-native ETF files, exchange-native historical derivatives/funding, verified wallet-flow classifications, stablecoin mint/burn, collateral utilization, custody, payment throughput, regulation and macro vintages; preserve event-time and ingestion-time separately.
+6. Populate synchronized historical data, then run chronological out-of-sample evaluation with purge/embargo and all four baselines. Only after sufficient independent outcomes may probability calibration, drift monitoring and shadow evaluation be considered.
+7. Keep forecasts disabled; no paper-trading or real-money actions without separate approval.
+
+DESIGNED, EXECUTED and VERIFIED remain distinct. No merge, PR closure, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred in this run.
