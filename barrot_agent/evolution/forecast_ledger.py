@@ -4,13 +4,17 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import re
 import sqlite3
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable, Mapping
 
+from .feature_store import FeatureStoreError, HistoricalFeatureStore
+
 HORIZONS = (3600, 14400, 86400, 604800, 2592000)
 CLASSES = ("down", "flat", "up")
+_SHA256 = re.compile(r"^[0-9a-f]{64}$")
 DEFAULT_DB = Path(__file__).resolve().parents[2] / "data" / "xrp_intelligence" / "forecast_ledger.sqlite3"
 
 
@@ -90,10 +94,12 @@ class ForecastLedger:
         db_path: str | Path = DEFAULT_DB,
         *,
         clock: Callable[[], datetime] | None = None,
+        feature_store: HistoricalFeatureStore | None = None,
     ) -> None:
         self.db_path = Path(db_path)
         # Injectable only as a deterministic test seam; production defaults to UTC wall time.
         self._clock = clock or (lambda: datetime.now(timezone.utc))
+        self.feature_store = feature_store
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         db = self._connect()
         try:
@@ -223,9 +229,111 @@ class ForecastLedger:
             ),
         }
 
+    def _verify_feature_snapshots(self, payload: Mapping[str, Any]) -> None:
+        """Fail closed unless every referenced snapshot is exact, verified and available by cutoff."""
+        store = self.feature_store
+        if store is None:
+            raise ForecastLedgerError(
+                "a verified HistoricalFeatureStore is required before forecast recording"
+            )
+
+        snapshot_ids = payload["feature_snapshot_ids"]
+        if len(snapshot_ids) != len(set(snapshot_ids)):
+            raise ForecastLedgerError("feature_snapshot_ids must be unique")
+        if any(not _SHA256.fullmatch(snapshot_id) for snapshot_id in snapshot_ids):
+            raise ForecastLedgerError("feature_snapshot_ids must be SHA-256 snapshot IDs")
+
+        cutoff = _utc(payload["data_cutoff_utc"], "data_cutoff_utc")[0]
+        declared_feature_max = _utc(
+            payload["feature_max_timestamp_utc"], "feature_max_timestamp_utc"
+        )[0]
+        expected_sources: set[str] = set()
+        maximum_information_time: datetime | None = None
+        asset = payload["asset"]
+
+        for snapshot_id in snapshot_ids:
+            try:
+                snapshot = store.verified_snapshot(snapshot_id)
+            except (FeatureStoreError, AttributeError, KeyError, TypeError, ValueError) as exc:
+                raise ForecastLedgerError(
+                    f"feature snapshot {snapshot_id} is unavailable or failed integrity verification"
+                ) from exc
+
+            if snapshot.get("snapshot_id") != snapshot_id:
+                raise ForecastLedgerError("feature store returned a different snapshot ID")
+            if not snapshot.get("verification", {}).get("valid"):
+                raise ForecastLedgerError("feature snapshot integrity is not verified")
+            if asset not in snapshot.get("asset_scope", []):
+                raise ForecastLedgerError(
+                    f"feature snapshot {snapshot_id} does not cover asset {asset}"
+                )
+
+            snapshot_cutoff = _utc(
+                snapshot.get("data_cutoff_utc"), "feature snapshot data_cutoff_utc"
+            )[0]
+            captured_at = _utc(
+                snapshot.get("captured_at_utc"), "feature snapshot captured_at_utc"
+            )[0]
+            stored_at = _utc(
+                snapshot.get("stored_at_utc"), "feature snapshot stored_at_utc"
+            )[0]
+            if snapshot_cutoff > cutoff:
+                raise ForecastLedgerError("feature snapshot data cutoff exceeds forecast cutoff")
+            if captured_at > cutoff or stored_at > cutoff:
+                raise ForecastLedgerError(
+                    "feature snapshot was not captured and stored by the forecast cutoff"
+                )
+
+            manifest = snapshot.get("manifest")
+            if not isinstance(manifest, Mapping) or not isinstance(manifest.get("records"), list):
+                raise ForecastLedgerError("verified feature snapshot has a malformed manifest")
+            asset_records = [
+                item for item in manifest["records"]
+                if isinstance(item, Mapping) and item.get("asset") == asset
+            ]
+            if not asset_records:
+                raise ForecastLedgerError(
+                    f"feature snapshot {snapshot_id} contains no model-facing records for {asset}"
+                )
+
+            for record in asset_records:
+                sources = record.get("sources")
+                if not isinstance(sources, list):
+                    raise ForecastLedgerError("feature record source lineage is malformed")
+                for source in sources:
+                    source_id = source.get("source_id") if isinstance(source, Mapping) else None
+                    if not isinstance(source_id, str) or not source_id.strip():
+                        raise ForecastLedgerError("feature record contains an invalid source ID")
+                    expected_sources.add(source_id)
+                for field in (
+                    "known_at_utc",
+                    "source_data_as_of_utc",
+                    "ingested_at_utc",
+                    "revision_available_at_utc",
+                ):
+                    timestamp = _utc(record.get(field), f"feature record {field}")[0]
+                    if timestamp > cutoff:
+                        raise ForecastLedgerError(
+                            f"feature record {field} exceeds forecast cutoff"
+                        )
+                    if maximum_information_time is None or timestamp > maximum_information_time:
+                        maximum_information_time = timestamp
+
+        if set(payload["source_ids"]) != expected_sources:
+            missing = sorted(expected_sources - set(payload["source_ids"]))
+            extra = sorted(set(payload["source_ids"]) - expected_sources)
+            raise ForecastLedgerError(
+                f"forecast source_ids do not exactly match referenced feature lineage; missing={missing}, extra={extra}"
+            )
+        if maximum_information_time is None or declared_feature_max != maximum_information_time:
+            raise ForecastLedgerError(
+                "feature_max_timestamp_utc must equal the maximum feature information-availability timestamp"
+            )
+
     def record_forecast(self, record: Mapping[str, Any]) -> str:
         """Record a live/shadow forecast once; historical backtests use separate artifacts."""
         payload = self._normalize(record)
+        self._verify_feature_snapshots(payload)
         payload_s = _json(payload)
         forecast_id = _hash(payload)
         db = self._connect()
