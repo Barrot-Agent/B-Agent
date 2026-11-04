@@ -75,7 +75,7 @@ def test_docker_runner_enforces_network_and_privilege_limits(tmp_path, monkeypat
         return subprocess.CompletedProcess(args, 0, "ok", "")
     monkeypatch.setattr(subprocess, "run", fake)
     (tmp_path / "source.py").write_text("x = 1")
-    result = DockerSandboxRunner(tmp_path).run(spec())
+    result = DockerSandboxRunner(tmp_path).run(spec(), {"model": "base"})
     assert result.passed and result.status == "VERIFIED"
     run = calls[1]
     assert run[run.index("--network") + 1] == "none"
