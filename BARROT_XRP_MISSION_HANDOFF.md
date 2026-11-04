@@ -556,3 +556,20 @@ Official SBIC East Japan pages document ChatGPT/generative-AI seminars and train
 - Therefore, do not present a complete video inventory or collapse similarly named channels. Preserve known candidate video IDs and transcripts as unverified leads until the original channel metadata and self-identification align.
 
 No new direct SBIC-to-XRP capital flow or SBIC-to-OpenAI commercial relationship was established.
+
+
+---
+
+## 2026-11-04T09:46Z — SBI stablecoin and institutional-network update
+
+New primary SBI disclosures materially update the September JPYSC baseline:
+
+- SBI VC Trade's **2026-11-02** notice says JPYSC lending balance exceeded **¥10B** and JPYSC handling balance exceeded **¥30B**. These are platform-reported handling/lending measures, not a statement that ¥30B was newly issued, net customer inflow or XRP demand: https://www.sbigroup.co.jp/news/2026/1102_16704.html
+- SBI and Startale joined **Open Standard** on **2026-10-16**. SBI says the initiative had more than 140 participating companies, including Visa, Stripe, Mastercard, BlackRock and Coinbase, and that SBI/Startale were considering an interoperability proof of concept between JPYSC and Open USD (OUSD): https://www.sbigroup.co.jp/news/2026/1016_16665.html
+- On **2026-10-27**, SBI Holdings, Startale and BlackRock signed a basic agreement to explore connecting a tokenized money-market fund with JPYSC. This is an MOU/basic agreement, not a live production integration: https://www.sbigroup.co.jp/news/2026/1027_16682.html
+- On **2026-10-30**, SBI Holdings and SMFG signed a capital/business alliance to jointly study new financial services using stablecoins and related technologies. This does not establish an XRP-specific partnership or deployment: https://www.sbigroup.co.jp/news/2026/1030_16698.html
+
+Interpretation:
+- SBI's visible institutional strategy is multi-rail: XRP-enabled remittance through SBI Remit/SBI Ripple Asia; JPYSC and OUSD interoperability; tokenized MMF integration; and a broader SMFG stablecoin alliance.
+- Coinbase, BlackRock, Visa and Stripe appearing in the same Open Standard membership list does not by itself prove bilateral SBI-Coinbase, SBI-BlackRock or SBI-Visa commercial agreements. The BlackRock MOU is a separately evidenced direct relationship; the Coinbase item is membership/co-presence only.
+- JPYSC's growing handling/lending figures demonstrate traction in SBI's yen-stablecoin channel, not a measurable XRP purchase, XRP collateral balance or XRPL liquidity inflow. Keep these as distinct graph edges and capital-flow categories.
