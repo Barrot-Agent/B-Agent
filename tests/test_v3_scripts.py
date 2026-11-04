@@ -704,3 +704,26 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "cross-analysis.yml"
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "contents: read" in lowered
+    assert "persist-credentials: false" in lowered
+    assert "actions/upload-artifact@v4" in lowered
+    assert "retention-days: 30" in lowered
+    assert "if-no-files-found: error" in lowered
+    assert "conclusion == 'success'" in lowered
+
+    for token in (
+        "contents: write",
+        "git add",
+        "git commit",
+        "git push",
+        "persist-credentials: true",
+        "secrets.",
+    ):
+        assert token not in lowered, token
