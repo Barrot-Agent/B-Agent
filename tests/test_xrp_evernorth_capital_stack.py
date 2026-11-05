@@ -46,7 +46,7 @@ def test_evernorth_xrp_contributions_are_not_mislabeled_as_spot_purchases() -> N
 def test_sbi_economic_ownership_is_distinct_from_voting_power() -> None:
     sbi = _artifact()["ownership_and_relationships"]["sbi_holdings"]
 
-    assert sbi["economic_percent_of_total_common_stock_at_close"] == 21.4
+    assert sbi["percent_of_total_pubco_common_stock_at_close"] == 21.4
     assert sbi["voting_power_percent_at_close"] == 39.9
     assert sbi["class_c_shares"] == 2_359_038
 
