@@ -192,12 +192,12 @@ def load_ingestion_metrics():
     out.extend(real_lines)
     if dead_sources:
         out.append(
-            f"- NOT yet real, despite being marked 'enabled' in config: "
-            f"{', '.join(dead_sources)}. These show 0 entries because no "
-            f"actual ingestion code exists for them yet, or (for "
-            f"ping_pong_cycles specifically) the real capability exists "
-            f"but was never wired to increment this counter. Do not cite "
-            f"these as active capabilities."
+            f"- No entries are recorded for: "
+            f"{', '.join(dead_sources)}. The zero counter shows only that no "
+            f"entries are recorded by this counter; it does not establish whether "
+            f"implementation code exists or whether "
+            f"another counter is authoritative. Do not cite "
+            f"these as active without separate execution evidence."
         )
     return "\n".join(out)
 
