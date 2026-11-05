@@ -333,3 +333,46 @@ class BarrotExecutor:
         finally:
             if temporary_path is not None:
                 temporary_path.unlink(missing_ok=True)
+
+
+    def delete_file(
+        self,
+        path: str,
+        *,
+        expected_existing_content: str,
+    ) -> None:
+        """Delete only a file whose current content exactly matches the supplied preimage."""
+        if not isinstance(expected_existing_content, str):
+            raise ExecutionError("Delete requires an exact existing-content preimage.")
+        target = (self.workspace / path).resolve()
+        if self.workspace not in target.parents:
+            raise ExecutionError("Path escapes workspace")
+        if not target.is_file():
+            raise ExecutionError("Delete target is not an existing workspace file.")
+        if target.read_text(encoding="utf-8") != expected_existing_content:
+            raise ExecutionError("File changed since the delete preimage was recorded.")
+        target.unlink()
+
+    def restore_file(
+        self,
+        path: str,
+        original_content: str | None,
+        *,
+        expected_current_content: str,
+    ) -> None:
+        """Restore or remove an action-created file only when its post-action content matches."""
+        if not isinstance(expected_current_content, str):
+            raise ExecutionError("Restore requires the exact expected post-action content.")
+        if original_content is None:
+            self.delete_file(
+                path,
+                expected_existing_content=expected_current_content,
+            )
+            return
+        if not isinstance(original_content, str):
+            raise ExecutionError("Original content must be a string or None.")
+        self.write_file(
+            path,
+            original_content,
+            expected_existing_content=expected_current_content,
+        )
