@@ -101,5 +101,18 @@
     "Keep direct XRP units, ETP share units, fund NAV and XRP-equivalent exposure as separate fields.",
     "Obtain daily creation/redemption and settlement data before treating issuer holdings deltas as flows.",
     "Do not infer a spot-market buy or sell from the displayed holdings change."
+  ],
+  "supersedes_prior_calculations": [
+    {
+      "artifact_path": "research/xrp_intelligence/20261105T023852Z-xrp-etf-flow-scope-reconciliation.json",
+      "fields": [
+        "flow_reconciliation.arithmetic.holdings_total_difference_xrp",
+        "flow_reconciliation.arithmetic.additional_holdings_sum_xrp",
+        "flow_reconciliation.arithmetic.remaining_holdings_reconciliation_difference_xrp"
+      ],
+      "status": "invalidated_as_direct_xrp_holdings_reconciliation",
+      "reason": "The earlier arithmetic treated the XRP Insights XRPR aggregate quantity as if it were directly comparable to XRP units held in wallets. The later primary REX issuer page shows XRPR contains both direct XRP and CoinShares XRP ETP shares. The 18,141 XRP residual therefore is not a valid direct-custody reconciliation and must not be used as a quality check or feature.",
+      "replacement": "Keep the aggregator's XRPR quantity as an unverified aggregate exposure observation; keep direct XRP units and CoinShares ETP share units separate. Reconcile only after a timestamp-matched ETP look-through ratio and original issuer bytes are captured."
+    }
   ]
 }
