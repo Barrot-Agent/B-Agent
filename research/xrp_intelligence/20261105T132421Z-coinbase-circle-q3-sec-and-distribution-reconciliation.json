@@ -325,14 +325,15 @@
       "evidence_source_ids": [
         "binance_circle_100m_equity_five_year_usdc"
       ],
-      "model_eligible": false
+      "model_eligible": false,
+      "xrp_capital": false
     }
   ],
   "accounting_and_actual_capital": {
     "reclassification": {
       "status": "CONFIRMED_IN_COINBASE_10Q",
-      "detail": "Beginning in Q1 2026, revenue on corporate payment stablecoin balances is presented in corporate interest and other income rather than stablecoin revenue. Prior-year corporate balance amounts were reclassified; Coinbase states there was no change to its Circle arrangement or revenue generated.",
-      "consequence": "Do not compare the stablecoin revenue line across periods without using the recast presentation; do not infer a commercial renegotiation from the line-item move."
+      "detail": "Coinbase states there is no change to its arrangement with Circle Internet Financial, LLC or the revenue generated; the arrangement was renewed on the same terms.",
+      "consequence": "Compare the stablecoin revenue line across periods using recast values; do not infer a commercial renegotiation from the line-item move."
     },
     "actual_capital_labels": [
       {
