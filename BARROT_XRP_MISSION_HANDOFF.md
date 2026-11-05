@@ -2937,3 +2937,147 @@ Only ChatGPT-to-GitHub repository access is verified as an operational authentic
 7. Continue durable raw-source byte capture, independent timestamp anchoring, cross-run storage, synchronized historical XRP/ETF/derivatives/collateral/payment datasets, and leakage-safe chronological evaluation.
 
 No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred in this run.
+
+
+---
+
+## Run 24 — Binance derivatives history ingestion and integrated repository re-audit
+Recorded: 2026-11-05T04:43Z
+
+### Current repository state
+
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main tree: 1,403 entries, not truncated; 86 active workflow files.
+- #1640 V3/core integration: head `ccf014af9218feeeeb37e029edcf7ba251ccdc9f`, 158 commits ahead / 0 behind, 73 changed files.
+- #1643 XRP research archive: head `e686a7bfffd283ffba7d7acb6344cf5d76788d1d`, 128 commits ahead / 0 behind, 108 changed files.
+- #1640 and #1643 have zero changed-path overlap.
+- Integration branch tree: 1,433 entries, not truncated.
+
+### #1640 exact-head verification
+
+Head: `ccf014af9218feeeeb37e029edcf7ba251ccdc9f`.
+
+- Core: 583 passed, 8 subtests passed.
+- Full repository suite: 875 passed, 8 subtests passed.
+- Inclusive package coverage: 53.40%, above the 50% floor.
+- Full-suite wheel build and packaged primary-mission verification passed.
+- Five-manifest dependency audit passed; no known vulnerabilities reported.
+- Fail-closed merge gate passed and explicitly kept automatic merging disabled.
+
+Exact-head runs:
+- [CI 41969199647](https://github.com/Barrot-Agent/B-Agent/actions/runs/41969199647)
+- [Dependency audit 41969199703](https://github.com/Barrot-Agent/B-Agent/actions/runs/41969199703)
+- [Fail-closed gate 41969199650](https://github.com/Barrot-Agent/B-Agent/actions/runs/41969199650)
+
+The five new XRP ingestion regression tests passed on this exact full-suite head. Non-blocking warnings remain: Python invalid-escape deprecation in `barrot_agent/tools/upgrade_bundle.py:28`, deprecated TOML license-table syntax, package-discovery warnings for `barrot_agent.data.missions` and `data.research`, and GitHub Actions cache budget read-only status. The wheel verification nevertheless confirmed the packaged primary mission.
+
+### #1643 exact-head verification
+
+Head: `e686a7bfffd283ffba7d7acb6344cf5d76788d1d`.
+
+- Full repository suite: 848 passed, 8 subtests passed.
+- Fail-closed merge gate passed.
+- No dependency manifests changed, so no separate dependency audit was triggered.
+
+Runs:
+- [CI 41968105515](https://github.com/Barrot-Agent/B-Agent/actions/runs/41968105515)
+- [Fail-closed gate 41968105519](https://github.com/Barrot-Agent/B-Agent/actions/runs/41968105519)
+
+Review state:
+- #1640: 8 COMMENTED reviews, zero approvals; 22/22 inline threads resolved.
+- #1643: 6 COMMENTED reviews, zero approvals; 14/14 inline threads resolved.
+- Both are non-draft and GitHub reports them mergeable. Neither has an approving review.
+
+### Executed XRP derivatives ingestion improvement
+
+The existing #1640 ingestion adapter was extended from 11 to 14 public sources. Adapter/parser version is `xrp-public-market-v3.1`.
+
+New public Binance USD-M XRPUSDT sources:
+
+1. `/fapi/v1/fundingRate?symbol=XRPUSDT&limit=1000`
+   - Captures signed positive/negative funding rates, funding event timestamps and associated mark prices.
+   - Funding intervals are not assumed to be fixed or annualized.
+   - Without `startTime`/`endTime`, Binance documents that only the latest 200 funding records are returned, even when the limit parameter is 1,000. This is a rolling sample, not full history.
+
+2. `/futures/data/openInterestHist?symbol=XRPUSDT&period=1h&limit=500`
+   - Captures contracts and exchange-reported quote value as separate features.
+   - Maximum 500 one-hour observations; the endpoint exposes only the latest month and omits no-trade periods. Missing intervals are not interpolated.
+   - USDT values are not converted to USD.
+
+3. `/futures/data/globalLongShortAccountRatio?symbol=XRPUSDT&period=1h&limit=500`
+   - Captures the reported global account ratio, long-account fraction and short-account fraction separately.
+   - Account counts are not notional exposure, position size or trader capital.
+   - Maximum 500 observations; endpoint history is limited to the latest 30 days.
+
+Official API reference: [Binance USDⓈ-M Futures market-data REST API](https://developers.binance.info/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/market-data).
+
+Point-in-time rules:
+- Raw response bytes receive SHA-256 content hashes and receipt records.
+- Provider event time, capture time and first-known time remain distinct.
+- Historical rows are first known at the current capture time. They cannot be backdated into earlier historical forecast origins.
+- Duplicate, out-of-order and future timestamps are rejected.
+- Negative funding rates are retained as signed values.
+- The adapter does not annualize funding or infer missing intervals.
+
+Source-disagreement control:
+- Binance's documentation example displays `longShortRatio=0.1960` alongside `longAccount=0.6622` and `shortAccount=0.3378`, which do not reconcile arithmetically.
+- The adapter preserves the reported ratio and fractions separately. If the reported ratio conflicts with the accompanying fractions, the ratio feature is retained but marked model-ineligible; the fractions remain separately eligible when their own checks pass. No corrected ratio is inferred.
+- The raw response remains the source of record.
+
+Regression tests cover signed funding, funding event/capture-time separation, open-interest units, account-ratio semantics, ratio disagreement preservation, duplicate timestamps and future timestamps. All five ingestion tests passed on #1640 head `ccf014a`.
+
+The workflow is scheduled in the #1640 branch only and executes only on main. It has not run as a live scheduled collector because the branch is not merged. Test fixtures are not live source receipts. The 90-day artifact/cache design is not durable indefinite storage.
+
+### Research and prediction boundary
+
+- Existing #1643 research continues to hold the primary-source Coinbase, Circle, Ripple, SBI/SBIC, institutional capital, custody, ETF, macro and XRPL evidence.
+- ASK Coin remains a candidate identification only; no verified XRP relationship is established.
+- Kamilah Stevenson is supported by first-person interview and official-brand identity evidence. The candidate YouTube channel is not yet cross-linked by a verified official source; no exhaustive video inventory is claimed.
+- Nine-platform map: only ChatGPT-to-GitHub access is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not verified live data paths.
+- The collector still lacks synchronized multi-venue derivatives, exchange-wallet flows, ETF issuer vintages, collateral, stablecoin mint/burn, custody, payment-rail, regulatory and macro history.
+- Raw-source artifact retention remains 90 days; independent timestamp anchoring and indefinite immutable object storage are not configured.
+- No complete historical XRP dataset or demonstrated out-of-sample predictive lift exists. Calibration and drift gates remain incomplete.
+- Forecast status: `NOT_ISSUED`. No directional XRP forecast, paper trade or real-money action occurred.
+
+### Open-PR inventory and classification
+
+Complete open inventory: 370 PRs (354 drafts, 16 non-drafts).
+
+- **Active integration:** #1640 V3/core; #1643 XRP research.
+- **Exact ancestor/superseded candidate:** #1642 is an ancestor of #1640; all 7 changed paths are contained in #1640. Preserve until #1640 is merged and verified on main.
+- **Dependency/action duplicate candidates:** #1644–#1650 have 19/19 changed paths contained in #1640. The integrated branch contains checkout v7, upload-artifact v7, download-artifact v8, pytest >=9.2.0, types-requests >=2.33.0.20261030, databricks-sdk >=0.158.0 and huggingface-hub >=2.4.0. Do not close until main verification.
+- **Older dependency candidates:** #1254 and #1255 are superseded by the newer huggingface-hub/databricks-sdk versions in #1640; preserve until main verification.
+- **Unique/unreviewed:** #1651 has 9 changed paths and zero overlap with #1640/#1643. Preserve.
+- **Unique security/containment draft:** #1615 has 14 changed paths, 13 unique and one shared with #1640; its branch diverges from #1640. Preserve its unique work.
+- **Overlapping historical work:** #1317 (6/6 paths), #1318 (2/2) and #1320 (5/5) overlap #1640 paths; exact hunk/commit reconciliation is not complete. Preserve.
+- **Partially unique rendering work:** #1269 has 9 changed paths, 8 unique and one shared path. Preserve.
+- No PRs were closed. No bulk closure.
+
+### Safety, merge gates and residual workflow exposure
+
+Main still has:
+- Issue-label-triggered `barrot-agent.yml` with contents, pull-request and issue write permissions.
+- Push-triggered A2A Worker deployment and self-hosted-brain Hugging Face deployment (including Space creation, secret upload and folder upload).
+- Manual main-writing task allocator, self-upgrade and market-analysis workflows.
+
+#1640 changes the issue agent and task allocator to no-permission quarantine stubs, disables self-upgrade, makes A2A/Hugging Face deployment manual-only and changes market analysis to artifact-only behavior. These changes are not on main.
+
+Other legacy manual-dispatch workflows still have repository-write behavior (lyrics/music generation, audio ingestion, memory, capability design/discovery, subagent/data triage). They were not run. They are not being described as scheduled autonomous writers. Cross Analysis is scheduled/read-only; signal ledger is manual/read-only; scheduler tick is manual-only with no write permissions. Barrot Ops requires a per-run YES input and has read-only repository permissions; it was not dispatched.
+
+Repository controls:
+- Main branch protection endpoint returns HTTP 403 to this integration.
+- The only visible repository ruleset, `Fall Back`, is disabled.
+- GitHub Pages dynamic deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) succeeded on November 4 against main SHA `9100dbac...`. A further main merge may trigger Pages deployment; authorization remains unresolved.
+- No approving reviews exist on #1640 or #1643. Fail-closed gates explicitly disable automatic merge.
+
+### Next concrete action
+
+1. Keep both existing integration workstreams; create no new branch or PR.
+2. Obtain independent approving reviews and verify enforceable branch-protection checks.
+3. Resolve authorization for the GitHub Pages deployment side effect.
+4. Merge #1640 only after all required checks/approvals and safety conditions pass. Fetch main again, verify the merge SHA/files and run main CI.
+5. Reconcile #1643 against the new main without rewriting history; rerun its exact-head full suite, fail-closed gate and required security checks before merge.
+6. Close only exact superseded source PRs after their successor content is verified on main.
+7. Continue durable raw-source storage, research-eligibility wiring, synchronized institutional/flow/collateral/payment vintages and chronological out-of-sample evaluation.
+
+No merge, force-push, PR closure, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
