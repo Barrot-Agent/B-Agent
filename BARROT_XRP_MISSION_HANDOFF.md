@@ -1,3 +1,93 @@
+# Current execution handoff — 2026-11-05T12:57Z
+
+## Mission
+- **Priority 1:** XRP intelligence and prediction-engine mastery.
+- **Foundation:** Barrot V3 remains execution, orchestration, safety, and verification.
+- **No directional forecast:** NOT_ISSUED. Current evidence is not a complete, leakage-safe, synchronized historical dataset with demonstrated out-of-sample lift.
+
+## Current main and repository inventory
+- Repository: `Barrot-Agent/B-Agent`.
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Recursive main tree: 1,403 entries; `truncated=false`.
+- Open PR inventory: 370 total, 354 drafts, 16 non-drafts.
+- Non-draft PRs at this inspection: #1651, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+- Main remains unchanged in this run.
+
+## Active integration workstreams
+
+### PR #1640 — V3/core/XRP ingestion and prediction integration
+- Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
+- Current head: `f1c485cd34a73d8f5456178522cae264814f8a22`.
+- Base: main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Compare: 246 commits ahead, 0 behind, 86 changed files.
+- GitHub reports non-draft and mergeable.
+- Current-head CI run [42031356193](https://github.com/Barrot-Agent/B-Agent/actions/runs/42031356193), dependency audit [42031356227](https://github.com/Barrot-Agent/B-Agent/actions/runs/42031356227), and fail-closed gate [42031356203](https://github.com/Barrot-Agent/B-Agent/actions/runs/42031356203) all concluded `action_required`. The run actor is Copilot; each run has zero jobs. These are **not passes** and provide no exact-head test evidence.
+- Last fully verified predecessor code head: `737c6f7452b9b4b4260e80f42185e487c9065e92`: 599 core tests, 907 full-suite tests, 53.84% inclusive package coverage, installed-wheel verification, six-manifest strict dependency audit with no known vulnerabilities, and fail-closed gate passed (CI 42013075702; audit 42013075791; gate 42013075717). This evidence is not transferable to the later head.
+- Current head includes 44 commits after Copilot's read-only review head `174a94b8f887c29140a183dd2435526000d18bef`.
+- Copilot's redirect-boundary finding on that earlier head is fixed in current code: `_RejectPublicRedirectHandler.redirect_request()` raises before following redirects, and `_open_public_request()` builds an opener with that handler. The current test `test_public_request_rejects_redirect_before_target_receives_request` uses two local HTTP servers and asserts the redirect target receives zero requests. This is a source/test inspection finding; current-head CI remains blocked by `action_required`.
+- The current PR has 22/22 inline review threads resolved. Ten submitted review records are all COMMENTED; actual APPROVED reviews: **zero**. Two self-comments saying “Approved” are not approval records.
+- The branch contains the XRP priority-1 mission registry, 18 public endpoint definitions, raw SHA-256 receipts, point-in-time SQLite feature store, historical backup/recovery design, fixed-horizon forecast ledger, walk-forward baselines, and fail-closed safety gates. Scheduled collection is not on main and has not run as a main-branch service.
+
+### PR #1643 — XRP institutional, market, capital, and identity evidence archive
+- Branch: `research/xrp-evidence-archive-20261104`.
+- Current head after this run's new append-only artifact: `01eb5f8508c45a4559bb73371237e1522d893b60`.
+- Base: main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Compare: 193 commits ahead, 0 behind, 157 changed files.
+- Changed-path intersection with #1640: **zero**.
+- Previous exact-head `4916d9dff1fda3a773d40b89824d1354f9c8f1f3) passed 495 core tests, 970 full-suite tests, and fail-closed gate (CI 42029083080; gate 42029083082). The new artifact commit `01eb5f8` has no workflow run returned yet; prior-head evidence is not current-head verification.
+- The branch has 14/14 inline review threads resolved; six review records are COMMENTED; actual APPROVED reviews: **zero**.
+- New artifact: `research/xrp_intelligence/20261105T125743Z-xrpl-public-node-operator-funding-and-usage-terms.json`, commit `01eb5f8508c45a4559bb73371237e1522d893b60). It is research-only and model-ineligible.
+
+## New primary-source finding: XRPL public-node operators
+- Honeycluster's first-party page says Ripple provided early funding and bootstrap resources in June 2024. This is a first-party self-disclosure; the amount, instrument, ownership, control, board/governance rights, and continuing support are not disclosed. Do not claim Ripple owns or controls Honeycluster.
+- Official XRPL public-server documentation classifies Honeycluster and InFTF's public endpoints as non-commercial. It also says Ripple's public servers are not for sustained/business use and may become unavailable. Commercial options listed include InFTF's paid full-history API via Dhali, QuickNode, and Chainstack.
+- The official directory identifies `xrpl.ws` as an alias of `xrplcluster.com`; it is not a third provider.
+- Current adapter sources are InFTF (`xrplcluster.com`) and Honeycluster (`honeycluster.io`). Both node-derived features use the shared `xrpl_public_ledger` independence group. Their matching validated-ledger index/hash is a node-consistency check, not independent economic corroboration. Preserve the Ripple–Honeycluster funding edge in the corporate relationship graph while retaining the counter-hypothesis that early bootstrap support does not prove current ownership, control, or compromised reporting.
+- Do not use these free public endpoints for sustained/business workloads. Before such use, switch to a self-hosted node or a contracted commercial provider and archive authorization/terms. The ingestion workflow exists only on #1640, not main; scheduled main collection is not active.
+- The current adapter stores the HTTP Date header separately from the derived timestamp. HTTP Date is response time to whole seconds, not exact ledger-close time.
+
+Primary sources:
+- Honeycluster first-party formation history: https://press.honeycluster.io/en/blog/where-it-all-began
+- Official XRPL public-server directory: https://xrpl.org/docs/tutorials/public-servers
+- Current adapter at reviewed head: https://github.com/Barrot-Agent/B-Agent/blob/f1c485cd34a73d8f5456178522cae264814f8a22/barrot_agent/evolution/xrp_public_ingestion.py
+
+## Safety, approvals, and merge decision
+- Classic branch-protection inspection returns HTTP 403.
+- The only visible repository ruleset, ID 10863829 (“Fall Back”), is disabled.
+- Main's previous push triggered GitHub Pages deployment successfully in run 41799855489. Authorization for another merge-triggered deployment remains unresolved.
+- #1640 and #1643 both have zero actual approving reviews.
+- **No merge is authorized by current evidence.** Do not bypass branch protection, required checks, approval gates, or deployment authorization.
+- Do not close source PRs until a successor is merged and its exact paths are verified on main.
+
+## Backlog classifications
+- **Active / blocked integration:** #1640 (current-head workflow runs action_required; approvals and Pages side-effect authorization absent).
+- **Active / current-head verification pending:** #1643 (new evidence artifact added; no run returned yet for current head).
+- **Dependency/action changes represented in #1640; retain pending main verification:** #1644–#1650.
+- **Unique/unreviewed:** #1651 (RSI/weight-space foundation; separate workstream).
+- **Stale/partially integrated; preserve until path-level main verification:** #1320, #1318, #1317.
+- **Separate geometry workstream:** #1269.
+- **Older dependency candidates represented by newer updates:** #1255, #1254.
+- Preserve unique draft research/security work, including #1615, #1621 and other unreviewed drafts. Do not bulk-close.
+
+## Nine-platform capability/authentication map
+- ChatGPT-to-GitHub repository read/write: authenticated and exercised.
+- Copilot: one-off read-only review plus a branch commit observed; the Copilot-authored head's GitHub Actions runs returned `action_required` with zero jobs. This is not a persistent nine-platform data connection.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle, Databricks: persistent authenticated data flows remain unverified.
+- Groq is not Grok. Do not count Groq as one of the nine platforms.
+
+## Next concrete actions
+1. Resolve GitHub's normal workflow approval/action-required state for the Copilot-authored #1640 head; then run exact-head full suite, six-manifest dependency audit, installed-wheel check, and fail-closed gate. Do not treat predecessor checks as current.
+2. Obtain actual independent approvals and verify branch-protection requirements without bypass.
+3. Resolve authorization for the GitHub Pages deployment side effect before any main merge.
+4. Verify exact-head full suite and fail-closed gate for #1643's new head `01eb5f8`; its research-only diff does not alter dependency manifests.
+5. Merge #1640 only after all conditions are satisfied; verify merge commit, fetch main, verify files, and run main CI.
+6. Reconcile #1643 onto the resulting main without rewriting history; run its exact-head full suite, dependency/security audit, and fail-closed gate before any merge.
+7. Close only exact superseded/duplicate source PRs after merged content is verified on main.
+
+DESIGNED, EXECUTED, and VERIFIED remain separate. No directional XRP forecast, paper trade, real-money action, deployment, secret rotation, Space restart, Kaggle submission, or funds transfer occurred.
+
+---
+
 # Current Barrot handoff — 2026-11-04T19:27:02Z
 
 ## Mission and repository truth
