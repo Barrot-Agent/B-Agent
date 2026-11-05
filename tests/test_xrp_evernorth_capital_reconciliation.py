@@ -71,8 +71,10 @@ def test_historical_cash_and_convertible_note_are_separate_actual_capital_events
     assert note["transaction_fee_usd"] == 1_000_000
     assert note["classification"] == "actual_debt_financing_cash"
 
-    delayed = events["delayed_funding_commitment"]
-    assert delayed["status"] == "committed_delivery_not_independently_verified_in_this_capture"
+    delayed = events["delayed_funding_2026_close"]
+    assert delayed["cash_received_usd"] == 10_500_000
+    assert delayed["in_kind_xrp_received"] == 200_000
+    assert delayed["status"] == "issuer_disclosed_paid_prior_to_close_and_shares_issued_at_close"
 
 
 def test_issuer_intended_use_is_not_treated_as_an_executed_xrp_purchase():
@@ -134,14 +136,67 @@ def test_ripple_equity_in_kind_contributions_and_related_party_debt_are_separate
     ripple = load_artifact()["custody_and_relationships"]["ripple_relationship"]
 
     assert ripple["ripple_xrp_contribution_to_pathfinder"] == 126_791_458
-    assert ripple["ripple_affiliate_xrp_subscription"] == 50_000_000
+    assert ripple["contributor_related_party_entity_xrp_subscription"] == 50_000_000
+    assert ripple["contributor_related_party_entity_name"] == "Larsen Lam Children's Remainder Trust"
+    assert "investor affiliated with Ripple" in ripple["contributor_related_party_entity_issuer_description"]
     assert ripple["ripple_class_a_shares_issued_at_close"] == 1_678_382
     assert ripple["ripple_pathfinder_units_issued_at_close"] == 16_461_545
     assert ripple["combined_ripple_group_ownership_limit_percent"] == 9.9
 
     credit = ripple["related_party_credit_facility"]
+    assert credit["lender"] == "Ripple Labs Inc."
+    assert credit["borrower"] == "Pathfinder Digital Assets LLC"
     assert credit["limit_usd"] == 10_000_000
     assert credit["drawn_usd_as_of_2026_10_07"] == 9_700_000
     assert credit["classification"] == "related_party_debt_not_equity_and_not_eloc_proceeds"
     assert credit["repayment_status"] == "not_verified_in_this_capture"
     assert ripple["governance_and_conflicts"]["issuer_disclosed_potential_conflicts"] is True
+
+
+def test_sponsor_and_rippleworks_in_kind_xrp_are_not_direct_ripple_cash():
+    document = load_artifact()
+    sponsor = document["sponsor_relationship"]
+    events = {x["event_id"]: x for x in document["actual_capital_events"]}
+
+    assert sponsor["sponsor"] == "Arrington XRP Capital Fund, LP"
+    assert sponsor["general_partner"] == "Arrington Capital Management, LLC"
+    assert sponsor["rippleworks_is_limited_partner"] is True
+
+    series_c = events["series_c_sponsor_xrp"]
+    assert series_c["contributor"] == "RippleWorks, Inc."
+    assert series_c["in_kind_xrp"] == 211_319_096.061435
+    assert series_c["classification"] == "in_kind_xrp_contribution_not_cash_and_not_a_direct_ripple_corporate_contribution"
+
+    trust = events["contributor_related_party_entity_subscription"]
+    assert trust["contributor"] == "Larsen Lam Children's Remainder Trust"
+    assert trust["in_kind_xrp"] == 50_000_000
+
+    direct_ripple = events["ripple_contribution"]
+    assert direct_ripple["contributor"] == "Ripple Labs Inc."
+    assert direct_ripple["in_kind_xrp"] == 126_791_458
+
+
+def test_convertible_note_purchaser_and_issuer_date_disagreement_are_recorded():
+    note = next(
+        item for item in load_artifact()["actual_capital_events"]
+        if item["event_id"] == "convertible_notes_2026_close"
+    )
+    assert note["purchaser"] == (
+        "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM "
+        "Corporate Finance General Private Investment Trust No. 3"
+    )
+    assert note["date_disagreement"]["financial_notes_date"] == "2026-10-09 (Closing Date)"
+    assert note["date_disagreement"]["prospectus_summary_completion_date"] == "2026-10-12"
+    assert "Preserve both" in note["date_disagreement"]["resolution"]
+
+
+def test_ripple_related_party_credit_is_not_the_cantor_eloc():
+    events = {x["event_id"]: x for x in load_artifact()["actual_capital_events"]}
+    credit = events["ripple_related_party_credit_facility"]
+    eloc = load_artifact()["eloc_facility"]
+
+    assert credit["lender"] == "Ripple Labs Inc."
+    assert credit["drawn_amount_usd"] == 9_700_000
+    assert credit["classification"] == "related_party_debt_not_equity_and_not_eloc_proceeds"
+    assert credit["repayment_status"] == "not_verified_in_this_capture"
+    assert eloc["actual_draw_amount_usd"] is None
