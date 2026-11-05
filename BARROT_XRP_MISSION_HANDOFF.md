@@ -3280,3 +3280,52 @@ This run's exact-head CI evidence above applies to the tested code heads. The ha
 - **Counter-hypothesis retained:** Coinbase's RLUSD distribution can coexist with its continuing Circle-USDC commercial economics. The new RLUSD listing is not evidence that Coinbase's USDC relationship ended or that RLUSD has displaced USDC. Stablecoin gross mint/redemption volume, end-period circulation, distribution costs, XRP ledger settlement and XRP demand are separate measures.
 
 These corporate edges are direct evidence of custody, distribution, clearing access or commercial economics. They are not evidence of XRP price direction, XRP spot purchases, or XRP collateral utilization unless a source explicitly establishes those events.
+
+
+### Run 25 supplement — final integration heads, research corrections, and residual evidence risks
+Recorded: 2026-11-05T05:23:00Z
+
+#### Final exact-head verification
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- PR #1640 current handoff head: `a350b2b80110313f9e08f01b6daa4abe8331d740`, 165 commits ahead / 0 behind, 73 changed files. The preceding code head `d3181e5` contains the v3.2 collector changes; the later commits are handoff documentation only.
+- PR #1640 exact-head full suite: 880 passed, 8 subtests passed; inclusive package coverage 53.43%. Exact CI [41972998577](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972998577). Five-manifest dependency audit [41972998562](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972998562) passed with no known vulnerabilities. Fail-closed gate [41972998591](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972998591) passed while keeping merging disabled.
+- PR #1643 current head: `b8f45f8adaed5a50110a8c170043addb5ec2aa98`, 133 commits ahead / 0 behind, 112 changed files. Exact full suite: 854 passed, 8 subtests passed. CI [41973377903](https://github.com/Barrot-Agent/B-Agent/actions/runs/41973377903); fail-closed gate [41973377872](https://github.com/Barrot-Agent/B-Agent/actions/runs/41973377872) passed.
+- The two integration branches remain zero-overlap and conflict-free relative to main. Neither has an approving review.
+
+#### REX-Osprey economic-exposure caveat
+
+The primary XRPR page also discloses that the fund may obtain XRP exposure through an XRP subsidiary, CoinShares XRP ETP shares, XRP futures contracts and swap agreements, and that its policy requires at least 80% of net assets (plus investment borrowings) in XRP and other assets providing XRP exposure. The 19,885,382 direct XRP units in its holdings table are therefore not its complete notional/economic XRP exposure. Derivative notionals and subsidiary look-through were not quantified in the reviewed table. The 500,090,045.8313 direct-XRP subtotal remains direct holdings only; total economic exposure is explicitly prohibited as an inference.
+
+#### SBI VC Trade RLUSD network limitation
+
+SBI VC Trade's June 24, 2026 launch notice identifies RLUSD as a Type 4 electronic payment instrument under SBI VC Trade's Japanese-law classification and says VCTRADE had already handled USDC since March 2025. The same notice explicitly says VCTRADE supports **Ethereum only** for RLUSD deposits and withdrawals at launch; XRPL transfers were not supported by that service at that time. Do not infer that the broader multi-chain RLUSD asset is available on XRPL through VCTRADE. Primary source: https://www.sbivc.co.jp/newsview/bsqs09vn_yzv
+
+#### Kamilah/Camila Stevenson identity correction
+
+The current channel-identity audit classifies the person/channel association as **UNVERIFIED**. It records the `@KamilahStevensonXrpStocks` handle as a candidate, but first-party canonical-channel linkage is not established. Subscriber/video counts conflict across third-party indexes and are not identity evidence. No exhaustive public YouTube inventory was created. A previous summary's assertion that a first-person interview established the canonical channel is not supported by the current audit's source register; retain the unverified status until a first-party cross-link or verified channel statement is obtained.
+
+#### Archive correction-overlay limitation
+
+The `20261104T144241Z-archive-review-corrections-and-point-in-time-quarantine.json` artifact records corrections for old spot-open naming, Evernorth lender/capital attribution and cost basis, duplicate relationship edges, Kamilah source attribution, Circle Arc validator evidence, SBI share-class crosswalk and other findings. It explicitly marks the overlay as research-only and its consumer application as `NOT_EXECUTED_RESEARCH_ONLY_OVERLAY`. Old append-only artifacts remain unchanged, and no production parser currently applies these overlays automatically. The newer Evernorth capital-stack artifact is the authoritative reconciled view for its covered claims; do not consume older contradicted claims without applying the documented correction overlay.
+
+#### Review and source-independence disposition
+
+- Copilot's earlier review bodies still describe five #1640 issues and three #1643 issues, but the associated 22 and 14 review threads are all marked resolved. Current code was checked against the cited concerns: MMI malformed parent IDs/source IDs fail closed; ledger verification skips blank lines safely; structural hashing uses deterministic canonical tie-breakers and rejects non-finite floats; paper-trader sizing guards non-finite quantities and dust; the Space secret is configured before upload; and paper-trader execution remains manual-only with exact-main-SHA and explicit YES confirmation. No paper-trading workflow was run.
+- One minority source-independence objection remains: rejecting literal IP hosts and assigning publisher/source groups does not perform DNS-alias or common-origin resolution. Publisher groups are the primary independence control; infrastructure-level alias canonicalization remains unimplemented and must not be claimed as solved.
+- A fresh review request to the Copilot and CodeRabbit bot accounts was rejected because they are not repository collaborators. Existing comments are retained; no fresh independent bot review was obtained.
+
+#### Main-branch safety exposure
+
+Main still contains an issue-comment-triggered Barrot agent workflow with repository write permissions, and push-triggered deployment workflows for A2A/Cloudflare and the self-hosted Hugging Face brain. #1640 changes those paths to quarantined/manual-only behavior, but the changes are not on main. Avoid creating PR comments or other issue-comment events until the quarantine is merged and verified, because the current default-branch workflow may execute on those events. The paper-trader workflow remains manual-only and was not invoked.
+
+Main's `SECURITY.md` still documents the `PYSEC-2024-232` exception; #1640 removes the active exception from the integration branch (the identifier remains only in archived backup material). Main's coverage configuration excludes major packages; #1640 expands inclusive coverage and passes at 53.43%.
+
+#### Updated remaining blockers and next action
+
+- No approving reviews on #1640 or #1643.
+- Main is marked protected, but the branch-protection endpoint returns HTTP 403; the visible `Fall Back` ruleset is disabled. Required approval/check enforcement cannot be independently verified.
+- A prior main push triggered successful GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered Pages deployment remains unresolved.
+- The main Pillars Consistency Check remains blocked by missing GitHub App ID/private key/installation ID, Databricks HTTP 403 and Hugging Face BUILD_ERROR. ChatGPT-to-GitHub repository access is the only authenticated platform data flow verified in this run.
+
+Next: obtain independent approving reviews and verify branch protection; resolve Pages deployment authorization; integrate #1640 and verify the merge commit/files/main CI; reconcile #1643 against the new main; build a tested consumer for research correction overlays and source-eligibility gates; then continue durable source storage and synchronized historical ETF, exchange-flow, collateral, stablecoin, custody, payment, regulatory, macro and geopolitical vintages. No forecast is authorized until out-of-sample evidence supports it.
