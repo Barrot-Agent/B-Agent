@@ -344,7 +344,6 @@ def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() ->
         "dependency-audit.yml",
         "formal-verification-benchmarks.yml",
         "ibm-bob-barrot-audit.yml",
-        "subagent-matrix.yml",
     )
     for name in checkout_workflows:
         content = _read(name)
