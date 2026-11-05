@@ -128,7 +128,7 @@ jobs:
             --cov-fail-under=50
       - name: Build wheel and verify packaged primary mission
         run: |
-          python -m build --wheel --outdir "$RUNNER_TEMP/barrot-wheel"
+          python -m build --wheel --no-isolation --outdir "$RUNNER_TEMP/barrot-wheel"
           wheel="$(find "$RUNNER_TEMP/barrot-wheel" -maxdepth 1 -name '*.whl' -print -quit)"
           test -n "$wheel"
           python - "$wheel" <<'PY'
