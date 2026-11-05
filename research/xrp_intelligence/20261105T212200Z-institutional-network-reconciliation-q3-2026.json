@@ -51,7 +51,11 @@
         "SBI_Holdings",
         "Circle"
       ],
-      "establishment_announced": "2025"
+      "establishment_announced": "2025",
+      "ownership": {
+        "SBI_Holdings": 0.5,
+        "Circle": 0.5
+      }
     },
     "Ripple": {
       "type": "digital-asset infrastructure company",
@@ -83,6 +87,18 @@
       "type": "separate Layer 1 network",
       "native_fee_asset": "USDC",
       "not_XRPL": true
+    },
+    "SBI_Group": {
+      "type": "corporate group",
+      "includes": [
+        "SBI_Holdings",
+        "SBI_Shinsei_Bank",
+        "SBI_VC_Trade"
+      ],
+      "note": "Use SBI Group only where the source attributes ownership or investment to the group rather than a named legal entity."
+    },
+    "SBI_Shinsei_Bank": {
+      "type": "Japanese bank and SBI Group company"
     }
   },
   "direct_relationships": [
@@ -93,7 +109,10 @@
       "relationship": "strategic partnership",
       "since": "2016",
       "evidence": "SBI VC Trade RLUSD launch and Ripple joint announcement",
-      "xrp_cash_flow_disclosed": false
+      "xrp_cash_flow_disclosed": false,
+      "shareholding_last_disclosed_pct": 9,
+      "shareholding_as_of": "2025-06-09",
+      "shareholder_description": "SBI Group described itself as Ripple's largest outside shareholder in its 2025-06-09 disclosure; not verified as current in 2026."
     },
     {
       "id": "SBI_CIRCLE_MOU",
@@ -107,17 +126,26 @@
       "from": "SBI_Holdings",
       "to": "SBI_Circle_Holdings",
       "relationship": "joint venture establishment",
-      "date": "2025-08-22",
-      "ownership_percentages_disclosed_in_sources": false
+      "date": "2025-03-18 agreement; completed in 2025",
+      "ownership_percentages_disclosed_in_sources": false,
+      "ownership_percentages_disclosed": true,
+      "ownership_percentages": {
+        "SBI_Holdings": 50,
+        "Circle": 50
+      },
+      "english_name": "Circle SBI Japan KK",
+      "japanese_name": "SBI Circle Holdings KK"
     },
     {
       "id": "SBI_CIRCLE_EQUITY",
       "from": "SBI_Holdings",
       "to": "Circle",
       "relationship": "strategic equity share acquisition around Circle IPO",
-      "amount_usd": 50000000,
-      "primary_vs_secondary": "not specified in cited disclosure",
-      "cash_to_issuer_confirmed": null
+      "amount_usd": 25000000,
+      "primary_vs_secondary": "IPO share acquisition; issuance/secondary allocation details not specified in cited disclosure",
+      "cash_to_issuer_confirmed": null,
+      "disclosure_date": "2025-06-09",
+      "transaction_date": "2025-06-05"
     },
     {
       "id": "SBI_CIRCLE_ARC",
@@ -201,6 +229,23 @@
       "to": "Standard_Custody_Trust_Company",
       "relationship": "parent/affiliate issuer relationship",
       "role": "Standard Custody & Trust Company issues RLUSD"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA_JV",
+      "from": "SBI_Holdings",
+      "to": "Ripple",
+      "relationship": "joint venture SBI Ripple Asia, established in 2016 for blockchain-based payment infrastructure in Japan and Asia"
+    },
+    {
+      "id": "SBI_SHINSEI_CIRCLE_EQUITY",
+      "from": "SBI_Shinsei_Bank",
+      "to": "Circle",
+      "relationship": "strategic Circle IPO share acquisition",
+      "amount_usd": 25000000,
+      "disclosure_date": "2025-06-09",
+      "transaction_date": "2025-06-05",
+      "primary_vs_secondary": "IPO share acquisition; issuance/secondary allocation details not specified in cited disclosure",
+      "cash_to_issuer_confirmed": null
     }
   ],
   "shared_provider_relationships": [
@@ -419,19 +464,48 @@
       "source_ids": [
         "OCC_GENIUS_FINAL_RULE_20261021"
       ]
+    },
+    {
+      "id": "SBI_RIPPLE_OWNERSHIP",
+      "event_date": "2016 investment; ownership stated as of 2025-06-09",
+      "claim": "SBI Holdings' 2025-06-09 release states that the SBI Group invested in Ripple in 2016, established SBI Ripple Asia with Ripple, and held approximately 9% of Ripple shares as its largest outside shareholder.",
+      "limitations": [
+        "The approximately 9% figure is a dated SBI Group disclosure as of 2025-06-09, not verified as current in November 2026.",
+        "The cited release does not state the original investment amount or current XRP holdings.",
+        "Ripple equity ownership is not the same as XRP token ownership."
+      ],
+      "source_ids": [
+        "SBI_CIRCLE_EQUITY_AND_RIPPLE_STAKE_20250609"
+      ]
+    },
+    {
+      "id": "SBI_CIRCLE_JV_OWNERSHIP",
+      "event_date": "2025-03-18 agreement; establishment completed in 2025",
+      "claim": "SBI Holdings and Circle agreed to establish a Japanese joint venture, Circle SBI Japan KK / SBI Circle Holdings KK, with each party holding 50%. SBI's 2026 disclosure says establishment was completed in 2025.",
+      "limitations": [
+        "The JV promotes USDC adoption and related services; it does not imply a Circle-Ripple partnership or XRP capital deployment."
+      ],
+      "source_ids": [
+        "SBI_CIRCLE_JV_50_50_20250602",
+        "SBI_CIRCLE_JV_20250822",
+        "SBI_ARC_PRESALE_20260512"
+      ]
+    },
+    {
+      "id": "ARC_PRESALE_ACCOUNTING",
+      "event_date": "2026-Q3 reported; gross presale amount disclosed 2026-05-12",
+      "claim": "SBI's ARC presale announcement says a consortium of major investors raised USD 222M in the ARC token presale; SBI participated but did not disclose its allocation. Circle's Q3 2026 release separately reports USD 182M of ARC presale revenue recognized within USD 207M of other revenue.",
+      "limitations": [
+        "USD 222M is the consortium's gross presale amount as reported by SBI; USD 182M is Circle's Q3 recognized revenue. They are different measures and may differ by timing, accounting, or scope; no reconciliation is provided.",
+        "Neither amount is XRP capital or evidence of XRP purchases."
+      ],
+      "source_ids": [
+        "SBI_ARC_PRESALE_20260512",
+        "CIRCLE_Q3_2026_RESULTS"
+      ]
     }
   ],
   "capital_ledger": [
-    {
-      "date": "2026-05-12",
-      "from": "SBI_Holdings",
-      "to": "Circle",
-      "amount_usd": 50000000,
-      "type": "equity_share_acquisition",
-      "primary_vs_secondary": "not specified",
-      "cash_to_issuer_confirmed": null,
-      "xrp_related": false
-    },
     {
       "date": "2026-11-04",
       "from": "Binance",
@@ -484,6 +558,58 @@
       "amount_usd": null,
       "type": "exploratory_working_capital_initiative",
       "capital_deployed": false,
+      "xrp_related": false
+    },
+    {
+      "date": "2025-06-05",
+      "disclosed_on": "2025-06-09",
+      "from": "SBI_Holdings",
+      "to": "Circle",
+      "amount_usd": 25000000,
+      "type": "strategic_Circle_IPO_share_acquisition",
+      "primary_vs_secondary": "not specified",
+      "cash_to_issuer_confirmed": null,
+      "xrp_related": false
+    },
+    {
+      "date": "2025-06-05",
+      "disclosed_on": "2025-06-09",
+      "from": "SBI_Shinsei_Bank",
+      "to": "Circle",
+      "amount_usd": 25000000,
+      "type": "strategic_Circle_IPO_share_acquisition",
+      "primary_vs_secondary": "not specified",
+      "cash_to_issuer_confirmed": null,
+      "xrp_related": false
+    },
+    {
+      "date": null,
+      "disclosed_on": "2025-06-09",
+      "from": "SBI_Group",
+      "to": "Ripple",
+      "amount_usd": null,
+      "type": "equity_ownership",
+      "ownership_pct_last_disclosed": 9,
+      "ownership_as_of": "2025-06-09",
+      "not_a_2026_cash_flow": true,
+      "xrp_related": false
+    },
+    {
+      "date": "2026-05-12",
+      "from": "SBI_Group",
+      "to": "Circle_Arc",
+      "amount_usd": null,
+      "type": "ARC_presale_participation",
+      "amount_disclosed": false,
+      "xrp_related": false
+    },
+    {
+      "date": "2026-Q3",
+      "from": "ARC_token_presale_consortium",
+      "to": "Circle_Arc",
+      "amount_usd": 222000000,
+      "type": "gross_presale_amount_reported_by_SBI",
+      "not_reconciled_to_circle_q3_revenue": true,
       "xrp_related": false
     }
   ],
@@ -781,6 +907,24 @@
       "url": "https://www.sbivc.co.jp/newsview/2mjic5dcvjtv",
       "source_type": "general customer trading launch announcement",
       "independence_group": "SBI VC Trade USDC launch",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "SBI_CIRCLE_EQUITY_AND_RIPPLE_STAKE_20250609",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "date": "2025-06-09",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "source_type": "parent-company equity investment and Ripple shareholding disclosure",
+      "independence_group": "SBI corporate disclosure",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "SBI_CIRCLE_JV_50_50_20250602",
+      "publisher": "SBI Holdings",
+      "date": "2025-06-02",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "source_type": "investor presentation documenting JV ownership ratios",
+      "independence_group": "SBI corporate disclosure",
       "raw_bytes_captured": false
     }
   ],

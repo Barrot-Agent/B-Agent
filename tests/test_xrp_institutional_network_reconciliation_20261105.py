@@ -22,6 +22,8 @@ def test_institutional_relationship_graph_keeps_direct_and_shared_edges_distinct
     assert edges["BNY_RIPPLE_RLUSD_XRP"]["to"] == "Ripple"
     assert "CIRCLE_RIPPLE" not in edges
     assert data["relationship_interpretation"]["direct_circle_ripple_partnership_established"] is False
+    assert any(x["id"] == "SBI_RIPPLE_OWNERSHIP" for x in data["facts"])
+    assert any(x["id"] == "SBI_CIRCLE_JV_OWNERSHIP" for x in data["facts"])
     assert data["shared_provider_relationships"][0]["provider"] == "BNY"
 
 
@@ -35,7 +37,10 @@ def test_sbi_ripple_and_sbi_circle_are_separate_nonexclusive_relationships():
     assert edges["SBI_VCTRADE_RIPPLE_RLUSD"]["to"] == "Ripple"
     assert "SBI_VCTRADE_RLUSD" not in edges
     assert edges["RIPPLE_STANDARD_CUSTODY_RLUSD_ISSUER"]["to"] == "Standard_Custody_Trust_Company"
-    assert edges["SBI_CIRCLE_EQUITY"]["amount_usd"] == 50_000_000
+    assert edges["SBI_CIRCLE_EQUITY"]["amount_usd"] == 25_000_000
+    assert edges["SBI_SHINSEI_CIRCLE_EQUITY"]["amount_usd"] == 25_000_000
+    assert edges["SBI_CIRCLE_JV"]["ownership_percentages"] == {"SBI_Holdings": 50, "Circle": 50}
+    assert edges["SBI_RIPPLE"]["shareholding_last_disclosed_pct"] == 9
     assert edges["SBI_CIRCLE_EQUITY"]["cash_to_issuer_confirmed"] is None
     assert data["relationship_interpretation"]["sbi_strategy"].startswith("SBI Holdings has distinct direct relationships")
 
@@ -63,7 +68,9 @@ def test_capital_ledger_separates_circle_capital_from_xrp_flows():
     data = _load()
     entries = data["capital_ledger"]
 
-    assert any(x["to"] == "Circle" and x["amount_usd"] == 50_000_000 and x["xrp_related"] is False for x in entries)
+    assert sum(x["amount_usd"] for x in entries if x["to"] == "Circle" and x["amount_usd"] is not None and x["date"] == "2025-06-05") == 50_000_000
+    assert any(x["to"] == "Ripple" and x.get("ownership_pct_last_disclosed") == 9 and x["xrp_related"] is False for x in entries)
+    assert any(x.get("amount_usd") == 222_000_000 and x["to"] == "Circle_Arc" for x in entries)
     assert any(x["to"] == "Circle" and x["amount_usd"] == 100_000_000 and x["xrp_related"] is False for x in entries)
     assert all(x.get("xrp_related") is False for x in entries)
     assert data["model_admission"]["xrp_spot_flow_observed_usd"] is None
