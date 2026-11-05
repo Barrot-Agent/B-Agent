@@ -38,7 +38,10 @@ class ReasoningResult:
 
 @dataclass
 class ActionResult:
+    proposed_improvements: list[str] = field(default_factory=list)
+    dispatched_improvements: list[str] = field(default_factory=list)
     applied_improvements: list[str] = field(default_factory=list)
+    verified_improvements: list[str] = field(default_factory=list)
     dry_run: bool = True
     notes: list[str] = field(default_factory=list)
 
@@ -48,6 +51,7 @@ class VerificationResult:
     passed: bool = False
     checks: list[str] = field(default_factory=list)
     coverage_after: float = 0.0
+    coverage_is_estimate: bool = True
 
 
 @dataclass
@@ -143,7 +147,9 @@ class UpgradeFlywheel:
             report.cycles.append(cycle)
 
             if (
-                cycle.observation.capability_gaps == 0
+                cycle.verification.passed
+                and not cycle.verification.coverage_is_estimate
+                and cycle.observation.capability_gaps == 0
                 and cycle.verification.coverage_after >= _CONVERGENCE_COVERAGE_THRESHOLD
             ):
                 report.converged = True
@@ -210,35 +216,32 @@ class UpgradeFlywheel:
 
     def _act(self, reasoning: ReasoningResult) -> ActionResult:
         notes: list[str] = []
-        applied: list[str] = []
+        dispatched: list[str] = []
         if self._dry_run:
-            notes.append("Dry-run mode enabled; no state-mutating actions were applied.")
+            notes.append("Dry-run mode: recommendations were not dispatched or applied.")
         else:
             for improvement in reasoning.improvements:
                 try:
-                    # Integration hook: each improvement is forwarded to the
-                    # directive platform as a standalone REFINE directive so
-                    # that downstream agents can carry out the change.
                     directive = self._platform.issue_directive(
-                        title="Apply improvement",
+                        title="Request improvement execution",
                         description=improvement,
                         directive_type=DirectiveType.REFINE,
                         agent_ids=self._agent_ids,
                         human_author="Barrot",
                     )
                     self._platform.run_directive(directive.directive_id)
-                    applied.append(improvement)
+                    dispatched.append(improvement)
                 except Exception as exc:  # noqa: BLE001
-                    notes.append(f"Hook failed for improvement: {exc}")
-
-            notes.append(f"{len(applied)} of {len(reasoning.improvements)} improvements applied.")
-
+                    notes.append(f"Dispatch failed for proposal: {exc}")
+            notes.append(f"{len(dispatched)} of {len(reasoning.improvements)} proposals dispatched; none independently verified.")
         return ActionResult(
-            applied_improvements=applied,
+            proposed_improvements=list(reasoning.improvements),
+            dispatched_improvements=dispatched,
+            applied_improvements=[],
+            verified_improvements=[],
             dry_run=self._dry_run,
             notes=notes,
         )
-
     def _verify(self, observation: ObservationResult, action: ActionResult) -> VerificationResult:
         infra = build_reconfiguration_report(
             dry_run=self._dry_run,
