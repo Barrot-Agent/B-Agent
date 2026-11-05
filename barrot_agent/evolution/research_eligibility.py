@@ -109,6 +109,12 @@ def _source_registry(
             raise ResearchEligibilityError(
                 f"source_registry[{index}] raw_capture_status must be byte_complete"
             )
+        source_uri = source.get("source_uri", source.get("url"))
+        if not isinstance(source_uri, str) or not source_uri.strip():
+            raise ResearchEligibilityError(f"source_registry[{index}] needs a source_uri")
+        parsed_uri = urlsplit(source_uri.strip())
+        if parsed_uri.scheme not in {"http", "https"} or not parsed_uri.netloc:
+            raise ResearchEligibilityError(f"source_registry[{index}].source_uri must be HTTP(S)")
         raw_bytes = raw_receipt_bytes.get(receipt_id.strip())
         if not isinstance(raw_bytes, bytes) or not raw_bytes:
             raise ResearchEligibilityError(
@@ -207,12 +213,6 @@ def _source_registry(
         independence_group = source.get("independence_group")
         if not isinstance(independence_group, str) or not independence_group.strip():
             raise ResearchEligibilityError(f"source_registry[{index}] needs an independence_group")
-        source_uri = source.get("source_uri", source.get("url"))
-        if not isinstance(source_uri, str) or not source_uri.strip():
-            raise ResearchEligibilityError(f"source_registry[{index}] needs a source_uri")
-        parsed_uri = urlsplit(source_uri.strip())
-        if parsed_uri.scheme not in {"http", "https"} or not parsed_uri.netloc:
-            raise ResearchEligibilityError(f"source_registry[{index}].source_uri must be HTTP(S)")
 
         source_as_of = _timestamp(
             source.get("source_data_as_of_utc"), f"source_registry[{index}].source_data_as_of_utc"
