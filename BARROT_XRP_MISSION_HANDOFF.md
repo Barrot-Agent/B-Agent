@@ -5955,3 +5955,92 @@ The import was added. The same patch also hardened non-string field rejection an
 ### Timestamp-overlay CI assertion correction — EXECUTED
 
 The second exact-head full-suite run passed 973 tests and 8 subtests, with one failure limited to a test's expected error-message regex. The implementation correctly rejected a naive timestamp and returned the more specific message “must include a UTC timezone offset”; the assertion expected the shorter phrase “include a timezone”. The test expectation now matches the explicit UTC-offset contract. The failed head is superseded and is not treated as verified.
+
+
+---
+
+## Run 11 final verification — 2026-11-05T20:22:00Z
+
+### Exact-head engineering verification — VERIFIED
+
+The final timestamp-correction implementation is on #1640 code head `009126cbafd0a1814ba852f229bb24f6411e848b`.
+
+- Core suite: **613 passed, 8 subtests**.
+- Full repository suite: **974 passed, 8 subtests**.
+- Inclusive coverage: **55.65%**, above the 50% floor.
+- Installed wheel built and installed; packaged Barrot V3, XRP mission and canonical data assets verified.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed gate passed and explicitly kept merge disabled pending gate verification.
+- The Python Actions cache budget is read-only; cache reservation warnings were non-fatal and did not affect tests, packaging or dependency auditing.
+
+Exact evidence:
+- [Full CI — 42102232700](https://github.com/Barrot-Agent/B-Agent/actions/runs/42102232700)
+- [Six-manifest dependency audit — 42102232879](https://github.com/Barrot-Agent/B-Agent/actions/runs/42102232879)
+- [Fail-closed gate — 42102232644](https://github.com/Barrot-Agent/B-Agent/actions/runs/42102232644)
+
+The first implementation head failed two success-path tests because `_canonical_json` was not imported. The next head passed 973 tests but had one assertion-message mismatch. Both were corrected. Only the final head above is verified; earlier failed heads are retained in history and are not counted as passing evidence.
+
+### Current pull-request state — VERIFIED
+
+**PR #1640 — V3/core integration**
+- Head: `009126cbafd0a1814ba852f229bb24f6411e848b`.
+- 300 commits ahead of main; 95 changed files; 19,823 additions and 1,154 deletions.
+- Non-draft, clean and GitHub reports mergeable.
+- 22/22 inline review threads resolved.
+- Actual approving reviews: zero; review submissions are COMMENTED.
+
+**PR #1643 — XRP research archive**
+- Head: `5baa4080913a2bbdca9bf20b6e4ea7c1a33d8c73`.
+- 267 commits ahead of main; 213 changed files; 50,679 additions and 132 deletions.
+- Non-draft, clean and GitHub reports mergeable.
+- 14/14 inline review threads resolved.
+- Actual approving reviews: zero; review submissions are COMMENTED.
+- Its exact-head full suite, six-manifest dependency audit and fail-closed gate passed on that head: [CI 42092284679](https://github.com/Barrot-Agent/B-Agent/actions/runs/42092284679), [audit 42092284846](https://github.com/Barrot-Agent/B-Agent/actions/runs/42092284846), [gate 42092284703](https://github.com/Barrot-Agent/B-Agent/actions/runs/42092284703).
+
+Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. The branches are divergent: #1643 is 267 commits ahead and 300 behind #1640. The only changed-path intersection is `.github/workflows/dependency-audit.yml`, with identical blob `6515307991420ab90d8671034b13ac2eb56190b3`. Do not merge #1643 directly after #1640. Reconcile its unique research paths into one successor based directly on the resulting main after #1640 is merged and verified.
+
+### Main-branch and merge blockers — VERIFIED
+
+- Main is marked protected. Detailed branch-protection inspection returns HTTP 403.
+- The only visible repository ruleset, “Fall Back”, is disabled.
+- No approving reviews exist on either integration PR.
+- GitHub Pages previously deployed after a main push in [run 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489); authorization for another merge-triggered deployment remains unresolved.
+- Main's current commit-status endpoint reports no commit statuses. The latest scheduled Cross Analysis on main passed: [42097899671](https://github.com/Barrot-Agent/B-Agent/actions/runs/42097899671). This does not substitute for a fresh main push CI.
+- Main's tree still lacks the XRP priority-1 mission registry/data and public ingestion module. They are not active on main.
+
+Neither PR was merged. No branch-protection bypass was attempted.
+
+### Newly identified legacy signal-integrity blockers — EXECUTED AUDIT
+
+The scheduled `.github/workflows/check-signal-accuracy.yml` and `.github/workflows/daily-digest.yml` are disabled on main, so no active scheduled writer was found in those workflows. The remaining public/manual paths are still unsafe:
+
+1. `web/signal_accuracy.json` exposes a legacy 45.5% figure (772/1,697) without a fixed-horizon, immutable, point-in-time out-of-sample evaluation. It must not be described as predictive accuracy.
+2. `scripts/daily_digest.py` still reads and publishes that percentage; `scripts/check_signal_accuracy.py` can still fetch mutable live prices and rewrite signal history/accuracy files if manually invoked.
+3. `web/landing.html` still markets ternary XRP trading signals and exposes `getSignalAccuracy`; `web/signals.html` still maps numeric scores to BUY/SELL. These public claims need a NOT_EVALUATED/NOT_ISSUED state before any forecast service is represented as validated.
+4. Legacy, unreferenced modules remain in the tree: `barrot_agent/analysis/xrp_telemetry_matrix.py` hardcodes a $1.185 price, 0.94 sentiment and 0.233 shear value and emits an accumulation recommendation; `barrot_agent/ingestion/council_ingest_node.py` can write `MAX_ACCUMULATION_TRIGGERED` and a 1.15 multiplier from the static report; `barrot_agent/orchestration/orchestrator_bridge.py` reads that file but its actual orchestrator update call is commented/no-op; `barrot_agent/tools/upgrade_bundle.py` can generate an uncalibrated BUY/SELL heuristic from order-book, XRPL transaction-count and Groq-sentiment thresholds and write a Termux bundle if manually run.
+5. Root/data `council_weights.json` and `data/mmi_monetization_unified.json` retain stale June 15 accumulation directives. No workflow or other-code references to the legacy council modules were found; they are classified as manual-only/unreferenced, not active scheduled automation. The original files have not been overwritten or deleted.
+
+Open draft proposals with overlapping legacy accuracy/public-signal objectives include #1343, #1386, #1397, #1414, #1424 and #1550. #1154 and #1133 contain unique sentiment-propagation changes and are not classified as exact duplicates. No new PR was created and no source PR was closed. Reconcile these proposals into one safe integration path; do not bulk-close them.
+
+### Market observation and research status
+
+The 20:03:37 UTC Kraken XRP/USD retrieval is recorded in the prior Run 11 addendum. It is a web-rendered text extract, not original HTTP wire bytes or an independently timestamped raw receipt, so it remains model-ineligible. Binance's 19:00:33 UTC premium-index observation is stale relative to that Kraken capture and is not treated as synchronized cross-venue data.
+
+The exact-phrase searches for ASK Coin, “actual capital” and “SBIC, ChatGPT SBIC” produced no new verified direct XRP relationship. Existing distinctions remain: Japanese SBIC East/Central/West are separate from SBI Holdings; academic Social Bias Inference Corpus is a different SBIC expansion. The @drkamilahstevenson public-channel match remains separate from verified legal identity or external social handles; the existing 13-video inventory is not exhaustive.
+
+### Prediction and platform status
+
+Forecast status remains `NOT_ISSUED`. The new timestamp correction consumer is verified for an in-memory, preimage-bound research view only; it has not been applied to the actual #1643 ETF artifact and does not write to the feature store. Historical multi-venue exchange flows, issuer cash creations/redemptions, collateral/custody balances, probability calibration, drift monitoring and sufficient shadow outcomes remain incomplete.
+
+Only the ChatGPT-to-GitHub repository data path is verified. Copilot review activity is one-off. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows remain unverified. Groq is not Grok.
+
+### Next concrete actions
+
+1. Obtain independent approvals and verify actual branch-protection requirements; resolve GitHub Pages deployment authorization.
+2. Merge #1640 only when every required condition is satisfied. Fetch main afterward, verify the merge commit and files, inspect automatic workflows and run main CI.
+3. Create one consolidated research successor directly on resulting main from #1643's unique paths; apply the timestamp correction to the actual ETF artifact with an end-to-end test.
+4. Reconcile the stale legacy accuracy proposals into one NOT_EVALUATED public status path; quarantine the unreferenced static accumulation/BUY-SELL modules without deleting historical artifacts.
+5. Run the full repository suite, exact-head dependency/security audit and fail-closed gate on the successor before merge.
+6. Continue raw-source retention, independent timestamp anchoring, historical point-in-time datasets, chronological walk-forward evaluation, calibration, drift monitoring and shadow outcomes.
+
+No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
