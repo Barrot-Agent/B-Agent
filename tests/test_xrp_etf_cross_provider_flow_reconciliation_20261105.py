@@ -81,7 +81,7 @@ def test_goldman_q2_13f_reports_five_xrp_etf_share_positions_not_direct_xrp():
     assert sum(x["value_usd"] for x in item["q2_xrp_etf_long_positions"]) == item["q2_total_value_usd"]
     assert sum(x["shares"] for x in item["q2_xrp_etf_long_positions"]) == item["q2_total_shares"]
     assert item["q1_positions_in_these_five_cusips_found"] is False
-    assert "not necessarily Goldman Sachs proprietary capital" in " ".join(item["interpretation"])
+    assert "13F positions may represent client portfolios or proprietary holdings; the filing does not distinguish them." in " ".join(item["interpretation"])
 
 
 def test_goldman_armada_13f_position_is_pre_merger_not_current_xrpn():
