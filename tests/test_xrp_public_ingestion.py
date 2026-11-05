@@ -60,6 +60,21 @@ def _fake_fetcher(captured: datetime):
             }
         elif source_id == "binance_perp_open_interest":
             payload = {"symbol": "XRPUSDT", "time": captured_ms - 3000, "openInterest": "2500000"}
+        elif source_id == "binance_perp_funding_history":
+            payload = [
+                {"symbol": "XRPUSDT", "fundingRate": "-0.0002", "fundingTime": captured_ms - 9 * 3600000, "markPrice": "1.280"},
+                {"symbol": "XRPUSDT", "fundingRate": "0.0001", "fundingTime": captured_ms - 3600000, "markPrice": "1.290"},
+            ]
+        elif source_id == "binance_perp_open_interest_history":
+            payload = [
+                {"symbol": "XRPUSDT", "sumOpenInterest": "2500000", "sumOpenInterestValue": "3225000", "timestamp": captured_ms - 7200000},
+                {"symbol": "XRPUSDT", "sumOpenInterest": "2510000", "sumOpenInterestValue": "3247900", "timestamp": captured_ms - 3600000},
+            ]
+        elif source_id == "binance_perp_global_long_short_ratio":
+            payload = [
+                {"symbol": "XRPUSDT", "longShortRatio": "1.25", "longAccount": "0.5556", "shortAccount": "0.4444", "timestamp": captured_ms - 7200000},
+                {"symbol": "XRPUSDT", "longShortRatio": "1.20", "longAccount": "0.5455", "shortAccount": "0.4545", "timestamp": captured_ms - 3600000},
+            ]
         elif source_id == "coinbase_spot_ticker":
             payload = {
                 "trade_id": 123456,
@@ -189,7 +204,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 11, (
+    assert summary["source_receipt_count"] == 14, (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -208,8 +223,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v2"
-    assert summary["parser_version"] == "xrp-public-market-v2"
+    assert summary["adapter_version"] == "xrp-public-market-v3"
+    assert summary["parser_version"] == "xrp-public-market-v3"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -218,6 +233,17 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert len(coinbase_closes) == 2
     assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
+    historical_derivatives = [
+        item for item in snapshot["records"]
+        if item["feature_id"].startswith("xrp.perpetual.binance.1h.")
+        or item["feature_id"] == "xrp.perpetual.binance.funding_rate"
+    ]
+    assert historical_derivatives
+    assert all(item["known_at_utc"] == "2026-11-04T12:30:00.000000Z" for item in historical_derivatives)
+    assert all(item["event_time_utc"] < item["known_at_utc"] for item in historical_derivatives)
+    assert any(item["feature_id"] == "xrp.perpetual.binance.1h.open_interest_value" and item["unit"] == "USDT" for item in historical_derivatives)
+    assert any(item["feature_id"] == "xrp.perpetual.binance.1h.global_long_short_account_ratio" for item in historical_derivatives)
+    assert any(item["feature_id"] == "xrp.perpetual.binance.funding_rate" and item["value"] < 0 for item in historical_derivatives)
 
     raw_only = json.loads((tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8"))
     assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
@@ -230,6 +256,9 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
     assert manifest["xrp_etf_xrpr_issuer_page"]["model_eligible_source"] is False
     assert manifest["xrp_etf_xrpr_issuer_page"]["source_data_as_of_utc"] is None
+    for source_id in ("binance_perp_funding_history", "binance_perp_open_interest_history", "binance_perp_global_long_short_ratio"):
+        assert manifest[source_id]["model_eligible_source"] is True
+        assert len(manifest[source_id]["raw_content_sha256"]) == 64
     assert all(len(item["raw_content_sha256"]) == 64 for item in receipts)
     assert (tmp_path / "run" / "feature_store.sqlite3").exists()
 
@@ -500,3 +529,80 @@ def test_public_html_fetch_rejects_untrusted_redirect(monkeypatch):
     )
     with pytest.raises(XRPIngestionError, match="redirected outside allowlisted"):
         fetch_public_html("xrp_etf_xrpr_issuer_page", dict(ENDPOINTS)["xrp_etf_xrpr_issuer_page"])
+
+
+def test_binance_funding_history_preserves_signed_event_rates_and_capture_vintage():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "binance_perp_funding_history", dict(ENDPOINTS)["binance_perp_funding_history"]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        payload, source_id=source_id, url=url, digest="a" * 64, captured=captured
+    )
+    funding = [item for item in records if item["feature_id"] == "xrp.perpetual.binance.funding_rate"]
+    assert [item["value"] for item in funding] == [-0.0002, 0.0001]
+    assert source_as_of == funding[-1]["event_time_utc"]
+    assert eligible is True and reason == ""
+    assert all(item["known_at_utc"] == "2026-11-05T04:00:00.000000Z" for item in funding)
+    assert all(item["event_time_utc"] < item["known_at_utc"] for item in funding)
+    assert all(item["unit"] == "fraction_per_settlement" for item in funding)
+    assert all("not assumed fixed" in item["limitations"][1] for item in funding)
+
+    invalid = [dict(payload[0]), dict(payload[1], fundingTime=payload[0]["fundingTime"])]
+    with pytest.raises(XRPIngestionError, match="duplicate"):
+        PARSERS[source_id](
+            invalid, source_id=source_id, url=url, digest="b" * 64, captured=captured
+        )
+
+
+def test_binance_open_interest_history_keeps_contracts_and_quote_value_separate():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "binance_perp_open_interest_history", dict(ENDPOINTS)["binance_perp_open_interest_history"]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        payload, source_id=source_id, url=url, digest="c" * 64, captured=captured
+    )
+    contracts = [item for item in records if item["feature_id"].endswith("open_interest_contracts")]
+    values = [item for item in records if item["feature_id"].endswith("open_interest_value")]
+    assert [item["value"] for item in contracts] == [2500000.0, 2510000.0]
+    assert [item["value"] for item in values] == [3225000.0, 3247900.0]
+    assert all(item["unit"] == "contracts" for item in contracts)
+    assert all(item["unit"] == "USDT" for item in values)
+    assert source_as_of == contracts[-1]["event_time_utc"]
+    assert eligible is True and reason == ""
+    assert all(item["known_at_utc"] == "2026-11-05T04:00:00.000000Z" for item in records)
+    assert "no-trade periods may be omitted" in records[0]["limitations"][0]
+
+
+def test_binance_global_long_short_ratio_is_account_based_and_validated():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "binance_perp_global_long_short_ratio", dict(ENDPOINTS)["binance_perp_global_long_short_ratio"]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        payload, source_id=source_id, url=url, digest="d" * 64, captured=captured
+    )
+    ratios = [item for item in records if item["feature_id"].endswith("global_long_short_account_ratio")]
+    assert [item["value"] for item in ratios] == [1.25, 1.20]
+    assert all("account-count ratios" in item["limitations"][0] for item in ratios)
+    assert source_as_of == ratios[-1]["event_time_utc"]
+    assert eligible is True and reason == ""
+
+    invalid = [dict(payload[0], longShortRatio="3.0")]
+    with pytest.raises(XRPIngestionError, match="conflicts"):
+        PARSERS[source_id](
+            invalid, source_id=source_id, url=url, digest="e" * 64, captured=captured
+        )
+
+
+def test_historical_derivatives_reject_future_event_timestamps():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "binance_perp_funding_history", dict(ENDPOINTS)["binance_perp_funding_history"]
+    payload = [{
+        "symbol": "XRPUSDT",
+        "fundingRate": "0.0001",
+        "fundingTime": _iso_ms(captured + timedelta(seconds=1)),
+        "markPrice": "1.29",
+    }]
+    with pytest.raises(XRPIngestionError, match="later than capture"):
+        PARSERS[source_id](
+            payload, source_id=source_id, url=url, digest="f" * 64, captured=captured
+        )

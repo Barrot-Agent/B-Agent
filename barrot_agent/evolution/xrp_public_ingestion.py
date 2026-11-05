@@ -25,8 +25,8 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com"}
-ADAPTER_VERSION = "xrp-public-market-v2"
-PARSER_VERSION = "xrp-public-market-v2"
+ADAPTER_VERSION = "xrp-public-market-v3"
+PARSER_VERSION = "xrp-public-market-v3"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -35,6 +35,9 @@ ENDPOINTS = (
     ("binance_spot_klines", "https://api.binance.com/api/v3/klines?symbol=XRPUSDT&interval=1h&limit=1000"),
     ("binance_perp_premium", "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT"),
     ("binance_perp_open_interest", "https://fapi.binance.com/fapi/v1/openInterest?symbol=XRPUSDT"),
+    ("binance_perp_funding_history", "https://fapi.binance.com/fapi/v1/fundingRate?symbol=XRPUSDT&limit=1000"),
+    ("binance_perp_open_interest_history", "https://fapi.binance.com/futures/data/openInterestHist?symbol=XRPUSDT&period=1h&limit=500"),
+    ("binance_perp_global_long_short_ratio", "https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=XRPUSDT&period=1h&limit=500"),
     ("coinbase_spot_ticker", "https://api.exchange.coinbase.com/products/XRP-USD/ticker"),
     ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
     ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
@@ -124,6 +127,19 @@ def _number(value: Any, field: str, *, allow_zero: bool = True) -> float:
         raise XRPIngestionError(f"{field} must be numeric") from None
     if not math.isfinite(number) or (number < 0 if allow_zero else number <= 0):
         raise XRPIngestionError(f"{field} must be finite and in range")
+    return number
+
+
+def _signed_number(value: Any, field: str) -> float:
+    """Parse a finite signed market value such as a negative funding rate."""
+    if isinstance(value, bool):
+        raise XRPIngestionError(f"{field} must be numeric")
+    try:
+        number = float(value)
+    except (TypeError, ValueError, OverflowError):
+        raise XRPIngestionError(f"{field} must be numeric") from None
+    if not math.isfinite(number):
+        raise XRPIngestionError(f"{field} must be finite")
     return number
 
 
@@ -509,6 +525,215 @@ def _parse_binance_open_interest(payload: Any, *, source_id: str, url: str, dige
     return [record], event_s, eligible, reason
 
 
+def _parse_binance_funding_history(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+    """Capture Binance USD-M funding settlements with their actual event times."""
+    if not isinstance(payload, list) or not payload:
+        raise XRPIngestionError("Binance funding history must be a non-empty array")
+    captured_s = _iso(captured)
+    records = []
+    seen = set()
+    previous_time = None
+    latest_time = None
+    limitations = [
+        "Single Binance USD-M XRPUSDT perpetual contract.",
+        "Funding is a signed fraction per actual settlement event; settlement intervals are not assumed fixed or annualized.",
+        "Historical rows are first known to this collector at captured_at_utc and cannot be used at earlier point-in-time origins.",
+    ]
+    for row in payload:
+        if not isinstance(row, Mapping) or row.get("symbol") != "XRPUSDT":
+            raise XRPIngestionError("Binance funding history symbol or row shape mismatch")
+        event_time = _from_ms(row.get("fundingTime"), "Binance fundingTime")
+        if event_time > captured:
+            raise XRPIngestionError("Binance fundingTime is later than capture time")
+        event_s = _iso(event_time)
+        if event_s in seen:
+            raise XRPIngestionError("Binance funding history contains a duplicate settlement timestamp")
+        if previous_time is not None and event_time < previous_time:
+            raise XRPIngestionError("Binance funding history is not in ascending event-time order")
+        seen.add(event_s)
+        previous_time = event_time
+        latest_time = event_time if latest_time is None or event_time > latest_time else latest_time
+        rate = _signed_number(row.get("fundingRate"), "Binance fundingRate")
+        records.append(
+            _feature_record(
+                feature_id="xrp.perpetual.binance.funding_rate",
+                value=rate,
+                unit="fraction_per_settlement",
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="binance",
+                venue="Binance",
+                instrument="XRPUSDT USD-M perpetual",
+                currency_pair="XRP/USDT",
+                market_type="perpetual",
+                aggregation_window="funding_event",
+                model_eligible=True,
+                quality_status="verified",
+                limitations=limitations,
+            )
+        )
+        mark_price = row.get("markPrice")
+        if mark_price not in (None, ""):
+            records.append(
+                _feature_record(
+                    feature_id="xrp.perpetual.binance.funding_mark_price",
+                    value=_number(mark_price, "Binance funding markPrice", allow_zero=False),
+                    unit="USDT/XRP",
+                    event_time_utc=event_s,
+                    source_data_as_of_utc=event_s,
+                    captured_at_utc=captured_s,
+                    source_id=source_id,
+                    source_uri=url,
+                    raw_sha256=digest,
+                    independence_group="binance",
+                    venue="Binance",
+                    instrument="XRPUSDT USD-M perpetual",
+                    currency_pair="XRP/USDT",
+                    market_type="perpetual",
+                    aggregation_window="funding_event",
+                    model_eligible=True,
+                    quality_status="verified",
+                    limitations=limitations,
+                )
+            )
+    if not records or latest_time is None:
+        raise XRPIngestionError("Binance funding history contains no usable settlements")
+    return records, _iso(latest_time), True, ""
+
+
+def _parse_binance_open_interest_history(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+    """Capture Binance's one-hour open-interest history without inventing gaps."""
+    if not isinstance(payload, list) or not payload:
+        raise XRPIngestionError("Binance open-interest history must be a non-empty array")
+    captured_s = _iso(captured)
+    records = []
+    seen = set()
+    previous_time = None
+    latest_time = None
+    limitations = [
+        "Single Binance USD-M XRPUSDT perpetual contract; endpoint history is limited to the latest 30 days and no-trade periods may be omitted.",
+        "Historical rows are first known to this collector at captured_at_utc and cannot be used at earlier point-in-time origins.",
+        "Open-interest contracts and Binance-reported USDT value are retained separately; no USD conversion or cross-venue aggregation is inferred.",
+    ]
+    for row in payload:
+        if not isinstance(row, Mapping) or row.get("symbol") != "XRPUSDT":
+            raise XRPIngestionError("Binance open-interest history symbol or row shape mismatch")
+        event_time = _from_ms(row.get("timestamp"), "Binance open-interest history timestamp")
+        if event_time > captured:
+            raise XRPIngestionError("Binance open-interest history timestamp is later than capture time")
+        event_s = _iso(event_time)
+        if event_s in seen:
+            raise XRPIngestionError("Binance open-interest history contains a duplicate timestamp")
+        if previous_time is not None and event_time < previous_time:
+            raise XRPIngestionError("Binance open-interest history is not in ascending event-time order")
+        seen.add(event_s)
+        previous_time = event_time
+        latest_time = event_time if latest_time is None or event_time > latest_time else latest_time
+        metrics = (
+            ("sumOpenInterest", "xrp.perpetual.binance.1h.open_interest_contracts", "contracts"),
+            ("sumOpenInterestValue", "xrp.perpetual.binance.1h.open_interest_value", "USDT"),
+        )
+        for field, feature_id, unit in metrics:
+            records.append(
+                _feature_record(
+                    feature_id=feature_id,
+                    value=_number(row.get(field), f"Binance open-interest history {field}", allow_zero=False),
+                    unit=unit,
+                    event_time_utc=event_s,
+                    source_data_as_of_utc=event_s,
+                    captured_at_utc=captured_s,
+                    source_id=source_id,
+                    source_uri=url,
+                    raw_sha256=digest,
+                    independence_group="binance",
+                    venue="Binance",
+                    instrument="XRPUSDT USD-M perpetual",
+                    currency_pair="XRP/USDT",
+                    market_type="perpetual",
+                    aggregation_window="1h",
+                    model_eligible=True,
+                    quality_status="verified",
+                    limitations=limitations,
+                )
+            )
+    if not records or latest_time is None:
+        raise XRPIngestionError("Binance open-interest history contains no usable observations")
+    return records, _iso(latest_time), True, ""
+
+
+def _parse_binance_global_long_short_ratio(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+    """Capture global account ratios without treating account counts as notional."""
+    if not isinstance(payload, list) or not payload:
+        raise XRPIngestionError("Binance global long/short history must be a non-empty array")
+    captured_s = _iso(captured)
+    records = []
+    seen = set()
+    previous_time = None
+    latest_time = None
+    limitations = [
+        "Global long/short values are account-count ratios and fractions, not position size, notional exposure or trader capital.",
+        "Single Binance USD-M XRPUSDT perpetual contract; endpoint history is limited to the latest 30 days and no-trade periods may be omitted.",
+        "Historical rows are first known to this collector at captured_at_utc and cannot be used at earlier point-in-time origins.",
+    ]
+    for row in payload:
+        if not isinstance(row, Mapping) or row.get("symbol") != "XRPUSDT":
+            raise XRPIngestionError("Binance global long/short history symbol or row shape mismatch")
+        event_time = _from_ms(row.get("timestamp"), "Binance global long/short timestamp")
+        if event_time > captured:
+            raise XRPIngestionError("Binance global long/short timestamp is later than capture time")
+        event_s = _iso(event_time)
+        if event_s in seen:
+            raise XRPIngestionError("Binance global long/short history contains a duplicate timestamp")
+        if previous_time is not None and event_time < previous_time:
+            raise XRPIngestionError("Binance global long/short history is not in ascending event-time order")
+        seen.add(event_s)
+        previous_time = event_time
+        latest_time = event_time if latest_time is None or event_time > latest_time else latest_time
+        ratio = _number(row.get("longShortRatio"), "Binance longShortRatio", allow_zero=False)
+        long_fraction = _number(row.get("longAccount"), "Binance longAccount", allow_zero=False)
+        short_fraction = _number(row.get("shortAccount"), "Binance shortAccount", allow_zero=False)
+        if long_fraction > 1 or short_fraction > 1 or abs((long_fraction + short_fraction) - 1.0) > 0.02:
+            raise XRPIngestionError("Binance long/short account fractions must sum to one")
+        implied_ratio = long_fraction / short_fraction
+        if not math.isclose(ratio, implied_ratio, rel_tol=0.05, abs_tol=0.02):
+            raise XRPIngestionError("Binance longShortRatio conflicts with account fractions")
+        metrics = (
+            ("xrp.perpetual.binance.1h.global_long_short_account_ratio", ratio, "ratio"),
+            ("xrp.perpetual.binance.1h.global_long_account_fraction", long_fraction, "fraction_of_accounts"),
+            ("xrp.perpetual.binance.1h.global_short_account_fraction", short_fraction, "fraction_of_accounts"),
+        )
+        for feature_id, value, unit in metrics:
+            records.append(
+                _feature_record(
+                    feature_id=feature_id,
+                    value=value,
+                    unit=unit,
+                    event_time_utc=event_s,
+                    source_data_as_of_utc=event_s,
+                    captured_at_utc=captured_s,
+                    source_id=source_id,
+                    source_uri=url,
+                    raw_sha256=digest,
+                    independence_group="binance",
+                    venue="Binance",
+                    instrument="XRPUSDT USD-M perpetual",
+                    currency_pair="XRP/USDT",
+                    market_type="perpetual",
+                    aggregation_window="1h",
+                    model_eligible=True,
+                    quality_status="verified",
+                    limitations=limitations,
+                )
+            )
+    if not records or latest_time is None:
+        raise XRPIngestionError("Binance global long/short history contains no usable observations")
+    return records, _iso(latest_time), True, ""
+
+
 def _parse_coinbase_ticker(
     payload: Any,
     *,
@@ -872,6 +1097,9 @@ PARSERS = {
     "binance_spot_klines": _parse_binance_klines,
     "binance_perp_premium": _parse_binance_premium,
     "binance_perp_open_interest": _parse_binance_open_interest,
+    "binance_perp_funding_history": _parse_binance_funding_history,
+    "binance_perp_open_interest_history": _parse_binance_open_interest_history,
+    "binance_perp_global_long_short_ratio": _parse_binance_global_long_short_ratio,
     "coinbase_spot_ticker": _parse_coinbase_ticker,
     "coinbase_spot_candles": _parse_coinbase_candles,
     "coinbase_spot_book": _raw_only_coinbase_book,
@@ -1214,8 +1442,9 @@ def run_ingestion(
         "feature_store_backup_frequency": "daily_plus_manual_dispatch",
         "feature_store_rebuild_from_raw_artifacts_implemented": False,
         "limitations": [
-            "Spot coverage includes Binance, Coinbase and Kraken; perpetual coverage remains Binance-only in this adapter.",
-            "USDT quotes are not converted to USD; open interest remains in contracts.",
+            "Spot coverage includes Binance, Coinbase and Kraken; derivatives history is Binance USD-M XRPUSDT only.",
+            "USDT quotes and Binance-reported open-interest value are not converted to USD; open-interest contracts, quote value, funding fractions and account ratios remain separate units.",
+            "Historical Binance funding settlements are timestamped per event; the actual funding interval is not assumed fixed. Binance open-interest and global long/short history are one-hour observations limited to the latest 30 days, with no-trade gaps preserved as missing.",
             "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header.",
             "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase candle pagination is not yet implemented.",
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
@@ -1229,7 +1458,7 @@ def run_ingestion(
     return summary
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Capture public XRP spot, order-book and perpetual-market data.")
+    parser = argparse.ArgumentParser(description="Capture public XRP spot, order-book, funding, open-interest and positioning data.")
     parser.add_argument("--output-dir", default="artifacts/xrp_ingestion")
     args = parser.parse_args()
     summary = run_ingestion(args.output_dir)
