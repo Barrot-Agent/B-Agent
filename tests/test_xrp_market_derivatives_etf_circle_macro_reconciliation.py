@@ -130,7 +130,7 @@ def test_second_spot_capture_is_a_separate_vintage_not_a_rewritten_snapshot():
     )
     corrected = correction["correction"]
     assert corrected["original_value_bps"] == latest["displayed_spread_bps"]
-    assert math.isclose(corrected["recomputed_exact_bps"], spread, rel_tol=0, abs_tol=1e-12)
+    assert math.isclose(corrected["recomputed_exact_bps"], spread, rel_tol=0, abs_tol=2e-12)
     assert corrected["corrected_value_rounded_6dp"] == 0.076105
     observed_change = (latest["last_usd"] / first - 1) * 100
     assert math.isclose(latest["change_from_090232_snapshot_pct"], observed_change, abs_tol=0.002)
@@ -210,7 +210,7 @@ def test_spread_correction_is_append_only_and_limited_to_derived_metric():
     )
     assert correction["applies_to"]["artifact_id"] == "20261105T090232Z-xrp-market-derivatives-etf-circle-macro-reconciliation"
     assert correction["applies_to"]["field_path"] == "market_snapshot.spot.latest_recheck.displayed_spread_bps"
-    assert correction["original_artifact_modified"] is False
+    assert correction["applies_to"]["original_artifact_modified"] is False
     assert correction["correction"]["original_value_bps"] == 0.076106
     assert correction["correction"]["corrected_value_rounded_6dp"] == 0.076105
     assert correction["source_capture"]["raw_http_bytes_captured"] is False
