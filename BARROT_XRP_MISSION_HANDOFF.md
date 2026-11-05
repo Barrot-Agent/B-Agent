@@ -2753,3 +2753,187 @@ The SEC filing identifies Coinbase as the principal market used for the June 30 
 PR #1640 remains fully tested on its current code/test head. PR #1643's current full suite is pending after the test assertion correction. Both PRs have zero approving reviews. Main branch-protection inspection returns HTTP 403, the visible ruleset is disabled, and GitHub Pages settings remain inaccessible after the prior Pages deployment side effect. No merge or deployment was performed.
 
 Next: complete current #1643 full-suite verification; then update this handoff/PR body with the exact final head and run evidence. Obtain required independent approvals and protection/deployment authorization. Merge #1640 only when all gates are satisfied, verify the merge on main and rerun main CI, then reconcile #1643 against that new main without rewriting history. Preserve unique PR work and close only exact superseded sources after main verification.
+
+
+---
+
+## Run 11 — 2026-11-05T03:30Z
+
+### Mainline and integration baseline
+
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main repository tree: 1,403 entries.
+- Open PR inventory: 369 total; 354 drafts and 15 non-drafts.
+- No mainline merge occurred during this run.
+- Barrot V3 remains the execution, orchestration, safety and verification foundation. XRP intelligence is encoded as priority 1 on the existing V3 integration branch, not yet on main.
+
+### Exact integration state
+
+**PR #1640 — V3/core integration**
+
+- Head: `25557e32e34498111c4b486394772d3d0c1862fc`.
+- 131 commits ahead, 0 behind main; 71 changed files.
+- Core suite: 582 passed, 8 subtests passed.
+- Full repository suite: 867 passed, 8 subtests passed.
+- Inclusive coverage: 53.25%, above the 50% floor.
+- Dependency audit: 15 PEP 621 dependency entries and five manifests checked; no known vulnerabilities.
+- Fail-closed gate passed and explicitly keeps automatic merging disabled.
+- Exact-head evidence: CI run 41958273705; dependency audit 41958273869; gated merge 41958273645.
+
+**PR #1643 — XRP research archive**
+
+- Current head: `ed9d503fc13a3208de6f937d8b58d45c68c8a280`.
+- 116 commits ahead, 0 behind main; 106 changed files.
+- Core suite: 495 passed, 8 subtests passed.
+- Fail-closed gate passed; automatic merging remains disabled.
+- Full repository suite run 41961402357 is still in progress on this exact head. Do not report a full-suite pass until its final conclusion and summary are retrieved.
+- A previous exact head, `3e55858dae6f366b537ba0ec3eb592a282214a0e`, produced 839 passed and one failed assertion. The failure was a case-sensitive string assertion in the new Evernorth relationship test. It has been corrected on `ed9d503`; the current full-suite run is the required verification.
+- The two integration PRs have zero changed-path overlap. Both remain 0 commits behind main.
+
+Mainline reference evidence:
+- Main full suite on SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`: 718 passed, 8 subtests passed (run 41799856459).
+- Scheduled read-only Cross Analysis run 41957891971 succeeded.
+- A previous main push triggered GitHub Pages build/deployment run 41799855489. This external side effect remains a merge-authorization blocker.
+
+### Branch protection, approvals and merge decision
+
+- GitHub reports main as protected.
+- The visible classic branch protection summary has `enforcement_level=non_admins` but empty required status-check contexts and checks.
+- Direct branch-protection detail inspection returns HTTP 403.
+- Repository ruleset 10863829, “Fall Back,” is disabled.
+- Required pull-request review settings cannot be independently verified.
+- PR #1640: eight submitted reviews, zero approvals; 22/22 review threads resolved.
+- PR #1643: six submitted reviews, zero approvals; 14/14 review threads resolved.
+- Both PRs are mergeable relative to main, but the required independent approvals and enforceable check configuration are not established. PR #1643 also has an exact-head full-suite run in progress.
+- No branch protection was bypassed. Neither PR was merged. No PR was closed.
+
+### New XRP market, ledger and ETF evidence
+
+Research artifact:
+`research/xrp_intelligence/20261105T030131Z-live-market-etf-amendment-reconciliation.json`
+
+Regression tests:
+`tests/test_xrp_live_market_reconciliation.py`
+
+**Spot and derivatives snapshot — captured 2026-11-05T03:01:31Z**
+
+- Kraken XRP/USD: last 1.30546; bid 1.30542 (3,417 XRP); ask 1.30545 (192 XRP); displayed top-of-book spread 0.2298 bps; 24-hour volume 33.2935 million XRP; 24-hour VWAP 1.30410513; high 1.34; low 1.24016.
+- Kraken ticker response contains no exchange event timestamp. It is one venue's top of book, not a synchronized multi-venue depth ladder.
+- Binance XRPUSDT perpetual premium response: mark 1.30828197; index 1.30810694; last funding rate 0.00010000; next funding timestamp 08:00 UTC. Exchange response time was 02:25:56 UTC, 35m35s before capture. Do not treat it as synchronized or fresh short-horizon evidence; the funding interval was not independently verified.
+- XRPL Dashboard displayed 1.3066 at 02:59 UTC and ledger 108122913. Its validator roll call was 02:57 UTC at ledger 108122879, with 35 validators heard and 29 required. Page header, roll-call and footer cache timestamps do not reconcile; preserve the conflict.
+- `fixCleanup3_4_0` is enabled at ledger 108112129 from 2026-11-04 14:52 UTC. This is not native lending activation. Latest displayed votes: SingleAssetVault 21/35; LendingProtocol 19/35; LendingProtocolV1_1 19/35; no lending activation/countdown.
+
+**ETF-flow disagreement**
+
+- XRP Insights: -194,875 XRP across six US spot XRP ETFs plus BITW over Nov 2–3; Nov 4 row provisional. The series is derived from issuer-reported holdings changes, not verified same-day cash subscriptions or spot purchases.
+- CryptoKeyhole: -3,339 XRP on Nov 2 and -3,339 XRP on Nov 3 across four funds; Nov 4 contains only one of four issuer files. Its universe excludes GXRP, XRPR and BITW.
+- Alpha Finance: $0 displayed on Nov 4 across five funds; +$4.8M over seven sessions and +$78.9M over 30 sessions. It does not publish holdings/AUM in the retrieved extract.
+- Units, fund universes, provisional status and methodologies differ. Do not average these series or convert holdings deltas into verified cash flow.
+
+Sources: [Kraken ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [Binance premium index](https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT), [XRPL Dashboard](https://xrpldashboard.com/amendments), [XRP Insights](https://xrp-insights.com/data), [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/), [Alpha Finance](https://alphafinance.io/etf/xrp/).
+
+### Evernorth actual-capital, ownership and custody reconciliation
+
+Research artifact:
+`research/xrp_intelligence/20261105T031000Z-evernorth-actual-capital-facility-reconciliation.json`
+
+Regression tests:
+`tests/test_xrp_evernorth_capital_reconciliation.py`
+
+Primary source: [Evernorth SEC 424B3 prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm), [Oct 23 SEC 8-K](https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm), [SEC effectiveness notice](https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/9999999995-26-003391-index.htm).
+
+**Actual capital and in-kind contributions — keep separate**
+
+- Advance Funding: approximately $214.05M cash plus 600,000 XRP. A separate SEC disclosure gives the exact cash figure as $214,049,995, a $5 difference from the prospectus's rounded $214.05M. The cash was used to purchase 84,365,876 XRP in 2025.
+- Delayed Funding: $10.5M cash plus 200,000 XRP; subscribers paid before closing and shares were issued at the Oct 9, 2026 closing. This is issuer-disclosed funding, not merely a pending commitment.
+- Convertible note: $30M principal, $29M net cash after a $1M fee. Purchaser: NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3. The financial notes use Oct 9 as the Closing Date; the prospectus summary says issuance/sale completed Oct 12. Preserve both dates.
+- Related-party credit: Pathfinder borrowed $9.7M from Ripple Labs Inc. under a $10M facility as of Oct 7. Amounts became repayable within five business days after the Oct 9 closing. Repayment status is not verified. This is related-party debt, not equity and not the Cantor ELOC.
+- Ripple directly contributed 126,791,458 XRP to Pathfinder.
+- Larsen Lam Children's Remainder Trust contributed 50,000,000 XRP. The issuer describes the trust as an investor affiliated with Ripple and defines it as the Contributor Related Party Entity. This is not a direct Ripple contribution.
+- RippleWorks contributed 211,319,096.061435 XRP to Arrington XRP Capital Fund, LP, the Series C Sponsor. This is a RippleWorks/sponsor contribution, not a direct Ripple corporate contribution. RippleWorks is a limited partner and has specified voting instructions over 4,215,479 shares.
+
+**Closing ownership: economic ownership is not voting power**
+
+- SBI means SBI Holdings, Inc. The four issuer-defined SBI Stockholders are SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc.
+- The pro forma closing table reports SBI at 39.9% of voting power but 21.4% of total common stock. The group held 9,431,914 Class A shares (36.1% of Class A) and 2,359,038 non-voting Class C shares (7.5% of Class C). The 39.9% figure is voting power, not economic ownership.
+- Ripple and the Contributor Related Party Entity together had a 9.9% voting-power limit and 4.2% of total common stock. Ripple alone: 3.0% of common stock and 7.1% of voting power. The related-party entity: 1.2% of common stock and 2.8% of voting power.
+- The Arrington Sponsor: 61.4% of total common stock and 19.9% of voting power. RippleWorks is a majority limited partner; specified voting/disposition rights apply to 4,215,479 shares.
+- The regional Japanese SBIC East/Central/West companies remain distinct from SBI Holdings and the four SBI-controlled investment entities named in this SEC filing.
+
+**Custody and counterparties**
+
+- Evernorth says 100% of its XRP was held in BitGo Bank & Trust, N.A. cold storage. The stated $250M insurance is shared among BitGo clients, not dedicated to Evernorth, and represented 36.9% of Evernorth's XRP value as of Oct 9.
+- Coinbase is identified as Evernorth's principal market for fair-value measurement. The reviewed prospectus does not identify Coinbase as Evernorth's custodian or prime broker. Do not infer a direct custody or execution contract from the valuation reference.
+- Ripple is an equity/unit holder, in-kind XRP contributor, related-party lender and source of disclosed governance/advisory relationships. RippleWorks and the Larsen Lam Trust are separate entities and their XRP contributions must not be attributed to Ripple itself.
+
+**Cantor committed equity facility is not actual capital raised**
+
+- Registration statement 333-299620 became effective Oct 30, 2026.
+- The facility allows Evernorth, at its option, to sell up to 5,218,935 new Class A shares to Cantor, generally at 97% of VWAP, subject to a 4.99% beneficial-ownership cap, a 20% trading-volume limit and threshold-price conditions.
+- The prospectus states $76.8M gross and $74.4M estimated net in one section, but an offering-summary table says $80.7M. At the stated Oct 29 close of $14.71, 5,218,935 shares equal $76.77M before the 97% adjustment and about $74.47M after it. The disclosed gross/net estimates and table footnote are not fully reconciled. Preserve the discrepancy.
+- The $521,893.50 upfront commitment fee is non-refundable and fully earned even if no purchases occur; total commitment fees are capped at $1M and separate expense reimbursements at $500K.
+- No actual ELOC draw amount or settled proceeds were established. Do not set the draw to zero, but do not count facility capacity as cash received. Cantor's later resale proceeds belong to Cantor; Evernorth receives proceeds from its optional primary sales to Cantor.
+
+### Macro event calendar and disconfirming evidence
+
+The live-market artifact now records official central-bank calendars against a secondary article claiming imminent simultaneous tightening.
+
+- Bank of Japan: the overnight call-rate guideline is around 1.25%; the complementary deposit facility rate has been 1.25% since Sep 24, 2026. The September 17–18 meeting minutes are scheduled for Nov 5; the Oct 29–30 meeting's Summary of Opinions is scheduled for Nov 10; the next policy meeting is Dec 17–18.
+- Federal Reserve: the Oct 27–28 FOMC maintained the federal-funds target range at 3.75%–4.00% by a 10–2 vote. Lisa D. Cook and Beth M. Hammack preferred a 25-basis-point hike. October meeting minutes are scheduled for Nov 18; the next FOMC meeting is Dec 8–9. No November FOMC meeting is listed.
+- CoinCodex secondary commentary describes a possible BOJ hike to 1.25% and both central banks tightening within 48 hours. Official records show the BOJ setting is already in effect and neither central bank has a November policy meeting. Retain the secondary claim as conflicting/stale commentary, not as a verified scheduled catalyst.
+- The two Fed dissents remain a legitimate hawkish counter-hypothesis for December expectations; they do not change the October hold.
+
+Sources: [BOJ MPM schedule](https://www.boj.or.jp/en/mopo/mpmsche_minu/), [BOJ policy status](https://www.boj.or.jp/en/), [Fed Oct 28 statement](https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm), [Fed November calendar](https://www.federalreserve.gov/newsevents/2026-november.htm), [conflicting secondary article](https://coincodex.com/article/91975/crypto-enters-most-significant-week-of-2026-as-traders-hold-their-breath-for-36-hours/).
+
+### Exact-phrase and identity work
+
+- ASK Coin: Permission Coin (ASK) remains a candidate; no verified XRP/XRPL relationship was established.
+- “Actual capital”: Evernorth's Cantor ELOC is facility capacity, not actual proceeds. The actual cash subscriptions, note proceeds, related-party debt and in-kind XRP contributions are now recorded separately.
+- “SBIC, ChatGPT SBIC”: no primary evidence of a direct partnership between the regional Japanese SBIC companies and OpenAI/ChatGPT was established. SBI Holdings' separate ChatGPT adoption remains a distinct event.
+- Kamilah Stevenson: the person is supported by the official brand site and an iHeart interview. The candidate YouTube channel `UCqUPJMQdkCN6lsLVDnichPA` is not cross-linked by a verified official source in the reviewed material; clone channels exist. No definitive YouTube video inventory was attributed to her. Candidate videos remain leads only.
+
+### Prediction-engine readiness
+
+**DESIGNED**
+- Priority-1 XRP mission registry in the V3 integration branch.
+- Scheduled public collector, immutable-receipt design, point-in-time feature store, event/forecast ledger, walk-forward framework and four baselines.
+- Forecast readiness gates requiring training/OOS/shadow sample minimums, source independence, leakage checks, calibration/drift passes and baseline comparison.
+
+**EXECUTED**
+- Nine public market endpoints across Binance, Coinbase and Kraken are represented in the collector.
+- SHA-256 receipt creation, feature-store validation and daily 90-day backup/restore path exist on #1640.
+- Market/ETF/ledger, Evernorth capital/custody, ownership and macro evidence artifacts plus regression tests have been added to #1643.
+- Research-archive eligibility and timestamp/provenance limitations are explicit.
+
+**VERIFIED**
+- #1640 exact-head full suite, dependency audit and fail-closed gate passed.
+- #1643 core suite passed on head `ed9d503`; its exact-head full repository suite remains pending.
+- Original SEC/web response bytes and independent timestamp anchors were not captured for the new research artifacts. Stored rendered-summary hashes are not raw-source hashes. All new web-derived observations remain model-ineligible.
+- No complete synchronized historical XRP dataset, validated probability calibration, drift monitor or demonstrated out-of-sample predictive lift exists yet.
+- No directional XRP forecast was issued. No paper trade or real-money action occurred.
+
+### Nine-platform authentication map
+
+Only ChatGPT-to-GitHub repository access is verified as an operational authenticated data path in this run. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not verified live data connections. Prior public/authorized probes: Hugging Face BUILD_ERROR; Databricks HTTP 403. Do not claim nine-platform coordination.
+
+### Backlog classification
+
+- **Active integration:** #1640 V3/core; #1643 XRP research.
+- **Superseded draft ancestor:** #1642 is an exact ancestor of #1640; preserve until successor content is merged and verified on main.
+- **Dependency duplicate candidates:** #1644–#1650 changed paths are subsets of #1640; exact file-level equivalence and main verification are still required before closure.
+- **Older dependency candidates:** #1254 and #1255 overlap the legacy requirements path; preserve pending exact version/diff reconciliation.
+- **Overlapping but unique history:** #1320, #1318 and #1317 touch paths also changed by #1640 but have distinct commits not contained in #1640. Preserve unique hunks.
+- **Unique/unreviewed:** #1269; draft #1641; #1615 (13 of 14 changed paths unique); other unique/partial drafts including #1597, #1605, #1608, #1614 and #1621.
+- No bulk closure. No source PR closure is authorized until a successor is merged and its content is verified on main.
+
+### Remaining blockers and next concrete action
+
+1. Finish exact-head full-suite verification for #1643 head `ed9d503`; inspect the test summary and fail-closed gate.
+2. Obtain independent approving reviews for #1640 and #1643.
+3. Verify classic branch-protection review requirements and configure enforceable required status checks; current required-check contexts are empty and the visible fallback ruleset is disabled.
+4. Resolve authorization for the GitHub Pages deployment side effect before any main merge.
+5. When all merge conditions are satisfied, merge #1640, fetch main, verify merge SHA/files and rerun main CI. Then reconcile #1643 against the new main without rewriting history, rerun exact-head full-suite/security checks, and merge only when ready.
+6. Close only exact duplicate/superseded PRs after main verification.
+7. Continue durable raw-source byte capture, independent timestamp anchoring, cross-run storage, synchronized historical XRP/ETF/derivatives/collateral/payment datasets, and leakage-safe chronological evaluation.
+
+No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred in this run.
