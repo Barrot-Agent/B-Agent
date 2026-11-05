@@ -48,3 +48,10 @@ The first scheduled read-only public-market adapter exists on PR #1640, but it i
 ## First public adapter boundary
 
 The first read-only scheduled Binance/Kraken adapter is implemented in PR #1640 and is separate from the forecast ledger. It writes content-addressed raw receipts and a point-in-time snapshot, but has not been merged to main and has no verified scheduled run. Its output explicitly sets `forecast_status=NOT_ISSUED` and `forecast_model_eligible=false`. The adapter does not train or issue forecasts; it is not evidence of model quality or predictive edge.
+
+
+## Research-archive timestamp correction consumption
+
+**EXECUTED on the Barrot V3 integration branch; not yet on main.** The read-only archive consumer is implemented in `barrot_agent/evolution/research_timestamp_corrections.py` as `apply_research_timestamp_correction_overlays(repository_root)`. It scans the XRP research archive and applies only two explicitly supported machine-readable timestamp correction formats: the canonical `barrot.xrp.research-correction.v1` field overlay and the earlier run-start interval correction schema (`schema_version: 1`, `append_only_xrp_research_timestamp_correction`). Both require an exact Git-blob preimage. The legacy adapter removes the synthetic run-start retrieval labels from the spot record and source list, replaces the top-level data cutoff with the conservative availability upper bound, and preserves provider update times, ETF data dates, numeric values, URLs and raw-response text hashes.
+
+The consumer returns corrected in-memory views and application manifests only. It does not rewrite source files, infer an exact retrieval time, promote eligibility or issue a forecast. It reports narrative correction addenda separately. Missing targets, duplicate targets/IDs, path escapes, symlinks, preimage mismatches and unknown timestamp-correction schemas fail closed. **The consumer is not yet wired into the scheduled public collector or forecast issuance path.** Research records remain model-ineligible until their raw receipts, source times and point-in-time requirements independently pass the feature-admission contract.
