@@ -204,6 +204,28 @@ class TestRecursiveFeedbackLoop:
         assert loop._verify_improvement(4, {"evaluation": None}, []) == (0.0, 0.0)
         assert not loop._improvement_history
 
+    def test_reused_evaluation_pair_cannot_fake_convergence(self):
+        loop = RecursiveFeedbackLoop(loop_config=FeedbackLoopConfig(improvement_window=3))
+        state = {"evaluation": {
+            "baseline": {"run_id": "baseline-1", "revision": "rev-a", "metrics": {"accuracy": 0.5}},
+            "candidate": {"run_id": "candidate-1", "revision": "rev-b", "metrics": {"accuracy": 0.6}},
+        }}
+        results = [loop._verify_improvement(i, state, []) for i in range(1, 4)]
+        assert all(convergence == 0.0 for _, convergence in results)
+        assert len(loop._improvement_history) < loop.config.improvement_window
+
+    def test_distinct_evaluation_runs_can_fill_convergence_window(self):
+        loop = RecursiveFeedbackLoop(loop_config=FeedbackLoopConfig(improvement_window=3))
+        results = []
+        for index in range(3):
+            state = {"evaluation": {
+                "baseline": {"run_id": f"baseline-{index}", "revision": f"base-{index}", "metrics": {"accuracy": 0.5}},
+                "candidate": {"run_id": f"candidate-{index}", "revision": f"candidate-{index}", "metrics": {"accuracy": 0.6}},
+            }}
+            results.append(loop._verify_improvement(index + 1, state, []))
+        assert results[-1][0] > 0.0
+        assert results[-1][1] == 1.0
+
     @patch.object(RecursiveFeedbackLoop, "_observe_system_state")
     @patch.object(RecursiveFeedbackLoop, "_analyze_with_kimi")
     @patch.object(RecursiveFeedbackLoop, "_absorb_feedback")
