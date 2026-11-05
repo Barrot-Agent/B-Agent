@@ -182,6 +182,21 @@ class TestRecursiveFeedbackLoop:
         assert convergence == 0.0
         assert not loop._improvement_history
 
+
+    def test_malformed_evaluation_evidence_is_rejected_without_raising(self):
+        loop = RecursiveFeedbackLoop()
+        bad_metrics = {
+            "baseline": {"run_id": "b", "revision": "a", "metrics": []},
+            "candidate": {"run_id": "c", "revision": "b", "metrics": {"loss": 1.0}},
+        }
+        assert loop._verify_improvement(1, {"evaluation": bad_metrics}, []) == (0.0, 0.0)
+        bad_tolerances = {
+            "baseline": {"run_id": "b", "revision": "a", "metrics": {"loss": 1.0}},
+            "candidate": {"run_id": "c", "revision": "b", "metrics": {"loss": 0.5}},
+            "tolerances": ["invalid"],
+        }
+        assert loop._verify_improvement(2, {"evaluation": bad_tolerances}, []) == (0.0, 0.0)
+
     @patch.object(RecursiveFeedbackLoop, "_observe_system_state")
     @patch.object(RecursiveFeedbackLoop, "_analyze_with_kimi")
     @patch.object(RecursiveFeedbackLoop, "_absorb_feedback")
