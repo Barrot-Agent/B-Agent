@@ -172,7 +172,11 @@ class BarrotActionExecutor:
                 if original.count(expected) != 1:
                     raise ExecutionError(f"Expected text is not unique in {path}")
                 updated = original.replace(expected, replacement, 1)
-                self.executor.write_file(path, updated)
+                self.executor.write_file(
+                    path,
+                    updated,
+                    expected_existing_content=original,
+                )
                 return ActionResult(
                     action=action.type,
                     success=True,
