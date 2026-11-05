@@ -118,6 +118,92 @@ def _source_registry(
             raise ResearchEligibilityError(
                 f"source_registry[{index}] raw receipt bytes do not match raw_content_sha256"
             )
+
+        # The payload hash alone does not authenticate the receipt metadata or
+        # prove that raw_receipt_id is the content address emitted by
+        # RawReceiptArchive. Require the complete canonical receipt document.
+        raw_receipt = source.get("raw_receipt")
+        if not isinstance(raw_receipt, Mapping):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] needs the complete canonical raw_receipt document"
+            )
+        receipt = dict(raw_receipt)
+        declared_receipt_id = receipt.get("receipt_id")
+        if not isinstance(declared_receipt_id, str) or not re.fullmatch(r"[0-9a-f]{64}", declared_receipt_id):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}].raw_receipt.receipt_id must be a SHA-256 hex digest"
+            )
+        receipt_payload = {key: value for key, value in receipt.items() if key != "receipt_id"}
+        required_receipt_fields = {
+            "source_id",
+            "source_uri",
+            "captured_at_utc",
+            "source_data_as_of_utc",
+            "source_http_date",
+            "raw_content_sha256",
+            "payload_size_bytes",
+            "raw_payload_path",
+            "model_eligible_source",
+            "raw_only_reason",
+        }
+        if set(receipt_payload) != required_receipt_fields:
+            raise ResearchEligibilityError(
+                f"source_registry[{index}].raw_receipt must contain the exact RawReceiptArchive fields"
+            )
+        canonical_receipt_id = _sha256(_canonical_json(receipt_payload).encode("utf-8"))
+        if declared_receipt_id != canonical_receipt_id or receipt_id.strip() != canonical_receipt_id:
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] raw_receipt_id does not match the canonical receipt metadata"
+            )
+        if receipt_payload["source_id"] != source_id:
+            raise ResearchEligibilityError(f"source_registry[{index}] source_id does not match its canonical receipt")
+        if receipt_payload["source_uri"] != source_uri:
+            raise ResearchEligibilityError(f"source_registry[{index}] source_uri does not match its canonical receipt")
+        if receipt_payload["captured_at_utc"] != source.get("captured_at_utc"):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] capture time does not match its canonical receipt"
+            )
+        if receipt_payload["source_data_as_of_utc"] != source.get("source_data_as_of_utc"):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] source data as-of does not match its canonical receipt"
+            )
+        if receipt_payload["raw_content_sha256"] != digest:
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] raw hash does not match its canonical receipt"
+            )
+        payload_size = receipt_payload["payload_size_bytes"]
+        if isinstance(payload_size, bool) or not isinstance(payload_size, int) or payload_size != len(raw_bytes):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] payload size does not match its canonical receipt bytes"
+            )
+        raw_path_value = receipt_payload["raw_payload_path"]
+        if not isinstance(raw_path_value, str) or not raw_path_value.strip():
+            raise ResearchEligibilityError(f"source_registry[{index}] canonical raw path is missing")
+        raw_path = PurePosixPath(raw_path_value)
+        if (
+            raw_path.is_absolute()
+            or ".." in raw_path.parts
+            or raw_path.as_posix() != raw_path_value
+            or len(raw_path.parts) < 2
+            or raw_path.parts[-2:] != ("sha256", f"{digest}.json")
+        ):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] raw path is not bound to the content-addressed payload"
+            )
+        if receipt_payload["model_eligible_source"] is not True or receipt_payload["raw_only_reason"] != "":
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] canonical receipt does not attest an eligible source capture"
+            )
+        source_http_date = receipt_payload["source_http_date"]
+        if source_http_date is not None and (
+            not isinstance(source_http_date, str)
+            or len(source_http_date) > 128
+            or any(ord(character) < 32 for character in source_http_date)
+        ):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] canonical source HTTP Date is invalid"
+            )
+
         independence_group = source.get("independence_group")
         if not isinstance(independence_group, str) or not independence_group.strip():
             raise ResearchEligibilityError(f"source_registry[{index}] needs an independence_group")
