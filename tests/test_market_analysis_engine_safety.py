@@ -78,8 +78,10 @@ def test_databricks_query_is_bounded_read_only_and_receipted(monkeypatch):
         def __exit__(self, *_args):
             return False
 
-        def read(self):
-            return json.dumps(payload).encode("utf-8")
+        def read(self, size=-1):
+            raw = json.dumps(payload).encode("utf-8")
+            captured["read_limit"] = size
+            return raw[:size] if size >= 0 else raw
 
     def fake_urlopen(request, timeout):
         captured["url"] = request.full_url
@@ -102,6 +104,8 @@ def test_databricks_query_is_bounded_read_only_and_receipted(monkeypatch):
     assert result["record_count"] == 1
     assert result["data_cutoff_utc"] == "2026-11-03"
     assert len(result["raw_response_sha256"]) == 64
+    assert captured["body"]["byte_limit"] == engine.MAX_RESPONSE_BYTES
+    assert captured["read_limit"] == engine.MAX_RESPONSE_BYTES + 1
 
 
 def test_databricks_query_rejects_non_select_and_incomplete_execution(monkeypatch):
@@ -120,11 +124,72 @@ def test_databricks_query_rejects_non_select_and_incomplete_execution(monkeypatc
         def __exit__(self, *_args):
             return False
 
-        def read(self):
-            return json.dumps({"status": {"state": "PENDING"}}).encode("utf-8")
+        def read(self, size=-1):
+            raw = json.dumps({"status": {"state": "PENDING"}}).encode("utf-8")
+            return raw[:size] if size >= 0 else raw
 
     monkeypatch.setattr(engine, "urlopen", lambda *_args, **_kwargs: Response())
     with pytest.raises(RuntimeError, match="did not succeed"):
+        engine.query_databricks("SELECT 1")
+
+
+def test_legacy_analysis_rejects_forecast_language_in_free_text():
+    engine = _load_engine()
+    invalid = {
+        "summary": "Buy XRP now at $1.20; price target $2.00.",
+        "observations": [],
+        "data_quality": [],
+        "competing_hypotheses": [],
+        "validation_gaps": [],
+        "forecast_status": "NOT_ISSUED",
+        "trade_recommendations": [],
+    }
+    with pytest.raises(ValueError, match="summary contains prohibited"):
+        engine.validate_analysis_response(json.dumps(invalid))
+
+
+def test_databricks_query_enforces_local_byte_and_row_limits(monkeypatch):
+    engine = _load_engine()
+    monkeypatch.setenv("DATABRICKS_HOST", "dbc.example.com")
+    monkeypatch.setenv("DATABRICKS_TOKEN", "test-token")
+    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "warehouse-123")
+
+    class Response:
+        def __init__(self, raw):
+            self.raw = raw
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self, size=-1):
+            return self.raw[:size] if size >= 0 else self.raw
+
+    monkeypatch.setattr(
+        engine,
+        "urlopen",
+        lambda *_args, **_kwargs: Response(b"x" * (engine.MAX_RESPONSE_BYTES + 1)),
+    )
+    with pytest.raises(RuntimeError, match="byte limit"):
+        engine.query_databricks("SELECT 1")
+
+    payload = {
+        "status": {"state": "SUCCEEDED"},
+        "manifest": {
+            "truncated": False,
+            "schema": {"columns": [{"name": "date"}]},
+        },
+        "result": {"data_array": [["2026-11-03"]] * (engine.MAX_RESULT_ROWS + 1)},
+    }
+    raw = json.dumps(payload).encode("utf-8")
+    monkeypatch.setattr(
+        engine,
+        "urlopen",
+        lambda *_args, **_kwargs: Response(raw),
+    )
+    with pytest.raises(RuntimeError, match="row limit"):
         engine.query_databricks("SELECT 1")
 
 
