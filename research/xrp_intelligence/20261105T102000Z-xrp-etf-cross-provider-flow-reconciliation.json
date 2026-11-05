@@ -73,6 +73,41 @@
         "The page is T+1 and partial, so the zero is not a completed all-funds daily total.",
         "The page's live summary can change as issuers publish; no original issuer files or AP cash records were preserved in this capture."
       ]
+    },
+    {
+      "id": "goldman_sachs_q2_2026_13f_info_table",
+      "publisher": "Goldman Sachs Group, Inc. / U.S. SEC",
+      "source_type": "primary_manager_reported_form_13f",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+      "filing_date": "2026-08-14",
+      "position_as_of_date": "2026-06-30",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_13F_information_table",
+      "independence_group": "goldman_sachs_group_13f_filing",
+      "model_eligible": false,
+      "limitations": [
+        "Form 13F reports securities over which the filer exercises investment discretion; positions may be client assets and are not necessarily Goldman Sachs proprietary capital.",
+        "The filing reports quarter-end long reportable securities, not acquisition timing, net cash flows, beneficial owners, short positions or all derivatives exposure.",
+        "The Armada Acquisition Corp II position predates the October 9, 2026 Evernorth business-combination closing and does not establish current XRPN ownership."
+      ]
+    },
+    {
+      "id": "goldman_sachs_q1_2026_13f_info_table",
+      "publisher": "Goldman Sachs Group, Inc. / U.S. SEC",
+      "source_type": "primary_manager_reported_form_13f",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/",
+      "filing_date": "2026-05-15",
+      "position_as_of_date": "2026-03-31",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_13F_filing_index_and_information_table",
+      "independence_group": "goldman_sachs_group_13f_filing",
+      "model_eligible": false,
+      "limitations": [
+        "The five XRP ETF CUSIPs identified in the Q2 filing were not found in the Q1 information table.",
+        "Absence of these five reportable long positions does not prove absence of all XRP-related exposure, derivatives, short positions or client positions outside the filer's reportable discretion."
+      ]
     }
   ],
   "provider_observations": {
@@ -111,10 +146,22 @@
     },
     "cryptoetf_today": {
       "tracked_spot_funds": 5,
-      "net_flow_xrp_nov4_partial": 0,
       "status": "PARTIAL_NOT_ALL_FUNDS_REPORTED",
       "definition": "0 means the funds that have reported show no money moved in or out; missing funds are not treated as zero.",
-      "model_eligible": false
+      "model_eligible": false,
+      "net_flow_usd_millions_displayed": 0,
+      "net_flow_unit": "USD millions",
+      "reported_funds_count": 2,
+      "fund_universe": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "GXRP",
+        "TOXR"
+      ],
+      "holdings_xrp_nov4": 1141793765,
+      "net_assets_usd_millions": 1490,
+      "cumulative_net_flow_usd_millions": 1810
     }
   },
   "cross_provider_reconciliation": {
@@ -128,7 +175,11 @@
       "Crypto ETF Today's zero is partial and only describes funds that had reported at its publication cutoff.",
       "The three observations are not contradictory once dates, fund universes and methods are kept separate."
     ],
-    "model_eligible": false
+    "model_eligible": false,
+    "cryptoetf_today_holdings_xrp_nov4": 1141793765,
+    "xrp_insights_minus_cryptoetf_today_holdings_xrp": 54611546,
+    "cryptoetf_today_minus_cryptokeyhole_holdings_xrp": 64981203,
+    "holdings_difference_note": "These derived differences compare unlike provider universes and dates; they are not unexplained same-universe reconciliation breaks."
   },
   "counter_hypotheses": [
     {
@@ -166,5 +217,67 @@
       "Separate spot ETFs, multi-asset index funds, 1940 Act funds and indirect ETP exposure.",
       "Obtain AP creation/redemption or issuer cash-flow records before labeling movements as institutional cash."
     ]
+  },
+  "institutional_13f": {
+    "filer": "Goldman Sachs Group, Inc.",
+    "q2_2026_position_as_of": "2026-06-30",
+    "q2_2026_filing_date": "2026-08-14",
+    "q1_2026_position_as_of": "2026-03-31",
+    "q1_2026_filing_date": "2026-05-15",
+    "q2_xrp_etf_long_positions": [
+      {
+        "issuer": "21Shares XRP ETF",
+        "cusip": "90137T103",
+        "value_usd": 8206363,
+        "shares": 806126
+      },
+      {
+        "issuer": "Bitwise XRP ETF",
+        "cusip": "09174F107",
+        "value_usd": 25756345,
+        "shares": 2208949
+      },
+      {
+        "issuer": "Canary XRP ETF",
+        "cusip": "13723M100",
+        "value_usd": 19490717,
+        "shares": 1759090
+      },
+      {
+        "issuer": "Franklin XRP Trust",
+        "cusip": "355233107",
+        "value_usd": 25405919,
+        "shares": 2238407
+      },
+      {
+        "issuer": "Grayscale XRP Trust ETF",
+        "cusip": "38965L106",
+        "value_usd": 7646785,
+        "shares": 377619
+      }
+    ],
+    "q2_total_value_usd": 86506129,
+    "q2_total_shares": 7390191,
+    "q1_positions_in_these_five_cusips_found": false,
+    "additional_pre_merger_spac_position": {
+      "issuer": "Armada Acquisition Corp II",
+      "cusip": "G0R38G104",
+      "value_usd": 3813470,
+      "shares": 365976,
+      "position_as_of": "2026-06-30",
+      "interpretation": "Pre-merger SPAC equity position; the Evernorth business combination closed October 9, 2026. This is not proof of a current XRPN holding."
+    },
+    "interpretation": [
+      "The Q2 filing establishes $86.506M in Goldman Sachs Group-reported long positions across five XRP ETF share classes as of June 30, 2026.",
+      "The Q1 filing contains no positions in those five CUSIPs, so the Q2 positions are newly reportable relative to the Q1 snapshot; 13F does not reveal when they were acquired.",
+      "These are ETF shares, not direct XRP custody or proof of unhedged XRP exposure.",
+      "13F positions may represent client portfolios or proprietary holdings; the filing does not distinguish them.",
+      "Q3 2026 Form 13F filings were not yet due as of November 5, 2026; the next filing window is expected by November 14, 2026."
+    ],
+    "source_ids": [
+      "goldman_sachs_q1_2026_13f_info_table",
+      "goldman_sachs_q2_2026_13f_info_table"
+    ],
+    "model_eligible": false
   }
 }

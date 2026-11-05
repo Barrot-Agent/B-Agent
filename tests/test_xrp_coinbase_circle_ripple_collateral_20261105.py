@@ -106,3 +106,20 @@ def test_coinbase_circle_equity_history_is_separate_from_current_ownership():
     assert current["q3_2026_coinbase_investment_gain_loss_line_usd"] == -39_231_000
     assert "does not attribute the entire line" in current["gain_loss_attribution_rule"]
     assert item["model_eligible"] is False
+
+
+def test_circle_q2_distribution_cost_change_is_year_over_year_not_quarter_over_quarter():
+    item = load()["coinbase_circle_economics"]["circle_q2_2026_update"]
+    assert item["year_over_year_coinbase_distribution_cost_change_usd"] == -7_700_000
+    assert "versus" in item["comparison_period"]
+    assert "decrease in Coinbase share" in item["stated_driver"]
+    assert "quarter_over_quarter_coinbase_distribution_cost_change_usd" not in item
+
+
+def test_circle_s1a_filing_date_and_coinbase_security_source_are_corrected():
+    data = load()
+    s1 = next(x for x in data["source_registry"] if x["id"] == "circle_centre_acquisition_sec_s1a_20250418")
+    security = next(x for x in data["source_registry"] if x["id"] == "coinbase_customer_asset_security_statement_20261104")
+    assert s1["publication_date"] == "2025-04-18"
+    assert "000119312525084832" in s1["url"]
+    assert "landing/company" in security["url"]

@@ -110,3 +110,13 @@ def test_rendered_source_vintages_remain_ineligible_and_no_forecast_is_issued():
     assert data["source_capture_policy"]["raw_content_sha256"] is None
     assert all(source["raw_content_sha256"] is None for source in data["source_registry"])
     assert all(source["model_eligible"] is False for source in data["source_registry"])
+
+
+def test_run_start_identifier_is_not_misrepresented_as_source_retrieval_time():
+    data = load()
+    assert data["recorded_at_utc"] is None
+    assert data["research_cutoff_utc"] is None
+    assert data["recorded_on_date"] == "2026-11-05"
+    assert "not an independently verified retrieval timestamp" in data["artifact_timestamp_semantics"]
+    assert all(source["retrieved_at_utc"] is None for source in data["source_registry"])
+    assert all("not exposed" in source["retrieval_time_note"] for source in data["source_registry"])

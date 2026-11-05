@@ -106,7 +106,7 @@
       "id": "coinbase_customer_asset_security_statement_20261104",
       "publisher": "Coinbase",
       "source_type": "primary_company_security_statement",
-      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "url": "https://www.coinbase.com/blog/landing/company?country=US&currency=USD",
       "publication_date": "2026-11-04",
       "retrieved_at_utc": null,
       "raw_content_sha256": null,
@@ -119,11 +119,11 @@
       ]
     },
     {
-      "id": "circle_centre_acquisition_sec_s1a_20250401",
+      "id": "circle_centre_acquisition_sec_s1a_20250418",
       "publisher": "Circle Internet Group, Inc. / U.S. SEC",
       "source_type": "primary_registration_statement",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525084832/d737521ds1a.htm",
-      "publication_date": "2025-04-01",
+      "publication_date": "2025-04-18",
       "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_SEC_registration_statement",
@@ -151,8 +151,9 @@
       "accounting": "Circle accounts for the arrangement as an executory contract within distribution and transaction costs"
     },
     "circle_q2_2026_update": {
-      "quarter_over_quarter_coinbase_distribution_cost_change_usd": -7700000,
-      "stated_driver": "decrease in Coinbase share of total average USDC on-platform balances"
+      "stated_driver": "decrease in Coinbase share of total average USDC on-platform balances",
+      "year_over_year_coinbase_distribution_cost_change_usd": -7700000,
+      "comparison_period": "Three months ended June 30, 2026 versus three months ended June 30, 2025."
     },
     "interpretation": [
       "Circle and Coinbase have a direct, material distribution/economic relationship tied to USDC platform balances and reserve economics.",
@@ -290,7 +291,7 @@
       "consideration_usd": 209900000,
       "circle_common_shares_issued_approx": 8400000,
       "centre_dissolved_date": "2023-12",
-      "source_id": "circle_centre_acquisition_sec_s1a_20250401"
+      "source_id": "circle_centre_acquisition_sec_s1a_20250418"
     },
     "continuing_relationship_as_of_2026_09_30": {
       "coinbase_q3_2026_10q_confirms_no_change_to_circle_arrangement_or_revenue_generated": true,

@@ -3,8 +3,8 @@
   "artifact_id": "xrp_live_market_etf_derivatives_macro_snapshot_20261105T100426Z",
   "artifact_type": "xrp_spot_derivatives_etf_stablecoin_protocol_macro_reconciliation",
   "repository": "Barrot-Agent/B-Agent",
-  "recorded_at_utc": "2026-11-05T10:04:26Z",
-  "research_cutoff_utc": "2026-11-05T10:04:26Z",
+  "recorded_at_utc": null,
+  "research_cutoff_utc": null,
   "mission": {
     "priority": 1,
     "name": "XRP intelligence and prediction-engine mastery",
@@ -18,7 +18,9 @@
     "raw_content_sha256": null,
     "independent_timestamp_anchor": false,
     "rendered_sources_are_not_raw_receipts": true,
-    "admission_rule": "All observations in this artifact remain research-only until original source bytes are captured, SHA-256 receipts are independently verified, source publication/event times are reconciled, and the observation passes point-in-time quality controls."
+    "admission_rule": "All observations in this artifact remain research-only until original source bytes are captured, SHA-256 receipts are independently verified, source publication/event times are reconciled, and the observation passes point-in-time quality controls.",
+    "source_retrieval_timestamps_exposed": false,
+    "timestamp_correction": "The earlier 10:04:26Z values represented the run start, not the exact retrieval time for each rendered source. Exact retrieved_at_utc values are now null; source event/publication/data-as-of timestamps remain separately recorded."
   },
   "source_registry": [
     {
@@ -26,7 +28,7 @@
       "publisher": "Kraken",
       "source_type": "primary_exchange_public_api",
       "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "source_event_timestamp_utc": null,
       "capture_method": "web-rendered JSON API response",
       "raw_content_sha256": null,
@@ -38,7 +40,8 @@
         "Last trade and current best bid/ask are separate observations; the last trade may lie outside the displayed quote.",
         "One venue and top-of-book only; no executable multi-level depth, cancellation history or consolidated tape was captured.",
         "Original response bytes were not preserved, so no SHA-256 receipt is claimed."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "binance_xrpusdt_premium_index_20261105T095331Z",
@@ -47,7 +50,7 @@
       "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
       "source_event_timestamp_utc": "2026-11-05T09:53:31Z",
       "next_funding_time_utc": "2026-11-05T16:00:00Z",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_json_api_response",
       "independence_group": "binance_xrpusdt_perpetual",
@@ -56,7 +59,8 @@
         "The payload exposes a funding-rate value and next funding timestamp but the retrieved response does not itself establish a universal eight-hour interval.",
         "No original response bytes or independent timestamp anchor were retained.",
         "Premium-index values are a single exchange observation, not cross-venue basis or positioning."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "tradradar_xrp_perpetuals_20261105T091500Z",
@@ -64,7 +68,7 @@
       "source_type": "secondary_multi_exchange_derivatives_aggregator",
       "url": "https://tradradar.io/markets/xrp",
       "source_data_as_of_utc": "2026-11-05T09:15:00Z",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_page_only",
       "independence_group": "tradradar_derivatives_aggregator",
@@ -74,7 +78,8 @@
         "Liquidations are explicitly a lower bound because not all exchanges publish complete real-time liquidation data.",
         "The long/short statistic is an account ratio, not notional exposure, net delta or actual capital.",
         "The reported seven-venue aggregate is not synchronized to the Kraken ticker or Binance premium-index timestamp."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "xrp_insights_etf_flows_metadata_20261105T073558Z",
@@ -85,7 +90,7 @@
       "data_as_of_date": "2026-11-03",
       "latest_row_date": "2026-11-04",
       "latest_row_status": "provisional",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_JSON_metadata_only",
       "independence_group": "xrp_insights_aggregator",
@@ -96,7 +101,8 @@
         "GXRP flow is withheld because of a historical issuer-page capture gap; some rows are reconstructed from third-party estimates.",
         "The November 4 row is provisional and can be rewritten during next-morning settlement.",
         "Original per-issuer source bytes and independent timestamps were not captured."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "circle_usdc_product_page_20261102",
@@ -104,7 +110,7 @@
       "source_type": "primary_issuer_product_and_reserve_disclosure",
       "url": "https://www.circle.com/usdc",
       "source_data_as_of_date": "2026-11-02",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_first_party_page",
       "independence_group": "circle_issuer_usdc_disclosure",
@@ -113,7 +119,8 @@
         "USDC circulation is an issuer-wide stablecoin metric, not XRPL-specific supply or XRP demand.",
         "The page's reserve-fund custody statement identifies BNY and BlackRock roles but does not quantify BNY-held reserves in this snapshot.",
         "The page does not disclose XRP bridge usage or XRP collateral balances."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "ripple_rlusd_transparency_20261029",
@@ -121,7 +128,7 @@
       "source_type": "primary_stablecoin_issuer_reserve_disclosure",
       "url": "https://ripple.com/products/stablecoin/transparency/",
       "source_data_as_of_date": "2026-10-29",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_first_party_page",
       "independence_group": "ripple_standard_custody_rlusd_issuer_disclosure",
@@ -130,7 +137,8 @@
         "The issuer dashboard reports aggregate RLUSD circulation and reserve funds; it does not establish XRP purchases or XRP collateral.",
         "Standard Custody is identified as issuer; Ripple's separate national trust-bank approval must not be conflated with the issuer entity.",
         "No network-specific RLUSD circulation or payment volume is supplied in this snapshot."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "bny_ripple_xrp_rlusd_custody_20261027",
@@ -138,7 +146,7 @@
       "source_type": "primary_institutional_custody_and_trade_finance_announcement",
       "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
       "publication_date": "2026-10-27",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_first_party_press_release",
       "independence_group": "bny_ripple_joint_announcement_20261027",
@@ -148,7 +156,8 @@
         "Direct RLUSD mint/redeem through BNY is an intended future capability subject to final BNY and regulatory approvals.",
         "Tokenized trade finance with Ripple and C2FO is exploratory and subject to client requirements; funded receivables, investor identities and production volumes are not disclosed.",
         "This joint announcement is one disclosure, not two independent measurements."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "sbi_ripple_rlusd_japan_launch_20260624",
@@ -156,7 +165,7 @@
       "source_type": "primary_joint_distribution_announcement",
       "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
       "publication_date": "2026-06-24",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_first_party_announcement",
       "independence_group": "sbi_ripple_joint_announcement_20260624",
@@ -164,14 +173,15 @@
       "limitations": [
         "The announcement establishes RLUSD availability through SBI VC Trade in Japan, not XRP payment volume, XRP purchases or collateral utilization.",
         "The announcement does not establish that SBI VC Trade's initial RLUSD deposit/withdrawal support included XRPL; network-specific service support must be checked separately."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "xrplwin_lendingprotocol_vote_20261105",
       "publisher": "XRPLWin",
       "source_type": "secondary_ledger_explorer_amendment_snapshot",
       "url": "https://xrplwin.com/amendment/LendingProtocol",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_explorer_page",
       "independence_group": "xrplwin_node_snapshot",
@@ -179,14 +189,15 @@
       "limitations": [
         "The displayed 19/35 vote count is a node/explorer observation, not a universal validator denominator.",
         "Activation must be confirmed from the ledger Amendments entry and EnableAmendment pseudo-transaction, not inferred from a vote dashboard."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "xrpl_to_amendment_vote_snapshot_20261105",
       "publisher": "XRPL.to",
       "source_type": "secondary_ledger_explorer_amendment_snapshot",
       "url": "https://xrpl.to/insights/xrpl-amendments-explained",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_explorer_page",
       "independence_group": "xrpl_to_node_snapshot",
@@ -194,14 +205,15 @@
       "limitations": [
         "The page displayed a 36-validator denominator and 29-vote threshold, differing from XRPLWin's 35-validator denominator.",
         "This denominator disagreement is preserved; do not average validator counts or infer a global denominator."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "xrpl_official_amendment_rules",
       "publisher": "XRP Ledger documentation",
       "source_type": "primary_protocol_documentation",
       "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_official_documentation",
       "independence_group": "xrpl_org_protocol_documentation",
@@ -209,14 +221,15 @@
       "limitations": [
         "The documentation defines protocol rules, not the current live vote count for each amendment.",
         "It states that more than 80% of trusted validators must support an amendment continuously for two weeks."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "xrpl_official_unl_scope",
       "publisher": "XRP Ledger documentation",
       "source_type": "primary_protocol_documentation",
       "url": "https://xrpl.org/docs/concepts/consensus-protocol/negative-unl",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_official_documentation",
       "independence_group": "xrpl_org_protocol_documentation",
@@ -224,7 +237,8 @@
       "limitations": [
         "Each server independently uses its configured trusted validator list; node-specific counts may differ.",
         "The documentation's default-UNL count is dated and is not a current live vote snapshot."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "reuters_global_markets_us_midterms_20261105T023500Z",
@@ -233,7 +247,7 @@
       "url": "https://www.reuters.com/business/energy/global-markets-global-markets-2026-11-05/",
       "publication_date": "2026-11-05",
       "publication_time_utc": "2026-11-05T02:35:00Z",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_news_article",
       "independence_group": "reuters_global_markets_reporting",
@@ -241,7 +255,8 @@
       "limitations": [
         "Market moves and analyst interpretations are not official policy decisions.",
         "No direct causal or predictive relationship with XRP is established."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     },
     {
       "id": "reuters_iran_oil_risk_20261105T090000Z",
@@ -250,7 +265,7 @@
       "url": "https://www.reuters.com/business/energy/oil-falls-fourth-day-expectations-lower-risk-iran-war-escalation-2026-11-05/",
       "publication_date": "2026-11-05",
       "source_data_as_of_utc": "2026-11-05T09:00:00Z",
-      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "retrieved_at_utc": null,
       "raw_content_sha256": null,
       "raw_capture_status": "rendered_news_article",
       "independence_group": "reuters_iran_energy_reporting",
@@ -258,7 +273,8 @@
       "limitations": [
         "Eurasia Group's conflict probabilities are analyst estimates quoted by Reuters, not observed outcomes.",
         "The war and shipping disruption remained unresolved at the article's cutoff."
-      ]
+      ],
+      "retrieval_time_note": "Exact retrieval timestamp was not exposed by the rendered source interface; do not substitute the run-start time."
     }
   ],
   "market_snapshot": {
@@ -510,5 +526,8 @@
       "Capture XRPL chain-specific USDC/RLUSD supplies and XRP bridge/payment activity separately.",
       "Verify amendment status from ledger state and EnableAmendment pseudo-transactions."
     ]
-  }
+  },
+  "recorded_on_date": "2026-11-05",
+  "research_cutoff_date": "2026-11-05",
+  "artifact_timestamp_semantics": "The filename suffix 20261105T100426Z is an execution-window identifier, not an independently verified retrieval timestamp."
 }
