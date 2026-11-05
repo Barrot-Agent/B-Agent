@@ -59,3 +59,9 @@ def test_aggregate_score_overflow_is_rejected():
     candidate = EvaluationSnapshot("c1", "sha-b", {"a": 1e308, "b": 1e308})
     with pytest.raises(ValueError, match="aggregate"):
         assess_improvement(baseline, candidate)
+
+def test_same_revision_cannot_be_claimed_as_candidate_change():
+    baseline = EvaluationSnapshot("b1", "same-sha", {"accuracy": 0.8})
+    candidate = EvaluationSnapshot("c1", "same-sha", {"accuracy": 0.9})
+    with pytest.raises(ValueError, match="distinct revisions"):
+        assess_improvement(baseline, candidate)
