@@ -35,7 +35,11 @@ def test_cryptokeyhole_four_fund_partial_day_includes_fee_and_payout_changes():
 def test_cryptoetf_today_zero_is_partial_not_a_complete_daily_total():
     item = load()["provider_observations"]["cryptoetf_today"]
     assert item["tracked_spot_funds"] == 5
-    assert item["net_flow_usd_millions_displayed"] == 0\n    assert item["net_flow_unit"] == "USD millions"\n    assert item["reported_funds_count"] == 2\n    assert item["fund_universe"] == ["XRP", "XRPZ", "XRPC", "GXRP", "TOXR"]\n    assert item["holdings_xrp_nov4"] == 1141793765
+    assert item["net_flow_usd_millions_displayed"] == 0
+    assert item["net_flow_unit"] == "USD millions"
+    assert item["reported_funds_count"] == 2
+    assert item["fund_universe"] == ["XRP", "XRPZ", "XRPC", "GXRP", "TOXR"]
+    assert item["holdings_xrp_nov4"] == 1141793765
     assert item["status"] == "PARTIAL_NOT_ALL_FUNDS_REPORTED"
     assert "missing funds are not treated as zero" in item["definition"]
 
@@ -52,7 +56,10 @@ def test_counter_hypotheses_distinguish_fees_from_investor_redemptions():
     items = {x["id"]: x for x in load()["counter_hypotheses"]}
     assert "reported_holdings_delta_not_investor_redemption" in items
     assert "partial_zero_not_complete_neutrality" in items
-    assert any("Authorized-participant cash records" in x for x in items["reported_holdings_delta_not_investor_redemption"]["disconfirming_evidence_to_seek"])
+    assert any(
+        "Authorized-participant cash records" in x
+        for x in items["reported_holdings_delta_not_investor_redemption"]["disconfirming_evidence_to_seek"]
+    )
 
 
 def test_etf_flow_sources_remain_ineligible_without_raw_issuer_receipts():
