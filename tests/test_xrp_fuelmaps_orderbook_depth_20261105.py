@@ -45,6 +45,8 @@ def test_xrp_orderbook_snapshot_remains_research_only_without_raw_receipts():
         "H1_DISPLAYED_BID_SIDE_SKEW",
         "H2_CANCELLATION_AND_HIDDEN_LIQUIDITY",
         "H3_INCOMPLETE_VENUE_UNIVERSE",
+        "H4_HOURLY_DEPTH_SKEW_NOT_PERSISTENT",
+        "H5_USDT_TO_USD_CONVERSION_NOISE",
     }
 
 def test_xrp_orderbook_depth_preserves_hourly_vintage_disagreement():
