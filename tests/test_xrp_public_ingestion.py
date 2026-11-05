@@ -442,7 +442,13 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "github.event.schedule == '15 0 * * *'" in workflow
     assert "xrp-public-raw-${{ github.run_id }}" in workflow
     assert "xrp-public-feature-${{ github.run_id }}" in workflow
-    assert workflow.count("retention-days: 90") == 2
+    assert "python -m barrot_agent.evolution.research_timestamp_audit" in workflow
+    assert workflow.index("Apply XRP research timestamp corrections in memory") < workflow.index("Capture public XRP market sources")
+    assert "xrp-research-correction-audit-${{ github.run_id }}" in workflow
+    assert "${{ runner.temp }}/xrp-research-correction-audit.json" in workflow
+    assert "if-no-files-found: error" in workflow
+    assert "actions: write" not in workflow
+    assert workflow.count("retention-days: 90") == 3
     assert "retention-days: 1" not in workflow
     assert "if: github.ref == 'refs/heads/main'" in workflow
     assert "secrets." not in workflow
