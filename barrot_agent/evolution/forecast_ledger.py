@@ -143,6 +143,15 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     if any(not _SHA256.fullmatch(item) for item in feature_snapshot_ids):
         raise ForecastLedgerError("readiness dataset feature_snapshot_ids must be SHA-256 IDs")
 
+    if dataset.get("data_cutoff_utc") is None:
+        raise ForecastLedgerError("readiness dataset data_cutoff_utc is required")
+    dataset_cutoff = _utc(dataset["data_cutoff_utc"], "dataset data_cutoff_utc")[0]
+    evaluation_data_cutoff = _utc(
+        report.get("evaluation_data_cutoff_utc"), "evaluation_data_cutoff_utc"
+    )[0]
+    if evaluation_data_cutoff < dataset_cutoff:
+        raise ForecastLedgerError("evaluation data cutoff precedes dataset manifest cutoff")
+
     receipts = dataset.get("raw_source_receipts")
     if not isinstance(receipts, list) or not receipts:
         raise ForecastLedgerError("readiness dataset needs byte-addressed raw_source_receipts")
@@ -180,6 +189,14 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         captured_at = _utc(receipt.get("captured_at_utc"), f"raw_source_receipts[{index}].captured_at_utc")[0]
         if captured_at < source_as_of:
             raise ForecastLedgerError(f"raw_source_receipts[{index}] capture precedes source data as-of")
+        if source_as_of > dataset_cutoff:
+            raise ForecastLedgerError(
+                f"raw_source_receipts[{index}] source data as-of exceeds dataset cutoff"
+            )
+        if captured_at > evaluation_data_cutoff:
+            raise ForecastLedgerError(
+                f"raw_source_receipts[{index}] capture exceeds evaluation data cutoff"
+            )
         receipt_sources.add(source_id.strip())
         receipt_groups.add(group.strip())
         receipt_ids.add(receipt_id.strip())
@@ -192,9 +209,6 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         )
     if report.get("source_independence_group_count") != len(receipt_groups):
         raise ForecastLedgerError("readiness report source_independence_group_count does not match dataset receipts")
-    if dataset.get("data_cutoff_utc") is None:
-        raise ForecastLedgerError("readiness dataset data_cutoff_utc is required")
-    dataset_cutoff = _utc(dataset["data_cutoff_utc"], "dataset data_cutoff_utc")[0]
     if _hash(dict(dataset)) != report["dataset_sha256"]:
         raise ForecastLedgerError("readiness dataset manifest SHA-256 does not match dataset_sha256")
 
@@ -257,10 +271,8 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
                 f"model must outperform the {baseline} baseline on both Brier score and log loss"
             )
 
-    data_cutoff = _utc(report.get("evaluation_data_cutoff_utc"), "evaluation_data_cutoff_utc")[0]
+    data_cutoff = evaluation_data_cutoff
     completed = _utc(report.get("evaluation_completed_at_utc"), "evaluation_completed_at_utc")[0]
-    if data_cutoff < dataset_cutoff:
-        raise ForecastLedgerError("evaluation data cutoff precedes dataset manifest cutoff")
     if completed < data_cutoff or completed < oos_end or completed < shadow_end:
         raise ForecastLedgerError("readiness evaluation completion precedes its evaluated data window")
     return dict(report)
