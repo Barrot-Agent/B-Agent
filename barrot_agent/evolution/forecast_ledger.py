@@ -285,6 +285,10 @@ def _validate_canonical_raw_receipt(
         raise ForecastLedgerError(
             f"raw_source_receipts[{index}] canonical payload_size_bytes must be a positive integer"
         )
+    if payload["raw_bytes_retained"] is not True or payload["raw_retention_reason"] != "":
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] readiness requires retained raw bytes and no retention exception"
+        )
     raw_path_value = payload["raw_payload_path"]
     if (
         not isinstance(raw_path_value, str)
@@ -304,10 +308,6 @@ def _validate_canonical_raw_receipt(
     ):
         raise ForecastLedgerError(
             f"raw_source_receipts[{index}] canonical raw path is not bound to the content-addressed payload"
-        )
-    if payload["raw_bytes_retained"] is not True or payload["raw_retention_reason"] != "":
-        raise ForecastLedgerError(
-            f"raw_source_receipts[{index}] readiness requires retained raw bytes and no retention exception"
         )
     if payload["model_eligible_source"] is not True or payload["raw_only_reason"] != "":
         raise ForecastLedgerError(
