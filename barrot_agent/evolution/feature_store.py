@@ -535,7 +535,7 @@ class HistoricalFeatureStore:
             manifest_json = row["manifest_json"]
             if _sha256(manifest_json) != row["manifest_sha256"]:
                 raise FeatureStoreError(
-                    f"snapshot manifest hash mismatch for {row['snapshot_id']}"
+                    f"snapshot integrity verification failed: manifest hash mismatch for {row['snapshot_id']}"
                 )
             try:
                 manifest = json.loads(manifest_json)
