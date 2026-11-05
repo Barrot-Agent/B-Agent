@@ -12,6 +12,7 @@ import re
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Callable
 
 from .autonomous_state import AutonomousTaskStore
 from .executor import BarrotExecutor
@@ -35,6 +36,7 @@ class BarrotAutonomousLoop:
         brain,
         workspace: str = ".",
         max_attempts: int = 5,
+        goal_verifier: Callable[[str, dict], dict] | None = None,
     ):
         if isinstance(max_attempts, bool) or not isinstance(max_attempts, int) or max_attempts < 1:
             raise ValueError("max_attempts must be a positive integer")
@@ -44,6 +46,7 @@ class BarrotAutonomousLoop:
         self.verifier = BarrotVerifier(self.executor)
         self.store = AutonomousTaskStore(self.workspace)
         self.max_attempts = max_attempts
+        self.goal_verifier = goal_verifier
 
     def _extract_json(self, text: str) -> dict:
         """Extract the first JSON object from a model response."""
@@ -184,7 +187,32 @@ CRITICAL EXECUTION RULES:
             commands_ok = len(record["execution"]) > 0 and all(
                 item.get("success", False) for item in record["execution"]
             )
-            if commands_ok and verification.success:
+            if not (commands_ok and verification.success):
+                self.store.save(task_id, state)
+                continue
+            if self.goal_verifier is None:
+                record["goal_verification"] = {
+                    "success": False,
+                    "status": "unavailable",
+                    "reason": "No goal-specific verifier is configured; syntax checks alone cannot complete a task.",
+                }
+                state["status"] = "awaiting_goal_verification"
+                self.store.save(task_id, state)
+                return AutonomousResult(
+                    False, len(history), history, task_id,
+                    "awaiting_goal_verification", str(checkpoint)
+                )
+            try:
+                goal_result = self.goal_verifier(goal, record)
+            except Exception as exc:
+                goal_result = {"success": False, "error": self._redact(str(exc))}
+            goal_result = self._redact_value(goal_result)
+            record["goal_verification"] = goal_result
+            if (
+                isinstance(goal_result, dict)
+                and goal_result.get("success") is True
+                and bool(goal_result.get("evidence"))
+            ):
                 state["status"] = "complete"
                 self.store.save(task_id, state)
                 return AutonomousResult(True, len(history), history, task_id, "complete", str(checkpoint))
