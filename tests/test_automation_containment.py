@@ -15,6 +15,7 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/check-signal-accuracy.yml",
     ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
     ".github/workflows/autonomous_self_deployment.yml",
+    ".github/workflows/subagent-spawn.yml",
 )
 
 
