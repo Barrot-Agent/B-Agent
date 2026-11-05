@@ -10,9 +10,7 @@
     "artifact_id": "xrp_spot_depth_derivatives_snapshot_20261105T143601Z",
     "path": "research/xrp_intelligence/20261105T143601Z-xrp-spot-depth-derivatives-snapshot.json",
     "fields": [
-      "market_snapshot.derivatives.kodexius.displayed_exchange_row_sum_open_interest_usd",
-      "market_snapshot.derivatives.tradradar.displayed_exchange_row_sum_open_interest_usd",
-      "market_snapshot.derivatives.disagreement"
+      "market_snapshot.derivatives.tradradar.exchange_row_sum_open_interest_usd"
     ]
   },
   "correction_scope": "Arithmetic only. No provider observation, source timestamp, venue membership or economic interpretation is changed. Original artifact remains untouched.",
@@ -51,7 +49,7 @@
       "displayed_row_sum_gap_usd": 1180630000,
       "displayed_row_sum_ratio": 2.3354183397617887,
       "aggregation": "not_averaged",
-      "interpretation": "Both the rounded-dashboard comparison and displayed-row comparison preserve a material provider discrepancy. The providers' different contract/venue universes and shared-venue differences remain unresolved."
+      "interpretation": "The original absolute_oi_difference_usd and ratio correctly compare the rounded dashboard aggregates ($2.06B versus $884.08M). The added row-sum comparison uses the displayed exchange rows ($2.06472B versus $884.09M). These are distinct precision views, not contradictory arithmetic."
     }
   },
   "source_capture_policy": {
@@ -61,5 +59,11 @@
     "model_eligible": false,
     "reason": "This correction recomputes arithmetic from already archived rendered values; it does not add new source evidence or cure missing raw payloads/timestamp anchors."
   },
-  "forecast_status": "NOT_ISSUED"
+  "forecast_status": "NOT_ISSUED",
+  "adds": [
+    "market_snapshot.derivatives.kodexius.displayed_exchange_row_sum_open_interest_usd",
+    "market_snapshot.derivatives.tradradar.displayed_exchange_row_sum_open_interest_usd",
+    "market_snapshot.derivatives.disagreement.displayed_row_sum_gap_usd",
+    "market_snapshot.derivatives.disagreement.displayed_row_sum_ratio"
+  ]
 }
