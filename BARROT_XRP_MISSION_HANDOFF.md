@@ -6595,3 +6595,160 @@ A later browser retrieval after the earlier snapshot's conservative 22:08:06Z av
 - Alpha Finance reports five funds through November 4, $0 on November 4, +$4.8M over seven sessions and +$78.9M over 30 sessions. Its fund universe and method differ from XRP Insights; the two aggregates are not interchangeable and neither is a direct AP cash ledger.
 
 Exact browser retrieval times for this later page read were not exposed. Provider page-update times are preserved separately. These later observations remain research-only/model-ineligible; no forecast was issued.
+
+
+---
+
+## Execution checkpoint — 2026-11-05 late session
+
+### Current repository state
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` (unchanged; no merge).
+- Main recursive tree: 1,403 entries, 1,298 files, 493 Python files, 90 Python test files and 86 workflow files.
+- Open PR inventory: 369 total; 354 drafts and 15 non-drafts.
+- Main still does not contain the priority-1 mission registry, primary XRP mission JSON or `barrot_agent/evolution/xrp_public_ingestion.py`. The scheduled XRP collector is therefore not active on main.
+- Main latest push CI: [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459), 718 passed and 8 subtests passed. Latest scheduled Cross Analysis: [42124993713](https://github.com/Barrot-Agent/B-Agent/actions/runs/42124993713), successful. Pillars Consistency Check remains failed: [42032214761](https://github.com/Barrot-Agent/B-Agent/actions/runs/42032214761), due missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+
+### PR #1640 — V3/core integration
+
+Current code-bearing head: `30d411f0f50bae150194162cb88f82e3f448cfdd`.
+
+Newly implemented on the existing branch:
+
+- Added the public Kraken XRP/USD ticker endpoint to the scheduled ingestion registry.
+- Added a Kraken ticker parser for last-trade snapshot, best bid/ask, mid, spread, rolling 24-hour volume/VWAP/high/low, UTC-day open/volume/VWAP and 24-hour trade count.
+- The Kraken API does not supply an individual last-trade event timestamp. The parser uses the HTTP Date header only as a response-snapshot timestamp and labels the last price as a snapshot; it never invents a trade-event time.
+- Missing/invalid HTTP Date produces a raw-only receipt with no feature records. Crossed/locked top-of-book is preserved as a raw-only processing failure.
+- Bumped adapter and parser versions to `xrp-public-market-v3.8`.
+- Added four regression tests for snapshot semantics, missing timestamp, crossed/locked book and scheduled registry inclusion.
+- Current registry: 20 public endpoints total, 18 scheduled endpoints; the two explicitly noncommercial XRPL node sources remain excluded from scheduled/model-eligible collection.
+
+Exact-head evidence:
+
+- Core suite: 614 passed, 8 subtests passed.
+- Full repository suite: 1,046 passed, 8 subtests passed.
+- Inclusive package coverage: 57.34%.
+- Installed wheel built and verified; packaged Barrot V3, XRP mission and canonical assets loaded.
+- Six-manifest strict dependency audit passed with no known vulnerabilities.
+- Fail-closed gate passed; automatic merge remains disabled.
+- [Full CI 42131949260](https://github.com/Barrot-Agent/B-Agent/actions/runs/42131949260)
+- [Dependency audit 42131949198](https://github.com/Barrot-Agent/B-Agent/actions/runs/42131949198)
+- [Fail-closed gate 42131949176](https://github.com/Barrot-Agent/B-Agent/actions/runs/42131949176)
+
+The prior code head `0f5a9deaea614cb69c7bc7e067be56cd21147560` had 1,044 passed and two failures caused only by brittle hard-coded source-receipt counts after adding the new endpoint. The tests now derive expected receipt counts from `ENDPOINTS` and `XRPL_NODE_SOURCES`; the current head above passes the full suite.
+
+### PR #1643 — XRP research archive
+
+Current head: `9dabc7254b3eacc52296f42f1eba8f83c3dab8fc`.
+
+The prior exact-head test failure was caused by a test dictionary collapsing two disclosure records that intentionally share one primary-source ID. The test now selects the Circle alliance record by its field. The source research artifact was not rewritten.
+
+Added:
+
+- `research/xrp_intelligence/20261105-xrp-late-session-market-cutoff-followup.json`
+- `tests/test_xrp_late_session_market_cutoff_followup_20261105.py`
+
+The new artifact preserves the rendered Kraken ticker response text and its SHA-256, plus a delayed seven-exchange TradRadar derivatives observation. It records that the Kraken retrieval time is unavailable, TradRadar is delayed 15 minutes, and the two sources are not synchronized. Both remain model-ineligible.
+
+Exact-head evidence:
+
+- Core suite: 495 passed, 8 subtests passed.
+- Full repository suite: 1,172 passed, 8 subtests passed.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed gate passed.
+- [Full CI 42130885303](https://github.com/Barrot-Agent/B-Agent/actions/runs/42130885303)
+- [Dependency audit 42130885220](https://github.com/Barrot-Agent/B-Agent/actions/runs/42130885220)
+- [Fail-closed gate 42130885310](https://github.com/Barrot-Agent/B-Agent/actions/runs/42130885310)
+
+### Latest market evidence — model-ineligible
+
+Kraken rendered XRP/USD ticker response:
+
+- Last: USD 1.21110.
+- Best bid/ask: USD 1.21084 / 1.21110.
+- Displayed spread: 2.147 bps.
+- Rolling 24-hour volume: 40.5785M XRP.
+- Rolling 24-hour VWAP: USD 1.26139558.
+- UTC-day open: USD 1.30410.
+- Rolling 24-hour high/low: USD 1.32583 / 1.19797.
+
+The response contains no provider event timestamp or exact retrieval timestamp. The stored SHA-256 covers rendered response-body text, not independently captured HTTP wire bytes or headers. It is not admitted into the point-in-time feature store.
+
+TradRadar's 2026-11-05 22:35 UTC page update (15-minute display delay) reported mark USD 1.2193, 24-hour change -7.18%, seven-exchange open interest USD 1.94B (-5.59%), funding +0.0074% per eight hours, five-exchange liquidations of at least USD 12.37M (USD 11.92M longs; USD 0.45281M shorts), long/short account ratio 4.03 and long-account share 80.1%. These are source-specific delayed values; they are not synchronized with the Kraken ticker and must not be averaged or used to compute a cross-venue basis.
+
+A leveraged-long unwind is consistent with declining price, declining USD-notional OI and long-heavy liquidations. Positive funding and the high long-account share are counterevidence. Broad risk-off, exchange-specific supply and ETF-related explanations remain competing hypotheses; no synchronized macro, wallet-flow or AP cash-flow panel establishes causality.
+
+No directional forecast was issued.
+
+### Institutional and capital-flow reconciliation
+
+- SBI VC Trade's November 2 release reports JPYSC lending balances above JPY 10B and a JPYSC “handled balance” above JPY 30B. SBI defines handled balance as on-chain holdings plus lending balances; it is not issued supply, net issuance or XRP capital. The published lending courses were 168 days at 3%, 84 days at 2.5% and 28 days at 2%. Source: [SBI Holdings / SBI VC Trade](https://www.sbigroup.co.jp/news/2026/1102_16704.html).
+- SBI Holdings and SMBC Group's October 30 capital/business alliance includes SMBC's 5% equity participation in SBI Startale Marketing. The investment amount is not disclosed. The announced work is investigation, use-case development and proof-of-concept exploration for stablecoins including JPYSC; it is not a launched XRP service or disclosed XRP capital deployment. Source: [SBI Holdings](https://www.sbigroup.co.jp/news/2026/1030_16698.html).
+- SBI, Startale and BlackRock's October 27 agreement is an MOU to explore connections between a tokenized MMF and JPYSC. It is not evidence of a completed product launch or a disclosed cash investment. Source: [SBI Holdings](https://www.sbigroup.co.jp/news/2026/1027_16682.html).
+- SBI and Startale joined the Open Standard, which SBI says has more than 140 participating companies including Coinbase; they are considering a JPYSC/OUSD interoperability proof of concept. Membership is not a direct bilateral Coinbase commercial agreement or a verified live payment flow. Source: [SBI Holdings](https://www.sbigroup.co.jp/news/2026/1016_16665.html).
+- BNY's October 27 announcement says it now supports XRP and RLUSD on its Digital Asset Custody platform and is Ripple's primary RLUSD reserve custodian. Direct RLUSD mint/redeem through BNY and broader tokenized-asset support are intended future plans subject to approvals. The announcement does not disclose XRP assets under custody, XRP collateral balances or realized XRP settlement volume. Source: [BNY](https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- SBI's June 24 JPYSC launch release identifies SBI Shinsei Trust Bank as issuer, SBI VC Trade as distributor and Startale as co-developer; initial availability was limited to VCTRADE accounts pending legal/tax work for public-chain distribution. Source: [SBI Holdings](https://www.sbigroup.co.jp/news/2026/0624_16425.html).
+
+These developments strengthen the documented stablecoin, custody and institutional-infrastructure network. They do not establish XRP purchases, XRP collateral usage or XRP payment volume.
+
+### Integration, review and backlog
+
+Current PRs:
+
+- #1640: 391 commits ahead of main, zero behind, 137 changed files, non-draft and GitHub reports mergeable.
+- #1643: 292 commits ahead of main, zero behind, 232 changed files, non-draft and GitHub reports mergeable.
+- Their only changed-path intersection is `.github/workflows/dependency-audit.yml`; the blob is identical on both branches: `6515307991420ab90d8671034b13ac2eb56190b3`.
+- #1643 is 292 commits ahead and 391 behind #1640. It must not be merged directly after #1640. After #1640 is merged and verified on main, create one consolidated successor directly on that resulting main with #1643's 231 unique paths and omit the shared dependency-audit file. Do not rewrite either source branch.
+- #1640 review threads: 22/22 resolved; approving reviews: 0.
+- #1643 review threads: 14/14 resolved; approving reviews: 0.
+
+The complete open-PR inventory remains 369 (354 drafts, 15 non-drafts). Non-drafts: #1650–#1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+
+Backlog classification:
+
+- Active integration: #1640 and #1643.
+- Exact ancestor/superseded after successor verification: #1642.
+- Dependency/action overlap represented in #1640 but not yet closed: #1644–#1650.
+- Older dependency candidates: #1254 and #1255.
+- Preserve unique work: #1320 paper-trader safety, #1318 schema safety, #1317 structural analysis, #1269 rendering/geometry, and unique draft/security/research work including #1614, #1615, #1621, #1651, #1422 and #1509.
+- No PRs were closed in this checkpoint.
+
+### Merge gate and external-action boundary
+
+Neither PR was merged.
+
+- Both have zero approving reviews despite all review threads being resolved.
+- Detailed branch-protection inspection returns HTTP 403.
+- The visible fallback ruleset is disabled; required review/check configuration cannot be independently verified through the current GitHub integration.
+- A previous main push triggered a successful Pages deployment: [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered Pages deployment remains unresolved.
+- Manual deployment, Hugging Face Space synchronization, Databricks/Kaggle operations and paper-trader workflows were not dispatched. No real-money action occurred.
+
+### Nine-platform authentication map
+
+- ChatGPT session and GitHub repository connection: verified.
+- Copilot: one-off review activity observed; no persistent authenticated data flow established.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks: persistent authenticated data flows remain unverified.
+- Groq is not Grok and is not counted as one of the nine platforms.
+
+No nine-platform live coordination is claimed.
+
+### Prediction readiness and next concrete action
+
+DESIGNED/IMPLEMENTED on the integration branches: public read-only ingestion, 20-source registry (18 scheduled), SHA-256 receipts, point-in-time feature store, timestamp-audit/correction consumer, chronological walk-forward baselines, forecast readiness ledger and deterministic priority-1 mission dispatch.
+
+EXECUTED: exact-head full-suite, core, packaging, six-manifest security and fail-closed checks recorded above; market and institutional research reconciliations added.
+
+VERIFIED: exact results above apply to the named code-bearing heads only. The scheduled collector has not run on main. Main has no active XRP mission registry or collector. Artifact retention is 90 days; independent external timestamp anchoring and indefinite immutable raw retention remain unfinished. Comprehensive historical exchange-wallet flows, issuer/AP cash flows, collateral, custody balances, stablecoin mint/burn, payment-rail volume, regulation and macro series remain incomplete. Predictive lift, calibration, drift monitoring and sufficient shadow outcomes are not established.
+
+No directional forecast is authorized. No paper trading or real-money action was performed.
+
+Next sequence:
+1. Obtain independent approving reviews and verify actual branch-protection requirements.
+2. Resolve authorization for the automatic GitHub Pages side effect.
+3. Merge #1640 only after every condition is satisfied; fetch main again, verify the merge commit and files, inspect triggered workflows and run main CI.
+4. Create one consolidated successor directly on the resulting main from #1643's 231 unique paths; do not merge #1643 directly.
+5. Run the successor's exact-head full suite, dependency/security audit and fail-closed gate; obtain approvals before merge.
+6. Close only exact duplicate/superseded source PRs after merged content is verified on main.
+7. Continue historical exchange-flow, collateral, custody, stablecoin and payment-rail ingestion, then evaluator-attested walk-forward performance, calibration, drift and shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
