@@ -739,6 +739,7 @@ def test_readiness_signature_binds_metrics_and_dataset_manifest(tmp_path):
 def test_readiness_rejects_untrusted_evaluator_key(tmp_path):
     fixture = READINESS_FIXTURES[("XRP", 3600)]
     report = json.loads(fixture["report_bytes"])
+    report["evaluator_id"] = "untrusted-evaluator"
     _sign_readiness_report(report, key_id="untrusted-evaluator")
     report_bytes = json.dumps(
         report, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
