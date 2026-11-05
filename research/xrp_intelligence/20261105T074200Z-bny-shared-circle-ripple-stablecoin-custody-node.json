@@ -1,0 +1,400 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "xrp_bny_shared_circle_ripple_stablecoin_custody_node_20261105T074200Z",
+  "artifact_type": "institutional_shared_custody_and_stablecoin_issuer_network_reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "recorded_at_utc": "2026-11-05T07:42:00Z",
+  "research_cutoff_utc": "2026-11-05T07:42:00Z",
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "model_eligible": false,
+  "source_capture_policy": {
+    "raw_http_bytes_captured": false,
+    "raw_content_sha256": null,
+    "timestamp_anchor": "Rendered public-web retrieval time only; no independent external timestamp anchor.",
+    "admission_rule": "Keep this relationship-graph artifact outside the prediction feature store until byte-complete source captures, SHA-256 receipts, publication vintages and independent timestamp evidence are stored."
+  },
+  "source_registry": [
+    {
+      "id": "bny_circle_usdc_custody_mint_burn_20260629",
+      "publisher": "BNY",
+      "source_type": "primary_joint_counterparty_announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-expands-relationship-circle-adds-to-institutional-grade-stablecoin-enablement-services.html",
+      "publication_date": "2026-06-29",
+      "retrieved_at_utc": "2026-11-05T07:42:00Z",
+      "independence_group": "bny_circle_joint_announcement_20260629",
+      "claims_supported": [
+        "BNY states that Circle USDC became the first stablecoin on BNY Digital Asset Custody, with eligible BNY clients able to store, transfer, mint and burn USDC through the institutional platform.",
+        "BNY states that it expanded its role as primary custodian of USDC reserves.",
+        "The announcement describes a BNY-mediated workflow in which clients can instruct Circle to mint USDC against dollars or redeem USDC for dollars."
+      ],
+      "limitations": [
+        "The release does not disclose USDC reserve balances specifically held at BNY, BNY client counts, or actual mint/burn transaction volumes.",
+        "The announcement does not establish USDC issuance on XRPL or use of XRP as a bridge asset.",
+        "BNY and Circle copies of the joint announcement are one transaction disclosure, not independent third-party measurements."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "circle_bny_usdc_custody_mint_burn_20260629",
+      "publisher": "Circle",
+      "source_type": "primary_counterparty_copy_of_joint_announcement",
+      "url": "https://www.circle.com/pressroom/bny-expands-relationship-with-circle-and-adds-to-institutional-grade-stablecoin-enablement-services",
+      "publication_date": "2026-06-29",
+      "retrieved_at_utc": "2026-11-05T07:42:00Z",
+      "independence_group": "bny_circle_joint_announcement_20260629",
+      "claims_supported": [
+        "Circle's own pressroom confirms BNY's expanded USDC custody, transfer, mint and burn capabilities for institutional clients.",
+        "Circle confirms BNY's primary-custodian role for USDC reserves."
+      ],
+      "limitations": [
+        "This is the same joint announcement as BNY's copy and must not be counted as independent corroboration.",
+        "No BNY-specific USDC balance or transaction-level mint/burn volume is disclosed."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "circle_usdc_reserve_fund_bny_custody_page_20260806",
+      "publisher": "Circle",
+      "source_type": "issuer_product_and_reserve_disclosure",
+      "url": "https://www.circle.com/usdc",
+      "publication_date": null,
+      "source_data_as_of": "2026-08-06",
+      "retrieved_at_utc": "2026-11-05T07:42:00Z",
+      "independence_group": "circle_issuer_usdc_reserve_disclosure",
+      "claims_supported": [
+        "Circle's USDC page states that the portfolio of the Circle Reserve Fund, which may contain short-dated U.S. Treasuries, overnight U.S. Treasury repurchase agreements and cash, is custodied at BNY and managed by BlackRock.",
+        "Circle states that USDC is issued by regulated Circle affiliates and backed by U.S.-dollar-denominated reserve assets."
+      ],
+      "limitations": [
+        "The page's BNY statement concerns the Circle Reserve Fund portfolio; it does not quantify the amount held at BNY or imply that every USDC reserve asset is held there.",
+        "The stated page data-as-of date is August 6, 2026; it is not a November 5 balance snapshot.",
+        "This is Circle issuer disclosure, not an independent custody audit."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_bny_rlusd_reserve_custody_20250709",
+      "publisher": "Ripple",
+      "source_type": "primary_joint_counterparty_announcement",
+      "url": "https://ripple.com/ripple-press/ripple-selects-bny-to-custody-ripple-usd-reserves/",
+      "publication_date": "2025-07-09",
+      "retrieved_at_utc": "2026-11-05T07:42:00Z",
+      "independence_group": "ripple_bny_joint_announcement_20250709",
+      "claims_supported": [
+        "Ripple states that it selected BNY as primary reserve custodian for RLUSD.",
+        "Ripple states that it would also use BNY transaction-banking services to support its operations."
+      ],
+      "limitations": [
+        "The announcement does not quantify RLUSD reserve assets held at BNY or BNY's XRP holdings.",
+        "The reserve-custody appointment is not evidence that BNY purchased XRP or accepted XRP collateral.",
+        "BNY and Ripple copies of the same appointment announcement are not independent third-party measurements."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "bny_ripple_xrp_rlusd_custody_20261027",
+      "publisher": "BNY",
+      "source_type": "primary_institutional_custody_and_trade_finance_announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publication_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-05T07:42:00Z",
+      "independence_group": "bny_ripple_joint_announcement_20261027",
+      "claims_supported": [
+        "BNY states that its Digital Asset Custody platform now supports native XRP and RLUSD for eligible institutional clients.",
+        "BNY states that it remains primary reserve custodian for RLUSD.",
+        "BNY and Ripple describe intended future RLUSD mint/redeem through BNY, subject to final BNY and regulatory approvals.",
+        "BNY, Ripple and C2FO describe exploring tokenized trade finance on XRPL, subject to client requirements."
+      ],
+      "limitations": [
+        "No XRP-specific or RLUSD-specific assets under custody, client counts, new XRP purchases or XRP collateral balances are disclosed.",
+        "Direct RLUSD mint/redeem through BNY is a future plan, not a verified live capability.",
+        "The C2FO trade-finance work is exploratory; funded receivables, capital-provider identities and production settlement volumes are not disclosed."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_current_rlusd_reserve_and_bny_product_page",
+      "publisher": "Ripple",
+      "source_type": "issuer_product_disclosure",
+      "url": "https://ripple.com/products/stablecoin/",
+      "publication_date": null,
+      "retrieved_at_utc": "2026-11-05T07:42:00Z",
+      "independence_group": "ripple_issuer_rlusd_product_disclosure",
+      "claims_supported": [
+        "Ripple's current RLUSD product page states that RLUSD reserves are held in segregated accounts at depository institutions and securities custodians.",
+        "Ripple's page identifies BNY as the primary custodian selected for RLUSD reserves in July 2025.",
+        "Ripple describes RLUSD as issued on XRPL, Ethereum and additional supported networks."
+      ],
+      "limitations": [
+        "This is issuer disclosure and does not quantify the portion of RLUSD reserves held at BNY.",
+        "The page does not establish XRP bridge use or XRP collateral balances."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "entities": [
+    {
+      "id": "circle",
+      "name": "Circle Internet Group",
+      "role": "USDC issuer",
+      "entity_type": "stablecoin_issuer"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple Labs",
+      "role": "RLUSD issuer and digital-asset infrastructure provider",
+      "entity_type": "digital_asset_company"
+    },
+    {
+      "id": "bny",
+      "name": "The Bank of New York Mellon Corporation",
+      "role": "Institutional custodian, reserve custodian and transaction-banking provider",
+      "entity_type": "financial_institution"
+    },
+    {
+      "id": "blackrock",
+      "name": "BlackRock",
+      "role": "Manager of the Circle Reserve Fund portfolio identified on Circle's USDC page",
+      "entity_type": "asset_manager"
+    },
+    {
+      "id": "c2fo",
+      "name": "C2FO",
+      "role": "Working-capital platform; exploratory XRPL tokenized trade-finance participant",
+      "entity_type": "trade_finance_platform"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "role": "Native digital asset of XRPL",
+      "entity_type": "digital_asset"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "role": "Public blockchain",
+      "entity_type": "blockchain"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "role": "Circle-issued U.S. dollar stablecoin",
+      "entity_type": "stablecoin"
+    },
+    {
+      "id": "rlusd",
+      "name": "RLUSD",
+      "role": "Ripple-issued U.S. dollar stablecoin",
+      "entity_type": "stablecoin"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "circle_bny_usdc_reserve_custody",
+      "from": "Circle",
+      "to": "BNY",
+      "instrument": "USDC reserves",
+      "status": "PRIMARY_RESERVE_CUSTODY_REPORTED",
+      "source_ids": [
+        "bny_circle_usdc_custody_mint_burn_20260629",
+        "circle_bny_usdc_custody_mint_burn_20260629",
+        "circle_usdc_reserve_fund_bny_custody_page_20260806"
+      ],
+      "quantified_reserve_balance_at_bny_usd": null,
+      "actual_reserve_transfer_amount_usd": null,
+      "not_established": [
+        "BNY-specific USDC reserve balance",
+        "transaction-level USDC mint/burn volume",
+        "USDC issuance on XRPL",
+        "XRP bridge-asset use"
+      ]
+    },
+    {
+      "id": "bny_circle_usdc_institutional_platform",
+      "from": "BNY Digital Asset Custody",
+      "to": "eligible institutional clients",
+      "instrument": "USDC",
+      "status": "LIVE_REPORTED_CLIENT_CAPABILITY",
+      "capabilities": [
+        "store",
+        "transfer",
+        "mint through Circle instruction",
+        "burn through Circle instruction"
+      ],
+      "source_ids": [
+        "bny_circle_usdc_custody_mint_burn_20260629",
+        "circle_bny_usdc_custody_mint_burn_20260629"
+      ],
+      "actual_mint_burn_volume_usd": null,
+      "not_established": [
+        "XRPL deployment",
+        "XRP settlement leg",
+        "XRP purchases"
+      ]
+    },
+    {
+      "id": "ripple_bny_rlusd_reserve_custody",
+      "from": "Ripple",
+      "to": "BNY",
+      "instrument": "RLUSD reserves",
+      "status": "PRIMARY_RESERVE_CUSTODY_ROLE_REPORTED",
+      "appointment_date": "2025-07-09",
+      "source_ids": [
+        "ripple_bny_rlusd_reserve_custody_20250709",
+        "ripple_current_rlusd_reserve_and_bny_product_page"
+      ],
+      "quantified_reserve_balance_at_bny_usd": null,
+      "not_established": [
+        "BNY-specific RLUSD reserve balance",
+        "XRP purchases",
+        "XRP collateral acceptance"
+      ]
+    },
+    {
+      "id": "bny_digital_asset_custody_xrp_rlusd",
+      "from": "BNY Digital Asset Custody",
+      "to": "eligible institutional clients",
+      "instruments": [
+        "XRP",
+        "RLUSD"
+      ],
+      "status": "LIVE_REPORTED_CUSTODY_CAPABILITY",
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_20261027"
+      ],
+      "xrp_assets_under_custody_units": null,
+      "rlusd_assets_under_custody_usd": null,
+      "new_xrp_purchases_established": false,
+      "xrp_collateral_acceptance_established": false
+    },
+    {
+      "id": "circle_ripple_shared_bny_service_provider",
+      "from": "Circle and Ripple",
+      "to": "BNY",
+      "status": "INDIRECT_SHARED_SERVICE_PROVIDER_NETWORK_EDGE_ONLY",
+      "direct_circle_ripple_partnership_established": false,
+      "source_ids": [
+        "bny_circle_usdc_custody_mint_burn_20260629",
+        "ripple_bny_rlusd_reserve_custody_20250709",
+        "bny_ripple_xrp_rlusd_custody_20261027"
+      ],
+      "interpretation": "Circle and Ripple have separate stablecoin and custody relationships with BNY. The shared service provider is an indirect network connection only; these sources do not establish a direct Circle-Ripple agreement, joint venture, cross-issuance or shared reserve pool."
+    },
+    {
+      "id": "bny_ripple_c2fo_xrpl_trade_finance",
+      "from": "BNY and Ripple",
+      "to": "C2FO",
+      "instrument": "tokenized trade-finance receivables on XRPL",
+      "status": "EXPLORATORY_SUBJECT_TO_CLIENT_REQUIREMENTS",
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_20261027"
+      ],
+      "production_receivables_funded": false,
+      "funded_amount_usd": null,
+      "xrp_bridge_asset_established": false,
+      "xrp_collateral_established": false
+    }
+  ],
+  "actual_capital_classification": {
+    "bny_xrp_purchase_amount_usd": null,
+    "bny_xrp_purchases_established": false,
+    "xrp_assets_under_custody_units": null,
+    "xrp_collateral_balance_units": null,
+    "usdc_reserve_balance_at_bny_usd": null,
+    "rlusd_reserve_balance_at_bny_usd": null,
+    "usdc_mint_burn_volume_through_bny_usd": null,
+    "rlusd_direct_mint_redeem_through_bny": "future plan subject to final BNY and regulatory approvals",
+    "cash_capital_deployed_into_xrp_by_bny": "not established",
+    "classification_rule": "Custody appointments, reserve-custody roles, mint/burn capabilities and exploratory tokenized-finance plans are not capital investment in XRP. Count actual cash or asset deployment only when a dated, quantified primary record or independently verified transaction establishes it."
+  },
+  "independence_assessment": {
+    "source_group_count": 4,
+    "groups": [
+      "bny_circle_joint_announcement_20260629",
+      "circle_issuer_usdc_reserve_disclosure",
+      "ripple_bny_joint_announcement_20250709",
+      "bny_ripple_joint_announcement_20261027",
+      "ripple_issuer_rlusd_product_disclosure"
+    ],
+    "joint_release_copies_are_independent": false,
+    "issuer_product_pages_are_independent_third_party_evidence": false,
+    "independent_custody_balance_confirmation_available": false,
+    "note": "Multiple issuer/custodian pages improve claim traceability but do not create independent measurement of asset balances or transaction volumes."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-shared-custody-lowers-institutional-friction",
+      "claim": "BNY's separate USDC, RLUSD and XRP custody capabilities may lower institutional operational friction for holding and servicing multiple digital assets.",
+      "support": [
+        "BNY reports institutional USDC custody/mint/burn capabilities.",
+        "BNY reports XRP and RLUSD custody support for eligible clients."
+      ],
+      "disconfirming_or_missing": [
+        "No asset-specific AUC, client count, incremental account openings or net XRP purchases are disclosed."
+      ]
+    },
+    {
+      "id": "H2-stablecoins-may-substitute-for-xrp-in-some-settlement-legs",
+      "claim": "Institutional USDC or RLUSD settlement may substitute for XRP as a bridge asset in some workflows even while XRPL activity grows.",
+      "support": [
+        "C2FO's announced XRPL settlement asset is RLUSD, not XRP.",
+        "BNY's USDC mint/burn workflow is described as a fiat-to-stablecoin service, not an XRP bridge."
+      ],
+      "disconfirming_or_missing": [
+        "No production C2FO settlement volumes or corridor-level asset routing are disclosed.",
+        "No evidence establishes the share of institutional flows using XRP versus stablecoins."
+      ]
+    },
+    {
+      "id": "H3-xrp-custody-capability-enables-holdings-without-new-demand",
+      "claim": "BNY's XRP custody capability can support existing institutional holdings without causing new purchases.",
+      "support": [
+        "BNY reports safekeeping/holding/transfer capability for eligible clients."
+      ],
+      "disconfirming_or_missing": [
+        "No XRP-specific AUC or net client inflow data are disclosed."
+      ]
+    },
+    {
+      "id": "H4-shared-bny-node-is-not-a-direct-circle-ripple-partnership",
+      "claim": "The observed Circle-Ripple network connection is BNY's role as a shared service provider, not a direct commercial partnership between the issuers.",
+      "support": [
+        "The reviewed Circle and Ripple announcements describe separate issuer-to-BNY relationships."
+      ],
+      "disconfirming_or_missing": [
+        "A separate direct Circle-Ripple contract or joint announcement was not established in this source set."
+      ]
+    }
+  ],
+  "disconfirming_evidence": [
+    "BNY-wide AUC/AUA is not XRP-specific assets under custody.",
+    "No BNY-specific USDC or RLUSD reserve balance is quantified.",
+    "No XRP purchase by BNY or BNY client is established by these custody announcements.",
+    "No XRP collateral acceptance or posted balance is disclosed.",
+    "Circle's USDC custody/mint/burn relationship with BNY does not establish USDC issuance on XRPL.",
+    "Ripple's direct RLUSD mint/redeem through BNY is described as a future plan subject to final approvals.",
+    "The Circle-Ripple connection in this artifact is an indirect shared-provider edge only; no direct agreement is established.",
+    "BNY/Ripple/C2FO tokenized trade-finance activity is exploratory and has no disclosed production funded amount or volume."
+  ],
+  "next_actions": [
+    "Seek BNY asset-specific XRP, RLUSD and USDC custody balances with as-of dates and independent attestation.",
+    "Verify actual USDC mint/burn volumes through BNY separately from announced platform capability.",
+    "Track RLUSD mint/redeem through BNY only after a primary operational launch notice and transaction evidence.",
+    "Verify whether any direct Circle-Ripple agreement exists independently of the shared BNY provider relationship.",
+    "Identify C2FO participating capital providers and actual funded invoice volumes; keep historical Early Pay volumes separate.",
+    "Capture byte-complete source responses, SHA-256 receipts, publication vintages and independent timestamps before model admission.",
+    "Keep XRP spot demand, XRPL activity, USDC/RLUSD supply and custody capability as separate variables."
+  ],
+  "forecast": {
+    "issued": false,
+    "directional": false,
+    "status": "NOT_ISSUED",
+    "reason": "Institutional custody capability and shared-service-provider relationships do not establish incremental XRP demand or a validated directional signal."
+  },
+  "paper_trade_executed": false
+}
