@@ -18,6 +18,8 @@ def test_closing_cash_and_xrp_components_are_separated():
     assert math.isclose(placement["xrp_purchased_with_cash"], 84_365_876.3625, abs_tol=1e-6)
     assert math.isclose(stack["in_kind_xrp_at_closing"]["total_xrp"], 388_910_554.061435, abs_tol=1e-6)
     assert stack["closing_gross_cash_proceeds"]["total_gross_cash_usd_approx"] == 272_600_000
+    assert stack["pathfinder_contribution"]["xrp_contributed"] == 126_791_458
+    assert "delayed" not in stack["pathfinder_contribution"]
     assert math.isclose(
         stack["company_reported_xrp"]["primary_component_reconstruction_xrp"],
         473_276_430.423935,
