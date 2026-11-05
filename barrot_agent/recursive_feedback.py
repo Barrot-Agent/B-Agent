@@ -103,6 +103,7 @@ class RecursiveFeedbackLoop:
 
         # Improvement tracking
         self._improvement_history: Deque[float] = deque(maxlen=self.config.improvement_window)
+        self._evaluation_history: Deque[tuple[str, str, str, str]] = deque(maxlen=self.config.improvement_window)
         self._feedback_history: Deque[Dict[str, Any]] = deque(
             maxlen=self.config.feedback_history_limit
         )
@@ -275,6 +276,7 @@ class RecursiveFeedbackLoop:
         if not isinstance(evidence, dict):
             logger.info("No paired evaluation evidence; improvement is unverified")
             self._improvement_history.clear()
+            self._evaluation_history.clear()
             return 0.0, 0.0
         try:
             baseline_data = evidence["baseline"]
@@ -288,8 +290,17 @@ class RecursiveFeedbackLoop:
             return 0.0, 0.0
         if not assessment.eligible or not assessment.improved:
             self._improvement_history.clear()
+            self._evaluation_history.clear()
+            return 0.0, 0.0
+        pair = (baseline.run_id, candidate.run_id, baseline.revision, candidate.revision)
+        seen_run_ids = {run_id for prior_pair in self._evaluation_history for run_id in prior_pair[:2]}
+        if baseline.run_id in seen_run_ids or candidate.run_id in seen_run_ids:
+            logger.warning("Repeated evaluation run IDs cannot establish convergence")
+            self._improvement_history.clear()
+            self._evaluation_history.clear()
             return 0.0, 0.0
         score = max(0.0, min(1.0, assessment.score))
+        self._evaluation_history.append(pair)
         self._improvement_history.append(score)
         if len(self._improvement_history) < self.config.improvement_window:
             return score, 0.0
