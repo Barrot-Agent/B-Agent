@@ -148,7 +148,7 @@ def test_bny_usdc_mint_burn_capability_is_not_xrpl_or_xrp_bridge_evidence():
     assert set(edge["capabilities"]) == {"store", "transfer", "mint through Circle instruction", "burn through Circle instruction"}
     assert edge["actual_mint_burn_volume_usd"] is None
     assert "XRPL deployment" in edge["not_established"]
-    assert "XRP bridge-asset use" not in edge["not_established"]
+    assert "XRP settlement leg" in edge["not_established"]
 
 
 def test_bny_native_xrp_and_rlusd_custody_has_no_asset_specific_balance_or_purchase_claim():
