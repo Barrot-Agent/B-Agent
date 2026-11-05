@@ -33,6 +33,7 @@ def test_sbi_ripple_and_sbi_circle_are_separate_nonexclusive_relationships():
     assert edges["SBI_CIRCLE_MOU"]["to"] == "Circle"
     assert edges["SBI_CIRCLE_JV"]["to"] == "SBI_Circle_Holdings"
     assert edges["SBI_VCTRADE_RIPPLE_RLUSD"]["to"] == "Ripple"
+    assert "SBI_VCTRADE_RLUSD" not in edges
     assert edges["RIPPLE_STANDARD_CUSTODY_RLUSD_ISSUER"]["to"] == "Standard_Custody_Trust_Company"
     assert edges["SBI_CIRCLE_EQUITY"]["amount_usd"] == 50_000_000
     assert edges["SBI_CIRCLE_EQUITY"]["cash_to_issuer_confirmed"] is None

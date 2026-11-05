@@ -96,17 +96,6 @@
       "xrp_cash_flow_disclosed": false
     },
     {
-      "id": "SBI_VCTRADE_RLUSD",
-      "from": "SBI_VC_Trade",
-      "to": "Standard_Custody_Trust_Company",
-      "relationship": "RLUSD distribution/listing on VCTRADE",
-      "launch_date": "2026-06-24",
-      "chains_supported_at_launch": [
-        "Ethereum"
-      ],
-      "bitpoint_service_included": false
-    },
-    {
       "id": "SBI_CIRCLE_MOU",
       "from": "SBI_Holdings",
       "to": "Circle",
