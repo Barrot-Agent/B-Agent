@@ -27,3 +27,12 @@ def test_full_repository_suite_measures_all_barrot_agent_packages():
         assert "actions/setup-python@v5" not in workflow
     assert "actions/checkout@v7" in ingestion
     assert "actions/checkout@v4" not in ingestion
+
+
+def test_default_pyproject_coverage_config_includes_major_packages():
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert 'omit = ["*/__pycache__/*", "tests/*"]' in pyproject
+    assert "fail_under = 50" in pyproject
+    for package in ("agi", "ingestion", "analysis", "monetization", "orchestration", "rendering"):
+        assert f'"barrot_agent/{package}/*"' not in pyproject
+    assert '"barrot_agent/smart_agent.py"' not in pyproject
