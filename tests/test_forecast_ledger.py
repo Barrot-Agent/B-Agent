@@ -133,19 +133,42 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
     receipts = []
     for source_id in source_ids:
         group, source_uri, raw_bytes = source_details[source_id]
-        receipt_id = f"receipt-{source_id}"
-        raw_receipt_bytes[receipt_id] = raw_bytes
+        raw_digest = hashlib.sha256(raw_bytes).hexdigest()
+        canonical_payload = {
+            "source_id": source_id,
+            "source_uri": source_uri,
+            "captured_at_utc": FEATURE_CAPTURED,
+            "source_data_as_of_utc": FEATURE_CUTOFF,
+            "source_http_date": None,
+            "raw_content_sha256": raw_digest,
+            "payload_size_bytes": len(raw_bytes),
+            "raw_payload_path": f"raw/sha256/{raw_digest}.json",
+            "model_eligible_source": True,
+            "raw_only_reason": "",
+        }
+        canonical_receipt_id = hashlib.sha256(
+            json.dumps(
+                canonical_payload,
+                sort_keys=True,
+                separators=(",", ":"),
+                ensure_ascii=False,
+                allow_nan=False,
+            ).encode("utf-8")
+        ).hexdigest()
+        canonical_receipt = {**canonical_payload, "receipt_id": canonical_receipt_id}
+        raw_receipt_bytes[canonical_receipt_id] = raw_bytes
         receipts.append(
             {
                 "source_id": source_id,
-                "receipt_id": receipt_id,
-                "raw_content_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+                "receipt_id": canonical_receipt_id,
+                "raw_content_sha256": raw_digest,
                 "raw_capture_status": "byte_complete",
                 "raw_receipt_sha256_verified": True,
                 "independence_group": group,
                 "source_uri": source_uri,
                 "source_data_as_of_utc": FEATURE_CUTOFF,
                 "captured_at_utc": FEATURE_CAPTURED,
+                "raw_receipt": canonical_receipt,
             }
         )
     independence_groups = sorted({source_details[source_id][0] for source_id in source_ids})
@@ -915,4 +938,69 @@ def test_readiness_report_accepts_capture_after_source_asof_when_available_by_cu
     assert report["dataset_manifest"]["raw_source_receipts"][0]["source_data_as_of_utc"] == FEATURE_CUTOFF
     assert report["dataset_manifest"]["raw_source_receipts"][0]["captured_at_utc"] == FEATURE_CAPTURED
     assert _validate_readiness_report(report)["status"] == "PASS"
+
+
+def test_readiness_report_rejects_noncanonical_raw_receipt_metadata():
+    report = _mutated_readiness_report(
+        lambda value: value["dataset_manifest"]["raw_source_receipts"][0]["raw_receipt"].update(
+            source_uri="https://attacker.example/relabelled-source"
+        )
+    )
+    with pytest.raises(ForecastLedgerError, match="receipt_id does not match canonical receipt metadata"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_report_rejects_raw_receipt_path_traversal():
+    def mutate(report):
+        receipt = report["dataset_manifest"]["raw_source_receipts"][0]
+        canonical = dict(receipt["raw_receipt"])
+        canonical.pop("receipt_id")
+        canonical["raw_payload_path"] = "../../outside/sha256/" + canonical["raw_content_sha256"] + ".json"
+        receipt_id = hashlib.sha256(
+            json.dumps(
+                canonical, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+            ).encode("utf-8")
+        ).hexdigest()
+        receipt["raw_receipt"] = {**canonical, "receipt_id": receipt_id}
+        receipt["receipt_id"] = receipt_id
+
+    report = _mutated_readiness_report(mutate)
+    with pytest.raises(ForecastLedgerError, match="canonical raw path is not bound"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_registration_rechecks_canonical_receipt_payload_size(tmp_path):
+    fixture = READINESS_FIXTURES[("XRP", 3600)]
+    report = json.loads(fixture["report_bytes"])
+    receipt = report["dataset_manifest"]["raw_source_receipts"][0]
+    receipt["raw_receipt"]["payload_size_bytes"] += 1
+    canonical = dict(receipt["raw_receipt"])
+    canonical.pop("receipt_id")
+    receipt_id = hashlib.sha256(
+        json.dumps(
+            canonical, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+        ).encode("utf-8")
+    ).hexdigest()
+    receipt["raw_receipt"]["receipt_id"] = receipt_id
+    receipt["receipt_id"] = receipt_id
+    dataset_bytes = json.dumps(
+        report["dataset_manifest"], sort_keys=True, separators=(",", ":"),
+        ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+    report["dataset_sha256"] = hashlib.sha256(dataset_bytes).hexdigest()
+    _sign_readiness_report(report)
+    report_bytes = json.dumps(
+        report, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+    ledger = ForecastLedger(
+        tmp_path / "receipt-size.sqlite3",
+        clock=lambda: datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc),
+        trusted_evaluator_public_keys=_trusted_test_evaluator_keys(),
+    )
+    with pytest.raises(ForecastLedgerError, match="payload size does not match canonical receipt bytes"):
+        ledger.register_readiness_report(
+            report_bytes,
+            receipt_id="receipt-size-test",
+            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+        )
 
