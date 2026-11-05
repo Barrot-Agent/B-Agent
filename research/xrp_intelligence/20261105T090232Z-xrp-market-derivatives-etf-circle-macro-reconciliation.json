@@ -295,6 +295,123 @@
         "The Bank of England rate increase was an expectation at the capture cutoff, not a confirmed decision.",
         "The article attributes UK inflation pressure to the Iran war and Strait of Hormuz supply bottlenecks; it does not establish an XRP effect."
       ]
+    },
+    {
+      "id": "trm_labs_binance_multichain_incident",
+      "publisher": "TRM Labs",
+      "authority": "independent blockchain-intelligence analysis",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "published_date": "2026-10-29",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered public analysis; original bytes not retained",
+      "independence_group": "trm_blockchain_intelligence",
+      "model_eligible": false,
+      "limitations": [
+        "Blockchain attribution is analytical, not a judicial finding.",
+        "XRP and Ethereum RLUSD flows are separate networks and assets."
+      ]
+    },
+    {
+      "id": "xrplwin_binance_xrp_transfer_reconstruction",
+      "publisher": "XRPLWin",
+      "authority": "XRPL ledger-derived transaction reconstruction",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "published_date": "2026-10-30",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered ledger-derived analysis; no raw transaction replay in this run",
+      "independence_group": "xrplwin_on_ledger_analysis",
+      "model_eligible": false,
+      "limitations": [
+        "The five source CTIDs are ledger facts; ownership attribution remains based on Binance and intelligence-provider attribution.",
+        "No subsequent sale is inferred from the initial drain."
+      ]
+    },
+    {
+      "id": "q_eternal_binance_xrp_redistribution",
+      "publisher": "Q-Eternal",
+      "authority": "public ledger-account reconstruction",
+      "url": "https://q-eternal.com/blog/2026-11-02/",
+      "published_date": "2026-11-02",
+      "ledger_snapshot": 108064685,
+      "snapshot_time_utc": "2026-11-02T10:02:00Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered public analysis; no raw account_tx bytes retained",
+      "independence_group": "q_eternal_ledger_analysis",
+      "model_eligible": false,
+      "limitations": [
+        "Recipient ownership remains unresolved.",
+        "No outgoing recipient transactions or exchange-deposit pattern were observed only through the stated Nov 2 cutoff."
+      ]
+    },
+    {
+      "id": "fbi_binance_tradertraitor_attribution",
+      "publisher": "Federal Bureau of Investigation",
+      "authority": "primary law-enforcement advisory",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "published_date": "2026-10-31",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered government advisory; original bytes not retained",
+      "independence_group": "fbi_law_enforcement_primary",
+      "model_eligible": false,
+      "limitations": [
+        "Government attribution is not a court judgment; preserve denial and forensic alternatives."
+      ]
+    },
+    {
+      "id": "binance_oct31_90pct_recovery_update",
+      "publisher": "Binance",
+      "authority": "primary exchange recovery announcement",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered issuer announcement; original bytes not retained",
+      "independence_group": "binance_primary_incident_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "Reported 90% of impacted amount covered; denominator and relation to the later 98% replenishment statement are not fully reconciled."
+      ]
+    },
+    {
+      "id": "binance_nov4_44_asset_reserve_update",
+      "publisher": "Binance",
+      "authority": "primary exchange Proof of Reserves announcement",
+      "url": "https://www.binance.bh/en/support/announcement/detail/c6ba9aa726974fc6b9332a2c8f63b405",
+      "published_at_utc": "2026-11-04T15:23:00Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered issuer announcement; original bytes not retained",
+      "independence_group": "binance_primary_incident_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The 98% is aggregate impacted-token replenishment; the 44-token proof was pending at publication."
+      ]
+    },
+    {
+      "id": "binance_rlusd_xrpl_recovery_plan",
+      "publisher": "Binance",
+      "authority": "primary exchange recovery announcement",
+      "url": "https://www.binance.bh/en/support/announcement/detail/2d83c325ab6e49c6bd6c5de8803b11a6",
+      "published_at_utc": "2026-11-03T02:40:00Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered issuer announcement; original bytes not retained",
+      "independence_group": "binance_primary_incident_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The XRP network withdrawal plan names RLUSD as the asset; actual activation was not verified."
+      ]
+    },
+    {
+      "id": "xrpl_native_xrp_freeze_protocol_docs",
+      "publisher": "XRP Ledger documentation",
+      "authority": "primary protocol documentation",
+      "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
+      "observed_at_utc": "2026-11-05T09:16:47Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered official documentation",
+      "independence_group": "xrpl_primary_protocol_documentation",
+      "model_eligible": false,
+      "limitations": [
+        "Issuer freeze controls apply to issued tokens, not native XRP; custodians may freeze assets they custody."
+      ]
     }
   ],
   "market_snapshot": {
@@ -323,7 +440,35 @@
         "One venue; no synchronized cross-venue quote.",
         "Top-of-book sizes are not full-depth liquidity and can cancel.",
         "The Kraken UTC-day open is not a rolling 24-hour open."
-      ]
+      ],
+      "latest_recheck": {
+        "venue": "Kraken",
+        "pair": "XRP/USD",
+        "captured_at_utc": "2026-11-05T09:16:47Z",
+        "source_event_timestamp": "not returned by Kraken ticker payload",
+        "last_usd": 1.31413,
+        "best_bid_usd": 1.31397,
+        "best_ask_usd": 1.31398,
+        "mid_usd": 1.313975,
+        "displayed_spread_usd": 0.00001,
+        "displayed_spread_bps": 0.076106,
+        "best_bid_displayed_size_xrp": 907,
+        "best_ask_displayed_size_xrp": 3858,
+        "last_trade_size_xrp": 18.0954013,
+        "volume_24h_xrp": 32559245.92403054,
+        "vwap_24h_usd": 1.30882155,
+        "trade_count_24h": 31151,
+        "low_24h_usd": 1.27488,
+        "high_24h_usd": 1.34,
+        "utc_day_open_usd": 1.3041,
+        "change_from_090232_snapshot_pct": -0.684,
+        "model_eligible": false,
+        "limitations": [
+          "Second read of the same public ticker approximately 14 minutes after the earlier snapshot; no exchange event timestamp was returned.",
+          "The displayed spread and top-of-book sizes are not a full depth ladder.",
+          "The 0.684% difference is a two-capture observation, not a validated return series or signal."
+        ]
+      }
     },
     "order_book": {
       "full_depth_status": "NOT_CAPTURED",
@@ -515,7 +660,7 @@
       "20:09"
     ],
     "source_wallet_count": 5,
-    "stolen_xrp_approx": 233460000,
+    "stolen_xrp_approx": 233461943.1,
     "total_digital_assets_impacted_usd_approx": 6340000000,
     "assets_frozen_or_intercepted_usd_approx": 2850000000,
     "impacted_token_assets_replenished_pct_as_of_2026_10_31": 98,
@@ -523,7 +668,101 @@
     "binance_statement": "more than 100% of required funds set aside; outstanding more illiquid assets still being purchased",
     "investigation_status": "ongoing; independent review planned",
     "feature_policy": "Quarantine the 233.46M XRP hot-wallet theft transfers from organic exchange-flow, investor-withdrawal, accumulation and selling features. No sale or exchange deposit is inferred from the theft or aggregate replenishment percentage.",
-    "model_eligible": false
+    "model_eligible": false,
+    "amount_usd_at_transfer_time_approx": 296000000,
+    "destination_address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "initial_transfer_ctids": [
+      {
+        "time_utc": "2026-10-29T20:05:00Z",
+        "ctid": "C66FBF0500670000",
+        "amount_xrp": 185017485.5
+      },
+      {
+        "time_utc": "2026-10-29T20:07:00Z",
+        "ctid": "C66FBF2100960000",
+        "amount_xrp": 14693052.5
+      },
+      {
+        "time_utc": "2026-10-29T20:08:20Z",
+        "ctid": "C66FBF3400010000",
+        "amount_xrp": 13140680.4
+      },
+      {
+        "time_utc": "2026-10-29T20:08:50Z",
+        "ctid": "C66FBF3C01AA0000",
+        "amount_xrp": 11955157.6
+      },
+      {
+        "time_utc": "2026-10-29T20:09:20Z",
+        "ctid": "C66FBF4200120000",
+        "amount_xrp": 8655567.1
+      }
+    ],
+    "initial_transfer_status": "primary Binance disclosure plus TRM Labs and XRPLWin ledger-derived corroboration",
+    "nov2_redistribution": {
+      "snapshot_time_utc": "2026-11-02T10:02:00Z",
+      "ledger_index": 108064685,
+      "bulk_transfer_count": 9,
+      "bulk_recipient_count": 6,
+      "bulk_amount_xrp": 233454920,
+      "test_transfer_count": 7,
+      "test_amount_xrp": 7000,
+      "recipient_total_xrp": 233461920,
+      "source_residual_xrp": 23.69905,
+      "reconciliation_gap_xrp": 0.59905,
+      "recipient_outgoing_transactions_as_of_snapshot": 0,
+      "exchange_deposit_pattern_as_of_snapshot": false,
+      "ownership": "unresolved; do not label recipients attacker-owned or Binance-owned",
+      "limitation": "No later activity is covered by the Nov 2 snapshot."
+    },
+    "rlusd_flows": {
+      "ethereum": {
+        "stolen_rlusd": 88500000,
+        "swapped_on_dex_rlusd": 48000000,
+        "frozen_by_ripple_rlusd": 40500000,
+        "freeze_time_utc": "2026-10-29T22:01:00Z",
+        "source": "TRM Labs",
+        "network": "Ethereum"
+      },
+      "xrpl": {
+        "amount_rlusd": 51172508,
+        "time_utc": "2026-10-30T01:27:00Z",
+        "source_account": "rDAE53…",
+        "destination_account": "rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza",
+        "destination_tag_present": false,
+        "purpose": "unresolved",
+        "network": "XRP Ledger"
+      },
+      "separation_rule": "Do not conflate ERC-20 RLUSD on Ethereum with issued RLUSD on XRPL, and do not conflate either with native XRP."
+    },
+    "replenishment_history_disagreement": [
+      {
+        "published_at_utc": "2026-10-31T14:24:00Z",
+        "reported_pct": 90,
+        "scope": "impacted amount covered; ten named assets separately reported fully backed"
+      },
+      {
+        "published_date": "2026-11-03",
+        "reported_pct": 98,
+        "scope": "impacted token assets replenished as of Oct 31"
+      },
+      {
+        "published_at_utc": "2026-11-04T15:23:00Z",
+        "reported_pct": 98,
+        "scope": "impacted amount replenished; 44-token PoR proof pending"
+      }
+    ],
+    "replenishment_history_rule": "Do not average 90% and 98%; denominators, cutoffs and scopes are not fully reconciled.",
+    "fbi_attribution": "FBI attributed the incident to DPRK TraderTraitor activity; this remains a government attribution, not a court judgment.",
+    "binance_reported_attack_chain": [
+      "tampered developer-tool installation and social engineering",
+      "endpoint compromise and stolen credentials",
+      "internal AI tool used as a lateral-movement springboard",
+      "container deployment permission token found on an engineer's device",
+      "malicious access to internal wallet-signing service"
+    ],
+    "attack_chain_interpretation": "Binance reported no evidence of wallet private-key leakage. The disclosed chain is an endpoint, identity, credential, deployment-permission and signing-service compromise, not an XRPL consensus exploit or proof that an AI model itself was compromised.",
+    "native_xrp_freeze_rule": "Native XRP has no issuer and cannot be frozen by Ripple or another XRPL participant. Issued tokens such as RLUSD have issuer freeze controls; custodial exchanges can freeze assets held in their own custody."
   },
   "xrpl_protocol": {
     "fixCleanup3_4_0": {
@@ -532,18 +771,26 @@
       "ledger_index": 108112129
     },
     "current_voting_snapshot": {
-      "ledger_index": 108122779,
+      "ledger_index": 108128511,
       "trusted_validators": 35,
       "votes_required": 29,
       "SingleAssetVault_votes_for": 21,
       "ConfidentialTransfer_votes_for": 20,
       "LendingProtocol_votes_for": 19,
       "LendingProtocolV1_1_votes_for": 19,
-      "status": "LENDING_AND_VAULT_AMENDMENTS_NOT_ACTIVATED"
+      "status": "LENDING_AND_VAULT_AMENDMENTS_NOT_ACTIVATED",
+      "snapshot_at_utc": "2026-11-05T09:16:47Z",
+      "source_note": "XRPLWin LendingProtocol page showed ledger 108128511; fixCleanup3_4_0 page showed ledger 108128297 at the same review window. These are different node views; retain both indexes and do not imply identical snapshot time."
     },
     "official_rule": "More than 80% of trusted validators must support an amendment continuously for two weeks.",
     "interpretation": "fixCleanup3_4_0 activation is not LendingProtocol activation. Do not claim native XRPL lending, XRP collateral utilization, or collateral-generated XRP demand from this vote snapshot.",
-    "model_eligible": false
+    "model_eligible": false,
+    "node_view_disagreement": {
+      "lending_protocol_page_ledger": 108128511,
+      "fix_cleanup_page_ledger": 108128297,
+      "difference_ledgers": 214,
+      "interpretation": "Different explorer node/page views; both confirm the LendingProtocol vote remains 19/35 and fixCleanup3_4_0 is enabled."
+    }
   },
   "macro_context": {
     "us_midterm_market_event": {
