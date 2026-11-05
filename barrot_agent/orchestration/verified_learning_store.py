@@ -26,7 +26,6 @@ class VerifiedLearningStore:
 
     def read_all(self) -> list[dict]:
         """Read every parseable persisted record, including legacy or rejected records."""
-
         if not self.path.exists():
             return []
 
@@ -134,5 +133,5 @@ class VerifiedLearningStore:
 
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(payload, sort_keys=True) + "\\n")
+            handle.write(json.dumps(payload, sort_keys=True) + "\n")
         return True
