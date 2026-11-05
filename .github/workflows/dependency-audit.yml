@@ -11,6 +11,8 @@ on:
       - "hf_space/requirements.txt"
       - "legacy/requirements_legacy.txt"
       - ".github/workflows/dependency-audit.yml"
+      - "research/xrp_intelligence/**"
+      - "tests/test_xrp_*.py"
   schedule:
     - cron: "17 7 * * 1"
   workflow_dispatch:
@@ -28,10 +30,10 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
@@ -41,8 +43,13 @@ jobs:
           python -m pip install pip-audit
           pip-audit --version
 
-      - name: Audit main runtime and development declarations
-        id: main_dev
+      - name: Audit root runtime requirements.txt
+        id: root_runtime
+        continue-on-error: true
+        run: pip-audit -r requirements.txt --strict
+
+      - name: Audit development requirements
+        id: dev
         continue-on-error: true
         run: pip-audit -r requirements-dev.txt --strict
 
@@ -61,15 +68,36 @@ jobs:
         continue-on-error: true
         run: pip-audit -r legacy/requirements_legacy.txt --strict
 
+      - name: Audit PEP 621 project dependencies
+        id: pyproject
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          import os
+          import tomllib
+          from pathlib import Path
+
+          project = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
+          dependencies = project.get("project", {}).get("dependencies", [])
+          if not dependencies:
+              raise SystemExit("pyproject.toml contains no [project].dependencies to audit")
+          target = Path(os.environ["RUNNER_TEMP"]) / "pyproject-requirements.txt"
+          target.write_text("\n".join(dependencies) + "\n", encoding="utf-8")
+          print(f"Materialized {len(dependencies)} PEP 621 dependencies for pip-audit")
+          PY
+          pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict
+
       - name: Fail if any manifest audit failed
         if: always()
         env:
-          MAIN_DEV: ${{ steps.main_dev.outcome }}
+          ROOT_RUNTIME: ${{ steps.root_runtime.outcome }}
+          DEV: ${{ steps.dev.outcome }}
           SUPPLEMENTAL: ${{ steps.supplemental.outcome }}
           HF_SPACE: ${{ steps.hf_space.outcome }}
           LEGACY: ${{ steps.legacy.outcome }}
+          PYPROJECT: ${{ steps.pyproject.outcome }}
         run: |
-          printf 'main/dev=%s supplemental=%s hf_space=%s legacy=%s\n' "$MAIN_DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY"
-          if [ "$MAIN_DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ]; then
+          printf 'root_runtime=%s dev=%s supplemental=%s hf_space=%s legacy=%s pyproject=%s\n' "$ROOT_RUNTIME" "$DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY" "$PYPROJECT"
+          if [ "$ROOT_RUNTIME" != "success" ] || [ "$DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ]; then
             exit 1
           fi
