@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_repository_delta",
+  "snapshot_id": "XRP-REPO-DELTA-2026-10-27T210825Z",
+  "captured_at_utc": "2026-10-27T21:08:25Z",
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+    "main_commit": {
+      "message": "Use low reasoning effort for concise bundle generation (#1218)",
+      "authored_at_utc": "2026-10-27T21:06:48Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/6c91a862be06c02f01814c47f831da54aa306b88"
+    },
+    "main_branch_protected": true,
+    "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
+    "main_ci": {
+      "run_id": 40583993078,
+      "conclusion": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078"
+    },
+    "main_databricks_deploy": {
+      "run_id": 40583993212,
+      "conclusion": "failure",
+      "root_cause": "Main workflow still calls python deploy_databricks.py while the script is under scripts/deploy_databricks.py.",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212"
+    },
+    "main_operations_pipeline": {
+      "run_id": 40583993172,
+      "conclusion": "failure",
+      "root_cause": "Push rejected as non-fast-forward. This confirms a direct-push failure; whether a concurrent workflow caused it remains unproven.",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172"
+    },
+    "approval_workflow_anomaly": {
+      "run_id": 40584131729,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs_returned": 0,
+      "root_cause": "UNRESOLVED. The currently fetched workflow definition declares workflow_dispatch only, but the recorded run event is push; exact triggering semantics still require diagnosis.",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584131729"
+    },
+    "research_pr_validation": {
+      "pr": 1195,
+      "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
+      "ci_run_id": 40584140982,
+      "ci": "success",
+      "gate_run_id": 40584140846,
+      "gate": "success",
+      "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "note": "These checks validate repository tests and fail-closed merge gate only; they do not validate prediction skill or deploy the research system."
+    },
+    "safety_prs": [
+      {
+        "pr": 1193,
+        "mergeable": false,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+        "state": "open",
+        "note": "Fail-closed signal-integrity fix remains unmerged."
+      },
+      {
+        "pr": 1194,
+        "mergeable": false,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+        "state": "open",
+        "note": "Read-only merge-queue safety fix remains unmerged; main workflow remains mutation-capable."
+      }
+    ],
+    "recent_merged_prs": [
+      {
+        "pr": 1217,
+        "merged": true,
+        "merge_commit_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1217"
+      },
+      {
+        "pr": 1218,
+        "merged": true,
+        "merge_commit_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1218"
+      }
+    ],
+    "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
+  },
+  "research_status": {
+    "latest_research_ledger_commit": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
+    "latest_research_snapshot": "data/xrp_intelligence/snapshots/2026-10-27T2105Z.json",
+    "data_integrity_checks": {
+      "ledger_json": "PASS",
+      "snapshot_json": "PASS",
+      "unique_source_ids": "PASS",
+      "new_relationship_sources_resolve": "PASS",
+      "new_hypothesis_sources_resolve": "PASS"
+    },
+    "forecast_status": "NOT_ISSUED",
+    "market_feature_status": "NOT_APPROVED_SINGLE_AGGREGATE_DERIVATIVES_SNAPSHOT",
+    "external_platform_collaboration": "Only ChatGPT and GitHub connector activity verified; other eight platforms not verified live."
+  },
+  "highest_impact_blockers": [
+    "Scheduled knowledge-signal workflow and monthly financial-data workflow still write generated files directly to main.",
+    "Mutation-capable merge-queue workflow remains on main; branch protection is reported enabled but its detailed requirements are inaccessible to the current connector, and the fallback ruleset is disabled.",
+    "Databricks deploy script-path failure remains on main; PR #1202 has a fix but was created against an older main revision.",
+    "Barrot Operations Pipeline continues to fail on non-fast-forward push.",
+    "barrot-approve-pr.yml produces push-event failures with zero jobs; cause unresolved."
+  ],
+  "next_actions": [
+    "Continue building a durable append-only research-data branch/artifact promotion architecture without direct generated-data writes to main.",
+    "Diagnose and remove the non-fast-forward direct-push path through a reviewed branch/PR; preserve idempotent ingestion and immutable history.",
+    "Reconcile PR #1193, #1194 and #1202 against current main without force-push, branch overwrite or merge.",
+    "Cross-validate the latest XRP derivatives snapshot with raw exchange data and an independent aggregate before feature admission.",
+    "Continue source-level relationship research and original-context resolution for ASK Coin, actual capital, SBIC/ChatGPT SBIC and the Stevenson video inventory."
+  ]
+}
