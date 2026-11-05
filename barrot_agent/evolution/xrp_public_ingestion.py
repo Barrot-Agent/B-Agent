@@ -341,14 +341,224 @@ def fetch_public_rpc(source_id: str, url: str) -> dict[str, Any]:
 
 
 class RawReceiptArchive:
-    """Write-once raw payloads or digest-only receipts plus an append-only receipt log."""
+    """Write-once raw payloads with canonical receipts and a verifiable per-run hash chain."""
+
+    _CHAIN_ZERO = "0" * 64
 
     def __init__(self, root: str | Path):
         self.root = Path(root)
         self.raw_root = self.root / "sha256"
         self.raw_root.mkdir(parents=True, exist_ok=True)
         self.receipts_path = self.root / "receipts.jsonl"
+        self.chain_path = self.root / "receipt_chain.jsonl"
         self.receipts: list[dict[str, Any]] = []
+        self._chain_head = self._CHAIN_ZERO
+        self._chain_count = 0
+        self._legacy_chain_bootstrap = False
+
+        if self.chain_path.exists() and not self.receipts_path.exists():
+            raise XRPIngestionError("receipt chain exists without its canonical receipt log")
+        if self.receipts_path.exists():
+            existing = self._read_receipts()
+            if self.chain_path.exists():
+                verification = self.verify()
+            elif existing:
+                # Preserve valid pre-chain archives. Their current bytes are
+                # verified before a chain is added; the bootstrap itself is
+                # explicitly recorded and is not represented as a prior anchor.
+                self._legacy_chain_bootstrap = True
+                for receipt in existing:
+                    self._verify_receipt(receipt)
+                    self._append_chain_record(receipt)
+                verification = self.verify()
+            else:
+                verification = self.verify()
+            self.receipts = existing
+            self._chain_head = verification["chain_head_sha256"]
+            self._chain_count = verification["receipt_count"]
+
+    def _read_receipts(self) -> list[dict[str, Any]]:
+        if not self.receipts_path.exists():
+            return []
+        content = self.receipts_path.read_text(encoding="utf-8")
+        if not content:
+            return []
+        receipts = []
+        for line_number, line in enumerate(content.splitlines(), start=1):
+            if not line.strip():
+                raise XRPIngestionError(f"receipt log contains an empty line at {line_number}")
+            try:
+                receipt = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise XRPIngestionError(f"receipt log contains invalid JSON at line {line_number}") from exc
+            if not isinstance(receipt, dict):
+                raise XRPIngestionError(f"receipt log line {line_number} must be an object")
+            receipts.append(receipt)
+        return receipts
+
+    def _verify_receipt(self, receipt: Mapping[str, Any]) -> bool:
+        required = {
+            "source_id",
+            "source_uri",
+            "captured_at_utc",
+            "source_data_as_of_utc",
+            "source_http_date",
+            "raw_content_sha256",
+            "payload_size_bytes",
+            "raw_payload_path",
+            "raw_bytes_retained",
+            "raw_retention_reason",
+            "model_eligible_source",
+            "raw_only_reason",
+            "receipt_id",
+        }
+        if set(receipt) != required:
+            raise XRPIngestionError("raw receipt does not match the canonical receipt schema")
+        for field in ("source_id", "source_uri", "captured_at_utc"):
+            if not isinstance(receipt.get(field), str) or not receipt[field].strip():
+                raise XRPIngestionError(f"raw receipt {field} must be a non-empty string")
+        if receipt.get("source_data_as_of_utc") is not None and not isinstance(receipt.get("source_data_as_of_utc"), str):
+            raise XRPIngestionError("raw receipt source_data_as_of_utc must be a string or None")
+        if receipt.get("source_http_date") is not None and not isinstance(receipt.get("source_http_date"), str):
+            raise XRPIngestionError("raw receipt source_http_date must be a string or None")
+        if not isinstance(receipt.get("raw_retention_reason"), str) or not isinstance(receipt.get("raw_only_reason"), str):
+            raise XRPIngestionError("raw receipt retention and raw-only reasons must be strings")
+        if not isinstance(receipt.get("raw_bytes_retained"), bool) or not isinstance(receipt.get("model_eligible_source"), bool):
+            raise XRPIngestionError("raw receipt retention and eligibility flags must be boolean")
+        digest = receipt.get("raw_content_sha256")
+        receipt_id = receipt.get("receipt_id")
+        if not isinstance(digest, str) or len(digest) != 64 or any(ch not in "0123456789abcdef" for ch in digest):
+            raise XRPIngestionError("raw receipt content digest must be lowercase SHA-256 hex")
+        if not isinstance(receipt_id, str) or len(receipt_id) != 64 or any(ch not in "0123456789abcdef" for ch in receipt_id):
+            raise XRPIngestionError("raw receipt ID must be lowercase SHA-256 hex")
+        size = receipt.get("payload_size_bytes")
+        if isinstance(size, bool) or not isinstance(size, int) or size <= 0:
+            raise XRPIngestionError("raw receipt payload size must be a positive integer")
+        canonical_payload = {key: value for key, value in receipt.items() if key != "receipt_id"}
+        expected_id = hashlib.sha256(_canonical(canonical_payload).encode("utf-8")).hexdigest()
+        if receipt_id != expected_id:
+            raise XRPIngestionError("raw receipt ID does not match canonical receipt metadata")
+
+        if receipt["raw_bytes_retained"]:
+            raw_path_value = receipt.get("raw_payload_path")
+            if not isinstance(raw_path_value, str) or not raw_path_value.strip() or "\\" in raw_path_value:
+                raise XRPIngestionError("retained raw receipt path is invalid")
+            relative = Path(raw_path_value)
+            if relative.is_absolute() or ".." in relative.parts or relative.parts[-2:] != ("sha256", f"{digest}.json"):
+                raise XRPIngestionError("retained raw receipt path is not bound to its SHA-256 digest")
+            payload_path = self.root.parent / relative
+            if payload_path.is_symlink():
+                raise XRPIngestionError("retained raw receipt path cannot be a symbolic link")
+            resolved_path = payload_path.resolve()
+            if not resolved_path.is_relative_to(self.raw_root.resolve()):
+                raise XRPIngestionError("retained raw receipt resolves outside the raw archive")
+            try:
+                raw_bytes = payload_path.read_bytes()
+            except OSError as exc:
+                raise XRPIngestionError("retained raw receipt payload is missing or unreadable") from exc
+            if len(raw_bytes) != size or hashlib.sha256(raw_bytes).hexdigest() != digest:
+                raise XRPIngestionError("retained raw receipt bytes do not match canonical size and SHA-256")
+            if receipt["raw_retention_reason"]:
+                raise XRPIngestionError("retained raw receipts cannot declare a retention exception")
+            if receipt.get("source_data_as_of_utc") is None and receipt["model_eligible_source"]:
+                raise XRPIngestionError("model-eligible raw receipts require a source data as-of timestamp")
+            return True
+
+        if receipt.get("raw_payload_path") is not None or not receipt["raw_retention_reason"].strip():
+            raise XRPIngestionError("digest-only receipts need no payload path and a retention reason")
+        if receipt["model_eligible_source"]:
+            raise XRPIngestionError("digest-only receipts cannot be model eligible")
+        return False
+
+    def _append_chain_record(self, receipt: Mapping[str, Any]) -> dict[str, Any]:
+        payload = {
+            "sequence": self._chain_count + 1,
+            "receipt_id": receipt["receipt_id"],
+            "previous_chain_sha256": self._chain_head,
+        }
+        chain_hash = hashlib.sha256(_canonical(payload).encode("utf-8")).hexdigest()
+        record = {**payload, "chain_sha256": chain_hash}
+        with self.chain_path.open("a", encoding="utf-8") as handle:
+            handle.write(_canonical(record) + "\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        self._chain_head = chain_hash
+        self._chain_count += 1
+        return record
+
+    def verify(self) -> dict[str, Any]:
+        """Verify receipt IDs, retained payload bytes and every per-run chain link."""
+        receipts = self._read_receipts()
+        chain_text = self.chain_path.read_text(encoding="utf-8") if self.chain_path.exists() else ""
+        chain_lines = chain_text.splitlines() if chain_text else []
+        if len(receipts) != len(chain_lines):
+            raise XRPIngestionError("receipt log and receipt-chain entry counts do not match")
+
+        previous = self._CHAIN_ZERO
+        retained_count = 0
+        digest_only_count = 0
+        for index, (receipt, line) in enumerate(zip(receipts, chain_lines), start=1):
+            retained = self._verify_receipt(receipt)
+            retained_count += int(retained)
+            digest_only_count += int(not retained)
+            try:
+                chain_record = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise XRPIngestionError(f"receipt chain contains invalid JSON at entry {index}") from exc
+            required_chain_fields = {"sequence", "receipt_id", "previous_chain_sha256", "chain_sha256"}
+            if not isinstance(chain_record, dict) or set(chain_record) != required_chain_fields:
+                raise XRPIngestionError(f"receipt chain entry {index} has an invalid schema")
+            if isinstance(chain_record.get("sequence"), bool) or chain_record.get("sequence") != index:
+                raise XRPIngestionError(f"receipt chain sequence is invalid at entry {index}")
+            if chain_record.get("receipt_id") != receipt.get("receipt_id"):
+                raise XRPIngestionError(f"receipt chain identity mismatch at entry {index}")
+            if chain_record.get("previous_chain_sha256") != previous:
+                raise XRPIngestionError(f"receipt chain predecessor mismatch at entry {index}")
+            chain_payload = {key: value for key, value in chain_record.items() if key != "chain_sha256"}
+            expected_chain_hash = hashlib.sha256(_canonical(chain_payload).encode("utf-8")).hexdigest()
+            if chain_record.get("chain_sha256") != expected_chain_hash:
+                raise XRPIngestionError(f"receipt chain hash mismatch at entry {index}")
+            previous = expected_chain_hash
+
+        receipt_bytes = self.receipts_path.read_bytes() if self.receipts_path.exists() else b""
+        chain_bytes = self.chain_path.read_bytes() if self.chain_path.exists() else b""
+        return {
+            "verified": True,
+            "receipt_count": len(receipts),
+            "retained_raw_payload_count": retained_count,
+            "digest_only_receipt_count": digest_only_count,
+            "chain_head_sha256": previous,
+            "receipt_log_sha256": hashlib.sha256(receipt_bytes).hexdigest(),
+            "chain_log_sha256": hashlib.sha256(chain_bytes).hexdigest(),
+        }
+
+    def write_manifest(self, path: str | Path) -> dict[str, Any]:
+        """Write a run-level verification manifest with GitHub workflow identity when available."""
+        verification = self.verify()
+        github_context = {
+            "repository": os.getenv("GITHUB_REPOSITORY") or None,
+            "run_id": os.getenv("GITHUB_RUN_ID") or None,
+            "run_attempt": os.getenv("GITHUB_RUN_ATTEMPT") or None,
+            "sha": os.getenv("GITHUB_SHA") or None,
+            "workflow_ref": os.getenv("GITHUB_WORKFLOW_REF") or None,
+            "event_name": os.getenv("GITHUB_EVENT_NAME") or None,
+        }
+        manifest = {
+            "schema_version": "barrot.xrp.raw-receipt-chain.v1",
+            "verification_status": "PASS",
+            **verification,
+            "legacy_chain_bootstrap": self._legacy_chain_bootstrap,
+            "github_actions_context": github_context,
+            "github_run_context_available": bool(github_context["run_id"] and github_context["sha"]),
+            "per_source_independent_timestamp_anchor": False,
+            "limitations": [
+                "The hash chain is tamper-evident only relative to its final head; an immutable external anchor is still required to prove the artifact was not wholly rewritten.",
+                "GitHub run identity binds the artifact to a repository commit and workflow run, but does not independently timestamp each provider observation.",
+                "Per-run raw artifacts remain subject to the configured GitHub Actions retention period.",
+            ],
+        }
+        _write_json(path, manifest)
+        return manifest
 
     def store(
         self,
@@ -413,10 +623,12 @@ class RawReceiptArchive:
             "raw_only_reason": raw_only_reason,
         }
         receipt["receipt_id"] = hashlib.sha256(_canonical(receipt).encode("utf-8")).hexdigest()
+        self._verify_receipt(receipt)
         with self.receipts_path.open("a", encoding="utf-8") as handle:
             handle.write(_canonical(receipt) + "\n")
             handle.flush()
             os.fsync(handle.fileno())
+        self._append_chain_record(receipt)
         self.receipts.append(receipt)
         return receipt
 
@@ -1974,6 +2186,8 @@ def run_ingestion(
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
 
+    receipt_chain_verification = archive.write_manifest(output / "receipt_chain_manifest.json")
+
     if include_noncommercial_xrpl_nodes:
         xrpl_node_reconciliation = _reconcile_xrpl_node_records(records, xrpl_node_payloads)
     else:
@@ -2079,6 +2293,8 @@ def run_ingestion(
         "feature_store_cutoff_utc": store_cutoff_s,
         "evaluation_as_of_utc": evaluation_as_of_s,
         "source_receipt_count": len(receipts),
+        "receipt_chain_manifest_path": "receipt_chain_manifest.json",
+        "receipt_chain_verification": receipt_chain_verification,
         "source_failure_count": len(failures),
         "raw_only_source_count": len(raw_only),
         "research_only_observation_count": len(research_only_observations),
