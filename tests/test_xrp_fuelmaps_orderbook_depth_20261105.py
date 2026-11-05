@@ -27,7 +27,7 @@ def test_xrp_orderbook_snapshot_does_not_claim_durable_or_executable_liquidity()
     limits = data["source_registry"][0]["source_limits"]
     assert any("cancelled" in item for item in limits)
     assert any("hidden or iceberg" in item for item in limits)
-    assert any("hourly columns average one-minute snapshots" in item for item in limits)
+    assert any("hourly columns average one-minute snapshots" in item.lower() for item in limits)
     assert data["source_independence"]["publisher_groups"] == 1
     assert data["source_independence"]["not_six_independent_publishers"] is True
 
