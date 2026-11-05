@@ -924,3 +924,47 @@ def test_public_request_rejects_redirect_before_target_receives_request():
         target_server.server_close()
         redirect_thread.join(timeout=5)
         target_thread.join(timeout=5)
+
+def test_parser_failure_preserves_exact_raw_bytes_as_ineligible_receipt(tmp_path, monkeypatch):
+    import barrot_agent.evolution.xrp_public_ingestion as ingestion
+
+    source_id, url = ingestion.ENDPOINTS[0]
+    captured = datetime(2026, 11, 5, 7, 30, tzinfo=timezone.utc)
+    raw_bytes = b'{"unexpected":"schema"}'
+
+    def reject_payload(_payload, **_kwargs):
+        raise XRPIngestionError("fixture parser rejection")
+
+    monkeypatch.setattr(ingestion, "ENDPOINTS", ((source_id, url),))
+    monkeypatch.setattr(ingestion, "PARSERS", {source_id: reject_payload})
+
+    summary = ingestion.run_ingestion(
+        tmp_path / "run",
+        fetcher=lambda *_args: {
+            "raw_bytes": raw_bytes,
+            "payload": {"unexpected": "schema"},
+            "http_date": None,
+        },
+        now=captured,
+    )
+
+    receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
+    failures = json.loads((tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"))
+    raw_only = json.loads((tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8"))
+
+    assert summary["source_receipt_count"] == 1
+    assert summary["source_failure_count"] == 1
+    assert summary["raw_only_source_count"] == 1
+    assert summary["snapshot_status"] == "no_new_eligible_features"
+    assert len(receipts) == 1
+    receipt = receipts[0]
+    assert receipt["source_id"] == source_id
+    assert receipt["raw_content_sha256"] == hashlib.sha256(raw_bytes).hexdigest()
+    assert receipt["source_data_as_of_utc"] is None
+    assert receipt["model_eligible_source"] is False
+    assert receipt["raw_only_reason"] == "source_processing_failure:XRPIngestionError"
+    assert (tmp_path / "run" / receipt["raw_payload_path"]).read_bytes() == raw_bytes
+    assert failures[0]["raw_receipt_id"] == receipt["receipt_id"]
+    assert failures[0]["raw_content_sha256"] == receipt["raw_content_sha256"]
+    assert raw_only[0]["receipt_id"] == receipt["receipt_id"]
+
