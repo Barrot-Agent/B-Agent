@@ -103,7 +103,26 @@ class BarrotAutonomousLoop:
         history = state["history"]
         checkpoint = self.store.path_for(task_id)
         if state.get("status") == "complete":
-            return AutonomousResult(True, len(history), history, task_id, "complete", str(checkpoint))
+            if not history or self.goal_verifier is None:
+                state["status"] = "awaiting_goal_verification"
+                self.store.save(task_id, state)
+                return AutonomousResult(False, len(history), history, task_id, "awaiting_goal_verification", str(checkpoint))
+            last_record = history[-1]
+            try:
+                renewed = self.goal_verifier(goal, last_record)
+            except Exception as exc:
+                renewed = {"success": False, "error": self._redact(str(exc))}
+            if not isinstance(renewed, dict):
+                renewed = {"success": False, "error": "goal verifier must return an evidence object"}
+            renewed = self._redact_value(renewed)
+            renewed_evidence = renewed.get("evidence")
+            if renewed.get("success") is True and isinstance(renewed_evidence, (dict, list, str)) and bool(renewed_evidence):
+                last_record["goal_verification"] = renewed
+                self.store.save(task_id, state)
+                return AutonomousResult(True, len(history), history, task_id, "complete", str(checkpoint))
+            state["status"] = "paused"
+            last_record["goal_verification"] = renewed
+            self.store.save(task_id, state)
 
         start = int(state.get("attempts_completed", len(history))) + 1
         stop = start + self.max_attempts
