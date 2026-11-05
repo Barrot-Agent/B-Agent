@@ -395,3 +395,14 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - Main Cross Analysis is read-only. Barrot Auto PR only echoes workflow validation with read-only permissions. #1640 converts A2A/self-hosted-brain push deployments to manual-only and quarantines task allocator, issue agent and self-upgrade.
 - XRP evaluator now requires 100 training samples and 100 distinct out-of-sample origins before `SCORED`; sub-threshold results remain `INSUFFICIENT_HISTORY`.
 - New #1643 market/derivatives/liquidity/amendment observations are model-ineligible; no common synchronized cutoff or original HTTP receipts. Forecast remains **NOT_ISSUED**.
+
+
+---
+
+## Run 23 — latest prediction-gate correction and exact-head test evidence (recorded 2026-11-05T02:26:42.128Z)
+
+- #1640 code head `dda94852cd356645d9d86bdf2cb863ac93f0a8d7`: 122 ahead / 0 behind / 71 files. Core 582 passed + 8 subtests; full suite 862 passed + 8 subtests; coverage 53.19%. Five-manifest dependency audit passed with no known vulnerabilities. Fail-closed gate passed and disables automatic merge. Runs: [CI 41954919109](https://github.com/Barrot-Agent/B-Agent/actions/runs/41954919109), [audit 41954919246](https://github.com/Barrot-Agent/B-Agent/actions/runs/41954919246), [gate 41954919014](https://github.com/Barrot-Agent/B-Agent/actions/runs/41954919014).
+- #1640 now requires 100 training samples and 100 distinct OOS origins per venue. Overall report status is `SCORED` only when every configured venue is scored; mixed venue readiness is `PARTIAL_OR_BLOCKED`. The two new regression tests passed.
+- #1643 exact head `83b5d581fabdc8bcc3fd3c7807b7353ecd3644f3`: 97 ahead / 0 behind / 98 files. Core 495 passed + 8 subtests; full suite 811 passed + 8 subtests; fail-closed gate passed. Runs: [CI 41953831140](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953831140), [gate 41953830670](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953830670).
+- Backlog classifications and exact path overlaps remain as in Run 22. No PRs were closed. Main SHA unchanged.
+- No forecast, merge, deployment, paper trade, funds transfer, secret rotation or Space restart occurred.

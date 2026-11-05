@@ -2578,3 +2578,62 @@ No PR was merged or closed. No deployment, secret rotation, Space restart, Kaggl
 
 
 Documentation verification note (2026-11-05T02:19:54.446Z): the Run 8 implementation evidence above belongs to the exact tested code head `11803360859adec11323b360704601ad40a8600f`; this documentation-only handoff/backlog successor is `a9ab1c0c249ea88d18ae789c029cd4bd89d16021`. Require fresh exact-head CI on the final documentation successor before any merge. No code changed in the documentation successor.
+
+
+---
+
+## Run 9 — all-venue scoring gate and final exact-head verification (recorded 2026-11-05T02:26:42.128Z)
+
+### New prediction-engine correctness fix
+- Code commit: `dda94852cd356645d9d86bdf2cb863ac93f0a8d7`.
+- `_walk_forward_report` previously marked the overall report `SCORED` if any venue scored, even when another configured venue remained `INSUFFICIENT_HISTORY`.
+- It now emits `SCORED` only when **every configured venue** is `SCORED`; mixed `SCORED`/blocked/insufficient venue states become `PARTIAL_OR_BLOCKED`; all-insufficient results remain `INSUFFICIENT_HISTORY`. The report exposes `all_venues_scored`.
+- Added regression tests for one-scored/one-insufficient and all-venues-scored cases. Both passed.
+- The 100-training/100-distinct-OOS-origin threshold remains enforced in the evaluator and production ingestion. No live forecast or paper trade is issued.
+
+### Exact-head verification on code commit
+- PR #1640 code head `dda94852cd356645d9d86bdf2cb863ac93f0a8d7`: 122 commits ahead, 0 behind, 71 changed files.
+- Core CI [41954919109](https://github.com/Barrot-Agent/B-Agent/actions/runs/41954919109): **582 passed, 8 subtests passed**.
+- Full repository suite on the same head: **862 passed, 8 subtests passed**; inclusive `barrot_agent` coverage **53.19%**, above the 50% floor.
+- The new all-venue status tests both passed:
+  - `test_walk_forward_overall_status_is_partial_until_every_venue_is_scored`
+  - `test_walk_forward_overall_status_is_scored_only_when_all_venues_are_scored`
+- Five-manifest dependency audit [41954919246](https://github.com/Barrot-Agent/B-Agent/actions/runs/41954919246): success; no known vulnerabilities reported.
+- Fail-closed gate [41954919014](https://github.com/Barrot-Agent/B-Agent/actions/runs/41954919014): success; automatic merge explicitly remains disabled.
+- These results are exact for code commit `dda948`. This Run 9 handoff/backlog update is a documentation-only successor; its own exact-head CI must pass before any merge.
+
+### Current companion research branch
+- PR #1643 remains at `83b5d581fabdc8bcc3fd3c7807b7353ecd3644f3`, 97 commits ahead / 0 behind / 98 files.
+- Exact-head CI [41953831140](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953831140): core **495 passed, 8 subtests passed**; full repository suite **811 passed, 8 subtests passed**.
+- Fail-closed gate [41953830670](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953830670) passed and disables automatic merging. No dependency manifests changed.
+- #1640/#1643 changed-path intersection remains empty.
+
+### Research additions and data-quality boundary
+- The two new research artifacts and tests are recorded in #1643:
+  - `20261105T020359Z-xrp-derivatives-liquidity-amendment-crosscheck.json` — TradRadar derivatives, CoinGecko historical CEX spot depth, Basis single-venue perpetual depth, XRPL amendment governance and official amendment rules.
+  - `20261105T021146Z-kraken-xrpusd-ticker-receipt.json` — Kraken XRP/USD ticker text, 311 UTF-8 bytes, SHA-256 `4c7b713440b421e8cbed066595380cf3b09648e453fb841c114de5086113ce0d`.
+- Kraken's tool-returned response showed last $1.30795, bid $1.30794, ask $1.30795, spread about 0.07646 bps, 24-hour volume 34.547M XRP, VWAP $1.30178067, high $1.34, low $1.24016. Best bid size was only 4 XRP versus 661 XRP at the best ask. The spread does not establish depth. The hash covers returned text, not original HTTP bytes; no exchange event timestamp or response headers were exposed.
+- TradRadar's Nov 4 21:20 UTC seven-exchange perpetual snapshot reported about $2.04B OI (+1.26%/24h), +0.0086% funding per eight hours, at least $8.05M liquidations, 3.20 account long/short ratio and 76.2% long accounts. The $1.3045 value is a perpetual mark price, not spot; account ratio is not notional exposure.
+- CoinGecko's Sep 30 eight-CEX spot-depth study and Basis's Nov 4 07:18 UTC Binance perpetual snapshot are not synchronized or directly comparable.
+- XRPL Dashboard's Nov 4 15:27 UTC ledger 108112639 showed 35/35 validators heard, 29 required; SingleAssetVault 21, LendingProtocol 19, LendingProtocolV1_1 19, ConfidentialTransfer 20 and DynamicMPT 16. The earlier ledger reconstruction records `fixCleanup3_4_0` enabled at 14:52 UTC, ledger 108112129. This fix does not mean native lending is live or XRP collateral is being used.
+- Official XRPL rules require more than 80% support for two weeks; support at or below 80% restarts the timer. XRPL Dashboard's 35 validators heard and XRPL.to's 36 trusted-validator denominator remain separate; both rendered extracts show 29 required.
+- The rendered-source artifacts have no common synchronized data cutoff. The Kraken tool-text hash is not an original HTTP receipt. All observations remain model-ineligible; forecast status is **NOT_ISSUED**.
+
+### Repository safety, reviews and merge decision
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; 1,403 recursive tree entries; open PR inventory 369 (354 drafts, 15 non-drafts).
+- Main reports `protected=true`, but branch-protection detail access returns HTTP 403 and the visible fallback ruleset is disabled. Neither integration PR has an approving review.
+- #1640 has 8 COMMENTED reviews, zero approvals, 22/22 inline threads resolved. #1643 has 6 COMMENTED reviews, zero approvals, 14/14 inline threads resolved.
+- Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) succeeded on a prior main push. Pages settings are not exposed through the available GitHub integration; another automatic Pages deployment is not authorized.
+- Main Cross Analysis remains read-only; Barrot Auto PR only echoes validation; Knowledge Signal Cycle is manual-only. #1640 changes A2A/self-hosted-brain push deployment to manual-only and quarantines task allocator, issue agent and self-upgrade. Paper-trader workflow requires explicit YES and exact main SHA; it was not run.
+- Backlog remains: #1642 exact ancestor/superseded; #1644–#1650 exact dependency/action changes represented in #1640; #1317/#1318/#1320/#1254/#1255 path-overlap candidates pending main verification; #1605 path-superseded by #1643; #1597/#1608/#1614 partially superseded with unique files preserved; #1615/#1641/#1269 unique. No PRs were closed.
+- **Neither PR is merge-ready.** The zero approvals and unverified required branch-protection settings fail the merge conditions; the Pages deployment side effect is unresolved and unauthorized.
+
+### Next concrete action
+1. Verify exact-head CI, full suite, dependency audit and fail-closed gate on the documentation-only Run 9 successor.
+2. Obtain independent approving reviews and verify required branch-protection/check settings.
+3. Resolve Pages deployment authorization before any main merge.
+4. If all conditions are met, merge #1640, fetch main, verify the merge commit/files and rerun main CI. Then reconcile #1643 on the resulting main without rewriting its branch; if stale/conflicting, create one consolidated successor from current main and identify #1643 as its source.
+5. Close only exact superseded PRs after main verification. Preserve unique and partial-overlap work.
+6. Continue durable cross-run source storage, independent timestamp anchoring, multi-horizon historical XRP data, probability calibration, drift monitoring and shadow evaluation. No directional forecast until out-of-sample lift is demonstrated.
+
+No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
