@@ -122,7 +122,9 @@ Rules:
 - Do not restore Orbit.
 - Inspect before modifying.
 - Keep edits minimal.
-- Prefer APPLY_PATCH.
+- WRITE_FILE may create new files only; it cannot overwrite existing files.
+- APPLY_PATCH requires one exact preimage match and uses compare-and-swap.
+- RUN_TESTS and verification accept only allowlisted pytest/compileall commands; no shell.
 - Do not modify unrelated files.
 - Do not claim the repair succeeded.
 - The repair succeeds only if the required verification command passes.
