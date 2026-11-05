@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 from types import SimpleNamespace
+import json
 
 import pytest
 
 from barrot_agent.orchestration.action_executor import BarrotActionExecutor
+from barrot_agent.orchestration.autonomous_actions import BarrotActionLoop
+from barrot_agent.orchestration.repair_loop import BarrotRepairLoop
 from barrot_agent.orchestration.actions import Action
 from barrot_agent.orchestration.executor import BarrotExecutor, ExecutionError
 
@@ -236,3 +239,116 @@ def test_write_file_action_cannot_overwrite_existing_user_file(tmp_path):
     assert result.success is False
     assert "refuses to overwrite" in result.error
     assert target.read_text(encoding="utf-8") == "keep me\n"
+
+
+class StaticBrain:
+    def __init__(self, payload):
+        self.payload = payload
+
+    def think(self, prompt):
+        return json.dumps(self.payload)
+
+
+def _prepare_loop_workspace(workspace):
+    (workspace / "barrot_agent").mkdir()
+    (workspace / "scripts").mkdir()
+
+
+def test_autonomous_action_loop_rolls_back_patch_with_exact_postimage(tmp_path):
+    _prepare_loop_workspace(tmp_path)
+    target = tmp_path / "module.py"
+    target.write_text("value = 1\n", encoding="utf-8")
+    brain = StaticBrain(
+        {
+            "actions": [
+                {
+                    "type": "APPLY_PATCH",
+                    "args": {
+                        "path": "module.py",
+                        "expected": "value = 1",
+                        "replacement": "value = 2",
+                    },
+                },
+                {
+                    "type": "RUN_TESTS",
+                    "args": {"command": "git push origin main"},
+                },
+            ]
+        }
+    )
+
+    result = BarrotActionLoop(brain, workspace=str(tmp_path), max_attempts=1).run("test rollback")
+
+    assert result.success is False
+    assert target.read_text(encoding="utf-8") == "value = 1\n"
+    assert result.history[0]["rollback"][0]["success"] is True
+
+
+def test_autonomous_action_loop_removes_only_its_own_new_file_on_rollback(tmp_path):
+    _prepare_loop_workspace(tmp_path)
+    target = tmp_path / "generated.py"
+    brain = StaticBrain(
+        {
+            "actions": [
+                {
+                    "type": "WRITE_FILE",
+                    "args": {"path": "generated.py", "content": "value = 2\n"},
+                },
+                {
+                    "type": "RUN_TESTS",
+                    "args": {"command": "git push origin main"},
+                },
+            ]
+        }
+    )
+
+    result = BarrotActionLoop(brain, workspace=str(tmp_path), max_attempts=1).run("test create rollback")
+
+    assert result.success is False
+    assert not target.exists()
+    assert result.history[0]["rollback"][0]["success"] is True
+
+
+def test_repair_loop_rolls_back_when_verification_command_is_rejected(tmp_path):
+    _prepare_loop_workspace(tmp_path)
+    target = tmp_path / "module.py"
+    target.write_text("value = 1\n", encoding="utf-8")
+    brain = StaticBrain(
+        {
+            "actions": [
+                {
+                    "type": "APPLY_PATCH",
+                    "args": {
+                        "path": "module.py",
+                        "expected": "value = 1",
+                        "replacement": "value = 2",
+                    },
+                }
+            ]
+        }
+    )
+
+    result = BarrotRepairLoop(brain, workspace=str(tmp_path), max_attempts=1).run(
+        "test rejected verification rollback",
+        verification_command="git push origin main",
+    )
+
+    assert result.success is False
+    assert target.read_text(encoding="utf-8") == "value = 1\n"
+    assert result.history[0]["verification"]["success"] is False
+    assert result.history[0]["rollback"][0]["success"] is True
+
+
+def test_restore_file_preserves_concurrent_user_change(tmp_path):
+    target = tmp_path / "module.py"
+    target.write_text("user edit = 3\n", encoding="utf-8")
+    executor = BarrotExecutor(tmp_path)
+
+    with pytest.raises(ExecutionError, match="changed"):
+        executor.restore_file(
+            "module.py",
+            "value = 1\n",
+            expected_current_content="agent edit = 2\n",
+        )
+
+    assert target.read_text(encoding="utf-8") == "user edit = 3\n"
