@@ -810,7 +810,7 @@ def test_readiness_rejects_untrusted_evaluator_key(tmp_path):
         ledger.register_readiness_report(
             report_bytes,
             receipt_id="untrusted-readiness-report",
-            raw_receipt_bytes=raw_receipt_bytes,
+            raw_receipt_bytes=fixture["raw_receipt_bytes"],
         )
 
 
@@ -1004,6 +1004,6 @@ def test_readiness_registration_rechecks_canonical_receipt_payload_size(tmp_path
         ledger.register_readiness_report(
             report_bytes,
             receipt_id="receipt-size-test",
-            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+            raw_receipt_bytes=raw_receipt_bytes,
         )
 
