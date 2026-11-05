@@ -424,3 +424,55 @@ def test_barrot_agent_dispatch_remains_quarantined_until_integration_gates_are_v
         "scripts/barrot_agent.py",
     ):
         assert forbidden not in workflow
+
+
+def test_mission_mode_dispatches_primary_xrp_goal_without_provider_or_repository_mutation(monkeypatch, tmp_path, capsys):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_MODE", "mission")
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+
+    module = load_script_module("barrot_agent_primary_mission_dispatch_test")
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("read-only mission mode must not configure git or check out a branch")
+
+    monkeypatch.setattr(module, "configure_git", forbidden)
+    monkeypatch.setattr(module, "checkout_branch", forbidden)
+
+    module.main()
+    result = json.loads(capsys.readouterr().out)
+
+    assert result["status"] == "READY"
+    assert result["mission_id"] == "xrp_intelligence_prediction_engine"
+    assert result["priority"] == 1
+    assert result["topic_id"] == "xrp_source_provenance"
+    assert result["foundation"]["id"] == "barrot_v3"
+    assert result["provider_calls"] is False
+    assert result["repository_mutation"] is False
+    assert result["external_actions_authorized"] is False
+
+
+def test_mission_mode_advances_only_from_verified_learning_records(monkeypatch, tmp_path, capsys):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_MODE", "mission")
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    lesson_store = tmp_path / "data" / "evolution" / "verified_lessons.jsonl"
+    lesson_store.parent.mkdir(parents=True)
+    lesson_store.write_text(
+        json.dumps({"lesson": "MISSION_TOPIC_ID: xrp_source_provenance completed with verified receipts."}) + "\n",
+        encoding="utf-8",
+    )
+
+    module = load_script_module("barrot_agent_primary_mission_progress_test")
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    monkeypatch.setattr(module, "configure_git", lambda: (_ for _ in ()).throw(AssertionError("unexpected git configuration")))
+    monkeypatch.setattr(module, "checkout_branch", lambda branch: (_ for _ in ()).throw(AssertionError("unexpected checkout")))
+
+    module.main()
+    result = json.loads(capsys.readouterr().out)
+
+    assert result["status"] == "READY"
+    assert result["topic_id"] == "xrp_public_data_ingestion"
+    assert result["provider_calls"] is False
+    assert result["repository_mutation"] is False
