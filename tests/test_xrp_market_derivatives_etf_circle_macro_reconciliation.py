@@ -216,3 +216,40 @@ def test_spread_correction_is_append_only_and_limited_to_derived_metric():
     assert correction["source_capture"]["raw_http_bytes_captured"] is False
     assert correction["model_eligible"] is False
     assert correction["forecast_issued"] is False
+
+
+
+def test_current_perpetual_oi_providers_preserve_contract_universe_disagreement():
+    data = json.loads(
+        (ROOT / "research/xrp_intelligence/20261105T1345Z-xrp-perpetual-oi-provider-reconciliation.json").read_text(encoding="utf-8")
+    )
+    market = data["market_snapshot"]
+    kod = market["kodexius"]
+    trad = market["tradradar"]
+    comparison = data["comparison"]
+    assert sum(kod["exchange_open_interest_usd"].values()) == 885790000
+    assert sum(trad["exchange_open_interest_usd"].values()) == 2041730000
+    assert comparison["overlapping_exchange_universe"] == ["Binance", "Bybit", "Hyperliquid", "OKX"]
+    assert comparison["overlapping_venue_difference_usd"] == 377260000
+    assert comparison["status"] == "MATERIAL_UNRESOLVED_PROVIDER_AND_CONTRACT_SCOPE_DISAGREEMENT"
+    assert comparison["reported_total_ratio_tradradar_to_kodexius"] > 2.3
+    assert comparison["rule"].startswith("Do not average")
+
+
+def test_current_perpetual_oi_snapshot_preserves_positioning_semantics_and_quarantine():
+    data = json.loads(
+        (ROOT / "research/xrp_intelligence/20261105T1345Z-xrp-perpetual-oi-provider-reconciliation.json").read_text(encoding="utf-8")
+    )
+    trad = data["market_snapshot"]["tradradar"]
+    assert trad["long_account_share_pct"] == 76.2
+    assert trad["long_short_account_ratio"] == 3.21
+    assert trad["short_liquidations_usd"] == 3600000
+    assert trad["long_liquidations_usd"] == 1750000
+    assert trad["liquidations_24h_floor_usd"] == 5350000
+    assert "not position notional" in trad["long_short_semantics"]
+    assert data["raw_capture"]["raw_source_bytes_preserved"] is False
+    assert data["raw_capture"]["sha256"] is None
+    assert data["model_eligibility"]["eligible"] is False
+    assert data["model_eligibility"]["forecast_issued"] is False
+    assert data["model_eligibility"]["forecast_status"] == "NOT_ISSUED"
+    assert data["source_independence"]["independent_economic_corroboration"] is False
