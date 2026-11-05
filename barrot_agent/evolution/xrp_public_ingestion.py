@@ -1109,8 +1109,9 @@ def _raw_only_bitwise_xrp_etf_page(payload: Any, *, captured: datetime, **_kwarg
     if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
         raise XRPIngestionError("Bitwise XRP ETF page response must contain HTML text")
     html_text = payload["html_text"]
-    required_markers = ("Bitwise XRP ETF", "XRP in Trust", "Digital Asset Custodian", "As of")
-    if any(marker not in html_text for marker in required_markers):
+    normalized = html_text.casefold()
+    required_markers = ("bitwise xrp etf", "xrp in trust", "digital asset custodian", "data as of")
+    if any(marker not in normalized for marker in required_markers):
         raise XRPIngestionError("Bitwise issuer-page identity or holdings markers are missing")
     return (
         [],
@@ -1125,8 +1126,9 @@ def _raw_only_grayscale_gxrp_issuer_page(payload: Any, *, captured: datetime, **
     if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
         raise XRPIngestionError("Grayscale GXRP page response must contain HTML text")
     html_text = payload["html_text"]
-    required_markers = ("Grayscale XRP Trust ETF", "TOTAL XRP IN FUND", "DIGITAL ASSET CUSTODIAN", "As of")
-    if any(marker not in html_text for marker in required_markers):
+    normalized = html_text.casefold()
+    required_markers = ("grayscale xrp trust etf", "total xrp in fund", "digital asset custodian", "as of")
+    if any(marker not in normalized for marker in required_markers):
         raise XRPIngestionError("Grayscale GXRP issuer-page identity or holdings markers are missing")
     return (
         [],
