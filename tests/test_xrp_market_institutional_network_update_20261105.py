@@ -109,7 +109,7 @@ def test_etf_timestamp_correction_is_exact_blob_bound_and_preserves_unbound_ance
     source_bytes = source_path.read_bytes()
     overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
     git_blob = hashlib.sha1(
-        b"blob " + str(len(source_bytes)).encode("ascii") + b"\\0" + source_bytes
+        b"blob " + str(len(source_bytes)).encode("ascii") + b"\0" + source_bytes
     ).hexdigest()
     assert overlay["target_artifact_blob_sha"] == git_blob
     assert overlay["target_artifact"] == source_path.as_posix()

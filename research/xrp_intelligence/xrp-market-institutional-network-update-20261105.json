@@ -159,7 +159,8 @@
         "No provider event timestamp or exact retrieval time.",
         "Rendered response text is hashed; original headers and wire bytes are absent."
       ],
-      "model_eligible": false
+      "model_eligible": false,
+      "retrieval_time_utc": null
     }
   },
   "derivatives": {
