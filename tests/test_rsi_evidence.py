@@ -53,3 +53,9 @@ def test_non_positive_aggregate_and_unchanged_runs_are_ineligible():
     result = assess_improvement(baseline, unchanged)
     assert not result.eligible and not result.improved
     assert result.to_dict()["eligible"] is False
+
+def test_aggregate_score_overflow_is_rejected():
+    baseline = EvaluationSnapshot("b1", "sha-a", {"a": 1.0, "b": 1.0})
+    candidate = EvaluationSnapshot("c1", "sha-b", {"a": 1e308, "b": 1e308})
+    with pytest.raises(ValueError, match="aggregate"):
+        assess_improvement(baseline, candidate)
