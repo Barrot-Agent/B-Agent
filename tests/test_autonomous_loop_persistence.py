@@ -89,3 +89,8 @@ def test_autonomous_store_rejects_workspace_symlink_escape(tmp_path):
     with pytest.raises(ValueError, match="escapes workspace"):
         AutonomousTaskStore(workspace)
     assert not (outside / "autonomous_tasks").exists()
+def test_autonomous_checkpoint_size_is_bounded(tmp_path):
+    store = AutonomousTaskStore(tmp_path)
+    store.MAX_CHECKPOINT_BYTES = 128
+    with pytest.raises(ValueError, match="size limit"):
+        store.save("large-task", {"history": [{"output": "x" * 500}]})
