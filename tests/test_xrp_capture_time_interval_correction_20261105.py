@@ -11,7 +11,7 @@ def test_capture_time_correction_is_append_only_and_bound_to_original_blob():
     original_bytes = SOURCE.read_bytes()
     original = json.loads(original_bytes)
     correction = json.loads(CORRECTION.read_text(encoding="utf-8"))
-    git_blob = b"blob " + str(len(original_bytes)).encode("ascii") + b"\\0" + original_bytes
+    git_blob = b"blob " + str(len(original_bytes)).encode("ascii") + b"\0" + original_bytes
     assert hashlib.sha1(git_blob).hexdigest() == correction["source_artifact_blob_sha"]
     assert correction["source_artifact_path"].endswith("20261105T220437Z-xrp-spot-perps-etf-cutoff-snapshot.json")
     assert original["captured_at_utc"] == correction["original_claimed_captured_at_utc"]
