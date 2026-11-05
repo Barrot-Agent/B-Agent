@@ -170,10 +170,10 @@ def _fake_fetcher(captured: datetime):
         elif source_id == "xrp_etf_flows_csv":
             csv_text = (
                 "date,ticker,issuer,xrp_holdings,xrp_flow,flow_usd,flow_status,aum_usd,"
-                "close_price_usd,volume_shares,volume_usd,row_status\\n"
-                "2026-11-03,XRP,Bitwise,1000,-10,-12.9,computed,1290,1.29,100,129,settled\\n"
-                "2026-11-03,BITW,Bitwise,200,5,6.45,computed,258,1.29,50,64.5,settled\\n"
-                "2026-11-03,XRPC,Canary Capital,100,,,initial,129,1.29,10,12.9,settled\\n"
+                "close_price_usd,volume_shares,volume_usd,row_status\n"
+                "2026-11-03,XRP,Bitwise,1000,-10,-12.9,computed,1290,1.29,100,129,settled\n"
+                "2026-11-03,BITW,Bitwise,200,5,6.45,computed,258,1.29,50,64.5,settled\n"
+                "2026-11-03,XRPC,Canary Capital,100,,,initial,129,1.29,10,12.9,settled\n"
             )
             return {
                 "raw_bytes": csv_text.encode("utf-8"),
