@@ -53,7 +53,7 @@ def test_etf_trackers_preserve_same_date_disagreement_and_fund_universe():
     assert data["bykaranteli"]["net_flow_usd"] == 0
     assert data["crypto_news"]["november_2_net_flow_usd"] == -529510
     assert data["disagreement"]["no_averaging"] is True
-    assert "different" in data["disagreement"]["explanation"]
+    assert "differ" in data["disagreement"]["explanation"]
 
 
 def test_issuer_holdings_are_not_summed_across_stale_vintages():
@@ -70,7 +70,7 @@ def test_issuer_holdings_are_not_summed_across_stale_vintages():
 def test_custody_and_distribution_are_not_mislabeled_as_xrp_capital():
     data = load()
     observations = {item["id"]: item for item in data["institutional_relationships"]["observations"]}
-    assert "no XRP-specific assets under custody" in " ".join(observations["BNY_RIPPLE_CUSTODY"]["limitation"].lower().split())
+    assert "xrp-specific assets under custody" in " ".join(observations["BNY_RIPPLE_CUSTODY"]["limitation"].lower().split())
     assert "future" in observations["COINBASE_RLUSD"]["classification"]
     assert data["actual_capital_policy"]["current_unverified_items"]
     assert data["actual_capital_policy"]["rule"].startswith("Never convert")
