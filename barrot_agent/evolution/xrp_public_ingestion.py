@@ -1855,7 +1855,15 @@ def run_ingestion(
         raise XRPIngestionError("include_noncommercial_xrpl_nodes must be a boolean")
     captured = now or datetime.now(timezone.utc)
     captured_s = _iso(captured)
-    selected_endpoints = ENDPOINTS if include_noncommercial_xrpl_nodes else SCHEDULED_ENDPOINTS
+    selected_endpoints = (
+        ENDPOINTS
+        if include_noncommercial_xrpl_nodes
+        else tuple(
+            (source_id, url)
+            for source_id, url in ENDPOINTS
+            if source_id not in NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS
+        )
+    )
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     archive = RawReceiptArchive(output / "raw")

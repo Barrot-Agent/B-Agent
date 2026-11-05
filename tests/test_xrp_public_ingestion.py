@@ -328,9 +328,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "xrp_etf_grayscale_gxrp_issuer_page" for item in raw_only)
     receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     manifest = {item["source_id"]: item for item in receipts}
-    # Verify the transport Date header survives the full collector -> parser -> receipt path.
-    for source_id in XRPL_NODE_SOURCES:
-        assert manifest[source_id]["source_http_date"] == "Wed, 04 Nov 2026 12:29:55 GMT"
+    # The default/scheduled collector must not request non-commercial public-node endpoints.
+    assert not set(XRPL_NODE_SOURCES).intersection(manifest)
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
     assert manifest["xrp_etf_flows_csv"]["model_eligible_source"] is False
@@ -1183,6 +1182,7 @@ def test_explicit_noncommercial_xrpl_research_capture_is_never_model_eligible(tm
     receipts = json.loads((tmp_path / "noncommercial-research" / "receipt_manifest.json").read_text(encoding="utf-8"))
     node_receipts = [item for item in receipts if item["source_id"] in XRPL_NODE_SOURCES]
     assert len(node_receipts) == 2
+    assert all(item["source_http_date"] == "Wed, 04 Nov 2026 12:29:55 GMT" for item in node_receipts)
     assert all(item["model_eligible_source"] is False for item in node_receipts)
 
     snapshot = json.loads((tmp_path / "noncommercial-research" / "snapshot.json").read_text(encoding="utf-8"))
