@@ -105,6 +105,10 @@ class AutonomousTaskStore:
                 fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
             temporary: Path | None = None
             try:
+                if path.exists():
+                    current = json.loads(path.read_text(encoding="utf-8"))
+                    if current.get("updated_at") != state.get("updated_at"):
+                        raise RuntimeError("autonomous task checkpoint changed since it was loaded")
                 with tempfile.NamedTemporaryFile(
                     mode="w",
                     encoding="utf-8",
@@ -119,6 +123,9 @@ class AutonomousTaskStore:
                     os.fsync(handle.fileno())
                 os.replace(temporary, path)
                 temporary = None
+                state["updated_at"] = payload["updated_at"]
+                state["schema_version"] = self.SCHEMA_VERSION
+                state["task_id"] = task_id
                 if os.name != "nt":
                     directory_fd = os.open(self.root, os.O_RDONLY)
                     try:
