@@ -22,7 +22,7 @@ def test_circle_q3_sec_accession_and_exhibit_are_directly_verified():
     assert data["correction_scope"]["current_status"] == "VERIFIED"
     assert data["correction_scope"]["append_only"] is True
     assert data["correction_scope"]["original_artifacts_modified"] is False
-    assert data["model_eligible"] is False
+    assert data["xrp_relevance"]["model_eligible"] is False
 
 
 def test_prior_circle_q3_source_correction_is_preserved_as_historical():
