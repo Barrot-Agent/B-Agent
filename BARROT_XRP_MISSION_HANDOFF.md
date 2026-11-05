@@ -3751,3 +3751,46 @@ Recorded: 2026-11-05T06:36Z–06:44Z
 **Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.**
 
 This Run 30 handoff update is committed on the existing #1640 integration branch. Its resulting documentation-only head must receive its own exact-head CI, dependency audit and fail-closed verification before that new head is described as verified.
+
+
+### Run 31 — workflow supply-chain pinning and latest XRPL lending-vote checkpoint
+Recorded: 2026-11-05T06:48Z–06:51Z
+
+#### PR #1640 exact-head verification before this handoff update
+- Code-bearing head: `72adc894cf44352086e93de3b3ed44fa55905d14`; 200 commits ahead, 0 behind; 85 changed files.
+- Core suite: **596 passed, 8 subtests**.
+- Full repository suite [41982837024](https://github.com/Barrot-Agent/B-Agent/actions/runs/41982837024): **893 passed, 8 subtests**; inclusive coverage **53.55%** (19,875 statements, 8,854 missed, 5,370 branches, 891 partial branches).
+- Six-manifest strict dependency audit [41982837011](https://github.com/Barrot-Agent/B-Agent/actions/runs/41982837011) passed every manifest with no known vulnerabilities.
+- Fail-closed gate [41982837035](https://github.com/Barrot-Agent/B-Agent/actions/runs/41982837035) passed and explicitly disabled merging.
+- Installed-wheel build and verification passed; Barrot V3, the XRP primary mission and canonical data assets load from the wheel.
+- Non-fatal warnings remain for setuptools package discovery of `barrot_agent.data.missions` and `data.research`, and the Actions cache budget is read-only. The wheel verification passed despite these warnings.
+
+#### Workflow supply-chain hardening
+- `.github/workflows/barrot-ops.yml` no longer references mutable `databricks/setup-cli@main`. It is pinned to signed upstream commit `9625fdde9ba2607df0087e0d3ec7449198bf2180`, identified by upstream as v1.23.0.
+- `.github/workflows/formal-verification-benchmarks.yml` no longer downloads the Elan installer from mutable `master`; it uses the installer at verified v4.2.4 commit `227caca133724d5516bee25c2aeb3e609478f2d8`.
+- Two regression tests were added to `tests/test_external_deploys_require_confirmation.py` to enforce these immutable references and retain the explicit confirmation/exact-source-SHA guards. Both passed in the 596-test core suite.
+- The Databricks/Kaggle operations workflow remains manual, main-only, exact-source-SHA and explicit `confirm_external_change == YES`. It was not run. The formal-verification benchmark remains manual and was not run.
+- Review of the 27 changed workflow files found no automatic execution of the external operations in this run. Cloudflare and self-hosted Hugging Face deployment workflows are changed to manual, main-only and explicit-confirmation paths. The paper-trader workflow is manual, exact-main-SHA and explicit-YES, with a separate contents-write state-persistence job; it was not dispatched. IBM Bob and Groq workflows remain manual and were not run. Groq is not xAI Grok and does not establish a Grok connection.
+- No deployment, external model call, Kaggle submission, Databricks workspace write, paper trade, secret operation or funds action occurred.
+
+#### Latest XRPL amendment and collateral checkpoint
+- XRPLWin's current amendment pages report `SingleAssetVault` at **21/35** validators (ledger 108,116,479), `LendingProtocol` at **19/35** (ledger 108,115,711), and `LendingProtocolV1_1` at **19/35** (ledger 108,113,919). Each requires 29/35 sustained for 14 days. These are separate ledger snapshots; do not present them as one synchronized poll.
+- `fixCleanup3_4_0` remains enabled at ledger **108,112,129**, 2026-11-04 14:52 UTC. The official XRPL 3.4.0 release note identifies it as a bug-fix amendment and instructs node operators to upgrade; it does not activate SingleAssetVault or LendingProtocol.
+- XLS-66 describes LendingProtocol as fixed-term **uncollateralized** loans funded from a Single Asset Vault. This is not evidence of native XRP collateral, XRP-backed lending, vault deposits, loan utilization or yield. The cleanup amendment repairs code paths; it does not launch the lending product.
+- Existing #1643 amendment artifacts remain the durable research record; the latest ledger-vote refresh is an observation, not a new model feature. No new directional inference is permitted.
+
+#### Current research and integration status
+- PR #1643 current head: `0c132a1151c987bcd1e0f408243a681543aaa47f`; 147 commits ahead, 0 behind; 120 changed files; no changed-path overlap with #1640.
+- PR #1643 exact-head core: **495 passed, 8 subtests**; full suite [41982038530](https://github.com/Barrot-Agent/B-Agent/actions/runs/41982038530): **882 passed, 8 subtests**; fail-closed gate [41982038526](https://github.com/Barrot-Agent/B-Agent/actions/runs/41982038526) passed. No dependency manifests changed; all six manifest blob hashes match main, but no exact-head dependency-audit run was triggered on this research-only branch.
+- New #1643 artifacts: `20261105T062720Z-bny-c2fo-ripple-institutional-rails-update.json` and `20261105T063600Z-nine-platform-capability-authentication-map.json`, with their regression tests. Both remain model-ineligible because original response bytes, SHA-256 receipts and independent timestamp anchors are absent.
+- The Kamilah Stevenson candidate identity remains unresolved: the investment-education site and a newly found Linktree/YouTube handle are consistent by name, but no official cross-link establishes channel ownership. No video inventory was created.
+- Exact-phrase status remains: Permission Coin (ASK) is a candidate with no XRP link; “actual capital” has no new primary-source XRP capital-flow match; SBIC East's ChatGPT/Copilot training is not an OpenAI partnership and is distinct from SBI Holdings.
+
+#### Merge boundary and next action
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. PR #1640 has 22/22 review threads resolved and zero approving reviews; PR #1643 has 14/14 resolved and zero approving reviews.
+- Repository Pages is enabled; a previous main push triggered Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Branch-protection details still return HTTP 403 and the only visible fallback ruleset is disabled. Required protection and deployment authorization remain unverified.
+- No PR was merged or closed. #1642 remains an exact ancestor of #1640; #1644–#1650 are exact-path dependency duplicates represented in #1640. Unique work in #1651, #1615, #1621, #1269 and partially overlapping draft PRs remains preserved.
+- Next: obtain independent approvals and verify branch protection; resolve Pages authorization; merge #1640 only when all conditions pass; verify the merge commit and main CI; then reconcile #1643 with new main without rewriting history and rerun full-suite, fail-closed and appropriate dependency/security checks.
+
+**Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.**
+This Run 31 handoff update is a documentation-only commit on the existing #1640 branch; its new head requires its own exact-head CI, dependency audit and fail-closed verification.
