@@ -25,8 +25,8 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com"}
-ADAPTER_VERSION = "xrp-public-market-v3"
-PARSER_VERSION = "xrp-public-market-v3"
+ADAPTER_VERSION = "xrp-public-market-v3.1"
+PARSER_VERSION = "xrp-public-market-v3.1"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -699,14 +699,23 @@ def _parse_binance_global_long_short_ratio(payload: Any, *, source_id: str, url:
         if long_fraction > 1 or short_fraction > 1 or abs((long_fraction + short_fraction) - 1.0) > 0.02:
             raise XRPIngestionError("Binance long/short account fractions must sum to one")
         implied_ratio = long_fraction / short_fraction
-        if not math.isclose(ratio, implied_ratio, rel_tol=0.05, abs_tol=0.02):
-            raise XRPIngestionError("Binance longShortRatio conflicts with account fractions")
+        ratio_consistent = math.isclose(ratio, implied_ratio, rel_tol=0.05, abs_tol=0.02)
+        limitations_with_reconciliation = limitations + [
+            "The exchange-reported ratio is preserved as reported; if it conflicts with the accompanying account fractions, only the ratio feature is excluded and the fractions remain separate. No corrected ratio is inferred."
+        ]
         metrics = (
-            ("xrp.perpetual.binance.1h.global_long_short_account_ratio", ratio, "ratio"),
-            ("xrp.perpetual.binance.1h.global_long_account_fraction", long_fraction, "fraction_of_accounts"),
-            ("xrp.perpetual.binance.1h.global_short_account_fraction", short_fraction, "fraction_of_accounts"),
+            (
+                "xrp.perpetual.binance.1h.global_long_short_account_ratio",
+                ratio,
+                "ratio",
+                ratio_consistent,
+                "" if ratio_consistent else "reported_ratio_conflicts_with_account_fractions",
+                "verified" if ratio_consistent else "unverified",
+            ),
+            ("xrp.perpetual.binance.1h.global_long_account_fraction", long_fraction, "fraction_of_accounts", True, "", "verified"),
+            ("xrp.perpetual.binance.1h.global_short_account_fraction", short_fraction, "fraction_of_accounts", True, "", "verified"),
         )
-        for feature_id, value, unit in metrics:
+        for feature_id, value, unit, feature_eligible, eligibility_reason, quality_status in metrics:
             records.append(
                 _feature_record(
                     feature_id=feature_id,
@@ -724,9 +733,10 @@ def _parse_binance_global_long_short_ratio(payload: Any, *, source_id: str, url:
                     currency_pair="XRP/USDT",
                     market_type="perpetual",
                     aggregation_window="1h",
-                    model_eligible=True,
-                    quality_status="verified",
-                    limitations=limitations,
+                    model_eligible=feature_eligible,
+                    eligibility_reason=eligibility_reason,
+                    quality_status=quality_status,
+                    limitations=limitations_with_reconciliation,
                 )
             )
     if not records or latest_time is None:

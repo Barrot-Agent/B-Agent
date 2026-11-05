@@ -223,8 +223,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3"
-    assert summary["parser_version"] == "xrp-public-market-v3"
+    assert summary["adapter_version"] == "xrp-public-market-v3.1"
+    assert summary["parser_version"] == "xrp-public-market-v3.1"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -586,11 +586,20 @@ def test_binance_global_long_short_ratio_is_account_based_and_validated():
     assert source_as_of == ratios[-1]["event_time_utc"]
     assert eligible is True and reason == ""
 
-    invalid = [dict(payload[0], longShortRatio="3.0")]
-    with pytest.raises(XRPIngestionError, match="conflicts"):
-        PARSERS[source_id](
-            invalid, source_id=source_id, url=url, digest="e" * 64, captured=captured
-        )
+    inconsistent = [dict(payload[0], longShortRatio="3.0")]
+    retained, _, source_eligible, source_reason = PARSERS[source_id](
+        inconsistent, source_id=source_id, url=url, digest="e" * 64, captured=captured
+    )
+    reported_ratio = next(item for item in retained if item["feature_id"].endswith("global_long_short_account_ratio"))
+    account_fractions = [
+        item for item in retained
+        if item["feature_id"].endswith(("global_long_account_fraction", "global_short_account_fraction"))
+    ]
+    assert source_eligible is True and source_reason == ""
+    assert reported_ratio["value"] == 3.0
+    assert reported_ratio["model_eligible"] is False
+    assert reported_ratio["eligibility_reason"] == "reported_ratio_conflicts_with_account_fractions"
+    assert all(item["model_eligible"] is True for item in account_fractions)
 
 
 def test_historical_derivatives_reject_future_event_timestamps():
