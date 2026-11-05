@@ -16,7 +16,7 @@ def store_receipt(archive, raw=b"verified public source bytes", *, retain=True):
         captured_at_utc="2026-11-05T17:00:00Z",
         raw_bytes=raw,
         source_data_as_of_utc="2026-11-05T16:59:00Z",
-        model_eligible=retain,
+        model_eligible=True,
         retain_raw_bytes=retain,
         raw_retention_reason="" if retain else "publisher terms require digest-only retention",
     )

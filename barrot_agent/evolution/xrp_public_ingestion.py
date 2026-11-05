@@ -466,8 +466,6 @@ class RawReceiptArchive:
 
         if receipt.get("raw_payload_path") is not None or not receipt["raw_retention_reason"].strip():
             raise XRPIngestionError("digest-only receipts need no payload path and a retention reason")
-        if receipt["model_eligible_source"]:
-            raise XRPIngestionError("digest-only receipts cannot be model eligible")
         return False
 
     def _append_chain_record(self, receipt: Mapping[str, Any]) -> dict[str, Any]:
