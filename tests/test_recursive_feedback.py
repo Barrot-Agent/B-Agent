@@ -226,6 +226,17 @@ class TestRecursiveFeedbackLoop:
         assert results[-1][0] > 0.0
         assert results[-1][1] == 1.0
 
+    def test_overflowing_metric_evidence_is_unscored_and_clears_history(self):
+        loop = RecursiveFeedbackLoop()
+        loop._improvement_history.extend([0.2, 0.2])
+        state = {"evaluation": {
+            "baseline": {"run_id": "huge-base", "revision": "rev-a", "metrics": {"metric": 10 ** 10000}},
+            "candidate": {"run_id": "huge-candidate", "revision": "rev-b", "metrics": {"metric": 1.0}},
+        }}
+        assert loop._verify_improvement(1, state, []) == (0.0, 0.0)
+        assert not loop._improvement_history
+        assert not loop._evaluation_history
+
     @patch.object(RecursiveFeedbackLoop, "_observe_system_state")
     @patch.object(RecursiveFeedbackLoop, "_analyze_with_kimi")
     @patch.object(RecursiveFeedbackLoop, "_absorb_feedback")
