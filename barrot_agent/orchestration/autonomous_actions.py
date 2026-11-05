@@ -149,7 +149,9 @@ Action rules:
 - Prefer inspection before modification.
 - Keep changes minimal.
 - TERMUX_DROP may write only inside the configured Termux workspace.
-- Use APPLY_PATCH for small edits.
+- WRITE_FILE may create new files only; it cannot overwrite existing files.
+- APPLY_PATCH requires one exact preimage match and uses compare-and-swap.
+- RUN_TESTS accepts only allowlisted pytest/compileall commands; no shell.
 - Run verification after modification.
 - If the previous attempt failed, inspect the failure and correct it.
 - Do not claim success without verification.
