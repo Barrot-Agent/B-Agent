@@ -4542,3 +4542,117 @@ Current inventory: **370 open PRs — 354 drafts and 16 non-drafts**.
 - **DESIGNED:** hourly public ingestion, daily feature-store backup, point-in-time evaluation, baseline comparison, forecast readiness and read-only mission dispatch.
 - **EXECUTED:** new mission dispatch code and tests on #1640; new Binance supervisory/market research artifact and tests on #1643; exact-head CI, full-suite tests, fail-closed gates and dependency audit on #1640.
 - **VERIFIED:** #1640 code head `88168a71` and #1643 research head `44a27203` passed their stated exact-head checks above. None of these changes is verified on main.
+
+
+## Run 39 — verified-learning admission gate and November 4 ETF-flow reconciliation (2026-11-05)
+
+### Current repository state
+
+- Current main SHA: 9100dbacb5f9f1b973b053a65ef1e91e96b64f72.
+- Main recursive tree: **1,403 entries**, including 493 Python files, 86 workflow files and 90 Python test files under tests/.
+- Latest main-branch CI observed: [run 41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459), successful on the unchanged main SHA. No main files were changed in this run.
+- Current open PR inventory: **370 open — 354 drafts, 16 non-drafts**.
+
+### PR #1640 — V3/core integration
+
+Current exact code/test head: b997260ecf8203e10fd71877317a3aa1b2d743d6 (241 commits ahead of main, 0 behind; 86 changed files).
+
+Implemented:
+- VerifiedLearningStore now writes schema-versioned records with a normalized lesson SHA-256, exact acceptance reason and timezone-aware recorded timestamp.
+- read_verified() admits only records matching that structure and containing the expected deep-inspection findings format (READ_FILE, SEARCH_TEXT or RUN_TESTS).
+- LearningCurriculum now reads only read_verified(); it no longer treats arbitrary parseable JSONL lesson text as completed progress.
+- Legacy records remain preserved and readable through read_all(), but are not trusted to advance the priority-1 mission.
+- Added regression tests for valid progression, legacy/shallow rejection, lesson/hash mismatch, rejected reason and paused-mission fallback.
+- The existing mission-dispatch integration test was updated to seed progress through the actual validated store rather than a hand-written unstructured JSONL row.
+
+**Integrity limitation:** the lesson hash is a consistency check, not an authenticity signature. A writer able to rewrite the JSONL record and recompute its hash can still forge a structurally valid record. An independently controlled signature/attestation or immutable checkpoint is still required before treating the store as adversarially tamper-proof.
+
+Verification on exact head b997260e:
+- Core suite: **601 passed, 8 subtests**.
+- Full repository suite: **913 passed, 8 subtests**.
+- Inclusive package coverage: **54.07%**, above the 50% floor.
+- Installed-wheel build and packaged primary-mission verification passed.
+- Six-manifest strict dependency audit passed with no known vulnerabilities.
+- Fail-closed merge gate passed and automatic merging remains disabled.
+- [Full CI — 42024719347](https://github.com/Barrot-Agent/B-Agent/actions/runs/42024719347) · [Dependency audit — 42024719339](https://github.com/Barrot-Agent/B-Agent/actions/runs/42024719339) · [Fail-closed gate — 42024719392](https://github.com/Barrot-Agent/B-Agent/actions/runs/42024719392).
+- An earlier run on predecessor head bb9e85f failed one mission-dispatch test because its fixture wrote a legacy unstructured lesson. The fixture now creates a real accepted record through VerifiedLearningStore.append(); the exact final head above passed. The failed predecessor is not used as success evidence.
+
+### PR #1643 — XRP research archive
+
+Current exact head: d382eb421c0c470218dbe0bd86789de36e7fbd33 (186 commits ahead of main, 0 behind; 150 changed files).
+
+Added append-only artifact:
+research/xrp_intelligence/20261105T120020Z-xrp-etf-nov4-cross-provider-vintage-addendum.json
+
+Added six regression tests in:
+tests/test_xrp_etf_nov4_cross_provider_vintage_addendum.py
+
+November 4 provider observations:
+- XRP Insights: **-259,701 XRP** across three settled trading days, November 2–4; seven product tickers including BITW and XRPR; aggregate derived from holdings changes.
+- CryptoKeyhole: November 3 complete daily change **-3,339 XRP**; November 4 partial change **-3,339 XRP** from three of four funds. Its daily universe is XRP, XRPZ, XRPC and TOXR; GXRP and XRPR are excluded from daily flow.
+- Alpha Finance: displayed **$0** on November 4 across five of five funds and $0 on November 3. Its methodology identifies Coinglass as the ETF-dashboard feed; the XRP dashboard does not publish holdings or AUM.
+- Maketo: displayed **$0** on November 4 and November 3, and approximately **-$530,000** on November 2, attributed to XRPC; five-fund universe.
+
+These are not four independent primary measurements. XRP Insights and CryptoKeyhole calculate from issuer holdings files; Alpha Finance uses Coinglass for its ETF dashboard; Maketo references fund-reported daily figures but does not expose the raw upstream files or a reproducible per-fund formula in the captured page. Product universes, units, date conventions, publication lags and completeness differ. Holdings changes can also include fee sales, cash payouts, staking rewards or BITW index rebalancing. The figures were not averaged and are not called verified AP cash creations/redemptions.
+
+Source pages:
+- [XRP Insights JSON](https://xrp-insights.com/data/xrp-etf-flows.json)
+- [CryptoKeyhole XRP ETF flows](https://cryptokeyhole.com/etf-flows/xrp/)
+- [Alpha Finance XRP ETF dashboard](https://alphafinance.io/etf/xrp/)
+- [Alpha Finance methodology](https://alphafinance.io/methodology/)
+- [Maketo XRP ETF flows](https://maketo.com/etf/xrp/flows)
+
+Raw source bytes, SHA-256 receipts and independent timestamp anchors were not captured for this addendum. It is explicitly model_eligible=false; no directional forecast was issued. Next evidence required: original issuer files, exact effective/publication/first-seen times, shares outstanding, XRP-per-share, NAV/net assets, custodian balances and authorized-participant cash/coin creation-redemption records.
+
+Verification on exact head d382eb42:
+- Core suite: **495 passed, 8 subtests**.
+- Full repository suite: **980 passed, 8 subtests**.
+- [Full CI — 42024586968](https://github.com/Barrot-Agent/B-Agent/actions/runs/42024586968).
+- [Fail-closed gate — 42024586962](https://github.com/Barrot-Agent/B-Agent/actions/runs/42024586962).
+- All six dependency-manifest blob SHAs exactly match main: requirements.txt, requirements-dev.txt, requirements.tx, pyproject.toml, hf_space/requirements.txt, legacy/requirements_legacy.txt. The exact-head dependency-audit workflow did not run because main's current path filter excludes research-only paths. #1640 adds research and XRP-test paths to that filter; after #1640 is integrated, reconcile #1643 onto the resulting main and verify the exact-head audit.
+
+### Integration and PR backlog
+
+- Active integration workstreams: #1640 (V3/core) and #1643 (XRP research). Their current changed-path sets have **zero overlap**.
+- #1642 is an exact ancestor of #1640 (source head is behind the current #1640 head by 240 commits and is not ahead). Keep open until #1640 is merged and verified on main.
+- #1644–#1650 are non-ancestor Dependabot source branches, but their individual changed content is present in #1640: checkout v7, download-artifact v8, upload-artifact v7, pytest 9.2.0, types-requests 2.33.0.20261030, databricks-sdk 0.158.0 and huggingface_hub 2.4.0. Do not close them until the successor is merged and verified on main.
+- #1651 remains unique/unreviewed RSI and weight-space work (nine changed files, six unresolved review threads).
+- #1641 remains unique/unreviewed.
+- #1615 remains unique security work to preserve.
+- #1320, #1318 and #1317 retain potentially unique hunks and require content-level reconciliation before any closure.
+- #1269 retains unique rendering work.
+- #1254/#1255 are older dependency candidates; replacement content must be verified on main before closure.
+- Older prediction/security/research drafts remain preserved pending path- and content-level reconciliation. No bulk closure occurred.
+
+### Protection, review and external-action status
+
+- #1640: 22/22 review threads resolved; **zero APPROVED reviews**.
+- #1643: 14/14 review threads resolved; **zero APPROVED reviews**.
+- Both PRs are non-draft and GitHub reports them mergeable. Neither was merged.
+- Main is marked protected, but detailed branch-protection inspection returns HTTP 403. The visible repository fallback ruleset is disabled. Required review/protection configuration cannot be independently verified.
+- GitHub Pages settings remain inaccessible through the current connector. A previous main push triggered a successful Pages deployment [run 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489); authorization for another merge-triggered deployment is unresolved.
+- No branch-protection bypass, merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Prediction and platform status
+
+- XRP mission registry, read-only mission dispatch, public ingestion, raw receipt archive, point-in-time feature store and forecast ledger remain integration-branch work, not main production services.
+- Raw-source artifact retention remains 90 days, not indefinite. Independent timestamp anchoring and externally controlled immutable storage remain incomplete.
+- Historical exchange-wallet flows, issuer AP cash-flow records, collateral, custody, stablecoin and payment-rail vintages remain incomplete.
+- Chronological baseline infrastructure exists, but complete out-of-sample lift, calibration, drift monitoring and sufficient shadow outcomes are not verified.
+- **Directional XRP forecasts issued: none.**
+- Only ChatGPT-to-GitHub is verified as a persistent authenticated data path. Copilot activity is one-off; Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified. Groq is not Grok.
+
+### Next concrete action
+
+1. Obtain independent approving reviews and verify actual branch-protection requirements.
+2. Resolve the GitHub Pages deployment side effect.
+3. Merge #1640 only when every required condition is satisfied; then fetch main, verify the merge commit/files and run main CI.
+4. Reconcile #1643 onto the resulting main without rewriting branch history. Run its exact-head full suite, fail-closed gate and dependency/security audit.
+5. Merge #1643 only after those checks and required approvals pass.
+6. Close only #1642 and #1644–#1650 after replacement content is verified on main; preserve unique research, security and rendering work.
+
+### Execution labels
+
+- **DESIGNED:** verified-learning admission contract, hourly public ingestion, daily feature-store backup, point-in-time evaluation, baseline comparison and read-only mission dispatch.
+- **EXECUTED:** verified-learning validation and tests on #1640; November 4 ETF-flow addendum and tests on #1643; exact-head CI, full-suite tests, fail-closed gates and #1640 dependency audit.
+- **VERIFIED:** #1640 head b997260e passed 601 core tests, 913 full-suite tests, six-manifest dependency audit and fail-closed gate. #1643 head d382eb42 passed 495 core tests, 980 full-suite tests and fail-closed gate; dependency manifests match main but exact-head dependency audit remains pending. None of these changes is verified on main.
