@@ -148,7 +148,7 @@ CRITICAL EXECUTION RULES:
 - Keep actions minimal and prefer inspection before modification.
 - If a command is rejected, inspect the error and choose an allowed command; do not attempt a shell workaround.
 """
-            plan_text = self._redact(str(self.brain.think(task)))
+            plan_text = self._redact(str(self.brain.think(task)))[:20000]
             record = {"attempt": attempt, "plan": plan_text, "execution": [], "verification": []}
             history.append(record)
             self.store.save(task_id, state)
