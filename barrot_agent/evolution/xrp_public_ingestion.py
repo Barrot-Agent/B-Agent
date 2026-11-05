@@ -24,7 +24,7 @@ from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com"}
+ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com"}
 ADAPTER_VERSION = "xrp-public-market-v2"
 PARSER_VERSION = "xrp-public-market-v2"
 MAX_LIVE_AGE_SECONDS = 300
@@ -40,6 +40,7 @@ ENDPOINTS = (
     ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
     ("binance_spot_depth", "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100"),
+    ("xrp_etf_flows_aggregator", "https://xrp-insights.com/data/xrp-etf-flows.json"),
 )
 
 
@@ -140,7 +141,12 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
     )
     try:
         with urlopen(request, timeout=15) as response:
+            final_url = urlsplit(response.geturl())
+            if final_url.scheme != "https" or final_url.hostname not in ALLOWED_HOSTS:
+                raise XRPIngestionError("public fetch redirected outside allowlisted HTTPS hosts")
             raw = response.read(MAX_RESPONSE_BYTES + 1)
+    except XRPIngestionError:
+        raise
     except Exception:
         raise XRPIngestionError(f"public fetch failed for {source_id}") from None
     if not raw or len(raw) > MAX_RESPONSE_BYTES:
@@ -764,6 +770,48 @@ def _raw_only_binance_depth(payload: Any, **_kwargs):
     return [], None, False, "sequence_id_present_but_server_timestamp_absent_raw_only"
 
 
+def _raw_only_xrp_insights_etf_flows(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate the aggregator envelope but retain its rows as raw-only evidence."""
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError("XRP Insights ETF response must be an object")
+    metadata = payload.get("metadata")
+    if (
+        not isinstance(metadata, Mapping)
+        or metadata.get("dataset") != "XRP ETF Daily Holdings & Flows by Fund"
+        or metadata.get("publisher") != "XRP Insights"
+    ):
+        raise XRPIngestionError("XRP Insights ETF metadata identity mismatch")
+    generated_at = _from_iso8601(metadata.get("generated_at"), "XRP Insights generated_at")
+    if generated_at > captured + timedelta(seconds=60):
+        raise XRPIngestionError("XRP Insights generated_at is later than the capture clock")
+    data_as_of = metadata.get("data_as_of")
+    if not isinstance(data_as_of, str) or not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", data_as_of):
+        raise XRPIngestionError("XRP Insights data_as_of must be a date-only value")
+    try:
+        datetime.strptime(data_as_of, "%Y-%m-%d")
+    except ValueError:
+        raise XRPIngestionError("XRP Insights data_as_of is not a valid calendar date") from None
+    coverage = metadata.get("coverage")
+    if not isinstance(coverage, Mapping):
+        raise XRPIngestionError("XRP Insights coverage metadata is missing")
+    row_count = coverage.get("rows")
+    if isinstance(row_count, bool) or not isinstance(row_count, int) or row_count <= 0:
+        raise XRPIngestionError("XRP Insights row count must be a positive integer")
+    funds, columns = payload.get("funds"), payload.get("columns")
+    if not isinstance(funds, list) or not funds or not isinstance(columns, list) or not columns:
+        raise XRPIngestionError("XRP Insights fund and column registries are required")
+    if not any(isinstance(item, Mapping) and item.get("ticker") == "XRP" for item in funds):
+        raise XRPIngestionError("XRP Insights fund registry does not contain the spot XRP fund")
+    if not any(isinstance(item, Mapping) and item.get("name") == "xrp_flow" for item in columns):
+        raise XRPIngestionError("XRP Insights column registry does not define xrp_flow")
+    return (
+        [],
+        None,
+        False,
+        "third_party_issuer_holdings_aggregator_retained_raw_only_until_fund_row_vintages_and_primary_receipts_are_verified",
+    )
+
+
 PARSERS = {
     "binance_spot_ticker": _parse_binance_ticker,
     "binance_spot_klines": _parse_binance_klines,
@@ -774,6 +822,7 @@ PARSERS = {
     "coinbase_spot_book": _raw_only_coinbase_book,
     "kraken_spot_depth": _parse_kraken_depth,
     "binance_spot_depth": _raw_only_binance_depth,
+    "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
 }
 
 
