@@ -12,6 +12,7 @@ from email.utils import parsedate_to_datetime
 import json
 import math
 import os
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable, Mapping
@@ -20,6 +21,7 @@ from urllib.request import Request, urlopen
 
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
+from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com"}
@@ -782,6 +784,159 @@ def _write_json(path: Path, value: Any) -> None:
         handle.write("\n")
 
 
+def _feature_identity(record: Mapping[str, Any]) -> tuple[Any, ...]:
+    return (
+        record["asset"],
+        record["feature_id"],
+        record["event_time_utc"],
+        record.get("venue"),
+        record.get("instrument"),
+        record.get("currency_pair"),
+        record.get("market_type"),
+        tuple(sorted(source["source_id"] for source in record["sources"])),
+    )
+
+
+def _feature_semantics(record: Mapping[str, Any]) -> tuple[Any, ...]:
+    return (
+        record["value"],
+        record["unit"],
+        record["source_data_as_of_utc"],
+        record["quality_status"],
+        record["model_eligible"],
+    )
+
+
+def _base_feature_record_id(record_id: str) -> str:
+    return re.sub(r":v[0-9]+$", "", record_id)
+
+
+def _prepare_feature_delta(
+    history: list[dict[str, Any]],
+    current_records: list[dict[str, Any]],
+    *,
+    captured_at_utc: str,
+    store_cutoff_utc: str,
+) -> list[dict[str, Any]]:
+    """Persist only new or revised features; raw receipts remain per-run."""
+    latest_by_identity: dict[tuple[Any, ...], dict[str, Any]] = {}
+    for record in history:
+        identity = _feature_identity(record)
+        previous = latest_by_identity.get(identity)
+        if previous is None or record["feature_version"] > previous["feature_version"]:
+            latest_by_identity[identity] = record
+
+    delta: list[dict[str, Any]] = []
+    for raw_record in current_records:
+        candidate = dict(raw_record)
+        candidate["ingested_at_utc"] = store_cutoff_utc
+        candidate["revision_available_at_utc"] = store_cutoff_utc
+        if not candidate.get("model_eligible", False):
+            candidate["record_id"] = f"{candidate['record_id']}:excluded:{captured_at_utc}"
+            delta.append(candidate)
+            continue
+
+        identity = _feature_identity(candidate)
+        previous = latest_by_identity.get(identity)
+        if previous is None:
+            candidate["feature_version"] = 1
+            candidate["revision_status"] = "original"
+            candidate["supersedes_record_id"] = None
+            delta.append(candidate)
+            latest_by_identity[identity] = candidate
+            continue
+        if _feature_semantics(previous) == _feature_semantics(candidate):
+            continue
+        if candidate["unit"] != previous["unit"]:
+            raise XRPIngestionError("feature unit changed across point-in-time snapshots")
+
+        version = previous["feature_version"] + 1
+        candidate["record_id"] = f"{_base_feature_record_id(candidate['record_id'])}:v{version}"
+        candidate["feature_version"] = version
+        candidate["revision_status"] = "revised"
+        candidate["supersedes_record_id"] = previous["record_id"]
+        delta.append(candidate)
+        latest_by_identity[identity] = candidate
+    return delta
+
+
+def _walk_forward_report(
+    store: HistoricalFeatureStore,
+    *,
+    evaluation_as_of_utc: str,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    history = store.records_through("XRP", evaluation_as_of_utc)
+    evaluations: dict[str, Any] = {}
+    configurations = (
+        {
+            "key": "binance_xrpusdt_1h",
+            "feature_id": "xrp.spot.binance.1h.close_price",
+            "venue": "binance",
+            "currency_pair": "XRP/USDT",
+        },
+        {
+            "key": "coinbase_xrpusd_1h",
+            "feature_id": "xrp.spot.coinbase.1h.close_price",
+            "venue": "coinbase",
+            "currency_pair": "XRP/USD",
+        },
+    )
+    for config in configurations:
+        try:
+            evaluations[config["key"]] = evaluate_chronological_walk_forward(
+                history,
+                feature_id=config["feature_id"],
+                evaluation_as_of_utc=evaluation_as_of_utc,
+                horizon_seconds=3600,
+                min_train_samples=10,
+                target_tolerance_seconds=300,
+                max_origin_age_seconds=3600,
+                venue=config["venue"],
+                currency_pair=config["currency_pair"],
+            )
+        except WalkForwardEvaluationError as exc:
+            evaluations[config["key"]] = {
+                "status": "BLOCKED",
+                "reason": str(exc),
+                "forecast_count": 0,
+                "forecasts": [],
+                "live_forecast_issued": False,
+            }
+    forecast_count = sum(
+        int(result.get("forecast_count", 0))
+        for result in evaluations.values()
+    )
+    statuses = {result.get("status", "UNKNOWN") for result in evaluations.values()}
+    if "SCORED" in statuses:
+        overall_status = "SCORED"
+    elif "BLOCKED" in statuses:
+        overall_status = "PARTIAL_OR_BLOCKED"
+    else:
+        overall_status = "INSUFFICIENT_HISTORY"
+    report = {
+        "schema_version": 1,
+        "artifact_type": "xrp_historical_walk_forward_evaluation",
+        "evaluation_as_of_utc": evaluation_as_of_utc,
+        "history_record_count": len(history),
+        "feature_store_snapshot_count": store.snapshot_count(),
+        "overall_status": overall_status,
+        "forecast_count": forecast_count,
+        "evaluations": evaluations,
+        "historical_backtest_only": True,
+        "live_forecast_issued": False,
+        "paper_trade_executed": False,
+        "model_eligible": False,
+        "limitations": [
+            "These are chronological historical baseline evaluations, not live directional forecasts.",
+            "The evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly close features only.",
+            "The feature store cache is derived and evictable; raw per-run artifacts are the source receipts.",
+            "Probability calibration is diagnostic only; no trained model or recalibration is enabled.",
+            "Shadow evaluation and drift monitoring remain separate unfinished gates.",
+        ],
+    }
+    return report, history
+
+
 def run_ingestion(
     output_dir: str | Path,
     *,
@@ -819,46 +974,85 @@ def run_ingestion(
                 payload,
                 **parser_kwargs,
             )
-            receipt = archive.store(
-                source_id=source_id,
-                source_uri=url,
-                captured_at_utc=captured_s,
-                raw_bytes=raw_bytes,
-                source_data_as_of_utc=source_as_of,
-                model_eligible=source_eligible,
-                raw_only_reason=reason,
-            )
-            receipts.append(receipt)
-            records.extend(parsed_records)
-            if reason and not source_eligible:
-                raw_only.append({"source_id": source_id, "reason": reason})
-            elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
-                raw_only.append({"source_id": source_id, "reason": reason})
         except Exception as exc:
             failures.append({"source_id": source_id, "error_type": type(exc).__name__})
+            continue
+
+        # Receipt writes are outside the source-error handler. Archive corruption
+        # or a content-address collision must fail the run closed.
+        receipt = archive.store(
+            source_id=source_id,
+            source_uri=url,
+            captured_at_utc=captured_s,
+            raw_bytes=raw_bytes,
+            source_data_as_of_utc=source_as_of,
+            model_eligible=source_eligible,
+            raw_only_reason=reason,
+        )
+        receipts.append(receipt)
+        records.extend(parsed_records)
+        if reason and not source_eligible:
+            raw_only.append({"source_id": source_id, "reason": reason})
+        elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
+            raw_only.append({"source_id": source_id, "reason": reason})
+
+    database = output / "feature_store.sqlite3"
+    store = HistoricalFeatureStore(database)
+    store_cutoff = datetime.now(timezone.utc)
+    store_cutoff_s = _iso(store_cutoff)
+    prior_history = store.records_through("XRP", store_cutoff_s)
+    previous_snapshot = store.snapshot_as_of("XRP", store_cutoff_s)
+    previous_snapshot_id = previous_snapshot.get("snapshot_id") if previous_snapshot else None
+    delta_records = _prepare_feature_delta(
+        prior_history,
+        records,
+        captured_at_utc=captured_s,
+        store_cutoff_utc=store_cutoff_s,
+    )
 
     snapshot = None
-    store_verification = None
-    snapshot_status = "blocked_no_eligible_features"
-    try:
+    stored = None
+    store_verification = {"valid": True, "status": "no_new_snapshot"}
+    snapshot_status = "no_new_eligible_features"
+    snapshot_blocked_path = output / "snapshot_blocked.json"
+    if any(record.get("model_eligible") is True for record in delta_records):
         snapshot = build_feature_snapshot(
-            records,
-            cutoff_utc=captured_s,
-            captured_at_utc=captured_s,
+            delta_records,
+            cutoff_utc=store_cutoff_s,
+            captured_at_utc=store_cutoff_s,
             asset_scope=["XRP"],
         )
-        database = output / "feature_store.sqlite3"
-        store = HistoricalFeatureStore(database, clock=lambda: captured)
         stored = store.append_snapshot(snapshot)
         store_verification = store.verify_snapshot(snapshot["snapshot_id"])
         if not store_verification.get("valid"):
-            raise FeatureStoreError("newly appended XRP snapshot failed verification")
-        _write_json(output / "snapshot.json", snapshot)
+            raise FeatureStoreError("newly appended XRP delta snapshot failed verification")
         snapshot_status = "verified"
-    except (FeatureSnapshotError, FeatureStoreError, XRPIngestionError) as exc:
-        failures.append({"source_id": "feature_snapshot", "error_type": type(exc).__name__})
-        stored = None
-        _write_json(output / "snapshot_blocked.json", {"status": snapshot_status, "reason": str(exc)})
+        snapshot_blocked_path.unlink(missing_ok=True)
+        _write_json(output / "snapshot.json", snapshot)
+    else:
+        snapshot_blocked_path.unlink(missing_ok=True)
+        _write_json(
+            output / "snapshot.json",
+            {
+                "schema_version": 1,
+                "artifact_type": "xrp_feature_store_run_delta",
+                "status": snapshot_status,
+                "captured_at_utc": captured_s,
+                "feature_store_cutoff_utc": store_cutoff_s,
+                "previous_snapshot_id": previous_snapshot_id,
+                "delta_record_count": 0,
+                "snapshot_id": None,
+            },
+        )
+
+    checkpoint = store.checkpoint()
+    evaluation_as_of = datetime.now(timezone.utc)
+    evaluation_as_of_s = _iso(evaluation_as_of)
+    walk_forward, history_records = _walk_forward_report(
+        store,
+        evaluation_as_of_utc=evaluation_as_of_s,
+    )
+    _write_json(output / "walk_forward.json", walk_forward)
 
     _write_json(output / "receipt_manifest.json", receipts)
     _write_json(output / "source_failures.json", failures)
@@ -870,33 +1064,50 @@ def run_ingestion(
         "parser_version": PARSER_VERSION,
         "captured_at_utc": captured_s,
         "data_cutoff_utc": captured_s,
+        "feature_store_cutoff_utc": store_cutoff_s,
+        "evaluation_as_of_utc": evaluation_as_of_s,
         "source_receipt_count": len(receipts),
         "source_failure_count": len(failures),
         "raw_only_source_count": len(raw_only),
         "input_feature_record_count": len(records),
+        "delta_feature_record_count": len(delta_records),
         "snapshot_status": snapshot_status,
         "snapshot_id": snapshot.get("snapshot_id") if snapshot else None,
         "eligible_feature_record_count": snapshot.get("eligible_record_count", 0) if snapshot else 0,
         "excluded_feature_record_count": snapshot.get("excluded_record_count", 0) if snapshot else 0,
+        "previous_snapshot_id": previous_snapshot_id,
         "store_receipt": stored,
         "store_verification": store_verification,
+        "feature_store_checkpoint": checkpoint,
+        "feature_store_snapshot_count": store.snapshot_count(),
+        "feature_store_history_record_count": len(history_records),
+        "walk_forward_status": walk_forward["overall_status"],
+        "walk_forward_forecast_count": walk_forward["forecast_count"],
         "forecast_status": "NOT_ISSUED",
         "forecast_model_eligible": False,
-        "storage_scope": "one GitHub Actions artifact per run; no cross-run durable store is configured",
+        "paper_trade_executed": False,
+        "storage_scope": (
+            "append-only SQLite feature history restored from a unique-key GitHub Actions cache; "
+            "per-run raw-source artifacts are retained 90 days; cumulative feature-store backup "
+            "artifact is retained 1 day; cache is derived and evictable, not an immutable source of truth"
+        ),
         "artifact_retention_days": 90,
+        "feature_store_backup_retention_days": 1,
+        "feature_store_rebuild_from_raw_artifacts_implemented": False,
         "limitations": [
-            "Spot coverage now includes Binance, Coinbase and Kraken; perpetual coverage remains Binance-only in this adapter.",
+            "Spot coverage includes Binance, Coinbase and Kraken; perpetual coverage remains Binance-only in this adapter.",
             "USDT quotes are not converted to USD; open interest remains in contracts.",
             "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header.",
             "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase candle pagination is not yet implemented.",
-            "Raw files are content-addressed and hashed, but independent external timestamp anchoring and long-term immutable object storage are not configured.",
-            "No exchange wallet flows, ETF flows, institutional collateral, stablecoin supply, custody, payment rails, or regulatory events are inferred by this adapter.",
-            "This collector does not issue directional forecasts, trading signals, or recommendations.",
+            "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
+            "The cumulative SQLite feature store is persisted through GitHub Actions cache and a one-day feature artifact backup. Cache eviction or an outage longer than the backup window can interrupt continuity; automatic rebuild from the 90-day raw artifacts is not yet implemented.",
+            "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
+            "The historical evaluator uses naive, momentum, mean-reversion and volatility baselines. It does not issue a live forecast; probability calibration is diagnostic only, and shadow evaluation and drift monitoring are not yet implemented.",
+            "This collector does not issue directional forecasts, trading signals, recommendations or paper trades.",
         ],
     }
     _write_json(output / "summary.json", summary)
     return summary
-
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Capture public XRP spot, order-book and perpetual-market data.")
