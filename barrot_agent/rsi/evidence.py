@@ -70,6 +70,8 @@ def assess_improvement(
     """Compare paired measurements; positive deltas always mean improvement."""
     if baseline.run_id == candidate.run_id:
         raise ValueError("baseline and candidate must be distinct evaluation runs")
+    if baseline.revision == candidate.revision:
+        raise ValueError("baseline and candidate must use distinct revisions")
     if set(baseline.metrics) != set(candidate.metrics):
         raise ValueError("baseline and candidate must contain identical metric names")
     tolerances = tolerances or {}
