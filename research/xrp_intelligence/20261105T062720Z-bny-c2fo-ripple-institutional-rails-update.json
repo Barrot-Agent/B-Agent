@@ -123,6 +123,22 @@
         "It does not disclose production XRPL settlement volume, XRP bridge usage, XRP collateral or spot purchases.",
         "Ripple Treasury integration and expanded Prime services are strategic partnership statements, not measured flows."
       ]
+    },
+    {
+      "id": "ripple_bny_rlusd_primary_reserve_custody_20250709",
+      "publisher": "Ripple",
+      "source_type": "primary_issuer_press_release",
+      "url": "https://ripple.com/ripple-press/ripple-selects-bny-to-custody-ripple-usd-reserves/",
+      "publication_date": "2025-07-09",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_search_extract_only",
+      "independence_group": "ripple_press_office",
+      "model_eligible": false,
+      "limitations": [
+        "Ripple announced BNY as primary custodian for RLUSD reserves; the October 27, 2026 BNY/Ripple announcement separately refers to BNY's existing primary-reserve-custody role.",
+        "This is RLUSD reserve custody, not native XRP custody or XRP collateral."
+      ]
     }
   ],
   "relationships": [
@@ -142,6 +158,9 @@
         "new XRP purchases caused by the service",
         "XRP collateral acceptance or posted balances",
         "net spot demand"
+      ],
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027"
       ]
     },
     {
@@ -158,6 +177,9 @@
         "RLUSD assets under custody",
         "direct mint/redeem through BNY already live",
         "XRP demand caused by RLUSD custody"
+      ],
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027"
       ]
     },
     {
@@ -172,6 +194,9 @@
         "XRP custody balances attributable to Ripple Prime",
         "execution volume",
         "collateral utilization"
+      ],
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027"
       ]
     },
     {
@@ -187,6 +212,9 @@
         "mint/redeem volume",
         "cash settlement amounts",
         "XRP purchases"
+      ],
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027"
       ]
     },
     {
@@ -202,6 +230,11 @@
         "funded receivables",
         "investor allocations",
         "XRP collateral or bridge use"
+      ],
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027",
+        "ripple_c2fo_xrpl_instant_pay_20261027",
+        "c2fo_ripple_xrpl_instant_pay_20261027"
       ]
     },
     {
@@ -217,6 +250,11 @@
         "funded invoices",
         "capital-provider identities",
         "XRPL transaction volume"
+      ],
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027",
+        "ripple_c2fo_xrpl_instant_pay_20261027",
+        "c2fo_ripple_xrpl_instant_pay_20261027"
       ]
     },
     {
@@ -240,6 +278,10 @@
         "XRP bridge-asset use",
         "XRP collateral",
         "open-market XRP purchases"
+      ],
+      "source_ids": [
+        "ripple_c2fo_xrpl_instant_pay_20261027",
+        "c2fo_ripple_xrpl_instant_pay_20261027"
       ]
     },
     {
@@ -255,6 +297,9 @@
         "XRP custody under this announcement",
         "XRP collateral",
         "LMAX collateral mirroring already live"
+      ],
+      "source_ids": [
+        "standard_chartered_rlusd_xrpl_custody_lmax_collateral_20261012"
       ]
     },
     {
@@ -276,6 +321,9 @@
         "production collateral acceptance",
         "collateral balances",
         "XRP collateral"
+      ],
+      "source_ids": [
+        "standard_chartered_rlusd_xrpl_custody_lmax_collateral_20261012"
       ]
     },
     {
@@ -294,6 +342,9 @@
         "Coinbase is RLUSD issuer",
         "Coinbase Global Exchange collateral was live at launch",
         "RLUSD distribution proves XRP buying"
+      ],
+      "source_ids": [
+        "ripple_coinbase_rlusd_distribution_20261028"
       ]
     },
     {
@@ -313,6 +364,27 @@
         "XRPL settlement production volume",
         "XRP bridge use",
         "XRP collateral or spot purchases"
+      ],
+      "source_ids": [
+        "ripple_robinhood_rlusd_institutional_settlement_20261027"
+      ]
+    },
+    {
+      "id": "bny_primary_rlusd_reserve_custody",
+      "from": "BNY",
+      "to": "RLUSD segregated reserve assets",
+      "relationship": "primary reserve custody",
+      "status": "EXISTING_ROLE_REAFFIRMED_BY_BNY_2026_10_27",
+      "announcement_date": "2025-07-09",
+      "instrument": "RLUSD reserves",
+      "source_ids": [
+        "ripple_bny_rlusd_primary_reserve_custody_20250709",
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027"
+      ],
+      "not_established": [
+        "native XRP custody under the 2025 reserve appointment",
+        "XRP collateral",
+        "reserve amounts held specifically in XRP"
       ]
     }
   ],
@@ -400,7 +472,7 @@
       ]
     },
     {
-      "id": "bn y_collateral_network_may_expand_but_xrp_not_established",
+      "id": "bny_collateral_network_may_expand_but_xrp_not_established",
       "claim": "BNY/Ripple's broader collateral and tokenized-asset language may precede future XRP collateral workflows.",
       "support": [
         "BNY and Ripple describe payments, liquidity, collateral and securities as target areas for future market infrastructure."
@@ -453,5 +525,56 @@
     "Inspect XRPL transaction types and issuer/market-maker wallets for attributable RLUSD settlement; separately quantify XRP fees/reserve requirements and any bridge-asset usage.",
     "Verify whether any future collateral schedule explicitly names native XRP; do not infer from RLUSD collateral or general BNY collateral language.",
     "Capture original HTTP bytes, SHA-256 hashes, exact retrieval timestamps and independent timestamp anchors before feature admission."
+  ],
+  "event_timeline": [
+    {
+      "event_date": "2025-07-09",
+      "event": "Ripple selected BNY as primary custodian for RLUSD reserves.",
+      "source_ids": [
+        "ripple_bny_rlusd_primary_reserve_custody_20250709"
+      ],
+      "classification": "ANNOUNCED_RESERVE_CUSTODY_ROLE"
+    },
+    {
+      "event_date": "2026-10-12",
+      "event": "Standard Chartered announced live institutional custody for RLUSD on XRPL and a planned LMAX collateral-mirroring integration.",
+      "source_ids": [
+        "standard_chartered_rlusd_xrpl_custody_lmax_collateral_20261012"
+      ],
+      "classification": "CUSTODY_LIVE_REPORTED_COLLATERAL_PLANNED"
+    },
+    {
+      "event_date": "2026-10-27",
+      "event": "BNY announced institutional custody support for native XRP and RLUSD, plus future mint/redeem and exploratory tokenized trade-finance work with Ripple/C2FO.",
+      "source_ids": [
+        "bny_ripple_xrp_rlusd_custody_trade_finance_20261027"
+      ],
+      "classification": "CUSTODY_CAPABILITY_LIVE_REPORTED_FUTURE_WORK_NOT_LIVE"
+    },
+    {
+      "event_date": "2026-10-27",
+      "event": "Ripple and C2FO announced the XRPL/RLUSD C2FO Instant Pay initiative with participating capital providers and a waitlist.",
+      "source_ids": [
+        "ripple_c2fo_xrpl_instant_pay_20261027",
+        "c2fo_ripple_xrpl_instant_pay_20261027"
+      ],
+      "classification": "ANNOUNCED_WAITLIST_NO_PRODUCTION_VOLUME_VERIFIED"
+    },
+    {
+      "event_date": "2026-10-27",
+      "event": "Ripple and Robinhood announced RLUSD distribution and intended institutional settlement on XRPL.",
+      "source_ids": [
+        "ripple_robinhood_rlusd_institutional_settlement_20261027"
+      ],
+      "classification": "ANNOUNCED_WITHOUT_XRPL_VOLUME"
+    },
+    {
+      "event_date": "2026-10-28",
+      "event": "Ripple and Coinbase announced RLUSD availability on Prime, Exchange and Retail across XRPL, Base and Ethereum; Global Exchange collateral was future at launch.",
+      "source_ids": [
+        "ripple_coinbase_rlusd_distribution_20261028"
+      ],
+      "classification": "DISTRIBUTION_LIVE_REPORTED_COLLATERAL_FUTURE"
+    }
   ]
 }
