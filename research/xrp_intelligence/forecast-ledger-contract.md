@@ -14,7 +14,7 @@ A readiness report is not trusted because it contains self-declared `PASS` field
 - `evaluator_id` matching a configured trusted `key_id`, plus a non-empty `evaluator_version`.
 - SHA-256 identifiers for the evaluation code and the independently produced evaluation artifact.
 - An `evaluator_attestation` object with exactly `scheme`, `key_id`, `signed_payload_sha256`, `signature_base64` and `attested_at_utc`.
-- An Ed25519 signature over the domain-separated SHA-256 digest of canonical JSON for the complete readiness report with only `evaluator_attestation` removed.
+- An Ed25519 signature over the domain-separated SHA-256 digest of canonical JSON containing the complete readiness report without `evaluator_attestation` plus the attestation's `scheme`, `key_id` and `attested_at_utc` metadata. The signature and its digest are excluded from the signed payload, so the evaluator identity and attestation time cannot be changed after signing.
 - An attestation time no earlier than evaluation completion and no later than the ledger's actual report-registration receipt time.
 
 The trust store is supplied through the `BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON` environment variable as a JSON object mapping evaluator key IDs to base64-encoded 32-byte Ed25519 public keys. The private signing key must remain with an independently operated evaluator and must never be committed to this repository or exposed to the model/training workflow. Key provisioning, evaluator independence and the evaluator's reproducible execution pipeline are not yet configured or verified. With no trusted key configured, readiness registration and forecast issuance are rejected. Test-only signing keys exist only in the test module and do not populate the production trust store.
