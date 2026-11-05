@@ -7,7 +7,9 @@ time, so they cannot leak into earlier point-in-time cutoffs.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
+import io
 from email.utils import parsedate_to_datetime
 import json
 import math
@@ -25,8 +27,8 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.5"
-PARSER_VERSION = "xrp-public-market-v3.5"
+ADAPTER_VERSION = "xrp-public-market-v3.6"
+PARSER_VERSION = "xrp-public-market-v3.6"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -44,6 +46,7 @@ ENDPOINTS = (
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
     ("binance_spot_depth", "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100"),
     ("xrp_etf_flows_aggregator", "https://xrp-insights.com/data/xrp-etf-flows.json"),
+    ("xrp_etf_flows_csv", "https://xrp-insights.com/data/xrp-etf-flows.csv"),
     ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
     ("xrp_etf_bitwise_issuer_page", "https://bitxrpetf.com/"),
     ("xrp_etf_grayscale_gxrp_issuer_page", "https://etfs.grayscale.com/gxrp"),
@@ -202,6 +205,44 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
     except (UnicodeDecodeError, ValueError):
         raise XRPIngestionError(f"response is not valid JSON for {source_id}") from None
     return {"raw_bytes": raw, "payload": payload, "http_date": response.headers.get("Date")}
+
+
+def fetch_public_csv(source_id: str, url: str) -> dict[str, Any]:
+    """Capture an allowlisted public CSV response without credentials or redirects."""
+    parsed = urlsplit(url)
+    if parsed.scheme != "https" or parsed.hostname not in ALLOWED_HOSTS:
+        raise XRPIngestionError("source URL is not an allowlisted public HTTPS endpoint")
+    request = Request(
+        url,
+        headers={
+            "Accept": "text/csv",
+            "User-Agent": "Barrot-XRP-Public-Ingestion/1.0",
+            "Cache-Control": "no-cache",
+        },
+    )
+    try:
+        with _open_public_request(request, timeout=15) as response:
+            final_url = urlsplit(response.geturl())
+            if final_url.scheme != "https" or final_url.hostname not in ALLOWED_HOSTS:
+                raise XRPIngestionError("public fetch redirected outside allowlisted HTTPS hosts")
+            content_type = response.headers.get("Content-Type", "").lower()
+            if not content_type.startswith("text/csv"):
+                raise XRPIngestionError(f"response is not CSV for {source_id}")
+            raw = response.read(MAX_RESPONSE_BYTES + 1)
+            http_date = response.headers.get("Date")
+    except XRPIngestionError:
+        raise
+    except Exception:
+        raise XRPIngestionError(f"public fetch failed for {source_id}") from None
+    if not raw or len(raw) > MAX_RESPONSE_BYTES:
+        raise XRPIngestionError(f"response size is invalid for {source_id}")
+    try:
+        csv_text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        raise XRPIngestionError(f"response is not valid UTF-8 CSV for {source_id}") from None
+    if not csv_text.strip():
+        raise XRPIngestionError(f"CSV response is empty for {source_id}")
+    return {"raw_bytes": raw, "payload": {"csv_text": csv_text}, "http_date": http_date}
 
 
 
@@ -1324,6 +1365,173 @@ def _raw_only_xrp_insights_etf_flows(payload: Any, *, captured: datetime, **_kwa
 
 
 
+def _raw_only_xrp_insights_etf_csv(
+    payload: Any,
+    *,
+    captured: datetime,
+    metadata_payload: Any = None,
+    **_kwargs,
+):
+    """Validate XRP Insights CSV rows and retain them as research-only observations."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("csv_text"), str):
+        raise XRPIngestionError("XRP Insights ETF CSV response must contain csv_text")
+    if not isinstance(metadata_payload, Mapping):
+        raise XRPIngestionError("XRP Insights CSV metadata envelope is unavailable")
+    _raw_only_xrp_insights_etf_flows(metadata_payload, captured=captured)
+    metadata = metadata_payload["metadata"]
+    expected_columns = [
+        item.get("name") for item in metadata_payload.get("columns", [])
+        if isinstance(item, Mapping)
+    ]
+    try:
+        reader = csv.DictReader(io.StringIO(payload["csv_text"], newline=""))
+        if reader.fieldnames != expected_columns:
+            raise XRPIngestionError("XRP Insights CSV header does not match its metadata column registry")
+        rows = list(reader)
+    except csv.Error:
+        raise XRPIngestionError("XRP Insights CSV could not be parsed") from None
+    coverage = metadata.get("coverage", {})
+    if len(rows) != coverage.get("rows"):
+        raise XRPIngestionError("XRP Insights CSV row count does not match metadata coverage")
+    if not rows or len(rows) > 10000:
+        raise XRPIngestionError("XRP Insights CSV row count is outside the supported range")
+
+    fund_registry = {
+        item["ticker"]: item["issuer"]
+        for item in metadata_payload.get("funds", [])
+        if isinstance(item, Mapping)
+        and isinstance(item.get("ticker"), str)
+        and isinstance(item.get("issuer"), str)
+    }
+    if not fund_registry:
+        raise XRPIngestionError("XRP Insights CSV fund registry is empty")
+
+    direct_spot_tickers = {"XRPC", "XRP", "XRPZ", "TOXR"}
+    valid_flow_statuses = {"computed", "initial", "excluded"}
+    valid_row_statuses = {"settled", "provisional", "reconstructed"}
+    seen = set()
+    normalized_rows = []
+    row_dates = []
+    settled_dates = []
+    provisional_dates = []
+    capture_date = captured.astimezone(timezone.utc).date()
+
+    for row in rows:
+        if None in row or any(value is None for value in row.values()):
+            raise XRPIngestionError("XRP Insights CSV contains an incomplete or over-wide row")
+        date_text = row.get("date", "")
+        try:
+            row_date = datetime.strptime(date_text, "%Y-%m-%d").date()
+        except (TypeError, ValueError):
+            raise XRPIngestionError("XRP Insights CSV row date is invalid") from None
+        if row_date > capture_date:
+            raise XRPIngestionError("XRP Insights CSV contains a row dated after capture time")
+        ticker = row.get("ticker", "")
+        if ticker not in fund_registry or row.get("issuer") != fund_registry[ticker]:
+            raise XRPIngestionError("XRP Insights CSV ticker/issuer does not match the fund registry")
+        identity = (date_text, ticker)
+        if identity in seen:
+            raise XRPIngestionError("XRP Insights CSV contains a duplicate date/ticker row")
+        seen.add(identity)
+
+        flow_status = row.get("flow_status", "")
+        row_status = row.get("row_status", "")
+        if flow_status not in valid_flow_statuses or row_status not in valid_row_statuses:
+            raise XRPIngestionError("XRP Insights CSV contains an unknown flow or row status")
+
+        holdings = _number(row.get("xrp_holdings"), "XRP Insights xrp_holdings")
+        aum_usd = _number(row.get("aum_usd"), "XRP Insights aum_usd")
+        close_price_usd = _number(row.get("close_price_usd"), "XRP Insights close_price_usd", allow_zero=False)
+        volume_usd = _number(row.get("volume_usd"), "XRP Insights volume_usd")
+        shares_text = row.get("volume_shares", "").strip()
+        try:
+            volume_shares = int(shares_text)
+        except (TypeError, ValueError, OverflowError):
+            raise XRPIngestionError("XRP Insights volume_shares must be a non-negative integer") from None
+        if volume_shares < 0 or str(volume_shares) != shares_text:
+            raise XRPIngestionError("XRP Insights volume_shares must be a non-negative integer")
+        expected_volume_usd = volume_shares * close_price_usd
+        if abs(volume_usd - expected_volume_usd) > max(0.02, expected_volume_usd * 1e-6):
+            raise XRPIngestionError("XRP Insights volume_usd does not reconcile to shares times close")
+
+        flow_text = row.get("xrp_flow", "").strip()
+        if flow_status == "computed":
+            if not flow_text:
+                raise XRPIngestionError("XRP Insights computed flow is blank")
+            xrp_flow = _signed_number(flow_text, "XRP Insights xrp_flow")
+        else:
+            if flow_text:
+                raise XRPIngestionError("XRP Insights non-computed flow must be blank")
+            xrp_flow = None
+
+        if ticker == "BITW":
+            fund_class = "multi_asset_index_sleeve"
+        elif ticker == "XRPR":
+            fund_class = "mixed_direct_and_indirect_etp_exposure"
+        else:
+            fund_class = "spot_xrp_fund"
+
+        if ticker == "BITW":
+            eligibility_reason = "multi_asset_index_sleeve_not_pure_spot_xrp_fund"
+        elif ticker == "XRPR":
+            eligibility_reason = "mixed_direct_and_indirect_etp_exposure"
+        elif flow_status == "initial":
+            eligibility_reason = "starting_balance_not_a_flow"
+        elif flow_status == "excluded":
+            eligibility_reason = "flow_withheld_due_to_known_capture_gap"
+        elif row_status == "provisional":
+            eligibility_reason = "provisional_row_may_be_revised"
+        elif row_status == "reconstructed":
+            eligibility_reason = "reconstructed_daily_split_is_an_estimate"
+        else:
+            eligibility_reason = "holdings_delta_is_not_an_issuer_ap_cash_flow_report"
+
+        research_eligible = (
+            ticker in direct_spot_tickers
+            and flow_status == "computed"
+            and row_status == "settled"
+        )
+        normalized_rows.append(
+            {
+                "date": date_text,
+                "ticker": ticker,
+                "issuer": row["issuer"],
+                "fund_class": fund_class,
+                "xrp_holdings": holdings,
+                "xrp_flow": xrp_flow,
+                "flow_status": flow_status,
+                "aum_usd": aum_usd,
+                "close_price_usd": close_price_usd,
+                "volume_shares": volume_shares,
+                "volume_usd": volume_usd,
+                "row_status": row_status,
+                "research_eligible": research_eligible,
+                "research_eligibility_reason": eligibility_reason,
+                "model_eligible": False,
+            }
+        )
+        row_dates.append(row_date)
+        if row_status == "settled":
+            settled_dates.append(row_date)
+        elif row_status == "provisional":
+            provisional_dates.append(row_date)
+
+    if not settled_dates or max(settled_dates).isoformat() != metadata.get("data_as_of"):
+        raise XRPIngestionError("XRP Insights data_as_of does not match the latest settled CSV row")
+    if max(row_dates).isoformat() != metadata.get("latest_row_date"):
+        raise XRPIngestionError("XRP Insights latest_row_date does not match the CSV rows")
+    expected_provisional = max(provisional_dates).isoformat() if provisional_dates else None
+    if metadata.get("provisional_row_date") != expected_provisional:
+        raise XRPIngestionError("XRP Insights provisional_row_date does not match the CSV rows")
+
+    return (
+        normalized_rows,
+        None,
+        False,
+        "schema_validated_etf_rows_preserved_as_research_only_until_primary_issuer_receipts_and_ap_cash_flow_semantics_are_verified",
+    )
+
+
 def _raw_only_xrpr_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
     """Validate REX issuer-page identity while retaining the original HTML raw-only."""
     if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
@@ -1390,6 +1598,7 @@ PARSERS = {
     "kraken_spot_depth": _parse_kraken_depth,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
+    "xrp_etf_flows_csv": _raw_only_xrp_insights_etf_csv,
     "xrp_etf_xrpr_issuer_page": _raw_only_xrpr_issuer_page,
     "xrp_etf_bitwise_issuer_page": _raw_only_bitwise_xrp_etf_page,
     "xrp_etf_grayscale_gxrp_issuer_page": _raw_only_grayscale_gxrp_issuer_page,
@@ -1566,6 +1775,8 @@ def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
         return fetch_public_rpc(source_id, url)
     if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page"}:
         return fetch_public_html(source_id, url)
+    if source_id == "xrp_etf_flows_csv":
+        return fetch_public_csv(source_id, url)
     return fetch_public_json(source_id, url)
 
 
@@ -1584,6 +1795,8 @@ def run_ingestion(
     records = []
     failures = []
     raw_only = []
+    research_only_observations = []
+    xrp_insights_metadata_payload: Mapping[str, Any] | None = None
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
 
     for source_id, url in ENDPOINTS:
@@ -1605,10 +1818,30 @@ def run_ingestion(
             }
             if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
                 parser_kwargs["http_date"] = response.get("http_date")
+            if source_id == "xrp_etf_flows_csv":
+                parser_kwargs["metadata_payload"] = xrp_insights_metadata_payload
             parsed_records, source_as_of, source_eligible, reason = parser(
                 payload,
                 **parser_kwargs,
             )
+            if source_id == "xrp_etf_flows_aggregator":
+                xrp_insights_metadata_payload = payload
+            if source_id == "xrp_etf_flows_csv":
+                metadata = (xrp_insights_metadata_payload or {}).get("metadata", {})
+                for observation in parsed_records:
+                    research_only_observations.append(
+                        {
+                            **observation,
+                            "source_id": source_id,
+                            "source_uri": url,
+                            "raw_content_sha256": digest,
+                            "captured_at_utc": captured_s,
+                            "metadata_generated_at_utc": metadata.get("generated_at"),
+                            "data_as_of": metadata.get("data_as_of"),
+                        }
+                    )
+            else:
+                records.extend(parsed_records)
             if source_id in XRPL_NODE_SOURCES and source_as_of is not None:
                 xrpl_node_payloads[source_id] = payload
         except Exception as exc:
@@ -1654,7 +1887,6 @@ def run_ingestion(
             source_http_date=response.get("http_date"),
         )
         receipts.append(receipt)
-        records.extend(parsed_records)
         if reason and not source_eligible:
             raw_only.append({"source_id": source_id, "reason": reason})
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
@@ -1731,6 +1963,17 @@ def run_ingestion(
     _write_json(output / "receipt_manifest.json", receipts)
     _write_json(output / "source_failures.json", failures)
     _write_json(output / "raw_only_sources.json", raw_only)
+    _write_json(
+        output / "research_only_observations.json",
+        {
+            "schema_version": 1,
+            "artifact_type": "xrp_research_only_observations",
+            "captured_at_utc": captured_s,
+            "observation_count": len(research_only_observations),
+            "model_eligible": False,
+            "observations": research_only_observations,
+        },
+    )
     summary = {
         "schema_version": 1,
         "artifact_type": "xrp_public_market_ingestion_run",
@@ -1743,6 +1986,8 @@ def run_ingestion(
         "source_receipt_count": len(receipts),
         "source_failure_count": len(failures),
         "raw_only_source_count": len(raw_only),
+        "research_only_observation_count": len(research_only_observations),
+        "research_only_observations_path": "research_only_observations.json",
         "xrpl_node_reconciliation": xrpl_node_reconciliation,
         "input_feature_record_count": len(records),
         "delta_feature_record_count": len(delta_records),
@@ -1781,6 +2026,7 @@ def run_ingestion(
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
             "The cumulative SQLite feature store is persisted through GitHub Actions cache plus a daily feature artifact backup retained 90 days. Cache eviction can interrupt continuity if no unexpired backup is available; automatic rebuild from raw artifacts is not yet implemented.",
             "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
+            "XRP Insights ETF metadata and CSV rows are captured with SHA-256 receipts; CSV rows are schema-validated into a separate research-only artifact and never promoted to model features until primary issuer receipts and AP cash-flow semantics are verified.",
             "Bitwise XRP ETF, Grayscale GXRP and REX XRPR primary issuer pages are captured as SHA-256-receipted raw-only HTML; holdings are not parsed into features until page-vintage and parser validation are implemented.",
             "The historical evaluator uses naive, momentum, mean-reversion and volatility baselines. It does not issue a live forecast; probability calibration is diagnostic only, and shadow evaluation and drift monitoring are not yet implemented.",
             "XRPL server_info is captured from two public non-commercial node operators; model admission requires an exact validated-ledger index/hash match. These nodes corroborate the same ledger and do not count as independent economic sources.",

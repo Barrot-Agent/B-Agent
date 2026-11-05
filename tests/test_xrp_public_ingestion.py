@@ -14,6 +14,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     _walk_forward_report,
     XRPIngestionError,
     fetch_public_json,
+    fetch_public_csv,
     fetch_public_html,
     fetch_public_rpc,
     _open_public_request,
@@ -145,10 +146,34 @@ def _fake_fetcher(captured: datetime):
                     "publisher": "XRP Insights",
                     "generated_at": captured.isoformat().replace("+00:00", "Z"),
                     "data_as_of": "2026-11-03",
-                    "coverage": {"rows": 1583},
+                    "latest_row_date": "2026-11-03",
+                    "provisional_row_date": None,
+                    "coverage": {"rows": 3},
                 },
-                "funds": [{"ticker": "XRP", "issuer": "Bitwise"}],
-                "columns": [{"name": "xrp_flow", "unit": "XRP"}],
+                "funds": [
+                    {"ticker": "XRP", "issuer": "Bitwise"},
+                    {"ticker": "BITW", "issuer": "Bitwise"},
+                    {"ticker": "XRPC", "issuer": "Canary Capital"},
+                ],
+                "columns": [
+                    {"name": "date"}, {"name": "ticker"}, {"name": "issuer"},
+                    {"name": "xrp_holdings"}, {"name": "xrp_flow"}, {"name": "flow_status"},
+                    {"name": "aum_usd"}, {"name": "close_price_usd"}, {"name": "volume_shares"},
+                    {"name": "volume_usd"}, {"name": "row_status"},
+                ],
+            }
+        elif source_id == "xrp_etf_flows_csv":
+            csv_text = (
+                "date,ticker,issuer,xrp_holdings,xrp_flow,flow_status,aum_usd,"
+                "close_price_usd,volume_shares,volume_usd,row_status\\n"
+                "2026-11-02,XRP,Bitwise,1000,-10,computed,1290,1.29,100,129,settled\\n"
+                "2026-11-03,BITW,Bitwise,200,5,computed,258,1.29,50,64.5,settled\\n"
+                "2026-11-03,XRPC,Canary Capital,100,,initial,129,1.29,10,12.9,settled\\n"
+            )
+            return {
+                "raw_bytes": csv_text.encode("utf-8"),
+                "payload": {"csv_text": csv_text},
+                "http_date": http_date,
             }
         elif source_id in {
             "xrp_etf_xrpr_issuer_page",
@@ -241,7 +266,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 18, (
+    assert summary["source_receipt_count"] == 19, (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -262,8 +287,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.5"
-    assert summary["parser_version"] == "xrp-public-market-v3.5"
+    assert summary["adapter_version"] == "xrp-public-market-v3.6"
+    assert summary["parser_version"] == "xrp-public-market-v3.6"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -290,6 +315,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
     assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_aggregator" for item in raw_only)
+    assert any(item["source_id"] == "xrp_etf_flows_csv" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_xrpr_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_bitwise_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_grayscale_gxrp_issuer_page" for item in raw_only)
@@ -297,6 +323,19 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     manifest = {item["source_id"]: item for item in receipts}
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
+    assert manifest["xrp_etf_flows_csv"]["model_eligible_source"] is False
+    assert manifest["xrp_etf_flows_csv"]["source_data_as_of_utc"] is None
+    assert len(manifest["xrp_etf_flows_csv"]["raw_content_sha256"]) == 64
+    research_only = json.loads((tmp_path / "run" / "research_only_observations.json").read_text(encoding="utf-8"))
+    assert research_only["model_eligible"] is False
+    assert research_only["observation_count"] == 3
+    direct_spot = next(row for row in research_only["observations"] if row["ticker"] == "XRP")
+    index_sleeve = next(row for row in research_only["observations"] if row["ticker"] == "BITW")
+    starting_balance = next(row for row in research_only["observations"] if row["ticker"] == "XRPC")
+    assert direct_spot["research_eligible"] is True and direct_spot["model_eligible"] is False
+    assert index_sleeve["research_eligible"] is False and index_sleeve["fund_class"] == "multi_asset_index_sleeve"
+    assert starting_balance["research_eligibility_reason"] == "starting_balance_not_a_flow"
+    assert not any("etf" in item["feature_id"] for item in snapshot["records"])
     assert manifest["xrp_etf_xrpr_issuer_page"]["model_eligible_source"] is False
     assert manifest["xrp_etf_xrpr_issuer_page"]["source_data_as_of_utc"] is None
     for source_id in ("xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page"):
@@ -968,3 +1007,109 @@ def test_parser_failure_preserves_exact_raw_bytes_as_ineligible_receipt(tmp_path
     assert failures[0]["raw_content_sha256"] == receipt["raw_content_sha256"]
     assert raw_only[0]["receipt_id"] == receipt["receipt_id"]
 
+
+
+def test_xrp_insights_csv_is_schema_validated_and_kept_research_only():
+    captured = datetime(2026, 11, 5, 2, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    metadata = fetcher("xrp_etf_flows_aggregator", dict(ENDPOINTS)["xrp_etf_flows_aggregator"])["payload"]
+    response = fetcher("xrp_etf_flows_csv", dict(ENDPOINTS)["xrp_etf_flows_csv"])
+    records, source_as_of, eligible, reason = PARSERS["xrp_etf_flows_csv"](
+        response["payload"],
+        source_id="xrp_etf_flows_csv",
+        url=dict(ENDPOINTS)["xrp_etf_flows_csv"],
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+        metadata_payload=metadata,
+    )
+    assert len(records) == 3
+    assert source_as_of is None
+    assert eligible is False
+    assert "research_only" in reason
+    direct = next(row for row in records if row["ticker"] == "XRP")
+    index_sleeve = next(row for row in records if row["ticker"] == "BITW")
+    initial = next(row for row in records if row["ticker"] == "XRPC")
+    assert direct["xrp_flow"] == -10
+    assert direct["research_eligible"] is True
+    assert direct["model_eligible"] is False
+    assert index_sleeve["research_eligible"] is False
+    assert index_sleeve["fund_class"] == "multi_asset_index_sleeve"
+    assert initial["xrp_flow"] is None
+    assert initial["research_eligibility_reason"] == "starting_balance_not_a_flow"
+
+
+def test_xrp_insights_csv_rejects_header_or_row_count_mismatch():
+    captured = datetime(2026, 11, 5, 2, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    metadata = fetcher("xrp_etf_flows_aggregator", dict(ENDPOINTS)["xrp_etf_flows_aggregator"])["payload"]
+    response = fetcher("xrp_etf_flows_csv", dict(ENDPOINTS)["xrp_etf_flows_csv"])
+    parser = PARSERS["xrp_etf_flows_csv"]
+    bad_header = {"csv_text": response["payload"]["csv_text"].replace("date,ticker", "day,ticker", 1)}
+    with pytest.raises(XRPIngestionError, match="header"):
+        parser(
+            bad_header,
+            source_id="xrp_etf_flows_csv",
+            url=dict(ENDPOINTS)["xrp_etf_flows_csv"],
+            digest="a" * 64,
+            captured=captured,
+            metadata_payload=metadata,
+        )
+    bad_metadata = json.loads(json.dumps(metadata))
+    bad_metadata["metadata"]["coverage"]["rows"] = 4
+    with pytest.raises(XRPIngestionError, match="row count"):
+        parser(
+            response["payload"],
+            source_id="xrp_etf_flows_csv",
+            url=dict(ENDPOINTS)["xrp_etf_flows_csv"],
+            digest="b" * 64,
+            captured=captured,
+            metadata_payload=bad_metadata,
+        )
+
+
+def test_xrp_insights_csv_rejects_future_duplicate_and_invalid_flow_rows():
+    captured = datetime(2026, 11, 5, 2, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    metadata = fetcher("xrp_etf_flows_aggregator", dict(ENDPOINTS)["xrp_etf_flows_aggregator"])["payload"]
+    response = fetcher("xrp_etf_flows_csv", dict(ENDPOINTS)["xrp_etf_flows_csv"])
+    parser = PARSERS["xrp_etf_flows_csv"]
+    text = response["payload"]["csv_text"]
+    future = {"csv_text": text.replace("2026-11-03,BITW", "2026-11-06,BITW", 1)}
+    with pytest.raises(XRPIngestionError, match="after capture"):
+        parser(future, source_id="xrp_etf_flows_csv", url=dict(ENDPOINTS)["xrp_etf_flows_csv"], digest="c" * 64, captured=captured, metadata_payload=metadata)
+    duplicate = {"csv_text": text.replace("2026-11-03,BITW", "2026-11-02,XRP", 1)}
+    with pytest.raises(XRPIngestionError, match="duplicate"):
+        parser(duplicate, source_id="xrp_etf_flows_csv", url=dict(ENDPOINTS)["xrp_etf_flows_csv"], digest="d" * 64, captured=captured, metadata_payload=metadata)
+    invalid_flow = {"csv_text": text.replace("2026-11-02,XRP,Bitwise,1000,-10,computed", "2026-11-02,XRP,Bitwise,1000,,computed", 1)}
+    with pytest.raises(XRPIngestionError, match="computed flow is blank"):
+        parser(invalid_flow, source_id="xrp_etf_flows_csv", url=dict(ENDPOINTS)["xrp_etf_flows_csv"], digest="e" * 64, captured=captured, metadata_payload=metadata)
+
+
+def test_fetch_public_csv_preserves_exact_bytes_and_requires_csv_content_type(monkeypatch):
+    raw = b"date,ticker\\n2026-11-03,XRP\\n"
+
+    class Response:
+        def __init__(self, content_type):
+            self.headers = {"Content-Type": content_type, "Date": "Thu, 05 Nov 2026 02:30:00 GMT"}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def geturl(self):
+            return "https://xrp-insights.com/data/xrp-etf-flows.csv"
+
+        def read(self, _limit):
+            return raw
+
+    monkeypatch.setattr("barrot_agent.evolution.xrp_public_ingestion._open_public_request", lambda *_args, **_kwargs: Response("text/csv; charset=utf-8"))
+    result = fetch_public_csv("xrp_etf_flows_csv", "https://xrp-insights.com/data/xrp-etf-flows.csv")
+    assert result["raw_bytes"] == raw
+    assert result["payload"]["csv_text"] == raw.decode("utf-8")
+    assert result["http_date"] == "Thu, 05 Nov 2026 02:30:00 GMT"
+
+    monkeypatch.setattr("barrot_agent.evolution.xrp_public_ingestion._open_public_request", lambda *_args, **_kwargs: Response("application/json"))
+    with pytest.raises(XRPIngestionError, match="not CSV"):
+        fetch_public_csv("xrp_etf_flows_csv", "https://xrp-insights.com/data/xrp-etf-flows.csv")
