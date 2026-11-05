@@ -101,7 +101,9 @@ def test_sources_have_dates_and_are_not_claimed_as_byte_complete_receipts():
     assert next(x for x in data["sources"] if x["id"] == "SBI_CIRCLE_JV_20250822")["url"].endswith("0822_15679.html")
     assert {"SBI_USDC_REGISTRATION_20250304", "SBI_USDC_BETA_20250312", "SBI_USDC_PUBLIC_20250325"}.issubset(source_ids)
 
-\n\ndef test_sbi_xrp_shareholder_benefits_are_distribution_not_verified_spot_purchases():
+
+
+def test_sbi_xrp_shareholder_benefits_are_distribution_not_verified_spot_purchases():
     data = _load()
     distribution = data["xrp_distribution_ledger"][0]
     assert distribution["asset"] == "XRP"
