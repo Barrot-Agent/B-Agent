@@ -128,9 +128,17 @@ def test_backfilled_history_supports_training_only_at_or_after_its_capture_time(
     )
     assert result["status"] == "SCORED"
     assert result["forecast_count"] == 4
-    assert {item["data_cutoff_utc"] for item in result["forecasts"]} == {_stamp(capture)}
+    parsed_cutoffs = {
+        datetime.fromisoformat(item["data_cutoff_utc"].replace("Z", "+00:00"))
+        for item in result["forecasts"]
+    }
+    assert parsed_cutoffs == {capture}
     assert all(item["assumptions"]["training_example_count"] == 23 for item in result["forecasts"])
-    assert all(item["outcome"]["outcome_event_time_utc"] == _stamp(BASE + timedelta(hours=24)) for item in result["forecasts"])
+    parsed_outcomes = {
+        datetime.fromisoformat(item["outcome"]["outcome_event_time_utc"].replace("Z", "+00:00"))
+        for item in result["forecasts"]
+    }
+    assert parsed_outcomes == {BASE + timedelta(hours=24)}
     assert all(item["live_forecast_issued"] is False for item in result["forecasts"])
 
 
