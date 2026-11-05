@@ -785,7 +785,7 @@ def _raw_only_xrp_insights_etf_flows(payload: Any, *, captured: datetime, **_kwa
     if generated_at > captured + timedelta(seconds=60):
         raise XRPIngestionError("XRP Insights generated_at is later than the capture clock")
     data_as_of = metadata.get("data_as_of")
-    if not isinstance(data_as_of, str) or not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", data_as_of):
+    if not isinstance(data_as_of, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", data_as_of):
         raise XRPIngestionError("XRP Insights data_as_of must be a date-only value")
     try:
         datetime.strptime(data_as_of, "%Y-%m-%d")
