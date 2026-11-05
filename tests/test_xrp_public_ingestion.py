@@ -1182,7 +1182,8 @@ def test_explicit_noncommercial_xrpl_research_capture_is_never_model_eligible(tm
     receipts = json.loads((tmp_path / "noncommercial-research" / "receipt_manifest.json").read_text(encoding="utf-8"))
     node_receipts = [item for item in receipts if item["source_id"] in XRPL_NODE_SOURCES]
     assert len(node_receipts) == 2
-    assert all(item["source_http_date"] == "Wed, 04 Nov 2026 12:29:55 GMT" for item in node_receipts)
+    expected_http_date = format_datetime(captured - timedelta(seconds=5), usegmt=True)
+    assert all(item["source_http_date"] == expected_http_date for item in node_receipts)
     assert all(item["model_eligible_source"] is False for item in node_receipts)
 
     snapshot = json.loads((tmp_path / "noncommercial-research" / "snapshot.json").read_text(encoding="utf-8"))
