@@ -3136,3 +3136,135 @@ The Kamilah/Camilla identity/video artifact remains bounded: first-person interv
 This follow-up changes only the durable handoff. #1640 code head remains `ccf014af9218feeeeb37e029edcf7ba251ccdc9f`; the documentation head at the time of this update is `386b2070b20e68978a027aef5964e9459b8584c4`. The prior exact-head CI, dependency audit and fail-closed gate all passed on the documentation head. This follow-up commit must receive its own exact-head CI and fail-closed verification.
 
 No forecast, merge, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+### Run 25 — primary issuer holdings, expanded ETF capture, and integration verification
+Recorded: 2026-11-05T05:16:00Z
+
+#### Integration-first repository refresh
+
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Complete main Git tree: 1,403 entries; response was not truncated.
+- Complete open-PR inventory: 370 open PRs, 354 drafts and 16 non-drafts.
+- No main merge occurred during this run.
+
+#### Exact-head integration state
+
+**PR #1640 — V3/core integration**
+
+- Current head: `d3181e5fb08f8b60513dcb2fdfbc651ee38eda9a`.
+- 163 commits ahead / 0 behind main; 73 changed files.
+- Core test job passed.
+- Full repository suite: 880 passed, 8 subtests passed.
+- Inclusive `barrot_agent` coverage: 53.43%, above the 50% floor.
+- Wheel build and packaged primary-mission verification passed.
+- Five-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed merge gate passed and explicitly reports merging disabled.
+
+Exact-head evidence:
+- Full CI: [41972503690](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972503690).
+- Dependency audit: [41972503750](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972503750).
+- Fail-closed gate: [41972503699](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972503699).
+
+A preceding exact head, `046640516d6110efb869e51b614f100c04ebe6db`, failed two tests because the Bitwise issuer page uses the phrase “Data as of” rather than “As of” and the expected receipt count therefore did not match the successful source captures. The parser was corrected to case-fold the official issuer-page markers. The current `d3181e5` head passed the entire repository suite; the previous failure is retained here rather than erased.
+
+**PR #1643 — XRP research archive**
+
+- Current head: `4b2129edc0aaa091d706badfcb4af45c00a51908`.
+- 131 commits ahead / 0 behind main; 112 changed files.
+- Full repository suite: 854 passed, 8 subtests passed.
+- Three new primary-issuer holdings/custody regression tests passed.
+- Fail-closed merge gate passed and explicitly disables automatic merging.
+- No dependency manifests changed.
+
+Exact-head evidence:
+- Full CI: [41972339983](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972339983).
+- Fail-closed gate: [41972340041](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972340041).
+
+The two integration branches have zero changed-path overlap. Both remain conflict-free relative to current main.
+
+#### XRP public ingestion extension on #1640
+
+The collector adapter/parser version is now `xrp-public-market-v3.2`. Its public endpoint registry contains 16 endpoints.
+
+New official issuer pages:
+- Bitwise XRP ETF: `https://bitxrpetf.com/`.
+- Grayscale GXRP: `https://etfs.grayscale.com/gxrp`.
+
+Both are allowlisted HTTPS sources, captured through the HTML fetch path, SHA-256-receipted at runtime, and retained **raw-only**. Their parsers validate issuer/fund/holdings markers case-insensitively. They do not emit features, because the page vintages and holdings parser have not been validated against durable byte-complete historical receipts. REX XRPR remains raw-only. The end-to-end test now expects 16 receipts and verifies all three issuer pages remain ineligible for feature admission.
+
+The new sources are on #1640, not main. The scheduled workflow has not run from main with these changes.
+
+#### Primary issuer holdings and custody reconciliation on #1643
+
+New append-only artifact:
+`research/xrp_intelligence/20261105T050700Z-primary-xrp-etf-holdings-and-custody-reconciliation.json`
+
+Regression test:
+`tests/test_xrp_research_20261105_primary_etf_holdings.py`
+
+Issuer-reported direct XRP balances:
+- Bitwise XRP ETF: 415,365,129.04 XRP, as of 2026-11-03.
+- Grayscale GXRP: 64,839,534.7913 XRP, as of 2026-11-04.
+- REX-Osprey XRPR: 19,885,382 XRP, as of 2026-11-03.
+
+The asynchronous direct-XRP subtotal is 500,090,045.8313 XRP. It is not a synchronized market-wide total, net inflow, or proof of spot purchases. XRPR separately reports 362,750 CoinShares XRP ETP shares; those shares are not XRP units and are not added to the subtotal.
+
+Custody roles are retained separately:
+- Bitwise names Coinbase Custody Trust Co., LLC as digital-asset custodian and BNY as trust custodian.
+- Grayscale names Coinbase Custody Trust Company and Anchorage Digital Bank N.A. as digital-asset custodians and BNY as fund administrator.
+- No Coinbase execution relationship, authorized-participant role, XRP purchase, or Ripple affiliation is inferred from those custody disclosures.
+
+The Bitwise page reports $540,564,755 net assets/AUM and $540,589,408.15 market value for XRP, a $24,653.15 difference; both values are preserved. Grayscale GAAP and non-GAAP AUM values are also retained separately.
+
+Primary source pages are issuer disclosures, but the research artifact uses web-rendered extracts rather than exact HTTP response bytes. Its three source records have null raw SHA-256 values and are model-ineligible. The collector extension on #1640 can capture future exact HTML bytes, but it has not yet run on main and does not backfill the historical page vintages. No ETF holdings observation from this artifact is admitted as a feature.
+
+#### Institutional relationship context
+
+- BNY's October 27, 2026 announcement says it already serves as primary reserve custodian for RLUSD and has a custody relationship with Ripple Prime; BNY's Digital Asset Custody platform now supports XRP and RLUSD. This is distinct from BNY's Bitwise trust-custodian and Grayscale administrator roles.
+- Ripple and Coinbase's October 28, 2026 announcement places RLUSD on Coinbase Prime, Coinbase Exchange and Coinbase Retail. The announcement says collateral support for Coinbase Global Exchange customers will follow; it is not recorded as already live.
+- SBI VC Trade's June 24, 2026 RLUSD launch is a separate Japan distribution relationship under the SBI Group/Ripple partnership. It does not establish a direct Coinbase-SBI contract.
+- These are distribution/custody relationships, not proof of XRP spot demand. RLUSD is Ripple's stablecoin; USDC remains Circle's stablecoin.
+
+#### Nine-platform capability/authentication map
+
+- ChatGPT-to-GitHub repository access is operational and was used for this run.
+- GitHub shows prior Copilot pull-request review comments on both integration PRs. A fresh request to `copilot-pull-request-reviewer` and `coderabbitai` was rejected with HTTP 422 because those accounts are not repository collaborators. No new independent review was obtained from that request.
+- Claude, Grok, Gemini, Hugging Face, Kaggle and Databricks are not verified as authenticated persistent data flows in this run. Copilot review activity is not equivalent to a separate Copilot connector.
+- The latest main Cross Analysis scheduled run, [41970382739](https://github.com/Barrot-Agent/B-Agent/actions/runs/41970382739), succeeded.
+- Main Pillars Consistency Check [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956) failed because GitHub App ID/private key/installation ID are missing, Databricks returned HTTP 403, and the Hugging Face Space reported BUILD_ERROR. Its output is not treated as proof that those integrations are live.
+
+#### Open-PR backlog classification
+
+Complete inventory remains 370 open (354 drafts, 16 non-drafts).
+
+- **Active integration:** #1640 V3/core and #1643 XRP research.
+- **Exact ancestor/superseded candidate:** #1642; preserve until #1640 is merged and verified on main.
+- **Dependency/action superseded candidates:** #1644–#1650; their 19 changed paths are represented in #1640. Preserve until successor content is verified on main.
+- **Older dependency superseded candidates:** #1254 and #1255; newer declarations are present in #1640. Preserve until main verification.
+- **Unique/unreviewed:** #1651 has nine changed paths and zero overlap with either integration PR. Preserve.
+- **Overlapping historical work:** #1317, #1318 and #1320 overlap #1640 paths; exact hunk/commit reconciliation remains incomplete. Preserve.
+- **Partially unique rendering work:** #1269 has eight unique paths and one shared CI path. Preserve.
+- **Unique security/containment draft:** #1615 has 13 unique paths and one shared path with #1640. Preserve its unique work.
+- No PRs were closed; no bulk closure occurred.
+
+#### Merge and safety decision
+
+- Both #1640 and #1643 have zero approving reviews. Their 22 and 14 existing review threads, respectively, are resolved.
+- GitHub reports main as protected, but the branch-protection endpoint returns HTTP 403. The only visible repository ruleset, `Fall Back`, is disabled; enforceable required approval/check settings cannot be independently verified.
+- GitHub Pages dynamic deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) succeeded after a prior main push on November 4. Authorization for another merge-triggered Pages deployment remains unresolved.
+- The PR gates pass while explicitly disabling automatic merging. No merge, force-push, PR closure, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+#### Prediction readiness and next action
+
+Forecast status remains `NOT_ISSUED`. The historical evaluator still lacks synchronized ETF creation/redemption, exchange-wallet-flow, collateral, stablecoin, custody, payment-rail, regulatory, macro and geopolitical feature vintages. The new issuer pages are raw-only and do not create a net-flow feature. Durable indefinite raw-source storage, independent timestamp anchoring, calibration, drift monitoring and shadow outcomes remain unfinished.
+
+Next:
+1. Obtain independent approving reviews and independently verify enforceable branch-protection settings.
+2. Resolve the Pages deployment side effect before any main merge.
+3. Merge #1640 only when every required approval, exact-head check and safety condition is satisfied; fetch main again, verify the merge commit/files and run main CI.
+4. Reconcile #1643 against the resulting main without rewriting history; rerun its exact-head full suite and fail-closed gate before merging.
+5. Close only exact superseded PRs after successor content is verified on main.
+6. Continue durable raw-source storage, issuer-vintage history, synchronized institutional/flow/collateral/payment datasets and leakage-safe chronological out-of-sample evaluation.
+
+This run's exact-head CI evidence above applies to the tested code heads. The handoff-only commit created by this entry must receive its own exact-head CI and fail-closed verification before it is described as verified.
