@@ -412,6 +412,21 @@
       "limitations": [
         "Issuer freeze controls apply to issued tokens, not native XRP; custodians may freeze assets they custody."
       ]
+    },
+    {
+      "id": "ap_north_korea_denial_binance_incident",
+      "publisher": "Associated Press",
+      "authority": "secondary reporting of official DPRK statement and US response",
+      "url": "https://apnews.com/article/01c9b80d938dd67c747e268c410f265d",
+      "published_date": "2026-11-03",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered AP article extract; original response bytes not retained",
+      "independence_group": "ap_geopolitical_reporting",
+      "model_eligible": false,
+      "limitations": [
+        "The denial is an official DPRK statement reported by AP, not forensic evidence.",
+        "AP also reported President Trump said investigators had not yet established whether North Korea was responsible."
+      ]
     }
   ],
   "market_snapshot": {
@@ -762,7 +777,27 @@
       "malicious access to internal wallet-signing service"
     ],
     "attack_chain_interpretation": "Binance reported no evidence of wallet private-key leakage. The disclosed chain is an endpoint, identity, credential, deployment-permission and signing-service compromise, not an XRPL consensus exploit or proof that an AI model itself was compromised.",
-    "native_xrp_freeze_rule": "Native XRP has no issuer and cannot be frozen by Ripple or another XRPL participant. Issued tokens such as RLUSD have issuer freeze controls; custodial exchanges can freeze assets held in their own custody."
+    "native_xrp_freeze_rule": "Native XRP has no issuer and cannot be frozen by Ripple or another XRPL participant. Issued tokens such as RLUSD have issuer freeze controls; custodial exchanges can freeze assets held in their own custody.",
+    "third_party_reconciliation": {
+      "binance_nov3": {
+        "total_impacted_usd": 6340000000,
+        "frozen_or_intercepted_usd": 2850000000,
+        "cutoff": "Nov 3 report; frozen/intercepted subject to reconciliation and market-price volatility"
+      },
+      "trm_oct29": {
+        "total_outflow_usd_approx": 6360000000,
+        "frozen_onchain_usd_approx": 2700000000,
+        "cutoff": "Oct 30 00:30 UTC on-chain analysis"
+      },
+      "rule": "Do not average. Different observation times, valuation methods and definitions (frozen/intercepted versus on-chain frozen) prevent direct reconciliation."
+    },
+    "attribution_disagreement": {
+      "law_enforcement": "FBI attributed the incident to DPRK TraderTraitor activity.",
+      "independent_intelligence": "TRM Labs assessed the incident as high-confidence TraderTraitor/DPRK activity based on on-chain and off-chain intelligence.",
+      "state_denial": "Kim Yo Jong denied DPRK involvement and called the FBI allegation a political provocation, as reported by AP.",
+      "us_presidential_qualification": "AP reported President Trump said investigators had not yet established whether North Korea was responsible.",
+      "assessment": "Preserve the FBI attribution, TRM assessment, DPRK denial and presidential qualification. The attribution is not a court judgment; do not silently discard the denial or treat it as forensic disconfirmation."
+    }
   },
   "xrpl_protocol": {
     "fixCleanup3_4_0": {
@@ -866,6 +901,11 @@
       "id": "H7_binance_incident_flow_contamination",
       "claim": "The stolen 233.46M XRP may create idiosyncratic supply or custody uncertainty.",
       "disconfirming_evidence": "No sale or exchange deposit is established; Binance's 98% replenishment statistic is aggregate impacted-token replenishment, not XRP recovery."
+    },
+    {
+      "id": "H8_binance_attribution_contested",
+      "claim": "FBI and TRM attribute the incident to DPRK TraderTraitor; the FBI identifies North Korean state-sponsored activity.",
+      "disconfirming_evidence": "DPRK denied involvement, and AP reported the US president said investigators had not yet established responsibility. The denial is not independent forensic evidence, but it must remain in the event record."
     }
   ],
   "predictive_admission": {
