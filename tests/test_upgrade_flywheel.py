@@ -37,7 +37,7 @@ class TestFlywheelDataModels:
                 directive_message_count=8,
             ),
             action=ActionResult(
-                applied_improvements=["fix gap A"],
+                proposed_improvements=["fix gap A"],
                 dry_run=True,
                 notes=["dry-run only"],
             ),
@@ -70,6 +70,8 @@ class TestUpgradeFlywheel:
 
         verification = report.cycles[0].verification
         assert isinstance(verification.passed, bool)
+        assert verification.passed is False
+        assert verification.coverage_is_estimate is True
         for check in verification.checks:
             assert check.startswith("✅") or check.startswith("❌")
         assert 0.0 <= verification.coverage_after <= 1.0
