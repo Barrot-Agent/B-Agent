@@ -2701,3 +2701,55 @@ Open inventory at audit: 369 PRs (354 drafts, 15 non-drafts).
 5. Continue issuer-native ETF source capture, durable cross-run raw storage, independent timestamp anchoring, synchronized historical exchange-flow/collateral/stablecoin/custody/payment data, and leakage-safe walk-forward evaluation. No forecast until out-of-sample lift and calibration are demonstrated.
 
 No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 10 correction — XRPR issuer vintage and current ingestion scope
+
+### Verified implementation and tests
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- PR #1640 code/test head `551b0aa41ede74bf8730858b376defdcfd91eaae`: 130 commits ahead, 0 behind, 71 files. Core 582 passed plus 8 subtests; full repository suite 867 passed plus 8 subtests; inclusive coverage 53.25%. Five-manifest dependency audit passed; fail-closed gate passed. Exact CI [41957670270](https://github.com/Barrot-Agent/B-Agent/actions/runs/41957670270), audit [41957670260](https://github.com/Barrot-Agent/B-Agent/actions/runs/41957670260), gate [41957670245](https://github.com/Barrot-Agent/B-Agent/actions/runs/41957670245).
+- The collector now contains 11 public sources. In addition to XRP Insights' JSON aggregator, it captures the primary REX XRPR HTML issuer page. The HTML path enforces HTTPS host and final-redirect allowlists, HTML content type, UTF-8 decoding, raw-byte hashing and raw-only eligibility. No feature is emitted and no date-only issuer label is promoted to a UTC timestamp. The scheduled workflow is main-only and has not executed on main.
+- PR #1643 current head `1f5555eb057be3518e83aaa3c775e29884ee5a59`: 104 commits ahead, 0 behind, 102 files. Core suite 495 passed plus 8 subtests. Current full-suite run [41958058465](https://github.com/Barrot-Agent/B-Agent/actions/runs/41958058465) is still in progress at this handoff update; fail-closed gate [41958058363](https://github.com/Barrot-Agent/B-Agent/actions/runs/41958058363) passed. The immediately prior head had one failing assertion in the new correction test (missing the full JSON field-path prefix); the assertion was corrected in `1f5555e`. Do not claim current #1643 full-suite success until run 41958058465 completes.
+- #1640 and #1643 remain zero-path-overlap workstreams. No new PR was created.
+
+### XRPR primary-source correction
+
+The REX Shares issuer page now reports holdings as of November 3, 2026:
+- Direct XRP: 19,885,382 (59.86%; $25,364,798.82).
+- CoinShares XRP ETP: 362,750 shares (40.12%; $16,998,465.00).
+- Fund assets: $42.38 million; four holdings; 30-day median share bid/ask spread 0.99%.
+
+The October 1 issuer observation (21,260,382 direct XRP and 386,750 ETP shares) is preserved as historical evidence. The displayed changes (-1,375,000 direct XRP and -24,000 ETP shares) are not verified creations, redemptions, cash flows or spot purchases. The issuer explicitly says XRPR is not equivalent to investing directly in XRP.
+
+The later issuer page proves the XRP Insights XRPR aggregate quantity cannot be treated as direct XRP units. The earlier 18,141 XRP residual calculation is explicitly invalidated as a direct-custody reconciliation in `20261105T024651Z-xrpr-nov3-primary-holdings-correction.json`. Keep direct XRP units, ETP share units and any XRP-equivalent look-through as separate fields.
+
+### SEC creation/redemption mechanics and actual-capital boundary
+
+The Grayscale XRP Trust ETF 10-Q for June 30, 2026 reports:
+- Opening XRP at December 31, 2025: 122,230,386.260970.
+- XRP contributed: 36,272,724.963349.
+- XRP redeemed: 103,407,400.712419.
+- XRP distributed for sponsor fees: 59,982.494915.
+- Closing XRP at June 30, 2026: 55,035,728.016985.
+
+The same SEC filing says APs could submit only **cash orders** as of the report date; the AP agreements did not provide for in-kind creations/redemptions. It records investment transactions on a trade-date basis and says XRP receivables/payables generally transfer within no more than two business days. Sponsor fees accrue daily in USD and are payable in XRP. Therefore:
+- XRP-unit creations/redemptions are not themselves USD cash-flow figures.
+- Holdings deltas may be affected by fee withdrawals and trade-date/settlement-date timing.
+- Daily aggregator holdings changes must not be interpreted as same-day net cash or same-day spot buying without order, receivable/payable and settlement timestamps.
+- The Q2 roll-forward is a verified historical XRP-unit roll-forward, not a daily directional signal.
+
+The SEC filing identifies Coinbase as the principal market used for the June 30 XRP valuation. Grayscale's SEC registration statement identifies Coinbase Custody Trust Company, LLC as custodian and Coinbase, Inc. as prime broker; Vault Balance and Settlement Balance have different custody mechanics.
+
+### ETF flow scope and eligibility
+
+- XRP Insights reports -194,875 XRP over November 2–3 across six spot funds plus BITW; it includes XRPR and BITW, includes GXRP holdings but excludes GXRP daily flows, and labels November 4 provisional.
+- CryptoKeyhole reports -3,339 XRP on each of November 2 and 3 (-6,678 total) across XRP, XRPZ, XRPC and TOXR; it excludes XRPR, BITW and GXRP and labels November 4 partial.
+- The -188,197 XRP difference is not attributed to a single fund; the fund universes and source vintages differ. The prior aggregator total-holdings residual is invalidated for direct custody because XRPR includes indirect ETP exposure.
+- All rendered aggregator and issuer-page observations remain model-ineligible until original bytes, SHA-256 receipts, per-fund source vintages and settlement semantics are captured. No directional forecast was issued.
+
+### Merge status and next action
+
+PR #1640 remains fully tested on its current code/test head. PR #1643's current full suite is pending after the test assertion correction. Both PRs have zero approving reviews. Main branch-protection inspection returns HTTP 403, the visible ruleset is disabled, and GitHub Pages settings remain inaccessible after the prior Pages deployment side effect. No merge or deployment was performed.
+
+Next: complete current #1643 full-suite verification; then update this handoff/PR body with the exact final head and run evidence. Obtain required independent approvals and protection/deployment authorization. Merge #1640 only when all gates are satisfied, verify the merge on main and rerun main CI, then reconcile #1643 against that new main without rewriting history. Preserve unique PR work and close only exact superseded sources after main verification.
