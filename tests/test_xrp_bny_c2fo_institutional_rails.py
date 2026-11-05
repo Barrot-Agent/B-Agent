@@ -73,3 +73,39 @@ def test_rlusd_distribution_and_custody_do_not_establish_xrp_demand_or_forecast(
     assert data["data_quality"]["sha256_receipts_verified"] is False
     assert all(source["model_eligible"] is False for source in data["source_registry"])
     assert all(item["disconfirming_or_missing"] for item in data["competing_hypotheses"])
+
+
+def test_every_relationship_has_resolvable_primary_source_provenance():
+    data = load()
+    source_ids = {item["id"] for item in data["source_registry"]}
+    assert len(source_ids) == len(data["source_registry"])
+    for relationship in data["relationships"]:
+        assert relationship["source_ids"]
+        assert set(relationship["source_ids"]) <= source_ids
+
+
+def test_ripple_c2fo_reposts_are_not_counted_as_independent_source_groups():
+    data = load()
+    sources = {item["id"]: item for item in data["source_registry"]}
+    ripple = sources["ripple_c2fo_xrpl_instant_pay_20261027"]
+    c2fo = sources["c2fo_ripple_xrpl_instant_pay_20261027"]
+    assert ripple["independence_group"] == c2fo["independence_group"]
+    assert ripple["independence_group"] == "ripple_c2fo_joint_instant_pay_announcement"
+
+
+def test_bny_primary_rlusd_reserve_custody_is_not_native_xrp_custody():
+    data = load()
+    reserve = edge(data, "bny_primary_rlusd_reserve_custody")
+    xrp_custody = edge(data, "bny_digital_asset_custody_xrp_20261027")
+    assert reserve["instrument"] == "RLUSD reserves"
+    assert reserve["status"] == "EXISTING_ROLE_REAFFIRMED_BY_BNY_2026_10_27"
+    assert xrp_custody["instrument"] == "XRP"
+    assert "native XRP custody under the 2025 reserve appointment" in reserve["not_established"]
+
+
+def test_event_timeline_separates_live_custody_from_future_collateral_and_settlement():
+    data = load()
+    events = {item["event_date"]: item for item in data["event_timeline"]}
+    assert events["2026-10-12"]["classification"] == "CUSTODY_LIVE_REPORTED_COLLATERAL_PLANNED"
+    assert events["2026-10-27"]["classification"] == "ANNOUNCED_WAITLIST_NO_PRODUCTION_VOLUME_VERIFIED"
+    assert events["2026-10-28"]["classification"] == "DISTRIBUTION_LIVE_REPORTED_COLLATERAL_FUTURE"
