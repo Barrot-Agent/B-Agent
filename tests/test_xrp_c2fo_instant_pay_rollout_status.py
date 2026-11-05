@@ -25,7 +25,10 @@ def test_c2fo_instant_pay_rollout_is_not_misclassified_as_live_xrp_capital():
     assert "waitlist" in " ".join(product_page["claims_supported"]).lower()
     assert "limited rollout" in " ".join(product_page["claims_supported"]).lower()
     assert product_page["model_eligible"] is False
+    c2fo_release = next(item for item in artifact["source_registry"] if item["id"] == "c2fo_ripple_instant_pay_joint_release_20261027")
+    assert product_page["independence_group"] == c2fo_release["independence_group"]
 
     assert artifact["actual_capital_classification"]["rule"].startswith("Do not classify a waitlist")
-    assert any("$520B" in item and "$525B" in item for item in artifact["disconfirming_evidence"]) is False
+    assert "5000000000" in artifact["actual_capital_classification"]["discrepancy_usd"]
+    assert "not Instant Pay" in artifact["actual_capital_classification"]["historical_early_pay_scope"]
     assert any("methodology" in item for item in artifact["next_actions"])
