@@ -110,3 +110,68 @@ def test_all_rendered_sources_remain_model_ineligible_and_no_forecast_is_issued(
     assert data["source_capture_policy"]["raw_content_sha256"] is None
     assert all(source["raw_content_sha256"] is None for source in data["source_registry"])
     assert all(source["model_eligible"] is False for source in data["source_registry"])
+
+
+
+def test_second_spot_capture_is_a_separate_vintage_not_a_rewritten_snapshot():
+    spot = load()["market_snapshot"]["spot"]
+    first = spot["last_usd"]
+    latest = spot["latest_recheck"]
+    mid = (latest["best_bid_usd"] + latest["best_ask_usd"]) / 2
+    spread = (latest["best_ask_usd"] - latest["best_bid_usd"]) / mid * 10000
+    assert latest["captured_at_utc"] == "2026-11-05T09:16:47Z"
+    assert latest["last_usd"] == 1.31413
+    assert math.isclose(latest["mid_usd"], mid, rel_tol=0, abs_tol=1e-12)
+    assert math.isclose(latest["displayed_spread_bps"], spread, rel_tol=0, abs_tol=1e-6)
+    observed_change = (latest["last_usd"] / first - 1) * 100
+    assert math.isclose(latest["change_from_090232_snapshot_pct"], observed_change, abs_tol=0.002)
+    assert latest["source_event_timestamp"].startswith("not returned")
+    assert latest["model_eligible"] is False
+
+
+def test_binance_xrp_drain_and_redistribution_are_separate_ledger_events():
+    event = load()["binance_security_event"]
+    transfers = event["initial_transfer_ctids"]
+    assert len(transfers) == 5
+    assert math.isclose(sum(x["amount_xrp"] for x in transfers), 233461943.1, abs_tol=1e-6)
+    assert event["stolen_xrp_approx"] == 233461943.1
+    redistribution = event["nov2_redistribution"]
+    assert redistribution["bulk_transfer_count"] == 9
+    assert redistribution["bulk_recipient_count"] == 6
+    assert redistribution["test_transfer_count"] == 7
+    assert redistribution["bulk_amount_xrp"] + redistribution["test_amount_xrp"] == redistribution["recipient_total_xrp"]
+    assert redistribution["reconciliation_gap_xrp"] == 0.59905
+    assert redistribution["exchange_deposit_pattern_as_of_snapshot"] is False
+    assert redistribution["ownership"].startswith("unresolved")
+
+
+def test_rlusd_ethereum_and_xrpl_incident_flows_are_not_conflated():
+    flows = load()["binance_security_event"]["rlusd_flows"]
+    eth = flows["ethereum"]
+    xrpl = flows["xrpl"]
+    assert eth["stolen_rlusd"] == eth["swapped_on_dex_rlusd"] + eth["frozen_by_ripple_rlusd"]
+    assert eth["network"] == "Ethereum"
+    assert xrpl["network"] == "XRP Ledger"
+    assert xrpl["amount_rlusd"] == 51172508
+    assert xrpl["purpose"] == "unresolved"
+    assert "Do not conflate" in flows["separation_rule"]
+
+
+def test_binance_replenishment_percentage_disagreement_is_preserved():
+    event = load()["binance_security_event"]
+    history = event["replenishment_history_disagreement"]
+    assert [row["reported_pct"] for row in history] == [90, 98, 98]
+    assert "Do not average" in event["replenishment_history_rule"]
+    assert "not XRP-specific" in event["replenishment_scope"]
+    assert "no evidence" in event["attack_chain_interpretation"].lower()
+
+
+def test_latest_xrpl_node_views_do_not_claim_lending_activation():
+    protocol = load()["xrpl_protocol"]
+    votes = protocol["current_voting_snapshot"]
+    disagreement = protocol["node_view_disagreement"]
+    assert votes["ledger_index"] == 108128511
+    assert votes["LendingProtocol_votes_for"] == 19
+    assert votes["votes_required"] == 29
+    assert disagreement["difference_ledgers"] == 214
+    assert "Different explorer node/page views" in disagreement["interpretation"]
