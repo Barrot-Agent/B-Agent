@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261105T013000Z-kamilah-youtube-channel-identity-quarantine.json"
+ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261105T011154Z-kamilah-youtube-channel-identity-quarantine.json"
 
 
 def test_person_identity_does_not_promote_candidate_channel_to_canonical():
