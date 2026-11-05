@@ -281,7 +281,7 @@ class RecursiveFeedbackLoop:
             baseline = EvaluationSnapshot(run_id=str(baseline_data["run_id"]), revision=str(baseline_data["revision"]), metrics=baseline_data["metrics"])
             candidate = EvaluationSnapshot(run_id=str(candidate_data["run_id"]), revision=str(candidate_data["revision"]), metrics=candidate_data["metrics"])
             assessment = assess_improvement(baseline, candidate, lower_is_better=frozenset(evidence.get("lower_is_better", [])), tolerances=evidence.get("tolerances", {}))
-        except (KeyError, TypeError, ValueError) as exc:
+        except (AttributeError, KeyError, TypeError, ValueError) as exc:
             logger.warning("Evaluation evidence rejected: %s", exc)
             return 0.0, 0.0
         if not assessment.eligible or not assessment.improved:
