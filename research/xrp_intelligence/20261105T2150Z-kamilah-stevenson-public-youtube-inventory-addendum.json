@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "artifact_type": "kamilah_stevenson_public_youtube_inventory_addendum",
+  "observed_on_utc_date": "2026-11-05",
+  "exact_retrieval_timestamp_utc": null,
+  "timestamp_note": "YouTube search-result publication dates are preserved as publisher metadata; view, like and subscriber counts are crawl-time snapshots, not current counts. Direct video-page fetches were throttled.",
+  "identity": {
+    "public_creator_name": "Kamilah Stevenson",
+    "channel_handle": "@drkamilahstevenson",
+    "channel_url": "https://www.youtube.com/@drkamilahstevenson",
+    "channel_page_title": "Kamilah Stevenson",
+    "identity_evidence": [
+      "First-person branded website identifies Dr. Kamilah Stevenson / The Wealth Doctor.",
+      "Linktree @Dr.Kamilahstevenson links to the branded website and a YouTube channel labelled Kamilah Stevenson.",
+      "The public YouTube handle URL renders the channel title Kamilah Stevenson.",
+      "Two YouTube search results explicitly list Kamilah Stevenson as the video author.",
+      "The iHeart episode titled Crypto Panics! with Dr. Kamilah Stevenson contains an auto-generated guest statement naming a YouTube display name resembling doctor Camilla Stevenson."
+    ],
+    "attribution_assessment": "Strongly corroborated public-channel attribution for the listed YouTube search results. This is not platform-side account authentication or legal-identity verification.",
+    "legal_identity_verified": false,
+    "platform_account_ownership_verified": false,
+    "exact_x_handle": null,
+    "exact_instagram_handle": null,
+    "spelling_variants": [
+      "Kamilah",
+      "Camila",
+      "Camilla",
+      "Kamilla"
+    ],
+    "transcript_variant_caveat": "Camila/Camilla/Kamilla spellings come from an auto-generated iHeart transcript and self-reported display-name descriptions; exact social handles are not inferred."
+  },
+  "video_inventory": [
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "publisher": "YouTube",
+      "author_as_displayed": "Kamilah Stevenson",
+      "published_at": "2026-03-06",
+      "views_at_search_crawl": 32040,
+      "likes_at_search_crawl": 2300,
+      "channel_followers_at_search_crawl": 137000,
+      "discovery_source": "YouTube indexed video result",
+      "attribution_status": "strong_public_attribution",
+      "content_reviewed": false,
+      "description_metadata_only": true,
+      "described_topics": [
+        "oil disruption",
+        "yen carry trade",
+        "global liquidity",
+        "XRP as a bridge/financial infrastructure thesis"
+      ],
+      "xrp_relevance": "high",
+      "market_claims_admissible_as_facts": false,
+      "caveats": [
+        "Direct video page fetch was throttled.",
+        "Description contains affiliate/promotional links and a financial disclaimer.",
+        "The creator's thesis is commentary, not independent market or institutional-flow evidence."
+      ]
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "publisher": "YouTube",
+      "author_as_displayed": "Kamilah Stevenson",
+      "published_at": "2025-12-24",
+      "views_at_search_crawl": 44991,
+      "likes_at_search_crawl": 3100,
+      "channel_followers_at_search_crawl": 138000,
+      "discovery_source": "YouTube indexed video result",
+      "attribution_status": "strong_public_attribution",
+      "content_reviewed": false,
+      "description_metadata_only": true,
+      "described_topics": [
+        "XRP versus Bitcoin",
+        "payments and moving value",
+        "institutional use",
+        "long-term investing framework"
+      ],
+      "xrp_relevance": "high",
+      "market_claims_admissible_as_facts": false,
+      "caveats": [
+        "Direct video page fetch was throttled.",
+        "The description includes affiliate/promotional links and an educational disclaimer.",
+        "The creator's thesis is commentary, not independent market or institutional-flow evidence."
+      ]
+    },
+    {
+      "video_id": "OvODErBT9Ug",
+      "title": "My Top 10 Digital Assets — What They Do & Why I Hold Them",
+      "url": "https://www.youtube.com/live/OvODErBT9Ug",
+      "publisher": "YouTube",
+      "author_as_displayed": null,
+      "published_at": null,
+      "discovery_source": "Linktree @Dr.Kamilahstevenson direct video link",
+      "attribution_status": "directly_linked_by_matching_public_link_hub; author metadata not independently retrieved",
+      "content_reviewed": false,
+      "description_metadata_only": false,
+      "xrp_relevance": "unknown"
+    }
+  ],
+  "inventory_scope": {
+    "total_candidate_videos": 3,
+    "youtube_search_result_attributions": 2,
+    "direct_link_hub_video_links": 1,
+    "exhaustive": false,
+    "correction_to_prior_iheart_addendum": {
+      "artifact_id": "kamilah_stevenson_podcast_self_identification_addendum",
+      "incorrect_prior_public_youtube_inventory_count": 13,
+      "supported_pre_addendum_inventory_count": 1,
+      "corrected_current_candidate_count": 3,
+      "reason": "The existing identity inventory file contained one directly linked YouTube video, not thirteen. Two additional YouTube search-result records are now added. The iHeart episode itself is a podcast, not a YouTube video."
+    }
+  },
+  "source_registry": [
+    {
+      "id": "YOUTUBE_CHANNEL_HANDLE_PAGE_20261105",
+      "publisher": "YouTube",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "source_type": "public channel handle page",
+      "observed_title": "Kamilah Stevenson",
+      "raw_bytes_captured": false,
+      "content_fetch_status": "static shell; title visible"
+    },
+    {
+      "id": "YOUTUBE_VIDEO_IWHpNT73zpk_SEARCH",
+      "publisher": "YouTube",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "source_type": "indexed video search result",
+      "raw_bytes_captured": false,
+      "direct_page_fetch_status": "throttled"
+    },
+    {
+      "id": "YOUTUBE_VIDEO_pmJTrXJQ8Vw_SEARCH",
+      "publisher": "YouTube",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "source_type": "indexed video search result",
+      "raw_bytes_captured": false,
+      "direct_page_fetch_status": "throttled"
+    },
+    {
+      "id": "KAMILAH_LINKTREE_CHANNEL_AND_VIDEO",
+      "publisher": "Linktree account @Dr.Kamilahstevenson",
+      "url": "https://linktr.ee/drkamilahstevenson",
+      "source_type": "self-described public link hub",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "KAMILAH_FIRST_PERSON_WEBSITE",
+      "publisher": "Kamilah Stevenson branded website",
+      "url": "https://learn.kamilahstevenson.com/",
+      "source_type": "first-person identity page",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "IHEART_KAMILAH_STEVENSON_XRP_PODCAST",
+      "publisher": "iHeart",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "source_type": "public podcast listing and auto-generated transcript",
+      "raw_bytes_captured": false
+    }
+  ],
+  "admission": {
+    "model_eligible": false,
+    "directional_forecast_issued": false,
+    "reason": "Creator/video metadata is identity and research-context material, not XRP market features. Direct video bytes/content were not retrieved; views/likes/follower counts are crawl-time metadata."
+  },
+  "preservation": {
+    "channel_and_person_identity_not_overstated": true,
+    "legal_identity_not_claimed": true,
+    "exact_social_handles_not_inferred": true,
+    "video_search_metadata_not_called_full_content": true,
+    "inventory_not_called_exhaustive": true,
+    "prior_count_discrepancy_corrected_append_only": true,
+    "creator_market_opinions_not_admitted_as_facts": true
+  }
+}
