@@ -4102,3 +4102,36 @@ Evernorth's October 30 S-1 explicitly reports zero Cantor ELOC proceeds as of th
 - #1643 needs an exact-head dependency audit. The new #1640 path filter will make future research updates trigger it after the workflow is on main.
 
 No forecast was issued. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 34c — final code and research head verification
+
+**Main SHA:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+
+**PR #1640 exact code/workflow head:** `bc17b3e98b92bd1090555663e11035d83db14520` (216 commits ahead, 0 behind; 84 changed files).
+- Core suite: 596 passed, 8 subtests passed.
+- Full repository suite: 904 passed, 8 subtests passed.
+- Inclusive `barrot_agent` coverage: 53.79%.
+- Wheel build and packaged priority-1 mission verification passed.
+- Six-manifest strict dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed and explicitly disabled merging.
+- The dependency-audit PR path filter now includes `research/xrp_intelligence/**` and `tests/test_xrp_*.py`, so future research updates trigger the audit.
+- Runs: CI https://github.com/Barrot-Agent/B-Agent/actions/runs/41994172173 ; dependency audit https://github.com/Barrot-Agent/B-Agent/actions/runs/41994172095 ; gate https://github.com/Barrot-Agent/B-Agent/actions/runs/41994172233 .
+
+**PR #1643 exact research head:** `60b219ea78e8d4d0470d3af553465549ed6aa578` (158 commits ahead, 0 behind; 129 changed files).
+- Full repository suite: 898 passed, 8 subtests passed.
+- Core suite and fail-closed gate passed.
+- Exact-head dependency audit remains outstanding; no dependency files changed, but the base workflow's previous path filter excluded research files. The #1640 trigger change will be available after main integration; then merge main into #1643 (no rebase/force-push) to trigger the audit.
+- Runs: CI https://github.com/Barrot-Agent/B-Agent/actions/runs/41993790286 ; gate https://github.com/Barrot-Agent/B-Agent/actions/runs/41993790326 .
+
+**New research artifact set on #1643:** ETF universe/vintage reconciliation; Japan SBIC statutory identity and ChatGPT disambiguation; Evernorth actual cash/in-kind/debt/contingent-capital reconciliation; current XRP spot/order-book/derivatives/ETF snapshot. All are research-only and model-ineligible because raw HTTP/issuer bytes, SHA-256 receipts and independent timestamp anchors were not captured.
+
+**Backlog refresh:** 370 open PRs (354 drafts, 16 non-drafts). #1642 is an exact ancestor of #1640. #1644–#1650 are dependency candidates represented in #1640. #1651 is unique/unreviewed (RSI/weight-space foundation; no changed-path overlap with #1640; six unresolved review threads). #1615 remains unique draft security work, 41 commits behind main; preserve. #1621 is closed unmerged, but its old institutional-collateral artifact has a newer, larger version on main and is already referenced by #1643 tests. Preserve unique historical work in #1317/#1318/#1320/#1269; reconcile after integration. Older dependency candidates #1254/#1255 remain superseded pending main verification.
+
+**Merge status:** #1640 and #1643 remain open, non-draft and mergeable according to GitHub, but both have zero approving reviews (22/22 and 14/14 review threads resolved). Main is protected; the visible `Fall Back` ruleset is disabled; detailed branch-protection configuration returns HTTP 403. A successful Pages deployment exists on main SHA `9100dbac...` (run 41799855489), but its trigger/authorization is not independently established. Do not merge until required approvals/protection checks and deployment authorization are verifiable.
+
+**Platform status:** ChatGPT-to-GitHub access is verified. Copilot Agent Merge runs 41993027525 and 41992493657 were read-only, made no commit/merge, and hit Sigstore TUF DNS failure during dependency-graph inspection. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as persistent authenticated Barrot data flows. Kamilah/Camilla Stevenson YouTube channel identity remains unverified; no inventory was attributed.
+
+**Forecast status:** No directional XRP forecast. The historical dataset, canonical raw receipts, independent timestamps, full institutional flow coverage, calibrated out-of-sample lift and shadow outcomes remain insufficient. No paper trade or real-money action occurred.
+
+**Next action:** Verify exact-head CI on this documentation update; secure independent approvals and branch-protection visibility; resolve Pages deployment authorization; merge #1640 only when all conditions are satisfied; verify main and rerun main CI; then reconcile #1643 with main without rewriting history and obtain its exact-head dependency audit before any merge. Close only exact superseded/duplicate source PRs after merged content is verified on main.
