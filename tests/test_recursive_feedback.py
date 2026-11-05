@@ -197,6 +197,13 @@ class TestRecursiveFeedbackLoop:
         }
         assert loop._verify_improvement(2, {"evaluation": bad_tolerances}, []) == (0.0, 0.0)
 
+
+    def test_unverified_iteration_resets_convergence_window(self):
+        loop = RecursiveFeedbackLoop()
+        loop._improvement_history.extend([0.1, 0.1, 0.1])
+        assert loop._verify_improvement(4, {"evaluation": None}, []) == (0.0, 0.0)
+        assert not loop._improvement_history
+
     @patch.object(RecursiveFeedbackLoop, "_observe_system_state")
     @patch.object(RecursiveFeedbackLoop, "_analyze_with_kimi")
     @patch.object(RecursiveFeedbackLoop, "_absorb_feedback")
