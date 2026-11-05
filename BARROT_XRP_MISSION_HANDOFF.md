@@ -2429,3 +2429,76 @@ No PR was merged or closed. No branch was force-pushed or rewritten. No deployme
 - Continue with durable cross-run raw-source storage and independent timestamping, synchronized exchange/ETF/collateral/stablecoin/custody/payment/regulatory/macro ingestion, then leakage-safe walk-forward evaluation and calibration. Forecast issuance remains disabled until the readiness certificate passes.
 
 **Merged PRs this run: none.**
+
+
+---
+
+## Run 7 — XRP walk-forward minimum-sample enforcement and fresh integration audit (2026-11-05T02:05Z)
+
+### Repository baseline
+- Current main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main recursive Git tree: 1,403 entries; `truncated=false`.
+- Open pull requests: **369 total** across four API pages; **354 drafts and 15 non-drafts**.
+- Non-draft inventory: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- GitHub reports the main branch `protected=true`. The branch-protection details endpoint returns HTTP 403, so required review/check configuration is not independently readable. The only visible repository ruleset, `Fall Back`, has enforcement disabled. Do not infer that required approvals/checks are satisfied.
+- Latest main scheduled Cross Analysis run [41951363027](https://github.com/Barrot-Agent/B-Agent/actions/runs/41951363027) succeeded on the current main SHA. This is the read-only main implementation; the new XRP collector is not on main.
+- Current active integration workstreams remain #1640 (V3/core) and #1643 (XRP research). Their changed-path sets are disjoint: #1640 has 71 changed files; #1643 has 94; intersection is empty. Both are based directly on current main and report zero commits behind.
+
+### New prediction-integrity implementation on #1640
+- New code commit: `2490da9ebc183b6145864016f9f5341e1b16018d`.
+- Files changed: `barrot_agent/evolution/walk_forward.py`, `barrot_agent/evolution/xrp_public_ingestion.py`, and `tests/test_walk_forward.py`.
+- The evaluator's default minimum training sample count is now 100, aligned with the forecast ledger's readiness policy.
+- Added a separate minimum of **100 distinct out-of-sample forecast origins**. The count is based on unique data cutoffs, not the four baseline predictions emitted for each origin.
+- The production ingestion report now requests at least 100 point-in-time training examples and 100 distinct out-of-sample origins. A smaller backtest remains diagnostic and reports `INSUFFICIENT_HISTORY`; it can no longer be labeled `SCORED` merely because one or a few historical origins exist.
+- Added regression tests proving that a 23-origin sample remains `INSUFFICIENT_HISTORY` under the 100-origin policy and that a non-positive OOS minimum is rejected.
+- This aligns the evaluator with the separate forecast-ledger policy requiring at least 100 training samples, 100 out-of-sample samples and 100 later shadow samples. It does not authorize a live forecast.
+- The Git data ref update advanced the existing branch using a normal fast-forward with an expected-head check. No force-push, new branch or PR was used.
+
+### Exact-head CI evidence and current verification boundary
+**Prior exact branch head `27ece4466507b4832e2d0db83275d1e4e4b0f213` (before the new threshold change):**
+- Core CI [41948357305](https://github.com/Barrot-Agent/B-Agent/actions/runs/41948357305): **582 passed, 8 subtests passed**.
+- Full repository suite on the same head: **858 passed, 8 subtests passed**, inclusive `barrot_agent` coverage **53.16%**, above the 50% floor.
+- Five-manifest dependency audit [41948357320](https://github.com/Barrot-Agent/B-Agent/actions/runs/41948357320): all five declaration sets passed; no known vulnerabilities reported.
+- Fail-closed gate [41948357311](https://github.com/Barrot-Agent/B-Agent/actions/runs/41948357311): passed while explicitly reporting that automatic merging is disabled.
+- These results are **not** evidence for new code commit `2490da9`.
+
+**New code commit `2490da9`:**
+- Exact-head CI, full suite, dependency audit and fail-closed gate have not yet been observed on this commit.
+- A documentation successor is being written on the same existing branch; its resulting head must receive fresh CI. Do not transfer the preceding 858-test result to the new threshold code.
+- #1643 current head `50bb915bc083c5cb4818f49cb576a7a0baca9d3c`: exact-head core suite **495 passed, 8 subtests passed**; full repository suite **802 passed, 8 subtests passed** in CI [41947872945](https://github.com/Barrot-Agent/B-Agent/actions/runs/41947872945); fail-closed gate [41947872918](https://github.com/Barrot-Agent/B-Agent/actions/runs/41947872918) passed and disables automatic merge. No dependency manifest changed in #1643, so no dependency audit was triggered on that head.
+
+### Reviews, merge readiness and PR backlog
+- #1640: 8 submitted reviews, all `COMMENTED`; **zero approvals**. Inline review threads: **22/22 resolved**.
+- #1643: 6 submitted reviews, all `COMMENTED`; **zero approvals**. Inline review threads: **14/14 resolved**.
+- Both PRs are open, non-draft and GitHub reports them mergeable/clean. Their fail-closed workflow explicitly disables automatic merging. Neither is merge-ready without required independent approval/check verification and resolution of the main-push Pages deployment side effect.
+- #1642 is a draft ancestor whose snapshot-integrity work is included in #1640; classify as superseded pending #1640 merge and main verification.
+- #1644–#1650 are dependency proposals whose requested dependency/action versions are already represented in #1640. Keep open until the corresponding files are verified on main after merge; then close only those exact superseded PRs with cross-references.
+- #1317, #1318, #1320, #1254 and #1255 are exact-path supersession candidates pending #1640 merge and main verification.
+- #1597, #1605, #1608 and #1614 are partially represented by the current research/prediction work. Preserve their unique identity, C2FO/actual-capital, feature-validator and handoff material; do not close wholesale.
+- #1615 remains unique/unreviewed security work. #1641 remains unique/unreviewed bounded-experimentation work. #1269 remains unique geometry/OBJ topology work. Preserve all three.
+- All other stale-base drafts remain individually unreviewed or blocked; no bulk closure.
+
+### Ingestion and forecast readiness
+- #1640's `xrp-public-ingestion.yml` is scheduled hourly at minute 3 and daily at 00:15 UTC, and only runs on main. It uses nine allowlisted Binance/Coinbase/Kraken public endpoints, a read-only GitHub token, raw-source artifacts and daily feature-store artifacts with 90-day retention.
+- The workflow restores from a cache and falls back to the latest unexpired feature-store artifact. The cache is evictable and artifacts expire after 90 days; this is not indefinite WORM storage or an independently timestamped archive.
+- The collector still does not cover the full requested exchange-wallet flows, issuer ETF files, collateral utilization, stablecoin mint/burn, custody, payment throughput, regulation, macro and geopolitical vintages.
+- `research_eligibility.py` exists but is not yet wired into scheduled ingestion. Coinbase/Binance depth snapshots remain raw-only when timestamp/sequence linkage is insufficient.
+- The research archive #1643 preserves the SBIC East/Central/West versus SBI Holdings distinction; Coinbase/Circle/Ripple/SBI relationships; exact-phrase candidate work; market/derivatives/ETF disagreements; Binance incident contamination; and creator identity safeguards. Its current branch contains 51 JSON research artifacts plus a correction-test module. No exhaustive video inventory is claimed.
+- Only the current ChatGPT-to-GitHub path is authenticated and tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not claimed as live authenticated collaborators.
+- Forecast status remains **NOT_ISSUED**. The walk-forward output is historical baseline evaluation only; the new 100/100 sample gate is not a readiness certificate. Calibration, drift and shadow evaluation still need independent outcomes and separate gates.
+
+### DESIGNED / EXECUTED / VERIFIED
+- **DESIGNED:** XRP-first mission registry; scheduled read-only ingestion; raw-source receipts; point-in-time feature store; research eligibility; fixed-horizon forecast ledger; chronological baseline evaluator.
+- **EXECUTED:** fresh main/tree/open-PR/branch ancestry/path-overlap/review/CI/dependency/ruleset/handoff inspection; new 100-training/100-OOS-origin enforcement and regression tests on the existing #1640 branch.
+- **VERIFIED:** main SHA/tree and protected flag; complete four-page open-PR count; zero changed-path overlap; exact #1643 CI; exact prior #1640 CI/audit/gate; all review-thread resolution counts; normal fast-forward branch update with expected-head guard.
+- **NOT YET VERIFIED:** new #1640 code commit `2490da9` tests; required approving reviews; required branch-protection configuration; authorization for the automatic Pages deployment side effect; indefinite archive retention and independent timestamp anchoring; full ecosystem ingestion; nine-platform authentication; predictive lift and live forecast readiness.
+
+### Next concrete action
+1. Obtain exact-head CI, full-suite, dependency-audit and fail-closed gate evidence on the new #1640 threshold implementation; fix any failures on the existing branch.
+2. Obtain independent approvals and independently verify required branch-protection/check settings. Do not bypass the disabled gate or branch protection.
+3. Resolve authorization for the automatic Pages deployment side effect before any main merge.
+4. If all merge conditions are met, merge #1640, verify the merge commit/files on freshly fetched main, and run main CI. Then reconcile #1643 against the resulting main without rewriting history and merge it only after its own exact-head checks and approvals.
+5. After main verification, close only exact superseded source PRs. Preserve unique and partially overlapping work.
+6. Continue with durable cross-run source storage and independent timestamp anchoring, then broader XRP ecosystem ingestion, chronological evaluation, calibration, drift and shadow evaluation.
+
+No PR was merged or closed. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
