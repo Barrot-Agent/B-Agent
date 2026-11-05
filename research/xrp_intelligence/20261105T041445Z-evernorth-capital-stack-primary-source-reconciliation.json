@@ -322,8 +322,8 @@
   "corrections": [
     {
       "prior_artifact_id": "20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation",
-      "prior_claim": "xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_status",
-      "correction": "The prior artifact associated the $2.53657058 average with the rounded $214.05 million advance-funding cash amount. The SEC filing reports exact advance cash proceeds of $214,049,995 but $214,000,000 as the digital-asset purchase cost. Dividing $214,000,000 by 84,365,876.3625 XRP reproduces $2.53657058. The $49,995 difference is not purchase cost.",
+      "prior_claim": "xrp_asset_reconciliation.cash_funded_market_purchase",
+      "correction": "The prior artifact associated the $2.53657058 average with the rounded $214.05 million advance-funding cash amount and used a field name that could imply an exchange-market execution. The SEC filing reports exact advance cash proceeds of $214,049,995 but $214,000,000 as the digital-asset purchase cost. Dividing $214,000,000 by 84,365,876.3625 XRP reproduces $2.53657058. The $49,995 difference is not purchase cost. The reviewed filings do not disclose whether execution was on-exchange spot or OTC, or identify a venue; the event must not be used as a venue-specific spot-flow feature.",
       "disposition": "Append-only correction; the prior artifact is preserved unchanged."
     },
     {
