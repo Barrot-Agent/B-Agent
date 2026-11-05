@@ -139,8 +139,15 @@ def test_sbic_east_central_west_are_distinct_regional_entities_not_sbi_holdings(
 
 
 def test_sbi_circle_usdc_alliance_and_jv_are_distinct_from_ripple():
-    events = {x["source_id"]: x for x in load_artifact()["institutional_network"]["dated_disclosures"]}
-    circle = events["SBI_CIRCLE_RIPPLE_EQUITY_20250609"]
+    events = load_artifact()["institutional_network"]["dated_disclosures"]
+    # One primary disclosure contributes two separately typed relationship records
+    # under the same source ID. Select the Circle alliance record by its field rather
+    # than collapsing same-source records into a lossy dictionary.
+    circle = next(
+        x for x in events
+        if x["source_id"] == "SBI_CIRCLE_RIPPLE_EQUITY_20250609"
+        and "usdc_alliance" in x
+    )
     assert "November 2023" in circle["usdc_alliance"]
     assert "March 2025" in circle["usdc_alliance"]
     assert "Circle SBI Japan KK" in circle["joint_venture"]
