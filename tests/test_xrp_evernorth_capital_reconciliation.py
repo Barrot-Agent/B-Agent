@@ -128,6 +128,11 @@ def test_sbi_holdings_entities_are_not_regional_sbic_companies():
     assert sbi["class_a_shares_disclosed_as_held_by_sbi_stockholders"] == 9_431_914
     assert sbi["class_c_shares_issued_at_2026_10_09_close_to_certain_sbi_affiliates"] == 2_359_038
     assert sbi["ownership_limit_percent"] == 39.9
+    assert sbi["voting_power_percent_at_close"] == 39.9
+    assert sbi["total_common_stock_percent_at_close"] == 21.4
+    assert sbi["class_a_percent_of_class_at_close"] == 36.1
+    assert sbi["class_c_percent_of_class_at_close"] == 7.5
+    assert sbi["class_c_non_voting"] is True
     assert sbi["limit_is_not_verified_exact_current_ownership"] is True
     assert sbi["regional_sbic_east_central_west_are_distinct_from_sbi_holdings"] is True
 
@@ -138,10 +143,14 @@ def test_ripple_equity_in_kind_contributions_and_related_party_debt_are_separate
     assert ripple["ripple_xrp_contribution_to_pathfinder"] == 126_791_458
     assert ripple["contributor_related_party_entity_xrp_subscription"] == 50_000_000
     assert ripple["contributor_related_party_entity_name"] == "Larsen Lam Children's Remainder Trust"
-    assert "investor affiliated with Ripple" in ripple["contributor_related_party_entity_issuer_description"]
+    assert "investor affiliated with Ripple" in ripple["contributor_related_party_entity_issuer_description"].lower()
     assert ripple["ripple_class_a_shares_issued_at_close"] == 1_678_382
     assert ripple["ripple_pathfinder_units_issued_at_close"] == 16_461_545
     assert ripple["combined_ripple_group_ownership_limit_percent"] == 9.9
+    assert ripple["combined_ripple_group_common_stock_percent_at_close"] == 4.2
+    assert ripple["combined_ripple_group_voting_power_percent_at_close"] == 9.9
+    assert ripple["ripple_common_stock_percent_at_close"] == 3.0
+    assert ripple["ripple_voting_power_percent_at_close"] == 7.1
 
     credit = ripple["related_party_credit_facility"]
     assert credit["lender"] == "Ripple Labs Inc."
@@ -161,6 +170,9 @@ def test_sponsor_and_rippleworks_in_kind_xrp_are_not_direct_ripple_cash():
     assert sponsor["sponsor"] == "Arrington XRP Capital Fund, LP"
     assert sponsor["general_partner"] == "Arrington Capital Management, LLC"
     assert sponsor["rippleworks_is_limited_partner"] is True
+    assert sponsor["total_common_stock_percent_at_close"] == 61.4
+    assert sponsor["voting_power_percent_at_close"] == 19.9
+    assert sponsor["rippleworks_voting_instruction_shares"] == 4_215_479
 
     series_c = events["series_c_sponsor_xrp"]
     assert series_c["contributor"] == "RippleWorks, Inc."
@@ -200,3 +212,20 @@ def test_ripple_related_party_credit_is_not_the_cantor_eloc():
     assert credit["classification"] == "related_party_debt_not_equity_and_not_eloc_proceeds"
     assert credit["repayment_status"] == "not_verified_in_this_capture"
     assert eloc["actual_draw_amount_usd"] is None
+
+
+def test_closing_capitalization_separates_voting_power_from_economic_ownership():
+    document = load_artifact()
+    sbi = document["custody_and_relationships"]["sbi_relationship"]
+    ripple = document["custody_and_relationships"]["ripple_relationship"]
+    sponsor = document["sponsor_relationship"]
+
+    assert sbi["voting_power_percent_at_close"] == 39.9
+    assert sbi["total_common_stock_percent_at_close"] == 21.4
+    assert sbi["class_c_non_voting"] is True
+
+    assert ripple["combined_ripple_group_voting_power_percent_at_close"] == 9.9
+    assert ripple["combined_ripple_group_common_stock_percent_at_close"] == 4.2
+
+    assert sponsor["voting_power_percent_at_close"] == 19.9
+    assert sponsor["total_common_stock_percent_at_close"] == 61.4
