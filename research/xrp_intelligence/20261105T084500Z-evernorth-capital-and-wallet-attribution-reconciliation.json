@@ -140,10 +140,11 @@
       "cash_used_to_purchase_xrp": 214100000,
       "xrp_purchased_with_cash": 84365876.3625,
       "execution_venue": "not disclosed in the cited prospectus section",
-      "interpretation": "Actual historical cash raised and used to acquire 84,365,876.3625 XRP. This is a 2025 transaction, not new Nov 2026 capital or a current spot-flow observation.",
+      "interpretation": "Actual historical cash raised was $214,049,995. The financial statements record $214,000,000 used to purchase 84,365,876.3625 XRP and $49,995 remaining as restricted cash at Dec 31, 2025. This is historical capital, not a Nov 2026 flow.",
       "source": "sec_evernorth_424b3_20261030",
       "cash_raised_rounded_usd": 214100000,
-      "cash_used_to_purchase_xrp_usd": 214049995
+      "cash_used_to_purchase_xrp_usd": 214000000,
+      "remaining_restricted_cash_as_of_2025_12_31_usd": 49995
     },
     "ripple_pathfinder_contribution": {
       "xrp_contributed": 126791458,
@@ -155,7 +156,7 @@
     "company_reported_xrp": {
       "issuer_approximate_xrp_as_of_2026_10_09": 473000000,
       "primary_component_reconstruction_xrp": 473276430.423935,
-      "component_calculation": "388,910,554.061435 XRP contributed in kind + 84,365,876.3625 XRP purchased with advance-funding cash",
+      "component_calculation": "388,910,554.061435 XRP contributed in kind + 84,365,876.3625 XRP purchased with $214,000,000 historical cash",
       "proxy_expected_minimum_xrp_at_closing": 473276430,
       "proxy_expected_date": "2026-08-27",
       "proxy_interpretation": "Expected minimum at closing in the Aug 27 proxy/prospectus; not a separate post-close exact wallet attestation.",
@@ -240,7 +241,8 @@
       "entity": "Pathfinder Digital Assets LLC / Company, a subsidiary in the Evernorth structure",
       "contributor": "Ripple Labs Inc.",
       "classification": "Ripple in-kind XRP contribution to Pathfinder; not cash proceeds and not an open-market purchase by Evernorth",
-      "source": "sec_evernorth_closing_8k_20261009"
+      "source": "sec_evernorth_s1_20261030",
+      "additional_source": "sec_evernorth_closing_8k_20261009"
     }
   },
   "eloc_facility": {
@@ -340,7 +342,7 @@
     "actual_private_placement_cash_usd_approx": 224600000,
     "actual_trust_account_cash_usd_approx": 48000000,
     "actual_advance_funding_cash_usd": 214049995,
-    "actual_cash_used_to_buy_xrp_usd": 214049995,
+    "actual_cash_used_to_buy_xrp_usd": 214000000,
     "actual_xrp_purchased_with_cash": 84365876.3625,
     "actual_in_kind_xrp_at_closing": 388910554.061435,
     "actual_related_party_debt_drawn_usd_as_of_2026_10_07": 9700000,
@@ -350,7 +352,8 @@
     "contingent_public_warrant_cash_ceiling_usd": 132249908,
     "contingent_sponsor_warrant_cash_ceiling_usd": 2756009.5,
     "upcoming_commitment_fee_outflow_usd": 521893.5,
-    "rule": "Do not combine gross closing cash, private-placement cash, XRP purchased with cash, in-kind XRP, trust proceeds, PIK debt, related-party debt, potential ELOC proceeds, warrant exercise capacity, fees and wallet movements into one 'capital' number."
+    "rule": "Do not combine gross closing cash, private-placement cash, XRP purchased with cash, in-kind XRP, trust proceeds, PIK debt, related-party debt, potential ELOC proceeds, warrant exercise capacity, fees and wallet movements into one 'capital' number.",
+    "remaining_restricted_cash_2025_12_31_usd": 49995
   },
   "competing_hypotheses": [
     {

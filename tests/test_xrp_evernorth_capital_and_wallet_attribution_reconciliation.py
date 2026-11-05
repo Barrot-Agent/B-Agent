@@ -15,6 +15,8 @@ def test_closing_cash_and_xrp_components_are_separated():
     stack = data["actual_capital_stack"]
     placement = stack["private_placement_subscription_agreements"]
     assert placement["cash_raised_usd"] == 214_049_995
+    assert placement["cash_used_to_purchase_xrp_usd"] == 214_000_000
+    assert placement["remaining_restricted_cash_as_of_2025_12_31_usd"] == 49_995
     assert math.isclose(placement["xrp_purchased_with_cash"], 84_365_876.3625, abs_tol=1e-6)
     assert math.isclose(stack["in_kind_xrp_at_closing"]["total_xrp"], 388_910_554.061435, abs_tol=1e-6)
     assert stack["closing_gross_cash_proceeds"]["total_gross_cash_usd_approx"] == 272_600_000
@@ -27,6 +29,7 @@ def test_closing_cash_and_xrp_components_are_separated():
     )
     assert stack["company_reported_xrp"]["issuer_approximate_xrp_as_of_2026_10_09"] == 473_000_000
     assert stack["company_reported_xrp"]["proxy_expected_minimum_xrp_at_closing"] == 473_276_430
+    assert data["actual_capital_taxonomy"]["actual_cash_used_to_buy_xrp_usd"] == 214_000_000
 
 
 def test_pik_notes_and_ripple_credit_are_separate_debt_categories():
