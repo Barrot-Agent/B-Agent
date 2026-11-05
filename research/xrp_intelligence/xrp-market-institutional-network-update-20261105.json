@@ -127,6 +127,33 @@
       "published_date": "2026-10-16",
       "retrieval_time_utc": null,
       "capture_status": "rendered search excerpt"
+    },
+    {
+      "source_id": "SBIC_EAST_TOKYO_OFFICIAL_PROFILE_20261105",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "primary company profile",
+      "independence_group": "SBIC East legal entity",
+      "url": "https://www.sbic.co.jp/",
+      "retrieval_time_utc": null,
+      "capture_status": "rendered official company page; raw bytes unavailable"
+    },
+    {
+      "source_id": "SBIC_CENTRAL_NAGOYA_OFFICIAL_PROFILE_20261105",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "primary company profile",
+      "independence_group": "SBIC Central legal entity",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "retrieval_time_utc": null,
+      "capture_status": "rendered official company profile; raw bytes unavailable"
+    },
+    {
+      "source_id": "SBIC_WEST_OSAKA_OFFICIAL_PROFILE_20261105",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "primary company profile",
+      "independence_group": "SBIC West legal entity",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "retrieval_time_utc": null,
+      "capture_status": "rendered official company profile; raw bytes unavailable"
     }
   ],
   "market_snapshot": {
@@ -474,5 +501,44 @@
   "directional_forecast_issued": false,
   "paper_trade_executed": false,
   "real_money_action": false,
-  "external_mutation": false
+  "external_mutation": false,
+  "sbic_identity_disambiguation": {
+    "conclusion": "SBIC East, Central and West are three regional Small and Medium Business Investment & Consultation companies, not SBI Holdings. Their legal names, domains and regional profiles are distinct. Central and West explicitly identify the other regional companies as sister companies. The retrieved primary profiles do not establish an SBI Holdings ownership or control relationship; no such relationship is inferred.",
+    "entities": [
+      {
+        "region": "East",
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "abbreviation": "SBIC East / Tokyo",
+        "official_url": "https://www.sbic.co.jp/",
+        "evidence": "The official Tokyo company site identifies the Tokyo legal entity and its English name; it describes the investment-development scheme as a policy institution under the Small and Medium Business Investment & Consultation Companies Act."
+      },
+      {
+        "region": "Central",
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "abbreviation": "SBIC Central Japan",
+        "official_url": "https://www.sbic-cj.co.jp/company/about/",
+        "established": "1963-11-18",
+        "operating_region": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+        "sister_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+        ]
+      },
+      {
+        "region": "West",
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "abbreviation": "SBIC West Japan",
+        "official_url": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "established": "1963-11-20",
+        "operating_region": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+        "sister_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Nagoya Small and Medium Business Investment & Consultation Co., Ltd."
+        ]
+      }
+    ],
+    "distinct_from": "SBI Holdings Co., Ltd., the separate Japanese financial group at https://www.sbigroup.co.jp/.",
+    "relationship_limit": "Acronym similarity does not establish parentage, ownership, control, partnership or XRP exposure. The retrieved regional company profiles do not name SBI Holdings as their parent or controlling shareholder.",
+    "retrieval_time_policy": "Exact page retrieval timestamps and raw HTTP bytes were unavailable; these are identity/relationship research records, not point-in-time market features."
+  }
 }

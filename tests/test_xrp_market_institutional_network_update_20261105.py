@@ -120,3 +120,19 @@ def test_etf_timestamp_correction_is_exact_blob_bound_and_preserves_unbound_ance
     assert earlier.exists()
     earlier_overlay = json.loads(earlier.read_text(encoding="utf-8"))
     assert "target_artifact_blob_sha" not in earlier_overlay
+
+
+def test_sbic_east_central_west_are_distinct_regional_entities_not_sbi_holdings():
+    data = load_artifact()
+    identity = data["sbic_identity_disambiguation"]
+    entities = {item["region"]: item for item in identity["entities"]}
+    assert entities["East"]["legal_name"] == "Tokyo Small and Medium Business Investment & Consultation Co., Ltd."
+    assert entities["Central"]["abbreviation"] == "SBIC Central Japan"
+    assert entities["West"]["abbreviation"] == "SBIC West Japan"
+    assert entities["Central"]["legal_name"].startswith("Nagoya ")
+    assert entities["West"]["legal_name"].startswith("Osaka ")
+    assert "Osaka Small and Medium Business Investment & Consultation Co., Ltd." in entities["Central"]["sister_companies"]
+    assert "Nagoya Small and Medium Business Investment & Consultation Co., Ltd." in entities["West"]["sister_companies"]
+    assert "not SBI Holdings" in identity["conclusion"]
+    assert "does not establish parentage" in identity["relationship_limit"]
+    assert all(item["retrieval_time_utc"] is None for item in data["source_registry"] if item["source_id"].startswith("SBIC_"))
