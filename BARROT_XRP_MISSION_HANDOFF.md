@@ -3685,3 +3685,69 @@ Recorded: 2026-11-05T06:27Z–06:35Z
 **Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.** No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 
 This Run 29 handoff update is committed on the existing #1640 integration branch. Its resulting documentation-only head must receive exact-head CI and fail-closed verification before it is described as verified.
+
+
+### Run 30 — nine-platform map, institutional custody update and final research-head tests
+Recorded: 2026-11-05T06:36Z–06:44Z
+
+#### Nine-platform capability/authentication map
+- New dated artifact on #1643: `research/xrp_intelligence/20261105T063600Z-nine-platform-capability-authentication-map.json`.
+- Regression tests: `tests/test_xrp_nine_platform_capability_authentication_map.py` (6 tests).
+- The artifact updates the preserved draft #1597 map; the old branch and artifact remain untouched.
+- All nine platforms are represented: ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks.
+- Only ChatGPT current session is counted as a verified live platform. The ChatGPT-to-GitHub repository connector is verified for reads, existing-PR-branch writes, PR metadata and workflow evidence.
+- Copilot review comments are observed GitHub events only; they do not establish a persistent Copilot connection or ChatGPT-to-Copilot data exchange.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified. Prior Hugging Face BUILD_ERROR and Databricks HTTP 403 remain recorded.
+- Structured evidence packets, independent task roles, source-independence checks, disagreement retention, minority objections, red-team review, least privilege and fallbacks are encoded. **No live nine-platform network is claimed.**
+
+#### Final #1643 research-head verification
+- Current #1643 head: `0c132a1151c987bcd1e0f408243a681543aaa47f`; 147 commits ahead, 0 behind; 120 changed files; no changed-path overlap with #1640.
+- Exact-head core suite: **495 passed, 8 subtests**.
+- Exact-head full repository suite [41982038530](https://github.com/Barrot-Agent/B-Agent/actions/runs/41982038530): **882 passed, 8 subtests**.
+- Exact-head fail-closed gate [41982038526](https://github.com/Barrot-Agent/B-Agent/actions/runs/41982038526) passed and kept merging disabled.
+- The BNY/C2FO artifact and its regression tests, plus the nine-platform map and its six regression tests, are included in the full-suite pass.
+- Two intermediate-head failures were test-assertion text-normalization errors. Both were corrected before the current head; the current exact head passes.
+- #1643 changes no dependency manifests; all six dependency-manifest blob hashes match current main. The dependency-audit workflow did not run on this exact research-only head, so no exact-head audit is claimed. This remains an explicit pre-merge security-check item.
+
+#### Additional institutional evidence
+- BNY's October 27, 2026 primary announcement reports Digital Asset Custody support for native XRP and RLUSD for eligible institutional clients. No asset-specific custody balances, client count, XRP purchases or XRP collateral are disclosed. BNY's primary reserve-custody role is for RLUSD, not XRP. Direct RLUSD mint/redeem through BNY is future work subject to final approvals.
+- Ripple/C2FO announced C2FO Instant Pay as an XRPL/RLUSD settlement initiative funded by participating capital providers and presented with a waitlist. No production launch, funded amount, provider identities or actual settlement volume is verified. The stated settlement asset is RLUSD; no XRP bridge, collateral or principal settlement role is established.
+- C2FO's more-than-$525B and Ripple's more-than-$520B figures refer to historical Early Pay programs, not the new Instant Pay initiative. Both rounded lower-bound claims are preserved without averaging. BNY's $63.4T AUC/AUA figure is BNY-wide and is not XRP-specific custody.
+- The institutional artifact remains model-ineligible because original response bytes, SHA-256 receipts and independent timestamp anchors were not captured.
+
+#### Kamilah/Camilla Stevenson identity checkpoint
+- The official `learn.kamilahstevenson.com` site identifies Dr. Kamilah Stevenson as an investing educator and describes her investing/crypto program.
+- A Linktree profile `DrKamilahstevenson1`, joined October 2026, self-describes as an XRP educator and links to YouTube `@drkamilahstevenson`.
+- The official finance site does not expose a direct cross-link to that Linktree/YouTube account in the retrieved page. A third-party channel analytics page associates channel ID `UCqUPJMQdkCN6lsLVDnichPA` with Kamilah Stevenson, but it is not primary identity evidence.
+- Treat these as candidate identity links only. **No public YouTube video inventory was created**, because channel ownership and the relationship among the candidate accounts have not been independently verified.
+
+#### Exact-phrase checkpoint
+- ASK Coin: Permission Coin (ASK) remains a candidate; a separate inactive/untracked Ask Coin listing also exists. No XRP/XRPL relationship is established.
+- “Actual capital”: continue separating cash actually received/deployed, committed facilities, in-kind XRP contributions, collateral, notional derivatives exposure and historical working-capital facilitated. No new primary source establishes a direct XRP capital flow from the exact phrase alone.
+- “SBIC, ChatGPT SBIC”: official SBIC East training included ChatGPT/Copilot for investee companies in 2025; it does not establish an OpenAI partnership. SBIC East/Central/West remain distinct from SBI Holdings.
+
+#### Current integration and backlog
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no merge or main write occurred.
+- PR #1640 handoff head before this Run 30 update: `ec218bc2c04ce6e89bfd8fefd7f572fc935ad840`; exact full suite **891 passed, 8 subtests**, coverage **53.55%**; six-manifest dependency audit passed; fail-closed gate passed.
+- PR #1640's latest exact evidence: [CI 41981543158](https://github.com/Barrot-Agent/B-Agent/actions/runs/41981543158), [dependency audit 41981543153](https://github.com/Barrot-Agent/B-Agent/actions/runs/41981543153), [gate 41981543169](https://github.com/Barrot-Agent/B-Agent/actions/runs/41981543169).
+- Open inventory: **370** PRs, **354 drafts**, **16 non-drafts**. #1640 and #1643 remain the only active integration workstreams.
+- #1642 is an exact ancestor/superseded source pending main verification. #1644–#1650 dependency updates are represented in #1640. #1651, #1615, #1621 and #1269 retain unique work. #1317/#1318/#1320 retain unique hunks.
+- Draft #1597 is partially superseded by the updated nine-platform map; preserve its other unique research. #1547's BNY/C2FO subset is partly represented by the new artifact; preserve other unique claims. #1508 remains unique. #1608 is partially superseded (one overlapping path, two unique); #1614 is partially overlapping (22 paths overlap, 35 unique). No PRs were closed.
+
+#### Merge and safety boundary
+- Both #1640 and #1643 have zero approving reviews; all current review threads are resolved (22/22 and 14/14).
+- Repository metadata reports Pages enabled and auto-merge allowed. The only visible fallback ruleset (ID 10863829) is disabled; branch-protection detail returns HTTP 403. Required protection/approval settings cannot be independently verified.
+- Main still has push-to-main deployment triggers in `.github/workflows/deploy-a2a-worker.yml` and `.github/workflows/sync-self-hosted-brain.yml`; #1640 changes them to manual, main-only, explicit-confirmation workflows. GitHub Pages remains a separate enabled deployment side effect; prior deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) succeeded. Authorization for another merge-triggered Pages deployment remains unresolved.
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+#### Next concrete actions
+1. Obtain independent approving reviews and verify branch-protection/check requirements.
+2. Resolve GitHub Pages deployment authorization before any main push.
+3. Merge #1640 only after every required condition passes; fetch main again, verify the merge commit/files and run main CI.
+4. Reconcile #1643 with the resulting main without rewriting history; rerun exact-head full suite, fail-closed gate and an appropriate dependency/security check before merge.
+5. Reconcile #1597, #1547, #1508, #1608 and #1614 claim-by-claim; close only exact superseded sources after merged content is verified on main.
+6. Continue durable raw-source storage, independent timestamp anchoring, complete historical XRP datasets, evaluator trust configuration and leakage-safe out-of-sample evaluation.
+
+**Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.**
+
+This Run 30 handoff update is committed on the existing #1640 integration branch. Its resulting documentation-only head must receive its own exact-head CI, dependency audit and fail-closed verification before that new head is described as verified.
