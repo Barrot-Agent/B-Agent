@@ -1045,13 +1045,13 @@ def run_ingestion(
             },
         )
 
-    checkpoint = store.checkpoint()
     evaluation_as_of = datetime.now(timezone.utc)
     evaluation_as_of_s = _iso(evaluation_as_of)
     walk_forward, history_records = _walk_forward_report(
         store,
         evaluation_as_of_utc=evaluation_as_of_s,
     )
+    checkpoint = store.checkpoint()
     _write_json(output / "walk_forward.json", walk_forward)
 
     _write_json(output / "receipt_manifest.json", receipts)
@@ -1081,6 +1081,7 @@ def run_ingestion(
         "feature_store_checkpoint": checkpoint,
         "feature_store_snapshot_count": store.snapshot_count(),
         "feature_store_history_record_count": len(history_records),
+        "feature_store_restore_source": os.getenv("BARROT_FEATURE_STORE_RESTORE_SOURCE", "unknown"),
         "walk_forward_status": walk_forward["overall_status"],
         "walk_forward_forecast_count": walk_forward["forecast_count"],
         "forecast_status": "NOT_ISSUED",
