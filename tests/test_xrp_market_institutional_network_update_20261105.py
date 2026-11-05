@@ -136,3 +136,39 @@ def test_sbic_east_central_west_are_distinct_regional_entities_not_sbi_holdings(
     assert "not SBI Holdings" in identity["conclusion"]
     assert "does not establish parentage" in identity["relationship_limit"]
     assert all(item["retrieval_time_utc"] is None for item in data["source_registry"] if item["source_id"].startswith("SBIC_"))
+
+
+def test_sbi_circle_usdc_alliance_and_jv_are_distinct_from_ripple():
+    events = {x["source_id"]: x for x in load_artifact()["institutional_network"]["dated_disclosures"]}
+    circle = events["SBI_CIRCLE_RIPPLE_EQUITY_20250609"]
+    assert "November 2023" in circle["usdc_alliance"]
+    assert "March 2025" in circle["usdc_alliance"]
+    assert "Circle SBI Japan KK" in circle["joint_venture"]
+    assert "not independently verified completion" in circle["joint_venture"]
+    assert "not XRP purchases" in circle["xrp_limit"]
+
+
+def test_jpysc_lending_balance_and_smbc_stake_are_actual_but_not_xrp_capital():
+    events = {x["source_id"]: x for x in load_artifact()["institutional_network"]["dated_disclosures"]}
+    lending = events["SBI_JPYSC_LENDING_BALANCE_20261102"]
+    smbc = events["SBI_SMBC_JPYSC_CAPITAL_ALLIANCE_20261030"]
+    jgb = events["SBI_JPYSC_JGB_20260907"]
+    assert "JPY 10B" in lending["relation"]
+    assert "JPY 30B" in lending["relation"]
+    assert "customer-to-platform" in lending["product_semantics"]
+    assert "not equivalent" in lending["handled_balance_limit"]
+    assert "5% equity stake" in smbc["capital"]
+    assert "amount not disclosed" in smbc["amount"]
+    assert jgb["jgb_share_of_issuance_pct"] == pytest.approx(49.75124378)
+    assert "50% ceiling" in jgb["reserve_limit"]
+
+
+def test_blackrock_mou_and_open_standard_are_exploratory_not_production_or_xrp():
+    events = {x["source_id"]: x for x in load_artifact()["institutional_network"]["dated_disclosures"]}
+    blackrock = events["SBI_BLACKROCK_JPYSC_TOKENIZED_MMF_MOU_20261027"]
+    open_standard = events["SBI_STARTALE_OPEN_STANDARD_20261016"]
+    assert "basic agreement" in blackrock["relation"]
+    assert "no production service" in blackrock["status"]
+    assert "Coinbase is named" in open_standard["coinbase_status"]
+    assert "not USDC or RLUSD" in open_standard["ousd_limit"]
+    assert "does not mean a new service" in open_standard["ousd_limit"]
