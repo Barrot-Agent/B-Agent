@@ -5070,3 +5070,124 @@ Neither PR was merged. No branch-protection bypass, deployment, secret rotation,
 ### Next concrete action
 
 Obtain independent approving reviews and verify the actual branch-protection requirements; resolve the automatic GitHub Pages deployment side effect. Only then merge #1640 if every exact-head condition remains satisfied, fetch main again, verify the merge commit/files and run main CI. After that, build one consolidated successor on the new main from #1643's unique research content, run full-suite, six-manifest dependency/security and fail-closed checks on its exact head, and merge only when approvals and deployment authorization are satisfied. Keep directional forecast issuance disabled until durable, timestamped, synchronized historical data and calibrated out-of-sample/shadow results meet the forecast readiness gates.
+
+
+## Run 11 — 2026-11-05T15:10Z: exact-head verification, path-overlap correction, and research reconciliation
+
+### Current main and complete repository inspection
+
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Recursive main tree: 1,403 entries; 493 Python files; 86 GitHub workflow files; `truncated=false`.
+- Current open PR inventory: 370 total, 354 drafts, 16 non-drafts.
+- Main's copy of this handoff is stale and still reports main SHA `58425d038a0a16082267d9de28757fd5c4eb499d`. Do not treat that copy as current. The current execution handoff is maintained on the existing #1640 integration branch; do not write directly to main.
+
+### PR #1640 — V3/core integration
+
+- Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
+- Exact code head verified: `79e790aff52c21b66f95710251c8dcf7e7254197`.
+- 286 commits ahead of main, zero behind; 92 changed files.
+- Core suite: 606 passed, 8 subtests.
+- Full repository suite: 958 passed, 8 subtests.
+- Inclusive package coverage: 55.31%, above the 50% floor.
+- Installed wheel and packaged primary-mission verification passed.
+- Six-manifest strict dependency audit passed with no known vulnerabilities.
+- Fail-closed merge gate passed and explicitly disabled automatic merging.
+- Exact evidence:
+  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42049369990
+  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42049369997
+  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42049370125
+- The Actions cache budget is read-only. Cache-save failure was non-fatal; tests, coverage, packaging and dependency audit succeeded.
+
+### PR #1643 — XRP research archive
+
+- Branch: `research/xrp-evidence-archive-20261104`.
+- Exact current head: `8827a1602d881d48e8dba7ccce2430bde45be139`.
+- 232 commits ahead of main, zero behind; 184 changed files.
+- Core suite: 495 passed, 8 subtests.
+- Full repository suite: 1,047 passed, 8 subtests.
+- Exact-head dependency audit passed.
+- Fail-closed gate passed and kept automatic merging disabled.
+- Exact evidence:
+  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42051740050
+  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42051740060
+  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42051740061
+- The preceding head `fcb59be9d51696e47086ea50f643e35ff165c135` had 1,046 passing tests and one failing identity-evidence assertion. The artifact's evidence string began with capitalized “First-person”; the test incorrectly compared a lowercase phrase case-sensitively. Commit `8827a1602d881d48e8dba7ccce2430bde45be139` changed only the assertion to compare case-insensitively. The artifact was not changed. The complete exact-head suite then passed 1,047 tests.
+
+### Branch ancestry and corrected changed-path overlap
+
+A fresh comparison corrected an earlier inaccurate statement that the two integration branches had zero changed-path overlap.
+
+- #1640 changes 92 paths.
+- #1643 changes 184 paths.
+- There is exactly one shared changed path: `.github/workflows/dependency-audit.yml`.
+- The file has the identical blob SHA `6515307991420ab90d8671034b13ac2eb56190b3` on both branches. The contents are identical; this is a shared identical change, not a content conflict.
+- The shared workflow adds research/test path coverage and audits six dependency declarations, including PEP 621 dependencies.
+- The branches are nevertheless history-diverged: relative to #1640, #1643 is 232 commits ahead and 286 commits behind. If #1640 merges, #1643 must not be merged directly or rewritten. Build one consolidated successor directly on the resulting current main, carrying #1643's unique research artifacts/tests and omitting the now-merged identical dependency-audit path. Preserve the source branch and identify it as superseded only after successor content is verified on main.
+
+### New exact-phrase and identity resolution
+
+- The primary academic meaning of “SBIC” in the ChatGPT benchmark is **Social Bias Inference Corpus**, introduced by Sap et al. (ACL 2020): https://aclanthology.org/2020.acl-main.486/.
+- Ziems et al. (Computational Linguistics, 2024) reports 65.9% for GPT-3.5/ChatGPT on the SBIC generation task. Table 7 defines this as the proportion of pairwise rankings where authors unanimously preferred a model generation to a human gold explanation. It is not classification accuracy, general factual accuracy, current-model performance, or market-prediction skill: https://aclanthology.org/2024.cl-1.8.pdf.
+- The primary paper distinguishes CovidET as a separate task. A secondary review expands SBIC as “COVID-19 Social and Behavioral Impacts Corpus”; this conflicts with the primary definition and remains a preserved secondary-source disagreement.
+- Japan's SBIC East, SBIC Central and SBIC West are separate regional investment/consultation companies. They are unrelated to the academic dataset and are not SBI Holdings. No XRP, Ripple, Coinbase or Circle relationship is inferred from the acronym collision.
+- New artifact: `research/xrp_intelligence/20261105T143014Z-sbic-chatgpt-exact-phrase-disambiguation.json`; seven regression tests passed on #1643.
+
+### Kamilah Stevenson public-video inventory
+
+- First-person website and matching Linktree evidence strongly corroborate the public identity as Dr. Kamilah Stevenson.
+- One directly linked public video is recorded: “My Top 10 Digital Assets — What They Do & Why I Hold Them”, YouTube ID `OvODErBT9Ug`.
+- The YouTube channel page returned only a static shell/throttled response. Canonical channel ownership is not independently verified; the inventory is not exhaustive; video content was not reviewed. “Camilla” remains an unestablished spelling variant.
+- The artifact is research-only and model-ineligible: `research/xrp_intelligence/20261105T150100Z-kamilah-stevenson-youtube-identity-and-video-inventory.json`.
+
+### SBI VC Trade, Circle, Coinbase, Ripple and capital-flow distinctions
+
+- SBI VC Trade's official October 27, 2026 article ranks RLUSD first by rate of increase in customer assets held during September 2026, ahead of JPYSC and TON. It publishes no absolute RLUSD balance, net deposits, net purchases or XRP conversions. This is a relative custody/holdings-growth signal, not actual XRP capital or XRP demand: https://www.sbivc.co.jp/columns/content/2pxt8odwr.
+- Circle's November 4 Q3 2026 issuer release reports average USDC circulation of $73.3B (+8% YoY), quarter-end circulation of $73.9B (flat YoY), $13.9T gross on-chain transaction volume (+49%), $104B gross minted and $104B gross redeemed, 27% stablecoin market share (down 183 bps), and $41.3B CPN annualized TPV. CPN TPV is based on a trailing 30-day period annualized, not realized Q3 net settlement or XRP volume.
+- Circle's Q3 release also reports a definitive Tazapay acquisition agreement expected to close in 2027 subject to regulatory approval; Arc public mainnet launched September 16 with 100+ institutional/ecosystem builders; and $182M ARC presale revenue. The ARC presale accounts for most of Q3 other revenue, so the 85% adjusted-EBITDA increase is not purely recurring payment economics.
+- Circle's SEC Form 8-K confirms Binance purchased 1,237,011 Circle Class A shares at $80.84 for $100M gross proceeds, with closing on September 17, 2026, and a five-year USDC commercial arrangement. This is actual equity capital into Circle, not XRP investment or XRP demand.
+- Sources: Circle Q3 release PDF https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/earnings-result/3Q26-Earnings-Release.pdf; Circle IR https://investor.circle.com/overview/; SBI VC Trade article above; Circle SEC filing https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm.
+- All issuer/aggregator observations remain model-ineligible without byte-exact raw captures, SHA-256 receipts and independent publication/first-seen timestamps.
+
+### Spot depth, derivatives and ETF-flow disagreement
+
+- The November 5 14:00 UTC Fuelmaps snapshot reported six-venue near-price depth: within 0.5%, bids $9.4M versus asks $5.2M; within 1%, $11.8M versus $8.4M; within 2%, $13.3M versus $10.5M; within 5%, $19.1M versus $16.7M; within 10%, $22.6M versus $20.4M with only five of six venues contributing. Full-depth venues were Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken contributed near-price-only data; Binance and Bitget were excluded. Resting orders can be cancelled and are not executed flow or guaranteed support.
+- The 14:36 UTC Kraken XRP/USD observation recorded last $1.30249, bid/ask $1.30244/$1.30245, spread 0.076779 bps, 24-hour volume 36.263M XRP and 24-hour VWAP $1.31185426. Kraken's open field is the UTC-day open ($1.3041), not a rolling 24-hour open. The API response lacked an independently anchored provider timestamp.
+- Kodexius reported $884.08M OI across seven contracts/five venues; TradRadar displayed a rounded $2.06B across seven venues and $2.06472B from displayed exchange rows. The 2.33x dashboard difference is preserved, not averaged; venue and contract universes differ. Both displayed weighted funding near +0.01% per eight hours. This does not establish direction.
+- XRP Insights reports a November 2–4 holdings delta of -259,701 XRP across a seven-ticker universe and 1.19634B XRP held; CryptoKeyhole reports -3,339 XRP on November 3 complete and November 4 partial at three of four funds; Alpha Finance and Maketo display zero USD for November 4 with different universes/methods. These are holdings-derived values, not verified AP cash creations/redemptions. GXRP flow is excluded, XRPR direct-only holdings omit indirect ETP exposure, and BITW is an index sleeve. Do not average or treat excluded/partial values as zero.
+- The full artifacts preserve source universes, time cutoffs, arithmetic corrections and counter-hypotheses. No market observation in this section is model-eligible.
+
+### Workflow/security review and external-action boundary
+
+- The 28 changed workflow files on #1640 were reviewed for triggers, permissions, credentials and mutation commands.
+- The XRP collector is scheduled/manual but read-only (`actions: read`, `contents: read`); it is not active on main.
+- Legacy automatic writers, issue-driven dispatch, task allocation, subagent spawning, self-upgrade and other unrestricted workflows are quarantined or disabled.
+- Manual external workflows remain explicit and were not run: Databricks workspace import uses `--overwrite`; Kaggle workflow step downloads a dataset (no submission); Cloudflare A2A deployment and Hugging Face brain sync require explicit `YES` and exact main SHA; Coinbase paper simulation requires explicit `YES` and exact main SHA and can write its state/log files to main. These require separate per-run authorization. Groq signal summary is a separate provider and is not Grok or one of the nine platforms.
+- A previous main push triggered successful GitHub Pages deployment (run 41799855489). Pages settings remain inaccessible; authorization for another merge-triggered Pages deployment is unresolved.
+
+### PR inventory and merge blockers
+
+Current non-draft inventory:
+- Active integration: #1640 and #1643.
+- Exact ancestor/superseded candidate: #1642.
+- Dependency changes represented in #1640: #1644–#1650.
+- Unique/unreviewed: #1651; preserve unique portions of #1317, #1318 and #1320; #1269 remains unique geometry work.
+- Older dependency candidates #1254/#1255 are superseded by the versions in #1640, but remain open until main verification.
+- Total open: 370; drafts: 354; non-drafts: 16. No unique PRs were bulk-closed.
+
+Review state:
+- #1640: 22/22 review threads resolved; zero APPROVED reviews. Copilot and CodeRabbit submissions are COMMENTED, not approvals.
+- #1643: 14/14 review threads resolved; zero APPROVED reviews.
+- GitHub reports both PRs mergeable, but detailed main branch-protection inspection returns HTTP 403. The visible repository ruleset is disabled. Do not infer required-review enforcement from missing API access.
+- Neither PR was merged. No branch-protection bypass, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Forecast and next action
+
+Forecast status remains `NOT_ISSUED`. The historical dataset, raw-source durability, independent timestamp anchoring, point-in-time feature admission, out-of-sample lift, probability calibration and shadow outcomes do not yet meet issuance requirements.
+
+Next:
+1. Obtain independent approving reviews and verify actual branch-protection requirements.
+2. Resolve the GitHub Pages merge-triggered deployment authorization.
+3. Reverify #1640's new documentation successor exact-head full suite, six-manifest audit and fail-closed gate, then merge only if all required conditions are satisfied.
+4. Fetch main after merge, verify the merge commit/files, inspect automatic workflow side effects and run main CI.
+5. Build one consolidated successor directly on the resulting main from #1643's 183 unique research paths/tests, omit the identical dependency-audit file already on main, preserve #1643 history, and run exact-head full-suite, dependency/security and fail-closed checks before any merge.
+6. Close only exact superseded source PRs after successor content is verified on main.
