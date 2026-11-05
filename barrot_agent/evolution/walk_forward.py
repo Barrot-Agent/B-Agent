@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from bisect import bisect_left
 import math
 import statistics
 from collections.abc import Iterable, Mapping
@@ -130,12 +131,22 @@ def _nearest_record(
     target_time: datetime,
     tolerance_seconds: int,
 ) -> dict[str, Any] | None:
+    """Find the nearest event in a list already sorted by event_time_utc."""
+    if not records:
+        return None
+    index = bisect_left(
+        records,
+        target_time,
+        key=lambda item: _utc(item["event_time_utc"], "event_time_utc"),
+    )
     candidates = []
-    for record in records:
-        event_time = _utc(record["event_time_utc"], "event_time_utc")
-        difference = abs((event_time - target_time).total_seconds())
-        if difference <= tolerance_seconds:
-            candidates.append((difference, event_time, record))
+    for candidate_index in (index - 1, index):
+        if 0 <= candidate_index < len(records):
+            record = records[candidate_index]
+            event_time = _utc(record["event_time_utc"], "event_time_utc")
+            difference = abs((event_time - target_time).total_seconds())
+            if difference <= tolerance_seconds:
+                candidates.append((difference, event_time, record))
     if not candidates:
         return None
     candidates.sort(key=lambda item: (item[0], item[1]))
@@ -403,20 +414,21 @@ def evaluate_chronological_walk_forward(
             if start_event >= current_event:
                 continue
             start_available = _available_at(start)
-            training_target_time = start_available + timedelta(seconds=horizon_seconds)
-            if training_target_time > cutoff:
+            if start_available > cutoff:
                 continue
+            # The target is defined by market event time, not by when a
+            # historical backfill happened to be ingested. Availability is a
+            # separate guard: the outcome bar must already be known by cutoff.
+            training_target_time = start_event + timedelta(seconds=horizon_seconds)
             outcome = _nearest_record(
-                [
-                    item for item in series
-                    if _utc(item["event_time_utc"], "event_time_utc") > start_event
-                    and _utc(item["event_time_utc"], "event_time_utc") <= cutoff
-                    and _available_at(item) <= cutoff
-                ],
+                series,
                 training_target_time,
                 target_tolerance_seconds,
             )
             if outcome is None or outcome["record_id"] == start["record_id"]:
+                continue
+            outcome_event = _utc(outcome["event_time_utc"], "event_time_utc")
+            if outcome_event <= start_event or outcome_event > cutoff or _available_at(outcome) > cutoff:
                 continue
             realized = _price(outcome) / _price(start) - 1.0
             training_returns.append(realized)
