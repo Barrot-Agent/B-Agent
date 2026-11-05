@@ -1,7 +1,7 @@
 """Evidence-based comparison for recursive self-improvement."""
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 import math
 from types import MappingProxyType
 from typing import Mapping
@@ -46,7 +46,18 @@ class ImprovementAssessment:
 
     def to_dict(self) -> dict:
         """Return a JSON-compatible assessment."""
-        return asdict(self)
+        return {
+            "eligible": self.eligible,
+            "improved": self.improved,
+            "score": self.score,
+            "baseline_run_id": self.baseline_run_id,
+            "candidate_run_id": self.candidate_run_id,
+            "baseline_revision": self.baseline_revision,
+            "candidate_revision": self.candidate_revision,
+            "metric_deltas": dict(self.metric_deltas),
+            "regressions": list(self.regressions),
+            "reason": self.reason,
+        }
 
 
 def assess_improvement(
@@ -79,7 +90,10 @@ def assess_improvement(
         normalized.append(scaled)
         if raw < -tolerance:
             regressions.append(name)
-    score = math.fsum(normalized) / len(normalized)
+    try:
+        score = math.fsum(normalized) / len(normalized)
+    except OverflowError as exc:
+        raise ValueError("non-finite aggregate improvement score") from exc
     if not math.isfinite(score):
         raise ValueError("non-finite aggregate improvement score")
     improved = not regressions and score > 0.0
