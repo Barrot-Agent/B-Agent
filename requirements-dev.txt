@@ -2,6 +2,8 @@
 
 # Testing
 build>=1.6.1
+setuptools>=68.0
+wheel
 pytest>=9.2.0
 pytest-cov>=7.1.0
 pytest-mock>=3.17.0
