@@ -248,11 +248,17 @@ class UpgradeFlywheel:
             registry_path=self._platform_dir / "mcp_registry.json",
         )
         total_targets = max(1, len(CAPABILITY_TARGETS))
-        coverage_after = max(0.0, min(1.0, (total_targets - len(infra.gaps)) / total_targets))
+        estimated_coverage = max(0.0, min(1.0, (total_targets - len(infra.gaps)) / total_targets))
         checks = [
             f"{'✅' if observation.smart_agent_events > 0 else '❌'} SmartAgent emitted events.",
-            f"{'✅' if len(action.applied_improvements) > 0 else '❌'} Improvements were selected.",
-            f"{'✅' if coverage_after > 0.0 else '❌'} Post-cycle capability coverage: {coverage_after:.1%}",
+            f"{'✅' if action.verified_improvements else '❌'} Independent change verification evidence recorded.",
+            "❌ Actual post-change capability coverage is not measured; reported coverage is an estimate.",
         ]
-        passed = all(line.startswith("✅") for line in checks)
-        return VerificationResult(passed=passed, checks=checks, coverage_after=coverage_after)
+        # A selected or dispatched directive is not proof of a code/configuration change.
+        # No independent verifier is wired into this flywheel yet, so it cannot pass.
+        return VerificationResult(
+            passed=False,
+            checks=checks,
+            coverage_after=estimated_coverage,
+            coverage_is_estimate=True,
+        )
