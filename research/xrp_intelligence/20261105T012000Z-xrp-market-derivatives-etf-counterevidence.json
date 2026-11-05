@@ -93,7 +93,7 @@
       "fibonomy_usd": 451120000,
       "tradradar_binance_component_usd": 538280000,
       "absolute_difference_usd": 87160000,
-      "relative_to_fibonomy_percent": 19.33,
+      "relative_to_fibonomy_percent": 19.32,
       "treatment": "Do not average. Provider timestamps, collection cadence and calculation methodology are not synchronized or fully disclosed."
     },
     "cross_venue_scope": {
@@ -209,5 +209,25 @@
     "Separate account long/short ratios from notional long/short exposure and record liquidation coverage as a lower bound.",
     "Acquire issuer-level ETF creations/redemptions and publication/settlement timestamps; test same-day, lead, lag and multi-day relationships chronologically against naive, momentum, mean-reversion and volatility baselines.",
     "Do not issue a directional XRP forecast until out-of-sample predictive lift and probability calibration are demonstrated."
-  ]
+  ],
+  "source_independence_groups": [
+    "kraken_primary_exchange_api",
+    "fibonomy_binance_public_data_aggregation",
+    "tradradar_multi_exchange_aggregation",
+    "whycoinmoves_secondary_etf_flow_analysis"
+  ],
+  "source_independence_notes": {
+    "kraken": "Primary Kraken exchange API; independent venue observation.",
+    "fibonomy": "Third-party aggregation of Binance public market data; not independent of Binance's underlying source.",
+    "tradradar": "Multi-exchange aggregator. Its Binance component overlaps with Fibonomy's Binance data; the other venue components broaden coverage but remain provider-aggregated.",
+    "whycoinmoves": "Secondary study using SoSoValue ETF flows and Binance USDT spot prices; it is not independent of those underlying datasets."
+  },
+  "data_quality": {
+    "raw_source_bytes_captured": false,
+    "raw_source_sha256": null,
+    "independent_timestamp_anchor": false,
+    "synchronized_cross_venue_cutoff": false,
+    "model_eligible": false,
+    "reason": "Rendered page/search extracts were retained only as observations; provider timestamps and source bytes are incomplete, and the ETF study's row-level dataset/sample count were unavailable."
+  }
 }

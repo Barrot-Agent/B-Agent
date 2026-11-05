@@ -26,6 +26,9 @@ def test_derivatives_provider_scope_and_disagreement_are_not_averaged():
     assert disagreement["binance_open_interest"]["tradradar_binance_component_usd"] == 538280000
     assert disagreement["binance_open_interest"]["absolute_difference_usd"] == 87160000
     assert "Do not average" in disagreement["binance_open_interest"]["treatment"]
+    assert disagreement["binance_open_interest"]["relative_to_fibonomy_percent"] == 19.32
+    assert "overlaps" in data["source_independence_notes"]["tradradar"]
+    assert "not independent" in data["source_independence_notes"]["fibonomy"]
     trad = next(x for x in data["derivatives_snapshots"] if x["provider"] == "TradRadar")
     assert trad["open_interest_7_exchanges_usd"] == 2040000000
     assert trad["long_short_account_ratio_5_exchanges"] == 3.24
