@@ -908,9 +908,12 @@ def _walk_forward_report(
         for result in evaluations.values()
     )
     statuses = {result.get("status", "UNKNOWN") for result in evaluations.values()}
-    if "SCORED" in statuses:
+    all_venues_scored = bool(evaluations) and all(
+        result.get("status") == "SCORED" for result in evaluations.values()
+    )
+    if all_venues_scored:
         overall_status = "SCORED"
-    elif "BLOCKED" in statuses:
+    elif "SCORED" in statuses or "BLOCKED" in statuses:
         overall_status = "PARTIAL_OR_BLOCKED"
     else:
         overall_status = "INSUFFICIENT_HISTORY"
@@ -921,6 +924,7 @@ def _walk_forward_report(
         "history_record_count": len(history),
         "feature_store_snapshot_count": store.snapshot_count(),
         "overall_status": overall_status,
+        "all_venues_scored": all_venues_scored,
         "forecast_count": forecast_count,
         "evaluations": evaluations,
         "historical_backtest_only": True,

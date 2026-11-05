@@ -8,8 +8,10 @@ from pathlib import Path
 
 import pytest
 
+from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.xrp_public_ingestion import (
     RawReceiptArchive,
+    _walk_forward_report,
     XRPIngestionError,
     fetch_public_json,
     run_ingestion,
@@ -281,3 +283,60 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "contents: write" not in workflow
     assert "git push" not in workflow
     assert "deploy" not in workflow.lower()
+
+
+def test_walk_forward_overall_status_is_partial_until_every_venue_is_scored(tmp_path, monkeypatch):
+    store = HistoricalFeatureStore(tmp_path / "features.sqlite3")
+    statuses = {"binance": "SCORED", "coinbase": "INSUFFICIENT_HISTORY"}
+
+    def fake_evaluator(records, **kwargs):
+        status = statuses[kwargs["venue"]]
+        return {
+            "status": status,
+            "forecast_count": 4 if status == "SCORED" else 0,
+            "forecasts": [],
+            "live_forecast_issued": False,
+        }
+
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.evaluate_chronological_walk_forward",
+        fake_evaluator,
+    )
+    report, history = _walk_forward_report(
+        store,
+        evaluation_as_of_utc="2026-11-05T02:00:00Z",
+    )
+
+    assert history == []
+    assert report["evaluations"]["binance_xrpusdt_1h"]["status"] == "SCORED"
+    assert report["evaluations"]["coinbase_xrpusd_1h"]["status"] == "INSUFFICIENT_HISTORY"
+    assert report["all_venues_scored"] is False
+    assert report["overall_status"] == "PARTIAL_OR_BLOCKED"
+    assert report["live_forecast_issued"] is False
+    assert report["paper_trade_executed"] is False
+
+
+def test_walk_forward_overall_status_is_scored_only_when_all_venues_are_scored(tmp_path, monkeypatch):
+    store = HistoricalFeatureStore(tmp_path / "features.sqlite3")
+
+    def fake_evaluator(records, **kwargs):
+        return {
+            "status": "SCORED",
+            "forecast_count": 4,
+            "forecasts": [],
+            "live_forecast_issued": False,
+        }
+
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.evaluate_chronological_walk_forward",
+        fake_evaluator,
+    )
+    report, _ = _walk_forward_report(
+        store,
+        evaluation_as_of_utc="2026-11-05T02:00:00Z",
+    )
+
+    assert report["all_venues_scored"] is True
+    assert report["overall_status"] == "SCORED"
+    assert report["live_forecast_issued"] is False
+    assert report["paper_trade_executed"] is False
