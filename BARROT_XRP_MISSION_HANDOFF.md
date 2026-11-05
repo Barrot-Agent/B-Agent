@@ -3081,3 +3081,58 @@ Repository controls:
 7. Continue durable raw-source storage, research-eligibility wiring, synchronized institutional/flow/collateral/payment vintages and chronological out-of-sample evaluation.
 
 No merge, force-push, PR closure, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+### Run 24 follow-up — exact-phrase ASK disambiguation and refreshed #1643 verification
+Recorded: 2026-11-05T04:49:00Z
+
+#### #1643 updated research head
+
+- New head: `f69ab7a21ae063e351370ea63e711e87e2b940ac`.
+- 129 commits ahead / 0 behind main; 110 changed files.
+- Still zero changed-path overlap with #1640.
+- Full repository suite: 851 passed, 8 subtests passed.
+- New Ask Coin regression tests: 3/3 passed.
+- Fail-closed gate passed; automatic merge remains disabled.
+- Exact-head runs: [CI 41969864789](https://github.com/Barrot-Agent/B-Agent/actions/runs/41969864789) and [gate 41969864819](https://github.com/Barrot-Agent/B-Agent/actions/runs/41969864819).
+- No dependency manifests changed; no separate dependency audit was triggered.
+
+New append-only artifact:
+`research/xrp_intelligence/20261105T044552Z-ask-coin-entity-disambiguation.json`
+with test:
+`tests/test_xrp_research_20261105_ask_coin_disambiguation.py`.
+
+The exact phrase “ASK Coin” is ambiguous:
+- Permission Coin is a token whose ticker is ASK; its public listing identifies permission.ai, Base and Polygon, and the LayerZero OFT standard.
+- A separate CoinMarketCap exchange listing named Ask Coin points to askcoin.net and displays untracked/inactive, no tracked volume, no reserve data and no market data. The web index labels that page as crawled 1.2 years ago, so its current operating status is not verified.
+- These are not the same entity. Neither candidate has an established XRP/XRPL/Ripple/SBI relationship. Both source pages are from CoinMarketCap, so they are not independent publishers. The artifact is model-ineligible because raw HTTP bytes and primary entity/contract verification are absent.
+
+#### Primary-source institutional capital reconciliation already present on #1643
+
+The existing artifact `20261105T041445Z-evernorth-capital-stack-primary-source-reconciliation.json` now serves as the integrated capital-stack reference. Its distinctions include:
+
+- $214,049,995 of advance-funding subscription cash, versus $214,000,000 reported as used for the cash-funded XRP purchase of 84,365,876.3625 XRP. The $49,995 difference is not additional XRP purchase cost; execution venue is undisclosed.
+- Separate in-kind XRP contributions from Ripple, RippleWorks/Arrington and the Larsen Lam trust; these are not contemporaneous spot-market purchases.
+- A $30 million 4% PIK note with $29 million net cash proceeds after a $1 million fee; the named purchaser is NH Investment & Securities as trustee of Kyobo AIM, with no SBI affiliation established.
+- A $9.7 million Ripple related-party credit draw as of October 7; post-close repayment status remains unverified.
+- Cantor's 5,218,935-share committed equity facility and the public-warrant exercise ceiling are optional financing capacity, not actual proceeds. The $76.8 million ELOC maximum and $132,249,908 warrant-exercise ceiling must not be counted as cash raised without completed sales/exercises.
+- SBI Holdings' closing position is reported as 21.4% of total common stock and approximately 39.9% of voting power; the latter is not economic ownership and includes non-voting Class C structure.
+- Coinbase is named as Evernorth's principal market reference for XRP financial reporting; BitGo Trust is the named custodian. Former Coinbase Asset Management co-CIO Hugo Jeandesboz became Evernorth CIO and leads its XRP treasury strategy. This is a personnel relationship, not proof of a Coinbase custody or execution contract.
+- The reviewed capital filings do not establish a direct Circle role in Evernorth's capital stack; RLUSD is Ripple's stablecoin.
+
+The October 12 SEC 8-K reports 1,078,613 delayed-funding shares, while the accompanying issuer press release reports 1,078,614; preserve the one-share discrepancy. Both describe the subscription amount as cash or XRP divided by $10, so the share count alone does not prove the entire subscription was cash.
+
+#### SBIC / ChatGPT primary-source clarification
+
+The existing artifact `20261104T114254Z-sbic-chatgpt-training-and-phrase-disambiguation.json` is supported by SBIC East's official course page:
+`https://www.sbic.co.jp/training/20250612co/`.
+
+The Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East) hosted a completed two-day generative-AI/machine-learning course on June 12–13, 2025 for investee companies only. The syllabus explicitly included ChatGPT usage on day one and Copilot functions on day two. This is an SBIC East training course, not an OpenAI partnership, not SBI Holdings adoption evidence, and not an XRP relationship.
+
+The Kamilah/Camilla identity/video artifact remains bounded: first-person interview self-identification supports the person-name variants and four video candidates, but the canonical YouTube channel handle remains unverified because the guest warned of fake pages.
+
+#### Handoff state
+
+This follow-up changes only the durable handoff. #1640 code head remains `ccf014af9218feeeeb37e029edcf7ba251ccdc9f`; the documentation head at the time of this update is `386b2070b20e68978a027aef5964e9459b8584c4`. The prior exact-head CI, dependency audit and fail-closed gate all passed on the documentation head. This follow-up commit must receive its own exact-head CI and fail-closed verification.
+
+No forecast, merge, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
