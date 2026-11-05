@@ -67,6 +67,19 @@ class BarrotAutonomousLoop:
         text = re.sub(r"\bsk-[A-Za-z0-9_-]{20,}\b", "[REDACTED_API_KEY]", text)
         return text
 
+    @classmethod
+    def _redact_value(cls, value):
+        """Recursively sanitize text before persisting a checkpoint."""
+        if isinstance(value, str):
+            return cls._redact(value)
+        if isinstance(value, dict):
+            return {str(key): cls._redact_value(item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [cls._redact_value(item) for item in value]
+        if isinstance(value, tuple):
+            return [cls._redact_value(item) for item in value]
+        return value
+
     def run(self, goal: str, *, task_id: str | None = None) -> AutonomousResult:
         """Run or resume a durable task; pass the returned task_id to continue later."""
         if not isinstance(goal, str) or not goal.strip():
@@ -167,7 +180,7 @@ CRITICAL EXECUTION RULES:
                         })
                 self.store.save(task_id, state)
             verification = self.verifier.verify_python()
-            record["verification"] = verification.checks
+            record["verification"] = self._redact_value(verification.checks)
             commands_ok = len(record["execution"]) > 0 and all(
                 item.get("success", False) for item in record["execution"]
             )
