@@ -14,6 +14,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     _walk_forward_report,
     XRPIngestionError,
     fetch_public_json,
+    fetch_public_html,
     run_ingestion,
     ALLOWED_HOSTS,
     ENDPOINTS,
@@ -111,6 +112,13 @@ def _fake_fetcher(captured: datetime):
                 "funds": [{"ticker": "XRP", "issuer": "Bitwise"}],
                 "columns": [{"name": "xrp_flow", "unit": "XRP"}],
             }
+        elif source_id == "xrp_etf_xrpr_issuer_page":
+            html_text = "<html><title>REX-Osprey XRP ETF XRPR</title><p>As of 11/03/2026</p><table><tr><td>CoinShares XRP ETP</td></tr></table></html>"
+            return {
+                "raw_bytes": html_text.encode("utf-8"),
+                "payload": {"html_text": html_text},
+                "http_date": "Wed, 05 Nov 2026 02:30:00 GMT",
+            }
         else:
             raise AssertionError(source_id)
         raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
@@ -181,7 +189,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 10, (
+    assert summary["source_receipt_count"] == 11, (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -215,10 +223,13 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
     assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_aggregator" for item in raw_only)
+    assert any(item["source_id"] == "xrp_etf_xrpr_issuer_page" for item in raw_only)
     receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     manifest = {item["source_id"]: item for item in receipts}
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
+    assert manifest["xrp_etf_xrpr_issuer_page"]["model_eligible_source"] is False
+    assert manifest["xrp_etf_xrpr_issuer_page"]["source_data_as_of_utc"] is None
     assert all(len(item["raw_content_sha256"]) == 64 for item in receipts)
     assert (tmp_path / "run" / "feature_store.sqlite3").exists()
 
@@ -363,12 +374,12 @@ def test_walk_forward_overall_status_is_scored_only_when_all_venues_are_scored(t
 
 def test_xrp_insights_etf_aggregator_is_captured_raw_only_and_never_promoted_to_features():
     captured = datetime(2026, 11, 5, 2, 30, tzinfo=timezone.utc)
-    payload = _fake_fetcher(captured)("xrp_etf_flows_aggregator", ENDPOINTS[-1][1])["payload"]
+    payload = _fake_fetcher(captured)("xrp_etf_flows_aggregator", dict(ENDPOINTS)["xrp_etf_flows_aggregator"])["payload"]
     parser = PARSERS["xrp_etf_flows_aggregator"]
     records, source_as_of, eligible, reason = parser(
         payload,
         source_id="xrp_etf_flows_aggregator",
-        url=ENDPOINTS[-1][1],
+        url=dict(ENDPOINTS)["xrp_etf_flows_aggregator"],
         digest="a" * 64,
         captured=captured,
     )
@@ -386,7 +397,7 @@ def test_xrp_insights_etf_aggregator_is_captured_raw_only_and_never_promoted_to_
         parser(
             invalid,
             source_id="xrp_etf_flows_aggregator",
-            url=ENDPOINTS[-1][1],
+            url=dict(ENDPOINTS)["xrp_etf_flows_aggregator"],
             digest="b" * 64,
             captured=captured,
         )
@@ -417,3 +428,75 @@ def test_public_fetch_rejects_redirects_outside_the_https_allowlist(monkeypatch)
             "xrp_etf_flows_aggregator",
             "https://xrp-insights.com/data/xrp-etf-flows.json",
         )
+
+
+def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
+    captured = datetime(2026, 11, 5, 2, 30, tzinfo=timezone.utc)
+    url = dict(ENDPOINTS)["xrp_etf_xrpr_issuer_page"]
+    payload = _fake_fetcher(captured)("xrp_etf_xrpr_issuer_page", url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS["xrp_etf_xrpr_issuer_page"](
+        payload,
+        source_id="xrp_etf_xrpr_issuer_page",
+        url=url,
+        digest="c" * 64,
+        captured=captured,
+    )
+    assert "www.rexshares.com" in ALLOWED_HOSTS
+    assert url == "https://www.rexshares.com/xrpr/"
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert "raw_only" in reason
+
+
+def test_public_html_fetch_captures_allowlisted_issuer_bytes(monkeypatch):
+    class HtmlResponse:
+        headers = {
+            "Content-Type": "text/html; charset=utf-8",
+            "Date": "Wed, 05 Nov 2026 02:30:00 GMT",
+        }
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def geturl(self):
+            return "https://www.rexshares.com/xrpr/"
+
+        def read(self, _limit):
+            return b"<html>REX-Osprey XRPR CoinShares XRP ETP As of</html>"
+
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.urlopen",
+        lambda *_args, **_kwargs: HtmlResponse(),
+    )
+    result = fetch_public_html("xrp_etf_xrpr_issuer_page", dict(ENDPOINTS)["xrp_etf_xrpr_issuer_page"])
+    assert result["raw_bytes"].startswith(b"<html>")
+    assert "CoinShares XRP ETP" in result["payload"]["html_text"]
+    assert result["http_date"] == "Wed, 05 Nov 2026 02:30:00 GMT"
+
+
+def test_public_html_fetch_rejects_untrusted_redirect(monkeypatch):
+    class RedirectedHtmlResponse:
+        headers = {"Content-Type": "text/html"}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def geturl(self):
+            return "https://untrusted.example/redirected.html"
+
+        def read(self, _limit):
+            raise AssertionError("body must not be read after an untrusted redirect")
+
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.urlopen",
+        lambda *_args, **_kwargs: RedirectedHtmlResponse(),
+    )
+    with pytest.raises(XRPIngestionError, match="redirected outside allowlisted"):
+        fetch_public_html("xrp_etf_xrpr_issuer_page", dict(ENDPOINTS)["xrp_etf_xrpr_issuer_page"])
