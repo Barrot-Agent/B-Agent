@@ -44,9 +44,15 @@ class AutonomousTaskStore:
         path.relative_to(self.root)
         return path
 
+    def _lock_path_for(self, task_id: str) -> Path:
+        lock_path = self.path_for(task_id).with_suffix(".lock")
+        resolved = lock_path.resolve()
+        resolved.relative_to(self.root)
+        return resolved
+
     def load(self, task_id: str) -> dict[str, Any] | None:
         path = self.path_for(task_id)
-        lock_path = path.with_suffix(".lock")
+        lock_path = self._lock_path_for(task_id)
         with lock_path.open("a+", encoding="utf-8") as lock:
             if fcntl is not None:
                 fcntl.flock(lock.fileno(), fcntl.LOCK_SH)
@@ -99,7 +105,7 @@ class AutonomousTaskStore:
         if len(serialized.encode("utf-8")) > self.MAX_CHECKPOINT_BYTES:
             raise ValueError("autonomous task checkpoint exceeds the size limit")
 
-        lock_path = path.with_suffix(".lock")
+        lock_path = self._lock_path_for(task_id)
         with lock_path.open("a+", encoding="utf-8") as lock:
             if fcntl is not None:
                 fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
