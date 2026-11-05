@@ -36,7 +36,7 @@ def test_only_chatgpt_is_counted_as_a_verified_live_platform():
 def test_copilot_review_events_are_not_mislabeled_as_authenticated_coordination():
     data = load()
     copilot = next(item for item in data["platforms"] if item["name"] == "Copilot")
-    assert "not a persistent" in copilot["connection_status"].lower()
+    assert "not_a_persistent" in copilot["connection_status"].lower()
     assert "No ChatGPT-to-Copilot data exchange was verified." in copilot["data_flow"]
 
 
