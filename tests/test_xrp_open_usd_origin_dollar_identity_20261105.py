@@ -88,3 +88,20 @@ def test_sources_remain_model_ineligible_until_raw_receipts_exist():
     assert data["source_capture_policy"]["raw_bytes_preserved"] is False
     assert data["source_capture_policy"]["sha256_receipts"] is None
     assert all(source["model_eligible"] is False for source in data["source_registry"])
+
+
+def test_tempo_contract_address_correction_is_append_only_and_explorer_verified():
+    correction_path = ROOT / "research" / "xrp_intelligence" / "20261105T142128Z-openusd-tempo-contract-address-and-solana-explorer-correction.json"
+    correction = json.loads(correction_path.read_text(encoding="utf-8"))
+    scope = correction["supersedes_scope"]
+    assert scope["original_artifact_modified"] is False
+    assert scope["prior_value"] == load()["entity_resolution"]["open_standard_open_usd"]["project_linked_contract_directory"]["contracts"]["Tempo"]
+    assert scope["corrected_value"] == "0x20c0000000000000000000006a37DA5C996874BE"
+    assert len(scope["corrected_value"]) == 42
+    tempo = next(source for source in correction["sources"] if source["source_id"] == "tempo_explorer_openusd_contract")
+    assert "OpenUSD OUSD" in tempo["claims_supported"][0]
+    assert "No transactions found" in tempo["claims_supported"][-1]
+    assert "not proof of no on-chain activity" in tempo["limitations"][1]
+    solana = next(source for source in correction["sources"] if source["source_id"] == "solscan_openusd_solana_mint")
+    assert solana["claims_supported"][2].endswith("80,985,079.87664")
+    assert correction["admission"]["model_eligible"] is False
