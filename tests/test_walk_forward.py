@@ -109,7 +109,7 @@ def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics()
         assert forecast["outcome"]["outcome_event_time_utc"] > forecast["data_cutoff_utc"]
 
 
-def test_backfilled_history_known_only_at_one_capture_time_cannot_fake_walk_forward():
+def test_backfilled_history_supports_training_only_at_or_after_its_capture_time():
     capture = BASE + timedelta(hours=23, seconds=3)
     records = [
         _bar(index, 1.0 + index * 0.001, capture_at=capture)
@@ -126,10 +126,12 @@ def test_backfilled_history_known_only_at_one_capture_time_cannot_fake_walk_forw
         venue="kraken",
         currency_pair="XRP/USD",
     )
-    assert result["status"] == "INSUFFICIENT_HISTORY"
-    assert result["forecast_count"] == 0
-    assert result["forecasts"] == []
-    assert any("insufficient_point_in_time_training_examples" in item["reason"] for item in result["skipped_origins"])
+    assert result["status"] == "SCORED"
+    assert result["forecast_count"] == 4
+    assert {item["data_cutoff_utc"] for item in result["forecasts"]} == {_stamp(capture)}
+    assert all(item["assumptions"]["training_example_count"] == 23 for item in result["forecasts"])
+    assert all(item["outcome"]["outcome_event_time_utc"] == _stamp(BASE + timedelta(hours=24)) for item in result["forecasts"])
+    assert all(item["live_forecast_issued"] is False for item in result["forecasts"])
 
 
 def test_future_price_record_cannot_be_available_before_its_event_time():
