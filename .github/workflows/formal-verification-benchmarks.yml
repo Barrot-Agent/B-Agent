@@ -43,7 +43,8 @@ jobs:
       - name: Install Lean toolchain
         if: ${{ inputs.attempt_build == true }}
         run: |
-          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/227caca133724d5516bee25c2aeb3e609478f2d8/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.33.1
           "$HOME/.elan/bin/elan" default leanprover/lean4:v4.33.1

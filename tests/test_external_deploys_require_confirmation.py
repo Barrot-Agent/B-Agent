@@ -25,3 +25,19 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
             assert "github.ref == 'refs/heads/main'" in workflow, relative_path
         if relative_path.endswith("sync-huggingface.yml"):
             assert "permissions:\n  contents: read" in workflow, relative_path
+
+
+
+def test_databricks_setup_cli_uses_a_verified_immutable_commit():
+    workflow = (REPO_ROOT / ".github/workflows/barrot-ops.yml").read_text(encoding="utf-8")
+    assert "uses: databricks/setup-cli@9625fdde9ba2607df0087e0d3ec7449198bf2180" in workflow
+    assert "uses: databricks/setup-cli@main" not in workflow
+    assert "inputs.confirm_external_change == 'YES'" in workflow
+    assert "expected_source_sha" in workflow
+
+
+def test_lean_installer_script_uses_the_verified_v4_2_4_commit():
+    workflow = (REPO_ROOT / ".github/workflows/formal-verification-benchmarks.yml").read_text(encoding="utf-8")
+    assert "raw.githubusercontent.com/leanprover/elan/227caca133724d5516bee25c2aeb3e609478f2d8/elan-init.sh" in workflow
+    assert "raw.githubusercontent.com/leanprover/elan/master/elan-init.sh" not in workflow
+    assert 'sh "$RUNNER_TEMP/elan-init.sh" -y' in workflow
