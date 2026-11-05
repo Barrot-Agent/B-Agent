@@ -457,11 +457,26 @@ def test_mission_mode_advances_only_from_verified_learning_records(monkeypatch, 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_MODE", "mission")
     monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    from barrot_agent.orchestration.learning_filter import LearningRecord
+    from barrot_agent.orchestration.verified_learning_store import (
+        VERIFIED_LEARNING_REASON,
+        VerifiedLearningStore,
+    )
+
     lesson_store = tmp_path / "data" / "evolution" / "verified_lessons.jsonl"
     lesson_store.parent.mkdir(parents=True)
-    lesson_store.write_text(
-        json.dumps({"lesson": "MISSION_TOPIC_ID: xrp_source_provenance completed with verified receipts."}) + "\n",
-        encoding="utf-8",
+    verified_store = VerifiedLearningStore(lesson_store)
+    assert verified_store.append(
+        LearningRecord(
+            accepted=True,
+            lesson=(
+                "Goal: MISSION_TOPIC_ID: xrp_source_provenance\n"
+                "Verified findings:\n"
+                "- READ_FILE: inspected source provenance requirements.\n"
+                "- RUN_TESTS: source receipt regression tests passed."
+            ),
+            reason=VERIFIED_LEARNING_REASON,
+        )
     )
 
     module = load_script_module("barrot_agent_primary_mission_progress_test")
