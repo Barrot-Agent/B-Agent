@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrpl_public_node_operator_funding_and_usage_terms_reconciliation",
+  "captured_at_utc": "2026-11-05T12:57:43Z",
+  "scope": "Primary-source reconciliation of the two public XRPL node operators used by Barrot's proposed XRP ingestion adapter, their funding/affiliation relationships, provider-use classification, and evidentiary independence.",
+  "sources": [
+    {
+      "source_id": "S1",
+      "publisher": "Honeycluster",
+      "source_role": "first_party_operator_disclosure",
+      "url": "https://press.honeycluster.io/en/blog/where-it-all-began",
+      "published_at_utc": null,
+      "published_at_note": "The page does not expose a publication timestamp in the retrieved page text.",
+      "accessed_at_utc": "2026-11-05T12:57:43Z",
+      "claims_supported": [
+        "Honeycluster states that Ripple provided early funding and bootstrap resources in June 2024.",
+        "Honeycluster identifies xrp.cafe, Crossmark Wallet, Orchestra Finance, and First Ledger as teams whose shared infrastructure needs helped motivate the cluster.",
+        "Honeycluster says those initial teams are not actively involved in ongoing development."
+      ],
+      "independence": "Primary evidence for what Honeycluster publicly represents about its own formation; not independent proof of the amount, instrument, payment, ownership, control, or continuing nature of Ripple support.",
+      "raw_capture": {
+        "byte_complete": false,
+        "sha256": null,
+        "timestamp_anchor": "web retrieval timestamp only",
+        "model_eligible": false
+      }
+    },
+    {
+      "source_id": "S2",
+      "publisher": "XRP Ledger developer documentation",
+      "source_role": "official_ecosystem_public_server_directory",
+      "url": "https://xrpl.org/docs/tutorials/public-servers",
+      "published_at_utc": null,
+      "page_last_updated_note": "The retrieved page states it was last updated three days before access on 2026-11-05.",
+      "accessed_at_utc": "2026-11-05T12:57:43Z",
+      "claims_supported": [
+        "The official directory lists Honeycluster and InFTF as non-commercial mainnet public servers.",
+        "The directory lists Ripple's s1 and s2 public servers in the non-commercial section and says they are not for sustained or business use and may become unavailable.",
+        "The directory lists a paid InFTF full-history API through Dhali, QuickNode, and Chainstack under commercial options.",
+        "The directory identifies xrpl.ws as an alias for xrplcluster.com, not a separate operator."
+      ],
+      "independence": "Official XRPL developer documentation, distinct from Honeycluster's own disclosure. The directory is an ecosystem reference, not a contract, legal opinion, provider audit, or independent uptime/ownership audit.",
+      "raw_capture": {
+        "byte_complete": false,
+        "sha256": null,
+        "timestamp_anchor": "web retrieval timestamp plus page-relative last-updated statement",
+        "model_eligible": false
+      }
+    },
+    {
+      "source_id": "S3",
+      "publisher": "Barrot-Agent/B-Agent",
+      "source_role": "current_integration_code",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/f1c485cd34a73d8f5456178522cae264814f8a22/barrot_agent/evolution/xrp_public_ingestion.py",
+      "commit_sha": "f1c485cd34a73d8f5456178522cae264814f8a22",
+      "accessed_at_utc": "2026-11-05T12:57:43Z",
+      "claims_supported": [
+        "The adapter registers xrplcluster.com as InFTF and honeycluster.io as Honeycluster.",
+        "Both node-derived feature records use the same independence_group, xrpl_public_ledger.",
+        "The reconciliation requires both registered operators to report the same validated-ledger sequence and hash.",
+        "The parser explicitly says node agreement is a node-integrity check, not independent economic evidence.",
+        "The receipt archive stores the HTTP Date header separately from the derived source-data timestamp."
+      ],
+      "independence": "Repository implementation evidence only; it does not independently validate provider ownership, terms, infrastructure separation, or production operation.",
+      "raw_capture": {
+        "byte_complete": false,
+        "sha256": null,
+        "timestamp_anchor": "Git commit SHA plus retrieval timestamp",
+        "model_eligible": false
+      }
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "honeycluster-ripple-early-funding-2024-06",
+      "claim": "Honeycluster publicly states that Ripple provided early funding and bootstrap resources in June 2024.",
+      "status": "first_party_self_disclosure",
+      "confidence": "high_that_the_disclosure_exists; unverified_as_to_amount_or_instrument",
+      "limitations": [
+        "No funding amount is disclosed in the retrieved page.",
+        "No equity, grant, loan, ownership, board, governance, control, or continuing funding terms are disclosed.",
+        "No independent transaction record or separate Ripple confirmation was retrieved.",
+        "Do not convert this disclosure into a claim that Ripple owns or controls Honeycluster."
+      ],
+      "counter_hypotheses": [
+        "The support may have been a one-time ecosystem bootstrap grant or in-kind assistance.",
+        "The support may have been limited to initial infrastructure costs and may have ended.",
+        "The disclosure does not rule out other funders or later changes in ownership or governance."
+      ]
+    },
+    {
+      "claim_id": "xrpl-public-server-commercial-classification",
+      "claim": "The official XRPL public-server directory classifies Honeycluster and InFTF's public endpoints as non-commercial; it separately lists paid/commercial provider options.",
+      "status": "official_documentation_observation",
+      "confidence": "high_for_directory_classification",
+      "limitations": [
+        "The directory is not a substitute for each provider's current contract or written authorization.",
+        "It does not establish rate limits, SLA, data-retention rights, or permission for sustained business workloads.",
+        "Barrot's intended future operating classification must be checked before activating scheduled production use."
+      ],
+      "usage_rule": "Treat these two free public endpoints as non-commercial research infrastructure only. Before sustained or business use, use a self-hosted node or a contracted commercial provider and preserve the applicable terms/authorization evidence."
+    },
+    {
+      "claim_id": "xrpl-node-agreement-is-not-independent-economic-corroboration",
+      "claim": "Matching validated-ledger index/hash from InFTF and Honeycluster is a consistency check on the same XRPL ledger state, not two independent economic observations.",
+      "status": "verified_in_current_adapter_design",
+      "confidence": "high",
+      "limitations": [
+        "Distinct operator labels do not establish independent hosting, upstream connectivity, software provenance, or governance.",
+        "Honeycluster's disclosed Ripple bootstrap support is a relevant relationship for institutional-network analysis.",
+        "A matching ledger hash does not corroborate XRP spot price, exchange flows, collateral balances, ETF flows, or payment volume."
+      ],
+      "admission_rule": "Keep both node records in the shared xrpl_public_ledger independence group. Never count them as two independent economic source groups or use them to satisfy economic corroboration thresholds."
+    },
+    {
+      "claim_id": "xrpl-ws-is-not-a-third-inftf-source",
+      "claim": "The official XRPL directory identifies xrpl.ws as an alias for xrplcluster.com.",
+      "status": "official_documentation_observation",
+      "confidence": "high",
+      "admission_rule": "Do not count xrpl.ws as an additional provider or independent source if it is encountered in future ingestion."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Ripple",
+      "to": "Honeycluster",
+      "relationship": "early_funding_and_bootstrap_support",
+      "event_date": "2024-06",
+      "evidence_source": "S1",
+      "amount": null,
+      "ownership_or_control_established": false,
+      "continuing_support_established": false,
+      "relationship_confidence": "first_party_disclosure_only"
+    },
+    {
+      "from": "InFTF",
+      "to": "xrplcluster.com",
+      "relationship": "public_mainnet_node_operator",
+      "evidence_source": "S2",
+      "ownership_or_control_established": "operator attribution in official XRPL directory"
+    },
+    {
+      "from": "InFTF",
+      "to": "xrpl.ws",
+      "relationship": "documented_alias_of_xrplcluster.com",
+      "evidence_source": "S2",
+      "independent_provider": false
+    },
+    {
+      "from": "Honeycluster",
+      "to": "honeycluster.io",
+      "relationship": "public_mainnet_node_operator",
+      "evidence_source": "S2"
+    }
+  ],
+  "source_independence": {
+    "operator_count": 2,
+    "registered_operators": ["InFTF", "Honeycluster"],
+    "economic_source_groups_contributed": 0,
+    "shared_feature_independence_group": "xrpl_public_ledger",
+    "node_agreement_purpose": "validated-ledger-index-and-hash-consistency",
+    "not_evidence_of": [
+      "independent XRP demand",
+      "independent XRP price discovery",
+      "exchange net flows",
+      "institutional purchases",
+      "collateral utilization",
+      "payment volume",
+      "independent reporting lineage"
+    ],
+    "minority_objection_retained": "Honeycluster's first-party disclosure of Ripple early funding creates an indirect corporate/financial relationship. It does not prove current control or compromised ledger reporting, but it must remain visible in the relationship graph and red-team review."
+  },
+  "operational_status": {
+    "current_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "integration_head_at_review": "f1c485cd34a73d8f5456178522cae264814f8a22",
+    "xrp_public_ingestion_workflow_on_main": false,
+    "scheduled_main_collection_verified": false,
+    "provider_contract_or_business_use_authorization_verified": false,
+    "production_activation_allowed": false
+  },
+  "model_eligibility": {
+    "eligible": false,
+    "reason": "This is institutional relationship and provider-terms research, not a market feature; the source pages were not captured as byte-complete raw receipts with independent timestamp anchors."
+  },
+  "next_actions": [
+    "Preserve the Ripple-Honeycluster early-funding edge as first-party self-disclosure with amount, instrument, ownership, control, and ongoing status unresolved.",
+    "Keep InFTF and Honeycluster in the shared xrpl_public_ledger group and retain the two-node hash/index gate as a consistency check only.",
+    "Do not add xrpl.ws as a third provider.",
+    "Before enabling scheduled node ingestion for sustained/business use, replace the free non-commercial endpoints with a self-hosted or contracted commercial endpoint and archive the applicable authorization/terms.",
+    "Retain the current raw HTTP Date header in each receipt; do not treat it as an exact ledger-close timestamp."
+  ]
+}
