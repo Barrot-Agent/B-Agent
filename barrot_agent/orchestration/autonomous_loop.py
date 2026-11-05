@@ -61,10 +61,10 @@ class BarrotAutonomousLoop:
     @staticmethod
     def _redact(text: str) -> str:
         """Remove common credential formats before checkpointing model/tool output."""
-        text = re.sub(r"(?i)\\b(api[_-]?key|token|secret|password)\\b(\\s*[:=]\\s*)[^\\s,;]+", r"\\1\\2[REDACTED]", text)
-        text = re.sub(r"(?i)\\bBearer\\s+[A-Za-z0-9._~+/-]+=*", "Bearer [REDACTED]", text)
-        text = re.sub(r"\\bgh[pousr]_[A-Za-z0-9]{20,}\\b", "[REDACTED_GITHUB_TOKEN]", text)
-        text = re.sub(r"\\bsk-[A-Za-z0-9_-]{20,}\\b", "[REDACTED_API_KEY]", text)
+        text = re.sub(r"(?i)\b(api[_-]?key|token|secret|password)\b(\s*[:=]\s*)[^\s,;]+", r"\1\2[REDACTED]", text)
+        text = re.sub(r"(?i)\bBearer\s+[A-Za-z0-9._~+/-]+=*", "Bearer [REDACTED]", text)
+        text = re.sub(r"\bgh[pousr]_[A-Za-z0-9]{20,}\b", "[REDACTED_GITHUB_TOKEN]", text)
+        text = re.sub(r"\bsk-[A-Za-z0-9_-]{20,}\b", "[REDACTED_API_KEY]", text)
         return text
 
     def run(self, goal: str, *, task_id: str | None = None) -> AutonomousResult:
