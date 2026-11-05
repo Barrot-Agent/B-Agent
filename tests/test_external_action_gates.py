@@ -307,6 +307,13 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
         "legacy/requirements_legacy.txt",
     ):
         assert f'"{manifest}"' in workflow
+    assert "pip-audit -r requirements.txt --strict" in workflow
+    assert "pip-audit -r requirements-dev.txt --strict" in workflow
+    assert "ROOT_RUNTIME: ${{ steps.root_runtime.outcome }}" in workflow
+    assert "DEV: ${{ steps.dev.outcome }}" in workflow
+    assert "root_runtime=%s dev=%s" in workflow
+    assert '"$ROOT_RUNTIME" != "success"' in workflow
+    assert '"$DEV" != "success"' in workflow
     assert "pip-audit -r requirements.tx --strict" in workflow
     assert "tomllib.loads" in workflow
     assert 'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict' in workflow
