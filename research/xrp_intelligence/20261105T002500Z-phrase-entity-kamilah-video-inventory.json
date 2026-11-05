@@ -1,0 +1,470 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp_phrase_entity_and_kamilah_stevenson_video_inventory_20261105T002500Z",
+  "artifact_type": "xrp_research_phrase_resolution_entity_disambiguation_and_public_video_inventory",
+  "captured_at_utc": "2026-11-05T00:25:00Z",
+  "data_cutoff_utc": "2026-11-05T00:25:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "branch": "research/xrp-evidence-archive-20261104",
+    "review_pr": 1643,
+    "reviewed_head_sha": "1f4a47692352b12dfd982d241e0606814c7f350f",
+    "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
+  },
+  "preservation": {
+    "append_only": true,
+    "prior_artifacts_modified": false,
+    "raw_source_bytes_archived": false,
+    "raw_content_sha256_values_available": false,
+    "forecast_issued": false,
+    "real_money_actions": false
+  },
+  "source_registry": [
+    {
+      "id": "iheart_kamilah_stevenson_first_person_identity_20260611",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "authority": "interview transcript containing first-person guest self-identification",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "event_date": "2026-06-11",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "kamilah_identity_first_person",
+      "raw_capture_status": "web-rendered transcript; auto-generated transcript disclaimer applies",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The guest is introduced as Dr. Kamilah Stevenson; the host uses Camila/Camilla spelling variants.",
+        "At approximately 40:07 the guest says she uses cam_i_am_cam_stevenson on X, Kamilla Stevenson on Instagram, and Doctor Camilla Stevenson on YouTube.",
+        "The guest explicitly warns that fake pages exist."
+      ],
+      "limitations": [
+        "Transcript is automatically generated and may mis-transcribe names or handles.",
+        "The guest gives a YouTube display name, not a canonical channel URL or handle.",
+        "YouTube About pages could not be fetched during this run."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "youtube_kamilah_xrp_upgrade_20260730",
+      "publisher": "YouTube",
+      "authority": "public video metadata and description",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "event_date": "2026-07-30",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "kamilah_stevenson_youtube_attribution",
+      "raw_capture_status": "YouTube search result metadata; direct video page fetch was throttled",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Title: XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This.",
+        "YouTube result attributes the video to Kamilah Stevenson, reports approximately 140,000 followers, 10,090 views and 740 likes.",
+        "Description identifies Dr. Kamilah Stevenson, The Wealth Doctor, and discusses Confidential Transfers, Sponsored Fees and Reserves, Batch, Permission Delegation, Dynamic MPT and validator voting."
+      ],
+      "limitations": [
+        "Search-result metadata is not a byte-complete channel export.",
+        "Official channel handle is not independently verified; the interview guest warned of fake pages.",
+        "The technical claims in the video are attributed commentary, not verified XRPL facts."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "youtube_kamilah_stablecoins_debt_20260709",
+      "publisher": "YouTube",
+      "authority": "public video metadata and description",
+      "url": "https://www.youtube.com/watch?v=OmLOAtfZ-Hs",
+      "event_date": "2026-07-09",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "kamilah_stevenson_youtube_attribution",
+      "raw_capture_status": "YouTube search result metadata; direct video page fetch was throttled",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Title: XRP Holders, Your Stablecoins Are Funding America's DEBT.",
+        "YouTube result attributes the video to Kamilah Stevenson, reports approximately 138,000 followers, 3,924 views and 479 likes.",
+        "Description discusses stablecoin issuer reserves and U.S. Treasury holdings."
+      ],
+      "limitations": [
+        "Description does not establish the current reserve composition of any named issuer.",
+        "This is creator commentary, not primary reserve evidence.",
+        "Official channel handle is not independently verified."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "youtube_kamilah_global_finance_yen_carry_20260306",
+      "publisher": "YouTube",
+      "authority": "public video metadata and description",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "event_date": "2026-03-06",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "kamilah_stevenson_youtube_attribution",
+      "raw_capture_status": "YouTube search result metadata; direct video page fetch was throttled",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Title: Something Just Broke in Global Finance — And It's Connected to XRP.",
+        "YouTube result attributes the video to Kamilah Stevenson, reports approximately 137,000 followers, 32,040 views and 2,300 likes.",
+        "Description connects Middle East oil disruptions, the yen carry trade, leverage and global liquidity to an XRP thesis."
+      ],
+      "limitations": [
+        "The macro-to-XRP causal chain is a hypothesis, not a demonstrated relationship.",
+        "No synchronized macro, FX funding or XRP market dataset was supplied by the video metadata.",
+        "Official channel handle is not independently verified."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "youtube_kamilah_xrp_not_bitcoin_20251224",
+      "publisher": "YouTube",
+      "authority": "public video metadata and description",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "event_date": "2025-12-24",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "kamilah_stevenson_youtube_attribution",
+      "raw_capture_status": "YouTube search result metadata; direct video page fetch was throttled",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Title: XRP Is Not Bitcoin. And That's Exactly Why It Matters.",
+        "YouTube result attributes the video to Kamilah Stevenson, reports approximately 138,000 followers, 44,991 views and 3,100 likes.",
+        "Description contrasts XRP's proposed payments/settlement role with Bitcoin's store-of-value and corporate-treasury narratives."
+      ],
+      "limitations": [
+        "The comparison is creator framing, not a verified market-structure result.",
+        "Official channel handle is not independently verified."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "linkedin_sbic_america_company_profile",
+      "publisher": "LinkedIn",
+      "authority": "company profile; secondary identity evidence",
+      "url": "https://www.linkedin.com/company/safecon-training-consulting-pvt-ltd-",
+      "event_date": "2026-11-05",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "sbic_america_safecon",
+      "raw_capture_status": "public company profile rendered",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "SBIC America describes itself as Safecon Bureau of Inspection & Certification USA Inc.",
+        "Profile describes safety training, inspections, consultancy and ISO certification services, with Albany, New York headquarters and a Safecon website.",
+        "Profile lists founding year 2016 and 11-50 employees."
+      ],
+      "limitations": [
+        "LinkedIn company profile is not a state corporate-registration record.",
+        "Employee count and founding year are self-reported profile data."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "safecon_official_course_identity",
+      "publisher": "Safecon / SBIC America",
+      "authority": "official company website",
+      "url": "https://safecon.us/nfpa-1021-fire-officer-certification/",
+      "event_date": "2023-10-18",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "sbic_america_safecon",
+      "raw_capture_status": "indexed public page; site root fetch unavailable",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Official course page describes SBIC USA certification and Safecon Bureau of Inspection & Certification USA Inc.",
+        "Page footer identifies a Brooklyn, New York office and support@safecon.us."
+      ],
+      "limitations": [
+        "Page is a company-controlled source, not independent proof of corporate registration.",
+        "The page is a course listing, not an OpenAI partnership statement."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "linkedin_salahuddin_sbic_chatgpt_contest_2025",
+      "publisher": "LinkedIn / Salah Uddin, OSHA Authorized Trainer",
+      "authority": "public post by a representative associated with SBIC America",
+      "url": "https://www.linkedin.com/posts/oshaauthorizedtrainer_aisafetyprofessional-aisp-ai-activity-7298219144028504068-93D8",
+      "event_date": "2025-03-2025",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "sbic_america_safecon",
+      "raw_capture_status": "public post rendered",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Post says SBIC America organized an AI-avatar video contest for safety professionals.",
+        "The post states the winner would receive one month of ChatGPT Plus and AI-safety-professional training.",
+        "The post gives March 15, 2025 as the entry deadline and March 25, 2025 as the result date."
+      ],
+      "limitations": [
+        "This is a contest promotion, not evidence of a direct OpenAI commercial partnership or Japanese SBIC relationship.",
+        "Post author affiliation is indicated by profile and post context; no corporate filing was retrieved."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "coinmarketcap_permission_ask_20261105",
+      "publisher": "CoinMarketCap",
+      "authority": "secondary crypto-asset market-data and project-description provider",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "event_date": "2026-11-05",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "permission_ask_secondary_market_data",
+      "raw_capture_status": "public market page rendered",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Identifies ASK as Permission Coin.",
+        "Reported price approximately USD 0.00008867, market capitalization approximately USD 1.43 million, 24-hour volume approximately USD 611.35, 100 billion maximum supply, 16.16 billion circulating supply and approximately 206,190 holders.",
+        "Describes Permission as a consent-based data exchange platform and ASK as its utility token.",
+        "Lists Base and Polygon deployment and LayerZero OFT standard."
+      ],
+      "limitations": [
+        "Market metrics are provider-reported and volatile.",
+        "CoinMarketCap is not the token issuer or contract registry.",
+        "No XRP Ledger or Ripple relationship is established by this page."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "permission_support_polygon_ask_20250103",
+      "publisher": "Permission Support",
+      "authority": "official Permission support documentation",
+      "url": "https://support.permission.io/kb/articles/pdf/why-do-i-need-matic-to-send-from-my-wallet",
+      "event_date": "2025-01-03",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "permission_primary",
+      "raw_capture_status": "public support PDF indexed and rendered",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Permission support states that POL, formerly MATIC, is required for Polygon gas when transferring ASK from a Permission wallet."
+      ],
+      "limitations": [
+        "This establishes Polygon wallet usage but does not by itself establish every current ASK contract or bridge route."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "coingecko_permission_ask_migration_note",
+      "publisher": "CoinGecko",
+      "authority": "secondary crypto-asset market-data provider",
+      "url": "https://www.coingecko.com/en/coins/permission-coin",
+      "event_date": "2026-11-03",
+      "retrieved_at_utc": "2026-11-05T00:25:00Z",
+      "source_independence_group": "permission_ask_secondary_market_data",
+      "raw_capture_status": "search result extract",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "CoinGecko page notes a migration of Wormhole-bridged ASK on Base to a LayerZero contract and instructs users to repatriate Base ASK to Polygon before bridging to Base through LayerZero."
+      ],
+      "limitations": [
+        "Secondary provider notice; verify against Permission's own migration announcement and contract addresses before treating as authoritative."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "identity_verification": {
+    "person_identity_status": "VERIFIED_BY_FIRST_PERSON_INTERVIEW_SELF_IDENTIFICATION",
+    "person_name_variants": [
+      "Dr. Kamilah Stevenson",
+      "Kamilla Stevenson",
+      "Camila Stevenson",
+      "Camilla Stevenson"
+    ],
+    "primary_identity_evidence": "In the June 11, 2026 iHeart interview transcript, the guest self-identifies her X, Instagram and YouTube display names at approximately 40:07 and warns that fake pages exist.",
+    "youtube_creator_attribution": "The four listed YouTube search results use the creator attribution Kamilah Stevenson and descriptions identify Dr. Kamilah Stevenson / The Wealth Doctor. This is strong corroboration that the videos are associated with the interviewed person.",
+    "official_youtube_handle_status": "NOT_INDEPENDENTLY_VERIFIED",
+    "canonical_channel_url": null,
+    "caution": "The guest explicitly warned of fake pages. The YouTube About pages were not accessible in this run. Inventory exact video URLs and creator attribution, but do not designate a channel handle as canonical."
+  },
+  "video_inventory": [
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "published_at": "2026-07-30",
+      "views": 10090,
+      "likes": 740,
+      "displayed_creator": "Kamilah Stevenson",
+      "displayed_followers": 140000,
+      "subject": [
+        "XRPL amendments",
+        "Confidential Transfers",
+        "Sponsored Fees and Reserves",
+        "Batch",
+        "Permission Delegation",
+        "Dynamic MPT",
+        "validator voting"
+      ],
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+    },
+    {
+      "video_id": "OmLOAtfZ-Hs",
+      "title": "XRP Holders, Your Stablecoins Are Funding America's DEBT",
+      "url": "https://www.youtube.com/watch?v=OmLOAtfZ-Hs",
+      "published_at": "2026-07-09",
+      "views": 3924,
+      "likes": 479,
+      "displayed_creator": "Kamilah Stevenson",
+      "displayed_followers": 138000,
+      "subject": [
+        "stablecoin reserves",
+        "U.S. Treasury securities",
+        "issuer economics",
+        "XRP holder education"
+      ],
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+    },
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "published_at": "2026-03-06",
+      "views": 32040,
+      "likes": 2300,
+      "displayed_creator": "Kamilah Stevenson",
+      "displayed_followers": 137000,
+      "subject": [
+        "Middle East oil disruptions",
+        "yen carry trade",
+        "leverage",
+        "global liquidity",
+        "XRP macro thesis"
+      ],
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "published_at": "2025-12-24",
+      "views": 44991,
+      "likes": 3100,
+      "displayed_creator": "Kamilah Stevenson",
+      "displayed_followers": 138000,
+      "subject": [
+        "XRP versus Bitcoin",
+        "payments and settlement thesis",
+        "institutional holding narratives",
+        "long-term investing"
+      ],
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+    }
+  ],
+  "sbic_identity_resolution": {
+    "candidate_name": "SBIC America",
+    "public_operating_identity": "Safecon Bureau of Inspection & Certification USA Inc",
+    "location_evidence": [
+      "Albany, New York company profile",
+      "Brooklyn, New York office shown on Safecon course page"
+    ],
+    "industry": "occupational safety training, inspection, certification, consultancy and HSE professional education",
+    "chatgpt_connection": "A March 2025 LinkedIn post by Salah Uddin, OSHA Authorized Trainer, advertised an AI-avatar video contest and a one-month ChatGPT Plus subscription as the winner's prize.",
+    "relationship_to_openai": "NO_DIRECT_OPENAI_PARTNERSHIP_ESTABLISHED",
+    "relationship_to_japanese_sbic_east_central_west": "NO_RELATIONSHIP_ESTABLISHED; this is a separate U.S. safety-training business.",
+    "relationship_to_sbi_holdings": "NO_RELATIONSHIP_ESTABLISHED; no evidence links this company to SBI Holdings.",
+    "confidence": "HIGH_FOR_SEPARATE_PUBLIC_OPERATING_IDENTITY; CORPORATE_REGISTRATION_NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "ask_coin_resolution": {
+    "candidate": "Permission Coin (ticker ASK)",
+    "candidate_status": "STRONGEST_MATCH_FOR_PUBLIC_CRYPTO_SEARCH; NOT_CONFIRMED_AS_THE_USER'S_INTENDED_REFERENCE",
+    "project": "Permission",
+    "reported_chains": [
+      "Polygon",
+      "Base"
+    ],
+    "reported_standard": "LayerZero OFT",
+    "reported_market_snapshot": {
+      "price_usd": 0.00008867,
+      "market_cap_usd": 1430000,
+      "volume_24h_usd": 611.35,
+      "max_supply": 100000000000,
+      "circulating_supply": 16160000000,
+      "holder_count": 206190,
+      "as_of": "2026-11-05",
+      "source": "CoinMarketCap"
+    },
+    "liquidity_warning": "Reported 24-hour volume is very small relative to market capitalization; the token is not a reliable XRP liquidity proxy.",
+    "xrp_relationship": "No direct XRP, XRPL, Ripple, Coinbase, Circle or SBI relationship found in the retrieved official/market sources.",
+    "migration_note": "CoinGecko reports a Base ASK migration from Wormhole bridging to LayerZero; confirm with Permission's own migration notice and contract addresses before using this as a current operational instruction."
+  },
+  "exact_phrase_findings": {
+    "ask_coin": "Permission Coin (ASK) is the strongest identifiable token candidate; no XRP/XRPL relationship established.",
+    "actual_capital": "No attributable exact-phrase source tied to XRP, Ripple, SBIC or the Kamilah Stevenson interview was located in this search batch. The interview contains the different phrase 'real assets actually moving across these rails'; do not treat that as an exact match.",
+    "sbic_chatgpt": "SBIC America / Safecon is a plausible match for the ChatGPT Plus contest reference. It is distinct from Japanese SBIC East/Central/West and SBI Holdings."
+  },
+  "claim_register": [
+    {
+      "id": "KAMILAH_RLUSD_INCREASES_XRP_DEMAND",
+      "attributed_source": "iHeart interview, approximately 29:03",
+      "claim": "RLUSD will put greater demand on XRP.",
+      "status": "HYPOTHESIS_NOT_QUANTIFIED",
+      "required_evidence": [
+        "RLUSD supply and transfers by XRPL/Base/Ethereum",
+        "XRP bridge inventory and turnover",
+        "XRP DEX/AMM and payment volume attributable to RLUSD routes",
+        "native XRP fee and collateral usage",
+        "counterfactual comparison against stablecoin settlement without XRP"
+      ]
+    },
+    {
+      "id": "KAMILAH_CONFIDENTIAL_TRANSFERS_INSTITUTIONAL_ADOPTION",
+      "attributed_source": "YouTube video 8xiy8w2YlfY",
+      "claim": "Confidential Transfers may be the most important XRPL upgrade for institutional adoption.",
+      "status": "CREATOR_OPINION; TECHNICAL_AND_ADOPTION_IMPACT_REQUIRES_INDEPENDENT_VALIDATION",
+      "required_evidence": [
+        "XRPL amendment specification and validator status",
+        "privacy/compliance design and auditability",
+        "production deployment and actual institutional usage"
+      ]
+    },
+    {
+      "id": "KAMILAH_SPONSORED_FEES_AND_RESERVES",
+      "attributed_source": "YouTube video 8xiy8w2YlfY",
+      "claim": "Sponsored Fees and Reserves can let businesses onboard users who hold no XRP.",
+      "status": "TECHNICAL_CLAIM_PENDING_PRIMARY_XRPL_SPECIFICATION_CHECK",
+      "required_evidence": [
+        "Official XLS specification",
+        "amendment activation status at video date",
+        "exact fee/reserve sponsorship mechanics and remaining XRP requirements"
+      ]
+    },
+    {
+      "id": "KAMILAH_YEN_CARRY_TRADE_XRP",
+      "attributed_source": "YouTube video iwhpNT73zpk",
+      "claim": "Oil disruption and yen-carry-trade unwinding could make XRP critical during liquidity stress.",
+      "status": "MACRO_HYPOTHESIS; NO_CAUSAL_EVIDENCE_ESTABLISHED",
+      "required_evidence": [
+        "JPY funding and cross-currency basis",
+        "positioning and leverage",
+        "oil shock event windows",
+        "cross-asset liquidity measures",
+        "XRP-specific settlement and liquidity response"
+      ]
+    },
+    {
+      "id": "KAMILAH_STABLECOINS_US_TREASURY_DEBT",
+      "attributed_source": "YouTube video OmLOAtfZ-Hs",
+      "claim": "Stablecoin reserves fund U.S. government debt.",
+      "status": "GENERAL_MECHANISM_PLAUSIBLE; ISSUER_SPECIFIC_RESERVE_EVIDENCE_REQUIRED",
+      "required_evidence": [
+        "Issuer reserve attestations",
+        "Treasury bill holdings and maturities",
+        "repo and cash allocations",
+        "reserve custodian and manager disclosures"
+      ]
+    }
+  ],
+  "data_quality": {
+    "raw_source_bytes_captured": false,
+    "raw_source_hashes_available": false,
+    "identity_quality": "Person identity is supported by first-person interview self-identification; canonical YouTube handle remains unresolved due fake-page warning and inaccessible channel About pages.",
+    "video_inventory_completeness": "Partial search-index inventory of four attributed videos; not a complete channel export.",
+    "sbic_quality": "SBIC America public operating identity is supported by its LinkedIn company profile and Safecon-controlled course pages; state corporate-registration evidence was not retrieved.",
+    "ask_coin_quality": "Permission Coin is the strongest candidate, but ASK is a reused ticker and intent is not confirmed; no XRP connection established.",
+    "model_eligible": false,
+    "model_eligibility_reason": "This is qualitative identity and entity research, not a timestamped market feature dataset; source bytes and independent hashes were not captured."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "Identity and entity research does not support a directional XRP forecast."
+  },
+  "next_actions": [
+    "Verify the canonical Kamilah Stevenson YouTube channel by locating a creator-controlled cross-link from the self-identified X/Instagram accounts or an official website; do not assume a handle while fake pages are reported.",
+    "Expand the video inventory only from the verified channel feed and retain exact video IDs, publication dates, view counts, descriptions and retrieval timestamps.",
+    "Fact-check the six XRPL amendment claims in the July 30 video against official XRPL XLS specifications, amendment registry and validator-vote history.",
+    "Measure the RLUSD-to-XRP demand claim using chain-specific RLUSD transfers, bridge inventories, XRP fees, DEX/AMM liquidity and settlement routes.",
+    "Check Permission's official ASK contract and migration announcements; verify whether any direct XRPL or XRP integration exists before treating ASK as related.",
+    "Retrieve state corporate-registration records for Safecon Bureau of Inspection & Certification USA Inc if legal-entity confirmation is required.",
+    "Continue exact-phrase research for 'actual capital' without substituting semantically similar wording."
+  ]
+}
