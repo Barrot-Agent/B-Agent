@@ -25,7 +25,7 @@ _TEST_EVALUATOR_PRIVATE_KEY = Ed25519PrivateKey.from_private_bytes(bytes(range(3
 _TEST_EVALUATOR_PUBLIC_KEY = _TEST_EVALUATOR_PRIVATE_KEY.public_key().public_bytes(
     Encoding.Raw, PublicFormat.Raw
 )
-_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V2\0"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V3\0"
 
 
 def _trusted_test_evaluator_keys():
@@ -196,16 +196,18 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         allow_nan=False,
     ).encode("utf-8")
     report = {
-        "schema_version": "barrot.xrp.model-readiness.v2",
+        "schema_version": "barrot.xrp.model-readiness.v3",
         "evaluation_type": "chronological_walk_forward_model_evaluation",
         "status": "PASS",
-        "policy_id": "xrp_forecast_readiness_v2",
+        "policy_id": "xrp_forecast_readiness_v3",
         "evaluation_id": f"test-evaluation-{asset.lower()}-{horizon_seconds}-{'-'.join(source_ids)}",
         "model_version": "xrp-test-v1",
         "baseline_model_version": "naive-frequency-v1",
         "asset": asset,
         "venue": "kraken:XRP/USD",
         "horizon_seconds": horizon_seconds,
+        "embargo_seconds": horizon_seconds,
+        "purge_policy": "training_start_and_outcome_available_by_cutoff_minus_embargo",
         "dataset_receipt_id": f"test-dataset-receipt-{asset.lower()}-{horizon_seconds}",
         "dataset_sha256": hashlib.sha256(canonical_dataset).hexdigest(),
         "dataset_manifest": dataset_manifest,
@@ -253,7 +255,7 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         "certificate": {
             "report_sha256": report_sha256,
             "receipt_id": receipt_id,
-            "policy_id": "xrp_forecast_readiness_v2",
+            "policy_id": "xrp_forecast_readiness_v3",
             "status": "PASS",
         },
     }
@@ -1066,3 +1068,29 @@ def test_forecast_ledger_rejects_digest_only_raw_receipt_for_readiness(tmp_path)
 
     with pytest.raises(ForecastLedgerError, match="retained raw bytes"):
         _validate_canonical_raw_receipt(outer, 0, raw_bytes)
+
+
+def test_readiness_report_rejects_embargo_shorter_than_forecast_horizon():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["embargo_seconds"] = 3599
+    with pytest.raises(ForecastLedgerError, match="embargo_seconds must be an integer at least as large as horizon_seconds"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_report_rejects_missing_or_invalid_embargo_policy():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report.pop("purge_policy")
+    with pytest.raises(ForecastLedgerError, match="purge_policy must declare"):
+        _validate_readiness_report(report)
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["embargo_seconds"] = True
+    with pytest.raises(ForecastLedgerError, match="embargo_seconds must be an integer"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_policy_v3_uses_new_attestation_domain_and_horizon_sized_embargo():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    assert report["schema_version"] == "barrot.xrp.model-readiness.v3"
+    assert report["policy_id"] == "xrp_forecast_readiness_v3"
+    assert report["embargo_seconds"] >= report["horizon_seconds"]
+    assert report["purge_policy"] == "training_start_and_outcome_available_by_cutoff_minus_embargo"

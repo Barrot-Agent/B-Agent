@@ -21,9 +21,9 @@ from .feature_store import FeatureStoreError, HistoricalFeatureStore
 HORIZONS = (3600, 14400, 86400, 604800, 2592000)
 CLASSES = ("down", "flat", "up")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
-READINESS_POLICY_ID = "xrp_forecast_readiness_v2"
+READINESS_POLICY_ID = "xrp_forecast_readiness_v3"
 _EVALUATOR_KEYS_ENV = "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON"
-_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V2\0"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V3\0"
 _REQUIRED_BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
 _MIN_OOS_SAMPLES = 100
 _MIN_SHADOW_SAMPLES = 100
@@ -342,7 +342,7 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     """Validate an independently attested model evaluation and its point-in-time dataset manifest."""
     if not isinstance(report, Mapping):
         raise ForecastLedgerError("readiness report must be a JSON object")
-    if report.get("schema_version") != "barrot.xrp.model-readiness.v2":
+    if report.get("schema_version") != "barrot.xrp.model-readiness.v3":
         raise ForecastLedgerError("readiness report schema is unsupported")
     if report.get("evaluation_type") != "chronological_walk_forward_model_evaluation":
         raise ForecastLedgerError("baseline-only or non-chronological evaluation cannot authorize a forecast")
@@ -366,6 +366,11 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     horizon = report.get("horizon_seconds")
     if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon not in HORIZONS:
         raise ForecastLedgerError("readiness report horizon_seconds is unsupported")
+    embargo_seconds = report.get("embargo_seconds")
+    if isinstance(embargo_seconds, bool) or not isinstance(embargo_seconds, int) or embargo_seconds < horizon:
+        raise ForecastLedgerError("readiness report embargo_seconds must be an integer at least as large as horizon_seconds")
+    if report.get("purge_policy") != "training_start_and_outcome_available_by_cutoff_minus_embargo":
+        raise ForecastLedgerError("readiness report purge_policy must declare cutoff-minus-embargo training-label exclusion")
 
     dataset = report.get("dataset_manifest")
     if not isinstance(dataset, Mapping):

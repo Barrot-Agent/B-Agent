@@ -253,7 +253,7 @@ def test_walk_forward_embargo_excludes_training_labels_inside_buffer():
     embargoed = evaluate_chronological_walk_forward(records, embargo_seconds=3600, **common)
 
     assert embargoed["embargo_seconds"] == 3600
-    assert "minus embargo_seconds" in embargoed["purge_policy"]
+    assert embargoed["purge_policy"] == "training_start_and_outcome_available_by_cutoff_minus_embargo"
     unembargoed_by_cutoff = {
         item["data_cutoff_utc"]: item
         for item in unembargoed["forecasts"]

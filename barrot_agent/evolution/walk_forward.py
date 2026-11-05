@@ -594,7 +594,7 @@ def evaluate_chronological_walk_forward(
         "evaluation_as_of_utc": _format(evaluation_cutoff),
         "horizon_seconds": horizon_seconds,
         "embargo_seconds": embargo_seconds,
-        "purge_policy": "training start and outcome records must be available by data_cutoff_utc minus embargo_seconds",
+        "purge_policy": "training_start_and_outcome_available_by_cutoff_minus_embargo",
         "flat_band_bps": float(flat_band_bps),
         "dataset_record_count": len(selected),
         "forecast_count": len(forecasts),
