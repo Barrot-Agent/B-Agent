@@ -4460,3 +4460,85 @@ Next:
 
 **No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.**
 
+
+
+## Run 38 — deterministic mission dispatch, Binance supervisory spillover, and exact-head integration (2026-11-05)
+
+### Current repository baseline
+
+- **Current main SHA:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- **Main recursive tree:** 1,403 entries; 493 Python files; 86 workflow files; 90 Python test files under `tests/`; tree response was not truncated.
+- Main still has the generic `learning_curriculum.py`, but does **not** contain `barrot_agent/orchestration/mission_registry.py`, `data/missions/primary_mission.json`, or `barrot_agent/evolution/xrp_public_ingestion.py`. The priority-1 XRP registry, scheduled collector and new deterministic dispatch are therefore not active on main.
+- Main push CI run [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459) passed 718 tests and 8 subtests. The separate Pillars Consistency Check [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956) failed: GitHub App credentials were missing, Databricks returned HTTP 403, and Hugging Face returned BUILD_ERROR.
+
+### Active integration heads
+
+**PR #1640 — V3/core integration**
+
+- Exact code head: `88168a71ea7c66d1cb8c6decc83efd0347187cfb`.
+- 232 commits ahead of main, zero behind; 85 changed files.
+- Added `TASK_MODE=mission` to `scripts/barrot_agent.py`. It reads the priority-1 mission registry and verified-learning store, emits the next XRP workstream as structured JSON, and exits before Git configuration/checkout or any provider call. It does not execute the goal or authorize external actions.
+- Two regression tests verify that the first XRP workstream is selected without a Groq key or repository mutation, and that progress advances only from verified-learning records.
+- The first core run on the preceding head exposed an escaped-regex defect in the mission topic parser. It was corrected in `88168a71`; the failing head is superseded and is not used as success evidence.
+- Core suite: **601 passed, 8 subtests**.
+- Full repository suite: **909 passed, 8 subtests**; inclusive package coverage **53.92%**. Exact-head CI: [42016798106](https://github.com/Barrot-Agent/B-Agent/actions/runs/42016798106).
+- Six-manifest strict dependency audit passed with no known vulnerabilities: [42016800124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42016800124).
+- Fail-closed gate passed and kept automatic merging disabled: [42016798214](https://github.com/Barrot-Agent/B-Agent/actions/runs/42016798214).
+- Cache-budget warning was non-fatal; cache remained read-only.
+- Review threads: 22/22 resolved. Actual approving reviews: **0**.
+
+**PR #1643 — XRP research archive**
+
+- Exact head: `44a27203efdc15367ae5be3083056754576fe12e`.
+- 184 commits ahead of main, zero behind; 148 changed files.
+- Added `research/xrp_intelligence/20261105T110654Z-binance-bank-supervisory-outreach-and-xrp-market-update.json` and `tests/test_xrp_binance_bank_supervisory_outreach.py`.
+- Core suite: **495 passed, 8 subtests**. Full repository suite: **974 passed, 8 subtests**. Exact-head CI: [42016463278](https://github.com/Barrot-Agent/B-Agent/actions/runs/42016463278).
+- Fail-closed gate passed: [42016463402](https://github.com/Barrot-Agent/B-Agent/actions/runs/42016463402).
+- Dependency audit did not trigger because the current main path filter excludes research-only files. The six dependency-manifest blobs are unchanged from main. PR #1640 adds research and XRP-test paths to the audit trigger; after #1640 is merged, reconcile #1643 against main without rewriting history and run the exact-head audit.
+- Review threads: 14/14 resolved. Actual approving reviews: **0**.
+- Changed-path overlap between #1640 and #1643: **zero**.
+
+### New research: Binance incident and reported US supervisory outreach
+
+- Reuters published [its report](https://www.reuters.com/legal/government/binance-hack-prompted-us-regulators-check-bank-systems-sources-say-2026-11-05/) at 2026-11-05 10:03 UTC. It reports that Federal Reserve and OCC supervisors contacted banks on November 2 about unusual activity or service disruptions after the Binance incident.
+- The Fed and OCC declined comment. One contacted-bank source told Reuters its services had not been disrupted and customer inquiries were few. Binance said it was unaware of the bank-regulator discussions. This is a single Reuters report of supervisory outreach, not an official regulator confirmation, public enforcement action or XRP-specific regulatory action.
+- Binance's [verified official initial findings](https://www.binance.com/en/square/post/384310881880963) describe approximately **$6.340B in affected digital assets**, approximately **$2.850B frozen/intercepted**, and **98% of affected token assets restored as of October 31**. The $6.340B is not a disclosed net unrecovered loss; replenishment by Binance is not the same as recovery from the attacker.
+- The five Binance hot-wallet transfers totaling approximately 233.46M XRP remain classified as a security-incident transfer, not organic customer exchange outflow. No XRP sale or exchange deposit is established by this research.
+- Kraken rendered ticker observation recorded at 2026-11-05 11:06:54.044 UTC: last **$1.31817**, bid/ask **$1.31814/$1.31815**, midpoint **$1.318145**, displayed spread **0.075864 bps**, 24-hour volume **32.199M XRP**, 24-hour VWAP **$1.30985786**, high **$1.34**, low **$1.27488**. One venue and top-of-book only.
+- Original rendered-source bytes were not retained; raw SHA-256 receipts and independent timestamp anchors are absent. The artifact explicitly sets `model_eligible=false`, and no directional forecast was issued.
+
+### Open PR inventory and consolidation
+
+Current inventory: **370 open PRs — 354 drafts and 16 non-drafts**.
+
+- **Active integration:** #1640 (V3/core) and #1643 (XRP research).
+- **Exact ancestor/superseded after main verification:** #1642; its seven changed paths are all included in #1640 and its head is an ancestor of #1640.
+- **Dependency/action overlap represented in #1640, not yet closed:** #1644–#1650. Their changed paths overlap #1640; their branch histories are not all exact ancestors.
+- **Unique/unreviewed non-draft:** #1651, nine changed files with zero path overlap against #1640/#1643. It has 11 review threads, 5 resolved and 6 unresolved; review submissions are comments, not approvals.
+- **Unique draft:** #1641, three changed files with zero path overlap.
+- **Preserve unique hunks:** #1320, #1318 and #1317 have complete path overlap with #1640 but diverged histories; do not close until content-level reconciliation confirms every hunk is represented.
+- **Preserve unique rendering work:** #1269 has eight unique rendering paths plus one CI path overlap.
+- **Older dependency candidates:** #1254 and #1255 overlap `legacy/requirements_legacy.txt`; do not close until replacement content is verified on main.
+- Other draft research/security work remains preserved. No bulk closure occurred.
+
+### Protection, deployment and merge decision
+
+- GitHub reports main as **protected**. The branch object reports no required status-check contexts; the detailed branch-protection endpoint returns HTTP 403, so required PR-review settings cannot be independently inspected.
+- Repository connector reports admin permission, but that is not authorization to bypass protection. No bypass was attempted.
+- Main push triggered the automatic GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), which completed successfully against main SHA `9100dbac`. Authorization for another merge-triggered Pages deployment is not established.
+- Both integration PRs are non-draft and GitHub reports them mergeable. Neither has an approving review. **Neither was merged.** The fail-closed gates explicitly disabled automatic merging.
+- The nine-platform map still verifies only the ChatGPT-to-GitHub repository data path. Copilot review activity is one-off, not a persistent authenticated integration. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified. Groq is distinct from Grok and is not one of the nine platforms.
+
+### Prediction status and next action
+
+- The public collector, content-addressed receipt archive, point-in-time feature store, forecast ledger and chronological baseline evaluator remain integration-branch work, not main production service.
+- Artifact retention is 90 days, not indefinite. The local SQLite/SQL-trigger boundary is not adversarially immutable; independent signed checkpoints or an independently controlled immutable log remain required.
+- Historical exchange-wallet flows, issuer cash creation/redemption records, collateral, custody, stablecoin and payment-rail histories remain incomplete. Probability calibration, drift monitoring, sufficient shadow outcomes and demonstrated out-of-sample lift remain unverified.
+- **Forecasts issued: none.** No paper trade or real-money action occurred.
+- Next: obtain independent approvals and verify branch-protection requirements; resolve Pages deployment authorization; merge #1640 only after every condition is met; fetch main, verify the merge commit/files and rerun main CI; reconcile #1643 onto the new main without rewriting history, run its exact-head full suite and dependency audit, then merge only if ready. Close only exact superseded PRs after their replacement content is verified on main.
+
+### Execution labels
+
+- **DESIGNED:** hourly public ingestion, daily feature-store backup, point-in-time evaluation, baseline comparison, forecast readiness and read-only mission dispatch.
+- **EXECUTED:** new mission dispatch code and tests on #1640; new Binance supervisory/market research artifact and tests on #1643; exact-head CI, full-suite tests, fail-closed gates and dependency audit on #1640.
+- **VERIFIED:** #1640 code head `88168a71` and #1643 research head `44a27203` passed their stated exact-head checks above. None of these changes is verified on main.
