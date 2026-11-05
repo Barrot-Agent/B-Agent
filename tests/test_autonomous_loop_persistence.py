@@ -124,3 +124,12 @@ def test_autonomous_store_rejects_lock_file_symlink_escape(tmp_path):
     path.with_suffix(".lock").symlink_to(outside_lock)
     with pytest.raises(ValueError):
         store.load("lock-escape")
+def test_non_object_goal_verifier_result_cannot_complete_task(tmp_path):
+    plan = json.dumps({"analysis": "inspect", "commands": ["pwd"]})
+    loop = BarrotAutonomousLoop(SequenceBrain([plan]), workspace=tmp_path, max_attempts=1, goal_verifier=lambda goal, record: ["untrusted"])
+    loop.executor.run = lambda command: ExecutionResult(command, True, "workspace", "", 0)
+    loop.verifier.verify_python = lambda: VerificationResult(True, [{"success": True}])
+    result = loop.run("perform a task", task_id="bad-verifier-result")
+    assert not result.success
+    assert result.status == "paused"
+    assert result.history[0]["goal_verification"]["success"] is False
