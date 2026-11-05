@@ -32,7 +32,7 @@ def test_coinbase_reclassification_and_circle_arrangement_are_not_misread():
     data = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     reclassification = data["accounting_and_actual_capital"]["reclassification"]
     assert reclassification["status"] == "CONFIRMED_IN_COINBASE_10Q"
-    assert "no change to its Circle arrangement" in reclassification["detail"]
+    assert "no change to its arrangement with Circle Internet Financial, LLC" in reclassification["detail"]
     assert "recast values" in reclassification["consequence"]
 
 
