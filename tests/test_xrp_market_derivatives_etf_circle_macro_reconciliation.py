@@ -69,7 +69,7 @@ def test_circle_q3_metrics_separate_usdc_growth_from_revenue_and_gross_volume():
 
 def test_binance_replenishment_is_not_mislabeled_as_xrp_recovery_or_organic_flow():
     event = load()["binance_security_event"]
-    assert event["stolen_xrp_approx"] == 233460000
+    assert event["stolen_xrp_approx"] == 233461943.1
     assert event["source_wallet_count"] == 5
     assert event["impacted_token_assets_replenished_pct_as_of_2026_10_31"] == 98
     assert "not XRP-specific" in event["replenishment_scope"]
@@ -122,7 +122,16 @@ def test_second_spot_capture_is_a_separate_vintage_not_a_rewritten_snapshot():
     assert latest["captured_at_utc"] == "2026-11-05T09:16:47Z"
     assert latest["last_usd"] == 1.31413
     assert math.isclose(latest["mid_usd"], mid, rel_tol=0, abs_tol=1e-12)
-    assert math.isclose(latest["displayed_spread_bps"], spread, rel_tol=0, abs_tol=1e-6)
+    # Preserve the originally recorded value; the append-only correction below
+    # supersedes only this derived spread field, not the captured market snapshot.
+    assert latest["displayed_spread_bps"] == 0.076106
+    correction = json.loads(
+        (ROOT / "research/xrp_intelligence/20261105T093117Z-xrp-market-snapshot-spread-correction.json").read_text(encoding="utf-8")
+    )
+    corrected = correction["correction"]
+    assert corrected["original_value_bps"] == latest["displayed_spread_bps"]
+    assert math.isclose(corrected["recomputed_exact_bps"], spread, rel_tol=0, abs_tol=1e-12)
+    assert corrected["corrected_value_rounded_6dp"] == 0.076105
     observed_change = (latest["last_usd"] / first - 1) * 100
     assert math.isclose(latest["change_from_090232_snapshot_pct"], observed_change, abs_tol=0.002)
     assert latest["source_event_timestamp"].startswith("not returned")
@@ -193,3 +202,17 @@ def test_binance_impact_and_freeze_totals_keep_source_cutoffs_separate():
     assert "denied" in attribution["state_denial"]
     assert "not a court judgment" in attribution["assessment"]
     assert any(source["id"] == "ap_north_korea_denial_binance_incident" for source in load()["source_registry"])
+
+
+def test_spread_correction_is_append_only_and_limited_to_derived_metric():
+    correction = json.loads(
+        (ROOT / "research/xrp_intelligence/20261105T093117Z-xrp-market-snapshot-spread-correction.json").read_text(encoding="utf-8")
+    )
+    assert correction["applies_to"]["artifact_id"] == "20261105T090232Z-xrp-market-derivatives-etf-circle-macro-reconciliation"
+    assert correction["applies_to"]["field_path"] == "market_snapshot.spot.latest_recheck.displayed_spread_bps"
+    assert correction["original_artifact_modified"] is False
+    assert correction["correction"]["original_value_bps"] == 0.076106
+    assert correction["correction"]["corrected_value_rounded_6dp"] == 0.076105
+    assert correction["source_capture"]["raw_http_bytes_captured"] is False
+    assert correction["model_eligible"] is False
+    assert correction["forecast_issued"] is False
