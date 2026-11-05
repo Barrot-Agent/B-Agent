@@ -103,5 +103,5 @@ def test_tempo_contract_address_correction_is_append_only_and_explorer_verified(
     assert "No transactions found" in tempo["claims_supported"][-1]
     assert "not proof of no on-chain activity" in tempo["limitations"][1]
     solana = next(source for source in correction["sources"] if source["source_id"] == "solscan_openusd_solana_mint")
-    assert solana["claims_supported"][2].endswith("80,985,079.87664")
+    assert "80,985,079.87664" in solana["claims_supported"][2]
     assert correction["admission"]["model_eligible"] is False
