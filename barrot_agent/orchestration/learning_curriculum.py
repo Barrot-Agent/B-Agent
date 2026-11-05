@@ -9,7 +9,7 @@ from .mission_registry import MissionRegistry
 
 
 class LearningCurriculum:
-    """Choose repository learning goals that require deeper inspection."""
+    """Choose repository learning goals that require validated learning records."""
 
     def __init__(
         self,
@@ -18,21 +18,24 @@ class LearningCurriculum:
         mission_registry: MissionRegistry | None = None,
     ):
         self.workspace = Path(workspace)
-        self.learning_store = (
-            learning_store
-            or VerifiedLearningStore()
-        )
+        self.learning_store = learning_store or VerifiedLearningStore()
         self.mission_registry = mission_registry or MissionRegistry()
 
     def _known_text(self) -> str:
+        """Use only records that pass the store's current verification contract."""
         try:
-            records = self.learning_store.read_all()
+            read_verified = getattr(self.learning_store, "read_verified", None)
+            if not callable(read_verified):
+                return ""
+            records = read_verified()
         except Exception:
             return ""
 
-        return "\n".join(
-            str(record.get("lesson", ""))
+        return "\\n".join(
+            record["lesson"]
             for record in records
+            if isinstance(record, dict)
+            and isinstance(record.get("lesson"), str)
         )
 
     def next_goal(self) -> str:
