@@ -180,7 +180,7 @@ class BarrotExecutor:
             return
 
         if program == "grep":
-            if len(args) != 5 or args[0] != "-RIn" or args[1] != "--exclude-dir=.git" or args[2] != "--":
+            if len(args) != 5 or args[0] != "-rIn" or args[1] != "--exclude-dir=.git" or args[2] != "--":
                 raise ExecutionError("grep is limited to recursive, read-only workspace searches.")
             if not args[3]:
                 raise ExecutionError("grep pattern must be non-empty.")
