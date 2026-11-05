@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from importlib.resources import files as package_files
 from pathlib import Path
 
 import pytest
@@ -106,3 +107,35 @@ def test_primary_mission_manifest_fails_closed_on_safety_downgrade(
 
     with pytest.raises(MissionRegistryError, match=message):
         MissionRegistry(_write_manifest(tmp_path, manifest))
+
+
+def test_primary_mission_manifest_is_packaged_and_matches_repository_copy() -> None:
+    packaged = package_files("barrot_agent").joinpath(
+        "data", "missions", "primary_mission.json"
+    )
+
+    assert packaged.is_file()
+    assert json.loads(packaged.read_text(encoding="utf-8")) == _manifest()
+
+
+def test_installed_package_falls_back_to_packaged_primary_mission(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from barrot_agent.orchestration import mission_registry as registry_module
+
+    missing_checkout_path = tmp_path / "source-checkout" / "data" / "missions" / "primary_mission.json"
+    monkeypatch.setattr(registry_module, "DEFAULT_MISSION_PATH", missing_checkout_path)
+
+    registry = MissionRegistry()
+
+    assert registry.mission_id == "xrp_intelligence_prediction_engine"
+
+
+def test_primary_mission_resource_is_declared_as_package_data() -> None:
+    pyproject = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text(
+        encoding="utf-8"
+    )
+
+    assert "[tool.setuptools.package-data]" in pyproject
+    assert 'barrot_agent = ["data/missions/*.json"]' in pyproject
