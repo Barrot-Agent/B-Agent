@@ -146,11 +146,11 @@
   },
   "ownership_and_relationships": {
     "sbi_holdings": {
-      "economic_percent_of_total_common_stock_at_close": 21.4,
       "voting_power_percent_at_close": 39.9,
       "class_a_shares": 9431914,
       "class_c_shares": 2359038,
-      "interpretation": "The 39.9% is voting power under the subscription ownership cap, not 39.9% economic ownership. SBI Stockholders are entities controlled by or managed by SBI Holdings, Inc.; this is not one of Japan's regional SBIC East/Central/West companies."
+      "interpretation": "The 21.4% figure is the prospectus table's percent of total Pubco common stock; 39.9% is voting power under the subscription ownership cap. Do not call 39.9% an economic ownership percentage.",
+      "percent_of_total_pubco_common_stock_at_close": 21.4
     },
     "ripple": {
       "relationship": "former parent, direct XRP contributor, shareholder subject to ownership limits, and related-party lender",
