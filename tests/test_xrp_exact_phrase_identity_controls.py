@@ -77,3 +77,28 @@ def test_chatgpt_and_ai_references_are_separate_events_and_counterparties():
     assert "not SBI Holdings" in refs["softbank_openai"]
     assert data["model_eligible"] is False
     assert data["model_admission"]["forecast_issued"] is False
+
+
+EVERNORTH_CAPITAL_ARTIFACT = ROOT / "research/xrp_intelligence/20261105T081500Z-evernorth-actual-capital-cantor-facility-reconciliation.json"
+
+
+def test_evernorth_cantor_capacity_is_not_actual_capital():
+    data = json.loads(EVERNORTH_CAPITAL_ARTIFACT.read_text(encoding="utf-8"))
+    facility = data["capital_reconciliation"]["cantor_committed_equity_facility"]
+    assert facility["actual_proceeds_usd_as_of_2026_10_30"] == 0
+    assert facility["maximum_new_shares"] == 5_218_935
+    assert facility["upfront_commitment_fee_usd"] == 521_893.50
+    assert facility["fee_is_capital_raised"] is False
+    assert data["model_eligible"] is False
+
+
+def test_evernorth_cash_in_kind_debt_and_warrant_potential_are_separate():
+    data = json.loads(EVERNORTH_CAPITAL_ARTIFACT.read_text(encoding="utf-8"))
+    capital = data["capital_reconciliation"]
+    assert capital["historical_cash_received_and_deployed"]["amount_usd"] == 214_050_000
+    assert capital["historical_cash_received_and_deployed"]["use_of_proceeds_usd"] == 214_000_000
+    assert capital["in_kind_xrp_subscriptions"]["total_xrp"] == 262_119_096.061435
+    assert capital["convertible_senior_pik_notes"]["gross_cash_consideration_usd"] == 30_000_000
+    assert capital["convertible_senior_pik_notes"]["net_proceeds_after_stated_issuance_costs_usd"] == 29_000_000
+    assert capital["public_warrants"]["maximum_gross_cash_if_all_exercised_usd"] == 132_249_908
+    assert capital["public_warrants"]["proceeds_verified_usd"] is None
