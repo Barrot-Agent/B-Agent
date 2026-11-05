@@ -1271,7 +1271,7 @@ def build_primary_mission_dispatch() -> dict[str, Any]:
     goal = curriculum.next_goal()
     if not isinstance(goal, str) or not goal.strip():
         raise RuntimeError("Primary mission curriculum returned no active goal.")
-    topic = re.search(r"(?m)^MISSION_TOPIC_ID:\\s*([a-zA-Z0-9_.-]+)\\s*$", goal)
+    topic = re.search(r"(?m)^MISSION_TOPIC_ID:\s*([a-zA-Z0-9_.-]+)\s*$", goal)
     if topic is None:
         raise RuntimeError("Primary mission goal is missing its topic identifier.")
 
