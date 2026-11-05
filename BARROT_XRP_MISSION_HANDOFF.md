@@ -3483,3 +3483,103 @@ Non-blocking CI warnings remain: the GitHub Actions cache budget is read-only; s
 
 The current handoff update is documentation-only and will receive its own exact-head CI, dependency-audit and fail-closed checks. Do not describe that subsequent handoff commit as verified until those checks finish.
 
+
+
+### Run 27 — readiness attestation and workflow containment
+Recorded: 2026-11-05T06:18Z
+
+#### Repository state and exact-head verification
+
+- Current `main`: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main was not modified.
+- PR #1640 code-bearing head: `5ed5f70b958982aaddc0a61f26f483520234439a`; 193 commits ahead, 0 behind; 83 changed files.
+- PR #1643 head: `da5bbed8dcd6003925b6ba63faaab1b300f19f76`; 138 commits ahead, 0 behind; 116 changed files. The two integration branches have no changed-path overlap.
+- PR #1640 exact-head CI [41979167727](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979167727): core suite **594 passed, 8 subtests**; full repository suite **891 passed, 8 subtests**; inclusive package coverage **53.55%**, above the 50% floor; wheel build and installed-wheel verification succeeded and confirmed Barrot V3, the XRP primary mission and canonical data assets.
+- PR #1640 exact-head dependency audit [41979167623](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979167623): all five declared dependency sets passed strict pip-audit; no known vulnerabilities were found.
+- PR #1640 fail-closed gate [41979167803](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979167803): passed and explicitly kept automatic merging disabled.
+- PR #1643 exact-head core suite: **495 passed, 8 subtests**; full repository suite: **866 passed, 8 subtests**; CI [41976071373](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071373) and fail-closed gate [41976071392](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071392) passed.
+- Review threads: #1640 22/22 resolved; #1643 14/14 resolved. Neither PR has an approving review.
+
+#### Prediction-readiness security: policy v2
+
+The prior readiness certificate trusted self-declared evaluation status/metrics after checking report and dataset hashes. That did not establish that an independent evaluator had attested to the out-of-sample result.
+
+The #1640 branch now changes the readiness policy to `xrp_forecast_readiness_v2`:
+
+- Readiness reports require evaluator identity/version, evaluation-code SHA-256 and evaluation-artifact SHA-256.
+- A detached Ed25519 signature is required from an externally trusted evaluator key.
+- The signature covers the canonical readiness report plus the attestation scheme, key ID and attested timestamp using the domain separator `BARROT_XRP_MODEL_READINESS_V2\0`.
+- Canonical JSON encoding is required; signature metadata cannot be altered after signing.
+- The attestation time must be at or after evaluation completion and no later than the ledger's actual registration time.
+- Trusted public keys are loaded from `BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON`. Test/fixture key IDs are rejected when loading the production environment trust store.
+- Policy-v1 self-attested readiness reports are not accepted.
+
+**Not configured / not verified:** no production evaluator public key or independently operated evaluator-signing service is configured in the repository workflows. The evaluator's independent execution, reproducible evaluation artifact and external timestamp anchoring remain outstanding. The default empty trust store therefore fails closed. The forecast ledger is still a recorder/scorer, not a production prediction generator. No directional forecast is authorized or issued.
+
+#### Workflow and runtime safety containment
+
+The same integration branch now quarantines eight additional legacy manual workflows that previously held repository write permission and could commit generated output directly to main:
+
+- `ask-barrot.yml`
+- `write-lyrics.yml`
+- `pingpong.yml`
+- `make-track.yml`
+- `audio-ingest.yml`
+- `barrot-speak.yml`
+- `free-image-gen.yml`
+- `knowledge-signal-cycle-btc.yml`
+
+Each is now manual-dispatch-only with `permissions: {}` and an unconditional false job guard. The workflow definitions/scripts remain in repository history; no credentials are loaded and no external call or repository mutation can occur through these quarantined workflows. They require a future branch-only, artifact-first, explicit-approval and exact-main-SHA design before reactivation.
+
+Additional safety corrections:
+
+- `self_hosted_brain/start.sh` now exits before model download/server start when `BRAIN_SHARED_SECRET` is absent and no longer falls back to the known `changeme` API key.
+- `sync-self-hosted-brain.yml` requires a non-empty secret, verifies the destination Space is private and registers the secret before uploading code.
+- `barrot-ops.yml` now requires explicit YES, dispatch from main, a full expected source SHA, and equality between the checked-out commit and freshly fetched `origin/main`; checkout credentials are not persisted and repository permission is read-only. Its Kaggle action is dataset download only; no competition submission exists in this workflow.
+- The existing Coinbase paper workflow remains manual and requires explicit confirmation plus exact-main-SHA validation. It was not run.
+- Other Databricks, Hugging Face, Space restart, A2A and Kaggle-submission workflows remain manual/approval-gated; none was dispatched. The tag-triggered release workflow was not triggered.
+- The source-independence engine rejects IP-literal hosts; the Pillars source check validates HTTP status before treating a source as successful.
+
+#### XRP ingestion and research eligibility
+
+The current #1640 public collector contains **16 allowlisted endpoints**, correcting earlier handoff text that described 11. They cover Binance spot and USD-M ticker/klines/funding/open-interest/global-long-short data, Coinbase ticker/candles/order book, Kraken depth, Binance spot depth, XRP Insights ETF totals, and REX/Osprey, Bitwise and Grayscale issuer pages.
+
+The collector is read-only and exists on the PR branch only; the hourly schedule has not run on main. Raw-source and feature-store artifacts currently have 90-day retention, not indefinite storage. Some endpoints remain raw-only because they lack provider event timestamps or validated sequence metadata. Exchange-wallet flows, complete issuer creation/redemption records, collateral utilization, stablecoin mint/burn, custody balances, payment throughput, and synchronized regulatory/macro/geopolitical event vintages are still incomplete.
+
+The #1643 research archive now contains 91 JSON artifacts, 22 regression-test modules and 3 Markdown research addenda. Its append-only correction overlay C01–C17 preserves original artifacts and records exact target preimages, source/entity corrections, Kraken UTC-day-open semantics, X:PM dash-versus-zero handling, Kamilah evidence separation, Arc validator-status qualification, Evernorth lender/arithmetic/graph corrections, point-in-time quarantine and per-observation eligibility. The overlay is a research correction record; automated application to model features is not implemented.
+
+The latest primary issuer holdings and institutional RLUSD/custody/collateral observations remain model-ineligible because exact original HTTP bytes, independent capture timestamps and/or complete issuer vintages were not captured. The Kraken tool-returned text hash is not a hash of the original HTTP byte stream and has no provider event timestamp. ETF holdings changes are not direct AP cash flows or verified open-market XRP purchases. Derivatives dashboard differences are preserved, not averaged.
+
+#### Nine-platform coordination
+
+Only ChatGPT-to-GitHub repository access is verified as an authenticated data path. The prior Copilot Agent Merge execution was a one-off GitHub Actions run, not a persistent independent connector. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as authenticated persistent data flows. No nine-platform live coordination is claimed.
+
+#### Open PR inventory and classification
+
+The live open inventory is 370 PRs: 354 drafts and 16 non-drafts.
+
+- **Active integration, blocked:** #1640 and #1643.
+- **Exact ancestor/superseded candidate:** #1642; compare confirms its head is an ancestor of #1640. Preserve until successor content is verified on main.
+- **Dependency/action superseded candidates:** #1644–#1650. Their checkout/artifact action majors and dependency versions are represented in #1640; #1644's self-upgrade checkout change is superseded by quarantining that workflow. Preserve until #1640 is merged and verified on main.
+- **Unique/unreviewed:** #1651; preserve.
+- **Unique security/containment work:** #1615; preserve.
+- **Unique collateral research:** #1621; preserve.
+- **Partial overlap requiring hunk-level preservation:** #1317, #1318 and #1320.
+- **Unique geometry/rendering work:** #1269; preserve.
+- **Older dependency candidates:** #1254 and #1255; retain pending exact diff reconciliation.
+- No PRs were closed and no bulk closure occurred.
+
+#### Merge decision and next actions
+
+Do not merge either integration PR yet. Both are mergeable according to GitHub, but both have zero approving reviews. The main branch API reports `protected=true`, while the branch-protection detail endpoint returns HTTP 403; the visible fallback ruleset is disabled, so required approval/check enforcement cannot be independently verified. A previous main push triggered GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489); authorization for another merge-triggered Pages deployment remains unresolved.
+
+Next actions:
+1. Obtain independent approving reviews and verify actual branch-protection/check requirements.
+2. Resolve the GitHub Pages deployment side effect before any main push.
+3. Merge #1640 only when all conditions pass; fetch main again, verify merge commit and files, then run main CI.
+4. Reconcile #1643 against the resulting main without rewriting history; rerun its exact-head full suite and fail-closed gate before merge.
+5. Close only exact superseded source PRs after merged content is verified on main.
+6. Build durable raw-source retention and independent timestamp anchoring; wire correction/eligibility overlays into feature admission; populate synchronized historical datasets; establish an independent evaluator and trusted public key; then run leakage-safe walk-forward tests, calibration, drift and shadow evaluation.
+
+**Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.** No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+This update is committed on the existing #1640 integration branch. Its resulting documentation-only head must receive its own exact-head CI, dependency audit and fail-closed gate before that new head is described as verified.
