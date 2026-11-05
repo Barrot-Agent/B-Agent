@@ -169,7 +169,7 @@ def test_overlay_rejects_invalid_calendar_dates_and_unanchored_issuer_times():
 
     source_bytes, overlay, _ = _documents()
     overlay["field_corrections"][1]["canonical_field_value"]["XRPZ"]["start"] = "2026-11-04T23:42:00"
-    with pytest.raises(ResearchEligibilityError, match="include a timezone"):
+    with pytest.raises(ResearchEligibilityError, match="include a UTC timezone offset"):
         _apply(source_bytes, _bytes(overlay))
 
 

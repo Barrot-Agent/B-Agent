@@ -5950,3 +5950,8 @@ No deployment, secret rotation, Space restart, Kaggle submission, paper trade, f
 The first exact-head full-suite run on the new timestamp consumer exposed a missing private-helper import: `_canonical_json` was used to hash the corrected in-memory view but was not imported. The core suite passed; the full suite reported 971 passed, 2 failed and 8 subtests. The failure was isolated to the two success-path overlay tests, not to source parsing or the existing forecast engine.
 
 The import was added. The same patch also hardened non-string field rejection and requires UTC-zero-offset timestamps for fields explicitly named `*_utc`. The prior failed head remains in history; it is not treated as verified.
+
+
+### Timestamp-overlay CI assertion correction — EXECUTED
+
+The second exact-head full-suite run passed 973 tests and 8 subtests, with one failure limited to a test's expected error-message regex. The implementation correctly rejected a naive timestamp and returned the more specific message “must include a UTC timezone offset”; the assertion expected the shorter phrase “include a timezone”. The test expectation now matches the explicit UTC-offset contract. The failed head is superseded and is not treated as verified.
