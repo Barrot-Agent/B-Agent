@@ -68,3 +68,15 @@ def test_competing_hypotheses_retain_counterevidence_and_no_forecast():
     assert all(item["support"] for item in data["competing_hypotheses"])
     assert all(item["disconfirming_or_missing"] for item in data["competing_hypotheses"])
     assert data["predictions"]["issued"] is False
+
+def test_rendered_extracts_do_not_claim_exact_retrieval_or_date_only_source_times():
+    data = load()
+    assert data["data_cutoff_utc"] is None
+    assert data["historical_replay_eligible_from_utc"] is None
+    assert "No exact HTTP retrieval timestamp" in data["source_retrieval_timestamp_precision"]
+    assert all(source["retrieved_at_utc"] is None for source in data["source_registry"])
+    by_id = {source["id"]: source for source in data["source_registry"]}
+    assert by_id["xrpl_to_amendment_explainer_20261104"]["source_time_utc"] is None
+    assert by_id["xrpl_to_amendment_explainer_20261104"]["source_date"] == "2026-11-04"
+    assert by_id["coingecko_xrp_cex_depth_20260930"]["source_time_utc"] is None
+    assert by_id["coingecko_xrp_cex_depth_20260930"]["source_date"] == "2026-09-30"

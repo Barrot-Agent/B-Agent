@@ -7,10 +7,8 @@
     "priority": "XRP intelligence and prediction-engine mastery",
     "prediction_status": "NOT_ISSUED"
   },
-  "captured_at_utc": "2026-11-05T02:03:59Z",
-  "data_cutoff_utc": "2026-11-05T02:03:59Z",
-  "ingested_at_utc": "2026-11-05T02:03:59Z",
-  "historical_replay_eligible_from_utc": "2026-11-05T02:03:59Z",
+  "data_cutoff_utc": null,
+  "historical_replay_eligible_from_utc": null,
   "research_scope": [
     "XRP perpetual derivatives",
     "centralized-exchange order-book liquidity",
@@ -27,7 +25,7 @@
       "source_type": "multi_exchange_derivatives_aggregator",
       "url": "https://tradradar.io/markets/xrp",
       "instrument": "XRP perpetual futures across seven named exchanges",
-      "retrieved_at_utc": "2026-11-05T02:03:59Z",
+      "retrieved_at_utc": null,
       "source_time_utc": "2026-11-04T21:20:00Z",
       "capture_method": "web-rendered search-result extract",
       "raw_content_encoding": null,
@@ -41,7 +39,8 @@
         "Liquidations are a lower bound because some venues do not publish complete real-time liquidation data.",
         "Long/short ratio is account-based, not notional exposure.",
         "No byte-complete response body or raw exchange receipts were captured."
-      ]
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
     },
     {
       "id": "xrpldashboard_amendment_snapshot_20261104T1527Z",
@@ -49,7 +48,7 @@
       "source_type": "ledger_derived_validator_amendment_tracker",
       "url": "https://xrpldashboard.com/amendments",
       "instrument": "XRPL Mainnet amendment voting",
-      "retrieved_at_utc": "2026-11-05T02:03:59Z",
+      "retrieved_at_utc": null,
       "source_time_utc": "2026-11-04T15:27:00Z",
       "capture_method": "web-rendered page extract",
       "raw_content_encoding": null,
@@ -62,7 +61,8 @@
         "The tracker reports 35 of 35 validators heard and 29 required.",
         "It is a ledger-derived tracker, not a raw validation-message capture in this artifact.",
         "No byte-complete response body or independent timestamp receipt was captured."
-      ]
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
     },
     {
       "id": "xrpl_to_amendment_explainer_20261104",
@@ -70,8 +70,8 @@
       "source_type": "secondary_protocol_governance_explainer",
       "url": "https://xrpl.to/insights/xrpl-amendments-explained",
       "instrument": "XRPL amendment voting methodology and Nov 4 snapshot",
-      "retrieved_at_utc": "2026-11-05T02:03:59Z",
-      "source_time_utc": "2026-11-04T00:00:00Z",
+      "retrieved_at_utc": null,
+      "source_time_utc": null,
       "capture_method": "web-rendered page extract",
       "raw_content_encoding": null,
       "raw_content_bytes": null,
@@ -83,7 +83,9 @@
         "Reports 36 trusted validators, whereas XRPL Dashboard's snapshot reports 35 of 35 validators heard.",
         "Both displayed 29 as the required yes count; denominator definitions are not identical.",
         "No byte-complete page capture was retained."
-      ]
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z",
+      "source_date": "2026-11-04"
     },
     {
       "id": "xrpl_official_amendment_docs",
@@ -91,7 +93,7 @@
       "source_type": "official_protocol_documentation",
       "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
       "instrument": "XRPL amendment activation rules",
-      "retrieved_at_utc": "2026-11-05T02:03:59Z",
+      "retrieved_at_utc": null,
       "source_time_utc": null,
       "capture_method": "official documentation page extract",
       "raw_content_encoding": null,
@@ -102,7 +104,8 @@
       "limitations": [
         "Defines protocol rules, not the current live validator tally.",
         "Documentation was not captured as byte-complete raw source in this run."
-      ]
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
     },
     {
       "id": "coingecko_xrp_cex_depth_20260930",
@@ -110,8 +113,8 @@
       "source_type": "historical_multi_exchange_orderbook_depth_study",
       "url": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
       "instrument": "XRP spot order-book depth across eight centralized exchanges",
-      "retrieved_at_utc": "2026-11-05T02:03:59Z",
-      "source_time_utc": "2026-09-30T00:00:00Z",
+      "retrieved_at_utc": null,
+      "source_time_utc": null,
       "capture_method": "web-rendered report extract",
       "raw_content_encoding": null,
       "raw_content_bytes": null,
@@ -122,7 +125,9 @@
         "Report updated Sep 30, 2026; it is not a live Nov 5 order-book snapshot.",
         "Eight-exchange study, not the complete XRP venue universe.",
         "Reported side depths and headline total are rounded estimates."
-      ]
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z",
+      "source_date": "2026-09-30"
     },
     {
       "id": "basis_binance_xrpusdt_perp_heatmap_20261104T0718Z",
@@ -130,7 +135,7 @@
       "source_type": "single_venue_perpetual_orderbook_visualization",
       "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
       "instrument": "Binance XRPUSDT perpetual order book",
-      "retrieved_at_utc": "2026-11-05T02:03:59Z",
+      "retrieved_at_utc": null,
       "source_time_utc": "2026-11-04T07:18:00Z",
       "capture_method": "web-rendered heatmap extract",
       "raw_content_encoding": null,
@@ -143,7 +148,8 @@
         "Single Binance perpetual book, not spot liquidity or a consolidated CEX book.",
         "Walls can be cancelled or moved; displayed depth is not executed volume.",
         "No raw order-book sequence or byte-complete payload was captured."
-      ]
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
     }
   ],
   "derivatives_reconciliation": {
@@ -364,5 +370,7 @@
     "Query XRPL Amendments ledger state and EnableAmendment transactions directly; preserve validator-vote snapshots with ledger indices.",
     "Keep the 100-training/100-distinct-OOS-origin evaluator gate; do not treat this research artifact as a model feature.",
     "Continue issuer-level ETF, stablecoin, custody and collateral ingestion without inferring XRP utilization from corporate announcements."
-  ]
+  ],
+  "recorded_at_utc": "2026-11-05T02:13:44.987Z",
+  "source_retrieval_timestamp_precision": "No exact HTTP retrieval timestamp was exposed for the rendered search-result extracts. Provider event/update times are retained only where the page displayed them. record_id is an artifact identifier, not a source timestamp. No common synchronized data cutoff is available."
 }
