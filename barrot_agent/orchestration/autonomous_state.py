@@ -24,8 +24,13 @@ class AutonomousTaskStore:
 
     def __init__(self, workspace: str | Path):
         self.workspace = Path(workspace).resolve()
-        self.root = self.workspace / ".barrot" / "autonomous_tasks"
-        self.root.mkdir(parents=True, exist_ok=True)
+        root_candidate = self.workspace / ".barrot" / "autonomous_tasks"
+        root_candidate.mkdir(parents=True, exist_ok=True)
+        self.root = root_candidate.resolve()
+        try:
+            self.root.relative_to(self.workspace)
+        except ValueError as exc:
+            raise ValueError("autonomous task store path escapes workspace") from exc
 
     def path_for(self, task_id: str) -> Path:
         if not isinstance(task_id, str) or not self._TASK_ID.fullmatch(task_id):
@@ -92,11 +97,12 @@ class AutonomousTaskStore:
                     os.fsync(handle.fileno())
                 os.replace(temporary, path)
                 temporary = None
-                directory_fd = os.open(self.root, os.O_RDONLY)
-                try:
-                    os.fsync(directory_fd)
-                finally:
-                    os.close(directory_fd)
+                if os.name != "nt":
+                    directory_fd = os.open(self.root, os.O_RDONLY)
+                    try:
+                        os.fsync(directory_fd)
+                    finally:
+                        os.close(directory_fd)
             finally:
                 if temporary is not None:
                     temporary.unlink(missing_ok=True)
