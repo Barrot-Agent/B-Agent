@@ -16,6 +16,8 @@ class EvaluationSnapshot:
     metrics: Mapping[str, float]
 
     def __post_init__(self) -> None:
+        if not isinstance(self.run_id, str) or not isinstance(self.revision, str):
+            raise TypeError("run_id and revision must be strings")
         if not self.run_id.strip() or not self.revision.strip():
             raise ValueError("run_id and revision must be non-empty")
         if not isinstance(self.metrics, Mapping):
@@ -24,9 +26,13 @@ class EvaluationSnapshot:
             raise ValueError("at least one measured metric is required")
         copied: dict[str, float] = {}
         for name, value in self.metrics.items():
+            if not isinstance(name, str) or not name.strip():
+                raise ValueError("metric names must be non-empty strings")
+            if isinstance(value, bool) or not isinstance(value, (int, float)):
+                raise TypeError("metric values must be numeric and not boolean")
             numeric = float(value)
-            if not name.strip() or not math.isfinite(numeric):
-                raise ValueError("metric names must be non-empty and values finite")
+            if not math.isfinite(numeric):
+                raise ValueError("metric values must be finite")
             copied[name] = numeric
         object.__setattr__(self, "metrics", MappingProxyType(copied))
 
@@ -80,6 +86,10 @@ def assess_improvement(
         tolerances = {}
     elif not isinstance(tolerances, Mapping):
         raise TypeError("tolerances must be a mapping")
+    unknown_tolerances = set(tolerances) - set(baseline.metrics)
+    unknown_directions = set(lower_is_better) - set(baseline.metrics)
+    if unknown_tolerances or unknown_directions:
+        raise ValueError("unknown metric configuration: " + ", ".join(sorted(unknown_tolerances | unknown_directions)))
     deltas: dict[str, float] = {}
     regressions: list[str] = []
     normalized: list[float] = []
