@@ -194,6 +194,24 @@
       "relationship": "exploratory tokenized trade-finance/supply-chain-finance initiative with BNY",
       "status": "exploration_not_production_funding",
       "capital_deployed_usd": null
+    },
+    {
+      "id": "SBI_VCTRADE_RIPPLE_RLUSD",
+      "from": "SBI_VC_Trade",
+      "to": "Ripple",
+      "relationship": "RLUSD distribution/listing partnership on VCTRADE",
+      "launch_date": "2026-06-24",
+      "chains_supported_at_launch": [
+        "Ethereum"
+      ],
+      "bitpoint_service_included": false
+    },
+    {
+      "id": "RIPPLE_STANDARD_CUSTODY_RLUSD_ISSUER",
+      "from": "Ripple",
+      "to": "Standard_Custody_Trust_Company",
+      "relationship": "parent/affiliate issuer relationship",
+      "role": "Standard Custody & Trust Company issues RLUSD"
     }
   ],
   "shared_provider_relationships": [
@@ -238,15 +256,18 @@
     },
     {
       "id": "SBI_CIRCLE_USDC",
-      "event_date": "2025-03-12",
-      "claim": "SBI VC Trade began USDC services after registration as an Electronic Payment Instruments Service Provider. SBI Holdings states it is a consolidated subsidiary.",
+      "event_date": "2025-03-04 to 2025-03-26",
+      "claim": "SBI VC Trade, a consolidated subsidiary of SBI Holdings, completed Japan's Electronic Payment Instruments Service Provider registration on 2025-03-04 (Kanto Local Finance Bureau registration 00001), released a limited USDC beta on 2025-03-12, and announced general customer trading from 2025-03-26.",
       "limitations": [
-        "USDC distribution does not establish XRP purchases.",
-        "The cited SBI disclosure says it was first/sole at that date; this is a time-bounded company statement."
+        "The 'first' and 'only' Japan provider wording is SBI VC Trade's own market survey, time-bounded to 2025-03-25.",
+        "SBI VC Trade states its VCTRADE USDC deposit/withdrawal service supported Ethereum only at launch.",
+        "USDC distribution does not establish XRP purchases or XRP collateral."
       ],
       "source_ids": [
         "SBI_USDC_REGISTRATION_20250304",
-        "SBI_CIRCLE_MOU_20231127"
+        "SBI_USDC_BETA_20250312",
+        "SBI_USDC_PUBLIC_20250325",
+        "CIRCLE_ARC_MAINNET_20260916"
       ]
     },
     {
@@ -265,10 +286,12 @@
     {
       "id": "SBI_ARC_VALIDATOR",
       "event_date": "2026-09-16",
-      "claim": "Circle identifies SBI Group as a founding validator cohort participant on Arc. SBI's representative says SBI intends to contribute to Arc operation and governance.",
+      "claim": "Circle identifies SBI Group as a founding validator-cohort participant on Arc. Circle lists Coinbase under exchanges providing Arc access and BNY among banks with access to the network; neither is identified as a founding validator in that release.",
       "limitations": [
-        "Arc is a separate Layer 1, not XRPL.",
-        "The public release does not establish validator uptime, stake amount, or XRP flows.",
+        "Arc is a separate Layer 1, not XRPL; Arc transaction fees are paid in USDC.",
+        "The release describes a phased validator rollout; actual SBI validator uptime and stake are not independently verified.",
+        "Coinbase is listed as an exchange access provider, not as a founding validator.",
+        "BNY is listed among banks with access to Arc, not as a founding validator.",
         "SBI Group is not SBIC East/Central/West."
       ],
       "source_ids": [
@@ -694,7 +717,7 @@
       "id": "SBI_CIRCLE_JV_20250822",
       "publisher": "SBI Holdings",
       "date": "2025-08-22",
-      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.htmlSBI",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
       "source_type": "parent-company JV announcement",
       "independence_group": "SBI-Circle strategic relationship",
       "raw_bytes_captured": false
@@ -742,6 +765,33 @@
       "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
       "source_type": "regulatory final-rule announcement",
       "independence_group": "OCC GENIUS Act rule",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "SBI_USDC_REGISTRATION_20250304",
+      "publisher": "SBI VC Trade",
+      "date": "2025-03-04",
+      "url": "https://www.sbivc.co.jp/newsview/9ne-b0_5yo",
+      "source_type": "service-provider registration announcement",
+      "independence_group": "SBI VC Trade USDC launch",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "SBI_USDC_BETA_20250312",
+      "publisher": "SBI VC Trade",
+      "date": "2025-03-12",
+      "url": "https://www.sbivc.co.jp/newsview/gawv47w_bfe",
+      "source_type": "limited beta launch announcement",
+      "independence_group": "SBI VC Trade USDC launch",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "SBI_USDC_PUBLIC_20250325",
+      "publisher": "SBI VC Trade",
+      "date": "2025-03-25",
+      "url": "https://www.sbivc.co.jp/newsview/2mjic5dcvjtv",
+      "source_type": "general customer trading launch announcement",
+      "independence_group": "SBI VC Trade USDC launch",
       "raw_bytes_captured": false
     }
   ],

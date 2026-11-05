@@ -32,6 +32,8 @@ def test_sbi_ripple_and_sbi_circle_are_separate_nonexclusive_relationships():
     assert edges["SBI_RIPPLE"]["to"] == "Ripple"
     assert edges["SBI_CIRCLE_MOU"]["to"] == "Circle"
     assert edges["SBI_CIRCLE_JV"]["to"] == "SBI_Circle_Holdings"
+    assert edges["SBI_VCTRADE_RIPPLE_RLUSD"]["to"] == "Ripple"
+    assert edges["RIPPLE_STANDARD_CUSTODY_RLUSD_ISSUER"]["to"] == "Standard_Custody_Trust_Company"
     assert edges["SBI_CIRCLE_EQUITY"]["amount_usd"] == 50_000_000
     assert edges["SBI_CIRCLE_EQUITY"]["cash_to_issuer_confirmed"] is None
     assert data["relationship_interpretation"]["sbi_strategy"].startswith("SBI Holdings has distinct direct relationships")
@@ -84,3 +86,7 @@ def test_sources_have_dates_and_are_not_claimed_as_byte_complete_receipts():
     assert data["sources"]
     assert all(source["date"] and source["url"] for source in data["sources"])
     assert all(source["raw_bytes_captured"] is False for source in data["sources"])
+    source_ids = {source["id"] for source in data["sources"]}
+    assert all(set(fact["source_ids"]).issubset(source_ids) for fact in data["facts"])
+    assert next(x for x in data["sources"] if x["id"] == "SBI_CIRCLE_JV_20250822")["url"].endswith("0822_15679.html")
+    assert {"SBI_USDC_REGISTRATION_20250304", "SBI_USDC_BETA_20250312", "SBI_USDC_PUBLIC_20250325"}.issubset(source_ids)
