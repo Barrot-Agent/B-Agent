@@ -134,7 +134,7 @@
       "publisher": "LinkedIn",
       "authority": "company profile; secondary identity evidence",
       "url": "https://www.linkedin.com/company/safecon-training-consulting-pvt-ltd-",
-      "event_date": "2026-11-05",
+      "event_date": null,
       "retrieved_at_utc": "2026-11-05T00:25:00Z",
       "source_independence_group": "sbic_america_safecon",
       "raw_capture_status": "public company profile rendered",
@@ -148,7 +148,8 @@
         "LinkedIn company profile is not a state corporate-registration record.",
         "Employee count and founding year are self-reported profile data."
       ],
-      "model_eligible": false
+      "model_eligible": false,
+      "date_precision": "not stated in profile"
     },
     {
       "id": "safecon_official_course_identity",
@@ -175,7 +176,7 @@
       "publisher": "LinkedIn / Salah Uddin, OSHA Authorized Trainer",
       "authority": "public post by a representative associated with SBIC America",
       "url": "https://www.linkedin.com/posts/oshaauthorizedtrainer_aisafetyprofessional-aisp-ai-activity-7298219144028504068-93D8",
-      "event_date": "2025-03-2025",
+      "event_date": null,
       "retrieved_at_utc": "2026-11-05T00:25:00Z",
       "source_independence_group": "sbic_america_safecon",
       "raw_capture_status": "public post rendered",
@@ -189,7 +190,8 @@
         "This is a contest promotion, not evidence of a direct OpenAI commercial partnership or Japanese SBIC relationship.",
         "Post author affiliation is indicated by profile and post context; no corporate filing was retrieved."
       ],
-      "model_eligible": false
+      "model_eligible": false,
+      "date_precision": "exact publication date not exposed; contest deadline and result dates are stated in post"
     },
     {
       "id": "coinmarketcap_permission_ask_20261105",
@@ -284,7 +286,8 @@
         "Dynamic MPT",
         "validator voting"
       ],
-      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED",
+      "metrics_observed_at_utc": "2026-11-05T00:25:00Z"
     },
     {
       "video_id": "OmLOAtfZ-Hs",
@@ -301,7 +304,8 @@
         "issuer economics",
         "XRP holder education"
       ],
-      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED",
+      "metrics_observed_at_utc": "2026-11-05T00:25:00Z"
     },
     {
       "video_id": "iwhpNT73zpk",
@@ -319,7 +323,8 @@
         "global liquidity",
         "XRP macro thesis"
       ],
-      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED",
+      "metrics_observed_at_utc": "2026-11-05T00:25:00Z"
     },
     {
       "video_id": "pmJTrXJQ8Vw",
@@ -336,7 +341,8 @@
         "institutional holding narratives",
         "long-term investing"
       ],
-      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED"
+      "attribution_status": "STRONGLY_CORROBORATED_VIDEO_ATTRIBUTION; CHANNEL_HANDLE_UNVERIFIED",
+      "metrics_observed_at_utc": "2026-11-05T00:25:00Z"
     }
   ],
   "sbic_identity_resolution": {
