@@ -139,3 +139,5 @@ def test_primary_mission_resource_is_declared_as_package_data() -> None:
 
     assert "[tool.setuptools.package-data]" in pyproject
     assert 'barrot_agent = ["data/missions/*.json"]' in pyproject
+    assert "[tool.setuptools.packages.find]" in pyproject
+    assert 'include = ["barrot_agent", "barrot_agent.*"]' in pyproject
