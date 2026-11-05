@@ -35,6 +35,10 @@ def test_model_secret_is_isolated_from_the_write_job():
     assert "persist-credentials: false" in simulate
     assert "persist-credentials: false" in persist
     assert "actions/download-artifact" in persist
+    assert "actions/upload-artifact@v7" in simulate
+    assert "actions/download-artifact@v8" in persist
+    assert "actions/upload-artifact@v4" not in content
+    assert "actions/download-artifact@v4" not in content
     assert "gh auth setup-git" in persist
 
 
