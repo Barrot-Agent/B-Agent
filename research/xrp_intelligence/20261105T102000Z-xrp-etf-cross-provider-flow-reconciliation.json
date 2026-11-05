@@ -1,0 +1,170 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "xrp_etf_cross_provider_flow_universe_and_methodology_reconciliation_20261105",
+  "artifact_type": "xrp_etf_holdings_cash_flow_and_source_vintage_reconciliation",
+  "recorded_on_date": "2026-11-05",
+  "model_eligible": false,
+  "forecast_issued": false,
+  "source_capture_policy": {
+    "raw_issuer_bytes_captured": false,
+    "raw_content_sha256": null,
+    "independent_timestamp_anchor": false,
+    "rendered_aggregator_pages_are_not_raw_receipts": true,
+    "admission_rule": "Do not admit ETF flow features until each issuer's original daily file, shares outstanding, XRP-per-share factor, NAV/net assets, publication time and cash creation/redemption record are captured and independently reconciled."
+  },
+  "source_registry": [
+    {
+      "id": "xrp_insights_etf_20261105_073558",
+      "publisher": "XRP Insights",
+      "source_type": "third_party_issuer_holdings_aggregator",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "generated_at_utc": "2026-11-05T07:35:58.959Z",
+      "data_as_of_date": "2026-11-03",
+      "latest_row_date": "2026-11-04",
+      "latest_row_status": "provisional",
+      "raw_content_sha256": null,
+      "capture_status": "rendered_metadata_only",
+      "independence_group": "xrp_insights_issuer_scraper",
+      "model_eligible": false,
+      "limitations": [
+        "The aggregate includes six spot ETF products plus the BITW multi-asset index sleeve.",
+        "The two-day -194,875 XRP figure is derived from holdings changes, not directly verified AP cash creations/redemptions.",
+        "GXRP daily flow was withheld because of an issuer-page capture gap; XRPR and BITW have different product structures and should not be treated as identical spot ETF exposures.",
+        "The November 4 row is provisional."
+      ]
+    },
+    {
+      "id": "cryptokeyhole_etf_20261105_0954",
+      "publisher": "CryptoKeyhole",
+      "source_type": "third_party_issuer_holdings_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "page_updated_at_utc": "2026-11-05T09:54:00Z",
+      "latest_issuer_file_read_at_utc": "2026-11-05T05:22:00Z",
+      "latest_complete_day": "2026-11-03",
+      "latest_partial_day": "2026-11-04",
+      "raw_content_sha256": null,
+      "capture_status": "rendered_page_only",
+      "independence_group": "cryptokeyhole_issuer_scraper",
+      "model_eligible": false,
+      "limitations": [
+        "Daily flow universe contains four issuer files: XRP/Bitwise, XRPZ/Franklin Templeton, XRPC/Canary Capital and TOXR/21Shares.",
+        "GXRP is not collected daily because of an automated bot challenge; its displayed holdings are a stale quarter-end SEC figure and are excluded from daily flow totals.",
+        "XRPR is not counted because it is a 1940 Act fund with indirect holdings through other ETPs; its direct coin file is not a complete holdings/flow measure.",
+        "The page explicitly defines flow as the change in XRP held: creations minus redemptions, plus staking rewards where applicable, less coins sold for fees or cash payouts.",
+        "The November 4 row is partial at 3 of 4 funds; Franklin Templeton XRPZ had not yet published."
+      ]
+    },
+    {
+      "id": "cryptoetf_today_xrp_20261105_0547",
+      "publisher": "Crypto ETF Today",
+      "source_type": "third_party_crypto_etf_flow_aggregator",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "publication_at_utc": "2026-11-05T05:47:00Z",
+      "data_date": "2026-11-04",
+      "tracked_spot_funds": 5,
+      "latest_status": "PARTIAL_NOT_ALL_FUNDS_REPORTED",
+      "net_flow_xrp_displayed": 0,
+      "raw_content_sha256": null,
+      "capture_status": "rendered_page_only",
+      "independence_group": "cryptoetf_today_issuer_scraper",
+      "model_eligible": false,
+      "limitations": [
+        "The page says zero means the funds that reported showed no money moving in or out; a dash means not all funds have reported.",
+        "The page is T+1 and partial, so the zero is not a completed all-funds daily total.",
+        "The page's live summary can change as issuers publish; no original issuer files or AP cash records were preserved in this capture."
+      ]
+    }
+  ],
+  "provider_observations": {
+    "xrp_insights": {
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "spot_etf_funds": 6,
+      "index_sleeves": 1,
+      "net_flow_xrp_nov2_nov3": -194875,
+      "holdings_xrp_nov3": 1196405311,
+      "flow_method": "day-over-day change in issuer-reported holdings",
+      "model_eligible": false
+    },
+    "cryptokeyhole": {
+      "daily_flow_universe": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "TOXR"
+      ],
+      "net_flow_xrp_nov3": -3339,
+      "net_flow_xrp_nov4_partial": -3339,
+      "nov4_reporting_funds": 3,
+      "nov4_total_daily_funds": 4,
+      "holdings_xrp_nov3": 1076812562,
+      "xrpc_nov2_nov4_daily_change_xrp": -3339,
+      "method": "holdings change, including creations/redemptions, staking rewards, fee sales and cash payouts",
+      "model_eligible": false
+    },
+    "cryptoetf_today": {
+      "tracked_spot_funds": 5,
+      "net_flow_xrp_nov4_partial": 0,
+      "status": "PARTIAL_NOT_ALL_FUNDS_REPORTED",
+      "definition": "0 means the funds that have reported show no money moved in or out; missing funds are not treated as zero.",
+      "model_eligible": false
+    }
+  },
+  "cross_provider_reconciliation": {
+    "holdings_difference_xrp_xrp_insights_minus_cryptokeyhole": 119592749,
+    "explanation": "The holdings totals are not the same universe: XRP Insights includes six spot products plus BITW and different quarterly/indirect exposures; CryptoKeyhole's daily total contains four issuer files and excludes GXRP and XRPR from daily totals.",
+    "comparison_rule": "Do not average -194,875 XRP, -3,339 XRP and 0 XRP. They refer to different dates, universes, source vintages and flow definitions.",
+    "source_independence": "All three aggregators use issuer-published files or derived issuer data. Their capture and calculation methods differ, but they are not three independent measurements of cash creation/redemption.",
+    "interpretation": [
+      "XRP Insights' two-day negative holdings delta is not proof of dollar or XRP cash redemptions.",
+      "CryptoKeyhole's repeated -3,339 XRP daily XRPC change may reflect fees or other holdings adjustments; its own method explicitly includes fee sales and cash payouts, so it cannot be called investor redemptions without issuer/AP confirmation.",
+      "Crypto ETF Today's zero is partial and only describes funds that had reported at its publication cutoff.",
+      "The three observations are not contradictory once dates, fund universes and methods are kept separate."
+    ],
+    "model_eligible": false
+  },
+  "counter_hypotheses": [
+    {
+      "id": "reported_holdings_delta_not_investor_redemption",
+      "hypothesis": "Negative holdings deltas may reflect fees, cash payouts, staking rewards, index rebalancing or indirect fund structure rather than net investor redemptions.",
+      "disconfirming_evidence_to_seek": [
+        "Issuer creation/redemption share counts",
+        "Authorized-participant cash records",
+        "Custodian XRP movements reconciled to shares outstanding"
+      ]
+    },
+    {
+      "id": "partial_zero_not_complete_neutrality",
+      "hypothesis": "A zero flow on a partial dashboard may simply mean the funds that reported were flat; missing funds may later change the daily total.",
+      "disconfirming_evidence_to_seek": [
+        "All tracked issuer files for the same US trading date",
+        "A final T+1 daily report with every fund status marked complete"
+      ]
+    }
+  ],
+  "predictive_admission": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "reasons": [
+      "Fund universes differ and some funds are excluded or only quarterly reported.",
+      "The latest day is provisional or partial across providers.",
+      "Holdings changes are not equivalent to direct AP cash creations/redemptions.",
+      "The three providers may share underlying issuer files and are not independent measurements.",
+      "Raw issuer files, SHA-256 receipts and independent publication timestamps were not captured."
+    ],
+    "next_data_requirements": [
+      "Capture each issuer's original daily holdings file with bytes and SHA-256.",
+      "Record issuer publication time, data effective date and first-seen time separately.",
+      "Reconcile shares outstanding, XRP-per-share, NAV, net assets and custodian balances.",
+      "Separate spot ETFs, multi-asset index funds, 1940 Act funds and indirect ETP exposure.",
+      "Obtain AP creation/redemption or issuer cash-flow records before labeling movements as institutional cash."
+    ]
+  }
+}

@@ -117,6 +117,22 @@
         "The 99% cold-storage and 1:1 backing statements are company representations, not an independent proof-of-reserves attestation in this source.",
         "The statement is not a guarantee against all operational, cyber or insolvency risks."
       ]
+    },
+    {
+      "id": "circle_centre_acquisition_sec_s1a_20250401",
+      "publisher": "Circle Internet Group, Inc. / U.S. SEC",
+      "source_type": "primary_registration_statement",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525084832/d737521ds1a.htm",
+      "publication_date": "2025-04-01",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_registration_statement",
+      "independence_group": "circle_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The filing documents the 2023 Centre acquisition consideration, not Coinbase's current share count.",
+        "The 8.4 million shares were the consideration at the transaction date; they must not be represented as Coinbase's current holdings."
+      ]
     }
   ],
   "coinbase_circle_economics": {
@@ -266,5 +282,31 @@
       "Coinbase's RLUSD launch establishes network availability but does not disclose transaction volume, net issuance or XRP bridge usage.",
       "No synchronized, raw-byte, independently timestamped dataset or out-of-sample predictive lift is established."
     ]
+  },
+  "coinbase_circle_equity_relationship": {
+    "historical_transaction": {
+      "date": "2023-08",
+      "transaction": "Circle acquired the remaining 50% equity interest in Centre Consortium LLC from Coinbase in connection with the Collaboration Agreement.",
+      "consideration_usd": 209900000,
+      "circle_common_shares_issued_approx": 8400000,
+      "centre_dissolved_date": "2023-12",
+      "source_id": "circle_centre_acquisition_sec_s1a_20250401"
+    },
+    "continuing_relationship_as_of_2026_09_30": {
+      "coinbase_q3_2026_10q_confirms_no_change_to_circle_arrangement_or_revenue_generated": true,
+      "coinbase_q3_2026_10q_mentions_fair_value_remeasurement_of_its_investment_in_circle_after_ipo": true,
+      "current_share_count_disclosed": false,
+      "current_ownership_percentage_disclosed": false,
+      "exact_circle_investment_fair_value_disclosed": false,
+      "q3_2026_coinbase_investment_gain_loss_line_usd": -39231000,
+      "gain_loss_attribution_rule": "The Q3 net gains/losses on investments line is an aggregate amount. Coinbase says the change versus 2025 was largely due to remeasurement of its Circle investment, but the filing does not attribute the entire line to Circle."
+    },
+    "interpretation": [
+      "Coinbase received Circle equity as consideration for its 50% Centre stake in 2023.",
+      "Coinbase's Q3 2026 10-Q confirms that it still had an investment in Circle subject to fair-value remeasurement after Circle's IPO; the current share count and percentage are not disclosed.",
+      "The continuing USDC distribution agreement and the historical/current equity investment are two distinct direct relationships.",
+      "This does not establish a Circle-Ripple equity relationship or a Coinbase-Ripple equity investment."
+    ],
+    "model_eligible": false
   }
 }

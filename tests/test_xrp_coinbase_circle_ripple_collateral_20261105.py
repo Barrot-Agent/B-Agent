@@ -89,3 +89,20 @@ def test_rendered_corporate_sources_are_ineligible_and_no_forecast_is_issued():
     assert data["source_capture_policy"]["raw_http_bytes_captured"] is False
     assert all(source["raw_content_sha256"] is None for source in data["source_registry"])
     assert all(source["model_eligible"] is False for source in data["source_registry"])
+
+
+def test_coinbase_circle_equity_history_is_separate_from_current_ownership():
+    item = load()["coinbase_circle_equity_relationship"]
+    historical = item["historical_transaction"]
+    current = item["continuing_relationship_as_of_2026_09_30"]
+    assert historical["date"] == "2023-08"
+    assert historical["consideration_usd"] == 209_900_000
+    assert historical["circle_common_shares_issued_approx"] == 8_400_000
+    assert historical["centre_dissolved_date"] == "2023-12"
+    assert current["coinbase_q3_2026_10q_mentions_fair_value_remeasurement_of_its_investment_in_circle_after_ipo"] is True
+    assert current["current_share_count_disclosed"] is False
+    assert current["current_ownership_percentage_disclosed"] is False
+    assert current["exact_circle_investment_fair_value_disclosed"] is False
+    assert current["q3_2026_coinbase_investment_gain_loss_line_usd"] == -39_231_000
+    assert "does not attribute the entire line" in current["gain_loss_attribution_rule"]
+    assert item["model_eligible"] is False
