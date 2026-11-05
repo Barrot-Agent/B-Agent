@@ -5191,3 +5191,99 @@ Next:
 4. Fetch main after merge, verify the merge commit/files, inspect automatic workflow side effects and run main CI.
 5. Build one consolidated successor directly on the resulting main from #1643's 183 unique research paths/tests, omit the identical dependency-audit file already on main, preserve #1643 history, and run exact-head full-suite, dependency/security and fail-closed checks before any merge.
 6. Close only exact superseded source PRs after successor content is verified on main.
+
+
+---
+
+## Latest execution — 2026-11-05 16:07 UTC
+
+### Current main and complete repository inspection
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Recursive main tree: 1,403 entries, 1,298 files, 493 Python files, 78 workflow YAML files, 90 Python test files and 29 XRP research files. Tree was not truncated.
+- Current main push CI: [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459), 718 passed and 8 subtests.
+- Scheduled Cross Analysis: [42059212969](https://github.com/Barrot-Agent/B-Agent/actions/runs/42059212969), success.
+- Pillars Consistency Check: [42032214761](https://github.com/Barrot-Agent/B-Agent/actions/runs/42032214761), failure. Job evidence identifies missing `GITHUB_APP_ID`, private key and installation ID; Databricks HTTP 403; Hugging Face `BUILD_ERROR`. No secret was changed and no provider deployment/restart was attempted.
+
+### Current integration branches
+
+**#1640 — V3/core integration**
+
+- Head: `6b33a75e60b819b92a49d56e8b5d89e7aaffe0b8`.
+- 287 commits ahead of main, 0 behind; 92 changed files.
+- Core suite: 606 passed, 8 subtests.
+- Full repository suite: 958 passed, 8 subtests.
+- Inclusive coverage: 55.31%.
+- Installed-wheel and packaged primary-mission verification passed.
+- Six-manifest strict dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed and automatic merge remains disabled.
+- Review threads: 22/22 resolved; actual approving GitHub reviews: 0.
+- Exact evidence: [CI 42052733749](https://github.com/Barrot-Agent/B-Agent/actions/runs/42052733749), [audit 42052733631](https://github.com/Barrot-Agent/B-Agent/actions/runs/42052733631), [gate 42052733436](https://github.com/Barrot-Agent/B-Agent/actions/runs/42052733436).
+
+**#1643 — XRP research archive**
+
+- Head: `d9bc200ab44d6bcd080b4cca0b118c6fe59c6033`.
+- 234 commits ahead of main, 0 behind; 186 changed files.
+- Core suite: 495 passed, 8 subtests.
+- Full repository suite: 1,052 passed, 8 subtests.
+- Six-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed.
+- Review threads: 14/14 resolved; actual approving GitHub reviews: 0.
+- Exact evidence: [CI 42062571211](https://github.com/Barrot-Agent/B-Agent/actions/runs/42062571211), [audit 42062571038](https://github.com/Barrot-Agent/B-Agent/actions/runs/42062571038), [gate 42062571036](https://github.com/Barrot-Agent/B-Agent/actions/runs/42062571036).
+
+### Branch ancestry and changed-path reconciliation
+
+- #1643 versus #1640: #1643 is 234 commits ahead and 287 behind; the histories are divergent.
+- Exactly one changed path overlaps: `.github/workflows/dependency-audit.yml`.
+- Its blob SHA is identical on both heads: `6515307991420ab90d8671034b13ac2eb56190b3`.
+- After #1640 is merged and main is verified, do not merge #1643 directly. Create one consolidated successor directly on the resulting main, carry the unique research/test paths and omit the identical dependency-audit file. Preserve both original branch histories.
+
+### New append-only XRP market and macro research
+
+Added to #1643:
+
+- `research/xrp_intelligence/20261105T160707Z-xrp-market-selloff-cross-venue-etf-reconciliation.json`
+- `tests/test_xrp_market_selloff_cross_venue_etf_reconciliation_20261105.py` (five regression tests).
+
+Observed snapshot:
+- Kraken XRP/USD last $1.25408; bid/ask $1.25437/$1.25473; spread 2.87 bps; 24-hour VWAP $1.30050; 24-hour low $1.24511; volume 37.72M XRP.
+- Alpha Finance (15:26 UTC): $1.2528 spot, -5.61% 24h, $2.84B USD-notional OI, $8.2M long versus $0.404M short liquidations. Its liquidation clusters are modelled, not exchange-reported orders.
+- TradRadar (15:25 UTC): $1.2525 spot, -5.47% 24h, $1.95B OI, -5.21% OI change, +0.01% funding per 8h, at least $8.07M liquidations, $7.70M long versus $0.365M short, 3.55 account long/short ratio and 78% long accounts.
+- Alpha Finance and TradRadar OI differs by $890M. Values were not averaged; USD-notional OI changes with mark price and their contract universes differ.
+- XRP Insights reports -259,701 XRP holdings-derived flow for November 2–4 across its broader universe. CryptoKeyhole's November 4 observation is partial (3/4 funds) at -3,339 XRP. Alpha Finance and Maketo display zero-dollar November 4 observations on different five-fund universes and earlier/different vintages. No direct AP cash creation/redemption ledger was retrieved. Values were not averaged.
+- AP reports a same-day US equity selloff on November 5 (S&P -3.2%, Nasdaq -4.9%, Dow -1,079 points). This supports a broad risk-off counter-hypothesis but does not establish XRP causality.
+- The evidence is a web-rendered snapshot. Original bytes, raw SHA-256 receipts and independent timestamp anchors were not available; it is model-ineligible. No directional forecast was issued.
+
+The official BLS calendar schedules the October Employment Situation release for November 6, 2026 at 08:30 ET: https://www.bls.gov/schedule/news_release/empSit.htm. Treat the release as future/unknown until the actual publication and preserve first-release and revision vintages separately.
+
+### Backlog classification corrections
+
+- Active integration: #1640 and #1643.
+- Exact ancestors of #1640: #1642 and #1318; retain until #1640 is merged and its content verified on main.
+- Exact duplicated research file: #1605's sole market-microstructure artifact has the same blob SHA on #1643; close only after #1643's successor is merged and verified.
+- Dependency/action candidates represented by overlapping paths in #1640: #1644–#1650; do not close until main verification and per-file reconciliation.
+- Older dependency candidates: #1254/#1255; superseded candidates pending main verification.
+- Preserve unique or divergent work: #1317 (three of six files differ from #1640, including structural core/test content); #1320 (all five changed files differ, including paper-trader safety); #1614 (57 files, partial overlap with both integration branches); #1564 (20 files, one CI-path overlap); #1571 and #1534 (zero path overlap with #1640/#1643); #1269 (unique rendering/geometry work apart from CI); #1651 (unique/unreviewed). No unique PRs were closed.
+- Open inventory: 370 total, 354 drafts, 16 non-drafts.
+
+### Nine-platform and authorization status
+
+- ChatGPT session and ChatGPT-to-GitHub repository access are verified. GitHub read/write to existing PR branches works; branch-protection and Pages settings are not readable through the current connection.
+- Copilot activity is one-off, not a persistent authenticated data flow. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as persistent authenticated integrations. Groq is not Grok.
+- The #1640 XRP collector is scheduled/manual and read-only (`actions: read`, `contents: read`); it is not active on main. Raw artifacts currently have 90-day retention, not indefinite.
+- The collector writes SHA-256 content-addressed raw receipts and canonical receipt IDs; captured bytes survive parser failures. Independent timestamp anchoring and durable indefinite raw-source storage remain missing.
+- Main branch-protection inspection returns HTTP 403; the visible fallback ruleset is disabled.
+- A main push triggered GitHub's dynamic Pages build/deployment: [run 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), successful on the current main SHA. No authorization for another merge-triggered Pages deployment has been established.
+- Neither integration PR has an approving review. No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Current prediction status and next action
+
+Forecast status remains `NOT_ISSUED`. The historical dataset, source durability, independent timestamp anchoring, point-in-time admission, demonstrated out-of-sample lift, probability calibration, drift monitoring and shadow outcomes do not yet satisfy issuance requirements.
+
+Next:
+1. Obtain independent approving reviews and verify actual branch-protection requirements.
+2. Resolve authorization for the automatic GitHub Pages deployment side effect.
+3. Merge #1640 only when all user-defined conditions are met; then fetch main, verify the merge commit and files, inspect triggered workflows and run main CI.
+4. Build one consolidated successor directly on the resulting main from #1643's unique research/test content; preserve the original branch and omit the identical dependency-audit file.
+5. Run exact-head full suite, dependency/security audit and fail-closed gate on the successor; merge only after required approvals and all checks are satisfied.
+6. Close only exact superseded/duplicate source PRs after merged content is verified on main.
