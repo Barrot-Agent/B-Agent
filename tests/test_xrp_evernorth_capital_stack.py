@@ -55,6 +55,9 @@ def test_sbi_economic_ownership_is_distinct_from_voting_power() -> None:
     assert sbi["percent_of_total_pubco_common_stock_at_close"] == 21.4
     assert sbi["voting_power_percent_at_close"] == 39.9
     assert sbi["class_c_shares"] == 2_359_038
+    assert sbi["class_a_ownership_limitation_percent"] == 39.9
+    assert sbi["excess_class_c_shares_issued_beyond_class_a_limit"] == 2_359_038
+    assert sbi["class_c_nonvoting"] is True
 
 
 def test_coinbase_and_circle_relationships_are_not_overstated() -> None:
