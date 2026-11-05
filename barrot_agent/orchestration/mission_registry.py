@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from importlib.resources import files as package_files
 from pathlib import Path
 from typing import Any
 
@@ -26,16 +27,33 @@ class MissionRegistry:
         self.manifest_path = Path(manifest_path or DEFAULT_MISSION_PATH)
         self.manifest = self._load_manifest()
 
-    def _load_manifest(self) -> dict[str, Any]:
-        if not self.manifest_path.is_file():
-            raise MissionRegistryError(
-                f"Primary mission manifest is missing: {self.manifest_path}"
-            )
+    def _read_manifest_text(self) -> str:
+        if self.manifest_path.is_file():
+            return self.manifest_path.read_text(encoding="utf-8")
 
+        # Source checkouts keep the operator-facing manifest at the repository
+        # root. Installed wheels do not include that root-level directory, so
+        # fall back to the explicitly packaged resource without weakening the
+        # fail-closed validation below.
+        if self.manifest_path == DEFAULT_MISSION_PATH:
+            try:
+                resource = package_files("barrot_agent").joinpath(
+                    "data", "missions", "primary_mission.json"
+                )
+                if resource.is_file():
+                    return resource.read_text(encoding="utf-8")
+            except (ModuleNotFoundError, OSError):
+                pass
+
+        raise MissionRegistryError(
+            f"Primary mission manifest is missing: {self.manifest_path}"
+        )
+
+    def _load_manifest(self) -> dict[str, Any]:
         try:
-            payload = json.loads(
-                self.manifest_path.read_text(encoding="utf-8")
-            )
+            payload = json.loads(self._read_manifest_text())
+        except MissionRegistryError:
+            raise
         except (OSError, json.JSONDecodeError) as exc:
             raise MissionRegistryError(
                 f"Primary mission manifest cannot be read: {exc}"
