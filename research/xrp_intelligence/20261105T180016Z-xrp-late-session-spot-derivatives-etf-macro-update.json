@@ -224,7 +224,8 @@
       "current_spread_bps": 0.32328979697433075,
       "interpretation": "The displayed percentage is only the arithmetic difference between two same-venue last-price observations. The current response retrieval time was not exposed, so no exact elapsed interval or 30-minute return is claimed. It is not a full depth, trade-flow or executable-liquidity comparison.",
       "run_start_reference_elapsed_seconds": 1766,
-      "observation_interval_status": "UNKNOWN"
+      "observation_interval_status": "UNKNOWN",
+      "last_price_difference_pct_vs_prior_capture": -0.06219257081472307
     },
     "derivatives": {
       "tradradar": {
