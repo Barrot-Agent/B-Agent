@@ -78,6 +78,17 @@ def test_factory_restart_requires_explicit_approval() -> None:
     assert "restart?factory=true" in content
 
 
+def test_self_hosted_brain_fails_closed_without_secret_and_private_space() -> None:
+    start_script = (ROOT / "self_hosted_brain" / "start.sh").read_text(encoding="utf-8")
+    workflow = _read("sync-self-hosted-brain.yml")
+    assert 'if [[ -z "${BRAIN_SHARED_SECRET:-}" ]]' in start_script
+    assert '--api-key "$BRAIN_SHARED_SECRET"' in start_script
+    assert "changeme" not in start_script
+    assert 'if not secret.strip()' in workflow
+    assert 'if not bool(getattr(space_info, "private", False))' in workflow
+    assert workflow.index('api.add_space_secret') < workflow.index('api.upload_folder')
+
+
 def test_barrot_ops_requires_explicit_approval_and_exact_current_main_sha() -> None:
     content = _read("barrot-ops.yml")
     assert "confirm_external_change" in content
