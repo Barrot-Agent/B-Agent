@@ -1,0 +1,514 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "xrp_live_market_etf_derivatives_macro_snapshot_20261105T100426Z",
+  "artifact_type": "xrp_spot_derivatives_etf_stablecoin_protocol_macro_reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "recorded_at_utc": "2026-11-05T10:04:26Z",
+  "research_cutoff_utc": "2026-11-05T10:04:26Z",
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "model_eligible": false,
+  "forecast_issued": false,
+  "source_capture_policy": {
+    "raw_http_bytes_captured": false,
+    "raw_content_sha256": null,
+    "independent_timestamp_anchor": false,
+    "rendered_sources_are_not_raw_receipts": true,
+    "admission_rule": "All observations in this artifact remain research-only until original source bytes are captured, SHA-256 receipts are independently verified, source publication/event times are reconciled, and the observation passes point-in-time quality controls."
+  },
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_20261105T100426Z",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "source_event_timestamp_utc": null,
+      "capture_method": "web-rendered JSON API response",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_response_only",
+      "independence_group": "kraken_xrpusd_venue",
+      "model_eligible": false,
+      "limitations": [
+        "The rendered response did not expose an HTTP Date header or a verified exchange event timestamp.",
+        "Last trade and current best bid/ask are separate observations; the last trade may lie outside the displayed quote.",
+        "One venue and top-of-book only; no executable multi-level depth, cancellation history or consolidated tape was captured.",
+        "Original response bytes were not preserved, so no SHA-256 receipt is claimed."
+      ]
+    },
+    {
+      "id": "binance_xrpusdt_premium_index_20261105T095331Z",
+      "publisher": "Binance",
+      "source_type": "primary_exchange_public_derivatives_api",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "source_event_timestamp_utc": "2026-11-05T09:53:31Z",
+      "next_funding_time_utc": "2026-11-05T16:00:00Z",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_json_api_response",
+      "independence_group": "binance_xrpusdt_perpetual",
+      "model_eligible": false,
+      "limitations": [
+        "The payload exposes a funding-rate value and next funding timestamp but the retrieved response does not itself establish a universal eight-hour interval.",
+        "No original response bytes or independent timestamp anchor were retained.",
+        "Premium-index values are a single exchange observation, not cross-venue basis or positioning."
+      ]
+    },
+    {
+      "id": "tradradar_xrp_perpetuals_20261105T091500Z",
+      "publisher": "TradRadar",
+      "source_type": "secondary_multi_exchange_derivatives_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_data_as_of_utc": "2026-11-05T09:15:00Z",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_page_only",
+      "independence_group": "tradradar_derivatives_aggregator",
+      "model_eligible": false,
+      "limitations": [
+        "The page aggregates exchange feeds; independence from the underlying venues is not established.",
+        "Liquidations are explicitly a lower bound because not all exchanges publish complete real-time liquidation data.",
+        "The long/short statistic is an account ratio, not notional exposure, net delta or actual capital.",
+        "The reported seven-venue aggregate is not synchronized to the Kraken ticker or Binance premium-index timestamp."
+      ]
+    },
+    {
+      "id": "xrp_insights_etf_flows_metadata_20261105T073558Z",
+      "publisher": "XRP Insights",
+      "source_type": "third_party_issuer_holdings_aggregator_metadata",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "generated_at_utc": "2026-11-05T07:35:58.959Z",
+      "data_as_of_date": "2026-11-03",
+      "latest_row_date": "2026-11-04",
+      "latest_row_status": "provisional",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_JSON_metadata_only",
+      "independence_group": "xrp_insights_aggregator",
+      "model_eligible": false,
+      "limitations": [
+        "Daily flows are computed from changes in issuer-reported XRP holdings, not directly from authorized-participant cash creation/redemption records.",
+        "BITW is a multi-asset index sleeve and can change through index rebalancing; XRPR includes some indirect XRP ETP exposure.",
+        "GXRP flow is withheld because of a historical issuer-page capture gap; some rows are reconstructed from third-party estimates.",
+        "The November 4 row is provisional and can be rewritten during next-morning settlement.",
+        "Original per-issuer source bytes and independent timestamps were not captured."
+      ]
+    },
+    {
+      "id": "circle_usdc_product_page_20261102",
+      "publisher": "Circle",
+      "source_type": "primary_issuer_product_and_reserve_disclosure",
+      "url": "https://www.circle.com/usdc",
+      "source_data_as_of_date": "2026-11-02",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_first_party_page",
+      "independence_group": "circle_issuer_usdc_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "USDC circulation is an issuer-wide stablecoin metric, not XRPL-specific supply or XRP demand.",
+        "The page's reserve-fund custody statement identifies BNY and BlackRock roles but does not quantify BNY-held reserves in this snapshot.",
+        "The page does not disclose XRP bridge usage or XRP collateral balances."
+      ]
+    },
+    {
+      "id": "ripple_rlusd_transparency_20261029",
+      "publisher": "Ripple / Standard Custody & Trust Company",
+      "source_type": "primary_stablecoin_issuer_reserve_disclosure",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "source_data_as_of_date": "2026-10-29",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_first_party_page",
+      "independence_group": "ripple_standard_custody_rlusd_issuer_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The issuer dashboard reports aggregate RLUSD circulation and reserve funds; it does not establish XRP purchases or XRP collateral.",
+        "Standard Custody is identified as issuer; Ripple's separate national trust-bank approval must not be conflated with the issuer entity.",
+        "No network-specific RLUSD circulation or payment volume is supplied in this snapshot."
+      ]
+    },
+    {
+      "id": "bny_ripple_xrp_rlusd_custody_20261027",
+      "publisher": "BNY",
+      "source_type": "primary_institutional_custody_and_trade_finance_announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publication_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_first_party_press_release",
+      "independence_group": "bny_ripple_joint_announcement_20261027",
+      "model_eligible": false,
+      "limitations": [
+        "BNY says its custody platform now supports XRP and RLUSD for eligible institutional clients; no XRP-specific assets under custody or client balances are disclosed.",
+        "Direct RLUSD mint/redeem through BNY is an intended future capability subject to final BNY and regulatory approvals.",
+        "Tokenized trade finance with Ripple and C2FO is exploratory and subject to client requirements; funded receivables, investor identities and production volumes are not disclosed.",
+        "This joint announcement is one disclosure, not two independent measurements."
+      ]
+    },
+    {
+      "id": "sbi_ripple_rlusd_japan_launch_20260624",
+      "publisher": "SBI Holdings / SBI VC Trade / Ripple",
+      "source_type": "primary_joint_distribution_announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "publication_date": "2026-06-24",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_first_party_announcement",
+      "independence_group": "sbi_ripple_joint_announcement_20260624",
+      "model_eligible": false,
+      "limitations": [
+        "The announcement establishes RLUSD availability through SBI VC Trade in Japan, not XRP payment volume, XRP purchases or collateral utilization.",
+        "The announcement does not establish that SBI VC Trade's initial RLUSD deposit/withdrawal support included XRPL; network-specific service support must be checked separately."
+      ]
+    },
+    {
+      "id": "xrplwin_lendingprotocol_vote_20261105",
+      "publisher": "XRPLWin",
+      "source_type": "secondary_ledger_explorer_amendment_snapshot",
+      "url": "https://xrplwin.com/amendment/LendingProtocol",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_explorer_page",
+      "independence_group": "xrplwin_node_snapshot",
+      "model_eligible": false,
+      "limitations": [
+        "The displayed 19/35 vote count is a node/explorer observation, not a universal validator denominator.",
+        "Activation must be confirmed from the ledger Amendments entry and EnableAmendment pseudo-transaction, not inferred from a vote dashboard."
+      ]
+    },
+    {
+      "id": "xrpl_to_amendment_vote_snapshot_20261105",
+      "publisher": "XRPL.to",
+      "source_type": "secondary_ledger_explorer_amendment_snapshot",
+      "url": "https://xrpl.to/insights/xrpl-amendments-explained",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_explorer_page",
+      "independence_group": "xrpl_to_node_snapshot",
+      "model_eligible": false,
+      "limitations": [
+        "The page displayed a 36-validator denominator and 29-vote threshold, differing from XRPLWin's 35-validator denominator.",
+        "This denominator disagreement is preserved; do not average validator counts or infer a global denominator."
+      ]
+    },
+    {
+      "id": "xrpl_official_amendment_rules",
+      "publisher": "XRP Ledger documentation",
+      "source_type": "primary_protocol_documentation",
+      "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_official_documentation",
+      "independence_group": "xrpl_org_protocol_documentation",
+      "model_eligible": false,
+      "limitations": [
+        "The documentation defines protocol rules, not the current live vote count for each amendment.",
+        "It states that more than 80% of trusted validators must support an amendment continuously for two weeks."
+      ]
+    },
+    {
+      "id": "xrpl_official_unl_scope",
+      "publisher": "XRP Ledger documentation",
+      "source_type": "primary_protocol_documentation",
+      "url": "https://xrpl.org/docs/concepts/consensus-protocol/negative-unl",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_official_documentation",
+      "independence_group": "xrpl_org_protocol_documentation",
+      "model_eligible": false,
+      "limitations": [
+        "Each server independently uses its configured trusted validator list; node-specific counts may differ.",
+        "The documentation's default-UNL count is dated and is not a current live vote snapshot."
+      ]
+    },
+    {
+      "id": "reuters_global_markets_us_midterms_20261105T023500Z",
+      "publisher": "Reuters",
+      "source_type": "secondary_macro_market_reporting",
+      "url": "https://www.reuters.com/business/energy/global-markets-global-markets-2026-11-05/",
+      "publication_date": "2026-11-05",
+      "publication_time_utc": "2026-11-05T02:35:00Z",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_news_article",
+      "independence_group": "reuters_global_markets_reporting",
+      "model_eligible": false,
+      "limitations": [
+        "Market moves and analyst interpretations are not official policy decisions.",
+        "No direct causal or predictive relationship with XRP is established."
+      ]
+    },
+    {
+      "id": "reuters_iran_oil_risk_20261105T090000Z",
+      "publisher": "Reuters",
+      "source_type": "secondary_macro_geopolitical_reporting",
+      "url": "https://www.reuters.com/business/energy/oil-falls-fourth-day-expectations-lower-risk-iran-war-escalation-2026-11-05/",
+      "publication_date": "2026-11-05",
+      "source_data_as_of_utc": "2026-11-05T09:00:00Z",
+      "retrieved_at_utc": "2026-11-05T10:04:26Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_news_article",
+      "independence_group": "reuters_iran_energy_reporting",
+      "model_eligible": false,
+      "limitations": [
+        "Eurasia Group's conflict probabilities are analyst estimates quoted by Reuters, not observed outcomes.",
+        "The war and shipping disruption remained unresolved at the article's cutoff."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "spot": {
+      "venue": "Kraken",
+      "pair": "XRP/USD",
+      "last_trade_usd": 1.318,
+      "best_bid_usd": 1.31777,
+      "best_ask_usd": 1.31778,
+      "bid_size_xrp": 1495,
+      "ask_size_xrp": 1569,
+      "midpoint_usd": 1.3177750000000001,
+      "displayed_spread_usd": 0.000009999999999843467,
+      "displayed_spread_bps": 0.07588548879621686,
+      "volume_24h_xrp": 32744719.47403185,
+      "vwap_24h_usd": 1.30894584,
+      "high_24h_usd": 1.34,
+      "low_24h_usd": 1.27488,
+      "open_24h_usd": 1.3041,
+      "source_id": "kraken_xrpusd_ticker_20261105T100426Z",
+      "limitations": [
+        "Last trade timestamp was not returned in the rendered response.",
+        "The last trade is not required to equal or lie inside the current best bid/ask.",
+        "Top-of-book sizes do not establish depth beyond the best price."
+      ],
+      "model_eligible": false
+    },
+    "derivatives": {
+      "binance_premium_index": {
+        "symbol": "XRPUSDT",
+        "source_event_time_utc": "2026-11-05T09:53:31Z",
+        "mark_price_usdt": 1.32,
+        "index_price_usdt": 1.31969139,
+        "mark_index_basis_bps": 2.3385012764243207,
+        "last_funding_rate_raw": 0.0001,
+        "interest_rate_raw": 0.0001,
+        "next_funding_time_utc": "2026-11-05T16:00:00Z",
+        "funding_interval_hours_confirmed": false,
+        "model_eligible": false
+      },
+      "tradradar_seven_exchange": {
+        "source_data_as_of_utc": "2026-11-05T09:15:00Z",
+        "mark_price_usd": 1.3181,
+        "price_change_24h_pct": 2.96,
+        "open_interest_usd_displayed": 2070000000,
+        "open_interest_change_24h_pct": 3.03,
+        "exchange_open_interest_usd": {
+          "Binance": 541230000,
+          "Bybit": 365360000,
+          "Gate": 290150000,
+          "Bitget": 274280000,
+          "MEXC": 257270000,
+          "Hyperliquid": 222590000,
+          "OKX": 116250000
+        },
+        "exchange_sum_open_interest_usd": 2067130000,
+        "funding_oi_weighted_pct_per_8h": 0.01,
+        "liquidations_24h_minimum_usd": 5200000,
+        "short_liquidations_usd_displayed": 3870000,
+        "long_liquidations_usd_displayed": 1340000,
+        "long_short_account_ratio": 3.22,
+        "long_account_share_pct": 76.3,
+        "limitations": [
+          "Exchange components sum to 2.06713B USD, consistent with the page's rounded 2.07B headline.",
+          "Displayed liquidation components sum to 5.21M USD while the headline minimum is >=5.20M USD; values are rounded and should not be forced into exact equality.",
+          "The 3.22 long/short ratio is account-based, not notional exposure.",
+          "Positive funding, rising OI and a long-heavy account ratio are positioning descriptors, not a directional forecast."
+        ],
+        "model_eligible": false
+      },
+      "cross_source_rule": "Do not average the Kraken spot, Binance mark/index, and TradRadar aggregate observations; they have different venues, timestamps and methodologies."
+    },
+    "etf_flows": {
+      "source_id": "xrp_insights_etf_flows_metadata_20261105T073558Z",
+      "data_as_of_date": "2026-11-03",
+      "latest_row_date": "2026-11-04",
+      "latest_row_status": "provisional",
+      "generated_at_utc": "2026-11-05T07:35:58.959Z",
+      "trading_days": 229,
+      "rows": 1583,
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "spot_etf_fund_count": 6,
+      "index_fund_sleeve_count": 1,
+      "net_flow_xrp_nov2_nov3": -194875,
+      "total_holdings_xrp_nov3": 1196405311,
+      "methodology": "Flows are day-over-day changes in issuer-reported holdings; they are not direct AP cash creation/redemption records.",
+      "exclusions_and_reconstruction": [
+        "GXRP daily flows are withheld because of a prior issuer-page capture gap.",
+        "Some historical rows were reconstructed from third-party daily flow estimates.",
+        "BITW is a diversified index sleeve and can change through index rebalancing.",
+        "XRPR includes some indirect XRP ETP exposure."
+      ],
+      "model_eligible": false
+    }
+  },
+  "institutional_and_stablecoin": {
+    "circle_usdc": {
+      "circulation_usd_as_of_2026_11_02": 69800000000,
+      "native_network_count": 38,
+      "xrpl_listed_as_supported_network": true,
+      "reserve_fund_custodian": "BNY",
+      "reserve_fund_manager": "BlackRock",
+      "interpretation": [
+        "USDC being natively issued on XRPL does not establish XRP bridge usage.",
+        "Circle-wide USDC circulation is not XRPL-specific supply and is not XRP demand.",
+        "BNY custody and BlackRock fund management are separate roles."
+      ],
+      "model_eligible": false
+    },
+    "rlusd": {
+      "circulation_usd_as_of_2026_10_29": 2627000000,
+      "reserve_funds_usd_as_of_2026_10_29": 2758600000,
+      "reserve_excess_usd_as_of_2026_10_29": 131600000,
+      "issuer": "Standard Custody & Trust Company, LLC",
+      "issuer_supervisor": "New York Department of Financial Services",
+      "interpretation": [
+        "RLUSD circulation and reserve balances are stablecoin issuer metrics, not XRP purchases or XRP collateral.",
+        "Standard Custody is the issuer; Ripple's separate national trust-bank status must not be conflated with the issuer.",
+        "No network-specific supply or XRP bridge volume is provided by this snapshot."
+      ],
+      "model_eligible": false
+    },
+    "bny_ripple": {
+      "current_custody_support": [
+        "XRP",
+        "RLUSD"
+      ],
+      "client_scope": "eligible institutional clients",
+      "direct_rlusd_mint_redeem_through_bny": "INTENDED_FUTURE_CAPABILITY_SUBJECT_TO_FINAL_APPROVALS",
+      "tokenized_trade_finance_with_c2fo": "EXPLORATORY_SUBJECT_TO_CLIENT_REQUIREMENTS",
+      "xrp_specific_assets_under_custody_disclosed": false,
+      "xrp_collateral_balance_disclosed": false,
+      "xrp_purchase_disclosed": false,
+      "model_eligible": false
+    },
+    "sbi_ripple": {
+      "japanese_rlusd_distribution_announced": true,
+      "distributor": "SBI VC Trade",
+      "launch_date": "2026-06-24",
+      "xrp_payment_volume_disclosed": false,
+      "xrp_collateral_utilization_disclosed": false,
+      "model_eligible": false
+    }
+  },
+  "xrpl_protocol": {
+    "lending_protocol_vote_snapshot": {
+      "xrplwin_votes_for": 19,
+      "xrplwin_denominator": 35,
+      "xrplwin_votes_required": 29,
+      "xrplwin_support_pct": 54.3,
+      "xrpl_to_denominator": 36,
+      "xrpl_to_votes_required": 29,
+      "status": "VOTING_NOT_ACTIVATED",
+      "interpretation": "The two explorer denominators are not combined. XRPL official documentation explains that trusted validator sets are server-specific UNLs and that an amendment needs more than 80% support for two continuous weeks. Verify activation from the ledger Amendments entry and EnableAmendment pseudo-transaction."
+    },
+    "model_eligible": false
+  },
+  "macro_context": {
+    "source_data_as_of_utc": "2026-11-05T09:00:00Z",
+    "observations": {
+      "brent_usd_per_barrel": 95.4,
+      "wti_usd_per_barrel": 88.23,
+      "us_10y_treasury_yield_pct": 4.87,
+      "broad_market_context": "Reuters reported weaker dollar, lower yields and a relief rally after the US midterm election result."
+    },
+    "competing_scenarios": [
+      {
+        "id": "geopolitical_deescalation_risk_relief",
+        "description": "Markets price a greater chance of a negotiated reduction in the Iran conflict; lower oil and yields may ease near-term inflation/risk premia.",
+        "evidence": [
+          "Reuters 2026-11-05 02:35 UTC global markets report"
+        ],
+        "limitations": [
+          "No direct XRP causal relationship is established."
+        ]
+      },
+      {
+        "id": "persistent_conflict_or_escalation",
+        "description": "The conflict remains unresolved; oil recovered from its prior-session drop and shipping/inventory risks remain. Analyst estimates cited by Reuters included renewed strikes, a deal and prolonged standoff as distinct possibilities.",
+        "evidence": [
+          "Reuters 2026-11-05 09:00 UTC oil/geopolitics report"
+        ],
+        "limitations": [
+          "Analyst probabilities are not observed outcomes or a forecast for XRP."
+        ]
+      }
+    ],
+    "model_eligible": false
+  },
+  "counter_hypotheses": [
+    {
+      "id": "crowded_long_derivatives",
+      "hypothesis": "Positive funding, rising aggregate open interest and a 76.3% long-account share may indicate momentum participation but also crowded-long liquidation risk.",
+      "disconfirming_evidence_to_seek": [
+        "Sustained spot-led buying across independent venues",
+        "Falling funding while price and OI remain supported",
+        "Long-account concentration declining without price weakness"
+      ]
+    },
+    {
+      "id": "etf_flow_not_cash_flow",
+      "hypothesis": "The reported two-day negative holdings delta may reflect fund-level changes, timing, exclusions or non-creation/redemption effects rather than net institutional cash outflow.",
+      "disconfirming_evidence_to_seek": [
+        "Issuer/AP cash creation and redemption records",
+        "Custodian-confirmed XRP movements matched to fund share creations"
+      ]
+    },
+    {
+      "id": "stablecoin_utility_without_xrp_demand",
+      "hypothesis": "USDC and RLUSD network growth, custody and payment infrastructure can expand XRPL utility without creating proportional XRP bridge demand.",
+      "disconfirming_evidence_to_seek": [
+        "Verified XRP bridge volume, XRP inventory requirements, corridor-level XRP turnover and institutional XRP collateral balances"
+      ]
+    },
+    {
+      "id": "validator_denominator_scope",
+      "hypothesis": "Different amendment dashboards may report different trusted-validator sets or node views rather than a single universal count.",
+      "disconfirming_evidence_to_seek": [
+        "Same-ledger, same-UNL validator-vote captures from multiple independent XRPL nodes"
+      ]
+    }
+  ],
+  "predictive_admission": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "paper_trade_executed": false,
+    "real_money_action": false,
+    "reasons": [
+      "No byte-complete raw response captures or SHA-256 receipts were retained for the rendered web observations.",
+      "The spot, derivatives and ETF observations are not synchronized to one common source cutoff.",
+      "Depth beyond top-of-book and cross-venue sequence-verified order books are missing.",
+      "ETF observations are holdings-derived and the latest row is provisional.",
+      "Stablecoin/custody adoption is not a direct measure of XRP bridge demand.",
+      "The current dataset and out-of-sample evaluation do not establish predictive lift over required baselines."
+    ],
+    "next_data_requirements": [
+      "Run the public collector on an authorized main-branch schedule after safe integration; preserve raw bytes and receipt manifests.",
+      "Add durable external or independently anchored receipt checkpoints.",
+      "Capture exchange-native depth with sequence/update identifiers and synchronized timestamps.",
+      "Obtain issuer/AP ETF creation-redemption and custodian source vintages.",
+      "Capture XRPL chain-specific USDC/RLUSD supplies and XRP bridge/payment activity separately.",
+      "Verify amendment status from ledger state and EnableAmendment pseudo-transactions."
+    ]
+  }
+}
