@@ -735,6 +735,12 @@ class HistoricalFeatureStore:
             raise FeatureStoreError(f"SQLite integrity check failed after checkpoint: {integrity}")
         return {"valid": True, "sqlite_integrity": integrity, "wal_checkpoint": list(result or [])}
 
+    def snapshot_count(self) -> int:
+        """Return the number of immutable snapshots currently stored."""
+        with self._connect() as connection:
+            row = connection.execute("SELECT COUNT(*) AS count FROM snapshots").fetchone()
+        return int(row["count"])
+
     def source_lineage(self, snapshot_id: str) -> list[dict[str, str]]:
         verification = self.verify_snapshot(snapshot_id)
         if not verification["valid"]:
