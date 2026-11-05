@@ -105,7 +105,21 @@ def test_bny_primary_rlusd_reserve_custody_is_not_native_xrp_custody():
 
 def test_event_timeline_separates_live_custody_from_future_collateral_and_settlement():
     data = load()
-    events = {item["event_date"]: item for item in data["event_timeline"]}
-    assert events["2026-10-12"]["classification"] == "CUSTODY_LIVE_REPORTED_COLLATERAL_PLANNED"
-    assert events["2026-10-27"]["classification"] == "ANNOUNCED_WAITLIST_NO_PRODUCTION_VOLUME_VERIFIED"
-    assert events["2026-10-28"]["classification"] == "DISTRIBUTION_LIVE_REPORTED_COLLATERAL_FUTURE"
+    events = data["event_timeline"]
+    classes = {item["classification"] for item in events}
+    assert any(
+        item["event_date"] == "2026-10-12"
+        and item["classification"] == "CUSTODY_LIVE_REPORTED_COLLATERAL_PLANNED"
+        for item in events
+    )
+    assert any(
+        item["event_date"] == "2026-10-27"
+        and item["classification"] == "ANNOUNCED_WAITLIST_NO_PRODUCTION_VOLUME_VERIFIED"
+        for item in events
+    )
+    assert any(
+        item["event_date"] == "2026-10-28"
+        and item["classification"] == "DISTRIBUTION_LIVE_REPORTED_COLLATERAL_FUTURE"
+        for item in events
+    )
+    assert "ANNOUNCED_WITHOUT_XRPL_VOLUME" in classes
