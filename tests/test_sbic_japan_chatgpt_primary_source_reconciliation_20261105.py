@@ -16,7 +16,7 @@ def test_sbic_west_chatgpt_seminar_is_primary_source_and_not_a_partnership():
     assert west["event_title"] == "Generative AI introductory seminar for accounting firms and support organizations"
     assert west["lecturer"] == "Taichi Kakinuma, representative partner attorney, STORIA Law Firm"
     assert west["published_event_date"] == "2024-10-23" if "published_event_date" in west else True
-    assert "not an OpenAI partnership" in data["source_registry"][0]["interpretation"]
+    assert "does not describe an OpenAI partnership" in data["source_registry"][0]["interpretation"]
 
 
 def test_sbic_east_training_explicitly_covers_chatgpt_and_copilot_for_investees():
