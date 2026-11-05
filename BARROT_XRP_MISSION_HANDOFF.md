@@ -4814,3 +4814,63 @@ This is an indirect shared-ledger ecosystem relationship, not a direct Circle-Ri
 - **DESIGNED:** XRP Insights row-status/product admission contract; verified-learning schema; point-in-time and raw-only ETF ingestion.
 - **EXECUTED:** two append-only ETF research artifacts and twelve regression tests on #1643; verified-learning validation on #1640; Circle issuer-page research.
 - **VERIFIED:** #1643 head 8e8aa5bf passed 495 core tests, 986 full-suite tests and fail-closed gate. #1640 head 2668c85e passed 601 core tests, 913 full-suite tests, six-manifest audit and fail-closed gate. The new handoff commit from this section remains pending exact-head verification. None of these changes is verified on main.
+
+
+## Run 40 — integration-first state and exact-head verification (2026-11-05 13:55 UTC)
+
+### Repository state and integration inventory
+
+- **Current main:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main was not modified in this run.
+- **Core integration PR #1640:** [https://github.com/Barrot-Agent/B-Agent/pull/1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), branch `integration/core-capabilities-mmi-structural-paper-20261104`, head `5730d783302ce06d96f813ec39cb1b0749fd50a2`; 279 commits ahead, 0 behind, 92 changed files, non-draft and GitHub-reported mergeable.
+- Exact-head core suite: **603 passed, 8 subtests**.
+- Exact-head full repository suite: **949 passed, 8 subtests in 29.34s**, inclusive coverage **55.26%** (above the 50% floor). Installed wheel built successfully and packaged primary-mission verification passed. [CI 42039562264](https://github.com/Barrot-Agent/B-Agent/actions/runs/42039562264).
+- Exact-head strict dependency audit: all six manifests passed with **no known vulnerabilities**: root runtime, development, supplemental, HF Space, legacy and PEP 621 dependencies. [Audit 42039562159](https://github.com/Barrot-Agent/B-Agent/actions/runs/42039562159).
+- Exact-head fail-closed gate passed; automatic merging remains disabled. [Gate 42039562605](https://github.com/Barrot-Agent/B-Agent/actions/runs/42039562605).
+- CI emitted a GitHub Actions cache-budget warning: cache storage is read-only and the setup-python pip cache could not be saved. Tests, package build and dependency audit still passed. This is an operational persistence limitation, not a test failure.
+
+- **Research PR #1643:** [https://github.com/Barrot-Agent/B-Agent/pull/1643](https://github.com/Barrot-Agent/B-Agent/pull/1643), branch `research/xrp-evidence-archive-20261104`, current head at handoff time `97b601ecad543fad6c1df0961074ee2529e0b071`; 214 commits ahead, 0 behind, 170 changed files, non-draft and GitHub-reported mergeable. Its exact-head fail-closed gate passed; exact-head CI was still running at capture. Previous head `353b5463d1089fba4c7623def23940a23bc71f6c` passed 495 core tests and 1,018 full-suite tests with 8 subtests, but those results do not certify the newer head.
+- The six dependency-manifest blob SHAs on #1643 match main exactly. The base-branch dependency-audit path filter excludes research-only changes, so no exact-head audit was run on #1643. After #1640's workflow change is integrated, reconcile #1643 and run the research-path dependency/security audit on its exact head.
+- The #1643 branch contains the append-only XRP perpetual OI reconciliation and regression tests. The 13:18 UTC Kodexius display reported $885.8M across seven contracts/five venues; TradRadar's 12:45 UTC delayed display reported $2.04B across seven venues. Four overlapping venue aggregates differ by about 44%. A correction records the separate $2.97M Bybit USDC contract, bringing Kodexius venue rows to $885.79M versus the rounded $885.8M display. Do not average these series. Rendered-page evidence has no byte-complete raw receipt or independent timestamp anchor; the snapshot is research-only and model-ineligible.
+
+### Backlog classification
+
+- **Active integration workstreams:** #1640 (V3 execution/safety/feature-store foundation) and #1643 (XRP research archive). Their changed-path sets were verified non-overlapping.
+- **Superseded pending #1640 integration:** #1642's verified-feature-snapshot gate. Its feature-store, forecast-ledger and regression-test functionality is already present on #1640's branch. Keep #1642 open until the successor is merged and its content is verified on main; then close only with an explicit cross-reference.
+- **Dependency PRs:** #1645's download-artifact change is byte-identical to #1640's workflow file. #1646 (types-requests), #1648 (pytest) and #1649 (databricks-sdk) version changes are present in #1640's manifests. #1644 and #1647 overlap with #1640 but their branches retain older workflow variants, including a re-enabled subagent-matrix workflow; do not merge them as-is. #1650's huggingface-hub update in the legacy manifest is not yet proven included and remains unique/unreviewed. #1651's RSI/weight-space foundation is a separate unique workstream and remains unreviewed here.
+- The complete open-PR API inventory returned **370 open PRs: 354 drafts and 16 non-drafts**. Older prediction/safety/research branches remain classified as stale, superseded or unique/unreviewed; do not bulk-close them.
+
+### XRP mission and prediction architecture
+
+- On #1640's branch, `barrot_agent/data/missions/primary_mission.json` assigns XRP intelligence priority 1 and preserves Barrot V3 as the execution/orchestration/safety foundation at priority 2. This manifest is not on main.
+- The integration branch contains public-data ingestion, SHA-256 raw receipts, a SQLite point-in-time feature store, feature provenance and source-independence groups, fixed-cutoff eligibility, a forecast ledger, chronological walk-forward evaluation, naive/momentum/mean-reversion/volatility baselines, Brier/log-loss scoring and calibration diagnostics. Exact-head CI validates the code; scheduled ingestion has **not** executed because the workflow is not on main.
+- `xrp-public-ingestion.yml` is designed as read-only and artifact-only (hourly plus daily captures). The Actions cache budget warning makes hourly feature-store persistence uncertain. Daily artifacts have 90-day retention; durable storage beyond that horizon is not established. Do not claim continuous historical retention until this is resolved and the workflow is executed successfully.
+- Platform capability/authentication/permission/data-flow mapping is present in the branch. Only ChatGPT/GitHub access is verified live; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain designed adapters, not proven live collaborators.
+
+### New primary-source research conclusions
+
+- Japan's SBIC East, Central and West are three distinct regional Small and Medium Business Investment & Consultation companies under the Japanese legal framework; their official profiles identify the other two as sister companies. They are distinct from SBI Holdings. The SBIC East ChatGPT seminar is educational activity, not evidence of an OpenAI partnership.
+- Coinbase Q3 2026 disclosures report $1.009297B recognized lending collateral and $3.284562B borrower collateral not recognized on Coinbase's balance sheet, including $2.804112B of crypto assets not broken down by asset. Loan receivables were $1.976137B and collateral requirements ranged from 100% to 250%. No XRP-specific collateral amount is disclosed. One unnamed counterparty represented 27% of Q3 revenue; do not infer that it was Circle. Coinbase separately reported average USDC held in its products of $22B and said it captured approximately 50% of USDC economics over the prior year; the latter is an issuer claim with an undisclosed calculation denominator. The 10-Q says its Circle arrangement was renewed on the same terms.
+- Circle's November 4 Q3 release reported average USDC circulation of $73.3B (+8% YoY), end-period circulation of $73.9B, Q3 on-chain transaction volume of $13.9T (+49%), reserve income of $657.6M (-8%), a 3.5% reserve return rate, $104B minted and $104B redeemed, and $41.3B CPN annualized TPV. Gross mint/redemption and annualized TPV are not net new capital or realized quarterly settlement. Arc's 100+ builders and the pending 2027 Tazapay acquisition are infrastructure/strategy evidence, not XRP demand.
+- XRP directional forecast remains **NOT_ISSUED**. The OI provider disagreement, rendered-page-only receipts, unsynchronized spot depth, account-count long/short ratios and liquidation lower bounds are excluded from the predictive feature set.
+- ASK Coin remains unresolved; Permission Coin's ASK is only a candidate and no XRP relationship is established. The exact Camilla/Kamilah Stevenson identity remains unverified, so no YouTube inventory is admitted.
+
+### Review, merge and side-effect blockers
+
+- #1640 has 22/22 inline review threads resolved but **zero approving reviews**. #1643 has 14/14 threads resolved but **zero approving reviews**.
+- Detailed branch-protection/required-review settings remain inaccessible through the available GitHub API (HTTP 403); the visible fallback ruleset is disabled. Do not infer that required approvals are absent.
+- A prior main push triggered GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered Pages deployment is not established. Do not merge either PR until this side effect and required protection/approval conditions are verified and authorized.
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred. Paper-trading state remains untouched.
+
+### Next concrete actions
+
+1. Finish and inspect exact-head CI for #1643 head `97b601ecad543fad6c1df0961074ee2529e0b071`; retain its fail-closed gate result separately from full-suite evidence.
+2. Resolve the Actions cache/persistence limitation for the scheduled feature store without deleting or rewriting existing caches or user data; then execute the public-data workflow in a safe, read-only test before claiming it operational.
+3. Keep #1640 as the sole core integration branch. Do not merge while approvals/protection and the Pages deployment side effect are unresolved.
+4. After #1640 is merged under the stated conditions, verify the merge commit, fetch main again, inspect the integrated files and automatic workflow side effects, then run main CI. Reconcile #1643 against that new main without rewriting its branch history; run full suite, dependency/security audit and fail-closed gate on the reconciled exact head.
+5. Continue exchange-native XRP OI/depth capture with exact instrument IDs, multipliers, event/receipt timestamps and byte-complete SHA-256 receipts. Keep the current provider aggregates separate until they reconcile.
+
+### Execution labels
+
+- **DESIGNED:** priority-1 XRP mission, V3 execution/safety foundation, point-in-time ingestion/feature-store/forecast architecture and nine-platform adapter map.
+- **EXECUTED:** current-main integration code and research artifacts committed on #1640/#1643 branches; exact-head core/full-suite CI, wheel build, dependency audit and fail-closed gate executed as listed above.
+- **VERIFIED:** #1640 head `5730d783` passed 603 core tests, 949 full-suite tests, 8 subtests, 55.26% coverage, wheel/package verification, six-manifest strict dependency audit and fail-closed gate. #1643's prior head `353b5463` passed 495 core tests, 1,018 full-suite tests, 8 subtests and fail-closed gate; newer head `97b601ec` still required exact-head CI completion at capture. None of this work is verified on main.
