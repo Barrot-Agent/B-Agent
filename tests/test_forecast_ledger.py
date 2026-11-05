@@ -1,9 +1,12 @@
+import base64
 import hashlib
 import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
 from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.forecast_ledger import (
@@ -15,6 +18,37 @@ from barrot_agent.evolution.forecast_ledger import (
 from barrot_agent.evolution.point_in_time_features import build_feature_snapshot
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+_TEST_EVALUATOR_PRIVATE_KEY = Ed25519PrivateKey.from_private_bytes(bytes(range(32)))
+_TEST_EVALUATOR_PUBLIC_KEY = _TEST_EVALUATOR_PRIVATE_KEY.public_key().public_bytes(
+    Encoding.Raw, PublicFormat.Raw
+)
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V2\\0"
+
+
+def _trusted_test_evaluator_keys():
+    return {"test-independent-evaluator": _TEST_EVALUATOR_PUBLIC_KEY}
+
+
+def _sign_readiness_report(report, *, key_id="test-independent-evaluator", attested_at_utc="2026-11-03T16:00:40Z"):
+    unsigned = dict(report)
+    unsigned.pop("evaluator_attestation", None)
+    payload = json.dumps(
+        unsigned, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+    payload_sha256 = hashlib.sha256(payload).hexdigest()
+    signature = _TEST_EVALUATOR_PRIVATE_KEY.sign(
+        _EVALUATOR_ATTESTATION_DOMAIN + bytes.fromhex(payload_sha256)
+    )
+    report["evaluator_attestation"] = {
+        "scheme": "Ed25519",
+        "key_id": key_id,
+        "signed_payload_sha256": payload_sha256,
+        "signature_base64": base64.b64encode(signature).decode("ascii"),
+        "attested_at_utc": attested_at_utc,
+    }
+    return report
+
 
 CUTOFF = "2026-11-03T16:00:00Z"
 ISSUED = "2026-11-03T16:01:00Z"
@@ -131,10 +165,10 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         allow_nan=False,
     ).encode("utf-8")
     report = {
-        "schema_version": "barrot.xrp.model-readiness.v1",
+        "schema_version": "barrot.xrp.model-readiness.v2",
         "evaluation_type": "chronological_walk_forward_model_evaluation",
         "status": "PASS",
-        "policy_id": "xrp_forecast_readiness_v1",
+        "policy_id": "xrp_forecast_readiness_v2",
         "evaluation_id": f"test-evaluation-{asset.lower()}-{horizon_seconds}-{'-'.join(source_ids)}",
         "model_version": "xrp-test-v1",
         "baseline_model_version": "naive-frequency-v1",
@@ -166,7 +200,12 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         },
         "evaluation_data_cutoff_utc": "2026-11-03T15:59:40Z",
         "evaluation_completed_at_utc": "2026-11-03T16:00:30Z",
+        "evaluator_id": "test-independent-evaluator",
+        "evaluator_version": "fixture-evaluator-v1",
+        "evaluation_code_sha256": "c" * 64,
+        "evaluation_artifact_sha256": "d" * 64,
     }
+    _sign_readiness_report(report)
     report_bytes = json.dumps(
         report,
         sort_keys=True,
@@ -183,7 +222,7 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         "certificate": {
             "report_sha256": report_sha256,
             "receipt_id": receipt_id,
-            "policy_id": "xrp_forecast_readiness_v1",
+            "policy_id": "xrp_forecast_readiness_v2",
             "status": "PASS",
         },
     }
@@ -225,7 +264,12 @@ def make_ledger(path, *, now=TEST_NOW, store_clock=STORE_RECEIPT, snapshot=FEATU
         clock=lambda: store_clock,
     )
     store.append_snapshot(snapshot)
-    ledger = ForecastLedger(path, clock=clock, feature_store=store)
+    ledger = ForecastLedger(
+        path,
+        clock=clock,
+        feature_store=store,
+        trusted_evaluator_public_keys=_trusted_test_evaluator_keys(),
+    )
     _register_readiness_fixtures(ledger)
     clock.set(now)
     ledger._test_clock = clock
@@ -650,11 +694,90 @@ def test_unscorable_outcome_waits_until_tolerance_window_closes(tmp_path):
 
 def test_forecast_recording_requires_a_verified_feature_store(tmp_path):
     clock = MutableClock(datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc))
-    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3", clock=clock)
+    ledger = ForecastLedger(
+        tmp_path / "forecasts.sqlite3",
+        clock=clock,
+        trusted_evaluator_public_keys=_trusted_test_evaluator_keys(),
+    )
     _register_readiness_fixtures(ledger)
     clock.set(TEST_NOW)
     with pytest.raises(ForecastLedgerError, match="verified HistoricalFeatureStore"):
         ledger.record_forecast(forecast())
+
+
+def test_readiness_registration_fails_closed_without_an_external_trust_root(tmp_path):
+    fixture = READINESS_FIXTURES[("XRP", 3600)]
+    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3", clock=lambda: TEST_NOW)
+    with pytest.raises(ForecastLedgerError, match="no trusted independent evaluator public keys"):
+        ledger.register_readiness_report(
+            fixture["report_bytes"],
+            receipt_id=fixture["receipt_id"],
+            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+        )
+
+
+def test_readiness_signature_binds_metrics_and_dataset_manifest(tmp_path):
+    fixture = READINESS_FIXTURES[("XRP", 3600)]
+    report = json.loads(fixture["report_bytes"])
+    report["model_metrics"]["mean_brier_score"] = 0.001
+    tampered_bytes = json.dumps(
+        report, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+    ledger = ForecastLedger(
+        tmp_path / "forecasts.sqlite3",
+        clock=lambda: datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc),
+        trusted_evaluator_public_keys=_trusted_test_evaluator_keys(),
+    )
+    with pytest.raises(ForecastLedgerError, match="signature payload hash"):
+        ledger.register_readiness_report(
+            tampered_bytes,
+            receipt_id="tampered-readiness-report",
+            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+        )
+
+
+def test_readiness_rejects_untrusted_evaluator_key(tmp_path):
+    fixture = READINESS_FIXTURES[("XRP", 3600)]
+    report = json.loads(fixture["report_bytes"])
+    _sign_readiness_report(report, key_id="untrusted-evaluator")
+    report_bytes = json.dumps(
+        report, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+    ledger = ForecastLedger(
+        tmp_path / "forecasts.sqlite3",
+        clock=lambda: datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc),
+        trusted_evaluator_public_keys=_trusted_test_evaluator_keys(),
+    )
+    with pytest.raises(ForecastLedgerError, match="is not trusted"):
+        ledger.register_readiness_report(
+            report_bytes,
+            receipt_id="untrusted-readiness-report",
+            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+        )
+
+
+def test_readiness_attestation_must_follow_evaluation_and_precede_registration(tmp_path):
+    fixture = READINESS_FIXTURES[("XRP", 3600)]
+    for index, (attested_at, expected) in enumerate((
+        ("2026-11-03T16:00:20Z", "predates evaluation completion"),
+        ("2026-11-03T16:01:00Z", "postdates actual readiness-report registration"),
+    )):
+        report = json.loads(fixture["report_bytes"])
+        _sign_readiness_report(report, attested_at_utc=attested_at)
+        report_bytes = json.dumps(
+            report, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+        ).encode("utf-8")
+        ledger = ForecastLedger(
+            tmp_path / f"attestation-time-{index}.sqlite3",
+            clock=lambda: datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc),
+            trusted_evaluator_public_keys=_trusted_test_evaluator_keys(),
+        )
+        with pytest.raises(ForecastLedgerError, match=expected):
+            ledger.register_readiness_report(
+                report_bytes,
+                receipt_id=f"attestation-time-{attested_at}",
+                raw_receipt_bytes=fixture["raw_receipt_bytes"],
+            )
 
 
 def test_readiness_requires_candidate_to_beat_every_baseline():
