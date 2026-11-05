@@ -131,10 +131,12 @@ jobs:
           python -m pip install --upgrade build
           python -m build --wheel --outdir "$RUNNER_TEMP/barrot-wheel"
           python - <<'PY'
+          import os
           from pathlib import Path
           from zipfile import ZipFile
 
-          wheel = next(Path("$RUNNER_TEMP/barrot-wheel").glob("*.whl"))
+          wheel_dir = Path(os.environ["RUNNER_TEMP"]) / "barrot-wheel"
+          wheel = next(wheel_dir.glob("*.whl"))
           expected = "barrot_agent/data/missions/primary_mission.json"
           with ZipFile(wheel) as archive:
               if expected not in archive.namelist():
