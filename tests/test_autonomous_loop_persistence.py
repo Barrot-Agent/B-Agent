@@ -107,3 +107,13 @@ def test_autonomous_history_is_bounded_with_archive_digest(tmp_path):
     assert len(loaded["history_archive_digest"]) == 64
     assert loaded["history_archive_digest"] != first_digest
     assert loaded["history"][0]["attempt"] == 12
+def test_autonomous_store_rejects_stale_concurrent_writer(tmp_path):
+    store = AutonomousTaskStore(tmp_path)
+    store.save("concurrent-task", {"history": [], "value": 0})
+    first = store.load("concurrent-task")
+    stale = store.load("concurrent-task")
+    first["value"] = 1
+    store.save("concurrent-task", first)
+    stale["value"] = 2
+    with pytest.raises(RuntimeError, match="changed since it was loaded"):
+        store.save("concurrent-task", stale)
