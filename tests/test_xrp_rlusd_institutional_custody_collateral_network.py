@@ -69,7 +69,7 @@ def test_rlusd_issuer_is_not_coinbase_or_ripple_national_trust_bank():
     data = load()
     separation = data["instrument_separation"]
     assert "Standard Custody & Trust Company" in separation["rlusd"]
-    assert "not the issuer" in separation["ripple_national_trust_bank"]
+    assert "not the RLUSD issuer" in separation["ripple_national_trust_bank"]
     assert "not the issuer" in separation["coinbase"]
 
 
