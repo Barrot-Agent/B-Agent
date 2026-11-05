@@ -147,7 +147,7 @@ def load_xrp_intelligence_status():
         except (OSError, UnicodeError):
             continue
         if content.strip():
-            sections.append(f"\\n\\n{label} (repository source; includes explicit unimplemented gates):\\n{content}")
+            sections.append(f"\n\n{label} (repository source; includes explicit unimplemented gates):\n{content}")
     return "".join(sections)
 
 def load_gumroad_metrics():
