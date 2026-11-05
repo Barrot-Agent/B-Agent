@@ -289,7 +289,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 17, (
+    assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES), (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -1270,7 +1270,7 @@ def test_explicit_noncommercial_xrpl_research_capture_is_never_model_eligible(tm
         include_noncommercial_xrpl_nodes=True,
     )
 
-    assert summary["source_receipt_count"] == 19
+    assert summary["source_receipt_count"] == len(ENDPOINTS)
     assert summary["xrpl_node_reconciliation"]["status"] == "AGREED"
     assert summary["xrpl_node_reconciliation"]["integrity_check_only"] is True
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
