@@ -3329,3 +3329,128 @@ Main's `SECURITY.md` still documents the `PYSEC-2024-232` exception; #1640 remov
 - The main Pillars Consistency Check remains blocked by missing GitHub App ID/private key/installation ID, Databricks HTTP 403 and Hugging Face BUILD_ERROR. ChatGPT-to-GitHub repository access is the only authenticated platform data flow verified in this run.
 
 Next: obtain independent approving reviews and verify branch protection; resolve Pages deployment authorization; integrate #1640 and verify the merge commit/files/main CI; reconcile #1643 against the new main; build a tested consumer for research correction overlays and source-eligibility gates; then continue durable source storage and synchronized historical ETF, exchange-flow, collateral, stablecoin, custody, payment, regulatory, macro and geopolitical vintages. No forecast is authorized until out-of-sample evidence supports it.
+
+### Run 26 supplement — point-in-time readiness hardening, current ETF/derivatives vintages, and RLUSD institutional edges
+Recorded: 2026-11-05T05:43:03Z
+
+#### Repository and integration state
+
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main tree audit: 1,403 tree entries, 1,298 blobs. Open PR inventory: 370 total, 354 drafts, 16 non-drafts.
+- PR #1640: current head `3a58eb2a81655182247ad64ff35d49d68b985142`, 168 commits ahead / 0 behind, 73 changed files.
+- PR #1643: current head `da5bbed8dcd6003925b6ba63faaab1b300f19f76`, 138 commits ahead / 0 behind, 116 changed files.
+- PR #1640 and #1643 have zero changed-path overlap. PR #1651 also has zero overlap with either integration branch.
+- No branch or PR was created. Work was committed only to the two existing integration branches.
+
+#### PR #1640 — readiness cutoff hardening
+
+The forecast readiness ledger previously checked that a raw-source capture did not precede its source-data-as-of timestamp, but did not bound source event time by the dataset cutoff or capture time by the evaluation-data cutoff. This allowed a readiness report to cite a source receipt that was not yet available at the declared evaluation cutoff.
+
+The existing #1640 branch now:
+- Requires each receipt's `source_data_as_of_utc <= dataset.data_cutoff_utc`.
+- Requires each receipt's `captured_at_utc <= evaluation_data_cutoff_utc`.
+- Parses and validates the dataset/evaluation cutoffs before iterating receipts.
+- Includes three regression tests: source-as-of after dataset cutoff is rejected; raw capture after evaluation cutoff is rejected; capture after source-as-of remains valid when available by evaluation cutoff.
+- Adjusts the synthetic readiness fixture so the feature snapshot is captured and stored by the evaluation cutoff.
+
+Exact-head evidence for #1640:
+- Core suite: 586 passed, 8 subtests passed.
+- Full repository suite: 883 passed, 8 subtests passed.
+- Inclusive package coverage: 53.44%.
+- Five-manifest strict dependency audit: passed; no known vulnerabilities reported.
+- Fail-closed merge gate: passed and explicitly kept automatic merging disabled.
+- CI: [41975363670](https://github.com/Barrot-Agent/B-Agent/actions/runs/41975363670)
+- Dependency audit: [41975363684](https://github.com/Barrot-Agent/B-Agent/actions/runs/41975363684)
+- Fail-closed gate: [41975363721](https://github.com/Barrot-Agent/B-Agent/actions/runs/41975363721)
+
+Remaining readiness-integrity gaps: the ledger still trusts receipt metadata/receipt IDs rather than independently recomputing a canonical receipt-record hash from all original receipt fields; readiness metrics are supplied by the evaluator report and are not independently recomputed by the ledger from retained OOS prediction/outcome rows. Keep forecast issuance disabled until trusted evaluator output and canonical receipt lineage are enforced.
+
+#### PR #1643 — current market, ETF, derivatives, and institutional research
+
+New append-only artifacts and regression tests:
+
+- `research/xrp_intelligence/20261105T053921Z-xrp-market-etf-derivatives-vintage-update.json`
+- `tests/test_xrp_market_etf_derivatives_vintage_update.py` (5 tests)
+- `research/xrp_intelligence/20261105T054303Z-rlusd-institutional-custody-collateral-network.json`
+- `tests/test_xrp_rlusd_institutional_custody_collateral_network.py` (7 tests)
+
+All new web-rendered observations are explicitly model-ineligible: original response bytes, SHA-256 receipts and exact client retrieval timestamps were not captured. Deterministic content checks passed for both artifacts; repository pytest evidence is tracked separately below.
+
+**Spot and derivatives snapshot**
+- Kraken XRP/USD ticker: last $1.30714; bid $1.30715; ask $1.30721; displayed spread approximately 0.459 bps; 24-hour volume 32.63M XRP; VWAP $1.30631773; high $1.34; low $1.26734. The response exposed no verifiable source timestamp or HTTP Date header; one venue only, model-ineligible.
+- Yahoo's rendered $1.2520 quote (displayed as of 02:32:08 UTC) was below Kraken's reported 24-hour low. It is quarantined as stale/non-comparable; do not average it with Kraken.
+- Kodexius seven-contract XRP perpetual aggregate: OI approximately $887.69M, OI/24h volume 0.52, 24-hour volume approximately $1.71B, OI-weighted funding +0.0093% per 8 hours.
+- Kodexius Binance XRPUSDT OI: $449.48M. Fibonomy Binance XRPUSDT OI: $450.47M, a $0.99M difference. Timestamps and underlying feed independence are not synchronized; no average. Positive funding/OI does not establish directional price pressure.
+
+**ETF-flow vintage reconciliation**
+- XRP Insights generated its totals JSON at 05:25:02.707 UTC on November 5; settled data is through November 3, with a November 4 provisional row. Its seven-fund universe includes XRPC, XRP, XRPR, XRPZ, GXRP, TOXR and BITW. Reported holdings are 1,196,405,311 XRP and November 2–3 derived holdings change is -194,875 XRP. GXRP flow is withheld; XRPR includes indirect ETP exposure; BITW is an index sleeve; reconstructed/provisional rows remain excluded from model features.
+- CryptoKeyhole's page updated 05:03 UTC; its latest issuer file was observed at 03:07 UTC. Its four-fund universe is XRP, XRPZ, XRPC and TOXR. November 3 is the latest complete date, with -3,339 XRP; November 2 is also -3,339 XRP in the preserved prior snapshot, for -6,678 XRP over the two days. The November 4 row is partial at 2 of 4 funds. Its last-five-complete-day net is +6,178,705 XRP.
+- The two-day flow difference is -188,197 XRP; holdings totals differ by 119,592,749 XRP, of which displayed GXRP/XRPR/BITW holdings explain 119,574,608 XRP, leaving an 18,141 XRP residual. Different fund universes, publication vintages and holdings-delta methodologies remain unresolved. Neither aggregator's derived holdings change is treated as direct AP cash flow or spot purchases.
+
+**RLUSD institutional custody, distribution and collateral**
+- Standard Chartered Bank DIFC Branch's RLUSD custody support on XRPL is reported live for eligible institutional clients; the branch is regulated by DFSA. This is RLUSD custody, not proof of XRP custody or XRP collateral.
+- Standard Chartered/Ripple/LMAX RLUSD collateral mirroring is planned, not live; final documentation, testing, applicable laws, internal approvals and jurisdictional readiness remain conditions.
+- Ripple's January 15, 2026 LMAX release announced $150M financing. No drawdown/disbursement receipt was found; do not count the amount as cash received or XRP-market capital.
+- Coinbase's October 28 announcement confirms RLUSD on Coinbase Prime, Coinbase Exchange and Retail, with XRPL, Base and Ethereum deposits/withdrawals. Coinbase Global Exchange collateral availability is future in the launch announcement, not live. Coinbase is distribution/platform, not RLUSD issuer.
+- SBI VC Trade's June 24 RLUSD launch classifies RLUSD as a Type 4 electronic payment instrument under its stated Japanese-law interpretation and explicitly supports Ethereum-only deposits/withdrawals at launch. Its July 15 official article still describes Ethereum as the first supported network. No later official SBI VC Trade XRPL deposit/withdrawal confirmation was found through this cutoff. Do not infer service-specific XRPL support from RLUSD's global multi-chain availability. SBI VC Trade is an SBI Holdings subsidiary; this has no established connection to Japan's regional SBIC East/Central/West companies.
+- Ripple National Trust Bank received final OCC approval on October 26 for separate reserve-management, collateral-trustee and fiduciary-custody activities; commencement of customer operations remains unverified. Standard Custody & Trust Company remains RLUSD issuer.
+- Ripple's issuer dashboard reports $2.627B circulation and $2.7586B reserve funds as of October 29, implying $131.6M excess and 105.01% coverage. The dashboard lists CPA reports through September; the October 29 balance is not itself an October CPA attestation.
+- RLUSD adoption on XRPL may complement or substitute for some XRP-bridge settlement legs. No quantified incremental XRP purchases, collateral balances, XRP bridge-volume lift or displacement is established.
+
+**Macro context**
+- Reuters on November 5 reported gold rising as the dollar and Treasury yields eased after US midterm results; the article cited a 4.87% 10-year yield and an 82% market-implied probability of a December rate increase. This is secondary macro context only; no direct XRP causal or directional inference.
+
+#### Exact-head CI on PR #1643
+
+- Final head is `da5bbed8dcd6003925b6ba63faaab1b300f19f76`.
+- Core test job passed: 495 passed, 8 subtests passed.
+- Fail-closed gate [41976071392](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071392) passed and did not merge.
+- The preceding full-suite run on head `e9951533a9d07fe7d8e8f33adba1c4d3918b95ba`, [41975845014](https://github.com/Barrot-Agent/B-Agent/actions/runs/41975845014), reported 865 passed / 1 failed / 8 subtests. The single failure was an over-strict test wording assertion ("not the issuer" versus the artifact's more precise "not the RLUSD issuer"); the test was corrected on `da5bbed`.
+- Final-head CI [41976071373](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071373) has its core job passed. At handoff time, its full-repository job remained in progress during complete development-dependency installation; no final full-suite result is claimed. The next run must inspect this exact head's completed full-suite result before any merge decision.
+- #1643 changes no dependency manifests; the five-manifest dependency audit on #1640 covers the integrated dependency declarations.
+
+#### Main-branch security and automation audit
+
+- Main's branch API reports `protected=true`, but the branch-protection detail endpoint returns HTTP 403. The only visible repository ruleset, `Fall Back`, is disabled. Required approval/check enforcement cannot be independently verified.
+- Main's `ci.yml` already contains both a core test job and a full repository suite job; the latter currently runs `pytest tests -v --no-cov`. #1640 upgrades coverage enforcement and packaged-wheel verification rather than introducing the first full-suite job.
+- Main's active issue-label Barrot agent still has contents, pull-request and issue write permissions. Main's A2A/Cloudflare and self-hosted Hugging Face workflows still have push-triggered deployment paths. Main's task allocator still has direct-main-write code. #1640 quarantines the issue-label agent, direct-main task allocator and autonomous self-upgrade; deployment workflows become manual-only with explicit YES and exact-main-SHA checks.
+- Main's paper-trader, Databricks/Kaggle operations and Hugging Face model-upload workflows are manual-only and require explicit confirmation; none was run. Main's automatic PR-merge and merge-queue workflows are disabled.
+- Main's `SECURITY.md` still has the stale PYSEC-2024-232 exception note; #1640 clarifies that the identifier remains only in archived backup material. The #1640 dependency audit is strict across five manifests and passed.
+- The prior main push caused GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered Pages deployment remains unresolved.
+- Main's hourly Cross Analysis run [41970382739](https://github.com/Barrot-Agent/B-Agent/actions/runs/41970382739) succeeded, but the XRP public-ingestion workflow exists only on #1640 and has not run on main. Its hourly collector and daily backup use public endpoints and read-only repository permissions; raw-source and feature-store artifacts currently have 90-day retention, not indefinite durable storage.
+
+#### Nine-platform coordination evidence
+
+- ChatGPT-to-GitHub: authenticated repository read/write on existing PR branches was exercised; main was not modified.
+- Copilot: GitHub Actions Agent Merge run [41972463341](https://github.com/Barrot-Agent/B-Agent/actions/runs/41972463341) executed on an older #1640 head. Its log explicitly skipped automatic final commit/push; no merge or repository change resulted. Its Dependabot graph attempt could not reach Sigstore TUF because of DNS failure. This is one transient GitHub Actions agent execution, not a persistent independent Copilot connector.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as authenticated persistent data flows. Previous Hugging Face BUILD_ERROR and Databricks HTTP 403 remain blockers. No nine-platform live coordination is claimed.
+
+#### Open-PR backlog classification
+
+Inventory remains 370 open: 354 drafts, 16 non-drafts.
+- **Active integration, blocked:** #1640 and #1643.
+- **Unique/unreviewed:** #1651 (RSI/weight-space foundation; nine changed paths, zero overlap with #1640/#1643; body says keep draft pending CI/review although GitHub currently marks it non-draft). Preserve.
+- **Exact ancestor/superseded candidate:** #1642; preserve until #1640 is merged and verified on main.
+- **Dependency/action superseded candidates:** #1644–#1650; their newer dependency/action changes are represented in #1640. Preserve until successor is verified on main.
+- **Older dependency superseded candidates:** #1254 and #1255; preserve until newer declarations are verified on main.
+- **Overlapping historical work:** #1317, #1318 and #1320; stale bases and partial overlap with #1640. Preserve unique hunks/commits.
+- **Partially unique rendering work:** #1269; stale base, preserve its unique geometry work.
+- **Unique security/containment draft:** #1615; preserve unique paths.
+- **Unique collateral research:** #1621; preserve pending claim-by-claim reconciliation.
+- No PRs were closed and no bulk closure occurred.
+
+#### Merge decision and next actions
+
+Neither #1640 nor #1643 has an approving review. Their 22 and 14 review threads remain resolved, but comments are not approvals. Both are reported mergeable by GitHub; branch-protection and required approval enforcement remain unverifiable, and the Pages side effect is unresolved. Do not merge either PR.
+
+Next:
+1. Recheck final-head full-suite CI for #1643 `da5bbed`; diagnose any install/test failure on that exact head.
+2. Obtain independent approving reviews and independently verify required branch-protection/check settings.
+3. Resolve Pages deployment authorization before any main push.
+4. Update this handoff after #1643's final full-suite result; then re-run #1640's exact-head CI, dependency audit and fail-closed gate on the handoff commit.
+5. Only after all conditions pass, merge #1640, fetch main, verify merge commit/files, run main CI, then reconcile #1643 against the new main without rewriting history.
+6. Close only exact superseded PRs after merged content is verified on main.
+7. Continue durable raw-source storage, canonical receipt-ID verification, evaluator-attested OOS results, synchronized historical spot/ETF/derivatives/exchange-flow/collateral/stablecoin/custody/payment/regulatory/macro/geopolitical vintages, calibration, drift monitoring and shadow outcomes.
+
+No directional forecast was issued. No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
