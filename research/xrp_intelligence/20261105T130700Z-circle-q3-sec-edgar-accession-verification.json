@@ -91,10 +91,27 @@
         "Coinbase says its Circle arrangement was renewed on the same terms.",
         "Coinbase says the 2026 corporate payment-stablecoin revenue presentation change did not change the Circle arrangement or revenue generated.",
         "Coinbase refers to a fair-value remeasurement of its investment in Circle Internet Group following Circle's IPO; the reviewed passage does not disclose the investment amount or ownership percentage.",
-        "Q3 stablecoin revenue was $306.905M; average USDC held in Coinbase products reached $22B, up 49% YoY."
+        "Q3 2026 stablecoin revenue was $306.905M."
       ],
-      "source_limit": "Counterparty disclosure corroborates the existence of the commercial and equity relationship, but it is not independent market-flow evidence. Coinbase's 27% revenue-concentration counterparty is not identified and must not be assumed to be Circle.",
+      "source_limit": "The 10-Q says average USDC held in Coinbase products reached an all-time high but does not state the $22B figure or 49% year-over-year change in the retrieved filing text. Those exact figures are sourced to the separate October 29 issuer earnings release.",
       "raw_capture_status": "web_rendered_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "coinbase_q3_2026_earnings_release",
+      "publisher": "Coinbase Global, Inc.",
+      "source_type": "issuer_primary_earnings_release",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "published_at": "2026-10-29",
+      "retrieved_at_utc": "2026-11-05T13:07:00Z",
+      "source_independence_group": "coinbase_issuer",
+      "claims_supported": [
+        "Average USDC held in Coinbase products reached $22B in Q3 2026, up 49% year over year.",
+        "Coinbase described the $22B product-held balance as approximately 30% of average USDC market capitalization."
+      ],
+      "source_limit": "Issuer-reported operating metrics; not an independent reserve audit, net USDC issuance measure, or XRP demand/flow observation.",
+      "raw_capture_status": "web_rendered_issuer_release_extract_only",
       "raw_content_sha256": null,
       "model_eligible": false
     }
@@ -181,8 +198,9 @@
       "value_usd_billions": 22,
       "yoy_change_pct": 49,
       "period": "2026-Q3",
-      "source_id": "coinbase_q3_2026_sec_10q",
-      "model_eligible": false
+      "source_id": "coinbase_q3_2026_earnings_release",
+      "model_eligible": false,
+      "interpretation": "Exact $22B and +49% figures come from Coinbase's October 29, 2026 issuer earnings release; the SEC 10-Q only states that average product-held USDC reached an all-time high."
     }
   ],
   "relationship_graph": [
@@ -241,5 +259,16 @@
     "Keep Coinbase and Circle issuer observations in separate source-independence groups.",
     "Track Coinbase's stablecoin revenue presentation change so corporate balance economics are not double-counted.",
     "Do not infer XRP demand, collateral, payment volume, or price direction from USDC metrics."
+  ],
+  "source_correction_log": [
+    {
+      "correction_id": "COINBASE-Q3-22B-SOURCE-ATTRIBUTION-20261105",
+      "recorded_at_utc": "2026-11-05T13:07:00Z",
+      "prior_source_id": "coinbase_q3_2026_sec_10q",
+      "corrected_source_id": "coinbase_q3_2026_earnings_release",
+      "corrected_claim": "$22B average USDC held in Coinbase products, up 49% YoY",
+      "reason": "Direct SEC 10-Q retrieval confirmed the filing states an all-time high but contains no $22B or 49% figure; Coinbase's October 29 issuer earnings release states both exact values.",
+      "append_only_history_preserved": true
+    }
   ]
 }
