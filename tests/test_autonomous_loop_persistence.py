@@ -88,3 +88,4 @@ def test_autonomous_store_rejects_workspace_symlink_escape(tmp_path):
     (workspace / ".barrot").symlink_to(outside, target_is_directory=True)
     with pytest.raises(ValueError, match="escapes workspace"):
         AutonomousTaskStore(workspace)
+    assert not (outside / "autonomous_tasks").exists()
