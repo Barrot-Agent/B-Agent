@@ -167,15 +167,13 @@ class BarrotExecutor:
             return
 
         if program == "find":
-            if len(args) not in {5, 6, 9} or args[0] != ".":
+            if len(args) not in {5, 8} or args[0] != ".":
                 raise ExecutionError("find is limited to bounded workspace listings.")
             if args[1] != "-maxdepth" or not args[2].isdigit() or not 1 <= int(args[2]) <= 8:
                 raise ExecutionError("find requires -maxdepth between 1 and 8.")
             if args[3] != "-type" or args[4] not in {"f", "d"}:
                 raise ExecutionError("find is limited to -type f or -type d.")
-            if len(args) == 9 and args[5:] != ["-not", "-path", "./.git/*"]:
-                raise ExecutionError("Unsupported find predicate.")
-            if len(args) == 6:
+            if len(args) == 8 and args[5:] != ["-not", "-path", "./.git/*"]:
                 raise ExecutionError("Unsupported find predicate.")
             return
 
