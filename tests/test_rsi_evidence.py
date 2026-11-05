@@ -65,3 +65,13 @@ def test_same_revision_cannot_be_claimed_as_candidate_change():
     candidate = EvaluationSnapshot("c1", "same-sha", {"accuracy": 0.9})
     with pytest.raises(ValueError, match="distinct revisions"):
         assess_improvement(baseline, candidate)
+
+def test_non_numeric_metrics_and_unknown_metric_policies_are_rejected():
+    with pytest.raises(TypeError):
+        EvaluationSnapshot("b1", "sha-a", {"metric": "0.9"})
+    with pytest.raises(TypeError):
+        EvaluationSnapshot("b2", "sha-b", {"metric": True})
+    baseline = EvaluationSnapshot("b3", "sha-c", {"accuracy": 0.8})
+    candidate = EvaluationSnapshot("c3", "sha-d", {"accuracy": 0.9})
+    with pytest.raises(ValueError, match="unknown metric configuration"):
+        assess_improvement(baseline, candidate, tolerances={"accurracy": 0.1})
