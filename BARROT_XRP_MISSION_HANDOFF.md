@@ -6348,7 +6348,7 @@ This checkpoint supersedes earlier PR counts, head SHAs and backlog classificati
 ### PR #1643 — XRP research archive
 
 - Current head: `f1b956bd886bca48848be0406bf6ed9ddefcc605`.
-- 280? No: GitHub compare reports **279 commits ahead of main, zero behind**, and 223 changed files.
+- 279 commits ahead of main, zero behind; 223 changed files.
 - Core suite: 495 passed, 8 subtests.
 - Exact-head dependency audit [42116564688](https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564688): passed.
 - Exact-head fail-closed gate [42116564747](https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564747): passed; merging remains disabled.
