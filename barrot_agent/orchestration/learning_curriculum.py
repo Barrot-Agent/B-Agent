@@ -31,7 +31,7 @@ class LearningCurriculum:
         except Exception:
             return ""
 
-        return "\\n".join(
+        return "\n".join(
             record["lesson"]
             for record in records
             if isinstance(record, dict)
