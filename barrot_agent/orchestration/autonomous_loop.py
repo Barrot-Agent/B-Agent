@@ -67,7 +67,7 @@ Use this exact schema:
 {{
   "analysis": "brief diagnosis",
   "commands": [
-    "find . -maxdepth 2 -type f",
+    "find . -maxdepth 2 -type f -not -path ./.git/*",
     "python -m compileall -q barrot_agent scripts"
   ]
 }}
@@ -81,7 +81,7 @@ CRITICAL EXECUTION RULES:
 - Python is limited to python -m pytest with explicit test paths and python -m compileall -q barrot_agent scripts.
 - pytest is limited to explicit in-workspace test paths and bounded read-only test options.
 - Git is limited to git status --short and git diff --no-ext-diff, optionally with --stat.
-- Read-only inspection commands may include pwd, ls, find, grep, cat, and numeric-range sed.
+- Read-only inspection commands may include pwd, ls, bounded find, grep -rIn --exclude-dir=.git -- PATTERN PATH, cat, and numeric-range sed.
 - File paths must remain inside the configured workspace.
 - Do not modify files unless the goal explicitly requires modification.
 - Do not expose or modify secrets.
