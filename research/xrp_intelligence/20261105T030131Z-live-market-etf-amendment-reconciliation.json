@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_live_market_etf_amendment_reconciliation",
+  "artifact_id": "20261105T030131Z-live-market-etf-amendment-reconciliation",
+  "captured_at_utc": "2026-11-05T03:01:31Z",
+  "data_cutoff_utc": "2026-11-05T03:01:31Z",
+  "mission_priority": 1,
+  "model_eligible": false,
+  "eligibility_status": "MODEL_INELIGIBLE_WEB_RENDERED_EXTRACTS",
+  "forecast_issued": false,
+  "paper_trade_executed": false,
+  "source_capture_policy": {
+    "status": "rendered_web_extracts_only",
+    "raw_http_bytes_captured": false,
+    "independent_timestamp_anchor": false,
+    "rendered_hashes_are_not_raw_source_hashes": true,
+    "admission_rule": "Do not use these observations as model features until original source bytes, byte-complete SHA-256 receipts, source timestamps and independent capture anchors are obtained."
+  },
+  "source_registry": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "exchange_public_api",
+      "independence_group": "kraken_exchange",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_extract_sha256": "50c89839ddeb3330a7c1fb822eea095a517c6f57bfe8aa6ab0b1b40bf0e8db70",
+      "rendered_payload_excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.30545000\",\"192\",\"192.000\"],\"b\":[\"1.30542000\",\"3417\",\"3417.000\"],\"c\":[\"1.30546000\",\"22.80177696\"],\"v\":[\"1040845.81001392\",\"33293522.99999833\"],\"p\":[\"1.30427308\",\"1.30410513\"],\"t\":[2375,32146],\"l\":[\"1.29590000\",\"1.24016000\"],\"h\":[\"1.30957000\",\"1.34000000\"],\"o\":\"1.30410000\"}}}",
+      "source_timestamp_note": "The returned ticker body contains no exchange/server timestamp. Retrieval time is not an exchange event timestamp."
+    },
+    {
+      "source_id": "binance_xrpusdt_premium_index",
+      "source_uri": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "source_type": "exchange_public_api",
+      "independence_group": "binance_exchange",
+      "source_data_as_of_utc": "2026-11-05T02:25:56Z",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "source_age_seconds_at_capture": 2135,
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_extract_sha256": "b63f00a25acc79e29465b745c39daf07dd78ca615856ac63c55470167aa280c1",
+      "rendered_payload_excerpt": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.30828197\",\"indexPrice\":\"1.30810694\",\"estimatedSettlePrice\":\"1.30900621\",\"lastFundingRate\":\"0.00010000\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1793865600000,\"time\":1793845556000}",
+      "source_timestamp_note": "The exchange response time is 02:25:56Z, 35m35s before this capture. Funding interval was not independently verified; do not label the rate as an 8-hour rate."
+    },
+    {
+      "source_id": "xrpldashboard_amendments",
+      "source_uri": "https://xrpldashboard.com/amendments",
+      "source_type": "independent_ledger_observer",
+      "independence_group": "xrpldashboard_own_node",
+      "source_data_as_of_utc": "2026-11-05T02:57:00Z",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "23,31,36,49-54,83-103,147-158,262-265",
+      "source_timestamp_conflicts": [
+        "Page header says XRP price as of 02:59 UTC and displays ledger 108122913.",
+        "Validator roll call is timestamped 02:57 UTC at voting ledger 108122879.",
+        "Footer says fetched 02:51 UTC and cached 488.3 seconds, which does not reconcile cleanly with the newer header and roll-call timestamps."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_etf_data",
+      "source_uri": "https://xrp-insights.com/data",
+      "source_type": "issuer_derived_aggregator",
+      "independence_group": "issuer_holdings_aggregator_xrp_insights",
+      "source_data_as_of_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "19-42,45-78,79-109,131-154",
+      "timestamp_note": "Page says data as of Nov 3, lists Nov 4 as the latest row, and explicitly marks the Nov 4 row provisional pending next-morning re-settlement."
+    },
+    {
+      "source_id": "cryptokeyhole_etf_flows",
+      "source_uri": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_type": "issuer_derived_aggregator",
+      "independence_group": "issuer_holdings_aggregator_cryptokeyhole",
+      "source_data_as_of_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "page_updated_at_utc": "2026-11-05T02:44:00Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "149-164,167-196,211-218"
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_dashboard",
+      "source_uri": "https://alphafinance.io/etf/xrp/",
+      "source_type": "flow_series_aggregator",
+      "independence_group": "etf_flow_aggregator_alpha_finance",
+      "source_data_as_of_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "41-77,90-130,136-142"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "kraken_xrpusd_top_of_book",
+      "venue": "Kraken",
+      "pair": "XRP/USD",
+      "last_price_usd": 1.30546,
+      "best_bid_usd": 1.30542,
+      "best_bid_quantity_xrp": 3417,
+      "best_ask_usd": 1.30545,
+      "best_ask_quantity_xrp": 192,
+      "displayed_top_of_book_spread_bps": 0.2298,
+      "volume_24h_xrp": 33293522.99999833,
+      "vwap_24h_usd": 1.30410513,
+      "high_24h_usd": 1.34,
+      "low_24h_usd": 1.24016,
+      "daily_open_usd": 1.3041,
+      "source_timestamp_status": "not_returned_by_ticker_body",
+      "limitations": [
+        "Single venue only.",
+        "Only best bid and ask are available in this response; this is not a depth ladder.",
+        "The daily open field is not a rolling 24-hour open.",
+        "No exchange timestamp or raw HTTP headers were captured.",
+        "Top-of-book displayed size is not evidence of executable depth beyond the quoted level."
+      ]
+    },
+    {
+      "observation_id": "binance_xrpusdt_perpetual_premium",
+      "venue": "Binance",
+      "instrument": "XRPUSDT perpetual",
+      "mark_price_usdt": 1.30828197,
+      "index_price_usdt": 1.30810694,
+      "estimated_settle_price_usdt": 1.30900621,
+      "last_funding_rate": 0.0001,
+      "next_funding_time_utc": "2026-11-05T08:00:00Z",
+      "exchange_response_time_utc": "2026-11-05T02:25:56Z",
+      "age_at_capture_seconds": 2135,
+      "limitations": [
+        "Stale by 35m35s at capture for short-horizon analysis.",
+        "USDT quote is not silently converted to USD.",
+        "Funding interval was not independently verified.",
+        "No open-interest response was obtained in this capture.",
+        "Not synchronized with the Kraken ticker."
+      ]
+    },
+    {
+      "observation_id": "xrpl_governance_and_amendments",
+      "page_header_price_usd": 1.3066,
+      "page_header_price_as_of_utc": "2026-11-05T02:59:00Z",
+      "page_header_ledger": 108122913,
+      "validator_roll_call_ledger": 108122879,
+      "validator_roll_call_as_of_utc": "2026-11-05T02:57:00Z",
+      "validators_heard": 35,
+      "validators_required": 29,
+      "fixCleanup3_4_0": {
+        "status": "enabled",
+        "enabled_at_utc": "2026-11-04T14:52:00Z",
+        "enabled_ledger": 108112129,
+        "enable_amendment_tx": "F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C"
+      },
+      "current_votes": {
+        "SingleAssetVault": 21,
+        "LendingProtocol": 19,
+        "LendingProtocolV1_1": 19,
+        "ConfidentialTransfer": 20,
+        "DynamicMPT": 16
+      },
+      "lending_activated": false,
+      "activation_countdown_entries": 0,
+      "limitations": [
+        "The cleanup amendment is active; this does not activate lending.",
+        "SingleAssetVault and both LendingProtocol amendments remain below 29 of 35.",
+        "The page has inconsistent header, roll-call and footer cache timestamps; retain the disagreement."
+      ]
+    },
+    {
+      "observation_id": "xrp_insights_etf_flow",
+      "period": "2026-11-02_to_2026-11-03",
+      "net_flow_xrp": -194875,
+      "approximate_usd_value": -249000,
+      "settled_days": 2,
+      "fund_universe": "six US spot XRP ETFs plus BITW XRP sleeve",
+      "total_xrp_holdings_on_2026_11_03": 1196405311,
+      "nov4_row_status": "provisional",
+      "method": "sum of day-over-day issuer-reported holdings changes; flow-excluded funds count as zero",
+      "limitations": [
+        "Issuer holdings changes are not same-day cash subscriptions or verified spot purchases.",
+        "The Nov 4 row is provisional and may be rewritten on re-settlement.",
+        "BITW is a multi-asset index fund; its XRP sleeve may change through index rebalancing."
+      ]
+    },
+    {
+      "observation_id": "cryptokeyhole_etf_flow",
+      "net_flow_xrp_2026_11_03": -3339,
+      "net_flow_xrp_2026_11_02": -3339,
+      "five_complete_session_net_flow_xrp_2026_10_28_to_2026_11_03": 6178705,
+      "total_xrp_holdings_on_2026_11_03": 1076812562,
+      "fund_universe": "XRP, XRPZ, XRPC and TOXR; four funds",
+      "nov4_status": "partial_one_of_four_funds",
+      "page_updated_at_utc": "2026-11-05T02:44:00Z",
+      "limitations": [
+        "The Nov 4 row contains only one of four issuer files.",
+        "This universe excludes GXRP, XRPR and BITW.",
+        "Flows include issuer-reported holdings changes and may include fees or staking rewards where applicable."
+      ]
+    },
+    {
+      "observation_id": "alpha_finance_etf_flow",
+      "nov4_net_flow_usd": 0,
+      "last_seven_sessions_net_flow_usd": 4800000,
+      "last_seven_sessions_period": "2026-10-24_to_2026-11-04",
+      "thirty_session_net_flow_usd": 78900000,
+      "cumulative_net_inflow_usd": 1730000000,
+      "fund_universe": "five funds: XRP, XRPZ, XRPC, GXRP and TOXR",
+      "holdings_and_aum_published": false,
+      "method": "flow series only",
+      "limitations": [
+        "USD flow series is not directly comparable with XRP-unit holdings deltas.",
+        "The dashboard says fund holdings and AUM are not published.",
+        "The displayed 0 on Nov 4 is not evidence of no underlying secondary-market trading."
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "XRP spot reference",
+      "observations": [
+        "Kraken last 1.30546 USD; retrieved near 03:01 UTC with no exchange timestamp.",
+        "XRPL Dashboard page header 1.3066 USD as of 02:59 UTC."
+      ],
+      "resolution": "Do not call this an arbitrage spread. The source timestamps and price methodologies are not synchronized."
+    },
+    {
+      "topic": "ETF flows",
+      "observations": [
+        "XRP Insights: -194875 XRP over Nov 2-3 across six spot funds plus BITW.",
+        "CryptoKeyhole: -3339 XRP on Nov 2 and -3339 XRP on Nov 3 across four funds; Nov 4 partial 1/4.",
+        "Alpha Finance: $0 on Nov 4 across five funds; +$4.8M over Oct 24-Nov 4 and +$78.9M over 30 sessions."
+      ],
+      "resolution": "Different fund universes, units, dates, provisional states and methodologies. Do not average or attribute the gap to one fund without primary issuer-file reconciliation."
+    },
+    {
+      "topic": "XRPL amendment timestamps",
+      "observations": [
+        "Header shows ledger 108122913 at 02:59 UTC.",
+        "Validator roll call shows ledger 108122879 at 02:57 UTC.",
+        "Footer reports a 02:51 UTC fetch and 488.3 seconds of cache age."
+      ],
+      "resolution": "Preserve all three timestamps; do not assert a single exact page freshness time."
+    },
+    {
+      "topic": "Derivatives freshness",
+      "observations": [
+        "Binance premiumIndex response time is 02:25:56 UTC.",
+        "Capture time is 03:01:31 UTC."
+      ],
+      "resolution": "The 35m35s-old funding/mark snapshot is not synchronized with Kraken and is not suitable for a short-horizon feature."
+    }
+  ],
+  "competing_hypotheses": [
+    "ETF net flows may be too small relative to spot turnover to explain the observed price path over this window.",
+    "The aggregator flow disagreement may be driven by excluded funds, issuer publication timing, provisional rows, indirect ETP exposure and methodology rather than a single erroneous provider.",
+    "Positive Binance lastFundingRate could indicate a long-side carry premium, but the response is stale and no cross-venue confirmation or open-interest change was captured.",
+    "fixCleanup3_4_0 is a technical ledger-safety amendment; it is not evidence of a new XRP demand source. Native lending remains inactive because its required amendments are below threshold."
+  ],
+  "disconfirming_evidence": [
+    "No synchronized multi-venue order-book depth was captured.",
+    "No exchange-wallet flow, ETF cash creation/redemption file, collateral utilization or verified institutional XRP purchase was captured.",
+    "No evidence connects the current ETF flow readings to a causal or predictive XRP return effect.",
+    "No validated historical feature dataset or out-of-sample evaluation supports a directional forecast."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "next_required_work": [
+    "Capture raw HTTP response bytes and headers directly from each provider; compute SHA-256 over original bytes.",
+    "Anchor capture times independently and preserve provider timestamps separately from retrieval times.",
+    "Reconcile ETF flows against each issuer's own holdings files, fund universe, direct versus indirect XRP exposure, fees and settlement semantics.",
+    "Capture synchronized venue depth, spot candles, derivatives open interest and funding with verified intervals.",
+    "Keep all observations ineligible until the raw-receipt and timestamp requirements pass."
+  ]
+}
