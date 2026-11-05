@@ -45,6 +45,7 @@ def test_executor_uses_argv_and_disables_the_shell(monkeypatch, tmp_path):
         "git status --short; touch /tmp/barrot-shell-injection",
         "find . -maxdepth 2 -type f -exec touch /tmp/barrot-shell-injection \\;",
         "pytest -p arbitrary_plugin tests/test_executor_safety.py",
+        "grep -RIn --exclude-dir=.git -- secret .",
         "cat ../../etc/passwd",
         "sed -i 's/a/b/' README.md",
     ],
