@@ -214,7 +214,24 @@
     "xrp_distributed_for_sponsor_fee": -59982.494915,
     "closing_xrp_at_2026_06_30": 55035728.016985,
     "reconciliation_residual_xrp": -2.235e-8,
-    "interpretation": "The SEC filing establishes substantial actual creations and redemptions in XRP units for the six-month period. These quarter-to-date totals are not daily net ETF flows and do not identify the timing or venue of market purchases."
+    "interpretation": "The SEC filing establishes substantial actual creations and redemptions in XRP units for the six-month period. These quarter-to-date totals are not daily net ETF flows and do not identify the timing or venue of market purchases.",
+    "creation_redemption_mechanics": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2037427/000203742726000007/ck0002037427-20260630.htm",
+      "source_period_end": "2026-06-30",
+      "source_filed_date": "2026-08-04",
+      "authorized_participant_order_type_as_of_report_date": "cash_orders_only",
+      "in_kind_creations_redemptions_permitted": false,
+      "accounting_basis": "trade_date",
+      "xrp_receivable_payable_settlement_window_max_business_days": 2,
+      "sponsor_fee_accrual": "daily_usd",
+      "sponsor_fee_payment": "xrp",
+      "implications": [
+        "Underlying XRP-unit contributions and redemptions are not themselves USD cash-flow figures.",
+        "Trade-date accounting and a settlement window of up to two business days require separate order, trade, receivable/payable and transfer timestamps.",
+        "Sponsor fees accrue daily in USD and are payable in XRP, so holdings can decline without an investor redemption.",
+        "Do not interpret a daily holdings delta as same-day net cash flow or spot-market buying without the order and settlement records."
+      ]
+    }
   },
   "data_quality": {
     "source_byte_hashes_verified": false,
@@ -222,7 +239,8 @@
     "synchronized_per_fund_vintages": false,
     "source_independence_note": "Both dashboards derive from issuer holdings; their aggregate outputs are not independent issuer evidence. The SEC filing is the primary quarter-end anchor for GXRP; REX Shares is the primary issuer source for its October 1 holdings composition.",
     "model_eligibility": "NONE",
-    "reason": "Rendered aggregate pages, different fund universes, provisional settlement and missing per-fund source vintages do not meet point-in-time feature admission."
+    "reason": "Rendered aggregate pages, different fund universes, provisional settlement and missing per-fund source vintages do not meet point-in-time feature admission.",
+    "cash_order_and_settlement_semantics_verified_from_primary_sec_filing": true
   },
   "competing_hypotheses": [
     {
