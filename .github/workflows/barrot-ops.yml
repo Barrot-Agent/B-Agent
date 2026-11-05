@@ -11,6 +11,10 @@ on:
           - NO
           - YES
         default: NO
+      expected_source_sha:
+        description: "Expected exact main commit approved for this external operations run"
+        required: true
+        type: string
 permissions:
   contents: read
 
@@ -20,10 +24,27 @@ concurrency:
 
 jobs:
   sync-platforms:
-    if: ${{ inputs.confirm_external_change == 'YES' }}
+    if: ${{ inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Verify exact approved main commit
+        env:
+          EXPECTED_SOURCE_SHA: ${{ inputs.expected_source_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::Dispatch from main is required"; exit 1; }
+          [[ "$EXPECTED_SOURCE_SHA" =~ ^[0-9a-fA-F]{40}$ ]] || { echo "::error::A full main SHA is required"; exit 1; }
+          git fetch --no-tags --depth=1 origin main
+          actual="$(git rev-parse HEAD)"
+          current="$(git rev-parse FETCH_HEAD)"
+          [[ "$actual" == "$EXPECTED_SOURCE_SHA" && "$current" == "$EXPECTED_SOURCE_SHA" ]] || { echo "::error::Main differs from the approved SHA"; exit 1; }
 
       # Hugging Face deployment is owned by sync-huggingface.yml.
       # Do not push the GitHub repository's main branch directly to the Space:
