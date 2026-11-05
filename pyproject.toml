@@ -68,5 +68,5 @@ data = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["barrot_agent", "barrot_agent.*", "data"]
+include = ["barrot_agent", "barrot_agent.*", "data", "directive_platform", "directive_platform.*"]
 namespaces = false
