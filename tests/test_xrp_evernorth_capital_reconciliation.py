@@ -98,3 +98,50 @@ def test_sec_excerpt_hashes_are_labeled_as_rendered_not_raw_receipts():
         assert source["raw_capture_status"] == "web_rendered_excerpt_only"
         assert source["raw_http_bytes_sha256"] is None
         assert len(source["rendered_excerpt_sha256"]) == 64
+
+
+def test_evernorth_custody_and_coinbase_valuation_roles_are_distinguished():
+    document = load_artifact()
+    relationships = document["custody_and_relationships"]
+
+    custody = relationships["evernorth_xrp_custody"]
+    assert custody["custodian"] == "BitGo Bank & Trust, National Association"
+    assert "100% of its XRP" in custody["status_as_of_prospectus"]
+    assert custody["insurance"]["dedicated_to_evernorth"] is False
+    assert custody["insurance"]["shared_among_bitgo_clients"] is True
+    assert custody["insurance"]["stated_coverage_as_percent_of_evernorth_xrp_value_as_of_2026_10_09"] == 36.9
+
+    coinbase = relationships["coinbase_relationship"]
+    assert coinbase["role"].startswith("principal market")
+    assert coinbase["custodian"] is False
+    assert coinbase["prime_broker"] is False
+    assert coinbase["direct_execution_or_custody_contract_disclosed_in_this_prospectus"] is False
+
+
+def test_sbi_holdings_entities_are_not_regional_sbic_companies():
+    sbi = load_artifact()["custody_and_relationships"]["sbi_relationship"]
+
+    assert sbi["parent_identity"] == "SBI Holdings, Inc."
+    assert len(sbi["issuer_defined_controlled_stockholders"]) == 4
+    assert sbi["class_a_shares_disclosed_as_held_by_sbi_stockholders"] == 9_431_914
+    assert sbi["class_c_shares_issued_at_2026_10_09_close_to_certain_sbi_affiliates"] == 2_359_038
+    assert sbi["ownership_limit_percent"] == 39.9
+    assert sbi["limit_is_not_verified_exact_current_ownership"] is True
+    assert sbi["regional_sbic_east_central_west_are_distinct_from_sbi_holdings"] is True
+
+
+def test_ripple_equity_in_kind_contributions_and_related_party_debt_are_separate():
+    ripple = load_artifact()["custody_and_relationships"]["ripple_relationship"]
+
+    assert ripple["ripple_xrp_contribution_to_pathfinder"] == 126_791_458
+    assert ripple["ripple_affiliate_xrp_subscription"] == 50_000_000
+    assert ripple["ripple_class_a_shares_issued_at_close"] == 1_678_382
+    assert ripple["ripple_pathfinder_units_issued_at_close"] == 16_461_545
+    assert ripple["combined_ripple_group_ownership_limit_percent"] == 9.9
+
+    credit = ripple["related_party_credit_facility"]
+    assert credit["limit_usd"] == 10_000_000
+    assert credit["drawn_usd_as_of_2026_10_07"] == 9_700_000
+    assert credit["classification"] == "related_party_debt_not_equity_and_not_eloc_proceeds"
+    assert credit["repayment_status"] == "not_verified_in_this_capture"
+    assert ripple["governance_and_conflicts"]["issuer_disclosed_potential_conflicts"] is True
