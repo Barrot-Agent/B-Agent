@@ -65,8 +65,20 @@ show_missing = true
 
 [tool.setuptools.package-data]
 barrot_agent = ["data/missions/*.json"]
+data = [
+    "merge_conflict_unified.json",
+    "millennium_problems_unified.json",
+    "character_capabilities_unified.json",
+    "longevity_unified.json",
+    "biomarker_tracking.json",
+    "reprogramming_protocols.json",
+    "integration_report.json",
+    "mmi_monetization_unified.json",
+    "research/anthropic_fermats_last_theorem_bundle.json",
+    "research/navier_stokes_research_bundle.json",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["barrot_agent", "barrot_agent.*"]
+include = ["barrot_agent", "barrot_agent.*", "data"]
 namespaces = false
