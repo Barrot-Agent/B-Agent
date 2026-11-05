@@ -94,3 +94,12 @@ def test_autonomous_checkpoint_size_is_bounded(tmp_path):
     store.MAX_CHECKPOINT_BYTES = 128
     with pytest.raises(ValueError, match="size limit"):
         store.save("large-task", {"history": [{"output": "x" * 500}]})
+def test_autonomous_history_is_bounded_with_archive_digest(tmp_path):
+    store = AutonomousTaskStore(tmp_path)
+    state = {"history": [{"attempt": index} for index in range(1, 61)]}
+    store.save("long-task", state)
+    loaded = store.load("long-task")
+    assert len(loaded["history"]) == store.MAX_HISTORY_ITEMS
+    assert loaded["history_archived_count"] == 10
+    assert len(loaded["history_archive_digest"]) == 64
+    assert loaded["history"][0]["attempt"] == 11
