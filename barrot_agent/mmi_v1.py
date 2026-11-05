@@ -15,6 +15,10 @@ except ImportError:  # pragma: no cover - non-POSIX fallback is single-writer on
     fcntl = None
 
 from barrot_agent.evolution.source_independence import canonical_publisher_group
+from .structural_analysis import (
+    ConstraintResult, EvidenceStage, InvariantResult, RelationType,
+    StructuralAnalyzer, StructuralInput, StructuralRelation, VerificationStatus,
+)
 
 
 class ParseState(str, Enum):
@@ -873,6 +877,98 @@ class MMIEngine:
             })
 
         return report
+
+    def analyze_structure(self, record: MMIRecord, analyzer: StructuralAnalyzer | None = None):
+        """Build and persist an evidence-aware structural signature for an MMI record.
+
+        This records deterministic descriptors and provenance relationships; it
+        does not claim mathematical equivalence or upgrade verification status.
+        """
+        analyzer = analyzer or StructuralAnalyzer()
+        validation_errors = record.validate()
+        dataset_digest = sha256(
+            StructuralAnalyzer._canonical(record.dataset).encode("utf-8")
+        ).hexdigest()
+        constraints = (
+            ConstraintResult(
+                name="mmi_record_validation",
+                status="violated" if validation_errors else "satisfied",
+                evidence_stage=EvidenceStage.COMPUTED,
+                verification=VerificationStatus.UNVERIFIED,
+                detail="; ".join(validation_errors),
+            ),
+        )
+        invariants = (
+            InvariantResult("component_count", len(record.component_map)),
+            InvariantResult("source_count", len(record.source_graph)),
+            InvariantResult("evidence_count", len(record.evidence)),
+            InvariantResult(
+                "maximum_component_depth",
+                max((item.depth for item in record.component_map), default=0),
+            ),
+            InvariantResult(
+                "maximum_source_depth",
+                max((item.depth for item in record.source_graph), default=0),
+            ),
+        )
+        relations = tuple(
+            StructuralRelation(
+                source_id=item.component_id,
+                target_id=item.parent_id,
+                relation=RelationType.DERIVED_FROM,
+                criterion=item.relationship,
+                evidence_stage=EvidenceStage.OBSERVED,
+                verification=VerificationStatus.UNVERIFIED,
+            )
+            for item in record.component_map
+            if item.parent_id
+        ) + tuple(
+            StructuralRelation(
+                source_id=evidence.evidence_id,
+                target_id=source_id,
+                relation=RelationType.DERIVED_FROM,
+                criterion="evidence source linkage",
+                evidence_stage=EvidenceStage.OBSERVED,
+                verification=VerificationStatus.UNVERIFIED,
+            )
+            for evidence in record.evidence
+            for source_id in evidence.source_ids
+        )
+        provenance = {
+            "ingestion_id": record.ingestion_id,
+            "dataset_sha256": dataset_digest,
+            "sources": [
+                {
+                    "source_id": source.source_id,
+                    "uri": source.uri,
+                    "content_hash": source.content_hash,
+                    "independence_group": source.independence_group,
+                }
+                for source in record.source_graph
+            ],
+        }
+        signature = analyzer.analyze(
+            StructuralInput(
+                representation={
+                    "ingestion_id": record.ingestion_id,
+                    "dataset_sha256": dataset_digest,
+                },
+                representation_type="mmi_record",
+                provenance=provenance,
+                constraints=constraints,
+                invariants=invariants,
+                relations=relations,
+            )
+        )
+        record.structural_signature = signature.to_dict()
+        if self.ledger is not None:
+            self.ledger.append({
+                "event": "MMI_STRUCTURAL_SIGNATURE_RECORDED",
+                "ingestion_id": record.ingestion_id,
+                "identity_hash": signature.identity_hash,
+                "valid_region": signature.valid_region,
+            })
+        return signature
 
     def serialize(self, record: MMIRecord) -> dict:
         return asdict(record)
