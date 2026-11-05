@@ -18,13 +18,30 @@ SOURCE_PATH = "research/xrp_intelligence/source.json"
 OVERLAY_PATH = "research/xrp_intelligence/overlay.json"
 CUTOFF = "2026-11-04T12:00:00.000000Z"
 CAPTURED = "2026-11-04T12:01:00.000000Z"
-RAW_RECEIPT_ID = "receipt:primary-provider:2026-11-04T11:59:02Z"
 RAW_RECEIPT_BYTES = b'{"asset":"XRP","price_usd":1.25,"venue":"primary-provider"}'
 RAW_RECEIPT_SHA256 = hashlib.sha256(RAW_RECEIPT_BYTES).hexdigest()
 
 
 def _bytes(value):
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    return json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+
+
+RAW_RECEIPT_PAYLOAD = {
+    "source_id": "primary-provider",
+    "source_uri": "https://example.com/xrp",
+    "captured_at_utc": "2026-11-04T11:59:02Z",
+    "source_data_as_of_utc": "2026-11-04T11:59:00Z",
+    "source_http_date": None,
+    "raw_content_sha256": RAW_RECEIPT_SHA256,
+    "payload_size_bytes": len(RAW_RECEIPT_BYTES),
+    "raw_payload_path": f"raw/sha256/{RAW_RECEIPT_SHA256}.json",
+    "model_eligible_source": True,
+    "raw_only_reason": "",
+}
+RAW_RECEIPT_ID = hashlib.sha256(_bytes(RAW_RECEIPT_PAYLOAD)).hexdigest()
+RAW_RECEIPT = {**RAW_RECEIPT_PAYLOAD, "receipt_id": RAW_RECEIPT_ID}
 
 
 def _documents(corrections=None):
@@ -36,6 +53,7 @@ def _documents(corrections=None):
             {
                 "source_id": "primary-provider",
                 "raw_receipt_id": RAW_RECEIPT_ID,
+                "raw_receipt": RAW_RECEIPT,
                 "raw_content_sha256": RAW_RECEIPT_SHA256,
                 "raw_capture_status": "byte_complete",
                 "independence_group": "primary-provider",
@@ -412,3 +430,46 @@ def test_raw_receipt_bytes_are_required_and_must_match_sha256():
             overlay_bytes,
             raw_receipt_bytes={RAW_RECEIPT_ID: b'{"asset":"XRP","price_usd":0.0}'},
         )
+
+
+
+def test_raw_receipt_id_is_recomputed_from_complete_canonical_metadata():
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    source["source_registry"][0]["raw_receipt"]["receipt_id"] = "0" * 64
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
+
+    with pytest.raises(ResearchEligibilityError, match="canonical receipt metadata"):
+        _build(records, source_bytes, overlay, overlay_bytes)
+
+
+def test_raw_receipt_registry_metadata_must_match_canonical_receipt():
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    source["source_registry"][0]["source_uri"] = "https://example.com/other"
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
+
+    with pytest.raises(ResearchEligibilityError, match="source_uri does not match its canonical receipt"):
+        _build(records, source_bytes, overlay, overlay_bytes)
+
+
+def test_raw_receipt_path_must_be_content_addressed_to_verified_payload():
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    receipt = source["source_registry"][0]["raw_receipt"]
+    receipt_payload = {key: value for key, value in receipt.items() if key != "receipt_id"}
+    receipt_payload["raw_payload_path"] = "raw/sha256/" + ("0" * 64) + ".json"
+    receipt["raw_payload_path"] = receipt_payload["raw_payload_path"]
+    receipt_id = hashlib.sha256(_bytes(receipt_payload)).hexdigest()
+    receipt["receipt_id"] = receipt_id
+    source["source_registry"][0]["raw_receipt_id"] = receipt_id
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
+
+    with pytest.raises(ResearchEligibilityError, match="not bound to the content-addressed payload"):
+        _build(records, source_bytes, overlay, overlay_bytes)
