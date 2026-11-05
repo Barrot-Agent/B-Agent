@@ -15,6 +15,10 @@ def test_primary_issuer_holdings_keep_direct_xrp_and_indirect_etp_units_separate
     assert data["cross_fund_reconciliation"]["direct_xrp_units_subtotal"] == 500090045.8313
     assert data["cross_fund_reconciliation"]["indirect_etp_shares_added_to_xrp_units"] is False
     assert data["cross_fund_reconciliation"]["net_flow_inference"] == "PROHIBITED"
+    rex = funds["rex_osprey_xrpr"]["strategy_exposure_disclosure"]
+    assert rex["derivative_use_possible"] is True
+    assert rex["direct_xrp_quantity_is_not_total_economic_exposure"] is True
+    assert data["cross_fund_reconciliation"]["economic_exposure_total_inference"] == "PROHIBITED"
 
 
 def test_custody_roles_are_fund_specific_and_not_execution_claims():
