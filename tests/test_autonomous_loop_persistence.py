@@ -98,8 +98,12 @@ def test_autonomous_history_is_bounded_with_archive_digest(tmp_path):
     store = AutonomousTaskStore(tmp_path)
     state = {"history": [{"attempt": index} for index in range(1, 61)]}
     store.save("long-task", state)
+    first_digest = state["history_archive_digest"]
+    state["history"].append({"attempt": 61})
+    store.save("long-task", state)
     loaded = store.load("long-task")
     assert len(loaded["history"]) == store.MAX_HISTORY_ITEMS
-    assert loaded["history_archived_count"] == 10
+    assert loaded["history_archived_count"] == 11
     assert len(loaded["history_archive_digest"]) == 64
-    assert loaded["history"][0]["attempt"] == 11
+    assert loaded["history_archive_digest"] != first_digest
+    assert loaded["history"][0]["attempt"] == 12
