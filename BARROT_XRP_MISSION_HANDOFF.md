@@ -3794,3 +3794,82 @@ Recorded: 2026-11-05T06:48Z–06:51Z
 
 **Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.**
 This Run 31 handoff update is a documentation-only commit on the existing #1640 branch; its new head requires its own exact-head CI, dependency audit and fail-closed verification.
+
+### Run 32 — raw parser-failure receipt preservation, current institutional state and exact-head verification
+Recorded: 2026-11-05T07:39Z
+
+#### Repository state and integration inventory
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main write or merge occurred.
+- The current main tree was fetched recursively: 1,403 tree entries, 1,298 files, 493 Python files, 86 workflow files; response was not truncated.
+- Open-PR inventory was fetched across four API pages: **370 open PRs, 354 drafts, 16 non-drafts**.
+- PR #1640 current code/test head before this handoff update: `c757d7e66f4fd72bf2eb1fcbf12b71a3983750e8`; 207 commits ahead, 0 behind; 84 changed files; GitHub reports mergeable and non-draft.
+- PR #1643 current head: `311ae6f71b42cc1eceef7d05ff391ce8ae92f546`; 150 commits ahead, 0 behind; 124 changed files; GitHub reports mergeable and non-draft.
+- The two integration branches have **zero changed-path intersection** (84 versus 124 files). Keep one V3/core integration workstream (#1640) and one append-only XRP research workstream (#1643).
+
+#### Bounded ingestion correction executed on existing #1640 branch
+- Commit `ca67c84820718413884d22662802e0e66179b65f` changes `barrot_agent/evolution/xrp_public_ingestion.py`.
+- Commit `c757d7e66f4fd72bf2eb1fcbf12b71a3983750e8` adds `test_parser_failure_preserves_exact_raw_bytes_as_ineligible_receipt` to `tests/test_xrp_public_ingestion.py`.
+- Previously, if an HTTP response was successfully captured but its parser or schema validation failed, `run_ingestion` recorded only the exception type and discarded the captured response bytes. That violated the raw-evidence preservation rule.
+- Now, when a response mapping contains non-empty byte payloads and downstream parsing/validation fails, Barrot writes those exact bytes to the content-addressed archive, appends a receipt with capture time and source URI, leaves `source_data_as_of_utc=null` rather than inventing a timestamp, marks the source raw-only/model-ineligible, records `source_processing_failure:<exception type>`, and links the receipt ID and SHA-256 into both failure and raw-only manifests.
+- A failure to write/verify the receipt remains outside the recoverable source-processing path and fails the run closed. A fetch failure without captured bytes is still recorded as a source failure; no bytes are invented.
+- The exact-head full-suite log explicitly reports the new regression test as PASSED.
+
+#### Exact-head verification — PR #1640
+- Exact code/test head: `c757d7e66f4fd72bf2eb1fcbf12b71a3983750e8`.
+- Core suite [41988302066](https://github.com/Barrot-Agent/B-Agent/actions/runs/41988302066): **596 passed, 8 subtests passed**.
+- Full repository suite, same run: **901 passed, 8 subtests passed**; inclusive coverage **53.75%** (20,004 statements, 8,872 missed, 5,430 branches, 906 partial branches), above the 50% floor.
+- Wheel build and installed-wheel verification passed; the installed wheel loads Barrot V3, the XRP primary mission and canonical data assets.
+- Six-manifest strict dependency audit [41988301921](https://github.com/Barrot-Agent/B-Agent/actions/runs/41988301921) passed all six declarations with no known vulnerabilities. The audited sets are root runtime `requirements.txt`, development `requirements-dev.txt`, supplemental `requirements.tx`, Hugging Face Space `hf_space/requirements.txt`, legacy `legacy/requirements_legacy.txt`, and PEP 621 dependencies in `pyproject.toml` (15 dependencies materialized).
+- Fail-closed gate [41988302413](https://github.com/Barrot-Agent/B-Agent/actions/runs/41988302413) passed but its job explicitly says: “Automatic merge is intentionally disabled” and “This workflow does not approve, label, or merge pull requests.” This is not merge authorization.
+- Non-fatal warnings remain: setuptools deprecation for table-form `project.license`; package-discovery warnings for `barrot_agent.data.missions` and `data.research`; GitHub Actions cache is read-only after the configured cache budget was reached. Wheel verification and all tests still passed. These packaging warnings should be resolved in a separate bounded change after integration readiness; do not conflate them with a failed build.
+
+#### Exact-head verification — PR #1643
+- Exact head: `311ae6f71b42cc1eceef7d05ff391ce8ae92f546`.
+- Core suite: **495 passed, 8 subtests passed**.
+- Full repository suite [41986619277](https://github.com/Barrot-Agent/B-Agent/actions/runs/41986619277): **884 passed, 8 subtests passed**.
+- Fail-closed gate [41986619225](https://github.com/Barrot-Agent/B-Agent/actions/runs/41986619225) passed; automatic merging remains disabled.
+- No dependency manifest is changed by #1643. All six dependency-manifest blob SHAs on #1643 match current main exactly. No exact-head dependency-audit workflow ran on #1643; do not claim one. Obtain an exact-head audit or an explicitly equivalent reproducible security check after reconciling #1643 onto the post-#1640 main.
+
+#### New institutional findings already preserved on #1643
+- Dated artifact: `research/xrp_intelligence/20261105T071229Z-c2fo-instant-pay-rollout-and-capital-status.json`.
+- The October 27 BNY/Ripple primary announcement says BNY Digital Asset Custody now supports native XRP and RLUSD for eligible institutional clients. It does not disclose XRP-specific assets under custody, client count, new XRP purchases or XRP collateral balances. BNY-wide AUC/AUA is not XRP-specific custody.
+- BNY and Ripple describe exploring tokenized trade finance with C2FO, subject to client requirements. Direct RLUSD mint/redeem through BNY is an intended future capability subject to final BNY and regulatory approvals.
+- C2FO's current product page still displays a waitlist and says Instant Pay is launching with a limited rollout over the coming months; it is US-only at launch. The joint initiative names XRPL and RLUSD as the network/settlement asset. It does not establish XRP as bridge asset, principal settlement asset or collateral.
+- Participating capital-provider identities, funded amount, supplier count and production settlement volume are not disclosed. C2FO's more-than-$525B and Ripple's more-than-$520B claims refer to existing Early Pay programs, not Instant Pay deployment or XRP purchases. Preserve the $5B rounded lower-bound discrepancy; do not average.
+- The artifact is qualitative and `model_eligible=false`: no byte-complete raw HTTP captures, SHA-256 source receipts or independent timestamp anchors were recorded.
+- Primary-source cross-checks: [BNY October 27 announcement](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html) and [C2FO Instant Pay product page](https://c2fo.com/instant-pay/).
+
+#### Nine-platform coordination checkpoint
+- Dated artifact: `research/xrp_intelligence/20261105T072000Z-nine-platform-capability-authentication-map.json`.
+- Nine platforms are mapped: ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks.
+- Only the current ChatGPT session and its ChatGPT-to-GitHub repository connector are verified as a live authenticated path.
+- A one-off GitHub-hosted Copilot review event is documented. Its requested read-only review caused a separate test-only commit on the existing PR branch; the write side effect was preserved and inspected. This does not establish a persistent Copilot connection. Do not trigger @copilot review comments for read-only-only work until the workflow behavior/permissions are restricted.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as authenticated persistent data flows. Prior Hugging Face BUILD_ERROR and Databricks HTTP 403 remain recorded. No nine-platform collaboration is claimed.
+
+#### Main CI, branch protection and merge boundary
+- The latest push CI on unchanged main is [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459), success; the same main push triggered GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), success. Hourly Cross Analysis on main [41983228062](https://github.com/Barrot-Agent/B-Agent/actions/runs/41983228062) succeeded but is not a substitute for full main CI.
+- Repository metadata reports Pages enabled and auto-merge allowed. Main branch metadata reports `protected=true`; the detailed classic branch-protection endpoint returns HTTP 403. The only visible repository ruleset is “Fall Back” (ID 10863829), target branch, enforcement **disabled**. Required approval/check enforcement cannot be independently verified.
+- PR #1640 has 10 submitted reviews, all state `COMMENTED`; two self-authored comments say “Approved” but are not GitHub `APPROVED` reviews. Its 22 review threads are resolved; actual approving-review count is **zero**.
+- PR #1643 has 6 submitted reviews, all state `COMMENTED`; its 14 review threads are resolved; actual approving-review count is **zero**.
+- Both integration PRs are mergeable according to GitHub but neither has an approving review. The #1640 fail-closed gate intentionally disables merging. The Pages deployment side effect is still unresolved. **Do not merge either PR.**
+
+#### Backlog classification
+- **Active integration / blocked:** #1640 (V3/core/XRP prediction), #1643 (XRP research archive).
+- **Superseded exact ancestor, pending main verification:** #1642.
+- **Superseded dependency/action updates represented by #1640, pending main verification:** #1644–#1650. Their changed paths overlap #1640; #1640 carries the newer/equal intended versions: checkout v7, download-artifact v8, upload-artifact v7, pytest >=9.2.0, types-requests >=2.33.0.20261030, databricks-sdk >=0.158.0 and huggingface_hub >=2.4.0.
+- **Older dependency candidates superseded by #1640, pending exact closure after main verification:** #1254 and #1255 change the same legacy requirements file but carry older version floors.
+- **Overlapping source PRs to reconcile, not bulk-close:** #1317, #1318 and #1320. Preserve unique hunks until the merged successor is verified on main.
+- **Unique/unreviewed or partially unique:** #1651 (non-draft despite body text asking to keep it draft), #1615 (security), #1269 (geometry/rendering), and the other unique/stale-base drafts. The remaining 354 drafts were not all individually diff-reviewed in this run; preserve them as unique/unreviewed or blocked pending exact diff analysis.
+- No PR was closed. No source PR is to be closed until a successor is merged and its exact content is verified on main.
+
+#### Prediction readiness and next concrete actions
+- The current ingestion design has 18 registered public source endpoints and remains read-only; it is not on main and has not run as a main scheduled service. Raw and daily feature artifacts are retained 90 days; the SQLite cache is evictable. Indefinite durable object storage, independent timestamp anchoring and automatic rebuild from raw receipts remain absent.
+- The parser-failure receipt correction improves evidence preservation but does not solve durable storage or independent timestamping. The research correction overlay remains downgrade-only and is not wired into scheduled collector feature admission.
+- Historical coverage remains incomplete across exchange-wallet flows, ETF issuer vintages, collateral, custody, stablecoin mint/burn, payments, regulation, macro and geopolitics. Derivatives history is Binance USD-M XRPUSDT only; Coinbase/Binance order books remain raw-only.
+- The walk-forward evaluator is a historical baseline evaluator, not a trained predictive model. Calibration is diagnostic, drift monitoring and shadow evaluation are unfinished, and no independent evaluator signing key is configured. **No directional forecast issued; no forecast outcomes exist.**
+- Next: obtain an independent approving review; verify actual branch-protection requirements; resolve Pages deployment authorization; merge #1640 only if every condition passes, then fetch main again, verify merge SHA/files and run main CI. Reconcile #1643 onto the new main without rewriting history, rerun exact-head full CI, fail-closed gate and an exact-head dependency/security audit, then merge only when ready. Close only exact superseded source PRs after main verification.
+
+**Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.** No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+This Run 32 handoff is committed on the existing #1640 integration branch. The resulting documentation-only head requires its own exact-head full-suite CI, six-manifest dependency audit and fail-closed verification before that new head is described as verified.
+
