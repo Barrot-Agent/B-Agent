@@ -17,7 +17,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable, Mapping
 from urllib.parse import urlsplit
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
@@ -25,8 +25,8 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.4"
-PARSER_VERSION = "xrp-public-market-v3.4"
+ADAPTER_VERSION = "xrp-public-market-v3.5"
+PARSER_VERSION = "xrp-public-market-v3.5"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -67,6 +67,18 @@ XRPL_NODE_SOURCES = {
 
 class XRPIngestionError(ValueError):
     """A public market-data response cannot be safely ingested."""
+
+
+class _RejectPublicRedirectHandler(HTTPRedirectHandler):
+    """Reject redirects before urllib sends a request to the redirect target."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise XRPIngestionError("public fetch redirects are disabled")
+
+
+def _open_public_request(request: Request, *, timeout: int = 15):
+    """Open a request with redirects disabled at the transport layer."""
+    return build_opener(_RejectPublicRedirectHandler()).open(request, timeout=timeout)
 
 
 def _canonical(value: Any) -> str:
@@ -174,7 +186,7 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
         },
     )
     try:
-        with urlopen(request, timeout=15) as response:
+        with _open_public_request(request, timeout=15) as response:
             final_url = urlsplit(response.geturl())
             if final_url.scheme != "https" or final_url.hostname not in ALLOWED_HOSTS:
                 raise XRPIngestionError("public fetch redirected outside allowlisted HTTPS hosts")
@@ -207,7 +219,7 @@ def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
         },
     )
     try:
-        with urlopen(request, timeout=15) as response:
+        with _open_public_request(request, timeout=15) as response:
             final_url = urlsplit(response.geturl())
             if final_url.scheme != "https" or final_url.hostname not in ALLOWED_HOSTS:
                 raise XRPIngestionError("public fetch redirected outside allowlisted HTTPS hosts")
@@ -251,7 +263,7 @@ def fetch_public_rpc(source_id: str, url: str) -> dict[str, Any]:
         },
     )
     try:
-        with urlopen(request, timeout=15) as response:
+        with _open_public_request(request, timeout=15) as response:
             final_url = urlsplit(response.geturl())
             if final_url.scheme != "https" or final_url.hostname != config["host"]:
                 raise XRPIngestionError("XRPL RPC redirected outside its registered operator host")
@@ -297,9 +309,16 @@ class RawReceiptArchive:
         source_data_as_of_utc: str | None,
         model_eligible: bool,
         raw_only_reason: str = "",
+        source_http_date: str | None = None,
     ) -> dict[str, Any]:
         if not isinstance(raw_bytes, bytes) or not raw_bytes or len(raw_bytes) > MAX_RESPONSE_BYTES:
             raise XRPIngestionError("raw source payload must be non-empty bytes within the size limit")
+        if source_http_date is not None and (
+            not isinstance(source_http_date, str)
+            or len(source_http_date) > 128
+            or any(ord(character) < 32 for character in source_http_date)
+        ):
+            raise XRPIngestionError("source HTTP Date header must be a bounded printable string or None")
         digest = hashlib.sha256(raw_bytes).hexdigest()
         path = self.raw_root / f"{digest}.json"
         if path.exists():
@@ -322,6 +341,7 @@ class RawReceiptArchive:
             "source_uri": source_uri,
             "captured_at_utc": captured_at_utc,
             "source_data_as_of_utc": source_data_as_of_utc,
+            "source_http_date": source_http_date,
             "raw_content_sha256": digest,
             "payload_size_bytes": len(raw_bytes),
             "raw_payload_path": str(path.relative_to(self.root.parent)),
@@ -1603,6 +1623,7 @@ def run_ingestion(
             source_data_as_of_utc=source_as_of,
             model_eligible=source_eligible,
             raw_only_reason=reason,
+            source_http_date=response.get("http_date"),
         )
         receipts.append(receipt)
         records.extend(parsed_records)

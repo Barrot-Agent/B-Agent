@@ -16,6 +16,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     fetch_public_json,
     fetch_public_html,
     fetch_public_rpc,
+    _open_public_request,
     _default_public_fetcher,
     run_ingestion,
     ALLOWED_HOSTS,
@@ -186,21 +187,26 @@ def test_raw_receipt_archive_is_content_addressed_and_write_once(tmp_path):
         raw_bytes=raw,
         source_data_as_of_utc="2026-11-04T11:59:59.000000Z",
         model_eligible=True,
+        source_http_date="Thu, 05 Nov 2026 12:00:00 GMT",
     )
     path = tmp_path / first["raw_payload_path"]
     assert path.read_bytes() == raw
     assert first["raw_content_sha256"] == hashlib.sha256(raw).hexdigest()
+    assert first["source_http_date"] == "Thu, 05 Nov 2026 12:00:00 GMT"
     assert len(first["receipt_id"]) == 64
 
     second = archive.store(
         source_id="test",
         source_uri="https://api.binance.com/test",
-        captured_at_utc="2026-11-04T12:00:01.000000Z",
+        captured_at_utc="2026-11-04T12:00:00.000000Z",
         raw_bytes=raw,
         source_data_as_of_utc="2026-11-04T11:59:59.000000Z",
         model_eligible=True,
+        source_http_date="Thu, 05 Nov 2026 12:00:01 GMT",
     )
     assert second["raw_content_sha256"] == first["raw_content_sha256"]
+    assert second["receipt_id"] != first["receipt_id"]
+    assert second["source_http_date"] == "Thu, 05 Nov 2026 12:00:01 GMT"
     assert len(archive.receipts_path.read_text(encoding="utf-8").splitlines()) == 2
 
     path.write_bytes(b'{"x":2}')
@@ -256,8 +262,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.4"
-    assert summary["parser_version"] == "xrp-public-market-v3.4"
+    assert summary["adapter_version"] == "xrp-public-market-v3.5"
+    assert summary["parser_version"] == "xrp-public-market-v3.5"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -489,10 +495,10 @@ def test_public_fetch_rejects_redirects_outside_the_https_allowlist(monkeypatch)
             raise AssertionError("body must not be read after an untrusted redirect")
 
     monkeypatch.setattr(
-        "barrot_agent.evolution.xrp_public_ingestion.urlopen",
-        lambda *_args, **_kwargs: RedirectedResponse(),
+        "barrot_agent.evolution.xrp_public_ingestion._open_public_request",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(XRPIngestionError("public fetch redirects are disabled")),
     )
-    with pytest.raises(XRPIngestionError, match="redirected outside allowlisted"):
+    with pytest.raises(XRPIngestionError, match="redirects are disabled"):
         fetch_public_json(
             "xrp_etf_flows_aggregator",
             "https://xrp-insights.com/data/xrp-etf-flows.json",
@@ -578,8 +584,8 @@ def test_public_html_fetch_captures_allowlisted_issuer_bytes(monkeypatch):
             return b"<html>REX-Osprey XRPR CoinShares XRP ETP As of</html>"
 
     monkeypatch.setattr(
-        "barrot_agent.evolution.xrp_public_ingestion.urlopen",
-        lambda *_args, **_kwargs: HtmlResponse(),
+        "barrot_agent.evolution.xrp_public_ingestion._open_public_request",
+        lambda request, timeout: HtmlResponse(),
     )
     result = fetch_public_html("xrp_etf_xrpr_issuer_page", dict(ENDPOINTS)["xrp_etf_xrpr_issuer_page"])
     assert result["raw_bytes"].startswith(b"<html>")
@@ -604,10 +610,10 @@ def test_public_html_fetch_rejects_untrusted_redirect(monkeypatch):
             raise AssertionError("body must not be read after an untrusted redirect")
 
     monkeypatch.setattr(
-        "barrot_agent.evolution.xrp_public_ingestion.urlopen",
-        lambda *_args, **_kwargs: RedirectedHtmlResponse(),
+        "barrot_agent.evolution.xrp_public_ingestion._open_public_request",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(XRPIngestionError("public fetch redirects are disabled")),
     )
-    with pytest.raises(XRPIngestionError, match="redirected outside allowlisted"):
+    with pytest.raises(XRPIngestionError, match="redirects are disabled"):
         fetch_public_html("xrp_etf_xrpr_issuer_page", dict(ENDPOINTS)["xrp_etf_xrpr_issuer_page"])
 
 
@@ -831,7 +837,7 @@ def test_xrpl_rpc_fetch_is_fixed_read_only_and_redirect_bound(monkeypatch):
         seen["timeout"] = timeout
         return FakeResponse()
 
-    monkeypatch.setattr(ingestion, "urlopen", fake_urlopen)
+    monkeypatch.setattr(ingestion, "_open_public_request", fake_urlopen)
     result = fetch_public_rpc(source_id, url)
     assert seen["method"] == "POST"
     assert seen["url"] == url
@@ -843,7 +849,7 @@ def test_xrpl_rpc_fetch_is_fixed_read_only_and_redirect_bound(monkeypatch):
         def geturl(self):
             return "https://example.invalid/"
 
-    monkeypatch.setattr(ingestion, "urlopen", lambda *_args, **_kwargs: RedirectResponse())
+    monkeypatch.setattr(ingestion, "_open_public_request", lambda *_args, **_kwargs: RedirectResponse())
     with pytest.raises(XRPIngestionError, match="redirected outside"):
         fetch_public_rpc(source_id, url)
 
@@ -869,3 +875,52 @@ def test_xrpl_server_info_with_stale_validated_ledger_is_not_model_eligible():
     assert reason == "validated_ledger_age_exceeds_300_seconds"
     assert records and all(item["model_eligible"] is False for item in records)
     assert all(item["quality_status"] == "stale" for item in records)
+
+
+def test_public_request_rejects_redirect_before_target_receives_request():
+    import threading
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+    from urllib.request import Request
+
+    target_hits = []
+
+    class TargetHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            target_hits.append(self.path)
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"unexpected target request")
+
+        def log_message(self, *_args):
+            pass
+
+    target_server = ThreadingHTTPServer(("127.0.0.1", 0), TargetHandler)
+    target_thread = threading.Thread(target=target_server.serve_forever, daemon=True)
+    target_thread.start()
+    target_url = f"http://127.0.0.1:{target_server.server_address[1]}/target"
+
+    class RedirectHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            self.send_response(302)
+            self.send_header("Location", target_url)
+            self.end_headers()
+
+        def log_message(self, *_args):
+            pass
+
+    redirect_server = ThreadingHTTPServer(("127.0.0.1", 0), RedirectHandler)
+    redirect_thread = threading.Thread(target=redirect_server.serve_forever, daemon=True)
+    redirect_thread.start()
+    redirect_url = f"http://127.0.0.1:{redirect_server.server_address[1]}/redirect"
+
+    try:
+        with pytest.raises(XRPIngestionError, match="redirects are disabled"):
+            _open_public_request(Request(redirect_url), timeout=5)
+        assert target_hits == []
+    finally:
+        redirect_server.shutdown()
+        target_server.shutdown()
+        redirect_server.server_close()
+        target_server.server_close()
+        redirect_thread.join(timeout=5)
+        target_thread.join(timeout=5)
