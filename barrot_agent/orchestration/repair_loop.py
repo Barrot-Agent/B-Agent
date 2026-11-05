@@ -204,20 +204,29 @@ Rules:
                 if not result.success:
                     break
 
-            verification = self.actions.executor.run(
-                verification_command
-            )
-
-            record["verification"] = {
-                "command": verification.command,
-                "success": verification.success,
-                "stdout": verification.stdout[-4000:],
-                "stderr": verification.stderr[-4000:],
-            }
+            try:
+                verification = self.actions.executor.run(
+                    verification_command
+                )
+                verification_success = verification.success
+                record["verification"] = {
+                    "command": verification.command,
+                    "success": verification.success,
+                    "stdout": verification.stdout[-4000:],
+                    "stderr": verification.stderr[-4000:],
+                }
+            except Exception as exc:
+                verification_success = False
+                record["verification"] = {
+                    "command": str(verification_command),
+                    "success": False,
+                    "stdout": "",
+                    "stderr": str(exc),
+                }
 
             outcome = self.outcome_evaluator.evaluate(
                 results=record["results"],
-                verification_success=verification.success,
+                verification_success=verification_success,
             )
             record["outcome"] = {
                 "success": outcome.success,
