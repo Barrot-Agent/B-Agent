@@ -26,7 +26,7 @@ def test_autonomous_loop_resumes_checkpoint_after_process_restart(tmp_path):
     assert paused.attempts == 1
 
     plan = json.dumps({"analysis": "inspect", "commands": ["pwd"]})
-    second = BarrotAutonomousLoop(SequenceBrain([plan]), workspace=tmp_path, max_attempts=1)
+    second = BarrotAutonomousLoop(SequenceBrain([plan]), workspace=tmp_path, max_attempts=1, goal_verifier=lambda goal, record: {"success": True, "evidence": {"verified_goal": goal}})
     second.executor.run = lambda command: ExecutionResult(command, True, "workspace", "", 0)
     second.verifier.verify_python = lambda: VerificationResult(True, [{"success": True}])
     completed = second.run(goal, task_id=task_id)
@@ -49,7 +49,7 @@ def test_autonomous_task_id_is_bound_to_original_goal(tmp_path):
 
 def test_autonomous_checkpoint_redacts_common_credentials(tmp_path):
     plan = json.dumps({"analysis": "inspect", "commands": ["pwd"]})
-    loop = BarrotAutonomousLoop(SequenceBrain([plan]), workspace=tmp_path, max_attempts=1)
+    loop = BarrotAutonomousLoop(SequenceBrain([plan]), workspace=tmp_path, max_attempts=1, goal_verifier=lambda goal, record: {"success": True, "evidence": {"verified": True}})
     loop.executor.run = lambda command: ExecutionResult(
         command, True, "api_key=super-secret-value ghp_abcdefghijklmnopqrstuvwxyz123456", "", 0
     )
@@ -70,3 +70,13 @@ def test_autonomous_task_store_rejects_unsafe_ids_and_corrupt_state(tmp_path):
     path.write_text("{not json", encoding="utf-8")
     with pytest.raises(ValueError, match="unreadable"):
         store.load("corrupt-task")
+
+def test_compile_success_without_goal_verifier_does_not_complete_task(tmp_path):
+    plan = json.dumps({"analysis": "inspect", "commands": ["pwd"]})
+    loop = BarrotAutonomousLoop(SequenceBrain([plan]), workspace=tmp_path, max_attempts=1)
+    loop.executor.run = lambda command: ExecutionResult(command, True, "workspace", "", 0)
+    loop.verifier.verify_python = lambda: VerificationResult(True, [{"success": True}])
+    result = loop.run("perform a task", task_id="needs-goal-proof")
+    assert not result.success
+    assert result.status == "awaiting_goal_verification"
+    assert result.history[0]["goal_verification"]["status"] == "unavailable"
