@@ -584,3 +584,60 @@ def test_revision_cannot_supersede_a_different_event_or_market_identity(identity
     )
     with pytest.raises(FeatureSnapshotError, match="same feature and asset at the same event time"):
         build_feature_snapshot([original, revised], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED)
+
+
+def test_historical_feature_store_reconstructs_revisions_at_actual_store_receipt_time(tmp_path):
+    from datetime import datetime, timezone
+
+    clock = [datetime.fromisoformat("2026-11-03T16:06:00+00:00")]
+    store = HistoricalFeatureStore(
+        tmp_path / "cross-run-history.sqlite3",
+        clock=lambda: clock[0],
+    )
+    first = build_feature_snapshot(
+        [feature()],
+        cutoff_utc=CUTOFF,
+        captured_at_utc=CAPTURED,
+    )
+    store.append_snapshot(first)
+
+    second_record = feature(
+        value=1.28,
+        source_data_as_of_utc="2026-11-03T16:10:00Z",
+        known_at_utc="2026-11-03T16:10:00Z",
+        ingested_at_utc="2026-11-03T16:10:02Z",
+        revision_available_at_utc="2026-11-03T16:10:02Z",
+        sources=[source(digest=HASH_B)],
+    )
+    second = build_feature_snapshot(
+        [second_record],
+        cutoff_utc="2026-11-03T16:15:00Z",
+        captured_at_utc="2026-11-03T16:15:00Z",
+    )
+    clock[0] = datetime.fromisoformat("2026-11-03T16:16:00+00:00")
+    store.append_snapshot(second)
+
+    before_store_receipt = store.records_through("XRP", "2026-11-03T16:15:59Z")
+    assert len(before_store_receipt) == 1
+    assert before_store_receipt[0]["value"] == 1.27
+    assert store.features_as_of("XRP", "2026-11-03T16:15:59Z")[0]["value"] == 1.27
+
+    complete_history = store.records_through("XRP", "2026-11-03T16:20:00Z")
+    assert len(complete_history) == 2
+    original = next(item for item in complete_history if item["revision_status"] == "original")
+    revised = next(item for item in complete_history if item["revision_status"] == "revised")
+    assert original["record_id"] == "xrp:spot:mid:2026-11-03T15:59:00Z:v1"
+    assert revised["record_id"] == "xrp:spot:mid:2026-11-03T15:59:00Z:v2"
+    assert revised["feature_version"] == 2
+    assert revised["supersedes_record_id"] == original["record_id"]
+    assert revised["value"] == 1.28
+    assert revised["ingested_at_utc"] == "2026-11-03T16:16:00.000000Z"
+
+    as_of_features = store.features_as_of("XRP", "2026-11-03T16:20:00Z")
+    assert len(as_of_features) == 1
+    assert as_of_features[0]["record_id"] == revised["record_id"]
+    assert as_of_features[0]["value"] == 1.28
+
+    assert store.verify_all_snapshots()["valid"] is True
+    assert store.snapshot_count() == 2
+    assert store.checkpoint()["valid"] is True
