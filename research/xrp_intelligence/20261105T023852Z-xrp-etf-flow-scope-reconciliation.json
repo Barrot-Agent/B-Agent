@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_etf_flow_scope_and_grayscale_holdings_reconciliation",
+  "record_id": "xrp-etf-scope-20261105T023852Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "recorded_at_utc": "2026-11-05T02:38:52.699Z",
+  "data_cutoff_utc": null,
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "forecast_issued": false,
+  "prediction_status": "NOT_ISSUED",
+  "model_eligible": false,
+  "source_registry": [
+    {
+      "id": "xrp_insights_issuer_holdings_aggregator",
+      "publisher": "XRP Insights",
+      "source_type": "third_party_issuer_holdings_aggregator",
+      "url": "https://xrp-insights.com/data",
+      "machine_readable_url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "publisher_generated_at_utc": "2026-11-05T01:26:31.070Z",
+      "data_as_of": "2026-11-03",
+      "latest_row_date": "2026-11-04",
+      "latest_row_status": "provisional",
+      "coverage": {
+        "first_date": "2025-12-01",
+        "trading_days": 229,
+        "rows": 1583
+      },
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "independence_group": "xrp_insights_aggregator",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_page_and_metadata_only_original_http_bytes_not_captured",
+      "retrieved_at_utc": null,
+      "model_eligible": false,
+      "limitations": [
+        "Daily flows are computed from issuer-reported holdings deltas, not issuer-reported cash creations/redemptions.",
+        "GXRP holdings are included but GXRP daily flows are withheld because its issuer page had an automated-read gap.",
+        "XRPR is included despite part of its reported XRP exposure being held through another XRP exchange-traded product.",
+        "BITW is a multi-asset index fund; its XRP sleeve can change through index rebalancing.",
+        "The dataset documents reconstructed historical rows and provisional latest rows.",
+        "The page does not expose a precise per-fund source timestamp for the displayed GXRP holdings."
+      ]
+    },
+    {
+      "id": "cryptokeyhole_issuer_holdings_aggregator",
+      "publisher": "CryptoKeyhole",
+      "source_type": "third_party_issuer_holdings_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "publisher_updated_at_utc": "2026-11-05T01:57:00Z",
+      "latest_issuer_file_observed_at_utc": "2026-11-05T01:37:00Z",
+      "data_as_of": "2026-11-03",
+      "latest_row_date": "2026-11-04",
+      "latest_row_status": "partial",
+      "latest_row_funds_reporting": 1,
+      "fund_universe": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "TOXR"
+      ],
+      "independence_group": "cryptokeyhole_aggregator",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_page_only_original_issuer_file_bytes_not_captured",
+      "retrieved_at_utc": null,
+      "model_eligible": false,
+      "limitations": [
+        "Daily flow sample contains four funds only.",
+        "GXRP is excluded from daily collection because its issuer site blocks automated reads; its displayed holding is the June 30 SEC 10-Q amount.",
+        "XRPR is excluded because its daily file reports direct XRP only while part of its exposure is through another exchange-traded product.",
+        "BITW is excluded because it is a diversified index fund rather than a spot XRP ETF.",
+        "November 4 was partial at the page update: one of four daily reporters had published."
+      ]
+    },
+    {
+      "id": "grayscale_xrp_trust_etf_sec_10q_20260630",
+      "publisher": "U.S. Securities and Exchange Commission / Grayscale XRP Trust ETF",
+      "source_type": "primary_sec_quarterly_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2037427/000203742726000007/ck0002037427-20260630.htm",
+      "xbrl_detail_url": "https://www.sec.gov/Archives/edgar/data/2037427/000203742726000007/R11.htm",
+      "filing_period_end": "2026-06-30",
+      "filed_date": "2026-08-04",
+      "verified_quantity_xrp": 55035728.016985,
+      "independence_group": "sec_grayscale_filing",
+      "raw_content_sha256": null,
+      "retrieved_at_utc": null,
+      "model_eligible": false,
+      "limitations": [
+        "This is a verified quarter-end holding, not a November 2026 current balance.",
+        "The filing reports Coinbase as the principal market used for the 4 p.m. New York XRP valuation.",
+        "The filing's quantity is not a daily ETF-flow observation."
+      ]
+    },
+    {
+      "id": "rexshares_xrpr_issuer_holdings",
+      "publisher": "REX Shares / Osprey",
+      "source_type": "primary_issuer_fund_holdings_page",
+      "url": "https://www.rexshares.com/xrpr/",
+      "source_as_of_date": "2026-10-01",
+      "direct_xrp_quantity": 21260382,
+      "coinshares_physical_xrp_shares": 386750,
+      "direct_xrp_weight_pct": 60.05,
+      "coinshares_etp_weight_pct": 39.9,
+      "independence_group": "rexshares_issuer",
+      "raw_content_sha256": null,
+      "retrieved_at_utc": null,
+      "model_eligible": false,
+      "limitations": [
+        "The issuer page snapshot is dated October 1, not November 3.",
+        "XRPR exposure is mixed direct XRP and an investment in CoinShares Physical XRP; fund shares are not equivalent to direct XRP held in a wallet."
+      ]
+    },
+    {
+      "id": "grayscale_xrp_trust_etf_sec_s1_coinbase_custody",
+      "publisher": "U.S. Securities and Exchange Commission / Grayscale XRP Trust ETF",
+      "source_type": "primary_sec_registration_statement",
+      "url": "https://www.sec.gov/Archives/edgar/data/2037427/000095017025111044/ck0002037427-20250822.htm",
+      "filing_date": "2025-08-22",
+      "independence_group": "sec_grayscale_filing",
+      "raw_content_sha256": null,
+      "retrieved_at_utc": null,
+      "model_eligible": false,
+      "verified_relationships": {
+        "custodian": "Coinbase Custody Trust Company, LLC",
+        "prime_broker": "Coinbase, Inc.",
+        "cold_storage_vault_balance": true,
+        "settlement_balance_may_use_omnibus_wallets": true
+      },
+      "limitations": [
+        "The S-1 describes contractual service-provider roles and risk disclosures, not current Coinbase revenue or current balances.",
+        "Vault Balance and Settlement Balance have different custody mechanics; do not describe both as identical segregated cold-storage balances."
+      ]
+    }
+  ],
+  "flow_reconciliation": {
+    "xrp_insights": {
+      "period": [
+        "2026-11-02",
+        "2026-11-03"
+      ],
+      "net_flow_xrp": -194875,
+      "daily_values_as_displayed": {
+        "2026-11-02": "approximately -32.8K XRP",
+        "2026-11-03": "approximately -162.1K XRP"
+      },
+      "holdings_total_xrp": 1196405311,
+      "included_funds": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "gxrp_flow_status": "excluded",
+      "xrpr_included": true,
+      "bitw_included": true
+    },
+    "cryptokeyhole": {
+      "period": [
+        "2026-11-02",
+        "2026-11-03"
+      ],
+      "daily_flow_xrp": {
+        "2026-11-02": -3339,
+        "2026-11-03": -3339
+      },
+      "net_flow_xrp": -6678,
+      "holdings_total_xrp": 1076812562,
+      "included_funds": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "TOXR"
+      ],
+      "gxrp_included": false,
+      "xrpr_included": false,
+      "bitw_included": false
+    },
+    "arithmetic": {
+      "two_day_flow_difference_xrp": -188197,
+      "holdings_total_difference_xrp": 119592749,
+      "xrp_insights_additional_holdings_displayed": {
+        "GXRP": 65443396,
+        "XRPR": 33211763,
+        "BITW": 20919449
+      },
+      "additional_holdings_sum_xrp": 119574608,
+      "remaining_holdings_reconciliation_difference_xrp": 18141,
+      "gxrp_displayed_vs_sec_2026_06_30_difference_xrp": 10407667.983015
+    },
+    "interpretation": [
+      "The two aggregate flow totals are not contradictory measurements of the same universe: XRP Insights includes XRPR and BITW, while CryptoKeyhole excludes both; both withhold GXRP daily flows.",
+      "The exact -188,197 XRP two-day difference is not attributed to XRPR or BITW because per-fund row-level files and synchronized issuer vintages were not captured.",
+      "The 18,141 XRP holdings residual is left unreconciled; source pages were updated at different times and use different fund-scope and source-vintage rules.",
+      "XRP Insights displays 65,443,396 GXRP, while the SEC filing verifies 55,035,728.016985 XRP at June 30. The later displayed number may be a newer balance, but its exact issuer source date is not disclosed in the retrieved page. This is a source-vintage gap, not proof of an error."
+    ]
+  },
+  "grayscale_sec_q2_quantity_rollforward": {
+    "period_end": "2026-06-30",
+    "opening_xrp_at_2025_12_31": 122230386.26097,
+    "xrp_contributed": 36272724.963349,
+    "xrp_redeemed": -103407400.712419,
+    "xrp_distributed_for_sponsor_fee": -59982.494915,
+    "closing_xrp_at_2026_06_30": 55035728.016985,
+    "reconciliation_residual_xrp": -2.235e-8,
+    "interpretation": "The SEC filing establishes substantial actual creations and redemptions in XRP units for the six-month period. These quarter-to-date totals are not daily net ETF flows and do not identify the timing or venue of market purchases."
+  },
+  "data_quality": {
+    "source_byte_hashes_verified": false,
+    "issuer_file_byte_receipts_verified": false,
+    "synchronized_per_fund_vintages": false,
+    "source_independence_note": "Both dashboards derive from issuer holdings; their aggregate outputs are not independent issuer evidence. The SEC filing is the primary quarter-end anchor for GXRP; REX Shares is the primary issuer source for its October 1 holdings composition.",
+    "model_eligibility": "NONE",
+    "reason": "Rendered aggregate pages, different fund universes, provisional settlement and missing per-fund source vintages do not meet point-in-time feature admission."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "different_fund_universe",
+      "hypothesis": "Most of the aggregate flow gap arises from XRPR and BITW being included by XRP Insights but excluded by CryptoKeyhole.",
+      "support": [
+        "The published fund-universe definitions differ explicitly.",
+        "XRPR and BITW have meaningful reported XRP exposure."
+      ],
+      "disconfirming_or_missing": [
+        "Per-fund raw holdings rows from both aggregators were not captured at matching source times.",
+        "The exact incremental XRPR and BITW flow contributions are not established."
+      ]
+    },
+    {
+      "id": "publication_lag_and_source_vintage",
+      "hypothesis": "Issuer publication timing and date assignment account for some apparent daily differences.",
+      "support": [
+        "CryptoKeyhole documents issuer files arriving overnight and marks November 4 partial.",
+        "XRP Insights documents next-morning re-settlement and provisional rows."
+      ],
+      "disconfirming_or_missing": [
+        "The two-day totals are both labeled settled through November 3, but exact per-fund issuer timestamps are unavailable."
+      ]
+    },
+    {
+      "id": "non_creation_holdings_changes",
+      "hypothesis": "Some holdings deltas reflect fees, index rebalancing or indirect fund exposure rather than direct spot purchases/redemptions.",
+      "support": [
+        "XRP Insights explicitly notes BITW rebalancing and fees can change reported holdings.",
+        "REX Shares shows XRPR includes CoinShares Physical XRP exposure."
+      ],
+      "disconfirming_or_missing": [
+        "The exact component contribution for each day is unavailable."
+      ]
+    }
+  ],
+  "predictions": {
+    "issued": false,
+    "reason": "ETF aggregate flow scope and vintage differences are unresolved; no directional signal is supported."
+  },
+  "next_actions": [
+    "Capture each issuer's original holdings file with exact UTC retrieval time and SHA-256.",
+    "Keep each fund and exposure type separate: spot direct XRP, indirect ETP exposure, and diversified index sleeve.",
+    "Reconcile creations, redemptions, fee withdrawals, in-kind transfers and index rebalances before deriving net capital-flow features.",
+    "Treat the SEC June 30 GXRP holding as a point-in-time filing fact available only from its filing date; do not backdate it to June 30 for a real-time model."
+  ]
+}
