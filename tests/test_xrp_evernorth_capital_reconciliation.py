@@ -143,7 +143,7 @@ def test_ripple_equity_in_kind_contributions_and_related_party_debt_are_separate
     assert ripple["ripple_xrp_contribution_to_pathfinder"] == 126_791_458
     assert ripple["contributor_related_party_entity_xrp_subscription"] == 50_000_000
     assert ripple["contributor_related_party_entity_name"] == "Larsen Lam Children's Remainder Trust"
-    assert "investor affiliated with Ripple" in ripple["contributor_related_party_entity_issuer_description"].lower()
+    assert "investor affiliated with ripple" in ripple["contributor_related_party_entity_issuer_description"].lower()
     assert ripple["ripple_class_a_shares_issued_at_close"] == 1_678_382
     assert ripple["ripple_pathfinder_units_issued_at_close"] == 16_461_545
     assert ripple["combined_ripple_group_ownership_limit_percent"] == 9.9

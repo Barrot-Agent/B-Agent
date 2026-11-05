@@ -94,6 +94,58 @@
       "raw_capture_status": "web_rendered_extract_only",
       "raw_http_bytes_sha256": null,
       "evidence_lines": "41-77,90-130,136-142"
+    },
+    {
+      "source_id": "boj_2026_mpm_schedule",
+      "source_uri": "https://www.boj.or.jp/en/mopo/mpmsche_minu/",
+      "source_type": "central_bank_official_calendar",
+      "independence_group": "bank_of_japan",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "2026 table: Sept 17-18 MPM minutes Nov 5; Oct 29-30 MPM Summary of Opinions Nov 10; next MPM Dec 17-18",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "boj_policy_rate",
+      "source_uri": "https://www.boj.or.jp/en/",
+      "source_type": "central_bank_official_policy_status",
+      "independence_group": "bank_of_japan",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "uncollateralized overnight call rate around 1.25%; complementary deposit facility rate 1.25% since 2026-09-24; next MPM Dec 17-18",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "fed_october_28_2026_statement",
+      "source_uri": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "source_type": "central_bank_official_policy_statement",
+      "independence_group": "federal_reserve",
+      "published_at_utc": "2026-10-28T18:00:00Z",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "8-21",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "fed_november_2026_calendar",
+      "source_uri": "https://www.federalreserve.gov/newsevents/2026-november.htm",
+      "source_type": "central_bank_official_calendar",
+      "independence_group": "federal_reserve",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "November 18 minutes of Oct 27-28 meeting; next FOMC meeting Dec 8-9",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "coincodex_boj_fed_48h_claim",
+      "source_uri": "https://coincodex.com/article/91975/crypto-enters-most-significant-week-of-2026-as-traders-hold-their-breath-for-36-hours/",
+      "source_type": "secondary_market_commentary",
+      "independence_group": "coincodex_editorial",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_summary": "Article claims a BOJ hike to 1.25% is expected and that Fed and BOJ could tighten within 48 hours.",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "publication_timestamp": "not independently established in this capture"
     }
   ],
   "observations": [
@@ -252,19 +304,32 @@
         "Capture time is 03:01:31 UTC."
       ],
       "resolution": "The 35m35s-old funding/mark snapshot is not synchronized with Kraken and is not suitable for a short-horizon feature."
+    },
+    {
+      "topic": "near-term central-bank catalyst",
+      "observations": [
+        "CoinCodex secondary commentary says the BOJ may raise to 1.25% and the Fed and BOJ may both tighten within 48 hours.",
+        "BOJ official page shows the 1.25% policy setting has been in effect since September 24, 2026; its next MPM is December 17-18, with minutes/summary releases scheduled November 5 and November 10.",
+        "Fed's October 28 statement held the target range at 3.75%-4.00% by 10-2; the next FOMC meeting is December 8-9 and October minutes are scheduled November 18."
+      ],
+      "resolution": "Treat the secondary article's imminent-hike framing as stale/conflicting. The near-term releases are minutes and a summary of opinions, not November policy decisions. Preserve the two Fed hawkish dissents as a counter-hypothesis for December policy expectations."
     }
   ],
   "competing_hypotheses": [
     "ETF net flows may be too small relative to spot turnover to explain the observed price path over this window.",
     "The aggregator flow disagreement may be driven by excluded funds, issuer publication timing, provisional rows, indirect ETP exposure and methodology rather than a single erroneous provider.",
     "Positive Binance lastFundingRate could indicate a long-side carry premium, but the response is stale and no cross-venue confirmation or open-interest change was captured.",
-    "fixCleanup3_4_0 is a technical ledger-safety amendment; it is not evidence of a new XRP demand source. Native lending remains inactive because its required amendments are below threshold."
+    "fixCleanup3_4_0 is a technical ledger-safety amendment; it is not evidence of a new XRP demand source. Native lending remains inactive because its required amendments are below threshold.",
+    "The two Fed dissents preferring a 25-basis-point hike may keep December tightening expectations elevated despite the October hold.",
+    "A 1.25% BOJ policy setting may continue to influence yen-funded carry positions and global risk liquidity, but the next scheduled BOJ policy decision is December 17-18; there is no official November decision date."
   ],
   "disconfirming_evidence": [
     "No synchronized multi-venue order-book depth was captured.",
     "No exchange-wallet flow, ETF cash creation/redemption file, collateral utilization or verified institutional XRP purchase was captured.",
     "No evidence connects the current ETF flow readings to a causal or predictive XRP return effect.",
-    "No validated historical feature dataset or out-of-sample evaluation supports a directional forecast."
+    "No validated historical feature dataset or out-of-sample evaluation supports a directional forecast.",
+    "BOJ official schedule lists no November monetary-policy meeting; the 1.25% setting is already in effect from September 24.",
+    "Federal Reserve official calendar lists no November FOMC meeting; October minutes are scheduled November 18 and the next decision meeting is December 8-9."
   ],
   "prediction_status": "NOT_ISSUED",
   "next_required_work": [
@@ -272,6 +337,53 @@
     "Anchor capture times independently and preserve provider timestamps separately from retrieval times.",
     "Reconcile ETF flows against each issuer's own holdings files, fund universe, direct versus indirect XRP exposure, fees and settlement semantics.",
     "Capture synchronized venue depth, spot candles, derivatives open interest and funding with verified intervals.",
-    "Keep all observations ineligible until the raw-receipt and timestamp requirements pass."
-  ]
+    "Keep all observations ineligible until the raw-receipt and timestamp requirements pass.",
+    "Monitor BOJ September-meeting minutes on November 5, BOJ October-meeting Summary of Opinions on November 10, and FOMC October-meeting minutes on November 18; distinguish information releases from policy decisions."
+  ],
+  "macro_event_timeline": {
+    "captured_at_utc": "2026-11-05T03:30:00Z",
+    "bank_of_japan": {
+      "policy_guideline": "Uncollateralized overnight call rate around 1.25%",
+      "complementary_deposit_facility_rate_percent": 1.25,
+      "effective_since": "2026-09-24",
+      "september_17_18_mpm_minutes_scheduled": "2026-11-05",
+      "october_29_30_mpm_summary_of_opinions_scheduled": "2026-11-10",
+      "next_monetary_policy_meeting": [
+        "2026-12-17",
+        "2026-12-18"
+      ],
+      "no_november_monetary_policy_meeting": true
+    },
+    "federal_reserve": {
+      "last_meeting": [
+        "2026-10-27",
+        "2026-10-28"
+      ],
+      "statement_date": "2026-10-28",
+      "target_range_percent": [
+        3.75,
+        4
+      ],
+      "vote": "10-2",
+      "dissenters_preferring_25bp_hike": [
+        "Lisa D. Cook",
+        "Beth M. Hammack"
+      ],
+      "october_meeting_minutes_scheduled": "2026-11-18",
+      "next_fomc_meeting": [
+        "2026-12-08",
+        "2026-12-09"
+      ],
+      "no_november_fomc_meeting": true
+    },
+    "secondary_claim": {
+      "source": "CoinCodex",
+      "claim": "Markets expect the BOJ to raise its rate to 1.25%, with the Fed and BOJ both potentially tightening within 48 hours.",
+      "assessment": "Conflicts with official records: the BOJ's 1.25% rate is already in effect from September 24, and the official calendars list no November BOJ or FOMC policy meeting.",
+      "status": "retained_as_conflicting_secondary_commentary_not_a_verified_event"
+    },
+    "evidence_summary": "Bank of Japan official schedule: the September 17-18, 2026 meeting minutes are scheduled for November 5; the October 29-30 meeting's Summary of Opinions is scheduled for November 10; the next monetary policy meeting is December 17-18. The Bank of Japan's official homepage states the uncollateralized overnight call-rate guideline is around 1.25%, and the complementary deposit facility rate has been 1.25% since September 24, 2026. Federal Reserve official records: the October 27-28, 2026 FOMC meeting maintained the federal-funds target range at 3.75%-4.00% by a 10-2 vote; Lisa D. Cook and Beth M. Hammack preferred a 25-basis-point increase. The Federal Reserve November calendar schedules minutes of the October meeting for November 18 and the next FOMC meeting for December 8-9; no November FOMC meeting is listed. A CoinCodex secondary article claims markets expect the BOJ to raise to 1.25% and that both central banks could tighten within 48 hours. Official records show the BOJ rate is already 1.25% and neither bank has a November policy meeting; preserve the secondary claim as conflicting/stale rather than treating it as a scheduled catalyst.",
+    "evidence_summary_sha256": "26f65f6e5160b3a6623f7947cac621c93a46e7feb9057576a39a41368b2c961b",
+    "hash_semantics": "SHA-256 of the stored evidence-summary text, not original web response bytes."
+  }
 }

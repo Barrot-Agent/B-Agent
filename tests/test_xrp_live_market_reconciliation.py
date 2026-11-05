@@ -111,3 +111,33 @@ def test_timestamp_and_source_disagreements_are_retained_without_directional_cla
 
     assert document["prediction_status"] == "NOT_ISSUED"
     assert document["source_capture_policy"]["rendered_hashes_are_not_raw_source_hashes"] is True
+
+
+def test_official_boj_and_fed_calendars_disconfirm_imminent_november_policy_hikes():
+    document = json.loads(ARTIFACT.read_text(encoding="utf-8"))
+    macro = document["macro_event_timeline"]
+
+    boj = macro["bank_of_japan"]
+    assert boj["complementary_deposit_facility_rate_percent"] == 1.25
+    assert boj["effective_since"] == "2026-09-24"
+    assert boj["no_november_monetary_policy_meeting"] is True
+    assert boj["next_monetary_policy_meeting"] == ["2026-12-17", "2026-12-18"]
+    assert boj["september_17_18_mpm_minutes_scheduled"] == "2026-11-05"
+
+    fed = macro["federal_reserve"]
+    assert fed["target_range_percent"] == [3.75, 4.0]
+    assert fed["vote"] == "10-2"
+    assert set(fed["dissenters_preferring_25bp_hike"]) == {
+        "Lisa D. Cook", "Beth M. Hammack"
+    }
+    assert fed["no_november_fomc_meeting"] is True
+    assert fed["next_fomc_meeting"] == ["2026-12-08", "2026-12-09"]
+    assert fed["october_meeting_minutes_scheduled"] == "2026-11-18"
+
+    assert "stale" in macro["secondary_claim"]["status"]
+    disagreement = next(
+        item for item in document["disagreements"]
+        if item["topic"] == "near-term central-bank catalyst"
+    )
+    assert "not November policy decisions" in disagreement["resolution"]
+    assert document["prediction_status"] == "NOT_ISSUED"
