@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -20,6 +21,7 @@ class AutonomousTaskStore:
     """Persist task state atomically under a workspace-owned directory."""
 
     SCHEMA_VERSION = 1
+    MAX_HISTORY_ITEMS = 50
     MAX_CHECKPOINT_BYTES = 5 * 1024 * 1024
     _TASK_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$")
 
@@ -80,6 +82,16 @@ class AutonomousTaskStore:
         payload["updated_at"] = datetime.now(timezone.utc).isoformat()
         if not isinstance(payload.get("history"), list):
             raise ValueError("autonomous task state history must be a list")
+        history = payload["history"]
+        if len(history) > self.MAX_HISTORY_ITEMS:
+            archived = history[:-self.MAX_HISTORY_ITEMS]
+            digest = str(payload.get("history_archive_digest", ""))
+            for item in archived:
+                canonical = json.dumps(item, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+                digest = hashlib.sha256((digest + canonical).encode("utf-8")).hexdigest()
+            payload["history_archive_digest"] = digest
+            payload["history_archived_count"] = int(payload.get("history_archived_count", 0)) + len(archived)
+            del history[:-self.MAX_HISTORY_ITEMS]
         serialized = json.dumps(payload, sort_keys=True, ensure_ascii=False) + "\n"
         if len(serialized.encode("utf-8")) > self.MAX_CHECKPOINT_BYTES:
             raise ValueError("autonomous task checkpoint exceeds the size limit")
