@@ -1,0 +1,133 @@
+{
+  "schema_version": "barrot-xrp-research-handoff/v1",
+  "captured_at_utc": "2026-11-02T10:30:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "evidence_cutoff_utc": "2026-11-02T10:25:00Z",
+  "status": {
+    "market_snapshot": "EXECUTED from MorphoWatch public API-derived page",
+    "coinbase_product_linkage": "SOURCED claim corroborated by official Coinbase product docs",
+    "raw_chain_reconciliation": "NOT_EXECUTED",
+    "forecast": "NOT_ISSUED"
+  },
+  "market": {
+    "name": "cbXRP / USDC",
+    "network": "Base",
+    "market_id_truncated": "0xd4a903dc…6e4109",
+    "snapshot_at_utc": "2026-11-02T06:11:00Z",
+    "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+    "source_method": "MorphoWatch states data comes from Morpho's public API and the blockchain; it is an independent project and not affiliated with Morpho Labs, the Morpho Association, Coinbase or any vault curator.",
+    "metrics": {
+      "supplied_usdc": 65660000,
+      "supplied_usdc_units": 65690000,
+      "borrowed_usdc": 59180000,
+      "utilization_pct": 90.1,
+      "available_usdc": 6480000,
+      "available_with_vault_liquidity_usdc": 7050000,
+      "collateral_cbxrp": 118620000,
+      "collateral_value_usd": 148700000,
+      "cbxrp_price_usdc": 1.2535,
+      "oracle_price_usdc": 1.25,
+      "open_borrowers": 12057,
+      "borrow_apy_pct": 7.22,
+      "borrow_apy_30d_avg_pct": 6.89,
+      "supply_apy_pct": 6.49,
+      "supply_apy_30d_avg_pct": 6.21,
+      "liquidation_ltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "liquidations_30d": 1118,
+      "debt_repaid_by_liquidations_30d_usd": 3940000,
+      "collateral_at_risk_if_cbxrp_falls_20pct_usd": 21780000
+    },
+    "vault_supply_concentration": {
+      "total_usdc_supplied": 65660000,
+      "listed_vault_supply": 58400000,
+      "top_three_vaults": [
+        {
+          "name": "Steakhouse High Yield USDC",
+          "supplied_usdc": 20300000
+        },
+        {
+          "name": "Steakhouse High Yield USDC Edition",
+          "supplied_usdc": 16830000
+        },
+        {
+          "name": "Clearstar cbAssets Vault",
+          "supplied_usdc": 14950000
+        }
+      ],
+      "top_three_share_of_total_supply_pct": 79.31,
+      "caveat": "Third-party display values are rounded and may update; concentration is a derived approximate share."
+    },
+    "cbxrp_supply_comparison": {
+      "coinbase_reserve_page_refresh_utc": "2026-11-02T10:07:00Z",
+      "coinbase_cbXRP_supply": 150940089.8,
+      "morpho_collateral_cbxrp": 118620000,
+      "approximate_share_of_supply_in_this_market_pct": 78.59,
+      "caveat": "The two snapshots are not simultaneous. This is an approximate cross-snapshot ratio, not an exact same-block utilization of all cbXRP supply."
+    },
+    "product_linkage": {
+      "official_coinbase_docs": "Coinbase lists XRP as eligible collateral in its consumer USDC loan product and describes the loan as enabled by Morpho on Base.",
+      "third_party_attribution": "MorphoWatch identifies this cbXRP/USDC market as the market behind Coinbase's XRP loans.",
+      "classification": "Strong sourced relationship; exact customer-level attribution and all Coinbase loan routing details remain unavailable."
+    }
+  },
+  "interpretation": [
+    "This is a real, measurable XRP-backed stablecoin credit market, not merely an announced collateral capability.",
+    "Approximately 90.1% utilization leaves about $6.48M immediately available, creating a potential liquidity constraint if borrowing demand rises.",
+    "A 62.5% LLTV and 12.68% liquidation bonus create a defined liquidation mechanism. Liquidated cbXRP is not automatically a native-XRP spot sale; downstream liquidator behavior must be traced.",
+    "The 30-day $3.94M debt repaid through liquidations is historical realized activity, not an estimate of native XRP sold.",
+    "The top three listed vaults provide roughly 79.3% of total supply, so lender/vault concentration is a relevant counterparty-liquidity feature.",
+    "The market is built around cbXRP, a wrapped representation backed by Coinbase-held XRP. Do not double count cbXRP as new XRP supply or demand."
+  ],
+  "hypotheses": [
+    {
+      "id": "H_CREDIT_UTILITY",
+      "statement": "Morpho-backed USDC loans provide holders liquidity against XRP without immediate sale, increasing productive collateral utility.",
+      "counter": "The collateral is locked; utilization is high; actual loan proceeds and user motives are unknown."
+    },
+    {
+      "id": "H_LIQUIDATION_FEEDBACK",
+      "statement": "A sharp cbXRP decline can trigger collateral liquidations, transferring cbXRP to liquidators and potentially increasing subsequent selling/hedging pressure.",
+      "counter": "Liquidation transfers are not proof of immediate XRP reserve redemptions or spot-market sales."
+    },
+    {
+      "id": "H_USDC_LIQUIDITY_CONSTRAINT",
+      "statement": "90.1% utilization and concentrated vault supply can make incremental USDC borrowing more expensive or unavailable during demand spikes.",
+      "counter": "Vault allocators can move additional liquidity; current displayed additional capacity is about $570K."
+    }
+  ],
+  "next_actions": [
+    "Resolve the full Morpho market ID and query Morpho API snapshots at fixed UTC intervals.",
+    "Track cbXRP collateral additions, withdrawals, liquidations and borrower health factors by block.",
+    "Trace liquidator receipts and subsequent cbXRP transfers; do not infer native-XRP sale without a redemption or exchange route.",
+    "Reconcile the market's USDC debt and collateral with Coinbase's publicly disclosed consumer loan metrics, if disclosed.",
+    "Add utilization, borrow APY, LLTV proximity, liquidation volume, vault concentration and cbXRP reserve ratio as separate historical features.",
+    "Run stress scenarios at 5%, 10%, 20% and 30% cbXRP price declines, keeping scenario loss exposure distinct from realized liquidations."
+  ],
+  "sources": [
+    {
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "publisher": "MorphoWatch",
+      "date": "2026-11-02 06:11 UTC",
+      "classification": "independent third-party display using Morpho API and blockchain data"
+    },
+    {
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "publisher": "Coinbase",
+      "date": "retrieved 2026-11-02",
+      "classification": "official product documentation"
+    },
+    {
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "publisher": "Coinbase",
+      "date": "retrieved 2026-11-02",
+      "classification": "official cbXRP collateral contract documentation"
+    },
+    {
+      "url": "https://www.coinbase.com/en-br/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "date": "2026-11-02 10:07 UTC refresh",
+      "classification": "official cbXRP reserve disclosure"
+    }
+  ]
+}

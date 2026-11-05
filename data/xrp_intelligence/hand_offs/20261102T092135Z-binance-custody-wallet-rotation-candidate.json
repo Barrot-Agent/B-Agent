@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "exchange_wallet_flow_investigation",
+  "artifact_id": "20261102T092135Z-binance-custody-wallet-rotation-candidate",
+  "created_at_utc": "2026-11-02T09:21:35Z",
+  "observation_window": {
+    "primary_transfers_date": "2026-11-01",
+    "subsequent_distribution_observation": "2026-11-02 Bithomp whale feed snapshot",
+    "status": "explorer observations; raw validated-ledger reconstruction not completed"
+  },
+  "transfers_from_binance_labeled_wallet": {
+    "source": "rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza",
+    "source_label": "Binance according to Bithomp",
+    "destination": "r9nsQj5fGr1TcDpCGqntaVWYqt53qS7mSN",
+    "destination_activation": "2026-10-31; 20 XRP initial funding according to secondary reporting",
+    "payments": [
+      {
+        "amount_xrp": 30000000,
+        "time_utc": "2026-11-01T08:59:00Z"
+      },
+      {
+        "amount_xrp": 50000000,
+        "time_utc": "2026-11-01T15:04:00Z"
+      }
+    ],
+    "total_xrp": 80000000,
+    "classification": "separate Binance-labeled wallet transfer, not part of the 233.45492M XRP attacker redistribution",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ]
+  },
+  "subsequent_destination_activity": {
+    "source": "Bithomp whale feed snapshot accessed 2026-11-02T09:21:35Z",
+    "observations": [
+      {
+        "amount_xrp": 7500000,
+        "time_displayed": "15:10",
+        "destination": "rfCZFomCxmZ9XWHtkB1sbewiAVt5p7fjJU"
+      },
+      {
+        "amount_xrp": 7500000,
+        "time_displayed": "15:10",
+        "destination": "r4ncjTqY4ZmXdg7gXpkK9pfiythmyxeecq"
+      },
+      {
+        "amount_xrp": 7500000,
+        "time_displayed": "15:10",
+        "destination": "r9GVg3KevshAkEiBwXyPSEAxgw7MUgjcAT"
+      },
+      {
+        "amount_xrp": 7500000,
+        "time_displayed": "15:10",
+        "destination": "rwVY6qLQvAndWkkjyRhWUa2JKawn3YXQMX"
+      },
+      {
+        "amount_xrp": 5900000,
+        "time_displayed": "15:10",
+        "destination": "rLiBsHkVMA8tSVFqpVxQ8AtDTQxxeBf1Z2"
+      },
+      {
+        "amount_xrp": 7500000,
+        "time_displayed": "09:00",
+        "destination": "rwVY6qLQvAndWkkjyRhWUa2JKawn3YXQMX"
+      }
+    ],
+    "limits": [
+      "Bithomp's whale feed displays times but the captured table does not expose full transaction hashes or dates for every listed outflow.",
+      "The six examples are not asserted to be a complete distribution of the 80M.",
+      "No beneficial owner, customer withdrawal request, OTC purpose or DEX/exchange sale has been established."
+    ]
+  },
+  "destination_identity_cross_check": {
+    "Bithomp_label": "No explicit Binance label displayed for r9nsQj in the captured whale table.",
+    "XPMarket_label": "Binance",
+    "XPMarket_displayed_holdings": {
+      "xrp_approx": 1500000000,
+      "rlusd_approx": 51100000
+    },
+    "classification": "cross-explorer label disagreement; current holdings are a dynamic wallet-page observation, not a pinned ledger snapshot",
+    "sources": [
+      "https://xpmarket.com/wallet/r9nsQj5fGr1TcDpCGqntaVWYqt53qS7mSN"
+    ]
+  },
+  "chronology_and_non_conflation": {
+    "attacker_redistribution_xrp": 233454920,
+    "attacker_redistribution_window_utc": [
+      "2026-11-02T03:52:41Z",
+      "2026-11-02T04:00:31Z"
+    ],
+    "this_binance_wallet_rotation_xrp": 80000000,
+    "this_wallet_rotation_date": "2026-11-01",
+    "conclusion": "The 80M from rs8ZPb... to r9nsQj... on Nov 1 is separate in sender, destination and date from the Nov 2 attacker-account redistribution. The two 40M payments at 03:55:31 and 03:56:21 on Nov 2 are already included in the 233.45492M attacker redistribution and must not be double-counted as another 80M."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "BW-1",
+      "hypothesis": "Internal Binance hot/cold wallet rotation or operational rebalancing.",
+      "support": "Sender is Binance-labeled; destination was newly activated and is labeled Binance by XPMarket; large follow-on tranches appear.",
+      "counter": "Bithomp does not label destination as Binance in the captured feed; cross-explorer ownership attribution is not a cryptographic proof."
+    },
+    {
+      "id": "BW-2",
+      "hypothesis": "Withdrawal or institutional distribution staging during phased service reopening.",
+      "support": "Transfers occurred during Binance's recovery/withdrawal-reopening period; recipient later sent repeated 7.5M tranches to multiple accounts.",
+      "counter": "No customer withdrawal identifiers or destination beneficial owners are public in the captured evidence."
+    },
+    {
+      "id": "BW-3",
+      "hypothesis": "Market sale or OTC distribution.",
+      "support": "Large transfers followed by multiple recipient outflows could be consistent with distribution.",
+      "counter": "No exchange deposit, DEX swap, order execution or OTC counterparty evidence was identified."
+    }
+  ],
+  "source_independence": {
+    "Bithomp": "One explorer feed provides sender labels and transfer amounts; full tx hashes for the listed events were not retrieved in this capture.",
+    "XPMarket": "Independent explorer labels destination as Binance and shows a large balance, but this is not independent beneficial-ownership proof.",
+    "media": "TheCryptoBasic reports the 50M transfer as separate from the hack; the underlying transaction data does not connect it to the attacker address."
+  },
+  "source_register": [
+    {
+      "id": "S1",
+      "type": "Bithomp current XRP whale feed",
+      "url": "https://bithomp.com/whales"
+    },
+    {
+      "id": "S2",
+      "type": "secondary report of Binance 80M wallet transfer",
+      "url": "https://blockchainmedia.id/80-juta-xrp-keluar-dari-dompet-binance-saat-penarikan-dipulihkan/"
+    },
+    {
+      "id": "S3",
+      "type": "secondary report distinguishing separate 50M Binance transfer from attacker wallet",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/"
+    },
+    {
+      "id": "S4",
+      "type": "XPMarket destination wallet page and label",
+      "url": "https://xpmarket.com/wallet/r9nsQj5fGr1TcDpCGqntaVWYqt53qS7mSN"
+    }
+  ],
+  "feature_rules": [
+    "Track sender and recipient separately; do not treat a Binance-labeled source as proof that destination is external.",
+    "Use full transaction hashes and pinned ledger indices before classifying a transfer.",
+    "Separate internal exchange wallet rotation from customer net deposits, withdrawals and spot order flow.",
+    "Do not infer a sale from transfers to new accounts or repeated tranches without a verified exchange/DEX/bridge endpoint.",
+    "Do not combine this Nov 1 80M wallet movement with the Nov 2 233.45492M attacker redistribution."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "public_data_only": true,
+    "no_private_data": true,
+    "no_wallet_access": true,
+    "no_market_intervention": true,
+    "no_trade": true
+  }
+}

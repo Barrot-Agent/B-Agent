@@ -1,0 +1,773 @@
+{
+  "schema_version": "1.1",
+  "captured_at_utc": "2026-11-02T08:04:53Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, security, preservation and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "binance_xrpl_incident": {
+    "original_receiving_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "observed_balance_xrp": 22.7,
+    "observation_provider": "Bithomp",
+    "observation_time_utc": "2026-11-02T08:04:53Z",
+    "large_payments": [
+      {
+        "sequence": 107986700,
+        "amount_xrp": 30000000,
+        "destination": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+        "tx": "156CB85F02F55DCFFC757A88402515472413F085CCB73C032E4C67AF1E34EB69"
+      },
+      {
+        "sequence": 107986701,
+        "amount_xrp": 30000000,
+        "destination": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+        "tx": "9276B5D5876F3805CF9BCA7038CB56DD1DBA4DE673E6EFD7D5FE6EE34BF51671"
+      },
+      {
+        "sequence": 107986702,
+        "amount_xrp": 30000000,
+        "destination": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+        "tx": "3885C363F650AF8B0EF7CAFE754B049E35DC7B119847BE8C1A31583340A0CA62"
+      },
+      {
+        "sequence": 107986703,
+        "amount_xrp": 40000000,
+        "destination": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+        "tx": "DC8D39BC98DB7EDB76EE18E7DD6B0874DA83B51091E2BBFD6C4C70C156A0436A"
+      },
+      {
+        "sequence": 107986704,
+        "amount_xrp": 40000000,
+        "destination": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+        "tx": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D"
+      },
+      {
+        "sequence": 107986705,
+        "amount_xrp": 10000000,
+        "destination": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+        "tx": "7D6CC61F70A8332DAC76EBC36FD05788268C025CF331FC5389CED98DBFB5627B"
+      },
+      {
+        "sequence": 107986706,
+        "amount_xrp": 10000000,
+        "destination": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+        "tx": "1597D75A8C1F4734EF68C459DE45B8B50DB19B0345C70301D269FBBF76D4D82F"
+      },
+      {
+        "sequence": 107986707,
+        "amount_xrp": 10000000,
+        "destination": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+        "tx": "B416DB72953E794BFFAA079C58E8AA010D386CD08D841258E7109A87B33D16D4"
+      },
+      {
+        "sequence": 107986708,
+        "amount_xrp": 33454920,
+        "destination": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+        "tx": "0CF6FAF899D3D09573380E2F65B12CC9F75B78464FF36E74ABBD27812CAC01A0"
+      }
+    ],
+    "redistributed_total_xrp": 233454920,
+    "recipient_observations": [
+      {
+        "address": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+        "balance_xrp": 40000000,
+        "history_entries": 3,
+        "outbound_after_large_receipt_observed": false
+      },
+      {
+        "address": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+        "balance_xrp": 40000000,
+        "history_entries": 3,
+        "outbound_after_large_receipt_observed": false
+      },
+      {
+        "address": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+        "balance_xrp": 40000000,
+        "history_entries": 3,
+        "outbound_after_large_receipt_observed": false
+      },
+      {
+        "address": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+        "balance_xrp": 40000000,
+        "history_entries": 2,
+        "outbound_after_large_receipt_observed": false
+      },
+      {
+        "address": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+        "balance_xrp": 40000000,
+        "history_entries": 2,
+        "outbound_after_large_receipt_observed": false
+      },
+      {
+        "address": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+        "balance_xrp": 33454920,
+        "history_entries": 2,
+        "outbound_after_large_receipt_observed": false
+      }
+    ],
+    "activation_accounts": 7,
+    "activation_total_xrp": 7000,
+    "interpretation": "The six funded accounts remain at the exact tranche balances in the Bithomp snapshots; their displayed histories contain activation and inbound payments but no subsequent outbound payment. This is a single-explorer observation, not an independent raw-node reconciliation.",
+    "accounting_caveat": "The original incoming amount reported by TRM is rounded. The displayed source-account residual of 22.70 XRP does not reconcile exactly from rounded inflow, activation payments, nine large transfers and nominal fees. Earlier residual estimates of 0.5992 or 0.39984 XRP are withdrawn pending exact delivered amounts and pinned-ledger metadata.",
+    "separate_tron_laundering_event": "The Block's reported approximately $242M moved through Tron and cross-chain services is a separate asset/network stream; it is not evidence that the 233.45492M XRP recipient balances were bridged or sold.",
+    "sources": [
+      "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx/transactions",
+      "https://bithomp.com/account/ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx/transactions",
+      "https://bithomp.com/account/rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F/transactions",
+      "https://bithomp.com/account/rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB/transactions",
+      "https://bithomp.com/account/rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW/transactions",
+      "https://bithomp.com/account/rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD/transactions",
+      "https://bithomp.com/account/raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t/transactions",
+      "https://www.theblock.co/news/defi/2026-11-01/north-korean-hackers-launder-242-million-of-binance-loot-via-tron-as-fbi-presses-thorchain-analyst-432257"
+    ],
+    "source_independence": "Bithomp is one explorer source for all six account histories. Whale Alert independently corroborates one 40M XRP transfer. The Block's Tron laundering estimates are based on SomaXBT and other analyst data and are not XRP transaction evidence."
+  },
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-02T08:04:53Z",
+    "coingecko": {
+      "price_usd": 1.25,
+      "market_cap_usd": 79127000000,
+      "volume_24h_usd": 1078082854,
+      "circulating_supply_xrp": 63351000000,
+      "total_supply_xrp": 99986000000,
+      "perp_open_interest_usd": 3645000000,
+      "funding_8h_pct": 0.0087,
+      "perps_to_spot_volume": 9,
+      "provider_price_change_24h_pct": 0.2,
+      "performance_data_quality": {
+        "displayed_summary_table": {
+          "one_hour_pct": 0.4,
+          "twenty_four_hour_pct": 0.4,
+          "seven_day_pct": 3.2,
+          "fourteen_day_pct": 4.8,
+          "thirty_day_pct": 15.9,
+          "one_year_pct": 50.5
+        },
+        "displayed_narrative_seven_day_pct": -3.2,
+        "decision": "exclude provider return series from features until this internal page inconsistency is resolved"
+      }
+    },
+    "coingecko_spot_depth": {
+      "note": "Provider labels +2% and -2% are preserved as displayed; do not assign bid/ask interpretation without the provider's precise field definition.",
+      "markets": [
+        {
+          "exchange": "Kraken",
+          "spread_pct": 0.01,
+          "depth_plus_2_usd": 4416696,
+          "depth_minus_2_usd": 5694886,
+          "volume_24h_usd": 21144824
+        },
+        {
+          "exchange": "Binance",
+          "spread_pct": 0.01,
+          "depth_plus_2_usd": 1759327,
+          "depth_minus_2_usd": 2226413,
+          "volume_24h_usd": 57179562
+        },
+        {
+          "exchange": "Coinbase Exchange",
+          "spread_pct": 0.02,
+          "depth_plus_2_usd": 3723105,
+          "depth_minus_2_usd": 7931463,
+          "volume_24h_usd": 33100907
+        }
+      ],
+      "source": "https://www.coingecko.com/en/coins/xrp"
+    },
+    "derivatives_provider_comparison": [
+      {
+        "provider": "CoinGecko",
+        "open_interest_usd": 3645000000,
+        "coverage": "126 perpetual/futures markets displayed",
+        "funding_8h_pct": 0.0087,
+        "captured": "dynamic page at 08:04 UTC"
+      },
+      {
+        "provider": "TradRadar",
+        "open_interest_usd": 1920000000,
+        "coverage": "7 exchanges",
+        "funding_8h_pct": 0.0074,
+        "long_account_share_pct": 75.6,
+        "liquidations_24h_usd": 1370000,
+        "captured": "2026-11-02T07:25:00Z"
+      },
+      {
+        "provider": "Kodexius",
+        "open_interest_usd": 766940000,
+        "coverage": "7 contracts",
+        "funding_8h_pct": 0.007,
+        "volume_24h_usd": 693630000,
+        "captured": "2026-11-02T07:14:00Z"
+      }
+    ],
+    "interpretation": "Do not average provider open interest. Contract/venue coverage and aggregation differ materially. Positive funding and long-account concentration are positioning indicators, not standalone price forecasts.",
+    "sources": [
+      "https://www.coingecko.com/en/coins/xrp",
+      "https://tradradar.io/markets/xrp",
+      "https://kodexius.com/data/crypto-derivatives/XRP"
+    ]
+  },
+  "etf_flow_data_quality": {
+    "date": "2026-10-30",
+    "observations": [
+      {
+        "provider": "Maketo",
+        "net_flow_usd": -496500,
+        "coverage": "5 funds",
+        "published": "2026-11-01T02:22:00Z",
+        "status": "provisional"
+      },
+      {
+        "provider": "CryptoETF.today",
+        "net_flow_usd": 200000,
+        "coverage": "3 of 5 funds",
+        "published": "2026-10-31T05:48:00Z",
+        "status": "partial; XRPZ and GXRP missing"
+      },
+      {
+        "provider": "CryptoKeyhole",
+        "net_flow_usd": -1412000,
+        "coverage": "3 of 4 tracked funds",
+        "status": "partial; XRPZ not published and GXRP not collected"
+      },
+      {
+        "provider": "XRP Insights",
+        "net_flow_xrp": -49932,
+        "coverage": "6 spot products plus BITW",
+        "status": "GXRP excluded from flow total while holdings are counted"
+      }
+    ],
+    "rule": "Preserve each source and universe. Do not average or label any figure final without fund-level issuer/creation-redemption reconciliation."
+  },
+  "escrow": {
+    "ledger_index": 108063085,
+    "ledger_close_utc": "2026-11-02T08:16:00Z",
+    "ripple_escrow_xrp": 31100000000,
+    "escrow_objects": 99,
+    "owner_accounts": 8,
+    "next_unlock_utc": "2026-12-01T00:00:00Z",
+    "next_unlock_xrp": 1000000000,
+    "next_unlock_objects": 4,
+    "november_release_xrp": 1000000000,
+    "november_re_escrowed_xrp": 700000000,
+    "november_net_out_of_escrow_xrp": 300000000,
+    "trailing_12_month_release_xrp": 12000000000,
+    "trailing_12_month_re_escrow_xrp": 8400000000,
+    "trailing_12_month_net_out_xrp": 3600000000,
+    "trailing_12_month_re_escrow_share_pct": 70,
+    "median_escrow_finish_delay_seconds": 11,
+    "longest_finish_delay_days": 2.3,
+    "note": "Net released from escrow is not proof of exchange deposit, circulation, sale or spot-market demand. Ripple-owned escrow excludes Flare Core Vault and other third-party escrows.",
+    "source": "https://xrp-insights.com/xrp-radar/escrow"
+  },
+  "xrpl_stablecoin_supply": {
+    "tracker_observation_utc": "2026-09-29",
+    "defi_llama_estimate_usd": 1213000000,
+    "rwa_xyz_estimate_usd": 1190000000,
+    "defi_llama_rlusd_share_pct": 92.46,
+    "conflicting_report": "TokenPost reported approximately $1.03B and 98.1% RLUSD for Q3; scope/methodology differs and remains unreconciled.",
+    "rlusd_global_circulation_usd": 2627000000,
+    "rlusd_reserve_funds_usd": 2758600000,
+    "rlusd_official_balance_as_of": "2026-10-29",
+    "latest_attestation_listed_through": "2026-09",
+    "source": "https://ripple.com/products/stablecoin/transparency/"
+  },
+  "institutional_graph": {
+    "coinbase": [
+      {
+        "edge": "Coinbase Global Exchange -> XRP",
+        "status": "confirmed",
+        "detail": "XRP is listed among accepted cross-collateral assets; collateral weight applies the greater of base and closeout-horizon haircuts; UBO average-daily-quantity limits apply.",
+        "source": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work"
+      },
+      {
+        "edge": "Coinbase Global Exchange -> USDC borrow against non-USDC collateral",
+        "status": "confirmed",
+        "detail": "Cross-collateral clients can borrow USDC while non-USDC collateral is held; published help page states 10% APY, interest accrues every 30 seconds and is paid at midnight UTC. XRP-specific multiplier and balances are not public in the page.",
+        "source": "https://help.coinbase.com/en/global-exchange/portfolio-balances/usdc-borrow"
+      },
+      {
+        "edge": "Coinbase Global Derivatives Bermuda -> XRP",
+        "status": "confirmed",
+        "detail": "Outside-US product documentation lists XRP cross collateral; X:SM table haircut 15%; X:PM has no fixed percentage displayed, not evidence of zero risk.",
+        "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral"
+      },
+      {
+        "edge": "Coinbase Derivatives -> Ripple Prime",
+        "status": "confirmed",
+        "detail": "Ripple Prime is listed as a broker distribution partner; XRP-specific client order flow is unknown.",
+        "source": "https://www.coinbase.com/derivatives"
+      },
+      {
+        "edge": "Coinbase -> RLUSD",
+        "status": "confirmed",
+        "detail": "RLUSD available on Prime, Exchange and retail app from Oct 28; XRPL, Base and Ethereum deposits/withdrawals. Global Exchange collateral availability was stated to follow, so RLUSD collateral use is not established at launch.",
+        "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
+      },
+      {
+        "edge": "Permission / ASK Wallet -> Coinbase Embedded Wallet",
+        "status": "confirmed wallet-infrastructure relationship; not an exchange listing",
+        "detail": "Permission announced on 2026-09-22 that its ASK wallet moved to Coinbase embedded-wallet infrastructure. Permission says Coinbase secures the private key on the user's behalf and transactions are authorized through the user's Permission login. Permission says email, account identifier and wallet information are shared with Coinbase for wallet operation.",
+        "source": "https://www.permission.ai/blog/ask-wallet-update"
+      },
+      {
+        "edge": "Coinbase Prime U.S. Derivatives (CFM/CDE) -> XRP collateral",
+        "status": "not eligible in current published collateral table",
+        "detail": "U.S. Derivatives margin is USD cash; USDC can only be auto-converted to USD for a margin call. XRP is not listed as accepted collateral.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-and-eligible-collateral-for-us-derivatives"
+      },
+      {
+        "edge": "Coinbase Prime Global Derivatives (CFM routing to Deribit) -> XRP collateral",
+        "status": "not eligible in current published Prime collateral table",
+        "detail": "Current Coinbase Prime documentation lists USDC, BTC and ETH only; it states there is no cross-margin with spot or U.S. Derivatives today. This is distinct from the Coinbase Bermuda Limited Global Derivatives cross-collateral terms.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-your-global-derivatives-portfolio"
+      },
+      {
+        "edge": "Coinbase Bermuda Limited Global Derivatives -> XRP collateral",
+        "status": "confirmed for eligible customers in supported regions outside the U.S.",
+        "detail": "Separate CBBM User Agreement product: XRP is a cross-collateral currency with 15% X:SM haircut; X:PM displays no fixed percentage, which is not evidence of zero risk. Effective date for most customers October 1, 2026.",
+        "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral"
+      }
+    ],
+    "circle_arc_sbi": [
+      {
+        "edge": "Circle Arc -> USDC",
+        "status": "confirmed",
+        "detail": "USDC is Arc's native gas asset; Arc launched Sep 16, 2026."
+      },
+      {
+        "edge": "SBI Group -> Arc",
+        "status": "announced founding-validator cohort with phased rollout",
+        "detail": "Founding-validator designation does not prove SBI was actively validating blocks at capture time."
+      },
+      {
+        "edge": "Coinbase/Binance/Kraken -> Arc",
+        "status": "confirmed exchange participants",
+        "detail": "Exchange participation is not validator status."
+      },
+      {
+        "edge": "SBI Group -> JPYSC on Arc",
+        "status": "unverified",
+        "detail": "Circle's StableFX local stablecoin list included JPYC, not JPYSC; SBI's collaboration statement mentioned JPYSC but no Arc deployment was verified."
+      }
+    ],
+    "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+    "coinbase_product_regime_matrix": [
+      {
+        "product": "Coinbase Global Exchange perpetual futures",
+        "entity": "Coinbase Global Exchange",
+        "xrp_collateral": "Yes",
+        "notes": "XRP listed as accepted collateral. Haircut is determined by base/closeout-horizon rules; no XRP-specific numerical haircut in the help page. Cross-collateral UBO ADQ limits apply.",
+        "source": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work"
+      },
+      {
+        "product": "Coinbase Global Exchange USDC Borrow",
+        "entity": "Coinbase Global Exchange",
+        "xrp_collateral": "Potentially via accepted non-USDC collateral; XRP-specific loan multiplier not disclosed in public help page",
+        "notes": "Published 10% APY; collateral is held while USDC is borrowed; interest accrues every 30 seconds and is paid at midnight UTC; insufficient collateral can cause liquidation or rolling debt.",
+        "source": "https://help.coinbase.com/en/global-exchange/portfolio-balances/usdc-borrow"
+      },
+      {
+        "product": "Coinbase Bermuda Limited Global Derivatives",
+        "entity": "Coinbase Bermuda Limited (CBBM)",
+        "xrp_collateral": "Yes",
+        "notes": "Eligible customers in supported regions outside the U.S.; XRP X:SM haircut 15%; X:PM no fixed percentage displayed.",
+        "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral"
+      },
+      {
+        "product": "Coinbase Prime U.S. Derivatives / CDE",
+        "entity": "Coinbase Financial Markets (CFM)",
+        "xrp_collateral": "No in current published table",
+        "notes": "USD cash margin; USDC only indirectly via auto-conversion to USD.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-and-eligible-collateral-for-us-derivatives"
+      },
+      {
+        "product": "Coinbase Prime Global Derivatives / Deribit",
+        "entity": "Coinbase Financial Markets (CFM) through foreign broker",
+        "xrp_collateral": "No in current published table",
+        "notes": "Eligible collateral listed as USDC, BTC and ETH only; no cross-margin with spot or U.S. Derivatives today.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-your-global-derivatives-portfolio"
+      }
+    ],
+    "cftc_26_17_correction": {
+      "status": "conditional regulatory no-action position; not proof of XRP collateral enablement",
+      "detail": "CFTC Letter 26-17 concerns CFM's planned foreign-broker arrangement and rights of reuse for customer-owned digital commodities and payment stablecoins. Current Coinbase Prime collateral documentation for the CFM/Deribit product lists USDC, BTC and ETH, not XRP. Product eligibility must be verified separately from broad legal asset classification.",
+      "source": "https://www.cftc.gov/csl/26-17/download"
+    },
+    "coinbase_usdc_borrow_api_followup": {
+      "candidate_public_endpoint": "GET /api/v1/assets on Coinbase International Exchange (INTX)",
+      "purpose": "Potentially retrieve per-asset metadata related to collateral/loan eligibility and the loan_collateral_requirement_multiplier mentioned by Coinbase Help.",
+      "evidence": "CCXT's Coinbase International API mapping identifies GET /api/v1/assets as public. Coinbase Help says the current collateral multiplier is available through an API, but does not identify this exact endpoint in the help article. A third-party data model includes a loan_collateral_requirement_multiplier field.",
+      "status": "DESIGNED / candidate identified; not EXECUTED or VERIFIED",
+      "retrieval_limitation": "The API host rejected the available public web retrieval path. No current XRP multiplier or response schema was retrieved.",
+      "caution": "Do not substitute the older Coinbase Exchange GET /loans/assets endpoint; third-party endpoint maps classify that route as private and it may belong to a different Coinbase product.",
+      "next": "Use the official INTX API reference or an authorized public client to verify the base URL, endpoint response, field presence, rate limit and product/jurisdiction scope."
+    }
+  },
+  "coinbase_q3_2026": {
+    "filing_date": "2026-10-29",
+    "q3_total_revenue_usd": 1215582000,
+    "q3_net_revenue_usd": 1160462000,
+    "q3_transaction_revenue_usd": 590224000,
+    "q3_subscription_services_revenue_usd": 570238000,
+    "q3_stablecoin_revenue_usd": 306905000,
+    "q3_corporate_interest_and_other_income_usd": 55120000,
+    "q3_net_income_usd": 718697000,
+    "q3_adjusted_ebitda_usd": 332868000,
+    "nine_month_net_loss_usd": 34888000,
+    "assets_on_platform_usd": 376600000000,
+    "assets_on_platform_share_of_total_crypto_market_pct": 12.5,
+    "monthly_transacting_users_millions": 7.4,
+    "crypto_trading_volume_market_share_pct": 10.7,
+    "average_usdc_held_in_coinbase_products_usd": 22000000000,
+    "average_usdc_market_cap_usd": 73000000000,
+    "average_usdc_products_share_pct": 30,
+    "average_off_platform_usdc_usd": 51000000000,
+    "usdc_economics_management_statement": "Coinbase said it captured approximately 50% of USDC economics over the prior year; this is management's characterization, not an independently calculated market-share metric.",
+    "relationship_with_circle": "10-Q says Coinbase renewed its arrangement with Circle on the same terms. Q3 earnings materials describe Coinbase and Circle as both building stablecoin payment infrastructure, cooperating to grow USDC while competing in some infrastructure areas.",
+    "revenue_causality": "Higher average USDC balances added $84.6M to Q3 stablecoin revenue versus prior-year quarter; lower average interest rates reduced it by $52.8M. Q3 net income includes volatile investment/other-income effects and should not be treated as operating run-rate.",
+    "source_sec_10q": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+    "source_sec_earnings_deck": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm"
+    ],
+    "circle_relationship_update": {
+      "ten_q": "Coinbase's Q3 2026 Form 10-Q says its arrangement with Circle was renewed on the same terms.",
+      "management_position": "Coinbase management described the companies as both building stablecoin payment infrastructure, cooperating to grow USDC while competing in some infrastructure areas.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+        "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+      ]
+    }
+  },
+  "binance_tron_separate_stream": {
+    "analyst_estimated_tron_assets_stolen_usd": 628000000,
+    "tether_frozen_usdt": 378700000,
+    "analyst_estimated_total_moved_usd": 242000000,
+    "analyst_estimated_moved_off_tron_usd": 194000000,
+    "reported_services": [
+      {
+        "name": "Relay",
+        "estimated_usd": 48000000
+      },
+      {
+        "name": "THORChain",
+        "estimated_usd": 44000000
+      },
+      {
+        "name": "Chainflip",
+        "estimated_usd": 32100000
+      },
+      {
+        "name": "Symbiosis",
+        "estimated_usd": 16000000
+      }
+    ],
+    "bitget_wallet_unresolved_estimate_usd": 41700000,
+    "source_classification": "Secondary reporting of SomaXBT on-chain analysis, not an XRP transfer series.",
+    "source": "https://www.theblock.co/news/defi/2026-11-01/north-korean-hackers-launder-242-million-of-binance-loot-via-tron-as-fbi-presses-thorchain-analyst-432257"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "XRP institutional collateral acceptance expands demand for XRP inventory",
+      "support": "Coinbase Global Exchange accepts XRP as cross collateral; USDC borrowing can hold non-USDC collateral.",
+      "counterevidence": "No XRP collateral balances, loan balances, customer counts or collateral-related purchases are public; posting existing XRP is not new spot demand."
+    },
+    {
+      "id": "H2",
+      "claim": "Stablecoin rails increasingly substitute for XRP as bridge liquidity",
+      "support": "Arc USDC gas, StableFX, CPN, Coinbase RLUSD distribution and USDC borrow products.",
+      "counterevidence": "USDC is also native on XRPL; Ripple uses USDC alongside RLUSD; no matched-route settlement volume establishes substitution."
+    },
+    {
+      "id": "H3",
+      "claim": "Institutional multi-network strategy increases XRPL utility without guaranteeing XRP demand",
+      "support": "SBI participates in Ripple-related ventures and is designated Arc founding validator; Circle USDC is native on XRPL.",
+      "counterevidence": "Validator activation and actual cross-network payment flows remain unverified."
+    },
+    {
+      "id": "H4",
+      "claim": "The six-wallet XRP redistribution is staging for eventual laundering or liquidation",
+      "support": "Six newly activated destinations, round-number tranches, common funding source, and the wider Binance theft laundering activity.",
+      "counterevidence": "Bithomp snapshots show exact tranche balances and no outbound payments at capture; no exchange/DEX/bridge sale is established."
+    },
+    {
+      "id": "H5",
+      "claim": "Agentic-payment transaction counts overstate economic scale",
+      "support": "XRP Radar reports 14.8M x402 transactions but only 7,021 XRP plus 38,031 RLUSD cumulative settlement value (about $46.8K at the captured XRP mark).",
+      "counterevidence": "The metric may omit some facilitator or off-ledger value; raw settlement sample could not be independently fetched in this run."
+    },
+    {
+      "id": "H6",
+      "claim": "Exchange-wallet concentration is custody concentration, not tradable float",
+      "support": "XRP Radar attributes 22.38B XRP to 24 exchanges, including Coinbase 5.84B, Upbit 6.43B and Binance 2.72B, while explicitly noting pooled customer deposits and cold storage.",
+      "counterevidence": "Unlabeled exchange wallets may be omitted; wallet labels may include exchange-controlled reserves and customer assets."
+    }
+  ],
+  "research_threads": {
+    "japanese_sbic": {
+      "identity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621; founded 1963.",
+      "distinction": "Separate from SBI Holdings and the SBI Group. Its ChatGPT/Copilot training was restricted to investee companies; no OpenAI commercial partnership or XRP relationship is established.",
+      "sources": [
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic.co.jp/training/20250612co/"
+      ]
+    },
+    "chatgpt_sbic": {
+      "candidates": [
+        "Tokyo SBIC's official June 2025 training included ChatGPT on day one and Copilot on day two for investee companies.",
+        "The academic SBIC is the Social Bias Inference Corpus. The primary 2024 Computational Linguistics paper describes 34K inferences where hate speech is annotated with free-text explanations of why a demographic subgroup is targeted."
+      ],
+      "primary_paper_result": {
+        "model": "GPT 3.5",
+        "task": "Social Bias Inference explanation generation",
+        "metric": "65.9% of pairwise rankings in Table 7",
+        "exact_interpretation": "The paper's authors unanimously preferred GPT-3.5's generated explanation over the dataset's gold human reference in 65.9% of reported pairwise rankings for the SBIC generation task.",
+        "not": "Not 65.9% classification accuracy, not overall model accuracy, not proof ChatGPT outperformed humans generally, and not an OpenAI partnership with Japanese SBIC."
+      },
+      "conclusion": "The phrase 'ChatGPT SBIC' most plausibly refers either to Tokyo SBIC's ChatGPT training or GPT-3.5's evaluation on the Social Bias Inference Corpus. They are separate entities/contexts; the exact intended reference remains dependent on the originating phrase context.",
+      "sources": [
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic.co.jp/company/profile/",
+        "https://aclanthology.org/2024.cl-1.8.pdf"
+      ]
+    },
+    "ask_coin": {
+      "identity_assessment": "Permission's ASK token is now the strongest candidate for the user's 'ASK Coin' reference, but the phrase remains ambiguous without its original context.",
+      "confirmed_coinbase_edge": "Permission announced on 2026-09-22 that its ASK wallet moved to Coinbase embedded-wallet infrastructure. This is a wallet/custody technology relationship, not evidence of Coinbase exchange listing or XRP integration.",
+      "token_deployment": "Permission's official docs list ASK OFT-20 contracts on Base and Polygon and describe LayerZero OFT plus Stargate support. No XRPL contract or direct XRP integration was found in the official token-address list.",
+      "base_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "polygon_contract": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+      "classification": "strong candidate, not final identity resolution",
+      "sources": [
+        "https://www.permission.ai/blog/ask-wallet-update",
+        "https://docs.permission.ai/ask-token/contract-addresses",
+        "https://www.permission.ai/"
+      ]
+    },
+    "actual_capital": "Flare's May 2025 wording concerns USDt0/FXRP liquidity deployment, not a disclosed amount of new XRP spot purchases.",
+    "camilla_stephenson": {
+      "requested_identity": "Camilla Stephenson",
+      "likely_creator": "Dr. Kamilah Stevenson (surname spelled Stevenson, not Stephenson)",
+      "identity_assessment": "strong likely match, not exact spelling match. In the iHeart episode 'Crypto Panics! with Dr. Kamilah Stevenson', the guest says she is also found on YouTube as 'Doctor Camilla Stevenson' and warns that fake pages exist. Candidate YouTube handle @drkamilahstevenson is the large channel indexed under Kamilah Stevenson; video transcripts also introduce the speaker as Camila Stevenson. This triangulates Kamilah/Camila/Camilla as name variants for the same creator, while the user's 'Stephenson' spelling remains unverified.",
+      "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
+      "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "candidate_channel_inventory": "Third-party channel analytics reports approximately 1.2K uploads; this is not an exhaustive video export. The channel /videos page and RSS feed were not retrievable through the current public web path.",
+      "known_candidate_videos": [
+        {
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "video_id": "QslbjGQD0MU",
+          "published": "2025-12-14",
+          "url": "https://www.youtube.com/watch?v=QslbjGQD0MU"
+        },
+        {
+          "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+          "video_id": "ci0FH73lbCs",
+          "published": "2026-01-13",
+          "url": "https://www.youtube.com/watch?v=ci0FH73lbCs"
+        },
+        {
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+          "video_id": "cxeX_eu_2H0",
+          "published": "2026-01-15",
+          "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0"
+        },
+        {
+          "title": "XRP Was Built for What's Coming",
+          "video_id": "ywQEoYPzhlQ",
+          "published": "2026-03-03",
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+        },
+        {
+          "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+          "video_id": "8xiy8w2YlfY",
+          "published": "2026-07-30",
+          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+        }
+      ],
+      "inventory_status": "partial candidate list only. Do not claim exhaustive coverage or attribute unrelated lookalike channels. The creator explicitly warns that fake pages exist; use the channel ID/handle and corroborated podcast/video self-identification to avoid impersonators.",
+      "sources": [
+        "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+        "https://www.youtube.com/@drkamilahstevenson",
+        "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+        "https://www.youtube.com/watch?v=QslbjGQD0MU",
+        "https://www.youtube.com/watch?v=ci0FH73lbCs",
+        "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+        "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+        "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+      ]
+    }
+  },
+  "repo_status": {
+    "main_sha": "f4acd0472e140a7d1445cebd1c5621aa152eef9c",
+    "pr1495": {
+      "purpose": "Fresh-main Cross Analysis read-only successor",
+      "head_sha": "e93c8608409719a4c8883f017d037ab22d4132f0",
+      "ci": "348 tests + 8 subtests passed",
+      "gate": "passed; merge disabled",
+      "state": "open draft unmerged"
+    },
+    "pr1496": {
+      "purpose": "Hourly read-only XRP ingestion and rolling 90-day artifact feature store",
+      "head_sha": "7f5cce0eac2c614a0d135a584b4c8bb0c2add312",
+      "ci": "348 tests + 8 subtests passed",
+      "gate": "passed; merge disabled",
+      "state": "open draft unmerged",
+      "execution_status": "workflow not executed because PR remains unmerged"
+    },
+    "main_ingestion_root_cause": "The active Knowledge Signal Cycle workflow is manual-dispatch only. The hourly Cross Analysis run 41409043950 reported zero recent/prior XRP and BTC observations. PR #1496 proposes a separate read-only scheduled pipeline; it has not run.",
+    "branch_protection": "The rulesets endpoint exposed one disabled fallback ruleset; classic branch-protection details returned 403. Required review/status-check enforcement remains unverified.",
+    "safety": "No merge, force-push, workflow dispatch, secret access, deployment or trading action performed."
+  },
+  "next_actions": [
+    "Reconcile all six XRP recipient accounts and the original source account at one pinned validated ledger through two independent raw-node/indexer sources.",
+    "Capture all nine redistribution transaction hashes and exact delivered amounts; resolve source-account residual from raw metadata rather than rounded TRM totals.",
+    "Monitor the six XRP recipients for outbound payments, exchange deposits, DEX swaps and bridge transfers; do not equate the separate Tron laundering stream with XRP movement.",
+    "Verify the actual Coinbase Global Exchange XRP loan-collateral multiplier, collateral balances and USDC borrowing totals through public API or disclosures.",
+    "Reconcile Circle/DefiLlama/RWA.xyz XRPL stablecoin supply and Coinbase Q3 USDC revenue categories.",
+    "Reconcile October 30 XRP ETF flows at fund level using issuer creations/redemptions and official daily holdings.",
+    "Review PR #1495 and #1496; neither is merged or executed on main.",
+    "Complete source independence, timestamp anchoring, immutable feature store and walk-forward forecast evaluation before issuing any directional forecast.",
+    "Reconcile XRP Radar's exchange wallet set against XRPSCAN labels and the earlier XRP Insights 701-wallet exchange-balance methodology; treat wallet-set changes as coverage changes, not flows.",
+    "Verify the t54 x402 aggregate value against SourceTag 804681468 payments at a pinned ledger; separate XRP/RLUSD settlement notional from transaction count.",
+    "Track the 1B XRP escrow unlock on 2026-12-01 and subsequent EscrowFinish/EscrowCreate transactions; distinguish net release from sales."
+  ],
+  "research_corrections": [
+    "Do not conflate Coinbase Global Exchange, Coinbase Bermuda Limited Global Derivatives, Coinbase Prime U.S. Derivatives, and Coinbase Prime Global Derivatives via CFM/Deribit. XRP is listed as collateral on Global Exchange and CBBM Global Derivatives; current Prime CFM tables list USD/USDC auto-convert for U.S. Derivatives and USDC/BTC/ETH for Prime Global Derivatives, with no XRP.",
+    "XRP Radar's 14.8M x402 transaction count corresponds to only 7,021 XRP plus 38,031 RLUSD reported cumulative settlement value. Treat as micropayment activity; do not present transaction count as actual capital.",
+    "XRP Radar reports 22.38B XRP in tracked exchange wallets, including 5.84B Coinbase, 6.43B Upbit, 2.72B Binance and 60M SBI VC Trade. These are pooled/cold customer balances plus some exchange reserves, not tradable float.",
+    "XRP Radar's $4.33B RWA total contains approximately $276M transferable on-chain value and $4.06B platform-locked registry notional. Do not call the entire $4.33B deployed or tradable capital."
+  ],
+  "xrp_radar_snapshot": {
+    "captured_at_utc": "2026-11-02T08:16:00Z",
+    "total_supply_xrp": 100000000000,
+    "tracker_circulating_xrp": 68890000000,
+    "ripple_escrow_xrp": 31100000000,
+    "exchange_wallets_xrp": 22380000000,
+    "exchange_platforms": 24,
+    "etf_and_index_holdings_xrp": 1200000000,
+    "etf_and_index_assets_usd": 1500000000,
+    "etf_and_index_products": 7,
+    "defi_amm_xrp": 417800000,
+    "defi_amm_tvl_usd": 523000000,
+    "treasury_xrp": 473300000,
+    "tokenized_rwa_tracked_value_usd": 4330000000,
+    "rwa_transferable_onchain_value_usd": 276000000,
+    "rwa_platform_locked_registry_notional_usd": 4060000000,
+    "supply_taxonomy_note": "The tracker’s 68.89B circulating taxonomy differs from CoinMarketCap’s 63.351B circulating figure. Do not combine definitions or infer tradable float.",
+    "exchange_holdings": [
+      {
+        "exchange": "Upbit",
+        "region": "South Korea",
+        "xrp": 6430000000,
+        "tracked_wallets": 13
+      },
+      {
+        "exchange": "Coinbase",
+        "region": "United States",
+        "xrp": 5840000000,
+        "tracked_wallets": 358
+      },
+      {
+        "exchange": "Binance",
+        "region": "Global/offshore",
+        "xrp": 2720000000,
+        "tracked_wallets": 153
+      },
+      {
+        "exchange": "Bithumb",
+        "region": "South Korea",
+        "xrp": 1830000000,
+        "tracked_wallets": 4
+      },
+      {
+        "exchange": "Uphold",
+        "region": "United States",
+        "xrp": 1700000000,
+        "tracked_wallets": 24
+      },
+      {
+        "exchange": "Kraken",
+        "region": "United States",
+        "xrp": 957000000,
+        "tracked_wallets": 14
+      },
+      {
+        "exchange": "bitbank",
+        "region": "Japan",
+        "xrp": 576000000,
+        "tracked_wallets": 2
+      },
+      {
+        "exchange": "Coincheck",
+        "region": "Japan",
+        "xrp": 554000000,
+        "tracked_wallets": 2
+      },
+      {
+        "exchange": "SBI VC Trade",
+        "region": "Japan",
+        "xrp": 60000000,
+        "tracked_wallets": 2
+      }
+    ],
+    "exchange_holdings_caveat": "Mostly pooled customer deposits, including cold storage, plus exchange-controlled reserves such as cbXRP backing. Wallet labels are a verified floor, not complete exchange inventory or tradable float. Regional grouping uses exchange headquarters, not customer residency.",
+    "defi_breakdown": [
+      {
+        "protocol": "Flare FAssets",
+        "xrp": 145400000,
+        "classification": "bridged/wrapped XRP"
+      },
+      {
+        "protocol": "Doppler Finance",
+        "xrp": 89600000,
+        "classification": "institutional yield"
+      },
+      {
+        "protocol": "XRPL native AMM",
+        "xrp": 12600000,
+        "classification": "native AMM"
+      },
+      {
+        "protocol": "cbXRP",
+        "xrp": 150900000,
+        "classification": "Coinbase-wrapped XRP on Base"
+      },
+      {
+        "protocol": "wXRP",
+        "xrp": 19400000,
+        "classification": "Hex Trust wrapped XRP"
+      }
+    ],
+    "defi_note": "The categories overlap conceptually with bridge/wrapped collateral and should not be summed blindly into unique XRP supply without protocol-level deduplication.",
+    "rwa_note": "Only $276M is described as distributed, transferable on-chain investor float. Approximately $4.06B is represented/registry notional locked on issuing platforms, not transferable XRP Ledger float or proof of deployed cash."
+  },
+  "x402_agent_payments": {
+    "source": "https://xrp-insights.com/xrp-radar",
+    "capture_time_utc": "2026-11-02T08:16:00Z",
+    "agent_transactions": 14803915,
+    "approximate_transactions_per_day": 102700,
+    "active_agents": 189,
+    "merchants": 183,
+    "paid_service_endpoints": 5790,
+    "all_time_settled_xrp": 7021,
+    "all_time_settled_rlusd": 38031,
+    "approximate_usd_at_xrp_1_25": 46807,
+    "approximate_average_usd_per_transaction": 0.00316,
+    "top_merchant": {
+      "name": "AskSurf",
+      "transactions": 1126310
+    },
+    "source_tag": 804681468,
+    "last_sample_transaction": "4D80732653B8E86D77BFC11B5818F6A5236CAAA9A1A456D7F1C2C41B72616672",
+    "last_sample_ledger": 108041043,
+    "verification_limit": "The tracker says it spot-checks a native XRPL Payment using SourceTag 804681468. Its linked sample transaction returned 403 from XRPLScan and the official explorer was inaccessible through this retrieval path; the aggregate totals are not independently raw-node verified in this run.",
+    "economic_interpretation": "Very high transaction count but approximately $46.8K cumulative value at the captured XRP price. This is micro-payment activity, not evidence of large XRP capital inflows. Transaction count must not substitute for settled notional.",
+    "coinbase_connection": "The page describes x402 as an open standard revived by Coinbase. That is a protocol-level indirect connection; no direct Coinbase operation of the XRPL t54 facilitator was established.",
+    "ripple_connection": "The page identifies t54 as XRPL facilitator operator and describes Ripple as a strategic investor/partner. The page says settlement can be in XRP or RLUSD.",
+    "asksurf_disambiguation": "AskSurf is a merchant/service endpoint on XRPL, not the Permission ASK token and not proof of an ASK-token/XRP integration."
+  }
+}

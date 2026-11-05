@@ -1,0 +1,277 @@
+{
+  "schema_version": "barrot-xrp-research-handoff/v1",
+  "captured_at_utc": "2026-11-02T10:00:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status": {
+    "research": "EXECUTED; source pages retrieved and claims classified",
+    "durable_archive": "DESIGNED; append-only GitHub artifact created on existing research PR branch",
+    "verification": "PENDING exact-head CI for the new artifact",
+    "forecasting": "NOT_ISSUED"
+  },
+  "evidence_cutoff_utc": "2026-11-02T09:58:00Z",
+  "findings": [
+    {
+      "id": "CB-XRP-LOAN-001",
+      "classification": "confirmed_product_terms_from_coinbase",
+      "claim": "Coinbase's consumer crypto-backed USDC loan product lists XRP as eligible collateral. Coinbase states that borrowing is enabled by Morpho on Base and Coinbase provides an interface to Morpho rather than controlling the protocol.",
+      "details": {
+        "eligible_regions": "Verified Coinbase customers in the United States excluding New York, with limited access in the UK and Canada; eligibility can vary by region and loan type.",
+        "collateral": "XRP is explicitly listed among eligible assets.",
+        "custody_mechanics": "Collateral is locked on Morpho; Coinbase documentation describes Coinbase's interface and sponsored gas.",
+        "use_restriction": "Coinbase terms state loan proceeds cannot be used for trading on Coinbase.",
+        "rates": "Variable rates depend on Morpho supply and demand; fixed rates are displayed at confirmation. Asset limits and processing fees vary."
+      },
+      "interpretation": "This is a documented XRP-backed USDC credit pathway, not proof of aggregate XRP collateral balances, net new XRP purchases, or unrestricted borrowing proceeds.",
+      "source_urls": [
+        "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+        "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-setup"
+      ]
+    },
+    {
+      "id": "CB-XRP-CROSS-001",
+      "classification": "confirmed_product_terms_from_coinbase",
+      "claim": "Coinbase Global Exchange lists XRP as eligible cross collateral for perpetual-futures margin. Collateral is valued in USDC terms, subject to asset weights, haircuts and organization-level limits based on average daily quantity.",
+      "details": {
+        "accepted_asset": "XRP",
+        "use": "Support perpetual-futures positions with collateral other than USDC.",
+        "concentration_control": "Limits apply across the organization/ultimate beneficial owner; excess collateral above the configured average-daily-quantity percentage does not contribute to portfolio value.",
+        "liquidation": "Collateral may be liquidated automatically when margin coverage is insufficient."
+      },
+      "interpretation": "This is a separate institutional/professional derivatives collateral regime from Coinbase's consumer Morpho-backed USDC loan.",
+      "source_urls": [
+        "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work"
+      ]
+    },
+    {
+      "id": "CB-XRP-GLOBAL-001",
+      "classification": "confirmed_product_terms_from_coinbase",
+      "claim": "Coinbase Bermuda Global Derivatives lists XRP as cross collateral for eligible supported customers outside the United States. The published table shows a 15% haircut in X:SM and no fixed haircut displayed in X:PM.",
+      "details": {
+        "region": "Eligible customers in supported regions outside the U.S.",
+        "effective_terms": "For most customers the updated Coinbase Bermuda Limited agreement became effective October 1, 2026.",
+        "X_SM_haircut": "15%",
+        "X_PM_haircut": "No fixed haircut shown in the published table; this does not mean zero risk or universal eligibility."
+      },
+      "interpretation": "Do not transfer this haircut schedule to Coinbase Global Exchange, Coinbase consumer Borrow, Coinbase Prime U.S. Derivatives, or CFM/Deribit arrangements.",
+      "source_urls": [
+        "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-cross-collateral",
+        "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral"
+      ]
+    },
+    {
+      "id": "CB-USDC-BORROW-001",
+      "classification": "confirmed_product_terms_from_coinbase",
+      "claim": "Coinbase Global Exchange USDC Borrow is a distinct facility for managing negative USDC balances when cross collateral is enabled. Non-USDC collateral is held on the platform and the published borrowing rate is 10% APY, accrued every 30 seconds.",
+      "interpretation": "This is not the same as the consumer Morpho loan. A negative USDC balance can create rolling debt, restrict withdrawals and potentially trigger collateral liquidation.",
+      "source_urls": [
+        "https://help.coinbase.com/en/global-exchange/portfolio-balances/usdc-borrow"
+      ]
+    },
+    {
+      "id": "COINBASE-Q3-2026-001",
+      "classification": "company_reported_financial_and_operating_metrics",
+      "claim": "Coinbase's October 29 Q3 2026 results report 10.7% crypto trading volume market share, a fourth consecutive quarter of share gains, $22B average USDC held in Coinbase products, approximately 50% of USDC economics captured over the prior year, 179% compound annual growth in crypto derivatives volume over two years, $200M annualized prediction-market revenue, subscription/services at 49% of Q3 net revenue, and average daily loan-book balance up 74% year over year.",
+      "interpretation": "Coinbase is diversifying from spot brokerage into derivatives, collateralized credit, stablecoin economics, Base/onchain activity and prediction markets. These are company-reported metrics, not independently audited market-share estimates.",
+      "source_urls": [
+        "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+      ]
+    },
+    {
+      "id": "SBI-JPYSC-2026-11-02-001",
+      "classification": "company_reported_product_balance_thresholds",
+      "claim": "SBI VC Trade announced on November 2, 2026 that JPYSC lending balances exceeded ¥10 billion and JPYSC handled balances exceeded ¥30 billion.",
+      "interpretation": "This is fresh evidence of product-level yen-stablecoin activity inside SBI VC Trade. The announcement's headline thresholds are not independently reconciled to on-chain supply, net new capital, XRP purchases, or public-chain settlement. JPYSC remains distinct from JPYC, USDC, RLUSD and XRP.",
+      "unknowns": [
+        "Exact definition and gross/net treatment of 'handled balance'.",
+        "Whether the reported lending balance represents outstanding customer loans, customer deposits into the lending programme, or another product accounting measure.",
+        "Public-chain deployment and Arc/StableFX integration remain unverified."
+      ],
+      "source_urls": [
+        "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+        "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+        "https://www.sbigroup.co.jp/news/pr/2026/0713_16477.html"
+      ]
+    },
+    {
+      "id": "XRP-ETF-OCT-2026-001",
+      "classification": "secondary_aggregator_report_citing_SoSoValue",
+      "claim": "A November 2 report says U.S. spot XRP ETFs received approximately $18.83M net inflows in October, the seventh consecutive positive month, and reached approximately $1.81B cumulative net inflows. It reports XRP fell about 16% during October and that October was the second-smallest monthly inflow total on record.",
+      "interpretation": "Positive ETF subscriptions coexisted with a substantial spot-price decline. This is evidence against assuming ETF inflows alone dominate marginal price formation.",
+      "quality_limits": [
+        "The retrieved article is a secondary aggregator that attributes flow data to SoSoValue.",
+        "A second publication reproduces the same $4.32M weekly flow figure; it is not independent corroboration.",
+        "Daily fund flows, creation/redemption timing, in-kind activity and OTC sourcing have not been reconciled."
+      ],
+      "source_urls": [
+        "https://finance.biggo.com/news/b01263b5-7499-4776-bc98-2e6c8256e739",
+        "https://www.kucoin.com/news/flash/xrp-etfs-attract-4-32m-inflows-as-btc-eth-sol-funds-lose-701-27m"
+      ]
+    }
+  ],
+  "relationship_graph_edges": [
+    {
+      "from": "Coinbase consumer Borrow",
+      "to": "XRP",
+      "relationship": "accepts as collateral",
+      "status": "confirmed product documentation"
+    },
+    {
+      "from": "Coinbase consumer Borrow",
+      "to": "Morpho on Base",
+      "relationship": "Coinbase interface to protocol lending",
+      "status": "confirmed product documentation"
+    },
+    {
+      "from": "Coinbase Global Exchange",
+      "to": "XRP",
+      "relationship": "cross collateral for perpetual-futures margin",
+      "status": "confirmed product documentation"
+    },
+    {
+      "from": "Coinbase Bermuda Global Derivatives",
+      "to": "XRP",
+      "relationship": "cross collateral; X:SM 15% haircut",
+      "status": "confirmed product documentation; non-U.S. eligibility"
+    },
+    {
+      "from": "Coinbase Global Exchange USDC Borrow",
+      "to": "non-USDC collateral",
+      "relationship": "collateralized negative-USDC borrowing at published 10% APY",
+      "status": "confirmed product documentation"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle/USDC",
+      "relationship": "large distribution and revenue-sharing/economic relationship",
+      "status": "company-reported Q3 metrics"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relationship": "distribution and lending programme",
+      "status": "company-reported product balances"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relationship": "founding-validator cohort with phased rollout",
+      "status": "company announcement; live validator operation not independently verified"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Ripple/XRP ecosystem",
+      "relationship": "separate existing corporate, exchange and remittance relationships",
+      "status": "documented in prior handoff; do not attribute to Tokyo SBIC"
+    },
+    {
+      "from": "XRP spot ETFs",
+      "to": "XRP",
+      "relationship": "fund subscriptions/creation demand",
+      "status": "reported flows; price impact not identified"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_COLLATERAL_RETENTION",
+      "statement": "Coinbase's XRP-backed consumer loans and derivatives collateral increase XRP's productive utility and may reduce immediate sell pressure from holders who borrow or post margin instead of selling.",
+      "disconfirming_evidence": "Collateral balances are not disclosed; collateral is locked and can be liquidated; loan proceeds cannot be used for trading on Coinbase; product eligibility does not establish adoption."
+    },
+    {
+      "id": "H2_COLLATERAL_LIQUIDATION",
+      "statement": "The same credit and margin channels can amplify forced XRP selling during price declines, collateral deficits or funding stress.",
+      "disconfirming_evidence": "No XRP-specific aggregate liquidation series or stress-period collateral flow has been measured."
+    },
+    {
+      "id": "H3_SBI_YEN_RAIL_GROWTH",
+      "statement": "JPYSC lending and handling growth may deepen SBI's domestic yen-stablecoin network and support SBI's multi-rail strategy alongside USDC, RLUSD and Ripple relationships.",
+      "disconfirming_evidence": "JPYSC's public-chain/Arc deployment is unverified; product balances are not XRP demand; gross versus net balance definitions remain unknown."
+    },
+    {
+      "id": "H4_ETF_ABSORPTION_NOT_PRICE_CONTROL",
+      "statement": "ETF inflows may be absorbing some XRP supply while broader spot selling, leverage, macro conditions or exchange flows dominate marginal price.",
+      "disconfirming_evidence": "The reported ETF series is secondary-source data; flow timing and in-kind creation are not reconciled; no causal attribution or controlled event study exists."
+    },
+    {
+      "id": "H5_MULTI_RAIL_COMPLEMENT_SUBSTITUTE",
+      "statement": "Circle Arc, JPYSC and USDC can substitute for XRP on some payment corridors while also complementing XRPL where USDC and RLUSD settle alongside XRP.",
+      "disconfirming_evidence": "No comparable route-level settlement dataset across Arc, XRPL and bank rails has been assembled."
+    }
+  ],
+  "prediction_status": {
+    "issued": false,
+    "reason": "No point-in-time historical feature set, synchronized market/collateral series, leakage-safe walk-forward evaluation or calibrated out-of-sample results have been verified.",
+    "prohibited_inference": "Do not translate product eligibility, lending balances, ETF flows, tokenized RWA notional or transaction counts directly into new XRP spot demand."
+  },
+  "architecture_status": {
+    "xrp_hourly_rss_ingestion": "DESIGNED in open draft PR #1496; exact-head CI passed; scheduled workflow has not been executed because the PR is unmerged.",
+    "public_chain_adapters": "DESIGNED; Arc and XRPL providers documented, not live-tested in this run.",
+    "feature_store": "Initial news snapshot design exists; not yet a complete market, collateral, exchange, derivatives and macro feature store.",
+    "forecast_ledger": "Fixed-horizon controls remain proposed in open draft PRs; no verified forecasts/outcomes or calibration."
+  },
+  "sources": [
+    {
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "publisher": "Coinbase",
+      "date": "current page retrieved 2026-11-02",
+      "class": "official product documentation"
+    },
+    {
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "publisher": "Coinbase",
+      "date": "current page retrieved 2026-11-02",
+      "class": "official product documentation"
+    },
+    {
+      "url": "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-cross-collateral",
+      "publisher": "Coinbase",
+      "date": "current page retrieved 2026-11-02",
+      "class": "official product documentation"
+    },
+    {
+      "url": "https://help.coinbase.com/en/global-exchange/portfolio-balances/usdc-borrow",
+      "publisher": "Coinbase",
+      "date": "current page retrieved 2026-11-02",
+      "class": "official product documentation"
+    },
+    {
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "publisher": "Coinbase Investor Relations",
+      "date": "2026-10-29",
+      "class": "official company results"
+    },
+    {
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "publisher": "SBI Holdings/SBI VC Trade",
+      "date": "2026-11-02",
+      "class": "official company announcement"
+    },
+    {
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "publisher": "SBI Holdings",
+      "date": "2026-06-24",
+      "class": "official JPYSC launch announcement"
+    },
+    {
+      "url": "https://finance.biggo.com/news/b01263b5-7499-4776-bc98-2e6c8256e739",
+      "publisher": "BigGo Finance",
+      "date": "2026-11-02",
+      "class": "secondary market-data aggregation"
+    },
+    {
+      "url": "https://www.kucoin.com/news/flash/xrp-etfs-attract-4-32m-inflows-as-btc-eth-sol-funds-lose-701-27m",
+      "publisher": "KuCoin/Coinomedia",
+      "date": "2026-11-02",
+      "class": "secondary repost; not independent corroboration"
+    }
+  ],
+  "next_actions": [
+    "Fetch Coinbase's public loan/collateral API or market data, if available, for XRP-specific collateral multipliers, limits, supply and utilization; do not use private account data.",
+    "Separate consumer Morpho loan, Coinbase Global Exchange cross collateral, Coinbase Bermuda Global Derivatives and U.S. CFM/Prime regimes in every feature and relationship record.",
+    "Obtain JPYSC source definitions and reconcile the ¥10B lending balance and ¥30B handled balance to issuer disclosures and any available chain data.",
+    "Acquire primary SoSoValue daily ETF flows and reconcile October net flows, creations/redemptions and timestamps.",
+    "Add matched-corridor settlement measurements for Arc, XRPL, USDC, RLUSD and JPYSC before testing substitution/complement hypotheses.",
+    "Keep all forecasts NOT_ISSUED until point-in-time snapshots and leakage-safe evaluation are operational."
+  ]
+}

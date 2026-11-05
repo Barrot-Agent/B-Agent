@@ -1,0 +1,365 @@
+{
+  "schema_version": "barrot-xrp-research-handoff/v1",
+  "captured_at_utc": "2026-11-02T07:15:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status_semantics": {
+    "designed": "architecture specified",
+    "executed": "action performed",
+    "verified": "evidence independently checked"
+  },
+  "new_research": {
+    "topic": "Circle Arc mainnet, SBI Group, Coinbase, XRP Ledger and stablecoin/payment-rail competition",
+    "evidence_cutoff_utc": "2026-11-02T07:15:00Z",
+    "claims": [
+      {
+        "id": "ARC-001",
+        "classification": "confirmed_fact_from_official_company_release",
+        "claim": "Circle announced public Arc mainnet launch on 2026-09-16.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "10-14"
+      },
+      {
+        "id": "ARC-002",
+        "classification": "company_reported_claim",
+        "claim": "At launch Circle reported more than $74 billion USDC in circulation, more than 100 applications, and more than 100 institutional/ecosystem builders live on day one. These are Circle-reported launch metrics, not independently audited Arc activity measures.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "10-11"
+      },
+      {
+        "id": "ARC-003",
+        "classification": "confirmed_product_design_as_described_by_issuer",
+        "claim": "Arc's launch design specifies USDC-denominated gas, sub-second finality, opt-in privacy with network-wide release still in development, Circle StableFX for 24/7 FX settlement, and native Circle Payments Network integration.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "17-24"
+      },
+      {
+        "id": "ARC-004",
+        "classification": "confirmed_company_announced_validator_relationship",
+        "claim": "SBI Group is in Arc's founding validator cohort. Circle's release quotes SBI CEO Yoshitaka Kitao saying SBI will contribute to Arc operation and governance. SBI describes its collaboration with Circle as including USDC and JPYSC, with JPYSC issued by SBI Shinsei Trust.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "35-40"
+      },
+      {
+        "id": "ARC-005",
+        "classification": "confirmed_company_announced_ecosystem_participation",
+        "claim": "Coinbase, Binance and Kraken are named among digital-asset exchanges providing access to Arc. They are not named in the founding validator cohort list; do not misclassify exchange access as validator status.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "35-46"
+      },
+      {
+        "id": "ARC-006",
+        "classification": "confirmed_scope_distinction",
+        "claim": "JPYC appears in Circle's list of local stablecoins active or onboarding to StableFX. JPYSC is separately mentioned in SBI's intended collaboration with Circle. The release does not establish that JPYSC is deployed on Arc or StableFX.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "24,39-40"
+      },
+      {
+        "id": "ARC-007",
+        "classification": "company_reported_claim_not_arc_specific",
+        "claim": "Circle reports USDC accounts for 98.8% of agent-driven transaction volume across its Agent Stack. This is not an Arc-only volume statistic.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "29-34"
+      },
+      {
+        "id": "ARC-008",
+        "classification": "confirmed_disclaimer_and_forward_looking_scope",
+        "claim": "Circle says Arc is operated by a permissioned validator set; Arc LLC provides software services only and does not offer regulated financial/advisory services. Arc has not been reviewed or approved by NYDFS or another regulatory authority. The Payment Sector target above 100,000 TPS is roadmap language, not current verified throughput.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "62-67,83-85"
+      },
+      {
+        "id": "ARC-009",
+        "classification": "confirmed_issuer_statement_with_future_uncertainty",
+        "claim": "Circle says it completed a 10-billion ARC genesis mint, but explicitly says this is not a commitment to publicly launch ARC; transition toward proof of stake is being explored for 2027.",
+        "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "source_lines": "62-67"
+      },
+      {
+        "id": "XRPL-USDC-001",
+        "classification": "confirmed_joint_company_announcement",
+        "claim": "Ripple and Circle announced USDC on XRPL on 2025-06-12. Ripple said it intended to use USDC alongside RLUSD in Ripple Payments. The announcement also describes XRPL auto-bridging and XRP as an essential bridge currency for efficient trading with USDC.",
+        "source": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+        "source_lines": "14-26"
+      }
+    ],
+    "relationship_graph": [
+      {
+        "from": "Circle",
+        "to": "Arc",
+        "relationship": "issuer/operator ecosystem; public mainnet announced 2026-09-16",
+        "evidence": [
+          "ARC-001",
+          "ARC-003"
+        ]
+      },
+      {
+        "from": "USDC",
+        "to": "Arc",
+        "relationship": "native gas asset and core stablecoin integration",
+        "evidence": [
+          "ARC-003"
+        ]
+      },
+      {
+        "from": "SBI Group",
+        "to": "Arc",
+        "relationship": "founding validator; announced role in operation and governance",
+        "evidence": [
+          "ARC-004"
+        ]
+      },
+      {
+        "from": "SBI Group",
+        "to": "Circle",
+        "relationship": "commercial/infrastructure collaboration; USDC distribution and stated USDC/JPYSC plans",
+        "evidence": [
+          "ARC-004"
+        ]
+      },
+      {
+        "from": "Coinbase",
+        "to": "Arc",
+        "relationship": "named exchange access participant; not listed as founding validator",
+        "evidence": [
+          "ARC-005"
+        ]
+      },
+      {
+        "from": "Binance",
+        "to": "Arc",
+        "relationship": "named exchange access participant; not listed as founding validator",
+        "evidence": [
+          "ARC-005"
+        ]
+      },
+      {
+        "from": "Kraken",
+        "to": "Arc",
+        "relationship": "named exchange access participant; not listed as founding validator",
+        "evidence": [
+          "ARC-005"
+        ]
+      },
+      {
+        "from": "Ripple",
+        "to": "Circle",
+        "relationship": "joint USDC-on-XRPL announcement and stated interoperability thesis",
+        "evidence": [
+          "XRPL-USDC-001"
+        ]
+      },
+      {
+        "from": "USDC",
+        "to": "XRP Ledger",
+        "relationship": "native issuance announced by Circle and Ripple",
+        "evidence": [
+          "XRPL-USDC-001"
+        ]
+      },
+      {
+        "from": "XRP",
+        "to": "USDC on XRPL",
+        "relationship": "XRPL DEX auto-bridging uses XRP as bridge currency per Ripple announcement",
+        "evidence": [
+          "XRPL-USDC-001"
+        ]
+      },
+      {
+        "from": "Ripple Payments",
+        "to": "USDC and RLUSD",
+        "relationship": "Ripple stated intent to use both stablecoins",
+        "evidence": [
+          "XRPL-USDC-001"
+        ]
+      }
+    ],
+    "competing_hypotheses": [
+      {
+        "id": "H-ARC-1",
+        "hypothesis": "Arc can substitute for some XRPL/bridge-asset stablecoin payment routes because Arc uses USDC for gas and natively integrates StableFX and Circle Payments Network.",
+        "support": [
+          "ARC-003"
+        ],
+        "disconfirming": [
+          "XRPL-USDC-001"
+        ],
+        "unknowns": [
+          "route-level settlement volumes by corridor and asset",
+          "whether institutions migrate flows from XRPL to Arc",
+          "XRP-versus-USDC bridge selection by actual payments"
+        ]
+      },
+      {
+        "id": "H-ARC-2",
+        "hypothesis": "Arc and XRPL can be complementary rails: Circle USDC is native on XRPL, Ripple said it would use USDC alongside RLUSD, and SBI participates in both Ripple-related infrastructure and Arc.",
+        "support": [
+          "ARC-004",
+          "XRPL-USDC-001"
+        ],
+        "disconfirming": [
+          "ARC-003"
+        ],
+        "unknowns": [
+          "cross-network routing volumes",
+          "whether JPYSC is deployed on Arc",
+          "whether SBI routes any production payments between the networks"
+        ]
+      },
+      {
+        "id": "H-ARC-3",
+        "hypothesis": "SBI is pursuing a multi-network institutional strategy rather than exclusive alignment with Ripple or Circle.",
+        "support": [
+          "ARC-004",
+          "XRPL-USDC-001"
+        ],
+        "disconfirming": [],
+        "unknowns": [
+          "SBI internal capital allocation",
+          "commercial exclusivity terms",
+          "production volume attributable to each network"
+        ]
+      },
+      {
+        "id": "H-ARC-4",
+        "hypothesis": "Coinbase's Arc exchange participation may strengthen its USDC distribution position while its XRP derivatives and collateral products remain separate business lines.",
+        "support": [
+          "ARC-005"
+        ],
+        "disconfirming": [
+          "XRPL-USDC-001"
+        ],
+        "unknowns": [
+          "Coinbase Arc volumes",
+          "Coinbase customer asset allocation across Arc/XRPL",
+          "whether Arc activity affects XRP spot, derivatives or collateral demand"
+        ]
+      }
+    ],
+    "explicit_nonclaims": [
+      "No Arc transaction-volume time series was independently obtained in this run.",
+      "The 98.8% USDC agent-driven share is not Arc-specific.",
+      "JPYSC deployment on Arc or StableFX is not established; JPYC is a separate ticker appearing in the StableFX list.",
+      "Coinbase, Binance and Kraken are named as exchange participants, not Arc founding validators.",
+      "Circle's announcement metrics are company-reported and should be independently reconciled before predictive use.",
+      "Arc's payment-sector throughput above 100,000 TPS is a roadmap target, not verified current throughput.",
+      "Arc mainnet participation does not establish XRP purchases, sales or demand."
+    ],
+    "next_measurements": [
+      "Obtain Arc public explorer/API and define daily transaction, USDC transfer, fee, unique-active-address, DEX, lending, FX and CPN route measures.",
+      "Separate validator activity from exchange access and application activity.",
+      "Verify whether JPYSC is actually issued or bridged on Arc; do not infer from SBI's stated collaboration.",
+      "Compare Arc USDC corridor flows with XRPL USDC, RLUSD and XRP-bridge settlement by matched corridor and timestamp.",
+      "Measure whether Circle StableFX routes use USDC, EURC, JPYC or other local stablecoins and record production versus onboarding status.",
+      "Build counterfactual tests for substitution versus complementarity; control for market-wide stablecoin growth and macro liquidity."
+    ]
+  },
+  "repository_snapshot": {
+    "repository": "Barrot-Agent/B-Agent",
+    "inspected_main_sha": "bbf97421d79515e0077373da823c36434e54caa8",
+    "inspected_main_tree_sha": "b23232954330b9098e535e958e0df42a91e10cc2",
+    "main_protected": true,
+    "main_required_status_check_contexts": [],
+    "latest_main_scheduler_run": {
+      "run_id": 41404319571,
+      "conclusion": "success",
+      "head_sha": "bbf97421d79515e0077373da823c36434e54caa8",
+      "job": "tick"
+    },
+    "cross_analysis_current_main": {
+      "workflow": "contents:write; commits and pushes generated artifacts",
+      "sentiment_shift_sha": "96dc8ad4d077fc0f4b01181d7041f874b7a8fc15",
+      "xrp_recent_24h_entries": 0,
+      "xrp_prior_24h_entries": 0,
+      "xrp_recent_score": null,
+      "xrp_prior_score": null,
+      "btc_recent_24h_entries": 0,
+      "btc_prior_24h_entries": 0,
+      "btc_recent_score": null,
+      "btc_prior_score": null
+    },
+    "entity_profile": {
+      "sha": "5f681eda996fbf1220c19baed03726745dccc859",
+      "xrp_log_entries": 1208,
+      "btc_log_entries": 1245,
+      "unique_entities": 990,
+      "methodology": "all-entry corpus aggregate; no timestamp window; not current sentiment"
+    },
+    "open_proposals": [
+      {
+        "pr": 1486,
+        "purpose": "prediction source registration cutoff integrity",
+        "state": "open draft",
+        "head": "d94a1b52eefa200a51a1df53e85709e0dd1e00a3",
+        "ci": "passed",
+        "gate": "passed"
+      },
+      {
+        "pr": 1487,
+        "purpose": "disable automatic merge queue",
+        "state": "open draft",
+        "head": "079d914b8c9698e5a0d69211813ddacc719ad49a",
+        "ci": "passed",
+        "gate": "passed"
+      },
+      {
+        "pr": 1488,
+        "purpose": "retire misleading live-price signal accuracy",
+        "state": "open draft",
+        "head": "077c076fda07d2e97038dfd59036244837bd4ba2",
+        "ci": "passed",
+        "gate": "passed"
+      },
+      {
+        "pr": 1489,
+        "purpose": "restrict unattended scheduler allowlist",
+        "state": "open draft",
+        "head": "24782811eef3c0fffa824d1c0cf1bd718f2ebc23",
+        "ci": "passed",
+        "gate": "passed"
+      },
+      {
+        "pr": 1490,
+        "purpose": "disable unsafe Databricks PAT input workflow",
+        "state": "open draft",
+        "head": "96cf4b4f64a3aaefddddc8ab3117947f93df4861",
+        "ci": "passed",
+        "gate": "passed"
+      },
+      {
+        "pr": 1491,
+        "purpose": "fail closed when WebMCP registers no tools",
+        "state": "open draft",
+        "head": "bc080a0b0b20074dd307ac57ae844cdab59e2a56",
+        "ci": "passed",
+        "gate": "passed"
+      },
+      {
+        "pr": 1493,
+        "purpose": "make scheduled Cross Analysis read-only on current main",
+        "state": "open draft",
+        "head": "59a765bec969368eb3639190fbe5530c7dee2bca",
+        "ci": "in_progress_at_handoff",
+        "gate": "passed"
+      }
+    ],
+    "security_findings": [
+      "Main remains protected but the exposed required-status-check contexts array is empty; required CI checks are not established by this response.",
+      "Main Cross Analysis still has contents:write and commits/pushes generated outputs on schedule and workflow_run.",
+      "Main Merge Queue remains manually dispatchable with mode=all, unlimited max_prs=0, dry_run=false default and repository write permissions.",
+      "Main Scheduler Tick retains contents:write/actions:write; PR #1489 allowlists two workflows but still requires review of remaining token scope.",
+      "Main Databricks token workflow accepts a PAT via workflow_dispatch input and attempts secret write plus deployment dispatch; PR #1490 disables this path.",
+      "Main WebMCP scheduled workflow still has contents:write and commits an empty or incomplete result risk; PR #1491 makes zero registration fail closed.",
+      "The core Barrot Agent worker and other external deployment workflows require separate least-privilege review."
+    ],
+    "safety": {
+      "main_modified_by_this_run": false,
+      "merges": false,
+      "force_pushes": false,
+      "manual_workflow_dispatches": false,
+      "secrets_accessed": false,
+      "deployments": false,
+      "real_money_actions": false
+    }
+  }
+}
