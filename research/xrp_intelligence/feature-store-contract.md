@@ -105,3 +105,12 @@ Historical backfill captured at one later time cannot manufacture earlier foreca
 ## Daily feature-store recovery artifact
 
 The hourly collector continues to upload raw-source receipt artifacts with 90-day retention. The cumulative SQLite feature-store backup is uploaded once daily at 00:15 UTC, and on an explicit workflow dispatch, with 90-day retention. It is not uploaded on every hourly run, limiting artifact growth. When the Actions cache misses, the workflow searches the repository's paginated artifact inventory, selects the newest unexpired `xrp-public-feature-*` artifact, downloads the associated workflow-run artifact, and verifies that the SQLite file exists before ingestion proceeds. If no unexpired backup exists, the run records a bootstrap restore source rather than inventing prior history. This improves recovery over the previous one-day backup, but it does not provide indefinite retention, external WORM guarantees, independent timestamp anchoring, or automatic reconstruction of the feature store from raw-source artifacts.
+
+
+## Provider-use correction — 2026-11-05
+
+The official XRPL public-server directory lists the free InFTF and Honeycluster public endpoints under non-commercial services. The scheduled adapter now excludes both by default through `SCHEDULED_ENDPOINTS`; the GitHub Actions workflow invokes that default and does not opt in. The explicit `include_noncommercial_xrpl_nodes=True` function option is reserved for isolated non-commercial research capture, not scheduled or production operation.
+
+Even when the two nodes report the same validated-ledger index and hash, their agreement is an integrity check on the same ledger state. Their records are never model-eligible and never count as independent economic corroboration. Sustained scheduled collection requires a self-hosted XRPL node or a contracted commercial provider with the applicable terms/authorization archived in the source registry.
+
+Primary policy evidence: https://xrpl.org/docs/tutorials/public-servers. Honeycluster's general terms are at https://honeycluster.io/terms; no plan agreement or written business-use authorization was retrieved at the 2026-11-05 review.

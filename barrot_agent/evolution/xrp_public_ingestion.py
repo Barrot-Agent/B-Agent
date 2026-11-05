@@ -27,8 +27,8 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.6"
-PARSER_VERSION = "xrp-public-market-v3.6"
+ADAPTER_VERSION = "xrp-public-market-v3.7"
+PARSER_VERSION = "xrp-public-market-v3.7"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -66,6 +66,16 @@ XRPL_NODE_SOURCES = {
         "operator": "Honeycluster",
     },
 }
+
+# The official XRPL public-server directory classifies these free endpoints as
+# non-commercial. Keep them available for explicitly requested one-off research,
+# but never include them in the default/scheduled collection set.
+NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS = frozenset(XRPL_NODE_SOURCES)
+SCHEDULED_ENDPOINTS = tuple(
+    (source_id, url)
+    for source_id, url in ENDPOINTS
+    if source_id not in NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS
+)
 
 
 class XRPIngestionError(ValueError):
@@ -924,9 +934,15 @@ def _parse_xrpl_server_info(
     source_time = server_date
     if source_time > captured + timedelta(seconds=60):
         raise XRPIngestionError("XRPL server response time is later than the capture clock")
-    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    fresh, freshness_reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
     if age > MAX_LIVE_AGE_SECONDS:
         eligible, reason, quality = False, "validated_ledger_age_exceeds_300_seconds", "stale"
+    elif not fresh:
+        eligible, reason = False, freshness_reason
+    else:
+        # Network server_info is an integrity/operations observation, not an
+        # economic XRP feature. Agreement between nodes cannot make it model data.
+        eligible, reason = False, "xrpl_node_state_is_integrity_only_not_an_economic_feature"
     event_s, captured_s = _iso(source_time), _iso(captured)
     limitations = [
         f"Public non-commercial XRPL node operated by {config['operator']}; source_id preserves operator identity.",
@@ -1030,9 +1046,9 @@ def _reconcile_xrpl_node_records(
         "observed_source_count": len(observations),
         "observed_source_ids": sorted(observations),
         "observations": observations,
-        "model_admission_allowed": bool(
-            status == "AGREED" and node_records and all(item.get("model_eligible") is True for item in node_records)
-        ),
+        "integrity_check_only": True,
+        "model_admission_allowed": False,
+        "model_admission_reason": "xrpl_node_agreement_is_not_independent_economic_corroboration_or_a_model_feature",
     }
 
 
@@ -1832,9 +1848,14 @@ def run_ingestion(
     *,
     fetcher: Callable[[str, str], Mapping[str, Any]] = _default_public_fetcher,
     now: datetime | None = None,
+    include_noncommercial_xrpl_nodes: bool = False,
 ) -> dict[str, Any]:
+    """Capture public XRP data; non-commercial XRPL nodes are excluded by default."""
+    if not isinstance(include_noncommercial_xrpl_nodes, bool):
+        raise XRPIngestionError("include_noncommercial_xrpl_nodes must be a boolean")
     captured = now or datetime.now(timezone.utc)
     captured_s = _iso(captured)
+    selected_endpoints = ENDPOINTS if include_noncommercial_xrpl_nodes else SCHEDULED_ENDPOINTS
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     archive = RawReceiptArchive(output / "raw")
@@ -1846,7 +1867,7 @@ def run_ingestion(
     xrp_insights_metadata_payload: Mapping[str, Any] | None = None
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
 
-    for source_id, url in ENDPOINTS:
+    for source_id, url in selected_endpoints:
         response: Mapping[str, Any] | None = None
         raw_bytes: bytes | None = None
         try:
@@ -1944,7 +1965,20 @@ def run_ingestion(
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
 
-    xrpl_node_reconciliation = _reconcile_xrpl_node_records(records, xrpl_node_payloads)
+    if include_noncommercial_xrpl_nodes:
+        xrpl_node_reconciliation = _reconcile_xrpl_node_records(records, xrpl_node_payloads)
+    else:
+        xrpl_node_reconciliation = {
+            "status": "NOT_COLLECTED_PROVIDER_TERMS_POLICY",
+            "reason": "free_noncommercial_xrpl_nodes_are_excluded_from_default_and_scheduled_collection",
+            "required_source_count": len(XRPL_NODE_SOURCES),
+            "observed_source_count": 0,
+            "observed_source_ids": [],
+            "observations": {},
+            "integrity_check_only": True,
+            "model_admission_allowed": False,
+            "model_admission_reason": "provider_terms_policy_blocks_scheduled_use",
+        }
     if xrpl_node_reconciliation["status"] != "AGREED":
         for source_id in xrpl_node_reconciliation["observed_source_ids"]:
             raw_only.append(
@@ -2040,6 +2074,17 @@ def run_ingestion(
         "raw_only_source_count": len(raw_only),
         "research_only_observation_count": len(research_only_observations),
         "research_only_observations_path": "research_only_observations.json",
+        "collection_policy": {
+            "noncommercial_xrpl_nodes_included": include_noncommercial_xrpl_nodes,
+            "default_scheduled_endpoints_exclude_noncommercial_xrpl_nodes": True,
+            "excluded_noncommercial_xrpl_node_source_ids": (
+                [] if include_noncommercial_xrpl_nodes else sorted(NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS)
+            ),
+            "reason": (
+                "The official XRPL public-server directory classifies the free InFTF and Honeycluster endpoints as non-commercial. "
+                "Scheduled collection requires a self-hosted or contracted commercial endpoint."
+            ),
+        },
         "xrpl_node_reconciliation": xrpl_node_reconciliation,
         "input_feature_record_count": len(records),
         "delta_feature_record_count": len(delta_records),
@@ -2081,8 +2126,8 @@ def run_ingestion(
             "XRP Insights ETF metadata is retained with a raw receipt; its CSV is schema-validated in memory, recorded as a hash-only receipt under the publisher redistribution terms, and reduced to one attributed latest-date aggregate that is never promoted to model features.",
             "Bitwise XRP ETF, Grayscale GXRP and REX XRPR primary issuer pages are captured as SHA-256-receipted raw-only HTML; holdings are not parsed into features until page-vintage and parser validation are implemented.",
             "The historical evaluator uses naive, momentum, mean-reversion and volatility baselines. It does not issue a live forecast; probability calibration is diagnostic only, and shadow evaluation and drift monitoring are not yet implemented.",
-            "XRPL server_info is captured from two public non-commercial node operators; model admission requires an exact validated-ledger index/hash match. These nodes corroborate the same ledger and do not count as independent economic sources.",
-            "The XRPL public-node endpoints are non-commercial community services; replace them with a self-hosted or contracted node before sustained commercial use.",
+            "The default scheduled collector excludes the free InFTF and Honeycluster XRPL public-node endpoints because the official directory classifies them as non-commercial. A self-hosted or contracted commercial endpoint is required for sustained collection.",
+            "An explicit one-off non-commercial research capture may compare the two nodes' validated-ledger index/hash, but node agreement is integrity-only, never model-eligible, and never independent economic corroboration.",
             "This collector does not issue directional forecasts, trading signals, recommendations or paper trades.",
         ],
     }

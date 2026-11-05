@@ -22,6 +22,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     run_ingestion,
     ALLOWED_HOSTS,
     ENDPOINTS,
+    SCHEDULED_ENDPOINTS,
     PARSERS,
     XRPL_NODE_SOURCES,
     _reconcile_xrpl_node_records,
@@ -271,7 +272,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 19, (
+    assert summary["source_receipt_count"] == 17, (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -280,8 +281,10 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
     assert summary["feature_store_backup_frequency"] == "daily_plus_manual_dispatch"
-    assert summary["xrpl_node_reconciliation"]["status"] == "AGREED"
-    assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is True
+    assert summary["xrpl_node_reconciliation"]["status"] == "NOT_COLLECTED_PROVIDER_TERMS_POLICY"
+    assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
+    assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is False
+    assert set(summary["collection_policy"]["excluded_noncommercial_xrpl_node_source_ids"]) == set(XRPL_NODE_SOURCES)
 
     snapshot = json.loads((tmp_path / "run" / "snapshot.json").read_text(encoding="utf-8"))
     historical = next(
@@ -292,8 +295,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.6"
-    assert summary["parser_version"] == "xrp-public-market-v3.6"
+    assert summary["adapter_version"] == "xrp-public-market-v3.7"
+    assert summary["parser_version"] == "xrp-public-market-v3.7"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -302,8 +305,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert len(coinbase_closes) == 2
     assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
-    assert any(item["feature_id"] == "xrp.network.xrpl.base_fee_xrp" for item in snapshot["records"])
-    assert any(item["feature_id"] == "xrp.network.xrpl.validated_ledger_index" for item in snapshot["records"])
+    assert not any(item["feature_id"].startswith("xrp.network.xrpl.") for item in snapshot["records"])
     historical_derivatives = [
         item for item in snapshot["records"]
         if item["feature_id"].startswith("xrp.perpetual.binance.1h.")
@@ -442,6 +444,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "contents: write" not in workflow
     assert "git push" not in workflow
     assert "deploy" not in workflow.lower()
+    assert "--include-noncommercial-xrpl-nodes" not in workflow
 
 
 def test_walk_forward_overall_status_is_partial_until_every_venue_is_scored(tmp_path, monkeypatch):
@@ -769,8 +772,10 @@ def test_xrpl_server_info_uses_validated_ledger_and_http_date():
         captured=captured,
         http_date=response["http_date"],
     )
-    assert eligible is True and reason == ""
+    assert eligible is False
+    assert reason == "xrpl_node_state_is_integrity_only_not_an_economic_feature"
     assert source_as_of == "2026-11-05T03:59:55.000000Z"
+    assert all(item["model_eligible"] is False for item in records)
     values = {item["feature_id"]: item for item in records}
     assert values["xrp.network.xrpl.validated_ledger_index"]["value"] == 108123456.0
     assert values["xrp.network.xrpl.base_fee_xrp"]["value"] == 0.00001
@@ -823,8 +828,10 @@ def test_xrpl_node_reconciliation_requires_exact_two_operator_ledger_match():
 
     agreed = _reconcile_xrpl_node_records(records, payloads)
     assert agreed["status"] == "AGREED"
-    assert agreed["model_admission_allowed"] is True
+    assert agreed["integrity_check_only"] is True
+    assert agreed["model_admission_allowed"] is False
     assert agreed["observed_source_count"] == 2
+    assert all(item["model_eligible"] is False for item in records)
 
     payloads["xrpl_honeycluster_server_info"] = json.loads(
         json.dumps(payloads["xrpl_honeycluster_server_info"])
@@ -1149,3 +1156,34 @@ def test_raw_receipt_archive_can_record_digest_without_retaining_restricted_payl
     assert "written permission" in receipt["raw_retention_reason"]
     assert not list((tmp_path / "raw" / "sha256").glob("*"))
     assert len(receipt["receipt_id"]) == 64
+
+
+
+def test_scheduled_endpoint_set_excludes_noncommercial_xrpl_nodes():
+    scheduled_ids = {source_id for source_id, _url in SCHEDULED_ENDPOINTS}
+    assert not scheduled_ids.intersection(XRPL_NODE_SOURCES)
+    assert len(SCHEDULED_ENDPOINTS) == len(ENDPOINTS) - len(XRPL_NODE_SOURCES)
+
+
+def test_explicit_noncommercial_xrpl_research_capture_is_never_model_eligible(tmp_path):
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    summary = run_ingestion(
+        tmp_path / "noncommercial-research",
+        fetcher=_fake_fetcher(captured),
+        now=captured,
+        include_noncommercial_xrpl_nodes=True,
+    )
+
+    assert summary["source_receipt_count"] == 19
+    assert summary["xrpl_node_reconciliation"]["status"] == "AGREED"
+    assert summary["xrpl_node_reconciliation"]["integrity_check_only"] is True
+    assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
+    assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is True
+
+    receipts = json.loads((tmp_path / "noncommercial-research" / "receipt_manifest.json").read_text(encoding="utf-8"))
+    node_receipts = [item for item in receipts if item["source_id"] in XRPL_NODE_SOURCES]
+    assert len(node_receipts) == 2
+    assert all(item["model_eligible_source"] is False for item in node_receipts)
+
+    snapshot = json.loads((tmp_path / "noncommercial-research" / "snapshot.json").read_text(encoding="utf-8"))
+    assert not any(item["feature_id"].startswith("xrp.network.xrpl.") for item in snapshot["records"])
