@@ -256,13 +256,21 @@ def test_kraken_depth_without_server_date_is_raw_only(tmp_path):
     assert not any(item["feature_id"].startswith("xrp.spot.kraken.orderbook.") for item in snapshot["records"])
 
 
-def test_scheduled_ingestion_workflow_is_read_only_artifact_only():
+def test_scheduled_ingestion_workflow_persists_history_without_repository_writes():
     workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "xrp-public-ingestion.yml").read_text(encoding="utf-8")
     assert "cron: '3 * * * *'" in workflow
-    assert "permissions:\n  contents: read" in workflow
+    assert "actions: read" in workflow
+    assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
-    assert "upload-artifact@v7" in workflow
+    assert "actions/cache/restore@v4" in workflow
+    assert "actions/cache/save@v4" in workflow
+    assert "gh run download" in workflow
+    assert "xrp-public-raw-${{ github.run_id }}" in workflow
+    assert "xrp-public-feature-${{ github.run_id }}" in workflow
     assert "retention-days: 90" in workflow
+    assert "retention-days: 1" in workflow
+    assert "if: github.ref == 'refs/heads/main'" in workflow
     assert "secrets." not in workflow
     assert "contents: write" not in workflow
     assert "git push" not in workflow
+    assert "deploy" not in workflow.lower()
