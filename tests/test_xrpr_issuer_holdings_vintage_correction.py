@@ -53,5 +53,5 @@ def test_later_issuer_evidence_invalidates_prior_direct_holdings_residual():
     data = load()
     superseded = data["supersedes_prior_calculations"][0]
     assert superseded["status"] == "invalidated_as_direct_xrp_holdings_reconciliation"
-    assert "remaining_holdings_reconciliation_difference_xrp" in superseded["fields"]
+    assert "flow_reconciliation.arithmetic.remaining_holdings_reconciliation_difference_xrp" in superseded["fields"]
     assert "not a valid direct-custody reconciliation" in superseded["reason"]
