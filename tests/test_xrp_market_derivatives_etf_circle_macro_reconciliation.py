@@ -175,3 +175,21 @@ def test_latest_xrpl_node_views_do_not_claim_lending_activation():
     assert votes["votes_required"] == 29
     assert disagreement["difference_ledgers"] == 214
     assert "Different explorer node/page views" in disagreement["interpretation"]
+
+
+
+def test_binance_impact_and_freeze_totals_keep_source_cutoffs_separate():
+    event = load()["binance_security_event"]
+    binance = event["third_party_reconciliation"]["binance_nov3"]
+    trm = event["third_party_reconciliation"]["trm_oct29"]
+    assert binance["total_impacted_usd"] == 6340000000
+    assert binance["frozen_or_intercepted_usd"] == 2850000000
+    assert trm["total_outflow_usd_approx"] == 6360000000
+    assert trm["frozen_onchain_usd_approx"] == 2700000000
+    assert "Do not average" in event["third_party_reconciliation"]["rule"]
+    attribution = event["attribution_disagreement"]
+    assert "FBI" in attribution["law_enforcement"]
+    assert "TRM" in attribution["independent_intelligence"]
+    assert "denied" in attribution["state_denial"]
+    assert "not a court judgment" in attribution["assessment"]
+    assert any(source["id"] == "ap_north_korea_denial_binance_incident" for source in load()["source_registry"])
