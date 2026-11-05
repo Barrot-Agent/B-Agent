@@ -15,7 +15,7 @@ def test_kraken_ticker_spread_and_daily_open_are_labeled_correctly():
     expected = (spot["best_ask_usd"] - spot["best_bid_usd"]) / spot["midpoint_usd"] * 10000
     assert abs(spot["spread_bps"] - expected) < 1e-12
     assert spot["daily_open_label"] == "current UTC-day open; not a rolling 24-hour open"
-    assert spot["last_vs_vwap_pct"] if "last_vs_vwap_pct" in spot else spot["derived"]["last_vs_vwap_pct"] < 0
+    assert spot["derived"]["last_vs_vwap_pct"] < 0
     assert spot["derived"]["last_vs_daily_open_pct"] < 0
 
 
