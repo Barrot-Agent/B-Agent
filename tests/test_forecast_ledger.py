@@ -33,19 +33,23 @@ def _trusted_test_evaluator_keys():
 def _sign_readiness_report(report, *, key_id="test-independent-evaluator", attested_at_utc="2026-11-03T16:00:40Z"):
     unsigned = dict(report)
     unsigned.pop("evaluator_attestation", None)
+    attestation_metadata = {
+        "scheme": "Ed25519",
+        "key_id": key_id,
+        "attested_at_utc": attested_at_utc,
+    }
+    signed_document = {"report": unsigned, "attestation": attestation_metadata}
     payload = json.dumps(
-        unsigned, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+        signed_document, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
     ).encode("utf-8")
     payload_sha256 = hashlib.sha256(payload).hexdigest()
     signature = _TEST_EVALUATOR_PRIVATE_KEY.sign(
         _EVALUATOR_ATTESTATION_DOMAIN + bytes.fromhex(payload_sha256)
     )
     report["evaluator_attestation"] = {
-        "scheme": "Ed25519",
-        "key_id": key_id,
+        **attestation_metadata,
         "signed_payload_sha256": payload_sha256,
         "signature_base64": base64.b64encode(signature).decode("ascii"),
-        "attested_at_utc": attested_at_utc,
     }
     return report
 
@@ -742,6 +746,26 @@ def test_readiness_signature_binds_metrics_and_dataset_manifest(tmp_path):
         ledger.register_readiness_report(
             tampered_bytes,
             receipt_id="tampered-readiness-report",
+            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+        )
+
+
+def test_readiness_attestation_timestamp_is_cryptographically_bound(tmp_path):
+    fixture = READINESS_FIXTURES[("XRP", 3600)]
+    report = json.loads(fixture["report_bytes"])
+    report["evaluator_attestation"]["attested_at_utc"] = "2026-11-03T16:00:41Z"
+    report_bytes = json.dumps(
+        report, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    ).encode("utf-8")
+    ledger = ForecastLedger(
+        tmp_path / "forecasts.sqlite3",
+        clock=lambda: datetime(2026, 11, 3, 16, 0, 45, tzinfo=timezone.utc),
+        trusted_evaluator_public_keys=_trusted_test_evaluator_keys(),
+    )
+    with pytest.raises(ForecastLedgerError, match="signature payload hash"):
+        ledger.register_readiness_report(
+            report_bytes,
+            receipt_id="timestamp-tampered-readiness-report",
             raw_receipt_bytes=fixture["raw_receipt_bytes"],
         )
 
