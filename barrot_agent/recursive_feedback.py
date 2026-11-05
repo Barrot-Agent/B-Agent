@@ -287,6 +287,7 @@ class RecursiveFeedbackLoop:
         except (AttributeError, KeyError, TypeError, ValueError) as exc:
             logger.warning("Evaluation evidence rejected: %s", exc)
             self._improvement_history.clear()
+            self._evaluation_history.clear()
             return 0.0, 0.0
         if not assessment.eligible or not assessment.improved:
             self._improvement_history.clear()
