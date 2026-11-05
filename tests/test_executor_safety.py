@@ -50,6 +50,7 @@ def test_executor_uses_argv_and_disables_the_shell(monkeypatch, tmp_path):
         "pytest -p arbitrary_plugin tests/test_executor_safety.py",
         "grep -RIn --exclude-dir=.git -- secret .",
         "cat ../../etc/passwd",
+        "ls -L .",
         "sed -i 's/a/b/' README.md",
     ],
 )
