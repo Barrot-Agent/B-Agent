@@ -275,3 +275,24 @@ def test_archive_consumer_fails_closed_on_missing_target_duplicate_target_and_un
     )
     with pytest.raises(ResearchEligibilityError, match="unsupported timestamp correction schema"):
         apply_research_timestamp_correction_overlays(tmp_path)
+
+
+def test_archive_consumer_reports_unbound_canonical_overlay_without_applying(tmp_path):
+    archive = tmp_path / "research" / "xrp_intelligence"
+    archive.mkdir(parents=True)
+    source_bytes, overlay_bytes = _canonical_documents()
+    overlay = json.loads(overlay_bytes)
+    overlay.pop("target_artifact_blob_sha")
+    (archive / "canonical-source.json").write_bytes(source_bytes)
+    (archive / "unbound-correction.json").write_bytes(
+        json.dumps(overlay, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    )
+
+    result = apply_research_timestamp_correction_overlays(tmp_path)
+
+    assert result["overlay_count"] == 0
+    assert result["unbound_timestamp_correction_artifacts"] == [
+        "research/xrp_intelligence/unbound-correction.json"
+    ]
+    assert result["corrected_artifacts"] == {}
+    assert (archive / "canonical-source.json").read_bytes() == source_bytes

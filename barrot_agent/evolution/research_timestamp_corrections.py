@@ -573,6 +573,7 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
 
     overlays: list[tuple[str, bytes, dict[str, Any]]] = []
     narrative_only: list[str] = []
+    unbound_timestamp_corrections: list[str] = []
     artifact_ids: set[str] = set()
     for path in sorted(archive.rglob("*.json")):
         if path.is_symlink():
@@ -598,6 +599,15 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
             if artifact_id in artifact_ids:
                 raise ResearchEligibilityError("research archive contains duplicate timestamp overlay IDs")
             artifact_ids.add(artifact_id)
+            if (
+                artifact_type == "append_only_source_timestamp_semantics_correction"
+                and "target_artifact_blob_sha" not in document
+            ):
+                # The first archive version recorded field claims but did not
+                # bind the complete target preimage. Preserve it as evidence;
+                # only a later exact-blob-bound overlay may be applied.
+                unbound_timestamp_corrections.append(relative_path)
+                continue
             overlays.append((relative_path, content, document))
         elif isinstance(artifact_type, str) and "timestamp" in artifact_type.lower() and "correction" in artifact_type.lower():
             raise ResearchEligibilityError(f"unsupported timestamp correction schema in {relative_path}")
@@ -658,6 +668,7 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
         "corrected_artifacts": corrected_artifacts,
         "application_manifests": application_manifests,
         "narrative_only_correction_artifacts": sorted(narrative_only),
+        "unbound_timestamp_correction_artifacts": sorted(unbound_timestamp_corrections),
         "source_artifacts_modified": False,
         "model_eligible": False,
         "forecast_issued": False,
