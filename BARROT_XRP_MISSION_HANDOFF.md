@@ -4040,3 +4040,65 @@ No merge, deployment, secret rotation, Space restart, Kaggle submission, paper t
 4. Reconcile #1643 against the resulting main without rewriting its history; run its exact-head dependency audit as well as full suite and gate, obtain approval, then merge only when ready.
 5. Close only exact superseded/duplicate source PRs after main verification; preserve #1615 and #1651 unique work.
 6. Continue durable raw-source storage, independent timestamp anchoring, exchange-flow/collateral/custody/payment data coverage and leakage-safe out-of-sample prediction evaluation.
+
+
+## Run 34b — current microstructure, source-vintage correction and research audit coverage
+
+**Observed:** 2026-11-05 08:19–08:24 UTC. Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+
+### EXECUTED — XRP market and derivatives snapshot
+
+A new append-only artifact was added to PR #1643:
+`research/xrp_intelligence/20261105T081900Z-xrp-market-microstructure-and-etf-vintage-update.json`.
+
+Rendered provider observations (all model-ineligible):
+- Swiftedge, 00:09 UTC: XRP/USD $1.3083; 24-hour range $1.2411–$1.3422; volume point of control $1.3138; positive net taker flow and a displayed $5.5M bid wall/$4.5M ask wall. This is one provider's composite, not consolidated exchange tape.
+- Fuelmaps, 07:00 UTC: six-venue mid $1.3082. Within 1%, displayed bids $10.4M versus asks $6.9M (60.2% bid share). Binance and Bitget are excluded; hourly values average minute snapshots; resting orders can be cancelled.
+- Fibonomy: Binance XRPUSDT OI $450.44M and funding +0.0100%/8h; its exact source event timestamp is not supplied.
+- Kodexius, updated 07:54 UTC: seven-contract OI $889.14M, weighted funding +0.0100%/8h and 24-hour volume $1.61B. Its Binance XRPUSDT component is $451.19M, $0.75M (0.17%) above Fibonomy. Contract, venue and timestamp differences are retained; values are not averaged.
+- Funding/OI are derivatives positioning, not spot capital or proof of XRP purchases.
+
+ETF vintage update:
+- XRP Insights: -194,875 XRP over Nov 2–3; seven-fund display includes XRPR and BITW; GXRP daily flow excluded; Nov 4 provisional.
+- CryptoKeyhole: -6,678 XRP over Nov 2–3 for four spot funds; Nov 4 partial at 3/4 funds with Franklin XRPZ pending.
+- CryptoETF.today: Nov 4 partial at 2/5 funds, zero flow among the reporting funds only.
+- These are different fund universes and issuer-file vintages. The 188,197 XRP difference is unattributed; none is a verified issuer cash-creation/redemption record.
+
+The artifact has three regression tests. On exact #1643 head `60b219ea78e8d4d0470d3af553465549ed6aa578`, full repository CI passed: 898 tests and 8 subtests. The fail-closed gate passed. A dedicated dependency audit did not run because the main workflow's PR path filter only included dependency manifests/workflow changes.
+
+### EXECUTED — dependency-audit trigger coverage
+
+The existing #1640 `.github/workflows/dependency-audit.yml` now includes `research/xrp_intelligence/**` and `tests/test_xrp_*.py` in its pull-request path filter. Future XRP research PRs will trigger the six-manifest audit even when they do not edit a dependency file. This is a preventive integration change; it does not retroactively run the audit on the current #1643 head.
+
+### VERIFIED — new exact-head results before this documentation/workflow commit
+
+PR #1640 code+handoff head `1bdb22dca6309611ebd3b014f3e63ef2dedcf7f9`:
+- Full suite: 904 passed, 8 subtests passed; coverage 53.79%.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed.
+- Evidence: CI https://github.com/Barrot-Agent/B-Agent/actions/runs/41993530715 ; audit https://github.com/Barrot-Agent/B-Agent/actions/runs/41993530587 ; gate https://github.com/Barrot-Agent/B-Agent/actions/runs/41993530728 .
+
+PR #1643 research head `60b219ea78e8d4d0470d3af553465549ed6aa578`:
+- Full suite: 898 passed, 8 subtests passed.
+- Fail-closed gate passed.
+- No dependency manifest changed; exact-head dependency audit remains outstanding.
+- Evidence: CI https://github.com/Barrot-Agent/B-Agent/actions/runs/41993790286 ; gate https://github.com/Barrot-Agent/B-Agent/actions/runs/41993790326 .
+
+### VERIFIED — Copilot and source identity boundaries
+
+Copilot Agent Merge runs `41993027525` and `41992493657` used a read-only permission gate, compared dependency graphs and explicitly skipped automatic final commits. No commit or merge resulted. Dependabot graph checks failed to initialize Sigstore trusted material because `tuf-repo-cdn.sigstore.dev` DNS resolution failed. This is one-off authenticated Copilot execution, not persistent nine-platform coordination.
+
+The public YouTube candidate `UCqUPJMQdkCN6lsLVDnichPA` remains unverified as the canonical channel for the Kamilah/Camilla Stevenson identity. A Linktree created in October 2026 links a candidate handle, but is not first-party identity proof; a separate same-name health-coaching site does not cross-link it. No video inventory is attributed pending identity verification.
+
+Japan's SBIC resolution is now based on the 1963 law and three official company profiles: Tokyo/SBIC East, Nagoya/SBIC Central and Osaka/SBIC West. The SBIC ChatGPT seminar, SBI Securities/Ridge-i AI chat, SBI Holdings/Anthropic Claude agreement and SoftBank Group/OpenAI partnership remain separate events and entities.
+
+Evernorth's October 30 S-1 explicitly reports zero Cantor ELOC proceeds as of the prospectus date. Historical advance-funding cash used to buy XRP, delayed-funding cash, in-kind XRP, PIK debt, the Cantor fee and conditional warrant exercise proceeds remain separately typed.
+
+### Current merge blockers
+
+- #1640 and #1643 have zero approving reviews despite all existing review threads being resolved.
+- Main is protected, but detailed branch-protection configuration returns HTTP 403; the visible fallback ruleset is disabled.
+- A Pages deployment previously completed on main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` (run https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Its trigger/authorization cannot be independently established from the available repository view; do not merge while a merge-triggered deployment remains unapproved.
+- #1643 needs an exact-head dependency audit. The new #1640 path filter will make future research updates trigger it after the workflow is on main.
+
+No forecast was issued. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.

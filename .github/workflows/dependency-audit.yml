@@ -11,6 +11,8 @@ on:
       - "hf_space/requirements.txt"
       - "legacy/requirements_legacy.txt"
       - ".github/workflows/dependency-audit.yml"
+      - "research/xrp_intelligence/**"
+      - "tests/test_xrp_*.py"
   schedule:
     - cron: "17 7 * * 1"
   workflow_dispatch:
