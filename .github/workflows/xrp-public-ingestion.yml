@@ -34,6 +34,18 @@ jobs:
           python-version: '3.11'
       - name: Prepare feature-store workspace
         run: mkdir -p artifacts/xrp_ingestion
+      - name: Apply XRP research timestamp corrections in memory
+        run: >-
+          python -m barrot_agent.evolution.research_timestamp_audit
+          --repository-root .
+          --output "$RUNNER_TEMP/xrp-research-correction-audit.json"
+      - name: Upload XRP research correction audit
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-research-correction-audit-${{ github.run_id }}
+          path: ${{ runner.temp }}/xrp-research-correction-audit.json
+          if-no-files-found: error
+          retention-days: 90
       - name: Restore cumulative feature-store cache
         id: feature_cache
         uses: actions/cache/restore@v4

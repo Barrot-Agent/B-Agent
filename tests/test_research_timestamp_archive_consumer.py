@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from barrot_agent.evolution.research_eligibility import ResearchEligibilityError, git_blob_sha1
+from barrot_agent.evolution.research_timestamp_audit import build_audit_payload, main
 from barrot_agent.evolution.research_timestamp_corrections import (
     apply_capture_time_interval_correction_overlay,
     apply_research_timestamp_correction_overlays,
@@ -296,3 +297,40 @@ def test_archive_consumer_reports_unbound_canonical_overlay_without_applying(tmp
     ]
     assert result["corrected_artifacts"] == {}
     assert (archive / "canonical-source.json").read_bytes() == source_bytes
+
+
+def test_scheduled_audit_payload_is_read_only_and_keeps_all_views_ineligible(tmp_path):
+    archive = tmp_path / "research" / "xrp_intelligence"
+    archive.mkdir(parents=True)
+    legacy_source, _, legacy_overlay = _legacy_documents()
+    canonical_source, canonical_overlay = _canonical_documents()
+    (archive / "legacy-source.json").write_bytes(legacy_source)
+    (archive / "legacy-correction.json").write_bytes(legacy_overlay)
+    (archive / "canonical-source.json").write_bytes(canonical_source)
+    (archive / "canonical-correction.json").write_bytes(canonical_overlay)
+
+    payload = build_audit_payload(tmp_path)
+
+    assert payload["overlay_count"] == 2
+    assert payload["source_artifacts_modified"] is False
+    assert payload["model_eligible"] is False
+    assert payload["forecast_issued"] is False
+    assert json.loads(json.dumps(payload))["overlay_count"] == 2
+    assert (archive / "legacy-source.json").read_bytes() == legacy_source
+    assert (archive / "canonical-source.json").read_bytes() == canonical_source
+
+
+def test_scheduled_audit_cli_writes_only_outside_repository_and_never_overwrites(tmp_path):
+    archive = tmp_path / "repo" / "research" / "xrp_intelligence"
+    archive.mkdir(parents=True)
+    repo_root = tmp_path / "repo"
+    output = tmp_path / "runner-temp" / "audit.json"
+
+    assert main(["--repository-root", str(repo_root), "--output", str(output)]) == 0
+    written = json.loads(output.read_text(encoding="utf-8"))
+    assert written["overlay_count"] == 0
+    assert written["model_eligible"] is False
+    with pytest.raises(SystemExit, match="new, non-symlink"):
+        main(["--repository-root", str(repo_root), "--output", str(output)])
+    with pytest.raises(SystemExit, match="outside the repository root"):
+        main(["--repository-root", str(repo_root), "--output", str(repo_root / "audit.json")])
