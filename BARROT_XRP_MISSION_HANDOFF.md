@@ -3454,3 +3454,32 @@ Next:
 
 No directional forecast was issued. No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 
+### Run 26 completion update — exact-head CI closed
+Recorded: 2026-11-05T05:51:07Z
+
+The pending checks recorded above have now completed:
+
+- **PR #1640 exact handoff head `e7aec8c1c13153fb6b2965b4bb88c41f12d9b701`:**
+  - Core suite: 586 passed, 8 subtests passed.
+  - Full repository suite: 883 passed, 8 subtests passed in 28.50 seconds.
+  - Inclusive package coverage: 53.44%, above the 50% floor.
+  - Wheel build and installed-wheel verification succeeded; the installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+  - Five-manifest strict dependency audit passed.
+  - Fail-closed gate passed and explicitly disabled automatic merging.
+  - Exact CI: [41976349413](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976349413); dependency audit: [41976349309](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976349309); gate: [41976349345](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976349345).
+- **PR #1643 exact head `da5bbed8dcd6003925b6ba63faaab1b300f19f76`:**
+  - Core suite: 495 passed, 8 subtests passed.
+  - Full repository suite: 866 passed, 8 subtests passed in 12.53 seconds.
+  - All five market/ETF/derivatives vintage tests and all seven RLUSD institutional-network tests passed.
+  - Fail-closed gate passed and did not merge.
+  - Exact CI: [41976071373](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071373); gate: [41976071392](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071392).
+  - The preceding `e995153` failure was one test wording mismatch, corrected on `da5bbed`; final exact-head full suite is green.
+- The #1643 branch changed no dependency manifests; no separate dependency-audit workflow was triggered for it.
+- Both PRs remain open, non-draft and mergeable; #1640 has 169 commits ahead / 0 behind and 73 changed files; #1643 has 138 commits ahead / 0 behind and 116 changed files. Their changed paths remain disjoint.
+- All 22 #1640 and 14 #1643 review threads are resolved. Both PRs still have zero approving reviews.
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. No main push or merge occurred.
+
+Non-blocking CI warnings remain: the GitHub Actions cache budget is read-only; setuptools warns that the TOML license table is deprecated and that `barrot_agent.data.missions` / `data.research` are absent from the package list; Python reports invalid escape-sequence deprecations in `upgrade_bundle.py`. Wheel verification nevertheless confirmed the primary mission and canonical data assets are present. These warnings are backlog items, not test failures.
+
+The current handoff update is documentation-only and will receive its own exact-head CI, dependency-audit and fail-closed checks. Do not describe that subsequent handoff commit as verified until those checks finish.
+
