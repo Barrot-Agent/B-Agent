@@ -6224,3 +6224,97 @@ Only the ChatGPT-to-GitHub repository data path is verified. Copilot review acti
 6. Continue raw-source retention, independent timestamp anchoring, historical point-in-time datasets, chronological walk-forward evaluation, calibration, drift monitoring and shadow outcomes.
 
 No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 11 — exact-head integration, XRP market/ETF/OCC reconciliation (2026-11-05)
+
+This checkpoint supersedes prior head/test-count/inventory statements above. Main remains unchanged. No PR was merged, no branch was rewritten, and no source PR was closed.
+
+### Repository state and inventory
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Recursive main tree: 1,403 entries, 493 Python files, 90 Python test files, 78 active `.github/workflows` YAML files, and 73 files under `.barrot-backup/workflows` (backup directory; not active GitHub Actions workflows).
+- Open PR inventory: 369 total; 354 drafts and 15 non-drafts.
+- Main push CI: [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459) — 485 core tests and 718 full-suite tests passed, 8 subtests.
+- Main scheduled Cross Analysis: [42107263084](https://github.com/Barrot-Agent/B-Agent/actions/runs/42107263084) — passed. The current `.github/workflows/cross-analysis.yml` is read-only and uploads artifacts.
+- Main Pillars Consistency Check remains failed: [42032214761](https://github.com/Barrot-Agent/B-Agent/actions/runs/42032214761), with missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+
+### PR #1640 — V3/core integration
+
+- Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
+- Current PR head: `48801fe1bc1a79498c460daaf3d5c5e772ddc987`.
+- Code-bearing head immediately before the documentation-only handoff commit: `76c0735055bfa10190727f6c39741308e265d699`.
+- The comparison from the code-bearing head to current head shows exactly one changed path: `BARROT_XRP_MISSION_HANDOFF.md`; no source or test code changed in that documentation commit.
+- 374 commits ahead of main, zero behind; 135 changed files.
+- Exact-current-head CI [42113551622](https://github.com/Barrot-Agent/B-Agent/actions/runs/42113551622): core **614 passed, 8 subtests**; full repository **1,035 passed, 8 subtests**; inclusive coverage **57.07%**.
+- Exact-current-head six-manifest dependency audit [42113551530](https://github.com/Barrot-Agent/B-Agent/actions/runs/42113551530): passed for root runtime, development, supplemental, Hugging Face Space, legacy and PEP 621 project declarations.
+- Exact-current-head fail-closed gate [42113551526](https://github.com/Barrot-Agent/B-Agent/actions/runs/42113551526): passed while explicitly keeping merging disabled.
+- Review threads: 22/22 resolved. Actual approving reviews: zero.
+
+### PR #1643 — XRP research archive
+
+- Branch: `research/xrp-evidence-archive-20261104`.
+- Current head: `01710547d38547b9c979b02c611dbf1195254f12`.
+- 276 commits ahead of main, zero behind; 217 changed files.
+- Exact-current-head CI [42114671428](https://github.com/Barrot-Agent/B-Agent/actions/runs/42114671428): core **495 passed, 8 subtests**; full repository **1,135 passed, 8 subtests**.
+- Exact-current-head six-manifest dependency audit [42114671423](https://github.com/Barrot-Agent/B-Agent/actions/runs/42114671423): passed.
+- Exact-current-head fail-closed gate [42114671674](https://github.com/Barrot-Agent/B-Agent/actions/runs/42114671674): passed; automatic merging remains disabled.
+- Review threads: 14/14 resolved. Actual approving reviews: zero.
+
+### Branch reconciliation
+
+- #1640 and #1643 are divergent from the same main base.
+- Comparing #1643 against #1640: #1643 is 276 commits ahead and 374 behind.
+- Their changed-path intersection remains exactly `.github/workflows/dependency-audit.yml`, with identical blob content. #1640 has 134 unique paths; #1643 has 216 unique paths.
+- Do not merge #1643 directly after #1640. Once #1640 is merged and verified on main, create one consolidated successor directly on that resulting main from #1643's 216 unique paths, omitting the identical dependency-audit file. Do not rewrite either existing branch.
+
+### Main-branch automation containment findings
+
+The current main still contains several manual/issue-triggered workflows with write permissions and direct-main persistence, including `pingpong.yml`, `make-track.yml`, `ask-barrot.yml`, `audio-ingest.yml`, `write-lyrics.yml`, `barrot-speak.yml`, `task-allocator.yml`, `free-image-gen.yml`, `barrot-self-upgrade.yml`, `knowledge-signal-cycle-btc.yml`, and issue-label dispatch in `barrot-agent.yml`. The integration branch quarantines these paths with empty permissions and false job conditions, or an equivalent explicit containment. The BTC knowledge cycle is manual-only on main; the Barrot Agent workflow is issue-label/manual, not a scheduled event in its current trigger block. Main's Cross Analysis, Pillars, Riemann harvest and dependency audit workflows are read-only. Tag-triggered `release.yml` remains a separate release action, not a main-push deployment.
+
+Main's merge queue, scheduler tick and autonomous self-deployment workflows are already disabled/read-only. Files under `.barrot-backup/workflows` are not active GitHub Actions workflows and were not counted as active writers.
+
+The #1640 branch also contains fixes to the latest Copilot review findings:
+- repeated evaluation run IDs are deduplicated;
+- numeric overflow is converted into validation failure rather than escaping;
+- a persisted `complete` checkpoint is revalidated through the goal verifier and cannot be trusted solely from its status field;
+- recursive feedback redacts sensitive dictionary keys as well as sensitive values.
+
+These current implementations are present on the verified code-bearing head and the full suite passed. Reviewer records remain COMMENTED, not APPROVED; they do not satisfy independent approval requirements.
+
+### New XRP market, ETF and regulatory artifact
+
+Added to #1643:
+- `research/xrp_intelligence/20261105T2135Z-xrp-market-etf-and-occ-charter-reconciliation.json`
+- `tests/test_xrp_market_etf_occ_charter_reconciliation_20261105.py` (five regression tests; all five passed in the exact-head full suite).
+
+The Kraken public ticker retrieval returned XRP/USD last $1.22097, bid $1.22093, ask $1.22094, 24-hour volume 37.955M XRP, UTC-day volume 34.405M XRP, 24-hour VWAP $1.27253343 and UTC-day open $1.30410. The calculated spread is 0.081904 bps; last is 6.3745% below UTC-day open, 4.0520% below 24-hour VWAP and 0.4467% above the 24-hour low. Kraken supplied no provider event timestamp; this is one venue/top-of-book, not consolidated depth.
+
+ETF publishers disagree:
+- XRP Insights reports -194,875 XRP across Nov 2–3 (two settled days), with flow-excluded funds counted as zero; Nov 4 remains provisional.
+- CryptoKeyhole reports -3,339 XRP for Nov 3 across four funds; Nov 4 is partial (two of four daily reporters).
+- Alpha Finance reports $0 for Nov 3 across its five-fund dashboard.
+These values have different windows, fund universes, exclusions and methodologies. They derive from overlapping issuer holdings files, are not independent primary-data corroboration, are not averaged, and are not verified AP cash creations/redemptions.
+
+Primary OCC Corporate Applications Search records:
+- Ripple National Trust Bank, proposed charter 25364, OCC control 2025-Charter-342347: Consummated/Effective dated 2026-10-26. Ripple says the approved activities include segregated RLUSD reserve management, reserve collateral-trustee functions and fiduciary digital-asset custody. Operational opening and customer activity are not established; Standard Custody & Trust Company remains the RLUSD issuer.
+- Coinbase National Trust Company, proposed charter 25390, OCC control 2025-Charter-343449: the retrieved CAS record shows Approved dated 2026-04-02 and no later Consummated/Effective row. This is only that proposed national trust bank application; it does not imply that Coinbase's other custody entities or services are inactive.
+Neither charter status proves XRP purchases, XRP AUC, XRP collateral balances or XRPL settlement volume. The two filings do not establish a direct Ripple-Coinbase partnership.
+
+Sources: [Kraken public ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD); [XRP Insights](https://xrp-insights.com/data); [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/); [Alpha Finance](https://alphafinance.io/etf/xrp/); [OCC Ripple CAS](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2); [Ripple final-approval announcement](https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/); [OCC Coinbase CAS](https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2); [OCC Corporate Decision 1370](https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf).
+
+The new artifact is research-only and model-ineligible: raw byte-complete source payloads and independent timestamp anchors were not captured; Kraken's provider timestamp is absent; ETF vintages are non-comparable/incomplete; charter events are contextual, not XRP flows. No directional forecast was issued.
+
+### Merge boundary and next action
+
+- Main reports protected=true, but detailed branch-protection inspection returns HTTP 403.
+- The only visible repository ruleset (ID 10863829, “Fall Back”) is disabled.
+- GitHub Pages settings remain inaccessible. A prior main push triggered a successful Pages build/deployment: [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered deployment is not established.
+- Both PRs remain non-draft/mergeable with exact-head suites, audits and gates passing, but both have zero approving reviews. Do not merge or bypass protection.
+- No new branches/PRs were created; no unique PRs were closed.
+
+Next sequence: obtain independent approvals and verify required branch protection; resolve Pages deployment authorization; merge #1640 only when all conditions are satisfied; verify the merge commit and main CI; then create one successor on resulting main from #1643's 216 unique paths and rerun full suite, dependency audit and fail-closed gate. Preserve unique research/security/feature PRs; close only exact superseded duplicates after merged content is verified on main.
+
+No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
