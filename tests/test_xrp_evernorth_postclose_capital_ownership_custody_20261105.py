@@ -15,8 +15,12 @@ def load():
 def test_cash_and_in_kind_xrp_reconcile_to_reported_473m_treasury():
     item = load()["closing_capital_reconciliation"]
     contributions = item["in_kind_xrp_contributions"]
-    total_in_kind = sum(contributions.values())
+    contribution_components = {
+        key: value for key, value in contributions.items() if key != "total_in_kind_xrp"
+    }
+    total_in_kind = sum(contribution_components.values())
     assert math.isclose(total_in_kind, 388_910_554.061435, rel_tol=0, abs_tol=1e-6)
+    assert contributions["total_in_kind_xrp"] == total_in_kind
     derived = item["derived_treasury_reconciliation"]
     assert math.isclose(derived["cash_purchased_xrp"] + derived["in_kind_xrp"], 473_276_430.061435, rel_tol=0, abs_tol=1e-6)
     assert derived["company_reported_approximate_treasury_xrp"] == 473_000_000
@@ -117,7 +121,7 @@ def test_goldman_13f_positions_are_etf_shares_and_premerger_spac_exposure():
     armada = item["q2_2026_armada_acquisition_corp_ii_position"]
     assert armada["value_usd"] == 3_813_470
     assert armada["shares"] == 365_976
-    assert "not proof of a current XRPN holding" in armada["interpretation"]
+    assert "does not establish Goldman retained XRPN after the merger." in armada["interpretation"]
     assert "may represent client assets" in item["proprietary_capital_status"]
 
 
