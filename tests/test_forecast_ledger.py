@@ -13,9 +13,11 @@ from barrot_agent.evolution.forecast_ledger import (
     ForecastAlreadyResolvedError,
     ForecastLedger,
     ForecastLedgerError,
+    _validate_canonical_raw_receipt,
     _validate_readiness_report,
 )
 from barrot_agent.evolution.point_in_time_features import build_feature_snapshot
+from barrot_agent.evolution.xrp_public_ingestion import RawReceiptArchive
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -143,6 +145,8 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
             "raw_content_sha256": raw_digest,
             "payload_size_bytes": len(raw_bytes),
             "raw_payload_path": f"raw/sha256/{raw_digest}.json",
+            "raw_bytes_retained": True,
+            "raw_retention_reason": "",
             "model_eligible_source": True,
             "raw_only_reason": "",
         }
@@ -1007,3 +1011,58 @@ def test_readiness_registration_rechecks_canonical_receipt_payload_size(tmp_path
             raw_receipt_bytes=raw_receipt_bytes,
         )
 
+
+
+def test_forecast_ledger_accepts_exact_raw_receipt_archive_schema(tmp_path):
+    raw_bytes = b'{"symbol":"XRPUSDT","price":"1.31"}'
+    archive = RawReceiptArchive(tmp_path / "raw")
+    canonical = archive.store(
+        source_id="binance_spot_ticker",
+        source_uri="https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT",
+        captured_at_utc="2026-11-05T13:00:00.000000Z",
+        source_data_as_of_utc="2026-11-05T12:59:59.000000Z",
+        raw_bytes=raw_bytes,
+        model_eligible=True,
+    )
+    outer = {
+        "source_id": canonical["source_id"],
+        "source_uri": canonical["source_uri"],
+        "captured_at_utc": canonical["captured_at_utc"],
+        "source_data_as_of_utc": canonical["source_data_as_of_utc"],
+        "raw_content_sha256": canonical["raw_content_sha256"],
+        "receipt_id": canonical["receipt_id"],
+        "raw_receipt": canonical,
+    }
+
+    verified = _validate_canonical_raw_receipt(outer, 0, raw_bytes)
+
+    assert verified["raw_bytes_retained"] is True
+    assert verified["raw_retention_reason"] == ""
+    assert verified["raw_content_sha256"] == canonical["raw_content_sha256"]
+
+
+def test_forecast_ledger_rejects_digest_only_raw_receipt_for_readiness(tmp_path):
+    raw_bytes = b'{"symbol":"XRPUSDT","price":"1.31"}'
+    archive = RawReceiptArchive(tmp_path / "raw")
+    canonical = archive.store(
+        source_id="binance_spot_ticker",
+        source_uri="https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT",
+        captured_at_utc="2026-11-05T13:00:00.000000Z",
+        source_data_as_of_utc="2026-11-05T12:59:59.000000Z",
+        raw_bytes=raw_bytes,
+        model_eligible=True,
+        retain_raw_bytes=False,
+        raw_retention_reason="publisher redistribution restriction",
+    )
+    outer = {
+        "source_id": canonical["source_id"],
+        "source_uri": canonical["source_uri"],
+        "captured_at_utc": canonical["captured_at_utc"],
+        "source_data_as_of_utc": canonical["source_data_as_of_utc"],
+        "raw_content_sha256": canonical["raw_content_sha256"],
+        "receipt_id": canonical["receipt_id"],
+        "raw_receipt": canonical,
+    }
+
+    with pytest.raises(ForecastLedgerError, match="retained raw bytes"):
+        _validate_canonical_raw_receipt(outer, 0, raw_bytes)
