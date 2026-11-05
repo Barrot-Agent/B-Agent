@@ -1,11 +1,25 @@
-# XRP fixed-horizon forecast ledger contract v1
+# XRP fixed-horizon forecast ledger contract v2
 
 ## Status
-The deterministic SQLite recording/scoring prototype is EXECUTED in `barrot_agent/evolution/forecast_ledger.py` and covered by `tests/test_forecast_ledger.py`. The ledger itself does not ingest data, generate forecasts, train a model or trade. A first read-only public XRP market adapter is implemented on PR #1640, but is not merged or verified on main; it produces one artifact per run and does not create a durable historical dataset. The database is runtime state and is excluded from Git.
+The deterministic SQLite recording/scoring prototype is EXECUTED in `barrot_agent/evolution/forecast_ledger.py` and covered by `tests/test_forecast_ledger.py`. Readiness reports now require an Ed25519 signature from an externally trusted evaluator key; the production default has no trusted keys and therefore fails closed. The ledger itself does not ingest data, generate forecasts, train a model or trade. A first read-only public XRP market adapter is implemented on PR #1640, but is not merged or verified on main; it produces one artifact per run and does not create a durable historical dataset. The database is runtime state and is excluded from Git.
 
 The ledger is restricted to live/shadow issuance: each immutable issuance event records the actual ledger receipt time and `recording_mode=live_shadow`; the target must still be in the future at receipt; caller-supplied issue time cannot be after receipt or more than five minutes old. Historical backtests must use separate evaluation artifacts and must not be inserted as live forecasts.
 
 Every issuance requires an injected `HistoricalFeatureStore`. Each feature snapshot ID must be a 64-character SHA-256 ID and resolve to an exact snapshot whose manifest, rows, source lineage and SQLite integrity verify. The snapshot must cover the forecast asset, have a data cutoff no later than the forecast cutoff, and have been captured and stored no later than that cutoff. Forecast source IDs must exactly match the union of source IDs in the referenced asset-specific records. `feature_max_timestamp_utc` must equal the maximum of `known_at_utc`, `source_data_as_of_utc`, `ingested_at_utc` and `revision_available_at_utc` across those records. This closes the local cross-store reference gap; it does not authenticate external publishers or independently anchor store receipts.
+
+## Independent evaluator attestation (policy v2)
+
+A readiness report is not trusted because it contains self-declared `PASS` fields or better metrics. Policy v2 requires all of the following:
+
+- `evaluator_id` matching a configured trusted `key_id`, plus a non-empty `evaluator_version`.
+- SHA-256 identifiers for the evaluation code and the independently produced evaluation artifact.
+- An `evaluator_attestation` object with exactly `scheme`, `key_id`, `signed_payload_sha256`, `signature_base64` and `attested_at_utc`.
+- An Ed25519 signature over the domain-separated SHA-256 digest of canonical JSON for the complete readiness report with only `evaluator_attestation` removed.
+- An attestation time no earlier than evaluation completion and no later than the ledger's actual report-registration receipt time.
+
+The trust store is supplied through the `BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON` environment variable as a JSON object mapping evaluator key IDs to base64-encoded 32-byte Ed25519 public keys. The private signing key must remain with an independently operated evaluator and must never be committed to this repository or exposed to the model/training workflow. Key provisioning, evaluator independence and the evaluator's reproducible execution pipeline are not yet configured or verified. With no trusted key configured, readiness registration and forecast issuance are rejected. Test-only signing keys exist only in the test module and do not populate the production trust store.
+
+Policy v1 self-attested readiness reports are not accepted by policy v2.
 
 ## Forecast definition
 Supported horizons: 1 hour, 4 hours, 24 hours, 7 days and 30 days. Every record defines the exact XRP/USD target measure, venue convention, flat band and target timestamp. Down/flat/up classes are determined by a flat band fixed before the outcome is known.
@@ -24,7 +38,7 @@ The prototype reports three-class Brier mean-squared error, log loss, top-class 
 SQLite transactions and triggers reject ordinary SQL UPDATE/DELETE of forecast, outcome and event rows. They are not cryptographically tamper-proof against database-file replacement, schema modification or host compromise. Stronger tamper evidence requires signed/independently anchored exports. Runtime DB and sidecars are ignored by Git.
 
 ## Not implemented
-The first scheduled read-only public-market adapter exists on PR #1640, but it is not merged or operational on main and currently produces a per-run artifact rather than a cross-run historical dataset. No scheduled historical feature population, forecast generator, model training, walk-forward evaluation, baseline superiority, class-wise calibration, uncertainty intervals, drift detection, shadow scheduler or trading integration is included. The ledger is a recorder/scorer only; no directional forecast is authorized until populated point-in-time data and leakage-safe out-of-sample evaluation support it. The separate local SQLite feature-store prototype exists but is not yet populated with a durable historical XRP dataset.
+The first scheduled read-only public-market adapter exists on PR #1640, but it is not merged or operational on main and currently produces a per-run artifact rather than a cross-run historical dataset. No scheduled historical feature population, forecast generator, model training, walk-forward evaluation, baseline superiority, class-wise calibration, uncertainty intervals, drift detection, shadow scheduler or trading integration is included. No production evaluator key or independently operated signing service is configured. The ledger is a recorder/scorer only; no directional forecast is authorized until populated point-in-time data, independently attested leakage-safe out-of-sample evaluation and a trusted evaluator key support it. The separate local SQLite feature-store prototype exists but is not yet populated with a durable historical XRP dataset.
 
 
 ## First public adapter boundary
