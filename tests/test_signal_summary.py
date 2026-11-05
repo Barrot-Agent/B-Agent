@@ -178,7 +178,9 @@ def test_signal_accuracy_workflow_is_disabled_until_fixed_horizon_evaluator_is_v
     ):
         assert forbidden not in lowered
 
-\n\ndef test_explicit_not_issued_status_skips_model_and_tts(monkeypatch, tmp_path):
+
+
+def test_explicit_not_issued_status_skips_model_and_tts(monkeypatch, tmp_path):
     summary_path, _, audio_path = _prepare(monkeypatch, tmp_path, {
         "schema_version": 2,
         "asset": "XRP/USD",
