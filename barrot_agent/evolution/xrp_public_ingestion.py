@@ -1089,11 +1089,13 @@ def run_ingestion(
         "paper_trade_executed": False,
         "storage_scope": (
             "append-only SQLite feature history restored from a unique-key GitHub Actions cache; "
-            "per-run raw-source artifacts are retained 90 days; cumulative feature-store backup "
-            "artifact is retained 1 day; cache is derived and evictable, not an immutable source of truth"
+            "per-run raw-source artifacts are retained 90 days; a daily feature-store backup "
+            "artifact (also uploaded on manual dispatch) is retained 90 days; cache is derived "
+            "and evictable, not an immutable source of truth"
         ),
         "artifact_retention_days": 90,
-        "feature_store_backup_retention_days": 1,
+        "feature_store_backup_retention_days": 90,
+        "feature_store_backup_frequency": "daily_plus_manual_dispatch",
         "feature_store_rebuild_from_raw_artifacts_implemented": False,
         "limitations": [
             "Spot coverage includes Binance, Coinbase and Kraken; perpetual coverage remains Binance-only in this adapter.",
@@ -1101,7 +1103,7 @@ def run_ingestion(
             "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header.",
             "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase candle pagination is not yet implemented.",
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
-            "The cumulative SQLite feature store is persisted through GitHub Actions cache and a one-day feature artifact backup. Cache eviction or an outage longer than the backup window can interrupt continuity; automatic rebuild from the 90-day raw artifacts is not yet implemented.",
+            "The cumulative SQLite feature store is persisted through GitHub Actions cache plus a daily feature artifact backup retained 90 days. Cache eviction can interrupt continuity if no unexpired backup is available; automatic rebuild from raw artifacts is not yet implemented.",
             "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
             "The historical evaluator uses naive, momentum, mean-reversion and volatility baselines. It does not issue a live forecast; probability calibration is diagnostic only, and shadow evaluation and drift monitoring are not yet implemented.",
             "This collector does not issue directional forecasts, trading signals, recommendations or paper trades.",

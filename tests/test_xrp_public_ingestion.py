@@ -171,6 +171,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["source_failure_count"] == 0
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
+    assert summary["feature_store_backup_retention_days"] == 90
+    assert summary["feature_store_backup_frequency"] == "daily_plus_manual_dispatch"
 
     snapshot = json.loads((tmp_path / "run" / "snapshot.json").read_text(encoding="utf-8"))
     historical = next(
@@ -259,16 +261,21 @@ def test_kraken_depth_without_server_date_is_raw_only(tmp_path):
 def test_scheduled_ingestion_workflow_persists_history_without_repository_writes():
     workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "xrp-public-ingestion.yml").read_text(encoding="utf-8")
     assert "cron: '3 * * * *'" in workflow
+    assert "cron: '15 0 * * *'" in workflow
     assert "actions: read" in workflow
     assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
     assert "actions/cache/restore@v4" in workflow
     assert "actions/cache/save@v4" in workflow
+    assert "gh api --paginate" in workflow
+    assert "actions/artifacts?per_page=100" in workflow
+    assert 'startswith("xrp-public-feature-")' in workflow
+    assert "github.event.schedule == '15 0 * * *'" in workflow
     assert "gh run download" in workflow
     assert "xrp-public-raw-${{ github.run_id }}" in workflow
     assert "xrp-public-feature-${{ github.run_id }}" in workflow
-    assert "retention-days: 90" in workflow
-    assert "retention-days: 1" in workflow
+    assert workflow.count("retention-days: 90") == 2
+    assert "retention-days: 1" not in workflow
     assert "if: github.ref == 'refs/heads/main'" in workflow
     assert "secrets." not in workflow
     assert "contents: write" not in workflow
