@@ -1,4 +1,5 @@
 import json
+import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -9,23 +10,30 @@ def load():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def test_actual_cash_and_in_kind_xrp_are_separated():
+def test_closing_cash_and_xrp_components_are_separated():
     data = load()
     stack = data["actual_capital_stack"]
     placement = stack["private_placement_subscription_agreements"]
-    assert placement["cash_raised_usd"] == 214_100_000
-    assert placement["xrp_purchased_with_cash"] == 84_365_876
-    assert placement["xrp_contributed_in_kind"] == 261_919_096
-    assert stack["company_reported_xrp"]["exact_closing_amount_in_prior_sec_filing"] == 473_276_430
-    assert data["actual_capital_taxonomy"]["actual_xrp_purchased_with_cash"] == 84_365_876
+    assert placement["cash_raised_usd"] == 214_049_995
+    assert math.isclose(placement["xrp_purchased_with_cash"], 84_365_876.3625, abs_tol=1e-6)
+    assert math.isclose(stack["in_kind_xrp_at_closing"]["total_xrp"], 388_910_554.061435, abs_tol=1e-6)
+    assert stack["closing_gross_cash_proceeds"]["total_gross_cash_usd_approx"] == 272_600_000
+    assert math.isclose(
+        stack["company_reported_xrp"]["primary_component_reconstruction_xrp"],
+        473_276_430.423935,
+        abs_tol=1e-6,
+    )
+    assert stack["company_reported_xrp"]["issuer_approximate_xrp_as_of_2026_10_09"] == 473_000_000
+    assert stack["company_reported_xrp"]["proxy_expected_minimum_xrp_at_closing"] == 473_276_430
 
 
-def test_ripple_credit_facilities_are_distinct_and_not_equity():
-    data = load()["actual_capital_stack"]["ripple_credit_facilities"]
-    assert data["pathfinder_company_facility"]["amount_borrowed_as_of_2026_10_07_usd"] == 9_700_000
-    assert data["separate_evernorth_facility"]["limit_usd"] == 1_000_000
-    assert data["separate_evernorth_facility"]["borrowed_as_of_2026_06_30_usd"] == 0
-    assert "not equity capital" in data["pathfinder_company_facility"]["classification"]
+def test_pik_notes_and_ripple_credit_are_separate_debt_categories():
+    data = load()["actual_capital_stack"]
+    assert data["convertible_notes"]["principal_usd"] == 30_000_000
+    assert data["convertible_notes"]["cash_consideration_usd"] == 30_000_000
+    assert data["convertible_notes"]["coupon_pct"] == 4.0
+    assert data["ripple_credit_facilities"]["pathfinder_company_facility"]["amount_borrowed_as_of_2026_10_07_usd"] == 9_700_000
+    assert data["ripple_credit_facilities"]["separate_evernorth_facility"]["borrowed_as_of_2026_06_30_usd"] == 0
 
 
 def test_eloc_effectiveness_is_not_mislabeled_as_cash_draw():
@@ -35,6 +43,7 @@ def test_eloc_effectiveness_is_not_mislabeled_as_cash_draw():
     assert data["actual_proceeds_verified_usd"] == 0
     assert "NO_FIRST_PURCHASE_NOTICE" in data["status_at_cutoff"]
     assert data["gross_proceeds_scenarios"]["cover_price_gross_usd"] == 76_800_000
+    assert data["gross_proceeds_scenarios"]["cover_price_estimated_net_usd"] == 74_400_000
     assert data["gross_proceeds_scenarios"]["prospectus_summary_gross_usd"] == 80_700_000
 
 
@@ -46,10 +55,22 @@ def test_commitment_fee_is_an_outflow_due_november_six():
     assert data["classification"].startswith("contractual cash outflow")
 
 
-def test_onchain_outflow_is_unattributed_not_classified_as_sale():
+def test_public_and_sponsor_warrants_are_contingent_not_actual_capital():
+    data = load()["warrants"]
+    assert data["public_warrants_shares"] == 11_499_992
+    assert data["public_warrant_exercise_price_usd"] == 11.50
+    assert data["public_warrant_theoretical_cash_ceiling_usd"] == 132_249_908
+    assert data["sponsor_warrants_shares"] == 239_653
+    assert data["total_pubco_warrants_reported"] == 11_739_645
+    assert data["status"] == "NO_EXERCISE_OR_CASH_RECEIPT_VERIFIED"
+
+
+def test_onchain_outflow_is_unattributed_and_wallet_total_does_not_reconcile():
     data = load()["onchain_attribution"]
     assert data["xrp_in_attributed_wallets"] == 103_129_905
     assert data["xrp_moved_outside_attributed_wallet_set"] == 370_346_663
+    assert data["tracker_total_in_plus_out_xrp"] == 473_476_568
+    assert data["difference_rounded_xrp"] == 200_138
     assert data["destination_beneficial_ownership"] == "UNRESOLVED"
     assert data["classification"] == "UNATTRIBUTED_OUTFLOW_NOT_CLASSIFIED_AS_SALE"
     assert data["independent_replay_performed"] is False

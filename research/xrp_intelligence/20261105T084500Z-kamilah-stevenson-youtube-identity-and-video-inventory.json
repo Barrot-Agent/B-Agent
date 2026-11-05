@@ -13,7 +13,7 @@
     "evidence": "The iHeart episode identifies Dr. Kamilah Stevenson; in the interview she self-identifies as Cam/Camilla Stevenson and says her YouTube is under Doctor Camilla Stevenson. She explicitly warns that fake pages exist.",
     "self_identification_source": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
     "self_identification_transcript_excerpt": "At approximately 40:07–40:26, she names her X, Instagram and YouTube identities and warns about fake pages.",
-    "handle_cross_reference": "@drkamilahstevenson appears in the title of the Paul Barron Podcast interview video. YouTube search results for three videos identify the creator as Kamilah Stevenson with subscriber counts between 138K and 140K.",
+    "handle_cross_reference": "@drkamilahstevenson is strongly corroborated by the Paul Barron Podcast video title and the guest's first-person statement that her YouTube identity is Doctor Camilla Stevenson, but the exact channel ID still lacks a first-party cross-link.",
     "canonical_channel_id": "NOT_FULLY_VERIFIED",
     "third_party_channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
     "third_party_channel_id_candidate_source": "Scrumball creator directory lists Kamilah Stevenson with this channel identifier; this is a secondary directory, not a first-party ownership proof.",
@@ -22,7 +22,8 @@
       "handle": "@KamilahStevensonXrpStocks",
       "status": "NOT_ATTRIBUTED",
       "reason": "No first-party cross-link from the verified interview or creator channel was established; the guest explicitly warns about fake pages."
-    }
+    },
+    "channel_identity_status": "PERSON_IDENTITY_VERIFIED; CANONICAL YOUTUBE CHANNEL ID NOT FULLY VERIFIED"
   },
   "source_registry": [
     {
@@ -181,7 +182,7 @@
       "published_date": "2025-12-03",
       "views_at_search": 21568,
       "creator_label": "Kamilah Stevenson",
-      "attribution_status": "VERIFIED_CREATOR_UPLOAD",
+      "attribution_status": "YOUTUBE_CREATOR_LABEL_MATCH_CHANNEL_ID_UNVERIFIED",
       "topics": [
         "XRP ETFs",
         "2026 macro setup",
@@ -199,7 +200,7 @@
       "published_date": "2025-12-13",
       "views_at_search": 76750,
       "creator_label": "Kamilah Stevenson",
-      "attribution_status": "VERIFIED_CREATOR_UPLOAD",
+      "attribution_status": "YOUTUBE_CREATOR_LABEL_MATCH_CHANNEL_ID_UNVERIFIED",
       "topics": [
         "Ripple banking-license pursuit",
         "XRP institutional liquidity",
@@ -216,7 +217,7 @@
       "views_at_search": 10090,
       "likes_at_search": 740,
       "creator_label": "Kamilah Stevenson",
-      "attribution_status": "VERIFIED_CREATOR_UPLOAD",
+      "attribution_status": "YOUTUBE_CREATOR_LABEL_MATCH_CHANNEL_ID_UNVERIFIED",
       "topics": [
         "Confidential Transfers",
         "Sponsored Fees and Reserves",
@@ -293,7 +294,7 @@
     "person_identity_verified": true,
     "handle_strongly_corroborated": true,
     "canonical_channel_id_verified": false,
-    "own_channel_video_count_verified": 3,
+    "own_channel_video_count_verified": 0,
     "verified_guest_appearance_count": 1,
     "secondary_transcript_candidates": 2,
     "third_party_clip_excluded": 1,
@@ -301,7 +302,9 @@
     "raw_source_bytes_captured": false,
     "source_sha256_receipts": false,
     "independent_timestamp_anchor": false,
-    "model_eligible": false
+    "model_eligible": false,
+    "creator_label_matches": 3,
+    "inventory_status": "3 YouTube creator-label matches, 1 verified guest appearance, 2 Glasp transcript candidates pending direct metadata, 1 third-party clip excluded."
   },
   "predictions": {
     "issued": false,

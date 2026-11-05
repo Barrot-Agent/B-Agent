@@ -9,7 +9,7 @@ def load():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def test_identity_and_fake_page_warning_are_preserved():
+def test_person_identity_is_verified_but_channel_id_is_not_overstated():
     data = load()
     identity = data["identity_assessment"]
     assert identity["person_identity"] == "HIGH_CONFIDENCE_VERIFIED"
@@ -18,11 +18,13 @@ def test_identity_and_fake_page_warning_are_preserved():
     assert data["source_quality"]["fake_page_warning_preserved"] is True
 
 
-def test_only_direct_youtube_creator_metadata_counts_as_own_channel_upload():
-    inventory = data = load()["video_inventory"]
-    own = [item for item in inventory if item["attribution_status"] == "VERIFIED_CREATOR_UPLOAD"]
-    assert {item["video_id"] for item in own} == {"Gy4BuGhAWE8", "QslbjGQD0MU", "8xiy8w2YlfY"}
-    assert all(item["creator_label"] == "Kamilah Stevenson" for item in own)
+def test_creator_label_matches_are_not_claimed_as_channel_id_verified_uploads():
+    data = load()
+    matches = [item for item in data["video_inventory"] if item["attribution_status"] == "YOUTUBE_CREATOR_LABEL_MATCH_CHANNEL_ID_UNVERIFIED"]
+    assert {item["video_id"] for item in matches} == {"Gy4BuGhAWE8", "QslbjGQD0MU", "8xiy8w2YlfY"}
+    assert all(item["creator_label"] == "Kamilah Stevenson" for item in matches)
+    assert data["source_quality"]["own_channel_video_count_verified"] == 0
+    assert data["source_quality"]["canonical_channel_id_verified"] is False
 
 
 def test_guest_appearance_is_not_misclassified_as_creator_upload():
