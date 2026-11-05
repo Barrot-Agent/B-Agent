@@ -280,6 +280,21 @@
       "limitations": [
         "A scheduled release is not an observed macro surprise; the direction of market response is unknown until data and repricing occur."
       ]
+    },
+    {
+      "id": "ap_boe_inflation_iran_20261105",
+      "publisher": "Associated Press",
+      "authority": "secondary macro and geopolitical reporting",
+      "url": "https://apnews.com/article/britain-economy-interest-rates-dce506792fe3b452ec4c3982147286f3",
+      "published_date": "2026-11-05",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered AP article extract; original response bytes not retained",
+      "independence_group": "ap_geopolitical_macro_reporting",
+      "model_eligible": false,
+      "limitations": [
+        "The Bank of England rate increase was an expectation at the capture cutoff, not a confirmed decision.",
+        "The article attributes UK inflation pressure to the Iran war and Strait of Hormuz supply bottlenecks; it does not establish an XRP effect."
+      ]
     }
   ],
   "market_snapshot": {
@@ -541,7 +556,13 @@
         "thirty_year_pct": 5.229,
         "context": "reported eight-week lows before yields edged higher; exact observation time not supplied"
       },
-      "interpretation": "A weaker dollar and lower yields can ease financial conditions at the margin, but the election may also increase legislative gridlock and delay crypto market-structure legislation. No causal XRP response is established."
+      "interpretation": "A weaker dollar and lower yields can ease financial conditions at the margin, but the election may also increase legislative gridlock and delay crypto market-structure legislation. No causal XRP response is established.",
+      "guardian_dollar_broad_basket_change_pct": -0.35,
+      "guardian_overnight_dollar_low_change_pct": -0.6,
+      "guardian_ten_year_us_treasury_yield_pct": 4.9,
+      "guardian_ten_year_yield_change_basis_points": -4.6,
+      "wsj_long_end_yield_context": "Long-end yields reached eight-week lows on Nov 5; a separate search extract showed 10-year 4.837% and 30-year 5.229%, but the opened WSJ article did not expose those exact intraday numbers. Preserve the numeric extract as lower-confidence until exact market timestamp is obtained.",
+      "cross_source_rule": "WSJ Dollar Index 96.94/-0.30%, Guardian broad-dollar basket -0.35% and -0.6% overnight, and the Treasury observations have different definitions and observation times; do not average."
     },
     "geopolitical_energy_risk": {
       "event": "Iran war and Strait of Hormuz energy-supply disruption",
@@ -549,7 +570,12 @@
       "reported_brent_price_usd_per_barrel": 100.83,
       "reported_daily_change_pct": -2.7,
       "boe_decision_status": "market expectation for a Nov 5 hike from 3.75% to 4.00%; not yet a confirmed decision at this cutoff",
-      "interpretation": "Energy-driven inflation and rate expectations can offset a weaker-dollar risk-on channel. XRP impact is unknown."
+      "interpretation": "The election-related easing of oil/dollar risk premia and the persistent Iran-war inflation/supply-shock channel point in different directions. No XRP-specific causal response is established.",
+      "source": "Guardian live market report and Associated Press macro report",
+      "guardian_brent_observation_usd_per_barrel": 100.83,
+      "guardian_brent_change_pct": -2.7,
+      "ap_context": "AP reported that Iran-war and Strait of Hormuz supply bottlenecks had raised energy-driven UK inflation; it described a BoE increase from 3.75% to 4.00% on Nov 5 as expected, not yet confirmed at the cutoff.",
+      "guardian_counter_context": "Guardian reported Brent down 2.7% to $100.83 as markets considered a lower risk premium after the US midterm result and awaited Washington's next move on Iran."
     },
     "us_employment_situation": {
       "reference_month": "2026-10",
@@ -587,7 +613,7 @@
     {
       "id": "H6_macro_channels_conflict",
       "claim": "Dollar/yield weakness may support risk appetite.",
-      "disconfirming_evidence": "Energy inflation, geopolitical risk, possible central-bank tightening and legislative uncertainty can offset that channel."
+      "disconfirming_evidence": "The Guardian reported a weaker dollar, lower Treasury yields and lower Brent after the election, while AP reported energy-driven inflation and an expected BoE hike. These are different markets, timestamps and policy channels; no causal XRP response is established."
     },
     {
       "id": "H7_binance_incident_flow_contamination",
