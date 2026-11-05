@@ -189,11 +189,29 @@
         "A synchronized independently captured venue set including Binance/Bitget confirms a similar depth distribution."
       ],
       "status": "LIVE_COUNTERHYPOTHESIS"
+    },
+    {
+      "id": "H4_HOURLY_DEPTH_SKEW_NOT_PERSISTENT",
+      "statement": "The 12:00 and 13:00 published snapshots show materially different depth balance; the bid-side skew in the 13:00 artifact is not established as persistent.",
+      "supporting_observation": "At 12:00, bid share is 48.3% within 2% and 49.4% within 10%; the 13:00 artifact reports 56.2% and 53.9% respectively.",
+      "disconfirming_evidence_required": [
+        "Synchronized raw venue snapshots show a persistent bid-side skew through subsequent price tests and executed flow."
+      ],
+      "status": "LIVE_COUNTERHYPOTHESIS"
+    },
+    {
+      "id": "H5_USDT_TO_USD_CONVERSION_NOISE",
+      "statement": "Depth values for USDT-denominated books may move with the live USDT/USD conversion rate; the rendered methodology does not disclose the conversion source or exact conversion timestamp.",
+      "supporting_observation": "Fuelmaps says USDT books are converted to USD using a live USDT/USD rate.",
+      "disconfirming_evidence_required": [
+        "The publisher supplies the exact conversion source, timestamp, and raw USDT/USD receipt; direct venue-level USD-normalized calculations reconcile."
+      ],
+      "status": "LIVE_DATA_QUALITY_LIMITATION"
     }
   ],
   "model_eligibility": {
     "eligible": false,
-    "reason": "Rendered hourly aggregate; no byte-complete raw source receipt, no independent timestamp anchor, incomplete venue universe and no cancellation/persistence or executed-flow linkage.",
+    "reason": "Rendered hourly aggregate; original 13:00 values are not reproducible from the later direct page rendering, a separate 12:00 snapshot shows a materially different depth balance, the USDT/USD conversion source/timestamp is undisclosed, no byte-complete raw source receipt or independent timestamp anchor exists, venue coverage is incomplete, and cancellations/executed-flow linkage are unavailable.",
     "forecast_issued": false,
     "feature_admission": "RESEARCH_ONLY_NOT_ADMITTED"
   },
@@ -203,6 +221,102 @@
     "Compute executable slippage curves and cumulative depth at 10, 25, 50 and 100 basis points.",
     "Track order additions, cancellations, persistence, replenishment and executed trade flow at synchronized cutoffs.",
     "Keep this hourly Fuelmaps observation as a research-only cross-check until raw receipts and venue-level reconciliation exist.",
-    "Do not issue a directional forecast from displayed resting depth alone."
-  ]
+    "Do not issue a directional forecast from displayed resting depth alone.",
+    "Preserve the 12:00 page observation and 13:00 artifact as separate hourly vintages; do not infer persistent bid support.",
+    "Obtain the exact USDT/USD conversion source and timestamp before comparing USD and USDT books.",
+    "Prefer direct venue-level raw order-book receipts over the Fuelmaps aggregate for model admission."
+  ],
+  "publisher_page_observations": [
+    {
+      "source_id": "fuelmaps_xrp_spot_orderbook_page_rendered_20261105T1200Z",
+      "publisher": "Fuelmaps",
+      "source_url": "https://fuelmaps.io/order-book/",
+      "retrieved_on_utc_date": "2026-11-05",
+      "page_snapshot_at_utc": "2026-11-05T12:00:00Z",
+      "displayed_mid_usd": 1.3142,
+      "depth_bands_usd_millions": [
+        {
+          "within_pct": 0.5,
+          "bids": 6.9,
+          "asks": 5,
+          "bid_share_pct": 58.2,
+          "venues_reporting": 6
+        },
+        {
+          "within_pct": 1,
+          "bids": 9.6,
+          "asks": 7.6,
+          "bid_share_pct": 55.9,
+          "venues_reporting": 6
+        },
+        {
+          "within_pct": 2,
+          "bids": 11.4,
+          "asks": 12.2,
+          "bid_share_pct": 48.3,
+          "venues_reporting": 6
+        },
+        {
+          "within_pct": 5,
+          "bids": 17,
+          "asks": 16.4,
+          "bid_share_pct": 51,
+          "venues_reporting": 6
+        },
+        {
+          "within_pct": 10,
+          "bids": 20.5,
+          "asks": 21,
+          "bid_share_pct": 49.4,
+          "venues_reporting": 5
+        }
+      ],
+      "raw_capture_status": "rendered_web_page_only",
+      "raw_content_sha256": null,
+      "independent_timestamp_anchor": false,
+      "model_eligible": false,
+      "note": "A later direct rendering of the same publisher page displayed the 12:00 UTC snapshot, not the 13:00 UTC snapshot recorded in the original artifact. This is a distinct hourly vintage and a reproducibility discrepancy, not a replacement for the 13:00 observation."
+    }
+  ],
+  "publisher_methodology": {
+    "source_url": "https://fuelmaps.io/order-book/",
+    "accessed_on_utc_date": "2026-11-05",
+    "claims": [
+      "The page says it updates hourly, five minutes after the hour.",
+      "Each hourly column averages one-minute book snapshots; a wall present for 10 minutes of an hour appears at roughly one sixth of its instantaneous size in that hourly column.",
+      "The publisher converts USDT books to USD using a live USDT/USD rate.",
+      "Full-depth venues are Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken provide near-price depth only, with asset-dependent reach.",
+      "Binance and Bitget are excluded because their public data cannot be read by the network the map records from.",
+      "Resting orders can be cancelled; hidden and iceberg orders are not visible; futures/perpetual books are excluded; historical books cannot be downloaded from exchanges."
+    ],
+    "limits": [
+      "The page does not identify the exact USDT/USD conversion source and timestamp in the rendered methodology.",
+      "The 13:00 snapshot in the original artifact was not visible in the later direct page rendering, which showed 12:00.",
+      "The rendered page is one aggregator, not raw venue-level receipts."
+    ],
+    "source_independence_group": "fuelmaps_aggregator",
+    "model_eligible": false
+  },
+  "snapshot_vintage_disagreement": {
+    "resolved": false,
+    "original_artifact_snapshot": {
+      "at_utc": "2026-11-05T13:00:00Z",
+      "mid_usd": 1.3059,
+      "within_2pct_bid_share_pct": 56.2,
+      "within_10pct_bid_share_pct": 53.9
+    },
+    "later_direct_page_snapshot": {
+      "at_utc": "2026-11-05T12:00:00Z",
+      "mid_usd": 1.3142,
+      "within_2pct_bid_share_pct": 48.3,
+      "within_10pct_bid_share_pct": 49.4
+    },
+    "interpretation": "The two observations are different hourly vintages. The later page rendering did not expose the 13:00 values that the original artifact recorded. The 12:00 snapshot is ask-heavy at ±2% and ±10%, while the 13:00 artifact is bid-heavy across all bands. Do not call the bid-side skew persistent or combine the snapshots as one book.",
+    "plausible_explanations": [
+      "The dashboard had not published or rendered the 13:00 column at the time of the later page retrieval.",
+      "The first artifact captured a publisher value that is not reproducible from the currently rendered page.",
+      "The page or retrieval layer served a cached earlier hourly snapshot."
+    ],
+    "evidence_needed": "Byte-complete publisher API response or direct venue-level book captures with synchronized receipt times and USDT/USD conversion receipts."
+  }
 }
