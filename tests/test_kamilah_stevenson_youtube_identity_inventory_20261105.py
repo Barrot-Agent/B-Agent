@@ -55,3 +55,6 @@ def test_inventory_is_partial_and_creator_commentary_is_not_market_truth():
     assert "4.09B XRP whale accumulation and 7.03B XRP exchange outflows in the April 19 video description are unverified here." in data["content_use_policy"]["claims_requiring_special_caution"]
     assert data["model_eligible"] is False
     assert data["forecast_issued"] is False
+    assert data["recorded_at_utc"] is None
+    assert "approximate research-run marker" in data["file_timestamp_semantics"]
+    assert all(v["metrics_snapshot_date"] is None for v in scope["videos"])
