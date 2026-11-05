@@ -43,6 +43,10 @@ def test_guest_appearance_is_separate_from_own_channel_uploads():
     assert len(guest) == 1
     assert guest[0]["publisher"] == "The XRP Podcast with Paul Barron / iHeart"
     assert "no exact YouTube watch URL" in guest[0]["reason"]
+    ai = guest[0]["ai_methodology_statement"]
+    assert ai["provider_names_disclosed"] == []
+    assert ai["authentication_or_data_flow_evidence"] is False
+    assert ai["persistent_platform_coordination_verified"] is False
     assert all(v["video_id"] != "5DzBk8DfoLs" for v in data["video_inventory_scope"]["videos"])
 
 
