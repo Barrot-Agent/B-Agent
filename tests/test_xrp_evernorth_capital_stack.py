@@ -35,7 +35,7 @@ def test_evernorth_xrp_contributions_are_not_mislabeled_as_spot_purchases() -> N
     data = _artifact()
     events = {item["id"]: item for item in data["capital_events"]}
 
-    assert events["cash_funded_xrp_purchase"]["classification"] == "issuer_reported_spot_purchase_using_subscription_cash"
+    assert events["cash_funded_xrp_purchase"]["classification"] == "issuer_reported_xrp_purchase_using_subscription_cash"
     assert events["series_c_rippleworks_arrington"]["classification"] == "in_kind_xrp_subscription_not_spot_purchase"
     assert events["ripple_direct_contribution"]["classification"] == "in_kind_xrp_contribution_not_spot_purchase"
     assert events["ripple_affiliated_trust_contribution"]["classification"] == "related_party_in_kind_xrp_subscription_not_spot_purchase"
