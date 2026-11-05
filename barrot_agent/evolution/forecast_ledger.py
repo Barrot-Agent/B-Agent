@@ -1,9 +1,11 @@
 """Fixed-horizon XRP forecast ledger; records only after verified OOS readiness, never predicts or trades."""
 from __future__ import annotations
 
+import base64
 import hashlib
 import json
 import math
+import os
 import re
 import sqlite3
 from datetime import datetime, timedelta, timezone
@@ -11,12 +13,17 @@ from pathlib import Path
 from typing import Any, Callable, Mapping
 from urllib.parse import urlsplit
 
+from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
 
 HORIZONS = (3600, 14400, 86400, 604800, 2592000)
 CLASSES = ("down", "flat", "up")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
-READINESS_POLICY_ID = "xrp_forecast_readiness_v1"
+READINESS_POLICY_ID = "xrp_forecast_readiness_v2"
+_EVALUATOR_KEYS_ENV = "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V2\0"
 _REQUIRED_BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
 _MIN_OOS_SAMPLES = 100
 _MIN_SHADOW_SAMPLES = 100
@@ -94,24 +101,132 @@ def _scores(probabilities: Mapping[str, float], actual: str) -> tuple[float, flo
     return brier, log_loss, predicted == actual, predicted
 
 
+def _load_trusted_evaluator_keys(
+    configured: Mapping[str, bytes | str] | None,
+) -> dict[str, Ed25519PublicKey]:
+    """Load externally managed Ed25519 public keys; an empty set fails closed."""
+    if configured is None:
+        raw = os.environ.get(_EVALUATOR_KEYS_ENV, "").strip()
+        if not raw:
+            return {}
+        try:
+            configured = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            raise ForecastLedgerError(f"{_EVALUATOR_KEYS_ENV} must contain a JSON object") from exc
+    if not isinstance(configured, Mapping):
+        raise ForecastLedgerError("trusted evaluator public keys must be a mapping")
+
+    keys: dict[str, Ed25519PublicKey] = {}
+    for key_id, encoded in configured.items():
+        if not isinstance(key_id, str) or not key_id.strip():
+            raise ForecastLedgerError("trusted evaluator key IDs must be non-empty strings")
+        normalized_id = key_id.strip()
+        if normalized_id in keys:
+            raise ForecastLedgerError("trusted evaluator key IDs must be unique")
+        if isinstance(encoded, bytes):
+            public_bytes = encoded
+        elif isinstance(encoded, str):
+            try:
+                public_bytes = base64.b64decode(encoded, validate=True)
+            except (ValueError, TypeError) as exc:
+                raise ForecastLedgerError(f"trusted evaluator key {normalized_id!r} is not valid base64") from exc
+        else:
+            raise ForecastLedgerError(f"trusted evaluator key {normalized_id!r} must be raw bytes or base64")
+        if len(public_bytes) != 32:
+            raise ForecastLedgerError(f"trusted evaluator key {normalized_id!r} must contain 32 Ed25519 public-key bytes")
+        try:
+            keys[normalized_id] = Ed25519PublicKey.from_public_bytes(public_bytes)
+        except ValueError as exc:
+            raise ForecastLedgerError(f"trusted evaluator key {normalized_id!r} is invalid") from exc
+    return keys
+
+
+def _verify_evaluator_attestation(
+    report: Mapping[str, Any],
+    trusted_keys: Mapping[str, Ed25519PublicKey],
+    registered_at_utc: str,
+) -> None:
+    """Verify a detached independent-evaluator signature over the complete readiness report."""
+    if not trusted_keys:
+        raise ForecastLedgerError(
+            "no trusted independent evaluator public keys are configured; forecast issuance remains disabled"
+        )
+    attestation = report.get("evaluator_attestation")
+    required_fields = {
+        "scheme", "key_id", "signed_payload_sha256", "signature_base64", "attested_at_utc"
+    }
+    if not isinstance(attestation, Mapping) or set(attestation) != required_fields:
+        raise ForecastLedgerError("readiness report needs a complete evaluator_attestation")
+    if attestation.get("scheme") != "Ed25519":
+        raise ForecastLedgerError("readiness evaluator attestation scheme must be Ed25519")
+
+    key_id = attestation.get("key_id")
+    if not isinstance(key_id, str) or not key_id.strip():
+        raise ForecastLedgerError("readiness evaluator attestation key_id is required")
+    key_id = key_id.strip()
+    if report.get("evaluator_id") != key_id:
+        raise ForecastLedgerError("readiness evaluator_id must match the trusted attestation key_id")
+    public_key = trusted_keys.get(key_id)
+    if public_key is None:
+        raise ForecastLedgerError(f"readiness evaluator key {key_id!r} is not trusted")
+
+    unsigned_report = dict(report)
+    unsigned_report.pop("evaluator_attestation", None)
+    signed_payload = _json(unsigned_report).encode("utf-8")
+    signed_payload_sha256 = hashlib.sha256(signed_payload).hexdigest()
+    declared_digest = attestation.get("signed_payload_sha256")
+    if not isinstance(declared_digest, str) or not _SHA256.fullmatch(declared_digest):
+        raise ForecastLedgerError("readiness attestation signed_payload_sha256 must be a SHA-256 digest")
+    if declared_digest != signed_payload_sha256:
+        raise ForecastLedgerError("readiness evaluator signature payload hash does not match the report")
+
+    signature_value = attestation.get("signature_base64")
+    if not isinstance(signature_value, str) or not signature_value.strip():
+        raise ForecastLedgerError("readiness evaluator signature_base64 is required")
+    try:
+        signature = base64.b64decode(signature_value, validate=True)
+    except (ValueError, TypeError) as exc:
+        raise ForecastLedgerError("readiness evaluator signature is not valid base64") from exc
+    if len(signature) != 64:
+        raise ForecastLedgerError("readiness Ed25519 signature must contain 64 bytes")
+    try:
+        public_key.verify(signature, _EVALUATOR_ATTESTATION_DOMAIN + bytes.fromhex(signed_payload_sha256))
+    except InvalidSignature as exc:
+        raise ForecastLedgerError("readiness evaluator signature verification failed") from exc
+
+    attested_at = _utc(attestation.get("attested_at_utc"), "evaluator_attestation.attested_at_utc")[0]
+    completed_at = _utc(report.get("evaluation_completed_at_utc"), "evaluation_completed_at_utc")[0]
+    registered_at = _utc(registered_at_utc, "readiness report registered_at_utc")[0]
+    if attested_at < completed_at:
+        raise ForecastLedgerError("evaluator attestation predates evaluation completion")
+    if attested_at > registered_at:
+        raise ForecastLedgerError("evaluator attestation postdates actual readiness-report registration")
+
+
 def _validate_readiness_report(report: Any) -> dict[str, Any]:
-    """Validate an independent model evaluation and its point-in-time dataset manifest."""
+    """Validate an independently attested model evaluation and its point-in-time dataset manifest."""
     if not isinstance(report, Mapping):
         raise ForecastLedgerError("readiness report must be a JSON object")
-    if report.get("schema_version") != "barrot.xrp.model-readiness.v1":
+    if report.get("schema_version") != "barrot.xrp.model-readiness.v2":
         raise ForecastLedgerError("readiness report schema is unsupported")
     if report.get("evaluation_type") != "chronological_walk_forward_model_evaluation":
         raise ForecastLedgerError("baseline-only or non-chronological evaluation cannot authorize a forecast")
     if report.get("status") != "PASS" or report.get("policy_id") != READINESS_POLICY_ID:
         raise ForecastLedgerError("readiness report has not passed the active forecast policy")
 
-    for field in ("evaluation_id", "model_version", "baseline_model_version", "asset", "venue", "dataset_receipt_id"):
+    for field in (
+        "evaluation_id", "model_version", "baseline_model_version", "asset", "venue",
+        "dataset_receipt_id", "evaluator_id", "evaluator_version",
+    ):
         if not isinstance(report.get(field), str) or not report[field].strip():
             raise ForecastLedgerError(f"readiness report {field} must be a non-empty string")
     if report["model_version"] == report["baseline_model_version"]:
         raise ForecastLedgerError("evaluated model must be distinct from its baseline model")
     if not isinstance(report.get("dataset_sha256"), str) or not _SHA256.fullmatch(report["dataset_sha256"]):
         raise ForecastLedgerError("readiness report dataset_sha256 must be a SHA-256 digest")
+    for field in ("evaluation_code_sha256", "evaluation_artifact_sha256"):
+        if not isinstance(report.get(field), str) or not _SHA256.fullmatch(report[field]):
+            raise ForecastLedgerError(f"readiness report {field} must be a SHA-256 digest")
 
     horizon = report.get("horizon_seconds")
     if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon not in HORIZONS:
@@ -287,8 +402,10 @@ class ForecastLedger:
         *,
         clock: Callable[[], datetime] | None = None,
         feature_store: HistoricalFeatureStore | None = None,
+        trusted_evaluator_public_keys: Mapping[str, bytes | str] | None = None,
     ) -> None:
         self.db_path = Path(db_path)
+        self._trusted_evaluator_public_keys = _load_trusted_evaluator_keys(trusted_evaluator_public_keys)
         # Injectable only as a deterministic test seam; production defaults to UTC wall time.
         self._clock = clock or (lambda: datetime.now(timezone.utc))
         self.feature_store = feature_store
@@ -379,8 +496,13 @@ class ForecastLedger:
                 raise ForecastLedgerError(
                     f"readiness raw receipt {receipt['receipt_id']!r} bytes do not match its SHA-256"
                 )
+        if report_bytes != _json(report).encode("utf-8"):
+            raise ForecastLedgerError("readiness report bytes must use canonical JSON encoding")
         report_sha256 = hashlib.sha256(report_bytes).hexdigest()
         registered_at = self._now().isoformat(timespec="microseconds").replace("+00:00", "Z")
+        _verify_evaluator_attestation(
+            validated_report, self._trusted_evaluator_public_keys, registered_at
+        )
         db = self._connect()
         try:
             db.execute("BEGIN IMMEDIATE")
@@ -438,6 +560,9 @@ class ForecastLedger:
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
             raise ForecastLedgerError("registered readiness report is not valid JSON") from exc
         _validate_readiness_report(report)
+        _verify_evaluator_attestation(
+            report, self._trusted_evaluator_public_keys, row["registered_at_utc"]
+        )
 
         if report["model_version"] != payload["model_version"]:
             raise ForecastLedgerError("readiness report model_version does not match forecast")
