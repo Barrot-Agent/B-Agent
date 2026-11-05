@@ -18,6 +18,8 @@ class EvaluationSnapshot:
     def __post_init__(self) -> None:
         if not self.run_id.strip() or not self.revision.strip():
             raise ValueError("run_id and revision must be non-empty")
+        if not isinstance(self.metrics, Mapping):
+            raise TypeError("metrics must be a mapping of names to numeric values")
         if not self.metrics:
             raise ValueError("at least one measured metric is required")
         copied: dict[str, float] = {}
@@ -74,7 +76,10 @@ def assess_improvement(
         raise ValueError("baseline and candidate must use distinct revisions")
     if set(baseline.metrics) != set(candidate.metrics):
         raise ValueError("baseline and candidate must contain identical metric names")
-    tolerances = tolerances or {}
+    if tolerances is None:
+        tolerances = {}
+    elif not isinstance(tolerances, Mapping):
+        raise TypeError("tolerances must be a mapping")
     deltas: dict[str, float] = {}
     regressions: list[str] = []
     normalized: list[float] = []
