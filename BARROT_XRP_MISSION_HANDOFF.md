@@ -4947,3 +4947,126 @@ This is an indirect shared-ledger ecosystem relationship, not a direct Circle-Ri
 - **DESIGNED:** priority-1 XRP mission; V3 execution/orchestration/safety/verification foundation; nine-platform least-privilege adapters; public ingestion and prediction architecture.
 - **EXECUTED:** live main/tree/PR/branch/review/CI/workflow/dependency/security inspection; exact-head test and audit evidence retrieved; main Pillars failure logs inspected; one append-only handoff update prepared on the existing #1640 integration branch.
 - **VERIFIED:** #1640 exact head `cae6885` passed 603 core tests, 949 full-suite tests, 8 subtests, 55.26% inclusive coverage, wheel verification, six-manifest audit and fail-closed gate. #1643 exact head `97b601e` passed 495 core tests, 1,018 full-suite tests, 8 subtests and fail-closed gate; its dependency audit remains outstanding. Neither integration workstream is verified on main.
+
+
+## Run 42 — 2026-11-05T14:52Z
+
+### Mission and repository baseline
+
+XRP intelligence and measured prediction-engine mastery remain priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Current main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main's recursive tree contains 1,403 entries, 493 Python files, 86 workflow files and 90 Python test files. The XRP mission registry, packaged primary-mission manifest and public XRP collector remain absent from main; they exist on the integration branch only.
+
+Open inventory: 364 PRs, 348 drafts and 16 non-drafts. No new branch or PR was created.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+**EXECUTED — PR #1640 V3/core integration**
+
+- Added bounded Databricks response handling to the quarantined legacy market-analysis script: response reads are capped at 1 MiB and result rows at 100; JSON top-level/status/manifest/result shapes are validated before use.
+- Added regression coverage for the existing free-text forecast/trading-language guard, response-byte overflow and row overflow.
+- The market-analysis workflow remains disabled and has no automatic external access. The new bounds are defense-in-depth, not permission to reactivate it.
+- The existing deterministic `TASK_MODE=mission` dispatcher reads the priority-1 XRP registry and structurally verified learning store, returns the next goal and exits before provider calls or repository mutation. It does not autonomously execute the goal.
+- The root and packaged primary-mission JSON manifests have identical content and blob SHA `6bef8e0d704b784e65c0b80afd22719a9be83d59`.
+
+**VERIFIED — PR #1640 exact code head**
+
+Head: `50752e5d1de40ee219783ded7d9cbf7059f5b9d2`
+
+- Core suite: 606 passed, 8 subtests.
+- Full repository suite: 958 passed, 8 subtests.
+- Inclusive coverage: 55.31%.
+- Six-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed and automatic merge remained disabled.
+
+Evidence:
+- [Full CI 42047145424](https://github.com/Barrot-Agent/B-Agent/actions/runs/42047145424)
+- [Six-manifest dependency audit 42047145200](https://github.com/Barrot-Agent/B-Agent/actions/runs/42047145200)
+- [Fail-closed gate 42047145331](https://github.com/Barrot-Agent/B-Agent/actions/runs/42047145331)
+
+**EXECUTED — PR #1643 XRP research archive**
+
+New append-only research and test files:
+- `research/xrp_intelligence/20261105T143601Z-xrp-spot-depth-derivatives-snapshot.json`
+- `research/xrp_intelligence/20261105T144600Z-xrp-perpetual-oi-row-sum-correction.json`
+- `tests/test_xrp_spot_depth_derivatives_snapshot_20261105.py`
+- `tests/test_xrp_perpetual_oi_row_sum_correction_20261105.py`
+
+The row-sum correction leaves the original snapshot untouched. It clarifies that the displayed TradRadar exchange rows sum to $2.06472B while the dashboard rounds to $2.06B; Kodexius displayed rows sum to $884.09M while its aggregate reads $884.08M. The corrected row-sum comparison is approximately $1.18063B, or 2.3354x. The rounded-dashboard comparison remains $1.17592B, or 2.3301x. The provider discrepancy is not averaged or resolved.
+
+**VERIFIED — PR #1643 exact head**
+
+Head: `a74e8dadbe40aafbc76530543fd400af5d7249fa`
+
+- Core suite: 495 passed, 8 subtests.
+- Full repository suite: 1,041 passed, 8 subtests.
+- Six-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed.
+
+Evidence:
+- [Full CI 42048743933](https://github.com/Barrot-Agent/B-Agent/actions/runs/42048743933)
+- [Six-manifest dependency audit 42048743908](https://github.com/Barrot-Agent/B-Agent/actions/runs/42048743908)
+- [Fail-closed gate 42048743973](https://github.com/Barrot-Agent/B-Agent/actions/runs/42048743973)
+
+### Current XRP market evidence and quality limits
+
+A later rendered Kraken API retrieval at approximately 14:50 UTC returned XRP/USD last $1.28609, best bid $1.28615, best ask $1.28658, 24-hour volume about 34.64M XRP, 24-hour VWAP $1.31228, high $1.34, low $1.28353 and current UTC-day open $1.30410. The displayed spread is approximately 3.34 bps. The API response exposes no provider event timestamp. A prior 14:36 retrieval showed $1.30249 and a much narrower spread; the retrieval-to-retrieval difference is not a synchronized return and must not be treated as a verified 14-minute price move.
+
+The 14:00 Fuelmaps snapshot previously archived showed a bid-heavy six-venue resting book, but the current server-rendered page exposes only BTC while XRP requires JavaScript. Treat the archived XRP depth as a historical, model-ineligible observation; resting orders can cancel and venue coverage is incomplete.
+
+The latest rendered TradRadar page now says updated 14:10 UTC with a 15-minute display delay, mark $1.3051, open interest $2.05B (+2.72%), funding +0.0100%/8h, liquidations at least $5.35M (shorts $3.60M, longs $1.75M), and account long/short 3.23 (76.4% long). The page was retrieved around 14:50 UTC, making its displayed update time approximately 40 minutes old. Kodexius still showed a 14:13 UTC update, $884.08M OI across seven contracts/five venues, +0.0100% funding and $1.56B 24-hour volume. Both aggregators are stale relative to their stated refresh cadence; their exchange universes overlap and their raw payloads were not preserved.
+
+The 14:36 snapshot remains historical. Its row-sum correction preserves the difference between rounded dashboard totals and sums of displayed exchange rows. No synchronized current spot/depth/derivatives vintage is available.
+
+All these rendered observations remain model-ineligible: no byte-exact raw payloads, SHA-256 receipts or independent timestamp anchors. No directional XRP forecast was issued.
+
+### Institutional and exact-phrase research
+
+**Circle Q3 2026:** Circle's November 4 SEC Exhibit 99.1 reports average USDC circulation of $73.3B, quarter-end circulation $73.9B, gross on-chain transaction volume $13.9T, gross minting $104B and gross redemptions $104B, and Circle Payments Network annualized TPV of $41.3B. The $182M ARC token presale is included in other revenue. Tazapay is expected to close in 2027 subject to regulatory approvals. These are issuer-reported metrics; gross throughput and gross mint/redemption are not net capital or XRP demand.
+
+**Coinbase Q3 2026:** Its October 29 earnings release reports average USDC held in Coinbase products of $22B, up 49% year over year. Its SEC 10-Q reports $306.905M Q3 stablecoin revenue and says the Circle arrangement was renewed on the same terms with no change to the arrangement or revenue generated. The $22B is an average balance stock, not net new capital. Coinbase also states it does not use customer assets as collateral without customer consent.
+
+**Binance/Circle:** Binance's September 22 announcement says it purchased $100M of Circle Class A shares through a private placement and renewed a five-year USDC distribution partnership. This is actual equity capital into Circle, not XRP purchases or XRP liquidity.
+
+**Ripple/Coinbase:** Ripple's October 28 announcement confirms RLUSD availability through Coinbase Prime, Exchange and Retail, with XRPL, Base and Ethereum deposits/withdrawals. Coinbase Global Exchange collateral support was described as a future phase. No XRP bridge/conversion volume or XRP-specific collateral balance is established by the announcement.
+
+**SBIC disambiguation:** The exact phrase `SBIC, ChatGPT SBIC` resolves in the primary academic source to the Social Bias Inference Corpus, not a Japanese financial company. The cited 65.9% GPT-3.5 and 60.6% GPT-4 figures are pairwise author preference against human-gold annotations, not model accuracy or trading performance. Japan's SBIC East (Tokyo), SBIC Central (Nagoya) and SBIC West (Osaka) are three separate regional Small and Medium Business Investment & Consultation companies and identify one another as sister companies. They are not SBI Holdings.
+
+ASK Coin remains two distinct candidates (Permission Coin/ASK and a separate Ask Coin listing); neither has an established XRP relationship. The actual-capital ledger continues to separate cash subscriptions, XRP in-kind contributions, debt, undrawn facilities, warrants and realized purchases. The canonical Kamilah/Camilla Stevenson YouTube channel remains unverified; no exhaustive video inventory is claimed.
+
+### Nine-platform status
+
+- ChatGPT-to-GitHub repository access: verified.
+- Copilot: one-off review activity observed, not a persistent authenticated data flow.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks: persistent authenticated data flows remain unverified.
+- Groq is not Grok; the legacy Groq workflow is quarantined.
+- Main's Pillars Consistency Check remains failed: missing GitHub App ID/private key/installation ID, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+- Main's latest scheduled Cross Analysis passed: [42049130221](https://github.com/Barrot-Agent/B-Agent/actions/runs/42049130221).
+
+### Branch ancestry, overlap and backlog
+
+Current PRs:
+- #1640 head `50752e5d1de40ee219783ded7d9cbf7059f5b9d2`: 285 commits ahead of main, 0 behind, 92 changed files.
+- #1643 head `a74e8dadbe40aafbc76530543fd400af5d7249fa`: 227 commits ahead of main, 0 behind, 180 changed files.
+
+Path comparison found one shared path, `.github/workflows/dependency-audit.yml`. Both branches have identical blob SHA `6515307991420ab90d8671034b13ac2eb56190b3`; this is a shared identical change, not a content conflict. The earlier zero-path-overlap characterization is superseded.
+
+#1643 is not based on #1640. If #1640 merges, #1643 will be 285 commits behind the resulting main. Do not rewrite its branch. Create one consolidated successor directly on the resulting main, reconcile the research changes and the identical dependency-audit workflow, and explicitly identify #1643 as its source.
+
+Non-draft backlog:
+- Active integration: #1640 and #1643.
+- Dependency/action changes represented in #1640: #1644–#1650 (duplicate/superseded candidates pending main verification).
+- Older dependency candidates: #1254 and #1255 (superseded candidates).
+- Preserve unique/unreviewed: #1651, #1320, #1318, #1317 and #1269.
+- 348 drafts remain open; targeted XRP/mission/ingestion searches surfaced overlapping proposals, but no draft or unique work was bulk-closed.
+- #1642 remains an exact-ancestor draft and is not closed.
+
+### Merge and deployment blockers
+
+Both PRs are non-draft and GitHub reports them mergeable/clean. Review threads are resolved (22/22 on #1640; 14/14 on #1643), but each has zero approving reviews. Main reports protected=true; the branch object exposes no required status-check contexts, while the detailed protection endpoint returns HTTP 403 and the visible repository ruleset is disabled. GitHub Pages settings could not be inspected through the available API. A prior main push triggered a successful Pages deployment: [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered deployment is unresolved.
+
+Neither PR was merged. No branch-protection bypass, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete action
+
+Obtain independent approving reviews and verify the actual branch-protection requirements; resolve the automatic GitHub Pages deployment side effect. Only then merge #1640 if every exact-head condition remains satisfied, fetch main again, verify the merge commit/files and run main CI. After that, build one consolidated successor on the new main from #1643's unique research content, run full-suite, six-manifest dependency/security and fail-closed checks on its exact head, and merge only when approvals and deployment authorization are satisfied. Keep directional forecast issuance disabled until durable, timestamped, synchronized historical data and calibrated out-of-sample/shadow results meet the forecast readiness gates.
