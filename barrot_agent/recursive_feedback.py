@@ -274,6 +274,7 @@ class RecursiveFeedbackLoop:
         evidence = system_state.get("evaluation")
         if not isinstance(evidence, dict):
             logger.info("No paired evaluation evidence; improvement is unverified")
+            self._improvement_history.clear()
             return 0.0, 0.0
         try:
             baseline_data = evidence["baseline"]
@@ -283,8 +284,10 @@ class RecursiveFeedbackLoop:
             assessment = assess_improvement(baseline, candidate, lower_is_better=frozenset(evidence.get("lower_is_better", [])), tolerances=evidence.get("tolerances", {}))
         except (AttributeError, KeyError, TypeError, ValueError) as exc:
             logger.warning("Evaluation evidence rejected: %s", exc)
+            self._improvement_history.clear()
             return 0.0, 0.0
         if not assessment.eligible or not assessment.improved:
+            self._improvement_history.clear()
             return 0.0, 0.0
         score = max(0.0, min(1.0, assessment.score))
         self._improvement_history.append(score)
