@@ -89,8 +89,11 @@ class AutonomousTaskStore:
             for item in archived:
                 canonical = json.dumps(item, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
                 digest = hashlib.sha256((digest + canonical).encode("utf-8")).hexdigest()
+            archived_count = int(payload.get("history_archived_count", 0)) + len(archived)
             payload["history_archive_digest"] = digest
-            payload["history_archived_count"] = int(payload.get("history_archived_count", 0)) + len(archived)
+            payload["history_archived_count"] = archived_count
+            state["history_archive_digest"] = digest
+            state["history_archived_count"] = archived_count
             del history[:-self.MAX_HISTORY_ITEMS]
         serialized = json.dumps(payload, sort_keys=True, ensure_ascii=False) + "\n"
         if len(serialized.encode("utf-8")) > self.MAX_CHECKPOINT_BYTES:
