@@ -30,6 +30,10 @@ sys.path.insert(1, SCRIPTS_DIR_STR)
 
 from sandbox import verify_result
 
+from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
+from barrot_agent.orchestration.mission_registry import MissionRegistry
+from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
+
 from barrot_agent.orchestration.repository_repair import (
     ProjectIdentity,
     RepositoryRepairController,
@@ -1236,8 +1240,67 @@ def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
     )
 
 
+def build_primary_mission_dispatch() -> dict[str, Any]:
+    """Return the next verified primary-mission goal without provider or repository writes.
+
+    This mode is deterministic and read-only. It is suitable for an explicitly
+    invoked mission-planning step; it does not execute the goal or authorize
+    external actions.
+    """
+    registry = MissionRegistry()
+    manifest = registry.manifest
+    foundation = manifest["foundation"]
+    if manifest["status"] != "active":
+        return {
+            "status": "NOT_ACTIVE",
+            "mission_id": registry.mission_id,
+            "priority": 1,
+            "foundation": foundation["name"],
+            "next_goal": None,
+            "provider_calls": False,
+            "repository_mutation": False,
+            "external_actions_authorized": False,
+        }
+
+    learning_store = VerifiedLearningStore(ROOT / "data" / "evolution" / "verified_lessons.jsonl")
+    curriculum = LearningCurriculum(
+        workspace=str(ROOT),
+        learning_store=learning_store,
+        mission_registry=registry,
+    )
+    goal = curriculum.next_goal()
+    if not isinstance(goal, str) or not goal.strip():
+        raise RuntimeError("Primary mission curriculum returned no active goal.")
+    topic = re.search(r"(?m)^MISSION_TOPIC_ID:\\s*([a-zA-Z0-9_.-]+)\\s*$", goal)
+    if topic is None:
+        raise RuntimeError("Primary mission goal is missing its topic identifier.")
+
+    return {
+        "status": "READY",
+        "dispatch_mode": "read_only_mission_plan",
+        "mission_id": registry.mission_id,
+        "priority": 1,
+        "topic_id": topic.group(1),
+        "foundation": {
+            "id": foundation["id"],
+            "name": foundation["name"],
+            "preserve": foundation["preserve"],
+        },
+        "next_goal": goal,
+        "acceptance_criteria": list(manifest["acceptance_criteria"]),
+        "guardrails": list(manifest["guardrails"]),
+        "provider_calls": False,
+        "repository_mutation": False,
+        "external_actions_authorized": False,
+    }
+
+
 def main() -> None:
     global MAX_SEARCH_RESULTS
+    if TASK_MODE == "mission":
+        print(json.dumps(build_primary_mission_dispatch(), indent=2, sort_keys=True))
+        return
+
     configure_git()
     checkout_branch(BRANCH)
 
