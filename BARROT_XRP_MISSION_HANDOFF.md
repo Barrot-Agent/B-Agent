@@ -4656,3 +4656,71 @@ Verification on exact head d382eb42:
 - **DESIGNED:** verified-learning admission contract, hourly public ingestion, daily feature-store backup, point-in-time evaluation, baseline comparison and read-only mission dispatch.
 - **EXECUTED:** verified-learning validation and tests on #1640; November 4 ETF-flow addendum and tests on #1643; exact-head CI, full-suite tests, fail-closed gates and #1640 dependency audit.
 - **VERIFIED:** #1640 head b997260e passed 601 core tests, 913 full-suite tests, six-manifest dependency audit and fail-closed gate. #1643 head d382eb42 passed 495 core tests, 980 full-suite tests and fail-closed gate; dependency manifests match main but exact-head dependency audit remains pending. None of these changes is verified on main.
+
+
+## Run 39 follow-up — ETF row-status admission and Circle USDC/XRPL update (2026-11-05)
+
+### Verified-learning legacy audit
+
+A direct parse of data/evolution/verified_lessons.jsonl on the #1640 branch found **243 parseable legacy records** and no malformed lines. All 243 lack schema_version, lesson_id, the Verified findings section and READ_FILE/SEARCH_TEXT/RUN_TESTS markers; all use the older generic reason “Actions and verification succeeded.” None contains an XRP MISSION_TOPIC_ID. They remain preserved through read_all(), but the new read_verified() contract excludes them. This is intentional fail-closed behavior; the generic curriculum may revisit older goals until new structured records accumulate. The lesson hash is a consistency check, not a signature.
+
+### PR #1643 — latest research head
+
+Current head: 8e8aa5bff2c66a2c89fbb1e76c0dfc6118aeab6f (188 commits ahead of main, 0 behind; 152 changed files).
+
+Added:
+- research/xrp_intelligence/20261105T121700Z-xrp-insights-row-status-admission-contract.json
+- tests/test_xrp_insights_row_status_admission_contract.py
+
+The new contract captures XRP Insights row semantics:
+- flow_status=initial is a starting balance, not a flow.
+- flow_status=excluded is a known capture gap, not zero.
+- row_status=provisional may be rewritten by next-morning settlement.
+- row_status=reconstructed is an estimated day-by-day split between issuer anchors.
+- Changes below 100 XRP are rounded to zero by the publisher.
+- GXRP's Sep 2–28 capture gap and later holdings catch-up must not be booked as one day's flow.
+- XRPR direct holdings do not equal complete look-through exposure.
+- BITW is a multi-asset index sleeve; rebalancing can appear as XRP flow.
+- Issuer effective date, publication time, capture time and first-seen time must remain separate.
+
+The live collector validates the XRP Insights metadata envelope and retains the dataset raw-only. The new artifact defines a future row-level parser/admission contract; that parser is not implemented. No ETF rows are currently promoted to XRP model features.
+
+Exact-head verification on 8e8aa5bf:
+- Core suite: **495 passed, 8 subtests**.
+- Full repository suite: **986 passed, 8 subtests**.
+- Fail-closed gate passed.
+- [Full CI — 42026124570](https://github.com/Barrot-Agent/B-Agent/actions/runs/42026124570) · [Fail-closed gate — 42026124683](https://github.com/Barrot-Agent/B-Agent/actions/runs/42026124683).
+- Six dependency-manifest blob SHAs still match main exactly. Exact-head dependency audit did not run because main's current path filter excludes research-only files; after #1640 is integrated, reconcile #1643 and require the research-path dependency/security audit.
+
+### Circle, USDC and XRP Ledger
+
+Circle's official USDC page displays **$69.8B circulation as of November 2, 2026** and native USDC support on 38 networks as of September 16, including XRPL. Circle identifies the Circle Reserve Fund as its primary reserve vehicle, custodied at BNY and managed by BlackRock. Source: https://www.circle.com/usdc.
+
+Ripple's October 28 announcement confirms RLUSD distribution through Coinbase Prime, Exchange and Retail on XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was described as future availability. Source: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/.
+
+This is an indirect shared-ledger ecosystem relationship, not a direct Circle-Ripple agreement. USDC and RLUSD can increase XRPL utility/liquidity, while stablecoin-denominated settlement can substitute for some XRP bridge-asset legs. No route-level XRP usage, USDC settlement volume or incremental XRP spot demand was established. The Circle page is issuer-reported and rendered; raw bytes, SHA-256 receipt and independent timestamp anchor were not captured, so this snapshot is research-only and model-ineligible.
+
+### Current integration state
+
+- Main remains 9100dbacb5f9f1b973b053a65ef1e91e96b64f72; no main files changed.
+- #1640 current handoff head before this follow-up: 2668c85eb896855bb39f3d343d4d21606981af2a. Exact-head core 601 passed, full suite 913 passed, 8 subtests, coverage 54.07%; six-manifest dependency audit and fail-closed gate passed. The new handoff commit created by this section requires its own exact-head CI verification.
+- #1643 current research head: 8e8aa5bff2c66a2c89fbb1e76c0dfc6118aeab6f; 495 core and 986 full-suite tests passed, 8 subtests; fail-closed gate passed; dependency manifests match main but exact-head audit remains pending.
+- #1640/#1643 changed-path sets remain non-overlapping.
+- Both PRs have 0 approving reviews; #1640 has 22/22 resolved review threads and #1643 has 14/14.
+- Main branch-protection inspection remains HTTP 403; the visible fallback ruleset is disabled. Pages settings remain inaccessible, and authorization for another merge-triggered Pages deployment is unresolved.
+- Neither PR was merged. No deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- Directional XRP forecasts issued: **none**.
+
+### Next action
+
+1. Verify this new #1640 handoff commit with exact-head core/full suite, dependency audit and fail-closed gate.
+2. Obtain independent approvals and verify branch-protection requirements; resolve the Pages side effect.
+3. Merge #1640 only when all conditions are met, then fetch main, verify the merge commit/files and run main CI.
+4. Reconcile #1643 against the new main without rewriting history; rerun its full suite, fail-closed gate and exact-head dependency/security audit.
+5. Implement the XRP Insights row-level parser only with settled/computed admission, raw receipts and separate date/publication/capture/first-seen times. Keep provisional, reconstructed, initial, excluded, BITW and XRPR records out of the pure spot ETF flow feature until their specific semantics are handled.
+
+### Execution labels
+
+- **DESIGNED:** XRP Insights row-status/product admission contract; verified-learning schema; point-in-time and raw-only ETF ingestion.
+- **EXECUTED:** two append-only ETF research artifacts and twelve regression tests on #1643; verified-learning validation on #1640; Circle issuer-page research.
+- **VERIFIED:** #1643 head 8e8aa5bf passed 495 core tests, 986 full-suite tests and fail-closed gate. #1640 head 2668c85e passed 601 core tests, 913 full-suite tests, six-manifest audit and fail-closed gate. The new handoff commit from this section remains pending exact-head verification. None of these changes is verified on main.
