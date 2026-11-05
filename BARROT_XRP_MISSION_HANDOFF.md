@@ -4230,3 +4230,100 @@ Key observations at the research cutoff:
 DESIGNED: full XRP research and forecast-readiness architecture.
 EXECUTED: current market/institutional/macro reconciliation; new research artifact and eight regression tests; full repository suite on #1643 exact head.
 VERIFIED: #1640 recorded code head full suite, six-manifest audit and fail-closed gate; #1643 recorded research head full suite and fail-closed gate. This new handoff commit itself is pending its own exact-head CI.
+
+
+## Run 36 — 2026-11-05 09:40 UTC
+
+### Repository baseline and integration state
+
+- Current `main` SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Complete recursive main tree inspected: 1,403 entries; 493 Python files; 86 active `.github/workflows` files; 90 Python tests under `tests/`; tree response was not truncated.
+- Open pull-request inventory: 370 total, 354 drafts, 16 non-drafts. Pages 1–4 were enumerated (100/100/100/70).
+- #1640 remains the single V3/core integration workstream; #1643 remains the single XRP research archive workstream. Their current diffs have zero changed-path overlap. Both are based directly on current main, 0 commits behind.
+- #1640 current head: `2f095b7f53c1aeec4c724db6262b357e1262bd1e`, 223 commits ahead, 85 changed files.
+- #1643 current head: `d9dffa8dd1b0897941e5d0b2e14a687f24a62c55`, 173 commits ahead, 138 changed files.
+- PR #1642 head is an exact ancestor of #1640: comparison from #1642 head to #1640 head reports 222 commits ahead and 0 behind before the latest #1640 safety commit. Preserve #1642 until #1640 is merged and verified; then close it with a cross-reference.
+- #1644–#1650 dependency/action updates are represented in #1640. Verified current integration-branch versions include `actions/checkout@v7`, `actions/upload-artifact@v7`, `actions/download-artifact@v8`, `pytest>=9.2.0`, `types-requests>=2.33.0.20261030`, `databricks-sdk>=0.158.0`, and `huggingface_hub>=2.4.0`. Do not merge those source PRs independently.
+
+### New integrated safety correction
+
+- Main's `.github/workflows/subagent-spawn.yml` was a manual workflow that sent free-form prompts to Groq and committed generated `subagent_run_*.json` files directly to `main` using the default checkout credential. It lacked explicit confirmation, branch-only execution and integration-first duplicate detection.
+- #1640 now quarantines that workflow: `workflow_dispatch` notice only, `permissions: {}`, false job condition, no provider credentials, no checkout, no direct-main push. The workflow was added to `tests/test_automation_containment.py`'s quarantined-workflow list.
+- This closes a previously missed direct-main writer in the V3 safety audit. The existing subagent matrix remains a manual, artifact-only Groq task runner; it is not a verified connection to Grok or any of the nine requested platforms and should not be represented as one.
+- Other main-branch side effects were rechecked: push-triggered Hugging Face and Cloudflare deploys, issue-label Barrot Agent writes, task allocator writes, BTC knowledge-cycle writes and paper-trader state writes are quarantined or converted in #1640 to explicit manual/exact-main-SHA approval flows. Existing manual Hugging Face, Databricks, Kaggle and model-upload actions were not executed.
+
+### Exact-head verification
+
+**PR #1640 — head `2f095b7f53c1aeec4c724db6262b357e1262bd1e`**
+- Core suite: 599 passed, 8 subtests passed.
+- Full repository suite: 907 passed, 8 subtests passed.
+- Inclusive coverage: 54%, above the configured 50% floor.
+- Wheel build and packaged primary-mission verification passed.
+- Six-manifest strict dependency audit passed; each manifest reported no known vulnerabilities.
+- Fail-closed merge gate passed and explicitly disabled automatic merging.
+- Evidence: full CI `42003852854` (https://github.com/Barrot-Agent/B-Agent/actions/runs/42003852854); dependency audit `42003852852` (https://github.com/Barrot-Agent/B-Agent/actions/runs/42003852852); fail-closed gate `42003853004` (https://github.com/Barrot-Agent/B-Agent/actions/runs/42003853004).
+- Cache budget warning: Actions cache became read-only. Tests and dependency audit completed; this is a storage warning, not a test failure.
+
+**PR #1643 — head `d9dffa8dd1b0897941e5d0b2e14a687f24a62c55`**
+- Core suite: 495 passed, 8 subtests passed.
+- Full repository suite: 932 passed, 8 subtests passed.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+- Evidence: full CI `42003750635` (https://github.com/Barrot-Agent/B-Agent/actions/runs/42003750635); fail-closed gate `42003750669` (https://github.com/Barrot-Agent/B-Agent/actions/runs/42003750669).
+- No dependency manifests changed. All six dependency-manifest blob SHAs were independently compared with current main and are identical. This is dependency-content equivalence, not an exact-head `pip-audit` run. After #1640 is merged and #1643 is reconciled onto the resulting main, run the dependency audit on the reconciled exact head.
+- An earlier full-suite failure on #1643 head `55d784c` exposed two stale assertions. The test now checks the exact five-transfer Binance total (233,461,943.1 XRP) and uses an append-only correction for a Kraken spread calculation. The corrected head passes the full suite.
+
+### Append-only market arithmetic correction
+
+- Added `research/xrp_intelligence/20261105T093117Z-xrp-market-snapshot-spread-correction.json` to #1643.
+- The referenced Kraken recheck preserved bid $1.31397, ask $1.31398, midpoint $1.313975 and an originally recorded displayed spread of 0.076106 bps. Recalculation from those quote values gives 0.0761049487242908 bps, or 0.076105 bps rounded to six decimal places.
+- The original artifact was not rewritten. The correction supersedes only the derived `displayed_spread_bps` field; the quote values, last trade, sizes, 24-hour statistics and capture timestamp remain unchanged.
+- The original HTTP response bytes and independent timestamp anchor remain unavailable. Both original snapshot and correction remain model-ineligible. This arithmetic correction is not a market signal.
+
+### Research and prediction status
+
+- Exact-phrase public search refreshed. SBIC East's official 2025 training page confirms a two-day generative-AI/ML course for investee companies that included ChatGPT and Copilot; this is not an OpenAI partnership and does not identify SBIC East/Central/West as SBI Holdings (https://www.sbic.co.jp/training/20250612co/).
+- Permission Coin remains a live ASK-ticker candidate; a current secondary listing page reports a small market capitalization and very low displayed 24-hour volume. This does not establish any XRP/XRPL relationship (https://coinmarketcap.com/currencies/permission-coin/).
+- Exact-phrase searches did not establish a direct XRP relationship for the phrase `actual capital` or `SBIC, ChatGPT SBIC`. Keep these unresolved rather than inventing an entity link.
+- YouTube search surfaces multiple similarly named Kamilah Stevenson channels. The canonical channel identity remains unverified; no exhaustive video inventory or ownership attribution was added.
+- Current market/ETF/derivatives observations remain rendered-page evidence without byte-complete raw receipts. They are not eligible for model features.
+- No directional XRP forecast issued. Historical coverage, durable source storage, independent timestamp anchoring, evaluator attestation, probability calibration, drift monitoring and sufficient shadow outcomes remain incomplete.
+
+### Reviews, protection and merge decision
+
+- #1640: 22/22 review threads resolved; zero GitHub reviews in APPROVED state.
+- #1643: 14/14 review threads resolved; zero GitHub reviews in APPROVED state.
+- Both PRs are non-draft and reported mergeable by GitHub, but neither has an approving review.
+- `branches/main` reports `protected: true`; the branch-protection endpoint returns HTTP 403 (`Resource not accessible by integration`). The visible repository fallback ruleset is disabled and contains only deletion/non-fast-forward protections. Required review/check settings cannot be independently verified.
+- GitHub Pages settings/deployment endpoints are not accessible through the current GitHub integration. A previous main push triggered a successful Pages deployment; authorization for another merge-triggered deployment remains unresolved.
+- No merge was performed. Do not merge until independent approvals and required protection settings are verified, exact-head checks remain green, and the automatic Pages deployment side effect is explicitly authorized.
+
+### Backlog classification
+
+- **Active integration / blocked:** #1640, #1643.
+- **Superseded ancestor pending #1640 main verification:** #1642.
+- **Superseded dependency/action candidates pending #1640 main verification:** #1644–#1650; #1254 and #1255 are older versions of two of these updates.
+- **Unique/unreviewed:** #1651 (RSI/weight-space harness), #1269 (mesh topology).
+- **Unique security/operations work to preserve:** #1615; #1573 and #1585 remain drafts with partially overlapping security work not fully represented in #1640.
+- **Unique or partially unique historical work to preserve:** #1317, #1318 and #1320.
+- No PRs were closed. Close only exact duplicates/superseded source PRs after successor content is verified on main.
+
+### Nine-platform status
+
+- ChatGPT-to-GitHub is the only verified persistent authenticated data path in this run. Repository read/write on existing PR branches was exercised.
+- Copilot review activity is one-off and does not establish a persistent agent or data-flow connection.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as authenticated persistent integrations. The manual Groq subagent matrix is not Grok and is not one of the nine requested platforms.
+- Least-privilege and provider fallbacks remain required; do not claim live nine-platform coordination.
+
+### Next concrete actions
+
+1. Obtain independent approving reviews and verify actual main branch-protection requirements through an authorized route.
+2. Obtain explicit authorization for the GitHub Pages deployment that a main merge will trigger, or have the repository owner disable that side effect before merge.
+3. Keep #1640 as the sole V3/core integration branch. Once all merge conditions are satisfied, merge it; fetch main again, verify the merge commit and every integrated file, then run main CI and inspect automatic workflow side effects.
+4. Reconcile #1643 onto the new main without force-push or history rewrite. Run its exact-head full suite, fail-closed gate and dependency/security audit before merge.
+5. After merged content is verified on main, close only exact ancestor/dependency duplicates with cross-references. Preserve unique security, RSI, mesh and historical work.
+6. Continue durable raw-source storage, SHA-256 receipt verification, independent timestamp anchoring, historical multi-venue/issuer datasets, leakage-safe chronological walk-forward evaluation, calibration, drift monitoring and shadow evaluation.
+
+DESIGNED: XRP research scope, ingestion/feature-store/forecast-readiness architecture, nine-platform capability map and integration-first controls.
+EXECUTED: complete main tree/open-PR/branch/CI/security/handoff audit; exact-head full suites; six-manifest dependency audit; #1643 append-only market arithmetic correction; #1640 direct-main subagent writer quarantine and regression test.
+VERIFIED: #1640 head `2f095b7` full suite (907 passed), 54% coverage, six-manifest audit and fail-closed gate; #1643 head `d9dffa8` full suite (932 passed) and fail-closed gate; six #1643 dependency-manifest blobs equal main.
+NOT VERIFIED: main integration/merge, exact-head dependency audit on #1643, durable indefinite raw-source storage, nine-platform live coordination, or predictive lift. No forecast, paper trade, real-money action, funds transfer, Kaggle submission, Space restart, secret rotation or deployment occurred.
