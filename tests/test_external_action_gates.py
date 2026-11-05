@@ -17,6 +17,14 @@ def test_destructive_or_secret_input_workflows_are_disabled() -> None:
         "gumroad-metrics.yml",
         "barrot-merge-manual.yml",
         "task-allocator.yml",
+        "ask-barrot.yml",
+        "write-lyrics.yml",
+        "pingpong.yml",
+        "make-track.yml",
+        "audio-ingest.yml",
+        "barrot-speak.yml",
+        "free-image-gen.yml",
+        "knowledge-signal-cycle-btc.yml",
     )
     for name in disabled:
         content = _read(name)
