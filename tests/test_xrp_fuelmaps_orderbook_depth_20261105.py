@@ -46,3 +46,15 @@ def test_xrp_orderbook_snapshot_remains_research_only_without_raw_receipts():
         "H2_CANCELLATION_AND_HIDDEN_LIQUIDITY",
         "H3_INCOMPLETE_VENUE_UNIVERSE",
     }
+
+def test_xrp_orderbook_depth_preserves_hourly_vintage_disagreement():
+    data = json.loads(ARTIFACT.read_text(encoding="utf-8"))
+    conflict = data["snapshot_vintage_disagreement"]
+    assert conflict["resolved"] is False
+    assert conflict["original_artifact_snapshot"]["at_utc"] == "2026-11-05T13:00:00Z"
+    assert conflict["later_direct_page_snapshot"]["at_utc"] == "2026-11-05T12:00:00Z"
+    assert conflict["later_direct_page_snapshot"]["within_2pct_bid_share_pct"] == 48.3
+    assert conflict["original_artifact_snapshot"]["within_2pct_bid_share_pct"] == 56.2
+    assert data["publisher_methodology"]["source_independence_group"] == "fuelmaps_aggregator"
+    assert any("live USDT/USD rate" in item for item in data["publisher_methodology"]["claims"])
+    assert data["model_eligibility"]["eligible"] is False
