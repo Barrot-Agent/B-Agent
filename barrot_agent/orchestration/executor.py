@@ -68,7 +68,7 @@ class BarrotExecutor:
         if not isinstance(value, str) or not value.strip():
             raise ExecutionError("Command path must be a non-empty string.")
         relative = Path(value)
-        if relative.is_absolute() or ".." in relative.parts:
+        if value.startswith("-") or relative.is_absolute() or ".." in relative.parts:
             raise ExecutionError(f"Command path escapes workspace: {value}")
         target = (self.workspace / relative).resolve()
         if target != self.workspace and self.workspace not in target.parents:
