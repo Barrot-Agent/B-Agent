@@ -112,7 +112,8 @@
       "xrp_cash_flow_disclosed": false,
       "shareholding_last_disclosed_pct": 9,
       "shareholding_as_of": "2025-06-09",
-      "shareholder_description": "SBI Group described itself as Ripple's largest outside shareholder in its 2025-06-09 disclosure; not verified as current in 2026."
+      "shareholder_description": "SBI Group described itself as Ripple's largest outside shareholder in its 2025-06-09 disclosure; not verified as current in 2026.",
+      "shareholding_holder": "SBI_Group"
     },
     {
       "id": "SBI_CIRCLE_MOU",
@@ -540,7 +541,8 @@
       "amount_usd": null,
       "type": "average_on_platform_USDC_balances",
       "balance_usd": 22000000000,
-      "not_a_purchase_of_XRP": true
+      "not_a_purchase_of_XRP": true,
+      "xrp_related": false
     },
     {
       "date": "2026-10-28",
