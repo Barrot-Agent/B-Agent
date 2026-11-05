@@ -1587,6 +1587,8 @@ def run_ingestion(
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
 
     for source_id, url in ENDPOINTS:
+        response: Mapping[str, Any] | None = None
+        raw_bytes: bytes | None = None
         try:
             response = fetcher(source_id, url)
             raw_bytes = response["raw_bytes"]
@@ -1610,7 +1612,33 @@ def run_ingestion(
             if source_id in XRPL_NODE_SOURCES and source_as_of is not None:
                 xrpl_node_payloads[source_id] = payload
         except Exception as exc:
-            failures.append({"source_id": source_id, "error_type": type(exc).__name__})
+            failure = {"source_id": source_id, "error_type": type(exc).__name__}
+            # A successfully captured response remains evidence even when its
+            # parser or schema validation fails. Preserve the exact bytes as a
+            # raw-only receipt; never infer a data-as-of time from failed parsing.
+            if isinstance(response, Mapping) and isinstance(raw_bytes, bytes) and raw_bytes:
+                raw_reason = f"source_processing_failure:{type(exc).__name__}"
+                receipt = archive.store(
+                    source_id=source_id,
+                    source_uri=url,
+                    captured_at_utc=captured_s,
+                    raw_bytes=raw_bytes,
+                    source_data_as_of_utc=None,
+                    model_eligible=False,
+                    raw_only_reason=raw_reason,
+                    source_http_date=response.get("http_date"),
+                )
+                receipts.append(receipt)
+                raw_only.append(
+                    {
+                        "source_id": source_id,
+                        "reason": raw_reason,
+                        "receipt_id": receipt["receipt_id"],
+                    }
+                )
+                failure["raw_receipt_id"] = receipt["receipt_id"]
+                failure["raw_content_sha256"] = receipt["raw_content_sha256"]
+            failures.append(failure)
             continue
 
         # Receipt writes are outside the source-error handler. Archive corruption
