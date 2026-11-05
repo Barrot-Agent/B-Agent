@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "artifact_type": "evernorth_actual_capital_vs_committed_facility_reconciliation",
+  "artifact_id": "20261105T031000Z-evernorth-actual-capital-facility-reconciliation",
+  "captured_at_utc": "2026-11-05T03:10:00Z",
+  "data_cutoff_utc": "2026-11-05T03:10:00Z",
+  "mission_priority": 1,
+  "model_eligible": false,
+  "eligibility_status": "MODEL_INELIGIBLE_WEB_RENDERED_SEC_EXCERPTS",
+  "forecast_issued": false,
+  "paper_trade_executed": false,
+  "source_capture_policy": {
+    "status": "web_rendered_excerpt_only",
+    "raw_http_bytes_captured": false,
+    "raw_http_bytes_sha256": null,
+    "rendered_excerpt_hashes_are_not_raw_source_hashes": true,
+    "admission_rule": "Do not use as a model feature until byte-complete SEC filing captures and SHA-256 receipts are stored with independent capture timestamps. Financial facts may be used for human research with the cited filing context."
+  },
+  "source_registry": [
+    {
+      "source_id": "evernorth_424b3_2026_10_30",
+      "source_uri": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "source_type": "SEC_issuer_prospectus",
+      "independence_group": "evernorth_issuer_SEC_filings",
+      "filing_date": "2026-10-30",
+      "raw_capture_status": "web_rendered_excerpt_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_excerpt_sha256": "51ce43c77438f568207a8d261246af03e1a48e7ed3dabfcdffd27d18ceedb639",
+      "evidence_lines": "10-18, 20-24, 691-705, 1916-1937, 2030-2058",
+      "rendered_excerpt": "SEC 424B3 dated 2026-10-30: up to 5,218,935 Class A shares may be issued and sold by Evernorth to CF Principal Investments LLC (Cantor) at Evernorth's sole discretion. The cover states potential gross proceeds up to approximately $76.8 million and a $521,893.50 upfront commitment fee. The offering summary Use of Proceeds line states $80.7 million. The Use of Proceeds section states up to $76.8 million gross and up to $74.4 million estimated net over approximately 14 months after estimated fees and expenses. The purchase price is 97% of VWAP. The company may sell all, some or none. Cantor may resell all, some or none. If all 5,218,935 shares were issued, they would be 16.7% of post-issuance Class A shares. At $14.71, the table reports $76.8 million, while its footnote says purchase price equals 97% of assumed trading price. $5,218,935 x $14.71 = $76,770,533.85; multiplied by 97% = $74,467,417.83. The table and other summary figures are not fully arithmetically reconciled."
+    },
+    {
+      "source_id": "evernorth_8k_eloc_2026_10_23",
+      "source_uri": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "source_type": "SEC_current_report_and_material_agreement_summary",
+      "independence_group": "evernorth_issuer_SEC_filings",
+      "filing_date": "2026-10-23",
+      "raw_capture_status": "web_rendered_excerpt_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_excerpt_sha256": "1e6697153a50c65a1d1425f1df2b84d5b189ab88b5387b25ec2003c4149d7534",
+      "evidence_lines": "54-77",
+      "rendered_excerpt": "SEC 8-K dated 2026-10-23: Evernorth may, at its option, sell up to 5,218,935 newly issued Class A shares to Cantor, subject to conditions. Purchase price is 97% of VWAP. Purchases are constrained by Cantor's 4.99% beneficial-ownership cap and 20% of trading volume, with a threshold price. Evernorth owes a $521,893.50 upfront commitment fee after the registration statement becomes effective; the fee is fully earned and non-refundable regardless of purchases, with aggregate commitment fees capped at $1 million. Expense reimbursements are separately capped at $500,000."
+    },
+    {
+      "source_id": "evernorth_eloc_effectiveness",
+      "source_uri": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/9999999995-26-003391-index.htm",
+      "source_type": "SEC_notice_of_effectiveness",
+      "independence_group": "SEC_regulatory_filing_record",
+      "filing_date": "2026-11-02",
+      "effective_date": "2026-10-30",
+      "accepted_at_utc": "2026-11-02T00:15:10Z",
+      "raw_capture_status": "web_rendered_excerpt_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_excerpt_sha256": "cd7b1edda99608f5e5bdd89c1daebf8aa68447d62c3a4b901d7119286a6bf7ff",
+      "evidence_lines": "9-23, 36-40",
+      "rendered_excerpt": "SEC EFFECT filing accession 9999999995-26-003391: Evernorth registration statement file 333-299620 had an effectiveness date of 2026-10-30; the notice was accepted 2026-11-02 00:15:10 UTC."
+    },
+    {
+      "source_id": "evernorth_prior_advance_funding_and_convertible_note_disclosures",
+      "source_uri": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526420749/R7.htm",
+      "related_source_uri": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/R58.htm",
+      "source_type": "SEC_XBRL_and_issuer_transaction_disclosures",
+      "independence_group": "evernorth_issuer_SEC_filings",
+      "source_dates": "2025-10-23 advance funding; 2026-10-09 convertible-note closing",
+      "raw_capture_status": "web_rendered_excerpt_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_excerpt_sha256": "4fd0a7b0f369ba766c4efadfb0a01e324be6333fb00d02c8a1bfc8fee987cf54",
+      "evidence_lines": "R7 lines 12-22; R58 lines 14-23",
+      "rendered_excerpt": "SEC filing disclosure: Advance Funding investors contributed $214,049,995 cash by 2025-10-23 and 600,000 XRP by 2025-10-24; Evernorth used the cash to purchase 84,365,876 XRP. Separately, at the 2026-10-09 business-combination closing, Evernorth issued $30.0 million aggregate principal amount of convertible notes and received $29.0 million net cash proceeds after a $1.0 million fee."
+    }
+  ],
+  "actual_capital_events": [
+    {
+      "event_id": "advance_funding_2025",
+      "event_date": "2025-10-23",
+      "cash_received_usd": 214049995,
+      "in_kind_xrp_received": 600000,
+      "status": "issuer_disclosed_received",
+      "use_of_cash": "purchase of 84,365,876 XRP, received partly 2025-10-31 and remainder by 2025-11-06",
+      "classification": "historical_actual_cash_and_in_kind_contribution",
+      "not_current_eloc_draw": true
+    },
+    {
+      "event_id": "convertible_notes_2026_close",
+      "event_date": "2026-10-09",
+      "principal_usd": 30000000,
+      "net_cash_proceeds_usd": 29000000,
+      "transaction_fee_usd": 1000000,
+      "status": "issuer_disclosed_received",
+      "classification": "actual_debt_financing_cash",
+      "terms": "4.00% annual PIK interest, five-year maturity; conversion and default provisions are separately disclosed in the SEC filing"
+    },
+    {
+      "event_id": "delayed_funding_commitment",
+      "committed_cash_usd": 10500000,
+      "committed_in_kind_xrp": 200000,
+      "status": "committed_delivery_not_independently_verified_in_this_capture",
+      "classification": "unverified_commitment_not_actual_cash"
+    },
+    {
+      "event_id": "ripple_contribution",
+      "in_kind_xrp": 126791458,
+      "event_date": "2025-10-19",
+      "status": "issuer_disclosed_contribution_agreement",
+      "classification": "in_kind_xrp_contribution_not_cash"
+    },
+    {
+      "event_id": "series_c_sponsor_xrp",
+      "in_kind_xrp": 211319096,
+      "event_date": "2025-10-23",
+      "status": "issuer_disclosed_escrow_contribution",
+      "classification": "in_kind_xrp_contribution_not_cash"
+    }
+  ],
+  "eloc_facility": {
+    "counterparty": "CF Principal Investments LLC (Cantor)",
+    "agreement_date": "2026-10-23",
+    "registration_file_number": "333-299620",
+    "registration_effective_date": "2026-10-30",
+    "maximum_new_class_a_shares": 5218935,
+    "pre_facility_share_count_as_of": "2026-10-22",
+    "pre_facility_share_count": 26094680,
+    "stated_cap_as_percent_of_pre_facility_shares": 19.99,
+    "estimated_post_issue_share_dilution_if_all_shares_issued_percent": 16.7,
+    "purchase_price_rule": "97% of applicable VWAP, subject to the agreement's block-trade and threshold-price provisions",
+    "volume_limit": "generally no more than 20% of trading volume per purchase period",
+    "cantors_beneficial_ownership_cap_percent": 4.99,
+    "term": "until the first day of the month following the 14-month anniversary, unless earlier terminated",
+    "issuer_control": "Evernorth may elect to sell all, some or none; the facility is not an automatic lump-sum draw",
+    "proceeds_intended_use": "general corporate purposes, including XRP acquisition and other XRP ecosystem activity, plus working capital",
+    "gross_proceeds_published_estimates_usd": {
+      "prospectus_cover_and_use_of_proceeds": 76800000,
+      "offering_summary_use_of_proceeds": 80700000,
+      "prospectus_estimated_net_proceeds": 74400000
+    },
+    "arithmetic_reconciliation": {
+      "shares_times_oct29_close_usd": 76770533.85,
+      "shares_times_oct29_close_times_97_percent_usd": 74467417.8345,
+      "oct29_close_usd": 14.71,
+      "discrepancy": "The prospectus's offering summary states $80.7M; its cover/use-of-proceeds states $76.8M; its net estimate is $74.4M; the illustrative table shows $76.8M at $14.71 while the footnote says 97% of trading price. The 97%-adjusted calculation is about $74.47M before expenses. Do not silently reconcile these figures."
+    },
+    "upfront_commitment_fee_usd": 521893.5,
+    "fee_due": "within five business days after the registration statement becomes effective",
+    "fee_character": "non-refundable and fully earned regardless of whether purchases are made or settled",
+    "aggregate_commitment_fee_cap_usd": 1000000,
+    "separate_expense_reimbursement_cap_usd": 500000,
+    "actual_draw_amount_usd": null,
+    "actual_draw_status": "NOT_ESTABLISHED_BY_REVIEWED_FILINGS",
+    "do_not_assume_zero_draw": true
+  },
+  "key_distinctions": [
+    "Facility capacity is not cash received.",
+    "Cantor's later resale proceeds belong to Cantor; Evernorth's proceeds arise from its optional primary share sales to Cantor.",
+    "The ELOC's registration effectiveness makes the facility available subject to conditions; it does not prove that any shares have been sold or any proceeds received.",
+    "A commitment fee is a financing cost, not capital raised.",
+    "Prior cash subscriptions and in-kind XRP contributions must not be counted as current ELOC proceeds.",
+    "An issuer statement that proceeds may be used to acquire XRP is an intended use, not evidence of an executed XRP purchase."
+  ],
+  "competing_hypotheses": [
+    "If Evernorth draws the facility and directs net proceeds into XRP, it could create an incremental institutional purchase channel; the actual timing and size depend on issuer notices, market price, volume limits and the use of proceeds.",
+    "Evernorth may draw little or none of the facility if market conditions, share price, dilution costs or alternative financing make it unattractive.",
+    "Even if the facility is drawn, the resulting XRP acquisition could be executed over time or through counterparties and may not be visible as a single exchange purchase.",
+    "The financing can affect XRPN equity supply and dilution independently of any direct XRP market purchase."
+  ],
+  "disconfirming_evidence": [
+    "No ELOC draw amount or settled proceeds were established in the reviewed filings.",
+    "The issuer is obligated to pay a non-refundable commitment fee even if no purchases are made.",
+    "The purchase price is discounted to VWAP and subject to volume, ownership and threshold-price limits.",
+    "The prospectus contains conflicting gross/net proceeds figures and an arithmetic inconsistency that must be preserved.",
+    "The historical $214.05M cash subscription and $29M net note proceeds are separate from the ELOC and must not be double-counted."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "next_required_work": [
+    "Monitor subsequent SEC filings and issuer disclosures for actual ELOC purchase notices, share issuance, fees paid and proceeds received.",
+    "Reconcile the prospectus proceeds table with the 97% VWAP purchase formula and expense assumptions.",
+    "Track any proceeds-to-XRP purchases separately from XRPN share issuance and secondary-market resales.",
+    "Capture original SEC filing bytes and hash them before any feature-store admission."
+  ]
+}
