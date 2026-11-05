@@ -20,6 +20,7 @@ class AutonomousTaskStore:
     """Persist task state atomically under a workspace-owned directory."""
 
     SCHEMA_VERSION = 1
+    MAX_CHECKPOINT_BYTES = 5 * 1024 * 1024
     _TASK_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$")
 
     def __init__(self, workspace: str | Path):
@@ -50,6 +51,8 @@ class AutonomousTaskStore:
             try:
                 if not path.exists():
                     return None
+                if path.stat().st_size > self.MAX_CHECKPOINT_BYTES:
+                    raise ValueError("autonomous task checkpoint exceeds the size limit")
                 try:
                     state = json.loads(path.read_text(encoding="utf-8"))
                 except (OSError, json.JSONDecodeError) as exc:
