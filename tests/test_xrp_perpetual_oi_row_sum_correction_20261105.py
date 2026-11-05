@@ -22,6 +22,9 @@ def test_perpetual_oi_displayed_rows_reconcile_without_overwriting_snapshot():
     assert cross["displayed_row_sum_gap_usd"] == 2_064_720_000 - 884_090_000
     assert cross["aggregation"] == "not_averaged"
     assert correction["supersedes"]["artifact_id"] == snapshot["artifact_id"]
+    assert correction["supersedes"]["fields"] == ["market_snapshot.derivatives.tradradar.exchange_row_sum_open_interest_usd"]
+    assert len(correction["adds"]) == 4
+    assert snapshot["market_snapshot"]["derivatives"]["tradradar"]["exchange_row_sum_open_interest_usd"] == 2_060_000_000
     assert correction["correction_scope"].startswith("Arithmetic only")
     assert correction["source_capture_policy"]["model_eligible"] is False
     assert correction["forecast_status"] == "NOT_ISSUED"
