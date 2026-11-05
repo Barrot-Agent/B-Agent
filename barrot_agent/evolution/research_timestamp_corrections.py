@@ -2,12 +2,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from typing import Any
 
 from .research_eligibility import (
     ResearchEligibilityError,
     _SHA1,
+    _canonical_json,
     _json_object,
     _repo_path,
     _sha256,
@@ -21,6 +22,21 @@ _TIMESTAMP_CORRECTION_TARGETS = {
 }
 
 
+def _utc_timestamp(value: Any, field: str) -> datetime:
+    if not isinstance(value, str) or not value.strip():
+        raise ResearchEligibilityError(f"{field} must be a timezone-aware UTC timestamp")
+    text = value.strip()
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError as exc:
+        raise ResearchEligibilityError(f"{field} must be a timezone-aware UTC timestamp") from exc
+    if parsed.tzinfo is None or parsed.utcoffset() != timedelta(0):
+        raise ResearchEligibilityError(f"{field} must include a UTC timezone offset")
+    return parsed.astimezone(timezone.utc)
+
+
 def _validate_issuer_file_timestamps(value: Any, field: str) -> None:
     if not isinstance(value, Mapping) or not value:
         raise ResearchEligibilityError(f"{field} must be a non-empty issuer timestamp mapping")
@@ -30,12 +46,12 @@ def _validate_issuer_file_timestamps(value: Any, field: str) -> None:
         if isinstance(stamp, Mapping):
             if set(stamp) != {"start", "end"}:
                 raise ResearchEligibilityError(f"{field}.{issuer} must contain exactly start and end")
-            start = _timestamp(stamp.get("start"), f"{field}.{issuer}.start")
-            end = _timestamp(stamp.get("end"), f"{field}.{issuer}.end")
+            start = _utc_timestamp(stamp.get("start"), f"{field}.{issuer}.start")
+            end = _utc_timestamp(stamp.get("end"), f"{field}.{issuer}.end")
             if end < start:
                 raise ResearchEligibilityError(f"{field}.{issuer} end precedes start")
         else:
-            _timestamp(stamp, f"{field}.{issuer}")
+            _utc_timestamp(stamp, f"{field}.{issuer}")
 
 
 def apply_source_timestamp_correction_overlay(
@@ -55,6 +71,8 @@ def apply_source_timestamp_correction_overlay(
     """
     source_path = _repo_path(source_artifact_path, "source_artifact_path")
     overlay_path = _repo_path(overlay_artifact_path, "overlay_artifact_path")
+    if source_path == overlay_path:
+        raise ResearchEligibilityError("source and overlay artifact paths must be different")
     source_document = _json_object(source_artifact_bytes, "source artifact")
     overlay_document = _json_object(overlay_artifact_bytes, "timestamp correction overlay")
 
@@ -144,7 +162,7 @@ def apply_source_timestamp_correction_overlay(
         if not isinstance(source_id, str) or source_id.strip() not in indexed:
             raise ResearchEligibilityError(f"field_corrections[{index}] references an unknown source_id")
         source_id = source_id.strip()
-        if target_field not in _TIMESTAMP_CORRECTION_TARGETS:
+        if not isinstance(target_field, str) or target_field not in _TIMESTAMP_CORRECTION_TARGETS:
             raise ResearchEligibilityError(f"field_corrections[{index}] targets a non-allowlisted timestamp field")
         key = (source_id, target_field)
         if key in seen:
@@ -157,6 +175,7 @@ def apply_source_timestamp_correction_overlay(
         expected = entry.get("expected_original_value")
         if source_item[target_field] != expected:
             raise ResearchEligibilityError(f"{source_id}.{target_field} does not match the declared preimage")
+        original_timestamp = _utc_timestamp(expected, f"{source_id}.{target_field}")
         if entry.get("replacement_value", object()) is not None:
             raise ResearchEligibilityError("timestamp correction may only remove unsupported exact timestamps")
 
@@ -174,8 +193,8 @@ def apply_source_timestamp_correction_overlay(
                 raise ResearchEligibilityError("source_event_date must be an ISO calendar date") from exc
             if parsed_date.isoformat() != canonical_value:
                 raise ResearchEligibilityError("source_event_date must use canonical YYYY-MM-DD form")
-            if not isinstance(expected, str) or not expected.startswith(canonical_value + "T"):
-                raise ResearchEligibilityError("source_event_date must match the removed timestamp's calendar date")
+            if original_timestamp.date().isoformat() != canonical_value:
+                raise ResearchEligibilityError("source_event_date must match the removed timestamp's UTC calendar date")
         else:
             _validate_issuer_file_timestamps(canonical_value, f"{source_id}.{canonical_field}")
 

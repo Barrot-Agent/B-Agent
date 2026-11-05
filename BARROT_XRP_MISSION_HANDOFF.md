@@ -5943,3 +5943,10 @@ Next:
 6. Merge that successor only after its own approvals/checks; close only exact superseded duplicates after main verification.
 
 No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+### Timestamp-overlay CI correction — EXECUTED
+
+The first exact-head full-suite run on the new timestamp consumer exposed a missing private-helper import: `_canonical_json` was used to hash the corrected in-memory view but was not imported. The core suite passed; the full suite reported 971 passed, 2 failed and 8 subtests. The failure was isolated to the two success-path overlay tests, not to source parsing or the existing forecast engine.
+
+The import was added. The same patch also hardened non-string field rejection and requires UTC-zero-offset timestamps for fields explicitly named `*_utc`. The prior failed head remains in history; it is not treated as verified.

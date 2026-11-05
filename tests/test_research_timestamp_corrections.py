@@ -202,3 +202,20 @@ def test_overlay_rejects_reapplication_to_a_changed_copy_and_invalid_preservatio
     overlay["preservation"]["raw_source_text_hashes_modified"] = True
     with pytest.raises(ResearchEligibilityError, match="must preserve source, raw hashes"):
         _apply(source_bytes, _bytes(overlay))
+
+
+
+def test_overlay_rejects_non_string_fields_and_non_utc_timestamp_offsets():
+    source_bytes, overlay, _ = _documents()
+    overlay["field_corrections"][0]["target_field"] = ["source_event_time_utc"]
+    with pytest.raises(ResearchEligibilityError, match="non-allowlisted"):
+        _apply(source_bytes, _bytes(overlay))
+
+    source_bytes, overlay, _ = _documents()
+    overlay["field_corrections"][0]["expected_original_value"] = "2026-11-04T21:00:00+02:00"
+    source = json.loads(source_bytes)
+    source["source_registry"][0]["source_event_time_utc"] = "2026-11-04T21:00:00+02:00"
+    source_bytes = _bytes(source)
+    overlay["target_artifact_blob_sha"] = git_blob_sha1(source_bytes)
+    with pytest.raises(ResearchEligibilityError, match="UTC timezone offset"):
+        _apply(source_bytes, _bytes(overlay))
