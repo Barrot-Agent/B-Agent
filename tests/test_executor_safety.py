@@ -173,3 +173,66 @@ def test_action_search_does_not_follow_symlinks_outside_workspace(tmp_path):
 
     assert result.success is True
     assert result.output == ""
+
+
+def test_write_file_is_create_only_and_preserves_existing_content(tmp_path):
+    target = tmp_path / "important.txt"
+    target.write_text("user work\n", encoding="utf-8")
+    executor = BarrotExecutor(tmp_path)
+
+    with pytest.raises(ExecutionError, match="refuses to overwrite"):
+        executor.write_file("important.txt", "replacement\n")
+
+    assert target.read_text(encoding="utf-8") == "user work\n"
+
+
+def test_write_file_compare_and_swap_requires_exact_preimage(tmp_path):
+    target = tmp_path / "module.py"
+    target.write_text("value = 1\n", encoding="utf-8")
+    executor = BarrotExecutor(tmp_path)
+
+    with pytest.raises(ExecutionError, match="preimage"):
+        executor.write_file(
+            "module.py",
+            "value = 2\n",
+            expected_existing_content="value = 0\n",
+        )
+
+    assert target.read_text(encoding="utf-8") == "value = 1\n"
+
+
+def test_apply_patch_uses_compare_and_swap_and_updates_one_unique_match(tmp_path):
+    target = tmp_path / "module.py"
+    target.write_text("value = 1\n", encoding="utf-8")
+    action_executor = BarrotActionExecutor(tmp_path)
+
+    result = action_executor.execute(
+        Action(
+            type="APPLY_PATCH",
+            args={
+                "path": "module.py",
+                "expected": "value = 1",
+                "replacement": "value = 2",
+            },
+        )
+    )
+
+    assert result.success is True
+    assert target.read_text(encoding="utf-8") == "value = 2\n"
+
+
+def test_write_file_action_cannot_overwrite_existing_user_file(tmp_path):
+    target = tmp_path / "user.txt"
+    target.write_text("keep me\n", encoding="utf-8")
+    action_executor = BarrotActionExecutor(tmp_path)
+
+    result = action_executor.execute(
+        Action(
+            type="WRITE_FILE",
+            args={"path": "user.txt", "content": "replace me\n"},
+        )
+    )
+
+    assert result.success is False
+    assert "refuses to overwrite" in result.error
+    assert target.read_text(encoding="utf-8") == "keep me\n"
