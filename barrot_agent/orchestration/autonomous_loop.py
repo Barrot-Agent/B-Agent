@@ -6,10 +6,14 @@ They are never interpreted by a shell.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+import uuid
 from dataclasses import dataclass
+from pathlib import Path
 
+from .autonomous_state import AutonomousTaskStore
 from .executor import BarrotExecutor
 from .verifier import BarrotVerifier
 
@@ -19,6 +23,9 @@ class AutonomousResult:
     success: bool
     attempts: int
     history: list[dict]
+    task_id: str = ""
+    status: str = "paused"
+    checkpoint_path: str = ""
 
 
 class BarrotAutonomousLoop:
@@ -29,9 +36,13 @@ class BarrotAutonomousLoop:
         workspace: str = ".",
         max_attempts: int = 5,
     ):
+        if isinstance(max_attempts, bool) or not isinstance(max_attempts, int) or max_attempts < 1:
+            raise ValueError("max_attempts must be a positive integer")
         self.brain = brain
-        self.executor = BarrotExecutor(workspace)
+        self.workspace = Path(workspace).resolve()
+        self.executor = BarrotExecutor(self.workspace)
         self.verifier = BarrotVerifier(self.executor)
+        self.store = AutonomousTaskStore(self.workspace)
         self.max_attempts = max_attempts
 
     def _extract_json(self, text: str) -> dict:
@@ -47,10 +58,42 @@ class BarrotAutonomousLoop:
             raise ValueError("No JSON object found in Barrot response")
         return json.loads(match.group(0))
 
-    def run(self, goal: str) -> AutonomousResult:
-        history: list[dict] = []
+    @staticmethod
+    def _redact(text: str) -> str:
+        """Remove common credential formats before checkpointing model/tool output."""
+        text = re.sub(r"(?i)\\b(api[_-]?key|token|secret|password)\\b(\\s*[:=]\\s*)[^\\s,;]+", r"\\1\\2[REDACTED]", text)
+        text = re.sub(r"(?i)\\bBearer\\s+[A-Za-z0-9._~+/-]+=*", "Bearer [REDACTED]", text)
+        text = re.sub(r"\\bgh[pousr]_[A-Za-z0-9]{20,}\\b", "[REDACTED_GITHUB_TOKEN]", text)
+        text = re.sub(r"\\bsk-[A-Za-z0-9_-]{20,}\\b", "[REDACTED_API_KEY]", text)
+        return text
 
-        for attempt in range(1, self.max_attempts + 1):
+    def run(self, goal: str, *, task_id: str | None = None) -> AutonomousResult:
+        """Run or resume a durable task; pass the returned task_id to continue later."""
+        if not isinstance(goal, str) or not goal.strip():
+            raise ValueError("goal must be a non-empty string")
+        task_id = task_id or uuid.uuid4().hex
+        goal_hash = hashlib.sha256(goal.encode("utf-8")).hexdigest()
+        state = self.store.load(task_id)
+        if state is None:
+            state = {
+                "task_id": task_id,
+                "goal_sha256": goal_hash,
+                "status": "queued",
+                "attempts_completed": 0,
+                "history": [],
+            }
+        elif state.get("goal_sha256") != goal_hash:
+            raise ValueError("task_id is already bound to a different goal")
+        history = state["history"]
+        checkpoint = self.store.path_for(task_id)
+        if state.get("status") == "complete":
+            return AutonomousResult(True, len(history), history, task_id, "complete", str(checkpoint))
+
+        start = int(state.get("attempts_completed", len(history))) + 1
+        stop = start + self.max_attempts
+        for attempt in range(start, stop):
+            state["status"] = "running"
+            state["attempts_completed"] = attempt
             task = f"""
 You are Barrot, operating a real Python repository in a controlled workspace.
 
@@ -60,9 +103,10 @@ GOAL:
 ATTEMPT:
 {attempt}
 
-Return ONLY valid JSON.
+RECENT CHECKPOINT HISTORY:
+{json.dumps(history[-3:], ensure_ascii=False)}
 
-Use this exact schema:
+Return ONLY valid JSON using this exact schema:
 
 {{
   "analysis": "brief diagnosis",
@@ -73,7 +117,6 @@ Use this exact schema:
 }}
 
 CRITICAL EXECUTION RULES:
-
 - Every command is parsed into argv and executed with shell=False.
 - There is no shell, pipeline, redirection, command substitution, or command chaining.
 - Use one command per string. Never include shell operators such as semicolon, &&, ||, pipe, >, <, backticks, or command substitution.
@@ -89,73 +132,50 @@ CRITICAL EXECUTION RULES:
 - Keep actions minimal and prefer inspection before modification.
 - If a command is rejected, inspect the error and choose an allowed command; do not attempt a shell workaround.
 """
-
-            plan_text = self.brain.think(task)
-            record = {
-                "attempt": attempt,
-                "plan": plan_text,
-                "execution": [],
-                "verification": [],
-            }
+            plan_text = self._redact(str(self.brain.think(task)))
+            record = {"attempt": attempt, "plan": plan_text, "execution": [], "verification": []}
             history.append(record)
-
+            self.store.save(task_id, state)
             try:
                 plan = self._extract_json(plan_text)
             except Exception as exc:
-                record["planning_error"] = str(exc)
+                record["planning_error"] = self._redact(str(exc))
+                self.store.save(task_id, state)
                 continue
-
             commands = plan.get("commands", [])
             if not isinstance(commands, list):
                 record["planning_error"] = "commands field is not a list"
+                self.store.save(task_id, state)
                 continue
-
             for command in commands:
                 if not isinstance(command, str):
-                    record["execution"].append(
-                        {
-                            "success": False,
-                            "error": "Command was not a string",
-                        }
-                    )
-                    continue
-
-                try:
-                    result = self.executor.run(command)
-                    record["execution"].append(
-                        {
+                    record["execution"].append({"success": False, "error": "Command was not a string"})
+                else:
+                    try:
+                        result = self.executor.run(command)
+                        record["execution"].append({
                             "command": command,
                             "success": result.success,
-                            "stdout": result.stdout,
-                            "stderr": result.stderr,
+                            "stdout": self._redact(result.stdout),
+                            "stderr": self._redact(result.stderr),
                             "returncode": result.returncode,
-                        }
-                    )
-                except Exception as exc:
-                    record["execution"].append(
-                        {
-                            "command": command,
-                            "success": False,
-                            "error": str(exc),
-                        }
-                    )
-
+                        })
+                    except Exception as exc:
+                        record["execution"].append({
+                            "command": command, "success": False,
+                            "error": self._redact(str(exc)),
+                        })
+                self.store.save(task_id, state)
             verification = self.verifier.verify_python()
             record["verification"] = verification.checks
-
-            commands_ok = (
-                len(record["execution"]) > 0
-                and all(item.get("success", False) for item in record["execution"])
+            commands_ok = len(record["execution"]) > 0 and all(
+                item.get("success", False) for item in record["execution"]
             )
             if commands_ok and verification.success:
-                return AutonomousResult(
-                    success=True,
-                    attempts=attempt,
-                    history=history,
-                )
-
-        return AutonomousResult(
-            success=False,
-            attempts=self.max_attempts,
-            history=history,
-        )
+                state["status"] = "complete"
+                self.store.save(task_id, state)
+                return AutonomousResult(True, len(history), history, task_id, "complete", str(checkpoint))
+            self.store.save(task_id, state)
+        state["status"] = "paused"
+        self.store.save(task_id, state)
+        return AutonomousResult(False, len(history), history, task_id, "paused", str(checkpoint))
