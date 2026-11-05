@@ -68,8 +68,8 @@ class FlywheelCycleResult:
         verdict = "passed" if self.verification.passed else "needs follow-up"
         return (
             f"Cycle {self.cycle_number}: {verdict} "
-            f"(coverage={self.verification.coverage_after:.1%}, "
-            f"improvements={len(self.reasoning.improvements)})"
+            f"(estimated_coverage={self.verification.coverage_after:.1%}, "
+            f"proposals={len(self.reasoning.improvements)})"
         )
 
     def to_dict(self) -> dict:
