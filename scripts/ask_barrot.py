@@ -133,6 +133,23 @@ def load_signal_snapshot():
     return "\n\nYour real, current signal data:\n" + "\n".join(lines)
 
 
+def load_xrp_intelligence_status():
+    """Load repository-authored mission and forecast readiness boundaries."""
+    sections = []
+    sources = (
+        ("Current Barrot/XRP mission handoff", "BARROT_XRP_MISSION_HANDOFF.md", 10000),
+        ("XRP point-in-time feature-store contract", "research/xrp_intelligence/feature-store-contract.md", 5000),
+        ("XRP forecast-ledger contract", "research/xrp_intelligence/forecast-ledger-contract.md", 5000),
+    )
+    for label, path, limit in sources:
+        try:
+            content = Path(path).read_text(encoding="utf-8")[:limit]
+        except (OSError, UnicodeError):
+            continue
+        if content.strip():
+            sections.append(f"\\n\\n{label} (repository source; includes explicit unimplemented gates):\\n{content}")
+    return "".join(sections)
+
 def load_gumroad_metrics():
     if not os.path.exists(GUMROAD_METRICS):
         return ""
@@ -390,6 +407,7 @@ def main():
         + INFRASTRUCTURE_CONSTRAINTS
         + format_memory_block(memory_entries)
         + load_signal_snapshot()
+        + load_xrp_intelligence_status()
         + load_recent_commits()
         + load_gumroad_metrics()
         + load_ingestion_metrics()
