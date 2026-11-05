@@ -105,7 +105,8 @@ def _load_trusted_evaluator_keys(
     configured: Mapping[str, bytes | str] | None,
 ) -> dict[str, Ed25519PublicKey]:
     """Load externally managed Ed25519 public keys; an empty set fails closed."""
-    if configured is None:
+    loaded_from_environment = configured is None
+    if loaded_from_environment:
         raw = os.environ.get(_EVALUATOR_KEYS_ENV, "").strip()
         if not raw:
             return {}
@@ -121,6 +122,8 @@ def _load_trusted_evaluator_keys(
         if not isinstance(key_id, str) or not key_id.strip():
             raise ForecastLedgerError("trusted evaluator key IDs must be non-empty strings")
         normalized_id = key_id.strip()
+        if loaded_from_environment and normalized_id.lower().startswith(("test-", "fixture-")):
+            raise ForecastLedgerError("test-only evaluator key IDs are forbidden in the production environment trust store")
         if normalized_id in keys:
             raise ForecastLedgerError("trusted evaluator key IDs must be unique")
         if isinstance(encoded, bytes):
