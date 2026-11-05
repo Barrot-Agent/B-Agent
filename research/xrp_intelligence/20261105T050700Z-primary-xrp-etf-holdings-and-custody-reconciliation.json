@@ -128,7 +128,20 @@
       "median_30_day_bid_ask_spread_pct": 0.99,
       "total_holding_lines": 4,
       "direct_xrp_units_model_eligible": false,
-      "indirect_etp_shares_model_eligible": false
+      "indirect_etp_shares_model_eligible": false,
+      "strategy_exposure_disclosure": {
+        "minimum_exposure_policy": "At least 80% of net assets (plus borrowings for investment purposes) in XRP and other assets that provide exposure to XRP.",
+        "allowed_exposure_instruments": [
+          "direct XRP",
+          "REX-Osprey XRP Subsidiary",
+          "CoinShares XRP ETP",
+          "XRP futures contracts",
+          "XRP swap agreements"
+        ],
+        "derivative_use_possible": true,
+        "derivative_notional_disclosed_in_reviewed_holdings_table": false,
+        "direct_xrp_quantity_is_not_total_economic_exposure": true
+      }
     }
   },
   "cross_fund_reconciliation": {
@@ -149,8 +162,11 @@
       "Holdings balances can change through creations, redemptions, in-kind transfers, fee sales, corporate actions and price changes.",
       "An increase in USD market value can occur without an increase in XRP units.",
       "An issuer-reported XRP balance does not prove that all units are permanently unavailable to the market or that the fund has not lent or otherwise encumbered them.",
-      "The REX-Osprey CoinShares ETP position is represented in shares and must not be added to direct XRP units."
-    ]
+      "The REX-Osprey CoinShares ETP position is represented in shares and must not be added to direct XRP units.",
+      "REX-Osprey states that the fund may use an XRP subsidiary, XRP futures contracts and swap agreements; the reviewed holdings table does not quantify derivative notional exposure. The direct-XRP subtotal is not total economic exposure."
+    ],
+    "direct_xrp_units_subtotal_scope": "Issuer-disclosed direct XRP units only; excludes indirect ETP shares and unquantified subsidiary, futures or swap exposure.",
+    "economic_exposure_total_inference": "PROHIBITED"
   },
   "custody_relationships": [
     {
@@ -217,6 +233,16 @@
         "Price changes affect USD market values without changing XRP quantities.",
         "Creation/redemption and in-kind transfer records are absent from this snapshot.",
         "Sponsor fees and fund operations can change token balances."
+      ]
+    },
+    {
+      "hypothesis": "The three-fund direct-XRP subtotal equals total XRP-linked economic exposure across those funds.",
+      "status": "REJECTED",
+      "evidence": "The subtotal counts only issuer-disclosed direct XRP units.",
+      "disconfirming_evidence": [
+        "REX-Osprey permits an XRP subsidiary, XRP futures and swap agreements.",
+        "The CoinShares XRP ETP position is denominated in shares, not XRP units.",
+        "Derivative notionals and subsidiary look-through are not quantified in the reviewed holdings table."
       ]
     }
   ],
