@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "artifact_id": "20261105T084500Z-kamilah-stevenson-youtube-identity-and-video-inventory",
+  "artifact_type": "public_youtube_identity_verification_and_video_inventory",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": 1,
+  "captured_at_utc": "2026-11-05T08:45:00Z",
+  "data_cutoff_utc": "2026-11-05T08:45:00Z",
+  "forecast_issued": false,
+  "model_eligible": false,
+  "identity_assessment": {
+    "person_identity": "HIGH_CONFIDENCE_VERIFIED",
+    "evidence": "The iHeart episode identifies Dr. Kamilah Stevenson; in the interview she self-identifies as Cam/Camilla Stevenson and says her YouTube is under Doctor Camilla Stevenson. She explicitly warns that fake pages exist.",
+    "self_identification_source": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+    "self_identification_transcript_excerpt": "At approximately 40:07–40:26, she names her X, Instagram and YouTube identities and warns about fake pages.",
+    "handle_cross_reference": "@drkamilahstevenson appears in the title of the Paul Barron Podcast interview video. YouTube search results for three videos identify the creator as Kamilah Stevenson with subscriber counts between 138K and 140K.",
+    "canonical_channel_id": "NOT_FULLY_VERIFIED",
+    "third_party_channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
+    "third_party_channel_id_candidate_source": "Scrumball creator directory lists Kamilah Stevenson with this channel identifier; this is a secondary directory, not a first-party ownership proof.",
+    "unverified_candidate_channel": {
+      "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+      "handle": "@KamilahStevensonXrpStocks",
+      "status": "NOT_ATTRIBUTED",
+      "reason": "No first-party cross-link from the verified interview or creator channel was established; the guest explicitly warns about fake pages."
+    }
+  },
+  "source_registry": [
+    {
+      "id": "iheart_kamilah_interview_20260611",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "authority": "first-party recorded interview and transcript",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_date": "2026-06-11",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered transcript; no byte-complete receipt",
+      "independence_group": "iheart_paul_barron_interview",
+      "model_eligible": false,
+      "limitations": [
+        "Transcript spelling varies between Camila, Camilla and Kamilah.",
+        "The guest warns about fake pages; use exact handle cross-links before assigning every channel to her."
+      ]
+    },
+    {
+      "id": "youtube_paul_barron_guest_20260611",
+      "publisher": "Paul Barron Podcast",
+      "authority": "direct YouTube video metadata and tagged guest handle",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "published_date": "2026-06-11",
+      "views_at_search": 6724,
+      "likes_at_search": 752,
+      "creator": "Paul Barron Podcast",
+      "guest": "Dr. Kamilah Stevenson",
+      "guest_handle_tag": "@drkamilahstevenson",
+      "raw_content_sha256": null,
+      "raw_capture_status": "YouTube search result metadata; no byte-complete receipt",
+      "independence_group": "paul_barron_youtube_channel",
+      "model_eligible": false,
+      "limitations": [
+        "This is a guest appearance on Paul Barron's channel, not a video uploaded by Kamilah's own channel."
+      ]
+    },
+    {
+      "id": "youtube_kamilah_2026_setup",
+      "publisher": "Kamilah Stevenson",
+      "authority": "direct YouTube search result identifying creator and video",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "published_date": "2025-12-03",
+      "views_at_search": 21568,
+      "creator_followers_at_search": 138000,
+      "raw_content_sha256": null,
+      "raw_capture_status": "YouTube search result metadata; no byte-complete receipt",
+      "independence_group": "kamilah_stevenson_youtube_channel",
+      "model_eligible": false,
+      "limitations": [
+        "Views and follower counts are time-of-search snapshots, not current counts."
+      ]
+    },
+    {
+      "id": "youtube_kamilah_ripple_bank",
+      "publisher": "Kamilah Stevenson",
+      "authority": "direct YouTube search result identifying creator and video",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "published_date": "2025-12-13",
+      "views_at_search": 76750,
+      "creator_followers_at_search": 139000,
+      "raw_content_sha256": null,
+      "raw_capture_status": "YouTube search result metadata; no byte-complete receipt",
+      "independence_group": "kamilah_stevenson_youtube_channel",
+      "model_eligible": false,
+      "limitations": [
+        "The video predates Ripple's October 2026 OCC final approval; its title and forward-looking claims must not be retroactively treated as proof of approval in 2025."
+      ]
+    },
+    {
+      "id": "youtube_kamilah_xrpl_upgrade",
+      "publisher": "Kamilah Stevenson",
+      "authority": "direct YouTube search result identifying creator and video",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "published_date": "2026-07-30",
+      "views_at_search": 10090,
+      "likes_at_search": 740,
+      "creator_followers_at_search": 140000,
+      "raw_content_sha256": null,
+      "raw_capture_status": "YouTube search result metadata; no byte-complete receipt",
+      "independence_group": "kamilah_stevenson_youtube_channel",
+      "model_eligible": false,
+      "limitations": [
+        "Video commentary about proposed/active XRPL amendments is not a validator or amendment-status source."
+      ]
+    },
+    {
+      "id": "glasp_kamilah_etf_candidate",
+      "publisher": "Glasp transcript mirror",
+      "authority": "secondary transcript/index referencing an original YouTube ID",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "original_youtube_url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "published_date": "2026-01-13",
+      "views_at_index": 20400,
+      "creator_at_index": "Kamilah Stevenson",
+      "raw_content_sha256": null,
+      "raw_capture_status": "secondary transcript mirror; original channel metadata not retrieved",
+      "independence_group": "glasp_transcript_mirror",
+      "model_eligible": false,
+      "limitations": [
+        "Candidate only; do not count as verified own-channel upload until original YouTube metadata is captured."
+      ]
+    },
+    {
+      "id": "glasp_kamilah_wealth_candidate",
+      "publisher": "Glasp transcript mirror",
+      "authority": "secondary transcript/index referencing an original YouTube ID",
+      "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "original_youtube_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "published_date": "2026-01-15",
+      "views_at_index": 23100,
+      "creator_at_index": "Kamilah Stevenson",
+      "raw_content_sha256": null,
+      "raw_capture_status": "secondary transcript mirror; original channel metadata not retrieved",
+      "independence_group": "glasp_transcript_mirror",
+      "model_eligible": false,
+      "limitations": [
+        "Candidate only; do not count as verified own-channel upload until original YouTube metadata is captured."
+      ]
+    },
+    {
+      "id": "youtube_alina_x_third_party_clip",
+      "publisher": "Alina X",
+      "authority": "third-party YouTube clip",
+      "url": "https://www.youtube.com/watch?v=5DzBk8DfoLs",
+      "published_date": "2025-12-16",
+      "creator": "Alina X",
+      "raw_content_sha256": null,
+      "raw_capture_status": "YouTube search result metadata",
+      "independence_group": "third_party_reupload_or_commentary",
+      "model_eligible": false,
+      "limitations": [
+        "Not a Kamilah Stevenson channel upload; excluded from her own-channel inventory."
+      ]
+    },
+    {
+      "id": "scrumball_channel_directory",
+      "publisher": "Scrumball",
+      "authority": "secondary creator-directory channel identifier",
+      "url": "https://www.scrumball.com/ranking/top-sport-influencers-on-youtube",
+      "channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
+      "creator_followers_at_directory": 139000,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered directory entry",
+      "independence_group": "third_party_creator_directory",
+      "model_eligible": false,
+      "limitations": [
+        "Directory match is not first-party proof of channel ownership."
+      ]
+    }
+  ],
+  "video_inventory": [
+    {
+      "video_id": "Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "published_date": "2025-12-03",
+      "views_at_search": 21568,
+      "creator_label": "Kamilah Stevenson",
+      "attribution_status": "VERIFIED_CREATOR_UPLOAD",
+      "topics": [
+        "XRP ETFs",
+        "2026 macro setup",
+        "Fed expectations",
+        "Digital Asset Clarity Act",
+        "global liquidity"
+      ],
+      "evidence_source": "youtube_kamilah_2026_setup",
+      "interpretation": "Creator commentary and forward-looking macro hypotheses; not realized macro data or an XRP forecast."
+    },
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "published_date": "2025-12-13",
+      "views_at_search": 76750,
+      "creator_label": "Kamilah Stevenson",
+      "attribution_status": "VERIFIED_CREATOR_UPLOAD",
+      "topics": [
+        "Ripple banking-license pursuit",
+        "XRP institutional liquidity",
+        "collateral and lending commentary"
+      ],
+      "evidence_source": "youtube_kamilah_ripple_bank",
+      "interpretation": "Published before the Oct 26, 2026 OCC final approval. Its statements about collateral, yield, lending and XRP price are opinions, not proof of live services or market demand."
+    },
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "published_date": "2026-07-30",
+      "views_at_search": 10090,
+      "likes_at_search": 740,
+      "creator_label": "Kamilah Stevenson",
+      "attribution_status": "VERIFIED_CREATOR_UPLOAD",
+      "topics": [
+        "Confidential Transfers",
+        "Sponsored Fees and Reserves",
+        "Batch",
+        "Permission Delegation",
+        "Dynamic MPT",
+        "validator amendment threshold"
+      ],
+      "evidence_source": "youtube_kamilah_xrpl_upgrade",
+      "interpretation": "Commentary summary of XRPL amendments; validate amendment state against primary validator/ledger records."
+    },
+    {
+      "video_id": "Sulo54IlQ60",
+      "title": "Crypto Panics! W/ @drkamilahstevenson",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "published_date": "2026-06-11",
+      "creator_label": "Paul Barron Podcast",
+      "guest": "Dr. Kamilah Stevenson",
+      "attribution_status": "VERIFIED_GUEST_APPEARANCE_NOT_OWN_CHANNEL_UPLOAD",
+      "topics": [
+        "utility versus speculation",
+        "institutional adoption",
+        "Japan financial innovation",
+        "AI and critical thinking"
+      ],
+      "evidence_source": "youtube_paul_barron_guest_20260611",
+      "interpretation": "The interview transcript is the strongest first-person identity source and contains her warning about fake pages."
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "published_date": "2026-01-13",
+      "creator_label": "Kamilah Stevenson per Glasp index",
+      "attribution_status": "CANDIDATE_PENDING_DIRECT_CHANNEL_METADATA",
+      "topics": [
+        "XRP ETF flows",
+        "price response"
+      ],
+      "evidence_source": "glasp_kamilah_etf_candidate"
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "published_date": "2026-01-15",
+      "creator_label": "Kamilah Stevenson per Glasp index",
+      "attribution_status": "CANDIDATE_PENDING_DIRECT_CHANNEL_METADATA",
+      "topics": [
+        "risk management",
+        "crypto wealth"
+      ],
+      "evidence_source": "glasp_kamilah_wealth_candidate"
+    },
+    {
+      "video_id": "5DzBk8DfoLs",
+      "title": "Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet",
+      "url": "https://www.youtube.com/watch?v=5DzBk8DfoLs",
+      "published_date": "2025-12-16",
+      "creator_label": "Alina X",
+      "attribution_status": "THIRD_PARTY_CLIP_EXCLUDED_FROM_OWN_CHANNEL_INVENTORY",
+      "topics": [
+        "XRPL upgrades"
+      ],
+      "evidence_source": "youtube_alina_x_third_party_clip"
+    }
+  ],
+  "exact_phrase_status": {
+    "ask_coin": "No new primary evidence in this run establishes an ASK Coin project or token relationship with XRP/Ripple. Preserve Permission Coin (ASK) and the separate Ask Coin exchange listing as distinct candidates.",
+    "actual_capital": "The SEC reconciliation in the companion Evernorth artifact distinguishes $214.1M cash raised and used to purchase 84.365876M XRP, in-kind XRP contributions, $9.7M related-party debt drawn, and undrawn/contingent financing.",
+    "sbic_chatgpt": "No new primary evidence establishes an OpenAI partnership with SBIC East/Central/West. These regional Japanese SBIC entities remain distinct from SBI Holdings."
+  },
+  "source_quality": {
+    "person_identity_verified": true,
+    "handle_strongly_corroborated": true,
+    "canonical_channel_id_verified": false,
+    "own_channel_video_count_verified": 3,
+    "verified_guest_appearance_count": 1,
+    "secondary_transcript_candidates": 2,
+    "third_party_clip_excluded": 1,
+    "fake_page_warning_preserved": true,
+    "raw_source_bytes_captured": false,
+    "source_sha256_receipts": false,
+    "independent_timestamp_anchor": false,
+    "model_eligible": false
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_APPLICABLE"
+  },
+  "next_actions": [
+    "Capture the verified creator channel's About page and linked official website/social accounts to confirm the canonical channel ID.",
+    "Use YouTube's official channel/video metadata for a complete inventory; do not promote Glasp-only candidates without direct metadata.",
+    "Quarantine @KamilahStevensonXrpStocks and any lookalike channel until first-party cross-link evidence is found.",
+    "Treat video claims as commentary; cross-check XRPL amendment status, Ripple licensing and market-flow claims against primary sources."
+  ]
+}

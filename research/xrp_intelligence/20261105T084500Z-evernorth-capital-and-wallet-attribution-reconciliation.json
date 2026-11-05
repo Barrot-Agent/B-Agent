@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "artifact_id": "20261105T084500Z-evernorth-capital-and-wallet-attribution-reconciliation",
+  "artifact_type": "xrp_treasury_actual_capital_debt_equity_facility_and_onchain_attribution",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": 1,
+  "captured_at_utc": "2026-11-05T08:45:00Z",
+  "data_cutoff_utc": "2026-11-05T08:45:00Z",
+  "previous_artifact_reference": "20261105T083300Z-xrp-robinhood-bny-etf-macro-reconciliation",
+  "forecast_issued": false,
+  "model_eligible": false,
+  "eligibility_status": "MODEL_INELIGIBLE_NO_BYTE_COMPLETE_SEC_OR_LEDGER_RECEIPTS_AND_ONCHAIN_TRACE_NOT_INDEPENDENTLY_REPLAYED",
+  "source_registry": [
+    {
+      "id": "sec_evernorth_424b3_20261030",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC EDGAR",
+      "authority": "primary issuer prospectus filed under Rule 424(b)(3)",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filed_at_date": "2026-10-30",
+      "prospectus_date": "2026-10-30",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered SEC HTML; exact response bytes not retained",
+      "independence_group": "evernorth_sec_primary_filings",
+      "model_eligible": false,
+      "limitations": [
+        "Issuer disclosure is primary for its own capital and holdings, but not independent verification of every XRP wallet.",
+        "Prospectus contains two different ELOC gross-proceeds estimates, preserved separately."
+      ]
+    },
+    {
+      "id": "sec_evernorth_effect_20261030",
+      "publisher": "U.S. SEC EDGAR",
+      "authority": "primary Form EFFECT notice",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/primary_doc.xml",
+      "accepted_at_utc": "2026-11-02T00:15:10Z",
+      "effective_at_utc": "2026-10-30T16:00:00Z",
+      "file_number": "333-299620",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered SEC XML; exact response bytes not retained",
+      "independence_group": "sec_effect_primary_record",
+      "model_eligible": false,
+      "limitations": [
+        "Effectiveness confirms registration status, not satisfaction of every purchase-facility commencement condition or an actual share sale."
+      ]
+    },
+    {
+      "id": "sec_evernorth_8k_20261023",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC EDGAR",
+      "authority": "primary Form 8-K and purchase agreement exhibits",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "filed_at_date": "2026-10-23",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered SEC HTML; exact response bytes not retained",
+      "independence_group": "evernorth_sec_primary_filings",
+      "model_eligible": false,
+      "limitations": [
+        "Agreement states optional issuer draw and conditions; does not establish a completed draw."
+      ]
+    },
+    {
+      "id": "xrp_insights_evernorth_ledger_20261105",
+      "publisher": "XRP Insights",
+      "authority": "secondary XRPL ledger reconstruction and wallet attribution",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "data_as_of_ledger": "108127994",
+      "ledger_closed_at_utc": "2026-11-05T08:35:00Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered tracker page; XRPSCAN account/transaction links returned HTTP 403 in this run",
+      "independence_group": "xrpl_ledger_derived_secondary_tracker",
+      "model_eligible": false,
+      "limitations": [
+        "Wallet attribution is the tracker's analysis, not an issuer wallet schedule.",
+        "370,346,663 XRP moved outside the attributed set; destinations remain unassigned.",
+        "Raw signed transactions were not independently replayed from rippled in this run."
+      ]
+    }
+  ],
+  "actual_capital_stack": {
+    "private_placement_subscription_agreements": {
+      "cash_raised_usd": 214100000,
+      "xrp_contributed_in_kind": 261919096,
+      "company_reported_total_subscription_components": "$214.1M cash plus 261,919,096 XRP",
+      "cash_used_to_purchase_xrp": 214100000,
+      "xrp_purchased_with_cash": 84365876,
+      "execution_venue": "not disclosed in the cited prospectus section",
+      "interpretation": "Actual historical cash raised and used to acquire XRP. Do not add the $214.1M cash to the value of the 84,365,876 XRP purchased with it as though both remained on the balance sheet.",
+      "source": "sec_evernorth_424b3_20261030"
+    },
+    "ripple_pathfinder_contribution": {
+      "xrp_contributed": 126791458,
+      "additional_closing_contribution_xrp": 200000,
+      "entity": "Pathfinder Digital Assets LLC / Company, a subsidiary in the Evernorth structure",
+      "interpretation": "In-kind XRP contribution, not cash proceeds or an open-market purchase by Evernorth.",
+      "source": "sec_evernorth_424b3_20261030"
+    },
+    "company_reported_xrp": {
+      "reported_xrp_as_of_2026_10_09": 473000000,
+      "exact_closing_amount_in_prior_sec_filing": 473276430,
+      "reconciliation": "84,365,876 XRP purchased with subscription cash + 261,919,096 XRP subscription contributions + 126,791,458 XRP Ripple contribution to Pathfinder + 200,000 XRP due at closing = 473,276,430 XRP.",
+      "source": "sec_evernorth_424b3_20261030",
+      "model_eligible": false
+    },
+    "ripple_credit_facilities": {
+      "pathfinder_company_facility": {
+        "original_limit_usd": 7000000,
+        "amended_limit_usd": 10000000,
+        "amount_borrowed_as_of_2026_10_07_usd": 9700000,
+        "interest_rate_pct": 3.81,
+        "borrower": "Pathfinder / Company",
+        "lender": "Ripple",
+        "purpose": "working capital, transaction expenses and general corporate purposes; draws also include third-party payments made by Ripple on behalf of the Company and Evernorth",
+        "classification": "actual related-party debt drawn, not equity capital and not proof of XRP purchases",
+        "source": "sec_evernorth_424b3_20261030"
+      },
+      "separate_evernorth_facility": {
+        "limit_usd": 1000000,
+        "borrowed_as_of_2026_06_30_usd": 0,
+        "lender": "Ripple",
+        "classification": "separate Evernorth-level facility; not the same as the $9.7M Pathfinder/Company borrowing",
+        "source": "sec_evernorth_424b3_20261030"
+      },
+      "related_party_receivable_as_of_2026_06_30": {
+        "total_usd": 3100000,
+        "draw_principal_and_accrued_interest_usd": 1023472,
+        "direct_vendor_payments_usd": 2100000,
+        "interpretation": "Intercompany receivable from Evernorth; do not count it again as new external capital."
+      }
+    },
+    "historical_liquidity_context": {
+      "date": "2026-06-30",
+      "evernorth_unrestricted_cash_usd": 97745,
+      "net_working_capital_deficit_usd": 696100000,
+      "accumulated_deficit_usd": 340900000,
+      "period_net_loss_2026_h1_usd": 188100000,
+      "source": "sec_evernorth_424b3_20261030",
+      "limitation": "Historical pre-close balance-sheet context, not a Nov 5 current cash balance."
+    }
+  },
+  "eloc_facility": {
+    "counterparty": "CF Principal Investments LLC (Cantor affiliate)",
+    "agreement_date": "2026-10-23",
+    "registration_file_number": "333-299620",
+    "registration_effective_at_utc": "2026-10-30T16:00:00Z",
+    "sec_effect_filed_at_utc": "2026-11-02T00:15:10Z",
+    "prospectus_date": "2026-10-30",
+    "maximum_new_shares": 5218935,
+    "shares_outstanding_as_of_2026_10_22": 26094680,
+    "maximum_issuance_dilution_pct_of_post_issue_shares": 16.7,
+    "gross_proceeds_scenarios": {
+      "cover_price_reference_usd": 14.71,
+      "cover_price_gross_usd": 76800000,
+      "cover_price_estimated_net_usd": 74400000,
+      "prospectus_summary_gross_usd": 80700000,
+      "discrepancy": "The prospectus summary section reports up to $80.7M gross, while the cover-price and detailed Use of Proceeds sections report approximately $76.8M gross and $74.4M estimated net. The filing's displayed estimates are preserved rather than averaged."
+    },
+    "issuer_discretion": "Evernorth may elect to sell all, some or none of the shares; it is not obligated to use the full facility.",
+    "purchase_price": "97% of applicable VWAP, subject to agreement terms",
+    "limits": [
+      "4.99% Cantor beneficial-ownership cap",
+      "purchase-volume cap generally tied to 20% of trading volume",
+      "minimum price threshold and other conditions"
+    ],
+    "intended_use": "general corporate purposes, including XRP acquisition and other XRP-ecosystem activities, and working capital; issuer says it expects a substantial portion of proceeds to acquire additional XRP, but retains broad discretion",
+    "status_at_cutoff": "REGISTRATION_EFFECTIVE; NO_FIRST_PURCHASE_NOTICE_OR_SETTLED_PROCEEDS_VERIFIED",
+    "actual_proceeds_verified_usd": 0,
+    "actual_proceeds_note": "Zero verified in the reviewed public evidence; this is not a claim that no transaction occurred privately or after the cutoff.",
+    "source": "sec_evernorth_424b3_20261030"
+  },
+  "eloc_commitment_fee": {
+    "upfront_fee_usd": 521893.5,
+    "determination_date": "2026-10-30",
+    "contractual_due_date": "2026-11-06",
+    "payment_terms": "within five business days following the date the Initial ELOC Registration Statement is declared effective",
+    "fully_earned_and_non_refundable": "as of the Oct 23 Purchase Agreement, regardless of whether any VWAP purchases occur",
+    "additional_true_up": "possible additional commitment fee; aggregate upfront plus additional fee capped at $1,000,000",
+    "status_at_cutoff": "PAYMENT_NOT_VERIFIED; due date is Nov 6, 2026",
+    "classification": "contractual cash outflow/financing cost, not capital raised",
+    "source": "sec_evernorth_424b3_20261030"
+  },
+  "other_offering_costs": {
+    "qualified_independent_underwriter": "StoneX Financial Inc.",
+    "fee_usd": 200000,
+    "expense_cap_usd": 1000,
+    "classification": "offering cost, not capital inflow",
+    "source": "sec_evernorth_424b3_20261030"
+  },
+  "warrants": {
+    "shares_issuable_up_to": 9283847,
+    "exercise_price_usd": 11.5,
+    "theoretical_gross_cash_if_all_exercised_usd": 106764240.5,
+    "status": "NO_EXERCISE_OR_CASH_RECEIPT_VERIFIED",
+    "classification": "contingent holder-elected equity financing; not actual capital and not earmarked for XRP purchases",
+    "source": "sec_evernorth_424b3_20261030"
+  },
+  "onchain_attribution": {
+    "sec_company_reported_closing_xrp": 473276430,
+    "ledger_snapshot": "108127994",
+    "ledger_closed_at_utc": "2026-11-05T08:35:00Z",
+    "tracker_attributed_wallet_count": 13,
+    "xrp_in_attributed_wallets": 103129905,
+    "share_of_reported_closing_amount_pct": 21.8,
+    "tracker_breakdown": {
+      "payment_linked_to_two_wallets_labelled_evernorth_xrp": 103129900,
+      "in_evernorth_own_wallets_xrp": 127,
+      "in_wallets_holding_ripple_contribution_to_pathfinder_xrp": 103129778,
+      "bitgo_custody_wallets_matching_purchased_tranche_xrp": 5
+    },
+    "xrp_moved_outside_attributed_wallet_set": 370346663,
+    "latest_outside_set_movement_date": "2026-10-22",
+    "destination_beneficial_ownership": "UNRESOLVED",
+    "classification": "UNATTRIBUTED_OUTFLOW_NOT_CLASSIFIED_AS_SALE",
+    "interpretation": "The tracker reports 103.13M XRP across 13 attributed wallets, but only 127 XRP in wallets it labels as Evernorth's own. Most tracked balance is associated with wallets holding Ripple's contribution to Pathfinder. The 370.35M XRP outside the attributed set may be in custodian, internal, OTC, exchange or other wallets. No sale or exchange deposit is established.",
+    "source": "xrp_insights_evernorth_ledger_20261105",
+    "independent_replay_performed": false
+  },
+  "actual_capital_taxonomy": {
+    "actual_cash_raised_usd": 214100000,
+    "actual_cash_used_to_buy_xrp_usd": 214100000,
+    "actual_xrp_purchased_with_cash": 84365876,
+    "actual_in_kind_xrp_subscription_contributions": 261919096,
+    "actual_ripple_xrp_contribution_to_pathfinder": 126791458,
+    "actual_related_party_debt_drawn_usd_as_of_2026_10_07": 9700000,
+    "contingent_eloc_gross_usd": 76800000,
+    "contingent_eloc_net_usd": 74400000,
+    "contingent_warrant_exercise_gross_usd": 106764240.5,
+    "upcoming_commitment_fee_outflow_usd": 521893.5,
+    "rule": "Do not combine cash raised, XRP contributed in kind, XRP purchased with cash, debt drawn, potential equity facilities, warrant exercise capacity, fees and wallet movements into one 'capital' number."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_unattributed_wallets_are_custody",
+      "claim": "Most of the 370.35M XRP outside the tracker-attributed wallet set may have moved to custodians or other treasury wallets, not been sold.",
+      "support": [
+        "xrp_insights_evernorth_ledger_20261105"
+      ],
+      "missing": [
+        "destination wallet attribution",
+        "custodian statements",
+        "exchange deposit confirmation"
+      ],
+      "tests": [
+        "trace all signed transactions from the 13 attributed wallets",
+        "compare destination balances and custodian labels",
+        "seek issuer/custodian disclosure"
+      ]
+    },
+    {
+      "id": "H2_unattributed_wallets_include_market_distribution",
+      "claim": "Some portion could have moved to OTC counterparties or exchanges, creating potential supply, but no such destination is established in this run.",
+      "support": [
+        "xrp_insights_evernorth_ledger_20261105"
+      ],
+      "missing": [
+        "exchange labels",
+        "trade records",
+        "beneficial ownership"
+      ],
+      "tests": [
+        "classify destination addresses with independent labels",
+        "look for exchange deposit and subsequent withdrawal patterns"
+      ]
+    },
+    {
+      "id": "H3_eloc_is_potential_not_deployed",
+      "claim": "The ELOC could fund additional XRP acquisitions, but issuer discretion, conditions and absence of verified purchase notices mean no new XRP acquisition can be attributed to it yet.",
+      "support": [
+        "sec_evernorth_424b3_20261030",
+        "sec_evernorth_effect_20261030"
+      ],
+      "missing": [
+        "VWAP purchase notices",
+        "share issuance",
+        "settlement receipts",
+        "XRP acquisition records"
+      ],
+      "tests": [
+        "monitor subsequent 8-K/424B5 filings and share counts",
+        "reconcile cash proceeds with XRP holdings changes"
+      ]
+    },
+    {
+      "id": "H4_ripple_credit_is_working_capital_debt",
+      "claim": "The $9.7M Ripple facility draw is a related-party debt and vendor-payment funding mechanism, not proof of XRP acquisition.",
+      "support": [
+        "sec_evernorth_424b3_20261030"
+      ],
+      "missing": [
+        "draw-by-draw use of proceeds"
+      ],
+      "tests": [
+        "reconcile facility ledger with vendor payments and receivables"
+      ]
+    },
+    {
+      "id": "H5_financing_pressure_could_create_future_xrp_sales",
+      "claim": "The prospectus warns that inability to raise financing or generate cash may require XRP sales to meet obligations; this is a disclosed risk, not evidence of a current sale.",
+      "support": [
+        "sec_evernorth_424b3_20261030"
+      ],
+      "missing": [
+        "current cash balance",
+        "current debt maturities",
+        "sale notices",
+        "wallet destinations"
+      ],
+      "tests": [
+        "monitor liquidity disclosures, debt amendments and on-chain exchange deposits"
+      ]
+    }
+  ],
+  "data_quality": {
+    "sec_primary_filings_used": true,
+    "sec_effectiveness_verified": true,
+    "raw_sec_bytes_captured": false,
+    "raw_sec_sha256_receipts": false,
+    "independent_timestamp_anchor": false,
+    "onchain_secondary_tracker_used": true,
+    "raw_xrpl_transactions_independently_replayed": false,
+    "wallet_destination_attribution_complete": false,
+    "eloc_purchase_notices_verified": false,
+    "warrant_exercises_verified": false,
+    "commitment_fee_payment_verified": false,
+    "model_eligible": false
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "This is a capital-stack and wallet-attribution reconciliation, not a validated predictive feature set."
+  },
+  "next_actions": [
+    "Monitor SEC filings and issuer disclosures for the ELOC commencement date, first VWAP purchase notices, shares issued, cash settlement and fee payment.",
+    "Keep the $76.8M detailed estimate and $80.7M summary estimate as a filing-internal discrepancy until a subsequent filing reconciles them.",
+    "Trace the 370,346,663 XRP from the 13 attributed wallets using raw XRPL ledger transactions and independent exchange/custody labels.",
+    "Reconcile the 103,129,905 XRP tracker attribution with the issuer's reported 473,276,430 XRP and any BitGo/other custodian statements.",
+    "Track actual warrant exercises and proceeds separately from the ELOC.",
+    "Keep the $9.7M Pathfinder/Company Ripple borrowing separate from Evernorth's $1M undrawn facility."
+  ]
+}
