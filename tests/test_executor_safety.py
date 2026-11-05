@@ -103,7 +103,7 @@ def test_executor_allows_bounded_read_only_verification_commands(monkeypatch, tm
     assert executor.run("find . -maxdepth 2 -type f").success
     assert executor.run("find . -maxdepth 2 -type f -not -path ./.git/*").success
 
-    assert len(calls) == 4
+    assert len(calls) == 5
     assert all(kwargs["shell"] is False for _, kwargs in calls)
 
 
