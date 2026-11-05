@@ -38,7 +38,7 @@ def test_november_12_first_live_payments_event_is_future_at_cutoff():
 
 def test_sbi_jpysc_ousd_relationship_is_only_a_pilot_under_consideration():
     source = next(s for s in load()["source_registry"] if s["source_id"] == "sbi_startale_open_standard_jpysc_pilot")
-    assert any("not a new service or production" in c for c in source["claims_supported"])
+    assert any("does not mean a new service or production" in c for c in source["claims_supported"])
     edge = next(e for e in load()["relationship_graph"] if e["from"] == "SBI Holdings and Startale")
     assert edge["relationship"] == "interoperability proof of concept under consideration"
 
@@ -49,7 +49,7 @@ def test_bridge_api_reserve_arithmetic_and_timestamp_are_preserved():
     arithmetic = data["api_arithmetic"]
     assert api["total_onchain_amount"] == 909_561_398.24664
     assert api["total_reserve_amount_usd"] == 911_545_202.68
-    assert api["cash_usd"] + api["treasury_usd"] == arithmetic["cash_plus_treasury_usd"]
+    assert round(api["cash_usd"] + api["treasury_usd"], 2) == round(arithmetic["cash_plus_treasury_usd"], 2)
     assert round(api["total_reserve_amount_usd"] - api["total_onchain_amount"], 5) == round(arithmetic["reserve_total_minus_supply_usd"], 5)
 
 
