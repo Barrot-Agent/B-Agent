@@ -206,6 +206,8 @@ CRITICAL EXECUTION RULES:
                 goal_result = self.goal_verifier(goal, record)
             except Exception as exc:
                 goal_result = {"success": False, "error": self._redact(str(exc))}
+            if not isinstance(goal_result, dict):
+                goal_result = {"success": False, "error": "goal verifier must return an evidence object"}
             goal_result = self._redact_value(goal_result)
             record["goal_verification"] = goal_result
             if (
