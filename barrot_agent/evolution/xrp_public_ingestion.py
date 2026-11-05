@@ -1508,8 +1508,8 @@ def _parse_kraken_ticker(
         raise XRPIngestionError("Kraken HTTP Date is later than capture time")
     eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
     event_s, captured_s = _iso(source_time), _iso(captured)
-    mid = (best_bid + best_ask) / 2.0
-    spread_bps = (best_ask - best_bid) / mid * 10000.0
+    mid = (bid + ask) / 2.0
+    spread_bps = (ask - bid) / mid * 10000.0
     limitations = [
         "Single Kraken XRP/USD spot venue; not consolidated liquidity.",
         "Kraken ticker does not expose an individual last-trade timestamp; HTTP Date timestamps the returned snapshot, not the matching-engine trade event.",
