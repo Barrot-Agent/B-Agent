@@ -18,15 +18,13 @@ def test_daily_etf_rows_do_not_claim_synthetic_2100_utc_event_times():
         "$.source_registry[5].source_event_time_utc",
         "$.source_registry[6].source_event_time_utc",
         "$.source_registry[7].source_event_time_utc",
-        "$.market_snapshot.etf_flows[0].source_event_time_utc",
-        "$.market_snapshot.etf_flows[1].source_event_time_utc",
-        "$.market_snapshot.etf_flows[2].source_event_time_utc",
     ):
         assert fields[path]["canonical_value"] is None
         assert fields[path]["canonical_date"] in {"2026-11-03", "2026-11-04"}
         assert fields[path]["original_value"].endswith("T21:00:00Z")
     assert target["source_registry"][5]["source_event_time_utc"] == "2026-11-04T21:00:00Z"
     assert target["source_registry"][6]["source_event_time_utc"] == "2026-11-03T21:00:00Z"
+    assert all("source_event_time_utc" not in item for item in target["market_snapshot"]["etf_flows"])
     assert correction["preservation"]["target_artifact_modified"] is False
 
 

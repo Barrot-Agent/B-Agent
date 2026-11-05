@@ -56,30 +56,6 @@
       "canonical_field": "source_event_date",
       "canonical_date": "2026-11-03",
       "reason": "Alpha Finance reports a November 3 daily row; it does not expose an exact row event timestamp."
-    },
-    {
-      "target_field": "$.market_snapshot.etf_flows[0].source_event_time_utc",
-      "original_value": "2026-11-04T21:00:00Z",
-      "canonical_value": null,
-      "canonical_field": "source_event_date",
-      "canonical_date": "2026-11-04",
-      "reason": "Daily holdings row date only."
-    },
-    {
-      "target_field": "$.market_snapshot.etf_flows[1].source_event_time_utc",
-      "original_value": "2026-11-03T21:00:00Z",
-      "canonical_value": null,
-      "canonical_field": "source_event_date",
-      "canonical_date": "2026-11-03",
-      "reason": "Daily holdings row date only; November 4 remains partial."
-    },
-    {
-      "target_field": "$.market_snapshot.etf_flows[2].source_event_time_utc",
-      "original_value": "2026-11-03T21:00:00Z",
-      "canonical_value": null,
-      "canonical_field": "source_event_date",
-      "canonical_date": "2026-11-03",
-      "reason": "Daily holdings row date only."
     }
   ],
   "source_timestamp_policy": {
