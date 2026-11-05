@@ -504,6 +504,43 @@
         "SBI_ARC_PRESALE_20260512",
         "CIRCLE_Q3_2026_RESULTS"
       ]
+    },
+    {
+      "id": "SBI_XRP_SHAREHOLDER_BENEFITS",
+      "event_date": "2025 shareholder-benefit plan; eligibility as of 2025-03-31",
+      "claim": "SBI Holdings' 2025 information presentation describes XRP shareholder benefits: eligible shareholders holding at least 1,000 shares for more than one year could receive XRP worth JPY 8,000; other eligible holders of at least 100 shares could receive XRP worth JPY 2,000. The XRP quantity was converted at the 2025-07-31 reference price. SBI says five distributions had been made since 2020.",
+      "limitations": [
+        "The aggregate XRP quantity distributed and actual claims/uptake are not disclosed in this presentation.",
+        "This is a shareholder benefit/distribution channel, not proof of an open-market XRP purchase in 2025 or a net spot inflow.",
+        "The presentation's five-distribution history is a company statement; current program continuation is not established by this 2025 source."
+      ],
+      "source_ids": [
+        "SBI_CIRCLE_JV_50_50_20250602"
+      ]
+    },
+    {
+      "id": "SBI_REMIT_XRP_PAYMENT_RAIL",
+      "event_date": "2021 service launch; reiterated 2025-06-02",
+      "claim": "SBI Group's 2025 presentation says SBI Group jointly established SBI Ripple Asia with Ripple and that SBI Remit began offering an international remittance service utilizing XRP in 2021, described by SBI as Japan's first such service.",
+      "limitations": [
+        "The presentation provides no current payment volume, XRP amount, active corridor count, or share of SBI Remit flows.",
+        "A historical product launch does not establish current XRP demand or current settlement volumes."
+      ],
+      "source_ids": [
+        "SBI_CIRCLE_JV_50_50_20250602"
+      ]
+    },
+    {
+      "id": "SBI_RIPPLE_ESCROW_VALUATION",
+      "event_date": "2025-06-02",
+      "claim": "SBI's 2025 presentation states that XRP held in escrow by Ripple was not included in the valuation of SBI Group's Ripple equity investment until a clear valuation could be established.",
+      "limitations": [
+        "This refers to Ripple's escrowed XRP, not XRP owned by SBI Group.",
+        "It is an equity-valuation treatment, not an escrow release schedule or token-market supply forecast."
+      ],
+      "source_ids": [
+        "SBI_CIRCLE_JV_50_50_20250602"
+      ]
     }
   ],
   "capital_ledger": [
@@ -695,7 +732,10 @@
       "sbi_circle_joint_venture",
       "sbi_arc_founding_validator_announcement",
       "circle_q3_usdc_circulation_and_transaction_volume",
-      "coinbase_usdc_balance_and_stablecoin_revenue"
+      "coinbase_usdc_balance_and_stablecoin_revenue",
+      "sbi_group_ripple_equity_ownership_last_disclosed_2025",
+      "sbi_xrp_shareholder_benefit_distribution",
+      "sbi_remit_xrp_remittance_service_2021"
     ],
     "separate_features_required": [
       "xrp_spot_net_flow",
@@ -707,7 +747,10 @@
       "usdc_supply_by_chain",
       "usdc_transfer_volume_by_chain",
       "actual_cash_creations_redemptions",
-      "realized_xrp_bridge_volume"
+      "realized_xrp_bridge_volume",
+      "sbi_shareholder_benefit_xrp_distributed_total",
+      "sbi_remit_xrp_settlement_volume",
+      "ripple_escrow_xrp_schedule_and_releases"
     ],
     "missing_features_must_remain_null": true,
     "no_directional_forecast_from_these_corporate_announcements_alone": true
@@ -927,5 +970,40 @@
     "no_missing_xrp_flows_inferred_as_zero": true,
     "no_direct_circle_ripple_partnership_inferred_from_shared_bny_provider": true,
     "no_xrp_price_direction_inferred": true
-  }
+  },
+  "xrp_distribution_ledger": [
+    {
+      "date": "2025 shareholder-benefit plan",
+      "distributor": "SBI Holdings",
+      "recipient": "eligible SBI Holdings shareholders",
+      "asset": "XRP",
+      "per_holder_value_jpy": [
+        2000,
+        8000
+      ],
+      "quantity_calculation": "JPY benefit value converted to XRP using 2025-07-31 reference price",
+      "aggregate_xrp_distributed": null,
+      "open_market_purchase_proven": false,
+      "net_spot_flow_proven": false,
+      "source_ids": [
+        "SBI_CIRCLE_JV_50_50_20250602"
+      ]
+    }
+  ],
+  "xrp_payment_rail_events": [
+    {
+      "date": "2021",
+      "operator": "SBI Remit",
+      "partners": [
+        "SBI Ripple Asia",
+        "Ripple"
+      ],
+      "rail": "cross-border remittance utilizing XRP",
+      "current_volume_disclosed": false,
+      "xrp_amount_disclosed": false,
+      "source_ids": [
+        "SBI_CIRCLE_JV_50_50_20250602"
+      ]
+    }
+  ]
 }
