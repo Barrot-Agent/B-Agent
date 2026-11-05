@@ -12,6 +12,7 @@ import os
 import re
 import shlex
 import subprocess
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Sequence
@@ -271,9 +272,64 @@ class BarrotExecutor:
             raise ExecutionError("Path escapes workspace")
         return target.read_text(encoding="utf-8")
 
-    def write_file(self, path: str, content: str) -> None:
+    def write_file(
+        self,
+        path: str,
+        content: str,
+        *,
+        expected_existing_content: str | None = None,
+    ) -> None:
+        """Create a new file, or replace an existing file only with a matching preimage."""
+        if not isinstance(content, str):
+            raise ExecutionError("File content must be a string.")
+        if expected_existing_content is not None and not isinstance(expected_existing_content, str):
+            raise ExecutionError("Expected existing content must be a string.")
+
         target = (self.workspace / path).resolve()
         if self.workspace not in target.parents:
             raise ExecutionError("Path escapes workspace")
+
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(content, encoding="utf-8")
+        if target.exists():
+            if expected_existing_content is None:
+                raise ExecutionError(
+                    "WRITE_FILE refuses to overwrite an existing file; use APPLY_PATCH with an exact preimage."
+                )
+            current = target.read_text(encoding="utf-8")
+            if current != expected_existing_content:
+                raise ExecutionError("File changed since the patch preimage was read.")
+            original_mode = target.stat().st_mode & 0o777
+        else:
+            if expected_existing_content is not None:
+                raise ExecutionError("Patch target disappeared before the write.")
+            try:
+                with target.open("x", encoding="utf-8") as handle:
+                    handle.write(content)
+                    handle.flush()
+                    os.fsync(handle.fileno())
+            except FileExistsError:
+                raise ExecutionError("File appeared during create-only write; refusing overwrite.") from None
+            return
+
+        temporary_path: Path | None = None
+        try:
+            with tempfile.NamedTemporaryFile(
+                mode="w",
+                encoding="utf-8",
+                dir=target.parent,
+                prefix=f".{target.name}.",
+                suffix=".barrot-tmp",
+                delete=False,
+            ) as handle:
+                temporary_path = Path(handle.name)
+                handle.write(content)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.chmod(temporary_path, original_mode)
+            if target.read_text(encoding="utf-8") != expected_existing_content:
+                raise ExecutionError("File changed while the patch was being prepared.")
+            os.replace(temporary_path, target)
+            temporary_path = None
+        finally:
+            if temporary_path is not None:
+                temporary_path.unlink(missing_ok=True)
