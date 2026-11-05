@@ -24,7 +24,7 @@ from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com"}
+ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com"}
 ADAPTER_VERSION = "xrp-public-market-v2"
 PARSER_VERSION = "xrp-public-market-v2"
 MAX_LIVE_AGE_SECONDS = 300
@@ -41,6 +41,7 @@ ENDPOINTS = (
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
     ("binance_spot_depth", "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100"),
     ("xrp_etf_flows_aggregator", "https://xrp-insights.com/data/xrp-etf-flows.json"),
+    ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
 )
 
 
@@ -156,6 +157,43 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
     except (UnicodeDecodeError, ValueError):
         raise XRPIngestionError(f"response is not valid JSON for {source_id}") from None
     return {"raw_bytes": raw, "payload": payload, "http_date": response.headers.get("Date")}
+
+
+
+def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
+    """Capture allowlisted public HTML as bytes; no credentials are used."""
+    parsed = urlsplit(url)
+    if parsed.scheme != "https" or parsed.hostname not in ALLOWED_HOSTS:
+        raise XRPIngestionError("source URL is not an allowlisted public HTTPS endpoint")
+    request = Request(
+        url,
+        headers={
+            "Accept": "text/html,application/xhtml+xml",
+            "User-Agent": "Barrot-XRP-Public-Ingestion/1.0",
+            "Cache-Control": "no-cache",
+        },
+    )
+    try:
+        with urlopen(request, timeout=15) as response:
+            final_url = urlsplit(response.geturl())
+            if final_url.scheme != "https" or final_url.hostname not in ALLOWED_HOSTS:
+                raise XRPIngestionError("public fetch redirected outside allowlisted HTTPS hosts")
+            content_type = response.headers.get("Content-Type", "").lower()
+            if not content_type.startswith(("text/html", "application/xhtml+xml")):
+                raise XRPIngestionError(f"response is not HTML for {source_id}")
+            raw = response.read(MAX_RESPONSE_BYTES + 1)
+            http_date = response.headers.get("Date")
+    except XRPIngestionError:
+        raise
+    except Exception:
+        raise XRPIngestionError(f"public fetch failed for {source_id}") from None
+    if not raw or len(raw) > MAX_RESPONSE_BYTES:
+        raise XRPIngestionError(f"response size is invalid for {source_id}")
+    try:
+        html_text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        raise XRPIngestionError(f"response is not valid UTF-8 HTML for {source_id}") from None
+    return {"raw_bytes": raw, "payload": {"html_text": html_text}, "http_date": http_date}
 
 
 class RawReceiptArchive:
@@ -812,6 +850,23 @@ def _raw_only_xrp_insights_etf_flows(payload: Any, *, captured: datetime, **_kwa
     )
 
 
+
+def _raw_only_xrpr_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate REX issuer-page identity while retaining the original HTML raw-only."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("XRPR issuer page response must contain HTML text")
+    html_text = payload["html_text"]
+    required_markers = ("XRPR", "REX-Osprey", "CoinShares XRP ETP", "As of")
+    if any(marker not in html_text for marker in required_markers):
+        raise XRPIngestionError("XRPR issuer page identity or holdings-table markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_html_retained_raw_only_until_holdings_parser_and_source_vintage_are_verified",
+    )
+
+
 PARSERS = {
     "binance_spot_ticker": _parse_binance_ticker,
     "binance_spot_klines": _parse_binance_klines,
@@ -823,6 +878,7 @@ PARSERS = {
     "kraken_spot_depth": _parse_kraken_depth,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
+    "xrp_etf_xrpr_issuer_page": _raw_only_xrpr_issuer_page,
 }
 
 
@@ -991,10 +1047,16 @@ def _walk_forward_report(
     return report, history
 
 
+def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
+    if source_id == "xrp_etf_xrpr_issuer_page":
+        return fetch_public_html(source_id, url)
+    return fetch_public_json(source_id, url)
+
+
 def run_ingestion(
     output_dir: str | Path,
     *,
-    fetcher: Callable[[str, str], Mapping[str, Any]] = fetch_public_json,
+    fetcher: Callable[[str, str], Mapping[str, Any]] = _default_public_fetcher,
     now: datetime | None = None,
 ) -> dict[str, Any]:
     captured = now or datetime.now(timezone.utc)
