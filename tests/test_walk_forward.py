@@ -76,6 +76,7 @@ def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics()
         evaluation_as_of_utc=evaluation_as_of,
         horizon_seconds=3600,
         min_train_samples=5,
+        min_out_of_sample_samples=1,
         flat_band_bps=5,
         target_tolerance_seconds=5,
         venue="kraken",
@@ -122,6 +123,7 @@ def test_backfilled_history_supports_training_only_at_or_after_its_capture_time(
         evaluation_as_of_utc=_stamp(capture + timedelta(hours=1)),
         horizon_seconds=3600,
         min_train_samples=5,
+        min_out_of_sample_samples=1,
         target_tolerance_seconds=5,
         venue="kraken",
         currency_pair="XRP/USD",
@@ -140,6 +142,45 @@ def test_backfilled_history_supports_training_only_at_or_after_its_capture_time(
     }
     assert parsed_outcomes == {BASE + timedelta(hours=24)}
     assert all(item["live_forecast_issued"] is False for item in result["forecasts"])
+
+
+def test_walk_forward_requires_minimum_distinct_out_of_sample_origins():
+    records = _series(30)
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id=FEATURE_ID,
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=29, seconds=3)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=100,
+        target_tolerance_seconds=5,
+        venue="kraken",
+        currency_pair="XRP/USD",
+    )
+
+    assert result["status"] == "INSUFFICIENT_HISTORY"
+    assert result["min_train_samples"] == 5
+    assert result["min_out_of_sample_samples"] == 100
+    assert 0 < result["out_of_sample_origin_count"] < 100
+    assert result["forecast_count"] == result["out_of_sample_origin_count"] * 4
+    assert result["insufficient_history_reason"].startswith("insufficient_out_of_sample_origins:")
+    assert result["live_forecast_issued"] is False
+    assert result["paper_trade_executed"] is False
+
+
+def test_walk_forward_rejects_non_positive_out_of_sample_minimum():
+    with pytest.raises(WalkForwardEvaluationError, match="min_out_of_sample_samples must be a positive integer"):
+        evaluate_chronological_walk_forward(
+            _series(12),
+            feature_id=FEATURE_ID,
+            evaluation_as_of_utc=_stamp(BASE + timedelta(hours=11, seconds=3)),
+            horizon_seconds=3600,
+            min_train_samples=3,
+            min_out_of_sample_samples=0,
+            target_tolerance_seconds=5,
+            venue="kraken",
+            currency_pair="XRP/USD",
+        )
 
 
 def test_future_price_record_cannot_be_available_before_its_event_time():

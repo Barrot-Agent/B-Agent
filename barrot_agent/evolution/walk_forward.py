@@ -247,7 +247,8 @@ def evaluate_chronological_walk_forward(
     asset: str = "XRP",
     venue: str | None = None,
     currency_pair: str | None = None,
-    min_train_samples: int = 10,
+    min_train_samples: int = 100,
+    min_out_of_sample_samples: int = 100,
     flat_band_bps: float = 5.0,
     target_tolerance_seconds: int = 60,
     max_origin_age_seconds: int | None = None,
@@ -276,6 +277,8 @@ def evaluate_chronological_walk_forward(
         raise WalkForwardEvaluationError("horizon_seconds must be a positive integer")
     if isinstance(min_train_samples, bool) or not isinstance(min_train_samples, int) or min_train_samples < 1:
         raise WalkForwardEvaluationError("min_train_samples must be a positive integer")
+    if isinstance(min_out_of_sample_samples, bool) or not isinstance(min_out_of_sample_samples, int) or min_out_of_sample_samples < 1:
+        raise WalkForwardEvaluationError("min_out_of_sample_samples must be a positive integer")
     if isinstance(target_tolerance_seconds, bool) or not isinstance(target_tolerance_seconds, int) or target_tolerance_seconds < 0:
         raise WalkForwardEvaluationError("target_tolerance_seconds must be a non-negative integer")
     if isinstance(calibration_bin_count, bool) or not isinstance(calibration_bin_count, int) or calibration_bin_count < 2:
@@ -541,6 +544,13 @@ def evaluate_chronological_walk_forward(
             )
 
     forecasts.sort(key=lambda item: (item["data_cutoff_utc"], item["model_id"]))
+    out_of_sample_origin_count = len({item["data_cutoff_utc"] for item in forecasts})
+    status = "SCORED" if out_of_sample_origin_count >= min_out_of_sample_samples else "INSUFFICIENT_HISTORY"
+    insufficient_history_reason = (
+        None
+        if status == "SCORED"
+        else f"insufficient_out_of_sample_origins:{out_of_sample_origin_count}<{min_out_of_sample_samples}"
+    )
     metrics = {
         model_id: _metrics([item for item in forecasts if item["model_id"] == model_id], calibration_bin_count)
         for model_id in _BASELINES
@@ -548,7 +558,11 @@ def evaluate_chronological_walk_forward(
     return {
         "schema_version": "barrot.xrp.walk-forward.v1",
         "evaluation_type": "chronological_walk_forward",
-        "status": "SCORED" if forecasts else "INSUFFICIENT_HISTORY",
+        "status": status,
+        "min_train_samples": min_train_samples,
+        "min_out_of_sample_samples": min_out_of_sample_samples,
+        "out_of_sample_origin_count": out_of_sample_origin_count,
+        "insufficient_history_reason": insufficient_history_reason,
         "asset": asset,
         "feature_id": feature_id,
         "venue": venue,
