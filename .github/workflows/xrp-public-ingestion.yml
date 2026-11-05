@@ -64,7 +64,7 @@ jobs:
       - name: Capture public XRP market sources and evaluate historical baselines
         run: python -m barrot_agent.evolution.xrp_public_ingestion --output-dir artifacts/xrp_ingestion
       - name: Save cumulative feature-store cache
-        if: success()
+        if: success() && steps.feature_cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: artifacts/xrp_ingestion/feature_store.sqlite3
