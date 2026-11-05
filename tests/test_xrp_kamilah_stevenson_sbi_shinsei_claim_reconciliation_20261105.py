@@ -20,6 +20,10 @@ def test_person_identity_is_confirmed_but_channel_handle_remains_probable():
     assert identity["person_identity_status"] == "CONFIRMED"
     assert identity["candidate_youtube_channel"]["handle"] == "@drkamilahstevenson"
     assert identity["candidate_youtube_channel"]["attribution_confidence"] == "PROBABLE_NOT_FULLY_FIRST_PARTY_LINKED"
+    assert identity["main_registry_channel_id_candidate"]["channel_id"] == "UCqUPJMQdkCN6lsLVDnichPA"
+    assert identity["oraclecheck_handle_candidate"]["handle"] == "@drkamilahstevenson"
+    assert identity["channel_identity_status"].startswith("PERSON_CONFIRMED")
+    assert identity["candidate_youtube_channel"]["relationship_to_main_registry_channel_id"] == "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
     assert any("fake pages" in item.lower() for item in identity["identity_evidence"][0]["evidence"])
 
 
@@ -27,11 +31,16 @@ def test_video_inventory_is_unique_non_exhaustive_and_preserves_attribution_basi
     data = load()
     videos = data["youtube_video_inventory"]
     ids = [video["video_id"] for video in videos]
-    assert len(videos) == 11
+    assert len(videos) == 20
+    assert data["inventory_reconciliation"]["own_channel_candidate_count"] == 18
+    assert data["inventory_reconciliation"]["guest_appearance_count"] == 1
+    assert data["inventory_reconciliation"]["third_party_clip_count"] == 1
+    assert data["inventory_reconciliation"]["unique_video_id_count"] == 20
+    assert next(v for v in videos if v["video_id"] == "QslbjGQD0MU")["published_date_status"] == "SOURCE_DISAGREEMENT"
     assert len(ids) == len(set(ids))
     assert data["video_inventory_exhaustive"] is False
-    assert all(video["youtube_url"].startswith("https://www.youtube.com/watch?v=") for video in videos)
-    assert sum(video["person_attribution_confidence"] == "HIGH" for video in videos) == 3
+    assert all(video["youtube_url"].startswith("https://www.youtube.com/") for video in videos)
+    assert sum(video["person_attribution_confidence"] == "HIGH" for video in videos) == 4
     assert any(video["title"] == "How Much XRP Do You ACTUALLY Need?" for video in videos)
 
 
@@ -106,7 +115,7 @@ def test_rlusd_fee_burn_and_optional_xrp_bridge_are_not_equated_with_market_dema
     assert any("destroys a small XRP fee" in item["fact"] for item in facts)
     assert any("can auto-bridge through XRP when cheaper" in item["fact"] for item in facts)
     assert claim["status"] == "HYPOTHESIS_NOT_ESTABLISHED"
-    assert "No transaction-level bridge volume" in claim["interpretation"]
+    assert "Transaction-level bridge volume" in claim["interpretation"] and "are required" in claim["interpretation"]
 
 
 def test_exact_phrase_and_actual_capital_classifications_are_preserved():
@@ -122,3 +131,30 @@ def test_all_web_research_remains_model_ineligible_and_no_forecast_is_issued():
     assert provenance["raw_source_sha256_receipts"] is None
     assert provenance["independent_timestamp_anchors"] is None
     assert len(load()["next_actions"]) >= 5
+
+def test_main_creator_source_profile_uses_probable_channel_candidates_without_claiming_verification():
+    profile_path = (
+        ROOT
+        / "data"
+        / "xrp_intelligence"
+        / "sources"
+        / "kamilah_stevenson_channel.json"
+    )
+    profile = json.loads(profile_path.read_text(encoding="utf-8"))
+    creator = profile["creator"]
+    inventory = profile["video_inventory_status"]
+
+    assert creator["person_identity_status"] == "CONFIRMED"
+    assert creator["channel_identity_status"] == "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
+    assert creator["youtube_channel_id"] == "UCqUPJMQdkCN6lsLVDnichPA"
+    assert creator["youtube_handle_candidate"] == "@drkamilahstevenson"
+    assert creator["handle_channel_id_relation"] == "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
+    assert inventory["indexed_seed_video_count"] == 18
+    assert inventory["person_identity_verified"] is True
+    assert inventory["canonical_channel_verified"] is False
+    assert inventory["completeness_verified"] is False
+    own_ids = {item["video_id"] for item in profile["seed_videos"]}
+    assert len(own_ids) == 18
+    assert "Sulo54IlQ60" not in own_ids
+    assert "5DzBk8DfoLs" not in own_ids
+    assert len(profile["related_public_video_references"]) == 2
