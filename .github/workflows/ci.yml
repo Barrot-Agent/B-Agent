@@ -147,6 +147,7 @@ jobs:
           cd "$RUNNER_TEMP"
           PYTHONPATH="$RUNNER_TEMP/barrot-wheel-install" python - <<'PY'
           import barrot_agent
+          from directive_platform import DirectivePlatform
           from barrot_agent import data_registry
           from barrot_agent.orchestration.autonomous_actions import BarrotActionLoop
           from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
@@ -156,6 +157,7 @@ jobs:
           assets = data_registry.list_assets()
           assert registry.mission_id == "xrp_intelligence_prediction_engine"
           assert BarrotActionLoop is not None
+          assert DirectivePlatform is not None
           assert LearningCurriculum is not None
           assert barrot_agent.__version__
           assert assets and all(asset["exists"] for asset in assets.values())
