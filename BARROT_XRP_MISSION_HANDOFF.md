@@ -6582,3 +6582,16 @@ Only ChatGPT-to-GitHub is verified as an operational authenticated data path. Co
 3. Create one consolidated research successor directly on the resulting main from #1643's unique paths; preserve #1614/#1422/#1509 and other unique work for separate content-level reconciliation.
 4. Run the successor's exact-head full suite, six-manifest dependency/security audit and fail-closed gate before considering merge.
 5. Integrate the timestamp correction consumer with the research archive, add independent timestamp anchoring and durable raw-source retention, then expand historical multi-venue flow/collateral/custody/payment datasets and measured out-of-sample evaluation.
+
+
+### Post-cutoff derivatives re-read — 2026-11-05
+
+A later browser retrieval after the earlier snapshot's conservative 22:08:06Z availability bound displayed newer provider page updates. These values are recorded as a later source vintage and are **not backfilled** into the earlier 22:08 snapshot.
+
+- Kraken futures page: provider update 21:49 UTC; XRP perpetual mark $1.22, 24-hour change -6.17%, OI 16.4M XRP / $20.1M, funding +0.0000035196% per hour.
+- TradRadar: provider update 21:45 UTC; seven-exchange OI $1.94B, 24-hour OI change -4.79%, weighted funding +0.0073% per eight hours, liquidations at least $12.33M (longs $11.84M; shorts $493.60K), account long/short ratio 4.09 and 80.4% long. TradRadar states a 15-minute display delay and that liquidations are lower bounds; the ratio is account-count based.
+- The earlier 21:10 UTC TradRadar row in the cutoff artifact remains historically preserved. The newer 21:45 UTC row is a distinct later vintage, not a correction to the earlier capture.
+- XRP Insights still reports data through November 4: -259,701 XRP across three settled trading days (November 2–4), with 1,196,340,485 XRP held. It explicitly derives flows from issuer-reported day-over-day holdings changes and counts flow-excluded funds as zero.
+- Alpha Finance reports five funds through November 4, $0 on November 4, +$4.8M over seven sessions and +$78.9M over 30 sessions. Its fund universe and method differ from XRP Insights; the two aggregates are not interchangeable and neither is a direct AP cash ledger.
+
+Exact browser retrieval times for this later page read were not exposed. Provider page-update times are preserved separately. These later observations remain research-only/model-ineligible; no forecast was issued.
