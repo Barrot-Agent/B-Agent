@@ -76,7 +76,7 @@ class BarrotAutonomousLoop:
         if isinstance(value, str):
             return cls._redact(value)
         if isinstance(value, dict):
-            return {str(key): cls._redact_value(item) for key, item in value.items()}
+            return {cls._redact(str(key)): cls._redact_value(item) for key, item in value.items()}
         if isinstance(value, list):
             return [cls._redact_value(item) for item in value]
         if isinstance(value, tuple):
