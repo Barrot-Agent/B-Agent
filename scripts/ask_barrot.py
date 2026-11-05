@@ -113,7 +113,10 @@ def load_signal_snapshot():
         lines.append(
             f'- Latest {label} signal (as of {d.get("timestamp", "unknown")}): '
             f'score={d.get("score")}, confidence={d.get("confidence")}, '
-            f'source={d.get("source")}'
+            f'source={d.get("source")}, forecast_status={d.get("forecast_status", "not declared")}, '
+            f'forecast_model_eligible={d.get("forecast_model_eligible", "not declared")}. '
+            f'Do not treat a sentiment/signal score as a validated forecast unless '
+            f'the forecast ledger and independent readiness evidence say it is eligible.'
         )
     if os.path.exists(SIGNAL_ACCURACY):
         try:
