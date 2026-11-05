@@ -116,3 +116,11 @@ def test_autonomous_store_rejects_stale_concurrent_writer(tmp_path):
     stale["value"] = 2
     with pytest.raises(RuntimeError, match="changed since it was loaded"):
         store.save("concurrent-task", stale)
+def test_autonomous_store_rejects_lock_file_symlink_escape(tmp_path):
+    store = AutonomousTaskStore(tmp_path)
+    path = store.path_for("lock-escape")
+    outside_lock = tmp_path.parent / "outside-autonomous.lock"
+    outside_lock.write_text("", encoding="utf-8")
+    path.with_suffix(".lock").symlink_to(outside_lock)
+    with pytest.raises(ValueError):
+        store.load("lock-escape")
