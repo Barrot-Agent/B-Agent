@@ -251,8 +251,9 @@ class MCPSandbox:
         if not py_files:
             return CheckResult(
                 check_name="regression_check",
-                passed=True,
+                passed=len(findings) == 0,
                 details="No Python files to compile-check.",
+                findings=findings,
             )
 
         try:
