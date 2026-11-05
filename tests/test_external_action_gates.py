@@ -78,6 +78,21 @@ def test_factory_restart_requires_explicit_approval() -> None:
     assert "restart?factory=true" in content
 
 
+def test_barrot_ops_requires_explicit_approval_and_exact_current_main_sha() -> None:
+    content = _read("barrot-ops.yml")
+    assert "confirm_external_change" in content
+    assert "default: NO" in content
+    assert "expected_source_sha" in content
+    assert "inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main'" in content
+    assert "EXPECTED_SOURCE_SHA" in content
+    assert "git rev-parse FETCH_HEAD" in content
+    assert "persist-credentials: false" in content
+    assert "contents: read" in content
+    assert "contents: write" not in content
+    assert "kaggle datasets download" in content
+    assert "kaggle competitions submit" not in content
+
+
 def test_existing_safe_external_deploys_keep_per_run_confirmation() -> None:
     for name in ("deploy-databricks.yml", "sync-huggingface.yml"):
         content = _read(name)
