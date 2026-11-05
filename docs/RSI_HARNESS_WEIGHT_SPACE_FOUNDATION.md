@@ -2,13 +2,13 @@
 
 ## Scope of this increment
 
-This branch introduces two executable foundations: paired-run, measurement-derived RSI assessment and read-only safetensors tensor inventory. It does not claim that the existing recursive feedback loop is fully wired to these APIs, that any model weights have been changed, or that Barrot has passed a mastery benchmark.
+This branch introduces paired-run, measurement-derived RSI assessment, wires the assessor into the existing recursive feedback loop, and adds read-only safetensors tensor inventory. The feedback loop now treats Kimi output and dry-run flywheel output as proposals, not applied work. It awards no improvement score without paired evaluation evidence tied to distinct revisions. No evaluator provider currently supplies those snapshots automatically, no model weights have been changed, and no mastery benchmark has passed.
 
 ## RSI evidence contract
 
 An evaluation identifies distinct baseline and candidate runs, exact revisions, and identical named metrics. Metrics must be finite. Directionality is explicit through lower_is_better; tolerances are explicit per metric. Any regression beyond tolerance blocks promotion. The score is the mean normalized delta from recorded measurements; it is not an LLM confidence score. No improvement is reported when measurements do not demonstrate one.
 
-The existing recursive_feedback.py still needs a follow-up integration that replaces placeholder Kimi feedback, string-only claimed improvements, dry-run flywheel reporting, and synthetic convergence with actual proposed changes and paired pre/post evaluation snapshots. Until then this module is a foundation, not proof of an integrated RSI runtime.
+The recursive feedback loop now rejects synthetic Kimi placeholders, records dry-run recommendations as proposals, and requires paired before/after snapshots for scores. Unverified, malformed, regressing, or non-improving iterations clear the convergence window. Remaining blocker: a trusted evaluator and candidate executor must produce snapshots from actual controlled changes; until then the loop correctly remains unscored and cannot autonomously promote a candidate.
 
 ## Weight-space boundary
 
@@ -41,4 +41,4 @@ A track passes only with machine-readable evidence and exact revisions. Missing 
 
 ## Verification status
 
-The included tests are proposed regression tests. They must execute in GitHub CI on this branch before any acceptance claim. No model experiment or mastery benchmark is included in this commit.
+Regression tests cover unavailable Kimi, dry-run proposal accounting, missing/malformed evaluation evidence, convergence-window reset, immutable metrics, finite/overflow-safe scores, positive aggregate improvement, immutable tensor metadata, symlinked checkpoints, and stable-snapshot hashing. They have been committed but have not yet executed on the current exact head. No model experiment or mastery benchmark is included in this increment.
