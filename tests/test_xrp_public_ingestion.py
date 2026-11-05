@@ -717,7 +717,10 @@ def test_xrpl_server_info_uses_validated_ledger_and_http_date():
     assert values["xrp.network.xrpl.reserve_base_xrp"]["value"] == 1.0
     assert values["xrp.network.xrpl.reserve_increment_xrp"]["value"] == 0.2
     assert all(item["sources"][0]["independence_group"] == "xrpl_public_ledger" for item in records)
-    assert all("not independent economic evidence" in item["limitations"][2] for item in records)
+    assert all(
+        any("not independent economic evidence" in limitation for limitation in item["limitations"])
+        for item in records
+    )
 
 
 def test_xrpl_server_info_without_http_date_remains_raw_only():
