@@ -2,10 +2,9 @@ import json
 
 import pytest
 
-from barrot_agent.orchestration.autonomous_loop import BarrotAutonomousLoop
+from barrot_agent.orchestration import BarrotAutonomousLoop, AutonomousTaskStore
 from barrot_agent.orchestration.executor import ExecutionResult
 from barrot_agent.orchestration.verifier import VerificationResult
-from barrot_agent.orchestration.autonomous_state import AutonomousTaskStore
 
 
 class SequenceBrain:
