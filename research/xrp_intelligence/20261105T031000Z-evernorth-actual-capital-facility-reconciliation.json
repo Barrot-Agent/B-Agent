@@ -26,7 +26,7 @@
       "raw_capture_status": "web_rendered_excerpt_only",
       "raw_http_bytes_sha256": null,
       "rendered_excerpt_sha256": "51ce43c77438f568207a8d261246af03e1a48e7ed3dabfcdffd27d18ceedb639",
-      "evidence_lines": "10-18, 20-24, 691-705, 1916-1937, 2030-2058",
+      "evidence_lines": "10-18, 20-24, 691-705, 1916-1937, 2030-2058, 343-345, 3484-3487, 2734-2764, 3184-3185, 6717-6718, 7452-7453",
       "rendered_excerpt": "SEC 424B3 dated 2026-10-30: up to 5,218,935 Class A shares may be issued and sold by Evernorth to CF Principal Investments LLC (Cantor) at Evernorth's sole discretion. The cover states potential gross proceeds up to approximately $76.8 million and a $521,893.50 upfront commitment fee. The offering summary Use of Proceeds line states $80.7 million. The Use of Proceeds section states up to $76.8 million gross and up to $74.4 million estimated net over approximately 14 months after estimated fees and expenses. The purchase price is 97% of VWAP. The company may sell all, some or none. Cantor may resell all, some or none. If all 5,218,935 shares were issued, they would be 16.7% of post-issuance Class A shares. At $14.71, the table reports $76.8 million, while its footnote says purchase price equals 97% of assumed trading price. $5,218,935 x $14.71 = $76,770,533.85; multiplied by 97% = $74,467,417.83. The table and other summary figures are not fully arithmetically reconciled."
     },
     {
@@ -154,7 +154,11 @@
     "The ELOC's registration effectiveness makes the facility available subject to conditions; it does not prove that any shares have been sold or any proceeds received.",
     "A commitment fee is a financing cost, not capital raised.",
     "Prior cash subscriptions and in-kind XRP contributions must not be counted as current ELOC proceeds.",
-    "An issuer statement that proceeds may be used to acquire XRP is an intended use, not evidence of an executed XRP purchase."
+    "An issuer statement that proceeds may be used to acquire XRP is an intended use, not evidence of an executed XRP purchase.",
+    "Evernorth identifies BitGo, not Coinbase, as its XRP custodian; Coinbase is its principal market reference for fair-value measurement in the reviewed prospectus.",
+    "SBI Holdings is the parent identified in Evernorth's cap table; the named controlled investment entities are distinct from regional SBIC East/Central/West companies.",
+    "The 39.9% SBI and 9.9% Ripple limits are ownership caps, not independently verified exact current ownership percentages.",
+    "Ripple's $9.7M related-party credit draw is debt and became repayable after the October 9 closing; repayment status is not established here."
   ],
   "competing_hypotheses": [
     "If Evernorth draws the facility and directs net proceeds into XRP, it could create an incremental institutional purchase channel; the actual timing and size depend on issuer notices, market price, volume limits and the use of proceeds.",
@@ -175,5 +179,95 @@
     "Reconcile the prospectus proceeds table with the 97% VWAP purchase formula and expense assumptions.",
     "Track any proceeds-to-XRP purchases separately from XRPN share issuance and secondary-market resales.",
     "Capture original SEC filing bytes and hash them before any feature-store admission."
-  ]
+  ],
+  "custody_and_relationships": {
+    "evernorth_xrp_custody": {
+      "custodian": "BitGo Bank & Trust, National Association",
+      "status_as_of_prospectus": "Issuer says 100% of its XRP was held in offline/cold storage through BitGo as of the prospectus date.",
+      "custody_controls": [
+        "segregated custody accounts",
+        "multi-signature key management",
+        "hardware security modules",
+        "multi-person approval workflows",
+        "out-of-band confirmations",
+        "independent on-chain reconciliations",
+        "role-based access and withdrawal restrictions"
+      ],
+      "insurance": {
+        "stated_aggregate_limit_usd": 250000000,
+        "dedicated_to_evernorth": false,
+        "shared_among_bitgo_clients": true,
+        "stated_coverage_as_percent_of_evernorth_xrp_value_as_of_2026_10_09": 36.9,
+        "limitation": "The aggregate policy is shared among clients and may be insufficient if multiple claims occur."
+      },
+      "rehypothecation_restriction": "Issuer says BitGo and affiliates may not pledge, lend or otherwise use Evernorth's XRP unless expressly directed as part of yield-generation strategies.",
+      "source_status": "issuer_disclosed_contractual_arrangement_not_independently_audited_in_this_capture"
+    },
+    "coinbase_relationship": {
+      "role": "principal market selected by Evernorth for XRP fair-value measurement in financial reporting",
+      "valuation_reference_example": {
+        "date": "2025-10-20",
+        "xrp_price_usd": 2.496
+      },
+      "custodian": false,
+      "prime_broker": false,
+      "direct_execution_or_custody_contract_disclosed_in_this_prospectus": false,
+      "classification": "market_valuation_reference_only_on_evidence_reviewed",
+      "caution": "Do not convert Coinbase's role as principal valuation market into a claim that Coinbase holds Evernorth's XRP or is its prime broker."
+    },
+    "sbi_relationship": {
+      "parent_identity": "SBI Holdings, Inc.",
+      "issuer_defined_controlled_stockholders": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc."
+      ],
+      "class_a_shares_disclosed_as_held_by_sbi_stockholders": 9431914,
+      "class_c_shares_issued_at_2026_10_09_close_to_certain_sbi_affiliates": 2359038,
+      "ownership_limit_percent": 39.9,
+      "limit_is_not_verified_exact_current_ownership": true,
+      "issuer_characterization": "SBI Holdings is described by Evernorth as a strategic investor.",
+      "regional_sbic_east_central_west_are_distinct_from_sbi_holdings": true,
+      "caution": "The four controlled investment entities are the SBI entities named in this Evernorth filing; they are not Japan's regional SBIC East/Central/West companies."
+    },
+    "ripple_relationship": {
+      "ripple_xrp_contribution_to_pathfinder": 126791458,
+      "ripple_affiliate_xrp_subscription": 50000000,
+      "ripple_class_a_shares_issued_at_close": 1678382,
+      "ripple_pathfinder_units_issued_at_close": 16461545,
+      "related_party_entity_class_a_shares_issued_at_close": 661867,
+      "related_party_entity_pathfinder_units_issued_at_close": 6491583,
+      "combined_ripple_group_ownership_limit_percent": 9.9,
+      "ownership_limit_is_not_verified_exact_current_ownership": true,
+      "related_party_credit_facility": {
+        "lender": "Ripple-related parent/affiliate as described in the issuer filing",
+        "limit_usd": 10000000,
+        "drawn_usd_as_of_2026_10_07": 9700000,
+        "status": "issuer_disclosed_draw",
+        "repayment_term": "Amounts outstanding became repayable within five business days after the 2026-10-09 closing.",
+        "repayment_status": "not_verified_in_this_capture",
+        "classification": "related_party_debt_not_equity_and_not_eloc_proceeds"
+      },
+      "governance_and_conflicts": {
+        "rippleworks_majority_limited_partner_interest_in_sponsor": true,
+        "chris_larsen_roles": [
+          "Ripple co-founder and executive chairman",
+          "RippleWorks co-founder and board member"
+        ],
+        "stuart_alderoty_role": "Ripple chief legal officer; Evernorth board member",
+        "brad_garlinghouse_role": "Ripple chief executive officer; Evernorth strategic advisor",
+        "david_schwartz_role": "Ripple director; Evernorth strategic advisor",
+        "issuer_disclosed_potential_conflicts": true
+      },
+      "caution": "Ripple's XRP contributions and subscription are in-kind token contributions, not cash proceeds. Equity/unit holdings and related-party debt are separate instruments."
+    },
+    "evidence_lines": {
+      "sbi_definition_and_entities": "343-345, 3484-3487, 5189-5192, 6694-6698",
+      "bitgo_custody_and_insurance": "2734-2764",
+      "coinbase_principal_market": "3184-3185",
+      "ripple_related_party_and_governance": "1768-1775, 2468-2470, 4500-4505, 5937, 6697-6699",
+      "related_party_credit_facility": "7452-7453, 6717-6718"
+    }
+  }
 }
