@@ -80,6 +80,9 @@ class AutonomousTaskStore:
         payload["updated_at"] = datetime.now(timezone.utc).isoformat()
         if not isinstance(payload.get("history"), list):
             raise ValueError("autonomous task state history must be a list")
+        serialized = json.dumps(payload, sort_keys=True, ensure_ascii=False) + "\n"
+        if len(serialized.encode("utf-8")) > self.MAX_CHECKPOINT_BYTES:
+            raise ValueError("autonomous task checkpoint exceeds the size limit")
 
         lock_path = path.with_suffix(".lock")
         with lock_path.open("a+", encoding="utf-8") as lock:
@@ -96,8 +99,7 @@ class AutonomousTaskStore:
                     delete=False,
                 ) as handle:
                     temporary = Path(handle.name)
-                    json.dump(payload, handle, sort_keys=True, ensure_ascii=False)
-                    handle.write("\n")
+                    handle.write(serialized)
                     handle.flush()
                     os.fsync(handle.fileno())
                 os.replace(temporary, path)
