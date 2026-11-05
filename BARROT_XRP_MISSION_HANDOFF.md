@@ -3629,3 +3629,59 @@ The independent Ed25519 evaluator-attestation policy v2 remains fail-closed. No 
 Both #1640 and #1643 still have zero approving reviews. Main is protected, but detailed branch-protection inspection returns HTTP 403 and the visible fallback ruleset is disabled. The previous Pages deployment side effect remains unresolved. No merge is authorized under the stated gates.
 
 This Run 28 record is committed on the existing #1640 branch. The resulting documentation-only head must receive its own exact-head full-suite CI, six-set dependency audit and fail-closed gate before that new head is described as verified.
+
+
+### Run 29 — BNY XRP custody, C2FO/RLUSD settlement and exact-head integration verification
+Recorded: 2026-11-05T06:27Z–06:35Z
+
+#### Repository and integration state
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; the repository tree was fetched recursively (1,403 entries, not truncated). No main changes or merges occurred.
+- PR #1640 current head before this handoff update: `cdf0cd4532927d6617f599e642974181c79f75bf`; 197 commits ahead, 0 behind, 83 changed files.
+- PR #1640 exact-head CI [41980065306](https://github.com/Barrot-Agent/B-Agent/actions/runs/41980065306): core **594 passed, 8 subtests**; full repository **891 passed, 8 subtests**.
+- Six-manifest dependency audit [41980065524](https://github.com/Barrot-Agent/B-Agent/actions/runs/41980065524) passed: root runtime, development, supplemental, Hugging Face Space, legacy and PEP 621 dependencies; no known vulnerabilities.
+- Fail-closed gate [41980065458](https://github.com/Barrot-Agent/B-Agent/actions/runs/41980065458) passed and explicitly kept automatic merging disabled.
+- Wheel build and installed-wheel verification passed. Packaging emitted non-fatal warnings about `project.license` deprecation and package discovery for `barrot_agent.data.missions` / `data.research`; the installed wheel nevertheless loaded Barrot V3, the XRP primary mission and canonical data assets. GitHub Actions cache reservation is read-only because the configured cache budget is exhausted.
+- PR #1643 current head: `fa29e37b878f214d079a1f5c37a89d2d4d54006a`; 143 commits ahead, 0 behind, 118 changed files. It has no changed-path overlap with #1640.
+- PR #1643 exact-head CI [41981099108](https://github.com/Barrot-Agent/B-Agent/actions/runs/41981099108): core **495 passed, 8 subtests**; full repository **876 passed, 8 subtests**. Fail-closed gate [41981099207](https://github.com/Barrot-Agent/B-Agent/actions/runs/41981099207) passed and kept merging disabled.
+- PR #1643 changes no dependency manifests; all six manifest blob hashes on #1643 match current main. A separate dependency-audit run was not triggered on #1643's exact head, so do not claim an exact-head audit there. The #1640 six-manifest audit is on a different manifest set and is not substituted for it.
+
+#### New append-only institutional research on #1643
+- Artifact: `research/xrp_intelligence/20261105T062720Z-bny-c2fo-ripple-institutional-rails-update.json`.
+- Regression tests: `tests/test_xrp_bny_c2fo_institutional_rails.py`.
+- The artifact was fetched back from GitHub and parsed. It records 7 source entries, 12 relationship edges with source-ID links, 6 competing hypotheses, and a 6-event timeline. All claims remain `model_eligible=false`; no directional forecast was issued.
+- BNY's October 27 announcement reports Digital Asset Custody support for native XRP and RLUSD for eligible institutional clients. No asset-specific custody balance, client count, new XRP purchase or XRP collateral balance is disclosed.
+- BNY's existing primary reserve-custody role is for RLUSD. Its direct RLUSD mint/redeem through BNY is future work subject to final approvals. Tokenized trade-finance work with Ripple/C2FO is exploratory and subject to client requirements.
+- C2FO Instant Pay was announced as an XRPL/RLUSD settlement initiative funded by participating capital providers and presented with a waitlist. No production launch, provider identity, funded amount, supplier count or XRPL/RLUSD volume is verified. The announcement names RLUSD as settlement asset; it does not establish XRP as bridge asset, collateral or principal settlement asset.
+- C2FO describes more than $525B of working capital accessed through existing Early Pay programs; Ripple's copy of the joint announcement says more than $520B. Preserve both rounded lower-bound claims. Neither is C2FO Instant Pay throughput, new capital committed to the new initiative, XRPL volume or XRP purchases.
+- BNY-wide $63.4T assets under custody/administration as of September 30, 2026 is not XRP assets under custody. Ripple's October 27/C2FO release reports RLUSD above $2.5B market capitalization and more than $1B issued on XRPL; these are issuer-reported claims, not raw point-in-time supply receipts.
+- Standard Chartered's RLUSD custody on XRPL remains reported live; its LMAX collateral-mirroring arrangement remains planned and names RLUSD, not XRP. Coinbase RLUSD distribution is reported live across XRPL/Base/Ethereum, while Coinbase Global Exchange collateral was future at launch. Robinhood's RLUSD/XRPL institutional-settlement statement is not accompanied by production volume.
+- Source bytes, SHA-256 receipts and independent timestamp anchors were not captured. The artifact is not eligible for model features.
+
+#### Draft-PR overlap and preservation
+- Open inventory: **370** PRs, **354 drafts**, **16 non-drafts**.
+- Active integration workstreams remain #1640 (V3/core/prediction) and #1643 (XRP research).
+- #1642 remains an exact ancestor/superseded source pending successful main verification. #1644–#1650 dependency updates are represented in #1640; do not merge them independently.
+- #1651 remains unique/unreviewed. #1615 retains unique security work; #1621 retains unique collateral research; #1269 retains unique geometry/rendering work; #1317/#1318/#1320 retain unique hunks.
+- Draft #1547 is stale (34 commits ahead of its old base, 68 behind current main; 16 changed files) and has no path overlap with #1643. Its BNY/C2FO evidence is now partly represented in the new #1643 artifact, but its other unique research must be reconciled claim-by-claim before any closure.
+- Draft #1508 has 6 unique changed paths and no path overlap with #1643; preserve pending reconciliation. Draft #1608 has 3 changed paths, one overlapping #1643 and two unique paths; partially superseded, preserve unique content. Draft #1614 has 57 changed paths, 22 overlapping #1643 and 35 unique paths; preserve unique research and reconcile code overlap with #1640.
+- No PRs were closed and no bulk closure occurred.
+
+#### Security, platform and merge boundary
+- Repository is public, Pages-enabled and allows auto-merge at repository metadata level. The only visible fallback ruleset (ID 10863829) is disabled. Branch-protection detail inspection returns HTTP 403; required protection settings cannot be independently verified.
+- Both #1640 and #1643 have all current review threads resolved (22/22 and 14/14 respectively) but zero approving reviews. Both fail-closed gates explicitly disable automatic merging.
+- Main still has push-to-main deployment triggers in `.github/workflows/deploy-a2a-worker.yml` and `.github/workflows/sync-self-hosted-brain.yml`. #1640 changes these to manual, main-only, explicit-confirmation workflows with read-only checkout. `autonomous_self_deployment.yml` is already disabled on main; `sync-huggingface.yml` is already manual-only. GitHub Pages is separately enabled and a prior main push triggered Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered Pages deployment remains unresolved.
+- The ChatGPT-to-GitHub repository path is verified. Copilot review comments are visible but do not establish a persistent authenticated coordination channel. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as live authenticated data flows; prior Hugging Face BUILD_ERROR and Databricks HTTP 403 remain unresolved.
+- XRP public ingestion is designed on #1640 with hourly and daily schedules, read-only permissions, fourteen public market-data endpoints, raw receipts and daily feature backups. It is not on main and has not run as a main scheduled service. Raw and feature artifacts have 90-day retention; the feature cache is evictable/read-only under the current cache-budget warning. Indefinite durable storage and independent timestamp anchoring remain absent.
+- The local SQLite feature store and forecast ledger are append-only/validated prototypes, not a durable production cross-run system. Historical exchange-flow, ETF issuer, collateral, custody, stablecoin, payments, regulation, macro and geopolitical vintages remain incomplete. Independent evaluator signing keys are not configured. **Forecast status: NOT_ISSUED.**
+
+#### Next concrete actions
+1. Obtain independent approving reviews and verify branch-protection/check requirements.
+2. Resolve authorization for GitHub Pages deployment side effects before any main push.
+3. Merge #1640 only when all stated conditions pass; verify merge commit/files on freshly fetched main and run main CI.
+4. Reconcile #1643 with the resulting main without rewriting history; rerun the full suite and fail-closed gate on the integrated head. Obtain an exact-head dependency audit or document why the unchanged dependency set is covered before merge.
+5. Reconcile #1547, #1508, #1608 and #1614 claim-by-claim; close only exact superseded sources after merged content is verified on main.
+6. Build durable raw-source storage, independent timestamp anchoring, complete point-in-time XRP history, and measured out-of-sample lift before enabling any directional forecast.
+
+**Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.** No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+This Run 29 handoff update is committed on the existing #1640 integration branch. Its resulting documentation-only head must receive exact-head CI and fail-closed verification before it is described as verified.
