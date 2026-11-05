@@ -590,9 +590,12 @@ class HistoricalFeatureStore:
             record_id = record["record_id"]
             seen_id = by_record_id.get(record_id)
 
+            if seen_id is not None and _record_identity(seen_id) != identity:
+                raise FeatureStoreError("record_id is reused for a different feature identity")
+            if prior is not None and _record_semantics(prior) == _record_semantics(record):
+                continue
+
             if seen_id is not None:
-                if _record_semantics(seen_id) == _record_semantics(record):
-                    continue
                 if prior is None:
                     raise FeatureStoreError("conflicting duplicate record has no revision predecessor")
                 candidate = dict(record)
@@ -616,6 +619,8 @@ class HistoricalFeatureStore:
                 continue
 
             if prior is None:
+                if record["revision_status"] == "revised":
+                    raise FeatureStoreError("stored feature revision is missing its predecessor")
                 versions.append(record)
                 latest_by_identity[identity] = record
                 by_record_id[record_id] = record
