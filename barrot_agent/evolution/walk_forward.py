@@ -251,6 +251,7 @@ def evaluate_chronological_walk_forward(
     min_out_of_sample_samples: int = 100,
     flat_band_bps: float = 5.0,
     target_tolerance_seconds: int = 60,
+    embargo_seconds: int = 0,
     max_origin_age_seconds: int | None = None,
     prior_alpha: float = 1.0,
     directional_confidence: float = 0.60,
@@ -258,14 +259,15 @@ def evaluate_chronological_walk_forward(
     calibration_bin_count: int = 5,
     max_source_age_seconds: int | None = None,
 ) -> dict[str, Any]:
-    """Evaluate four deterministic baselines with expanding, point-in-time windows.
+    """Evaluate four deterministic baselines with purged, embargoed point-in-time windows.
 
     A forecast cutoff is an actual availability timestamp (max of known,
     source-as-of, ingestion and revision availability). Training snapshots are
-    rebuilt at each cutoff. Every training return must have its outcome bar
-    available by that cutoff. The test outcome is selected only from the later
-    evaluation snapshot. Historical backfills captured together therefore do
-    not create artificial historical origins.
+    rebuilt at each cutoff. Every training start and outcome record must be
+    available by ``cutoff - embargo_seconds``; this purges overlapping labels
+    and leaves an explicit embargo buffer before the test origin. The test
+    outcome is selected only from the later evaluation snapshot. Historical
+    backfills captured together therefore do not create artificial origins.
     """
     if not isinstance(feature_id, str) or not feature_id.strip():
         raise WalkForwardEvaluationError("feature_id is required")
@@ -281,6 +283,8 @@ def evaluate_chronological_walk_forward(
         raise WalkForwardEvaluationError("min_out_of_sample_samples must be a positive integer")
     if isinstance(target_tolerance_seconds, bool) or not isinstance(target_tolerance_seconds, int) or target_tolerance_seconds < 0:
         raise WalkForwardEvaluationError("target_tolerance_seconds must be a non-negative integer")
+    if isinstance(embargo_seconds, bool) or not isinstance(embargo_seconds, int) or embargo_seconds < 0:
+        raise WalkForwardEvaluationError("embargo_seconds must be a non-negative integer")
     if isinstance(calibration_bin_count, bool) or not isinstance(calibration_bin_count, int) or calibration_bin_count < 2:
         raise WalkForwardEvaluationError("calibration_bin_count must be an integer of at least two")
     if not isinstance(flat_band_bps, (int, float)) or isinstance(flat_band_bps, bool) or not math.isfinite(float(flat_band_bps)) or flat_band_bps <= 0:
@@ -374,6 +378,8 @@ def evaluate_chronological_walk_forward(
 
     for cutoff in candidate_cutoffs:
         cutoff_s = _format(cutoff)
+        training_cutoff = cutoff - timedelta(seconds=embargo_seconds)
+        training_cutoff_s = _format(training_cutoff)
         try:
             snapshot = build_feature_snapshot(
                 selected,
@@ -417,7 +423,7 @@ def evaluate_chronological_walk_forward(
             if start_event >= current_event:
                 continue
             start_available = _available_at(start)
-            if start_available > cutoff:
+            if start_available > training_cutoff:
                 continue
             # The target is defined by market event time, not by when a
             # historical backfill happened to be ingested. Availability is a
@@ -431,7 +437,7 @@ def evaluate_chronological_walk_forward(
             if outcome is None or outcome["record_id"] == start["record_id"]:
                 continue
             outcome_event = _utc(outcome["event_time_utc"], "event_time_utc")
-            if outcome_event <= start_event or outcome_event > cutoff or _available_at(outcome) > cutoff:
+            if outcome_event <= start_event or outcome_event > training_cutoff or _available_at(outcome) > training_cutoff:
                 continue
             realized = _price(outcome) / _price(start) - 1.0
             training_returns.append(realized)
@@ -447,10 +453,19 @@ def evaluate_chronological_walk_forward(
             continue
 
         trailing_return = None
-        current_pairs = [pair for pair in training_pairs if pair[2]["record_id"] == current["record_id"]]
-        if current_pairs:
-            trailing_return = current_pairs[-1][0]
-        elif training_pairs:
+        if embargo_seconds > 0:
+            trailing_start = _nearest_record(
+                series,
+                current_event - timedelta(seconds=horizon_seconds),
+                target_tolerance_seconds,
+            )
+            if trailing_start is not None and trailing_start["record_id"] != current["record_id"]:
+                trailing_return = _price(current) / _price(trailing_start) - 1.0
+        else:
+            current_pairs = [pair for pair in training_pairs if pair[2]["record_id"] == current["record_id"]]
+            if current_pairs:
+                trailing_return = current_pairs[-1][0]
+        if trailing_return is None and training_pairs:
             trailing_return = training_pairs[-1][0]
         trailing_class = _classify(trailing_return, flat_band) if trailing_return is not None else None
 
@@ -492,6 +507,7 @@ def evaluate_chronological_walk_forward(
                 "feature_id": feature_id,
                 "origin_record_id": current["record_id"],
                 "target_record_id": target["record_id"],
+                "embargo_seconds": embargo_seconds,
             }
             forecast_id = hashlib.sha256(
                 json.dumps(identity, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -507,6 +523,8 @@ def evaluate_chronological_walk_forward(
                     "venue": venue,
                     "currency_pair": currency_pair,
                     "data_cutoff_utc": cutoff_s,
+                    "training_cutoff_utc": training_cutoff_s,
+                    "embargo_seconds": embargo_seconds,
                     "horizon_seconds": horizon_seconds,
                     "target_time_utc": _format(target_time),
                     "observed_target_event_time_utc": target["event_time_utc"],
@@ -519,6 +537,11 @@ def evaluate_chronological_walk_forward(
                     ],
                     "assumptions": {
                         "training_example_count": len(training_returns),
+                        "embargo_seconds": embargo_seconds,
+                        "training_cutoff_utc": training_cutoff_s,
+                        "training_latest_outcome_event_time_utc": max(_utc(pair[2]["event_time_utc"], "event_time_utc") for pair in training_pairs).isoformat(timespec="microseconds").replace("+00:00", "Z"),
+                        "training_latest_outcome_available_at_utc": _format(max(_available_at(pair[2]) for pair in training_pairs)),
+                        "trailing_return": trailing_return,
                         "flat_band_bps": float(flat_band_bps),
                         "target_tolerance_seconds": target_tolerance_seconds,
                         "prior_smoothing_alpha": float(prior_alpha),
@@ -526,7 +549,7 @@ def evaluate_chronological_walk_forward(
                         "flat_probability": float(flat_probability),
                         "trailing_return_class": trailing_class,
                         "volatility_distribution": "normal",
-                        "training_rule": "all training outcomes were available by data_cutoff_utc",
+                        "training_rule": "all training start and outcome records were available by training_cutoff_utc (data_cutoff_utc minus embargo_seconds)",
                         "test_rule": "future target was excluded from the point-in-time training snapshot",
                     },
                     "outcome": {
@@ -570,6 +593,8 @@ def evaluate_chronological_walk_forward(
         "unit": unit,
         "evaluation_as_of_utc": _format(evaluation_cutoff),
         "horizon_seconds": horizon_seconds,
+        "embargo_seconds": embargo_seconds,
+        "purge_policy": "training start and outcome records must be available by data_cutoff_utc minus embargo_seconds",
         "flat_band_bps": float(flat_band_bps),
         "dataset_record_count": len(selected),
         "forecast_count": len(forecasts),

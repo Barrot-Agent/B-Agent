@@ -1779,6 +1779,7 @@ def _walk_forward_report(
                 feature_id=config["feature_id"],
                 evaluation_as_of_utc=evaluation_as_of_utc,
                 horizon_seconds=3600,
+                embargo_seconds=3600,
                 min_train_samples=100,
                 min_out_of_sample_samples=100,
                 target_tolerance_seconds=300,

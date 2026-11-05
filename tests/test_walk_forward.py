@@ -234,3 +234,69 @@ def test_insufficient_future_outcomes_never_create_unscored_directional_forecast
     assert result["forecast_count"] == 0
     assert result["live_forecast_issued"] is False
     assert all(item["reason"] == "future_target_not_available_by_evaluation_cutoff" for item in result["skipped_origins"])
+
+
+def test_walk_forward_embargo_excludes_training_labels_inside_buffer():
+    records = _series(40)
+    evaluation_as_of = _stamp(BASE + timedelta(hours=39, seconds=3))
+    common = {
+        "feature_id": FEATURE_ID,
+        "evaluation_as_of_utc": evaluation_as_of,
+        "horizon_seconds": 3600,
+        "min_train_samples": 5,
+        "min_out_of_sample_samples": 1,
+        "target_tolerance_seconds": 5,
+        "venue": "kraken",
+        "currency_pair": "XRP/USD",
+    }
+    unembargoed = evaluate_chronological_walk_forward(records, **common)
+    embargoed = evaluate_chronological_walk_forward(records, embargo_seconds=3600, **common)
+
+    assert embargoed["embargo_seconds"] == 3600
+    assert "minus embargo_seconds" in embargoed["purge_policy"]
+    unembargoed_by_cutoff = {
+        item["data_cutoff_utc"]: item
+        for item in unembargoed["forecasts"]
+        if item["model_id"] == "naive_class_prior"
+    }
+    embargoed_forecasts = [
+        item for item in embargoed["forecasts"]
+        if item["model_id"] == "naive_class_prior"
+    ]
+    assert embargoed_forecasts
+    common_cutoffs = set(unembargoed_by_cutoff).intersection(
+        item["data_cutoff_utc"] for item in embargoed_forecasts
+    )
+    assert common_cutoffs
+    for item in embargoed_forecasts:
+        cutoff = datetime.fromisoformat(item["data_cutoff_utc"].replace("Z", "+00:00"))
+        training_cutoff = datetime.fromisoformat(item["training_cutoff_utc"].replace("Z", "+00:00"))
+        assumptions = item["assumptions"]
+        latest_outcome = datetime.fromisoformat(
+            assumptions["training_latest_outcome_event_time_utc"].replace("Z", "+00:00")
+        )
+        latest_available = datetime.fromisoformat(
+            assumptions["training_latest_outcome_available_at_utc"].replace("Z", "+00:00")
+        )
+        assert training_cutoff == cutoff - timedelta(hours=1)
+        assert latest_outcome <= training_cutoff
+        assert latest_available <= training_cutoff
+        if item["data_cutoff_utc"] in common_cutoffs:
+            assert assumptions["training_example_count"] <= unembargoed_by_cutoff[item["data_cutoff_utc"]]["assumptions"]["training_example_count"]
+
+
+@pytest.mark.parametrize("value", [-1, True, 1.5])
+def test_walk_forward_rejects_invalid_embargo_seconds(value):
+    with pytest.raises(WalkForwardEvaluationError, match="embargo_seconds must be a non-negative integer"):
+        evaluate_chronological_walk_forward(
+            _series(12),
+            feature_id=FEATURE_ID,
+            evaluation_as_of_utc=_stamp(BASE + timedelta(hours=11, seconds=3)),
+            horizon_seconds=3600,
+            min_train_samples=3,
+            min_out_of_sample_samples=1,
+            target_tolerance_seconds=5,
+            embargo_seconds=value,
+            venue="kraken",
+            currency_pair="XRP/USD",
+        )
