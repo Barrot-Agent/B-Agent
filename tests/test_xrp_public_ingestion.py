@@ -215,10 +215,10 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
     assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_aggregator" for item in raw_only)
+    receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     manifest = {item["source_id"]: item for item in receipts}
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
-    receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     assert all(len(item["raw_content_sha256"]) == 64 for item in receipts)
     assert (tmp_path / "run" / "feature_store.sqlite3").exists()
 
