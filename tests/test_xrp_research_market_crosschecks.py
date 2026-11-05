@@ -60,3 +60,38 @@ def test_xrpl_amendment_event_is_not_promoted_to_a_price_signal():
     assert event["event_time_utc"] == "2026-11-04T14:52:00Z"
     assert event["ledger_index"] == 108112129
     assert "No XRP supply effect" in event["interpretation"]
+
+
+CURRENT_MARKET_ARTIFACT = ROOT / "research/xrp_intelligence/20261105T081900Z-xrp-market-microstructure-and-etf-vintage-update.json"
+
+
+def test_current_spot_depth_snapshot_preserves_venue_coverage_and_cancellation_limits():
+    data = json.loads(CURRENT_MARKET_ARTIFACT.read_text(encoding="utf-8"))
+    fuelmaps = data["market_microstructure"]["fuelmaps"]
+    assert fuelmaps["snapshot_mid_usd"] == 1.3082
+    assert fuelmaps["depth_by_band"]["1pct"]["bids_usd"] == 10_400_000
+    assert fuelmaps["depth_by_band"]["1pct"]["asks_usd"] == 6_900_000
+    assert "Binance" in " ".join(fuelmaps["venue_limitations"])
+    assert "cancelled" in " ".join(fuelmaps["venue_limitations"])
+    assert data["model_eligible"] is False
+
+
+def test_derivatives_contract_scope_and_provider_difference_are_not_averaged():
+    data = json.loads(CURRENT_MARKET_ARTIFACT.read_text(encoding="utf-8"))
+    derivatives = data["derivatives_reconciliation"]
+    assert derivatives["fibonomy_binance_xrpusdt"]["open_interest_usd"] == 450_440_000
+    assert derivatives["kodexius"]["contracts"] == 7
+    assert derivatives["comparison"]["same_contract_binance_xrpusdt_absolute_difference_usd"] == 750_000
+    assert derivatives["comparison"]["status"] == "CLOSE_BUT_NOT_SYNCHRONIZED"
+    assert "Do not average" in derivatives["comparison"]["rule"] or "Do not average" in " ".join(derivatives["interpretation"])
+
+
+def test_partial_etf_flow_snapshots_are_not_combined_as_complete_daily_cash_flow():
+    data = json.loads(CURRENT_MARKET_ARTIFACT.read_text(encoding="utf-8"))
+    flows = data["etf_flow_vintage_reconciliation"]
+    assert flows["xrp_insights"]["two_day_net_flow_xrp"] == -194_875
+    assert flows["cryptokeyhole"]["nov4_funds_reported"] == "3 of 4; Franklin XRPZ pending"
+    assert flows["cryptoetf_today"]["nov4_reported_funds"] == "2 of 5"
+    assert flows["cryptoetf_today"]["nov4_status"].startswith("partial")
+    assert data["model_eligible"] is False
+    assert data["predictive_admission"]["forecast_status"] == "NOT_ISSUED"
