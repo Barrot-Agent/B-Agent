@@ -71,13 +71,13 @@ def test_executor_passes_search_metacharacters_as_literal_arguments(monkeypatch,
     monkeypatch.setattr("barrot_agent.orchestration.executor.subprocess.run", fake_run)
     pattern = "; touch /tmp/barrot-shell-injection"
     result = BarrotExecutor(tmp_path).run(
-        ["grep", "-RIn", "--exclude-dir=.git", "--", pattern, "."]
+        ["grep", "-rIn", "--exclude-dir=.git", "--", pattern, "."]
     )
 
     assert result.success is True
     assert captured["argv"] == [
         "grep",
-        "-RIn",
+        "-rIn",
         "--exclude-dir=.git",
         "--",
         pattern,
