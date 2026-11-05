@@ -37,9 +37,9 @@ def _write_manifest(tmp_path: Path, payload: dict) -> Path:
 
 def _verified_record(topic_id: str) -> LearningRecord:
     lesson = (
-        f"Goal: MISSION_TOPIC_ID: {topic_id}\\n"
-        "Verified findings:\\n"
-        "- READ_FILE: inspected the implementation and acceptance criteria.\\n"
+        f"Goal: MISSION_TOPIC_ID: {topic_id}\n"
+        "Verified findings:\n"
+        "- READ_FILE: inspected the implementation and acceptance criteria.\n"
         "- RUN_TESTS: focused regression tests passed."
     )
     return LearningRecord(
@@ -92,15 +92,15 @@ def test_legacy_or_shallow_records_cannot_advance_primary_mission(tmp_path: Path
         json.dumps(
             {
                 "lesson": (
-                    "Goal: MISSION_TOPIC_ID: xrp_source_provenance\\n"
-                    "Verified findings:\\n"
+                    "Goal: MISSION_TOPIC_ID: xrp_source_provenance\n"
+                    "Verified findings:\n"
                     "- LIST_FILES: listed repository files."
                 ),
                 "reason": "Actions and verification succeeded.",
                 "recorded_at": "2026-09-08T06:03:17.717106+00:00",
             }
         )
-        + "\\n",
+        + "\n",
         encoding="utf-8",
     )
     store = VerifiedLearningStore(path)
@@ -119,7 +119,7 @@ def test_tampered_verified_lesson_does_not_advance_primary_mission(tmp_path: Pat
 
     payload = json.loads(path.read_text(encoding="utf-8"))
     payload["lesson"] = payload["lesson"].replace("READ_FILE", "LIST_FILES")
-    path.write_text(json.dumps(payload) + "\\n", encoding="utf-8")
+    path.write_text(json.dumps(payload) + "\n", encoding="utf-8")
 
     assert store.read_verified() == []
     assert "MISSION_TOPIC_ID: xrp_source_provenance" in LearningCurriculum(
@@ -132,8 +132,8 @@ def test_store_rejects_accepted_records_without_deep_verification(tmp_path: Path
     shallow = LearningRecord(
         accepted=True,
         lesson=(
-            "Goal: inspect repository.\\n"
-            "Verified findings:\\n"
+            "Goal: inspect repository.\n"
+            "Verified findings:\n"
             "- LIST_FILES: listed files."
         ),
         reason=VERIFIED_LEARNING_REASON,
@@ -148,8 +148,8 @@ def test_store_rejects_records_without_successful_verification_reason(tmp_path: 
     record = LearningRecord(
         accepted=True,
         lesson=(
-            "Goal: inspect repository.\\n"
-            "Verified findings:\\n"
+            "Goal: inspect repository.\n"
+            "Verified findings:\n"
             "- READ_FILE: inspected source."
         ),
         reason="Actions and verification succeeded.",
