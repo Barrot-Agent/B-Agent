@@ -45,23 +45,30 @@ jobs:
       - name: Record cache restoration source
         if: steps.feature_cache.outputs.cache-matched-key != ''
         run: echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=actions_cache" >> "$GITHUB_ENV"
-      - name: Restore latest unexpired feature-store artifact on cache miss
+      - name: Restore latest trusted feature-store artifact on cache miss
         if: steps.feature_cache.outputs.cache-matched-key == ''
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          artifact_record="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/artifacts?per_page=100" --jq '.artifacts[] | select(.expired == false and .workflow_run.id != null and (.name | startswith("xrp-public-feature-"))) | [.created_at, (.workflow_run.id | tostring), .name] | @tsv' | sort | tail -n 1)"
-          if [[ -z "$artifact_record" ]]; then
+          run_ids="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" --jq '.workflow_runs[] | select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == env.GITHUB_REPOSITORY and (.event == "schedule" or .event == "workflow_dispatch")) | [.created_at, (.id | tostring)] | @tsv' | sort -r | cut -f2)"
+          restored=0
+          while IFS= read -r previous_run_id; do
+            [[ -n "$previous_run_id" ]] || continue
+            restore_dir="$RUNNER_TEMP/xrp-feature-restore-${previous_run_id}"
+            mkdir -p "$restore_dir"
+            if gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}" --dir "$restore_dir" >/dev/null 2>&1 && [[ -s "$restore_dir/feature_store.sqlite3" ]]; then
+              cp "$restore_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
+              echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}" >> "$GITHUB_ENV"
+              restored=1
+              break
+            fi
+          done <<< "$run_ids"
+          if [[ "$restored" != "1" ]]; then
             echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=bootstrap" >> "$GITHUB_ENV"
-            echo "No unexpired feature-store backup artifact; bootstrapping."
-            exit 0
+            echo "No trusted unexpired feature-store backup artifact; bootstrapping."
           fi
-          IFS=$'\t' read -r _ previous_run_id previous_artifact_name <<< "$artifact_record"
-          gh run download "$previous_run_id" --name "$previous_artifact_name" --dir artifacts/xrp_ingestion
-          test -s artifacts/xrp_ingestion/feature_store.sqlite3
-          echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=previous_feature_artifact:$previous_run_id" >> "$GITHUB_ENV"
       - name: Capture public XRP market sources and evaluate historical baselines
         run: python -m barrot_agent.evolution.xrp_public_ingestion --output-dir artifacts/xrp_ingestion
       - name: Save cumulative feature-store cache
