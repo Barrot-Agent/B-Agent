@@ -47,3 +47,11 @@ def test_xrpr_source_is_not_admitted_as_a_model_feature():
     assert quality["direct_and_indirect_exposure_separated"] is True
     assert quality["model_eligibility"] == "NONE"
     assert data["forecast_issued"] is False
+
+
+def test_later_issuer_evidence_invalidates_prior_direct_holdings_residual():
+    data = load()
+    superseded = data["supersedes_prior_calculations"][0]
+    assert superseded["status"] == "invalidated_as_direct_xrp_holdings_reconciliation"
+    assert "remaining_holdings_reconciliation_difference_xrp" in superseded["fields"]
+    assert "not a valid direct-custody reconciliation" in superseded["reason"]
