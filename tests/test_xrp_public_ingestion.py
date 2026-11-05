@@ -429,11 +429,17 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "persist-credentials: false" in workflow
     assert "actions/cache/restore@v4" in workflow
     assert "actions/cache/save@v4" in workflow
-    assert "gh api --paginate" in workflow
-    assert "actions/artifacts?per_page=100" in workflow
-    assert 'startswith("xrp-public-feature-")' in workflow
+    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" in workflow
+    assert "select(.conclusion == \"success\"" in workflow
+    assert '.head_branch == "main"' in workflow
+    assert ".head_repository.full_name == env.GITHUB_REPOSITORY" in workflow
+    assert '(.event == "schedule" or .event == "workflow_dispatch")' in workflow
+    assert 'gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}"' in workflow
+    assert 'trusted_ingestion_workflow_run:${previous_run_id}' in workflow
+    assert "actions/artifacts?per_page=100" not in workflow
+    assert "gh api --paginate" not in workflow
+    assert "RUNNER_TEMP/xrp-feature-restore-" in workflow
     assert "github.event.schedule == '15 0 * * *'" in workflow
-    assert "gh run download" in workflow
     assert "xrp-public-raw-${{ github.run_id }}" in workflow
     assert "xrp-public-feature-${{ github.run_id }}" in workflow
     assert workflow.count("retention-days: 90") == 2
