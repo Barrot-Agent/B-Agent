@@ -16,7 +16,7 @@ def store_receipt(archive, raw=b"verified public source bytes", *, retain=True):
         captured_at_utc="2026-11-05T17:00:00Z",
         raw_bytes=raw,
         source_data_as_of_utc="2026-11-05T16:59:00Z",
-        model_eligible=True,
+        model_eligible=retain,
         retain_raw_bytes=retain,
         raw_retention_reason="" if retain else "publisher terms require digest-only retention",
     )
@@ -71,7 +71,7 @@ def test_receipt_archive_detects_chain_deletion_or_reordering(tmp_path):
     lines = archive.chain_path.read_text(encoding="utf-8").splitlines()
     archive.chain_path.write_text(lines[1] + "\n" + lines[0] + "\n", encoding="utf-8")
 
-    with pytest.raises(XRPIngestionError, match="receipt chain identity mismatch|predecessor mismatch"):
+    with pytest.raises(XRPIngestionError, match="sequence is invalid|identity mismatch|predecessor mismatch"):
         archive.verify()
 
 
