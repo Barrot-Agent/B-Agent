@@ -1,50 +1,18 @@
-name: Sub-Agent Matrix (true parallel runners)
+name: Sub-Agent Matrix (quarantined pending authenticated platform coordination)
 
 on:
-  workflow_dispatch:
-    inputs:
-      subtasks:
-        description: "JSON array of subtask objects: [{id, prompt}]"
-        required: true
-        default: '[{"id":"a","prompt":"test task A"},{"id":"b","prompt":"test task B"}]'
+  workflow_dispatch: {}
+
+permissions: {}
 
 jobs:
-  prepare:
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set.outputs.matrix }}
     steps:
-      - id: set
-        run: echo "matrix=${{ toJson(fromJson(github.event.inputs.subtasks)) }}" >> "$GITHUB_OUTPUT"
-
-  run_subtask:
-    needs: prepare
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        subtask: ${{ fromJson(github.event.inputs.subtasks) }}
-      fail-fast: false
-    env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Run one subtask on its own runner
-        env:
-          SPAWN_TASK: ${{ toJson(matrix.subtask) }}
+      - name: Explain quarantine
         run: |
-          python3 - << 'PY'
-          import os, json
-          from scripts.subagent_spawner import call_groq
-          subtask = json.loads(os.environ["SPAWN_TASK"])
-          result = call_groq(subtask["prompt"])
-          with open(f"subagent_matrix_{subtask['id']}.json", "w") as f:
-              json.dump({"id": subtask["id"], "result": result}, f, indent=2)
-          print(result[:200])
-          PY
-      - uses: actions/upload-artifact@v7
-        with:
-          name: subagent-${{ matrix.subtask.id }}
-          path: subagent_matrix_*.json
+          echo "The previous matrix sent arbitrary subtask prompts to Groq using a repository secret."
+          echo "Groq is not one of the nine requested platforms, and no approved data-sharing boundary or persistent authenticated data-flow map exists."
+          echo "It is disabled until a least-privilege, explicitly approved, branch-only evidence exchange is implemented."
+          echo "No provider credentials are read and no external request or repository mutation occurs."
