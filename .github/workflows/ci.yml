@@ -143,3 +143,14 @@ jobs:
                   raise SystemExit(f"wheel is missing required mission resource: {expected}")
           print(f"verified packaged mission resource in {wheel.name}")
           PY
+          python -m pip install --no-deps --target "$RUNNER_TEMP/barrot-wheel-install" "$wheel"
+          (
+            cd "$RUNNER_TEMP"
+            PYTHONPATH="$RUNNER_TEMP/barrot-wheel-install" python - <<'PY'
+            from barrot_agent.orchestration.mission_registry import MissionRegistry
+
+            registry = MissionRegistry()
+            assert registry.mission_id == "xrp_intelligence_prediction_engine"
+            print("verified installed wheel loads the priority-1 XRP mission")
+            PY
+          )
