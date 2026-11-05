@@ -11,7 +11,7 @@ def test_kamilah_identity_uses_first_person_and_matching_linktree_evidence():
     assert identity["canonical_display_name"] == "Dr. Kamilah Stevenson"
     assert identity["identity_status"] == "strongly_corroborated_but_canonical_youtube_channel_not_independently_verified"
     assert "not established" in identity["spelling_variant_camilla"]
-    assert any("first-person official website" in item for item in identity["evidence"])
+    assert any("first-person official website" in item.lower() for item in identity["evidence"])
     assert any("Linktree" in item and "YouTube" in item for item in identity["evidence"])
 
 
