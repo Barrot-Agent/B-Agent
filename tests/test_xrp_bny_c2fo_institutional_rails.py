@@ -123,3 +123,70 @@ def test_event_timeline_separates_live_custody_from_future_collateral_and_settle
         for item in events
     )
     assert "ANNOUNCED_WITHOUT_XRPL_VOLUME" in classes
+
+SHARED_NODE_ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261105T074200Z-bny-shared-circle-ripple-stablecoin-custody-node.json"
+
+
+def load_shared_node():
+    return json.loads(SHARED_NODE_ARTIFACT.read_text(encoding="utf-8"))
+
+
+def test_bny_shared_service_provider_links_circle_and_ripple_without_direct_issuer_deal():
+    data = load_shared_node()
+    relationships = {item["id"]: item for item in data["relationships"]}
+    assert relationships["circle_bny_usdc_reserve_custody"]["status"] == "PRIMARY_RESERVE_CUSTODY_REPORTED"
+    assert relationships["ripple_bny_rlusd_reserve_custody"]["status"] == "PRIMARY_RESERVE_CUSTODY_ROLE_REPORTED"
+    shared = relationships["circle_ripple_shared_bny_service_provider"]
+    assert shared["status"] == "INDIRECT_SHARED_SERVICE_PROVIDER_NETWORK_EDGE_ONLY"
+    assert shared["direct_circle_ripple_partnership_established"] is False
+
+
+def test_bny_usdc_mint_burn_capability_is_not_xrpl_or_xrp_bridge_evidence():
+    data = load_shared_node()
+    edge = next(item for item in data["relationships"] if item["id"] == "bny_circle_usdc_institutional_platform")
+    assert edge["status"] == "LIVE_REPORTED_CLIENT_CAPABILITY"
+    assert set(edge["capabilities"]) == {"store", "transfer", "mint through Circle instruction", "burn through Circle instruction"}
+    assert edge["actual_mint_burn_volume_usd"] is None
+    assert "XRPL deployment" in edge["not_established"]
+    assert "XRP bridge-asset use" not in edge["not_established"]
+
+
+def test_bny_native_xrp_and_rlusd_custody_has_no_asset_specific_balance_or_purchase_claim():
+    data = load_shared_node()
+    edge = next(item for item in data["relationships"] if item["id"] == "bny_digital_asset_custody_xrp_rlusd")
+    assert edge["status"] == "LIVE_REPORTED_CUSTODY_CAPABILITY"
+    assert edge["xrp_assets_under_custody_units"] is None
+    assert edge["rlusd_assets_under_custody_usd"] is None
+    assert edge["new_xrp_purchases_established"] is False
+    assert edge["xrp_collateral_acceptance_established"] is False
+
+
+def test_bny_custody_and_c2fo_exploration_are_not_actual_xrp_capital_deployment():
+    data = load_shared_node()
+    capital = data["actual_capital_classification"]
+    assert capital["bny_xrp_purchase_amount_usd"] is None
+    assert capital["bny_xrp_purchases_established"] is False
+    assert capital["cash_capital_deployed_into_xrp_by_bny"] == "not established"
+    c2fo = next(item for item in data["relationships"] if item["id"] == "bny_ripple_c2fo_xrpl_trade_finance")
+    assert c2fo["status"] == "EXPLORATORY_SUBJECT_TO_CLIENT_REQUIREMENTS"
+    assert c2fo["production_receivables_funded"] is False
+    assert c2fo["funded_amount_usd"] is None
+    assert c2fo["xrp_bridge_asset_established"] is False
+
+
+def test_bny_shared_custody_network_artifact_preserves_source_groups_and_blocks_forecast_admission():
+    data = load_shared_node()
+    source_ids = {item["id"] for item in data["source_registry"]}
+    groups = {item["independence_group"] for item in data["source_registry"]}
+    assert len(source_ids) == len(data["source_registry"])
+    assert data["independence_assessment"]["source_group_count"] == len(data["independence_assessment"]["groups"])
+    assert data["independence_assessment"]["source_group_count"] == len(groups)
+    assert data["independence_assessment"]["joint_release_copies_are_independent"] is False
+    for relationship in data["relationships"]:
+        assert relationship["source_ids"]
+        assert set(relationship["source_ids"]) <= source_ids
+    assert data["model_eligible"] is False
+    assert data["source_capture_policy"]["raw_http_bytes_captured"] is False
+    assert data["forecast"]["issued"] is False
+    assert data["paper_trade_executed"] is False
+
