@@ -11,11 +11,12 @@ def load():
 
 def test_sbic_west_chatgpt_seminar_is_primary_source_and_not_a_partnership():
     data = load()
-    west = data["source_registry"][0]["content"]
+    source = data["source_registry"][0]
+    west = source["content"]
     assert west["explicit_chatgpt_reference"] is True
     assert west["event_title"] == "Generative AI introductory seminar for accounting firms and support organizations"
     assert west["lecturer"] == "Taichi Kakinuma, representative partner attorney, STORIA Law Firm"
-    assert west["published_event_date"] == "2024-10-23" if "published_event_date" in west else True
+    assert source["published_event_date"] == "2024-10-23"
     assert "does not describe an OpenAI partnership" in data["source_registry"][0]["interpretation"]
 
 
