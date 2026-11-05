@@ -30,7 +30,10 @@ class EvaluationSnapshot:
                 raise ValueError("metric names must be non-empty strings")
             if isinstance(value, bool) or not isinstance(value, (int, float)):
                 raise TypeError("metric values must be numeric and not boolean")
-            numeric = float(value)
+            try:
+                numeric = float(value)
+            except OverflowError as exc:
+                raise ValueError("metric values must be finite") from exc
             if not math.isfinite(numeric):
                 raise ValueError("metric values must be finite")
             copied[name] = numeric
@@ -86,6 +89,8 @@ def assess_improvement(
         tolerances = {}
     elif not isinstance(tolerances, Mapping):
         raise TypeError("tolerances must be a mapping")
+    if any(not isinstance(name, str) for name in tolerances) or any(not isinstance(name, str) for name in lower_is_better):
+        raise TypeError("metric policy names must be strings")
     unknown_tolerances = set(tolerances) - set(baseline.metrics)
     unknown_directions = set(lower_is_better) - set(baseline.metrics)
     if unknown_tolerances or unknown_directions:
@@ -97,7 +102,10 @@ def assess_improvement(
         before = baseline.metrics[name]
         after = candidate.metrics[name]
         raw = before - after if name in lower_is_better else after - before
-        tolerance = float(tolerances.get(name, 0.0))
+        try:
+            tolerance = float(tolerances.get(name, 0.0))
+        except OverflowError as exc:
+            raise ValueError(f"invalid tolerance for metric {name}") from exc
         if not math.isfinite(raw) or not math.isfinite(tolerance) or tolerance < 0:
             raise ValueError(f"non-finite delta or invalid tolerance for metric {name}")
         scaled = raw / max(abs(before), 1e-12)
