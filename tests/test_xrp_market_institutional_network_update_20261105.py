@@ -156,7 +156,7 @@ def test_jpysc_lending_balance_and_smbc_stake_are_actual_but_not_xrp_capital():
     assert "JPY 10B" in lending["relation"]
     assert "JPY 30B" in lending["relation"]
     assert "customer-to-platform" in lending["product_semantics"]
-    assert "not equivalent" in lending["handled_balance_limit"]
+    assert "not automatically equivalent" in lending["handled_balance_limit"]
     assert "5% equity stake" in smbc["capital"]
     assert "amount not disclosed" in smbc["amount"]
     assert jgb["jgb_share_of_issuance_pct"] == pytest.approx(49.75124378)
