@@ -101,6 +101,7 @@ def test_executor_allows_bounded_read_only_verification_commands(monkeypatch, tm
     assert executor.run("git status --short").success
     assert executor.run("git diff --no-ext-diff --stat").success
     assert executor.run("find . -maxdepth 2 -type f").success
+    assert executor.run("find . -maxdepth 2 -type f -not -path ./.git/*").success
 
     assert len(calls) == 4
     assert all(kwargs["shell"] is False for _, kwargs in calls)
@@ -157,3 +158,18 @@ def test_run_tests_action_rejects_shell_chaining(monkeypatch, tmp_path):
 
     assert result.success is False
     assert "Unsupported" in result.error or "limited" in result.error
+
+
+def test_action_search_does_not_follow_symlinks_outside_workspace(tmp_path):
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    outside = tmp_path / "outside.txt"
+    outside.write_text("private marker\n", encoding="utf-8")
+    (workspace / "external.txt").symlink_to(outside)
+
+    result = BarrotActionExecutor(workspace).execute(
+        Action(type="SEARCH_TEXT", args={"query": "private marker", "path": "."})
+    )
+
+    assert result.success is True
+    assert result.output == ""
