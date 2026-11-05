@@ -177,3 +177,32 @@ def test_signal_accuracy_workflow_is_disabled_until_fixed_horizon_evaluator_is_v
         "gh_token",
     ):
         assert forbidden not in lowered
+
+\n\ndef test_explicit_not_issued_status_skips_model_and_tts(monkeypatch, tmp_path):
+    summary_path, _, audio_path = _prepare(monkeypatch, tmp_path, {
+        "schema_version": 2,
+        "asset": "XRP/USD",
+        "status": "NOT_ISSUED",
+        "forecast_status": "NOT_ISSUED",
+        "forecast_issued": False,
+        "reason_code": "OUT_OF_SAMPLE_VALIDATION_INCOMPLETE",
+        "data_cutoff_utc": None,
+        "target": None,
+        "horizon_seconds": None,
+        "probabilities": None,
+    })
+
+    def forbidden_provider(*args, **kwargs):
+        raise AssertionError("provider must not be called for NOT_ISSUED")
+
+    monkeypatch.setattr(signal_summary, "chat", forbidden_provider)
+    monkeypatch.setattr(signal_summary, "speak", forbidden_provider)
+
+    signal_summary.main()
+    artifact = json.loads(summary_path.read_text(encoding="utf-8"))
+
+    assert artifact["status"] == "NOT_ISSUED"
+    assert artifact["forecast_status"] == "NOT_ISSUED"
+    assert artifact["audio"] is None
+    assert artifact["tts_error"] == "skipped_invalid_signal"
+    assert not audio_path.exists()
