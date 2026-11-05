@@ -1,3 +1,4 @@
+import hashlib
 import json
 
 import pytest
@@ -52,12 +53,13 @@ def test_autonomous_checkpoint_redacts_common_credentials(tmp_path):
     loop.executor.run = lambda command: ExecutionResult(
         command, True, "api_key=super-secret-value ghp_abcdefghijklmnopqrstuvwxyz123456", "", 0
     )
-    loop.verifier.verify_python = lambda: VerificationResult(True, [{"success": True, "stderr": "token=verification-secret"}])
+    loop.verifier.verify_python = lambda: VerificationResult(True, [{"success": True, "stderr": "token=verification-secret", "token=key-secret": "value"}])
     result = loop.run("inspect safely", task_id="redaction-task")
     checkpoint = open(result.checkpoint_path, encoding="utf-8").read()
     assert "super-secret-value" not in checkpoint
     assert "ghp_abcdefghijklmnopqrstuvwxyz123456" not in checkpoint
     assert "verification-secret" not in checkpoint
+    assert "key-secret" not in checkpoint
     assert "[REDACTED]" in checkpoint
 
 
@@ -133,3 +135,29 @@ def test_non_object_goal_verifier_result_cannot_complete_task(tmp_path):
     assert not result.success
     assert result.status == "paused"
     assert result.history[0]["goal_verification"]["success"] is False
+def test_forged_complete_checkpoint_without_history_is_not_trusted(tmp_path):
+    store = AutonomousTaskStore(tmp_path)
+    goal = "forged goal"
+    store.save("forged-task", {
+        "goal_sha256": hashlib.sha256(goal.encode("utf-8")).hexdigest(),
+        "status": "complete",
+        "attempts_completed": 0,
+        "history": [],
+    })
+    loop = BarrotAutonomousLoop(SequenceBrain([]), workspace=tmp_path, goal_verifier=lambda goal, record: {"success": True, "evidence": {"fake": True}})
+    result = loop.run(goal, task_id="forged-task")
+    assert not result.success
+    assert result.status == "awaiting_goal_verification"
+
+def test_completed_checkpoint_is_revalidated_on_resume(tmp_path):
+    goal = "verified goal"
+    plan = json.dumps({"analysis": "inspect", "commands": ["pwd"]})
+    first = BarrotAutonomousLoop(SequenceBrain([plan]), workspace=tmp_path, max_attempts=1, goal_verifier=lambda goal, record: {"success": True, "evidence": {"verified": True}})
+    first.executor.run = lambda command: ExecutionResult(command, True, "workspace", "", 0)
+    first.verifier.verify_python = lambda: VerificationResult(True, [{"success": True}])
+    completed = first.run(goal, task_id="revalidate-task")
+    assert completed.success
+    second = BarrotAutonomousLoop(SequenceBrain(["not json"]), workspace=tmp_path, max_attempts=1, goal_verifier=lambda goal, record: {"success": False, "evidence": {}})
+    resumed = second.run(goal, task_id="revalidate-task")
+    assert not resumed.success
+    assert resumed.status == "paused"
