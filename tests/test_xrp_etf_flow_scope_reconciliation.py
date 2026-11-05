@@ -73,3 +73,16 @@ def test_rendered_aggregates_are_not_model_eligible_and_no_forecast_is_issued():
     assert data["data_quality"]["source_byte_hashes_verified"] is False
     assert data["data_quality"]["issuer_file_byte_receipts_verified"] is False
     assert data["predictions"]["issued"] is False
+
+
+def test_grayscale_sec_cash_order_and_settlement_semantics_are_preserved():
+    data = load()
+    mechanics = data["grayscale_sec_q2_quantity_rollforward"]["creation_redemption_mechanics"]
+    assert mechanics["authorized_participant_order_type_as_of_report_date"] == "cash_orders_only"
+    assert mechanics["in_kind_creations_redemptions_permitted"] is False
+    assert mechanics["accounting_basis"] == "trade_date"
+    assert mechanics["xrp_receivable_payable_settlement_window_max_business_days"] == 2
+    assert mechanics["sponsor_fee_accrual"] == "daily_usd"
+    assert mechanics["sponsor_fee_payment"] == "xrp"
+    assert data["data_quality"]["cash_order_and_settlement_semantics_verified_from_primary_sec_filing"] is True
+    assert "not themselves USD cash-flow figures" in mechanics["implications"][0]
