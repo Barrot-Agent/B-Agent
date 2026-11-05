@@ -218,11 +218,13 @@
       "prior_observation_at_utc": "2026-11-05T17:30:50Z",
       "prior_last_usd": 1.23809,
       "current_last_usd": 1.23732,
-      "elapsed_seconds": 1766,
-      "last_price_change_pct_over_observation_interval": -0.06219257081472307,
+      "elapsed_seconds": null,
+      "last_price_change_pct_over_observation_interval": null,
       "prior_spread_bps": 2.584501070145765,
       "current_spread_bps": 0.32328979697433075,
-      "interpretation": "A small same-venue quote change and narrower displayed top-of-book spread across two rendered observations. It is not a full depth, trade-flow or executable-liquidity comparison; timestamps are retrieval/capture observations, not provider event times."
+      "interpretation": "The displayed percentage is only the arithmetic difference between two same-venue last-price observations. The current response retrieval time was not exposed, so no exact elapsed interval or 30-minute return is claimed. It is not a full depth, trade-flow or executable-liquidity comparison.",
+      "run_start_reference_elapsed_seconds": 1766,
+      "observation_interval_status": "UNKNOWN"
     },
     "derivatives": {
       "tradradar": {
