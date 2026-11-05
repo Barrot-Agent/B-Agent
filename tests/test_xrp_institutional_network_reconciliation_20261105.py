@@ -40,6 +40,7 @@ def test_sbi_ripple_and_sbi_circle_are_separate_nonexclusive_relationships():
     assert edges["SBI_CIRCLE_EQUITY"]["amount_usd"] == 25_000_000
     assert edges["SBI_SHINSEI_CIRCLE_EQUITY"]["amount_usd"] == 25_000_000
     assert edges["SBI_CIRCLE_JV"]["ownership_percentages"] == {"SBI_Holdings": 50, "Circle": 50}
+    assert edges["SBI_CIRCLE_JV"]["ownership_percentages_disclosed_in_sources"] is True
     assert edges["SBI_RIPPLE"]["shareholding_last_disclosed_pct"] == 9
     assert edges["SBI_CIRCLE_EQUITY"]["cash_to_issuer_confirmed"] is None
     assert data["relationship_interpretation"]["sbi_strategy"].startswith("SBI Holdings has distinct direct relationships")
@@ -71,6 +72,7 @@ def test_capital_ledger_separates_circle_capital_from_xrp_flows():
     assert sum(x["amount_usd"] for x in entries if x["to"] == "Circle" and x["amount_usd"] is not None and x["date"] == "2025-06-05") == 50_000_000
     assert any(x["to"] == "Ripple" and x.get("ownership_pct_last_disclosed") == 9 and x["xrp_related"] is False for x in entries)
     assert any(x.get("amount_usd") == 222_000_000 and x["to"] == "Circle_Arc" for x in entries)
+    assert sum(1 for x in entries if x["type"] == "ARC_presale_participation") == 1
     assert any(x["to"] == "Circle" and x["amount_usd"] == 100_000_000 and x["xrp_related"] is False for x in entries)
     assert all(x.get("xrp_related") is False for x in entries)
     assert data["model_admission"]["xrp_spot_flow_observed_usd"] is None
