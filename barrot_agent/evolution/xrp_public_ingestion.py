@@ -24,9 +24,9 @@ from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.1"
-PARSER_VERSION = "xrp-public-market-v3.1"
+ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com"}
+ADAPTER_VERSION = "xrp-public-market-v3.2"
+PARSER_VERSION = "xrp-public-market-v3.2"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -45,6 +45,8 @@ ENDPOINTS = (
     ("binance_spot_depth", "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100"),
     ("xrp_etf_flows_aggregator", "https://xrp-insights.com/data/xrp-etf-flows.json"),
     ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
+    ("xrp_etf_bitwise_issuer_page", "https://bitxrpetf.com/"),
+    ("xrp_etf_grayscale_gxrp_issuer_page", "https://etfs.grayscale.com/gxrp"),
 )
 
 
@@ -1102,6 +1104,38 @@ def _raw_only_xrpr_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
     )
 
 
+def _raw_only_bitwise_xrp_etf_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate Bitwise's official XRP ETF page while retaining exact HTML bytes raw-only."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("Bitwise XRP ETF page response must contain HTML text")
+    html_text = payload["html_text"]
+    required_markers = ("Bitwise XRP ETF", "XRP in Trust", "Digital Asset Custodian", "As of")
+    if any(marker not in html_text for marker in required_markers):
+        raise XRPIngestionError("Bitwise issuer-page identity or holdings markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_html_retained_raw_only_until_holdings_parser_and_source_vintage_are_verified",
+    )
+
+
+def _raw_only_grayscale_gxrp_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate Grayscale's official GXRP page while retaining exact HTML bytes raw-only."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("Grayscale GXRP page response must contain HTML text")
+    html_text = payload["html_text"]
+    required_markers = ("Grayscale XRP Trust ETF", "TOTAL XRP IN FUND", "DIGITAL ASSET CUSTODIAN", "As of")
+    if any(marker not in html_text for marker in required_markers):
+        raise XRPIngestionError("Grayscale GXRP issuer-page identity or holdings markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_html_retained_raw_only_until_holdings_parser_and_source_vintage_are_verified",
+    )
+
+
 PARSERS = {
     "binance_spot_ticker": _parse_binance_ticker,
     "binance_spot_klines": _parse_binance_klines,
@@ -1117,6 +1151,8 @@ PARSERS = {
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
     "xrp_etf_xrpr_issuer_page": _raw_only_xrpr_issuer_page,
+    "xrp_etf_bitwise_issuer_page": _raw_only_bitwise_xrp_etf_page,
+    "xrp_etf_grayscale_gxrp_issuer_page": _raw_only_grayscale_gxrp_issuer_page,
 }
 
 
@@ -1286,7 +1322,7 @@ def _walk_forward_report(
 
 
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
-    if source_id == "xrp_etf_xrpr_issuer_page":
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page"}:
         return fetch_public_html(source_id, url)
     return fetch_public_json(source_id, url)
 
@@ -1460,6 +1496,7 @@ def run_ingestion(
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
             "The cumulative SQLite feature store is persisted through GitHub Actions cache plus a daily feature artifact backup retained 90 days. Cache eviction can interrupt continuity if no unexpired backup is available; automatic rebuild from raw artifacts is not yet implemented.",
             "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
+            "Bitwise XRP ETF, Grayscale GXRP and REX XRPR primary issuer pages are captured as SHA-256-receipted raw-only HTML; holdings are not parsed into features until page-vintage and parser validation are implemented.",
             "The historical evaluator uses naive, momentum, mean-reversion and volatility baselines. It does not issue a live forecast; probability calibration is diagnostic only, and shadow evaluation and drift monitoring are not yet implemented.",
             "This collector does not issue directional forecasts, trading signals, recommendations or paper trades.",
         ],
