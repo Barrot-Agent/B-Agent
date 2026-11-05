@@ -164,7 +164,7 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
             "mean_reversion_sign": {"mean_brier_score": 0.23, "mean_log_loss": 0.63},
             "volatility_normal": {"mean_brier_score": 0.21, "mean_log_loss": 0.59},
         },
-        "evaluation_data_cutoff_utc": FEATURE_CUTOFF,
+        "evaluation_data_cutoff_utc": "2026-11-03T15:59:40Z",
         "evaluation_completed_at_utc": "2026-11-03T16:00:30Z",
     }
     report_bytes = json.dumps(
@@ -717,4 +717,44 @@ def test_rejects_feature_snapshot_data_cutoff_after_forecast_cutoff(tmp_path):
             forecast(feature_snapshot_ids=[later_snapshot["snapshot_id"]])
         )
 
+def _mutated_readiness_report(mutate):
+    fixture = READINESS_FIXTURES[("XRP", 3600)]
+    report = json.loads(fixture["report_bytes"])
+    mutate(report)
+    dataset_bytes = json.dumps(
+        report["dataset_manifest"],
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    report["dataset_sha256"] = hashlib.sha256(dataset_bytes).hexdigest()
+    return report
+
+
+def test_readiness_report_rejects_source_data_after_dataset_cutoff():
+    report = _mutated_readiness_report(
+        lambda value: value["dataset_manifest"]["raw_source_receipts"][0].update(
+            source_data_as_of_utc="2026-11-03T15:59:31Z"
+        )
+    )
+    with pytest.raises(ForecastLedgerError, match="source data as-of exceeds dataset cutoff"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_report_rejects_raw_capture_after_evaluation_cutoff():
+    report = _mutated_readiness_report(
+        lambda value: value["dataset_manifest"]["raw_source_receipts"][0].update(
+            captured_at_utc="2026-11-03T15:59:41Z"
+        )
+    )
+    with pytest.raises(ForecastLedgerError, match="capture exceeds evaluation data cutoff"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_report_accepts_capture_after_source_asof_when_available_by_cutoff():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    assert report["dataset_manifest"]["raw_source_receipts"][0]["source_data_as_of_utc"] == FEATURE_CUTOFF
+    assert report["dataset_manifest"]["raw_source_receipts"][0]["captured_at_utc"] == FEATURE_CAPTURED
+    assert _validate_readiness_report(report)["status"] == "PASS"
 
