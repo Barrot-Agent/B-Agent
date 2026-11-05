@@ -6318,3 +6318,115 @@ The new artifact is research-only and model-ineligible: raw byte-complete source
 Next sequence: obtain independent approvals and verify required branch protection; resolve Pages deployment authorization; merge #1640 only when all conditions are satisfied; verify the merge commit and main CI; then create one successor on resulting main from #1643's 216 unique paths and rerun full suite, dependency audit and fail-closed gate. Preserve unique research/security/feature PRs; close only exact superseded duplicates after merged content is verified on main.
 
 No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 11 — institutional charter, creator identity, actual-capital and backlog reconciliation (2026-11-05)
+
+This checkpoint supersedes earlier PR counts, head SHAs and backlog classifications above. Main remains unchanged. No PR was merged, no branch was rewritten, and no source PR was closed.
+
+### Current integrated repository state
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Recursive main tree: 1,403 entries; 493 Python files; 90 Python test files; 78 active `.github/workflows` YAML files; 73 `.barrot-backup/workflows` files (inert backup, not active GitHub Actions workflows).
+- Open PR inventory: 369 total; 354 drafts; 15 non-drafts.
+- Main push CI [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459): 485 core tests and 718 full-suite tests passed, 8 subtests.
+- Main scheduled Cross Analysis [42107263084](https://github.com/Barrot-Agent/B-Agent/actions/runs/42107263084): passed; workflow is read-only.
+- Main Pillars Consistency Check [42032214761](https://github.com/Barrot-Agent/B-Agent/actions/runs/42032214761): still failed due missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+
+### PR #1640 — V3/core integration
+
+- Current head: `a0e89568548f0269a300c9f548a0fd6f7048ece8`.
+- Code-bearing head: `76c0735055bfa10190727f6c39741308e265d699`; the current handoff-only commits change no source or tests.
+- 375 commits ahead of main, zero behind; 135 changed files.
+- Exact-current-head full CI [42115277515](https://github.com/Barrot-Agent/B-Agent/actions/runs/42115277515): **614 core passed; 1,035 full repository tests passed; 8 subtests; 57.07% inclusive coverage**. Installed-wheel and packaged primary-mission verification passed.
+- Exact-current-head six-manifest dependency audit [42115277487](https://github.com/Barrot-Agent/B-Agent/actions/runs/42115277487): passed.
+- Exact-current-head fail-closed gate [42115277489](https://github.com/Barrot-Agent/B-Agent/actions/runs/42115277489): passed and explicitly kept merging disabled.
+- Review threads: 22/22 resolved. Actual approving reviews: zero.
+
+### PR #1643 — XRP research archive
+
+- Current head: `f1b956bd886bca48848be0406bf6ed9ddefcc605`.
+- 280? No: GitHub compare reports **279 commits ahead of main, zero behind**, and 223 changed files.
+- Core suite: 495 passed, 8 subtests.
+- Exact-head dependency audit [42116564688](https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564688): passed.
+- Exact-head fail-closed gate [42116564747](https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564747): passed; merging remains disabled.
+- Exact-head full repository CI [42116564917] (https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564917) remains in progress at complete-development-dependency installation. No full-suite result is claimed for this head. The preceding head `d57cfce3272a4ab0b17b944d2963d6a951d4ac5d` passed 1,143 full-suite tests, 8 subtests; that run predates the seven Circle/Ripple/Coinbase charter tests now on `f1b956b`.
+- Review threads: 14/14 resolved. Actual approving reviews: zero.
+
+### Integration ancestry and changed-path overlap
+
+- #1640 and #1643 are divergent from the same main base. Comparing #1643 against #1640: #1643 is 279 commits ahead and 375 behind.
+- Their changed-path intersection is exactly `.github/workflows/dependency-audit.yml`, with identical blob `6515307991420ab90d8671034b13ac2eb56190b3`.
+- #1640 has 134 unique changed paths; #1643 has 222 unique changed paths.
+- Do not merge #1643 directly after #1640. After #1640 is merged and verified on main, create one successor directly on that resulting main from #1643's unique paths, omitting the identical dependency-audit file. Do not rewrite either existing branch.
+
+### New research artifacts and findings on #1643
+
+**Market, ETF and OCC snapshot**
+- `research/xrp_intelligence/20261105T2135Z-xrp-market-etf-and-occ-charter-reconciliation.json`
+- `tests/test_xrp_market_etf_occ_charter_reconciliation_20261105.py`
+- Kraken returned XRP/USD last $1.22097, bid $1.22093, ask $1.22094, rolling-24h volume 37.955M XRP, UTC-day volume 34.405M XRP, rolling-24h VWAP $1.27253343 and UTC-day open $1.30410. Derived spread 0.081904 bps; last was 6.3745% below UTC-day open, 4.0520% below 24h VWAP and 0.4467% above the 24h low. No provider event timestamp was supplied; this is single-venue top-of-book, not consolidated depth.
+- ETF sources disagree: XRP Insights -194,875 XRP over Nov 2–3 (two settled days, with flow-excluded funds counted as zero); CryptoKeyhole -3,339 XRP on Nov 3 across four reporting funds, with Nov 4 partial; Alpha Finance $0 on Nov 3 across its five-fund dashboard. Different universes, dates, exclusions and vintages; shared issuer holdings inputs; no averaging; no verified AP cash creation/redemption.
+
+**Circle, Ripple and Coinbase state/federal trust-entity map**
+- `research/xrp_intelligence/20261105-circle-usdc-rlusd-custody-charter-entity-map-correction.json`
+- `tests/test_xrp_three_company_trust_charter_entity_map_20261105.py`
+- Circle: Circle Internet Trust Company LLC / Circle New York Trust is a NYDFS limited-purpose trust company. Separately, First National Digital Currency Bank, N.A. / Circle National Trust, proposed OCC charter 25361, is Consummated/Effective 2026-07-24. Circle's July 10 announcement says fiduciary custody for Circle and affiliates is the initial service upon opening; USDC reserve management is a future capability; direct institutional custody is demand-dependent. Operational opening is not verified. USDC remains issued by regulated affiliates; do not infer that the federal bank itself issues USDC.
+- Ripple: Standard Custody & Trust Company, LLC is the NYDFS limited-purpose trust entity and RLUSD issuer. Separately, Ripple National Trust Bank, proposed OCC charter 25364, is Consummated/Effective 2026-10-26. Ripple describes reserve management, collateral-trustee and fiduciary custody functions; operational opening/customer volumes are not established.
+- Coinbase: Coinbase Custody Trust Company, LLC is an existing NYDFS limited-purpose trust entity. Separately, Coinbase National Trust Company, proposed OCC charter 25390, is Approved 2026-04-02; no later Consummated/Effective row was visible in the retrieved CAS record. This does not imply the existing state-chartered custody entity or other Coinbase custody services are inactive.
+- State limited-purpose trust companies and federal national trust banks are separate legal entities under different regulators. NYDFS describes the LP-trust restriction as a prohibition on receiving deposits and making loans except as incidental to fiduciary powers; this state-category restriction is not automatically applied to OCC entities.
+- These charter records do not establish XRP purchases, XRP assets under custody, collateral balances, XRPL payment volumes or a direct Circle-Ripple partnership. BNY's separate Circle/USDC and Ripple/RLUSD relationships remain indirect shared-provider links.
+
+**Kamilah/Camilla Stevenson identity and public-video inventory**
+- `research/xrp_intelligence/20261105T2145Z-kamilah-stevenson-podcast-self-identification-addendum.json`
+- `research/xrp_intelligence/20261105T2150Z-kamilah-stevenson-public-youtube-inventory-addendum.json`
+- Five-test addendum for YouTube inventory and three-test iHeart identity addendum are on the preceding verified research head `d57cfce`; their tests passed in its 1,143-test full suite.
+- The public handle `@drkamilahstevenson`, Linktree, branded site, YouTube channel title and two YouTube search-result author labels strongly corroborate a public creator channel. The two search-result videos are `iwhpNT73zpk` (“Something Just Broke in Global Finance — And It's Connected to XRP”, 2026-03-06) and `pmJTrXJQ8Vw` (“XRP Is Not Bitcoin. And That's Exactly Why It Matters”, 2025-12-24). A third video `OvODErBT9Ug` is directly linked from the Linktree.
+- The iHeart episode “Crypto Panics! with Dr. Kamilah Stevenson” is a podcast, not a YouTube video. Its auto-generated transcript records the guest's self-reported display-name variants Camila/Camilla/Kamilla. Exact X/Instagram handles and legal identity remain unverified. Direct YouTube video pages were throttled; titles/metrics are search-result metadata, not reviewed video content.
+- Correction: the preceding iHeart addendum's count of 13 prior videos was unsupported. The actual prior inventory artifact contained one directly linked video; two YouTube search-result records bring the current candidate inventory to three. Inventory is not exhaustive.
+
+**Actual-capital source clarification**
+- The existing Evernorth actual-versus-potential capital ledger remains the canonical reconciliation.
+- The SEC Oct. 30, 2026 prospectus (accession `0001628280-26-068609`) states no proceeds had been received under the Committed Equity Facility as of the prospectus date. The facility is a right, not an obligation, to sell up to 5,218,935 shares, subject to pricing and volume conditions.
+- The prospectus registers 73,688,162 resale shares for selling securityholders; resale proceeds go to those holders, not Evernorth, except for any proceeds from sponsor-warrant exercise. The $521,893.50 upfront commitment fee is a fee obligation/outflow, not new capital.
+- Public-warrant exercise proceeds remain potential only: 11,499,992 warrants at $11.50 would produce at most $132,249,908 gross only if all were exercised for cash. Do not count this as received cash. Historical subscription cash, in-kind XRP contributions, debt draws, undrawn facilities and secondary resales remain separate categories.
+- Source: [SEC Oct. 30 prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm).
+
+### Older open PR reconciliation — preserve unique work
+
+Targeted searches found older work not previously classified. None was closed.
+
+- **#1422** — draft, 43 commits ahead / 140 behind main, 24 changed paths. One `.github/workflows/ci.yml` path differs from #1640; 23 other paths are unique research/test files covering Coinbase-RLUSD-XRPL supply, BNY/C2FO/Aviva/SG Forge/Ripple/Circle graph, ETF/macro, SBIC/SBI, derivatives OI and Kamilah identity. The older CI file should not replace #1640's full-suite CI. Preserve the 23 research/test paths for content-level reconciliation into the research successor.
+- **#1509** — draft, 17 ahead / 84 behind main, 25 unique historical JSON handoff snapshots. These preserve Binance/Tron, JPYC/JPYS, SBI/Circle/Coinbase, actual-capital and creator-identity evidence. No changed-path overlap with #1640/#1643. Preserve as historical source vintages; do not merge directly from the stale base.
+- **#1614** — draft, 36 ahead / 41 behind main, 57 changed paths. Twenty-two research JSON blobs are exact duplicates already present on #1643. Eight code/CI/contract/test paths overlap #1640 with different blobs; #1640's V3 implementation is the more advanced current integration and its full suite passes. Four additional JSON research artifacts and 25 Markdown handoff notes are unique and still need content-level review. `barrot_agent/evolution/research_artifact_clock.py` is already present on main and is not new code. Preserve unique research/handoff material; do not close #1614 until its unique content is reconciled.
+- #1642 remains an exact ancestor of #1640.
+- #1644–#1650 remain dependency/action overlap represented in #1640, pending main verification.
+- #1254/#1255 are older dependency candidates.
+- Preserve unique work in #1317, #1318, #1320, #1269 and draft #1651. Do not bulk-close unique research, security, prediction or rendering work.
+
+### Security, approvals and merge boundary
+
+- Main still contains manual/issue-triggered legacy direct-main writers (including pingpong, make-track, ask-barrot, audio-ingest, write-lyrics, barrot-speak, task-allocator, free-image-gen, barrot-self-upgrade, knowledge-signal-cycle-btc and issue-label dispatch in barrot-agent). They are not all scheduled writers; the integration branch quarantines them with empty permissions/false job conditions or equivalent containment. They remain active on main until #1640 is merged.
+- Main Cross Analysis, Pillars, Riemann harvest and dependency audit workflows are read-only. `.barrot-backup/workflows` is inert. Tag-triggered `release.yml` is a separate release event.
+- Main branch-protection inspection returns HTTP 403. The visible fallback ruleset ID 10863829 is disabled. GitHub Pages settings remain inaccessible; a previous main push triggered a Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered deployment is not established.
+- #1640 and #1643 are non-draft/mergeable, but each has zero actual approving reviews. Resolved comment threads are not approvals. Do not bypass branch protection or merge while full-suite verification is pending on #1643.
+
+### Prediction and platform status
+
+- The priority-1 mission registry, deterministic read-only mission dispatcher, public XRP collector, receipt handling, point-in-time feature store, forecast ledger and chronological baselines are implemented on integration branches, not main. The scheduled collector runs only when on main; it has not executed as a main-branch service.
+- Raw artifact retention remains 90 days, not indefinite. Independent timestamp anchoring, complete historical exchange/collateral/ETF-cash datasets, evaluator-attested out-of-sample lift, calibration, drift monitoring and sufficient shadow outcomes remain incomplete.
+- No directional XRP forecast was issued.
+- ChatGPT-to-GitHub is the only verified persistent data path. Copilot activity is one-off review evidence, not a persistent integration. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified.
+
+### Next concrete actions
+
+1. Resolve the #1643 full-suite dependency-install stall; run the seven new Circle charter tests and full repository suite on exact head `f1b956b`. Do not merge based on core tests alone.
+2. Obtain independent approving reviews and verify branch-protection requirements; resolve GitHub Pages deployment authorization.
+3. Merge #1640 only when all conditions are satisfied; verify merge commit, fetch main, verify files and run main CI.
+4. Build one consolidated successor directly on resulting main from #1643's unique paths plus the preserved unique research from #1422/#1509/#1614; omit identical files and the older CI workflow.
+5. Run exact-head full suite, dependency/security audit and fail-closed gate on the successor before merge.
+6. After merged content is verified on main, close only exact superseded/duplicate source PRs with cross-references. Preserve all unique work.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
