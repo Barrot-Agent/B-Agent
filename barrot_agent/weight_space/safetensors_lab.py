@@ -1,7 +1,7 @@
 """Read-only inspection of safetensors model weights."""
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 import hashlib
 from pathlib import Path
 import tempfile
@@ -68,7 +68,7 @@ def inspect_safetensors(path: str | Path) -> TensorInventory:
                 total += elements
                 records.append(MappingProxyType({
                     "name": name,
-                    "shape": list(shape),
+                    "shape": shape,
                     "dtype": str(view.get_dtype()),
                     "elements": elements,
                 }))
