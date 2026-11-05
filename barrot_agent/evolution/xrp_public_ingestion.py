@@ -41,6 +41,7 @@ ENDPOINTS = (
     ("binance_perp_open_interest_history", "https://fapi.binance.com/futures/data/openInterestHist?symbol=XRPUSDT&period=1h&limit=500"),
     ("binance_perp_global_long_short_ratio", "https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=XRPUSDT&period=1h&limit=500"),
     ("coinbase_spot_ticker", "https://api.exchange.coinbase.com/products/XRP-USD/ticker"),
+    ("kraken_spot_ticker", "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"),
     ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
     ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
@@ -1457,6 +1458,107 @@ def _raw_only_coinbase_book(payload: Any, *, source_id: str, url: str, digest: s
     return [], None, False, "coinbase_book_snapshot_has_no_timestamp_or_websocket_sequence_bridge"
 
 
+def _parse_kraken_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    """Parse Kraken ticker values as a server-timestamped snapshot, not trade events."""
+    if not isinstance(payload, Mapping) or payload.get("error") not in ([], None):
+        raise XRPIngestionError("Kraken ticker response contains an API error")
+    result = payload.get("result")
+    if not isinstance(result, Mapping):
+        raise XRPIngestionError("Kraken ticker response has no result mapping")
+    ticker = next((value for value in result.values() if isinstance(value, Mapping)), None)
+    if not isinstance(ticker, Mapping):
+        raise XRPIngestionError("Kraken ticker response has no pair data")
+
+    def pair(key: str, field: str) -> list[Any]:
+        value = ticker.get(key)
+        if not isinstance(value, list) or len(value) < 2:
+            raise XRPIngestionError(f"Kraken ticker {field} array schema mismatch")
+        return value
+
+    ask_row = pair("a", "ask")
+    bid_row = pair("b", "bid")
+    last_row = pair("c", "last trade")
+    volume_row = pair("v", "volume")
+    vwap_row = pair("p", "VWAP")
+    trade_count_row = pair("t", "trade count")
+    low_row = pair("l", "low")
+    high_row = pair("h", "high")
+
+    ask = _number(ask_row[0], "Kraken ticker best ask", allow_zero=False)
+    bid = _number(bid_row[0], "Kraken ticker best bid", allow_zero=False)
+    last = _number(last_row[0], "Kraken ticker last trade price", allow_zero=False)
+    last_size = _number(last_row[1], "Kraken ticker last trade size", allow_zero=False)
+    if ask <= bid:
+        raise XRPIngestionError("Kraken ticker bid/ask is crossed or locked")
+
+    # Kraken's ticker payload does not include a last-trade event timestamp.
+    # The HTTP Date header timestamps the returned snapshot only.
+    source_time = _from_http_date(http_date)
+    if source_time is None:
+        return [], None, False, "missing_or_invalid_http_date_snapshot_time"
+    if source_time > captured:
+        raise XRPIngestionError("Kraken HTTP Date is later than capture time")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    mid = (best_bid + best_ask) / 2.0
+    spread_bps = (best_ask - best_bid) / mid * 10000.0
+    limitations = [
+        "Single Kraken XRP/USD spot venue; not consolidated liquidity.",
+        "Kraken ticker does not expose an individual last-trade timestamp; HTTP Date timestamps the returned snapshot, not the matching-engine trade event.",
+        "The HTTP Date header is server response time, not an exchange matching-engine sequence timestamp.",
+        "24-hour and UTC-day aggregates are distinct windows and must not be substituted for one another.",
+    ]
+    metrics = (
+        ("last_trade_price_snapshot", last, "USD/XRP", ""),
+        ("last_trade_size", last_size, "XRP", ""),
+        ("best_bid", bid, "USD/XRP", ""),
+        ("best_ask", ask, "USD/XRP", ""),
+        ("mid_price", mid, "USD/XRP", ""),
+        ("spread_bps", spread_bps, "bps", ""),
+        ("base_volume_24h", _number(volume_row[1], "Kraken ticker 24h volume", allow_zero=True), "XRP", "24h"),
+        ("vwap_24h", _number(vwap_row[1], "Kraken ticker 24h VWAP", allow_zero=False), "USD/XRP", "24h"),
+        ("high_24h", _number(high_row[1], "Kraken ticker 24h high", allow_zero=False), "USD/XRP", "24h"),
+        ("low_24h", _number(low_row[1], "Kraken ticker 24h low", allow_zero=False), "USD/XRP", "24h"),
+        ("utc_day_open", _number(ticker.get("o"), "Kraken ticker UTC-day open", allow_zero=False), "USD/XRP", "utc_day"),
+        ("base_volume_utc_day", _number(volume_row[0], "Kraken ticker UTC-day volume", allow_zero=True), "XRP", "utc_day"),
+        ("vwap_utc_day", _number(vwap_row[0], "Kraken ticker UTC-day VWAP", allow_zero=False), "USD/XRP", "utc_day"),
+        ("trade_count_24h", _number(trade_count_row[1], "Kraken ticker 24h trade count", allow_zero=True), "trades", "24h"),
+    )
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.kraken.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="kraken",
+            venue="Kraken",
+            instrument="XRPUSD spot",
+            currency_pair="XRP/USD",
+            market_type="spot",
+            aggregation_window=window,
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit, window in metrics
+    ]
+    return records, event_s, eligible, reason
+
+
 def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime, http_date: str | None = None):
     if not isinstance(payload, Mapping) or payload.get("error") not in ([], None):
         raise XRPIngestionError("Kraken depth response contains an API error")
@@ -1868,6 +1970,7 @@ PARSERS = {
     "coinbase_spot_ticker": _parse_coinbase_ticker,
     "coinbase_spot_candles": _parse_coinbase_candles,
     "coinbase_spot_book": _raw_only_coinbase_book,
+    "kraken_spot_ticker": _parse_kraken_ticker,
     "kraken_spot_depth": _parse_kraken_depth,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
@@ -2103,7 +2206,7 @@ def run_ingestion(
                 "digest": digest,
                 "captured": captured,
             }
-            if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
+            if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
                 parser_kwargs["http_date"] = response.get("http_date")
             if source_id == "xrp_etf_flows_csv":
                 parser_kwargs["metadata_payload"] = xrp_insights_metadata_payload

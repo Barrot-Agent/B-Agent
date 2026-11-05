@@ -105,6 +105,23 @@ def _fake_fetcher(captured: datetime):
                 "bids": [["1.289", "1000", 3]],
                 "asks": [["1.291", "1200", 2]],
             }
+        elif source_id == "kraken_spot_ticker":
+            payload = {
+                "error": [],
+                "result": {
+                    "XXRPZUSD": {
+                        "a": ["1.291", "100", "100"],
+                        "b": ["1.289", "200", "200"],
+                        "c": ["1.290", "12.5"],
+                        "v": ["100000", "200000"],
+                        "p": ["1.28", "1.27"],
+                        "t": [1000, 2000],
+                        "l": ["1.20", "1.19"],
+                        "h": ["1.30", "1.31"],
+                        "o": "1.25",
+                    }
+                },
+            }
         elif source_id == "kraken_spot_depth":
             ts = captured.timestamp() - 1800
             payload = {
@@ -201,7 +218,7 @@ def _fake_fetcher(captured: datetime):
             raise AssertionError(source_id)
         raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
         response = {"raw_bytes": raw, "payload": payload}
-        if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
+        if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
             response["http_date"] = http_date
         return response
 
@@ -418,6 +435,74 @@ def test_kraken_depth_without_server_date_is_raw_only(tmp_path):
     assert summary["snapshot_status"] == "verified"
     assert any(item["source_id"] == "kraken_spot_depth" for item in raw_only)
     assert not any(item["feature_id"].startswith("xrp.spot.kraken.orderbook.") for item in snapshot["records"])
+
+
+def test_kraken_ticker_snapshot_uses_http_date_not_last_trade_event(tmp_path):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    summary = run_ingestion(tmp_path / "kraken-ticker", fetcher=_fake_fetcher(captured), now=captured)
+    snapshot = json.loads((tmp_path / "kraken-ticker" / "snapshot.json").read_text(encoding="utf-8"))
+    price = next(
+        item for item in snapshot["records"]
+        if item["feature_id"] == "xrp.spot.kraken.last_trade_price_snapshot"
+    )
+    spread = next(
+        item for item in snapshot["records"]
+        if item["feature_id"] == "xrp.spot.kraken.spread_bps"
+    )
+    assert price["value"] == pytest.approx(1.29)
+    assert price["event_time_utc"] == "2026-11-04T12:29:55.000000Z"
+    assert price["source_data_as_of_utc"] == price["event_time_utc"]
+    assert price["model_eligible"] is True
+    assert any("does not expose an individual last-trade timestamp" in item for item in price["limitations"])
+    assert spread["value"] == pytest.approx((1.291 - 1.289) / 1.290 * 10000)
+    assert summary["snapshot_status"] == "verified"
+
+
+def test_kraken_ticker_without_http_date_is_raw_only(tmp_path):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+
+    def no_date(source_id: str, url: str):
+        response = fetcher(source_id, url)
+        if source_id == "kraken_spot_ticker":
+            response.pop("http_date", None)
+        return response
+
+    summary = run_ingestion(tmp_path / "kraken-ticker-no-date", fetcher=no_date, now=captured)
+    snapshot = json.loads((tmp_path / "kraken-ticker-no-date" / "snapshot.json").read_text(encoding="utf-8"))
+    raw_only = json.loads((tmp_path / "kraken-ticker-no-date" / "raw_only_sources.json").read_text(encoding="utf-8"))
+    assert summary["snapshot_status"] == "verified"
+    assert any(item["source_id"] == "kraken_spot_ticker" for item in raw_only)
+    assert not any(item["feature_id"].startswith("xrp.spot.kraken.") and item["feature_id"].endswith("_snapshot") for item in snapshot["records"])
+
+
+def test_kraken_ticker_locked_book_is_preserved_as_raw_only_failure(tmp_path):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+
+    def locked_book(source_id: str, url: str):
+        response = fetcher(source_id, url)
+        if source_id == "kraken_spot_ticker":
+            payload = response["payload"]
+            payload["result"]["XXRPZUSD"]["a"][0] = "1.289"
+            response["raw_bytes"] = json.dumps(payload, separators=(",", ":")).encode("utf-8")
+        return response
+
+    summary = run_ingestion(tmp_path / "kraken-ticker-locked", fetcher=locked_book, now=captured)
+    raw_only = json.loads((tmp_path / "kraken-ticker-locked" / "raw_only_sources.json").read_text(encoding="utf-8"))
+    assert summary["snapshot_status"] == "verified"
+    assert any(
+        item["source_id"] == "kraken_spot_ticker"
+        and item["reason"] == "source_processing_failure:XRPIngestionError"
+        for item in raw_only
+    )
+
+
+def test_kraken_ticker_is_in_scheduled_source_registry():
+    endpoint_map = dict(ENDPOINTS)
+    assert endpoint_map["kraken_spot_ticker"] == "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    assert PARSERS["kraken_spot_ticker"] is not None
+    assert any(source_id == "kraken_spot_ticker" for source_id, _ in SCHEDULED_ENDPOINTS)
 
 
 def test_scheduled_ingestion_workflow_persists_history_without_repository_writes():
