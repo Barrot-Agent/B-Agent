@@ -31,3 +31,15 @@ def test_inspector_accepts_huggingface_style_safetensors_symlink(tmp_path):
     inventory = inspect_safetensors(named)
     assert inventory.tensor_count == 1
     assert inventory.artifact_sha256
+
+def test_inventory_records_are_immutable_and_export_as_plain_data(tmp_path):
+    path = tmp_path / "immutable.safetensors"
+    safetensors.save_file({"weight": torch.ones((2,))}, str(path))
+    inventory = inspect_safetensors(path)
+    with pytest.raises(TypeError):
+        inventory.tensors[0]["dtype"] = "CORRUPTED"
+    with pytest.raises(TypeError):
+        inventory.tensors[0]["shape"][0] = 99
+    exported = inventory.to_dict()
+    assert isinstance(exported["tensors"][0], dict)
+    assert exported["tensors"][0]["shape"] == [2]
