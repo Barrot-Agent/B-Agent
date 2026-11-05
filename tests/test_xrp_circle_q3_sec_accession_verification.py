@@ -37,5 +37,12 @@ def test_circle_and_coinbase_q3_relationship_evidence_remains_separate():
     groups = data["source_independence"]
     assert groups["circle_8k_and_exhibit_group"] == "circle_issuer"
     assert groups["coinbase_10q_group"] == "coinbase_issuer"
+    release = next(item for item in data["source_registry"] if item["source_id"] == "coinbase_q3_2026_earnings_release")
+    filing = next(item for item in data["source_registry"] if item["source_id"] == "coinbase_q3_2026_sec_10q")
+    assert release["published_at"] == "2026-10-29"
+    assert any("$22B" in claim for claim in release["claims_supported"])
+    assert not any("$22B" in claim for claim in filing["claims_supported"])
+    assert data["financial_observations"][-1]["source_id"] == "coinbase_q3_2026_earnings_release"
+    assert data["source_correction_log"][-1]["append_only_history_preserved"] is True
     assert groups["sec_hosting_adds_filing_provenance_not_an_independent_financial_audit"] is True
     assert data["xrp_relevance"]["forecast_issued"] is False
