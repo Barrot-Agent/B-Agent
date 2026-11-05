@@ -2246,3 +2246,71 @@ New artifact: `research/xrp_intelligence/20261104T231520Z-sbi-jpysc-erebor-insti
 6. Build durable cross-run raw-source storage and independent timestamping; extend synchronized historical XRP coverage; connect research eligibility to ingestion; run leakage-safe walk-forward tests, calibration, drift and shadow evaluation.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 5 — current-head integration and prediction-readiness audit
+**Audit cutoff:** 2026-11-05T00:27:18Z  
+**Main SHA:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`  
+**Scope:** complete main tree, current integration/research trees, all open PR pages, ancestry and changed-path overlap, current PR reviews, exact-head CI/check runs, dependency audit, branch protection/rulesets, current handoff and latest main scheduled checks.
+
+### Repository baseline and current main
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; the main tree contains 1,403 entries and is not truncated. The #1640 integration tree contains 1,430 entries and is not truncated.
+- GitHub reports main as protected, but the branch-protection read returned HTTP 403. The only visible repository ruleset, `Fall Back`, is disabled. Required review/check configuration therefore remains unverified; do not infer that required approvals are satisfied.
+- The complete open-PR inventory was fetched across four pages: 369 open PRs, 354 drafts and 15 non-drafts.
+- Latest main scheduled Cross Analysis run 41937001750 completed successfully on the current main SHA. Pillars Consistency Check run 41834374956 failed: GitHub App ID/private key/installation ID are absent, Databricks returned HTTP 403, and the Hugging Face Space probe returned BUILD_ERROR. No credentials were changed.
+- The current main commit is signed and verified. No main merge or deployment occurred during this audit.
+
+### Exact integration-head evidence
+**PR #1640 — V3 safety, MMI and XRP prediction foundation**
+- Head: `9590a8e78ad6ba5a2b5e6e4cd9f44710bf745c6a`; base main; 113 commits; 71 changed files; GitHub reports mergeable/clean.
+- Exact-head CI run 41941107408: core tests **582 passed + 8 subtests**; full repository suite **858 passed + 8 subtests**. Full-suite log reports 29 files skipped due to complete coverage; this is not a test-failure count.
+- Exact-head dependency audit 41941107412: all five audited declaration sets passed (requirements-dev, requirements.tx, Hugging Face Space requirements, legacy requirements and materialized PEP 621 pyproject dependencies); each reported no known vulnerabilities.
+- Exact-head fail-closed gate 41941107374 passed but explicitly states automatic merging is intentionally disabled. The exact-head check list has Tests, Full repository test suite, pip-audit and the disabled-merge gate successful; CodeRabbit was skipped.
+- Review threads: 22/22 resolved. Review submissions: 8, all COMMENTED; **zero approving reviews**.
+- GitHub Actions cache reservation reached its configured budget and is read-only. The cache warning did not fail the tests or dependency audit.
+
+**PR #1643 — consolidated XRP institutional, market and capital research**
+- Head: `08690242214780a65d066345dac3bccea83538e7`; base main; 89 commits; 90 changed files; GitHub reports mergeable/clean.
+- Exact-head CI run 41940005524: core tests **495 passed + 8 subtests**; full repository suite **796 passed + 8 subtests**.
+- Exact-head fail-closed gate 41940005550 passed but explicitly disables automatic merging. CodeRabbit was skipped. No dependency manifest changed in this PR, so no dependency audit was triggered.
+- Review threads: 14/14 resolved. Review submissions: 6, all COMMENTED; **zero approving reviews**.
+
+**Cross-workstream integration**
+- #1640 and #1643 have zero changed-path overlap.
+- #1642 head `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` is an ancestor of #1640 (112 commits from #1642 to #1640, zero commits behind); all seven #1642 changed paths are included in #1640. Classify #1642 as superseded pending #1640 merge and main verification.
+- #1621 head `7cf86599129cd37f441b6d74a009680049176261` is based on stale main `0b6005dcb714f794d120b95d7412a0814d006221`, is currently non-mergeable, and has diverged from #1643. The comparison reports #1643 ahead by 126 and behind by 8 relative to #1621. Their only changed-path overlap is `tests/test_xrp_research_artifact.py`. #1621's dated institutional-collateral identity artifact is not present as a file in #1643; later #1643 artifacts cover related Coinbase/SBI/SBIC/collateral topics, but a complete claim-by-claim supersession audit is still required. Preserve #1621 as unique/unreviewed until that audit is complete; do not close it.
+- #1644–#1650 dependency PR paths overlap with #1640. Current #1640 content was checked: shared checkout actions use v7 where applicable, upload-artifact uses v7, download-artifact uses v8, pytest is >=9.2.0, types-requests is >=2.33.0.20261030, and legacy huggingface_hub/databricks-sdk minimums are >=2.4.0/>=0.158.0. The self-upgrade workflow is quarantined rather than retaining an obsolete checkout step. Classify these seven dependency PRs as duplicate/superseded candidates pending merge and verification on main; do not close them beforehand.
+- #1641 remains unique/unreviewed. #1615 remains unique security-containment work on a stale base. #1614 and older prediction/research PRs remain individually unreviewed for exact path/commit overlap; no bulk closure.
+
+### Current XRP mission and prediction-engine implementation
+- The priority-1 `xrp_intelligence_prediction_engine` manifest and MissionRegistry are present on #1640. The registry preserves Barrot V3 as the execution, orchestration, safety and verification foundation and places XRP work before generic learning goals.
+- The hourly read-only public collector is on #1640, not main. It currently covers nine Binance/Coinbase/Kraken spot and derivatives endpoints. It does not yet cover the full requested exchange-wallet flows, ETF issuer files, collateral utilization, stablecoin mint/burn, custody, payment-rail throughput, regulation, macro and geopolitical vintages.
+- Raw captures are SHA-256 content-addressed and write-once within the archive implementation. The workflow's uploaded artifacts have 90-day retention; the SQLite feature store is per-run. Neither constitutes a durable cross-run archive with independent timestamp anchoring.
+- Research eligibility exists but is not fully wired into scheduled ingestion. Coinbase/Binance book snapshots remain raw-only when timestamp/sequence linkage is insufficient; one venue's depth is not consolidated liquidity.
+- The existing fixed-horizon ledger and walk-forward code remain guarded by point-in-time, sample-size, calibration, drift and baseline requirements. No complete readiness certificate exists. **No directional forecast was issued.**
+- The Kamilah Stevenson channel record remains a candidate/partial source catalog; the equivalence with the user's Camilla Stephenson spelling is not established. The existing ten seed references are not a complete channel inventory and must not be represented as one. No exhaustive video inventory was performed.
+
+### Backlog classification and merge blockers
+- **Active, blocked integration:** #1640 and #1643.
+- **Superseded pending #1640 main verification:** #1642.
+- **Duplicate/superseded candidates pending #1640 main verification:** #1644–#1650.
+- **Unique/unreviewed; preserve:** #1621 (stale/non-mergeable; collateral identity artifact needs claim-level comparison), #1641, #1615, and older research/operations work until individually reconciled.
+- No PR was merged or closed. No force-push, branch rewrite, reset, clean, stash or destructive worktree operation occurred.
+- Merge remains blocked by zero approving reviews on both integration PRs, inability to read branch-protection requirements (HTTP 403), disabled visible ruleset, and the previously recorded GitHub Pages push/deployment side effect. Both PR gates intentionally disable auto-merge. Do not bypass protection or required checks.
+
+### DESIGNED / EXECUTED / VERIFIED
+- **DESIGNED:** XRP-first mission registry; read-only public ingestion; raw receipt, feature-store, research-eligibility, forecast-ledger and walk-forward contracts.
+- **EXECUTED:** full main/tree/PR/ancestry/path-overlap/review/CI/dependency/security/handoff audit; exact-head test-log inspection; dependency update verification; durable handoff refresh.
+- **VERIFIED:** main SHA and complete tree; #1640 and #1643 exact-head core/full-suite results; #1640 five-set dependency audit; fail-closed gate behavior; zero path overlap between integration PRs; #1642 ancestry and #1621 divergence; all listed review-thread resolution counts.
+- **NOT VERIFIED:** required branch-protection settings, independent human approvals, authorized next Pages deployment, durable cross-run storage, independent timestamp anchoring, full XRP ecosystem ingestion, nine-platform live coordination, or out-of-sample predictive lift.
+
+### Next concrete action
+1. Obtain independent approving reviews and independently verify required branch-protection/check settings; resolve authorization for the existing Pages push side effect.
+2. Once all conditions are met, merge #1640; verify the merge commit and every merged file on freshly fetched main, then run main CI.
+3. Reconcile #1643 against the resulting main without rewriting history; rerun its exact-head full suite and fail-closed gate; merge only after its own approvals and required checks pass.
+4. After main verification, close only #1642 and the exact #1644–#1650 dependency duplicates whose content is confirmed on main. Preserve #1621 until its unique collateral evidence has been explicitly reconciled.
+5. Continue with durable cross-run raw storage and independent timestamping, broader synchronized XRP ecosystem ingestion, then chronological out-of-sample evaluation and calibration. Keep forecast issuance disabled until the readiness certificate passes.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
