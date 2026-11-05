@@ -9,7 +9,7 @@ import os
 import re
 import sqlite3
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any, Callable, Mapping
 from urllib.parse import urlsplit
 
@@ -215,6 +215,123 @@ def _verify_evaluator_attestation(
         raise ForecastLedgerError("evaluator attestation postdates actual readiness-report registration")
 
 
+def _validate_canonical_raw_receipt(
+    receipt: Mapping[str, Any],
+    index: int,
+    raw_bytes: bytes | None = None,
+) -> dict[str, Any]:
+    """Verify the content-addressed receipt metadata, not a caller-supplied boolean."""
+    raw_receipt = receipt.get("raw_receipt")
+    if not isinstance(raw_receipt, Mapping):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] needs the complete canonical raw_receipt document"
+        )
+    canonical = dict(raw_receipt)
+    required_fields = {
+        "source_id",
+        "source_uri",
+        "captured_at_utc",
+        "source_data_as_of_utc",
+        "source_http_date",
+        "raw_content_sha256",
+        "payload_size_bytes",
+        "raw_payload_path",
+        "model_eligible_source",
+        "raw_only_reason",
+        "receipt_id",
+    }
+    if set(canonical) != required_fields:
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}].raw_receipt must contain the exact RawReceiptArchive fields"
+        )
+    declared_id = canonical.get("receipt_id")
+    outer_id = receipt.get("receipt_id")
+    payload = {key: value for key, value in canonical.items() if key != "receipt_id"}
+    canonical_id = hashlib.sha256(_json(payload).encode("utf-8")).hexdigest()
+    if (
+        not isinstance(declared_id, str)
+        or not _SHA256.fullmatch(declared_id)
+        or declared_id != canonical_id
+        or outer_id != canonical_id
+    ):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] receipt_id does not match canonical receipt metadata"
+        )
+
+    source_id = receipt.get("source_id")
+    source_uri = receipt.get("source_uri")
+    digest = receipt.get("raw_content_sha256")
+    if payload["source_id"] != source_id or payload["source_uri"] != source_uri:
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] source identity does not match its canonical receipt"
+        )
+    if payload["captured_at_utc"] != receipt.get("captured_at_utc"):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] capture time does not match its canonical receipt"
+        )
+    if payload["source_data_as_of_utc"] != receipt.get("source_data_as_of_utc"):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] source data as-of does not match its canonical receipt"
+        )
+    if payload["raw_content_sha256"] != digest or not isinstance(digest, str) or not _SHA256.fullmatch(digest):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] raw hash does not match its canonical receipt"
+        )
+
+    payload_size = payload["payload_size_bytes"]
+    if isinstance(payload_size, bool) or not isinstance(payload_size, int) or payload_size <= 0:
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] canonical payload_size_bytes must be a positive integer"
+        )
+    raw_path_value = payload["raw_payload_path"]
+    if (
+        not isinstance(raw_path_value, str)
+        or not raw_path_value.strip()
+        or "\\" in raw_path_value
+    ):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] canonical raw payload path is invalid"
+        )
+    raw_path = PurePosixPath(raw_path_value)
+    if (
+        raw_path.is_absolute()
+        or ".." in raw_path.parts
+        or raw_path.as_posix() != raw_path_value
+        or len(raw_path.parts) < 2
+        or raw_path.parts[-2:] != ("sha256", f"{digest}.json")
+    ):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] canonical raw path is not bound to the content-addressed payload"
+        )
+    if payload["model_eligible_source"] is not True or payload["raw_only_reason"] != "":
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] canonical receipt does not attest an eligible source capture"
+        )
+    source_http_date = payload["source_http_date"]
+    if source_http_date is not None and (
+        not isinstance(source_http_date, str)
+        or len(source_http_date) > 128
+        or any(ord(character) < 32 for character in source_http_date)
+    ):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}] canonical source HTTP Date is invalid"
+        )
+    if raw_bytes is not None:
+        if not isinstance(raw_bytes, bytes) or not raw_bytes:
+            raise ForecastLedgerError(
+                f"raw_source_receipts[{index}] exact raw payload bytes are required"
+            )
+        if len(raw_bytes) != payload_size:
+            raise ForecastLedgerError(
+                f"raw_source_receipts[{index}] payload size does not match canonical receipt bytes"
+            )
+        if hashlib.sha256(raw_bytes).hexdigest() != digest:
+            raise ForecastLedgerError(
+                f"raw_source_receipts[{index}] raw bytes do not match canonical receipt SHA-256"
+            )
+    return payload
+
+
 def _validate_readiness_report(report: Any) -> dict[str, Any]:
     """Validate an independently attested model evaluation and its point-in-time dataset manifest."""
     if not isinstance(report, Mapping):
@@ -324,6 +441,7 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             raise ForecastLedgerError(
                 f"raw_source_receipts[{index}] capture exceeds evaluation data cutoff"
             )
+        _validate_canonical_raw_receipt(receipt, index)
         receipt_sources.add(source_id.strip())
         receipt_groups.add(group.strip())
         receipt_ids.add(receipt_id.strip())
@@ -504,10 +622,7 @@ class ForecastLedger:
             raw_bytes = raw_receipt_bytes.get(receipt["receipt_id"])
             if not isinstance(raw_bytes, bytes) or not raw_bytes:
                 raise ForecastLedgerError(f"readiness raw receipt {receipt['receipt_id']!r} bytes are missing")
-            if hashlib.sha256(raw_bytes).hexdigest() != receipt["raw_content_sha256"]:
-                raise ForecastLedgerError(
-                    f"readiness raw receipt {receipt['receipt_id']!r} bytes do not match its SHA-256"
-                )
+            _validate_canonical_raw_receipt(receipt, index, raw_bytes)
         if report_bytes != _json(report).encode("utf-8"):
             raise ForecastLedgerError("readiness report bytes must use canonical JSON encoding")
         report_sha256 = hashlib.sha256(report_bytes).hexdigest()
