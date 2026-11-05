@@ -1,3 +1,68 @@
+# Latest continuation checkpoint — 2026-11-05T20:44:00Z
+
+This checkpoint supersedes older build-state summaries below. It distinguishes the tested code head from this documentation update. Main remains unchanged.
+
+## Current Barrot V3 / XRP integration branch
+
+- Primary PR: #1640 — `https://github.com/Barrot-Agent/B-Agent/pull/1640`.
+- Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
+- Code head tested: `4324cc5dbe5cbf53f31ba05cb66aa3f59c1b47b0`.
+- Base main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Exact-head core CI: passed.
+- Exact-head full repository suite: **1,003 passed, 8 subtests passed**.
+- Inclusive package coverage: **56.10%**, above the 50% floor.
+- Installed wheel built; packaged Barrot V3, XRP mission and canonical data assets verified.
+- Exact-head six-manifest dependency audit: passed.
+- Fail-closed merge gate: passed and explicitly kept merging disabled.
+- CI: `42105583856`; dependency audit: `42105583909`; fail-closed gate: `42105584044`.
+- The subsequent handoff-only commit does not alter code or tests. Do not claim that a different code head was tested.
+
+## Newly consolidated and verified code
+
+1. **Recursive self-improvement evidence gate**
+   - Kimi-unavailable states no longer produce synthetic insights.
+   - Dry-run flywheel output is recorded as proposals, never applied improvements.
+   - Scoring requires paired baseline/candidate metrics bound to distinct run IDs and revisions.
+   - Metrics are copied into immutable snapshots; non-numeric, non-finite, overflowed, malformed or unknown metric policies are rejected.
+   - A candidate is eligible only with a positive aggregate measured result and no tolerance-breaching regression.
+   - Missing, malformed, regressing or non-improving evidence clears the convergence window; no evidence means score 0 and no convergence.
+
+2. **Weight-space inspection**
+   - Safetensors metadata and SHA-256 are derived from the same temporary byte snapshot.
+   - Tensor metadata and nested shapes are immutable.
+   - Hugging Face snapshot symlinks with a `.safetensors` name are accepted.
+   - Inspection remains read-only. Staged weight editing, model-specific forward evaluation and rollback are not yet implemented.
+
+3. **MCP sandbox containment**
+   - Proposed paths reject absolute paths, parent traversal, Windows drive paths and symlink escapes.
+   - A path rejected before any Python file is written still fails the regression check.
+   - The report no longer exposes a temporary directory after it has been deleted.
+   - Compile checking remains a syntax check, not a substitute for the full repository suite.
+
+4. **MMI structural integration**
+   - `MMIEngine.analyze_structure(record)` builds a deterministic structural signature from MMI provenance, component relationships, evidence/source links, validation constraints and depth/count descriptors.
+   - The signature is stored on the MMI record and a hash-linked ledger event is appended when a ledger is configured.
+   - Invalid MMI records produce an invalid structural region.
+   - This is evidence-aware structural description, not a theorem prover or mathematical equivalence claim.
+
+5. **UpgradeFlywheel truthfulness**
+   - Proposed, dispatched, applied and independently verified improvements are separate fields.
+   - Dispatching a directive does not count as applying a change.
+   - Estimated coverage cannot pass verification or trigger convergence.
+   - The current flywheel has no independent mutation verifier, so it correctly cannot report a verified pass or convergence.
+
+## Consolidation and review
+
+- The standalone draft PR #1651 was closed as superseded after its changes were ported into #1640. Its branch and commit history were preserved; it was not merged.
+- #1640 is the single integration line for these changes.
+- CodeRabbit was explicitly asked to review the latest code head `4324cc5dbe5cbf53f31ba05cb66aa3f59c1b47b0`; the bot acknowledged the review trigger. Its new findings, if any, must be checked against the exact reviewed head.
+- Prior PR #1640 review threads were resolved, but there are still **zero actual APPROVED review submissions**. Barrot-Agent self-comments saying “Approved” are not GitHub approvals.
+- Main branch-protection details remain inaccessible through the current GitHub App permission (HTTP 403). The fail-closed gate is not an approval and must not be bypassed.
+- A main push previously triggered a GitHub Pages deployment. Authorization for another merge-triggered deployment has not been established.
+- **Do not merge or deploy yet.** Require current independent review, actual repository approval, and a verified deployment authorization boundary. No merge, main push, paper trade, or external deployment was performed.
+
+---
+
 # Latest verified execution state — 2026-11-05T19:18:58Z
 
 This section supersedes older current-state summaries below. Historical source artifacts remain append-only. Main was not modified.
