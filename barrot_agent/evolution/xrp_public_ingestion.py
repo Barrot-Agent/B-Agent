@@ -25,8 +25,8 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.3"
-PARSER_VERSION = "xrp-public-market-v3.3"
+ADAPTER_VERSION = "xrp-public-market-v3.4"
+PARSER_VERSION = "xrp-public-market-v3.4"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -847,13 +847,16 @@ def _parse_xrpl_server_info(
         return [], None, False, "missing_or_invalid_http_date_for_xrpl_server_info"
     if server_date > captured + timedelta(seconds=60):
         raise XRPIngestionError("XRPL server HTTP Date is later than the capture clock")
-    source_time = server_date - timedelta(seconds=age)
+    source_time = server_date
     if source_time > captured + timedelta(seconds=60):
-        raise XRPIngestionError("XRPL validated-ledger time is later than the capture clock")
+        raise XRPIngestionError("XRPL server response time is later than the capture clock")
     eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    if age > MAX_LIVE_AGE_SECONDS:
+        eligible, reason, quality = False, "validated_ledger_age_exceeds_300_seconds", "stale"
     event_s, captured_s = _iso(source_time), _iso(captured)
     limitations = [
         f"Public non-commercial XRPL node operated by {config['operator']}; source_id preserves operator identity.",
+        "HTTP Date timestamps the server-info response to whole seconds; validated_ledger_age_seconds separately reports ledger lag. This is not the exact ledger close time and server/proxy clock skew may remain.",
         "Validated-ledger index, fee and reserve metrics are network state, not exchange volume, payment volume, XRP collateral or circulating supply.",
         "The two node operators report the same public ledger; their agreement is a node-integrity check, not independent economic evidence.",
     ]

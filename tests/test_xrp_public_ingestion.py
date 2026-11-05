@@ -256,8 +256,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.3"
-    assert summary["parser_version"] == "xrp-public-market-v3.3"
+    assert summary["adapter_version"] == "xrp-public-market-v3.4"
+    assert summary["parser_version"] == "xrp-public-market-v3.4"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -710,7 +710,7 @@ def test_xrpl_server_info_uses_validated_ledger_and_http_date():
         http_date=response["http_date"],
     )
     assert eligible is True and reason == ""
-    assert source_as_of == "2026-11-05T03:59:50.000000Z"
+    assert source_as_of == "2026-11-05T03:59:55.000000Z"
     values = {item["feature_id"]: item for item in records}
     assert values["xrp.network.xrpl.validated_ledger_index"]["value"] == 108123456.0
     assert values["xrp.network.xrpl.base_fee_xrp"]["value"] == 0.00001
@@ -846,3 +846,23 @@ def test_xrpl_rpc_fetch_is_fixed_read_only_and_redirect_bound(monkeypatch):
 
     with pytest.raises(XRPIngestionError, match="not registered"):
         fetch_public_rpc("xrpl_submit", url)
+
+
+def test_xrpl_server_info_with_stale_validated_ledger_is_not_model_eligible():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "xrpl_inftf_server_info", dict(ENDPOINTS)["xrpl_inftf_server_info"]
+    response = _fake_fetcher(captured)(source_id, url)
+    response["payload"]["result"]["info"]["validated_ledger"]["age"] = 301
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest="f" * 64,
+        captured=captured,
+        http_date=response["http_date"],
+    )
+    assert source_as_of == "2026-11-05T03:59:55.000000Z"
+    assert eligible is False
+    assert reason == "validated_ledger_age_exceeds_300_seconds"
+    assert records and all(item["model_eligible"] is False for item in records)
+    assert all(item["quality_status"] == "stale" for item in records)
