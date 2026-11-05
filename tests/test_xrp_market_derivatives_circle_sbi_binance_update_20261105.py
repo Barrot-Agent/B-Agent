@@ -46,7 +46,7 @@ def test_etf_flow_scope_and_product_exclusions_are_explicit():
     warnings = " ".join(data["scope_warnings"])
     assert "BITW" in warnings
     assert "GXRP" in warnings
-    assert "not from issuer flow reports" in data["row_semantics"]["flow_status_computed"]
+    assert "not an issuer-reported AP cash" in data["row_semantics"]["flow_status_computed"]
 
 
 def test_circle_reserve_and_arc_revenue_are_not_conflated():
