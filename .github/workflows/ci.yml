@@ -126,3 +126,18 @@ jobs:
             --cov-config="$RUNNER_TEMP/barrot-coverage.ini" \
             --cov-report=term-missing:skip-covered \
             --cov-fail-under=50
+      - name: Build wheel and verify packaged primary mission
+        run: |
+          python -m pip install --upgrade build
+          python -m build --wheel --outdir "$RUNNER_TEMP/barrot-wheel"
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          wheel = next(Path("$RUNNER_TEMP/barrot-wheel").glob("*.whl"))
+          expected = "barrot_agent/data/missions/primary_mission.json"
+          with ZipFile(wheel) as archive:
+              if expected not in archive.namelist():
+                  raise SystemExit(f"wheel is missing required mission resource: {expected}")
+          print(f"verified packaged mission resource in {wheel.name}")
+          PY
