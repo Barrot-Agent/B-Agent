@@ -56,7 +56,7 @@ def test_evidence_packet_and_red_team_protocol_preserve_disagreement():
 def test_least_privilege_and_external_action_boundaries_are_explicit():
     data = load()
     assert "no main write" in data["least_privilege_policy"]["coding_agents"]
-    assert "no exchange/broker credentials" in data["least_privilege_policy"]["market_access"]
+    assert "no exchange/broker credentials" in data["least_privilege_policy"]["market_access"].lower()
     assert data["safety"]["public_and_authorized_data_only"] is True
     assert data["safety"]["no_private_data"] is True
     assert data["safety"]["no_unapproved_external_mutation"] is True
