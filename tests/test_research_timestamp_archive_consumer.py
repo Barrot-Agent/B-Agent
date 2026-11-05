@@ -262,7 +262,9 @@ def test_archive_consumer_fails_closed_on_missing_target_duplicate_target_and_un
     overlay["source_artifact_path"] = "research/xrp_intelligence/legacy-source.json"
     overlay["source_artifact_blob_sha"] = git_blob_sha1(legacy_source)
     (archive / "correction-a.json").write_bytes(_bytes(overlay))
-    (archive / "correction-b.json").write_bytes(_bytes(overlay))
+    duplicate_overlay = dict(overlay)
+    duplicate_overlay["correction_id"] = "XRP_CAPTURE_TIME_INTERVAL_DUPLICATE"
+    (archive / "correction-b.json").write_bytes(_bytes(duplicate_overlay))
     with pytest.raises(ResearchEligibilityError, match="multiple timestamp overlays"):
         apply_research_timestamp_correction_overlays(tmp_path)
 
