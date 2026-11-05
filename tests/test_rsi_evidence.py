@@ -75,3 +75,6 @@ def test_non_numeric_metrics_and_unknown_metric_policies_are_rejected():
     candidate = EvaluationSnapshot("c3", "sha-d", {"accuracy": 0.9})
     with pytest.raises(ValueError, match="unknown metric configuration"):
         assess_improvement(baseline, candidate, tolerances={"accurracy": 0.1})
+def test_extremely_large_integer_metric_is_rejected_as_invalid_evidence():
+    with pytest.raises(ValueError, match="finite"):
+        EvaluationSnapshot("huge", "sha-huge", {"metric": 10 ** 10000})
