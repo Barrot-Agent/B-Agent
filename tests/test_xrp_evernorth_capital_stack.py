@@ -21,7 +21,10 @@ def test_evernorth_capital_stack_separates_actual_proceeds_from_capacity() -> No
     events = {item["id"]: item for item in data["capital_events"]}
     capacities = {item["id"]: item for item in data["optional_financing_capacity"]}
 
-    assert events["advance_funding_subscriptions"]["cash_usd"] == 214_050_000
+    assert events["advance_funding_subscriptions"]["cash_usd"] == 214_049_995
+    assert events["advance_funding_subscriptions"]["cash_usd_rounded_in_prospectus"] == 214_050_000
+    assert events["advance_funding_subscriptions"]["cash_used_for_xrp_purchase_usd"] == 214_000_000
+    assert events["advance_funding_subscriptions"]["cash_difference_usd"] == 49_995
     assert events["delayed_funding_subscriptions"]["cash_usd"] == 10_500_000
     assert events["convertible_pik_note"]["principal_usd"] == 30_000_000
     assert events["convertible_pik_note"]["net_cash_proceeds_usd"] == 29_000_000
@@ -40,6 +43,9 @@ def test_evernorth_xrp_contributions_are_not_mislabeled_as_spot_purchases() -> N
     assert events["ripple_direct_contribution"]["classification"] == "in_kind_xrp_contribution_not_spot_purchase"
     assert events["ripple_affiliated_trust_contribution"]["classification"] == "related_party_in_kind_xrp_subscription_not_spot_purchase"
     assert events["cash_funded_xrp_purchase"]["xrp_purchased"] == 84_365_876.3625
+    assert events["cash_funded_xrp_purchase"]["cash_used_for_purchase_usd"] == 214_000_000
+    assert events["cash_funded_xrp_purchase"]["average_price_usd"] == 2.53657058
+    assert events["cash_funded_xrp_purchase"]["execution_venue_status"] == "not disclosed"
     assert data["reported_xrp_position_context"]["includes_cash_funded_purchase_xrp"] == 84_365_876.3625
 
 
@@ -67,3 +73,26 @@ def test_research_artifact_is_not_model_eligible_or_a_forecast() -> None:
     assert data["source_capture"]["raw_http_bytes_captured"] is False
     assert data["forecast"]["issued"] is False
     assert data["forecast"]["directional"] is False
+
+
+def test_ripple_one_million_facility_is_separate_from_nh_kyobo_pik_note() -> None:
+    events = {item["id"]: item for item in _artifact()["capital_events"]}
+
+    assert events["evernorth_related_party_facility"]["lender"] == "Ripple Labs Inc."
+    assert events["evernorth_related_party_facility"]["facility_limit_usd"] == 1_000_000
+    assert events["convertible_pik_note"]["purchaser"].startswith("NH Investment & Securities")
+    assert events["convertible_pik_note"]["principal_usd"] == 30_000_000
+
+
+def test_append_only_corrections_preserve_prior_evernorth_artifact() -> None:
+    data = _artifact()
+    corrections = data["corrections"]
+
+    assert len(corrections) == 2
+    assert all(
+        item["prior_artifact_id"]
+        == "20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation"
+        for item in corrections
+    )
+    assert all(item["disposition"].startswith("Append-only correction") for item in corrections)
+    assert data["reported_xrp_position_context"]["calculated_component_sum_xrp"] == 473_276_430.423935
