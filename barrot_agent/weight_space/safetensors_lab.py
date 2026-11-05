@@ -5,7 +5,8 @@ from dataclasses import asdict, dataclass
 import hashlib
 from pathlib import Path
 import tempfile
-from typing import Any
+from types import MappingProxyType
+from typing import Any, Mapping
 
 
 @dataclass(frozen=True)
@@ -15,12 +16,22 @@ class TensorInventory:
     artifact_path: str
     artifact_sha256: str
     tensor_count: int
-    tensors: tuple[dict[str, Any], ...]
+    tensors: tuple[Mapping[str, Any], ...]
     total_elements: int
 
     def to_dict(self) -> dict[str, Any]:
         """Return a JSON-compatible inventory."""
-        return asdict(self)
+        return {
+            "artifact_path": self.artifact_path,
+            "artifact_sha256": self.artifact_sha256,
+            "tensor_count": self.tensor_count,
+            "tensors": [
+                {"name": item["name"], "shape": list(item["shape"]),
+                 "dtype": item["dtype"], "elements": item["elements"]}
+                for item in self.tensors
+            ],
+            "total_elements": self.total_elements,
+        }
 
 
 def inspect_safetensors(path: str | Path) -> TensorInventory:
@@ -55,12 +66,12 @@ def inspect_safetensors(path: str | Path) -> TensorInventory:
                 for dimension in shape:
                     elements *= dimension
                 total += elements
-                records.append({
+                records.append(MappingProxyType({
                     "name": name,
                     "shape": list(shape),
                     "dtype": str(view.get_dtype()),
                     "elements": elements,
-                })
+                }))
     return TensorInventory(
         str(artifact), digest.hexdigest(), len(records), tuple(records), total
     )
