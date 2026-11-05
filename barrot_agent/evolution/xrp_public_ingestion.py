@@ -24,9 +24,9 @@ from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.2"
-PARSER_VERSION = "xrp-public-market-v3.2"
+ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
+ADAPTER_VERSION = "xrp-public-market-v3.3"
+PARSER_VERSION = "xrp-public-market-v3.3"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -47,7 +47,22 @@ ENDPOINTS = (
     ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
     ("xrp_etf_bitwise_issuer_page", "https://bitxrpetf.com/"),
     ("xrp_etf_grayscale_gxrp_issuer_page", "https://etfs.grayscale.com/gxrp"),
+    ("xrpl_inftf_server_info", "https://xrplcluster.com/"),
+    ("xrpl_honeycluster_server_info", "https://honeycluster.io/"),
 )
+
+XRPL_NODE_SOURCES = {
+    "xrpl_inftf_server_info": {
+        "url": "https://xrplcluster.com/",
+        "host": "xrplcluster.com",
+        "operator": "InFTF",
+    },
+    "xrpl_honeycluster_server_info": {
+        "url": "https://honeycluster.io/",
+        "host": "honeycluster.io",
+        "operator": "Honeycluster",
+    },
+}
 
 
 class XRPIngestionError(ValueError):
@@ -212,6 +227,54 @@ def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
     except UnicodeDecodeError:
         raise XRPIngestionError(f"response is not valid UTF-8 HTML for {source_id}") from None
     return {"raw_bytes": raw, "payload": {"html_text": html_text}, "http_date": http_date}
+
+
+def fetch_public_rpc(source_id: str, url: str) -> dict[str, Any]:
+    """Fetch only the fixed, read-only XRPL server_info method from a registered public node."""
+    config = XRPL_NODE_SOURCES.get(source_id)
+    if config is None or url != config["url"]:
+        raise XRPIngestionError("XRPL RPC source is not registered")
+    parsed = urlsplit(url)
+    if parsed.scheme != "https" or parsed.hostname != config["host"] or parsed.hostname not in ALLOWED_HOSTS:
+        raise XRPIngestionError("XRPL RPC URL is not an allowlisted public HTTPS endpoint")
+
+    body = _canonical({"method": "server_info", "params": [{"api_version": 2}]}).encode("utf-8")
+    request = Request(
+        url,
+        data=body,
+        method="POST",
+        headers={
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "User-Agent": "Barrot-XRP-Public-Ingestion/1.0",
+            "Cache-Control": "no-cache",
+        },
+    )
+    try:
+        with urlopen(request, timeout=15) as response:
+            final_url = urlsplit(response.geturl())
+            if final_url.scheme != "https" or final_url.hostname != config["host"]:
+                raise XRPIngestionError("XRPL RPC redirected outside its registered operator host")
+            raw = response.read(MAX_RESPONSE_BYTES + 1)
+            http_date = response.headers.get("Date")
+    except XRPIngestionError:
+        raise
+    except Exception:
+        raise XRPIngestionError(f"public XRPL RPC fetch failed for {source_id}") from None
+    if not raw or len(raw) > MAX_RESPONSE_BYTES:
+        raise XRPIngestionError(f"XRPL RPC response size is invalid for {source_id}")
+    try:
+        payload = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError):
+        raise XRPIngestionError(f"XRPL RPC response is not valid JSON for {source_id}") from None
+    if (
+        not isinstance(payload, Mapping)
+        or not isinstance(payload.get("result"), Mapping)
+        or payload.get("error")
+        or payload.get("status") not in (None, "success")
+    ):
+        raise XRPIngestionError(f"XRPL RPC response is not a successful server_info result for {source_id}")
+    return {"raw_bytes": raw, "payload": payload, "http_date": http_date}
 
 
 class RawReceiptArchive:
@@ -746,6 +809,156 @@ def _parse_binance_global_long_short_ratio(payload: Any, *, source_id: str, url:
     return records, _iso(latest_time), True, ""
 
 
+def _parse_xrpl_server_info(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    """Parse one node's validated-ledger status; cross-node agreement is checked separately."""
+    config = XRPL_NODE_SOURCES.get(source_id)
+    if config is None:
+        raise XRPIngestionError("XRPL server-info source is not registered")
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("result"), Mapping):
+        raise XRPIngestionError("XRPL server_info response shape mismatch")
+    info = payload["result"].get("info")
+    if not isinstance(info, Mapping):
+        raise XRPIngestionError("XRPL server_info response has no info object")
+    validated = info.get("validated_ledger")
+    if not isinstance(validated, Mapping):
+        return [], None, False, "validated_ledger_missing_from_public_node"
+
+    sequence = validated.get("seq")
+    if isinstance(sequence, bool) or not isinstance(sequence, int) or sequence <= 0:
+        raise XRPIngestionError("XRPL validated ledger sequence is invalid")
+    ledger_hash = validated.get("hash")
+    if not isinstance(ledger_hash, str) or not re.fullmatch(r"[0-9A-Fa-f]{64}", ledger_hash):
+        raise XRPIngestionError("XRPL validated ledger hash is invalid")
+
+    age = _number(validated.get("age"), "XRPL validated ledger age")
+    base_fee = _number(validated.get("base_fee_xrp"), "XRPL base fee", allow_zero=False)
+    reserve_base = _number(validated.get("reserve_base_xrp"), "XRPL base reserve", allow_zero=False)
+    reserve_increment = _number(validated.get("reserve_inc_xrp"), "XRPL owner reserve increment", allow_zero=False)
+    server_date = _from_http_date(http_date)
+    if server_date is None:
+        return [], None, False, "missing_or_invalid_http_date_for_xrpl_server_info"
+    if server_date > captured + timedelta(seconds=60):
+        raise XRPIngestionError("XRPL server HTTP Date is later than the capture clock")
+    source_time = server_date - timedelta(seconds=age)
+    if source_time > captured + timedelta(seconds=60):
+        raise XRPIngestionError("XRPL validated-ledger time is later than the capture clock")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    limitations = [
+        f"Public non-commercial XRPL node operated by {config['operator']}; source_id preserves operator identity.",
+        "Validated-ledger index, fee and reserve metrics are network state, not exchange volume, payment volume, XRP collateral or circulating supply.",
+        "The two node operators report the same public ledger; their agreement is a node-integrity check, not independent economic evidence.",
+    ]
+    fields = (
+        ("validated_ledger_index", float(sequence), "ledger_index"),
+        ("validated_ledger_age_seconds", age, "seconds"),
+        ("base_fee_xrp", base_fee, "XRP"),
+        ("reserve_base_xrp", reserve_base, "XRP"),
+        ("reserve_increment_xrp", reserve_increment, "XRP"),
+    )
+    records = [
+        _feature_record(
+            feature_id=f"xrp.network.xrpl.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="xrpl_public_ledger",
+            venue="XRPL",
+            instrument="XRPL mainnet validated server state",
+            currency_pair="XRP/network",
+            market_type="network",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit in fields
+    ]
+    return records, event_s, eligible, reason
+
+
+def _reconcile_xrpl_node_records(
+    records: list[dict[str, Any]],
+    payloads: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Require two registered operators to report the same validated ledger before admission."""
+    observations: dict[str, dict[str, Any]] = {}
+    for source_id, config in XRPL_NODE_SOURCES.items():
+        payload = payloads.get(source_id)
+        if not isinstance(payload, Mapping):
+            continue
+        result = payload.get("result")
+        info = result.get("info") if isinstance(result, Mapping) else None
+        validated = info.get("validated_ledger") if isinstance(info, Mapping) else None
+        if not isinstance(validated, Mapping):
+            continue
+        sequence = validated.get("seq")
+        ledger_hash = validated.get("hash")
+        if (
+            isinstance(sequence, bool)
+            or not isinstance(sequence, int)
+            or sequence <= 0
+            or not isinstance(ledger_hash, str)
+            or not re.fullmatch(r"[0-9A-Fa-f]{64}", ledger_hash)
+        ):
+            continue
+        observations[source_id] = {
+            "operator": config["operator"],
+            "ledger_index": sequence,
+            "ledger_hash": ledger_hash.upper(),
+        }
+
+    identities = {(item["ledger_index"], item["ledger_hash"]) for item in observations.values()}
+    if len(observations) == len(XRPL_NODE_SOURCES) and len(identities) == 1:
+        status = "AGREED"
+        reason = ""
+    elif len(observations) == len(XRPL_NODE_SOURCES):
+        status = "DISAGREEMENT"
+        reason = "xrpl_public_nodes_report_different_validated_ledgers"
+    else:
+        status = "INSUFFICIENT_NODE_CONFIRMATION"
+        reason = "xrpl_public_node_independent_confirmation_missing"
+
+    node_records = []
+    for record in records:
+        source_ids = {
+            source.get("source_id")
+            for source in record.get("sources", [])
+            if isinstance(source, Mapping)
+        }
+        if source_ids.intersection(XRPL_NODE_SOURCES):
+            node_records.append(record)
+            if status != "AGREED":
+                record["model_eligible"] = False
+                record["eligibility_reason"] = reason
+                record["quality_status"] = "unverified"
+
+    return {
+        "status": status,
+        "reason": reason,
+        "required_source_count": len(XRPL_NODE_SOURCES),
+        "observed_source_count": len(observations),
+        "observed_source_ids": sorted(observations),
+        "observations": observations,
+        "model_admission_allowed": bool(
+            status == "AGREED" and node_records and all(item.get("model_eligible") is True for item in node_records)
+        ),
+    }
+
+
 def _parse_coinbase_ticker(
     payload: Any,
     *,
@@ -1139,6 +1352,8 @@ def _raw_only_grayscale_gxrp_issuer_page(payload: Any, *, captured: datetime, **
 
 
 PARSERS = {
+    "xrpl_inftf_server_info": _parse_xrpl_server_info,
+    "xrpl_honeycluster_server_info": _parse_xrpl_server_info,
     "binance_spot_ticker": _parse_binance_ticker,
     "binance_spot_klines": _parse_binance_klines,
     "binance_perp_premium": _parse_binance_premium,
@@ -1324,6 +1539,8 @@ def _walk_forward_report(
 
 
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
+    if source_id in XRPL_NODE_SOURCES:
+        return fetch_public_rpc(source_id, url)
     if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page"}:
         return fetch_public_html(source_id, url)
     return fetch_public_json(source_id, url)
@@ -1344,6 +1561,7 @@ def run_ingestion(
     records = []
     failures = []
     raw_only = []
+    xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
 
     for source_id, url in ENDPOINTS:
         try:
@@ -1360,12 +1578,14 @@ def run_ingestion(
                 "digest": digest,
                 "captured": captured,
             }
-            if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"}:
+            if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
                 parser_kwargs["http_date"] = response.get("http_date")
             parsed_records, source_as_of, source_eligible, reason = parser(
                 payload,
                 **parser_kwargs,
             )
+            if source_id in XRPL_NODE_SOURCES and source_as_of is not None:
+                xrpl_node_payloads[source_id] = payload
         except Exception as exc:
             failures.append({"source_id": source_id, "error_type": type(exc).__name__})
             continue
@@ -1387,6 +1607,16 @@ def run_ingestion(
             raw_only.append({"source_id": source_id, "reason": reason})
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
+
+    xrpl_node_reconciliation = _reconcile_xrpl_node_records(records, xrpl_node_payloads)
+    if xrpl_node_reconciliation["status"] != "AGREED":
+        for source_id in xrpl_node_reconciliation["observed_source_ids"]:
+            raw_only.append(
+                {
+                    "source_id": source_id,
+                    "reason": xrpl_node_reconciliation["reason"],
+                }
+            )
 
     database = output / "feature_store.sqlite3"
     store = HistoricalFeatureStore(database)
@@ -1461,6 +1691,7 @@ def run_ingestion(
         "source_receipt_count": len(receipts),
         "source_failure_count": len(failures),
         "raw_only_source_count": len(raw_only),
+        "xrpl_node_reconciliation": xrpl_node_reconciliation,
         "input_feature_record_count": len(records),
         "delta_feature_record_count": len(delta_records),
         "snapshot_status": snapshot_status,
@@ -1500,6 +1731,8 @@ def run_ingestion(
             "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
             "Bitwise XRP ETF, Grayscale GXRP and REX XRPR primary issuer pages are captured as SHA-256-receipted raw-only HTML; holdings are not parsed into features until page-vintage and parser validation are implemented.",
             "The historical evaluator uses naive, momentum, mean-reversion and volatility baselines. It does not issue a live forecast; probability calibration is diagnostic only, and shadow evaluation and drift monitoring are not yet implemented.",
+            "XRPL server_info is captured from two public non-commercial node operators; model admission requires an exact validated-ledger index/hash match. These nodes corroborate the same ledger and do not count as independent economic sources.",
+            "The XRPL public-node endpoints are non-commercial community services; replace them with a self-hosted or contracted node before sustained commercial use.",
             "This collector does not issue directional forecasts, trading signals, recommendations or paper trades.",
         ],
     }

@@ -15,11 +15,14 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     XRPIngestionError,
     fetch_public_json,
     fetch_public_html,
+    fetch_public_rpc,
     _default_public_fetcher,
     run_ingestion,
     ALLOWED_HOSTS,
     ENDPOINTS,
     PARSERS,
+    XRPL_NODE_SOURCES,
+    _reconcile_xrpl_node_records,
 )
 
 
@@ -116,6 +119,24 @@ def _fake_fetcher(captured: datetime):
                 "bids": [["1.289", "1000"]],
                 "asks": [["1.291", "1200"]],
             }
+        elif source_id in XRPL_NODE_SOURCES:
+            payload = {
+                "result": {
+                    "info": {
+                        "server_state": "full",
+                        "validated_ledger": {
+                            "age": 5,
+                            "base_fee_xrp": 0.00001,
+                            "hash": "A" * 64,
+                            "reserve_base_xrp": 1,
+                            "reserve_inc_xrp": 0.2,
+                            "seq": 108123456,
+                        },
+                    }
+                },
+                "status": "success",
+                "type": "response",
+            }
         elif source_id == "xrp_etf_flows_aggregator":
             payload = {
                 "metadata": {
@@ -148,7 +169,7 @@ def _fake_fetcher(captured: datetime):
             raise AssertionError(source_id)
         raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
         response = {"raw_bytes": raw, "payload": payload}
-        if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"}:
+        if source_id in {"coinbase_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
             response["http_date"] = http_date
         return response
 
@@ -214,7 +235,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 16, (
+    assert summary["source_receipt_count"] == 18, (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -223,6 +244,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
     assert summary["feature_store_backup_frequency"] == "daily_plus_manual_dispatch"
+    assert summary["xrpl_node_reconciliation"]["status"] == "AGREED"
+    assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is True
 
     snapshot = json.loads((tmp_path / "run" / "snapshot.json").read_text(encoding="utf-8"))
     historical = next(
@@ -233,8 +256,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.2"
-    assert summary["parser_version"] == "xrp-public-market-v3.2"
+    assert summary["adapter_version"] == "xrp-public-market-v3.3"
+    assert summary["parser_version"] == "xrp-public-market-v3.3"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -243,6 +266,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert len(coinbase_closes) == 2
     assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.network.xrpl.base_fee_xrp" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.network.xrpl.validated_ledger_index" for item in snapshot["records"])
     historical_derivatives = [
         item for item in snapshot["records"]
         if item["feature_id"].startswith("xrp.perpetual.binance.1h.")
@@ -670,3 +695,154 @@ def test_historical_derivatives_reject_future_event_timestamps():
         PARSERS[source_id](
             payload, source_id=source_id, url=url, digest="f" * 64, captured=captured
         )
+
+
+def test_xrpl_server_info_uses_validated_ledger_and_http_date():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "xrpl_inftf_server_info", dict(ENDPOINTS)["xrpl_inftf_server_info"]
+    response = _fake_fetcher(captured)(source_id, url)
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest="a" * 64,
+        captured=captured,
+        http_date=response["http_date"],
+    )
+    assert eligible is True and reason == ""
+    assert source_as_of == "2026-11-05T03:59:50.000000Z"
+    values = {item["feature_id"]: item for item in records}
+    assert values["xrp.network.xrpl.validated_ledger_index"]["value"] == 108123456.0
+    assert values["xrp.network.xrpl.base_fee_xrp"]["value"] == 0.00001
+    assert values["xrp.network.xrpl.reserve_base_xrp"]["value"] == 1.0
+    assert values["xrp.network.xrpl.reserve_increment_xrp"]["value"] == 0.2
+    assert all(item["sources"][0]["independence_group"] == "xrpl_public_ledger" for item in records)
+    assert all("not independent economic evidence" in item["limitations"][2] for item in records)
+
+
+def test_xrpl_server_info_without_http_date_remains_raw_only():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "xrpl_inftf_server_info", dict(ENDPOINTS)["xrpl_inftf_server_info"]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        payload,
+        source_id=source_id,
+        url=url,
+        digest="b" * 64,
+        captured=captured,
+        http_date=None,
+    )
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert reason == "missing_or_invalid_http_date_for_xrpl_server_info"
+
+
+def test_xrpl_node_reconciliation_requires_exact_two_operator_ledger_match():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    payloads = {}
+    records = []
+    for source_id, url in ENDPOINTS:
+        if source_id not in XRPL_NODE_SOURCES:
+            continue
+        response = fetcher(source_id, url)
+        payloads[source_id] = response["payload"]
+        parsed, _, _, _ = PARSERS[source_id](
+            response["payload"],
+            source_id=source_id,
+            url=url,
+            digest=("c" if source_id == "xrpl_inftf_server_info" else "d") * 64,
+            captured=captured,
+            http_date=response["http_date"],
+        )
+        records.extend(parsed)
+
+    agreed = _reconcile_xrpl_node_records(records, payloads)
+    assert agreed["status"] == "AGREED"
+    assert agreed["model_admission_allowed"] is True
+    assert agreed["observed_source_count"] == 2
+
+    payloads["xrpl_honeycluster_server_info"] = json.loads(
+        json.dumps(payloads["xrpl_honeycluster_server_info"])
+    )
+    payloads["xrpl_honeycluster_server_info"]["result"]["info"]["validated_ledger"]["seq"] += 1
+    blocked = _reconcile_xrpl_node_records(records, payloads)
+    assert blocked["status"] == "DISAGREEMENT"
+    assert blocked["model_admission_allowed"] is False
+    assert all(item["model_eligible"] is False for item in records)
+    assert all(
+        item["eligibility_reason"] == "xrpl_public_nodes_report_different_validated_ledgers"
+        for item in records
+    )
+
+
+def test_xrpl_node_reconciliation_fails_closed_without_two_operators():
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    source_id, url = "xrpl_inftf_server_info", dict(ENDPOINTS)["xrpl_inftf_server_info"]
+    response = _fake_fetcher(captured)(source_id, url)
+    records, _, _, _ = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest="e" * 64,
+        captured=captured,
+        http_date=response["http_date"],
+    )
+    result = _reconcile_xrpl_node_records(records, {source_id: response["payload"]})
+    assert result["status"] == "INSUFFICIENT_NODE_CONFIRMATION"
+    assert result["model_admission_allowed"] is False
+    assert all(item["model_eligible"] is False for item in records)
+
+
+def test_xrpl_rpc_fetch_is_fixed_read_only_and_redirect_bound(monkeypatch):
+    import barrot_agent.evolution.xrp_public_ingestion as ingestion
+
+    source_id, url = "xrpl_inftf_server_info", dict(ENDPOINTS)["xrpl_inftf_server_info"]
+    response_payload = {
+        "result": {"info": {"validated_ledger": {"seq": 1, "hash": "A" * 64}}},
+        "status": "success",
+    }
+    raw = json.dumps(response_payload).encode("utf-8")
+    seen = {}
+
+    class FakeResponse:
+        headers = {"Date": "Thu, 05 Nov 2026 04:00:00 GMT"}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def geturl(self):
+            return url
+
+        def read(self, _limit):
+            return raw
+
+    def fake_urlopen(request, timeout):
+        seen["method"] = request.get_method()
+        seen["url"] = request.full_url
+        seen["body"] = json.loads(request.data.decode("utf-8"))
+        seen["timeout"] = timeout
+        return FakeResponse()
+
+    monkeypatch.setattr(ingestion, "urlopen", fake_urlopen)
+    result = fetch_public_rpc(source_id, url)
+    assert seen["method"] == "POST"
+    assert seen["url"] == url
+    assert seen["timeout"] == 15
+    assert seen["body"] == {"method": "server_info", "params": [{"api_version": 2}]}
+    assert result["payload"]["status"] == "success"
+
+    class RedirectResponse(FakeResponse):
+        def geturl(self):
+            return "https://example.invalid/"
+
+    monkeypatch.setattr(ingestion, "urlopen", lambda *_args, **_kwargs: RedirectResponse())
+    with pytest.raises(XRPIngestionError, match="redirected outside"):
+        fetch_public_rpc(source_id, url)
+
+    with pytest.raises(XRPIngestionError, match="not registered"):
+        fetch_public_rpc("xrpl_submit", url)
