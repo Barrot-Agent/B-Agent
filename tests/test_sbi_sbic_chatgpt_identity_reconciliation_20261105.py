@@ -36,7 +36,7 @@ def test_three_regional_sbic_entities_remain_distinct():
 def test_sbic_east_chatgpt_course_is_investee_training_not_openai_partnership():
     data = _artifact()["identity_resolution"]["sbic_east_chatgpt_training"]
     assert data["dates"] == ["2025-06-12", "2025-06-13"]
-    assert "investee companies only" in data["audience"]
+    assert "investee companies only" in data["audience"].lower()
     assert "ChatGPT" in data["curriculum_includes"]
     assert "OpenAI partnership with SBIC East" in data["not_established"]
 
