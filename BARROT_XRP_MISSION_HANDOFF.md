@@ -6430,3 +6430,31 @@ Targeted searches found older work not previously classified. None was closed.
 6. After merged content is verified on main, close only exact superseded/duplicate source PRs with cross-references. Preserve all unique work.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 11 verification correction — #1643 full suite completed
+
+The prior Run 11 note that #1643 full-suite CI was still in progress is superseded. The dependency-install stall was transient and resolved.
+
+- Current #1643 head: `f1b956bd886bca48848be0406bf6ed9ddefcc605`.
+- [Exact-head full repository CI 42116564917](https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564917): **1,150 passed, 8 subtests passed**.
+- All seven tests in `tests/test_xrp_three_company_trust_charter_entity_map_20261105.py` passed.
+- Core: 495 passed, 8 subtests.
+- [Six-manifest dependency audit 42116564688](https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564688): passed.
+- [Fail-closed gate 42116564747](https://github.com/Barrot-Agent/B-Agent/actions/runs/42116564747): passed; merging remains disabled.
+
+#1640 code-bearing head remains `76c0735055bfa10190727f6c39741308e265d699`. Exact code verification [42115277515](https://github.com/Barrot-Agent/B-Agent/actions/runs/42115277515) passed 614 core tests, 1,035 full tests, 8 subtests and 57.07% inclusive coverage; [six-manifest dependency audit 42115277487](https://github.com/Barrot-Agent/B-Agent/actions/runs/42115277487) and [fail-closed gate 42115277489](https://github.com/Barrot-Agent/B-Agent/actions/runs/42115277489) passed. Subsequent integration-branch commits only update this handoff; they do not change source or tests. The current handoff-only head is `4692f66641d9d27a90f3a0e029b7d664f34d92e9`; its own post-commit CI is not yet verified.
+
+The new public-video inventory contains three candidate YouTube records, not thirteen: one Linktree-direct link and two YouTube search-result records. The iHeart interview is a podcast, not a YouTube video. The Circle/Ripple/Coinbase charter comparison distinguishes all three state NYDFS limited-purpose trust entities from their separate OCC national trust-bank applications. Neither research set is evidence of XRP purchases, collateral, AUC or operational customer volume.
+
+The SEC October 30, 2026 Evernorth prospectus (accession `0001628280-26-068609`) separately states no proceeds had been received under the Committed Equity Facility as of the prospectus date. Its 73,688,162 registered resale shares are selling-securityholder supply, not company cash proceeds. The $521,893.50 upfront commitment fee is a fee obligation/outflow. Public-warrant proceeds remain contingent on cash exercise. This reinforces the actual-versus-potential capital separation in the existing Evernorth ledger.
+
+Older source PR reconciliation remains:
+- #1422: 23 unique research/test paths plus one older CI path that must not replace #1640's integrated full-suite workflow.
+- #1509: 25 unique historical JSON handoff snapshots; preserve and reconcile, do not merge directly from its stale base.
+- #1614: 22 exact research blobs already in #1643; 8 overlapping code/CI/contract/test paths differ from the more complete #1640 V3 implementation; 4 unique JSON artifacts and 25 unique Markdown handoff notes remain for content-level reconciliation. `research_artifact_clock.py` already exists on main.
+No source PRs were closed. Preserve unique work until the successor content is verified on main.
+
+All merge blockers remain: zero approving reviews on #1640/#1643; detailed branch-protection inspection HTTP 403; visible fallback ruleset disabled; GitHub Pages settings inaccessible and merge-triggered deployment authorization unresolved. Do not bypass these conditions.
