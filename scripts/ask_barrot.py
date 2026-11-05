@@ -183,7 +183,7 @@ def load_ingestion_metrics():
     for name, s in sources.items():
         count = s.get("entries_ingested", 0)
         if count > 0:
-            real_lines.append(f"- {name}: {count} entries ingested (real, active)")
+            real_lines.append(f"- {name}: {count} entries recorded by this counter (verify execution separately)")
         else:
             dead_sources.append(name)
     if not real_lines and not dead_sources:
