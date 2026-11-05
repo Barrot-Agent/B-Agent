@@ -17,7 +17,7 @@ def test_channel_identity_is_triangulated_but_not_overstated_as_legal_identity()
     assert identity["identity_confidence"] == "HIGH_CONFIDENCE_PUBLIC_CHANNEL_MATCH"
     assert identity["legal_identity_verified"] is False
     assert identity["self_reported_social_names"]["handles_not_independently_verified"] is True
-    assert any("fake pages exist" in item for item in identity["basis"])
+    assert any("fake pages exist" in item for item in identity["limitations"])
     assert any("auto-generated" in item for item in identity["limitations"])
 
 
