@@ -15,6 +15,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     XRPIngestionError,
     fetch_public_json,
     fetch_public_html,
+    _default_public_fetcher,
     run_ingestion,
     ALLOWED_HOSTS,
     ENDPOINTS,
@@ -127,12 +128,21 @@ def _fake_fetcher(captured: datetime):
                 "funds": [{"ticker": "XRP", "issuer": "Bitwise"}],
                 "columns": [{"name": "xrp_flow", "unit": "XRP"}],
             }
-        elif source_id == "xrp_etf_xrpr_issuer_page":
-            html_text = "<html><title>REX-Osprey XRP ETF XRPR</title><p>As of 11/03/2026</p><table><tr><td>CoinShares XRP ETP</td></tr></table></html>"
+        elif source_id in {
+            "xrp_etf_xrpr_issuer_page",
+            "xrp_etf_bitwise_issuer_page",
+            "xrp_etf_grayscale_gxrp_issuer_page",
+        }:
+            html_by_source = {
+                "xrp_etf_xrpr_issuer_page": "<html><title>REX-Osprey XRP ETF XRPR</title><p>As of 11/03/2026</p><table><tr><td>CoinShares XRP ETP</td></tr></table></html>",
+                "xrp_etf_bitwise_issuer_page": "<html><title>Bitwise XRP ETF</title><p>Data as of 11/03/2026</p><td>XRP in Trust</td><td>Digital Asset Custodian</td></html>",
+                "xrp_etf_grayscale_gxrp_issuer_page": "<html><title>Grayscale XRP Trust ETF</title><p>As of 11/04/2026</p><td>TOTAL XRP IN FUND</td><td>DIGITAL ASSET CUSTODIAN</td></html>",
+            }
+            html_text = html_by_source[source_id]
             return {
                 "raw_bytes": html_text.encode("utf-8"),
                 "payload": {"html_text": html_text},
-                "http_date": "Wed, 05 Nov 2026 02:30:00 GMT",
+                "http_date": "Thu, 05 Nov 2026 04:00:00 GMT",
             }
         else:
             raise AssertionError(source_id)
@@ -204,7 +214,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
-    assert summary["source_receipt_count"] == 14, (
+    assert summary["source_receipt_count"] == 16, (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -223,8 +233,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.1"
-    assert summary["parser_version"] == "xrp-public-market-v3.1"
+    assert summary["adapter_version"] == "xrp-public-market-v3.2"
+    assert summary["parser_version"] == "xrp-public-market-v3.2"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -250,12 +260,17 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_aggregator" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_xrpr_issuer_page" for item in raw_only)
+    assert any(item["source_id"] == "xrp_etf_bitwise_issuer_page" for item in raw_only)
+    assert any(item["source_id"] == "xrp_etf_grayscale_gxrp_issuer_page" for item in raw_only)
     receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     manifest = {item["source_id"]: item for item in receipts}
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
     assert manifest["xrp_etf_xrpr_issuer_page"]["model_eligible_source"] is False
     assert manifest["xrp_etf_xrpr_issuer_page"]["source_data_as_of_utc"] is None
+    for source_id in ("xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page"):
+        assert manifest[source_id]["model_eligible_source"] is False
+        assert manifest[source_id]["source_data_as_of_utc"] is None
     for source_id in ("binance_perp_funding_history", "binance_perp_open_interest_history", "binance_perp_global_long_short_ratio"):
         assert manifest[source_id]["model_eligible_source"] is True
         assert len(manifest[source_id]["raw_content_sha256"]) == 64
@@ -476,6 +491,46 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
     assert source_as_of is None
     assert eligible is False
     assert "raw_only" in reason
+
+
+@pytest.mark.parametrize(
+    ("source_id", "host", "url"),
+    [
+        ("xrp_etf_bitwise_issuer_page", "bitxrpetf.com", "https://bitxrpetf.com/"),
+        ("xrp_etf_grayscale_gxrp_issuer_page", "etfs.grayscale.com", "https://etfs.grayscale.com/gxrp"),
+    ],
+)
+def test_additional_primary_issuer_pages_are_registered_and_retained_raw_only(source_id, host, url):
+    captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        payload, source_id=source_id, url=url, digest="d" * 64, captured=captured
+    )
+    assert host in ALLOWED_HOSTS
+    assert dict(ENDPOINTS)[source_id] == url
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert "raw_only" in reason
+
+
+@pytest.mark.parametrize(
+    "source_id",
+    ["xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page"],
+)
+def test_default_public_fetcher_routes_primary_issuer_pages_to_html(monkeypatch, source_id):
+    calls = []
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.fetch_public_html",
+        lambda sid, url: calls.append(("html", sid, url)) or {"kind": "html"},
+    )
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.fetch_public_json",
+        lambda sid, url: calls.append(("json", sid, url)) or {"kind": "json"},
+    )
+    url = dict(ENDPOINTS)[source_id]
+    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    assert calls == [("html", source_id, url)]
 
 
 def test_public_html_fetch_captures_allowlisted_issuer_bytes(monkeypatch):
