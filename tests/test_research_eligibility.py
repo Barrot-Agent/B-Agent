@@ -454,13 +454,7 @@ def test_raw_receipt_registry_metadata_must_match_canonical_receipt():
     records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
 
     with pytest.raises(ResearchEligibilityError, match="source_uri does not match its canonical receipt"):
-        _build(
-            records,
-            source_bytes,
-            overlay,
-            overlay_bytes,
-            raw_receipt_bytes={receipt_id: RAW_RECEIPT_BYTES},
-        )
+        _build(records, source_bytes, overlay, overlay_bytes)
 
 
 def test_raw_receipt_path_must_be_content_addressed_to_verified_payload():
@@ -478,4 +472,10 @@ def test_raw_receipt_path_must_be_content_addressed_to_verified_payload():
     records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
 
     with pytest.raises(ResearchEligibilityError, match="not bound to the content-addressed payload"):
-        _build(records, source_bytes, overlay, overlay_bytes)
+        _build(
+            records,
+            source_bytes,
+            overlay,
+            overlay_bytes,
+            raw_receipt_bytes={receipt_id: RAW_RECEIPT_BYTES},
+        )
