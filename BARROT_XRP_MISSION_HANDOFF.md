@@ -3494,7 +3494,7 @@ Recorded: 2026-11-05T06:18Z
 - PR #1640 code-bearing head: `5ed5f70b958982aaddc0a61f26f483520234439a`; 193 commits ahead, 0 behind; 83 changed files.
 - PR #1643 head: `da5bbed8dcd6003925b6ba63faaab1b300f19f76`; 138 commits ahead, 0 behind; 116 changed files. The two integration branches have no changed-path overlap.
 - PR #1640 exact-head CI [41979167727](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979167727): core suite **594 passed, 8 subtests**; full repository suite **891 passed, 8 subtests**; inclusive package coverage **53.55%**, above the 50% floor; wheel build and installed-wheel verification succeeded and confirmed Barrot V3, the XRP primary mission and canonical data assets.
-- PR #1640 exact-head dependency audit [41979167623](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979167623): all five declared dependency sets passed strict pip-audit; no known vulnerabilities were found.
+- PR #1640 exact-head dependency audit [41979167623](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979167623): the five audited sets passed, but this run did not include root `requirements.txt` despite that file being listed in the path trigger. This was an audit-coverage defect, not a vulnerability finding; it was corrected and reverified in Run 28 below.
 - PR #1640 fail-closed gate [41979167803](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979167803): passed and explicitly kept automatic merging disabled.
 - PR #1643 exact-head core suite: **495 passed, 8 subtests**; full repository suite: **866 passed, 8 subtests**; CI [41976071373](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071373) and fail-closed gate [41976071392](https://github.com/Barrot-Agent/B-Agent/actions/runs/41976071392) passed.
 - Review threads: #1640 22/22 resolved; #1643 14/14 resolved. Neither PR has an approving review.
@@ -3583,3 +3583,49 @@ Next actions:
 **Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.** No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 
 This update is committed on the existing #1640 integration branch. Its resulting documentation-only head must receive its own exact-head CI, dependency audit and fail-closed gate before that new head is described as verified.
+
+
+### Run 28 — six-manifest dependency audit and integration verification
+Recorded: 2026-11-05T06:23Z
+
+#### Exact code-bearing head
+
+- Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main changes or merges occurred.
+- PR #1640 code-bearing head: `74b0c1ad53131179c5657d9886e1d12eba548a29`; 196 commits ahead, 0 behind; 83 changed files.
+- Core suite: **594 passed, 8 subtests passed**.
+- Full repository suite: **891 passed, 8 subtests passed**.
+- Inclusive package coverage: **53.55%**, above the 50% floor.
+- Wheel build and installed-wheel verification passed; the installed package loads Barrot V3, the XRP primary mission and canonical data assets.
+- Exact full CI: [41979702070](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979702070) — success.
+- Exact fail-closed gate: [41979701997](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979701997) — success; automatic merging remains disabled.
+
+#### Dependency-audit coverage correction
+
+A live workflow audit found that `requirements.txt` was included in the dependency-audit path filter but was not actually passed to `pip-audit`. The earlier five-set audit therefore did not cover the root runtime requirements. This was corrected in `.github/workflows/dependency-audit.yml` and locked by `test_dependency_audit_covers_all_declared_manifests_and_runtime_imports`.
+
+The exact-head six-set dependency audit [41979702003](https://github.com/Barrot-Agent/B-Agent/actions/runs/41979702003) passed all six declarations with no known vulnerabilities:
+
+1. Root runtime `requirements.txt`.
+2. Development `requirements-dev.txt`.
+3. Supplemental `requirements.tx`.
+4. Hugging Face Space `hf_space/requirements.txt`.
+5. Legacy `legacy/requirements_legacy.txt`.
+6. PEP 621 `[project].dependencies` in `pyproject.toml` (15 dependencies materialized and audited).
+
+Each pip-audit invocation used strict mode and no vulnerability ignore. The root runtime audit specifically returned “No known vulnerabilities found.” The final workflow gate verified all six step outcomes were successful.
+
+#### Current integration state
+
+- PR #1640 remains the single V3/core/XRP prediction integration workstream.
+- PR #1643 remains the single append-only XRP research archive workstream at `da5bbed8dcd6003925b6ba63faaab1b300f19f76`, 138 commits ahead, 0 behind, 116 files; its exact-head full suite has 866 passed, 8 subtests and its fail-closed gate passed.
+- #1643's PR description was updated to record its actual 91 JSON artifacts, 22 regression-test modules, 3 Markdown addenda, exact-head checks and model-eligibility limitations.
+- The prior classifications remain unchanged: #1642 is an exact ancestor; #1644–#1650 are superseded candidates represented by #1640; #1651, #1615, #1621 and #1269 retain unique work; #1317/#1318/#1320 retain unique hunks; #1254/#1255 remain pending exact diff reconciliation.
+- Open PR inventory remains 370 total, 354 drafts and 16 non-drafts. No PRs were closed.
+
+#### Readiness and merge boundary
+
+The independent Ed25519 evaluator-attestation policy v2 remains fail-closed. No production evaluator key or independently operated signing service is configured. Historical data, raw-source retention and independent timestamp anchoring are insufficient for directional forecasting. **No directional forecast is issued.**
+
+Both #1640 and #1643 still have zero approving reviews. Main is protected, but detailed branch-protection inspection returns HTTP 403 and the visible fallback ruleset is disabled. The previous Pages deployment side effect remains unresolved. No merge is authorized under the stated gates.
+
+This Run 28 record is committed on the existing #1640 branch. The resulting documentation-only head must receive its own exact-head full-suite CI, six-set dependency audit and fail-closed gate before that new head is described as verified.
