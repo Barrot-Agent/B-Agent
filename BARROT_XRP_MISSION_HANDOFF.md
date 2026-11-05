@@ -2502,3 +2502,76 @@ No PR was merged or closed. No branch was force-pushed or rewritten. No deployme
 6. Continue with durable cross-run source storage and independent timestamp anchoring, then broader XRP ecosystem ingestion, chronological evaluation, calibration, drift and shadow evaluation.
 
 No PR was merged or closed. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 8 — exact-head verification, 100/100 walk-forward gate, and fresh XRP cross-check (recorded 2026-11-05T02:19:29.788Z)
+
+### Main and repository baseline
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; recursive tree: 1,403 entries, `truncated=false`.
+- Open PR inventory: **369 total; 354 drafts; 15 non-drafts**. Non-drafts: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+- Main branch endpoint reports `protected=true`; classic branch-protection details return HTTP 403. The visible fallback ruleset is disabled. Required review/check settings therefore remain unverified; do not bypass.
+- Main's Cross Analysis workflow is read-only (`contents: read`, checkout credentials disabled, artifacts only, 30-day retention); latest main run [41951363027](https://github.com/Barrot-Agent/B-Agent/actions/runs/41951363027) succeeded. Knowledge Signal Cycle is manual-only with explicit YES and read-only permissions. Barrot Auto PR is a push-triggered echo/validation job with `contents: read`, not a PR creator.
+- GitHub Pages' automatic deployment completed on prior main push [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Its Pages settings are not exposed through the available GitHub integration; another automatic deployment is not authorized.
+- Main's A2A worker and self-hosted-brain workflows still have push triggers; #1640 changes both to manual-only. #1640 also quarantines the task allocator, Barrot issue agent and autonomous self-upgrade. The Coinbase paper-trader workflow is manual-only, requires explicit YES and exact main SHA, and was not executed. Space/Hugging Face restart/deploy and brain-dump workflows remain disabled or manual-confirmation-only.
+
+### Active integration workstreams and exact-head evidence
+**PR #1640 — V3/core integration**
+- Current exact head: `11803360859adec11323b360704601ad40a8600f`; 119 commits ahead, 0 behind; 71 changed files.
+- Exact-head CI [41953257614](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953257614): core **582 passed, 8 subtests passed**; full repository suite **860 passed, 8 subtests passed**.
+- Inclusive `barrot_agent` coverage **53.18%**, above the 50% floor.
+- Five-manifest dependency audit [41953257617](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953257617): all five audited; no known vulnerabilities reported.
+- Fail-closed gate [41953257616](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953257616) passed and explicitly says automatic merge is intentionally disabled.
+- New evaluator regression tests passed: minimum distinct OOS-origin enforcement and positive-threshold validation.
+
+**PR #1643 — XRP research archive**
+- Current exact head: `83b5d581fabdc8bcc3fd3c7807b7353ecd3644f3`; 97 commits ahead, 0 behind; 98 changed files.
+- Exact-head CI [41953831140](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953831140): core **495 passed, 8 subtests passed**; full repository suite **811 passed, 8 subtests passed**.
+- The new seven-test cross-venue/protocol cross-check module and two-test Kraken ticker receipt module passed. The timestamp-precision correction test also passed.
+- Fail-closed gate [41953830670](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953830670) passed and disables automatic merge. No dependency manifests changed on #1643, so no dependency audit was triggered.
+- Changed-path intersection between #1640 and #1643 remains empty.
+
+### Prediction-engine integrity correction
+- #1640's `walk_forward.py` default now requires at least **100 training examples** and **100 distinct out-of-sample origins** before a venue report can be labeled `SCORED`.
+- Production XRP ingestion passes both thresholds explicitly. `out_of_sample_origin_count` counts unique data cutoffs, not four baseline predictions per cutoff.
+- Below-threshold runs remain diagnostic and report `INSUFFICIENT_HISTORY`. The evaluator does not issue a live forecast or execute a paper trade.
+- The forecast ledger independently requires 100 training samples, 100 out-of-sample samples and 100 shadow samples, along with feature-snapshot integrity, calibration and drift gates.
+- The new 100/100 policy does not establish historical predictive lift. No directional XRP forecast has been issued.
+
+### New XRP market, derivatives and XRPL governance evidence on #1643
+- Added `research/xrp_intelligence/20261105T020359Z-xrp-derivatives-liquidity-amendment-crosscheck.json` and `20261105T021146Z-kraken-xrpusd-ticker-receipt.json`, with regression tests. The first artifact was corrected so date-only source dates are not represented as midnight UTC and rendered-page retrieval times are not invented.
+- Kraken XRP/USD tool-returned ticker text: last **$1.30795**, bid **$1.30794**, ask **$1.30795**, displayed spread about **0.07646 bps**, 24-hour volume **34.547M XRP**, VWAP **$1.30178067**, high **$1.34**, low **$1.24016**. Best bid size was only **4 XRP** versus 661 XRP at the best ask. The response has no exchange event timestamp; SHA-256 `4c7b713440b421e8cbed066595380cf3b09648e453fb841c114de5086113ce0d` covers 311 bytes of tool-returned UTF-8 text, **not** independently captured original HTTP bytes. This narrow spread is not evidence of deep liquidity. Model-ineligible.
+- TradRadar's Nov 4 21:20 UTC seven-exchange perpetual snapshot reported about **$2.04B** OI (+1.26%/24h), +0.0086% funding per eight hours, at least **$8.05M** liquidations (about $4.05M long / $4.00M short), and a 3.20 account long/short ratio (76.2% long). The $1.3045 value is a perpetual mark price, not spot. Account ratio is not notional exposure; liquidations are a lower bound. Model-ineligible.
+- CoinGecko's Sep 30 eight-CEX spot-depth report estimated roughly $18M bids and $14M asks within about ±2%; Coinbase was relatively stronger near ±0.1%, Binance at ±2%. Basis's Nov 4 07:18 UTC snapshot is a single Binance XRPUSDT perpetual book, not spot. These observations differ in date, instrument, venue universe and band; they are not aggregated.
+- XRPL Dashboard's Nov 4 15:27 UTC voting ledger 108112639 showed 35/35 validators heard and 29 required; SingleAssetVault 21, LendingProtocol 19, LendingProtocolV1_1 19, ConfidentialTransfer 20 and DynamicMPT 16. The earlier exact ledger reconstruction records `fixCleanup3_4_0` enabled at 14:52 UTC, ledger 108112129. The bug-fix activation is not a lending launch, loan origination or proof of XRP collateral utilization.
+- Official XRPL documentation requires more than 80% support for two weeks; support at or below 80% restarts the period. XRPL Dashboard's 35 validators heard and XRPL.to's 36 trusted-validator denominator are preserved separately; both rendered extracts report 29 required. They are separate views of the same ledger process, not independent validator networks.
+- All rendered-source observations in the two artifacts are model-ineligible. The Kraken artifact hashes the returned text only; no original HTTP headers/event timestamp were exposed. The derivatives/liquidity/amendment artifact has no byte-complete payloads and no common synchronized data cutoff.
+
+### Nine-platform authentication
+- Verified authenticated data path: current ChatGPT session to GitHub repository tools.
+- Copilot: review-event evidence only, not a persistent agent connection.
+- Hugging Face: prior public runtime probe BUILD_ERROR.
+- Databricks: prior workspace/SQL probe HTTP 403.
+- Claude, Grok, Gemini, Codex and Kaggle remain unauthenticated/unverified. Grok and Groq are distinct.
+- No nine-platform live coordination is claimed.
+
+### Backlog classification from exact path comparison
+- **#1642:** 7/7 changed paths overlap #1640; its head `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` is an exact ancestor of #1640 (118 commits from that head to #1640). Superseded pending main verification.
+- **#1644–#1650:** all 19 changed paths overlap #1640. Exact patches/versions verified in #1640: checkout@v7, download-artifact@v8, upload-artifact@v7, pytest>=9.2.0, types-requests>=2.33.0.20261030, databricks-sdk>=0.158.0 and huggingface_hub>=2.4.0. Superseded pending main verification.
+- **#1317 (6/6), #1318 (2/2), #1320 (5/5), #1254 (1/1), #1255 (1/1):** all changed paths overlap #1640; keep as supersession candidates until exact content is verified on main after merge.
+- **#1597:** 15/17 paths overlap #1643. Preserve unique `20261103-kamilah-stevenson-public-video-discovery-addendum.json` and `HANDOFF_20261103T164102Z-network-relations.md`.
+- **#1605:** 1/1 path overlaps #1643; exact artifact path is represented, pending main verification.
+- **#1608:** 1/3 paths overlap #1643. Preserve unique `data/xrp_intelligence/relationship_graph_addenda/20261103T210811Z-c2fo-actual-capital-kamilah-video.json` and `HANDOFF_20261103T210522Z-C2FO-EVERNORTH.md`.
+- **#1614:** 22/57 paths overlap #1643; preserve all 35 unique files, including research-artifact clock, additional SBIC/actual-capital/creator research, feature-store/forecast-ledger implementation and handoffs.
+- **#1615:** 0/14 overlap with the active integration branches; unique automation-containment/security work, preserve.
+- **#1641:** 0/3 overlap; unique bounded-experimentation work, preserve.
+- **#1269:** 0/9 overlap; unique OBJ topology/triangulation work, preserve.
+- No PR was closed. Do not bulk-close partially superseded or unique work. Close only exact duplicates after a successor is merged and its files are verified on main.
+
+### Merge decision and next action
+- #1640: 8 reviews, all COMMENTED; zero approvals; 22/22 inline threads resolved.
+- #1643: 6 reviews, all COMMENTED; zero approvals; 14/14 inline threads resolved.
+- Both are non-draft, GitHub reports mergeable, and exact-head CI/full-suite checks pass. However, main's required branch-protection details are inaccessible, no approving review exists, and the automatic Pages deployment side effect is not authorized. **Neither PR is merge-ready.**
+- Main remains unchanged. No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- **Next:** obtain independent approvals and required-protection verification; resolve Pages deployment authorization; only then merge #1640 and verify fresh main. Reconcile #1643 on the resulting main without rewriting its existing branch; if stale/conflicting, build one consolidated successor from current main and explicitly supersede #1643. Continue durable cross-run source storage, independent timestamp anchoring, broader historical XRP ecosystem ingestion and calibration/drift/shadow validation.

@@ -368,3 +368,30 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - A prior main push completed GitHub Pages deployment run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). No deployment authorization; no merge.
 - The #1643 19:31Z append-only overlay marks six secondary derivatives/ETF observations model-ineligible, but consumer application is NOT_EXECUTED. A research-to-feature-store admission adapter remains unimplemented.
 - No directional XRP forecast. No paper trade or real-money action.
+
+
+---
+
+## Run 22 — verified integration and backlog snapshot (recorded 2026-11-05T02:19:29.788Z)
+
+- Main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; 1,403 recursive tree entries; main reports protected=true, but classic protection details return HTTP 403 and the visible fallback ruleset is disabled.
+- Open inventory: **369 total; 354 drafts; 15 non-drafts**. Non-drafts: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+- Current integration PRs remain #1640 and #1643; changed paths are disjoint.
+
+### Exact-head checks
+- **#1640:** head `11803360859adec11323b360704601ad40a8600f`, 119 ahead / 0 behind / 71 files. Core 582 passed + 8 subtests; full suite 860 passed + 8 subtests; inclusive coverage 53.18%. Five-manifest dependency audit passed with no known vulnerabilities. Fail-closed gate passed but explicitly disables automatic merge. Runs: [CI 41953257614](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953257614), [audit 41953257617](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953257617), [gate 41953257616](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953257616). Reviews: 8 COMMENTED, zero approvals; 22/22 threads resolved.
+- **#1643:** head `83b5d581fabdc8bcc3fd3c7807b7353ecd3644f3`, 97 ahead / 0 behind / 98 files. Core 495 passed + 8 subtests; full suite 811 passed + 8 subtests. Fail-closed gate passed but disables automatic merge. No dependency manifests changed. Runs: [CI 41953831140](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953831140), [gate 41953830670](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953830670). Reviews: 6 COMMENTED, zero approvals; 14/14 threads resolved.
+- No main merge, force-push, deployment, secret change, Space restart, Kaggle submission, paper trade, funds transfer or real-money action.
+
+### Exact path/ancestry classification
+- **Superseded pending #1640 merge and main verification:** #1642 (7/7 paths; exact ancestor of #1640); #1644–#1650 (19/19 paths; exact dependency/action version changes are present in #1640); #1317 (6/6 path overlap), #1318 (2/2), #1320 (5/5), #1254 (1/1), #1255 (1/1). The latter five remain content-verification candidates until their files are checked on main.
+- **Superseded pending #1643 merge and main verification:** #1605 (1/1 path overlap).
+- **Partially superseded; preserve unique material:** #1597 (15/17 paths; keep the Kamilah public-video discovery addendum and network-relations handoff); #1608 (1/3 paths; keep the relationship-graph C2FO/Kamilah addendum and C2FO/Evernorth handoff); #1614 (22/57 paths; keep all 35 unique research, feature-store, forecast-ledger and artifact-clock files).
+- **Unique/unreviewed; preserve:** #1615 (14 unique automation-containment/security paths), #1641 (3 unique bounded-experimentation paths), #1269 (9 unique OBJ topology/triangulation paths).
+- Do not close any source PR until its successor is merged and the replacement files are verified on main. No bulk closure.
+
+### Safety and prediction boundary
+- GitHub Pages automatically deployed on prior main push [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489); this side effect is not authorized for another merge.
+- Main Cross Analysis is read-only. Barrot Auto PR only echoes workflow validation with read-only permissions. #1640 converts A2A/self-hosted-brain push deployments to manual-only and quarantines task allocator, issue agent and self-upgrade.
+- XRP evaluator now requires 100 training samples and 100 distinct out-of-sample origins before `SCORED`; sub-threshold results remain `INSUFFICIENT_HISTORY`.
+- New #1643 market/derivatives/liquidity/amendment observations are model-ineligible; no common synchronized cutoff or original HTTP receipts. Forecast remains **NOT_ISSUED**.
