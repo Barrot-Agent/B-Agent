@@ -288,14 +288,17 @@
           "source": "https://www.shugiin.go.jp/Internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm"
         }
       ],
-      "statutory_detail": "The enacted law amends the general legal framework for crypto-asset trading and related activities. Its main commencement provision says it takes effect on a date set by Cabinet Order within one year after promulgation; no specific general commencement order was located in this research.",
+      "statutory_detail": "The enacted law's Article 1 amendments to the Financial Instruments and Exchange Act, including the principal crypto-asset financial-product framework, are scheduled to take effect on 2027-04-01 under Supplementary Provision Article 1 item 4, subject to the specific exceptions stated there. As of 2026-11-05, the law is enacted but the principal new crypto-asset framework is not yet in force.",
       "unsupported_parts": [
         "The statute does not approve XRP individually.",
         "No official list of approximately 100 approved assets was located in the statute or Diet record.",
-        "Enactment is not the same as the entire new regime already being in force."
+        "Enactment is not the same as the entire new regime already being in force.",
+        "The principal Article 1 crypto-asset framework is not yet in force as of 2026-11-05; its scheduled commencement is 2027-04-01."
       ],
       "primary_law_pdf": "https://www.fsa.go.jp/common/diet/221/02/01.pdf",
-      "model_eligible": false
+      "model_eligible": false,
+      "statutory_effective_date": "2027-04-01",
+      "statutory_effective_date_basis": "Financial Services Agency official bill text, Supplementary Provision Article 1 item 4; the Article 1 FIEA amendments (including the crypto-asset financial-product framework) are scheduled for 2027-04-01, subject to the specific exceptions in that item."
     },
     {
       "claim_id": "japanese_banks_live_xrp_vs_swift_50x_60_percent",
@@ -422,7 +425,8 @@
       "Video attribution uses third-party transcript/tracker sources and the exact channel handle remains probable rather than fully first-party linked.",
       "Secondary reporting on the June 10 SBI Shinsei pilot repeats Nikkei and is not independent primary confirmation.",
       "Official SBI and Japanese legal sources were used to separate operational services, research, conceptual POCs, enacted law and future commencement.",
-      "No raw byte capture or independent timestamp anchor was available for these web observations."
+      "No raw byte capture or independent timestamp anchor was available for these web observations.",
+      "The law's supplementary provisions were inspected; the principal FIEA/crypto framework is scheduled for 2027-04-01, correcting the earlier generic within-one-year description."
     ]
   },
   "next_actions": [

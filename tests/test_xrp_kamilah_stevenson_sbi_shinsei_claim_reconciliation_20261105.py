@@ -69,7 +69,9 @@ def test_japanese_law_is_general_framework_not_xrp_specific_approval():
     assert dates == {"2026-06-11", "2026-07-15", "2026-07-23"}
     assert claim["status"] == "PARTIALLY_ACCURATE_BUT_OVERSTATED"
     assert any("does not approve XRP individually" in item for item in claim["unsupported_parts"])
-    assert "within one year" in claim["statutory_detail"]
+    assert claim["statutory_effective_date"] == "2027-04-01"
+    assert "not yet in force" in claim["statutory_detail"]
+    assert "2027-04-01" in claim["statutory_effective_date_basis"]
 
 
 def test_sbi_xrp_swift_performance_claim_is_not_supported_by_official_poc_or_research():
