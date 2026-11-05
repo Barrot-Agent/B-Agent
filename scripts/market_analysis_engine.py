@@ -20,6 +20,8 @@ QUERY = (
     "SELECT date, direction, confidence, accuracy "
     "FROM workspace.barrot.signals ORDER BY date DESC LIMIT 30"
 )
+MAX_RESPONSE_BYTES = 1_048_576
+MAX_RESULT_ROWS = 100
 ANALYSIS_KEYS = {
     "summary",
     "observations",
@@ -63,8 +65,8 @@ def query_databricks(query: str) -> dict:
         "on_wait_timeout": "CANCEL",
         "format": "JSON_ARRAY",
         "disposition": "INLINE",
-        "row_limit": 100,
-        "byte_limit": 1048576,
+        "row_limit": MAX_RESULT_ROWS,
+        "byte_limit": MAX_RESPONSE_BYTES,
     }
     request = Request(
         f"https://{host}/api/2.0/sql/statements",
@@ -76,30 +78,48 @@ def query_databricks(query: str) -> dict:
     )
     try:
         with urlopen(request, timeout=60) as response:
-            raw_response = response.read()
+            raw_response = response.read(MAX_RESPONSE_BYTES + 1)
     except Exception:
         # Do not print provider bodies, URLs with credentials, or raw error text.
         raise RuntimeError("Databricks read failed; provider response suppressed") from None
+
+    if not raw_response or len(raw_response) > MAX_RESPONSE_BYTES:
+        raise RuntimeError("Databricks result exceeds the configured byte limit")
 
     try:
         payload = json.loads(raw_response)
     except (TypeError, ValueError):
         raise RuntimeError("Databricks returned invalid JSON") from None
+    if not isinstance(payload, dict):
+        raise RuntimeError("Databricks response must be a JSON object")
 
-    state = payload.get("status", {}).get("state")
+    status = payload.get("status")
+    if not isinstance(status, dict):
+        raise RuntimeError("Databricks response has no valid execution status")
+    state = status.get("state")
     if state != "SUCCEEDED":
         raise RuntimeError(f"Databricks SQL did not succeed (state={state or 'missing'})")
 
-    manifest = payload.get("manifest", {})
+    manifest = payload.get("manifest")
+    if not isinstance(manifest, dict):
+        raise RuntimeError("Databricks result has no valid manifest")
     if manifest.get("truncated"):
         raise RuntimeError("Databricks result was truncated")
-    columns = manifest.get("schema", {}).get("columns", [])
-    rows = payload.get("result", {}).get("data_array", [])
+    schema = manifest.get("schema")
+    if not isinstance(schema, dict):
+        raise RuntimeError("Databricks result has no valid schema")
+    columns = schema.get("columns")
+    result_block = payload.get("result")
+    if not isinstance(result_block, dict):
+        raise RuntimeError("Databricks result block is invalid")
+    rows = result_block.get("data_array")
     names = [column.get("name") for column in columns]
     if not names or any(not isinstance(name, str) or not name for name in names):
         raise RuntimeError("Databricks result has no valid column manifest")
     if not isinstance(rows, list) or not rows:
         raise RuntimeError("Databricks returned no signal-history rows")
+    if len(rows) > MAX_RESULT_ROWS:
+        raise RuntimeError("Databricks returned more rows than the configured row limit")
 
     records = []
     for row in rows:
