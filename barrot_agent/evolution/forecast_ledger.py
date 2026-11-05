@@ -175,7 +175,16 @@ def _verify_evaluator_attestation(
 
     unsigned_report = dict(report)
     unsigned_report.pop("evaluator_attestation", None)
-    signed_payload = _json(unsigned_report).encode("utf-8")
+    signed_attestation_metadata = {
+        "scheme": attestation.get("scheme"),
+        "key_id": key_id,
+        "attested_at_utc": attestation.get("attested_at_utc"),
+    }
+    signed_document = {
+        "report": unsigned_report,
+        "attestation": signed_attestation_metadata,
+    }
+    signed_payload = _json(signed_document).encode("utf-8")
     signed_payload_sha256 = hashlib.sha256(signed_payload).hexdigest()
     declared_digest = attestation.get("signed_payload_sha256")
     if not isinstance(declared_digest, str) or not _SHA256.fullmatch(declared_digest):
