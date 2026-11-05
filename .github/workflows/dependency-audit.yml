@@ -41,8 +41,13 @@ jobs:
           python -m pip install pip-audit
           pip-audit --version
 
-      - name: Audit main runtime and development declarations
-        id: main_dev
+      - name: Audit root runtime requirements.txt
+        id: root_runtime
+        continue-on-error: true
+        run: pip-audit -r requirements.txt --strict
+
+      - name: Audit development requirements
+        id: dev
         continue-on-error: true
         run: pip-audit -r requirements-dev.txt --strict
 
@@ -83,13 +88,14 @@ jobs:
       - name: Fail if any manifest audit failed
         if: always()
         env:
-          MAIN_DEV: ${{ steps.main_dev.outcome }}
+          ROOT_RUNTIME: ${{ steps.root_runtime.outcome }}
+          DEV: ${{ steps.dev.outcome }}
           SUPPLEMENTAL: ${{ steps.supplemental.outcome }}
           HF_SPACE: ${{ steps.hf_space.outcome }}
           LEGACY: ${{ steps.legacy.outcome }}
           PYPROJECT: ${{ steps.pyproject.outcome }}
         run: |
-          printf 'main/dev=%s supplemental=%s hf_space=%s legacy=%s pyproject=%s\n' "$MAIN_DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY" "$PYPROJECT"
-          if [ "$MAIN_DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ]; then
+          printf 'root_runtime=%s dev=%s supplemental=%s hf_space=%s legacy=%s pyproject=%s\n' "$ROOT_RUNTIME" "$DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY" "$PYPROJECT"
+          if [ "$ROOT_RUNTIME" != "success" ] || [ "$DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ]; then
             exit 1
           fi
