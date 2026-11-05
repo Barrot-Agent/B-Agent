@@ -22,50 +22,35 @@ def test_paper_trader_workflow_is_manual_and_requires_explicit_sha_confirmation(
     assert 'EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}' in content
     assert '[[ "$CONFIRM" == "YES" ]]' in content
     assert "A full 40-character main SHA is required" in content
+    assert 'github.ref == "refs/heads/main"' in content
 
 
-def test_model_secret_is_isolated_from_the_write_job():
+def test_paper_trader_is_artifact_only_and_never_writes_to_main():
     content = _workflow_text()
-    simulate = content.split("  simulate:", 1)[1].split("  persist:", 1)[0]
-    persist = content.split("  persist:", 1)[1]
-    assert "GROQ_API_KEY" in simulate
-    assert "GROQ_API_KEY" not in persist
-    assert "contents: read" in simulate
-    assert "contents: write" in persist
-    assert "persist-credentials: false" in simulate
-    assert "persist-credentials: false" in persist
-    assert "actions/download-artifact" in persist
-    assert "actions/upload-artifact@v7" in simulate
-    assert "actions/download-artifact@v8" in persist
-    assert "actions/upload-artifact@v4" not in content
-    assert "actions/download-artifact@v4" not in content
-    assert "gh auth setup-git" in persist
+    assert "  persist:" not in content
+    assert "contents: write" not in content
+    assert "git push" not in content
+    assert "gh auth setup-git" not in content
+    assert "GITHUB_TOKEN" not in content
+    assert "actions/download-artifact" not in content
+    assert "actions/upload-artifact@v7" in content
+    assert "web/paper_trading_state.json" in content
+    assert "web/paper_trading_log.jsonl" in content
+    assert "retention-days: 7" in content
 
 
-def test_persist_job_rechecks_main_and_limits_writes_to_two_state_files():
+def test_model_secret_is_scoped_only_to_the_manual_simulation_job():
     content = _workflow_text()
-    persist = content.split("  persist:", 1)[1]
-    assert persist.count("git fetch --no-tags --depth=1 origin main") == 1
-    assert '[[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" && "$current_main" == "$EXPECTED_MAIN_SHA" ]]' in persist
-    assert '["git", "status", "--porcelain=v1", "-z", "--untracked-files=all"]' in persist
-    assert "web/paper_trading_state.json" in persist
-    assert "web/paper_trading_log.jsonl" in persist
-    assert "git push origin HEAD:main" in persist
-    assert 'git commit -m "Persist validated paper-trading state"' in persist
-    assert "--porcelain=v1" in persist
-    assert "needs: simulate" in content
+    assert content.count("GROQ_API_KEY") == 1
+    assert content.count("  simulate:") == 1
+    assert "permissions:\n  contents: read" in content
+    assert "persist-credentials: false" in content
 
 
-
-def test_paper_trader_jobs_require_main_ref_and_explicit_confirmation():
+def test_simulation_refuses_a_stale_or_unpinned_main_revision():
     content = _workflow_text()
-    required = "if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm == 'YES'"
-    assert content.count(required) == 2
+    assert "ref: ${{ inputs.expected_main_sha }}" in content
     assert '[[ "$GITHUB_REF" == "refs/heads/main" ]]' in content
-
-def test_persist_job_allows_log_only_or_state_only_changes_but_rejects_other_paths():
-    content = _workflow_text()
-    persist = content.split("  persist:", 1)[1]
-    assert 'allowed = {"web/paper_trading_state.json", "web/paper_trading_log.jsonl"}' in persist
-    assert "changed.add(path)" in persist
-    assert "expected=" not in persist
+    assert '[[ "$CONFIRM" == "YES" ]]' in content
+    assert '[[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]' in content
+    assert '[[ "$current_main" == "$EXPECTED_MAIN_SHA" && "$checked_out" == "$EXPECTED_MAIN_SHA" ]]' in content
