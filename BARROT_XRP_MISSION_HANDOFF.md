@@ -2637,3 +2637,67 @@ Documentation verification note (2026-11-05T02:19:54.446Z): the Run 8 implementa
 6. Continue durable cross-run source storage, independent timestamp anchoring, multi-horizon historical XRP data, probability calibration, drift monitoring and shadow evaluation. No directional forecast until out-of-sample lift is demonstrated.
 
 No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 10 — 2026-11-05 02:xx UTC
+
+### Mainline baseline and integration heads
+
+- Current main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. No main commit was created in this run.
+- Main's last exact-SHA CI run is [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459): full repository suite 718 passed plus 8 subtests; core suite 485 passed plus 8 subtests.
+- Main's latest scheduled Cross Analysis run is [41951363027](https://github.com/Barrot-Agent/B-Agent/actions/runs/41951363027), successful and read-only. Pillars Consistency Check [41834374956](https://github.com/Barrot-Agent/B-Agent/actions/runs/41834374956) remains failed; GitHub App credential, Databricks HTTP 403 and Hugging Face BUILD_ERROR blockers remain unverified/resolved.
+- PR #1640 code/test head `fc3ff179f31a44385b75705f38a2e14f68e55892`: 127 commits ahead, 0 behind, 71 changed files. Core suite 582 passed plus 8 subtests. Full repository suite 864 passed plus 8 subtests. Inclusive coverage 53.23%, above the 50% floor. Exact-head CI [41956428034](https://github.com/Barrot-Agent/B-Agent/actions/runs/41956428034), five-manifest dependency audit [41956427824](https://github.com/Barrot-Agent/B-Agent/actions/runs/41956427824), and fail-closed gate [41956428027](https://github.com/Barrot-Agent/B-Agent/actions/runs/41956428027) all succeeded. The gate explicitly keeps automatic merging disabled.
+- PR #1643 code/test head `ea664015e358703557eedff219d72235e22ea15d`: 99 commits ahead, 0 behind, 100 changed files. Core suite 495 passed plus 8 subtests; full repository suite 816 passed plus 8 subtests. Exact-head CI [41956585735](https://github.com/Barrot-Agent/B-Agent/actions/runs/41956585735) and fail-closed gate [41956585958](https://github.com/Barrot-Agent/B-Agent/actions/runs/41956585958) succeeded. No dependency manifest changed in this research-only successor.
+- #1640 and #1643 changed-file sets have zero intersection. Their workstreams remain separate: V3/core safety and ingestion versus append-only XRP evidence archive.
+
+### Executed implementation on #1640
+
+- Added the XRP Insights daily issuer-holdings JSON endpoint to the public collector as a tenth source.
+- Added HTTPS host allowlisting and a redirect-target allowlist check before reading the response body.
+- Added strict metadata-envelope validation (publisher, dataset identity, generated timestamp, date-only data-as-of, coverage count, fund registry and flow-column registry).
+- The aggregator is deliberately **raw-only**: no feature records are emitted, `source_data_as_of_utc` remains null because the publisher provides a date-only settled cutoff, and the receipt is not marked model eligible. Per-fund source vintages, primary issuer bytes and the flow semantics must be independently reconciled first.
+- Added regression tests for source admission, metadata identity, raw-only receipt behavior and rejection of redirects outside the HTTPS allowlist. The full 864-test suite passed on the exact code/test head above.
+- The hourly/daily workflow still has `if: github.ref == 'refs/heads/main'`; this collector has **not** run as a scheduled main service because the change is not merged. The source capture is implemented and tested on the PR branch, not verified in production.
+
+### New XRP evidence on #1643
+
+Artifact: `research/xrp_intelligence/20261105T023852Z-xrp-etf-flow-scope-reconciliation.json`; regression test: `tests/test_xrp_etf_flow_scope_reconciliation.py`.
+
+- XRP Insights' metadata was generated at 2026-11-05 01:26:31 UTC, data-as-of 2026-11-03, with 2026-11-04 still provisional. It reports -194,875 XRP over Nov 2–3 for six spot funds plus BITW; it includes XRPR and BITW, includes GXRP holdings but excludes GXRP flows.
+- CryptoKeyhole's page was updated 2026-11-05 01:57 UTC; its latest issuer file was observed at 01:37 UTC. It reports -3,339 XRP on each of Nov 2 and Nov 3 (two-day -6,678) across four funds: XRP, XRPZ, XRPC and TOXR. It excludes GXRP, XRPR and BITW; its Nov 4 row was partial (one of four reporters).
+- The two-day aggregate difference is -188,197 XRP. The fund universes differ, and synchronized per-fund raw issuer rows were not captured. The difference is not attributed to XRPR or BITW without those rows. Neither aggregate is treated as a direct measure of cash capital or spot-market buying.
+- XRP Insights displays 65,443,396 GXRP, but the SEC Form 10-Q verifies 55,035,728.016985 XRP at June 30, 2026. The later displayed value has no precise source date in the retrieved page; this is an unresolved source-vintage difference, not proof that either figure is erroneous. CryptoKeyhole uses the SEC quarter-end value.
+- The SEC filing's Q2 roll-forward records 36,272,724.963349 XRP contributed, 103,407,400.712419 XRP redeemed and 59,982.494915 XRP distributed for sponsor fees, ending at 55,035,728.016985 XRP on June 30. This is actual XRP-unit creation/redemption evidence for the period, not daily flow timing.
+- Grayscale's SEC registration statement identifies Coinbase Custody Trust Company, LLC as custodian and Coinbase, Inc. as prime broker. The filing distinguishes a cold-storage Vault Balance from a Settlement Balance that can use omnibus wallets. Coinbase is also identified as the principal market used for the June 30 XRP valuation.
+- REX Shares' October 1 issuer page showed 21,260,382 XRP held directly and 386,750 CoinShares Physical XRP shares, with reported weights of 60.05% and 39.90%. XRPR must not be treated as a pure direct-wallet holding.
+- All rendered aggregate observations remain model-ineligible: original source bytes, per-fund retrieval timestamps and synchronized issuer vintages were not captured. No directional forecast was issued.
+
+### Current main security and merge blockers
+
+- Main still has push-triggered Cloudflare A2A deployment and Hugging Face self-hosted-brain synchronization. Main also has an issue-triggered Barrot agent with contents/pull-request/issue write permissions. Main task allocator and self-upgrade are manual but retain repository write permissions and push logic.
+- #1640 changes Cloudflare and Hugging Face deployment workflows to manual-only with explicit YES confirmation; it reduces the issue agent, task allocator and self-upgrade workflows to manual-only with empty workflow permissions. The paper-trader workflow is manual-only, requires explicit YES and exact main SHA, and was not run.
+- A prior main push triggered successful GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Pages settings remain inaccessible through the available GitHub integration; a further automatic Pages deployment is not authorized.
+- Main branch-protection inspection returns HTTP 403; the visible repository ruleset list is empty/disabled. #1640 has 8 COMMENTED reviews, zero approvals and 22/22 resolved inline threads. #1643 has 6 COMMENTED reviews, zero approvals and 14/14 resolved inline threads. Both fail the approval/protection prerequisites. Neither was merged.
+- Only the ChatGPT-to-GitHub repository path is verified among ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks. No other live authenticated data flow is claimed.
+
+### Backlog classification
+
+Open inventory at audit: 369 PRs (354 drafts, 15 non-drafts).
+
+- **Active/blocked integration:** #1640 V3/core; #1643 XRP research archive.
+- **Superseded ancestor:** #1642 is an ancestor of #1640 (compare shows #1640 126 commits ahead and 0 behind); do not close until #1640 is merged and its contents verified on main.
+- **Dependency duplicates/superseded after #1640 verification:** #1644–#1650 and older #1254/#1255. Their changed paths overlap #1640; #1640 contains the updated checkout/download/upload actions, pytest/types-requests versions, and legacy Databricks/Hugging Face versions. Keep them open until main verification.
+- **Path-superseded candidates requiring exact content review:** #1317 (six of six paths overlap #1640), #1318 (two of two), #1320 (five of five). Their branch histories diverge; path overlap alone is not sufficient to close them.
+- **Partially superseded:** #1597 (15 of 17 paths overlap #1643; two unique files remain); #1605 (its single market-microstructure artifact is present in #1643); #1608 (one of three paths overlaps #1643; two unique files remain); #1614 (overlaps #1640 and #1643 but retains unique files); #1621 (one test path overlaps #1643; its collateral identity JSON/Markdown remain unique); #1615 (one test path overlaps #1640; its scheduled-writer/security research and workflows remain unique).
+- **Unique/unreviewed:** #1641 autonomous experimentation foundation; #1269 OBJ topology/triangulation work. Preserve both.
+- No source PR was closed.
+
+### Next concrete action
+
+1. Obtain independent approving reviews and verify required branch-protection/check settings; resolve the GitHub Pages deployment side effect before any main merge.
+2. If all merge conditions are satisfied, merge #1640, fetch main again, verify the merge commit and all changed files, then run main CI and re-check automatic workflow side effects.
+3. Reconcile #1643 against the resulting main without rewriting its branch. If stale/conflicting, create one consolidated successor from current main and identify #1643 as its source. Run its exact-head full suite and fail-closed gate before any merge.
+4. Only after merged content is verified on main, close exact duplicate/superseded source PRs. Preserve all unique/partial work.
+5. Continue issuer-native ETF source capture, durable cross-run raw storage, independent timestamp anchoring, synchronized historical exchange-flow/collateral/stablecoin/custody/payment data, and leakage-safe walk-forward evaluation. No forecast until out-of-sample lift and calibration are demonstrated.
+
+No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
