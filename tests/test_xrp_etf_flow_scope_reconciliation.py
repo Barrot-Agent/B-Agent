@@ -86,3 +86,28 @@ def test_grayscale_sec_cash_order_and_settlement_semantics_are_preserved():
     assert mechanics["sponsor_fee_payment"] == "xrp"
     assert data["data_quality"]["cash_order_and_settlement_semantics_verified_from_primary_sec_filing"] is True
     assert "not themselves USD cash-flow figures" in mechanics["implications"][0]
+
+
+CURRENT_ARTIFACT = ROOT / "research/xrp_intelligence/20261105T080500Z-xrp-etf-flow-universe-and-settlement-reconciliation.json"
+
+
+def test_latest_etf_flow_vintage_preserves_scope_and_partial_day_states():
+    data = json.loads(CURRENT_ARTIFACT.read_text(encoding="utf-8"))
+    flows = data["flow_reconciliation"]
+    assert flows["xrp_insights"]["net_flow_xrp"] == -194875
+    assert flows["cryptokeyhole"]["net_flow_xrp"] == -6678
+    assert data["flow_reconciliation"]["arithmetic"]["two_day_flow_difference_xrp"] == -188197
+    assert flows["cryptokeyhole"]["latest_2026_11_04"]["status"] == "partial_3_of_4_funds"
+    assert flows["cryptokeyhole"]["latest_2026_11_04"]["complete_daily_total"] is False
+    assert data["model_eligible"] is False
+    assert data["predictive_admission"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_etf_aggregators_share_issuer_lineage_and_do_not_measure_cash_directly():
+    data = json.loads(CURRENT_ARTIFACT.read_text(encoding="utf-8"))
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert sources["xrp_insights_daily_etf_json"]["independence_group"] == "issuer_holdings_source_family"
+    assert sources["cryptokeyhole_daily_etf_page"]["independence_group"] == "issuer_holdings_source_family"
+    assert any("not equivalent to verified USD cash" in item for item in data["interpretation"])
+    assert sources["xrp_insights_daily_etf_json"]["raw_content_sha256"] is None
+    assert sources["cryptokeyhole_daily_etf_page"]["raw_content_sha256"] is None

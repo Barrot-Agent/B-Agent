@@ -46,3 +46,34 @@ def test_sbic_chatgpt_event_and_sbi_holdings_enterprise_notice_are_separate():
     sources = {source["id"]: source for source in data["source_registry"]}
     assert sources["sbic_east_chatgpt_education_notice"]["url"] == "https://www.sbic.co.jp/seminar/20260305js/"
     assert sources["sbi_holdings_chatgpt_enterprise_notice"]["url"] == "https://www.sbigroup.co.jp/news/2025/0501_15410.html"
+
+
+SBIC_ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261105T080500Z-japan-sbic-chatgpt-entity-resolution-primary-sources.json"
+
+
+def test_japan_sbic_is_three_statutory_companies_not_sbi_holdings():
+    data = json.loads(SBIC_ARTIFACT.read_text(encoding="utf-8"))
+    entities = data["entity_resolution"]["statutory_identity"]["companies"]
+    assert [item["regional_name"] for item in entities] == [
+        "SBIC East Japan",
+        "SBIC Central Japan",
+        "SBIC West Japan",
+    ]
+    assert len({item["domain"] for item in entities}) == 3
+    assert data["entity_resolution"]["statutory_identity"]["article_2_names_three_separate_companies"] is True
+    assert data["entity_resolution"]["sbi_holdings"]["legal_name"] == "SBI Holdings, Inc."
+    assert data["entity_resolution"]["sbi_holdings"]["established"] == "1999-07-08"
+
+
+def test_chatgpt_and_ai_references_are_separate_events_and_counterparties():
+    data = json.loads(SBIC_ARTIFACT.read_text(encoding="utf-8"))
+    refs = data["entity_resolution"]["chatgpt_and_ai_references"]
+    assert "Microsoft Japan speaker" in refs["tokyo_sbic_event"]
+    assert "not an OpenAI partnership" in refs["tokyo_sbic_event"]
+    assert "Ridge-i" in refs["sbi_securities_service"]
+    assert "not ChatGPT or OpenAI" in refs["sbi_securities_service"]
+    assert "Anthropic/Claude" in refs["sbi_anthropic"]
+    assert "SoftBank Group" in refs["softbank_openai"]
+    assert "not SBI Holdings" in refs["softbank_openai"]
+    assert data["model_eligible"] is False
+    assert data["model_admission"]["forecast_issued"] is False
