@@ -53,11 +53,12 @@ def test_autonomous_checkpoint_redacts_common_credentials(tmp_path):
     loop.executor.run = lambda command: ExecutionResult(
         command, True, "api_key=super-secret-value ghp_abcdefghijklmnopqrstuvwxyz123456", "", 0
     )
-    loop.verifier.verify_python = lambda: VerificationResult(True, [{"success": True}])
+    loop.verifier.verify_python = lambda: VerificationResult(True, [{"success": True, "stderr": "token=verification-secret"}])
     result = loop.run("inspect safely", task_id="redaction-task")
     checkpoint = open(result.checkpoint_path, encoding="utf-8").read()
     assert "super-secret-value" not in checkpoint
     assert "ghp_abcdefghijklmnopqrstuvwxyz123456" not in checkpoint
+    assert "verification-secret" not in checkpoint
     assert "[REDACTED]" in checkpoint
 
 
