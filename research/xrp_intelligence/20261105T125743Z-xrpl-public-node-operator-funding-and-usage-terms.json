@@ -68,6 +68,33 @@
         "timestamp_anchor": "Git commit SHA plus retrieval timestamp",
         "model_eligible": false
       }
+    },
+    {
+      "source_id": "S4",
+      "publisher": "Honeycluster LLC",
+      "source_role": "first_party_terms_of_service",
+      "url": "https://honeycluster.io/terms",
+      "published_at_utc": null,
+      "last_updated": "2026-09-24",
+      "accessed_on_utc_date": "2026-11-05",
+      "claims_supported": [
+        "Honeycluster provides XRPL infrastructure and data services, with service availability and features varying by plan.",
+        "The terms require lawful use and prohibit unlawful, infringing, unauthorized-access, malicious, or fraudulent use.",
+        "Specific SLA commitments are described in a plan agreement."
+      ],
+      "limitations": [
+        "The terms page does not disclose a specific public-endpoint rate limit in the retrieved text.",
+        "The terms page does not establish that the free public endpoint is approved for sustained business use.",
+        "No plan agreement or written business-use authorization was retrieved.",
+        "The Terms link on press.honeycluster.io returned HTTP 404; the canonical main-domain /terms page is accessible."
+      ],
+      "independence": "First-party Honeycluster terms; same operator source-independence group as Honeycluster's formation disclosure, not an independent source.",
+      "raw_capture": {
+        "byte_complete": false,
+        "sha256": null,
+        "timestamp_anchor": "web retrieval date only",
+        "model_eligible": false
+      }
     }
   ],
   "claims": [
@@ -155,7 +182,10 @@
   ],
   "source_independence": {
     "operator_count": 2,
-    "registered_operators": ["InFTF", "Honeycluster"],
+    "registered_operators": [
+      "InFTF",
+      "Honeycluster"
+    ],
     "economic_source_groups_contributed": 0,
     "shared_feature_independence_group": "xrpl_public_ledger",
     "node_agreement_purpose": "validated-ledger-index-and-hash-consistency",
@@ -177,7 +207,9 @@
     "xrp_public_ingestion_workflow_on_main": false,
     "scheduled_main_collection_verified": false,
     "provider_contract_or_business_use_authorization_verified": false,
-    "production_activation_allowed": false
+    "production_activation_allowed": false,
+    "provider_terms_linked_from_press_site": "404; canonical main-domain terms page retrieved",
+    "canonical_terms_page_last_updated": "2026-09-24"
   },
   "model_eligibility": {
     "eligible": false,
@@ -188,6 +220,43 @@
     "Keep InFTF and Honeycluster in the shared xrpl_public_ledger group and retain the two-node hash/index gate as a consistency check only.",
     "Do not add xrpl.ws as a third provider.",
     "Before enabling scheduled node ingestion for sustained/business use, replace the free non-commercial endpoints with a self-hosted or contracted commercial endpoint and archive the applicable authorization/terms.",
-    "Retain the current raw HTTP Date header in each receipt; do not treat it as an exact ledger-close timestamp."
-  ]
+    "Retain the current raw HTTP Date header in each receipt; do not treat it as an exact ledger-close timestamp.",
+    "Preserve the inconsistent relative last-updated labels (three days versus one week) as observations; do not infer an absolute revision timestamp.",
+    "Treat the canonical Honeycluster Terms page as general terms only; obtain the applicable plan agreement or written authorization before any sustained/business use."
+  ],
+  "page_last_updated_observations": [
+    {
+      "observed_at_utc": "2026-11-05T12:57:43Z",
+      "observed_label": "Last updated three days ago",
+      "retrieval": "earlier web rendering",
+      "absolute_revision_timestamp_known": false
+    },
+    {
+      "observed_on_utc_date": "2026-11-05",
+      "observed_label": "Last updated one week ago",
+      "retrieval": "later direct page open",
+      "absolute_revision_timestamp_known": false
+    }
+  ],
+  "page_last_updated_interpretation": "The relative last-updated label differed between two retrievals on 2026-11-05. Preserve both observations; the absolute documentation revision time is unknown and must not be used as an event timestamp.",
+  "provider_terms_access": {
+    "press_site_terms_link": {
+      "url": "https://press.honeycluster.io/terms",
+      "retrieval_status": "404_not_found",
+      "interpretation": "The press-subdomain link is broken; this does not establish that Honeycluster has no terms."
+    },
+    "canonical_terms_page": {
+      "url": "https://honeycluster.io/terms",
+      "retrieval_status": "accessible",
+      "last_updated": "2026-09-24",
+      "source_id": "S4"
+    },
+    "official_xrpl_directory_classification": "Honeycluster and InFTF remain listed under the Non-Commercial public-server heading.",
+    "explicit_public_endpoint_business_use_authorization_established": false,
+    "explicit_rate_limit_in_retrieved_terms": false,
+    "plan_agreement_obtained": false,
+    "written_business_use_authorization_obtained": false,
+    "production_business_use_allowed": false,
+    "next_requirement": "Obtain the relevant plan agreement or written provider authorization, or use a self-hosted/commercially contracted endpoint, before sustained business use."
+  }
 }
