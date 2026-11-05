@@ -24,13 +24,15 @@ class AutonomousTaskStore:
 
     def __init__(self, workspace: str | Path):
         self.workspace = Path(workspace).resolve()
-        root_candidate = self.workspace / ".barrot" / "autonomous_tasks"
-        root_candidate.mkdir(parents=True, exist_ok=True)
-        self.root = root_candidate.resolve()
+        state_parent = self.workspace / ".barrot"
+        state_parent.mkdir(parents=True, exist_ok=True)
+        resolved_parent = state_parent.resolve()
         try:
-            self.root.relative_to(self.workspace)
+            resolved_parent.relative_to(self.workspace)
         except ValueError as exc:
             raise ValueError("autonomous task store path escapes workspace") from exc
+        self.root = resolved_parent / "autonomous_tasks"
+        self.root.mkdir(parents=True, exist_ok=True)
 
     def path_for(self, task_id: str) -> Path:
         if not isinstance(task_id, str) or not self._TASK_ID.fullmatch(task_id):
