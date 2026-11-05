@@ -3873,3 +3873,63 @@ Recorded: 2026-11-05T07:39Z
 
 This Run 32 handoff is committed on the existing #1640 integration branch. The resulting documentation-only head requires its own exact-head full-suite CI, six-manifest dependency audit and fail-closed verification before that new head is described as verified.
 
+### Run 33 — BNY shared Circle/Ripple custody node and exact-head research validation
+Recorded: 2026-11-05T07:46Z
+
+#### New primary-source relationship reconciliation on existing #1643
+- Artifact: `research/xrp_intelligence/20261105T074200Z-bny-shared-circle-ripple-stablecoin-custody-node.json`.
+- Five regression tests were added to the existing `tests/test_xrp_bny_c2fo_institutional_rails.py` module; all five passed on #1643's exact head.
+- BNY's June 29, 2026 joint announcement with Circle says Circle USDC is the first stablecoin on BNY Digital Asset Custody and that eligible BNY clients can store, transfer, mint and burn USDC through Circle instructions. BNY also describes itself as primary custodian of USDC reserves. Circle's own copy confirms the same joint announcement; these two copies are one event/source group, not independent confirmations.
+- Circle's USDC page (data-as-of August 6, 2026) separately says the Circle Reserve Fund portfolio is custodied at BNY and managed by BlackRock. This is a specific reserve-fund sleeve; it does not quantify the amount held at BNY or imply every USDC reserve asset is held there.
+- Ripple's July 9, 2025 announcement says it selected BNY as primary reserve custodian for RLUSD and would use BNY transaction-banking services. Ripple's current product page continues to identify BNY as RLUSD reserve custodian.
+- BNY's October 27, 2026 announcement says its Digital Asset Custody platform supports native XRP and RLUSD for eligible institutional clients. No XRP-specific or RLUSD-specific AUC, client count, new XRP purchases or XRP collateral balance is disclosed.
+- The resulting Circle-Ripple network edge is **indirect through a shared BNY service provider only**. These sources do not establish a direct Circle-Ripple agreement, joint venture, cross-issuance or shared reserve pool.
+- BNY's USDC mint/burn service does not establish USDC issuance on XRPL or an XRP settlement leg. Ripple's intended direct RLUSD mint/redeem through BNY remains subject to final BNY and regulatory approvals. BNY/Ripple/C2FO trade-finance work remains exploratory and has no disclosed funded receivables or production volume.
+- No BNY-specific USDC/RLUSD reserve balance, XRP AUC, XRP purchase amount, XRP collateral balance or USDC mint/burn volume was disclosed. Custody and reserve-custody services are not cash investment in XRP.
+- The artifact records five source-independence groups, explicitly collapses the BNY/Circle joint-release copies into one group, preserves competing hypotheses and disconfirming evidence, and remains `model_eligible=false` because raw HTTP bytes, SHA-256 receipts and independent timestamp anchors were not captured.
+
+#### Exact-head #1643 verification after the new artifact
+- Current #1643 head: `14e1de9112cb32ad67b09076e2b718932c6a9d98`; 154 commits ahead, 0 behind; 125 changed files.
+- Exact-head core suite: **495 passed, 8 subtests passed**.
+- Exact-head full repository suite [41989201887](https://github.com/Barrot-Agent/B-Agent/actions/runs/41989201887): **889 passed, 8 subtests passed**.
+- Exact-head fail-closed gate [41989202076](https://github.com/Barrot-Agent/B-Agent/actions/runs/41989202076) passed and explicitly kept automatic merging disabled.
+- The five new BNY shared-node regression tests are individually visible as passed in the full-suite log.
+- #1643 changes no dependency manifests; all six dependency-manifest blob SHAs match current main. No exact-head dependency-audit workflow ran on this head. This remains an explicit pre-merge security-check item; do not substitute #1640's different six-manifest audit.
+- #1643 remains path-disjoint from #1640. Its PR description was updated with the current head, exact tests, new artifact, zero approvals and missing exact-head dependency audit.
+
+#### Current #1640 integration and exact-head verification
+- Current #1640 handoff head before this Run 33 update: `fd7feaaa4e35aba2737b89abb12ffe5f9cb3f7be`; 208 commits ahead, 0 behind; 84 changed files.
+- Exact-head core: **596 passed, 8 subtests**. Full suite [41988878202](https://github.com/Barrot-Agent/B-Agent/actions/runs/41988878202): **901 passed, 8 subtests**, coverage **53.75%**. Installed-wheel verification passed.
+- Exact-head six-manifest strict dependency audit [41988878134](https://github.com/Barrot-Agent/B-Agent/actions/runs/41988878134) passed with no known vulnerabilities; 15 PEP 621 dependencies were materialized.
+- Exact-head fail-closed gate [41988878151](https://github.com/Barrot-Agent/B-Agent/actions/runs/41988878151) passed but explicitly disabled automatic merging.
+- The bounded raw-parser-failure correction and regression test are included and passed. The handoff/PR body were updated with these exact results.
+- PR #1640's current PR description was updated with the exact head and evidence. Its 10 submitted review records are all `COMMENTED`, 22/22 threads are resolved, and it has zero actual approving reviews.
+
+#### Main, open PRs, backlog and authorization
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main commit or merge occurred. The last push CI on main [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459) passed (485 core tests; 718 full-suite tests). The same push triggered Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Current main tree remains 1,403 entries and was fetched without truncation.
+- Open inventory remains **370 PRs: 354 drafts, 16 non-drafts**. Non-drafts are #1651, #1650–#1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- Active integration: #1640 V3/core/prediction and #1643 XRP research. #1642 remains an exact ancestor. #1644–#1650 changed paths overlap #1640 and their intended action/dependency versions are represented there. #1254/#1255 are older floors on the same legacy requirements file and are superseded by #1640. #1317/#1318/#1320 remain preserved pending unique-hunk reconciliation. #1651, #1615 and #1269 retain unique/unreviewed work. The remaining drafts were not individually diff-reviewed in this run; preserve them.
+- #1643 has six submitted reviews, all `COMMENTED`, 14/14 threads resolved and zero actual approvals.
+- Main is marked protected; detailed branch-protection inspection returns HTTP 403. The only visible repository ruleset, “Fall Back” (ID 10863829), is disabled. Repository metadata reports Pages enabled and auto-merge allowed, but actual required-review/check enforcement cannot be independently verified.
+- The fail-closed gate on both integration PRs passes as a CI job while explicitly disabling automatic merge. This is not approval and must not be bypassed. The prior Pages deployment side effect remains unresolved.
+- No PRs were closed, no unique research was bulk-closed, and no new branch or PR was created.
+
+#### Prediction and safety boundary
+- XRP remains Barrot's priority-1 mission; V3 remains the execution/orchestration/safety/verification foundation.
+- Scheduled public ingestion remains designed on #1640, not on main and not yet running as a main scheduled service. Current source artifacts and feature backups retain 90 days; the cache is evictable/read-only. Indefinite durable storage, independent timestamp anchoring and complete historical feature coverage remain absent.
+- The BNY/Circle/Ripple relationships are institutional infrastructure/custody edges, not evidence of XRP capital inflows. Stablecoin settlement, XRP custody capability, XRP purchases and XRP collateral remain separate variables.
+- The walk-forward evaluator remains a historical baseline evaluator, not a validated predictive model. Probability calibration, drift monitoring, independent evaluator signing keys and sufficient shadow outcomes remain unfinished. **No directional forecast issued; no forecast outcomes exist.**
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+#### Next concrete actions
+1. Obtain an independent approving review and verify actual branch-protection/check requirements.
+2. Resolve GitHub Pages deployment authorization before any main push.
+3. Merge #1640 only when all stated conditions pass; then fetch main, verify merge SHA/files and run main CI.
+4. Reconcile #1643 against the new main without rewriting history; run exact-head full suite, fail-closed gate and exact-head dependency/security audit before merge.
+5. Close only exact superseded source PRs after successor content is verified on main.
+6. Continue durable raw-source storage, independent timestamp anchoring, exchange/ETF/collateral/custody/stablecoin/payment vintages, and leakage-safe out-of-sample predictive evaluation.
+
+**Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.**
+
+This Run 33 handoff is committed on the existing #1640 integration branch. Its resulting documentation-only head requires its own exact-head full-suite CI, six-manifest dependency audit and fail-closed verification before that new head is described as verified.
+
