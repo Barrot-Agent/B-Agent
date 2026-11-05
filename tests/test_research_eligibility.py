@@ -194,7 +194,7 @@ def test_overlay_downgrades_exact_observation_and_snapshot_commits_overlay_prove
     assert snapshot["research_source_receipts"] == [
         {
             "source_id": "primary-provider",
-            "raw_receipt_id": "receipt:primary-provider:2026-11-04T11:59:02Z",
+            "raw_receipt_id": RAW_RECEIPT_ID,
             "raw_content_sha256": RAW_RECEIPT_SHA256,
             "raw_capture_status": "byte_complete",
             "raw_receipt_sha256_verified": True,
@@ -454,7 +454,13 @@ def test_raw_receipt_registry_metadata_must_match_canonical_receipt():
     records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
 
     with pytest.raises(ResearchEligibilityError, match="source_uri does not match its canonical receipt"):
-        _build(records, source_bytes, overlay, overlay_bytes)
+        _build(
+            records,
+            source_bytes,
+            overlay,
+            overlay_bytes,
+            raw_receipt_bytes={receipt_id: RAW_RECEIPT_BYTES},
+        )
 
 
 def test_raw_receipt_path_must_be_content_addressed_to_verified_payload():
