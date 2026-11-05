@@ -716,6 +716,16 @@ def test_readiness_registration_fails_closed_without_an_external_trust_root(tmp_
         )
 
 
+def test_production_environment_rejects_test_only_evaluator_key(monkeypatch, tmp_path):
+    encoded_key = base64.b64encode(_TEST_EVALUATOR_PUBLIC_KEY).decode("ascii")
+    monkeypatch.setenv(
+        "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON",
+        json.dumps({"test-independent-evaluator": encoded_key}),
+    )
+    with pytest.raises(ForecastLedgerError, match="test-only evaluator key IDs"):
+        ForecastLedger(tmp_path / "forecasts.sqlite3", clock=lambda: TEST_NOW)
+
+
 def test_readiness_signature_binds_metrics_and_dataset_manifest(tmp_path):
     fixture = READINESS_FIXTURES[("XRP", 3600)]
     report = json.loads(fixture["report_bytes"])
