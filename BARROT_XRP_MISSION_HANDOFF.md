@@ -6458,3 +6458,127 @@ Older source PR reconciliation remains:
 No source PRs were closed. Preserve unique work until the successor content is verified on main.
 
 All merge blockers remain: zero approving reviews on #1640/#1643; detailed branch-protection inspection HTTP 403; visible fallback ruleset disabled; GitHub Pages settings inaccessible and merge-triggered deployment authorization unresolved. Do not bypass these conditions.
+
+
+---
+
+## Execution checkpoint — 2026-11-05, latest exact-head verification
+
+### Main and integrated architecture
+
+- Main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main recursive tree: 1,403 entries, 1,298 files, 493 Python files, 78 workflow YAML files and 90 Python test files.
+- Main still does not contain `barrot_agent/orchestration/mission_registry.py`, `barrot_agent/data/missions/primary_mission.json` or `barrot_agent/evolution/xrp_public_ingestion.py`. XRP priority-1 dispatch and scheduled ingestion are integration-branch capabilities, not active main capabilities.
+- Main's last push CI remains 718 tests and 8 subtests (run 41799856459). Scheduled Cross Analysis passed (run 42059212969). Pillars Consistency Check remains blocked by missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR (run 42032214761).
+
+### PR #1640 — V3/core integration
+
+Current code head: `d5bf8b7f2735857892df35afbda251bfd12666dc`.
+
+- 380 commits ahead of main, zero behind; 135 changed files.
+- Core suite: 613 passed, 8 subtests.
+- Full repository suite: 1,035 passed, 8 subtests.
+- Inclusive package coverage: 57.07%, above the 50% floor.
+- Installed-wheel and packaged primary-mission verification passed.
+- Strict pip-audit passed across all six dependency sources: `requirements.txt`, `requirements-dev.txt`, `requirements.tx`, `hf_space/requirements.txt`, `legacy/requirements_legacy.txt` and the 15 PEP 621 dependencies in `pyproject.toml`. No known vulnerabilities were found.
+- Fail-closed gate passed; automatic merge remains disabled.
+
+Exact-head evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42119200812
+- Six-manifest dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42119201024
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42119200910
+
+#### New ingestion-recovery security fix
+
+The scheduled XRP collector previously enumerated all repository artifacts and selected the newest name with the `xrp-public-feature-` prefix. That could select an artifact from an unrelated workflow or untrusted branch.
+
+The restore step now queries only runs for `.github/workflows/xrp-public-ingestion.yml`, and accepts only successful completed runs whose head branch is `main`, whose head repository equals the current repository, and whose event is `schedule` or `workflow_dispatch`. It then downloads only the exact artifact name `xrp-public-feature-<run_id>` from that run. If no trusted unexpired artifact exists, it bootstraps a new feature store. Regression assertions reject the old generic repository-wide artifact search.
+
+This is a material integrity improvement. The workflow remains public-data-only, read-only with respect to repository contents, and main-branch-only. It writes run artifacts and cache entries, not commits. Raw artifact retention is still 90 days, not indefinite; the cache is not an externally anchored immutable log.
+
+The legacy signal-publication quarantine remains in this branch: the historical 45.5% public accuracy claim is not treated as calibrated out-of-sample accuracy; the old accuracy updater is read-only; unvalidated BUY/SELL and accumulation heuristics are quarantined from the integrated public path. The manual paper-trader workflow requires explicit `YES` plus an exact main SHA and now stores simulation output as an artifact rather than pushing state to main. No paper trade was executed.
+
+The priority-1 mission dispatcher is deterministic and read-only: it emits the next XRP mission from the registry and verified-learning state, then exits before provider calls or repository mutation. It does not yet autonomously execute the mission.
+
+### PR #1643 — XRP research archive
+
+Current head: `cb65af2c299f30e579860876bde2790d13f6a559`.
+
+- 284 commits ahead of main, zero behind; 227 changed files.
+- Core suite: 495 passed, 8 subtests.
+- Full repository suite: 1,157 passed, 8 subtests.
+- Strict six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed gate passed.
+
+Exact-head evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42119697344
+- Six-manifest dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42119696868
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42119697590
+
+New research files added to this existing workstream:
+- `research/xrp_intelligence/20261105T220437Z-xrp-spot-perps-etf-cutoff-snapshot.json`
+- `tests/test_xrp_spot_perps_etf_cutoff_snapshot_20261105.py`
+- `research/xrp_intelligence/20261105T221000Z-xrp-capture-time-interval-correction.json`
+- `tests/test_xrp_capture_time_interval_correction_20261105.py`
+
+The Kraken response body text is preserved and SHA-256 hashed as `e0a4c06d55d79d9d370a19269da4d1456f9d2f64f50b24c31094f8e66fa77d76`. The original HTTP headers and independently verified wire bytes were unavailable. The original artifact incorrectly reused the run-start time as an exact retrieval time. An append-only correction now binds to the original Git blob SHA, marks exact retrieval time unknown, records the interval from 22:04:37Z to the artifact commit at 22:08:06Z, and uses 22:08:06Z only as a conservative availability upper bound. The original artifact was not rewritten. The correction consumer must be reconciled before any model admission. All observations remain model-ineligible.
+
+Historical market observations from this capture:
+- Kraken XRP/USD last $1.22180; bid $1.22148; ask $1.22169; spread 1.7191 bps; rolling 24-hour volume 39.0378M XRP; 24-hour VWAP $1.27021358; UTC-day open $1.30410; low $1.21554.
+- Kraken futures page update 21:49Z: mark $1.22, 24-hour change -6.17%, OI 16.4M XRP / $20.1M, near-zero funding.
+- TradRadar seven-venue aggregate update 21:10Z: OI $1.94B, 24-hour OI change -4.87%, funding +0.0068% per eight hours, long liquidations $11.26M versus $0.491M shorts, and account-based long share 80.3%. This is a secondary aggregation; account counts are not notional exposure.
+- XRP Insights reports -259,701 XRP across November 2–4 with 1,196,340,485 XRP held. Alpha Finance reports $0 for November 4, +$4.8M over seven sessions and +$78.9M over 30 sessions. Different universes, horizons and holdings-derived methods make these figures non-comparable. Neither is a verified AP cash creation/redemption ledger.
+
+The snapshot preserves four competing explanations: leveraged-long deleveraging, broader risk-off, ETF holdings changes contributing marginal supply, and measurement differences across venue/time universes. No directional forecast was issued.
+
+### Institutional and identity research reconciliation
+
+The current research archive distinguishes three separate federal trust-bank entities from their existing state-chartered custody/issuer entities:
+
+- **Circle:** First National Digital Currency Bank, N.A. (d/b/a Circle National Trust), OCC CAS consummated/effective July 24, 2026. Circle says initial service upon opening is fiduciary digital-asset custody for Circle and affiliates; USDC reserve management is a future capability. Circle Internet Trust Company LLC / Circle New York Trust is a separate NYDFS limited-purpose trust entity. The federal trust bank is not identified as the USDC issuer.
+- **Ripple:** Ripple National Trust Bank, OCC CAS consummated/effective October 26, 2026. Ripple describes segregated RLUSD reserve management, reserve collateral-trustee functions and fiduciary digital-asset custody upon opening. Standard Custody & Trust Company, LLC remains the RLUSD issuer. Operational opening and customer activity are not independently established.
+- **Coinbase:** Coinbase National Trust Company received preliminary conditional approval on April 2, 2026. OCC Corporate Decision 1370 explicitly says final approval and authorization to commence business require pre-opening requirements. The retrieved CAS record has no Consummated/Effective row. It is separate from Coinbase Custody Trust Company, LLC; the OCC decision describes a planned migration over time, not a completed migration.
+
+BNY is a shared provider across separate Circle/USDC and Ripple/RLUSD relationships; this does not establish a direct Circle-Ripple partnership. No XRP-specific AUC, collateral balance, client flow, purchase or payment volume is disclosed by these charter/custody announcements. SBI Holdings' separate relationships with Ripple and Circle remain distinct from SBIC East/Central/West. Circle Arc is a separate network, not XRPL.
+
+The Kamilah Stevenson public-video inventory is corrected to **three candidate YouTube records**: two indexed YouTube search-result attributions and one direct Linktree video link. It is not exhaustive. The public channel attribution is corroborated, but legal identity and platform account ownership remain unverified; the videos were not content-reviewed. The iHeart item is a podcast, not a YouTube video. No video commentary is admitted as market fact.
+
+The exact-phrase work continues to distinguish Permission Coin's ASK token from other Ask Coin listings, the phrase “actual capital” from potential/in-kind/debt/undrawn capital, and Japan's regional SBIC companies from SBI Holdings and the academic Social Bias Inference Corpus.
+
+### Branch integration and source-PR reconciliation
+
+- #1640: 380 commits ahead of main, zero behind; 135 changed files.
+- #1643: 284 commits ahead of main, zero behind; 227 changed files.
+- Their changed-path intersection is exactly `.github/workflows/dependency-audit.yml`, with identical blob `6515307991420ab90d8671034b13ac2eb56190b3`. All other paths are distinct.
+- #1643 is 284 commits ahead and 380 behind #1640. Do not merge #1643 directly. After #1640 is merged and verified on main, build one consolidated research successor directly on that resulting main, carrying #1643's unique research/test paths and omitting the identical dependency-audit file.
+
+Current open PR inventory: **369 total, 354 drafts, 15 non-drafts**. The 15 non-drafts are #1650–#1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+
+Backlog classification:
+- **Active integration:** #1640 V3/core; #1643 XRP research.
+- **Exact ancestor:** #1642 is an ancestor of #1640 (379 commits ahead, zero behind); close only after #1640's content is verified on main.
+- **Exact duplicate artifact candidate:** #1605 changes one research file whose blob is identical in #1643; close only after the successor is verified on main.
+- **Overlapping dependency/action candidates, not yet safe to close:** #1644–#1650 each has one source commit not contained in #1640; paths overlap. Verify exact file blobs/hunks and main integration before closure. #1254/#1255 are older dependency candidates, but remain open until the newer requirements are verified on main.
+- **Unique or partially overlapping work to preserve:** #1320 (five source commits not in #1640), #1318 (two), #1317 (six), #1269 (eight unique rendering/geometry paths), #1614 (unique research artifacts/handoffs and differing code paths), #1615 (unique security/automation work), #1651 (unique RSI/weight-space work), and the previously identified #1422/#1509 research material. Do not bulk-close or merge these without path/hunk reconciliation.
+
+Review status: #1640 has 22/22 review threads resolved and zero approving reviews; #1643 has 14/14 resolved and zero approving reviews. GitHub reports both branches mergeable, but neither has an actual approving review.
+
+### Merge and authorization decision
+
+Neither PR was merged. Main reports protected=true, but detailed branch-protection inspection returns HTTP 403. The visible fallback ruleset is disabled. Repository Pages and Actions settings endpoints are not accessible through the current connector. A prior main push triggered a successful Pages deployment (run 41799855489), so merge-triggered deployment authorization remains unresolved. Do not bypass protection, required checks or approval requirements.
+
+No source PRs were closed. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Prediction and nine-platform status
+
+The scheduled collector, raw receipt archive, point-in-time feature store, chronological walk-forward baselines, calibration diagnostics and fail-closed forecast ledger remain integration-branch capabilities. Scheduled ingestion is not active on main. Raw artifact retention is 90 days; external immutable retention and independent timestamp anchoring remain incomplete. Evaluator-attested out-of-sample lift, calibration stability, drift monitoring and sufficient shadow outcomes are not established. **Directional forecast issuance remains disabled.**
+
+Only ChatGPT-to-GitHub is verified as an operational authenticated data path. Copilot activity is one-off review evidence, not a persistent integration. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified. Groq is not Grok.
+
+### Next concrete actions
+
+1. Obtain independent approving reviews and verify actual branch-protection requirements; resolve Pages deployment authorization before any merge that could trigger it.
+2. If #1640 satisfies every gate, merge it, verify the merge commit and files, fetch main again, inspect triggered workflows and run main CI.
+3. Create one consolidated research successor directly on the resulting main from #1643's unique paths; preserve #1614/#1422/#1509 and other unique work for separate content-level reconciliation.
+4. Run the successor's exact-head full suite, six-manifest dependency/security audit and fail-closed gate before considering merge.
+5. Integrate the timestamp correction consumer with the research archive, add independent timestamp anchoring and durable raw-source retention, then expand historical multi-venue flow/collateral/custody/payment datasets and measured out-of-sample evaluation.
