@@ -1,0 +1,242 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "xrp_us_spot_etp_primary_holdings_and_custody_reconciliation",
+  "recorded_at_utc": "2026-11-05T05:07:00Z",
+  "research_cutoff_utc": "2026-11-05T05:07:00Z",
+  "subject": {
+    "asset": "XRP",
+    "scope": "US-listed XRP exchange-traded products",
+    "question": "Reconcile sponsor-reported direct XRP holdings, indirect XRP ETP exposure, assets, shares and custody roles without inferring flows from asynchronous balances."
+  },
+  "executive_findings": [
+    "Bitwise's official XRP ETF page reports 415,365,129.04 XRP in trust as of 2026-11-03. The same page reports $540,564,755 net assets/AUM and a $540,589,408.15 market value for XRP; the $24,653.15 difference is preserved as an internal page inconsistency rather than reconciled by assumption.",
+    "Grayscale's official GXRP page reports 64,839,534.7913 XRP in fund as of 2026-11-04, with $84,459,978 GAAP AUM and $84,445,908 non-GAAP AUM. The page names Coinbase Custody Trust Company and Anchorage Digital Bank N.A. as digital-asset custodians and BNY as fund administrator.",
+    "REX-Osprey's official XRPR page reports 19,885,382 XRP held directly as of 2026-11-03, alongside 362,750 shares of the CoinShares XRP ETP. The latter is an indirect ETP position, not 362,750 XRP.",
+    "The sum of the three issuer-reported direct XRP quantities is 500,090,045.8313 XRP, but it combines two 2026-11-03 observations and one 2026-11-04 observation. It is an asynchronous cross-sectional subtotal, not a synchronized market-wide holdings total, net inflow, or evidence of contemporaneous spot purchases.",
+    "Bitwise identifies Coinbase Custody Trust Co., LLC as digital-asset custodian and BNY as trust custodian. Grayscale identifies Coinbase Custody Trust Company and Anchorage Digital Bank N.A. as digital-asset custodians, with BNY as administrator. These roles are not interchangeable.",
+    "The two Coinbase custody disclosures are direct fund-level evidence of a Coinbase custody role for those funds. They do not establish Coinbase as execution venue, authorized participant, XRP buyer, or Ripple affiliate in these fund relationships.",
+    "The three official issuer pages are primary for their own fund disclosures, but the web-rendered extracts are not byte-complete raw HTTP captures. All observations remain model-ineligible pending raw-byte capture, SHA-256 receipts, independent timestamp anchoring and vintage-aware reconciliation."
+  ],
+  "source_registry": [
+    {
+      "source_id": "bitwise_xrp_etf_issuer_holdings_20261103",
+      "publisher": "Bitwise Investment Advisers, LLC",
+      "source_type": "primary_fund_issuer_page",
+      "source_uri": "https://bitxrpetf.com/",
+      "retrieved_at_utc": "2026-11-05T05:06:00Z",
+      "source_data_as_of_date": "2026-11-03",
+      "capture_method": "web-rendered primary issuer page extract",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "independence_group": "bitwise_xrp_etf_issuer",
+      "model_eligible": false,
+      "limitations": [
+        "Holdings and fund details are date-stamped 2026-11-03, not an intraday synchronized market snapshot.",
+        "The page reports $540,564,755 net assets/AUM and $540,589,408.15 market value for XRP, a $24,653.15 difference; neither value is silently substituted for the other.",
+        "The page identifies Coinbase Custody Trust Co., LLC as digital-asset custodian and BNY as trust custodian; it does not establish execution venue or AP activity.",
+        "Web-rendered content was not captured as exact HTTP response bytes in this research pass."
+      ]
+    },
+    {
+      "source_id": "grayscale_gxrp_issuer_holdings_20261104",
+      "publisher": "Grayscale Investments Sponsors, LLC",
+      "source_type": "primary_fund_issuer_page",
+      "source_uri": "https://etfs.grayscale.com/gxrp",
+      "retrieved_at_utc": "2026-11-05T05:06:00Z",
+      "source_data_as_of_date": "2026-11-04",
+      "capture_method": "web-rendered primary issuer page extract",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "independence_group": "grayscale_gxrp_issuer",
+      "model_eligible": false,
+      "limitations": [
+        "The holdings page reports 64,839,534.7913 XRP as of 2026-11-04; this is not a net-flow series.",
+        "The page distinguishes GAAP AUM from non-GAAP AUM; the values are retained separately.",
+        "The page identifies Coinbase Custody Trust Company and Anchorage Digital Bank N.A. as digital-asset custodians and BNY as administrator.",
+        "Web-rendered content was not captured as exact HTTP response bytes in this research pass."
+      ]
+    },
+    {
+      "source_id": "rex_osprey_xrpr_issuer_holdings_20261103",
+      "publisher": "REX Advisers, LLC / Osprey Funds",
+      "source_type": "primary_fund_issuer_page",
+      "source_uri": "https://www.rexshares.com/xrpr/",
+      "retrieved_at_utc": "2026-11-05T05:06:00Z",
+      "source_data_as_of_date": "2026-11-03",
+      "capture_method": "web-rendered primary issuer page extract",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "independence_group": "rex_osprey_xrpr_issuer",
+      "model_eligible": false,
+      "limitations": [
+        "The page reports direct XRP and CoinShares XRP ETP shares as separate holdings.",
+        "CoinShares ETP shares cannot be converted into XRP units without a contemporaneous ETP share-to-XRP look-through ratio.",
+        "The fund may invest directly or through an XRP subsidiary; the holdings page alone does not establish every underlying custody location.",
+        "Web-rendered content was not captured as exact HTTP response bytes in this research pass."
+      ]
+    }
+  ],
+  "fund_observations": {
+    "bitwise_xrp": {
+      "ticker": "XRP",
+      "source_id": "bitwise_xrp_etf_issuer_holdings_20261103",
+      "holdings_as_of_date": "2026-11-03",
+      "direct_xrp_units": 415365129.04,
+      "xrp_market_value_usd": 540589408.15,
+      "net_assets_aum_usd": 540564755,
+      "xrp_per_share": 11.162729,
+      "shares_outstanding": 37210000,
+      "digital_asset_custodian": "Coinbase Custody Trust Co., LLC",
+      "trust_custodian": "The Bank of New York Mellon",
+      "sponsor": "Bitwise Investment Advisers, LLC",
+      "median_30_day_bid_ask_spread_pct": 0.07,
+      "page_internal_market_value_minus_aum_usd": 24653.15,
+      "direct_xrp_units_model_eligible": false
+    },
+    "grayscale_gxrp": {
+      "ticker": "GXRP",
+      "source_id": "grayscale_gxrp_issuer_holdings_20261104",
+      "holdings_as_of_date": "2026-11-04",
+      "direct_xrp_units": 64839534.7913,
+      "non_gaap_aum_usd": 84445908,
+      "gaap_aum_usd": 84459978,
+      "xrp_per_share": 19.35450727,
+      "shares_outstanding": 3350100,
+      "digital_asset_custodians": [
+        "Coinbase Custody Trust Company, LLC",
+        "Anchorage Digital Bank N.A."
+      ],
+      "fund_administrator": "BNY",
+      "market_price_usd": 25.23,
+      "nav_per_share_usd": 25.21,
+      "premium_discount_pct": 0.08,
+      "daily_volume_shares": 16746,
+      "direct_xrp_units_model_eligible": false
+    },
+    "rex_osprey_xrpr": {
+      "ticker": "XRPR",
+      "source_id": "rex_osprey_xrpr_issuer_holdings_20261103",
+      "holdings_as_of_date": "2026-11-03",
+      "direct_xrp_units": 19885382,
+      "direct_xrp_weight_pct": 59.86,
+      "direct_xrp_market_value_usd": 25364798.82,
+      "indirect_coinshares_xrp_etp_shares": 362750,
+      "indirect_coinshares_etp_weight_pct": 40.12,
+      "indirect_coinshares_etp_market_value_usd": 16998465,
+      "fund_assets_usd": 42380000,
+      "shares_outstanding": 4075000,
+      "median_30_day_bid_ask_spread_pct": 0.99,
+      "total_holding_lines": 4,
+      "direct_xrp_units_model_eligible": false,
+      "indirect_etp_shares_model_eligible": false
+    }
+  },
+  "cross_fund_reconciliation": {
+    "direct_xrp_units_subtotal": 500090045.8313,
+    "contributing_observations": [
+      "Bitwise XRP: 2026-11-03",
+      "REX-Osprey XRPR: 2026-11-03",
+      "Grayscale GXRP: 2026-11-04"
+    ],
+    "status": "ASYNCHRONOUS_CROSS_SECTIONAL_SUBTOTAL",
+    "net_flow_inference": "PROHIBITED",
+    "total_market_holdings_inference": "PROHIBITED",
+    "spot_purchase_inference": "PROHIBITED",
+    "indirect_etp_shares_added_to_xrp_units": false,
+    "limitations": [
+      "The holdings dates are not synchronized to a common cutoff.",
+      "The set is not exhaustive of all US or global XRP ETPs.",
+      "Holdings balances can change through creations, redemptions, in-kind transfers, fee sales, corporate actions and price changes.",
+      "An increase in USD market value can occur without an increase in XRP units.",
+      "An issuer-reported XRP balance does not prove that all units are permanently unavailable to the market or that the fund has not lent or otherwise encumbered them.",
+      "The REX-Osprey CoinShares ETP position is represented in shares and must not be added to direct XRP units."
+    ]
+  },
+  "custody_relationships": [
+    {
+      "fund": "Bitwise XRP",
+      "entity": "Coinbase Custody Trust Co., LLC",
+      "role": "digital_asset_custodian",
+      "evidence_status": "issuer_page_explicit",
+      "execution_relationship": "not_established"
+    },
+    {
+      "fund": "Bitwise XRP",
+      "entity": "The Bank of New York Mellon",
+      "role": "trust_custodian",
+      "evidence_status": "issuer_page_explicit",
+      "digital_asset_custody_role": "not_stated_on_reviewed_page"
+    },
+    {
+      "fund": "Grayscale GXRP",
+      "entity": "Coinbase Custody Trust Company, LLC",
+      "role": "digital_asset_custodian",
+      "evidence_status": "issuer_page_explicit",
+      "execution_relationship": "not_established"
+    },
+    {
+      "fund": "Grayscale GXRP",
+      "entity": "Anchorage Digital Bank N.A.",
+      "role": "additional_digital_asset_custodian",
+      "evidence_status": "issuer_page_explicit"
+    },
+    {
+      "fund": "Grayscale GXRP",
+      "entity": "BNY",
+      "role": "fund_administrator",
+      "evidence_status": "issuer_page_explicit",
+      "trust_custody_role": "not_established_by_this_page"
+    }
+  ],
+  "competing_interpretations": [
+    {
+      "hypothesis": "The reported fund holdings represent XRP units held for fund shareholders at the stated issuer reporting dates.",
+      "status": "SUPPORTED_WITH_SOURCE_SCOPE_LIMITS",
+      "evidence": "The three issuer pages each disclose fund-specific XRP quantities and as-of dates.",
+      "disconfirming_or_missing_evidence": [
+        "No byte-complete raw receipts were captured in this research pass.",
+        "No common timestamp or complete fund universe is available.",
+        "No wallet-level proof-of-reserves or independent custody confirmation was captured."
+      ]
+    },
+    {
+      "hypothesis": "The sum of the three disclosed direct XRP positions is a current market-wide institutional XRP holding total.",
+      "status": "REJECTED",
+      "evidence": "The observations are from different dates and represent only three funds.",
+      "disconfirming_evidence": [
+        "The holdings universe is incomplete.",
+        "The as-of dates are not synchronized.",
+        "The REX-Osprey indirect CoinShares ETP share position is not denominated in XRP."
+      ]
+    },
+    {
+      "hypothesis": "The holdings changes or USD values demonstrate new spot XRP purchases and net ETF inflows.",
+      "status": "NOT_ESTABLISHED",
+      "evidence": "The pages disclose balances and fund values, not a synchronized creation/redemption or cash-flow ledger.",
+      "disconfirming_or_missing_evidence": [
+        "Price changes affect USD market values without changing XRP quantities.",
+        "Creation/redemption and in-kind transfer records are absent from this snapshot.",
+        "Sponsor fees and fund operations can change token balances."
+      ]
+    }
+  ],
+  "source_capture_policy": {
+    "exact_primary_page_bytes_captured": false,
+    "raw_content_sha256_available": false,
+    "independent_timestamp_anchor_available": false,
+    "model_eligible": false,
+    "required_before_feature_admission": [
+      "Capture exact HTTP response bytes from each allowlisted official issuer page.",
+      "Store SHA-256 digest and immutable receipt with source URI, capture timestamp and response metadata.",
+      "Record issuer-stated holdings as-of date separately from capture time and first-known time.",
+      "Validate each page's holdings markers and parser outputs against the raw bytes.",
+      "Retain direct XRP units separately from indirect ETP shares, cash, repos and derivatives.",
+      "Build synchronized historical issuer vintages and corporate-action/creation-redemption reconciliation.",
+      "Require independent source and vintage checks before any aggregate becomes a model feature."
+    ]
+  },
+  "mission_priority": 1,
+  "forecast_issued": false,
+  "paper_trade_executed": false,
+  "model_eligible": false
+}
