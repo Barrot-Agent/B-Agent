@@ -3933,3 +3933,110 @@ Recorded: 2026-11-05T07:46Z
 
 This Run 33 handoff is committed on the existing #1640 integration branch. Its resulting documentation-only head requires its own exact-head full-suite CI, six-manifest dependency audit and fail-closed verification before that new head is described as verified.
 
+
+
+## Run 34 — canonical receipt identity and institutional research reconciliation
+
+**Observed:** 2026-11-05 08:05–08:20 UTC.  
+**Current main SHA:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.  
+**Main repository tree:** 1,403 entries, recursive tree complete (not truncated); 95 GitHub workflow files; 91 test entries.  
+**Open PR inventory:** 370 total (354 drafts, 16 non-drafts), enumerated across four REST pages.
+
+### EXECUTED — V3/XRP feature admission integrity
+
+On existing PR #1640, the research-eligibility adapter now requires the complete `RawReceiptArchive` receipt document rather than trusting only a payload SHA-256 and arbitrary receipt identifier.
+
+The adapter recomputes the canonical receipt ID and binds it to:
+- source ID and URI;
+- capture time and source-data-as-of time;
+- raw payload SHA-256 and byte count;
+- relative `raw/sha256/<digest>.json` content-addressed path;
+- `model_eligible_source=true` and an empty raw-only reason.
+
+Three regression cases cover forged receipt IDs, source-registry/receipt metadata mismatch and a payload path not bound to the verified bytes. This closes the canonical receipt-ID gap for artifacts that supply the full receipt manifest. **It does not wire the research-eligibility adapter into the scheduled live collector; that remains a separate blocker.**
+
+Exact code head tested: `330828d1dd8aaf48f1349a01824818e52ce4422f`.
+- Core suite: 596 passed, 8 subtests passed.
+- Full repository suite: 904 passed, 8 subtests passed.
+- Inclusive `barrot_agent` coverage: 53.79% (50% floor).
+- Wheel build and packaged primary-mission verification passed.
+- Six-manifest strict dependency audit passed; each audited set reported no known vulnerabilities.
+- Fail-closed merge gate passed and explicitly kept merging disabled.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/41993077087
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/41993077032
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/41993077023
+
+This handoff update is a documentation-only commit on the same #1640 branch; its resulting head must complete its own exact-head CI before merge.
+
+### EXECUTED — XRP research additions on existing PR #1643
+
+Three append-only research artifacts and six regression tests were added to the existing XRP research branch:
+
+1. `20261105T080500Z-xrp-etf-flow-universe-and-settlement-reconciliation.json`
+   - XRP Insights reports -194,875 XRP over November 2–3.
+   - CryptoKeyhole reports -6,678 XRP over the same dates.
+   - Difference: -188,197 XRP.
+   - The aggregators use different fund universes and share issuer-holdings source lineage; they are separate calculations, not independent primary evidence.
+   - November 4 is provisional in XRP Insights and partial at 3/4 funds in CryptoKeyhole.
+   - Holdings deltas are not verified USD cash creations/redemptions.
+
+2. `20261105T080500Z-japan-sbic-chatgpt-entity-resolution-primary-sources.json`
+   - Japan's 1963 law identifies three separate statutory companies: Tokyo (SBIC East Japan), Nagoya (SBIC Central Japan) and Osaka (SBIC West Japan).
+   - SBI Holdings is a separate financial-services group, not one of those companies.
+   - Tokyo SBIC's March 2026 ChatGPT seminar is an education event with a Microsoft Japan speaker, not an OpenAI partnership.
+   - SBI Securities' October 2026 generative-AI chat service is co-developed with Ridge-i.
+   - SBI Holdings' direct Claude relationship is with Anthropic; the SoftBank Group/OpenAI relationship is a separate corporate relationship.
+
+3. `20261105T081500Z-evernorth-actual-capital-cantor-facility-reconciliation.json`
+   - Evernorth's October 30 SEC S-1 says zero proceeds had been received under the Cantor committed equity facility as of that prospectus date.
+   - The $214.05M advance-funding cash is historical; approximately $214M was used to acquire XRP.
+   - $10.5M delayed-funding cash, in-kind XRP contributions, $30M PIK debt, the $521,893.50 Cantor fee and contingent warrant exercise proceeds are separately typed.
+   - Facility capacity and warrant arithmetic are not actual capital raised.
+
+All three artifacts are **model-ineligible**: research used rendered web/SEC extracts; byte-complete original source captures, SHA-256 receipts and independent timestamp anchors were not obtained.
+
+Exact #1643 head: `21e04ff447f10aa2dc3a8b22b568200334586fa6`.
+- Full repository suite: 895 passed, 8 subtests passed.
+- Core suite passed.
+- Fail-closed gate passed and kept merging disabled.
+- No dependency manifest or dependency-audit workflow path changed; a dedicated dependency-audit run on this exact research head is still required before merge.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/41993020391
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/41993021100
+
+### VERIFIED — integrated repository and backlog
+
+- #1640: 214 commits ahead of main, 0 behind; 84 changed files. #1643: 156 commits ahead, 0 behind; 128 changed files. Their changed-path sets have zero overlap.
+- Both PRs are mergeable according to GitHub. #1640 has 22/22 review threads resolved; #1643 has 14/14 resolved. Both have zero approving reviews.
+- Main is marked protected. The repository's visible `Fall Back` ruleset is disabled; branch-protection detail inspection returns HTTP 403, so required approval/check configuration is not independently visible.
+- Main's issue-labeled `barrot-agent.yml`, manual `task-allocator.yml`, manual `barrot-self-upgrade.yml` and push-triggered `sync-self-hosted-brain.yml` still expose write/deployment paths. #1640 quarantines or approval-gates these changes, but they are not on main. Main's `dump-brain-corpus.yml` and autonomous self-deployment are already disabled. `deploy-databricks.yml` remains manual and confirmation-gated.
+- GitHub Pages is enabled; a previous main push triggered a Pages deployment. Authorization for another merge-triggered deployment remains unresolved.
+- Nine-platform map: ChatGPT-to-GitHub repository access is verified. Copilot review activity is one-off and not a persistent agent connection; a prior read-only review attempt produced a test-only branch write. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as authenticated Barrot data flows. SBI Holdings' Anthropic agreement is not a Barrot-Claude connection.
+
+### Backlog classification
+
+- **Active integration / blocked:** #1640 and #1643.
+- **Exact ancestor / superseded pending #1640 main verification:** #1642.
+- **Dependency candidates represented in #1640:** #1644–#1650; do not close until #1640 is merged and its content is verified on main.
+- **Unique/unreviewed:** #1651 (RSI/weight-space foundation; 5 commits, 9 files, no path overlap with #1640, 6 unresolved review threads); preserve as a separate workstream.
+- **Unique security work to preserve:** #1615 (draft; 41 commits behind main, 3 ahead; distinct scheduled-writer and public-export paths). Do not merge independently or discard its unique paths.
+- **#1621:** closed unmerged. Its older 75KB research artifact is superseded by a newer 94KB version already on main and referenced by #1643's tests; no unique content needs to be reopened from that source branch.
+- **Stale historical work to preserve/reconcile:** #1320, #1318, #1317 and #1269. #1254/#1255 are older dependency versions superseded by newer updates; close only after successful main verification.
+
+### Prediction and safety status
+
+No directional XRP forecast was issued. The historical dataset, source receipts, independent timestamp anchoring, full institutional-flow coverage, calibrated out-of-sample lift and shadow outcomes remain insufficient. The forecast ledger stays disabled for directional issuance.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete action
+
+1. Verify exact-head full-suite, dependency/security audit and fail-closed gate on the documentation-updated #1640 head.
+2. Obtain independent approving reviews and verify branch-protection requirements; resolve GitHub Pages deployment authorization.
+3. Merge #1640 only when all conditions are met; fetch main, verify the merge commit and merged files, then run main CI.
+4. Reconcile #1643 against the resulting main without rewriting its history; run its exact-head dependency audit as well as full suite and gate, obtain approval, then merge only when ready.
+5. Close only exact superseded/duplicate source PRs after main verification; preserve #1615 and #1651 unique work.
+6. Continue durable raw-source storage, independent timestamp anchoring, exchange-flow/collateral/custody/payment data coverage and leakage-safe out-of-sample prediction evaluation.
