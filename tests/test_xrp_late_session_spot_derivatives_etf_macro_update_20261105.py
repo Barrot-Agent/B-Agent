@@ -47,8 +47,11 @@ def test_same_venue_quote_comparison_does_not_claim_executable_depth_or_trade_fl
     comparison = _load()["market_snapshot"]["same_venue_comparison"]
     assert comparison["prior_observation_at_utc"] == "2026-11-05T17:30:50Z"
     expected = (comparison["current_last_usd"] / comparison["prior_last_usd"] - 1) * 100
-    assert abs(expected - comparison["last_price_change_pct_over_observation_interval"]) < 1e-12
-    assert "not a full depth" in comparison["interpretation"]
+    assert abs(expected - comparison["last_price_difference_pct_vs_prior_capture"]) < 1e-12
+    assert comparison["elapsed_seconds"] is None
+    assert comparison["last_price_change_pct_over_observation_interval"] is None
+    assert comparison["observation_interval_status"] == "UNKNOWN"
+    assert "retrieval time was not exposed" in comparison["interpretation"]
 
 
 def test_derivatives_aggregator_scope_and_liquidation_disagreement_are_preserved():
