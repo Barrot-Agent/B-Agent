@@ -4135,3 +4135,98 @@ No forecast was issued. No deployment, secret rotation, Space restart, Kaggle su
 **Forecast status:** No directional XRP forecast. The historical dataset, canonical raw receipts, independent timestamps, full institutional flow coverage, calibrated out-of-sample lift and shadow outcomes remain insufficient. No paper trade or real-money action occurred.
 
 **Next action:** Verify exact-head CI on this documentation update; secure independent approvals and branch-protection visibility; resolve Pages deployment authorization; merge #1640 only when all conditions are satisfied; verify main and rerun main CI; then reconcile #1643 with main without rewriting history and obtain its exact-head dependency audit before any merge. Close only exact superseded/duplicate source PRs after merged content is verified on main.
+
+
+---
+
+## Run 35 — 2026-11-05T09:02:32Z research cutoff; GitHub verification through 2026-11-05T09:13Z
+
+### Mission and repository state
+
+- XRP intelligence and measured prediction-engine mastery remain priority 1.
+- Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Current main SHA at audit start: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main was not modified.
+- Main repository tree: 1,403 entries; recursive tree was not truncated.
+- Open PR inventory: 370 total, 354 drafts, 16 non-drafts. REST pages 1–4 were enumerated; page 5 was empty.
+- #1640: head `ac25a021baebca3e6a358b94e60ae3635947c334`, 221 commits, 84 changed files, non-draft and GitHub-reported mergeable.
+- #1643: head `34cfda3b1d69d490aac825d51e12ca88aeddc818`, 167 commits, 137 changed files, non-draft and GitHub-reported mergeable.
+- Full changed-file comparison: zero path overlap between #1640 and #1643.
+- #1642 head is an exact ancestor of #1640: comparison from #1642 to #1640 is 220 commits ahead, zero behind.
+- #1644–#1650 dependency updates are represented in #1640's current content, although their source commits are not ancestors. Verified versions include checkout v7, download-artifact v8, upload-artifact v7, types-requests 2.33.0.20261030, pytest 9.2.0, databricks-sdk 0.158.0 and huggingface_hub 2.4.0. #1644 has additional workflow hardening in #1640; its self-upgrade workflow is disabled rather than retaining an active checkout action.
+- #1254/#1255 older dependency versions are superseded by the newer versions above.
+- #1651 is unique/unreviewed RSI and weight-space work. #1269 is unique mesh/OBJ topology work. #1317, #1318 and #1320 have overlapping paths or objectives with #1640; preserve unique hunks and do not close before exact post-merge reconciliation. #1615 and #1621 remain unique draft security/collateral work. No source PR was closed.
+
+### Exact-head verification before this handoff-only update
+
+**#1640 code head `ac25a021baebca3e6a358b94e60ae3635947c334`:**
+- Core suite: 599 passed, 8 subtests.
+- Full repository suite: 907 passed, 8 subtests.
+- Coverage: 53.84%, above the 50% floor.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed gate passed; automatic merging remained disabled.
+- Runs: CI `41996751778`; dependency audit `41996751717`; gate `41996752036`.
+
+**#1643 research head `34cfda3b1d69d490aac825d51e12ca88aeddc818`:**
+- Core suite: 495 passed, 8 subtests.
+- Full repository suite: 925 passed, 8 subtests.
+- The eight new market/derivatives/ETF/Circle/Binance/XRPL/macro regression tests all passed.
+- Fail-closed gate passed; automatic merging remained disabled.
+- Runs: CI `42000229287`; gate `42000229772`.
+- No dependency-audit workflow ran on this exact head. All six dependency-manifest blob hashes were verified identical to main: `requirements.txt`, `requirements-dev.txt`, `requirements.tx`, `pyproject.toml`, `hf_space/requirements.txt`, `legacy/requirements_legacy.txt`. This is content-equivalence evidence, not an exact-head dependency-audit run; retain it as a pre-merge procedural blocker.
+
+### New research artifact and regression coverage
+
+Added to #1643:
+- `research/xrp_intelligence/20261105T090232Z-xrp-market-derivatives-etf-circle-macro-reconciliation.json`
+- `tests/test_xrp_market_derivatives_etf_circle_macro_reconciliation.py`
+
+The artifact preserves 15 source records and remains model-ineligible because original HTTP/PDF bytes, SHA-256 receipts and independent timestamp anchors were not captured.
+
+Key observations at the research cutoff:
+- Kraken XRP/USD: last $1.32318; bid $1.32317; ask $1.32318; displayed spread approximately 0.0756 bps; 24-hour volume 32.19M XRP; VWAP $1.30836; high $1.34; low $1.27488. This is one venue's ticker, not full depth or a consolidated tape.
+- TradRadar at 08:40 UTC: seven-venue OI $2.08B (exchange components sum $2.08255B), +4.22% 24h; weighted funding +0.0100% per eight hours; reported liquidations at least $5.19M, $3.90M shorts and $1.29M longs; account long/short 3.21 with 76.3% long accounts.
+- Fibonomy's Binance XRPUSDT OI was $450.44M while TradRadar's Binance component was $545.22M: $94.78M / 21.04% disagreement. No averaging; contract scope and source vintage remain unresolved.
+- ETF trackers disagree by date and fund universe. XRP Insights: seven-fund holdings 1.1964B XRP, two-day Nov 2–3 flow -194,875 XRP, Nov 4 provisional. CryptoKeyhole: four-fund holdings 1.0768B XRP, Nov 3 flow -3,339 XRP, prior five complete days +6.1787M XRP, Nov 4 partial 3/4 with a page-internal issuer-file status discrepancy. CryptoETF.today: Nov 4 partial 2/5 funds, zero among the two reporting funds, 1.1418B XRP held, $1.81B cumulative net flow and $1.49B net assets. No direct issuer cash creation/redemption records were captured.
+- Circle Q3 2026: average USDC circulation $73.3B (+8% YoY), end-period $73.9B (flat YoY), on-chain volume $13.9T (+49%), total revenue and reserve income $864.9M (+17%), reserve income $657.6M (-8%), other revenue $207.3M (+627%) including $182M ARC token presale revenue, CPN annualized TPV $41.3B. Tazapay acquisition is pending 2027 regulatory approvals. Visa Direct USDC prefunding moved to commercial deployment. These are stablecoin/payment-rail metrics, not XRP demand.
+- Binance's Nov 3 incident report: five hot wallets sent approximately 233.46M XRP to the attacker on Oct 29 between 20:05 and 20:09 UTC. The $6.34B impacted-assets and $2.85B frozen/intercepted figures are multi-asset. The 98% replenishment statement applies to impacted token assets in aggregate as of Oct 31; it is not evidence that 98% of stolen XRP was recovered. Quarantine these transfers from organic exchange-flow features.
+- XRPL `fixCleanup3_4_0` enabled Nov 4 at 14:52 UTC, ledger 108112129. LendingProtocol remains 19/35, SingleAssetVault 21/35, ConfidentialTransfer 20/35, LendingProtocolV1_1 19/35; 29 votes and continuous two-week >80% support are required. No native lending activation or XRP collateral utilization is established.
+- Macro evidence conflicts: WSJ Dollar Index 96.94, down 0.30%; Guardian broad-dollar measure down 0.35% and 10-year Treasury at 4.90%, down 4.6 bps; Guardian Brent $100.83, down 2.7%; AP reported energy-driven UK inflation and an expected BoE increase from 3.75% to 4.00%, not yet confirmed at cutoff. Preserve the easing-risk-premium and persistent-energy-inflation hypotheses separately.
+- BLS October Employment Situation release is scheduled for Nov 6, 2026 at 13:30 UTC; it is future at the cutoff.
+
+### Other research status refreshed
+
+- Evernorth capital/wallet attribution artifact reports approximately 473.276M XRP in the Oct 9 reported holdings set; about 103.13M remained in the tracked attributed wallets and about 370.346M moved outside that set. No sale or exchange deposit is established. Preserve the residual as unattributed movement, not disposal. The artifact also separates cash subscriptions and funded XRP purchases from in-kind contributions, debt, contingent ELOC capacity and unexercised warrants.
+- Kamilah Stevenson: person identity is high-confidence verified through first-person interview evidence. The canonical YouTube channel ID remains unverified. The inventory separates three creator-label video matches, one guest appearance and secondary transcript candidates; it is not an exhaustive channel inventory and no uncertain upload is attributed as her own.
+- Japan's SBIC East/Central/West remain distinct regional Small and Medium Business Investment & Consultation companies, not SBI Holdings. SBIC East's ChatGPT/Copilot seminar was for investee companies and is not an OpenAI partnership. SBI Holdings' separate enterprise adoption is not the same event.
+- ASK Coin remains disambiguated between Permission Coin (ASK) and a separate inactive/untracked Ask Coin listing; no XRP relationship is established.
+- "Actual capital" remains separated into funded cash, in-kind XRP, debt drawdowns, contingent equity facilities and potential warrant proceeds. Do not count contingent or unexercised capacity as received cash.
+
+### Security and platform controls
+
+- Branch-protection endpoint returned HTTP 403; the visible ruleset list was empty. Required protection/approval settings cannot be independently verified.
+- GitHub Pages settings endpoint was not accessible through the available read path. A previous main push triggered a successful Pages deployment; authorization for another merge-triggered deployment remains unresolved.
+- Main still has issue-driven Barrot Agent write permissions, task-allocator write permissions, and push-triggered Hugging Face/Cloudflare deployment workflows. #1640 quarantines or converts these to manual exact-main-SHA approval. Main merge queue and auto-merge workflows are disabled. The controlled approval workflow applies a label/comment only; it is not a GitHub approving review. Manual model upload and paper-trading workflows were not run.
+- #1640 has 22/22 review threads resolved; #1643 has 14/14. Neither has an approving GitHub review. Text comments saying "Approved" have state COMMENTED and are not approvals.
+- Among nine platforms, ChatGPT-to-GitHub is the only verified persistent authenticated data path. Copilot review activity is one-off and not a persistent agent/data flow. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified.
+
+### Forecast and merge status
+
+- No directional XRP forecast issued.
+- No paper trade, real-money action, funds transfer, Kaggle submission, Space restart, secret rotation or deployment performed.
+- #1640 and #1643 remain active integration PRs. #1640 is code/test/security green at its recorded head; #1643 is full-suite and fail-closed green at its current research head, but lacks an exact-head dependency-audit run. Both lack approving reviews.
+- No merge is authorized until approving reviews, required branch-protection checks, exact-head checks, dependency/security evidence and deployment-side-effect authorization are satisfied.
+
+### Next concrete actions
+
+1. This Run 35 handoff update creates a documentation-only successor on #1640; fetch the new head and verify its exact-head full suite, fail-closed gate and applicable dependency/security checks.
+2. Obtain independent approving reviews and verify actual branch-protection settings.
+3. Resolve GitHub Pages merge-triggered deployment authorization.
+4. Only then merge #1640 if all gates pass; fetch main again, verify merge commit/files, run main CI and account for workflow side effects.
+5. Reconcile #1643 against the resulting main without rewriting history; run exact-head full suite, fail-closed gate and dependency/security checks before any merge.
+6. Close only exact duplicate/superseded source PRs after merged content is verified on main. Preserve unique RSI, mesh, collateral, scientific-schema and paper-trader work until individual reconciliation.
+7. Continue byte-complete source capture, SHA-256 receipt verification, independent timestamp anchoring, historical multi-venue/issuer data coverage, leakage-safe walk-forward evaluation, calibration and drift monitoring.
+
+DESIGNED: full XRP research and forecast-readiness architecture.
+EXECUTED: current market/institutional/macro reconciliation; new research artifact and eight regression tests; full repository suite on #1643 exact head.
+VERIFIED: #1640 recorded code head full suite, six-manifest audit and fail-closed gate; #1643 recorded research head full suite and fail-closed gate. This new handoff commit itself is pending its own exact-head CI.
