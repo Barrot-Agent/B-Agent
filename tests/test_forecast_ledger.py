@@ -810,7 +810,7 @@ def test_readiness_rejects_untrusted_evaluator_key(tmp_path):
         ledger.register_readiness_report(
             report_bytes,
             receipt_id="untrusted-readiness-report",
-            raw_receipt_bytes=fixture["raw_receipt_bytes"],
+            raw_receipt_bytes=raw_receipt_bytes,
         )
 
 
@@ -973,6 +973,7 @@ def test_readiness_registration_rechecks_canonical_receipt_payload_size(tmp_path
     fixture = READINESS_FIXTURES[("XRP", 3600)]
     report = json.loads(fixture["report_bytes"])
     receipt = report["dataset_manifest"]["raw_source_receipts"][0]
+    old_receipt_id = receipt["receipt_id"]
     receipt["raw_receipt"]["payload_size_bytes"] += 1
     canonical = dict(receipt["raw_receipt"])
     canonical.pop("receipt_id")
@@ -983,6 +984,8 @@ def test_readiness_registration_rechecks_canonical_receipt_payload_size(tmp_path
     ).hexdigest()
     receipt["raw_receipt"]["receipt_id"] = receipt_id
     receipt["receipt_id"] = receipt_id
+    raw_receipt_bytes = dict(fixture["raw_receipt_bytes"])
+    raw_receipt_bytes[receipt_id] = raw_receipt_bytes.pop(old_receipt_id)
     dataset_bytes = json.dumps(
         report["dataset_manifest"], sort_keys=True, separators=(",", ":"),
         ensure_ascii=False, allow_nan=False
