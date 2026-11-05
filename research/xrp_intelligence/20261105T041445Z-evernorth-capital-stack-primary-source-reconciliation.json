@@ -173,8 +173,11 @@
       "voting_power_percent_at_close": 39.9,
       "class_a_shares": 9431914,
       "class_c_shares": 2359038,
-      "interpretation": "The 21.4% figure is the prospectus table's percent of total Pubco common stock; 39.9% is voting power under the subscription ownership cap. Do not call 39.9% an economic ownership percentage.",
-      "percent_of_total_pubco_common_stock_at_close": 21.4
+      "interpretation": "The prospectus pro forma table reports 21.4% of Pubco common stock and 39.9% of voting power at closing. The 39.9% limitation applies to Class A ownership; excess interests were issued as non-voting Class C shares. Do not describe 39.9% as economic ownership.",
+      "percent_of_total_pubco_common_stock_at_close": 21.4,
+      "class_a_ownership_limitation_percent": 39.9,
+      "excess_class_c_shares_issued_beyond_class_a_limit": 2359038,
+      "class_c_nonvoting": true
     },
     "ripple": {
       "relationship": "former parent, direct XRP contributor, shareholder subject to ownership limits, and related-party lender",
