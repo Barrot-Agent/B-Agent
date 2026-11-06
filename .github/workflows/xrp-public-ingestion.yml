@@ -64,27 +64,32 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          run_ids="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" --jq '.workflow_runs[] | select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == env.GITHUB_REPOSITORY and (.event == "schedule" or .event == "workflow_dispatch")) | [.created_at, (.id | tostring)] | @tsv' | sort -r | cut -f2)"
+          page=1
           restored=0
-          while IFS= read -r previous_run_id; do
-            [[ -n "$previous_run_id" ]] || continue
-            restore_dir="$RUNNER_TEMP/xrp-feature-restore-${previous_run_id}"
-            checkpoint_dir="$restore_dir/per-run"
-            daily_dir="$restore_dir/daily"
-            mkdir -p "$checkpoint_dir" "$daily_dir"
-            if gh run download "$previous_run_id" --name "xrp-public-feature-store-${previous_run_id}" --dir "$checkpoint_dir" >/dev/null 2>&1 && [[ -s "$checkpoint_dir/feature_store.sqlite3" ]]; then
-              cp "$checkpoint_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
-              echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:per_run_checkpoint" >> "$GITHUB_ENV"
-              restored=1
-              break
-            fi
-            if gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}" --dir "$daily_dir" >/dev/null 2>&1 && [[ -s "$daily_dir/feature_store.sqlite3" ]]; then
-              cp "$daily_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
-              echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:daily_archive" >> "$GITHUB_ENV"
-              restored=1
-              break
-            fi
-          done <<< "$run_ids"
+          while [[ "$page" -le 30 && "$restored" != "1" ]]; do
+            run_ids="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100&page=${page}" --jq '.workflow_runs[] | select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == env.GITHUB_REPOSITORY and (.event == "schedule" or .event == "workflow_dispatch")) | [.created_at, (.id | tostring)] | @tsv' | sort -r | cut -f2)"
+            [[ -n "$run_ids" ]] || break
+            while IFS= read -r previous_run_id; do
+              [[ -n "$previous_run_id" ]] || continue
+              restore_dir="$RUNNER_TEMP/xrp-feature-restore-${previous_run_id}"
+              checkpoint_dir="$restore_dir/per-run"
+              daily_dir="$restore_dir/daily"
+              mkdir -p "$checkpoint_dir" "$daily_dir"
+              if gh run download "$previous_run_id" --name "xrp-public-feature-store-${previous_run_id}" --dir "$checkpoint_dir" >/dev/null 2>&1 && [[ -s "$checkpoint_dir/feature_store.sqlite3" ]]; then
+                cp "$checkpoint_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
+                echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:per_run_checkpoint" >> "$GITHUB_ENV"
+                restored=1
+                break
+              fi
+              if gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}" --dir "$daily_dir" >/dev/null 2>&1 && [[ -s "$daily_dir/feature_store.sqlite3" ]]; then
+                cp "$daily_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
+                echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:daily_archive" >> "$GITHUB_ENV"
+                restored=1
+                break
+              fi
+            done <<< "$run_ids"
+            page=$((page+1))
+          done
           if [[ "$restored" != "1" ]]; then
             echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=bootstrap" >> "$GITHUB_ENV"
             echo "No trusted unexpired feature-store checkpoint or daily archive; bootstrapping."

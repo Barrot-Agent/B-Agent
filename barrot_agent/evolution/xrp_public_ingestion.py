@@ -2507,6 +2507,7 @@ def run_ingestion(
         "feature_store_checkpoint_retention_days": 7,
         "feature_store_checkpoint_frequency": "every_ingestion_run",
         "feature_store_restore_strategy": "exact_cache_key_then_latest_per_run_checkpoint_then_daily_archive",
+        "feature_store_restore_search_max_pages": 30,
         "feature_store_rebuild_from_raw_artifacts_implemented": False,
         "limitations": [
             "Spot coverage includes Binance, Coinbase and Kraken; derivatives history is Binance USD-M XRPUSDT only.",

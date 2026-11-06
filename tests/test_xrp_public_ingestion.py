@@ -311,6 +311,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["feature_store_checkpoint_retention_days"] == 7
     assert summary["feature_store_checkpoint_frequency"] == "every_ingestion_run"
     assert summary["feature_store_restore_strategy"] == "exact_cache_key_then_latest_per_run_checkpoint_then_daily_archive"
+    assert summary["feature_store_restore_search_max_pages"] == 30
     assert summary["xrpl_node_reconciliation"]["status"] == "NOT_COLLECTED_PROVIDER_TERMS_POLICY"
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
     assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is False
@@ -540,6 +541,9 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert workflow.index("Upload daily point-in-time feature-store backup and walk-forward report") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.count("actions/cache/save@v4") == 1
     assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" in workflow
+    assert "per_page=100&page=${page}" in workflow
+    assert 'while [[ "$page" -le 30 && "$restored" != "1" ]]' in workflow
+    assert "page=$((page+1))" in workflow
     assert "select(.conclusion == \"success\"" in workflow
     assert '.head_branch == "main"' in workflow
     assert ".head_repository.full_name == env.GITHUB_REPOSITORY" in workflow
@@ -571,6 +575,22 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "git push" not in workflow
     assert "deploy" not in workflow.lower()
     assert "--include-noncommercial-xrpl-nodes" not in workflow
+
+
+
+
+def test_feature_store_recovery_contract_docs_match_workflow_policy():
+    root = Path(__file__).resolve().parents[1]
+    feature_contract = (root / "research" / "xrp_intelligence" / "feature-store-contract.md").read_text(encoding="utf-8")
+    forecast_contract = (root / "research" / "xrp_intelligence" / "forecast-ledger-contract.md").read_text(encoding="utf-8")
+
+    for contract in (feature_contract, forecast_contract):
+        assert "exact cache" in contract.lower()
+        assert "7-day retention" in contract
+        assert "90-day retention" in contract
+        assert "30 pages of 100" in contract
+    assert "external WORM" in feature_contract
+    assert "no scheduled main-branch run is verified" in forecast_contract
 
 
 def test_walk_forward_overall_status_is_partial_until_every_venue_is_scored(tmp_path, monkeypatch):
