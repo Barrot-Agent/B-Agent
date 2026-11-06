@@ -75,3 +75,20 @@ def test_bls_actual_is_separated_from_survey_and_market_interpretation():
     assert macro["surprise_vs_reuters_payrolls"] == 100000
     assert macro["expectations"]["wsj_reported_survey_payrolls"] == 59000
     assert macro["market_reaction"]["causal_link_to_xrp"] == "Not established; no synchronized provider-timestamped XRP event return is available."
+
+
+def test_bls_survey_series_and_shutdown_gap_are_not_collapsed_or_imputed():
+    data = _artifact()
+    assert data["macro_event"]["survey_systems"]["nonfarm_payrolls"].startswith("Current Employment Statistics")
+    assert data["macro_event"]["survey_systems"]["unemployment_rate"].startswith("Current Population Survey")
+    gap = data["historical_series_quality"]["2025-10"]
+    assert gap["collected"] is False
+    assert "missing vintage" in gap["model_handling"]
+    assert "not collected" in gap["reason"]
+    source = next(
+        item for item in data["source_registry"]
+        if item["source_id"] == "bls_october_2026_employment_situation"
+    )
+    receipt = source["additional_receipts"][0]
+    assert receipt["characters"] == 343
+    assert hashlib.sha256(receipt["excerpt"].encode("utf-8")).hexdigest() == receipt["digest"]
