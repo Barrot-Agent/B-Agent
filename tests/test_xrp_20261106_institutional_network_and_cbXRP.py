@@ -166,7 +166,11 @@ def test_coinbase_q3_circle_renewal_and_stablecoin_revenue_are_primary_filing_da
 
 def test_coinbase_institutional_collateral_is_not_xrp_specific():
     item = relationships()["coinbase_institutional_collateral"]
-    assert item["collateral_requirements"] if "collateral_requirements" in item else True
+    assert item["collateral_requirements_pct_range"] == [100, 250]
+    assert item["recognized_crypto_collateral_fair_value_usd"] == 997557000
+    assert item["customer_collateral_not_recognized_fair_value_usd"] == 3284600000
+    assert item["counterparties_above_10pct_of_loan_receivables"] == 3
+    assert item["xrp_specific_amount_disclosed"] is False
     assert item["measurement_period"] == "2026-09-30"
     assert "XRP-specific collateral balance" in item["limits"][0] or "XRP-specific" in item["asset_specificity"]
     assert "does not disclose an XRP-specific collateral balance" in item["asset_specificity"]
