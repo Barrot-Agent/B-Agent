@@ -543,6 +543,9 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" in workflow
     assert "per_page=100&page=${page}" in workflow
     assert 'while [[ "$page" -le 30 && "$restored" != "1" ]]' in workflow
+    assert "page_run_count=\"$(jq '.workflow_runs | length' <<< \"$run_page\")\"" in workflow
+    assert '[[ "$page_run_count" -gt 0 ]] || break' in workflow
+    assert 'if [[ -n "$run_ids" ]]; then' in workflow
     assert "page=$((page+1))" in workflow
     assert "select(.conclusion == \"success\"" in workflow
     assert '.head_branch == "main"' in workflow
