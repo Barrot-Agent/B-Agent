@@ -434,6 +434,8 @@ def test_authoring_prompt_requires_explicit_human_approval_wording():
     [
         "If validation fails, run git reset --hard HEAD.",
         "Use git clean -fd to clear the workspace.",
+        "Run git restore --worktree . to discard local edits.",
+        "Use rm -rf .barrot to clear state.",
         "Discard all uncommitted user changes before retrying.",
         "Force-push the repair branch to replace the remote state.",
     ],
