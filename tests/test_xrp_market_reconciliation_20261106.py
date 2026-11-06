@@ -81,7 +81,7 @@ def test_macro_close_sources_have_post_close_vintages_and_distinct_lineage():
     assert ap["published_at"] == "2026-11-05T21:22:00Z"
     assert herald["published_at"] == "2026-11-05T21:45:58Z"
     assert ap["independence_group"] != herald["independence_group"]
-    assert "pre-open context" in " ".join(reuters["supports"])
+    assert "pre-open" in " ".join(reuters["supports"]) and "not the closing figures" in " ".join(reuters["supports"])
     assert reuters["published_at"] == "2026-11-05T10:54:00Z"
 
 
