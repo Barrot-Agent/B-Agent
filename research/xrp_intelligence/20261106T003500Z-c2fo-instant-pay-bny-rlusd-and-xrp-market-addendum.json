@@ -79,6 +79,33 @@
       "market_cap_source": "CoinGecko as quoted by Reuters on 2026-10-28",
       "xrp_purchase_or_bridge_volume": null,
       "interpretation": "Exchange distribution broadens RLUSD access; it does not establish incremental XRP purchases or settlement demand."
+    },
+    "coinbase_circle_usdc_distribution_and_equity": {
+      "coinbase_sec_10q_period_end": "2026-09-30",
+      "coinbase_sec_10q_filed_date": "2026-10-29",
+      "arrangement_with_circle_renewed_on_same_terms": true,
+      "average_usdc_held_in_coinbase_products_q3_2026": "All-time high; exact Q3 average not stated in the cited 10-Q passage.",
+      "q2_2026_average_usdc_held_in_coinbase_products_usd": 20000000000,
+      "q2_comparison_percent_year_over_year": 44,
+      "coinbase_stablecoin_revenue_q3_2026_usd": 306905000,
+      "coinbase_stablecoin_revenue_nine_months_2026_usd": 904487000,
+      "stablecoin_revenue_q3_increase_due_to_higher_average_usdc_balances_usd": 84600000,
+      "stablecoin_revenue_q3_decrease_due_to_lower_average_interest_rates_usd": 52800000,
+      "stablecoin_revenue_attributable_to_circle_alone_usd": null,
+      "circle_equity_investment_disclosed_by_coinbase": true,
+      "circle_equity_investment_amount_or_ownership_percent_in_cited_10q": null,
+      "circle_sec_disclosure": "Coinbase reported fair-value remeasurement of its investment in Circle Internet Group following Circle's 2025 IPO; the cited 10-Q passage does not quantify the holding.",
+      "circle_partner_economics_claims": {
+        "coinbase_role": "Circle described Coinbase as its largest and longest-standing USDC distribution partner.",
+        "partner_compensation": "Circle says distribution partners share in reserve income based on the USDC balances they bring and grow.",
+        "circle_h1_2026_revenue_usd": 1400000000,
+        "circle_h1_2026_distribution_partner_and_transaction_costs_usd": 819000000,
+        "share_of_revenue_paid_to_distribution_partners_and_transaction_costs_percent": 59,
+        "coinbase_specific_share_usd": null,
+        "usdc_h1_2026_onchain_transaction_volume_usd": 36000000000000,
+        "onchain_volume_limitation": "Circle-reported gross on-chain transaction volume is not equivalent to unique payments, end-user remittances, Coinbase volume or XRP settlement."
+      },
+      "interpretation": "Coinbase and Circle have a direct, economically material USDC distribution relationship, a renewed commercial arrangement, and a disclosed Coinbase investment in Circle. The reported Coinbase stablecoin-revenue category is not Circle-specific. This relationship does not establish XRP purchases, XRP collateral or XRP settlement demand."
     }
   },
   "evernorth_actual_capital_reconciliation": {
@@ -267,9 +294,32 @@
         "Ripple Contribution Agreement"
       ],
       "independence_group": "sec_edgar_filing"
+    },
+    {
+      "source_id": "COINBASE_Q3_2026_10Q_CIRCLE_RELATIONSHIP",
+      "publisher": "Coinbase Global, Inc. / U.S. Securities and Exchange Commission",
+      "source_type": "primary quarterly filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "published_date": "2026-10-29",
+      "exact_retrieval_timestamp_utc": null,
+      "sections": [
+        "Executive Overview",
+        "Stablecoin Revenue",
+        "Other (income) expense, net"
+      ],
+      "independence_group": "coinbase_sec_filing"
+    },
+    {
+      "source_id": "CIRCLE_USDC_PARTNER_ECONOMICS_20261016",
+      "publisher": "Circle",
+      "source_type": "primary issuer/partner-economics disclosure",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "published_date": "2026-10-16",
+      "exact_retrieval_timestamp_utc": null,
+      "independence_group": "circle_issuer_blog"
     }
   ],
-  "source_independence_note": "C2FO and Ripple's joint announcement and BNY/Ripple's joint announcement are issuer/counterparty evidence, not independent corroboration of one another. SEC EDGAR is an independent filing repository for issuer disclosures. Reuters is independent secondary reporting, not a substitute for issuer records.",
+  "source_independence_note": "C2FO and Ripple's joint announcement and BNY/Ripple's joint announcement are issuer/counterparty evidence, not independent corroboration of one another. SEC EDGAR is an independent filing repository for issuer disclosures. Reuters is independent secondary reporting, not a substitute for issuer records. Coinbase's SEC filing and Circle's blog are separate issuer disclosures describing their own sides of the USDC relationship. The Circle partner-economics figures are Circle-reported and are not an independent audit of Coinbase's specific revenue share.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "model_ineligibility_reasons": [
@@ -279,5 +329,11 @@
     "No XRP-specific bridge usage, BNY custody balance, XRP collateral balance or incremental XRP purchase is disclosed.",
     "Institutional announcement dates and corporate capital figures are context records, not market price features.",
     "No leakage-safe out-of-sample evaluation supports a directional forecast."
-  ]
+  ],
+  "relationship_interpretation": {
+    "coinbase_circle": "Direct commercial distribution/revenue-sharing relationship; Coinbase also discloses an investment in Circle, but the cited 10-Q passage does not state its size.",
+    "coinbase_ripple": "Direct RLUSD distribution on Coinbase retail and institutional platforms; no XRP purchase or XRP bridge volume is disclosed.",
+    "circle_ripple": "No direct Circle-Ripple commercial partnership is established by the cited sources. BNY's roles with both companies create a shared institutional service-provider link, not proof of a direct partnership.",
+    "ripple_bny_c2fo": "BNY custody support for XRP/RLUSD and a separate exploratory tokenized trade-finance initiative with C2FO; do not equate these with completed XRP collateral or settlement flows."
+  }
 }

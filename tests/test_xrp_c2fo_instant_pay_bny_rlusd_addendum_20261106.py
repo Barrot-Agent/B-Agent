@@ -117,3 +117,18 @@ def test_sbi_controlled_subscribers_and_ripple_in_kind_contribution_are_not_cash
     assert ripple["xrp_contributed"] == 126_791_458
     assert ripple["cash_purchase"] is False
     assert ripple["consideration"].startswith("30,000,000 Pathfinder Company Units")
+
+def test_coinbase_circle_usdc_distribution_and_equity_relationship_is_not_xrp_demand():
+    item = load_artifact()["institutional_rails"]["coinbase_circle_usdc_distribution_and_equity"]
+    assert item["arrangement_with_circle_renewed_on_same_terms"] is True
+    assert item["average_usdc_held_in_coinbase_products_q3_2026"].startswith("All-time high")
+    assert item["coinbase_stablecoin_revenue_q3_2026_usd"] == 306_905_000
+    assert item["stablecoin_revenue_attributable_to_circle_alone_usd"] is None
+    assert item["circle_equity_investment_disclosed_by_coinbase"] is True
+    assert item["circle_equity_investment_amount_or_ownership_percent_in_cited_10q"] is None
+    partner = item["circle_partner_economics_claims"]
+    assert partner["coinbase_role"].startswith("Circle described Coinbase")
+    assert partner["share_of_revenue_paid_to_distribution_partners_and_transaction_costs_percent"] == 59
+    assert partner["coinbase_specific_share_usd"] is None
+    assert "not equivalent to unique payments" in partner["onchain_volume_limitation"]
+    assert "does not establish XRP purchases" in item["interpretation"]
