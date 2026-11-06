@@ -1,0 +1,555 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_post_bls_market_structure_followup_20261106T143102Z",
+  "artifact_type": "post_release_spot_depth_derivatives_etf_reconciliation",
+  "recorded_at_utc": "2026-11-06T14:31:02Z",
+  "run_time_anchor_utc": "2026-11-06T14:31:02Z",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+  "capture_contract": {
+    "common_point_in_time_cutoff_utc": null,
+    "exact_kraken_request_time_utc": null,
+    "kraken_provider_event_timestamp_utc": null,
+    "retrieval_interface_exposes_byte_complete_http_body_or_headers": false,
+    "run_time_anchor_note": "The Kraken response was retrieved during this run. The interface does not expose the exact request/response time; 14:31:02Z is the run-time anchor, not a provider timestamp or asserted upper bound.",
+    "note": "Fuelmaps, TradRadar and Alpha Finance provide separate displayed update times. They are not synchronized exchange ticks. No event return or causal attribution is computed from them."
+  },
+  "source_independence_groups": [
+    "bls_primary_release",
+    "reuters_market_reporting_and_economist_survey",
+    "kraken_exchange_api",
+    "fuelmaps_six_venue_spot_aggregator_overlapping_kraken",
+    "tradradar_seven_venue_derivatives_aggregator",
+    "alpha_finance_all_venue_derivatives_aggregator",
+    "xrp_insights_issuer_holdings_aggregator",
+    "cryptokeyhole_issuer_file_aggregator",
+    "alpha_finance_five_fund_etf_aggregator",
+    "corpstacking_fund_holdings_aggregator",
+    "swiftedge_market_and_onchain_perpetual_aggregator"
+  ],
+  "source_registry": [
+    {
+      "source_id": "bls_october_2026_employment_situation",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "source_type": "official_primary_release",
+      "url": "https://www.bls.gov/news.release/archives/empsit_11062026.htm",
+      "publication_time_utc": "2026-11-06T13:30:00Z",
+      "independence_group": "bls_primary_release",
+      "receipt_status": "prior_artifact_excerpt_receipt",
+      "prior_artifact": "research/xrp_intelligence/20261106T134313Z-bls-october-employment-and-xrp-post-release-market-reconciliation.json",
+      "prior_excerpt_sha256": "302175b81507388f80c8c8903e30886d8b7ac3c0004aa3a8950e336d72390026",
+      "raw_full_http_bytes_captured": false
+    },
+    {
+      "source_id": "reuters_october_jobs_market_reaction",
+      "publisher": "Reuters",
+      "source_type": "secondary_market_reporting_and_survey",
+      "url": "https://www.reuters.com/business/view-strong-october-jobs-report-sends-yields-higher-2026-11-06/",
+      "publication_date": "2026-11-06",
+      "independence_group": "reuters_market_reporting_and_economist_survey",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "74ff8742d97b6797225b088ce6003c1c08b9d7900b206dbf3391b751b17dbc9b",
+        "scope": "Normalized excerpt recorded in this artifact; not full article or HTTP bytes.",
+        "characters": 307
+      },
+      "raw_full_http_bytes_captured": false
+    },
+    {
+      "source_id": "kraken_xrp_usd_ticker_run_11",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_ticker_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken_exchange_api",
+      "provider_event_timestamp_utc": null,
+      "exact_retrieval_time_utc": null,
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "97496dc4cd4fa246acd079a59c5b472c36d455e4bb9ebc8be0c81f615882be4a",
+        "scope": "Exact 320-character JSON text rendered by the retrieval interface; not byte-complete HTTP body or headers.",
+        "characters": 320
+      },
+      "raw_http_bytes_captured": false,
+      "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.18159000\",\"3764\",\"3764.000\"],\"b\":[\"1.18118000\",\"835\",\"835.000\"],\"c\":[\"1.18153000\",\"1073.21946960\"],\"v\":[\"16010556.04582042\",\"45369714.89100667\"],\"p\":[\"1.19672256\",\"1.22495509\"],\"t\":[20228,46815],\"l\":[\"1.17605000\",\"1.17605000\"],\"h\":[\"1.22190000\",\"1.30344000\"],\"o\":\"1.20567000\"}}}"
+    },
+    {
+      "source_id": "fuelmaps_xrp_spot_depth_20261106T1400Z",
+      "publisher": "Fuelmaps",
+      "source_type": "six_venue_spot_orderbook_depth_snapshot",
+      "url": "https://fuelmaps.io/order-book/",
+      "independence_group": "fuelmaps_six_venue_spot_aggregator_overlapping_kraken",
+      "snapshot_time_utc": "2026-11-06T14:00:00Z",
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "excluded_venues": [
+        "Binance",
+        "Bitget"
+      ],
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "af4cdd4b8084e68516a10b868718cb4bf993ca62e78e3d783ce2ed1c5b61c143",
+        "scope": "Normalized 468-character snapshot excerpt; not raw exchange book bytes.",
+        "characters": 468
+      },
+      "raw_http_bytes_captured": false,
+      "limitations": [
+        "Hourly snapshot averages one-minute book snapshots.",
+        "Resting orders can be cancelled or moved.",
+        "Binance and Bitget are not included.",
+        "At ±10% only five of six venues covered."
+      ]
+    },
+    {
+      "source_id": "tradradar_xrp_perpetuals_20261106T1340Z",
+      "publisher": "TradRadar",
+      "source_type": "seven_exchange_perpetual_aggregation",
+      "url": "https://tradradar.io/markets/xrp",
+      "independence_group": "tradradar_seven_venue_derivatives_aggregator",
+      "displayed_update_utc": "2026-11-06T13:40:00Z",
+      "displayed_delay_minutes": 15,
+      "inferred_underlying_data_time_utc": "2026-11-06T13:25:00Z",
+      "open_interest_venue_count": 7,
+      "liquidation_and_account_ratio_venue_count": 5,
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "a3e00616ee94124c90e2476570f5227d23d9b7f399f8f539331b179dd5af093a",
+        "scope": "Normalized 313-character displayed excerpt; not raw exchange API payloads.",
+        "characters": 313
+      },
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "alpha_finance_xrp_derivatives_20261106T1400Z",
+      "publisher": "Alpha Finance",
+      "source_type": "all_venue_derivatives_and_modelled_liquidation_heatmap",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "independence_group": "alpha_finance_all_venue_derivatives_aggregator",
+      "displayed_as_of_utc": "2026-11-06T14:00:00Z",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "383577413f5fb550c9fc6736386b81b109aff3aaede0dd15e059aa67b11f9901",
+        "scope": "Normalized 398-character displayed excerpt; not raw venue API payloads.",
+        "characters": 398
+      },
+      "raw_http_bytes_captured": false,
+      "methodology_note": "Open interest is an all-venue notional aggregate. Liquidation levels are modelled from OI and standard leverage tiers, not observed executable liquidation orders."
+    },
+    {
+      "source_id": "xrp_insights_issuer_holdings_20261105",
+      "publisher": "XRP Insights",
+      "source_type": "issuer_holdings_delta_aggregator",
+      "url": "https://xrp-insights.com/data",
+      "independence_group": "xrp_insights_issuer_holdings_aggregator",
+      "data_as_of_date": "2026-11-05",
+      "fund_universe": "Six US spot funds plus BITW XRP sleeve",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "46f85425d03149a1b847c9d954acce670c46767a16ec71ae45ba3c57fcd8d5c8",
+        "scope": "Normalized 273-character excerpt; not issuer source bytes.",
+        "characters": 273
+      },
+      "raw_http_bytes_captured": false,
+      "methodology_note": "Flows are day-over-day issuer-reported holdings changes. Flow-excluded funds count as zero in the displayed aggregate; some rows may be reconstructed or provisional."
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_20261106T1402Z",
+      "publisher": "CryptoKeyhole",
+      "source_type": "issuer_file_holdings_delta_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "independence_group": "cryptokeyhole_issuer_file_aggregator",
+      "displayed_update_utc": "2026-11-06T14:02:00Z",
+      "fund_universe": "Four US spot XRP ETFs",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "e0184f302966e3f197244012566d090ecfe628a71bc74bc8efbab29877297a3d",
+        "scope": "Normalized 250-character excerpt; not raw issuer file bytes.",
+        "characters": 250
+      },
+      "raw_http_bytes_captured": false,
+      "methodology_note": "November 5 is partial at 3/4 funds because Franklin XRPZ had not published at this update."
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_20261105",
+      "publisher": "Alpha Finance",
+      "source_type": "five_fund_etf_flow_aggregator",
+      "url": "https://alphafinance.io/etf/",
+      "independence_group": "alpha_finance_five_fund_etf_aggregator",
+      "data_through_date": "2026-11-05",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "b18e1c856dd3a9d1a79da9e0eeab1b278a15d934316bdfffaf7a49093448e774",
+        "scope": "Normalized 151-character XRP row excerpt; not issuer source bytes.",
+        "characters": 151
+      },
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "corpstacking_xrp_fund_holdings_20261106",
+      "publisher": "Corpstacking",
+      "source_type": "ten_fund_holdings_aggregator",
+      "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "independence_group": "corpstacking_fund_holdings_aggregator",
+      "data_as_of_date": "2026-11-06",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "177c0c4a7e809233409072eb5e81c6641ea2a117a19a5348c480b15751f03466",
+        "scope": "Normalized 315-character methodology/total excerpt; not underlying issuer documents.",
+        "characters": 315
+      },
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "swiftedge_xrp_market_brief_20261106T1207Z",
+      "publisher": "Swiftedge",
+      "source_type": "secondary_market_and_trade_flow_aggregator",
+      "url": "https://swiftedge.uk/markets/today",
+      "independence_group": "swiftedge_market_and_onchain_perpetual_aggregator",
+      "displayed_update_utc": "2026-11-06T12:07:00Z",
+      "receipt_status": "displayed_page_text_only",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "swiftedge_xrp_whale_perpetual_tape_20261106T1254Z",
+      "publisher": "Swiftedge",
+      "source_type": "onchain_perpetual_large_trade_aggregator",
+      "url": "https://swiftedge.uk/xrp/whale-trades",
+      "independence_group": "swiftedge_market_and_onchain_perpetual_aggregator",
+      "displayed_update_utc": "2026-11-06T12:54:00Z",
+      "receipt_status": "displayed_page_text_only",
+      "raw_http_bytes_captured": false,
+      "scope_note": "On-chain XRP perpetual futures market orders, not spot exchange flows or native XRPL wallet transfers."
+    }
+  ],
+  "macro_event": {
+    "event": "US Employment Situation — October 2026",
+    "publication_time_utc": "2026-11-06T13:30:00Z",
+    "primary_actual": {
+      "nonfarm_payroll_change": 165000,
+      "unemployment_rate_pct": 4.1,
+      "average_hourly_earnings_usd": 38,
+      "average_hourly_earnings_change_mom_pct": 0.4,
+      "average_hourly_earnings_change_yoy_pct": 3.1,
+      "prior_12_month_average_payroll_gain": 48000,
+      "august_revision_change": 53000,
+      "september_revision_change": 31000,
+      "combined_revision_change": 84000,
+      "part_time_for_economic_reasons_change": 339000,
+      "part_time_for_economic_reasons_total": 4800000
+    },
+    "expectations": {
+      "reuters_survey_payrolls": 65000,
+      "wsj_reported_survey_payrolls": 59000,
+      "reuters_survey_unemployment_pct": 4.2,
+      "note": "Different survey sources are retained separately; no averaged consensus is invented."
+    },
+    "surprise_vs_reuters_payrolls": 100000,
+    "market_reaction": {
+      "reuters_reported": "Treasury yields and the dollar rose after the release; yields later pulled back. DXY was reported +0.7%; Nasdaq futures +1.4% and S&P 500 futures +0.3% at reporting; December rate-hike probability was reported at 78%, up from 70%.",
+      "interpretation": "Initial hawkish repricing is supported, but the subsequent yield pullback and positive equity futures make the persistence and net risk-asset effect uncertain.",
+      "causal_link_to_xrp": "Not established; no synchronized provider-timestamped XRP event return is available."
+    }
+  },
+  "market": {
+    "kraken_xrp_usd": {
+      "last_trade_usd": 1.18153,
+      "best_bid_usd": 1.18118,
+      "best_ask_usd": 1.18159,
+      "spread_bps": 3.4705,
+      "best_bid_size_xrp": 835,
+      "best_ask_size_xrp": 3764,
+      "last_trade_size_xrp": 1073.2194696,
+      "volume_today_xrp": 16010556.04582042,
+      "volume_24h_xrp": 45369714.89100667,
+      "vwap_today_usd": 1.19672256,
+      "vwap_24h_usd": 1.22495509,
+      "low_today_usd": 1.17605,
+      "low_24h_usd": 1.17605,
+      "high_today_usd": 1.2219,
+      "high_24h_usd": 1.30344,
+      "utc_day_open_usd": 1.20567,
+      "last_vs_24h_vwap_pct": -3.545,
+      "last_vs_utc_day_open_pct": -2.0022,
+      "last_above_24h_low_pct": 0.466,
+      "provider_event_timestamp_utc": null,
+      "exact_retrieval_time_utc": null,
+      "model_eligible": false
+    },
+    "fuelmaps_spot_depth": {
+      "snapshot_time_utc": "2026-11-06T14:00:00Z",
+      "mid_usd": 1.1852,
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "excluded_venues": [
+        "Binance",
+        "Bitget"
+      ],
+      "bands": {
+        "0.5pct": {
+          "bids_usd": 9500000,
+          "asks_usd": 5400000,
+          "bid_share_pct": 63.6,
+          "venues": 6
+        },
+        "1pct": {
+          "bids_usd": 13900000,
+          "asks_usd": 8300000,
+          "bid_share_pct": 62.6,
+          "venues": 6
+        },
+        "2pct": {
+          "bids_usd": 19600000,
+          "asks_usd": 9900000,
+          "bid_share_pct": 66.5,
+          "venues": 6
+        },
+        "5pct": {
+          "bids_usd": 24500000,
+          "asks_usd": 11000000,
+          "bid_share_pct": 69.1,
+          "venues": 6
+        },
+        "10pct": {
+          "bids_usd": 32700000,
+          "asks_usd": 12900000,
+          "bid_share_pct": 71.6,
+          "venues": 5
+        }
+      },
+      "largest_resting_bids": [
+        {
+          "price_usd": 1.15,
+          "notional_usd": 2400000
+        },
+        {
+          "price_usd": 1.1,
+          "notional_usd": 2100000
+        },
+        {
+          "price_usd": 1.12,
+          "notional_usd": 2000000
+        },
+        {
+          "price_usd": 1.183,
+          "notional_usd": 2000000
+        },
+        {
+          "price_usd": 1.182,
+          "notional_usd": 1900000
+        }
+      ],
+      "limitations": [
+        "Resting orders may be cancelled or moved.",
+        "Hourly snapshot averages one-minute book snapshots.",
+        "Binance and Bitget excluded.",
+        "At ±10%, only five venues cover the band.",
+        "This is not executable depth or a slippage estimate."
+      ]
+    },
+    "tradradar_derivatives": {
+      "displayed_update_utc": "2026-11-06T13:40:00Z",
+      "inferred_underlying_data_time_utc": "2026-11-06T13:25:00Z",
+      "displayed_delay_minutes": 15,
+      "mark_price_usd": 1.1835,
+      "mark_price_change_24h_pct": -9.48,
+      "open_interest_usd": 1900000000,
+      "open_interest_24h_change_pct": -7.6,
+      "funding_per_8h_pct": 0.007,
+      "liquidations_24h_lower_bound_usd": 19890000,
+      "long_liquidations_usd": 19240000,
+      "short_liquidations_usd": 644390,
+      "long_short_account_ratio": 3.95,
+      "long_account_share_pct": 79.8,
+      "open_interest_venue_count": 7,
+      "liquidation_ratio_venue_count": 5,
+      "limitations": [
+        "Liquidations are a lower bound.",
+        "Long/short is account count, not notional exposure.",
+        "Venue coverage differs by metric."
+      ]
+    },
+    "alpha_finance_derivatives": {
+      "displayed_as_of_utc": "2026-11-06T14:00:00Z",
+      "spot_usd": 1.1857,
+      "spot_change_24h_pct": -9.32,
+      "open_interest_usd": 2770000000,
+      "volume_24h_usd": 3780000000,
+      "long_liquidations_24h_usd": 21800000,
+      "short_liquidations_24h_usd": 762500,
+      "modelled_short_liquidity_above_spot_usd": 123700000,
+      "modelled_long_liquidity_below_spot_usd": 36300000,
+      "modelled_short_cluster_usd": 6500000,
+      "modelled_short_cluster_price_usd": 1.2529,
+      "modelled_long_cluster_usd": 4100000,
+      "modelled_long_cluster_price_usd": 1.1692,
+      "leverage_within_2pct_usd": 41700000,
+      "limitations": [
+        "All-venue OI is not comparable with TradRadar's seven-venue aggregate without matching venue and contract scope.",
+        "Liquidation clusters are modelled from OI and standard leverage tiers, not exchange-reported orders.",
+        "No Binance heatmap was available for this window."
+      ]
+    },
+    "swiftedge": {
+      "market_brief": {
+        "displayed_update_utc": "2026-11-06T12:07:00Z",
+        "xrp_usd": 1.2005,
+        "xrp_24h_change_pct": -8.57,
+        "volume_multiple_of_daily_average": 2.1,
+        "takers_net_buyers_across_nine_markets": 1,
+        "interpretation": "Broad selling pressure in the source's cross-market panel; not a synchronized venue-level causal measure."
+      },
+      "large_onchain_perpetual_orders": {
+        "displayed_update_utc": "2026-11-06T12:54:00Z",
+        "orders_over_50000_usd": 279,
+        "buys_count": 118,
+        "sells_count": 161,
+        "buy_notional_usd": 22000000,
+        "sell_notional_usd": 25000000,
+        "net_notional_usd": -2300000,
+        "share_of_aggressive_volume_pct": 47,
+        "scope": "On-chain XRP perpetual futures market orders; not spot exchange flow."
+      }
+    }
+  },
+  "etf_flows": {
+    "xrp_insights": {
+      "data_as_of_date": "2026-11-05",
+      "fund_universe": "Six US spot funds plus BITW XRP sleeve",
+      "net_flow_xrp_nov2_nov5": -149487,
+      "total_held_xrp_nov5": 1196450700,
+      "status": "Four settled trading days; flow-excluded funds count as zero; some rows may be reconstructed or provisional."
+    },
+    "cryptokeyhole": {
+      "displayed_update_utc": "2026-11-06T14:02:00Z",
+      "fund_universe": "Four US spot XRP ETFs",
+      "nov5_partial_flow_xrp": -3339,
+      "nov5_reported_funds": 3,
+      "nov5_total_funds": 4,
+      "nov5_missing_fund": "Franklin Templeton XRPZ",
+      "nov4_complete_flow_xrp": -3339
+    },
+    "alpha_finance": {
+      "data_through_date": "2026-11-05",
+      "fund_count": 5,
+      "nov5_latest_session_flow_usd": 0,
+      "seven_day_flow_usd": 0,
+      "thirty_day_flow_usd": 15400000,
+      "cumulative_flow_usd": 1730000000,
+      "note": "The displayed XRP row reports five funds and does not publish their XRP-fund net assets in this table."
+    },
+    "corpstacking": {
+      "data_as_of_date": "2026-11-06",
+      "displayed_fund_count": 10,
+      "displayed_total_xrp": 1415112061,
+      "nciq_xrp_included_in_ten_row_sum": 17375993,
+      "ten_row_sum_excluding_nciq_xrp": 1397736068,
+      "methodology_text_says_nciq_is_excluded": true,
+      "scope_conflict": "The ten displayed rows sum to the headline total, including NCIQ, while the methodology says basket funds such as NCIQ are not counted. The headline total is not admitted until the publisher reconciles this conflict.",
+      "note": "This universe also includes ETPs and trusts outside the US spot ETF-only sets."
+    },
+    "admission": "Do not average, sum or treat these aggregates as one capital-flow measure. Fund universe, settlement status, holdings-versus-flow definition, partial reporting and inclusion rules differ."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "leveraged_long_unwind",
+      "status": "supported_but_not_causal",
+      "support": [
+        "TradRadar reports OI down 7.60% and long liquidations materially exceed short liquidations.",
+        "Alpha Finance independently reports long liquidations far above shorts.",
+        "Long-account share remains near 80% in TradRadar."
+      ],
+      "counterevidence": [
+        "Funding remains positive.",
+        "Fuelmaps reports a bid-heavy resting spot book at 14:00 UTC.",
+        "USD-notional OI changes with price and venue coverage differs."
+      ]
+    },
+    {
+      "id": "spot_bid_absorption",
+      "status": "plausible_counterhypothesis",
+      "support": [
+        "Fuelmaps reports bids larger than asks at every displayed XRP depth band from ±0.5% to ±10%."
+      ],
+      "counterevidence": [
+        "Resting orders can cancel or move.",
+        "Binance and Bitget are absent.",
+        "A resting book does not prove executed buying or durable support."
+      ]
+    },
+    {
+      "id": "hawkish_macro_repricing",
+      "status": "initial_impulse_supported_persistence_unresolved",
+      "support": [
+        "BLS payrolls exceeded the Reuters survey by 100,000.",
+        "Unemployment fell to 4.1%; wages rose 0.4% month over month.",
+        "Reuters reports higher yields and dollar immediately after release."
+      ],
+      "counterevidence": [
+        "Reuters reports yields later pulled back and equity futures were positive at reporting.",
+        "No synchronized XRP/BTC/DXY/Treasury event return exists.",
+        "One labor release does not establish a durable Fed policy change."
+      ]
+    },
+    {
+      "id": "broad_risk_off_and_geopolitical_confounding",
+      "status": "plausible_but_mixed",
+      "support": [
+        "Prior-session global technology/AI selloff and Middle East energy/geopolitical uncertainty were reported."
+      ],
+      "counterevidence": [
+        "Post-release equity futures were positive in Reuters reporting.",
+        "No cross-asset synchronized panel isolates the contribution to XRP."
+      ]
+    },
+    {
+      "id": "etf_flow_driven_xrp_move",
+      "status": "unresolved_and_not_admitted",
+      "support": [
+        "Several providers report modest net outflows or zero/partial daily flows."
+      ],
+      "counterevidence": [
+        "Other provider reports positive 30-day flows.",
+        "Fund universes and settlement states conflict.",
+        "Holdings deltas are not direct AP cash creations/redemptions.",
+        "No synchronized XRP return attribution exists."
+      ]
+    }
+  ],
+  "model_eligibility": {
+    "eligible": false,
+    "reasons": [
+      "Kraken provider event timestamp and exact retrieval time are unavailable.",
+      "Byte-complete raw HTTP response bodies and headers were not captured.",
+      "Spot, depth, derivatives, ETF and macro observations do not share a common point-in-time cutoff.",
+      "TradRadar and Alpha Finance use different venue universes and OI methodologies.",
+      "ETF fund universes and partial/settled states are not reconciled.",
+      "No evaluator-attested out-of-sample event-study evidence is available."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "reason": "The evidence supports competing market-structure explanations but does not satisfy the synchronized point-in-time dataset and out-of-sample evaluation standard."
+  },
+  "next_tests": [
+    "Capture exchange-native trades and depth with provider event timestamps, request/response times, full raw bytes and SHA-256 receipts.",
+    "Normalize per-venue XRP contract quantities and USD notional separately; reconcile exchange coverage before comparing OI.",
+    "Reconstruct issuer ETF holdings at a common US close, preserving partial, provisional, excluded and reconstructed rows.",
+    "Resolve Corpstacking's NCIQ inclusion contradiction against its displayed ten-row total.",
+    "Build synchronized BLS event windows for XRP, BTC, DXY, Treasury yields, equity futures, spot depth, perpetual OI and funding.",
+    "Run chronological event studies and walk-forward evaluation against naive, momentum, mean-reversion and volatility baselines; do not infer causality from one event."
+  ]
+}
