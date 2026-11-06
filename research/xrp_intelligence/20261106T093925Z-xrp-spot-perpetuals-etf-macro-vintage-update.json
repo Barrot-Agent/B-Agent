@@ -155,6 +155,26 @@
       "limitations": [
         "Schedule only; October Employment Situation results were not yet published at this artifact cutoff."
       ]
+    },
+    {
+      "source_id": "REUTERS_BINANCE_BANK_SUPERVISORY_OUTREACH_20261105",
+      "publisher": "Reuters",
+      "source_type": "independent_reporting",
+      "url": "https://www.reuters.com/legal/government/binance-hack-prompted-us-regulators-check-bank-systems-sources-say-2026-11-05/",
+      "retrieved_between_utc": [
+        "2026-11-06T09:34:50Z",
+        "2026-11-06T09:36:53Z"
+      ],
+      "publication_date": "2026-11-05",
+      "independence_group": "reuters_reporting",
+      "raw_bytes_captured": false,
+      "model_eligible": false,
+      "claims_supported": [
+        "Reuters reported that Federal Reserve and OCC supervisors contacted banks after the Binance security incident to ask about unusual activity or service disruptions."
+      ],
+      "limitations": [
+        "Secondary reporting based on sources; not an XRP-specific regulatory action, XRP flow observation or proof of a bank service disruption."
+      ]
     }
   ],
   "source_captures": {
@@ -333,7 +353,11 @@
         "No synchronized BTC, broad crypto, DXY, rates or equity-index series is included in this artifact.",
         "Block Insider is powered by CoinGecko and is not independent market-data confirmation."
       ],
-      "status": "HYPOTHESIS_NOT_CAUSAL_FINDING"
+      "status": "HYPOTHESIS_NOT_CAUSAL_FINDING",
+      "source_ids": [
+        "BLOCKINSIDER_XRP_MARKET_20261106T050800Z",
+        "REUTERS_BINANCE_BANK_SUPERVISORY_OUTREACH_20261105"
+      ]
     },
     {
       "id": "etf_flow_causality_unproven",

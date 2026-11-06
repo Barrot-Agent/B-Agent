@@ -108,6 +108,16 @@ def test_competing_hypotheses_keep_disconfirming_evidence_and_no_causality(data:
     assert all(x["status"] in {"HYPOTHESIS_NOT_CAUSAL_FINDING", "EVENT_ANNOTATION_ONLY"} for x in hypotheses)
 
 
+def test_reuters_security_context_has_its_own_source_record_and_is_not_xrp_regulation(data: dict) -> None:
+    registry = {x["source_id"]: x for x in data["source_registry"]}
+    source = registry["REUTERS_BINANCE_BANK_SUPERVISORY_OUTREACH_20261105"]
+    assert source["publisher"] == "Reuters"
+    assert source["independence_group"] == "reuters_reporting"
+    assert "not an XRP-specific regulatory action" in source["limitations"][0]
+    hypothesis = next(x for x in data["competing_hypotheses"] if x["id"] == "broader_crypto_risk_repricing")
+    assert "REUTERS_BINANCE_BANK_SUPERVISORY_OUTREACH_20261105" in hypothesis["source_ids"]
+
+
 def test_no_forecast_or_model_admission_is_created(data: dict) -> None:
     assert data["model_eligibility"]["eligible"] is False
     assert data["forecast_status"]["status"] == "NOT_ISSUED"
