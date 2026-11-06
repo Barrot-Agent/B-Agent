@@ -100,6 +100,7 @@ ARTIFACT_ONLY_WORKFLOWS = (
     ".github/workflows/capability-discovery.yml",
     ".github/workflows/capability-10-design.yml",
     ".github/workflows/data-value-triage.yml",
+    ".github/workflows/signal-summary.yml",
 )
 
 

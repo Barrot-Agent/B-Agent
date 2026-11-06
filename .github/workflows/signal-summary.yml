@@ -1,32 +1,67 @@
-name: Generate Signal Summary
+name: Generate Signal Summary (manual artifact only)
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type YES only after confirming the public/authorized source signal may be sent to Groq. This workflow never issues a forecast."
+        required: true
+        default: "NO"
+      expected_main_sha:
+        description: "Exact 40-character main SHA to summarize."
+        required: true
+        default: ""
 
 permissions:
   contents: read
 
+concurrency:
+  group: signal-summary-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   summary:
+    if: ${{ inputs.confirm == 'YES' && inputs.expected_main_sha != '' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v5
+        with:
+          ref: ${{ inputs.expected_main_sha }}
+          persist-credentials: false
+      - name: Verify exact main SHA
+        shell: bash
+        run: |
+          if [[ ! "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Expected main SHA must be exactly 40 lowercase hexadecimal characters."
+            exit 1
+          fi
+          current_main="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          checked_out="$(git rev-parse HEAD)"
+          if [[ "$current_main" != "$EXPECTED_MAIN_SHA" || "$checked_out" != "$EXPECTED_MAIN_SHA" ]]; then
+            echo "::error::Main or checkout no longer matches the approved SHA."
+            exit 1
+          fi
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - name: Generate summary
+      - name: Generate non-directional summary
         run: python3 scripts/signal_summary.py
-      - name: Upload summary artifacts
-        if: always()
-        uses: actions/upload-artifact@v7
+      - name: Record forecast boundary
+        run: |
+          echo "The output is summary-only. forecast_status remains NOT_ISSUED. No price direction, target, or trade recommendation is produced." >> "$GITHUB_STEP_SUMMARY"
+          echo "Any Groq-generated text is an unverified summary, not source evidence or a model feature." >> "$GITHUB_STEP_SUMMARY"
+          echo "No repository files were committed or pushed." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v7
         with:
-          name: signal-summary-${{ github.run_id }}
+          name: signal-summary-not-a-forecast-${{ github.run_id }}
           path: |
             web/latest_signal_summary.json
             web/generated_audio/latest_signal_summary.wav
-          if-no-files-found: warn
-          retention-days: 30
+          if-no-files-found: error
+          retention-days: 7
