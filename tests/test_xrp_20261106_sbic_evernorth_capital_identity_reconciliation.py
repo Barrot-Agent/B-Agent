@@ -57,7 +57,10 @@ def test_debt_and_equity_facilities_are_not_reported_as_actual_xrp_purchases():
     facility = capital["debt_and_future_financing"][1]
     eloc = capital["debt_and_future_financing"][2]
     assert notes["gross_principal_usd"] == 30000000
-    assert notes["net_cash_proceeds_before_other_transaction_expenses_usd"] == 29000000
+    assert notes["issuer_reported_net_proceeds_before_transaction_expenses_usd_approx"] == 30000000
+    assert notes["issuance_costs_expensed_usd"] == 1000000
+    assert notes["derived_proceeds_after_issuance_costs_usd_approx"] == 29000000
+    assert notes["derived_post_expense_amount_is_not_separately_reported_as_cash_received"] is True
     assert notes["actual_xrp_purchase_from_note_proceeds_disclosed"] is False
     assert notes["maximum_cash_settlement_if_conversion_cap_reached_usd"] == 120000000
     assert facility["drawn_as_of_2026_10_07_usd"] == 9700000
@@ -167,3 +170,17 @@ def test_sbi_jpysc_balances_have_separate_metric_definitions():
     assert balances["lending_balance_jpy"] == 10_000_000_000
     assert balances["handling_balance_jpy"] == 30_000_000_000
     assert "not XRP collateral" in balances["interpretation"]
+
+
+def test_eloc_dollar_cap_correction_targets_an_existing_json_pointer():
+    target = load()["evernorth_capital_reconciliation"]
+    eloc = target["debt_and_future_financing"][2]
+    assert eloc["instrument"] == "Committed Equity Facility with Cantor"
+    assert eloc["maximum_potential_gross_proceeds_usd"] == 76800000
+    correction_path = ROOT / "research" / "xrp_intelligence" / "20261106T043450Z-evernorth-eloc-dollar-cap-correction.json"
+    correction = json.loads(correction_path.read_text(encoding="utf-8"))["prior_artifact_correction"]
+    assert correction["target_path"] == "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json"
+    assert correction["target_field"] == "evernorth_capital_reconciliation.debt_and_future_financing[2].maximum_potential_gross_proceeds_usd"
+    assert correction["target_json_pointer"] == "/evernorth_capital_reconciliation/debt_and_future_financing/2/maximum_potential_gross_proceeds_usd"
+    assert correction["prior_value_usd"] == eloc["maximum_potential_gross_proceeds_usd"]
+    assert correction["disposition"] == "SUPERSEDED_AS_UNSUPPORTED_FIXED_OR_MAXIMUM_DOLLAR_AMOUNT"

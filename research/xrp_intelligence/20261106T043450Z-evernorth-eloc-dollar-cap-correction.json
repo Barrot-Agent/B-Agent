@@ -63,11 +63,13 @@
   ],
   "prior_artifact_correction": {
     "target_path": "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
-    "target_field": "capital_instruments[Committed Equity Facility with Cantor].maximum_potential_gross_proceeds_usd",
+    "target_field": "evernorth_capital_reconciliation.debt_and_future_financing[2].maximum_potential_gross_proceeds_usd",
     "prior_value_usd": 76800000,
     "disposition": "SUPERSEDED_AS_UNSUPPORTED_FIXED_OR_MAXIMUM_DOLLAR_AMOUNT",
     "correction": "The SEC filing discloses a maximum share count and a variable 97%-of-applicable-VWAP purchase price. It does not disclose a fixed USD cap. The $76.8M value is not actual proceeds and is not a contractual dollar maximum.",
-    "prior_artifact_modified": false
+    "prior_artifact_modified": false,
+    "target_json_pointer": "/evernorth_capital_reconciliation/debt_and_future_financing/2/maximum_potential_gross_proceeds_usd",
+    "field_semantics": "cover-price scenario estimate only; not a contractual dollar cap or actual proceeds"
   },
   "verified_contract_terms": {
     "maximum_new_shares": 5218935,

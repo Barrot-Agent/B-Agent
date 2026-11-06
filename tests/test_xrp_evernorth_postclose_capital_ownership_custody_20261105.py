@@ -103,6 +103,9 @@ def test_pik_note_ripple_facility_and_eloc_are_separate_capital_types():
     note = item["convertible_senior_pik_notes"]
     assert note["principal_usd"] == 30_000_000
     assert note["net_proceeds_before_transaction_expenses_usd_approx"] == 30_000_000
+    assert note["issuance_costs_expensed_usd"] == 1_000_000
+    assert note["derived_proceeds_after_issuance_costs_usd_approx"] == 29_000_000
+    assert note["derived_post_expense_amount_is_not_separately_reported_as_cash_received"] is True
     assert note["issuance_date"] == "2026-10-12"
     assert note["maximum_cash_settlement_usd"] == 120_000_000
     assert note["interest_rate_pct"] == 4
@@ -111,6 +114,8 @@ def test_pik_note_ripple_facility_and_eloc_are_separate_capital_types():
     assert facility["repayment_status"] == "UNVERIFIED"
     eloc = item["cantor_committed_equity_facility"]
     assert eloc["maximum_potential_gross_capacity_usd_approx"] == 76_800_000
+    assert eloc["scenario_basis"] == "cover-price estimate; not a contractual dollar cap"
+    assert eloc["not_contractual_dollar_cap"] is True
     assert eloc["proceeds_received_as_of_2026_10_30_usd"] == 0
 
 

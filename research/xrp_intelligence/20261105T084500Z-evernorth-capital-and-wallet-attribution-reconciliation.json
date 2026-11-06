@@ -137,7 +137,7 @@
       "cash_raised_usd": 214049995,
       "xrp_contributed_in_kind": 261919096.061435,
       "company_reported_total_subscription_components": "$214.1M cash plus 261,919,096 XRP",
-      "cash_used_to_purchase_xrp": 214100000,
+      "cash_used_to_purchase_xrp": 214000000,
       "xrp_purchased_with_cash": 84365876.3625,
       "execution_venue": "not disclosed in the cited prospectus section",
       "interpretation": "Actual historical cash raised was $214,049,995. The financial statements record $214,000,000 used to purchase 84,365,876.3625 XRP and $49,995 remaining as restricted cash at Dec 31, 2025. This is historical capital, not a Nov 2026 flow.",
@@ -503,6 +503,12 @@
     {
       "field": "onchain_attribution",
       "correction": "The tracker’s attributed-wallet balance plus reported outflow totals 473,476,568 XRP, which exceeds the reconstructed primary-source transaction components by approximately 200,138 XRP. This is an unresolved tracker reconciliation difference, not evidence of a sale."
+    },
+    {
+      "field": "actual_capital_stack.private_placement_subscription_agreements.cash_used_to_purchase_xrp",
+      "original_value_usd": 214100000,
+      "corrected_value_usd": 214000000,
+      "reason": "The $214.1M value is rounded subscription cash received. The financial statements identify $214,000,000 as the amount used to purchase 84,365,876.3625 XRP; $49,995 remained restricted cash at 2025-12-31."
     }
   ]
 }

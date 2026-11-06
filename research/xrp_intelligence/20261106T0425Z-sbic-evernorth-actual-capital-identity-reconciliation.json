@@ -345,7 +345,6 @@
       {
         "instrument": "Convertible Senior PIK Notes",
         "gross_principal_usd": 30000000,
-        "net_cash_proceeds_before_other_transaction_expenses_usd": 29000000,
         "advisor_fee_usd": 1000000,
         "interest": "4.00% PIK",
         "initial_conversion_price_usd": 10.2,
@@ -355,7 +354,12 @@
         "put_yield_on_default_or_fundamental_transaction_percent": 8,
         "intended_use": "General corporate purposes, including XRP acquisition and other XRP-ecosystem activities.",
         "actual_xrp_purchase_from_note_proceeds_disclosed": false,
-        "classification": "DEBT_NOT_EQUITY_OR_CONFIRMED_XRP_PURCHASE"
+        "classification": "DEBT_NOT_EQUITY_OR_CONFIRMED_XRP_PURCHASE",
+        "issuer_reported_net_proceeds_before_transaction_expenses_usd_approx": 30000000,
+        "issuance_costs_expensed_usd": 1000000,
+        "derived_proceeds_after_issuance_costs_usd_approx": 29000000,
+        "derived_post_expense_amount_is_not_separately_reported_as_cash_received": true,
+        "net_proceeds_basis_note": "The SEC Form 8-K reports approximately $30M of net proceeds before transaction expenses. The 424B3 pro forma note separately identifies $1M of note issuance costs expensed as incurred. $29M is the arithmetic residual after those costs, not a separately reported cash-receipt figure."
       },
       {
         "instrument": "Ripple-related Company Facility",
