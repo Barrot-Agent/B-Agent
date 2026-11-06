@@ -16,7 +16,7 @@ def _load(path: str) -> tuple[dict, str]:
 
 def _git_blob_sha(raw: str) -> str:
     payload = raw.encode("utf-8")
-    header = f"blob {len(payload)}\\0".encode("ascii")
+    header = f"blob {len(payload)}\0".encode("ascii")
     return hashlib.sha1(header + payload).hexdigest()
 
 
