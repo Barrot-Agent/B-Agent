@@ -74,11 +74,6 @@
       "status": "separate reported cash-funded acquisition; not part of the delayed-funding share-count correction"
     },
     {
-      "category": "prior_in_kind_xrp_contribution",
-      "amount_xrp": 388910554,
-      "status": "separate contribution; not cash proceeds"
-    },
-    {
       "category": "convertible_notes",
       "amount_usd": 30000000,
       "status": "debt/convertible financing; not XRP purchase cash unless and until proceeds are deployed"
@@ -94,6 +89,27 @@
       "exercise_price_usd": 11.5,
       "maximum_gross_if_all_exercised_usd": 132249908,
       "status": "contingent; no proceeds unless warrants are actually exercised for cash"
+    },
+    {
+      "category": "pubco_private_placement_xrp",
+      "amount_xrp": 261919096,
+      "status": "issuer-reported XRP raised under private-placement subscription agreements; do not automatically add the delayed 200,000 XRP line again without confirming inclusion."
+    },
+    {
+      "category": "pathfinder_contribution_agreement_xrp",
+      "amount_xrp": 126791458,
+      "status": "issuer-reported XRP raised by the Company (Pathfinder) under the Ripple contribution agreement; separate from the Pubco private-placement cash purchase."
+    },
+    {
+      "category": "delayed_subscriber_in_kind_xrp",
+      "amount_xrp": 200000,
+      "status": "included in the delayed-subscriber consideration disclosure; possible overlap with the 261,919,096 Pubco XRP aggregate is unresolved, so do not sum independently."
+    },
+    {
+      "category": "related_party_company_credit_facility",
+      "facility_limit_usd": 10000000,
+      "drawn_as_of_2026_10_07_usd": 9700000,
+      "status": "related-party debt under the Company Facility; some third-party payments on behalf of the Company and Evernorth were reclassified as borrowings. Not equity capital or proof of XRP purchase."
     }
   ],
   "source_registry": [
@@ -126,7 +142,11 @@
         "3467-3470",
         "5303-5304",
         "6801-6806",
-        "7561-7568"
+        "7561-7568",
+        "3023-3028",
+        "3038",
+        "3121-3126",
+        "3036-3037"
       ],
       "rendered_excerpt_sha256s": {
         "delayed_subscriptions": "460db926e1c2c4742366dddf0fd03d0cce7a367c15538160b2ce5604a4f7291a",
@@ -145,7 +165,11 @@
     "sbic_acronym_collision_guard": true,
     "full_raw_sec_bytes_attached": false,
     "model_price_feature_eligible": false,
-    "event_timeline_eligible": true
+    "event_timeline_eligible": true,
+    "preclosing_liquidity_not_current": true,
+    "delayed_200k_xrp_overlap_not_double_counted": true,
+    "related_party_credit_facility_classified_as_debt": true,
+    "approximate_closing_holdings_reconciled": true
   },
   "competing_interpretations": [
     {
@@ -173,5 +197,24 @@
     "share_transactions": false,
     "token_transfers": false,
     "paper_trade_executed": false
+  },
+  "preclosing_liquidity_snapshot": {
+    "date": "2026-06-30",
+    "evernorth_unrestricted_cash_usd": 100000,
+    "evernorth_net_working_capital_deficit_usd": 696100000,
+    "evernorth_accumulated_deficit_usd": 340900000,
+    "pathfinder_company_unrestricted_cash_usd": 800000,
+    "pathfinder_company_net_working_capital_deficit_usd": 3700000,
+    "pathfinder_company_accumulated_deficit_usd": 3100000,
+    "evernorth_reported_loss_from_operations_period_ended_2026_06_30_usd": 265600000,
+    "status": "Historical pre-business-combination snapshot from the October 30, 2026 S-1. Not a current post-close cash balance or current liquidity estimate."
+  },
+  "holdings_reconciliation": {
+    "approximate_xrp_held_at_2026_10_09": 473000000,
+    "cash_purchased_xrp": 84365876,
+    "pubco_private_placement_xrp": 261919096,
+    "pathfinder_contribution_agreement_xrp": 126791458,
+    "arithmetic_sum_xrp": 473076430,
+    "caveat": "The arithmetic sum is approximately 473.076M XRP, consistent with the issuer's approximately 473M closing holdings. The separate 200,000 XRP delayed-subscriber line may already be included in the 261,919,096 Pubco XRP aggregate; do not add it again without an explicit issuer reconciliation."
   }
 }

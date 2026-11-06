@@ -30,7 +30,7 @@ def test_delayed_subscription_separates_cash_from_xrp_in_kind():
     assert item["combined_indicative_consideration_usd"] == 10_786_138
     assert item["corrected_shares_times_price_usd"] == 10_786_130
     assert item["arithmetic_difference_usd"] == 8
-    assert "not cash" in item["arithmetic_interpretation"] or "not be entirely cash" in item["arithmetic_interpretation"]
+    assert "not a claim that the subscription was entirely cash" in item["arithmetic_interpretation"]
 
 
 def test_sbi_group_is_four_sbi_controlled_entities_not_sbic():
@@ -53,7 +53,20 @@ def test_cash_and_in_kind_categories_are_not_double_counted():
     assert items["delayed_subscriber_in_kind_xrp"]["amount_xrp"] == 200_000
     assert items["prior_cash_xrp_purchase"]["amount_usd"] == 214_100_000
     assert items["prior_cash_xrp_purchase"]["amount_xrp"] == 84_365_876
-    assert items["prior_in_kind_xrp_contribution"]["amount_xrp"] == 388_910_554
+    assert items["pubco_private_placement_xrp"]["amount_xrp"] == 261_919_096
+    assert items["pathfinder_contribution_agreement_xrp"]["amount_xrp"] == 126_791_458
+    assert items["delayed_subscriber_in_kind_xrp"]["amount_xrp"] == 200_000
+    assert "do not sum independently" in items["delayed_subscriber_in_kind_xrp"]["status"]
+    assert items["related_party_company_credit_facility"]["drawn_as_of_2026_10_07_usd"] == 9_700_000
+    assert items["related_party_company_credit_facility"]["facility_limit_usd"] == 10_000_000
+    liquidity = load_artifact()["preclosing_liquidity_snapshot"]
+    assert liquidity["date"] == "2026-06-30"
+    assert liquidity["evernorth_unrestricted_cash_usd"] == 100_000
+    assert liquidity["evernorth_net_working_capital_deficit_usd"] == 696_100_000
+    assert "Not a current post-close" in liquidity["status"]
+    holdings = load_artifact()["holdings_reconciliation"]
+    assert holdings["arithmetic_sum_xrp"] == 473_076_430
+    assert "do not add it again" in holdings["caveat"]
     assert items["convertible_notes"]["amount_usd"] == 30_000_000
     assert items["cantor_affiliate_committed_equity_facility"]["status"].startswith("committed equity facility estimate")
     assert items["cash_exercisable_public_warrants"]["status"].startswith("contingent")
