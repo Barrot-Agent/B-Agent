@@ -153,7 +153,12 @@ def test_signal_summary_workflow_is_manual_read_only_and_artifact_based():
     assert "contents: read" in workflow
     upload_ref = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", workflow)
     assert upload_ref and int(upload_ref.group(1)) >= 7
-    assert "retention-days: 30" in workflow
+    assert "retention-days: 7" in workflow
+    assert "inputs.confirm == 'YES'" in workflow
+    assert "expected_main_sha" in workflow
+    assert "persist-credentials: false" in workflow
+    assert "public/authorized" in workflow
+    assert "forecast_status remains NOT_ISSUED" in workflow
     assert "git commit" not in workflow
     assert "git push" not in workflow
     assert "contents: write" not in workflow
