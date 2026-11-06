@@ -122,3 +122,13 @@ def test_no_paper_trade_real_money_deployment_or_external_submission():
     assert safety["external_submission"] is False
     assert safety["external_ai_data_transfer"] is False
     assert safety["deployment"] is False
+
+
+def test_prior_artifact_sources_keep_their_original_retrieval_vintage() -> None:
+    sources = {s["source_id"]: s for s in load_artifact()["source_registry"]}
+    for source_id in (
+        "PREVIOUS_XRP_INSIGHTS_HOLDINGS_DELTA_20261106",
+        "BLS_OCTOBER_EMPLOYMENT_20261106T1330Z",
+    ):
+        assert sources[source_id]["retrieval_time_upper_bound_utc"] == "2026-11-06T18:10:24Z"
+        assert sources[source_id]["capture_method"] == "reused_prior_artifact"

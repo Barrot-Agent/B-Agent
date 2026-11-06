@@ -242,13 +242,14 @@
         "Holdings delta is not AP cash creation/redemption.",
         "Fund universe differs from the five-fund SoSoValue/Alpha series."
       ],
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:10:24Z",
       "excerpt": "XRP Insights snapshot previously captured through Nov 5: six U.S. spot XRP ETFs plus BITW; 1,196,450,700 XRP held; AUM $1,499.59M; Nov 5 holdings delta +110,214 XRP; Nov 2-5 net holdings delta -149,487 XRP across four settled trading days. This is a holdings-derived change across a different stated fund universe, not direct AP cash creations/redemptions and not directly comparable to the five-fund SoSoValue/Alpha flow series.",
       "receipt": {
         "algorithm": "SHA-256",
         "digest": "576927090ad15d51791e0127c5d8c8bc1c4bb470a976edb2d4b1fd49bf64f240",
         "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
-      }
+      },
+      "capture_method": "reused_prior_artifact"
     },
     {
       "source_id": "XRPLWIN_LENDING_PROTOCOL_PAGE_20261106T184656Z",
@@ -298,13 +299,14 @@
       "limitations": [
         "Macro context, not an XRP-specific event study."
       ],
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:10:24Z",
       "excerpt": "U.S. Bureau of Labor Statistics, Employment Situation for October 2026, released 2026-11-06 13:30 UTC: total nonfarm payroll employment increased by 165,000; unemployment rate was 4.1%; average hourly earnings increased 0.4% month over month and 3.1% year over year; combined August and September payroll revisions were +84,000.",
       "receipt": {
         "algorithm": "SHA-256",
         "digest": "22ab369ebc8d8cfaba7cc72aece1e2ccb85fce4dbdce44da008224f42a7bda33",
         "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
-      }
+      },
+      "capture_method": "reused_prior_artifact"
     }
   ],
   "market_context": {
