@@ -54,11 +54,11 @@ jobs:
           key: xrp-feature-store-v1-${{ github.run_id }}
           restore-keys: |
             xrp-feature-store-v1-
-      - name: Record cache restoration source
-        if: steps.feature_cache.outputs.cache-matched-key != ''
-        run: echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=actions_cache" >> "$GITHUB_ENV"
-      - name: Restore latest trusted feature-store artifact on cache miss
-        if: steps.feature_cache.outputs.cache-matched-key == ''
+      - name: Record exact cache restoration source
+        if: steps.feature_cache.outputs.cache-hit == 'true'
+        run: echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=actions_cache_exact_key" >> "$GITHUB_ENV"
+      - name: Restore latest trusted feature-store artifact when exact cache key is unavailable
+        if: steps.feature_cache.outputs.cache-hit != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -69,17 +69,25 @@ jobs:
           while IFS= read -r previous_run_id; do
             [[ -n "$previous_run_id" ]] || continue
             restore_dir="$RUNNER_TEMP/xrp-feature-restore-${previous_run_id}"
-            mkdir -p "$restore_dir"
-            if gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}" --dir "$restore_dir" >/dev/null 2>&1 && [[ -s "$restore_dir/feature_store.sqlite3" ]]; then
-              cp "$restore_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
-              echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}" >> "$GITHUB_ENV"
+            checkpoint_dir="$restore_dir/per-run"
+            daily_dir="$restore_dir/daily"
+            mkdir -p "$checkpoint_dir" "$daily_dir"
+            if gh run download "$previous_run_id" --name "xrp-public-feature-store-${previous_run_id}" --dir "$checkpoint_dir" >/dev/null 2>&1 && [[ -s "$checkpoint_dir/feature_store.sqlite3" ]]; then
+              cp "$checkpoint_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
+              echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:per_run_checkpoint" >> "$GITHUB_ENV"
+              restored=1
+              break
+            fi
+            if gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}" --dir "$daily_dir" >/dev/null 2>&1 && [[ -s "$daily_dir/feature_store.sqlite3" ]]; then
+              cp "$daily_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
+              echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:daily_archive" >> "$GITHUB_ENV"
               restored=1
               break
             fi
           done <<< "$run_ids"
           if [[ "$restored" != "1" ]]; then
             echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=bootstrap" >> "$GITHUB_ENV"
-            echo "No trusted unexpired feature-store backup artifact; bootstrapping."
+            echo "No trusted unexpired feature-store checkpoint or daily archive; bootstrapping."
           fi
       - name: Capture public XRP market sources and evaluate historical baselines
         run: python -m barrot_agent.evolution.xrp_public_ingestion --output-dir artifacts/xrp_ingestion
@@ -96,6 +104,14 @@ jobs:
             artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
           retention-days: 90
+      - name: Upload per-run point-in-time feature-store checkpoint
+        if: success()
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-feature-store-${{ github.run_id }}
+          path: artifacts/xrp_ingestion/feature_store.sqlite3
+          if-no-files-found: error
+          retention-days: 7
       - name: Upload daily point-in-time feature-store backup and walk-forward report
         if: success() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *')
         uses: actions/upload-artifact@v7

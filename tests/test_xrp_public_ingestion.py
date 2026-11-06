@@ -308,6 +308,9 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
     assert summary["feature_store_backup_frequency"] == "daily_plus_manual_dispatch"
+    assert summary["feature_store_checkpoint_retention_days"] == 7
+    assert summary["feature_store_checkpoint_frequency"] == "every_ingestion_run"
+    assert summary["feature_store_restore_strategy"] == "exact_cache_key_then_latest_per_run_checkpoint_then_daily_archive"
     assert summary["xrpl_node_reconciliation"]["status"] == "NOT_COLLECTED_PROVIDER_TERMS_POLICY"
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
     assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is False
@@ -530,7 +533,10 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "persist-credentials: false" in workflow
     assert "actions/cache/restore@v4" in workflow
     assert "actions/cache/save@v4" in workflow
-    assert workflow.index("Upload immutable raw-source receipts") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
+    assert "if: steps.feature_cache.outputs.cache-hit == 'true'" in workflow
+    assert "if: steps.feature_cache.outputs.cache-hit != 'true'" in workflow
+    assert "cache-matched-key" not in workflow
+    assert workflow.index("Upload immutable raw-source receipts") < workflow.index("Upload per-run point-in-time feature-store checkpoint") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.index("Upload daily point-in-time feature-store backup and walk-forward report") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.count("actions/cache/save@v4") == 1
     assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" in workflow
@@ -538,14 +544,18 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert '.head_branch == "main"' in workflow
     assert ".head_repository.full_name == env.GITHUB_REPOSITORY" in workflow
     assert '(.event == "schedule" or .event == "workflow_dispatch")' in workflow
+    assert 'gh run download "$previous_run_id" --name "xrp-public-feature-store-${previous_run_id}"' in workflow
     assert 'gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}"' in workflow
-    assert 'trusted_ingestion_workflow_run:${previous_run_id}' in workflow
+    assert 'trusted_ingestion_workflow_run:${previous_run_id}:per_run_checkpoint' in workflow
+    assert 'trusted_ingestion_workflow_run:${previous_run_id}:daily_archive' in workflow
     assert "actions/artifacts?per_page=100" not in workflow
     assert "gh api --paginate" not in workflow
     assert "RUNNER_TEMP/xrp-feature-restore-" in workflow
     assert "github.event.schedule == '15 0 * * *'" in workflow
     assert "xrp-public-raw-${{ github.run_id }}" in workflow
+    assert "xrp-public-feature-store-${{ github.run_id }}" in workflow
     assert "xrp-public-feature-${{ github.run_id }}" in workflow
+    assert "retention-days: 7" in workflow
     assert "python -m barrot_agent.evolution.research_timestamp_audit" in workflow
     assert workflow.index("Apply XRP research timestamp corrections in memory") < workflow.index("Capture public XRP market sources")
     assert "xrp-research-correction-audit-${{ github.run_id }}" in workflow
@@ -553,6 +563,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "if-no-files-found: error" in workflow
     assert "actions: write" not in workflow
     assert workflow.count("retention-days: 90") == 3
+    assert workflow.count("retention-days: 7") == 1
     assert "retention-days: 1" not in workflow
     assert "if: github.ref == 'refs/heads/main'" in workflow
     assert "secrets." not in workflow
