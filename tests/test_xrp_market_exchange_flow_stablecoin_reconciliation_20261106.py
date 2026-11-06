@@ -103,7 +103,7 @@ def test_xrpl_stablecoin_supply_is_not_treated_as_payment_volume():
     assert row["rlusd"]["market_cap_usd"] == 897_010_000
     assert math.isclose(row["rlusd"]["market_cap_usd"] / row["total_market_cap_usd"] * 100, row["rlusd"]["dominance_pct"], abs_tol=0.02)
     assert row["change_30d_pct"] == -26.22
-    assert any("not transaction volume" in item for item in row["limitations"])
+    assert any("do not equal transfer volume" in item for item in row["limitations"])
 
 
 def test_bls_release_is_observed_macro_data_not_an_xrp_causal_claim():
