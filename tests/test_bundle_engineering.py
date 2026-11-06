@@ -453,7 +453,7 @@ def test_recovery_plan_rejects_destructive_repository_actions(instruction):
 def test_explicit_prohibition_of_destructive_commands_is_not_rejected():
     bundle = sample_bundle()
     bundle["recovery_plan"] = [
-        "Never run git reset --hard, git clean, or git stash; preserve all operator work and stop if recovery is unsafe."
+        "Never run git reset --hard, git clean, or git stash; preserve all operator work and block if recovery is unsafe."
     ]
     result = review_work_bundle(bundle)
     assert "UNSAFE_RECOVERY_ACTION" not in {item.code for item in result.findings}
