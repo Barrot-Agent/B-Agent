@@ -22,14 +22,13 @@ XRP intelligence and prediction-engine mastery remain Barrot's highest-priority 
 
 ### PR #1640 — V3/core, ingestion, safety and orchestration
 
-- Current PR head: `59b60d37e67dcef093be584b3ce13d4300a2118d`.
-- 430 commits ahead of main; zero behind; 154 changed files.
-- Core test job: **622 passed, 8 subtests passed**.
-- Full repository suite: **1,060 passed, 8 subtests passed**.
+- Last fully verified code-bearing head: `59b60d37e67dcef093be584b3ce13d4300a2118d` (430 commits ahead of main; zero behind; 154 changed files).
+- The current PR head is the later documentation-only commit containing this handoff update; see the live [PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640) for its exact SHA. The documentation-only update did not trigger a new CI run. The code/test tree remains identical to the verified code-bearing head, but **do not claim exact-head CI for the current documentation-only head or merge until the full suite, dependency audit and fail-closed gate are run against the live PR head**.
+- On the verified code-bearing head, core tests: **622 passed, 8 subtests passed**; full repository suite: **1,060 passed, 8 subtests passed**.
 - Installed wheel built and verified to load Barrot V3, the XRP mission and canonical data assets.
 - Six-manifest dependency audit: passed; no known vulnerabilities.
 - Fail-closed gate: passed. Its job explicitly states automatic merge is disabled.
-- Exact evidence: [CI 42164862652](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862652), [dependency audit 42164862423](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862423), [fail-closed gate 42164862543](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862543).
+- Exact evidence for the verified code-bearing head: [CI 42164862652](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862652), [dependency audit 42164862423](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862423), [fail-closed gate 42164862543](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862543).
 
 ### PR #1643 — XRP institutional, market, capital and identity research
 
