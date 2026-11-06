@@ -40,7 +40,16 @@
       "receipt_status": "prior_artifact_excerpt_receipt",
       "prior_artifact": "research/xrp_intelligence/20261106T134313Z-bls-october-employment-and-xrp-post-release-market-reconciliation.json",
       "prior_excerpt_sha256": "302175b81507388f80c8c8903e30886d8b7ac3c0004aa3a8950e336d72390026",
-      "raw_full_http_bytes_captured": false
+      "raw_full_http_bytes_captured": false,
+      "additional_receipts": [
+        {
+          "algorithm": "SHA-256",
+          "digest": "5922848b9f98b6edba2d649cff50c142e669dcc727185c34a8cbf3acfc1ca451",
+          "scope": "Normalized 343-character BLS excerpt distinguishing the household and establishment surveys and recording the missing October 2025 collection; not full HTML or HTTP bytes.",
+          "characters": 343,
+          "excerpt": "This news release presents statistics from two monthly surveys. The household survey measures labor force status, including unemployment, by demographic characteristics. The establishment survey measures nonfarm employment, hours, and earnings by industry.\nNOTE: Data for October 2025 were not collected due to the federal government shutdown."
+        }
+      ]
     },
     {
       "source_id": "reuters_october_jobs_market_reaction",
@@ -255,6 +264,11 @@
       "reuters_reported": "Treasury yields and the dollar rose after the release; yields later pulled back. DXY was reported +0.7%; Nasdaq futures +1.4% and S&P 500 futures +0.3% at reporting; December rate-hike probability was reported at 78%, up from 70%.",
       "interpretation": "Initial hawkish repricing is supported, but the subsequent yield pullback and positive equity futures make the persistence and net risk-asset effect uncertain.",
       "causal_link_to_xrp": "Not established; no synchronized provider-timestamped XRP event return is available."
+    },
+    "survey_systems": {
+      "nonfarm_payrolls": "Current Employment Statistics (establishment survey)",
+      "unemployment_rate": "Current Population Survey (household survey)",
+      "separation_note": "These are separate surveys with different populations and measurement methods; preserve them as distinct series rather than one combined observation."
     }
   },
   "market": {
@@ -551,5 +565,12 @@
     "Resolve Corpstacking's NCIQ inclusion contradiction against its displayed ten-row total.",
     "Build synchronized BLS event windows for XRP, BTC, DXY, Treasury yields, equity futures, spot depth, perpetual OI and funding.",
     "Run chronological event studies and walk-forward evaluation against naive, momentum, mean-reversion and volatility baselines; do not infer causality from one event."
-  ]
+  ],
+  "historical_series_quality": {
+    "2025-10": {
+      "collected": false,
+      "reason": "The BLS release explicitly states that October 2025 data were not collected because of the federal government shutdown.",
+      "model_handling": "Retain an explicit missing vintage. Do not encode as zero, interpolate, or silently substitute another month."
+    }
+  }
 }
