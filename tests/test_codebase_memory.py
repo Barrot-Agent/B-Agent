@@ -201,7 +201,7 @@ def test_codebase_memory_adapter_exposes_only_safe_tools(tmp_path: Path, monkeyp
         version="0.12.1",
         license="MIT",
         homepage="https://github.com/DeusData/codebase-memory-mcp",
-        tool_categories=["code_intelligence", "knowledge_graph"],
+        tool_categories=["code_intelligence"],
         tools=[ToolSchema(name="search_graph", description="Search graph")],
         dependencies=[],
         security=SecurityPosture(requires_auth=False, exposed_env_vars=[], risk_level="low"),
