@@ -1,3 +1,77 @@
+## Run 9 integration-first continuation — 2026-11-06T14:30:47Z
+
+This addendum supersedes the 14:05 Run 9 head/test details above. Historical snapshots, source artifacts, prior handoffs and their corrections remain preserved.
+
+### Repository truth and integration branches
+
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Recursive tree: 1,403 entries, not truncated. No main write or merge occurred. The exact main SHA has scheduled workflow runs but no current push-triggered full-suite CI run.
+- Open PR inventory: 369 open, 354 drafts, 15 non-drafts.
+- PR #1640, core/V3/XRP prediction integration: branch `integration/core-capabilities-mmi-structural-paper-20261104`, exact head `d68c1e7a7b97c780f79602fb10d9e7d5e8a32fd2`, 446 commits ahead / 0 behind, 154 changed paths. It remains the single active core integration PR.
+- PR #1643, XRP research archive: branch `research/xrp-evidence-archive-20261104`, exact head `1c49986248f70d5618c61d0f574982b92909fd91`, 431 commits ahead / 0 behind, 317 changed paths. It remains the single active research integration PR.
+- The two PRs have one shared changed path, `.github/workflows/dependency-audit.yml`; its blob SHA is identical on both branches. No other changed paths overlap. Do not merge #1643 directly after #1640: after #1640 is integrated and verified, carry #1643's unique research paths into one successor based on the resulting main, reconciling the shared workflow and any unique source-PR changes.
+
+### PR #1640 — latest exact-head verification
+
+- A cache-integrity defect was found in `.github/workflows/xrp-public-ingestion.yml`: the cumulative feature-store cache was saved before the raw-receipt and daily feature-store artifacts were uploaded. A later upload failure could therefore leave a cache ahead of its durable receipts.
+- Commit `d68c1e7a7b97c780f79602fb10d9e7d5e8a32fd2` moves cache persistence after both required artifact-upload steps. The existing workflow test now asserts that raw receipts and the daily feature-store backup are published before the cache-save step. This is a narrow correction on the existing PR branch; no new PR was created.
+- Exact-head core suite: 622 passed, 8 subtests passed in 9.43 seconds.
+- Exact-head full repository suite: 1,060 passed, 8 subtests passed in 38.38 seconds. Inclusive coverage was 57.57% against a 53% floor. Thirty-one files were skipped only because they had complete coverage.
+- Installed-wheel build and verification passed: the wheel imports Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit passed; all audited manifests reported no known vulnerabilities. Fifteen PEP 621 dependencies were materialized for the audit.
+- Fail-closed gate passed and explicitly kept automatic merging disabled.
+- Exact evidence: [CI 42233826332](https://github.com/Barrot-Agent/B-Agent/actions/runs/42233826332), [dependency audit 42233826315](https://github.com/Barrot-Agent/B-Agent/actions/runs/42233826315), [fail-closed gate 42233826413](https://github.com/Barrot-Agent/B-Agent/actions/runs/42233826413).
+- The full-suite job emitted a GitHub Actions cache-budget warning: the cache service reported the configured budget reached and cache read-only. The job still passed. This warning is separate from the feature-store cache key. It means cache-backed persistence cannot be assumed; cache/artifact freshness reconciliation and a durable replay/persistence strategy remain open engineering work.
+
+### PR #1643 — latest exact-head verification and data corrections
+
+- Exact-head core suite: 498 passed, 8 subtests passed in 10.28 seconds.
+- Exact-head full repository suite: 1,480 passed, 8 subtests passed in 15.49 seconds.
+- Six-manifest dependency audit passed with no known vulnerabilities; fifteen PEP 621 dependencies were materialized.
+- Fail-closed gate passed with merging disabled.
+- Exact evidence: [CI 42233343938](https://github.com/Barrot-Agent/B-Agent/actions/runs/42233343938), [dependency audit 42233343948](https://github.com/Barrot-Agent/B-Agent/actions/runs/42233343948), [fail-closed gate 42233344069](https://github.com/Barrot-Agent/B-Agent/actions/runs/42233344069).
+- Previous head `0b1e21ffbbcb59a91952ec3ab97f30e6b7ae2fcf` failed two research regression tests (1,478 passed): one source excerpt was absent and a rounded depth-share comparison used an overly tight tolerance. Successor `1c49986248f70d5618c61d0f574982b92909fd91` preserved the missing custody-proposal excerpt and corrected the rounded tolerance; the exact-head full suite is green. The earlier failure remains in CI history and is not represented as passing.
+- The latest research artifact is `research/xrp_intelligence/20261106T140454Z-xrp-spot-depth-perps-etf-xrpl-governance-addendum.json`. Its 14:15:40Z record includes 16 source records and six competing hypotheses. A later correction is included in the current head.
+
+### XRP market, protocol and macro evidence
+
+- Kraken XRP/USD rendered ticker at the 14:15:40Z research capture: bid $1.18510, ask $1.18511, last $1.18515, 24-hour volume 44.9203M XRP, 24-hour VWAP $1.22640313, 24-hour high/low $1.30722/$1.17605, UTC-day open $1.20567. The provider supplied no event timestamp; the SHA-256 receipt covers the exact normalized rendered JSON excerpt, not complete HTTP wire bytes. Do not use it to calculate a BLS event return or a synchronized cross-venue return.
+- Fuelmaps' 14:00Z depth snapshot covers six displayed venues (Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini); Binance and Bitget are excluded. Displayed mid was $1.1852. Bid share was 63.6% within ±0.5%, 62.6% within ±1%, 66.5% within ±2%, 69.1% within ±5% and 71.6% within ±10% (five venues at ±10%). This is one aggregator's hourly average, with cancellation risk and incomplete venue coverage; it is not executable slippage or an exchange-native raw order-book receipt.
+- Perpetual open-interest providers still report materially different contract/exchange universes. Do not average their USD-notional figures or equate account long/short ratios with notional exposure. ETF holdings changes, issuer AP cash flows and actual spot purchases remain separate categories; partial fund reporting and provider-vintage disagreement remain quarantined.
+- XRPL Dashboard's 14:05Z roll call and XRPLWin's later observer both show the same voting ledger 108154367: SingleAssetVault 23/35, LendingProtocol 21/35 and LendingProtocolV1_1 21/35; 29 validators are required. None is activated. The later current-ledger numbers differ by observer, but the vote counts remain below threshold.
+- XLS-66 LendingProtocol is designed for uncollateralized fixed-term loans under off-ledger underwriting. Vault deposits are lender funding capital, not borrower collateral. Do not convert this into an XRP collateral-demand feature. The enabled fixCleanup3_4_0 amendment is a separate safety amendment, not lending activation.
+- BLS October employment data released at 13:30Z; Reuters' 13:49Z rates snapshot and the later XRP observations have no common provider timestamp. No synchronized XRP event response or causal price effect is established. Forecast remains `NOT_ISSUED`.
+- The Evernorth/Cantor equity-line facility remains financing capacity, not actual cash received or XRP purchased. No drawdown, share sale, settled cash or incremental XRP acquisition has been verified. Preserve the prospectus arithmetic/fee discrepancy as an open issuer-disclosure reconciliation, not an allegation.
+
+### Architecture and execution truth
+
+- **DESIGNED:** public-data adapters, immutable hash receipts, point-in-time SQLite feature store, source independence, chronological walk-forward evaluator, naive/momentum/mean-reversion/volatility baselines, forecast ledger and nine-platform capability/permission map.
+- **EXECUTED:** exact-head CI and dependency audits on both integration branches; scheduled main Cross Analysis runs are read-only and have succeeded repeatedly; main Pillars check run 42222193811 failed because GitHub App credentials were missing, Databricks returned HTTP 403 and the Hugging Face Space reported BUILD_ERROR.
+- **NOT VERIFIED LIVE:** the XRP public-ingestion schedule is only on PR #1640 and runs only on main. It has not executed as a main-branch service. Raw artifacts are retained 90 days; cache is evictable and the repository cache budget warning is active. There is no verified WORM store, indefinite raw retention or automatic replay of hourly raw artifacts after cache loss. The cache-save ordering fix does not solve those persistence limitations.
+- Forecast issuance remains blocked pending sufficient synchronized point-in-time data, trusted evaluator attestation, leakage-safe chronological out-of-sample results, baseline improvement and calibration. No directional forecast, paper trade or real-money action occurred.
+- Nine-platform map: GitHub repository access is verified. The other platform adapters are designs, not authenticated live collaborators. The public Hugging Face runtime probe is not an authenticated integration; Databricks is currently HTTP 403. No Kaggle submission or external model upload occurred.
+
+### Backlog classification and merge gate
+
+- **Active integration:** #1640 (core/V3/XRP prediction foundation) and #1643 (XRP research archive).
+- **Superseded pending integration, keep open until verified on main:** #1642 is an ancestor of #1640; #1317, #1318 and #1320 are represented in #1640; dependency/action candidates #1644–#1650 overlap the integrated dependency/workflow changes but require exact-blob verification after integration.
+- **Unique/unreviewed, preserve:** #1641 bounded experimentation; #1509 (25 unique research paths, zero path overlap with #1643); #1513 (five paths, only two overlap #1640, three remain unique); other research/feature PRs including #1605 remain open until exact duplicate status is verified.
+- **Blocked/stale:** #1269 geometry branch is materially behind current main; do not revive it without a fresh path/ancestry audit. #1254/#1255 are older dependency candidates and remain pending verification against the integrated dependency set.
+- Inventory: 369 open PRs, 354 drafts and 15 non-drafts. No bulk close and no PR was closed in this checkpoint.
+- Both active integration PRs have all recorded review threads resolved, but each has zero GitHub `APPROVED` review states. Two #1640 comments saying “Approved” are GitHub state `COMMENTED`, not approvals. Main reports `protected=true`; detailed branch-protection API returns HTTP 403; the visible fallback ruleset is disabled. GitHub Pages settings are inaccessible, and a prior main push triggered Pages deployment. Required approvals/protection and the deployment side effect are not cleared. Do not merge or deploy.
+- #1225 was merged on 2026-10-29 before this checkpoint; no merge occurred in this run.
+
+### Next concrete actions
+
+1. Reconcile feature-store cache freshness against the newest available trusted feature artifact; do not trust an older cache merely because a prefix restore matched.
+2. Design durable append-only persistence/replay for raw receipts and hourly features beyond the 90-day artifact/cache limits, with least-privilege branch/storage permissions and no main writes.
+3. Obtain independent approving reviews and resolve the protected-main/Pages deployment boundary before considering #1640. After any authorized merge, fetch main, verify the merge commit and files, inspect workflow side effects, and run main CI.
+4. Only after #1640 is verified on main, transfer #1643's unique research paths into one consolidated successor based on that resulting main; do not merge the divergent research branch wholesale.
+5. Continue synchronized exchange-native order-book, spot, ETF, derivatives and macro capture; retain source-vintage disagreements. Keep forecast `NOT_ISSUED` until the full prediction standard is met.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+---
+
 ## Run 9 continuation — 2026-11-06T14:05:00Z
 
 This addendum supersedes the PR #1643 head, test-count and market-reaction details in the 13:56 checkpoint immediately below. The main SHA, PR #1640 evidence, protection findings and backlog classifications remain unchanged.
