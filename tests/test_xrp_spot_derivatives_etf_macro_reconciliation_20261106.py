@@ -107,7 +107,7 @@ def test_hypotheses_retain_disconfirming_evidence_and_do_not_claim_causality(dat
     assert len(hypotheses) >= 5
     assert all(item["supporting_evidence"] for item in hypotheses)
     assert all(item["disconfirming_or_limiting_evidence"] for item in hypotheses)
-    assert all("causally_established" not in item["status"] for item in hypotheses if item["id"] in {"H1", "H2"})
+    assert all(item["status"] == "plausible_not_causally_established" for item in hypotheses if item["id"] in {"H1", "H2"})
 
 
 def test_no_directional_forecast_or_model_admission_is_created(data: dict) -> None:
