@@ -89,8 +89,8 @@ def test_shared_issuer_inputs_are_explicitly_not_independent_confirmation(data: 
     independence = data["source_independence"]
     statements = " ".join(independence["explicit_non_independence"]).lower()
     assert "issuer-published data" in statements
-    assert "not independent primary confirmations" in statements
-    assert "not seven independent" in statements
+    assert "not two independent issuer confirmations" in statements
+    assert "not seven independent published sources" in statements
 
 
 def test_macro_and_bls_event_are_context_only_until_release_and_event_study(data: dict) -> None:
