@@ -46,7 +46,11 @@ def test_other_platforms_are_not_misrepresented_as_authenticated():
     for name in ("Claude", "Grok", "Gemini", "Codex", "Hugging Face", "Kaggle", "Databricks"):
         row = next(x for x in data["platforms"] if x["name"] == name)
         assert row["connection_status"] == "NOT_VERIFIED_CONNECTED"
-        assert "No authenticated" in row["authentication_status"]
+        if name == "Codex":
+            assert "No Codex session or execution connection verified" in row["authentication_status"]
+            assert "GitHub connector is separate" in row["authentication_status"]
+        else:
+            assert "No authenticated" in row["authentication_status"]
 
 
 def test_user_account_read_permission_and_codeowners_are_preserved():
