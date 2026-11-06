@@ -78,7 +78,8 @@ def test_fixcleanup_activation_and_paymentburn_scope_are_distinct_from_xrp_suppl
     assert fix["publicly_confirmed_exploitation"] is False
     assert fix["issuer_specific_exposure"] == "UNKNOWN_NO_ISSUER_LEVEL_PUBLIC_AUDIT_IDENTIFIED"
     assert fix["documentation_lag"]["official_permission_values_page_still_shows_pre_activation_warning"] is True
-    assert "LendingProtocolV1_1" in load_artifact()["source_registry"][5]["excerpt"] or fix["source_ids"]
+    release = next(s for s in load_artifact()["source_registry"] if s["source_id"] == "XRPL_OFFICIAL_RELEASE_3_4_0_20260916")
+    assert "LendingProtocolV1_1 is a separate amendment" in release["excerpt"]
 
 
 def test_lending_and_vault_amendments_are_not_mislabeled_as_active():
