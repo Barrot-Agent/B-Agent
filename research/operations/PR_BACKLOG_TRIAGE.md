@@ -436,3 +436,15 @@ Canonical evidence and current mission state are recorded in `BARROT_XRP_MISSION
 - A prior main push triggered GitHub Pages deployment. Authorization for another merge-triggered deployment remains unresolved.
 - No PR was merged or closed. No branch was force-pushed or rewritten. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 - Close only exact duplicate/superseded source PRs after a successor is merged, the replacement files are verified on main, and a cross-reference is posted. Preserve every unique/unreviewed workstream.
+
+## 2026-11-06T13:28Z — Exact-head and backlog refresh
+
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; complete tree 1,403 entries / 1,298 files / 86 workflows.
+- Complete open inventory: 369 PRs, 354 drafts, 15 non-drafts.
+- #1640 current head `0ff1b9dad47fa1f8a27c55061be26d5c9972baa9`: 442 ahead / 0 behind, 154 changed paths; exact full suite 1,060 passed + 8 subtests, 57.57% inclusive coverage; wheel verification passed; six-manifest audit passed with no known vulnerabilities; fail-closed gate passed with automatic merge disabled. Runs: CI 42217125196, audit 42217125331, gate 42217125112.
+- #1643 current head `32534419243615ecd08b8359da0bb0cf17d169c3`: 419 ahead / 0 behind, 307 changed paths; exact full suite 1,449 passed + 8 subtests; six-manifest audit passed with no known vulnerabilities; fail-closed gate passed with automatic merge disabled. Runs: CI 42225022086, audit 42225022287, gate 42225022164.
+- Both PRs have zero approving reviews. #1640 has 22/22 resolved review threads; #1643 has 19/19. COMMENTED reviews and bot “Approved” text are not GitHub approvals.
+- Exact changed-path intersection is one identical file: `.github/workflows/dependency-audit.yml`. #1640 has 153 unique paths; #1643 has 306 unique paths. Branches are divergent; do not merge #1643 directly after #1640.
+- Main reports protected=true; detailed branch-protection endpoint returns HTTP 403; visible fallback ruleset is disabled. A previous main push triggered Pages deployment; authorization for another merge-triggered deployment remains unresolved.
+- Backlog: active integration #1640/#1643; preserve #1642 and unique research/security work; #1605 and #1645 are exact-duplicate candidates but remain open until replacements are verified on main; reconcile #1644–#1650 as dependency/action overlap; preserve #1254/#1255 until exact comparison after integration.
+- No merge, close, deployment, secret rotation, Space restart, paper trade, Kaggle submission or funds transfer occurred.

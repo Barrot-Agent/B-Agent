@@ -8617,3 +8617,80 @@ A final incremental CodeRabbit read-only review was requested against this exact
 The #1640 branch now has a documentation-only handoff commit `044b9620682f0c8ae0d31e6a09d68861226e4fe4`; the last code-bearing head `64f36ca035daa0c708bf5bd0c317c6d9619129ea` retains its exact-head full-suite, dependency-audit and fail-closed evidence. No code changed in the handoff-only commit.
 
 Merge blockers remain unchanged: zero approving reviews on both PRs; main is protected but detailed protection settings are inaccessible (HTTP 403); Pages settings are inaccessible; and a main push triggers public Pages deployment. No merge or deployment is authorized by this checkpoint.
+
+## 2026-11-06 13:28 UTC — Run 11 integration-first checkpoint
+
+### Repository state — EXECUTED and VERIFIED
+
+- Repository: `Barrot-Agent/B-Agent`.
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Complete recursive main tree: 1,403 entries, 1,298 files, 105 directories, 86 workflow files; not truncated.
+- Main branch API reports `protected=true`. Detailed branch-protection inspection returns HTTP 403. The only visible repository ruleset, “Fall Back”, is disabled. Required review/check configuration therefore remains unverified.
+- GitHub Pages settings are inaccessible through the available repository interface. A previous main push triggered a Pages deployment (historical run 41799855489). A new merge-triggered public deployment remains unauthorized.
+- No workflow runs are attached to the exact current main SHA. Main has not changed and no PR was merged in this run.
+
+### PR #1640 — V3/core and XRP prediction integration
+
+- Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
+- Exact current head: `0ff1b9dad47fa1f8a27c55061be26d5c9972baa9`.
+- Base: current main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Ancestry: 442 commits ahead, 0 behind; 154 changed paths.
+- Exact-head full repository suite: **1,060 passed, 8 subtests passed**; inclusive coverage **57.57%** against a 53% floor.
+- Installed-wheel build and verification of the packaged primary mission, V3 orchestration imports and canonical data assets passed.
+- Six-manifest dependency audit passed; every manifest reported “No known vulnerabilities found”.
+- Fail-closed gate passed and explicitly reports: “Automatic merge is intentionally disabled.”
+- Exact evidence: [CI 42217125196](https://github.com/Barrot-Agent/B-Agent/actions/runs/42217125196), [dependency audit 42217125331](https://github.com/Barrot-Agent/B-Agent/actions/runs/42217125331), [fail-closed gate 42217125112](https://github.com/Barrot-Agent/B-Agent/actions/runs/42217125112).
+- Review threads: 22/22 resolved. No approving review exists. Two Barrot-Agent review submissions saying “Approved” have GitHub state COMMENTED; they are not approvals. No reviewers are currently requested.
+
+### PR #1643 — XRP research archive
+
+- Branch: `research/xrp-evidence-archive-20261104`.
+- Exact current head: `32534419243615ecd08b8359da0bb0cf17d169c3`.
+- Base: current main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Ancestry: 419 commits ahead, 0 behind; 307 changed paths.
+- Exact-head full repository suite: **1,449 passed, 8 subtests passed**. This full-suite job did not emit a coverage report; do not infer coverage from #1640 or its core job.
+- Six-manifest dependency audit passed; every manifest reported “No known vulnerabilities found”.
+- Fail-closed gate passed and explicitly reports automatic merging is disabled.
+- Exact evidence: [CI 42225022086](https://github.com/Barrot-Agent/B-Agent/actions/runs/42225022086), [dependency audit 42225022287](https://github.com/Barrot-Agent/B-Agent/actions/runs/42225022287), [fail-closed gate 42225022164](https://github.com/Barrot-Agent/B-Agent/actions/runs/42225022164).
+- Review threads: 19/19 resolved. No approving review exists; CodeRabbit/Copilot review submissions are COMMENTED, not approvals.
+- Review disposition verified against the current files: the Clarity Act semiconductor close is -12.25% and the test expects -12.25%; the Morpho key is `morpho_market_snapshot_exact_time` and its test checks the corrected key; the advance-funding correction verifies an exact Git blob and permits a verified archived preimage while labelling the derived result historical. The delayed-subscriber source artifact preserves its duplicate contextual row; the append-only correction overlay merges/removes the duplicate only in the derived canonical view, and the current test asserts one unique category. Preserve this source/correction distinction rather than silently rewriting the source artifact. CodeRabbit's separate docstring-coverage pre-merge diagnostic remains a non-GitHub review follow-up; it is not represented as a required GitHub CI check.
+
+### Integration topology and overlap
+
+- The branches are divergent: #1643 is 419 commits ahead of #1640 and 442 commits behind it.
+- Full paginated changed-file inventories show exactly one shared path: `.github/workflows/dependency-audit.yml`, with identical content.
+- #1640 has 153 unique paths; #1643 has 306 unique paths. Do not merge #1643 directly after #1640. After #1640 is merged and verified on main, carry #1643's 306 unique paths into one consolidated successor created directly on that resulting main, reconciling any unique #1642 changes there.
+- #1640's workflow review confirms the new `xrp-public-ingestion.yml` is public-data-only, read-only, scheduled hourly plus a daily backup, and artifact/cache-based with 90-day artifact retention. It is a branch design, not active main automation. The manual Databricks, Cloudflare, Hugging Face/Space and paper-trader paths were not dispatched. The Hugging Face sync and self-upgrade workflows are quarantined. No deployment, secret rotation, Space restart, paper trade or external write was performed.
+- The public signal page is changed to `FORECAST STATUS: NOT_ISSUED`; the old variable-horizon 45.5% record is retained for audit, not presented as predictive accuracy.
+
+### Latest XRP research cutoff
+
+The latest research artifact is [20261106T131500Z-xrp-market-institutional-relationship-vintage.json](research/xrp_intelligence/20261106T131500Z-xrp-market-institutional-relationship-vintage.json). Its observations remain model-ineligible.
+
+- Kraken rendered XRP/USD observation: last $1.19582; bid $1.19571; ask $1.19587; spread 1.338 bps; 24-hour volume 47.232M XRP; 24-hour VWAP $1.23468147; 24-hour low/high $1.17605/$1.31767; UTC-day open $1.20567. The response has no provider event timestamp; retrieval is only bounded as after 12:00:29 UTC. Its SHA-256 covers the exact rendered JSON text, not complete HTTP wire bytes. Only top-of-book is available.
+- TradRadar's 10:45 UTC displayed update (15-minute display delay) reports mark $1.1989, seven-venue USD-notional OI $1.93B (row sum $1.9294B), OI change -7.16%, funding +0.0053% per eight hours, at least $19.91M liquidations ($19.28M long; $633,020 short), long/short account ratio 3.96 and 79.8% long accounts. This is one aggregator's presentation, not seven independent provider receipts; OI is USD-notional and account counts are not notional exposure.
+- XRP Insights reports -149,487 XRP over November 2–5 in a seven-instrument universe, about -$201,000, with reconstructed rows, BITW rebalancing and GXRP capture gaps documented. CryptoKeyhole's November 5 figure is partial (3 of 4 funds) at -3,339 XRP; its November 4 complete figure is also -3,339 XRP. These publisher outputs share issuer-holdings evidence and are not independent primary flow observations. Do not average them or call them AP cash creations/redemptions.
+- The BLS October Employment Situation release was still upcoming at the 13:15 UTC artifact cutoff, scheduled for 13:30 UTC (08:30 ET). Reuters survey expectations were 65,000 payrolls, 4.2% unemployment, 0.3% monthly wage growth and 2.9% annual wage growth. Expectations are not release values; preserve initial release and later revisions as separate vintages.
+- Competing explanations remain: leveraged-long unwind, broad risk-off, possible marginal ETF absorption pressure, venue/vintage mismatch and a possible but unproven XRP-specific catalyst. No causal attribution is established.
+- Institutional mapping continues to distinguish Coinbase, Circle, Ripple, SBI Holdings, regional SBIC companies, BNY, Standard Custody and C2FO. RLUSD distribution/custody announcements do not establish XRP purchases, XRP-specific collateral balances or realized XRPL settlement volume. C2FO Instant Pay remains an announced/waitlist rollout, not measured production volume.
+- Exact-phrase work continues to separate ASK Coin entities, “actual capital” categories and “SBIC, ChatGPT SBIC”. Japanese SBIC East/Central/West remain distinct from SBI Holdings and the academic Social Bias Inference Corpus. Kamilah/Camila Stevenson channel candidates remain attribution candidates, not a legally verified identity or exhaustive video inventory.
+- No directional or shadow forecast was issued; no paper or real-money action occurred.
+
+### Open-PR inventory and classifications
+
+Complete paginated inventory: **369 open PRs; 354 drafts; 15 non-drafts**. Non-drafts: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+
+- **Active integration:** #1640 and #1643.
+- **Unique/unreviewed; preserve:** #1642 (seven overlapping but non-identical paths), #1317, #1318, #1320, #1269, and unique prediction/security/research work including #1614, #1615, #1611, #1610, #1608, #1597, #1591, #1590, #1583, #1571, #1568, #1564, #1534 and #1533.
+- **Exact duplicate candidates; do not close yet:** #1605's single market artifact is identical to one artifact in #1643; #1645's dependency file is represented in #1640. Close only after the replacement is merged and verified on main, with a cross-reference.
+- **Dependency/action overlap:** #1644–#1650 require exact-file reconciliation. #1644 and #1647 differ because #1640 adds safety containment; #1646, #1648, #1649 and #1650 have version changes represented in the integration but their complete file blobs differ. Preserve until verified on main.
+- **Older dependency candidates:** #1254 and #1255; compare against the resulting main after integration.
+- Do not bulk-close unique research or feature work. No PRs were closed in this run.
+
+### Merge decision and next action
+
+Both active PRs are non-draft and GitHub reports them mergeable, but both have zero approving reviews. Main is protected; detailed protection configuration is inaccessible (HTTP 403), and the only visible fallback ruleset is disabled. A main push has previously triggered public Pages deployment; Pages settings remain inaccessible and the deployment side effect is not authorized. Therefore neither PR is merged. Do not bypass branch protection or trigger an external deployment.
+
+Next: obtain independent approving review(s) and resolve the Pages deployment authorization/side-effect boundary. Then, only if all required protections and checks are satisfied, merge #1640, fetch main, verify the merge commit/files, inspect automatic workflow side effects and run main CI. Transfer #1643's unique research paths to one successor directly on the resulting main and repeat exact-head full-suite, dependency and fail-closed verification before considering that merge.
+
+**No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.**
