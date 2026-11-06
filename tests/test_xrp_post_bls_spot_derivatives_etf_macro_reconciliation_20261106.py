@@ -85,7 +85,7 @@ def test_etf_holdings_delta_is_not_treated_as_ap_cash_flow_or_nov6_flow():
     assert row["nov5_holdings_delta_xrp"] == 110_214
     assert row["nov2_to_nov5_net_holdings_delta_xrp"] == -149_487
     assert row["settled_trading_days"] == 4
-    assert "not direct AP cash" in row["limitation"] if "limitation" in row else True
+    assert "not direct AP cash creations or redemptions" in row["limitation"]
     assert "issuer-reported XRP holdings" in row["method"]
 
 
