@@ -28,11 +28,13 @@ def git_blob_sha(path: Path) -> str:
 def test_sbic_central_japanese_capital_is_converted_without_inserting_eighty_million() -> None:
     bundle = load(BUNDLE)
     correction = bundle["corrections"][0]
-    conversion = correction["primary_source_reconciliation"]["conversion"]
+    primary = correction["primary_source_reconciliation"]
+    conversion = primary["conversion"]
     supersession = correction["supersession"]
 
     assert correction["correction_id"] == "SBIC_CENTRAL_CAPITAL_NUMERAL_CONVERSION_20261106"
-    assert conversion["profile_displayed_capital"] if "profile_displayed_capital" in conversion else True
+    assert primary["profile_displayed_capital"] == "43億80万円"
+    assert primary["history_displayed_capital"] == "43億80万円"
     assert conversion["oku_component_jpy"] == 4_300_000_000
     assert conversion["man_component_jpy"] == 800_000
     assert conversion["corrected_total_jpy"] == 4_300_800_000
