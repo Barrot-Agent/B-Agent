@@ -14,6 +14,7 @@ import subprocess
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Callable
+from urllib.parse import urlsplit
 
 
 class CodebaseMemoryError(RuntimeError):
@@ -217,7 +218,32 @@ class RepositorySyncController:
         head_sha = self._text(self._git("rev-parse", "HEAD"), "HEAD lookup")
         dirty = bool(self._text(self._git("status", "--porcelain"), "status lookup"))
         remote_result = self._git("remote", "get-url", "origin")
-        remote_url = remote_result.stdout.strip() if remote_result.returncode == 0 else ""
+        configured_remote = remote_result.stdout.strip() if remote_result.returncode == 0 else ""
+        remote_url = ""
+        remote_allowed = False
+        if configured_remote:
+            if configured_remote.startswith("git@github.com:"):
+                remote_allowed = bool(
+                    re.fullmatch(
+                        r"git@github\.com:[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+(?:\.git)?",
+                        configured_remote,
+                    )
+                )
+            elif configured_remote.startswith(("https://", "ssh://")):
+                parsed_remote = urlsplit(configured_remote)
+                remote_allowed = bool(
+                    parsed_remote.hostname == "github.com"
+                    and parsed_remote.username in (None, "git")
+                    and parsed_remote.password is None
+                    and not parsed_remote.query
+                    and not parsed_remote.fragment
+                    and re.fullmatch(
+                        r"/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+(?:\.git)?",
+                        parsed_remote.path,
+                    )
+                )
+            if remote_allowed:
+                remote_url = configured_remote
 
         fetch_succeeded = False
         remote_sha = ""
@@ -225,7 +251,7 @@ class RepositorySyncController:
         behind: int | None = None
         errors: list[str] = []
 
-        if remote_url:
+        if remote_allowed:
             fetch = self._git(
                 "fetch",
                 "--no-tags",
@@ -251,6 +277,10 @@ class RepositorySyncController:
                     errors.append((remote_sha_result.stderr or "Remote branch ref is unavailable.").strip())
             else:
                 errors.append((fetch.stderr or "Git fetch failed.").strip())
+        elif configured_remote:
+            errors.append(
+                "Origin is not an approved credential-free GitHub URL; remote fetch was blocked."
+            )
         else:
             errors.append("No origin remote is configured; remote synchronization was not checked.")
 
