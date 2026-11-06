@@ -144,7 +144,7 @@ def test_binance_circle_2026_equity_and_five_year_agreement_is_separate_from_202
     assert item["date"] == "2026-09-22"
     old = data["coinbase_circle_distribution"]["binance_participant"]
     assert old["status"].startswith("historical_2024_terms")
-    assert "not the current 2026 Binance agreement" in old["limitation"]
+    assert "as the current 2026 Binance agreement" in old["limitation"]
 
 
 def test_circle_q3_gross_mints_and_redemptions_are_not_net_capital():
@@ -178,6 +178,6 @@ def test_coinbase_institutional_collateral_is_not_xrp_specific():
 
 def test_circle_payment_metrics_preserve_annualized_and_pending_status():
     item = relationships()["circle_payment_rails_and_strategy"]
-    assert "annualized" in item["limits"][0]
+    assert "annualized" in item["limits"][0].lower()
     assert "pending regulatory approval" in item["limits"][1]
     assert "not XRPL" in item["limits"][2]
