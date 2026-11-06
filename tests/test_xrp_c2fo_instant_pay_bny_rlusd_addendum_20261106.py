@@ -132,3 +132,13 @@ def test_coinbase_circle_usdc_distribution_and_equity_relationship_is_not_xrp_de
     assert partner["coinbase_specific_share_usd"] is None
     assert "not equivalent to unique payments" in partner["onchain_volume_limitation"]
     assert "does not establish XRP purchases" in item["interpretation"]
+
+def test_coinbase_circle_sources_and_circle_ripple_relationship_are_not_conflated():
+    artifact = load_artifact()
+    sources = {item["source_id"]: item for item in artifact["source_records"]}
+    assert sources["COINBASE_Q3_2026_10Q_CIRCLE_RELATIONSHIP"]["publisher"] == "Coinbase Global, Inc. / U.S. Securities and Exchange Commission"
+    assert sources["CIRCLE_USDC_PARTNER_ECONOMICS_20261016"]["publisher"] == "Circle"
+    relationships = artifact["relationship_interpretation"]
+    assert relationships["coinbase_circle"].startswith("Direct commercial distribution")
+    assert relationships["circle_ripple"].startswith("No direct Circle-Ripple commercial partnership")
+    assert "not proof of a direct partnership" in relationships["circle_ripple"]
