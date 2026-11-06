@@ -85,7 +85,7 @@ def test_macro_close_sources_have_post_close_vintages_and_distinct_lineage():
     assert reuters["published_at"] == "2026-11-05T10:54:00Z"
 
 
-def test_morpho_key_correction_is_preimage_bound_and_not_claimed_applied():
+def test_morpho_key_review_finding_is_preimage_bound_and_already_resolved():
     target = INSTITUTIONAL.read_bytes()
     git_blob = hashlib.sha1(b"blob " + str(len(target)).encode() + bytes([0]) + target).hexdigest()
     correction = read_json(CORRECTION)
@@ -93,13 +93,16 @@ def test_morpho_key_correction_is_preimage_bound_and_not_claimed_applied():
     item = correction["corrections"][0]
     assert git_blob == correction["target_artifact"]["git_blob_sha"]
     assert correction["target_artifact"]["git_blob_sha"] == "303453dd9f5d11bce742dbe61e0f7cb4b18dcdd3"
-    assert "morpo_market_snapshot_exact_time" in original["quality_and_limits"]
-    assert "morpho_market_snapshot_exact_time" not in original["quality_and_limits"]
-    assert item["from_key"] == "morpo_market_snapshot_exact_time"
-    assert item["to_key"] == "morpho_market_snapshot_exact_time"
+    assert "morpho_market_snapshot_exact_time" in original["quality_and_limits"]
+    assert original["quality_and_limits"]["morpho_market_snapshot_exact_time"] is None
+    assert "morpo_market_snapshot_exact_time" not in original["quality_and_limits"]
+    assert correction["review_finding"]["resolution"] == "ALREADY_CORRECTED_IN_TARGET_BLOB"
+    assert correction["review_finding"]["no_change_required"] is True
+    assert correction["prior_candidate_correction"]["application_status"] == "NOT_APPLIED"
+    assert correction["prior_candidate_correction"]["disposition"] == "SUPERSEDED_NO_CHANGE_REQUIRED"
     assert correction["original_artifact_modified"] is False
-    assert correction["application_status"] == "RECORD_ONLY_NOT_APPLIED"
-    assert correction["automatic_consumer_status"] == "NOT_IMPLEMENTED"
+    assert correction["application_status"] == "NOT_APPLICABLE_ALREADY_CORRECT"
+    assert correction["automatic_consumer_status"] == "NOT_APPLICABLE"
 
 
 def test_market_snapshot_remains_model_ineligible_and_forecast_is_not_issued():

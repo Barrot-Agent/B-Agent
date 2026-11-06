@@ -30,15 +30,15 @@
         "last_trade_usd": 1.19582,
         "best_bid_usd": 1.19571,
         "best_ask_usd": 1.19587,
-        "spread_bps": 1.33802758,
+        "spread_bps": 1.338027580092976,
         "rolling_24h_volume_xrp": 47231861.63356101,
         "rolling_24h_vwap_usd": 1.23468147,
         "rolling_24h_low_usd": 1.17605,
         "rolling_24h_high_usd": 1.31767,
         "utc_day_open_usd": 1.20567,
-        "last_vs_rolling_24h_vwap_pct": -3.14748953,
-        "last_vs_utc_day_open_pct": -0.81697314,
-        "last_above_rolling_24h_low_pct": 1.68105098
+        "last_vs_rolling_24h_vwap_pct": -3.1474895302348593,
+        "last_vs_utc_day_open_pct": -0.8169731352691834,
+        "last_above_rolling_24h_low_pct": 1.681050975723819
       },
       "calculations": {
         "spread_formula": "(ask - bid) / ((ask + bid) / 2) * 10000",

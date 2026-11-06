@@ -1,28 +1,33 @@
 {
   "schema_version": "barrot.xrp-research-correction.v1",
-  "artifact_id": "xrp_institutional_network_morpho_key_correction_20261106T120807Z",
-  "artifact_type": "append_only_structured_field_correction",
+  "artifact_id": "xrp_institutional_network_morpho_key_review_resolution_20261106T120807Z",
+  "artifact_type": "append_only_review_finding_resolution",
   "recorded_at_utc": "2026-11-06T12:08:07Z",
   "target_artifact": {
     "path": "research/xrp_intelligence/20261106-institutional-xrp-network-cbxrp-sbi-circle-ripple.json",
     "git_blob_sha": "303453dd9f5d11bce742dbe61e0f7cb4b18dcdd3"
   },
-  "corrections": [
-    {
-      "correction_id": "XRP_INSTITUTIONAL_NETWORK_MORPHO_KEY_TYPO_20261106",
-      "operation": "rename_json_key",
-      "object_path": "quality_and_limits",
-      "from_key": "morpo_market_snapshot_exact_time",
-      "to_key": "morpho_market_snapshot_exact_time",
-      "replacement_value": null,
-      "reason": "The original key misspells Morpho. The corrected key remains null because an exact Morpho market-snapshot time was not verified."
-    }
-  ],
+  "corrections": [],
   "original_artifact_modified": false,
-  "application_status": "RECORD_ONLY_NOT_APPLIED",
-  "automatic_consumer_status": "NOT_IMPLEMENTED",
+  "application_status": "NOT_APPLICABLE_ALREADY_CORRECT",
+  "automatic_consumer_status": "NOT_APPLICABLE",
   "model_eligible": false,
   "forecast_status": {
     "directional_forecast_issued": false
+  },
+  "review_finding": {
+    "reported_issue": "A review comment described the field as morpo_market_snapshot_exact_time.",
+    "verified_target_key": "morpho_market_snapshot_exact_time",
+    "verified_target_value": null,
+    "target_git_blob_sha": "303453dd9f5d11bce742dbe61e0f7cb4b18dcdd3",
+    "resolution": "ALREADY_CORRECTED_IN_TARGET_BLOB",
+    "no_change_required": true,
+    "rationale": "The exact target blob already contains the correctly spelled morpho_market_snapshot_exact_time key with a null value. The review comment was stale relative to the current target artifact."
+  },
+  "prior_candidate_correction": {
+    "from_key": "morpo_market_snapshot_exact_time",
+    "to_key": "morpho_market_snapshot_exact_time",
+    "application_status": "NOT_APPLIED",
+    "disposition": "SUPERSEDED_NO_CHANGE_REQUIRED"
   }
 }
