@@ -361,7 +361,15 @@
       "limits": [
         "Do not infer that XRP is a material part of the reported collateral pool.",
         "This institutional lending collateral disclosure is separate from cbXRP/USDC Morpho markets on Base."
-      ]
+      ],
+      "collateral_requirements_pct_range": [
+        100,
+        250
+      ],
+      "recognized_crypto_collateral_fair_value_usd": 997557000,
+      "customer_collateral_not_recognized_fair_value_usd": 3284600000,
+      "counterparties_above_10pct_of_loan_receivables": 3,
+      "xrp_specific_amount_disclosed": false
     },
     {
       "id": "circle_q3_2026_operating_metrics",
