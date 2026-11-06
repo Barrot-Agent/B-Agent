@@ -24,7 +24,7 @@ CORRECTION_PATH = (
 
 def _git_blob_sha(content: str) -> str:
     payload = content.encode("utf-8")
-    header = f"blob {len(payload)}\\0".encode("ascii")
+    header = f"blob {len(payload)}\0".encode("ascii")
     return hashlib.sha1(header + payload).hexdigest()
 
 
