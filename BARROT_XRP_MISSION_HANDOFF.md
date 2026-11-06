@@ -582,3 +582,96 @@ Both PRs are non-draft, conflict-free and report GitHub mergeable state `clean`.
 - Shadow/paper trades: none.
 - Real-money actions: none.
 - Forecast outcomes: none.
+
+
+## 2026-11-06 Run 9 — verified at 23:27:50Z
+
+### Integrated repository state
+
+- Current main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main-branch write or merge occurred.
+- Active V3 integration PR #1640 is at exact head `85988fb3144cbc9d03f73fb2b8139d44f6d37c00`, non-draft and GitHub-mergeable.
+- Active XRP research PR #1643 is at exact head `1d9db13e7d7dc23f4b047c065efd8d4613fe20df`, non-draft and GitHub-mergeable.
+- The two branches still share only `.github/workflows/dependency-audit.yml`, with identical content. New OKX ingestion code is confined to #1640; new market and institutional evidence is confined to #1643.
+- The open-PR inventory is 370 total, 354 drafts and 16 non-drafts. No new PR was created.
+
+### EXECUTED — V3 public-market ingestion expansion on #1640
+
+- Adapter version is `xrp-public-market-v3.11`; parser version is `xrp-public-market-v3.10`.
+- The registry now defines 23 public endpoint records, 21 scheduled. Two free non-commercial XRPL public-node endpoints remain excluded by default.
+- Added OKX US regional public endpoints for XRP-USDT spot ticker and 100-level order book. The regional host `us.okx.com` is allowlisted.
+- Ticker parsing requires the returned instrument ID to be XRP-USDT. The fixed order-book endpoint accepts the documented response shape when `instId` is absent, but rejects a mismatched instrument if one is supplied.
+- OKX provider `ts` is used as the snapshot timestamp. Order-book features are admitted only when the snapshot is no older than 60 seconds; crossed/locked books are rejected. Quote depth remains in USDT, sequence ID is retained only in the raw receipt, and no sequence-continuity claim is made.
+- Regression coverage includes ticker normalization, order-book arithmetic, stale-snapshot quarantine, crossed-book rejection and scheduled-registry membership.
+- The feature-store and forecast-ledger contracts now describe 23 endpoint records/21 scheduled sources and the OKX limitations.
+- The endpoint has not been live-validated from this environment: direct access to the regional API was unavailable through the retrieval tool. Tests use documented/mock response shapes. The scheduled workflow is not on main and has no verified main-branch run.
+
+### VERIFIED — exact-head CI on #1640
+
+- Full repository suite on #1640 head `85988fb`: **1,071 passed, 8 subtests passed**; inclusive coverage **57.64%** against a 53% threshold; packaged primary-mission wheel verification passed.
+- Core suite: **629 passed, 8 subtests passed**.
+- [Full CI run 42311173582](https://github.com/Barrot-Agent/B-Agent/actions/runs/42311173582)
+- [Six-manifest dependency audit 42311173760](https://github.com/Barrot-Agent/B-Agent/actions/runs/42311173760): passed.
+- [Fail-closed gate 42311174264](https://github.com/Barrot-Agent/B-Agent/actions/runs/42311174264): passed; merging remains disabled.
+- Cache writes remain read-only because the configured Actions cache budget is exhausted. The bounded artifact/checkpoint recovery path is implemented, but cache is not durable external storage.
+
+### EXECUTED and VERIFIED — XRP market and institutional research on #1643
+
+**23:20:31Z spot/perpetual/ETF capture**
+
+- Artifact: [20261106T232031Z spot/perps/ETF reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T232031Z-xrp-spot-perps-etf-capture-reconciliation.json)
+- Regression tests: [spot/perps/ETF capture tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_spot_perps_etf_capture_reconciliation_20261106.py)
+- Kraken XRP/USD: last $1.17703; bid $1.17702; ask $1.17703; displayed spread 0.08496 bps; bid/ask sizes 5,286/3,922 XRP; rolling-24h volume 32.27M XRP; rolling-24h VWAP $1.19059355; 24h low/high $1.17085/$1.22190; UTC-day open $1.20567. Kraken supplied no provider timestamp and no multi-level depth was captured.
+- TradRadar's seven-exchange derivatives view was updated 22:20Z and carries a 15-minute delay; exact underlying cutoff is not supplied. It reported $1.90B OI (-1.93%), +0.0022% OI-weighted funding per eight hours, at least $10.69M liquidations ($10.13M longs; $0.56008M shorts), and a 3.97 long/short account ratio (79.9% long).
+- XRP Insights reports Nov 2–5 holdings-derived ETF flow of -149,487 XRP across four settled sessions (approximately -$203K) and 1,196,450,700 XRP held on Nov 5. Its Nov 6 row is provisional and is not admitted as a settled flow.
+- Hashes in this artifact cover the exact returned JSON text or normalized rendered excerpts, not complete raw HTTP bytes. Kraken timestamp absence, TradRadar delay, ETF methodology and the provisional Nov 6 row remain explicit. None of these observations is admitted as a synchronized model feature.
+
+**SBI/Circle/Arc relationship update**
+
+- Addendum: [SBI–Circle Arc multi-rail reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T231841Z-sbi-circle-arc-multi-rail-reconciliation.json)
+- Regression tests: [SBI–Arc and preimage-integrity tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_sbi_circle_arc_multi_rail_reconciliation_20261106.py)
+- Circle's Sep 16, 2026 mainnet announcement lists SBI Group in Arc's founding validator cohort and quotes SBI Chairman Yoshitaka Kitao saying SBI will contribute to operation and governance. This is issuer evidence, not independent validator telemetry. Arc is Circle's separate Layer 1, not XRPL.
+- SBI's May 12, 2026 release says a consolidated subsidiary participated in Circle's ARC Token presale; it cites a $222M consortium total but does not disclose SBI's allocation, token amount or settlement.
+- Circle's Q3 2026 Form 10-Q reports $242.2M aggregate gross proceeds on institutional ARC token purchase agreements, $181.8M recognized revenue and $60.4M deferred revenue; an IDG-affiliated $25M purchase is included in the aggregate. The filing does not identify SBI. The $222M and $242.2M disclosures differ by $20.2M and are not reconciled; do not attribute either total to SBI.
+- The original preimage-bound institutional network artifact was restored unchanged at Git blob SHA-1 `303453dd9f5d11bce742dbe61e0f7cb4b18dcdd3`; its original regression file was also restored. New SBI/Arc evidence is in a separate append-only addendum.
+
+**SBIC identity resolution**
+
+- The Japanese Small and Medium Business Investment & Consultation Companies are three distinct statutory regional entities: Tokyo (SBIC East Japan), Nagoya (SBIC Central Japan) and Osaka (SBIC West Japan), established under the 1963 Act. They are not SBI Holdings.
+- Tokyo's 2025 ChatGPT course listing is a training offering for investee/general-company participants; it does not establish an OpenAI commercial partnership.
+- The Korean Seongnam International Biohealthcare Convention uses the same SBIC acronym but is a separate event.
+
+### VERIFIED — exact-head CI on #1643
+
+- Full repository suite on #1643 head `1d9db13e`: **1,639 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- [Full CI run 42311808841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42311808841)
+- [Six-manifest dependency audit 42311808945](https://github.com/Barrot-Agent/B-Agent/actions/runs/42311808945): passed.
+- [Fail-closed gate 42311808713](https://github.com/Barrot-Agent/B-Agent/actions/runs/42311808713): passed; merging remains disabled.
+- An earlier intermediate head failed two tests after a preimage-bound artifact was changed. The original blob and test were restored exactly; the new evidence was moved into a separate addendum. The final head above passes the full suite.
+
+### Nine-platform coordination state
+
+- ChatGPT-to-GitHub repository access is verified.
+- Copilot activity is limited to prior one-off GitHub-hosted reviews; it is not a persistent authenticated data flow and one prior review path had a branch-write side effect.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified for persistent authentication/data flow. No nine-platform live coordination is claimed.
+
+### Current merge decision
+
+- #1640 has 22/22 review threads resolved; #1643 has 19/19 resolved. Both have **zero approving GitHub reviews**; existing COMMENTED reviews are not approvals.
+- Main reports `protected: true`. Detailed branch-protection settings still return HTTP 403; the visible fallback ruleset is disabled. GitHub Pages settings remain inaccessible, and the prior main push triggered Pages deployment run 41799855489.
+- Neither PR was merged. No branch protection was bypassed, no deployment or secret operation occurred, and no paper trade or real-money action occurred.
+
+### Next concrete action
+
+1. Obtain the required independent approving reviews and resolve authorization/visibility for the automatic Pages deployment side effect.
+2. Merge #1640 only when all required approvals and gates are verified; then fetch main, verify the merge commit and files, inspect automatic workflow side effects, and run main CI.
+3. After that verified main build, create one consolidated research successor directly on the new main, carrying #1643's unique research artifacts and tests. Do not merge the divergent #1643 branch directly.
+4. Verify a real scheduled main-branch ingestion run, including live OKX endpoint availability, provider timestamps, receipt hashes and quality/failure records.
+5. Continue historical synchronized multi-venue spot/depth/derivatives and institutional-flow coverage; configure external immutable retention and trusted evaluator keys; expand calibrated walk-forward and shadow-outcome evidence.
+
+### Forecast and action ledger
+
+- Directional forecasts issued: none.
+- Shadow/paper trades: none.
+- Real-money actions: none.
+- Forecast outcomes: none.
