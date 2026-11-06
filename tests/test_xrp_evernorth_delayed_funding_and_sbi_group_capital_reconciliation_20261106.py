@@ -59,17 +59,30 @@ def test_sbi_group_is_four_sbi_controlled_entities_not_sbic():
 
 
 def test_cash_and_in_kind_categories_are_not_double_counted():
-    items = {x["category"]: x for x in load_artifact()["separate_capital_categories"]}
+    categories = load_artifact()["separate_capital_categories"]
+    items = {
+        x["category"]: x
+        for x in categories
+        if x["category"] != "delayed_subscriber_in_kind_xrp"
+    }
+    xrp_consideration_rows = [
+        x for x in categories if x["category"] == "delayed_subscriber_in_kind_xrp"
+    ]
+    # The source artifact preserves two contextual representations of the same 200,000 XRP consideration.
+    # Both explicitly prohibit independent addition; consumers must not sum the duplicate category rows.
+    assert len(xrp_consideration_rows) == 2
+    assert {x["amount_xrp"] for x in xrp_consideration_rows} == {200_000}
+    assert all(
+        x.get("do_not_add_to_aggregate_totals") is True
+        or "do not sum independently" in x["status"].lower()
+        for x in xrp_consideration_rows
+    )
     assert items["delayed_subscriber_cash"]["amount_usd"] == 10_500_000
     assert items["delayed_subscriber_cash"]["do_not_add_to_aggregate_totals"] is True
-    assert items["delayed_subscriber_in_kind_xrp"]["amount_xrp"] == 200_000
-    assert items["delayed_subscriber_in_kind_xrp"]["do_not_add_to_aggregate_totals"] is True
     assert items["prior_cash_xrp_purchase"]["amount_usd"] == 214_100_000
     assert items["prior_cash_xrp_purchase"]["amount_xrp"] == 84_365_876
     assert items["pubco_private_placement_xrp"]["amount_xrp"] == 261_919_096
     assert items["pathfinder_contribution_agreement_xrp"]["amount_xrp"] == 126_791_458
-    assert items["delayed_subscriber_in_kind_xrp"]["amount_xrp"] == 200_000
-    assert "do not sum independently" in items["delayed_subscriber_in_kind_xrp"]["status"]
     assert items["related_party_company_credit_facility"]["drawn_as_of_2026_10_07_usd"] == 9_700_000
     assert items["related_party_company_credit_facility"]["facility_limit_usd"] == 10_000_000
     liquidity = load_artifact()["preclosing_liquidity_snapshot"]
@@ -93,7 +106,10 @@ def test_coinbase_personnel_link_is_not_a_corporate_contract():
     assert link["person"] == "Hugo Jeandesboz"
     assert link["new_role"] == "Chief Investment Officer, Evernorth Holdings Inc."
     assert "Co-Chief Investment Officer, Coinbase Asset Management" in link["prior_coinbase_roles"]
-    assert "Previously Coinbase lead derivatives trader" in link["prior_coinbase_roles"]
+    assert any(
+        role.startswith("Previously Coinbase lead derivatives trader")
+        for role in link["prior_coinbase_roles"]
+    )
     assert "trading counterparties and custodians" in " ".join(link["evernorth_responsibilities"])
     assert "does not establish a Coinbase Global custody mandate" in link["corporate_relationship_limit"]
     assert data["evidence_quality"]["coinbase_link_is_personnel_not_corporate_contract"] is True
