@@ -10,7 +10,6 @@
   "scope": "Reconcile Evernorth's delayed-funding share-count correction, the cash/XRP composition of that subscription cohort, and the separately defined SBI-controlled stockholder group. Do not attribute delayed-subscriber consideration to SBI unless an issuer filing does so.",
   "delayed_funding_correction": {
     "prior_reported_class_a_shares": 663510,
-    "increase_in_reported_shares": 415103,
     "correction_reason": "Clerical error in the post-closing Form 8-K; the October 12, 2026 Form 8-K states the correct aggregate share count.",
     "share_pricing_usd": 10,
     "subscription_consideration": "The corrected share count represents the aggregate delayed-funding subscription amount, whether paid in cash or XRP tokens, divided by $10 per share.",
@@ -22,7 +21,9 @@
     "eight_k_reported_class_a_shares": 1078613,
     "issuer_press_release_reported_class_a_shares": 1078614,
     "one_share_difference": 1,
-    "reconciliation_status": "Unresolved one-share discrepancy between the October 12 Form 8-K and the attached issuer press release. Preserve both primary-source values; the October 30 S-1 does not separately restate this delayed-subscriber count."
+    "reconciliation_status": "Unresolved one-share discrepancy between the October 12 Form 8-K and the attached issuer press release. Preserve both primary-source values; the October 30 S-1 does not separately restate this delayed-subscriber count.",
+    "increase_in_8k_reported_shares": 415103,
+    "increase_in_press_release_reported_shares": 415104
   },
   "delayed_subscriber_consideration": {
     "cash_usd": 10500000,

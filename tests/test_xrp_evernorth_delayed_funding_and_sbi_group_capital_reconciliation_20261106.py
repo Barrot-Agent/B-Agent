@@ -20,7 +20,8 @@ def test_delayed_funding_share_count_correction_is_not_new_capital():
     assert correction["issuer_press_release_reported_class_a_shares"] == 1078614
     assert correction["one_share_difference"] == 1
     assert "Unresolved one-share discrepancy" in correction["reconciliation_status"]
-    assert correction["increase_in_reported_shares"] == 415103
+    assert correction["increase_in_8k_reported_shares"] == 415103
+    assert correction["increase_in_press_release_reported_shares"] == 415104
     assert correction["correction_reason"].startswith("Clerical error")
     assert correction["not_new_capital_event"] is True
 
