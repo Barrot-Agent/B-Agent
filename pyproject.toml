@@ -48,7 +48,7 @@ branch = true
 omit = ["*/__pycache__/*", "tests/*"]
 
 [tool.coverage.report]
-fail_under = 50
+fail_under = 53
 show_missing = true
 
 [tool.setuptools.package-data]
