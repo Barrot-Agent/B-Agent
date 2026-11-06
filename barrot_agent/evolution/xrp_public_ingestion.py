@@ -27,9 +27,9 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.10"
-PARSER_VERSION = "xrp-public-market-v3.9"
+ALLOWED_HOSTS = {"api.binance.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
+ADAPTER_VERSION = "xrp-public-market-v3.11"
+PARSER_VERSION = "xrp-public-market-v3.10"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -43,6 +43,8 @@ ENDPOINTS = (
     ("binance_perp_global_long_short_ratio", "https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=XRPUSDT&period=1h&limit=500"),
     ("coinbase_spot_ticker", "https://api.exchange.coinbase.com/products/XRP-USD/ticker"),
     ("kraken_spot_ticker", "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"),
+    ("okx_spot_ticker", "https://us.okx.com/api/v5/market/ticker?instId=XRP-USDT"),
+    ("okx_spot_depth", "https://us.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100"),
     ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
     ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
@@ -1671,6 +1673,184 @@ def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, 
     return records, event_s, eligible, reason
 
 
+def _okx_market_row(payload: Any, source_name: str) -> Mapping[str, Any]:
+    if (
+        not isinstance(payload, Mapping)
+        or payload.get("code") != "0"
+        or payload.get("msg") not in ("", None)
+    ):
+        raise XRPIngestionError(f"OKX {source_name} response contains an API error")
+    data = payload.get("data")
+    if not isinstance(data, list) or len(data) != 1 or not isinstance(data[0], Mapping):
+        raise XRPIngestionError(f"OKX {source_name} response must contain exactly one data row")
+    row = data[0]
+    if row.get("instId") != "XRP-USDT":
+        raise XRPIngestionError(f"OKX {source_name} instrument mismatch")
+    return row
+
+
+def _parse_okx_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Parse an OKX XRP-USDT ticker using the provider's snapshot-generation timestamp."""
+    row = _okx_market_row(payload, "spot ticker")
+    source_time = _from_ms(row.get("ts"), "OKX ticker ts")
+    if source_time > captured:
+        raise XRPIngestionError("OKX ticker timestamp is later than capture time")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    event_s, captured_s = _iso(source_time), _iso(captured)
+
+    bid = _number(row.get("bidPx"), "OKX ticker best bid", allow_zero=False)
+    ask = _number(row.get("askPx"), "OKX ticker best ask", allow_zero=False)
+    if ask <= bid:
+        raise XRPIngestionError("OKX ticker bid/ask is crossed or locked")
+
+    fields = (
+        ("last", "last_price", "USDT/XRP", False),
+        ("bidPx", "bid_price", "USDT/XRP", False),
+        ("askPx", "ask_price", "USDT/XRP", False),
+        ("bidSz", "bid_quantity", "XRP", True),
+        ("askSz", "ask_quantity", "XRP", True),
+        ("vol24h", "base_volume_24h", "XRP/24h", True),
+        ("volCcy24h", "quote_volume_24h", "USDT/24h", True),
+        ("open24h", "open_24h", "USDT/XRP", False),
+        ("high24h", "high_24h", "USDT/XRP", False),
+        ("low24h", "low_24h", "USDT/XRP", False),
+    )
+    limitations = [
+        "Single OKX XRP-USDT spot venue; USDT is not converted to USD.",
+        "The OKX ts field timestamps ticker snapshot generation, not the individual last-trade event.",
+    ]
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.okx.{name}",
+            value=_number(row.get(field), f"OKX ticker {field}", allow_zero=allow_zero),
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="okx",
+            venue="OKX",
+            instrument="XRP-USDT spot",
+            currency_pair="XRP/USDT",
+            market_type="spot",
+            aggregation_window="24h" if name.endswith("_24h") else "",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for field, name, unit, allow_zero in fields
+    ]
+    return records, event_s, eligible, reason
+
+
+def _parse_okx_depth(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Parse a timestamped OKX order-book snapshot without claiming sequence continuity."""
+    row = _okx_market_row(payload, "spot order book")
+    source_time = _from_ms(row.get("ts"), "OKX order-book ts")
+    if source_time > captured:
+        raise XRPIngestionError("OKX order-book timestamp is later than capture time")
+    eligible, reason, quality = _live_eligibility(
+        source_time, captured, MAX_ORDERBOOK_AGE_SECONDS
+    )
+    bids_raw, asks_raw = row.get("bids"), row.get("asks")
+    if not isinstance(bids_raw, list) or not bids_raw or not isinstance(asks_raw, list) or not asks_raw:
+        raise XRPIngestionError("OKX order book must contain non-empty bids and asks")
+
+    def parse_levels(level_rows: list[Any], side: str) -> list[tuple[float, float]]:
+        levels = []
+        for level in level_rows:
+            if not isinstance(level, list) or len(level) < 2:
+                raise XRPIngestionError(f"OKX {side} level schema mismatch")
+            price = _number(level[0], f"OKX {side} price", allow_zero=False)
+            quantity = _number(level[1], f"OKX {side} quantity", allow_zero=False)
+            levels.append((price, quantity))
+        return levels
+
+    bids = parse_levels(bids_raw, "bid")
+    asks = parse_levels(asks_raw, "ask")
+    best_bid = max(price for price, _quantity in bids)
+    best_ask = min(price for price, _quantity in asks)
+    if best_ask <= best_bid:
+        raise XRPIngestionError("OKX order book is crossed or locked")
+
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    mid = (best_bid + best_ask) / 2.0
+    spread_bps = (best_ask - best_bid) / mid * 10000.0
+    features = [
+        ("best_bid", best_bid, "USDT/XRP"),
+        ("best_ask", best_ask, "USDT/XRP"),
+        ("mid_price", mid, "USDT/XRP"),
+        ("spread_bps", spread_bps, "bps"),
+    ]
+    for band in (10, 50, 100):
+        bid_depth = sum(
+            price * quantity
+            for price, quantity in bids
+            if price >= mid * (1 - band / 10000.0)
+        )
+        ask_depth = sum(
+            price * quantity
+            for price, quantity in asks
+            if price <= mid * (1 + band / 10000.0)
+        )
+        total = bid_depth + ask_depth
+        imbalance = (bid_depth - ask_depth) / total if total > 0 else 0.0
+        features.extend(
+            [
+                (f"bid_depth_{band}bps", bid_depth, "USDT"),
+                (f"ask_depth_{band}bps", ask_depth, "USDT"),
+                (f"depth_imbalance_{band}bps", imbalance, "ratio"),
+            ]
+        )
+
+    limitations = [
+        "Single OKX XRP-USDT spot order-book snapshot; not global or consolidated liquidity.",
+        "USDT quote depth is not converted to USD.",
+        "The exchange-provided ts timestamps the REST snapshot; seqId is retained in the raw receipt but no sequence bridge is maintained.",
+    ]
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.okx.orderbook.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="okx",
+            venue="OKX",
+            instrument="XRP-USDT spot",
+            currency_pair="XRP/USDT",
+            market_type="spot",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit in features
+    ]
+    return records, event_s, eligible, reason
+
+
 def _raw_only_binance_depth(payload: Any, **_kwargs):
     if not isinstance(payload, Mapping) or "lastUpdateId" not in payload:
         raise XRPIngestionError("Binance depth response shape mismatch")
@@ -2019,6 +2199,8 @@ PARSERS = {
     "coinbase_spot_book": _raw_only_coinbase_book,
     "kraken_spot_ticker": _parse_kraken_ticker,
     "kraken_spot_depth": _parse_kraken_depth,
+    "okx_spot_ticker": _parse_okx_ticker,
+    "okx_spot_depth": _parse_okx_depth,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
     "xrp_exchange_balances_json": _raw_only_xrp_exchange_balances,
@@ -2510,10 +2692,10 @@ def run_ingestion(
         "feature_store_restore_search_max_pages": 30,
         "feature_store_rebuild_from_raw_artifacts_implemented": False,
         "limitations": [
-            "Spot coverage includes Binance, Coinbase and Kraken; derivatives history is Binance USD-M XRPUSDT only.",
+            "Spot coverage includes Binance, Coinbase, Kraken and OKX XRP-USDT; derivatives history is Binance USD-M XRPUSDT only.",
             "USDT quotes and Binance-reported open-interest value are not converted to USD; open-interest contracts, quote value, funding fractions and account ratios remain separate units.",
             "Historical Binance funding settlements are timestamped per event; the actual funding interval is not assumed fixed. Binance open-interest and global long/short history are one-hour observations limited to the latest 30 days, with no-trade gaps preserved as missing.",
-            "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header.",
+            "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header; OKX depth is admitted only with a fresh exchange-provided snapshot timestamp and does not establish sequence continuity.",
             "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase candle pagination is not yet implemented.",
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
             "The cumulative SQLite feature store uses an exact-key cache when available, otherwise the latest successful per-run checkpoint (7-day retention), with the daily/manual archive (90-day retention) as fallback. Cache remains derived and evictable; if no checkpoint or daily archive is available, continuity can still fall back to bootstrap. Automatic rebuild from raw receipts is not yet implemented.",
