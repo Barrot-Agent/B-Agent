@@ -9829,3 +9829,112 @@ Both active PRs are non-draft and GitHub reports them mergeable, but both have z
 Next: obtain independent approving review(s) and resolve the Pages deployment authorization/side-effect boundary. Then, only if all required protections and checks are satisfied, merge #1640, fetch main, verify the merge commit/files, inspect automatic workflow side effects and run main CI. Transfer #1643's unique research paths to one successor directly on the resulting main and repeat exact-head full-suite, dependency and fail-closed verification before considering that merge.
 
 **No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.**
+
+
+## 2026-11-06 18:56 UTC — Run 13 integration-first execution checkpoint
+
+### Current repository and branch state
+
+Current main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main was fetched and its complete recursive tree inspected: 1,403 entries, 1,298 files, 493 Python files, 101 Python test files and 86 workflows.
+
+No PR was merged. Main was not modified. No branch was force-pushed or rewritten. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+The two existing integration workstreams remain the only active integration branches:
+
+| | PR #1640 — V3/XRP integration | PR #1643 — XRP research archive |
+|---|---:|---:|
+| Current head | `a0af425b08d56fddd923f7afac2b6861a4025065` | `7eec2c29aace4870fe1cf64b257f7fce64666197` |
+| Commits ahead of main | 456 | 477 |
+| Changed paths | 155 | 339 |
+| Unique changed paths | 154 | 338 |
+| Review threads resolved | 22/22 | 19/19 |
+| Approving reviews | 0 | 0 |
+| GitHub mergeable | Yes | Yes |
+
+The branch comparison is 476 commits ahead and 456 behind when comparing #1643 against #1640. Their only changed-path overlap is `.github/workflows/dependency-audit.yml`, with identical blob content. Do not merge #1643 directly after #1640; create one consolidated research successor directly on the resulting main.
+
+PR #1640 has a successful exact-head verification on `a0af425b08d56fddd923f7afac2b6861a4025065`:
+
+- CI run [42272993678](https://github.com/Barrot-Agent/B-Agent/actions/runs/42272993678): core suite 626 passed, 8 subtests; full repository suite 1,065 passed, 8 subtests; inclusive coverage 57.57%; installed-wheel build and packaged XRP mission/canonical data verification passed.
+- Dependency audit [42272993795](https://github.com/Barrot-Agent/B-Agent/actions/runs/42272993795): six declared manifests audited; no known vulnerabilities found.
+- Fail-closed gate [42272994007](https://github.com/Barrot-Agent/B-Agent/actions/runs/42272994007): passed, but automatic merge remains intentionally disabled.
+
+Four regression tests were added to the existing `tests/test_v3_scripts.py` from the useful security-test work in draft PR #1615. They protect the scheduler-tick, subscriber/issue writers, merge queue and public brain-corpus exporter from unattended execution. The full suite includes these tests. The full-suite job runs all tests under `tests` and the coverage-scope tests confirm the major Barrot packages are included; no major package is excluded from the full suite.
+
+Non-fatal build warnings remain: the TOML table form of `project.license` is deprecated; the wheel build warns that `barrot_agent.data.missions` and `data.research` are absent from the explicit package list, although the installed-wheel mission and canonical-data checks pass. GitHub Actions cache storage is at its configured budget and read-only; this did not affect test success.
+
+PR #1643 now contains the additional market/macro/protocol reconciliation artifact and regression test:
+
+- `research/xrp_intelligence/20261106T184656Z-xrp-market-macro-protocol-reconciliation.json`
+- `tests/test_xrp_market_macro_protocol_reconciliation_20261106.py`
+
+The artifact records normalized-excerpt SHA-256 receipts, source independence, provider timestamps/limitations, ETF-flow disagreement, macro context, the PaymentBurn fix and XRPL lending-amendment state. Its source capture upper bound is 2026-11-06 18:53:54 UTC. Core tests passed (498 passed, 8 subtests) on the exact PR head. CI run [42274923155](https://github.com/Barrot-Agent/B-Agent/actions/runs/42274923155) and dependency audit [42274923111](https://github.com/Barrot-Agent/B-Agent/actions/runs/42274923111) were still in progress at this handoff capture; the fail-closed gate [42274923117](https://github.com/Barrot-Agent/B-Agent/actions/runs/42274923117) passed. Do not classify #1643 as fully verified until its exact-head full-suite and dependency jobs complete.
+
+### New XRP, macro and XRPL evidence
+
+The new research artifact corrects an earlier stale Alpha Finance search summary using the XRP-specific dashboard. Alpha Finance's current XRP page covers five U.S. spot funds through the November 5 session and reports:
+
+- November 5 daily net flow: $0.
+- Last seven sessions, October 26–November 5: +$4.8M.
+- 30-session flow: +$60.8M.
+- Cumulative net inflow: +$1.73B.
+- No net assets or holdings are published for those five funds.
+
+TokenPost, citing SoSoValue, reports no net flows for three sessions through November 5, cumulative inflows of $1.81B and net assets of $1.41B. The $80M cumulative-flow difference remains unresolved. XRP Insights' separate snapshot covers six spot products plus BITW and reports holdings-derived changes (+110,214 XRP on November 5; -149,487 XRP November 2–5). That is not direct AP cash creation/redemption and is not comparable to the five-fund flow series. Do not average these totals or label zero creations as outflows.
+
+CryptoTicker's secondary OKX-derived snapshot describes XRP near $1.20 around 05:50 UTC, down 8.3% over 24 hours, with OKX XRP perpetual open interest falling from $128.9M to $117.4M (-8.9%), a 3.91 long/short account ratio and +0.0024% funding per eight hours. Exact OKX request timestamps and raw responses are not exposed; account ratios are not notional exposure. CoinDesk separately reports at least $1.27B in all-crypto liquidations, more than $1.1B long. Those are not XRP-specific liquidation totals.
+
+Reuters reports $117.97B of U.S. money-market fund inflows in the week to November 4, but also $14.81B of U.S. equity-fund inflows; technology, industrial and communication-services funds experienced outflows. The Nasdaq, S&P 500 and Dow fell 5.52%, 4.36% and 3.44% on Thursday. This supports selective risk aversion, not a claim that all equity capital exited risk assets. The October BLS release on November 6 reported +165,000 payrolls, 4.1% unemployment, +0.4% monthly and +3.1% annual hourly earnings, and +84,000 combined August/September revisions. No synchronized XRP event study establishes causality.
+
+The XRPL protocol investigation distinguishes three separate facts:
+
+1. XRPL.org's September 16 release notes for rippled 3.4.0 include `fixCleanup3_4_0` and a fix rejecting delegated PaymentBurn payments that cross a zero balance.
+2. XRPLWin's ledger tracker records `fixCleanup3_4_0` enabled November 4 at 14:52 UTC, ledger 108112129. CoinDesk reports the same activation but cites XRPLWin, so those activation reports are not independent confirmations. The flaw concerned issued trust-line/MPT assets and potentially stablecoin issuer operations, not native XRP supply. No publicly confirmed exploitation or issuer-specific exposure was identified.
+3. The separate `LendingProtocolV1_1`, `SingleAssetVault` and `LendingProtocol` amendments remain in voting states in the captured tracker view: 21/35 (60%) for LendingProtocolV1_1, 23/35 (65.71%) for SingleAssetVault and 21/35 (60%) for LendingProtocol. LendingProtocolV1_1 requires 29 of 35 validators and more than 80% support for 14 consecutive days. Do not treat XRPL production lending/collateral volume as active. The official Permission Values page still displays its pre-activation PaymentBurn warning; this is documentation lag relative to the tracker-recorded activation.
+
+Retained hypotheses: broad AI/technology and macro risk-off; XRP-specific leveraged-long unwind; a pause in ETF creations without net redemptions; indirect issued-asset/stablecoin protocol risk without native XRP supply impact; and a counter-hypothesis that positive aggregate equity-fund flows indicate selective rotation rather than universal liquidation. Disconfirming evidence remains attached to each hypothesis.
+
+No directional XRP forecast was issued. The new artifact is research-only and model-ineligible because source cutoffs are not synchronized, several market values are secondary-derived without raw provider receipts, ETF fund universes/methodologies differ, broad crypto liquidations are not XRP-specific, and no calibrated out-of-sample predictive lift or evaluator attestation exists.
+
+### Ingestion, prediction and platform readiness
+
+On #1640, the XRP collector has 21 endpoint definitions, 19 scheduled; two public XRPL node endpoints are excluded from scheduled use because their published terms classify them as non-commercial. The scheduled workflow is read-only for repository contents and actions, uses public endpoints, and is designed for hourly collection plus a daily feature-store backup. It uploads GitHub artifacts with 90-day retention and uses an evictable Actions cache. It has not run on main because it is not yet on main.
+
+Implemented on the integration branch: allowlisted public collection, per-run content-addressed raw receipts and SHA-256 manifests, point-in-time SQLite feature storage, chronological baselines, quality controls, source-timestamp auditing and a fail-closed forecast ledger. Important limitations remain:
+
+- Raw receipt storage is per-run and artifact retention is 90 days; there is no external WORM store or independent timestamp anchor.
+- The SQLite store uses append-only/integrity checks but is not adversarially tamper-proof.
+- Historical evaluation currently uses Binance XRP/USDT and Coinbase XRP/USD hourly closes; synchronized derivatives, ETF creations, exchange-wallet flows, collateral, custody, stablecoin, payment-rail, regulatory and macro histories are not yet model features.
+- The evaluator has four baseline families, but no demonstrated cross-domain predictive lift or production probability-calibration model.
+- The forecast ledger requires a trusted independent Ed25519 evaluator key, chronological out-of-sample evidence, at least 100 out-of-sample and 100 shadow observations, independent source groups and calibration/drift gates. The production evaluator key is not configured. No forecast is eligible.
+
+Only ChatGPT-to-GitHub repository access is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows remain unverified. Groq is not Grok.
+
+### Backlog and integration classifications
+
+The open-PR inventory is 369: 354 drafts and 15 non-drafts.
+
+- **Active integration:** #1640. Exact-head CI, full suite, dependency audit and fail-closed gate passed; technically mergeable, but no approving review and deployment authorization remain blockers.
+- **Active research:** #1643. Unique research archive; exact-head core tests passed; full suite and dependency audit pending at this checkpoint.
+- **Superseded candidate:** #1642 is a draft, one commit ahead of main, with seven paths all overlapping #1640. Its feature-store/forecast-ledger implementation is less complete than #1640's point-in-time receipt and independent Ed25519 evaluator gate. Do not merge it; close only after #1640's replacement is merged and verified.
+- **Partially superseded/unique:** #1615 is a draft three commits ahead and 41 behind main. Seven workflow files and `scripts/dump_brain_corpus.py` are already identical to main; its remaining resolver workflow is also disabled in main. Four useful regression tests were transferred into #1640. Preserve its unique operations-research artifacts for reconciliation; do not merge the stale branch.
+- **Superseded dependency/action PRs:** #1644–#1650. Their intended changes are represented in #1640: checkout v7, upload-artifact v7, download-artifact v8 in active workflows; types-requests 20261030; pytest 9.2.0; databricks-sdk 0.158.0; huggingface-hub 2.4.0. Where the Dependabot branch changes a workflow that #1640 quarantines, do not merge the old workflow content. #1645's changed file is an exact duplicate. Older #1254/#1255 updates to huggingface-hub 2.3.0 and databricks-sdk 0.157.0 are also superseded by the newer versions in #1640. Keep these PRs open until the replacement is merged and verified, then close only with explicit cross-references.
+- **Unique work to preserve:** #1320 paper-trader position-identity safety; #1318 scientific-track schema fail-closed behavior; #1317 structural-analysis/MMI foundations; #1269 OBJ topology/triangulation. Do not bulk-close.
+- **Exact duplicate candidate:** #1605's market artifact is duplicated in the research archive; close only after the successor content is verified on main.
+
+### Merge and external-action blockers
+
+Both integration PRs are non-draft and currently report mergeable, but both have zero approving reviews. Detailed main branch-protection retrieval returns HTTP 403; the visible repository ruleset “Fall Back” is disabled. The GitHub Pages settings endpoint is inaccessible. A previous push to main triggered the GitHub Pages “pages build and deployment” run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), so merging #1640 would trigger a public deployment side effect. Deployment has not been authorized. Do not merge until required independent approvals/checks are satisfied and the Pages side effect is specifically authorized or safely disabled through an authorized settings change.
+
+Manual external workflows remain gated and were not run: Databricks workspace/job action, Cloudflare worker deployment, Hugging Face Space upload/secret rotation and artifact-only Coinbase paper simulation. No paper trade, live order, secret rotation, Space restart, Kaggle submission or external AI data transfer occurred.
+
+### Next concrete actions
+
+1. Finish exact-head full-suite and dependency verification for #1643; diagnose any failure on its current branch without creating another PR.
+2. Resolve the missing independent approvals and the automatic Pages deployment authorization before any merge.
+3. Merge #1640 only when every merge condition is met; then fetch main again, verify the merge commit/files and automatic workflow side effects, and run main CI.
+4. Create one consolidated research successor directly on the resulting main, carrying #1643's unique paths and reconciling #1615's unique operations evidence. Do not rewrite or force-push source branches.
+5. Close only exact duplicates/superseded source PRs after replacement content is verified on main.
+6. Expand synchronized historical XRP spot, derivatives, ETF, exchange-flow, collateral, custody, stablecoin, payment-rail, regulation and macro features; establish evaluator signing, calibration, drift and shadow evidence before any directional forecast.
+
+Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.
