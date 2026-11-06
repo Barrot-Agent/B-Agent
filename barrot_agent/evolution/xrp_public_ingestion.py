@@ -57,6 +57,18 @@ ENDPOINTS = (
     ("xrpl_honeycluster_server_info", "https://honeycluster.io/"),
 )
 
+
+DIGEST_ONLY_RAW_SOURCE_REASONS = {
+    "xrp_etf_flows_csv": (
+        "Publisher terms allow use and citation with attribution but require written permission "
+        "for commercial redistribution; full CSV bytes are not retained in public artifacts."
+    ),
+    "xrp_exchange_balances_json": (
+        "Publisher permits citation with attribution but does not expressly grant redistribution "
+        "of the raw exchange-balance JSON; retain its SHA-256 receipt only."
+    ),
+}
+
 XRPL_NODE_SOURCES = {
     "xrpl_inftf_server_info": {
         "url": "https://xrplcluster.com/",
@@ -2270,14 +2282,8 @@ def run_ingestion(
                     model_eligible=False,
                     raw_only_reason=raw_reason,
                     source_http_date=response.get("http_date"),
-                    retain_raw_bytes=source_id not in {"xrp_etf_flows_csv", "xrp_exchange_balances_json"},
-                    raw_retention_reason=(
-                "Publisher terms allow use and citation with attribution but require written permission for commercial redistribution; full CSV bytes are not retained in public artifacts."
-                if source_id == "xrp_etf_flows_csv"
-                else "Publisher permits citation with attribution but does not expressly grant redistribution of the raw exchange-balance JSON; retain its SHA-256 receipt only."
-                if source_id == "xrp_exchange_balances_json"
-                else ""
-            ),
+                    retain_raw_bytes=source_id not in DIGEST_ONLY_RAW_SOURCE_REASONS,
+                    raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
                 )
                 receipts.append(receipt)
                 raw_only.append(
@@ -2303,14 +2309,8 @@ def run_ingestion(
             model_eligible=source_eligible,
             raw_only_reason=reason,
             source_http_date=response.get("http_date"),
-            retain_raw_bytes=source_id not in {"xrp_etf_flows_csv", "xrp_exchange_balances_json"},
-            raw_retention_reason=(
-                "Publisher terms allow use and citation with attribution but require written permission for commercial redistribution; full CSV bytes are not retained in public artifacts."
-                if source_id == "xrp_etf_flows_csv"
-                else "Publisher permits citation with attribution but does not expressly grant redistribution of the raw exchange-balance JSON; retain its SHA-256 receipt only."
-                if source_id == "xrp_exchange_balances_json"
-                else ""
-            ),
+            retain_raw_bytes=source_id not in DIGEST_ONLY_RAW_SOURCE_REASONS,
+            raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
         )
         receipts.append(receipt)
         if source_id == "xrp_etf_flows_csv":
