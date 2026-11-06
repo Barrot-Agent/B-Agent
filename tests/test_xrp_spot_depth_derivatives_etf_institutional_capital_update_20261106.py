@@ -74,6 +74,16 @@ def test_evernorth_actual_proceeds_debt_and_sbi_entity_classes_are_separate():
     facility = row["ripple_company_facility"]
     assert evernorth["net_proceeds_before_expenses_usd"] == 30_000_000
     assert evernorth["issued_paid"] == "2026-10-12"
+    assert evernorth["purchaser"] == "NH Investment & Securities Co., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3"
+    assert evernorth["net_cash_after_advisor_fee_usd"] == 29_000_000
+    assert evernorth["advisor_fee_usd"] == 1_000_000
+    assert evernorth["conversion_earliest_date"] == "2027-10-12"
+    assert evernorth["holder_controls_settlement_form"] is True
+    assert evernorth["settlement_forms"] == ["cash", "shares", "cash_and_shares"]
+    assert evernorth["conversion_applies_to_all_notes_only"] is True
+    assert evernorth["cash_settlement_exposure_up_to_usd"] == 120_000_000
+    assert evernorth["default_or_fundamental_transaction_yield_to_put_pct"] == 8.0
+    assert evernorth["potential_xrp_sale_to_fund_cash_settlement"] is True
     assert evernorth["permitted_use_includes_xrp"] is True
     assert evernorth["actual_xrp_spend_verified"] is False
     assert facility["limit_usd"] == 10_000_000
