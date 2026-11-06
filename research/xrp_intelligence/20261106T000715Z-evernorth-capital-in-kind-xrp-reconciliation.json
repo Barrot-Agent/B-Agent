@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_institutional_capital_reconciliation",
+  "artifact_id": "evernorth-sec-capital-and-in-kind-xrp-reconciliation-20261106",
+  "subject": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC / SBI Holdings / Ripple",
+  "primary_source": {
+    "publisher": "U.S. Securities and Exchange Commission",
+    "accession": "0001628280-26-068609",
+    "document": "xrpn-20261030.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+    "document_date": "2026-10-30",
+    "retrieval_window_utc": {
+      "start": "2026-11-06T00:02:33Z",
+      "end": "2026-11-06T00:07:15Z",
+      "precision": "bounded retrieval window; exact request time unavailable"
+    },
+    "capture": {
+      "kind": "SEC_HTML_extracted_text_and_line_references",
+      "raw_html_wire_bytes_captured": false,
+      "raw_source_sha256": null,
+      "provider_http_headers_captured": false,
+      "line_references": [
+        {
+          "start": 421,
+          "end": 423,
+          "topic": "SBI definition and SBI Stockholders"
+        },
+        {
+          "start": 2266,
+          "end": 2278,
+          "topic": "Ripple contribution, advance funding, SBI 39.9% ownership cap"
+        },
+        {
+          "start": 2287,
+          "end": 2289,
+          "topic": "Delayed funding cash and XRP contribution"
+        },
+        {
+          "start": 4594,
+          "end": 4614,
+          "topic": "Delayed funding, Series C sponsor XRP, Ripple Group XRP"
+        },
+        {
+          "start": 3023,
+          "end": 3046,
+          "topic": "Liquidity, Ripple facility, cash purchases, gross proceeds, in-kind XRP, convertible notes"
+        },
+        {
+          "start": 3438,
+          "end": 3439,
+          "topic": "SBI stockholder aggregate Class A shares"
+        },
+        {
+          "start": 3495,
+          "end": 3498,
+          "topic": "SBI stockholder share table"
+        },
+        {
+          "start": 3468,
+          "end": 3470,
+          "topic": "SBI group voting ownership percentage"
+        },
+        {
+          "start": 6801,
+          "end": 6807,
+          "topic": "Closing share and unit issuance"
+        },
+        {
+          "start": 7667,
+          "end": 7671,
+          "topic": "Closing Ripple contribution and convertible note issuance"
+        }
+      ],
+      "note": "The SEC filing is primary evidence, but this artifact preserves extracted line references rather than claiming a byte-complete raw HTML receipt. It is not eligible as a point-in-time market feature."
+    }
+  },
+  "capital_reconciliation": {
+    "cash_subscriptions": {
+      "advance_funding": {
+        "cash_usd": 214050000,
+        "in_kind_xrp": 600000,
+        "subscribers": "Certain Advance Funding Subscribers, including SBI Stockholders",
+        "sbi_specific_cash_allocation_usd": null,
+        "sbi_specific_cash_allocation_note": "The cited filing identifies SBI as an Advance Funding Subscriber and describes its ownership cap, but does not separately quantify SBI's dollar allocation in these sections."
+      },
+      "delayed_funding": {
+        "cash_usd": 10500000,
+        "in_kind_xrp": 200000
+      },
+      "private_placement_cash_gross_usd_rounded": 224600000,
+      "private_placement_cash_components_usd": 224550000,
+      "cash_from_advance_funding_used_to_purchase_xrp_usd_rounded": 214100000,
+      "xrp_purchased_with_that_cash": 84365876,
+      "implied_cash_deployed_per_xrp_usd": 2.537163248325662,
+      "implied_cash_deployed_per_xrp_note": "Derived from $214.05M / 84,365,876 XRP. Not an exchange execution VWAP, not an independently verified trade-level average, and not a current market price."
+    },
+    "in_kind_xrp_contributions": {
+      "series_c_sponsor": 211319096.061435,
+      "ripple_group_affiliates": 50000000,
+      "advance_funding_subscribers": 600000,
+      "delayed_funding_subscribers": 200000,
+      "ripple_contribution_agreement": 126791458,
+      "total": 388910554.061435,
+      "total_rounded_in_filing": 388910554
+    },
+    "closing_cash_proceeds": {
+      "private_placement_investments_usd_rounded": 224600000,
+      "trust_account_after_redemptions_usd_rounded": 48000000,
+      "gross_cash_proceeds_before_transaction_expenses_usd_rounded": 272600000,
+      "reconciliation_note": "Advance Funding cash plus Delayed Funding cash is approximately the reported $224.6M private-placement cash. The $214.1M cash purchase amount is a component of this private-placement cash, not an additional amount to add to the $272.6M."
+    },
+    "separate_financing": {
+      "convertible_senior_pik_notes": {
+        "principal_usd": 30000000,
+        "cash_proceeds_before_transaction_expenses_usd": 30000000,
+        "issued_and_funded_date": "2026-10-12",
+        "stated_use": "General corporate purposes, including acquisition of XRP and other XRP ecosystem activities",
+        "deployment_to_xrp_verified": false,
+        "classification": "debt financing; not proof of XRP purchase"
+      },
+      "ripple_related_party_credit_facility": {
+        "limit_usd_after_2026_10_07_amendment": 10000000,
+        "drawn_as_of_2026_10_07_usd": 9700000,
+        "classification": "related-party borrowing; not equity and not proof of XRP purchase",
+        "repayment_terms": "Amounts drawn were repayable within five business days after closing or earlier on five business days' notice of demand by Ripple."
+      }
+    },
+    "holdings_reconciliation": {
+      "cash_purchased_xrp": 84365876,
+      "in_kind_xrp": 388910554.061435,
+      "arithmetic_total_xrp": 473276430.061435,
+      "filing_reported_holdings_approx_xrp": 473000000,
+      "filing_holdings_as_of": "2026-10-09",
+      "reconciliation_status": "Arithmetic sum is consistent with the filing's approximate 473M XRP holdings. It is not a wallet-level custody reconciliation and does not establish current holdings."
+    }
+  },
+  "institutional_relationships": {
+    "sbi_definition": "The filing explicitly defines 'SBI' as SBI Holdings, Inc.",
+    "sbi_stockholders_controlled_by_sbi": [
+      "SBI Venture Fund 2023A Investment LPS",
+      "SBI Venture Fund 2023B Investment LPS",
+      "SBI PE Holdings Co., Ltd.",
+      "SBI Holdings USA, Inc."
+    ],
+    "sbi_aggregate_pubco_class_a_shares": 9431914,
+    "sbi_group_ownership_percentage_as_of_2026_10_09": 39.9,
+    "sbi_ownership_limitation": {
+      "voting_ownership_cap_percent": 39.9,
+      "treatment_above_cap": "Balance of subscribed shares issued as Pubco Class C Common Stock.",
+      "effect_on_subscription_price": "Filing says allocation between Class A and Class C did not change aggregate subscribed shares, subscription price or per-share price.",
+      "interpretation": "39.9% is a voting-ownership limitation, not a 39.9% cash contribution or proof that SBI supplied all Advance Funding cash."
+    },
+    "ripple_relationship": {
+      "direct_ripple_contribution_xrp": 126791458,
+      "ripple_group_affiliate_contribution_xrp": 50000000,
+      "closing_units_to_ripple_under_contribution_agreement": 16461545,
+      "closing_pubco_class_a_shares_to_ripple_under_contribution_agreement": 1678382,
+      "ownership_limit_percent": 9.9,
+      "classification": "In-kind XRP and equity/unit consideration; not cash-funded exchange purchases."
+    },
+    "sponsor_relationship": {
+      "series_c_xrp_contribution": 211319096.061435,
+      "attributed_voting_ownership_threshold_percent": 19.9,
+      "classification": "In-kind XRP contribution."
+    },
+    "sbic_disambiguation": "The SEC filing's defined term SBI refers to SBI Holdings, Inc. and its four controlled stockholders listed above. It does not identify the separate Japanese SBIC East, SBIC Central or SBIC West investment companies."
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "result": "No new primary-source hit establishing an XRP or Ripple relationship in this search.",
+      "status": "unresolved candidates remain separate"
+    },
+    "actual_capital": {
+      "secondary_source_hit": {
+        "publisher": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/markets/crypto/articles/xrp-news-sec-approves-ripple-112335918.html",
+        "statement_summary": "Actual capital raised will depend on warrant exercise.",
+        "classification": "secondary reporting"
+      },
+      "primary_source_reconciliation": "The SEC filing separately reports $272.6M gross closing cash proceeds before expenses, $214.1M cash used to purchase 84,365,876 XRP, $388.91M XRP contributed in kind, $30M convertible note proceeds and $9.7M related-party borrowing. These are distinct categories and must not be summed as one XRP purchase figure."
+    },
+    "sbic_chatgpt_sbic": {
+      "exact_phrase_result": "No new primary-source evidence of an 'SBIC, ChatGPT SBIC' corporate partnership.",
+      "separate_primary_evidence": "SBIC East's 2025 generative-AI training page lists ChatGPT among course topics; that establishes a training topic, not a partnership with OpenAI or SBI Holdings."
+    },
+    "camilla_kamilah_stevenson": {
+      "new_candidate_video_ids": [
+        "QslbjGQD0MU",
+        "ci0FH73lbCs"
+      ],
+      "attribution_evidence": "Glasp-indexed transcripts attribute both videos to Kamilah Stevenson and contain a self-introduction as Camila Stevenson.",
+      "direct_youtube_verification": "The direct YouTube pages could not be retrieved in this run because of throttling/disabled access.",
+      "inventory_status": "candidate leads only; do not add to verified channel inventory until direct channel attribution is independently confirmed"
+    }
+  },
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "model_ineligibility_reasons": [
+    "SEC filing evidence is corporate-capital and holdings context, not a synchronized market feature.",
+    "The SEC HTML wire bytes and response headers were not captured.",
+    "SBI's exact dollar allocation within the Advance Funding Subscribers is not separately quantified in the cited sections.",
+    "The approximately 473M XRP holdings figure is not a wallet-level or current custody statement.",
+    "The $30M notes and $9.7M related-party facility are not proof of additional XRP purchases.",
+    "No directional XRP forecast is supported or issued."
+  ]
+}
