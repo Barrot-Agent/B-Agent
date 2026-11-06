@@ -1363,9 +1363,9 @@ def _build_deterministic_rate_limit_report(
         f"**Provider failure:** {type(error).__name__}: {str(error)[:1000]}\n\n"
         "### Deterministic work completed\n"
         "- Repository file inventory and targeted file/directory context were collected.\n"
-        "- Read-only Git branch, HEAD, recent-history and working-tree evidence was collected.\n"
+        "- Read-only Git branch, HEAD, recent-history, working-tree and Actions evidence was attempted; unavailable fields are labeled.\n"
         "- Recent GitHub Actions evidence was collected where the GitHub CLI was available.\n"
-        "- The available open-PR/issue context is preserved below; it is not model-interpreted.\n\n"
+        "- Any available open-PR/issue context is preserved below; it is not model-interpreted.\n\n"
         "### Evidence snapshot\n"
         "```json\n"
         + json.dumps(context, ensure_ascii=False, sort_keys=True, indent=2, default=str)[:26000]
