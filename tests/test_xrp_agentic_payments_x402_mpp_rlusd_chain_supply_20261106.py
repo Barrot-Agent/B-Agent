@@ -78,7 +78,7 @@ def test_mastercard_coinbase_ripple_t54_stripe_tempo_and_circle_edges_are_classi
     for name in ["Coinbase", "Ripple", "RippleX", "t54 Labs", "Stripe", "Tempo"]:
         assert name in partners
     assert "not proof of a direct Coinbase-Ripple" in data["mastercard_agent_pay_for_machines"]["relationship_classification"]
-    assert "technical ecosystem overlap only" in data["circle_ows"]["relationship_classification"].lower()
+    assert "technical standards overlap only" in data["circle_ows"]["relationship_classification"].lower()
 
 
 def test_account_reserve_is_not_equated_with_open_market_xrp_demand():
