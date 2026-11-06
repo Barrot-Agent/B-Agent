@@ -38,7 +38,7 @@ def test_delayed_subscription_separates_cash_from_xrp_in_kind():
     assert item["press_release_arithmetic_difference_usd"] == -2
     assert item["possible_overlap_with_private_placement_aggregates"] is True
     assert item["additive_to_private_placement_totals"] is False
-    assert "not a claim that the subscription was entirely cash" in item["arithmetic_interpretation"]
+    assert "$10.5M cash plus 200,000 XRP" in item["arithmetic_interpretation"]
 
 
 def test_sbi_group_is_four_sbi_controlled_entities_not_sbic():
