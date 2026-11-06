@@ -1,0 +1,161 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_research_review_correction_bundle_20261106T100440Z",
+  "artifact_type": "append_only_research_review_correction_bundle",
+  "recorded_at_utc": "2026-11-06T10:04:40Z",
+  "mission_priority": 1,
+  "capture_contract": {
+    "run_started_at_utc": "2026-11-06T10:04:40Z",
+    "exact_per_request_retrieval_times": false,
+    "raw_http_wire_bytes_captured": false,
+    "raw_html_bytes_captured": false,
+    "web_rendered_text_and_api_json_only": true,
+    "independent_timestamp_anchor": false,
+    "all_market_observations_model_eligible": false,
+    "no_directional_forecast_issued": true,
+    "note": "This bundle corrects a Japanese numeral conversion error and strengthens the lineage/arithmetic checks for a previously captured XRP market artifact. Original research artifacts are not rewritten."
+  },
+  "corrections": [
+    {
+      "correction_id": "SBIC_CENTRAL_CAPITAL_NUMERAL_CONVERSION_20261106",
+      "subject": "SBIC Central Japan / Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "correction_of": [
+        {
+          "path": "research/xrp_intelligence/20261106T094856Z-sbic-regional-company-primary-profile-vs-sbi-holdings-addendum.json",
+          "git_blob_sha": "2c14e6eee6252d05326237200f59b8340f4e4e04"
+        },
+        {
+          "path": "research/xrp_intelligence/20261106T095354Z-sbic-corporate-number-and-capital-source-correction.json",
+          "git_blob_sha": "ca71b34f6c8267591e4bae64c891039bcd88ab3d"
+        }
+      ],
+      "primary_source_reconciliation": {
+        "official_company_profile_url": "https://www.sbic-cj.co.jp/company/about/",
+        "official_company_history_url": "https://www.sbic-cj.co.jp/company/history/",
+        "profile_displayed_capital": "43億80万円",
+        "history_displayed_capital": "43億80万円",
+        "conversion": {
+          "oku_component": "43億",
+          "oku_component_jpy": 4300000000,
+          "man_component": "80万円",
+          "man_component_jpy": 800000,
+          "corrected_total_jpy": 4300800000
+        },
+        "interpretation": "43億80万円 is ¥4,300,800,000, not ¥4,380,800,000. The earlier conversion incorrectly inserted an additional ¥80,000,000."
+      },
+      "supersession": {
+        "previously_recorded_official_profile_value_jpy": 4380800000,
+        "corrected_official_profile_value_jpy": 4300800000,
+        "secondary_directory_value_jpy": 4800800000,
+        "corrected_absolute_difference_jpy": 500000000,
+        "selected_value_jpy": 4300800000,
+        "selection_reason": "The regional company's own current official profile and its official history page both display 43億80万円. The third-party directory's 4,800.8百万円 remains a disagreement and is not averaged with the primary issuer value.",
+        "prior_correction_status": "SUPERSEDED_BY_THIS_APPEND_ONLY_CORRECTION",
+        "original_artifacts_modified": false
+      },
+      "entity_identity": {
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_label": "SBIC Central Japan",
+        "corporate_number": "7180001031846",
+        "corporate_number_source": "Japan National Tax Agency corporate-number publication record previously archived on this branch"
+      },
+      "source_capture_limits": [
+        "The official pages were inspected as rendered web text; exact retrieval timestamps and byte-complete HTML were not exposed.",
+        "The history page independently confirms the same Japanese capital expression, but both pages are published by the same issuer and are not independent publishers."
+      ],
+      "model_eligibility": {
+        "eligible": false,
+        "reason": "Corporate identity and capital are contextual research, not validated XRP market features."
+      },
+      "forecast_status": {
+        "directional_forecast_issued": false,
+        "model_admission": false
+      }
+    },
+    {
+      "correction_id": "XRP_KRAKEN_RENDERED_TICKER_ARITHMETIC_AND_DEPTH_LINEAGE_20261106",
+      "target_artifact": {
+        "path": "research/xrp_intelligence/20261106T093925Z-xrp-spot-perpetuals-etf-macro-vintage-update.json",
+        "git_blob_sha": "7b12f76a2b04633784ba16c70d8e9300343dbaf1"
+      },
+      "kraken_rendered_ticker_capture": {
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "retrieved_after_utc": "2026-11-06T10:04:40Z",
+        "exact_retrieval_timestamp_utc": null,
+        "provider_event_timestamp_utc": null,
+        "rendered_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.19798000\",\"2601\",\"2601.000\"],\"b\":[\"1.19792000\",\"3610\",\"3610.000\"],\"c\":[\"1.19788000\",\"8.75539012\"],\"v\":[\"12132824.81829000\",\"48847953.69989410\"],\"p\":[\"1.19941113\",\"1.24077458\"],\"t\":[14139,46199],\"l\":[\"1.17605000\",\"1.17605000\"],\"h\":[\"1.22190000\",\"1.32050000\"],\"o\":\"1.20567000\"}}}",
+        "rendered_response_sha256": "733da0ec157d3bc5cd69d4d6cd3c706bf03502b3ba3fdb83bb9e72244b139ab9",
+        "raw_http_wire_bytes_captured": false,
+        "parsed_quote": {
+          "last_trade_usd": 1.19788,
+          "best_bid_usd": 1.19792,
+          "best_ask_usd": 1.19798,
+          "spread_bps": 0.5008556283651238,
+          "rolling_24h_volume_xrp": 48847953.6998941,
+          "rolling_24h_vwap_usd": 1.24077458,
+          "rolling_24h_low_usd": 1.17605,
+          "rolling_24h_high_usd": 1.3205,
+          "utc_day_open_usd": 1.20567,
+          "last_vs_utc_day_open_pct": -0.6461137790606053,
+          "last_vs_rolling_24h_vwap_pct": -3.457080818016114,
+          "last_above_rolling_24h_low_pct": 1.856213596360699
+        },
+        "calculations": {
+          "spread_formula": "(ask - bid) / ((ask + bid) / 2) * 10000",
+          "day_open_formula": "(last / UTC-day-open - 1) * 100",
+          "vwap_formula": "(last / rolling-24h-VWAP - 1) * 100",
+          "low_distance_formula": "(last / rolling-24h-low - 1) * 100"
+        },
+        "limitations": [
+          "Kraken returned no provider event timestamp or sequence identifier.",
+          "The digest covers the exact JSON text rendered by the web retrieval interface, not raw HTTP wire bytes.",
+          "This is one venue's ticker and top-of-book, not consolidated depth or executable liquidity.",
+          "The observation is not admitted to the point-in-time feature store."
+        ],
+        "model_eligibility": {
+          "eligible": false
+        },
+        "forecast_status": {
+          "directional_forecast_issued": false
+        }
+      },
+      "historical_depth_lineage_correction": {
+        "target_field": "historical_depth_context",
+        "source_artifact_path": "research/xrp_intelligence/20261106T081536Z-xrp-live-spot-depth-derivatives-event-snapshot.json",
+        "source_artifact_git_blob_sha": "999088e0a4b1eb603f5512dc37d7fb543a8f49ed",
+        "source_id": "FUELMAPS_XRP_SPOT_DEPTH_20261106T030000Z",
+        "source_url": "https://fuelmaps.io/order-book/",
+        "snapshot_time_utc": "2026-11-06T03:00:00Z",
+        "retrieved_at_utc_in_source_artifact": "2026-11-06T08:15:36Z",
+        "venue_coverage": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "excluded_venues": [
+          "Binance",
+          "Bitget"
+        ],
+        "plus_minus_2pct_bid_depth_usd": 19600000,
+        "plus_minus_2pct_ask_depth_usd": 11300000,
+        "status": "HISTORICAL_CONTEXT_ONLY_STALE_AT_LATER_KRAKEN_CAPTURE",
+        "note": "The 09:39 artifact's historical depth figures are copied from this exact prior artifact. The prior source artifact identifies Fuelmaps, its URL, 03:00 UTC snapshot time and venue coverage. No current synchronized depth is claimed.",
+        "original_artifact_modified": false
+      }
+    }
+  ],
+  "overall_model_eligibility": {
+    "eligible": false,
+    "reason": "This bundle contains identity/capital corrections and asynchronous market observations, not a synchronized model-ready feature set."
+  },
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  }
+}
