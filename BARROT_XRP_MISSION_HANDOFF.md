@@ -1,3 +1,168 @@
+# Current checkpoint — 2026-11-06T05:12:27Z
+
+This section supersedes earlier exact-head, market-cutoff, main-workflow and PR-inventory statements below where they differ. Earlier run records are retained as history.
+
+## Mission and preservation
+
+XRP intelligence and prediction-engine mastery remain Barrot's highest-priority mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- No main-branch mutation, merge, branch rewrite, force-push or source-PR closure occurred.
+- No new branch or PR was created. The existing #1640 and #1643 integration workstreams were reused.
+- No deployment, Space restart, secret rotation, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- No directional XRP forecast was issued.
+
+## Repository state and complete PR inventory
+
+- Main recursive tree: 1,403 entries; 1,298 files; 493 Python files; 90 Python test files; 86 workflow files.
+- Complete REST pagination: 369 open PRs; 354 drafts; 15 non-drafts. Non-drafts: #1650–#1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- Main's latest push CI remains [41799856459](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799856459), successful on the current main SHA. The latest scheduled Cross Analysis run is [42164986861](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164986861), successful on the same SHA.
+
+## Exact-head verification — EXECUTED and VERIFIED
+
+### PR #1640 — V3/core, ingestion, safety and orchestration
+
+- Current PR head: `59b60d37e67dcef093be584b3ce13d4300a2118d`.
+- 430 commits ahead of main; zero behind; 154 changed files.
+- Core test job: **622 passed, 8 subtests passed**.
+- Full repository suite: **1,060 passed, 8 subtests passed**.
+- Installed wheel built and verified to load Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit: passed; no known vulnerabilities.
+- Fail-closed gate: passed. Its job explicitly states automatic merge is disabled.
+- Exact evidence: [CI 42164862652](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862652), [dependency audit 42164862423](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862423), [fail-closed gate 42164862543](https://github.com/Barrot-Agent/B-Agent/actions/runs/42164862543).
+
+### PR #1643 — XRP institutional, market, capital and identity research
+
+- Current PR head: `109a2c6838ff7d7e36b1220eb8941387ff607d31`.
+- 336 commits ahead of main; zero behind; 267 changed files.
+- Core test job: **498 passed, 8 subtests passed**.
+- Full repository suite: **1,299 passed, 8 subtests passed**.
+- Six-manifest dependency audit: passed; no known vulnerabilities.
+- Fail-closed gate: passed. Automatic merge remains disabled.
+- Exact evidence: [CI 42166628634](https://github.com/Barrot-Agent/B-Agent/actions/runs/42166628634), [dependency audit 42166628639](https://github.com/Barrot-Agent/B-Agent/actions/runs/42166628639), [fail-closed gate 42166628654](https://github.com/Barrot-Agent/B-Agent/actions/runs/42166628654).
+- The latest CI includes the new bounded Kraken snapshot and its five regression tests.
+
+### Integration topology
+
+- #1640 changed paths: 154; #1643 changed paths: 267.
+- Their exact changed-path intersection is only `.github/workflows/dependency-audit.yml`, with identical blob `6515307991420ab90d8671034b13ac2eb56190b3`.
+- #1640 has 153 unique paths; #1643 has 266 unique paths.
+- The branches are separate descendants of current main; #1643 does not contain #1640. Do not merge #1643 directly after #1640. Once #1640 is merged and verified on main, create one consolidated successor directly on that resulting main, carrying #1643's 266 unique paths and omitting the identical dependency-audit file. Preserve both source branch histories.
+- #1640 has 22/22 review threads resolved; #1643 has 14/14 resolved. Both have **zero approving GitHub reviews**. Existing COMMENTED reviews from Copilot/CodeRabbit are not approvals. CodeRabbit's latest check on #1643 was skipped, not a review approval.
+
+## Merge and deployment authorization — BLOCKED
+
+- Both PRs are non-draft and GitHub reports them mergeable. Passing CI and a mergeable state do not replace required approvals or authorization for external side effects.
+- Detailed `GET /branches/main/protection` inspection returned HTTP 403. The visible ruleset response did not establish an enforced approval policy. No branch-protection bypass was attempted.
+- The controlled approval workflow `.github/workflows/barrot-approve-pr.yml` applies an `approved` label and records a comment; it does **not** create an approving GitHub review. It cannot substitute for an independent approval.
+- A main push previously triggered GitHub's dynamic Pages deployment: [run 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), event `dynamic`, workflow path `dynamic/pages/pages-build-deployment`, on main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. The Pages settings endpoint was not accessible through the current GitHub connection. Another merge-triggered Pages deployment is therefore an unresolved external side effect. Do not merge until this is explicitly authorized or a verified no-deploy path is established.
+
+## Main-branch workflow audit — correction and remaining containment
+
+A prior handoff statement that main's Cross Analysis was still a writer was stale. The current main file `.github/workflows/cross-analysis.yml` is read-only: `contents: read`, checkout uses `persist-credentials: false`, outputs are uploaded as a 30-day workflow artifact, and the workflow does not commit or push. PR #1635 merged at 2026-11-04T07:57:27Z and PR #1638 merged at 08:00:07Z; the latest scheduled run 42164986861 succeeded. Do not treat Cross Analysis as an outstanding main writer.
+
+Other main workflows still have privileged or external-action paths. PR #1640 contains the following containment changes, verified in its current branch:
+
+- `barrot-agent.yml`: main currently permits owner/Barrot-Agent issue-label dispatch with contents, PR and issue write permissions. #1640 quarantines issue-label and free-form agent dispatch; no credentials or mutation run.
+- `ask-barrot.yml`: main currently permits a manual Groq-backed task to commit generated memory directly to main. #1640 quarantines it pending branch-only integration.
+- `coinbase-paper-trader.yml`: main currently permits manual simulation and direct main writes without a per-run confirmation input. #1640 changes it to exact-main-SHA, position-identity-checked, artifact-only simulation with explicit `YES`; no simulation was run.
+- `sync-huggingface.yml`: main combines Space upload and multiple secret updates in one manual approval step. #1640 disables it pending private-target verification and separate secret-rotation authorization.
+- `deploy-a2a-worker.yml`: main currently deploys on push to `a2a/**` and uploads Worker secrets. #1640 changes it to manual dispatch, exact-main-SHA verification, explicit deployment confirmation and a separate secret-rotation confirmation.
+- `sync-self-hosted-brain.yml`: main currently deploys on push to `self_hosted_brain/**` and can propagate a shared secret. #1640 changes it to manual dispatch, exact-main-SHA verification, separate deployment/secret-rotation confirmations and a private-Space check.
+- Already disabled on main: scheduler tick, legacy signal-accuracy writer, merge queue, force-deploy-space, HF admin deletion/creation, public brain-corpus export, subscriber sync, Databricks token rotation and autonomous self-deployment. The automatic PR merge workflow is also disabled.
+- `barrot-auto-pr.yml` is read-only. `barrot-approve-pr.yml` applies a label only. `barrot-merge.yml`, `deploy-databricks.yml` and `barrot-restart-space.yml` are manual external actions with explicit confirmation and exact-main-SHA checks; none was dispatched. `barrot-ops.yml` is likewise manual and SHA-bound; no Databricks or Kaggle action was run.
+- `release.yml` is tag-triggered, not a main-push deployment.
+
+These workflow changes are part of #1640, not yet on main. The automatic GitHub Pages side effect remains a separate merge blocker.
+
+## New XRP research added in this run
+
+### Kraken spot snapshot
+
+Added to #1643:
+
+- `research/xrp_intelligence/20261106T050741Z-kraken-xrpusd-current-retrieval-interval-snapshot.json`
+- `tests/test_xrp_kraken_spot_retrieval_interval_snapshot_20261106.py`
+
+Observation from Kraken's public XRP/USD ticker, inspected during a bounded retrieval interval ending 2026-11-06T05:07:41Z:
+
+| Field | Observation |
+|---|---:|
+| Last trade | $1.20282 |
+| Best bid / ask | $1.20295 / $1.20296 |
+| Displayed spread | 0.08313 bps |
+| 24-hour volume | 44.2771M XRP |
+| 24-hour VWAP | $1.25270707 |
+| UTC-day open | $1.20567 |
+| 24-hour low / high | $1.19797 / $1.32583 |
+
+The last-trade field is below the displayed best bid. This is preserved as an asynchronous-component warning, not repaired into an executable cross. The API exposed no provider event timestamp or exact request timestamp. The recorded SHA-256 `886629da0a730c43b7f8ca153b70091527a9687a283a7f143ff6362a241c6bdc` covers only the rendered JSON text, not original HTTP wire bytes or headers. Retrieval is bounded by 05:04:58–05:07:41Z. The observation is single-venue, top-of-book, research-only and model-ineligible. No short-horizon return is calculated against earlier unsynchronized snapshots.
+
+### Evernorth actual-capital corrections
+
+Three append-only corrections were added to #1643 from the October 30 SEC filing:
+
+- `research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json`
+- `research/xrp_intelligence/20261106T043450Z-evernorth-eloc-source-and-reference-price-addendum.json`
+- `research/xrp_intelligence/20261106T043450Z-evernorth-notes-and-facility-scope-correction.json`
+
+Primary-source distinctions:
+
+- The Cantor ELOC is capped at 5,218,935 Pubco Class A shares (19.99% of the pre-agreement Class A count), priced at 97% of the applicable VWAP, subject to a 4.99% beneficial-ownership cap. It is not a fixed $76.8M cash investment. Cash proceeds arise only when shares are actually sold and settled.
+- The $521,893.50 upfront commitment fee is due within five business days after the ELOC registration statement becomes effective and is fully earned/non-refundable regardless of whether Cantor purchases shares. The filing does not establish that the fee was paid as of this capture. It is a financing cost, not XRP capital.
+- The $30M convertible notes were issued with $29M net cash proceeds after a $1M capital-markets-advisor fee. The note principal is debt, not proof of XRP purchases.
+- The separate Company Facility was increased to a $10M borrowing limit; $9.7M was borrowed as of October 7. This is not the separate $1M Evernorth Facility, which the filing says had not been borrowed as of June 30. Do not collapse the two facilities.
+- Evernorth reports approximately 473M XRP held as of October 9, $214.1M cash used to purchase 84.365876M XRP, approximately 388.91M XRP contributed in kind, and $272.6M gross cash proceeds before transaction expenses. Cash purchases, in-kind XRP, debt, facility draws, gross proceeds and financing fees remain separate capital categories.
+
+Primary filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm. Relevant filing locations: ELOC terms around lines 6825–6827 and fee around lines 704/3064; note net proceeds around line 6822; Company Facility and XRP acquisition around lines 3026–3042 and 3833–3842.
+
+### ETF and XRPL governance evidence
+
+The current #1643 market/ETF/amendment artifact retains:
+- XRP Insights November 4 holdings change: -64,826 XRP; November 2–4 aggregate: -259,701 XRP.
+- CryptoKeyhole November 4 holdings change: -3,339 XRP across its four-fund series; its last five complete days show +1,837,670 XRP.
+- Difference remains unreconciled because fund universes, vintages and methods differ. These are issuer-holdings-derived changes, not direct AP cash creations/redemptions.
+- XRPL Dashboard's November 6 03:40Z own-node roll call: LendingProtocol 21/35; SingleAssetVault 23/35; 29/35 required to exceed 80%. No 14-day activation countdown was reported. The vote counts are third-party node observations, not official Foundation publication. SingleAssetVault pooled deposits are not borrower collateral; LendingProtocol's design is uncollateralized and externally underwritten. Amendment votes do not prove active loans, XRP collateral utilization or XRP demand.
+
+## Prediction readiness and nine-platform status
+
+DESIGNED/EXECUTED on #1640, not on main:
+- 21 public endpoint definitions; 19 scheduled, with two non-commercial XRPL node endpoints excluded from scheduled collection.
+- Read-only scheduled collector, SHA-256 source receipts, per-run receipt-chain manifest, append-only SQLite point-in-time feature store, snapshot hashes, integrity checks and trusted restore restricted to successful same-repository main runs with exact workflow-run/artifact identity.
+- Timestamp corrections are applied to an in-memory research-audit view; original research artifacts are not overwritten and research-only observations are not promoted to model features.
+- Actions artifacts retain raw receipts and feature-store artifacts for 90 days. Independent timestamp anchoring and indefinite external immutable storage remain unfinished.
+- Forecast readiness remains fail-closed. Required evidence includes 100 out-of-sample observations, 100 shadow observations, two independent source groups, calibration error at or below 0.05, leakage checks, stable drift, baseline comparisons and signed evaluator attestation. These conditions are not established. No directional forecast or paper trade is issued.
+
+Platform evidence:
+- ChatGPT and GitHub repository access: verified in this session.
+- Copilot and CodeRabbit: one-off review/check activity only; not persistent independent data pipelines.
+- Claude, Grok, Gemini, Codex, Hugging Face and Databricks: persistent authenticated data flows not verified.
+- Kaggle: no authenticated submission/data flow verified.
+- Groq is not Grok. No nine-platform live coordination is claimed.
+
+## Backlog classification and next action
+
+- **Active integration:** #1640 and #1643.
+- **Blocked pending review/authorization:** both integration PRs; zero approving reviews, Pages side effect unresolved, detailed branch-protection inspection unavailable.
+- **Unique/unreviewed — preserve:** #1642's non-identical overlapping hunks; #1317 structural analysis/MMI; #1318 schema safety; #1320 paper-trader safety; #1269 geometry/topology; and unique research/security/prediction work including #1614, #1615, #1611, #1610, #1608, #1597, #1591, #1590, #1583, #1571, #1568, #1564, #1534 and #1533.
+- **Exact duplicate candidate:** #1605's one market artifact matches an artifact in #1643; close only after the replacement is merged and verified on main.
+- **Dependency/action overlap:** #1644–#1650; compare complete file blobs and workflow safety changes after #1640 integration. Do not bulk-close.
+- **Older dependency candidates:** #1254 and #1255; compare against current integration versions after main verification.
+- No unique PR was closed or discarded.
+
+Next sequence:
+1. Obtain independent approving reviews and verify actual branch-protection requirements.
+2. Resolve the GitHub Pages deployment side effect before any main merge.
+3. Merge #1640 only when all approvals, checks, security conditions and external-action constraints are satisfied; fetch main, verify merge commit/files, inspect automatic workflow side effects and run main CI.
+4. Create one consolidated research successor directly on the resulting main from #1643's 266 unique paths; omit the identical dependency-audit file and reconcile unique hunks from #1642.
+5. Run exact-head full suite, six-manifest dependency audit and fail-closed gate on that successor before considering merge.
+6. Close only exact duplicate/superseded source PRs after replacement files are verified on main.
+7. Continue durable historical XRP ingestion, issuer/AP cash-flow reconciliation, cross-venue event-time depth, collateral/custody records, leakage-safe walk-forward evaluation, calibration, drift monitoring and shadow outcomes.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+---
+
 # Current checkpoint — 2026-11-06
 
 ## Mission and safety boundary
