@@ -1,8 +1,113 @@
 # Barrot XRP Mission Handoff — Current Verified State
 
-Updated: 2026-11-06T21:28:30Z
+Updated: 2026-11-06T21:44:06Z
 
-## Current verified run — 2026-11-06T21:28:30Z
+## Current verified run — 2026-11-06T21:44:06Z
+
+This checkpoint supersedes the 21:28:30Z checkpoint below. Live GitHub state was re-read during this run. No merge, deployment, branch rewrite, force-push, PR closure, paper trade, or real-money action occurred.
+
+### Main and integrated repository inventory
+
+- Current main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Recursive main tree: 1,403 entries, 1,298 files, 493 Python files, 87 test files, and 86 workflow files; tree response was complete.
+- Open PR inventory: 370 total; 354 drafts and 16 non-drafts.
+- The two mission branches remain separate from main. Main has not received either workstream.
+- PR #1640 and PR #1643 have one shared changed path, `.github/workflows/dependency-audit.yml`, with identical content. No additional integration PR was created.
+
+### PR #1640 — Barrot V3/core integration
+
+- Current head: `b09d7f89fd2047043788519a22e6663a331c2c99`; base main `9100dbac...`; 470 commits ahead, 0 behind; 155 changed paths.
+- GitHub reports the PR non-draft, open, conflict-free, and mergeable.
+- Exact-head CI: 1,068 full-repository tests passed, 8 subtests passed; core suite 629 passed, 8 subtests; coverage 57.57%; installed-wheel verification passed.
+- Exact-head dependency audit passed across all six declared dependency manifests.
+- Exact-head fail-closed gate passed. Its job is explicitly named **Merge disabled pending gate verification**; it did not merge.
+- Review threads: 22/22 resolved. Recorded approving reviews: 0.
+- Evidence: [CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42297148370) · [dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42297148384) · [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42297148362).
+- The only commit after the prior code-bearing checkpoint was a handoff-document update; it did not change product code.
+
+### PR #1643 — XRP research archive and evidence
+
+- Current head: `c6b2f74a3ac960623d8326d948c6e90ed5db9404`; base main `9100dbac...`; 506 commits ahead, 0 behind; 357 changed paths.
+- GitHub reports the PR non-draft, open, conflict-free, and mergeable.
+- Review threads: 19/19 resolved. Recorded approving reviews: 0.
+- Exact-current-head core suite: 498 passed, 8 subtests passed.
+- Exact-current-head full repository suite: **1,623 passed, 8 subtests passed**. Both new snapshot regression modules ran and passed.
+- Exact-current-head dependency audit passed all six manifests.
+- Exact-current-head fail-closed gate passed; its job was **Merge disabled pending gate verification** and did not merge.
+- Evidence: [CI/full suite](https://github.com/Barrot-Agent/B-Agent/actions/runs/42298768903) · [dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42298768855) · [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42298768935).
+- A prior head, `a8e12d4977d3a11bfcba3364fe9688de49a1737f`, had one test-only failure caused by exact floating-point equality in a rounded venue-OI sum (1,622 passed, 1 failed, 8 subtests). The test was corrected to use a 0.01-unit tolerance. Current head `c6b2f74...` passed the full suite; the failed prior run remains preserved as evidence.
+
+New append-only research artifacts and regression tests on the existing #1643 branch:
+
+- [21:36 UTC Kraken/OKX spot snapshot](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T213601Z-xrp-kraken-okx-live-spot-cross-venue-snapshot.json)
+- [Spot receipt/timestamp tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_kraken_okx_live_spot_cross_venue_snapshot_20261106_213601.py)
+- [Derivatives/depth reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T213601Z-xrp-derivatives-depth-reconciliation.json)
+- [Derivatives/depth tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_derivatives_depth_reconciliation_20261106_213601.py)
+
+### XRP market and flow evidence
+
+**Spot capture upper bound: 2026-11-06T21:36:01Z.**
+
+- Kraken XRP/USD: last 1.17843, bid 1.17826, ask 1.17827; top-of-book spread about 0.0849 bps; rolling 24h volume 35.344M XRP; rolling 24h VWAP 1.1947217; UTC day open 1.20567; low 1.17085. Kraken's ticker response has no provider timestamp, so only the capture upper bound is recorded.
+- OKX XRP-USDT: last 1.1741, bid 1.1741, ask 1.1742; top-of-book spread about 0.8517 bps; rolling 24h volume 62.912M XRP; 24h open 1.2262; low 1.1723. Provider timestamp 21:35:28.571Z, 32.429 seconds before capture.
+- OKX last was 0.3674% below Kraken last. This is not an executable spread or arbitrage observation: quote currencies differ, Kraken lacks a source timestamp, and conversion, latency, fees, and transfer costs are not normalized. Top-of-book is not full depth.
+- Same-venue OKX last moved from 1.1756 at 21:05:06.565Z to 1.1741 at 21:35:28.571Z, about -0.1276% over 30m22s. The prior Kraken capture had no provider timestamp, so its apparent change is not admitted as a reliable return.
+- Both current venue last prices were near their reported rolling 24h lows. No directional signal is inferred.
+
+**Derivatives and depth reconciliation.**
+
+- TradRadar's seven-exchange snapshot, updated 20:55Z and therefore 41m01s old at capture, reported mark price 1.1729 (-4.73% over 24h), open interest about $1.90B (-3.34% over 24h), OI-weighted funding +0.0016% per 8h, and at least $12.07M in 24h liquidations: about $11.50M longs and $562.51K shorts. The long/short account ratio was 4.00 (80% long). Venue funding was mixed: Binance/MEXC/Hyperliquid positive; Bybit/Gate/Bitget/OKX negative.
+- The sum of the seven rounded venue OI figures was $1.89577B, consistent with the provider's rounded $1.90B total. About 95.34% of the observed long-plus-short liquidation notional was long-side.
+- Aperiodic's older 18:35–18:40Z bar (2h56m01s old at capture) reported a narrower three-venue XRP universe: $803M OI, +9.71% 24h OI change, $1.04B volume, $13.4M 20-level depth, about $842K depth per basis point, and 0.80 bps spread.
+- The OI level and 24h change disagreement is preserved, not averaged. The providers have different venue coverage, contract universes, and timestamps. Neither rendered summary is a raw exchange API receipt or a live synchronized order-book ladder.
+- No consolidated executable depth or market-impact estimate was produced.
+
+**ETF flows and institutional holdings.**
+
+- Latest settled holdings in the existing archive remain Nov 5: XRP Insights reports +110,214 XRP for the six spot funds plus BITW on Nov 5, while Nov 2–5 totals -149,487 XRP.
+- CryptoKeyhole's Nov 5 record was partial (2 of 4 tracked funds); it is not a complete zero-flow day. GXRP data gaps and fund coverage differences remain explicit.
+- No complete Nov 6 issuer-settled flow was available at this checkpoint. Do not infer same-day net creations from volume or AUM changes.
+
+### Identity, issuer, and ecosystem research
+
+- Japan's regional SBIC East/Central/West identities remain distinct from SBI Holdings. The located SBIC West Japan ChatGPT seminar establishes an educational event, not an OpenAI partnership.
+- ASK Coin/Permission's ASK token remains separate from the unrelated inactive Ask Coin exchange candidate; no verified XRP relationship.
+- The exact phrase “actual capital” remains traced to user-generated commentary about Evernorth's PIK notes, not an issuer filing.
+- Kamilah/Camilla Stevenson identity is only partially resolved through first-party and interview evidence. No YouTube channel or video is attributed without a first-party cross-link.
+- Coinbase, Circle, Ripple, and SBI relationships remain mapped by legal entity and evidence class; brand adjacency is not treated as ownership, custody, issuer, or commercial partnership.
+
+### Prediction-engine readiness
+
+- No directional XRP forecast was issued.
+- Current snapshots are research receipts, not a validated point-in-time feature panel. Spot depth is incomplete; derivatives universes disagree; ETF holdings settle on issuer schedules; historical synchronized features, calibration, and out-of-sample predictive lift remain insufficient for a forecast.
+- Continue chronological walk-forward evaluation against naive, momentum, mean-reversion, and volatility baselines. Record cutoffs, horizons, assumptions, probabilities, counter-hypotheses, and outcomes before considering forecast eligibility.
+- No paper trade, simulated order, or real-money action was initiated.
+
+### Nine-platform coordination
+
+- Persistent ChatGPT-to-GitHub access is verified by live repository reads and writes.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, and Databricks are not represented as live integrations in this handoff. Their authentication, permissions, and data flows require separate tested evidence. No external AI data transfer occurred.
+
+### Merge gate and backlog
+
+- #1640 and #1643 are both green on their exact current heads and GitHub reports them conflict-free, but each has zero recorded approving reviews. Main branch protection details return HTTP 403; the visible fallback ruleset is disabled. Pages settings remain inaccessible.
+- A prior main push triggered GitHub Pages deployment run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Because merge could trigger an external Pages deployment and its authorization/configuration is not verified, no merge was performed.
+- #1653 remains blocked: head `2e449ca28739a73b00dee021c9fb5f38819557c4`, 730 full-suite tests passed on that head, but 8 review threads remain unresolved. A passing suite does not clear those review findings.
+- Backlog: #1640 active integration (tests green; approval/Pages gate blocked); #1643 active research (tests green; approval and sequencing blocked); #1653 blocked; #1642 superseded candidate pending post-merge reconciliation; #1644–#1650 dependency/workflow candidates requiring reconciliation, with #1647 blocked; #1317/#1318/#1320 superseded candidates to retain until main verification; #1269 unique/unreviewed; #1254/#1255 older dependency candidates; #1641 draft/incomplete. Preserve the remaining drafts and unique work.
+- No PRs were closed. Exact duplicates/superseded sources are to be closed only after a verified successor is merged to main.
+
+### Execution boundary
+
+- **DESIGNED:** scheduled public-data ingestion, source receipts, point-in-time features, quality controls, chronological evaluation, baselines, drift, shadow evaluation, and nine-platform permission map.
+- **EXECUTED:** live repository inspection; two new XRP evidence artifacts and two regression modules committed to the existing research branch; floating-point test defect corrected; current-head full suite, dependency audit, and fail-closed gate completed.
+- **VERIFIED:** current main SHA; current PR heads/ancestry/path overlap; exact-head test counts; six-manifest dependency audit; resolved/unresolved review-thread counts; no merge or external action.
+- **NOT VERIFIED:** independent approving reviews; Pages configuration/authorization; external immutable/WORM retention and independent timestamp anchoring; full historical derivatives/capital-flow coverage; calibrated out-of-sample XRP predictive lift; live authentication/data flow for the other eight platforms.
+
+**Next concrete action:** keep #1640 as the single V3 integration candidate; obtain the required independent review and resolve the Pages side-effect authorization before merge. After #1640 is merged and verified on main, consolidate #1643's unique research artifacts onto the new main, rerun exact-head full-suite/security gates, and close only source PRs proven duplicate or superseded.
+
+---
+
+## Previous checkpoint — 2026-11-06T21:28:30Z
 
 This checkpoint supersedes the older head and backlog summaries below. Main was not modified. All new code and research described here are on the existing integration or research branches, not on main.
 
