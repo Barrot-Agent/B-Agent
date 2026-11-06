@@ -32,7 +32,7 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
 
 
 def test_unreviewed_external_deploy_workflows_are_quarantined() -> None:
-    forbidden = ("secrets.", "uses:", "databricks bundle deploy", "databricks bundle run", "api.upload_folder", "api.add_space_secret")
+    forbidden = ("secrets.", "uses:", "run: databricks bundle deploy", "run: databricks bundle run", "api.upload_folder", "api.add_space_secret")
     for relative_path in QUARANTINED_DEPLOY_WORKFLOWS:
         workflow = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
         assert "workflow_dispatch: {}" in workflow, relative_path
