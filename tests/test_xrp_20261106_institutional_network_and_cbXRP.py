@@ -134,3 +134,46 @@ def test_circle_and_sbi_source_independence_is_not_overstated():
     assert registry["sbi_rlusd_japan_listing"]["independence_group"] == "sbi_group_primary"
     assert data["quality_and_limits"]["june_10_sbi_shinsei_pilot_primary_confirmation"] is False
     assert data["forecast_status"]["directional_forecast_issued"] is False
+
+
+def test_binance_circle_2026_equity_and_five_year_agreement_is_separate_from_2024_terms():
+    data = relationships()
+    item = data["circle_binance_2026"]
+    assert item["equity_investment_usd"] == 100000000
+    assert item["commercial_term_years"] == 5
+    assert item["date"] == "2026-09-22"
+    old = data["coinbase_circle_distribution"]["binance_participant"]
+    assert old["status"].startswith("historical_2024_terms")
+    assert "not the current 2026 Binance agreement" in old["limitation"]
+
+
+def test_circle_q3_gross_mints_and_redemptions_are_not_net_capital():
+    item = relationships()["circle_q3_2026_operating_metrics"]["metrics"]
+    assert item["average_usdc_circulation_usd"] == 73300000000
+    assert item["end_period_usdc_circulation_usd"] == 73900000000
+    assert item["usdc_minted_gross_usd"] == 104000000000
+    assert item["usdc_redeemed_gross_usd"] == 104000000000
+    assert item["end_period_usdc_on_platform_usd"] == 13900000000
+    assert item["circle_payments_network_annualized_tpv_usd"] == 41300000000
+
+
+def test_coinbase_q3_circle_renewal_and_stablecoin_revenue_are_primary_filing_data():
+    item = relationships()["coinbase_circle_distribution"]
+    assert item["renewal_status"].find("renewed on the same terms") >= 0
+    assert item["coinbase_q3_2026"]["stablecoin_revenue_usd"] == 306905000
+    assert item["coinbase_q3_2026"]["arrangement_renewed"] == "same terms"
+
+
+def test_coinbase_institutional_collateral_is_not_xrp_specific():
+    item = relationships()["coinbase_institutional_collateral"]
+    assert item["collateral_requirements"] if "collateral_requirements" in item else True
+    assert item["measurement_period"] == "2026-09-30"
+    assert "XRP-specific collateral balance" in item["limits"][0] or "XRP-specific" in item["asset_specificity"]
+    assert "does not disclose an XRP-specific collateral balance" in item["asset_specificity"]
+
+
+def test_circle_payment_metrics_preserve_annualized_and_pending_status():
+    item = relationships()["circle_payment_rails_and_strategy"]
+    assert "annualized" in item["limits"][0]
+    assert "pending regulatory approval" in item["limits"][1]
+    assert "not XRPL" in item["limits"][2]
