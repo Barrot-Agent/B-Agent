@@ -42,6 +42,20 @@ def test_unreviewed_external_deploy_workflows_are_quarantined() -> None:
             assert token not in workflow.lower(), (relative_path, token)
 
 
+def test_space_and_worker_secret_mutations_require_separate_explicit_approval() -> None:
+    for relative_path in (
+        ".github/workflows/deploy-a2a-worker.yml",
+        ".github/workflows/sync-self-hosted-brain.yml",
+    ):
+        workflow = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+        assert "confirm_secret_rotation:" in workflow, relative_path
+        assert 'options: ["NO", "YES"]' in workflow, relative_path
+        assert "inputs.confirm_secret_rotation == 'YES'" in workflow, relative_path
+        assert "expected_main_sha:" in workflow, relative_path
+        assert "github.ref == 'refs/heads/main'" in workflow, relative_path
+        assert "persist-credentials: false" in workflow, relative_path
+
+
 def test_databricks_setup_cli_uses_a_verified_immutable_commit():
     workflow = (REPO_ROOT / ".github/workflows/barrot-ops.yml").read_text(encoding="utf-8")
     assert "uses: databricks/setup-cli@9625fdde9ba2607df0087e0d3ec7449198bf2180" in workflow

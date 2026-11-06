@@ -8,6 +8,11 @@ on:
         required: true
         type: choice
         options: ["NO", "YES"]
+      confirm_secret_rotation:
+        description: "Set to YES only to authorize updating the Worker/Space secret during this deployment"
+        required: true
+        type: choice
+        options: ["NO", "YES"]
       expected_main_sha:
         description: Exact 40-character current main commit SHA
         required: true
@@ -18,7 +23,7 @@ permissions:
 
 jobs:
   deploy:
-    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm == 'YES'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm == 'YES' && inputs.confirm_secret_rotation == 'YES'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
