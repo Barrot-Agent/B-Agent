@@ -24,5 +24,5 @@ def test_replenishment_and_recovery_are_distinct_events():
     recovery = data["withdrawal_and_reserve_analysis"]
     assert recovery["binance_replenished_affected_assets_percent_as_of_2026_11_04"] == 98
     assert recovery["remaining_assets_percent"] == "approximately 2%"
-    assert "not the same as recovering stolen assets" in recovery["limitations"][0]
+    assert "not the same as recovering stolen assets" in recovery["limitations"][1]
     assert data["xrp_flow_analysis"]["confirmed_sale_or_swap_from_nov2_transfers"] is False
