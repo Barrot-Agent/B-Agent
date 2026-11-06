@@ -1,0 +1,310 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_spot_derivatives_etf_vintage_reconciliation_20261106T120807Z",
+  "artifact_type": "append_only_cross_source_market_reconciliation",
+  "recorded_at_utc": "2026-11-06T12:08:07Z",
+  "mission_priority": 1,
+  "capture_contract": {
+    "run_started_at_utc": "2026-11-06T12:00:29Z",
+    "exact_per_request_retrieval_times": false,
+    "raw_http_wire_bytes_captured": false,
+    "raw_html_bytes_captured": false,
+    "web_rendered_text_and_api_json_only": true,
+    "independent_timestamp_anchor": false,
+    "all_market_observations_model_eligible": false,
+    "no_directional_forecast_issued": true,
+    "note": "The Kraken payload is the exact JSON text rendered by the retrieval interface, not byte-complete HTTP wire data. Provider publication/update timestamps are kept separate from retrieval time."
+  },
+  "spot": {
+    "kraken_xrp_usd": {
+      "source_id": "kraken_public_ticker_xrpusd_20261106",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_after_utc": "2026-11-06T12:00:29Z",
+      "exact_retrieval_timestamp_utc": null,
+      "provider_event_timestamp_utc": null,
+      "rendered_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.19587000\",\"738\",\"738.000\"],\"b\":[\"1.19571000\",\"2479\",\"2479.000\"],\"c\":[\"1.19582000\",\"133.12561495\"],\"v\":[\"13433985.31302444\",\"47231861.63356101\"],\"p\":[\"1.19887736\",\"1.23468147\"],\"t\":[16250,46436],\"l\":[\"1.17605000\",\"1.17605000\"],\"h\":[\"1.22190000\",\"1.31767000\"],\"o\":\"1.20567000\"}}}",
+      "rendered_response_sha256": "10c93eadc42d2304dc0d265800d45bbc412052ef14fccb7f052af6282d82ced6",
+      "hash_scope": "SHA-256 of the exact JSON text rendered in the retrieval result; not a hash of raw HTTP wire bytes.",
+      "raw_http_wire_bytes_captured": false,
+      "parsed_quote": {
+        "last_trade_usd": 1.19582,
+        "best_bid_usd": 1.19571,
+        "best_ask_usd": 1.19587,
+        "spread_bps": 1.33802758,
+        "rolling_24h_volume_xrp": 47231861.63356101,
+        "rolling_24h_vwap_usd": 1.23468147,
+        "rolling_24h_low_usd": 1.17605,
+        "rolling_24h_high_usd": 1.31767,
+        "utc_day_open_usd": 1.20567,
+        "last_vs_rolling_24h_vwap_pct": -3.14748953,
+        "last_vs_utc_day_open_pct": -0.81697314,
+        "last_above_rolling_24h_low_pct": 1.68105098
+      },
+      "calculations": {
+        "spread_formula": "(ask - bid) / ((ask + bid) / 2) * 10000",
+        "rolling_vwap_formula": "(last / rolling_24h_vwap - 1) * 100",
+        "utc_day_open_formula": "(last / utc_day_open - 1) * 100",
+        "low_distance_formula": "(last / rolling_24h_low - 1) * 100"
+      },
+      "limitations": [
+        "Kraken supplied no provider event timestamp or sequence identifier in this response.",
+        "The returned bid/ask is top-of-book only, not full depth or executable size beyond the displayed quantities.",
+        "The observation is one venue and is not synchronized to the TradRadar futures update.",
+        "The observation is not admitted to the point-in-time feature store."
+      ],
+      "model_eligible": false
+    }
+  },
+  "derivatives": {
+    "tradradar_xrp_perpetuals": {
+      "source_id": "tradradar_xrp_7_exchange_aggregation_20261106T1045Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "displayed_updated_at_utc": "2026-11-06T10:45:00Z",
+      "displayed_delay_minutes": 15,
+      "exact_underlying_observation_timestamp_utc": null,
+      "mark_price_usd": 1.1989,
+      "price_change_24h_pct": -9.09,
+      "open_interest_usd": 1930000000,
+      "open_interest_change_24h_pct": -7.16,
+      "oi_weighted_funding_pct_per_8h": 0.0053,
+      "liquidations_24h_lower_bound_usd": 19910000,
+      "long_liquidations_lower_bound_usd": 19280000,
+      "short_liquidations_lower_bound_usd": 633020,
+      "long_short_account_ratio": 3.96,
+      "long_account_share_pct": 79.8,
+      "exchange_open_interest_usd": {
+        "Binance": 488500000,
+        "Bybit": 337180000,
+        "Gate": 284580000,
+        "MEXC": 256540000,
+        "Bitget": 248490000,
+        "Hyperliquid": 207930000,
+        "OKX": 106180000
+      },
+      "exchange_sum_open_interest_usd": 1929400000,
+      "reconciliation_difference_usd": -600000,
+      "methodology_limits": [
+        "The page aggregates seven venues and displays a 15-minute delay; the exact underlying timestamp is not exposed.",
+        "Liquidations are a lower bound because exchanges publish only part of real-time liquidations.",
+        "Long/short is an account-count ratio, not notional positioning.",
+        "USD-notional open interest can decline partly because XRP price declines; it is not a pure contract-count measure.",
+        "The aggregation is one provider's presentation of venue data, not seven independent provider confirmations."
+      ],
+      "model_eligible": false
+    }
+  },
+  "etf_flows": {
+    "xrp_insights": {
+      "source_id": "xrp_insights_issuer_holdings_derived_flow_20261106T105513Z",
+      "url": "https://xrp-insights.com/data",
+      "generated_at_utc": "2026-11-06T10:55:13.797Z",
+      "data_as_of": "2026-11-05",
+      "universe": "Six US spot XRP ETFs plus the XRP sleeve of Bitwise 10 Crypto Index Fund (BITW).",
+      "settled_trading_days_in_reported_window": 4,
+      "window_start": "2026-11-02",
+      "window_end": "2026-11-05",
+      "net_holdings_change_xrp": -149487,
+      "approximate_usd_value": -201000,
+      "total_xrp_holdings": 1196450700,
+      "flow_method": "Day-over-day change in issuer-reported XRP holdings; not a direct AP cash creation/redemption feed.",
+      "exclusions_and_limits": [
+        "Funds with a known capture gap can have flow_status=excluded and contribute zero to aggregate flow.",
+        "GXRP flow is withheld because the issuer page blocked automated reads from 2026-09-02 to 2026-09-28; holdings remain in totals.",
+        "Some historical rows are reconstructed from third-party daily flow estimates between issuer-reported anchor days.",
+        "BITW is a multi-asset index fund; its XRP sleeve can change through index rebalancing.",
+        "Holdings changes can include fees/rewards and do not prove open-market purchases."
+      ],
+      "independence_group": "xrp_insights_issuer_holdings_scraper_and_derived_flow"
+    },
+    "cryptokeyhole": {
+      "source_id": "cryptokeyhole_four_fund_issuer_holdings_20261106T1143Z",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "displayed_updated_at_utc": "2026-11-06T11:43:00Z",
+      "latest_issuer_file_read_at_utc": "2026-11-06T11:40:00Z",
+      "universe": "Four US spot XRP funds: Bitwise XRP, Franklin XRPZ, Canary XRPC and 21Shares TOXR.",
+      "november_5_status": "partial_3_of_4",
+      "november_5_partial_flow_xrp": -3339,
+      "november_4_complete_flow_xrp": -3339,
+      "last_five_complete_trading_days_flow_xrp": 1837670,
+      "pending_fund": "Franklin Templeton XRPZ",
+      "flow_method": "Changes in issuer-published holdings; the publisher notes flows can also reflect staking rewards and coins sold for fees or cash payouts.",
+      "limitations": [
+        "The November 5 figure is partial, not a completed four-fund day.",
+        "Its four-fund universe differs from XRP Insights' six spot funds plus BITW.",
+        "It cannot be averaged with XRP Insights' four-day aggregate."
+      ],
+      "independence_group": "cryptokeyhole_four_fund_issuer_holdings_scraper"
+    },
+    "non_comparable_universe": {
+      "source_id": "corpstacking_xrp_fund_universe_20261104",
+      "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "displayed_data_date": "2026-11-04",
+      "displayed_total_xrp": 1414952215,
+      "displayed_fund_count": 10,
+      "methodology_conflict": "The page's top-holder list includes the multi-asset NCIQ index ETF while its methodology says NCIQ and other basket funds are not counted in the direct-XRP-fund total.",
+      "treatment": "Excluded from quantitative reconciliation until the publisher clarifies the fund universe and whether NCIQ is included in the 10-fund total."
+    },
+    "other_quality_flags": [
+      {
+        "source_id": "thexrpinvestor_etf_dashboard",
+        "url": "https://thexrpinvestor.com/xrp-etf-flows",
+        "issue": "The page reports 12 active products while its visible category counts sum to 11 (6 spot + 4 derivative + 1 index).",
+        "treatment": "Excluded from quantitative flow synthesis pending product-count clarification."
+      },
+      {
+        "source_id": "coin365_crypto_etf_dashboard",
+        "url": "https://www.coin365.io/etf",
+        "issue": "The page labels a November 6 latest-session flow while its stated check time is 04:15 UTC, before the November 6 US regular ETF session.",
+        "treatment": "Excluded from November 6 XRP flow inference pending a clear date/time convention."
+      }
+    ]
+  },
+  "macro_event": {
+    "event": "US Employment Situation for October 2026",
+    "scheduled_at_utc": "2026-11-06T13:30:00Z",
+    "scheduled_local": "2026-11-06 08:30 America/New_York",
+    "status_at_capture": "upcoming",
+    "official_source_url": "https://www.bls.gov/schedule/2026/home.htm",
+    "rule": "Do not substitute survey expectations for the release. Preserve the initial release and later revisions as separate vintages."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "leveraged_long_unwind",
+      "hypothesis": "The sharp 24-hour decline, falling OI, long-heavy liquidations and positive but modest funding are consistent with a leveraged-long unwind.",
+      "supporting_evidence": [
+        "TradRadar reports -9.09% 24-hour mark-price change, -7.16% OI, at least $19.91M liquidations with $19.28M long liquidations, and 79.8% long accounts."
+      ],
+      "counterevidence": [
+        "The OI measure is USD notional and may fall partly with price; long/short is account counts; liquidation reporting is incomplete; the data is asynchronous and one aggregator."
+      ],
+      "status": "plausible_not_causal"
+    },
+    {
+      "id": "broad_risk_off",
+      "hypothesis": "Broader cross-asset risk reduction may have contributed to XRP selling.",
+      "supporting_evidence": [
+        "Earlier November 5 equity-risk context is preserved in a separate artifact."
+      ],
+      "counterevidence": [
+        "No synchronized XRP/equity event study or causal estimate is present in this capture."
+      ],
+      "status": "context_only"
+    },
+    {
+      "id": "etf_marginal_demand",
+      "hypothesis": "Small holdings-derived ETF outflows may have reduced marginal demand at the margin.",
+      "supporting_evidence": [
+        "XRP Insights reports -149,487 XRP over November 2-5 in its seven-instrument universe."
+      ],
+      "counterevidence": [
+        "The approximate $201K is small relative to reported ETF holdings; CryptoKeyhole reports a partial three-of-four November 5 figure; flows are holdings deltas, not AP cash or verified spot execution."
+      ],
+      "status": "weak_provisional"
+    },
+    {
+      "id": "venue_and_vintage_mismatch",
+      "hypothesis": "Differences across spot, derivatives and ETF sources mainly reflect distinct update times, venue universes and coverage rules.",
+      "supporting_evidence": [
+        "Kraken has no provider timestamp; TradRadar shows a 15-minute delay; XRP Insights and CryptoKeyhole use different ETF universes and settlement states."
+      ],
+      "counterevidence": [],
+      "status": "high_confidence_data_quality_explanation"
+    },
+    {
+      "id": "xrp_specific_catalyst",
+      "hypothesis": "An XRP-specific corporate, protocol or regulatory event dominated the immediate move.",
+      "supporting_evidence": [],
+      "counterevidence": [
+        "No synchronized primary-source catalyst is established by this artifact."
+      ],
+      "status": "not_established"
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "kraken_public_ticker_xrpusd_20261106",
+      "publisher": "Kraken",
+      "source_type": "public_exchange_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken_xrp_usd_exchange_api"
+    },
+    {
+      "id": "tradradar_xrp_7_exchange_aggregation_20261106T1045Z",
+      "publisher": "TradRadar",
+      "source_type": "aggregated_derivatives_dashboard",
+      "url": "https://tradradar.io/markets/xrp",
+      "published_at_utc": "2026-11-06T10:45:00Z",
+      "independence_group": "tradradar_seven_exchange_aggregation"
+    },
+    {
+      "id": "xrp_insights_issuer_holdings_derived_flow_20261106T105513Z",
+      "publisher": "XRP Insights",
+      "source_type": "issuer_holdings_derived_flow",
+      "url": "https://xrp-insights.com/data",
+      "generated_at_utc": "2026-11-06T10:55:13.797Z",
+      "independence_group": "xrp_insights_issuer_holdings_scraper_and_derived_flow"
+    },
+    {
+      "id": "cryptokeyhole_four_fund_issuer_holdings_20261106T1143Z",
+      "publisher": "CryptoKeyhole",
+      "source_type": "issuer_holdings_derived_flow",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "published_at_utc": "2026-11-06T11:43:00Z",
+      "independence_group": "cryptokeyhole_four_fund_issuer_holdings_scraper"
+    },
+    {
+      "id": "corpstacking_xrp_fund_universe_20261104",
+      "publisher": "Corpstacking",
+      "source_type": "secondary_fund_holdings_aggregator",
+      "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "data_date": "2026-11-04",
+      "independence_group": "corpstacking_fund_holdings_aggregator"
+    },
+    {
+      "id": "thexrpinvestor_etf_dashboard",
+      "publisher": "TheXRPInvestor",
+      "source_type": "secondary_dashboard",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "data_date": "2026-11-05",
+      "independence_group": "thexrpinvestor_etf_dashboard"
+    },
+    {
+      "id": "coin365_crypto_etf_dashboard",
+      "publisher": "Coin365",
+      "source_type": "estimated_crypto_etf_flow_dashboard",
+      "url": "https://www.coin365.io/etf",
+      "checked_at_utc": "2026-11-06T04:15:00Z",
+      "independence_group": "coin365_estimated_etf_flow_dashboard"
+    },
+    {
+      "id": "bls_october_2026_employment_schedule",
+      "publisher": "US Bureau of Labor Statistics",
+      "source_type": "primary_official_schedule",
+      "url": "https://www.bls.gov/schedule/2026/home.htm",
+      "scheduled_at_utc": "2026-11-06T13:30:00Z",
+      "independence_group": "bls_official"
+    }
+  ],
+  "quality_and_limits": {
+    "source_independence_groups_preserved": true,
+    "exact_provider_event_times_incomplete": true,
+    "byte_complete_raw_http_receipts": false,
+    "venue_coverage_mismatches_preserved": true,
+    "ETF_fund_universe_mismatches_preserved": true,
+    "holdings_deltas_are_not_AP_cash_flows": true,
+    "spot_depth_not_available_in_this_capture": true,
+    "point_in_time_feature_eligible": false,
+    "reason": "Asynchronous public observations, incomplete source timestamps, differing ETF universes and non-byte-complete receipts do not form a synchronized point-in-time feature set."
+  },
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "shadow_forecast_issued": false,
+    "reason": "No synchronized historical feature set or evaluator-attested out-of-sample lift supports a directional XRP forecast."
+  },
+  "action_status": {
+    "paper_trade_executed": false,
+    "real_money_action": false,
+    "external_account_action": false
+  }
+}
