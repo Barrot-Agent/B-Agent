@@ -156,5 +156,12 @@ def test_scheduled_ingestion_writes_a_read_only_drift_report(tmp_path):
     assert report["status"] == "INSUFFICIENT_DATA"
     assert report["forecast_issuance_allowed"] is False
     assert summary["drift_status"] == "INSUFFICIENT_DATA"
+    assert summary["drift_report_retention_days"] == 90
     assert summary["drift_report_sha256"] == report["report_sha256"]
     assert summary["forecast_status"] == "NOT_ISSUED"
+
+
+def test_drift_report_is_uploaded_with_ninety_day_retention():
+    workflow = (ROOT / ".github" / "workflows" / "xrp-public-ingestion.yml").read_text(encoding="utf-8")
+    assert "artifacts/xrp_ingestion/drift_report.json" in workflow
+    assert "retention-days: 90" in workflow

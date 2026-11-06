@@ -24,7 +24,7 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
-from .feature_drift import MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
+from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
@@ -2439,6 +2439,7 @@ def run_ingestion(
         "drift_monitor_version": DRIFT_MONITOR_VERSION,
         "drift_status": drift_report["status"],
         "drift_report_path": "drift_report.json",
+        "drift_report_retention_days": DRIFT_REPORT_RETENTION_DAYS,
         "drift_report_sha256": drift_report["report_sha256"],
         "drift_feature_count": drift_report["feature_count"],
         "drift_evaluated_feature_count": drift_report["evaluated_feature_count"],

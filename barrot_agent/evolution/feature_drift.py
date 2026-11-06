@@ -17,6 +17,7 @@ from typing import Any, Iterable, Mapping
 from .point_in_time_features import FeatureSnapshotError, validate_feature_record
 
 MONITOR_VERSION = "xrp-feature-drift-v1"
+DRIFT_REPORT_RETENTION_DAYS = 90
 _DEFAULT_WARNING_PSI = 0.10
 _DEFAULT_DRIFT_PSI = 0.25
 
