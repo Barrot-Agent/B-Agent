@@ -16,7 +16,7 @@ def test_spot_perpetual_and_etf_sources_keep_distinct_cutoffs_and_hash_scopes():
     data = load_artifact()
     sources = {item["id"]: item for item in data["sources"]}
     assert sources["KRAKEN_XRPUSD_20261106T232031Z"]["data_as_of_utc"] is None
-    assert "not the complete raw source bytes" in data["capture_contract"]["hash_scope"]
+    assert "not complete raw source bytes" in data["capture_contract"]["hash_scope"]
     assert sources["TRADRADAR_XRP_PERPS_20261106T222000Z"]["display_delay_minutes"] == 15
     assert sources["TRADRADAR_XRP_PERPS_20261106T222000Z"]["exact_underlying_data_cutoff_utc"] is None
     assert sources["XRP_INSIGHTS_ETF_20261106_PROVISIONAL"]["data_as_of"] == "2026-11-05"
