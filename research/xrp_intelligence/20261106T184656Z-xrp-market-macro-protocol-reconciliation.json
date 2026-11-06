@@ -126,7 +126,7 @@
     {
       "source_id": "ALPHA_FINANCE_XRP_ETF_AGGREGATE_20261106",
       "publisher": "Alpha Finance",
-      "url": "https://alphafinance.io/etf/",
+      "url": "https://alphafinance.io/etf/xrp/",
       "source_type": "secondary_etf_flow_aggregator",
       "independence_group": "alpha_finance_etf_aggregation",
       "publication_date": "2026-11-06",
@@ -134,14 +134,15 @@
         "Five-fund U.S. XRP ETF flow series"
       ],
       "limitations": [
-        "The XRP-specific dashboard displays detail through Nov 4 while the aggregate page is through Nov 5.",
+        "Five-fund XRP-specific flow series through the Nov 5 session.",
+        "No net assets or holdings are published for these five funds.",
         "Cumulative total differs from TokenPost/SoSoValue by $80M; methodology/universe difference unresolved."
       ],
       "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
-      "excerpt": "Alpha Finance ETF dashboard, retrieved 2026-11-06: aggregate U.S. XRP spot ETF row covers five funds and reports Nov 5 latest-session net flow $0, 7-day flow $0, 30-day flow +$15.4M and cumulative net inflow +$1.73B. The XRP-specific dashboard separately says its detailed series is through Nov 4. This is a provider aggregation, not issuer cash-flow records.",
+      "excerpt": "Alpha Finance XRP ETF dashboard, retrieved 2026-11-06 18:46:56 UTC: covers five U.S. spot XRP ETF funds through the Nov 5, 2026 session; Nov 5 net flow $0; last seven sessions Oct 26-Nov 5 net +$4.8M; 30-session flow +$60.8M; cumulative net inflow +$1.73B. The page publishes no net assets or holdings for these funds. This is a flow-series aggregation, not issuer cash-flow records.",
       "receipt": {
         "algorithm": "SHA-256",
-        "digest": "44e5e8211f473ffffb64e000a8521c7d820027b603bbeff17b12d7ff9e963ffa",
+        "digest": "9343b278e57d6e59a0585587aac2b53b42417bf7ce3dd68ea3f6938d35bc8556",
         "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
       }
     },
@@ -367,12 +368,16 @@
     "alpha_finance": {
       "fund_count": 5,
       "nov5_net_flow_usd": 0,
-      "seven_day_net_flow_usd": 0,
+      "seven_day_net_flow_usd": 4800000,
       "thirty_day_net_flow_usd": 15400000,
       "cumulative_net_inflows_usd": 1730000000,
       "source_id": "ALPHA_FINANCE_XRP_ETF_AGGREGATE_20261106",
       "measurement": "aggregated fund-flow series",
-      "status": "SECONDARY_AGGREGATOR"
+      "status": "SECONDARY_AGGREGATOR",
+      "seven_day_flow_window": "2026-10-26 through 2026-11-05, seven sessions",
+      "thirty_day_flow_usd": 60800000,
+      "net_assets_published": false,
+      "holdings_published": false
     },
     "xrp_insights_holdings": {
       "fund_universe": "six U.S. spot XRP ETF products plus BITW",

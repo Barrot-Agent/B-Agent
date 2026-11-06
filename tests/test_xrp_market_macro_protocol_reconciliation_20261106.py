@@ -46,8 +46,11 @@ def test_etf_flow_zeroes_and_cumulative_provider_difference_are_not_averaged():
     assert tokenpost["cumulative_net_inflows_usd"] == 1_810_000_000
     assert tokenpost["net_assets_usd"] == 1_410_000_000
     assert alpha["nov5_net_flow_usd"] == 0
-    assert alpha["seven_day_net_flow_usd"] == 0
+    assert alpha["seven_day_net_flow_usd"] == 4_800_000
+    assert alpha["thirty_day_flow_usd"] == 60_800_000
     assert alpha["cumulative_net_inflows_usd"] == 1_730_000_000
+    assert alpha["net_assets_published"] is False
+    assert alpha["holdings_published"] is False
     assert row["reconciliation"]["sosovalue_vs_alpha_cumulative_difference_usd"] == 80_000_000
     assert row["reconciliation"]["aggregation"] == "do_not_average"
     assert row["xrp_insights_holdings"]["nov5_holdings_delta_xrp"] == 110_214
