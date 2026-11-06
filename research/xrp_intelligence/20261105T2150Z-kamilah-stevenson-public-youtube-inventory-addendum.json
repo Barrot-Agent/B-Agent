@@ -101,17 +101,29 @@
     }
   ],
   "inventory_scope": {
-    "total_candidate_videos": 3,
+    "total_candidate_videos": 14,
     "youtube_search_result_attributions": 2,
     "direct_link_hub_video_links": 1,
     "exhaustive": false,
     "correction_to_prior_iheart_addendum": {
-      "artifact_id": "kamilah_stevenson_podcast_self_identification_addendum",
-      "incorrect_prior_public_youtube_inventory_count": 13,
-      "supported_pre_addendum_inventory_count": 1,
-      "corrected_current_candidate_count": 3,
-      "reason": "The existing identity inventory file contained one directly linked YouTube video, not thirteen. Two additional YouTube search-result records are now added. The iHeart episode itself is a podcast, not a YouTube video."
-    }
+      "prior_inventory_counts_by_artifact": {
+        "20261105T150100Z-kamilah-stevenson-youtube-identity-and-video-inventory.json": 1,
+        "20261105T181200Z-kamilah-stevenson-youtube-identity-and-xrp-video-inventory.json": 13
+      },
+      "current_addendum_record_count": 3,
+      "existing_in_prior_13_video_ids": [
+        "iwhpNT73zpk",
+        "pmJTrXJQ8Vw"
+      ],
+      "new_unique_video_ids": [
+        "OvODErBT9Ug"
+      ],
+      "corrected_total_candidate_videos": 14,
+      "reason": "The one-video and thirteen-video counts belong to different dated artifacts and attribution scopes. The current addendum contains three records; two already appear in the thirteen-video inventory and one is a new directly linked candidate. Counts are not overwritten across artifact vintages."
+    },
+    "video_inventory_records_in_addendum": 3,
+    "new_unique_video_candidates": 1,
+    "already_present_in_prior_13_inventory": 2
   },
   "source_registry": [
     {

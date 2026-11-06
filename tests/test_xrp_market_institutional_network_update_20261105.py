@@ -107,7 +107,7 @@ def test_etf_timestamp_correction_is_exact_blob_bound_and_preserves_unbound_ance
         b"blob " + str(len(source_bytes)).encode("ascii") + b"\0" + source_bytes
     ).hexdigest()
     assert overlay["target_artifact_blob_sha"] == git_blob
-    assert overlay["target_artifact"] == source_path.as_posix()
+    assert overlay["target_artifact"] == source_path.relative_to(ROOT).as_posix()
     assert overlay["model_eligible"] is False
     assert overlay["forecast_issued"] is False
     assert len(overlay["field_corrections"]) == 4
