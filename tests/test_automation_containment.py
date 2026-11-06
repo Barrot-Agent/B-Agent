@@ -34,6 +34,8 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/databricks-bundle.yml",
     ".github/workflows/sync-huggingface.yml",
     ".github/workflows/test-semantic-memory.yml",
+    ".github/workflows/diag-cf.yml",
+    ".github/workflows/diag-cf2.yml",
 )
 
 
