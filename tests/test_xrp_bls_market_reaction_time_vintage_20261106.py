@@ -12,7 +12,7 @@ CANONICAL = ROOT / "research" / "xrp_intelligence" / "20261106T134313Z-bls-octob
 
 def _git_blob_sha(path: Path) -> str:
     payload = path.read_bytes()
-    return hashlib.sha1(f"blob {len(payload)}\\0".encode("ascii") + payload).hexdigest()
+    return hashlib.sha1(f"blob {len(payload)}\0".encode("ascii") + payload).hexdigest()
 
 
 def test_market_reaction_vintages_are_preserved_not_averaged() -> None:
