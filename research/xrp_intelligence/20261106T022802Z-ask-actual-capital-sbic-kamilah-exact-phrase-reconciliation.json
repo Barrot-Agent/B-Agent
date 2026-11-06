@@ -38,13 +38,29 @@
       "distinction": [
         "This ASK is the Permission ecosystem token, not XRP.",
         "The issuer's documented active networks are Base and Polygon through LayerZero OFT; no XRPL-native ASK deployment was established in this research.",
-        "The official token documentation does not identify Ripple, XRP, SBI, Coinbase or Circle as ASK counterparties."
+        "The official token documentation does not identify Ripple, XRP, SBI, Coinbase or Circle as ASK counterparties.",
+        "A separate Permission issuer blog dated 2026-09-22 documents Coinbase Embedded Wallet infrastructure for Permission's ASK wallet. This is a wallet-provider relationship, not evidence that Coinbase is an ASK token issuer/market maker or an XRP counterparty."
       ],
       "caveats": [
         "The issuer's whitepaper is self-published and contains forward-looking product, adoption and token-utility claims.",
         "Future governance/staking is not represented as a currently completed capability.",
         "The exact phrase ASK Coin may match other unrelated assets or projects; Permission ASK is the strongest verified candidate, not an exhaustive universe."
-      ]
+      ],
+      "wallet_infrastructure_relationship": {
+        "provider": "Coinbase",
+        "service": "Coinbase Embedded Wallet",
+        "announced_date": "2026-09-22",
+        "issuer_statement": "Permission says its wallet moved to Coinbase's platform; Coinbase secures the private key on users' behalf, while the user's Permission login authorizes transactions.",
+        "key_control": "Permission says it no longer holds wallet keys; Coinbase secures them in its systems and supports key export.",
+        "data_flow": [
+          "User email address",
+          "Account identifier",
+          "Wallet information"
+        ],
+        "classification": "Direct wallet-infrastructure relationship between Permission and Coinbase; not an ASK token issuance, market-making or XRP relationship.",
+        "xrp_relationship_status": "NO_DIRECT_XRP_OR_XRPL_RELATIONSHIP_ESTABLISHED",
+        "source_id": "permission_coinbase_embedded_wallet_blog_20260922"
+      }
     },
     "third_party_listing": {
       "publisher": "CoinMarketCap",
@@ -224,6 +240,26 @@
       "claims_supported": [
         "Public guest attribution to Dr. Kamilah Stevenson and transcript's Camila/Camilla spelling variants; not legal identity proof."
       ]
+    },
+    {
+      "id": "permission_coinbase_embedded_wallet_blog_20260922",
+      "publisher": "Permission",
+      "source_type": "official issuer product announcement",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "publication_date": "2026-09-22",
+      "source_independence_group": "permission_issuer",
+      "claims_supported": [
+        "Permission moved its ASK wallet to Coinbase Embedded Wallet.",
+        "Coinbase secures private keys on users' behalf; Permission says it no longer holds wallet keys.",
+        "Permission says user email, account identifier and wallet information are shared with Coinbase to operate the wallet.",
+        "This is wallet infrastructure, not evidence of an XRP relationship."
+      ],
+      "normalized_evidence": "Permission announced on 2026-09-22 that its ASK wallet moved to Coinbase's Embedded Wallet platform. Permission says Coinbase secures private keys on users' behalf, transactions are authorized through the user's Permission login, Permission no longer holds wallet keys, and user email, account identifier and wallet information are shared with Coinbase to operate the wallet. Key export is supported.",
+      "normalized_evidence_sha256": "e0d2a597dccfeb08426fc3b31852c6490c82d4f076ef1fdfe7aabfcf7cabc5c0",
+      "normalized_evidence_characters": 400,
+      "exact_quote": "We've partnered with Coinbase to bring best-in-class wallet technology to our community.",
+      "exact_quote_word_count": 12,
+      "raw_http_bytes_captured": false
     }
   ],
   "competing_hypotheses": [
