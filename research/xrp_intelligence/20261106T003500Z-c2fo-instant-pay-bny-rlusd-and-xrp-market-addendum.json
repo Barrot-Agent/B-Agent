@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_market_institutional_payment_rail_and_macro_reconciliation",
+  "artifact_id": "xrp-c2fo-instant-pay-bny-rlusd-and-market-20261106",
+  "subject": "XRP/USD spot, Ripple/C2FO Instant Pay, BNY custody and trade-finance plans, Coinbase RLUSD distribution, Evernorth capital, and macro risk",
+  "capture": {
+    "automation_run_date": "2026-11-06",
+    "exact_retrieval_timestamp_utc": null,
+    "note": "Web-rendered source captures were retrieved during this run. Exact per-source retrieval timestamps and original HTTP headers were not exposed; no synthetic event times are assigned.",
+    "kraken_payload_capture_method": "Exact JSON text rendered by the web retrieval interface; not independently captured HTTP wire bytes or response headers.",
+    "kraken_rendered_payload_sha256": "427be8506c7b361ba3ac8d820297992091a12f430bfd44529b4a581f7d527ab1",
+    "kraken_rendered_payload_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.21400000\",\"5452\",\"5452.000\"],\"b\":[\"1.21399000\",\"3181\",\"3181.000\"],\"c\":[\"1.21420000\",\"3180.44661421\"],\"v\":[\"762226.30862196\",\"41473949.98383128\"],\"p\":[\"1.21130951\",\"1.25921051\"],\"t\":[929,40150],\"l\":[\"1.20538000\",\"1.19797000\"],\"h\":[\"1.21499000\",\"1.32583000\"],\"o\":\"1.20567000\"}}}"
+  },
+  "spot_market": {
+    "source_id": "KRAKEN_XRPUSD_TICKER_20261106",
+    "venue": "Kraken",
+    "pair": "XRP/USD",
+    "last_usd": 1.2142,
+    "best_bid_usd": 1.21399,
+    "best_ask_usd": 1.214,
+    "displayed_spread_bps": 0.0823726621614217,
+    "rolling_24h_volume_xrp": 41473949.98383128,
+    "rolling_24h_vwap_usd": 1.25921051,
+    "utc_day_open_usd": 1.20567,
+    "rolling_24h_low_usd": 1.19797,
+    "rolling_24h_high_usd": 1.32583,
+    "last_vs_utc_day_open_percent": 0.707490440999603,
+    "last_vs_rolling_24h_vwap_percent": -3.5745024078618903,
+    "last_vs_rolling_24h_low_percent": 1.3547918562234473,
+    "last_vs_rolling_24h_high_percent": -8.41963147613194,
+    "limitations": [
+      "Single-venue ticker; not consolidated market liquidity.",
+      "Top-of-book is not full depth or executable size.",
+      "The web-rendered payload hash is not a raw HTTP wire-byte receipt.",
+      "Exact source retrieval timestamp and response headers are unavailable.",
+      "Kraken's open field is the UTC-day open, not a rolling 24-hour open."
+    ]
+  },
+  "institutional_rails": {
+    "c2fo_ripple_instant_pay": {
+      "announcement_date": "2026-10-27",
+      "status": "Announced initiative; C2FO release links a waitlist. Production settlement volume not disclosed.",
+      "network": "XRP Ledger",
+      "settlement_asset": "RLUSD",
+      "funding": "Participating capital providers",
+      "historical_early_pay_working_capital_access_usd": "more than 525 billion",
+      "historical_volume_scope": "Existing C2FO Early Pay programs, including Dynamic Discounting and Dynamic Supply Chain Finance.",
+      "historical_early_pay_is_not_instant_pay_volume": true,
+      "instant_pay_volume_usd": null,
+      "xrp_bridge_asset_usage": "Not disclosed; the announced settlement asset is RLUSD.",
+      "key_interpretation": "This is evidence of an announced XRPL/RLUSD commercial settlement rail, not evidence of XRP purchases, XRP bridge volume, or completed Instant Pay transactions."
+    },
+    "bny_ripple_custody_and_trade_finance": {
+      "announcement_date": "2026-10-27",
+      "current_platform_support": [
+        "XRP",
+        "RLUSD"
+      ],
+      "client_scope": "Eligible institutional clients",
+      "primary_rlusd_reserve_custodian": true,
+      "ripple_prime_custody_relationship": true,
+      "direct_rlusd_mint_redeem": "Intended future capability subject to final BNY and regulatory approvals.",
+      "tokenized_trade_finance_with_c2fo": "Exploratory initiative subject to client requirements.",
+      "xrp_assets_under_custody_usd": null,
+      "xrp_client_balances": null,
+      "xrp_collateral_acceptance_terms": null,
+      "tokenized_trade_finance_volume": null,
+      "bny_total_assets_under_custody_or_administration_usd": 63400000000000,
+      "bny_total_aum_usd": 2200000000000,
+      "bny_scale_as_of": "2026-09-30",
+      "scale_limitation": "BNY aggregate AUC/A and AUM are not XRP-specific balances, XRP collateral or proprietary XRP capital."
+    },
+    "coinbase_rlusd_distribution": {
+      "announcement_date": "2026-10-28",
+      "availability": "Retail and institutional Coinbase platforms",
+      "issuer": "Ripple affiliate Standard Custody & Trust Company",
+      "prior_usdc_relationship": "USDC had been Coinbase's flagship stablecoin for years; Coinbase has expanded to multiple issuers.",
+      "reported_rlusd_market_cap_usd_at_report_date": 2500000000,
+      "market_cap_source": "CoinGecko as quoted by Reuters on 2026-10-28",
+      "xrp_purchase_or_bridge_volume": null,
+      "interpretation": "Exchange distribution broadens RLUSD access; it does not establish incremental XRP purchases or settlement demand."
+    }
+  },
+  "evernorth_actual_capital_reconciliation": {
+    "issuer": "Evernorth Holdings Inc.",
+    "security_ticker": "XRPN",
+    "sec_accession": "0001628280-26-068609",
+    "filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+    "business_combination_closing_date": "2026-10-09",
+    "gross_cash_proceeds_before_transaction_expenses_usd": 272600000,
+    "gross_cash_components_usd": {
+      "private_placement_investments": 224600000,
+      "trust_account_after_redemptions": 48000000
+    },
+    "advance_funding_cash_usd": 214050000,
+    "xrp_purchased_with_advance_funding_cash": 84365876,
+    "in_kind_xrp_contributions_total": 388910554.061435,
+    "ripple_direct_in_kind_xrp": 126791458,
+    "approximate_total_xrp_holdings_as_of_2026_10_09": 473000000,
+    "separate_convertible_notes_usd": 30000000,
+    "convertible_notes_issued_and_funded_date": "2026-10-12",
+    "convertible_notes_stated_use": "General corporate purposes, including acquisition of XRP and other XRP ecosystem activities.",
+    "convertible_notes_deployment_to_xrp_verified": false,
+    "ripple_related_party_facility_drawn_as_of_2026_10_07_usd": 9700000,
+    "ripple_facility_repayment_status_as_of_this_capture": "Not verified by the cited reconciliation; filing terms required repayment within five business days after closing or earlier on demand under the agreement.",
+    "sbi_ownership_at_closing": {
+      "outstanding_pubco_common_stock_percent": 21.4,
+      "voting_power_percent": 39.9,
+      "exact_sbi_cash_subscription_usd": null,
+      "interpretation": "Equity ownership and voting power are not an allocation of the Advance Funding cash and are not SBI-owned XRP."
+    },
+    "accounting_and_capital_limitations": [
+      "The $214.05M advance-funding cash is included within the private-placement cash and must not be added again to the $272.6M gross closing cash proceeds.",
+      "In-kind XRP contributions are not cash purchases.",
+      "The $30M convertible note is debt financing; stated permitted use is not proof of XRP acquisition.",
+      "The $9.7M Ripple facility draw is related-party borrowing, not equity or proof of XRP purchase.",
+      "The approximately 473M XRP holdings figure is dated October 9, 2026 and is not a current custody balance."
+    ]
+  },
+  "macro_context": {
+    "event_date": "2026-11-05",
+    "source": "Reuters",
+    "source_url": "https://www.reuters.com/business/energy/oil-falls-fourth-day-expectations-lower-risk-iran-war-escalation-2026-11-05/",
+    "brent_settlement_usd_per_barrel": 98.29,
+    "brent_daily_change_percent": 3.88,
+    "wti_settlement_usd_per_barrel": 90.52,
+    "wti_daily_change_percent": 2.72,
+    "reported_gulf_vessel_incidents_since_sunday": 5,
+    "interpretation": "Geopolitical energy-supply risk is a macro risk-regime input. No causal XRP effect is established."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "Institutional infrastructure adoption can expand XRPL/RLUSD utility and attract additional counterparties.",
+      "supporting_evidence": [
+        "C2FO/Ripple announced Instant Pay settlement on XRPL using RLUSD.",
+        "BNY announced institutional custody support for XRP and RLUSD."
+      ],
+      "disconfirming_evidence": [
+        "Instant Pay remains waitlist/announced with no disclosed live volume.",
+        "BNY's future mint/redeem and trade-finance plans remain subject to approvals/client requirements.",
+        "No XRP-specific BNY custody balance, collateral deployment or transaction volume is disclosed."
+      ]
+    },
+    {
+      "id": "H2",
+      "hypothesis": "RLUSD-denominated settlement may substitute for XRP as a bridge asset in some of the announced payment workflow.",
+      "supporting_evidence": [
+        "C2FO/Ripple explicitly identifies RLUSD as the settlement asset."
+      ],
+      "disconfirming_evidence": [
+        "The release does not disclose all routing, liquidity sourcing, fee payment or FX-conversion mechanics.",
+        "No transaction-level evidence establishes whether XRP is or is not used elsewhere in the workflow."
+      ]
+    },
+    {
+      "id": "H3",
+      "hypothesis": "Evernorth's XRP treasury provides a transparent corporate-equity route to XRP exposure and documents substantial cash-funded and in-kind holdings.",
+      "supporting_evidence": [
+        "SEC filing reports 84,365,876 XRP purchased with $214.05M advance-funding cash and approximately 388.91M XRP contributed in kind."
+      ],
+      "disconfirming_evidence": [
+        "The holdings snapshot is dated October 9 and is not a current wallet-level custody reconciliation.",
+        "Debt, equity ownership, in-kind XRP and gross cash proceeds are distinct capital categories."
+      ]
+    },
+    {
+      "id": "H4",
+      "hypothesis": "Geopolitical energy-supply risk can coincide with broader risk repricing and alter crypto risk appetite.",
+      "supporting_evidence": [
+        "Reuters reported Brent +3.88% and WTI +2.72% on November 5 amid tanker incidents and Middle East uncertainty."
+      ],
+      "disconfirming_evidence": [
+        "No event study, synchronized cross-asset return series or XRP-specific causal test is supplied."
+      ]
+    }
+  ],
+  "source_records": [
+    {
+      "source_id": "KRAKEN_XRPUSD_TICKER_20261106",
+      "publisher": "Kraken",
+      "source_type": "exchange public API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "published_date": null,
+      "exact_retrieval_timestamp_utc": null,
+      "independence_group": "kraken_market_data",
+      "capture_scope": "Rendered JSON body text only; not wire bytes or headers."
+    },
+    {
+      "source_id": "C2FO_RIPPLE_INSTANT_PAY_20261027",
+      "publisher": "C2FO",
+      "source_type": "primary corporate announcement",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "published_date": "2026-10-27",
+      "exact_retrieval_timestamp_utc": null,
+      "independence_group": "c2fo_ripple_joint_announcement"
+    },
+    {
+      "source_id": "BNY_RIPPLE_CUSTODY_TRADE_FINANCE_20261027",
+      "publisher": "BNY",
+      "source_type": "primary corporate announcement",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_date": "2026-10-27",
+      "exact_retrieval_timestamp_utc": null,
+      "independence_group": "bny_ripple_joint_announcement"
+    },
+    {
+      "source_id": "COINBASE_RLUSD_LISTING_REUTERS_20261028",
+      "publisher": "Reuters",
+      "source_type": "independent secondary reporting",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "published_date": "2026-10-28",
+      "exact_retrieval_timestamp_utc": "2026-10-28T12:02:00Z",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "source_id": "EVERNORTH_SEC_FILING_20261030",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "primary regulatory filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "published_date": "2026-10-30",
+      "exact_retrieval_timestamp_utc": null,
+      "independence_group": "sec_edgar_filing"
+    },
+    {
+      "source_id": "REUTERS_MACRO_OIL_20261105",
+      "publisher": "Reuters",
+      "source_type": "independent secondary reporting",
+      "url": "https://www.reuters.com/business/energy/oil-falls-fourth-day-expectations-lower-risk-iran-war-escalation-2026-11-05/",
+      "published_date": "2026-11-05",
+      "exact_retrieval_timestamp_utc": "2026-11-05T02:20:00Z",
+      "independence_group": "reuters_reporting"
+    }
+  ],
+  "source_independence_note": "C2FO and Ripple's joint announcement and BNY/Ripple's joint announcement are issuer/counterparty evidence, not independent corroboration of one another. SEC EDGAR is an independent filing repository for issuer disclosures. Reuters is independent secondary reporting, not a substitute for issuer records.",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "model_ineligibility_reasons": [
+    "Kraken payload lacks exact retrieval timestamp, original HTTP headers and byte-complete wire capture.",
+    "The spot observation is a single-venue snapshot, not a synchronized multi-venue feature.",
+    "C2FO Instant Pay has no disclosed production transaction or settlement volume in the cited announcement.",
+    "No XRP-specific bridge usage, BNY custody balance, XRP collateral balance or incremental XRP purchase is disclosed.",
+    "Institutional announcement dates and corporate capital figures are context records, not market price features.",
+    "No leakage-safe out-of-sample evaluation supports a directional forecast."
+  ]
+}
