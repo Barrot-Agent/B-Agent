@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_evernorth_eloc_source_and_reference_price_addendum",
+  "record_id": "xrp-intel-2026-11-06-evernorth-eloc-source-price-addendum",
+  "hypothesis_id_namespace": "20261106T043450Z-evernorth-eloc-source-price",
+  "captured_at_utc": "2026-11-06T04:34:50Z",
+  "data_cutoff_utc": "2026-11-06T04:34:50Z",
+  "subject": "Source-type correction and illustrative reference-price calculation for Evernorth's Cantor ELOC; contingent capacity is not actual capital",
+  "repository_context": {
+    "source_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "inspected_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "append_only": true,
+    "exact_source_retrieval_time_utc": null,
+    "raw_source_sha256": null,
+    "note": "SEC filing was inspected as rendered HTML. This artifact does not claim byte-complete source capture or an independently anchored retrieval time."
+  },
+  "source_registry": [
+    {
+      "id": "sec_evernorth_20261030_s1_preliminary_prospectus",
+      "publisher": "Evernorth Holdings Inc.",
+      "source_type": "SEC Form S-1 registration statement; preliminary prospectus subject to completion",
+      "filing_date": "2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "retrieved_at_utc": null,
+      "supporting_line_numbers": [
+        1,
+        15,
+        92,
+        96,
+        99,
+        104,
+        107,
+        682,
+        683,
+        684,
+        685,
+        686,
+        700,
+        701,
+        702,
+        3038,
+        3042,
+        3045,
+        3046,
+        3057,
+        3058,
+        3059,
+        3060,
+        3061,
+        3062,
+        3063,
+        3064,
+        3068
+      ],
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_HTML_EXTRACT_ONLY",
+      "source_independence_group": "evernorth_issuer_sec_disclosure",
+      "model_eligible": false
+    },
+    {
+      "id": "prior_eloc_dollar_cap_correction_overlay",
+      "publisher": "Barrot research archive",
+      "source_type": "prior append-only correction artifact",
+      "path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json",
+      "model_eligible": false
+    },
+    {
+      "id": "prior_evernorth_actual_capital_reconciliation",
+      "publisher": "Barrot research archive",
+      "source_type": "prior append-only research artifact",
+      "path": "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+      "model_eligible": false
+    }
+  ],
+  "source_and_claim_corrections": {
+    "source_type_correction": {
+      "prior_artifact_source_type": "SEC Form 424B3",
+      "corrected_source_type": "SEC Form S-1 registration statement; preliminary prospectus subject to completion",
+      "evidence": "The filing cover identifies Form S-1 and states the preliminary prospectus is subject to completion.",
+      "prior_artifacts_modified": false
+    },
+    "prior_76800000_field": {
+      "field": "maximum_potential_gross_proceeds_usd",
+      "prior_value_usd": 76800000,
+      "correct_interpretation": "Rounded illustrative gross value at the October 29, 2026 Class A closing price of $14.71, not a fixed contractual dollar cap and not actual proceeds.",
+      "fixed_usd_cap_disclosed": false,
+      "proceeds_received_as_of_prospectus_usd": 0
+    }
+  },
+  "verified_eloc_contract_terms": {
+    "agreement_date": "2026-10-23",
+    "maximum_new_class_a_shares": 5218935,
+    "issuer_has_obligation_to_sell": false,
+    "purchase_price_percent_of_applicable_vwap": 97,
+    "per_purchase_limits": [
+      "Cantor and affiliates may not exceed 4.99% beneficial ownership of outstanding Pubco Class A common stock.",
+      "Purchases are capped at 20% of trading volume during the applicable purchase period.",
+      "Purchases are also capped by Pubco's good-faith share estimate in each purchase notice."
+    ],
+    "previous_day_price_threshold": "Previous trading-day closing price must be at least the greater of $1.00, 90% of that closing price and any higher threshold specified by Pubco.",
+    "commencement_conditions": "Purchase obligations commence only after the ELOC Registration Statement is declared effective, a final prospectus is filed and the agreement's further conditions are satisfied.",
+    "issuer_controls_timing_and_amount": true,
+    "proceeds_received_as_of_prospectus_usd": 0,
+    "fixed_usd_cap_disclosed": false,
+    "upfront_commitment_fee_usd": 521893.5,
+    "fee_fully_earned_and_nonrefundable": true,
+    "fee_due": "Within five business days after the date the ELOC Registration Statement is declared effective.",
+    "fee_payment_status": "NOT_VERIFIED_AS_PAID",
+    "aggregate_commitment_fee_cap_usd": 1000000,
+    "reimbursable_expense_cap_usd": 500000
+  },
+  "illustrative_reference_price_scenario": {
+    "reference_date": "2026-10-29",
+    "reference_class_a_closing_price_usd": 14.71,
+    "maximum_new_shares": 5218935,
+    "nominal_gross_at_reference_close_usd": 76770533.85,
+    "price_factor_percent": 97,
+    "illustrative_purchase_proceeds_at_97_percent_usd": 74467417.8345,
+    "upfront_fee_usd": 521893.5,
+    "illustrative_amount_after_fee_if_fee_paid_usd": 73945524.3345,
+    "status": "SCENARIO_ONLY_NOT_ACTUAL_PROCEEDS",
+    "caveats": [
+      "The $14.71 figure is the October 29 closing price disclosed on the prospectus cover, not necessarily the applicable VWAP during a future purchase period.",
+      "Actual purchase price is 97% of the applicable VWAP, subject to the block-trade pricing exception.",
+      "The issuer may choose not to sell any shares and remains subject to commencement, threshold, volume and beneficial-ownership conditions.",
+      "The $74.467M amount is illustrative purchase proceeds before the upfront fee and other expenses; it is not net proceeds.",
+      "The $73.946M amount subtracts only the upfront fee under an assumption that it is paid; payment has not been verified.",
+      "The prospectus states zero proceeds received under the ELOC as of its date."
+    ]
+  },
+  "offering_scope_reconciliation": {
+    "resale_registration": {
+      "registered_class_a_shares": 73688162,
+      "company_receives_proceeds_from_selling_securityholders": false,
+      "exception": "Company may receive proceeds from cash exercise of Sponsor Warrants; those are separate from ELOC proceeds."
+    },
+    "sponsor_warrants": {
+      "registered_warrants": 239653,
+      "exercise_price_usd": 11.5,
+      "approximate_gross_cash_if_all_exercised_usd": 2756009.5,
+      "proceeds_received_or_exercises_verified": false,
+      "classification": "CONTINGENT_WARRANT_EXERCISE_NOT_ACTUAL_CAPITAL"
+    },
+    "eloc_primary_sales": {
+      "maximum_new_class_a_shares": 5218935,
+      "proceeds_received_as_of_prospectus_usd": 0,
+      "classification": "CONTINGENT_PRIMARY_EQUITY_FINANCING"
+    }
+  },
+  "capital_taxonomy": {
+    "closing_gross_cash_proceeds_usd": 272600000,
+    "components": {
+      "private_placement_investments_usd": 224600000,
+      "released_spac_trust_usd": 48000000,
+      "before_transaction_expenses": true
+    },
+    "historical_cash_xrp_purchase": {
+      "cash_used_usd": 214050000,
+      "xrp_purchased_units": 84365876.3625,
+      "average_purchase_price_usd": 2.53657058,
+      "purchase_date": "2025-11-04",
+      "classification": "HISTORICAL_CASH_FUNDED_XRP_PURCHASE_NOT_A_CURRENT_2026_FLOW"
+    },
+    "in_kind_xrp_contributions_units": 388910554,
+    "in_kind_classification": "NON_CASH_XRP_CONTRIBUTIONS_NOT_CASH_PROCEEDS",
+    "convertible_notes": {
+      "principal_usd": 30000000,
+      "net_proceeds_before_transaction_expenses_usd": 30000000,
+      "issue_date": "2026-10-12",
+      "classification": "PUBCO_DEBT",
+      "stated_use": "General corporate purposes, including possible XRP acquisition.",
+      "xrp_purchases_funded_by_notes_disclosed": false
+    },
+    "company_facility_with_ripple": {
+      "borrower": "The Company",
+      "limit_as_of_2026_10_07_usd": 10000000,
+      "drawn_as_of_2026_10_07_usd": 9700000,
+      "classification": "RELATED_PARTY_DEBT",
+      "repayment_status_in_prospectus": "NOT_CONFIRMED",
+      "do_not_assume": "Do not describe this as $9.7M of new Evernorth equity or as a confirmed XRP purchase."
+    },
+    "eloc": {
+      "proceeds_received_as_of_prospectus_usd": 0,
+      "maximum_new_shares": 5218935,
+      "fixed_usd_cap_disclosed": false,
+      "classification": "CONTINGENT_FINANCING_CAPACITY_NOT_ACTUAL_CAPITAL"
+    },
+    "eloc_fee": {
+      "amount_usd": 521893.5,
+      "fully_earned_and_nonrefundable": true,
+      "payment_status": "NOT_VERIFIED_AS_PAID",
+      "classification": "FINANCING_COST_NOT_CAPITAL_RAISED"
+    },
+    "resale_registration": {
+      "shares": 73688162,
+      "company_receives_resale_proceeds": false,
+      "classification": "SECONDARY_RESALe_REGISTRATION_NOT_NEW_COMPANY_CAPITAL"
+    }
+  },
+  "competing_interpretations": [
+    {
+      "id": "eloc_reference_price_scenario",
+      "hypothesis": "At the disclosed October 29 closing price, the maximum share count implies about $76.77M nominal value and about $74.47M at 97%.",
+      "status": "ARITHMETICALLY_REPRODUCIBLE_SCENARIO_ONLY",
+      "counterevidence": "The actual contract uses applicable VWAP on a future purchase period; the issuer controls timing and amount; no proceeds were received as of the prospectus."
+    },
+    {
+      "id": "eloc_is_fixed_dollar_facility",
+      "hypothesis": "The ELOC has a fixed $76.8M contractual dollar cap.",
+      "status": "NOT_SUPPORTED",
+      "counterevidence": "The contract specifies up to 5,218,935 shares and a variable price formula, not a fixed USD cap."
+    },
+    {
+      "id": "resale_registration_is_new_capital",
+      "hypothesis": "The 73,688,162 registered resale shares provide cash to Evernorth.",
+      "status": "NOT_SUPPORTED",
+      "counterevidence": "The prospectus states the company receives no proceeds from selling-securityholder resales, except separate Sponsor Warrant exercise proceeds."
+    }
+  ],
+  "red_team_objections": [
+    "Do not report the $76.77M reference-price scenario as a contractual dollar cap or actual proceeds.",
+    "Do not call $74.47M net proceeds; it is a 97%-of-reference-price scenario before the fee and other expenses.",
+    "Do not mark the $521,893.50 fee as paid; payment is not verified.",
+    "Do not treat the 73,688,162 resale shares as company capital.",
+    "Do not treat Sponsor Warrant exercise capacity as actual proceeds without verified cash exercises.",
+    "Do not treat the $30M notes or $9.7M Company Facility borrowing as equity or as confirmed XRP purchases.",
+    "Do not add in-kind XRP contributions to cash proceeds.",
+    "Do not treat the 2025 cash-funded XRP purchase as a November 2026 spot-market flow."
+  ],
+  "model_admission": {
+    "eligible": false,
+    "status": "RESEARCH_ONLY",
+    "reasons": [
+      "SEC source was inspected as rendered HTML without a byte-complete raw receipt.",
+      "The ELOC is contingent, issuer-discretionary financing; zero proceeds were reported as of the prospectus.",
+      "The reference-price arithmetic is a scenario, not a point-in-time market-flow feature.",
+      "Actual fee payment, ELOC purchase notices, share issuance and settlement require subsequent filings."
+    ]
+  },
+  "forecast": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "Corporate financing capacity and historical XRP purchases do not establish a validated directional XRP signal."
+  },
+  "next_actions": [
+    "Verify the effective date and final prospectus for the ELOC Registration Statement.",
+    "Verify whether the $521,893.50 fee was paid; do not infer payment from contractual accrual.",
+    "Monitor subsequent filings for actual ELOC purchase notices, share issuance and settled proceeds.",
+    "Monitor actual XRP purchases funded by the October 2026 convertible notes.",
+    "Verify repayment status of the $9.7M Company Facility borrowing.",
+    "Keep resale registrations, warrant exercise capacity, ELOC capacity, debt, cash, historical XRP purchases and in-kind contributions separate."
+  ]
+}
