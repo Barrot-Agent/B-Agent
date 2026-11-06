@@ -403,6 +403,9 @@ id, title, description, files (non-empty relative paths), acceptance_criteria
 depends_on (task ids, possibly empty), risk_level, rollback_plan (non-empty).
 
 Bundle rules:
+- At least one item in the constraints array must explicitly require human approval, e.g.
+  "No consequential external action without explicit human approval." The word
+  "authorization" by itself is insufficient for this deterministic gate.
 - Decompose the objective into ordered, bounded tasks with explicit dependencies.
 - Ground file targets in repository evidence; mark unknown paths as discovery work, not facts.
 - Define tests that could fail; never treat model claims as proof.
