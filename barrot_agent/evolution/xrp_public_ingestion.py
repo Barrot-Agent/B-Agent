@@ -1673,7 +1673,12 @@ def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, 
     return records, event_s, eligible, reason
 
 
-def _okx_market_row(payload: Any, source_name: str) -> Mapping[str, Any]:
+def _okx_market_row(
+    payload: Any,
+    source_name: str,
+    *,
+    require_instrument: bool = True,
+) -> Mapping[str, Any]:
     if (
         not isinstance(payload, Mapping)
         or payload.get("code") != "0"
@@ -1684,8 +1689,11 @@ def _okx_market_row(payload: Any, source_name: str) -> Mapping[str, Any]:
     if not isinstance(data, list) or len(data) != 1 or not isinstance(data[0], Mapping):
         raise XRPIngestionError(f"OKX {source_name} response must contain exactly one data row")
     row = data[0]
-    if row.get("instId") != "XRP-USDT":
+    instrument = row.get("instId")
+    if instrument is not None and instrument != "XRP-USDT":
         raise XRPIngestionError(f"OKX {source_name} instrument mismatch")
+    if require_instrument and instrument != "XRP-USDT":
+        raise XRPIngestionError(f"OKX {source_name} response does not identify XRP-USDT")
     return row
 
 
@@ -1762,7 +1770,7 @@ def _parse_okx_depth(
     captured: datetime,
 ):
     """Parse a timestamped OKX order-book snapshot without claiming sequence continuity."""
-    row = _okx_market_row(payload, "spot order book")
+    row = _okx_market_row(payload, "spot order book", require_instrument=False)
     source_time = _from_ms(row.get("ts"), "OKX order-book ts")
     if source_time > captured:
         raise XRPIngestionError("OKX order-book timestamp is later than capture time")
