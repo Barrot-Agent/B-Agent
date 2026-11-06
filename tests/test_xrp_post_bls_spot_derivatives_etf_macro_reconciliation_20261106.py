@@ -21,7 +21,7 @@ def load_artifact() -> dict:
 
 def test_source_excerpt_receipts_reproduce_without_claiming_wire_capture():
     data = load_artifact()
-    assert len(data["source_registry"]) == 8
+    assert len(data["source_registry"]) == 9
     for source in data["source_registry"]:
         receipt = source["receipt"]
         assert receipt["algorithm"] == "SHA-256"
@@ -108,3 +108,27 @@ def test_no_directional_forecast_or_external_action_is_authorized():
     assert data["safety"]["real_money_action"] is False
     assert data["safety"]["external_submission"] is False
     assert data["safety"]["external_ai_data_transfer"] is False
+
+
+def test_fuelmaps_spot_depth_preserves_snapshot_coverage_and_cancel_risk():
+    data = load_artifact()
+    row = data["spot_depth_snapshot"]
+    assert row["snapshot_time_utc"] == "2026-11-06T17:00:00Z"
+    assert row["mid_usd"] == 1.1947
+    assert row["venue_count"] == 6
+    assert row["bands"] == [
+        {"within_pct": 0.5, "bids_usd": 8_600_000, "asks_usd": 6_200_000, "bid_share_pct": 58.0, "venues_covering": 6},
+        {"within_pct": 1, "bids_usd": 13_200_000, "asks_usd": 9_600_000, "bid_share_pct": 57.8, "venues_covering": 6},
+        {"within_pct": 2, "bids_usd": 18_300_000, "asks_usd": 10_000_000, "bid_share_pct": 64.5, "venues_covering": 6},
+        {"within_pct": 5, "bids_usd": 25_900_000, "asks_usd": 13_000_000, "bid_share_pct": 66.5, "venues_covering": 6},
+        {"within_pct": 10, "bids_usd": 32_000_000, "asks_usd": 15_900_000, "bid_share_pct": 66.8, "venues_covering": 5},
+    ]
+    method = row["method"]
+    assert method["market_type"] == "spot_only"
+    assert method["excluded_venues"] == ["Binance", "Bitget"]
+    assert method["hidden_and_iceberg_orders_included"] is False
+    assert method["resting_orders_can_be_cancelled"] is True
+    assert method["hourly_column"] == "average_of_one_minute_book_snapshots"
+    assert "not fillable depth" in row["interpretation_limit"]
+    source = next(x for x in data["source_registry"] if x["source_id"] == "FUELMAPS_XRP_SPOT_BOOK_20261106T1700Z")
+    assert hashlib.sha256(source["excerpt"].encode("utf-8")).hexdigest() == source["receipt"]["digest"]
