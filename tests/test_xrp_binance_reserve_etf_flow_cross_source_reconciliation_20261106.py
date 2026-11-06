@@ -7,37 +7,48 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261106T193345Z-xrp-binance-reserve-etf-flow-cross-source-reconciliation.json"
-CORRECTION = ROOT / "research" / "xrp_intelligence" / "20261106T194003Z-xrp-binance-reserve-etf-flow-receipt-hash-correction.json"
+CORRECTIONS = [
+    ROOT / "research" / "xrp_intelligence" / "20261106T194003Z-xrp-binance-reserve-etf-flow-receipt-hash-correction.json",
+    ROOT / "research" / "xrp_intelligence" / "20261106T194446Z-xrp-binance-reserve-etf-flow-receipt-hash-correction-2.json",
+]
 
 
 def load_artifact() -> dict:
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def load_corrected_view() -> tuple[dict, dict]:
-    original = load_artifact()
-    overlay = json.loads(CORRECTION.read_text(encoding="utf-8"))
-    derived = copy.deepcopy(original)
-    source = next(item for item in derived["source_registry"] if item["id"] == overlay["target_source_id"])
-    assert source["sha256"] == overlay["prior_value"]
-    source["sha256"] = overlay["corrected_value"]
-    return derived, overlay
+def load_corrections() -> list[dict]:
+    return [json.loads(path.read_text(encoding="utf-8")) for path in CORRECTIONS]
 
 
-def test_source_receipt_correction_is_exact_preimage_bound_and_append_only():
+def load_corrected_view() -> tuple[dict, list[dict]]:
     raw = ARTIFACT.read_bytes()
-    overlay = json.loads(CORRECTION.read_text(encoding="utf-8"))
     git_blob_sha1 = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
-    assert git_blob_sha1 == overlay["target_artifact_git_blob_sha1"]
-    assert overlay["target_json_pointer"] == "/source_registry/4/sha256"
-    assert overlay["preservation"]["source_artifact_modified"] is False
-    assert overlay["preservation"]["source_excerpt_modified"] is False
-    assert overlay["preservation"]["append_only"] is True
+    derived = load_artifact()
+    overlays = load_corrections()
+    for overlay in overlays:
+        assert git_blob_sha1 == overlay["target_artifact_git_blob_sha1"]
+        source = next(item for item in derived["source_registry"] if item["id"] == overlay["target_source_id"])
+        assert source["sha256"] == overlay["prior_value"]
+        assert hashlib.sha256(source["excerpt"].encode("utf-8")).hexdigest() == overlay["corrected_value"]
+        source["sha256"] = overlay["corrected_value"]
+    return derived, overlays
+
+
+def test_source_receipt_corrections_are_exact_preimage_bound_and_append_only():
+    raw = ARTIFACT.read_bytes()
+    git_blob_sha1 = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
     original = load_artifact()
-    source = next(item for item in original["source_registry"] if item["id"] == overlay["target_source_id"])
-    assert source["sha256"] == overlay["prior_value"]
-    assert hashlib.sha256(source["excerpt"].encode("utf-8")).hexdigest() == overlay["corrected_value"]
-    assert overlay["corrected_value"] == overlay["excerpt_sha256"]
+    for overlay in load_corrections():
+        assert git_blob_sha1 == overlay["target_artifact_git_blob_sha1"]
+        assert overlay["target_json_pointer"].startswith("/source_registry/")
+        assert overlay["preservation"]["source_artifact_modified"] is False
+        assert overlay["preservation"]["source_excerpt_modified"] is False
+        assert overlay["preservation"]["append_only"] is True
+        source = next(item for item in original["source_registry"] if item["id"] == overlay["target_source_id"])
+        assert source["sha256"] == overlay["prior_value"]
+        assert hashlib.sha256(source["excerpt"].encode("utf-8")).hexdigest() == overlay["corrected_value"]
+        assert overlay["corrected_value"] == overlay["excerpt_sha256"]
 
 
 def test_all_normalized_source_receipts_reproduce_after_append_only_correction():
