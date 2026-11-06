@@ -40,7 +40,7 @@ sync_repository performs only:
 
 It never runs git pull, checkout, reset, merge, push, or branch deletion. It never overwrites local work. A result is marked synchronized=true only when the current branch is the configured default branch, the working tree is clean, HEAD exactly matches the fetched remote SHA, and indexing succeeds. Otherwise Barrot reports the mismatch and leaves the checkout untouched.
 
-This first integration synchronizes the current checkout and its local knowledge graph. It does not yet create separate indexes for every open pull-request branch. PR/worktree indexing is a later extension that must preserve the same no-overwrite and exact-SHA rules.
+This first integration synchronizes the current checkout and its local knowledge graph. It does not yet create separate indexes for every open pull-request branch. PR/worktree indexing is a later extension that must preserve the same no-overwrite and exact-SHA rules.\n\nRefresh is on demand: Barrot invokes the upstream CLI for each sync request. This first adapter does not keep a persistent MCP session open, so Codebase Memory's session-owned auto-watch is not active yet. Continuous background watching and separate open-PR indexes are explicit follow-on work, not capabilities claimed by this release.
 
 ## Privacy and operational boundary
 
