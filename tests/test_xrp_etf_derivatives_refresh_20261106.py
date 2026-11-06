@@ -31,9 +31,14 @@ def test_derivatives_refresh_preserves_timestamp_delay_and_venue_scope():
 def test_long_liquidation_imbalance_keeps_counterevidence():
     deriv = load_artifact()["derivatives"]
     assert deriv["long_liquidations_24h_usd"] > deriv["short_liquidations_24h_usd"]
-    assert deriv["liquidations_24h_usd_lower_bound"] >= (
+    component_sum = (
         deriv["long_liquidations_24h_usd"] + deriv["short_liquidations_24h_usd"]
     )
+    assert deriv["liquidations_24h_displayed_comparator"] == ">="
+    assert round(deriv["liquidations_24h_usd_headline_rounded"] / 1_000_000, 2) == round(
+        component_sum / 1_000_000, 2
+    )
+    assert "rounded" in deriv["liquidation_rounding_note"]
     assert deriv["long_account_share_percent"] == 80.3
     assert any("account count" in x for x in deriv["limitations"])
     assert any("positive" in x for x in deriv["limitations"])
