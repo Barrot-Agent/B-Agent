@@ -175,6 +175,36 @@ def test_repository_sync_reports_fetch_failure_but_still_refreshes_index(tmp_pat
     assert len(indexer.calls) == 1
 
 
+def test_repository_sync_blocks_credentialed_or_non_github_origin(tmp_path: Path):
+    indexer = FakeIndexer()
+    commands = []
+
+    def runner(command, **kwargs):
+        args = command[3:]
+        commands.append(args)
+        if args == ["branch", "--show-current"]:
+            return completed(command, stdout="main\n")
+        if args == ["rev-parse", "HEAD"]:
+            return completed(command, stdout="abc123\n")
+        if args == ["status", "--porcelain"]:
+            return completed(command, stdout="")
+        if args == ["remote", "get-url", "origin"]:
+            return completed(
+                command,
+                stdout="https://user:secret@github.com/Barrot-Agent/B-Agent.git\n",
+            )
+        raise AssertionError(f"Unexpected Git command: {args}")
+
+    result = RepositorySyncController(tmp_path, indexer, git_runner=runner).sync()
+
+    assert result.fetch_succeeded is False
+    assert result.index_succeeded is True
+    assert result.remote_url == ""
+    assert "credential-free GitHub URL" in result.error
+    assert not any(args and args[0] == "fetch" for args in commands)
+    assert "secret" not in result.to_dict().__repr__()
+
+
 def test_repository_sync_rejects_unsafe_branch_name_before_git(tmp_path: Path):
     indexer = FakeIndexer()
     calls = []
