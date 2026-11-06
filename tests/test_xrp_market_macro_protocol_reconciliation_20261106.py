@@ -102,7 +102,7 @@ def test_source_dependency_and_documentation_lag_are_explicit():
     assert len(tracker) == 3
     coindesk = next(s for s in data["source_registry"] if s["source_id"] == "COINDESK_PAYMENTBURN_FIX_20261105T0525Z")
     assert "XRPLWin amendment tracker" in coindesk["upstream_dependencies"]
-    assert "stale relative to the nov 4 activation" in data["protocol_events"]["fixCleanup3_4_0"]["documentation_lag"]["interpretation"].lower()
+    assert "stale relative to the tracker-recorded nov 4 activation" in data["protocol_events"]["fixCleanup3_4_0"]["documentation_lag"]["interpretation"].lower()
 
 
 def test_competing_hypotheses_retain_counterevidence_and_no_forecast_is_issued():
