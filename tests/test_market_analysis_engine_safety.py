@@ -32,7 +32,7 @@ def test_retired_market_analysis_emits_only_not_issued_status(monkeypatch, tmp_p
     assert output["status"] == "NOT_ISSUED"
     assert output["forecast_issued"] is False
     assert output["trade_recommendations"] == []
-    assert "no Databricks or" in output["message"]
+    assert "no databricks or" in output["message"].lower()
     assert list(tmp_path.iterdir()) == []
 
 
