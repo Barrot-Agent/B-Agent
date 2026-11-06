@@ -1333,6 +1333,9 @@ def _is_groq_rate_limit_error(error: BaseException) -> bool:
             "rate_limit_exceeded",
             "tokens per minute",
             "tokens per day",
+            "per-minute token limit",
+            "daily token limit",
+            "rate limit exhausted",
         )
     )
 
@@ -1353,21 +1356,21 @@ def _build_deterministic_rate_limit_report(
         "read_only_snapshot": snapshot,
     }
     return (
-        "## Barrot deterministic fallback — provider rate limit\\n\\n"
-        "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`\\n\\n"
-        f"**Task:** {task_title}\\n"
-        f"**Issue:** #{issue_number if issue_number and issue_number != '0' else 'not supplied'}\\n"
-        f"**Provider failure:** {type(error).__name__}: {str(error)[:1000]}\\n\\n"
-        "### Deterministic work completed\\n"
-        "- Repository file inventory and targeted file/directory context were collected.\\n"
-        "- Read-only Git branch, HEAD, recent-history and working-tree evidence was collected.\\n"
-        "- Recent GitHub Actions evidence was collected where the GitHub CLI was available.\\n"
-        "- The available open-PR/issue context is preserved below; it is not model-interpreted.\\n\\n"
-        "### Evidence snapshot\\n"
-        "```json\\n"
+        "## Barrot deterministic fallback — provider rate limit\n\n"
+        "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`\n\n"
+        f"**Task:** {task_title}\n"
+        f"**Issue:** #{issue_number if issue_number and issue_number != '0' else 'not supplied'}\n"
+        f"**Provider failure:** {type(error).__name__}: {str(error)[:1000]}\n\n"
+        "### Deterministic work completed\n"
+        "- Repository file inventory and targeted file/directory context were collected.\n"
+        "- Read-only Git branch, HEAD, recent-history and working-tree evidence was collected.\n"
+        "- Recent GitHub Actions evidence was collected where the GitHub CLI was available.\n"
+        "- The available open-PR/issue context is preserved below; it is not model-interpreted.\n\n"
+        "### Evidence snapshot\n"
+        "```json\n"
         + json.dumps(context, ensure_ascii=False, sort_keys=True, indent=2, default=str)[:26000]
-        + "\\n```\\n\\n"
-        "### Execution boundary\\n"
+        + "\n```\n\n"
+        "### Execution boundary\n"
         "No LLM-backed bundle was accepted. No repository source file was changed; no commit, push, pull request, merge, deployment, secret operation, paper trade or financial action was performed. "
         "Repository repair is **not complete** and this task remains blocked. Retry the provider after the rate-limit window resets; retain this deterministic evidence rather than inventing a model-backed result."
     )
@@ -1535,7 +1538,7 @@ def main() -> None:
                 )
             else:
                 message = (
-                    "Barrot read-only audit failed safely; repository repair was not started.\\n\\n"
+                    "Barrot read-only audit failed safely; repository repair was not started.\n\n"
                     f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
                 )
             post_issue_comment(message)
@@ -1612,7 +1615,7 @@ def main() -> None:
                 )
             else:
                 message = (
-                    "Barrot bundle authoring/review failed safely; repository repair was not started.\\n\\n"
+                    "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
                     f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
                 )
             post_issue_comment(message)
