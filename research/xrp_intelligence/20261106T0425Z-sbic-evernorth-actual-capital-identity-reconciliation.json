@@ -247,17 +247,6 @@
       "model_eligible": false
     },
     {
-      "id": "SBI_JPYSC_LENDING_NOV2_2026",
-      "publisher": "SBI VC Trade",
-      "source_type": "official_stablecoin_lending_and_handling_balance_announcement",
-      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
-      "event_date": "2026-11-02",
-      "as_of_date": "2026-11-02",
-      "independence_group": "sbi_group_primary",
-      "raw_source_bytes_captured": false,
-      "model_eligible": false
-    },
-    {
       "id": "PERMISSION_ASK_CONTRACTS",
       "publisher": "Permission",
       "source_type": "official_token_documentation",
@@ -502,12 +491,14 @@
       "status": "MULTI_RAIL",
       "details": [
         "SBI VC Trade reports support for USDC, JPYSC and RLUSD and a stablecoin lending service.",
-        "SBI reported more than two million registered crypto accounts in July 2026; registered accounts are not active users or XRP holders."
+        "SBI reported more than two million registered crypto accounts in July 2026; registered accounts are not active users or XRP holders.",
+        "The November 2, 2026 JPYSC lending balance exceeded JPY 10B and the JPYSC handling balance exceeded JPY 30B."
       ],
       "does_not_prove": [
         "Two million active users",
         "Two million XRP holders",
-        "XRP settlement volume"
+        "XRP settlement volume",
+        "These JPYSC balances are not XRP collateral or XRP settlement volume."
       ]
     },
     {
@@ -668,7 +659,14 @@
     "xrp_specific_holdings_or_volume_disclosed": false,
     "jpy_sc_lending_balance_jpy_as_of_2026_11_02": 10000000000,
     "jpy_sc_handling_balance_jpy_as_of_2026_11_02": 30000000000,
-    "jpy_sc_metrics_type": "issuer-reported service lending balance and handling balance; not XRPL settlement volume"
+    "jpy_sc_metrics_type": "issuer-reported service lending balance and handling balance; not XRPL settlement volume",
+    "registered_accounts_as_of_utc": "2026-07-06",
+    "jpy_sc_balances": {
+      "as_of": "2026-11-02",
+      "lending_balance_jpy": 10000000000,
+      "handling_balance_jpy": 30000000000,
+      "interpretation": "Issuer-reported service lending balance and handling balance; not XRP collateral or XRPL settlement volume."
+    }
   },
   "competing_hypotheses": [
     {
@@ -740,7 +738,8 @@
     "reasons": [
       "Primary filings and issuer announcements are not captured as byte-complete raw receipts in this run.",
       "Corporate announcements do not establish executed XRP market purchases unless the filing explicitly reports them.",
-      "The capital taxonomy is not a point-in-time market feature and must be reconciled against subsequent filings before use in forecasts."
+      "The capital taxonomy is not a point-in-time market feature and must be reconciled against subsequent filings before use in forecasts.",
+      "SBI VC Trade stablecoin lending/handling balances are issuer-reported service metrics, not XRP flow or collateral data."
     ]
   },
   "forecast": {

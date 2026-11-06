@@ -148,3 +148,15 @@ def test_sbi_strium_is_separate_from_xrpl_and_xrp():
 def test_permission_ask_contracts_are_from_official_permission_docs():
     source = next(item for item in load()["source_registry"] if item["id"] == "PERMISSION_ASK_CONTRACTS")
     assert source["url"] == "https://docs.permission.ai/ask-token"
+
+\n\ndef test_source_registry_ids_are_unique():
+    ids = [item["id"] for item in load()["source_registry"]]
+    assert len(ids) == len(set(ids))
+
+
+def test_sbi_jpysc_balances_have_separate_metric_definitions():
+    balances = load()["sbi_vc_trade_metrics"]["jpy_sc_balances"]
+    assert balances["as_of"] == "2026-11-02"
+    assert balances["lending_balance_jpy"] == 10_000_000_000
+    assert balances["handling_balance_jpy"] == 30_000_000_000
+    assert "not XRP collateral" in balances["interpretation"]
