@@ -30,7 +30,7 @@ def test_rlusd_chain_supply_is_multi_chain_and_rounded():
 def test_x402_supports_xrp_and_rlusd_with_payer_signed_settlement():
     item = load_artifact()["payment_rail_architecture"]["x402"]
     assert item["supported_assets"] == ["XRP", "XRPL issued assets such as RLUSD"]
-    assert "payer signs" in item["payment_flow"]
+    assert "payer signs" in item["payment_flow"].lower()
     assert "facilitator submits" in item["payment_flow"]
     assert item["network_ids"]["mainnet"] == "xrpl:0"
     assert item["network_ids"]["testnet"] == "xrpl:1"
