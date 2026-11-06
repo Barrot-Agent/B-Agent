@@ -57,8 +57,29 @@ def overlay() -> dict:
 
 def test_all_corrected_source_artifacts_are_bound_to_exact_git_blobs(overlay: dict) -> None:
     for source in overlay["source_artifacts"]:
-        _, content = _load_relative(source["path"])
-        assert _git_blob_sha(content) == source["git_blob_sha"]
+        _, current_content = _load_relative(source["path"])
+        current_sha = _git_blob_sha(current_content)
+        if current_sha == source["git_blob_sha"]:
+            continue
+
+        # A later append-only research correction may legitimately supersede
+        # the path's current blob. Preserve and verify the exact historical
+        # preimage referenced by the older overlay instead of pretending the
+        # current path still contains that historical version.
+        preimage_path = (
+            ROOT
+            / "research"
+            / "xrp_intelligence"
+            / "source_preimages"
+            / f"{source['git_blob_sha']}.json"
+        )
+        assert preimage_path.is_file(), (
+            f"Historical source blob {source['git_blob_sha']} for "
+            f"{source['path']} is no longer present at its path and has no "
+            "archived preimage."
+        )
+        preimage_content = preimage_path.read_text(encoding="utf-8")
+        assert _git_blob_sha(preimage_content) == source["git_blob_sha"]
 
 
 def test_21405m_cash_receipt_is_not_used_as_the_214m_purchase_cost(overlay: dict) -> None:
