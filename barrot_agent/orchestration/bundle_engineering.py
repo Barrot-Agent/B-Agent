@@ -30,18 +30,18 @@ TASK_STRING_LIST_FIELDS = ("files", "acceptance_criteria", "tests", "depends_on"
 SEVERITY_WEIGHT = {"critical": 25, "high": 12, "medium": 5, "low": 1}
 
 _UNSAFE_RECOVERY_PATTERNS = (
-    re.compile(r"\\bgit\\s+reset\\s+--hard\\b", re.IGNORECASE),
-    re.compile(r"\\bgit\\s+clean\\b", re.IGNORECASE),
-    re.compile(r"\\bgit\\s+stash\\b", re.IGNORECASE),
-    re.compile(r"\\bgit\\s+push\\s+--force(?:-with-lease)?\\b|\\bforce[- ]push\\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+reset\s+--hard\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+clean\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+stash\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+push\s+--force(?:-with-lease)?\b|\bforce[- ]push\b", re.IGNORECASE),
     re.compile(
-        r"\\bdiscard(?:\\s+all)?\\s+(?:existing\\s+)?(?:user\\s+)?"
-        r"(?:uncommitted|untracked|staged|local)\\s+(?:work|changes|files)\\b",
+        r"\bdiscard(?:\s+all)?\s+(?:existing\s+)?(?:user\s+)?"
+        r"(?:uncommitted|untracked|staged|local)\s+(?:work|changes|files)\b",
         re.IGNORECASE,
     ),
 )
 _NEGATION_BEFORE_UNSAFE_ACTION = re.compile(
-    r"\\b(?:do not|don't|never|must not|must never|prohibit(?:ed)?|forbid(?:den)?)\\b",
+    r"\b(?:do not|don't|never|must not|must never|prohibit(?:ed)?|forbid(?:den)?)\b",
     re.IGNORECASE,
 )
 
@@ -53,14 +53,13 @@ def _unsafe_recovery_action(instruction: str) -> str | None:
             sentence_start = max(
                 instruction.rfind(".", 0, match.start()),
                 instruction.rfind(";", 0, match.start()),
-                instruction.rfind("\\n", 0, match.start()),
+                instruction.rfind("\n", 0, match.start()),
             ) + 1
             prefix = instruction[sentence_start:match.start()]
             if _NEGATION_BEFORE_UNSAFE_ACTION.search(prefix):
                 continue
             return match.group(0)
     return None
-
 
 @dataclass(frozen=True)
 class BundleFinding:
