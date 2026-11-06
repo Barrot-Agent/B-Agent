@@ -45,6 +45,9 @@ def test_sbi_group_is_four_sbi_controlled_entities_not_sbic():
     assert data["common_stock_percentage"] == 21.4
     assert data["voting_power_percentage"] == 39.9
     assert "SBIC East" in data["not_the_same_as"]
+    s1 = next(x for x in load_artifact()["source_registry"] if x["id"] == "evernorth_s1_2026_10_30")
+    assert "normalized table extraction" in s1["hash_scope"]
+    assert "not a raw SEC filing-byte hash" in s1["hash_scope"]
 
 
 def test_cash_and_in_kind_categories_are_not_double_counted():
