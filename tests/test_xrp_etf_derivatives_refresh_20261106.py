@@ -63,7 +63,7 @@ def test_etf_publisher_difference_is_reconciled_without_calling_it_cash_flow():
     comparison = load_artifact()["etf_flows"]["comparison"]
     assert comparison["nov4_daily_difference_xrp"] == -61487
     assert comparison["status"] == "UNRECONCILED_DIFFERENT_FUND_UNIVERSES_AND_METHODS"
-    assert "not direct AP cash" in comparison["cash_flow_boundary"]
+    assert "Neither holdings-derived series is direct AP cash" in comparison["cash_flow_boundary"]
     registry = {x["id"]: x for x in load_artifact()["source_registry"]}
     assert (
         registry["CRYPTOKEYHOLE_XRP_ETF_20261106T0443Z"]["independence_group"]
