@@ -115,7 +115,30 @@
       "The $30M convertible note is debt financing; stated permitted use is not proof of XRP acquisition.",
       "The $9.7M Ripple facility draw is related-party borrowing, not equity or proof of XRP purchase.",
       "The approximately 473M XRP holdings figure is dated October 9, 2026 and is not a current custody balance."
-    ]
+    ],
+    "sbi_group_entities": [
+      "SBI Venture Fund 2023A Investment LPS",
+      "SBI Venture Fund 2023B Investment LPS",
+      "SBI PE Holdings Co., Ltd.",
+      "SBI Holdings USA, Inc."
+    ],
+    "sbi_subscription_details": {
+      "agreement_type": "Advance Funding Subscription Agreements, as amended",
+      "controlling_parent": "SBI Holdings, Inc.",
+      "entities_controlled_by_sbi_holdings": true,
+      "ownership_at_closing": {
+        "percent_outstanding_pubco_common_stock": 21.4,
+        "percent_voting_power": 39.9
+      },
+      "cash_amount_attributable_to_sbi_usd": null,
+      "interpretation": "The SEC filing identifies the SBI-controlled subscriber entities and their ownership/voting percentages, but the cited ownership table does not allocate the aggregate advance-funding cash amount to SBI. Do not attribute the entire $214.05M advance-funding cash to SBI."
+    },
+    "ripple_in_kind_contribution": {
+      "xrp_contributed": 126791458,
+      "consideration": "30,000,000 Pathfinder Company Units under the Ripple Contribution Agreement, subject to closing adjustments",
+      "cash_purchase": false,
+      "interpretation": "This is a non-cash XRP contribution by Ripple, included within aggregate in-kind XRP contributions; it is not a cash-funded XRP purchase."
+    }
   },
   "macro_context": {
     "event_date": "2026-11-05",
@@ -230,6 +253,20 @@
       "published_date": "2026-11-05",
       "exact_retrieval_timestamp_utc": "2026-11-05T02:20:00Z",
       "independence_group": "reuters_reporting"
+    },
+    {
+      "source_id": "EVERNORTH_SBI_GROUP_OWNERSHIP_AND_RIPPLE_CONTRIBUTION_20261030",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "primary regulatory filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "published_date": "2026-10-30",
+      "exact_retrieval_timestamp_utc": null,
+      "sections": [
+        "Advance Funding Subscription Agreements",
+        "Pro Forma Ownership at Closing",
+        "Ripple Contribution Agreement"
+      ],
+      "independence_group": "sec_edgar_filing"
     }
   ],
   "source_independence_note": "C2FO and Ripple's joint announcement and BNY/Ripple's joint announcement are issuer/counterparty evidence, not independent corroboration of one another. SEC EDGAR is an independent filing repository for issuer disclosures. Reuters is independent secondary reporting, not a substitute for issuer records.",

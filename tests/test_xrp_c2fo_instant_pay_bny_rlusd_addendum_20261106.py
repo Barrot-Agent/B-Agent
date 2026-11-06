@@ -96,3 +96,24 @@ def test_source_provenance_and_independence_groups_are_explicit():
     assert sources["BNY_RIPPLE_CUSTODY_TRADE_FINANCE_20261027"]["independence_group"] == "bny_ripple_joint_announcement"
     assert sources["C2FO_RIPPLE_INSTANT_PAY_20261027"]["independence_group"] == "c2fo_ripple_joint_announcement"
     assert "not independent corroboration" in artifact["source_independence_note"]
+
+def test_sbi_controlled_subscribers_and_ripple_in_kind_contribution_are_not_cash_purchases():
+    item = load_artifact()["evernorth_actual_capital_reconciliation"]
+    assert item["sbi_group_entities"] == [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc.",
+    ]
+    sbi = item["sbi_subscription_details"]
+    assert sbi["controlling_parent"] == "SBI Holdings, Inc."
+    assert sbi["entities_controlled_by_sbi_holdings"] is True
+    assert sbi["ownership_at_closing"]["percent_outstanding_pubco_common_stock"] == 21.4
+    assert sbi["ownership_at_closing"]["percent_voting_power"] == 39.9
+    assert sbi["cash_amount_attributable_to_sbi_usd"] is None
+    assert "Do not attribute the entire $214.05M" in sbi["interpretation"]
+
+    ripple = item["ripple_in_kind_contribution"]
+    assert ripple["xrp_contributed"] == 126_791_458
+    assert ripple["cash_purchase"] is False
+    assert ripple["consideration"].startswith("30,000,000 Pathfinder Company Units")
