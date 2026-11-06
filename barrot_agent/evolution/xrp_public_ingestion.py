@@ -28,7 +28,7 @@ from .feature_drift import MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_fea
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.8"
+ADAPTER_VERSION = "xrp-public-market-v3.9"
 PARSER_VERSION = "xrp-public-market-v3.8"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
