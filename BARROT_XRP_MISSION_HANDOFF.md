@@ -1,3 +1,18 @@
+# Handoff tip addendum — 2026-11-06T21:48:07Z
+
+This addendum is documentation-only and becomes the current tip of the existing #1640 integration branch. It does not change Barrot V3 or XRP product code.
+
+- The immediately preceding handoff-only tip was `9ebb61cc91585fb8ed4c079c4fc6c74434fde75c`.
+- Exact-head CI on that tip passed: 1,068 full-repository tests, 8 subtests; 629 core tests, 8 subtests; inclusive package coverage 57.57% against a 53% threshold.
+- The wheel built and installed successfully; the installed wheel verified Barrot V3, the XRP mission, and canonical data assets.
+- Exact-head dependency audit passed all six manifests.
+- Exact-head fail-closed gate passed and kept merging disabled.
+- Evidence: [CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42299268524) · [dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42299268543) · [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42299268536).
+- The current PR tip is this handoff-only commit. The product-code head remains `b09d7f89fd2047043788519a22e6663a331c2c99`; no product-code files changed after it.
+- This handoff-only update was not followed by another full-suite run; the exact-head evidence above applies to its immediate parent. No merge is authorized until approving review and Pages side-effect gates are satisfied.
+
+---
+
 # Barrot XRP Mission Handoff — Current Verified State
 
 Updated: 2026-11-06T21:44:06Z
@@ -16,7 +31,7 @@ This checkpoint supersedes the 21:28:30Z checkpoint below. Live GitHub state was
 
 ### PR #1640 — Barrot V3/core integration
 
-- Current head: `b09d7f89fd2047043788519a22e6663a331c2c99`; base main `9100dbac...`; 470 commits ahead, 0 behind; 155 changed paths.
+- Product-code head: `b09d7f89fd2047043788519a22e6663a331c2c99`; base main `9100dbac...`; 470 product-code commits ahead at that checkpoint, 0 behind; 155 changed paths. The integration branch's latest tip is the documentation-only handoff update described at the top of this file.
 - GitHub reports the PR non-draft, open, conflict-free, and mergeable.
 - Exact-head CI: 1,068 full-repository tests passed, 8 subtests passed; core suite 629 passed, 8 subtests; coverage 57.57%; installed-wheel verification passed.
 - Exact-head dependency audit passed across all six declared dependency manifests.
