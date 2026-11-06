@@ -9,6 +9,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE = ROOT / "research" / "xrp_intelligence" / "20261106T100440Z-research-review-correction-bundle.json"
+SBIC_EARLY_ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json"
 SBIC_ADDENDUM = ROOT / "research" / "xrp_intelligence" / "20261106T094856Z-sbic-regional-company-primary-profile-vs-sbi-holdings-addendum.json"
 SBIC_PRIOR_CORRECTION = ROOT / "research" / "xrp_intelligence" / "20261106T095354Z-sbic-corporate-number-and-capital-source-correction.json"
 XRP_TARGET = ROOT / "research" / "xrp_intelligence" / "20261106T093925Z-xrp-spot-perpetuals-etf-macro-vintage-update.json"
@@ -21,7 +22,7 @@ def load(path: Path) -> dict:
 
 def git_blob_sha(path: Path) -> str:
     payload = path.read_bytes()
-    header = b"blob " + str(len(payload)).encode("ascii") + b"\\0"
+    header = b"blob " + str(len(payload)).encode("ascii") + b"\0"
     return hashlib.sha1(header + payload).hexdigest()
 
 
@@ -46,10 +47,12 @@ def test_sbic_central_japanese_capital_is_converted_without_inserting_eighty_mil
     assert supersession["original_artifacts_modified"] is False
 
     # The earlier records remain intact and are explicitly superseded, not silently rewritten.
+    assert load(SBIC_EARLY_ARTIFACT)["sbic_identity"]["companies"][1]["capital_jpy"] == 4_380_800_000
     assert load(SBIC_ADDENDUM)["entity_resolution"]["entities"][1]["capital_jpy"] == 4_380_800_000
     assert load(SBIC_PRIOR_CORRECTION)["capital_disagreement"]["selected_value_jpy"] == 4_380_800_000
-    assert git_blob_sha(SBIC_ADDENDUM) == correction["correction_of"][0]["git_blob_sha"]
-    assert git_blob_sha(SBIC_PRIOR_CORRECTION) == correction["correction_of"][1]["git_blob_sha"]
+    assert git_blob_sha(SBIC_EARLY_ARTIFACT) == correction["correction_of"][0]["git_blob_sha"]
+    assert git_blob_sha(SBIC_ADDENDUM) == correction["correction_of"][1]["git_blob_sha"]
+    assert git_blob_sha(SBIC_PRIOR_CORRECTION) == correction["correction_of"][2]["git_blob_sha"]
 
     assert bundle["overall_model_eligibility"]["eligible"] is False
     assert bundle["forecast_status"]["directional_forecast_issued"] is False
