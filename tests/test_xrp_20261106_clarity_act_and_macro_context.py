@@ -30,7 +30,7 @@ def test_january_3_lapse_claim_is_not_mislabeled_as_official_status():
     data = load_artifact()
     claim = data["regulatory_event"]["follow_up"]["january_3_lapse_claim"]
     assert claim["status"] == "secondary_legal_opinion_not_official_status"
-    assert "does not itself establish" in claim["description"]
+    assert "do not themselves establish" in claim["description"]
 
 
 def test_zero_etf_flow_is_not_reclassified_as_outflow():
@@ -47,7 +47,7 @@ def test_okx_long_short_ratio_is_account_count_and_single_venue():
     assert data["venue"] == "OKX"
     assert data["open_interest_change_pct"] == -8.9
     assert data["long_short_account_ratio_midnight"] == 4.12
-    assert "account-count ratio" in data["limitation"]
+    assert "Account counts are not notional exposure" in data["limitation"]
     assert "Single-venue" in data["limitation"]
 
 
