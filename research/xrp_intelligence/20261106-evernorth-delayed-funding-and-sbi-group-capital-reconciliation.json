@@ -153,7 +153,12 @@
         "sbi_definitions": "a2ff2e9fda8343b22a9f28598a28c276693e2c3bdd1b37725094c7fabda65f3d",
         "sbi_ownership": "6525919faa0a9ffc866e09fd7d16e26b49318a70d6102709b02f8d2c4450efdf"
       },
-      "hash_scope": "Hashes cover exact UTF-8 excerpts copied from rendered SEC filing lines; not the raw SEC filing bytes."
+      "hash_scope": "The delayed_subscriptions and sbi_definitions hashes cover verbatim UTF-8 excerpts copied from rendered SEC lines; the sbi_ownership hash covers a normalized table extraction. None of these hashes is a raw SEC filing-byte hash.",
+      "hash_scope_by_field": {
+        "delayed_subscriptions": "Verbatim UTF-8 excerpt from rendered SEC lines 5303-5304.",
+        "sbi_definitions": "Verbatim UTF-8 excerpt from rendered SEC lines 421-422.",
+        "sbi_ownership": "Normalized structured extraction of the SBI ownership table at rendered SEC lines 2352-2360; not verbatim source text."
+      }
     }
   ],
   "evidence_quality": {
