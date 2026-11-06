@@ -143,8 +143,8 @@ def test_sbi_closing_ownership_and_affiliate_positions_reconcile() -> None:
 def test_pro_forma_closing_ownership_groups_reconcile() -> None:
     artifact = load_artifact()
     groups = artifact["institutional_relationships"]["pro_forma_capitalization_at_closing"]
-    assert sum(x["percent_outstanding_pubco_common_stock"] for x in groups) == 100.0
-    assert sum(x["percent_voting_power"] for x in groups) == 100.0
+    assert math.isclose(sum(x["percent_outstanding_pubco_common_stock"] for x in groups), 100.0, rel_tol=0, abs_tol=1e-9)
+    assert math.isclose(sum(x["percent_voting_power"] for x in groups), 100.0, rel_tol=0, abs_tol=1e-9)
     sbi = next(x for x in groups if x["holder_group"] == "SBI")
     assert sbi["percent_outstanding_pubco_common_stock"] == 21.4
     assert sbi["percent_voting_power"] == 39.9
