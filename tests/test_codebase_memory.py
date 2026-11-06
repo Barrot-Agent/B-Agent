@@ -114,7 +114,10 @@ def make_git_runner(tmp_path: Path, *, dirty: str = "", fetch_code: int = 0, bra
             return completed(command, stdout=dirty)
         if args == ["remote", "get-url", "origin"]:
             return completed(command, stdout="https://github.com/Barrot-Agent/B-Agent.git\n")
-        if args == [\n            "fetch", "--no-tags", "origin",\n            "refs/heads/main:refs/remotes/origin/main",\n        ]:
+        if args == [
+            "fetch", "--no-tags", "origin",
+            "refs/heads/main:refs/remotes/origin/main",
+        ]:
             return completed(command, fetch_code, stderr="fetch denied" if fetch_code else "")
         if args == ["rev-parse", "--verify", "refs/remotes/origin/main"]:
             return completed(command, stdout="abc123\n")
@@ -138,7 +141,10 @@ def test_repository_sync_fetches_and_indexes_without_changing_checkout(tmp_path:
     assert result.index_succeeded is True
     assert indexer.calls[0][0] == "index_repository"
     assert indexer.calls[0][1]["persistence"] is False
-    assert [\n        "fetch", "--no-tags", "origin",\n        "refs/heads/main:refs/remotes/origin/main",\n    ] in commands
+    assert [
+        "fetch", "--no-tags", "origin",
+        "refs/heads/main:refs/remotes/origin/main",
+    ] in commands
     forbidden = {"pull", "checkout", "reset", "merge", "push"}
     assert not any(args and args[0] in forbidden for args in commands)
 
