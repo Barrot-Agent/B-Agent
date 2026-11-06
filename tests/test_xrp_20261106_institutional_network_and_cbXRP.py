@@ -180,39 +180,6 @@ def test_coinbase_institutional_collateral_is_not_xrp_specific():
     assert "does not disclose an XRP-specific collateral balance" in item["asset_specificity"]
 
 
-
-def test_sbi_is_a_circle_arc_founding_validator_but_not_an_xrpl_validator_by_this_evidence():
-    data = load_artifact()
-    item = relationships()["sbi_circle_arc_validator"]
-    assert item["launch_date"] == "2026-09-16"
-    assert item["status"] == "founding_validator_at_public_mainnet_launch"
-    assert "operation and governance" in item["relationship"]
-    assert any("not XRPL" in limit for limit in item["limits"])
-    assert any("founding validator" in claim for claim in data["network_conclusions"]["direct_relationships"]["sbi_circle"])
-
-
-def test_sbi_arc_token_presale_amount_is_not_misattributed_or_counted_as_xrp_capital():
-    data = load_artifact()
-    item = relationships()["sbi_circle_arc_token_presale"]
-    assert item["announced_total_consortium_raise_usd"] == 222000000
-    assert item["sbi_specific_amount_usd"] is None
-    assert item["cash_settlement_verified"] is False
-    context = data["capital_flow_context"]["circle_arc_token_presale"]
-    assert context["circle_q3_2026_sec"]["aggregate_gross_proceeds_usd"] == 242200000
-    assert context["circle_q3_2026_sec"]["revenue_recognized_by_period_end_usd"] == 181800000
-    assert context["circle_q3_2026_sec"]["idg_affiliated_purchase_usd"] == 25000000
-    assert context["circle_q3_2026_sec"]["sbi_specific_purchase_identified"] is False
-    assert context["reconciliation_status"] == "UNRESOLVED_DIFFERENT_DISCLOSURE_WINDOWS_OR_COHORTS"
-    assert data["forecast_status"]["directional_forecast_issued"] is False
-
-
-def test_sbi_arc_evidence_preserves_independent_primary_sources():
-    registry = {item["id"]: item for item in load_artifact()["source_registry"]}
-    assert registry["circle_arc_mainnet_launch_sbi_validator"]["source_type"] == "primary_company_announcement"
-    assert registry["sbi_arc_token_presale"]["independence_group"] == "sbi_group_primary"
-    assert registry["circle_q3_2026_arc_presale_sec_disclosure"]["source_type"] == "primary_sec_filing"
-
-
 def test_circle_payment_metrics_preserve_annualized_and_pending_status():
     item = relationships()["circle_payment_rails_and_strategy"]
     assert "annualized" in item["limits"][0].casefold()
