@@ -118,3 +118,45 @@ def test_pubco_warrant_capital_is_contingent_stock_financing_not_xrp_purchase_ca
     assert "cashless" in warrants["cash_exercise_conditions"].lower()
     assert "not XRP purchase capital" in warrants["classification"]
     assert artifact["exact_phrase_research"]["actual_capital"]["warrant_context"]["underlying_security"] == "Pubco Class A common stock, not XRP"
+
+
+
+def test_sbi_closing_ownership_and_affiliate_positions_reconcile() -> None:
+    artifact = load_artifact()
+    relationships = artifact["institutional_relationships"]
+    closing = relationships["sbi_group_at_closing"]
+    positions = relationships["sbi_stockholder_positions_as_of_prospectus"]
+    assert closing["class_a_shares"] == 9_431_914
+    assert closing["class_c_shares"] == 2_359_038
+    assert closing["percent_of_outstanding_pubco_common_stock"] == 21.4
+    assert closing["percent_of_voting_power"] == 39.9
+    assert sum(x["class_a_shares"] for x in positions["positions"]) == positions["totals"]["class_a_shares"]
+    assert sum(x["class_c_shares"] for x in positions["positions"]) == positions["totals"]["class_c_shares"]
+    assert positions["totals"]["class_a_shares"] == closing["class_a_shares"]
+    assert positions["totals"]["class_c_shares"] == closing["class_c_shares"]
+    assert positions["exact_sbi_cash_subscription_usd"] is None
+    assert "does not vote" in positions["class_c_status"].lower()
+    assert any("Yoshitaka Kitao" in x.get("voting_and_investment_controller", "") for x in positions["positions"])
+    assert "not a percentage of the $214.05M Advance Funding cash" in closing["interpretation"]
+
+
+def test_pro_forma_closing_ownership_groups_reconcile() -> None:
+    artifact = load_artifact()
+    groups = artifact["institutional_relationships"]["pro_forma_capitalization_at_closing"]
+    assert sum(x["percent_outstanding_pubco_common_stock"] for x in groups) == 100.0
+    assert sum(x["percent_voting_power"] for x in groups) == 100.0
+    sbi = next(x for x in groups if x["holder_group"] == "SBI")
+    assert sbi["percent_outstanding_pubco_common_stock"] == 21.4
+    assert sbi["percent_voting_power"] == 39.9
+
+
+def test_pik_note_lender_and_terms_are_separate_from_cash_xrp_purchase() -> None:
+    artifact = load_artifact()
+    note = artifact["capital_reconciliation"]["separate_financing"]["convertible_senior_pik_notes"]
+    assert "NH Investment & Securities" in note["lender_or_trustee"]
+    assert "Kyobo AIM" in note["lender_or_trustee"]
+    assert note["principal_usd"] == 30_000_000
+    assert note["interest_rate_percent"] == 4.0
+    assert note["maturity_year"] == 2031
+    assert note["shares_reserved_for_conversion"] == 3_585_278
+    assert note["deployment_to_xrp_verified"] is False

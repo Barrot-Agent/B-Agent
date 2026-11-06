@@ -11,8 +11,8 @@
     "document_date": "2026-10-30",
     "retrieval_window_utc": {
       "start": "2026-11-06T00:02:33Z",
-      "end": "2026-11-06T00:07:15Z",
-      "precision": "bounded retrieval window; exact request time unavailable"
+      "end": "2026-11-06T00:21:36Z",
+      "precision": "bounded retrieval window; exact request times unavailable"
     },
     "capture": {
       "kind": "SEC_HTML_extracted_text_and_line_references",
@@ -94,6 +94,36 @@
           "start": 5838,
           "end": 5842,
           "topic": "Warrants converted to Pubco warrants and closing-date sponsor forfeiture"
+        },
+        {
+          "start": 2351,
+          "end": 2360,
+          "topic": "Pro forma closing capitalization: SBI 21.4% of outstanding common stock and 39.9% of voting power"
+        },
+        {
+          "start": 3495,
+          "end": 3498,
+          "topic": "SBI stockholder beneficial ownership table"
+        },
+        {
+          "start": 3530,
+          "end": 3536,
+          "topic": "SBI stockholder Class A/Class C positions and named voting/investment controllers"
+        },
+        {
+          "start": 3577,
+          "end": 3578,
+          "topic": "Class C voting rights are restricted except specified class-right amendments"
+        },
+        {
+          "start": 2268,
+          "end": 2278,
+          "topic": "Ripple contribution and SBI Advance Funding ownership cap"
+        },
+        {
+          "start": 2268,
+          "end": 2270,
+          "topic": "NH Investment and Kyobo AIM note purchase agreement and $30M PIK note terms"
         }
       ],
       "note": "The SEC filing is primary evidence, but this artifact preserves extracted line references rather than claiming a byte-complete raw HTML receipt. It is not eligible as a point-in-time market feature."
@@ -141,7 +171,11 @@
         "issued_and_funded_date": "2026-10-12",
         "stated_use": "General corporate purposes, including acquisition of XRP and other XRP ecosystem activities",
         "deployment_to_xrp_verified": false,
-        "classification": "debt financing; not proof of XRP purchase"
+        "classification": "debt financing; not proof of XRP purchase",
+        "lender_or_trustee": "NH Investment & Securities Co., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+        "interest_rate_percent": 4,
+        "maturity_year": 2031,
+        "shares_reserved_for_conversion": 3585278
       },
       "ripple_related_party_credit_facility": {
         "limit_usd_after_2026_10_07_amendment": 10000000,
@@ -205,7 +239,111 @@
       "attributed_voting_ownership_threshold_percent": 19.9,
       "classification": "In-kind XRP contribution."
     },
-    "sbic_disambiguation": "The SEC filing's defined term SBI refers to SBI Holdings, Inc. and its four controlled stockholders listed above. It does not identify the separate Japanese SBIC East, SBIC Central or SBIC West investment companies."
+    "sbic_disambiguation": "The SEC filing's defined term SBI refers to SBI Holdings, Inc. and its four controlled stockholders listed above. It does not identify the separate Japanese SBIC East, SBIC Central or SBIC West investment companies.",
+    "sbi_group_at_closing": {
+      "class_a_shares": 9431914,
+      "class_c_shares": 2359038,
+      "percent_of_outstanding_pubco_common_stock": 21.4,
+      "percent_of_voting_power": 39.9,
+      "as_of": "2026-10-09 business-combination closing",
+      "source_basis": "SEC pro forma capitalization table at closing",
+      "interpretation": "SBI held 21.4% of outstanding Pubco common stock and 39.9% of voting power at closing. These are equity ownership and voting measurements, not a percentage of the $214.05M Advance Funding cash."
+    },
+    "sbi_stockholder_positions_as_of_prospectus": {
+      "data_basis": "Beneficial ownership before the offering in the SEC prospectus; per-entity positions disclosed in the selling-securityholder table and footnotes.",
+      "positions": [
+        {
+          "entity": "SBI Holdings USA, Inc.",
+          "class_a_shares": 6529787,
+          "class_c_shares": 1633180,
+          "voting_and_dispositive_controllers": [
+            "Shohei Yamada",
+            "Yoshihiko Tezuka"
+          ]
+        },
+        {
+          "entity": "SBI Venture Fund 2023A Investment LPS",
+          "class_a_shares": 198065,
+          "class_c_shares": 49538,
+          "general_partner": "SBI Investment Co., Ltd.",
+          "voting_and_investment_controller": "Yoshitaka Kitao"
+        },
+        {
+          "entity": "SBI Venture Fund 2023B Investment LPS",
+          "class_a_shares": 285623,
+          "class_c_shares": 71438,
+          "general_partner": "SBI Investment Co., Ltd.",
+          "voting_and_investment_controller": "Yoshitaka Kitao"
+        },
+        {
+          "entity": "SBI PE Holdings Co., Ltd.",
+          "class_a_shares": 2418439,
+          "class_c_shares": 604882,
+          "voting_and_dispositive_controllers": [
+            "Yoshitaka Kitao",
+            "Takeshi Goto",
+            "Kenji Uesaka"
+          ]
+        }
+      ],
+      "totals": {
+        "class_a_shares": 9431914,
+        "class_c_shares": 2359038
+      },
+      "class_c_status": "Convertible into Class A under the charter; Class C does not vote except on specified amendments affecting its class rights or ownership restrictions.",
+      "exact_sbi_cash_subscription_usd": null,
+      "note": "Per-entity Class A/Class C positions are not a disclosure of the dollar amounts subscribed by each SBI affiliate."
+    },
+    "pro_forma_capitalization_at_closing": [
+      {
+        "holder_group": "SPAC public shareholders",
+        "class_a_shares": 4846247,
+        "class_c_shares": 0,
+        "company_units": 0,
+        "percent_outstanding_pubco_common_stock": 8.8,
+        "percent_voting_power": 20.5
+      },
+      {
+        "holder_group": "Sponsor",
+        "class_a_shares": 4704137,
+        "class_c_shares": 29033708,
+        "company_units": 0,
+        "percent_outstanding_pubco_common_stock": 61.4,
+        "percent_voting_power": 19.9
+      },
+      {
+        "holder_group": "Ripple contributor",
+        "class_a_shares": 1678382,
+        "class_c_shares": 0,
+        "company_units": 16461545,
+        "percent_outstanding_pubco_common_stock": 3,
+        "percent_voting_power": 7.1
+      },
+      {
+        "holder_group": "Contributor related-party entity",
+        "class_a_shares": 661867,
+        "class_c_shares": 0,
+        "company_units": 6491583,
+        "percent_outstanding_pubco_common_stock": 1.2,
+        "percent_voting_power": 2.8
+      },
+      {
+        "holder_group": "SBI",
+        "class_a_shares": 9431914,
+        "class_c_shares": 2359038,
+        "company_units": 0,
+        "percent_outstanding_pubco_common_stock": 21.4,
+        "percent_voting_power": 39.9
+      },
+      {
+        "holder_group": "Other advance and delayed funding subscribers",
+        "class_a_shares": 2316335,
+        "class_c_shares": 0,
+        "company_units": 0,
+        "percent_outstanding_pubco_common_stock": 4.2,
+        "percent_voting_power": 9.8
+      }
+    ]
   },
   "exact_phrase_research": {
     "ask_coin": {
