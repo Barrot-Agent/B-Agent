@@ -155,11 +155,114 @@
       "model_eligible": false
     },
     {
+      "id": "SBI_CIRCLE_MOU_2023",
+      "publisher": "Circle and SBI Holdings",
+      "source_type": "joint_strategic_mou",
+      "url": "https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services",
+      "event_date": "2023-11-27",
+      "independence_group": "circle_sbi_joint_announcement",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_CIRCLE_USDC_LAUNCH_2025",
+      "publisher": "Circle and SBI VC Trade",
+      "source_type": "joint_stablecoin_distribution_announcement",
+      "url": "https://www.circle.com/fr/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+      "event_date": "2025-03-25",
+      "independence_group": "circle_sbi_joint_announcement",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_CIRCLE_INVESTMENT_2025",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "source_type": "official_strategic_investment_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "event_date": "2025-06-09",
+      "independence_group": "sbi_group_primary",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_CIRCLE_JV_2025",
+      "publisher": "SBI Holdings and Circle Internet Holdings",
+      "source_type": "official_joint_venture_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "event_date": "2025-08-22",
+      "independence_group": "sbi_circle_joint_venture",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_JPYSC_LAUNCH_2026",
+      "publisher": "SBI Holdings / SBI Shinsei Trust Bank / SBI VC Trade / Startale",
+      "source_type": "official_stablecoin_launch_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "event_date": "2026-06-24",
+      "independence_group": "sbi_group_primary",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_JPYSC_LENDING_NOV2_2026",
+      "publisher": "SBI VC Trade",
+      "source_type": "official_stablecoin_lending_and_handling_balance_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "event_date": "2026-11-02",
+      "as_of_date": "2026-11-02",
+      "independence_group": "sbi_group_primary",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_STRIUM_STARTALE_2026",
+      "publisher": "SBI Holdings and Startale Group",
+      "source_type": "official_layer1_development_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0205_16088.html",
+      "event_date": "2026-02-05",
+      "independence_group": "sbi_startale_joint_announcement",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_STARTALE_INVESTMENT_2026",
+      "publisher": "SBI Holdings",
+      "source_type": "official_strategic_investment_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+      "event_date": "2026-03-26",
+      "investment_usd": 50000000,
+      "independence_group": "sbi_group_primary",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_VISA_DIGITAL_FINANCE_MOU",
+      "publisher": "SBI Holdings and Visa Japan",
+      "source_type": "official_digital_finance_mou",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "event_date": "2026-05-01",
+      "independence_group": "sbi_visa_joint_announcement",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_JPYSC_LENDING_NOV2_2026",
+      "publisher": "SBI VC Trade",
+      "source_type": "official_stablecoin_lending_and_handling_balance_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "event_date": "2026-11-02",
+      "as_of_date": "2026-11-02",
+      "independence_group": "sbi_group_primary",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
       "id": "PERMISSION_ASK_CONTRACTS",
       "publisher": "Permission",
       "source_type": "official_token_documentation",
-      "url": "https://docs.permission.ai/ask-token/contract-addresses",
-      "last_updated_description": "14 days before retrieval",
+      "url": "https://docs.permission.ai/ask-token",
+      "page_crawled_description": "crawled on retrieval day",
       "independence_group": "permission_token_primary",
       "raw_source_bytes_captured": false,
       "model_eligible": false
@@ -473,6 +576,79 @@
       "details": [
         "A principal-market reference is not evidence of custody, trading exclusivity, partnership or XRP purchases."
       ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relationship": "Strategic equity investment and joint venture",
+      "status": "DIRECT_STRATEGIC_RELATIONSHIP",
+      "details": [
+        "SBI Holdings and SBI Shinsei Bank announced a combined USD 50M strategic investment in Circle shares in June 2025, USD 25M each.",
+        "SBI Holdings and Circle Internet Holdings announced a joint venture in August 2025 to promote USDC in Japan and Web3/digital-finance use cases."
+      ],
+      "does_not_prove": [
+        "XRP investment",
+        "Ripple partnership",
+        "XRP settlement volume"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "SBI VC Trade",
+      "relationship": "Direct USDC distribution and Japan market partnership",
+      "status": "LIVE_USDC_DISTRIBUTION",
+      "details": [
+        "SBI VC Trade began public USDC handling in Japan in March 2025 after electronic-payment-instrument registration.",
+        "The relationship follows the November 2023 MOU and March 2025 launch."
+      ],
+      "does_not_prove": [
+        "XRP purchases",
+        "XRP collateral",
+        "Ripple-Circle partnership"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "JPYSC / SBI VC Trade",
+      "relationship": "Trust-issued JPY stablecoin and customer lending product",
+      "status": "LIVE_JPYSC_LENDING",
+      "details": [
+        "SBI Shinsei Trust Bank is the JPYSC issuer; SBI VC Trade distributes it.",
+        "As of November 2, 2026, SBI VC Trade reported JPYSC lending balances above JPY 10B and JPYSC handling balances above JPY 30B."
+      ],
+      "does_not_prove": [
+        "XRP collateral",
+        "XRPL settlement",
+        "XRP demand"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Startale Group / Strium",
+      "relationship": "Strategic investment and separate Layer-1 development",
+      "status": "DIRECT_DEVELOPMENT_RELATIONSHIP",
+      "details": [
+        "SBI announced an approximately USD 50M investment in Startale in March 2026.",
+        "SBI and Startale announced Strium, a separate L1 focused on tokenized stocks, bonds and RWAs."
+      ],
+      "does_not_prove": [
+        "XRPL adoption",
+        "XRP demand"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Visa Japan",
+      "relationship": "Digital-finance and payments cooperation MOU",
+      "status": "EXPLORATORY_MOU",
+      "details": [
+        "The May 2026 announcement describes discussion of future digital-asset and payment collaboration, including stablecoins."
+      ],
+      "does_not_prove": [
+        "Production settlement",
+        "XRP purchases",
+        "XRPL adoption"
+      ]
     }
   ],
   "circle_q3_2026": {
@@ -489,7 +665,10 @@
     "registered_crypto_accounts_as_of_2026_07_07": 2000000,
     "metric_type": "registered_accounts",
     "active_users_disclosed": false,
-    "xrp_specific_holdings_or_volume_disclosed": false
+    "xrp_specific_holdings_or_volume_disclosed": false,
+    "jpy_sc_lending_balance_jpy_as_of_2026_11_02": 10000000000,
+    "jpy_sc_handling_balance_jpy_as_of_2026_11_02": 30000000000,
+    "jpy_sc_metrics_type": "issuer-reported service lending balance and handling balance; not XRPL settlement volume"
   },
   "competing_hypotheses": [
     {
@@ -500,10 +679,14 @@
         "USDC and JPYSC support",
         "Project Trinity stablecoin DvP",
         "Strium/Startale L1 development",
-        "SBI Ripple Asia XRPL remittance study"
+        "SBI Ripple Asia XRPL remittance study",
+        "SBI Holdings and SBI Shinsei Bank invested USD 50M in Circle shares, and SBI Holdings/Circle established a Japan USDC joint venture.",
+        "SBI VC Trade reported JPYSC lending balances above JPY 10B and handling balances above JPY 30B as of November 2, 2026.",
+        "SBI Holdings invested approximately USD 50M in Startale and is developing the separate Strium L1."
       ],
       "disconfirming_evidence": [
-        "The XRPL study and RLUSD partnership demonstrate real Ripple-linked strategic activity, but no production volume or XRP-specific capital flow is disclosed."
+        "The XRPL study and RLUSD partnership demonstrate real Ripple-linked strategic activity, but no production volume or XRP-specific capital flow is disclosed.",
+        "Stablecoin lending/handling balances and Strium development do not demonstrate XRP purchases or XRP settlement."
       ]
     },
     {
@@ -571,6 +754,7 @@
     "Track actual XRP acquisitions from the $30M note proceeds separately from stated intended uses.",
     "Track RLUSD circulation and venue-specific collateral eligibility separately from XRP collateral.",
     "Track SBI VC Trade product balances, stablecoin lending and XRPL settlement volume only when absolute issuer/ledger evidence is published.",
-    "Retain SBIC East/Central/West identity separately from SBI Holdings and the Social Bias Inference Corpus."
+    "Retain SBIC East/Central/West identity separately from SBI Holdings and the Social Bias Inference Corpus.",
+    "Track SBI VC Trade's JPYSC lending and handling balances separately from USDC and RLUSD; do not treat them as XRP collateral or XRP settlement."
   ]
 }

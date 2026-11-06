@@ -26,7 +26,7 @@ def test_sbic_chatgpt_evidence_is_training_not_a_partnership():
     assert data["exact_entity_found"] is False
     assert "not evidence of an OpenAI partnership" in data["conclusion"] if "conclusion" in data else True
     assert "2025" in data["official_event"]
-    assert "VOST" in data["official_event"] or "VOST" in str(load()["source_registry"])
+    assert "VOST" in data["provider"]
 
 
 def test_evernorth_cash_and_in_kind_xrp_are_not_double_counted():
@@ -121,3 +121,30 @@ def test_no_directional_forecast_is_created_from_corporate_disclosures():
     assert data["model_admission"]["eligible"] is False
     assert len(data["competing_hypotheses"]) >= 4
     assert all(item["supporting_evidence"] and item["disconfirming_evidence"] for item in data["competing_hypotheses"])
+
+\n\ndef test_circle_sbi_is_a_direct_usdc_and_equity_relationship_not_an_xrp_purchase():
+    data = load()
+    relationships = {item["from"] + "->" + item["to"]: item for item in data["institutional_relationships"]}
+    assert relationships["SBI Holdings->Circle"]["status"] == "DIRECT_STRATEGIC_RELATIONSHIP"
+    assert relationships["Circle->SBI VC Trade"]["status"] == "LIVE_USDC_DISTRIBUTION"
+    assert "XRP investment" in relationships["SBI Holdings->Circle"]["does_not_prove"]
+
+
+def test_sbi_jpysc_lending_and_handling_balances_are_not_xrp_metrics():
+    metrics = load()["sbi_vc_trade_metrics"]
+    assert metrics["jpy_sc_lending_balance_jpy_as_of_2026_11_02"] == 10_000_000_000
+    assert metrics["jpy_sc_handling_balance_jpy_as_of_2026_11_02"] == 30_000_000_000
+    assert metrics["metric_type"] == "registered_accounts"
+    assert "not XRPL settlement volume" in metrics["jpy_sc_metrics_type"]
+
+
+def test_sbi_strium_is_separate_from_xrpl_and_xrp():
+    relationships = load()["institutional_relationships"]
+    strium = next(item for item in relationships if item["from"] == "SBI Holdings" and item["to"] == "Startale Group / Strium")
+    assert strium["status"] == "DIRECT_DEVELOPMENT_RELATIONSHIP"
+    assert "XRPL adoption" in strium["does_not_prove"]
+
+
+def test_permission_ask_contracts_are_from_official_permission_docs():
+    source = next(item for item in load()["source_registry"] if item["id"] == "PERMISSION_ASK_CONTRACTS")
+    assert source["url"] == "https://docs.permission.ai/ask-token"
