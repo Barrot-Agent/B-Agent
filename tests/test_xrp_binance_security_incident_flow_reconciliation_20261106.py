@@ -71,7 +71,7 @@ def test_binance_replenishment_is_not_mislabeled_as_stolen_asset_recovery():
     recovery = data["withdrawal_and_reserve_analysis"]
     assert recovery["binance_replenished_affected_assets_percent_as_of_2026_11_04"] == 98
     assert recovery["funds_set_aside_percent_of_required_cover"] == "more_than_100%"
-    assert "not the same as recovering" in recovery["limitations"][0]
+    assert "not the same as recovering" in recovery["limitations"][1]
     assert recovery["xrp_100_percent_backed_statement"].startswith("Binance's November 2")
 
 
