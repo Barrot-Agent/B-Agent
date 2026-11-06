@@ -29,6 +29,39 @@ TOP_LEVEL_STRING_LIST_FIELDS = ("prerequisites", "completion_gate", "recovery_pl
 TASK_STRING_LIST_FIELDS = ("files", "acceptance_criteria", "tests", "depends_on", "rollback_plan")
 SEVERITY_WEIGHT = {"critical": 25, "high": 12, "medium": 5, "low": 1}
 
+_UNSAFE_RECOVERY_PATTERNS = (
+    re.compile(r"\bgit\s+reset\s+--hard\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+clean\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+stash\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+restore\b", re.IGNORECASE),
+    re.compile(r"\brm\s+-rf?\b|\bremove-item\s+.*-recurse\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+push\s+--force(?:-with-lease)?\b|\bforce[- ]push\b", re.IGNORECASE),
+    re.compile(
+        r"\bdiscard(?:\s+all)?\s+(?:(?:existing|user)\s+)*(?:uncommitted|untracked|staged|local)"
+        r"(?:\s+user)?\s+(?:work|changes|files)\b",
+        re.IGNORECASE,
+    ),
+)
+_NEGATION_BEFORE_UNSAFE_ACTION = re.compile(
+    r"\b(?:do not|don't|never|must not|must never|prohibit(?:ed)?|forbid(?:den)?)\b",
+    re.IGNORECASE,
+)
+
+
+def _unsafe_recovery_action(instruction: str) -> str | None:
+    """Return a destructive recovery command unless explicitly prohibited."""
+    for pattern in _UNSAFE_RECOVERY_PATTERNS:
+        for match in pattern.finditer(instruction):
+            sentence_start = max(
+                instruction.rfind(".", 0, match.start()),
+                instruction.rfind(";", 0, match.start()),
+                instruction.rfind("\n", 0, match.start()),
+            ) + 1
+            prefix = instruction[sentence_start:match.start()]
+            if _NEGATION_BEFORE_UNSAFE_ACTION.search(prefix):
+                continue
+            return match.group(0)
+    return None
 
 @dataclass(frozen=True)
 class BundleFinding:
@@ -208,6 +241,28 @@ def review_work_bundle(bundle: Any) -> BundleReview:
             "Specify safe interruption recovery, bounded retry, rollback, or blocking behavior.",
         ))
 
+    # A recovery plan must never destroy pre-existing operator work. Explicit
+    # prohibitions may mention dangerous commands safely; executable instructions
+    # to use them are rejected before a bundle can reach the repair controller.
+    recovery_locations = [("recovery_plan", recovery)]
+    if isinstance(tasks, list):
+        for index, task in enumerate(tasks):
+            if isinstance(task, dict):
+                recovery_locations.append((f"tasks[{index}].rollback_plan", task.get("rollback_plan")))
+    for location, instructions in recovery_locations:
+        if not isinstance(instructions, list):
+            continue
+        for index, instruction in enumerate(instructions):
+            if not isinstance(instruction, str):
+                continue
+            unsafe = _unsafe_recovery_action(instruction)
+            if unsafe:
+                findings.append(_finding(
+                    "UNSAFE_RECOVERY_ACTION", "critical", f"{location}[{index}]",
+                    f"Recovery instruction contains destructive repository action {unsafe!r}; "
+                    "preserve existing work and stop safely instead.",
+                ))
+
     penalty = sum(SEVERITY_WEIGHT.get(item.severity, 1) for item in findings)
     score = max(0, 100 - penalty)
     valid = not any(item.severity in {"critical", "high"} for item in findings)
@@ -350,6 +405,9 @@ id, title, description, files (non-empty relative paths), acceptance_criteria
 depends_on (task ids, possibly empty), risk_level, rollback_plan (non-empty).
 
 Bundle rules:
+- At least one item in the constraints array must explicitly require human approval, e.g.
+  "No consequential external action without explicit human approval." The word
+  authorization alone is insufficient for this deterministic gate.
 - Decompose the objective into ordered, bounded tasks with explicit dependencies.
 - Ground file targets in repository evidence; mark unknown paths as discovery work, not facts.
 - Define tests that could fail; never treat model claims as proof.
