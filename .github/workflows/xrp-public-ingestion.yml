@@ -83,12 +83,6 @@ jobs:
           fi
       - name: Capture public XRP market sources and evaluate historical baselines
         run: python -m barrot_agent.evolution.xrp_public_ingestion --output-dir artifacts/xrp_ingestion
-      - name: Save cumulative feature-store cache
-        if: success() && steps.feature_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: artifacts/xrp_ingestion/feature_store.sqlite3
-          key: xrp-feature-store-v1-${{ github.run_id }}
       - name: Upload immutable raw-source receipts
         uses: actions/upload-artifact@v7
         with:
@@ -116,3 +110,10 @@ jobs:
             artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
           retention-days: 90
+
+      - name: Save cumulative feature-store cache after successful artifact publication
+        if: success() && steps.feature_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: artifacts/xrp_ingestion/feature_store.sqlite3
+          key: xrp-feature-store-v1-${{ github.run_id }}

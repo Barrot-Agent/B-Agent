@@ -530,6 +530,9 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "persist-credentials: false" in workflow
     assert "actions/cache/restore@v4" in workflow
     assert "actions/cache/save@v4" in workflow
+    assert workflow.index("Upload immutable raw-source receipts") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
+    assert workflow.index("Upload daily point-in-time feature-store backup and walk-forward report") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
+    assert workflow.count("actions/cache/save@v4") == 1
     assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" in workflow
     assert "select(.conclusion == \"success\"" in workflow
     assert '.head_branch == "main"' in workflow
