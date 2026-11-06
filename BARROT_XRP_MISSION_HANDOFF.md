@@ -9938,3 +9938,82 @@ Manual external workflows remain gated and were not run: Databricks workspace/jo
 6. Expand synchronized historical XRP spot, derivatives, ETF, exchange-flow, collateral, custody, stablecoin, payment-rail, regulation and macro features; establish evaluator signing, calibration, drift and shadow evidence before any directional forecast.
 
 Merged PRs: none. Forecasts issued: none. Forecast outcomes: none.
+
+
+# Run 11 — integrated XRP and V3 checkpoint — 2026-11-06T19:15:59Z
+
+## Current state
+
+Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. No merge occurred.
+
+- #1640 head: `4c83aef07b13748c3d98061a54a55cca35186eea`; 155 changed paths.
+- #1643 head: `b209d9a59735c988b54b14b7edd7ed97224da324`; 341 changed paths.
+- Their only shared changed path is `.github/workflows/dependency-audit.yml`, with identical content. #1640 has 154 unique paths; #1643 has 340 unique paths. #1643 is 481 commits ahead of main and must not be merged directly after #1640. Transfer its unique work to one successor created directly on the resulting main.
+
+## Exact-head verification — VERIFIED
+
+**#1640 / `4c83aef`**
+- Full repository suite: **1,065 passed, 8 subtests passed**.
+- Core suite, installed-wheel verification, six-manifest dependency audit and fail-closed gate all passed.
+- CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42275312548
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42275312518
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42275312494
+
+**#1643 / `b209d9a`**
+- Full repository suite: **1,586 passed, 8 subtests passed**.
+- Dependency audit and fail-closed gate passed.
+- CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42277550885
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42277550886
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42277550931
+
+Cache reservation/budget and Node.js deprecation warnings were non-fatal. Automatic merging remains disabled.
+
+## New #1643 research artifact — EXECUTED and VERIFIED
+
+Added `research/xrp_intelligence/20261106T190906Z-xrp-spot-depth-derivatives-etf-institutional-capital-update.json` and ten regression tests in `tests/test_xrp_spot_depth_derivatives_etf_institutional_capital_update_20261106.py`. The exact-head full suite above includes them. Ten SHA-256 receipts bind normalized excerpts only, not original HTTP wire bytes or independent timestamp anchors.
+
+- Kraken XRP/USD: $1.18304 last, $1.18308/$1.18309 bid/ask, 39.725M XRP 24h volume, $1.20425 VWAP; no provider event timestamp.
+- OKX XRP-USDT: $1.1847 last at 19:02:21.864 UTC; USDT quote, not a synchronized USD return against Kraken.
+- Fuelmaps 18:00 UTC spot-only six-venue depth is bid-heavy across bands, but excludes Binance/Bitget and uses hourly averages of one-minute snapshots; visible orders can be cancelled.
+- Edge or Not 18:59 UTC shows $9.5M bids/$8.6M asks within 1%, but combines Binance spot and OKX perpetuals. Not comparable to spot-only depth and not a tested signal.
+- TradRadar 18:00 UTC (15-minute delayed): $1.184 mark, -3.96% 24h, $1.90B OI across seven venues (-2.47%), +0.0010% funding per 8h, at least $11.96M liquidations across five venues ($11.36M longs), 3.90 long/short account ratio. Liquidations are a lower bound; account ratio is not notional exposure.
+- XRP Insights Nov 2–5 settled-vintage holdings delta: -149,487 XRP (about -$203K), six spot funds plus BITW, 1.19645B holdings. Holdings-derived, not AP cash flow; flow-excluded funds count as zero. Preserve the prior Nov 2–4 vintage (-259,701 XRP) separately.
+- Evernorth's Oct 30 SEC filing: $30M 4% convertible senior PIK notes paid/issued Oct 12; ~$30M net proceeds before expenses; use may include XRP acquisition, but actual XRP spend is unverified. Separate Ripple Company Facility: $10M limit, $9.7M drawn Oct 7 for working capital/expenses/vendor purposes, no XRP purchase disclosed. Separate $1M Evernorth Facility. Four filing-defined SBI Stockholders are SBI Holdings-controlled entities, not regional Japanese SBIC companies.
+- Standard Chartered reports RLUSD XRPL custody live for eligible clients through its DFSA-regulated DIFC branch; RLUSD collateral mirroring for agreed LMAX products is planned/being enabled, with no live balance disclosed.
+- BNY reports primary RLUSD reserve custody, Ripple Prime custody relationship and XRP/RLUSD custody support for eligible institutions; tokenized trade finance is exploratory, with no XRP AUC or volume disclosed.
+- XRPLHub's Nov 6 15:53 UTC tracker: LendingProtocol 21/35 and SingleAssetVault 23/35, below 29/35 for two continuous weeks. XLS-66 lending is uncollateralized; vault deposits fund the pool, not borrower collateral. Not live.
+
+Competing hypotheses remain: leveraged-long unwind; spot bid absorption; small holdings-derived ETF flow; institutional capability without demonstrated XRP demand; capital proceeds/debt requiring channel separation; and XRPL lending not yet live. Counterevidence is retained in the artifact. **No directional forecast or model admission.**
+
+## Paper-trader safety audit
+
+Main `.github/workflows/coinbase-paper-trader.yml` is manual `workflow_dispatch` only, with no recurring schedule. Main state still has a nonzero simulated position (0.012445158497236623), `position_product=null`, average entry $80,436.84 and 126 trades. Main script does not validate product identity before network/model calls. The manual workflow is unsafe to trigger; it was not triggered.
+
+#1640 contains the safer replacement: manual `YES` confirmation plus exact main SHA, read-only permissions, state/product preflight before provider/model calls, and artifact-only output without pushing state to main. Its script independently validates state. This fully covers the five paths in #1320 with stronger safeguards. No paper trade occurred.
+
+## Backlog classification
+
+Open inventory: 369 PRs, 354 drafts, 15 non-drafts.
+
+- #1640: active V3/XRP integration; exact-head verification passed; blocked on independent approval and unresolved Pages deployment side-effect authorization.
+- #1643: active research archive; exact-head verification passed; blocked on approval and correct sequencing after #1640.
+- #1320, #1318 and #1317: every changed path is contained in #1640; #1640 carries stronger/more extensive versions. Superseded candidates; do not close until #1640 is merged and verified on main.
+- #1649/#1650 and older #1254/#1255 are superseded by #1640's combined legacy requirements (databricks-sdk >=0.158.0, huggingface_hub >=2.4.0). #1646/#1648 are also represented in #1640's requirements-dev (types-requests >=2.33.0.20261030, pytest >=9.2.0).
+- #1645's changed workflow blob is identical to #1640. #1644/#1647 action-version updates overlap #1640; active workflow versions are already incorporated, while some action steps are absent from the integrated workflow versions. Do not merge these branches independently.
+- #1269 remains unique geometry/rendering work (nine paths), 428 commits behind main, mergeability false, with no approval; preserve as unique/blocked.
+- #1642 is a draft with seven overlapping paths whose blobs differ from #1640; preserve and reconcile. Other drafts remain unique/unreviewed until inspected.
+- No source PRs were closed.
+
+Main is marked protected; detailed branch-protection inspection returns HTTP 403. No approving review was found on #1640 or #1643. Pages settings remain inaccessible; a prior main push triggered Pages deployment (run 41799855489). No merge or protection bypass was attempted.
+
+Nine-platform map: ChatGPT/GitHub repository access is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows remain unverified. No external AI transfer occurred.
+
+## Next concrete action
+
+1. Obtain independent approvals and resolve authorization for the Pages deployment side effect.
+2. Merge #1640 only after every required condition is satisfied; fetch main, verify the merge commit/files and run main CI.
+3. Create one consolidated research successor directly on the resulting main from #1643's 340 unique paths plus reconciled #1642 work.
+4. Run exact-head full-suite, dependency/security and fail-closed checks before considering the research merge.
+5. Close only exact duplicate/superseded PRs after their replacement is verified on main.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
