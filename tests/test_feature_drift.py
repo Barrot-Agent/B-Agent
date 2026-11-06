@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -12,6 +13,7 @@ from barrot_agent.evolution.feature_drift import (
 from barrot_agent.evolution.xrp_public_ingestion import run_ingestion
 
 
+ROOT = Path(__file__).resolve().parents[1]
 CUTOFF = datetime(2026, 11, 6, 0, 0, tzinfo=timezone.utc)
 
 
