@@ -80,3 +80,18 @@ def test_artifact_is_research_only_and_issues_no_forecast():
     assert row["model_eligible"] is False
     assert row["forecast_status"] == "NOT_ISSUED"
     assert row["data_cutoff_utc"] is None
+
+
+def test_permission_coinbase_embedded_wallet_is_a_service_relationship_not_an_xrp_or_token_counterparty():
+    data = load_artifact()
+    row = data["ask_coin"]["strongest_candidate"]
+    relation = row["wallet_infrastructure_relationship"]
+    assert relation["provider"] == "Coinbase"
+    assert relation["service"] == "Coinbase Embedded Wallet"
+    assert relation["announced_date"] == "2026-09-22"
+    assert "Permission says it no longer holds wallet keys" in relation["key_control"]
+    assert row["xrp_relationship_status"] == "NO_DIRECT_XRP_OR_XRPL_RELATIONSHIP_ESTABLISHED"
+    source = next(x for x in data["source_registry"] if x["id"] == relation["source_id"])
+    assert source["url"] == "https://www.permission.ai/blog/ask-wallet-update"
+    assert hashlib.sha256(source["normalized_evidence"].encode("utf-8")).hexdigest() == source["normalized_evidence_sha256"]
+    assert source["exact_quote_word_count"] == 12
