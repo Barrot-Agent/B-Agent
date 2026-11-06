@@ -120,6 +120,8 @@ def test_coinbase_circle_usdc_relationship_continues_alongside_rlusd():
     assert circle["economics"]["year_over_year_increase_from_higher_average_usdc_balances_usd"] == "84600000"
     assert circle["economics"]["year_over_year_decrease_from_lower_average_interest_rates_usd"] == "52800000"
     assert "exclusive distribution" in circle["not_established"]
+    assert circle["economics"]["company_level_q3_2026_stablecoin_revenue_usd"] == "306905000"
+    assert "not a Circle-only revenue figure" in circle["economics_scope_note"]
     circle_metrics = load_artifact()["institutional_relationships"]["circle_q3_2026"]
     assert circle_metrics["average_usdc_circulation_usd_billions"] == "73.3"
     assert circle_metrics["q3_usdc_onchain_transaction_volume_usd_trillions"] == "13.9"
@@ -133,7 +135,7 @@ def test_occ_circle_ripple_and_coinbase_charter_statuses_are_distinct():
     coinbase = statuses["Coinbase National Trust Company"]
     assert coinbase["approved"] == "2026-04-02"
     assert coinbase["consummated_effective"] is None
-    assert coinbase["status"] == "approved_no_consumation_effective_date_in_retrieved_cas"
+    assert coinbase["status"] == "approved_no_consummated_effective_date_in_retrieved_cas"
 
 
 def test_rlusd_reserve_custody_and_collateral_roles_are_not_mislabeled_as_xrp():
@@ -160,3 +162,27 @@ def test_macro_expectations_are_not_release_data_and_no_forecast_is_issued():
     assert data["forecast_status"]["paper_trade_executed"] is False
     assert data["forecast_status"]["real_money_action"] is False
     assert data["data_quality"]["model_eligibility"] is False
+
+def test_circle_capital_and_payment_rail_strategy_is_not_mislabeled_as_xrp_demand():
+    relationships = load_artifact()["institutional_relationships"]
+    binance = next(x for x in relationships["edges"] if x["from"] == "Circle" and x["to"] == "Binance")
+    assert binance["status"] == "announced"
+    assert "$100 million equity investment" in binance["scope"]
+    assert "XRP purchases" in binance["not_established"]
+    tazapay = next(x for x in relationships["edges"] if x["from"] == "Circle" and x["to"] == "Tazapay")
+    assert tazapay["status"] == "pending_close_expected_2027_subject_to_regulatory_approvals"
+    assert "completed acquisition" in tazapay["not_established"]
+    circle_strategy = relationships["circle_q3_2026"]["corporate_strategy"]
+    assert circle_strategy["arc_mainnet_launch"] == "2026-09-16"
+    assert circle_strategy["native_usdc_integration"] is True
+
+
+def test_ripple_corporate_scale_claims_remain_issuer_reported_and_not_xrp_features():
+    claims = load_artifact()["institutional_relationships"]["ripple_corporate_claims"]
+    assert claims["reported_licenses"] == ">85"
+    assert claims["reported_financial_institution_relationships"] == ">1700"
+    assert claims["reported_2025_transactions_enabled_usd_trillions"] == ">16"
+    assert "not independently audited" in claims["qualification"]
+    robinhood = next(x for x in load_artifact()["institutional_relationships"]["edges"] if x["from"] == "Ripple" and x["to"] == "Robinhood")
+    assert "RLUSD on XRPL for institutional settlement" in robinhood["announced_not_measured"]
+    assert "measured RLUSD institutional settlement volume on XRPL" in robinhood["not_established"]

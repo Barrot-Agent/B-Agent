@@ -467,7 +467,13 @@
         "not_established": [
           "XRP purchases",
           "XRP collateral",
-          "XRP payment volume"
+          "XRP payment volume",
+          "measured RLUSD institutional settlement volume on XRPL"
+        ],
+        "announced_not_measured": [
+          "RLUSD on XRPL for institutional settlement",
+          "Ripple Treasury integration for Robinhood operations",
+          "Ripple Prime financing and market-access services"
         ]
       },
       {
@@ -479,12 +485,42 @@
         "economics": {
           "q3_2026_stablecoin_revenue_usd": "306905000",
           "year_over_year_increase_from_higher_average_usdc_balances_usd": "84600000",
-          "year_over_year_decrease_from_lower_average_interest_rates_usd": "52800000"
+          "year_over_year_decrease_from_lower_average_interest_rates_usd": "52800000",
+          "company_level_q3_2026_stablecoin_revenue_usd": "306905000",
+          "average_usdc_held_in_coinbase_products": "all-time high"
         },
         "not_established": [
           "exclusive distribution",
           "termination of Circle relationship",
           "replacement of USDC by RLUSD"
+        ],
+        "economics_scope_note": "The $306.905M figure is Coinbase's company-level Q3 stablecoin revenue, not a Circle-only revenue figure. Coinbase separately attributes $84.6M of year-over-year stablecoin revenue increase to higher average USDC balances and $52.8M of decrease to lower average interest rates."
+      },
+      {
+        "from": "Circle",
+        "to": "Binance",
+        "relationship": "USDC distribution partnership expansion and equity investment",
+        "announced": "2026-Q3",
+        "status": "announced",
+        "scope": "Circle's Q3 2026 results release says Binance announced a $100 million equity investment in Circle and an expansion and renewal of their strategic partnership to promote USDC across Binance's global platform, with emphasis on emerging markets.",
+        "not_established": [
+          "XRP purchases",
+          "XRP collateral",
+          "XRP settlement volume",
+          "realized payment volume attributable to the investment"
+        ]
+      },
+      {
+        "from": "Circle",
+        "to": "Tazapay",
+        "relationship": "Definitive acquisition agreement for B2B cross-border payment infrastructure",
+        "announced": "2026-Q3",
+        "status": "pending_close_expected_2027_subject_to_regulatory_approvals",
+        "scope": "Circle reports Tazapay has $25B+ annualized payment volume, 60+ banking and fintech partners, local payout rails across 100+ markets, and about 60% of transaction volume already includes stablecoins. These are company-reported Tazapay metrics.",
+        "not_established": [
+          "completed acquisition",
+          "XRP integration",
+          "XRP payment volume"
         ]
       }
     ],
@@ -501,7 +537,17 @@
       "end_period_usdc_circulation_usd_billions": "73.9",
       "q3_usdc_onchain_transaction_volume_usd_trillions": "13.9",
       "circle_payments_network_annualized_tpv_usd_billions": "41.3",
-      "qualification": "CPN figure is annualized TPV, not realized quarterly settlement volume. USDC volume is not XRP volume."
+      "qualification": "CPN figure is annualized TPV, not realized quarterly settlement volume. USDC volume is not XRP volume.",
+      "corporate_strategy": {
+        "arc_mainnet_launch": "2026-09-16",
+        "arc_day_one_institutional_and_ecosystem_builders": ">100",
+        "native_usdc_integration": true,
+        "tazapay_acquisition_status": "definitive agreement signed; expected close in 2027 pending regulatory approvals",
+        "tazapay_company_reported_annualized_payment_volume_usd_billions": ">25",
+        "tazapay_company_reported_partners": ">60",
+        "tazapay_company_reported_payout_markets": ">100",
+        "tazapay_company_reported_stablecoin_share_of_transaction_volume_pct": "~60"
+      }
     },
     "occ_charter_status": [
       {
@@ -525,7 +571,7 @@
         "occ_control_number": "2025-Charter-343449",
         "approved": "2026-04-02",
         "consummated_effective": null,
-        "status": "approved_no_consumation_effective_date_in_retrieved_cas",
+        "status": "approved_no_consummated_effective_date_in_retrieved_cas",
         "qualification": "OCC Decision 1370 is preliminary conditional approval; final approval and authorization to commence business require pre-opening requirements.",
         "source_id": "occ_coinbase_cas"
       }
@@ -536,7 +582,15 @@
       "The Circle and Ripple federal trust-bank entities are separate from their state-chartered issuer/custody entities.",
       "The regional Japanese SBIC East/Central/West companies are not SBI Holdings or SBI VC Trade.",
       "Coinbase's RLUSD integration does not cancel its Circle/USDC arrangement."
-    ]
+    ],
+    "ripple_corporate_claims": {
+      "reported_licenses": ">85",
+      "reported_financial_institution_relationships": ">1700",
+      "reported_2025_transactions_enabled_usd_trillions": ">16",
+      "reported_annualized_product_revenue_run_rate_usd_millions": "approaching 900",
+      "source_id": "ripple_2026_year_in_review",
+      "qualification": "Ripple issuer-reported corporate metrics. They are not independently audited here and do not establish XRP-specific transaction volume, XRP revenue or XRP purchases."
+    }
   },
   "macro": {
     "employment_situation": {
