@@ -62,7 +62,7 @@ def test_advance_funding_cash_purchase_ratio_is_derived_not_execution_vwap() -> 
     cash = artifact["capital_reconciliation"]["cash_subscriptions"]
     ratio = cash["advance_funding"]["cash_usd"] / cash["xrp_purchased_with_that_cash"]
     assert math.isclose(ratio, cash["implied_cash_deployed_per_xrp_usd"], rel_tol=0, abs_tol=1e-12)
-    assert "not an exchange execution VWAP" in cash["implied_cash_deployed_per_xrp_note"]
+    assert "not an exchange execution vwap" in cash["implied_cash_deployed_per_xrp_note"].lower()
 
 
 def test_sbi_is_defined_as_holdings_parent_and_cash_allocation_is_not_inferred() -> None:
