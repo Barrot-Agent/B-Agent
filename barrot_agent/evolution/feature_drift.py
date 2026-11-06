@@ -33,7 +33,7 @@ def _utc(value: Any, field: str) -> datetime:
     except ValueError as exc:
         raise FeatureDriftError(f"{field} is not valid ISO-8601") from exc
     if parsed.tzinfo is None or parsed.utcoffset() is None:
-        raise FeatureDriftError(f"{field} must include a timezone")
+        raise FeatureDriftError(f"{field} must be timezone-aware")
     return parsed.astimezone(timezone.utc)
 
 
