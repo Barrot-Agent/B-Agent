@@ -663,7 +663,7 @@ def test_xrp_exchange_balance_dataset_is_registered_hash_only_and_raw_only():
 
     assert url == "https://xrp-insights.com/exchange-balances/data.json"
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert source_id in ALLOWED_HOSTS or "xrp-insights.com" in ALLOWED_HOSTS
+    assert "xrp-insights.com" in ALLOWED_HOSTS
     assert records == []
     assert source_as_of is None
     assert eligible is False
