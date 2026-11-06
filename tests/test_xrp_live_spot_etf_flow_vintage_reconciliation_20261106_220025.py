@@ -55,8 +55,8 @@ def test_okx_stale_repeat_and_spot_arithmetic_are_explicit():
     assert current_okx["freshness"]["provider_timestamp_age_seconds"] == 1496.429
     assert artifact["spot_comparison"]["okx_last_vs_kraken_last_pct"] == -0.2515
     assert artifact["spot_comparison"]["okx_last_vs_rolling_24h_open_pct"] == -4.2489
-    assert "not full" in artifact["spot_comparison"]["liquidity_warning"].lower()
-    assert "not a new_OKX_market_observation" in current_okx["freshness"]["admission"]
+    assert "not a multi-level depth ladder" in artifact["spot_comparison"]["liquidity_warning"].lower()
+    assert current_okx["freshness"]["admission"] == "stale_repeat_not_a_new_OKX_market_observation"
 
 
 def test_etf_flow_receipts_and_fund_universes_are_not_mixed():
