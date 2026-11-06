@@ -406,3 +406,33 @@ PR #1639 was merged; source PRs #1623, #1618 and #1616 were closed only after al
 - #1643 exact head `83b5d581fabdc8bcc3fd3c7807b7353ecd3644f3`: 97 ahead / 0 behind / 98 files. Core 495 passed + 8 subtests; full suite 811 passed + 8 subtests; fail-closed gate passed. Runs: [CI 41953831140](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953831140), [gate 41953830670](https://github.com/Barrot-Agent/B-Agent/actions/runs/41953830670).
 - Backlog classifications and exact path overlaps remain as in Run 22. No PRs were closed. Main SHA unchanged.
 - No forecast, merge, deployment, paper trade, funds transfer, secret rotation or Space restart occurred.
+
+
+## Latest backlog snapshot — 2026-11-06
+
+Canonical evidence and current mission state are recorded in `BARROT_XRP_MISSION_HANDOFF.md` at the top of that file. This section refreshes backlog counts and classifications without closing or rewriting any source PR.
+
+- Complete open inventory: **369 PRs**; **354 drafts**; **15 non-drafts**.
+- Non-drafts: #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- **Active integration workstreams:** #1640 (V3/core/XRP collector/safety) and #1643 (XRP research archive). Both are non-draft and GitHub reports mergeable; both have zero approving reviews.
+- **#1640:** code-bearing head `653db11c6bbbde4bb0de2de67e74d5f3ae9619b2` passed 622 core tests + 8 subtests, 1,060 full-suite tests + 8 subtests, 57.57% inclusive coverage against a 53% floor, installed-wheel verification, six-manifest dependency audit and fail-closed gate. The latest handoff-only descendant is `51de08c41c3383f703779c56c529002d631cbfdb`; exact-head checks for that documentation commit must be rechecked before any merge.
+- **#1643:** head `accd0970cb54c43a61f12b843c923d3ae123f0b5` passed 495 core tests + 8 subtests, 1,291 full-suite tests + 8 subtests, six-manifest dependency audit and fail-closed gate.
+- Both integration branches have zero approving reviews; #1640 has 22/22 review threads resolved and #1643 has 14/14 resolved. COMMENTED reviews are not approvals.
+- Changed-path intersection between #1640 and #1643 is exactly `.github/workflows/dependency-audit.yml`, with identical blob `6515307991420ab90d8671034b13ac2eb56190b3`. #1643 must not be merged directly after #1640; carry its 261 unique paths into one consolidated successor created directly on the resulting main.
+
+### Backlog classifications
+
+- **Active integration:** #1640, #1643.
+- **Unique/unreviewed, preserve:** #1642 (seven overlapping but non-identical paths; reconcile unique hunks), #1317 structural analysis/MMI, #1318 schema safety, #1320 paper-trader identity/safety, #1269 geometry/topology, and unique research/security/prediction drafts including #1614, #1615, #1611, #1610, #1608, #1597, #1591, #1590, #1583, #1571, #1568, #1564, #1534 and #1533.
+- **Exact duplicate candidate:** #1605's single market artifact has an identical blob in #1643. Close only after the replacement is merged and verified on main.
+- **Dependency/action overlap:** #1644–#1650. #1645 has an exact file blob represented in #1640; #1644 and #1647 differ because #1640 adds safety containment; #1646, #1648, #1649 and #1650 contain version changes represented in the integration but their complete blobs differ. Reconcile exact content after main integration; do not close early.
+- **Older dependency candidates:** #1254 and #1255; compare against the versions in #1640 after merge.
+- **Partially superseded research sources:** #1597, #1608 and #1614 retain unique portions that must be carried or explicitly preserved. Do not bulk-close.
+
+### Merge and closure boundary
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Branch-protection inspection returns HTTP 403; the only visible repository ruleset is disabled. Both active integration PRs have zero approving reviews.
+- A prior main push triggered GitHub Pages deployment. Authorization for another merge-triggered deployment remains unresolved.
+- No PR was merged or closed. No branch was force-pushed or rewritten. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+- Close only exact duplicate/superseded source PRs after a successor is merged, the replacement files are verified on main, and a cross-reference is posted. Preserve every unique/unreviewed workstream.
