@@ -50,8 +50,8 @@ def test_gross_cash_proceeds_are_not_double_counted() -> None:
     cash = capital["cash_subscriptions"]
     closing = capital["closing_cash_proceeds"]
     component_cash = cash["advance_funding"]["cash_usd"] + cash["delayed_funding"]["cash_usd"]
-    assert component_cash == closing["private_placement_cash_components_usd"]
-    assert round(component_cash / 100_000) * 100_000 == closing["private_placement_cash_gross_usd_rounded"]
+    assert component_cash == cash["private_placement_cash_components_usd"]
+    assert round(component_cash / 100_000) * 100_000 == cash["private_placement_cash_gross_usd_rounded"]
     gross = closing["private_placement_investments_usd_rounded"] + closing["trust_account_after_redemptions_usd_rounded"]
     assert gross == closing["gross_cash_proceeds_before_transaction_expenses_usd_rounded"]
     assert cash["cash_from_advance_funding_used_to_purchase_xrp_usd_rounded"] < gross
