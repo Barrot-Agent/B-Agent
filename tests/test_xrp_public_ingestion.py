@@ -133,6 +133,38 @@ def _fake_fetcher(captured: datetime):
                     }
                 },
             }
+        elif source_id == "okx_spot_ticker":
+            payload = {
+                "code": "0",
+                "msg": "",
+                "data": [{
+                    "instId": "XRP-USDT",
+                    "last": "1.2900",
+                    "lastSz": "125",
+                    "askPx": "1.2901",
+                    "askSz": "900",
+                    "bidPx": "1.2899",
+                    "bidSz": "1000",
+                    "open24h": "1.28",
+                    "high24h": "1.31",
+                    "low24h": "1.27",
+                    "volCcy24h": "1290000",
+                    "vol24h": "1000000",
+                    "ts": str(captured_ms - 1000),
+                }],
+            }
+        elif source_id == "okx_spot_depth":
+            payload = {
+                "code": "0",
+                "msg": "",
+                "data": [{
+                    "asks": [["1.291", "1200", "0", "2"], ["1.292", "1800", "0", "3"]],
+                    "bids": [["1.289", "1000", "0", "3"], ["1.288", "2000", "0", "2"]],
+                    "ts": str(captured_ms - 2000),
+                    "seqId": "123456",
+                    "checksum": 123456,
+                }],
+            }
         elif source_id == "binance_spot_depth":
             payload = {
                 "lastUpdateId": 123456,
@@ -326,8 +358,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.10"
-    assert summary["parser_version"] == "xrp-public-market-v3.9"
+    assert summary["adapter_version"] == "xrp-public-market-v3.11"
+    assert summary["parser_version"] == "xrp-public-market-v3.10"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -336,6 +368,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert len(coinbase_closes) == 2
     assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.okx.last_price" and item["unit"] == "USDT/XRP" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.okx.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
     assert not any(item["feature_id"].startswith("xrp.network.xrpl.") for item in snapshot["records"])
     historical_derivatives = [
         item for item in snapshot["records"]
@@ -352,6 +386,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     raw_only = json.loads((tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8"))
     assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
     assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
+    assert not any(item["source_id"] == "okx_spot_depth" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_aggregator" for item in raw_only)
     assert any(item["source_id"] == "xrp_exchange_balances_json" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_csv" for item in raw_only)
@@ -523,6 +558,69 @@ def test_kraken_ticker_is_in_scheduled_source_registry():
     assert endpoint_map["kraken_spot_ticker"] == "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
     assert PARSERS["kraken_spot_ticker"] is not None
     assert any(source_id == "kraken_spot_ticker" for source_id, _ in SCHEDULED_ENDPOINTS)
+
+
+def test_okx_spot_sources_are_timestamped_and_in_scheduled_registry():
+    endpoint_map = dict(ENDPOINTS)
+    assert endpoint_map["okx_spot_ticker"] == "https://us.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    assert endpoint_map["okx_spot_depth"] == "https://us.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100"
+    assert "us.okx.com" in ALLOWED_HOSTS
+    assert PARSERS["okx_spot_ticker"] is not None
+    assert PARSERS["okx_spot_depth"] is not None
+    assert {"okx_spot_ticker", "okx_spot_depth"}.issubset(
+        {source_id for source_id, _url in SCHEDULED_ENDPOINTS}
+    )
+
+
+def test_okx_orderbook_uses_provider_timestamp_and_rejects_stale_or_crossed_books():
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    source_id = "okx_spot_depth"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    parser = PARSERS[source_id]
+    digest = hashlib.sha256(response["raw_bytes"]).hexdigest()
+
+    records, event_time, eligible, reason = parser(
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest=digest,
+        captured=captured,
+    )
+    assert eligible is True
+    assert reason == ""
+    assert event_time == "2026-11-04T12:29:58.000000Z"
+    by_feature = {item["feature_id"]: item for item in records}
+    assert by_feature["xrp.spot.okx.orderbook.best_bid"]["value"] == pytest.approx(1.289)
+    assert by_feature["xrp.spot.okx.orderbook.best_ask"]["value"] == pytest.approx(1.291)
+    assert by_feature["xrp.spot.okx.orderbook.mid_price"]["value"] == pytest.approx(1.29)
+    assert by_feature["xrp.spot.okx.orderbook.bid_depth_10bps"]["unit"] == "USDT"
+    assert by_feature["xrp.spot.okx.orderbook.mid_price"]["sources"][0]["independence_group"] == "okx"
+
+    stale_payload = json.loads(json.dumps(response["payload"]))
+    stale_payload["data"][0]["ts"] = str(_iso_ms(captured - timedelta(seconds=61)))
+    stale_raw = json.dumps(stale_payload, separators=(",", ":")).encode("utf-8")
+    stale_records, _stale_event, stale_eligible, stale_reason = parser(
+        stale_payload,
+        source_id=source_id,
+        url=url,
+        digest=hashlib.sha256(stale_raw).hexdigest(),
+        captured=captured,
+    )
+    assert stale_eligible is False
+    assert stale_reason == "source_timestamp_older_than_60_seconds"
+    assert all(item["model_eligible"] is False and item["quality_status"] == "stale" for item in stale_records)
+
+    crossed_payload = json.loads(json.dumps(response["payload"]))
+    crossed_payload["data"][0]["asks"][0][0] = "1.289"
+    with pytest.raises(XRPIngestionError, match="crossed or locked"):
+        parser(
+            crossed_payload,
+            source_id=source_id,
+            url=url,
+            digest=digest,
+            captured=captured,
+        )
 
 
 def test_scheduled_ingestion_workflow_persists_history_without_repository_writes():
