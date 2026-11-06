@@ -735,3 +735,74 @@ def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
         "secrets.",
     ):
         assert token not in lowered, token
+
+def _assert_unattended_writer_is_quarantined(relative_path: str) -> str:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / relative_path
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "workflow_dispatch" in lowered, relative_path
+    assert "schedule:" not in lowered, relative_path
+    assert "permissions: {}" in lowered, relative_path
+    assert re.search(
+        r"^\s+if:\s*(?:false|\$\{\{\s*false\s*\}\})\s*$",
+        lowered,
+        re.MULTILINE,
+    ), relative_path
+
+    for forbidden in (
+        "secrets.",
+        "git push",
+        "gh issue create",
+        "gh issue close",
+        "gh issue comment",
+        "gh pr merge",
+        "actions: write",
+        "contents: write",
+        "issues: write",
+        "pull-requests: write",
+        "DATABRICKS_TOKEN",
+        "GUMROAD_ACCESS_TOKEN",
+    ):
+        assert forbidden.lower() not in lowered, f"{relative_path} still contains {forbidden!r}"
+    return workflow
+
+
+def test_scheduler_tick_is_disabled_until_safe_state_and_allowlist_exist() -> None:
+    workflow = _assert_unattended_writer_is_quarantined("scheduler-tick.yml")
+    for forbidden in ("scripts/scheduler.py", "max_prs", "pull --no-rebase"):
+        assert forbidden not in workflow
+
+
+def test_scheduled_subscriber_and_issue_writers_remain_quarantined() -> None:
+    paths = (
+        "subscriber_sync.yml",
+        "daily-digest.yml",
+        "auto-resolve-issues.yml",
+        "barrot-autonomous-resolver.yml",
+        "self-schedule.yml",
+    )
+    for path in paths:
+        _assert_unattended_writer_is_quarantined(path)
+
+
+def test_merge_queue_is_disabled_until_per_pr_authorization_is_verified() -> None:
+    workflow = _assert_unattended_writer_is_quarantined("merge-queue.yml")
+    for forbidden in ("gh pr merge", "update-branch", "--delete-branch", "mode: all", "max_prs"):
+        assert forbidden not in workflow
+
+
+def test_public_brain_corpus_export_is_inert_and_preserves_existing_dumps() -> None:
+    workflow = _assert_unattended_writer_is_quarantined("dump-brain-corpus.yml")
+    assert "scripts/dump_brain_corpus.py" not in workflow
+
+    script_path = REPO_ROOT / "scripts" / "dump_brain_corpus.py"
+    source = script_path.read_text(encoding="utf-8")
+    assert "DISABLED: public brain-corpus export is not authorized." in source
+    assert "import requests" not in source
+    assert "DATABRICKS_TOKEN" not in source
+    assert "https://" not in source
+
+    module = load_script(script_path, "dump_brain_corpus_inert_regression_test")
+    assert module.main() == 2
