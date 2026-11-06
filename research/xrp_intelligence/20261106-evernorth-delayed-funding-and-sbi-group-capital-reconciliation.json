@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "research_id": "evernorth_delayed_funding_sbi_group_capital_reconciliation_20261106",
+  "research_window_lower_bound_utc": "2026-11-06T11:17:57Z",
+  "event_date": "2026-10-09",
+  "publication_dates": {
+    "corrective_8k_accepted_utc": "2026-10-13T06:01:36Z",
+    "s1_accepted_utc": "2026-10-30T16:54:38Z"
+  },
+  "scope": "Reconcile Evernorth's delayed-funding share-count correction, the cash/XRP composition of that subscription cohort, and the separately defined SBI-controlled stockholder group. Do not attribute delayed-subscriber consideration to SBI unless an issuer filing does so.",
+  "delayed_funding_correction": {
+    "prior_reported_class_a_shares": 663510,
+    "corrected_class_a_shares": 1078613,
+    "increase_in_reported_shares": 415103,
+    "correction_reason": "Clerical error in the post-closing Form 8-K; the October 12, 2026 Form 8-K states the correct aggregate share count.",
+    "share_pricing_usd": 10,
+    "subscription_consideration": "The corrected share count represents the aggregate delayed-funding subscription amount, whether paid in cash or XRP tokens, divided by $10 per share.",
+    "not_new_capital_event": true,
+    "source_line_ranges": {
+      "corrective_8k": "91-102"
+    }
+  },
+  "delayed_subscriber_consideration": {
+    "cash_usd": 10500000,
+    "in_kind_xrp": 200000,
+    "closing_xrp_reference_price_usd": 1.43069,
+    "implied_in_kind_xrp_value_usd": 286138,
+    "combined_indicative_consideration_usd": 10786138,
+    "corrected_shares_times_price_usd": 10786130,
+    "arithmetic_difference_usd": 8,
+    "arithmetic_interpretation": "The $10.5M cash plus 200,000 XRP valued at the disclosed $1.43069 closing reference price produces $10,786,138, within $8 of 1,078,613 shares at $10 each. This is a cross-check, not a claim that the subscription was entirely cash.",
+    "subscriber_attribution": "The S-1 describes certain institutional and individual accredited delayed subscribers. The reviewed text does not identify this entire delayed-subscriber cohort as SBI.",
+    "source_line_ranges": {
+      "s1": "5303-5304",
+      "corrective_8k": "91-102"
+    }
+  },
+  "sbi_group": {
+    "issuer_definition": "The S-1 explicitly defines SBI as SBI Holdings, Inc.",
+    "stockholder_group_definition": "SBI Venture Fund 2023A Investment LPS; SBI Venture Fund 2023B Investment LPS; SBI PE Holdings Co., Ltd.; and SBI Holdings USA, Inc. Each is identified as controlled by SBI Holdings, Inc.",
+    "class_a_shares": 9431914,
+    "class_c_shares": 2359038,
+    "common_stock_percentage": 21.4,
+    "voting_power_percentage": 39.9,
+    "class_c_explanation": "Class C shares were issued to certain SBI-affiliated investors in connection with the 39.9% ownership/voting threshold. Conversion to Class A remains subject to the charter's maximum-ownership restrictions.",
+    "source_line_ranges": {
+      "s1_definitions": "421-422",
+      "s1_ownership_table": "2352-2360",
+      "s1_ownership_restrictions": "3467-3470",
+      "s1_closing_summary": "6801-6806"
+    },
+    "not_the_same_as": [
+      "SBIC East",
+      "SBIC Central",
+      "SBIC West",
+      "Social Bias Inference Corpus"
+    ]
+  },
+  "separate_capital_categories": [
+    {
+      "category": "delayed_subscriber_cash",
+      "amount_usd": 10500000,
+      "status": "issuer-disclosed subscription consideration; distinct from XRP contribution"
+    },
+    {
+      "category": "delayed_subscriber_in_kind_xrp",
+      "amount_xrp": 200000,
+      "status": "issuer-disclosed token contribution; not cash"
+    },
+    {
+      "category": "prior_cash_xrp_purchase",
+      "amount_usd": 214100000,
+      "amount_xrp": 84365876,
+      "status": "separate reported cash-funded acquisition; not part of the delayed-funding share-count correction"
+    },
+    {
+      "category": "prior_in_kind_xrp_contribution",
+      "amount_xrp": 388910554,
+      "status": "separate contribution; not cash proceeds"
+    },
+    {
+      "category": "convertible_notes",
+      "amount_usd": 30000000,
+      "status": "debt/convertible financing; not XRP purchase cash unless and until proceeds are deployed"
+    },
+    {
+      "category": "cantor_affiliate_committed_equity_facility",
+      "estimated_gross_capacity_usd": 80700000,
+      "status": "committed equity facility estimate based on a historical share price; not cash already raised"
+    },
+    {
+      "category": "cash_exercisable_public_warrants",
+      "warrants": 11499992,
+      "exercise_price_usd": 11.5,
+      "maximum_gross_if_all_exercised_usd": 132249908,
+      "status": "contingent; no proceeds unless warrants are actually exercised for cash"
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "evernorth_corrective_8k_2026_10_12",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "form": "8-K",
+      "accepted_at_utc": "2026-10-13T06:01:36Z",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629d8k.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/0001193125-26-419605-index.htm",
+      "line_ranges": [
+        "91-102",
+        "149-161",
+        "167-172"
+      ],
+      "rendered_excerpt_sha256": "8160982e2984a50c5d8b13bc66f30f1cc97b5ba8992edf4d8d4b902c952c8468",
+      "rendered_excerpt_bytes": 1016,
+      "hash_scope": "Exact UTF-8 text excerpt copied from the rendered SEC filing lines; not the raw SEC filing bytes."
+    },
+    {
+      "id": "evernorth_s1_2026_10_30",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "form": "S-1",
+      "accepted_at_utc": "2026-10-30T16:54:38Z",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/0001628280-26-068609-index.htm",
+      "line_ranges": [
+        "421-422",
+        "2352-2360",
+        "3467-3470",
+        "5303-5304",
+        "6801-6806",
+        "7561-7568"
+      ],
+      "rendered_excerpt_sha256s": {
+        "delayed_subscriptions": "460db926e1c2c4742366dddf0fd03d0cce7a367c15538160b2ce5604a4f7291a",
+        "sbi_definitions": "a2ff2e9fda8343b22a9f28598a28c276693e2c3bdd1b37725094c7fabda65f3d",
+        "sbi_ownership": "6525919faa0a9ffc866e09fd7d16e26b49318a70d6102709b02f8d2c4450efdf"
+      },
+      "hash_scope": "Hashes cover exact UTF-8 excerpts copied from rendered SEC filing lines; not the raw SEC filing bytes."
+    }
+  ],
+  "evidence_quality": {
+    "primary_filings": true,
+    "same_issuer_source_family": true,
+    "filings_are_not_independent_issuers": true,
+    "delayed_subscriber_cash_and_xrp_are_separated": true,
+    "sbi_group_entities_are_separated_from_sbi_parent_label": true,
+    "sbic_acronym_collision_guard": true,
+    "full_raw_sec_bytes_attached": false,
+    "model_price_feature_eligible": false,
+    "event_timeline_eligible": true
+  },
+  "competing_interpretations": [
+    {
+      "id": "share_count_as_new_capital",
+      "claim": "The increase from 663,510 to 1,078,613 shares could be mistaken for a new cash raise.",
+      "counterevidence": "The issuer calls it a clerical correction to shares already issued at closing; the subscription consideration included both cash and XRP."
+    },
+    {
+      "id": "all_delayed_consideration_is_cash",
+      "claim": "The 1,078,613 shares could be interpreted as entirely cash-funded.",
+      "counterevidence": "The S-1 explicitly identifies $10.5M cash plus 200,000 XRP tokens for the delayed-subscriber cohort."
+    },
+    {
+      "id": "sbi_parent_vs_sbi_group",
+      "claim": "The SBI ownership row could be attributed solely to the parent or mistaken for SBIC.",
+      "counterevidence": "The S-1 defines four SBI-controlled stockholder entities and separately defines SBI as SBI Holdings, Inc.; it does not equate them with SBIC East/Central/West."
+    }
+  ],
+  "forecast_status": {
+    "directional_forecast_issued": false,
+    "reason": "This is an institutional capital/ownership event record, not a price prediction or validated price feature."
+  },
+  "action_status": {
+    "real_money_actions": false,
+    "share_transactions": false,
+    "token_transfers": false,
+    "paper_trade_executed": false
+  }
+}
