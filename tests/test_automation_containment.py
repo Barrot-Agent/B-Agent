@@ -33,6 +33,7 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/webmcp-live-sandbox.yml",
     ".github/workflows/databricks-bundle.yml",
     ".github/workflows/sync-huggingface.yml",
+    ".github/workflows/test-semantic-memory.yml",
 )
 
 
