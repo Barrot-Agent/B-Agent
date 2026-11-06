@@ -280,7 +280,7 @@
     "nov2_to_nov5_net_holdings_delta_xrp": -149487,
     "settled_trading_days": 4,
     "method": "Day-over-day change in issuer-reported XRP holdings; the publisher's page says holdings come from issuer websites and flow is the holdings delta.",
-    "limitation": "This is holdings-derived flow, not direct AP cash creation/redemption, and no settled November 6 holdings/flow is reported in the retrieved source."
+    "limitation": "This is holdings-derived flow, not direct AP cash creations or redemptions; no settled November 6 holdings/flow is reported in the retrieved source."
   },
   "macro_event": {
     "bls_release_time_utc": "2026-11-06T13:30:00Z",
