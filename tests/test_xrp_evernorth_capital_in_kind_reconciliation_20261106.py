@@ -98,3 +98,23 @@ def test_primary_source_receipt_limits_and_forecast_gate_are_explicit() -> None:
     assert artifact["model_eligible"] is False
     assert artifact["forecast_status"] == "NOT_ISSUED"
     assert artifact["exact_phrase_research"]["camilla_kamilah_stevenson"]["inventory_status"].startswith("candidate leads only")
+
+
+
+def test_pubco_warrant_capital_is_contingent_stock_financing_not_xrp_purchase_cash() -> None:
+    artifact = load_artifact()
+    warrants = artifact["capital_reconciliation"]["contingent_warrant_capital"]
+    assert warrants["security_underlying"] == "Pubco Class A common stock, not XRP"
+    assert warrants["public_warrants_outstanding_as_of_2026_06_30"] == 11_500_000
+    assert warrants["private_placement_warrants_outstanding_as_of_2026_06_30"] == 355_000
+    assert warrants["private_placement_warrants_forfeited_at_closing"] == 115_347
+    assert warrants["private_placement_warrants_remaining_after_forfeiture"] == 239_653
+    assert warrants["public_warrant_max_gross_cash_proceeds_if_all_exercised_for_cash_usd"] == 132_250_000
+    assert warrants["remaining_private_warrant_max_gross_cash_proceeds_if_all_exercised_for_cash_usd"] == 2_756_009.50
+    assert warrants["total_max_gross_cash_proceeds_if_all_exercised_for_cash_usd"] == 135_006_009.50
+    assert warrants["actual_cash_proceeds_from_warrant_exercises_usd"] is None
+    assert warrants["status"] == "CONTINGENT_NOT_RECEIVED"
+    assert "registration statement" in warrants["cash_exercise_conditions"].lower()
+    assert "cashless" in warrants["cash_exercise_conditions"].lower()
+    assert "not XRP purchase capital" in warrants["classification"]
+    assert artifact["exact_phrase_research"]["actual_capital"]["warrant_context"]["underlying_security"] == "Pubco Class A common stock, not XRP"

@@ -69,6 +69,31 @@
           "start": 7667,
           "end": 7671,
           "topic": "Closing Ripple contribution and convertible note issuance"
+        },
+        {
+          "start": 3598,
+          "end": 3614,
+          "topic": "Pubco warrant underlying security, $11.50 strike, cash-registration and cashless exercise conditions"
+        },
+        {
+          "start": 3629,
+          "end": 3644,
+          "topic": "Management cashless-redemption option and limits on cash exercise"
+        },
+        {
+          "start": 5547,
+          "end": 5550,
+          "topic": "11.5M public and 355K private warrants as of June 30, 2026; exercise price and proceeds recipient"
+        },
+        {
+          "start": 5251,
+          "end": 5255,
+          "topic": "115,347 private placement warrants forfeited at closing"
+        },
+        {
+          "start": 5838,
+          "end": 5842,
+          "topic": "Warrants converted to Pubco warrants and closing-date sponsor forfeiture"
         }
       ],
       "note": "The SEC filing is primary evidence, but this artifact preserves extracted line references rather than claiming a byte-complete raw HTML receipt. It is not eligible as a point-in-time market feature."
@@ -132,6 +157,23 @@
       "filing_reported_holdings_approx_xrp": 473000000,
       "filing_holdings_as_of": "2026-10-09",
       "reconciliation_status": "Arithmetic sum is consistent with the filing's approximate 473M XRP holdings. It is not a wallet-level custody reconciliation and does not establish current holdings."
+    },
+    "contingent_warrant_capital": {
+      "security_underlying": "Pubco Class A common stock, not XRP",
+      "public_warrants_outstanding_as_of_2026_06_30": 11500000,
+      "private_placement_warrants_outstanding_as_of_2026_06_30": 355000,
+      "private_placement_warrants_forfeited_at_closing": 115347,
+      "private_placement_warrants_remaining_after_forfeiture": 239653,
+      "exercise_price_usd_per_pubco_class_a_share": 11.5,
+      "public_warrant_max_gross_cash_proceeds_if_all_exercised_for_cash_usd": 132250000,
+      "remaining_private_warrant_max_gross_cash_proceeds_if_all_exercised_for_cash_usd": 2756009.5,
+      "total_max_gross_cash_proceeds_if_all_exercised_for_cash_usd": 135006009.5,
+      "actual_cash_proceeds_from_warrant_exercises_usd": null,
+      "cash_exercise_conditions": "Cash exercise requires an effective and current registration statement and prospectus for the warrant shares. If registration is not effective within 90 days after closing, cashless exercise may be available only if an exemption applies; otherwise holders cannot exercise cashlessly. Management may also require cashless exercise upon a qualifying redemption.",
+      "exercise_proceeds_recipient": "Pubco directly, not the Trust Account.",
+      "status": "CONTINGENT_NOT_RECEIVED",
+      "classification": "Potential corporate equity proceeds, not XRP purchase capital; not included in the reported $272.6M gross closing cash proceeds or the $214.1M cash-funded XRP acquisition.",
+      "interpretation": "The maximum is a mathematical gross ceiling assuming every remaining public and private warrant is exercised for cash at $11.50. It is not actual capital received, is subject to registration and exercise conditions, and relates to Pubco stock rather than XRP."
     }
   },
   "institutional_relationships": {
@@ -177,7 +219,13 @@
         "statement_summary": "Actual capital raised will depend on warrant exercise.",
         "classification": "secondary reporting"
       },
-      "primary_source_reconciliation": "The SEC filing separately reports $272.6M gross closing cash proceeds before expenses, $214.1M cash used to purchase 84,365,876 XRP, $388.91M XRP contributed in kind, $30M convertible note proceeds and $9.7M related-party borrowing. These are distinct categories and must not be summed as one XRP purchase figure."
+      "primary_source_reconciliation": "The SEC filing separately reports $272.6M gross closing cash proceeds before expenses, $214.1M cash used to purchase 84,365,876 XRP, $388.91M XRP contributed in kind, $30M convertible note proceeds and $9.7M related-party borrowing. These are distinct categories and must not be summed as one XRP purchase figure.",
+      "warrant_context": {
+        "underlying_security": "Pubco Class A common stock, not XRP",
+        "maximum_potential_cash_if_all_remaining_warrants_are_cash_exercised_usd": 135006009.5,
+        "actual_warrant_cash_proceeds_disclosed_in_cited_sections_usd": null,
+        "note": "The secondary exact-phrase hit about 'actual capital raised' refers to contingent warrant exercise. The SEC filing confirms the warrant terms, but no actual exercise proceeds are established in this reconciliation."
+      }
     },
     "sbic_chatgpt_sbic": {
       "exact_phrase_result": "No new primary-source evidence of an 'SBIC, ChatGPT SBIC' corporate partnership.",
