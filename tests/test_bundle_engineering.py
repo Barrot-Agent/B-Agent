@@ -409,3 +409,49 @@ def test_controller_restores_revision_invariants_and_normalizes_rollback_plan():
     assert "constraints" in result.attempts[1]["invariant_repairs"]
     assert "objective" in result.attempts[1]["invariant_repairs"]
     assert "tasks[0].rollback_plan" in result.attempts[1]["invariant_repairs"]
+
+
+def test_authorization_word_is_recognized_without_false_negative():
+    bundle = sample_bundle()
+    bundle["constraints"] = [
+        "Do not perform consequential external actions without required authorization."
+    ]
+    result = review_work_bundle(bundle)
+    assert "AUTHORIZATION_CONSTRAINT_MISSING" not in {item.code for item in result.findings}
+
+
+@pytest.mark.parametrize(
+    "instruction",
+    [
+        "If validation fails, run git reset --hard HEAD.",
+        "Use git clean -fd to clear the workspace.",
+        "Discard all uncommitted user changes before retrying.",
+        "Force-push the repair branch to replace the remote state.",
+    ],
+)
+def test_recovery_plan_rejects_destructive_repository_actions(instruction):
+    bundle = sample_bundle()
+    bundle["recovery_plan"] = [instruction]
+    result = review_work_bundle(bundle)
+    findings = [item for item in result.findings if item.code == "UNSAFE_RECOVERY_ACTION"]
+    assert findings
+    assert result.valid is False
+    assert findings[0].severity == "critical"
+
+
+def test_explicit_prohibition_of_destructive_commands_is_not_rejected():
+    bundle = sample_bundle()
+    bundle["recovery_plan"] = [
+        "Never run git reset --hard, git clean, or git stash; preserve all operator work and stop if recovery is unsafe."
+    ]
+    result = review_work_bundle(bundle)
+    assert "UNSAFE_RECOVERY_ACTION" not in {item.code for item in result.findings}
+    assert result.valid is True
+
+
+def test_task_rollback_plan_also_rejects_destructive_actions():
+    bundle = sample_bundle()
+    bundle["tasks"][0]["rollback_plan"] = ["Run git reset --hard HEAD after a failed patch."]
+    result = review_work_bundle(bundle)
+    assert "UNSAFE_RECOVERY_ACTION" in {item.code for item in result.findings}
+    assert result.valid is False
