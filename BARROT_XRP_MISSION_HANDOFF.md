@@ -1,6 +1,76 @@
 # Barrot XRP Mission Handoff — Current Verified State
 
-Updated: 2026-11-06T20:22:08Z
+Updated: 2026-11-06T21:05:20Z
+
+## Current verified run — 2026-11-06T21:05:20Z
+
+This run supersedes earlier head, inventory, and CI summaries below. It does not change main.
+
+### Repository and integrated work
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- The complete main Git tree was fetched recursively: 1,403 entries, 1,298 files, 493 Python files, 87 `tests/test*.py` files, and 86 workflow files; the tree response was not truncated.
+- Main is protected. The branch object reports `protected=true`; the classic branch-protection endpoint returns HTTP 403. The only visible repository ruleset, ID 10863829, is disabled. Required review/check enforcement cannot be independently confirmed.
+- A main push previously triggered the dynamic GitHub Pages build/deployment workflow; run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) completed successfully on the current main SHA. Pages configuration remains unreadable through the available connection, and no authorization for another merge-triggered public deployment has been established.
+
+### PR #1640 — V3/core and XRP ingestion integration
+
+- Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
+- Code-bearing head inspected: `c528627f6171206b576e36add738d7a78cf17671`; 463 commits ahead, 0 behind; 155 changed paths; non-draft; GitHub mergeable state `clean`.
+- Exact-head core suite: **626 passed, 8 subtests passed**.
+- Exact-head full repository suite: **1,065 passed, 8 subtests passed**; inclusive coverage **57.57%**. Wheel build/install and packaged Barrot V3/XRP mission verification passed.
+- Exact-head six-manifest dependency audit passed. Exact-head fail-closed gate passed and explicitly keeps automatic merging disabled.
+- Evidence: [full suite 42287904725](https://github.com/Barrot-Agent/B-Agent/actions/runs/42287904725), [dependency audit 42287904754](https://github.com/Barrot-Agent/B-Agent/actions/runs/42287904754), [fail-closed gate 42287904888](https://github.com/Barrot-Agent/B-Agent/actions/runs/42287904888).
+- There are no approving GitHub reviews. The green fail-closed gate is not an approval. Do not merge or bypass protections.
+- This handoff append is documentation-only and follows code-bearing head `c528627f6171206b576e36add738d7a78cf17671`; the resulting handoff commit must receive its own exact-head checks before merge.
+
+### PR #1643 — unique XRP research archive
+
+- Branch: `research/xrp-evidence-archive-20261104`.
+- Code-bearing head before this run's new spot receipt: `ae7d7534634f8ca7b5e35e351c50d1f83db52a38`; 494 commits ahead, 0 behind; 349 changed paths; non-draft; mergeable state `clean`.
+- Exact-head core suite: **498 passed, 8 subtests passed**. Full repository suite: **1,607 passed, 8 subtests passed**. Six-manifest dependency audit and fail-closed gate passed.
+- Evidence: [full suite 42287414992](https://github.com/Barrot-Agent/B-Agent/actions/runs/42287414992), [dependency audit 42287415164](https://github.com/Barrot-Agent/B-Agent/actions/runs/42287415164), [fail-closed gate 42287415097](https://github.com/Barrot-Agent/B-Agent/actions/runs/42287415097).
+- The only path shared with #1640 is `.github/workflows/dependency-audit.yml`; its blob SHA is identical on both branches: `6515307991420ab90d8671034b13ac2eb56190b3`. The research branch must not be merged directly after #1640. Once #1640 is merged and verified on main, consolidate the research branch's unique paths onto the new main and inherit the expanded CI/wheel/coverage checks.
+
+### New point-in-time spot receipt on #1643
+
+- Added artifact: [20261106T210520Z XRP Kraken/OKX snapshot](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T210520Z-xrp-kraken-okx-live-spot-cross-venue-snapshot.json).
+- Added regression test: [test_xrp_kraken_okx_live_spot_cross_venue_snapshot_20261106.py](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_kraken_okx_live_spot_cross_venue_snapshot_20261106.py).
+- Capture upper bound: 21:05:20Z. Kraken XRP/USD last $1.17255, bid $1.17240, ask $1.17241, 35.85M XRP rolling-24h volume and $1.1958515 rolling-24h VWAP. OKX XRP-USDT last 1.1756, bid 1.1756, ask 1.1757, 64.67M XRP rolling-24h volume; its exchange timestamp is 21:05:06.565Z.
+- The captured response-text SHA-256 values are retained in the artifact. Hashes cover the exact captured JSON text, not original HTTP wire bytes or independently timestamped immutable storage.
+- The two last prices differ by approximately 0.26%, but USD/USDT conversion, latency, fees and transfer costs are not normalized. Top-of-book is not full depth. Venue volumes are not combined. The record is raw-snapshot-only and is not a model feature; no forecast is issued.
+- The two new files were committed to the existing #1643 branch. Exact-head CI for the resulting branch head is pending and must be checked before the research PR is considered green again.
+
+### Overlap and backlog classification
+
+- PR #1642's one implementation commit `86d9f12f7e8133ea40c5b6742fd26c2ef79a17b1` is an ancestor of #1640: comparing #1642 to #1640 reports 462 commits ahead and 0 behind. Its seven changed paths are present on #1640's branch. Classify #1642 as **superseded by #1640**, but keep it open until #1640 is merged and the carried files are verified on main.
+- PR #1641 remains a draft, incomplete experimentation foundation. Its own scope explicitly excludes model-backed hypothesis generation, multi-agent challenge/reproduction, objective-specific statistical evaluation, production XRP ingestion, walk-forward evaluation and calibration. Preserve it as **unique/incomplete**, not merge-ready.
+- PR #1653 is a separate repository-knowledge-graph proposal. Its exact head `2e449ca28739a73b00dee021c9fb5f38819557c4` passed its full-suite job and fail-closed gate, but Copilot review identified unresolved high-severity issues: upstream CLI arguments are not transported as expected; `persistence=false` may still overwrite an existing graph artifact; repository state is not revalidated after indexing; submodules can fetch unapproved remotes; degraded indexing can be reported as synchronized; and fetch timeouts escape structured result handling. It also overlaps #1640 on `.github/workflows/ci.yml`. Classify #1653 as **blocked for security/correctness review**; do not merge.
+- The live open-PR inventory contains **370 PRs: 354 drafts and 16 non-drafts**. The non-draft set is #1653, #1650–#1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. Preserve #1317/#1318/#1320 as unique work, #1269 as a separate geometry workstream, and reconcile #1644–#1650 plus #1254/#1255 path-by-path against the integration branch before classifying any as duplicates. Do not bulk-close the 354 drafts.
+- PR #1640 and #1643 each still have **zero approving reviews**. No PR was merged or closed in this run.
+
+### Automation failure diagnosis
+
+- GitHub Actions run [42291904318](https://github.com/Barrot-Agent/B-Agent/actions/runs/42291904318), issue-triggered Barrot Agent task for issue #1652, failed before repository repair began.
+- The failure was Groq HTTP 429 token-per-minute rate limiting on `openai/gpt-oss-120b` (8,000 TPM limit; the retry still exceeded the limit). The workflow explicitly reported that bundle authoring/review failed safely and repository repair was not started. No repository change resulted. Treat this as a transient provider limit; do not infer repository damage or stop the recurring mission.
+
+### DESIGNED / EXECUTED / VERIFIED boundary
+
+- **DESIGNED:** mission registry, provenance contracts, point-in-time feature snapshots, fixed-horizon forecast records, walk-forward policy and counter-hypothesis process.
+- **EXECUTED on PR branches, not main:** public ingestion workflow, raw-source receipt chain, SQLite feature store, forecast ledger, walk-forward evaluator, baseline comparisons, drift diagnostics, V3 safety/orchestration changes and the new spot snapshot.
+- **VERIFIED:** exact-head tests and audits listed above apply only to their cited commit SHAs. The XRP collector is not running on main; the historical feature set is not yet sufficiently synchronized/mature; external WORM/timestamp anchoring, calibrated out-of-sample lift and production evaluator trust keys are not established. No directional forecast, paper trade or real-money action is authorized.
+
+### Next concrete actions
+
+1. Obtain a valid independent approving review and resolve the Pages deployment authorization boundary for #1640; do not bypass protections.
+2. Verify the documentation-only #1640 handoff commit's exact-head full suite, wheel, dependency audit and fail-closed gate.
+3. Verify the new #1643 snapshot/test commit's exact-head full suite, audit and gate. Keep #1643 separate until #1640 is merged and verified on main.
+4. After #1640 is on main, consolidate #1643's unique research files onto that resulting main, preserving the identical dependency-audit workflow and the new snapshot/test.
+5. Only after the successor is merged and verified on main, close #1642 with an explicit supersession cross-reference.
+6. Reconcile the remaining non-draft dependency and feature PRs by exact changed paths and ancestry; preserve unique work.
+7. Continue synchronized historical XRP ingestion and leakage-safe out-of-sample evaluation. No directional forecast until predictive lift and calibration are demonstrated.
+
+
 
 This is the current-state handoff for the priority-1 XRP mission. Earlier run-by-run handoff revisions remain in Git history; this concise snapshot replaces an unbounded append log without rewriting branch history.
 
