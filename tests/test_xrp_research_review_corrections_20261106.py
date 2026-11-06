@@ -103,8 +103,9 @@ def test_fuelmaps_historical_depth_has_a_git_blob_bound_source_lineage() -> None
     depth = source["order_book_depth"]
     assert depth["source_id"] == correction["source_id"]
     assert depth["snapshot_time_utc"] == correction["snapshot_time_utc"]
-    assert depth["plus_minus_2pct_bid_depth_usd"] == correction["plus_minus_2pct_bid_depth_usd"]
-    assert depth["plus_minus_2pct_ask_depth_usd"] == correction["plus_minus_2pct_ask_depth_usd"]
+    two_pct = next(level for level in depth["levels"] if level["band"] == "±2%")
+    assert two_pct["bid_depth_usd"] == correction["plus_minus_2pct_bid_depth_usd"]
+    assert two_pct["ask_depth_usd"] == correction["plus_minus_2pct_ask_depth_usd"]
     assert depth["venue_coverage_count"] == len(correction["venue_coverage"])
     assert correction["status"] == "HISTORICAL_CONTEXT_ONLY_STALE_AT_LATER_KRAKEN_CAPTURE"
     assert correction["original_artifact_modified"] is False
