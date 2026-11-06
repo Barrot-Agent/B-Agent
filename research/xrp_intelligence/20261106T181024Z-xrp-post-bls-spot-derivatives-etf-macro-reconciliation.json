@@ -2,13 +2,13 @@
   "schema_version": "barrot.xrp-research.v1",
   "artifact_id": "xrp_post_bls_spot_derivatives_etf_macro_reconciliation_20261106T181024Z",
   "artifact_type": "same_venue_spot_ticker_update_and_post_bls_derivatives_etf_macro_reconciliation",
-  "recorded_at_utc": "2026-11-06T18:16:08Z",
+  "recorded_at_utc": "2026-11-06T18:23:24Z",
   "mission_priority": 1,
   "mission": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
   "capture_contract": {
-    "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+    "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
     "common_point_in_time_cutoff_utc": null,
     "exact_per_request_retrieval_times_available": false,
     "original_http_wire_bytes_captured": false,
@@ -33,7 +33,7 @@
       "independence_group": "kraken_exchange",
       "provider_snapshot_timestamp_utc": null,
       "exact_retrieval_timestamp_utc": null,
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.18421000\",\"171\",\"171.000\"],\"b\":[\"1.18400000\",\"3614\",\"3614.000\"],\"c\":[\"1.18393000\",\"21.12271452\"],\"v\":[\"23674490.05076627\",\"38916891.71170158\"],\"p\":[\"1.19252463\",\"1.20605769\"],\"t\":[27864,40987],\"l\":[\"1.17173000\",\"1.17173000\"],\"h\":[\"1.22190000\",\"1.24393000\"],\"o\":\"1.20567000\"}}}",
       "receipt": {
         "algorithm": "SHA-256",
@@ -50,7 +50,7 @@
       "provider_snapshot_timestamp_utc": "2026-11-06T17:57:25.077Z",
       "provider_timestamp_epoch_ms": 1793987845077,
       "exact_retrieval_timestamp_utc": null,
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1847\",\"lastSz\":\"25.623\",\"askPx\":\"1.185\",\"askSz\":\"6240.366987\",\"bidPx\":\"1.1849\",\"bidSz\":\"7547.01364\",\"open24h\":\"1.2329\",\"high24h\":\"1.2456\",\"low24h\":\"1.1743\",\"volCcy24h\":\"81384707.8820359214\",\"vol24h\":\"67605695.111069\",\"ts\":\"1793987845077\",\"sodUtc0\":\"1.2072\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
       "receipt": {
         "algorithm": "SHA-256",
@@ -67,7 +67,7 @@
       "displayed_update_time_utc": "2026-11-06T17:00:00Z",
       "displayed_delay_minutes": 15,
       "inferred_underlying_data_time_utc": "2026-11-06T16:45:00Z",
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "XRP mark $1.1921 (-3.92% in 24h). Open interest, 7 exchanges: $1.92B; OI 24h change: -1.40%. Funding, OI-weighted: +0.0027% per 8h. Liquidations, 24h, 5 exchanges: at least $12.85M; longs $12.25M; shorts $598.46K. Long/short, 5 exchanges: 3.88 (79.5% long). Updated Nov 6, 2026, 17:00 UTC; 15-minute delay. Venue OI USD: Binance $494.79M; Bybit $327.83M; Gate $283.55M; MEXC $253.62M; Bitget $248.78M; Hyperliquid $208.60M; OKX $105.09M.",
       "receipt": {
         "algorithm": "SHA-256",
@@ -82,7 +82,7 @@
       "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
       "independence_group": "alpha_finance_derivatives_aggregator",
       "displayed_as_of_utc": "2026-11-06T17:52:00Z",
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "Live as of 2026-11-06T17:52:00Z. XRP spot $1.1831 (-4.34% 24h); all-venue notional open interest $2.78B; 24h volume $3.10B. XRP long liquidations in 24h $13.0M; short liquidations $658.1K. Modelled short-liquidity above spot $99.6M; modelled long-liquidity below spot $44.7M. Largest short liquidation cluster $6.1M at $1.2049, 1.8% above spot; largest long cluster $6.4M at $1.1711, 1.0% below spot. Clusters are modelled from open interest and standard leverage tiers, not observed executable liquidation orders.",
       "receipt": {
         "algorithm": "SHA-256",
@@ -97,7 +97,7 @@
       "url": "https://xrp-insights.com/",
       "independence_group": "xrp_insights_issuer_holdings_aggregator",
       "displayed_as_of_utc": null,
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "As displayed Nov 6, 2026: 6 US spot XRP ETFs plus BITW; 1,196.45M XRP locked; total AUM $1,499.59M. Nov 5 net inflow +110,214 XRP. Nov 2-5 week net flow -149.5K XRP.",
       "receipt": {
         "algorithm": "SHA-256",
@@ -112,7 +112,7 @@
       "url": "https://xrp-insights.com/data",
       "independence_group": "xrp_insights_issuer_holdings_aggregator",
       "displayed_as_of_utc": "2026-11-05",
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "Data as of Nov 5, 2026. Net XRP ETF flow Nov 2-Nov 5: -149,487 XRP across 4 settled trading days; total held Nov 5: 1,196,450,700 XRP. Flows are day-over-day issuer-reported holdings changes; flow-excluded rows count as zero. Latest trading day can be provisional/re-settled.",
       "receipt": {
         "algorithm": "SHA-256",
@@ -127,7 +127,7 @@
       "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
       "independence_group": "bls_primary_release",
       "provider_publication_time_utc": "2026-11-06T13:30:00Z",
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "USDL-26-1632, published 2026-11-06 08:30 ET: October nonfarm payrolls +165,000; unemployment 4.1%; average hourly earnings +0.4% month-over-month and +3.1% year-over-year; August and September revisions +84,000.",
       "receipt": {
         "algorithm": "SHA-256",
@@ -142,12 +142,27 @@
       "url": "https://www.reuters.com/business/view-strong-october-jobs-report-sends-yields-higher-2026-11-06/",
       "independence_group": "reuters_secondary_reporting",
       "provider_publication_time_utc": "2026-11-06T13:49:00Z",
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:16:08Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
       "excerpt": "Reuters, 2026-11-06 13:49 UTC: Treasury yields rose after the October employment data and then pulled back; 2-year yield +6 bp to 4.52%, 10-year +3 bp to 4.87%, 30-year +2 bp to 5.27%; DXY +0.7% to 102.22; market-implied December Fed hike odds 78% from 70%; Nasdaq +1.7%, S&P 500 +0.6%, Dow -0.6%.",
       "receipt": {
         "algorithm": "SHA-256",
         "digest": "e14279215e5074654b6d5cf92f5f4a9986995b68de1cc73a56564ed1043754f4",
         "scope": "Exact normalized Reuters market-reaction excerpt; reported market observations are one publication-time vintage, not a continuous time series."
+      }
+    },
+    {
+      "source_id": "FUELMAPS_XRP_SPOT_BOOK_20261106T1700Z",
+      "publisher": "Fuelmaps",
+      "source_type": "six_venue_spot_order_book_aggregation",
+      "url": "https://fuelmaps.io/order-book/",
+      "independence_group": "fuelmaps_multi_venue_spot_depth_aggregator",
+      "displayed_snapshot_time_utc": "2026-11-06T17:00:00Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:23:24Z",
+      "excerpt": "Fuelmaps XRP hourly spot-book snapshot as of 2026-11-06T17:00:00Z: mid $1.1947 across 6/6 venues. ±0.5% bids $8.6M asks $6.2M bid share 58.0% 6/6; ±1% bids $13.2M asks $9.6M bid share 57.8% 6/6; ±2% bids $18.3M asks $10.0M bid share 64.5% 6/6; ±5% bids $25.9M asks $13.0M bid share 66.5% 6/6; ±10% bids $32.0M asks $15.9M bid share 66.8% 5/6. Largest resting levels within 10%: bids $1.150/$2.6M, $1.100/$2.1M, $1.192/$1.9M, $1.188/$1.8M, $1.190/$1.7M. Six spot venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini; Binance and Bitget excluded. USD/USDT books converted to USD. Hourly columns average one-minute snapshots; walls can be cancelled; hidden/iceberg orders omitted; no pre-recording history; spot only.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "7a1297f584d2b859f2280906bda0cd3dcb7ef4bcee78e08c1ac48b3b8948c558",
+        "scope": "Exact normalized excerpt from the Fuelmaps page; not original HTTP bytes, venue-native snapshots or independent timestamp anchoring."
       }
     }
   ],
@@ -376,7 +391,8 @@
       "TradRadar and Alpha Finance OI universes differ by $860M and cannot be averaged.",
       "ETF holdings flow is settled only through November 5 and is not direct AP cash flow.",
       "Original HTTP wire bytes and response headers were not captured; excerpt hashes are not independent immutable anchoring.",
-      "No synchronized historical event study, leakage-safe out-of-sample lift, calibration or evaluator attestation supports a directional forecast."
+      "No synchronized historical event study, leakage-safe out-of-sample lift, calibration or evaluator attestation supports a directional forecast.",
+      "The Fuelmaps six-venue spot-depth observation is an hourly 17:00 UTC snapshot, not a continuous or venue-complete executable-depth series; Binance and Bitget are excluded and displayed orders can be cancelled."
     ]
   },
   "safety": {
@@ -385,5 +401,108 @@
     "real_money_action": false,
     "external_submission": false,
     "external_ai_data_transfer": false
+  },
+  "spot_depth_snapshot": {
+    "source_id": "FUELMAPS_XRP_SPOT_BOOK_20261106T1700Z",
+    "snapshot_time_utc": "2026-11-06T17:00:00Z",
+    "mid_usd": 1.1947,
+    "venue_count": 6,
+    "venues": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "bands": [
+      {
+        "within_pct": 0.5,
+        "bids_usd": 8600000,
+        "asks_usd": 6200000,
+        "bid_share_pct": 58,
+        "venues_covering": 6
+      },
+      {
+        "within_pct": 1,
+        "bids_usd": 13200000,
+        "asks_usd": 9600000,
+        "bid_share_pct": 57.8,
+        "venues_covering": 6
+      },
+      {
+        "within_pct": 2,
+        "bids_usd": 18300000,
+        "asks_usd": 10000000,
+        "bid_share_pct": 64.5,
+        "venues_covering": 6
+      },
+      {
+        "within_pct": 5,
+        "bids_usd": 25900000,
+        "asks_usd": 13000000,
+        "bid_share_pct": 66.5,
+        "venues_covering": 6
+      },
+      {
+        "within_pct": 10,
+        "bids_usd": 32000000,
+        "asks_usd": 15900000,
+        "bid_share_pct": 66.8,
+        "venues_covering": 5
+      }
+    ],
+    "largest_resting_levels_within_10pct": [
+      {
+        "side": "bid",
+        "price_usd": 1.15,
+        "size_usd": 2600000
+      },
+      {
+        "side": "bid",
+        "price_usd": 1.1,
+        "size_usd": 2100000
+      },
+      {
+        "side": "bid",
+        "price_usd": 1.192,
+        "size_usd": 1900000
+      },
+      {
+        "side": "bid",
+        "price_usd": 1.188,
+        "size_usd": 1800000
+      },
+      {
+        "side": "bid",
+        "price_usd": 1.19,
+        "size_usd": 1700000
+      }
+    ],
+    "method": {
+      "market_type": "spot_only",
+      "hourly_column": "average_of_one_minute_book_snapshots",
+      "usdt_conversion": "USDT books converted to USD using a live USDT/USD rate",
+      "full_depth_venues": [
+        "Coinbase",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "near_price_venues": [
+        "OKX",
+        "Kraken"
+      ],
+      "excluded_venues": [
+        "Binance",
+        "Bitget"
+      ],
+      "hidden_and_iceberg_orders_included": false,
+      "resting_orders_can_be_cancelled": true,
+      "historical_data_available_before_recording_start": false,
+      "levels_beyond_15pct_recorded": false,
+      "wall_duration_bias": "A wall present for 10 minutes of an hour contributes about one sixth of its size to that hourly column."
+    },
+    "interpretation_limit": "This is an hourly multi-venue resting-book snapshot, not fillable depth, executable slippage, committed buying interest or a forecast. Binance and Bitget are excluded; near-price coverage is not full depth at every venue. Bid share is a descriptive snapshot statistic and can change when orders are cancelled or moved."
   }
 }
