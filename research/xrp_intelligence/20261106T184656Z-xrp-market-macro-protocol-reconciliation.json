@@ -2,7 +2,7 @@
   "schema_version": 1,
   "artifact_id": "xrp_market_macro_protocol_reconciliation_20261106T184656Z",
   "artifact_type": "XRP_MARKET_MACRO_PROTOCOL_RECONCILIATION",
-  "recorded_at_utc": "2026-11-06T18:46:56Z",
+  "recorded_at_utc": "2026-11-06T18:53:54Z",
   "mission_priority": 1,
   "mission": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 remains the execution, orchestration, safety and verification foundation.",
@@ -12,7 +12,7 @@
     "original_http_wire_bytes_captured": false,
     "raw_http_headers_captured": false,
     "common_point_in_time_cutoff_utc": null,
-    "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+    "retrieval_time_upper_bound_utc": "2026-11-06T18:53:54Z",
     "hash_scope": "SHA-256 hashes bind the normalized excerpts stored below; they do not prove the rendered pages were byte-identical to original HTTP responses.",
     "timestamp_policy": "Publication times, approximate provider snapshots, event times and ledger state reads are stored separately. No common market cutoff is inferred."
   },
@@ -138,11 +138,11 @@
         "No net assets or holdings are published for these five funds.",
         "Cumulative total differs from TokenPost/SoSoValue by $80M; methodology/universe difference unresolved."
       ],
-      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
-      "excerpt": "Alpha Finance XRP ETF dashboard, retrieved 2026-11-06 18:46:56 UTC: covers five U.S. spot XRP ETF funds through the Nov 5, 2026 session; Nov 5 net flow $0; last seven sessions Oct 26-Nov 5 net +$4.8M; 30-session flow +$60.8M; cumulative net inflow +$1.73B. The page publishes no net assets or holdings for these funds. This is a flow-series aggregation, not issuer cash-flow records.",
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:53:54Z",
+      "excerpt": "Alpha Finance XRP ETF dashboard, retrieved 2026-11-06 18:53:54 UTC: covers five U.S. spot XRP ETF funds through the Nov 5, 2026 session; Nov 5 net flow $0; last seven sessions Oct 26-Nov 5 net +$4.8M; 30-session flow +$60.8M; cumulative net inflow +$1.73B. The page publishes no net assets or holdings for these funds. This is a flow-series aggregation, not issuer cash-flow records.",
       "receipt": {
         "algorithm": "SHA-256",
-        "digest": "9343b278e57d6e59a0585587aac2b53b42417bf7ce3dd68ea3f6938d35bc8556",
+        "digest": "609c91c71e570f6cb5043dc96f897497584895e3f833bee8e8c67f376a3ca7d1",
         "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
       }
     },
