@@ -491,3 +491,158 @@ def test_mission_mode_advances_only_from_verified_learning_records(monkeypatch, 
     assert result["topic_id"] == "xrp_public_data_ingestion"
     assert result["provider_calls"] is False
     assert result["repository_mutation"] is False
+
+
+def test_groq_tpm_rate_limit_retries_once_then_uses_deduplicated_fallback_model(monkeypatch):
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setenv("BRAIN_MODEL", "openai/gpt-oss-120b")
+    monkeypatch.delenv("BRAIN_FALLBACK_MODELS", raising=False)
+    module = load_script_module("barrot_agent_groq_tpm_fallback_test")
+
+    calls: list[str] = []
+    sleeps: list[float] = []
+
+    def rate_limit_error() -> urllib.error.HTTPError:
+        body = (
+            '{"error":{"message":"Rate limit reached for model '
+            '`openai/gpt-oss-120b` on tokens per minute: Limit 8000, '
+            'Used 4116, Requested 4521. Please try again in 0.5s.",'
+            '"type":"tokens","code":"rate_limit_exceeded"}}'
+        ).encode("utf-8")
+        return urllib.error.HTTPError(
+            module.GROQ_ENDPOINT,
+            429,
+            "Too Many Requests",
+            {},
+            io.BytesIO(body),
+        )
+
+    def fake_urlopen(request, timeout=90):
+        payload = json.loads(request.data.decode("utf-8"))
+        calls.append(payload["model"])
+        if payload["model"] == "openai/gpt-oss-120b":
+            raise rate_limit_error()
+        return io.BytesIO(
+            json.dumps(
+                {"choices": [{"message": {"role": "assistant", "content": "fallback-ok"}}]}
+            ).encode("utf-8")
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+    monkeypatch.setattr(module.time, "sleep", lambda seconds: sleeps.append(seconds))
+
+    result = module._send_groq_request(
+        {
+            "model": "openai/gpt-oss-120b",
+            "messages": [{"role": "user", "content": "test"}],
+            "max_tokens": 128,
+        }
+    )
+
+    assert calls == [
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b",
+    ]
+    assert sleeps == [0.5]
+    assert result["choices"][0]["message"]["content"] == "fallback-ok"
+    assert module._groq_fallback_models("openai/gpt-oss-120b") == ["openai/gpt-oss-20b"]
+
+
+def test_deterministic_rate_limit_report_is_explicitly_blocked_and_read_only(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_deterministic_rate_limit_report_test")
+
+    error = RuntimeError(
+        "Groq per-minute token limit exhausted for openai/gpt-oss-120b; "
+        "all configured fallback models failed."
+    )
+    assert module._is_groq_rate_limit_error(error)
+
+    report = module._build_deterministic_rate_limit_report(
+        task_title="Repository-wide integration audit",
+        issue_number="1652",
+        error=error,
+        audit_context={
+            "inventory": "tracked repository inventory",
+            "github_context": "PR #1640 and PR #1643",
+            "file_context": "read-only file excerpts",
+            "directory_context": "top-level tree",
+        },
+        snapshot={"head": "abc123", "working_tree": "clean", "actions": {"runs": []}},
+    )
+
+    assert "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`" in report
+    assert "Repository-wide integration audit" in report
+    assert "#1652" in report
+    assert "PR #1640 and PR #1643" in report
+    assert "No repository source file was changed" in report
+    assert "Repository repair is **not complete**" in report
+
+
+def test_bundle_provider_rate_limit_posts_deterministic_snapshot_without_starting_repair(
+    monkeypatch, tmp_path
+):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_BODY", "Implement the requested repository improvement.")
+    monkeypatch.setenv("TASK_TITLE", "Continue Barrot integration")
+    monkeypatch.setenv("ISSUE_NUMBER", "1652")
+    monkeypatch.setenv("BRANCH", "barrot/task-1652")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+
+    module = load_script_module("barrot_agent_bundle_rate_limit_fallback_test")
+    calls: dict[str, object] = {}
+
+    class FakeBundleController:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def run(self, **kwargs):
+            raise RuntimeError(
+                "Groq HTTP 429: rate_limit_exceeded; tokens per minute limit exhausted."
+            )
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("rate-limit fallback must not start repository repair or PR creation")
+
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
+    monkeypatch.setattr(module, "configure_git", lambda: None)
+    monkeypatch.setattr(module, "checkout_branch", lambda branch: None)
+    monkeypatch.setattr(
+        module,
+        "build_audit_context",
+        lambda title, body: {
+            "inventory": "tracked files",
+            "github_context": "PR #1640",
+            "file_context": "read-only excerpts",
+            "directory_context": "repository tree",
+        },
+    )
+    monkeypatch.setattr(
+        module,
+        "build_read_only_audit_snapshot",
+        lambda: {"head": "abc123", "working_tree": "clean"},
+    )
+    monkeypatch.setattr(
+        module,
+        "post_issue_comment",
+        lambda message: calls.setdefault("comment", message),
+    )
+    monkeypatch.setattr(module, "RepositoryRepairController", forbidden)
+    monkeypatch.setattr(module, "WorkQueueController", forbidden)
+    monkeypatch.setattr(module, "create_pull_request", forbidden)
+
+    with pytest.raises(SystemExit):
+        module.main()
+
+    report = calls["comment"]
+    assert "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`" in report
+    assert "PR #1640" in report
+    assert "No repository source file was changed" in report
+    assert "Repository repair is **not complete**" in report
