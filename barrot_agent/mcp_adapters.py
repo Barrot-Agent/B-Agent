@@ -17,6 +17,10 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, List, Optional
 
 from barrot_agent.mcp_discovery import ServerInventory, ToolSchema
+from barrot_agent.repository.codebase_memory import (
+    CodebaseMemoryClient,
+    RepositorySyncController,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -270,12 +274,92 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
 
 
 # ---------------------------------------------------------------------------
+# Codebase Memory adapter (local indexing + read-only graph queries)
+# ---------------------------------------------------------------------------
+
+
+class CodebaseMemoryAdapter(BaseMCPAdapter):
+    """Adapter for the optional MIT-licensed codebase-memory-mcp executable.
+
+    Indexing writes only to the external graph cache. Source files and Git
+    remotes are never modified by this adapter.
+    """
+
+    _TOOLS = [
+        "index_repository",
+        "sync_repository",
+        "list_projects",
+        "index_status",
+        "check_index_coverage",
+        "search_graph",
+        "search_code",
+        "trace_path",
+        "detect_changes",
+        "query_graph",
+        "get_graph_schema",
+        "get_code_snippet",
+        "get_file_outline",
+        "get_architecture",
+        "compare_graphs",
+    ]
+
+    def __init__(
+        self,
+        inventory: ServerInventory,
+        repo_root: str = ".",
+        binary: Optional[str] = None,
+    ) -> None:
+        super().__init__(inventory)
+        from pathlib import Path
+
+        self._repo_root = Path(repo_root).expanduser().resolve()
+        self._client = CodebaseMemoryClient(
+            repo_root=self._repo_root,
+            binary=binary,
+        )
+
+    def supported_tools(self) -> List[str]:
+        return list(self._TOOLS)
+
+    def call_tool(self, tool_name: str, **kwargs: Any) -> AdapterResult:
+        if not self.validate_tool(tool_name):
+            return AdapterResult(
+                success=False,
+                error=f"Unknown or disallowed Codebase Memory tool '{tool_name}'.",
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+
+        if tool_name == "sync_repository":
+            default_branch = kwargs.get("default_branch", "main")
+            if set(kwargs) - {"default_branch"}:
+                return AdapterResult(
+                    success=False,
+                    error="sync_repository accepts only default_branch.",
+                    tool_name=tool_name,
+                    server_id=self.server_id,
+                )
+            return self._wrap_call(
+                tool_name,
+                lambda: RepositorySyncController(
+                    self._repo_root, self._client
+                ).sync(default_branch=default_branch).to_dict(),
+            )
+
+        return self._wrap_call(
+            tool_name,
+            lambda: self._client.call_tool(tool_name, kwargs),
+        )
+
+
+# ---------------------------------------------------------------------------
 # Adapter registry
 # ---------------------------------------------------------------------------
 
 _ADAPTER_CLASSES: Dict[str, type] = {
     "barrot-core-repository": GitMCPAdapter,
     "filesystem": FilesystemMCPAdapter,
+    "codebase-memory": CodebaseMemoryAdapter,
 }
 
 
