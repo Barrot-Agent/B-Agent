@@ -36,14 +36,6 @@ def build_conflict_report(dataset: Any) -> dict:
             continue
 
         record_id = record.get("id")
-        if not isinstance(record_id, str) or not record_id.strip():
-            unresolved_records.append({
-                "index": index,
-                "record": record,
-                "reason": "missing_stable_record_id",
-            })
-            continue
-
         missing = [
             field for field in (
                 "source_id",
@@ -57,10 +49,18 @@ def build_conflict_report(dataset: Any) -> dict:
         if missing:
             provenance_gaps.append({
                 "index": index,
-                "record_id": record_id,
+                "record_id": record_id if isinstance(record_id, str) else None,
                 "missing_fields": missing,
                 "record": record,
             })
+
+        if not isinstance(record_id, str) or not record_id.strip():
+            unresolved_records.append({
+                "index": index,
+                "record": record,
+                "reason": "missing_stable_record_id",
+            })
+            continue
 
         grouped.setdefault(record_id, []).append(record)
 
