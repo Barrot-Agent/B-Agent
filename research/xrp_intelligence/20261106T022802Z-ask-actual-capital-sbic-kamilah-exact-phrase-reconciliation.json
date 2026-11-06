@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_ecosystem_exact_phrase_reconciliation",
+  "artifact_id": "xrp-exact-phrase-ask-capital-sbic-kamilah-20261106T022802Z",
+  "subject": "Exact-phrase research for ASK Coin, actual capital, SBIC/ChatGPT SBIC and Camilla/Kamilah Stevenson identity attribution",
+  "capture": {
+    "automation_run_started_at_utc": "2026-11-06T02:28:02Z",
+    "exact_page_retrieval_timestamps_utc": null,
+    "note": "Run start is context only. The web retrieval tool did not expose exact per-request timestamps or original HTTP response bytes. Issuer publication dates and SEC filing/effectiveness dates are retained separately."
+  },
+  "ask_coin": {
+    "exact_phrase_candidates": [
+      "ASK Coin",
+      "ASK token",
+      "Permission Coin"
+    ],
+    "strongest_candidate": {
+      "project": "Permission",
+      "token_name": "ASK",
+      "issuer_claim": "Native token of the Permission ecosystem",
+      "official_website": "https://www.permission.ai/",
+      "official_token_documentation": "https://docs.permission.ai/ask-token",
+      "official_whitepaper": "https://www.permission.ai/white-paper",
+      "official_website_use": "Family-friendly crypto rewards for positive behavior; users can earn ASK and redeem it for gift cards through the rewards partner Tremendous.",
+      "official_documentation_utility": [
+        "Rewards and incentives for users in Permission-powered experiences.",
+        "Agent-to-agent value exchange within the Permission Protocol.",
+        "Governance and staking are described as future capabilities in the token documentation."
+      ],
+      "fixed_supply": 100000000000,
+      "token_standard": "LayerZero Omnichain Fungible Token (OFT)",
+      "official_contracts": {
+        "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      },
+      "bridging_and_liquidity": "Official docs state ASK is live on Stargate.",
+      "xrp_relationship_status": "NO_DIRECT_XRP_OR_XRPL_RELATIONSHIP_ESTABLISHED",
+      "distinction": [
+        "This ASK is the Permission ecosystem token, not XRP.",
+        "The issuer's documented active networks are Base and Polygon through LayerZero OFT; no XRPL-native ASK deployment was established in this research.",
+        "The official token documentation does not identify Ripple, XRP, SBI, Coinbase or Circle as ASK counterparties."
+      ],
+      "caveats": [
+        "The issuer's whitepaper is self-published and contains forward-looking product, adoption and token-utility claims.",
+        "Future governance/staking is not represented as a currently completed capability.",
+        "The exact phrase ASK Coin may match other unrelated assets or projects; Permission ASK is the strongest verified candidate, not an exhaustive universe."
+      ]
+    },
+    "third_party_listing": {
+      "publisher": "CoinMarketCap",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "listed_name": "Permission Coin",
+      "ticker": "ASK",
+      "contract_displayed_truncated": "0xaA37...96e6Ff",
+      "role": "Secondary listing corroboration only; official Permission docs provide full Base and Polygon addresses."
+    }
+  },
+  "actual_capital": {
+    "exact_phrase_search": {
+      "phrase": "actual capital",
+      "secondary_usage_source": "CBC Globe, October 12, 2026",
+      "url": "https://cbcglobe.com/en/articles/2026/10/12/breaking-ripple-xrp-in-the-1-35-range-evernorth-nasdaq-listi-def18f6b",
+      "usage_summary": "The article says actual capital inflows must be confirmed when assessing Evernorth's XRP treasury and Nasdaq listing.",
+      "evidentiary_status": "SECONDARY_COMMENTARY_NOT_A_PRIMARY_CAPITAL_RECORD"
+    },
+    "evernorth_cantor_equity_line": {
+      "issuer": "Evernorth Holdings Inc.",
+      "counterparty": "CF Principal Investments LLC (Cantor affiliate)",
+      "agreement_date": "2026-10-23",
+      "sec_8k_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067062/a424b3sticker8-k.htm",
+      "sec_s1_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "sec_subsequent_event_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/R58.htm",
+      "sec_effect_notice_url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/9999999995-26-003391-index.htm",
+      "facility_type": "Committed equity line of credit (ELOC), not a funded loan or cash balance.",
+      "maximum_new_shares": 5218935,
+      "reference_stock_price_usd": 15.46,
+      "reference_stock_price_date": "2026-10-22",
+      "estimated_maximum_gross_proceeds_usd": 80684735.1,
+      "prospectus_rounded_maximum_gross_proceeds_usd": 80700000,
+      "purchase_price_mechanism": "97% of the applicable volume-weighted average price, subject to agreement terms and conditions.",
+      "issuer_control": "Evernorth may direct purchases/sales from time to time at its option; the timing and amount depend on its decisions and market conditions.",
+      "beneficial_ownership_limit_percent": 4.99,
+      "registration_effective_date": "2026-10-30",
+      "upfront_commitment_fee_usd": 521893.5,
+      "fee_timing": "Payable by Evernorth to Cantor within five business days following the Upfront Determination Date.",
+      "cash_received_from_facility_verified": false,
+      "shares_sold_under_facility_verified": false,
+      "xrp_purchases_funded_by_facility_verified": false,
+      "interpretation": [
+        "The approximately $80.7M is a maximum illustrative gross-proceeds estimate using the October 22 XRPN closing price and the full share amount, not cash already received.",
+        "The company must elect to issue/sell shares; the facility does not establish that any shares have been sold or any proceeds received.",
+        "The October 30 registration effectiveness permits the registered resale process to proceed subject to the agreement, but is not evidence of a drawdown or sale.",
+        "The $521,893.50 commitment fee is a fee payable by Evernorth, not capital raised.",
+        "Even if proceeds are later received, their use must be traced separately before classifying them as XRP purchases."
+      ]
+    },
+    "prior_primary_capital_records": {
+      "reference": "The existing XRP research archive separately records Evernorth's closing cash XRP purchases, in-kind XRP contributions, share subscriptions, debt/credit facilities and related-party borrowings.",
+      "rule": "Do not combine cash purchases, in-kind contributions, potential ELOC proceeds, undrawn facilities, notes, debt or gross proceeds into one 'actual capital invested in XRP' number."
+    }
+  },
+  "sbic_chatgpt": {
+    "exact_phrase": "SBIC, ChatGPT SBIC",
+    "search_status": "NO_EXACT_INDEXED_MATCH_RETURNED_IN_THIS_RUN",
+    "limitation": "Search-engine non-return is not proof that the phrase does not exist in unindexed, private, deleted or differently punctuated sources.",
+    "preserved_disambiguations": [
+      "Japanese SBIC East, SBIC Central and SBIC West are separate regional entities.",
+      "SBI Holdings is a separate corporate group and must not be conflated with the regional SBIC companies.",
+      "In ChatGPT academic-benchmark literature, SBIC refers to the Social Bias Inference Corpus, not SBI Holdings or the Japanese regional companies."
+    ],
+    "inference_permitted": false
+  },
+  "camilla_kamilah_stevenson": {
+    "public_media_corroboration": {
+      "publisher": "iHeart",
+      "episode_title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "episode_date": "2026-06-11",
+      "duration_minutes": 42,
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "transcript_note": "The episode title identifies the guest as Dr. Kamilah Stevenson. The autogenerated transcript has the host call the guest Camila/Camilla and says viewers have seen her on YouTube discussing XRP.",
+      "source_caveat": "iHeart states that transcripts are automatically generated and may not be completely accurate."
+    },
+    "public_channel_match": "@drkamilahstevenson",
+    "channel_attribution_assessment": "HIGH_CONFIDENCE_PUBLIC_CHANNEL_MATCH_RETAINED_FROM_PRIOR_RESEARCH",
+    "legal_identity_verified": false,
+    "external_social_account_ownership_verified": false,
+    "prior_youtube_video_inventory_count": 3,
+    "new_youtube_videos_added": [],
+    "inventory_exhaustive": false,
+    "classification": "The iHeart item is a podcast episode, not a YouTube video. It corroborates the public creator attribution but does not independently establish legal identity or ownership of every similarly named account."
+  },
+  "source_registry": [
+    {
+      "id": "permission_official_site",
+      "publisher": "Permission",
+      "source_type": "issuer website",
+      "url": "https://www.permission.ai/",
+      "source_independence_group": "permission_issuer",
+      "claims_supported": [
+        "Permission's own description of ASK as a family-friendly reward token and gift-card redemption."
+      ]
+    },
+    {
+      "id": "permission_ask_docs",
+      "publisher": "Permission",
+      "source_type": "official token documentation",
+      "url": "https://docs.permission.ai/ask-token",
+      "source_independence_group": "permission_issuer",
+      "claims_supported": [
+        "ASK utility, 100B fixed supply, LayerZero OFT, Base and Polygon contract addresses, Stargate integration, future governance/staking."
+      ]
+    },
+    {
+      "id": "permission_whitepaper",
+      "publisher": "Permission",
+      "source_type": "issuer technical whitepaper",
+      "url": "https://www.permission.ai/white-paper",
+      "source_independence_group": "permission_issuer",
+      "claims_supported": [
+        "Issuer's token and platform design, marketplace, supply and forward-looking plans."
+      ]
+    },
+    {
+      "id": "coinmarketcap_permission_ask",
+      "publisher": "CoinMarketCap",
+      "source_type": "third-party token listing",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "source_independence_group": "coinmarketcap_listing",
+      "claims_supported": [
+        "Secondary Permission Coin/ASK listing and truncated contract display."
+      ]
+    },
+    {
+      "id": "evernorth_oct23_8k",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "source_type": "issuer-filed SEC Form 8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067062/a424b3sticker8-k.htm",
+      "filed_date": "2026-10-23",
+      "source_independence_group": "issuer_sec_filing",
+      "claims_supported": [
+        "ELOC agreement with Cantor, up to 5,218,935 newly issued shares and issuer discretion over timing/amount."
+      ]
+    },
+    {
+      "id": "evernorth_oct23_s1",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "source_type": "issuer-filed SEC Form S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "filed_date": "2026-10-23",
+      "source_independence_group": "issuer_sec_filing",
+      "claims_supported": [
+        "Illustrative $80.7M gross maximum at $15.46 reference price, share sale mechanics and no proceeds until actual share sales."
+      ]
+    },
+    {
+      "id": "evernorth_effect",
+      "publisher": "SEC EDGAR",
+      "source_type": "SEC effectiveness notice",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/9999999995-26-003391-index.htm",
+      "effective_date": "2026-10-30",
+      "source_independence_group": "sec_regulatory_record",
+      "claims_supported": [
+        "Registration statement effectiveness date."
+      ]
+    },
+    {
+      "id": "cbc_actual_capital_phrase",
+      "publisher": "CBC Globe",
+      "source_type": "secondary media commentary",
+      "url": "https://cbcglobe.com/en/articles/2026/10/12/breaking-ripple-xrp-in-the-1-35-range-evernorth-nasdaq-listi-def18f6b",
+      "published_date": "2026-10-12",
+      "source_independence_group": "cbcglobe_media",
+      "claims_supported": [
+        "Secondary usage of the exact phrase 'actual capital'; not a primary capital record."
+      ]
+    },
+    {
+      "id": "iheart_kamilah_stevenson",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "source_type": "podcast episode and autogenerated transcript",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_date": "2026-06-11",
+      "source_independence_group": "iheart_media",
+      "claims_supported": [
+        "Public guest attribution to Dr. Kamilah Stevenson and transcript's Camila/Camilla spelling variants; not legal identity proof."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "A1",
+      "hypothesis": "The exact phrase ASK Coin refers to Permission's ASK token.",
+      "supporting_evidence": [
+        "Permission's official site and token documentation identify ASK as its native token.",
+        "Official docs specify Base and Polygon contracts and LayerZero OFT deployment."
+      ],
+      "disconfirming_evidence": [
+        "ASK is a short ticker/name used by other unrelated projects; the exact phrase alone is ambiguous.",
+        "No direct XRP/XRPL relationship is established."
+      ]
+    },
+    {
+      "id": "A2",
+      "hypothesis": "The Evernorth Cantor ELOC represents up to $80.7M of actual capital already available for XRP purchases.",
+      "supporting_evidence": [
+        "The SEC filing documents a committed equity facility and a maximum illustrative gross-proceeds estimate."
+      ],
+      "disconfirming_evidence": [
+        "Evernorth controls whether and when shares are issued; no actual share sale or cash drawdown is verified.",
+        "The $80.7M estimate depends on the October 22 stock price and full share utilization.",
+        "The commitment fee is payable by Evernorth; the facility is not cash already received.",
+        "Proceeds use must be separately verified before attributing any XRP purchases."
+      ]
+    },
+    {
+      "id": "A3",
+      "hypothesis": "The iHeart guest and the public YouTube creator attributed as Kamilah/Camilla Stevenson are the same public creator.",
+      "supporting_evidence": [
+        "The iHeart episode identifies Dr. Kamilah Stevenson; the host transcript calls her Camila/Camilla and says she is known on YouTube for XRP content.",
+        "Prior public-channel evidence supports @drkamilahstevenson."
+      ],
+      "disconfirming_evidence": [
+        "The transcript is autogenerated.",
+        "Legal identity and ownership of external social handles are not independently verified.",
+        "The podcast is not itself a YouTube video."
+      ]
+    }
+  ],
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "data_cutoff_utc": null,
+  "model_ineligibility_reasons": [
+    "These are identity, token-entity and corporate-capital classification findings, not synchronized market features.",
+    "The ELOC filing establishes a facility and potential proceeds, not actual share sales, cash receipts or XRP purchases.",
+    "The ASK candidate is identified from issuer documentation, but no XRP relationship is established.",
+    "The SBIC exact-phrase search was not exhaustive.",
+    "The Kamilah transcript is autogenerated and does not establish legal identity."
+  ]
+}
