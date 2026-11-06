@@ -413,6 +413,43 @@
         "Tazapay acquisition was pending regulatory approval and was not completed in the cited period.",
         "Arc is a separate network and is not XRPL."
       ]
+    },
+    {
+      "id": "sbi_circle_arc_validator",
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relationship": "Circle's September 16, 2026 public-mainnet launch release identifies SBI Group in Arc's founding validator cohort. SBI Chairman Yoshitaka Kitao says SBI will contribute to Arc's operation and governance; the same statement describes SBI VC Trade's USDC distribution since March 2025 and the group's planned use of USDC and JPYSC.",
+      "launch_date": "2026-09-16",
+      "status": "founding_validator_at_public_mainnet_launch",
+      "source_ids": [
+        "circle_arc_mainnet_launch_sbi_validator"
+      ],
+      "limits": [
+        "The company announcement establishes founding-cohort participation and stated operational/governance role; it does not independently verify validator node uptime, stake weight, or transaction share.",
+        "Arc is Circle's separate public Layer 1 network, not XRPL.",
+        "USDC and JPYSC distribution/usage are not XRP purchases or proof of XRP bridge-asset demand."
+      ]
+    },
+    {
+      "id": "sbi_circle_arc_token_presale",
+      "from": "SBI Holdings",
+      "to": "Circle ARC Token",
+      "relationship": "SBI Holdings announced that a consolidated subsidiary participated in Circle's ARC Token presale. The announcement cited a Circle-reported $222M consortium total but did not disclose SBI's individual allocation.",
+      "date": "2026-05-12",
+      "announced_total_consortium_raise_usd": 222000000,
+      "sbi_specific_amount_usd": null,
+      "sbi_token_quantity": null,
+      "cash_settlement_verified": false,
+      "status": "announced_presale_participation_amount_undisclosed",
+      "source_ids": [
+        "sbi_arc_token_presale",
+        "circle_q3_2026_arc_presale_sec_disclosure"
+      ],
+      "limits": [
+        "Do not attribute the $222M consortium total to SBI; the SBI announcement gives no SBI-specific amount, token quantity, or settlement confirmation.",
+        "Circle's September 30, 2026 Form 10-Q later reports $242.2M aggregate gross proceeds on institutional ARC token purchase agreements entered during Q2; it does not identify SBI as a purchaser. The May announcement and Q3 filing have different disclosure windows/cohort descriptions and are not reconciled here.",
+        "ARC is a Circle Arc network token, not XRP; the presale is not an XRP purchase, XRPL investment, or evidence of XRP spot demand."
+      ]
     }
   ],
   "network_conclusions": {
@@ -437,7 +474,9 @@
         "XRPL research initiative"
       ],
       "sbi_circle": [
-        "$50M Circle IPO equity investment split between SBI Holdings and SBI Shinsei Bank"
+        "$50M Circle IPO equity investment split between SBI Holdings and SBI Shinsei Bank",
+        "SBI Group is listed as a founding validator of Circle Arc and says it will contribute to network operation and governance (2026-09-16).",
+        "SBI announced ARC Token presale participation through a consolidated subsidiary on 2026-05-12; the SBI-specific amount remains undisclosed."
       ],
       "sbi_xrp": [
         "SBI Holdings shareholder-benefit history",
@@ -470,9 +509,14 @@
       "RLUSD listing and JPYSC issuance are stablecoin distribution, not XRP purchases.",
       "SBI Remit's Ripple DLT use does not prove XRP bridge-asset usage for each remittance.",
       "Circle's $104B gross USDC minting and $104B gross redemptions in Q3 are gross stablecoin flows, not net new capital and not XRP purchases.",
-      "Coinbase's reported institutional collateral pool is not XRP-specific; no XRP balance can be inferred from the aggregate."
+      "Coinbase's reported institutional collateral pool is not XRP-specific; no XRP balance can be inferred from the aggregate.",
+      "SBI's ARC Token presale participation concerns Circle's Arc network, not XRP or XRPL, and no SBI-specific amount or XRP purchase is established."
     ],
-    "previously_verified_evernorth_distinction": "The separate Evernorth filing records approximately $214M historical cash used for XRP purchases, approximately 388.9M XRP contributed in kind, and separate financing. These categories must not be combined as cash spot purchases."
+    "previously_verified_evernorth_distinction": "The separate Evernorth filing records approximately $214M historical cash used for XRP purchases, approximately 388.9M XRP contributed in kind, and separate financing. These categories must not be combined as cash spot purchases.",
+    "announced_token_presale_participation": [
+      "SBI announced participation in Circle's ARC Token presale through a consolidated subsidiary, but did not disclose its allocation, token quantity, or settlement amount; do not quantify it as confirmed cash invested.",
+      "Circle's Q3 2026 Form 10-Q reports $242.2M aggregate gross proceeds from institutional ARC token purchase agreements and $181.8M recognized revenue; it does not identify SBI as a purchaser."
+    ]
   },
   "source_registry": [
     {
@@ -664,6 +708,65 @@
       "source_ref": "turn979865view0",
       "source_type": "primary_sec_filing",
       "independence_group": "coinbase_q3_2026_sec_filing"
+    },
+    {
+      "id": "circle_arc_mainnet_launch_sbi_validator",
+      "publisher": "Circle Internet Group",
+      "document": "Circle Launches Arc Mainnet, an Economic Operating System for the Internet, dated 2026-09-16",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "source_ref": "turn944724view4",
+      "source_type": "primary_company_announcement",
+      "independence_group": "circle_arc_mainnet_launch",
+      "published_at": "2026-09-16",
+      "retrieved_at_utc": "2026-11-06T23:18:41Z",
+      "claims": [
+        "SBI Group is listed in the founding validator cohort.",
+        "SBI Chairman Yoshitaka Kitao says SBI will contribute to Arc operation and governance.",
+        "The release describes SBI VC Trade's USDC distribution and SBI's use of USDC and JPYSC in its APAC digital-economy initiative."
+      ],
+      "limitations": [
+        "This is an issuer announcement, not independent validator telemetry.",
+        "Arc is separate from XRPL."
+      ]
+    },
+    {
+      "id": "sbi_arc_token_presale",
+      "publisher": "SBI Holdings",
+      "document": "Circle社によるARC Tokenプレセールへの参加に関するお知らせ, dated 2026-05-12",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "source_ref": "turn669840search10",
+      "source_type": "primary_company_announcement",
+      "independence_group": "sbi_group_primary",
+      "published_at": "2026-05-12",
+      "retrieved_at_utc": "2026-11-06T23:18:41Z",
+      "claims": [
+        "SBI Holdings says a consolidated subsidiary participated in Circle's ARC Token presale.",
+        "The release cites a Circle-reported $222M total raised by a consortium of major investors."
+      ],
+      "limitations": [
+        "SBI's individual allocation, token quantity, and settlement amount are not disclosed.",
+        "The consortium total is not SBI-specific and is not XRP capital."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_arc_presale_sec_disclosure",
+      "publisher": "Circle Internet Group / SEC",
+      "document": "Circle Form 10-Q for the quarter ended 2026-09-30; ARC token purchase agreements and presale revenue",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_ref": "turn944724view1",
+      "source_type": "primary_sec_filing",
+      "independence_group": "circle_q3_2026_sec_filing",
+      "period_end": "2026-09-30",
+      "retrieved_at_utc": "2026-11-06T23:18:41Z",
+      "claims": [
+        "Circle reports Q2 2026 institutional token purchase agreements for 807.5M ARC tokens at $0.30 each, approximately $242.2M aggregate gross proceeds.",
+        "Circle recognized $181.8M of the gross proceeds as revenue by September 30, 2026; the remainder was deferred revenue.",
+        "Circle separately identifies an IDG-affiliated $25M purchase included in, not additional to, the aggregate."
+      ],
+      "limitations": [
+        "The filing does not identify SBI as a purchaser or disclose any SBI-specific allocation.",
+        "The $242.2M Q3 filing total is not directly reconciled to the $222M consortium total cited in SBI's May 12 announcement."
+      ]
     }
   ],
   "quality_and_limits": {
@@ -683,11 +786,43 @@
     "binance_2026_equity_investment_is_xrp_purchase": false,
     "coinbase_collateral_xrp_specific_balance_disclosed": false,
     "circle_payment_network_annualized_tpv_is_realized_quarterly_volume": false,
-    "morpho_market_snapshot_exact_time": null
+    "morpho_market_snapshot_exact_time": null,
+    "sbi_arc_token_presale_amount_disclosed": false,
+    "sbi_arc_token_presale_settlement_verified": false,
+    "sbi_circle_arc_validator_independently_verified": false,
+    "circle_arc_presale_amount_reconciliation_status": "UNRESOLVED_DIFFERENT_DISCLOSURE_WINDOWS_OR_COHORTS"
   },
   "forecast_status": {
     "directional_forecast_issued": false,
     "shadow_forecast_issued": false,
     "reason": "Relationship and collateral evidence is contextual. No leakage-safe, evaluator-attested out-of-sample predictive lift has been demonstrated."
+  },
+  "capital_flow_context": {
+    "circle_arc_token_presale": {
+      "sbi_announcement_date": "2026-05-12",
+      "sbi_announced_participation": true,
+      "sbi_specific_amount_usd": null,
+      "sbi_token_quantity": null,
+      "sbi_cash_settlement_verified": false,
+      "sbi_release_reported_consortium_total_usd": 222000000,
+      "circle_q3_2026_sec": {
+        "period_end": "2026-09-30",
+        "aggregate_arc_tokens_under_purchase_agreements": 807500000,
+        "token_price_usd": 0.3,
+        "aggregate_gross_proceeds_usd": 242200000,
+        "revenue_recognized_by_period_end_usd": 181800000,
+        "deferred_revenue_usd": 60400000,
+        "idg_affiliated_purchase_usd": 25000000,
+        "idg_purchase_included_in_aggregate": true,
+        "sbi_specific_purchase_identified": false
+      },
+      "reconciliation_status": "UNRESOLVED_DIFFERENT_DISCLOSURE_WINDOWS_OR_COHORTS",
+      "model_eligible": false,
+      "limits": [
+        "The $222M May announcement is a consortium total, not SBI's investment.",
+        "The $242.2M Q3 SEC aggregate is a later institutional purchase-agreement total; the filing does not identify SBI.",
+        "ARC/Arc is separate from XRP/XRPL and is not an XRP demand feature."
+      ]
+    }
   }
 }
