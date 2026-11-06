@@ -591,6 +591,7 @@ def test_bundle_provider_rate_limit_posts_deterministic_snapshot_without_startin
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "Implement the requested repository improvement.")
     monkeypatch.setenv("TASK_TITLE", "Continue Barrot integration")
+    monkeypatch.setenv("TASK_MODE", "engineering")
     monkeypatch.setenv("ISSUE_NUMBER", "1652")
     monkeypatch.setenv("BRANCH", "barrot/task-1652")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
