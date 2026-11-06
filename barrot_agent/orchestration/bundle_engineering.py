@@ -33,6 +33,8 @@ _UNSAFE_RECOVERY_PATTERNS = (
     re.compile(r"\bgit\s+reset\s+--hard\b", re.IGNORECASE),
     re.compile(r"\bgit\s+clean\b", re.IGNORECASE),
     re.compile(r"\bgit\s+stash\b", re.IGNORECASE),
+    re.compile(r"\bgit\s+restore\b", re.IGNORECASE),
+    re.compile(r"\brm\s+-rf?\b|\bremove-item\s+.*-recurse\b", re.IGNORECASE),
     re.compile(r"\bgit\s+push\s+--force(?:-with-lease)?\b|\bforce[- ]push\b", re.IGNORECASE),
     re.compile(
         r"\bdiscard(?:\s+all)?\s+(?:existing\s+)?(?:user\s+)?"
