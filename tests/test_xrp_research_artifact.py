@@ -1206,3 +1206,56 @@ def test_evernorth_eloc_source_type_and_reference_price_scenario_are_qualified()
     assert data["model_admission"]["eligible"] is False
     assert data["forecast"]["issued"] is False
     assert all(item["model_eligible"] is False for item in sources.values())
+
+
+EVERNORTH_NOTES_AND_FACILITY_CORRECTION = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261106T043450Z-evernorth-notes-and-facility-scope-correction.json"
+)
+
+
+def test_evernorth_note_proceeds_and_ripple_facilities_remain_separate() -> None:
+    data = json.loads(EVERNORTH_NOTES_AND_FACILITY_CORRECTION.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_evernorth_notes_and_facility_scope_correction"
+
+    sources = {item["id"]: item for item in data["source_registry"]}
+    sec = sources["sec_evernorth_20261030_s1_preliminary_prospectus"]
+    assert sec["source_type"] == "SEC Form S-1 registration statement; preliminary prospectus subject to completion"
+    assert sec["raw_source_sha256"] is None
+    assert sec["model_eligible"] is False
+
+    notes = data["convertible_note_reconciliation"]
+    assert notes["principal_usd"] == 30000000
+    assert notes["narrative_disclosure"]["amount_usd"] == 30000000
+    assert "before transaction expenses" in notes["narrative_disclosure"]["basis"]
+    assert notes["financial_statement_note"]["cash_proceeds_after_advisor_fee_usd"] == 29000000
+    assert notes["financial_statement_note"]["advisor_fee_deducted_usd"] == 1000000
+    assert notes["reconciliation_status"] == "DISTINCT_MEASUREMENT_BASES_RECONCILED"
+    assert notes["xrp_purchases_funded_by_note_proceeds_disclosed"] is False
+
+    facilities = data["facility_scope_reconciliation"]
+    company = facilities["company_facility_with_ripple"]
+    evernorth = facilities["evernorth_facility"]
+    assert company["borrower"] == "The Company"
+    assert company["borrowing_limit_as_of_2026_10_07_usd"] == 10000000
+    assert company["drawn_as_of_2026_10_07_usd"] == 9700000
+    assert company["repayment_status_in_prospectus"] == "NOT_CONFIRMED"
+    assert evernorth["borrower"] == "Evernorth"
+    assert evernorth["revolving_limit_usd"] == 1000000
+    assert evernorth["amount_borrowed_as_of_2026_06_30_usd"] == 0
+    assert company["borrower"] != evernorth["borrower"]
+
+    cash = data["cash_and_xrp_reconciliation"]
+    historical = cash["historical_cash_xrp_purchase"]
+    assert historical["cash_proceeds_usd"] == 214100000
+    assert historical["xrp_purchased_units"] == 84365876
+    assert historical["date"] == "2025-11-04"
+    assert historical["classification"] == "HISTORICAL_CASH_FUNDED_XRP_PURCHASE_NOT_A_2026_CURRENT_FLOW"
+    assert cash["closing_gross_cash_proceeds_usd"] == 272600000
+    assert cash["in_kind_xrp_contributions_units"] == 388910554
+    assert cash["note_funded_xrp_purchase_disclosed"] is False
+
+    assert data["model_admission"]["eligible"] is False
+    assert data["forecast"]["issued"] is False
