@@ -27,6 +27,12 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/task-allocator.yml",
     ".github/workflows/ask-barrot.yml",
     ".github/workflows/barrot-agent.yml",
+    ".github/workflows/signal_ledger.yml",
+    ".github/workflows/knowledge-signal-cycle.yml",
+    ".github/workflows/test-groq-chain.yml",
+    ".github/workflows/webmcp-live-sandbox.yml",
+    ".github/workflows/databricks-bundle.yml",
+    ".github/workflows/sync-huggingface.yml",
 )
 
 
