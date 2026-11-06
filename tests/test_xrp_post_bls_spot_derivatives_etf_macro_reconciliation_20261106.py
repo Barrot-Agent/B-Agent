@@ -116,6 +116,7 @@ def test_fuelmaps_spot_depth_preserves_snapshot_coverage_and_cancel_risk():
     assert row["snapshot_time_utc"] == "2026-11-06T17:00:00Z"
     assert row["mid_usd"] == 1.1947
     assert row["venue_count"] == 6
+    assert "fuelmaps_multi_venue_spot_depth_aggregator" in data["source_independence_groups"]
     assert row["bands"] == [
         {"within_pct": 0.5, "bids_usd": 8_600_000, "asks_usd": 6_200_000, "bid_share_pct": 58.0, "venues_covering": 6},
         {"within_pct": 1, "bids_usd": 13_200_000, "asks_usd": 9_600_000, "bid_share_pct": 57.8, "venues_covering": 6},
