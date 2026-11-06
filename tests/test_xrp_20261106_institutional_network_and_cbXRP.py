@@ -96,6 +96,10 @@ def test_cbxrp_morpho_collateral_is_distinguished_from_coinbase_exchange():
     assert item["market_snapshot"]["combined_displayed_deposits_usd"] == 67700000
     assert item["market_snapshot"]["combined_displayed_borrowed_usd"] == 61620000
     assert any("not proof of new XRP purchases or Coinbase Global Exchange collateral support" in text for text in item["limits"])
+    quality = load_artifact()["quality_and_limits"]
+    assert "morpho_market_snapshot_exact_time" in quality
+    assert quality["morpho_market_snapshot_exact_time"] is None
+    assert "morpo_market_snapshot_exact_time" not in quality
 
 
 def test_coinbase_xrp_etf_custody_and_ripple_prime_derivatives_are_separate():

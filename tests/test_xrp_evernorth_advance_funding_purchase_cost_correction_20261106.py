@@ -193,3 +193,6 @@ def test_originals_remain_immutable_and_corrected_view_is_not_model_eligible(ove
     assert overlay["application_contract"]["model_eligible"] is False
     assert overlay["application_contract"]["if_any_source_blob_sha_mismatches"].startswith("Fail closed")
     assert "not a current XRP flow" in overlay["corrected_interpretation"]
+    assert "source_preimages/<git_blob_sha>.json" in overlay["application_contract"]["correction_mode"]
+    assert "historical, not current" in overlay["application_contract"]["correction_mode"]
+    assert "neither the current source blob nor the archived preimage matches" in overlay["application_contract"]["if_any_source_blob_sha_mismatches"]

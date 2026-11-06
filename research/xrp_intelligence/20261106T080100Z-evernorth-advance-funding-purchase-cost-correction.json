@@ -202,8 +202,8 @@
   "corrected_interpretation": "Exact cash raised: $214,049,995. Summary-rounded subscription cash: $214,050,000. XRP purchase cost: $214,000,000. Restricted cash at 2025-12-31: $49,995. XRP purchased: 84,365,876.3625. Issuer-reported average purchase price: $2.53657058 per XRP. This is a historical issuer-disclosed purchase, not a current XRP flow, not a verified exchange execution VWAP, and not venue-specific order-flow evidence.",
   "application_contract": {
     "original_artifacts_mutated": false,
-    "correction_mode": "Apply only to a derived in-memory view after verifying every source Git blob SHA.",
-    "if_any_source_blob_sha_mismatches": "Fail closed; do not apply the affected correction.",
+    "correction_mode": "Apply only to a derived in-memory view after verifying every source Git blob SHA. If a current source blob differs, load research/xrp_intelligence/source_preimages/<git_blob_sha>.json and verify its Git blob SHA. Apply the affected correction to a derived view of that preimage and label the view as historical, not current.",
+    "if_any_source_blob_sha_mismatches": "Fail closed; do not apply the affected correction if neither the current source blob nor the archived preimage matches the expected Git blob SHA.",
     "model_eligible": false,
     "reason": "The correction resolves a historical capital-accounting classification. It does not establish a current market flow or a point-in-time predictive feature."
   }

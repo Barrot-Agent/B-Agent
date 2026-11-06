@@ -39,7 +39,25 @@
       "philadelphia_semiconductor_index_pct": -12
     },
     "source_interpretation": "Reuters reported a technology-led risk-off session as investors repriced AI/data-center buildout risk after Democratic midterm wins; higher financing costs and valuation concerns were also discussed.",
-    "causal_limit": "This is broad-market context. It does not prove that the equity selloff caused XRP's move or exclude XRP-specific positioning and flows."
+    "causal_limit": "This is broad-market context. It does not prove that the equity selloff caused XRP's move or exclude XRP-specific positioning and flows.",
+    "reported_closes_source_ids": {
+      "nasdaq_composite_pct": [
+        "herald_postclose_market_close",
+        "ap_postclose_market_close"
+      ],
+      "sp500_pct": [
+        "herald_postclose_market_close",
+        "ap_postclose_market_close"
+      ],
+      "dow_jones_pct": [
+        "herald_postclose_market_close",
+        "ap_postclose_market_close"
+      ],
+      "philadelphia_semiconductor_index_pct": [
+        "herald_postclose_market_close"
+      ]
+    },
+    "source_timing_note": "Closing figures are supported by post-close publication vintages. The Reuters 10:54Z publication is retained for pre-open context and is not treated as available for the November 5 closing figures."
   },
   "xrp_market_context": {
     "coingecko_article_snapshot": {
@@ -215,9 +233,8 @@
       "published_at": "2026-11-05T10:54:00Z",
       "independence_group": "reuters_market_reporting",
       "supports": [
-        "Nov 5 equity index closes",
-        "semiconductor decline",
-        "AI/data-center risk repricing"
+        "pre-open risk-off context",
+        "AI/data-center risk repricing before the November 5 regular-session close; not the closing figures"
       ]
     },
     {
@@ -252,6 +269,44 @@
       "independence_group": "247wallst_interviewed_near_foundation_clo",
       "supports": [
         "An attributed industry-lawyer opinion that the pending bill could lapse when the new Congress is seated; not an official Senate status determination."
+      ]
+    },
+    {
+      "id": "ap_postclose_market_close",
+      "publisher": "Associated Press (syndicated by Yahoo Finance UK)",
+      "url": "https://uk.finance.yahoo.com/news/major-us-stock-indexes-fared-212218583.html",
+      "source_type": "secondary_syndicated_reporting",
+      "published_at": "2026-11-05T21:22:00Z",
+      "timestamp_precision": "minute",
+      "timestamp_basis": "Yahoo Finance syndication page displays Thu, November 5, 2026 at 4:22 pm America/New_York; converted to UTC at minute precision. The direct AP page does not expose a publication time.",
+      "independence_group": "associated_press_reporting",
+      "supports": [
+        "November 5 S&P 500, Dow Jones Industrial Average and Nasdaq Composite closing levels and point changes; AP percentages are rounded to one decimal place"
+      ],
+      "limitations": [
+        "Does not report the Philadelphia Semiconductor Index close.",
+        "Timestamp is the Yahoo Finance syndication timestamp, not a separately displayed timestamp from the direct AP page."
+      ]
+    },
+    {
+      "id": "herald_postclose_market_close",
+      "publisher": "The Herald Business",
+      "url": "https://mbiz.heraldcorp.com/article/10927764",
+      "source_type": "secondary_reporting",
+      "published_at": "2026-11-05T21:45:58Z",
+      "published_at_local": "2026-11-06T06:45:58+09:00",
+      "publication_timezone": "Asia/Seoul",
+      "timestamp_precision": "second",
+      "independence_group": "herald_business_reporting",
+      "supports": [
+        "November 5 Nasdaq Composite close and percentage change",
+        "November 5 Dow Jones Industrial Average close and percentage change",
+        "November 5 S&P 500 close and percentage change",
+        "Philadelphia Semiconductor Index close at 9,011.14 and decline of 12.25%"
+      ],
+      "limitations": [
+        "The article states that its English content was produced with AI translation assistance.",
+        "Secondary reporting; no exchange-native closing file is attached."
       ]
     }
   ],

@@ -62,6 +62,14 @@ def test_macro_risk_off_is_context_not_xrp_causation():
     assert macro["reported_closes"]["sp500_pct"] == -4.36
     assert macro["reported_closes"]["philadelphia_semiconductor_index_pct"] == -12.0
     assert "does not prove" in macro["causal_limit"]
+    data = load_artifact()
+    sources = {item["id"]: item for item in data["source_registry"]}
+    herald = sources["herald_postclose_market_close"]
+    assert herald["published_at"] == "2026-11-05T21:45:58Z"
+    assert data["macro_event"]["reported_closes_source_ids"]["philadelphia_semiconductor_index_pct"] == ["herald_postclose_market_close"]
+    assert "herald_postclose_market_close" in data["macro_event"]["reported_closes_source_ids"]["nasdaq_composite_pct"]
+    assert sources["reuters_nasdaq_close"]["published_at"] == "2026-11-05T10:54:00Z"
+    assert "not the closing figures" in " ".join(sources["reuters_nasdaq_close"]["supports"])
 
 
 def test_kraken_and_coingecko_snapshots_remain_time_separated_and_model_ineligible():
@@ -90,3 +98,6 @@ def test_sources_keep_primary_and_secondary_independence_groups_separate():
     assert sources["tokenpost_xrp_etf"]["source_type"] == "secondary_republication"
     assert sources["tokenpost_xrp_etf"]["independence_group"] == "sosovalue_data_republished_by_tokenpost"
     assert sources["reuters_nasdaq_close"]["independence_group"] == sources["reuters_data_center_risk"]["independence_group"]
+    assert sources["ap_postclose_market_close"]["published_at"] == "2026-11-05T21:22:00Z"
+    assert sources["ap_postclose_market_close"]["timestamp_precision"] == "minute"
+    assert sources["herald_postclose_market_close"]["independence_group"] != sources["reuters_nasdaq_close"]["independence_group"]
