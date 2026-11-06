@@ -75,7 +75,8 @@ def test_xrpl_votes_and_fix_cleanup_do_not_imply_lending_activation():
     assert data["amendment_state"]["active_14_day_countdowns"] == 0
     assert data["fixCleanup3_4_0"]["status"] == "ENABLED"
     assert data["fixCleanup3_4_0"]["enabled_ledger"] == 108112129
-    assert "not equivalent" in data["xrpl_governance"]["fixCleanup3_4_0"]["not_equivalent_to"].lower() if isinstance(data["xrpl_governance"]["fixCleanup3_4_0"]["not_equivalent_to"], str) else True
+    assert "LendingProtocol" in data["xrpl_governance"]["fixCleanup3_4_0"]["not_equivalent_to"]
+    assert "SingleAssetVault" in data["xrpl_governance"]["fixCleanup3_4_0"]["not_equivalent_to"]
 
 
 def test_lending_collateral_boundary_matches_official_design():
