@@ -79,7 +79,28 @@
       "fund_universe": "Six US spot funds plus BITW",
       "nov_5_status": "Provisional; next-morning re-settlement may rewrite the latest row.",
       "source_independence_group": "xrp_insights_issuer_holdings_compilation",
-      "method": "Day-over-day changes in issuer-reported holdings; flow-excluded funds contribute zero."
+      "method": "Day-over-day changes in issuer-reported holdings; flow-excluded funds contribute zero.",
+      "generated_at_utc": "2026-11-06T09:54:25.370Z",
+      "latest_row_date": "2026-11-05",
+      "provisional_row_date": "2026-11-05",
+      "coverage": {
+        "first_date": "2025-12-01",
+        "last_date": "2026-11-05",
+        "trading_days": 230,
+        "rows": 1590
+      },
+      "flow_method": "Daily change in issuer-reported XRP holdings, not an issuer/AP cash creation-redemption report. Changes below 100 XRP are treated as rounding noise.",
+      "bitw_caveat": "BITW is a multi-asset index fund; its XRP sleeve can change because of index rebalancing and fee accruals, so its holdings change is not necessarily a spot XRP creation/redemption.",
+      "gxrp_caveat": "GXRP daily flows are excluded because automated issuer-page reads were blocked from 2026-09-02 through 2026-09-28; holdings froze and a catch-up landed on 2026-09-28. Holdings remain in aggregate totals.",
+      "reconstructed_row_dates": [
+        "2026-03-23 through 2026-03-27",
+        "2026-03-31 through 2026-04-29",
+        "2026-05-12"
+      ],
+      "reconstructed_row_rule": "These rows were rebuilt from third-party daily flow estimates between issuer-reported anchors. Treat the daily split as estimated and exclude from point-in-time model features.",
+      "license": "Free to use and cite with attribution to XRP Insights; commercial redistribution requires written permission.",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false
     },
     "cryptokeyhole": {
       "latest_complete_date": "2026-11-04",
@@ -92,7 +113,10 @@
         "franklin_publication_window": "2026-11-06T02:42:00Z to 2026-11-06T02:47:00Z"
       },
       "source_independence_group": "cryptokeyhole_issuer_file_compilation",
-      "limitation": "Grayscale was not collected because its site presented a bot challenge; no circumvention was attempted."
+      "limitation": "Grayscale was not collected because its site presented a bot challenge; no circumvention was attempted.",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false,
+      "publisher_output_group": "cryptokeyhole"
     },
     "cryptoetf_today": {
       "date": "2026-11-05",
@@ -100,7 +124,10 @@
       "total_funds": 5,
       "reported_flow_usd": 0,
       "status": "partial",
-      "limitation": "Zero applies only to the two reporting funds; it is not a complete five-fund daily zero."
+      "limitation": "Zero applies only to the two reporting funds; it is not a complete five-fund daily zero.",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false,
+      "publisher_output_group": "cryptoetf_today"
     },
     "the_xrp_investor": {
       "latest_update_date": "2026-11-05",
@@ -114,9 +141,13 @@
       "aum_snapshot_usd": 1450000000,
       "separate_flows_page_aum_snapshot_usd": 1480000000,
       "data_quality": "Internal product-count and cross-page AUM discrepancies; not admitted as a clean spot-only total.",
-      "source_independence_group": "thexrpinvestor_own_tracker"
+      "source_independence_group": "thexrpinvestor_own_tracker",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false,
+      "publisher_output_group": "the_xrp_investor"
     },
-    "interpretation": "The latest settled issuer-holdings window is negative, while the latest US trading day is still partial or provisional across providers. These data do not establish a complete November 5 XRP ETF cash-flow total."
+    "interpretation": "The latest settled issuer-holdings window is negative, while the latest US trading day is still partial or provisional across providers. These data do not establish a complete November 5 XRP ETF cash-flow total.",
+    "cross_tracker_independence_note": "These are different publishers and collectors, but their underlying XRP holdings/share-activity evidence overlaps at the same fund issuers. Treat their outputs as separate calculations of shared primary inputs, not independent primary observations; do not average them."
   },
   "macro_context": {
     "bls_october_employment_situation": {
@@ -222,7 +253,17 @@
       "url": "https://xrp-insights.com/data",
       "source_type": "issuer_holdings_compilation",
       "data_as_of": "2026-11-04",
-      "independence_group": "xrp_insights_issuer_holdings_compilation"
+      "independence_group": "issuer_published_xrp_etf_holdings",
+      "publisher_group": "xrp_insights_etf",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false,
+      "generated_at_utc": "2026-11-06T09:54:25.370Z",
+      "provisional_row_date": "2026-11-05",
+      "methodology_caveats": [
+        "BITW index rebalancing and fee accruals can be counted as holdings flow.",
+        "GXRP flows are excluded across history; holdings remain in totals.",
+        "Reconstructed rows must be treated as estimates and excluded from point-in-time model features."
+      ]
     },
     {
       "id": "cryptokeyhole_etf",
@@ -230,7 +271,10 @@
       "url": "https://cryptokeyhole.com/etf-flows/xrp/",
       "source_type": "issuer_file_compilation",
       "data_as_of": "2026-11-04",
-      "independence_group": "cryptokeyhole_issuer_file_compilation"
+      "independence_group": "issuer_published_xrp_etf_holdings",
+      "publisher_group": "cryptokeyhole_etf",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false
     },
     {
       "id": "cryptoetf_today_xrp",
@@ -238,7 +282,10 @@
       "url": "https://cryptoetf.today/en/xrp-etf-flows",
       "source_type": "issuer_holdings_and_share_activity_tracker",
       "data_as_of": "2026-11-05",
-      "independence_group": "cryptoetf_today_own_tracker"
+      "independence_group": "issuer_published_xrp_etf_holdings",
+      "publisher_group": "cryptoetf_today_xrp",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false
     },
     {
       "id": "thexrpinvestor_tracker",
@@ -246,7 +293,10 @@
       "url": "https://www.thexrpinvestor.com/xrp-etf-tracker",
       "source_type": "secondary_product_tracker",
       "data_as_of": "2026-11-05",
-      "independence_group": "thexrpinvestor_own_tracker"
+      "independence_group": "issuer_published_xrp_etf_holdings",
+      "publisher_group": "thexrpinvestor_tracker",
+      "underlying_evidence_family": "issuer_published_xrp_etf_holdings_and_share_activity",
+      "independent_of_other_tracker_outputs": false
     },
     {
       "id": "ap_global_risk_off",
@@ -275,7 +325,13 @@
     "etf_latest_day_complete": false,
     "derivative_account_counts_are_notional": false,
     "point_in_time_model_eligible": false,
-    "reason": "The Kraken rendered response lacks exact retrieval and provider event times and is not byte-complete HTTP; cross-source spot/derivatives observations are not synchronized; ETF latest-day observations are partial/provisional; no multi-level order-book depth or validated exchange-wallet flow feature is attached."
+    "reason": "The Kraken rendered response lacks exact retrieval and provider event times and is not byte-complete HTTP; cross-source spot/derivatives observations are not synchronized; ETF latest-day observations are partial/provisional; no multi-level order-book depth or validated exchange-wallet flow feature is attached.",
+    "etf_trackers_share_underlying_issuer_lineage": true,
+    "etf_tracker_outputs_are_not_independent_primary_observations": true,
+    "xrp_insights_reconstructed_rows_model_ineligible": true,
+    "xrp_insights_bitw_non_creation_redemption_changes_possible": true,
+    "xrp_insights_gxrp_flows_excluded": true,
+    "raw_receipts_complete_for_all_sources": false
   },
   "forecast_status": {
     "directional_forecast_issued": false,

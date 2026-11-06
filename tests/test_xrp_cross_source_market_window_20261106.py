@@ -32,7 +32,6 @@ def test_utc_day_open_is_not_mislabeled_as_rolling_24_hour_open():
     spot = load_artifact()["spot"]
     assert spot["utc_day_open_usd"] == 1.20567
     assert spot["last_vs_utc_day_open_pct"] < 0
-    assert "utc_day_open" in spot
     assert "last_vs_utc_day_open_pct" in spot
     assert "open_24h_usd" not in spot
 
@@ -52,6 +51,10 @@ def test_derivatives_preserve_venue_coverage_and_lower_bound_liquidations():
 def test_etf_latest_day_is_not_promoted_to_a_complete_zero():
     etf = load_artifact()["etf_flows"]
     assert etf["xrp_insights"]["net_flow_xrp"] == -259701
+    assert etf["xrp_insights"]["generated_at_utc"] == "2026-11-06T09:54:25.370Z"
+    assert etf["xrp_insights"]["coverage"]["rows"] == 1590
+    assert "index rebalancing" in etf["xrp_insights"]["bitw_caveat"]
+    assert etf["xrp_insights"]["reconstructed_row_rule"].startswith("These rows were rebuilt")
     assert etf["xrp_insights"]["nov_5_status"].startswith("Provisional")
     assert etf["cryptokeyhole"]["nov_5_status"].startswith("Partial")
     assert etf["cryptoetf_today"]["reporting_funds"] == 2
@@ -59,6 +62,8 @@ def test_etf_latest_day_is_not_promoted_to_a_complete_zero():
     assert etf["cryptoetf_today"]["reported_flow_usd"] == 0
     assert etf["cryptoetf_today"]["status"] == "partial"
     assert etf["the_xrp_investor"]["headline_product_count"] != etf["the_xrp_investor"]["listed_category_count"]
+    assert all(etf[k]["independent_of_other_tracker_outputs"] is False for k in ("xrp_insights", "cryptokeyhole", "cryptoetf_today", "the_xrp_investor"))
+    assert load_artifact()["data_quality"]["etf_tracker_outputs_are_not_independent_primary_observations"] is True
 
 
 def test_market_hypotheses_retain_counterevidence_and_no_forecast():
