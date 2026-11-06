@@ -7994,3 +7994,100 @@ Next sequence:
 7. Continue durable historical XRP market/institutional ingestion, synchronized source timing, independent evaluator attestation, baseline comparisons, probability calibration, drift monitoring and shadow outcomes.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 14 — November 6 institutional network, collateral and capital-flow reconciliation
+
+This is an append-only research update. It does not change Barrot V3 code. Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+
+### Exact-head engineering verification at the start of this append
+
+**#1640 V3/core branch — code-bearing head `81d3f410fdaa67775e868b21eca525a6b6633c9c`**
+
+- Core suite: 622 passed, 8 subtests.
+- Full repository suite: 1,060 passed, 8 subtests.
+- Inclusive package coverage: 57.57%; 31 files skipped due to complete coverage; 53% threshold met.
+- Installed wheel and packaged primary-mission verification passed.
+- Six-manifest dependency audit passed; all six dependency groups reported no known vulnerabilities.
+- Fail-closed gate passed and explicitly reported automatic merge disabled.
+
+Evidence: [CI 42197715629](https://github.com/Barrot-Agent/B-Agent/actions/runs/42197715629), [dependency audit 42197715532](https://github.com/Barrot-Agent/B-Agent/actions/runs/42197715532), [fail-closed gate 42197715600](https://github.com/Barrot-Agent/B-Agent/actions/runs/42197715600).
+
+**#1643 XRP research branch — exact head `db468e95c0aa74191aee1421f46da7eb844cde12`**
+
+- Core suite: 498 passed, 8 subtests.
+- Full repository suite: 1,398 passed, 8 subtests.
+- Six-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed; automatic merging disabled.
+
+Evidence: [CI 42197019876](https://github.com/Barrot-Agent/B-Agent/actions/runs/42197019876), [dependency audit 42197019981](https://github.com/Barrot-Agent/B-Agent/actions/runs/42197019981), [fail-closed gate 42197019836](https://github.com/Barrot-Agent/B-Agent/actions/runs/42197019836).
+
+The #1643 exact-head suite includes 19 tests for the institutional network artifact, eight CLARITY Act/macro tests and nine timestamp-bounded spot/perpetual/ETF-vintage tests. A previous intermediate head had two wording/case-sensitive assertion failures; the corrected current head passed. Do not use the failed intermediate head as success evidence.
+
+### New institutional relationship artifact
+
+Added to the existing #1643 branch, without creating another branch or PR:
+
+- [Institutional XRP network, cbXRP, SBI, Circle, Ripple and Coinbase artifact](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106-institutional-xrp-network-cbxrp-sbi-circle-ripple.json)
+- [Nineteen regression tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_20261106_institutional_network_and_cbXRP.py)
+
+The artifact has 24 relationship records and 23 source-registry entries. It separates primary SEC/issuer/corporate evidence from secondary reporting, groups related sources by independence lineage, records date/vintage limits and marks the network artifact model-ineligible.
+
+### Circle, Coinbase and Binance
+
+- Circle acquired Coinbase's remaining 50% of Centre in 2023 for approximately $209.9M in Circle Class A shares. This was stock consideration, not $209.9M of new cash paid by Coinbase.
+- Circle's 2025 S-1 beneficial-ownership table reported Coinbase with 7,901,791 shares after the offering, approximately 3.7% of Class A and 2.6% voting power, using the June 30, 2025 ownership snapshot. This is not a verified November 2026 current cap table.
+- The 2025 S-1 reported a dated USDC distribution snapshot of 21% on Coinbase, 10% on Circle and 69% elsewhere. Do not represent this as current 2026 distribution share.
+- Coinbase's Q3 2026 Form 10-Q states its Circle arrangement was renewed on the same terms and reports $306.905M Q3 stablecoin revenue. The filing says average USDC held in Coinbase products reached an all-time high; the cited narrative does not provide an exact average.
+- Circle's Q3 2026 issuer-reported figures include average USDC circulation $73.3B, period-end circulation $73.9B, period-end USDC on platform $13.9B and daily weighted average on-platform share 18.1%.
+- Circle reported $104B gross USDC minting and $104B gross redemptions. These are gross flows, not $208B of net new capital and not XRP purchases.
+- Circle reported $13.9T on-chain transaction volume; this is not unique economic payment value. CPN's $41.3B TPV is annualized, not realized Q3 volume.
+- Other Q3 Circle metrics: reserve return 3.5%, reserve income $658M, total revenue and reserve income $865M, revenue less distribution costs $453M, net income $226M, adjusted EBITDA $317M, 27% USDC market share and 7.3M meaningful wallets.
+- Binance announced a $100M equity investment in Circle and a five-year USDC distribution partnership on September 22, 2026. This is direct Circle equity/distribution capital, not XRP capital. Circle's 2025 S-1 separately described historical 2024 Binance participant terms ($60.25M upfront, $3B target and $1.5B minimum); the exact contractual reconciliation with the 2026 expanded agreement is not disclosed in the reviewed announcement.
+
+### SBI, Ripple and Japan
+
+- SBI Holdings and SBI Shinsei Bank announced a $50M Circle IPO equity investment, split $25M each.
+- SBI Holdings publicly described itself as Ripple's largest external shareholder with approximately 9% Ripple equity ownership as of June 9, 2025. This is Ripple corporate equity, not 9% of XRP supply or a $10B XRP-token position.
+- SBI Ripple Asia is a joint venture; the SBI investor presentation reports 60% SBI and 40% Ripple.
+- SBI Remit uses Ripple DLT in Japan–Thailand and Japan–Vietnam remittance corridors. The cited source does not prove XRP was the bridge asset in every transfer.
+- SBI VC Trade launched RLUSD trading/distribution in Japan on June 24, 2026. RLUSD is Ripple's dollar stablecoin, not XRP.
+- SBI Ripple Asia/dsrv labs announced Japan–Korea XRPL remittance research, not production settlement volume.
+- The official February 2, 2026 SBI Shinsei Bank/SBI VC Trade campaign offered a six-month yen deposit at 0.70% with an XRP voucher worth up to JPY 20,000. The deposit is yen-denominated; voucher redemptions and market sourcing were not disclosed.
+- A separate June 10 report describing a 20%-of-interest crypto-voucher pilot remains secondary only; no matching primary SBI bank announcement was located. It is not the February campaign.
+- SBI Holdings' historical XRP shareholder benefits and SBI card-point conversion are promotional distribution channels, not proof of corporate XRP treasury purchases.
+- JPYSC is issued by SBI Shinsei Trust Bank, distributed/lent by SBI VC Trade and co-developed with Startale. SBI-reported September 7 figures included JPY 10B short-term JGB investment, JPY 20.1B issuance and JPY 6.9B lending; the November 2 update reported lending above JPY 10B and handling balance above JPY 30B. JPYSC is a yen stablecoin, not XRP, RLUSD or USDC.
+- Primary SBIC artifacts remain separate: SBIC East/Tokyo, Central/Nagoya and West/Osaka are distinct Japanese SME investment-development companies with their own legal names and corporate numbers. They are not SBI Holdings, SBI Shinsei Bank or SBI VC Trade. ChatGPT academic-benchmark SBIC refers separately to the Social Bias Inference Corpus.
+
+### Coinbase, Ripple, custody and collateral
+
+- Coinbase/Ripple RLUSD distribution launched October 28, 2026 across Coinbase app, Prime and Exchange, with XRPL, Base and Ethereum support. Ripple said it would provide liquidity on Base. Coinbase Global Exchange collateral support for RLUSD was described as forthcoming, not live at launch.
+- Ripple Prime clients gained access to Coinbase Derivatives contracts, including XRP futures, cleared by Nodal Clear.
+- Coinbase Custody Trust Company is named custodian for the Bitwise XRP ETF.
+- cbXRP is a Base wrapped representation backed 1:1 by XRP held in Coinbase custody. Coinbase describes automatic unwrap and no separate Coinbase order book. The issuer dashboard displayed 153,022,397.61 XRP reserves versus 153,020,151.08 cbXRP supply, a 2,246.53 XRP surplus; the displayed refresh timezone was not disclosed and the page is not an independent audit.
+- Base Markets listed two cbXRP/USDC Morpho markets with an 86% collateral factor, combined displayed deposits of $67.70M and borrowing of $61.62M. The dashboard did not expose an exact snapshot time. This is DeFi collateral use of wrapped XRP, not Coinbase Global Exchange collateral and not proof of new spot purchases.
+- Coinbase's Q3 2026 SEC filing reports 100%–250% collateral requirements, approximately $997.557M recognized crypto collateral, approximately $3.2846B borrower/customer collateral not recognized on its balance sheet, and three counterparties each above 10% of loan receivables. It does not disclose an XRP-specific collateral amount; do not infer one from aggregate collateral.
+- No direct Circle–Ripple partnership was established. Shared BNY custody is not proof of a direct partnership. No direct SBI–Coinbase agreement was established; the observed link is indirect through Circle/USDC.
+
+### Actual-capital classification and model restrictions
+
+- SBI's $50M Circle investment and Binance's $100M Circle investment are equity capital in Circle, not XRP purchases.
+- SBI's approximately 9% Ripple stake is Ripple equity, not XRP tokens.
+- Coinbase's $209.9M Centre consideration was Circle stock, not new cash paid by Coinbase.
+- USDC gross mint/redemption, Circle revenue, CPN annualized TPV, stablecoin listings and JPYSC issuance are not net XRP demand.
+- XRP vouchers and shareholder rewards are promotions; cbXRP reserves establish custodial backing, not when/how the underlying XRP was acquired; Morpho USDC borrowing is debt against collateral, not XRP purchase volume.
+- Coinbase's institutional collateral table is not XRP-specific. The cbXRP Morpho market is a distinct, observable wrapped-XRP collateral channel.
+- These relationships are contextual evidence only. They are not point-in-time synchronized features and remain model-ineligible.
+
+### Integration and merge state
+
+At the time of this append:
+- Main remained `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- #1640 code-bearing head `81d3f410fdaa67775e868b21eca525a6b6633c9c) had exact-head full CI, six-manifest audit and fail-closed gate success.
+- #1643 exact head remained `db468e95c0aa74191aee1421f46da7eb844cde12` with exact-head full suite, audit and gate success.
+- #1640 had 154 changed files; #1643 had 291; their only changed-path overlap remained `.github/workflows/dependency-audit.yml` with identical blob content. #1643 has 290 unique research paths relative to #1640.
+- The complete open-PR inventory remained 369 total, 354 drafts and 15 non-drafts. #1640 and #1643 remain the active integration workstreams; #1642's seven different-content paths remain unique/conflicting work to reconcile; #1605 remains an exact duplicate candidate only after replacement verification; #1644/#1647 remain blocked by security/workflow conflicts; unique safety, research, rendering and schema work remains open.
+- Both integration PRs still had zero actual approving reviews. GitHub's mergeable status and the fail-closed gate are not approvals. Pages deployment authorization remains unresolved.
+
+No directional forecast, paper trade, real-money action, merge, deployment, secret rotation, Space restart, Kaggle submission or funds transfer occurred. No new branch or PR was created.
+
