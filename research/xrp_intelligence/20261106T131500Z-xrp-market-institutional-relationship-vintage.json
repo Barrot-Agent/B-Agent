@@ -24,7 +24,12 @@
     "sec_filing",
     "circle_primary_sec_release",
     "reuters_macro",
-    "bls_primary"
+    "bls_primary",
+    "bny_primary",
+    "c2fo_primary",
+    "privy_primary",
+    "sbic_regional_primary",
+    "coinmarketcap_secondary"
   ],
   "source_registry": [
     {
@@ -231,6 +236,65 @@
       "url": "https://www.bls.gov/schedule/2026/home.htm",
       "publication_date": "2026",
       "receipt_status": "official_release_calendar"
+    },
+    {
+      "id": "ripple_2026_year_in_review",
+      "group": "ripple_primary",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publication_date": "2026-11-04",
+      "receipt_status": "issuer_year_in_review_and_corporate_claims"
+    },
+    {
+      "id": "bny_ripple_xrp_rlusd_custody",
+      "group": "bny_primary",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publication_date": "2026-10-27",
+      "receipt_status": "bny_primary_announcement"
+    },
+    {
+      "id": "bny_custody_platform",
+      "group": "bny_primary",
+      "url": "https://www.bny.com/corporate/global/en/solutions/platforms/custody-solutions.html",
+      "receipt_status": "bny_platform_description_does_not_independently_name_xrp"
+    },
+    {
+      "id": "c2fo_instant_pay",
+      "group": "c2fo_primary",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "publication_date": "2026-10-27",
+      "receipt_status": "c2fo_primary_partnership_announcement"
+    },
+    {
+      "id": "c2fo_instant_pay_waitlist",
+      "group": "c2fo_primary",
+      "url": "https://c2fo.com/instant-pay/",
+      "receipt_status": "official_product_page_waitlist_and_limited_rollout"
+    },
+    {
+      "id": "privy_xrpl_wallets",
+      "group": "privy_primary",
+      "url": "https://www.privy.io/blog/building-payments-and-agentic-commerce-with-the-xrp-ledger",
+      "publication_date": "2026-10-13",
+      "receipt_status": "privy_primary_developer_integration_announcement"
+    },
+    {
+      "id": "sbic_tokyo_chatgpt_training",
+      "group": "sbic_regional_primary",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publication_date": "2025-06-12",
+      "receipt_status": "regional_sme_investment_company_training_page"
+    },
+    {
+      "id": "ask_coin_exchange_profile",
+      "group": "coinmarketcap_secondary",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "receipt_status": "secondary_directory_profile_marked_untracked_or_inactive"
+    },
+    {
+      "id": "permission_coin_ask_token",
+      "group": "coinmarketcap_secondary",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "receipt_status": "secondary_token_directory_profile_distinct_from_ask_coin_exchange"
     }
   ],
   "market": {
@@ -444,9 +508,24 @@
       {
         "from": "Ripple",
         "to": "BNY",
-        "relationship": "Primary custody of RLUSD reserve assets",
-        "status": "primary_reserve_custody_selected",
-        "scope": "RLUSD reserve custody; do not relabel this as XRP custody."
+        "relationship": "RLUSD reserve custody, XRP/RLUSD institutional custody support, and XRPL tokenized-trade-finance exploration",
+        "status": "xrp_and_rlusd_custody_support_announced_for_eligible_clients",
+        "scope": "BNY remains the primary custodian of RLUSD reserve assets. Separately, Ripple's October 27, 2026 announcement says BNY's Digital Asset Custody platform supports XRP and RLUSD for eligible institutional clients.",
+        "reserve_custody_scope": "BNY is the primary custodian of RLUSD reserve assets; this reserve-custody role concerns RLUSD reserves.",
+        "digital_asset_custody_scope": "Ripple's October 27, 2026 announcement says BNY's Digital Asset Custody platform supports XRP and RLUSD for eligible institutional clients.",
+        "planned_not_live": [
+          "BNY clients minting and redeeming RLUSD directly through BNY",
+          "broader tokenized asset and investment-product support on XRPL"
+        ],
+        "exploratory_not_live": [
+          "Ripple and BNY exploring tokenized trade finance on XRPL, with C2FO supplier-finance work as an initial use case"
+        ],
+        "not_established": [
+          "XRP assets under custody or AUC balances",
+          "XRP collateral posted",
+          "BNY customer XRP purchase flows",
+          "measured XRPL tokenized-trade-finance volume"
+        ]
       },
       {
         "from": "Ripple",
@@ -522,6 +601,40 @@
           "XRP integration",
           "XRP payment volume"
         ]
+      },
+      {
+        "from": "Ripple",
+        "to": "C2FO",
+        "relationship": "Instant Pay financing and settlement initiative on XRPL",
+        "announced": "2026-10-27",
+        "status": "announced_waitlist_limited_rollout_not_production_volume",
+        "settlement_asset": "RLUSD",
+        "ledger": "XRP Ledger",
+        "scope": "C2FO Instant Pay is designed to let participating capital providers fund business payments settled in RLUSD on XRPL. The official product page describes a waitlist and limited rollout over coming months.",
+        "capital_context": "C2FO says its separate Early Pay service has enabled more than $525B of working-capital access historically; that is not Instant Pay funded capital or settlement volume.",
+        "not_established": [
+          "production Instant Pay volume",
+          "named participating capital providers and committed capital",
+          "XRP purchases or XRP collateral",
+          "incremental XRP demand"
+        ]
+      },
+      {
+        "from": "Ripple",
+        "to": "Privy (Stripe company)",
+        "relationship": "Programmable wallet infrastructure for XRPL applications and agentic commerce",
+        "announced": "2026-10-13",
+        "status": "developer_integration_announced",
+        "scope": "Privy describes programmable wallet infrastructure for developers building on XRPL with XRP, RLUSD and other assets, including x402-style agentic commerce.",
+        "planned_not_live": [
+          "additional policy controls",
+          "gas sponsorship"
+        ],
+        "not_established": [
+          "production transaction volume",
+          "XRP balances held by Privy",
+          "incremental XRP demand"
+        ]
       }
     ],
     "rlusd_transparency": {
@@ -581,7 +694,10 @@
       "BNY and Standard Chartered custody announcements concern RLUSD, not XRP.",
       "The Circle and Ripple federal trust-bank entities are separate from their state-chartered issuer/custody entities.",
       "The regional Japanese SBIC East/Central/West companies are not SBI Holdings or SBI VC Trade.",
-      "Coinbase's RLUSD integration does not cancel its Circle/USDC arrangement."
+      "Coinbase's RLUSD integration does not cancel its Circle/USDC arrangement.",
+      "BNY's October 2026 custody announcement adds XRP and RLUSD support for eligible clients; this is distinct from BNY's primary custody of RLUSD reserve assets. No XRP AUC or collateral amount is disclosed.",
+      "C2FO Instant Pay is an announced RLUSD-on-XRPL initiative with a waitlist/limited rollout; historical Early Pay working-capital access is not Instant Pay volume.",
+      "Privy provides developer wallet infrastructure for XRP/RLUSD on XRPL; no production transaction volume or incremental XRP demand is established."
     ],
     "ripple_corporate_claims": {
       "reported_licenses": ">85",
@@ -589,7 +705,51 @@
       "reported_2025_transactions_enabled_usd_trillions": ">16",
       "reported_annualized_product_revenue_run_rate_usd_millions": "approaching 900",
       "source_id": "ripple_2026_year_in_review",
-      "qualification": "Ripple issuer-reported corporate metrics. They are not independently audited here and do not establish XRP-specific transaction volume, XRP revenue or XRP purchases."
+      "qualification": "Ripple issuer-reported corporate metrics. They are not independently audited here and do not establish XRP-specific transaction volume, XRP revenue or XRP purchases. Ripple's year-in-review also reports >60 payout markets, network lifetime volume approaching $150B by year-end, RLUSD market cap around $2.6B and >88% YTD growth. All are issuer-reported corporate/product metrics, not independently verified XRP market flows.",
+      "reported_payout_markets": ">60",
+      "reported_network_lifetime_volume_usd_billions": "approaching 150 by year-end 2026",
+      "reported_rlusd_market_cap_usd_billions": "approximately 2.6",
+      "reported_rlusd_ytd_growth_pct": ">88"
+    },
+    "ripple_treasury_strategy": {
+      "product": "Ripple Treasury",
+      "status": "launched_company_reported",
+      "customer_claim": ">1000 customers across 160 countries",
+      "product_24_7_returns": {
+        "scope": [
+          "RLUSD",
+          "tokenized money-market funds on XRPL",
+          "institutional liquidity outside traditional banking hours"
+        ],
+        "status": "company_announced",
+        "not_established": [
+          "XRP collateral",
+          "XRP purchase volume",
+          "capital deployed into XRP"
+        ]
+      }
+    },
+    "ripple_prime_strategy": {
+      "scope": [
+        "event contracts",
+        "real-world-asset perpetual futures",
+        "institutional financing and market access"
+      ],
+      "named_relationships": [
+        "Jump Trading",
+        "Kalshi",
+        "Hyperliquid",
+        "Virtu",
+        "Rothera"
+      ],
+      "qualification": "Corporate strategy and market-access relationships; not evidence of XRP-specific open interest, collateral or purchases."
+    },
+    "ripple_network_claims": {
+      "reported_lifetime_xrpl_transactions": ">4.6 billion",
+      "reported_ledger_transaction_time_seconds": "3-5",
+      "reported_funded_accounts": ">8 million",
+      "reported_value_moved_usd_trillions": ">1",
+      "qualification": "Publisher/issuer-reported cumulative network statistics with different source definitions and time windows. They are not current daily volume, active-user counts, XRP market turnover or directly comparable metrics."
     }
   },
   "macro": {
@@ -680,10 +840,10 @@
     "model_eligibility": false
   },
   "identity_research_status": {
-    "japanese_sbic": "SBIC East/Central/West are regional SME investment companies and distinct from SBI Holdings/SBI VC Trade.",
-    "ask_coin": "No new primary-source XRP relationship established in this snapshot.",
-    "actual_capital": "Cash received, purchase cost, restricted cash, in-kind XRP, debt and undrawn facilities remain separate categories.",
-    "camilla_kamilah_stevenson": "No new YouTube video added without identity verification."
+    "japanese_sbic": "SBIC East/Central/West are regional SME investment companies distinct from SBI Holdings/SBI VC Trade. Tokyo SBIC published a June 12-13, 2025 generative-AI/ChatGPT training page; this establishes public training activity, not an OpenAI partnership or SBI Holdings affiliation.",
+    "ask_coin": "Exact-phrase search distinguishes an Ask Coin exchange directory profile (secondary CMC page marks it untracked/inactive and shows no reserve data) from the separate Permission Coin ASK token. No primary-source XRP relationship was established; CMC status is not proof of legal dissolution.",
+    "actual_capital": "No new primary-source XRP relationship was established from the exact phrase. Preserve actual cash received, purchase cost, restricted cash, in-kind XRP, debt, committed facilities and undrawn facilities as separate capital categories.",
+    "camilla_kamilah_stevenson": "No new YouTube videos added: public-channel attribution remains insufficient for identity verification; no video inventory expansion until identity is established."
   },
   "forecast_status": {
     "directional_forecast_issued": false,

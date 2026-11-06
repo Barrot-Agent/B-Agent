@@ -86,7 +86,7 @@ def test_coinbase_ripple_rlusd_distribution_is_live_but_collateral_is_planned():
     )
     assert edge["status"] == "live_for_supported_regions_and_products"
     assert set(edge["live_scope"]["networks"]) == {"XRP Ledger", "Base", "Ethereum"}
-    assert "Coinbase Global Exchange RLUSD collateral eligibility" in edge["planned_not_live"]
+    assert "RLUSD collateral eligibility for Coinbase Global Exchange customers" in edge["planned_not_live"]
     assert "Coinbase buying XRP" in edge["not_established"]
     assert "measured incremental XRP demand" in edge["not_established"]
 
@@ -96,7 +96,7 @@ def test_sbi_vc_trade_is_a_distribution_channel_not_rlusd_issuer():
     sbi = next(x for x in edges if x["from"] == "SBI VC Trade" and x["to"] == "Ripple / Standard Custody & Trust Company")
     assert sbi["status"] == "launched"
     assert sbi["issuer"] == "Standard Custody & Trust Company, LLC, a Ripple subsidiary; SBI VC Trade is distributor, not issuer."
-    assert "BITPOINT service was excluded" in sbi["exclusions"]
+    assert "BITPOINT service was excluded from the announcement" in sbi["exclusions"]
     assert "RLUSD adds another USD stablecoin rather than replacing USDC" in sbi["coexisting_product"]
     identity = load_artifact()["identity_research_status"]["japanese_sbic"]
     assert "distinct from SBI Holdings" in identity
@@ -148,7 +148,9 @@ def test_rlusd_reserve_custody_and_collateral_roles_are_not_mislabeled_as_xrp():
     assert sc["status"] == "custody_support_live"
     assert "RLUSD collateral integration with LMAX Group" in sc["planned_not_live"]
     bny = next(x for x in edges if x["from"] == "Ripple" and x["to"] == "BNY")
-    assert "do not relabel this as XRP custody" in bny["scope"]
+    assert "RLUSD reserve assets" in bny["reserve_custody_scope"]
+    assert "supports XRP and RLUSD" in bny["digital_asset_custody_scope"]
+    assert "XRP assets under custody or AUC balances" in bny["not_established"]
 
 
 def test_macro_expectations_are_not_release_data_and_no_forecast_is_issued():
@@ -186,3 +188,50 @@ def test_ripple_corporate_scale_claims_remain_issuer_reported_and_not_xrp_featur
     robinhood = next(x for x in load_artifact()["institutional_relationships"]["edges"] if x["from"] == "Ripple" and x["to"] == "Robinhood")
     assert "RLUSD on XRPL for institutional settlement" in robinhood["announced_not_measured"]
     assert "measured RLUSD institutional settlement volume on XRPL" in robinhood["not_established"]
+
+def test_bny_supports_xrp_and_rlusd_custody_but_discloses_no_xrp_auc():
+    bny = next(x for x in load_artifact()["institutional_relationships"]["edges"] if x["from"] == "Ripple" and x["to"] == "BNY")
+    assert bny["status"] == "xrp_and_rlusd_custody_support_announced_for_eligible_clients"
+    assert "supports XRP and RLUSD" in bny["digital_asset_custody_scope"]
+    assert "primary custodian of RLUSD reserve assets" in bny["reserve_custody_scope"]
+    assert "XRP assets under custody or AUC balances" in bny["not_established"]
+    assert "XRP collateral posted" in bny["not_established"]
+
+
+def test_c2fo_instant_pay_is_announced_rlusd_settlement_not_production_flow():
+    c2fo = next(x for x in load_artifact()["institutional_relationships"]["edges"] if x["from"] == "Ripple" and x["to"] == "C2FO")
+    assert c2fo["status"] == "announced_waitlist_limited_rollout_not_production_volume"
+    assert c2fo["settlement_asset"] == "RLUSD"
+    assert c2fo["ledger"] == "XRP Ledger"
+    assert "$525B" in c2fo["capital_context"]
+    assert "not Instant Pay" in c2fo["capital_context"]
+    assert "incremental XRP demand" in c2fo["not_established"]
+
+
+def test_privy_xrpl_wallet_integration_is_not_payment_volume():
+    privy = next(x for x in load_artifact()["institutional_relationships"]["edges"] if x["from"] == "Ripple" and x["to"] == "Privy (Stripe company)")
+    assert privy["status"] == "developer_integration_announced"
+    assert "XRP, RLUSD and other assets" in privy["scope"]
+    assert "production transaction volume" in privy["not_established"]
+
+
+def test_ripple_treasury_and_prime_strategy_are_separated_from_xrp_market_flows():
+    relationships = load_artifact()["institutional_relationships"]
+    treasury = relationships["ripple_treasury_strategy"]
+    assert treasury["customer_claim"] == ">1000 customers across 160 countries"
+    assert "tokenized money-market funds on XRPL" in treasury["product_24_7_returns"]["scope"]
+    assert "XRP purchase volume" in treasury["product_24_7_returns"]["not_established"]
+    prime = relationships["ripple_prime_strategy"]
+    assert "Kalshi" in prime["named_relationships"]
+    assert "not evidence of XRP-specific" in prime["qualification"]
+
+
+def test_exact_phrase_identity_results_do_not_create_false_partnerships_or_video_inventory():
+    identity = load_artifact()["identity_research_status"]
+    assert "Permission Coin ASK token" in identity["ask_coin"]
+    assert "No primary-source XRP relationship" in identity["ask_coin"]
+    assert "public training activity" in identity["japanese_sbic"]
+    assert "not an OpenAI partnership" in identity["japanese_sbic"]
+    assert "No new YouTube videos added" in identity["camilla_kamilah_stevenson"]
+    ids = {x["id"] for x in load_artifact()["source_registry"]}
+    assert {"sbic_tokyo_chatgpt_training","ask_coin_exchange_profile","permission_coin_ask_token","ripple_2026_year_in_review","bny_ripple_xrp_rlusd_custody","c2fo_instant_pay","privy_xrpl_wallets"} <= ids
