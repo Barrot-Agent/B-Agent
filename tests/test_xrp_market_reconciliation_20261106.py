@@ -87,7 +87,7 @@ def test_macro_close_sources_have_post_close_vintages_and_distinct_lineage():
 
 def test_morpho_key_correction_is_preimage_bound_and_not_claimed_applied():
     target = INSTITUTIONAL.read_bytes()
-    git_blob = hashlib.sha1(b"blob " + str(len(target)).encode() + b"\\x00" + target).hexdigest()
+    git_blob = hashlib.sha1(b"blob " + str(len(target)).encode() + bytes([0]) + target).hexdigest()
     correction = read_json(CORRECTION)
     original = json.loads(target.decode("utf-8"))
     item = correction["corrections"][0]
