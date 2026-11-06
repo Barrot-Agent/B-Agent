@@ -60,7 +60,11 @@ def test_macro_risk_off_is_context_not_xrp_causation():
     macro = data["macro_event"]
     assert macro["reported_closes"]["nasdaq_composite_pct"] == -5.52
     assert macro["reported_closes"]["sp500_pct"] == -4.36
-    assert macro["reported_closes"]["philadelphia_semiconductor_index_pct"] == -12.0
+    assert macro["reported_closes"]["philadelphia_semiconductor_index_pct"] == -12.25
+    correction = data["correction_history"][-1]
+    assert correction["source_id"] == "herald_postclose_market_close"
+    assert correction["previous_value_pct"] == -12.0
+    assert correction["corrected_value_pct"] == -12.25
     assert "does not prove" in macro["causal_limit"]
     data = load_artifact()
     sources = {item["id"]: item for item in data["source_registry"]}

@@ -36,7 +36,7 @@
       "nasdaq_composite_pct": -5.52,
       "sp500_pct": -4.36,
       "dow_jones_pct": -3.44,
-      "philadelphia_semiconductor_index_pct": -12
+      "philadelphia_semiconductor_index_pct": -12.25
     },
     "source_interpretation": "Reuters reported a technology-led risk-off session as investors repriced AI/data-center buildout risk after Democratic midterm wins; higher financing costs and valuation concerns were also discussed.",
     "causal_limit": "This is broad-market context. It does not prove that the equity selloff caused XRP's move or exclude XRP-specific positioning and flows.",
@@ -322,5 +322,16 @@
     "directional_forecast_issued": false,
     "shadow_forecast_issued": false,
     "reason": "No populated synchronized point-in-time dataset or evaluator-attested out-of-sample evidence supports a directional forecast."
-  }
+  },
+  "correction_history": [
+    {
+      "correction_id": "clarity_act_macro_semiconductor_close_source_alignment_20261106",
+      "recorded_at_utc": "2026-11-06T13:00:46Z",
+      "field": "macro_event.reported_closes.philadelphia_semiconductor_index_pct",
+      "previous_value_pct": -12,
+      "corrected_value_pct": -12.25,
+      "source_id": "herald_postclose_market_close",
+      "reason": "The sole mapped source records a 12.25% decline. The prior -12.0 value was unsupported by that source. Preserve the pre-open Reuters context separately; it does not support the closing figure."
+    }
+  ]
 }
