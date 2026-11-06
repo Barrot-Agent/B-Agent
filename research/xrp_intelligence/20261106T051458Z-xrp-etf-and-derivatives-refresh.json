@@ -125,7 +125,6 @@
       "Hyperliquid": 0.01,
       "OKX": 0.01
     },
-    "liquidations_24h_usd_lower_bound": 15040000,
     "long_liquidations_24h_usd": 14600000,
     "short_liquidations_24h_usd": 440580,
     "long_short_account_ratio": 4.08,
@@ -135,7 +134,10 @@
       "Liquidations are a lower bound over five exchanges.",
       "Long/short ratio is account count, not notional exposure.",
       "Funding remains positive on an OI-weighted basis despite the long-liquidation imbalance."
-    ]
+    ],
+    "liquidations_24h_usd_headline_rounded": 15040000,
+    "liquidations_24h_displayed_comparator": ">=",
+    "liquidation_rounding_note": "TradRadar displays the headline as >= $15.04M (rounded to two decimal millions), while the long and short components are displayed with finer precision and sum to $15,040,580. These are consistent when rounded to two decimal millions; the displayed headline is not an exact component total."
   },
   "etf_flows": {
     "cryptokeyhole": {
