@@ -99,6 +99,7 @@ jobs:
             artifacts/xrp_ingestion/receipt_chain_manifest.json
             artifacts/xrp_ingestion/source_failures.json
             artifacts/xrp_ingestion/raw_only_sources.json
+            artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
           retention-days: 90
       - name: Upload daily point-in-time feature-store backup and walk-forward report
@@ -112,5 +113,6 @@ jobs:
             artifacts/xrp_ingestion/walk_forward.json
             artifacts/xrp_ingestion/summary.json
             artifacts/xrp_ingestion/snapshot_blocked.json
+            artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
           retention-days: 90
