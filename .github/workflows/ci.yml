@@ -118,7 +118,7 @@ jobs:
               */tests/*
           [report]
           show_missing = True
-          fail_under = 50
+          fail_under = 53
           EOF
       - name: Run every repository test with inclusive package coverage
         run: |
@@ -126,7 +126,7 @@ jobs:
             --cov=barrot_agent \
             --cov-config="$RUNNER_TEMP/barrot-coverage.ini" \
             --cov-report=term-missing:skip-covered \
-            --cov-fail-under=50
+            --cov-fail-under=53
       - name: Build wheel and verify packaged primary mission
         run: |
           python -m build --wheel --no-isolation --outdir "$RUNNER_TEMP/barrot-wheel"
