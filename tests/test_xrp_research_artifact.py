@@ -1085,3 +1085,60 @@ def test_sbi_jpysc_and_erebor_update_preserves_offchain_and_planned_capital_scop
     source_ids = set(sources)
     for edge in data["relationship_graph"]:
         assert set(edge["evidence"]) <= source_ids
+
+
+EVERNORTH_ELOC_DOLLAR_CAP_CORRECTION = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261106T043450Z-evernorth-eloc-dollar-cap-correction.json"
+)
+
+
+def test_evernorth_eloc_correction_uses_share_limit_not_fixed_usd_cap() -> None:
+    data = json.loads(EVERNORTH_ELOC_DOLLAR_CAP_CORRECTION.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_evernorth_eloc_dollar_cap_correction_overlay"
+    assert _parse_utc(data["captured_at_utc"]) == _parse_utc(data["data_cutoff_utc"])
+
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == 3
+    sec = sources["sec_evernorth_20261030_424b3"]
+    assert "xrpn-20261030.htm" in sec["url"]
+    assert sec["raw_content_sha256"] is None
+    assert sec["model_eligible"] is False
+
+    correction = data["prior_artifact_correction"]
+    assert correction["prior_value_usd"] == 76800000
+    assert correction["prior_artifact_modified"] is False
+    assert correction["disposition"] == "SUPERSEDED_AS_UNSUPPORTED_FIXED_OR_MAXIMUM_DOLLAR_AMOUNT"
+
+    terms = data["verified_contract_terms"]
+    assert terms["maximum_new_shares"] == 5218935
+    assert terms["maximum_share_fraction_percent"] == 19.99
+    assert terms["purchase_price_percent_of_applicable_vwap"] == 97
+    assert terms["issuer_has_obligation_to_draw"] is False
+    assert terms["fixed_usd_cap_disclosed"] is False
+    assert terms["proceeds_received_as_of_prospectus_usd"] == 0
+    assert terms["upfront_commitment_fee_usd"] == 521893.5
+    assert "non-refundable" in terms["fee_status"].lower()
+
+    capital = data["capital_reconciliation"]
+    assert capital["closing_gross_cash_proceeds_usd"] == 272600000
+    assert capital["closing_cash_components"]["private_placement_investments_usd"] == 224600000
+    assert capital["closing_cash_components"]["released_spac_trust_usd"] == 48000000
+    cash_purchase = capital["historical_cash_xrp_purchase"]
+    assert cash_purchase["cash_received_under_advance_funding_subscriptions_usd"] == 214050000
+    assert cash_purchase["xrp_purchased_units"] == 84365876.3625
+    assert cash_purchase["purchase_announcement_date"] == "2025-11-04"
+    assert cash_purchase["classification"] == "HISTORICAL_ACTUAL_CASH_XRP_PURCHASE_NOT_A_NOVEMBER_2026_FLOW"
+    assert capital["in_kind_xrp_contributions_units"] == 388910554
+    assert capital["convertible_notes"]["principal_usd"] == 30000000
+    assert capital["convertible_notes"]["actual_xrp_purchases_from_note_proceeds_disclosed"] is False
+    assert capital["ripple_related_party_facility"]["drawn_as_of_2026_10_07_usd"] == 9700000
+    assert capital["ripple_related_party_facility"]["repayment_status_in_prospectus"] == "NOT_CONFIRMED"
+    assert capital["cantor_eloc"]["proceeds_received_as_of_prospectus_usd"] == 0
+    assert capital["resale_registration"]["company_receives_resale_proceeds"] is False
+
+    assert data["model_admission"]["eligible"] is False
+    assert data["forecast"]["issued"] is False
+    assert all(item["model_eligible"] is False for item in sources.values())
