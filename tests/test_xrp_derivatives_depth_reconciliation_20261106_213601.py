@@ -35,7 +35,7 @@ def test_tradradar_venue_oi_and_liquidation_arithmetic_reconcile():
     parsed = trad["parsed"]
 
     oi_sum = sum(parsed["open_interest_by_exchange_usd_millions"].values()) * 1_000_000
-    assert oi_sum == artifact["reconciliation"]["tradradar_open_interest_by_exchange_sum_usd"]
+    assert oi_sum == pytest.approx(artifact["reconciliation"]["tradradar_open_interest_by_exchange_sum_usd"], abs=0.01)
     assert round(oi_sum / 1_000_000_000, 2) == 1.90
     long_share = (
         parsed["long_liquidations_usd_rounded"]
