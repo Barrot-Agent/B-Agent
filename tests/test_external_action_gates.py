@@ -337,7 +337,6 @@ def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() ->
         "ci.yml",
         "dependency-audit.yml",
         "formal-verification-benchmarks.yml",
-        "ibm-bob-barrot-audit.yml",
     )
     for name in checkout_workflows:
         content = _read(name)
@@ -348,7 +347,6 @@ def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() ->
         "barrot-controlled-feature-validation.yml",
         "cross-analysis.yml",
         "formal-verification-benchmarks.yml",
-        "ibm-bob-barrot-audit.yml",
         "signal-summary.yml",
     )
     for name in upload_workflows:
@@ -359,3 +357,15 @@ def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() ->
     webmcp = _read("webmcp-monetization-enrich.yml")
     match = re.search(r"uses:\s*actions/download-artifact@v(\d+)", webmcp)
     assert match and int(match.group(1)) >= 8
+
+
+
+def test_ibm_bob_audit_remains_quarantined_without_repository_transfer() -> None:
+    content = _read("ibm-bob-barrot-audit.yml")
+    assert "workflow_dispatch: {}" in content
+    assert "permissions: {}" in content
+    assert "if: ${{ false }}" in content
+    assert "actions/checkout@" not in content
+    assert "actions/upload-artifact@" not in content
+    assert "secrets." not in content
+    assert "No repository content may be transferred" in content
