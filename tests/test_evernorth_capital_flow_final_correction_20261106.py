@@ -40,7 +40,9 @@ def test_closing_gross_cash_is_not_equated_with_xrp_purchase_cash():
     assert row["private_placement_investments_usd"] == 224_600_000
     assert row["trust_account_release_usd"] == 48_000_000
     assert row["advance_funding_cash_used_for_xrp_usd"] == 214_049_995
-    assert row["same_as_cash_used_for_xrp_purchase"] if "same_as_cash_used_for_xrp_purchase" in row else True
+    assert row["gross_cash_usd"] != row["advance_funding_cash_used_for_xrp_usd"]
+    assert row["private_placement_investments_usd"] > row["advance_funding_cash_used_for_xrp_usd"]
+    assert row["trust_account_release_usd"] > 0
 
 
 def test_convertible_notes_are_actual_proceeds_but_not_verified_xrp_purchases():
