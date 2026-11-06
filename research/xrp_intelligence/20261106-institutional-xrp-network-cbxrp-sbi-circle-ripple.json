@@ -67,16 +67,26 @@
       },
       "economics": "Circle pays Coinbase a distribution/revenue share linked to reserve income and USDC balances across Coinbase and approved third-party distribution channels.",
       "binance_participant": {
-        "status": "approved_third_party_participant_under_2024_agreement",
+        "status": "historical_2024_terms_in_2025_S1; Circle and Binance announced a separate expanded five-year partnership in 2026",
         "upfront_payment_usd": 60250000,
         "treasury_balance_target_usd": 3000000000,
         "stated_minimum_balance_usd": 1500000000,
-        "agreement_term": "Two years from 2024-11-14, subject to amendments or extensions not established here."
+        "agreement_term": "Two years from 2024-11-14, subject to amendments or extensions not established here.",
+        "limitation": "Do not treat the 2024 two-year participant term or upfront incentive as the current 2026 Binance agreement; exact contractual reconciliation is not disclosed in the press release."
       },
       "limits": [
         "USDC distribution share is a dated 2025 snapshot, not a current November 2026 balance.",
         "The Binance incentive is a distribution arrangement, not an XRP purchase or proof of current Binance USDC holdings."
-      ]
+      ],
+      "initial_term_years": 3,
+      "renewal_status": "Coinbase's Q3 2026 Form 10-Q states that its arrangement with Circle was renewed on the same terms.",
+      "reserve_control": "Circle is responsible for managing USDC reserves; Coinbase's distribution/revenue rights do not establish Coinbase control or consolidation of reserve assets.",
+      "coinbase_q3_2026": {
+        "stablecoin_revenue_usd": 306905000,
+        "average_usdc_held_in_coinbase_products": "all-time high, exact average not disclosed in the cited 10-Q narrative",
+        "arrangement_renewed": "same terms",
+        "measurement_period": "2026-Q3"
+      }
     },
     {
       "id": "sbi_circle_equity",
@@ -323,6 +333,78 @@
       "limits": [
         "A shared custodian is not evidence of a direct Circle–Ripple partnership, common ownership or coordinated token issuance."
       ]
+    },
+    {
+      "id": "circle_binance_2026",
+      "from": "Binance",
+      "to": "Circle",
+      "relationship": "Direct $100M equity investment in Circle and expanded/renewed five-year strategic commercial partnership to promote USDC across Binance's global platform, with emphasis on emerging markets.",
+      "date": "2026-09-22",
+      "equity_investment_usd": 100000000,
+      "commercial_term_years": 5,
+      "status": "announced_direct_equity_and_distribution_partnership",
+      "limits": [
+        "The announcement does not disclose the exact share count or post-investment ownership percentage.",
+        "This is Circle equity and USDC distribution, not XRP ownership, XRP purchases or a Ripple partnership.",
+        "The exact contractual relationship to the historical 2024 Binance participant incentives is not fully disclosed."
+      ]
+    },
+    {
+      "id": "coinbase_institutional_collateral",
+      "from": "Coinbase",
+      "to": "Institutional borrowers and pledged digital assets",
+      "relationship": "Q3 2026 SEC filing reports collateral requirements generally ranging from 100% to 250% of loan fair value, approximately $997.557M fair value of recognized crypto collateral, and approximately $3.2846B fair value of borrower/customer collateral not recognized on Coinbase's balance sheet.",
+      "measurement_period": "2026-09-30",
+      "status": "primary_sec_filing",
+      "concentration_note": "Three counterparties each represented more than 10% of loan receivables.",
+      "asset_specificity": "The filing does not disclose an XRP-specific collateral balance; 'other crypto assets' is aggregated.",
+      "limits": [
+        "Do not infer that XRP is a material part of the reported collateral pool.",
+        "This institutional lending collateral disclosure is separate from cbXRP/USDC Morpho markets on Base."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_operating_metrics",
+      "from": "Circle",
+      "to": "USDC and Circle Payments Network",
+      "relationship": "Q3 2026 issuer-reported circulation, reserve, on-chain and payment-network metrics.",
+      "measurement_period": "2026-Q3",
+      "metrics": {
+        "average_usdc_circulation_usd": 73300000000,
+        "end_period_usdc_circulation_usd": 73900000000,
+        "end_period_usdc_on_platform_usd": 13900000000,
+        "daily_weighted_average_usdc_on_platform_pct": 18.1,
+        "usdc_minted_gross_usd": 104000000000,
+        "usdc_redeemed_gross_usd": 104000000000,
+        "onchain_transaction_volume_usd": 13900000000000,
+        "circle_payments_network_annualized_tpv_usd": 41300000000,
+        "usdc_market_share_pct": 27,
+        "meaningful_wallets_millions": 7.3,
+        "reserve_return_pct": 3.5,
+        "reserve_income_usd": 658000000,
+        "total_revenue_and_reserve_income_usd": 865000000,
+        "revenue_less_distribution_costs_usd": 453000000,
+        "net_income_usd": 226000000,
+        "adjusted_ebitda_usd": 317000000
+      },
+      "limits": [
+        "Gross $104B minting and $104B redemptions are gross flows, not $208B of net new USDC capital.",
+        "The $13.9T on-chain transaction-volume metric is not equivalent to unique economic payments or net settlement value.",
+        "The $41.3B CPN TPV is annualized, not realized Q3 volume.",
+        "Circle-reported metrics are issuer data, not independently audited XRP demand."
+      ]
+    },
+    {
+      "id": "circle_payment_rails_and_strategy",
+      "from": "Circle",
+      "to": "Visa Direct, Samsung Wallet, CPN, Tazapay and Arc",
+      "relationship": "Q3 2026 release describes USDC payment integrations and network expansion: Visa Direct prefunding moved from pilot to commercial deployment through Inyo Global; Samsung Wallet enabled USDC-to-bank transfers in 60+ countries; Tazapay acquisition remained pending; Arc mainnet launched September 16 with native USDC.",
+      "status": "mixed_live_and_pending_company_announcements",
+      "limits": [
+        "Annualized CPN TPV is not realized quarterly volume.",
+        "Tazapay acquisition was pending regulatory approval and was not completed in the cited period.",
+        "Arc is a separate network and is not XRPL."
+      ]
     }
   ],
   "network_conclusions": {
@@ -330,7 +412,8 @@
       "coinbase_circle": [
         "minority equity stake",
         "USDC distribution and reserve-income economics",
-        "former Centre Consortium relationship"
+        "former Centre Consortium relationship",
+        "Circle distribution/revenue arrangement renewed on the same terms in Coinbase's Q3 2026 10-Q"
       ],
       "coinbase_ripple": [
         "RLUSD distribution on Coinbase",
@@ -353,6 +436,10 @@
         "SBI Shinsei Bank/SBI VC Trade voucher campaign",
         "SBI crypto-card points conversion",
         "SBI VC Trade XRP distribution"
+      ],
+      "circle_binance": [
+        "$100M Circle equity investment",
+        "five-year USDC distribution partnership announced 2026-09-22"
       ]
     },
     "indirect_relationships": {
@@ -365,14 +452,17 @@
     "direct_equity_capital": [
       "SBI Holdings and SBI Shinsei Bank's $50M Circle IPO investment is equity capital.",
       "SBI's approximately 9% Ripple stake is equity ownership as of the dated SBI disclosure, not XRP-token ownership.",
-      "Coinbase's Circle shares were received as stock consideration for the Centre stake; do not classify the $209.9M transaction value as fresh cash paid by Coinbase."
+      "Coinbase's Circle shares were received as stock consideration for the Centre stake; do not classify the $209.9M transaction value as fresh cash paid by Coinbase.",
+      "Binance announced a separate $100M equity investment in Circle in September 2026."
     ],
     "not_proven_spot_xrp_purchases": [
       "SBI XRP vouchers and shareholder rewards are promotional distributions; redemption and exchange sourcing are undisclosed.",
       "cbXRP reserves prove backing custody, not when or how the underlying XRP was acquired.",
       "cbXRP/USDC Morpho borrow balances are USDC debt against collateral, not XRP purchases.",
       "RLUSD listing and JPYSC issuance are stablecoin distribution, not XRP purchases.",
-      "SBI Remit's Ripple DLT use does not prove XRP bridge-asset usage for each remittance."
+      "SBI Remit's Ripple DLT use does not prove XRP bridge-asset usage for each remittance.",
+      "Circle's $104B gross USDC minting and $104B gross redemptions in Q3 are gross stablecoin flows, not net new capital and not XRP purchases.",
+      "Coinbase's reported institutional collateral pool is not XRP-specific; no XRP balance can be inferred from the aggregate."
     ],
     "previously_verified_evernorth_distinction": "The separate Evernorth filing records approximately $214M historical cash used for XRP purchases, approximately 388.9M XRP contributed in kind, and separate financing. These categories must not be combined as cash spot purchases."
   },
@@ -542,6 +632,30 @@
       ],
       "source_type": "secondary_reporting_and_podcast",
       "independence_group": "nikkei_story_repeated_by_podcast"
+    },
+    {
+      "id": "circle_q3_2026_sec_release",
+      "publisher": "Circle / SEC",
+      "document": "Q3 2026 results and Form 8-K exhibit: USDC circulation, gross mint/redemption, reserve income, CPN metrics and Binance partnership",
+      "source_ref": "turn979865view1",
+      "source_type": "primary_sec_filing",
+      "independence_group": "circle_q3_2026_issuer_filing"
+    },
+    {
+      "id": "binance_circle_2026_partnership",
+      "publisher": "Binance",
+      "document": "$100M Circle equity investment and five-year strategic USDC partnership, dated 2026-09-22",
+      "source_ref": "turn537415search1",
+      "source_type": "primary_company_announcement",
+      "independence_group": "binance_circle_2026_joint_announcement"
+    },
+    {
+      "id": "coinbase_q3_2026_10q",
+      "publisher": "Coinbase / SEC",
+      "document": "Q3 2026 Form 10-Q: Circle arrangement renewal, stablecoin revenue and institutional collateral disclosures",
+      "source_ref": "turn979865view0",
+      "source_type": "primary_sec_filing",
+      "independence_group": "coinbase_q3_2026_sec_filing"
     }
   ],
   "quality_and_limits": {
@@ -557,7 +671,11 @@
     "direct_sbi_coinbase_agreement_established": false,
     "june_10_sbi_shinsei_pilot_primary_confirmation": false,
     "model_eligible": false,
-    "reason": "This network map establishes corporate, distribution, custody, collateral and stablecoin relationships, but not synchronized XRP purchases, customer-level flows, redemption volumes or net new spot demand."
+    "reason": "This network map establishes corporate, distribution, custody, collateral and stablecoin relationships, but not synchronized XRP purchases, customer-level flows, redemption volumes or net new spot demand.",
+    "circle_q3_gross_mint_redemption_are_net_flows": false,
+    "binance_2026_equity_investment_is_xrp_purchase": false,
+    "coinbase_collateral_xrp_specific_balance_disclosed": false,
+    "circle_payment_network_annualized_tpv_is_realized_quarterly_volume": false
   },
   "forecast_status": {
     "directional_forecast_issued": false,
