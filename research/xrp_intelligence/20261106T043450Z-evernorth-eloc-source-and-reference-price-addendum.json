@@ -160,7 +160,11 @@
       "xrp_purchased_units": 84365876.3625,
       "average_purchase_price_usd": 2.53657058,
       "purchase_date": "2025-11-04",
-      "classification": "HISTORICAL_CASH_FUNDED_XRP_PURCHASE_NOT_A_CURRENT_2026_FLOW"
+      "classification": "HISTORICAL_CASH_FUNDED_XRP_PURCHASE_NOT_A_CURRENT_2026_FLOW",
+      "cash_received_exact_usd": 214049995,
+      "cash_received_under_advance_funding_subscriptions_usd": 214050000,
+      "restricted_cash_at_2025_12_31_usd": 49995,
+      "cash_received_note": "The $214,049,995 exact subscription receipt is shown as $214.05M in the prospectus summary. This cash-received amount is distinct from cash_used_usd, whose append-only correction overlay sets purchase cost to $214,000,000."
     },
     "in_kind_xrp_contributions_units": 388910554,
     "in_kind_classification": "NON_CASH_XRP_CONTRIBUTIONS_NOT_CASH_PROCEEDS",

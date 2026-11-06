@@ -120,7 +120,17 @@ def test_postclose_and_reference_price_addendum_use_214m_purchase_cost(overlay: 
     post, _ = _load_relative(postclose["path"])
     assert post["closing_capital_reconciliation"]["components"]["advance_subscription_cash_usd"] == 214050000
     add, _ = _load_relative(addendum["path"])
-    assert add["capital_taxonomy"]["historical_cash_xrp_purchase"]["cash_received_under_advance_funding_subscriptions_usd"] == 214050000
+    purchase = add["capital_taxonomy"]["historical_cash_xrp_purchase"]
+    assert purchase["cash_received_exact_usd"] == 214049995
+    assert purchase["cash_received_under_advance_funding_subscriptions_usd"] == 214050000
+    assert purchase["restricted_cash_at_2025_12_31_usd"] == 49995
+    corrected_addendum = copy.deepcopy(add)
+    addendum_correction = next(
+        x for x in overlay["field_corrections"]
+        if x["artifact_path"] == addendum["path"]
+    )
+    _set_pointer(corrected_addendum, addendum_correction["json_pointer"], addendum_correction["corrected_value"])
+    assert corrected_addendum["capital_taxonomy"]["historical_cash_xrp_purchase"]["cash_used_usd"] == 214000000
 
 
 def test_eloc_prose_correction_does_not_reclassify_cash_received_as_purchase_cost(overlay: dict) -> None:
