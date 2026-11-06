@@ -8598,3 +8598,22 @@ Main is reported protected. The branch-protection endpoint returns HTTP 403, so 
 6. Continue historical backfill, timestamp anchoring, cross-venue derivatives, issuer-level ETF cash-flow reconciliation, collateral/custody/stablecoin/payment data and leakage-safe evaluator validation.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred in this checkpoint.
+
+
+### 2026-11-06 12:20 UTC — #1643 exact-head verification addendum
+
+The previously pending full-suite run has completed successfully on the exact current #1643 head `8e7cd1a5506754a0382a727b662028169b5dfcca`:
+
+- Core suite: 498 passed, 8 subtests.
+- Full repository suite: 1,430 passed, 8 subtests.
+- Six-manifest dependency audit: passed.
+- Fail-closed gate: passed; automatic merging remains disabled.
+- Exact evidence: [full CI 42216679717](https://github.com/Barrot-Agent/B-Agent/actions/runs/42216679717), [dependency audit 42216679763](https://github.com/Barrot-Agent/B-Agent/actions/runs/42216679763), [fail-closed gate 42216679827](https://github.com/Barrot-Agent/B-Agent/actions/runs/42216679827).
+
+The new November 6 market reconciliation tests, the Evernorth cash/in-kind regression assertions and the preimage-bound Morpho review-resolution test are included in this passing full suite. The full-suite job did not emit a coverage report; do not infer coverage from the core suite or from #1640.
+
+A final incremental CodeRabbit read-only review was requested against this exact head. It is not an approving review and does not satisfy any repository approval requirement.
+
+The #1640 branch now has a documentation-only handoff commit `044b9620682f0c8ae0d31e6a09d68861226e4fe4`; the last code-bearing head `64f36ca035daa0c708bf5bd0c317c6d9619129ea` retains its exact-head full-suite, dependency-audit and fail-closed evidence. No code changed in the handoff-only commit.
+
+Merge blockers remain unchanged: zero approving reviews on both PRs; main is protected but detailed protection settings are inaccessible (HTTP 403); Pages settings are inaccessible; and a main push triggers public Pages deployment. No merge or deployment is authorized by this checkpoint.
