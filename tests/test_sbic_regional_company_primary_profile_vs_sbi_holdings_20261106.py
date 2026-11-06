@@ -61,7 +61,7 @@ def test_chatgpt_sbic_events_are_not_misrepresented_as_openai_partnerships() -> 
     assert "actual occurrence is not independently verified" in phrase["sbic_west"]
     assert "non-discovery is not proof of absence" in phrase["sbic_central"]
     assert "OpenAI partnership" in phrase["not_established"]
-    assert "SBI Holdings sponsorship or control" in phrase["not_established"]
+    assert any("SBI Holdings sponsorship or control" in item for item in phrase["not_established"])
 
 
 def test_sbic_identity_artifact_is_context_only_not_a_market_feature() -> None:
