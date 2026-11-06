@@ -170,7 +170,9 @@
         "upfront_commitment_fee_usd": 521893.5,
         "aggregate_commitment_fee_cap_usd": 1000000,
         "expense_reimbursement_cap_usd": 500000,
-        "classification": "Potential future equity issuance and dilution; not actual capital raised as of the prospectus date."
+        "classification": "Potential future equity issuance and dilution; not actual capital raised as of the prospectus date.",
+        "scenario_basis": "cover-price estimate; not a contractual dollar cap",
+        "not_contractual_dollar_cap": true
       },
       "warrants": {
         "outstanding_warrants": 11739645,
