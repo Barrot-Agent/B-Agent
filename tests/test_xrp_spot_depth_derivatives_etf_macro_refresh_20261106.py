@@ -74,7 +74,7 @@ def test_edgeornot_mixed_spot_perpetual_book_is_not_pure_spot_depth():
     assert any("mixed spot/perpetual" in x for x in item["limitations"])
     comparison = load_artifact()["market_snapshot"]["order_book"]["asynchronous_level_comparison"]
     assert comparison["status"] == "DESCRIPTIVE_CROSS_SOURCE_LEVEL_COMPARISON_NOT_A_RETURN"
-    assert "does not prove" in comparison["interpretation"]
+    assert "proof that market-wide support failed" in comparison["interpretation"]
 
 
 def test_tradradar_oi_row_sum_and_derivatives_limits():
@@ -86,7 +86,7 @@ def test_tradradar_oi_row_sum_and_derivatives_limits():
     assert item["long_liquidations_usd"] > item["short_liquidations_usd"]
     assert item["liquidations_24h_lower_bound_usd"] == 17_140_000
     assert item["long_account_share_percent"] == 79.9
-    assert any("account count" in x for x in item["limitations"])
+    assert any("notional positioning" in x for x in item["limitations"])
 
 
 def test_etf_vintage_is_provisional_and_not_direct_cash_flow():
