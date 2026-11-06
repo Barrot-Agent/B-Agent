@@ -1,6 +1,6 @@
 # Barrot XRP Mission Handoff — Current Verified State
 
-Updated: 2026-11-06T19:48:57Z
+Updated: 2026-11-06T20:22:08Z
 
 This is the current-state handoff for the priority-1 XRP mission. Earlier run-by-run handoff revisions remain in Git history; this concise snapshot replaces an unbounded append log without rewriting branch history.
 
@@ -26,36 +26,39 @@ This is the current-state handoff for the priority-1 XRP mission. Earlier run-by
 ### PR #1640 — V3/core and XRP ingestion foundation
 
 - Branch: `integration/core-capabilities-mmi-structural-paper-20261104`.
-- Code-bearing head verified before the current handoff refresh: `e525aab0ab5111dc623a9d57a0db8b359500aaff`.
-- 155 changed files; non-draft; GitHub reports mergeable.
+- Exact current head: `43db1189fecbac99bb1a5399b29bd5c3eff30551`; 462 commits ahead of main, zero behind.
+- 155 changed files; non-draft; GitHub reports mergeable state `clean`.
 - Review threads: 22/22 resolved. Approving reviews: 0.
 - Exact-head core suite: 626 passed, 8 subtests.
-- Exact-head full repository suite: 1,065 passed, 8 subtests.
+- Exact-head full repository suite: 1,065 passed, 8 subtests; coverage 57.57%.
+- Installed-wheel verification: passed.
 - Six-manifest dependency audit: passed; no known vulnerabilities.
-- Fail-closed merge gate: passed; automatic merging remains disabled.
+- Fail-closed merge gate: passed; it explicitly reports merging disabled.
 - Evidence:
-  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42281864688
-  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42281864661
-  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42281864719
-- The current handoff update is a documentation-only commit on this branch and must receive its own exact-head CI verification before merge.
+  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42286060124
+  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42286060101
+  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42286060029
+- The preceding `de934606...` head failed one handoff regression assertion because the test still expected a superseded artifact phrase/path. The assertion was updated to the current 19:33Z handoff evidence; the exact current head above then passed the complete suite. The cache-budget warning was non-fatal.
+- This head has not been merged. The handoff refresh below is a new documentation-only commit and must receive its own exact-head verification.
 
 ### PR #1643 — XRP research archive
 
 - Branch: `research/xrp-evidence-archive-20261104`.
-- Exact current head: `b48478aa333ad4c71f97a6b3108dc8656a2f7af7`.
-- 345 changed files; non-draft; GitHub reports mergeable.
+- Exact current head: `ae7d7534634f8ca7b5e35e351c50d1f83db52a38`; 494 commits ahead of main, zero behind.
+- 349 changed files; non-draft; GitHub reports mergeable state `clean`.
 - Review threads: 19/19 resolved. Approving reviews: 0.
 - Exact-head core suite: 498 passed, 8 subtests.
-- Exact-head full repository suite: 1,596 passed, 8 subtests.
+- Exact-head full repository suite: 1,607 passed, 8 subtests.
 - Six-manifest dependency audit: passed; no known vulnerabilities.
 - Fail-closed merge gate: passed; automatic merging remains disabled.
 - Evidence:
-  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42282406359
-  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42282406340
-  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42282406472
-- The full-suite run includes the new post-BLS market/reserve/ETF reconciliation tests and append-only receipt-correction checks.
+  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42287414992
+  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42287415164
+  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42287415097
+- This branch's full-suite job currently inherits the main-branch CI workflow version; the consolidated successor must inherit #1640's expanded CI, wheel verification and coverage gate after #1640 is merged.
+- New research and append-only correction artifacts are listed below. They remain on this research branch, not main.
 
-The only changed-path overlap between #1640 and #1643 is `.github/workflows/dependency-audit.yml`; both branches have the identical blob `6515307991420ab90d8671034b13ac2eb56190b3`. Do not merge #1643 directly after #1640. After #1640 is merged and verified on main, create one consolidated research successor directly on that resulting main, transfer #1643's unique paths, and preserve the single identical workflow file.
+The only changed-path overlap between #1640 and #1643 is `.github/workflows/dependency-audit.yml`; both branches have the identical blob `6515307991420ab90d8671034b13ac2eb56190b3`. Current counts are 155 paths on #1640 and 349 on #1643, with one shared path. Do not merge #1643 directly after #1640. After #1640 is merged and verified on main, create one consolidated research successor directly on that resulting main, transfer the 348 unique research paths, and preserve the single identical dependency-audit workflow file.
 
 ## Architecture and implementation status
 
@@ -89,28 +92,39 @@ The only changed-path overlap between #1640 and #1643 is `.github/workflows/depe
 - The walk-forward evaluator does not establish reliable cross-domain out-of-sample predictive lift. Calibration and drift stability are not established.
 - Forecast issuance requires an Ed25519 signature from a trusted evaluator key. Production trust keys are not configured; readiness fails closed.
 
-## Latest XRP research artifact
+## Latest XRP research artifacts
 
-Added to PR #1643:
+The following new artifacts are on PR #1643's research branch and are not yet on main.
+
+### 19:33Z cross-source market/reserve/ETF reconciliation
 
 - Artifact: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T193345Z-xrp-binance-reserve-etf-flow-cross-source-reconciliation.json
 - Regression tests: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_binance_reserve_etf_flow_cross_source_reconciliation_20261106.py
-- Two append-only receipt-metadata correction overlays:
-  - `research/xrp_intelligence/20261106T194003Z-xrp-binance-reserve-etf-flow-receipt-hash-correction.json`
-  - `research/xrp_intelligence/20261106T194446Z-xrp-binance-reserve-etf-flow-receipt-hash-correction-2.json`
-- The original artifact blob SHA-1 is `7d632f7201ef1901239dc54270fa260cdcd97309`. Both corrections bind to that exact preimage and correct only two SHA-256 metadata transcriptions (TradRadar and CryptoTicker); the original excerpt bytes and market observations remain unchanged. The test verifies the derived corrected view. This correction overlay is research-archive logic, not a production feature-admission path.
+- Two append-only receipt-metadata correction overlays bind to original artifact blob SHA-1 `7d632f7201ef1901239dc54270fa260cdcd97309`; they correct only two SHA-256 metadata transcriptions, not source excerpts or market observations.
+- Historical observation from this capture: Fuelmaps' 18:00 six-venue spot-depth snapshot showed 60.09%-67.78% displayed bid share across its bands, but it was 93.75 minutes old and excluded Binance and Bitget. EdgeOrNot mixed Binance spot with OKX perpetual and was not combined with spot-only depth.
 
-Key observations, capture upper bound 2026-11-06T19:33:45Z:
+### 20:10:59Z spot/derivatives/ETF/exchange-reserve update
 
-- Kraken XRP/USD last $1.18304; best bid $1.18308; ask $1.18309; displayed spread 0.0845 bps; 24-hour volume 39.72M XRP; 24-hour VWAP $1.20425. Kraken exposes no provider timestamp, and its last trade is below the displayed best bid, so trade/book fields are not assumed synchronous.
-- OKX XRP-USDT last 1.1830; bid 1.1830; ask 1.1831; spread 0.8453 bps; provider ticker snapshot 19:32:37.362Z; 24-hour volume 65.37M XRP. USD and USDT prices are not treated as synchronized or executable cross-venue quotes.
-- Fuelmaps' 18:00 six-venue spot-depth snapshot shows 60.09%-67.78% displayed bid share across its bands, but is 93.75 minutes old and excludes Binance and Bitget. EdgeOrNot mixes Binance spot with OKX perpetual and is not combined with spot-only depth.
-- TradRadar's 19:09 displayed seven-exchange snapshot reports $1.90B OI, -2.47% 24-hour OI, +0.0010% funding per eight hours, at least $11.96M liquidations, $11.36M long liquidations, $0.60034M short liquidations and a 3.90 long/short account ratio. Account counts are not notional exposure.
-- SoSoValue via TokenPost reports three no-flow ETF trading days through Nov 5 and $1.81B cumulative net inflows/$1.41B net assets. XRP Insights separately reports a -149,487 XRP holdings delta over four settled days and 1.19645B XRP held. These are different measures/universes, not comparable AP cash flows.
-- CryptoBasic reporting CryptoQuant shows Binance reserves rising 280M XRP from 2.35B to 2.63B Nov 3–5. XRP Insights' Nov 6 08:00 wallet-label snapshot reports 2.74B Binance XRP and +156.7M over seven days. TrackWhale's filtered large-transfer index reports -20.02M XRP net over seven days. Wallet universes, time windows and filters differ; no averaging and no open-market-purchase inference.
-- BLS October employment release: +165,000 payrolls, 4.1% unemployment, +0.4% monthly and +3.1% annual wage growth, with +84,000 combined Aug/Sep revisions. Cross-asset reaction windows are not synchronized with XRP quotes.
+- Artifact: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T201059Z-xrp-spot-derivatives-etf-exchange-reserve-reconciliation.json
+- Regression tests: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_spot_derivatives_etf_exchange_reserve_reconciliation_20261106.py
+- Eight source receipts preserve direct Kraken/OKX rendered ticker responses and normalized excerpts from derivatives, ETF, exchange-wallet and escrow trackers. Hashes cover the stored rendered JSON/excerpts, not original HTTP wire bytes. No common point-in-time cutoff is claimed.
+- Kraken XRP/USD at capture upper bound 20:10:59Z: last $1.18394; bid $1.18391; ask $1.18392; displayed spread 0.0845 bps; rolling-24h volume 37.61M XRP; rolling-24h VWAP $1.201997. Last was 1.50% below rolling-24h VWAP and 1.80% below the UTC-day open. Kraken's ticker does not expose a provider timestamp.
+- OKX XRP-USDT ticker snapshot 20:03:34.863Z: last 1.185 USDT; bid 1.1850; ask 1.1851; spread 0.8438 bps; rolling-24h volume 64.43M XRP; 24-hour open 1.2418 and low 1.1743. The last was 4.57% below the 24-hour open. USD and USDT quotes are asynchronous and not FX-normalized; no arbitrage or consolidated-price claim is made.
+- No new synchronized spot-depth observation was captured. The prior Fuelmaps 18:00Z depth snapshot was 130.983 minutes old at this capture and is not carried forward as current.
+- TradRadar's delayed 16:45Z seven-exchange perpetual snapshot reported $1.92B OI, -1.65% 24-hour OI, +0.0029% funding per eight hours and at least $12.87M liquidations ($12.27M longs; $0.59804M shorts). Alpha Finance's 14:44Z all-exchange dashboard reported $2.77B OI and $21.3M long versus $0.8254M short liquidations; its liquidation levels are modelled. The $850M OI disagreement (44.27% of TradRadar's figure) is preserved, not averaged.
+- XRP Insights reports a Nov 5 holdings-derived ETF change of +110,214 XRP but a four-session Nov 2-5 change of -149,487 XRP across six spot ETFs plus BITW. CryptoKeyhole's Nov 5 row was partial at two of four funds. These are different universes/settlement states and holdings deltas, not AP cash creation/redemption records.
+- XRP Insights' Nov 6 08:00Z wallet tracker reports 22.34B XRP across 701 attributed wallets and 24 exchanges; same-wallet balances were -34.7M over seven days and -152.6M over 30 days. Its naive total change was +359.4M and included two newly tracked wallets holding 512M XRP. The tracked balances include 487.7M XRP of wrapped-asset/other reserve backing (325.8M Binance XRP-BF2, 150.7M Coinbase cbXRP, 11.2M insurance/charity); this is not tradable customer float.
+- XRP Insights reports 31.10B XRP in live XRPL escrow objects, but this run did not capture raw ledger receipts. Treat it as provider-derived locked escrow, not circulating or immediately tradable supply.
 
-Six competing hypotheses remain open: broad macro risk-off, leveraged-long unwind, Binance reserve replenishment/wallet movement, ETF-flow stall, displayed bid-depth absorption, and technical support exhaustion. Each has counterevidence recorded in the artifact. No directional forecast was issued; the dataset is model-ineligible.
+### 20:18:55Z append-only archive corrections
+
+- Correction overlay: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T201855Z-archive-data-integrity-correction-overlays.json
+- Regression tests: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_archive_data_integrity_correction_overlays_20261106.py
+- The source-bound Evernorth overlay corrects the derived view of the Nov 4 capital artifact: the separate $1M Evernorth Facility lender is Ripple Labs, not NH/Kyobo; it also removes two duplicate Ripple facility graph edges in the derived view. The original blob remains unchanged.
+- The source-bound Kraken overlay renames `open_24h_usd` to `daily_open_usd` and `last_vs_open_pct` to `last_vs_daily_open_pct` in a derived view. Kraken's official documentation says today's prices start at midnight UTC; the original artifact remains unchanged.
+- Both overlays verify exact Git blob SHA-1 preimages and fail closed on mismatch. Their tests preserve original artifacts and apply changes only to deep-copied derived views.
+
+The five competing hypotheses in the 20:10Z market artifact remain unresolved: short-term spot sell pressure, leveraged-long unwind, exchange-wallet supply interpretation, ETF holdings/cash-flow divergence and escrow supply overhang. No directional forecast was issued; the dataset remains model-ineligible.
 
 ## Backlog classification
 
@@ -137,17 +151,17 @@ No PRs were merged or closed during this run.
 
 ## Merge decision and blockers
 
-Both integration PRs are non-draft and GitHub reports mergeable. Exact-head full suites, dependency audits and fail-closed gates pass. Both have zero approving reviews. Main is protected; detailed branch-protection requirements are inaccessible (HTTP 403). The visible fallback ruleset is disabled. Pages settings are inaccessible, and a prior main push triggered a public Pages deployment. Because merge would trigger that external deployment and its authorization is unresolved, neither PR is merged. No protection bypass is permitted.
+Both PRs are non-draft, conflict-free and report GitHub mergeable state `clean`. Their current exact-head full suites, dependency audits and fail-closed gates pass. Both still have zero approving reviews; the 22 and 19 review threads are resolved, but the repository review API records no `APPROVED` review. Main reports `protected: true`; detailed branch-protection requirements return HTTP 403, and the visible fallback ruleset is disabled. GitHub Pages settings remain inaccessible, and a prior main push triggered public Pages deployment run 41799855489. The user authorized merging only genuinely ready changes, not an unverified external deployment. Neither PR is ready to merge until the required approval state and deployment side effect are resolved. Do not bypass protection.
 
 ## Next concrete sequence
 
-1. Verify required branch-protection approvals/checks and obtain independent approvals if required.
-2. Resolve authorization for the automatic Pages deployment side effect.
-3. Re-run exact-head full suite, dependency audit and fail-closed gate after this handoff commit; merge #1640 only when all conditions and external-action authorization are satisfied.
-4. After merge, verify merge commit, fetch main again, verify all merged files, inspect automatic workflow side effects and run main CI.
-5. Create one consolidated research successor directly on the resulting main, transfer #1643's unique research paths, preserve the identical dependency-audit workflow, and reconcile #1642.
-6. Only after the successor's content is verified on main, close the exact duplicate/superseded source PRs with cross-references.
-7. Expand historical cross-venue data, external immutable retention, trusted evaluator keys, calibration, drift and shadow outcomes. Issue no directional forecast until measured out-of-sample performance and evaluator attestation support it.
+1. Obtain independent approving reviews and verify the actual branch-protection requirements; do not treat COMMENTED reviews saying "Approved" as GitHub approvals.
+2. Resolve authorization for the automatic public Pages deployment side effect.
+3. After this handoff commit, verify #1640's exact-head core/full-suite CI, six-manifest dependency audit and fail-closed gate. Merge #1640 only if all checks, approvals and external-action authorization are satisfied.
+4. After any merge, verify the merge commit, fetch main again, confirm every merged file, inspect automatic workflow side effects and run main CI.
+5. Create one consolidated research successor directly on the resulting main. Transfer #1643's unique research paths and new correction overlays, preserve the identical dependency-audit workflow, inherit #1640's expanded CI/coverage/wheel checks, and reconcile #1642.
+6. Only after successor content is verified on main, close exact duplicate/superseded source PRs with clear cross-references. Preserve unique/unreviewed work.
+7. Continue historical synchronized spot/depth/derivatives and institutional-flow coverage; configure externally immutable retention and trusted evaluator keys; expand leakage-safe walk-forward, calibration, drift and shadow-outcome evidence. Issue no directional forecast until measured out-of-sample performance and evaluator attestation support it.
 
 ## Forecasts and outcomes
 
