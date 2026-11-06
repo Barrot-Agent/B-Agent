@@ -41,12 +41,18 @@
       "to": "Circle",
       "relationship": "Former 50/50 Centre Consortium ownership; Circle acquired Coinbase's remaining 50% in 2023.",
       "consideration": "Circle's SEC S-1 describes approximately $209.9M total consideration in approximately 8.4M Circle Class A shares.",
-      "post_ipo_position": "The S-1 beneficial-ownership table reports Coinbase with 7,901,791 shares after the offering, approximately 3.7% of Class A and 2.6% voting power, using the June 30, 2025 ownership snapshot.",
+      "post_ipo_position": {
+        "shares": 7901791,
+        "class_a_pct": 3.7,
+        "voting_power_pct": 2.6,
+        "as_of": "2025-06-30"
+      },
       "status": "documented_historical_equity_relationship",
       "limits": [
         "The share count is a 2025 filing snapshot, not a verified November 2026 current position.",
         "The $209.9M Centre consideration was stock consideration, not $209.9M of new cash paid by Coinbase."
-      ]
+      ],
+      "post_ipo_position_note": "Circle SEC S-1 beneficial-ownership table, after the offering and before any underwriter option exercise."
     },
     {
       "id": "coinbase_circle_distribution",
@@ -223,7 +229,7 @@
       "relationship": "RLUSD made available through Coinbase app, Prime and Exchange with XRPL, Base and Ethereum deposit/withdrawal support.",
       "launch_date": "2026-10-28",
       "status": "live_distribution_integration",
-      "collateral_status": "Coinbase stated that Coinbase Global Exchange collateral support for RLUSD would follow; do not treat it as live at launch.",
+      "collateral_status": "Coinbase stated that Coinbase Global Exchange collateral support for RLUSD will follow; do not treat it as live at launch.",
       "liquidity_note": "Ripple stated it would provide liquidity on Base.",
       "limits": [
         "RLUSD is a dollar stablecoin, not XRP.",
@@ -470,7 +476,7 @@
     {
       "id": "sbi_ripple_asia_ownership",
       "publisher": "SBI Holdings",
-      "document": "Investor presentation reporting SBI Ripple Asia ownership split",
+      "document": "SBI investor presentation reporting SBI Ripple Asia ownership split and historical XRP shareholder-benefit distributions.",
       "source_ref": "turn948632view0",
       "source_type": "primary_investor_presentation",
       "independence_group": "sbi_group_primary"
