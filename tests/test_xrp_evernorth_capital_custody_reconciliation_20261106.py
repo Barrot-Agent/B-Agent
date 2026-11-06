@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -104,3 +105,12 @@ def test_capital_reconciliation_is_not_admitted_as_a_directional_forecast():
     assert data["exact_phrase_research"]["exact_phrase_found_in_this_sec_filing"] is False
     assert data["model_eligibility"]["eligible_as_price_or_flow_feature"] is False
     assert data["model_eligibility"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_sec_normalized_evidence_receipt_is_reproducible():
+    data = _data()
+    receipt = data["source_receipt"]
+    assert hashlib.sha256(receipt["normalized_evidence"].encode("utf-8")).hexdigest() == receipt["normalized_evidence_sha256"]
+    assert receipt["normalized_evidence_words"] == len(receipt["normalized_evidence"].split())
+    assert receipt["quote_word_count"] == len(receipt["short_exact_quote"].split())
+    assert receipt["quote_word_count"] <= 25
