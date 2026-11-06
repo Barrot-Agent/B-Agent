@@ -59,7 +59,8 @@ def test_user_account_read_permission_and_codeowners_are_preserved():
 def test_no_secrets_or_external_writes_were_used():
     data = load_artifact()
     assert data["no_secret_values_read"] is True
-    assert data["no_external_platform_write_executed"] is True
+    assert data["github_existing_pr_branch_writes_executed"] is True
+    assert data["no_non_github_external_platform_write_executed"] is True
     assert data["no_data_sent_to_external_ai_providers"] is True
     assert data["least_privilege_policy"]["secrets_access_authorized"] is False
     assert data["least_privilege_policy"]["deployments_authorized"] is False

@@ -261,6 +261,7 @@
   "fallback_plan": "Use ChatGPT public-source research, deterministic local analysis and GitHub exact-head CI. Keep all other platforms unconnected until tested authentication and explicit least-privilege data flows exist.",
   "no_data_sent_to_external_ai_providers": true,
   "no_secret_values_read": true,
-  "no_external_platform_write_executed": true,
-  "no_nine_platform_live_coordination_claimed": true
+  "no_nine_platform_live_coordination_claimed": true,
+  "github_existing_pr_branch_writes_executed": true,
+  "no_non_github_external_platform_write_executed": true
 }
