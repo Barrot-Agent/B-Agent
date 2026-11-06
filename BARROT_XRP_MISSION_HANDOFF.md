@@ -1,4 +1,4 @@
-# Current verified checkpoint — 2026-11-06T09:10:51Z
+# Current verified checkpoint — 2026-11-06T11:02:58Z
 
 **Mission priority:** XRP intelligence and prediction-engine mastery is priority 1. Barrot V3 remains the preserved execution, orchestration, safety and verification foundation.
 
@@ -8305,3 +8305,143 @@ Next sequence:
 6. Continue historical backfill, durable raw-source retention, cross-venue depth/derivatives, ETF issuer-cash-flow and institutional collateral data, then evaluator-attested walk-forward, calibration, drift and shadow outcomes.
 
 No PR was merged, no source PR was closed, no new branch was created, no deployment was authorized or performed, and no secret, Space, Kaggle, funds or paper-trading action was taken.
+
+
+---
+
+## Run 11 append-only checkpoint — 2026-11-06T11:02:58Z
+
+This checkpoint supersedes earlier status summaries in this file. Historical notes and source artifacts remain preserved. No main-branch change, merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, transfer or real-money action occurred.
+
+### Main build and repository inspection
+
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Recursive main tree: 1,403 entries; 1,298 files; 493 Python files; 90 Python test files; 86 workflow entries (78 active YAML workflows and 8 disabled `.yml.disabled` files).
+- Main still lacks `barrot_agent/data/missions/primary_mission.json`, `barrot_agent/orchestration/mission_registry.py`, and a scheduled XRP ingestion workflow. The priority-1 mission and scheduled collector remain integration-branch capabilities, not active main capabilities.
+- Open PR inventory: 369 total, 354 drafts and 15 non-drafts. No PRs were closed.
+- Main reports protected=true. Detailed branch-protection inspection returned HTTP 403; the visible fallback ruleset is disabled. GitHub Pages and Actions permission settings were not readable through the current access path.
+
+### PR #1640 — V3/core integration
+
+- Current code-bearing head at this checkpoint: `aae5767ba11dc174b0faf2a56e2afcdeb3c66307`.
+- 439 commits ahead of main; 154 changed files; GitHub reports mergeable and clean; non-draft.
+- Review threads: 22/22 resolved. Actual approving reviews: 0.
+- Exact-head core suite: 622 passed, 8 subtests.
+- Exact-head full repository suite: 1,060 passed, 8 subtests; inclusive coverage 57.57%.
+- Installed-wheel build and packaged primary-mission verification passed.
+- Six-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed and explicitly reported that automatic merging is disabled.
+- Evidence: [CI 42202767242](https://github.com/Barrot-Agent/B-Agent/actions/runs/42202767242), [dependency audit 42202767062](https://github.com/Barrot-Agent/B-Agent/actions/runs/42202767062), [fail-closed gate 42202767263](https://github.com/Barrot-Agent/B-Agent/actions/runs/42202767263).
+- CodeRabbit check was skipped on this head. Prior review threads are resolved, but that is not an approving review.
+
+### PR #1643 — XRP research archive
+
+- Current exact head: `9b00e659152063062673c6806b14551f44718a24`.
+- 400 commits ahead of main; 299 changed files; GitHub reports mergeable and clean; non-draft.
+- Review threads: 17/17 resolved. Actual approving reviews: 0.
+- Exact-head core suite: 498 passed, 8 subtests.
+- Exact-head full repository suite: 1,418 passed, 8 subtests.
+- Important coverage distinction: this research branch inherits the main-branch full-suite command `python -m pytest tests -v --no-cov`. It ran every test but did not produce a coverage measurement. The integrated #1640 branch is the one with the inclusive 57.57% coverage run.
+- Six-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed gate passed and explicitly kept merging disabled.
+- Evidence: [CI 42208696915](https://github.com/Barrot-Agent/B-Agent/actions/runs/42208696915), [dependency audit 42208698181](https://github.com/Barrot-Agent/B-Agent/actions/runs/42208698181), [fail-closed gate 42208696875](https://github.com/Barrot-Agent/B-Agent/actions/runs/42208696875).
+- CodeRabbit check was skipped on this head.
+- An intermediate head, `42e6dfab81c43632b3613dadd65768bc627022e6`, exposed one new test assertion error (dictionary membership was incorrectly used as a substring check). The assertion was corrected in `9b00e659...`; the resulting exact-head full suite passed 1,418 tests. Research values were not changed to satisfy the test.
+
+### Research-archive corrections and new work
+
+The following review findings were fixed on the existing #1643 branch; no new branch or PR was created:
+
+1. **Post-close market-source vintage:** the November 5 equity-close artifact no longer relies on a Reuters item published at 10:54 UTC, before the US regular-session close. Reuters is retained for pre-open context only. A timestamped AP syndication source and a post-close Herald Business report were added for closing values. The Herald source records 2026-11-05 21:45:58 UTC (2026-11-06 06:45:58 KST), notes AI translation assistance, and is secondary reporting rather than an exchange-native file. AP syndication is timestamped to the minute using the Yahoo Finance page's 16:22 ET display; the direct AP page does not expose a publication time.
+2. **Morpho spelling:** `morpo_market_snapshot_exact_time` was corrected to `morpho_market_snapshot_exact_time`, with regression coverage.
+3. **Historical correction contract:** the Evernorth correction overlay now explicitly permits a derived historical view only after verifying the archived source preimage's Git blob SHA. A mismatched current source and mismatched preimage fail closed. The original artifact remains immutable.
+
+New cross-source market artifact and tests:
+
+- `research/xrp_intelligence/20261106T1102Z-xrp-cross-source-market-window.json`
+- `tests/test_xrp_cross_source_market_window_20261106.py`
+
+The artifact records the rendered-response hash, source timestamp limitations, separate spot/derivatives instruments, ETF provider universes, competing hypotheses and disconfirming evidence. It is explicitly model-ineligible.
+
+### November 6 spot and derivatives observation
+
+The Kraken public XRP/USD ticker rendered during this research window reported:
+
+- Last: $1.19626.
+- Best bid / ask: $1.19624 / $1.19625.
+- Top-of-book spread: approximately 0.0836 bps.
+- 24-hour volume: 48.6154 million XRP.
+- 24-hour VWAP: $1.23952667.
+- 24-hour low / high: $1.17605 / $1.32050.
+- UTC-day open: $1.20567.
+- Last versus 24-hour VWAP: -3.49%; versus UTC-day open: -0.78%; above the 24-hour low: +1.72%.
+
+The rendered JSON text hash is `9ae7ffc7ad9548fc77a184a53a7749e1f46780c1b4b11aff4e2251f972b7c9c9` (317 bytes). This is a hash of the exact rendered JSON text, not byte-complete HTTP wire bytes. Neither provider event time nor exact retrieval time was exposed. Only best bid/ask were available; no multi-level or consolidated depth was measured. This observation is not eligible for point-in-time model features.
+
+Cross-source prices are not synchronized: Altcoinlog displayed $1.2156 at 05:10 UTC; TradRadar displayed a $1.1836 perpetual mark at 07:45 UTC; Kraken's rendered response occurred later in the research window but has no exact retrieval timestamp. They are not averaged.
+
+TradRadar's 07:45 UTC seven-exchange derivatives snapshot reported approximately $1.87B OI, down 8.85% in 24 hours; +0.0071% weighted funding per eight hours; at least $19.81M liquidations, including $19.32M long and $486,910 short; and a 3.99 long/short account ratio with 80% long accounts. The long-liquidation component is about 97.5% of the displayed lower-bound total. This is consistent with a leveraged-long unwind, but funding remained positive, account counts are not notional exposure, liquidation totals are incomplete lower bounds, and USD-notional OI can fall partly with price.
+
+### ETF-flow vintage and source-lineage corrections
+
+XRP Insights' downloadable dataset metadata was generated at 2026-11-06 09:54:25.370 UTC, with data_as_of November 4 and a November 5 provisional row. It covers 230 trading days and 1,590 per-fund rows across six US spot funds plus BITW.
+
+- Its settled November 2–4 holdings-change calculation is approximately -259,701 XRP; November 5 remains provisional.
+- Flows are computed from day-over-day issuer-reported holdings, not direct AP cash creation/redemption reports. Non-creation changes can be counted as flow.
+- BITW is a multi-asset index fund; index rebalancing and fee accruals can change its XRP sleeve.
+- GXRP daily flows are excluded because automated issuer-page reads were blocked from September 2–28; holdings froze and a catch-up landed September 28.
+- Reconstructed rows for March 23–27, March 31–April 29 and May 12, 2026 use third-party estimates and must be excluded from point-in-time model features.
+- The dataset is free to cite with attribution; commercial redistribution requires written permission.
+
+CryptoKeyhole's November 4 value is approximately -3,339 XRP across four funds; its November 5 row was partial (two of four). Grayscale's site presented a bot challenge; no circumvention was attempted. CryptoETF.today's November 5 zero covers only two of five reporting funds and is not a full-day zero. TheXRPInvestor tracker reports 12 products while its listed categories sum to 11 (six spot, four derivative, one index); its separate pages also show $1.45B and $1.48B AUM snapshots.
+
+These are different publishers and calculations over overlapping issuer-published holdings/share-activity inputs, not independent primary observations. The artifacts now group their shared underlying lineage and prohibit treating tracker outputs as independent confirmations. The longer-window Alpha Finance summary showing approximately $15.4M XRP ETF inflows over 30 days is a counterpoint, but its window, coverage and method differ from the settled November 2–4 holdings calculation; it is not combined with it.
+
+### Macro and event context
+
+- AP reported final November 6 declines of about 6% in both Japan's Nikkei 225 and South Korea's Kospi after the US technology selloff. Reuters' earlier report of a Kospi intraday fall greater than 8% refers to an earlier session point, not a conflicting final close. [AP](https://apnews.com/article/markets-japan-nikkei-oil-ai-bba6f0bf9035a6e6b1c4fef3e8230b89) [Reuters market context](https://www.reuters.com/world/china/global-markets-flows-graphic-2026-11-06/).
+- Reuters reported $38.63B of global equity-fund inflows for the week through November 4, the seventh consecutive weekly inflow; US equity funds +$14.81B, Asian equity funds +$8.34B, and global money-market funds +$172.71B. Technology-fund inflows fell to a three-week low. This is a rotation/risk-repricing context, not evidence of a broad capital exodus or an XRP-specific causal channel. [Reuters](https://www.reuters.com/world/china/global-markets-flows-graphic-2026-11-06/).
+- The October 2026 US Employment Situation release is scheduled for November 6 at 08:30 ET. At the start of this research window it was still upcoming; no survey expectation is substituted for the release. [BLS schedule](https://www.bls.gov/schedule/news_release/empsit.htm).
+
+### Exact-phrase and identity research
+
+- **ASK Coin:** the strongest exact-symbol candidate is Permission Coin (ASK). Permission's official documentation lists an OFT-20 contract on Base (`0xBB146326778227A8498b105a18f84E0987A684b4`) and one on Polygon (`0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff`), with LayerZero OFT and Stargate integration. No XRP Ledger, Ripple or XRP relationship was established in the primary documentation reviewed. [Permission contract documentation](https://docs.permission.ai/ask-token/contract-addresses).
+- **SBIC / ChatGPT:** the official Tokyo SBIC training page for June 12–13, 2025 describes an AI/machine-learning course that includes ChatGPT and Copilot. It is marked ended and restricted to SBIC portfolio companies. This is not SBI Holdings and does not identify the regional SBIC legal entities as one company. [Official SBIC course page](https://www.sbic.co.jp/training/20250612co/).
+- **Actual capital:** the existing SEC-based Evernorth reconciliation remains controlling. Cash XRP purchases, in-kind contributions, convertible notes, committed equity facilities and warrant proceeds remain separate. The reported approximately $80.7M Cantor-affiliate facility estimate is based on a historical share price and a right to sell shares; it is not cash already raised or XRP already purchased. Cash warrant proceeds likewise depend on actual cash exercises.
+- No additional Camilla/Kamilah Stevenson video was promoted to verified inventory in this run. Public-channel attribution remains separate from legal identity and external account ownership.
+
+### Integration topology and backlog
+
+Current branches are divergent from the same main base:
+
+- #1640: 439 commits ahead of main, 154 changed paths.
+- #1643: 400 commits ahead of main, 299 changed paths.
+- Their only changed-path overlap is `.github/workflows/dependency-audit.yml`, with identical blob content. #1643 has 298 unique changed paths. Do not merge #1643 directly after #1640; after #1640 is merged and verified, transfer the unique research content into one consolidated successor created directly on the resulting main.
+- #1642 is a draft with seven overlapping paths whose blobs differ from #1640; preserve and reconcile its unique changes.
+- #1605 is an exact duplicate of one market artifact in #1643; close only after the replacement is merged and verified on main.
+- #1645's single dependency workflow file is byte-identical to #1640. #1644 and #1647 each contain multi-workflow action updates (eight and six paths respectively). #1646, #1648 and #1649 change dependency manifests whose complete file blobs differ from #1640; reconcile line-level changes rather than calling them exact duplicates. #1650 remains unreviewed in this comparison.
+- Preserve unique/unreviewed structural-analysis, schema-safety, paper-trader safety, geometry, prediction, institutional, liquidity, collateral, payment-rail and security work, including #1317, #1318, #1320, #1269, #1614, #1611, #1615, #1612, #1608, #1597, #1571, #1568, #1583, #1581, #1556, #1554 and #1550. Older dependency candidates #1254/#1255 also remain open pending exact reconciliation. No unique work was bulk-closed.
+
+### Prediction and platform readiness
+
+- The #1640 integration branch contains the priority-1 XRP mission registry, deterministic dispatch, public read-only ingestion, receipt hashes/manifests, point-in-time SQLite feature store, chronological baselines and fail-closed forecast-readiness ledger. These capabilities are not active on main.
+- Raw artifact retention is 90 days; external WORM retention and independent timestamp anchoring are not established. The SQLite store/cache is not adversarially tamper-proof.
+- Historical walk-forward coverage remains narrow (hourly Binance XRP/USDT and Coinbase XRP/USD); synchronized ETF, exchange-wallet flow, collateral, custody, stablecoin and payment-rail histories are not yet part of a validated multi-source evaluator.
+- Probability calibration, drift stability and sufficient shadow outcomes are not demonstrated. Trusted evaluator keys are not configured. No directional forecast is authorized.
+- ChatGPT/GitHub repository access is verified for this session. Copilot and CodeRabbit activity is review-only, not a persistent authenticated data flow. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows remain unverified. Groq is not Grok.
+
+### Merge decision and next action
+
+Neither integration PR was merged. Both have zero actual approving reviews. Main is protected, but detailed branch-protection inspection is HTTP 403; the visible fallback ruleset is disabled. Pages settings remain inaccessible, and a prior main push triggered a Pages deployment. Authorization for another merge-triggered deployment is unresolved. No protection bypass was attempted.
+
+Next sequence:
+
+1. Obtain independent approvals and verify actual branch-protection requirements.
+2. Resolve authorization for the automatic Pages deployment side effect.
+3. Merge #1640 only when all required approvals, exact-head checks, full-suite coverage, dependency/security gates and external-action conditions are satisfied.
+4. Verify the merge commit, fetch main again, verify the merged files, inspect automatic workflow side effects and run main CI.
+5. Build one consolidated research successor directly on that resulting main from #1643's 298 unique paths, reconciling #1642's unique changes and the dependency/action candidates.
+6. Run the successor's exact-head full suite with coverage, dependency/security audit and fail-closed gate before considering merge.
+7. Expand historical multi-venue spot/depth/derivatives/ETF/capital-flow coverage, durable raw-source retention, event-time anchoring, calibrated walk-forward evaluation and shadow outcomes.
+
+No forecast, paper trade, funds transfer, deployment, secret rotation, Space restart or Kaggle submission occurred.
