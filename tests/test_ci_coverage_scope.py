@@ -14,8 +14,8 @@ def test_full_repository_suite_measures_all_barrot_agent_packages():
     assert "--cov=barrot_agent" in full_suite
     assert "--cov-config=" in full_suite
     assert "--cov-report=term-missing:skip-covered" in full_suite
-    assert "fail_under = 50" in full_suite
-    assert "--cov-fail-under=50" in full_suite
+    assert "fail_under = 53" in full_suite
+    assert "--cov-fail-under=53" in full_suite
     assert "--no-cov" not in full_suite
     for package in ("agi", "ingestion", "analysis", "monetization", "orchestration"):
         assert f"barrot_agent/{package}/" not in full_suite
@@ -32,7 +32,7 @@ def test_full_repository_suite_measures_all_barrot_agent_packages():
 def test_default_pyproject_coverage_config_includes_major_packages():
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert 'omit = ["*/__pycache__/*", "tests/*"]' in pyproject
-    assert "fail_under = 50" in pyproject
+    assert "fail_under = 53" in pyproject
     for package in ("agi", "ingestion", "analysis", "monetization", "orchestration", "rendering"):
         assert f'"barrot_agent/{package}/*"' not in pyproject
     assert '"barrot_agent/smart_agent.py"' not in pyproject
