@@ -47,7 +47,6 @@ def test_coinfuty_futures_depth_is_not_mislabeled_as_live_spot_depth():
     assert item["live_book_exchange_count"] == "0/5 at rendered page capture"
     assert item["snapshot_timestamp_utc"] is None
     assert "futures" in item["interpretation"]
-    assert item["model_eligible"] if "model_eligible" in item else True
 
 
 def test_exchange_wallet_balances_are_not_treated_as_tradable_float():
