@@ -1142,3 +1142,67 @@ def test_evernorth_eloc_correction_uses_share_limit_not_fixed_usd_cap() -> None:
     assert data["model_admission"]["eligible"] is False
     assert data["forecast"]["issued"] is False
     assert all(item["model_eligible"] is False for item in sources.values())
+
+
+EVERNORTH_ELOC_SOURCE_PRICE_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261106T043450Z-evernorth-eloc-source-and-reference-price-addendum.json"
+)
+
+
+def test_evernorth_eloc_source_type_and_reference_price_scenario_are_qualified() -> None:
+    data = json.loads(EVERNORTH_ELOC_SOURCE_PRICE_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_evernorth_eloc_source_and_reference_price_addendum"
+
+    sources = {item["id"]: item for item in data["source_registry"]}
+    sec = sources["sec_evernorth_20261030_s1_preliminary_prospectus"]
+    assert sec["source_type"] == "SEC Form S-1 registration statement; preliminary prospectus subject to completion"
+    assert sec["raw_source_sha256"] is None
+    assert sec["model_eligible"] is False
+
+    source_correction = data["source_and_claim_corrections"]["source_type_correction"]
+    assert source_correction["prior_artifact_source_type"] == "SEC Form 424B3"
+    assert source_correction["corrected_source_type"].startswith("SEC Form S-1")
+    assert source_correction["prior_artifacts_modified"] is False
+
+    terms = data["verified_eloc_contract_terms"]
+    assert terms["maximum_new_class_a_shares"] == 5218935
+    assert terms["issuer_has_obligation_to_sell"] is False
+    assert terms["purchase_price_percent_of_applicable_vwap"] == 97
+    assert terms["proceeds_received_as_of_prospectus_usd"] == 0
+    assert terms["fee_payment_status"] == "NOT_VERIFIED_AS_PAID"
+
+    scenario = data["illustrative_reference_price_scenario"]
+    assert scenario["reference_date"] == "2026-10-29"
+    assert scenario["reference_class_a_closing_price_usd"] == 14.71
+    assert scenario["nominal_gross_at_reference_close_usd"] == 76770533.85
+    assert scenario["illustrative_purchase_proceeds_at_97_percent_usd"] == 74467417.8345
+    assert scenario["illustrative_amount_after_fee_if_fee_paid_usd"] == 73945524.3345
+    assert scenario["status"] == "SCENARIO_ONLY_NOT_ACTUAL_PROCEEDS"
+    assert any("not net proceeds" in item.lower() for item in scenario["caveats"])
+
+    offering = data["offering_scope_reconciliation"]
+    assert offering["resale_registration"]["registered_class_a_shares"] == 73688162
+    assert offering["resale_registration"]["company_receives_proceeds_from_selling_securityholders"] is False
+    assert offering["sponsor_warrants"]["registered_warrants"] == 239653
+    assert offering["sponsor_warrants"]["proceeds_received_or_exercises_verified"] is False
+    assert offering["eloc_primary_sales"]["proceeds_received_as_of_prospectus_usd"] == 0
+
+    capital = data["capital_taxonomy"]
+    assert capital["closing_gross_cash_proceeds_usd"] == 272600000
+    assert capital["historical_cash_xrp_purchase"]["cash_used_usd"] == 214050000
+    assert capital["historical_cash_xrp_purchase"]["purchase_date"] == "2025-11-04"
+    assert capital["in_kind_xrp_contributions_units"] == 388910554
+    assert capital["convertible_notes"]["principal_usd"] == 30000000
+    assert capital["convertible_notes"]["xrp_purchases_funded_by_notes_disclosed"] is False
+    assert capital["company_facility_with_ripple"]["borrower"] == "The Company"
+    assert capital["company_facility_with_ripple"]["drawn_as_of_2026_10_07_usd"] == 9700000
+    assert capital["company_facility_with_ripple"]["repayment_status_in_prospectus"] == "NOT_CONFIRMED"
+    assert capital["eloc"]["proceeds_received_as_of_prospectus_usd"] == 0
+    assert capital["eloc_fee"]["payment_status"] == "NOT_VERIFIED_AS_PAID"
+
+    assert data["model_admission"]["eligible"] is False
+    assert data["forecast"]["issued"] is False
+    assert all(item["model_eligible"] is False for item in sources.values())
