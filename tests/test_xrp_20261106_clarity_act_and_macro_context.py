@@ -31,6 +31,10 @@ def test_january_3_lapse_claim_is_not_mislabeled_as_official_status():
     claim = data["regulatory_event"]["follow_up"]["january_3_lapse_claim"]
     assert claim["status"] == "secondary_legal_opinion_not_official_status"
     assert "do not themselves establish" in claim["description"]
+    assert claim["publisher"] == "24/7 Wall St"
+    assert claim["source_url"].startswith("https://247wallst.com/")
+    sources = {item["id"]: item for item in load_artifact()["source_registry"]}
+    assert sources["clarity_lapse_secondary_opinion"]["source_type"] == "secondary_legal_opinion"
 
 
 def test_zero_etf_flow_is_not_reclassified_as_outflow():
