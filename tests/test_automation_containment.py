@@ -22,6 +22,8 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/subagent-spawn.yml",
     ".github/workflows/subagent-matrix.yml",
     ".github/workflows/capability-1-market-analysis.yml",
+    ".github/workflows/capability-9-data-resolver.yml",
+    ".github/workflows/pingpong.yml",
     ".github/workflows/task-allocator.yml",
     ".github/workflows/ask-barrot.yml",
     ".github/workflows/barrot-agent.yml",
@@ -94,6 +96,12 @@ def test_public_brain_corpus_exporter_is_inert() -> None:
     assert "os.environ[" not in script
 
 
+ARTIFACT_ONLY_WORKFLOWS = (
+    ".github/workflows/capability-discovery.yml",
+    ".github/workflows/capability-10-design.yml",
+    ".github/workflows/data-value-triage.yml",
+)
+
 
 def test_coinbase_paper_trader_is_manual_exact_sha_and_artifact_only() -> None:
     workflow = (
@@ -147,3 +155,102 @@ def test_legacy_market_analysis_is_permanently_retired_even_with_opt_in(
     assert status["reason_code"] == "LEGACY_SIGNAL_HISTORY_ANALYSIS_RETIRED"
     assert status["trade_recommendations"] == []
     assert not list(tmp_path.glob("market_analysis_*.json"))
+
+
+
+def test_capability_workflows_are_manual_exact_sha_and_artifact_only() -> None:
+    for relative in ARTIFACT_ONLY_WORKFLOWS:
+        workflow = (REPO_ROOT / relative).read_text(encoding="utf-8")
+        lowered = workflow.lower()
+        assert "workflow_dispatch:" in lowered, relative
+        assert "permissions:\n  contents: read" in lowered, relative
+        assert "contents: write" not in lowered, relative
+        assert "actions: write" not in lowered, relative
+        assert "inputs.confirm == 'yes'" in lowered, relative
+        assert "inputs.expected_main_sha" in lowered, relative
+        assert "persist-credentials: false" in lowered, relative
+        assert "git ls-remote origin refs/heads/main" in lowered, relative
+        assert "git push" not in lowered, relative
+        assert "git commit" not in lowered, relative
+        assert "actions/upload-artifact@v7" in lowered, relative
+        assert "retention-days: 7" in lowered, relative
+        assert "public/authorized" in lowered, relative
+        assert "unverified" in lowered, relative
+
+
+def test_contradiction_resolver_preserves_conflicts_without_llm_adjudication(
+    tmp_path: Path,
+) -> None:
+    records = [
+        {
+            "id": "xrp_spot_midpoint",
+            "value": "1.20658",
+            "source_id": "kraken",
+            "source_url": "https://example.invalid/kraken",
+            "source_independence_group": "kraken_spot",
+            "evidence_receipt_id": "receipt-kraken",
+            "source_event_time_utc": "2026-11-06T00:00:00Z",
+        },
+        {
+            "id": "xrp_spot_midpoint",
+            "value": "1.20710",
+            "source_id": "coinbase",
+            "source_url": "https://example.invalid/coinbase",
+            "source_independence_group": "coinbase_spot",
+            "evidence_receipt_id": "receipt-coinbase",
+            "source_event_time_utc": "2026-11-06T00:00:02Z",
+        },
+    ]
+    env = os.environ.copy()
+    env["TEST_DATA"] = json.dumps(records)
+    env.pop("GROQ_API_KEY", None)
+    result = subprocess.run(
+        [sys.executable, str(REPO_ROOT / "scripts" / "data_contradiction_resolver.py")],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=10,
+    )
+    assert result.returncode == 0, result.stderr
+    output = next(tmp_path.glob("contradiction_review_*.json"))
+    report = json.loads(output.read_text(encoding="utf-8"))
+    conflict = report["conflicts"][0]
+    assert report["conflict_count"] == 1
+    assert conflict["resolution_status"] == "UNRESOLVED_PRIMARY_EVIDENCE_REQUIRED"
+    assert conflict["observations"] == records
+    assert conflict["minority_objections"] == records
+    assert conflict["winner"] is None
+    assert conflict["adjudication"] is None
+    assert report["model_eligible"] is False
+    assert report["forecast_status"] == "NOT_ISSUED"
+
+
+def test_contradiction_resolver_reports_provenance_gaps_without_dropping_records(
+    tmp_path: Path,
+) -> None:
+    records = [
+        {"id": "xrp_flow", "value": 10, "source_id": "source-a"},
+        {"value": 12, "source_id": "source-b"},
+    ]
+    env = os.environ.copy()
+    env["TEST_DATA"] = json.dumps(records)
+    env.pop("GROQ_API_KEY", None)
+    result = subprocess.run(
+        [sys.executable, str(REPO_ROOT / "scripts" / "data_contradiction_resolver.py")],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=10,
+    )
+    assert result.returncode == 0, result.stderr
+    report = json.loads(next(tmp_path.glob("contradiction_review_*.json")).read_text(encoding="utf-8"))
+    assert report["source_record_count"] == 2
+    assert report["provenance_gap_count"] == 2
+    assert report["unresolved_record_count"] == 1
+    assert report["unresolved_records"][0]["record"] == records[1]
+    assert report["provenance_gaps"][0]["record"] == records[0]
+    assert report["model_eligible"] is False
