@@ -32,7 +32,9 @@ def test_utc_day_open_is_not_mislabeled_as_rolling_24_hour_open():
     spot = load_artifact()["spot"]
     assert spot["utc_day_open_usd"] == 1.20567
     assert spot["last_vs_utc_day_open_pct"] < 0
-    assert "UTC day" in spot["depth_status"] or "UTC day" in load_artifact()["source_registry"][0]["url"] or "daily" in spot["depth_status"].lower()
+    assert "utc_day_open" in spot
+    assert "last_vs_utc_day_open_pct" in spot
+    assert "open_24h_usd" not in spot
 
 
 def test_derivatives_preserve_venue_coverage_and_lower_bound_liquidations():
