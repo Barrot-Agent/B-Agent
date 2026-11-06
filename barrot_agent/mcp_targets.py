@@ -84,6 +84,13 @@ CAPABILITY_TARGETS: List[CapabilityTarget] = [
         description="Optimise compute and budget allocation across workloads.",
         required_tool_categories=["resource_management", "optimisation"],
     ),
+    CapabilityTarget(
+        id="cap-009",
+        name="Repository architecture intelligence",
+        priority="high",
+        description="Build a current, evidence-linked model of repository structure, dependencies, execution flows, and change impact.",
+        required_tool_categories=["code_intelligence", "knowledge_graph", "version_control"],
+    ),
 ]
 
 
@@ -159,6 +166,15 @@ SUPPORTED_MCP_SERVERS: List[MCPServerSpec] = [
         tool_categories=["knowledge_graph", "fact_checking"],
         homepage="https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
         license="MIT",
+    ),
+    MCPServerSpec(
+        name="codebase-memory-mcp",
+        server_id="codebase-memory",
+        description="Local structural code intelligence and persistent repository knowledge graph.",
+        tool_categories=["code_intelligence", "knowledge_graph"],
+        homepage="https://github.com/DeusData/codebase-memory-mcp",
+        license="MIT",
+        requires_auth=False,
     ),
     MCPServerSpec(
         name="mcp-server-postgres",
