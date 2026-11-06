@@ -37,8 +37,8 @@ _UNSAFE_RECOVERY_PATTERNS = (
     re.compile(r"\brm\s+-rf?\b|\bremove-item\s+.*-recurse\b", re.IGNORECASE),
     re.compile(r"\bgit\s+push\s+--force(?:-with-lease)?\b|\bforce[- ]push\b", re.IGNORECASE),
     re.compile(
-        r"\bdiscard(?:\s+all)?\s+(?:existing\s+)?(?:user\s+)?"
-        r"(?:uncommitted|untracked|staged|local)\s+(?:work|changes|files)\b",
+        r"\bdiscard(?:\s+all)?\s+(?:(?:existing|user)\s+)*(?:uncommitted|untracked|staged|local)"
+        r"(?:\s+user)?\s+(?:work|changes|files)\b",
         re.IGNORECASE,
     ),
 )
@@ -407,7 +407,7 @@ depends_on (task ids, possibly empty), risk_level, rollback_plan (non-empty).
 Bundle rules:
 - At least one item in the constraints array must explicitly require human approval, e.g.
   "No consequential external action without explicit human approval." The word
-  "authorization" by itself is insufficient for this deterministic gate.
+  "authorization" alone is insufficient for this deterministic gate.
 - Decompose the objective into ordered, bounded tasks with explicit dependencies.
 - Ground file targets in repository evidence; mark unknown paths as discovery work, not facts.
 - Define tests that could fail; never treat model claims as proof.
