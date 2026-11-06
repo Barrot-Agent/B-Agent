@@ -27,7 +27,7 @@ def load_corrected_view() -> tuple[dict, dict]:
 def test_source_receipt_correction_is_exact_preimage_bound_and_append_only():
     raw = ARTIFACT.read_bytes()
     overlay = json.loads(CORRECTION.read_text(encoding="utf-8"))
-    git_blob_sha1 = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
+    git_blob_sha1 = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
     assert git_blob_sha1 == overlay["target_artifact_git_blob_sha1"]
     assert overlay["target_json_pointer"] == "/source_registry/4/sha256"
     assert overlay["preservation"]["source_artifact_modified"] is False
