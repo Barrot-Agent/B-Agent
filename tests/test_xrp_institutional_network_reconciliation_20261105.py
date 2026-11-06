@@ -2,10 +2,8 @@ import json
 from pathlib import Path
 
 
-ARTIFACT = Path(
-    "research/xrp_intelligence/"
-    "20261105T212200Z-institutional-network-reconciliation-q3-2026.json"
-)
+ROOT = Path(__file__).resolve().parents[1]
+ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261105T212200Z-institutional-network-reconciliation-q3-2026.json"
 
 
 def _load():

@@ -7,7 +7,8 @@ from pathlib import Path
 import pytest
 
 
-ARTIFACT = Path("research/xrp_intelligence/xrp-market-institutional-network-update-20261105.json")
+ROOT = Path(__file__).resolve().parents[1]
+ARTIFACT = ROOT / "research" / "xrp_intelligence" / "xrp-market-institutional-network-update-20261105.json"
 
 
 def load_artifact():
@@ -97,15 +98,9 @@ def test_source_ids_and_retrieval_uncertainty_are_explicit():
 def test_etf_timestamp_correction_is_exact_blob_bound_and_preserves_unbound_ancestor():
     import hashlib
 
-    source_path = Path(
-        "research/xrp_intelligence/20261105T190803Z-xrp-late-session-spot-derivatives-etf-macro-snapshot.json"
-    )
-    overlay_path = Path(
-        "research/xrp_intelligence/20261105-xrp-late-session-etf-timestamp-correction-preimage-bound.json"
-    )
-    earlier = Path(
-        "research/xrp_intelligence/20261105T191449Z-xrp-late-session-etf-date-only-timestamp-correction.json"
-    )
+    source_path = ROOT / "research" / "xrp_intelligence" / "20261105T190803Z-xrp-late-session-spot-derivatives-etf-macro-snapshot.json"
+    overlay_path = ROOT / "research" / "xrp_intelligence" / "20261105-xrp-late-session-etf-timestamp-correction-preimage-bound.json"
+    earlier = ROOT / "research" / "xrp_intelligence" / "20261105T191449Z-xrp-late-session-etf-date-only-timestamp-correction.json"
     source_bytes = source_path.read_bytes()
     overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
     git_blob = hashlib.sha1(
@@ -179,3 +174,22 @@ def test_blackrock_mou_and_open_standard_are_exploratory_not_production_or_xrp()
     assert "Coinbase is named" in open_standard["coinbase_status"]
     assert "not USDC or RLUSD" in open_standard["ousd_limit"]
     assert "does not mean a new service" in open_standard["ousd_limit"]
+
+
+def test_sbi_circle_source_records_share_one_primary_document_independence_group():
+    data = load_artifact()
+    source_ids = {"SBI_CIRCLE_RIPPLE_EQUITY_20250609", "SBI_CIRCLE_USDC_ALLIANCE_JV_20250609"}
+    records = [x for x in data["source_registry"] if x["source_id"] in source_ids]
+    assert len(records) == 2
+    assert records[0]["url"] == records[1]["url"]
+    assert records[0]["independence_group"] == records[1]["independence_group"]
+    assert records[1]["same_document_as"] == "SBI_CIRCLE_RIPPLE_EQUITY_20250609"
+
+
+def test_coinbase_open_standard_is_one_qualified_founder_edge():
+    edges = [x for x in load_artifact()["institutional_network"]["relationship_edges"] if x["from"] == "Coinbase" and x["to"] == "Open Standard"]
+    assert len(edges) == 1
+    assert edges[0]["relation"] == "founding partner"
+    assert "OUSD" in edges[0]["asset"]
+    assert "JPYSC/OpenUSD" in edges[0]["asset"]
+    assert "bilateral SBI-Coinbase contract" in edges[0]["not_implied"]

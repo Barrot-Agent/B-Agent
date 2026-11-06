@@ -45,7 +45,9 @@ def test_average_cash_purchase_cost_is_reproducible_and_historical():
     expected = capital["cash_used_to_purchase_xrp_usd"] / capital["xrp_purchased_with_cash"]
     assert abs(expected - capital["derived_average_cash_purchase_cost_per_xrp_usd"]) < 1e-12
     assert capital["closing_xrp_price_usd"] == 1.43069
-    assert capital["derived_cash_purchase_cost_vs_closing_price_percent"] < -40
+    closing_vs_cost = (capital["closing_xrp_price_usd"] / capital["derived_average_cash_purchase_cost_per_xrp_usd"] - 1) * 100
+    assert math.isclose(capital["derived_closing_price_vs_cash_purchase_cost_percent"], closing_vs_cost, rel_tol=0, abs_tol=1e-12)
+    assert capital["derived_closing_price_vs_cash_purchase_cost_percent"] < -40
 
 
 def test_debt_and_equity_facilities_are_not_reported_as_actual_xrp_purchases():

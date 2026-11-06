@@ -93,3 +93,18 @@ def test_artifact_is_not_model_eligible_and_no_forecast_is_issued():
     assert item["capture"]["model_cutoff_utc"] is None
     assert len(item["competing_hypotheses"]) >= 4
     assert len(item["model_ineligibility_reasons"]) >= 5
+
+
+def test_live_spot_depth_derivatives_snapshot_is_quarantined_and_time_scoped():
+    snapshot_path = (
+        Path(__file__).resolve().parents[1]
+        / "research"
+        / "xrp_intelligence"
+        / "20261106T081536Z-xrp-live-spot-depth-derivatives-event-snapshot.json"
+    )
+    item = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    assert item["data_cutoff_utc"] == "2026-11-06T08:15:36Z"
+    assert item["spot_market"]["kraken_xrpusd"]["provider_event_time_utc"] is None
+    assert item["order_book_depth"]["snapshot_time_utc"] < item["data_cutoff_utc"]
+    assert item["model_eligibility"]["eligible"] is False
+    assert item["forecast_status"] == "NOT_ISSUED"

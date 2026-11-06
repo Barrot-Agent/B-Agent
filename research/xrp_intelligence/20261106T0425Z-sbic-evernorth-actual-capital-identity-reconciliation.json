@@ -332,8 +332,7 @@
     "xrp_purchased_with_cash": 84365876,
     "restricted_cash_remaining_from_purchase_funding_usd": 49995,
     "derived_average_cash_purchase_cost_per_xrp_usd": 2.536570591645371,
-    "derived_cash_purchase_cost_vs_closing_price_percent": -43.597469563345804,
-    "derived_comparisons_note": "The average purchase cost is a simple aggregate ratio of disclosed cash used and XRP purchased; it is not a lot-level execution VWAP. The closing-price comparison is historical and not a current valuation.",
+    "derived_comparisons_note": "The average purchase cost is a simple aggregate ratio of disclosed cash used and XRP purchased; it is not a lot-level execution VWAP. The closing-price comparison is historical and not a current valuation. The signed closing-price comparison is (closing price / average cash purchase cost - 1) * 100; a negative value means the closing price was below the historical average cash purchase cost.",
     "in_kind_component_detail": {
       "Ripple_contribution_xrp": 126791458,
       "RippleWorks_to_Arrington_Sponsor_xrp": 211319096.061435,
@@ -423,7 +422,8 @@
       "defined_metric_in_sec_filing": false,
       "interpretation": "The filing uses separate categories: gross cash proceeds at closing, private-placement cash, cash spent acquiring XRP, XRP contributed in kind, trust-account cash, convertible debt, related-party borrowing, contingent equity-facility proceeds, resale registrations and contingent warrant exercise proceeds. There is no single SEC-defined 'actual capital' figure.",
       "safest_cash_summary": "$272.6M gross cash proceeds at closing before transaction expenses, comprising $224.6M private-placement investments and $48.0M released SPAC trust funds. This is separate from 388.91M XRP contributed in kind."
-    }
+    },
+    "derived_closing_price_vs_cash_purchase_cost_percent": -43.597469563345804
   },
   "institutional_relationships": [
     {

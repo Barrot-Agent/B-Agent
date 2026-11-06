@@ -159,11 +159,12 @@
       "source_id": "SBI_CIRCLE_USDC_ALLIANCE_JV_20250609",
       "publisher": "SBI Holdings / Circle",
       "type": "primary corporate disclosure",
-      "independence_group": "SBI and Circle joint corporate relationship",
+      "independence_group": "SBI corporate disclosure",
       "url": "https://corp.sbishinseibank.co.jp/ja/news/news/20250609a.html",
       "published_date": "2025-06-09",
       "retrieval_time_utc": null,
-      "capture_status": "rendered official disclosure excerpt"
+      "capture_status": "rendered official disclosure excerpt",
+      "same_document_as": "SBI_CIRCLE_RIPPLE_EQUITY_20250609"
     },
     {
       "source_id": "SBI_JPYSC_LENDING_BALANCE_20261102",
@@ -449,12 +450,6 @@
         "relation": "consortium participation"
       },
       {
-        "from": "Coinbase",
-        "to": "Open Standard",
-        "relation": "named consortium participant",
-        "not_implied": "direct SBI-Coinbase contract"
-      },
-      {
         "from": "SBI VC Trade",
         "to": "Circle",
         "relation": "USDC public distribution in Japan; Circle SBI Japan JV agreement",
@@ -479,8 +474,9 @@
         "from": "Coinbase",
         "to": "Open Standard",
         "relation": "founding partner",
-        "asset": "OUSD ecosystem",
-        "not_implied": "bilateral SBI-Coinbase contract"
+        "asset": "OUSD ecosystem; JPYSC/OpenUSD interoperability exploration",
+        "not_implied": "direct SBI-Coinbase contract, production integration or XRP settlement",
+        "context": "Coinbase is named as an Open Standard founding partner. SBI Holdings and Startale are participants that joined; their JPYSC-OpenUSD proof of concept is exploratory."
       }
     ],
     "circle_ripple_limit": "Evidence establishes separate SBI-Circle and SBI-Ripple equity/distribution relationships and BNY service relationships. It does not establish a direct Circle-Ripple partnership or XRP collateral arrangement."
