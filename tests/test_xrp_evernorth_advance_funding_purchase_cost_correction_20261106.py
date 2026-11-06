@@ -25,7 +25,7 @@ def _load_relative(path: str) -> tuple[dict, str]:
 
 def _git_blob_sha(content: str) -> str:
     data = content.encode("utf-8")
-    header = f"blob {len(data)}\\0".encode("ascii")
+    header = f"blob {len(data)}\0".encode("ascii")
     return hashlib.sha1(header + data).hexdigest()
 
 
