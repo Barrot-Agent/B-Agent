@@ -178,6 +178,6 @@ def test_coinbase_institutional_collateral_is_not_xrp_specific():
 
 def test_circle_payment_metrics_preserve_annualized_and_pending_status():
     item = relationships()["circle_payment_rails_and_strategy"]
-    assert "annualized" in item["limits"][0].lower()
+    assert "annualized" in item["limits"][0].casefold().lower()
     assert "pending regulatory approval" in item["limits"][1]
     assert "not XRPL" in item["limits"][2]
