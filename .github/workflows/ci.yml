@@ -72,6 +72,7 @@ jobs:
             tests/test_source_registry.py \
             tests/test_data_registry.py \
             tests/test_repository_causality.py \
+            tests/test_codebase_memory.py \
             tests/test_bundle_delivery.py \
             tests/test_verified_bundle_delivery.py \
             tests/test_termux_self_drop.py \
