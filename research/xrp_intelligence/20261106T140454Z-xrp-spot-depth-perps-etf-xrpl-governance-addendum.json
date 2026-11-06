@@ -2,13 +2,13 @@
   "schema_version": "barrot.xrp-research.v1",
   "artifact_id": "xrp_spot_depth_perps_etf_xrpl_governance_addendum_20261106T140454Z",
   "artifact_type": "timestamped_spot_depth_derivatives_etf_protocol_governance_reconciliation",
-  "recorded_at_utc": "2026-11-06T14:04:54Z",
+  "recorded_at_utc": "2026-11-06T14:15:40Z",
   "mission_priority": 1,
   "mission": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
   "capture_contract": {
-    "retrieval_time_upper_bound_utc": "2026-11-06T14:04:54Z",
+    "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z",
     "common_point_in_time_cutoff_utc": null,
     "exact_per_request_retrieval_times_available": false,
     "original_http_wire_bytes_captured": false,
@@ -26,7 +26,8 @@
     "xrpl_official_protocol_documentation",
     "xrplwin_ledger_observer",
     "us_senate_official",
-    "bls_official"
+    "bls_official",
+    "sec_official_primary_sources"
   ],
   "source_registry": [
     {
@@ -191,6 +192,109 @@
       "excerpt": "H.R. 3633 (Rep. Hill): To provide for a system of regulation of the offer and sale of digital commodities by the Securities and Exchange Commission and the Commodity Futures Trading Commission. Cloture on the motion to proceed to the measure not invoked in Senate by Yea-Nay Vote. 49 - 50. Record Vote Number: 234. Motion by Senator Tillis to reconsider the vote by which cloture on the motion to proceed to the measure was not invoked (Record Vote No. 234) entered in Senate.",
       "event_date": "2026-09-15",
       "record_vote_number": 234
+    },
+    {
+      "source_id": "KRAKEN_XRPUSD_TICKER_20261106T140922Z",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_ticker_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken_exchange",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "e4d0539cac6ca53b8cab3654449f1602afa84731e0a73b892448f5cd92c4a2bc",
+        "scope": "Exact normalized excerpt stored in this artifact; not byte-complete original HTTP response or response headers."
+      },
+      "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.18511000\",\"25\",\"25.000\"],\"b\":[\"1.18510000\",\"327\",\"327.000\"],\"c\":[\"1.18515000\",\"0.00003873\"],\"v\":[\"14554053.22830432\",\"44920741.94353157\"],\"p\":[\"1.19824529\",\"1.22640313\"],\"t\":[18336,46001],\"l\":[\"1.17605000\",\"1.17605000\"],\"h\":[\"1.22190000\",\"1.30722000\"],\"o\":\"1.20567000\"}}}",
+      "provider_event_timestamp_utc": null,
+      "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z"
+    },
+    {
+      "source_id": "FUELMAPS_XRP_SPOT_DEPTH_20261106T1400Z",
+      "publisher": "Fuelmaps",
+      "source_type": "multi_venue_spot_orderbook_depth_snapshot",
+      "url": "https://fuelmaps.io/order-book/",
+      "independence_group": "fuelmaps_six_venue_spot_aggregator",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "51545c4f02ffa3d2d9e19a5716544d0c958d145b9021c9fc6b6a2542cf4b030c",
+        "scope": "Exact normalized excerpt stored in this artifact; not byte-complete original HTTP response or response headers."
+      },
+      "excerpt": "Hourly snapshot as of 14:00 UTC, 6 Nov 2026: XRP mid $1.1852 across 6 of 6 venues.\n±0.5% | $9.5M bids | $5.4M asks | 63.6% bid share | 6 of 6\n±1% | $13.9M bids | $8.3M asks | 62.6% bid share | 6 of 6\n±2% | $19.6M bids | $9.9M asks | 66.5% bid share | 6 of 6\n±5% | $24.5M bids | $11.0M asks | 69.1% bid share | 6 of 6\n±10% | $32.7M bids | $12.9M asks | 71.6% bid share | 5 of 6\nlargest resting bids: $1.150/$2.4M; $1.100/$2.1M; $1.120/$2.0M; $1.183/$2.0M; $1.182/$1.9M\nSix spot venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini; Binance and Bitget are not included.\nHourly updates average one-minute book snapshots. Resting orders can be cancelled; hidden/iceberg orders are not shown.",
+      "snapshot_time_utc": "2026-11-06T14:00:00Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z",
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "excluded_venues": [
+        "Binance",
+        "Bitget"
+      ]
+    },
+    {
+      "source_id": "SEC_CFTC_INTERPRETIVE_RELEASE_20260317",
+      "publisher": "SEC and CFTC",
+      "source_type": "official_joint_interpretive_release",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "independence_group": "sec_official_primary_sources",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "dd2ea258be6ebfd9df97cb3db81f32bf7a9048aa73a59e7db59226817b1944af",
+        "scope": "Exact normalized excerpt stored in this artifact; not byte-complete original HTTP response or response headers."
+      },
+      "excerpt": "SEC/CFTC Release Nos. 33-11412 and 34-105020; File S7-2026-09; effective March 23, 2026.\nSection III.A lists XRP (XRP) among examples of digital commodities.\nThe release states digital commodities are not themselves securities, but a non-security crypto asset can be offered or sold subject to an investment contract.\nThe release says it does not supersede or replace the Howey test; the SEC characterizes it as an interpretation of its views and the CFTC provides related guidance.",
+      "effective_date": "2026-03-23",
+      "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z"
+    },
+    {
+      "source_id": "SEC_CORPFIN_FAQ_UPDATED_20261102",
+      "publisher": "SEC Division of Corporation Finance",
+      "source_type": "official_staff_faq_nonbinding",
+      "url": "https://www.sec.gov/about/divisions-offices/division-corporation-finance/faqs-crypto-assets",
+      "independence_group": "sec_official_primary_sources",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "26d96b236669e3a54070f07e6eeee2f9a1e03e3d9db830c13f4a546e0cd0cac5",
+        "scope": "Exact normalized excerpt stored in this artifact; not byte-complete original HTTP response or response headers."
+      },
+      "excerpt": "SEC Division of Corporation Finance FAQ updated Nov 2, 2026.\nThe FAQ answers represent staff views, are not a rule, regulation or Commission statement, have no legal force or effect, and do not alter applicable law.\nQ1.4: Whether broad-based governance participants are a group is a facts-and-circumstances determination; participants generally are not a group if unaffiliated and without an agreement, arrangement or understanding to act in concert.\nQ1.5: A central party may control participation at protocol, validator or user level, including unilateral power to grant or limit access, change voting processes, control validators, modify rules-based code, reverse transactions or revoke access.\nQ2.6: A secondary-market trading platform is a promoter only if it meets the Securities Act Rule 405 promoter definition.",
+      "updated_date": "2026-11-02",
+      "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z"
+    },
+    {
+      "source_id": "SEC_REGULATION_CRYPTO_ASSETS_PROPOSAL_S7_2026_27",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "official_proposed_rule",
+      "url": "https://www.sec.gov/rules-regulations/2026/08/s7-2026-27",
+      "independence_group": "sec_official_primary_sources",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "d2d445d059e23eaa6efae67093d2e17f0685cf316d36ca089734a8de9ab7fdda",
+        "scope": "Exact normalized excerpt stored in this artifact; not byte-complete original HTTP response or response headers."
+      },
+      "excerpt": "SEC File S7-2026-27; Release Nos. 33-11434 and 34-106150; issue date Aug 18, 2026; Federal Register publication Aug 21, 2026.\nPublic comments due Oct 20, 2026; page still labels the measure Proposed Rule.\nProposal includes exemptions for offerings up to $5 million over four years and $75 million per 12 months, plus a conditional safe harbor from the term investment contract.\nThe proposal is not an effective final rule; no final action was identified in the SEC rulemaking activity index reviewed on Nov 6, 2026.",
+      "comments_due": "2026-10-20",
+      "status": "PROPOSED",
+      "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z"
+    },
+    {
+      "source_id": "SEC_CRYPTO_CUSTODY_PROPOSAL_S7_2026_35",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "official_proposed_custody_rule",
+      "url": "https://www.sec.gov/rules-regulations/2026/10/s7-2026-35",
+      "independence_group": "sec_official_primary_sources",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "5b25df9516c0c0cf749260e4f04187fc6ab01ed699374ce6c2a067bf087119c3",
+        "scope": "Exact normalized excerpt stored in this artifact; not byte-complete original HTTP response or response headers."
+      },
+      "comments_due": "2026-12-07",
+      "status": "PROPOSED",
+      "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z"
     }
   ],
   "spot_market": {
@@ -469,7 +573,69 @@
       "not_voting": 1
     },
     "result": "Cloture not invoked; motion to reconsider entered by Senator Tillis.",
-    "status_limit": "This was not a final passage vote and does not establish permanent defeat or enactment. No later H.R. 3633 vote was identified in the official sources reviewed as of this artifact's capture; that is not proof that no later action exists."
+    "status_limit": "This was not a final passage vote and does not establish permanent defeat or enactment. No later H.R. 3633 vote was identified in the official sources reviewed as of this artifact's capture; that is not proof that no later action exists.",
+    "sec_cftc_interpretation": {
+      "release_numbers": [
+        "33-11412",
+        "34-105020"
+      ],
+      "file_number": "S7-2026-09",
+      "issued_date": "2026-03-17",
+      "effective_date": "2026-03-23",
+      "xrp_treatment": "XRP is expressly listed as an example of a digital commodity under the SEC's current understanding of its characteristics, terms and functions as of the release date.",
+      "legal_scope": "The release says a digital commodity itself is not a security; a non-security crypto asset may nevertheless be offered or sold subject to an investment contract.",
+      "howey_caveat": "The release expressly says it does not supersede or replace the Howey test.",
+      "agency_weight": "SEC Commission interpretation with related CFTC guidance; not a statute. The release says the Commission may refine, revise or expand its interpretation after public feedback."
+    },
+    "sec_staff_faq": {
+      "updated_date": "2026-11-02",
+      "status": "STAFF_VIEWS_NONBINDING",
+      "legal_weight": "The FAQ states it represents Division of Corporation Finance staff views, is not a Commission rule/regulation/statement, has no legal force or effect, and does not alter applicable law.",
+      "governance_analysis": "Whether broad-based governance participants constitute a group is facts-and-circumstances; staff generally would not treat unaffiliated participants with no agreement, arrangement or understanding to act in concert as a group.",
+      "central_party_indicators": [
+        "unilateral ability to grant or limit protocol, validator or user access",
+        "unilateral ability to change voting processes",
+        "control over validator participation",
+        "ability to modify rules-based code",
+        "ability to reverse transactions or revoke access"
+      ],
+      "exchange_promoter_scope": "A secondary-market trading platform is a promoter only if it meets the Securities Act Rule 405 promoter definition.",
+      "xrpl_application": "This creates an evidence checklist for validator affiliation, delegation, coordination, admission, governance and unilateral control; it does not itself determine XRPL decentralization or XRP legal status."
+    },
+    "regulation_crypto_assets_proposal": {
+      "file_number": "S7-2026-27",
+      "release_numbers": [
+        "33-11434",
+        "34-106150"
+      ],
+      "issue_date": "2026-08-18",
+      "published_date": "2026-08-21",
+      "comments_due": "2026-10-20",
+      "status": "PROPOSED",
+      "provisions": [
+        "offering exemption up to $5 million over four years",
+        "offering exemption up to $75 million per 12-month period",
+        "conditional safe harbor from the term investment contract"
+      ],
+      "status_note": "SEC page continues to label the measure Proposed; no final action was identified in the SEC rulemaking activity index reviewed on Nov 6, 2026."
+    },
+    "crypto_custody_proposal": {
+      "file_number": "S7-2026-35",
+      "release_numbers": [
+        "IA-7023",
+        "IC-36353"
+      ],
+      "issue_date": "2026-10-01",
+      "published_date": "2026-10-06",
+      "comments_due": "2026-12-07",
+      "status": "PROPOSED",
+      "provisions": [
+        "conditional adviser and regulated-fund self-custody pathway",
+        "conditional use of state-chartered trust companies as custodians",
+        "modernized custody, reporting and recordkeeping requirements"
+      ],
+      "status_note": "Proposal only; not a final custody rule and not an approval of any named custodian."
+    }
   },
   "macro_context_reference": {
     "canonical_artifact": "research/xrp_intelligence/20261106T134313Z-bls-october-employment-and-xrp-post-release-market-reconciliation.json",
@@ -508,6 +674,26 @@
       "topic": "XRPL amendment threshold",
       "observation": "Signed leaf displays threshold 28; live page states strictly more than 80% of 35 requires 29.",
       "resolution": "Use 29 as the operational pass threshold; preserve both source displays."
+    },
+    {
+      "topic": "Kraken 13:57 and 14:09 ticker vintages",
+      "observation": "The earlier last trade was below the displayed bid; the later last trade was slightly above the displayed ask.",
+      "resolution": "Provider event times/sequence IDs are absent; preserve both response vintages and do not compute an inter-snapshot return or executable spread."
+    },
+    {
+      "topic": "Fuelmaps 13:00 versus 14:00 depth",
+      "observation": "Near-band bid share rose, while bid share in the ±2%, ±5% and ±10% bands softened; the mid changed only -0.1264%.",
+      "resolution": "Two hourly averages with venue coverage caveats; not a continuous order-flow signal."
+    },
+    {
+      "topic": "SEC digital commodity classification and legal transactions",
+      "observation": "The SEC/CFTC interpretation lists XRP as a digital commodity, while the same release says a non-security crypto asset can still be offered or sold subject to an investment contract.",
+      "resolution": "Separate asset classification from transaction/scheme analysis; preserve Howey and facts-and-circumstances caveats."
+    },
+    {
+      "topic": "SEC staff governance FAQ",
+      "observation": "The Nov 2 FAQ offers a facts-and-circumstances framework for broad-based governance and central-party control.",
+      "resolution": "Staff views only, no legal force; require independent XRPL validator affiliation/control evidence before applying."
     }
   ],
   "competing_hypotheses": [
@@ -626,6 +812,151 @@
     "Obtain direct issuer/AP share-creation-redemption records rather than relying only on holdings deltas.",
     "Backfill timestamped exchange flows, funding, OI, liquidations and XRPL ledger features into the point-in-time store.",
     "Run chronological walk-forward tests against naive, momentum, mean-reversion and volatility baselines; calibrate and monitor drift before any directional output.",
-    "Recheck XRPL amendment votes from a ledger-derived source and preserve the signed daily leaf separately from live roll calls."
-  ]
+    "Recheck XRPL amendment votes from a ledger-derived source and preserve the signed daily leaf separately from live roll calls.",
+    "Map XRPL validator operator identities, affiliations, delegated voting, software-control and access powers against the SEC staff FAQ's central-party indicators; do not infer decentralization from validator count alone.",
+    "Track S7-2026-27 and S7-2026-35 from proposed status through final action; do not treat either as effective law or a present custody approval."
+  ],
+  "spot_market_latest": {
+    "venue": "Kraken",
+    "instrument": "XRP/USD",
+    "retrieval_time_upper_bound_utc": "2026-11-06T14:15:40Z",
+    "provider_event_timestamp_utc": null,
+    "last_trade_usd": 1.18515,
+    "best_bid_usd": 1.1851,
+    "best_ask_usd": 1.18511,
+    "spread_bps": 0.0843807,
+    "rolling_24h_volume_xrp": 44920741.94353157,
+    "rolling_24h_vwap_usd": 1.22640313,
+    "rolling_24h_low_usd": 1.17605,
+    "rolling_24h_high_usd": 1.30722,
+    "utc_day_open_usd": 1.20567,
+    "last_vs_vwap_pct": -3.36375,
+    "last_vs_utc_day_open_pct": -1.701958,
+    "last_above_low_pct": 0.773777,
+    "last_above_best_ask_pct": 0.003375,
+    "limitations": [
+      "Single venue; no provider event timestamp or sequence identifier.",
+      "Last trade is slightly above the displayed ask; the fields are not proven to share one event time.",
+      "The earlier rendered ticker had a last trade below the displayed bid; retain both observations as separate asynchronous vintages, not a return series.",
+      "Fuelmaps includes Kraken, so its aggregate is not independent confirmation of Kraken's quote."
+    ]
+  },
+  "order_book_depth_latest": {
+    "provider": "Fuelmaps",
+    "snapshot_time_utc": "2026-11-06T14:00:00Z",
+    "mid_price_usd": 1.1852,
+    "venue_coverage": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "excluded_venues": [
+      "Binance",
+      "Bitget"
+    ],
+    "levels": [
+      {
+        "band": "±0.5%",
+        "bid_depth_usd": 9500000,
+        "ask_depth_usd": 5400000,
+        "bid_share_pct": 63.6,
+        "venues_reporting": 6
+      },
+      {
+        "band": "±1%",
+        "bid_depth_usd": 13900000,
+        "ask_depth_usd": 8300000,
+        "bid_share_pct": 62.6,
+        "venues_reporting": 6
+      },
+      {
+        "band": "±2%",
+        "bid_depth_usd": 19600000,
+        "ask_depth_usd": 9900000,
+        "bid_share_pct": 66.5,
+        "venues_reporting": 6
+      },
+      {
+        "band": "±5%",
+        "bid_depth_usd": 24500000,
+        "ask_depth_usd": 11000000,
+        "bid_share_pct": 69.1,
+        "venues_reporting": 6
+      },
+      {
+        "band": "±10%",
+        "bid_depth_usd": 32700000,
+        "ask_depth_usd": 12900000,
+        "bid_share_pct": 71.6,
+        "venues_reporting": 5
+      }
+    ],
+    "largest_resting_bid_levels_usd": [
+      {
+        "price_usd": 1.15,
+        "size_usd": 2400000
+      },
+      {
+        "price_usd": 1.1,
+        "size_usd": 2100000
+      },
+      {
+        "price_usd": 1.12,
+        "size_usd": 2000000
+      },
+      {
+        "price_usd": 1.183,
+        "size_usd": 2000000
+      },
+      {
+        "price_usd": 1.182,
+        "size_usd": 1900000
+      }
+    ],
+    "limitations": [
+      "Six spot venues only; Binance and Bitget are excluded.",
+      "The ±10% band reports five of six venues.",
+      "Hourly columns average one-minute snapshots; resting orders can be cancelled; hidden/iceberg orders are not shown.",
+      "Full-depth and near-price coverage differ by venue; this is not executable slippage or futures depth."
+    ]
+  },
+  "order_book_snapshot_comparison_13_to_14_utc": {
+    "mid_change_pct": -0.126401,
+    "bands": [
+      {
+        "band": "±0.5%",
+        "bid_depth_change_usd": 1600000,
+        "ask_depth_change_usd": 200000,
+        "bid_share_change_pp": 3.3
+      },
+      {
+        "band": "±1%",
+        "bid_depth_change_usd": 1800000,
+        "ask_depth_change_usd": 700000,
+        "bid_share_change_pp": 1.2
+      },
+      {
+        "band": "±2%",
+        "bid_depth_change_usd": 2900000,
+        "ask_depth_change_usd": 1700000,
+        "bid_share_change_pp": -0.7
+      },
+      {
+        "band": "±5%",
+        "bid_depth_change_usd": -400000,
+        "ask_depth_change_usd": 1300000,
+        "bid_share_change_pp": -2.8
+      },
+      {
+        "band": "±10%",
+        "bid_depth_change_usd": 1100000,
+        "ask_depth_change_usd": 1200000,
+        "bid_share_change_pp": -1.4
+      }
+    ],
+    "interpretation": "Near-band bid depth increased while the mid edged lower; wider-band bid-share skew softened. These are two hourly aggregate snapshots, not a continuous order-flow series or evidence of support."
+  }
 }

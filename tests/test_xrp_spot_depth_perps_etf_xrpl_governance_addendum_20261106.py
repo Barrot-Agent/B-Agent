@@ -15,7 +15,7 @@ def load_artifact():
 
 def test_rendered_source_excerpt_hashes_are_reproducible_and_scoped():
     data = load_artifact()
-    assert len(data["source_registry"]) == 10
+    assert len(data["source_registry"]) == 16
     for source in data["source_registry"]:
         receipt = source["receipt"]
         assert receipt["algorithm"] == "SHA-256"
@@ -106,3 +106,54 @@ def test_hypotheses_retain_counterevidence_and_no_forecast_or_trade_is_created()
     assert data["safety"]["paper_trade_executed"] is False
     assert data["safety"]["real_money_action"] is False
     assert data["model_eligibility"]["eligible"] is False
+
+
+def test_latest_kraken_snapshot_is_separate_and_quote_fields_are_not_synchronized():
+    data = load_artifact()["spot_market_latest"]
+    expected = (data["best_ask_usd"] - data["best_bid_usd"]) / ((data["best_ask_usd"] + data["best_bid_usd"]) / 2) * 10000
+    assert math.isclose(data["spread_bps"], expected, rel_tol=0, abs_tol=1e-6)
+    assert data["provider_event_timestamp_utc"] is None
+    assert data["last_trade_usd"] > data["best_ask_usd"]
+    assert any("not proven" in item for item in data["limitations"])
+
+
+def test_fuelmaps_latest_snapshot_preserves_hourly_depth_change_without_causality():
+    data = load_artifact()
+    latest = data["order_book_depth_latest"]
+    assert latest["snapshot_time_utc"] == "2026-11-06T14:00:00Z"
+    assert "Binance" in latest["excluded_venues"] and "Bitget" in latest["excluded_venues"]
+    for row in latest["levels"]:
+        calculated = row["bid_depth_usd"] / (row["bid_depth_usd"] + row["ask_depth_usd"]) * 100
+        assert abs(calculated - row["bid_share_pct"]) < 0.15
+    comparison = data["order_book_snapshot_comparison_13_to_14_utc"]
+    assert comparison["mid_change_pct"] < 0
+    assert comparison["bands"][0]["bid_share_change_pp"] > 0
+    assert comparison["bands"][3]["bid_share_change_pp"] < 0
+    assert "not a continuous order-flow series" in comparison["interpretation"]
+
+
+def test_sec_xrp_digital_commodity_interpretation_keeps_howey_transaction_caveat():
+    data = load_artifact()["regulatory_context"]["sec_cftc_interpretation"]
+    assert data["effective_date"] == "2026-03-23"
+    assert "XRP" in data["xrp_treatment"]
+    assert "subject to an investment contract" in data["legal_scope"]
+    assert "does not supersede or replace the Howey test" in data["howey_caveat"]
+    assert "not a statute" in data["agency_weight"]
+
+
+def test_sec_staff_governance_faq_is_nonbinding_and_requires_xrpl_fact_finding():
+    data = load_artifact()["regulatory_context"]["sec_staff_faq"]
+    assert data["updated_date"] == "2026-11-02"
+    assert "no legal force" in data["legal_weight"]
+    assert "facts-and-circumstances" in data["governance_analysis"]
+    assert len(data["central_party_indicators"]) >= 5
+    assert "does not itself determine XRPL decentralization" in data["xrpl_application"]
+
+
+def test_sec_crypto_asset_and_custody_proposals_remain_proposed_not_final():
+    data = load_artifact()["regulatory_context"]
+    assert data["regulation_crypto_assets_proposal"]["status"] == "PROPOSED"
+    assert data["regulation_crypto_assets_proposal"]["comments_due"] == "2026-10-20"
+    assert data["crypto_custody_proposal"]["status"] == "PROPOSED"
+    assert data["crypto_custody_proposal"]["comments_due"] == "2026-12-07"
+    assert "not a final custody rule" in data["crypto_custody_proposal"]["status_note"]
