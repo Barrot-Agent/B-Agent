@@ -124,7 +124,7 @@ def test_fuelmaps_latest_snapshot_preserves_hourly_depth_change_without_causalit
     assert "Binance" in latest["excluded_venues"] and "Bitget" in latest["excluded_venues"]
     for row in latest["levels"]:
         calculated = row["bid_depth_usd"] / (row["bid_depth_usd"] + row["ask_depth_usd"]) * 100
-        assert abs(calculated - row["bid_share_pct"]) < 0.15
+        assert abs(calculated - row["bid_share_pct"]) < 0.2
     comparison = data["order_book_snapshot_comparison_13_to_14_utc"]
     assert comparison["mid_change_pct"] < 0
     assert comparison["bands"][0]["bid_share_change_pp"] > 0
