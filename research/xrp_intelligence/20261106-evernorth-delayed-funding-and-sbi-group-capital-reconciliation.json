@@ -10,15 +10,19 @@
   "scope": "Reconcile Evernorth's delayed-funding share-count correction, the cash/XRP composition of that subscription cohort, and the separately defined SBI-controlled stockholder group. Do not attribute delayed-subscriber consideration to SBI unless an issuer filing does so.",
   "delayed_funding_correction": {
     "prior_reported_class_a_shares": 663510,
-    "corrected_class_a_shares": 1078613,
     "increase_in_reported_shares": 415103,
     "correction_reason": "Clerical error in the post-closing Form 8-K; the October 12, 2026 Form 8-K states the correct aggregate share count.",
     "share_pricing_usd": 10,
     "subscription_consideration": "The corrected share count represents the aggregate delayed-funding subscription amount, whether paid in cash or XRP tokens, divided by $10 per share.",
     "not_new_capital_event": true,
     "source_line_ranges": {
-      "corrective_8k": "91-102"
-    }
+      "corrective_8k": "91-102",
+      "issuer_press_release": "22-23"
+    },
+    "eight_k_reported_class_a_shares": 1078613,
+    "issuer_press_release_reported_class_a_shares": 1078614,
+    "one_share_difference": 1,
+    "reconciliation_status": "Unresolved one-share discrepancy between the October 12 Form 8-K and the attached issuer press release. Preserve both primary-source values; the October 30 S-1 does not separately restate this delayed-subscriber count."
   },
   "delayed_subscriber_consideration": {
     "cash_usd": 10500000,
@@ -26,14 +30,18 @@
     "closing_xrp_reference_price_usd": 1.43069,
     "implied_in_kind_xrp_value_usd": 286138,
     "combined_indicative_consideration_usd": 10786138,
-    "corrected_shares_times_price_usd": 10786130,
-    "arithmetic_difference_usd": 8,
-    "arithmetic_interpretation": "The $10.5M cash plus 200,000 XRP valued at the disclosed $1.43069 closing reference price produces $10,786,138, within $8 of 1,078,613 shares at $10 each. This is a cross-check, not a claim that the subscription was entirely cash.",
+    "arithmetic_interpretation": "The $10.5M cash plus 200,000 XRP valued at the disclosed $1.43069 closing reference price produces $10,786,138. The 8-K count implies $10,786,130 (an $8 difference); the press-release count implies $10,786,140 (a $2 difference). Both are within rounding/valuation tolerance; preserve the one-share source discrepancy rather than selecting one.",
     "subscriber_attribution": "The S-1 describes certain institutional and individual accredited delayed subscribers. The reviewed text does not identify this entire delayed-subscriber cohort as SBI.",
     "source_line_ranges": {
       "s1": "5303-5304",
       "corrective_8k": "91-102"
-    }
+    },
+    "eight_k_shares_times_price_usd": 10786130,
+    "press_release_shares_times_price_usd": 10786140,
+    "eight_k_arithmetic_difference_usd": 8,
+    "press_release_arithmetic_difference_usd": -2,
+    "possible_overlap_with_private_placement_aggregates": true,
+    "additive_to_private_placement_totals": false
   },
   "sbi_group": {
     "issuer_definition": "The S-1 explicitly defines SBI as SBI Holdings, Inc.",
@@ -60,18 +68,22 @@
     {
       "category": "delayed_subscriber_cash",
       "amount_usd": 10500000,
-      "status": "issuer-disclosed subscription consideration; distinct from XRP contribution"
+      "status": "Issuer-disclosed delayed-subscriber cash consideration; may be included in the broader $214.1M Pubco private-placement cash aggregate. Do not add independently without a subscriber-level reconciliation.",
+      "possible_overlap_with_private_placement_cash_aggregate": true,
+      "do_not_add_to_aggregate_totals": true
     },
     {
       "category": "delayed_subscriber_in_kind_xrp",
       "amount_xrp": 200000,
-      "status": "issuer-disclosed token contribution; not cash"
+      "status": "Issuer-disclosed delayed-subscriber XRP consideration; may be included in the broader 261,919,096 Pubco XRP aggregate. Do not add independently without a subscriber-level reconciliation.",
+      "possible_overlap_with_pubco_private_placement_xrp_aggregate": true,
+      "do_not_add_to_aggregate_totals": true
     },
     {
       "category": "prior_cash_xrp_purchase",
       "amount_usd": 214100000,
       "amount_xrp": 84365876,
-      "status": "separate reported cash-funded acquisition; not part of the delayed-funding share-count correction"
+      "status": "Aggregate Pubco private-placement cash reported by issuer and used to buy 84,365,876 XRP; may already include the $10.5M delayed-subscriber cash component."
     },
     {
       "category": "convertible_notes",
@@ -93,7 +105,7 @@
     {
       "category": "pubco_private_placement_xrp",
       "amount_xrp": 261919096,
-      "status": "issuer-reported XRP raised under private-placement subscription agreements; do not automatically add the delayed 200,000 XRP line again without confirming inclusion."
+      "status": "Aggregate Pubco private-placement XRP; may already include the 200,000 delayed-subscriber XRP component."
     },
     {
       "category": "pathfinder_contribution_agreement_xrp",
@@ -159,6 +171,27 @@
         "sbi_definitions": "Verbatim UTF-8 excerpt from rendered SEC lines 421-422.",
         "sbi_ownership": "Normalized structured extraction of the SBI ownership table at rendered SEC lines 2352-2360; not verbatim source text."
       }
+    },
+    {
+      "id": "evernorth_issuer_press_release_2026_10_12",
+      "publisher": "Evernorth Holdings Inc. (Exhibit 99.1 to Form 8-K)",
+      "form": "Issuer press release attached to SEC Form 8-K",
+      "published_date": "2026-10-12",
+      "exact_publication_time_utc": null,
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629dex991.htm",
+      "parent_8k_url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629d8k.htm",
+      "line_ranges": [
+        "12-23"
+      ],
+      "rendered_excerpt_sha256": "f20dbd872df064a163647bf3dc3f385894e56101699ebd7d727a032fb387399d",
+      "rendered_excerpt_bytes": 1879,
+      "hash_scope": "Exact UTF-8 excerpt copied from the rendered SEC exhibit lines; not raw SEC filing bytes.",
+      "independence_group": "evernorth_issuer_disclosure",
+      "supports": [
+        "Issuer press release reports 1,078,614 delayed-funding shares, one more than the 1,078,613 in the 8-K body.",
+        "Hugo Jeandesboz's appointment and prior Coinbase Asset Management/Coinbase roles.",
+        "Evernorth CIO responsibilities for XRP treasury allocation, liquidity, holdings, counterparties and custodians."
+      ]
     }
   ],
   "evidence_quality": {
@@ -174,7 +207,10 @@
     "preclosing_liquidity_not_current": true,
     "delayed_200k_xrp_overlap_not_double_counted": true,
     "related_party_credit_facility_classified_as_debt": true,
-    "approximate_closing_holdings_reconciled": true
+    "approximate_closing_holdings_reconciled": true,
+    "issuer_press_release_and_8k_share_count_disagreement_preserved": true,
+    "coinbase_link_is_personnel_not_corporate_contract": true,
+    "delayed_cash_and_xrp_not_double_counted_against_aggregates": true
   },
   "competing_interpretations": [
     {
@@ -191,6 +227,16 @@
       "id": "sbi_parent_vs_sbi_group",
       "claim": "The SBI ownership row could be attributed solely to the parent or mistaken for SBIC.",
       "counterevidence": "The S-1 defines four SBI-controlled stockholder entities and separately defines SBI as SBI Holdings, Inc.; it does not equate them with SBIC East/Central/West."
+    },
+    {
+      "id": "one_share_issuer_disclosure_difference",
+      "claim": "The delayed-funding share count is 1,078,613 in the Form 8-K body and 1,078,614 in the attached issuer press release.",
+      "counterevidence": "Both sources say the prior 663,510 figure was a clerical error; the disclosed cash-plus-XRP consideration is within $2 of the press-release count and $8 of the 8-K count at $10 per share. Preserve both values; no source explains the one-share difference."
+    },
+    {
+      "id": "coinbase_personnel_link_as_contract",
+      "claim": "A former Coinbase Asset Management co-CIO now leads Evernorth's XRP treasury and is its contact for counterparties and custodians.",
+      "counterevidence": "The announcement is a personnel appointment, not a Coinbase Global custody, execution, trading or corporate partnership agreement."
     }
   ],
   "forecast_status": {
@@ -221,5 +267,27 @@
     "pathfinder_contribution_agreement_xrp": 126791458,
     "arithmetic_sum_xrp": 473076430,
     "caveat": "The arithmetic sum is approximately 473.076M XRP, consistent with the issuer's approximately 473M closing holdings. The separate 200,000 XRP delayed-subscriber line may already be included in the 261,919,096 Pubco XRP aggregate; do not add it again without an explicit issuer reconciliation."
-  }
+  },
+  "personnel_links": [
+    {
+      "person": "Hugo Jeandesboz",
+      "appointment_date": "2026-10-12",
+      "new_role": "Chief Investment Officer, Evernorth Holdings Inc.",
+      "prior_coinbase_roles": [
+        "Co-Chief Investment Officer, Coinbase Asset Management",
+        "Led Coinbase Asset Management Solutions strategies",
+        "Previously Coinbase lead derivatives trader for options, futures and on-chain markets"
+      ],
+      "evernorth_responsibilities": [
+        "XRP treasury allocation",
+        "Liquidity management",
+        "Active management of Evernorth's XRP holdings",
+        "Senior contact for Evernorth trading counterparties and custodians"
+      ],
+      "relationship_type": "Individual personnel transition from Coinbase Asset Management to Evernorth.",
+      "corporate_relationship_limit": "This personnel relationship does not establish a Coinbase Global custody mandate, execution agreement, trading contract or corporate partnership.",
+      "source_id": "evernorth_issuer_press_release_2026_10_12",
+      "source_independence_group": "evernorth_issuer_disclosure"
+    }
+  ]
 }
