@@ -80,12 +80,11 @@ def test_etf_provider_disagreement_is_not_mislabeled_as_cash_flow():
 def test_etf_source_methodology_preserves_indirect_and_excluded_exposure():
     registry = {x["id"]: x for x in load_artifact()["source_registry"]}
     insight = registry["XRP_INSIGHTS_ETF_DATA_20261106T025446Z"]
+    keyhole = registry["CRYPTOKEYHOLE_ETF_DATA_20261106T0403Z"]
     assert any("indirect XRP exposure" in x for x in insight["limitations"])
     assert any("GXRP flow is excluded" in x for x in insight["limitations"])
     assert any("index rebalancing" in x for x in insight["limitations"])
-    assert insight["independence_group"] == (
-        registry["CRYPTOKEYHOLE_ETF_DATA_20261106T0403Z"]["independence_group"]
-    )
+    assert insight["independence_group"] == keyhole["independence_group"]
 
 
 def test_competing_hypotheses_include_disconfirming_evidence():
