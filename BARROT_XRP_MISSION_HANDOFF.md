@@ -1,3 +1,31 @@
+## Run 9 continuation — 2026-11-06T14:05:00Z
+
+This addendum supersedes the PR #1643 head, test-count and market-reaction details in the 13:56 checkpoint immediately below. The main SHA, PR #1640 evidence, protection findings and backlog classifications remain unchanged.
+
+### Latest exact-head state
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main write occurred.
+- PR #1640 remains at `777e47751a68e3d4026fb9affe44f7e550c65a06`, 444 ahead / 0 behind, 154 files. Exact-head core CI 622 passed + 8 subtests; full suite 1,060 passed + 8 subtests in 36.21s; coverage 57.57% against 53%; packaged wheel mission verification passed. Six-manifest dependency audit passed with no known vulnerabilities. Fail-closed gate passed and merging is disabled. 22/22 review threads resolved; 0 approvals.
+- PR #1643 is now at `e320488dfb9c9a76a912d897606f8d752550bbe9`, 427 ahead / 0 behind, 315 files. Exact-head core CI 498 passed + 8 subtests; full suite 1,466 passed + 8 subtests in 15.29s. Six-manifest dependency audit passed with no known vulnerabilities. Fail-closed gate passed and merging is disabled. 19/19 review threads resolved; 0 approvals.
+- PR #1643 exact-head evidence: [CI 42230255429](https://github.com/Barrot-Agent/B-Agent/actions/runs/42230255429), [dependency audit 42230255341](https://github.com/Barrot-Agent/B-Agent/actions/runs/42230255341), [fail-closed gate 42230255389](https://github.com/Barrot-Agent/B-Agent/actions/runs/42230255389).
+- #1643 has one changed-path overlap with #1640: `.github/workflows/dependency-audit.yml`. Preserve the integration order: #1640 first after independent approval/protection/deployment conditions; then one consolidated current-main successor for #1643's unique research paths.
+
+### November 6 intraday macro correction
+
+- BLS October payroll release at 13:30 UTC: +165,000 payrolls; unemployment 4.1%; average hourly earnings +0.4% MoM / +3.1% YoY; August/September revisions +84,000 combined. Primary source: https://www.bls.gov/news.release/empsit.nr0.htm.
+- Reuters at 13:49 UTC reports Treasury yields rose after release and then pulled back. At publication: 2-year 4.52% (+5bp), 10-year 4.88% (+4bp), 30-year 5.29% (+3.6bp); DXY 102.18 (+0.7%); Nasdaq futures +1.4%; S&P futures +0.3%; implied December hike odds 78% versus 70%.
+- MarketWatch's separate later “last check” reports 2-year 4.51% (+5bp) and 10-year 4.87% (+3bp), without an exact measurement timestamp. Earlier FT reporting showed 4.53% / +6bp. These are separate time vintages, not observations to average.
+- Guardian reports nominal wage growth of 3.1% against September CPI inflation of 3.7%; this and the reported Middle East/energy context are counterevidence to a simplistic one-way macro interpretation.
+- New append-only correction: `research/xrp_intelligence/20261106T140000Z-bls-market-reaction-time-vintage-correction.json`, with three regression tests in `tests/test_xrp_bls_market_reaction_time_vintage_20261106.py`. It preserves the intraday yield reversal, positive equity-futures counterevidence, real-wage context and source-time disagreement.
+- The earlier redundant BLS/Kraken capture remains unchanged for audit but is excluded from source/observation counts by `20261106T1350Z-bls-event-duplicate-supersession.json`; the canonical event artifact remains `20261106T134313Z-bls-october-employment-and-xrp-post-release-market-reconciliation.json`.
+- Kraken XRP/USD ticker still lacks a provider event timestamp. The quote cannot be joined to the BLS release or Reuters 13:49 market snapshot. No XRP event return or causal price response is established. Forecast remains `NOT_ISSUED`.
+
+### Merge gate
+
+Both integration PRs are technically green at their exact heads, but each has zero approving reviews. Main reports protected=true, detailed protection API returns 403, visible fallback ruleset is disabled, and GitHub Pages settings remain inaccessible after a prior main push triggered Pages deployment. Do not merge or trigger deployment until the approval/protection boundary and deployment side effect are explicitly cleared. No paper-trading or real-money action is authorized.
+
+---
+
 # Current verified checkpoint — 2026-11-06T13:56:00Z
 
 **Mission priority:** XRP intelligence and prediction-engine mastery is priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation.
