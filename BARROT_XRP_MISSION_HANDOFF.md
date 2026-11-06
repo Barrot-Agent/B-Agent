@@ -1,3 +1,83 @@
+# Run 12 depth supplement — 2026-11-06T18:23:24Z
+
+## Additional spot order-book depth
+
+Added to the existing #1643 research branch and verified by its exact-head full suite:
+
+- Artifact: `research/xrp_intelligence/20261106T181024Z-xrp-post-bls-spot-derivatives-etf-macro-reconciliation.json`.
+- Test: `tests/test_xrp_post_bls_spot_derivatives_etf_macro_reconciliation_20261106.py`.
+- The artifact now has nine normalized-source receipts and eight source-independence groups. The Fuelmaps receipt is a SHA-256 hash of the normalized page excerpt, not original HTTP wire bytes or venue-native book payloads.
+- Final normalized artifact record time/retrieval upper bound: 2026-11-06T18:23:24Z. The filename's 18:10:24Z suffix identifies the initial direct-exchange capture batch; later aggregator pages were retrieved and incorporated after that first batch.
+
+**Fuelmaps six-venue XRP spot book, snapshot 2026-11-06T17:00:00Z:**
+- Mid: $1.1947 across six spot venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini.
+- Within ±0.5%: bids $8.6M, asks $6.2M, bid share 58.0%, 6/6 venues.
+- Within ±1%: bids $13.2M, asks $9.6M, bid share 57.8%, 6/6.
+- Within ±2%: bids $18.3M, asks $10.0M, bid share 64.5%, 6/6.
+- Within ±5%: bids $25.9M, asks $13.0M, bid share 66.5%, 6/6.
+- Within ±10%: bids $32.0M, asks $15.9M, bid share 66.8%, 5/6.
+- Largest listed resting bids within 10%: $1.150/$2.6M, $1.100/$2.1M, $1.192/$1.9M, $1.188/$1.8M and $1.190/$1.7M.
+
+Source: https://fuelmaps.io/order-book/
+
+Methodology and counterevidence:
+- Spot books only. Binance and Bitget are excluded; the source explicitly says the largest spot venue by volume is missing.
+- Coinbase, Bitstamp, Bitfinex and Gemini provide full-depth books; OKX and Kraken are near-price sources whose reach varies by asset.
+- USD and USDT books are converted to USD using a live USDT/USD rate.
+- Hourly columns average one-minute book snapshots. A wall present for ten minutes of an hour contributes about one sixth of its size to the hourly column.
+- Hidden/iceberg orders are omitted; displayed resting orders can be cancelled or moved; historical depth is unavailable before recording began.
+- This is an observed hourly resting-book imbalance, not fillable depth, executable slippage, committed buying interest, a support guarantee or a forecast.
+- The 17:00 UTC Fuelmaps mid is time-separated from the 17:57:25.077Z OKX ticker snapshot and is not combined into an exact return.
+
+The new depth observation is descriptive only. Its bid-heavy bands are counterevidence to a simple one-sided sell-pressure narrative, but cancellation risk, missing venues, averaging and timestamp separation prevent a directional inference.
+
+## Exact-head verification after the depth addition
+
+**PR #1643 current head:** `792a1b7aecd7f5ff7ea8ca190e005b94b69851e3`.
+- Full repository suite: **1,566 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit: passed; no known vulnerabilities.
+- Fail-closed gate: passed; automatic merging disabled.
+- Evidence:
+  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42270417075
+  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42270417328
+  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42270417335
+- Current compare: 472 commits ahead of main, 0 behind; 337 changed paths; 19/19 review threads resolved; 0 approving reviews.
+- This branch's CI still lacks #1640's inclusive coverage and installed-wheel verification; carry the #1640 CI workflow into the consolidated successor.
+
+**PR #1640 code-bearing head before this supplement:** `fec85a2349fbebe0b1cd210be597417e3f97974a`.
+- Full repository suite: **1,060 passed, 8 subtests passed**; inclusive coverage **57.57%**.
+- Core suite: **622 passed, 8 subtests passed**.
+- Installed-wheel build and packaged mission verification: passed.
+- Six-manifest dependency audit: passed; no known vulnerabilities.
+- Fail-closed gate: passed; automatic merge disabled.
+- Evidence:
+  - Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42269880268
+  - Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42269880267
+  - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42269880285
+- Current compare before this handoff-only supplement: 453 commits ahead of main, 0 behind; 154 changed paths; 22/22 review threads resolved; 0 approving reviews.
+
+The handoff supplement itself is documentation-only on the existing #1640 branch. Its new head must pass exact-head CI, coverage, wheel, dependency and fail-closed checks before it is treated as verified.
+
+## Integration and authorization remain unchanged
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no merge or main write occurred.
+- Complete main tree remains 1,403 entries, 1,298 files, 493 Python files, 87 Python test files and 86 workflows.
+- Open PR inventory remains 369 total: 354 drafts, 15 non-drafts.
+- #1640 and #1643 are divergent. Their only shared changed path is the identical `.github/workflows/dependency-audit.yml` blob. #1640 has 153 unique paths; #1643 has 336 unique paths.
+- #1642 remains a draft with seven overlapping but different file blobs; reconcile rather than bulk-close.
+- #1605 remains an exact one-file duplicate of an artifact in #1643; close only after replacement content is verified on main.
+- #1645's workflow file is identical to #1640. #1646/#1648 dependency changes and #1649/#1650 legacy-manifest changes are already combined in #1640. #1644/#1647 would re-enable quarantined external workflows and must not be merged as-is.
+- Preserve unique work in #1317, #1318, #1320, #1269, #1254 and #1255.
+
+Main reports `protected=true`; visible required status-check contexts are empty. The detailed classic branch-protection endpoint returns HTTP 403; the only visible fallback ruleset is disabled. Both active PRs have zero approving reviews; comments and resolved threads are not approvals. A previous main push triggered the GitHub Pages build-and-deploy run 41799855489 (event `dynamic`); its build and deploy jobs succeeded. Pages settings remain inaccessible through the current connector. Because that automatic public deployment has not been specifically approved, do not merge either PR or bypass branch protection.
+
+The XRP scheduled collector remains designed and CI-tested on #1640, not active on main. It has 21 endpoint families, 19 scheduled; Coinbase candle pagination remains unimplemented (300 candles per request), Binance hourly spot candles are limited to 1,000 rows per request, and Binance OI/global long-short history is limited to 500 hourly rows. The historical evaluator uses Binance XRP/USDT and Coinbase XRP/USD hourly closes only. Cross-domain historical features, external WORM retention, independent timestamp anchoring, automatic feature-store rebuild and trusted evaluator signing keys remain unfinished. No directional forecast is issued.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+---
+
 # Run 12 continuation — 2026-11-06T18:16:08Z
 
 ## Mission and execution status
