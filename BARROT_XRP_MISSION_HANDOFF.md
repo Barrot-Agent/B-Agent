@@ -14,7 +14,7 @@ XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 rema
 
 - Main recursive tree: 1,403 entries; 1,298 files; 493 Python files; 90 Python test files; 86 workflow files. Tree was not truncated.
 - Complete open-PR search: 369 open PRs, 354 drafts, 15 non-drafts. Non-drafts: #1650–#1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
-- #1640 current head: `653db11c6bbbde4bb0de2de67e74d5f3ae9619b2`; 426 commits ahead, zero behind, 154 changed files; non-draft and GitHub reports mergeable.
+- #1640 last fully verified code-bearing head: `653db11c6bbbde4bb0de2de67e74d5f3ae9619b2` (426 commits ahead, zero behind, 154 changed files at that code-bearing head). Subsequent handoff/backlog commits are documentation-only descendants; the current PR head has no exact-head CI run attached, so do not treat it as merge-ready until a current-head run is obtained.
 - #1643 current head: `accd0970cb54c43a61f12b843c923d3ae123f0b5`; 328 commits ahead, zero behind, 262 changed files; non-draft and GitHub reports mergeable.
 - Both PRs have zero approving reviews. #1640 has 22/22 review threads resolved; #1643 has 14/14 resolved. Existing COMMENTED reviews are not approvals.
 - Their only changed-path intersection is `.github/workflows/dependency-audit.yml`; both branches contain identical blob `6515307991420ab90d8671034b13ac2eb56190b3`.
