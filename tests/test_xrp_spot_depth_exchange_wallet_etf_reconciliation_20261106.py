@@ -27,7 +27,7 @@ def test_kraken_spot_snapshot_preserves_utc_open_vwap_and_spread_semantics():
     assert item["provider_event_timestamp_utc"] is None
     assert math.isclose(item["last_vs_utc_day_open_percent"], 0.794578947804947, abs_tol=1e-9)
     assert item["last_vs_24h_vwap_percent"] < 0
-    assert "not a trend reversal" in item["interpretation"]
+    assert "not evidence of a trend reversal" in item["interpretation"]
 
 
 def test_tradradar_derivatives_preserve_venue_sum_and_lower_bound_semantics():
