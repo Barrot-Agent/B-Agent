@@ -89,7 +89,7 @@ CAPABILITY_TARGETS: List[CapabilityTarget] = [
         name="Repository architecture intelligence",
         priority="high",
         description="Build a current, evidence-linked model of repository structure, dependencies, execution flows, and change impact.",
-        required_tool_categories=["code_intelligence", "knowledge_graph", "version_control"],
+        required_tool_categories=["code_intelligence", "version_control"],
     ),
 ]
 
@@ -171,7 +171,7 @@ SUPPORTED_MCP_SERVERS: List[MCPServerSpec] = [
         name="codebase-memory-mcp",
         server_id="codebase-memory",
         description="Local structural code intelligence and persistent repository knowledge graph.",
-        tool_categories=["code_intelligence", "knowledge_graph"],
+        tool_categories=["code_intelligence"],
         homepage="https://github.com/DeusData/codebase-memory-mcp",
         license="MIT",
         requires_auth=False,
