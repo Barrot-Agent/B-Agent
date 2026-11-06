@@ -5,6 +5,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEPLOY_WORKFLOWS = (
     ".github/workflows/barrot-ops.yml",
     ".github/workflows/deploy-databricks.yml",
+)
+
+QUARANTINED_DEPLOY_WORKFLOWS = (
     ".github/workflows/sync-huggingface.yml",
     ".github/workflows/databricks-bundle.yml",
 )
@@ -20,12 +23,23 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
         assert "options:" in workflow and "- YES" in workflow, relative_path
         assert "inputs.confirm_external_change == 'YES'" in workflow, relative_path
         assert re.search(r"(?m)^\s*(contents|pull-requests):\s*write\b", workflow) is None, relative_path
-        if relative_path.endswith(("sync-huggingface.yml", "deploy-databricks.yml")):
+        if relative_path.endswith("deploy-databricks.yml"):
             assert "expected_source_sha" in workflow, relative_path
             assert "github.ref == 'refs/heads/main'" in workflow, relative_path
         if relative_path.endswith("sync-huggingface.yml"):
             assert "permissions:\n  contents: read" in workflow, relative_path
 
+
+
+def test_unreviewed_external_deploy_workflows_are_quarantined() -> None:
+    forbidden = ("secrets.", "uses:", "databricks bundle deploy", "databricks bundle run", "api.upload_folder", "api.add_space_secret")
+    for relative_path in QUARANTINED_DEPLOY_WORKFLOWS:
+        workflow = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+        assert "workflow_dispatch: {}" in workflow, relative_path
+        assert "permissions: {}" in workflow, relative_path
+        assert "if: ${{ false }}" in workflow, relative_path
+        for token in forbidden:
+            assert token not in workflow.lower(), (relative_path, token)
 
 
 def test_databricks_setup_cli_uses_a_verified_immutable_commit():

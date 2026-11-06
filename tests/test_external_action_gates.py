@@ -105,7 +105,7 @@ def test_barrot_ops_requires_explicit_approval_and_exact_current_main_sha() -> N
 
 
 def test_existing_safe_external_deploys_keep_per_run_confirmation() -> None:
-    for name in ("deploy-databricks.yml", "sync-huggingface.yml"):
+    for name in ("deploy-databricks.yml", "barrot-ops.yml"):
         content = _read(name)
         assert "confirm_external_change" in content
         assert "default: NO" in content
@@ -157,17 +157,14 @@ def test_scheduled_research_jobs_write_artifacts_not_main() -> None:
         assert "contents: write" not in content, name
 
 
-def test_webmcp_live_sandbox_requires_explicit_manual_approval() -> None:
+def test_webmcp_live_sandbox_is_quarantined_until_per_tool_allowlisting() -> None:
     content = _read("webmcp-live-sandbox.yml")
-    assert "schedule:" not in content
-    assert "confirm_live_execution" in content
-    assert "default: NO" in content
-    assert "inputs.confirm_live_execution == 'YES'" in content
-    assert "contents: read" in content
-    assert "contents: write" not in content
-    assert "persist-credentials: false" in content
-    assert "git push" not in content
-    assert "upload-artifact@v7" in content
+    assert "workflow_dispatch: {}" in content
+    assert "permissions: {}" in content
+    assert "if: ${{ false }}" in content
+    assert "playwright" not in content.lower()
+    assert "registertool" not in content.lower()
+    assert "No browser is launched" in content
 
 
 def test_hover_bike_simulation_uses_read_only_repository_access() -> None:
@@ -241,7 +238,6 @@ def test_groq_research_pipelines_require_yes_and_upload_artifacts() -> None:
     names = (
         "webmcp-trend-digest.yml",
         "self-benchmark.yml",
-        "knowledge-signal-cycle.yml",
         "financial-data-refresh.yml",
         "research-topics.yml",
         "frontier-digest.yml",
@@ -278,11 +274,9 @@ def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -
 def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None:
     names = (
         "barrot-merge.yml",
-        "sync-huggingface.yml",
         "deploy-databricks.yml",
         "kaggle-competitions.yml",
         "barrot-restart-space.yml",
-        "webmcp-live-sandbox.yml",
     )
     for name in names:
         content = _read(name)
