@@ -411,13 +411,22 @@ def test_controller_restores_revision_invariants_and_normalizes_rollback_plan():
     assert "tasks[0].rollback_plan" in result.attempts[1]["invariant_repairs"]
 
 
-def test_authorization_word_is_recognized_without_false_negative():
+def test_authorization_alone_does_not_satisfy_explicit_human_approval_gate():
     bundle = sample_bundle()
     bundle["constraints"] = [
         "Do not perform consequential external actions without required authorization."
     ]
     result = review_work_bundle(bundle)
-    assert "AUTHORIZATION_CONSTRAINT_MISSING" not in {item.code for item in result.findings}
+    assert "AUTHORIZATION_CONSTRAINT_MISSING" in {item.code for item in result.findings}
+
+
+def test_authoring_prompt_requires_explicit_human_approval_wording():
+    prompt = build_bundle_authoring_prompt(
+        objective="Create a safe engineering task.",
+        constraints=["Preserve existing work."],
+    )
+    assert "explicit human approval" in prompt.lower()
+    assert "authorization alone is insufficient" in prompt.lower()
 
 
 @pytest.mark.parametrize(
