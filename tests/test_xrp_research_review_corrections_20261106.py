@@ -110,3 +110,33 @@ def test_fuelmaps_historical_depth_has_a_git_blob_bound_source_lineage() -> None
     assert correction["status"] == "HISTORICAL_CONTEXT_ONLY_STALE_AT_LATER_KRAKEN_CAPTURE"
     assert correction["original_artifact_modified"] is False
     assert bundle["overall_model_eligibility"]["eligible"] is False
+
+def test_0939_target_artifact_kraken_quote_reconciles_to_its_own_rendered_response() -> None:
+    data = load(XRP_TARGET)
+    source_text = data["source_captures"]["kraken_rendered_response_text"]
+    source_digest = hashlib.sha256(source_text.encode("utf-8")).hexdigest()
+    assert source_digest == data["source_captures"]["kraken_rendered_response_sha256"]
+
+    ticker = json.loads(source_text)["result"]["XXRPZUSD"]
+    quote = data["spot_market"]["kraken_xrpusd"]
+    bid = Decimal(ticker["b"][0])
+    ask = Decimal(ticker["a"][0])
+    last = Decimal(ticker["c"][0])
+    vwap = Decimal(ticker["p"][1])
+    low = Decimal(ticker["l"][1])
+    day_open = Decimal(ticker["o"])
+
+    assert quote["last_trade_usd"] == pytest.approx(float(last))
+    assert quote["best_bid_usd"] == pytest.approx(float(bid))
+    assert quote["best_ask_usd"] == pytest.approx(float(ask))
+    assert quote["rolling_24h_volume_xrp"] == pytest.approx(float(Decimal(ticker["v"][1])))
+    assert quote["rolling_24h_vwap_usd"] == pytest.approx(float(vwap))
+    assert quote["rolling_24h_low_usd"] == pytest.approx(float(low))
+    assert quote["rolling_24h_high_usd"] == pytest.approx(float(Decimal(ticker["h"][1])))
+    assert quote["utc_day_open_usd"] == pytest.approx(float(day_open))
+    assert quote["spread_bps"] == pytest.approx(float((ask - bid) / ((ask + bid) / 2) * Decimal("10000")))
+    assert quote["last_vs_utc_day_open_pct"] == pytest.approx(float((last / day_open - 1) * 100))
+    assert quote["last_vs_rolling_24h_vwap_pct"] == pytest.approx(float((last / vwap - 1) * 100))
+    assert quote["last_above_rolling_24h_low_pct"] == pytest.approx(float((last / low - 1) * 100))
+    assert quote["model_eligible"] is False
+
