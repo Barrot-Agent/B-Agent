@@ -30,7 +30,6 @@ def test_source_receipt_correction_is_exact_preimage_bound_and_append_only():
     git_blob_sha1 = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
     assert git_blob_sha1 == overlay["target_artifact_git_blob_sha1"]
     assert overlay["target_json_pointer"] == "/source_registry/4/sha256"
-    assert overlay["source_artifact_modified"] if "source_artifact_modified" in overlay else True
     assert overlay["preservation"]["source_artifact_modified"] is False
     assert overlay["preservation"]["source_excerpt_modified"] is False
     assert overlay["preservation"]["append_only"] is True
