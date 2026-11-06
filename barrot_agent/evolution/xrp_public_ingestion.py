@@ -28,8 +28,8 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.9"
-PARSER_VERSION = "xrp-public-market-v3.8"
+ADAPTER_VERSION = "xrp-public-market-v3.10"
+PARSER_VERSION = "xrp-public-market-v3.9"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 
@@ -48,6 +48,7 @@ ENDPOINTS = (
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
     ("binance_spot_depth", "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100"),
     ("xrp_etf_flows_aggregator", "https://xrp-insights.com/data/xrp-etf-flows.json"),
+    ("xrp_exchange_balances_json", "https://xrp-insights.com/exchange-balances/data.json"),
     ("xrp_etf_flows_csv", "https://xrp-insights.com/data/xrp-etf-flows.csv"),
     ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
     ("xrp_etf_bitwise_issuer_page", "https://bitxrpetf.com/"),
@@ -1707,6 +1708,39 @@ def _raw_only_xrp_insights_etf_flows(payload: Any, *, captured: datetime, **_kwa
 
 
 
+def _raw_only_xrp_exchange_balances(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate XRP Insights exchange-wallet dataset identity without promoting its totals."""
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError("XRP Insights exchange-balance response must be an object")
+    expected = {
+        "dataset": "XRP Exchange Balances (attributed exchange wallets)",
+        "publisher": "XRP Insights",
+        "url": "https://xrp-insights.com/exchange-balances",
+    }
+    for field, value in expected.items():
+        if payload.get(field) != value:
+            raise XRPIngestionError(f"XRP Insights exchange-balance {field} identity mismatch")
+    definition = payload.get("definition")
+    if not isinstance(definition, str) or "Not an estimate of tradable float" not in definition:
+        raise XRPIngestionError("XRP Insights exchange-balance definition is missing its tradable-float limitation")
+    methodology = payload.get("methodology")
+    if (
+        not isinstance(methodology, str)
+        or "rippled account_info" not in methodology
+        or "XRPSCAN public labels" not in methodology
+    ):
+        raise XRPIngestionError("XRP Insights exchange-balance methodology identity mismatch")
+    license_text = payload.get("license")
+    if not isinstance(license_text, str) or "cite with attribution" not in license_text.lower():
+        raise XRPIngestionError("XRP Insights exchange-balance citation terms are missing")
+    return (
+        [],
+        None,
+        False,
+        "xrp_insights_exchange_wallet_attribution_retained_hash_only_raw_only_until_daily_snapshot_and_same_wallet_schema_are_validated",
+    )
+
+
 def _raw_only_xrp_insights_etf_csv(
     payload: Any,
     *,
@@ -1975,6 +2009,7 @@ PARSERS = {
     "kraken_spot_depth": _parse_kraken_depth,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
+    "xrp_exchange_balances_json": _raw_only_xrp_exchange_balances,
     "xrp_etf_flows_csv": _raw_only_xrp_insights_etf_csv,
     "xrp_etf_xrpr_issuer_page": _raw_only_xrpr_issuer_page,
     "xrp_etf_bitwise_issuer_page": _raw_only_bitwise_xrp_etf_page,
@@ -2235,8 +2270,14 @@ def run_ingestion(
                     model_eligible=False,
                     raw_only_reason=raw_reason,
                     source_http_date=response.get("http_date"),
-                    retain_raw_bytes=source_id != "xrp_etf_flows_csv",
-                    raw_retention_reason="Publisher terms allow use and citation with attribution but require written permission for commercial redistribution; full CSV bytes are not retained in public artifacts." if source_id == "xrp_etf_flows_csv" else "",
+                    retain_raw_bytes=source_id not in {"xrp_etf_flows_csv", "xrp_exchange_balances_json"},
+                    raw_retention_reason=(
+                "Publisher terms allow use and citation with attribution but require written permission for commercial redistribution; full CSV bytes are not retained in public artifacts."
+                if source_id == "xrp_etf_flows_csv"
+                else "Publisher permits citation with attribution but does not expressly grant redistribution of the raw exchange-balance JSON; retain its SHA-256 receipt only."
+                if source_id == "xrp_exchange_balances_json"
+                else ""
+            ),
                 )
                 receipts.append(receipt)
                 raw_only.append(
@@ -2262,8 +2303,14 @@ def run_ingestion(
             model_eligible=source_eligible,
             raw_only_reason=reason,
             source_http_date=response.get("http_date"),
-            retain_raw_bytes=source_id != "xrp_etf_flows_csv",
-            raw_retention_reason="Publisher terms allow use and citation with attribution but require written permission for commercial redistribution; full CSV bytes are not retained in public artifacts." if source_id == "xrp_etf_flows_csv" else "",
+            retain_raw_bytes=source_id not in {"xrp_etf_flows_csv", "xrp_exchange_balances_json"},
+            raw_retention_reason=(
+                "Publisher terms allow use and citation with attribution but require written permission for commercial redistribution; full CSV bytes are not retained in public artifacts."
+                if source_id == "xrp_etf_flows_csv"
+                else "Publisher permits citation with attribution but does not expressly grant redistribution of the raw exchange-balance JSON; retain its SHA-256 receipt only."
+                if source_id == "xrp_exchange_balances_json"
+                else ""
+            ),
         )
         receipts.append(receipt)
         if source_id == "xrp_etf_flows_csv":
@@ -2466,6 +2513,7 @@ def run_ingestion(
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
             "The cumulative SQLite feature store is persisted through GitHub Actions cache plus a daily feature artifact backup retained 90 days. Cache eviction can interrupt continuity if no unexpired backup is available; automatic rebuild from raw artifacts is not yet implemented.",
             "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
+            "XRP Insights attributed exchange-wallet balances are scheduled for hash-only raw capture; they are not promoted to exchange-flow features until date, wallet-set, same-wallet and coverage-change semantics are parsed and independently checked.",
             "XRP Insights ETF metadata is retained with a raw receipt; its CSV is schema-validated in memory, recorded as a hash-only receipt under the publisher redistribution terms, and reduced to one attributed latest-date aggregate that is never promoted to model features.",
             "Bitwise XRP ETF, Grayscale GXRP and REX XRPR primary issuer pages are captured as SHA-256-receipted raw-only HTML; holdings are not parsed into features until page-vintage and parser validation are implemented.",
             "The historical evaluator uses naive, momentum, mean-reversion and volatility baselines. Probability calibration remains diagnostic only; no post-hoc recalibration or shadow evaluation is implemented.",
