@@ -1,8 +1,7 @@
+import ast
 import importlib.util
 import json
 from pathlib import Path
-
-import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,179 +17,54 @@ def _load_engine():
     return module
 
 
-def test_legacy_market_analysis_is_disabled_without_explicit_local_opt_in(monkeypatch):
+def test_retired_market_analysis_emits_only_not_issued_status(monkeypatch, tmp_path, capsys):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GROQ_API_KEY", "must-not-be-used")
+    monkeypatch.setenv("DATABRICKS_HOST", "must-not-be-used.example")
+    monkeypatch.setenv("DATABRICKS_TOKEN", "must-not-be-used")
+    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "must-not-be-used")
+
     engine = _load_engine()
-    monkeypatch.delenv("BARROT_ENABLE_LEGACY_MARKET_ANALYSIS", raising=False)
-    assert engine.legacy_market_analysis_enabled() is False
-    with pytest.raises(SystemExit, match="Legacy market analysis is disabled"):
-        engine.main()
+    assert engine.main() == 0
+
+    output = json.loads(capsys.readouterr().out)
+    assert output == engine.STATUS
+    assert output["status"] == "NOT_ISSUED"
+    assert output["forecast_issued"] is False
+    assert output["trade_recommendations"] == []
+    assert "no Databricks or" in output["message"]
+    assert list(tmp_path.iterdir()) == []
 
 
-def test_legacy_analysis_schema_forbids_forecasts_and_trade_recommendations():
+def test_retired_market_analysis_has_no_network_or_provider_entrypoints():
     engine = _load_engine()
-    valid = {
-        "summary": "Descriptive only.",
-        "observations": ["Observed score dispersion."],
-        "data_quality": ["Historical labels are not independently verified."],
-        "competing_hypotheses": ["The apparent pattern may be sampling noise."],
-        "validation_gaps": ["No chronological out-of-sample test exists."],
-        "forecast_status": "NOT_ISSUED",
-        "trade_recommendations": [],
+    for name in ("query_databricks", "call_groq", "analyze_market", "urlopen"):
+        assert not hasattr(engine, name)
+
+    tree = ast.parse(SCRIPT.read_text(encoding="utf-8"))
+    imported_modules = {
+        alias.name.split(".", 1)[0]
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Import)
+        for alias in node.names
     }
-    assert engine.validate_analysis_response(json.dumps(valid)) == valid
-
-    invalid_recommendation = dict(valid, trade_recommendations=["Buy XRP"])
-    with pytest.raises(ValueError, match="trade recommendations"):
-        engine.validate_analysis_response(json.dumps(invalid_recommendation))
-
-    invalid_forecast = dict(valid, forecast_status="ISSUED")
-    with pytest.raises(ValueError, match="cannot issue a forecast"):
-        engine.validate_analysis_response(json.dumps(invalid_forecast))
-
-
-def test_databricks_query_is_bounded_read_only_and_receipted(monkeypatch):
-    engine = _load_engine()
-    monkeypatch.setenv("DATABRICKS_HOST", "dbc.example.com")
-    monkeypatch.setenv("DATABRICKS_TOKEN", "test-token")
-    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "warehouse-123")
-    captured = {}
-
-    payload = {
-        "status": {"state": "SUCCEEDED"},
-        "manifest": {
-            "truncated": False,
-            "schema": {
-                "columns": [
-                    {"name": "date"},
-                    {"name": "direction"},
-                    {"name": "confidence"},
-                    {"name": "accuracy"},
-                ]
-            },
-        },
-        "result": {"data_array": [["2026-11-03", "neutral", "0.5", "0.4"]]},
-    }
-
-    class Response:
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *_args):
-            return False
-
-        def read(self, size=-1):
-            raw = json.dumps(payload).encode("utf-8")
-            captured["read_limit"] = size
-            return raw[:size] if size >= 0 else raw
-
-    def fake_urlopen(request, timeout):
-        captured["url"] = request.full_url
-        captured["body"] = json.loads(request.data)
-        captured["timeout"] = timeout
-        return Response()
-
-    monkeypatch.setattr(engine, "urlopen", fake_urlopen)
-    result = engine.query_databricks(
-        "SELECT date, direction, confidence, accuracy FROM workspace.barrot.signals LIMIT 30"
+    imported_modules.update(
+        node.module.split(".", 1)[0]
+        for node in ast.walk(tree)
+        if isinstance(node, ast.ImportFrom) and node.module
     )
-
-    assert captured["url"] == "https://dbc.example.com/api/2.0/sql/statements"
-    assert captured["body"]["warehouse_id"] == "warehouse-123"
-    assert captured["body"]["statement"].startswith("SELECT ")
-    assert captured["body"]["wait_timeout"] == "50s"
-    assert captured["body"]["on_wait_timeout"] == "CANCEL"
-    assert captured["body"]["row_limit"] == 100
-    assert captured["timeout"] == 60
-    assert result["record_count"] == 1
-    assert result["data_cutoff_utc"] == "2026-11-03"
-    assert len(result["raw_response_sha256"]) == 64
-    assert captured["body"]["byte_limit"] == engine.MAX_RESPONSE_BYTES
-    assert captured["read_limit"] == engine.MAX_RESPONSE_BYTES + 1
+    assert imported_modules == {"__future__", "json"}
 
 
-def test_databricks_query_rejects_non_select_and_incomplete_execution(monkeypatch):
+def test_retired_status_cannot_be_misread_as_accuracy_or_a_forecast():
     engine = _load_engine()
-    with pytest.raises(ValueError, match="read-only SELECT"):
-        engine.query_databricks("DELETE FROM workspace.barrot.signals")
-
-    monkeypatch.setenv("DATABRICKS_HOST", "dbc.example.com")
-    monkeypatch.setenv("DATABRICKS_TOKEN", "test-token")
-    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "warehouse-123")
-
-    class Response:
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *_args):
-            return False
-
-        def read(self, size=-1):
-            raw = json.dumps({"status": {"state": "PENDING"}}).encode("utf-8")
-            return raw[:size] if size >= 0 else raw
-
-    monkeypatch.setattr(engine, "urlopen", lambda *_args, **_kwargs: Response())
-    with pytest.raises(RuntimeError, match="did not succeed"):
-        engine.query_databricks("SELECT 1")
-
-
-def test_legacy_analysis_rejects_forecast_language_in_free_text():
-    engine = _load_engine()
-    invalid = {
-        "summary": "Buy XRP now at $1.20; price target $2.00.",
-        "observations": [],
-        "data_quality": [],
-        "competing_hypotheses": [],
-        "validation_gaps": [],
-        "forecast_status": "NOT_ISSUED",
-        "trade_recommendations": [],
-    }
-    with pytest.raises(ValueError, match="summary contains prohibited"):
-        engine.validate_analysis_response(json.dumps(invalid))
-
-
-def test_databricks_query_enforces_local_byte_and_row_limits(monkeypatch):
-    engine = _load_engine()
-    monkeypatch.setenv("DATABRICKS_HOST", "dbc.example.com")
-    monkeypatch.setenv("DATABRICKS_TOKEN", "test-token")
-    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "warehouse-123")
-
-    class Response:
-        def __init__(self, raw):
-            self.raw = raw
-
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *_args):
-            return False
-
-        def read(self, size=-1):
-            return self.raw[:size] if size >= 0 else self.raw
-
-    monkeypatch.setattr(
-        engine,
-        "urlopen",
-        lambda *_args, **_kwargs: Response(b"x" * (engine.MAX_RESPONSE_BYTES + 1)),
-    )
-    with pytest.raises(RuntimeError, match="byte limit"):
-        engine.query_databricks("SELECT 1")
-
-    payload = {
-        "status": {"state": "SUCCEEDED"},
-        "manifest": {
-            "truncated": False,
-            "schema": {"columns": [{"name": "date"}]},
-        },
-        "result": {"data_array": [["2026-11-03"]] * (engine.MAX_RESULT_ROWS + 1)},
-    }
-    raw = json.dumps(payload).encode("utf-8")
-    monkeypatch.setattr(
-        engine,
-        "urlopen",
-        lambda *_args, **_kwargs: Response(raw),
-    )
-    with pytest.raises(RuntimeError, match="row limit"):
-        engine.query_databricks("SELECT 1")
+    status = engine.STATUS
+    assert status["status"] == "NOT_ISSUED"
+    assert status["forecast_issued"] is False
+    assert status["reason_code"] == "LEGACY_SIGNAL_HISTORY_ANALYSIS_RETIRED"
+    assert status["trade_recommendations"] == []
+    assert "accuracy" not in status
+    assert "probability" not in status
 
 
 def test_legacy_market_analysis_workflow_is_disabled_and_has_no_external_access():
