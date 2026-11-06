@@ -46,7 +46,7 @@ def test_derivatives_scope_and_long_liquidation_imbalance_are_explicit():
         deriv["long_liquidations_24h_usd"] + deriv["short_liquidations_24h_usd"]
     )
     assert deriv["funding_oi_weighted_percent_per_8h"] > 0
-    assert "account count" in " ".join(deriv["limitations"]).lower()
+    assert "account long/short ratio" in " ".join(deriv["limitations"]).lower()
 
 
 def test_xrpl_lending_amendments_remain_below_activation_threshold():
@@ -74,7 +74,7 @@ def test_etf_provider_disagreement_is_not_mislabeled_as_cash_flow():
     assert comparison["reconciliation_status"] == (
         "UNRECONCILED_DIFFERENT_FUND_UNIVERSES_AND_METHODS"
     )
-    assert "not direct AP cash" in insight["methodology"].lower()
+    assert "not direct ap cash" in insight["methodology"].lower()
 
 
 def test_etf_source_methodology_preserves_indirect_and_excluded_exposure():
