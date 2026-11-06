@@ -44,7 +44,7 @@ def test_xls66_is_uncollateralized_and_xls65_deposits_are_funding_capital():
     data = load_artifact()
     assert data["collateral_reconciliation"]["xrpl_xls66_borrower_collateral_required"] is False
     assert data["collateral_reconciliation"]["xrpl_xls65_vault_deposits_are_borrower_collateral"] is False
-    assert "uncollateralized loans" in data["key_distinctions"][3]
+    assert "uncollateralized fixed-term loans" in data["key_distinctions"][3]
     assert data["collateral_reconciliation"]["actual_xrpl_vault_capital_verified"] is False
 
 
