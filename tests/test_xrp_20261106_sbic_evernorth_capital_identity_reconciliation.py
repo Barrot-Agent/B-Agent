@@ -122,7 +122,9 @@ def test_no_directional_forecast_is_created_from_corporate_disclosures():
     assert len(data["competing_hypotheses"]) >= 4
     assert all(item["supporting_evidence"] and item["disconfirming_evidence"] for item in data["competing_hypotheses"])
 
-\n\ndef test_circle_sbi_is_a_direct_usdc_and_equity_relationship_not_an_xrp_purchase():
+
+
+def test_circle_sbi_is_a_direct_usdc_and_equity_relationship_not_an_xrp_purchase():
     data = load()
     relationships = {item["from"] + "->" + item["to"]: item for item in data["institutional_relationships"]}
     assert relationships["SBI Holdings->Circle"]["status"] == "DIRECT_STRATEGIC_RELATIONSHIP"
@@ -149,7 +151,9 @@ def test_permission_ask_contracts_are_from_official_permission_docs():
     source = next(item for item in load()["source_registry"] if item["id"] == "PERMISSION_ASK_CONTRACTS")
     assert source["url"] == "https://docs.permission.ai/ask-token"
 
-\n\ndef test_source_registry_ids_are_unique():
+
+
+def test_source_registry_ids_are_unique():
     ids = [item["id"] for item in load()["source_registry"]]
     assert len(ids) == len(set(ids))
 
