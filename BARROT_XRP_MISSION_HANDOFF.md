@@ -8091,3 +8091,55 @@ At the time of this append:
 
 No directional forecast, paper trade, real-money action, merge, deployment, secret rotation, Space restart, Kaggle submission or funds transfer occurred. No new branch or PR was created.
 
+
+
+## Run 15 — November 6 SBIC corporate-identity correction and latest research-branch verification
+
+### Exact-head #1643 verification
+
+Current research-branch head: `28aa17f42a59f21bf45f195023e6d204f904f97e`.
+
+- Core suite: 498 passed, 8 subtests.
+- Full repository suite: 1,409 passed, 8 subtests.
+- Six-manifest dependency audit: passed; all six dependency groups reported no known vulnerabilities.
+- Fail-closed gate: passed; automatic merge intentionally disabled.
+
+Evidence:
+- [Full CI — 42198587865](https://github.com/Barrot-Agent/B-Agent/actions/runs/42198587865)
+- [Dependency audit — 42198589160](https://github.com/Barrot-Agent/B-Agent/actions/runs/42198589160)
+- [Fail-closed gate — 42198587863](https://github.com/Barrot-Agent/B-Agent/actions/runs/42198587863)
+
+The current PR #1643 contains 295 changed files and is 389 commits ahead of main, 0 behind. Relative to #1640, 294 paths are unique. The only shared changed path remains `.github/workflows/dependency-audit.yml`, with identical blob content. Preserve the divergent branch history; do not merge #1643 directly after #1640.
+
+### SBIC primary-source correction
+
+Two append-only research corrections were added to the existing #1643 branch:
+
+- [Regional-company profile and SBI Holdings comparison addendum](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T094856Z-sbic-regional-company-primary-profile-vs-sbi-holdings-addendum.json)
+- [Corporate-number and capital-source correction](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T095354Z-sbic-corporate-number-and-capital-source-correction.json)
+- [Corporate-number/capital regression tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_sbic_corporate_number_and_capital_source_correction_20261106.py)
+- [Updated regional-entity regression tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_sbic_regional_company_primary_profile_vs_sbi_holdings_20261106.py)
+
+Primary-source corporate numbers:
+- SBIC East: `9011001030621`
+- SBIC Central: `7180001031846`
+- SBIC West: `2120001059625`
+
+The SBIC Central official company profile states capital of JPY 4,380,800,000. A secondary directory reports JPY 4,800,800,000, a JPY 420,000,000 disagreement. The official profile value is selected; the secondary value remains preserved as a disagreement, not averaged.
+
+The three regional companies identify one another as sister companies and are distinct legal entities from SBI Holdings, SBI Shinsei Bank and SBI VC Trade. Their official profiles do not identify SBI Holdings as parent. However, complete shareholder registers and beneficial-ownership records were not examined; therefore the evidence does not justify an absolute claim that no indirect shareholder or affiliate relationship has ever existed. The correction explicitly narrows the claim to what the primary records establish.
+
+The latest #1643 full suite includes the new SBIC correction tests. No corporate-ownership inference is made from acronym similarity. ChatGPT academic-benchmark SBIC remains the separate Social Bias Inference Corpus meaning.
+
+### Current integration snapshot
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- #1640 current head at the prior handoff append was `3ec6fada94a7cd018ac19f75ae4630a484afea75`; its exact-head core/full suite, 57.57% coverage, wheel, six-manifest audit and fail-closed gate passed. The present Run 15 append changes only this handoff file; its new #1640 head must receive fresh exact-head checks before merge.
+- #1640 had 154 changed files and was 437 commits ahead of main, 0 behind.
+- #1643 has 295 changed files, 294 unique relative to #1640, and its exact current head is `28aa17f42a59f21bf45f195023e6d204f904f97e`.
+- The complete open-PR inventory remains 369: 354 drafts and 15 non-drafts.
+- Both integration PRs still have zero actual approving reviews. No PR was merged and no source PR was closed.
+- The Pages deployment side effect and required branch-protection/approval evidence remain unresolved. Do not bypass branch protection or merge on the strength of a previous head's checks.
+
+No directional forecast, paper trade, real-money action, deployment, secret rotation, Space restart, Kaggle submission or funds transfer occurred. No new branch or PR was created.
+
