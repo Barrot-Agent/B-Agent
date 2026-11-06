@@ -90,7 +90,6 @@ def test_morpho_key_review_finding_is_preimage_bound_and_already_resolved():
     git_blob = hashlib.sha1(b"blob " + str(len(target)).encode() + bytes([0]) + target).hexdigest()
     correction = read_json(CORRECTION)
     original = json.loads(target.decode("utf-8"))
-    item = correction["corrections"][0]
     assert git_blob == correction["target_artifact"]["git_blob_sha"]
     assert correction["target_artifact"]["git_blob_sha"] == "303453dd9f5d11bce742dbe61e0f7cb4b18dcdd3"
     assert "morpho_market_snapshot_exact_time" in original["quality_and_limits"]
