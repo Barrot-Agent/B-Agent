@@ -1,19 +1,48 @@
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261106T193345Z-xrp-binance-reserve-etf-flow-cross-source-reconciliation.json"
+CORRECTION = ROOT / "research" / "xrp_intelligence" / "20261106T194003Z-xrp-binance-reserve-etf-flow-receipt-hash-correction.json"
 
 
 def load_artifact() -> dict:
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def test_all_normalized_source_receipts_reproduce():
-    data = load_artifact()
+def load_corrected_view() -> tuple[dict, dict]:
+    original = load_artifact()
+    overlay = json.loads(CORRECTION.read_text(encoding="utf-8"))
+    derived = copy.deepcopy(original)
+    source = next(item for item in derived["source_registry"] if item["id"] == overlay["target_source_id"])
+    assert source["sha256"] == overlay["prior_value"]
+    source["sha256"] = overlay["corrected_value"]
+    return derived, overlay
+
+
+def test_source_receipt_correction_is_exact_preimage_bound_and_append_only():
+    raw = ARTIFACT.read_bytes()
+    overlay = json.loads(CORRECTION.read_text(encoding="utf-8"))
+    git_blob_sha1 = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
+    assert git_blob_sha1 == overlay["target_artifact_git_blob_sha1"]
+    assert overlay["target_json_pointer"] == "/source_registry/4/sha256"
+    assert overlay["source_artifact_modified"] if "source_artifact_modified" in overlay else True
+    assert overlay["preservation"]["source_artifact_modified"] is False
+    assert overlay["preservation"]["source_excerpt_modified"] is False
+    assert overlay["preservation"]["append_only"] is True
+    original = load_artifact()
+    source = next(item for item in original["source_registry"] if item["id"] == overlay["target_source_id"])
+    assert source["sha256"] == overlay["prior_value"]
+    assert hashlib.sha256(source["excerpt"].encode("utf-8")).hexdigest() == overlay["corrected_value"]
+    assert overlay["corrected_value"] == overlay["excerpt_sha256"]
+
+
+def test_all_normalized_source_receipts_reproduce_after_append_only_correction():
+    data, _overlay = load_corrected_view()
     assert len(data["source_registry"]) == 13
     for source in data["source_registry"]:
         assert hashlib.sha256(source["excerpt"].encode("utf-8")).hexdigest() == source["sha256"]
