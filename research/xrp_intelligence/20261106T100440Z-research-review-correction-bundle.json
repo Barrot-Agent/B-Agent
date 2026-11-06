@@ -21,6 +21,10 @@
       "subject": "SBIC Central Japan / Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
       "correction_of": [
         {
+          "path": "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+          "git_blob_sha": "9b21bb5c0f834ddb47b443cbe6fbb6f3477edb60"
+        },
+        {
           "path": "research/xrp_intelligence/20261106T094856Z-sbic-regional-company-primary-profile-vs-sbi-holdings-addendum.json",
           "git_blob_sha": "2c14e6eee6252d05326237200f59b8340f4e4e04"
         },
@@ -51,7 +55,8 @@
         "selected_value_jpy": 4300800000,
         "selection_reason": "The regional company's own current official profile and its official history page both display 43億80万円. The third-party directory's 4,800.8百万円 remains a disagreement and is not averaged with the primary issuer value.",
         "prior_correction_status": "SUPERSEDED_BY_THIS_APPEND_ONLY_CORRECTION",
-        "original_artifacts_modified": false
+        "original_artifacts_modified": false,
+        "affected_prior_artifact_count": 3
       },
       "entity_identity": {
         "legal_name_ja": "名古屋中小企業投資育成株式会社",
