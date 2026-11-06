@@ -139,6 +139,16 @@ def _fake_fetcher(captured: datetime):
                 "bids": [["1.289", "1000"]],
                 "asks": [["1.291", "1200"]],
             }
+        elif source_id == "xrp_exchange_balances_json":
+            payload = {
+                "dataset": "XRP Exchange Balances (attributed exchange wallets)",
+                "publisher": "XRP Insights",
+                "url": "https://xrp-insights.com/exchange-balances",
+                "license": "Free to cite with attribution to xrp-insights.com",
+                "citation": "XRP Insights, xrp-insights.com/exchange-balances",
+                "definition": "XRP held in XRP Ledger wallets publicly attributed to tracked exchanges (hot, deposit and cold wallets). Not an estimate of tradable float.",
+                "methodology": "Balances: rippled account_info on the validated ledger for every tracked wallet, daily at ~08:00 UTC. Attribution: XRPSCAN public labels only (XRPSCAN balances are never used).",
+            }
         elif source_id in XRPL_NODE_SOURCES:
             payload = {
                 "result": {
@@ -218,7 +228,7 @@ def _fake_fetcher(captured: datetime):
             raise AssertionError(source_id)
         raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
         response = {"raw_bytes": raw, "payload": payload}
-        if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
+        if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth", "xrp_exchange_balances_json"} or source_id in XRPL_NODE_SOURCES:
             response["http_date"] = http_date
         return response
 
@@ -312,8 +322,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.9"
-    assert summary["parser_version"] == "xrp-public-market-v3.8"
+    assert summary["adapter_version"] == "xrp-public-market-v3.10"
+    assert summary["parser_version"] == "xrp-public-market-v3.9"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -339,6 +349,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
     assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_aggregator" for item in raw_only)
+    assert any(item["source_id"] == "xrp_exchange_balances_json" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_csv" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_xrpr_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_bitwise_issuer_page" for item in raw_only)
@@ -349,6 +360,11 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert not set(XRPL_NODE_SOURCES).intersection(manifest)
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
+    assert manifest["xrp_exchange_balances_json"]["model_eligible_source"] is False
+    assert manifest["xrp_exchange_balances_json"]["source_data_as_of_utc"] is None
+    assert manifest["xrp_exchange_balances_json"]["raw_bytes_retained"] is False
+    assert manifest["xrp_exchange_balances_json"]["raw_payload_path"] is None
+    assert "attribution" in manifest["xrp_exchange_balances_json"]["raw_retention_reason"]
     assert manifest["xrp_etf_flows_csv"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_csv"]["source_data_as_of_utc"] is None
     assert len(manifest["xrp_etf_flows_csv"]["raw_content_sha256"]) == 64
@@ -627,6 +643,40 @@ def test_xrp_insights_etf_aggregator_is_captured_raw_only_and_never_promoted_to_
             source_id="xrp_etf_flows_aggregator",
             url=dict(ENDPOINTS)["xrp_etf_flows_aggregator"],
             digest="b" * 64,
+            captured=captured,
+        )
+
+
+def test_xrp_exchange_balance_dataset_is_registered_hash_only_and_raw_only():
+    captured = datetime(2026, 11, 5, 9, 0, tzinfo=timezone.utc)
+    source_id = "xrp_exchange_balances_json"
+    url = dict(ENDPOINTS)[source_id]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    parser = PARSERS[source_id]
+    records, source_as_of, eligible, reason = parser(
+        payload,
+        source_id=source_id,
+        url=url,
+        digest="c" * 64,
+        captured=captured,
+    )
+
+    assert url == "https://xrp-insights.com/exchange-balances/data.json"
+    assert source_id in dict(SCHEDULED_ENDPOINTS)
+    assert source_id in ALLOWED_HOSTS or "xrp-insights.com" in ALLOWED_HOSTS
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert "raw_only" in reason
+    assert "same_wallet" in reason
+
+    invalid = dict(payload, publisher="unverified-copy")
+    with pytest.raises(XRPIngestionError, match="publisher identity mismatch"):
+        parser(
+            invalid,
+            source_id=source_id,
+            url=url,
+            digest="d" * 64,
             captured=captured,
         )
 
