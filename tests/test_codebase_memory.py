@@ -39,7 +39,7 @@ def test_codebase_memory_client_invokes_allowlisted_cli_with_json(tmp_path: Path
         "project": "B-Agent",
     }
     assert kwargs["capture_output"] is True
-    assert kwargs["shell"] is not True
+    assert kwargs.get("shell", False) is False
 
 
 def test_index_repository_is_confined_to_configured_root_and_local_cache(tmp_path: Path):
