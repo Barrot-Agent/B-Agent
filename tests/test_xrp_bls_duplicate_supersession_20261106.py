@@ -44,4 +44,4 @@ def test_duplicate_bls_capture_is_preserved_but_not_counted_twice() -> None:
     assert correction["application_contract"]["model_eligible"] is False
     assert correction["forecast_status"] == "NOT_ISSUED"
     assert canonical["model_admission"]["eligible_for_feature_store"] is False
-    assert canonical["forecast"]["status"] == "NOT_ISSUED"
+    assert canonical["forecast_status"]["status"] == "NOT_ISSUED"
