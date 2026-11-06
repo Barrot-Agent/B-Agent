@@ -36,7 +36,8 @@ def test_copilot_one_off_review_is_not_persistent_and_is_write_capable():
     data = load_artifact()
     row = next(x for x in data["platforms"] if x["name"] == "Copilot")
     assert row["connection_status"] == "OBSERVED_ONE_OFF_GITHUB_HOSTED_REVIEW_NOT_PERSISTENT"
-    assert "unexpected test-only branch commit" in row["authentication_status"] or "unexpected test-only branch commit" in row["permissions"]["observed"][1]
+    assert "test-only branch commit" in row["data_flow"]
+    assert "write-capable" in row["data_flow"]
     assert "not a persistent connector" in row["data_flow"]
 
 
