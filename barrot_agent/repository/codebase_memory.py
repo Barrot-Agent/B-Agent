@@ -226,7 +226,12 @@ class RepositorySyncController:
         errors: list[str] = []
 
         if remote_url:
-            fetch = self._git(\n                "fetch",\n                "--no-tags",\n                "origin",\n                f"refs/heads/{default_branch}:refs/remotes/origin/{default_branch}",\n            )
+            fetch = self._git(
+                "fetch",
+                "--no-tags",
+                "origin",
+                f"refs/heads/{default_branch}:refs/remotes/origin/{default_branch}",
+            )
             if fetch.returncode == 0:
                 fetch_succeeded = True
                 remote_ref = f"refs/remotes/origin/{default_branch}"
