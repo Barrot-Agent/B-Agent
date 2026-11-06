@@ -1,4 +1,8 @@
+import json
+import os
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -17,6 +21,7 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/autonomous_self_deployment.yml",
     ".github/workflows/subagent-spawn.yml",
     ".github/workflows/subagent-matrix.yml",
+    ".github/workflows/capability-1-market-analysis.yml",
     ".github/workflows/task-allocator.yml",
     ".github/workflows/ask-barrot.yml",
     ".github/workflows/barrot-agent.yml",
@@ -111,3 +116,34 @@ def test_coinbase_paper_trader_is_manual_exact_sha_and_artifact_only() -> None:
     assert "git commit" not in lowered
     assert "actions/upload-artifact@" in lowered
     assert "retention-days: 7" in lowered
+
+
+
+def test_legacy_market_analysis_is_permanently_retired_even_with_opt_in(
+    tmp_path: Path,
+) -> None:
+    script = REPO_ROOT / "scripts" / "market_analysis_engine.py"
+    env = os.environ.copy()
+    env["BARROT_ENABLE_LEGACY_MARKET_ANALYSIS"] = "YES"
+    env.pop("DATABRICKS_HOST", None)
+    env.pop("DATABRICKS_TOKEN", None)
+    env.pop("DATABRICKS_WAREHOUSE_ID", None)
+    env.pop("GROQ_API_KEY", None)
+
+    result = subprocess.run(
+        [sys.executable, str(script)],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=10,
+    )
+
+    assert result.returncode == 0, result.stderr
+    status = json.loads(result.stdout)
+    assert status["status"] == "NOT_ISSUED"
+    assert status["forecast_issued"] is False
+    assert status["reason_code"] == "LEGACY_SIGNAL_HISTORY_ANALYSIS_RETIRED"
+    assert status["trade_recommendations"] == []
+    assert not list(tmp_path.glob("market_analysis_*.json"))
