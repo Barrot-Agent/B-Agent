@@ -15,10 +15,11 @@ import json
 import math
 import os
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable, Mapping
-from urllib.parse import urlsplit
+from urllib.parse import urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
@@ -28,10 +29,15 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.11"
-PARSER_VERSION = "xrp-public-market-v3.10"
+ADAPTER_VERSION = "xrp-public-market-v3.12"
+PARSER_VERSION = "xrp-public-market-v3.11"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
+COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
+COINBASE_CANDLES_PER_REQUEST = 300
+MAX_COINBASE_BACKFILL_DAYS = 365
+MAX_COINBASE_BACKFILL_PAGES = 30
+COINBASE_BACKFILL_PAGE_DELAY_SECONDS = 0.5
 
 ENDPOINTS = (
     ("binance_spot_ticker", "https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT"),
@@ -1396,16 +1402,37 @@ def _parse_coinbase_ticker(
     return records, _iso(source_time), source_eligible, source_reason
 
 
-def _parse_coinbase_candles(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
-    if not isinstance(payload, list) or not payload:
+def _parse_coinbase_candles(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    page_start_utc: str | None = None,
+    page_end_utc: str | None = None,
+):
+    if not isinstance(payload, list):
+        raise XRPIngestionError("Coinbase candle response must be an array")
+    if (page_start_utc is None) != (page_end_utc is None):
+        raise XRPIngestionError("Coinbase backfill page requires both start and end boundaries")
+    page_start = _from_iso8601(page_start_utc, "Coinbase backfill page start") if page_start_utc is not None else None
+    page_end = _from_iso8601(page_end_utc, "Coinbase backfill page end") if page_end_utc is not None else None
+    if page_start is not None and page_start >= page_end:
+        raise XRPIngestionError("Coinbase backfill page start must precede its end")
+    if not payload and page_start is None:
         raise XRPIngestionError("Coinbase candle response must be a non-empty array")
+
     captured_s = _iso(captured)
     records = []
     latest_close = None
     incomplete = 0
+    seen_open_times = set()
+    in_range_rows = []
     limitations = [
         "Historical Coinbase candles were first observed at this capture time; they are not known at historical event times.",
-        "The public Coinbase endpoint returns at most 300 candles per request; pagination is not yet implemented.",
+        "The public Coinbase endpoint returns at most 300 candles per request; extended history is acquired only by an explicit manual backfill.",
+        "Coinbase omits intervals with no ticks; missing hours are not synthesized as zero-volume candles.",
     ]
     metrics = (
         (1, "low_price", "USD/XRP"),
@@ -1418,7 +1445,15 @@ def _parse_coinbase_candles(payload: Any, *, source_id: str, url: str, digest: s
         if not isinstance(row, list) or len(row) < 6:
             raise XRPIngestionError("Coinbase candle row does not match the documented schema")
         open_time = _from_seconds(row[0], "Coinbase candle open time")
-        close_time = open_time + timedelta(seconds=3600)
+        if page_start is not None and (open_time < page_start or open_time >= page_end):
+            continue
+        if open_time in seen_open_times:
+            raise XRPIngestionError("Coinbase candle response contains a duplicate timestamp")
+        seen_open_times.add(open_time)
+        in_range_rows.append((open_time, row))
+
+    for open_time, row in sorted(in_range_rows, key=lambda item: item[0]):
+        close_time = open_time + timedelta(seconds=COINBASE_CANDLE_GRANULARITY_SECONDS)
         if close_time > captured:
             incomplete += 1
             continue
@@ -1451,10 +1486,44 @@ def _parse_coinbase_candles(payload: Any, *, source_id: str, url: str, digest: s
                 )
             )
     if not records:
+        if page_start is not None:
+            return [], None, False, "coinbase_backfill_page_has_no_in_range_completed_candles"
         raise XRPIngestionError("Coinbase candle response contains no completed hourly candles")
     reason = f"incomplete_current_candles_skipped:{incomplete}" if incomplete else ""
     return records, latest_close, True, reason
 
+
+def _coinbase_candle_backfill_ranges(oldest_open: datetime, days: int) -> list[tuple[datetime, datetime]]:
+    """Build contiguous, non-overlapping Coinbase hourly windows of at most 300 candles."""
+    if isinstance(days, bool) or not isinstance(days, int) or not 1 <= days <= MAX_COINBASE_BACKFILL_DAYS:
+        raise XRPIngestionError(f"Coinbase backfill days must be an integer from 1 to {MAX_COINBASE_BACKFILL_DAYS}")
+    if not isinstance(oldest_open, datetime) or oldest_open.tzinfo is None or oldest_open.utcoffset() is None:
+        raise XRPIngestionError("Coinbase backfill boundary must be timezone-aware")
+    end = oldest_open.astimezone(timezone.utc)
+    start = end - timedelta(days=days)
+    ranges = []
+    cursor = start
+    page_width = timedelta(hours=COINBASE_CANDLES_PER_REQUEST)
+    while cursor < end:
+        page_end = min(cursor + page_width, end)
+        ranges.append((cursor, page_end))
+        cursor = page_end
+    if not ranges or len(ranges) > MAX_COINBASE_BACKFILL_PAGES:
+        raise XRPIngestionError("Coinbase backfill page count exceeds its bounded limit")
+    return ranges
+
+
+def _coinbase_candle_page_url(start: datetime, end: datetime) -> str:
+    base_url = dict(ENDPOINTS)["coinbase_spot_candles"]
+    parts = urlsplit(base_url)
+    query = urlencode(
+        {
+            "granularity": str(COINBASE_CANDLE_GRANULARITY_SECONDS),
+            "start": _iso(start),
+            "end": _iso(end),
+        }
+    )
+    return f"{parts.scheme}://{parts.netloc}{parts.path}?{query}"
 
 def _raw_only_coinbase_book(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
     if not isinstance(payload, Mapping):
@@ -2395,16 +2464,147 @@ def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     return fetch_public_json(source_id, url)
 
 
+def _run_coinbase_candle_backfill(
+    *,
+    fetcher: Callable[[str, str], Mapping[str, Any]],
+    archive: RawReceiptArchive,
+    captured: datetime,
+    captured_s: str,
+    oldest_open: datetime,
+    days: int,
+    receipts: list[dict[str, Any]],
+    records: list[dict[str, Any]],
+    failures: list[dict[str, Any]],
+    raw_only: list[dict[str, Any]],
+) -> dict[str, Any]:
+    ranges = _coinbase_candle_backfill_ranges(oldest_open, days)
+    state = {
+        "status": "RUNNING",
+        "mode": "MANUAL_ONLY_ADDITIONAL_HISTORY",
+        "requested_days_before_oldest_latest_page_candle": days,
+        "baseline_oldest_candle_open_utc": _iso(oldest_open),
+        "range_start_utc": _iso(ranges[0][0]),
+        "range_end_utc": _iso(ranges[-1][1]),
+        "pages_requested": len(ranges),
+        "pages_completed": 0,
+        "pages_failed": 0,
+        "empty_pages": 0,
+        "candles_ingested": 0,
+        "max_candles_per_request": COINBASE_CANDLES_PER_REQUEST,
+        "max_days_per_invocation": MAX_COINBASE_BACKFILL_DAYS,
+        "page_delay_seconds": COINBASE_BACKFILL_PAGE_DELAY_SECONDS,
+    }
+    observed_candles = set()
+    parser = PARSERS["coinbase_spot_candles"]
+    for page_index, (page_start, page_end) in enumerate(ranges, start=1):
+        page_source_id = f"coinbase_spot_candles_backfill_page_{page_index:03d}"
+        page_url = _coinbase_candle_page_url(page_start, page_end)
+        response: Mapping[str, Any] | None = None
+        raw_bytes: bytes | None = None
+        parsed_records = []
+        source_as_of = None
+        source_eligible = False
+        reason = ""
+        try:
+            response = fetcher("coinbase_spot_candles", page_url)
+            if not isinstance(response, Mapping):
+                raise XRPIngestionError("Coinbase backfill fetcher response must be a mapping")
+            raw_bytes = response.get("raw_bytes")
+            payload = response.get("payload")
+            if not isinstance(raw_bytes, bytes) or not raw_bytes:
+                raise XRPIngestionError("Coinbase backfill raw response must be non-empty bytes")
+            digest = hashlib.sha256(raw_bytes).hexdigest()
+            parsed_records, source_as_of, source_eligible, reason = parser(
+                payload,
+                source_id="coinbase_spot_candles",
+                url=page_url,
+                digest=digest,
+                captured=captured,
+                page_start_utc=_iso(page_start),
+                page_end_utc=_iso(page_end),
+            )
+        except Exception as exc:
+            failure = {
+                "source_id": page_source_id,
+                "source_family_id": "coinbase_spot_candles",
+                "page_index": page_index,
+                "error_type": type(exc).__name__,
+            }
+            if isinstance(response, Mapping) and isinstance(raw_bytes, bytes) and raw_bytes:
+                raw_reason = f"source_processing_failure:{type(exc).__name__}"
+                receipt = archive.store(
+                    source_id=page_source_id,
+                    source_uri=page_url,
+                    captured_at_utc=captured_s,
+                    raw_bytes=raw_bytes,
+                    source_data_as_of_utc=None,
+                    model_eligible=False,
+                    raw_only_reason=raw_reason,
+                    source_http_date=response.get("http_date"),
+                )
+                receipts.append(receipt)
+                raw_only.append(
+                    {
+                        "source_id": page_source_id,
+                        "reason": raw_reason,
+                        "receipt_id": receipt["receipt_id"],
+                    }
+                )
+                failure["raw_receipt_id"] = receipt["receipt_id"]
+                failure["raw_content_sha256"] = receipt["raw_content_sha256"]
+            failures.append(failure)
+            state["pages_failed"] += 1
+        else:
+            receipt_reason = reason or ("" if source_eligible else "coinbase_backfill_page_not_model_eligible")
+            receipt = archive.store(
+                source_id=page_source_id,
+                source_uri=page_url,
+                captured_at_utc=captured_s,
+                raw_bytes=raw_bytes,
+                source_data_as_of_utc=source_as_of,
+                model_eligible=source_eligible,
+                raw_only_reason=receipt_reason,
+                source_http_date=response.get("http_date"),
+            )
+            receipts.append(receipt)
+            records.extend(parsed_records)
+            state["pages_completed"] += 1
+            if not parsed_records:
+                state["empty_pages"] += 1
+            for item in parsed_records:
+                observed_candles.add(item["event_time_utc"])
+            if reason:
+                raw_only.append(
+                    {
+                        "source_id": page_source_id,
+                        "reason": reason,
+                        "receipt_id": receipt["receipt_id"],
+                    }
+                )
+        if page_index < len(ranges):
+            time.sleep(COINBASE_BACKFILL_PAGE_DELAY_SECONDS)
+
+    state["candles_ingested"] = len(observed_candles)
+    if state["pages_failed"]:
+        state["status"] = "PARTIAL" if state["pages_completed"] else "FAILED"
+    else:
+        state["status"] = "COMPLETED"
+    return state
+
+
 def run_ingestion(
     output_dir: str | Path,
     *,
     fetcher: Callable[[str, str], Mapping[str, Any]] = _default_public_fetcher,
     now: datetime | None = None,
     include_noncommercial_xrpl_nodes: bool = False,
+    coinbase_backfill_days: int = 0,
 ) -> dict[str, Any]:
-    """Capture public XRP data; non-commercial XRPL nodes are excluded by default."""
+    """Capture public XRP data; optional Coinbase history backfill is manual-only."""
     if not isinstance(include_noncommercial_xrpl_nodes, bool):
         raise XRPIngestionError("include_noncommercial_xrpl_nodes must be a boolean")
+    if isinstance(coinbase_backfill_days, bool) or not isinstance(coinbase_backfill_days, int) or not 0 <= coinbase_backfill_days <= MAX_COINBASE_BACKFILL_DAYS:
+        raise XRPIngestionError(f"coinbase_backfill_days must be an integer from 0 to {MAX_COINBASE_BACKFILL_DAYS}")
     captured = now or datetime.now(timezone.utc)
     captured_s = _iso(captured)
     selected_endpoints = (
@@ -2525,6 +2725,42 @@ def run_ingestion(
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
 
+    coinbase_backfill = {
+        "status": "NOT_REQUESTED",
+        "mode": "MANUAL_ONLY_ADDITIONAL_HISTORY",
+        "requested_days_before_oldest_latest_page_candle": coinbase_backfill_days,
+        "pages_requested": 0,
+        "pages_completed": 0,
+        "pages_failed": 0,
+        "empty_pages": 0,
+        "candles_ingested": 0,
+        "max_days_per_invocation": MAX_COINBASE_BACKFILL_DAYS,
+    }
+    if coinbase_backfill_days:
+        latest_coinbase_close_times = [
+            record["event_time_utc"]
+            for record in records
+            if record.get("source_id") == "coinbase_spot_candles"
+            and record.get("feature_id") == "xrp.spot.coinbase.1h.close_price"
+        ]
+        if not latest_coinbase_close_times:
+            coinbase_backfill["status"] = "BLOCKED_NO_BASELINE_CANDLE_BOUNDARY"
+            coinbase_backfill["reason"] = "the latest Coinbase candle page produced no usable completed candle boundary"
+        else:
+            oldest_open = _from_iso8601(min(latest_coinbase_close_times), "oldest Coinbase candle open time")
+            coinbase_backfill = _run_coinbase_candle_backfill(
+                fetcher=fetcher,
+                archive=archive,
+                captured=captured,
+                captured_s=captured_s,
+                oldest_open=oldest_open,
+                days=coinbase_backfill_days,
+                receipts=receipts,
+                records=records,
+                failures=failures,
+                raw_only=raw_only,
+            )
+
     receipt_chain_verification = archive.write_manifest(output / "receipt_chain_manifest.json")
 
     if include_noncommercial_xrpl_nodes:
@@ -2640,6 +2876,7 @@ def run_ingestion(
         "feature_store_cutoff_utc": store_cutoff_s,
         "evaluation_as_of_utc": evaluation_as_of_s,
         "source_receipt_count": len(receipts),
+        "coinbase_backfill": coinbase_backfill,
         "receipt_chain_manifest_path": "receipt_chain_manifest.json",
         "receipt_chain_verification": receipt_chain_verification,
         "source_failure_count": len(failures),
@@ -2704,7 +2941,7 @@ def run_ingestion(
             "USDT quotes and Binance-reported open-interest value are not converted to USD; open-interest contracts, quote value, funding fractions and account ratios remain separate units.",
             "Historical Binance funding settlements are timestamped per event; the actual funding interval is not assumed fixed. Binance open-interest and global long/short history are one-hour observations limited to the latest 30 days, with no-trade gaps preserved as missing.",
             "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header; OKX depth is admitted only with a fresh exchange-provided snapshot timestamp and does not establish sequence continuity.",
-            "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase candle pagination is not yet implemented.",
+            "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase history beyond the latest endpoint page is manual-only, bounded to 365 additional days, paged at no more than 300 hourly candles per request, and never polled by the scheduled workflow.",
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
             "The cumulative SQLite feature store uses an exact-key cache when available, otherwise the latest successful per-run checkpoint (7-day retention), with the daily/manual archive (90-day retention) as fallback. Cache remains derived and evictable; if no checkpoint or daily archive is available, continuity can still fall back to bootstrap. Automatic rebuild from raw receipts is not yet implemented.",
             "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
@@ -2724,8 +2961,14 @@ def run_ingestion(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Capture public XRP spot, order-book, funding, open-interest and positioning data.")
     parser.add_argument("--output-dir", default="artifacts/xrp_ingestion")
+    parser.add_argument(
+        "--coinbase-backfill-days",
+        type=int,
+        default=0,
+        help="Manual-only additional Coinbase XRP-USD hourly history before the latest candle page (0 disables; maximum 365 days).",
+    )
     args = parser.parse_args()
-    summary = run_ingestion(args.output_dir)
+    summary = run_ingestion(args.output_dir, coinbase_backfill_days=args.coinbase_backfill_days)
     print(json.dumps(summary, indent=2, sort_keys=True))
 
 
