@@ -7,13 +7,18 @@ from email.utils import format_datetime
 from pathlib import Path
 
 import pytest
+from io import BytesIO
+from urllib.error import HTTPError
 
+import barrot_agent.evolution.xrp_public_ingestion as xrp_ingestion
 from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.xrp_public_ingestion import (
     RawReceiptArchive,
     _walk_forward_report,
     _coinbase_candle_backfill_ranges,
     XRPIngestionError,
+    XRPSourceHTTPError,
+    _source_failure_record,
     fetch_public_json,
     fetch_public_csv,
     fetch_public_html,
@@ -2062,3 +2067,68 @@ def test_bybit_orderbook_fails_closed_on_missing_matching_engine_time_or_crossed
     with pytest.raises(XRPIngestionError, match="crossed or locked"):
         parser(crossed, source_id=source_id, url=url, digest="b" * 64, captured=captured)
 
+
+
+def test_public_json_fetch_preserves_http_status_and_reason(monkeypatch):
+    url = "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT"
+
+    def forbidden(*_args, **_kwargs):
+        raise HTTPError(url, 403, "Forbidden", {}, BytesIO(b""))
+
+    monkeypatch.setattr(xrp_ingestion, "_open_public_request", forbidden)
+    with pytest.raises(XRPSourceHTTPError) as error:
+        fetch_public_json("bybit_spot_ticker", url)
+    assert error.value.status_code == 403
+    assert error.value.source_id == "bybit_spot_ticker"
+    assert error.value.reason == "Forbidden"
+
+
+def test_bybit_403_failure_is_recorded_as_access_forbidden_not_empty_data():
+    failure = _source_failure_record(
+        "bybit_spot_ticker",
+        "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+        "2026-11-07T14:00:00Z",
+        XRPSourceHTTPError("bybit_spot_ticker", 403, "Forbidden"),
+    )
+    assert failure["http_status_code"] == 403
+    assert failure["error_category"] == "provider_http_forbidden"
+    assert failure["model_eligible"] is False
+    assert failure["retryable"] is False
+    assert "runner region is unverified" in failure["access_restriction_hint"]
+    assert failure["provider_access_documentation_url"] == "https://bybit-exchange.github.io/docs/v5/guide"
+
+
+def test_http_429_failure_is_classified_as_provider_rate_limited():
+    failure = _source_failure_record(
+        "binance_spot_ticker",
+        "https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT",
+        "2026-11-07T14:00:00Z",
+        XRPSourceHTTPError("binance_spot_ticker", 429, "Too Many Requests"),
+    )
+    assert failure["http_status_code"] == 429
+    assert failure["error_category"] == "provider_rate_limited"
+    assert failure["retryable"] is True
+    assert failure["model_eligible"] is False
+
+
+def test_ingestion_records_bybit_403_with_source_url_and_capture_time(tmp_path):
+    captured = datetime(2026, 11, 7, 14, 0, tzinfo=timezone.utc)
+    base_fetcher = _fake_fetcher(captured)
+
+    def fetcher(source_id: str, url: str):
+        if source_id == "bybit_spot_ticker":
+            raise XRPSourceHTTPError(source_id, 403, "Forbidden")
+        return base_fetcher(source_id, url)
+
+    summary = run_ingestion(tmp_path, fetcher=fetcher, now=captured)
+    failures = json.loads((tmp_path / "source_failures.json").read_text(encoding="utf-8"))
+    bybit_failure = next(item for item in failures if item["source_id"] == "bybit_spot_ticker")
+    receipts = json.loads((tmp_path / "receipt_manifest.json").read_text(encoding="utf-8"))
+
+    assert summary["source_failure_count"] == 1
+    assert bybit_failure["source_uri"] == "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT"
+    assert bybit_failure["captured_at_utc"] == "2026-11-07T14:00:00Z"
+    assert bybit_failure["http_status_code"] == 403
+    assert bybit_failure["error_category"] == "provider_http_forbidden"
+    assert bybit_failure["model_eligible"] is False
+    assert not any(item["source_id"] == "bybit_spot_ticker" for item in receipts)
