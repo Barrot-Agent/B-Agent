@@ -162,19 +162,21 @@
         "underlying_data_source": "SoSoValue via CoinGape",
         "cutoff": "article published 2026-11-07",
         "independence_group": "sosovalue",
-        "status": "secondary_relay"
+        "status": "secondary_relay",
+        "qualification": "The no-flow period is consistent with Alpha Finance through the 2026-11-06 session. The USD 1.41 billion net-assets claim is not verified by Alpha Finance."
       },
       {
-        "source_id": "cryptoetf_today_via_biggo",
-        "source_uri": "https://finance.biggo.com/news/2d124493-13cc-4139-a15c-d7d5802e3250",
-        "claim": "Cumulative net inflows near USD 1.81 billion; five-fund net assets near USD 1.46 billion as of Nov 3; zero flow Nov 3; preliminary zero creations/redemptions Nov 4",
-        "underlying_data_source": "CryptoETF Today",
-        "cutoff": "2026-11-03 plus preliminary 2026-11-04",
-        "independence_group": "cryptoetf_today",
-        "status": "secondary_relay"
+        "source_id": "alpha_finance_xrp_etf",
+        "source_uri": "https://alphafinance.io/etf/xrp/",
+        "claim": "Five funds; zero flows Nov 3–6; +USD 8.4M over Oct 27–Nov 6; +USD 45.9M over 30 sessions; cumulative net inflow USD 1.73B; no XRP fund net-assets or holdings published",
+        "underlying_data_source": "Alpha Finance aggregator; underlying per-feed provenance is not fully disclosed for each XRP field",
+        "cutoff": "through 2026-11-06 session",
+        "independence_group": "alpha_finance_aggregator",
+        "status": "secondary_aggregator",
+        "qualification": "Confirms the recent zero-flow sequence but explicitly does not publish XRP fund AUM/holdings. Do not infer net assets from cumulative net inflow."
       }
     ],
-    "etf_reconciliation": "Do not average. The source chains, cutoffs, asset/flow definitions and possible fund coverage differ. Neither is an issuer-confirmed cash creation/redemption record in this artifact.",
+    "etf_reconciliation": "The no-new-flow period since Oct 29 is corroborated by Alpha Finance through the Nov 6 session. The USD 1.41B net-assets claim in the CryptoTicker/SoSoValue relay is not supported by Alpha Finance, which explicitly states that XRP fund net assets and holdings are not published. Cumulative net inflow (USD 1.73B) is not the same as current AUM or holdings. Keep provider chains, cutoffs and definitions separate; do not average.",
     "coinglass_methodology": "CoinGlass states liquidation pain amounts are estimates from perpetual-futures liquidation heatmaps, not actual resting orders. Its 24-hour touch probability is a random-walk estimate using seven days of hourly volatility and is not a directional forecast."
   },
   "institutional_events": [
@@ -591,15 +593,6 @@
       "capture_method": "normalized_secondary_excerpt"
     },
     {
-      "source_id": "biggo_cryptoetf_tracker",
-      "url": "https://finance.biggo.com/news/2d124493-13cc-4139-a15c-d7d5802e3250",
-      "published_or_event_date": "2026-11-06",
-      "source_type": "secondary_relay_of_cryptoetf_today",
-      "independence_group": "cryptoetf_today",
-      "normalized_excerpt_sha256": "7546b8580523a0963b61c852085bf30ba3ef7ef6fb23dbcbeeeea0945a2b8b6e",
-      "capture_method": "normalized_secondary_excerpt"
-    },
-    {
       "source_id": "coinglass_methodology",
       "url": "https://www.coinglass.com/liquidation-maxpain",
       "published_or_event_date": null,
@@ -607,6 +600,33 @@
       "independence_group": "coinglass",
       "normalized_excerpt_sha256": "9c1522fe33086fa0d72d5e8c5bc4cbc3eb54cabb530fec2d6f02d98881e84abc",
       "capture_method": "normalized_provider_methodology_excerpt"
+    },
+    {
+      "source_id": "cryptoticker_xrp_oi",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-long-squeeze-1-15-november-7-2026/",
+      "published_or_event_date": "2026-11-07",
+      "source_type": "secondary_analysis",
+      "independence_group": "okx",
+      "normalized_excerpt_sha256": "8187f49b3fdfb77f7cb6fb902fa34052527e789e84141a73df7f9b255d4931e6",
+      "capture_method": "normalized_secondary_excerpt"
+    },
+    {
+      "source_id": "cryptoticker_sosovalue_etf_relay",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-long-squeeze-1-15-november-7-2026/",
+      "published_or_event_date": "2026-11-07",
+      "source_type": "secondary_relay_of_sosovalue_via_coingape",
+      "independence_group": "sosovalue",
+      "normalized_excerpt_sha256": "c57e194376e29a4ff7a052f5cd66bbb93cc4243f75a09ded943f32c5551c5a6a",
+      "capture_method": "normalized_secondary_excerpt"
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "published_or_event_date": "2026-11-06",
+      "source_type": "secondary_aggregator",
+      "independence_group": "alpha_finance_aggregator",
+      "normalized_excerpt_sha256": "eabcc334fe85b5b622ef510cff4d70daa89f0cf0ba12f4f69bd2458943dadacd",
+      "capture_method": "normalized_dashboard_excerpt"
     }
   ],
   "normalized_excerpts": {
@@ -614,7 +634,7 @@
     "bitbank_original_terms": "The June 25, 2026 SBI Holdings announcement specified total acquisition consideration of JPY 46.7 billion and described the transaction through wholly owned subsidiary SBICAH GK. After the share transfer, capital increase and treasury-stock acquisition, the expected indirect voting ownership was 100%.",
     "jadat_sale": "On 2026-09-25, Bitbank announced its decision to transfer all shares of its subsidiary Japan Digital Asset Trust (JADAT) preparation company to Sumitomo Mitsui Trust Bank; JADAT was expected to become a wholly owned subsidiary of Sumitomo Mitsui Trust Group. The retrieved announcement states a decision, not verified completion.",
     "open_standard": "On 2026-10-16, SBI Holdings and Startale announced participation in Open Standard. The announcement names Coinbase, Mastercard, Shopify, Stripe and Visa as founding partners and says more than 140 companies participate. SBI and Startale said they were considering a proof of concept for interoperability between JPYSC and OUSD. The announcement explicitly says this is not a new service or production settlement launch.",
-    "blackrock_jpysc": "On 2026-10-27, SBI Holdings, Startale Group, BlackRock Financial Management and BlackRock Japan signed a basic agreement to explore tokenized money-market-fund and JPYSC connectivity across technology/infrastructure, business/sales, and regulatory/market development. No production product launch was announced.",
+    "blackrock_jpysc": "On 2026-10-27, SBI Holdings, Startale Group, BlackRock Financial Management and BlackRock Japan signed a basic agreement to explore connecting tokenized money-market funds and JPYSC. The stated work covers technology/infrastructure, business/sales, and regulatory/market development. No production product launch was announced.",
     "trust_merger": "On 2026-10-29, SBI Shinsei Trust Bank and SBI Clearing Trust signed a merger agreement with an effective date planned for 2026-12-31, subject to required FSA and Kanto Local Finance Bureau approvals. SBI Clearing Trust began accepting trusts of spot crypto assets in July 2023. The merger is planned, not completed.",
     "smfg_jpysc": "On 2026-10-30, SBI Holdings and Sumitomo Mitsui Financial Group signed a capital and business alliance to study new financial services using stablecoins. SMBC Group agreed to a 5% equity stake in SBI Startale Marketing, the SBI/Startale joint venture focused on JPYSC promotion. The agreement is exploratory; no investment amount or production service launch was disclosed.",
     "mesh_jv": "On 2026-10-07, SBI Holdings, Mesh Connect and Money Forward announced a basic agreement to form Mesh SBI Money Forward Network KK. The planned capitalization is JPY 100 million, with Mesh 60%, SBI Group 26%, and Money Forward 14%. Final agreements and regulatory procedures remain prerequisites; the stated scope includes exchange/wallet API connections, digital-asset transfers, purchases, remittances and payments.",
@@ -629,7 +649,8 @@
     "okx_oi": "CryptoTicker reports OKX XRP open interest of USD 132.1 million on Nov 4, USD 122.4 million on Nov 5 and USD 117.1 million on Nov 6, alongside futures volume of USD 384.6 million on Nov 6 versus USD 305.9 million on Nov 5. Contract coverage and the exact valuation methodology are not independently exposed in the article.",
     "etf_sosovalue": "CryptoTicker reports, citing SoSoValue via CoinGape, that US spot XRP ETFs had no new money since Oct 29 and net assets around USD 1.41 billion.",
     "etf_cryptoetf": "BigGo Finance reports, citing CryptoETF Today's tracker, cumulative US spot XRP ETF net inflows near USD 1.81 billion, combined net assets near USD 1.46 billion across five funds as of Nov 3, zero flow Nov 3, and preliminary zero creations/redemptions Nov 4. These are a different source chain and cutoff from the SoSoValue-derived report; do not average.",
-    "coinglass_method": "CoinGlass explains that liquidation pain levels and amounts are estimates from perpetual-futures liquidation heatmaps, not actual resting orders. Its 24-hour touch probability uses a random-walk calculation based on seven days of hourly volatility and is explicitly not a directional forecast."
+    "coinglass_method": "CoinGlass explains that liquidation pain levels and amounts are estimates from perpetual-futures liquidation heatmaps, not actual resting orders. Its 24-hour touch probability uses a random-walk calculation based on seven days of hourly volatility and is explicitly not a directional forecast.",
+    "alpha_finance_etf": "Alpha Finance's XRP ETF dashboard, through the 2026-11-06 session, covers five funds and reports zero flow on Nov 3, Nov 4, Nov 5 and Nov 6; +USD 8.4 million over the last seven sessions (Oct 27–Nov 6); +USD 45.9 million over 30 sessions; and cumulative net inflow of USD 1.73 billion. It explicitly says fund net assets and holdings are not published for XRP funds."
   },
   "feature_admission": {
     "market_snapshot_model_eligible": false,
