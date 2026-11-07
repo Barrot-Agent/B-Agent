@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T10:56:51Z",
+  "captured_at_utc": "2026-11-07T11:47:35Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "1a5492bd33d0c3e12d255af99e50305a9c48bbdb",
-  "observed_research_head": "2b272931befa9764fb3edd90bafacfabef6b5660",
+  "observed_integration_head_before_map_commit": "9b88d40f1425154b7fb80f2080dea6b90f395a04",
+  "observed_research_head": "35f41937d81d0a3ef386fbe59c43196b27849754",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -30,7 +30,12 @@
         "Committed two fail-closed regression corrections on existing #1640 and verified its current head with 1,108 full-suite tests, 631 core tests, 57.90% coverage and installed-wheel verification.",
         "Committed one visible-depth/taker-flow reconciliation artifact and eight offline regression tests to existing #1643; its exact-head full suite and dependency audit are pending.",
         "Run 11: current exact-head full repository suites passed on #1640 and #1643; six-manifest dependency audits and fail-closed gates passed on both current heads.",
-        "Run 11: existing-branch GitHub commits added temporal calibration event-order validation, two append-only XRP market-evidence artifacts and deterministic regression tests; no main write, secret read or external model transfer occurred."
+        "Run 11: existing-branch GitHub commits added temporal calibration event-order validation, two append-only XRP market-evidence artifacts and deterministic regression tests; no main write, secret read or external model transfer occurred.",
+        "Run 22: refetched main SHA/tree, all four open-PR pages (371 total), current #1640/#1643 heads, branch ancestry, changed-path overlap, reviews and review threads.",
+        "Run 22: verified #1640 exact-head full suite (1,110), core suite (631), 57.91% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate.",
+        "Run 22: committed two append-only XRP research artifacts and eight regression tests to existing #1643; exact head 35f41937 passed 1,845 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate.",
+        "Run 22: #1640 has 22/22 resolved inline review threads and #1643 has 19/19; both have zero APPROVED reviews. Main remains unchanged at 9100dbacb5f9f1b973b053a65ef1e91e96b64f72.",
+        "Run 22: no main write, merge, deployment, secret read/rotation, external model transfer, paper trade or real-money action occurred."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -58,14 +63,16 @@
           "Current-session GitHub connector successfully inspected the existing V3 integration branch; this handoff/map update is being committed to that existing branch only.",
           "No secret values were read, no external model received repository data, and no deployment or financial action was performed.",
           "Run 11 used the existing GitHub connector to commit the current durable handoff and this capability map on the existing integration branch; no main write, secret read or external model transfer occurred.",
-          "Run 11: current GitHub connector access verified by reading full repository trees, enumerating all open PR pages, comparing branch ancestry and paths, reading reviews/threads, inspecting Actions jobs/logs, and committing to existing branches only."
+          "Run 11: current GitHub connector access verified by reading full repository trees, enumerating all open PR pages, comparing branch ancestry and paths, reading reviews/threads, inspecting Actions jobs/logs, and committing to existing branches only.",
+          "Run 22: current GitHub connector read all four open-PR pages, complete main tree, current PR details, review records/threads, exact-head workflow runs and logs; committed research artifacts on existing #1643 and refreshed this handoff/map on existing #1640 only.",
+          "Run 22: no external model was sent repository or user data; no secret values were read and no main-branch write occurred."
         ]
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-07T10:56:51Z"
+      "last_verified_at_utc": "2026-11-07T11:47:35Z"
     },
     "Claude": {
       "intended_role": [
@@ -124,7 +131,8 @@
       "authentication_status": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY",
       "verification_evidence": [
         "PR #1640 has a copilot-pull-request-reviewer COMMENTED review dated 2026-11-04",
-        "PR #1643 has a copilot-pull-request-reviewer COMMENTED review dated 2026-11-04"
+        "PR #1643 has a copilot-pull-request-reviewer COMMENTED review dated 2026-11-04",
+        "Run 22: #1640 and #1643 each have ten COMMENTED review records and zero APPROVED reviews; COMMENTED reviews are not approvals."
       ],
       "permission_scope": "Observed GitHub PR review comments only; no direct persistent Copilot account/API connection verified.",
       "data_flow": {
