@@ -196,3 +196,77 @@ def test_originals_remain_immutable_and_corrected_view_is_not_model_eligible(ove
     assert "source_preimages/<git_blob_sha>.json" in overlay["application_contract"]["correction_mode"]
     assert "historical, not current" in overlay["application_contract"]["correction_mode"]
     assert "neither the current source blob nor the archived preimage matches" in overlay["application_contract"]["if_any_source_blob_sha_mismatches"]
+
+
+def test_c07_average_cost_override_is_superseded_by_214m_purchase_cost() -> None:
+    from decimal import Decimal
+
+    archive_path = ROOT / "research" / "xrp_intelligence" / "20261104T144241Z-archive-review-corrections-and-point-in-time-quarantine.json"
+    target_path = ROOT / "research" / "xrp_intelligence" / "20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json"
+    supersession_path = ROOT / "research" / "xrp_intelligence" / "20261107T113335Z-evernorth-c07-average-cost-correction-supersession.json"
+    cash_correction_path = ROOT / "research" / "xrp_intelligence" / "20261106T080100Z-evernorth-advance-funding-purchase-cost-correction.json"
+    graph_overlay_path = ROOT / "research" / "xrp_intelligence" / "20261106T201855Z-archive-data-integrity-correction-overlays.json"
+
+    archive_text = archive_path.read_text(encoding="utf-8")
+    target_text = target_path.read_text(encoding="utf-8")
+    archive = json.loads(archive_text)
+    original = json.loads(target_text)
+    supersession = json.loads(supersession_path.read_text(encoding="utf-8"))
+    cash_correction = json.loads(cash_correction_path.read_text(encoding="utf-8"))
+    graph_overlay = json.loads(graph_overlay_path.read_text(encoding="utf-8"))
+
+    assert _git_blob_sha(archive_text) == supersession["prior_overlay"]["git_blob_sha1"]
+    assert _git_blob_sha(target_text) == supersession["target_artifact"]["git_blob_sha1"]
+
+    c07 = next(
+        item for item in archive["correction_overlay"]["entries"]
+        if item["correction_id"] == "C07_EVERNORTH_CAPITAL_LEDGER"
+    )
+    c07_cost = next(
+        item for item in c07["field_corrections"]
+        if item["path"] == "$.xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_usd_per_xrp"
+    )
+    assert c07_cost["canonical_value"] == 2.53716325
+    assert c07_cost["formula"] == "214050000 / 84365876"
+
+    derived = copy.deepcopy(original)
+    target = derived["xrp_asset_reconciliation"]["cash_funded_market_purchase"]
+    assert target["implied_average_cost_usd_per_xrp"] == pytest.approx(2.53657058)
+    target["implied_average_cost_usd_per_xrp"] = c07_cost["canonical_value"]
+    assert target["implied_average_cost_usd_per_xrp"] == 2.53716325
+
+    correction = supersession["correction"]
+    assert correction["target_json_pointer"] == "/xrp_asset_reconciliation/cash_funded_market_purchase/implied_average_cost_usd_per_xrp"
+    assert correction["expected_prior_canonical_value"] == 2.53716325
+    assert correction["canonical_value"] == 2.53657058
+    assert supersession["supersession"]["supersedes_only_field"].endswith("implied_average_cost_usd_per_xrp")
+    target["implied_average_cost_usd_per_xrp"] = correction["canonical_value"]
+    assert target["implied_average_cost_usd_per_xrp"] == 2.53657058
+
+    bridge = supersession["cash_bridge"]
+    assert bridge["advance_funding_cash_received_exact_usd"] == 214049995
+    assert bridge["advance_funding_cash_received_summary_rounded_usd"] == 214050000
+    assert bridge["cash_used_to_purchase_xrp_usd"] == 214000000
+    assert bridge["restricted_cash_at_2025_12_31_usd"] == 49995
+    assert bridge["advance_funding_cash_received_exact_usd"] - bridge["cash_used_to_purchase_xrp_usd"] == bridge["restricted_cash_at_2025_12_31_usd"]
+    recomputed = Decimal("214000000") / Decimal("84365876.3625")
+    assert abs(recomputed - Decimal("2.53657058")) < Decimal("0.00000001")
+    assert bridge["xrp_purchased_exact"] == pytest.approx(84365876.3625)
+
+    # The later $214M correction records the right cash bridge but did not
+    # supersede C07's separate average-price field override; this artifact does.
+    assert cash_correction["primary_source_evidence"]["cash_used_to_purchase_digital_assets_usd"] == 214000000
+    assert cash_correction["primary_source_evidence"]["issuer_reported_average_purchase_price_usd_per_xrp"] == 2.53657058
+    assert supersession["application_contract"]["model_eligible"] is False
+    assert supersession["forecast_status"]["directional_forecast_issued"] is False
+
+    # Preserve C07's independent lender and graph-deduplication corrections.
+    lender = next(
+        item for item in c07["field_corrections"]
+        if item["path"] == "$.capital_reconciliation.additional_debt_capital[2].source"
+    )
+    assert lender["canonical_value"] == "Ripple Labs Inc. (lender under the $1.0M Evernorth Facility)"
+    facility_overlay = graph_overlay["overlays"][0]
+    assert facility_overlay["id"] == "evernorth_facility_lender_and_duplicate_relationship_edge_correction"
+    assert len(facility_overlay["canonical_relationships_after_correction"]) == 2
+    assert supersession["supersession"]["original_artifacts_mutated"] is False
