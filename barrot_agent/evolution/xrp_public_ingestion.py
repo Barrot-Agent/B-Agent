@@ -119,6 +119,75 @@ class XRPIngestionError(ValueError):
     """A public market-data response cannot be safely ingested."""
 
 
+class XRPSourceHTTPError(XRPIngestionError):
+    """An HTTP response failure with a preserved provider status code."""
+
+    def __init__(self, source_id: str, status_code: int, reason: str = "") -> None:
+        self.source_id = source_id
+        self.status_code = int(status_code)
+        self.reason = str(reason)[:160]
+        super().__init__(f"public fetch failed for {source_id} (HTTP {self.status_code})")
+
+
+BYBIT_SOURCE_IDS = frozenset({"bybit_spot_ticker", "bybit_spot_depth"})
+BYBIT_ACCESS_DOCUMENTATION_URL = "https://bybit-exchange.github.io/docs/v5/guide"
+
+
+def _public_fetch_error(source_id: str, exc: Exception) -> XRPIngestionError:
+    status_code = getattr(exc, "code", None)
+    if not isinstance(status_code, int):
+        status_code = getattr(exc, "status_code", None)
+    if isinstance(status_code, int) and 400 <= status_code <= 599:
+        return XRPSourceHTTPError(source_id, status_code, str(getattr(exc, "reason", "")))
+    return XRPIngestionError(f"public fetch failed for {source_id}")
+
+
+def _source_failure_record(
+    source_id: str,
+    source_uri: str,
+    captured_at_utc: str,
+    exc: Exception,
+) -> dict[str, Any]:
+    record: dict[str, Any] = {
+        "source_id": source_id,
+        "source_uri": source_uri,
+        "captured_at_utc": captured_at_utc,
+        "error_type": type(exc).__name__,
+        "error_category": "source_processing_error",
+        "model_eligible": False,
+        "retryable": False,
+    }
+    if isinstance(exc, XRPSourceHTTPError):
+        status = exc.status_code
+        record["http_status_code"] = status
+        record["provider_reason"] = exc.reason
+        if status == 403:
+            record["error_category"] = "provider_http_forbidden"
+        elif status == 429:
+            record["error_category"] = "provider_rate_limited"
+            record["retryable"] = True
+        elif status in (408, 504):
+            record["error_category"] = "provider_timeout"
+            record["retryable"] = True
+        elif status >= 500:
+            record["error_category"] = "provider_server_error"
+            record["retryable"] = True
+        elif 400 <= status < 500:
+            record["error_category"] = "provider_client_error"
+        else:
+            record["error_category"] = "provider_http_error"
+        if source_id in BYBIT_SOURCE_IDS and status == 403:
+            record["provider_access_documentation_url"] = BYBIT_ACCESS_DOCUMENTATION_URL
+            record["access_restriction_hint"] = (
+                "Bybit documentation states that U.S. and Mainland China IP addresses are restricted "
+                "and may receive HTTP 403. The runner region is unverified; do not proxy or bypass "
+                "the restriction. Keep this source unavailable until lawful regional access is verified."
+            )
+    else:
+        record["retryable"] = not isinstance(exc, XRPIngestionError)
+    return record
+
+
 class _RejectPublicRedirectHandler(HTTPRedirectHandler):
     """Reject redirects before urllib sends a request to the redirect target."""
 
@@ -243,8 +312,8 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
             raw = response.read(MAX_RESPONSE_BYTES + 1)
     except XRPIngestionError:
         raise
-    except Exception:
-        raise XRPIngestionError(f"public fetch failed for {source_id}") from None
+    except Exception as exc:
+        raise _public_fetch_error(source_id, exc) from None
     if not raw or len(raw) > MAX_RESPONSE_BYTES:
         raise XRPIngestionError(f"response size is invalid for {source_id}")
     try:
@@ -279,8 +348,8 @@ def fetch_public_csv(source_id: str, url: str) -> dict[str, Any]:
             http_date = response.headers.get("Date")
     except XRPIngestionError:
         raise
-    except Exception:
-        raise XRPIngestionError(f"public fetch failed for {source_id}") from None
+    except Exception as exc:
+        raise _public_fetch_error(source_id, exc) from None
     if not raw or len(raw) > MAX_RESPONSE_BYTES:
         raise XRPIngestionError(f"response size is invalid for {source_id}")
     try:
@@ -318,8 +387,8 @@ def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
             http_date = response.headers.get("Date")
     except XRPIngestionError:
         raise
-    except Exception:
-        raise XRPIngestionError(f"public fetch failed for {source_id}") from None
+    except Exception as exc:
+        raise _public_fetch_error(source_id, exc) from None
     if not raw or len(raw) > MAX_RESPONSE_BYTES:
         raise XRPIngestionError(f"response size is invalid for {source_id}")
     try:
@@ -3152,12 +3221,11 @@ def _run_coinbase_candle_backfill(
                 page_end_utc=_iso(page_end),
             )
         except Exception as exc:
-            failure = {
-                "source_id": page_source_id,
+            failure = _source_failure_record(page_source_id, page_url, captured_s, exc)
+            failure.update({
                 "source_family_id": "coinbase_spot_candles",
                 "page_index": page_index,
-                "error_type": type(exc).__name__,
-            }
+            })
             if isinstance(response, Mapping) and isinstance(raw_bytes, bytes) and raw_bytes:
                 raw_reason = f"source_processing_failure:{type(exc).__name__}"
                 receipt = archive.store(
@@ -3290,7 +3358,7 @@ def run_ingestion(
             if source_id in XRPL_NODE_SOURCES and source_as_of is not None:
                 xrpl_node_payloads[source_id] = payload
         except Exception as exc:
-            failure = {"source_id": source_id, "error_type": type(exc).__name__}
+            failure = _source_failure_record(source_id, url, captured_s, exc)
             # A successfully captured response remains evidence even when its
             # parser or schema validation fails. Preserve the exact bytes as a
             # raw-only receipt; never infer a data-as-of time from failed parsing.
