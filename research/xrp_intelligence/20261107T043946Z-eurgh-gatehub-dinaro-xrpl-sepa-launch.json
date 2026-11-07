@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "artifact_id": "eurgh-gatehub-dinaro-xrpl-sepa-launch-20261107T043946Z",
+  "captured_at_utc": "2026-11-07T04:39:46Z",
+  "event_date": "2026-11-05",
+  "title": "GateHub Euro (EURGH): Dinaro-issued MiCA EMT on XRPL and Xahau with SEPA wallet rails",
+  "purpose": "Primary-source institutional, regulatory and payment-rail reconciliation. Distinguishes the regulated issuer, wallet/distribution partner, ledger deployment and any unproven XRP market-demand effect.",
+  "hash_scope": "SHA-256 digests below cover normalized excerpt strings recorded in this artifact, not full source-page bytes or HTTP wire responses. The Dinaro white-paper link was found in GateHub's announcement but its content was not text-retrievable in this run.",
+  "event_summary": {
+    "token_name": "GateHub Euro",
+    "ticker": "EURGH",
+    "token_type": "e-money token (EMT), euro-denominated",
+    "issuer": "Dinaro d.o.o.",
+    "distribution_wallet_partner": "GateHub Ltd.",
+    "announced_at": "2026-11-05",
+    "networks": [
+      "XRP Ledger (XRPL)",
+      "Xahau"
+    ],
+    "issuer_address_published_for_both_networks": "rDdaSjBbgCGQQsGRSfMidBMyHbPoeE5KQR",
+    "asset_code_hex": "4555524748000000000000000000000000000000",
+    "stated_peg": "1 EURGH = 1 EUR",
+    "stated_redemption": "at par, subject to legal and verification requirements",
+    "stated_rails": "SEPA deposits and redemptions from XRPL/Xahau wallet UX to European IBANs",
+    "launch_claimed_issuer_fees": {
+      "issuance": "free",
+      "redemption": "free",
+      "transfer": "free"
+    },
+    "claimed_payment_speed": "GateHub describes transfers to European IBANs as occurring in seconds; this is an issuer/partner claim, not an independently measured settlement SLA."
+  },
+  "source_records": [
+    {
+      "source_id": "gatehub_eurgh_launch_20261105",
+      "publisher": "GateHub Ltd.",
+      "source_class": "primary_partner_press_release",
+      "independence_group": "gatehub_eurgh_primary",
+      "source_url": "https://gatehub.net/blog/gatehub-partners-with-dinaro-to-launch-gatehub-euro-eurgh/",
+      "published_date": "2026-11-05",
+      "normalized_excerpt": "5 November 2026\nGateHub Ltd. has partnered with Dinaro d.o.o., an authorised electronic money institution (EMI) and principal Mastercard issuer, to launch GateHub Euro (EURGH), a euro-denominated electronic money token (EMT), commonly referred to as a euro stablecoin, issued by Dinaro in accordance with the EU Markets in Crypto-Assets Regulation (MiCA).\nGateHub users can now make instant SEPA payments directly from their XRPL and Xahau wallets to any european IBAN in a matter of seconds.",
+      "excerpt_sha256": "fbbfa7ec153749c70b800d7346ef1bfb30334358184f13020590186d6988a637",
+      "additional_published_fields": {
+        "issuer_address": "rDdaSjBbgCGQQsGRSfMidBMyHbPoeE5KQR",
+        "asset_code_hex": "4555524748000000000000000000000000000000",
+        "issuing_fee": "Free",
+        "redemption_fee": "Free",
+        "transfer_fee": "Free"
+      },
+      "limitations": [
+        "GateHub is a launch partner and its speed, user-count and product claims are not independent operational measurements.",
+        "The same published issuer address for XRPL and Xahau does not establish identical balances or state on the two separate ledgers.",
+        "No circulating supply, issuance history, on-ledger volume, exchange listing or market depth was disclosed in the launch announcement."
+      ]
+    },
+    {
+      "source_id": "banka_slovenije_dinaro_supervised_entity_register",
+      "publisher": "Banka Slovenije",
+      "source_class": "primary_regulatory_register",
+      "independence_group": "banka_slovenije_regulatory",
+      "source_url": "https://www.bsi.si/en/banking-supervision/register-of-supervised-entities/dinaro-company-for-electronic-money-issuing-and-payment-services-ltd",
+      "retrieved_date": "2026-11-07",
+      "normalized_excerpt": "DINARO company for electronic money issuing and payment services Ltd.\nRegistration number: 8640084000\nDate of authorisation: 2 November 2021.\nProvision of electronic money services and payment services in host Member States: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Spain, Sweden, Liechtenstein, Iceland, Norway.\n8 June 2026: PAYWISER company for electronic money issuing and payment services Ltd. changed its firm into DINARO company for electronic money issuing and payment services Ltd.",
+      "excerpt_sha256": "150e2d425a67451f1ace59f6cc2cdb2a4966fcae8077e14f5e492dcb76bf8e6f",
+      "parsed": {
+        "registration_number": "8640084000",
+        "electronic_money_authorisation_date": "2021-11-02",
+        "former_legal_name": "PAYWISER company for electronic money issuing and payment services Ltd.",
+        "name_change_effective_or_recorded": "2026-06-08",
+        "current_legal_name": "DINARO company for electronic money issuing and payment services Ltd.",
+        "host_member_state_passporting_list_published": true
+      },
+      "limitations": [
+        "The register confirms Dinaro's EMI authorisation and notified host-state activity; it does not by itself approve the EURGH white paper or independently validate GateHub's settlement-speed claims."
+      ]
+    },
+    {
+      "source_id": "banka_slovenije_emti_mica_framework",
+      "publisher": "Banka Slovenije",
+      "source_class": "primary_regulatory_guidance",
+      "independence_group": "banka_slovenije_regulatory",
+      "source_url": "https://www.bsi.si/en/payment-systems/payment-services-and-electronic-money-issuance-services",
+      "retrieved_date": "2026-11-07",
+      "normalized_excerpt": "Under MiCAR, e-money tokens are electronic money; they reference one official currency, do not grant interest, and holders have a claim against the issuer.\nEntities intending to offer EMTs to the public or seek admission to trading must first obtain authorisation as an electronic money institution or a bank.\nIssuers must notify Banka Slovenije at least 40 working days before the offer/admission and at least 20 working days before publication of the crypto-asset white paper.",
+      "excerpt_sha256": "878e338d87d9328df47682503c37cad4082f3c48c597ba898e3e0909eb1612ab",
+      "parsed": {
+        "emt_interest_permitted": false,
+        "holder_claim_against_issuer": true,
+        "issuer_authorisation_required": "EMI or bank",
+        "notification_before_offer_or_admission_working_days": 40,
+        "notification_before_whitepaper_publication_working_days": 20
+      },
+      "limitations": [
+        "This is general regulatory guidance, not a product-specific approval or endorsement of EURGH."
+      ]
+    },
+    {
+      "source_id": "banka_slovenije_dinaro_iban_provider_bic",
+      "publisher": "Banka Slovenije",
+      "source_class": "primary_payment_system_register",
+      "independence_group": "banka_slovenije_regulatory",
+      "source_url": "https://www.bsi.si/en/payment-systems/payment-accounts-and-transaction-accounts",
+      "retrieved_date": "2026-11-07",
+      "normalized_excerpt": "DINARO D. O. O. | Bravničarjeva ulica 13, 1000 Ljubljana | PWSRSI22 | 91002",
+      "excerpt_sha256": "06adc0f07823a5e2b9846f37d5a83419e50fcfd08e7a200b25404f078ce95f28",
+      "parsed": {
+        "legal_name": "DINARO D. O. O.",
+        "address": "Bravničarjeva ulica 13, 1000 Ljubljana",
+        "bic": "PWSRSI22",
+        "national_iban_provider_id": "91002"
+      },
+      "limitations": [
+        "The BIC and IBAN-provider identifier establish payment-account routing identity, not EURGH circulating supply or transaction volume."
+      ]
+    },
+    {
+      "source_id": "gatehub_dinaro_eurgh_general_terms",
+      "publisher": "GateHub / Dinaro programme terms",
+      "source_class": "primary_product_terms",
+      "independence_group": "gatehub_eurgh_primary",
+      "source_url": "https://gatehub.net/legal/dinaro/eurgh-terms",
+      "retrieved_date": "2026-11-07",
+      "retrieval_status": "search-indexed official terms; page itself requires JavaScript in the web reader",
+      "normalized_excerpt": "Dinaro, as the Issuer, shall issue EURGH e-money tokens at par value at a ratio of 1:1 to the euro. EURGH Holders shall have a claim against Dinaro as issuer. All funds of EURGH Holders shall be safeguarded in accordance with MiCA. At the request of a EURGH Holder, Dinaro shall redeem the monetary value at par value and free of charge. EURGH has not been approved by any competent authority in any EU Member State; Dinaro is solely responsible for the contents of the terms.",
+      "excerpt_sha256": "ee4c4bd0572248b59118f5ee69a36211b361d8e0cd51af40be2614c7b740ed6a",
+      "parsed": {
+        "issuer": "Dinaro d.o.o.",
+        "redemption_at_par": true,
+        "issuer_redemption_fee": "free",
+        "competent_authority_approval_of_terms_or_whitepaper": false,
+        "issuer_responsible_for_content": true
+      },
+      "limitations": [
+        "The full white paper was linked by GateHub but returned no extractable text in this run; reserve composition, attestations, concentration limits and detailed redemption mechanics remain unverified here."
+      ]
+    },
+    {
+      "source_id": "dinaro_gatehub_programme_price_list",
+      "publisher": "Dinaro / GateHub programme",
+      "source_class": "primary_product_price_list",
+      "independence_group": "gatehub_eurgh_primary",
+      "source_url": "https://gatehub.net/legal/dinaro/price-list",
+      "retrieved_date": "2026-11-07",
+      "normalized_excerpt": "Incoming SEPA Credit Transfer: 0.00 EUR.\nOutgoing SEPA Credit Transfer: 1.00 EUR.\nSending an Instant Payment: 1.00 EUR.\nReceiving an Instant Payment: 0.00 EUR.",
+      "excerpt_sha256": "a6835c702be03d6568631810a22e3d67f80fa00ec2e3e60beb7c460d8b5909a7",
+      "parsed": {
+        "incoming_sepa_eur": 0,
+        "outgoing_sepa_eur": 1,
+        "sending_instant_payment_eur": 1,
+        "receiving_instant_payment_eur": 0
+      },
+      "limitations": [
+        "These are payment-account/SEPA programme fees, distinct from the token issuance, redemption and transfer fees listed as free in the launch announcement.",
+        "Network, third-party bank, FX and GateHub product charges may be separate."
+      ]
+    }
+  ],
+  "whitepaper_access": {
+    "url": "https://dinaro.si/mica-eurgh-whitepaper",
+    "linked_from_gatehub_primary_announcement": true,
+    "retrieval_status": "opened but returned zero extractable lines",
+    "reserve_composition_verified": false,
+    "reserve_attestation_verified": false,
+    "whitepaper_notification_date_secondary_reported": "2026-08-03",
+    "note": "Do not use secondary summaries of 30% safeguarding-account / 70% low-risk-asset allocations until the official white paper is independently retrieved and parsed."
+  },
+  "network_and_xrp_relevance": {
+    "deployment_claimed_on": [
+      "XRPL",
+      "Xahau"
+    ],
+    "xahau_is_a_separate_ledger_from_xrpl": true,
+    "explicit_xrp_bridge_asset_requirement_in_gatehub_sepa_flow": "not stated",
+    "xrp_market_purchase_or_reserve_commitment": "not disclosed",
+    "xrp_fee_or_reserve_effect": "possible XRPL network activity effect, not quantified",
+    "circulation_or_liquidity_data": "not disclosed",
+    "interpretation": "EURGH is a euro-denominated claim against Dinaro, distributed through GateHub and connected to SEPA. XRPL deployment may create ledger activity and ordinary XRP fee/reserve requirements, but the launch does not establish XRP as the bridge asset for the fiat flow or prove incremental XRP market demand."
+  },
+  "entity_relationships": [
+    {
+      "from": "Dinaro d.o.o.",
+      "to": "EURGH",
+      "relationship": "issuer",
+      "evidence": "GateHub primary announcement and official product terms"
+    },
+    {
+      "from": "GateHub Ltd.",
+      "to": "EURGH",
+      "relationship": "wallet, distribution and SEPA interface partner",
+      "evidence": "GateHub primary announcement"
+    },
+    {
+      "from": "Dinaro d.o.o.",
+      "to": "Banka Slovenije",
+      "relationship": "supervised EMI; authorisation dated 2021-11-02; host-state activity listed",
+      "evidence": "Banka Slovenije supervised-entity register"
+    },
+    {
+      "from": "Dinaro d.o.o.",
+      "to": "PAYWISER",
+      "relationship": "same legal entity name-change history recorded 2026-06-08",
+      "evidence": "Banka Slovenije register"
+    },
+    {
+      "from": "EURGH",
+      "to": "XRPL",
+      "relationship": "published token deployment",
+      "evidence": "GateHub primary announcement"
+    },
+    {
+      "from": "EURGH",
+      "to": "Xahau",
+      "relationship": "published token deployment",
+      "evidence": "GateHub primary announcement"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-xrpl_payment_rail_growth",
+      "claim": "EURGH may increase XRPL payment activity through euro mint/redeem and wallet-to-SEPA flows.",
+      "supporting": [
+        "GateHub says users can fund and redeem EURGH through SEPA from XRPL/Xahau wallet interfaces."
+      ],
+      "disconfirming_or_missing": [
+        "No circulating supply, daily issuance/redemption, transaction count, transfer volume, active-wallet or liquidity data captured.",
+        "The white paper and operational settlement metrics were not retrievable.",
+        "Xahau activity must not be conflated with XRPL activity."
+      ],
+      "status": "INFRASTRUCTURE_LAUNCH_CONFIRMED; USAGE_IMPACT_UNMEASURED"
+    },
+    {
+      "id": "H2-direct_xrp_demand",
+      "claim": "EURGH launch could create direct XRP demand.",
+      "supporting": [
+        "XRPL transactions require network resources and may use XRP for fees/reserves."
+      ],
+      "disconfirming_or_missing": [
+        "GateHub's SEPA flow is described as EUR-to-EURGH and EURGH-to-SEPA; no XRP bridge-asset step is stated.",
+        "No issuer XRP holdings, market purchases, liquidity-provider commitments or XRP-denominated volume disclosed."
+      ],
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "H3-regulatory_quality",
+      "claim": "Dinaro's existing EMI authorisation and EEA passporting support the issuer's regulatory capacity.",
+      "supporting": [
+        "Banka Slovenije lists Dinaro as an authorised EMI from 2021-11-02 and lists host-state activity.",
+        "Banka Slovenije's EMT guidance requires an EMI or bank authorisation."
+      ],
+      "disconfirming_or_missing": [
+        "The official product terms state that the EURGH white paper has not been approved by an EU competent authority.",
+        "Product-specific reserve composition and operational controls were not independently retrieved."
+      ],
+      "status": "ISSUER_AUTHORISATION_VERIFIED; PRODUCT_APPROVAL_NOT_CLAIMED"
+    }
+  ],
+  "model_admission": {
+    "eligible_as_price_feature": false,
+    "candidate_event_timeline_entry": true,
+    "reasons": [
+      "A corporate/product launch is an event, not a measured market feature.",
+      "No issuance, redemption, circulating supply, reserve or ledger-activity series is available.",
+      "No evidence establishes an XRP bridge-asset requirement or XRP market purchases.",
+      "The white paper is not extractable in this run."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "direction": null,
+    "probabilities": null,
+    "horizon": null,
+    "reason": "This is a product/rail launch event with no measured usage or price-response sample. It cannot support a directional XRP forecast.",
+    "shadow_forecast_issued": false,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "next_actions": [
+    "Retrieve and parse Dinaro's official EURGH MiCA white paper; verify reserve composition, safeguarding, redemption mechanics, issuer obligations, fees and notification details.",
+    "Verify EURGH issuer account and trust lines independently on XRPL and Xahau; keep ledger states separate.",
+    "Capture EURGH total supply, holder count, transfer volume, DEX order books and daily issuance/redemption with provider timestamps.",
+    "Determine whether GateHub or Dinaro provides any XRP bridge-asset or market-maker route; do not infer it from XRPL deployment.",
+    "Monitor Dinaro reserve attestations and Banka Slovenije/ESMA register changes."
+  ],
+  "external_actions": {
+    "token_issued": false,
+    "wallet_opened": false,
+    "SEPA_transfer_sent": false,
+    "deployment": false,
+    "real_money_action": false
+  }
+}
