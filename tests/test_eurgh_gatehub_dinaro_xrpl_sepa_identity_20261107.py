@@ -73,7 +73,7 @@ def test_mica_emt_claim_and_whitepaper_approval_are_distinct() -> None:
 
 def test_free_token_fees_do_not_mean_all_sepa_payments_are_free() -> None:
     artifact = load_artifact()
-    launch = artifact["event_summary"]["claimed_issuer_fees"]
+    launch = artifact["event_summary"]["launch_claimed_issuer_fees"]
     price_list = by_id(artifact, "dinaro_gatehub_programme_price_list")["parsed"]
     assert launch == {
         "issuance": "free",
@@ -117,4 +117,4 @@ def test_xahau_native_fee_and_reserve_asset_is_xah_not_xrp() -> None:
     assert relevance["xrpl_native_fee_asset"] == "XRP"
     assert relevance["xahau_native_fee_asset"] == "XAH"
     assert relevance["xahau_native_token_is_xah_not_xrp"] is True
-    assert "Xahau uses XAH" in relevance["xrp_fee_or_reserve_effect"]
+    assert "Xahau transaction fees and account reserves use XAH." in relevance["xrp_fee_or_reserve_effect"]
