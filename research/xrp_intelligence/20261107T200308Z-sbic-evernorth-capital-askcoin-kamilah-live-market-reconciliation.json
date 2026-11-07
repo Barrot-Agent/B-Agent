@@ -1,0 +1,567 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107T200308Z-sbic-evernorth-capital-askcoin-kamilah-live-market-reconciliation",
+  "artifact_type": "primary_source_identity_capital_stack_and_live_market_reconciliation",
+  "captured_at_utc": "2026-11-07T20:03:08Z",
+  "capture_clock_semantics": "Automation reference clock. Browser-rendered public API response text and webpage excerpts were captured; original HTTP wire bytes, response headers and retrieval-arrival timestamps were not exposed. Provider event timestamps are preserved and freshness is evaluated against the reference clock.",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "2b5eec2ac60a6a7999a096237e74bcfce7b39cc3",
+  "append_only": true,
+  "sbic_identity_resolution": {
+    "statutory_basis": {
+      "act": "Small and Medium Business Investment & Consultation Company Act",
+      "act_number": "Act No. 101 of June 10, 1963",
+      "article_2": "The law identifies exactly three companies: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with principal offices in Tokyo, Nagoya City and Osaka City respectively.",
+      "official_url": "https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20230101"
+    },
+    "entities": [
+      {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_name": "SBIC East Japan",
+        "established": "1963-11-15",
+        "corporate_number": "9011001030621",
+        "area_summary": "Shizuoka, Nagano, Niigata and eastward prefectures; Tokyo company describes 18 prefectures and others.",
+        "official_url": "https://www.sbic.co.jp/company/profile/"
+      },
+      {
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_name": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "area_summary": "Aichi, Gifu, Mie, Toyama and Ishikawa.",
+        "official_url": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      {
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_name": "SBIC West Japan",
+        "established": "1963-11-20",
+        "area_summary": "Fukui, Shiga, Nara, Wakayama and westward prefectures; Osaka company describes 24 prefectures.",
+        "official_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+      }
+    ],
+    "distinction_from_sbi_holdings": "These three statutory regional investment companies are not SBI Holdings, Inc. SBI Holdings is a separate Japanese listed financial-services group. Evernorth's SEC Form 8-K identifies SBI Holdings as a Japanese corporation listed on the Tokyo Stock Exchange Prime Market and separately identifies four SBI-controlled entities holding Evernorth shares.",
+    "identity_status": "PRIMARY_SOURCE_RESOLVED"
+  },
+  "chatgpt_sibc_research": {
+    "exact_phrase_query": "SBIC, ChatGPT SBIC",
+    "exact_phrase_result": "No exact phrase match establishing a corporate relationship was located in indexed public results during this run.",
+    "verified_events": [
+      {
+        "date": "2025-02-26",
+        "organizer": "Tokyo SBIC and Tokyo Chamber of Commerce Taito branch",
+        "title": "Generative AI (ChatGPT): Present and Future",
+        "speaker": "Microsoft Corporation executive officer and evangelist Nishiwaki",
+        "description": "The official Tokyo SBIC notice says the session discussed ChatGPT and demonstrated business use. This is a training/seminar event, not an OpenAI partnership, integration or authenticated account connection.",
+        "url": "https://www.sbic.co.jp/seminar/20250226ym/"
+      },
+      {
+        "date": "2026-11-16",
+        "organizer": "Tokyo SBIC",
+        "title": "Current and Future of Generative AI",
+        "speaker": "Microsoft Corporation executive officer and evangelist Nishiwaki",
+        "description": "An upcoming general generative-AI seminar. The notice does not identify an OpenAI partnership or a production ChatGPT integration.",
+        "url": "https://www.sbic.co.jp/seminar/20261116/"
+      }
+    ],
+    "conclusion": "SBIC's public ChatGPT activity is documented training and business education. It is not evidence of an OpenAI partnership or a live ChatGPT-SBIC data connection."
+  },
+  "evernorth_capital_reconciliation": {
+    "cash_and_xrp_at_advance_funding": {
+      "cash_received_usd": 214049995,
+      "cash_used_to_purchase_xrp_usd": 214000000,
+      "xrp_purchased": 84365876,
+      "separately_reported_600000_xrp_in_kind": true,
+      "source_period": "2025-10-23 through 2025-11-06",
+      "distinction": "Cash received, cash deployed to buy XRP and XRP contributed in-kind are separate measures."
+    },
+    "business_combination_closing": {
+      "closing_date": "2026-10-09",
+      "gross_cash_proceeds_usd": 272600000,
+      "private_placement_cash_usd": 224600000,
+      "spac_trust_cash_released_usd": 48000000,
+      "in_kind_xrp_contributions": 388910554,
+      "transaction_costs": "Gross proceeds are before transaction expenses. Do not treat gross cash proceeds as cash available for XRP purchases.",
+      "advance_funding_shares_issued": {
+        "class_a": 10123015,
+        "class_c": 2905659,
+        "consideration_cash_usd_approx": 214050000,
+        "consideration_xrp": 600000
+      }
+    },
+    "sbi_holdings_evernorth_ownership": {
+      "as_of": "2026-10-09 closing",
+      "class_a_voting_shares": 8885293,
+      "class_a_total_outstanding": 22268905,
+      "class_a_percent": 39.9,
+      "class_c_non_voting_shares": 2905659,
+      "class_c_total_outstanding": 32211992,
+      "class_c_percent": 9,
+      "class_c_rights": "Non-voting; do not add the Class C percentage to the Class A voting percentage.",
+      "class_a_holder_entities": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc."
+      ],
+      "footnote_scope": "The SEC footnote explicitly explains the Class A shares as held by these four SBI-controlled entities. The SEC table attributes the Class C shares to the SBI Holdings row, but the cited footnote does not separately itemize their underlying Class C holder entities.",
+      "interpretation": "SBI Holdings had 39.9% of the voting Class A class, not 39.9% of all common shares or proof of control. The Class C stake is non-voting. This is an Evernorth equity relationship, not an SBIC regional-company relationship and not direct XRP ownership."
+    },
+    "ripple_ownership_distinction": "The same SEC table lists Ripple Labs Inc. with 1,581,112 Class A shares (7.1%) and 16,461,545 Pathfinder Units. Chris Larsen's 9.9% beneficial-ownership row overlaps Ripple and the Contributor Related Party Entity; do not add these percentages as independent stakes.",
+    "convertible_note": {
+      "principal_usd": 30000000,
+      "net_cash_proceeds_usd": 29000000,
+      "advisor_fee_usd": 1000000,
+      "purchaser": "NH Investment & Securities Co., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+      "issued": "2026-10-12",
+      "coupon": "4.00% paid in kind",
+      "maturity": "2031",
+      "security": "Senior unsecured",
+      "intended_use": "General corporate purposes, including possible XRP acquisition and XRP ecosystem activities.",
+      "xrp_purchase_from_note_proceeds_verified": false
+    },
+    "ripple_related_party_credit": {
+      "limit_usd": 10000000,
+      "drawn_usd_as_of_2026_10_07": 9700000,
+      "purpose": "Related-party facility and payments to third parties for operating/transaction expenses; not evidence of XRP purchases."
+    },
+    "cantor_eloc": {
+      "agreement_date": "2026-10-23",
+      "shares_available": 5218935,
+      "gross_proceeds_cover_case_usd": 76800000,
+      "reference_share_price_usd": 14.71,
+      "net_proceeds_estimate_usd": 74400000,
+      "period_months_approx": 14,
+      "purchase_price": "97% of applicable VWAP, subject to detailed conditions",
+      "issuer_discretion": "Evernorth may sell all, some or none of the available shares.",
+      "commitment_fee_usd": 521893.5,
+      "fee_status": "Contractual fee; the prospectus says it is fully earned as of the purchase agreement date regardless of whether VWAP purchases are made or settled, subject to a stated true-up. Cash payment itself was not independently verified in this run.",
+      "actual_facility_draw_or_xrp_purchase_verified": false,
+      "internal_document_discrepancy": "The October 30, 2026 424B3 cover and detailed pricing table use approximately $76.8M gross at $14.71/share and estimate $74.4M net. A Use of Proceeds summary in the same filing retains an approximately $80.7M gross figure from the earlier $15.46 reference-price case. Preserve this source-internal inconsistency; use the cover/detailed table as the current case while retaining the stale summary as a discrepancy."
+    },
+    "capital_conclusion": "Verified realized capital includes $214.05M advance cash, $214.0M XRP purchase cost, $29.0M net convertible-note proceeds and $272.6M gross closing cash proceeds (a different aggregate scope). The $76.8M ELOC is a conditional maximum, not cash already raised. The $9.7M Ripple-related facility is borrowing, not equity or XRP purchase evidence."
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "result": "CoinMarketCap separately lists an exchange named Ask Coin at askcoin.net as Inactive and Untracked, with untracked volume and unavailable reserve data. Opening askcoin.net redirected to a HugeDomains domain-profile page.",
+      "distinct_asset": "Permission Coin is a separate token with ticker ASK and Base/Polygon contracts.",
+      "xrp_relationship": "No verified XRP relationship for the Ask Coin exchange or Permission Coin ASK token.",
+      "status": "DISAMBIGUATED_NO_XRP_LINK"
+    },
+    "actual_capital": {
+      "exact_phrase_context": "A September 17, 2026 user-generated KuCoin Insight post uses the phrase 'actual capital stack' while discussing Evernorth's $30M convertible PIK note and XRP treasury.",
+      "primary_evidence": "SEC filings quantify realized cash, XRP purchase cost, note proceeds after fees, related-party borrowings and conditional ELOC capacity. The exact phrase in community commentary is not primary evidence.",
+      "status": "PRIMARY_CAPITAL_AMOUNTS_RECONCILED_EXACT_PHRASE_NOT_ISSUER_TERM"
+    },
+    "sbic_chatgpt": "Public SBIC training notices are verified; no OpenAI partnership or persistent integration is evidenced."
+  },
+  "kamilah_stevenson_inventory_update": {
+    "canonical_identity": "Dr. Kamilah Stevenson / The Wealth Doctor",
+    "verified_public_video_count": 1,
+    "verified_video_id": "VSgeDgOCexs",
+    "candidate_video": {
+      "video_id": "L_5bqd94rWo",
+      "title": "Same food Different Goal | Kamilah Stevenson",
+      "published_at": "2025-12-04",
+      "youtube_display_author": "Kamilah Stevenson",
+      "retrieval_metadata": {
+        "views": 60099,
+        "likes": 1100,
+        "counts_dynamic": true
+      },
+      "first_party_domain": "https://learn.kamilahstevenson.com/",
+      "first_party_domain_identifies_person": true,
+      "first_party_domain_links_specific_youtube_channel": false,
+      "attribution_status": "CANDIDATE_ONLY_NOT_IDENTITY_VERIFIED",
+      "counted_as_verified": false
+    },
+    "channel_status": "No personal YouTube channel ownership verified. Candidate handle/channel IDs remain preserved but unattributed pending reciprocal first-party linkage or platform channel metadata."
+  },
+  "market_snapshot": {
+    "reference_clock_utc": "2026-11-07T20:03:08Z",
+    "freshness_limit_seconds": 300,
+    "observations": [
+      {
+        "source_id": "kraken_xrpusd_ticker",
+        "instrument": "XRP/USD spot",
+        "provider_event_timestamp_utc": null,
+        "timestamp_status": "NOT_SUPPLIED",
+        "bid": 1.15958,
+        "ask": 1.15959,
+        "last": 1.15961,
+        "spread_bps": 0.08624,
+        "rolling_24h_volume_xrp": 19908097.94654597,
+        "rolling_24h_vwap_usd": 1.16676347,
+        "daily_open_usd": 1.17749,
+        "high_24h_usd": 1.18588,
+        "low_24h_usd": 1.15046,
+        "last_vs_daily_open_pct": -1.51848,
+        "model_eligible": false,
+        "limitations": [
+          "Provider timestamp absent.",
+          "Only Level-1 ticker sizes; no multi-level depth.",
+          "Browser retrieval arrival timestamp and HTTP headers unavailable."
+        ]
+      },
+      {
+        "source_id": "okx_xrpusdt_ticker",
+        "instrument": "XRP-USDT spot",
+        "provider_event_timestamp_utc": "2026-11-07T19:47:14.769Z",
+        "provider_timestamp_epoch_ms": 1794080834769,
+        "age_seconds_at_reference_clock": 953.231,
+        "timestamp_status": "STALE",
+        "bid": 1.1621,
+        "ask": 1.1622,
+        "last": 1.1621,
+        "spread_bps": 0.86047,
+        "rolling_24h_volume_xrp": 34546573.019198,
+        "rolling_24h_volume_usdt": 40350449.60038804,
+        "open_24h": 1.1851,
+        "high_24h": 1.1874,
+        "low_24h": 1.1518,
+        "last_vs_24h_open_pct": -1.94076,
+        "model_eligible": false,
+        "limitations": [
+          "Provider timestamp older than 300-second limit.",
+          "USDT not normalized to USD.",
+          "Only Level-1 quote; no multi-level depth."
+        ]
+      },
+      {
+        "source_id": "binance_xrpusdt_perpetual_premium_index",
+        "instrument": "XRPUSDT perpetual",
+        "provider_event_timestamp_utc": "2026-11-07T19:30:54Z",
+        "provider_timestamp_epoch_ms": 1794079854000,
+        "age_seconds_at_reference_clock": 1934,
+        "timestamp_status": "STALE",
+        "mark_price": 1.16223102,
+        "index_price": 1.16266493,
+        "mark_vs_index_bps": -3.73203,
+        "last_funding_rate": 0.0001,
+        "funding_interval_hours": 8,
+        "model_eligible": false,
+        "limitations": [
+          "Provider timestamp older than 300-second limit.",
+          "Premium-index endpoint does not provide open interest, liquidation totals or executable depth.",
+          "Retrieval-arrival timestamp and HTTP headers unavailable."
+        ]
+      }
+    ],
+    "cross_venue_raw_last_price_difference_pct": 0.21473,
+    "cross_venue_interpretation": "Raw Kraken USD and OKX USDT last prices are not currency-normalized or synchronized. The difference is not an arbitrage signal.",
+    "depth_status": "Depth endpoints for Kraken, OKX, Binance and Bybit were not retrievable through this interface during this run. No depth ladder or executable liquidity estimate is claimed.",
+    "open_interest_status": "No direct timestamped open-interest observation was captured in this run.",
+    "model_admission": "All three direct exchange responses remain excluded because of missing arrival timestamps and/or provider staleness. No feature-store write was made."
+  },
+  "source_receipts": [
+    {
+      "source_id": "sbic_act_article2",
+      "publisher": "Japan e-Gov Laws",
+      "independence_group": "japan_government_law",
+      "source_type": "official_law_database",
+      "url": "https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20230101",
+      "publication_date": "1963-06-10",
+      "captured_excerpt_text": "Article 2 of Japan's Small and Medium Business Investment & Consultation Company Act (Act No. 101 of June 10, 1963) specifies exactly three companies: Tokyo Small and Medium Business Investment & Consultation Co., Ltd., Nagoya Small and Medium Business Investment & Consultation Co., Ltd., and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with their principal offices in Tokyo, Nagoya City and Osaka City respectively.",
+      "captured_excerpt_sha256": "1830a9507dde5ce14ff67617ebfce24b3d634fb07e162a843b7f5c4b86c22657",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_tokyo_profile",
+      "publisher": "Tokyo SBIC",
+      "independence_group": "sbic_tokyo_primary",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "captured_excerpt_text": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. identifies itself as SBIC East Japan. Corporate number 9011001030621; established 1963-11-15; headquarters Shibuya, Tokyo; operating area includes Shizuoka, Nagano, Niigata and eastward prefectures; names Nagoya and Osaka as sister companies.",
+      "captured_excerpt_sha256": "ff55e0ea8467d8a27b57677c8bd47117b7551c00e7aca242a2da0134cb1e6d79",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_nagoya_profile",
+      "publisher": "Nagoya SBIC",
+      "independence_group": "sbic_nagoya_primary",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "captured_excerpt_text": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. identifies itself as SBIC Central Japan. Established 1963-11-18; operating area Aichi, Gifu, Mie, Toyama and Ishikawa; names Tokyo and Osaka as sister companies.",
+      "captured_excerpt_sha256": "e14fcac3ed9f7f1e0ba2316a4ccac50ff97cb2686827c4e48a0ed2735231f367",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_osaka_profile",
+      "publisher": "Osaka SBIC",
+      "independence_group": "sbic_osaka_primary",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "captured_excerpt_text": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. identifies itself as SBIC West Japan. Established 1963-11-20; operating area Fukui, Shiga, Nara, Wakayama and westward prefectures; names Tokyo and Nagoya as sister companies.",
+      "captured_excerpt_sha256": "eaee7fe5511d272aa183dd8e6aa7f9bd8db79712732a7c928cba7453d6836395",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_chatgpt_2025",
+      "publisher": "Tokyo SBIC",
+      "independence_group": "sbic_tokyo_primary",
+      "source_type": "official_seminar_notice",
+      "url": "https://www.sbic.co.jp/seminar/20250226ym/",
+      "publication_date": "2025-02-26",
+      "captured_excerpt_text": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. published a free seminar notice dated February 26, 2025 titled 'Generative AI (ChatGPT): Present and Future'. The notice says the speaker was a Microsoft Corporation executive officer and evangelist, who would discuss ChatGPT and demonstrate business uses. The notice does not announce an OpenAI partnership, integration or authenticated ChatGPT connection.",
+      "captured_excerpt_sha256": "d4f4ce69ca05f573673a54008362264606ce10386c95e3267b3a7d4af82b314b",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_ai_2026",
+      "publisher": "Tokyo SBIC",
+      "independence_group": "sbic_tokyo_primary",
+      "source_type": "official_seminar_notice",
+      "url": "https://www.sbic.co.jp/seminar/20261116/",
+      "publication_date": "2026-11-16",
+      "captured_excerpt_text": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. lists a November 16, 2026 seminar in Omiya titled 'Current and Future of Generative AI', hosted by Tokyo SBIC and featuring Microsoft evangelist Nishiwaki. It is a public AI seminar, not an OpenAI partnership or product integration.",
+      "captured_excerpt_sha256": "882e6043bd567dd1db9e3c4250e7ca0bd77563ff7adde99b018af6d191f4b16a",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_close_ownership",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_8k_oct09",
+      "source_type": "issuer_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "filing_date": "2026-10-13",
+      "event_date": "2026-10-09",
+      "captured_excerpt_text": "Evernorth Holdings Inc. Form 8-K, reporting the October 9, 2026 closing, states that 10,123,015 Class A shares and 2,905,659 Class C shares were issued to Advance Funding Subscribers in exchange for approximately $214.05 million cash and 600,000 XRP. The beneficial ownership table lists SBI Holdings, Inc. with 8,885,293 Class A shares (39.9% of Class A) and 2,905,659 Class C shares (9.0% of Class C). The table defines Class A as voting and Class C as non-voting.",
+      "captured_excerpt_sha256": "17b6f60d35dbaa3a52eeae6a65ee517ea66d5a7753c8b71948f79fe4ae68c3f5",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_sbi_footnote",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_8k_oct09",
+      "source_type": "issuer_sec_filing_footnote",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "filing_date": "2026-10-13",
+      "captured_excerpt_text": "Evernorth's October 9, 2026 Form 8-K footnote says the 8,885,293 Class A shares attributed to SBI Holdings are held by SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc.; each is controlled by or directly/indirectly managed by SBI Holdings, Inc., a Japanese corporation listed on the Tokyo Stock Exchange Prime Market. This footnote specifically describes the Class A shares; the Class C attribution appears in the table but is not separately itemized in that footnote.",
+      "captured_excerpt_sha256": "b55743522db17e83f54463b6e527263d108e55e7315a5fd164bb1eeda162323c",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_actual_cash",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_s1_oct23",
+      "source_type": "issuer_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "filing_date": "2026-10-23",
+      "captured_excerpt_text": "Evernorth's October 23, 2026 Form S-1 states that investors contributed $214,049,995 in cash and 600,000 XRP under advance funding agreements; the cash was used to purchase 84,365,876 XRP, delivered in tranches through November 6, 2025. The cash-flow statement reports $214,049,995 proceeds from refundable investor advances and $214,000,000 purchase of digital assets. The figures are distinct: cash received, XRP purchased and XRP contributed in-kind.",
+      "captured_excerpt_sha256": "4f086255d4545e016eea87c20793c4aea230d65372011625fbfedd623e20250d",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_trust_cash",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_424b3_oct30",
+      "source_type": "issuer_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "captured_excerpt_text": "Evernorth's October 9, 2026 closing Form 8-K states that gross cash proceeds at closing were approximately $272.6 million, consisting of approximately $224.6 million from Private Placement Investments and approximately $48.0 million released from the SPAC trust account after redemptions, before transaction expenses. This is gross company cash proceeds and is not the same as the $214.05 million advance cash specifically used to purchase XRP.",
+      "captured_excerpt_sha256": "c3128eb2ade91984af375af217ba99fcb88d0bfc089b514843a82c06a924365d",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_note_proceeds",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_424b3_oct30",
+      "source_type": "issuer_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "captured_excerpt_text": "Evernorth's October 30, 2026 Form 424B3 states that a $30.0 million 4.00% Convertible Senior PIK Note was issued on October 12, 2026 to NH Investment & Securities Co. as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3. The filing reports $29.0 million net cash proceeds after a $1.0 million capital-markets-advisor fee. The note is senior unsecured, accrues 4.00% PIK interest and matures in 2031; proceeds are for general corporate purposes including potential XRP acquisition and XRP ecosystem activity, but no specific XRP purchase from these proceeds is verified.",
+      "captured_excerpt_sha256": "653147e29abad0ce4b0b1155919fa4958d3369aefa7aef05d9510e12ccbee816",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_credit_facility",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_s1_oct23",
+      "source_type": "issuer_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "filing_date": "2026-10-23",
+      "captured_excerpt_text": "Evernorth's October 23, 2026 Form S-1 states that the Company Facility limit was increased to $10.0 million on October 7, 2026 and $9.7 million had been borrowed as of that date. The borrowing represented Ripple payments to third parties on behalf of the Company and Evernorth, reclassified from related-party payables; this is operating/related-party debt, not evidence of XRP purchases.",
+      "captured_excerpt_sha256": "78ebd9c470c379b6609ae6b3f0b0de0ec95944b5bab11089473eb978d0d5033e",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_eloc_cover",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_424b3_oct30",
+      "source_type": "issuer_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "captured_excerpt_text": "Evernorth's October 30, 2026 Form 424B3 registers up to 5,218,935 Class A shares under the October 23 committed equity facility with CF Principal Investments LLC (Cantor). Its cover says that at the October 29 closing stock price of $14.71, full issuance could generate approximately $76.8 million gross proceeds; the document estimates up to $74.4 million net over approximately 14 months after estimated fees and expenses. Issuance is at Evernorth's discretion and subject to conditions.",
+      "captured_excerpt_sha256": "aea5a65b24fbf45e49fa9fbb2382dfcd1cdf33095370a12301907f8faa044235",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_eloc_inconsistency",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_424b3_oct30",
+      "source_type": "issuer_sec_filing_internal_reconciliation",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "captured_excerpt_text": "The same October 30, 2026 Form 424B3 contains an internal inconsistency: the cover and multiple sections say approximately $76.8 million gross proceeds at $14.71 per share, while a Use of Proceeds summary at line 700 retains an older approximately $80.7 million figure. The detailed table shows $76.8 million at $14.71, $50.6 million at $10, $75.9 million at $15 and $101.2 million at $20. Preserve the stale $80.7 million summary as a source-internal discrepancy rather than silently selecting it.",
+      "captured_excerpt_sha256": "a69c88749c97fa713d2a5aeb58179d7e61e14291979f17b521f753ba2829435b",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_eloc_terms",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_424b3_oct30",
+      "source_type": "issuer_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "captured_excerpt_text": "The October 30, 2026 Evernorth 424B3 says the company may choose to sell all, some or none of up to 5,218,935 shares to Cantor; purchases are priced at 97% of VWAP subject to stated conditions. The maximum share count is 19.99% of pre-agreement Class A shares absent shareholder approval; Cantor's beneficial ownership cap is 4.99%. The $521,893.50 commitment fee is fully earned as of the purchase agreement date regardless of whether VWAP purchases are made or settled, subject to a stated true-up mechanism. No actual ELOC share purchase or XRP purchase from ELOC proceeds was verified in this run.",
+      "captured_excerpt_sha256": "1ccf6fbfb9c4c6722a9e34714dc9b613b53215b6e68244b0d33b1d94426f1205",
+      "model_eligible": false
+    },
+    {
+      "source_id": "askcoin_exchange",
+      "publisher": "CoinMarketCap",
+      "independence_group": "cmc_listing",
+      "source_type": "secondary_exchange_listing",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "captured_excerpt_text": "CoinMarketCap's Ask Coin exchange profile lists askcoin.net, marks the exchange Inactive and Untracked, and states volume is untracked and reserve data unavailable. Opening askcoin.net redirected to a HugeDomains domain-profile page. This is an exchange listing, not evidence of a token or XRP relationship.",
+      "captured_excerpt_sha256": "7a17d2c3f3f5b0adac52ac17a7b0d00095740453ac674e8ee6a4b040aab3d0c5",
+      "model_eligible": false
+    },
+    {
+      "source_id": "permission_ask_token",
+      "publisher": "CoinMarketCap",
+      "independence_group": "cmc_listing",
+      "source_type": "secondary_token_listing",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "captured_excerpt_text": "CoinMarketCap separately identifies Permission Coin with ticker ASK, token contracts on Base and Polygon and the Permission ecosystem. It is distinct from the Ask Coin exchange listing at askcoin.net. No XRP relationship was verified.",
+      "captured_excerpt_sha256": "924b645c3aabf74a9626f7f51126136080f244905ece197fbbb28445cd2dab6f",
+      "model_eligible": false
+    },
+    {
+      "source_id": "kucoin_actual_capital_phrase",
+      "publisher": "KuCoin Insight user post",
+      "independence_group": "user_generated_commentary",
+      "source_type": "user_generated_secondary_commentary",
+      "url": "https://www.kucoin.com/news/insight/XRP/6aac57a07d10fa0007ce3c56",
+      "publication_date": "2026-09-17",
+      "captured_excerpt_text": "A September 17, 2026 user-generated KuCoin Insight post used the phrase 'actual capital stack' while discussing Evernorth's $30M convertible PIK note and 473+ million XRP. This is community commentary, not issuer disclosure. Primary SEC filings instead quantify $30.0 million note principal, $29.0 million net cash proceeds after a $1.0 million advisor fee, and the intended but not guaranteed use of proceeds for general corporate purposes including XRP acquisition.",
+      "captured_excerpt_sha256": "65379580278759dbd94ee208c0e2554abfcef7a81876eeff01d711e0ebf47d14",
+      "model_eligible": false
+    },
+    {
+      "source_id": "kamilah_video_candidate",
+      "publisher": "YouTube",
+      "independence_group": "youtube_video_metadata",
+      "source_type": "public_video_search_metadata",
+      "url": "https://www.youtube.com/watch?v=L_5bqd94rWo",
+      "publication_date": "2025-12-04",
+      "captured_excerpt_text": "YouTube search metadata identifies a public video titled 'Same food Different Goal | Kamilah Stevenson', video ID L_5bqd94rWo, published 2025-12-04, with channel display name 'Kamilah Stevenson'. The first-party learn.kamilahstevenson.com site identifies Dr. Kamilah Stevenson as The Wealth Doctor and describes investing in stocks, crypto and real estate. The first-party site does not expose a link to the specific YouTube channel or video; therefore this video remains candidate-only and is not counted as identity-verified attribution.",
+      "captured_excerpt_sha256": "d272438b3c92ebf839efb13cd71d82e5bc54ffc63cc12661711cd96164bcf414",
+      "model_eligible": false
+    },
+    {
+      "source_id": "kamilah_first_party_site",
+      "publisher": "Dr. Kamilah Stevenson / first-party site",
+      "independence_group": "kamilah_first_party",
+      "source_type": "first_party_personal_business_site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "captured_excerpt_text": "The first-party learn.kamilahstevenson.com website identifies Dr. Kamilah Stevenson as The Wealth Doctor and says she has over 20 years of investing experience in stocks, crypto and real estate. The page does not provide a YouTube channel link or link to video L_5bqd94rWo.",
+      "captured_excerpt_sha256": "95924caeb9f28b8394e0a2e2e77700f34e92777c35dd29a0812294623ed23c50",
+      "model_eligible": false
+    },
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "publisher": "Kraken",
+      "independence_group": "kraken",
+      "source_type": "direct_exchange_public_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_timestamp_utc": null,
+      "raw_capture_status": "rendered_response_text_only",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15959000\",\"7610\",\"7610.000\"],\"b\":[\"1.15958000\",\"1720\",\"1720.000\"],\"c\":[\"1.15961000\",\"89.59321975\"],\"v\":[\"15381430.08661832\",\"19908097.94654597\"],\"p\":[\"1.16398711\",\"1.16676347\"],\"t\":[18453,23407],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.18588000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_sha256": "a28569806f12935aa105c8720d4f1a30076e387c7feda1bacb54eea103570153",
+      "hash_scope": "SHA-256 of exact minified JSON response text exposed by the browser retrieval interface; not original HTTP wire bytes or headers.",
+      "model_eligible": false
+    },
+    {
+      "source_id": "okx_xrpusdt_ticker",
+      "publisher": "OKX",
+      "independence_group": "okx",
+      "source_type": "direct_exchange_public_api",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_timestamp_utc": "2026-11-07T19:47:14.769Z",
+      "raw_capture_status": "rendered_response_text_only",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1621\",\"lastSz\":\"23.574541\",\"askPx\":\"1.1622\",\"askSz\":\"2121.2\",\"bidPx\":\"1.1621\",\"bidSz\":\"7215.019289\",\"open24h\":\"1.1851\",\"high24h\":\"1.1874\",\"low24h\":\"1.1518\",\"volCcy24h\":\"40350449.6003880378\",\"vol24h\":\"34546573.019198\",\"ts\":\"1794080834769\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1587\"}],\"msg\":\"\"}",
+      "raw_response_sha256": "8be24943ded136b450e0941dfbd1e0df81d4a146738bf404799576fbeef08d1d",
+      "hash_scope": "SHA-256 of exact minified JSON response text exposed by the browser retrieval interface; not original HTTP wire bytes or headers.",
+      "model_eligible": false
+    },
+    {
+      "source_id": "binance_xrpusdt_perpetual_premium_index",
+      "publisher": "Binance",
+      "independence_group": "binance",
+      "source_type": "direct_exchange_public_api",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "provider_event_timestamp_utc": "2026-11-07T19:30:54Z",
+      "raw_capture_status": "rendered_response_text_only",
+      "raw_response_text": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.16223102\",\"indexPrice\":\"1.16266493\",\"estimatedSettlePrice\":\"1.16264570\",\"lastFundingRate\":\"0.00010000\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794096000000,\"time\":1794079854000}",
+      "raw_response_sha256": "25fc1a9753c9226054e378b6d3b18b4a6d5f2be4ba248097d6bb1d90907a2cb8",
+      "hash_scope": "SHA-256 of exact minified JSON response text exposed by the browser retrieval interface; not original HTTP wire bytes or headers.",
+      "model_eligible": false
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "institutional_xrp_exposure_is_growing",
+      "support": [
+        "SBI Holdings is disclosed with a large voting Class A stake in Evernorth, an XRP treasury vehicle.",
+        "Evernorth disclosed actual cash deployed to buy XRP, in-kind XRP contributions and a $29M net convertible note."
+      ],
+      "counterevidence": [
+        "Evernorth equity ownership is not equivalent to SBI Holdings directly owning XRP.",
+        "The note proceeds are not traced to a specific XRP purchase.",
+        "The ELOC remains optional and no actual draw/purchase was verified."
+      ],
+      "status": "PARTIALLY_SUPPORTED_WITH_SCOPE_LIMITS"
+    },
+    {
+      "id": "institutional_activity_is_primarily_stablecoin_and_equity_infrastructure",
+      "support": [
+        "SBI's SBIC entities are separate regional statutory investment companies, not SBI Holdings.",
+        "SBI's ChatGPT events are public training, not an OpenAI integration.",
+        "Coinbase/Ripple RLUSD distribution and other stablecoin rails do not themselves prove XRP demand."
+      ],
+      "counterevidence": [
+        "Evernorth's SEC disclosures establish direct XRP treasury exposure and SBI Holdings equity exposure to that vehicle."
+      ],
+      "status": "SUPPORTED_FOR_DISTINCT_RAILS_NOT_EXCLUSIVE"
+    },
+    {
+      "id": "latest_spot_snapshot_confirms_direction",
+      "support": [
+        "Kraken and OKX both show prices below their respective reported daily/24-hour opens."
+      ],
+      "counterevidence": [
+        "Kraken lacks a provider timestamp; OKX and Binance observations are stale at the reference clock; USD and USDT are not normalized; no multi-level depth or direct OI is available."
+      ],
+      "status": "REJECTED_AS_MODEL_INPUT"
+    }
+  ],
+  "model_admission": {
+    "feature_admission": false,
+    "reasons": [
+      "No browser retrieval-arrival timestamps or HTTP headers.",
+      "OKX and Binance provider timestamps exceed 300-second freshness limit.",
+      "Kraken provider timestamp absent.",
+      "No multi-level depth ladder.",
+      "USD and USDT not normalized.",
+      "Institutional and identity research is event-timeline context, not market price features."
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Add the SBIC legal-entity and Evernorth capital/ownership distinctions to the canonical relationship graph without conflating SBI Holdings with SBIC East/Central/West.",
+    "Monitor subsequent SEC filings and purchase notices for actual ELOC utilization and any XRP purchases funded by the convertible note.",
+    "Preserve the $76.8M/$80.7M 424B3 internal discrepancy as a source-quality event and recheck any amendment.",
+    "Keep the new Kamilah video candidate unattributed until reciprocal first-party channel linkage or platform channel ownership metadata is obtained.",
+    "Use scheduled ingestion's own HTTP client to capture response headers, arrival timestamps and depth ladders; browser-rendered observations remain excluded."
+  ]
+}
