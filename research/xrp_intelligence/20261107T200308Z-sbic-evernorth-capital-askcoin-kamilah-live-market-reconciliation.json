@@ -448,7 +448,10 @@
       "publication_date": "2026-09-17",
       "captured_excerpt_text": "A September 17, 2026 user-generated KuCoin Insight post used the phrase 'actual capital stack' while discussing Evernorth's $30M convertible PIK note and 473+ million XRP. This is community commentary, not issuer disclosure. Primary SEC filings instead quantify $30.0 million note principal, $29.0 million net cash proceeds after a $1.0 million advisor fee, and the intended but not guaranteed use of proceeds for general corporate purposes including XRP acquisition.",
       "captured_excerpt_sha256": "65379580278759dbd94ee208c0e2554abfcef7a81876eeff01d711e0ebf47d14",
-      "model_eligible": false
+      "model_eligible": false,
+      "captured_excerpt_sha256_original": "65379580278759dbd94ee208c0e2554abfcef7a81876eeff01d711e0ebf47d14",
+      "captured_excerpt_sha256_corrected": "487169697de606530c540e853145be465bb70a26635a3f185d88db609c80d20e",
+      "hash_status": "CORRECTED_APPEND_ONLY"
     },
     {
       "source_id": "kamilah_video_candidate",
@@ -574,6 +577,14 @@
       "corrected_hash": "22665bae05beeb779e7c8f048c283477bbaa2d4dc01d93e0fecabdf1708f872f",
       "corrected_at_utc": "2026-11-07T20:03:08Z",
       "reason": "The first manually recorded normalized-excerpt digest did not match the exact stored UTF-8 excerpt. The excerpt text and underlying SEC source are unchanged; only the digest receipt is corrected.",
+      "model_admission_changed": false
+    },
+    {
+      "source_id": "kucoin_actual_capital_phrase",
+      "original_hash": "65379580278759dbd94ee208c0e2554abfcef7a81876eeff01d711e0ebf47d14",
+      "corrected_hash": "487169697de606530c540e853145be465bb70a26635a3f185d88db609c80d20e",
+      "corrected_at_utc": "2026-11-07T20:03:08Z",
+      "reason": "The first manually recorded normalized-excerpt digest did not match the exact stored UTF-8 excerpt. The excerpt text and source classification are unchanged; only the digest receipt is corrected.",
       "model_admission_changed": false
     }
   ]
