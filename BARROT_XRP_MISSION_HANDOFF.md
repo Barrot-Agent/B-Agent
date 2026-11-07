@@ -93,6 +93,17 @@ The current #1640 branch contains the temporal calibration and walk-forward impl
 - #1644–#1650 dependency/workflow updates remain successor candidates; exact content must be verified on main before any closure.
 - No PR was closed.
 
+### Main-versus-PR writer safety distinction
+
+The current main SHA still contains active workflows that #1640 is intended to contain; do not describe them as already quarantined on main.
+
+- Main `.github/workflows/barrot-agent.yml`: issue-label and manual-dispatch triggers; repository permissions include `contents:write`, `pull-requests:write` and `issues:write`. Issue-label dispatch can claim/edit an issue and invoke `scripts/barrot_agent.py`. The latest observed main run [42331248942](https://github.com/Barrot-Agent/B-Agent/actions/runs/42331248942) failed during Groq planning with HTTP 413 (11,534 requested tokens against an 8,000 TPM limit). Logs show no code change, branch creation, PR, merge or main modification in that run; it did fetch repository branches and call Groq. This is a failed, not quarantined, main workflow.
+- Main `.github/workflows/ask-barrot.yml`: manual dispatch, `contents:write` and `issues:write`; it can post an issue and commit/push memory to main. No explicit per-run YES input is present. It was not run in this automation.
+- Main `.github/workflows/coinbase-paper-trader.yml`: manual dispatch, Groq-backed BTC-USD simulation and commit/push of paper state to main; no explicit per-run YES or expected-main-SHA input. It was not run.
+- Main `.github/workflows/barrot-self-upgrade.yml`: manual dispatch with an explicit YES gate; it can create a candidate branch/PR but does not merge. It was not run.
+- On #1640, Ask Barrot, Barrot Agent and Self-Upgrade are disabled with empty permissions. The Coinbase paper trader becomes manual-only, requires YES plus the exact current main SHA, has `contents:read`, disables persisted checkout credentials and uploads artifacts rather than committing/pushing.
+- The #1640 changes are a safety mitigation on the PR branch only. They do not protect main until a compliant merge. No workflow was dispatched by this run.
+
 ### Workflow side-effect audit
 
 All 41 workflow files changed by #1640 were inspected. Relevant merge-trigger implications:
@@ -102,7 +113,7 @@ All 41 workflow files changed by #1640 were inspected. Relevant merge-trigger im
 - `barrot-ops.yml` can import/overwrite a Databricks workspace notebook and download a Kaggle dataset only through manual dispatch with explicit YES and exact-main-SHA checks; it does not submit a Kaggle competition entry.
 - `deploy-a2a-worker.yml` and `sync-self-hosted-brain.yml` are manual-only and require explicit YES, secret-rotation confirmation and exact-main-SHA checks. They are not triggered by merge.
 - `coinbase-paper-trader.yml` is manual-only, requires explicit YES and exact main SHA, uses read-only repository permissions and uploads simulation artifacts; it is not run by merge.
-- Ask Barrot, Barrot Agent and Self-Upgrade workflows remain quarantined with no permissions. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, external model transfer or real-money action was performed.
+- On the #1640 branch, Ask Barrot, Barrot Agent and Self-Upgrade are quarantined with `permissions: {}` and disabled jobs. This is not yet true on main; see the main-vs-PR distinction below. No deployment, secret rotation, Space restart, Kaggle submission, paper trade or real-money action was performed by this run.
 
 ### Nine-platform map and exact-phrase research
 
