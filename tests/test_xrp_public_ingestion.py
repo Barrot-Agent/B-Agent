@@ -638,6 +638,10 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "if: steps.feature_cache.outputs.cache-hit == 'true'" in workflow
     assert "if: steps.feature_cache.outputs.cache-hit != 'true'" in workflow
     assert "cache-matched-key" not in workflow
+    fallback = workflow.split("Restore latest trusted feature-store artifact when exact cache key is unavailable", 1)[1].split("      - name:", 1)[0]
+    cleanup = "rm -f artifacts/xrp_ingestion/feature_store.sqlite3"
+    assert cleanup in fallback
+    assert fallback.index(cleanup) < fallback.index('while [[ "$page"')
     assert workflow.index("Upload immutable raw-source receipts") < workflow.index("Upload per-run point-in-time feature-store checkpoint") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.index("Upload daily point-in-time feature-store backup and walk-forward report") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.count("actions/cache/save@v4") == 1
@@ -690,6 +694,7 @@ def test_feature_store_recovery_contract_docs_match_workflow_policy():
 
     for contract in (feature_contract, forecast_contract):
         assert "exact cache" in contract.lower()
+    assert "deletes any restore-key file" in feature_contract.lower()
         assert "7-day retention" in contract
         assert "90-day retention" in contract
         assert "30 pages of 100" in contract

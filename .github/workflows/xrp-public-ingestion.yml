@@ -70,6 +70,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # A restore-key match is not an exact cache hit. Discard its possibly stale database before artifact recovery.
+          rm -f artifacts/xrp_ingestion/feature_store.sqlite3
           page=1
           restored=0
           while [[ "$page" -le 30 && "$restored" != "1" ]]; do
