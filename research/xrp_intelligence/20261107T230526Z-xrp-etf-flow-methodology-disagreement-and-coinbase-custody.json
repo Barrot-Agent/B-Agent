@@ -9,7 +9,7 @@
     "verified_primary_fact": "Bitwise's issuer page reported 415,365,129.04 XRP in trust as of 2026-11-05 and identifies Coinbase Custody Trust Co., LLC as digital asset custodian; Bank of New York Mellon is administrator and trust custodian.",
     "aggregator_fact": "XRP Insights reported 1,195,787,657 XRP across six US spot XRP ETFs plus BITW as of 2026-11-06; the six spot funds alone were reported at about 1.17 billion XRP.",
     "flow_fact": "XRP Insights' holdings-delta methodology reported -663,043 XRP for 2026-11-06, +110,214 XRP for 2026-11-05 and -812,529 XRP for 2026-11-02 through 2026-11-06.",
-    "conclusion": "ETF holdings are a stock measure; XRP Insights' daily flow is a computed change in issuer-reported holdings, not a direct issuer creation/redemption report. The reported zero-flow and negative-holdings-delta observations are not comparable until fund universe, BITW treatment, GXRP gaps, fees, rebalancing and settlement vintages are reconciled."
+    "conclusion": "ETF holdings are a stock measure. XRP Insights reports a positive +110,214 XRP holdings delta on 2026-11-05 and a negative -663,043 XRP holdings delta on 2026-11-06. The Block reports zero XRP ETF flow for 2026-11-05. The same-day Nov 5 disagreement remains unresolved because fund universes, source lineage and flow definitions are not aligned; the Nov 6 negative observation has no same-day The Block comparison in the reviewed article."
   },
   "sources": [
     {
@@ -113,22 +113,27 @@
       "reported_values": {
         "xrp_holdings_millions": 1196.54,
         "net_assets_usd": 1470410000,
-        "nov_5_reported_net_flow_usd": 110214,
         "cumulative_net_inflows_usd_as_of_2026_10_30": 1810000000,
-        "net_assets_usd_as_of_2026_10_30": 1420000000
+        "net_assets_usd_as_of_2026_10_30": 1420000000,
+        "nov_5_flow_claim_by_article": {
+          "amount": 110214,
+          "unit_label": "USD in article prose",
+          "unit_conflict": "XRP Insights' underlying tracker table reports +110,214 XRP for 2026-11-05; the article's dollar sign is not reconciled and must not be treated as a verified USD amount."
+        }
       },
       "source_lineage": [
         "XRP Insights tracker for issuer-level holdings and Nov 5 XRP-denominated flow",
         "SoSoValue-based reporting for cumulative dollar inflows"
       ],
-      "normalized_excerpt_text": "AltcoinBuzz, 2026-11-07: reports 1,196.54M XRP and $1,470.41M net assets based on XRP Insights tracker through 2026-11-05; reports Nov 5 +$110,214 flow; notes SoSoValue flow page inaccessible due bot check and aggregate figures do not reconcile cleanly.",
-      "normalized_excerpt_sha256": "5f97561d54205169e3a5e9321d06c27fb59fecf9ffb2f2e9ae2bff918d0b7c9c",
+      "normalized_excerpt_text": "AltcoinBuzz, 2026-11-07: reports 1,196.54M XRP and $1,470.41M net assets based on XRP Insights tracker through 2026-11-05; its prose labels the Nov 5 flow as $110,214, while the tracker table reports +110,214 XRP; notes SoSoValue flow page inaccessible and aggregate figures do not reconcile cleanly.",
+      "normalized_excerpt_sha256": "3e35aa8177d25165ad04532cba85ec23ea4d224644e316f2ff7d81c08a6ef9e9",
       "raw_source_sha256": null,
       "raw_capture_status": "WEB_RENDERED_ARTICLE; RAW_HTML_BYTES_NOT_AVAILABLE",
       "limitations": [
         "The article explicitly says SoSoValue's flow page was inaccessible behind a bot check.",
         "The $1.47041B group net-assets figure is not reconciled to the tracker page's $1.43B Nov 6 close figure or the live $1.40723B dashboard figure.",
-        "Altcoin Buzz is not an independent confirmation of XRP Insights values."
+        "Altcoin Buzz is not an independent confirmation of XRP Insights values.",
+        "The article's Nov 5 prose labels the 110,214 flow with a dollar sign, while the underlying XRP Insights table labels 110,214 as XRP. Treat this as an unresolved unit discrepancy; do not convert or reconcile it."
       ]
     },
     {
@@ -139,11 +144,11 @@
       "published_at": "2026-11-06T07:33:00-05:00",
       "reported_claims": {
         "combined_us_spot_crypto_etf_outflows_usd_gt": 540000000,
-        "xrp_etf_flow": "zero for Thursday 2026-11-05"
+        "xrp_etf_flow": "zero for Thursday 2026-11-05; the article does not name the exact source or fund universe for this XRP-specific line"
       },
       "source_lineage": [
-        "The Block compilation",
-        "SoSoValue for some non-Bitcoin ETF flow figures"
+        "The Block's own compilation; the article does not identify the exact source/universe for its XRP zero-flow line",
+        "SoSoValue is explicitly cited for some other non-Bitcoin ETF flow figures in the same article"
       ],
       "normalized_excerpt_text": "The Block, 2026-11-06 07:33 EST: US spot crypto ETFs had over $540M combined outflows; XRP ETFs reported zero flows for Thursday, according to data compiled by The Block / SoSoValue.",
       "normalized_excerpt_sha256": "312ed11a358dd54a24f32797e20e92085a499a26b87f75c1c0be10ff05ef4568",
@@ -201,7 +206,7 @@
       "XRP Insights daily holdings/flow files and dashboard share one publisher and one methodology."
     ],
     "sosovalue_group": [
-      "The Block and CryptoTicker/CoinGape rely on SoSoValue for ETF flow claims; do not count them as independent confirmations."
+      "CryptoTicker/CoinGape explicitly cite SoSoValue for their ETF-flow claim; The Block cites SoSoValue for some other non-Bitcoin ETF flow figures but does not disclose the exact source for its XRP zero-flow line. Do not count these secondary reports as independent issuer confirmations."
     ],
     "derived_republication_group": [
       "Altcoin Buzz's Nov 7 ETF article explicitly relies on XRP Insights for holdings/flows; it is not an independent second source for those figures."
@@ -210,25 +215,25 @@
   },
   "disagreement_register": [
     {
-      "claim": "2026-11-06 XRP ETF flow",
-      "observation_a": "XRP Insights reports -663,043 XRP from daily issuer-holdings changes across six spot ETFs plus BITW, with GXRP flow excluded.",
-      "observation_b": "The Block reports zero XRP ETF flow for 2026-11-05 using its compilation/SoSoValue.",
+      "claim": "2026-11-05 XRP ETF flow",
+      "observation_a": "XRP Insights reports +110,214 XRP as the 2026-11-05 change in issuer-reported holdings.",
+      "observation_b": "The Block reports zero XRP ETF flow for Thursday 2026-11-05.",
       "status": "UNRESOLVED_NOT_COMPARABLE",
-      "explanation": "Different data vintages, source lineage and fund universes may apply. XRP Insights includes BITW, excludes GXRP from flow totals and counts any holdings change, including BITW rebalancing and XRP-paid fees. The Block's zero is based on a different aggregator/compilation. Neither is a direct issuer creation/redemption file."
+      "explanation": "XRP Insights computes holdings deltas across six spot funds plus BITW, excludes GXRP flows and counts non-creation changes such as BITW rebalancing and fees. The Block does not disclose the exact source or fund universe for its XRP zero-flow line. No same-universe issuer creation/redemption table was captured."
     },
     {
       "claim": "New XRP ETF inflows after 2026-10-29",
       "observation_a": "XRP Insights reports +110,214 XRP holdings change on 2026-11-05.",
       "observation_b": "CryptoTicker says no new money since 2026-10-29 based on SoSoValue via CoinGape.",
       "status": "UNRESOLVED_DIFFERENT_METHODS",
-      "explanation": "The tracker measures issuer-reported holdings deltas in XRP; CryptoTicker cites a separate dollar-flow feed. SoSoValue's direct flow page was not readable in this research pass."
+      "explanation": "The tracker reports +110,214 XRP as a holdings delta on Nov 5; CryptoTicker says no new money since Oct 29 based on SoSoValue via CoinGape. The tracker measures issuer-reported holdings changes in XRP, while CryptoTicker refers to a separate dollar-flow feed. The direct SoSoValue flow page was not readable in this research pass."
     },
     {
       "claim": "Group net assets",
       "observation_a": "XRP Insights reports approximately $1.43B on 2026-11-06 close for six spot funds plus BITW; live dashboard value was approximately $1.407B at its later displayed XRP price.",
       "observation_b": "Altcoin Buzz reports $1.47041B for 1,196.54M XRP using an earlier tracker reading through 2026-11-05.",
       "status": "UNRESOLVED_VINTAGE_AND_VALUATION",
-      "explanation": "Different capture vintages and possible inclusion/valuation differences are not bridged. The Altcoin Buzz article itself warns that group dollar figures do not reconcile cleanly. Do not average these values."
+      "explanation": "Different capture vintages and valuation/universe definitions are not bridged. The Altcoin Buzz article itself warns that group dollar figures do not reconcile cleanly. Its Nov 5 prose also labels 110,214 with a dollar sign while the underlying tracker table labels 110,214 as XRP. Do not average or normalize these values without the original row and a reconciled unit."
     },
     {
       "claim": "Cumulative net inflows versus current net assets",
