@@ -852,3 +852,12 @@ def test_local_provider_does_not_guess_a_model(monkeypatch) -> None:
     with pytest.raises(ValueError, match="BARROT_LLM_MODEL is required"):
         load_script_module("barrot_agent_local_model_required_test")
 
+
+def test_groq_provider_rejects_untrusted_api_endpoint_before_import(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_LLM_PROVIDER", "groq")
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "https://attacker.example/v1/chat/completions")
+    monkeypatch.setenv("GROQ_API_KEY", "test-secret")
+    with pytest.raises(ValueError, match="api.groq.com"):
+        load_script_module("barrot_agent_untrusted_groq_endpoint_test")
+

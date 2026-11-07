@@ -98,6 +98,12 @@ else:
         or "openai/gpt-oss-120b"
     )
     GROQ_KEY = os.environ.get("BARROT_LLM_API_KEY", os.environ.get("GROQ_API_KEY", ""))
+    remote_endpoint = urlsplit(GROQ_ENDPOINT)
+    if remote_endpoint.scheme != "https" or remote_endpoint.hostname != "api.groq.com":
+        raise ValueError(
+            "Groq credentials may only be sent to https://api.groq.com; "
+            "use BARROT_LLM_PROVIDER=local for loopback inference."
+        )
 
 MAX_REQUEST_TOKENS = int(os.environ.get("BARROT_MAX_REQUEST_TOKENS", "6500"))
 MAX_TPM_TOKENS = int(os.environ.get("BARROT_TPM_TOKEN_BUDGET", "7000"))
