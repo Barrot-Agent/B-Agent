@@ -37,8 +37,11 @@ def test_personal_channel_ownership_is_not_inferred():
 
 def test_all_existing_candidate_references_remain_unverified_and_preserved():
     artifact = load_artifact()
-    assert artifact["inventory_totals"]["unverified_candidate_channels_preserved"] == 18
-    assert artifact["candidate_handling"]["candidate_count_preserved"] == 18
+    assert artifact["inventory_totals"]["unverified_seed_video_references_preserved"] == 18
+    assert artifact["inventory_totals"]["related_public_video_references_preserved"] == 2
+    assert artifact["candidate_handling"]["seed_video_references_preserved"] == 18
+    assert artifact["candidate_handling"]["related_public_video_references_preserved"] == 2
+    assert artifact["candidate_handling"]["candidate_channel_status"] == "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
     assert artifact["candidate_handling"]["existing_candidate_registry"] == (
         "data/xrp_intelligence/sources/kamilah_stevenson_channel.json"
     )
