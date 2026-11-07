@@ -10,8 +10,9 @@ RESEARCH_HEAD = "d0ba9aa89feba4cb6ace650c94c9f58a6584c340"
 
 def test_run28_handoff_is_latest_and_preserves_verified_heads():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
-    assert handoff.startswith("## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z")
-    assert "# Run 28 — 2026-11-07T18:28:03Z" in handoff[:2_000]
+    assert handoff.startswith("## Exact-head test follow-up — 2026-11-07T18:42:51Z")
+    assert "## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z" in handoff[:2_000]
+    assert "# Run 28 — 2026-11-07T18:28:03Z" in handoff[:3_000]
     for value in (MAIN_SHA, INTEGRATION_HEAD, RESEARCH_HEAD):
         assert value in handoff
     assert "1,152 passed, 8 subtests passed" in handoff
