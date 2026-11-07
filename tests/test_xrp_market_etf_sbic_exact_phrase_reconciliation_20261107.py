@@ -110,6 +110,9 @@ def test_actual_capital_phrase_is_secondary_and_not_proof_of_cash_received(evide
     assert "actual capital raised" in source["normalized_excerpt"]
     assert "not issuer-primary" in source["limitations"][0]
     assert "not a draw, settled cash or XRP purchase" in source["limitations"][1]
+    assert source["url"].startswith("https://phemex.com/news/article/")
+    assert "PANews as the original source" in source["source_attribution"]
+    assert source["independence_group"] == "panewslab_original_syndication_via_phemex"
 
 
 def test_measurement_hypotheses_keep_counterevidence_and_no_forecast(evidence: dict) -> None:
@@ -120,3 +123,37 @@ def test_measurement_hypotheses_keep_counterevidence_and_no_forecast(evidence: d
     assert evidence["forecast"]["directional_probabilities"] is None
     assert evidence["forecast"]["real_money_actions"] is False
     assert evidence["forecast"]["paper_trade"] is False
+
+
+def test_latest_fuelmaps_spot_depth_snapshot_is_timestamped_and_not_a_signal(evidence: dict) -> None:
+    source = _source(evidence, "fuelmaps_xrp_spot_depth_1500z")
+    assert source["page_snapshot_time_utc"] == "2026-11-07T15:00:00Z"
+    assert source["provider_age_seconds_at_capture"] == 3724
+    assert source["mid_price"] == pytest.approx(1.1665)
+    assert source["bid_depth_usd_1pct"] == 11_500_000
+    assert source["ask_depth_usd_1pct"] == 9_700_000
+    assert source["bid_share_1pct"] == pytest.approx(54.4)
+    assert len(source["spot_venues"]) == 6
+    assert "Binance" not in source["spot_venues"]
+    assert source["model_eligible"] is False
+
+
+def test_swiftedge_live_dashboard_has_no_per_metric_timestamp(evidence: dict) -> None:
+    source = _source(evidence, "swiftedge_xrp_live_dashboard_1602z")
+    assert source["provider_event_time_utc"] is None
+    assert source["model_eligible"] is False
+    assert "no per-metric provider timestamp" in source["normalized_excerpt"]
+    assert any("differs from contemporaneous direct exchange retrievals" in item for item in source["limitations"])
+
+
+def test_japan_statute_names_exactly_three_regional_sbic_companies(evidence: dict) -> None:
+    law = _source(evidence, "sbic_law_101_1963_article_2")
+    assert law["law_number"] == 101
+    assert law["article"] == 2
+    assert law["companies"] == [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+    ]
+    assert law["head_offices"] == ["Tokyo", "Nagoya City", "Osaka City"]
+    assert law["model_eligible"] is False

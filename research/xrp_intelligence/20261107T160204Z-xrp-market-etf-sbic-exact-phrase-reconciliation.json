@@ -58,7 +58,7 @@
       "captured_at_utc": "2026-11-07T16:02:04Z",
       "page_snapshot_time_utc": "2026-11-07T09:00:00Z",
       "normalized_excerpt": "Fuelmaps six-venue XRP spot-book snapshot at 09:00 UTC: mid 1.1765; within ±0.5% bids $6.8M/asks $5.3M; ±1% $11.4M/$9.3M; ±2% $16.5M/$10.2M; ±5% $22.4M/$11.5M; ±10% $28.9M/$15.5M. Six of six venues covered within ±5%; five of six within ±10%.",
-      "normalized_excerpt_sha256": "a1825f9908b9e283c0f1b1223c296c5be4f4c95b212868b3c03b35c0cae6ab9c",
+      "normalized_excerpt_sha256": "c6f48d68dbe0a4017cd28317204a09a2a9ce1399ddb5578d07793277ef7eeb1a",
       "model_eligible": false,
       "limitations": [
         "Snapshot is 7h02m04s older than capture.",
@@ -76,7 +76,7 @@
       "page_snapshot_time_utc": "2026-11-07T14:30:00Z",
       "provider_age_seconds_at_capture": 5524,
       "normalized_excerpt": "Edge or Not snapshot at 14:30 UTC: XRP mid 1.1659; Binance spot plus OKX perpetual books; bids $9.1M and asks $8.9M within 1%; largest asks $1.2M at 1.1694, $1.3M at 1.1683, $2.5M at 1.1671; largest bids $1.3M at 1.1648, $2.3M at 1.1636, $1.1M at 1.1601.",
-      "normalized_excerpt_sha256": "8f5f656c8306dac1c42598cfc7dd08f185ee1382f9ccd822c8f82d0c2e16fe5d",
+      "normalized_excerpt_sha256": "f411b041f890b495fa2453cb79c904e42550fe4e882ccf916afa0a9d1759784a",
       "model_eligible": false,
       "limitations": [
         "Snapshot is 1h32m04s older than capture.",
@@ -94,7 +94,7 @@
       "page_updated_at_utc": "2026-11-07T13:07:00Z",
       "provider_age_seconds_at_capture": 10504,
       "normalized_excerpt": "Swiftedge brief updated 13:07 UTC: XRP 1.1610, reported 24h change -2.09%; net taker flow -16.6% of volume; volume 1.2x normal; funding +0.0100% per 8h; open interest -2.0%; large-order net flow -$10.9M; value area 1.1652-1.1893; POC 1.1787; displayed bid wall $5.3M at 1.1460 and ask wall $4.2M at 1.1660.",
-      "normalized_excerpt_sha256": "20f6292d633793ebe361a79a5a75d6486a8c39836c4a12b729efa68466fe8793",
+      "normalized_excerpt_sha256": "35f30bb63c6b4e8547034c516492b5b40d91ec5a8a0548491450fc44e8efff38",
       "model_eligible": false,
       "limitations": [
         "Snapshot is 2h55m04s older than capture.",
@@ -116,7 +116,7 @@
       "flow_30_sessions_usd": 45900000,
       "cumulative_net_inflow_usd": 1730000000,
       "normalized_excerpt": "Alpha Finance through Nov 6: five US spot XRP funds; Nov 6 flow $0; last seven sessions +$8.4M; 30 sessions +$45.9M; cumulative net inflow +$1.73B. Dashboard methodology says it uses Coinglass data; no current AUM or holdings are published.",
-      "normalized_excerpt_sha256": "42fed28c6d24aeb4befcc45ed60f0fb2aa43f74eb0e594eec3b4659b2b4388de",
+      "normalized_excerpt_sha256": "debb4ecfd04712e379a306b04e54969f05cd6a3f508d7356488d4836e899a1fd",
       "model_eligible": false,
       "limitations": [
         "Secondary aggregator feed attributed to Coinglass; not issuer cash-flow statements.",
@@ -137,7 +137,7 @@
       "additional_index_fund": "BITW",
       "trading_days": 231,
       "normalized_excerpt": "XRP Insights totals metadata generated 15:38:01 UTC, data through Nov 6: 231 trading-day rows; six US spot XRP funds plus BITW XRP sleeve. Holdings/AUM are read from issuer websites; flows are holdings deltas. BITW rebalancing can appear as flow; GXRP flow is excluded due a capture gap; some historical intervals are reconstructed.",
-      "normalized_excerpt_sha256": "e22755103565a51e2c31888bd3f811095fc971e0d9f6107afd17e757bb1977a6",
+      "normalized_excerpt_sha256": "4eebe8332356ac4fcc812d7bc47d1f3532eeb29defce1059c5ac2eb58218a762",
       "model_eligible": false,
       "limitations": [
         "BITW rebalancing/fees can appear as XRP flow.",
@@ -161,7 +161,7 @@
       "nov6_reporting_funds": 2,
       "nov6_expected_funds": 4,
       "normalized_excerpt": "CryptoKeyhole: four funds complete through Nov 5; Nov 5 flow -3,339 XRP; five-session flow -1,137,098 XRP; four-fund holdings 1,076,805,885 XRP. Nov 6 was partial with 2/4 reporting; XRPZ and XRPC were pending.",
-      "normalized_excerpt_sha256": "1c286f21d996effad61b686504f88b00feab77737410ab2cc1954357d45046fe",
+      "normalized_excerpt_sha256": "1cb28cbcd417f08fc68528d8d82fb98945221d17909735f6e03afde78383e2cd",
       "model_eligible": false,
       "limitations": [
         "Four-fund universe; Nov 6 incomplete.",
@@ -172,17 +172,18 @@
     {
       "source_id": "phemex_evernorth_actual_capital_phrase",
       "publisher": "Phemex News",
-      "independence_group": "phemex_syndicated_financial_news",
+      "independence_group": "panewslab_original_syndication_via_phemex",
       "source_type": "secondary_news_article",
-      "url": "https://phemex.com/pt/news/article/evernorth-plans-807m-equity-financing-with-cantor-affiliate-to-boost-xrp-holdings-101069",
+      "url": "https://phemex.com/news/article/evernorth-plans-807m-equity-financing-with-cantor-affiliate-to-boost-xrp-holdings-101069",
       "captured_at_utc": "2026-11-07T16:02:04Z",
       "normalized_excerpt": "Phemex uses the exact phrase 'actual capital raised' for Evernorth's conditional Cantor committed-equity facility; proceeds depend on final transaction volume and pricing, not the headline maximum.",
-      "normalized_excerpt_sha256": "e42c50e1a76b533386a8398f1b1dfb0a28da41f3144b472e8f9a7bf12a131801",
+      "normalized_excerpt_sha256": "e5272f6a45022631ba31e780ef90fc8f886e79bd1da696db71c4035be17e88d4",
       "model_eligible": false,
       "limitations": [
         "Exact phrase located in secondary commentary, not issuer-primary filing evidence.",
         "Facility capacity is not a draw, settled cash or XRP purchase."
-      ]
+      ],
+      "source_attribution": "Phemex page identifies PANews as the original source; count as one syndicated source group, not an independent Phemex confirmation."
     },
     {
       "source_id": "sbic_east_official_profile",
@@ -192,7 +193,7 @@
       "url": "https://www.sbic.co.jp/company/profile/",
       "captured_at_utc": "2026-11-07T16:02:04Z",
       "normalized_excerpt": "Official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. as SBIC East Japan; founded 1963-11-15; lists Nagoya and Osaka as sister companies; shareholders include local governments, chambers of commerce, financial institutions and companies.",
-      "normalized_excerpt_sha256": "474ea18adf1d5d562abc61901e02daf686a602f37343822f65d0d915dbaf84f5",
+      "normalized_excerpt_sha256": "e5a4f5492ed0e489437dc31233412eaf7cd12e0b0d647c9410624d67b559b92f",
       "model_eligible": false,
       "limitations": [
         "Primary corporate identity evidence; no SBI Holdings affiliation is stated."
@@ -206,7 +207,7 @@
       "url": "https://www.sbic-cj.co.jp/company/about/",
       "captured_at_utc": "2026-11-07T16:02:04Z",
       "normalized_excerpt": "Official profile identifies Nagoya Small and Medium Business Investment & Consultation Co., Ltd. as SBIC Central Japan; founded 1963-11-18; operating area Aichi, Gifu, Mie, Toyama and Ishikawa; lists Tokyo and Osaka as sister companies.",
-      "normalized_excerpt_sha256": "2ec759ca108247854157b3bd457242fdbb33dbec839d978d1787cac7e61f431b",
+      "normalized_excerpt_sha256": "278941311e0a5d32790fdc2e24c37123c82da9ca63faec28df96d15cea46d8c0",
       "model_eligible": false,
       "limitations": [
         "Primary corporate identity evidence; distinct regional investment company, not SBI Holdings."
@@ -220,7 +221,7 @@
       "url": "https://www.sbic-wj.co.jp/profiles/profile/",
       "captured_at_utc": "2026-11-07T16:02:04Z",
       "normalized_excerpt": "Official profile identifies Osaka Small and Medium Business Investment & Consultation Co., Ltd. as SBIC West Japan; founded 1963-11-20; operating area Fukui, Shiga, Nara, Wakayama and westward across 24 prefectures; lists Tokyo as sister company.",
-      "normalized_excerpt_sha256": "78bb602d84155ac4fb93cfbf409f0d1968db32c5c755d11f6f95f7d1e32ff3a1",
+      "normalized_excerpt_sha256": "f3cefa649e1229ee810bb514e922bc192c1a0f3b343c8782ae1419fca318178e",
       "model_eligible": false,
       "limitations": [
         "Primary corporate identity evidence; distinct regional investment company, not SBI Holdings."
@@ -235,10 +236,87 @@
       "captured_at_utc": "2026-11-07T16:02:04Z",
       "event_date": "2025-02-26",
       "normalized_excerpt": "Tokyo SBIC official page lists a Feb 26, 2025 event titled 'The Present and Future of Generative AI (ChatGPT)', co-hosted with the Taito branch of the Tokyo Chamber of Commerce and Industry; page marks event ended.",
-      "normalized_excerpt_sha256": "d92236b9d213da0201f4c769b8499f42ab813d322cdec7d79b7a92e72db60f6a",
+      "normalized_excerpt_sha256": "98a4bbfdf8a802264b55a099061aeba2650a9bfe3cfd43bc0f7a00bd8b7603e3",
       "model_eligible": false,
       "limitations": [
         "Training event only; not an OpenAI partnership, investment, data-sharing agreement or ChatGPT SBIC entity."
+      ]
+    },
+    {
+      "source_id": "fuelmaps_xrp_spot_depth_1500z",
+      "publisher": "Fuelmaps",
+      "independence_group": "fuelmaps_multi_exchange_spot_book",
+      "source_type": "secondary_order_book_aggregator",
+      "url": "https://fuelmaps.io/order-book/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "page_snapshot_time_utc": "2026-11-07T15:00:00Z",
+      "provider_age_seconds_at_capture": 3724,
+      "mid_price": 1.1665,
+      "bid_depth_usd_1pct": 11500000,
+      "ask_depth_usd_1pct": 9700000,
+      "bid_share_1pct": 54.4,
+      "venue_coverage_1pct": "6 of 6",
+      "spot_venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "normalized_excerpt": "Fuelmaps XRP spot-book hourly snapshot as of 2026-11-07 15:00 UTC: mid 1.1665 across 6 of 6 spot venues. Within ±0.5% bids $7.4M/asks $6.0M; ±1% $11.5M/$9.7M; ±2% $17.2M/$11.1M; ±5% $23.1M/$12.4M; ±10% $34.4M/$16.0M. Bid share 54.4% within 1%, 60.8% within 2%, 65.1% within 5%, 68.2% within 10%. Largest listed bids: $4.0M at 1.050, $3.1M at 1.120, $2.6M at 1.100, $1.8M at 1.051 and $1.8M at 1.160. Spot venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance/Bitget excluded.",
+      "normalized_excerpt_sha256": "d871790fb8fc1d15a701143ae607415a058ddae3a45d735281610051866567fa",
+      "model_eligible": false,
+      "limitations": [
+        "Hourly snapshot is 1h02m04s older than capture.",
+        "Spot-only six-venue map; Binance and Bitget are excluded because their public data cannot be read by this map.",
+        "Visible orders can be cancelled at any time; this is not an execution guarantee or validated trading signal.",
+        "Raw ladder bytes were not captured."
+      ]
+    },
+    {
+      "source_id": "swiftedge_xrp_live_dashboard_1602z",
+      "publisher": "Swiftedge",
+      "independence_group": "swiftedge_market_brief",
+      "source_type": "secondary_market_microstructure_aggregator",
+      "url": "https://swiftedge.uk/markets/today",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "provider_event_time_utc": null,
+      "normalized_excerpt": "Swiftedge XRP live dashboard at retrieval 2026-11-07 16:02:04 UTC (no per-metric provider timestamp): price 1.1641, reported 24h change -1.49%; value area 1.1581-1.1812; volume POC 1.1767; net taker flow -20.8%; volume vs normal 1.0x; funding +0.0100% per 8h; open interest -2.8%; large-order net flow -$11.4M; largest resting bid $6.7M at 1.1450 (-1.64%) and ask $4.5M at 1.1870 (+1.96%).",
+      "normalized_excerpt_sha256": "00b66240d6ea0d6bed9dbedc399cecd1104b3c79edeef97e81946ca6092570fc",
+      "model_eligible": false,
+      "limitations": [
+        "No per-metric provider timestamp; capture time is retrieval reference, not verified event time.",
+        "Provider venue/contract coverage and raw trades/order-book payloads are not exposed.",
+        "Its displayed 1.1641 price differs from contemporaneous direct exchange retrievals; do not treat as synchronized cross-venue price or return.",
+        "Secondary dashboard, not direct exchange receipt."
+      ]
+    },
+    {
+      "source_id": "sbic_law_101_1963_article_2",
+      "publisher": "House of Representatives of Japan",
+      "independence_group": "japan_house_of_representatives_official_law",
+      "source_type": "primary_statutory_text",
+      "url": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/houritsu/04319630610101.htm",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "law_number": 101,
+      "law_date": "1963-06-10",
+      "article": 2,
+      "companies": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+      ],
+      "head_offices": [
+        "Tokyo",
+        "Nagoya City",
+        "Osaka City"
+      ],
+      "normalized_excerpt": "House of Representatives official text of Act No. 101 of 1963, Small and Medium-Sized Enterprise Investment & Consultation Company Act, Article 2: the companies are Tokyo Small and Medium Business Investment & Consultation Co., Ltd., Nagoya Small and Medium Business Investment & Consultation Co., Ltd., and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with head offices in Tokyo, Nagoya City and Osaka City respectively.",
+      "normalized_excerpt_sha256": "1a46184f5706e63a67c76cc7b8f752f1b485606896f9a96b87660eba66ac9cc4",
+      "model_eligible": false,
+      "limitations": [
+        "Primary statutory identity evidence; it does not identify these companies as SBI Holdings subsidiaries."
       ]
     }
   ],
@@ -251,14 +329,15 @@
     "okx_raw_cross_venue_last_difference_pct": 0.09777031762374655,
     "fuelmaps_snapshot_age_seconds": 25324,
     "edgeornot_snapshot_age_seconds": 5524,
-    "swiftedge_snapshot_age_seconds": 10504
+    "swiftedge_snapshot_age_seconds": 10504,
+    "fuelmaps_1500_snapshot_age_seconds": 3724
   },
   "reconciliations": {
     "spot": "At 16:02:04 UTC, Kraken XRP/USD last 1.15577, bid 1.15568, ask 1.15577, 24h open 1.17749 and VWAP 1.17100720; provider event time absent. OKX XRP-USDT last 1.1569, bid 1.1569, ask 1.1570; its timestamp is 1,264.637 seconds old. Raw 0.09777% cross-venue gap is not comparable or arbitrage because USD/USDT normalization, synchronized depth and execution costs are missing.",
-    "depth": "Fuelmaps six-venue spot snapshot is from 09:00 UTC; Edge or Not's Binance spot plus OKX perpetual snapshot is from 14:30 UTC; Swiftedge's brief is from 13:07 UTC. Their scopes and ages differ, so they are context only and are not current features.",
+    "depth": "Fuelmaps' 15:00 UTC hourly spot-only snapshot is the latest visible multi-venue depth: mid 1.1665, $11.5M bids versus $9.7M asks within 1%, six spot venues, 54.4% bid share. It is 1h02m old at capture and visible orders can be cancelled. The 09:00 Fuelmaps snapshot is retained as historical. Edge or Not's 14:30 snapshot combines Binance spot and OKX perpetual books; Swiftedge's current dashboard lacks a per-metric timestamp and reports different price/flow readings. These distinct scopes and vintages are context only, not synchronized model features.",
     "etf_flows": "Alpha Finance covers five funds and uses a Coinglass feed; XRP Insights covers six spot funds plus BITW and computes holdings deltas, with BITW rebalance/fee effects, GXRP excluded flows and reconstructed historical intervals; CryptoKeyhole covers four funds and had only 2/4 reporting for Nov 6. Universes and methods differ; do not average and do not treat partial/missing as zero.",
-    "actual_capital": "The exact phrase 'actual capital raised' appears in secondary Phemex commentary about a conditional Evernorth Cantor equity facility. It describes contingent proceeds, not a completed draw, settled cash or XRP purchase. No issuer-primary exact-phrase match was established in this search.",
-    "sbic_identity": "Primary company profiles resolve Tokyo SBIC East Japan, Nagoya SBIC Central Japan and Osaka SBIC West Japan as three sister regional investment companies. Tokyo SBIC's ChatGPT seminar is an ordinary training event, not an OpenAI partnership or SBI Holdings affiliation.",
+    "actual_capital": "The exact phrase 'actual capital raised' appears in Phemex's English article about Evernorth's conditional Cantor equity facility. Phemex identifies PANews as the original source, so this is one syndicated secondary source group, not independent confirmation. The phrase describes contingent proceeds, not a completed draw, settled cash or XRP purchase. No issuer-primary exact-phrase match was established in this search.",
+    "sbic_identity": "The House of Representatives' official 1963 Act No. 101, Article 2, legally names exactly three companies: Tokyo, Nagoya and Osaka, with their respective head offices in Tokyo, Nagoya City and Osaka City. Their official profiles identify them as SBIC East/Central/West sister companies. They are not SBI Holdings. Tokyo SBIC's 2025 ChatGPT seminar is a training event, not an OpenAI partnership.",
     "ask_coin": "Permission Coin's ASK token is distinct from the earlier inactive/untracked Ask Coin listing in the research archive. No XRP relationship is established."
   },
   "hypotheses": [
