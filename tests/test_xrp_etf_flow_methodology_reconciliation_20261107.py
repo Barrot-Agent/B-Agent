@@ -70,7 +70,7 @@ def test_bitwise_primary_custody_edge_is_scoped_to_one_issuer_fund() -> None:
         if item["predicate"] == "digital_asset_custody_by"
     )
     assert edge["status"] == "PRIMARY_SOURCE_CONFIRMED"
-    assert "does not prove Coinbase Exchange purchased the XRP" in edge["scope_limit"]
+    assert "does not prove Coinbase Exchange purchased XRP" in edge["scope_limit"]
 
 
 def test_flow_disagreements_keep_shared_upstream_sources_and_minority_views() -> None:
@@ -91,7 +91,7 @@ def test_flow_disagreements_keep_shared_upstream_sources_and_minority_views() ->
     assert unit_claim["unit_label"] == "USD in article prose"
     assert "110,214 XRP" in unit_claim["unit_conflict"]
     assert any(
-        "not an independent confirmation" in item
+        "not an independent second source" in item
         for item in data["source_independence"]["derived_republication_group"]
     )
     assert any("BITW" in item for item in data["counter_hypotheses"])
