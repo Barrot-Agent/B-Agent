@@ -53,8 +53,11 @@ def test_cross_filing_class_allocation_difference_is_explicit_and_unresolved() -
 
 def test_latest_ownership_table_common_stock_and_voting_percentages_reconcile() -> None:
     holders = load_artifact()["latest_table_other_holders"]
+    latest = load_artifact()["latest_published_schedule"]
     common = sum(item["common_stock_percent"] for item in holders.values())
+    common += latest["sbi_pubco_common_stock_percent"]
     voting = sum(item["voting_power_percent"] for item in holders.values())
+    voting += latest["sbi_voting_power_percent"]
     assert round(common, 1) == 100.0
     assert round(voting, 1) == 100.0
     assert holders["sponsor"]["common_stock_percent"] == 61.4
