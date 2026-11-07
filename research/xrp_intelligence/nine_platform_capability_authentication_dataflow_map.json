@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T03:32:22.000000Z",
+  "captured_at_utc": "2026-11-07T06:07:43.307Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "f0cfe65360b305b9cc3e9af936f1bc66cc5fbfe7",
-  "observed_research_head": "79dc50f893bf779cd20b454db2acf2194f860d99",
+  "observed_integration_head_before_map_commit": "9f5efbec73c9976d7f9e5f2b3ab213a45763a9ab",
+  "observed_research_head": "8a67764122a7370b317d26c7eb0b103d49e0ba55",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -21,7 +21,11 @@
         "Repository metadata and main branch fetched in this run",
         "Complete main tree and PR inventory fetched in this run",
         "Current PRs, review threads, workflow runs and logs read in this run",
-        "Research and integration branch files created/updated through the connector"
+        "Research and integration branch files created/updated through the connector",
+        "Run 9: fetched the complete main tree (1,403 entries; 1,298 files) and paginated all 371 open PRs.",
+        "Read current #1640 and #1643 heads, complete changed-path inventories, review threads, exact-head CI, dependency audits and fail-closed gates.",
+        "Created a timestamp-qualified XRP/USD and XRP-USDT raw-response receipt plus regression tests on the existing #1643 research branch.",
+        "Current #1640 exact-head full suite, wheel verification and six-manifest dependency audit passed; current #1643 newest-head CI is running."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -45,7 +49,8 @@
         "external_model_transfer": false
       },
       "limitations": [
-        "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration."
+        "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
+        "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ]
     },
     "Claude": {
