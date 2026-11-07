@@ -38,13 +38,14 @@ def test_kraken_missing_event_timestamp_is_not_backfilled_from_capture_time():
     assert source["normalized"]["best_ask_usd"] == 1.16527
 
 
-def test_okx_timestamp_age_is_reproducible_and_fails_300_second_gate():
+def test_okx_timestamp_age_upper_bound_fails_300_second_gate():
     artifact = _load()
     source = artifact["sources"][1]
     captured = datetime.fromisoformat(artifact["captured_at_utc"].replace("Z", "+00:00"))
     event = datetime.fromisoformat(source["provider_event_timestamp_utc"].replace("Z", "+00:00"))
     age = (captured - event).total_seconds()
-    assert age == source["age_at_capture_seconds"] == 489.937
+    assert age == source["age_at_reference_seconds"] == 489.937
+    assert source["age_is_upper_bound"] is True
     assert age > 300
     assert source["freshness"] == "STALE_GT_300_SECONDS"
     assert source["model_eligible"] is False
