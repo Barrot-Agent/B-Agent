@@ -28,9 +28,9 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.12"
-PARSER_VERSION = "xrp-public-market-v3.11"
+ALLOWED_HOSTS = {"api.binance.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
+ADAPTER_VERSION = "xrp-public-market-v3.13"
+PARSER_VERSION = "xrp-public-market-v3.12"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -49,6 +49,10 @@ ENDPOINTS = (
     ("binance_perp_global_long_short_ratio", "https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=XRPUSDT&period=1h&limit=500"),
     ("coinbase_spot_ticker", "https://api.exchange.coinbase.com/products/XRP-USD/ticker"),
     ("kraken_spot_ticker", "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"),
+    ("bitbank_spot_circuit_break", "https://public.bitbank.cc/xrp_jpy/circuit_break_info"),
+    ("bitbank_spot_transactions", "https://public.bitbank.cc/xrp_jpy/transactions"),
+    ("bitbank_spot_ticker", "https://public.bitbank.cc/xrp_jpy/ticker"),
+    ("bitbank_spot_depth", "https://public.bitbank.cc/xrp_jpy/depth"),
     ("okx_spot_ticker", "https://us.okx.com/api/v5/market/ticker?instId=XRP-USDT"),
     ("okx_spot_depth", "https://us.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100"),
     ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
@@ -76,6 +80,14 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "of the raw exchange-balance JSON; retain its SHA-256 receipt only."
     ),
 }
+
+BITBANK_SOURCE_IDS = frozenset({
+    "bitbank_spot_circuit_break",
+    "bitbank_spot_transactions",
+    "bitbank_spot_ticker",
+    "bitbank_spot_depth",
+})
+BITBANK_CIRCUIT_MODES = frozenset({"NONE", "CIRCUIT_BREAK", "FULL_RANGE_CIRCUIT_BREAK", "RESUMPTION", "LISTING"})
 
 XRPL_NODE_SOURCES = {
     "xrpl_inftf_server_info": {
@@ -1547,6 +1559,411 @@ def _raw_only_coinbase_book(payload: Any, *, source_id: str, url: str, digest: s
     return [], None, False, "coinbase_book_snapshot_has_no_timestamp_or_websocket_sequence_bridge"
 
 
+
+
+def _bitbank_data(payload: Any, source_name: str) -> Mapping[str, Any]:
+    if (
+        not isinstance(payload, Mapping)
+        or payload.get("success") != 1
+        or not isinstance(payload.get("data"), Mapping)
+    ):
+        raise XRPIngestionError(f"Bitbank {source_name} response shape or success code mismatch")
+    return payload["data"]
+
+
+def _bitbank_circuit_context(
+    payload: Any,
+    captured: datetime,
+) -> tuple[str | None, datetime | None, bool, str]:
+    if not isinstance(payload, Mapping):
+        return None, None, False, "missing_bitbank_circuit_break_state"
+    try:
+        data = _bitbank_data(payload, "circuit-break context")
+        mode = data.get("mode")
+        if mode not in BITBANK_CIRCUIT_MODES:
+            raise XRPIngestionError("Bitbank circuit-break mode is unknown")
+        source_time = _from_ms(data.get("timestamp"), "Bitbank circuit-break timestamp")
+        if source_time > captured:
+            raise XRPIngestionError("Bitbank circuit-break timestamp is later than capture time")
+        estimated = data.get("estimated_itayose_price")
+        if estimated is not None:
+            _number(estimated, "Bitbank estimated itayose price", allow_zero=False)
+        if mode == "NONE" and estimated is not None:
+            raise XRPIngestionError("Bitbank NONE circuit mode cannot carry an estimated itayose price")
+        eligible, reason, _quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+        return mode, source_time, eligible, reason
+    except XRPIngestionError:
+        return None, None, False, "missing_or_invalid_bitbank_circuit_break_state"
+
+
+def _parse_bitbank_circuit_break(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    data = _bitbank_data(payload, "circuit-break info")
+    mode = data.get("mode")
+    if mode not in BITBANK_CIRCUIT_MODES:
+        raise XRPIngestionError("Bitbank circuit-break mode is unknown")
+    source_time = _from_ms(data.get("timestamp"), "Bitbank circuit-break timestamp")
+    if source_time > captured:
+        raise XRPIngestionError("Bitbank circuit-break timestamp is later than capture time")
+    estimated = data.get("estimated_itayose_price")
+    if estimated is not None:
+        _number(estimated, "Bitbank estimated itayose price", allow_zero=False)
+    if mode == "NONE" and estimated is not None:
+        raise XRPIngestionError("Bitbank NONE circuit mode cannot carry an estimated itayose price")
+    return [], _iso(source_time), False, "market_state_context_only_not_numeric_feature"
+
+
+def _parse_bitbank_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    circuit_break_info: Any = None,
+    http_date: str | None = None,
+):
+    data = _bitbank_data(payload, "XRP/JPY ticker")
+    source_time = _from_ms(data.get("timestamp"), "Bitbank ticker timestamp")
+    if source_time > captured:
+        raise XRPIngestionError("Bitbank ticker timestamp is later than capture time")
+    fresh, stale_reason, stale_quality = _live_eligibility(
+        source_time, captured, MAX_LIVE_AGE_SECONDS
+    )
+    mode, mode_time, mode_fresh, mode_reason = _bitbank_circuit_context(
+        circuit_break_info, captured
+    )
+    mode_synchronized = (
+        mode_time is not None
+        and abs((source_time - mode_time).total_seconds()) <= 60
+    )
+    continuous = mode == "NONE" and mode_fresh and mode_synchronized
+    bid = _number(data.get("buy"), "Bitbank ticker best bid", allow_zero=False)
+    ask = _number(data.get("sell"), "Bitbank ticker best ask", allow_zero=False)
+    quote_valid = ask > bid
+    quote_eligible = fresh and continuous and quote_valid
+    if not fresh:
+        quote_reason = stale_reason
+    elif not mode_synchronized or not mode_fresh or mode is None:
+        quote_reason = "bitbank_circuit_break_state_missing_stale_or_unsynchronized"
+    elif mode != "NONE":
+        quote_reason = f"bitbank_market_mode_{mode.lower()}_not_continuous"
+    elif not quote_valid:
+        quote_reason = "bitbank_ticker_quote_crossed_or_locked"
+    else:
+        quote_reason = ""
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    mid = (bid + ask) / 2.0
+    spread_bps = (ask - bid) / mid * 10000.0
+    limitations = [
+        "Single Bitbank XRP/JPY spot venue; JPY is not converted to USD or USDT.",
+        "Bitbank ticker timestamp is the ticker update time, not an individual last-trade execution timestamp.",
+        "Bitbank documents that sell may be less than or equal to buy outside continuous trading mode; quote features require a synchronized NONE circuit-break state and a positive spread.",
+        "24-hour ticker aggregates are not consolidated exchange flows.",
+    ]
+    last_price = _number(data.get("last"), "Bitbank ticker last price", allow_zero=False)
+    volume = _number(data.get("vol"), "Bitbank ticker 24h volume", allow_zero=True)
+    high = _number(data.get("high"), "Bitbank ticker 24h high", allow_zero=False)
+    low = _number(data.get("low"), "Bitbank ticker 24h low", allow_zero=False)
+    open_price = _number(data.get("open"), "Bitbank ticker 24h open", allow_zero=False)
+    metrics = [
+        ("last_price_snapshot", last_price, "JPY/XRP", False, "ticker_snapshot_not_trade_event"),
+        ("base_volume_24h", volume, "XRP/24h", fresh, stale_reason),
+        ("high_24h", high, "JPY/XRP", fresh, stale_reason),
+        ("low_24h", low, "JPY/XRP", fresh, stale_reason),
+        ("open_24h", open_price, "JPY/XRP", fresh, stale_reason),
+        ("best_bid", bid, "JPY/XRP", quote_eligible, quote_reason),
+        ("best_ask", ask, "JPY/XRP", quote_eligible, quote_reason),
+        ("mid_price", mid, "JPY/XRP", quote_eligible, quote_reason),
+        ("spread_bps", spread_bps, "bps", quote_eligible, quote_reason),
+    ]
+    records = []
+    for name, value, unit, eligible, reason in metrics:
+        quality = "verified" if eligible else ("stale" if not fresh else "unverified")
+        records.append(
+            _feature_record(
+                feature_id=f"xrp.spot.bitbank.{name}",
+                value=value,
+                unit=unit,
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="bitbank",
+                venue="Bitbank",
+                instrument="XRP/JPY spot",
+                currency_pair="XRP/JPY",
+                market_type="spot",
+                aggregation_window="24h" if name.endswith("_24h") else "",
+                model_eligible=eligible,
+                eligibility_reason=reason,
+                quality_status=quality,
+                limitations=limitations,
+            )
+        )
+    # The last field is the latest executed price, but the ticker's timestamp is
+    # only a ticker-update time. Keep it visible as a snapshot and fail it closed
+    # as a trade-event feature until a trade-time source is used.
+    return records, event_s, fresh, stale_reason
+
+
+def _parse_bitbank_depth(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    circuit_break_info: Any = None,
+    http_date: str | None = None,
+):
+    data = _bitbank_data(payload, "XRP/JPY order book")
+    source_time = _from_ms(data.get("timestamp"), "Bitbank order-book timestamp")
+    if source_time > captured:
+        raise XRPIngestionError("Bitbank order-book timestamp is later than capture time")
+    fresh, stale_reason, _quality = _live_eligibility(
+        source_time, captured, MAX_ORDERBOOK_AGE_SECONDS
+    )
+    mode, mode_time, mode_fresh, mode_reason = _bitbank_circuit_context(
+        circuit_break_info, captured
+    )
+    mode_synchronized = (
+        mode_time is not None
+        and abs((source_time - mode_time).total_seconds()) <= 60
+    )
+    continuous = mode == "NONE" and mode_fresh and mode_synchronized
+    bids_raw, asks_raw = data.get("bids"), data.get("asks")
+    if (
+        not isinstance(bids_raw, list)
+        or not bids_raw
+        or len(bids_raw) > 400
+        or not isinstance(asks_raw, list)
+        or not asks_raw
+        or len(asks_raw) > 400
+    ):
+        raise XRPIngestionError("Bitbank order book must contain 1–400 bids and asks")
+    def parse_levels(rows: list[Any], side: str) -> list[tuple[float, float]]:
+        levels = []
+        for row in rows:
+            if not isinstance(row, list) or len(row) < 2:
+                raise XRPIngestionError(f"Bitbank {side} level schema mismatch")
+            price = _number(row[0], f"Bitbank {side} price", allow_zero=False)
+            quantity = _number(row[1], f"Bitbank {side} quantity", allow_zero=False)
+            levels.append((price, quantity))
+        return levels
+    bids, asks = parse_levels(bids_raw, "bid"), parse_levels(asks_raw, "ask")
+    best_bid = max(price for price, _quantity in bids)
+    best_ask = min(price for price, _quantity in asks)
+    book_valid = best_ask > best_bid
+    if mode == "NONE" and not book_valid:
+        raise XRPIngestionError("Bitbank continuous order book is crossed or locked")
+    eligible = fresh and continuous and book_valid
+    if not fresh:
+        reason = stale_reason
+    elif not mode_synchronized or not mode_fresh or mode is None:
+        reason = "bitbank_circuit_break_state_missing_stale_or_unsynchronized"
+    elif mode != "NONE":
+        reason = f"bitbank_market_mode_{mode.lower()}_not_continuous"
+    elif not book_valid:
+        reason = "bitbank_order_book_crossed_or_locked"
+    else:
+        reason = ""
+    mid = (best_bid + best_ask) / 2.0
+    spread_bps = (best_ask - best_bid) / mid * 10000.0
+    features = [
+        ("best_bid", best_bid, "JPY/XRP"),
+        ("best_ask", best_ask, "JPY/XRP"),
+        ("mid_price", mid, "JPY/XRP"),
+        ("spread_bps", spread_bps, "bps"),
+    ]
+    for band in (10, 50, 100):
+        bid_depth = sum(
+            price * quantity for price, quantity in bids
+            if price >= mid * (1 - band / 10000.0)
+        )
+        ask_depth = sum(
+            price * quantity for price, quantity in asks
+            if price <= mid * (1 + band / 10000.0)
+        )
+        total = bid_depth + ask_depth
+        imbalance = (bid_depth - ask_depth) / total if total > 0 else 0.0
+        features.extend([
+            (f"bid_depth_{band}bps", bid_depth, "JPY"),
+            (f"ask_depth_{band}bps", ask_depth, "JPY"),
+            (f"depth_imbalance_{band}bps", imbalance, "ratio"),
+        ])
+    limitations = [
+        "Single Bitbank XRP/JPY spot order-book snapshot; not global or consolidated liquidity.",
+        "Depth is denominated in JPY and is not converted to USD or USDT.",
+        "Bitbank documents that circuit-break books may be centered on an estimated auction price and may cross; depth is admitted only in synchronized NONE mode.",
+        "Sequence IDs are retained in the raw receipt but no sequence bridge or continuity claim is made.",
+        "asks_over, bids_under, asks_under, bids_over, ask_market and bid_market are retained in raw data but not included in the depth sums.",
+    ]
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.bitbank.orderbook.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="bitbank",
+            venue="Bitbank",
+            instrument="XRP/JPY spot",
+            currency_pair="XRP/JPY",
+            market_type="spot",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status="verified" if eligible else ("stale" if not fresh else "unverified"),
+            limitations=limitations,
+        )
+        for name, value, unit in features
+    ]
+    # Preserve the provider sequence id in the raw receipt; it is not treated as
+    # a complete sequence bridge because Bitbank says it is not always consecutive.
+    return records, event_s, fresh, stale_reason
+
+
+def _parse_bitbank_transactions(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    data = _bitbank_data(payload, "XRP/JPY transactions")
+    rows = data.get("transactions")
+    if not isinstance(rows, list) or len(rows) > 60:
+        raise XRPIngestionError("Bitbank latest-transactions response must contain at most 60 rows")
+    if not rows:
+        return [], None, False, "no_recent_transactions_raw_only"
+    parsed = []
+    seen_ids = set()
+    for row in rows:
+        if not isinstance(row, Mapping):
+            raise XRPIngestionError("Bitbank transaction row must be an object")
+        transaction_id = row.get("transaction_id")
+        if isinstance(transaction_id, bool):
+            raise XRPIngestionError("Bitbank transaction id must be a positive integer")
+        try:
+            transaction_id = int(transaction_id)
+        except (TypeError, ValueError, OverflowError):
+            raise XRPIngestionError("Bitbank transaction id must be a positive integer") from None
+        if transaction_id <= 0 or transaction_id in seen_ids:
+            raise XRPIngestionError("Bitbank transaction ids must be positive and unique")
+        seen_ids.add(transaction_id)
+        side = row.get("side")
+        if side not in {"buy", "sell"}:
+            raise XRPIngestionError("Bitbank transaction taker side must be buy or sell")
+        price = _number(row.get("price"), "Bitbank transaction price", allow_zero=False)
+        amount = _number(row.get("amount"), "Bitbank transaction amount", allow_zero=False)
+        executed = _from_ms(row.get("executed_at"), "Bitbank transaction executed_at")
+        if executed > captured:
+            raise XRPIngestionError("Bitbank transaction executed_at is later than capture time")
+        parsed.append((transaction_id, side, price, amount, executed))
+    parsed.sort(key=lambda item: (item[4], item[0]))
+    captured_s = _iso(captured)
+    limitations = [
+        "Bitbank public endpoint returns only the latest 60 transactions when no date is supplied.",
+        "Snapshots overlap; transaction ids are appended to record ids so repeated trades can be deduplicated.",
+        "The latest-60 sample is not a fixed-duration or complete 24-hour exchange-flow measure.",
+        "Trade events are known to this collector only at captured_at_utc; they are never backdated into earlier point-in-time cutoffs.",
+        "Taker side is the exchange-reported transaction side; buy is positive and sell is negative for signed-flow features.",
+    ]
+    records = []
+    for transaction_id, side, price, amount, executed in parsed:
+        event_s = _iso(executed)
+        signed_amount = amount if side == "buy" else -amount
+        notional = price * amount
+        signed_notional = notional if side == "buy" else -notional
+        features = [
+            ("price", price, "JPY/XRP"),
+            ("amount", amount, "XRP"),
+            ("signed_amount", signed_amount, "XRP"),
+            ("notional", notional, "JPY"),
+            ("signed_notional", signed_notional, "JPY"),
+            ("side_is_buy", 1.0 if side == "buy" else 0.0, "ratio"),
+        ]
+        for name, value, unit in features:
+            record = _feature_record(
+                feature_id=f"xrp.spot.bitbank.trade.{name}",
+                value=value,
+                unit=unit,
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="bitbank",
+                venue="Bitbank",
+                instrument=f"XRP/JPY spot trade {transaction_id}",
+                currency_pair="XRP/JPY",
+                market_type="spot",
+                model_eligible=True,
+                quality_status="verified",
+                limitations=limitations,
+            )
+            record["record_id"] = f"{record['record_id']}:{transaction_id}"
+            record["transaction_id"] = transaction_id
+            record["taker_side"] = side
+            records.append(record)
+    return records, _iso(max(item[4] for item in parsed)), True, ""
+
+
+def _bitbank_transactions_research_summary(payload: Any) -> dict[str, Any] | None:
+    data = _bitbank_data(payload, "XRP/JPY transactions summary")
+    rows = data.get("transactions")
+    if not isinstance(rows, list) or not rows:
+        return None
+    parsed = []
+    for row in rows:
+        side = row["side"]
+        price = float(row["price"])
+        amount = float(row["amount"])
+        executed = _from_ms(row["executed_at"], "Bitbank transaction executed_at")
+        parsed.append((side, price, amount, executed))
+    earliest = min(item[3] for item in parsed)
+    latest = max(item[3] for item in parsed)
+    buy_amount = sum(item[2] for item in parsed if item[0] == "buy")
+    sell_amount = sum(item[2] for item in parsed if item[0] == "sell")
+    buy_notional = sum(item[1] * item[2] for item in parsed if item[0] == "buy")
+    sell_notional = sum(item[1] * item[2] for item in parsed if item[0] == "sell")
+    return {
+        "observation_type": "bitbank_latest_60_trade_sample",
+        "currency_pair": "XRP/JPY",
+        "window_kind": "latest_60_trades_variable_duration",
+        "trade_count": len(parsed),
+        "first_trade_at_utc": _iso(earliest),
+        "last_trade_at_utc": _iso(latest),
+        "sample_window_seconds": (latest - earliest).total_seconds(),
+        "buy_taker_volume_xrp": round(buy_amount, 12),
+        "sell_taker_volume_xrp": round(sell_amount, 12),
+        "net_taker_flow_xrp": round(buy_amount - sell_amount, 12),
+        "buy_taker_notional_jpy": round(buy_notional, 8),
+        "sell_taker_notional_jpy": round(sell_notional, 8),
+        "net_taker_flow_jpy": round(buy_notional - sell_notional, 8),
+        "model_eligible": False,
+        "reason": "Variable latest-60-trade window; not a fixed-duration or complete 24-hour flow metric.",
+    }
+
+
+
 def _parse_kraken_ticker(
     payload: Any,
     *,
@@ -2278,6 +2695,10 @@ PARSERS = {
     "coinbase_spot_ticker": _parse_coinbase_ticker,
     "coinbase_spot_candles": _parse_coinbase_candles,
     "coinbase_spot_book": _raw_only_coinbase_book,
+    "bitbank_spot_circuit_break": _parse_bitbank_circuit_break,
+    "bitbank_spot_transactions": _parse_bitbank_transactions,
+    "bitbank_spot_ticker": _parse_bitbank_ticker,
+    "bitbank_spot_depth": _parse_bitbank_depth,
     "kraken_spot_ticker": _parse_kraken_ticker,
     "kraken_spot_depth": _parse_kraken_depth,
     "okx_spot_ticker": _parse_okx_ticker,
@@ -2629,6 +3050,7 @@ def run_ingestion(
     raw_only = []
     research_only_observations = []
     xrp_insights_metadata_payload: Mapping[str, Any] | None = None
+    bitbank_circuit_break_payload: Mapping[str, Any] | None = None
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
 
     for source_id, url in selected_endpoints:
@@ -2648,8 +3070,10 @@ def run_ingestion(
                 "digest": digest,
                 "captured": captured,
             }
-            if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES:
+            if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
                 parser_kwargs["http_date"] = response.get("http_date")
+            if source_id in {"bitbank_spot_ticker", "bitbank_spot_depth"}:
+                parser_kwargs["circuit_break_info"] = bitbank_circuit_break_payload
             if source_id == "xrp_etf_flows_csv":
                 parser_kwargs["metadata_payload"] = xrp_insights_metadata_payload
             parsed_records, source_as_of, source_eligible, reason = parser(
@@ -2658,6 +3082,8 @@ def run_ingestion(
             )
             if source_id == "xrp_etf_flows_aggregator":
                 xrp_insights_metadata_payload = payload
+            if source_id == "bitbank_spot_circuit_break":
+                bitbank_circuit_break_payload = payload
             if source_id in XRPL_NODE_SOURCES and source_as_of is not None:
                 xrpl_node_payloads[source_id] = payload
         except Exception as exc:
@@ -2707,7 +3133,22 @@ def run_ingestion(
             raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
         )
         receipts.append(receipt)
-        if source_id == "xrp_etf_flows_csv":
+        if source_id == "bitbank_spot_transactions":
+            observation = _bitbank_transactions_research_summary(payload)
+            if observation is not None:
+                research_only_observations.append(
+                    {
+                        **observation,
+                        "source_id": source_id,
+                        "source_uri": url,
+                        "raw_content_sha256": receipt["raw_content_sha256"],
+                        "receipt_id": receipt["receipt_id"],
+                        "raw_bytes_retained": receipt["raw_bytes_retained"],
+                        "captured_at_utc": captured_s,
+                    }
+                )
+            records.extend(parsed_records)
+        elif source_id == "xrp_etf_flows_csv":
             metadata = (xrp_insights_metadata_payload or {}).get("metadata", {})
             for observation in parsed_records:
                 research_only_observations.append(
