@@ -2608,3 +2608,73 @@ No merge was performed. Do not bypass protection or treat COMMENTED reviews as a
 3. Merge #1640 only when all required checks and approvals are genuinely satisfied; then verify the merge commit, main files, automatic workflow effects and main CI.
 4. Consolidate #1643's unique evidence onto that verified main, reconciling the three shared paths and preserving the larger candidate-only video registry.
 5. Verify the first scheduled XRP ingestion run on main before claiming operational data collection. Continue synchronized historical acquisition, fitted calibration and independent shadow evaluation. Keep directional forecast issuance fail-closed.
+
+
+---
+
+## Automation run 11 — final evidence addendum — 2026-11-07T10:48:00Z
+
+### New visible-depth and order-flow evidence on the existing XRP research branch
+
+PR #1643 received one consolidated secondary-market microstructure artifact and eight deterministic regression tests in commit `388a3aa1f794714df83529de971fbea57fb1bdcc`. No new PR was created.
+
+- Artifact: `research/xrp_intelligence/20261107T091900Z-xrp-visible-depth-taker-flow-reconciliation.json`
+- Tests: `tests/test_xrp_visible_depth_taker_flow_reconciliation_20261107.py`
+
+Edge or Not's page updated at 09:19 UTC reported XRP mid $1.1717, visible bids of $9.8M and asks of $10.4M within 1%. It combines Binance spot and OKX XRP-USDT perpetual books, samples each minute and averages into 15-minute buckets. Hidden/iceberg size and other venues are excluded; displayed orders can be pulled. The publisher explicitly says the order-book signal has not been tested and its history begins October 21.
+
+Swiftedge's market brief updated at 09:06 UTC reported XRP at $1.1756, down 1.58% over 24 hours; net taker flow -17.1% of volume; volume 1.2x recent average; funding +0.0100% per eight hours; open interest down 1.5%; and large-order net flow -$10.0M. It reported a $5.7M bid wall at $1.1570 and a $4.1M ask wall at $1.1810. Its retrieved page did not disclose the complete XRP venue/contract universe.
+
+The 0.33285% difference between the two price references is not an executable spread: the page update times differ by 13 minutes, underlying venue/contract universes are not matched, and the observations are not synchronized exchange event receipts. The calculated visible-depth imbalance is modest: bids/asks = 0.9423, with a 2.97% net ask imbalance relative to total visible depth. The two aggregators are distinct publishers, but their underlying venue data may overlap; independent exchange-level corroboration is not established.
+
+Alpha Finance's five-fund ETF dashboard through November 6 reports $0 for that session, +$8.4M over October 27–November 6, +$45.9M over 30 sessions and +$1.73B cumulative since November 14, 2025. It explicitly does not publish fund AUM or holdings. Keep this five-fund flow series separate from six-fund-plus-BITW holdings-derived data and four-fund issuer-file series.
+
+All three sources remain event-timeline research only. They are not admitted as price/depth model features; no forecast was issued.
+
+### Exact-phrase and Evernorth capital cross-check
+
+The latest public SEC records reviewed still distinguish three different capital channels:
+
+- The October 23 Cantor committed-equity facility covers up to 5,218,935 new Class A shares at 97% of applicable VWAP, subject to conditions, ownership and volume caps. The issuer may elect to sell all, some or none.
+- The October 30 final ELOC prospectus illustrates approximately $76.8M gross at its October 29 reference price of $14.71; its stated 97% VWAP formula implies approximately $74.47M if the full share amount were sold at that reference price. The prospectus's cover/table and footnote figures are not fully consistent. This is conditional capacity, not realized cash. No purchase notice, draw or settlement was verified in the reviewed filings.
+- A separate public-warrant prospectus covers 11,499,992 shares at $11.50 per cash exercise, a maximum approximately $132.2M only if all warrants are exercised for cash. Exercise is not assured; later resale proceeds do not go to Evernorth.
+
+The SEC filing searches did not establish an issuer-primary exact-phrase use of `actual capital`. The KuCoin Community Insights occurrence remains user-generated commentary, not independent issuer evidence. No new verified ASK Coin/XRP relationship or Camilla/Kamilah YouTube channel ownership was established. Tokyo SBIC's ChatGPT training listing remains evidence of a training course, not an OpenAI partnership and not SBI Holdings.
+
+### Exact-head CI state at this handoff
+
+**PR #1640 — V3 integration, current head `5ad04396b0319276c2f6693ce3843440bfb2bc7f`:**
+- Full repository suite: 1,108 passed, 8 subtests passed.
+- Core suite: 631 passed, 8 subtests passed.
+- Inclusive package coverage: 57.90% against 53%.
+- Installed wheel: built; packaged primary mission resource verified; installed wheel loaded Barrot V3 and mission assets.
+- Dependency audit: [42365176491](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365176491), passed.
+- Fail-closed gate: [42365176497](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365176497), passed with automatic merge disabled.
+- Full CI: [42365176472](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365176472), passed.
+
+The two failures on preceding head `29d92e99` were corrected on the same branch. The corrected code-bearing head `04ea02031ef8170db13bcf44a5bb6298c4904650` also passed 1,108 full-suite tests and 631 core tests. The current `5ad0439` handoff-only head has now passed the same full suite.
+
+**PR #1643 — XRP research, current head `388a3aa1f794714df83529de971fbea57fb1bdcc`:**
+- Core suite: passed; exact count is recorded in the current Actions run.
+- Full repository suite: [42365312554](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365312554), in progress at this observation.
+- Dependency audit: [42365312614](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365312614), in progress at this observation.
+- Fail-closed gate: [42365312555](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365312555), passed with automatic merge disabled.
+- The immediately preceding head `b32b707ac72251eb92272dfdca956f24decf8e2a` passed 1,791 full-suite tests and 498 core tests, with its dependency audit and fail-closed gate passing. Those results do not substitute for verification of the new depth-artifact head.
+
+### Repository and merge state
+
+Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. The main tree contains 1,403 entries, 1,298 files, 493 Python files, 87 test modules and 86 workflow files. It still lacks the XRP scheduled-ingestion workflow and primary mission registry.
+
+The full open-PR inventory remains 371: 355 drafts and 16 non-drafts. #1640 has 165 changed paths and is 544 commits ahead of main; #1643 has 422 changed paths and is 586 commits ahead. Both have zero commits behind main and remain divergent. Their three shared changed paths are unchanged: the dependency-audit workflow (identical), the Kamilah candidate registry (different), and its identity-gate tests (different). Preserve #1643's 18 candidate references; verified personal channel ownership and verified attributed-video inventory remain zero.
+
+Review state: #1640 has 22/22 resolved inline threads; #1643 has 19/19. Each has ten COMMENTED reviews and zero APPROVED reviews. COMMENTED reviews are not approvals. Main protection details still return HTTP 403; the visible `Fall Back` ruleset is disabled. GitHub Pages is enabled but its configuration is inaccessible, and a prior main push ran a public Pages deployment. Independent approval and Pages deployment authorization remain unresolved.
+
+No merge, main-branch write, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next action
+
+1. Finish exact-head full-suite and dependency verification on #1643 head `388a3aa1`.
+2. Obtain independent approving review and resolve the Pages deployment authorization boundary.
+3. Merge #1640 only after all required gates and approvals are satisfied; verify the merge commit, main files, automatic workflow effects and main CI.
+4. Consolidate #1643's unique research onto that verified main, preserving the three shared-path decisions and all unique research.
+5. Verify a real scheduled ingestion run on main before claiming operational ingestion; continue synchronized historical collection, trained-model evaluation, calibration and independent shadow outcomes. Keep directional forecast issuance fail-closed.
