@@ -5,8 +5,10 @@ import json
 from pathlib import Path
 
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 ARTIFACT = (
-    Path(__file__).resolve().parents[1]
+    REPO_ROOT
     / "research"
     / "xrp_intelligence"
     / "20261107T193840Z-sbi-circle-coinbase-ripple-institutional-relationship-graph.json"
