@@ -2448,3 +2448,49 @@ Main scheduled Cross Analysis runs through 2026-11-07 07:51 UTC succeeded on mai
 ### Exact-head handoff verification note
 
 The prior #1640 handoff-only head `14601a3645969351d89cdc87e5b0388d9e0a940c` passed its exact-head full repository suite (1,096 passed, 8 subtests), core suite (630 passed, 8 subtests), 57.89% inclusive coverage, installed-wheel mission verification, six-manifest dependency audit and fail-closed gate. This addendum itself advances #1640 again; its new head must receive fresh exact-head CI before it is described as verified.
+
+
+## Run 12 payment-rails addendum — 2026-11-07T08:49:04Z
+
+### GateHub Euro (EURGH): new XRPL/Xahau euro EMT and SEPA rail
+
+The existing #1643 artifact and regression test are:
+
+- `research/xrp_intelligence/20261107T043946Z-eurgh-gatehub-dinaro-xrpl-sepa-launch.json`
+- `tests/test_eurgh_gatehub_dinaro_xrpl_sepa_identity_20261107.py`
+
+GateHub announced on 2026-11-05 that Dinaro d.o.o. issues GateHub Euro (EURGH), a euro-denominated electronic money token, on both XRPL and Xahau. GateHub provides the wallet/distribution interface and describes SEPA deposits from European IBANs into EURGH and redemption from the wallet back to IBANs. The launch release lists issuer, redemption and transfer fees as free and claims transfers complete in seconds; those are partner/product claims, not independently measured settlement SLAs.
+
+Banka Slovenije's register confirms Dinaro's EMI authorisation from 2021-11-02, its current legal name, and notified host-state activity across the EEA. The register records that PAYWISER changed its legal name to DINARO on 2026-06-08. Banka Slovenije's general EMT guidance states that EMTs reference one official currency, do not pay interest, give holders a claim against the issuer, and require an EMI or bank issuer. This general guidance is not product-specific approval of EURGH.
+
+Primary sources:
+- GateHub launch: https://gatehub.net/blog/gatehub-partners-with-dinaro-to-launch-gatehub-euro-eurgh/
+- Banka Slovenije Dinaro register: https://www.bsi.si/en/banking-supervision/register-of-supervised-entities/dinaro-company-for-electronic-money-issuing-and-payment-services-ltd
+- Banka Slovenije EMT guidance: https://www.bsi.si/en/payment-systems/payment-services-and-electronic-money-issuance-services
+
+Important limitations and XRP relevance:
+
+- The official Dinaro white-paper link resolves to a JavaScript-only page that was not text-retrievable. GateHub's official terms page also returns a JavaScript-only shell. Reserve composition, safeguarding details and product-specific notification/approval status therefore remain unverified from the primary document in this run. Secondary summaries describing a 30% safeguarded-bank / up-to-70% low-risk-asset split are not admitted as primary evidence.
+- GateHub did not disclose circulating supply, mint/redemption totals, holder count, on-ledger volume, exchange listings, order-book depth or reserve attestations.
+- The GateHub SEPA flow is described as EUR-to-EURGH and EURGH-to-SEPA. No XRP bridge-asset step, XRP market purchase, issuer XRP reserve or XRP-denominated liquidity commitment is disclosed.
+- XRPL uses XRP for transaction fees/account reserves; Xahau is a separate ledger whose native fee/reserve asset is XAH. Do not combine the two ledgers or infer that Xahau activity creates XRP fee demand.
+- Classify EURGH as a verified XRPL payment-rail/product-launch event with usage impact unmeasured. It may enter the event timeline, but it is not a directional price feature and does not justify an XRP forecast.
+
+### Exact-head verification immediately before this addendum
+
+#1640 head `dc798b062fae598418a8d98acc31b392b72228b1` passed:
+- Full repository suite: 1,096 passed, 8 subtests.
+- Core suite: 630 passed, 8 subtests.
+- Inclusive package coverage: 57.89% against a 53% threshold.
+- Installed-wheel verification: Barrot V3, XRP mission and canonical assets load.
+- Six-manifest dependency audit: passed.
+- Fail-closed merge gate: passed with automatic merging disabled.
+
+CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42356856990
+Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42356856848
+Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42356856837
+
+#1643 remains at `50ca342d01a9e0e1576278429c2b4d413f4dc582`; exact-head full suite passed 1,756 tests and 8 subtests, core suite passed 498 tests and 8 subtests, dependency audit and fail-closed gate passed:
+https://github.com/Barrot-Agent/B-Agent/actions/runs/42356320196
+
+This handoff addendum itself advances #1640 again. The new documentation-only tip requires fresh exact-head CI; do not reuse the predecessor's test results as proof for the new tip.
