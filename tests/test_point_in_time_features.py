@@ -644,22 +644,23 @@ def test_historical_feature_store_reconstructs_revisions_at_actual_store_receipt
 
 
 def test_future_issuer_row_cannot_be_backdated_to_aggregator_observation_date():
-    result = validate_feature_record(
-        feature(
-            record_id="xrpc:nov6:future-issuer-row",
-            feature_id="xrp.etf.xrpc.holdings_delta",
-            feature_name="xrpc_holdings_delta",
-            value=-752_048,
-            unit="XRP",
-            event_time_utc="2026-11-06T00:00:00Z",
-            known_at_utc="2026-11-07T16:16:09Z",
-            source_data_as_of_utc="2026-11-09T00:00:00Z",
-            ingested_at_utc="2026-11-07T16:16:10Z",
-            revision_available_at_utc="2026-11-07T16:16:09Z",
-        ),
-        "2026-11-07T17:00:00Z",
-        captured_at_utc="2026-11-07T17:05:00Z",
-    )
-
-    assert result["eligible"] is False
-    assert "source_data_after_cutoff" in result["exclusion_reasons"]
+    with pytest.raises(
+        FeatureSnapshotError,
+        match="source_data_as_of_utc cannot follow revision_available_at_utc",
+    ):
+        validate_feature_record(
+            feature(
+                record_id="xrpc:nov6:future-issuer-row",
+                feature_id="xrp.etf.xrpc.holdings_delta",
+                feature_name="xrpc_holdings_delta",
+                value=-752_048,
+                unit="XRP",
+                event_time_utc="2026-11-06T00:00:00Z",
+                known_at_utc="2026-11-07T16:16:09Z",
+                source_data_as_of_utc="2026-11-09T00:00:00Z",
+                ingested_at_utc="2026-11-07T16:16:10Z",
+                revision_available_at_utc="2026-11-07T16:16:09Z",
+            ),
+            "2026-11-07T17:00:00Z",
+            captured_at_utc="2026-11-07T17:05:00Z",
+        )
