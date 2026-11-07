@@ -4485,4 +4485,4 @@ Primary product references:
 - [Coinbase International Exchange markets and eligibility](https://www.coinbase.com/en-in/international-exchange).
 - [Coinbase / Ripple RLUSD distribution announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
 
-This post-handoff section records the exact verified #1640 tip above. The documentation/test-only follow-up that adds this section requires its own exact-head CI; no merge or main-branch write is implied.
+This post-handoff section records the exact verified #1640 tip above. The documentation/test-only follow-up that adds this section requires its own exact-head CI; No merge or main-branch write is implied.
