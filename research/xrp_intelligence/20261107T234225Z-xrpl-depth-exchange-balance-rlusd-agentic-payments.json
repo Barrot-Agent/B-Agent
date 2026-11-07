@@ -1,0 +1,393 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrpl-depth-exchange-balance-rlusd-agentic-payments-20261107T234225Z",
+  "artifact_type": "market_structure_custody_stablecoin_and_agentic_payments_reconciliation",
+  "research_reference_utc": "2026-11-07T23:42:25Z",
+  "capture_clock_note": "Reference clock obtained during this run. Page-specific response receipt timestamps were not exposed; use each publisher's displayed data time and do not infer a more precise capture time.",
+  "receipt_contract": {
+    "hash_algorithm": "SHA-256",
+    "page_excerpt_hash_scope": "Exact normalized excerpt strings preserved below, not complete HTML or HTTP wire bytes.",
+    "raw_page_bytes_preserved": false,
+    "response_headers_preserved": false,
+    "independent_capture_clock_per_page": false
+  },
+  "order_book_sources": [
+    {
+      "source_id": "fuelmaps_xrp_six_spot_venues_20261107T230000Z",
+      "publisher": "Fuelmaps",
+      "source_type": "secondary_multi_venue_spot_order_book_aggregator",
+      "url": "https://fuelmaps.io/order-book/",
+      "snapshot_utc": "2026-11-07T23:00:00Z",
+      "age_seconds_at_reference": 2545,
+      "excerpt": "Fuelmaps snapshot 2026-11-07 23:00 UTC: XRP mid $1.1580 across six spot venues (Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini). Within ±0.5% bids $9.2M/asks $6.7M (58.0% bid); ±1% $14.6M/$10.5M (58.2%); ±2% $19.7M/$11.0M (64.0%); ±5% $28.1M/$12.4M (69.4%); ±10% $35.0M/$15.9M (68.7%, 5/6 venues). Largest resting levels: bid $1.050/$4.0M, bid $1.100/$3.6M, bid $1.155/$2.3M, ask $1.249/$2.1M, bid $1.152/$1.8M. Orders can be cancelled.",
+      "excerpt_sha256": "38fcc208d9cad3e253354fdad6eb398c92ab8e0056fe702cfd46c93a428f066e",
+      "venue_universe": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "product_scope": "Spot only; USDT books are converted to USD using a live USDT/USD rate.",
+      "coverage_notes": [
+        "Binance and Bitget are not included.",
+        "Full-depth coverage is available from Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken are near-price books with narrower reach.",
+        "Hourly columns average one-minute snapshots; a wall that persists for only part of an hour is averaged down.",
+        "Displayed orders can be cancelled or moved; hidden/iceberg orders are not shown."
+      ],
+      "normalized": {
+        "mid_usd": 1.158,
+        "bid_within_1pct_usd": 14600000,
+        "ask_within_1pct_usd": 10500000,
+        "bid_share_within_1pct_pct": 58.2,
+        "bid_within_5pct_usd": 28100000,
+        "ask_within_5pct_usd": 12400000,
+        "bid_share_within_5pct_pct": 69.4,
+        "venues_within_1pct": 6,
+        "venues_within_10pct": 5
+      },
+      "model_feature_eligible": false
+    },
+    {
+      "source_id": "edgeornot_xrp_spot_perp_book_20261107T233100Z",
+      "publisher": "Edge or Not",
+      "source_type": "secondary_mixed_spot_perpetual_order_book_aggregator",
+      "url": "https://edgeornot.com/order-book-heatmap/xrp",
+      "snapshot_utc": "2026-11-07T23:31:00Z",
+      "age_seconds_at_reference": 685,
+      "stated_method": "Full visible depth from Binance spot and OKX XRP-USDT perpetual, sampled every minute, grouped into 0.05% price buckets and averaged per 15 minutes.",
+      "excerpt": "Edge or Not snapshot 2026-11-07 23:31 UTC: XRP mid 1.1605; within ±1% bids $9.4M and asks $9.1M (50.81% bid); Binance spot and OKX perpetual combined. Largest asks 1.1640/$1.4M, 1.1628/$1.7M, 1.1617/$2.4M; largest bids 1.1593/$1.7M, 1.1582/$2.0M, 1.1570/$1.2M. Books are sampled every minute and averaged per 15 minutes. Orders can be pulled.",
+      "excerpt_sha256": "cec8972547fce23d9722dd682d1af64b62b7b9b9440832595e9ebbd3a234bf94",
+      "venue_universe": [
+        "Binance spot",
+        "OKX XRP-USDT perpetual"
+      ],
+      "normalized": {
+        "mid_usdt": 1.1605,
+        "bid_within_1pct_usd": 9400000,
+        "ask_within_1pct_usd": 9100000,
+        "bid_share_within_1pct_pct": 50.81081081
+      },
+      "limitations": [
+        "Mixed spot/perpetual universe; not directly comparable with Fuelmaps spot-only six-venue book.",
+        "15-minute bucket averages obscure intraperiod changes and cancellations.",
+        "Displayed orders can be pulled within seconds."
+      ],
+      "model_feature_eligible": false
+    }
+  ],
+  "exchange_wallet_balance_source": {
+    "source_id": "xrp_insights_exchange_wallet_balances_20261107T080100Z",
+    "publisher": "XRP Insights",
+    "source_type": "secondary_public_wallet_attribution_using_primary_ledger_reads",
+    "url": "https://xrp-insights.com/exchange-balances",
+    "data_as_of_utc": "2026-11-07T08:01:00Z",
+    "age_seconds_at_reference": 56485,
+    "excerpt": "XRP Insights as of 2026-11-07 08:01 UTC: 22.33B XRP in 701 XRPL wallets attributed to 24 exchanges. Same-wallet change -150.7M XRP (-0.67%) over 7d and -161.2M (-0.73%) over 30d. Naive total change +350.8M includes two newly tracked wallets holding 512.0M. Upbit 6.44B; Coinbase 5.79B including 150.8M cbXRP reserve; Binance 2.73B including non-customer Binance-Peg XRP reserve and other affiliate balances; SBI VC Trade 56.6M, -2.9M 7d and -4.2M 30d. 487.8M XRP in tracked exchange wallets is wrapped-asset/insurance/charity reserves; 48.4% is cold-labeled and 39.9% unlabeled. Data are daily rippled account_info balances attributed by XRPSCAN labels; this is not tradable float.",
+    "excerpt_sha256": "bb13fefac64a3a3ce2e3b412362a245be185401cb1a620a2534ce5e6ad4703ca",
+    "method": {
+      "balances": "Daily XRP Ledger rippled account_info reads on the latest validated ledger.",
+      "attribution": "XRPSCAN public account labels; labels are not the underlying ledger balances.",
+      "same_wallet_change": "Compares only wallet sets tracked at both endpoints; newly tracked wallets are excluded from same-wallet flow calculations.",
+      "page_refresh": "Page regenerates hourly; balances themselves update daily."
+    },
+    "normalized": {
+      "attributed_xrp": 22330000000,
+      "wallet_count": 701,
+      "exchange_count": 24,
+      "share_of_circulating_supply_pct": 32.4,
+      "share_of_total_supply_pct": 22.3,
+      "same_wallet_change_7d_xrp": -150700000,
+      "same_wallet_change_30d_xrp": -161200000,
+      "naive_total_change_xrp": 350800000,
+      "newly_tracked_wallets": 2,
+      "newly_tracked_wallet_balance_xrp": 512000000,
+      "wrapped_insurance_charity_reserves_xrp": 487800000,
+      "cold_labeled_share_pct": 48.4,
+      "hot_labeled_share_pct": 12,
+      "unlabeled_share_pct": 39.9,
+      "coinbase_attributed_xrp": 5790000000,
+      "coinbase_cb_xrp_reserve_xrp": 150800000,
+      "binance_attributed_xrp": 2730000000,
+      "upbit_attributed_xrp": 6440000000,
+      "sbi_vc_trade_attributed_xrp": 56600000,
+      "sbi_vc_trade_7d_change_xrp": -2900000,
+      "sbi_vc_trade_30d_change_xrp": -4200000
+    },
+    "limitations": [
+      "No official universal count of XRP held on exchanges exists; wallet-label coverage differs substantially among providers.",
+      "The 22.33B attributed-wallet total includes cold storage, omnibus custody and exchange-controlled wrapped-token/insurance reserves.",
+      "Wallet balances do not identify beneficial owners or whether XRP is available for sale.",
+      "The source estimates about 323M XRP in XRPSCAN-labeled wallets of exchanges outside its tracked list as of a September audit.",
+      "Exchange wallet movements to newly labeled or still-untracked wallets can look like outflows without being customer withdrawals.",
+      "The SBI VC Trade figure is two attributed wallets and is not a disclosed customer balance or direct SBI Holdings investment position."
+    ],
+    "model_feature_eligible": false
+  },
+  "rlusd_sources": [
+    {
+      "source_id": "ripple_rlusd_transparency_20261105",
+      "publisher": "Ripple",
+      "source_type": "issuer_primary_transparency_dashboard",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "data_as_of": "2026-11-05",
+      "excerpt": "Ripple official transparency page: total circulating RLUSD $2,632.9M and reserve funds $2,748.0M as of 2026-11-05. Simple ratio 104.37%; difference $115.1M. Standard Custody & Trust Company LLC is the issuer, a NYDFS-supervised limited-purpose trust company. Page describes monthly independent CPA attestations; visible attestation list ends at September 2026, so November 5 dashboard figures are not described as covered by a November attestation.",
+      "excerpt_sha256": "4f242ceee1f8157ed0d859c110597e5ec9ddd7ffefe03f5ef6513ba93fad3d32",
+      "normalized": {
+        "circulating_usd": 2632900000,
+        "reserve_funds_usd": 2748000000,
+        "arithmetic_reserve_coverage_pct": 104.37160545,
+        "arithmetic_reserve_excess_usd": 115100000
+      },
+      "caveats": [
+        "The ratio is arithmetic from displayed dashboard balances, not a substitute for the underlying CPA attestation.",
+        "The visible attestation report list ends at September 2026; no November 5 attestation report was located.",
+        "Issuer is Standard Custody & Trust Company LLC; do not conflate with Ripple National Trust Bank."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_rlusd_onchain_split_20261107",
+      "publisher": "XRP Insights",
+      "source_type": "secondary_onchain_supply_aggregator",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "data_as_of": "2026-11-07",
+      "excerpt": "XRP Insights reports $2.67B RLUSD across XRPL and Ethereum as of 2026-11-07: $884.3M on XRPL (33%) and $1.79B on Ethereum (67%). It reads XRPL issuer gateway_balances and Ethereum token totalSupply(), and excludes small supplies on Base, Optimism, Ink, Unichain and XRPL EVM sidechain. It reports the on-chain split cross-checks rl-tracker.com to under $1M.",
+      "excerpt_sha256": "0567ab61decfbff8f3f632c808ea11ab408bdfcec6b1d4ca0b117be65f4c16b2",
+      "normalized": {
+        "total_xrpl_ethereum_usd": 2670000000,
+        "xrpl_supply_usd": 884300000,
+        "xrpl_share_pct": 33,
+        "ethereum_supply_usd": 1790000000,
+        "ethereum_share_pct": 67,
+        "other_supported_networks": [
+          "Base",
+          "Optimism",
+          "Ink",
+          "Unichain",
+          "XRPL EVM sidechain"
+        ]
+      },
+      "limitations": [
+        "The $2.67B figure is XRPL plus Ethereum only; smaller network supplies are excluded.",
+        "This is not the same date or network scope as Ripple's Nov 5 transparency dashboard.",
+        "The dashboard is a secondary presentation of on-chain reads; raw ledger receipts were not preserved in this artifact."
+      ]
+    },
+    {
+      "source_id": "ripple_rlusd_product_network_count_20261107",
+      "publisher": "Ripple",
+      "source_type": "issuer_primary_product_page",
+      "url": "https://ripple.com/products/stablecoin/",
+      "page_excerpt": "Ripple's official RLUSD product page states seven supported chains and lists payments, trading, treasury, collateral and tokenized-asset settlement as target use cases. This product-page count has no displayed as-of date; it does not prove XRP purchases or XRP collateral balances.",
+      "excerpt_sha256": "204af3e73f242068bfe6d68854b4a10b0859b81219380f42e985fde3fdc1ffe7",
+      "normalized": {
+        "supported_chain_count": 7
+      },
+      "limitations": [
+        "No chain-by-chain supply or transaction volume is supplied on this product-page summary.",
+        "RLUSD is a separate USD stablecoin; its distribution or settlement does not automatically imply XRP purchases."
+      ]
+    },
+    {
+      "source_id": "sbi_vc_trade_rlusd_distribution_20260624",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "source_type": "issuer_primary_press_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16733.html",
+      "published_date": "2026-06-24",
+      "excerpt": "SBI VC Trade and Ripple Labs announced RLUSD availability in VCTRADE starting 2026-06-24. SBI Holdings identifies SBI VC Trade as a consolidated subsidiary. This is a direct RLUSD distribution relationship; it does not establish XRP settlement or XRP purchases.",
+      "excerpt_sha256": "0353319bfb6e219a484b10ed8d4e90751c29efc7ec25eb383b4611288cb5fabf"
+    }
+  ],
+  "agentic_payments_sources": [
+    {
+      "source_id": "t54_xrpl_ai_hub_counters_20261107",
+      "publisher": "t54 Labs",
+      "source_type": "operator_primary_dashboard",
+      "url": "https://xrpl-ai.org/",
+      "capture_clock_reference_utc": "2026-11-07T23:42:25Z",
+      "excerpt": "XRPL AI Hub operated by t54 Labs displayed 15,309,300 all-time transactions, $68,320.75 value settled, 193 registered merchants and 5,393 live services. Several recent live entries are labeled Unverified. The hub supports XRP and issued tokens including RLUSD and USDC; t54 says it is an official launch partner of Mastercard Agent Pay for Machines. At the displayed counters, average settled value is about $0.00446 per transaction.",
+      "excerpt_sha256": "ee279ae3f34017949c9cb87850078388c3308739c0ec7ac261b536b216d5f8cf",
+      "normalized": {
+        "all_time_transactions": 15309300,
+        "all_time_value_settled_usd": 68320.75,
+        "registered_merchants": 193,
+        "live_services": 5393,
+        "average_settled_value_usd_per_transaction": 0.0044627
+      },
+      "limitations": [
+        "The dashboard does not expose a precise counter timestamp or raw per-transaction receipt in the captured page.",
+        "Some recent live entries are explicitly labeled Unverified.",
+        "Operator-reported transaction count is not equivalent to capital deployed or meaningful settlement value.",
+        "No XRP-versus-RLUSD-versus-USDC token mix was captured."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_x402_agentic_payment_counters_20261107",
+      "publisher": "XRP Insights",
+      "source_type": "secondary_agentic_payment_dashboard",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "data_as_of": "2026-11-07",
+      "excerpt": "XRP Insights XRP Radar displayed 15,272,937 agent transactions, 191 active agents, 193 merchants, 5,865 paid services, and all-time settled value of 7,027 XRP plus 57,502 RLUSD. It attributes transactions to native XRPL Payment records tagged SourceTag 804681468 and says a recent transaction was spot-checked against rippled; XRPSCAN verification was inaccessible (HTTP 403) in this run. Its counters differ from the t54 hub and should not be combined.",
+      "excerpt_sha256": "92e7933eef468273cd73e1c2e6903de79e68860764018bfc41cd63bbd7d99f41",
+      "normalized": {
+        "all_time_transactions": 15272937,
+        "active_agents": 191,
+        "merchants": 193,
+        "paid_services": 5865,
+        "settled_xrp": 7027,
+        "settled_rlusd_usd": 57502,
+        "source_tag": 804681468
+      },
+      "limitations": [
+        "The on-chain explorer transaction verification could not be independently repeated in this run.",
+        "Counters differ from the t54 operator dashboard; different update times or metric definitions may explain the difference.",
+        "The reported total value is mostly stablecoin-denominated; do not treat transaction count as XRP demand."
+      ]
+    },
+    {
+      "source_id": "mastercard_agent_pay_for_machines_20260610",
+      "publisher": "Mastercard Investor Relations",
+      "source_type": "issuer_primary_press_release",
+      "url": "https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Agent-Pay-for-Machines-to-Unlock-Super-Fast-Always-On-Payments/default.aspx",
+      "published_date": "2026-06-10",
+      "excerpt": "Mastercard Investor Relations release dated 2026-06-10 lists Coinbase, OKX, RippleX and t54 Labs among initial participants/supporters of Agent Pay for Machines. Mastercard describes credentialing, permissioning, transacting and multi-rail settlement across cards, accounts and stablecoins. Coinbase's quote mentions x402 and programmable digital dollars; RippleX's quote describes XRPL and RLUSD; t54's quote describes transaction risk assessment, Know Your Agent verification and traceability. This is program-level co-participation, not evidence of a bilateral agreement between every participant or of XRP being the settlement asset in each transaction.",
+      "excerpt_sha256": "077683f7b7e97e3bbfd524f89a03da7ed3427ecbee7237af2fce939f5466d97a",
+      "participants": [
+        "Coinbase",
+        "OKX",
+        "RippleX",
+        "t54 Labs",
+        "Stripe",
+        "Cloudflare",
+        "Aave Labs",
+        "others"
+      ],
+      "capabilities": [
+        "credentialing",
+        "permissioning",
+        "transacting",
+        "multi_rail_settlement_cards_accounts_stablecoins"
+      ],
+      "limitations": [
+        "Initial participant/supporter listing is not proof of a bilateral agreement between every listed participant.",
+        "Mastercard describes multi-rail settlement; the announcement does not say XRP is used for every transaction."
+      ]
+    },
+    {
+      "source_id": "xrpl_official_agentic_transaction_docs",
+      "publisher": "XRP Ledger Foundation documentation",
+      "source_type": "protocol_primary_documentation",
+      "url": "https://xrpl.org/docs/agents/agentic-transactions",
+      "excerpt": "XRPL developer documentation describes agentic transactions using XRP or issued tokens such as RLUSD, with deterministic finality, predictable costs, native multi-currency/DEX support, DepositAuth, multi-signature, escrow time locks, SourceTag and Memo audit trails. Production agents require a funded wallet, network access, a transaction library, machine-readable docs and secure key storage such as KMS/HSM. These are protocol capabilities and requirements, not measured adoption.",
+      "excerpt_sha256": "c2ac3bd7fac7cb28fd024985b5c636901268ffef06389814058efdbdc717931e",
+      "limitations": [
+        "Documentation examples are not live payment evidence.",
+        "No wallet was created, funded or connected in this run.",
+        "No transaction was signed or submitted."
+      ]
+    }
+  ],
+  "institutional_relationship_reconciliation": {
+    "sbi": "SBI VC Trade is a consolidated SBI Holdings subsidiary and a direct RLUSD distribution channel through VCTRADE from 2026-06-24. The 56.6M attributed XRP balance is an XRPL wallet-label observation, not disclosed SBI corporate investment, customer holdings or XRP collateral.",
+    "coinbase": "Coinbase is an initial Mastercard Agent Pay for Machines participant. XRP Insights attributes 5.79B XRP to Coinbase-labeled XRPL wallets, including 150.8M cbXRP reserve; most tracked Coinbase balance is cold-labeled. This is not a disclosed Coinbase proprietary XRP position.",
+    "ripple": "RippleX is an initial Mastercard Agent Pay for Machines participant; Ripple's RLUSD product supports seven chains and is issued by Standard Custody & Trust Company LLC. RLUSD supply and distribution are distinct from XRP ownership or purchase flows.",
+    "t54": "t54 Labs operates the XRPL AI Hub and is named by Mastercard as an initial Agent Pay for Machines participant. Its dashboard shows very high transaction count but low cumulative dollar value; token mix and raw per-payment receipts remain unverified.",
+    "mastercard": "The program combines credentialing, permissioning, and multi-rail settlement across cards, accounts and stablecoins. Participation does not imply every participant settles in XRP or has a bilateral commercial agreement with every other participant."
+  },
+  "source_independence": {
+    "order_book": "Fuelmaps and Edge or Not are distinct secondary aggregators with overlapping underlying venues but materially different product universes; do not average or treat as independent confirmation.",
+    "exchange_balances": "XRP Insights reads balances from rippled but attributes wallets using XRPSCAN public labels; ledger balances are primary observations, wallet ownership labels are third-party attribution.",
+    "rlusd": "Ripple transparency is issuer primary; XRP Insights is a secondary dashboard reading XRPL/Ethereum supply; dates and network scopes differ.",
+    "agentic_payments": "Mastercard is primary for program participants; t54 is primary for its own dashboard counters; XRP Insights is secondary for transaction aggregation; XRPL docs are primary for protocol capabilities."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "visible_spot_bid_imbalance",
+      "hypothesis": "The Fuelmaps spot-only snapshot shows more displayed bid than ask notional near price, but Edge or Not's mixed spot/perpetual snapshot is close to balanced.",
+      "supporting_evidence": [
+        "Fuelmaps reports 58.2% bid share within 1% and 69.4% within 5%.",
+        "Edge or Not reports 50.81% bid share within 1% across Binance spot plus OKX perpetual."
+      ],
+      "counter_hypotheses": [
+        "Venue universe and product mix differ.",
+        "Orders can be cancelled or moved.",
+        "Hourly/15-minute averaging obscures persistence and executions."
+      ],
+      "status": "snapshot_observation_not_directional_signal"
+    },
+    {
+      "id": "exchange_wallet_decline",
+      "hypothesis": "Same-wallet attributed exchange balances declined over 7 and 30 days, potentially reflecting withdrawals or internal custody changes.",
+      "supporting_evidence": [
+        "XRP Insights reports -150.7M XRP over 7 days and -161.2M over 30 days on the same tracked wallet set."
+      ],
+      "counter_hypotheses": [
+        "Exchange wallets are omnibus and include cold custody.",
+        "Movements to unlabeled wallets can look like outflows.",
+        "Newly tracked wallets add 512M XRP and reverse the naive total-change sign.",
+        "Wrapped-token reserves and affiliate wallets are included."
+      ],
+      "status": "not_a_tradable_float_estimate"
+    },
+    {
+      "id": "rlusd_growth_without_xrp_demand",
+      "hypothesis": "RLUSD's multi-chain distribution and XRPL supply may increase XRPL stablecoin activity without requiring material XRP purchases.",
+      "supporting_evidence": [
+        "XRP Insights reports $884.3M RLUSD on XRPL and $1.79B on Ethereum.",
+        "Ripple's product page states seven supported chains.",
+        "SBI VC Trade distributes RLUSD."
+      ],
+      "counter_hypotheses": [
+        "No synchronized XRP fee, DEX liquidity or XRP conversion series was captured.",
+        "RLUSD can settle as an issued token; its reserve assets are separate from XRP."
+      ],
+      "status": "plausible_and_unquantified"
+    },
+    {
+      "id": "agentic_payment_adoption",
+      "hypothesis": "XRPL agentic payments have measurable ecosystem activity, but current displayed totals are micropayment-scale rather than large capital flows.",
+      "supporting_evidence": [
+        "t54 displays 15.309M transactions and $68,320.75 settled.",
+        "Mastercard lists RippleX, Coinbase and t54 Labs as initial program participants.",
+        "XRPL docs describe native agent payment controls."
+      ],
+      "counter_hypotheses": [
+        "Dashboard counters differ between t54 and XRP Insights.",
+        "Recent t54 live settlements are labeled Unverified.",
+        "No full transaction hash set or XRP/RLUSD token mix was captured."
+      ],
+      "status": "ecosystem_activity_observed_value_and_token_mix_unverified"
+    }
+  ],
+  "model_admission": {
+    "order_book_depth": false,
+    "exchange_wallet_balances": false,
+    "rlusd_supply": false,
+    "agentic_payment_counters": false,
+    "eligible_as_event_timeline": true,
+    "reasons": [
+      "Depth providers expose different universes and aggregated snapshots, not synchronized raw venue books.",
+      "Exchange wallet data are daily and label-dependent; custody, reserves and untracked wallets prevent tradable-float interpretation.",
+      "RLUSD supply sources have different dates and network scopes; raw gateway_balances/totalSupply receipts were not archived.",
+      "Agentic payment dashboards do not expose complete raw receipts or consistent token-level totals."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "next_tests": [
+    "Capture synchronized raw level-2 spot books from Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini, and keep Binance spot/perpetual products separate.",
+    "Archive per-venue order-book receipts and one-minute snapshots so depth persistence, cancellation and executed volume can be measured.",
+    "Re-read XRPL account_info for the same 701 exchange wallets and archive account IDs, validated-ledger index, XRPSCAN labels and per-wallet hashes.",
+    "Reconcile exchange wallet changes with known internal cold-wallet migrations and wrapped-asset reserve changes before describing customer inflows/outflows.",
+    "Archive RLUSD issuer gateway_balances and Ethereum totalSupply with validated ledger/block numbers; distinguish all-chain supply from XRPL+Ethereum scope and from Ripple's transparency dashboard.",
+    "Validate t54 x402 transactions from a public transaction-hash feed against validated XRPL ledgers; separate XRP, RLUSD and USDC payment values and fees.",
+    "Map Mastercard AP4M participants to actual bilateral contracts and rail-specific production integrations; do not infer XRP settlement from program participation.",
+    "Do not issue a directional XRP forecast until these time-aligned observations pass chronological walk-forward evaluation against all four baselines."
+  ]
+}
