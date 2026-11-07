@@ -64,16 +64,31 @@ NEW_ARTIFACT_PATH = (
 )
 
 
+HASH_CORRECTION_PATH = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261107T224900Z-xrp-kraken-okx-binance-freshness-snapshot-hash-correction.json"
+)
+
+
 def test_224221_direct_exchange_hashes_match_exact_rendered_response_text():
     artifact = json.loads(NEW_ARTIFACT_PATH.read_text(encoding="utf-8"))
+    correction = json.loads(HASH_CORRECTION_PATH.read_text(encoding="utf-8"))
     assert artifact["append_only"] is True
     assert artifact["captured_at_utc"] == "2026-11-07T22:42:21Z"
     assert len(artifact["sources"]) == 3
+    assert artifact["source_capture_contract"]["raw_capture_status"] == "rendered_response_text_only"
     for source in artifact["sources"]:
-        assert artifact["source_capture_contract"]["raw_capture_status"] == "rendered_response_text_only"
         assert source["model_eligible"] is False
         digest = hashlib.sha256(source["raw_response_text"].encode("utf-8")).hexdigest()
-        assert digest == source["raw_response_sha256"]
+        if source["source_id"] == correction["source_id"]:
+            assert source["raw_response_sha256"] == correction["previous_recorded_sha256"]
+            assert digest == correction["corrected_sha256"]
+            assert correction["source_text_unchanged"] is True
+        else:
+            assert digest == source["raw_response_sha256"]
+    assert correction["corrected_sha256"] == "8ab1c2caba750b59700b524549e2c8184b5808ab58176d4592ca8d2c065dddde"
 
 
 def test_224221_provider_timestamps_fail_closed_freshness():
