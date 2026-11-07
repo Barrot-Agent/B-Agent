@@ -14,7 +14,6 @@
     ],
     "identity_status": "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH",
     "official_youtube_channel_handle": null,
-    "official_channel_url": "https://www.youtube.com/@drkamilahstevenson",
     "channel_display_name": "Kamilah Stevenson",
     "platform_verified_badge": "NOT_ESTABLISHED",
     "verification_basis": [
@@ -28,7 +27,8 @@
     "channel_ownership_caveat": "The person is confirmed, but the exact @drkamilahstevenson handle-to-canonical-channel-ID relation remains probable rather than first-party/platform-verified. The host tag and channel display name are supporting evidence only.",
     "person_identity_status": "CONFIRMED",
     "candidate_youtube_channel_handle": "@drkamilahstevenson",
-    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
+    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+    "candidate_channel_url": "https://www.youtube.com/@drkamilahstevenson"
   },
   "source_capture_contract": {
     "method": "Public web-rendered excerpts and search-result metadata captured during this run.",
@@ -99,7 +99,6 @@
       "source_id": "KAMILAH_PERSONAL_CHANNEL_MARCH_2026",
       "publisher": "Kamilah Stevenson",
       "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
-      "channel_url": "https://www.youtube.com/@drkamilahstevenson",
       "retrieved_at_utc": "2026-11-07T21:17:12Z",
       "published_at": "2026-03-06",
       "source_independence_group": "verified_kamilah_personal_youtube_channel",
@@ -112,13 +111,13 @@
         "channel_followers": 137000,
         "observed_at_utc": "2026-11-07T21:17:12Z"
       },
-      "description_available": true
+      "description_available": true,
+      "candidate_channel_url": "https://www.youtube.com/@drkamilahstevenson"
     },
     {
       "source_id": "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_DEEP_CHOICES",
       "publisher": "Kamilah Stevenson",
       "url": "https://www.youtube.com/watch?v=po4bv7889ao",
-      "channel_url": "https://www.youtube.com/@drkamilahstevenson",
       "retrieved_at_utc": "2026-11-07T21:17:12Z",
       "published_at": "2025-12-23",
       "source_independence_group": "verified_kamilah_personal_youtube_channel",
@@ -130,13 +129,13 @@
         "likes": 394,
         "observed_at_utc": "2026-11-07T21:17:12Z"
       },
-      "description_available": false
+      "description_available": false,
+      "candidate_channel_url": "https://www.youtube.com/@drkamilahstevenson"
     },
     {
       "source_id": "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_SOMETHING_INCREDIBLE",
       "publisher": "Kamilah Stevenson",
       "url": "https://www.youtube.com/watch?v=12HiznN3iLQ",
-      "channel_url": "https://www.youtube.com/@drkamilahstevenson",
       "retrieved_at_utc": "2026-11-07T21:17:12Z",
       "published_at": "2025-12-29",
       "source_independence_group": "verified_kamilah_personal_youtube_channel",
@@ -148,7 +147,8 @@
         "likes": 255,
         "observed_at_utc": "2026-11-07T21:17:12Z"
       },
-      "description_available": false
+      "description_available": false,
+      "candidate_channel_url": "https://www.youtube.com/@drkamilahstevenson"
     },
     {
       "source_id": "PAUL_BARRON_PODCAST_CRYPTO_PANICS",

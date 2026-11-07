@@ -22,6 +22,7 @@ def test_person_identity_is_confirmed_but_personal_channel_remains_probable():
     assert identity["person_identity_status"] == "CONFIRMED"
     assert identity["channel_identity_status"] == "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
     assert identity["official_youtube_channel_handle"] is None
+    assert identity["candidate_channel_url"] == "https://www.youtube.com/@drkamilahstevenson"
     assert identity["candidate_youtube_channel_handle"] == "@drkamilahstevenson"
     assert identity["platform_verified_badge"] == "NOT_ESTABLISHED"
     assert "remains probable" in identity["channel_ownership_caveat"]
@@ -60,6 +61,7 @@ def test_candidate_personal_uploads_are_not_attributed_to_the_confirmed_person()
     for video in record["candidate_videos"]:
         assert video["attribution_status"] == "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED"
         assert video["candidate_channel_handle"] == "@drkamilahstevenson"
+        assert video["candidate_channel_url"] == "https://www.youtube.com/@drkamilahstevenson"
         assert video["content_verified"] is False
         assert video["full_content_reviewed"] is False
 
