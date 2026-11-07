@@ -191,7 +191,7 @@ def test_sbi_xrpl_poc_and_xrp_rewards_have_no_proven_production_volume() -> None
 
 def test_all_normalized_source_excerpt_hashes_are_bound_to_registry() -> None:
     document = artifact()
-    excerpts = document["normalized_excerpts"]
+    excerpts = document["normalized_source_summaries"]
     mapping = {
         "sbi_bitbank_completion": "bitbank_completion",
         "sbi_bitbank_terms": "bitbank_original_terms",
@@ -219,7 +219,7 @@ def test_all_normalized_source_excerpt_hashes_are_bound_to_registry() -> None:
     assert set(mapping).issubset(registry)
     for source_id, excerpt_key in mapping.items():
         digest = hashlib.sha256(excerpts[excerpt_key].encode("utf-8")).hexdigest()
-        assert digest == registry[source_id]["normalized_excerpt_sha256"]
+        assert digest == registry[source_id]["normalized_summary_sha256"]
 
 
 def test_forecast_and_external_action_boundary_remains_fail_closed() -> None:
@@ -231,3 +231,24 @@ def test_forecast_and_external_action_boundary_remains_fail_closed() -> None:
     assert boundary["paper_trade_executed"] is False
     assert boundary["real_money_action"] is False
     assert document["feature_admission"]["institutional_events_model_eligible"] is False
+
+
+def test_web_page_hashes_are_summary_hashes_not_raw_source_receipts() -> None:
+    document = artifact()
+    web_summaries = [
+        item for item in document["source_registry"]
+        if "normalized_summary_sha256" in item
+    ]
+    assert web_summaries
+    for item in web_summaries:
+        assert item["text_kind"] == "model_normalized_summary_not_verbatim_source_excerpt"
+        assert item["raw_source_capture_status"] == "not_retained"
+        assert item["capture_method"].startswith("normalized_summary_from_")
+    direct_api = [
+        item for item in document["source_registry"]
+        if "raw_payload_sha256" in item
+    ]
+    assert direct_api
+    for item in direct_api:
+        assert item["exact_returned_json_text_retained"] is True
+        assert item["raw_wire_bytes_retained"] is False
