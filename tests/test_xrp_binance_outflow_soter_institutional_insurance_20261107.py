@@ -72,7 +72,7 @@ def test_source_independence_and_secondary_claims_are_preserved():
     data = load_artifact()
     independence = data["source_independence"]
     assert "not independent corroboration" in independence["cryptoquant_outflow_claim"]
-    assert "not XRP-specific" in independence["binance_withdrawal_context"]
+    assert "aggregate all-asset flow" in independence["binance_withdrawal_context"]
     assert "not the same metric" in independence["october_29_theft"]
     assert "does not establish investor allocations" in independence["soter_investor_network"]
     soter = data["observations"]["soter_institutional_insurance_network"]
