@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T02:52:00.000000Z",
+  "captured_at_utc": "2026-11-07T03:32:22.000000Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "83778232fa8b6526e46000fe16a6c1bcd2aa78fb",
-  "observed_research_head": "b8edfb8da40a8c325451b4499b41b617cf4555a3",
+  "observed_integration_head_before_map_commit": "f0cfe65360b305b9cc3e9af936f1bc66cc5fbfe7",
+  "observed_research_head": "79dc50f893bf779cd20b454db2acf2194f860d99",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -219,7 +219,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-07T02:52:00.000000Z",
+    "last_reviewed_at_utc": "2026-11-07T03:32:22.000000Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -243,14 +243,21 @@
       "main_branch_protected": true,
       "branch_protection_detail_accessible": false,
       "branch_protection_detail_http_status": 403,
-      "visible_repository_rulesets_count": 0,
+      "visible_repository_rulesets_count": 1,
       "github_pages_enabled": true,
       "github_pages_configuration_accessible": false,
       "main_branch_write_performed": false,
       "mission_branch_writes_performed": true,
       "secret_values_read_or_exported": false,
       "external_model_data_transfer": false,
-      "deployment_or_financial_action_performed": false
+      "deployment_or_financial_action_performed": false,
+      "visible_repository_rulesets": [
+        {
+          "id": 10863829,
+          "name": "Fall Back",
+          "enforcement": "disabled"
+        }
+      ]
     }
   },
   "next_actions": [
@@ -260,32 +267,113 @@
     "Treat one-off Copilot/CodeRabbit review comments as critique, not as independent human approval."
   ],
   "current_run_observations": {
-    "captured_at_utc": "2026-11-07T02:52:00.000000Z",
+    "captured_at_utc": "2026-11-07T03:32:22.000000Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "83778232fa8b6526e46000fe16a6c1bcd2aa78fb",
-    "research_head": "b8edfb8da40a8c325451b4499b41b617cf4555a3",
+    "integration_head_before_map_commit": "f0cfe65360b305b9cc3e9af936f1bc66cc5fbfe7",
+    "research_head": "79dc50f893bf779cd20b454db2acf2194f860d99",
+    "repository_inventory": {
+      "main": {
+        "files": 1298,
+        "python_files": 493,
+        "test_modules": 87,
+        "workflow_files": 86
+      },
+      "integration": {
+        "files": 1352,
+        "python_files": 535,
+        "test_modules": 115,
+        "workflow_files": 87
+      },
+      "research": {
+        "files": 1683,
+        "python_files": 640,
+        "test_modules": 234,
+        "workflow_files": 86
+      },
+      "open_pull_requests": {
+        "total": 371,
+        "drafts": 355,
+        "non_drafts": 16
+      }
+    },
+    "branch_relationships": {
+      "pr_1640": {
+        "ahead_of_main": 509,
+        "behind_main": 0,
+        "changed_paths": 159
+      },
+      "pr_1643": {
+        "ahead_of_main": 548,
+        "behind_main": 0,
+        "changed_paths": 390
+      },
+      "compare_pr_1640_to_1643": {
+        "status": "diverged",
+        "pr_1643_ahead": 548,
+        "pr_1640_behind": 509
+      },
+      "shared_paths": [
+        {
+          "path": ".github/workflows/dependency-audit.yml",
+          "status": "identical_blob",
+          "blob_sha": "6515307991420ab90d8671034b13ac2eb56190b3"
+        },
+        {
+          "path": "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+          "status": "different_content",
+          "integration_candidate_video_references": 10,
+          "research_candidate_video_references": 18,
+          "canonical_channel_verified": false
+        },
+        {
+          "path": "tests/test_kamilah_channel_identity_gate.py",
+          "status": "different_tests",
+          "integration_test_functions": 3,
+          "research_test_functions": 3
+        }
+      ]
+    },
     "github_connector": {
-      "authentication": "verified for repository reads and writes on existing mission branches",
+      "authentication": "verified for current repository reads and writes on existing mission branches",
       "repository_permission": "admin reported by repository metadata",
+      "secret_values_read": false,
       "external_model_transfer": false
     },
     "copilot": {
-      "evidence": "one-off pull-request review comments on #1640 and #1643; review state COMMENTED, not APPROVED",
-      "persistent_authenticated_connection": false
+      "evidence": "one-off GitHub PR review submissions on #1640 and #1643 are COMMENTED, not APPROVED",
+      "persistent_authenticated_connection": false,
+      "independent_human_approval": false
     },
     "mission_ci": {
       "pr_1640": {
-        "head": "7110d1105ed2e00d69d53626b0b9e2af2df452a4",
+        "head": "f0cfe65360b305b9cc3e9af936f1bc66cc5fbfe7",
         "full_suite": "1089 passed, 8 subtests",
+        "core_suite": "629 passed, 8 subtests",
         "coverage_pct": 57.75,
+        "installed_wheel": "passed",
         "dependency_audit": "passed",
-        "fail_closed_gate": "passed"
+        "fail_closed_gate": "passed; automatic merge disabled"
       },
       "pr_1643": {
-        "head": "b8edfb8da40a8c325451b4499b41b617cf4555a3",
-        "full_suite": "1660 passed, 8 subtests",
+        "head": "79dc50f893bf779cd20b454db2acf2194f860d99",
+        "full_suite": "1672 passed, 8 subtests",
+        "core_suite": "498 passed, 8 subtests",
         "dependency_audit": "passed",
-        "fail_closed_gate": "passed"
+        "fail_closed_gate": "passed; automatic merge disabled"
+      }
+    },
+    "review_state": {
+      "pr_1640": {
+        "threads_total": 22,
+        "threads_resolved": 22,
+        "approving_reviews": 0,
+        "commented_reviews": 10
+      },
+      "pr_1643": {
+        "threads_total": 19,
+        "threads_resolved": 19,
+        "approving_reviews": 0,
+        "commented_reviews": 10
       }
     },
     "no_approving_reviews_on_active_mission_prs": true,
