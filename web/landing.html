@@ -173,9 +173,13 @@ footer strong{color:var(--text)}
     inputSchema: { type: "object", properties: {} },
     annotations: { readOnlyHint: true },
     execute: async function() {
-      var res = await fetch("latest_signal.json");
-      if (!res.ok) return { status: "NOT_ISSUED", forecast_issued: false, reason_code: "STATUS_UNAVAILABLE" };
-      return await res.json();
+      return {
+        status: "NOT_ISSUED",
+        forecast_issued: false,
+        forecast_eligible: false,
+        reason_code: "VALIDATED_FIXED_HORIZON_FORECAST_NOT_AVAILABLE",
+        message: "No directional XRP forecast is published. Sentiment features and legacy scores are not forecasts."
+      };
     }
   });
 
@@ -223,8 +227,18 @@ footer strong{color:var(--text)}
     annotations: { readOnlyHint: true },
     execute: async function() {
       var res = await fetch("signal_accuracy.json");
-      if (!res.ok) return { status: "NOT_EVALUATED", accuracy_pct: null };
-      return await res.json();
+      if (!res.ok) return { status: "NOT_EVALUATED", forecast_eligible: false, accuracy_pct: null, reason_code: "STATUS_UNAVAILABLE" };
+      var data = await res.json();
+      return {
+        status: data.status || "NOT_EVALUATED",
+        forecast_eligible: false,
+        metric: data.metric || "fixed_horizon_out_of_sample_predictive_accuracy",
+        accuracy_pct: null,
+        checked_count: null,
+        correct_count: null,
+        reason_code: data.reason_code || "LEGACY_VARIABLE_HORIZON_SCORER_INVALID",
+        explanation: data.explanation || "No validated fixed-horizon out-of-sample accuracy is available."
+      };
     }
   });
   mcp.registerTool({

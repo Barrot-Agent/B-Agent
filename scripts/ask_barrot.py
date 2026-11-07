@@ -19,7 +19,6 @@ MEMORY_INJECT_COUNT = 5
 
 LATEST_SIGNAL_XRP = "web/latest_signal.json"
 LATEST_SIGNAL_BTC = "web/latest_signal_btc.json"
-SIGNAL_ACCURACY = "web/signal_accuracy.json"
 GUMROAD_METRICS = "ping-pongings/knowledge-base/gumroad_metrics.json"
 GROQ_USAGE_LOG = "ping-pongings/knowledge-base/groq_usage_log.jsonl"
 
@@ -101,39 +100,35 @@ def format_memory_block(entries):
 
 
 def load_signal_snapshot():
-    lines = []
+    lines = [
+        "- Directional XRP forecast status: NOT_ISSUED. Legacy accuracy is "
+        "UNVALIDATED_VARIABLE_HORIZON and is not a valid model-performance measure."
+    ]
     for label, path in (("XRP", LATEST_SIGNAL_XRP), ("BTC", LATEST_SIGNAL_BTC)):
         if not os.path.exists(path):
             continue
         try:
-            with open(path) as f:
-                d = json.load(f)
-        except Exception:
+            with open(path, encoding="utf-8") as f:
+                data = json.load(f)
+        except (OSError, UnicodeError, json.JSONDecodeError):
             continue
-        lines.append(
-            f'- Latest {label} signal (as of {d.get("timestamp", "unknown")}): '
-            f'score={d.get("score")}, confidence={d.get("confidence")}, '
-            f'source={d.get("source")}, forecast_status={d.get("forecast_status", "not declared")}, '
-            f'forecast_model_eligible={d.get("forecast_model_eligible", "not declared")}. '
-            f'Do not treat a sentiment/signal score as a validated forecast unless '
-            f'the forecast ledger and independent readiness evidence say it is eligible.'
-        )
-    if os.path.exists(SIGNAL_ACCURACY):
-        try:
-            with open(SIGNAL_ACCURACY) as f:
-                acc = json.load(f)
+        generated_at = data.get("generated_at_utc", data.get("timestamp", "unknown"))
+        if data.get("signal_kind") == "sentiment_feature_only":
             lines.append(
-                f'- XRP signal accuracy tracker: {acc.get("checked_count", 0)} signals '
-                f'checked so far, {acc.get("correct_count", 0)} correct '
-                f'({acc.get("accuracy_pct")}% if available). Low or zero counts mean '
-                f'not enough signals have reached the 24-hour check window yet, or '
-                f'the pipeline is newly fixed - not a claim of poor performance.'
+                f'- Latest {label} sentiment feature (as of {generated_at}): '
+                f'label={data.get("sentiment_label", "unclassified")}, '
+                f'score={data.get("score")}/100, '
+                f'model_confidence={data.get("confidence")} '
+                f'(uncalibrated; not a price probability), source={data.get("source")}. '
+                "This is sentiment context, not a price forecast."
             )
-        except Exception:
-            pass
-    if not lines:
-        return ""
-    return "\n\nYour real, current signal data:\n" + "\n".join(lines)
+        else:
+            lines.append(
+                f'- Latest {label} record (as of {generated_at}) is not classified '
+                "as a verified sentiment feature or forecast; do not interpret its "
+                "score or confidence as a price probability."
+            )
+    return "\\n\\nYour real, current sentiment-feature and evaluation-status data:\\n" + "\\n".join(lines)
 
 
 def load_xrp_intelligence_status():
