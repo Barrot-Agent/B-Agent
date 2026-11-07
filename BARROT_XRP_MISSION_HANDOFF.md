@@ -4559,3 +4559,62 @@ Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main reports protected=
 3. After main verification, consolidate #1643's 505 unique paths, reconcile the three shared paths and carry #1640's coverage, wheel and dependency gates.
 4. Close only exact superseded PRs after successor content is verified on main; preserve #1653, #1655, #1641, #1269 and other unique work.
 5. Verify scheduled ingestion on main and accumulate synchronized historical data; require out-of-sample lift, calibration, drift stability and shadow outcomes before forecasting.
+
+
+---
+
+## Run 32 — 2026-11-07 22:52 UTC — exact-head closeout
+
+### Exact current heads and CI
+
+**#1640 V3 integration — code/test head `ffdc91a5e6a63012a69954a132296e73c3f411b8`**
+
+- Full repository suite: **1,166 passed, 8 subtests**.
+- Core suite: **655 passed, 8 subtests**.
+- Inclusive coverage: **58.49%** against 53%.
+- Installed wheel verified; packaged Barrot V3, primary mission and canonical data assets loaded.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed with merge disabled.
+- Evidence: [CI 42422001045](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422001045) · [Dependency audit 42422000992](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422000992) · [Fail-closed gate 42422000990](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422000990).
+- The workflow cache reservation warned that the configured cache budget is read-only. The CI job still passed. The XRP ingestion workflow separately uploads raw receipts for 90 days, per-run feature checkpoints for 7 days and daily feature/walk-forward backups for 90 days; cache write availability remains an operational limitation. Independent external WORM storage is not established.
+
+**#1643 XRP research — exact head `ee707107274e8cf43535c9b73ec2c91bc3422035`**
+
+- Full repository suite: **2,156 passed, 8 subtests**.
+- Core suite: passed.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed with merge disabled.
+- Evidence: [CI 42422197283](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422197283) · [Dependency audit 42422197255](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422197255) · [Fail-closed gate 42422197206](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422197206).
+- The research branch still uses checkout@v4/setup-python@v5 and emitted Node.js 20 deprecation warnings. Its full-suite job does not run inclusive coverage or installed-wheel verification. Carry #1640's newer CI workflow and packaging checks into the consolidated research successor.
+
+### Latest direct XRP receipt — 2026-11-07 22:42:21 UTC
+
+Append-only artifact: [direct Kraken/OKX/Binance snapshot](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T224221Z-xrp-kraken-okx-binance-freshness-snapshot.json).
+
+- Kraken XRP/USD: last $1.15850; bid $1.15846; ask $1.15849; Level-1 spread 0.259 bps; rolling 24h volume 17.854M XRP; 24h VWAP $1.16371130; daily open $1.17749. Last is 1.613% below open and 0.448% below VWAP. Kraken supplied no provider event timestamp.
+- OKX XRP-USDT: last 1.1611; bid 1.1612; ask 1.1613; Level-1 spread 0.861 bps; 31.625M XRP rolling volume; 36.850M USDT quote volume. Provider timestamp 22:22:04.073 UTC was 1,216.927 seconds old.
+- Binance XRPUSDT perpetual: mark 1.1608; index 1.16122203; mark/index basis -3.634 bps; last funding rate 0.01%; provider timestamp 22:22:07 UTC was 1,214 seconds old. No open interest or liquidation totals in this endpoint.
+- Raw OKX/ Kraken last-price gap 0.2244% is not an arbitrage signal: USD and USDT are not normalized, provider timestamps are asynchronous/stale, and no synchronized multi-level depth, fees or slippage were captured.
+- All three observations are model-ineligible. No forecast issued.
+
+**Append-only digest correction:** [hash correction artifact](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T224900Z-xrp-kraken-okx-binance-freshness-snapshot-hash-correction.json). The original OKX response text was preserved. Its first digest omitted trailing `sodUtc0`/`sodUtc8` fields; corrected full-text SHA-256 is `8ab1c2caba750b59700b524549e2c8184b5808ab58176d4592ca8d2c065dddde`, superseding only the prior digest field. The regression test verifies both the preserved old digest and corrected digest.
+
+### Current repository state
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Open PR inventory remains 371 (355 drafts, 16 non-drafts); no PR created or closed.
+- #1640: 171 changed paths, 605 commits ahead, 0 behind.
+- #1643: 510 changed paths, 713 commits ahead, 0 behind.
+- Three shared paths remain: identical dependency-audit workflow; differing Kamilah source registry; differing Kamilah identity-gate test. #1640 has 168 unique paths; #1643 has 507 unique paths.
+- Main still lacks the scheduled XRP ingestion workflow and primary mission registry. Neither is active on main.
+- The nine-platform capability/authentication map was last verified in Run 31. ChatGPT-to-GitHub is the only persistent connection verified; Copilot activity remains COMMENTED, not APPROVED; no external platform data exchange occurred.
+
+### Merge decision unchanged
+
+#1640 has 22/22 resolved inline threads and zero APPROVED reviews; #1643 has 19/19 resolved and zero APPROVED reviews. Both have ten COMMENTED review records. Main is protected, detailed protection settings return HTTP 403, the visible fallback ruleset is disabled, and CODEOWNERS assigns all paths only to `@Barrot-Agent`. GitHub Pages is enabled but configuration is inaccessible; a previous main push triggered public deployment. The merge-triggered Pages deployment has not been authorized.
+
+**No merge.** The exact-head tests and security audits are green, but independent approvals and deployment/protection authorization remain unresolved. No deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or main-branch write occurred.
+
+### Next concrete action
+
+Obtain independent approving review and authorized repository-admin confirmation of branch-protection and Pages behavior. Then merge #1640 only when all conditions are satisfied, verify merge commit/files/automatic workflow effects/main CI, and only afterward consolidate #1643's 507 unique paths onto verified main with the stronger #1640 CI. Preserve all unique backlog work.
