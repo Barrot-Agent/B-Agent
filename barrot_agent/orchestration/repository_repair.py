@@ -41,6 +41,7 @@ class RepairState(str, Enum):
 
 class ModelFailureCode(str, Enum):
     RATE_LIMITED = "LLM_RATE_LIMITED"
+    RATE_LIMITED_TPM = "LLM_RATE_LIMITED_TPM"
     CONTEXT_BUDGET = "LLM_CONTEXT_BUDGET_EXCEEDED"
     TOOL_CONFLICT = "LLM_TOOL_CONFLICT"
     INVALID_JSON = "LLM_INVALID_JSON"
@@ -1164,13 +1165,20 @@ Rules:
         message = str(exc)
         lowered = message.lower()
         if (
+            "tokens per minute" in lowered
+            or "token-per-minute" in lowered
+            or "tpm limit" in lowered
+        ):
+            return ModelFailure(ModelFailureCode.RATE_LIMITED_TPM, message)
+        if "429" in lowered or "rate limit" in lowered or "rate-limited" in lowered:
+            return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
+        if (
             "llm_context_budget_exceeded" in lowered
             or "http 413" in lowered
             or "request too large" in lowered
+            or "context window" in lowered
         ):
             return ModelFailure(ModelFailureCode.CONTEXT_BUDGET, message)
-        if "429" in lowered or "rate limit" in lowered or "rate-limited" in lowered:
-            return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
         if "tool_choice" in lowered or "tool choice" in lowered or "tool conflict" in lowered:
             return ModelFailure(ModelFailureCode.TOOL_CONFLICT, message)
         if "retry exhaustion" in lowered:
@@ -1218,10 +1226,7 @@ Rules:
                 )
             except Exception as exc:  # noqa: BLE001
                 last_failure = self._normalize_exception(exc)
-                if last_failure.code in {
-                    ModelFailureCode.RATE_LIMITED,
-                    ModelFailureCode.TIMEOUT,
-                } and attempt < self.max_attempts:
+                if last_failure.code == ModelFailureCode.TIMEOUT and attempt < self.max_attempts:
                     time.sleep(self.backoff_seconds * attempt)
                     continue
                 raise last_failure
@@ -1840,6 +1845,12 @@ Inspect the repository for this task and return only the evidence report.
                 report = report[: 2_500 - len(marker)] + marker
             return report
         except Exception as exc:
+            failure = RepairPlanner._normalize_exception(exc)
+            if failure.code in {
+                ModelFailureCode.RATE_LIMITED,
+                ModelFailureCode.RATE_LIMITED_TPM,
+            }:
+                return f"READ_ONLY_AUDIT_RATE_LIMITED:{failure.code.value}:{failure}"
             return f"READ_ONLY_AUDIT_UNAVAILABLE: {type(exc).__name__}"
 
 
@@ -1874,6 +1885,67 @@ Inspect the repository for this task and return only the evidence report.
 
     def _persist(self, cycle: RepairCycleEvidence) -> None:
         self.cycle_store.write(cycle)
+
+    def _deterministic_local_provider_failure_report(
+        self,
+        *,
+        task_title: str,
+        task_body: str,
+        repo: str,
+        branch: str,
+        failure_code: str,
+        failure_message: str,
+        failed_operation: str,
+    ) -> str:
+        """Capture a bounded, read-only Git snapshot when an LLM provider is unavailable."""
+        commands = {
+            "head": ["rev-parse", "HEAD"],
+            "branch": ["branch", "--show-current"],
+            "status": ["status", "--porcelain=v1"],
+            "diff_stat": ["diff", "--stat"],
+            "staged_diff_stat": ["diff", "--cached", "--stat"],
+            "diff_check": ["diff", "--check"],
+        }
+        snapshot: dict[str, Any] = {}
+        for name, args in commands.items():
+            try:
+                completed = subprocess.run(
+                    ["git", *args],
+                    cwd=self.workspace,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                    timeout=5,
+                )
+                snapshot[name] = {
+                    "returncode": completed.returncode,
+                    "stdout": completed.stdout[:2_000],
+                    "stderr": completed.stderr[:1_000],
+                }
+            except Exception as exc:  # noqa: BLE001
+                snapshot[name] = {"error": type(exc).__name__}
+        payload = {
+            "schema_version": "1.0",
+            "mode": "read_only_provider_failure_snapshot",
+            "task_title": str(task_title)[:300],
+            "task_body_sha256": hashlib.sha256(str(task_body).encode("utf-8")).hexdigest(),
+            "task_body_chars": len(str(task_body)),
+            "repository": str(repo)[:300],
+            "branch": str(branch)[:300],
+            "failed_operation": str(failed_operation),
+            "provider_failure_code": str(failure_code),
+            "provider_failure_message": str(failure_message)[:1_500],
+            "same_provider_retry_performed": False,
+            "patch_applied": False,
+            "commit_created": False,
+            "remote_write_attempted": False,
+            "git_snapshot": snapshot,
+            "limitations": [
+                "Only bounded read-only Git metadata commands were run.",
+                "No alternate provider, source-code patch, commit, push, merge, deployment, or financial action was attempted.",
+            ],
+        }
+        return json.dumps(payload, sort_keys=True, indent=2)
 
     def _failure(
         self,
@@ -1999,6 +2071,30 @@ Inspect the repository for this task and return only the evidence report.
             repo=repo_name,
             branch=branch_name,
         )
+        if barrett_audit.startswith("READ_ONLY_AUDIT_RATE_LIMITED:"):
+            _, code_name, failure_message = barrett_audit.split(":", 2)
+            failure_code = ModelFailureCode(code_name)
+            cycle.report = self._deterministic_local_provider_failure_report(
+                task_title=task_title,
+                task_body=task_body,
+                repo=repo_name,
+                branch=branch_name,
+                failure_code=failure_code.value,
+                failure_message=failure_message,
+                failed_operation="read_only_repository_audit",
+            )
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                failure_code.value,
+                failure_message,
+                failed_operation="read_only_repository_audit",
+                required_external_action=(
+                    "The provider token/rate quota was reached. No same-provider retry or planner call was made. "
+                    "A bounded read-only Git snapshot was captured; continue with deterministic local checks and "
+                    "resume only after quota reset or an explicitly authorized alternative provider."
+                ),
+            )
         if barrett_audit:
             audit_context = dict(audit_context or {})
             audit_context["barrett_autonomous_audit"] = barrett_audit
@@ -2030,18 +2126,42 @@ Inspect the repository for this task and return only the evidence report.
         try:
             directive = self.repair_planner.generate(prompt)
         except ModelFailure as exc:
-            context_blocked = exc.code == ModelFailureCode.CONTEXT_BUDGET
+            blocked_codes = {
+                ModelFailureCode.CONTEXT_BUDGET,
+                ModelFailureCode.RATE_LIMITED,
+                ModelFailureCode.RATE_LIMITED_TPM,
+            }
+            if exc.code in blocked_codes:
+                cycle.report = self._deterministic_local_provider_failure_report(
+                    task_title=task_title,
+                    task_body=task_body,
+                    repo=repo_name,
+                    branch=branch_name,
+                    failure_code=exc.code.value,
+                    failure_message=str(exc),
+                    failed_operation="repair_planner.generate",
+                )
+                required_action = (
+                    "The provider token/rate quota was reached. No same-provider retry or patch was made. "
+                    "A bounded read-only Git snapshot was captured; continue with deterministic local checks and "
+                    "resume only after quota reset or an explicitly authorized alternative provider."
+                    if exc.code in {ModelFailureCode.RATE_LIMITED, ModelFailureCode.RATE_LIMITED_TPM}
+                    else "The provider request exceeded its context/request-size limit. No retry or patch was made; reduce optional context or split the task."
+                )
+                return self._failure(
+                    cycle,
+                    RepairState.BLOCKED,
+                    exc.code.value,
+                    str(exc),
+                    failed_operation="repair_planner.generate",
+                    required_external_action=required_action,
+                )
             return self._failure(
                 cycle,
-                RepairState.BLOCKED if context_blocked else RepairState.FAILED,
+                RepairState.FAILED,
                 exc.code.value,
                 str(exc),
                 failed_operation="repair_planner.generate",
-                required_external_action=(
-                    "Reduce optional context or split the task; no patch was applied."
-                    if context_blocked
-                    else ""
-                ),
             )
 
         if directive.mode == "report":
