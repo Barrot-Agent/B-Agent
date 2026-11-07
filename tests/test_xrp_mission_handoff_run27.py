@@ -44,7 +44,7 @@ def test_run28_platform_map_has_exact_current_ci_and_preserves_run26():
     assert current["merge_state"]["independent_approvals"] == 0
     assert current["forecast_status"] == "NOT_ISSUED"
     assert any(item.get("run_id") == 26 for item in data["prior_run_observations"])
-    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T18:28:03Z"
+    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T18:39:19Z"
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
 
@@ -62,4 +62,5 @@ def test_run28_market_and_institutional_evidence_remains_excluded_from_numeric_f
     assert market["limitations"]
     network = current["institutional_network"]
     assert "does not establish a direct SBI-Coinbase XRP partnership" in network["sbi_circle_arc"]
-    assert "no XRP-specific balance disclosed" in network["coinbase_collateral"]
+    assert "XRP-specific collateral balances" in network["coinbase_collateral"]
+    assert "not disclosed" in network["coinbase_collateral"]
