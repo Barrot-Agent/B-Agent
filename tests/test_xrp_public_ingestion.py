@@ -1489,12 +1489,14 @@ def test_coinbase_backfill_ranges_are_contiguous_and_bounded():
     for invalid_days in (0, -1, 366, True, 1.5):
         with pytest.raises(XRPIngestionError):
             _coinbase_candle_backfill_ranges(oldest_open, invalid_days)
+    with pytest.raises(XRPIngestionError, match="align"):
+        _coinbase_candle_backfill_ranges(oldest_open.replace(minute=1), 1)
 
 
 def test_coinbase_manual_backfill_preserves_each_page_and_filters_boundary_overlap(tmp_path, monkeypatch):
     from urllib.parse import parse_qs, urlsplit
 
-    captured = datetime(2026, 11, 7, 2, 30, tzinfo=timezone.utc)
+    captured = datetime(2026, 11, 7, 2, 0, tzinfo=timezone.utc)
     base_fetcher = _fake_fetcher(captured)
     page_payloads = {}
 
@@ -1560,12 +1562,12 @@ def test_coinbase_manual_backfill_preserves_each_page_and_filters_boundary_overl
     event_times = [item["event_time_utc"] for item in coinbase_closes]
     assert len(event_times) == 4
     assert len(set(event_times)) == 4
-    assert all(item["known_at_utc"] == "2026-11-07T02:30:00.000000Z" for item in coinbase_closes)
+    assert all(item["known_at_utc"] == "2026-11-07T02:00:00.000000Z" for item in coinbase_closes)
     assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
 
 
 def test_coinbase_manual_backfill_records_empty_no_tick_pages_without_fabricating_candles(tmp_path, monkeypatch):
-    captured = datetime(2026, 11, 7, 2, 30, tzinfo=timezone.utc)
+    captured = datetime(2026, 11, 7, 2, 0, tzinfo=timezone.utc)
     base_fetcher = _fake_fetcher(captured)
     monkeypatch.setattr("barrot_agent.evolution.xrp_public_ingestion.time.sleep", lambda *_args: None)
 
