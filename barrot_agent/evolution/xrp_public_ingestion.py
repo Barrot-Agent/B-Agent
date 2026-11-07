@@ -28,9 +28,9 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.13"
-PARSER_VERSION = "xrp-public-market-v3.12"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
+ADAPTER_VERSION = "xrp-public-market-v3.14"
+PARSER_VERSION = "xrp-public-market-v3.13"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -55,6 +55,8 @@ ENDPOINTS = (
     ("bitbank_spot_depth", "https://public.bitbank.cc/xrp_jpy/depth"),
     ("okx_spot_ticker", "https://us.okx.com/api/v5/market/ticker?instId=XRP-USDT"),
     ("okx_spot_depth", "https://us.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100"),
+    ("bybit_spot_ticker", "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT"),
+    ("bybit_spot_depth", "https://api.bybit.com/v5/market/orderbook?category=spot&symbol=XRPUSDT&limit=100"),
     ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
     ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
@@ -2355,6 +2357,199 @@ def _parse_okx_depth(
     return records, event_s, eligible, reason
 
 
+
+def _bybit_result(payload: Any, source_name: str) -> Mapping[str, Any]:
+    """Validate the unauthenticated Bybit V5 public-market response envelope."""
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError(f"Bybit {source_name} response must be an object")
+    ret_code = payload.get("retCode")
+    if isinstance(ret_code, bool) or ret_code not in (0, "0") or payload.get("retMsg") not in ("OK", "", None):
+        raise XRPIngestionError(f"Bybit {source_name} response contains an API error")
+    result = payload.get("result")
+    if not isinstance(result, Mapping):
+        raise XRPIngestionError(f"Bybit {source_name} response has no result object")
+    return result
+
+
+def _parse_bybit_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Parse Bybit XRPUSDT spot ticker; top-level time is response time, not trade time."""
+    result = _bybit_result(payload, "spot ticker")
+    if result.get("category") != "spot":
+        raise XRPIngestionError("Bybit ticker category is not spot")
+    rows = result.get("list")
+    if not isinstance(rows, list) or len(rows) != 1 or not isinstance(rows[0], Mapping):
+        raise XRPIngestionError("Bybit spot ticker must contain exactly one row")
+    row = rows[0]
+    if row.get("symbol") != "XRPUSDT":
+        raise XRPIngestionError("Bybit spot ticker symbol mismatch")
+
+    source_time = _from_ms(payload.get("time"), "Bybit ticker response time")
+    if source_time > captured:
+        raise XRPIngestionError("Bybit ticker response time is later than capture time")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    event_s, captured_s = _iso(source_time), _iso(captured)
+
+    bid = _number(row.get("bid1Price"), "Bybit ticker best bid", allow_zero=False)
+    ask = _number(row.get("ask1Price"), "Bybit ticker best ask", allow_zero=False)
+    if ask <= bid:
+        raise XRPIngestionError("Bybit ticker bid/ask is crossed or locked")
+
+    fields = (
+        ("lastPrice", "last_price", "USDT/XRP", False, ""),
+        ("bid1Price", "best_bid", "USDT/XRP", False, ""),
+        ("ask1Price", "best_ask", "USDT/XRP", False, ""),
+        ("bid1Size", "best_bid_size", "XRP", True, ""),
+        ("ask1Size", "best_ask_size", "XRP", True, ""),
+        ("volume24h", "base_volume_24h", "XRP/24h", True, "24h"),
+        ("turnover24h", "quote_volume_24h", "USDT/24h", True, "24h"),
+        ("prevPrice24h", "previous_price_24h", "USDT/XRP", False, "24h"),
+        ("highPrice24h", "high_24h", "USDT/XRP", False, "24h"),
+        ("lowPrice24h", "low_24h", "USDT/XRP", False, "24h"),
+    )
+    limitations = [
+        "Single Bybit XRP-USDT spot venue; USDT is not converted to USD.",
+        "The top-level Bybit time field timestamps the REST response, not the individual last-trade event.",
+    ]
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.bybit.{name}",
+            value=_number(row.get(field), f"Bybit ticker {field}", allow_zero=allow_zero),
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="bybit",
+            venue="Bybit",
+            instrument="XRPUSDT spot",
+            currency_pair="XRP/USDT",
+            market_type="spot",
+            aggregation_window=window,
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for field, name, unit, allow_zero, window in fields
+    ]
+    return records, event_s, eligible, reason
+
+
+def _parse_bybit_depth(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Parse a Bybit REST order-book snapshot using cts, the matching-engine timestamp."""
+    row = _bybit_result(payload, "spot order book")
+    if row.get("s") != "XRPUSDT":
+        raise XRPIngestionError("Bybit spot order-book symbol mismatch")
+    snapshot_time = _from_ms(row.get("ts"), "Bybit order-book system timestamp")
+    source_time = _from_ms(row.get("cts"), "Bybit order-book matching-engine timestamp")
+    if snapshot_time > captured or source_time > captured:
+        raise XRPIngestionError("Bybit order-book timestamp is later than capture time")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_ORDERBOOK_AGE_SECONDS)
+
+    bids_raw, asks_raw = row.get("b"), row.get("a")
+    if not isinstance(bids_raw, list) or not bids_raw or not isinstance(asks_raw, list) or not asks_raw:
+        raise XRPIngestionError("Bybit order book must contain non-empty bids and asks")
+
+    def parse_levels(level_rows: list[Any], side: str) -> list[tuple[float, float]]:
+        levels = []
+        for level in level_rows:
+            if not isinstance(level, list) or len(level) < 2:
+                raise XRPIngestionError(f"Bybit {side} level schema mismatch")
+            price = _number(level[0], f"Bybit {side} price", allow_zero=False)
+            quantity = _number(level[1], f"Bybit {side} quantity", allow_zero=False)
+            levels.append((price, quantity))
+        return levels
+
+    bids = parse_levels(bids_raw, "bid")
+    asks = parse_levels(asks_raw, "ask")
+    if any(bids[i][0] < bids[i + 1][0] for i in range(len(bids) - 1)):
+        raise XRPIngestionError("Bybit bid levels are not sorted in descending price order")
+    if any(asks[i][0] > asks[i + 1][0] for i in range(len(asks) - 1)):
+        raise XRPIngestionError("Bybit ask levels are not sorted in ascending price order")
+
+    best_bid = bids[0][0]
+    best_ask = asks[0][0]
+    if best_ask <= best_bid:
+        raise XRPIngestionError("Bybit order book is crossed or locked")
+
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    mid = (best_bid + best_ask) / 2.0
+    spread_bps = (best_ask - best_bid) / mid * 10000.0
+    features = [
+        ("best_bid", best_bid, "USDT/XRP"),
+        ("best_ask", best_ask, "USDT/XRP"),
+        ("mid_price", mid, "USDT/XRP"),
+        ("spread_bps", spread_bps, "bps"),
+    ]
+    for band in (10, 50, 100):
+        bid_depth = sum(
+            price * quantity
+            for price, quantity in bids
+            if price >= mid * (1 - band / 10000.0)
+        )
+        ask_depth = sum(
+            price * quantity
+            for price, quantity in asks
+            if price <= mid * (1 + band / 10000.0)
+        )
+        total = bid_depth + ask_depth
+        imbalance = (bid_depth - ask_depth) / total if total > 0 else 0.0
+        features.extend(
+            [
+                (f"bid_depth_{band}bps", bid_depth, "USDT"),
+                (f"ask_depth_{band}bps", ask_depth, "USDT"),
+                (f"depth_imbalance_{band}bps", imbalance, "ratio"),
+            ]
+        )
+
+    limitations = [
+        "Single Bybit XRP-USDT REST order-book snapshot; no WebSocket sequence continuity is maintained.",
+        "Bybit documents that Retail Price Improvement (RPI) orders are excluded from the REST order-book response.",
+        "USDT quote depth is not converted to USD; displayed depth is not a fill or slippage guarantee.",
+        "The cts field is the matching-engine timestamp; ts is the system-generated snapshot timestamp.",
+    ]
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.bybit.orderbook.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="bybit",
+            venue="Bybit",
+            instrument="XRPUSDT spot",
+            currency_pair="XRP/USDT",
+            market_type="spot",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit in features
+    ]
+    return records, event_s, eligible, reason
+
+
 def _raw_only_binance_depth(payload: Any, **_kwargs):
     if not isinstance(payload, Mapping) or "lastUpdateId" not in payload:
         raise XRPIngestionError("Binance depth response shape mismatch")
@@ -2709,6 +2904,8 @@ PARSERS = {
     "kraken_spot_depth": _parse_kraken_depth,
     "okx_spot_ticker": _parse_okx_ticker,
     "okx_spot_depth": _parse_okx_depth,
+    "bybit_spot_ticker": _parse_bybit_ticker,
+    "bybit_spot_depth": _parse_bybit_depth,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
     "xrp_exchange_balances_json": _raw_only_xrp_exchange_balances,

@@ -168,6 +168,43 @@ def _fake_fetcher(captured: datetime):
                     "checksum": 123456,
                 }],
             }
+        elif source_id == "bybit_spot_ticker":
+            payload = {
+                "retCode": 0,
+                "retMsg": "OK",
+                "result": {
+                    "category": "spot",
+                    "list": [{
+                        "symbol": "XRPUSDT",
+                        "lastPrice": "1.2900",
+                        "bid1Price": "1.2899",
+                        "bid1Size": "1000",
+                        "ask1Price": "1.2901",
+                        "ask1Size": "900",
+                        "prevPrice24h": "1.2800",
+                        "highPrice24h": "1.3100",
+                        "lowPrice24h": "1.2700",
+                        "turnover24h": "1290000",
+                        "volume24h": "1000000",
+                    }],
+                },
+                "time": captured_ms - 1000,
+            }
+        elif source_id == "bybit_spot_depth":
+            payload = {
+                "retCode": 0,
+                "retMsg": "OK",
+                "result": {
+                    "s": "XRPUSDT",
+                    "a": [["1.291", "1200"], ["1.292", "1800"]],
+                    "b": [["1.289", "1000"], ["1.288", "2000"]],
+                    "ts": captured_ms - 1500,
+                    "u": 123456,
+                    "seq": 987654,
+                    "cts": captured_ms - 2000,
+                },
+                "time": captured_ms - 1000,
+            }
         elif source_id == "bitbank_spot_circuit_break":
             payload = {
                 "success": 1,
@@ -426,8 +463,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.13"
-    assert summary["parser_version"] == "xrp-public-market-v3.12"
+    assert summary["adapter_version"] == "xrp-public-market-v3.14"
+    assert summary["parser_version"] == "xrp-public-market-v3.13"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -438,6 +475,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.last_price" and item["unit"] == "USDT/XRP" for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.bybit.last_price" and item["model_eligible"] is True for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.bybit.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
     assert not any(item["feature_id"].startswith("xrp.network.xrpl.") for item in snapshot["records"])
     historical_derivatives = [
         item for item in snapshot["records"]
@@ -1941,3 +1980,85 @@ def test_bitbank_sources_integrate_into_full_ingestion_and_research_only_flow_su
     assert trade_summary["model_eligible"] is False
     assert any(item["source_id"] == "bitbank_spot_circuit_break" for item in raw_only)
     assert any(item["source_id"] == "bitbank_spot_transactions" for item in raw_only)
+
+
+
+def test_bybit_spot_sources_are_allowlisted_and_scheduled():
+    endpoint_map = dict(ENDPOINTS)
+    assert endpoint_map["bybit_spot_ticker"] == "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT"
+    assert endpoint_map["bybit_spot_depth"] == "https://api.bybit.com/v5/market/orderbook?category=spot&symbol=XRPUSDT&limit=100"
+    assert "api.bybit.com" in ALLOWED_HOSTS
+    assert {"bybit_spot_ticker", "bybit_spot_depth"}.issubset(PARSERS)
+    assert {"bybit_spot_ticker", "bybit_spot_depth"}.issubset(
+        {source_id for source_id, _url in SCHEDULED_ENDPOINTS}
+    )
+
+
+def test_bybit_ticker_uses_response_time_and_rejects_stale_or_crossed_quotes():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    source_id = "bybit_spot_ticker"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    parser = PARSERS[source_id]
+    digest = hashlib.sha256(response["raw_bytes"]).hexdigest()
+    records, event_time, eligible, reason = parser(
+        response["payload"], source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert event_time == (captured - timedelta(seconds=1)).isoformat().replace("+00:00", "Z")
+    assert eligible is True
+    assert reason == ""
+    assert any(item["feature_id"] == "xrp.spot.bybit.last_price" for item in records)
+    assert all(item["unit"] == "USDT/XRP" for item in records if item["feature_id"].endswith(("last_price", "best_bid", "best_ask")))
+
+    stale = json.loads(json.dumps(response["payload"]))
+    stale["time"] = _iso_ms(captured - timedelta(seconds=301))
+    _stale_records, _stale_time, stale_eligible, stale_reason = parser(
+        stale, source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert stale_eligible is False
+    assert "older_than_300_seconds" in stale_reason
+
+    crossed = json.loads(json.dumps(response["payload"]))
+    crossed["result"]["list"][0]["ask1Price"] = "1.2898"
+    with pytest.raises(XRPIngestionError, match="crossed or locked"):
+        parser(crossed, source_id=source_id, url=url, digest=digest, captured=captured)
+
+
+def test_bybit_orderbook_uses_matching_engine_cts_and_computes_depth():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    source_id = "bybit_spot_depth"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    parser = PARSERS[source_id]
+    digest = hashlib.sha256(response["raw_bytes"]).hexdigest()
+    records, event_time, eligible, reason = parser(
+        response["payload"], source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert event_time == (captured - timedelta(seconds=2)).isoformat().replace("+00:00", "Z")
+    assert event_time != (captured - timedelta(milliseconds=1500)).isoformat().replace("+00:00", "Z")
+    assert eligible is True
+    assert reason == ""
+    by_feature = {item["feature_id"]: item for item in records}
+    assert by_feature["xrp.spot.bybit.orderbook.mid_price"]["value"] == pytest.approx(1.290)
+    assert by_feature["xrp.spot.bybit.orderbook.bid_depth_10bps"]["value"] == pytest.approx(1289.0)
+    assert by_feature["xrp.spot.bybit.orderbook.ask_depth_10bps"]["value"] == pytest.approx(1549.2)
+    assert by_feature["xrp.spot.bybit.orderbook.depth_imbalance_10bps"]["model_eligible"] is True
+    assert any("RPI orders are excluded" in item for item in by_feature["xrp.spot.bybit.orderbook.mid_price"]["limitations"])
+
+
+def test_bybit_orderbook_fails_closed_on_missing_matching_engine_time_or_crossed_levels():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    source_id = "bybit_spot_depth"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    parser = PARSERS[source_id]
+    missing_cts = json.loads(json.dumps(response["payload"]))
+    del missing_cts["result"]["cts"]
+    with pytest.raises(XRPIngestionError, match="matching-engine timestamp"):
+        parser(missing_cts, source_id=source_id, url=url, digest="a" * 64, captured=captured)
+
+    crossed = json.loads(json.dumps(response["payload"]))
+    crossed["result"]["a"][0][0] = "1.288"
+    with pytest.raises(XRPIngestionError, match="crossed or locked"):
+        parser(crossed, source_id=source_id, url=url, digest="b" * 64, captured=captured)
+
