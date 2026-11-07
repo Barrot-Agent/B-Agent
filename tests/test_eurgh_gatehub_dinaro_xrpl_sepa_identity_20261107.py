@@ -65,7 +65,9 @@ def test_mica_emt_claim_and_whitepaper_approval_are_distinct() -> None:
     assert legal["parsed"]["issuer_authorisation_required"] == "EMI or bank"
     terms = by_id(artifact, "gatehub_dinaro_eurgh_general_terms")
     assert terms["parsed"]["redemption_at_par"] is True
-    assert terms["parsed"]["competent_authority_approval_of_terms_or_whitepaper"] is False
+    assert terms["parsed"]["product_approved_by_competent_authority"] is False
+    assert terms["parsed"]["whitepaper_approval_status"] == "NOT_STATED_IN_RETRIEVED_PRIMARY_TEXT"
+    assert artifact["whitepaper_access"]["product_approval_status"] == "NOT_APPROVED_PER_OFFICIAL_TERMS"
     assert artifact["whitepaper_access"]["reserve_composition_verified"] is False
 
 
