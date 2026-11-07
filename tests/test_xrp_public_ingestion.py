@@ -2004,7 +2004,7 @@ def test_bybit_ticker_uses_response_time_and_rejects_stale_or_crossed_quotes():
     records, event_time, eligible, reason = parser(
         response["payload"], source_id=source_id, url=url, digest=digest, captured=captured
     )
-    assert event_time == (captured - timedelta(seconds=1)).isoformat().replace("+00:00", "Z")
+    assert event_time == (captured - timedelta(seconds=1)).isoformat(timespec="microseconds").replace("+00:00", "Z")
     assert eligible is True
     assert reason == ""
     assert any(item["feature_id"] == "xrp.spot.bybit.last_price" for item in records)
@@ -2034,8 +2034,8 @@ def test_bybit_orderbook_uses_matching_engine_cts_and_computes_depth():
     records, event_time, eligible, reason = parser(
         response["payload"], source_id=source_id, url=url, digest=digest, captured=captured
     )
-    assert event_time == (captured - timedelta(seconds=2)).isoformat().replace("+00:00", "Z")
-    assert event_time != (captured - timedelta(milliseconds=1500)).isoformat().replace("+00:00", "Z")
+    assert event_time == (captured - timedelta(seconds=2)).isoformat(timespec="microseconds").replace("+00:00", "Z")
+    assert event_time != (captured - timedelta(milliseconds=1500)).isoformat(timespec="microseconds").replace("+00:00", "Z")
     assert eligible is True
     assert reason == ""
     by_feature = {item["feature_id"]: item for item in records}
@@ -2043,7 +2043,7 @@ def test_bybit_orderbook_uses_matching_engine_cts_and_computes_depth():
     assert by_feature["xrp.spot.bybit.orderbook.bid_depth_10bps"]["value"] == pytest.approx(1289.0)
     assert by_feature["xrp.spot.bybit.orderbook.ask_depth_10bps"]["value"] == pytest.approx(1549.2)
     assert by_feature["xrp.spot.bybit.orderbook.depth_imbalance_10bps"]["model_eligible"] is True
-    assert any("RPI orders are excluded" in item for item in by_feature["xrp.spot.bybit.orderbook.mid_price"]["limitations"])
+    assert any("Retail Price Improvement (RPI) orders are excluded" in item for item in by_feature["xrp.spot.bybit.orderbook.mid_price"]["limitations"])
 
 
 def test_bybit_orderbook_fails_closed_on_missing_matching_engine_time_or_crossed_levels():
