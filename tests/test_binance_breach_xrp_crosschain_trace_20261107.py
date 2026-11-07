@@ -107,3 +107,17 @@ def test_no_forecast_or_trade_is_issued():
     assert artifact["forecast"]["shadow_forecast"] is None
     assert artifact["forecast"]["paper_trade_executed"] is False
     assert artifact["forecast"]["real_money_action"] is False
+
+
+def test_elliptic_summary_usd_values_are_not_mistaken_for_xrp_token_counts():
+    artifact = load_artifact()
+    note = artifact["cross_source_reconciliation"]["elliptic_unit_note"]
+    assert "USD values, not XRP token counts" in note
+    assert "148M XRP remaining" in note
+
+
+def test_official_xrpl_docs_confirm_native_xrp_cannot_be_frozen():
+    artifact = load_artifact()
+    docs = next(s for s in artifact["source_registry"] if s["source_id"] == "xrpl_official_freeze_protocol")
+    assert docs["publisher"] == "XRP Ledger Documentation"
+    assert docs["evidence_paraphrases"][0]["text"] == "No one can freeze XRP in the XRP Ledger."
