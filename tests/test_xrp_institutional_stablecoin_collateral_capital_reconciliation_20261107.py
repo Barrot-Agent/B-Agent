@@ -13,6 +13,12 @@ ARTIFACT = (
     / "xrp_intelligence"
     / "20261107T171515Z-xrp-institutional-stablecoin-collateral-capital-reconciliation.json"
 )
+CORRECTION = (
+    Path(__file__).resolve().parents[1]
+    / "research"
+    / "xrp_intelligence"
+    / "20261107T171515Z-coinbase-stablecoin-revenue-excerpt-hash-correction.json"
+)
 
 
 @pytest.fixture(scope="module")
@@ -25,9 +31,14 @@ def _source(evidence: dict, source_id: str) -> dict:
 
 
 def test_all_normalized_source_excerpt_hashes_reproduce(evidence: dict) -> None:
+    correction = json.loads(CORRECTION.read_text(encoding="utf-8"))
     for source in evidence["sources"]:
         digest = hashlib.sha256(source["normalized_excerpt"].encode("utf-8")).hexdigest()
-        assert digest == source["normalized_excerpt_sha256"]
+        if source["source_id"] == correction["supersedes_source_id"]:
+            assert source["normalized_excerpt_sha256"] == correction["incorrect_prior_sha256"]
+            assert digest == correction["corrected_sha256"]
+        else:
+            assert digest == source["normalized_excerpt_sha256"]
 
 
 def test_circle_coinbase_distribution_costs_and_supply_are_separate_metrics(evidence: dict) -> None:
