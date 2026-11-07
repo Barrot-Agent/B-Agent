@@ -66,3 +66,8 @@ The consumer returns corrected in-memory views and application manifests only. I
 ## Scheduled correction-audit execution
 
 The existing read-only `.github/workflows/xrp-public-ingestion.yml` now runs `python -m barrot_agent.evolution.research_timestamp_audit` before market capture and uploads a separate 90-day audit artifact. The audit emits exact-preimage-bound corrected research views and application manifests without modifying source files or the point-in-time feature store. An unknown timestamp-correction schema, missing target, duplicate target or preimage mismatch fails the workflow closed. The audit output itself remains model-ineligible and forecast-free. This is an executed research-archive audit path; it is **not** a feature-admission path and does not promote research records into predictive features.
+
+
+## Calibration outcome-time integrity guard
+
+Every prior forecast supplied to temporal calibration must include its `outcome_event_time_utc`. The outcome event must occur strictly after the originating forecast's `data_cutoff_utc`, and `outcome_available_at_utc` must not precede the outcome event. Invalid temporal ordering is rejected before eligibility filtering. The calibration result records the maximum prior outcome event time separately from maximum outcome-availability time. The walk-forward evaluator supplies the event timestamp from the scored target record and applies the same embargo cutoff to event availability. This guard prevents a malformed or backdated calibration-history record from entering the fit/validation partitions even if its caller supplies an early availability timestamp.

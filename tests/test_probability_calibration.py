@@ -28,6 +28,7 @@ def history(count: int = 60) -> list[dict]:
                 "forecast_id": f"forecast-{index}",
                 "target_record_id": f"target-{index}",
                 "data_cutoff_utc": stamp(available - timedelta(seconds=30)),
+                "outcome_event_time_utc": stamp(available - timedelta(seconds=1)),
                 "outcome_available_at_utc": stamp(available),
                 "raw_probabilities": {
                     "down": 0.90,
@@ -64,6 +65,7 @@ def test_temperature_is_fit_on_earlier_history_and_validated_on_later_history() 
             "forecast_id": "future-data-cutoff",
             "target_record_id": "future-target-a",
             "data_cutoff_utc": "2026-11-07T03:01:00Z",
+            "outcome_event_time_utc": "2026-11-07T03:01:30Z",
             "outcome_available_at_utc": "2026-11-07T03:02:00Z",
             "raw_probabilities": raw,
             "actual_class": "up",
@@ -74,6 +76,7 @@ def test_temperature_is_fit_on_earlier_history_and_validated_on_later_history() 
             "forecast_id": "future-outcome",
             "target_record_id": "future-target-b",
             "data_cutoff_utc": "2026-11-07T02:00:00Z",
+            "outcome_event_time_utc": "2026-11-07T03:00:30Z",
             "outcome_available_at_utc": "2026-11-07T03:01:00Z",
             "raw_probabilities": raw,
             "actual_class": "up",
@@ -85,7 +88,8 @@ def test_temperature_is_fit_on_earlier_history_and_validated_on_later_history() 
         {
             "forecast_id": "forecast-0-later",
             "target_record_id": "target-0",
-            "data_cutoff_utc": "2026-11-07T00:01:30Z",
+            "data_cutoff_utc": "2026-11-07T00:00:30Z",
+            "outcome_event_time_utc": "2026-11-07T00:00:45Z",
             "outcome_available_at_utc": "2026-11-07T00:01:00Z",
             "raw_probabilities": raw,
             "actual_class": "down",
@@ -109,6 +113,38 @@ def test_temperature_is_fit_on_earlier_history_and_validated_on_later_history() 
     assert result["history_max_outcome_available_at_utc"] <= result["fit_cutoff_utc"]
     assert result["probabilities"] != raw
     assert sum(result["probabilities"].values()) == pytest.approx(1.0)
+
+
+def test_calibration_rejects_outcome_event_at_or_before_forecast_cutoff() -> None:
+    records = history(1)
+    records[0]["data_cutoff_utc"] = "2026-11-07T00:00:30Z"
+    records[0]["outcome_event_time_utc"] = "2026-11-07T00:00:29Z"
+    records[0]["outcome_available_at_utc"] = "2026-11-07T00:01:00Z"
+    with pytest.raises(
+        ProbabilityCalibrationError,
+        match="outcome event must occur after its forecast data cutoff",
+    ):
+        apply_temporal_temperature_calibration(
+            records,
+            {"down": 0.4, "flat": 0.3, "up": 0.3},
+            calibration_cutoff_utc=CUTOFF,
+        )
+
+
+def test_calibration_rejects_outcome_available_before_event_time() -> None:
+    records = history(1)
+    records[0]["data_cutoff_utc"] = "2026-11-07T00:00:00Z"
+    records[0]["outcome_event_time_utc"] = "2026-11-07T00:00:30Z"
+    records[0]["outcome_available_at_utc"] = "2026-11-07T00:00:20Z"
+    with pytest.raises(
+        ProbabilityCalibrationError,
+        match="outcome availability cannot precede its event time",
+    ):
+        apply_temporal_temperature_calibration(
+            records,
+            {"down": 0.4, "flat": 0.3, "up": 0.3},
+            calibration_cutoff_utc=CUTOFF,
+        )
 
 
 def test_calibration_refuses_naive_timestamps() -> None:

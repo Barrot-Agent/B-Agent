@@ -536,6 +536,7 @@ def evaluate_chronological_walk_forward(
                     "forecast_id": item["forecast_id"],
                     "target_record_id": item["target_record_id"],
                     "data_cutoff_utc": item["data_cutoff_utc"],
+                    "outcome_event_time_utc": item["outcome"]["outcome_event_time_utc"],
                     "outcome_available_at_utc": item["outcome"]["outcome_available_at_utc"],
                     "raw_probabilities": item["raw_probabilities"],
                     "actual_class": item["outcome"]["actual_class"],

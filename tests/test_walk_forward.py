@@ -326,6 +326,10 @@ def test_walk_forward_calibration_uses_only_prior_resolved_oos_forecasts():
         if calibration["calibration_sample_count"]:
             assert calibration["history_max_data_cutoff_utc"] < calibration["fit_cutoff_utc"]
             assert (
+                calibration["history_max_outcome_event_time_utc"]
+                <= calibration["fit_cutoff_utc"]
+            )
+            assert (
                 calibration["history_max_outcome_available_at_utc"]
                 <= calibration["fit_cutoff_utc"]
             )

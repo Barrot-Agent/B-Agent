@@ -130,9 +130,20 @@ def apply_temporal_temperature_calibration(
         if not isinstance(raw, Mapping):
             raise ProbabilityCalibrationError("each calibration history item must be an object")
         data_cutoff = _utc(raw.get("data_cutoff_utc"), "data_cutoff_utc")
+        outcome_event = _utc(
+            raw.get("outcome_event_time_utc"), "outcome_event_time_utc"
+        )
         outcome_available = _utc(
             raw.get("outcome_available_at_utc"), "outcome_available_at_utc"
         )
+        if data_cutoff >= outcome_event:
+            raise ProbabilityCalibrationError(
+                "outcome event must occur after its forecast data cutoff"
+            )
+        if outcome_available < outcome_event:
+            raise ProbabilityCalibrationError(
+                "outcome availability cannot precede its event time"
+            )
         if data_cutoff >= cutoff or outcome_available > cutoff:
             continue
         actual = raw.get("actual_class")
@@ -147,6 +158,7 @@ def apply_temporal_temperature_calibration(
             {
                 "target_record_id": target_id,
                 "data_cutoff": data_cutoff,
+                "outcome_event": outcome_event,
                 "outcome_available": outcome_available,
                 "actual_class": actual,
                 "raw_probabilities": _normalize(
@@ -177,6 +189,9 @@ def apply_temporal_temperature_calibration(
     max_available = (
         max(item["outcome_available"] for item in samples) if samples else None
     )
+    max_outcome_event = (
+        max(item["outcome_event"] for item in samples) if samples else None
+    )
     max_data_cutoff = (
         max(item["data_cutoff"] for item in samples) if samples else None
     )
@@ -190,6 +205,9 @@ def apply_temporal_temperature_calibration(
         "fit_cutoff_utc": _format(cutoff),
         "history_max_data_cutoff_utc": _format(max_data_cutoff)
         if max_data_cutoff
+        else None,
+        "history_max_outcome_event_time_utc": _format(max_outcome_event)
+        if max_outcome_event
         else None,
         "history_max_outcome_available_at_utc": _format(max_available)
         if max_available
