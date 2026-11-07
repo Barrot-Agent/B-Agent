@@ -83,3 +83,11 @@ def test_no_market_feature_or_forecast_is_admitted():
     assert data["model_admission"]["admitted_to_price_features"] is False
     assert data["model_admission"]["admitted_to_exchange_flow_features"] is False
     assert data["forecast"]["status"] == "NOT_ISSUED"
+
+
+def test_seven_day_and_thirty_day_windows_are_not_conflated():
+    data = load_artifact()
+    assert data["source_snapshot_time_utc"] == "2026-11-07T08:01Z"
+    assert data["headline"]["same_wallet_window_utc"] == "2026-10-31 through 2026-11-07"
+    assert data["headline"]["same_wallet_window_30d_utc"] == "2026-10-08 through 2026-11-07"
+    assert "not the sum of all eight displayed rows" in data["daily_same_wallet_changes_note"]

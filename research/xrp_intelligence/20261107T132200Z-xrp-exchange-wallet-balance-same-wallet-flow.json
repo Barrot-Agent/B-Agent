@@ -3,7 +3,7 @@
   "artifact_type": "xrp_exchange_wallet_balances_and_same_wallet_flow_reconciliation",
   "artifact_id": "20261107T132200Z-xrp-exchange-wallet-balance-same-wallet-flow",
   "reviewed_at_utc": "2026-11-07T13:23:59.740Z",
-  "source_snapshot_time_utc": "2026-11-07T08:01:00Z",
+  "source_snapshot_time_utc": "2026-11-07T08:01Z",
   "source_page_retrieved_during_run_at_utc": "2026-11-07T13:23:59.740Z",
   "publisher": "XRP Insights",
   "source_url": "https://xrp-insights.com/exchange-balances",
@@ -15,13 +15,13 @@
     "raw_source_bytes_retained": false,
     "raw_source_sha256": null,
     "limitation": "The browser retrieval exposed normalized page text and a truncated JSON download view, not the complete downloadable JSON bytes or per-wallet source records. No raw-source hash is claimed.",
-    "normalized_evidence_record_sha256": "adbb34f5851efc5a71a326191d9533fb83ef208f7fb578b257e1722dbdea96e8",
+    "normalized_evidence_record_sha256": "e8a79842302ee49c5bce7fbba189106d2a8c0a2fa0c08187128a9e147f947eaa",
     "normalized_evidence_hash_scope": "SHA-256 over the canonical JSON serialization of the normalized_evidence_record field in this artifact; not a hash of the source webpage or raw JSON download."
   },
   "normalized_evidence_record": {
     "publisher": "XRP Insights",
     "url": "https://xrp-insights.com/exchange-balances",
-    "latest_balance_read_utc": "2026-11-07T08:01:00Z",
+    "latest_balance_read_utc": "2026-11-07T08:01Z",
     "total_tracked_xrp_display": "22.33B",
     "wallets": 701,
     "exchanges": 24,
@@ -60,13 +60,14 @@
     "total_supply_xrp": 100000000000,
     "same_wallet_net_change_7d_display": "-150.7M XRP",
     "same_wallet_net_change_7d_pct": -0.67,
-    "same_wallet_window_utc": "2026-10-08 through 2026-11-07",
+    "same_wallet_window_utc": "2026-10-31 through 2026-11-07",
     "same_wallet_net_change_30d_display": "-161.2M XRP",
     "same_wallet_net_change_30d_pct": -0.73,
     "naive_total_change_display": "+350.8M XRP",
     "newly_tracked_wallets": 2,
     "newly_tracked_wallets_balance_display": "512.0M XRP",
-    "interpretation": "The same-wallet series shows a net reduction in balances in the tracked labeled-wallet set. The naive total rises because new wallets were added. Neither measure proves customer withdrawals, accumulation, selling or tradable-float change."
+    "interpretation": "The same-wallet series shows a net reduction in balances in the tracked labeled-wallet set. The naive total rises because new wallets were added. Neither measure proves customer withdrawals, accumulation, selling or tradable-float change.",
+    "same_wallet_window_30d_utc": "2026-10-08 through 2026-11-07"
   },
   "daily_same_wallet_changes": [
     {
@@ -424,5 +425,12 @@
   },
   "forecast": {
     "status": "NOT_ISSUED"
-  }
+  },
+  "correction_history": {
+    "corrected_at_utc": "2026-11-07T13:25:19.432Z",
+    "previous_blob_sha": "ec4a9569a5e31e5e97bc2c8fc5c8775fbc743e32",
+    "correction_commit_parent": "230b3456f55d1c1b8136e3f8c005b573a7eb19ee",
+    "reason": "The headline 7-day window field accidentally reused the 30-day range, and the page reported latest read time only to the minute. Corrected the 7-day/30-day window labels and removed false second-level precision. Raw source values and source limitations are unchanged."
+  },
+  "daily_same_wallet_changes_note": "The 2026-10-31 row is the daily change ending on the 7-day window's start date; the 7-day net compares the Oct 31 snapshot with Nov 7 and is not the sum of all eight displayed rows."
 }
