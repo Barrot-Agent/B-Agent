@@ -128,7 +128,7 @@ def load_signal_snapshot():
                 "as a verified sentiment feature or forecast; do not interpret its "
                 "score or confidence as a price probability."
             )
-    return "\\n\\nYour real, current sentiment-feature and evaluation-status data:\\n" + "\\n".join(lines)
+    return "\n\nYour real, current sentiment-feature and evaluation-status data:\n" + "\n".join(lines)
 
 
 def load_xrp_intelligence_status():

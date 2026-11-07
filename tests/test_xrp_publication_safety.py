@@ -100,6 +100,7 @@ def test_ask_barrot_does_not_publish_legacy_accuracy_or_misclassify_scores():
     assert "NOT_ISSUED" in source
     assert "sentiment_feature_only" in source
     assert "uncalibrated; not a price probability" in source
+    assert 'return "\\n\\nYour real, current sentiment-feature and evaluation-status data:\\n"' in source
 
 
 def test_webmcp_forecast_and_accuracy_tools_return_status_only():
