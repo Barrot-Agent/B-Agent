@@ -17,13 +17,19 @@ def load_artifact():
 
 
 def test_coinbase_q3_usdc_revenue_and_balances_are_preserved_separately():
-    coinbase = load_artifact()["q3_2026_economics"]["coinbase"]
-    assert coinbase["average_usdc_on_coinbase_products_usd"] == 22_000_000_000
-    assert coinbase["average_usdc_off_platform_usd"] == 51_000_000_000
-    assert coinbase["stablecoin_revenue_on_platform_usd"] == 202_000_000
-    assert coinbase["stablecoin_revenue_off_platform_usd"] == 126_000_000
-    assert coinbase["total_stablecoin_revenue_usd"] == 328_000_000
-    assert coinbase["stablecoin_revenue_on_platform_usd"] + coinbase["stablecoin_revenue_off_platform_usd"] == coinbase["total_stablecoin_revenue_usd"]
+    correction = json.loads(
+        (
+            Path(__file__).resolve().parents[1]
+            / "research"
+            / "xrp_intelligence"
+            / "20261107T181119Z-coinbase-circle-q3-stablecoin-metric-correction.json"
+        ).read_text(encoding="utf-8")
+    )
+    primary = correction["corrected_primary_source"]
+    assert primary["average_usdc_held_in_coinbase_products_usd"] == 22_000_000_000
+    assert primary["average_off_platform_usdc_balances_usd"] == 51_000_000_000
+    assert primary["q3_stablecoin_revenue_usd"] == 307_000_000
+    assert primary["revenue_split_on_vs_off_platform_disclosed"] is False
 
 
 def test_circle_q3_distribution_costs_are_not_mislabeled_as_coinbase_profit():
@@ -40,10 +46,20 @@ def test_circle_q3_distribution_costs_are_not_mislabeled_as_coinbase_profit():
 
 def test_coinbase_circle_is_direct_and_renewed_but_metrics_are_not_netted():
     artifact = load_artifact()
+    correction = json.loads(
+        (
+            Path(__file__).resolve().parents[1]
+            / "research"
+            / "xrp_intelligence"
+            / "20261107T181119Z-coinbase-circle-q3-stablecoin-metric-correction.json"
+        ).read_text(encoding="utf-8")
+    )
     edge = next(e for e in artifact["relationship_edges"] if e["from"] == "Coinbase" and e["to"] == "Circle")
     assert edge["status"] == "verified_primary"
     assert artifact["q3_2026_economics"]["coinbase"]["circle_arrangement"] == "renewed in Q3 2026 on the same terms"
-    assert artifact["q3_2026_economics"]["comparability"]["coinbase_revenue_usd"] != artifact["q3_2026_economics"]["comparability"]["circle_coinbase_distribution_cost_usd"]
+    assert correction["corrected_primary_source"]["q3_stablecoin_revenue_usd"] == 307_000_000
+    assert correction["circle_side_unchanged"]["q3_coinbase_related_distribution_costs_usd"] == 331_300_000
+    assert correction["circle_side_unchanged"]["comparability"].startswith("Circle distribution costs and Coinbase stablecoin revenue are different accounting measures")
 
 
 def test_sbi_circle_and_sbi_ripple_are_direct_relationships_with_distinct_rails():
