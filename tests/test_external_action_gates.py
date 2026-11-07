@@ -364,9 +364,9 @@ def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() ->
 def test_worker_and_self_hosted_brain_deployments_require_manual_exact_sha_and_secret_rotation() -> None:
     for name in ("deploy-a2a-worker.yml", "sync-self-hosted-brain.yml"):
         content = _read(name)
-        assert "on:\\n  workflow_dispatch:" in content, name
+        assert "on:\n  workflow_dispatch:" in content, name
         assert "push:" not in content, name
-        assert "permissions:\\n  contents: read" in content, name
+        assert "permissions:\n  contents: read" in content, name
         assert "persist-credentials: false" in content, name
         assert "inputs.confirm == 'YES'" in content, name
         assert "inputs.confirm_secret_rotation == 'YES'" in content, name
