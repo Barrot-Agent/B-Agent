@@ -73,7 +73,7 @@ def test_secondary_taker_flow_is_context_not_current_feature(evidence: dict) -> 
     source = _source(evidence, "swiftedge_xrp_market_brief")
     assert source["provider_age_seconds_at_capture"] == 10_504
     assert source["model_eligible"] is False
-    assert "negative taker flow" in source["normalized_excerpt"]
+    assert "net taker flow -16.6%" in source["normalized_excerpt"]
     assert "nearly three hours old" in evidence["hypotheses"][0]["counterevidence"][0]
 
 

@@ -38,7 +38,7 @@
       "provider_age_seconds_at_capture": 1264.637,
       "freshness": "stale_over_300_seconds",
       "normalized_excerpt": "OKX XRP-USDT spot ticker: last 1.1569; bid 1.1569; ask 1.1570; 24h XRP volume 39,028,737.626537; provider timestamp 2026-11-07T15:40:59.363Z.",
-      "normalized_excerpt_sha256": "f9980bbaf46f8e2ffe398c13185ed5611295264d1fcca24f8ef8f4cf389a8b04",
+      "normalized_excerpt_sha256": "4597bc7047078bd4f68277420813e0194bd1866cd8c0d1578905baf38f7578f6",
       "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1569\",\"lastSz\":\"71.806345\",\"askPx\":\"1.157\",\"askSz\":\"6959.587815\",\"bidPx\":\"1.1569\",\"bidSz\":\"2152.248491\",\"open24h\":\"1.184\",\"high24h\":\"1.1996\",\"low24h\":\"1.1518\",\"volCcy24h\":\"45764625.2731108958\",\"vol24h\":\"39028737.626537\",\"ts\":\"1794066059363\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
       "raw_response_sha256": "4bd7f241d6f86c8df82cee7bc03ee4e7ed9433d8867d2b33b0ad2d5d4a80234a",
       "hash_scope": "exact JSON text returned by web retrieval; not original HTTP wire bytes or headers",
@@ -144,7 +144,8 @@
         "GXRP holdings remain in totals but flows are excluded due capture gap.",
         "Reconstructed historical intervals use third-party estimates.",
         "Holdings-derived change is not an issuer cash creation/redemption statement."
-      ]
+      ],
+      "flow_method": "issuer-reported XRP holdings delta; not issuer-reported cash creation/redemption"
     },
     {
       "source_id": "crypto_keyhole_xrp_etf_flows",
