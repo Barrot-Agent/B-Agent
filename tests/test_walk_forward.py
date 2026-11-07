@@ -300,3 +300,44 @@ def test_walk_forward_rejects_invalid_embargo_seconds(value):
             venue="kraken",
             currency_pair="XRP/USD",
         )
+
+def test_walk_forward_calibration_uses_only_prior_resolved_oos_forecasts():
+    records = _series(120)
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id=FEATURE_ID,
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=119, seconds=3)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=1,
+        target_tolerance_seconds=5,
+        venue="kraken",
+        currency_pair="XRP/USD",
+    )
+
+    assert result["calibration_is_diagnostic_only"] is False
+    assert result["calibration_method"] == "rolling_temporal_temperature_scaling_v1"
+    assert result["min_calibration_samples"] == 50
+    assert result["forecast_count"] > 100
+    for forecast in result["forecasts"]:
+        calibration = forecast["calibration"]
+        assert calibration["fit_cutoff_utc"] == forecast["training_cutoff_utc"]
+        assert calibration["calibration_sample_count"] <= result["calibration_max_history"]
+        if calibration["calibration_sample_count"]:
+            assert calibration["history_max_data_cutoff_utc"] < calibration["fit_cutoff_utc"]
+            assert (
+                calibration["history_max_outcome_available_at_utc"]
+                <= calibration["fit_cutoff_utc"]
+            )
+        assert forecast["raw_scoring"]["brier_score"] >= 0
+        assert sum(forecast["raw_probabilities"].values()) == pytest.approx(1.0)
+        assert sum(forecast["probabilities"].values()) == pytest.approx(1.0)
+
+    assert max(
+        forecast["calibration"]["calibration_sample_count"]
+        for forecast in result["forecasts"]
+    ) >= 50
+    for metrics in result["metrics"].values():
+        assert "raw_mean_brier_score" in metrics
+        assert "raw_mean_log_loss" in metrics
+        assert metrics["calibration"]["method"] == "rolling_temporal_temperature_scaling_v1"
