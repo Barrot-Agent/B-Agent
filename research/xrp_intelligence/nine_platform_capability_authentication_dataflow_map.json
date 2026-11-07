@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T20:03:08Z",
+  "captured_at_utc": "2026-11-07T23:42:25Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "fee5469dfd64406ae3133a7c90389b33ccf134c2",
-  "observed_research_head": "53d177fe41369181d657138b456467bd7abed573",
+  "observed_integration_head_before_map_commit": "073250e307ffdca29a68a888a6d9454e71ba8f4b",
+  "observed_research_head": "a3e9f537a0462b0583429fa3b9895be2fe7fc5cb",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -59,7 +59,12 @@
         "Run 28 exact-head CI follow-up: tip 35bdeee had 1,151 passed, 1 failure, 8 subtests; the remaining failure was the run-28 platform-map test using legacy current.integration/current.research keys instead of current.ci_evidence.integration/current.ci_evidence.research. This successor updates the test to the current schema; exact-head full suite pending.",
         "Run 30: fetched complete main tree, all four open-PR pages (371 total), both mission PRs, full changed-path overlap, branch ancestry, reviews/threads, exact-head workflow jobs and security settings; added two append-only XRP research artifacts and regression tests to existing #1643 only.",
         "Run 30 follow-up: #1643 exact head 0c41821 passed 2,085 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate. #1640's handoff/map-only head exposed three historical map-test assertion failures; run 28 is retained in prior_run_observations and current run 30 is tested separately.",
-        "Run 31: fetched complete main/integration/research trees, all four open-PR pages (371 total), current PR heads, ancestry, changed-path overlap, review states, exact-head CI logs, dependency audits and fail-closed gates; updated existing integration handoff/map only."
+        "Run 31: fetched complete main/integration/research trees, all four open-PR pages (371 total), current PR heads, ancestry, changed-path overlap, review states, exact-head CI logs, dependency audits and fail-closed gates; updated existing integration handoff/map only.",
+        "Run 33: re-fetched main, all four open-PR pages, full main/integration/research trees, current mission heads, complete PR changed-path lists, branch ancestry, reviews, inline threads, Actions jobs and exact-head logs.",
+        "Run 33: #1640 exact head 073250e passed 1,166 full-suite tests, 655 core tests, 58.49% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate.",
+        "Run 33: #1643 exact head a3e9f537 passed 2,188 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate after correcting two intermediate regression assertions; no source data was changed by those corrections.",
+        "Run 33: committed new spot/ETF/derivatives, multi-venue depth, exchange-wallet, RLUSD, SBI, Mastercard Agent Pay and XRPL agentic-payment evidence to existing #1643 only; no main write or external model transfer.",
+        "Run 33: Fuelmaps public MCP was identified as a candidate read-only data source; no connector or MCP session was established and no data flow is claimed."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -99,7 +104,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-07T22:36:15Z"
+      "last_verified_at_utc": "2026-11-07T23:42:25Z"
     },
     "Claude": {
       "intended_role": [
@@ -266,6 +271,23 @@
       "observed_use": "Legacy repository workflows reference Groq API credentials for manual research/artifact jobs.",
       "current_run_status": "No Groq API call was made in this run. The main-branch #1658 TPM incident was inspected; #1640 now classifies TPM-specific HTTP 413 and blocks without same-provider retry, using only a bounded read-only Git snapshot.",
       "guardrail": "Do not route XRP research to Groq unless a separate explicit provider authorization and data-flow test exists."
+    },
+    "Fuelmaps": {
+      "distinction": "Fuelmaps is a market-data provider, not one of the nine AI platforms.",
+      "endpoint": "https://fuelmaps.io/mcp",
+      "documentation": "https://fuelmaps.io/ai/",
+      "provider_claims": "The provider describes a public read-only MCP server with no sign-in and no logs; those statements were not independently verified.",
+      "observed_tools": [
+        "fuelmaps_order_book_snapshot",
+        "fuelmaps_order_book_history",
+        "fuelmaps_options_ranges",
+        "search",
+        "fetch"
+      ],
+      "data_scope": "Hourly order-book snapshots; history windows of 24h, 3d and 7d; six spot venues Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance and Bitget excluded.",
+      "current_run_status": "NOT_CONNECTED_NOT_TESTED",
+      "observed_access": "GET /mcp returned HTTP 405. No MCP POST/tool session, authentication test or data-flow test was performed.",
+      "guardrail": "Candidate source only. Do not claim a live connection or admit aggregated depth into model features without raw receipts, synchronized venue coverage and persistence/cancellation validation."
     }
   },
   "coordination_status": {
@@ -281,7 +303,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-07T22:36:15Z",
+    "last_reviewed_at_utc": "2026-11-07T23:42:25Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -323,18 +345,18 @@
     }
   },
   "next_actions": [
-    "Obtain independent approving reviews and resolve branch-protection/Pages authorization.",
-    "Merge #1640 only when every check and external-action authorization passes; verify merge commit, files, workflow side effects and main CI.",
-    "Consolidate #1643 unique research onto verified main, preserving the three shared paths and 18 Kamilah candidates.",
-    "Close only exact superseded PRs after successor content is verified on main; preserve #1653/#1655 unique work.",
-    "Verify scheduled ingestion on main and accumulate synchronized historical data before model evaluation or forecast issuance."
+    "Obtain independent approving reviews and authorized confirmation of main branch-protection and Pages behavior.",
+    "Merge #1640 only after every required condition is satisfied; verify merge commit, files, workflow side effects and main CI.",
+    "After main verification, consolidate #1643's 517 unique paths, preserve the three shared-path decisions and carry #1640 inclusive coverage and installed-wheel checks.",
+    "Close only exact duplicate/superseded PRs after successor content is verified on main; preserve unique/unreviewed work.",
+    "Verify scheduled ingestion on main and accumulate synchronized raw historical observations before training or directional forecasting."
   ],
   "current_run_observations": {
-    "run_id": 31,
-    "captured_at_utc": "2026-11-07T22:36:15Z",
+    "run_id": 33,
+    "captured_at_utc": "2026-11-07T23:42:25Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "fee5469dfd64406ae3133a7c90389b33ccf134c2",
-    "research_head": "53d177fe41369181d657138b456467bd7abed573",
+    "integration_head_before_map_commit": "073250e307ffdca29a68a888a6d9454e71ba8f4b",
+    "research_head": "a3e9f537a0462b0583429fa3b9895be2fe7fc5cb",
     "open_pr_inventory": {
       "total": 371,
       "drafts": 355,
@@ -345,7 +367,7 @@
         "entries": 1403,
         "files": 1298,
         "python_files": 493,
-        "test_modules": 87,
+        "test_modules": 90,
         "workflow_yaml": 78,
         "xrp_json_artifacts": 13,
         "truncated": false
@@ -354,69 +376,103 @@
         "entries": 1474,
         "files": 1361,
         "python_files": 543,
-        "test_modules": 122,
+        "test_modules": 125,
         "workflow_yaml": 79,
         "xrp_json_artifacts": 18,
         "truncated": false
       },
       "research": {
-        "entries": 1909,
-        "files": 1803,
-        "python_files": 697,
-        "test_modules": 291,
+        "entries": 1921,
+        "files": 1815,
+        "python_files": 701,
+        "test_modules": 298,
         "workflow_yaml": 78,
-        "xrp_json_artifacts": 311,
+        "xrp_json_artifacts": 319,
         "truncated": false
       }
     },
     "branch_ancestry": {
       "integration": {
-        "ahead": 602,
+        "ahead": 607,
         "behind": 0,
         "changed_paths": 171
       },
       "research": {
-        "ahead": 709,
+        "ahead": 733,
         "behind": 0,
-        "changed_paths": 508
+        "changed_paths": 520
+      },
+      "research_vs_integration": {
+        "status": "diverged",
+        "ahead": 726,
+        "behind": 607
       },
       "shared_changed_paths": [
-        ".github/workflows/dependency-audit.yml",
-        "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
-        "tests/test_kamilah_channel_identity_gate.py"
+        {
+          "path": ".github/workflows/dependency-audit.yml",
+          "status": "identical_blob"
+        },
+        {
+          "path": "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+          "status": "different_content",
+          "integration_seed_video_references": 10,
+          "research_seed_video_references": 18,
+          "personal_channel_verified": false
+        },
+        {
+          "path": "tests/test_kamilah_channel_identity_gate.py",
+          "status": "different_tests"
+        }
       ],
       "integration_only_paths": 168,
-      "research_only_paths": 505
+      "research_only_paths": 517
     },
     "ci_evidence": {
       "integration": {
-        "head": "fee5469dfd64406ae3133a7c90389b33ccf134c2",
-        "full_suite": "1,166 passed; 8 subtests",
-        "core_suite": "655 passed; 8 subtests",
+        "head": "073250e307ffdca29a68a888a6d9454e71ba8f4b",
+        "full_suite": "1,166 passed, 8 subtests passed",
+        "core_suite": "655 passed, 8 subtests passed",
         "coverage_pct": 58.49,
-        "wheel_verification": "passed",
+        "wheel_verification": "passed; packaged Barrot V3, primary mission and canonical data assets loaded",
         "dependency_audit": "passed; six manifests",
-        "fail_closed_gate": "passed; merge disabled",
+        "fail_closed_gate": "passed; automatic merging disabled",
         "runs": {
-          "ci": 42414002505,
-          "dependency_audit": 42414002533,
-          "fail_closed": 42414002490
-        }
+          "ci": 42426233244,
+          "dependency_audit": 42426233245,
+          "fail_closed": 42426233283
+        },
+        "nonfatal_warning": "GitHub Actions cache budget/read-only warning; test and wheel jobs passed."
       },
       "research": {
-        "head": "53d177fe41369181d657138b456467bd7abed573",
-        "full_suite": "2,152 passed; 8 subtests",
-        "core_suite": "498 passed; 8 subtests",
+        "head": "a3e9f537a0462b0583429fa3b9895be2fe7fc5cb",
+        "full_suite": "2,188 passed, 8 subtests passed",
+        "core_suite": "498 passed, 8 subtests passed",
         "coverage_pct": null,
-        "wheel_verification": "not in research CI; carry integration workflow",
+        "wheel_verification": "not present in research branch CI; carry #1640 inclusive coverage and installed-wheel checks into consolidated successor",
         "dependency_audit": "passed; six manifests",
-        "fail_closed_gate": "passed; merge disabled",
+        "fail_closed_gate": "passed; automatic merging disabled",
         "runs": {
-          "ci": 42421215023,
-          "dependency_audit": 42421215087,
-          "fail_closed": 42421215008
+          "ci": 42426921909,
+          "dependency_audit": 42426921796,
+          "fail_closed": 42426921810
         },
-        "test_correction": "SEC repayment-text assertion corrected; exact head passes."
+        "previous_verified_head": {
+          "head": "a965a5194199d0afaa2410271afe8bc73b8b7a69",
+          "full_suite": "2,178 passed, 8 subtests passed",
+          "ci": 42426244345,
+          "dependency_audit": 42426244295,
+          "fail_closed": 42426244292
+        },
+        "corrected_intermediate_failure": {
+          "head": "986652643826647d4cf98e82b5ee051975fe24fc",
+          "run": 42426635364,
+          "failures": [
+            "Fuelmaps rounded bid-share tolerance was too strict for $0.1M-rounded inputs",
+            "Edge or Not and exchange-balance excerpt digests were computed from earlier paraphrases rather than exact stored excerpts"
+          ],
+          "correction": "Use a 0.05 percentage-point tolerance for rounded depth values; correct exact excerpt SHA-256 values and record an append-only hash-correction receipt. No raw market data or excerpt text changed."
+        },
+        "nonfatal_warning": "Post-run cache reservation collision; both test jobs passed."
       }
     },
     "reviews": {
@@ -432,12 +488,13 @@
       },
       "pr_1653": {
         "threads_unresolved": 8
-      }
+      },
+      "independent_approving_reviews": 0
     },
     "backlog": {
       "active_integration_prs": [
-        "#1640 V3 foundation",
-        "#1643 XRP intelligence"
+        "#1640 Barrot V3 foundation",
+        "#1643 XRP intelligence and research"
       ],
       "superseded_or_path_contained_pending_main_verification": [
         "#1642",
@@ -455,9 +512,9 @@
         "#1318"
       ],
       "blocked": [
-        "#1640 approval/Pages authorization",
-        "#1643 consolidation after #1640",
-        "#1653 six unique paths plus shared CI; eight unresolved threads"
+        "#1640 independent approval and Pages/branch-protection authorization",
+        "#1643 consolidation after #1640 main verification",
+        "#1653 eight unresolved review threads; preserve unique repository-graph paths"
       ],
       "unique_unreviewed_preserve": [
         "#1655 five unique structural/catalog paths",
@@ -466,132 +523,123 @@
         "#1477 78-path research",
         "#1597",
         "#1591"
-      ]
+      ],
+      "remaining_drafts": "355 drafts remain unique/unreviewed until individually reconciled; no bulk closure."
     },
     "research_artifacts_added": [
-      "research/xrp_intelligence/20261107T200308Z-sbic-evernorth-capital-askcoin-kamilah-live-market-reconciliation.json",
-      "research/xrp_intelligence/20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation.json",
-      "tests/test_sbic_evernorth_capital_askcoin_kamilah_market_reconciliation_20261107.py",
-      "tests/test_evernorth_sbi_ownership_cross_filing_reconciliation_20261107.py"
+      "research/xrp_intelligence/20261107T233253Z-xrp-market-etf-derivatives-macro-vintage-reconciliation.json",
+      "tests/test_xrp_market_etf_derivatives_macro_vintage_reconciliation_20261107.py",
+      "research/xrp_intelligence/20261107T234225Z-xrpl-depth-exchange-balance-rlusd-agentic-payments.json",
+      "research/xrp_intelligence/20261107T234225Z-sbi-rlusd-source-url-metadata-correction.json",
+      "research/xrp_intelligence/20261107T234225Z-xrpl-depth-exchange-balance-rlusd-agentic-payments-hash-correction.json",
+      "tests/test_xrpl_depth_exchange_balance_rlusd_agentic_payments_20261107.py"
     ],
-    "sbic_identity_resolution": {
-      "status": "PRIMARY_SOURCE_RESOLVED",
-      "legal_companies": [
-        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
-        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
-        "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+    "verified_findings": {
+      "spot_and_etf": "Direct Kraken/OKX ticker receipts, ETF-flow vintage reconciliation and model-exclusion reasons are preserved in the 23:32Z artifact.",
+      "order_book_depth": "Fuelmaps 23:00 UTC six-venue spot snapshot: $14.6M bids/$10.5M asks within 1% (58.2% bid share), $28.1M/$12.4M within 5% (69.4% bid share). Edge or Not 23:31 UTC: $9.4M/$9.1M within 1% (50.81% bid share) across Binance spot plus OKX perpetual. Different venue/product universes; do not average; displayed orders can be cancelled.",
+      "exchange_wallet_balances": "XRP Insights 08:01 UTC: 22.33B XRP in 701 XRPL wallets attributed to 24 exchanges. Same-wallet change -150.7M XRP over seven days and -161.2M over 30 days. Naive total change +350.8M includes two newly tracked wallets holding 512M. Includes cold custody, wrapped reserves and unlabeled wallets; not tradable float or customer flows.",
+      "rlusd": "Ripple transparency dashboard as of Nov 5: $2.6329B circulating, $2.748B reserve funds (104.37% arithmetic ratio; $115.1M difference). Visible attestation list ends September 2026; do not claim a November attestation. XRP Insights reports $2.67B across XRPL/Ethereum on Nov 7 ($884.3M XRPL, $1.79B Ethereum); five smaller supported networks excluded. Ripple product page states seven supported chains.",
+      "sbi": "SBI VC Trade/Ripple RLUSD distribution began June 24, 2026. SBI VC Trade is a consolidated SBI Holdings subsidiary. This is RLUSD distribution, not proof of XRP settlement, XRP purchases or SBI corporate XRP custody. Official SBI URL correction is preserved.",
+      "mastercard_and_agentic_payments": "Mastercard's June 10 Agent Pay for Machines release lists Coinbase, OKX, RippleX and t54 Labs among initial participants. This is program-level co-participation, not a bilateral agreement or proof of XRP settlement. t54's XRPL AI Hub displayed 15.3093M transactions and $68,320.75 settled (~$0.00446/transaction); XRP Insights displayed 15.272937M and 7,027 XRP + 57,502 RLUSD. Counters differ and raw transaction-level receipts/token mix were not verified.",
+      "derivatives": "TradRadar 22:35 UTC: $1.88B OI across seven exchanges, down 1.33%, +0.0072% funding per 8h, at least $7.15M liquidations (mostly longs). Liqwall 20:02 UTC: $1.38B OI, +1.1%, $8.8M liquidations. Different venue coverage/time; do not average.",
+      "etf_flows": "Alpha Finance's five-fund flow-only universe reported $0 Nov 6 and +$8.4M over seven sessions; XRP Insights' holdings-delta universe reported -663,043 XRP Nov 6; CryptoKeyhole was partial 3/4 and showed a future-dated Nov 9 file, quarantined. No common issuer-complete reconstruction."
+    },
+    "fuelmaps_mcp_candidate": {
+      "endpoint": "https://fuelmaps.io/mcp",
+      "documentation": "https://fuelmaps.io/ai/",
+      "provider_claims": {
+        "read_only": true,
+        "no_sign_in": true,
+        "no_logs": true,
+        "tools": [
+          "fuelmaps_order_book_snapshot",
+          "fuelmaps_order_book_history",
+          "fuelmaps_options_ranges",
+          "search",
+          "fetch"
+        ],
+        "refresh": "hourly snapshots",
+        "history_windows": [
+          "24h",
+          "3d",
+          "7d"
+        ]
+      },
+      "coverage": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
       ],
-      "regional_mapping": "Tokyo=East; Nagoya=Central; Osaka=West",
-      "sbi_holdings_affiliation": "NOT_ESTABLISHED",
-      "chatgpt": "Educational seminars only; no OpenAI partnership."
-    },
-    "evernorth_capital_and_ownership": {
-      "latest_424b3_sbi_table": {
-        "class_a_shares": 9431914,
-        "class_c_shares": 2359038,
-        "pubco_common_stock_pct": 21.4,
-        "voting_power_pct": 39.9,
-        "company_units": 0,
-        "interpretation": "SBI is the largest single disclosed voting block at 39.9%, not a majority. The 21.4% figure is Pubco Common Stock (Class A plus Class C), not fully diluted equity. SBI's Class C is non-voting; do not assume Sponsor-specific conversion rights apply to SBI.",
-        "class_c_rights": "Non-voting except class-protective matters. The prospectus expressly describes a conversion condition for Sponsor-held Class C upon transfers to third parties other than affiliates; it does not establish that the same conversion right applies to SBI's Class C shares."
-      },
-      "prior_8k_sbi_table": {
-        "class_a_shares": 8885293,
-        "class_c_shares": 2905659,
-        "class_a_pct": 39.9,
-        "class_c_pct": 9
-      },
-      "unresolved_cross_filing_difference": "Both filings attribute 11,790,952 aggregate A+C shares to SBI, but 546,621 shares shift between reported classes and total class denominators change. No explicit bridge located; preserve both dated schedules.",
-      "actual_capital": "$214,049,995 advance cash; $214,000,000 used to buy 84,365,876 XRP; 600,000 XRP separately in-kind. Closing gross cash proceeds $272.6M (approximately $224.6M private placements plus $48M trust release); 388,910,554 XRP in-kind contributions. $30M PIK note generated $29M net after $1M advisor fee; no specific XRP purchase from note proceeds verified. Ripple-related facility $9.7M borrowed as of October 7 for operating/transaction expenses, not XRP purchases.",
-      "eloc": "Up to 5,218,935 shares; October 30 prospectus cover case $76.8M gross / $74.4M net at $14.71; optional, no actual draw or XRP purchase verified. Same prospectus retains stale $80.7M in one summary. $521,893.50 fee fully earned by contract; cash payment not independently verified."
-    },
-    "exact_phrase_research": {
-      "ask_coin": "Ask Coin is an inactive/untracked exchange listing at askcoin.net, distinct from Permission Coin's ASK token; no XRP relationship.",
-      "actual_capital": "Exact phrase appears in user-generated KuCoin commentary, not issuer evidence; SEC filings provide actual cash/debt/XRP amounts.",
-      "sbic_chatgpt": "No exact phrase establishing partnership; official SBIC seminar notices are training only.",
-      "kamilah_stevenson": "One verified TEDx video remains; new video L_5bqd94rWo is candidate-only because the first-party site does not link its channel."
-    },
-    "market_snapshot": {
-      "reference_utc": "2026-11-07T22:10:27Z",
-      "kraken": {
-        "last_usd": 1.15702,
-        "bid_usd": 1.15699,
-        "ask_usd": 1.157,
-        "volume_24h_xrp": 18155731,
-        "vwap_24h_usd": 1.16415016,
-        "daily_open_usd": 1.17749,
-        "provider_timestamp": null,
-        "model_eligible": false
-      },
-      "okx": {
-        "last_usdt": 1.1585,
-        "provider_timestamp_utc": "2026-11-07T21:51:52.763Z",
-        "age_seconds": 1114.237,
-        "model_eligible": false
-      },
       "limitations": [
-        "Kraken timestamp absent",
-        "OKX stale",
-        "USD/USDT not normalized",
-        "No synchronized executable depth or direct OI"
-      ]
+        "Binance and Bitget excluded",
+        "History only 24h/3d/7d; insufficient for long-horizon backtesting",
+        "Provider statements about logging/security are not independently verified"
+      ],
+      "current_run_status": "NOT_CONNECTED_NOT_TESTED",
+      "observed_access": "GET /mcp returned HTTP 405; no MCP POST/tool session or data flow was tested."
     },
     "prediction_engine": {
-      "scheduled_ingestion": "on #1640 only; absent from main",
+      "scheduled_ingestion": "DESIGNED/EXECUTED on #1640 branch only; absent from main",
+      "endpoint_registry": "29 endpoint records; 25 scheduled public sources; two noncommercial XRPL node sources excluded from scheduled collection",
       "sha256_receipts": true,
       "point_in_time_sqlite": true,
-      "baselines": 4,
-      "walk_forward": true,
-      "temporal_calibration": true,
-      "psi_drift": true,
-      "fail_closed_ledger": true,
-      "external_worm": false,
-      "mature_synchronized_history": false,
-      "out_of_sample_lift": false,
-      "real_data_calibration": false,
-      "shadow_outcomes": false,
-      "forecast_status": "NOT_ISSUED"
+      "deterministic_baselines": 4,
+      "chronological_walk_forward": true,
+      "temporal_calibration_event_time_guard": true,
+      "psi_drift_diagnostics": true,
+      "fail_closed_forecast_ledger": true,
+      "artifact_retention": "90-day raw receipts; 7-day per-run checkpoints; 90-day daily archive/feature backups",
+      "independent_external_worm": false,
+      "mature_synchronized_historical_dataset": false,
+      "demonstrated_out_of_sample_lift": false,
+      "validated_real_data_calibration": false,
+      "sufficient_shadow_outcomes": false,
+      "forecast_status": "NOT_ISSUED",
+      "new_observations_admitted_to_model": false
     },
     "nine_platform_status": {
       "ChatGPT": "current-session GitHub connector verified",
-      "Claude": "no persistent auth/data flow",
-      "Grok": "no persistent auth/data flow",
-      "Gemini": "no persistent auth/data flow",
-      "Copilot": "one-off COMMENTED reviews; not approval",
-      "Codex": "no persistent auth/data flow",
-      "HuggingFace": "no persistent auth/data flow; Space BUILD_ERROR",
-      "Kaggle": "no persistent auth/data flow",
-      "Databricks": "no persistent auth/data flow; HTTP 403",
-      "external_data_transfer": false
+      "Claude": "no persistent authenticated data flow",
+      "Grok": "no persistent authenticated data flow",
+      "Gemini": "no persistent authenticated data flow",
+      "Copilot": "one-off COMMENTED review activity; not approval",
+      "Codex": "no persistent authenticated data flow",
+      "Hugging Face": "no persistent authenticated data flow; Space BUILD_ERROR in latest main check",
+      "Kaggle": "no persistent authenticated data flow",
+      "Databricks": "no persistent authenticated data flow; prior API request returned HTTP 403",
+      "external_model_data_transfer": false,
+      "structured_cross_platform_exchange": false
     },
     "main_health": {
-      "cross_analysis": {
-        "run": 42417826259,
+      "latest_cross_analysis": {
+        "run": 42422572803,
         "status": "success"
       },
-      "barrot_agent": {
+      "barrot_agent_issue_runs": {
         "runs": [
           42388663091,
           42388645777
         ],
-        "status": "failure",
-        "cause": "Groq HTTP 413/429"
+        "status": "failed",
+        "cause": "Groq HTTP 413/429 TPM limit; no code branch or PR created"
       },
       "pillars_check": {
         "run": 42375034124,
-        "status": "failure",
+        "status": "failed",
         "causes": [
-          "GitHub App identifiers missing",
-          "Databricks HTTP 403",
+          "GitHub App identifiers/private key missing",
           "Hugging Face Space BUILD_ERROR"
         ]
       },
-      "xrp_ingestion": "absent from main",
-      "mission_registry": "absent from main"
+      "xrp_ingestion_workflow_on_main": false,
+      "primary_mission_registry_on_main": false,
+      "main_ci": "No workflow named CI found in latest 100 main-branch Actions runs; main SHA unchanged."
     },
     "merge_state": {
       "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-      "protected": true,
       "branch_protection_detail_http_403": true,
       "visible_ruleset": {
         "id": 10863829,
@@ -600,13 +648,13 @@
       "codeowners": "* @Barrot-Agent",
       "pr_1640_approvals": 0,
       "pr_1643_approvals": 0,
-      "pages_enabled": true,
-      "pages_config_accessible": false,
+      "pages_configuration_accessible": false,
       "prior_pages_deployment_run": 41799855489,
-      "merge_performed": false,
-      "independent_approvals": 0,
+      "pages_run_event": "dynamic; exact trigger/automatic merge behavior not verified",
       "pages_deployment_authorized": false,
-      "branch_protection_requirements_verified": false
+      "branch_protection_requirements_verified": false,
+      "merge_performed": false,
+      "independent_approvals": 0
     },
     "external_actions": {
       "main_write": false,
@@ -622,74 +670,13 @@
       "destructive_worktree_action": false
     },
     "next_actions": [
-      "Obtain independent approvals and authorized admin confirmation of branch protection/Pages behavior.",
-      "Merge #1640 only after all requirements; verify merge commit, files, workflow side effects and main CI.",
-      "After main verification, consolidate #1643's 505 unique paths and carry #1640's coverage/wheel gates.",
-      "Close only exact superseded PRs after main verification; preserve unique work.",
-      "Verify scheduled ingestion on main and accumulate synchronized historical data before forecasting."
+      "Obtain independent approving reviews and authorized confirmation of main branch-protection and Pages behavior.",
+      "Merge #1640 only after every required condition is satisfied; verify merge commit, files, workflow side effects and main CI.",
+      "After main verification, consolidate #1643's 517 unique paths, preserve the three shared-path decisions and carry #1640 inclusive coverage and installed-wheel checks.",
+      "Close only exact duplicate/superseded PRs after successor content is verified on main; preserve unique/unreviewed work.",
+      "Verify scheduled ingestion on main and accumulate synchronized raw historical observations before training or directional forecasting."
     ],
-    "integration_test_failure": {
-      "head": "a68f90bb883bacca1a0c2a8a5570b19f6a179c09",
-      "run": 42410503726,
-      "failed_tests": [
-        "tests/test_xrp_mission_handoff_run25.py::test_run26_platform_map_is_preserved_as_prior_run_and_fail_closed",
-        "tests/test_xrp_mission_handoff_run27.py::test_run28_platform_map_has_exact_current_ci_and_preserves_run26",
-        "tests/test_xrp_mission_handoff_run27.py::test_run28_market_and_institutional_evidence_remains_excluded_from_numeric_forecast_features"
-      ],
-      "cause": "The map update advanced current_run_observations to run 30, but historical run-28 assertions were not moved to prior_run_observations. The new market schema also omitted the old run-28 status key at the current path. The correction keeps run 28 historical and tests the new current schema."
-    },
-    "institutional_network": {
-      "sbi_circle_arc": "SBI Holdings' Evernorth equity stake is distinct from SBIC East/Central/West. SBI Holdings is disclosed at 21.4% of Pubco Common Stock and 39.9% voting power in the October 30 424B3; no direct SBI Holdings XRP token custody is established.",
-      "coinbase_collateral": "Coinbase's XRP collateral eligibility and RLUSD distribution are distinct products; no XRP-specific collateral balances were disclosed.",
-      "evernorth_ripple": "The October 30 424B3 says Evernorth and the Company ceased to be wholly-owned subsidiaries of or controlled by Ripple at the business-combination closing; they became related parties. Ripple remains a minority contributor/shareholder, not the controlling parent.",
-      "capital_stack": "Evernorth disclosed $214.05M advance cash, $214M used to purchase 84.365876M XRP, in-kind XRP contributions, $29M net convertible-note proceeds, a $9.7M Ripple-related operating facility and a conditional Cantor ELOC. Only the $214M purchase is directly tied to the identified cash-funded XRP acquisition."
-    },
-    "forecast_status": "NOT_ISSUED",
-    "handoff_map_commit": "same commit as this run's handoff/map/test reconciliation; exact SHA is in branch history",
-    "handoff_map_commit_ci": "pending exact-head CI after this update",
-    "etf_flow_disagreement": {
-      "alpha_finance": {
-        "funds": 5,
-        "nov6_usd": 0,
-        "seven_sessions_usd": 8400000,
-        "thirty_sessions_usd": 45900000
-      },
-      "cryptokeyhole": {
-        "status": "PARTIAL_3_OF_4",
-        "nov6_xrp": -752048
-      },
-      "xrp_insights": {
-        "nov6_xrp": -663043,
-        "holdings_xrp": 1195787657,
-        "net_assets_usd": 1430000000,
-        "rows": 1597,
-        "trading_days": 231
-      },
-      "conclusion": "Different universes/vintages and overlapping issuer source class; do not average or call universal zero."
-    },
-    "kamilah_video_inventory": {
-      "person_identity": "CONFIRMED",
-      "channel": "@drkamilahstevenson",
-      "channel_identity": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
-      "verified_public_attributions": 3,
-      "verified_personal_channel_uploads": 0,
-      "candidate_personal_uploads": 3,
-      "full_content_reviewed": 0
-    },
-    "evernorth_actual_capital": {
-      "advance_cash_usd": 214049995,
-      "xrp_purchase_cost_usd": 214000000,
-      "restricted_cash_usd": 49995,
-      "xrp_purchased": 84365876.3625,
-      "average_cost_usd": 2.53657058,
-      "in_kind_xrp": 388910554.061435,
-      "ripple_facility_draw_usd": 9700000,
-      "eloc_shares": 5218935,
-      "eloc_gross_illustration_usd": 76800000,
-      "eloc_net_illustration_usd": 74400000,
-      "fee_usd": 521893.5,
-      "public_draw_verified": false
-    }
+    "forecast_status": "NOT_ISSUED"
   },
   "prior_run_observations": [
     {
@@ -3011,7 +2998,731 @@
         "fee_usd": 521893.5,
         "public_draw_verified": false
       }
+    },
+    {
+      "run_id": 31,
+      "captured_at_utc": "2026-11-07T22:36:15Z",
+      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "integration_head_before_map_commit": "fee5469dfd64406ae3133a7c90389b33ccf134c2",
+      "research_head": "53d177fe41369181d657138b456467bd7abed573",
+      "open_pr_inventory": {
+        "total": 371,
+        "drafts": 355,
+        "non_drafts": 16
+      },
+      "repository_tree": {
+        "main": {
+          "entries": 1403,
+          "files": 1298,
+          "python_files": 493,
+          "test_modules": 87,
+          "workflow_yaml": 78,
+          "xrp_json_artifacts": 13,
+          "truncated": false
+        },
+        "integration": {
+          "entries": 1474,
+          "files": 1361,
+          "python_files": 543,
+          "test_modules": 122,
+          "workflow_yaml": 79,
+          "xrp_json_artifacts": 18,
+          "truncated": false
+        },
+        "research": {
+          "entries": 1909,
+          "files": 1803,
+          "python_files": 697,
+          "test_modules": 291,
+          "workflow_yaml": 78,
+          "xrp_json_artifacts": 311,
+          "truncated": false
+        }
+      },
+      "branch_ancestry": {
+        "integration": {
+          "ahead": 602,
+          "behind": 0,
+          "changed_paths": 171
+        },
+        "research": {
+          "ahead": 709,
+          "behind": 0,
+          "changed_paths": 508
+        },
+        "shared_changed_paths": [
+          ".github/workflows/dependency-audit.yml",
+          "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+          "tests/test_kamilah_channel_identity_gate.py"
+        ],
+        "integration_only_paths": 168,
+        "research_only_paths": 505
+      },
+      "ci_evidence": {
+        "integration": {
+          "head": "fee5469dfd64406ae3133a7c90389b33ccf134c2",
+          "full_suite": "1,166 passed; 8 subtests",
+          "core_suite": "655 passed; 8 subtests",
+          "coverage_pct": 58.49,
+          "wheel_verification": "passed",
+          "dependency_audit": "passed; six manifests",
+          "fail_closed_gate": "passed; merge disabled",
+          "runs": {
+            "ci": 42414002505,
+            "dependency_audit": 42414002533,
+            "fail_closed": 42414002490
+          }
+        },
+        "research": {
+          "head": "53d177fe41369181d657138b456467bd7abed573",
+          "full_suite": "2,152 passed; 8 subtests",
+          "core_suite": "498 passed; 8 subtests",
+          "coverage_pct": null,
+          "wheel_verification": "not in research CI; carry integration workflow",
+          "dependency_audit": "passed; six manifests",
+          "fail_closed_gate": "passed; merge disabled",
+          "runs": {
+            "ci": 42421215023,
+            "dependency_audit": 42421215087,
+            "fail_closed": 42421215008
+          },
+          "test_correction": "SEC repayment-text assertion corrected; exact head passes."
+        }
+      },
+      "reviews": {
+        "pr_1640": {
+          "threads_resolved": "22/22",
+          "commented_reviews": 10,
+          "approving_reviews": 0
+        },
+        "pr_1643": {
+          "threads_resolved": "19/19",
+          "commented_reviews": 10,
+          "approving_reviews": 0
+        },
+        "pr_1653": {
+          "threads_unresolved": 8
+        }
+      },
+      "backlog": {
+        "active_integration_prs": [
+          "#1640 V3 foundation",
+          "#1643 XRP intelligence"
+        ],
+        "superseded_or_path_contained_pending_main_verification": [
+          "#1642",
+          "#1644",
+          "#1645",
+          "#1646",
+          "#1647",
+          "#1648",
+          "#1649",
+          "#1650",
+          "#1254",
+          "#1255",
+          "#1320",
+          "#1317",
+          "#1318"
+        ],
+        "blocked": [
+          "#1640 approval/Pages authorization",
+          "#1643 consolidation after #1640",
+          "#1653 six unique paths plus shared CI; eight unresolved threads"
+        ],
+        "unique_unreviewed_preserve": [
+          "#1655 five unique structural/catalog paths",
+          "#1641 three experimentation paths",
+          "#1269 eight mesh/rendering paths",
+          "#1477 78-path research",
+          "#1597",
+          "#1591"
+        ]
+      },
+      "research_artifacts_added": [
+        "research/xrp_intelligence/20261107T200308Z-sbic-evernorth-capital-askcoin-kamilah-live-market-reconciliation.json",
+        "research/xrp_intelligence/20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation.json",
+        "tests/test_sbic_evernorth_capital_askcoin_kamilah_market_reconciliation_20261107.py",
+        "tests/test_evernorth_sbi_ownership_cross_filing_reconciliation_20261107.py"
+      ],
+      "sbic_identity_resolution": {
+        "status": "PRIMARY_SOURCE_RESOLVED",
+        "legal_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+        ],
+        "regional_mapping": "Tokyo=East; Nagoya=Central; Osaka=West",
+        "sbi_holdings_affiliation": "NOT_ESTABLISHED",
+        "chatgpt": "Educational seminars only; no OpenAI partnership."
+      },
+      "evernorth_capital_and_ownership": {
+        "latest_424b3_sbi_table": {
+          "class_a_shares": 9431914,
+          "class_c_shares": 2359038,
+          "pubco_common_stock_pct": 21.4,
+          "voting_power_pct": 39.9,
+          "company_units": 0,
+          "interpretation": "SBI is the largest single disclosed voting block at 39.9%, not a majority. The 21.4% figure is Pubco Common Stock (Class A plus Class C), not fully diluted equity. SBI's Class C is non-voting; do not assume Sponsor-specific conversion rights apply to SBI.",
+          "class_c_rights": "Non-voting except class-protective matters. The prospectus expressly describes a conversion condition for Sponsor-held Class C upon transfers to third parties other than affiliates; it does not establish that the same conversion right applies to SBI's Class C shares."
+        },
+        "prior_8k_sbi_table": {
+          "class_a_shares": 8885293,
+          "class_c_shares": 2905659,
+          "class_a_pct": 39.9,
+          "class_c_pct": 9
+        },
+        "unresolved_cross_filing_difference": "Both filings attribute 11,790,952 aggregate A+C shares to SBI, but 546,621 shares shift between reported classes and total class denominators change. No explicit bridge located; preserve both dated schedules.",
+        "actual_capital": "$214,049,995 advance cash; $214,000,000 used to buy 84,365,876 XRP; 600,000 XRP separately in-kind. Closing gross cash proceeds $272.6M (approximately $224.6M private placements plus $48M trust release); 388,910,554 XRP in-kind contributions. $30M PIK note generated $29M net after $1M advisor fee; no specific XRP purchase from note proceeds verified. Ripple-related facility $9.7M borrowed as of October 7 for operating/transaction expenses, not XRP purchases.",
+        "eloc": "Up to 5,218,935 shares; October 30 prospectus cover case $76.8M gross / $74.4M net at $14.71; optional, no actual draw or XRP purchase verified. Same prospectus retains stale $80.7M in one summary. $521,893.50 fee fully earned by contract; cash payment not independently verified."
+      },
+      "exact_phrase_research": {
+        "ask_coin": "Ask Coin is an inactive/untracked exchange listing at askcoin.net, distinct from Permission Coin's ASK token; no XRP relationship.",
+        "actual_capital": "Exact phrase appears in user-generated KuCoin commentary, not issuer evidence; SEC filings provide actual cash/debt/XRP amounts.",
+        "sbic_chatgpt": "No exact phrase establishing partnership; official SBIC seminar notices are training only.",
+        "kamilah_stevenson": "One verified TEDx video remains; new video L_5bqd94rWo is candidate-only because the first-party site does not link its channel."
+      },
+      "market_snapshot": {
+        "reference_utc": "2026-11-07T22:10:27Z",
+        "kraken": {
+          "last_usd": 1.15702,
+          "bid_usd": 1.15699,
+          "ask_usd": 1.157,
+          "volume_24h_xrp": 18155731,
+          "vwap_24h_usd": 1.16415016,
+          "daily_open_usd": 1.17749,
+          "provider_timestamp": null,
+          "model_eligible": false
+        },
+        "okx": {
+          "last_usdt": 1.1585,
+          "provider_timestamp_utc": "2026-11-07T21:51:52.763Z",
+          "age_seconds": 1114.237,
+          "model_eligible": false
+        },
+        "limitations": [
+          "Kraken timestamp absent",
+          "OKX stale",
+          "USD/USDT not normalized",
+          "No synchronized executable depth or direct OI"
+        ]
+      },
+      "prediction_engine": {
+        "scheduled_ingestion": "on #1640 only; absent from main",
+        "sha256_receipts": true,
+        "point_in_time_sqlite": true,
+        "baselines": 4,
+        "walk_forward": true,
+        "temporal_calibration": true,
+        "psi_drift": true,
+        "fail_closed_ledger": true,
+        "external_worm": false,
+        "mature_synchronized_history": false,
+        "out_of_sample_lift": false,
+        "real_data_calibration": false,
+        "shadow_outcomes": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "nine_platform_status": {
+        "ChatGPT": "current-session GitHub connector verified",
+        "Claude": "no persistent auth/data flow",
+        "Grok": "no persistent auth/data flow",
+        "Gemini": "no persistent auth/data flow",
+        "Copilot": "one-off COMMENTED reviews; not approval",
+        "Codex": "no persistent auth/data flow",
+        "HuggingFace": "no persistent auth/data flow; Space BUILD_ERROR",
+        "Kaggle": "no persistent auth/data flow",
+        "Databricks": "no persistent auth/data flow; HTTP 403",
+        "external_data_transfer": false
+      },
+      "main_health": {
+        "cross_analysis": {
+          "run": 42417826259,
+          "status": "success"
+        },
+        "barrot_agent": {
+          "runs": [
+            42388663091,
+            42388645777
+          ],
+          "status": "failure",
+          "cause": "Groq HTTP 413/429"
+        },
+        "pillars_check": {
+          "run": 42375034124,
+          "status": "failure",
+          "causes": [
+            "GitHub App identifiers missing",
+            "Databricks HTTP 403",
+            "Hugging Face Space BUILD_ERROR"
+          ]
+        },
+        "xrp_ingestion": "absent from main",
+        "mission_registry": "absent from main"
+      },
+      "merge_state": {
+        "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+        "protected": true,
+        "branch_protection_detail_http_403": true,
+        "visible_ruleset": {
+          "id": 10863829,
+          "enforcement": "disabled"
+        },
+        "codeowners": "* @Barrot-Agent",
+        "pr_1640_approvals": 0,
+        "pr_1643_approvals": 0,
+        "pages_enabled": true,
+        "pages_config_accessible": false,
+        "prior_pages_deployment_run": 41799855489,
+        "merge_performed": false,
+        "independent_approvals": 0,
+        "pages_deployment_authorized": false,
+        "branch_protection_requirements_verified": false
+      },
+      "external_actions": {
+        "main_write": false,
+        "merge": false,
+        "deployment": false,
+        "secret_read_or_rotation": false,
+        "space_restart": false,
+        "kaggle_submission": false,
+        "paper_trade": false,
+        "real_money": false,
+        "external_model_transfer": false,
+        "force_push": false,
+        "destructive_worktree_action": false
+      },
+      "next_actions": [
+        "Obtain independent approvals and authorized admin confirmation of branch protection/Pages behavior.",
+        "Merge #1640 only after all requirements; verify merge commit, files, workflow side effects and main CI.",
+        "After main verification, consolidate #1643's 505 unique paths and carry #1640's coverage/wheel gates.",
+        "Close only exact superseded PRs after main verification; preserve unique work.",
+        "Verify scheduled ingestion on main and accumulate synchronized historical data before forecasting."
+      ],
+      "integration_test_failure": {
+        "head": "a68f90bb883bacca1a0c2a8a5570b19f6a179c09",
+        "run": 42410503726,
+        "failed_tests": [
+          "tests/test_xrp_mission_handoff_run25.py::test_run26_platform_map_is_preserved_as_prior_run_and_fail_closed",
+          "tests/test_xrp_mission_handoff_run27.py::test_run28_platform_map_has_exact_current_ci_and_preserves_run26",
+          "tests/test_xrp_mission_handoff_run27.py::test_run28_market_and_institutional_evidence_remains_excluded_from_numeric_forecast_features"
+        ],
+        "cause": "The map update advanced current_run_observations to run 30, but historical run-28 assertions were not moved to prior_run_observations. The new market schema also omitted the old run-28 status key at the current path. The correction keeps run 28 historical and tests the new current schema."
+      },
+      "institutional_network": {
+        "sbi_circle_arc": "SBI Holdings' Evernorth equity stake is distinct from SBIC East/Central/West. SBI Holdings is disclosed at 21.4% of Pubco Common Stock and 39.9% voting power in the October 30 424B3; no direct SBI Holdings XRP token custody is established.",
+        "coinbase_collateral": "Coinbase's XRP collateral eligibility and RLUSD distribution are distinct products; no XRP-specific collateral balances were disclosed.",
+        "evernorth_ripple": "The October 30 424B3 says Evernorth and the Company ceased to be wholly-owned subsidiaries of or controlled by Ripple at the business-combination closing; they became related parties. Ripple remains a minority contributor/shareholder, not the controlling parent.",
+        "capital_stack": "Evernorth disclosed $214.05M advance cash, $214M used to purchase 84.365876M XRP, in-kind XRP contributions, $29M net convertible-note proceeds, a $9.7M Ripple-related operating facility and a conditional Cantor ELOC. Only the $214M purchase is directly tied to the identified cash-funded XRP acquisition."
+      },
+      "forecast_status": "NOT_ISSUED",
+      "handoff_map_commit": "same commit as this run's handoff/map/test reconciliation; exact SHA is in branch history",
+      "handoff_map_commit_ci": "pending exact-head CI after this update",
+      "etf_flow_disagreement": {
+        "alpha_finance": {
+          "funds": 5,
+          "nov6_usd": 0,
+          "seven_sessions_usd": 8400000,
+          "thirty_sessions_usd": 45900000
+        },
+        "cryptokeyhole": {
+          "status": "PARTIAL_3_OF_4",
+          "nov6_xrp": -752048
+        },
+        "xrp_insights": {
+          "nov6_xrp": -663043,
+          "holdings_xrp": 1195787657,
+          "net_assets_usd": 1430000000,
+          "rows": 1597,
+          "trading_days": 231
+        },
+        "conclusion": "Different universes/vintages and overlapping issuer source class; do not average or call universal zero."
+      },
+      "kamilah_video_inventory": {
+        "person_identity": "CONFIRMED",
+        "channel": "@drkamilahstevenson",
+        "channel_identity": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+        "verified_public_attributions": 3,
+        "verified_personal_channel_uploads": 0,
+        "candidate_personal_uploads": 3,
+        "full_content_reviewed": 0
+      },
+      "evernorth_actual_capital": {
+        "advance_cash_usd": 214049995,
+        "xrp_purchase_cost_usd": 214000000,
+        "restricted_cash_usd": 49995,
+        "xrp_purchased": 84365876.3625,
+        "average_cost_usd": 2.53657058,
+        "in_kind_xrp": 388910554.061435,
+        "ripple_facility_draw_usd": 9700000,
+        "eloc_shares": 5218935,
+        "eloc_gross_illustration_usd": 76800000,
+        "eloc_net_illustration_usd": 74400000,
+        "fee_usd": 521893.5,
+        "public_draw_verified": false
+      }
+    },
+    {
+      "run_id": 31,
+      "captured_at_utc": "2026-11-07T22:36:15Z",
+      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "integration_head_before_map_commit": "fee5469dfd64406ae3133a7c90389b33ccf134c2",
+      "research_head": "53d177fe41369181d657138b456467bd7abed573",
+      "open_pr_inventory": {
+        "total": 371,
+        "drafts": 355,
+        "non_drafts": 16
+      },
+      "repository_tree": {
+        "main": {
+          "entries": 1403,
+          "files": 1298,
+          "python_files": 493,
+          "test_modules": 87,
+          "workflow_yaml": 78,
+          "xrp_json_artifacts": 13,
+          "truncated": false
+        },
+        "integration": {
+          "entries": 1474,
+          "files": 1361,
+          "python_files": 543,
+          "test_modules": 122,
+          "workflow_yaml": 79,
+          "xrp_json_artifacts": 18,
+          "truncated": false
+        },
+        "research": {
+          "entries": 1909,
+          "files": 1803,
+          "python_files": 697,
+          "test_modules": 291,
+          "workflow_yaml": 78,
+          "xrp_json_artifacts": 311,
+          "truncated": false
+        }
+      },
+      "branch_ancestry": {
+        "integration": {
+          "ahead": 602,
+          "behind": 0,
+          "changed_paths": 171
+        },
+        "research": {
+          "ahead": 709,
+          "behind": 0,
+          "changed_paths": 508
+        },
+        "shared_changed_paths": [
+          ".github/workflows/dependency-audit.yml",
+          "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+          "tests/test_kamilah_channel_identity_gate.py"
+        ],
+        "integration_only_paths": 168,
+        "research_only_paths": 505
+      },
+      "ci_evidence": {
+        "integration": {
+          "head": "fee5469dfd64406ae3133a7c90389b33ccf134c2",
+          "full_suite": "1,166 passed; 8 subtests",
+          "core_suite": "655 passed; 8 subtests",
+          "coverage_pct": 58.49,
+          "wheel_verification": "passed",
+          "dependency_audit": "passed; six manifests",
+          "fail_closed_gate": "passed; merge disabled",
+          "runs": {
+            "ci": 42414002505,
+            "dependency_audit": 42414002533,
+            "fail_closed": 42414002490
+          }
+        },
+        "research": {
+          "head": "53d177fe41369181d657138b456467bd7abed573",
+          "full_suite": "2,152 passed; 8 subtests",
+          "core_suite": "498 passed; 8 subtests",
+          "coverage_pct": null,
+          "wheel_verification": "not in research CI; carry integration workflow",
+          "dependency_audit": "passed; six manifests",
+          "fail_closed_gate": "passed; merge disabled",
+          "runs": {
+            "ci": 42421215023,
+            "dependency_audit": 42421215087,
+            "fail_closed": 42421215008
+          },
+          "test_correction": "SEC repayment-text assertion corrected; exact head passes."
+        }
+      },
+      "reviews": {
+        "pr_1640": {
+          "threads_resolved": "22/22",
+          "commented_reviews": 10,
+          "approving_reviews": 0
+        },
+        "pr_1643": {
+          "threads_resolved": "19/19",
+          "commented_reviews": 10,
+          "approving_reviews": 0
+        },
+        "pr_1653": {
+          "threads_unresolved": 8
+        }
+      },
+      "backlog": {
+        "active_integration_prs": [
+          "#1640 V3 foundation",
+          "#1643 XRP intelligence"
+        ],
+        "superseded_or_path_contained_pending_main_verification": [
+          "#1642",
+          "#1644",
+          "#1645",
+          "#1646",
+          "#1647",
+          "#1648",
+          "#1649",
+          "#1650",
+          "#1254",
+          "#1255",
+          "#1320",
+          "#1317",
+          "#1318"
+        ],
+        "blocked": [
+          "#1640 approval/Pages authorization",
+          "#1643 consolidation after #1640",
+          "#1653 six unique paths plus shared CI; eight unresolved threads"
+        ],
+        "unique_unreviewed_preserve": [
+          "#1655 five unique structural/catalog paths",
+          "#1641 three experimentation paths",
+          "#1269 eight mesh/rendering paths",
+          "#1477 78-path research",
+          "#1597",
+          "#1591"
+        ]
+      },
+      "research_artifacts_added": [
+        "research/xrp_intelligence/20261107T200308Z-sbic-evernorth-capital-askcoin-kamilah-live-market-reconciliation.json",
+        "research/xrp_intelligence/20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation.json",
+        "tests/test_sbic_evernorth_capital_askcoin_kamilah_market_reconciliation_20261107.py",
+        "tests/test_evernorth_sbi_ownership_cross_filing_reconciliation_20261107.py"
+      ],
+      "sbic_identity_resolution": {
+        "status": "PRIMARY_SOURCE_RESOLVED",
+        "legal_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+        ],
+        "regional_mapping": "Tokyo=East; Nagoya=Central; Osaka=West",
+        "sbi_holdings_affiliation": "NOT_ESTABLISHED",
+        "chatgpt": "Educational seminars only; no OpenAI partnership."
+      },
+      "evernorth_capital_and_ownership": {
+        "latest_424b3_sbi_table": {
+          "class_a_shares": 9431914,
+          "class_c_shares": 2359038,
+          "pubco_common_stock_pct": 21.4,
+          "voting_power_pct": 39.9,
+          "company_units": 0,
+          "interpretation": "SBI is the largest single disclosed voting block at 39.9%, not a majority. The 21.4% figure is Pubco Common Stock (Class A plus Class C), not fully diluted equity. SBI's Class C is non-voting; do not assume Sponsor-specific conversion rights apply to SBI.",
+          "class_c_rights": "Non-voting except class-protective matters. The prospectus expressly describes a conversion condition for Sponsor-held Class C upon transfers to third parties other than affiliates; it does not establish that the same conversion right applies to SBI's Class C shares."
+        },
+        "prior_8k_sbi_table": {
+          "class_a_shares": 8885293,
+          "class_c_shares": 2905659,
+          "class_a_pct": 39.9,
+          "class_c_pct": 9
+        },
+        "unresolved_cross_filing_difference": "Both filings attribute 11,790,952 aggregate A+C shares to SBI, but 546,621 shares shift between reported classes and total class denominators change. No explicit bridge located; preserve both dated schedules.",
+        "actual_capital": "$214,049,995 advance cash; $214,000,000 used to buy 84,365,876 XRP; 600,000 XRP separately in-kind. Closing gross cash proceeds $272.6M (approximately $224.6M private placements plus $48M trust release); 388,910,554 XRP in-kind contributions. $30M PIK note generated $29M net after $1M advisor fee; no specific XRP purchase from note proceeds verified. Ripple-related facility $9.7M borrowed as of October 7 for operating/transaction expenses, not XRP purchases.",
+        "eloc": "Up to 5,218,935 shares; October 30 prospectus cover case $76.8M gross / $74.4M net at $14.71; optional, no actual draw or XRP purchase verified. Same prospectus retains stale $80.7M in one summary. $521,893.50 fee fully earned by contract; cash payment not independently verified."
+      },
+      "exact_phrase_research": {
+        "ask_coin": "Ask Coin is an inactive/untracked exchange listing at askcoin.net, distinct from Permission Coin's ASK token; no XRP relationship.",
+        "actual_capital": "Exact phrase appears in user-generated KuCoin commentary, not issuer evidence; SEC filings provide actual cash/debt/XRP amounts.",
+        "sbic_chatgpt": "No exact phrase establishing partnership; official SBIC seminar notices are training only.",
+        "kamilah_stevenson": "One verified TEDx video remains; new video L_5bqd94rWo is candidate-only because the first-party site does not link its channel."
+      },
+      "market_snapshot": {
+        "reference_utc": "2026-11-07T22:10:27Z",
+        "kraken": {
+          "last_usd": 1.15702,
+          "bid_usd": 1.15699,
+          "ask_usd": 1.157,
+          "volume_24h_xrp": 18155731,
+          "vwap_24h_usd": 1.16415016,
+          "daily_open_usd": 1.17749,
+          "provider_timestamp": null,
+          "model_eligible": false
+        },
+        "okx": {
+          "last_usdt": 1.1585,
+          "provider_timestamp_utc": "2026-11-07T21:51:52.763Z",
+          "age_seconds": 1114.237,
+          "model_eligible": false
+        },
+        "limitations": [
+          "Kraken timestamp absent",
+          "OKX stale",
+          "USD/USDT not normalized",
+          "No synchronized executable depth or direct OI"
+        ]
+      },
+      "prediction_engine": {
+        "scheduled_ingestion": "on #1640 only; absent from main",
+        "sha256_receipts": true,
+        "point_in_time_sqlite": true,
+        "baselines": 4,
+        "walk_forward": true,
+        "temporal_calibration": true,
+        "psi_drift": true,
+        "fail_closed_ledger": true,
+        "external_worm": false,
+        "mature_synchronized_history": false,
+        "out_of_sample_lift": false,
+        "real_data_calibration": false,
+        "shadow_outcomes": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "nine_platform_status": {
+        "ChatGPT": "current-session GitHub connector verified",
+        "Claude": "no persistent auth/data flow",
+        "Grok": "no persistent auth/data flow",
+        "Gemini": "no persistent auth/data flow",
+        "Copilot": "one-off COMMENTED reviews; not approval",
+        "Codex": "no persistent auth/data flow",
+        "HuggingFace": "no persistent auth/data flow; Space BUILD_ERROR",
+        "Kaggle": "no persistent auth/data flow",
+        "Databricks": "no persistent auth/data flow; HTTP 403",
+        "external_data_transfer": false
+      },
+      "main_health": {
+        "cross_analysis": {
+          "run": 42417826259,
+          "status": "success"
+        },
+        "barrot_agent": {
+          "runs": [
+            42388663091,
+            42388645777
+          ],
+          "status": "failure",
+          "cause": "Groq HTTP 413/429"
+        },
+        "pillars_check": {
+          "run": 42375034124,
+          "status": "failure",
+          "causes": [
+            "GitHub App identifiers missing",
+            "Databricks HTTP 403",
+            "Hugging Face Space BUILD_ERROR"
+          ]
+        },
+        "xrp_ingestion": "absent from main",
+        "mission_registry": "absent from main"
+      },
+      "merge_state": {
+        "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+        "protected": true,
+        "branch_protection_detail_http_403": true,
+        "visible_ruleset": {
+          "id": 10863829,
+          "enforcement": "disabled"
+        },
+        "codeowners": "* @Barrot-Agent",
+        "pr_1640_approvals": 0,
+        "pr_1643_approvals": 0,
+        "pages_enabled": true,
+        "pages_config_accessible": false,
+        "prior_pages_deployment_run": 41799855489,
+        "merge_performed": false,
+        "independent_approvals": 0,
+        "pages_deployment_authorized": false,
+        "branch_protection_requirements_verified": false
+      },
+      "external_actions": {
+        "main_write": false,
+        "merge": false,
+        "deployment": false,
+        "secret_read_or_rotation": false,
+        "space_restart": false,
+        "kaggle_submission": false,
+        "paper_trade": false,
+        "real_money": false,
+        "external_model_transfer": false,
+        "force_push": false,
+        "destructive_worktree_action": false
+      },
+      "next_actions": [
+        "Obtain independent approvals and authorized admin confirmation of branch protection/Pages behavior.",
+        "Merge #1640 only after all requirements; verify merge commit, files, workflow side effects and main CI.",
+        "After main verification, consolidate #1643's 505 unique paths and carry #1640's coverage/wheel gates.",
+        "Close only exact superseded PRs after main verification; preserve unique work.",
+        "Verify scheduled ingestion on main and accumulate synchronized historical data before forecasting."
+      ],
+      "integration_test_failure": {
+        "head": "a68f90bb883bacca1a0c2a8a5570b19f6a179c09",
+        "run": 42410503726,
+        "failed_tests": [
+          "tests/test_xrp_mission_handoff_run25.py::test_run26_platform_map_is_preserved_as_prior_run_and_fail_closed",
+          "tests/test_xrp_mission_handoff_run27.py::test_run28_platform_map_has_exact_current_ci_and_preserves_run26",
+          "tests/test_xrp_mission_handoff_run27.py::test_run28_market_and_institutional_evidence_remains_excluded_from_numeric_forecast_features"
+        ],
+        "cause": "The map update advanced current_run_observations to run 30, but historical run-28 assertions were not moved to prior_run_observations. The new market schema also omitted the old run-28 status key at the current path. The correction keeps run 28 historical and tests the new current schema."
+      },
+      "institutional_network": {
+        "sbi_circle_arc": "SBI Holdings' Evernorth equity stake is distinct from SBIC East/Central/West. SBI Holdings is disclosed at 21.4% of Pubco Common Stock and 39.9% voting power in the October 30 424B3; no direct SBI Holdings XRP token custody is established.",
+        "coinbase_collateral": "Coinbase's XRP collateral eligibility and RLUSD distribution are distinct products; no XRP-specific collateral balances were disclosed.",
+        "evernorth_ripple": "The October 30 424B3 says Evernorth and the Company ceased to be wholly-owned subsidiaries of or controlled by Ripple at the business-combination closing; they became related parties. Ripple remains a minority contributor/shareholder, not the controlling parent.",
+        "capital_stack": "Evernorth disclosed $214.05M advance cash, $214M used to purchase 84.365876M XRP, in-kind XRP contributions, $29M net convertible-note proceeds, a $9.7M Ripple-related operating facility and a conditional Cantor ELOC. Only the $214M purchase is directly tied to the identified cash-funded XRP acquisition."
+      },
+      "forecast_status": "NOT_ISSUED",
+      "handoff_map_commit": "same commit as this run's handoff/map/test reconciliation; exact SHA is in branch history",
+      "handoff_map_commit_ci": "pending exact-head CI after this update",
+      "etf_flow_disagreement": {
+        "alpha_finance": {
+          "funds": 5,
+          "nov6_usd": 0,
+          "seven_sessions_usd": 8400000,
+          "thirty_sessions_usd": 45900000
+        },
+        "cryptokeyhole": {
+          "status": "PARTIAL_3_OF_4",
+          "nov6_xrp": -752048
+        },
+        "xrp_insights": {
+          "nov6_xrp": -663043,
+          "holdings_xrp": 1195787657,
+          "net_assets_usd": 1430000000,
+          "rows": 1597,
+          "trading_days": 231
+        },
+        "conclusion": "Different universes/vintages and overlapping issuer source class; do not average or call universal zero."
+      },
+      "kamilah_video_inventory": {
+        "person_identity": "CONFIRMED",
+        "channel": "@drkamilahstevenson",
+        "channel_identity": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+        "verified_public_attributions": 3,
+        "verified_personal_channel_uploads": 0,
+        "candidate_personal_uploads": 3,
+        "full_content_reviewed": 0
+      },
+      "evernorth_actual_capital": {
+        "advance_cash_usd": 214049995,
+        "xrp_purchase_cost_usd": 214000000,
+        "restricted_cash_usd": 49995,
+        "xrp_purchased": 84365876.3625,
+        "average_cost_usd": 2.53657058,
+        "in_kind_xrp": 388910554.061435,
+        "ripple_facility_draw_usd": 9700000,
+        "eloc_shares": 5218935,
+        "eloc_gross_illustration_usd": 76800000,
+        "eloc_net_illustration_usd": 74400000,
+        "fee_usd": 521893.5,
+        "public_draw_verified": false
+      }
     }
   ],
-  "last_verified_at_utc": "2026-11-07T22:36:15Z"
+  "last_verified_at_utc": "2026-11-07T23:42:25Z"
 }

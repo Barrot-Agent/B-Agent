@@ -24,7 +24,7 @@ def test_run28_handoff_is_latest_and_preserves_verified_heads():
     assert "not a direct SBI-Coinbase XRP partnership" in handoff
 
 
-def test_run28_platform_map_is_preserved_and_run31_is_current():
+def test_run28_platform_map_is_preserved_and_run33_is_current():
     data = json.loads(
         (ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
@@ -32,10 +32,11 @@ def test_run28_platform_map_is_preserved_and_run31_is_current():
     current = data["current_run_observations"]
     prior28 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 28)
     prior30 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 30)
-    assert current["run_id"] == 31
+    assert current["run_id"] == 33
+    prior31 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 31)
     assert current["main_sha"] == MAIN_SHA
-    assert current["integration_head_before_map_commit"] == "fee5469dfd64406ae3133a7c90389b33ccf134c2"
-    assert current["research_head"] == "53d177fe41369181d657138b456467bd7abed573"
+    assert current["integration_head_before_map_commit"] == "073250e307ffdca29a68a888a6d9454e71ba8f4b"
+    assert current["research_head"] == "a3e9f537a0462b0583429fa3b9895be2fe7fc5cb"
     assert prior28["integration_head_before_map_commit"] == INTEGRATION_HEAD
     assert prior28["research_head"] == RESEARCH_HEAD
     ci = prior28["ci_evidence"]
@@ -56,9 +57,11 @@ def test_run28_platform_map_is_preserved_and_run31_is_current():
     assert current["merge_state"]["independent_approvals"] == 0
     assert current["forecast_status"] == "NOT_ISSUED"
     assert current["ci_evidence"]["integration"]["full_suite"].startswith("1,166 passed")
-    assert current["ci_evidence"]["research"]["full_suite"].startswith("2,152 passed")
+    assert current["ci_evidence"]["research"]["full_suite"].startswith("2,188 passed")
+    assert prior31["run_id"] == 31
+    assert prior31["main_sha"] == MAIN_SHA
     assert any(item.get("run_id") == 26 for item in data["prior_run_observations"])
-    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T22:36:15Z"
+    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T23:42:25Z"
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
 

@@ -4734,3 +4734,140 @@ Next:
 3. Merge #1640 only after all requirements are satisfied; verify merge commit, files, workflow effects and main CI.
 4. Only then consolidate #1643's unique research onto verified main, preserving the shared-path decisions and carrying #1640's inclusive coverage and installed-wheel checks.
 5. Verify the first scheduled ingestion on main and accumulate synchronized historical observations before model training or any directional forecast.
+
+
+---
+
+## Run 33 follow-up — 2026-11-07T23:42:25Z
+
+This follow-up supersedes the earlier Run 33 pending-head references for #1643. The existing mission branches remain the only active integration workstreams. No new branch or PR was created.
+
+### Exact-head verification
+
+**#1640 — Barrot V3 integration**
+
+Current head before this handoff/map commit: `073250e307ffdca29a68a888a6d9454e71ba8f4b`.
+
+- Full repository suite: **1,166 passed, 8 subtests passed**.
+- Core suite: **655 passed, 8 subtests passed**.
+- Inclusive coverage: **58.49%**, above the 53% threshold.
+- Installed-wheel verification passed; packaged Barrot V3, the primary mission and canonical data assets loaded.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed with automatic merging disabled.
+- Evidence: [CI 42426233244](https://github.com/Barrot-Agent/B-Agent/actions/runs/42426233244) · [Dependency audit 42426233245](https://github.com/Barrot-Agent/B-Agent/actions/runs/42426233245) · [Fail-closed gate 42426233283](https://github.com/Barrot-Agent/B-Agent/actions/runs/42426233283).
+
+**#1643 — XRP research**
+
+Current head: `a3e9f537a0462b0583429fa3b9895be2fe7fc5cb`.
+
+- Full repository suite: **2,188 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed with automatic merging disabled.
+- Evidence: [CI 42426921909](https://github.com/Barrot-Agent/B-Agent/actions/runs/42426921909) · [Dependency audit 42426921796](https://github.com/Barrot-Agent/B-Agent/actions/runs/42426921796) · [Fail-closed gate 42426921810](https://github.com/Barrot-Agent/B-Agent/actions/runs/42426921810).
+
+An intermediate #1643 head `986652643826647d4cf98e82b5ee051975fe24fc` failed two new tests: a depth-share assertion was tighter than the provider's $0.1M rounding, and two excerpt digests had been calculated from earlier paraphrases rather than the exact stored strings. The current head corrects the tolerance to 0.05 percentage points and records the exact excerpt hashes in an append-only correction artifact. No raw market response or excerpt text was changed. The post-run cache-reservation warning was nonfatal; both test jobs passed.
+
+The research branch still does not run #1640's inclusive coverage or installed-wheel checks. Carry those gates into the consolidated successor.
+
+### Repository and branch reconciliation
+
+Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+
+| Tree | Entries | Files | Python | Test modules | Workflow YAML | XRP JSON artifacts |
+|---|---:|---:|---:|---:|---:|---:|
+| Main | 1,403 | 1,298 | 493 | 90 | 78 | 13 |
+| #1640 | 1,474 | 1,361 | 543 | 125 | 79 | 18 |
+| #1643 | 1,921 | 1,815 | 701 | 298 | 78 | 319 |
+
+Open PR inventory: **371** (355 drafts, 16 non-drafts).
+
+- #1640: 171 changed paths, 607 commits ahead of main, zero behind; 168 paths unique relative to #1643.
+- #1643: 520 changed paths, 733 commits ahead of main, zero behind; 517 paths unique relative to #1640.
+- The branches are divergent (compare: #1643 is 726 commits ahead of #1640 and #1640 is 607 commits behind #1643).
+- Exactly three changed paths overlap: `.github/workflows/dependency-audit.yml` (identical), the Kamilah Stevenson source registry (different content), and its identity-gate test (different tests). Preserve the 18-reference research registry on #1643.
+
+Backlog:
+- #1640: active V3 integration candidate; technical checks green, authorization blocked.
+- #1643: active XRP research candidate; exact-head full suite and security checks green; consolidate only after #1640 is verified on main.
+- #1642: draft whose seven paths are represented in #1640; retain until successor verification.
+- #1644–#1650: dependency/action PRs overlapping versions and workflow paths represented in #1640; retain until main verification.
+- #1317, #1318 and #1320: paths represented in #1640; retain until main verification.
+- #1254/#1255: older dependency versions superseded by newer declarations in #1640; retain until main verification.
+- #1653: eight unresolved review threads; preserve its unique repository-graph paths.
+- #1655: draft with five unique structural/catalog paths; preserve.
+- #1641: three unique experimentation paths; preserve.
+- #1269: eight unique mesh/rendering paths; preserve.
+- The remaining drafts are unique/unreviewed until individually reconciled. No bulk closure.
+
+### New XRP evidence committed to existing #1643
+
+**Market and ETF vintage reconciliation**
+
+- Artifact: `research/xrp_intelligence/20261107T233253Z-xrp-market-etf-derivatives-macro-vintage-reconciliation.json`.
+- Test: `tests/test_xrp_market_etf_derivatives_macro_vintage_reconciliation_20261107.py`.
+- Direct Kraken/OKX ticker receipts preserve exact response text and SHA-256. Kraken supplied no provider event timestamp; OKX was near the 300-second freshness threshold against the run-clock reference, whose exact per-request receipt time was not exposed. Both remain model-ineligible.
+- ETF flow scope remains separated: Alpha Finance's five-fund flow-only series reported $0 on Nov 6; XRP Insights reported -663,043 XRP from issuer-holdings deltas with GXRP excluded from flow totals and BITW included; CryptoKeyhole was partial 3/4 and its purported Nov 9 issuer file was future-dated relative to Nov 7 and quarantined.
+- TradRadar and Liqwall derivatives totals were not averaged because their timestamps and venue universes differ.
+- Reuters' global equity, bond and money-market flows remain macro context, not XRP-specific flows.
+
+**Depth, exchange-wallet, RLUSD and agentic-payment reconciliation**
+
+- Artifact: `research/xrp_intelligence/20261107T234225Z-xrpl-depth-exchange-balance-rlusd-agentic-payments.json`.
+- Source URL correction: `research/xrp_intelligence/20261107T234225Z-sbi-rlusd-source-url-metadata-correction.json`.
+- Excerpt-hash correction: `research/xrp_intelligence/20261107T234225Z-xrpl-depth-exchange-balance-rlusd-agentic-payments-hash-correction.json`.
+- Test: `tests/test_xrpl_depth_exchange_balance_rlusd_agentic_payments_20261107.py`.
+
+**Visible depth**
+
+- [Fuelmaps](https://fuelmaps.io/order-book/) 23:00 UTC spot-only snapshot: six venues (Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini); $14.6M bids/$10.5M asks within 1% (58.2% bid share); $28.1M/$12.4M within 5% (69.4% bid share). Binance and Bitget are excluded. Hourly/one-minute averaging and cancellation risk prevent treating resting walls as durable support.
+- [Edge or Not](https://edgeornot.com/order-book-heatmap/xrp) 23:31 UTC snapshot: $9.4M bids/$9.1M asks within 1% (50.81% bid share), combining Binance spot and OKX perpetual. This is not comparable to Fuelmaps' spot-only universe. Do not average the two.
+
+**Exchange-wallet attribution**
+
+[XRP Insights exchange-balance tracker](https://xrp-insights.com/exchange-balances) reports 22.33B XRP in 701 XRPL wallets attributed to 24 exchanges at 08:01 UTC. Same-wallet change was -150.7M XRP over seven days and -161.2M over 30 days. A naive +350.8M total change includes two newly tracked wallets holding 512M. The attributed total includes cold storage, wrapped-asset/insurance/charity reserves and unlabeled wallets. Coinbase's 5.79B, Binance's 2.73B, Upbit's 6.44B and SBI VC Trade's 56.6M are wallet-label observations, not disclosed corporate positions, beneficial ownership or tradable float. No exchange-balance feature was admitted.
+
+**RLUSD, SBI and custody**
+
+- [Ripple transparency](https://ripple.com/products/stablecoin/transparency/) as of Nov 5: $2.6329B circulating and $2.748B reserve funds (104.37% arithmetic ratio; $115.1M difference). The visible attestation list ends at September 2026; do not describe the Nov 5 dashboard balance as covered by a November attestation.
+- [XRP Insights Radar](https://xrp-insights.com/xrp-radar) reports $2.67B across XRPL and Ethereum on Nov 7 ($884.3M XRPL, $1.79B Ethereum); five smaller supported networks are excluded from that split.
+- [Ripple's RLUSD product page](https://ripple.com/products/stablecoin/) states seven supported chains. RLUSD distribution and settlement do not prove XRP purchases or XRP collateral balances.
+- [SBI's June 24 release](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html) establishes RLUSD availability through VCTRADE and identifies SBI VC Trade as a consolidated SBI Holdings subsidiary. This is a direct RLUSD distribution relationship, not proof of XRP settlement or SBI corporate XRP custody.
+
+**Mastercard and XRPL agentic payments**
+
+- [Mastercard's June 10 Agent Pay for Machines release](https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Agent-Pay-for-Machines-to-Unlock-Super-Fast-Always-On-Payments/default.aspx) lists Coinbase, OKX, RippleX and t54 Labs among initial participants. This is program-level co-participation, not a bilateral agreement between every participant or evidence that each rail settles in XRP.
+- [t54's XRPL AI Hub](https://xrpl-ai.org/) displayed 15.3093M transactions and $68,320.75 settled (about $0.00446 per transaction), 193 merchants and 5,393 services. Several recent entries were labeled Unverified.
+- XRP Insights displayed 15.272937M agent transactions and 7,027 XRP plus 57,502 RLUSD settled. The counters differ and were not combined; token-level raw transaction receipts were not captured.
+- [XRPL agentic transaction documentation](https://xrpl.org/docs/agents/agentic-transactions) describes XRP/issued-token payments, DepositAuth, multisignature, escrow time locks, SourceTag and Memo audit trails. These are protocol capabilities, not measured adoption. No wallet was created or funded; no transaction was signed or submitted.
+
+**Fuelmaps MCP candidate**
+
+[Fuelmaps AI/MCP documentation](https://fuelmaps.io/ai/) describes a public read-only MCP server at `https://fuelmaps.io/mcp`, with hourly snapshots and 24h/3d/7d history. The provider claims no sign-in and no logs. It covers six spot venues and excludes Binance/Bitget; the history window is too short for long-horizon backtesting. A GET request to `/mcp` returned HTTP 405; no MCP POST/tool session, authentication test or data flow was established. This is a candidate data source only, not a connected platform.
+
+### Prediction-engine and platform status
+
+- #1640 contains the scheduled public-ingestion workflow, 29 endpoint records (25 scheduled sources; two noncommercial XRPL node sources excluded), SHA-256 receipts, point-in-time SQLite feature store, four deterministic baselines, chronological walk-forward evaluation, event-time calibration guard, PSI drift diagnostics and fail-closed forecast ledger.
+- The ingestion workflow is not on main and has not been verified running on main. Raw receipts have 90-day artifact retention; per-run checkpoints seven days; daily feature-store/walk-forward archives 90 days. Independent external WORM storage remains absent.
+- New depth, exchange-wallet, RLUSD and agentic-payment observations remain event-timeline research only; none entered model features.
+- The current dataset still lacks mature synchronized historical coverage, demonstrated out-of-sample lift, validated real-data calibration and sufficient independent shadow outcomes.
+- **Forecast status: NOT_ISSUED.** No directional forecast, shadow trade, paper trade or real-money action.
+- ChatGPT-to-GitHub is the only verified persistent connection. Copilot activity is one-off COMMENTED review, not approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. No cross-platform exchange or external model transfer occurred.
+
+### Main health, safety and merge decision
+
+- Main is unchanged at `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. It still lacks `.github/workflows/xrp-public-ingestion.yml` and the primary mission registry. Its core CI is selected-package coverage and excludes major packages; no main CI workflow run was found in the latest 100 main-branch Actions runs.
+- Main scheduled Cross Analysis succeeded: [42422572803](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422572803).
+- Main Barrot Agent issue runs [42388663091](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388663091) and [42388645777](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388645777) failed on Groq 413/429 TPM limits; no code branch or PR was created.
+- Main Pillars check [42375034124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42375034124) failed because GitHub App identifiers/private-key configuration were missing and the Hugging Face Space check returned BUILD_ERROR.
+- Both mission PRs remain clean/mergeable, but #1640 has 22/22 resolved threads and zero approving reviews; #1643 has 19/19 resolved threads and zero approving reviews. COMMENTED reviews are not approvals.
+- Main branch-protection details return HTTP 403; visible ruleset ID 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`. GitHub Pages configuration is inaccessible. Prior Pages deployment run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) succeeded on main, but its event was reported as `dynamic`; exact trigger behavior is not verified and deployment is not authorized.
+- **No merge was performed.** No main write, deployment, secret read/rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree action occurred.
+
+### Next actions
+
+1. Obtain independent approving reviews and authorized confirmation of branch-protection and Pages behavior.
+2. Merge #1640 only after every required condition is satisfied; verify merge commit, merged files, workflow side effects and main CI.
+3. Consolidate #1643's 517 unique paths only after #1640 is verified on main, preserving the three shared-path decisions and carrying #1640's inclusive coverage and installed-wheel gates.
+4. Close only exact superseded PRs after successor content is verified on main; preserve unique/unreviewed work.
+5. Verify scheduled ingestion on main, then accumulate synchronized raw historical observations before training or issuing any directional forecast.
