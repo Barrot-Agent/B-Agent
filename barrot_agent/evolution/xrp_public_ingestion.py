@@ -1445,6 +1445,8 @@ def _parse_coinbase_candles(
         if not isinstance(row, list) or len(row) < 6:
             raise XRPIngestionError("Coinbase candle row does not match the documented schema")
         open_time = _from_seconds(row[0], "Coinbase candle open time")
+        if int(open_time.timestamp()) % COINBASE_CANDLE_GRANULARITY_SECONDS != 0:
+            raise XRPIngestionError("Coinbase candle open time is not aligned to its hourly granularity")
         if page_start is not None and page_end is not None and (open_time < page_start or open_time >= page_end):
             continue
         if open_time in seen_open_times:
@@ -1500,6 +1502,8 @@ def _coinbase_candle_backfill_ranges(oldest_open: datetime, days: int) -> list[t
     if not isinstance(oldest_open, datetime) or oldest_open.tzinfo is None or oldest_open.utcoffset() is None:
         raise XRPIngestionError("Coinbase backfill boundary must be timezone-aware")
     end = oldest_open.astimezone(timezone.utc)
+    if end.minute or end.second or end.microsecond:
+        raise XRPIngestionError("Coinbase backfill boundary must align to the hourly candle granularity")
     start = end - timedelta(days=days)
     ranges = []
     cursor = start
