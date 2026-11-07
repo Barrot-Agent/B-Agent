@@ -58,7 +58,7 @@ def test_cross_venue_price_difference_is_not_an_arbitrage_feature(evidence: dict
     source = _source(evidence, "okx_xrpusdt_ticker")
     assert evidence["calculations"]["okx_raw_cross_venue_last_difference_pct"] == pytest.approx(0.2998552423)
     assert source["model_eligible"] is False
-    assert "USD/USDT are unnormalized" in source["limitations"][2]
+    assert "not directly normalized" in source["limitations"][2]
 
 
 def test_future_dated_liqwall_snapshot_is_excluded(evidence: dict) -> None:
@@ -131,7 +131,7 @@ def test_holdings_derived_etf_flow_is_not_share_creation_redemption_flow(evidenc
     assert obs["product_count"] == 7
     assert obs["daily_flow_xrp"] == -663_043
     assert obs["gxrp_included_in_holdings_excluded_from_flow"] is True
-    assert "holdings changes" in source["limitations"][0]
+    assert "issuer-reported XRP holdings" in source["limitations"][0]
     assert source["model_eligible"] is False
 
 
@@ -175,6 +175,13 @@ def test_13f_aggregation_is_historical_and_secondary(evidence: dict) -> None:
     assert source["observations"]["reported_long_positions_usd"] == 179_000_000
     assert source["model_eligible"] is False
     assert "not current holdings" in source["limitations"][0]
+
+
+def test_all_normalized_excerpt_receipts_match(evidence: dict) -> None:
+    for source in evidence["sources"]:
+        if "normalized_excerpt" in source:
+            digest = hashlib.sha256(source["normalized_excerpt"].encode("utf-8")).hexdigest()
+            assert digest == source["normalized_excerpt_sha256"]
 
 
 def test_no_directional_forecast_is_issued(evidence: dict) -> None:
