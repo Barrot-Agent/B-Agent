@@ -122,3 +122,6 @@ The official XRPL public-server directory lists the free InFTF and Honeycluster 
 Even when the two nodes report the same validated-ledger index and hash, their agreement is an integrity check on the same ledger state. Their records are never model-eligible and never count as independent economic corroboration. Sustained scheduled collection requires a self-hosted XRPL node or a contracted commercial provider with the applicable terms/authorization archived in the source registry.
 
 Primary policy evidence: https://xrpl.org/docs/tutorials/public-servers. Honeycluster's general terms are at https://honeycluster.io/terms; no plan agreement or written business-use authorization was retrieved at the 2026-11-05 review.
+
+
+Cache writes are best-effort. After raw-receipt and feature-store checkpoint artifacts have been uploaded, a cache-save failure must not fail the ingestion run. The next run recovers from the latest successful per-run or daily artifact. The Actions cache is an accelerator only; uploaded artifacts are the recovery source of truth.

@@ -2494,3 +2494,29 @@ Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/423568568
 https://github.com/Barrot-Agent/B-Agent/actions/runs/42356320196
 
 This handoff addendum itself advances #1640 again. The new documentation-only tip requires fresh exact-head CI; do not reuse the predecessor's test results as proof for the new tip.
+
+
+## Run 12 reliability and deterministic review addendum — 2026-11-07
+
+### XRP ingestion cache recovery fix
+
+A workflow audit found that the cumulative feature-store cache save was a required step even though the Actions cache service has repeatedly reported that the repository cache is read-only after reaching its storage budget. The workflow uploads its checkpoint and raw receipts before attempting the cache save. If the cache save failed, it could mark the overall run failed; the next-run recovery selector only considers successful runs, so it could ignore the just-uploaded checkpoint and repeatedly fall back to an older archive.
+
+The existing #1640 workflow now marks `actions/cache/save@v4` as `continue-on-error: true`. Cache is best-effort; the uploaded per-run checkpoint and daily archive remain authoritative. The workflow contract test now asserts this property, and the feature-store contract documents it. This avoids allowing cache-budget exhaustion to stall otherwise successful public-data ingestion.
+
+### Deterministic local review of draft PR #1655 after main-branch Groq HTTP 413
+
+Main workflow run `42331248942` attempted the issue #1656 read-only review of #1655, but Groq returned HTTP 413: 11,534 requested tokens exceeded the 8,000-token-per-minute limit. The run added a dispatch-attempt label and a failure-status comment. A search for branch `barrot/task-1656` found no branch; no code change, PR, or review comment was created. A deterministic local read-only review was performed instead; no issue comment was posted.
+
+PR #1655 is a draft at head `271e2f383162fbc0463ccad5d53c8f1f947fbcf3`, 17 commits ahead of main and 534 behind the current #1640 integration branch, with eight changed files. Its exact-head full suite passed 740 tests and 8 subtests; its fail-closed gate passed. These results do not make the draft ready.
+
+Findings:
+
+1. The #1655 structural-analysis core is older than the #1640 version. It lacks #1640's recursive freezing of invariant/provenance data, treats an empty constraint set as `valid` instead of `unresolved`, and lacks #1640's tolerance-aware duplicate-invariant matching. Do not merge its core over #1640. The source-catalog README and manifest are unique and explicitly say metadata-only/not acquired; preserve them for later selective integration.
+2. The unique #1655 bundle-engineering change does not enforce the stated explicit-human-approval rule. Its deterministic gate accepts any constraint containing one of the words `approval`, `authorize`, `human`, or `permission`; the existing “Require human authorization” sample therefore passes even though the task says authorization alone is not explicit human approval.
+3. The new destructive-recovery detector can suppress an unsafe command whenever a negation word appears earlier in the same sentence. “Do not forget to run git reset --hard” is a false-negative pattern. It also misses common aliases such as `git push -f` and `git checkout -- .`. This is not fail-closed and must be hardened before that unique bundle-engineering code is integrated.
+4. The #1640 structural kernel itself allowed a relation to be marked VERIFIED without a recorded independent method, criterion and witness. The current integration branch adds a `method` field and rejects VERIFIED relations unless all three evidence fields are non-empty; a regression test covers the missing-field cases.
+
+No changes were made to #1655, no branch was created, no PR was created, and no review was posted. Preserve #1655 as unique/unreviewed for its catalog files and blocked for its bundle gate until the false negatives are corrected. The structural core is superseded by the stronger #1640 implementation.
+
+The fixes in this addendum are committed on the existing #1640 branch only. The new head requires fresh exact-head full-suite, dependency-audit and fail-closed-gate verification before it can be called verified.

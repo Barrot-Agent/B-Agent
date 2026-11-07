@@ -87,6 +87,26 @@ class StructuralRelation:
     witness: str = ""
     evidence_stage: EvidenceStage = EvidenceStage.DERIVED
     verification: VerificationStatus = VerificationStatus.UNVERIFIED
+    method: str = ""
+
+    def __post_init__(self) -> None:
+        for field_name in ("source_id", "target_id", "method", "criterion", "witness"):
+            if not isinstance(getattr(self, field_name), str):
+                raise TypeError(f"{field_name} must be a string")
+        if not self.source_id.strip() or not self.target_id.strip():
+            raise ValueError("source_id and target_id must be non-empty")
+        if not isinstance(self.relation, RelationType):
+            raise TypeError("relation must be a RelationType")
+        if not isinstance(self.evidence_stage, EvidenceStage):
+            raise TypeError("evidence_stage must be an EvidenceStage")
+        if not isinstance(self.verification, VerificationStatus):
+            raise TypeError("verification must be a VerificationStatus")
+        if self.verification is VerificationStatus.VERIFIED and not all(
+            value.strip() for value in (self.method, self.criterion, self.witness)
+        ):
+            raise ValueError(
+                "verified relations require an independent method, criterion, and witness"
+            )
 
 
 @dataclass(frozen=True)

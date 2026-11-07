@@ -149,6 +149,7 @@ jobs:
 
       - name: Save cumulative feature-store cache after successful artifact publication
         if: success() && steps.feature_cache.outputs.cache-hit != 'true'
+        continue-on-error: true
         uses: actions/cache/save@v4
         with:
           path: artifacts/xrp_ingestion/feature_store.sqlite3

@@ -57,6 +57,35 @@ def test_relations_are_explicit_and_typed():
     assert signature.relations[0].relation == RelationType.BOUNDARY_OF
     assert signature.relations[0].verification == VerificationStatus.UNVERIFIED
 
+def test_verified_relations_require_independent_method_criterion_and_witness():
+    incomplete_records = (
+        {},
+        {"criterion": "independent criterion", "witness": "explicit witness"},
+        {"method": "independent method", "witness": "explicit witness"},
+        {"method": "independent method", "criterion": "independent criterion"},
+    )
+    for details in incomplete_records:
+        try:
+            StructuralRelation(
+                "A", "B", RelationType.ISOMORPHIC,
+                verification=VerificationStatus.VERIFIED,
+                **details,
+            )
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("verified relations must require method, criterion, and witness")
+
+    verified = StructuralRelation(
+        "A", "B", RelationType.ISOMORPHIC,
+        method="independent invariant comparison",
+        criterion="the mapped invariants agree under the stated transform",
+        witness="reproducible transform and invariant calculation",
+        verification=VerificationStatus.VERIFIED,
+    )
+    assert verified.method == "independent invariant comparison"
+    assert verified.verification == VerificationStatus.VERIFIED
+
 
 def test_invalid_dimension_rejected():
     try:

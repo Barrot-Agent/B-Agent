@@ -645,6 +645,10 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert workflow.index("Upload immutable raw-source receipts") < workflow.index("Upload per-run point-in-time feature-store checkpoint") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.index("Upload daily point-in-time feature-store backup and walk-forward report") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.count("actions/cache/save@v4") == 1
+    cache_save_step = workflow.split(
+        "      - name: Save cumulative feature-store cache after successful artifact publication", 1
+    )[1].split("\n      - name:", 1)[0]
+    assert "continue-on-error: true" in cache_save_step
     assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" in workflow
     assert "per_page=100&page=${page}" in workflow
     assert 'while [[ "$page" -le 30 && "$restored" != "1" ]]' in workflow
