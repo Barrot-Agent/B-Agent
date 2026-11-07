@@ -4293,3 +4293,164 @@ The 424B3's SBI schedule is 9,431,914 Class A and 2,359,038 Class C, 21.4% Pubco
 The capital evidence remains separated into cash received, cash spent to purchase XRP, XRP contributed in-kind, debt proceeds, related-party borrowings and optional ELOC capacity. None of the note or ELOC proceeds is treated as an XRP purchase without a transaction receipt.
 
 No merge or external action occurred. The next step is exact-head #1640 full-suite verification, then independent approvals and explicit Pages/deployment authorization before any merge.
+
+
+## Run 31 — 2026-11-07T20:49:41Z
+
+### Repository snapshot and integration state
+
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main tree: 1,403 entries / 1,298 files / 493 Python files / 87 `tests/test*.py` modules / 78 workflow YAML files.
+- Open PR inventory: 371 total, 355 drafts and 16 non-drafts.
+- Existing mission branches only; no new branch or PR created.
+- #1640 integration branch before this handoff/test commit: `2d2e140c3bd4d09e20337caa6fc249a73916a63d`; 598 commits ahead, zero behind, 171 changed paths.
+- #1643 research branch: `f8b5f3031e1ae8f6fb19d07157ae732613434af0`; 692 commits ahead, zero behind, 495 changed paths.
+- Recursive trees: #1640 has 1,474 entries / 1,361 files / 543 Python files / 122 test modules / 79 workflows; #1643 has 1,896 entries / 1,790 files / 691 Python files / 285 test modules / 78 workflows.
+- The branches remain divergent. Their only three shared changed paths are the dependency-audit workflow (identical), the Kamilah candidate registry (different content), and its identity-gate test (different content). Preserve the larger 18-reference candidate inventory on #1643.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+
+Pre-handoff head `2d2e140c3bd4d09e20337caa6fc249a73916a63d`:
+
+- Full repository suite: **1,164 passed, 8 subtests passed**.
+- Core suite: **655 passed, 8 subtests passed**.
+- Inclusive coverage: **58.49%**.
+- Six-manifest dependency audit: passed.
+- Fail-closed merge gate: passed and explicitly left merging disabled.
+- Full CI: [42410936090](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410936090).
+- Dependency audit: [42410936139](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410936139).
+- Fail-closed gate: [42410936085](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410936085).
+
+The installed-wheel/primary-mission packaging smoke last passed on the preceding code-bearing head `9b88d40f`; it was not separately rerun on this exact documentation-only head. This handoff commit adds one containment regression assertion; exact-head CI for the new #1640 tip is pending.
+
+**PR #1643 — XRP research**
+
+Exact current head `f8b5f3031e1ae8f6fb19d07157ae732613434af0`:
+
+- Full repository suite: **2,100 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit: passed.
+- Fail-closed merge gate: passed and left merging disabled.
+- Full CI: [42412727463](https://github.com/Barrot-Agent/B-Agent/actions/runs/42412727463).
+- Dependency audit: [42412727428](https://github.com/Barrot-Agent/B-Agent/actions/runs/42412727428).
+- Fail-closed gate: [42412727420](https://github.com/Barrot-Agent/B-Agent/actions/runs/42412727420).
+
+Two intermediate exact-head runs exposed assertion wording mismatches in the new ASK Coin and actual-capital research tests. The assertions were corrected to match the evidence wording; no source evidence or model logic was weakened. The final current head passed the full suite.
+
+### New XRP spot, derivatives and ETF evidence
+
+Append-only artifact: [20261107T203431Z live spot and SBI direct-holder reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T203431Z-xrp-live-spot-and-sbi-direct-holder-reconciliation.json).
+
+Reference clock: 2026-11-07 20:34:31 UTC.
+
+| Metric | Kraken XRP/USD | OKX XRP-USDT |
+|---|---:|---:|
+| Last | 1.15948 USD | 1.1616 USDT |
+| Bid / ask | 1.15915 / 1.15941 | 1.1616 / 1.1617 |
+| Level-1 spread | 2.24277 bps | 0.86084 bps |
+| Rolling 24h volume | 18.181M XRP | 33.933M XRP |
+| 24h open | 1.17749 | 1.1787 |
+| 24h VWAP (Kraken) | 1.16577788 | not supplied |
+
+Kraken supplied no provider event timestamp, so freshness is unknown. OKX's timestamp was 872.139 seconds old at the reference clock, beyond the 300-second limit. Both snapshots are Level-1 only; multi-level executable depth was not captured. The raw 0.18284% cross-venue last-price difference is not an arbitrage signal because USD/USDT is unnormalized, timestamps are not synchronized, and depth, fees and transfer constraints are missing. Both responses are hashed as rendered API response text; raw wire bytes and HTTP headers were not exposed by the retrieval layer. Both observations are excluded from the feature store.
+
+Secondary derivatives providers remain unreconciled: Liqwall reported $1.36B XRP open interest at 04:22 UTC, while TradRadar reported $1.89B at 16:40 UTC across seven exchanges. The snapshots differ in time and incompletely harmonized venue/contract coverage; do not average or splice them. TradRadar's 0.005% eight-hour OI-weighted funding and $7.49M reported liquidations are secondary context, not direct exchange receipts.
+
+Alpha Finance's five-fund dashboard reported zero XRP ETF flow on November 6, +$8.4M over seven sessions, +$45.9M over 30 sessions and $1.73B cumulative net inflows since November 14, 2025. This is a secondary aggregator universe, not issuer-confirmed creations/redemptions, current AUM or issuer-level holdings. It is not model-admitted.
+
+### SBI / Evernorth ownership and capital reconciliation
+
+Primary sources:
+
+- [Evernorth Form 424B3, filed October 30, 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm).
+- [SBI Holdings USA Form 3, filed October 20, 2026; event date October 9](https://www.sec.gov/Archives/edgar/data/2092592/000114036126040302/xslF345X06/form3.xml).
+
+The Form 3 is for SBI Holdings USA, Inc. alone: 6,529,787 directly held Class A shares and 1,633,180 Class C shares. The 1,633,180 underlying Class A shares disclosed for the Class C security are expressly not included in Table I; do not double-count them.
+
+The later 424B3's pro forma-at-closing schedule attributes 9,431,914 Class A and 2,359,038 Class C to the SBI group, representing 21.4% of Pubco Common Stock and 39.9% voting power on that denominator. The four named SBI Stockholders are SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. Voting/dispositive decisions are made by SBI's board after management recommendation, by majority vote; no individual board member acting alone has that power. The 39.9% is not a majority.
+
+Subtracting the one Form 3 reporting person's direct holdings from the group schedule gives arithmetic residuals of 2,902,127 Class A and 725,858 Class C. These residuals are not assigned to any of the other three entities.
+
+The 424B3's advance-funding arithmetic reconciles: 13,028,674 shares comprise 10,669,636 Class A plus 2,359,038 Class C. The 1,237,722 Class A difference between total advance-funding Class A and the SBI group Class A, plus 1,078,613 delayed-funding Class A shares, equals the 2,316,335 Other Advance and Delayed Funding Subscribers row. This resolves the apparent total-versus-SBI subscriber difference.
+
+A separate October 9 8-K versus October 30 424B3 class-allocation shift of 546,621 shares (Class A up, Class C down, aggregate unchanged at 11,790,952) remains unresolved. The 424B3 describes the 39.9% cap and Class C excess-allocation mechanism, but no exact transfer/conversion bridge or effective date was located. Preserve both dated schedules. SBI's disclosed Evernorth position is indirect equity/voting exposure, not proof of direct SBI XRP-token ownership or an incremental XRP purchase.
+
+### Kamilah / Camilla Stevenson video identity research
+
+New research artifacts:
+
+- [Kamilah public-video identity reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T203431Z-kamilah-stevenson-public-video-identity-reconciliation.json).
+- [Timestamp-only correction](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T204153Z-kamilah-stevenson-video-capture-window-correction.json).
+
+The All Nations Chicago first-party leadership page verifies Dr. Kamilah Stevenson as a pastor and public health/healthy-living advocate. One public video remains verified: TEDx Talks, “Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek,” video ID `VSgeDgOCexs`, published May 18, 2018.
+
+“The Study of Job | Dr. Kamilah Stevenson,” video ID `E-jdY7gy7mQ`, is retained as a candidate only: the channel label is All Nations Chicago and the first-party site verifies the person's organizational role, but the YouTube page could not be opened, the description is absent, and no direct first-party channel link was found. It is not counted as a verified appearance. The `@drkamilahstevenson` finance/crypto channel remains an unverified namesake/impersonation risk; no personal YouTube channel is verified. No independent Camilla Stevenson identity was established. The capture-time correction changes only the timestamp semantics; the source excerpts and attribution decisions are unchanged.
+
+Exact-phrase status: current ASK Coin searches establish no new XRP relationship; Permission Coin's ASK token remains distinct. “Actual capital” commentary remains secondary; optional ELOC capacity is not cash received or XRP purchased. Tokyo SBIC's official ChatGPT training notice is a training course, not an OpenAI partnership.
+
+### Japan SBIC identity and institutional network
+
+Primary corporate pages identify three distinct regional companies created in 1963 under Japan's Small and Medium Business Investment & Consultation Company Act (Act No. 101 of 1963):
+
+- Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — SBIC East Japan; corporate number 9011001030621. [Official profile](https://www.sbic.co.jp/company/profile/).
+- Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — SBIC Central Japan. [Official profile](https://www.sbic-cj.co.jp/company/about/).
+- Osaka Small and Medium Business Investment & Consultation Co., Ltd. — SBIC West Japan. [Official profile](https://www.sbic-wj.co.jp/profiles/profile/).
+- [Japanese statute on e-Gov](https://laws.e-gov.go.jp/law/338AC0000000101).
+
+These are not SBI Holdings. Tokyo SBIC's ChatGPT course is training activity only.
+
+Coinbase's Q3 SEC filing reports $306.905M quarterly stablecoin revenue, $8.616B USDC in Coinbase assets on platform and $376.645B total assets on platform. Coinbase says it renewed its Circle arrangement on the same terms. Circle's Q3 SEC filing reports $73.264B average USDC circulation, $73.879B at quarter-end, $13.868B USDC on platform and $331.3M distribution costs in connection with Coinbase agreements. Circle's filing explains that Coinbase receives allocations based on USDC held on its platform plus a share of broader ecosystem growth after approved third-party participants. The $331.3M is not necessarily all Coinbase revenue and must not be netted against Coinbase's $306.905M stablecoin revenue; the measures have different accounting scopes. [Coinbase Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm) · [Circle Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+Ripple/Coinbase RLUSD distribution spans Coinbase Prime, Exchange and retail, with XRPL, Base and Ethereum rails; Ripple announced liquidity provision on Base. Standard Custody & Trust Company remains the RLUSD issuer; Ripple National Trust Bank is a separate entity. SBI's Circle/Arc investments, RLUSD and USDC distribution through SBI VC Trade, and JPYSC/Startale initiatives establish a multi-rail strategy, not exclusive XRP commitment. Coinbase XRP collateral eligibility is distinct from RLUSD collateral availability; no XRP-specific collateral balances were disclosed.
+
+### Prediction-engine status — DESIGNED / EXECUTED / VERIFIED
+
+**DESIGNED:** #1640 contains scheduled hourly and daily public ingestion, 27 registered endpoint records (25 scheduled public feeds and two noncommercial XRPL node sources excluded from scheduled collection), read-only repository permissions, raw-source receipts with hashes and a receipt chain, point-in-time SQLite feature storage, quality/freshness gates, event and contradiction records, four deterministic baselines (naive prior, momentum, mean reversion and volatility), chronological walk-forward evaluation with a purge/embargo boundary, temporal temperature scaling (minimum 50 eligible samples, 20% temporal validation and at least 0.005 log-loss improvement), univariate PSI feature drift, and a fail-closed forecast ledger requiring verified snapshots and an independent signed evaluator attestation.
+
+**EXECUTED:** Public exchange and SEC evidence was captured into append-only research artifacts; exact-head full suites, dependency audits and fail-closed gates were run on both existing PR branches.
+
+**VERIFIED:** Both PR heads listed above passed their exact-head full-suite and security-gate checks. The four baseline definitions and calibration thresholds are present in current code. The ingestion workflow is read-only and artifact-oriented on #1640.
+
+**NOT VERIFIED / NOT EXECUTED:** The scheduled ingestion workflow is not on main and has not run on main. GitHub artifact retention is 90 days for raw/daily archives and seven days for per-run checkpoints; independent external WORM storage is not established. Feature drift is univariate PSI; concept/label drift is not yet demonstrated. There is no mature synchronized historical multi-venue dataset, no trained XRP model with measured out-of-sample lift, no validated real-data probability calibration and no sufficient independent shadow outcomes.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, shadow/paper trade, real-money action or external model data transfer occurred.
+
+### Main-branch workflow side effects and safety
+
+Recent main-branch workflow evidence:
+
+- Cross Analysis run [42408240965](https://github.com/Barrot-Agent/B-Agent/actions/runs/42408240965) succeeded; it is read-only.
+- Barrot Agent runs [42388663091](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388663091) and [42388645777](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388645777) failed on Groq HTTP 413/429. Both attempts touched issue #1658's `barrot-dispatch-attempted` label; the expected `barrot/task-1658` branch does not exist and no PR was created.
+- Pillars Consistency Check [42375034124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42375034124) failed because GitHub App credentials were unavailable, Databricks returned HTTP 403 and the Hugging Face Space reported `BUILD_ERROR`; no deployment or secret change was performed.
+
+Main still has legacy active/manual workflows. #1640 contains containment or exact-main-SHA gates for the Barrot Agent, Ask Barrot, Coinbase Paper Trader, Self-Upgrade, Databricks Bundle, Hugging Face sync, Barrot Ops and creative writers, including `write-lyrics.yml`. The main `write-lyrics` workflow can write generated lyrics/logs directly to main; the #1640 version quarantines it. This commit adds that workflow to the automated quarantine regression list.
+
+The manual `barrot-approve-pr` workflow applies an `approved` label only; it does not create a GitHub `APPROVED` review and is not counted as an independent approval. The scheduled XRP ingestion workflow is not on main.
+
+### Backlog classification
+
+- **Active integration:** #1640 V3 foundation; #1643 XRP research. Both remain the only active mission candidates.
+- **Superseded/path-contained pending main verification:** #1642 (7/7 paths), #1644 (8/8), #1645 (1/1), #1646 (1/1), #1647 (6/6), #1648 (1/1), #1649 (1/1), #1650 (1/1), #1317 (6/6), #1318 (2/2), #1320 (5/5). The current #1640 branch includes the applicable dependency/action updates; workflows made inert by quarantine are superseded by containment rather than by executing their old actions.
+- **Blocked:** #1653, eight unresolved review threads; six unique paths preserved.
+- **Unique/unreviewed:** #1655 draft, five unique paths; #1641 draft; #1269, eight unique mesh-topology paths; #1477, 77 unique research paths; #1597 and #1591 retain unique research paths. Preserve these.
+- **Older superseded dependency candidates:** #1254 and #1255; do not close before successor verification on main.
+- No PR was closed or bulk-closed.
+
+### Merge decision and blockers
+
+#1640 has 22/22 inline review threads resolved; #1643 has 19/19. Both have zero GitHub `APPROVED` reviews and ten `COMMENTED` review records each. COMMENTED is not approval. #1653 remains blocked with eight unresolved threads.
+
+Main's `.github/CODEOWNERS` assigns `*` only to `@Barrot-Agent`. The checked collaborator account `Scribedpengenius` has read permission. Repository metadata reports admin access for the current connector, but the branch-protection details endpoint still returns HTTP 403. The visible fallback ruleset is disabled. GitHub Pages is enabled but its configuration is inaccessible; a prior main push triggered a Pages deployment. A merge could therefore trigger an external Pages build/deployment.
+
+**No merge was performed.** No branch-protection bypass, main-branch write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred. The current #1640 handoff/test commit will require its own exact-head CI; the pre-handoff head passed as recorded above.
+
+### Next concrete actions
+
+1. Verify exact-head full-suite CI, dependency audit and fail-closed gate on the new #1640 handoff/test tip.
+2. Obtain an independent approving review from a reviewer with write permission and resolve Pages deployment authorization through an authorized repository-admin path.
+3. Merge #1640 only after every required condition passes; verify the merge commit, merged files, automatic workflow effects and main CI.
+4. Consolidate #1643's unique research onto the verified new main, preserving the three shared-path decisions and all evidence receipts.
+5. Close only exact superseded PRs after successor content is verified on main.
+6. Verify the first scheduled ingestion run on main; build synchronized historical data and demonstrate out-of-sample lift, calibration and drift stability before any directional forecast.

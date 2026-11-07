@@ -72,3 +72,19 @@ def test_run28_market_and_institutional_evidence_remains_preserved_as_prior_run(
     assert "does not establish a direct SBI-Coinbase XRP partnership" in network["sbi_circle_arc"]
     assert "XRP-specific collateral balances" in network["coinbase_collateral"]
     assert "not disclosed" in network["coinbase_collateral"]
+
+
+def test_run31_handoff_records_exact_heads_market_and_sbi_reconciliation():
+    handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
+    assert "## Run 31 — 2026-11-07T20:49:41Z" in handoff
+    assert "9100dbacb5f9f1b973b053a65ef1e91e96b64f72" in handoff
+    assert "2d2e140c3bd4d09e20337caa6fc249a73916a63d" in handoff
+    assert "f8b5f3031e1ae8f6fb19d07157ae732613434af0" in handoff
+    assert "1,164 passed, 8 subtests passed" in handoff
+    assert "2,100 passed, 8 subtests passed" in handoff
+    assert "6,529,787" in handoff
+    assert "1,633,180" in handoff
+    assert "546,621" in handoff
+    assert "E-jdY7gy7mQ" in handoff
+    assert "NOT_ISSUED" in handoff
+    assert "No merge was performed" in handoff

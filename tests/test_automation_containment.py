@@ -26,6 +26,7 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/pingpong.yml",
     ".github/workflows/task-allocator.yml",
     ".github/workflows/ask-barrot.yml",
+    ".github/workflows/write-lyrics.yml",
     ".github/workflows/barrot-agent.yml",
     ".github/workflows/signal_ledger.yml",
     ".github/workflows/knowledge-signal-cycle.yml",
