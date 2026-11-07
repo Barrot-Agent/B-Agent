@@ -88,7 +88,7 @@ def test_debt_is_separate_from_equity_and_potential_cash_settlement():
     assert note["purchaser"].startswith("NH Investment & Securities")
     assert facility["borrower"] == "Pathfinder Digital Assets LLC"
     assert facility["lender"] == "Ripple"
-    assert facility["borrowed_as_of_2026_10_07_usd"] == 9700000
+    assert facility["drawn_as_of_2026_10_07_usd"] == 9700000
     assert facility["repayment_terms"].startswith("Five business days")
     assert facility["post_closing_repayment_status"] == "UNRESOLVED_NO_REPAYMENT_CONFIRMATION_LOCATED"
     assert debt["ripple_evernorth_facility"]["borrowed_as_of_2026_06_30_usd"] == 0
@@ -108,7 +108,7 @@ def test_sbi_holdings_identity_and_evernorth_ownership_are_primary_source_resolv
     assert sbi["total_common_ownership_pct"] == 21.4
     assert sbi["voting_power_pct"] == 39.9
     assert sbi["exact_cash_contribution_usd"] == "NOT_ISOLATED_IN_REVIEWED_FILING"
-    assert "not SBIC" in load()["ownership_and_relationships"]["sbic_distinction"]["distinction"]
+    assert "distinct from SBI Holdings" in load()["ownership_and_relationships"]["sbic_distinction"]["distinction"]
 
 
 def test_ripple_and_sponsor_xrp_contributions_are_in_kind_not_cash():
