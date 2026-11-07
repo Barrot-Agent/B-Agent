@@ -54,7 +54,7 @@ def test_exact_phrase_research_does_not_create_unsupported_relationships() -> No
     data = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     exact = data["exact_phrase_research"]
     assert "did not establish a new XRP relationship" in exact["ask_coin"]
-    assert "not treated as cash raised" in exact["actual_capital"]
+    assert "no capacity figure is treated as cash raised" in exact["actual_capital"]
     assert "not an OpenAI partnership" in exact["sbic_chatgpt"]
     assert data["model_admission"]["admitted"] is False
     assert data["model_admission"]["forecast_status"] == "NOT_ISSUED"
