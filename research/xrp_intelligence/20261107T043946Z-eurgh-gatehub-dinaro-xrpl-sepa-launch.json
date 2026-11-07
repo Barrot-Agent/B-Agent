@@ -152,6 +152,26 @@
         "These are payment-account/SEPA programme fees, distinct from the token issuance, redemption and transfer fees listed as free in the launch announcement.",
         "Network, third-party bank, FX and GateHub product charges may be separate."
       ]
+    },
+    {
+      "source_id": "xahau_official_whitepaper_network_token",
+      "publisher": "Xahau Network documentation",
+      "source_class": "primary_network_documentation",
+      "independence_group": "xahau_official",
+      "source_url": "https://xahau.network/docs/resources/whitepaper/",
+      "retrieved_date": "2026-11-07",
+      "normalized_excerpt": "The Xahau Ledger (Xahau) is the smart-contract sidechain for the XRPL ecosystem and a fork of the XRP Ledger's open-source rippled codebase. Xahau's native token is XAH; transaction fees and account reserves are charged in XAH.",
+      "excerpt_sha256": "8112735aad93c1fba4f7d3b3d126f608305af2ee40960277c5099d19be6e1713",
+      "parsed": {
+        "relationship_to_xrpl": "smart-contract sidechain and rippled-code fork",
+        "native_token": "XAH",
+        "transaction_fee_asset": "XAH",
+        "account_reserve_asset": "XAH"
+      },
+      "limitations": [
+        "Project-authored network documentation; it does not independently measure EURGH deployment, supply, usage or liquidity.",
+        "Xahau ledger state and balances must be verified separately from XRPL."
+      ]
     }
   ],
   "whitepaper_access": {
@@ -171,9 +191,13 @@
     "xahau_is_a_separate_ledger_from_xrpl": true,
     "explicit_xrp_bridge_asset_requirement_in_gatehub_sepa_flow": "not stated",
     "xrp_market_purchase_or_reserve_commitment": "not disclosed",
-    "xrp_fee_or_reserve_effect": "possible XRPL network activity effect, not quantified",
+    "xrp_fee_or_reserve_effect": "Potential XRP fee/reserve demand is confined to the XRPL deployment; Xahau transaction fees and account reserves use XAH. Neither deployment establishes XRP as the bridge asset for the EUR-to-SEPA flow.",
     "circulation_or_liquidity_data": "not disclosed",
-    "interpretation": "EURGH is a euro-denominated claim against Dinaro, distributed through GateHub and connected to SEPA. XRPL deployment may create ledger activity and ordinary XRP fee/reserve requirements, but the launch does not establish XRP as the bridge asset for the fiat flow or prove incremental XRP market demand."
+    "interpretation": "EURGH is a euro-denominated claim against Dinaro, distributed through GateHub and connected to SEPA. XRPL deployment may create ordinary XRP fee/reserve use, but Xahau uses XAH, not XRP. The launch does not establish XRP as the bridge asset for the fiat flow or prove incremental XRP market demand.",
+    "xrpl_native_fee_asset": "XRP",
+    "xahau_native_fee_asset": "XAH",
+    "xahau_native_token_is_xah_not_xrp": true,
+    "xahau_is_sidechain_or_fork_of_xrpl": true
   },
   "entity_relationships": [
     {
