@@ -4618,3 +4618,119 @@ Append-only artifact: [direct Kraken/OKX/Binance snapshot](https://github.com/Ba
 ### Next concrete action
 
 Obtain independent approving review and authorized repository-admin confirmation of branch-protection and Pages behavior. Then merge #1640 only when all conditions are satisfied, verify merge commit/files/automatic workflow effects/main CI, and only afterward consolidate #1643's 507 unique paths onto verified main with the stronger #1640 CI. Preserve all unique backlog work.
+
+
+---
+
+## Run 33 — 2026-11-07 23:32 UTC reference — integration, market and ETF vintage update
+
+### Repository state at start of run
+
+- Main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main recursive tree: 1,403 entries, 1,298 files, 493 Python files, 90 test modules and 78 workflow YAML files.
+- Complete open-PR inventory: **371** (355 drafts, 16 non-drafts). No branch or PR was created in this run.
+- Main contains the point-in-time feature validator, SQLite feature store and append-only forecast ledger. It does **not** contain `.github/workflows/xrp-public-ingestion.yml` or the primary mission registry `data/missions/primary_mission.json`; those remain on #1640.
+- Main `pyproject.toml` excludes major packages from coverage (`agi`, `ingestion`, `analysis`, `monetization`, `orchestration`, and other paths). Main `.github/workflows/ci.yml` runs a selected core list and a full-suite job was not present on main. No main-branch workflow named CI was found in the latest 100 Actions runs; do not claim main CI is green.
+- `.github/CODEOWNERS` is `* @Barrot-Agent`. Branch-protection API returns 403. The only visible repository ruleset, ID 10863829, is disabled.
+
+### Exact-head engineering
+
+**#1640 — V3 integration**
+
+Current head: `f3909ca40675133450e18be0a1358483ddde4037`.
+
+- Full repository suite: **1,166 passed, 8 subtests passed**.
+- Core suite: **655 passed, 8 subtests passed**.
+- Inclusive coverage: **58.49%**, above the 53% threshold.
+- Installed wheel built and installed; packaged Barrot V3, the XRP mission and canonical data assets loaded.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed; automatic merging remained disabled.
+- Evidence: [CI 42422001045](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422001045) · [Dependency audit 42422000992](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422000992) · [Fail-closed gate 42422000990](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422000990).
+- The full-suite job warned that GitHub Actions cache storage is read-only because the configured cache budget was reached. Tests and wheel verification still passed. Artifact retention is not independent external WORM storage.
+
+**#1643 — XRP research**
+
+A full-suite failure on head `cb2fda9038b4da798e44b3cb6ee241e594e2985f` was traced to four appended duplicate assertions that called an undefined helper and expected a different schema than the preserved artifact. The original seven tests already covered that artifact's receipts, timestamps, arithmetic, eligibility and no-action boundary. The incompatible duplicate block was removed; no research evidence or validation gate was weakened.
+
+Corrected code/test head `8232be49a259d59414b37a9305b4577ed11277ef` passed:
+- Full repository suite: **2,170 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed.
+- Evidence: [CI 42425828873](https://github.com/Barrot-Agent/B-Agent/actions/runs/42425828873) · [Dependency audit 42425828849](https://github.com/Barrot-Agent/B-Agent/actions/runs/42425828849) · [Fail-closed gate 42425828860](https://github.com/Barrot-Agent/B-Agent/actions/runs/42425828860).
+
+A new market/ETF/derivatives/macro artifact and eight regression tests were then committed to the same existing research branch:
+- Artifact: `research/xrp_intelligence/20261107T233253Z-xrp-market-etf-derivatives-macro-vintage-reconciliation.json`.
+- Tests: `tests/test_xrp_market_etf_derivatives_macro_vintage_reconciliation_20261107.py`.
+- New current head: `89cdcbdc21d774799e36b606e2dd690cde9e89de`.
+- Exact-head CI run 42426133573 and dependency audit 42426133306 are still running; fail-closed gate 42426133356 passed with merging disabled. Do not claim this latest head is fully verified until both running checks complete.
+- The research branch still lacks #1640's inclusive coverage and installed-wheel checks; carry those into any consolidated successor.
+
+### New direct spot and derivatives evidence
+
+Reference clock: 2026-11-07 23:32:53 UTC. The web retrieval layer did not expose an exact per-request client receipt time; the artifact records this limitation.
+
+- Kraken XRP/USD: last $1.15877; bid $1.15874 (85 XRP); ask $1.15877 (1,542 XRP); Level-1 spread 0.2589 bps; rolling 24h volume 17.552M XRP; rolling 24h VWAP $1.16311268; today's open $1.17749. Kraken supplied no provider event timestamp.
+- OKX XRP-USDT: last 1.1605; bid 1.1606 (5,906.729 XRP); ask 1.1607 (1,874.6 XRP); Level-1 spread 0.8616 bps; rolling 24h volume 31.308M XRP. Provider ticker timestamp 23:28:53.572 UTC was 239.428 seconds before the run-clock reference; exact request receipt time was unavailable, so it is conservatively model-ineligible.
+- Raw last-price gap is 0.1493%, not an arbitrage signal: USD and USDT differ, Kraken has no event timestamp, and synchronized multi-level depth, fees, latency and slippage were not captured.
+- Direct Binance futures premium-index retrieval returned HTTP 451. Kraken depth, OKX multi-level books and Coinbase level-2 book endpoints were inaccessible through the web retrieval layer in this run. No depth was imputed.
+
+**Secondary derivatives disagreement**
+
+- TradRadar displayed 22:35 UTC with a 15-minute delay: $1.88B OI across seven exchanges, OI down 1.33%, OI-weighted funding +0.0072% per eight hours, at least $7.15M liquidations across five exchanges ($6.89M long, $261.01K short), and a 3.84 account long/short ratio (79.3% long).
+- Liqwall's 20:02 UTC snapshot reported $1.38B OI (+1.1%), $8.8M liquidations ($8.5M long) and +0.0075% average funding. Its venue universe and timestamp differ; do not average with TradRadar.
+- Alpha Finance's 08:50 UTC heatmap showed $2.78B OI and modeled liquidation clusters. It is stale relative to the later snapshots and explicitly models liquidation levels rather than reporting guaranteed trigger prices.
+- These secondary aggregators may overlap in exchange inputs. Raw venue receipts were not captured; no model feature admitted.
+
+### ETF flow reconciliation and data-quality finding
+
+- Alpha Finance: five-fund flow-only universe through Nov 6; $0 on Nov 6, +$8.4M over seven sessions, +$45.9M over 30 sessions, $1.73B cumulative. Its page says it does not publish fund list, AUM, holdings or fees; cumulative flow is not AUM or XRP holdings.
+- XRP Insights: reports -663,043 XRP (about -$775.8K) on Nov 6 and -812.5K XRP over Nov 2–6. It derives flows from issuer-reported holdings deltas, includes BITW, excludes GXRP from flow totals while retaining its holdings, and notes that BITW rebalancing/fee accrual can affect deltas. Some historical rows are reconstructed.
+- CryptoKeyhole: Nov 6 remained partial at 3 of 4 tracked funds, with Franklin XRPZ missing. Its page also showed a purported issuer file dated Nov 9 but read on Nov 7; the future-dated record is quarantined and missing-fund flow is not treated as zero.
+- The values are not directly contradictory: fund universes, reporting completeness and flow definitions differ. No common issuer-complete creation/redemption reconstruction was performed. No ETF figure admitted as a feature.
+- Reuters' Nov 6 fund-flow report is mixed macro context: global equity funds +$38.63B and bonds +$9.91B for the week through Nov 4, alongside +$172.71B into money-market funds (largest weekly inflow since April 2020). This is not XRP-specific flow.
+
+### Hypotheses preserved — no forecast
+
+1. Risk-off/long deleveraging is plausible from spot below daily/24h opens, XRP Insights' reported outflow and long-dominated liquidations.
+2. Falling OI with long liquidations may indicate forced long reduction, not fresh short initiation.
+3. ETF-flow differences may be explained by universe and holdings-delta methodology rather than a single issuer-flow disagreement.
+4. Macro flows are mixed: equity/bond inflows coexist with unusually large money-market inflows.
+
+Disconfirming evidence and coverage limits are preserved in the artifact. All new observations are event-timeline-only. **Forecast status remains NOT_ISSUED.** No shadow trade, paper trade or real-money action occurred.
+
+### Main workflow and safety status
+
+- Latest scheduled main Cross Analysis succeeded on unchanged main: [42422572803](https://github.com/Barrot-Agent/B-Agent/actions/runs/42422572803), 22:51:51 UTC.
+- Main Barrot Agent issue runs [42388663091](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388663091) and [42388645777](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388645777) failed on Groq HTTP 413/429 token-per-minute limits (8,000 TPM); no repository repair branch or PR was created.
+- Main Pillars Consistency Check [42375034124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42375034124) failed because GitHub App identifiers/private-key configuration were missing and the Hugging Face Space check returned BUILD_ERROR.
+- All 41 workflow files changed by #1640 were inspected. Unsafe issue-driven Barrot/Ask Barrot/self-upgrade, broad sub-agent, legacy knowledge-cycle, free image, unrestricted WebMCP and similar workflows are quarantined with empty permissions or false job conditions. Cross Analysis and monetization enrichment are read-only/artifact-oriented. Coinbase paper simulation is manual and artifact-only. External Databricks/Kaggle, Cloudflare Worker and self-hosted Space operations remain manual workflows requiring confirmation and were not invoked. The existing main A2A deploy workflow has a push trigger only for `a2a/**`; neither mission branch changes those paths. A prior main push triggered public GitHub Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489); Pages configuration remains inaccessible and another merge-triggered public deployment is not authorized.
+
+### Current PR backlog
+
+Open inventory: 371 total, 355 drafts, 16 non-drafts.
+
+- #1640: active V3 integration candidate; exact-head full/core suites, inclusive coverage, wheel verification, dependency audit and fail-closed gate green. 22/22 review threads resolved; zero approving reviews.
+- #1643: active XRP research candidate; prior corrected head green; latest head `89cdcbd` has full CI and dependency audit pending. 19/19 review threads resolved; zero approving reviews.
+- #1653: unique repository knowledge-graph work; blocked by unresolved review threads; preserve.
+- #1644–#1650: Dependabot dependency/action PRs overlapping the versions and workflows represented in #1640; preserve until main verification.
+- #1317, #1318, #1320: represented in #1640; retain until successor verification.
+- #1254/#1255: older dependency versions superseded by newer declarations in #1640; retain until successor verification.
+- #1269: unique OBJ/mesh/triangulation work; preserve.
+- #1642: draft forecast-gate work whose seven paths are represented in #1640; superseded candidate, retain until main verification.
+- #1655: draft structural-analysis/catalog work with unique paths; preserve.
+- #1641: unique experimentation draft; preserve.
+- Remaining drafts: unique/unreviewed until individually reconciled. No bulk closure.
+
+### Merge decision and next action
+
+Both mission PRs remain non-draft/mergeable on their current heads, but neither has an approving review. #1640 has 22/22 resolved threads; #1643 has 19/19. COMMENTED reviews are not approvals. CODEOWNERS names only @Barrot-Agent; detailed branch-protection requirements return HTTP 403; visible ruleset ID 10863829 is disabled. The Pages deployment side effect remains unauthorized.
+
+**No merge was performed.** No protection bypass, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or main-branch write occurred.
+
+Next:
+1. Finish exact-head full CI and dependency audit on #1643 head `89cdcbd`.
+2. Obtain independent approving review and authorized confirmation of branch-protection and Pages behavior.
+3. Merge #1640 only after all requirements are satisfied; verify merge commit, files, workflow effects and main CI.
+4. Only then consolidate #1643's unique research onto verified main, preserving the shared-path decisions and carrying #1640's inclusive coverage and installed-wheel checks.
+5. Verify the first scheduled ingestion on main and accumulate synchronized historical observations before model training or any directional forecast.
