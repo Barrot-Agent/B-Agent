@@ -46,7 +46,8 @@ def test_page_timestamps_are_not_misrepresented_as_exchange_event_times():
     for source in artifact["sources"][:2]:
         assert "page_updated_at_utc" in source
         assert "provider_event_timestamp_utc" not in source
-    assert "not synchronized exchange event timestamps" in artifact["derived_reconciliation"]["interpretation"]
+    assert "Page update times differ by 13 minutes" in artifact["derived_reconciliation"]["interpretation"]
+    assert "not an arbitrage spread" in artifact["derived_reconciliation"]["interpretation"]
 
 
 def test_etf_flow_keeps_its_five_fund_universe():
@@ -55,7 +56,7 @@ def test_etf_flow_keeps_its_five_fund_universe():
     assert alpha["metrics"]["fund_count"] == 5
     assert alpha["metrics"]["nov6_net_flow_usd"] == 0
     assert alpha["metrics"]["last_30_sessions_net_flow_usd"] == 45_900_000
-    assert "does not publish AUM or holdings" in alpha["normalized_excerpt"]
+    assert "does not publish fund AUM or holdings" in alpha["normalized_excerpt"]
 
 
 def test_normalized_excerpt_hashes_are_exact():
