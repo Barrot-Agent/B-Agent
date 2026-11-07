@@ -1,0 +1,282 @@
+{
+  "artifact_type": "xrp_etf_flow_methodology_disagreement_and_custody_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-07T23:05:26Z",
+  "data_as_of": "2026-11-06",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "summary": {
+    "verified_primary_fact": "Bitwise's issuer page reported 415,365,129.04 XRP in trust as of 2026-11-05 and identifies Coinbase Custody Trust Co., LLC as digital asset custodian; Bank of New York Mellon is administrator and trust custodian.",
+    "aggregator_fact": "XRP Insights reported 1,195,787,657 XRP across six US spot XRP ETFs plus BITW as of 2026-11-06; the six spot funds alone were reported at about 1.17 billion XRP.",
+    "flow_fact": "XRP Insights' holdings-delta methodology reported -663,043 XRP for 2026-11-06, +110,214 XRP for 2026-11-05 and -812,529 XRP for 2026-11-02 through 2026-11-06.",
+    "conclusion": "ETF holdings are a stock measure; XRP Insights' daily flow is a computed change in issuer-reported holdings, not a direct issuer creation/redemption report. The reported zero-flow and negative-holdings-delta observations are not comparable until fund universe, BITW treatment, GXRP gaps, fees, rebalancing and settlement vintages are reconciled."
+  },
+  "sources": [
+    {
+      "source_id": "xrp_insights_daily_flows_json",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "source_class": "secondary_aggregator_with_issuer_page_inputs",
+      "publisher": "XRP Insights",
+      "generated_at_utc": "2026-11-07T22:11:05.545Z",
+      "data_as_of": "2026-11-06",
+      "coverage": {
+        "first_date": "2025-12-01",
+        "last_date": "2026-11-06",
+        "trading_days": 231,
+        "rows": 1597,
+        "funds": [
+          "XRPC",
+          "XRP",
+          "XRPR",
+          "XRPZ",
+          "GXRP",
+          "TOXR",
+          "BITW"
+        ]
+      },
+      "methodology": {
+        "flow_definition": "Change in issuer-reported XRP holdings versus the previous trading day.",
+        "universe": "Six US spot XRP ETFs plus the XRP sleeve of Bitwise 10 Crypto Index Fund (BITW).",
+        "excluded_flow_series": [
+          "GXRP, because an issuer-page capture gap caused a frozen series and a later catch-up."
+        ],
+        "non_creation_changes_counted": [
+          "BITW index rebalancing",
+          "XRP-denominated fee accruals"
+        ],
+        "reconstructed_periods": [
+          "2026-03-23 through 2026-03-27",
+          "2026-03-31 through 2026-04-29",
+          "2026-05-12"
+        ],
+        "settlement": "Issuer holdings may publish overnight or a day later; the latest session can be re-settled the following morning."
+      },
+      "normalized_excerpt_text": "XRP Insights daily flow = change in issuer-reported XRP holdings versus previous trading day; includes 6 US spot XRP ETFs plus BITW; GXRP flows excluded due capture gap; BITW index rebalancing and fee accruals can be counted as flow; reconstructed rows exist for specified historical gaps; data_as_of 2026-11-06.",
+      "normalized_excerpt_sha256": "9ff279455c29d3a70c2ee1f20044e552e765b0deddd3b9f68d124a0b64b01393",
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_JSON_METADATA_AND_METHODOLOGY_ONLY; RAW_RESPONSE_BYTES_NOT_AVAILABLE"
+    },
+    {
+      "source_id": "xrp_insights_daily_totals_json",
+      "url": "https://xrp-insights.com/data/xrp-etf-totals.json",
+      "source_class": "secondary_aggregator_with_issuer_page_inputs",
+      "publisher": "XRP Insights",
+      "generated_at_utc": "2026-11-07T22:27:13.380Z",
+      "data_as_of": "2026-11-06",
+      "reported_values": {
+        "total_xrp_holdings": 1195787657,
+        "nov_6_net_flow_xrp": -663043,
+        "nov_5_net_flow_xrp": 110214,
+        "nov_2_to_nov_6_net_flow_xrp": -812529,
+        "six_spot_funds_holdings_approx_xrp": 1170000000,
+        "six_spot_funds_net_assets_approx_usd": 1400000000,
+        "six_spot_funds_plus_bitw_net_assets_approx_usd": 1430000000
+      },
+      "normalized_excerpt_text": "XRP Insights data_as_of 2026-11-06: total XRP holdings 1,195,787,657; Nov 6 net flow -663,043 XRP; Nov 5 +110,214 XRP; week Nov 2-6 -812,529 XRP; 6 spot funds alone 1.17B XRP and $1.40B net assets; 6 spot plus BITW $1.43B net assets.",
+      "normalized_excerpt_sha256": "a4574bcdc33c7f370120b277fb949346740dab282918a8fb936aa8c36746060e",
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_JSON_METADATA_ONLY; ROW_PAYLOAD_NOT_AVAILABLE_TO_RAW_CAPTURE"
+    },
+    {
+      "source_id": "bitwise_xrp_etf_issuer_page",
+      "url": "https://bitxrpetf.com/",
+      "source_class": "primary_issuer_source",
+      "publisher": "Bitwise",
+      "data_as_of": "2026-11-05",
+      "reported_values": {
+        "xrp_in_trust": 415365129.04,
+        "market_value_usd": 488726918.14,
+        "net_assets_usd": 488684299,
+        "shares_outstanding": 37210000,
+        "expense_ratio": 0.0034
+      },
+      "relationships": {
+        "digital_asset_custodian": "Coinbase Custody Trust Co., LLC",
+        "administrator": "Bank of New York Mellon",
+        "trust_custodian": "Bank of New York Mellon"
+      },
+      "normalized_excerpt_text": "Bitwise XRP ETF holdings data as of 11/05/2026: XRP in Trust 415,365,129.04; Market Value $488,726,918.14; AUM $488,684,299; Digital Asset Custodian Coinbase Custody Trust Co., LLC; Administrator and Trust Custodian Bank of New York Mellon.",
+      "normalized_excerpt_sha256": "c70af3666b0d31ddf496c78d2467c322916480e37d01f1a71bad9c37296d63c7",
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_ISSUER_PAGE; RAW_HTML_BYTES_NOT_AVAILABLE",
+      "notes": [
+        "The issuer page reports market value and net assets separately; do not force them to match.",
+        "This is one fund's custody disclosure, not evidence that Coinbase Custody holds every XRP ETF's assets or that Coinbase Exchange bought the XRP."
+      ]
+    },
+    {
+      "source_id": "altcoinbuzz_xrp_etf_anniversary_analysis",
+      "url": "https://www.altcoinbuzz.io/xrp-etfs-hold-1-20b-tokens-did-the-price-lead-the-flows",
+      "source_class": "secondary_reporting_derived_from_xrp_insights_and_sosovalue",
+      "publisher": "Altcoin Buzz",
+      "published_at": "2026-11-07",
+      "reported_values": {
+        "xrp_holdings_millions": 1196.54,
+        "net_assets_usd": 1470410000,
+        "nov_5_reported_net_flow_usd": 110214,
+        "cumulative_net_inflows_usd_as_of_2026_10_30": 1810000000,
+        "net_assets_usd_as_of_2026_10_30": 1420000000
+      },
+      "source_lineage": [
+        "XRP Insights tracker for issuer-level holdings and Nov 5 XRP-denominated flow",
+        "SoSoValue-based reporting for cumulative dollar inflows"
+      ],
+      "normalized_excerpt_text": "AltcoinBuzz, 2026-11-07: reports 1,196.54M XRP and $1,470.41M net assets based on XRP Insights tracker through 2026-11-05; reports Nov 5 +$110,214 flow; notes SoSoValue flow page inaccessible due bot check and aggregate figures do not reconcile cleanly.",
+      "normalized_excerpt_sha256": "5f97561d54205169e3a5e9321d06c27fb59fecf9ffb2f2e9ae2bff918d0b7c9c",
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_ARTICLE; RAW_HTML_BYTES_NOT_AVAILABLE",
+      "limitations": [
+        "The article explicitly says SoSoValue's flow page was inaccessible behind a bot check.",
+        "The $1.47041B group net-assets figure is not reconciled to the tracker page's $1.43B Nov 6 close figure or the live $1.40723B dashboard figure.",
+        "Altcoin Buzz is not an independent confirmation of XRP Insights values."
+      ]
+    },
+    {
+      "source_id": "theblock_crypto_etf_flow_report",
+      "url": "https://www.theblock.co/news/markets/2026-11-06-crypto-etfs-see-over-half-a-billion-dollars-in-outflows-amid-post-midterm-market-slide-435873",
+      "source_class": "secondary_reporting_using_sosovalue_and_the_block_compilation",
+      "publisher": "The Block",
+      "published_at": "2026-11-06T07:33:00-05:00",
+      "reported_claims": {
+        "combined_us_spot_crypto_etf_outflows_usd_gt": 540000000,
+        "xrp_etf_flow": "zero for Thursday 2026-11-05"
+      },
+      "source_lineage": [
+        "The Block compilation",
+        "SoSoValue for some non-Bitcoin ETF flow figures"
+      ],
+      "normalized_excerpt_text": "The Block, 2026-11-06 07:33 EST: US spot crypto ETFs had over $540M combined outflows; XRP ETFs reported zero flows for Thursday, according to data compiled by The Block / SoSoValue.",
+      "normalized_excerpt_sha256": "312ed11a358dd54a24f32797e20e92085a499a26b87f75c1c0be10ff05ef4568",
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_ARTICLE; RAW_HTML_BYTES_NOT_AVAILABLE",
+      "limitations": [
+        "The article's XRP zero-flow figure is not reconciled to XRP Insights' holdings-delta method.",
+        "The broad crypto ETF outflow is not an XRP-specific flow and must not be assigned to XRP."
+      ]
+    },
+    {
+      "source_id": "cryptoticker_xrp_derivatives_and_etf_commentary",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-long-squeeze-1-15-november-7-2026/",
+      "source_class": "secondary_reporting_using_okx_coinglass_and_sosovalue",
+      "publisher": "CryptoTicker",
+      "published_at": "2026-11-07",
+      "reported_claims": {
+        "xrp_etf_claim": "No new money since 2026-10-29, attributed to SoSoValue via CoinGape",
+        "coinglass_xrp_liquidations_nov_6_usd": 16750000,
+        "coinglass_xrp_long_liquidations_nov_6_usd": 16010000,
+        "okx_open_interest_usd": {
+          "2026-11-04": 132100000,
+          "2026-11-05": 122400000,
+          "2026-11-06": 117100000
+        },
+        "okx_long_short_account_ratio": {
+          "2026-11-03": 2.71,
+          "2026-11-04": 3.77,
+          "2026-11-05": 4.07,
+          "2026-11-06": 4.2,
+          "2026-11-07": 4.3
+        },
+        "okx_funding_rate_approx_per_8h": 0.00008
+      },
+      "source_lineage": [
+        "CoinGlass liquidation totals via U.Today",
+        "OKX daily futures data as reported by CryptoTicker",
+        "SoSoValue ETF-flow claim via CoinGape"
+      ],
+      "normalized_excerpt_text": "CryptoTicker, 2026-11-07: says XRP spot ETFs had no inflows since 2026-10-29; cites SoSoValue via CoinGape; reports XRP long liquidations $16.75M via CoinGlass and OKX open interest $132.1M Nov 4, $122.4M Nov 5, $117.1M Nov 6.",
+      "normalized_excerpt_sha256": "f556fa3edd01554901238bbd986587d7569a6f3941d92a57c21ce9d59d3e17ea",
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_ARTICLE; RAW_HTML_BYTES_NOT_AVAILABLE",
+      "limitations": [
+        "The ETF statement is not a primary issuer flow report.",
+        "The liquidation total and OKX metrics are secondary summaries; no synchronized raw exchange receipt was captured in this research artifact."
+      ]
+    }
+  ],
+  "source_independence": {
+    "primary_independent_anchor": [
+      "Bitwise issuer page confirms Bitwise holdings and its named custodian."
+    ],
+    "xrp_insights_group": [
+      "XRP Insights daily holdings/flow files and dashboard share one publisher and one methodology."
+    ],
+    "sosovalue_group": [
+      "The Block and CryptoTicker/CoinGape rely on SoSoValue for ETF flow claims; do not count them as independent confirmations."
+    ],
+    "derived_republication_group": [
+      "Altcoin Buzz's Nov 7 ETF article explicitly relies on XRP Insights for holdings/flows; it is not an independent second source for those figures."
+    ],
+    "independent_confirmation_status": "No same-universe, same-definition, issuer-by-issuer daily creation/redemption table was independently reconciled across all seven positions."
+  },
+  "disagreement_register": [
+    {
+      "claim": "2026-11-06 XRP ETF flow",
+      "observation_a": "XRP Insights reports -663,043 XRP from daily issuer-holdings changes across six spot ETFs plus BITW, with GXRP flow excluded.",
+      "observation_b": "The Block reports zero XRP ETF flow for 2026-11-05 using its compilation/SoSoValue.",
+      "status": "UNRESOLVED_NOT_COMPARABLE",
+      "explanation": "Different data vintages, source lineage and fund universes may apply. XRP Insights includes BITW, excludes GXRP from flow totals and counts any holdings change, including BITW rebalancing and XRP-paid fees. The Block's zero is based on a different aggregator/compilation. Neither is a direct issuer creation/redemption file."
+    },
+    {
+      "claim": "New XRP ETF inflows after 2026-10-29",
+      "observation_a": "XRP Insights reports +110,214 XRP holdings change on 2026-11-05.",
+      "observation_b": "CryptoTicker says no new money since 2026-10-29 based on SoSoValue via CoinGape.",
+      "status": "UNRESOLVED_DIFFERENT_METHODS",
+      "explanation": "The tracker measures issuer-reported holdings deltas in XRP; CryptoTicker cites a separate dollar-flow feed. SoSoValue's direct flow page was not readable in this research pass."
+    },
+    {
+      "claim": "Group net assets",
+      "observation_a": "XRP Insights reports approximately $1.43B on 2026-11-06 close for six spot funds plus BITW; live dashboard value was approximately $1.407B at its later displayed XRP price.",
+      "observation_b": "Altcoin Buzz reports $1.47041B for 1,196.54M XRP using an earlier tracker reading through 2026-11-05.",
+      "status": "UNRESOLVED_VINTAGE_AND_VALUATION",
+      "explanation": "Different capture vintages and possible inclusion/valuation differences are not bridged. The Altcoin Buzz article itself warns that group dollar figures do not reconcile cleanly. Do not average these values."
+    },
+    {
+      "claim": "Cumulative net inflows versus current net assets",
+      "observation_a": "Altcoin Buzz reports $1.81B cumulative net inflows and about $1.42B net assets for 2026-10-30.",
+      "observation_b": "These figures are not the same accounting quantity.",
+      "status": "NOT_A_CONTRADICTION",
+      "explanation": "Cumulative cash/share creation flows and current marked holdings differ when XRP price changes, when fees accrue, and when fund universes differ."
+    }
+  ],
+  "institutional_relationships": [
+    {
+      "subject": "Bitwise XRP ETF",
+      "predicate": "digital_asset_custody_by",
+      "object": "Coinbase Custody Trust Co., LLC",
+      "evidence_source": "Bitwise issuer page",
+      "evidence_as_of": "2026-11-05",
+      "status": "PRIMARY_SOURCE_CONFIRMED",
+      "scope_limit": "This confirms one fund's named digital-asset custodian; it does not prove Coinbase Exchange purchased XRP, Coinbase holds XRP collateral for all customers, or Coinbase Custody serves every XRP ETF."
+    },
+    {
+      "subject": "Bitwise XRP ETF",
+      "predicate": "administrator_and_trust_custodian",
+      "object": "Bank of New York Mellon",
+      "evidence_source": "Bitwise issuer page",
+      "evidence_as_of": "2026-11-05",
+      "status": "PRIMARY_SOURCE_CONFIRMED"
+    }
+  ],
+  "counter_hypotheses": [
+    "Large ETF holdings are a stock, not a flow; they do not prove fresh capital arrived on the latest trading day.",
+    "XRP ETF accumulation can coexist with a falling XRP price if the demand is small relative to broader spot supply, derivatives deleveraging, macro risk-off or other sellers.",
+    "A holdings-delta outflow can reflect index rebalancing or XRP-paid fees, especially for BITW, rather than investor redemptions.",
+    "The zero-flow and negative-holdings-delta reports may both be internally correct under different universes and definitions.",
+    "Secondary ETF headlines do not establish that ETF buying caused, prevented or led XRP price moves."
+  ],
+  "feature_admission": {
+    "model_feature_eligible": false,
+    "event_timeline_eligible": true,
+    "reason": "Research-only secondary-flow reconciliation. Raw source bytes and SHA-256 receipts were not available through the rendered web retrieval; source definitions and vintages differ; GXRP flow gaps and BITW rebalancing/fees complicate attribution; no synchronized issuer-level creation/redemption series was verified."
+  },
+  "raw_capture_policy": {
+    "raw_source_sha256": null,
+    "raw_capture_status": "NOT_CAPTURED",
+    "normalized_excerpt_hashes_are_not_raw_source_hashes": true,
+    "normalized_excerpt_hash_algorithm": "SHA-256 over the normalized excerpt text embedded in each source record",
+    "no_raw_source_hash_claim": true
+  },
+  "forecast_status": "NOT_ISSUED",
+  "no_paper_trade": true,
+  "no_real_money_action": true
+}
