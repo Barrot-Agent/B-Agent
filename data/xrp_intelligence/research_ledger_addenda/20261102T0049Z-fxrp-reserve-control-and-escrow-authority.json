@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-02T00:49:00.789Z",
+  "topic": "FXRP reserve-control architecture, escrow conditions, supply history and XRPL.to data-use constraints",
+  "sources": [
+    {
+      "url": "https://flareforge.io/api/fxrp.json",
+      "type": "current_public_api_snapshot",
+      "generated_at_utc": "2026-11-02T00:27:21Z",
+      "supports": "Current supply, backing, Core Vault, six agents, escrow count and holder concentrations."
+    },
+    {
+      "url": "https://xrpl.to/insights/fxrp-backing-nine-xrpl-addresses",
+      "type": "third_party_fixed_ledger_analysis",
+      "measurement_date": "2026-08-30",
+      "supports": "Nine reserve/fee/custodian addresses, shared Core Vault, six agents, escrow recipients/conditions, historical escrow ladder, agent mint concentration, wallet distribution and FXRP totalSupply history.",
+      "limits": "Historical ledger snapshot; current contract permissions and escrow dates require revalidation."
+    },
+    {
+      "url": "https://api.xrpl.to/v1",
+      "type": "documented_api",
+      "usage": "Future ingestion must use documented API, not scrape or copy XRPL.to UI; preserve visible attribution/link."
+    }
+  ],
+  "findings": {
+    "core_vault_share_pct": 98.9362165004,
+    "core_vault_address": "rfkXSaCZKTg1EZzec2rLDyrWHxRVJdtVXj",
+    "core_vault_manager_contract": "0x6c8d96defe4cbee05fa969fc0ac436d94fc21784",
+    "agent_count": 6,
+    "shared_pool": "All six agents can draw from the shared Core Vault, per historical fixed-ledger analysis.",
+    "custodian_address": "rMLNvZR9dascY5jtCfCv3whAp8HdUSZAQ",
+    "trigger_authority": "Historical analysis reports one designated account under the Flare governance contract can trigger Core Vault transfers; do not identify this with a human or assume current mapping without contract verification.",
+    "escrows": {
+      "current_count": 14,
+      "current_total_xrp": 140000000,
+      "historical_each_xrp": 10000000,
+      "historical_one_matures_each_day": true,
+      "current_expiry_dates": "UNVERIFIED"
+    },
+    "historical_supply": {
+      "peak": 157425535,
+      "peak_date": "2026-06-01",
+      "decline_by_2026_08_30": 9281110,
+      "decline_pct": 5.9,
+      "march_mints": 37188200,
+      "august_mints": 2066170,
+      "mint_decline_pct": 94
+    },
+    "historical_users": {
+      "distinct_xrpl_addresses": 15801,
+      "nonexchange_wallets": 15777,
+      "median_xrp": 10,
+      "measurement_date": "2026-08-30"
+    },
+    "data_quality": {
+      "flare_accounting_available_xrp": 2528281.664982,
+      "xrpl_liquid_xrp": 2528708.226796,
+      "difference_xrp": 426.561814,
+      "status": "UNRESOLVED_SMALL_DISCREPANCY"
+    }
+  },
+  "interpretation": [
+    "Most backing is concentrated in a shared Core Vault; the six agents are not six independent backing pools.",
+    "The Core Vault is accessible to agents, but the historical analysis reports a designated trigger-account permission for transfers and a common escrow payout destination. Current permission mapping remains unverified.",
+    "The 140M escrow total is a rolling-liquidity mechanism, not a permanent lock; the historical 14x10M ladder had daily expiries, but the current escrow dates must be fetched from XRPL account_objects.",
+    "Current supply remains below the June 1 peak; the August 30 independent series shows minting had slowed sharply. This is counter-evidence to unqualified claims of accelerating adoption.",
+    "The historical median of 10 XRP across non-exchange wallets suggests retail-sized usage in that sample; it does not establish the beneficial-owner profile of all FXRP supply or institutional treasury balances."
+  ],
+  "restrictions": "XRPL.to explicitly directs automated clients to its documented API and prohibits scraping, reverse engineering or copying its UI. Use https://api.xrpl.to/v1 and preserve attribution/link."
+}

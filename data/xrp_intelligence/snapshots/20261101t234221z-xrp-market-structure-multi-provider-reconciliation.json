@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_market_structure_multi_provider_reconciliation",
+  "captured_at_utc": "2026-11-01T23:42:21.723Z",
+  "observations": [
+    {
+      "provider": "TradRadar",
+      "captured_at_utc": "2026-11-01T23:15:00Z",
+      "source": "https://tradradar.io/markets/xrp",
+      "methodology": "https://tradradar.io/methodology",
+      "price_type": "mark_price",
+      "price_usd": 1.2509,
+      "price_24h_change_pct": -0.06,
+      "open_interest_usd": 1890000000,
+      "open_interest_24h_change_pct": 1.27,
+      "open_interest_venues": [
+        "Binance",
+        "Bybit",
+        "OKX",
+        "Bitget",
+        "Gate",
+        "MEXC",
+        "Hyperliquid"
+      ],
+      "funding_8h_pct": 0.0076,
+      "liquidations_24h_usd_lower_bound": 1010000,
+      "long_liquidations_usd": 898270,
+      "short_liquidations_usd": 107570,
+      "long_short_account_ratio": 3.52,
+      "long_account_share_pct": 77.9,
+      "notes": [
+        "Liquidations are a lower bound because exchanges do not publish all events.",
+        "Long/short is account count weighted by open interest, not notional exposure."
+      ]
+    },
+    {
+      "provider": "Kodexius",
+      "captured_at_utc": "2026-11-01T22:34:00Z",
+      "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "methodology": "https://kodexius.com/data/crypto-derivatives",
+      "price_type": "not_reported",
+      "open_interest_usd": 750250000,
+      "contracts": 7,
+      "venues": [
+        "Binance",
+        "Bybit",
+        "OKX",
+        "Hyperliquid",
+        "HTX"
+      ],
+      "funding_8h_pct": 0.008,
+      "volume_24h_usd": 532960000,
+      "oi_to_volume_ratio": 1.41,
+      "contract_breakdown_usd_millions": {
+        "Binance_XRPUSDT": 337.78,
+        "Binance_XRPUSDC": 30.64,
+        "Bybit_XRPUSDT": 150.15,
+        "Bybit_XRPPERP_USDC": 2.61,
+        "OKX_XRP_USDT_SWAP": 103.34,
+        "Hyperliquid_XRP_USDC": 97.56,
+        "HTX_XRP_USDT": 28.17
+      },
+      "notes": [
+        "Seven specific perpetual contracts across five exchanges.",
+        "Coverage differs from TradRadar; not a same-universe estimate."
+      ]
+    },
+    {
+      "provider": "ChartExchange",
+      "captured_at_utc": "2026-11-01T19:09:43Z",
+      "source": "https://chartexchange.com/symbol/crypto-xrpusd/historical/",
+      "price_type": "composite_spot",
+      "price_usd": 1.2439,
+      "daily_close_usd": 1.2439,
+      "history": [
+        {
+          "date": "2026-10-28",
+          "close_usd": 1.3243
+        },
+        {
+          "date": "2026-10-29",
+          "close_usd": 1.2346,
+          "daily_change_pct": -6.774
+        },
+        {
+          "date": "2026-10-30",
+          "close_usd": 1.2546,
+          "daily_change_pct": 1.622
+        },
+        {
+          "date": "2026-10-31",
+          "close_usd": 1.2494,
+          "daily_change_pct": -0.416
+        },
+        {
+          "date": "2026-11-01",
+          "close_usd": 1.2439,
+          "daily_change_pct": -0.44
+        }
+      ],
+      "weekly_change_pct": -3.8
+    },
+    {
+      "provider": "XRP Insights ETF tracker",
+      "source": "https://xrp-insights.com/",
+      "methodology": "https://xrp-insights.com/data",
+      "holdings_xrp": 1200000000,
+      "net_assets_usd": 1510000000,
+      "weekly_net_flow_xrp": 3390000,
+      "weekly_net_flow_usd": 4030000,
+      "october_30_net_flow_xrp": -49932,
+      "universe": "Six U.S. spot funds plus BITW index-fund XRP sleeve",
+      "notes": [
+        "GXRP is excluded from flow calculation while a scrape gap is reconciled; its holdings remain in total holdings.",
+        "Flows are derived from changes in issuer-reported holdings, not exchange purchases directly."
+      ],
+      "observed_through_date": "2026-10-30"
+    },
+    {
+      "provider": "XRP Insights exchange-wallet tracker",
+      "captured_at_utc": "2026-11-01T08:00:00Z",
+      "source": "https://xrp-insights.com/exchange-balances",
+      "methodology": "XRPL account_info balances for 701 publicly attributed wallets across 24 exchanges; XRPSCAN public labels",
+      "total_xrp": 22450000000,
+      "circulating_supply_definition_xrp": 69590000000,
+      "same_wallet_change_7d_xrp": -161100000,
+      "same_wallet_change_30d_xrp": -12700000,
+      "exchange_breakdown_xrp": {
+        "Upbit": 6430000000,
+        "Coinbase": 5850000000,
+        "Binance": 2780000000
+      },
+      "coinbase_cold_labeled_xrp": 5800000000,
+      "south_korea_tracked_exchange_xrp": 8580000000,
+      "notes": [
+        "Cold storage is included.",
+        "Attributed-wallet totals are not tradable float or customer withdrawal totals.",
+        "Circulating-supply definition differs from market-data providers that subtract Ripple-held non-escrow wallets."
+      ]
+    }
+  ],
+  "provider_disagreement": {
+    "classification": "UNRESOLVED_COVERAGE_AND_METHODOLOGY_DIFFERENCE",
+    "tradradar_oi_usd": 1890000000,
+    "kodexius_oi_usd": 750250000,
+    "ratio": 2.519,
+    "explanation": "TradRadar aggregates seven exchanges (Binance, Bybit, OKX, Bitget, Gate, MEXC, Hyperliquid); Kodexius aggregates seven listed contracts across five exchanges (Binance, Bybit, OKX, Hyperliquid, HTX). Even overlapping venue totals differ materially. Contract-level mapping and exchange API field reconciliation are required.",
+    "rule": "Do not average these values, treat them as a common time series, or interpret the difference as market-wide OI change."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_CROWDED_LONG_RISK",
+      "hypothesis": "Positive funding, a 77.9% long-account share, rising OI and long liquidations materially exceeding short liquidations are consistent with a leveraged-long crowding risk. A downside break could trigger additional forced reductions.",
+      "support": [
+        "TradRadar 2026-11-01 23:15 UTC snapshot"
+      ],
+      "disconfirming": [
+        "Account ratios are not notional exposure.",
+        "Liquidations are a lower bound.",
+        "Rising OI may include hedged basis positions and new shorts.",
+        "Price was nearly flat over 24h at the observation."
+      ]
+    },
+    {
+      "id": "H2_HEDGED_BASIS_ACTIVITY",
+      "hypothesis": "OI growth with little price movement and positive funding may reflect basis/arbitrage or market-making inventory rather than directional long conviction.",
+      "support": [
+        "Price nearly flat while OI increased 1.27%"
+      ],
+      "disconfirming": [
+        "No venue-level basis, spot hedge ratios or beneficial-owner data were captured."
+      ]
+    },
+    {
+      "id": "H3_ETF_ABSORPTION",
+      "hypothesis": "Positive weekly ETF holdings changes may absorb some available XRP and support institutional exposure.",
+      "support": [
+        "+3.39M XRP weekly flow; 1.20B XRP reported holdings"
+      ],
+      "disconfirming": [
+        "Approximately $4.03M weekly flow is modest; Oct30 was a small net outflow; flows do not prove direct spot execution on public exchanges."
+      ]
+    },
+    {
+      "id": "H4_EXCHANGE_BALANCE_DRAW",
+      "hypothesis": "The seven-day decrease in same-wallet attributed exchange balances could indicate a short-term shift of XRP out of tracked exchange wallets.",
+      "support": [
+        "-161.1M XRP over seven days"
+      ],
+      "disconfirming": [
+        "Thirty-day change is only -12.7M XRP; cold storage is included; wallet labels and custody movements can change; no tradable-float inference is justified."
+      ]
+    },
+    {
+      "id": "H5_KOREAN_VENUE_CONCENTRATION",
+      "hypothesis": "A large share of tracked exchange-attributed XRP in South Korean venues may make Korean liquidity, local premiums and exchange-specific flows important to short-horizon price formation.",
+      "support": [
+        "8.58B XRP in tracked South Korean exchange wallets; Upbit 6.43B"
+      ],
+      "disconfirming": [
+        "Balances include cold storage and are not order-book depth; XRP-specific kimchi-premium and trade-flow series were not captured."
+      ]
+    }
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "next_actions": [
+    "Normalize perpetual OI by venue, contract, quote currency, multiplier, timestamp and API field before comparing providers.",
+    "Capture XRP spot/perpetual basis and order-book depth on Upbit, Coinbase, Binance and other major venues.",
+    "Separate cold/hot wallet labels and track wallet-level changes without inferring tradable float.",
+    "Reconcile ETF holdings and issuer files, keeping GXRP gap and BITW sleeve explicit.",
+    "Add event-time alignment and provider-specific coverage metadata to the feature store."
+  ]
+}

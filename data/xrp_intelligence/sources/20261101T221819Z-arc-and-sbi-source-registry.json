@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "artifact_type": "arc_and_sbi_source_registry_addendum",
+  "captured_at_utc": "2026-11-01T22:18:19Z",
+  "sources": [
+    {
+      "id": "SRC_DEFILLAMA_ARC",
+      "publisher": "DefiLlama",
+      "date": "2026-11-01",
+      "url": "https://defillama.com/chain/arc",
+      "type": "independent_chain_market_aggregator",
+      "supports": [
+        "Arc TVL $591.42M",
+        "Stablecoin market cap $1.097B, 99% USDC",
+        "DEX $12.8M 24h / $165.67M 7d",
+        "Perps $90.96M 24h / $1.879B 7d",
+        "13,290 active addresses and 367,866 transactions 24h"
+      ],
+      "limits": [
+        "Exact block heights and full adapter methodology not exposed on static page"
+      ]
+    },
+    {
+      "id": "SRC_BITQUERY_ARC",
+      "publisher": "Bitquery Research",
+      "date": "2026-10-15",
+      "url": "https://www.bitquery.io/investigations/arc-blockchain-first-month",
+      "type": "public_onchain_investigation",
+      "supports": [
+        "94% decline in daily active wallets from launch to week four",
+        "Adjusted real senders/traders and DEX volume",
+        "USDC concentration, mint/burn/bridge flows",
+        "Morpho cirBTC/USDC lending and $142M borrowed USDC bridged out"
+      ],
+      "limits": [
+        "Window ends Oct 14; wallet filters are heuristic; address labels do not prove legal identity"
+      ]
+    },
+    {
+      "id": "SRC_ARCSCAN",
+      "publisher": "Arcscan",
+      "date": "2026-09-25",
+      "url": "https://docs.arc-scan.org/",
+      "type": "independent_block_explorer",
+      "supports": [
+        "26.394M transactions in early 14-day window; 1.885M daily average; launch-day activity"
+      ],
+      "limits": [
+        "Historical unfiltered counts; not current organic user activity"
+      ]
+    },
+    {
+      "id": "SRC_AGENTGDP_ARC",
+      "publisher": "AgentGDP",
+      "date": "2026-10-31",
+      "url": "https://agentgdp.io/chain/arc",
+      "type": "independent_x402_settlement_tracker",
+      "supports": [
+        "7-day Arc x402 settled volume $0.02 and organic volume $0.00 through Oct 31"
+      ],
+      "limits": [
+        "Coverage explicitly partial/backfilling; x402 only, not all Arc activity"
+      ]
+    },
+    {
+      "id": "SRC_SBI_ARC_PRESALE",
+      "publisher": "SBI Holdings",
+      "date": "2026-05-12",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "type": "official_company_announcement_PDF",
+      "supports": [
+        "SBI through a consolidated subsidiary participated in Circle ARC token presale",
+        "Expected total presale raise $222M",
+        "SBI-specific amount undisclosed",
+        "ARC described as native Arc token for governance, security and network operations"
+      ],
+      "limits": [
+        "No SBI allocation, purchase amount, lockup or delivery schedule disclosed"
+      ]
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_EQUITY",
+      "publisher": "SBI Holdings",
+      "date": "2026-05-01",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "type": "official_investor_presentation",
+      "supports": [
+        "SBI says it invested in Ripple in 2016 and holds approximately 9% of Ripple shares; largest external shareholder"
+      ],
+      "limits": [
+        "Equity ownership is not XRP token ownership"
+      ]
+    },
+    {
+      "id": "SRC_SBI_CIRCLE_EQUITY",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "date": "2025-06-09",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "type": "official_company_announcement",
+      "supports": [
+        "SBI Holdings and SBI Shinsei Bank acquired $50M of Circle shares, $25M each"
+      ],
+      "limits": [
+        "Equity investment is not USDC reserve ownership"
+      ]
+    },
+    {
+      "id": "SRC_SBI_USDC",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "date": "2025-03-04",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0304_a_en.pdf",
+      "type": "official_company_announcement_PDF",
+      "supports": [
+        "SBI VC Trade registered as Japan's first Electronic Payment Instruments Service Provider for USDC; beta planned March 12, 2025"
+      ],
+      "limits": [
+        "Registration/beta announcement does not establish current distribution volume"
+      ]
+    },
+    {
+      "id": "SRC_SBI_RLUSD_MOU",
+      "publisher": "SBI Holdings, SBI VC Trade and Ripple",
+      "date": "2025-08-22",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "type": "official_company_MOU_announcement",
+      "supports": [
+        "SBI VC Trade and Standard Custody & Trust Company signed an MOU to issue/distribute RLUSD in Japan"
+      ],
+      "limits": [
+        "MOU is not evidence Japanese RLUSD distribution is live"
+      ]
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_ASIA",
+      "publisher": "SBI Holdings",
+      "date": "2026-03-31",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "type": "official_group_company_profile",
+      "supports": [
+        "SBI Group voting-rights share in SBI Ripple Asia is 60%",
+        "Historical XRP remittance corridor announcement"
+      ],
+      "limits": [
+        "Current XRP corridor throughput unknown"
+      ]
+    },
+    {
+      "id": "SRC_CIRCLE_ARC",
+      "publisher": "Circle Investor Relations",
+      "date": "2026-09-16",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "type": "official_company_announcement",
+      "supports": [
+        "Arc USDC gas and permissioned validators",
+        "SBI Group founding validator",
+        "Coinbase among exchange participants",
+        "98.8% global agent-driven transaction volume is USDC",
+        "10B ARC genesis mint; public launch not committed; network fees remain USDC"
+      ],
+      "limits": [
+        "98.8% is global Agent Stack/x402, not Arc-specific; issuer announcement"
+      ]
+    },
+    {
+      "id": "SRC_SBIC",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "date": "not_stated",
+      "url": "https://www.sbic.co.jp/investment/faq/",
+      "type": "official_entity_identity",
+      "supports": [
+        "SBIC is a distinct SME investment/consultation company, not SBI Holdings"
+      ],
+      "limits": [
+        "No direct XRP/Circle relationship established"
+      ]
+    }
+  ],
+  "independence_notes": [
+    "Bitquery, DefiLlama, Arcscan and AgentGDP are distinct providers with different scope.",
+    "Circle and SBI corporate disclosures are primary issuer statements, not independent proof of undisclosed amounts.",
+    "Circle's global 98.8% x402 metric must not be treated as Arc-chain activity."
+  ]
+}

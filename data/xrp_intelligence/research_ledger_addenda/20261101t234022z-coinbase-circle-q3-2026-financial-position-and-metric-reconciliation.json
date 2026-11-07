@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "artifact_type": "coinbase_circle_q3_2026_financial_position_and_metric_reconciliation",
+  "captured_at_utc": "2026-11-01T23:40:22.838Z",
+  "reporting_cutoff": "2026-09-30",
+  "filing_cutoff": "Coinbase Q3 2026 Form 10-Q filed 2026-10-29; Circle Q2 2026 Form 10-Q is the latest Circle filing available in this capture.",
+  "coinbase_q3_2026": {
+    "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+    "metrics_usd_millions": {
+      "net_revenue": 1200,
+      "transaction_revenue": 590.224,
+      "transaction_revenue_yoy_pct": -44,
+      "consumer_transaction_revenue": 450.112,
+      "consumer_transaction_revenue_yoy_pct": -47,
+      "institutional_transaction_revenue": 91.65,
+      "institutional_transaction_revenue_yoy_pct": -32,
+      "subscription_and_services_revenue": 570.238,
+      "subscription_and_services_yoy_pct": -20,
+      "stablecoin_revenue": 306.905,
+      "stablecoin_revenue_yoy_pct": -5,
+      "stablecoin_revenue_nine_months": 904.487,
+      "stablecoin_revenue_nine_months_yoy_pct": 0,
+      "corporate_interest_and_other_income": 55.12,
+      "net_income": 718.697,
+      "adjusted_ebitda": 332.868,
+      "crypto_asset_investment_gains_excluded_from_adjusted_ebitda": 715.022
+    },
+    "operating_metrics": {
+      "assets_on_platform_usd_millions": 376645,
+      "assets_on_platform_yoy_pct": -27,
+      "usdc_assets_on_platform_usd_millions": 8616,
+      "usdc_assets_on_platform_yoy_pct": -4,
+      "monthly_transacting_users_millions": 7.4,
+      "monthly_transacting_users_yoy_pct": -20.4,
+      "average_usdc_held_in_coinbase_products": "All-time high, company-reported; not identical to quarter-end AOP."
+    },
+    "drivers": {
+      "consumer_crypto_spot_volume_yoy_pct": -59,
+      "institutional_crypto_spot_volume_yoy_pct": -53,
+      "higher_average_usdc_balance_contribution_to_q3_stablecoin_revenue_usd_millions": 84.6,
+      "lower_average_interest_rate_impact_on_q3_stablecoin_revenue_usd_millions": -52.8,
+      "circle_arrangement": "Renewed on the same terms.",
+      "strategy_priorities": [
+        "everything exchange",
+        "stablecoins and payments",
+        "onchain adoption"
+      ]
+    },
+    "accounting_caveat": "During Q1 2026 Coinbase reclassified revenue earned on corporate payment-stablecoin balances from stablecoin revenue to other revenue. Prior periods were reclassified. Stablecoin revenue and corporate interest/other income must not be conflated."
+  },
+  "circle_q2_2026": {
+    "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+    "usdc_circulation_end_usd_billions": 73.269,
+    "usdc_circulation_average_usd_billions": 76.524,
+    "reserve_return_rate_pct": 3.5,
+    "usdc_on_platform_end_usd_billions": 12.442,
+    "usdc_on_platform_daily_weighted_average_pct": 19.5,
+    "distribution_costs_to_coinbase_q2_usd_millions": 324.6,
+    "distribution_costs_to_coinbase_h1_usd_millions": 655.3,
+    "collaboration_terms": "Coinbase allocations depend on USDC held on its platform after issuer retention and a share of broader ecosystem growth after approved third-party participant amounts.",
+    "reserve_income_sensitivity": "Circle attributed approximately $147.4M of Q2 reserve-income growth to higher average daily USDC circulation and expanded partnerships, offset by approximately $113.9M from a 66bp lower average reserve yield."
+  },
+  "metric_reconciliation": {
+    "circle_usdc_on_platform_definition": "Includes Circle Mint accounts, corporate-held USDC and non-custodial wallets offered through Circle's platform, including managed wallet services.",
+    "coinbase_usdc_aop_definition": "Coinbase AOP includes customer assets held or managed in its digital wallets and custody services, but excludes assets for which the customer holds full or partial keys.",
+    "conclusion": "Circle's $12.442B Q2 USDC-on-platform metric and Coinbase's $8.616B Q3 USDC AOP are not directly comparable. They have different dates and scope. Do not infer a $3.826B outflow, decline or reconciliation gap.",
+    "average_vs_end_of_period": "Coinbase's all-time-high average USDC held in products can coexist with a lower quarter-end AOP because the measures differ in time aggregation and asset scope."
+  },
+  "strategic_assessment": {
+    "confirmed": "Coinbase is diversifying revenue across stablecoins, derivatives, custody, onchain trading and lending while spot activity weakened. Circle remains a strategically material USDC distribution partner.",
+    "inference": "Coinbase's stablecoin earnings are exposed to both USDC balance growth and reserve-rate compression; increased balances did not fully offset lower rates in Q3.",
+    "counter_hypothesis": "Derivative growth, expanded product mix and onchain lending may offset spot weakness over time, but Q3 data do not establish that this offset is durable.",
+    "disconfirming": "Q3 stablecoin revenue fell 5% year over year and nine-month stablecoin revenue was essentially flat despite higher average USDC balances; lower rates materially offset balance growth."
+  },
+  "prediction_status": "NOT_ISSUED",
+  "next_actions": [
+    "Ingest Circle Q3 2026 Form 10-Q when filed and reconcile distribution costs, Coinbase platform balances and reserve return rate.",
+    "Capture Coinbase's daily/quarterly USDC balance measures separately from Circle's platform measure.",
+    "Separate Circle-derived Coinbase revenue, interest income on corporate stablecoin balances, and customer rewards/expenses in the revenue model."
+  ]
+}

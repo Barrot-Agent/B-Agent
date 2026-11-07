@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-01T22:24:56Z",
+  "findings": [
+    {
+      "id": "F20",
+      "label": "CONFIRMED_LIVE_NON_US_PRODUCT",
+      "claim": "Coinbase Global Derivatives lists XRP as cross collateral for any cross-margined position in supported regions outside the US; X:SM haircut 15%, X:PM dash/no haircut listed.",
+      "sources": [
+        "SRC_COINBASE_GLOBAL_XCOLLATERAL"
+      ]
+    },
+    {
+      "id": "F21",
+      "label": "CONFIRMED_LIVE_NON_US_DERIVATIVE",
+      "claim": "Coinbase Global Derivatives offers XRP_USDC linear options executed on Deribit infrastructure and settled in USDC; 1,000 XRP per contract; 24/7.",
+      "sources": [
+        "SRC_COINBASE_GLOBAL_XRP_OPTIONS"
+      ]
+    },
+    {
+      "id": "F22",
+      "label": "CONFIRMED_US_PRODUCT_SCOPE",
+      "claim": "Coinbase Prime US institutional Global Derivatives uses CFM/Deribit but its current public eligible-collateral list is USDC, BTC and ETH; XRP is not listed.",
+      "sources": [
+        "SRC_COINBASE_PRIME_GLOBAL_DERIVATIVES"
+      ]
+    },
+    {
+      "id": "F23",
+      "label": "REGULATORY_PATHWAY_NOT_PRODUCT_PROOF",
+      "claim": "CFTC Letter 26-17 grants conditional staff no-action relief for customer-owned digital commodities/payment stablecoins through CFM/CBBM/Deribit; the referenced digital-commodity interpretation explicitly lists XRP.",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ],
+      "caveat": "No current public evidence that XRP is accepted as US collateral under this program."
+    }
+  ],
+  "capital_classification": {
+    "xrp_collateral": "Existing XRP posted/encumbered; not proof of new spot purchase",
+    "usdc_settlement": "Circle-issued USDC used as settlement currency; not proof Circle directly funds the account",
+    "rebalancing": "Can convert positive XRP equity into a negative settlement currency; potential forced sell channel"
+  },
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_repository_state_audit",
+  "captured_at_utc": "2026-11-01T22:26:59Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "a26feebb31c98923e4161b61339cfb575df6fc34",
+    "protected": true,
+    "required_status_contexts": [],
+    "full_protection_rules": "NOT_AVAILABLE_FROM_EXPOSED_RESPONSE"
+  },
+  "prs": [
+    {
+      "number": 1477,
+      "base": "a26feebb31c98923e4161b61339cfb575df6fc34",
+      "head": "72ee9b7870b97bc564bcdea70454866f2e5ce5bc",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41357101203,
+      "ci": "342 passed + 8 subtests",
+      "gate_run": 41357101189,
+      "gate": "PASS; merge disabled"
+    },
+    {
+      "number": 1474,
+      "base": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41345160046,
+      "ci": "390 passed + 8 subtests",
+      "gate_run": 41345160075,
+      "gate": "PASS; merge disabled",
+      "scope": "privileged workflow quarantine"
+    },
+    {
+      "number": 1475,
+      "base": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head": "8268d158449f3e96b585661ee670e515752146f6",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41345671223,
+      "ci": "405 passed + 8 subtests",
+      "gate_run": 41345671296,
+      "gate": "PASS; merge disabled",
+      "scope": "prediction ledger integrity"
+    },
+    {
+      "number": 1476,
+      "base": "465ff4b40c43721db25e313df08b44a659f4a360",
+      "head": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41353058271,
+      "ci": "345 passed + 8 subtests",
+      "gate_run": 41353058127,
+      "gate": "PASS; merge disabled",
+      "scope": "subscriber client-side gate quarantine"
+    },
+    {
+      "number": 1464,
+      "base": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "head": "f9f5c3feb0ac8ae90a78f7616b904dcc11bd1985",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "scope": "prior cbXRP/Morpho research; stale base"
+    }
+  ],
+  "main_risks": [
+    "scheduler tick can dispatch any existing workflow file from queue input; main grants actions:write and contents:write",
+    "merge queue is manually dispatchable, dry_run defaults false, max_prs=0 permits unlimited processing; no explicit designated-human per-PR approval check found in inspected source",
+    "cross-analysis and autonomous issue/PR writers retain mutation permissions",
+    "subscriber sync publishes unsalted SHA-256 email identifiers and web/signals.html performs client-side comparison; PR #1476 proposes disabling this path",
+    "sentiment_shift.json advances generated_at with zero observations and null XRP/BTC scores"
+  ],
+  "review_status": "No independent human review/red-team approval recorded on PRs #1474–#1477 at this audit.",
+  "dependency_status": "Three Python dependency manifests previously scanned with no known vulnerabilities; Node, Docker and GitHub Action dependencies remain unscanned.",
+  "actions_not_taken": [
+    "No merge",
+    "No force-push",
+    "No manual workflow dispatch",
+    "No secret access",
+    "No main-branch write",
+    "No deployment"
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_and_identity_correction_addendum",
+  "captured_at_utc": "2026-11-02T00:13:48Z",
+  "corrections": [
+    {
+      "topic": "ASK Coin",
+      "previous_candidate": "Permission Coin ASK token",
+      "correction": "The strongest literal match is an inactive/untracked Ask Coin exchange listing on CoinMarketCap. Permission Coin is a separate token; AskSurf is a separate x402 merchant.",
+      "confidence": "HIGH_FOR_LITERAL_MATCH; INTENDED_REFERENT_UNCONFIRMED"
+    },
+    {
+      "topic": "actual capital",
+      "previous_description": "Third-party summary lead",
+      "correction": "An exact phrase match was located in Flare's official 2025 article: 'actual capital deployment and liquidity provision', in a USDt0/XRPFi context. This is not a dollar amount.",
+      "confidence": "HIGH_FOR_SOURCE_MATCH; INTENDED_REFERENT_UNCONFIRMED"
+    },
+    {
+      "topic": "SBIC / ChatGPT SBIC",
+      "correction": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. ran a two-day AI/ML course for investee companies on 2025-06-12 and 2025-06-13; Day 1 included ChatGPT, Day 2 Copilot/RAG/API. This is training, not an OpenAI partnership or XRP relationship.",
+      "confidence": "HIGH"
+    },
+    {
+      "topic": "Camilla Stephenson",
+      "correction": "The user-confirmed intended creator is Dr. Kamilah Stevenson, channel handle @drkamilahstevenson. 'Camilla' appears as a spoken-name variant in an iHeart transcript. Full upload inventory remains incomplete.",
+      "confidence": "USER_CONFIRMED_IDENTITY; INVENTORY_INCOMPLETE"
+    },
+    {
+      "topic": "SBI Holdings versus XRP token holdings",
+      "correction": "SBI Chairman Yoshitaka Kitao publicly corrected the viral $10B XRP claim, saying the exposure was around/more than 9% of Ripple Labs equity. This is a public executive statement, not an audited ownership filing; it does not establish SBI's total XRP inventory.",
+      "confidence": "HIGH_FOR_PUBLIC_STATEMENT; EXACT_EQUITY_PERCENTAGE_UNVERIFIED"
+    },
+    {
+      "topic": "SBI / Circle / Arc",
+      "correction": "SBI Holdings and SBI Shinsei Bank disclosed a $50M Circle equity investment ($25M each), a 50/50 Circle SBI Japan KK / SBI Circle Holdings JV, and participation in Circle's ARC token presale through a consolidated subsidiary. The presale amount, allocation and lockup were not disclosed.",
+      "confidence": "HIGH_FOR_PARTICIPATION; AMOUNT_UNDISCLOSED"
+    }
+  ],
+  "key_findings": [
+    "Flare's 1-year update reports 130M FXRP deployed in DeFi, 7.8M transactions and 21M FXRP on other chains; independent FlareForge snapshot reconciles approximately 144.079M XRP backing 143.995M FXRP and 20.098M remote FXRP.",
+    "The underlying XRP/FXRP backing ratio is approximately 100.058%; this is distinct from agent-pool overcollateralization. About 140M of 142.614M XRP in the core vault is escrowed, leaving approximately 2.614M liquid at the snapshot.",
+    "Firelight holds approximately 51.9M FXRP, 36.04% of supply, in a slashable cover pool shared across Sentora USD/RWA strategies and a Kraken USDC strategy. It is risk capital, not native XRP staking or insurance.",
+    "The live Ethereum Morpho market pairs RLUSD debt with FXRP collateral: approximately $8.44M debt, 90.27% utilization, 99.04% supply from Sentora RLUSD Main, top-three borrower share 90.96%, LLTV 77%, and zero reported bad debt at capture.",
+    "Sentora is a strategic ecosystem investment of both Ripple and Flare; its CEO Anthony DeMartino is a former Coinbase Head of Risk. These are investor and personnel links, not evidence of common control.",
+    "The Morpho market provides a live RLUSD/FXRP collateral pathway, but FXRP is a representation of existing XRP; the market does not prove new XRP spot purchases or net XRP demand.",
+    "Firelight's shared cover can expose FXRP stakers to losses in non-XRP strategies, including USDC and RWA vaults; a secondary source identifies approximately $1M USDT0 in the first-loss buffer on 2026-10-14, but the current official balance and asset composition remain unknown.",
+    "Coinbase's XRP cross-collateral product and CFTC 26-17 no-action route remain distinct from the RLUSD listing; the latter's Global Exchange collateral support was announced as future, not yet live.",
+    "Circle's Arc mainnet is a major USDC-first institutional and agentic-payment rail: USDC is gas; SBI Group is a founding validator; Coinbase and Binance are exchange participants; Morpho and Aave are credit integrations. Circle claims USDC is 98.8% of agent-driven transaction volume, but gives no absolute denominator.",
+    "Flare reports 130M FXRP deployed in DeFi, but explicitly states that only specific events (minting, destination-tag fees, FDC attestations and redemptions) generate Flare fees; not every FXRP trade or loan does. The reported $44,632 cumulative value in FIRE accrues to Flare's fee/burn mechanism, not XRP.",
+    "Flare's own one-year article describes the direct XRPL-wallet-to-RLUSD borrow path as the next step; the current live Morpho market uses FXRP collateral on Ethereum. Native XRP collateral borrowing with RLUSD delivered back to XRPL is therefore roadmap, not live.",
+    "The Firelight USD Protected vault's exact stablecoin composition is not specified in the official announcement; do not label it RLUSD without contract-level evidence.",
+    "SBI Group has multi-rail exposure: $50M Circle equity investment, a 50/50 Circle SBI Japan JV, ARC token presale participation and a founding-validator role on Arc; separately, its chairman publicly stated an approximately 9% Ripple Labs equity stake, while SBI subsidiaries operate XRP remittance routes and an XRPL tokenized-deposit proof of concept. This is not evidence of exclusive XRP positioning or coordinated price activity.",
+    "The $10B XRP claim about SBI was corrected by SBI Chairman Yoshitaka Kitao: the cited exposure was Ripple Labs equity, not a $10B XRP token treasury. The exact current equity percentage is not independently verified in a public ownership filing.",
+    "SBI VC Trade's June 24, 2026 RLUSD listing was classified by SBI as a Type 4 Electronic Payment Instrument under Japanese law; the primary announcement did not specify the supported blockchain, so the Japan listing must not be assumed to be XRPL or Ethereum.",
+    "SBI Ripple Asia's February 26, 2026 tokenized-deposit proof of concept contemplated XRPL use; this does not establish XRP collateralization or XRP-denominated settlement."
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_FXRP_UTILITY",
+      "claim": "FXRP DeFi deployment and collateral use can increase XRP retention and utility.",
+      "counter": "FXRP is minted against pre-existing XRP; deployment is not net new spot demand, and liquidations/redemptions can reverse flows."
+    },
+    {
+      "id": "H_RLUSD_FXRP_CREDIT",
+      "claim": "RLUSD borrowing against FXRP creates a new XRP-linked credit market.",
+      "counter": "The market is small relative to XRP capitalization, highly concentrated on both supply and borrow sides, and permissionless; no evidence of direct Ripple lending."
+    },
+    {
+      "id": "H_FIRELIGHT_FLOAT",
+      "claim": "Firelight cover staking can reduce immediately available FXRP and indirectly lock XRP backing.",
+      "counter": "Staked FXRP is slashable, exits are delayed, and claims in non-XRP strategies can reduce staker capital."
+    },
+    {
+      "id": "H_COINBASE_COLLATERAL",
+      "claim": "Coinbase collateral eligibility broadens XRP's institutional utility.",
+      "counter": "Non-US product eligibility is not evidence of actual collateral balances; CFTC 26-17 is conditional no-action relief and not asset-specific use proof."
+    },
+    {
+      "id": "H_STABLECOIN_COMPLEMENT",
+      "claim": "USDC and RLUSD on XRPL and Coinbase can expand settlement liquidity.",
+      "counter": "Stablecoin transfers can settle without XRP; stablecoin volume is not automatically XRP demand."
+    },
+    {
+      "id": "H_CIRCLE_ARC_AGENT_RAIL",
+      "claim": "Circle Arc's USDC gas model, SBI validator and Coinbase/Binance participation could capture a large share of institutional and agentic payments, competing with XRPL/Flare for stablecoin settlement.",
+      "counter": "Circle's 98.8% figure is company-reported without absolute volume or global denominator; Arc is early and uses a permissioned validator set; XRP can remain a bridge/collateral asset even if USDC is the payment/gas asset."
+    },
+    {
+      "id": "H_FLARE_VALUE_CAPTURE",
+      "claim": "FXRP DeFi growth can increase XRP utility and collateral use.",
+      "counter": "Flare explicitly routes only specific protocol fees to FLR/FIRE; most FXRP trading/lending does not automatically generate XRP fees or net spot demand."
+    },
+    {
+      "id": "H_COINBASE_MULTI_ISSUER",
+      "claim": "Coinbase is positioning as a multi-issuer stablecoin distribution and collateral platform, not exclusively a Circle/USDC venue.",
+      "counter": "Coinbase reported an all-time high average USDC balance in Q3; RLUSD Global Exchange collateral support was future at announcement and actual use is unverified."
+    },
+    {
+      "id": "H_SBI_MULTI_RAIL",
+      "claim": "SBI is positioning itself as a cross-network institutional intermediary across Ripple/XRP, Circle/USDC/Arc and Japanese regulated stablecoin distribution.",
+      "counter": "Different subsidiaries and investments may have independent mandates; no public evidence establishes a single coordinated capital strategy, current token inventory or XRP price objective."
+    }
+  ],
+  "architecture_decisions": [
+    {
+      "id": "AD-XRP-042",
+      "decision": "Represent XRP, FXRP, stXRP, RLUSD, USDC and USDt0 as distinct assets with explicit bridge, issuer, backing and receipt relationships."
+    },
+    {
+      "id": "AD-XRP-043",
+      "decision": "Admit DeFi collateral features only from timestamped market snapshots with market ID, oracle configuration, borrower/supplier concentration and liquidation history."
+    },
+    {
+      "id": "AD-XRP-044",
+      "decision": "Separate native XRP backing ratio from agent collateral ratios and from protocol-level collateralization ratios; never collapse them into one 'collateral ratio'."
+    },
+    {
+      "id": "AD-XRP-045",
+      "decision": "Treat cumulative sentiment profile as historical descriptive metadata, not a current feature; require time-windowed, deduplicated, source-independent sentiment observations."
+    },
+    {
+      "id": "AD-XRP-046",
+      "decision": "Do not count FXRP minting, bridge volume, Morpho debt or repeated DeFi transactions as net XRP purchases without wallet-level source/sink reconciliation."
+    },
+    {
+      "id": "AD-XRP-047",
+      "decision": "Model Circle Arc, XRPL, Flare and Ethereum as distinct settlement/credit rails; record gas asset, validator model, stablecoin, bridge, and institutional participants separately."
+    },
+    {
+      "id": "AD-XRP-048",
+      "decision": "Separate XRP utility from token value capture: record FLR/FIRE fees and burns separately from XRP fees, demand and net purchases."
+    },
+    {
+      "id": "AD-XRP-049",
+      "decision": "Treat Circle's 98.8% agent-volume statement as a first-party claim without absolute denominator; never compare it directly with XRPL x402 counts or gross transfer volume."
+    },
+    {
+      "id": "AD-XRP-050",
+      "decision": "Keep corporate equity, token holdings, stablecoin equity investments, token presales, validator roles, payment rails and proof-of-concept ledger usage as separate capital/exposure classes."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Verify any disclosed SBI ARC presale allocation, lockup or token delivery; current SBI filing discloses participation but not amount or allocation.",
+    "Track Circle SBI Japan JV execution and SBI VC Trade USDC/RLUSD distribution separately; verify chain scope and transaction volumes from primary data.",
+    "Track SBI Remit XRP remittance volumes and net XRP inventory only when public data is available; distinguish operational bridge inventory from treasury holdings.",
+    "Compare Circle Arc agent-payment settled value and transaction definitions with XRPL t54 x402 and Flare agent-payment data; do not compare percentages without denominators.",
+    "Monitor Flare's reported FIRE fee accumulation and distinguish FLR/FIRE value capture from XRP demand.",
+    "Verify whether Coinbase Global Exchange has activated RLUSD collateral support; until then keep it future/announced.",
+    "Verify whether Flare's direct XRPL-wallet RLUSD borrowing path has launched; current Ethereum Morpho FXRP collateral market is not that path.",
+    "Reconcile Firelight first-loss buffer balance and token composition from the current contract and all cover orders.",
+    "Verify Firelight unstaking reward cutoff and claim exposure from deployed contract state/code; resolve official/secondary wording discrepancy.",
+    "Reconcile the Ethereum Morpho market's full FXRP collateral balance against FlareForge's Ethereum remote FXRP balance.",
+    "Capture Morpho market history, borrower health factors, liquidations, supplier concentration and oracle updates as timestamped snapshots.",
+    "Build historical FXRP supply/backing/escrow/bridge and protocol-holder feature series before admitting any price-prediction feature.",
+    "Refresh Coinbase RLUSD collateral-support status and search for actual CFM/Coinbase Global Derivatives collateral disclosures.",
+    "Track Circle Q3 results scheduled for 2026-11-04 and compare USDC distribution economics with Coinbase's new RLUSD distribution.",
+    "Continue raw x402 SourceTag 804681468 transaction-hash join; address overlap alone is not transaction identity.",
+    "Continue exhaustive public upload inventory for @drkamilahstevenson when a permitted source with sufficient credits is available."
+  ]
+}

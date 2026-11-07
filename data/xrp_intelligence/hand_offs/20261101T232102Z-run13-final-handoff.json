@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_xrp_intelligence_run13_final_handoff",
+  "captured_at_utc": "2026-11-01T23:21:02Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 remains the execution, verification, security and preservation foundation.",
+  "material_research_findings": [
+    {
+      "topic": "Ripple-Circle",
+      "status": "CONFIRMED_DIRECT_PRODUCT_PARTNERSHIP",
+      "finding": "Ripple and Circle jointly announced on 2025-06-12 a partnership to bring native USDC to XRPL. Circle Mint and APIs support XRPL. Ripple stated it intended to use USDC alongside RLUSD in Ripple Payments. This supersedes the prior graph non-edge claiming no direct partnership.",
+      "sources": [
+        "SRC_RIPPLE_CIRCLE_XRPL",
+        "SRC_CIRCLE_USDC_XRPL"
+      ],
+      "limits": [
+        "Product integration partnership; no equity, merger, joint ownership or exclusivity established.",
+        "Native USDC on XRPL does not prove every USDC transfer uses XRP as a bridge."
+      ]
+    },
+    {
+      "topic": "Coinbase collateral",
+      "status": "CONFIRMED_PRODUCT_SCOPE_SEPARATION",
+      "finding": "Coinbase Advanced Global Derivatives in eligible supported non-US regions lists XRP cross-collateral with 15% X:SM haircut and a dash in X:PM (not assumed zero). Coinbase Prime Global Derivatives for eligible US institutions lists USDC/BTC/ETH only and says cross-collateral is not enabled. Coinbase US Derivatives uses USD cash; USDC is indirect via optional auto-conversion. These are distinct product and jurisdictional regimes.",
+      "sources": [
+        "SRC_COINBASE_NON_US_XCOLLATERAL",
+        "SRC_COINBASE_PRIME_GLOBAL_COLLATERAL",
+        "SRC_COINBASE_US_DERIVATIVES_COLLATERAL",
+        "SRC_COINBASE_XRP_USDC_OPTIONS"
+      ],
+      "limits": [
+        "No XRP collateral balances, customer counts or rebalancing volumes disclosed."
+      ]
+    },
+    {
+      "topic": "CFTC 26-17",
+      "status": "CONDITIONAL_LEGAL_PATHWAY_NOT_ACTUAL_XRP_USE",
+      "finding": "The letter references the March 2026 SEC/CFTC digital-commodity interpretation that lists XRP. Conditional staff no-action relief concerns specified CFM-to-Coinbase Bermuda-to-Deribit transfers for 30.7 customer foreign futures/options positions. The 120% cap is Regulation 30.7(c), not a separate letter-specific condition. The 100% net-liquidating-equity custody statement is a CFM factual-background representation, not a numbered condition or independent custody audit.",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ],
+      "limits": [
+        "Coinbase Prime's current public US collateral list still excludes XRP; actual XRP use is unverified."
+      ]
+    },
+    {
+      "topic": "Circle Arc and SBI",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENTS",
+      "finding": "Arc uses USDC for gas; SBI Group is in the founding-validator cohort; Coinbase is an exchange participant, not a validator. Circle's 98.8% agent-driven transaction-volume statement is global Agent Stack/x402 scope, not Arc-specific.",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ],
+      "limits": [
+        "Circle Agent Stack's 99.8% x402 transaction-value figure and agents.circle.com's 99.6% October agent-transaction-volume figure are different metrics/windows and must not be averaged."
+      ]
+    },
+    {
+      "topic": "SBIC",
+      "status": "IDENTITY_RESOLVED",
+      "finding": "SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. The 'ChatGPT SBIC' phrase is best explained by its June 12-13 2025 AI/ML training for investee companies (ChatGPT on day one, Copilot on day two). It is distinct from SBI Holdings/SBI Group; no XRP or Circle relationship established.",
+      "sources": [
+        "SRC_SBIC_PROFILE",
+        "SRC_SBIC_TRAINING"
+      ]
+    },
+    {
+      "topic": "ASK Coin",
+      "status": "BEST_SUPPORTED_CANDIDATE_NOT_UNIQUE",
+      "finding": "Permission Coin ASK is the best-supported candidate. Its official contract directory lists LayerZero OFT contracts on Base and Polygon and Stargate support; no XRPL contract is listed and no direct XRP integration is established.",
+      "sources": [
+        "SRC_PERMISSION_ASK"
+      ]
+    },
+    {
+      "topic": "actual capital",
+      "status": "PHRASE_UNRESOLVED_ACCOUNTING_MODEL_IMPROVED",
+      "finding": "No reliable source has yet resolved the exact originating phrase. Barrot now distinguishes cash-funded XRP purchases, in-kind contributions, debt proceeds, optional facilities, collateralized inventory, credit advanced, automatic rebalancing sales and net external capital.",
+      "sources": [
+        "Prior Evernorth prospectus source bundle",
+        "Current capital-and-collateral policy in run13 ledger"
+      ]
+    },
+    {
+      "topic": "Camilla Stephenson videos",
+      "status": "IDENTITY_AND_EXHAUSTIVE_INVENTORY_INCOMPLETE",
+      "finding": "Kamilah/Camila Stevenson remains a candidate channel identity, but exact match to the requested spelling 'Camilla Stephenson' is unconfirmed. Eleven candidate videos were previously inventoried; YouTube channel page access was throttled during this run. Exact 'actual capital' and 'ASK Coin' searches did not resolve a source video.",
+      "sources": [
+        "Prior public-video inventory",
+        "Current public search observations"
+      ]
+    }
+  ],
+  "prediction_engine": {
+    "status": "NO_DIRECTIONAL_XRP_FORECAST_ISSUED",
+    "reason": "No synchronized point-in-time XRP feature set or verified out-of-sample skill/calibration estimate exists.",
+    "new_integrity_fix": {
+      "pr": 1475,
+      "head_sha": "d9ada5c7cb25524acb7fa67f122bb9c0ccea17da",
+      "finding": "Forecast metrics now require a SourceRegistry object with verify_content_hash; local snapshot bytes are re-hashed against the registered SHA-256. Plain hash mappings are downgraded to ID_ONLY and cannot authorize performance metrics. Tests cover post-registration snapshot mutation and fail-closed metrics.",
+      "verification": {
+        "ci_run": 41361642653,
+        "tests": "410 passed, 8 subtests passed",
+        "gate_run": 41361642827,
+        "gate": "PASS; merging disabled"
+      },
+      "residual": [
+        "The source-registry file itself still needs an immutable commit/signature anchor.",
+        "The evaluator still does not semantically prove that the numeric outcome price was extracted from the exact snapshot bytes.",
+        "No live XRP forecast/outcome sample or calibration estimate."
+      ]
+    }
+  },
+  "platform_coordination": {
+    "status": "DESIGNED_NOT_CONNECTED",
+    "artifact": "data/xrp_intelligence/architecture_decisions/20261101T230851Z-nine-platform-coordination-map.json",
+    "verified_active": [
+      "ChatGPT current session",
+      "GitHub repository connector"
+    ],
+    "not_verified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "features_designed": [
+      "least-privilege authentication and permissions",
+      "independent task assignments",
+      "structured evidence packets with source IDs, timestamps, confidence, counter-evidence and minority objections",
+      "evidence-based disagreement resolution",
+      "verified handoffs with artifact hashes, commit SHA and CI run IDs",
+      "deterministic local fallbacks"
+    ],
+    "limitation": "No external agent sessions, API credentials, workspace tokens or cross-platform handoffs were tested."
+  },
+  "repository": {
+    "main_sha": "ce1139c7c032e0bdca93efcf2ea963a5ace56b6e",
+    "main_latest_change": "Timestamp-only Cross Analysis refresh to sentiment_shift.json; generated_at advanced but XRP/BTC observations remained zero and scores null.",
+    "pr_status": [
+      {
+        "number": 1474,
+        "title": "Fresh-main security quarantine",
+        "head_sha": "79cbed8b0a47d15b8ee47b87e277733218e89ee8",
+        "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run": 41361575789,
+        "ci": "393 tests + 8 subtests passed",
+        "gate_run": 41361575708,
+        "gate": "PASS; merging disabled",
+        "additional_failures": [
+          41361573019,
+          41361571945
+        ],
+        "failure_detail": "Two push-event workflow checks for task-allocator.yml and force-deploy-space.yml failed with zero jobs and no job logs. A branch-limited push-trigger experiment did not resolve them and was reverted. Root cause remains unresolved.",
+        "new_fix": "self_hosted_brain/start.sh now fails closed if BRAIN_SHARED_SECRET is absent; the known 'changeme' fallback is removed. The self-hosted HF deployment workflow is inert in this PR."
+      },
+      {
+        "number": 1475,
+        "title": "Fixed-horizon prediction integrity",
+        "head_sha": "d9ada5c7cb25524acb7fa67f122bb9c0ccea17da",
+        "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run": 41361642653,
+        "ci": "410 tests + 8 subtests passed",
+        "gate_run": 41361642827,
+        "gate": "PASS; merging disabled",
+        "new_fix": "Byte-verifying source registry and fail-closed treatment of plain hash mappings."
+      },
+      {
+        "number": 1476,
+        "title": "Subscriber privacy quarantine",
+        "head_sha": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+        "base_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run": 41353058271,
+        "ci": "345 tests + 8 subtests passed",
+        "gate_run": 41353058127,
+        "gate": "PASS; merging disabled",
+        "scope": "Disables scheduled publication of unsalted SHA-256 email hashes and client-side email comparison."
+      },
+      {
+        "number": 1477,
+        "title": "XRP institutional research, relationship graph and platform map",
+        "head_sha": "9389288425c588e6f0dfb6bad48416d4f00529a1",
+        "base_sha": "a26feebb31c98923e4161b61339cfb575df6fc34",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run": 41360880503,
+        "ci": "342 tests + 8 subtests passed",
+        "gate_run": 41360880444,
+        "gate": "PASS; merging disabled",
+        "scope": "Direct Ripple-Circle partnership correction, Coinbase collateral-product separation, SBIC/ASK identity records, Circle metric reconciliation and nine-platform coordination map."
+      }
+    ],
+    "main_branch_risks": [
+      "main self_hosted_brain/start.sh still contains the known default API key 'changeme'; main sync-self-hosted-brain.yml auto-deploys on push and does not map BRAIN_SHARED_SECRET from a GitHub secret. The PR #1474 branch fixes the startup fallback and disables the deploy workflow; until an approved merge, main remains exposed to this conditional risk.",
+      "main subscriber_sync.yml has scheduled access to GUMROAD_ACCESS_TOKEN and publishes unsalted SHA-256 email hashes for client-side comparison. No hash values or subscriber records were read in this run. PR #1476 disables this path.",
+      "main Scheduler Tick retains actions:write and contents:write and uses queue-supplied workflow filenames without a verified strict allowlist. Latest run 41360315563 fired zero entries; the sole queue item was already done.",
+      "main Merge Queue remains manually dispatchable with dry_run=false by default and max_prs=0 meaning unlimited processing; no dispatch occurred.",
+      "main check-signal-accuracy.yml remains scheduled with contents:write and variable-horizon scoring. The public artifact reports 772/1697 correct (45.5%), but this is not a valid out-of-sample skill or calibration estimate. PR #1475 replaces it with fixed-horizon evaluation.",
+      "main Cross Analysis wrote a timestamp-only sentiment artifact with zero observations and null scores; generated_at must not be treated as data freshness.",
+      "main autonomous-resolver has issue/PR write permissions; latest run 41360007539 found an existing duplicate issue and made no new mutation. Its comment about automatic PR merging is stale because barrot-pr-automerge.yml is disabled.",
+      "barrot-merge.yml and barrot-merge-manual.yml remain manual external Hugging Face upload paths on main; no dispatch occurred."
+    ],
+    "dependency_and_supply_chain_audit": {
+      "scanned_previous_python_sets": [
+        "requirements-dev.txt including root requirements.txt",
+        "legacy/requirements_legacy.txt",
+        "hf_space/requirements.txt"
+      ],
+      "previous_known_vulnerability_result": "No known vulnerabilities reported in those three Python sets at scan time.",
+      "uncovered_or_incomplete": [
+        "No comprehensive container/Docker or action dependency scan established.",
+        "No complete lockfile/hash-pinned dependency set found.",
+        "Root Dockerfiles use floating python:3.10-slim or debian:bookworm-slim tags and pip/apt latest resolution.",
+        "self_hosted_brain/Dockerfile clones llama.cpp main and downloads model from resolve/main without immutable commit/revision or checksum.",
+        "databricks/setup-cli action uses mutable @main in the inspected workflow.",
+        "requirements.tx is a nonstandard extra file; its use is not established."
+      ],
+      "classification": "REPRODUCIBILITY_AND_SUPPLY_CHAIN_RISK; NO_UNVERIFIED_VULNERABILITY_CLAIM"
+    },
+    "repository_scale": "Open-PR search returned 100 results (at least 100 open PRs; search result capped). Multiple overlapping/stale safety and prediction proposals exist. No new PR was created; existing PRs were updated only on their own branches.",
+    "branch_protection": "Main is reported protected, but the exposed API response returned an empty required_status_contexts list and did not expose complete rules. Required checks and review requirements remain unverified."
+  },
+  "safety": {
+    "main_modified": false,
+    "pr_merged": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "subscriber_hash_values_read": false,
+    "external_deployment": false,
+    "paper_positions_changed": false,
+    "real_money_trades": false
+  },
+  "next_actions": [
+    "Review exact-head CI and security PRs; do not merge without explicit approval.",
+    "Resolve zero-job task-allocator/force-deploy check root cause using GitHub run-level diagnostics or a controlled minimal reproduction; do not guess.",
+    "Reconcile main subscriber privacy and self-hosted brain secret/deployment risks with the existing PRs.",
+    "Pin Docker/model/action revisions and establish lockfiles/SBOM before any external deployment.",
+    "Complete byte-level source registry anchoring to immutable Git commits/signatures and verify numeric outcome extraction from snapshot bytes.",
+    "Reconcile Coinbase non-US XRP collateral balances/rebalancing (currently undisclosed), Coinbase US Prime collateral list (currently excludes XRP), and CFTC 26-17 conditional pathway.",
+    "Measure XRPL USDC/RLUSD pathfinding and XRP auto-bridging usage before attributing stablecoin adoption to XRP demand.",
+    "Reconcile Circle Arc, Agent Stack and x402 metrics by chain, denominator and time window.",
+    "Continue raw onchain RLUSD/x402 attribution, exact ASK Coin and actual-capital phrase investigation, and exhaustive Camilla/Kamilah channel identity/video inventory."
+  ]
+}

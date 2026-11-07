@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_xrp_run13_pr1464_crosslink_and_identity_correction",
+  "captured_at_utc": "2026-11-01T23:23:07Z",
+  "corrections": [
+    {
+      "id": "KAMILAH_IDENTITY_USER_CONFIRMATION",
+      "source_class": "USER_PROVIDED_CONTEXT",
+      "confirmation_date": "2026-10-26",
+      "exact_user_wording": "Kamilah Stevenson is her name",
+      "instruction": "Use Kamilah Stevenson as the creator identity for the requested YouTube research. The earlier spelling 'Camilla Stephenson' was corrected by the user.",
+      "remaining_unknowns": [
+        "The candidate channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson still require direct channel-level verification against the user-confirmed identity.",
+        "The public upload inventory remains incomplete; candidate video IDs must be deduplicated and checked against the channel's full upload feed.",
+        "Transcript summaries and creator claims are public discussion, not primary evidence of XRP market events."
+      ]
+    }
+  ],
+  "cross_research_pr": {
+    "number": 1464,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+    "title": "Research: reconcile live cbXRP collateralized USDC market",
+    "head_sha": "f9f5c3feb0ac8ae90a78f7616b904dcc11bd1985",
+    "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "mergeable": true,
+    "exact_head_ci": {
+      "run_id": 41354375690,
+      "tests": "455 passed, 8 subtests passed"
+    },
+    "fail_closed_gate": {
+      "run_id": 41354375772,
+      "result": "PASS; merging disabled"
+    },
+    "material_findings": [
+      "Evernorth SEC prospectus identifies Coinbase as principal XRP market for financial reporting, while BitGo is primary custodian. This is a price-reference/execution relationship, not custody.",
+      "Evernorth's reported approximately 473M XRP comprises about 84.366M cash-purchased XRP funded by $214.05M and about 388.911M XRP contributed in kind. The $30M notes and optional Cantor facility are not automatically XRP purchases.",
+      "Bitnomial's current schedule lists XRP at a 40% haircut and $15M notional limit; this is venue-specific DCO collateral eligibility, not universal CFTC approval or proof of posted balances.",
+      "CFTC Letter 26-05 is conditional staff no-action relief, not a rule. Coinbase's request does not prove actual XRP collateral use. Current RLUSD acceptance on Bitnomial remains unverified; the current schedule omits RLUSD despite a 2025 announcement.",
+      "XRPL native USDC supply and pools are materially smaller than RLUSD pools in the pinned snapshots; the snapshots are provider-specific and asynchronous. Stablecoin adoption on XRPL does not automatically translate to XRP spot demand.",
+      "t54's public x402 hub reports 14,835,534 all-time transactions and $48,402.25 settled value, approximately $0.00326 per transaction; activity is concentrated and does not establish material XRP buying.",
+      "A live t54-indexed CheckCash batch of 0.67376 RLUSD to Heurist Inference Router was displayed at ledger 108051936 with intent marked Unverified. It does not establish that the buyer belongs to the 110-wallet cohort; raw transaction decoding and cohort matching remain pending.",
+      "Circle and Ripple have a direct product integration partnership for native USDC on XRPL; Circle's Arc uses USDC gas and names SBI Group as founding validator and Coinbase as exchange participant. These rails are simultaneously complementary and competitive."
+    ],
+    "video_inventory": {
+      "previously_catalogued_candidate_count": 11,
+      "additional_candidate_ids_not_yet_deduplicated": 8,
+      "exhaustive_upload_inventory": "NOT_COMPLETE",
+      "channel_id_status": "CANDIDATE_NOT_DIRECTLY_VERIFIED",
+      "latest_additional_video": "M8TmDXO7B-0",
+      "note": "Do not sum candidate IDs into a unique-video total until ID-level deduplication is complete."
+    }
+  },
+  "current_pr_verification": {
+    "research_pr_1477": {
+      "head_sha": "37399111079b2deb0a331d54d00f82c0b705b5a7",
+      "ci_run": 41361820331,
+      "tests": "342 passed, 8 subtests passed",
+      "gate_run": 41361820457,
+      "gate": "PASS; merging disabled",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "prediction_pr_1475": {
+      "head_sha": "d9ada5c7cb25524acb7fa67f122bb9c0ccea17da",
+      "ci_run": 41361642653,
+      "tests": "410 passed, 8 subtests passed",
+      "gate_run": 41361642827,
+      "gate": "PASS; merging disabled",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "security_pr_1474": {
+      "head_sha": "79cbed8b0a47d15b8ee47b87e277733218e89ee8",
+      "ci_run": 41361575789,
+      "tests": "393 passed, 8 subtests passed",
+      "gate_run": 41361575708,
+      "gate": "PASS; merging disabled",
+      "zero_job_push_failures": [
+        41361573019,
+        41361571945
+      ],
+      "root_cause": "UNRESOLVED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "privacy_pr_1476": {
+      "head_sha": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+      "ci_run": 41353058271,
+      "tests": "345 passed, 8 subtests passed",
+      "gate_run": 41353058127,
+      "gate": "PASS; merging disabled",
+      "state": "OPEN_DRAFT_UNMERGED"
+    }
+  },
+  "main_sha": "ce1139c7c032e0bdca93efcf2ea963a5ace56b6e",
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false,
+    "paper_trading": false,
+    "real_money": false
+  },
+  "next_action": "Keep the PR #1464 collateral/x402/video findings cross-linked with PR #1477's Coinbase-Circle-Arc correction; verify the CheckCash transaction and channel ID; continue source-byte and main-branch security work without merging."
+}

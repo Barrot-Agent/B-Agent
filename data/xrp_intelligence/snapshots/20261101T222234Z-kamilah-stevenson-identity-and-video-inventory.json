@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "artifact_type": "creator_identity_and_public_video_inventory_addendum",
+  "captured_at_utc": "2026-11-01T22:22:34Z",
+  "identity": {
+    "requested_name": "Camilla Stephenson",
+    "strongest_match": {
+      "display_name": "Kamilah Stevenson",
+      "public_spoken_name": "Camilla Stevenson",
+      "professional_name": "Dr. Kamilah Stevenson",
+      "youtube_handle": "@drkamilahstevenson",
+      "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA"
+    },
+    "status": "STRONG_MATCH_TO_CAMILLA_STEVENSON; EXACT_USER_SPELLING_STEPHENSON_NOT_VERIFIED",
+    "evidence": [
+      "In the June 11, 2026 iHeart XRP Podcast episode, the host introduces the guest as Camila and then addresses her as Camilla; the guest responds and later identifies herself as Dr. Camilla Stevenson on YouTube.",
+      "The episode page title identifies the guest as Dr. Kamilah Stevenson.",
+      "Vling's third-party channel record maps Kamilah Stevenson to channel ID UCqUPJMQdkCN6lsLVDnichPA and reports handle @drkamilahstevenson."
+    ],
+    "caution": "Do not merge other similarly named accounts. The guest explicitly warns about fake pages. Preserve the surname spelling discrepancy: Stevenson, not Stephenson, in the strongest-matching sources."
+  },
+  "channel": {
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "handle": "@drkamilahstevenson",
+    "display_name": "Kamilah Stevenson",
+    "third_party_reported_subscribers": 143000,
+    "third_party_reported_video_count": "1.3K",
+    "join_date": "2015-08-25",
+    "profile_source": "Vling channel analytics",
+    "public_channel_url": "https://www.youtube.com/@drkamilahstevenson",
+    "complete_upload_inventory_status": "NOT_COMPLETE"
+  },
+  "interview_findings": {
+    "episode": "Crypto Panics! with Dr. Kamilah Stevenson",
+    "publisher": "The XRP Podcast with Paul Barron / iHeart",
+    "date": "2026-06-11",
+    "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+    "topics": [
+      "XRP and institutional adoption",
+      "Japan's financial innovation",
+      "market psychology and volatility",
+      "AI-assisted investment decisions"
+    ],
+    "ai_deliberation_statement": "Guest says she challenges AI, asks it to push back, and then has two other AIs argue with one another. The platforms are not named; this is not evidence of any specific live integration.",
+    "identity_statement": "Guest identifies YouTube presence as Doctor Camilla Stevenson, X as cam i am cam Stevenson, and Instagram as Kamilla Stevenson; she warns that fake pages exist.",
+    "sponsorship_caveat": "Episode includes paid/affiliate promotions; treat investment opinions as creator commentary, not independent market evidence."
+  },
+  "candidate_public_videos": [
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published": "2026-03-06",
+      "source": "YouTube search result",
+      "themes": [
+        "oil shock",
+        "yen carry trade",
+        "global liquidity",
+        "XRP"
+      ],
+      "status": "CANDIDATE_MATCH"
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "published": "2025-12-24",
+      "source": "YouTube search result",
+      "themes": [
+        "XRP utility",
+        "institutional holding",
+        "asset versus company"
+      ],
+      "status": "CANDIDATE_MATCH"
+    },
+    {
+      "video_id": "t0agxG__PHQ",
+      "title": "XRP Just Entered a New Era (Most People Are Not Ready)",
+      "published": "2025-11-25",
+      "source": "YouTube search result",
+      "themes": [
+        "XRP ETFs",
+        "OTC/dark pools",
+        "supply and utility"
+      ],
+      "status": "CANDIDATE_MATCH"
+    },
+    {
+      "video_id": "YJdK1LvmJSo",
+      "title": "Title not returned by search provider; description discusses whale accumulation and exchange outflows",
+      "published": "2026-04-19",
+      "source": "YouTube search result",
+      "themes": [
+        "4.09B XRP accumulation claim",
+        "32% circulating-supply ownership claim",
+        "7.03B exchange-outflow claim"
+      ],
+      "status": "CANDIDATE_MATCH; CLAIMS_REQUIRE_INDEPENDENT_VERIFICATION"
+    },
+    {
+      "video_id": "rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "published": null,
+      "source": "Prior research candidate",
+      "themes": [
+        "XRP holdings and portfolio sizing"
+      ],
+      "status": "CANDIDATE_MATCH; DATE_NOT_VERIFIED"
+    },
+    {
+      "video_id": "IUkOKRkbkNo",
+      "title": "Why I Moved My XRP Off Exchanges",
+      "published": null,
+      "source": "Prior research candidate",
+      "themes": [
+        "custody",
+        "exchange balances"
+      ],
+      "status": "CANDIDATE_MATCH; DATE_NOT_VERIFIED"
+    },
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK",
+      "published": null,
+      "source": "Prior research candidate",
+      "themes": [
+        "Ripple regulation",
+        "trust-bank status"
+      ],
+      "status": "CANDIDATE_MATCH; TITLE_CLAIM_REQUIRES_REGULATORY_CHECK"
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn't Moving",
+      "published": null,
+      "source": "Prior research candidate",
+      "themes": [
+        "ETF flows",
+        "price reaction"
+      ],
+      "status": "CANDIDATE_MATCH; DATE_NOT_VERIFIED"
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth",
+      "published": null,
+      "source": "Prior research candidate",
+      "themes": [
+        "investor behavior",
+        "risk management"
+      ],
+      "status": "CANDIDATE_MATCH; DATE_NOT_VERIFIED"
+    },
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet?",
+      "published": null,
+      "source": "Prior research candidate",
+      "themes": [
+        "XRPL protocol changes"
+      ],
+      "status": "CANDIDATE_MATCH; DATE_NOT_VERIFIED"
+    },
+    {
+      "video_id": "1e7y0o0Qb3Q",
+      "title": "Is XRP Going to $1000?",
+      "published": null,
+      "source": "Prior research candidate",
+      "themes": [
+        "XRP valuation claims"
+      ],
+      "status": "CANDIDATE_MATCH; DATE_NOT_VERIFIED"
+    }
+  ],
+  "inventory_status": {
+    "candidate_videos_recorded": 11,
+    "channel_reported_video_count": "1.3K",
+    "exhaustive": false,
+    "reason": "YouTube channel/video/RSS pages were throttled during this run; vidIQ connector returned a zero-credit error and no credits were charged. Search results and third-party channel analytics provide only a partial candidate inventory.",
+    "next_method": "Use an authorized complete channel export or restored video-catalog access; enumerate by channel ID, deduplicate Shorts/live/long-form, retain video IDs and publication timestamps, then review transcripts."
+  },
+  "exact_phrase_threads": {
+    "ASK Coin": "No channel-specific exact search result in this run; Permission Coin ASK remains a candidate elsewhere; direct XRP integration unverified.",
+    "actual capital": "No channel-specific exact search result in this run; origin and meaning remain unresolved.",
+    "SBIC, ChatGPT SBIC": "SBIC entity identity is resolved separately; exact phrase ChatGPT SBIC and any claimed partnership remain unverified."
+  }
+}

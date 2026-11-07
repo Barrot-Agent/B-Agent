@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_institutional_relationship_graph_addendum",
+  "captured_at_utc": "2026-11-01T22:03:04Z",
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "exchange_prime_custody"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "stablecoin_payment_infrastructure"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "payment_stablecoin"
+    },
+    {
+      "id": "ARC",
+      "name": "Arc",
+      "type": "L1_network"
+    },
+    {
+      "id": "RIPPLE",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company"
+    },
+    {
+      "id": "RLUSD",
+      "name": "RLUSD",
+      "type": "payment_stablecoin"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "digital_asset"
+    },
+    {
+      "id": "XRPL",
+      "name": "XRP Ledger",
+      "type": "public_blockchain"
+    },
+    {
+      "id": "SBI_GROUP",
+      "name": "SBI Group/SBI Holdings",
+      "type": "financial_group"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "name": "SBI VC Trade",
+      "type": "exchange"
+    },
+    {
+      "id": "SBI_REMIT",
+      "name": "SBI Remit",
+      "type": "remittance_provider"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "name": "SBI Ripple Asia",
+      "type": "joint_venture"
+    },
+    {
+      "id": "SBI_SHINSEI_TRUST",
+      "name": "SBI Shinsei Trust",
+      "type": "trust_company"
+    },
+    {
+      "id": "JPYSC",
+      "name": "JPYSC",
+      "type": "yen_stablecoin"
+    },
+    {
+      "id": "SBIC",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "SME_investment_consultation"
+    },
+    {
+      "id": "BNY",
+      "name": "BNY",
+      "type": "custodian"
+    },
+    {
+      "id": "BLACKROCK",
+      "name": "BlackRock",
+      "type": "asset_manager"
+    },
+    {
+      "id": "DTCC",
+      "name": "DTCC",
+      "type": "market_infrastructure"
+    },
+    {
+      "id": "T54",
+      "name": "t54 Labs",
+      "type": "x402_facilitator"
+    },
+    {
+      "id": "BITQUERY",
+      "name": "Bitquery",
+      "type": "analytics_provider"
+    }
+  ],
+  "edges": [
+    {
+      "from": "COINBASE",
+      "to": "CIRCLE",
+      "type": "USDC_commercial_distribution",
+      "status": "CONFIRMED_BY_SEPARATE_SEC_FILINGS",
+      "sources": [
+        "SRC_COINBASE_10Q",
+        "SRC_CIRCLE_10Q"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "type": "issuer",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "ARC",
+      "type": "launch_and_network",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "ARC",
+      "to": "USDC",
+      "type": "USDC_gas_asset",
+      "status": "CONFIRMED_DESIGN",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "RIPPLE",
+      "type": "RLUSD_distribution_partnership",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_RIPPLE_COINBASE"
+      ],
+      "limits": [
+        "Global Exchange collateral future, not live"
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "type": "issuer",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_RIPPLE_COINBASE"
+      ]
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "type": "native_deployment",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_XRP_INSIGHTS",
+        "SRC_BITQUERY"
+      ]
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "type": "native_deployment",
+      "status": "CONFIRMED_EXISTENCE;CURRENT_SCALE_NOT_ESTABLISHED_HERE",
+      "sources": [
+        "SRC_DEFILLAMA"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "ARC",
+      "type": "exchange_participant",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT_NOT_VALIDATOR",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "ARC",
+      "type": "founding_validator_cohort",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "CIRCLE",
+      "type": "USDC_and_Arc_collaboration",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "USDC",
+      "type": "Japan_distribution_partner",
+      "status": "CIRCLE_REPORTED",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "SBI_SHINSEI_TRUST",
+      "to": "JPYSC",
+      "type": "issuer",
+      "status": "CIRCLE_REPORTED",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "SBI_REMIT",
+      "to": "XRP",
+      "type": "XRP_bridge_in_remittance_route",
+      "status": "HISTORICAL_LAUNCH_CONFIRMED",
+      "sources": [
+        "SRC_SBI_REMIT"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "SBI_REMIT",
+      "type": "XRP_leg_provider",
+      "status": "HISTORICAL_LAUNCH_CONFIRMED",
+      "sources": [
+        "SRC_SBI_REMIT"
+      ]
+    },
+    {
+      "from": "SBIC",
+      "to": "SBI_GROUP",
+      "type": "entity_distinction",
+      "status": "SEPARATE_ENTITIES_NO_CONTROL_EDGE_ESTABLISHED",
+      "sources": [
+        "SRC_SBIC"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "XRP",
+      "type": "Evernorth_principal_market_and_exchange_custody_roles",
+      "status": "PREVIOUSLY_VERIFIED_IN_PRIOR_PROSPECTUS_REVIEW",
+      "sources": [
+        "https://github.com/Barrot-Agent/B-Agent/pull/1464"
+      ],
+      "limits": [
+        "Accounting principal market is not exclusive market control or proof of spot buying"
+      ]
+    },
+    {
+      "from": "T54",
+      "to": "XRPL",
+      "type": "x402_facilitated_native_payments",
+      "status": "DASHBOARD_CLAIM_RAW_EVENT_JOIN_PENDING",
+      "sources": [
+        "SRC_XRP_INSIGHTS"
+      ]
+    },
+    {
+      "from": "BITQUERY",
+      "to": "XRPL",
+      "type": "public_onchain_investigation",
+      "status": "PUBLISHED_ANALYSIS",
+      "sources": [
+        "SRC_BITQUERY"
+      ]
+    }
+  ],
+  "non_edges": [
+    {
+      "from": "CIRCLE",
+      "to": "RIPPLE",
+      "status": "NO_DIRECT_PARTNERSHIP_ESTABLISHED",
+      "note": "Shared exchanges/custodians and overlapping chain deployments do not prove direct partnership."
+    },
+    {
+      "from": "SBIC",
+      "to": "XRP",
+      "status": "NO_DIRECT_RELATIONSHIP_ESTABLISHED"
+    },
+    {
+      "from": "SBIC",
+      "to": "CIRCLE",
+      "status": "NO_DIRECT_RELATIONSHIP_ESTABLISHED"
+    }
+  ]
+}

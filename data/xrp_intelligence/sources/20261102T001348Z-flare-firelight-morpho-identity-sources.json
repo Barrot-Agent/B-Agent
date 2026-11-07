@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_flare_firelight_morpho_and_identity_source_registry",
+  "captured_at_utc": "2026-11-02T00:13:48Z",
+  "sources": [
+    {
+      "id": "SRC_FLARE_ACTUAL_CAPITAL",
+      "url": "https://flare.network/news/introduction-to-xrp-defi",
+      "publisher": "Flare",
+      "date": "2025-05-02",
+      "type": "official_ecosystem_article",
+      "supports": "Exact phrase 'actual capital deployment and liquidity provision' in the context of USDt0 and XRPFi.",
+      "limits": "Marketing statement, no capital amount or verified investor transfer."
+    },
+    {
+      "id": "SRC_FLARE_FXRP_YEAR_ONE",
+      "url": "https://flare.network/news/one-year-of-fxrp-on-flare",
+      "publisher": "Flare",
+      "date": "2026-09-24",
+      "type": "official_ecosystem_report",
+      "supports": "145.2M FXRP minted; 130M deployed in DeFi; 7.8M transactions; 21M on other chains.",
+      "limits": "Rounded company-reported figures; not an independent event-level audit."
+    },
+    {
+      "id": "SRC_FLAREFORGE_FXRP",
+      "url": "https://flareforge.io/api/fxrp.json",
+      "publisher": "FlareForge",
+      "date": "2026-11-01T23:57:22.771Z",
+      "type": "independent_onchain_and_XRPL_API",
+      "supports": "FXRP supply, XRPL backing, core-vault escrow/liquid balances, agents, remote bridge supply by chain and labelled holder balances.",
+      "limits": "Independent third-party labels; not affiliated with Flare Foundation; point-in-time snapshot."
+    },
+    {
+      "id": "SRC_MORPHO_RLUSD_FXRP",
+      "url": "https://app.morpho.org/ethereum/market/rlusd-fxrp",
+      "publisher": "Morpho",
+      "date": "2026-11-02T00:13:48Z",
+      "type": "live_protocol_market_page",
+      "supports": "Current RLUSD debt, FXRP collateral, utilization, rates, LLTV, oracle feeds, supplier concentration, borrower health factors and liquidations.",
+      "limits": "Dynamic UI snapshot; market is permissionless; borrower identities pseudonymous."
+    },
+    {
+      "id": "SRC_FLARE_SENTORA_MORPHO",
+      "url": "https://flare.network/es/news/fxrp-collateral-expands-sentoras-rlusd-vault-on-morpho",
+      "publisher": "Flare",
+      "date": "2026-09-24",
+      "type": "official_ecosystem_announcement",
+      "supports": "FXRP as collateral in Sentora-curated RLUSD vault on Morpho; $7.85M cap, $7.9M RLUSD supplied, 10.6M FXRP collateral at the reported snapshot.",
+      "limits": "Company-reported historical snapshot, not current market state."
+    },
+    {
+      "id": "SRC_FIRELIGHT_PHASE2",
+      "url": "https://flare.network/news/firelight-is-live",
+      "publisher": "Flare",
+      "date": "2026-10-06",
+      "type": "official_ecosystem_announcement",
+      "supports": "Phase 2 coverage activation, automatic conversion of prior positions, 30-day coverage periods, longer exit windows, slashing risk and shared cover targets.",
+      "limits": "Does not publish current first-loss buffer balance or exact reward cutoff during unstaking."
+    },
+    {
+      "id": "SRC_FIRELIGHT_BUFFER_SECONDARY",
+      "url": "https://cryptoslate.com/firelight-launches-its-xrp-based-coverage-market-on-flare/",
+      "publisher": "CryptoSlate",
+      "date": "2026-10-15",
+      "type": "secondary_onchain_analysis",
+      "supports": "Reported first-loss buffer wallet balance around $1,000,002.59 USDT0 and cover-order observations.",
+      "limits": "Not an official Firelight reserve attestation; current balance not verified."
+    },
+    {
+      "id": "SRC_SENTORA_FUNDING",
+      "url": "https://www.prnewswire.com/news-releases/intotheblock-and-trident-merge-to-launch-sentora-securing-25m-to-create-first-compliant-institutional-defi-platform-for-yield-liquidity-and-risk-management-302447198.html",
+      "publisher": "Sentora via PR Newswire",
+      "date": "2025-05-06",
+      "type": "company_press_release",
+      "supports": "$25M Series A and strategic ecosystem investors including Ripple and Flare."
+    },
+    {
+      "id": "SRC_SENTORA_COINBASE_PERSONNEL",
+      "url": "https://www.theblock.co/news/deals/2025-05-06-intotheblock-trident-merger-institutional-defi-platform-sentora-25-million-usd-series-a-353220",
+      "publisher": "The Block",
+      "date": "2025-05-06",
+      "type": "independent_business_reporting",
+      "supports": "Anthony DeMartino former Coinbase Head of Risk Strategies and Sentora CEO."
+    },
+    {
+      "id": "SRC_ASK_COIN_CMC",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "publisher": "CoinMarketCap",
+      "date": "2026-11-02T00:13:48Z",
+      "type": "exchange_listing_database",
+      "supports": "Ask Coin exchange listing is inactive/untracked, with no usable volume/reserve data.",
+      "limits": "Literal-name match only; intended user referent and XRP connection unconfirmed."
+    },
+    {
+      "id": "SRC_PERMISSION_COIN",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "publisher": "CoinMarketCap",
+      "date": "2026-11-02T00:13:48Z",
+      "type": "token_listing_database",
+      "supports": "Permission Coin is a separate ASK token with Base and Polygon contracts.",
+      "limits": "No XRP relationship established."
+    },
+    {
+      "id": "SRC_SBIC_CHATGPT",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo SBIC",
+      "date": "2025-06-12",
+      "type": "official_training_announcement",
+      "supports": "Two-day AI/ML training for investee companies, including ChatGPT and Copilot/RAG/API.",
+      "limits": "Educational program, not OpenAI partnership or XRP relationship."
+    },
+    {
+      "id": "SRC_KAMILAH_CHANNEL",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "publisher": "YouTube channel",
+      "date": "2026-11-02T00:13:48Z",
+      "type": "creator_channel",
+      "supports": "Channel handle used for the user-confirmed Dr. Kamilah Stevenson identity.",
+      "limits": "Full public-upload inventory not retrieved; vidIQ request failed due insufficient credits."
+    },
+    {
+      "id": "SRC_COINBASE_Q3",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase Global",
+      "date": "2026-10-29",
+      "type": "SEC_10Q",
+      "supports": "Q3 stablecoin revenue, USDC balances, trading volume and financial results.",
+      "limits": "Stablecoin revenue is not exclusively Circle revenue; fair-value investment gains are not operating income."
+    },
+    {
+      "id": "SRC_CFTC_26_17",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "publisher": "CFTC",
+      "date": "2026-05-29",
+      "type": "regulatory_no_action_letter",
+      "supports": "Conditional CFM customer-asset transfer/right-of-reuse route for foreign derivatives through Coinbase Bermuda/Deribit.",
+      "limits": "No-action relief, not a blanket rule or evidence of actual XRP collateral use."
+    },
+    {
+      "id": "SRC_COINBASE_XRP_COLLATERAL",
+      "url": "https://help.coinbase.com/en/coinbase/derivatives/cross-collateral",
+      "publisher": "Coinbase",
+      "date": "2026-11-02T00:13:48Z",
+      "type": "product_documentation",
+      "supports": "XRP listed as eligible cross-collateral for eligible non-US Global Derivatives customers with 15% X:SM haircut.",
+      "limits": "Not evidence of actual customer balances or usage."
+    },
+    {
+      "id": "SRC_XRP_MARKET_PRICE",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "publisher": "CoinMarketCap",
+      "date": "2026-11-01",
+      "type": "market_aggregator",
+      "supports": "XRP price, market capitalization, circulating and total supply, 24h volume.",
+      "limits": "Aggregated spot data; circulating supply definitions vary across providers."
+    },
+    {
+      "id": "SRC_XRP_DERIVATIVES_TRADRADAR",
+      "url": "https://tradradar.io/markets/xrp",
+      "publisher": "TradRadar",
+      "date": "2026-11-01",
+      "type": "derivatives_aggregator",
+      "supports": "Seven-exchange XRP open interest, funding, long-account ratio and liquidations.",
+      "limits": "Different venue universe from contract-level providers."
+    },
+    {
+      "id": "SRC_XRP_ETF",
+      "url": "https://xrp-insights.com/",
+      "publisher": "XRP Insights",
+      "date": "2026-11-01",
+      "type": "ETF_and_supply_aggregator",
+      "supports": "Week 44 XRP ETF flows, holdings, AUM and attributed exchange wallet balances.",
+      "limits": "GXRP historical flow gap; custody wallet balances are not tradable float."
+    },
+    {
+      "id": "SRC_CIRCLE_ARC_MAINNET",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "publisher": "Circle",
+      "date": "2026-09-16",
+      "type": "official_network_launch_announcement",
+      "supports": "Arc mainnet, USDC gas, SBI Group founding validator, Coinbase/Binance exchange participants, Morpho/Aave credit integrations, 98.8% Circle-reported agent transaction share, ARC genesis mint and no public launch commitment.",
+      "limits": "Company-reported adoption claims; no absolute agent transaction volume; permissioned validator set."
+    },
+    {
+      "id": "SRC_COINBASE_RLUSD",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple and Coinbase",
+      "date": "2026-10-28",
+      "type": "joint_commercial_announcement",
+      "supports": "RLUSD on Coinbase Prime, Exchange and retail; XRPL/Base/Ethereum support; Global Exchange collateral support to follow.",
+      "limits": "Global Exchange collateral support is future at announcement; no actual collateral balances disclosed."
+    },
+    {
+      "id": "SRC_FLARE_ONE_YEAR",
+      "url": "https://flare.network/news/one-year-of-fxrp-on-flare",
+      "publisher": "Flare",
+      "date": "2026-09-24",
+      "type": "official_ecosystem_report",
+      "supports": "FXRP 1:1 representation, 130M deployed in DeFi, 7.8M transactions, 21M cross-chain, Morpho RLUSD market, future direct XRPL borrow path, FLR/FIRE fee-routing distinctions.",
+      "limits": "Rounded first-party ecosystem metrics; not an independent event-level audit."
+    },
+    {
+      "id": "SRC_FLARE_ACTUAL_CAPITAL",
+      "url": "https://flare.network/de/news/introduction-to-xrp-defi",
+      "publisher": "Flare",
+      "date": "2025-05-02",
+      "type": "official_ecosystem_article",
+      "supports": "Exact phrase 'actual capital deployment and liquidity provision' in USDt0/XRPFi context.",
+      "limits": "Marketing statement; not a disclosed amount or proof of a specific capital transfer."
+    },
+    {
+      "id": "SRC_SBI_CIRCLE_INVESTMENT",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "date": "2025-06-09",
+      "type": "official_investment_disclosure",
+      "supports": "$50M Circle equity investment, $25M each from SBI Holdings and SBI Shinsei Bank."
+    },
+    {
+      "id": "SRC_SBI_CIRCLE_JV",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15331.html",
+      "publisher": "SBI Holdings",
+      "date": "2025-03-25",
+      "type": "official_joint_venture_disclosure",
+      "supports": "50/50 joint venture named Circle SBI Japan KK / SBI Circle Holdings Co., Ltd. to promote USDC in Japan."
+    },
+    {
+      "id": "SRC_SBI_ARC_PRESALE",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "publisher": "SBI Holdings",
+      "date": "2026-05-12",
+      "type": "official_presale_participation_notice",
+      "supports": "SBI participated in Circle ARC token presale through a consolidated subsidiary; expected total raise $222M.",
+      "limits": "SBI's own amount, allocation and lockup are not disclosed."
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_EQUITY",
+      "url": "https://x.com/yoshitaka_kitao/status/2022851705772138784",
+      "publisher": "Yoshitaka Kitao public X account",
+      "date": "2026-02-15",
+      "type": "public_executive_statement",
+      "supports": "Kitao said SBI's exposure was around/more than 9% of Ripple Labs, correcting a $10B XRP token-holding claim.",
+      "limits": "Not an audited ownership filing; exact current percentage/share class unverified."
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_EQUITY_SECONDARY",
+      "url": "https://crypto.news/sbi-holdings-says-10b-xrp-talk-is-false/",
+      "publisher": "crypto.news",
+      "date": "2026-02-16",
+      "type": "secondary_reporting",
+      "supports": "Reports and links to the public X statement; distinguishes Ripple equity from XRP tokens."
+    },
+    {
+      "id": "SRC_SBI_RLUSD_JAPAN",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publisher": "SBI Holdings / SBI VC Trade / Ripple",
+      "date": "2026-06-24",
+      "type": "official_joint_product_announcement",
+      "supports": "SBI VC Trade began RLUSD service under its Japanese Type 4 electronic payment instrument classification.",
+      "limits": "Primary announcement does not specify blockchain/network scope."
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_ASIA_XRPL",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "publisher": "SBI Ripple Asia",
+      "date": "2026-02-26",
+      "type": "official_proof_of_concept_announcement",
+      "supports": "Tokenized deposits/deposit-like digital money proof of concept considering XRPL.",
+      "limits": "Proof of concept, not live XRP collateral or XRP settlement."
+    },
+    {
+      "id": "SRC_SBI_REMIT_XRP",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "publisher": "SBI Remit",
+      "date": "2023-09-06",
+      "type": "official_operational_payment_announcement",
+      "supports": "XRP-based remittance service to the Philippines, Vietnam and Indonesia, using SBI VC Trade and Tranglo.",
+      "limits": "No current volumes or net XRP inventory disclosed."
+    }
+  ],
+  "source_independence": "Flare official metrics are company-reported; FlareForge is independent direct onchain/XRPL data; Morpho page is protocol data; Sentora PR is company-supplied; The Block is independent business reporting; CoinMarketCap and TradRadar are aggregators; no source alone establishes net XRP demand."
+}

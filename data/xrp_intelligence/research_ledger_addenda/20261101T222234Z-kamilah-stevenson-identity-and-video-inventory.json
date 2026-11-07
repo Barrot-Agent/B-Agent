@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-01T22:22:34Z",
+  "identity_update": {
+    "topic": "Camilla Stephenson public YouTube identity",
+    "prior_status": "IDENTITY_NOT_CONFIRMED",
+    "new_status": "STRONG_MATCH_TO_CAMILLA_STEVENSON; EXACT_USER_SPELLING_STEPHENSON_NOT_VERIFIED",
+    "sources": [
+      "SRC_IHEART_KAMILAH_INTERVIEW_20260611",
+      "SRC_VLING_KAMILAH_CHANNEL_20261101"
+    ],
+    "note": "Strongest match is Dr. Kamilah Stevenson, who publicly uses Camilla Stevenson in an interview and identifies her YouTube presence as Doctor Camilla Stevenson. Channel display name is Kamilah Stevenson; surname spelling in user request differs."
+  },
+  "public_video_inventory": {
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "candidate_videos": 11,
+    "channel_reported_total": "1.3K",
+    "complete": false,
+    "blockers": [
+      "YouTube web endpoints throttled",
+      "vidIQ connector returned zero-credit error; no credits charged",
+      "No complete authorized channel export available"
+    ]
+  },
+  "creator_research_notes": [
+    "The June 11, 2026 interview discusses XRP, institutional adoption, Japan, market psychology and AI.",
+    "Guest describes adversarial AI review: ask one AI to challenge the thesis, then use two other AIs to challenge one another. Platforms are not named; no live platform collaboration is established.",
+    "The March 6, 2026 yen-carry/oil-shock/XRP video is a causal hypothesis, not established market causation.",
+    "The April 19, 2026 video description's 4.09B XRP accumulation, 32% whale ownership and 7.03B exchange outflow claims require independent onchain verification before model admission.",
+    "The creator warns about fake pages; use channel ID and handle, not display-name-only matching."
+  ],
+  "unresolved_threads": [
+    "Exact user spelling Camilla Stephenson versus strongest match Camilla/Kamilah Stevenson",
+    "Complete 1.3K public upload inventory",
+    "ASK Coin exact phrase",
+    "actual capital exact phrase",
+    "ChatGPT SBIC exact phrase and any claimed partnership"
+  ]
+}
