@@ -20,6 +20,7 @@ def _artifact():
 def test_etf_flow_disagreement_artifact_is_well_formed_and_time_bounded():
     record = _artifact()
     assert record["schema_version"] == "1.0"
+    assert record["revision"] == 2
     assert record["record_type"] == "xrp_etf_flow_provider_scope_disagreement"
     assert record["mission_id"] == "xrp_intelligence_prediction_engine"
     captured = datetime.fromisoformat(record["captured_at_utc"].replace("Z", "+00:00"))
@@ -28,8 +29,11 @@ def test_etf_flow_disagreement_artifact_is_well_formed_and_time_bounded():
     assert record["data_as_of_utc"].startswith("2026-11-06")
 
 
-def test_rendered_excerpt_receipts_recompute_exactly():
+def test_rendered_excerpt_receipts_recompute_and_respect_quote_limit():
     record = _artifact()
+    contract = record["source_capture_contract"]
+    assert contract["raw_wire_bytes_captured"] is False
+    assert contract["maximum_direct_quote_words_per_source"] == 25
     sources = record["sources"]
     assert len({source["source_id"] for source in sources}) == len(sources)
     for source in sources:
@@ -37,9 +41,11 @@ def test_rendered_excerpt_receipts_recompute_exactly():
         assert source["retrieved_at_utc"] == record["captured_at_utc"]
         digest = source["excerpt_sha256"]
         if digest is None:
+            assert source["excerpt"] is None
             assert source["source_id"] == "THE_XRP_INVESTOR_UNPARSED_DASHBOARD"
             continue
         assert re.fullmatch(r"[0-9a-f]{64}", digest)
+        assert len(source["excerpt"].split()) <= 25
         assert hashlib.sha256(source["excerpt"].encode("utf-8")).hexdigest() == digest
 
 
@@ -50,8 +56,8 @@ def test_alpha_five_fund_zero_flow_is_not_a_universal_market_total():
     assert claims["fund_count"] == 5
     assert claims["nov6_net_flow_usd"] == 0
     assert set(claims["tickers"]) == {"XRP", "XRPZ", "XRPC", "GXRP", "TOXR"}
-    assert "upstream data lineage not disclosed" in " ".join(alpha["limitations"]).lower()
-    assert "no fund list, aum, holdings or fees" in alpha["excerpt"].lower()
+    assert "does not publish fund-level aum or holdings" in alpha["source_summary"].lower()
+    assert "upstream flow source" in alpha["source_summary"].lower()
 
 
 def test_cryptokeyhole_nov6_is_partial_and_xrpc_outflow_is_preserved():
@@ -69,9 +75,9 @@ def test_cryptokeyhole_nov6_is_partial_and_xrpc_outflow_is_preserved():
 def test_cryptokeyhole_future_dated_issuer_label_is_quarantined():
     record = _artifact()
     source = next(s for s in record["sources"] if s["source_id"] == "CRYPTOKEYHOLE_XRP_ETF_FLOWS")
-    assert "9 Nov 2026" in source["excerpt"]
+    assert "9 Nov 2026" in source["source_summary"]
+    assert "future-date anomaly" in source["source_summary"].lower()
     assert any("future-dated" in item for item in source["limitations"])
-    assert "internal date inconsistency" in source["excerpt"]
 
 
 def test_xrp_insights_aggregate_scope_and_vintage_are_explicit():
@@ -89,11 +95,11 @@ def test_xrp_insights_aggregate_scope_and_vintage_are_explicit():
 def test_xrp_insights_known_flow_exclusions_and_non_pure_spot_components_are_retained():
     record = _artifact()
     source = next(s for s in record["sources"] if s["source_id"] == "XRP_INSIGHTS_XRP_ETF_DATASET")
-    excerpt = source["excerpt"].lower()
-    assert "gxrp flows are withheld" in excerpt
-    assert "xrpr exposure is partly held through another etp" in excerpt
-    assert "bitw holdings can move with index rebalancing" in excerpt
-    assert "some historical rows were reconstructed" in excerpt
+    summary = source["source_summary"].lower()
+    assert "withholds gxrp flows" in summary
+    assert "xrpr with partly indirect etp exposure" in summary
+    assert "bitw whose xrp sleeve can change through index rebalancing" in summary
+    assert "reconstructed historical rows" in summary
 
 
 def test_aggregators_share_issuer_source_class_but_have_distinct_processing_lineage():

@@ -26,7 +26,7 @@
         20,
         24
       ],
-      "source_independence_group": "issuer_primary_sec_filing",
+      "source_independence_group": "evernorth_issuer_primary_filing_set",
       "excerpt": "up to 5,218,935 shares\nup to approximately $76.8 million in aggregate gross proceeds\ncash commitment fee of $521,893.50",
       "excerpt_sha256": "c1a0eb395d9012850be24150ba8d3a88bf4db2af6b2736b4569527cdd73a5b01",
       "paraphrase": "The prospectus registers up to 5,218,935 new Class A shares for potential sales to Cantor under an October 23 committed equity facility. At the October 29 XRPN close of $14.71, the issuer estimates up to approximately $76.8 million gross if the full share ceiling is sold. The issuer separately discloses a $521,893.50 cash commitment fee. The prospectus distinguishes the issuer's primary sale to Cantor from Cantor's later resale to the public.",
@@ -65,10 +65,10 @@
         854,
         860
       ],
-      "source_independence_group": "issuer_primary_sec_contract",
+      "source_independence_group": "evernorth_issuer_primary_filing_set",
       "excerpt": "the Investor shall pay to the Company an amount in cash\nninety seven percent (97%) of the VWAP",
       "excerpt_sha256": "5b95604bb835efa0f3b47a8e0478a835395281d3833033d49799c67ab2d20030",
-      "paraphrase": "The company may send purchase notices after commencement and satisfaction of conditions; it has the right but not the obligation to sell. Cantor pays cash for shares actually purchased, with settlement due by 5 p.m. New York time on the second trading day after the applicable share-delivery date. The ordinary purchase price is 97% of the applicable VWAP, with a separate lower-price formula for certain large-volume notices. Beneficial ownership is capped at 4.99%, and purchase share amounts are limited by a 20% trading-volume percentage. The $521,893.50 upfront fee is fully earned and non-refundable as of the Closing Date regardless of whether purchases occur; a true-up may apply, with aggregate commitment fees capped at $1 million.",
+      "paraphrase": "The agreement gives Evernorth a right but not an obligation to sell shares after commencement and other conditions. Cantor pays cash for shares actually purchased, with settlement due within two trading days after share delivery. The ordinary purchase price is 97% of applicable VWAP; the agreement also contains a 4.99% beneficial-ownership ceiling and a 20% trading-volume cap. The upfront fee is fully earned and non-refundable as of the Closing Date, which the agreement defines as the agreement date (October 23, 2026), regardless of whether purchases occur. Payment is due within five business days after the initial resale registration statement becomes effective. A true-up may apply, and total commitment fees are capped at $1 million.",
       "claims": {
         "issuer_option_to_sell": true,
         "investor_purchase_obligation_conditional": true,
@@ -78,7 +78,10 @@
         "cash_settlement_deadline": "5 p.m. New York time on second trading day after share-delivery date",
         "upfront_fee_fully_earned_at_closing": true,
         "upfront_fee_non_refundable": true,
-        "aggregate_commitment_fee_cap_usd": 1000000
+        "aggregate_commitment_fee_cap_usd": 1000000,
+        "upfront_fee_earned_date": "2026-10-23",
+        "upfront_fee_payment_deadline": "Within five business days after the effective date of the initial resale registration statement.",
+        "closing_date_definition": "The agreement defines Closing Date as the date of the agreement."
       },
       "limitations": [
         "Contractual capacity and conditions do not prove Commencement occurred.",
@@ -93,13 +96,39 @@
       "form": "8-K",
       "filing_date": "2026-10-23",
       "relevant_lines": [
-        1,
-        2,
-        3
+        54,
+        55,
+        56,
+        58,
+        59,
+        60,
+        61,
+        62,
+        64,
+        66,
+        70,
+        71,
+        76,
+        77,
+        80,
+        81
       ],
-      "source_independence_group": "issuer_primary_sec_filing",
-      "paraphrase": "The October 23 Form 8-K records the entry into the committed equity facility and the 5,218,935-share ceiling. It does not record a completed draw or cash receipt.",
-      "excerpt_sha256": null
+      "source_independence_group": "evernorth_issuer_primary_filing_set",
+      "paraphrase": "The October 23 Form 8-K confirms the same 5,218,935-share facility, the company's discretion over whether and when to sell, the registration/commencement conditions, volume and ownership limits, the 97%-of-VWAP price formula, the upfront fee and additional transaction costs. It does not report a completed draw or settled proceeds.",
+      "excerpt_sha256": null,
+      "claims": {
+        "share_ceiling": 5218935,
+        "issuer_discretion_to_sell": true,
+        "purchase_notice_commencement_requires_effective_resale_registration_and_final_prospectus": true,
+        "beneficial_ownership_cap_percent": 4.99,
+        "purchase_period_volume_cap_percent": 20,
+        "ordinary_purchase_price_percent_of_vwap": 97,
+        "upfront_commitment_fee_usd": 521893.5,
+        "upfront_fee_non_refundable_from_agreement_date": true,
+        "aggregate_commitment_fee_cap_usd": 1000000,
+        "cantor_expense_reimbursement_cap_usd": 500000,
+        "qualified_independent_underwriter_fee_usd": 200000
+      }
     }
   ],
   "price_assumption_reconciliation": {
@@ -112,19 +141,28 @@
     "current_same_share_ceiling_gross_calculation_usd": 76770533.85,
     "current_rounded_issuer_estimate_usd": 76800000,
     "difference_is_new_facility": false,
-    "interpretation": "The two gross figures use the same share ceiling and different XRPN reference prices. They are not two facilities, two cash receipts or two XRP purchases."
+    "interpretation": "The two gross figures use the same share ceiling and different XRPN reference prices. They are not two facilities, two cash receipts or two XRP purchases.",
+    "prior_illustrative_price_source": "Earlier secondary coverage of the October 23 preliminary prospectus used the October 22 XRPN close; this is a reference-price calculation, not a second facility or a realized receipt.",
+    "current_prospectus_source": "Issuer 424B3 dated October 30, 2026, using the October 29 XRPN close."
   },
   "actual_capital_ledger": {
     "facility_capacity_shares": 5218935,
     "realized_gross_cash_from_this_facility_verified_usd": null,
     "realized_net_cash_from_this_facility_verified_usd": null,
-    "purchase_notices_verified": 0,
     "shares_issued_to_cantor_under_facility_verified": null,
     "xrp_purchased_from_facility_proceeds_verified": null,
     "upfront_commitment_fee_usd": 521893.5,
     "fee_classification": "CASH_COST_NOT_CAPITAL_INFLOW",
-    "cash_receipt_status": "NOT_ESTABLISHED_BY_THE_REVIEWED_FILINGS",
-    "caveat": "No public draw or settlement evidence was identified in the reviewed filings through 2026-11-07. This does not prove that no private notice or settlement occurred."
+    "cash_receipt_status": "NOT_EVIDENCED_IN_REVIEWED_PUBLIC_FILINGS",
+    "caveat": "No public draw notice or cash settlement was identified in the reviewed filings through 2026-11-07. This does not prove that no private notice or settlement occurred.",
+    "purchase_notices_publicly_verified_in_reviewed_filings": 0,
+    "upfront_fee_earned_date": "2026-10-23",
+    "upfront_fee_payment_deadline": "Within five business days after the effective date of the initial resale registration statement.",
+    "additional_costs": {
+      "cantor_expense_reimbursement_cap_usd": 500000,
+      "qualified_independent_underwriter_fee_usd": 200000,
+      "treatment": "Transaction costs, not capital inflows; not netted against the illustrative gross proceeds in this record."
+    }
   },
   "model_admission": {
     "model_eligible": false,
@@ -134,7 +172,9 @@
       "Treating the commitment fee as proceeds.",
       "Treating a share purchase facility as a debt facility.",
       "Treating equity issuance as proof of XRP purchases.",
-      "Treating XRP treasury growth intent as realized acquisition."
+      "Treating XRP treasury growth intent as realized acquisition.",
+      "Treating the $521,893.50 non-refundable commitment fee as capital raised.",
+      "Ignoring the $500,000 Cantor expense-reimbursement cap or the $200,000 QIU fee when discussing net proceeds."
     ]
   },
   "forecast_status": "NOT_ISSUED",
@@ -144,5 +184,12 @@
     "Reconcile any issued shares to transfer-agent/SEC ownership records and the company's diluted share count.",
     "Reconcile cash proceeds separately from fees, expenses, debt and prior subscriptions.",
     "Require separate custody/trade evidence before attributing any facility proceeds to XRP acquisitions."
-  ]
+  ],
+  "source_capture_contract": {
+    "method": "SEC EDGAR public filing text rendered by the web retrieval service.",
+    "raw_wire_bytes_captured": false,
+    "http_response_headers_captured": false,
+    "excerpt_hash_scope": "Exact short rendered excerpts (maximum 25 words per source) encoded as UTF-8; hashes do not cover original HTTP response bytes.",
+    "maximum_direct_quote_words_per_source": 25
+  }
 }

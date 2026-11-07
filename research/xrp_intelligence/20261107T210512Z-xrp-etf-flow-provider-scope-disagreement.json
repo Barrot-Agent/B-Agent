@@ -12,8 +12,9 @@
     "method": "Web-rendered public page excerpts captured during this run.",
     "raw_wire_bytes_captured": false,
     "http_response_headers_captured": false,
-    "excerpt_hash_scope": "Exact normalized rendered excerpt strings encoded as UTF-8; hashes do not claim to cover original HTTP response bytes.",
-    "provider_event_time_and_retrieval_time_are_separate": true
+    "excerpt_hash_scope": "Exact short rendered excerpts (maximum 25 words per source) encoded as UTF-8. Hashes do not cover original HTTP response bytes or headers.",
+    "provider_event_time_and_retrieval_time_are_separate": true,
+    "maximum_direct_quote_words_per_source": 25
   },
   "sources": [
     {
@@ -24,8 +25,8 @@
       "publisher_data_as_of": "2026-11-06",
       "source_independence_group": "alpha_finance_upstream_undisclosed",
       "upstream_lineage": "Not disclosed in the captured page; do not assume independent issuer-level sourcing.",
-      "excerpt": "XRP ETF dashboard\nLive Covering 5 funds Coin price session close Through 2026-11-06\nXRP ETF net flow, 6 Nov 2026: $0 inflow\nXRP ETF 30-session flow: $45.9M inflow\nDaily XRP ETF Flows: 06 Nov +$0; 05 Nov +$0; 04 Nov +$0; 03 Nov +$0; 29 Oct +$8.4M.\nThe table lists five tickers: XRP, XRPZ, XRPC, GXRP, TOXR. No fund list, AUM, holdings or fees are published; table is built from tickers in its flow series.",
-      "excerpt_sha256": "e3690faadf318d988f65a21e4825f681927289bcbbbf5d8d0f661b32562ec23e",
+      "excerpt": "Live Covering 5 funds\nXRP ETF net flow, 6 Nov 2026: $0 inflow",
+      "excerpt_sha256": "b10b5c2130a7d66399b6e87d7c28ade056a3172cca2bd58776e9dbf664967558",
       "claims": {
         "fund_count": 5,
         "nov6_net_flow_usd": 0,
@@ -45,7 +46,9 @@
         "Upstream data lineage not disclosed in the captured excerpt.",
         "Five-fund universe excludes XRPR and BITW.",
         "Nov 6 zero-flow claim conflicts with other issuer-holdings-based aggregators."
-      ]
+      ],
+      "previous_excerpt_sha256": "e3690faadf318d988f65a21e4825f681927289bcbbbf5d8d0f661b32562ec23e",
+      "source_summary": "Through the November 6 session, Alpha Finance reports five tickers and zero aggregate daily flow, alongside positive seven-session and 30-session totals. Its displayed fund set is XRP, XRPZ, XRPC, GXRP and TOXR. The page does not publish fund-level AUM or holdings, and the captured page does not disclose the upstream flow source."
     },
     {
       "source_id": "CRYPTOKEYHOLE_XRP_ETF_FLOWS",
@@ -55,8 +58,8 @@
       "publisher_updated_at_utc": "2026-11-07T20:33:00Z",
       "source_independence_group": "issuer_reported_holdings_aggregator_a",
       "upstream_lineage": "Publisher says it reads issuer-published holdings files; underlying issuers overlap with XRP Insights and are not independent of that common primary source class.",
-      "excerpt": "Updated 7 Nov 2026, 20:33 UTC. 6 November 2026: partial, 3 of 4 funds published; waiting for Franklin Templeton XRPZ.\n6 Nov 2026: XRP Bitwise 0; XRPZ missing; XRPC -752,048 XRP (-$887k); TOXR 0; total -752,048 XRP, 3/4.\n5 Nov 2026: -3,339 XRP, 4/4.\nThe page says a complete total is shown only when every fund collected daily has published. It excludes Grayscale daily flows because of an automated-reader bot challenge and does not count XRPR because part of its exposure is held through another ETP.\nThe page also contains an internal date inconsistency: a line says the latest issuer file is dated 9 Nov 2026 while the page update and observed publication timestamps are 7 Nov 2026.",
-      "excerpt_sha256": "937f1234e9ca651cc4dbb35fc99755c3b4ad521411b3c120fa175a50149c7adb",
+      "excerpt": "6 November 2026: partial, 3 of 4 funds published\nXRPC −752,048 XRP\nwaiting for Franklin Templeton XRPZ",
+      "excerpt_sha256": "805655417ec167b8ac920391bb3e8c75d8d818400b482324eb5d5fe508104f56",
       "claims": {
         "nov6_status": "PARTIAL",
         "reporting_funds": 3,
@@ -80,7 +83,9 @@
         "A future-dated '9 Nov 2026' issuer-file label conflicts with the page's 7 Nov update/publication timestamps.",
         "Daily coverage starts in October 2026 for the listed funds.",
         "Raw issuer files were not fetched directly during this run."
-      ]
+      ],
+      "previous_excerpt_sha256": "937f1234e9ca651cc4dbb35fc99755c3b4ad521411b3c120fa175a50149c7adb",
+      "source_summary": "CryptoKeyhole's page update was 20:33 UTC on November 7. It reports only three of its four daily-tracked issuers for November 6: Bitwise and 21Shares at zero, Canary/XRPC down 752,048 XRP, and Franklin/XRPZ not yet published. It excludes daily Grayscale flows and does not count XRPR. A separate page field labels an issuer file as dated November 9 despite the page update and observed publication times being November 7; this is an internal future-date anomaly."
     },
     {
       "source_id": "XRP_INSIGHTS_XRP_ETF_DATASET",
@@ -92,8 +97,8 @@
       "publisher_data_as_of": "2026-11-06",
       "source_independence_group": "issuer_reported_holdings_aggregator_b",
       "upstream_lineage": "Publisher says its scraper reads issuer holdings/net-asset pages; the underlying issuers overlap with CryptoKeyhole. Aggregator calculations are separate, but the raw issuer source class is shared.",
-      "excerpt": "XRP Insights data as of 2026-11-06; generated_at 2026-11-07T18:25:50.922Z; 231 trading days; 1,597 fund-day rows.\nNov 6 total held 1,195,787,657 XRP; Nov 2-Nov 6 weekly net flow -812,529 XRP.\nThe dashboard reports Nov 6 flow -663,043 XRP (six spot funds plus BITW) and $1.43B net assets including BITW; six spot funds alone held 1.17B XRP and $1.40B net assets.\nMethod: day-over-day change in issuer-reported holdings. GXRP flows are withheld across history because of a known capture gap; XRPR exposure is partly held through another ETP; BITW holdings can move with index rebalancing; some historical rows were reconstructed from third-party flow estimates. Flow is not necessarily creations/redemptions only.",
-      "excerpt_sha256": "2f90cc6da1c1a761cc2dcecd063886057f82a95cc5068f97f1efecfeb4e2cfef",
+      "excerpt": "Data as of Nov 6, 2026\n−663,043 XRP\n−812,529 XRP",
+      "excerpt_sha256": "cc23a625f6b7ff222dab1c2c1fca36574bd1fe957174c37852293478755cebc0",
       "claims": {
         "nov6_net_flow_xrp": -663043,
         "nov2_to_nov6_net_flow_xrp": -812529,
@@ -120,7 +125,9 @@
         "BITW XRP holdings can change through index rebalancing and are not solely creations/redemptions.",
         "Historical rows include periods reconstructed from third-party estimates.",
         "Flow is calculated from holdings deltas and can include non-creation/redemption changes."
-      ]
+      ],
+      "previous_excerpt_sha256": "2f90cc6da1c1a761cc2dcecd063886057f82a95cc5068f97f1efecfeb4e2cfef",
+      "source_summary": "XRP Insights reports a November 6 aggregate outflow of 663,043 XRP and a November 2–6 weekly outflow of 812,529 XRP across its six-spot-fund-plus-BITW universe. Its generated dataset contains 1,597 fund-day rows across 231 trading days and reports 1,195,787,657 XRP held. The publisher withholds GXRP flows because of a capture gap, includes XRPR with partly indirect ETP exposure, includes BITW whose XRP sleeve can change through index rebalancing, and documents reconstructed historical rows."
     },
     {
       "source_id": "THE_XRP_INVESTOR_UNPARSED_DASHBOARD",
@@ -128,7 +135,7 @@
       "url": "https://thexrpinvestor.com/xrp-etf-flows",
       "retrieved_at_utc": "2026-11-07T21:05:12Z",
       "source_independence_group": "unverified_secondary_display",
-      "excerpt": "Search result display claims 12 products, 6 spot, 4 derivative and 1 index; total AUM $1.39B; 1.20B XRP in trust; $27.28M total daily volume. The page returned no readable lines when opened.",
+      "excerpt": null,
       "excerpt_sha256": null,
       "claims": {
         "products_displayed": 12,
@@ -143,7 +150,9 @@
         "Page could not be parsed; the search-result display is not a verifiable page excerpt.",
         "The stated product counts do not sum to the displayed total of 12.",
         "Excluded from reconciliation and model admission."
-      ]
+      ],
+      "previous_excerpt_sha256": null,
+      "source_summary": "A search-result display claimed a 12-product universe and approximately $1.39 billion AUM, but the page returned no readable lines. Its displayed category counts do not reconcile to the stated total. This source remains unverified and excluded."
     }
   ],
   "source_scope_reconciliation": {
@@ -213,5 +222,7 @@
     "Reconcile holdings deltas against creations/redemptions and sponsor fee accruals.",
     "Resolve CryptoKeyhole's future-dated 9 Nov issuer-file label.",
     "Keep incomplete or reconstructed fund rows excluded from any historical training vintage until their exact availability times are proven."
-  ]
+  ],
+  "revision": 2,
+  "revision_note": "Current tree replaces long rendered excerpts with short quotation receipts and paraphrased source summaries; prior excerpt digests remain recorded for audit. Git history preserves the previous revision."
 }
