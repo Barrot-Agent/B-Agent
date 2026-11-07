@@ -1,3 +1,118 @@
+## Run 17 — 2026-11-07 05:01–05:11 UTC
+
+This block supersedes Run 16 for current branch heads, repository inventory, market evidence and verification. Main is unchanged. Work stayed on the two existing mission branches; no PR was created or closed.
+
+### Mission priority
+
+XRP intelligence and prediction-engine mastery remain the highest-priority Barrot mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Current repository and PR inventory
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; protected=true; unchanged.
+- Full recursive main tree: 1,403 entries, 1,298 files, 493 Python files, 86 workflow entries, 13 `research/xrp_intelligence/*.json` artifacts and 5 `data/xrp_intelligence/*.json` source assets. Tree response was not truncated.
+- #1640 V3 branch: head `daecba86b5d2ae8a849980851fb2922c22ec89a0`; 523 commits ahead, 0 behind; 161 changed paths; 1,466 tree entries, 1,354 files, 537 Python files, 118 test-named Python modules, 87 workflow entries and 18 XRP research JSON artifacts.
+- #1643 research branch: head `6a349549fe93cd550f80e40b8aa5c7204e9668be`; 566 commits ahead, 0 behind; 400 changed paths; 1,801 tree entries, 1,695 files, 646 Python files, 242 test-named Python modules, 86 workflow entries and 254 XRP research JSON artifacts.
+- Complete open-PR pagination: 371 open PRs, 355 drafts and 16 non-drafts. Pages 1–4 returned 100, 100, 100 and 71 entries respectively.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+
+Current head: `daecba86b5d2ae8a849980851fb2922c22ec89a0`.
+
+- Full repository suite: **1,096 passed, 8 subtests passed**.
+- Core suite: **630 passed, 8 subtests passed**.
+- Inclusive package coverage: **57.89%**, above the 53% threshold.
+- Installed wheel built and verified that the packaged primary mission and canonical data assets load.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed; merging remains disabled.
+- Exact evidence: [full CI 42341371760](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341371760), [six-manifest dependency audit 42341371701](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341371701), [fail-closed gate 42341371726](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341371726).
+
+**Prediction-engine calibration change**
+
+Added `barrot_agent/evolution/probability_calibration.py` and integrated it into `barrot_agent/evolution/walk_forward.py`. The evaluator now performs rolling temporal temperature scaling for its four deterministic baselines:
+
+- Uses only prior out-of-sample forecasts whose outcomes were available by the current `training_cutoff_utc`.
+- Deduplicates repeated target records and retains the latest eligible prior forecast for each target.
+- Fits on the earlier 80% of eligible history and validates on the later 20%.
+- Requires at least 50 prior resolved samples; retains identity probabilities when history is insufficient or later validation does not improve log loss by at least 0.005.
+- Searches temperatures from 0.50 to 5.00, records raw and calibrated probabilities/scores, calibration sample counts, cutoffs and validation losses.
+- Caps the rolling history at 250 samples.
+
+Regression coverage is in `tests/test_probability_calibration.py` and the new temporal-boundary test in `tests/test_walk_forward.py`. The full repository suite passed on the exact resulting head. This is **causal recalibration of deterministic baselines**, not a trained alpha model or evidence of predictive lift on real XRP data. Live forecast issuance remains disabled.
+
+**PR #1643 — XRP research archive**
+
+Current head: `6a349549fe93cd550f80e40b8aa5c7204e9668be`.
+
+- Full repository suite: **1,711 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed; merging remains disabled.
+- Exact evidence: [full CI 42341397450](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341397450), [six-manifest dependency audit 42341397451](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341397451), [fail-closed gate 42341397497](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341397497).
+
+The new append-only artifact is `research/xrp_intelligence/20261107T050101Z-xrp-spot-derivatives-etf-depth-reconciliation.json`; nine regression tests are in `tests/test_xrp_spot_derivatives_etf_depth_reconciliation_20261107.py`. The first run exposed one incorrect Fuelmaps excerpt digest; the stored digest was corrected and the exact final head passed all tests.
+
+### XRP evidence — reference cutoff 2026-11-07 05:01:01 UTC
+
+**Spot**
+
+- Kraken XRP/USD: last $1.15169; bid $1.15198; ask $1.15208; Level-1 spread 0.86803 bps; rolling 24-hour volume 30.076M XRP; 24-hour VWAP $1.18137641; UTC-day open $1.17749; low/high $1.15046/$1.20607. The ticker response did not supply a provider event timestamp.
+- OKX XRP-USDT: last 1.1551; bid 1.1550; ask 1.1551; 24-hour volume 59.172M XRP. Provider timestamp 04:52:50.769 UTC was 490.231 seconds old at the reference clock, beyond the 300-second live-feature limit.
+- The 0.29609% raw last-price difference is not an arbitrage observation: USD/USDT was not normalized, Kraken event time was absent, OKX was stale, and synchronized full-depth/execution costs were unavailable. Neither quote was admitted as a point-in-time feature.
+
+**Derivatives**
+
+- TradRadar's delayed seven-exchange aggregate: OI $1.87B, down 1.60%; weighted funding +0.0038% per eight hours; reported liquidations at least $13.40M, including $12.86M long and $0.541M short; 79.9% long accounts.
+- Alpha Finance's 04:26 UTC heatmap: OI $2.73B; long liquidations $15.1M and short liquidations $0.600M. Its modelled short-liquidation clusters above spot totalled $106.3M versus $29.4M modelled long clusters below.
+- The $860M OI gap is approximately 46% of TradRadar's figure. Coverage/cutoffs are unresolved; do not average. Alpha's liquidation clusters are modelled from OI and leverage tiers, not observed resting orders.
+
+**ETF-flow disagreement**
+
+- Alpha Finance reports $0 net flow for November 6 across five funds, +$45.9M over 30 sessions and +$1.73B cumulative; its methodology identifies Coinglass as the flow feed.
+- CryptoETF.today's same November 6 page says 2/5 funds reported, later says 5/5, while the daily table retains missing values for XRPZ, XRPC and GXRP. Its zero session total is not treated as complete.
+- XRP Insights tracks six spot funds plus BITW, shows 1.19654B XRP held and a Week 45 holdings-derived change of -60,000 XRP. Its data is as of November 5, with a provisional November 6 row. Its flow is derived from holdings changes, not directly reported creations/redemptions; BITW rebalancing/fees can affect it and GXRP is withheld due to a capture gap.
+- These providers use different universes and methods. Preserve their separate vintages; do not average cumulative totals or treat holdings deltas as issuer-confirmed flows.
+
+**Depth**
+
+Fuelmaps' static page exposed BTC depth but returned client-side placeholders for XRP. No numeric XRP multi-level depth was retrievable. Its stated venue universe includes Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance and Bitget are excluded by its network. No depth feature was admitted.
+
+No directional forecast, shadow forecast, paper trade or real-money action was issued.
+
+### Integration-first reconciliation and backlog
+
+- #1640 and #1643 still share exactly three changed paths: `.github/workflows/dependency-audit.yml` (identical), `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different), and `tests/test_kamilah_channel_identity_gate.py` (different). On later consolidation, retain the more complete #1643 candidate-only profile with 18 candidate references. Verified YouTube channel ownership and verified video inventory remain zero.
+- #1640: 22/22 review threads resolved; zero APPROVED reviews. Ten review records are COMMENTED, not approvals.
+- #1643: 19/19 review threads resolved; zero APPROVED reviews. Ten review records are COMMENTED, not approvals.
+- `.github/CODEOWNERS` assigns ownership only to `@Barrot-Agent`; no independent approving reviewer is recorded.
+- #1642 is an ancestor of #1640; its seven changed paths are contained in the successor. It is superseded but remains open until successor content is merged and verified on main.
+- #1653 remains blocked: eight unresolved review threads cover possible overwrite of an existing graph artifact, discarded JSON tool arguments, stale branch/HEAD/dirty-state reporting, unvalidated recursive submodule remotes, degraded graph integrity reported as synchronized, and unhandled Git-fetch timeout; two additional minor review findings remain. Preserve its unique codebase-memory work; do not merge.
+- #1655 remains a draft with eight changed paths: three overlap #1640 and five are unique structural-analysis/catalog work. Preserve unique files and reconcile later.
+- #1644–#1650 dependency/workflow updates are represented by newer versions in #1640; classify as superseded pending main verification. Do not close yet.
+- #1477 remains a stale, unique/unreviewed draft with Coinbase/Circle/Ripple/SBI, Arc, RLUSD, x402, collateral and regulatory research. Selectively revalidate evidence; do not merge its old branch or import its multiple handoffs wholesale.
+- Preserve unique older work including #1317, #1318, #1320 and #1269. No PRs were closed.
+
+### Protection, deployment and platform boundaries
+
+- Main branch metadata reports `protected=true`. The detailed branch-protection endpoint returns HTTP 403.
+- The rulesets endpoint returns one repository ruleset, `Fall Back`, with enforcement `disabled`; it is not an active protection substitute.
+- Repository metadata reports GitHub Pages enabled. The Pages settings endpoint is inaccessible. Previous main push run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) completed build, report-build-status and deploy jobs successfully. A main merge can therefore trigger an external deployment.
+- No independent approving reviews are recorded. No branch-protection bypass is permitted. **Neither #1640 nor #1643 was merged.**
+- ChatGPT-to-GitHub is the only verified persistent connection. Copilot activity is one-off COMMENTED review output, not a persistent authenticated data flow or approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified for persistent authentication/data exchange. No cross-platform data transfer occurred.
+- No deployment, secret rotation, Space restart, Kaggle submission, funds transfer, paper trade or real-money action occurred.
+
+### Next concrete actions
+
+1. Obtain an independent approving review and resolve the Pages deployment authorization before any main merge.
+2. Merge #1640 only when all exact-head checks, full-suite tests, dependency/security gates, required approvals and external-action constraints are satisfied. Fetch main again, verify the merge commit/files and inspect automatic Pages effects; run main CI.
+3. Consolidate #1643's unique research onto the verified new main rather than merging its divergent branch directly; reconcile the three shared paths and preserve the more complete Kamilah candidate-only identity profile.
+4. Verify a real scheduled main-branch ingestion run and the bounded historical Coinbase backfill, including source receipts, event/known-at timestamps, empty-page handling and feature-store lineage.
+5. Expand synchronized multi-venue history and evaluate a trained model against all four baselines. The new temperature-scaling step calibrates deterministic baselines only; forecast issuance stays fail-closed until real out-of-sample lift, probability calibration, drift stability, independent shadow outcomes and trusted evaluator attestation pass.
+
+
+---
+
 ## Run 16 — 2026-11-07 04:39–04:51 UTC
 
 This block supersedes earlier Run 15 PR heads and research cutoffs. Main is unchanged. All new code and research remain on the two existing mission branches; no PR was created or closed.
