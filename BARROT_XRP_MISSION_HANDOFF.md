@@ -1040,7 +1040,7 @@ New artifacts and regression tests were added to the existing #1643 branch; no n
    - XRP Insights: Nov 5 +110,214 XRP and Nov 2–5 -149,487 XRP across six spot funds plus BITW, with GXRP excluded from flow totals.
    - CryptoKeyhole: Nov 5 -3,339 XRP and Nov 2–5 -13,356 XRP across four daily-file funds; Nov 6 was partial at 1/4 funds. The broader XRP Insights and four-fund CryptoKeyhole totals use different universes; no common-universe bridge is yet established. CryptoKeyhole's five-day header differs from the displayed daily-row sum by one XRP.
    - Reuters reported 117.97B USD weekly money-market inflows, while equity and bond funds also had net inflows; this is mixed macro context, not an XRP signal.
-   - Five regression tests passed within the #1643 full-suite run.
+   - One regression test passed within the #1643 full-suite run.
 
 2. \`research/xrp_intelligence/20261107T024800Z-evernorth-cantor-facility-actual-capital-reconciliation.json\`
    - SEC filings show the 30M USD Convertible Senior PIK Notes were funded on October 12, 2026. The prospectus describes 30M USD proceeds before transaction expenses; the financial-statement note reports 29M USD net cash after a 1M USD capital-markets-advisor fee.
