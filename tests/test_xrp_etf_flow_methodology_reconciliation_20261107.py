@@ -31,6 +31,11 @@ def test_xrp_etf_flow_reconciliation_preserves_units_vintages_and_methodology() 
     assert values["nov_6_net_flow_xrp"] == -663_043
     assert values["nov_5_net_flow_xrp"] == 110_214
     assert values["nov_2_to_nov_6_net_flow_xrp"] == -812_529
+
+    disagreements = data["disagreement_register"]
+    nov_5 = next(item for item in disagreements if item["claim"] == "2026-11-05 XRP ETF flow")
+    assert "+110,214 XRP" in nov_5["observation_a"]
+    assert "zero XRP ETF flow" in nov_5["observation_b"]
     assert values["six_spot_funds_holdings_approx_xrp"] == 1_170_000_000
 
 
@@ -78,6 +83,13 @@ def test_flow_disagreements_keep_shared_upstream_sources_and_minority_views() ->
         "SoSoValue" in item
         for item in data["source_independence"]["sosovalue_group"]
     )
+    altcoinbuzz = next(
+        source for source in data["sources"]
+        if source["source_id"] == "altcoinbuzz_xrp_etf_anniversary_analysis"
+    )
+    unit_claim = altcoinbuzz["reported_values"]["nov_5_flow_claim_by_article"]
+    assert unit_claim["unit_label"] == "USD in article prose"
+    assert "110,214 XRP" in unit_claim["unit_conflict"]
     assert any(
         "not an independent confirmation" in item
         for item in data["source_independence"]["derived_republication_group"]
