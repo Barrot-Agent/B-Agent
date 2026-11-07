@@ -122,7 +122,7 @@ def test_agentic_payment_counters_are_not_capital_flow_or_xrp_demand():
     assert tv["all_time_transactions"] != rv["all_time_transactions"]
     assert "Unverified" in t54["excerpt"]
     assert rv["settled_xrp"] == 7027
-    assert rv["settled_rlusd_usd"] == 57502
+    assert rv["settled_rlusd_amount"] == 57502
     assert mastercard["published_date"] == "2026-06-10"
     assert "program-level co-participation" in mastercard["excerpt"]
     assert "DepositAuth" in xrpl_docs["excerpt"]
