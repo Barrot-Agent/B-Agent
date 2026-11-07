@@ -22,17 +22,20 @@
       "The TEDx Talks video description links to kamilahstevenson.com and identifies the speaker as Dr. Kamilah Stevenson.",
       "The June 11, 2026 iHeart interview is titled with Dr. Kamilah Stevenson; the guest's transcript self-identifies her YouTube channel as Doctor Camilla Stevenson and explicitly warns about fake pages.",
       "The corresponding Paul Barron Podcast YouTube upload tags @drkamilahstevenson in its title and identifies the same guest as Dr. Kamilah Stevenson.",
-      "The channel page resolves to the display name Kamilah Stevenson. The channel handle/display-name bridge is therefore strong, but no YouTube verification badge or channel-owner API proof was established."
+      "The channel page resolves to the display name Kamilah Stevenson. The channel handle/display-name bridge is therefore strong, but no YouTube verification badge or channel-owner API proof was established.",
+      "The public YouTube channel URL resolves to the display title Kamilah Stevenson; the channel page itself did not expose a verification badge or full owner metadata in this capture."
     ],
-    "residual_identity_caveat": "The iHeart transcript is automatically generated and varies between Camila, Camilla and Kamilah. The official first-party spelling is Kamilah. Do not merge every same-name channel or social profile into this identity."
+    "residual_identity_caveat": "The iHeart transcript is automatically generated and varies between Camila, Camilla and Kamilah. The official first-party spelling is Kamilah. Do not merge every same-name channel or social profile into this identity.",
+    "channel_ownership_caveat": "The @drkamilahstevenson handle is cross-linked by the guest's interview self-identification and the host's tagged video title, with a matching channel display title. This is high-confidence attribution, not proof of a YouTube verification badge."
   },
   "source_capture_contract": {
     "method": "Public web-rendered excerpts and search-result metadata captured during this run.",
     "raw_wire_bytes_captured": false,
     "http_response_headers_captured": false,
-    "excerpt_hash_scope": "Exact short rendered title/phrase strings encoded as UTF-8; maximum 25 direct-quote words per source.",
+    "excerpt_hash_scope": "Normalized short rendered title/phrase strings encoded as UTF-8; maximum 25 direct-quote words per source.",
     "maximum_direct_quote_words_per_source": 25,
-    "metrics_are_time_sensitive": true
+    "metrics_are_time_sensitive": true,
+    "normalization_policy": "Strip Unicode bidi formatting marks around tagged YouTube handles and normalize line endings to LF; do not remove substantive words."
   },
   "sources": [
     {
@@ -182,8 +185,8 @@
       "retrieved_at_utc": "2026-11-07T21:17:12Z",
       "published_at": "2025-12-16",
       "source_independence_group": "third_party_commentary",
-      "excerpt": "Kamilah Stevenson Breaks Down XRP’s Most Important Upgrade Yet",
-      "excerpt_sha256": "b26d21111f6319eb9eadb69c918fa8d8d4f8977e6c5a53e470764c8038a36e3a",
+      "excerpt": "Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet",
+      "excerpt_sha256": "a910b89aef1536d04ef4757d57d64f4cc1b8fc830cad001d2c0672d2585201b8",
       "paraphrase": "This video is published by Alina X, not Kamilah Stevenson. It discusses claims attributed to Kamilah but is third-party commentary/repackaging and is not counted as a Kamilah-authored or guest-attributed video.",
       "observed_metrics": {
         "views": 641,
@@ -191,6 +194,16 @@
         "channel_followers": 5970,
         "observed_at_utc": "2026-11-07T21:17:12Z"
       }
+    },
+    {
+      "source_id": "KAMILAH_YOUTUBE_CHANNEL_PAGE",
+      "publisher": "YouTube",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "source_independence_group": "youtube_channel_page",
+      "excerpt": "Kamilah Stevenson - YouTube",
+      "excerpt_sha256": "03943775cd62aabe7d7747fb5ff606bc2000b50338059a84090a41eb07e3d696",
+      "paraphrase": "The public channel URL resolves to a YouTube page titled Kamilah Stevenson. The captured page did not establish a verification badge or provide a full About description."
     }
   ],
   "videos": [
@@ -203,13 +216,15 @@
       "published_at": "2026-03-06",
       "attribution_type": "PERSONAL_CHANNEL_UPLOAD",
       "attribution_status": "VERIFIED_CROSS_LINKED",
-      "content_verified": true,
+      "content_verified": false,
       "summary": "Discusses oil disruption, yen carry-trade liquidity and XRP; contains promotional/affiliate links and a financial disclaimer.",
       "source_ids": [
         "KAMILAH_PERSONAL_CHANNEL_MARCH_2026",
         "PAUL_BARRON_PODCAST_CRYPTO_PANICS",
         "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT"
-      ]
+      ],
+      "metadata_verified": true,
+      "full_content_reviewed": false
     },
     {
       "video_id": "po4bv7889ao",
@@ -225,7 +240,9 @@
       "source_ids": [
         "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_DEEP_CHOICES",
         "PAUL_BARRON_PODCAST_CRYPTO_PANICS"
-      ]
+      ],
+      "metadata_verified": true,
+      "full_content_reviewed": false
     },
     {
       "video_id": "12HiznN3iLQ",
@@ -241,7 +258,9 @@
       "source_ids": [
         "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_SOMETHING_INCREDIBLE",
         "PAUL_BARRON_PODCAST_CRYPTO_PANICS"
-      ]
+      ],
+      "metadata_verified": true,
+      "full_content_reviewed": false
     },
     {
       "video_id": "Sulo54IlQ60",
@@ -251,12 +270,14 @@
       "published_at": "2026-06-11",
       "attribution_type": "GUEST_APPEARANCE",
       "attribution_status": "VERIFIED_GUEST_ATTRIBUTION",
-      "content_verified": true,
+      "content_verified": false,
       "summary": "Forty-two-minute interview covering crypto investing, XRP utility/adoption, Japan and AI-assisted decision-making.",
       "source_ids": [
         "PAUL_BARRON_PODCAST_CRYPTO_PANICS",
         "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT"
-      ]
+      ],
+      "metadata_verified": true,
+      "full_content_reviewed": false
     },
     {
       "video_id": "E-jdY7gy7mQ",
@@ -266,12 +287,14 @@
       "published_at": "2019-09-09",
       "attribution_type": "ORGANIZATION_CHANNEL_ATTRIBUTION",
       "attribution_status": "VERIFIED_ORGANIZATION_CHANNEL_ATTRIBUTION",
-      "content_verified": true,
+      "content_verified": false,
       "summary": "Public All Nations Chicago upload whose title explicitly attributes the talk to Dr. Kamilah Stevenson.",
       "source_ids": [
         "ALL_NATIONS_CHICAGO_FIRST_PARTY_LEADERSHIP",
         "ALL_NATIONS_CHICAGO_THE_STUDY_OF_JOB"
-      ]
+      ],
+      "metadata_verified": true,
+      "full_content_reviewed": false
     },
     {
       "video_id": "VSgeDgOCexs",
@@ -281,12 +304,14 @@
       "published_at": "2018-05-18",
       "attribution_type": "TEDX_SPEAKER_ATTRIBUTION",
       "attribution_status": "VERIFIED_SPEAKER_ATTRIBUTION",
-      "content_verified": true,
+      "content_verified": false,
       "summary": "TEDx Talks video description identifies Dr. Kamilah Stevenson and links to her first-party website; it is not a personal-channel upload.",
       "source_ids": [
         "TEDX_TALKS_KAMILAH_STEVENSON",
         "KAMILAH_STEVENSON_FIRST_PARTY_WEBSITE"
-      ]
+      ],
+      "metadata_verified": true,
+      "full_content_reviewed": false
     }
   ],
   "false_positive_or_non_attributed": [
@@ -296,16 +321,6 @@
       "publisher": "Alina X",
       "classification": "THIRD_PARTY_COMMENTARY_NOT_KAMILAH_UPLOAD",
       "reason": "Publisher/channel is Alina X; title and description refer to Kamilah but do not establish her participation."
-    },
-    {
-      "channel_handle": "@CoachKamilahStevensonxrp",
-      "classification": "UNVERIFIED_SIMILAR_NAME_HANDLE",
-      "reason": "No first-party or host cross-link to the verified identity was found in this run."
-    },
-    {
-      "channel_handle": "@KamilahStevensonDigitalNetwork",
-      "classification": "UNVERIFIED_SIMILAR_NAME_HANDLE",
-      "reason": "No first-party or host cross-link to the verified identity was found in this run."
     }
   ],
   "inventory_summary": {
@@ -315,8 +330,9 @@
     "verified_organization_channel_attributions": 1,
     "verified_tedx_speaker_attributions": 1,
     "third_party_commentary_not_counted": 1,
-    "unverified_similar_name_handles_not_counted": 2,
-    "previous_count_of_one_verified_video_is_superseded": true
+    "unverified_similar_name_handles_not_counted": "NOT_ENUMERATED",
+    "previous_count_of_one_verified_video_is_superseded": true,
+    "unverified_similar_name_handles_note": "The interviewee warned of fake pages; this run did not enumerate or attribute other same-name handles."
   },
   "content_quality_and_market_use": {
     "videos_are_creator_or_interview_content_not_primary_market_sources": true,

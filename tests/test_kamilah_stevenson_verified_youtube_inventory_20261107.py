@@ -22,16 +22,20 @@ def test_kamilah_identity_bridge_uses_first_party_and_interview_cross_links():
     assert identity["identity_status"] == "HIGH_CONFIDENCE_CROSS_SOURCE_LINKAGE"
     assert identity["official_youtube_channel_handle"] == "@drkamilahstevenson"
     assert identity["platform_verified_badge"] == "NOT_ESTABLISHED"
+    assert "not proof of a YouTube verification badge" in identity["channel_ownership_caveat"]
     ids = {source["source_id"] for source in record["sources"]}
     assert "ALL_NATIONS_CHICAGO_FIRST_PARTY_LEADERSHIP" in ids
     assert "KAMILAH_STEVENSON_FIRST_PARTY_WEBSITE" in ids
     assert "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT" in ids
     assert "PAUL_BARRON_PODCAST_CRYPTO_PANICS" in ids
+    assert "KAMILAH_YOUTUBE_CHANNEL_PAGE" in ids
 
 
 def test_short_source_receipts_recompute_and_respect_quotation_limit():
     record = _record()
-    assert record["source_capture_contract"]["maximum_direct_quote_words_per_source"] == 25
+    contract = record["source_capture_contract"]
+    assert contract["maximum_direct_quote_words_per_source"] == 25
+    assert "bidi formatting marks" in contract["normalization_policy"]
     for source in record["sources"]:
         excerpt = source.get("excerpt")
         digest = source.get("excerpt_sha256")
@@ -52,6 +56,7 @@ def test_video_inventory_has_six_unique_verified_attributions():
     assert record["inventory_summary"]["verified_guest_appearances"] == 1
     assert record["inventory_summary"]["verified_organization_channel_attributions"] == 1
     assert record["inventory_summary"]["verified_tedx_speaker_attributions"] == 1
+    assert all(video["metadata_verified"] for video in videos)
 
 
 def test_personal_channel_uploads_use_the_cross_linked_handle():
@@ -65,8 +70,8 @@ def test_personal_channel_uploads_use_the_cross_linked_handle():
 def test_unavailable_descriptions_are_not_inferred():
     record = _record()
     by_id = {v["video_id"]: v for v in record["videos"]}
-    assert by_id["po4bv7889ao"]["content_verified"] is False
-    assert by_id["12HiznN3iLQ"]["content_verified"] is False
+    assert by_id["po4bv7889ao"]["description_available"] is False
+    assert by_id["12HiznN3iLQ"]["description_available"] is False
     assert "description unavailable" in by_id["po4bv7889ao"]["summary"].lower()
     assert "description unavailable" in by_id["12HiznN3iLQ"]["summary"].lower()
 
@@ -79,20 +84,20 @@ def test_guest_and_organization_videos_are_not_mislabeled_as_personal_uploads():
     assert by_id["VSgeDgOCexs"]["attribution_type"] == "TEDX_SPEAKER_ATTRIBUTION"
 
 
-def test_fake_page_warning_and_false_positive_channels_remain_quarantined():
+def test_fake_page_warning_and_non_attributed_repost_remain_quarantined():
     record = _record()
     assert any("fake pages" in source.get("excerpt", "").lower() for source in record["sources"])
-    handles = {x["channel_handle"] for x in record["false_positive_or_non_attributed"] if "channel_handle" in x}
-    assert handles == {"@CoachKamilahStevensonxrp", "@KamilahStevensonDigitalNetwork"}
-    assert record["inventory_summary"]["unverified_similar_name_handles_not_counted"] == 2
-
-
-def test_third_party_repost_is_not_counted_as_kamilah_authored_content():
-    record = _record()
-    assert record["inventory_summary"]["third_party_commentary_not_counted"] == 1
+    assert record["inventory_summary"]["unverified_similar_name_handles_not_counted"] == "NOT_ENUMERATED"
+    assert len(record["false_positive_or_non_attributed"]) == 1
     repost = record["false_positive_or_non_attributed"][0]
     assert repost["video_id"] == "5DzBk8DfoLs"
     assert repost["classification"] == "THIRD_PARTY_COMMENTARY_NOT_KAMILAH_UPLOAD"
+
+
+def test_attribution_is_verified_but_full_video_content_was_not_reviewed():
+    record = _record()
+    assert all(video["full_content_reviewed"] is False for video in record["videos"])
+    assert all(video["content_verified"] is False for video in record["videos"])
 
 
 def test_kamilah_video_inventory_is_not_admitted_as_a_market_feature():
