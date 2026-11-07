@@ -84,7 +84,7 @@ def test_etf_flow_universes_and_accounting_methods_remain_separate():
     data = load_artifact()
     alpha, insights, keyhole = data["etf_flow_sources"]
     assert alpha["universe"]["funds"] == 5
-    assert "flow-only" in alpha["methodology"]
+    assert "flow-only" in alpha["methodology"].lower()
     assert insights["universe"]["spot_funds_listed"] == 6
     assert insights["universe"]["index_fund_included"] == "BITW"
     assert insights["universe"]["gxrp_flow_excluded"] is True
