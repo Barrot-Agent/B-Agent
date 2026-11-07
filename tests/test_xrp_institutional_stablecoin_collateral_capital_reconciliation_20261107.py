@@ -55,7 +55,7 @@ def test_coinbase_collateral_is_not_mislabeled_as_xrp_collateral(evidence: dict)
     r = evidence["reconciliations"]["coinbase_collateral"]
     assert any("$1.009297B" in x for x in r["confirmed"])
     assert any("$3.284562B" in x for x in r["confirmed"])
-    assert any("no XRP-specific collateral balance" in x.lower() for x in r["confirmed"])
+    assert any("no xrp-specific collateral balance" in x.lower() for x in r["confirmed"])
     assert any("No public XRP collateral utilization amount" in x for x in r["not_established"])
 
 
