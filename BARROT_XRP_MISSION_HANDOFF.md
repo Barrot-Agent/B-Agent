@@ -1,3 +1,110 @@
+## Run 14 — 2026-11-07 04:05:56 UTC
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. No main write or merge occurred.
+
+Complete recursive tree inventory:
+- Main: 1,298 files, 493 Python files, 87 test modules, 86 workflow files, 29 XRP research artifacts.
+- #1640 integration branch: 1,352 files, 535 Python files, 115 test modules, 87 workflow files, 34 XRP research artifacts.
+- #1643 research branch after Run 14 evidence append: 1,687 files, 642 Python files, 236 test modules, 86 workflow files, 269 XRP research artifacts.
+
+The complete paginated open-PR inventory is 371: 355 drafts and 16 non-drafts. No PR was created or closed in this run.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+- Current exact head before this handoff append: `431b4cf00d660c097cf610c6fc431532468bbc6c`.
+- Full repository suite: **1,089 passed, 8 subtests passed**.
+- Inclusive package coverage: **57.75%**, above the 53% threshold.
+- Core suite: **629 passed, 8 subtests passed**.
+- Installed-wheel build and packaged primary-mission verification passed.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed and explicitly keeps automatic merge disabled.
+- Evidence: [full CI 42335107220](https://github.com/Barrot-Agent/B-Agent/actions/runs/42335107220), [dependency audit 42335107286](https://github.com/Barrot-Agent/B-Agent/actions/runs/42335107286), [fail-closed gate 42335107243](https://github.com/Barrot-Agent/B-Agent/actions/runs/42335107243).
+- Review threads: 22/22 resolved; submitted reviews are all COMMENTED; actual APPROVED reviews: 0.
+
+**PR #1643 — XRP research**
+- Current exact head after Run 14 evidence append: `5c1c1f852feb8f71d9d76d549dd85170bd6fa28d`.
+- Core test job passed.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed and keeps automatic merge disabled.
+- Full repository suite is still running in [CI 42336760381](https://github.com/Barrot-Agent/B-Agent/actions/runs/42336760381); do not substitute the prior head's 1,672-test pass for this new head.
+- Review threads: 19/19 resolved; submitted reviews are all COMMENTED; actual APPROVED reviews: 0.
+
+### New XRP evidence appended to existing #1643
+
+Added:
+- `research/xrp_intelligence/20261107T040046Z-xrp-spot-derivatives-etf-liquidity-reconciliation.json`
+- `tests/test_xrp_spot_derivatives_etf_liquidity_reconciliation_20261107.py` (7 regression tests)
+
+Capture time: 2026-11-07 04:00:46 UTC.
+
+Direct exchange responses:
+- Kraken XRP/USD: last $1.15408; bid $1.15380; ask $1.15381; rolling 24-hour volume 30.353M XRP; rolling 24-hour VWAP $1.18252126; UTC daily open $1.17749. Kraken supplied no provider event timestamp. Level-1 spread is 0.08667 bps.
+- OKX XRP-USDT: last 1.1568; bid 1.1569; ask 1.1570; rolling 24-hour volume 58.153M XRP. Provider timestamp 03:49:20.541 UTC was 685.459 seconds old at capture, exceeding the 300-second live-feature limit. Level-1 spread is 0.86434 bps.
+- Raw last-price difference is 0.23569%; USD and USDT are not normalized, timestamps are not synchronized, and execution costs/depth are unavailable. No arbitrage claim.
+
+Derivatives:
+- TradRadar at 01:45 UTC: $1.90B seven-exchange OI, -1.06% 24-hour OI change, +0.0045% weighted funding per eight hours, at least $8.02M liquidations, including $7.51M longs and $512.33K shorts.
+- Alpha Finance at 02:50 UTC: $2.75B OI, $2.61B 24-hour volume, $8.8M long and $539.4K short liquidations. Its liquidation clusters are modeled, not observed resting orders.
+- The $850M OI disagreement is preserved; provider coverage and contract universes were not reconciled. Neither snapshot is current enough for live feature admission.
+
+Depth:
+- Fuelmaps' 21:00 UTC Nov 6 hourly snapshot showed $18.7M bids versus $9.4M asks within ±2%, 66.5% bid share across six venues. It is 7 hours old at the new capture and is historical context only.
+
+ETF reporting:
+- Alpha Finance shows $0 net for Nov 6 across five funds and $8.4M net over seven sessions, but publishes no issuer holdings/AUM for these funds.
+- CryptoETF.today says Nov 6 is partial: one of five funds reported; the displayed zero is not a complete-session zero.
+- XRP Insights' latest settled data is Nov 5: +110,214 XRP holdings-derived flow on Nov 5 and -149,487 XRP over Nov 2–5 across six spot funds plus BITW; Nov 6 remains provisional.
+- These fund universes and methodologies are not averaged. Holdings changes are not direct cash creation/redemption records.
+
+The artifact preserves raw-response SHA-256 hashes for the exact JSON text returned by the retrieval layer, not original HTTP wire bytes or response headers. Secondary source HTML/wire payloads and independent timestamp anchoring were not retained.
+
+**Model eligibility: NOT_ADMITTED. Forecast: NOT_ISSUED.** Reasons include missing Kraken event time, stale OKX/derivatives/depth data, no synchronized multi-level depth, unresolved OI coverage disagreement, incomplete ETF vintages and no historical point-in-time feature window.
+
+### Barrot autonomous execution finding
+
+Current-main issue-triggered run [42331248942](https://github.com/Barrot-Agent/B-Agent/actions/runs/42331248942), titled “independent read-only review of PR #1655,” failed in the Groq-backed repair planner. The provider returned HTTP 413: **11,534 requested tokens against an 8,000 tokens-per-minute limit**. The task remained BLOCKED; no review comment was posted and no code/PR change occurred. This is a prompt/context-budget failure, not a repository test failure. The next bounded remediation is to split large repository reviews into staged, path-scoped subreviews and compact prior context before invoking the provider. Existing token-budget PRs #1382/#1385/#1394 address output-token budgeting, not this demonstrated input/TPM overflow; do not claim they solve it.
+
+### Integration and backlog
+
+Current changed-path overlap:
+- #1640 / #1643: three paths — identical dependency-audit workflow plus the Kamilah channel profile and identity-gate test, whose contents differ. Preserve #1643's 18 candidate references when consolidating; channel ownership remains unverified.
+- #1640 / #1653: one shared CI workflow path; six #1653 paths are unique.
+- #1640 / #1655: three shared structural-analysis paths; five #1655 paths are unique.
+- #1643 / #1655: no changed-path overlap.
+
+Backlog:
+- #1640: sole active V3 integration candidate.
+- #1643: sole active XRP research candidate; do not merge its divergent branch directly. After #1640 is merged and verified on main, carry its unique research paths onto the resulting main.
+- #1642: superseded ancestor of #1640; preserve until successor content is verified on main.
+- #1653: blocked; 8/8 inline review threads remain unresolved, including shared-artifact overwrite risk, unsupported argument transport, stale repository-state reporting during indexing, recursive submodule fetch boundary, degraded-index success reporting and uncaught fetch timeout.
+- #1655: draft; preserve its five unique structural-analysis/catalog/bundle-engineering paths and reconcile its three overlaps with #1640 after the integration sequence.
+- #1644–#1650: dependency/workflow changes represented by newer versions in #1640; superseded pending main verification.
+- #1317, #1318, #1320 and #1269: preserve unique work until their content is verified or reconciled.
+
+### Merge and safety status
+
+Main is protected, but detailed branch-protection settings still return HTTP 403. The visible repository ruleset remains disabled. Both mission PRs have zero approving reviews. GitHub Pages configuration remains inaccessible; the previously observed main push triggered a successful public Pages deployment. This automatic external deployment is not authorized for another merge.
+
+**No merge was performed.** No protection bypass, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next actions
+
+1. Finish exact-head full-suite verification for #1643 head `5c1c1f85`; preserve the seven new regression tests and artifact.
+2. Obtain independent approvals and resolve the Pages deployment authorization boundary before merging #1640.
+3. After a compliant #1640 merge, verify the merge commit, main files, automatic workflow effects and main CI.
+4. Consolidate #1643's unique evidence onto the verified new main; preserve the Kamilah candidate references and reconcile the shared dependency-audit workflow without duplicating it.
+5. Reconcile #1655's five unique paths and #1653's six unique repository-intelligence paths only after their review findings are resolved.
+6. Reduce Barrot's Groq task prompt size through bounded staged reviews; do not let an input-token/TPM failure trigger repository mutation.
+7. Build synchronized historical XRP features, then add fitted probability calibration and evaluate a real model against the four existing baselines. Keep forecast issuance fail-closed until leakage-safe out-of-sample lift, calibration, drift and sufficient shadow outcomes are demonstrated.
+
+Treat DESIGNED, EXECUTED and VERIFIED as separate. Preserve all historical evidence and branches.
+
+
 ## Run 13 — 2026-11-07 03:32 UTC
 
 ### Mission and repository state
