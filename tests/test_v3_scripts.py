@@ -471,98 +471,69 @@ def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> No
 
     assert observed["body"] == "test failure report"
 
-def test_barrot_groq_daily_token_limit_falls_back_without_waiting(monkeypatch) -> None:
+def test_barrot_groq_daily_token_limit_fails_without_retry_or_fallback(monkeypatch) -> None:
     import io
     import urllib.error
 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
-    monkeypatch.delenv("BRAIN_FALLBACK_MODELS", raising=False)
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
-        "barrot_agent_groq_daily_limit_fallback_test",
+        "barrot_agent_groq_daily_limit_no_retry_test",
     )
     monkeypatch.setattr(module, "GROQ_KEY", "test-key")
     calls: list[str] = []
-
-    class Response:
-        def __enter__(self):
-            return self
-
-        def __exit__(self, exc_type, exc, tb):
-            del exc_type, exc, tb
-            return False
-
-        def read(self, *args, **kwargs):
-            del args, kwargs
-            return b'{"ok": true}'
 
     def fake_urlopen(request, timeout=0):
         del timeout
         payload = json.loads(request.data.decode("utf-8"))
         calls.append(payload["model"])
-        if len(calls) == 1:
-            body = b'{"error":{"message":"tokens per day limit reached. Please try again in 22m0s."}}'
-            raise urllib.error.HTTPError(
-                "https://api.groq.com/openai/v1/chat/completions",
-                429,
-                "Too Many Requests",
-                hdrs=None,
-                fp=io.BytesIO(body),
-            )
-        return Response()
+        body = b'{"error":{"message":"tokens per day limit reached. Please try again in 22m0s."}}'
+        raise urllib.error.HTTPError(
+            "https://api.groq.com/openai/v1/chat/completions",
+            429,
+            "Too Many Requests",
+            hdrs=None,
+            fp=io.BytesIO(body),
+        )
 
     monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
-    result = module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": []})
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_DAILY"):
+        module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": []})
 
-    assert result == {"ok": True}
-    assert calls == ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    assert calls == ["openai/gpt-oss-120b"]
 
-def test_barrot_groq_tpm_limit_retries_same_model_once(monkeypatch) -> None:
+def test_barrot_groq_tpm_limit_fails_without_retry_or_waiting(monkeypatch) -> None:
     import io
     import urllib.error
 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
-        "barrot_agent_groq_tpm_retry_test",
+        "barrot_agent_groq_tpm_no_retry_test",
     )
     monkeypatch.setattr(module, "GROQ_KEY", "test-key")
     sleeps: list[float] = []
     calls = {"count": 0}
-    monkeypatch.setattr(module.time, "sleep", lambda seconds: sleeps.append(seconds))
-
-    class Response:
-        def __enter__(self):
-            return self
-
-        def __exit__(self, exc_type, exc, tb):
-            del exc_type, exc, tb
-            return False
-
-        def read(self, *args, **kwargs):
-            del args, kwargs
-            return b'{"ok": true}'
+    monkeypatch.setattr(module.time, "sleep", lambda *_args, **_kwargs: pytest.fail("TPM failure must not wait/retry"))
 
     def fake_urlopen(request, timeout=0):
         del request, timeout
         calls["count"] += 1
-        if calls["count"] == 1:
-            body = b'{"error":{"message":"tokens per minute limit reached. Please try again in 5.1s."}}'
-            raise urllib.error.HTTPError(
-                "https://api.groq.com/openai/v1/chat/completions",
-                429,
-                "Too Many Requests",
-                hdrs=None,
-                fp=io.BytesIO(body),
-            )
-        return Response()
+        body = b'{"error":{"message":"tokens per minute limit reached. Please try again in 5.1s."}}'
+        raise urllib.error.HTTPError(
+            "https://api.groq.com/openai/v1/chat/completions",
+            429,
+            "Too Many Requests",
+            hdrs=None,
+            fp=io.BytesIO(body),
+        )
 
     monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
-    result = module._send_groq_request({"model": "openai/gpt-oss-20b", "messages": []})
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request({"model": "openai/gpt-oss-20b", "messages": []})
 
-    assert result == {"ok": True}
-    assert calls["count"] == 2
-    assert sleeps == [5.1]
+    assert calls["count"] == 1
+    assert sleeps == []
 
 def test_repo_browser_search_treats_empty_path_as_repository_root(monkeypatch, tmp_path: Path) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
@@ -808,13 +779,13 @@ def test_public_brain_corpus_export_is_inert_and_preserves_existing_dumps() -> N
     assert module.main() == 2
 
 
-def test_barrot_groq_tpm_413_skips_same_model_retry_and_fails_after_one_fallback(monkeypatch) -> None:
+def test_barrot_groq_tpm_413_fails_once_without_retry_or_fallback(monkeypatch) -> None:
     import io
     import urllib.error
 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("BRAIN_MODEL", "openai/gpt-oss-120b")
-    monkeypatch.setenv("BRAIN_FALLBACK_MODELS", "openai/gpt-oss-20b")
+    monkeypatch.delenv("BRAIN_FALLBACK_MODELS", raising=False)
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
         "barrot_agent_groq_tpm_413_budget_test",
@@ -839,11 +810,13 @@ def test_barrot_groq_tpm_413_skips_same_model_retry_and_fails_after_one_fallback
         )
 
     monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
-    try:
-        module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": []})
-    except RuntimeError as exc:
-        assert "LLM_CONTEXT_BUDGET_EXCEEDED" in str(exc)
-    else:
-        raise AssertionError("HTTP 413 TPM budget failure must fail closed.")
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request(
+            {
+                "model": "openai/gpt-oss-120b",
+                "messages": [{"role": "user", "content": "small"}],
+                "max_tokens": 128,
+            }
+        )
 
-    assert calls == ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    assert calls == ["openai/gpt-oss-120b"]
