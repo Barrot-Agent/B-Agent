@@ -1,3 +1,79 @@
+## Run 18 — 2026-11-07T06:08:23.061Z
+
+This block supersedes Run 17 for the current repository heads, market snapshot, macro event and exact-head verification. Main remains unchanged. Work stayed on the two existing mission branches; no new PR was created.
+
+### Mission priority and repository state
+
+- Highest-priority mission: XRP intelligence and prediction-engine mastery.
+- Foundation: Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Complete recursive main tree: 1,403 entries, 1,298 files, 493 Python files; tree response not truncated.
+- Complete open-PR pagination: 371 open PRs, 355 drafts and 16 non-drafts.
+- Main's latest observed Cross Analysis run: [42344487231](https://github.com/Barrot-Agent/B-Agent/actions/runs/42344487231), scheduled on main at 05:51:41Z, completed successfully. The current main workflow is read-only: contents:read, checkout credentials disabled, artifact-only outputs, 30-day retention.
+- Main's Scheduler Tick, Merge Queue, Check Signal Accuracy, Auto Resolve Issues, Barrot Autonomous Resolver and Autonomous Self-Deployment workflows are disabled/quarantined. The main Coinbase Paper Trader workflow remains a manual writer: it reads GROQ_API_KEY, runs BTC-USD simulation and commits/pushes state to main. #1640 changes it to a manual artifact-only simulation requiring explicit YES and the exact expected main SHA, with contents:read and no persisted checkout credentials. This is a material safety correction still not on main.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+
+- Current head at this handoff update: `f313083046b54be9018de8bb33b32e64491aa9fd`.
+- Compare with main: 524 commits ahead, 0 behind; 161 changed paths.
+- Exact-head CI: [42341698454](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341698454): core suite **630 passed, 8 subtests**; full repository suite **1,096 passed, 8 subtests**; inclusive package coverage **57.89%**, above the 53% threshold; installed wheel and packaged primary mission verification passed.
+- Exact-head six-manifest dependency audit: [42341698470](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341698470), passed.
+- Exact-head fail-closed gate: [42341698415](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341698415), passed; automatic merge intentionally disabled.
+- Review threads: 22/22 resolved. Actual APPROVED GitHub reviews: 0. Ten review records are COMMENTED; self-comments saying “Approved” are not approvals.
+
+**PR #1643 — XRP research**
+
+- Current head at this handoff update: `8a67764122a7370b317d26c7eb0b103d49e0ba55`.
+- Compare with main: 566 commits ahead, 0 behind; 400 changed paths.
+- Previous exact head `6a349549fe93cd550f80e40b8aa5c7204e9668be`: [full CI 42341397450](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341397450) passed **1,711 full-suite tests, 8 subtests** and **498 core tests, 8 subtests**; [six-manifest dependency audit 42341397451](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341397451) passed; [fail-closed gate 42341397497](https://github.com/Barrot-Agent/B-Agent/actions/runs/42341397497) passed.
+- New exact head `8a67764122a7370b317d26c7eb0b103d49e0ba55` adds the direct spot receipt and five regression tests described below. Its [core CI job passed](https://github.com/Barrot-Agent/B-Agent/actions/runs/42345531879); the full-repository test job was in_progress at handoff capture, and the dependency audit was completed. The exact-head fail-closed gate [42345531882](https://github.com/Barrot-Agent/B-Agent/actions/runs/42345531882) passed and remains disabled for merge.
+- Review threads: 19/19 resolved. Actual APPROVED GitHub reviews: 0. Ten review records are COMMENTED, not approvals.
+
+### New direct spot evidence — 2026-11-07
+
+The append-only artifact `research/xrp_intelligence/20261107T060301Z-xrp-spot-venue-timestamp-reconciliation.json` and regression tests `tests/test_xrp_spot_venue_timestamp_reconciliation_20261107.py` were added to the existing #1643 branch. The artifact preserves the exact JSON response text returned by the public retrieval layer and SHA-256 hashes; hashes do not claim original HTTP wire bytes or headers.
+
+- Kraken XRP/USD: last 1.16095, bid 1.16068, ask 1.16071; 30,043,536.988 XRP rolling-24-hour volume; 24-hour VWAP 1.18007852. Kraken supplied no provider event timestamp. Derived Level-1 spread: 0.25847 bps.
+- OKX XRP-USDT: last 1.1607, bid 1.1607, ask 1.1608; 56,944,898.714 XRP rolling-24-hour volume. Provider ticker timestamp: 2026-11-07T05:54:44.235Z. At the 06:03:01Z run-start reference it was 496.765 seconds old, already outside the 300-second freshness limit. Derived Level-1 spread: 0.86151 bps.
+- Raw last-price difference: 0.02154%, not an arbitrage observation. USD and USDT are not normalized, timestamps are not synchronized, and fees, transfer costs and multi-level executable depth are unavailable.
+- No depth ladder was captured. Neither venue observation was admitted to the model feature store. Forecast status remains NOT_ISSUED.
+
+### Macro event correction
+
+The U.S. Bureau of Labor Statistics released the October 2026 Employment Situation on November 6 at 08:30 ET (13:30 UTC): nonfarm payrolls +165,000; unemployment 4.1%; labor-force participation 61.9%; average hourly earnings +0.4% month-over-month and +3.1% year-over-year. August and September payroll estimates were revised upward by a combined 84,000. The +165,000 gain exceeded the prior 12-month monthly average of 48,000. This is an official, timestamped macro event; it should be ingested as known after 13:30 UTC November 6, not backdated. The data alone does not establish the XRP response or a Fed-policy direction. Source: https://www.bls.gov/news.release/archives/empsit_11062026.htm
+
+Secondary market context from November 6 reporting: CryptoTicker attributed the sell-off partly to a reported Nasdaq/S&P/semiconductor decline, described three consecutive XRP spot-ETF sessions without net inflows through November 5 (citing TokenPost/SoSoValue), and compiled OKX-specific OI and account long/short data. These are secondary observations with different scopes; the ETF statement is not a direct issuer cash-flow record, account ratios are not notional exposure, and the article's causal attribution is a hypothesis rather than proof. Do not combine its OKX figures with multi-venue TradRadar or Alpha Finance aggregates. Source: https://cryptoticker.io/en/xrp-price-drop-etf-standstill/ and https://cryptoticker.io/en/xrp-price-prediction-1-19-zone-third-test-november-6-2026/
+
+### Branch overlap and backlog
+
+- #1640: 161 changed paths; #1643: 400 changed paths; exactly three shared paths: `.github/workflows/dependency-audit.yml` (identical content), `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different content) and `tests/test_kamilah_channel_identity_gate.py` (different content). #1640 has 158 unique paths; #1643 has 397 unique paths. Preserve #1643's 18 candidate video references; canonical YouTube channel ownership and verified video inventory remain unverified/zero.
+- #1640 remains the sole V3 integration candidate. #1643 remains the sole XRP research candidate. Do not merge #1643's divergent branch directly; after a verified #1640 merge, carry its unique research paths onto the new main and reconcile the three overlaps.
+- #1642 is a draft with seven prediction-provenance paths; compare those exact diffs against #1640 before classifying any as superseded.
+- #1653 is open/non-draft, seven changed files, eight unresolved review threads; blocked pending repository-sync and overwrite-safety corrections.
+- #1655 is draft, eight changed files, no review threads; preserve its unique structural-analysis/catalog work and reconcile overlaps before integration.
+- #1641 remains draft, three changed files. #1644–#1650 are dependency updates; newer versions are represented in #1640 but remain open until successor content is verified on main. Preserve unique older work including #1477, #1317, #1318, #1320 and #1269; do not bulk-close.
+
+### Nine-platform and merge boundary
+
+The existing nine-platform map was refreshed on #1640 in commit `f313083046b54be9018de8bb33b32e64491aa9fd`. ChatGPT-to-GitHub is verified for this current session. Copilot evidence remains one-off GitHub COMMENTED review activity, not persistent authentication or approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified for persistent authentication and data flow. No external model transfer occurred.
+
+Main reports protected=true, but the detailed classic branch-protection endpoint returns HTTP 403. The only visible repository ruleset is `Fall Back` (ID 10863829), enforcement disabled. GitHub Pages is enabled; Pages configuration is inaccessible. A prior main push triggered Pages build/deploy run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489), whose deploy job succeeded. Both mission PRs have zero approving reviews. Therefore neither PR is merge-authorized; do not bypass branch protection or merge while the automatic Pages deployment remains unapproved.
+
+No main write, merge, deployment, secret rotation, Space restart, Kaggle submission, external model transfer, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete actions
+
+1. Finish exact-head full-suite and six-manifest dependency-audit verification on #1643 head `8a67764122a7370b317d26c7eb0b103d49e0ba55`.
+2. Finish exact-head verification for any subsequent documentation-only #1640 tip after this handoff commit.
+3. Obtain independent approving reviews and resolve Pages deployment authorization before merging #1640.
+4. If all gates become satisfied, merge #1640; verify merge commit, merged files, automatic workflow effects and main CI.
+5. Consolidate #1643's 397 unique paths onto the verified new main, reconciling the three shared paths; rerun full suite, dependency audit and fail-closed gate on the consolidated head.
+6. Verify the first real scheduled ingestion run on main, including source timestamps, raw receipts, feature-store recovery lineage and Coinbase historical backfill behavior.
+7. Continue synchronized multi-venue history, fitted model development, calibration, drift and shadow-outcome evaluation. Keep directional forecast issuance fail-closed until real out-of-sample lift and calibration are demonstrated.
+
+
 ## Run 17 — 2026-11-07 05:01–05:11 UTC
 
 This block supersedes Run 16 for current branch heads, repository inventory, market evidence and verification. Main is unchanged. Work stayed on the two existing mission branches; no PR was created or closed.
