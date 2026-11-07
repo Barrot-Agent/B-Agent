@@ -102,7 +102,7 @@ def test_etf_recent_zero_flows_are_not_mislabeled_as_current_assets() -> None:
     sosovalue = next(item for item in items if item["source_id"] == "sosovalue_via_coingape")
     assert "USD 1.41 billion" in sosovalue["claim"]
     assert "USD 1.73B" in alpha["claim"]
-    assert "net assets and holdings not published" in alpha["claim"]
+    assert "no XRP fund net-assets or holdings published" in alpha["claim"]
     assert "do not average" in document["derivatives_and_flow_evidence"]["etf_reconciliation"]
 
 
