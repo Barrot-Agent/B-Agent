@@ -43,8 +43,8 @@ def test_all_normalized_source_excerpt_hashes_reproduce(evidence: dict) -> None:
 
 def test_circle_coinbase_distribution_costs_and_supply_are_separate_metrics(evidence: dict) -> None:
     r = evidence["reconciliations"]["circle_coinbase"]
-    assert any("$331.3 million" in x for x in r["confirmed"])
-    assert any("$986.6 million" in x for x in r["confirmed"])
+    assert any("$331.3M Q3" in x for x in r["confirmed"])
+    assert any("$986.6M nine-month" in x for x in r["confirmed"])
     assert any("$73.879B" in x for x in r["confirmed"])
     assert any("$13.868B" in x for x in r["confirmed"])
     assert any("$306.905M" in x for x in r["confirmed"])
@@ -55,7 +55,7 @@ def test_coinbase_collateral_is_not_mislabeled_as_xrp_collateral(evidence: dict)
     r = evidence["reconciliations"]["coinbase_collateral"]
     assert any("$1.009297B" in x for x in r["confirmed"])
     assert any("$3.284562B" in x for x in r["confirmed"])
-    assert any("No XRP-specific collateral balance" in x for x in r["confirmed"])
+    assert any("no XRP-specific collateral balance" in x.lower() for x in r["confirmed"])
     assert any("No public XRP collateral utilization amount" in x for x in r["not_established"])
 
 
@@ -84,7 +84,7 @@ def test_smfg_and_open_standard_links_remain_exploratory(evidence: dict) -> None
     assert "proof-of-concept work, not a launched production service" in smfg["normalized_excerpt"]
     assert "Coinbase" in standard["normalized_excerpt"]
     assert "does not mean a new service or production settlement" in standard["normalized_excerpt"]
-    assert any("not a direct Coinbase-SBI XRP partnership" in x for x in standard["limitations"])
+    assert any("not evidence of a direct Coinbase-SBI XRP partnership" in x for x in standard["limitations"])
 
 
 def test_rlusd_jpysc_issuer_and_distribution_roles_are_not_conflated(evidence: dict) -> None:
