@@ -4454,3 +4454,35 @@ Main's `.github/CODEOWNERS` assigns `*` only to `@Barrot-Agent`. The checked col
 4. Consolidate #1643's unique research onto the verified new main, preserving the three shared-path decisions and all evidence receipts.
 5. Close only exact superseded PRs after successor content is verified on main.
 6. Verify the first scheduled ingestion run on main; build synchronized historical data and demonstrate out-of-sample lift, calibration and drift stability before any directional forecast.
+
+
+## Run 31 post-handoff verification — 2026-11-07T20:55:11Z
+
+The post-handoff #1640 tip is `a3cad42215b03e9d0e96219f393c655ee76fff75`. Its exact-head checks have now completed:
+
+- Full repository suite: **1,165 passed, 8 subtests passed**.
+- Core suite: **655 passed, 8 subtests passed**.
+- Inclusive coverage: **58.49%**, above the 53% gate.
+- Installed wheel built successfully; the installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed with merging disabled.
+- Full CI: [42413076314](https://github.com/Barrot-Agent/B-Agent/actions/runs/42413076314).
+- Dependency audit: [42413076272](https://github.com/Barrot-Agent/B-Agent/actions/runs/42413076272).
+- Fail-closed gate: [42413076391](https://github.com/Barrot-Agent/B-Agent/actions/runs/42413076391).
+
+The only non-failing operational warning was GitHub Actions cache storage reaching its configured budget; the setup-python pip cache could not be saved. The XRP ingestion workflow's feature-store cache save is explicitly `continue-on-error: true`, and trusted per-run/daily feature-store artifacts are the recovery path. The first main-branch ingestion run must verify that artifact restore works when cache writes are unavailable. This does not invalidate the passing CI suite or wheel smoke.
+
+### Coinbase collateral and derivatives clarification
+
+Coinbase's current institutional documentation lists XRP among accepted collateral assets on Global Exchange. Collateral capacity is not unlimited: per-organization asset limits use average daily quantity, collateral haircuts and closeout-risk constraints. No XRP-specific customer collateral balance or utilization was disclosed.
+
+Coinbase International Exchange separately lists XRP perpetual futures, settled in USDC. Its institutional venue advertises cross-collateral across 40+ assets and up to 50x crypto-perpetual leverage, but access is restricted to non-U.S. institutions in permitted jurisdictions; eligible non-U.S. advanced retail access is product/jurisdiction dependent. This is not the same product as Global Exchange collateral eligibility.
+
+Coinbase's October 28 RLUSD launch notice described RLUSD collateral on Global Exchange as a future capability, not live at launch. Do not conflate XRP collateral eligibility, RLUSD distribution and future RLUSD collateral availability.
+
+Primary product references:
+- [Coinbase Global Exchange cross-collateral eligibility and limits](https://help.coinbase.com/en/exchange/cross-collateral/overview).
+- [Coinbase International Exchange markets and eligibility](https://www.coinbase.com/en-in/international-exchange).
+- [Coinbase / Ripple RLUSD distribution announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+
+This post-handoff section records the exact verified #1640 tip above. The documentation/test-only follow-up that adds this section requires its own exact-head CI; no merge or main-branch write is implied.

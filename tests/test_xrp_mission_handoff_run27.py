@@ -88,3 +88,16 @@ def test_run31_handoff_records_exact_heads_market_and_sbi_reconciliation():
     assert "E-jdY7gy7mQ" in handoff
     assert "NOT_ISSUED" in handoff
     assert "No merge was performed" in handoff
+
+
+def test_run31_post_handoff_verification_records_exact_current_tip():
+    handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
+    assert "## Run 31 post-handoff verification — 2026-11-07T20:55:11Z" in handoff
+    assert "a3cad42215b03e9d0e96219f393c655ee76fff75" in handoff
+    assert "1,165 passed, 8 subtests passed" in handoff
+    assert "58.49%" in handoff
+    assert "installed wheel loaded Barrot V3, the XRP mission and canonical data assets" in handoff
+    assert "GitHub Actions cache storage reaching its configured budget" in handoff
+    assert "XRP perpetual futures, settled in USDC" in handoff
+    assert "RLUSD collateral on Global Exchange as a future capability" in handoff
+    assert "No merge or main-branch write is implied" in handoff
