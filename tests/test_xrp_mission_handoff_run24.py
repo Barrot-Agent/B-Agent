@@ -32,15 +32,9 @@ def test_run24_handoff_contains_primary_sbic_identity_resolution():
     assert "SBI Holdings, Inc." in handoff
 
 
-def test_run24_platform_map_is_current_and_fail_closed():
+def test_run24_platform_map_snapshot_is_preserved_in_prior_history():
     data = json.loads(
         (ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
-    current = data["current_run_observations"]
-    assert current["run_id"] == 24
-    assert current["main_sha"] == "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
-    assert current["research_head"] == "db874a327399bb431e4a70265cf9627a864ef5c8"
-    assert current["mission_ci"]["pr_1643"]["full_suite"].startswith("1,885 passed")
-    assert current["merge_state"]["merge_performed"] is False
-    assert current["prediction_engine"]["directional_forecast_status"] == "NOT_ISSUED"
+    assert any(item.get("run_id") == 24 for item in data["prior_run_observations"])
