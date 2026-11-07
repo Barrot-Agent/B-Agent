@@ -71,7 +71,7 @@ def test_etf_zero_flow_retains_feed_lineage_and_limits(record: dict) -> None:
     assert source["reported"]["funds_covered"] == 5
     assert source["reported"]["latest_session_net_flow_usd"] == 0
     assert source["source_group"] == "aggregator_coinglass_feed"
-    assert any("not a direct issuer" in x for x in source["methodology_and_limits"])
+    assert any("issuer/custodian record" in x for x in source["limits"])
     assert source["model_eligible"] is False
 
 
@@ -87,7 +87,7 @@ def test_liquidation_clusters_are_modelled_not_actual_resting_orders(record: dic
     source = next(x for x in record["secondary_sources"] if x["source_id"] == "alpha_finance_xrp_liquidation_heatmap")
     assert source["reported"]["modelled_short_liquidity_above_usd"] == 90_600_000
     assert source["reported"]["modelled_long_liquidity_below_usd"] == 29_900_000
-    assert any("not actual resting liquidation orders" in x for x in source["methodology_and_limits"])
+    assert any("not actual resting liquidation orders" in x for x in source["limits"])
     assert source["model_eligible"] is False
 
 
