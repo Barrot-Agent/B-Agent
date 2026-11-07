@@ -1445,8 +1445,8 @@ def _parse_coinbase_candles(
         if not isinstance(row, list) or len(row) < 6:
             raise XRPIngestionError("Coinbase candle row does not match the documented schema")
         open_time = _from_seconds(row[0], "Coinbase candle open time")
-        if int(open_time.timestamp()) % COINBASE_CANDLE_GRANULARITY_SECONDS != 0:
-            raise XRPIngestionError("Coinbase candle open time is not aligned to its hourly granularity")
+        if page_start is not None and int(open_time.timestamp()) % COINBASE_CANDLE_GRANULARITY_SECONDS != 0:
+            raise XRPIngestionError("Coinbase backfill candle open time is not aligned to its hourly granularity")
         if page_start is not None and page_end is not None and (open_time < page_start or open_time >= page_end):
             continue
         if open_time in seen_open_times:
