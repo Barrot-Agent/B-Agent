@@ -28,7 +28,9 @@ def test_xrp_market_etf_derivatives_macro_reconciliation_preserves_provenance_an
     derivatives = artifact["market_observations"]["derivatives"]
     assert derivatives["reconciliation"]["open_interest_difference_usd"] == 870_000_000
     assert derivatives["reconciliation"]["do_not_average"] is True
-    assert derivatives["trad radar"] if False else True
+    assert derivatives["tradradar"]["open_interest_usd"] == 1_910_000_000
+    assert derivatives["alpha_finance"]["open_interest_usd"] == 2_780_000_000
+    assert derivatives["reconciliation"]["status"] == "UNRECONCILED_PROVIDER_UNIVERSES"
 
     etf = artifact["market_observations"]["etf_flows"]
     assert etf["xrp_insights"]["nov5_2026_flow_xrp"] == 110_214
