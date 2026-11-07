@@ -2408,3 +2408,43 @@ Evidence: CI https://github.com/Barrot-Agent/B-Agent/actions/runs/42356320196 ; 
 4. Consolidate #1643's unique research onto that verified main; reconcile the three shared paths and retain the verified TEDx video plus candidate-only personal-channel registry.
 5. Verify the first scheduled main-branch ingestion run and build synchronized historical multi-venue features. Continue event-timestamp and depth acquisition; current ticker-only snapshots are not enough.
 6. Train/evaluate a real model only after sufficient point-in-time history exists; compare against all four baselines with chronological holdouts, calibration, drift and independent shadow outcomes. Keep forecast issuance fail-closed.
+
+
+## Run 12 addendum — 2026-11-07T08:45:38Z
+
+### Institutional insurance network: Soter Insure
+
+The existing #1643 artifact `research/xrp_intelligence/20261107T030853Z-soter-series-b-sbi-coinbase-institutional-network.json` records a new institutional risk-transfer connection:
+
+- Soter's Nov 5 company announcement says Galaxy led its Series B; SBI Group and Standard Chartered's SC Ventures joined the second close, with Token Bay Capital following on. Coinbase Ventures, Franklin Templeton and Brevan Howard Digital participated in the first close in July.
+- Soter says proceeds will expand insurance capacity, underwriting and technology and support expansion in Asia-Pacific, Europe and the U.S. Its product list includes D&O, professional indemnity, crime, specie, slashing and smart-contract-failure coverage, with policies denominated in fiat or native digital assets.
+- The company release discloses neither round size nor investor-level allocations. CoinDesk independently reports approximately $23M plus more than 500 BTC and 2,000 ETH, valued near $66M at publication; its headline says $23.5M while the body says $23M. Preserve that discrepancy as secondary-only.
+- SBI Group and Coinbase Ventures are investors in the same portfolio company but in different closes. This is not evidence of a direct SBI-Coinbase investment, JV or partnership. No XRP-specific policy, custody mandate, investment or demand is disclosed.
+
+Sources: https://www.prnewswire.com/news-releases/sc-ventures-and-sbi-join-soter-insures-series-b-alongside-follow-on-from-token-bay-capital-302930335.html ; https://www.coindesk.com/business/2026/11/05/soter-raises-usd23-5m-plus-btc-and-eth-as-banks-demand-theft-protection
+
+### Coinbase primary-document conflict
+
+The current #1643 Coinbase collateral artifact records XRP as accepted Global Exchange/INTX collateral, with per-UBO ADQ caps and haircuts. Product eligibility does not disclose actual XRP collateral utilization.
+
+A separate U.S. product-document conflict remains unresolved: the U.S. nano XRP Perp Futures (XPP) contract-specification page says no expiration/final settlement date, while Coinbase's U.S. perpetual-style futures overview says contracts expire after five years and current contracts expire 2030-12-20. Keep the conflict explicit; do not use an assumed expiry rule as a model feature until a current contract rulebook or contract-specific listing resolves it. Do not conflate this U.S. XPP product with the separate Global Exchange XRP-PERP contract.
+
+### Full audit of the 41 changed workflow files on #1640
+
+All 41 changed workflow files were inspected for triggers, permissions, secrets, writes and external actions:
+
+- Quarantined workflows use `workflow_dispatch` only with empty permissions; they do not load credentials or perform the former autonomous writes.
+- Read-only analysis/validation workflows use contents-read or similarly narrow permissions and upload artifacts. Scheduled Cross Analysis and the XRP ingestion collector do not write repository files.
+- Groq-assisted design/discovery/triage/summary workflows are manual, require explicit public/authorized-input confirmation and an exact main SHA, and produce artifacts only. No Groq request was dispatched. Groq is not Grok and is not counted as one of the nine platforms.
+- Coinbase paper-trader workflow is manual, requires explicit YES and exact main SHA, is read-only and artifact-only. It was not dispatched.
+- Self-hosted-brain and A2A deployment workflows are changed from push-triggered to manual-only and require exact-main-SHA checks plus separate secret-rotation confirmation. Hugging Face sync is quarantined. Databricks deployment and Space restart remain manual and SHA-gated.
+- Barrot Operations is manual-only, requires YES and exact main SHA; it can overwrite a Databricks notebook and download a Kaggle dataset. It does not submit a Kaggle entry. It was not dispatched.
+- Push-triggered smoke/analysis jobs are read-only. The unresolved automatic external side effect is GitHub Pages: Pages is enabled, the previous main push completed build/report/deploy jobs, and the settings/trigger configuration remains inaccessible.
+
+The latest main-branch issue-triggered Barrot Agent run `42331248942` failed on issue #1656. The task was explicitly read-only review of #1655; the run attempted Groq with 11,534 tokens against an 8,000-token-per-minute limit, retried and failed with HTTP 413. It added a dispatch-attempt label and a failure-status comment; no code change, branch, PR or review comment was produced. A search for `barrot/task-1656` found no branch. The issue remains open. The current main workflow still has issue/contents/PR write permissions; #1640 disables this workflow, but that safety change is not on main.
+
+Main scheduled Cross Analysis runs through 2026-11-07 07:51 UTC succeeded on main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. No XRP public-ingestion workflow run exists on main; scheduled XRP ingestion is designed in #1640 but is not active on main.
+
+### Exact-head handoff verification note
+
+The prior #1640 handoff-only head `14601a3645969351d89cdc87e5b0388d9e0a940c` passed its exact-head full repository suite (1,096 passed, 8 subtests), core suite (630 passed, 8 subtests), 57.89% inclusive coverage, installed-wheel mission verification, six-manifest dependency audit and fail-closed gate. This addendum itself advances #1640 again; its new head must receive fresh exact-head CI before it is described as verified.
