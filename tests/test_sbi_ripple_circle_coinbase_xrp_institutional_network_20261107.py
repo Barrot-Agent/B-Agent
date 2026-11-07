@@ -55,7 +55,7 @@ def test_sbi_ripple_circle_coinbase_network_preserves_asset_and_relationship_bou
     assert "not total customer USDC balances" in metrics["metric_caveats"][1]
 
     interpretation = artifact["relationship_interpretation"]
-    assert "not a direct partnership" in interpretation["coinbase_ripple"]
+    assert "do not establish a direct Coinbase-Ripple" in interpretation["coinbase_ripple"]
     assert "not a direct Circle-Ripple corporate partnership" in interpretation["circle_ripple"]
     assert "multi-rail and multi-chain" in interpretation["sbi_strategy"]
 
