@@ -553,14 +553,69 @@ def test_groq_tpm_rate_limit_retries_once_then_uses_deduplicated_fallback_model(
     assert module._groq_fallback_models("openai/gpt-oss-120b") == ["openai/gpt-oss-20b"]
 
 
+
+
+def test_groq_tpm_http_413_falls_back_to_deduplicated_model(monkeypatch):
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setenv("BRAIN_MODEL", "openai/gpt-oss-120b")
+    monkeypatch.delenv("BRAIN_FALLBACK_MODELS", raising=False)
+    module = load_script_module("barrot_agent_groq_tpm_413_fallback_test")
+
+    calls: list[str] = []
+
+    def fake_urlopen(request, timeout=90):
+        payload = json.loads(request.data.decode("utf-8"))
+        calls.append(payload["model"])
+        if payload["model"] == "openai/gpt-oss-120b":
+            body = (
+                '{"error":{"message":"Rate limit reached for model '
+                'openai/gpt-oss-120b. Tokens per minute (TPM): '
+                'Limit 8000, Requested 11534, Used 0."}}'
+            ).encode("utf-8")
+            raise urllib.error.HTTPError(
+                module.GROQ_ENDPOINT,
+                413,
+                "Content Too Large",
+                {},
+                io.BytesIO(body),
+            )
+        return io.BytesIO(
+            json.dumps(
+                {"choices": [{"message": {"role": "assistant", "content": "fallback-ok"}}]}
+            ).encode("utf-8")
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+
+    result = module._send_groq_request(
+        {
+            "model": "openai/gpt-oss-120b",
+            "messages": [{"role": "user", "content": "test"}],
+            "max_tokens": 128,
+        }
+    )
+
+    assert calls == ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    assert result["choices"][0]["message"]["content"] == "fallback-ok"
+    assert module._is_groq_rate_limit_error(
+        RuntimeError(
+            "Groq HTTP 413: Rate limit reached. Tokens per minute (TPM): "
+            "Limit 8000, Requested 11534, Used 0."
+        )
+    )
+
 def test_deterministic_rate_limit_report_is_explicitly_blocked_and_read_only(monkeypatch):
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
     module = load_script_module("barrot_agent_deterministic_rate_limit_report_test")
 
     error = RuntimeError(
-        "Groq per-minute token limit exhausted for openai/gpt-oss-120b; "
-        "all configured fallback models failed."
+        "Groq HTTP 413: Rate limit reached for openai/gpt-oss-120b; "
+        "Tokens per minute (TPM): Limit 8000, Requested 11534, Used 0."
     )
     assert module._is_groq_rate_limit_error(error)
 
