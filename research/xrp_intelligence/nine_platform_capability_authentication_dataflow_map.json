@@ -1,0 +1,239 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-07T02:15:17Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_integration_head_before_map_commit": "1590b1d1f7d68fa924572353522e9d43e05ad2ff",
+  "observed_research_head": "9f7bdeb4e5db305c78941907b8d155deec8abb1c",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "platforms": {
+    "ChatGPT": {
+      "intended_role": [
+        "mission coordination",
+        "research synthesis",
+        "GitHub repository inspection and controlled artifact updates"
+      ],
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "verified_connection": "ChatGPT session to Barrot-Agent/B-Agent through the GitHub connector",
+      "verification_evidence": [
+        "Repository metadata and main branch fetched in this run",
+        "Complete main tree and PR inventory fetched in this run",
+        "Current PRs, review threads, workflow runs and logs read in this run",
+        "Research and integration branch files created/updated through the connector"
+      ],
+      "permission_scope": {
+        "repository": "Barrot-Agent/B-Agent",
+        "reported_repository_permission": "admin",
+        "observed_operations": [
+          "read repository metadata",
+          "read branches and trees",
+          "read PRs, reviews, workflows and logs",
+          "create/update files on existing mission branches"
+        ],
+        "secret_values_read": false
+      },
+      "data_flow": {
+        "verified": true,
+        "direction": "ChatGPT assistant <-> GitHub repository connector",
+        "data_classes": [
+          "public repository code",
+          "public research artifacts",
+          "CI/workflow metadata"
+        ],
+        "external_model_transfer": false
+      },
+      "limitations": [
+        "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration."
+      ]
+    },
+    "Claude": {
+      "intended_role": [
+        "independent research review",
+        "counter-hypothesis generation",
+        "red-team critique"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "none verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent authentication, permission grant or tested data flow."
+      ]
+    },
+    "Grok": {
+      "intended_role": [
+        "public social-signal discovery",
+        "independent market narrative comparison"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "none verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent authentication or tested data flow. Grok is distinct from Groq."
+      ]
+    },
+    "Gemini": {
+      "intended_role": [
+        "multimodal public-document analysis",
+        "independent source comparison"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "none verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent authentication, permission grant or tested data flow."
+      ]
+    },
+    "Copilot": {
+      "intended_role": [
+        "repository code review",
+        "implementation suggestions"
+      ],
+      "authentication_status": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY",
+      "verification_evidence": [
+        "PR #1640 has a copilot-pull-request-reviewer COMMENTED review dated 2026-11-04",
+        "PR #1643 has a copilot-pull-request-reviewer COMMENTED review dated 2026-11-04"
+      ],
+      "permission_scope": "Observed GitHub PR review comments only; no direct persistent Copilot account/API connection verified.",
+      "data_flow": {
+        "verified": false,
+        "direction": "GitHub-hosted PR diff to one-off review service; exact service-side retention and account-level auth not independently verified",
+        "persistent_connection": false
+      },
+      "limitations": [
+        "COMMENTED is not APPROVED and does not satisfy independent human review."
+      ]
+    },
+    "Codex": {
+      "intended_role": [
+        "bounded code implementation",
+        "test generation and execution",
+        "repository-level verification"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "none verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent Codex connection, credentials or data flow tested."
+      ]
+    },
+    "Hugging Face": {
+      "intended_role": [
+        "model hosting",
+        "public dataset access",
+        "Space runtime"
+      ],
+      "authentication_status": "INCONCLUSIVE_FAILED_HEALTH_CHECK",
+      "verification_evidence": [
+        "Main Pillars Consistency Check run 42222193811 reported hf_space stage=BUILD_ERROR",
+        "The same run's deploy_sync check only verified the local main-branch hf_space/app.py file",
+        "Manual sync-huggingface workflow was not invoked"
+      ],
+      "permission_scope": "No successful read/write permission verified; secret values were not read.",
+      "data_flow": {
+        "verified": false,
+        "direction": "read-only Space health check attempted; no successful healthy response or upload verified",
+        "external_write": false
+      },
+      "limitations": [
+        "BUILD_ERROR does not establish a successful authenticated service connection. No model or dataset was uploaded."
+      ]
+    },
+    "Kaggle": {
+      "intended_role": [
+        "public dataset discovery",
+        "competition evaluation",
+        "reproducible benchmark datasets"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "verification_evidence": [
+        "A manual kaggle-competitions workflow exists with an explicit external-submission confirmation and competition allowlist; it was not run."
+      ],
+      "permission_scope": "No authenticated Kaggle access verified.",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "submission_performed": false
+      },
+      "limitations": [
+        "No dataset submission, competition entry or external transfer occurred."
+      ]
+    },
+    "Databricks": {
+      "intended_role": [
+        "historical market-data lakehouse",
+        "feature engineering",
+        "large-scale walk-forward evaluation"
+      ],
+      "authentication_status": "AUTHORIZATION_FAILED_HTTP_403",
+      "verification_evidence": [
+        "Main Pillars Consistency Check run 42222193811 attempted read-only SQL validation and returned HTTP 403",
+        "DATABRICKS_HOST, warehouse ID and a masked token variable were present in the job environment; the token value was not inspected."
+      ],
+      "permission_scope": "No successful SQL read or write permission verified.",
+      "data_flow": {
+        "verified": false,
+        "direction": "read-only SELECT 1 attempted; request denied with HTTP 403",
+        "write_performed": false
+      },
+      "limitations": [
+        "The 403 may reflect invalid credentials or insufficient workspace/warehouse permission; the exact cause is not established. No Databricks deployment or write occurred."
+      ]
+    }
+  },
+  "out_of_scope_provider_notes": {
+    "Groq": {
+      "distinction": "Groq is not Grok and is not one of the nine requested platforms.",
+      "observed_use": "Legacy repository workflows reference Groq API credentials for manual research/artifact jobs.",
+      "current_run_status": "No Groq API call or data transfer was performed in this run.",
+      "guardrail": "Do not route XRP research to Groq unless a separate explicit provider authorization and data-flow test exists."
+    }
+  },
+  "coordination_status": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "verified_external_platforms_beyond_current_chatgpt_github_connector": 0,
+    "independent_tasks_assigned_across_nine_platforms": false,
+    "structured_evidence_exchange_across_nine_platforms": false,
+    "disagreement_resolution": "Evidence reconciliation was performed locally in this ChatGPT session; no cross-platform exchange was executed.",
+    "minority_objections": "Preserved in source artifacts, counter-hypotheses and GitHub review threads.",
+    "red_team_observations": [
+      "One-off Copilot review comments",
+      "CodeRabbit review comments; CodeRabbit is not one of the nine requested platforms"
+    ],
+    "no_unverified_platform_calls": true,
+    "no_external_model_data_transfer": true
+  },
+  "least_privilege_and_safety": {
+    "secret_values_read": false,
+    "credentials_exported": false,
+    "unverified_platforms_used": false,
+    "external_publication": false,
+    "deployment": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "next_actions": [
+    "Keep all unverified platforms disconnected from XRP evidence until authentication, permissions, data classification and tested data-flow are recorded.",
+    "Resolve Hugging Face Space health and Databricks HTTP 403 only through approved credential/permission repair; do not rotate or expose secrets.",
+    "Use one bounded independent task per platform only after its connection is verified; return source IDs, timestamps, exact claims, counter-evidence and hashes in a common evidence schema.",
+    "Treat one-off Copilot/CodeRabbit review comments as critique, not as independent human approval."
+  ]
+}
