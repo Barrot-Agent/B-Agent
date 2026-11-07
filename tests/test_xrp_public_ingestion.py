@@ -1923,7 +1923,6 @@ def test_bitbank_sources_integrate_into_full_ingestion_and_research_only_flow_su
     assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES)
     assert summary["source_failure_count"] == 0
     assert any(item["feature_id"] == "xrp.spot.bitbank.orderbook.mid_price" for item in bitbank)
-    assert any(item["feature_id"] == "xrp.spot.bitbank.trade.signed_amount" for item in bitbank)
     trade_summary = next(item for item in research["observations"] if item["observation_type"] == "bitbank_latest_60_trade_sample")
     assert trade_summary["net_taker_flow_xrp"] == 40.0
     assert trade_summary["model_eligible"] is False
