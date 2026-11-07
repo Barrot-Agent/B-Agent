@@ -468,7 +468,7 @@
     },
     {
       "source_id": "bitbank_jadat_transfer",
-      "url": "https://www.sbigroup.co.jp/news/2026/0925_16608.html",
+      "url": "https://corporate.bitbank.cc/news/20260925_01",
       "published_or_event_date": "2026-09-25",
       "source_type": "company_primary",
       "independence_group": "bitbank",
@@ -627,6 +627,15 @@
       "independence_group": "alpha_finance_aggregator",
       "normalized_excerpt_sha256": "eabcc334fe85b5b622ef510cff4d70daa89f0cf0ba12f4f69bd2458943dadacd",
       "capture_method": "normalized_dashboard_excerpt"
+    },
+    {
+      "source_id": "smtg_jadat_acquisition_notice",
+      "url": "https://www.smtg.jp/english/news/2026",
+      "published_or_event_date": "2026-09-25",
+      "source_type": "counterparty_primary_index",
+      "independence_group": "sumitomo_mitsui_trust_group",
+      "normalized_excerpt_sha256": "893d6c5cdba9e2bee1605de9fa7b3cc8eda1623e1d5b2a70782b1e12c8ab278e",
+      "capture_method": "indexed_primary_source_excerpt"
     }
   ],
   "normalized_excerpts": {
@@ -650,7 +659,8 @@
     "etf_sosovalue": "CryptoTicker reports, citing SoSoValue via CoinGape, that US spot XRP ETFs had no new money since Oct 29 and net assets around USD 1.41 billion.",
     "etf_cryptoetf": "BigGo Finance reports, citing CryptoETF Today's tracker, cumulative US spot XRP ETF net inflows near USD 1.81 billion, combined net assets near USD 1.46 billion across five funds as of Nov 3, zero flow Nov 3, and preliminary zero creations/redemptions Nov 4. These are a different source chain and cutoff from the SoSoValue-derived report; do not average.",
     "coinglass_method": "CoinGlass explains that liquidation pain levels and amounts are estimates from perpetual-futures liquidation heatmaps, not actual resting orders. Its 24-hour touch probability uses a random-walk calculation based on seven days of hourly volatility and is explicitly not a directional forecast.",
-    "alpha_finance_etf": "Alpha Finance's XRP ETF dashboard, through the 2026-11-06 session, covers five funds and reports zero flow on Nov 3, Nov 4, Nov 5 and Nov 6; +USD 8.4 million over the last seven sessions (Oct 27–Nov 6); +USD 45.9 million over 30 sessions; and cumulative net inflow of USD 1.73 billion. It explicitly says fund net assets and holdings are not published for XRP funds."
+    "alpha_finance_etf": "Alpha Finance's XRP ETF dashboard, through the 2026-11-06 session, covers five funds and reports zero flow on Nov 3, Nov 4, Nov 5 and Nov 6; +USD 8.4 million over the last seven sessions (Oct 27–Nov 6); +USD 45.9 million over 30 sessions; and cumulative net inflow of USD 1.73 billion. It explicitly says fund net assets and holdings are not published for XRP funds.",
+    "smtg_jadat_notice": "The Sumitomo Mitsui Trust Group's 2026 news-release index lists a September 25, 2026 notice titled 'Notice regarding the Acquisition of Japan Digital Asset Trust Preparatory Company, inc. as a Wholly-Owned Subsidiary by our subsidiary.' This corroborates the announced acquirer-side transaction scope but does not establish closing completion."
   },
   "feature_admission": {
     "market_snapshot_model_eligible": false,
