@@ -8,7 +8,10 @@ are explicit because one organization may publish from multiple domains.
 
 from __future__ import annotations
 
+import hashlib
 import ipaddress
+import json
+from collections.abc import Mapping
 from urllib.parse import urlsplit
 
 
@@ -74,6 +77,83 @@ def canonical_publisher_group(source_url: str) -> str:
         return ""
 
     return ".".join(labels[-(suffix_length + 1):])
+
+
+def canonical_independence_groups(sources: list[Mapping]) -> list[str]:
+    """Collapse declared shared lineages and publisher aliases into one group.
+
+    A declared independence_group captures known syndication or shared upstream
+    provenance. The URL-derived publisher group is an additional conservative
+    constraint: two differently labeled feeds from the same publisher cannot
+    count as independent corroboration. Distinct publisher domains sharing one
+    declared lineage also collapse into one group.
+    """
+    if not isinstance(sources, (list, tuple)):
+        raise ValueError("sources must be a list or tuple")
+    if not sources:
+        return []
+
+    parents = list(range(len(sources)))
+
+    def find(index: int) -> int:
+        while parents[index] != index:
+            parents[index] = parents[parents[index]]
+            index = parents[index]
+        return index
+
+    def union(left: int, right: int) -> None:
+        root_left = find(left)
+        root_right = find(right)
+        if root_left != root_right:
+            parents[max(root_left, root_right)] = min(root_left, root_right)
+
+    key_owner: dict[str, int] = {}
+    details: list[tuple[str, str]] = []
+    for index, source in enumerate(sources):
+        if not isinstance(source, Mapping):
+            raise ValueError(f"sources[{index}] must be a mapping")
+        lineage = source.get("independence_group")
+        if not isinstance(lineage, str) or not lineage.strip():
+            raise ValueError(f"sources[{index}].independence_group is required")
+        lineage = lineage.strip()
+        uri = source.get("source_uri", source.get("source_url", ""))
+        publisher = canonical_publisher_group(uri) if isinstance(uri, str) else ""
+        keys = [f"lineage:{lineage.casefold()}"]
+        if publisher:
+            keys.append(f"publisher:{publisher}")
+        for key in keys:
+            owner = key_owner.get(key)
+            if owner is None:
+                key_owner[key] = index
+            else:
+                union(index, owner)
+        details.append((lineage, publisher))
+
+    components: dict[int, dict[str, set[str]]] = {}
+    for index, (lineage, publisher) in enumerate(details):
+        root = find(index)
+        component = components.setdefault(root, {"lineages": set(), "publishers": set()})
+        component["lineages"].add(lineage)
+        if publisher:
+            component["publishers"].add(publisher)
+
+    labels: list[str] = []
+    for component in components.values():
+        lineages = sorted(component["lineages"], key=str.casefold)
+        publishers = sorted(component["publishers"])
+        if len(lineages) == 1:
+            label = lineages[0]
+        elif len(publishers) == 1:
+            label = f"publisher:{publishers[0]}"
+        else:
+            fingerprint = json.dumps(
+                {"lineages": lineages, "publishers": publishers},
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            label = "merged:" + hashlib.sha256(fingerprint.encode("utf-8")).hexdigest()
+        labels.append(label)
+    return sorted(labels)
 
 
 class SourceIndependenceEngine:

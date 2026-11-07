@@ -1,5 +1,6 @@
 from barrot_agent.evolution.source_independence import (
     SourceIndependenceEngine,
+    canonical_independence_groups,
     canonical_publisher_group,
 )
 
@@ -40,6 +41,60 @@ def test_related_sbi_domains_share_one_publisher_group():
 def test_tokyo_sbic_is_not_misclassified_as_sbi_holdings():
     assert canonical_publisher_group("https://www.sbic.co.jp/company/") == "sbic.co.jp"
     assert canonical_publisher_group("https://www.sbic.co.jp/company/") != "sbi-group"
+
+
+def test_same_publisher_cannot_be_split_into_multiple_declared_groups():
+    groups = canonical_independence_groups(
+        [
+            {
+                "source_id": "api-feed",
+                "independence_group": "api-feed",
+                "source_uri": "https://api.example.com/market",
+            },
+            {
+                "source_id": "www-feed",
+                "independence_group": "www-feed",
+                "source_uri": "https://www.example.com/market",
+            },
+        ]
+    )
+    assert groups == ["publisher:example.com"]
+
+
+def test_sbi_group_aliases_collapse_across_distinct_domains_and_labels():
+    groups = canonical_independence_groups(
+        [
+            {
+                "source_id": "sbi-holdings",
+                "independence_group": "sbi-holdings",
+                "source_uri": "https://www.sbigroup.co.jp/news",
+            },
+            {
+                "source_id": "sbi-vc",
+                "independence_group": "sbi-vc",
+                "source_uri": "https://www.sbivc.co.jp/news",
+            },
+        ]
+    )
+    assert groups == ["publisher:sbi-group"]
+
+
+def test_shared_lineage_collapses_different_publishers():
+    groups = canonical_independence_groups(
+        [
+            {
+                "source_id": "wire-a",
+                "independence_group": "shared-wire",
+                "source_uri": "https://news-a.example/story",
+            },
+            {
+                "source_id": "wire-b",
+                "independence_group": "shared-wire",
+                "source_uri": "https://news-b.example/story",
+            },
+        ]
+    )
+    assert groups == ["shared-wire"]
 
 
 def test_non_http_urls_cannot_establish_external_publisher_identity():

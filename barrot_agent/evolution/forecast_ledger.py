@@ -17,6 +17,7 @@ from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
+from .source_independence import canonical_independence_groups
 
 HORIZONS = (3600, 14400, 86400, 604800, 2592000)
 CLASSES = ("down", "flat", "up")
@@ -411,7 +412,7 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     if not isinstance(receipts, list) or not receipts:
         raise ForecastLedgerError("readiness dataset needs byte-addressed raw_source_receipts")
     receipt_sources: set[str] = set()
-    receipt_groups: set[str] = set()
+    grouping_receipts: list[dict[str, str]] = []
     receipt_ids: set[str] = set()
     for index, receipt in enumerate(receipts):
         if not isinstance(receipt, Mapping):
@@ -454,10 +455,13 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             )
         _validate_canonical_raw_receipt(receipt, index)
         receipt_sources.add(source_id.strip())
-        receipt_groups.add(group.strip())
+        grouping_receipts.append(
+            {"independence_group": group.strip(), "source_uri": uri.strip()}
+        )
         receipt_ids.add(receipt_id.strip())
     if receipt_sources != set(source_ids):
         raise ForecastLedgerError("readiness dataset source_ids do not exactly match raw receipt sources")
+    receipt_groups = set(canonical_independence_groups(grouping_receipts))
     declared_groups = string_list(dataset.get("source_independence_groups"), "source_independence_groups")
     if set(declared_groups) != receipt_groups or len(receipt_groups) < _MIN_SOURCE_GROUPS:
         raise ForecastLedgerError(

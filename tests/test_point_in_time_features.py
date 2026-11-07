@@ -32,7 +32,7 @@ def source(source_id="provider-a", group="exchange-a", digest=HASH_A):
     return {
         "source_id": source_id,
         "independence_group": group,
-        "source_uri": "https://example.com/public-data",
+        "source_uri": f"https://{source_id}.example/public-data",
         "raw_content_sha256": digest,
     }
 
@@ -150,6 +150,27 @@ def test_independence_groups_deduplicate_syndicated_sources():
     )
     assert independent_source_groups(result["record"]) == ["exchange-c", "same-wire"]
     assert result["record"]["independent_source_group_count"] == 2
+
+
+def test_same_publisher_different_labels_count_as_one_source_group():
+    result = validate_feature_record(
+        feature(
+            sources=[
+                {
+                    **source("api-feed", "api-label", HASH_A),
+                    "source_uri": "https://api.example.com/market",
+                },
+                {
+                    **source("www-feed", "www-label", HASH_B),
+                    "source_uri": "https://www.example.com/market",
+                },
+            ]
+        ),
+        CUTOFF,
+        captured_at_utc=CAPTURED,
+    )
+    assert result["record"]["source_independence_groups"] == ["publisher:example.com"]
+    assert result["record"]["independent_source_group_count"] == 1
 
 
 def test_snapshot_id_is_deterministic_and_order_independent():

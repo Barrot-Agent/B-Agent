@@ -11,6 +11,7 @@ from typing import Any
 from urllib.parse import urlsplit
 
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
+from .source_independence import canonical_independence_groups
 
 _SHA1 = re.compile(r"^[0-9a-f]{40}$")
 _MAX_ARTIFACT_BYTES = 10 * 1024 * 1024
@@ -313,7 +314,9 @@ def _observation_index(
                 f"source observation {identifier!r} source_data_as_of_utc predates one of its sources"
             )
 
-        groups = sorted({registry[item]["independence_group"] for item in normalized_source_ids})
+        groups = canonical_independence_groups(
+            [registry[item] for item in normalized_source_ids]
+        )
         declared_groups = observation.get("source_independence_groups")
         if declared_groups is not None:
             if (

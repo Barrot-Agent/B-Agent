@@ -18,6 +18,7 @@ from barrot_agent.evolution.forecast_ledger import (
 )
 from barrot_agent.evolution.point_in_time_features import build_feature_snapshot
 from barrot_agent.evolution.xrp_public_ingestion import RawReceiptArchive
+from barrot_agent.evolution.source_independence import canonical_independence_groups
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -175,7 +176,7 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
                 "raw_receipt": canonical_receipt,
             }
         )
-    independence_groups = sorted({source_details[source_id][0] for source_id in source_ids})
+    independence_groups = canonical_independence_groups(receipts)
     dataset_manifest = {
         "model_eligible": True,
         "quality_status": "verified",
@@ -917,6 +918,35 @@ def _mutated_readiness_report(mutate):
     ).encode("utf-8")
     report["dataset_sha256"] = hashlib.sha256(dataset_bytes).hexdigest()
     return report
+
+
+def test_readiness_rejects_two_differently_labeled_receipts_from_same_publisher():
+    def mutate(report):
+        manifest = report["dataset_manifest"]
+        receipt = manifest["raw_source_receipts"][1]
+        uri = "https://www.kraken.com/0/public/Ticker?pair=XRPUSD"
+        receipt["source_uri"] = uri
+        receipt["independence_group"] = "renamed-kraken-feed"
+        canonical = dict(receipt["raw_receipt"])
+        canonical.pop("receipt_id")
+        canonical["source_uri"] = uri
+        receipt_id = hashlib.sha256(
+            json.dumps(
+                canonical,
+                sort_keys=True,
+                separators=(",", ":"),
+                ensure_ascii=False,
+                allow_nan=False,
+            ).encode("utf-8")
+        ).hexdigest()
+        receipt["raw_receipt"] = {**canonical, "receipt_id": receipt_id}
+        receipt["receipt_id"] = receipt_id
+        manifest["source_independence_groups"] = ["publisher:kraken.com"]
+        report["source_independence_group_count"] = 1
+
+    report = _mutated_readiness_report(mutate)
+    with pytest.raises(ForecastLedgerError, match="independently receipted source groups"):
+        _validate_readiness_report(report)
 
 
 def test_readiness_report_rejects_source_data_after_dataset_cutoff():
