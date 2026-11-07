@@ -78,8 +78,8 @@ def test_etf_zero_flow_retains_feed_lineage_and_limits(record: dict) -> None:
 def test_binance_outflow_keeps_internal_transfer_counterhypothesis(record: dict) -> None:
     source = next(x for x in record["secondary_sources"] if x["source_id"] == "cryptoquant_binance_xrp_outflow_darkfost")
     assert source["reported"]["xrp_outflow"] == 418_500_000
-    assert any("internal transfers" in x for x in source["limitations"])
-    assert any("not proof of net accumulation" in x for x in source["limitations"])
+    assert any("internal transfers" in x for x in source["limits"])
+    assert any("not proof of net accumulation" in x for x in source["limits"])
     assert source["model_eligible"] is False
 
 
