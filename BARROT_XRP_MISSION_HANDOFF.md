@@ -1,3 +1,86 @@
+# Latest verified mission run — 2026-11-07T00:04:51Z
+
+This section supersedes earlier status statements where dates, branch heads, inventory counts or test totals differ. Prior run records remain below as history.
+
+## Mission priority and preservation
+
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation. No directional XRP forecast, shadow forecast, paper trade, real-money action, deployment, secret rotation, Kaggle submission or Space restart was performed in this run.
+
+## Current main and repository inventory
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main tree: 1,298 files, 493 Python files, 87 test modules, 86 workflow files; recursive tree was not truncated.
+- Open PR inventory: 371 total, 355 drafts, 16 non-drafts.
+- Main reports `protected: true`. The detailed branch-protection endpoint returns HTTP 403 (`Resource not accessible by integration`). The repository's only visible ruleset, `Fall Back`, is enforcement-disabled. Pages settings could not be retrieved. A previous main push triggered Pages deployment run `41799855489`; the deployment configuration and side effects remain unverified.
+- Main was not changed.
+
+## Active mission branches
+
+### PR #1640 — V3 integration
+
+- Head: `e0ad8fb1a7697637103c50f9dfdd65b81f987c91`; 482 commits ahead of main, 0 behind; 155 changed paths.
+- Branch tree: 1,349 files, 533 Python files, 113 test modules, 87 workflow files.
+- Exact-head CI run [42312114856](https://github.com/Barrot-Agent/B-Agent/actions/runs/42312114856): 1,071 full-suite tests passed (8 subtests); 629 core tests passed (8 subtests); inclusive package coverage 57.64% against a 53% threshold; installed-wheel verification passed.
+- Exact-head six-manifest dependency audit [42312114826](https://github.com/Barrot-Agent/B-Agent/actions/runs/42312114826) passed.
+- Exact-head fail-closed gate [42312114857](https://github.com/Barrot-Agent/B-Agent/actions/runs/42312114857) passed and keeps automatic merge disabled.
+- Review threads: 22/22 resolved. GitHub approving reviews: 0.
+- The branch's collector defines 23 public endpoint records, 21 scheduled. The two free non-commercial XRPL public-node endpoints are excluded from default/scheduled collection. Adapter version `xrp-public-market-v3.11`; parser version `xrp-public-market-v3.10`.
+- The collector covers Binance, Coinbase, Kraken and OKX spot; Binance USD-M XRPUSDT derivatives; ETF/issuer and exchange-balance sources. OKX ticker and order-book parsers use exchange timestamps; the order-book freshness limit is 60 seconds and no sequence continuity is claimed.
+- The scheduled workflow is read-only with respect to repository content and uploads run artifacts. It has not run on main because the PR is unmerged. Actions-cache writes remain subject to a cache-budget/contended-reservation warning; cache is evictable, checkpoints retain for 7 days, archives and receipt artifacts for 90 days. No external WORM store or independent timestamp anchor is configured.
+- The local point-in-time SQLite store, deterministic four-baseline chronological evaluator and forecast ledger are implemented/tested on this branch. The dataset is not yet mature, fitted probability recalibration and shadow outcomes are not verified, and no externally trusted evaluator signing key is configured. Univariate PSI drift output is not label/concept drift and cannot authorize forecasts.
+
+### PR #1643 — XRP evidence archive
+
+- Head: `4539d6804e8baf06d4e07956032241e68099653e`; 521 commits ahead of main, 0 behind; 369 changed paths.
+- Branch tree: 1,664 files, 630 Python files, 224 test modules, 86 workflow files.
+- Exact-head CI [42316689633](https://github.com/Barrot-Agent/B-Agent/actions/runs/42316689633): 1,644 full-suite tests passed (8 subtests); 498 core tests passed (8 subtests).
+- Exact-head six-manifest dependency audit [42316689659](https://github.com/Barrot-Agent/B-Agent/actions/runs/42316689659) passed.
+- Exact-head fail-closed gate [42316689635](https://github.com/Barrot-Agent/B-Agent/actions/runs/42316689635) passed; its output explicitly says automatic merge is intentionally disabled.
+- Review threads: 19/19 resolved. GitHub approving reviews: 0.
+- The branch contains the new timestamped artifact `research/xrp_intelligence/20261107T000451Z-xrp-live-spot-perps-etf-reconciliation.json` and five regression tests in `tests/test_xrp_live_spot_perps_etf_reconciliation_20261107.py`. The artifact commit is `30d21b3133fa692da96ad63bde0ae4a98c163240`; the final test/handoff head is the PR head above.
+- #1640 and #1643 share only `.github/workflows/dependency-audit.yml`; its blob SHA is identical on both heads. The research branch remains divergent and must not be merged directly after #1640.
+
+## Latest XRP market evidence — captured 2026-11-07T00:04:51Z
+
+The full source receipts, exact returned JSON text, SHA-256 hashes, normalized excerpts, timestamps, limitations, counter-hypotheses and model-eligibility decision are in the new #1643 artifact linked above.
+
+- Kraken XRP/USD: last $1.17999; bid $1.17999; ask $1.18000; Level-1 spread 0.08475 bps; rolling-24h volume 30.7906M XRP; rolling-24h VWAP $1.18982024; UTC-day open $1.20567. Kraken returned no provider timestamp.
+- OKX XRP-USDT: last 1.1812 USDT; bid 1.1811; ask 1.1812; Level-1 spread 0.84663 bps; rolling-24h volume 55.7534M XRP / 66.4516M USDT. Provider timestamp 2026-11-06T23:38:50.666Z was 1,560.334 seconds old at capture, exceeding the 300-second live-feature limit.
+- The 0.10254% last-price difference is not an arbitrage observation: quote currencies are not normalized, timestamps are not synchronized, and fees, latency, market impact and transfer costs are absent. No multi-level order book was captured.
+- TradRadar (updated 22:45 UTC, 15-minute display delay; 4,791 seconds old at retrieval) reported $1.90B OI across seven venues, down 1.60%; weighted funding +0.0030% per eight hours; at least $10.63M liquidations, including $10.07M longs and $560.08K shorts; 80% long accounts.
+- Alpha Finance (as of 23:04 UTC; 3,651 seconds old at retrieval) reported $2.76B OI, $2.85B 24-hour volume, $10.7M long and $589K short liquidations. Its liquidation clusters are modelled, not observed resting orders.
+- The $860M / 45.26% OI difference is not reconciled. Provider coverage, contract universe, notional conversion and cutoff differ; the values are not averaged.
+- XRP Insights displayed $1.49609B AUM and 1.19654B XRP held across seven exposures, with a Week 45 holdings-derived flow of -60K XRP whose exact cutoff/completeness was not explicit. TheXRPInvestor displayed $1.42B AUM and 1.20B XRP but states 12 products while its category counts sum to 11. CryptoKeyhole's latest complete date was Nov 4 and Nov 5 was partial at 2/4 funds. These ETF universes and vintages are not comparable and do not establish direct AP cash flow.
+- The snapshot is not admitted to the point-in-time feature store. No directional or shadow forecast was issued.
+
+## Workflow, dependency and open-PR reconciliation
+
+- #1642 is an ancestor of #1640 and all 7 of its changed paths are represented in #1640. Classify as superseded candidate; close only after #1640 is merged and verified on main.
+- Dependency PRs #1644–#1650 are one-commit branches diverged from #1640, but their objectives are represented in #1640: checkout@v7, upload-artifact@v7, download-artifact@v8, pytest>=9.2.0, types-requests>=2.33.0.20261030, databricks-sdk>=0.158.0 and huggingface_hub>=2.4.0. Their content is superseded by #1640, but do not close them before the successor is merged and verified on main.
+- #1655 is draft, 8 changed paths, 3 overlapping #1640 and 5 unique; no reviews. Preserve as unique/unreviewed and reconcile its unique foundation-catalog work after the V3 integration is settled.
+- #1653 is non-draft but blocked: 8/8 review threads unresolved, 0 approving reviews, 7 changed paths with only `.github/workflows/ci.yml` overlapping #1640. Unresolved findings include shared graph-file overwrite despite persistence=false, JSON stdin being discarded by CLI flag precedence, branch/HEAD/dirty-state checks captured too early, recursive submodule fetches through unvalidated remotes, degraded graph integrity accepted as success, and an uncaught subprocess timeout. Do not merge.
+- Preserve unique older work #1320, #1318, #1317 and #1269. #1254/#1255 are older dependency updates superseded by newer versions in #1640; retain until successor verification on main.
+
+## External-action and deployment gates
+
+- On #1640, the old push-triggered A2A deployment was replaced by manual dispatch requiring `YES`, a full expected main SHA matching both checked-out HEAD and origin/main, and a separate `YES` for secret rotation. Self-hosted brain deployment uses the same exact-main and separate secret-rotation gates.
+- Hugging Face sync, Databricks bundle deployment, HF admin, force deploy, Databricks token rotation, autonomous self-deployment and merge queue are quarantined/disabled. The PR auto-merge and gated-merge workflows remain read-only/fail-closed.
+- Databricks deployment/operations, model upload, Space restart and Kaggle submission workflows are manual and require per-run confirmation/allowlisting. None was invoked.
+- The Pages configuration and its automatic deployment behavior remain unverified. This is a merge blocker alongside the missing approving reviews and inaccessible detailed branch-protection settings.
+
+## Merge decision and next concrete action
+
+No merge, branch-protection bypass, PR closure, deployment, secret rotation, Space restart, Kaggle submission, paper trade or real-money action occurred. Do not merge #1640 or #1643 while approval and Pages/deployment gates remain unresolved.
+
+Next sequence:
+1. Obtain independent approving reviews for #1640 and verify branch-protection requirements and the Pages side effect/authorization.
+2. If every merge condition is satisfied, merge #1640, verify the merge commit, fetch main again, verify merged files and run main CI.
+3. Rebase/reconcile #1643's unique research onto the verified new main as a single consolidated successor; rerun full-suite, dependency/security and fail-closed checks on that exact head.
+4. Only after successor content is verified on main, close exact duplicate/superseded PRs #1642 and #1644–#1650 with cross-references. Preserve unique work and resolve #1653 review findings before any integration.
+
+
+---
+
 # Handoff addendum — 2026-11-06T22:18:37Z
 
 ## Automation run 8 — current verified state
