@@ -2520,3 +2520,91 @@ Findings:
 No changes were made to #1655, no branch was created, no PR was created, and no review was posted. Preserve #1655 as unique/unreviewed for its catalog files and blocked for its bundle gate until the false negatives are corrected. The structural core is superseded by the stronger #1640 implementation.
 
 The fixes in this addendum are committed on the existing #1640 branch only. The new head requires fresh exact-head full-suite, dependency-audit and fail-closed-gate verification before it can be called verified.
+
+
+---
+
+## Automation run 11 — 2026-11-07T10:40:32Z
+
+### Current repository state
+
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; main was not modified.
+- Recursive main tree: 1,403 entries; 493 Python files; 87 `tests/test*.py` modules; 86 workflow files.
+- Full open-PR inventory was enumerated across four API pages: 371 open PRs, 355 drafts and 16 non-drafts.
+- Main does not contain `.github/workflows/xrp-public-ingestion.yml` or `barrot_agent/data/missions/primary_mission.json`; those remain integration-branch content, not active main capabilities.
+
+### V3 integration CI failure and correction
+
+At the start of this run, PR #1640 head `29d92e99c8dec6447fe6237cacf5eec8b15383ff` was open, non-draft and reported mergeable. Its exact-head full-suite run [42364450912](https://github.com/Barrot-Agent/B-Agent/actions/runs/42364450912) failed after 1,106 tests passed and 8 subtests passed; two repository tests failed:
+
+1. `tests/test_ask_barrot_context.py::test_signal_snapshot_does_not_mislabel_legacy_signal_as_forecast` expected stable machine-readable `forecast_status=NOT_ISSUED`, `forecast_model_eligible=False` and an explicit instruction not to treat sentiment as a validated forecast. The context loader exposed the correct human-readable status but omitted those compatibility fields.
+2. `tests/test_legacy_signal_publication_safety.py::test_public_json_artifacts_do_not_expose_a_directional_forecast` expected the retired 45.5% variable-horizon metric inside the current public accuracy artifact. The current publication contract correctly keeps that historical figure in `web/legacy/signal_accuracy_unvalidated.json` and exposes no legacy percentage in `web/signal_accuracy.json`. The test had not been updated to that safer separation.
+
+The core job on the failing head passed: 631 tests and 8 subtests. The six-manifest dependency audit and fail-closed gate also passed.
+
+Both failures were corrected on the existing #1640 branch; no new branch or PR was created:
+
+- Commit `a7b4b03031f5135b3324e56edd393f7d86f119b6`: Ask Barrot now emits explicit fail-closed machine-readable status fields and the non-forecast warning.
+- Commit `04ea02031ef8170db13bcf44a5bb6298c4904650`: the publication-safety test now verifies that the current public accuracy artifact omits `legacy_observation`, while the separate `web/legacy/signal_accuracy_unvalidated.json` preserves 45.5% with `valid_predictive_accuracy=false`.
+
+Current #1640 head after those fixes: `04ea02031ef8170db13bcf44a5bb6298c4904650`.
+
+Exact-head checks for this corrected head:
+- Core suite: 631 passed, 8 subtests passed.
+- Fail-closed gate: [42365086884](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365086884), passed.
+- Full CI: [42365086922](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365086922), still running at the latest observation; full-suite result not yet verified.
+- Dependency audit: [42365086889](https://github.com/Barrot-Agent/B-Agent/actions/runs/42365086889), still running at the latest observation.
+
+Do not describe #1640 as green until the full-suite and dependency-audit runs complete on this exact head.
+
+### XRP research branch verification
+
+PR #1643 remains open and non-draft at head `b32b707ac72251eb92272dfdca956f24decf8e2a`, 585 commits ahead of main and zero behind. Its changed-file API reports 420 paths.
+
+Exact-head verification:
+- Full repository suite: 1,791 passed, 8 subtests passed.
+- Core suite: 498 passed, 8 subtests passed.
+- Six-manifest dependency audit: [42363621019](https://github.com/Barrot-Agent/B-Agent/actions/runs/42363621019), passed.
+- Fail-closed gate: [42363621042](https://github.com/Barrot-Agent/B-Agent/actions/runs/42363621042), passed.
+
+PR #1640 is 541 commits ahead of main and zero behind, with 165 changed paths. The two mission branches are divergent. Their exact shared changed paths remain:
+- `.github/workflows/dependency-audit.yml` — identical content.
+- `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` — different content.
+- `tests/test_kamilah_channel_identity_gate.py` — different content.
+
+Preserve #1643's 18 candidate video references; do not claim verified channel ownership or attributed-video inventory. Consolidate #1643's unique research onto a verified new main after #1640; do not merge the divergent research branch directly.
+
+### Fresh market-structure cross-check — November 7
+
+These are independent provider observations, not synchronized exchange-native receipts and not admitted to the feature store:
+
+- Swiftedge's market brief updated 09:06 UTC reports XRP at 1.1756, down 1.58% over 24 hours, net taker flow -17.1% of volume, 1.2x recent average volume and a reported $5.7M bid wall at 1.1570. The page describes an hourly market brief built from its live order book and trades. The precise exchange/contract coverage for each displayed aggregate was not established in this capture.
+- Edge or Not reports a 09:19 UTC XRP mid of 1.1717, $9.8M visible bids and $10.4M visible asks within 1%, combining Binance spot and OKX XRP-USDT perpetual books. Its stated method samples full visible depth each minute and averages into 15-minute price buckets. It excludes other venues, hidden/iceberg orders and liquidity outside 1.5%; it warns that displayed orders can be pulled. Its own page says the order-book signal has not been tested and history begins October 21.
+- The two providers' price references differ by about 0.33% over 13 minutes, but they are not proven to share the same venue universe, contract type, timestamp convention or conversion basis. Do not interpret this as an executable spread or a market move without those controls.
+- Alpha Finance's ETF dashboard says its five-fund universe is complete through the November 6 session: $0 net flow that day, +$8.4M across October 27–November 6, +$45.9M over 30 sessions and +$1.73B cumulative net inflows since launch. It explicitly says it does not publish fund AUM or holdings; its series is flows only and covers five funds. Do not reconcile this mechanically with earlier six-fund-plus-BITW or other holdings-derived datasets.
+- Ripple's June 24, 2026 primary announcement confirms RLUSD availability in Japan through SBI VC Trade following Japan FSA categorization under the Payment Services Act. Ripple stated $1.7B RLUSD market capitalization at that release. This is evidence of a Ripple/SBI distribution rail for RLUSD, not evidence of XRP purchases, XRP reserves or measured XRP demand.
+
+Sources:
+- Swiftedge: https://swiftedge.uk/markets/today
+- Edge or Not methodology and snapshot: https://edgeornot.com/order-book-heatmap/xrp
+- Alpha Finance five-fund flow dashboard: https://alphafinance.io/etf/xrp/
+- Ripple/SBI Japan RLUSD launch: https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+
+All observations above remain research context only. No directional forecast was issued.
+
+### Reviews, protection and merge decision
+
+- #1640: 22/22 inline review threads resolved; current submitted review records are COMMENTED, with zero APPROVED reviews.
+- #1643: 19/19 inline review threads resolved; current submitted review records are COMMENTED, with zero APPROVED reviews.
+- Main branch-protection details remain inaccessible through the current GitHub integration (HTTP 403). The only visible repository ruleset, `Fall Back`, is disabled.
+- GitHub Pages is enabled; settings are inaccessible. A prior main push completed a Pages build/deploy workflow in run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered public deployment remains unresolved.
+
+No merge was performed. Do not bypass protection or treat COMMENTED reviews as approvals. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete action
+
+1. Complete exact-head full-suite and six-manifest dependency verification on #1640 head `04ea02031ef8170db13bcf44a5bb6298c4904650`.
+2. Obtain independent approving review and resolve the GitHub Pages deployment authorization boundary.
+3. Merge #1640 only when all required checks and approvals are genuinely satisfied; then verify the merge commit, main files, automatic workflow effects and main CI.
+4. Consolidate #1643's unique evidence onto that verified main, reconciling the three shared paths and preserving the larger candidate-only video registry.
+5. Verify the first scheduled XRP ingestion run on main before claiming operational data collection. Continue synchronized historical acquisition, fitted calibration and independent shadow evaluation. Keep directional forecast issuance fail-closed.
