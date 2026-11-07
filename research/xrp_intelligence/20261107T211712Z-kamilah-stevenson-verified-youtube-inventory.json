@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.0",
+  "record_type": "kamilah_stevenson_verified_youtube_video_inventory",
+  "artifact_id": "kamilah_stevenson_verified_youtube_inventory_20261107T211712Z",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "captured_at_utc": "2026-11-07T21:17:12Z",
+  "identity": {
+    "canonical_name": "Dr. Kamilah Stevenson",
+    "verified_alias_variants": [
+      "Kamilah Stevenson",
+      "Camilla Stevenson (interview transcript rendering)",
+      "Camila (interview transcript rendering)",
+      "Kamilla Stevenson (interview transcript rendering)"
+    ],
+    "identity_status": "HIGH_CONFIDENCE_CROSS_SOURCE_LINKAGE",
+    "official_youtube_channel_handle": "@drkamilahstevenson",
+    "official_channel_url": "https://www.youtube.com/@drkamilahstevenson",
+    "channel_display_name": "Kamilah Stevenson",
+    "platform_verified_badge": "NOT_ESTABLISHED",
+    "verification_basis": [
+      "All Nations Chicago's first-party leadership page identifies Dr. Kamilah Stevenson, describes her health/research background and names her Healthy and Better work.",
+      "The TEDx Talks video description links to kamilahstevenson.com and identifies the speaker as Dr. Kamilah Stevenson.",
+      "The June 11, 2026 iHeart interview is titled with Dr. Kamilah Stevenson; the guest's transcript self-identifies her YouTube channel as Doctor Camilla Stevenson and explicitly warns about fake pages.",
+      "The corresponding Paul Barron Podcast YouTube upload tags @drkamilahstevenson in its title and identifies the same guest as Dr. Kamilah Stevenson.",
+      "The channel page resolves to the display name Kamilah Stevenson. The channel handle/display-name bridge is therefore strong, but no YouTube verification badge or channel-owner API proof was established."
+    ],
+    "residual_identity_caveat": "The iHeart transcript is automatically generated and varies between Camila, Camilla and Kamilah. The official first-party spelling is Kamilah. Do not merge every same-name channel or social profile into this identity."
+  },
+  "source_capture_contract": {
+    "method": "Public web-rendered excerpts and search-result metadata captured during this run.",
+    "raw_wire_bytes_captured": false,
+    "http_response_headers_captured": false,
+    "excerpt_hash_scope": "Exact short rendered title/phrase strings encoded as UTF-8; maximum 25 direct-quote words per source.",
+    "maximum_direct_quote_words_per_source": 25,
+    "metrics_are_time_sensitive": true
+  },
+  "sources": [
+    {
+      "source_id": "ALL_NATIONS_CHICAGO_FIRST_PARTY_LEADERSHIP",
+      "publisher": "All Nations Chicago",
+      "url": "https://allnationschicago.com/leadership",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "source_independence_group": "first_party_all_nations",
+      "excerpt": "Dr. Kamilah Stevenson is an advocate for healthy living",
+      "excerpt_sha256": "7a9150e4c3c15da3fb5ce814c6f3334621513453396b65d9cd20de8213504fcd",
+      "paraphrase": "The organization's leadership page names Dr. Matthew and Kamilah Stevenson as its pastors, identifies Kamilah as founder of Healthy and Better, and describes a former medical-research background. This is first-party identity evidence for the Chicago pastor, not proof of a YouTube channel by itself."
+    },
+    {
+      "source_id": "KAMILAH_STEVENSON_FIRST_PARTY_WEBSITE",
+      "publisher": "Kamilah Stevenson / Healthy and Better",
+      "url": "https://www.kamilahstevenson.com/contact/",
+      "related_url": "https://learn.kamilahstevenson.com/",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "source_independence_group": "first_party_kamilah_website",
+      "excerpt": null,
+      "excerpt_sha256": null,
+      "paraphrase": "The first-party website identifies Dr. Kamilah Stevenson and Healthy and Better. The linked learning site presents her as The Wealth Doctor and describes her work in investing education, neuroscience-informed decision-making and coaching. This is a separate first-party identity bridge."
+    },
+    {
+      "source_id": "TEDX_TALKS_KAMILAH_STEVENSON",
+      "publisher": "TEDx Talks (verified channel)",
+      "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2018-05-18",
+      "source_independence_group": "tedx_publisher",
+      "excerpt": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+      "excerpt_sha256": "54d1ff9944c75720a7974f2edfd5bb3eb3e7d1970d09a8c4581d1a275d7344ea",
+      "paraphrase": "TEDx Talks publishes the talk and its description links to Kamilah's first-party website, identifies her as Dr. Kamilah Stevenson, and summarizes her health/research credentials. The video is a verified speaker attribution, not a personal-channel upload.",
+      "observed_metrics": {
+        "views": 414061,
+        "likes": 19000,
+        "channel_followers": 44600000,
+        "observed_at_utc": "2026-11-07T21:17:12Z"
+      }
+    },
+    {
+      "source_id": "ALL_NATIONS_CHICAGO_THE_STUDY_OF_JOB",
+      "publisher": "All Nations Chicago",
+      "url": "https://www.youtube.com/watch?v=E-jdY7gy7mQ",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2019-09-09",
+      "source_independence_group": "official_all_nations_youtube_channel",
+      "excerpt": "The Study of Job | Dr. Kamilah Stevenson",
+      "excerpt_sha256": "f3189581976130b89342c152c1f182137a708b7369af5de4e4c19a62582e20dc",
+      "paraphrase": "The official All Nations Chicago channel published a video whose title attributes the talk to Dr. Kamilah Stevenson. The organization's first-party leadership page independently confirms her leadership role.",
+      "observed_metrics": {
+        "views": 33216,
+        "likes": 1000,
+        "channel_followers": 108000,
+        "observed_at_utc": "2026-11-07T21:17:12Z"
+      }
+    },
+    {
+      "source_id": "KAMILAH_PERSONAL_CHANNEL_MARCH_2026",
+      "publisher": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "channel_url": "https://www.youtube.com/@drkamilahstevenson",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2026-03-06",
+      "source_independence_group": "verified_kamilah_personal_youtube_channel",
+      "excerpt": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "excerpt_sha256": "49ee5ed3059f0551580d9f23a818b1fe5895e2ce959fbb65c21fba9b800f509d",
+      "paraphrase": "The Kamilah Stevenson channel published a video connecting an oil shock, the yen carry trade, global liquidity and XRP. Its description contains promotional/affiliate links and a financial disclaimer. Treat the video's causal claims as creator opinion, not primary market evidence.",
+      "observed_metrics": {
+        "views": 32040,
+        "likes": 2300,
+        "channel_followers": 137000,
+        "observed_at_utc": "2026-11-07T21:17:12Z"
+      },
+      "description_available": true
+    },
+    {
+      "source_id": "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_DEEP_CHOICES",
+      "publisher": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=po4bv7889ao",
+      "channel_url": "https://www.youtube.com/@drkamilahstevenson",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2025-12-23",
+      "source_independence_group": "verified_kamilah_personal_youtube_channel",
+      "excerpt": "Dr. Kamilah Stevenson Shares Deep Choices That Makes an Huge Impact",
+      "excerpt_sha256": "76419260f5d1d993f0ba0b3eca0692f90e489c78fdaca4ab807c37cd9c437922",
+      "paraphrase": "Search metadata attributes this upload to the Kamilah Stevenson channel. The description was unavailable in the captured result, so the video's substantive content is not classified.",
+      "observed_metrics": {
+        "views": 13614,
+        "likes": 394,
+        "observed_at_utc": "2026-11-07T21:17:12Z"
+      },
+      "description_available": false
+    },
+    {
+      "source_id": "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_SOMETHING_INCREDIBLE",
+      "publisher": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=12HiznN3iLQ",
+      "channel_url": "https://www.youtube.com/@drkamilahstevenson",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2025-12-29",
+      "source_independence_group": "verified_kamilah_personal_youtube_channel",
+      "excerpt": "Kamilah Stevenson Shares Somthing Incredible",
+      "excerpt_sha256": "7740518ae67ba6486e2d0494a2d6c067bc13d263b7143e2c79ca97dfef84046a",
+      "paraphrase": "Search metadata attributes this upload to the Kamilah Stevenson channel. The title contains a spelling error and the description was unavailable; no content claims are inferred.",
+      "observed_metrics": {
+        "views": 5385,
+        "likes": 255,
+        "observed_at_utc": "2026-11-07T21:17:12Z"
+      },
+      "description_available": false
+    },
+    {
+      "source_id": "PAUL_BARRON_PODCAST_CRYPTO_PANICS",
+      "publisher": "Paul Barron Podcast",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2026-06-11",
+      "source_independence_group": "paul_barron_interview_publication",
+      "excerpt": "Crypto Panics! W/ @drkamilahstevenson",
+      "excerpt_sha256": "8fec48e5e9d1c3330de6e3db513379237ff2ddad9500c6285c60e1daa83841ba",
+      "paraphrase": "The publisher's title tags the guest's YouTube handle. The episode description and matching iHeart transcript identify Dr. Kamilah Stevenson as the guest. This is a guest appearance, not an upload by her channel.",
+      "observed_metrics": {
+        "views": 6724,
+        "likes": 752,
+        "channel_followers": 509000,
+        "observed_at_utc": "2026-11-07T21:17:12Z"
+      },
+      "duration_minutes": 42
+    },
+    {
+      "source_id": "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2026-06-11",
+      "source_independence_group": "paul_barron_interview_transcript",
+      "excerpt": "YouTube at doctor Camilla Stevenson\nI do have a lot of fake pages",
+      "excerpt_sha256": "652f3e5ec570185a8fc99867cf90775ba8c11d2115c0085620fae3d346040c11",
+      "paraphrase": "The guest names her YouTube channel during the interview and warns that fake pages exist. The transcript is automatically generated and spells her name inconsistently; the host's YouTube upload independently tags @drkamilahstevenson. Treat the transcript as supporting, not standalone, identity evidence.",
+      "transcript_quality": "AUTOMATICALLY_GENERATED_NOT_VERBATIM"
+    },
+    {
+      "source_id": "ALINA_X_COMMENTARY_NOT_ATTRIBUTED",
+      "publisher": "Alina X",
+      "url": "https://www.youtube.com/watch?v=5DzBk8DfoLs",
+      "retrieved_at_utc": "2026-11-07T21:17:12Z",
+      "published_at": "2025-12-16",
+      "source_independence_group": "third_party_commentary",
+      "excerpt": "Kamilah Stevenson Breaks Down XRP’s Most Important Upgrade Yet",
+      "excerpt_sha256": "b26d21111f6319eb9eadb69c918fa8d8d4f8977e6c5a53e470764c8038a36e3a",
+      "paraphrase": "This video is published by Alina X, not Kamilah Stevenson. It discusses claims attributed to Kamilah but is third-party commentary/repackaging and is not counted as a Kamilah-authored or guest-attributed video.",
+      "observed_metrics": {
+        "views": 641,
+        "likes": 56,
+        "channel_followers": 5970,
+        "observed_at_utc": "2026-11-07T21:17:12Z"
+      }
+    }
+  ],
+  "videos": [
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "channel": "Kamilah Stevenson",
+      "channel_handle": "@drkamilahstevenson",
+      "published_at": "2026-03-06",
+      "attribution_type": "PERSONAL_CHANNEL_UPLOAD",
+      "attribution_status": "VERIFIED_CROSS_LINKED",
+      "content_verified": true,
+      "summary": "Discusses oil disruption, yen carry-trade liquidity and XRP; contains promotional/affiliate links and a financial disclaimer.",
+      "source_ids": [
+        "KAMILAH_PERSONAL_CHANNEL_MARCH_2026",
+        "PAUL_BARRON_PODCAST_CRYPTO_PANICS",
+        "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT"
+      ]
+    },
+    {
+      "video_id": "po4bv7889ao",
+      "title": "Dr. Kamilah Stevenson Shares Deep Choices That Makes an Huge Impact",
+      "url": "https://www.youtube.com/watch?v=po4bv7889ao",
+      "channel": "Kamilah Stevenson",
+      "channel_handle": "@drkamilahstevenson",
+      "published_at": "2025-12-23",
+      "attribution_type": "PERSONAL_CHANNEL_UPLOAD",
+      "attribution_status": "VERIFIED_CHANNEL_ATTRIBUTION_CONTENT_UNVERIFIED",
+      "content_verified": false,
+      "summary": "Public upload attributed to the cross-linked channel; description unavailable in captured metadata.",
+      "source_ids": [
+        "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_DEEP_CHOICES",
+        "PAUL_BARRON_PODCAST_CRYPTO_PANICS"
+      ]
+    },
+    {
+      "video_id": "12HiznN3iLQ",
+      "title": "Kamilah Stevenson Shares Somthing Incredible",
+      "url": "https://www.youtube.com/watch?v=12HiznN3iLQ",
+      "channel": "Kamilah Stevenson",
+      "channel_handle": "@drkamilahstevenson",
+      "published_at": "2025-12-29",
+      "attribution_type": "PERSONAL_CHANNEL_UPLOAD",
+      "attribution_status": "VERIFIED_CHANNEL_ATTRIBUTION_CONTENT_UNVERIFIED",
+      "content_verified": false,
+      "summary": "Public upload attributed to the cross-linked channel; description unavailable in captured metadata.",
+      "source_ids": [
+        "KAMILAH_PERSONAL_CHANNEL_DECEMBER_2025_SOMETHING_INCREDIBLE",
+        "PAUL_BARRON_PODCAST_CRYPTO_PANICS"
+      ]
+    },
+    {
+      "video_id": "Sulo54IlQ60",
+      "title": "Crypto Panics! W/ @drkamilahstevenson",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "channel": "Paul Barron Podcast",
+      "published_at": "2026-06-11",
+      "attribution_type": "GUEST_APPEARANCE",
+      "attribution_status": "VERIFIED_GUEST_ATTRIBUTION",
+      "content_verified": true,
+      "summary": "Forty-two-minute interview covering crypto investing, XRP utility/adoption, Japan and AI-assisted decision-making.",
+      "source_ids": [
+        "PAUL_BARRON_PODCAST_CRYPTO_PANICS",
+        "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT"
+      ]
+    },
+    {
+      "video_id": "E-jdY7gy7mQ",
+      "title": "The Study of Job | Dr. Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=E-jdY7gy7mQ",
+      "channel": "All Nations Chicago",
+      "published_at": "2019-09-09",
+      "attribution_type": "ORGANIZATION_CHANNEL_ATTRIBUTION",
+      "attribution_status": "VERIFIED_ORGANIZATION_CHANNEL_ATTRIBUTION",
+      "content_verified": true,
+      "summary": "Public All Nations Chicago upload whose title explicitly attributes the talk to Dr. Kamilah Stevenson.",
+      "source_ids": [
+        "ALL_NATIONS_CHICAGO_FIRST_PARTY_LEADERSHIP",
+        "ALL_NATIONS_CHICAGO_THE_STUDY_OF_JOB"
+      ]
+    },
+    {
+      "video_id": "VSgeDgOCexs",
+      "title": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+      "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "channel": "TEDx Talks",
+      "published_at": "2018-05-18",
+      "attribution_type": "TEDX_SPEAKER_ATTRIBUTION",
+      "attribution_status": "VERIFIED_SPEAKER_ATTRIBUTION",
+      "content_verified": true,
+      "summary": "TEDx Talks video description identifies Dr. Kamilah Stevenson and links to her first-party website; it is not a personal-channel upload.",
+      "source_ids": [
+        "TEDX_TALKS_KAMILAH_STEVENSON",
+        "KAMILAH_STEVENSON_FIRST_PARTY_WEBSITE"
+      ]
+    }
+  ],
+  "false_positive_or_non_attributed": [
+    {
+      "video_id": "5DzBk8DfoLs",
+      "title": "Kamilah Stevenson Breaks Down XRP’s Most Important Upgrade Yet",
+      "publisher": "Alina X",
+      "classification": "THIRD_PARTY_COMMENTARY_NOT_KAMILAH_UPLOAD",
+      "reason": "Publisher/channel is Alina X; title and description refer to Kamilah but do not establish her participation."
+    },
+    {
+      "channel_handle": "@CoachKamilahStevensonxrp",
+      "classification": "UNVERIFIED_SIMILAR_NAME_HANDLE",
+      "reason": "No first-party or host cross-link to the verified identity was found in this run."
+    },
+    {
+      "channel_handle": "@KamilahStevensonDigitalNetwork",
+      "classification": "UNVERIFIED_SIMILAR_NAME_HANDLE",
+      "reason": "No first-party or host cross-link to the verified identity was found in this run."
+    }
+  ],
+  "inventory_summary": {
+    "verified_video_attributions": 6,
+    "verified_personal_channel_uploads": 3,
+    "verified_guest_appearances": 1,
+    "verified_organization_channel_attributions": 1,
+    "verified_tedx_speaker_attributions": 1,
+    "third_party_commentary_not_counted": 1,
+    "unverified_similar_name_handles_not_counted": 2,
+    "previous_count_of_one_verified_video_is_superseded": true
+  },
+  "content_quality_and_market_use": {
+    "videos_are_creator_or_interview_content_not_primary_market_sources": true,
+    "model_eligible": false,
+    "permitted_use": "Public video inventory, identity provenance and qualitative research leads only.",
+    "prohibited_use": [
+      "Price predictor feature",
+      "Institutional flow evidence",
+      "Regulatory fact source",
+      "XRP adoption proof without independent corroboration"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "trade_status": "NO_TRADE"
+  },
+  "next_steps": [
+    "Continue inventorying only videos attached to @drkamilahstevenson or independently attributed by a verified publisher.",
+    "Preserve the guest's warning about fake pages; do not merge other same-name accounts without cross-links.",
+    "Cross-check all market claims from videos against issuer, exchange, regulatory and primary company records.",
+    "Do not treat channel subscriber/view metrics as evidence of identity beyond the cross-link described here."
+  ]
+}

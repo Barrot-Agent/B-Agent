@@ -75,7 +75,7 @@ def test_cryptokeyhole_nov6_is_partial_and_xrpc_outflow_is_preserved():
 def test_cryptokeyhole_future_dated_issuer_label_is_quarantined():
     record = _artifact()
     source = next(s for s in record["sources"] if s["source_id"] == "CRYPTOKEYHOLE_XRP_ETF_FLOWS")
-    assert "9 Nov 2026" in source["source_summary"]
+    assert "November 9" in source["source_summary"]
     assert "future-date anomaly" in source["source_summary"].lower()
     assert any("future-dated" in item for item in source["limitations"])
 
