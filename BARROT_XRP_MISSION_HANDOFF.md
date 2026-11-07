@@ -4130,3 +4130,144 @@ The main branch is protected, but detailed branch-protection settings return HTT
 5. Verify the first scheduled main-branch ingestion run and accumulate synchronized historical data before model training or forecast issuance.
 
 The objective remains one integrated working Barrot V3 build with measured XRP predictive performance, not a growing PR queue.
+
+
+## Run 30 — 2026-11-07 20:03:08 UTC
+
+### Mission and repository baseline
+
+XRP intelligence and prediction-engine mastery remain the top mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Main is unchanged at `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Its complete recursive tree contains 1,403 entries, 1,298 files, 493 Python files, 90 test modules and 78 workflow YAML files. All four open-PR API pages were fetched: 371 open PRs, 355 drafts and 16 non-drafts.
+
+Current active mission branches:
+- #1640 V3 integration: `7628c5db692124bfbe4a508a4810df4f699d3a87`, 171 changed paths, 596 commits ahead of main, zero behind; mergeable and clean.
+- #1643 XRP research: `cdf2e32f22c5ee5abac6713aa94587fc47cff4a7`, 490 changed paths, 684 commits ahead of main, zero behind; mergeable, checks currently pending.
+
+The branches share exactly three changed paths: `.github/workflows/dependency-audit.yml` (identical), `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different), and `tests/test_kamilah_channel_identity_gate.py` (different). Preserve the larger research candidate inventory and reconcile these paths explicitly.
+
+### Exact-head CI
+
+**#1640 — V3 integration**
+
+Exact head `7628c5db692124bfbe4a508a4810df4f699d3a87`:
+- Full repository suite: 1,164 passed, 8 subtests.
+- Core suite: 655 passed, 8 subtests.
+- Inclusive coverage: 58.49%, above the 53% threshold.
+- Installed-wheel verification passed.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed with merging disabled.
+
+Runs: [CI 42407889490](https://github.com/Barrot-Agent/B-Agent/actions/runs/42407889490), [dependency audit 42407889445](https://github.com/Barrot-Agent/B-Agent/actions/runs/42407889445), [fail-closed 42407889266](https://github.com/Barrot-Agent/B-Agent/actions/runs/42407889266).
+
+The six audited dependency declarations are root runtime requirements, development requirements, supplemental `requirements.tx`, Hugging Face Space requirements, legacy requirements and PEP 621 project dependencies. The #1640 branch's full-suite job covers the complete test tree; main's current core CI remains narrower.
+
+**#1643 — XRP research**
+
+Previous exact head `2b5eec2ac60a6a7999a096237e74bcfce7b39cc3` passed 2,066 full-suite tests, 498 core tests, the six-manifest dependency audit and fail-closed gate.
+
+The latest head is `cdf2e32f22c5ee5abac6713aa94587fc47cff4a7`. An intermediate head failed three new assertions (two wording mismatches and one normalized-excerpt hash mismatch); the artifact text was preserved, the tests were corrected, and the digest correction was recorded append-only. The current exact-head runs are still in progress:
+- [CI 42410305283](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410305283)
+- [Dependency audit 42410305293](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410305293)
+- [Fail-closed gate 42410305289](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410305289) — passed.
+
+Do not claim the latest #1643 full suite or dependency audit passed until those exact-head runs complete.
+
+### New primary-source research committed to existing #1643
+
+Artifacts:
+- `research/xrp_intelligence/20261107T200308Z-sbic-evernorth-capital-askcoin-kamilah-live-market-reconciliation.json`
+- `research/xrp_intelligence/20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation.json`
+- `tests/test_sbic_evernorth_capital_askcoin_kamilah_market_reconciliation_20261107.py`
+- `tests/test_evernorth_sbi_ownership_cross_filing_reconciliation_20261107.py`
+
+**Japan SBIC identity — primary-source resolved**
+
+Act No. 101 of June 10, 1963, Article 2 identifies exactly three statutory companies:
+- Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — SBIC East Japan.
+- Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — SBIC Central Japan.
+- Osaka Small and Medium Business Investment & Consultation Co., Ltd. — SBIC West Japan.
+
+Official law: https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20230101
+
+Official company profiles: https://www.sbic.co.jp/company/profile/ ; https://www.sbic-cj.co.jp/company/about/ ; https://www.sbic-wj.co.jp/profiles/profile/
+
+These three statutory regional companies are not SBI Holdings, Inc. Tokyo SBIC's February 26, 2025 ChatGPT seminar and November 16, 2026 general generative-AI seminar are public training events featuring a Microsoft evangelist, not an OpenAI partnership or authenticated ChatGPT-SBIC integration. No exact phrase match establishing such a partnership was found.
+
+**Evernorth / SBI Holdings — new material ownership finding and cross-filing disagreement**
+
+The October 30, 2026 Evernorth 424B3 defines “SBI” as SBI Holdings, Inc. Its pro forma ownership table reports:
+- 9,431,914 Class A shares.
+- 2,359,038 Class C shares.
+- 21.4% of Pubco Common Stock.
+- 39.9% of voting power.
+- No Company Units attributed to SBI in that table.
+
+SBI is the largest single disclosed voting block, not a majority. The 21.4% figure is the filing's Pubco Common Stock measure; it is not fully diluted equity because separate Company Units and potential conversions exist. Class C is non-voting but convertible into Class A.
+
+The October 9 closing 8-K reported a different class allocation: 8,885,293 Class A and 2,905,659 Class C. Aggregate SBI A+C shares equal 11,790,952 in both filings, but 546,621 shares shift between reported classes and the overall class denominators also change. No explicit bridge was located. Preserve both dated schedules; do not label the difference a transfer or completed conversion.
+
+Sources: https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm ; https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm
+
+The 424B3 table also reports Sponsor 61.4% of Pubco Common Stock but 19.9% voting power; public shareholders 8.8% common/20.5% voting; Ripple 3.0% common/7.1% voting; Contributor Related Party Entity 1.2% common/2.8% voting; other advance/delayed subscribers 4.2% common/9.8% voting. Voting and economic share percentages must not be conflated.
+
+**Actual capital versus capacity**
+
+SEC filings distinguish:
+- $214,049,995 advance cash received.
+- $214,000,000 used to buy 84,365,876 XRP.
+- 600,000 XRP separately contributed in-kind under the advance funding arrangements.
+- $272.6M gross cash proceeds at closing (approximately $224.6M private-placement cash plus $48M SPAC trust release), before expenses.
+- 388,910,554 XRP in-kind contributions from the transaction's investors/contributors.
+- A $30M 4.00% PIK note issued October 12, 2026, yielding $29M net after a $1M advisor fee; no specific XRP purchase from those proceeds was verified.
+- $9.7M borrowed under a Ripple-related facility as of October 7 for operating/transaction expenses, not evidence of XRP purchases.
+- Cantor ELOC capacity up to 5,218,935 shares. The October 30 424B3 cover case is $76.8M gross / $74.4M net at $14.71; issuance is optional and no actual draw or XRP purchase was verified. The same prospectus retains a stale $80.7M figure in one summary. A $521,893.50 commitment fee is fully earned by contract; cash payment was not independently verified.
+
+Exact phrase “actual capital stack” appeared in user-generated KuCoin commentary, not issuer evidence. The SEC filings are the primary basis for realized cash, debt, XRP purchase and conditional financing amounts.
+
+**ASK Coin and Kamilah Stevenson**
+
+CoinMarketCap lists Ask Coin at askcoin.net as inactive/untracked; the domain redirects to a HugeDomains profile. It is distinct from Permission Coin's ASK token. No XRP relationship was verified.
+
+One TEDx Kamilah Stevenson video remains identity-verified. A second video, `L_5bqd94rWo` (“Same food Different Goal | Kamilah Stevenson”, published 2025-12-04), is candidate-only: the first-party site identifies Dr. Kamilah Stevenson but does not link the specific YouTube channel. It is not added to the verified inventory.
+
+### Direct spot snapshot and model admission
+
+At the 2026-11-07 20:03:08 UTC reference:
+- Kraken XRP/USD last $1.15961; bid $1.15958; ask $1.15959; rolling 24h volume 19.91M XRP; 24h VWAP $1.16676347; no provider event timestamp.
+- OKX XRP-USDT last 1.1621; provider timestamp 19:47:14.769 UTC, 953.231 seconds old.
+- Binance XRPUSDT perpetual mark 1.16223102, index 1.16266493, funding 0.01% per eight hours; provider timestamp 19:30:54 UTC, 1,934 seconds old.
+
+The raw 0.21473% Kraken/OKX price difference is not an arbitrage signal: USD and USDT are not normalized and timestamps are not synchronized. Depth endpoints were not retrievable; no depth ladder or direct open-interest snapshot was captured. All observations remain excluded from model admission. No feature-store write occurred.
+
+### Reviews, security and merge decision
+
+- #1640: 22/22 inline review threads resolved; 10 COMMENTED reviews; zero APPROVED.
+- #1643: 19/19 inline review threads resolved; 10 COMMENTED reviews; zero APPROVED.
+- COMMENTED is not approval.
+- #1653 has eight unresolved review threads and six unique paths. Review concerns include possible overwrite of an existing codebase-memory graph, dropped command arguments, mutable worktree state during long indexing, recursive submodule fetches, degraded-indexer status reported as synchronized, and timeout handling. Keep blocked.
+- #1644–#1650, #1254/#1255, #1320, #1317 and #1318 have changed paths fully contained in #1640; exact content/version reconciliation and main verification are still required before closing.
+- #1269 retains eight unique topology/rendering paths; preserve.
+- #1655 and #1641 remain unique/unreviewed drafts; preserve.
+- #1477, #1597 and #1591 retain unique research work; preserve.
+
+Branch-protection details return HTTP 403. The visible fallback ruleset is disabled. CODEOWNERS is `* @Barrot-Agent`. GitHub Pages configuration is inaccessible; a previous main push triggered public Pages deployment run 41799855489. A merge could trigger an external deployment whose authorization/configuration remains unresolved.
+
+**No merge was performed.** Main remains unchanged. No deployment, secret read/rotation, Space restart, Kaggle submission, external model transfer, paper trade, funds transfer or real-money action occurred. No force-push, reset, clean, stash or destructive worktree operation occurred.
+
+### Nine-platform status and prediction status
+
+ChatGPT-to-GitHub is the only verified persistent connection. Copilot review comments are one-off and not approvals. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. No cross-platform data transfer occurred.
+
+Scheduled ingestion, source receipts, point-in-time SQLite features, four baselines, chronological walk-forward evaluation, temporal calibration, PSI drift diagnostics and fail-closed issuance remain implemented on #1640 only, not main. No mature synchronized historical dataset, validated real-data out-of-sample lift, real-data calibration or sufficient shadow outcomes exist.
+
+Forecast status: `NOT_ISSUED`.
+
+### Next concrete actions
+
+1. Finish exact-head full-suite and six-manifest dependency verification on #1643 `cdf2e32f22c5ee5abac6713aa94587fc47cff4a7`; diagnose any remaining failures.
+2. Obtain independent approving reviews and authorized branch-protection/Pages confirmation.
+3. Merge #1640 only when all required approvals, exact-head checks and external-action authorizations are satisfied; verify the merge commit, files, automatic workflows and main CI.
+4. Consolidate #1643's unique research onto verified main, preserving the three shared-path decisions and both Evernorth ownership snapshots.
+5. Close only exact superseded PRs after successor content is verified on main; preserve blocked and unique work.
+6. Verify scheduled ingestion on main and accumulate synchronized historical spot/depth/derivatives data before model training or directional forecast issuance.
