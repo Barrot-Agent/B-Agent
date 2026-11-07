@@ -28,7 +28,9 @@ def test_normalized_evidence_hash_is_reproducible():
 
 def test_exchange_wallet_snapshot_is_dated_and_not_live():
     data = load_artifact()
-    assert data["source_snapshot_time_utc"] == "2026-11-07T08:01:00Z"
+    # The publisher exposes the latest ledger-read time only to minute precision.
+    # Do not manufacture seconds in the research artifact or its assertion.
+    assert data["source_snapshot_time_utc"] == "2026-11-07T08:01Z"
     assert data["headline"]["wallet_count"] == 701
     assert data["headline"]["exchange_count"] == 24
     assert data["source_lineage"]["raw_source_bytes_retained"] is False
