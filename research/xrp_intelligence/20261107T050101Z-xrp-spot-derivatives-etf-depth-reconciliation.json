@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp-spot-derivatives-etf-depth-reconciliation-20261107T050101Z",
+  "captured_at_utc": "2026-11-07T05:01:01Z",
+  "capture_time_basis": "Reference clock obtained during this run. Individual web retrieval requests did not expose exact per-request retrieval seconds.",
+  "title": "XRP spot, derivatives, ETF-flow and order-book evidence reconciliation",
+  "purpose": "Append-only research snapshot. Separates exchange instruments, provider coverage, source freshness, holdings-derived ETF deltas, and modelled liquidation clusters. No directional forecast or model admission.",
+  "hash_scope": "SHA-256 covers exact JSON text returned for direct exchange API responses and exact normalized excerpt strings recorded for secondary HTML pages. It does not cover original HTTP wire bytes, response headers, TLS receipts, or independently timestamped source archives.",
+  "spot": {
+    "kraken_xrp_usd": {
+      "last_trade_usd": 1.15169,
+      "best_bid_usd": 1.15198,
+      "best_ask_usd": 1.15208,
+      "level1_spread_bps": 0.86803,
+      "volume_24h_xrp": 30075957.06047015,
+      "vwap_24h_usd": 1.18137641,
+      "utc_day_open_usd": 1.17749,
+      "low_24h_usd": 1.15046,
+      "high_24h_usd": 1.20607,
+      "last_vs_utc_day_open_pct": -2.1911,
+      "last_vs_24h_vwap_pct": -2.51287,
+      "provider_event_timestamp_utc": null,
+      "model_eligible": false,
+      "exclusion_reason": "Kraken ticker response supplied no provider event timestamp; top-of-book and rolling fields are not a synchronized historical feature."
+    },
+    "okx_xrp_usdt": {
+      "last_usdt": 1.1551,
+      "best_bid_usdt": 1.155,
+      "best_ask_usdt": 1.1551,
+      "level1_spread_bps": 0.86576,
+      "volume_24h_xrp": 59170856.186772,
+      "volume_24h_usdt": 70022596.98734416,
+      "open_24h_usdt": 1.2042,
+      "low_24h_usdt": 1.1518,
+      "high_24h_usdt": 1.2058,
+      "provider_timestamp_utc": "2026-11-07T04:52:50.769Z",
+      "age_at_reference_clock_seconds": 490.231,
+      "stale_against_300_second_limit": true,
+      "model_eligible": false,
+      "exclusion_reason": "Provider timestamp was 490.231 seconds old at the 05:01:01Z reference clock, exceeding the 300-second live-feature limit. USDT was not normalized to USD."
+    },
+    "raw_cross_venue_last_difference_pct": 0.29609,
+    "cross_venue_status": "NOT_COMPARABLE",
+    "cross_venue_limitations": [
+      "XRP/USD and XRP/USDT are different instruments; USD/USDT basis was not normalized.",
+      "Kraken did not provide an event timestamp.",
+      "OKX event timestamp exceeded the 300-second freshness limit.",
+      "Only Level-1 quotes were captured; no synchronized full-depth or execution-cost comparison was available."
+    ]
+  },
+  "derivatives": {
+    "tradradar": {
+      "publisher": "TradRadar",
+      "updated_at_utc": "2026-11-07T04:05:00Z",
+      "displayed_delay_minutes": 15,
+      "spot_mark_usd": 1.1575,
+      "spot_24h_change_pct": -3.73,
+      "open_interest_usd": 1870000000,
+      "open_interest_24h_change_pct": -1.6,
+      "oi_coverage": "7 exchanges: Binance, Bybit, Gate, MEXC, Bitget, Hyperliquid, OKX",
+      "oi_weighted_funding_pct_per_8h": 0.0038,
+      "liquidations_24h_usd_lower_bound": 13400000,
+      "long_liquidations_24h_usd_lower_bound": 12860000,
+      "short_liquidations_24h_usd_lower_bound": 541220,
+      "long_short_accounts_ratio": 3.97,
+      "long_account_share_pct": 79.9,
+      "liquidation_note": "Publisher says exchanges expose only part of liquidations in real time; figures are lower bounds."
+    },
+    "alpha_finance_heatmap": {
+      "publisher": "Alpha Finance",
+      "as_of_utc": "2026-11-07T04:26:00Z",
+      "spot_usd": 1.1573,
+      "spot_24h_change_pct": -3.57,
+      "open_interest_usd": 2730000000,
+      "volume_24h_usd": 2760000000,
+      "longs_liquidated_24h_usd": 15100000,
+      "shorts_liquidated_24h_usd": 599900,
+      "modelled_short_liquidation_clusters_above_usd": 106300000,
+      "modelled_long_liquidation_clusters_below_usd": 29400000,
+      "largest_short_cluster": {
+        "price_usd": 1.2049,
+        "notional_usd": 6500000
+      },
+      "largest_long_cluster": {
+        "price_usd": 1.1433,
+        "notional_usd": 3000000
+      },
+      "methodology_limit": "Liquidation clusters are modelled from open interest and standard leverage tiers; they are not observed resting orders or guaranteed liquidation triggers."
+    },
+    "oi_difference_usd": 860000000,
+    "oi_difference_pct_of_tradradar": 45.9893,
+    "reconciliation_status": "UNRESOLVED_COVERAGE_DIFFERENCE",
+    "do_not_average": true,
+    "interpretation": "Both providers show long-side liquidations materially exceeding short-side liquidations, but their OI totals and liquidation amounts differ. TradRadar specifies seven venues; Alpha labels its heatmap all-exchanges aggregated and its detailed venue universe is not identical in the retrieved page. No consolidated OI or liquidation total is justified."
+  },
+  "etf_flows": {
+    "alpha_finance": {
+      "data_through": "2026-11-06",
+      "fund_count": 5,
+      "reported_2026_11_06_flow_usd": 0,
+      "last_7_sessions_flow_usd": 8400000,
+      "last_30_sessions_flow_usd": 45900000,
+      "cumulative_net_inflow_usd": 1730000000,
+      "cumulative_net_flow_xrp": 989100000,
+      "source_feed_per_methodology": "Coinglass",
+      "publisher_limitations": "Dashboard says no fund list, AUM, holdings or fees are published for these funds; values are flow-series data, not holdings or AUM."
+    },
+    "cryptoetf_today": {
+      "data_date": "2026-11-06",
+      "fund_universe": 5,
+      "reported_flow_usd": 0,
+      "page_initial_coverage_statement": "2 of 5 funds reported; XRPZ, XRPC and GXRP pending.",
+      "page_later_coverage_statement": "5 of 5 funds reported.",
+      "daily_table": {
+        "XRP": 0,
+        "TOXR": 0,
+        "XRPZ": null,
+        "XRPC": null,
+        "GXRP": null
+      },
+      "cumulative_net_flow_usd": 1810000000,
+      "net_assets_usd": 1340000000,
+      "internal_consistency": "CONTRADICTORY",
+      "limitation": "The same page says 2/5 reported and later 5/5 reported, while the fund table retains em-dashes for three tickers. The zero session total cannot be treated as complete without resolving the contradiction."
+    },
+    "xrp_insights": {
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "fund_count": 7,
+      "dashboard_holdings_xrp": 1196540000,
+      "dashboard_aum_usd": 1470410000,
+      "week_45_holdings_derived_flow_xrp": -60000,
+      "dataset_generated_at_utc": "2026-11-07T03:53:31.563Z",
+      "data_as_of": "2026-11-05",
+      "latest_row_date": "2026-11-06",
+      "latest_row_status": "provisional",
+      "methodology": "Daily flow is computed from changes in issuer-reported holdings, not directly from issuer creation/redemption reports. Changes below 100 XRP are treated as rounding noise. BITW index rebalancing and fee accruals can be counted as flow. GXRP flows are withheld due a capture gap; some historical rows were reconstructed from third-party estimates."
+    },
+    "reconciliation": "The three providers do not share a common fund universe or method. Alpha uses a Coinglass flow feed; CryptoETF's page has an internal coverage contradiction; XRP Insights derives flows from issuer-reported holdings and includes BITW. Preserve each vintage separately. Do not average the cumulative $1.73B and $1.81B values or interpret holdings deltas as issuer-confirmed creations/redemptions."
+  },
+  "order_book_depth": {
+    "fuelmaps": {
+      "venue_universe": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "latest_static_snapshot_utc": "2026-11-07T04:00:00Z",
+      "xrp_numeric_depth_available": false,
+      "reason": "The page returned client-side JavaScript placeholders for XRP values and venue panels; static text exposed BTC only.",
+      "exclusions": [
+        "Binance",
+        "Bitget"
+      ],
+      "publisher_exclusion_reason": "Public data from those venues could not be read by Fuelmaps' network.",
+      "model_eligible": false
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "long_deleveraging_pressure",
+      "evidence": [
+        "Spot references were below the Kraken UTC day open and 24-hour VWAP.",
+        "TradRadar reported 79.9% long accounts and $12.86M long liquidations versus $0.541M short liquidations.",
+        "Alpha reported $15.1M long liquidations versus $0.600M short liquidations."
+      ],
+      "counterevidence": [
+        "Funding remained positive in the TradRadar aggregate, although two listed venues were negative.",
+        "Liquidation reporting is incomplete and provider coverage differs."
+      ],
+      "status": "OBSERVATIONAL_HYPOTHESIS_ONLY"
+    },
+    {
+      "id": "short_squeeze_asymmetry",
+      "evidence": [
+        "Alpha's modelled short-liquidation clusters above spot totalled $106.3M versus $29.4M modelled long clusters below."
+      ],
+      "counterevidence": [
+        "Clusters are modelled from OI and leverage tiers, not actual resting orders or verified account liquidation prices.",
+        "The OI coverage discrepancy between providers remains unresolved."
+      ],
+      "status": "MODELLED_SCENARIO_NOT_ORDER_BOOK_EVIDENCE"
+    },
+    {
+      "id": "institutional_flow_ambiguous",
+      "evidence": [
+        "Alpha Finance reports zero net flow on Nov 6 across five funds.",
+        "CryptoETF reports zero for Nov 6 but contradicts itself about whether two or five funds reported.",
+        "XRP Insights shows a provisional Nov 6 row and a holdings-derived Week 45 net change of -60,000 XRP across a seven-product universe."
+      ],
+      "counterevidence": [
+        "Alpha reports +$45.9M over 30 sessions and +$1.73B cumulative net inflow.",
+        "CryptoETF reports +$1.81B cumulative net flow, but the fund-universe and daily coverage conflict is unresolved."
+      ],
+      "status": "UNRESOLVED_SOURCE_AND_VINTAGE_DIFFERENCES"
+    }
+  ],
+  "model_admission": {
+    "eligible_as_point_in_time_feature": false,
+    "reason": "No synchronized multi-venue timestamps, no XRP multi-level depth values, stale OKX ticker, incompatible derivative coverage, and unsettled/contradictory ETF flow vintages.",
+    "eligible_as_event_timeline_context": true
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "direction": null,
+    "probabilities": null,
+    "horizon_seconds": null,
+    "data_cutoff_utc": "2026-11-07T05:01:01Z",
+    "reason": "Evidence is not synchronized or sufficiently reconciled for a leakage-safe point-in-time model feature set or calibrated directional forecast.",
+    "shadow_forecast_issued": false,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "source_records": [
+    {
+      "source_id": "kraken_xrp_usd_ticker_20261107",
+      "publisher": "Kraken",
+      "source_class": "direct_exchange_api",
+      "independence_group": "kraken_exchange",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_timestamp_utc": null,
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15208000\",\"4340\",\"4340.000\"],\"b\":[\"1.15198000\",\"2291\",\"2291.000\"],\"c\":[\"1.15169000\",\"84.86803000\"],\"v\":[\"4659070.12173104\",\"30075957.06047015\"],\"p\":[\"1.16201697\",\"1.18137641\"],\"t\":[5673,34638],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.20607000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_sha256": "80ddfd1e05c027d86ecbc936fb5cf8dedd5ce121b477fec5ac0fb999e0451a3e",
+      "limitations": [
+        "No provider event timestamp in response.",
+        "Ticker is not a multi-level order book."
+      ]
+    },
+    {
+      "source_id": "okx_xrp_usdt_ticker_20261107",
+      "publisher": "OKX",
+      "source_class": "direct_exchange_api",
+      "independence_group": "okx_exchange",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_timestamp_utc": "2026-11-07T04:52:50.769Z",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1551\",\"lastSz\":\"45.55519\",\"askPx\":\"1.1551\",\"askSz\":\"3815.650838\",\"bidPx\":\"1.155\",\"bidSz\":\"4048.423316\",\"open24h\":\"1.2042\",\"high24h\":\"1.2058\",\"low24h\":\"1.1518\",\"volCcy24h\":\"70022596.9873441554\",\"vol24h\":\"59170856.186772\",\"ts\":\"1794027170769\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "raw_response_sha256": "b12f35e078136ef4b3ff08cf1b62a6bf6466731b467e19dde0aa60da3387643e",
+      "limitations": [
+        "Stale by 490.231 seconds at reference clock.",
+        "USDT not normalized to USD.",
+        "Ticker is not a multi-level order book."
+      ]
+    },
+    {
+      "source_id": "tradradar_xrp_perpetuals_20261107_0405",
+      "publisher": "TradRadar",
+      "source_class": "aggregated_derivatives_dashboard",
+      "independence_group": "tradradar_aggregation",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "source_updated_at_utc": "2026-11-07T04:05:00Z",
+      "normalized_excerpt": "XRP trades at $1.1575 (-3.73% in 24h); open interest $1.87B across 7 exchanges; OI 24h change -1.60%; OI-weighted funding +0.0038% per 8h; 24h liquidations >=$13.40M, longs $12.86M, shorts $541.22K; 5-exchange long/short 3.97 (79.9% long). Updated 2026-11-07 04:05 UTC; figures displayed with a 15-minute delay. Publisher says it collects from Binance, Bybit, OKX, Bitget, Gate, MEXC and Hyperliquid. Liquidations are lower bounds because exchanges publish only part of them.",
+      "excerpt_sha256": "ae67329472d81e3d8274ba441e8b6dc4c2eeee220419ef491ddc6e7b6350a934"
+    },
+    {
+      "source_id": "alpha_finance_xrp_liquidation_heatmap_20261107_0426",
+      "publisher": "Alpha Finance",
+      "source_class": "aggregated_derivatives_dashboard",
+      "independence_group": "alpha_finance_coinglass_exchange_aggregation",
+      "source_url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "source_updated_at_utc": "2026-11-07T04:26:00Z",
+      "normalized_excerpt": "XRP liquidation heatmap, all exchanges aggregated, as of 2026-11-07 04:26 UTC: spot $1.1573 (-3.57%); open interest $2.73B; 24h volume $2.76B; modelled leverage within 2%: $36.4M longs. 24h longs liquidated $15.1M; shorts $599.9K. Modelled short liquidity above $106.3M and long liquidity below $29.4M. Largest short cluster $6.5M at $1.2049; largest long cluster $3.0M at $1.1433. Publisher states clusters are modelled from open interest and standard leverage tiers, not observed resting orders; actual liquidation prices depend on position size, margin mode and maintenance margin.",
+      "excerpt_sha256": "afa8d3d73c30f7c0122b8c7d343f95e24c4c1a09196ee846b84a3f0fd74a62ad"
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_flows_20261106",
+      "publisher": "Alpha Finance",
+      "source_class": "aggregated_etf_flow_dashboard",
+      "independence_group": "coinglass_via_alpha",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "source_updated_at_utc": null,
+      "normalized_excerpt": "Alpha Finance XRP ETF dashboard through 2026-11-06: 5 spot funds; displayed net flow $0 on Nov 6; last 7 sessions +$8.4M (Oct 27-Nov 6); 30-session flow +$45.9M; cumulative net inflow $1.73B; net flow since launch +989.1M XRP. Table names XRP, XRPZ, XRPC, GXRP and TOXR and displays +$0 for each on Nov 6. Page says 5 of 5 funds reported. It also says no fund list, AUM, holdings or fees are published. Alpha Finance methodology identifies Coinglass as the ETF dashboard feed and says reported figures are shown as published, without smoothing or revision.",
+      "excerpt_sha256": "58c29da470b58f97ceb94736f49c8c4b51649022dfe145acd269b95bbd2cd0a6",
+      "methodology_url": "https://alphafinance.io/methodology/"
+    },
+    {
+      "source_id": "cryptoetf_today_xrp_flows_20261106",
+      "publisher": "CryptoETF.today",
+      "source_class": "aggregated_etf_flow_dashboard",
+      "independence_group": "cryptoetf_today",
+      "source_url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "data_date": "2026-11-06",
+      "normalized_excerpt": "CryptoETF.today XRP ETF page for Fri 2026-11-06 (T+1): 5 spot ETFs. At lines 138-144 it says the day is partial, 2 of 5 funds have reported, not yet XRPZ, XRPC and GXRP, and no net flow among the reporting funds. At lines 210-218 it separately says 5 of 5 funds reported, 0.000% flow/assets and 0 of 5 funds with inflows. The day table at lines 232-238 shows 0 for XRP and TOXR but em-dashes for XRPZ, XRPC and GXRP. The same page reports cumulative net flow +$1.81B and net assets $1.34B. Its page states the dataset is published T+1.",
+      "excerpt_sha256": "8d00e523b2fd0d1674be41402d9d167042e2670807f2c4d0a059501b37ea759c"
+    },
+    {
+      "source_id": "xrp_insights_issuer_holdings_flows_20261106",
+      "publisher": "XRP Insights",
+      "source_class": "issuer_holdings_derived_flow_dashboard",
+      "independence_group": "issuer_holdings_scraper",
+      "source_url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "dataset_generated_at_utc": "2026-11-07T03:53:31.563Z",
+      "data_as_of": "2026-11-05",
+      "normalized_excerpt": "XRP Insights dashboard on 2026-11-07: 6 US spot XRP ETFs plus BITW (7 products); total AUM $1,470.41M; total XRP locked 1,196.54M; Week 45 net flow -0.06M XRP (about -$0.07M). The publisher's JSON metadata says data_as_of=2026-11-05, latest_row_date=2026-11-06, provisional_row_date=2026-11-06, generated_at=2026-11-07T03:53:31.563Z. Methodology: daily flow is the change in issuer-reported holdings, not an issuer-reported creations/redemptions feed; changes below 100 XRP are treated as zero; BITW index rebalancing and fee accruals can be counted as flow; GXRP flows are withheld across history due a capture gap; some historical rows are reconstructed from third-party daily estimates.",
+      "excerpt_sha256": "db86b0e0c62f57ff9a83b521b798987829270f1e4523bbad17b08b3d57d9cb98"
+    },
+    {
+      "source_id": "fuelmaps_xrp_depth_availability_20261107_0400",
+      "publisher": "Fuelmaps",
+      "source_class": "aggregated_order_book_dashboard",
+      "independence_group": "fuelmaps_venue_aggregation",
+      "source_url": "https://fuelmaps.io/order-book/",
+      "source_updated_at_utc": "2026-11-07T04:00:00Z",
+      "normalized_excerpt": "Fuelmaps spot order-book map covers Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini. Static page snapshot at 2026-11-07 04:00 UTC contains BTC depth only. XRP chart, values and venue panel are client-side JavaScript and returned as Loading in this retrieval. Publisher says Binance and Bitget are excluded because their public data could not be read by the network used by the map. No numeric XRP multi-level depth was retrievable in this run.",
+      "excerpt_sha256": "7cf885184dc1c984860fe7b33ac767404ccdd3080a309aed5e7daf431077a5e0"
+    }
+  ],
+  "external_actions": {
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "real_money": false,
+    "cross_platform_data_transfer": false
+  }
+}
