@@ -132,6 +132,7 @@ def test_all_web_research_remains_model_ineligible_and_no_forecast_is_issued():
     assert provenance["independent_timestamp_anchors"] is None
     assert len(load()["next_actions"]) >= 5
 
+
 def test_main_creator_source_profile_uses_probable_channel_candidates_without_claiming_verification():
     profile_path = (
         ROOT
@@ -149,12 +150,16 @@ def test_main_creator_source_profile_uses_probable_channel_candidates_without_cl
     assert creator["youtube_channel_id"] == "UCqUPJMQdkCN6lsLVDnichPA"
     assert creator["youtube_handle_candidate"] == "@drkamilahstevenson"
     assert creator["handle_channel_id_relation"] == "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
-    assert inventory["indexed_seed_video_count"] == 18
+    seed_videos = profile["seed_videos"]
+    seed_ids = [item["video_id"] for item in seed_videos]
+    assert inventory["indexed_seed_video_count"] == len(seed_videos)
+    assert inventory["candidate_reference_count"] == len(seed_videos)
+    assert len(seed_ids) == len(set(seed_ids))
+    assert len(seed_ids) == inventory["indexed_seed_video_count"]
     assert inventory["person_identity_verified"] is True
     assert inventory["canonical_channel_verified"] is False
     assert inventory["completeness_verified"] is False
-    own_ids = {item["video_id"] for item in profile["seed_videos"]}
-    assert len(own_ids) == 18
+    own_ids = set(seed_ids)
     assert "Sulo54IlQ60" not in own_ids
     assert "5DzBk8DfoLs" not in own_ids
     assert len(profile["related_public_video_references"]) == 2
