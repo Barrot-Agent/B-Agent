@@ -12,6 +12,7 @@ from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.xrp_public_ingestion import (
     RawReceiptArchive,
     _walk_forward_report,
+    _coinbase_candle_backfill_ranges,
     XRPIngestionError,
     fetch_public_json,
     fetch_public_csv,
@@ -331,6 +332,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
+    assert summary["coinbase_backfill"]["status"] == "NOT_REQUESTED"
+    assert summary["coinbase_backfill"]["pages_requested"] == 0
     assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES), (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
@@ -1470,3 +1473,161 @@ def test_explicit_noncommercial_xrpl_research_capture_is_never_model_eligible(tm
 
     snapshot = json.loads((tmp_path / "noncommercial-research" / "snapshot.json").read_text(encoding="utf-8"))
     assert not any(item["feature_id"].startswith("xrp.network.xrpl.") for item in snapshot["records"])
+
+
+def test_coinbase_backfill_ranges_are_contiguous_and_bounded():
+    oldest_open = datetime(2026, 11, 7, 2, 0, tzinfo=timezone.utc)
+    ranges = _coinbase_candle_backfill_ranges(oldest_open, 365)
+
+    assert len(ranges) == 30
+    assert ranges[0][0] == oldest_open - timedelta(days=365)
+    assert ranges[-1][1] == oldest_open
+    assert all(start < end for start, end in ranges)
+    assert all(end - start <= timedelta(hours=300) for start, end in ranges)
+    assert all(ranges[index][1] == ranges[index + 1][0] for index in range(len(ranges) - 1))
+
+    for invalid_days in (0, -1, 366, True, 1.5):
+        with pytest.raises(XRPIngestionError):
+            _coinbase_candle_backfill_ranges(oldest_open, invalid_days)
+
+
+def test_coinbase_manual_backfill_preserves_each_page_and_filters_boundary_overlap(tmp_path, monkeypatch):
+    from urllib.parse import parse_qs, urlsplit
+
+    captured = datetime(2026, 11, 7, 2, 30, tzinfo=timezone.utc)
+    base_fetcher = _fake_fetcher(captured)
+    page_payloads = {}
+
+    monkeypatch.setattr("barrot_agent.evolution.xrp_public_ingestion.time.sleep", lambda *_args: None)
+
+    def fetcher(source_id, url):
+        if source_id == "coinbase_spot_candles" and "start=" in url:
+            query = parse_qs(urlsplit(url).query)
+            page_start = datetime.fromisoformat(query["start"][0].replace("Z", "+00:00"))
+            page_end = datetime.fromisoformat(query["end"][0].replace("Z", "+00:00"))
+            rows = [
+                [int((page_start - timedelta(hours=1)).timestamp()), "1.00", "1.20", "1.10", "1.15", "10"],
+                [int(page_start.timestamp()), "1.01", "1.21", "1.11", "1.16", "11"],
+                [int(page_end.timestamp()), "1.02", "1.22", "1.12", "1.17", "12"],
+            ]
+            raw = json.dumps(rows, separators=(",", ":")).encode("utf-8")
+            page_payloads[url] = raw
+            return {"raw_bytes": raw, "payload": rows, "http_date": None}
+        return base_fetcher(source_id, url)
+
+    summary = run_ingestion(
+        tmp_path / "coinbase-backfill",
+        fetcher=fetcher,
+        now=captured,
+        coinbase_backfill_days=15,
+    )
+
+    backfill = summary["coinbase_backfill"]
+    assert backfill["status"] == "COMPLETED"
+    assert backfill["requested_days_before_oldest_latest_page_candle"] == 15
+    assert backfill["pages_requested"] == 2
+    assert backfill["pages_completed"] == 2
+    assert backfill["pages_failed"] == 0
+    assert backfill["empty_pages"] == 0
+    assert backfill["candles_ingested"] == 2
+    assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES) + 2
+
+    receipts = json.loads((tmp_path / "coinbase-backfill" / "receipt_manifest.json").read_text(encoding="utf-8"))
+    page_receipts = sorted(
+        (item for item in receipts if item["source_id"].startswith("coinbase_spot_candles_backfill_page_")),
+        key=lambda item: item["source_id"],
+    )
+    assert len(page_receipts) == 2
+    for receipt in page_receipts:
+        assert receipt["raw_content_sha256"] == hashlib.sha256(page_payloads[receipt["source_uri"]]).hexdigest()
+        assert receipt["raw_bytes_retained"] is True
+        assert receipt["model_eligible_source"] is True
+
+    page_ranges = []
+    for receipt in page_receipts:
+        query = parse_qs(urlsplit(receipt["source_uri"]).query)
+        page_ranges.append((
+            datetime.fromisoformat(query["start"][0].replace("Z", "+00:00")),
+            datetime.fromisoformat(query["end"][0].replace("Z", "+00:00")),
+        ))
+    assert page_ranges[0][1] == page_ranges[1][0]
+
+    snapshot = json.loads((tmp_path / "coinbase-backfill" / "snapshot.json").read_text(encoding="utf-8"))
+    coinbase_closes = [
+        item for item in snapshot["records"]
+        if item["feature_id"] == "xrp.spot.coinbase.1h.close_price"
+    ]
+    event_times = [item["event_time_utc"] for item in coinbase_closes]
+    assert len(event_times) == 4
+    assert len(set(event_times)) == 4
+    assert all(item["known_at_utc"] == "2026-11-07T02:30:00.000000Z" for item in coinbase_closes)
+    assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
+
+
+def test_coinbase_manual_backfill_records_empty_no_tick_pages_without_fabricating_candles(tmp_path, monkeypatch):
+    captured = datetime(2026, 11, 7, 2, 30, tzinfo=timezone.utc)
+    base_fetcher = _fake_fetcher(captured)
+    monkeypatch.setattr("barrot_agent.evolution.xrp_public_ingestion.time.sleep", lambda *_args: None)
+
+    def fetcher(source_id, url):
+        if source_id == "coinbase_spot_candles" and "start=" in url:
+            return {"raw_bytes": b"[]", "payload": [], "http_date": None}
+        return base_fetcher(source_id, url)
+
+    summary = run_ingestion(
+        tmp_path / "coinbase-empty-backfill",
+        fetcher=fetcher,
+        now=captured,
+        coinbase_backfill_days=1,
+    )
+
+    backfill = summary["coinbase_backfill"]
+    assert backfill["status"] == "COMPLETED"
+    assert backfill["pages_requested"] == 1
+    assert backfill["pages_completed"] == 1
+    assert backfill["pages_failed"] == 0
+    assert backfill["empty_pages"] == 1
+    assert backfill["candles_ingested"] == 0
+
+    raw_only = json.loads((tmp_path / "coinbase-empty-backfill" / "raw_only_sources.json").read_text(encoding="utf-8"))
+    assert any(
+        item["source_id"] == "coinbase_spot_candles_backfill_page_001"
+        and "no_in_range_completed_candles" in item["reason"]
+        for item in raw_only
+    )
+    failures = json.loads((tmp_path / "coinbase-empty-backfill" / "source_failures.json").read_text(encoding="utf-8"))
+    assert not any(item["source_id"] == "coinbase_spot_candles_backfill_page_001" for item in failures)
+
+
+@pytest.mark.parametrize("days", [True, -1, 366, 1.5, "2"])
+def test_coinbase_backfill_input_rejects_unbounded_or_non_integer_values(tmp_path, days):
+    captured = datetime(2026, 11, 7, 2, 30, tzinfo=timezone.utc)
+    with pytest.raises(XRPIngestionError):
+        run_ingestion(
+            tmp_path / "invalid-coinbase-backfill",
+            fetcher=_fake_fetcher(captured),
+            now=captured,
+            coinbase_backfill_days=days,
+        )
+
+
+def test_coinbase_historical_backfill_is_manual_only_and_does_not_expand_permissions():
+    workflow = (
+        Path(__file__).resolve().parents[1]
+        / ".github"
+        / "workflows"
+        / "xrp-public-ingestion.yml"
+    ).read_text(encoding="utf-8")
+
+    assert "coinbase_backfill_days:" in workflow
+    assert "type: number" in workflow
+    assert "default: 0" in workflow
+    assert "maximum 365 days" in workflow
+    assert "--coinbase-backfill-days" in workflow
+    assert "github.event_name == 'workflow_dispatch'" in workflow
+    assert "contents: read" in workflow
+    assert "contents: write" not in workflow
+    assert "actions: write" not in workflow
+    assert "secrets." not in workflow
+    assert "cron: '3 * * * *'" in workflow
+    assert "cron: '15 0 * * *'" in workflow
