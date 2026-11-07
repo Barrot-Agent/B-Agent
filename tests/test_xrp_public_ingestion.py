@@ -1560,6 +1560,21 @@ def test_coinbase_manual_backfill_preserves_each_page_and_filters_boundary_overl
         if item["feature_id"] == "xrp.spot.coinbase.1h.close_price"
     ]
     event_times = [item["event_time_utc"] for item in coinbase_closes]
+    source_ids = {
+        source["source_id"]
+        for item in coinbase_closes
+        for source in item["sources"]
+    }
+    assert "coinbase_spot_candles" in source_ids
+    assert {
+        "coinbase_spot_candles_backfill_page_001",
+        "coinbase_spot_candles_backfill_page_002",
+    }.issubset(source_ids)
+    receipt_hashes = {item["source_id"]: item["raw_content_sha256"] for item in page_receipts}
+    for item in coinbase_closes:
+        for source in item["sources"]:
+            if source["source_id"].startswith("coinbase_spot_candles_backfill_page_"):
+                assert source["raw_sha256"] == receipt_hashes[source["source_id"]]
     assert len(event_times) == 4
     assert len(set(event_times)) == 4
     assert all(item["known_at_utc"] == "2026-11-07T02:00:00.000000Z" for item in coinbase_closes)
