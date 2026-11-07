@@ -285,6 +285,98 @@
       "limitations": [
         "Broad risk-appetite context only; this is not an XRP-specific flow or causal price signal."
       ]
+    },
+    {
+      "source_id": "xrp_insights_etf_holdings_and_flows",
+      "publisher": "XRP Insights",
+      "source_type": "issuer_reported_holdings_scraper_and_derived_flow_series",
+      "independence_group": "issuer_page_scraper_xrp_insights",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "generated_at_utc": "2026-11-07T10:20:21.922Z",
+      "data_as_of": "2026-11-05",
+      "latest_row_date": "2026-11-06",
+      "provisional_row_date": "2026-11-06",
+      "tracked_funds": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "excerpts": [
+        {
+          "text": "generated_at=2026-11-07T10:20:21.922Z; data_as_of=2026-11-05; latest_row_date=2026-11-06; provisional_row_date=2026-11-06; tracked_funds=6 spot XRP funds plus BITW.",
+          "sha256": "d5f2246fd4c071d80cf762b1e54ded7ba39567e37b1b937763db80e3cfcea398"
+        },
+        {
+          "text": "Holdings are issuer-reported; flows are the day-over-day change in those holdings. No third-party flow feed is used for current data.",
+          "sha256": "178f95c6062952c6319a043d16491b9f404383717af8b3e6b764f28d02f10822"
+        },
+        {
+          "text": "On Nov 5, 2026, US XRP ETFs (the 6 spot funds plus BITW) recorded net inflows of 110,214 XRP; Nov 2–5 net flow was −149.5K XRP.",
+          "sha256": "5a2e9f6606c38e81fbb37bf3ba43701d7ccb9d512900fa70340d409414b34eab"
+        }
+      ],
+      "web_references": [
+        "turn680661view0",
+        "turn699131search6",
+        "turn699131search7"
+      ],
+      "reported_values": {
+        "nov5_net_flow_xrp": 110214,
+        "nov2_to_nov5_net_flow_xrp": -149500,
+        "nov2_to_nov5_net_flow_usd": -202600,
+        "nov5_total_holdings_including_bitw_xrp": 1200000000,
+        "nov5_total_aum_including_bitw_usd": 1540000000,
+        "nov5_six_spot_funds_holdings_xrp": 1180000000,
+        "nov5_six_spot_funds_aum_usd": 1520000000
+      },
+      "methodology": {
+        "flow_definition": "Daily change in issuer-reported XRP holdings, not issuer-reported AP cash creations/redemptions.",
+        "current_data_source": "Issuer fund pages; no third-party flow feed for current data.",
+        "gxrp": "Flow excluded across the history due a known issuer-page capture gap; holdings/AUM remain in totals.",
+        "bitw": "XRP sleeve of a multi-asset index fund; holdings changes can reflect index rebalancing and are not pure XRP creations/redemptions.",
+        "provisional_settlement": "The 6 Nov row is provisional and may be rewritten at next-morning re-settlement; data_as_of remains 5 Nov."
+      },
+      "limitations": [
+        "This source's latest settled data is 5 Nov, not 6 Nov.",
+        "Nov 6 is provisional and must not be treated as final daily flow.",
+        "Flows are holdings deltas and can include fees, rebalancing or other non-creation/redemption changes.",
+        "The fund universe differs from Alpha Finance and CryptoKeyhole."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_ripple_escrow_history",
+      "publisher": "XRP Insights",
+      "source_type": "on_chain_ledger_derived_secondary_index",
+      "independence_group": "rippled_json_rpc_pinned_validated_ledger",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "ledger_index": 108172621,
+      "ledger_time_utc": "2026-11-07T10:27:00Z",
+      "excerpts": [
+        {
+          "text": "Source: rippled JSON-RPC (s1.ripple.com, with xrplcluster.com as fallback). No explorer caches or aggregators.",
+          "sha256": "dda4818c36cacdf3f477f032a5fa2d4740da9fe5f11570260478098cec6ebc99"
+        },
+        {
+          "text": "On Sunday, November 1, 2026, 1,000,000,000 XRP was released from 2 escrow objects; Ripple then re-escrowed 700,000,000 XRP in 3 new escrow objects.",
+          "sha256": "58156fae572e57b41e904c84e0663a547772264a08d89db1f8498c8e3fc0b4b0"
+        }
+      ],
+      "web_references": [
+        "turn105309view0",
+        "turn544580search0"
+      ],
+      "source_method": "The page says it queries rippled JSON-RPC account_objects/account_tx at one pinned validated ledger. XRPL explorer transaction pages are JavaScript-only in this retrieval path; this run did not independently retrieve the JSON-RPC transaction payloads.",
+      "limitations": [
+        "Ledger-derived figures are from a third-party monitor; raw rippled JSON-RPC responses and HTTP receipts were not captured in this run.",
+        "Transaction explorer pages returned JavaScript-only shells; full transaction payloads were not independently fetched.",
+        "Escrow release and re-escrow change locked supply, not proof of market sale, exchange deposit or immediately tradable supply."
+      ]
     }
   ],
   "market_reconciliation": {
@@ -484,7 +576,23 @@
         "conflict": "Alpha Finance reports zero on 6 Nov across five funds; CryptoKeyhole reports −752,048 XRP across three of four funds, concentrated in XRPC.",
         "upstream_lineages": "Alpha Finance identifies Coinglass as its ETF feed; CryptoKeyhole says it reads each issuer's own holdings/NAV file. Pipelines differ, but both ultimately depend on issuer disclosures and are not fully independent economic evidence.",
         "resolution": "Unresolved. The CryptoKeyhole future-dated 9 Nov file metadata is quarantined; its 6 Nov row remains partial. No averaging or directional flow inference.",
-        "primary_source_gap": "The official Canary XRPC page retrieved in this run showed holdings only through 19 Oct 2026, not 6 Nov. The opened CorpStacking page was stale at 4 Nov even though its search snippet suggested 6 Nov; that search snippet is excluded."
+        "primary_source_gap": "The official Canary XRPC page retrieved in this run showed holdings only through 19 Oct 2026, not 6 Nov. The opened CorpStacking page was stale at 4 Nov even though its search snippet suggested 6 Nov; that search snippet is excluded.",
+        "xrp_insights_context": "XRP Insights independently reports 5 Nov +110,214 XRP and 2–5 Nov −149,500 XRP across six spot funds plus BITW; its 6 Nov row is provisional and its latest settled data_as_of is 5 Nov. This does not validate either provider's 6 Nov figure. Keep the 6 Nov conflict unresolved."
+      },
+      "xrp_insights": {
+        "data_as_of": "2026-11-05",
+        "nov6_row_status": "PROVISIONAL",
+        "latest_settled_day_net_flow_xrp": 110214,
+        "nov2_to_nov5_net_flow_xrp": -149500,
+        "nov2_to_nov5_net_flow_usd": -202600,
+        "nov5_holdings_including_bitw_xrp": 1200000000,
+        "nov5_aum_including_bitw_usd": 1540000000,
+        "six_spot_funds_holdings_xrp": 1180000000,
+        "six_spot_funds_aum_usd": 1520000000,
+        "fund_count": "6 spot funds plus BITW",
+        "gxrp_flow_status": "EXCLUDED_DUE_CAPTURE_GAP",
+        "bitw_flow_caveat": "Multi-asset index rebalancing and fees can affect the XRP sleeve.",
+        "source_method": "Issuer-reported holdings scraped from fund pages; flows computed as day-over-day holdings deltas; no third-party flow feed for current data."
       }
     },
     "macro": {
@@ -492,6 +600,66 @@
       "period_end": "2026-11-04",
       "published_at_utc": "2026-11-06T11:23:00Z",
       "context": "Reuters attributes the largest six-month weekly money-market inflow to caution around US midterms and AI hyperscaler cash burn. It also reports large US equity-index declines on Thursday. This is broad risk-appetite context, not an XRP-specific catalyst."
+    },
+    "ripple_escrow": {
+      "snapshot_ledger_index": 108172621,
+      "snapshot_ledger_time_utc": "2026-11-07T10:27:00Z",
+      "ripple_owned_escrow_xrp": 31100000000,
+      "escrow_objects": 99,
+      "owner_accounts": 8,
+      "next_unlock_utc": "2026-12-01T00:00:00Z",
+      "next_unlock_xrp": 1000000000,
+      "next_unlock_objects": 4,
+      "schedule_last_currently_listed_unlock": "2029-07-01",
+      "november_2026_release": {
+        "gross_escrow_finish_xrp": 1000000000,
+        "escrow_finish_transactions": [
+          {
+            "time_utc": "2026-11-01T00:00:02Z",
+            "amount_xrp": 500000000,
+            "owner": "r9UUEX…HiYp",
+            "tx": "3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948"
+          },
+          {
+            "time_utc": "2026-11-01T00:00:02Z",
+            "amount_xrp": 500000000,
+            "owner": "rB3WNZ…scPn",
+            "tx": "33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564"
+          }
+        ],
+        "re_escrowed_xrp": 700000000,
+        "escrow_create_transactions": [
+          {
+            "time_utc": "2026-11-01T17:38:21Z",
+            "amount_xrp": 100000000,
+            "owner": "rU9qmG…YL1T",
+            "finish_after_utc": "2029-06-01T00:00:00Z",
+            "tx": "D1B6A4B7582C12127F63BE1751EBFCEFDDB396C5513E1F892F987C5E11CF9B07"
+          },
+          {
+            "time_utc": "2026-11-01T17:39:51Z",
+            "amount_xrp": 500000000,
+            "owner": "rNASJd…btD1",
+            "finish_after_utc": "2029-06-01T00:00:00Z",
+            "tx": "71BB08412E8A4746F1AA3E0737CDDADAB21DF7EF5B2F0CFB2FE95A09114A2E5F"
+          },
+          {
+            "time_utc": "2026-11-01T17:42:21Z",
+            "amount_xrp": 100000000,
+            "owner": "rU9qmG…YL1T",
+            "finish_after_utc": "2029-07-01T00:00:00Z",
+            "tx": "7EB64A815EF69AF0627B2F4CDE383F13C047BF611AE574537A0E4C35D4BB2705"
+          }
+        ],
+        "net_reduction_in_locked_supply_xrp": 300000000
+      },
+      "trailing_12_months": {
+        "gross_released_xrp": 12000000000,
+        "re_escrowed_xrp": 8400000000,
+        "re_escrowed_share_pct": 70,
+        "net_reduction_in_locked_supply_xrp": 3600000000
+      },
+      "interpretation": "The 1B gross unlock is not a 1B market supply injection. 700M was re-escrowed; the remaining 300M is outside escrow but not proven sold, distributed or deposited on exchanges."
     }
   },
   "competing_hypotheses": [
@@ -524,6 +692,12 @@
       "thesis": "Large money-market inflows and equity-index losses indicate broad risk aversion that may constrain speculative-asset demand.",
       "disconfirming_evidence": "Macro flow is not XRP-specific and does not establish causal XRP sensitivity or future direction.",
       "confidence": "contextual_only"
+    },
+    {
+      "id": "escrow_net_release_not_market_sale",
+      "thesis": "The November cycle reduced Ripple-owned locked escrow by 300M XRP after a 1B gross release and 700M re-escrow.",
+      "disconfirming_evidence": "The remaining 300M may remain in Ripple-controlled operational wallets or be used for non-market purposes; no sale, exchange deposit or buyer is established.",
+      "confidence": "ledger_derived_supply_event_only"
     }
   ],
   "model_admission": {
@@ -540,7 +714,8 @@
       "Exchange wallet totals include cold, custody and wrapped-asset reserves and are not tradable float.",
       "Derivatives aggregators have materially different OI coverage and incomplete liquidation data.",
       "ETF providers disagree on 6 Nov; one row is partial and carries impossible future-dated file metadata.",
-      "Macro data is contextual and not a direct XRP feature without a point-in-time model specification."
+      "Macro data is contextual and not a direct XRP feature without a point-in-time model specification.",
+      "Ripple escrow records describe locked-supply state, not a market sale or exchange deposit; keep the event in the supply timeline only."
     ]
   },
   "forecast": {
@@ -551,6 +726,8 @@
     "real_money_action": false
   },
   "next_research_actions": [
+    "Capture the underlying XRP Insights escrow data.json and direct rippled JSON-RPC account_objects/account_tx responses at a pinned validated ledger; verify all five November transaction hashes and amounts independently.",
+    "Keep gross escrow unlock, re-escrow, net reduction in locked supply, Ripple wallet balances, exchange deposits and actual sales as separate event types.",
     "Capture Kraken and OKX multi-level books in one UTC window, preserve snapshot-generation timestamps and measure executable depth at fixed notional bands.",
     "Reconcile exchange-wallet same-wallet changes against new wallet labels and validated-ledger account_info receipts before any supply inference.",
     "Obtain and hash the underlying issuer files for XRPC and XRPZ; resolve the 6 Nov discrepancy and CryptoKeyhole's future-dated 9 Nov metadata.",

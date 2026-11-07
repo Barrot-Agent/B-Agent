@@ -107,3 +107,26 @@ def test_only_event_timeline_admission_is_allowed():
     assert admission["eligible_etf_flow_features"] == []
     assert admission["eligible_macro_features"] == []
     assert admission["event_timeline_only"] is True
+
+
+def test_xrp_insights_etf_settled_and_provisional_dates_are_separate():
+    artifact = load_artifact()
+    etf = artifact["market_reconciliation"]["etf_flows"]["xrp_insights"]
+    assert etf["data_as_of"] == "2026-11-05"
+    assert etf["nov6_row_status"] == "PROVISIONAL"
+    assert etf["latest_settled_day_net_flow_xrp"] == 110214
+    assert etf["nov2_to_nov5_net_flow_xrp"] == -149500
+    assert etf["gxrp_flow_status"] == "EXCLUDED_DUE_CAPTURE_GAP"
+
+
+def test_november_escrow_gross_release_is_separated_from_net_locked_supply():
+    artifact = load_artifact()
+    escrow = artifact["market_reconciliation"]["ripple_escrow"]
+    nov = escrow["november_2026_release"]
+    assert nov["gross_escrow_finish_xrp"] == 1_000_000_000
+    assert nov["re_escrowed_xrp"] == 700_000_000
+    assert nov["net_reduction_in_locked_supply_xrp"] == 300_000_000
+    assert sum(x["amount_xrp"] for x in nov["escrow_finish_transactions"]) == 1_000_000_000
+    assert sum(x["amount_xrp"] for x in nov["escrow_create_transactions"]) == 700_000_000
+    assert "not proven sold" in escrow["interpretation"]
+    assert artifact["forecast"]["status"] == "NOT_ISSUED"
