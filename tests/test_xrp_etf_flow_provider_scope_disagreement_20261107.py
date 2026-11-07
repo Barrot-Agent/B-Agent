@@ -115,7 +115,7 @@ def test_provider_scope_reconciliation_does_not_average_or_select_a_winner():
     assert scope["no_comparable_universe_established"] is True
     assert "partial" in scope["cryptokeyhole"].lower()
     assert "five tickers" in scope["alpha_finance"].lower()
-    assert "six spot plus bitw" in scope["xrp_insights"].lower()
+    assert "six spot etfs plus bitw" in scope["xrp_insights"].lower()
     assert "No. Public aggregators report materially different" in record["conclusion"]
 
 
