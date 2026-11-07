@@ -1,3 +1,104 @@
+## Run 12 — 2026-11-07 02:58 UTC
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` (unchanged; no merge or main write).
+
+Complete recursive Git tree counts:
+- Main: 1,298 files, 493 Python files, 87 test modules, 86 workflow files.
+- #1640 integration branch: 1,352 files, 535 Python files, 115 test modules, 87 workflow files.
+- #1643 research branch: 1,673 files, 635 Python files, 229 test modules, 86 workflow files.
+
+The complete paginated open-PR inventory is 371: 355 drafts and 16 non-drafts. No new PR was created or closed.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+- Current head before this handoff append: `86c9e0933a1207353764258cdca6e7cbef886496`; base main is unchanged.
+- Full repository suite: **1,089 passed, 8 subtests passed**; inclusive package coverage **57.75%**, above the 53% threshold.
+- Core suite: **629 passed, 8 subtests passed**.
+- Installed wheel built and installed; packaged primary mission and V3 smoke verification passed.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed gate passed and explicitly kept automatic merge disabled.
+- Exact runs: [CI 42331406591](https://github.com/Barrot-Agent/B-Agent/actions/runs/42331406591), [dependency audit 42331406905](https://github.com/Barrot-Agent/B-Agent/actions/runs/42331406905), [fail-closed gate 42331406747](https://github.com/Barrot-Agent/B-Agent/actions/runs/42331406747).
+- Cache reservation remains read-only because the configured cache budget is exhausted; this is a non-fatal warning.
+
+**PR #1643 — XRP research**
+- Current head: `b8edfb8da40a8c325451b4499b41b617cf4555a3`; base main is unchanged.
+- Full repository suite: **1,660 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed; fail-closed gate passed with merging disabled.
+- Exact runs: [CI 42330787080](https://github.com/Barrot-Agent/B-Agent/actions/runs/42330787080), [dependency audit 42330787115](https://github.com/Barrot-Agent/B-Agent/actions/runs/42330787115), [fail-closed gate 42330787096](https://github.com/Barrot-Agent/B-Agent/actions/runs/42330787096).
+
+These are branch-head results, not main-branch results. The handoff-only commit created by this update will require its own exact-head CI before merge consideration.
+
+### New XRP capital research on #1643
+
+Added `research/xrp_intelligence/20261107T024800Z-evernorth-cantor-facility-actual-capital-reconciliation.json` and `tests/test_evernorth_cantor_actual_capital_reconciliation_20261107.py`.
+
+The artifact distinguishes:
+- Evernorth's $30M October 12 convertible senior PIK note principal and reported gross proceeds from $29M net cash after a separately disclosed $1M capital-markets-advisor fee.
+- The October 23 Cantor common-stock purchase agreement as an optional equity facility, not debt and not a committed XRP purchase: up to 5,218,935 shares at 97% of applicable VWAP, no company purchase obligation, 4.99% ownership cap and 20% daily-volume cap.
+- The $521,893.50 upfront commitment fee as earned and non-refundable regardless of any draw.
+- The $80.7M preliminary S-1 and $76.8M final 424B3 amounts as date-specific conditional gross-proceeds illustrations, not cash received. Reviewed filings do not establish an actual facility draw or share purchases.
+- Exact phrase `actual capital`: no match in the reviewed issuer 424B3; the identified match is a September 17 KuCoin Community Insights user-generated post, not issuer evidence and predating the Cantor facility.
+
+Source evidence-note hashes cover normalized excerpts/notes, not original filing bytes. The artifact is model-ineligible, forecast status is NOT_ISSUED, and it records no paper trade or real-money action.
+
+### Integrated V3 and prediction-engine state
+
+The #1640 branch contains the integrated MMI/V3 safety work and the XRP ingestion/evaluation foundation:
+- Public ingestion adapter v3.12 / parser v3.11, 23 endpoint records and 21 scheduled sources.
+- Binance, Coinbase, Kraken and OKX spot/derivatives endpoints; OKX ticker and 100-level order-book capture; ETF and selected XRPL public-node context.
+- Coinbase hourly historical backfill is bounded to 365 days, 30 pages of 300 candles, with a 0.5-second page delay. A live full backfill has not been executed and independently verified in this run.
+- Five-minute maximum live-feature age and one-minute order-book age limits.
+- Content-addressed raw receipts and a point-in-time SQLite feature store. The store's own documentation correctly states that local hashes/triggers are not adversarial tamper-proof; external WORM retention and independent timestamp anchoring remain missing.
+- Chronological walk-forward evaluation, four baselines (class prior, momentum, mean reversion, volatility-normal), feature-drift diagnostics and a fail-closed forecast ledger.
+- Forecast readiness requires at least 100 OOS and 100 shadow samples, at least two independent source groups, horizon coverage, weighted calibration error no greater than 0.05 and a trusted external Ed25519 evaluator signature.
+- Fitted probability recalibration, broad multi-feature/multi-venue historical evaluation, sufficient shadow outcomes and trusted evaluator-key configuration are not verified. The current evaluator is not a proven production predictive model.
+
+No directional forecast or shadow forecast was issued.
+
+### Workflow safety and external-action boundary
+
+On #1640:
+- `.github/workflows/barrot-agent.yml` is issue-trigger automation-quarantined: manual-only trigger, empty permissions and a job condition that is always false.
+- The Coinbase paper-trader workflow is manual-only, requires explicit YES and an exact main SHA, uses read-only repository permissions and emits artifacts rather than pushing to main. It was not dispatched; no paper trade occurred.
+- Self-hosted brain deployment is manual-only, requires separate explicit deployment and secret-rotation confirmations plus exact-main-SHA validation and a private Space destination. It was not dispatched; no deployment or secret rotation occurred.
+- No external AI data was transferred.
+
+### Branch ancestry, review and backlog
+
+- #1640: 508 commits ahead of main, 0 behind, 159 changed paths; active V3 integration candidate.
+- #1643: 536 commits ahead of main, 0 behind, 378 changed paths; active XRP research candidate. The branches are **diverged** (536 ahead / 508 behind when compared to each other). Do not merge #1643's divergent branch directly after #1640; consolidate its unique research paths onto the verified post-#1640 main.
+- #1640 review threads: 22/22 resolved. #1643: 19/19 resolved. Every recorded review submission on both PRs is COMMENTED; **zero APPROVED reviews**.
+- #1642 is an ancestor/superseded prediction snapshot candidate: its head is contained in #1640 (507 commits from #1642 to #1640, 0 commits behind). Keep open until successor content is verified on main.
+- #1641 remains a draft with five commits not contained in #1640; classify unique/unreviewed and preserve.
+- #1653 remains blocked with eight unresolved review threads. Findings include possible overwrite of a shared graph artifact despite persistence=false, ignored CLI JSON arguments, missing post-index repository-state validation, unvalidated recursive submodule fetches, degraded indexing reported as synchronized, and uncaught fetch timeouts. Do not merge until corrected and retested.
+- #1655 remains a draft with eight changed files; prior path review found three overlapping #1640 and five unique structural-analysis/catalog files. Preserve unique work for later reconciliation.
+- #1644–#1650 are seven dependency-update PRs whose newer dependency/workflow changes are represented in #1640; classify as superseded pending successor merge and main verification.
+- Older #1254/#1255 dependency updates are superseded by newer versions in #1650/#1649.
+- Unique older non-draft work #1320, #1318, #1317 and #1269 remains preserved and unreviewed; do not bulk-close.
+
+### Merge gate and next action
+
+Main reports protected status, but detailed branch-protection API access returns HTTP 403. The only visible repository ruleset (ID 10863829) is disabled. `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`. No independent approving review is recorded. Repository Pages is enabled, but Pages settings are inaccessible; a prior main push triggered successful deployment run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). A merge-triggered public deployment remains an unresolved authorization boundary.
+
+**No merge was performed.** No protection bypass, main write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+Next actions:
+1. Verify exact-head CI for this handoff-only #1640 tip.
+2. Obtain independent approving review and resolve the automatic Pages deployment authorization boundary before any main merge.
+3. Merge #1640 only if all exact-head tests, dependency/security gates, approvals and external-side-effect constraints are satisfied; then verify the merge commit, files, main CI and workflow side effects.
+4. Consolidate #1643's unique research onto that verified main, preserving the full candidate-only Kamilah video-reference union (18 candidate references; verified video inventory remains zero because the canonical channel is not platform-verified).
+5. Reconcile #1641, #1653 and #1655 only through their existing branches and verified findings; no duplicate integration PRs.
+6. Expand synchronized historical multi-venue coverage, fit/calibrate a real model against the four baselines, and establish drift/shadow evidence before any directional forecast.
+
+
+---
+
 ## Run 11 — 2026-11-07 02:22 UTC
 
 ### Mission and repository state
