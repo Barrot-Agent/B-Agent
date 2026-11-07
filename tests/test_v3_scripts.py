@@ -3,6 +3,7 @@ from __future__ import annotations
 import builtins
 import importlib.util
 import json
+import pytest
 import re
 import sys
 from pathlib import Path
