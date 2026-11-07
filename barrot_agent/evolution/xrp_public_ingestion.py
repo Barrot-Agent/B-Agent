@@ -1915,15 +1915,21 @@ def _parse_bitbank_transactions(
                 instrument=f"XRP/JPY spot trade {transaction_id}",
                 currency_pair="XRP/JPY",
                 market_type="spot",
-                model_eligible=True,
-                quality_status="verified",
+                model_eligible=False,
+                eligibility_reason="latest_60_trade_sample_incomplete_coverage",
+                quality_status="unverified",
                 limitations=limitations,
             )
             record["record_id"] = f"{record['record_id']}:{transaction_id}"
             record["transaction_id"] = transaction_id
             record["taker_side"] = side
             records.append(record)
-    return records, _iso(max(item[4] for item in parsed)), True, ""
+    return (
+        records,
+        _iso(max(item[4] for item in parsed)),
+        False,
+        "latest_60_trade_sample_incomplete_coverage",
+    )
 
 
 def _bitbank_transactions_research_summary(payload: Any) -> dict[str, Any] | None:
