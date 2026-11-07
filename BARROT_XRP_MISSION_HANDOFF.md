@@ -1,3 +1,7 @@
+## Exact-head test follow-up — 2026-11-07T18:42:51Z
+
+The corrected successor `f4a9140e304f38dd22d7efe47311856b3a29feb6` reduced the earlier four stale run-27 snapshot failures to one remaining handoff-prefix assertion: **1,151 passed, 1 failed, 8 subtests**. Core tests passed (643 passed, 8 subtests); the six-manifest dependency audit and fail-closed gate passed. The remaining assertion expected the run-28 heading at byte zero, although the handoff correctly begins with the exact-head CI follow-up section. This successor updates the assertion to verify both sections in order; exact-head full-suite verification is pending.
+
 ## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z
 
 The handoff/map-only tip `ad4a91aa1763dfdcccd2b3e873f68fb4f56b3925` triggered exact-head CI run [42402000097](https://github.com/Barrot-Agent/B-Agent/actions/runs/42402000097). Core tests passed (643 passed, 8 subtests), the six-manifest dependency audit passed ([42402000196](https://github.com/Barrot-Agent/B-Agent/actions/runs/42402000196)), and the fail-closed gate passed ([42402000138](https://github.com/Barrot-Agent/B-Agent/actions/runs/42402000138)). The full suite reported 1,148 passed, 8 subtests and four failures, all stale run-27 handoff/map assertions after the current snapshot advanced to run 28. No product-code test failed. This commit updates those assertions and the run-28 market schema; exact-head full-suite verification of the corrected successor is pending.

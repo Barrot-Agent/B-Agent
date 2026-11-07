@@ -10,7 +10,8 @@ RESEARCH_HEAD = "d0ba9aa89feba4cb6ace650c94c9f58a6584c340"
 
 def test_run28_handoff_is_latest_and_preserves_verified_heads():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
-    assert handoff.startswith("# Run 28 — 2026-11-07T18:28:03Z")
+    assert handoff.startswith("## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z")
+    assert "# Run 28 — 2026-11-07T18:28:03Z" in handoff[:2_000]
     for value in (MAIN_SHA, INTEGRATION_HEAD, RESEARCH_HEAD):
         assert value in handoff
     assert "1,152 passed, 8 subtests passed" in handoff
@@ -44,7 +45,7 @@ def test_run28_platform_map_has_exact_current_ci_and_preserves_run26():
     assert current["merge_state"]["independent_approvals"] == 0
     assert current["forecast_status"] == "NOT_ISSUED"
     assert any(item.get("run_id") == 26 for item in data["prior_run_observations"])
-    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T18:39:19Z"
+    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T18:42:51Z"
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
 
