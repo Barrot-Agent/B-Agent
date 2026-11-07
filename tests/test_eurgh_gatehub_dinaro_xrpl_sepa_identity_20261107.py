@@ -102,3 +102,17 @@ def test_event_is_not_promoted_to_directional_forecast_or_trade() -> None:
     assert artifact["forecast"]["paper_trade_executed"] is False
     assert artifact["forecast"]["real_money_action"] is False
     assert not any(artifact["external_actions"].values())
+
+
+def test_xahau_native_fee_and_reserve_asset_is_xah_not_xrp() -> None:
+    artifact = load_artifact()
+    source = by_id(artifact, "xahau_official_whitepaper_network_token")
+    parsed = source["parsed"]
+    assert parsed["native_token"] == "XAH"
+    assert parsed["transaction_fee_asset"] == "XAH"
+    assert parsed["account_reserve_asset"] == "XAH"
+    relevance = artifact["network_and_xrp_relevance"]
+    assert relevance["xrpl_native_fee_asset"] == "XRP"
+    assert relevance["xahau_native_fee_asset"] == "XAH"
+    assert relevance["xahau_native_token_is_xah_not_xrp"] is True
+    assert "Xahau uses XAH" in relevance["xrp_fee_or_reserve_effect"]
