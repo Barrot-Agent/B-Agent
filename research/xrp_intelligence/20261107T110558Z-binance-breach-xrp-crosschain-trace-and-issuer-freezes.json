@@ -284,6 +284,25 @@
       "limitations": [
         "Its no-movement statement was true only for its 30 October cutoff; it is superseded by observed 2 November splitting and 5–7 November cross-chain activity."
       ]
+    },
+    {
+      "source_id": "xrpl_official_freeze_protocol",
+      "publisher": "XRP Ledger Documentation",
+      "source_type": "first_party_protocol_documentation",
+      "independence_group": "xrpl_official_docs",
+      "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "evidence_paraphrases": [
+        {
+          "text": "No one can freeze XRP in the XRP Ledger.",
+          "sha256": "37eca544d3d93da129ac5313573e12d09ae77202ad4517826e28d2eb63a80794"
+        }
+      ],
+      "web_reference": "turn843852search0",
+      "protocol_distinction": "The XRPL freeze feature applies to issued trust-line tokens, not native XRP. Custodial exchanges can still restrict withdrawals or trading of assets they custody.",
+      "limitations": [
+        "Protocol documentation describes native XRPL functionality; it does not prevent custodial exchanges or other chains' token issuers from freezing assets they control."
+      ]
     }
   ],
   "event_timeline": [
@@ -491,7 +510,8 @@
     "what_is_not_established": [
       "No evidence in the reviewed sources that an LLM model itself was exploited through prompt injection.",
       "No evidence that an AI agent independently decided to transfer funds or held a signing key.",
-      "Elliptic describes the laundering as conventional automation and says it has seen no evidence of AI-agent decision-making."
+      "Elliptic describes the laundering as conventional automation and says it has seen no evidence of AI-agent decision-making.",
+      "The available reporting does not establish an LLM prompt-injection exploit; the reported path is endpoint compromise, social engineering, credentials and deployment-token abuse."
     ],
     "barrot_v3_controls": {
       "existing_on_1640_not_main": [
@@ -508,7 +528,14 @@
         "Human dual control for any external write or privileged operation.",
         "Immutable audit receipts for tool calls and permission changes."
       ]
-    }
+    },
+    "elliptic_reported_attack_chain": [
+      "In June 2026, one engineer installed a tampered copy of an AI coding tool, according to Elliptic's reconstruction.",
+      "In September, attackers posing as recruiters used a fake job interview assignment to deliver malware to another engineer.",
+      "The attackers used an internal AI tool to reach other engineers' machines.",
+      "The attackers obtained a container/software deployment permission token.",
+      "Access reached Binance's internal wallet signing service."
+    ]
   },
   "cross_source_reconciliation": {
     "xrp_amount": "Binance, Panoptic, Elliptic and Bitquery all anchor the initial XRP tranche at approximately 233.46M XRP.",
@@ -516,7 +543,8 @@
     "laundering_progress": "Panoptic's 6.55M XRP THORChain trace is a subset from three downstream accounts and an earlier cutoff. Bitquery's 44.2M XRP first-exit estimate at 10:00 UTC 6 November and Elliptic's 42M at 08:45 UTC are close but use different labels/methods. Elliptic's later 44M additional outflow through 08:00 UTC 7 November is a later observation, not a direct contradiction.",
     "freeze_amount": "Panoptic reads $2.65B frozen on attacker addresses; Binance and Elliptic report $2.85B frozen/intercepted. Scope, timing and intercepted-versus-frozen definitions differ.",
     "cashout": "Elliptic reports negligible fiat cashout by 08:00 UTC 7 November; Bitquery counts first exit from chain as laundered, not necessarily fiat cashout.",
-    "source_independence": "Binance and FBI are primary institutional statements; AP reports political positions; Panoptic, Elliptic and Bitquery are separate on-chain analytics pipelines over overlapping public ledgers. Their estimates are independent analyses, not independent underlying transactions."
+    "source_independence": "Binance and FBI are primary institutional statements; AP reports political positions; Panoptic, Elliptic and Bitquery are separate on-chain analytics pipelines over overlapping public ledgers. Their estimates are independent analyses, not independent underlying transactions.",
+    "elliptic_unit_note": "Elliptic's key-point summary uses approximately $100M and $173M as USD values, not XRP token counts. Its detailed timeline specifies about 44M additional XRP and about 148M XRP remaining at 08:00 UTC on 7 November."
   },
   "model_admission": {
     "event_timeline_only": true,

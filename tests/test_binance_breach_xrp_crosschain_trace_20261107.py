@@ -75,6 +75,8 @@ def test_stablecoin_issuer_freezes_are_distinct_from_native_xrp():
     assert freezes["ripple_rlusd"]["paused_xrp_incident_rlusd"] == 40_540_000
     assert freezes["circle_usdc"]["ethereum_main_receiving_address_frozen_usdc"] == 823_000_000
     assert freezes["native_xrp_freeze_function"] is False
+    docs = next(s for s in artifact["source_registry"] if s["source_id"] == "xrpl_official_freeze_protocol")
+    assert docs["evidence_paraphrases"][0]["text"] == "No one can freeze XRP in the XRP Ledger."
     assert freezes["freeze_total_disagreement"]["do_not_average"] is True
 
 
@@ -95,7 +97,7 @@ def test_attribution_and_ai_agent_claims_remain_qualified():
     assert "not the human identity" in attribution["on_chain_identity_limit"]
     ai = artifact["ai_security_assessment"]
     assert any("No evidence" in item for item in ai["what_is_not_established"])
-    assert any("no evidence of an AI agent making decisions" in item.lower() for item in ai["what_is_not_established"])
+    assert any("no evidence of an ai agent making decisions" in item.lower() for item in ai["what_is_not_established"])
 
 
 def test_no_forecast_or_trade_is_issued():
