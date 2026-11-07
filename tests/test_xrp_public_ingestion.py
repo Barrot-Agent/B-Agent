@@ -1881,12 +1881,13 @@ def test_bitbank_transactions_create_point_in_time_taker_events_and_research_sum
         digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
         captured=captured,
     )
-    assert eligible is True
-    assert reason == ""
+    assert eligible is False
+    assert reason == "latest_60_trade_sample_incomplete_coverage"
     assert source_as_of is not None
     assert len(records) == 12
     assert len({item["record_id"] for item in records}) == 12
-    assert all(item["model_eligible"] is True for item in records)
+    assert all(item["model_eligible"] is False for item in records)
+    assert all(item["quality_status"] == "unverified" for item in records)
     assert all(item["known_at_utc"] > item["event_time_utc"] for item in records)
     signed_amounts = [item["value"] for item in records if item["feature_id"] == "xrp.spot.bitbank.trade.signed_amount"]
     assert signed_amounts == [100.0, -60.0]
@@ -1927,3 +1928,4 @@ def test_bitbank_sources_integrate_into_full_ingestion_and_research_only_flow_su
     assert trade_summary["net_taker_flow_xrp"] == 40.0
     assert trade_summary["model_eligible"] is False
     assert any(item["source_id"] == "bitbank_spot_circuit_break" for item in raw_only)
+    assert any(item["source_id"] == "bitbank_spot_transactions" for item in raw_only)
