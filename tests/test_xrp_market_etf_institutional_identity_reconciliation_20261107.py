@@ -9,6 +9,12 @@ ARTIFACT = (
     / "xrp_intelligence"
     / "20261107T221027Z-xrp-market-etf-institutional-identity-reconciliation.json"
 )
+CORRECTION = (
+    ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261107T221843Z-alpha-five-funds-excerpt-hash-correction.json"
+)
 
 
 def load():
@@ -26,16 +32,30 @@ def test_raw_exchange_response_hashes_recompute_and_timestamp_gates_fail_closed(
     assert sources["OKX_XRPUSDT_TICKER"]["provider_age_seconds_at_reference"] > 300
 
 
-def test_all_visible_excerpts_are_exact_hashed_and_under_quote_limit():
+def test_visible_excerpt_hashes_are_exact_and_the_single_typo_is_append_only_corrected():
     data = load()
+    correction = json.loads(CORRECTION.read_text(encoding="utf-8"))
+    supersedes = correction["supersedes"]
+    correction_used = 0
     for source in data["sources"]:
         excerpts = []
         if source.get("excerpt") is not None:
             excerpts.append((source["excerpt"], source["excerpt_sha256"]))
         excerpts.extend((item["text"], item["sha256"]) for item in source.get("excerpts", []))
         for text, expected in excerpts:
+            actual = hashlib.sha256(text.encode("utf-8")).hexdigest()
             assert len(text.split()) <= data["source_capture_contract"]["maximum_direct_quote_words_per_source"]
-            assert hashlib.sha256(text.encode("utf-8")).hexdigest() == expected
+            if actual == expected:
+                continue
+            assert source["source_id"] == supersedes["source_id"]
+            assert text == supersedes["excerpt"]
+            assert expected == supersedes["original_sha256"]
+            assert actual == supersedes["corrected_sha256"]
+            correction_used += 1
+    assert correction_used == 1
+    assert correction["append_only"] is True
+    assert correction["raw_source_body_retrieved_again"] is False
+    assert correction["model_eligible"] is False
 
 
 def test_cross_venue_price_gap_is_not_promoted_to_arbitrage_or_model_feature():
