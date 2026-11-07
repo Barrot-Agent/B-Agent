@@ -1,0 +1,178 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "sbi_vc_trade_rlusd_operational_terms_20261105T145500Z",
+  "artifact_type": "primary_source_operational_relationship_reconciliation",
+  "title": "SBI Holdings, SBI VC Trade, Circle, Ripple and RLUSD operational terms",
+  "recorded_at_utc": "2026-11-05T14:55:00Z",
+  "research_cutoff_utc": "2026-11-05T14:55:00Z",
+  "review_pr": 1643,
+  "branch": "research/xrp-evidence-archive-20261104",
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "append_only": true,
+  "source_capture_policy": {
+    "raw_bytes_preserved": false,
+    "sha256_receipts": null,
+    "independent_timestamp_anchors": false,
+    "model_eligible": false,
+    "reason": "Primary issuer/company pages were rendered for research but byte-exact responses and independent timestamp anchors were not captured. No values are admitted to predictive features."
+  },
+  "source_registry": [
+    {
+      "source_id": "sbivc_rlusd_launch_notice_20260624",
+      "publisher": "SBI VC Trade",
+      "source_type": "official_exchange_notice",
+      "url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "publisher_published_at": "2026-06-24",
+      "language": "ja",
+      "retrieved_at_utc": "2026-11-05T14:55:00Z",
+      "claims": [
+        "SBI VC Trade, a consolidated subsidiary of SBI Holdings, began handling RLUSD in its VCTRADE service on June 24, 2026.",
+        "SBI VC Trade classified RLUSD as a Type 4 electronic payment instrument under its stated Japanese-law interpretation.",
+        "BITPOINT service is excluded from this launch notice.",
+        "Withdrawal/transfer limit is JPY 1,000,000 per transaction; deposits above JPY 1,000,000 may take additional time to reflect; a daily deposit ceiling also applies but its amount is not disclosed.",
+        "SBI VC Trade may restrict trading/deposits if deposited RLUSD exceeds its redemption capacity.",
+        "The notice says supported blockchains would be expanded sequentially; it does not itself establish current XRPL deposit/withdrawal support."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbivc_rlusd_custody_growth_rank_202609",
+      "publisher": "SBI VC Trade",
+      "source_type": "official_exchange_research_note",
+      "url": "https://www.sbivc.co.jp/columns/content/2pxt8odwr",
+      "publisher_published_at": "2026-10-27",
+      "measurement_period": "2026-09",
+      "retrieved_at_utc": "2026-11-05T14:55:00Z",
+      "claims": [
+        "RLUSD ranked first by rate of increase in assets held at SBI VC Trade during September 2026.",
+        "The page does not disclose the absolute RLUSD balance, net deposits, net purchases or XRP conversions."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbi_holdings_circle_usdc_corporate_history",
+      "publisher": "SBI Holdings",
+      "source_type": "official_corporate_history",
+      "url": "https://www.sbigroup.co.jp/english/company/information/history.html",
+      "retrieved_at_utc": "2026-11-05T14:55:00Z",
+      "claims": [
+        "SBI Holdings' corporate history records an investment in Circle Internet Group in June 2025.",
+        "It records SBI VC Trade's USDC public offering in March 2025."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbi_holdings_corporate_profile",
+      "publisher": "SBI Holdings",
+      "source_type": "official_corporate_profile",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "retrieved_at_utc": "2026-11-05T14:55:00Z",
+      "claims": [
+        "The parent legal entity is SBI Holdings, Inc., established July 8, 1999, whose principal business is control and management of the SBI Group through share ownership."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbivc_rlusd_product_page",
+      "publisher": "SBI VC Trade",
+      "source_type": "official_product_page",
+      "url": "https://home.sbivc.co.jp/rlusd",
+      "retrieved_at_utc": "2026-11-05T14:55:00Z",
+      "claims": [
+        "RLUSD issuer is Standard Custody & Trust Company, described as a wholly owned Ripple subsidiary.",
+        "BNY is identified as the primary reserve custodian.",
+        "The page states third-party monthly reserve verification and displays historical supply/reserve figures dated August 27, 2026; those figures are not a November 5 balance."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "relationship_graph": {
+    "entities": [
+      "SBI Holdings, Inc.",
+      "SBI VC Trade Co., Ltd.",
+      "Circle Internet Group, Inc.",
+      "Ripple Labs Inc.",
+      "Standard Custody & Trust Company",
+      "BNY"
+    ],
+    "edges": [
+      {
+        "from": "SBI Holdings, Inc.",
+        "to": "SBI VC Trade Co., Ltd.",
+        "type": "parent_consolidated_subsidiary",
+        "evidence": "SBI VC Trade's official June 24 notice identifies itself as a consolidated subsidiary."
+      },
+      {
+        "from": "SBI Holdings, Inc.",
+        "to": "Circle Internet Group, Inc.",
+        "type": "equity_investment",
+        "date": "2025-06",
+        "evidence": "SBI Holdings official corporate history."
+      },
+      {
+        "from": "SBI VC Trade Co., Ltd.",
+        "to": "Standard Custody & Trust Company",
+        "type": "RLUSD_distribution_listing",
+        "date": "2026-06-24",
+        "evidence": "SBI VC Trade official RLUSD launch notice."
+      },
+      {
+        "from": "Standard Custody & Trust Company",
+        "to": "Ripple Labs Inc.",
+        "type": "wholly_owned_issuer_subsidiary",
+        "evidence": "SBI VC Trade official RLUSD product page."
+      },
+      {
+        "from": "BNY",
+        "to": "Standard Custody & Trust Company",
+        "type": "RLUSD_primary_reserve_custodian",
+        "evidence": "SBI VC Trade official RLUSD product page."
+      }
+    ],
+    "not_established": [
+      "Direct Circle-Ripple commercial agreement.",
+      "Absolute RLUSD balance or net flow at SBI VC Trade.",
+      "SBI VC Trade XRPL deposit/withdrawal support as of November 5, 2026.",
+      "SBI VC Trade XRP purchases attributable to RLUSD distribution.",
+      "Any relationship between SBIC East/Central/West and SBI Holdings."
+    ]
+  },
+  "operational_terms": {
+    "listing_start_date": "2026-06-24",
+    "service": "VCTRADE",
+    "bitpoint_included": false,
+    "legal_classification": "Type 4 electronic payment instrument under SBI VC Trade's stated Japanese-law interpretation",
+    "transfer_limit_jpy_per_transaction": 1000000,
+    "deposit_over_jpy_per_transaction_delayed": 1000000,
+    "daily_deposit_limit_jpy": null,
+    "daily_deposit_limit_disclosed": false,
+    "fees": "SBI VC Trade notice states no deposit/withdrawal fee",
+    "chain_support": "The launch notice says additional supported blockchains would be added sequentially; current XRPL support is unverified from the reviewed primary notices."
+  },
+  "holdings_signal": {
+    "measurement_period": "2026-09",
+    "rank": 1,
+    "metric": "rate of increase in assets held at SBI VC Trade",
+    "absolute_balance_disclosed": false,
+    "net_deposits_disclosed": false,
+    "net_purchases_disclosed": false,
+    "xrp_conversion_volume_disclosed": false,
+    "interpretation": "Relative growth ranking only. It cannot be converted into an absolute balance, net capital inflow or XRP demand."
+  },
+  "capital_accounting": {
+    "sbi_holdings_circle_investment": "Actual equity investment into Circle, amount not stated on the cited corporate-history page.",
+    "sbivc_usdc_distribution": "Distribution/listing activity; not an SBI investment into USDC.",
+    "sbivc_rlusd_distribution": "Distribution/listing activity; not an XRP purchase.",
+    "rlUSD_customer_holdings": "Custody/holding balance stock, not necessarily new net issuance or spot XRP demand."
+  },
+  "admission": {
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "reason": "Issuer/company relationship and operational terms are not synchronized market-flow data; absolute balances and XRP conversion flows are undisclosed."
+  },
+  "next_evidence_requirements": [
+    "Obtain exact SBI VC Trade monthly RLUSD custody balance and net deposit/redemption data.",
+    "Verify current supported chains from a dated SBI VC Trade operational notice or API.",
+    "Obtain transaction-level RLUSD/XRP conversion and XRPL settlement volumes before attributing demand to XRP."
+  ]
+}
