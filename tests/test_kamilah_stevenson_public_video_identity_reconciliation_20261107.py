@@ -59,3 +59,23 @@ def test_exact_phrase_research_does_not_create_unsupported_relationships() -> No
     assert data["model_admission"]["admitted"] is False
     assert data["model_admission"]["forecast_status"] == "NOT_ISSUED"
     assert data["privacy_and_safety"]["private_or_restricted_sources_used"] is False
+
+
+def test_kamilah_video_artifact_capture_time_correction_is_append_only() -> None:
+    correction_path = (
+        ROOT
+        / "research"
+        / "xrp_intelligence"
+        / "20261107T204153Z-kamilah-stevenson-video-capture-window-correction.json"
+    )
+    correction = json.loads(correction_path.read_text(encoding="utf-8"))
+    assert correction["supersedes_artifact"] == (
+        "research/xrp_intelligence/20261107T203431Z-kamilah-stevenson-public-video-identity-reconciliation.json"
+    )
+    assert correction["superseded_artifact_git_blob_sha"] == "24bff929a7ce94c28351d9d7f3e1b695e18f2f1f"
+    assert correction["supersession_scope"] == "TIMESTAMP_ONLY"
+    assert correction["correction"]["previous_field_status"] == "INCORRECT_AS_EXACT_CAPTURE_TIME"
+    assert correction["correction"]["corrected_exact_capture_at_utc"] is None
+    assert correction["correction"]["exact_fetch_arrival_timestamp_exposed"] is False
+    assert correction["evidence_content_changed"] is False
+    assert correction["identity_and_video_decisions_unchanged"] is True
