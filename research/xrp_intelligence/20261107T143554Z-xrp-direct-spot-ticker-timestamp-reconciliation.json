@@ -12,7 +12,8 @@
     "original_http_wire_bytes_retained": false,
     "response_headers_retained": false,
     "provider_timestamp_rule": "A missing provider timestamp is UNKNOWN, not replaced by retrieval time. An available provider timestamp is compared with the explicit retrieval reference time.",
-    "limitation": "The retrieval interface exposes response text but not original wire bytes, headers, request timing or transport metadata."
+    "limitation": "The retrieval interface exposes response text but not original wire bytes, headers, request timing or transport metadata.",
+    "clock_reference_semantics": "The endpoint pages were opened before the time-service sample recorded as captured_at_utc. That later clock sample is a conservative age reference, not an exact HTTP retrieval timestamp; the provider timestamp age is therefore an upper bound."
   },
   "sources": [
     {
@@ -21,7 +22,6 @@
       "independence_group": "kraken_exchange",
       "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "instrument": "XRP/USD",
-      "retrieval_reference_utc": "2026-11-07T14:35:54Z",
       "provider_event_timestamp_utc": null,
       "freshness": "UNKNOWN_PROVIDER_EVENT_TIME",
       "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16527000\",\"2669\",\"2669.000\"],\"b\":[\"1.16526000\",\"961\",\"961.000\"],\"c\":[\"1.16513000\",\"3597.09597200\"],\"v\":[\"12985639.66651024\",\"27620016.52679612\"],\"p\":[\"1.16492032\",\"1.17378919\"],\"t\":[13649,28544],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.19791000\"],\"o\":\"1.17749000\"}}}",
@@ -44,7 +44,8 @@
         "Level-1 ticker only; no full depth ladder or executable-size slippage.",
         "Last trade is below the contemporaneous best bid in this response; do not substitute last for midpoint."
       ],
-      "model_eligible": false
+      "model_eligible": false,
+      "age_reference_utc": "2026-11-07T14:35:54Z"
     },
     {
       "source_id": "okx_xrpusdt_ticker_20261107_143554",
@@ -52,10 +53,8 @@
       "independence_group": "okx_exchange",
       "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
       "instrument": "XRP/USDT",
-      "retrieval_reference_utc": "2026-11-07T14:35:54Z",
       "provider_event_timestamp_utc": "2026-11-07T14:27:44.063Z",
       "provider_timestamp_epoch_ms": 1794061664063,
-      "age_at_capture_seconds": 489.937,
       "freshness": "STALE_GT_300_SECONDS",
       "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1666\",\"lastSz\":\"1.184899\",\"askPx\":\"1.1666\",\"askSz\":\"5600.038304\",\"bidPx\":\"1.1665\",\"bidSz\":\"1264.926533\",\"open24h\":\"1.1813\",\"high24h\":\"1.1996\",\"low24h\":\"1.1518\",\"volCcy24h\":\"50881261.5570053203\",\"vol24h\":\"43314929.301364\",\"ts\":\"1794061664063\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
       "raw_response_sha256": "d446f2a9e5fa1da653845777fd0c43b33f0f3490b8bba77b7735c3c4c31baa60",
@@ -76,7 +75,10 @@
         "Level-1 ticker only; no full depth ladder or executable-size slippage.",
         "USDT is not normalized to USD."
       ],
-      "model_eligible": false
+      "model_eligible": false,
+      "age_reference_utc": "2026-11-07T14:35:54Z",
+      "age_at_reference_seconds": 489.937,
+      "age_is_upper_bound": true
     }
   ],
   "reconciliation": {
@@ -85,7 +87,7 @@
     "event_time_synchronization": "NOT_ESTABLISHED",
     "depth": "NOT_CAPTURED",
     "fees_slippage_latency": "NOT_MEASURED",
-    "interpretation": "The raw last-price difference is descriptive arithmetic only. Kraken has no provider event timestamp and OKX is stale by 489.937 seconds at the retrieval reference. No cross-venue arbitrage, return, consolidated midpoint, or executable liquidity claim is justified."
+    "interpretation": "The raw last-price difference is descriptive arithmetic only. Kraken has no provider event timestamp and OKX was at least 489.937 seconds old at the later clock reference. No cross-venue arbitrage, return, consolidated midpoint, or executable liquidity claim is justified."
   },
   "model_admission": {
     "admitted_to_live_price_features": false,
