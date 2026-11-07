@@ -101,8 +101,10 @@ def format_memory_block(entries):
 
 def load_signal_snapshot():
     lines = [
+        "- forecast_status=NOT_ISSUED; forecast_issued=False; forecast_model_eligible=False.",
         "- Directional XRP forecast status: NOT_ISSUED. Legacy accuracy is "
-        "UNVALIDATED_VARIABLE_HORIZON and is not a valid model-performance measure."
+        "UNVALIDATED_VARIABLE_HORIZON and is not a valid model-performance measure.",
+        "- Do not treat a sentiment/signal score as a validated forecast."
     ]
     for label, path in (("XRP", LATEST_SIGNAL_XRP), ("BTC", LATEST_SIGNAL_BTC)):
         if not os.path.exists(path):
