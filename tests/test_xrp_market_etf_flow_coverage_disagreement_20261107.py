@@ -1,3 +1,4 @@
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -62,9 +63,13 @@ def test_receipts_are_sha256_and_web_excerpts_are_not_mislabeled_raw_bytes():
     for receipt in artifact["source_receipts"]:
         assert re.fullmatch(r"[0-9a-f]{64}", receipt["sha256"])
         if receipt["receipt_kind"] == "normalized_text_excerpt":
-            assert "excerpt" in receipt
+            payload = receipt["excerpt"]
         elif receipt["receipt_kind"] == "exact_response_text":
-            assert "raw_response_text" in receipt
+            payload = receipt["raw_response_text"]
+        else:
+            raise AssertionError(f"Unknown receipt kind: {receipt['receipt_kind']}")
+        actual = hashlib.sha256(payload.encode("utf-8")).hexdigest()
+        assert actual == receipt["sha256"]
 
 
 def test_orderbook_depth_is_missing_not_imputed_and_no_forecast_was_issued():
