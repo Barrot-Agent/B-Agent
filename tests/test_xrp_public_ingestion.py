@@ -1574,7 +1574,7 @@ def test_coinbase_manual_backfill_preserves_each_page_and_filters_boundary_overl
     for item in coinbase_closes:
         for source in item["sources"]:
             if source["source_id"].startswith("coinbase_spot_candles_backfill_page_"):
-                assert source["raw_sha256"] == receipt_hashes[source["source_id"]]
+                assert source["raw_content_sha256"] == receipt_hashes[source["source_id"]]
     assert len(event_times) == 4
     assert len(set(event_times)) == 4
     assert all(item["known_at_utc"] == "2026-11-07T02:00:00.000000Z" for item in coinbase_closes)
