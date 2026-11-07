@@ -89,7 +89,9 @@ def test_debt_is_separate_from_equity_and_potential_cash_settlement():
     assert facility["borrower"] == "Pathfinder Digital Assets LLC"
     assert facility["lender"] == "Ripple"
     assert facility["drawn_as_of_2026_10_07_usd"] == 9700000
-    assert facility["repayment_terms"].startswith("Five business days")
+    repayment_terms = facility["repayment_terms"]
+    assert repayment_terms.startswith("Due within five business days")
+    assert "earlier on Ripple demand" in repayment_terms
     assert facility["post_closing_repayment_status"] == "UNRESOLVED_NO_REPAYMENT_CONFIRMATION_LOCATED"
     assert debt["ripple_evernorth_facility"]["borrowed_as_of_2026_06_30_usd"] == 0
 
