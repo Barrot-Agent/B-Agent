@@ -2520,7 +2520,7 @@ def _run_coinbase_candle_backfill(
             digest = hashlib.sha256(raw_bytes).hexdigest()
             parsed_records, source_as_of, source_eligible, reason = parser(
                 payload,
-                source_id="coinbase_spot_candles",
+                source_id=page_source_id,
                 url=page_url,
                 digest=digest,
                 captured=captured,
