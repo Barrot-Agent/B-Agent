@@ -196,6 +196,7 @@ def test_all_normalized_source_excerpt_hashes_are_bound_to_registry() -> None:
         "sbi_bitbank_completion": "bitbank_completion",
         "sbi_bitbank_terms": "bitbank_original_terms",
         "bitbank_jadat_transfer": "jadat_sale",
+        "smtg_jadat_acquisition_notice": "smtg_jadat_notice",
         "sbi_open_standard": "open_standard",
         "sbi_blackrock_jpysc": "blackrock_jpysc",
         "sbi_trust_merger": "trust_merger",
