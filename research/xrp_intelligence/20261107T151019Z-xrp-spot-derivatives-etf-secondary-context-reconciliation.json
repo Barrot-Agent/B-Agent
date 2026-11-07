@@ -142,7 +142,7 @@
   ],
   "reconciliation": {
     "raw_last_price_difference_pct": 0.2526272373,
-    "currency_basis": "XRP/USD versus XRP/USDT; no timestamped USD/USDT conversion captured.",
+    "currency_basis": "XRP/USD versus XRP/USDT; currencies are not normalized because no timestamped USD/USDT conversion was captured.",
     "event_time_synchronization": "NOT_ESTABLISHED_FOR_CROSS_VENUE_COMPARISON",
     "depth": "NOT_CAPTURED",
     "fees_slippage_latency": "NOT_MEASURED",
