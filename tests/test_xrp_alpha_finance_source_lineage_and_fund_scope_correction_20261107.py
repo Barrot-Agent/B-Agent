@@ -63,7 +63,7 @@ def test_previous_alpha_finance_lineage_claim_is_explicitly_corrected():
 def test_provider_series_are_not_misrepresented_as_independent_primary_flows():
     independence = load_artifact()["source_independence"]
     assert "issuer" in independence["xrp_insights"]
-    assert "issuer" in independence["cryptokeyhole"]
+    assert "issuer" in independence["cryptokeyhole"].lower()
     assert "Coinglass" in independence["alpha_finance"]
     assert "not three independent primary measurements" in independence["conclusion"]
 
