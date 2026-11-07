@@ -172,8 +172,8 @@
       "captured_at_utc": "2026-11-07T15:32:38Z",
       "data_as_of_utc": "2026-11-07T08:01:00Z",
       "data_age_seconds_at_capture": 27098,
-      "normalized_excerpt": "XRP Insights reports a daily XRP Ledger snapshot at 2026-11-07 08:01 UTC: 22.33B XRP in 701 XRPSCAN-labeled wallets attributed to 24 exchanges (32.4% of its 68.89B circulating-supply denominator; 22.3% of 100B total supply). Same-wallet balances fell 150.7M XRP over 7 days (-0.67%) and 161.2M over 30 days (-0.73%). Two newly tracked wallets holding 512.0M XRP make the naive total change +350.8M, demonstrating a coverage effect. Coinbase-attributed wallets total 5.79B XRP, including 150.8M cbXRP backing reserves and 5.74B cold-labeled wallets; Binance totals 2.73B including 327.4M Binance-Peg XRP reserves and charity/affiliate wallets. SBI VC Trade is attributed 56.6M XRP, with same-wallet changes of -2.9M over 7 days and -4.2M over 30 days. The page says balances are read from the XRP Ledger via rippled account_info once daily; attribution uses XRPSCAN labels. Same-wallet decreases cannot distinguish customer withdrawals from internal transfers to untracked wallets. The total includes cold storage and reserves and is not tradable float; coverage gaps exist for OKX, Coins.ph, Korbit and other exchanges.",
-      "normalized_excerpt_sha256": "48597bb1ead3bae5ef35806636694b5381a703393ad4f43fab95dd08d653e2a3",
+      "normalized_excerpt": "XRP Insights reports a daily XRP Ledger snapshot at 2026-11-07 08:01 UTC: 22.33B XRP in 701 XRPSCAN-labeled wallets attributed to 24 exchanges (32.4% of its 68.89B circulating-supply denominator; 22.3% of 100B total supply). Same-wallet balances fell 150.7M XRP over 7 days (-0.67%) and 161.2M over 30 days (-0.73%). Two newly tracked wallets holding 512.0M XRP make the naive total change +350.8M, demonstrating a coverage effect. Coinbase-attributed wallets total 5.79B XRP; more than 99% (5.74B) is cold-labeled. The 150.8M cbXRP backing reserve is included within the cold-labeled set and overlaps it, so those categories must not be summed. Binance totals 2.73B including 327.4M Binance-Peg XRP reserves and charity/affiliate wallets. SBI VC Trade is attributed 56.6M XRP, with same-wallet changes of -2.9M over 7 days and -4.2M over 30 days. The page says balances are read from the XRP Ledger via rippled account_info once daily; attribution uses XRPSCAN labels. Same-wallet decreases cannot distinguish customer withdrawals from internal transfers to untracked wallets. The total includes cold storage and reserves and is not tradable float; coverage gaps exist for OKX, Coins.ph, Korbit and other exchanges.",
+      "normalized_excerpt_sha256": "c36cd620392739d3fdc257685a976ce79ead1abe77fba109764b3ba03f356bc1",
       "raw_payload_retained": false,
       "receipt_policy": "SHA-256 digest-only receipt; publisher permits citation with attribution but does not expressly grant redistribution of the raw JSON.",
       "observations": {
@@ -201,7 +201,8 @@
         "sbi_vc_trade_change_7d_xrp": -2900000,
         "sbi_vc_trade_change_30d_xrp": -4200000,
         "japan_region_total_xrp": 1380000000,
-        "south_korea_tracked_total_xrp": 8570000000
+        "south_korea_tracked_total_xrp": 8570000000,
+        "coinbase_cold_labeled_includes_cbXRP_reserve": true
       },
       "model_eligible": false,
       "limitations": [
@@ -209,7 +210,8 @@
         "Includes cold storage, omnibus customer balances, institutional custody and wrapped-asset reserves; not tradable float.",
         "Same-wallet declines cannot distinguish customer withdrawals from internal transfers to untracked wallets.",
         "Coverage gaps exist for OKX, Coins.ph, Korbit and other exchanges; this is a labeled-wallet floor, not all exchange XRP.",
-        "The 487.8M non-customer reserve figure is included in the 22.33B total."
+        "The 487.8M non-customer reserve figure is included in the 22.33B total.",
+        "Coinbase's 150.8M cbXRP reserve is included within its 5.74B cold-labeled balance; these categories overlap and must not be added."
       ]
     },
     {
