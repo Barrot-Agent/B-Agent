@@ -33,6 +33,9 @@ def test_all_profile_video_references_remain_candidate_only():
     assert all(v["attribution_status"] == "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED" for v in videos)
     assert all(v["eligible_for_forecast_feature"] is False for v in videos)
     assert profile["attribution_policy"]["allow_verified_creator_inventory"] is False
+    assert profile["ingestion_policy"]["scope"] == "CANDIDATE_REFERENCES_ONLY_PENDING_CANONICAL_CHANNEL_VERIFICATION"
+    assert profile["identity_status_history"][0]["status"] == "UNRESOLVED_NOT_EQUIVALENT"
+    assert profile["identity_status_history"][1]["status"] == "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH"
 
 
 def test_first_party_link_hub_and_interview_are_not_platform_account_authentication():
