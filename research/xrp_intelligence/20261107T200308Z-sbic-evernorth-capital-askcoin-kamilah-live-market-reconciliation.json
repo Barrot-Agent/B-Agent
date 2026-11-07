@@ -381,7 +381,10 @@
       "filing_date": "2026-10-23",
       "captured_excerpt_text": "Evernorth's October 23, 2026 Form S-1 states that the Company Facility limit was increased to $10.0 million on October 7, 2026 and $9.7 million had been borrowed as of that date. The borrowing represented Ripple payments to third parties on behalf of the Company and Evernorth, reclassified from related-party payables; this is operating/related-party debt, not evidence of XRP purchases.",
       "captured_excerpt_sha256": "78ebd9c470c379b6609ae6b3f0b0de0ec95944b5bab11089473eb978d0d5033e",
-      "model_eligible": false
+      "model_eligible": false,
+      "captured_excerpt_sha256_original": "78ebd9c470c379b6609ae6b3f0b0de0ec95944b5bab11089473eb978d0d5033e",
+      "captured_excerpt_sha256_corrected": "22665bae05beeb779e7c8f048c283477bbaa2d4dc01d93e0fecabdf1708f872f",
+      "hash_status": "CORRECTED_APPEND_ONLY"
     },
     {
       "source_id": "evernorth_eloc_cover",
@@ -563,5 +566,15 @@
     "Preserve the $76.8M/$80.7M 424B3 internal discrepancy as a source-quality event and recheck any amendment.",
     "Keep the new Kamilah video candidate unattributed until reciprocal first-party channel linkage or platform channel ownership metadata is obtained.",
     "Use scheduled ingestion's own HTTP client to capture response headers, arrival timestamps and depth ladders; browser-rendered observations remain excluded."
+  ],
+  "hash_corrections": [
+    {
+      "source_id": "evernorth_credit_facility",
+      "original_hash": "78ebd9c470c379b6609ae6b3f0b0de0ec95944b5bab11089473eb978d0d5033e",
+      "corrected_hash": "22665bae05beeb779e7c8f048c283477bbaa2d4dc01d93e0fecabdf1708f872f",
+      "corrected_at_utc": "2026-11-07T20:03:08Z",
+      "reason": "The first manually recorded normalized-excerpt digest did not match the exact stored UTF-8 excerpt. The excerpt text and underlying SEC source are unchanged; only the digest receipt is corrected.",
+      "model_admission_changed": false
+    }
   ]
 }
