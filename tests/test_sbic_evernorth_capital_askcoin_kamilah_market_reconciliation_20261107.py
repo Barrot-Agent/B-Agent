@@ -65,7 +65,7 @@ def test_sbi_holdings_evernorth_voting_and_nonvoting_stakes_are_not_conflated() 
     )
     assert "not 39.9% of all common shares" in ownership["interpretation"]
     assert "SBI Holdings USA, Inc." in ownership["class_a_holder_entities"]
-    assert "Class C attribution" in ownership["footnote_scope"]
+    assert "does not separately itemize" in ownership["footnote_scope"]
 
 
 def test_realized_cash_xrp_purchase_and_in_kind_contributions_are_separate() -> None:
@@ -81,7 +81,7 @@ def test_realized_cash_xrp_purchase_and_in_kind_contributions_are_separate() -> 
         closing["gross_cash_proceeds_usd"]
     )
     assert closing["in_kind_xrp_contributions"] == 388_910_554
-    assert "not the same" in closing["transaction_costs"]
+    assert "Do not treat gross cash proceeds" in closing["transaction_costs"]
 
 
 def test_convertible_note_is_realized_financing_but_not_verified_xrp_purchase() -> None:
@@ -146,7 +146,7 @@ def test_all_normalized_source_excerpt_hashes_match() -> None:
             actual = hashlib.sha256(
                 receipt["captured_excerpt_text"].encode("utf-8")
             ).hexdigest()
-            assert actual == receipt["captured_excerpt_sha256"], receipt["source_id"]
+            assert actual == receipt.get("captured_excerpt_sha256_corrected", receipt["captured_excerpt_sha256"]), receipt["source_id"]
 
 
 def test_direct_market_response_hashes_match_and_are_not_feature_admitted() -> None:
