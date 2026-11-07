@@ -304,6 +304,30 @@
       "limitations": [
         "Protocol documentation describes native XRPL functionality; it does not prevent custodial exchanges or other chains' token issuers from freezing assets they control."
       ]
+    },
+    {
+      "source_id": "q_eternal_xrpl_redistribution_replay",
+      "publisher": "Q-Eternal",
+      "source_type": "independent_public_ledger_replay_and_analysis",
+      "independence_group": "q_eternal_public_xrpl_ledger_replay",
+      "url": "https://q-eternal.com/blog/2026-11-02/",
+      "observed_at_utc": "2026-11-02T19:55:00Z",
+      "ledger_index": 108064685,
+      "prior_repository_artifact": {
+        "pr": 1534,
+        "head": "2e92a6aa415cc491ca55ef1760f2a4f1bec2420c",
+        "path": "research/xrp_intelligence/20261103T011200Z-xrp-redistribution-followup-scope-reconciliation.json"
+      },
+      "evidence_paraphrases": [
+        {
+          "text": "Q-Eternal's 2 November replay reports six main redistribution recipients plus a separate 1,000 XRP test account; the original sender retained 23.69905 XRP.",
+          "sha256": "a6cda3248b2635befe13f7b7b0410d15987a9ed5a01748bcc7c6a8dc642bc72f"
+        }
+      ],
+      "limitations": [
+        "This is a separate analyst replay of the same public XRPL ledger, not an independent underlying ledger or independent proof of beneficial ownership.",
+        "The six-recipient balances sum to 233,460,920 XRP; adding the 1,000 XRP test account and 23.69905 XRP original-account residual gives 233,461,943.69905 XRP, 0.59905 XRP above the reported initial tranche."
+      ]
     }
   ],
   "event_timeline": [
@@ -343,8 +367,8 @@
         "2026-11-02T02:12:00Z",
         "2026-11-02T04:00:00Z"
       ],
-      "event": "The original attacker account redistributed all but 23.7 XRP to new XRPL accounts; Panoptic reports seven recipients while Elliptic reports six.",
-      "status": "RECIPIENT_COUNT_DISAGREEMENT"
+      "event": "The original attacker account redistributed the tranche to six main funded recipient accounts plus a separate 1,000 XRP test account; the original sender retained about 23.69905 XRP.",
+      "status": "COUNT_SEMANTICS_RECONCILED; SMALL_ARITHMETIC_DELTA_UNRESOLVED"
     },
     {
       "time_window_utc": [
@@ -378,32 +402,37 @@
     "source_wallet_count": 5,
     "source_wallets": [
       {
-        "address_label": "rDAE53…JPxr",
-        "amount_xrp": 185020000,
+        "address_label": "rDAE53…",
+        "amount_xrp": 185017485.5,
+        "ctid": "C66FBF0500670000",
         "time_utc": "2026-10-29T20:05:00Z",
         "tx": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A"
       },
       {
-        "address_label": "rBtttd…eA1A",
-        "amount_xrp": 14690000,
+        "address_label": "rBtttd…",
+        "amount_xrp": 14693052.5,
+        "ctid": "C66FBF2100960000",
         "time_utc": "2026-10-29T20:07:00Z",
         "tx": "6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67"
       },
       {
-        "address_label": "rfQ9Ec…8Cvi",
-        "amount_xrp": 13140000,
+        "address_label": "rfQ9Ec…",
+        "amount_xrp": 13140680.4,
+        "ctid": "C66FBF3400010000",
         "time_utc": "2026-10-29T20:08:20Z",
         "tx": "9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA"
       },
       {
-        "address_label": "rarG6F…bZKk",
-        "amount_xrp": 11960000,
+        "address_label": "rarG6F…",
+        "amount_xrp": 11955157.6,
+        "ctid": "C66FBF3C01AA0000",
         "time_utc": "2026-10-29T20:08:50Z",
         "tx": "27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5"
       },
       {
-        "address_label": "rNU4eA…ExpK",
-        "amount_xrp": 8660000,
+        "address_label": "rNU4eA…",
+        "amount_xrp": 8655567.1,
+        "ctid": "C66FBF4200120000",
         "time_utc": "2026-10-29T20:09:20Z",
         "tx": "0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0"
       }
@@ -411,8 +440,27 @@
     "account_split": {
       "panoptic_recipient_count": 7,
       "elliptic_recipient_count": 6,
-      "status": "UNRESOLVED_COUNT_DISAGREEMENT",
-      "original_account_retained_xrp": 23.7
+      "status": "COUNT_SEMANTICS_RECONCILED; 0.59905_XRP_ARITHMETIC_DIFFERENCE_UNRESOLVED",
+      "original_account_retained_xrp": 23.7,
+      "panoptic_reported_new_accounts": 7,
+      "elliptic_main_recipient_count": 6,
+      "q_eternal_main_recipient_count": 6,
+      "separate_test_account": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+      "separate_test_account_balance_xrp": 1000,
+      "six_main_recipient_balances_xrp": {
+        "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx": 40001000,
+        "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F": 40001000,
+        "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB": 40001000,
+        "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW": 40001000,
+        "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD": 40001000,
+        "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t": 33455920
+      },
+      "six_main_recipient_total_xrp": 233460920,
+      "seven_account_total_xrp": 233461920,
+      "original_sender_residual_xrp": 23.69905,
+      "combined_reported_balance_xrp": 233461943.69905,
+      "difference_vs_initial_report_xrp": 0.59905,
+      "interpretation": "Elliptic's six addresses correspond to the six main funded recipients. Panoptic's seven new accounts can be reconciled as those six plus the separate 1,000 XRP test account identified by Q-Eternal. The original sender retained about 23.69905 XRP. A 0.59905 XRP arithmetic discrepancy remains."
     },
     "movement_progress": {
       "panoptic_as_of_utc": "2026-11-06T03:25:00Z",
@@ -439,6 +487,15 @@
       "current_cashout_status": "Elliptic says only a negligible amount had likely been cashed out as of its 7 November 08:00 UTC update.",
       "panoptic_output_attribution": "The 75.89 BTC Panoptic traced from its 6.55M XRP deposit subset is contaminated by at least 1.42M XRP from other senders; do not attribute all 75.89 BTC to the theft.",
       "scale": "The approximately 86M XRP movement is about 36.8% of the original stolen tranche, but it is not equivalent to 86M XRP sold on centralized order books."
+    },
+    "separate_binance_50m_transfer": {
+      "time_utc": "2026-11-01T15:04:01Z",
+      "amount_xrp": 50000000,
+      "source": "Binance-labelled wallet",
+      "destination": "unidentified",
+      "linkage_to_attack": "NOT_ESTABLISHED",
+      "classification": "SEPARATE_EXCHANGE_FLOW_OBSERVATION",
+      "prior_artifact_pr": 1534
     }
   },
   "stablecoin_and_freeze_reconciliation": {
@@ -540,7 +597,7 @@
   },
   "cross_source_reconciliation": {
     "xrp_amount": "Binance, Panoptic, Elliptic and Bitquery all anchor the initial XRP tranche at approximately 233.46M XRP.",
-    "account_count": "Panoptic reports seven new recipients on 2 November; Elliptic reports six. Unresolved, likely a tracking/definition difference; retain both.",
+    "account_count": "The apparent six-versus-seven recipient difference is reconciled by six main funded recipients plus one separate 1,000 XRP test account. A 0.59905 XRP arithmetic residual remains unresolved.",
     "laundering_progress": "Panoptic's 6.55M XRP THORChain trace is a subset from three downstream accounts and an earlier cutoff. Bitquery's 44.2M XRP first-exit estimate at 10:00 UTC 6 November and Elliptic's 42M at 08:45 UTC are close but use different labels/methods. Elliptic's later 44M additional outflow through 08:00 UTC 7 November is a later observation, not a direct contradiction.",
     "freeze_amount": "Panoptic reads $2.65B frozen on attacker addresses; Binance and Elliptic report $2.85B frozen/intercepted. Scope, timing and intercepted-versus-frozen definitions differ.",
     "cashout": "Elliptic reports negligible fiat cashout by 08:00 UTC 7 November; Bitquery counts first exit from chain as laundered, not necessarily fiat cashout.",
@@ -573,5 +630,104 @@
     "Measure THORChain XRP pool depth, swap size, price impact and fees at the actual deposit times before estimating market impact.",
     "Check Binance Proof of Reserves XRP liabilities and hot-wallet/cold-wallet balances separately; do not infer 233M XRP repurchase from aggregate 98% replenishment.",
     "Keep issuer freeze events for RLUSD/USDC/USDT separate from native XRP transfers and freeze capabilities."
-  ]
+  ],
+  "prior_evidence_references": [
+    {
+      "pr": 1436,
+      "classification": "unique_unreviewed_draft",
+      "head": "c37299a15118cffe1785ac5f8b5d9b6e767bf39e",
+      "path": "data/xrp_intelligence/architecture_decisions/20261101T010800Z-stolen-xrp-coverage-freezes-and-market-flows.json",
+      "note": "Prior accepted research decision: separate stolen XRP, Binance customer coverage, replenishment and issuer freezes; no inference of 233.46M XRP repurchase."
+    },
+    {
+      "pr": 1436,
+      "classification": "unique_unreviewed_draft",
+      "head": "c37299a15118cffe1785ac5f8b5d9b6e767bf39e",
+      "path": "data/xrp_intelligence/source_revisions/20261101T010800Z-binance-xrp-attacker-address-issuer-freezes.json",
+      "note": "Earlier exact XRP tranche and transaction CTID crosswalk."
+    },
+    {
+      "pr": 1534,
+      "classification": "unique_unreviewed_draft",
+      "head": "2e92a6aa415cc491ca55ef1760f2a4f1bec2420c",
+      "path": "research/xrp_intelligence/20261103T011200Z-xrp-redistribution-followup-scope-reconciliation.json",
+      "note": "Six main recipients plus a separate 1,000 XRP test account; small 0.59905 XRP arithmetic difference."
+    },
+    {
+      "pr": 1534,
+      "classification": "unique_unreviewed_draft",
+      "head": "2e92a6aa415cc491ca55ef1760f2a4f1bec2420c",
+      "path": "research/xrp_intelligence/20261103T012800Z-xrp-derivatives-provider-scope-audit.json",
+      "note": "Earlier venue-universe reconciliation; historical snapshot, not current derivatives evidence."
+    },
+    {
+      "pr": 1503,
+      "classification": "unique_unreviewed_draft",
+      "head": "421b0653bc78a438617eee667330f7edf14d12c1",
+      "path": "data/xrp_intelligence/hand_offs/20261102T132500Z-binance-crosschain-freeze-timeline-and-xrpl-scope.json",
+      "note": "Cross-chain issuer-freeze timeline explicitly excludes XRPL transaction verification."
+    },
+    {
+      "pr": 1494,
+      "classification": "unique_unreviewed_draft",
+      "head": "490e93c451481b67b881b2ff7e10c5609ba2ff5a",
+      "path": "data/xrp_intelligence/hand_offs/20261102T090531Z-coinbase-ripple-prime-circle-sbi-capital-reconciliation.json",
+      "note": "Unique Coinbase/Ripple Prime/Circle/SBI capital and collateral relationship research."
+    },
+    {
+      "pr": 1494,
+      "classification": "unique_unreviewed_draft",
+      "head": "490e93c451481b67b881b2ff7e10c5609ba2ff5a",
+      "path": "data/xrp_intelligence/hand_offs/20261102T091000Z-ask-coin-coinbase-wallet-xrp-disambiguation.json",
+      "note": "Unique ASK token versus Coinbase wallet relationship disambiguation."
+    },
+    {
+      "pr": 1353,
+      "classification": "unique_unreviewed_draft",
+      "head": "4472b6274da4476c2049d0c26fb742f86bbbb093",
+      "path": "data/xrp_intelligence/architecture_decisions/20261029T2210Z-lossless-ledger-shard-migration.json",
+      "note": "Large, divergent lossless ledger-sharding workstream; preserve for separate integration review."
+    }
+  ],
+  "related_open_pr_inventory": {
+    "sole_active_xrp_research_integration_pr": 1643,
+    "unique_unreviewed_drafts": [
+      {
+        "pr": 1503,
+        "changed_paths": 9,
+        "ahead": 20,
+        "behind": 88,
+        "overlap_with_1643": 0
+      },
+      {
+        "pr": 1534,
+        "changed_paths": 7,
+        "ahead": 12,
+        "behind": 74,
+        "overlap_with_1643": 0
+      },
+      {
+        "pr": 1436,
+        "changed_paths": 24,
+        "ahead": 1483,
+        "behind": 507,
+        "overlap_with_1643": 0
+      },
+      {
+        "pr": 1494,
+        "changed_paths": 13,
+        "ahead": 21,
+        "behind": 94,
+        "overlap_with_1643": 0
+      },
+      {
+        "pr": 1353,
+        "changed_paths": 1084,
+        "ahead": 1465,
+        "behind": 507,
+        "overlap_with_1643": 0
+      }
+    ],
+    "handling": "Preserve all five drafts. They contain unique paths and are not duplicate PRs; selectively reconcile their unique evidence/work after the active #1643 research stream is integrated. Do not bulk-close."
+  }
 }

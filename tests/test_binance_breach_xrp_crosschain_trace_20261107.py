@@ -40,7 +40,7 @@ def test_split_recipient_count_disagreement_is_preserved():
     split = artifact["theft_and_trace"]["account_split"]
     assert split["panoptic_recipient_count"] == 7
     assert split["elliptic_recipient_count"] == 6
-    assert split["status"] == "UNRESOLVED_COUNT_DISAGREEMENT"
+    assert split["status"] == "COUNT_SEMANTICS_RECONCILED; 0.59905_XRP_ARITHMETIC_DIFFERENCE_UNRESOLVED"
 
 
 def test_panoptic_thorchain_subset_is_not_fully_attributed():
@@ -49,7 +49,7 @@ def test_panoptic_thorchain_subset_is_not_fully_attributed():
     assert movement["panoptic_thorchain_deposits_xrp"] == 6_550_000
     assert movement["panoptic_thorchain_btc_output"] == 75.89
     assert movement["panoptic_minimum_other_sender_xrp"] == 1_420_000
-    assert "cannot be attributed" in artifact["theft_and_trace"]["interpretation"]["panoptic_output_attribution"]
+    assert "do not attribute all 75.89 BTC to the theft" in artifact["theft_and_trace"]["interpretation"]["panoptic_output_attribution"]
 
 
 def test_bitquery_and_elliptic_cutoffs_are_kept_separate():
@@ -97,7 +97,7 @@ def test_attribution_and_ai_agent_claims_remain_qualified():
     assert "not the human identity" in attribution["on_chain_identity_limit"]
     ai = artifact["ai_security_assessment"]
     assert any("No evidence" in item for item in ai["what_is_not_established"])
-    assert any("no evidence of an ai agent making decisions" in item.lower() for item in ai["what_is_not_established"])
+    assert any("no evidence of ai-agent decision-making" in item.lower() for item in ai["what_is_not_established"])
 
 
 def test_no_forecast_or_trade_is_issued():
@@ -121,3 +121,31 @@ def test_official_xrpl_docs_confirm_native_xrp_cannot_be_frozen():
     docs = next(s for s in artifact["source_registry"] if s["source_id"] == "xrpl_official_freeze_protocol")
     assert docs["publisher"] == "XRP Ledger Documentation"
     assert docs["evidence_paraphrases"][0]["text"] == "No one can freeze XRP in the XRP Ledger."
+
+
+def test_six_main_recipients_plus_one_test_account_reconcile_six_vs_seven_count():
+    artifact = load_artifact()
+    split = artifact["theft_and_trace"]["account_split"]
+    assert split["elliptic_main_recipient_count"] == 6
+    assert split["q_eternal_main_recipient_count"] == 6
+    assert split["panoptic_reported_new_accounts"] == 7
+    assert split["separate_test_account_balance_xrp"] == 1000
+    assert split["six_main_recipient_total_xrp"] == 233_460_920
+    assert split["combined_reported_balance_xrp"] == 233_461_943.69905
+    assert split["difference_vs_initial_report_xrp"] == 0.59905
+    assert split["status"] == "COUNT_SEMANTICS_RECONCILED; 0.59905_XRP_ARITHMETIC_DIFFERENCE_UNRESOLVED"
+
+
+def test_exact_five_hot_wallet_amounts_sum_to_the_reported_stolen_tranche():
+    artifact = load_artifact()
+    wallets = artifact["theft_and_trace"]["source_wallets"]
+    assert sum(row["amount_xrp"] for row in wallets) == artifact["theft_and_trace"]["stolen_xrp"]
+    assert len({row["ctid"] for row in wallets}) == 5
+
+
+def test_separate_nov1_binance_50m_transfer_is_not_linked_to_the_attack():
+    artifact = load_artifact()
+    transfer = artifact["theft_and_trace"]["separate_binance_50m_transfer"]
+    assert transfer["amount_xrp"] == 50_000_000
+    assert transfer["linkage_to_attack"] == "NOT_ESTABLISHED"
+    assert transfer["classification"] == "SEPARATE_EXCHANGE_FLOW_OBSERVATION"
