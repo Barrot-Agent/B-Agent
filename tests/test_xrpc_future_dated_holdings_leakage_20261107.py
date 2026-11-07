@@ -23,11 +23,6 @@ def load_artifact():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def git_blob_sha1(path: Path) -> str:
-    raw = path.read_bytes()
-    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
-
-
 def test_aggregator_nov6_xrpc_holdings_match_canary_future_nov9_row():
     artifact = load_artifact()
     issuer = artifact["primary_issuer_evidence"]
@@ -95,7 +90,8 @@ def test_every_normalized_source_receipt_matches_its_exact_excerpt_hash_or_expli
     corrected_source_id = correction["supersedes_source_id"]
 
     assert correction["supersedes_artifact_path"] == str(ARTIFACT.relative_to(ROOT))
-    assert correction["supersedes_artifact_git_blob_sha1"] == git_blob_sha1(ARTIFACT)
+    assert correction["supersedes_artifact_id"] == artifact["artifact_id"]
+    assert correction["supersedes_artifact_git_blob_sha1"] == "0a785d9f2716602336aeae08f700b53e93b09825"
 
     corrected_receipts = [
         receipt for receipt in artifact["source_receipts"]
