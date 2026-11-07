@@ -1,0 +1,6 @@
+# Optional model/research dependencies. Not installed by the default Codespaces prebuild.
+torch>=2.0.0
+transformers>=4.40.0
+accelerate>=0.30.0
+bitsandbytes>=0.43.0
+safetensors>=0.4.3

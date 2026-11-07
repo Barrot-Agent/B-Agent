@@ -8,7 +8,11 @@ from pathlib import Path
 import pytest
 
 from barrot_agent.orchestration.repository_repair import (
+    AuditEngine,
     FailureEvidence,
+    ModelFailure,
+    ModelFailureCode,
+    RepairPlanner,
     GitGateway,
     PatchExecutor,
     ProjectIdentity,
@@ -1131,3 +1135,124 @@ def test_patch_executor_refuses_to_create_new_git_ignored_path(tmp_path: Path) -
 
     assert not target.exists()
     assert git(workspace, "status", "--porcelain", "--untracked-files=all").stdout.strip() == ""
+
+
+class ToolCapableFakeBrain:
+    def __init__(self, *responses):
+        self.responses = list(responses)
+        self.calls = []
+
+    def think(self, message: str, history=None, system=None, use_tools: bool = False, max_output_tokens=None) -> str:
+        self.calls.append({"message": message, "system": system, "use_tools": use_tools, "max_output_tokens": max_output_tokens})
+        response = self.responses.pop(0) if self.responses else '{"mode":"no_repair_required"}'
+        if isinstance(response, Exception):
+            raise response
+        return response
+
+
+def test_audit_engine_bounds_optional_context_without_truncating_task_or_note() -> None:
+    task_body = "AUTHORIZATION: preserve operator work; never merge, deploy, or expose secrets. " + ("TASK-DETAIL-" * 350)
+    operator_note = "Never truncate authorization boundaries or safety constraints."
+    context = {
+        "note": operator_note,
+        "github_context": "G" * 5000,
+        "inventory": "I" * 5000,
+        "file_context": "F" * 12000,
+        "directory_context": "D" * 9000,
+        "barrett_autonomous_audit": "A" * 4000,
+    }
+    prompt = AuditEngine().build_prompt(task_title="Bounded repair task", task_body=task_body, audit_context=context)
+    assert len(prompt) <= AuditEngine.MAX_PROMPT_CHARS
+    assert task_body in prompt
+    assert operator_note in prompt
+    assert "CONTEXT TRUNCATED" in prompt
+    assert "sha256=" in prompt
+
+
+def test_audit_engine_rejects_oversized_mandatory_task_without_truncating_it() -> None:
+    with pytest.raises(ModelFailure) as raised:
+        AuditEngine().build_prompt(
+            task_title="Oversized mandatory task",
+            task_body="AUTHORIZATION-BOUNDARY-" * 700,
+            audit_context={"note": "Preserve all safety requirements."},
+        )
+    assert raised.value.code is ModelFailureCode.PROMPT_TOO_LARGE
+    assert "Task and safety text was not truncated" in str(raised.value)
+
+
+def test_groq_413_tpm_error_is_not_retried_as_a_transient_rate_limit() -> None:
+    brain = FakeBrain(RuntimeError("Groq HTTP 413: rate limit exceeded; request tokens (12024) exceed tokens per minute limit (8000)"))
+    planner = RepairPlanner(brain, max_attempts=3, backoff_seconds=0)
+    with pytest.raises(ModelFailure) as raised:
+        planner.generate("bounded prompt")
+    assert raised.value.code is ModelFailureCode.PROMPT_TOO_LARGE
+    assert brain.calls == 1
+
+
+def test_controller_records_prompt_budget_failure_without_calling_model(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    brain = FakeBrain(repair_payload("barrot_agent/target.py"))
+    controller = make_controller(workspace, brain)
+    cycle = controller.run(
+        task_title="Oversized task",
+        task_body="T" * (AuditEngine.MAX_PROMPT_CHARS + 100),
+        issue_number="1658",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"note": "Never truncate authorization constraints."},
+    )
+    assert cycle.status == "failed"
+    assert cycle.failure is not None
+    assert cycle.failure.code == ModelFailureCode.PROMPT_TOO_LARGE.value
+    assert cycle.failure.failed_operation == "audit_engine.build_prompt"
+    assert brain.calls == 0
+
+
+def test_long_task_skips_optional_audit_but_preserves_full_task_for_planner(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    task_body = "LONG-TASK-" * 300
+    brain = ToolCapableFakeBrain('{"mode":"no_repair_required","report":"bounded task received"}')
+    controller = make_controller(workspace, brain)
+    cycle = controller.run(
+        task_title="Long bounded task",
+        task_body=task_body,
+        issue_number="1658",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+    assert cycle.status == "no_repair_required"
+    assert len(brain.calls) == 1
+    assert brain.calls[0]["use_tools"] is False
+    assert task_body in brain.calls[0]["message"]
+    assert "Optional Barrett autonomous audit skipped" in brain.calls[0]["message"]
+
+
+def test_short_task_autonomous_audit_receives_real_context_and_is_used(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    task_title = "Inspect the bounded repair"
+    task_body = "Verify the task-specific repository evidence."
+    brain = ToolCapableFakeBrain(
+        "Read-only audit found the exact requested task and branch context.",
+        '{"mode":"no_repair_required","report":"No repair needed."}',
+    )
+    controller = make_controller(workspace, brain)
+    cycle = controller.run(
+        task_title=task_title,
+        task_body=task_body,
+        issue_number="1658",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+    assert cycle.status == "no_repair_required"
+    assert len(brain.calls) == 2
+    assert brain.calls[0]["use_tools"] is True
+    assert brain.calls[0]["max_output_tokens"] == 768
+    assert "Repository: Barrot-Agent/B-Agent" in brain.calls[0]["message"]
+    assert "Branch: repair/test" in brain.calls[0]["message"]
+    assert f"Task title: {task_title}" in brain.calls[0]["message"]
+    assert task_body in brain.calls[0]["message"]
+    assert brain.calls[1]["use_tools"] is False
+    assert "BARRETT AUTONOMOUS AUDIT" in brain.calls[1]["message"]
+    assert "Read-only audit found the exact requested task" in brain.calls[1]["message"]

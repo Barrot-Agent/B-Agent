@@ -41,6 +41,7 @@ class RepairState(str, Enum):
 
 class ModelFailureCode(str, Enum):
     RATE_LIMITED = "LLM_RATE_LIMITED"
+    PROMPT_TOO_LARGE = "LLM_PROMPT_TOO_LARGE"
     TOOL_CONFLICT = "LLM_TOOL_CONFLICT"
     INVALID_JSON = "LLM_INVALID_JSON"
     TIMEOUT = "LLM_TIMEOUT"
@@ -988,7 +989,39 @@ class WorkQueueController:
 
 
 class AuditEngine:
-    """Builds the grounded prompt context used by the planner."""
+    """Builds a grounded planner prompt under a deterministic character budget."""
+
+    MAX_PROMPT_CHARS = 11_000
+    MAX_AUTONOMOUS_AUDIT_TASK_CHARS = 2_500
+    CONTEXT_LIMITS = (
+        ("github_context", "GITHUB CONTEXT", 1_800),
+        ("inventory", "CURRENT REPO FILES", 1_600),
+        ("file_context", "FILE CONTEXT", 3_500),
+        ("directory_context", "DIRECTORY CONTEXT", 2_000),
+        ("barrett_autonomous_audit", "BARRETT AUTONOMOUS AUDIT", 1_200),
+        ("previous_failure", "PREVIOUS FAILURE", 900),
+    )
+
+    @staticmethod
+    def _bounded_context(value: str, max_chars: int, label: str) -> str:
+        text = str(value or "")
+        if not text or max_chars <= 0:
+            return ""
+        if len(text) <= max_chars:
+            return text
+        digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        marker = (
+            f"\\n[CONTEXT TRUNCATED: {label}; "
+            f"original_chars={len(text)}; sha256={digest}]\\n"
+        )
+        available = max_chars - len(marker)
+        if available <= 0:
+            compact = f"[{label} omitted; chars={len(text)}; sha256={digest}]"
+            return compact if len(compact) <= max_chars else ""
+        head_chars = available * 3 // 4
+        tail_chars = available - head_chars
+        tail = text[-tail_chars:] if tail_chars else ""
+        return text[:head_chars] + marker + tail
 
     def build_prompt(
         self,
@@ -998,17 +1031,49 @@ class AuditEngine:
         audit_context: dict[str, str],
         previous_failure: str = "",
     ) -> str:
-        prompt = (
-            f"TASK:\n{task_title}\n{task_body}\n\n"
-            f"CURRENT REPO FILES:\n{audit_context.get('inventory', '')}"
-            f"{audit_context.get('file_context', '')}"
-            f"{audit_context.get('directory_context', '')}"
-            f"{audit_context.get('github_context', '')}"
-            f"{audit_context.get('note', '')}"
+        context = audit_context or {}
+        operator_note = str(context.get("note") or "")
+        task_section = (
+            f"TASK:\\n{task_title}\\n{task_body}\\n\\n"
+            f"OPERATOR NOTES (preserved in full):\\n{operator_note}"
         )
-        if previous_failure:
-            prompt += f"\n\nPREVIOUS FAILURE:\n{previous_failure}\n"
-        prompt += "\n\nReturn JSON only using the deterministic repair schema."
+        suffix = "\\n\\nReturn JSON only using the deterministic repair schema."
+        mandatory_chars = len(task_section) + len(suffix)
+        if mandatory_chars > self.MAX_PROMPT_CHARS:
+            raise ModelFailure(
+                ModelFailureCode.PROMPT_TOO_LARGE,
+                "Mandatory task title/body and operator notes require "
+                f"{mandatory_chars} characters; the planner limit is "
+                f"{self.MAX_PROMPT_CHARS}. Task and safety text was not truncated; "
+                "no model request was made.",
+            )
+
+        prompt = task_section
+        remaining = self.MAX_PROMPT_CHARS - mandatory_chars
+        for key, label, field_limit in self.CONTEXT_LIMITS:
+            value = previous_failure if key == "previous_failure" else context.get(key, "")
+            if not value:
+                continue
+            prefix = f"\\n\\n{label}:\\n"
+            field_budget = min(field_limit, remaining - len(prefix))
+            if field_budget <= 0:
+                continue
+            bounded = self._bounded_context(str(value), field_budget, label)
+            if not bounded:
+                continue
+            section = prefix + bounded
+            if len(section) > remaining:
+                continue
+            prompt += section
+            remaining -= len(section)
+
+        prompt += suffix
+        if len(prompt) > self.MAX_PROMPT_CHARS:
+            raise ModelFailure(
+                ModelFailureCode.PROMPT_TOO_LARGE,
+                "Planner prompt exceeded its deterministic character budget; "
+                "no model request was made.",
+            )
         return prompt
 
 
@@ -1106,6 +1171,11 @@ Rules:
             return exc
         message = str(exc)
         lowered = message.lower()
+        if (
+            ("413" in lowered or "request too large" in lowered or "context length" in lowered)
+            and any(token in lowered for token in ("token", "prompt", "context", "request"))
+        ):
+            return ModelFailure(ModelFailureCode.PROMPT_TOO_LARGE, message)
         if "429" in lowered or "rate limit" in lowered or "rate-limited" in lowered:
             return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
         if "tool_choice" in lowered or "tool choice" in lowered or "tool conflict" in lowered:
@@ -1733,6 +1803,7 @@ class RepositoryRepairController:
         task_body="",
         repo="",
         branch="",
+        max_output_tokens=768,
     ):
         """Perform a read-only repository investigation before repair planning."""
         brain = getattr(self.repair_planner, "brain", None)
@@ -1788,13 +1859,10 @@ actually observed.
 
         try:
             try:
-                return str(
-                    think(
-                        message,
-                        system=system,
-                        use_tools=True,
-                    )
-                )
+                think_kwargs = {"system": system, "use_tools": True}
+                if "max_output_tokens" in think_parameters:
+                    think_kwargs["max_output_tokens"] = max_output_tokens
+                return str(think(message, **think_kwargs))
             except TypeError as exc:
                 if "use_tools" not in str(exc):
                     raise
@@ -1955,21 +2023,61 @@ actually observed.
         self._persist(cycle)
         cycle.transition(RepairState.AUDITING)
         self._persist(cycle)
-        barrett_audit = self._barrett_autonomous_audit(
-            task_title=str(locals().get("title", "")),
-            task_body=str(locals().get("task", "")),
-            repo=str(locals().get("repo", "")),
-            branch=str(locals().get("branch", "")),
-        )
-        if barrett_audit:
-            audit_context = dict(locals().get("audit_context") or {})
-            audit_context["barrett_autonomous_audit"] = barrett_audit
+        audit_context = dict(audit_context or {})
+        if len(task_body) <= self.audit_engine.MAX_AUTONOMOUS_AUDIT_TASK_CHARS:
+            barrett_audit = self._barrett_autonomous_audit(
+                task_title=task_title,
+                task_body=task_body,
+                repo=repo_name,
+                branch=branch_name,
+                max_output_tokens=768,
+            )
+            if barrett_audit.startswith("BARRETT_AUTONOMOUS_AUDIT_FAILED:"):
+                audit_error = barrett_audit.lower()
+                if "413" in audit_error or "tokens per minute" in audit_error or "request too large" in audit_error:
+                    failure_code = (
+                        ModelFailureCode.PROMPT_TOO_LARGE
+                        if "413" in audit_error or "tokens per minute" in audit_error
+                        else ModelFailureCode.RATE_LIMITED
+                    )
+                    return self._failure(
+                        cycle,
+                        RepairState.FAILED,
+                        failure_code.value,
+                        "Optional read-only audit exceeded the provider request budget; "
+                        "the planner was not called again.",
+                        failed_operation="barrett_autonomous_audit",
+                    )
+                note = "Optional Barrett autonomous audit failed; its output was not admitted as evidence."
+                audit_context["note"] = "\\n".join(
+                    item for item in (str(audit_context.get("note") or ""), note) if item
+                )
+            elif barrett_audit:
+                audit_context["barrett_autonomous_audit"] = barrett_audit
+        else:
+            note = (
+                "Optional Barrett autonomous audit skipped because the task body "
+                f"exceeds {self.audit_engine.MAX_AUTONOMOUS_AUDIT_TASK_CHARS} characters; "
+                "the complete task body and operator notes remain preserved for the planner."
+            )
+            audit_context["note"] = "\\n".join(
+                item for item in (str(audit_context.get("note") or ""), note) if item
+            )
 
-        prompt = self.audit_engine.build_prompt(
-            task_title=task_title,
-            task_body=task_body,
-            audit_context=audit_context,
-        )
+        try:
+            prompt = self.audit_engine.build_prompt(
+                task_title=task_title,
+                task_body=task_body,
+                audit_context=audit_context,
+            )
+        except ModelFailure as exc:
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                exc.code.value,
+                str(exc),
+                failed_operation="audit_engine.build_prompt",
+            )
         cycle.audit_completed = True
 
         cycle.transition(RepairState.ANALYZING)
