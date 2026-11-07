@@ -60,5 +60,5 @@ def test_run27_market_and_institutional_evidence_remains_excluded_from_numeric_f
     assert market["binance_perpetual"]["age_seconds"] > 300
     assert market["limitations"]
     network = current["institutional_network"]
-    assert "not a direct SBI-Coinbase XRP partnership" in network["sbi_circle_arc"]
+    assert "does not establish a direct SBI-Coinbase XRP partnership" in network["sbi_circle_arc"]
     assert "no XRP-specific balance disclosed" in network["coinbase_collateral"]
