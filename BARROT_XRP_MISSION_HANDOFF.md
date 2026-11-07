@@ -2828,3 +2828,111 @@ The temporal calibration implementation now has an explicit event-time integrity
 3. Merge #1640 only after all requirements are satisfied; verify merge commit, main files, automatic workflow effects and main CI.
 4. Consolidate #1643's unique research onto that verified main, preserving all three shared-path decisions and the larger Kamilah candidate registry.
 5. Verify the first scheduled ingestion run on main; then build synchronized historical data and validate a trained model with leakage-safe walk-forward tests, fitted calibration, drift monitoring and independent shadow outcomes.
+
+
+---
+
+## Run 21 — 2026-11-07 11:05:58 UTC
+
+### Mission priority and current main
+
+- The packaged primary mission remains `xrp_intelligence_prediction_engine`, priority `1`, active. Barrot V3 remains the preserved execution, orchestration, safety and verification foundation.
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Main recursive tree last inspected: 1,403 entries / 1,298 files; 493 Python files.
+- Open PR inventory: 371 total (355 drafts, 16 non-drafts), enumerated across four 100-item pages.
+- No main-branch write, merge, deployment or external execution occurred.
+
+### EXECUTED — new XRP market-structure evidence
+
+Added to existing research PR #1643, without creating another PR:
+
+- `research/xrp_intelligence/20261107T110558Z-xrp-market-structure-exchange-wallet-etf-derivatives-macro-reconciliation.json`
+- `tests/test_xrp_market_structure_exchange_wallet_etf_derivatives_macro_reconciliation_20261107.py` (11 regression tests)
+
+Research commit: `194a4f5b3f2ae5fd71c6e6310f920f3d023dfec6`.
+
+The artifact stores complete response text for the two public exchange API responses and short rendered excerpts for secondary sources. SHA-256 values cover the stored response/excerpt text, not original HTTP wire bytes, headers, TLS metadata or an independent timestamp anchor.
+
+**Spot capture at 11:05:58 UTC**
+- Kraken XRP/USD: last $1.16799; bid $1.16799; ask $1.16800; Level-1 spread 0.08562 bps; rolling-24h volume 27.214M XRP; rolling-24h VWAP $1.17707089; 24h low/high $1.15046/$1.20135. No provider event timestamp or HTTP Date was exposed in the retrieved representation.
+- OKX XRP-USDT: last 1.1706; bid/ask 1.1703/1.1704; rolling-24h volume 50.007M XRP; provider timestamp 10:43:26.666 UTC, 1,351.334 seconds old at capture. It fails the 300-second live-feature threshold.
+- Raw last-price difference is 0.22346%; not an arbitrage observation because quote currencies are not normalized, timestamps are not synchronized, and executable depth/fees/latency were not measured.
+- No multi-level depth was captured in this research snapshot.
+
+**Adapter audit:** current `xrp_public_ingestion.py` blob `7087c8d13c19b6d70bd6c9c4caeff81110a51d4c` maps Kraken REST `o` to `utc_day_open`, not rolling-24h open; rolling-24h fields use the second array values. It uses HTTP Date for Kraken snapshot freshness and returns no feature records when that timestamp is unavailable. This is the correct fail-closed behavior; no adapter patch was needed.
+
+**Attributed exchange-wallet balances**
+- XRP Insights' 08:01 UTC snapshot reports 22.33B XRP in 701 wallets attributed to 24 exchanges.
+- Same-wallet change: -150.7M XRP over seven days and -161.2M over 30 days.
+- A naive total change of +350.8M includes two newly tracked wallets holding 512M XRP.
+- The source labels 48.4% cold, 12.0% hot and 39.9% unclassified; its total includes custody/omnibus balances, wrapped-asset backing and reserves. It explicitly is not an estimate of tradable float.
+- Its method uses validated-ledger `rippled account_info` balances and XRPSCAN public labels. Binance reserve details differ internally by 1.6M XRP (327.4M in the exchange table versus 325.8M in the methodology breakdown); unresolved.
+- SBI VC Trade is attributed 56.6M XRP in two wallets, >99% cold-labeled, with -2.9M/-4.2M same-wallet changes over seven/30 days. This is exchange-wallet attribution, not an SBI Holdings corporate treasury balance or proof of customer selling.
+
+**Derivatives disagreement**
+- TradRadar (10:20 UTC display): $1.90B open interest across seven exchanges, down 1.22%; funding +0.0079% per eight hours; at least $8.66M liquidations ($8.22M long, $432.76K short); 79.2% long accounts. Liquidation and account-ratio coverage is five exchanges, not the full seven-exchange OI universe.
+- Alpha Finance (10:06 UTC): $2.76B open interest, $2.47B 24-hour volume; $10.3M long and $470.4K short liquidations. Its model estimates $52.7M short-liquidation liquidity above and $35.6M long-liquidation liquidity below spot. These are modeled clusters, not observed resting orders.
+- OI differs by $860M (Alpha is 45.26% above TradRadar). Alpha's exact XRP venue universe is not disclosed on the page. Do not average.
+- Positive funding and long-account concentration coexist with long liquidation dominance and falling TradRadar OI. This supports a deleveraging-risk hypothesis, not a directional forecast.
+
+**ETF-flow disagreement**
+- Alpha Finance reports zero 6 November flow across five of five funds, +$8.4M over seven sessions and +$45.9M over 30 sessions. Its methodology identifies Coinglass as the ETF dashboard feed; no fund AUM/holdings are published there.
+- CryptoKeyhole reports 5 November as its latest complete day (-3,339 XRP across four funds); 6 November is partial (three of four), with XRPC -752,048 XRP and Franklin XRPZ missing.
+- CryptoKeyhole's page also says its latest issuer file is dated 9 November 2026, which is future-dated relative to the 7 November capture. Quarantine that metadata and the partial 6 November value pending issuer-file verification.
+- Alpha's zero and CryptoKeyhole's partial outflow are unresolved, not averaged. Their ingestion lineages differ (Coinglass aggregator versus issuer-file collector), but both ultimately depend on issuer disclosures.
+- The official Canary XRPC page retrieved in this run showed holdings only through 19 October. A CorpStacking search snippet appeared to show 6 November, but the opened page was stale at 4 November; the search snippet was excluded.
+
+**Macro context**
+- Reuters reported $117.97B net inflows to US money-market funds in the week to 4 November, the largest weekly inflow in six months, amid midterm and AI-capex concerns. This is broad risk-appetite context, not an XRP-specific catalyst.
+
+All new spot, wallet, derivatives, ETF and macro observations are event-timeline-only. None is admitted to the point-in-time model feature store. Competing hypotheses and disconfirming evidence are stored in the artifact.
+
+### VERIFIED — repository and exact-head CI
+
+**PR #1640 — V3 integration**
+- Current pre-handoff head: `15155c09bafd8b805a4add36a8f88df6dd41b7a5`.
+- Non-draft, open, mergeable; 165 changed paths.
+- 22/22 review threads resolved; 10 COMMENTED reviews; zero APPROVED reviews.
+- Exact-head checks all completed successfully: Tests, Full repository test suite, six-manifest `pip-audit`, and fail-closed gate. CodeRabbit was skipped.
+- [Exact-head full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42366172917), [dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42366172972), [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42366173134).
+
+**PR #1643 — XRP research**
+- Pre-new-artifact head `2b272931befa9764fb3edd90bafacfabef6b5660` passed 1,806 full-suite tests, 8 subtests; 498 core tests, 8 subtests; dependency audit and fail-closed gate.
+- New artifact commit advanced it to `194a4f5b3f2ae5fd71c6e6310f920f3d023dfec6`. On that exact new head, core Tests passed and the fail-closed gate passed; full repository suite and dependency audit were still in progress at the latest check.
+- [New-head full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42367211993), [dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42367211994), [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42367212012).
+
+### Current workflow safety boundary
+
+- Main's `Cross Analysis` workflow is read-only (`contents: read`) and uploads artifacts. Latest main run `42365726439` succeeded at 10:51:46 UTC; it is not a repository writer.
+- Main still has write-capable `Barrot Agent`, `Ask Barrot` and manual `Coinbase Paper Trader` workflows; the latter commits/pushes simulated state. Main's `Barrot Self-Upgrade` can create a candidate branch/PR after manual confirmation.
+- #1640 quarantines Barrot Agent, Ask Barrot and Self-Upgrade with empty permissions; it replaces the Coinbase paper-trader workflow with explicit YES + exact-main-SHA + read-only artifact output. These changes are not on main.
+- The hourly/daily XRP public-ingestion workflow exists on #1640 only and has not executed on main.
+- Main branch-protection endpoint returns HTTP 403. The only visible repository ruleset, `Fall Back`, is disabled. Pages configuration remains inaccessible to this integration; previous main push run `41799855489` completed a Pages deployment. Merge-triggered deployment authorization remains unresolved.
+
+### Backlog and authorization
+
+- #1640: sole V3 integration candidate.
+- #1643: sole XRP research candidate; its new artifact commit awaits full-suite/dependency results.
+- #1642: superseded by #1640; retain until successor is verified on main.
+- #1644–#1650: dependency/workflow candidates represented in #1640; retain until successor verification.
+- #1653: blocked by eight unresolved review threads; preserve its unique repository-intelligence work.
+- #1655: unique/unreviewed draft work; reconcile five unique paths after the main integration.
+- #1477 and older partial-overlap research/feature PRs: preserve unique work; no bulk closure.
+- #1640 has zero approving reviews; #1643 has zero approving reviews. COMMENTED reviews do not satisfy an approval requirement. CODEOWNERS assigns all paths only to `@Barrot-Agent`.
+- No merge was performed. No branch-protection bypass, deployment, secret operation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Nine-platform coordination
+
+The capability/authentication map remains on #1640. ChatGPT-to-GitHub is the only verified persistent connection. Copilot evidence is one-off review activity, not approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flow. No cross-platform transfer occurred.
+
+### Forecast status and next action
+
+**Forecast status: NOT_ISSUED.** No directional or shadow forecast, paper trade or real-money action occurred. The current evidence does not establish synchronized historical data, out-of-sample predictive lift, fitted real-data calibration, multivariate/concept-drift stability or independent shadow outcomes.
+
+Next:
+1. Finish exact-head full-suite and dependency checks on #1643 head `194a4f5`.
+2. Re-check #1640's new handoff-only head after this update; do not substitute its previous head's green result.
+3. Obtain independent approval and resolve Pages deployment authorization.
+4. Merge #1640 only after all gates are satisfied; verify merge commit, files, automatic workflow effects and main CI.
+5. Consolidate #1643's unique research onto verified new main, preserving the three shared-path reconciliation decisions.
+6. Verify scheduled ingestion on main and build synchronized historical data before model fitting or forecast issuance.
