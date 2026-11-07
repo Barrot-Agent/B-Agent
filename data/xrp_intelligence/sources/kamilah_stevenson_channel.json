@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "record_type": "creator_source_profile",
   "source_id": "YOUTUBE_CREATOR_KAMILAH_STEVENSON",
-  "mission": "Ingest all publicly available videos from the verified Kamilah Stevenson XRP/markets YouTube channel into Barrot's source database; extract timestamped claims and forecasts; cross-corroborate before using as predictive features.",
+  "mission": "Maintain candidate references for the Kamilah/Camilla Stevenson XRP/markets YouTube presence. Person identity is confirmed by first-person and branded-source evidence, but the canonical YouTube channel ID/handle relation remains probable rather than platform-verified. Do not treat candidate uploads as verified creator inventory.",
   "creator": {
     "display_name": "Kamilah Stevenson",
     "alternate_spelling_seen_in_transcripts": [
@@ -15,18 +15,18 @@
     "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
     "identity_status": "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH",
     "identity_evidence": [
-      "The June 11, 2026 iHeart / XRP Podcast interview identifies the guest as Dr. Kamilah Stevenson; the guest self-identifies her YouTube display name as Doctor Camilla Stevenson and warns that fake pages exist.",
-      "The first-party learn.kamilahstevenson.com site identifies its owner as Dr. Kamilah Stevenson, also known as The Wealth Doctor.",
-      "Vling and Scrumball third-party directories identify channel ID UCqUPJMQdkCN6lsLVDnichPA as Kamilah Stevenson; subscriber/video counts differ and do not prove ownership.",
-      "OracleCheck links a separate candidate handle @drkamilahstevenson and tracks seven dated market-call videos; the exact relation between that handle and UCqUPJMQdkCN6lsLVDnichPA remains unresolved.",
-      "Three Glasp transcript-indexed videos self-introduce as Camila Stevenson; these corroborate person attribution but are not a first-party channel-ID cross-link."
+      "The first-person branded site identifies its owner as Dr. Kamilah Stevenson, also known as The Wealth Doctor.",
+      "In the 2026-06-11 iHeart XRP Podcast interview, the guest self-reports a YouTube display name rendered in the auto-generated transcript as doctor Camilla Stevenson and warns that fake pages exist; the transcript does not supply an exact channel URL.",
+      "The Linktree account @Dr.Kamilahstevenson links to a YouTube channel labelled Kamilah Stevenson and to the Kamilah Stevenson branded site; the retrieved branded site did not reciprocally link to the exact YouTube channel.",
+      "The Linktree YouTube link resolves to the candidate handle @drkamilahstevenson, but the YouTube page fetch was throttled and did not expose first-party About metadata or the canonical channel ID.",
+      "YouTube search results display Kamilah Stevenson as author for candidate videos; indexed author labels are not platform-side account ownership proof."
     ],
     "caveats": [
-      "Person identity is confirmed; the canonical YouTube channel ID and exact handle are not yet first-party cross-linked.",
-      "The interview explicitly warns about fake pages; do not merge accounts by name, spelling, subscriber count or ticker focus alone.",
-      "Third-party channel analytics report inconsistent subscriber and video counts; do not use those counts as canonical.",
-      "The candidate channel ID UCqUPJMQdkCN6lsLVDnichPA and candidate handle @drkamilahstevenson may be the same channel, but that relation remains unresolved.",
-      "Do not conflate the separate unverified @KamilahStevensonXrpStocks channel."
+      "Person identity is confirmed; canonical YouTube channel ownership and the exact handle-to-channel-ID relation remain unverified.",
+      "The interview warns that fake pages exist; do not merge accounts by name, spelling, subscriber count or ticker focus alone.",
+      "The Linktree account is self-described and links to the branded site and YouTube, but no reciprocal link from the branded site to the exact channel was captured.",
+      "The candidate channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson are probably related but remain unverified at platform metadata level.",
+      "Third-party channel analytics report inconsistent subscriber and video counts; do not use those counts as canonical."
     ],
     "person_identity_status": "CONFIRMED",
     "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
@@ -35,7 +35,7 @@
     "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
   },
   "ingestion_policy": {
-    "scope": "ALL_PUBLIC_CHANNEL_VIDEOS_AFTER_CANONICAL_CHANNEL_VERIFICATION",
+    "scope": "CANDIDATE_REFERENCES_ONLY_PENDING_CANONICAL_CHANNEL_VERIFICATION",
     "required_fields": [
       "video_id",
       "canonical_url",
@@ -63,29 +63,31 @@
     "prediction_policy": "Extract each explicit prediction with original publication cutoff, target, direction, horizon, probability/confidence if stated, assumptions, and later outcome. Do not infer an unstated probability.",
     "evidence_policy": "Creator statements are claims, not ground truth. Independently corroborate with primary filings, official statements, market data, on-chain data, regulatory records, and independent sources.",
     "forecasting_policy": "Never use a video published after the forecast cutoff as a feature for that forecast. Prevent look-ahead and survivorship leakage.",
-    "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
+    "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution.",
+    "identity_gate": "Person identity is confirmed and public-channel attribution is strongly corroborated, but the exact channel ID/handle is not platform-side verified. Keep references candidate-only. Do not classify uploads as a verified creator inventory or admit them to the verified source corpus until authorized YouTube metadata or a first-party reciprocal link establishes the exact channel ID."
   },
   "video_inventory_status": {
-    "status": "PARTIAL_CONSOLIDATED_CANDIDATE_INVENTORY",
+    "status": "PARTIAL_CANDIDATE_INVENTORY_CANONICAL_CHANNEL_UNVERIFIED",
     "completeness_verified": false,
     "discovered_total_count": null,
     "indexed_seed_video_count": 18,
     "missing_work": [
-      "Enumerate every public upload from the canonical channel's videos, Shorts, live and archived-stream surfaces only after first-party channel-ID/handle resolution; current inventory is incomplete.",
-      "Resolve whether channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson are the same channel using a first-party reciprocal link or authorized YouTube metadata.",
-      "Deduplicate all discovered uploads by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
-      "Retrieve permitted/public transcript text or references; hash exact captured transcripts and preserve timestamps.",
-      "Extract explicit claims and forecasts separately; preserve source wording and classify fact, interpretation, forecast, opinion and promotional claim.",
-      "Resolve the 2025-12-13 versus 2025-12-14 publication-date disagreement for QslbjGQD0MU using first-party YouTube metadata.",
-      "Verify numeric claims using official XRPL/Ripple/issuer data and reproducible on-chain or market datasets.",
-      "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp and baseline.",
-      "Keep guest appearances and third-party clips outside the own-channel upload inventory."
+      "Resolve the exact @drkamilahstevenson handle to a canonical YouTube channel ID using authorized YouTube metadata or a first-party reciprocal link.",
+      "Capture the channel About metadata and its reciprocal website/contact links without bypassing access controls.",
+      "Enumerate all public uploads, Shorts, live and archived streams only after canonical channel verification.",
+      "Deduplicate by canonical video ID and retain timestamped pagination/change-detection receipts.",
+      "Retrieve permitted/public transcripts, hash exact captured text, preserve timestamps, and keep creator commentary out of ground-truth market features."
     ],
     "person_identity_verified": true,
     "canonical_channel_verified": false,
     "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "candidate_handle": "@drkamilahstevenson",
-    "channel_id_handle_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
+    "channel_id_handle_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+    "attribution_verified": false,
+    "identity_gate_passed": false,
+    "verified_inventory_count": 0,
+    "candidate_reference_count": 18,
+    "inventory_scope": "Candidate references only; not an attributed, canonical, or exhaustive public-video inventory."
   },
   "seed_videos": [
     {
@@ -97,9 +99,10 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry",
       "source_url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
-      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE"
+      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "pmJTrXJQ8Vw",
@@ -110,9 +113,10 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry",
       "source_url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
-      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE"
+      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "rv0BAV0vLgo",
@@ -123,9 +127,10 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry; glasp_transcript_index",
       "source_url": "https://glasp.co/youtube/rv0BAV0vLgo",
-      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_IDENTITY_NOT_CAPTURED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_IDENTITY_NOT_CAPTURED"
+      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_IDENTITY_NOT_CAPTURED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "QslbjGQD0MU",
@@ -139,13 +144,14 @@
       "published_date_status": "SOURCE_DISAGREEMENT",
       "source": "main_creator_registry; prior_video_inventory_20261105T084500Z; glasp_transcript_index",
       "source_url": "https://glasp.co/youtube/QslbjGQD0MU",
-      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA; YOUTUBE_INDEXED_CREATOR_LABEL",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "Ripple regulatory status",
         "XRP institutional liquidity",
         "collateral and lending commentary"
       ],
-      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA; YOUTUBE_INDEXED_CREATOR_LABEL"
+      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA; YOUTUBE_INDEXED_CREATOR_LABEL",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "ci0FH73lbCs",
@@ -156,9 +162,10 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry; prior_video_inventory_20261105T084500Z; glasp_transcript_index",
       "source_url": "https://glasp.co/youtube/ci0FH73lbCs",
-      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA"
+      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "cxeX_eu_2H0",
@@ -169,9 +176,10 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry; prior_video_inventory_20261105T084500Z; glasp_transcript_index",
       "source_url": "https://glasp.co/youtube/cxeX_eu_2H0",
-      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA"
+      "claim_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "8xiy8w2YlfY",
@@ -182,7 +190,7 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry; prior_video_inventory_20261105T084500Z",
       "source_url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
-      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_AND_CHAPTERS_ONLY",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "Confidential Transfers",
         "Sponsored Fees and Reserves",
@@ -190,7 +198,8 @@
         "Permission Delegation",
         "Dynamic MPT"
       ],
-      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_AND_CHAPTERS_ONLY"
+      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_AND_CHAPTERS_ONLY",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "pFru4idBTMA",
@@ -201,9 +210,10 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry",
       "source_url": "https://www.youtube.com/watch?v=pFru4idBTMA",
-      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY; NUMERIC_CLAIMS_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY; NUMERIC_CLAIMS_UNVERIFIED"
+      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY; NUMERIC_CLAIMS_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "Gy4BuGhAWE8",
@@ -214,14 +224,15 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry; prior_video_inventory_20261105T084500Z",
       "source_url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
-      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "XRP ETFs",
         "macro liquidity",
         "Federal Reserve policy",
         "U.S. legislation"
       ],
-      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY"
+      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "qtT2hLeFkM0",
@@ -232,9 +243,10 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "main_creator_registry",
       "source_url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
-      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; TITLE_AND_DESCRIPTION_ONLY; METRIC_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; TITLE_AND_DESCRIPTION_ONLY; METRIC_UNVERIFIED"
+      "claim_status": "YOUTUBE_INDEXED_CREATOR_LABEL; TITLE_AND_DESCRIPTION_ONLY; METRIC_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "SvxxNGA1Xpc",
@@ -245,11 +257,12 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "oraclecheck_channel_tracker",
       "source_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
-      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "TOTAL market call"
       ],
-      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED"
+      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "nRkbAOQ01Os",
@@ -260,11 +273,12 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "oraclecheck_channel_tracker",
       "source_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
-      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "QNT market call"
       ],
-      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED"
+      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "-wWxFrsZL6A",
@@ -275,11 +289,12 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "oraclecheck_channel_tracker",
       "source_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
-      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "XRP market call"
       ],
-      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED"
+      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "VBQBQio6MFw",
@@ -290,11 +305,12 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "oraclecheck_channel_tracker",
       "source_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
-      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "XRP market call"
       ],
-      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED"
+      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "G7tIWEbonHg",
@@ -305,11 +321,12 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "oraclecheck_channel_tracker",
       "source_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
-      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "XRP market call"
       ],
-      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED"
+      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "pDQ9JyYZyck",
@@ -320,11 +337,12 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "oraclecheck_channel_tracker",
       "source_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
-      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "HBAR / XLM / XDC market call"
       ],
-      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED"
+      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "eT6Kj1qHJyE",
@@ -335,11 +353,12 @@
       "published_date_status": "SOURCE_REPORTED",
       "source": "oraclecheck_channel_tracker",
       "source_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
-      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [
         "XRP market call"
       ],
-      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED"
+      "claim_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "OvODErBT9Ug",
@@ -350,9 +369,10 @@
       "published_date_status": "NOT_REPORTED",
       "source": "linktree_drkamilahstevenson_candidate",
       "source_url": "https://www.youtube.com/watch?v=OvODErBT9Ug",
-      "attribution_status": "LINKTREE_PROFILE_DIRECT_LINK; PROFILE_OWNERSHIP_AND_CHANNEL_OWNERSHIP_NOT_VERIFIED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
-      "claim_status": "LINKTREE_PROFILE_DIRECT_LINK; PROFILE_OWNERSHIP_AND_CHANNEL_OWNERSHIP_NOT_VERIFIED"
+      "claim_status": "LINKTREE_PROFILE_DIRECT_LINK; PROFILE_OWNERSHIP_AND_CHANNEL_OWNERSHIP_NOT_VERIFIED",
+      "eligible_for_forecast_feature": false
     }
   ],
   "required_cross_corroboration_domains": [
@@ -468,6 +488,40 @@
       "attribution_type": "THIRD_PARTY_CLIP_NOT_OWN_CHANNEL_UPLOAD",
       "attribution_status": "UPLOADED_BY_ALINA_X; EXCLUDED_FROM_OWN_CHANNEL_INVENTORY",
       "source": "third_party_clip_index"
+    }
+  ],
+  "attribution_policy": {
+    "requested_identity": "Camilla/Kamilah Stevenson",
+    "person_identity_status": "CONFIRMED",
+    "candidate_identity": "Dr. Kamilah Stevenson; self-reported YouTube display name rendered as doctor Camilla Stevenson",
+    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+    "canonical_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "candidate_handle": "@drkamilahstevenson",
+    "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+    "allow_candidate_references": true,
+    "allow_verified_creator_inventory": false,
+    "allow_forecast_feature_admission": false,
+    "required_evidence": [
+      "Authorized YouTube channel metadata that resolves the exact handle to a canonical channel ID and exposes About/owner metadata, or",
+      "A creator-controlled first-party website/social profile that links reciprocally to the exact YouTube handle or channel ID."
+    ],
+    "rule": "Preserve candidate video references, but do not call them a verified creator inventory or attribute them as confirmed channel uploads until the exact channel identity is verified."
+  },
+  "identity_status_history": [
+    {
+      "observed_date": "2026-11-04",
+      "status": "UNRESOLVED_NOT_EQUIVALENT",
+      "source": "research/xrp_intelligence/20261104T065909Z-identity-phrase-followup.json",
+      "scope": "Earlier name-equivalence assessment before the 5 November first-person interview and Linktree evidence."
+    },
+    {
+      "observed_date": "2026-11-05",
+      "status": "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH",
+      "sources": [
+        "research/xrp_intelligence/20261105T2145Z-kamilah-stevenson-podcast-self-identification-addendum.json",
+        "research/xrp_intelligence/20261105T2150Z-kamilah-stevenson-public-youtube-inventory-addendum.json"
+      ],
+      "scope": "Person identity and public-channel attribution strengthened; canonical channel ID/handle ownership still not platform-verified."
     }
   ]
 }
