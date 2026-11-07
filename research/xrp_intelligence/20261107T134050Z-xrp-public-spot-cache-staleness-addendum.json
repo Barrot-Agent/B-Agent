@@ -1,0 +1,268 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-public-spot-cache-staleness-addendum-20261107T134050Z",
+  "artifact_type": "xrp_public_market_snapshot_cache_and_staleness_reconciliation",
+  "mission": "XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
+  "observation_upper_bound_utc": "2026-11-07T13:40:50Z",
+  "observation_time_semantics": "The local-time clock was read immediately after the public API retrievals. This is an upper bound on retrieval, not an exact per-request network timestamp.",
+  "receipt_contract": {
+    "hash_algorithm": "SHA-256",
+    "hash_scope": "Exact UTF-8 JSON text returned by the public retrieval interface and embedded below.",
+    "raw_http_wire_bytes_preserved": false,
+    "response_headers_or_cache_headers_exposed": false,
+    "independent_timestamp_anchor": false
+  },
+  "sources": [
+    {
+      "source_id": "kraken_xrpusd_ticker_repeat_20261107T134050Z",
+      "publisher": "Kraken",
+      "source_type": "first_party_public_exchange_rest_ticker",
+      "independence_group": "kraken_spot_venue",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "instrument": "XRP/USD spot",
+      "provider_event_timestamp_utc": null,
+      "observation_upper_bound_utc": "2026-11-07T13:40:50Z",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16120000\",\"667\",\"667.000\"],\"b\":[\"1.16119000\",\"584\",\"584.000\"],\"c\":[\"1.16071000\",\"83.64700003\"],\"v\":[\"12001788.47264655\",\"28157519.41019452\"],\"p\":[\"1.16507055\",\"1.17461250\"],\"t\":[12737,29555],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.19791000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_utf8_bytes": 316,
+      "raw_response_sha256": "4e5b90063b4f29364b059ff98d92f9f8b3aece841e33be76fd15b9efb2081ce7",
+      "repeat_observation": {
+        "prior_observation_upper_bound_utc": "2026-11-07T13:32:43Z",
+        "elapsed_seconds": 487,
+        "prior_and_current_payload_sha256_equal": true,
+        "interpretation": "The exact ticker JSON was unchanged across two reads 487 seconds apart, including volume, trade count and last-trade size. This is consistent with retrieval-layer caching or an unchanged provider response; the available evidence cannot distinguish those causes."
+      },
+      "normalized": {
+        "last_usd": 1.16071,
+        "best_bid_usd": 1.16119,
+        "best_ask_usd": 1.1612,
+        "best_bid_size_xrp": 584,
+        "best_ask_size_xrp": 667,
+        "last_trade_size_xrp": 83.64700003,
+        "spread_usd": 0.00001,
+        "spread_basis_points": 0.08611818,
+        "last_below_best_bid_usd": 0.00048,
+        "last_below_best_bid_basis_points": 4.13367264,
+        "volume_24h_xrp": 28157519.41019452,
+        "trades_24h": 29555,
+        "vwap_24h_usd": 1.1746125,
+        "open_today_usd": 1.17749,
+        "high_24h_usd": 1.19791,
+        "low_24h_usd": 1.15046
+      },
+      "freshness_status": "UNVERIFIABLE_PROVIDER_TIMESTAMP_MISSING_AND_REPEAT_PAYLOAD",
+      "model_eligible": false,
+      "limitations": [
+        "Kraken ticker contains no provider event timestamp; retrieval time cannot prove quote or last-trade freshness.",
+        "Identical response across two reads 487 seconds apart may indicate retrieval caching or unchanged source data; neither is proven.",
+        "Last trade is 0.00048 USD below the current displayed best bid. Without a last-trade timestamp, do not treat the last field as a synchronized current executable price.",
+        "Only top-of-book fields are available; this is not a multi-level depth curve."
+      ]
+    },
+    {
+      "source_id": "okx_xrpusdt_ticker_repeat_20261107T134050Z",
+      "publisher": "OKX",
+      "source_type": "first_party_public_exchange_rest_ticker",
+      "independence_group": "okx_spot_venue",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "instrument": "XRP-USDT spot",
+      "quote_currency": "USDT",
+      "provider_snapshot_timestamp_utc": "2026-11-07T13:24:31.267Z",
+      "provider_snapshot_timestamp_epoch_ms": 1794057871267,
+      "provider_age_seconds_at_observation_upper_bound": 978.733,
+      "freshness_limit_seconds": 300,
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.162\",\"lastSz\":\"1000\",\"askPx\":\"1.1622\",\"askSz\":\"13347.199857\",\"bidPx\":\"1.1621\",\"bidSz\":\"681.781\",\"open24h\":\"1.1877\",\"high24h\":\"1.1996\",\"low24h\":\"1.1518\",\"volCcy24h\":\"55235740.1307590924\",\"vol24h\":\"46979989.331931\",\"ts\":\"1794057871267\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "raw_response_utf8_bytes": 352,
+      "raw_response_sha256": "5e7406fc2b409036644a4a3fbbf9c81b0934bf25213afafd861b08f29b64c70a",
+      "repeat_observation": {
+        "prior_observation_upper_bound_utc": "2026-11-07T13:32:43Z",
+        "elapsed_seconds": 487,
+        "prior_and_current_payload_sha256_equal": true,
+        "interpretation": "The provider timestamp and full ticker body were unchanged across two reads 487 seconds apart. The provider timestamp itself is 978.733 seconds old at the current observation upper bound."
+      },
+      "normalized": {
+        "last_usdt": 1.162,
+        "best_bid_usdt": 1.1621,
+        "best_ask_usdt": 1.1622,
+        "best_bid_size_xrp": 681.781,
+        "best_ask_size_xrp": 13347.199857,
+        "spread_usdt": 0.0001,
+        "spread_basis_points": 0.86047412,
+        "volume_24h_xrp": 46979989.331931,
+        "quote_turnover_24h_usdt": 55235740.13075909,
+        "open_24h_usdt": 1.1877,
+        "high_24h_usdt": 1.1996,
+        "low_24h_usdt": 1.1518
+      },
+      "freshness_status": "STALE_EXCEEDS_300_SECONDS",
+      "model_eligible": false,
+      "limitations": [
+        "Provider snapshot is 978.733 seconds old at the observation upper bound, exceeding the 300-second live-feature threshold.",
+        "The exact response was unchanged on recheck; retrieval caching or provider staleness cannot be distinguished.",
+        "The last trade is below the displayed best bid; without last-trade event time, retain the fields separately.",
+        "Quote currency is USDT, not USD.",
+        "Only Level-1 quote fields are present; no multi-level depth or executable slippage was captured."
+      ]
+    },
+    {
+      "source_id": "kraken_usdtusd_ticker_context_20261107T134050Z",
+      "publisher": "Kraken",
+      "source_type": "first_party_public_exchange_rest_ticker",
+      "independence_group": "kraken_spot_venue",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "instrument": "USDT/USD spot",
+      "provider_event_timestamp_utc": null,
+      "observation_upper_bound_utc": "2026-11-07T13:40:50Z",
+      "raw_response_text": "{\"error\":[],\"result\":{\"USDTZUSD\":{\"a\":[\"0.99876000\",\"183566\",\"183566.000\"],\"b\":[\"0.99875000\",\"7915216\",\"7915216.000\"],\"c\":[\"0.99876000\",\"307.31176659\"],\"v\":[\"47777505.77421003\",\"205773747.78790229\"],\"p\":[\"0.99872481\",\"0.99870487\"],\"t\":[17504,49361],\"l\":[\"0.99858000\",\"0.99848000\"],\"h\":[\"0.99880000\",\"0.99940000\"],\"o\":\"0.99860000\"}}}",
+      "raw_response_utf8_bytes": 332,
+      "raw_response_sha256": "fd987d1a68a606eaa90956d51957f76387e69a373fbdebb9ac1cd45b81b27c47",
+      "normalized": {
+        "last_usdt_usd": 0.99876,
+        "best_bid_usdt_usd": 0.99875,
+        "best_ask_usdt_usd": 0.99876,
+        "midpoint_usdt_usd": 0.998755
+      },
+      "model_eligible": false,
+      "limitations": [
+        "No provider event timestamp is available.",
+        "This is the same venue as the Kraken XRP/USD quote, not an independent source.",
+        "Do not use it to normalize the stale OKX quote without synchronized event timestamps."
+      ]
+    },
+    {
+      "source_id": "coinpaprika_xrp_aggregate_ticker_20261107T134050Z",
+      "publisher": "CoinPaprika",
+      "source_type": "aggregated_market_data_api",
+      "independence_group": "coinpaprika_market_aggregator",
+      "url": "https://api.coinpaprika.com/v1/tickers/xrp-xrp",
+      "instrument": "XRP aggregate market",
+      "provider_last_updated_utc": "2026-11-07T13:33:14Z",
+      "provider_age_seconds_at_observation_upper_bound": 456,
+      "freshness_limit_seconds": 300,
+      "raw_response_text": "{\"id\":\"xrp-xrp\",\"name\":\"XRP\",\"symbol\":\"XRP\",\"rank\":5,\"total_supply\":99985583260,\"max_supply\":100000000000,\"beta_value\":1.39157,\"first_data_at\":\"2013-08-04T00:00:00Z\",\"last_updated\":\"2026-11-07T13:33:14Z\",\"quotes\":{\"USD\":{\"price\":1.1645068617442549,\"volume_24h\":1221032483.3508296,\"volume_24h_change_24h\":-31.6200008392334,\"market_cap\":73965524631,\"market_cap_change_24h\":-1.2000000476837158,\"percent_change_15m\":0.27000001072883606,\"percent_change_30m\":0.33000001311302185,\"percent_change_1h\":0.46999999999999997,\"percent_change_6h\":-0.7400000095367432,\"percent_change_12h\":-1.2200000286102295,\"percent_change_24h\":-1.2000000476837158,\"percent_change_7d\":-6.550000190734863,\"percent_change_30d\":-16.450000762939453,\"percent_change_1y\":-49.36000061035156,\"ath_price\":3.84194,\"ath_date\":\"2018-01-04T07:14:00Z\",\"percent_from_price_ath\":-69.71}}}",
+      "raw_response_utf8_bytes": 841,
+      "raw_response_sha256": "a9c0257c93efd5991a8a1f74ed6496f33cd7a1531545a3858906bf58ee99106b",
+      "normalized": {
+        "aggregate_price_usd": 1.1645068617442549,
+        "aggregate_volume_24h_usd": 1221032483.3508296,
+        "aggregate_market_cap_usd": 73965524631,
+        "percent_change_24h": -1.2000000476837158,
+        "percent_change_7d": -6.550000190734863,
+        "percent_change_30d": -16.450000762939453,
+        "percent_change_1y": -49.36000061035156
+      },
+      "freshness_status": "STALE_EXCEEDS_300_SECONDS",
+      "model_eligible": false,
+      "limitations": [
+        "Provider last_updated is 456 seconds old at the observation upper bound.",
+        "This is an aggregate provider metric, not a direct exchange quote or verified spot execution.",
+        "Aggregate volume is not actual net capital entering XRP and may overlap with exchange sources."
+      ]
+    },
+    {
+      "source_id": "bybit_xrpusdt_spot_ticker_20261107T134050Z",
+      "publisher": "Bybit",
+      "source_type": "first_party_public_exchange_rest_ticker",
+      "independence_group": "bybit_spot_venue",
+      "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "instrument": "XRP-USDT spot",
+      "quote_currency": "USDT",
+      "provider_snapshot_timestamp_utc": "2026-11-07T11:54:40.981Z",
+      "provider_snapshot_timestamp_epoch_ms": 1794052480981,
+      "provider_age_seconds_at_observation_upper_bound": 6369.019,
+      "freshness_limit_seconds": 300,
+      "raw_response_text": "{\"retCode\":0,\"retMsg\":\"OK\",\"result\":{\"category\":\"spot\",\"list\":[{\"symbol\":\"XRPUSDT\",\"bid1Price\":\"1.1721\",\"bid1Size\":\"3756.83\",\"ask1Price\":\"1.1722\",\"ask1Size\":\"1558.74\",\"lastPrice\":\"1.1722\",\"prevPrice24h\":\"1.1983\",\"price24hPcnt\":\"-0.0218\",\"highPrice24h\":\"1.2029\",\"lowPrice24h\":\"1.1518\",\"turnover24h\":\"37340145.509064\",\"volume24h\":\"31666689.99\",\"usdIndexPrice\":\"1.170901\"}]},\"retExtInfo\":{},\"time\":1794052480981}",
+      "raw_response_utf8_bytes": 409,
+      "raw_response_sha256": "e5f0a9239a928a871fa96e4032ce978f843cee277b957922a20ee956cac1057c",
+      "normalized": {
+        "last_usdt": 1.1722,
+        "best_bid_usdt": 1.1721,
+        "best_ask_usdt": 1.1722,
+        "best_bid_size_xrp": 3756.83,
+        "best_ask_size_xrp": 1558.74,
+        "volume_24h_xrp": 31666689.99,
+        "turnover_24h_usdt": 37340145.509064,
+        "price_change_24h_pct": -2.18
+      },
+      "freshness_status": "STALE_EXCEEDS_300_SECONDS",
+      "model_eligible": false,
+      "limitations": [
+        "Provider timestamp is 6369.019 seconds old at the observation upper bound.",
+        "The quote is USDT-denominated and is not normalized to USD.",
+        "Only Level-1 fields are included."
+      ]
+    }
+  ],
+  "cross_source_reconciliation": {
+    "synchronized_direct_venue_count_within_300_seconds": 0,
+    "kraken_xrp_provider_timestamp_available": false,
+    "okx_age_seconds": 978.733,
+    "bybit_age_seconds": 6369.019,
+    "coinpaprika_age_seconds": 456,
+    "usdt_usd_timestamp_available": false,
+    "usd_usdt_normalization_performed": false,
+    "multi_level_depth_captured": false,
+    "repeated_payload_interval_seconds": 487,
+    "cache_assessment": {
+      "status": "CACHE_OR_STALE_SOURCE_SUSPECTED_NOT_PROVEN",
+      "evidence": "Kraken XRP/USD and OKX XRP-USDT returned byte-identical JSON bodies on two reads 487 seconds apart. The OKX provider timestamp did not advance. Kraken does not supply an event timestamp.",
+      "unknowns": [
+        "The retrieval interface did not expose HTTP Date, Age, ETag, Cache-Control or intermediary cache headers.",
+        "The repeated response may reflect retrieval-layer caching, upstream provider caching, or an unchanged source response.",
+        "The exact network retrieval instant is unavailable."
+      ]
+    },
+    "interpretation": "No synchronized, fresh multi-venue spot feature or executable depth feature is available from this capture. The aggregator quote is also older than the 300-second threshold. Do not average these observations or infer a directional market move."
+  },
+  "model_admission": {
+    "eligible_for_live_price_features": false,
+    "eligible_for_historical_point_in_time_features": false,
+    "eligible_for_event_timeline": true,
+    "reasons": [
+      "No two direct exchange venues supplied synchronized snapshots within 300 seconds.",
+      "Kraken XRP/USD and USDT/USD lack provider event timestamps.",
+      "OKX is 978.733 seconds stale; Bybit is 6369.019 seconds stale.",
+      "CoinPaprika aggregate is 456 seconds stale and is not a direct venue.",
+      "USD and USDT were not normalized because the conversion quote has no timestamp.",
+      "No multi-level order-book depth, trades stream or executable-cost data was captured.",
+      "The repeated payloads raise a cache/staleness concern."
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "The retrieval path may be returning cached or stale exchange ticker bodies.",
+      "supporting_evidence": [
+        "Kraken and OKX payload hashes were identical across two reads 487 seconds apart.",
+        "The OKX provider timestamp remained 2026-11-07T13:24:31.267Z."
+      ],
+      "disconfirming_or_alternative_evidence": [
+        "An unchanged provider response is theoretically possible; no HTTP cache headers were exposed."
+      ],
+      "status": "UNRESOLVED_CACHE_OR_UPSTREAM_STALENESS"
+    },
+    {
+      "id": "H2",
+      "statement": "Cross-provider price differences indicate a genuine executable venue dislocation.",
+      "supporting_evidence": [],
+      "disconfirming_evidence": [
+        "The snapshots are asynchronous and stale.",
+        "USD and USDT quotes are not normalized.",
+        "No synchronized depth, fees, latency or transfer costs were captured."
+      ],
+      "status": "NOT_ESTABLISHED"
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "external_actions": {
+    "exchange_accounts_accessed": false,
+    "orders_sent": false,
+    "funds_transferred": false,
+    "external_deployment": false
+  }
+}
