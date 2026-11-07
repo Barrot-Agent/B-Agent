@@ -5,6 +5,12 @@ on:
     - cron: '3 * * * *'
     - cron: '15 0 * * *'
   workflow_dispatch:
+    inputs:
+      coinbase_backfill_days:
+        description: "Additional Coinbase XRP-USD hourly history before the latest candle page (0 disables; maximum 365 days). Manual dispatch only."
+        required: false
+        default: 0
+        type: number
 
 permissions:
   actions: read
@@ -99,7 +105,10 @@ jobs:
             echo "No trusted unexpired feature-store checkpoint or daily archive; bootstrapping."
           fi
       - name: Capture public XRP market sources and evaluate historical baselines
-        run: python -m barrot_agent.evolution.xrp_public_ingestion --output-dir artifacts/xrp_ingestion
+        run: >-
+          python -m barrot_agent.evolution.xrp_public_ingestion
+          --output-dir artifacts/xrp_ingestion
+          --coinbase-backfill-days "${{ github.event_name == 'workflow_dispatch' && inputs.coinbase_backfill_days || 0 }}"
       - name: Upload immutable raw-source receipts
         uses: actions/upload-artifact@v7
         with:
