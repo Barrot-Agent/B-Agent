@@ -4,16 +4,28 @@ import re
 from pathlib import Path
 
 
+ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = (
-    Path(__file__).resolve().parents[1]
+    ROOT
     / "research"
     / "xrp_intelligence"
     / "20261107T175608Z-xrpc-future-dated-holdings-leakage-reconciliation.json"
+)
+CORRECTION = (
+    ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261107T180029Z-xrpc-xrp-insights-method-excerpt-hash-correction.json"
 )
 
 
 def load_artifact():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
+
+
+def git_blob_sha1(path: Path) -> str:
+    raw = path.read_bytes()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
 
 
 def test_aggregator_nov6_xrpc_holdings_match_canary_future_nov9_row():
@@ -77,13 +89,37 @@ def test_secondary_search_snippets_are_not_promoted_over_stale_open_pages():
     assert maketo["opened_page_snapshot"]["page_data_as_of"] == "2026-10-28"
 
 
-def test_every_normalized_source_receipt_matches_its_exact_excerpt_hash():
+def test_every_normalized_source_receipt_matches_its_exact_excerpt_hash_or_explicit_correction():
     artifact = load_artifact()
+    correction = json.loads(CORRECTION.read_text(encoding="utf-8"))
+    corrected_source_id = correction["supersedes_source_id"]
+
+    assert correction["supersedes_artifact_path"] == str(ARTIFACT.relative_to(ROOT))
+    assert correction["supersedes_artifact_git_blob_sha1"] == git_blob_sha1(ARTIFACT)
+
+    corrected_receipts = [
+        receipt for receipt in artifact["source_receipts"]
+        if receipt["source_id"] == corrected_source_id
+    ]
+    assert len(corrected_receipts) == 1
+    corrected_receipt = corrected_receipts[0]
+    actual_corrected_digest = hashlib.sha256(
+        corrected_receipt["excerpt"].encode("utf-8")
+    ).hexdigest()
+
+    assert correction["incorrect_prior_sha256"] == corrected_receipt["sha256"]
+    assert correction["normalized_excerpt"] == corrected_receipt["excerpt"]
+    assert correction["corrected_sha256"] == actual_corrected_digest
+
     for receipt in artifact["source_receipts"]:
         assert receipt["receipt_kind"] == "normalized_text_excerpt"
         assert re.fullmatch(r"[0-9a-f]{64}", receipt["sha256"])
         actual = hashlib.sha256(receipt["excerpt"].encode("utf-8")).hexdigest()
-        assert actual == receipt["sha256"], receipt["source_id"]
+        if receipt["source_id"] == corrected_source_id:
+            assert receipt["sha256"] == correction["incorrect_prior_sha256"]
+            assert actual == correction["corrected_sha256"]
+        else:
+            assert actual == receipt["sha256"], receipt["source_id"]
 
 
 def test_future_row_guard_and_forecast_issuance_remain_fail_closed():
@@ -95,3 +131,17 @@ def test_future_row_guard_and_forecast_issuance_remain_fail_closed():
     assert artifact["model_admission"]["admitted"] is False
     assert artifact["forecast_status"] == "NOT_ISSUED"
     assert artifact["paper_or_real_money_actions"] == "NONE"
+
+
+def test_hash_correction_is_append_only_and_does_not_make_data_model_eligible():
+    correction = json.loads(CORRECTION.read_text(encoding="utf-8"))
+    artifact = load_artifact()
+
+    assert correction["correction_type"] == "append_only_source_excerpt_hash_correction"
+    assert correction["field_corrected"] == "normalized_excerpt_sha256"
+    assert correction["model_eligibility"]["eligible"] is False
+    assert correction["forecast"]["status"] == "NOT_ISSUED"
+    assert correction["safety"]["paper_trade_executed"] is False
+    assert correction["safety"]["real_money_action"] is False
+    assert artifact["model_admission"]["admitted"] is False
+    assert artifact["forecast_status"] == "NOT_ISSUED"
