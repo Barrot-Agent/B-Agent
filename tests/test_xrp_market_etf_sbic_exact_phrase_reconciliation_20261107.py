@@ -157,3 +157,8 @@ def test_japan_statute_names_exactly_three_regional_sbic_companies(evidence: dic
     ]
     assert law["head_offices"] == ["Tokyo", "Nagoya City", "Osaka City"]
     assert law["model_eligible"] is False
+
+
+def test_capture_clock_is_not_misrepresented_as_http_arrival_time(evidence: dict) -> None:
+    assert "does not expose exact HTTP arrival timestamps" in evidence["capture_clock_semantics"]
+    assert evidence["forecast"]["data_cutoff_utc"] == evidence["captured_at_utc"]
