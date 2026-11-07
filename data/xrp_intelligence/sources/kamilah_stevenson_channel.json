@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "record_type": "creator_source_profile",
   "source_id": "YOUTUBE_CREATOR_KAMILAH_STEVENSON",
-  "mission": "Ingest all publicly available videos from the verified Kamilah Stevenson XRP/markets YouTube channel into Barrot's source database; extract timestamped claims and forecasts; cross-corroborate before using as predictive features.",
+  "mission": "Maintain candidate references for the Kamilah/Camilla Stevenson XRP/markets YouTube presence. Person identity is confirmed by first-person and branded-source evidence, but the canonical YouTube channel ID/handle relation remains probable rather than platform-verified. Do not treat candidate uploads as verified creator inventory.",
   "creator": {
     "display_name": "Kamilah Stevenson",
     "alternate_spelling_seen_in_transcripts": [
@@ -11,19 +11,29 @@
     "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
     "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
-    "identity_status": "PROBABLE_MATCH",
+    "identity_status": "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH",
     "identity_evidence": [
-      "Public channel listing for Kamilah Stevenson points to this channel ID.",
-      "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
-      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved."
+      "The first-person branded site identifies its owner as Dr. Kamilah Stevenson, also known as The Wealth Doctor.",
+      "In the 2026-06-11 iHeart XRP Podcast interview, the guest self-reports a YouTube display name rendered in the auto-generated transcript as doctor Camilla Stevenson and warns that fake pages exist; the transcript does not supply an exact channel URL.",
+      "The Linktree account @Dr.Kamilahstevenson links to a YouTube channel labelled Kamilah Stevenson and to the Kamilah Stevenson branded site; the retrieved branded site did not reciprocally link to the exact YouTube channel.",
+      "The Linktree YouTube link resolves to the candidate handle @drkamilahstevenson, but the YouTube page fetch was throttled and did not expose first-party About metadata or the canonical channel ID.",
+      "YouTube search results display Kamilah Stevenson as author for candidate videos; indexed author labels are not platform-side account ownership proof."
     ],
     "caveats": [
-      "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
-      "Do not conflate this creator with other similarly named accounts without channel-ID verification."
-    ]
+      "Person identity is confirmed; canonical YouTube channel ownership and the exact handle-to-channel-ID relation remain unverified.",
+      "The interview warns that fake pages exist; do not merge accounts by name, spelling, subscriber count or ticker focus alone.",
+      "The Linktree account is self-described and links to the branded site and YouTube, but no reciprocal link from the branded site to the exact channel was captured.",
+      "The candidate channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson are probably related but remain unverified at platform metadata level.",
+      "Third-party channel analytics report inconsistent subscriber and video counts; do not use those counts as canonical."
+    ],
+    "person_identity_status": "CONFIRMED",
+    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+    "youtube_channel_id_status": "THIRD_PARTY_CANDIDATE",
+    "youtube_handle_candidate": "@drkamilahstevenson",
+    "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
   },
   "ingestion_policy": {
-    "scope": "ALL_PUBLIC_CHANNEL_VIDEOS",
+    "scope": "CANDIDATE_REFERENCES_ONLY_PENDING_CANONICAL_CHANNEL_VERIFICATION",
     "required_fields": [
       "video_id",
       "canonical_url",
@@ -51,22 +61,30 @@
     "prediction_policy": "Extract each explicit prediction with original publication cutoff, target, direction, horizon, probability/confidence if stated, assumptions, and later outcome. Do not infer an unstated probability.",
     "evidence_policy": "Creator statements are claims, not ground truth. Independently corroborate with primary filings, official statements, market data, on-chain data, regulatory records, and independent sources.",
     "forecasting_policy": "Never use a video published after the forecast cutoff as a feature for that forecast. Prevent look-ahead and survivorship leakage.",
-    "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
+    "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution.",
+    "identity_gate": "Person identity is confirmed and public-channel attribution is strongly corroborated, but the exact channel ID/handle is not platform-side verified. Keep references candidate-only. Do not classify uploads as a verified creator inventory or admit them to the verified source corpus until authorized YouTube metadata or a first-party reciprocal link establishes the exact channel ID."
   },
   "video_inventory_status": {
-    "status": "PARTIAL_INDEXED_INVENTORY",
+    "status": "PARTIAL_CANDIDATE_INVENTORY_CANONICAL_CHANNEL_UNVERIFIED",
     "completeness_verified": false,
     "discovered_total_count": null,
     "indexed_seed_video_count": 10,
     "missing_work": [
-      "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
-      "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
-      "Retrieve permitted/public transcript text or references; hash the exact captured transcript and preserve timestamps.",
-      "Extract each explicit claim and forecast separately; preserve source wording and classify fact, interpretation, forecast, opinion, and promotional claim.",
-      "Verify numeric claims using official XRPL/Ripple/issuer data and reproducible on-chain or market datasets.",
-      "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp, and baseline.",
-      "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed."
-    ]
+      "Resolve the exact @drkamilahstevenson handle to a canonical YouTube channel ID using authorized YouTube metadata or a first-party reciprocal link.",
+      "Capture the channel About metadata and its reciprocal website/contact links without bypassing access controls.",
+      "Enumerate all public uploads, Shorts, live and archived streams only after canonical channel verification.",
+      "Deduplicate by canonical video ID and retain timestamped pagination/change-detection receipts.",
+      "Retrieve permitted/public transcripts, hash exact captured text, preserve timestamps, and keep creator commentary out of ground-truth market features."
+    ],
+    "attribution_verified": false,
+    "identity_gate_passed": false,
+    "requested_identity": "Camilla Stephenson",
+    "candidate_identity": "Kamilah Stevenson / Camila Stevenson",
+    "inventory_scope": "Candidate references only; not an attributed, canonical, or exhaustive public-video inventory.",
+    "person_identity_verified": true,
+    "canonical_channel_verified": false,
+    "verified_inventory_count": 0,
+    "candidate_reference_count": 10
   },
   "seed_videos": [
     {
@@ -87,7 +105,9 @@
         "Geopolitical pressure to reduce reliance on the U.S. dollar could increase demand for alternative settlement infrastructure.",
         "Institutional adoption may precede visible price appreciation."
       ],
-      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING"
+      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "pmJTrXJQ8Vw",
@@ -104,7 +124,9 @@
         "XRP's use case should not be evaluated as if it were identical to Bitcoin's store-of-value narrative.",
         "Institutional XRP holdings and corporate Bitcoin treasury strategies are different phenomena."
       ],
-      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING"
+      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "rv0BAV0vLgo",
@@ -118,7 +140,9 @@
         "portfolio sizing",
         "wealth planning"
       ],
-      "claim_status": "VIDEO ID AND TITLE DISCOVERED; TRANSCRIPT NOT YET INGESTED"
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; TRANSCRIPT NOT YET INGESTED",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "QslbjGQD0MU",
@@ -132,7 +156,9 @@
         "XRP price versus adoption",
         "institutional utility"
       ],
-      "claim_status": "VIDEO ID AND TITLE DISCOVERED; PRIMARY CLAIMS REQUIRE OFFICIAL REGULATORY/CORPORATE VERIFICATION"
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; PRIMARY CLAIMS REQUIRE OFFICIAL REGULATORY/CORPORATE VERIFICATION",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "ci0FH73lbCs",
@@ -146,7 +172,9 @@
         "price impact",
         "institutional demand"
       ],
-      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING"
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "cxeX_eu_2H0",
@@ -160,7 +188,9 @@
         "market-cycle scenarios",
         "investor behavior"
       ],
-      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING"
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "8xiy8w2YlfY",
@@ -181,7 +211,9 @@
         "Sponsored Fees and Reserves could let users transact without personally holding XRP.",
         "The 80% validator threshold and two-week voting period are correctly characterized in the video."
       ],
-      "claim_status": "DESCRIPTION_AND_CHAPTERS_INDEXED; FULL_TRANSCRIPT_AND_PRIMARY_SOURCE_CHECKS_PENDING"
+      "claim_status": "DESCRIPTION_AND_CHAPTERS_INDEXED; FULL_TRANSCRIPT_AND_PRIMARY_SOURCE_CHECKS_PENDING",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "pFru4idBTMA",
@@ -205,7 +237,9 @@
       ],
       "corroboration_priority": "HIGH",
       "claim_status": "DESCRIPTION_ONLY; NUMERIC CLAIMS NOT YET INDEPENDENTLY VERIFIED",
-      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer."
+      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer.",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "Gy4BuGhAWE8",
@@ -226,7 +260,9 @@
         "Any explicit XRP price target, directional prediction, or time-bound catalyst stated in the video."
       ],
       "claim_status": "DESCRIPTION_ONLY; EXPLICIT FORECASTS AND OUTCOMES NOT YET SCORED",
-      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer."
+      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer.",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     },
     {
       "video_id": "qtT2hLeFkM0",
@@ -255,7 +291,9 @@
         "Locked/wrapped supply may reduce immediate liquid float but does not by itself establish net buying pressure or a price impact.",
         "Verify the 100-million figure against timestamped, independently reproducible on-chain and bridge data."
       ],
-      "disclosure_note": "Description includes affiliate disclosures and financial/DeFi risk disclaimer."
+      "disclosure_note": "Description includes affiliate disclosures and financial/DeFi risk disclaimer.",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "eligible_for_forecast_feature": false
     }
   ],
   "required_cross_corroboration_domains": [
@@ -345,6 +383,40 @@
         "The reserve sponsorship model itself has operational/security constraints and was subject to a disclosed Devnet vulnerability."
       ],
       "prediction_use": "Track amendment status, sponsor usage, new active accounts, fee/reserve sponsorship volumes, and market liquidity separately; no direct bullish inference."
+    }
+  ],
+  "attribution_policy": {
+    "requested_identity": "Camilla/Kamilah Stevenson",
+    "person_identity_status": "CONFIRMED",
+    "candidate_identity": "Dr. Kamilah Stevenson; self-reported YouTube display name rendered as doctor Camilla Stevenson",
+    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+    "canonical_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "candidate_handle": "@drkamilahstevenson",
+    "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+    "allow_candidate_references": true,
+    "allow_verified_creator_inventory": false,
+    "allow_forecast_feature_admission": false,
+    "required_evidence": [
+      "Authorized YouTube channel metadata that resolves the exact handle to a canonical channel ID and exposes About/owner metadata, or",
+      "A creator-controlled first-party website/social profile that links reciprocally to the exact YouTube handle or channel ID."
+    ],
+    "rule": "Preserve candidate video references, but do not call them a verified creator inventory or attribute them as confirmed channel uploads until the exact channel identity is verified."
+  },
+  "identity_status_history": [
+    {
+      "observed_date": "2026-11-04",
+      "status": "UNRESOLVED_NOT_EQUIVALENT",
+      "source": "research/xrp_intelligence/20261104T065909Z-identity-phrase-followup.json",
+      "scope": "Earlier name-equivalence assessment before the 5 November first-person interview and Linktree evidence."
+    },
+    {
+      "observed_date": "2026-11-05",
+      "status": "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH",
+      "sources": [
+        "research/xrp_intelligence/20261105T2145Z-kamilah-stevenson-podcast-self-identification-addendum.json",
+        "research/xrp_intelligence/20261105T2150Z-kamilah-stevenson-public-youtube-inventory-addendum.json"
+      ],
+      "scope": "Person identity and public-channel attribution strengthened; canonical channel ID/handle ownership still not platform-verified."
     }
   ]
 }

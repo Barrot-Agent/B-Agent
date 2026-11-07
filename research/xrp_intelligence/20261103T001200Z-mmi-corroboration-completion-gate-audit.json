@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "mmi_corroboration_completion_gate_root_cause_audit",
+  "snapshot_id": "mmi-corroboration-gate-20261103-run11",
+  "captured_at_utc": "2026-11-03T00:13:52.320Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "inspected_main": "00b3213fbffb274581a58c35ab146b1da884a80d",
+  "forecast_status": "NOT_ISSUED",
+  "finding": {
+    "classification": "CONFIRMED_CODE_AND_LEDGER_BEHAVIOR",
+    "summary": "MMI could mark an ingestion MMI_COMPLETE when the corroboration result explicitly reported zero independent sources, because the state machine and completeness report checked only whether a corroboration_results list was non-empty.",
+    "durable_ledger_evidence": {
+      "path": ".barrot/mmi_execution_ledger.jsonl",
+      "ingestion_id": "mmi-v1-live-gate-001",
+      "observed_records": [
+        {
+          "event": "MMI_CORROBORATION_RECORDED",
+          "status": "CORROBORATED",
+          "independent_sources": 0,
+          "scope": "LOCAL_DETERMINISTIC_FIXTURE"
+        },
+        {
+          "event": "MMI_COMPLETED",
+          "result": "MMI_COMPLETE"
+        },
+        {
+          "event": "MMI_COMPLETENESS_REPORTED",
+          "protocol_complete": true,
+          "result": "MMI_COMPLETE"
+        }
+      ],
+      "interpretation": "These are historical local deterministic fixture/gate records, not evidence that an external XRP dataset was corroborated. They are preserved unchanged. The new validator makes the same unsupported completion claim fail closed when evaluated under the strengthened code.",
+      "ledger_sha256": "f7cf0096c77a6c0ced02bf1accfa58516d07ad325270776c0110d620253887e9",
+      "ledger_git_blob_sha1": "b65d4325ccc907d4f7304e9d9e0154efbb6930b7",
+      "ledger_git_blob_sha1_algorithm": "SHA-1 over Git blob framing and file content",
+      "event_counts": {
+        "MMI_RECEIVED": 3,
+        "MMI_CORROBORATION_RECORDED": 2,
+        "MMI_COMPLETED": 2,
+        "MMI_COMPLETENESS_REPORTED": 2
+      },
+      "repeated_unsupported_cycles": 2
+    },
+    "root_cause": [
+      {
+        "file": "barrot_agent/mmi_v1.py",
+        "area": "MMIStateMachine.evaluate",
+        "problem": "A COMPLETE CORROBORATION stage required only a non-empty corroboration_results list; it did not validate independent source count, source IDs or publisher/origin independence."
+      },
+      {
+        "file": "barrot_agent/mmi_v1.py",
+        "area": "MMICompletenessReport.build",
+        "problem": "The report independently declared protocol_complete from stage labels and artifact presence rather than using the state machine's validated result."
+      },
+      {
+        "file": "barrot_agent/mmi_v1.py",
+        "area": "SourceRecord",
+        "problem": "Source records had no explicit independence_group field, so the protocol could not distinguish two URLs from the same publisher/origin from genuinely separate source groups."
+      },
+      {
+        "file": "tests/test_mmi_v1.py",
+        "area": "existing completion fixtures",
+        "problem": "Tests used status='checked' as sufficient corroboration and expected MMI_COMPLETE without independent source lineage."
+      }
+    ]
+  },
+  "proposed_fix_in_branch": {
+    "status": "IMPLEMENTED_AWAITING_EXACT_HEAD_CI",
+    "changes": [
+      "Add optional independence_group metadata to SourceRecord.",
+      "Pass independence_group through MMIExistingSystemsAdapter.source_record.",
+      "Require CORROBORATED results to cite at least two known external source IDs from at least two distinct non-empty independence groups.",
+      "Reject model-derived and Barrot-generated records as independent corroboration sources.",
+      "If independent_sources is supplied, require it to match the number of distinct independence groups, not raw URLs or records.",
+      "Require a CORROBORATION COMPLETE stage to have a validated CORROBORATED result, or a CONTRADICTORY result with two independent groups and explicit reconciliation preserving both supporting and contradicting evidence.",
+      "Permit CORROBORATION NOT_APPLICABLE only with a non-empty reason.",
+      "Make MMICompletenessReport use the state-machine result and expose corroboration_complete and validation_errors.",
+      "Preserve the historical append-only MMI ledger without rewriting or deleting prior entries."
+    ],
+    "tests_added": [
+      "Zero independent sources cannot complete corroboration.",
+      "Unstructured status='checked' is not corroboration.",
+      "Two source IDs in the same publisher group are not independent.",
+      "Missing independence-group metadata blocks corroboration.",
+      "Model-generated source records cannot corroborate an external claim.",
+      "Declared independent-source count must match distinct groups.",
+      "Two distinct external source groups can corroborate.",
+      "Multiple source records from one publisher group do not inflate the independent-source count.",
+      "Contradictory independent evidence can complete with explicit reconciliation; unanimity is not forced.",
+      "CORROBORATION NOT_APPLICABLE requires a reason.",
+      "Core MMI stages cannot be marked NOT_APPLICABLE."
+    ],
+    "changed_files": [
+      "barrot_agent/mmi_v1.py",
+      "barrot_agent/mmi_adapter.py",
+      "tests/test_mmi_v1.py",
+      "tests/test_mmi_integration.py"
+    ]
+  },
+  "validation_design": {
+    "source_group_semantics": "independence_group is a canonical publisher/origin identity supplied by the acquisition/normalization layer. The validator enforces distinct declared groups but does not itself prove that a caller assigned groups truthfully; source-host/publisher audits remain necessary.",
+    "contradiction_semantics": "A completed contradiction preserves both sides and requires reconciliation references; it does not force the system to choose one side or erase minority objections.",
+    "historical_ledger": "Append-only; no historical record rewritten.",
+    "forecast_issuance": "Unchanged and remains blocked pending independent evaluation attestation."
+  },
+  "current_execution_state": {
+    "branch": "security/mmi-corroboration-independent-source-gate-20261103-run11",
+    "base_commit": "00b3213fbffb274581a58c35ab146b1da884a80d",
+    "local_tests": "NOT_EXECUTED_IN_THIS_RUNTIME",
+    "github_ci": "PENDING",
+    "merge_gate": "PENDING",
+    "merge_status": "NOT_MERGED"
+  },
+  "limitations": [
+    "The historical ledger entry is explicitly scoped as LOCAL_DETERMINISTIC_FIXTURE; it must not be represented as external corroboration.",
+    "Distinct independence_group values are metadata and still require source-domain/publisher audit.",
+    "No real XRP forecast was issued and no paper-trading position was created."
+  ],
+  "next_actions": [
+    "Run exact-head CI and fail-closed gate.",
+    "Inspect all callers of MMIEngine.record_corroboration and update any caller that labels results CORROBORATED without independent_source_ids and independence_group metadata.",
+    "Search historical MMI ledgers for CORROBORATED with zero/one independent sources and report them as legacy-unverified without rewriting history.",
+    "Integrate the strengthened MMI gate into XRP source ingestion before allowing feature-store rows to become VERIFIED."
+  ]
+}

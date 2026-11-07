@@ -30,6 +30,10 @@ sys.path.insert(1, SCRIPTS_DIR_STR)
 
 from sandbox import verify_result
 
+from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
+from barrot_agent.orchestration.mission_registry import MissionRegistry
+from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
+
 from barrot_agent.orchestration.repository_repair import (
     ProjectIdentity,
     RepositoryRepairController,
@@ -286,7 +290,6 @@ def _groq_fallback_models(primary_model: str) -> list[str]:
         if configured
         else [
             "openai/gpt-oss-20b",
-            "openai/gpt-oss-20b",
         ]
     )
     seen = {primary_model}
@@ -296,6 +299,39 @@ def _groq_fallback_models(primary_model: str) -> list[str]:
             seen.add(candidate)
             result.append(candidate)
     return result
+
+
+def _try_groq_model_fallback(
+    payload: dict[str, Any],
+    *,
+    request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None,
+    primary_model: str,
+    reason: str,
+    json_mode_retry: bool,
+) -> dict[str, Any]:
+    fallback_models = _groq_fallback_models(primary_model)
+    failures: list[str] = []
+    for fallback_model in fallback_models:
+        fallback_payload = dict(payload)
+        fallback_payload["model"] = fallback_model
+        print(
+            f"Groq {reason} limit reached for {primary_model}; trying fallback model {fallback_model}.",
+            file=sys.stderr,
+        )
+        try:
+            return _send_groq_request(
+                fallback_payload,
+                request_sender=request_sender,
+                _model_fallback_attempted=True,
+                _rate_limit_retry=False,
+                _json_mode_retry=json_mode_retry,
+            )
+        except (RuntimeError, TimeoutError) as fallback_exc:
+            failures.append(f"{fallback_model}: {type(fallback_exc).__name__}: {fallback_exc}")
+    details = "; ".join(failures) if failures else "no fallback models configured"
+    raise RuntimeError(
+        f"Groq {reason} limit exhausted for {primary_model}; all configured fallback models failed. {details}"
+    )
 
 
 def _send_groq_request(
@@ -351,45 +387,44 @@ def _send_groq_request(
             )
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
-        if exc.code == 429 and "tokens per minute" in lowered and not _rate_limit_retry:
-            retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
-            if retry_match:
-                retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
-                if 0 < retry_seconds <= 60:
-                    print(
-                        f"Groq per-minute rate limit reached; retrying current model once in {retry_seconds:.1f}s.",
-                        file=sys.stderr,
-                    )
-                    time.sleep(retry_seconds)
-                    return _send_groq_request(
-                        payload,
-                        request_sender=request_sender,
-                        _model_fallback_attempted=_model_fallback_attempted,
-                        _rate_limit_retry=True,
-                    )
+        if exc.code in {413, 429} and ("tokens per minute" in lowered or "tpm" in lowered):
+            if exc.code == 429 and not _rate_limit_retry:
+                retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
+                if retry_match:
+                    retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
+                    if 0 < retry_seconds <= 60:
+                        print(
+                            f"Groq per-minute rate limit reached; retrying current model once in {retry_seconds:.1f}s.",
+                            file=sys.stderr,
+                        )
+                        time.sleep(retry_seconds)
+                        return _send_groq_request(
+                            payload,
+                            request_sender=request_sender,
+                            _model_fallback_attempted=_model_fallback_attempted,
+                            _rate_limit_retry=True,
+                            _json_mode_retry=_json_mode_retry,
+                        )
+            if not _model_fallback_attempted:
+                primary_model = str(payload.get("model") or MODEL)
+                return _try_groq_model_fallback(
+                    payload,
+                    request_sender=request_sender,
+                    primary_model=primary_model,
+                    reason="per-minute token",
+                    json_mode_retry=_json_mode_retry,
+                )
+            if exc.code == 413:
+                raise RuntimeError(f"LLM_CONTEXT_BUDGET_EXCEEDED: {detail}") from exc
         if exc.code == 429 and "tokens per day" in lowered and not _model_fallback_attempted:
             primary_model = str(payload.get("model") or MODEL)
-            fallback_models = _groq_fallback_models(primary_model)
-            failures: list[str] = []
-            for fallback_model in fallback_models:
-                fallback_payload = dict(payload)
-                fallback_payload["model"] = fallback_model
-                print(
-                    f"Groq daily token quota reached for {primary_model}; trying fallback model {fallback_model}.",
-                    file=sys.stderr,
-                )
-                try:
-                    return _send_groq_request(
-                        fallback_payload,
-                        request_sender=request_sender,
-                        _model_fallback_attempted=True,
-                    )
-                except RuntimeError as fallback_exc:
-                    failures.append(f"{fallback_model}: {fallback_exc}")
-            details = "; ".join(failures) if failures else "no fallback models configured"
-            raise RuntimeError(
-                f"Groq daily token quota exhausted for {primary_model}; all configured fallback models failed. {details}"
-            ) from exc
+            return _try_groq_model_fallback(
+                payload,
+                request_sender=request_sender,
+                primary_model=primary_model,
+                reason="daily token",
+                json_mode_retry=_json_mode_retry,
+            )
         raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM network error: {exc}") from exc
@@ -1005,6 +1040,27 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
         parsed = json.loads(content)
         if not isinstance(parsed, dict):
             raise ValueError("Model response must be a JSON object.")
+
+        required_keys = ("findings", "open_questions", "counterarguments", "recommended_checks")
+        if set(parsed) != set(required_keys):
+            missing = sorted(set(required_keys) - set(parsed))
+            unexpected = sorted(set(parsed) - set(required_keys))
+            raise ValueError(
+                f"Model response keys mismatch (missing={missing}, unexpected={unexpected})."
+            )
+
+        for key in required_keys:
+            values = parsed[key]
+            if not isinstance(values, list):
+                raise ValueError(f"Model response field {key!r} must be an array.")
+            if len(values) > 3:
+                raise ValueError(f"Model response field {key!r} exceeds the three-item limit.")
+            for index, value in enumerate(values):
+                if not isinstance(value, str):
+                    raise ValueError(f"Model response field {key!r}[{index}] must be a string.")
+                if len(value) > 300:
+                    raise ValueError(f"Model response field {key!r}[{index}] exceeds 300 characters.")
+
         return parsed
 
     try:
@@ -1038,10 +1094,9 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
             return decode_object(retry_raw)
         except (json.JSONDecodeError, ValueError) as retry_error:
             raise RuntimeError(
-                "Model returned invalid JSON after one compact retry: "
+                "Model returned invalid response after one compact retry: "
                 f"{str(retry_error)[:250]}; initial response rejected: {str(first_error)[:250]}"
             ) from retry_error
-
 
 def build_read_only_audit_snapshot() -> dict[str, Any]:
     """Collect bounded, read-only Git and Actions evidence for audit-only tasks."""
@@ -1216,8 +1271,121 @@ def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
     )
 
 
+def build_primary_mission_dispatch() -> dict[str, Any]:
+    """Return the next verified primary-mission goal without provider or repository writes.
+
+    This mode is deterministic and read-only. It is suitable for an explicitly
+    invoked mission-planning step; it does not execute the goal or authorize
+    external actions.
+    """
+    registry = MissionRegistry()
+    manifest = registry.manifest
+    foundation = manifest["foundation"]
+    if manifest["status"] != "active":
+        return {
+            "status": "NOT_ACTIVE",
+            "mission_id": registry.mission_id,
+            "priority": 1,
+            "foundation": foundation["name"],
+            "next_goal": None,
+            "provider_calls": False,
+            "repository_mutation": False,
+            "external_actions_authorized": False,
+        }
+
+    learning_store = VerifiedLearningStore(ROOT / "data" / "evolution" / "verified_lessons.jsonl")
+    curriculum = LearningCurriculum(
+        workspace=str(ROOT),
+        learning_store=learning_store,
+        mission_registry=registry,
+    )
+    goal = curriculum.next_goal()
+    if not isinstance(goal, str) or not goal.strip():
+        raise RuntimeError("Primary mission curriculum returned no active goal.")
+    topic = re.search(r"(?m)^MISSION_TOPIC_ID:\s*([a-zA-Z0-9_.-]+)\s*$", goal)
+    if topic is None:
+        raise RuntimeError("Primary mission goal is missing its topic identifier.")
+
+    return {
+        "status": "READY",
+        "dispatch_mode": "read_only_mission_plan",
+        "mission_id": registry.mission_id,
+        "priority": 1,
+        "topic_id": topic.group(1),
+        "foundation": {
+            "id": foundation["id"],
+            "name": foundation["name"],
+            "preserve": foundation["preserve"],
+        },
+        "next_goal": goal,
+        "acceptance_criteria": list(manifest["acceptance_criteria"]),
+        "guardrails": list(manifest["guardrails"]),
+        "provider_calls": False,
+        "repository_mutation": False,
+        "external_actions_authorized": False,
+    }
+
+
+def _is_groq_rate_limit_error(error: BaseException) -> bool:
+    rendered = f"{type(error).__name__}: {error}".lower()
+    return any(
+        marker in rendered
+        for marker in (
+            "groq http 413",
+            "groq http 429",
+            "rate_limit_exceeded",
+            "tokens per minute",
+            "tpm",
+            "tokens per day",
+            "per-minute token limit",
+            "daily token limit",
+            "rate limit exhausted",
+        )
+    )
+
+
+def _build_deterministic_rate_limit_report(
+    *,
+    task_title: str,
+    issue_number: str,
+    error: BaseException,
+    audit_context: dict[str, str],
+    snapshot: dict[str, Any],
+) -> str:
+    context = {
+        "repository_inventory": str(audit_context.get("inventory", ""))[:5000],
+        "github_context": str(audit_context.get("github_context", ""))[:9000],
+        "targeted_file_context": str(audit_context.get("file_context", ""))[:2500],
+        "directory_context": str(audit_context.get("directory_context", ""))[:2500],
+        "read_only_snapshot": snapshot,
+    }
+    return (
+        "## Barrot deterministic fallback — provider rate limit\n\n"
+        "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`\n\n"
+        f"**Task:** {task_title}\n"
+        f"**Issue:** #{issue_number if issue_number and issue_number != '0' else 'not supplied'}\n"
+        f"**Provider failure:** {type(error).__name__}: {str(error)[:1000]}\n\n"
+        "### Deterministic work completed\n"
+        "- Repository file inventory and targeted file/directory context were collected.\n"
+        "- Read-only Git branch, HEAD, recent-history, working-tree and Actions evidence was attempted; unavailable fields are labeled.\n"
+        "- Recent GitHub Actions evidence was collected where the GitHub CLI was available.\n"
+        "- Any available open-PR/issue context is preserved below; it is not model-interpreted.\n\n"
+        "### Evidence snapshot\n"
+        "```json\n"
+        + json.dumps(context, ensure_ascii=False, sort_keys=True, indent=2, default=str)[:26000]
+        + "\n```\n\n"
+        "### Execution boundary\n"
+        "No LLM-backed bundle was accepted. No repository source file was changed; no commit, push, pull request, merge, deployment, secret operation, paper trade or financial action was performed. "
+        "Repository repair is **not complete** and this task remains blocked. Retry the provider after the rate-limit window resets; retain this deterministic evidence rather than inventing a model-backed result."
+    )
+
+
 def main() -> None:
     global MAX_SEARCH_RESULTS
+    if TASK_MODE == "mission":
+        print(json.dumps(build_primary_mission_dispatch(), indent=2, sort_keys=True))
+        return
+
     configure_git()
     checkout_branch(BRANCH)
 
@@ -1354,10 +1522,29 @@ def main() -> None:
             except (TypeError, ValueError):
                 report = raw_report
         except Exception as exc:
-            message = (
-                "Barrot read-only audit failed safely; repository repair was not started.\n\n"
-                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
-            )
+            if _is_groq_rate_limit_error(exc):
+                try:
+                    deterministic_snapshot = {
+                        "git_and_actions": build_read_only_audit_snapshot(),
+                        "source_excerpt_status": "already_collected_for_the_failed_read_only_audit",
+                    }
+                except Exception as snapshot_error:
+                    deterministic_snapshot = {
+                        "status": "UNAVAILABLE",
+                        "error": f"{type(snapshot_error).__name__}: {str(snapshot_error)[:500]}",
+                    }
+                message = _build_deterministic_rate_limit_report(
+                    task_title=TITLE,
+                    issue_number=ISSUE,
+                    error=exc,
+                    audit_context=audit_context,
+                    snapshot=deterministic_snapshot,
+                )
+            else:
+                message = (
+                    "Barrot read-only audit failed safely; repository repair was not started.\n\n"
+                    f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+                )
             post_issue_comment(message)
             raise SystemExit(message) from exc
         if not report.strip():
@@ -1415,11 +1602,28 @@ def main() -> None:
                 )[:2000],
             )
         except Exception as exc:  # fail closed before repository mutation
-            message = (
-                "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
-                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
-            )
+            if _is_groq_rate_limit_error(exc):
+                try:
+                    deterministic_snapshot = build_read_only_audit_snapshot()
+                except Exception as snapshot_error:
+                    deterministic_snapshot = {
+                        "status": "UNAVAILABLE",
+                        "error": f"{type(snapshot_error).__name__}: {str(snapshot_error)[:500]}",
+                    }
+                message = _build_deterministic_rate_limit_report(
+                    task_title=TITLE,
+                    issue_number=ISSUE,
+                    error=exc,
+                    audit_context=audit_context,
+                    snapshot=deterministic_snapshot,
+                )
+            else:
+                message = (
+                    "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
+                    f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+                )
             post_issue_comment(message)
+            print(message)
             raise SystemExit(message) from exc
 
     lifecycle_path = lifecycle_store.save_plan(
