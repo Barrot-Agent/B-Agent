@@ -1317,8 +1317,8 @@ def test_context_budget_failure_blocks_without_repeating_the_same_request(tmp_pa
     workspace, _ = init_repo(tmp_path)
     brain = FakeBrain(
         RuntimeError(
-            "LLM_CONTEXT_BUDGET_EXCEEDED: Groq HTTP 413: Request too large on tokens per minute; "
-            "Limit 8000, Requested 8099."
+            "LLM_CONTEXT_BUDGET_EXCEEDED: Groq HTTP 413: Request too large; "
+            "maximum context window exceeded."
         )
     )
 
