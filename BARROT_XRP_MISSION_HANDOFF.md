@@ -1,3 +1,167 @@
+## Run 16 — 2026-11-07 04:39–04:51 UTC
+
+This block supersedes earlier Run 15 PR heads and research cutoffs. Main is unchanged. All new code and research remain on the two existing mission branches; no PR was created or closed.
+
+### Mission priority
+
+XRP intelligence and prediction-engine mastery remain the highest-priority Barrot mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Current repository inventory
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; unchanged.
+- Main tree: 1,403 entries, 1,298 files, 493 Python files, 90 Python test files, 86 workflow files, 13 XRP-intelligence JSON artifacts.
+- #1640 V3 branch: 1,464 entries, 1,352 files, 535 Python files, 118 Python test files, 87 workflow files, 18 XRP-intelligence JSON artifacts.
+- #1643 research branch: 1,799 entries, 1,693 files, 645 Python files, 242 Python test files, 86 workflow files, 253 XRP-intelligence JSON artifacts.
+- Open-PR inventory remains 371 total: 355 drafts, 16 non-drafts.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration candidate**
+
+Code-bearing head: `7e23f37e75834c4b46da333afe46623049ee9705`; 518 commits ahead of main, 0 behind; 159 changed paths; non-draft; GitHub mergeable state `clean`.
+
+- Full repository suite: **1,090 passed, 8 subtests passed**.
+- Core suite: **630 passed, 8 subtests passed**.
+- Inclusive package coverage: **57.75%**, above the 53% threshold.
+- Installed wheel built and verified that Barrot V3, the XRP mission and canonical data assets load from the packaged distribution.
+- Six-manifest dependency audit passed; logs report no known vulnerabilities in each audited manifest.
+- Fail-closed gate passed; merging remains disabled.
+- Evidence: [full CI 42339973070](https://github.com/Barrot-Agent/B-Agent/actions/runs/42339973070), [six-manifest audit 42339973021](https://github.com/Barrot-Agent/B-Agent/actions/runs/42339973021), [fail-closed gate 42339973026](https://github.com/Barrot-Agent/B-Agent/actions/runs/42339973026).
+
+A live main-branch Barrot Agent run had failed with Groq HTTP 413 because its 11,534-token request exceeded an 8,000 TPM allowance. The #1640 branch now recognizes HTTP 413 responses that identify TPM exhaustion, attempts the configured fallback model, and routes exhausted fallback attempts into the deterministic blocked/rate-limit report rather than returning a generic LLM API failure. Added a regression test in `tests/test_barrot_agent_script.py`. The exact-head core and full suites passed with this change. This improves failure handling; it does not yet implement prompt chunking or guarantee that a fallback model has sufficient quota.
+
+**PR #1643 — XRP research archive**
+
+Current head: `96128f1658e14a704a481b68c93c256895c9ac05`; 563 commits ahead of main, 0 behind; 398 changed paths; non-draft; GitHub mergeable state `clean`.
+
+- Full repository suite: **1,702 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed; logs report no known vulnerabilities in each audited manifest.
+- Fail-closed gate passed; merging remains disabled.
+- The final head includes the seven spot/ETF/derivatives reconciliation tests and eight EURGH/XRPL payment-rail tests.
+- This research branch's CI does not emit #1640's inclusive package-coverage report or installed-wheel verification. Those stronger checks must be retained in the consolidated successor.
+- Evidence: [full CI 42339781779](https://github.com/Barrot-Agent/B-Agent/actions/runs/42339781779), [six-manifest audit 42339781771](https://github.com/Barrot-Agent/B-Agent/actions/runs/42339781771), [fail-closed gate 42339781785](https://github.com/Barrot-Agent/B-Agent/actions/runs/42339781785).
+
+The earlier #1643 head `4168e4ae` had two failures in the newly added EURGH tests: one used the wrong JSON field name and one asserted an over-specific phrase. Both test assertions were corrected on the final head; the final exact-head full suite passed. No product-code failure remained from that test correction.
+
+### New institutional and payment-rail research: EURGH
+
+Added to the existing #1643 branch, with a source-digested artifact and eight regression tests:
+
+- `research/xrp_intelligence/20261107T043946Z-eurgh-gatehub-dinaro-xrpl-sepa-launch.json`
+- `tests/test_eurgh_gatehub_dinaro_xrpl_sepa_identity_20261107.py`
+
+Primary-source findings:
+
+- GateHub announced GateHub Euro (EURGH) on November 5, 2026. Dinaro d.o.o. is the issuer; GateHub Ltd. is the wallet/distribution and SEPA interface partner. The announcement lists XRPL and Xahau deployments and publishes an issuer address and EURGH currency code.
+- Banka Slovenije's supervised-entity register lists Dinaro as an authorised electronic-money institution from November 2, 2021, and records the legal-name change from Paywiser to Dinaro on June 8, 2026. Its payment-account list identifies Dinaro's BIC as `PWSRSI22` and provider ID `91002`.
+- Banka Slovenije's MiCA guidance states that EMT holders have a claim against the issuer, EMTs do not pay interest, and an issuer must be an EMI or bank. It describes notification periods of 40 working days before offer/admission and 20 working days before white-paper publication.
+- GateHub/Dinaro terms state EURGH is issued at 1:1 to the euro and redeemable at par; the terms also state EURGH has not been approved by a competent authority. The white-paper URL was linked but returned no extractable text in this run. Reserve composition, safeguarding-account allocation, reserve attestations and detailed redemption mechanics therefore remain unverified.
+- GateHub lists token issuance/redemption/transfer fees as free. The separate Dinaro price list lists outgoing SEPA and sent instant payments at €1 each, with incoming transfers shown as free. These are different fee categories, not a contradiction.
+- Xahau's official documentation identifies XAH, not XRP, as its native token and fee/reserve asset. Ordinary XRPL transactions use XRP; Xahau activity must not be counted as XRP fee demand.
+- No evidence in the announcement establishes XRP as the bridge asset for the EUR-to-SEPA flow, an XRP market-purchase commitment, circulating EURGH supply, on-ledger volume or market liquidity. The launch is an infrastructure event, not proof of incremental XRP demand.
+
+Artifact: [EURGH / Dinaro / GateHub / XRPL / Xahau reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T043946Z-eurgh-gatehub-dinaro-xrpl-sepa-launch.json). Tests: [eight regression tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_eurgh_gatehub_dinaro_xrpl_sepa_identity_20261107.py).
+
+### ETF-flow update and disagreement
+
+- Alpha Finance's five-fund dashboard reports through the November 6 US session: $0 displayed net flow on November 6, November 5, November 4 and November 3; cumulative net inflows of $1.73B; +989.1M XRP net flow since launch; and $45.9M net flow over its last 30 sessions. Its displayed daily table records the last positive session as October 29 at +$8.4M.
+- TokenPost, citing SoSoValue, reports zero flows on November 3–5, cumulative net inflows of $1.81B, $1.41B net assets and $22.30M trading volume. Its fund universe differs from Alpha Finance's five-fund coverage.
+- Preserve the $1.73B versus $1.81B cumulative-flow disagreement. Do not average the dashboards or treat the same underlying issuer holdings as independent economic demand. Alpha Finance's displayed $0 may also be rounded; precision and issuer-native creations/redemptions were not retrieved.
+
+### Spot and derivatives context
+
+Latest direct-exchange retrieval vintage captured at 04:28:23 UTC:
+
+- Kraken XRP/USD: $1.15461 last; $1.15426 bid; $1.15428 ask; 0.17327 bps Level-1 spread; 30.330M XRP rolling 24-hour volume; $1.18188390 rolling VWAP; $1.17749 UTC daily open; $1.15046 low. Kraken supplies no provider event timestamp.
+- OKX XRP-USDT: 1.1559 last; 1.1559 bid; 1.1560 ask; 0.86509 bps Level-1 spread; 58.346M XRP rolling 24-hour volume. Its provider timestamp was 04:19:55.972 UTC, 507.028 seconds old at capture, beyond the 300-second live-feature threshold.
+- A repeated retrieval returned the same OKX timestamp and payload; no fresher synchronized quote was admitted. USD/USDT was not normalized and only Level-1 quotes were captured. No arbitrage or full-depth claim is made.
+- Secondary OKX reporting shows OI of $106.6M on Oct 24, $132.1M on Nov 4 and $122.4M on Nov 5; a 3.81 long/short account ratio; funding easing from 0.01% to 0.0024% per eight-hour settlement. These are historical secondary figures; account counts are not capital-weighted and OI is not directional by itself.
+- The secondary report of Binance reserves rising 280M XRP from Nov 3–5 remains unverified at the wallet/transaction level and is not comparable to the separately reported 418.5M XRP Nov 4 exchange-outflow estimate. Internal transfers, address-label changes, OTC transfers and customer flows remain competing explanations.
+
+Spot artifact: [Nov 7 spot-break / ETF / derivatives context](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T042823Z-xrp-spot-break-etf-derivatives-context.json).
+
+### Prediction-engine status
+
+Implemented on #1640, not active on main:
+
+- 23 public endpoint records, 21 scheduled sources.
+- SHA-256 raw-source receipts and point-in-time SQLite feature storage.
+- Chronological walk-forward evaluator and four baselines: class prior, momentum, mean reversion and volatility-normal.
+- Univariate feature/source-mix PSI drift diagnostics.
+- Outcome ledger and fail-closed forecast-readiness ledger.
+
+Verified limitations:
+
+- Coinbase historical candle backfill is manual, bounded to 365 days and paged; it is not part of the scheduled workflow.
+- Binance open-interest/global-long-short history is bounded to approximately 30 days.
+- Two public XRPL node endpoints are excluded from scheduled collection because their terms do not permit the intended commercial use.
+- Some exchange-balance publishers permit only digest/receipt capture, not unrestricted raw payload redistribution.
+- `confidence_calibration.py` records forecast outcomes and metrics; `walk_forward.py` reports reliability bins. No fitted probability recalibration is applied.
+- Drift monitoring is univariate/source-mix PSI, not multivariate or concept drift.
+- The forecast ledger supports 1h, 4h, 1d, 7d and 30d horizons, but actual out-of-sample validation across all horizons is not established.
+- Readiness requires at least 100 out-of-sample samples, 100 shadow samples, calibration error no greater than 0.05, sufficient horizon coverage, performance better than all four baselines on Brier score and log loss, and independent evaluator attestation.
+- Event timeline and scenario/counter-hypothesis generation are represented in research artifacts but are not verified as a fully automated production engine.
+- External WORM retention, independent timestamp anchoring and trusted evaluator signing-key configuration remain unresolved.
+
+No directional forecast, shadow trade, paper trade or real-money action was issued.
+
+### Nine-platform coordination
+
+The capability/authentication/data-flow map remains current on #1640. ChatGPT-to-GitHub is the only verified persistent connection. Copilot evidence is one-off review activity, not a persistent authenticated connection. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified for persistent authentication and data exchange. No external AI data transfer occurred.
+
+### Main-branch workflow safety
+
+Main still contains:
+
+- An issue-triggered Barrot Agent workflow with repository write permission. The latest inspected issue-triggered run [42331248942](https://github.com/Barrot-Agent/B-Agent/actions/runs/42331248942) attempted a read-only review request for #1655 but failed at Groq HTTP 413 (11,534 requested TPM against an 8,000 TPM limit). It produced no plan, changeset, commit or repository modification.
+- Push-triggered A2A-worker and self-hosted-brain deployment workflows.
+- A manual Coinbase paper-trader workflow that can persist state to main.
+
+The #1640 branch quarantines the issue-triggered writer to manual-only/read-only execution, changes push-triggered deployment workflows to manual-only with explicit confirmation, and changes the paper-trader to manual exact-SHA-confirmed artifact-only simulation with no main write. The paper-trader default product remains BTC-USD, not XRP.
+
+The current main Cross Analysis run [42335890180](https://github.com/Barrot-Agent/B-Agent/actions/runs/42335890180) succeeded; it is not the new XRP ingestion workflow. The scheduled XRP ingestion workflow exists only on #1640 and has not run on main.
+
+### Backlog and merge decision
+
+- **#1640:** active V3 integration candidate; 22/22 review threads resolved, 0 approving reviews.
+- **#1643:** active XRP research candidate; 19/19 review threads resolved, 0 approving reviews. Branch is divergent from #1640: compare shows 563 commits ahead and 518 behind. Exact shared paths remain three: identical dependency-audit workflow; differing Kamilah channel JSON; differing Kamilah identity-gate tests. #1640 has 156 unique changed paths; #1643 has 395. Consolidate #1643's unique paths only after #1640 is verified on main; retain the 18-candidate Kamilah inventory without attributing videos to an unverified canonical channel.
+- **#1642:** ancestor/superseded candidate; all 7 paths are represented in #1640. Preserve until successor is verified on main.
+- **#1317:** all 6 paths overlap #1640; #1640 has the stronger structural core and expanded tests. Superseded candidate pending main verification.
+- **#1318:** both paths overlap #1640; #1640 already has 429 TPM retry/fallback and now 413 TPM handling. Superseded candidate pending main verification.
+- **#1320:** all 5 paths overlap #1640; the current integration has stronger manual exact-SHA/artifact-only paper-trader safety. Superseded candidate pending main verification.
+- **#1644–#1650 and #1254/#1255:** dependency/workflow paths are represented by newer versions in #1640; superseded pending main verification.
+- **#1655:** draft; 8 paths, 3 structural overlaps and 5 unique catalog/refinement paths. Preserve unique work and reconcile overlaps later.
+- **#1653:** blocked by 8 unresolved review threads; 6 unique paths. Preserve; do not merge.
+- **#1269:** 8 unique topology/triangulation paths plus shared CI; preserve.
+- **#1641:** draft unique/unreviewed work; preserve pending review.
+
+No PRs were closed.
+
+### Merge authorization and blockers
+
+Both current mission heads are conflict-free and all exact-head CI, full-suite, dependency-audit and fail-closed checks pass. However:
+
+- #1640 has 0 approving reviews; #1643 has 0 approving reviews.
+- `.github/CODEOWNERS` assigns ownership only to `@Barrot-Agent`; no independent approving reviewer is recorded.
+- Main branch-protection details return HTTP 403. The only visible ruleset, “Fall Back,” is disabled. Required approval policy cannot be verified.
+- Repository metadata reports GitHub Pages enabled. Pages settings are inaccessible. A prior main push triggered successful Pages deployment [run 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered Pages deployment is not established.
+
+No merge was performed. No branch-protection bypass, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action or external AI data transfer occurred.
+
+### Next actions
+
+1. Obtain independent approval and resolve the Pages deployment authorization boundary.
+2. Merge #1640 only after approval, protection, exact-head CI/security and external-side-effect requirements are all satisfied.
+3. Verify the merge commit, merged files, automatic workflow effects and main CI.
+4. Consolidate #1643's 395 unique research paths onto the verified main; reconcile the three shared paths and retain the 18-candidate Kamilah inventory.
+5. Close only exact superseded/duplicate source PRs after successor content is verified on main.
+6. Establish the first successful scheduled main ingestion, accumulate synchronized multi-venue history, implement fitted probability recalibration and multivariate/concept-drift checks, and collect independent shadow outcomes.
+7. Keep directional forecast issuance fail-closed until the model beats all four baselines on leakage-safe out-of-sample Brier/log loss and passes calibration/attestation requirements.
+
+This handoff update is documentation-only; the code-bearing #1640 head and exact test evidence above are separately identified. The new handoff commit must receive its own exact-head checks before merge.
+
+
 ## Run 15 — 2026-11-07 04:28–04:35 UTC
 
 This block supersedes earlier tree counts, PR heads, test counts and market snapshots below. It records only current live GitHub state and the new timestamped research artifact.
