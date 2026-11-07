@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "correction_id": "20261107T180029Z-xrpc-xrp-insights-method-excerpt-hash-correction",
+  "correction_type": "append_only_source_excerpt_hash_correction",
+  "supersedes_artifact_id": "20261107T175608Z-xrpc-future-dated-holdings-leakage-reconciliation",
+  "supersedes_artifact_path": "research/xrp_intelligence/20261107T175608Z-xrpc-future-dated-holdings-leakage-reconciliation.json",
+  "supersedes_artifact_git_blob_sha1": "0a785d9f2716602336aeae08f700b53e93b09825",
+  "supersedes_source_id": "xrp_insights_method",
+  "field_corrected": "normalized_excerpt_sha256",
+  "incorrect_prior_sha256": "125227808f282330f755b9455f3af8c914b81baa8d01741da43714bd6ba0cd05",
+  "corrected_sha256": "d7933267ccd4cd12c8194e7caab82cbca884fc208023349050f382dee1801dcc",
+  "normalized_excerpt": "Flows are derived from holdings, not from issuer flow reports: a change in holdings caused by anything other than creations/redemptions (e.g. BITW index rebalancing, fee accruals paid in XRP) is counted as flow.",
+  "source_url": "https://xrp-insights.com/data",
+  "reason": "The original artifact's source excerpt text is unchanged, but its stored SHA-256 digest was mistyped. This append-only correction supersedes only the digest field. The original artifact and its Git history remain untouched.",
+  "hash_scope": "SHA-256 of the exact normalized excerpt string encoded as UTF-8; this is not a hash of original HTTP wire bytes or response headers.",
+  "model_eligibility": {
+    "eligible": false,
+    "reason": "This is an archival integrity correction, not a market feature."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false
+  },
+  "safety": {
+    "paper_trade_executed": false,
+    "real_money_action": false,
+    "funds_transfer": false,
+    "deployment": false,
+    "secret_operation": false
+  }
+}
