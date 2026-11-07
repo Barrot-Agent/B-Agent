@@ -34,14 +34,15 @@ def test_run28_platform_map_has_exact_current_ci_and_preserves_run26():
     assert current["main_sha"] == MAIN_SHA
     assert current["integration_head_before_map_commit"] == INTEGRATION_HEAD
     assert current["research_head"] == RESEARCH_HEAD
-    assert current["integration"]["full_suite"].startswith("1,152 passed")
-    assert current["integration"]["core_suite"].startswith("643 passed")
-    assert current["integration"]["coverage_pct"] == 58.41
-    assert current["integration"]["wheel_verification"] == "passed"
-    assert current["research"]["full_suite"].startswith("2,043 passed")
-    assert current["research"]["core_suite"].startswith("498 passed")
-    assert current["research"]["dependency_audit"].startswith("passed")
-    assert current["research"]["fail_closed_gate"].startswith("passed")
+    ci = current["ci_evidence"]
+    assert ci["integration"]["full_suite"].startswith("1,152 passed")
+    assert ci["integration"]["core_suite"].startswith("643 passed")
+    assert ci["integration"]["coverage_pct"] == 58.41
+    assert ci["integration"]["wheel_verification"] == "passed"
+    assert ci["research"]["full_suite"].startswith("2,043 passed")
+    assert ci["research"]["core_suite"].startswith("498 passed")
+    assert ci["research"]["dependency_audit"].startswith("passed")
+    assert ci["research"]["fail_closed_gate"].startswith("passed")
     assert current["merge_state"]["merge_performed"] is False
     assert current["merge_state"]["independent_approvals"] == 0
     assert current["forecast_status"] == "NOT_ISSUED"

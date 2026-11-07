@@ -1,6 +1,6 @@
 ## Exact-head test follow-up — 2026-11-07T18:42:51Z
 
-The corrected successor `f4a9140e304f38dd22d7efe47311856b3a29feb6` reduced the earlier four stale run-27 snapshot failures to one remaining handoff-prefix assertion: **1,151 passed, 1 failed, 8 subtests**. Core tests passed (643 passed, 8 subtests); the six-manifest dependency audit and fail-closed gate passed. The remaining assertion expected the run-28 heading at byte zero, although the handoff correctly begins with the exact-head CI follow-up section. This successor updates the assertion to verify both sections in order; exact-head full-suite verification is pending.
+The corrected successor `f4a9140e304f38dd22d7efe47311856b3a29feb6` reported **1,151 passed, 1 failed, 8 subtests**; its remaining failure was a stale map-schema assertion reading `current["integration"]` instead of `current["ci_evidence"]["integration"]`. The intervening test-only tip `3bc76d0c3a68e608b09e4fc47fdf1daba3f3e9ec` exposed one heading-order assertion after the follow-up note was prepended; `35bdeee66b26197187046060d624e18990f5096b` corrected that ordering, and its full suite then exposed the same legacy map-key expectation. Core tests passed (643 passed, 8 subtests); the six-manifest dependency audit and fail-closed gate passed. This successor updates the map test to read `ci_evidence.integration` and `ci_evidence.research`; exact-head full-suite verification is pending.
 
 ## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z
 

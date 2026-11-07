@@ -1,7 +1,7 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T18:42:51Z",
+  "captured_at_utc": "2026-11-07T18:47:37Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
   "observed_integration_head_before_map_commit": "6229acd8367d9fedf73a86f8b5923dc480904aff",
@@ -55,7 +55,8 @@
         "Run 28: committed append-only XRPC future-dated holdings/timestamp corrections, Coinbase Q3 metric correction, SBI/Circle/Coinbase/Ripple network update and raw spot ticker receipts/tests to existing #1643.",
         "Run 28: refreshed main tree, all four open-PR pages (371 total), current branch ancestry, full changed-path lists, reviews/threads and exact-head Actions logs. Main remained unchanged.",
         "Run 28 follow-up: documentation-only tip ad4a91aa had 1,148 passed/8 subtests and four failures limited to stale run-27 handoff/map assertions; core 643 passed, dependency audit and fail-closed gate passed. Run-28 assertions and market-map schema are corrected in the current successor; exact-head full suite pending.",
-        "Run 28 exact-head docs/test follow-up: tip f4a9140 had 1,151 passed, 1 failed, 8 subtests; the only failure was the run-28 handoff heading prefix assertion. Core 643 passed, dependency audit and fail-closed gate passed. This successor fixes the assertion; exact-head full suite pending."
+        "Run 28 exact-head docs/test follow-up: tip f4a9140 had 1,151 passed, 1 failed, 8 subtests; the only failure was the run-28 handoff heading prefix assertion. Core 643 passed, dependency audit and fail-closed gate passed. This successor fixes the assertion; exact-head full suite pending.",
+        "Run 28 exact-head CI follow-up: tip 35bdeee had 1,151 passed, 1 failure, 8 subtests; the remaining failure was the run-28 platform-map test using legacy current.integration/current.research keys instead of current.ci_evidence.integration/current.ci_evidence.research. This successor updates the test to the current schema; exact-head full suite pending."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -271,7 +272,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-07T18:42:51Z",
+    "last_reviewed_at_utc": "2026-11-07T18:47:37Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -558,9 +559,21 @@
           "gate": 42402457831
         },
         "correction": "assert handoff CI follow-up heading first and run-28 snapshot heading within first 2,000 characters; update last_verified_at_utc to 18:42:51Z"
+      },
+      "follow_up_35bdeee": {
+        "full_suite": "1,151 passed; 1 failure; 8 subtests; sole failure was a legacy current.integration/current.research test lookup",
+        "core_suite": "643 passed; 8 subtests",
+        "dependency_audit": "passed; six manifests",
+        "fail_closed_gate": "passed; merge disabled",
+        "runs": {
+          "full": 42402763764,
+          "dependency": 42402763820,
+          "gate": 42402763742
+        },
+        "correction": "test reads current.ci_evidence.integration and current.ci_evidence.research"
       }
     },
-    "latest_integration_branch_tip_before_test_fix": "f4a9140e304f38dd22d7efe47311856b3a29feb6"
+    "latest_integration_branch_tip_before_test_fix": "35bdeee66b26197187046060d624e18990f5096b"
   },
   "prior_run_observations": [
     {
