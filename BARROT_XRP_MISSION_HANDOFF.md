@@ -1,3 +1,37 @@
+## Run 14 capital-flow follow-up — 2026-11-07 04:24 UTC
+
+### Evernorth actual proceeds versus financing capacity
+
+Appended the tested capital reconciliation to the existing #1643 research branch:
+- `research/xrp_intelligence/20261107-evernorth-capital-capacity-vs-realized-cash.json`
+- `tests/test_evernorth_capital_capacity_vs_realized_cash_20261107.py` (8 tests)
+
+Exact #1643 head: `90b0af69e646f6b51b3564e4f4ad42182d00c684`.
+- Full repository suite: **1,687 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- All eight new Evernorth capital tests passed.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed; automatic merge remains disabled.
+- Evidence: [CI 42337881131](https://github.com/Barrot-Agent/B-Agent/actions/runs/42337881131), [dependency audit 42337881004](https://github.com/Barrot-Agent/B-Agent/actions/runs/42337881004), [fail-closed gate 42337881024](https://github.com/Barrot-Agent/B-Agent/actions/runs/42337881024).
+
+Primary-source findings:
+- The Oct 9 8-K reports 11,739,645 Pubco Warrants outstanding at closing, 22,268,905 Class A shares and 32,211,992 Class C shares. The 10/9 Warrant Assignment, Assumption and Amendment Agreement (Exhibit 4.1) identifies 11.5M original public warrants plus Sponsor, Cohen and Northland private warrants; 115,347 Sponsor private warrants were forfeited at closing.
+- The warrant agreement sets an $11.50 exercise price. The public-warrant registration became effective Oct 19, so cash exercise was available after the effective registration/current prospectus condition was satisfied. Public cashless exercise is limited to specified redemption circumstances; private Sponsor warrants may be cashless while held by Sponsor.
+- The Oct 19 424B3 registers 11,499,992 public-warrant shares. The Oct 30 424B3 states that 9,283,847 shares remained issuable upon exercise of Pubco Warrants as of Oct 22. The difference from the Oct 9 closing count is **2,455,798 warrants**.
+- If that entire reduction represents exercises, and the maximum 84,653 remaining Sponsor private warrants were exercised cashlessly, the conditional cash-exercise count would be 2,371,145 and gross cash at $11.50 would be **$27,268,167.50**. If all 2,455,798 were cash exercises, the conditional gross would be **$28,241,677**. These are scenario calculations, not verified proceeds. The Oct 30 filing does not explicitly reconcile the warrant-count reduction or report cash versus cashless exercises. Keep the lead UNRECONCILED; do not book it as actual capital.
+- The 10/30 Cantor committed-equity facility covers up to 5,218,935 newly issued shares at 97% of applicable VWAP, subject to conditions and Evernorth's discretion to sell all, some or none. Its resale registration became effective Oct 30 and the final 424B3 was filed that day, satisfying the registration prerequisite only. The agreement also requires other commencement conditions, including fee payment and delivery/compliance conditions; the $521,893.50 upfront fee payment was not verified. No public purchase notice, draw settlement or XRP purchase was verified in the reviewed records through Nov 7.
+- The 10/30 ELOC prospectus states intended use of proceeds includes general corporate purposes, XRP acquisition and other XRP-ecosystem activities, plus working capital. This is a potential XRP funding channel, not evidence of a draw or purchase.
+- The same ELOC prospectus contains unreconciled illustrative proceeds: cover approximately $76.8M at a $14.71 reference price; summary approximately $80.7M; table footnote says purchase price is 97% of assumed trading price. At 5,218,935 shares and $14.71, 97% math yields approximately $74.467M, not $76.8M. The stated net proceeds of approximately $74.4M do not reconcile cleanly with the 97% factor and disclosed fees/expenses. Treat the headline capacity figures as illustrations requiring issuer clarification, not expected or realized proceeds.
+- The $30M 4.00% Convertible Senior PIK Notes due 2031 are separately reported as issued/paid Oct 12, with approximately $30M net proceeds before transaction expenses. This is actual debt funding, not equity, warrant proceeds or Cantor facility proceeds. The filing states intended use includes XRP acquisition and XRP-ecosystem activity; transaction-level XRP allocation is not verified.
+- The exact phrase “actual capital raised” appears in a secondary Yahoo reprint of CoinGape, not in the two 424B3 prospectuses examined. The prospectuses use proceeds/gross proceeds/net proceeds. The media headline's “SEC approves” wording is not an SEC merits endorsement: the EFFECT records registration effectiveness, and the prospectus expressly says the SEC has not approved or disapproved the securities.
+
+**Capital-flow interpretation:** $30M PIK-note proceeds are confirmed debt proceeds. The warrant-count reduction is a high-priority potential cash-exercise lead, not verified cash. The Cantor facility is potential equity capacity with intended XRP use, not a completed draw. None of these facts independently establishes current XRP purchases or incremental spot demand. The artifact remains NOT_ADMITTED to model features; no forecast issued.
+
+### Current exact-head note
+
+The latest verified #1640 handoff head before this capital follow-up was `4586dad80ccc40d4d3341c89668b20db866c13ac`; its full suite passed **1,089 tests, 8 subtests**, core suite 629/8, 57.75% coverage and installed-wheel verification, with dependency audit and fail-closed gate passed. This new handoff append will create a documentation-only #1640 head and must receive its own exact-head CI; do not reuse the preceding head's checks as proof for the new head.
+
+
 ## Run 14 verification addendum — 2026-11-07 04:10 UTC
 
 ### Exact-head CI completed after the first Run 14 handoff append
