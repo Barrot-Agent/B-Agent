@@ -1,3 +1,52 @@
+## Run 14 verification addendum — 2026-11-07 04:10 UTC
+
+### Exact-head CI completed after the first Run 14 handoff append
+
+**#1640 V3 integration**, exact handoff-only head `02db1e5b065c34bd9e81c6b7112d557870806947`:
+- Full repository suite: **1,089 passed, 8 subtests passed**.
+- Core suite: **629 passed, 8 subtests passed**.
+- Inclusive package coverage: **57.75%**, above the 53% threshold.
+- Installed wheel built and verified Barrot V3, the primary XRP mission and canonical data assets.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed; automatic merge remains disabled.
+- Evidence: [CI 42336974459](https://github.com/Barrot-Agent/B-Agent/actions/runs/42336974459), [dependency audit 42336974431](https://github.com/Barrot-Agent/B-Agent/actions/runs/42336974431), [fail-closed gate 42336974448](https://github.com/Barrot-Agent/B-Agent/actions/runs/42336974448).
+
+**#1643 XRP research**, exact evidence/test head `5c1c1f852feb8f71d9d76d549dd85170bd6fa28d`:
+- Full repository suite: **1,679 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- The seven new Run 14 reconciliation tests all passed in the full-suite job.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed; automatic merge remains disabled.
+- Evidence: [CI 42336760381](https://github.com/Barrot-Agent/B-Agent/actions/runs/42336760381), [dependency audit 42336760331](https://github.com/Barrot-Agent/B-Agent/actions/runs/42336760331), [fail-closed gate 42336760256](https://github.com/Barrot-Agent/B-Agent/actions/runs/42336760256).
+
+### Independent review of #1655 completed
+
+The Barrot issue-triggered review workflow failed because Groq rejected an 11,534-token request against an 8,000 tokens-per-minute limit. The read-only review was completed separately against the exact unchanged #1655 head `271e2f383162fbc0463ccad5d53c8f1f947fbcf3`.
+
+A structured `CHANGES_REQUIRED` review was posted to issue [#1656](https://github.com/Barrot-Agent/B-Agent/issues/1656), comment ID `6702064206`. Confirmed defects:
+1. The human-approval gate accepts contradictory text such as “No human approval is required” because it uses positive substring presence rather than a negation-aware explicit approval condition.
+2. The unsafe-recovery detector lets an earlier negation suppress a later destructive command in the same sentence.
+3. Empty structural constraints are classified as valid instead of unresolved.
+4. Mutable nested invariant values can change a serialized signature after its identity hash has been computed.
+5. Declared approximate-invariant tolerances are ignored by comparison.
+6. The force-push detector misses the common `git push -f` form.
+
+The source catalog is honestly marked metadata-only/not acquired, and all ten official reference URLs were checked. It still needs pinned versions/retrieval metadata before reproducible MMI acquisition. #1655 remains draft; its five unique paths are preserved, while its three structural-analysis overlaps must not replace the stronger #1640 implementation. No code, branch, PR state, approval or main state was changed by the review.
+
+### Current merge gate
+
+Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. The open PR inventory remains 371 (355 drafts, 16 non-drafts). #1640 has 22/22 resolved inline threads and #1643 has 19/19 resolved inline threads, but both have **zero approving reviews**. Detailed branch protection remains inaccessible (HTTP 403); Pages settings remain inaccessible; a prior main push triggered public Pages deployment. No merge was performed.
+
+### Next actions
+
+1. Obtain independent approvals and resolve the Pages deployment authorization boundary.
+2. Merge #1640 only after all required gates are satisfied, then verify main and automatic workflow effects.
+3. Consolidate #1643's unique evidence onto the verified new main; do not merge its divergent branch directly.
+4. Keep #1655 draft until its six confirmed safety/correctness defects are fixed and its five unique paths are reconciled with #1640.
+5. Fix Barrot's input/TPM overflow by bounded staged reviews and context compaction; the existing output-token-budget PRs do not solve this input-side failure.
+6. Continue synchronized historical XRP data collection and fitted probability calibration. No directional forecast is justified by the current evidence.
+
+
 ## Run 14 — 2026-11-07 04:05:56 UTC
 
 ### Mission and repository state
