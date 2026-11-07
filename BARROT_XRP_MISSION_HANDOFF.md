@@ -1,3 +1,130 @@
+## Run 13 — 2026-11-07 03:32 UTC
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the preserved execution, orchestration, safety and verification foundation.
+
+Main is unchanged at `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. No merge or main write occurred.
+
+Complete recursive tree counts at this run:
+- Main: 1,298 files, 493 Python files, 87 test modules, 86 workflow files.
+- #1640 integration branch before this handoff append: 1,352 files, 535 Python files, 115 test modules, 87 workflow files.
+- #1643 research branch: 1,683 files, 640 Python files, 234 test modules, 86 workflow files.
+
+The complete paginated open-PR inventory is 371: 355 drafts and 16 non-drafts. No new PR was created or closed.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+
+- Code-bearing head `f0cfe65360b305b9cc3e9af936f1bc66cc5fbfe7`: 1,089 full-suite tests passed, 8 subtests; 629 core tests passed, 8 subtests; inclusive package coverage 57.75%; installed-wheel verification passed.
+- Exact-head six-manifest dependency audit passed.
+- Exact-head fail-closed gate passed and explicitly leaves automatic merge disabled.
+- Evidence: [full CI 42332083091](https://github.com/Barrot-Agent/B-Agent/actions/runs/42332083091), [dependency audit 42332083132](https://github.com/Barrot-Agent/B-Agent/actions/runs/42332083132), [fail-closed gate 42332083128](https://github.com/Barrot-Agent/B-Agent/actions/runs/42332083128).
+- The nine-platform map was refreshed on this existing branch in commit `b61d7b7c17a12bf12ada9260e8ead552b892b765`. This documentation-only head triggered new exact-head CI; its full suite and dependency audit were still in progress when this handoff was prepared. Do not reuse the preceding code-bearing head's pass as proof for the new documentation head.
+
+**PR #1643 — XRP research**
+
+- Exact current head: `79dc50f893bf779cd20b454db2acf2194f860d99`.
+- Full repository suite: **1,672 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed; automatic merging remains disabled.
+- Evidence: [full CI 42334747883](https://github.com/Barrot-Agent/B-Agent/actions/runs/42334747883), [dependency audit 42334747995](https://github.com/Barrot-Agent/B-Agent/actions/runs/42334747995), [fail-closed gate 42334747882](https://github.com/Barrot-Agent/B-Agent/actions/runs/42334747882).
+- The latest seven-test addition is included in this exact-head full-suite result.
+
+### New direct-exchange XRP evidence on #1643
+
+Added:
+- `research/xrp_intelligence/20261107T033222Z-xrp-direct-spot-ticker-staleness-reconciliation.json`
+- `tests/test_xrp_direct_spot_ticker_staleness_reconciliation_20261107.py` (seven regression tests)
+
+The artifact hashes the exact JSON text returned by the retrieval layer, not original HTTP wire bytes or response headers.
+
+Capture at 03:32:22 UTC:
+- Kraken XRP/USD: last $1.16222; bid $1.16216; ask $1.16230; 28.811682M XRP rolling-24-hour volume; $1.18478862 rolling-24-hour VWAP; $1.17749 UTC daily open. Kraken supplied no provider event timestamp. Level-1 spread was 1.20458 bps.
+- OKX XRP-USDT: last 1.1641; bid 1.1641; ask 1.1642; 56.615053M XRP rolling-24-hour base volume. Provider timestamp 03:16:30.466 UTC was 951.534 seconds old at capture, exceeding the 300-second live-feature age limit. Level-1 spread was 0.858996 bps.
+- The raw last-price difference was 0.16176%, but USD and USDT were not normalized, timestamps were not synchronized, and fees/executable depth were unavailable. It is not an arbitrage observation.
+- Kraken's 03:04:48 retrieval-vintage last of $1.16702 versus $1.16222 at 03:32:22 is a -0.41130% snapshot-to-snapshot difference over 1,654 seconds. Neither response has a provider event timestamp, so this is not a validated event-time return.
+
+The snapshot is model-ineligible. No directional forecast or shadow forecast was issued.
+
+### Exact-phrase and identity follow-up
+
+- **ASK Coin:** current search again distinguishes the CoinMarketCap Ask Coin exchange listing (askcoin.net, inactive/untracked) from Permission Coin's ASK token. No XRP relationship was established. Sources: https://coinmarketcap.com/vi/exchanges/ask-coin/ and https://coinmarketcap.com/currencies/permission-coin/.
+- **SBIC / ChatGPT:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC) has an official 2025 generative-AI/ChatGPT training-course page for portfolio companies. This is a training event, not evidence of an OpenAI partnership or SBI Holdings affiliation. Source: https://www.sbic.co.jp/training/20250612co/.
+- **“actual capital”:** no new issuer-primary exact-phrase match was established. The prior exact match remains the September 17 KuCoin Community Insights user-generated post; it is not Evernorth issuer disclosure. Do not promote it to primary evidence.
+- **Camilla/Kamilah Stevenson:** the person identity remains confirmed, but the candidate YouTube channel is not first-party/platform-verified. Verified public-video inventory remains zero. The #1643 profile retains 18 candidate references; none is attributed as a verified upload.
+
+### Branch integration reconciliation
+
+Current branch state before the handoff append:
+- #1640: 509 commits ahead of main, 0 behind; 159 changed paths.
+- #1643: 548 commits ahead of main, 0 behind; 390 changed paths.
+- The branches are divergent: #1643 is 548 commits ahead of #1640 and #1640 is 509 commits behind #1643.
+
+The full paginated filename comparison finds **three shared paths**, correcting the earlier one-path statement:
+1. `.github/workflows/dependency-audit.yml` — identical blob SHA `6515307991420ab90d8671034b13ac2eb56190b3`.
+2. `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` — different content. #1640 has 10 candidate video references; #1643 has 18 and additional spelling/reference fields. Preserve the 18-reference union, but keep canonical channel verification false and verified inventory count zero.
+3. `tests/test_kamilah_channel_identity_gate.py` — different three-test sets. Reconcile both branches' assertions; do not replace one test file blindly.
+
+Relative to each other, #1640 has 156 unique changed paths and #1643 has 387 unique changed paths. Do not merge #1643's divergent branch directly. After #1640 is legitimately merged and verified on main, create one consolidated successor directly on that resulting main with #1643's unique paths and the explicit two-file Kamilah reconciliation above.
+
+### Prediction-engine state
+
+Implemented on #1640, not yet on main:
+- Scheduled public ingestion adapter v3.12 / parser v3.11; 23 endpoint records and 21 scheduled sources.
+- Binance, Coinbase, Kraken and OKX public spot/derivatives sources, Coinbase bounded historical candles, OKX ticker and 100-level order-book parsing, selected ETF and XRPL public-node context.
+- Five-minute live-feature freshness and one-minute order-book freshness limits.
+- Content-addressed raw receipts and append-only local SQLite point-in-time feature store.
+- Chronological evaluation against class-prior, momentum, mean-reversion and volatility-normal baselines.
+- Drift diagnostics and a fail-closed forecast/outcome ledger with trusted external Ed25519 evaluator attestation.
+
+Still missing or unverified:
+- Main-branch scheduled ingestion has not run because the workflow is not on main.
+- A complete synchronized multi-venue historical dataset and a verified Coinbase 365-day backfill are not established.
+- `walk_forward.py` currently reports classwise reliability bins with `recalibration_applied=false`; fitted probability recalibration is not implemented.
+- A production predictive model has not demonstrated independent out-of-sample lift against all four baselines.
+- Sufficient shadow outcomes, stable multivariate/concept-drift evidence, external WORM retention and independent timestamp anchoring are missing.
+- No directional forecast is justified.
+
+### Nine-platform status
+
+The nine-platform capability/authentication/data-flow map was refreshed at 03:32:22 UTC on #1640. ChatGPT-to-GitHub is verified for this session. Copilot evidence is one-off GitHub PR review activity with state COMMENTED, not APPROVED. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flow in this run. No cross-platform task exchange or external-model transfer occurred.
+
+### Backlog and merge gate
+
+- #1640: active V3 integration candidate.
+- #1643: active XRP research candidate.
+- #1642: draft, seven changed files; its head is an ancestor of #1640 (508 commits behind #1640, 0 ahead). Superseded pending successor merge and main verification.
+- #1641: draft, three changed files; preserve as unique/unreviewed until its five-commit ancestry and code overlap are reconciled.
+- #1653: blocked, seven changed files and eight unresolved review threads; preserve but do not merge until repository sync/overwrite/remote validation findings are fixed.
+- #1655: draft, eight changed files; three overlap #1640 and five are unique structural-analysis/catalog work. Preserve unique work for later reconciliation.
+- #1644–#1650: dependency/workflow updates represented at newer versions in #1640; classify as superseded pending successor merge and main verification.
+- #1254/#1255: older dependency updates superseded by newer dependency PRs.
+- #1317, #1318, #1320 and #1269: unique older work preserved; do not bulk-close.
+- Older XRP research drafts such as #1605, #1597, #1591, #1583, #1581 and related branches remain unreviewed candidates until exact path/commit overlap is reconciled. Do not bulk-close.
+
+Review state:
+- #1640: 22/22 inline threads resolved; 10 submitted reviews, all COMMENTED; zero APPROVED.
+- #1643: 19/19 inline threads resolved; 10 submitted reviews, all COMMENTED; zero APPROVED.
+- `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`; no independent approving reviewer is recorded.
+
+Main reports protected status. Detailed branch-protection API access returns HTTP 403. The only visible repository ruleset is ID 10863829, “Fall Back”, with enforcement disabled. A prior main push triggered GitHub's dynamic Pages build-and-deploy run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489); its build, report-build-status and deploy jobs all succeeded. Pages configuration remains inaccessible through the connector. A merge-triggered public deployment is therefore an unresolved authorization boundary.
+
+**No merge was performed.** No protection bypass, main write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete actions
+
+1. Finish exact-head CI verification for the documentation-only #1640 map/handoff updates.
+2. Obtain a genuine independent approving review and resolve the Pages deployment authorization boundary; do not self-approve or treat Copilot/CodeRabbit COMMENTED reviews as approval.
+3. Merge #1640 only if exact-head full-suite, installed-wheel, dependency/security, approval and external-side-effect gates all pass.
+4. Verify the resulting merge commit, files, main CI and automatic workflow effects.
+5. Consolidate #1643's 387 unique paths plus the 18-reference Kamilah profile/test reconciliation onto the verified new main; rerun full suite and dependency/security gates.
+6. Verify the first actual main-branch ingestion run, then build the synchronized historical dataset, implement fitted probability calibration, and measure a real model against all four baselines before any directional forecast.
+
+---
+
 ## Run 12 — 2026-11-07 02:58 UTC
 
 ### Mission and repository state
