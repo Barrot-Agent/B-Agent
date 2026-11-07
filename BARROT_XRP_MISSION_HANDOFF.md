@@ -964,3 +964,118 @@ Both PRs are non-draft, conflict-free and report GitHub mergeable state `clean`.
 - Shadow/paper trades: none.
 - Real-money actions: none.
 - Forecast outcomes: none.
+
+
+## Run 11 — 2026-11-07T02:52:00Z
+
+### Mission priority
+
+XRP intelligence and prediction-engine mastery remain the highest-priority mission. Barrot V3 remains the execution, orchestration, safety and verification foundation. Main has not changed and no PR was merged.
+
+### Repository baseline and integration state
+
+- Main SHA: \`9100dbacb5f9f1b973b053a65ef1e91e96b64f72\`.
+- Main tree: 1,298 files, 493 Python files, 87 test modules and 86 workflows.
+- Open PR inventory: 371 total, 355 drafts and 16 non-drafts.
+- #1640 is the single V3 integration candidate. Its code-bearing head \`7110d1105ed2e00d69d53626b0b9e2af2df452a4\` is 501 commits ahead of main, zero behind, with 160 changed paths. The branch tree contains 1,352 files, 535 Python files, 115 test modules and 87 workflows.
+- #1643 is the single active XRP research candidate. Its head \`b8edfb8da40a8c325451b4499b41b617cf4555a3\` is 533 commits ahead of main, zero behind, with 303 changed paths. The branch tree contains 1,671 files, 634 Python files, 228 test modules and 86 workflows.
+- #1640 was advanced after its code-bearing head by documentation-only updates to the feature-store contract and nine-platform map. The branch head before this handoff update was \`e8128f5ed8f8fdfe4cec966b81d203f63f481b0a\`. Exact-head CI for that documentation/map tip was not yet returned at handoff time; the code-bearing head below is fully verified. The handoff update itself is also documentation-only.
+
+### EXECUTED — bounded manual Coinbase historical backfill
+
+The existing #1640 branch now contains adapter v3.12 / parser v3.11 and a manual-only Coinbase hourly candle backfill:
+
+- CLI option: \`--coinbase-backfill-days\`, bounded to 1–365 days; default 0.
+- The workflow exposes the input only through \`workflow_dispatch\`; scheduled runs explicitly pass 0 and continue to collect only the latest default page.
+- Each request is limited to 300 hourly candles. The maximum 365-day request is 30 pages with a 0.5-second delay between pages.
+- Windows are contiguous, half-open UTC ranges before the oldest completed candle in the latest page. Out-of-range candles, duplicates and incomplete current candles are not admitted.
+- Every page gets a unique source ID (\`coinbase_spot_candles_backfill_page_NNN\`), source URI, exact response receipt and SHA-256. All page IDs retain the same Coinbase independence group so multiple pages cannot collapse into one conflicting source identity.
+- Historical features use the actual backfill capture time as known-at time. Empty/no-trade pages remain raw-only receipts; missing hours are not filled with synthetic zero-volume candles.
+- The baseline boundary is located through the feature record's nested source lineage, not an absent top-level source_id field.
+
+**DESIGNED/IMPLEMENTED, NOT LIVE-EXECUTED:** the manual workflow was not dispatched and no Coinbase historical pages were downloaded in this run. The official API contract documents the 300-candle maximum and possible out-of-range preceding candles: https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-candles.
+
+### VERIFIED — exact-head test and security evidence
+
+**#1640 code-bearing head \`7110d1105ed2e00d69d53626b0b9e2af2df452a4\`:**
+
+- Full repository suite: 1,089 passed, 8 subtests passed.
+- Core suite: 629 passed, 8 subtests passed.
+- Inclusive package coverage: 57.75% against the 53% threshold.
+- Installed-wheel verification passed.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed; automatic merge remained disabled.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42331059121
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42331059158
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42331059117
+
+The Actions cache service still reports a read-only storage-budget warning. The checkpoint and archive recovery paths do not depend on cache writes.
+
+Intermediate failures were corrected before the verified code-bearing head:
+- Baseline discovery was corrected to read the source ID from the feature record's nested \`sources[]\` lineage.
+- Backfill pages now use unique source IDs while retaining the Coinbase independence group.
+- A regression assertion now checks the canonical \`raw_content_sha256\` provenance field.
+
+**#1643 research head \`b8edfb8da40a8c325451b4499b41b617cf4555a3\`:**
+
+- Full repository suite: 1,660 passed, 8 subtests passed.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed; merging remained disabled.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42330787080
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42330787115
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42330787096
+
+### EXECUTED — XRP market and capital-flow research
+
+New artifacts and regression tests were added to the existing #1643 branch; no new PR was created.
+
+1. \`research/xrp_intelligence/20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json\`
+   - Kraken XRP/USD at capture: last 1.17699, bid 1.17680, ask 1.17681, 28.097M XRP rolling-24-hour volume, 1.18645279 rolling-24-hour VWAP, 1.17085 low and 1.22092 high. The Kraken response supplied no provider timestamp; the ticker is not admitted as a synchronized feature and does not provide a full depth ladder.
+   - TradRadar: 1.91B USD OI, down 0.99%, positive 0.0046%/8h funding, 7.51M USD long liquidations versus 0.51233M short liquidations; source updated 01:50 UTC and displayed with a 15-minute delay.
+   - Alpha Finance: 2.78B USD OI at 01:04 UTC. The 870M USD / 45.55% difference from TradRadar remains unreconciled; no averaging.
+   - XRP Insights: Nov 5 +110,214 XRP and Nov 2–5 -149,487 XRP across six spot funds plus BITW, with GXRP excluded from flow totals.
+   - CryptoKeyhole: Nov 5 -3,339 XRP and Nov 2–5 -13,356 XRP across four daily-file funds; Nov 6 was partial at 1/4 funds. The broader XRP Insights and four-fund CryptoKeyhole totals use different universes; no common-universe bridge is yet established. CryptoKeyhole's five-day header differs from the displayed daily-row sum by one XRP.
+   - Reuters reported 117.97B USD weekly money-market inflows, while equity and bond funds also had net inflows; this is mixed macro context, not an XRP signal.
+   - Five regression tests passed within the #1643 full-suite run.
+
+2. \`research/xrp_intelligence/20261107T024800Z-evernorth-cantor-facility-actual-capital-reconciliation.json\`
+   - SEC filings show the 30M USD Convertible Senior PIK Notes were funded on October 12, 2026. The prospectus describes 30M USD proceeds before transaction expenses; the financial-statement note reports 29M USD net cash after a 1M USD capital-markets-advisor fee.
+   - The separate October 23 Cantor agreement is an optional equity facility of up to 5,218,935 new shares at 97% of applicable VWAP, subject to a 4.99% beneficial-ownership cap and a 20% daily-volume cap. The 521,893.50 USD commitment fee is fully earned and non-refundable regardless of whether purchases occur.
+   - The 80.7M USD preliminary S-1 and 76.8M USD final 424B3 figures are conditional gross-proceeds illustrations at different reference prices, not cash already received. The reviewed filings do not establish an actual Cantor draw or a specific XRP purchase funded by the facility.
+   - Exact phrase \`actual capital\` was not found in the reviewed SEC 424B3. The phrase \`actual capital stack around the treasury\` appears in a September 17 KuCoin Community Insights post by a third-party author; it is user-generated commentary about the PIK-note/treasury structure, not issuer evidence and predates the Cantor facility.
+   - One regression test passed within the #1643 full-suite run.
+
+No directional XRP forecast, shadow trade, paper trade or real-money action was issued.
+
+### Integration-first backlog and cross-branch reconciliation
+
+- #1640 and #1643 share three changed paths. \`.github/workflows/dependency-audit.yml\` is byte-identical. \`data/xrp_intelligence/sources/kamilah_stevenson_channel.json\` and \`tests/test_kamilah_channel_identity_gate.py\` differ. During later consolidation, retain the more complete #1643 candidate-only profile (18 candidate references) and its identity-gate test; verified YouTube inventory remains zero because the canonical channel has not been verified.
+- #1642 is an ancestor of #1640: its seven changed paths are contained in the successor. Classify as superseded; do not close until #1640 is merged and verified on main.
+- #1655 is a draft with eight changed paths: three overlap the structural-analysis implementation in #1640 and five are unique bundle-engineering/source-catalog files. Preserve the five unique files and reconcile the overlapping implementations; do not merge the draft.
+- #1653 is a non-draft repository-intelligence PR with eight unresolved review threads (six Copilot critical findings and two CodeRabbit minor findings). Preserve its unique codebase-memory work. Its CI workflow diff adds a codebase-memory test to the core suite; it does not itself remove #1640's inclusive full-suite job. The PR remains blocked by the unresolved correctness and safety findings.
+- #1477 is a stale draft, 49 commits ahead and 106 behind main, with 78 changed files, 12,499 additions and 15 separate handoff files. It contains potentially useful Coinbase/Circle/Ripple/SBI, Arc, RLUSD, x402, collateral and regulatory research, but its old CI passed on November 2 and it is not ready to merge. Preserve it as unique/unreviewed; selectively revalidate evidence and consolidate into the existing research workstream rather than merging its old branch or importing all 15 handoffs.
+- Unique older work (#1317, #1318, #1320, #1269 and other unreconciled research/feature PRs) remains preserved. No PRs were closed.
+
+### Nine-platform coordination and safety
+
+- ChatGPT-to-GitHub repository access is verified; repository metadata reports admin permission. This run read and wrote only existing mission branches.
+- Copilot review activity is one-off COMMENTED review output on #1640/#1643, not an authenticated persistent connection and not an approving review.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified as persistent authenticated data flows. No external model data transfer occurred.
+- Main remains \`9100dbacb5f9f1b973b053a65ef1e91e96b64f72\`, protected=true. Detailed branch-protection access returned HTTP 403; the repository rulesets endpoint returned an empty list. Repository metadata reports GitHub Pages enabled, but Pages configuration is inaccessible.
+- #1640 has 22/22 resolved review threads and zero approving reviews. #1643 has 19/19 resolved threads and zero approving reviews. Copilot/Barrot-Agent COMMENTED reviews are not APPROVED reviews.
+- Main issue #1656's issue-triggered Barrot workflow failed closed with TASK_FIELD_EMPTY and AUTHORIZATION_CONSTRAINT_MISSING; the release step was skipped and no repository repair or write ran. This remains a separate task-normalization blocker.
+- No main-branch write, merge, deployment, secret operation, Space restart, Kaggle submission, external model transfer, paper trade or real-money action occurred.
+
+### Next concrete actions
+
+1. Verify the documentation/map/handoff-only #1640 tip on exact-head CI; do not rely solely on the code-bearing head's passing checks.
+2. Obtain independent approving reviews and resolve Pages deployment authorization before any main merge.
+3. Merge #1640 only when every exact-head, full-suite, security and protection requirement is satisfied. Fetch main again, verify the merge commit and files, and run main CI.
+4. Consolidate #1643's unique research onto that verified main; reconcile the three shared paths and preserve the more complete candidate-only Kamilah identity gate.
+5. After integration, manually execute the bounded Coinbase historical backfill only through the explicit workflow input, then verify live page receipts, event/known-at timestamps, empty-page handling and feature-store lineage. Scheduled runs remain latest-page-only.
+6. Revalidate unique #1477 evidence selectively, and reconcile #1655/#1653 only after their outstanding reviews and safety findings are resolved.
+7. Expand synchronized multi-venue history, then fit and calibrate a real model against the existing baselines. Keep forecast issuance fail-closed until leakage-safe out-of-sample lift, calibration, drift and sufficient shadow outcomes are demonstrated.
