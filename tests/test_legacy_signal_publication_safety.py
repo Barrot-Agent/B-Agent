@@ -62,8 +62,14 @@ def test_public_json_artifacts_do_not_expose_a_directional_forecast():
     assert accuracy["status"] == "NOT_EVALUATED"
     assert accuracy["accuracy_pct"] is None
     assert accuracy["forecast_eligible"] is False
-    assert accuracy["legacy_observation"]["reported_percentage"] == 45.5
-    assert accuracy["legacy_observation"]["valid_predictive_accuracy"] is False
+    assert "legacy_observation" not in accuracy
+
+    legacy_accuracy = json.loads(
+        Path("web/legacy/signal_accuracy_unvalidated.json").read_text(encoding="utf-8")
+    )
+    assert legacy_accuracy["status"] == "UNVALIDATED_LEGACY"
+    assert legacy_accuracy["reported_percentage"] == 45.5
+    assert legacy_accuracy["valid_predictive_accuracy"] is False
 
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["audio"] is None
