@@ -47,10 +47,11 @@ def test_run28_platform_map_is_preserved_and_run31_is_current():
     assert ci["research"]["core_suite"].startswith("498 passed")
     assert ci["research"]["dependency_audit"].startswith("passed")
     assert ci["research"]["fail_closed_gate"].startswith("passed")
-    assert prior30["integration_head_before_map_commit"] == "a68f90bb883bacca1a0c2a8a5570b19f6a179c09"
-    assert prior30["research_head"] == "0c41821e387bb10692122e4c064d5ca40c4a88e3"
-    assert prior30["ci_evidence"]["integration"]["full_suite"].startswith("1,161 passed")
-    assert prior30["ci_evidence"]["research"]["full_suite"].startswith("2,085 passed")
+    assert prior30["integration_head_before_map_commit"] == "7628c5db692124bfbe4a508a4810df4f699d3a87"
+    assert prior30["research_head"] == "cdf2e32f22c5ee5abac6713aa94587fc47cff4a7"
+    assert prior30["ci_evidence"]["integration"]["full_suite"].startswith("1,164 passed")
+    assert prior30["ci_evidence"]["research"]["full_suite"] == "IN_PROGRESS; exact-head result not yet verified"
+    assert prior30["ci_evidence"]["research"]["previous_verified_head"]["full_suite"].startswith("2,066 passed")
     assert current["merge_state"]["merge_performed"] is False
     assert current["merge_state"]["independent_approvals"] == 0
     assert current["forecast_status"] == "NOT_ISSUED"
