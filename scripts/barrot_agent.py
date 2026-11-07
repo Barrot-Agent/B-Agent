@@ -14,8 +14,11 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from collections import deque
 from pathlib import Path
+from threading import Lock
 from typing import Any, Callable
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = Path(__file__).resolve().parent
@@ -60,9 +63,48 @@ TITLE = os.environ.get("TASK_TITLE", "Barrot task")
 TASK_MODE = os.environ.get("TASK_MODE", "engineering").strip().lower()
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
-GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
-GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
+LLM_PROVIDER = os.environ.get("BARROT_LLM_PROVIDER", "groq").strip().lower()
+if LLM_PROVIDER not in {"groq", "local"}:
+    raise ValueError("BARROT_LLM_PROVIDER must be 'groq' or 'local'.")
+
+if LLM_PROVIDER == "local":
+    GROQ_ENDPOINT = os.environ.get(
+        "BARROT_LLM_BASE_URL",
+        "http://127.0.0.1:8080/v1/chat/completions",
+    ).strip()
+    MODEL = os.environ.get("BARROT_LLM_MODEL", os.environ.get("BRAIN_MODEL", "")).strip()
+    if not MODEL:
+        raise ValueError(
+            "BARROT_LLM_MODEL is required for the local provider; model selection is not guessed."
+        )
+    local_endpoint = urlsplit(GROQ_ENDPOINT)
+    if local_endpoint.scheme != "http" or local_endpoint.hostname not in {
+        "127.0.0.1",
+        "localhost",
+        "::1",
+    }:
+        raise ValueError(
+            "Local inference must use an HTTP loopback endpoint; do not expose llama.cpp publicly."
+        )
+    GROQ_KEY = os.environ.get("BARROT_LLM_API_KEY", "")
+else:
+    GROQ_ENDPOINT = os.environ.get(
+        "BARROT_LLM_BASE_URL",
+        "https://api.groq.com/openai/v1/chat/completions",
+    ).strip()
+    MODEL = (
+        os.environ.get("BARROT_LLM_MODEL", "").strip()
+        or os.environ.get("BRAIN_MODEL", "").strip()
+        or "openai/gpt-oss-120b"
+    )
+    GROQ_KEY = os.environ.get("BARROT_LLM_API_KEY", os.environ.get("GROQ_API_KEY", ""))
+
+MAX_REQUEST_TOKENS = int(os.environ.get("BARROT_MAX_REQUEST_TOKENS", "6500"))
+MAX_TPM_TOKENS = int(os.environ.get("BARROT_TPM_TOKEN_BUDGET", "7000"))
+MAX_TOOL_RESULT_CHARS = int(os.environ.get("BARROT_MAX_TOOL_RESULT_CHARS", "1800"))
+if min(MAX_REQUEST_TOKENS, MAX_TPM_TOKENS, MAX_TOOL_RESULT_CHARS) <= 0:
+    raise ValueError("Barrot LLM request, TPM, and tool-result budgets must be positive.")
+
 MAX_TOOL_ROUNDS = 4
 MAX_SEARCH_RESULTS = 50
 
@@ -283,77 +325,157 @@ def _groq_payload(
     return payload
 
 
-def _groq_fallback_models(primary_model: str) -> list[str]:
-    configured = os.environ.get("BRAIN_FALLBACK_MODELS", "").strip()
-    candidates = (
-        [item.strip() for item in configured.split(",") if item.strip()]
-        if configured
-        else [
-            "openai/gpt-oss-20b",
-        ]
-    )
-    seen = {primary_model}
-    result: list[str] = []
-    for candidate in candidates:
-        if candidate not in seen:
-            seen.add(candidate)
-            result.append(candidate)
-    return result
+def _estimate_groq_request_tokens(payload: dict[str, Any]) -> int:
+    """Conservative character-based estimate; not a substitute for provider tokenization."""
+    serialized = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    estimated_prompt_tokens = (len(serialized) * 2 + 4) // 5
+    return estimated_prompt_tokens + max(0, int(payload.get("max_tokens", 0)))
 
 
-def _try_groq_model_fallback(
-    payload: dict[str, Any],
+def _bound_groq_messages(
+    messages: list[dict[str, Any]],
     *,
-    request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None,
-    primary_model: str,
-    reason: str,
-    json_mode_retry: bool,
-) -> dict[str, Any]:
-    fallback_models = _groq_fallback_models(primary_model)
-    failures: list[str] = []
-    for fallback_model in fallback_models:
-        fallback_payload = dict(payload)
-        fallback_payload["model"] = fallback_model
-        print(
-            f"Groq {reason} limit reached for {primary_model}; trying fallback model {fallback_model}.",
-            file=sys.stderr,
+    tools: list[dict[str, Any]] | None,
+    max_tokens: int,
+    max_request_tokens: int,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    """Drop oldest complete history/tool groups while preserving system, task and latest tool round."""
+    source = list(messages)
+    if not source:
+        raise RuntimeError("LLM_CONTEXT_BUDGET_EXCEEDED: no request messages were supplied.")
+
+    protected_indices = {i for i, item in enumerate(source) if item.get("role") == "system"}
+    user_indices = [i for i, item in enumerate(source) if item.get("role") == "user"]
+    latest_user_index = user_indices[-1] if user_indices else len(source) - 1
+    protected_indices.add(latest_user_index)
+
+    groups: list[list[int]] = []
+    index = 0
+    while index < len(source):
+        if index in protected_indices:
+            index += 1
+            continue
+        item = source[index]
+        tool_calls = item.get("tool_calls") if item.get("role") == "assistant" else None
+        if isinstance(tool_calls, list) and tool_calls:
+            call_ids = {
+                str(call.get("id", ""))
+                for call in tool_calls
+                if isinstance(call, dict) and call.get("id")
+            }
+            group = [index]
+            cursor = index + 1
+            while cursor < len(source) and source[cursor].get("role") == "tool":
+                tool_call_id = str(source[cursor].get("tool_call_id", ""))
+                if call_ids and tool_call_id not in call_ids:
+                    break
+                group.append(cursor)
+                cursor += 1
+            groups.append(group)
+            index = cursor
+        else:
+            groups.append([index])
+            index += 1
+
+    latest_tool_group = None
+    for group in groups:
+        if max(group) <= latest_user_index:
+            continue
+        if any(
+            source[item].get("role") == "assistant" and source[item].get("tool_calls")
+            for item in group
+        ):
+            if latest_tool_group is None or max(group) > max(latest_tool_group):
+                latest_tool_group = group
+
+    retained = set(range(len(source)))
+    optional_groups = [group for group in groups if group is not latest_tool_group]
+    dropped_messages = 0
+
+    def current_candidate() -> tuple[list[dict[str, Any]], int]:
+        candidate = [source[item] for item in sorted(retained)]
+        payload = _groq_payload(candidate, tools=tools, max_tokens=max_tokens)
+        return candidate, _estimate_groq_request_tokens(payload)
+
+    candidate, estimate = current_candidate()
+    for group in sorted(optional_groups, key=lambda item: min(item)):
+        if estimate <= max_request_tokens:
+            break
+        for item in group:
+            retained.discard(item)
+        dropped_messages += len(group)
+        candidate, estimate = current_candidate()
+
+    if estimate > max_request_tokens:
+        raise RuntimeError(
+            "LLM_CONTEXT_BUDGET_EXCEEDED: required system/current-task/recent-tool context "
+            f"estimates {estimate} tokens against a {max_request_tokens}-token request budget."
         )
-        try:
-            return _send_groq_request(
-                fallback_payload,
-                request_sender=request_sender,
-                _model_fallback_attempted=True,
-                _rate_limit_retry=False,
-                _json_mode_retry=json_mode_retry,
-            )
-        except (RuntimeError, TimeoutError) as fallback_exc:
-            failures.append(f"{fallback_model}: {type(fallback_exc).__name__}: {fallback_exc}")
-    details = "; ".join(failures) if failures else "no fallback models configured"
-    raise RuntimeError(
-        f"Groq {reason} limit exhausted for {primary_model}; all configured fallback models failed. {details}"
-    )
+    return candidate, {
+        "estimated_tokens": estimate,
+        "dropped_messages": dropped_messages,
+        "retained_messages": len(candidate),
+    }
+
+
+def _truncate_tool_result(result: str, max_chars: int) -> str:
+    text = str(result)
+    if len(text) <= max_chars:
+        return text
+    marker = f"\n[TRUNCATED by Barrot request budget; original_chars={len(text)}]"
+    return text[: max(0, max_chars - len(marker))] + marker
+
+
+class SlidingWindowTokenBudget:
+    """Per-process rolling token reservation; fails closed rather than retrying a provider."""
+
+    def __init__(self, *, max_tokens: int = MAX_TPM_TOKENS, window_seconds: float = 60.0):
+        if max_tokens <= 0 or window_seconds <= 0:
+            raise ValueError("Sliding-window token budget values must be positive.")
+        self.max_tokens = int(max_tokens)
+        self.window_seconds = float(window_seconds)
+        self._events: deque[tuple[float, int]] = deque()
+        self._lock = Lock()
+
+    def reserve(self, tokens: int, *, now: float | None = None) -> dict[str, int]:
+        amount = max(0, int(tokens))
+        timestamp = time.monotonic() if now is None else float(now)
+        with self._lock:
+            while self._events and timestamp - self._events[0][0] >= self.window_seconds:
+                self._events.popleft()
+            used = sum(value for _, value in self._events)
+            if amount > self.max_tokens or used + amount > self.max_tokens:
+                raise RuntimeError(
+                    "LLM_RATE_LIMITED_TPM: local rolling budget would exceed "
+                    f"{self.max_tokens} tokens per {int(self.window_seconds)} seconds "
+                    f"(used={used}, requested={amount}). No provider retry was attempted."
+                )
+            self._events.append((timestamp, amount))
+            return {"used_tokens": used + amount, "remaining_tokens": self.max_tokens - used - amount}
 
 
 def _send_groq_request(
     payload: dict[str, Any],
     *,
     request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
-    _model_fallback_attempted: bool = False,
-    _rate_limit_retry: bool = False,
     _json_mode_retry: bool = False,
 ) -> dict[str, Any]:
+    estimated_tokens = _estimate_groq_request_tokens(payload)
+    if estimated_tokens > MAX_REQUEST_TOKENS:
+        raise RuntimeError(
+            "LLM_CONTEXT_BUDGET_EXCEEDED: request preflight estimated "
+            f"{estimated_tokens} tokens against {MAX_REQUEST_TOKENS}."
+        )
     if request_sender is not None:
         return request_sender(payload)
     body = json.dumps(payload).encode()
-    request = urllib.request.Request(
-        GROQ_ENDPOINT,
-        data=body,
-        headers={
-            "Authorization": "Bearer " + GROQ_KEY,
-            "Content-Type": "application/json",
-            "User-Agent": "Barrot-Agent/1.0",
-        },
-    )
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": "Barrot-Agent/1.0",
+    }
+    if GROQ_KEY:
+        headers["Authorization"] = "Bearer " + GROQ_KEY
+    request = urllib.request.Request(GROQ_ENDPOINT, data=body, headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=90) as response:
             return json.load(response)
@@ -381,50 +503,18 @@ def _send_groq_request(
             return _send_groq_request(
                 fallback_payload,
                 request_sender=request_sender,
-                _model_fallback_attempted=_model_fallback_attempted,
-                _rate_limit_retry=_rate_limit_retry,
                 _json_mode_retry=True,
             )
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
         if exc.code in {413, 429} and ("tokens per minute" in lowered or "tpm" in lowered):
-            if exc.code == 429 and not _rate_limit_retry:
-                retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
-                if retry_match:
-                    retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
-                    if 0 < retry_seconds <= 60:
-                        print(
-                            f"Groq per-minute rate limit reached; retrying current model once in {retry_seconds:.1f}s.",
-                            file=sys.stderr,
-                        )
-                        time.sleep(retry_seconds)
-                        return _send_groq_request(
-                            payload,
-                            request_sender=request_sender,
-                            _model_fallback_attempted=_model_fallback_attempted,
-                            _rate_limit_retry=True,
-                            _json_mode_retry=_json_mode_retry,
-                        )
-            if not _model_fallback_attempted:
-                primary_model = str(payload.get("model") or MODEL)
-                return _try_groq_model_fallback(
-                    payload,
-                    request_sender=request_sender,
-                    primary_model=primary_model,
-                    reason="per-minute token",
-                    json_mode_retry=_json_mode_retry,
-                )
-            if exc.code == 413:
-                raise RuntimeError(f"LLM_CONTEXT_BUDGET_EXCEEDED: {detail}") from exc
-        if exc.code == 429 and "tokens per day" in lowered and not _model_fallback_attempted:
-            primary_model = str(payload.get("model") or MODEL)
-            return _try_groq_model_fallback(
-                payload,
-                request_sender=request_sender,
-                primary_model=primary_model,
-                reason="daily token",
-                json_mode_retry=_json_mode_retry,
-            )
+            raise RuntimeError(f"LLM_RATE_LIMITED_TPM: Groq HTTP {exc.code}: {detail}") from exc
+        if exc.code == 413:
+            raise RuntimeError(f"LLM_CONTEXT_BUDGET_EXCEEDED: Groq HTTP 413: {detail}") from exc
+        if exc.code == 429 and "tokens per day" in lowered:
+            raise RuntimeError(f"LLM_RATE_LIMITED_DAILY: Groq HTTP 429: {detail}") from exc
+        if exc.code == 429:
+            raise RuntimeError(f"LLM_RATE_LIMITED: Groq HTTP 429: {detail}") from exc
         raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM network error: {exc}") from exc
@@ -440,11 +530,25 @@ class ScriptBrain:
         repo_root: Path = ROOT,
         max_tool_rounds: int = MAX_TOOL_ROUNDS,
         enable_tools: bool = True,
+        max_request_tokens: int = MAX_REQUEST_TOKENS,
+        max_tool_result_chars: int = MAX_TOOL_RESULT_CHARS,
+        token_budget: SlidingWindowTokenBudget | None = None,
     ):
         self.request_sender = request_sender
         self.repo_browser = RepoBrowser(repo_root)
         self.max_tool_rounds = max_tool_rounds
         self.enable_tools = enable_tools
+        self.max_request_tokens = min(int(max_request_tokens), MAX_REQUEST_TOKENS)
+        self.max_tool_result_chars = min(int(max_tool_result_chars), MAX_TOOL_RESULT_CHARS)
+        if self.max_request_tokens <= 0 or self.max_tool_result_chars <= 0:
+            raise ValueError("ScriptBrain request and tool-result budgets must be positive.")
+        self.token_budget = token_budget or SlidingWindowTokenBudget(max_tokens=MAX_TPM_TOKENS)
+        self.last_budget_stats: dict[str, int] = {
+            "estimated_tokens": 0,
+            "dropped_messages": 0,
+            "retained_messages": 0,
+            "total_dropped_messages": 0,
+        }
         self.tool_funcs = {
             "repo_browser.print_tree": self.repo_browser.print_tree,
             "repo_browser.search": self.repo_browser.search,
@@ -514,7 +618,8 @@ class ScriptBrain:
             return _tool_error(f"Invalid JSON arguments for {name}: {exc}")
         if not isinstance(arguments, dict):
             return _tool_error(f"Tool arguments for {name} must be an object.")
-        return self.tool_funcs[name](arguments)
+        result = self.tool_funcs[name](arguments)
+        return _truncate_tool_result(result, self.max_tool_result_chars)
 
     def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None, use_tools: bool | None = None, max_output_tokens: int | None = None) -> str:
         messages: list[dict[str, Any]] = []
@@ -527,14 +632,33 @@ class ScriptBrain:
         tools_enabled = (
             self.enable_tools if use_tools is None else bool(use_tools) and bool(self.tools)
         )
+        output_budget = max_output_tokens or (768 if tools_enabled else 1024)
         for _ in range(self.max_tool_rounds):
-            payload = _groq_payload(
+            active_tools = self.tools if tools_enabled else None
+            bounded_messages, budget_stats = _bound_groq_messages(
                 messages,
-                tools=self.tools if tools_enabled else None,
-                max_tokens=max_output_tokens or (1536 if tools_enabled else 1024),
+                tools=active_tools,
+                max_tokens=output_budget,
+                max_request_tokens=self.max_request_tokens,
+            )
+            payload = _groq_payload(
+                bounded_messages,
+                tools=active_tools,
+                max_tokens=output_budget,
                 json_mode=not tools_enabled,
                 reasoning_effort=None if tools_enabled else "low",
             )
+            estimated_tokens = _estimate_groq_request_tokens(payload)
+            if estimated_tokens > self.max_request_tokens:
+                raise RuntimeError(
+                    "LLM_CONTEXT_BUDGET_EXCEEDED: bounded request still exceeds the configured limit."
+                )
+            self.token_budget.reserve(estimated_tokens)
+            self.last_budget_stats["estimated_tokens"] = estimated_tokens
+            self.last_budget_stats["dropped_messages"] = budget_stats["dropped_messages"]
+            self.last_budget_stats["retained_messages"] = budget_stats["retained_messages"]
+            self.last_budget_stats["total_dropped_messages"] += budget_stats["dropped_messages"]
+            messages = bounded_messages
             data = _send_groq_request(payload, request_sender=self.request_sender)
             try:
                 reply = data["choices"][0]["message"]

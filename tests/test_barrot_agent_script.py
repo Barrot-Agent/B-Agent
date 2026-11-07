@@ -702,3 +702,153 @@ def test_bundle_provider_rate_limit_posts_deterministic_snapshot_without_startin
     assert "PR #1640" in report
     assert "No repository source file was changed" in report
     assert "Repository repair is **not complete**" in report
+
+
+def test_script_brain_bounds_old_history_and_tool_results_before_each_request(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_context_budget_test")
+    workspace = tmp_path / "repo"
+    workspace.mkdir()
+    payloads: list[dict[str, object]] = []
+
+    def sender(payload: dict[str, object]) -> dict[str, object]:
+        payloads.append(json.loads(json.dumps(payload)))
+        if len(payloads) == 1:
+            return {
+                "choices": [{
+                    "message": {
+                        "role": "assistant",
+                        "content": "",
+                        "tool_calls": [{
+                            "id": "budget-call",
+                            "type": "function",
+                            "function": {
+                                "name": "repo_browser.search",
+                                "arguments": json.dumps({"query": "BUDGET_TEST"}),
+                            },
+                        }],
+                    }
+                }]
+            }
+        return {"choices": [{"message": {"role": "assistant", "content": "done"}}]}
+
+    brain = module.ScriptBrain(
+        request_sender=sender,
+        repo_root=workspace,
+        max_tool_rounds=2,
+        max_request_tokens=6500,
+        max_tool_result_chars=1800,
+    )
+    brain.tool_funcs["repo_browser.search"] = lambda _arguments: "TOOL_RESULT_START" + ("z" * 10000)
+    history = [
+        {"role": "user" if index % 2 == 0 else "assistant", "content": f"OLD-HISTORY-{index}-" + ("x" * 2500)}
+        for index in range(12)
+    ]
+
+    result = brain.think(
+        "CURRENT_TASK_SENTINEL",
+        history=history,
+        system="SYSTEM_SAFETY_SENTINEL",
+        use_tools=True,
+    )
+
+    assert result == "done"
+    assert len(payloads) == 2
+    for payload in payloads:
+        assert module._estimate_groq_request_tokens(payload) <= brain.max_request_tokens
+        combined = json.dumps(payload["messages"])
+        assert "SYSTEM_SAFETY_SENTINEL" in combined
+        assert "CURRENT_TASK_SENTINEL" in combined
+        assert "OLD-HISTORY-0-" not in combined
+    tool_messages = [item for item in payloads[1]["messages"] if item.get("role") == "tool"]
+    assert len(tool_messages) == 1
+    assert len(tool_messages[0]["content"]) <= 1800
+    assert "[TRUNCATED by Barrot request budget" in tool_messages[0]["content"]
+    assert brain.last_budget_stats["total_dropped_messages"] > 0
+
+
+def test_script_brain_fails_closed_when_required_system_and_task_context_exceeds_budget(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_required_context_budget_test")
+    calls: list[dict[str, object]] = []
+    brain = module.ScriptBrain(
+        request_sender=lambda payload: calls.append(payload) or {"choices": [{"message": {"content": "{}"}}]},
+        repo_root=tmp_path,
+        enable_tools=False,
+        max_request_tokens=100,
+    )
+
+    with pytest.raises(RuntimeError, match="LLM_CONTEXT_BUDGET_EXCEEDED"):
+        brain.think("CURRENT_TASK-" + ("x" * 2000), system="SYSTEM-" + ("s" * 1000), use_tools=False)
+
+    assert calls == []
+
+
+def test_sliding_window_token_budget_fails_closed_without_waiting_or_retrying() -> None:
+    module = load_script_module("barrot_agent_sliding_tpm_budget_test")
+    budget = module.SlidingWindowTokenBudget(max_tokens=100, window_seconds=60)
+    budget.reserve(80, now=0)
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        budget.reserve(30, now=1)
+    result = budget.reserve(30, now=61)
+    assert result == {"used_tokens": 30, "remaining_tokens": 70}
+
+
+def test_groq_tpm_413_is_not_retried_or_fallbacked(monkeypatch) -> None:
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_no_tpm_retry_test")
+    calls: list[object] = []
+
+    def rate_limited(request, timeout=90):
+        calls.append(request)
+        raise urllib.error.HTTPError(
+            request.full_url,
+            413,
+            "Too Large",
+            {},
+            io.BytesIO(b"Request too large on tokens per minute; requested 8099 tokens, limit 8000"),
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", rate_limited)
+    monkeypatch.setattr(module.time, "sleep", lambda *_args, **_kwargs: pytest.fail("TPM failures must not sleep/retry"))
+
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request(
+            {"model": module.MODEL, "messages": [{"role": "user", "content": "small"}], "max_tokens": 100}
+        )
+
+    assert len(calls) == 1
+
+
+def test_local_provider_requires_explicit_model_and_loopback_endpoint(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_LLM_PROVIDER", "local")
+    monkeypatch.setenv("BARROT_LLM_MODEL", "test-local-model")
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "http://127.0.0.1:8080/v1/chat/completions")
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    module = load_script_module("barrot_agent_local_provider_test")
+    assert module.LLM_PROVIDER == "local"
+    assert module.MODEL == "test-local-model"
+    assert module.GROQ_ENDPOINT == "http://127.0.0.1:8080/v1/chat/completions"
+    assert module.GROQ_KEY == ""
+
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "http://0.0.0.0:8080/v1/chat/completions")
+    with pytest.raises(ValueError, match="loopback"):
+        load_script_module("barrot_agent_public_local_endpoint_rejected_test")
+
+
+def test_local_provider_does_not_guess_a_model(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_LLM_PROVIDER", "local")
+    monkeypatch.delenv("BARROT_LLM_MODEL", raising=False)
+    monkeypatch.delenv("BRAIN_MODEL", raising=False)
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "http://127.0.0.1:8080/v1/chat/completions")
+    with pytest.raises(ValueError, match="BARROT_LLM_MODEL is required"):
+        load_script_module("barrot_agent_local_model_required_test")
+
