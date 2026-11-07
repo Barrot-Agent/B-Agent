@@ -758,3 +758,88 @@ Both PRs are non-draft, conflict-free and report GitHub mergeable state `clean`.
 - Shadow/paper trades: none.
 - Real-money actions: none.
 - Forecast outcomes: none.
+
+
+## 2026-11-07 Run 10 — verified at 01:16:14Z
+
+### Repository state and integration inventory
+
+- Current main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main tree: 1,403 files, 493 Python files, 87 test modules and 86 workflows.
+- PR #1640 is open/non-draft at exact head `3ab183c0fb9d4eca8c9ab701f726edc21d928beb`, 483 commits ahead of main, 0 behind, 155 changed paths. Its branch tree has 1,461 files, 533 Python files, 116 test modules and 87 workflows.
+- PR #1643 is open/non-draft at exact head `c19ad0294653956b51b9e8042a2fdd7440f4e957`, 523 commits ahead of main, 0 behind, 371 changed paths. Its branch tree has 1,772 files, 631 Python files, 228 test modules and 86 workflows.
+- #1640 and #1643 are divergent: comparison reports 523 commits ahead and 483 behind. Their only shared changed path is `.github/workflows/dependency-audit.yml`; both branches have identical blob SHA `6515307991420ab90d8671034b13ac2eb56190b3`. The remaining #1643 research paths are unique to that branch. Do not merge #1643 directly.
+- Open PR inventory: 371 total, 355 drafts and 16 non-drafts. No PR was created or closed in this run.
+
+### EXECUTED — new XRP spot/funding freshness artifact on #1643
+
+- Artifact: [20261107T011136Z spot/funding freshness reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T011136Z-xrp-spot-funding-freshness-reconciliation.json)
+- Regression tests: [spot/funding freshness tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_spot_funding_freshness_reconciliation_20261107.py)
+- Capture record time: 2026-11-07 01:11:36 UTC. Hashes cover the exact JSON text returned by the retrieval service, not complete HTTP wire bytes or headers.
+- Kraken XRP/USD: last $1.17818; bid $1.17817; ask $1.17818; 0.08488 bps top-of-book spread; 29.78M XRP rolling-24h volume; $1.18867 rolling-24h VWAP; $1.17085 rolling-24h low. Kraken supplied no provider timestamp, so this receipt is not admitted to the point-in-time feature store.
+- OKX XRP-USDT: last 1.1802; bid 1.1801; ask 1.1802; 0.84735 bps top-of-book spread; 53.06M XRP rolling-24h volume; 63.14M USDT quote volume; provider timestamp 01:10:59.864Z, 36.136 seconds old at capture. It is fresh for the 300-second ticker threshold but contains no multi-level depth.
+- Binance XRPUSDT perpetual premium-index response: funding +0.004314% per eight hours, mark 1.1795, index 1.1799546; provider timestamp 00:56:47.002Z, 888.998 seconds old at capture. It is stale and provides no open-interest or liquidation observation.
+- The raw OKX/Kraken last-price difference is 0.17145%, but USD/USDT is not normalized, provider timestamps are not synchronized and no execution costs or consolidated depth are available. It is not an arbitrage claim.
+- All three observations remain excluded from model features as a combined snapshot because there is no common event-time cutoff; Kraken time is absent; Binance funding is stale; and depth/OI coverage is incomplete. No directional or shadow forecast was issued.
+
+### VERIFIED — exact-head CI
+
+**PR #1640, head `3ab183c0`**
+- Full repository suite: **1,071 passed, 8 subtests passed**.
+- Core suite: **629 passed, 8 subtests passed**.
+- Inclusive package coverage: **57.64%**, above the 53% threshold.
+- [Full CI run 42317085073](https://github.com/Barrot-Agent/B-Agent/actions/runs/42317085073)
+- [Six-manifest dependency audit 42317085065](https://github.com/Barrot-Agent/B-Agent/actions/runs/42317085065): passed.
+- [Fail-closed gate 42317085069](https://github.com/Barrot-Agent/B-Agent/actions/runs/42317085069): passed; automatic merging remains disabled.
+
+**PR #1643, head `c19ad029`**
+- Full repository suite: **1,649 passed, 8 subtests passed**, including the five new spot/funding reconciliation tests.
+- Core suite: **498 passed, 8 subtests passed**.
+- [Full CI run 42322917348](https://github.com/Barrot-Agent/B-Agent/actions/runs/42322917348)
+- [Six-manifest dependency audit 42322917124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42322917124): passed.
+- [Fail-closed gate 42322917127](https://github.com/Barrot-Agent/B-Agent/actions/runs/42322917127): passed; automatic merging remains disabled.
+
+### EXECUTED — current-main Barrot workflow failure and V3 safety delta
+
+- Main-branch Barrot Agent workflow run [42321751663](https://github.com/Barrot-Agent/B-Agent/actions/runs/42321751663), triggered by issue #1656, failed its deterministic bundle-quality gate with `TASK_FIELD_EMPTY` and `AUTHORIZATION_CONSTRAINT_MISSING`.
+- The run did not start repository repair. It marked issue #1656 with `barrot-dispatch-attempted`; the release step was skipped after the gate failure. No repository code was changed by that run.
+- Main's issue-triggered workflow currently has `contents: write`, `pull-requests: write` and `issues: write` permissions. The #1640 branch replaces this with a manual-only, no-permissions, disabled/quarantined workflow pending the V3 integration and explicit authorization path. This is a safety quarantine, not evidence that autonomous repository execution is complete.
+
+### Revalidated institutional capital evidence — no duplicate artifact created
+
+- Rechecked Evernorth Holdings Inc.'s October 30, 2026 SEC Form S-1 (accession `000162828026068609`). The existing artifacts [capital-flow final correction](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T155006Z-evernorth-capital-flow-final-correction.json) and [SBI group capital reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106-evernorth-delayed-funding-and-sbi-group-capital-reconciliation.json) already preserve the relevant disclosure; no duplicate filing artifact was added.
+- Issuer-reported XRP holdings were approximately 473M as of October 9, 2026: 388.910554M XRP in kind plus 84.365876M XRP purchased with $214M of cash. The cash-funded purchase was historical (2025), not current November 2026 spot demand.
+- The $30M 4% convertible senior PIK notes were funded October 12, 2026; the filing states intended general corporate use including XRP acquisition, but a specific XRP purchase from those proceeds remains unverified. The $9.7M Ripple-related Company Facility draw is debt/operating liquidity, not equity or proven XRP buying.
+- The Cantor ELOC and public warrants remain conditional financing channels, not cash already received. The exact phrase “actual capital” is not found in the checked SEC filings; the filings use categories such as gross proceeds, net proceeds, private placement, debt, committed equity facility and in-kind XRP.
+- The SEC filing defines four SBI Stockholders controlled by SBI Holdings, Inc. The existing reconciliation records 9,431,914 Class A shares, 2,359,038 Class C shares, 21.4% common-stock ownership and 39.9% voting power. The 39.9% is a voting-power cap/measure, not a statement that SBI owns 39.9% of all economic equity. SBI's individual cash allocation within aggregate advance funding remains undisclosed.
+
+### Backlog and merge decision
+
+- #1640: sole active V3 integration candidate; 22/22 review threads resolved; zero approving GitHub reviews.
+- #1643: sole active XRP research candidate; 19/19 review threads resolved; zero approving GitHub reviews.
+- #1642: its head is an ancestor of #1640 (0 commits ahead, 482 behind). Classify as superseded by #1640; keep open until #1640 is merged and its content is verified on main, then close with a cross-reference.
+- #1655: draft structural-analysis refinement, 8 changed paths; 3 overlap #1640 and 5 are unique. It is 17 commits ahead of main and 483 behind #1640. Its own head passed 740 tests and 8 subtests, but it is divergent/draft and must not be merged independently. Preserve its unique bundle-engineering safety and source-catalog work for review and reconciliation into the existing integration stream.
+- #1653: blocked; 8 unresolved review threads. Its CI workflow change overlaps #1640; preserve its unique codebase-memory work but do not merge until the correctness, integrity and fetch-boundary findings are resolved.
+- Main branch reports protected. Detailed branch-protection settings still return HTTP 403; the only visible repository ruleset, “Fall Back,” is disabled. `.github/CODEOWNERS` names only `@Barrot-Agent`; no independent human code owner is defined. Both mission PRs have resolved threads but only COMMENTED reviews and zero approving reviews.
+- Repository metadata reports GitHub Pages enabled, but Pages settings are not accessible through the current integration. A prior main push triggered Pages deployment run 41799855489. The external deployment side effect remains unresolved. Dependabot alert inventory is also not readable through the current integration; the two mission branches' six-manifest dependency audits passed.
+- Neither #1640 nor #1643 was merged. No protection rule was bypassed; no deployment, secret rotation, Space restart, Kaggle submission, paper trade or real-money action occurred.
+
+### Nine-platform coordination state
+
+- ChatGPT-to-GitHub access remains verified.
+- Copilot evidence remains limited to one-off GitHub-hosted reviews, not a persistent authenticated data flow.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks persistent authentication/data flows remain unverified. No nine-platform live coordination is claimed.
+
+### Next concrete action
+
+1. Obtain an independent approving review and resolve Pages deployment authorization before merging #1640; do not bypass branch protection.
+2. Merge #1640 only after the exact-head full suite, dependency/security gates, required approvals and external-side-effect authorization are all verified. Fetch main again, verify the merge commit and files, inspect automatic workflow effects, then run main CI.
+3. After that verified main build, create one consolidated research successor directly on the new main carrying #1643's unique artifacts and tests. Reconcile #1655's unique structural-analysis/bundle-engineering work and #1653's preserved codebase-memory work separately; do not merge divergent branches.
+4. Verify the first real scheduled main-branch ingestion run, including live OKX regional endpoint availability, provider timestamps, raw receipts and quality/failure records.
+5. Continue synchronized historical spot/depth/derivatives and institutional-flow coverage; establish external immutable retention, trusted evaluator keys, calibrated walk-forward lift, drift checks and shadow outcomes before any directional forecast.
+
+### Forecast and action ledger
+
+- Directional forecasts issued: none.
+- Shadow/paper trades: none.
+- Real-money actions: none.
+- Forecast outcomes: none.
