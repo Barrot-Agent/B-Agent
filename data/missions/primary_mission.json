@@ -68,7 +68,7 @@
       "topic_id": "xrp_calibration_drift_shadow",
       "priority": 6,
       "title": "Calibration, drift and shadow evaluation",
-      "goal": "Implement probability calibration, reliability diagnostics, drift monitoring and shadow-only evaluation using resolved, timestamped outcomes. Retain counter-hypotheses and minority objections. Fail closed when data quality, source independence, sample size or calibration gates are not met."
+      "goal": "Validate rolling temporal temperature scaling on mature, independent, synchronized XRP out-of-sample outcomes; extend calibration to a trained model only after one exists. Implement multivariate and concept-drift monitoring plus shadow-only evaluation, retain counter-hypotheses, and keep forecast issuance fail-closed until documented readiness thresholds pass."
     },
     {
       "topic_id": "xrp_forecast_outcome_ledger",
