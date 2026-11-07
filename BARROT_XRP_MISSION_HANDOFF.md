@@ -1,3 +1,128 @@
+## Run 19 — 2026-11-07T07:03:18Z
+
+This block supersedes Run 18 for current repository heads, market evidence, recovery behavior and verification. Main remains unchanged. Work stayed on the two existing mission branches; no new PR was created.
+
+### Mission priority and main state
+
+- Priority: XRP intelligence and prediction-engine mastery.
+- Foundation: Barrot V3 remains execution, orchestration, safety and verification.
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- Complete recursive main tree: 1,403 entries, 1,298 files, 493 Python files, 86 workflow files, 97 test files; response not truncated.
+- Complete open-PR pagination: 371 open PRs, 355 drafts and 16 non-drafts.
+- Latest observed main scheduled run: [Cross Analysis 42348832910](https://github.com/Barrot-Agent/B-Agent/actions/runs/42348832910), completed successfully on the unchanged main SHA. This is not a full repository CI run for the unmerged mission code.
+
+### New XRP evidence committed to existing #1643
+
+Added:
+- `research/xrp_intelligence/20261107T070318Z-xrp-spot-cross-venue-timestamp-reconciliation.json`
+- `tests/test_xrp_spot_cross_venue_timestamp_reconciliation_20261107.py`
+
+The artifact records exact public exchange JSON strings and SHA-256 receipts, selected secondary-source methodology, timestamp quality, competing hypotheses and explicit model exclusion.
+
+**Direct spot observations at the 07:03:18Z run reference:**
+- Kraken XRP/USD: last 1.16618; bid 1.16617; ask 1.16618; 29.592M XRP rolling-24h volume; 24h VWAP 1.17916231. Kraken returned no provider timestamp, so live freshness cannot be proven.
+- OKX XRP-USDT: last 1.169; bid 1.1691; ask 1.1692; 55.623M XRP rolling-24h volume; 24h open 1.1923. Its provider snapshot timestamp was 06:57:23.768Z, 354.232 seconds before the run reference, above the 300-second feature-age limit.
+- The raw cross-venue last-price gap is 0.2418%; it is not an arbitrage observation because USD/USDT is not normalized, timestamps are not synchronized, and executable depth/fees are unavailable.
+- OKX's last price rose 0.7151% between provider ticker snapshots at 05:54:44.235Z and 06:57:23.768Z. This is a snapshot-to-snapshot last-price comparison, not a continuous return or candle close. It is not a model feature.
+- No full depth ladder was admitted.
+
+**Secondary market context, kept separate from direct exchange receipts:**
+- Alpha Finance reports November 6 net XRP ETF flow of $0 across five of five funds, +$8.4M over seven sessions and +$45.9M over 30 sessions. Its methodology identifies Coinglass as its ETF dashboard feed. It publishes no fund AUM/holdings in this table; net flow is not gross creations/redemptions or issuer/custodian evidence. Independence from other Coinglass-derived dashboards is not established.
+- CryptoQuant analyst Darkfost reports 418.5M XRP withdrawn from Binance on November 4 (approximately $540M). CryptoQuant explicitly warns some movement may be internal transfers. This is not a Binance statement or proof of accumulation.
+- Alpha Finance's 06:20Z derivatives snapshot reports $2.76B OI and $2.66B 24h volume, but its $90.6M short-liquidity-above versus $29.9M long-liquidity-below clusters are modelled from OI/leverage tiers, not actual resting orders. The view is about 43 minutes older than the run reference and does not establish direction.
+
+The artifact keeps all direct and secondary sources model-ineligible. **Forecast status: NOT_ISSUED.**
+
+### Prediction-engine audit and recovery correction
+
+The current #1640 branch contains the temporal calibration and walk-forward implementation. Code inspection confirmed:
+- Four deterministic baselines: naive class prior, momentum sign, mean-reversion sign and volatility-normal.
+- Each historical origin rebuilds a point-in-time snapshot and requires training starts and outcomes to be available by the cutoff minus embargo.
+- Calibration history is separated by baseline model and uses only prior resolved out-of-sample outcomes available by the calibration cutoff.
+- Temperature is fitted on the earlier 80% and validated on the later 20%; the identity transform remains unless temporal validation improves log loss by at least 0.005.
+- This calibrates deterministic baselines; it is not a trained XRP prediction model or evidence of out-of-sample predictive lift.
+- Forecast readiness still requires at least 100 OOS outcomes, 100 shadow outcomes, 10x horizon coverage, two independent source groups, weighted calibration error at most 0.05 and an externally trusted Ed25519 evaluator attestation. No trusted evaluator key or sufficient shadow history is verified.
+
+**New critical recovery defect found and fixed on #1640:**
+- The Actions cache restore uses restore-keys. A partial restore can populate `feature_store.sqlite3` while `cache-hit` remains false.
+- Before this correction, if no trusted checkpoint/archive was found, the fallback labeled the source as bootstrap but could leave that partial database in place. The collector would then open stale state under a bootstrap label.
+- Commit `3b04f36ebd7d3ad1f5e52fffc023fa1ab47cd1b2` now removes `artifacts/xrp_ingestion/feature_store.sqlite3` at the start of the non-exact-cache fallback, before searching trusted per-run checkpoints and daily archives. If none exists, bootstrap starts from an empty store.
+- Added a regression assertion in `tests/test_xrp_public_ingestion.py` and clarified `research/xrp_intelligence/feature-store-contract.md`.
+- This fix is on the PR branch, not main. Exact-head CI must pass before it is treated as verified.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+- Before the new cache-recovery correction, head `08a8d8a84cdde5ea807661b1efb41135d267b3af` passed [full CI 42345671393](https://github.com/Barrot-Agent/B-Agent/actions/runs/42345671393): 1,096 full-suite tests, 8 subtests; 630 core tests, 8 subtests; 57.89% inclusive package coverage against a 53% threshold; installed-wheel and packaged-primary-mission verification passed.
+- The same exact head passed [six-manifest dependency audit 42345671300](https://github.com/Barrot-Agent/B-Agent/actions/runs/42345671300) and [fail-closed gate 42345671277](https://github.com/Barrot-Agent/B-Agent/actions/runs/42345671277).
+- Current code-bearing head after the recovery fix: `3b04f36ebd7d3ad1f5e52fffc023fa1ab47cd1b2`. Exact-head full-suite/security verification is pending for the new handoff tip created by this update; do not substitute the preceding head's passing result.
+
+**PR #1643 — XRP research**
+- Current exact head: `3ad0fc255fba3b17e676d5eb54b2660ed1afa0c5`.
+- Full repository suite: **1,725 passed, 8 subtests passed** — [CI 42350337783](https://github.com/Barrot-Agent/B-Agent/actions/runs/42350337783).
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit: passed — [42350337787](https://github.com/Barrot-Agent/B-Agent/actions/runs/42350337787).
+- Fail-closed gate: passed; merging remains disabled — [42350337772](https://github.com/Barrot-Agent/B-Agent/actions/runs/42350337772).
+- Intermediate head `d27203c89d221bf2e268b6077343cd847733b692` had one test-only KeyError because a regression assertion used `limitations` while the artifact schema used `limits`; the assertion was corrected in `3ad0fc`, and the full exact-head suite passed. The artifact was not changed to conceal the test failure.
+
+### Integration-first reconciliation and backlog
+
+- #1640: 526 commits ahead of main, 0 behind; 161 changed paths.
+- #1643: 571 commits ahead of main, 0 behind; PR changed-file API reports 404 paths. The compare API returns at most 300 files, so the complete path list was taken from the PR changed-filenames endpoint.
+- The branches are divergent: #1643 is 571 commits ahead and 526 behind #1640.
+- Exact shared changed paths: `.github/workflows/dependency-audit.yml` (identical blob SHA `6515307991420ab90d8671034b13ac2eb56190b3`), `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different), and `tests/test_kamilah_channel_identity_gate.py` (different). Preserve #1643's 18 candidate references, but verified YouTube channel ownership and verified video inventory remain zero. Do not merge #1643 directly; after #1640 is merged and verified on main, reconcile the unique research paths and these two Kamilah conflicts in one successor based on the resulting main.
+
+**Targeted open-PR overlap audit against #1640:**
+- #1642: 7/7 changed paths overlap #1640; superseded candidate, but keep open until successor content is verified on main.
+- #1614: 8/57 overlap; 49 unique paths remain.
+- #1611: 6/8 overlap; 2 unique paths remain.
+- #1610: 6/14 overlap; 8 unique paths remain.
+- #1602: 11/27 overlap; 16 unique paths remain.
+- #1600: 10/26 overlap; 16 unique paths remain.
+- #1590: 10/25 overlap; 15 unique paths remain.
+- #1510: 4/5 overlap; 1 unique path remains.
+- #1466: 4/8 overlap; 4 unique paths remain.
+- #1400: 1/3 overlap; 2 unique paths remain.
+- #1247: 1/5 overlap; its four unique paths include forecast issuance/outcome schemas, validator and tests; preserve.
+- #1597: 15/17 overlap #1643; 2 unique paths remain.
+- #1591: 12/14 overlap #1643; 2 unique paths remain.
+- #1586 (19 paths), #1547 (16), #1535 (6), #1529 (8), #1494 (13), #1477 (78) and #1353 (1,084) have no changed-path overlap with #1643 in the targeted comparison; preserve as unique/unreviewed rather than closing.
+- #1177: 1/2 paths overlap #1643; preserve its unique path.
+- #1655: draft, 3/8 paths overlap #1640 and 5 are unique; preserve for later reconciliation.
+- #1653: blocked by eight unresolved review threads and repository-synchronization/overwrite-safety findings.
+- #1644–#1650 dependency/workflow updates remain successor candidates; exact content must be verified on main before any closure.
+- No PR was closed.
+
+### Workflow side-effect audit
+
+All 41 workflow files changed by #1640 were inspected. Relevant merge-trigger implications:
+- `xrp-public-ingestion.yml` is scheduled hourly at minute 3 and daily at 00:15, with `actions:read` and `contents:read`; it fetches public sources and uploads artifacts/checkpoints, but does not write to main. Manual Coinbase historical backfill is bounded to 365 days and requires workflow dispatch.
+- `cross-analysis.yml` and `dependency-audit.yml` are read-only/artifact-oriented; the scheduled Cross Analysis path has no main write.
+- `webmcp-monetization-enrich.yml` is a workflow-run follow-up that uses artifacts/read permissions, not a main writer.
+- `barrot-ops.yml` can import/overwrite a Databricks workspace notebook and download a Kaggle dataset only through manual dispatch with explicit YES and exact-main-SHA checks; it does not submit a Kaggle competition entry.
+- `deploy-a2a-worker.yml` and `sync-self-hosted-brain.yml` are manual-only and require explicit YES, secret-rotation confirmation and exact-main-SHA checks. They are not triggered by merge.
+- `coinbase-paper-trader.yml` is manual-only, requires explicit YES and exact main SHA, uses read-only repository permissions and uploads simulation artifacts; it is not run by merge.
+- Ask Barrot, Barrot Agent and Self-Upgrade workflows remain quarantined with no permissions. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, external model transfer or real-money action was performed.
+
+### Nine-platform map and exact-phrase research
+
+- ChatGPT-to-GitHub is the only verified persistent connection for this run. Copilot activity remains one-off COMMENTED PR review, not approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flow. Groq is outside the requested nine and was not called.
+- Exact-phrase search again distinguishes Permission Coin's ASK token from the separate inactive/untracked Ask Coin listing; no XRP relationship is established.
+- The exact phrase "actual capital" produced user-generated KuCoin Community Insights commentary, not issuer-primary evidence. The $80.7M Evernorth facility remains potential financing capacity, not verified proceeds or XRP purchases.
+- Tokyo SBIC's official page confirms a completed 2025 generative-AI/ChatGPT course for its investee companies; it does not establish an OpenAI partnership or SBI Holdings relationship.
+- Search surfaced a Social Blade channel titled "The Secret Life of Camilla", but no first-party link ties it to Dr. Kamilah Stevenson. Do not attribute its 22 videos; verified channel ownership and video inventory remain zero.
+
+### Merge decision and next action
+
+- #1640 review threads: 22/22 resolved; #1643: 19/19 resolved. Both have **zero APPROVED GitHub reviews**; COMMENTED reviews do not count.
+- Main reports `protected=true`. Detailed branch-protection access returns HTTP 403. The only visible ruleset, `Fall Back`, is disabled. `.github/CODEOWNERS` assigns ownership only to `@Barrot-Agent`; no independent reviewer is available in the recorded review set.
+- GitHub Pages settings remain inaccessible. A previous main push triggered a successful build/report/deploy sequence in [run 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). Authorization for another merge-triggered deployment is not established.
+- **No merge was performed.** Do not bypass protection or infer approval from COMMENTED reviews. No unique source PR was closed.
+
+Next: finish exact-head full-suite, installed-wheel, dependency/security and fail-closed verification on the #1640 head created by this handoff update; obtain an independent approval and resolve the Pages deployment authorization boundary; merge #1640 only if every requirement is satisfied; verify the merge commit, files, automatic workflow effects and main CI; then consolidate #1643's unique research on the verified new main. After integration, verify the first real scheduled main-branch ingestion run, continue synchronized historical collection, and require measured OOS lift/calibration/drift/shadow evidence before any directional forecast.
+
+---
+
 ## Run 18 — 2026-11-07T06:08:23.061Z
 
 This block supersedes Run 17 for the current repository heads, market snapshot, macro event and exact-head verification. Main remains unchanged. Work stayed on the two existing mission branches; no new PR was created.
