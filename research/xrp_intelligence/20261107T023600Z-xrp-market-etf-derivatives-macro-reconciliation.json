@@ -14,15 +14,15 @@
       "vwap_24h_usd": 1.18645279,
       "low_24h_usd": 1.17085,
       "high_24h_usd": 1.22092,
-      "open_24h_usd": 1.17749,
       "trade_count_24h": 33198,
       "price_vs_vwap_pct": -0.7975698721,
       "price_above_low_pct": 0.5244053465,
-      "price_vs_open_pct": -0.0424632056,
       "provider_timestamp_utc": null,
       "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
       "model_eligible": false,
-      "exclusion_reason": "Kraken ticker response contains no provider event timestamp; retrieval time is not substituted for exchange event time."
+      "exclusion_reason": "Kraken ticker response contains no provider event timestamp; retrieval time is not substituted for exchange event time.",
+      "utc_day_open_usd": 1.17749,
+      "price_vs_utc_day_open_pct": -0.0424632056
     },
     "derivatives": {
       "tradradar": {
