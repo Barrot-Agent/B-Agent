@@ -55,14 +55,18 @@
   "inventory_totals": {
     "verified_public_videos": 1,
     "verified_personal_youtube_channels": 0,
-    "unverified_candidate_channels_preserved": 18
+    "unverified_seed_video_references_preserved": 18,
+    "related_public_video_references_preserved": 2
   },
   "candidate_handling": {
     "existing_candidate_registry": "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
-    "candidate_count_preserved": 18,
+    "seed_video_references_preserved": 18,
+    "related_public_video_references_preserved": 2,
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "candidate_channel_handle": "@drkamilahstevenson",
+    "candidate_channel_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
     "candidate_channels_attributed_to_person": false,
-    "example_unverified_candidate": "@drkamilahstevenson",
-    "reason_not_verified": "Third-party channel directories and analytics pages are not first-party identity links. The first-party website currently links to Facebook and Instagram, not a YouTube channel."
+    "reason_not_verified": "The first-party website links to Facebook and Instagram, not the exact YouTube channel. A self-described Linktree links to the candidate handle, but no reciprocal first-party link or platform About metadata tying the handle to the candidate channel ID was captured."
   },
   "source_independence": {
     "primary_video_record": "TEDx Talks verified YouTube upload",
@@ -72,7 +76,8 @@
   "limitations": [
     "This verifies one public TEDx video featuring Dr. Kamilah Stevenson, not ownership of a Kamilah-branded YouTube channel.",
     "The first-party site did not expose a YouTube channel link in the inspected page.",
-    "The 18 candidate references remain unverified and are not included in the verified video inventory.",
+    "The 18 seed-video references and two related-public-video references in the existing registry remain candidate-only; they are not an attributed, canonical, or exhaustive personal-channel inventory.",
+    "The candidate handle-to-channel-ID relation remains unverified at platform metadata level.",
     "YouTube view and like counts are retrieval-time metadata and may change."
   ],
   "forecast_or_market_use": {
