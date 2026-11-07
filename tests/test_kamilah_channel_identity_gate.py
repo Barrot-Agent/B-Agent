@@ -32,6 +32,8 @@ def test_all_profile_video_references_remain_candidate_only():
     assert profile["video_inventory_status"]["verified_inventory_count"] == 0
     assert all(v["attribution_status"] == "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED" for v in videos)
     assert all(v["eligible_for_forecast_feature"] is False for v in videos)
+    assert {"iwhpNT73zpk", "po4bv7889ao", "12HiznN3iLQ"} <= {v["video_id"] for v in videos}
+    assert profile["video_inventory_status"]["candidate_reference_count"] == 21
     assert profile["attribution_policy"]["allow_verified_creator_inventory"] is False
     assert profile["ingestion_policy"]["scope"] == "CANDIDATE_REFERENCES_ONLY_PENDING_CANONICAL_CHANNEL_VERIFICATION"
     assert profile["identity_status_history"][0]["status"] == "UNRESOLVED_NOT_EQUIVALENT"

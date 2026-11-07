@@ -15,20 +15,16 @@ def _record():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def test_kamilah_identity_bridge_uses_first_party_and_interview_cross_links():
+def test_person_identity_is_confirmed_but_personal_channel_remains_probable():
     record = _record()
     identity = record["identity"]
     assert identity["canonical_name"] == "Dr. Kamilah Stevenson"
-    assert identity["identity_status"] == "HIGH_CONFIDENCE_CROSS_SOURCE_LINKAGE"
-    assert identity["official_youtube_channel_handle"] == "@drkamilahstevenson"
+    assert identity["person_identity_status"] == "CONFIRMED"
+    assert identity["channel_identity_status"] == "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
+    assert identity["official_youtube_channel_handle"] is None
+    assert identity["candidate_youtube_channel_handle"] == "@drkamilahstevenson"
     assert identity["platform_verified_badge"] == "NOT_ESTABLISHED"
-    assert "not proof of a YouTube verification badge" in identity["channel_ownership_caveat"]
-    ids = {source["source_id"] for source in record["sources"]}
-    assert "ALL_NATIONS_CHICAGO_FIRST_PARTY_LEADERSHIP" in ids
-    assert "KAMILAH_STEVENSON_FIRST_PARTY_WEBSITE" in ids
-    assert "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT" in ids
-    assert "PAUL_BARRON_PODCAST_CRYPTO_PANICS" in ids
-    assert "KAMILAH_YOUTUBE_CHANNEL_PAGE" in ids
+    assert "remains probable" in identity["channel_ownership_caveat"]
 
 
 def test_short_source_receipts_recompute_and_respect_quotation_limit():
@@ -46,58 +42,51 @@ def test_short_source_receipts_recompute_and_respect_quotation_limit():
         assert hashlib.sha256(excerpt.encode("utf-8")).hexdigest() == digest
 
 
-def test_video_inventory_has_six_unique_verified_attributions():
+def test_three_verified_public_attributions_are_separated_from_personal_channel_candidates():
     record = _record()
-    videos = record["videos"]
-    assert len(videos) == 6
-    assert len({video["video_id"] for video in videos}) == 6
-    assert record["inventory_summary"]["verified_video_attributions"] == 6
-    assert record["inventory_summary"]["verified_personal_channel_uploads"] == 3
-    assert record["inventory_summary"]["verified_guest_appearances"] == 1
-    assert record["inventory_summary"]["verified_organization_channel_attributions"] == 1
-    assert record["inventory_summary"]["verified_tedx_speaker_attributions"] == 1
-    assert all(video["metadata_verified"] for video in videos)
+    verified = record["verified_videos"]
+    candidates = record["candidate_videos"]
+    assert len(verified) == 3
+    assert {v["video_id"] for v in verified} == {"Sulo54IlQ60", "E-jdY7gy7mQ", "VSgeDgOCexs"}
+    assert len(candidates) == 3
+    assert {v["video_id"] for v in candidates} == {"iwhpNT73zpk", "po4bv7889ao", "12HiznN3iLQ"}
+    assert record["inventory_summary"]["verified_video_attributions"] == 3
+    assert record["inventory_summary"]["verified_personal_channel_uploads"] == 0
+    assert record["inventory_summary"]["candidate_personal_channel_uploads"] == 3
 
 
-def test_personal_channel_uploads_use_the_cross_linked_handle():
+def test_candidate_personal_uploads_are_not_attributed_to_the_confirmed_person():
     record = _record()
-    personal = [v for v in record["videos"] if v["attribution_type"] == "PERSONAL_CHANNEL_UPLOAD"]
-    assert {v["video_id"] for v in personal} == {"iwhpNT73zpk", "po4bv7889ao", "12HiznN3iLQ"}
-    assert all(v["channel_handle"] == "@drkamilahstevenson" for v in personal)
-    assert all(v["attribution_status"].startswith("VERIFIED") for v in personal)
+    for video in record["candidate_videos"]:
+        assert video["attribution_status"] == "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED"
+        assert video["candidate_channel_handle"] == "@drkamilahstevenson"
+        assert video["content_verified"] is False
+        assert video["full_content_reviewed"] is False
 
 
-def test_unavailable_descriptions_are_not_inferred():
+def test_verified_guest_and_organization_videos_are_classified_correctly():
     record = _record()
-    by_id = {v["video_id"]: v for v in record["videos"]}
-    assert by_id["po4bv7889ao"]["description_available"] is False
-    assert by_id["12HiznN3iLQ"]["description_available"] is False
-    assert "description unavailable" in by_id["po4bv7889ao"]["summary"].lower()
-    assert "description unavailable" in by_id["12HiznN3iLQ"]["summary"].lower()
-
-
-def test_guest_and_organization_videos_are_not_mislabeled_as_personal_uploads():
-    record = _record()
-    by_id = {v["video_id"]: v for v in record["videos"]}
+    by_id = {v["video_id"]: v for v in record["verified_videos"]}
     assert by_id["Sulo54IlQ60"]["attribution_type"] == "GUEST_APPEARANCE"
     assert by_id["E-jdY7gy7mQ"]["attribution_type"] == "ORGANIZATION_CHANNEL_ATTRIBUTION"
     assert by_id["VSgeDgOCexs"]["attribution_type"] == "TEDX_SPEAKER_ATTRIBUTION"
+    assert all(v["full_content_reviewed"] is False for v in by_id.values())
 
 
-def test_fake_page_warning_and_non_attributed_repost_remain_quarantined():
+def test_interview_and_iheart_transcript_are_one_underlying_source_episode():
+    record = _record()
+    sources = {s["source_id"]: s for s in record["sources"]}
+    assert sources["PAUL_BARRON_PODCAST_CRYPTO_PANICS"]["source_independence_group"] == "same_paul_barron_interview_episode"
+    assert sources["IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT"]["source_independence_group"] == "same_paul_barron_interview_episode"
+
+
+def test_fake_page_warning_and_third_party_repost_remain_quarantined():
     record = _record()
     assert any("fake pages" in source.get("excerpt", "").lower() for source in record["sources"])
-    assert record["inventory_summary"]["unverified_similar_name_handles_not_counted"] == "NOT_ENUMERATED"
     assert len(record["false_positive_or_non_attributed"]) == 1
     repost = record["false_positive_or_non_attributed"][0]
     assert repost["video_id"] == "5DzBk8DfoLs"
     assert repost["classification"] == "THIRD_PARTY_COMMENTARY_NOT_KAMILAH_UPLOAD"
-
-
-def test_attribution_is_verified_but_full_video_content_was_not_reviewed():
-    record = _record()
-    assert all(video["full_content_reviewed"] is False for video in record["videos"])
-    assert all(video["content_verified"] is False for video in record["videos"])
 
 
 def test_kamilah_video_inventory_is_not_admitted_as_a_market_feature():

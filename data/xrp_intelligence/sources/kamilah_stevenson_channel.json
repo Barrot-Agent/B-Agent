@@ -70,10 +70,11 @@
     "status": "PARTIAL_CANDIDATE_INVENTORY_CANONICAL_CHANNEL_UNVERIFIED",
     "completeness_verified": false,
     "discovered_total_count": null,
-    "indexed_seed_video_count": 18,
+    "indexed_seed_video_count": 21,
     "missing_work": [
       "Resolve the exact @drkamilahstevenson handle to a canonical YouTube channel ID using authorized YouTube metadata or a first-party reciprocal link.",
-      "Capture the channel About metadata and its reciprocal website/contact links without bypassing access controls.",
+      "Capture channel About metadata and reciprocal website/contact links without bypassing access controls.",
+      "Classify the three newly observed personal-channel uploads as candidates only until the canonical channel ID/handle relation is verified.",
       "Enumerate all public uploads, Shorts, live and archived streams only after canonical channel verification.",
       "Deduplicate by canonical video ID and retain timestamped pagination/change-detection receipts.",
       "Retrieve permitted/public transcripts, hash exact captured text, preserve timestamps, and keep creator commentary out of ground-truth market features."
@@ -86,7 +87,7 @@
     "attribution_verified": false,
     "identity_gate_passed": false,
     "verified_inventory_count": 0,
-    "candidate_reference_count": 18,
+    "candidate_reference_count": 21,
     "inventory_scope": "Candidate references only; not an attributed, canonical, or exhaustive public-video inventory."
   },
   "seed_videos": [
@@ -372,6 +373,49 @@
       "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
       "themes": [],
       "claim_status": "LINKTREE_PROFILE_DIRECT_LINK; PROFILE_OWNERSHIP_AND_CHANNEL_OWNERSHIP_NOT_VERIFIED",
+      "eligible_for_forecast_feature": false
+    },
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "canonical_url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "published_date_reported": "2026-03-06",
+      "published_date_status": "SOURCE_REPORTED",
+      "source": "public_youtube_search_result; host_handle_crosslink",
+      "source_url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "themes": [
+        "oil disruption",
+        "yen carry-trade liquidity",
+        "XRP"
+      ],
+      "claim_status": "YOUTUBE_DISPLAY_NAME_MATCH; HOST_TAGS_CANDIDATE_HANDLE; CHANNEL_ID_NOT_PLATFORM_VERIFIED; DESCRIPTION_CLAIMS_UNVERIFIED",
+      "eligible_for_forecast_feature": false
+    },
+    {
+      "video_id": "po4bv7889ao",
+      "title": "Dr. Kamilah Stevenson Shares Deep Choices That Makes an Huge Impact",
+      "canonical_url": "https://www.youtube.com/watch?v=po4bv7889ao",
+      "published_date_reported": "2025-12-23",
+      "published_date_status": "SOURCE_REPORTED",
+      "source": "public_youtube_search_result",
+      "source_url": "https://www.youtube.com/watch?v=po4bv7889ao",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "themes": [],
+      "claim_status": "YOUTUBE_DISPLAY_NAME_MATCH; DESCRIPTION_UNAVAILABLE; CHANNEL_ID_NOT_PLATFORM_VERIFIED",
+      "eligible_for_forecast_feature": false
+    },
+    {
+      "video_id": "12HiznN3iLQ",
+      "title": "Kamilah Stevenson Shares Somthing Incredible",
+      "canonical_url": "https://www.youtube.com/watch?v=12HiznN3iLQ",
+      "published_date_reported": "2025-12-29",
+      "published_date_status": "SOURCE_REPORTED",
+      "source": "public_youtube_search_result",
+      "source_url": "https://www.youtube.com/watch?v=12HiznN3iLQ",
+      "attribution_status": "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED",
+      "themes": [],
+      "claim_status": "YOUTUBE_DISPLAY_NAME_MATCH; DESCRIPTION_UNAVAILABLE; CHANNEL_ID_NOT_PLATFORM_VERIFIED",
       "eligible_for_forecast_feature": false
     }
   ],
