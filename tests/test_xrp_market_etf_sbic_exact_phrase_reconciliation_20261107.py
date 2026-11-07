@@ -85,7 +85,7 @@ def test_etf_fund_universes_and_flow_methods_are_not_averaged(evidence: dict) ->
     assert alpha["nov6_flow_usd"] == 0
     assert insights["spot_funds"] == 6
     assert insights["additional_index_fund"] == "BITW"
-    assert insights["flow_method"].startswith("issuer-reported XRP holdings delta")
+    assert insights["flow_method"] == "issuer-reported XRP holdings delta; not issuer-reported cash creation/redemption"
     assert keyhole["fund_count"] == 4
     assert keyhole["nov6_reporting_funds"] == 2
     assert keyhole["nov6_expected_funds"] == 4
