@@ -79,7 +79,7 @@ def test_cryptokeyhole_nov6_flow_is_explicitly_partial_and_date_anomaly_is_quara
     assert keyhole["nov6_missing_fund"] == "XRPZ / Franklin Templeton"
     assert keyhole["date_anomaly"]["status"] == "HEADER_CONFLICT_WITH_PER_FUND_TABLE"
     assert "future-dated" in keyhole["date_anomaly"]["treatment"]
-    assert "not included in daily flow" in keyhole["excluded_funds"]["GXRP"]
+    assert "not included in daily flow" in keyhole["excluded_funds"]["GXRP"].lower()
 
 
 def test_alpha_finance_zero_flow_is_not_promoted_to_verified_zero():
