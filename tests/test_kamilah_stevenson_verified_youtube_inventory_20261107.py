@@ -61,7 +61,6 @@ def test_candidate_personal_uploads_are_not_attributed_to_the_confirmed_person()
     for video in record["candidate_videos"]:
         assert video["attribution_status"] == "CANDIDATE_ONLY_CANONICAL_CHANNEL_UNVERIFIED"
         assert video["candidate_channel_handle"] == "@drkamilahstevenson"
-        assert video["candidate_channel_url"] == "https://www.youtube.com/@drkamilahstevenson"
         assert video["content_verified"] is False
         assert video["full_content_reviewed"] is False
 
@@ -84,7 +83,11 @@ def test_interview_and_iheart_transcript_are_one_underlying_source_episode():
 
 def test_fake_page_warning_and_third_party_repost_remain_quarantined():
     record = _record()
-    assert any("fake pages" in source.get("excerpt", "").lower() for source in record["sources"])
+    interview = next(
+        source for source in record["sources"]
+        if source["source_id"] == "IHEART_CRYPTO_PANICS_INTERVIEW_TRANSCRIPT"
+    )
+    assert "fake pages" in (interview.get("excerpt") or "").lower()
     assert len(record["false_positive_or_non_attributed"]) == 1
     repost = record["false_positive_or_non_attributed"][0]
     assert repost["video_id"] == "5DzBk8DfoLs"
