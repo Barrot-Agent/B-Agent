@@ -387,7 +387,7 @@ def _send_groq_request(
             )
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
-        if exc.code in {413, 429} and ("tokens per minute" in lowered or re.search(r"\\btpm\\b", lowered)):
+        if exc.code in {413, 429} and ("tokens per minute" in lowered or "tpm" in lowered):
             if not _rate_limit_retry:
                 retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
                 if retry_match:
