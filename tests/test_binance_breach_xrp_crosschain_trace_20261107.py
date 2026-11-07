@@ -95,7 +95,7 @@ def test_attribution_and_ai_agent_claims_remain_qualified():
     assert "not the human identity" in attribution["on_chain_identity_limit"]
     ai = artifact["ai_security_assessment"]
     assert any("No evidence" in item for item in ai["what_is_not_established"])
-    assert any("no evidence of AI-agent decision-making" in item for item in ai["what_is_not_established"])
+    assert any("no evidence of an AI agent making decisions" in item.lower() for item in ai["what_is_not_established"])
 
 
 def test_no_forecast_or_trade_is_issued():

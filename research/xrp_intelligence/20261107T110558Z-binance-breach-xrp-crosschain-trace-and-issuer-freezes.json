@@ -28,15 +28,15 @@
       "evidence_paraphrases": [
         {
           "text": "Binance says five of its hot wallets transferred 233.46 million XRP to one attacker-controlled XRPL account between 20:05 and 20:09 UTC on 29 October.",
-          "sha256": "bee99cac6a223112de3f3e834d719ce0219f51cc78c538f30bbb7abb97b5cd66"
+          "sha256": "9c7fafbf9bb71cc1618c8b110abc7b8d952ee76dc15c086f637a390007fe9426"
         },
         {
           "text": "Binance says the attacker used a compromised engineer endpoint and an internal AI tool to reach other engineers' machines and obtain a deployment permission token.",
-          "sha256": "6c9de8c758a55fd9c8f2d53ae5e1cc0760e0a641ac85a4f96fc104c35d92783b"
+          "sha256": "266252904e5897eddf595289b223dfa87cf4ba0a362593b1179505264bf243ee"
         },
         {
           "text": "Binance's 3 November update says 98% of impacted token assets had been replenished as of 31 October and more than 100% of required loss coverage was reserved.",
-          "sha256": "92c464aae963188428a9384724c995061422bc12ea5427f3231cc0107ce887d1"
+          "sha256": "1f8bb1ba2feaad8088093cf79e424c5e2de19baf61e70d9495ffe8737cc6c26c"
         }
       ],
       "limitations": [
@@ -60,11 +60,11 @@
       "evidence_paraphrases": [
         {
           "text": "The FBI officially attributes the Binance theft of more than $6 billion to the DPRK cyber activity it calls TraderTraitor.",
-          "sha256": "ecf57ec8fd8c1b38ce3e307d8434b48b576540279391d7999878c34212ac7677"
+          "sha256": "25db514db5988eaf6f015eff11831455c185548e086df00142b33473f553723f"
         },
         {
           "text": "The public FBI alert lists Ethereum, Bitcoin and Solana addresses but does not list the XRPL attacker account identified by the on-chain tracing sources.",
-          "sha256": "ed9feb370ff7bb06d76c79a7fdb5ec87fba652d8db27952527ae756803c7ef9a"
+          "sha256": "415abb8be20483944388eda6d4060ed1576748470c6ab1d569e7667f6fc3e297"
         }
       ],
       "limitations": [
@@ -77,8 +77,8 @@
       "publisher": "Associated Press",
       "source_type": "independent_news_reporting",
       "independence_group": "ap_news",
-      "url": "https://apnews.com/article/north-korea-binance-hack-crypto-trump-2026-11-03",
-      "published_at": "2026-11-03",
+      "url": "https://apnews.com/article/01c9b80d938dd67c747e268c410f265d",
+      "published_at": "2026-11-02T23:57:52Z",
       "captured_at_utc": "2026-11-07T11:05:58Z",
       "web_references": [
         "turn695784search0",
@@ -87,11 +87,11 @@
       "evidence_paraphrases": [
         {
           "text": "North Korea denied responsibility for the Binance theft and characterized the FBI attribution as a provocation.",
-          "sha256": "da261bd23fa6ce79ace2a159fbe640e9c3d67a36ee094fe236d68a99031fc3aa"
+          "sha256": "2c94b0b36b7885dd90895356d55344f0ae8f396b7e5e72996fb612979509ff9c"
         },
         {
           "text": "AP also reported President Trump saying investigators had not yet established whether North Korea was responsible.",
-          "sha256": "bb81d597d701a0b7ad5c6176f3ccac82cc6bcc516d6be64635c50d9696379cef"
+          "sha256": "f15b0afa96eb05ad1259ee5f845d29d1e89538290f11bc6fb2941a8b122624b3"
         }
       ],
       "limitations": [
@@ -121,27 +121,27 @@
       "evidence_paraphrases": [
         {
           "text": "Panoptic says every amount, address and time is its own read of public blockchains; for XRPL it reads each Payment's delivered amount and result.",
-          "sha256": "07b63c82befeda88186419b2e2b3dcf18421fcd9fe59451d84eaa50cad966de7"
+          "sha256": "19efff289951959899ca4f46a7790447af2b00f335fe3cb885eee67bbcc95529"
         },
         {
           "text": "A 42.75 million RLUSD payment to the new XRPL account failed at 20:04:52 UTC because the destination account did not yet exist.",
-          "sha256": "c049109df43ce9946a4395f2af77bc41eeca35abd7487601932b0e37832a125f"
+          "sha256": "afaaff00beb4fdd39d8fe9e6a7a44a598d12d7e68c96a2de573601528173f1eb"
         },
         {
           "text": "Panoptic traces 233.46 million XRP from five Binance wallets to one new XRPL account; its account split on 2 November reached seven new accounts.",
-          "sha256": "d35e4f5d050566e8218bf650cb8d5c2da4f637e3065ca1d32e148603939288af"
+          "sha256": "ab2d96603096f3130e4490826981b049d2a40e7b45893cfe2198246bb8542ce5"
         },
         {
           "text": "One recipient later sent 26.96 million XRP to 19 accounts; three deposited 6.55 million XRP into THORChain, which paid 75.89 BTC.",
-          "sha256": "2b0985143af621458ad2199d82fee3b8c895cfd2526aaaa1dbc35649c79db512"
+          "sha256": "6cc95b8d7f74c76fca10c8ee2faae225ca52ad9ce2a41c4d4d2be1e97e6e07f5"
         },
         {
           "text": "At least 1.42 million XRP in those THORChain deposits came from other senders, so the full 75.89 BTC output cannot be attributed to the Binance theft.",
-          "sha256": "1a1c9a70b22ce66fb6559e8a7aaf447aa22d5008d8f08ba750fa68170da55314"
+          "sha256": "37836074e2738c6f0edb9f73251d189452d1cc8440217365f74b6bf50218ea45"
         },
         {
           "text": "At 02:37 UTC on 6 November, Panoptic's eight tracked accounts held 206.50 million XRP; it had read only five of the 19 downstream accounts in full.",
-          "sha256": "9dd6a20b6802b760684292bdf7c31656cd08e50b8ed8351f2f9845f16504dae4"
+          "sha256": "72bef282dae3af48708be4885e53827adf4b94bbc0c6650195452744da018653"
         }
       ],
       "transaction_proofs": [
@@ -207,19 +207,19 @@
       "evidence_paraphrases": [
         {
           "text": "Elliptic estimates about 42 million XRP had left by 08:45 UTC on 6 November and about 192 million XRP remained.",
-          "sha256": "c11cd3e8e4e0be57ac27761f1966babba84c677067462dacba5bc2915fa8ab21"
+          "sha256": "4a8d7c2775948621b7c06270ea14d11f4f0e459c70d976a23fb0630445738bfa"
         },
         {
           "text": "Elliptic's 08:00 UTC 7 November update says about 44 million more XRP left overnight and about 148 million XRP remained.",
-          "sha256": "9ba687928dfdcf475af1a3460b31a68c19bcc79249363d7504fef9905432635f"
+          "sha256": "74f167a5808847b7013435c464aeed6ef65a3616e919b83525349fd8e69c8657"
         },
         {
           "text": "Elliptic says the laundering is automated but has seen no evidence of an AI agent making decisions.",
-          "sha256": "4a7772fa864af7b999974b5225fec7e8efd066a6d5f76c4cee15ad1b39a4a8e3"
+          "sha256": "ceafa506d92d18bdebd326d1bdf7c376654048a20ec65441bc594a9fb374398b"
         },
         {
           "text": "Elliptic says blockchain traces identify wallets and movements, not the human controller behind them.",
-          "sha256": "106248c3840fc92a22c66b0423497877da90d1610ca5e3d2aeb7e3c3a7bcfa02"
+          "sha256": "230c5887ba122529d40fa5fc3d67d2bd392305cf45ca7f640c4a765ea262721c"
         }
       ],
       "limitations": [
@@ -242,19 +242,18 @@
       "evidence_paraphrases": [
         {
           "text": "Bitquery reports 44.2 million XRP swapped out by 10:00 UTC on 6 November, equal to 19% of the stolen XRP tranche.",
-          "sha256": "a812f204508934ae10e988d61234fe0390ee26cb4423e548db46c8a9c6ac99cc"
+          "sha256": "ede6f14c0bca1f2d26ee397ed9f6d8d97790e85639b75e616671939b6ba7bc50"
         },
         {
           "text": "Bitquery says THORChain carried about 113 million dollars, split between 57 million dollars from XRP and 56 million dollars from TRON.",
-          "sha256": "8b280f3a5adf6a6065489ea32b756723dab9ffa81388033cb4f6ba54c5460212"
+          "sha256": "6ab84556d4eeaada346cc6dea547ffd84d6d0b32f5019357b904a114804cd689"
         },
         {
           "text": "By its cutoff, Bitquery traced 620 BTC paid to 28 Bitcoin addresses by XRP swaps; other routes also paid those addresses.",
-          "sha256": "dcac008b9f88ebea6ddb421500e244f2e40834394bc6e62dd807aa0bcb1149f7"
+          "sha256": "ac5ae7f38ec7ed23b4202de5c778581351d7a7cf0f6e67230f4f33381d5da9b1"
         },
         {
-          "text": "Bitquery counts each coin once at first exit and counts only the attacker's share when wallets contain mixed funds.",
-          "sha256": "033427605213357cd26c0fc2a03cfd9e145ce8d5e921c5f0e6b728f217ebcd9a"
+          "text": "Bitquery counts each coin once at first exit and counts only the attacker's share when wallets contain mixed funds."
         }
       ],
       "limitations": [
@@ -278,7 +277,7 @@
       "evidence_paraphrases": [
         {
           "text": "The 30 October article said the 233.46 million XRP had not moved from the initial attacker account as of its publication snapshot.",
-          "sha256": "ceca286cfc5fa802fb702bf79344d1d3019da1551598de8ee0c08475dd089cfc"
+          "sha256": "4464cba783b9dc232c4bc2db6da5da9aa028396d4aa381ee923ffb60c748bf10"
         }
       ],
       "quality_flag": "STALE_SNAPSHOT_SUPERSEDED",
@@ -470,9 +469,9 @@
       "binance": "about 10",
       "panoptic": 11,
       "elliptic": 11,
-      "bitquery": 9
+      "bitquery": "9 in headline; 10 enumerated in disclaimer"
     },
-    "note": "These totals use different chain coverage, wallet scopes and valuation cutoffs. The XRP tranche itself is consistently reported at 233.46M XRP; do not average incident totals."
+    "note": "These totals use different chain coverage, wallet scopes and valuation cutoffs. The XRP tranche itself is consistently reported at 233.46M XRP; do not average incident totals. Bitquery's own page headline says nine blockchains while its disclaimer enumerates ten; treat the network count as internally inconsistent."
   },
   "attribution": {
     "official_fbi_assessment": "DPRK / TraderTraitor",
