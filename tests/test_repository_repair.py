@@ -42,6 +42,32 @@ class FakeBrain:
         return response
 
 
+class ToolCapableFakeBrain:
+    def __init__(self, *responses):
+        self._responses = list(responses)
+        self.calls = 0
+        self.use_tools_calls = []
+        self.max_output_tokens_calls = []
+
+    def think(
+        self,
+        message: str,
+        history=None,
+        system=None,
+        use_tools: bool = False,
+        max_output_tokens=None,
+    ) -> str:
+        del message, history, system
+        self.use_tools_calls.append(use_tools)
+        self.max_output_tokens_calls.append(max_output_tokens)
+        index = self.calls if self.calls < len(self._responses) else len(self._responses) - 1
+        response = self._responses[index]
+        self.calls += 1
+        if isinstance(response, Exception):
+            raise response
+        return response
+
+
 def git(cwd: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         ["git", *args],
@@ -206,16 +232,114 @@ def test_invalid_llm_json_fails_safely(tmp_path: Path) -> None:
     assert cycle.failure.code == "LLM_INVALID_JSON"
 
 
-def test_llm_rate_limit_uses_bounded_retries(tmp_path: Path) -> None:
+def test_llm_rate_limit_blocks_without_retry_and_runs_local_read_only_fallback(tmp_path: Path) -> None:
     workspace, _ = init_repo(tmp_path)
-    brain = FakeBrain(RuntimeError("429 rate limited"), RuntimeError("429 rate limited"), RuntimeError("429 rate limited"))
+    before_status = git(workspace, "status", "--porcelain=v1").stdout
+    brain = FakeBrain(RuntimeError("429 rate limited"), RuntimeError("429 rate limited"))
 
     cycle = run_cycle(workspace, brain)
 
-    assert cycle.status == "failed"
+    assert cycle.status == "blocked"
     assert cycle.failure is not None
     assert cycle.failure.code == "LLM_RATE_LIMITED"
-    assert brain.calls == 3
+    assert brain.calls == 1
+    report = json.loads(cycle.report)
+    assert report["mode"] == "read_only_provider_failure_snapshot"
+    assert report["provider_failure_code"] == "LLM_RATE_LIMITED"
+    assert report["same_provider_retry_performed"] is False
+    assert report["patch_applied"] is False
+    assert report["commit_created"] is False
+    assert report["remote_write_attempted"] is False
+    assert report["git_snapshot"]["head"]["returncode"] == 0
+    assert report["git_snapshot"]["status"]["stdout"] == before_status
+    assert git(workspace, "status", "--porcelain=v1").stdout == before_status
+    assert cycle.commit.created is False
+
+
+def test_tpm_413_is_classified_before_generic_http_413():
+    tpm = RepairPlanner._normalize_exception(
+        RuntimeError(
+            "Groq HTTP 413: Request too large on tokens per minute; "
+            "Limit 8000, Requested 8099."
+        )
+    )
+    context = RepairPlanner._normalize_exception(
+        RuntimeError("Groq HTTP 413: Request too large; maximum context window exceeded.")
+    )
+    assert tpm.code == ModelFailureCode.RATE_LIMITED_TPM
+    assert context.code == ModelFailureCode.CONTEXT_BUDGET
+
+
+def test_read_only_audit_tpm_limit_skips_planner_and_uses_local_fallback(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    before_status = git(workspace, "status", "--porcelain=v1").stdout
+    brain = ToolCapableFakeBrain(
+        RuntimeError(
+            "Groq HTTP 413: Request too large on tokens per minute; "
+            "Limit 8000, Requested 8099."
+        ),
+        repair_payload("barrot_agent/target.py"),
+    )
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "LLM_RATE_LIMITED_TPM"
+    assert brain.calls == 1
+    assert brain.use_tools_calls == [True]
+    report = json.loads(cycle.report)
+    assert report["failed_operation"] == "read_only_repository_audit"
+    assert report["same_provider_retry_performed"] is False
+    assert report["patch_applied"] is False
+    assert report["git_snapshot"]["status"]["stdout"] == before_status
+    assert git(workspace, "status", "--porcelain=v1").stdout == before_status
+    assert cycle.commit.created is False
+
+
+def test_planner_tpm_limit_blocks_and_captures_local_snapshot_after_audit(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    brain = ToolCapableFakeBrain(
+        "Read-only audit completed with repository facts.",
+        RuntimeError(
+            "Groq HTTP 413: Request too large on tokens per minute; "
+            "Limit 8000, Requested 8099."
+        ),
+    )
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "LLM_RATE_LIMITED_TPM"
+    assert brain.calls == 2
+    assert brain.use_tools_calls == [True, False]
+    report = json.loads(cycle.report)
+    assert report["failed_operation"] == "repair_planner.generate"
+    assert report["same_provider_retry_performed"] is False
+    assert report["patch_applied"] is False
+    assert cycle.commit.created is False
+
+
+def test_planner_context_413_blocks_without_retry_and_captures_local_snapshot(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    brain = ToolCapableFakeBrain(
+        "Read-only audit completed with repository facts.",
+        RuntimeError("Groq HTTP 413: Request too large; maximum context window exceeded."),
+    )
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "LLM_CONTEXT_BUDGET_EXCEEDED"
+    assert brain.calls == 2
+    assert brain.use_tools_calls == [True, False]
+    report = json.loads(cycle.report)
+    assert report["failed_operation"] == "repair_planner.generate"
+    assert report["patch_applied"] is False
+    assert report["same_provider_retry_performed"] is False
+    assert cycle.commit.created is False
 
 
 def test_llm_tool_conflict_is_classified_safely(tmp_path: Path) -> None:
