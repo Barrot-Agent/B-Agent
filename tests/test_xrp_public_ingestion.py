@@ -2127,7 +2127,7 @@ def test_ingestion_records_bybit_403_with_source_url_and_capture_time(tmp_path):
 
     assert summary["source_failure_count"] == 1
     assert bybit_failure["source_uri"] == "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT"
-    assert bybit_failure["captured_at_utc"] == "2026-11-07T14:00:00Z"
+    assert bybit_failure["captured_at_utc"] == "2026-11-07T14:00:00.000000Z"
     assert bybit_failure["http_status_code"] == 403
     assert bybit_failure["error_category"] == "provider_http_forbidden"
     assert bybit_failure["model_eligible"] is False
