@@ -24,17 +24,20 @@ def test_run28_handoff_is_latest_and_preserves_verified_heads():
     assert "not a direct SBI-Coinbase XRP partnership" in handoff
 
 
-def test_run28_platform_map_has_exact_current_ci_and_preserves_run26():
+def test_run28_platform_map_is_preserved_and_run30_is_current():
     data = json.loads(
         (ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
     current = data["current_run_observations"]
-    assert current["run_id"] == 28
+    prior28 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 28)
+    assert current["run_id"] == 30
     assert current["main_sha"] == MAIN_SHA
-    assert current["integration_head_before_map_commit"] == INTEGRATION_HEAD
-    assert current["research_head"] == RESEARCH_HEAD
-    ci = current["ci_evidence"]
+    assert current["integration_head_before_map_commit"] == "a68f90bb883bacca1a0c2a8a5570b19f6a179c09"
+    assert current["research_head"] == "0c41821e387bb10692122e4c064d5ca40c4a88e3"
+    assert prior28["integration_head_before_map_commit"] == INTEGRATION_HEAD
+    assert prior28["research_head"] == RESEARCH_HEAD
+    ci = prior28["ci_evidence"]
     assert ci["integration"]["full_suite"].startswith("1,152 passed")
     assert ci["integration"]["core_suite"].startswith("643 passed")
     assert ci["integration"]["coverage_pct"] == 58.41
@@ -46,17 +49,19 @@ def test_run28_platform_map_has_exact_current_ci_and_preserves_run26():
     assert current["merge_state"]["merge_performed"] is False
     assert current["merge_state"]["independent_approvals"] == 0
     assert current["forecast_status"] == "NOT_ISSUED"
+    assert current["ci_evidence"]["integration"]["full_suite"].startswith("1,161 passed")
+    assert current["ci_evidence"]["research"]["full_suite"].startswith("2,085 passed")
     assert any(item.get("run_id") == 26 for item in data["prior_run_observations"])
-    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T18:42:51Z"
+    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-07T20:03:08Z"
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
 
-def test_run28_market_and_institutional_evidence_remains_excluded_from_numeric_forecast_features():
+def test_run28_market_and_institutional_evidence_remains_preserved_as_prior_run():
     data = json.loads(
         (ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
-    current = data["current_run_observations"]
+    current = next(item for item in data["prior_run_observations"] if item.get("run_id") == 28)
     market = current["market_snapshot"]
     assert market["kraken"]["provider_timestamp"] is None
     assert market["okx"]["age_seconds"] > 300

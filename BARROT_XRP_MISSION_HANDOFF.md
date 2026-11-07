@@ -4271,3 +4271,25 @@ Forecast status: `NOT_ISSUED`.
 4. Consolidate #1643's unique research onto verified main, preserving the three shared-path decisions and both Evernorth ownership snapshots.
 5. Close only exact superseded PRs after successor content is verified on main; preserve blocked and unique work.
 6. Verify scheduled ingestion on main and accumulate synchronized historical spot/depth/derivatives data before model training or directional forecast issuance.
+
+
+## Run 30 follow-up — exact-head verification and map-test reconciliation
+
+The latest #1643 research head `0c41821e387bb10692122e4c064d5ca40c4a88e3` is fully verified:
+- Full repository suite: **2,085 passed, 8 subtests**.
+- Core suite: **498 passed, 8 subtests**.
+- Six-manifest dependency audit: passed.
+- Fail-closed gate: passed with merging disabled.
+- Runs: [CI 42410576795](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410576795), [dependency audit 42410576789](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410576789), [fail-closed 42410576875](https://github.com/Barrot-Agent/B-Agent/actions/runs/42410576875).
+
+The #1640 handoff/map commit `a68f90bb883bacca1a0c2a8a5570b19f6a179c09` exposed three full-suite failures in historical handoff-map tests. Core tests (655), dependency audit and fail-closed gate passed; the full suite had 1,161 passes and 3 failures. The failures arose because run 30 became current while run-28 assertions still read the current-run slot, and one old test expected the previous market schema at the new current path. Run 28 is preserved in `prior_run_observations`; the tests are updated to verify historical run 28 and current run 30 separately. No production implementation or assertion threshold is weakened. Exact-head #1640 verification is pending the new test/map commit.
+
+**Evernorth Class C rights correction:** the October 30 424B3 identifies SBI's Class C shares as non-voting. It expressly describes a conversion condition for Sponsor-held Class C shares upon transfers to non-affiliates; it does not establish that the same conversion right applies to SBI's Class C.
+
+**Evernorth / Ripple control correction:** the 424B3 states that the Company and Pubco ceased to be wholly owned subsidiaries of, or controlled by, Ripple at closing and became related parties. Ripple's latest table stake is 3.0% of Pubco Common Stock and 7.1% voting power, plus 16,461,545 Company Units. The Contributor Related Party Entity separately has 1.2% common stock, 2.8% voting power and 6,491,583 Company Units. Ripple is not the controlling parent after the transaction.
+
+The 424B3's SBI schedule is 9,431,914 Class A and 2,359,038 Class C, 21.4% Pubco Common Stock and 39.9% voting power. Its Note 4(g) reports 13,028,674 shares under the advance funding agreements, comprising 10,669,636 Class A and 2,359,038 Class C. The earlier 8-K reported the same 13,028,674 aggregate as 10,123,015 Class A and 2,905,659 Class C. The 546,621-share class-allocation difference is preserved; no explicit bridge was located.
+
+The capital evidence remains separated into cash received, cash spent to purchase XRP, XRP contributed in-kind, debt proceeds, related-party borrowings and optional ELOC capacity. None of the note or ELOC proceeds is treated as an XRP purchase without a transaction receipt.
+
+No merge or external action occurred. The next step is exact-head #1640 full-suite verification, then independent approvals and explicit Pages/deployment authorization before any merge.
