@@ -360,8 +360,6 @@ def _send_groq_request(
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:600]
         lowered = detail.lower()
-        if exc.code == 413:
-            raise RuntimeError(f"LLM_CONTEXT_BUDGET_EXCEEDED: {detail}") from exc
         if (
             exc.code == 400
             and "tool choice is none" in lowered
@@ -390,7 +388,7 @@ def _send_groq_request(
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
         if exc.code in {413, 429} and ("tokens per minute" in lowered or "tpm" in lowered):
-            if not _rate_limit_retry:
+            if exc.code == 429 and not _rate_limit_retry:
                 retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
                 if retry_match:
                     retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
@@ -416,6 +414,8 @@ def _send_groq_request(
                     reason="per-minute token",
                     json_mode_retry=_json_mode_retry,
                 )
+            if exc.code == 413:
+                raise RuntimeError(f"LLM_CONTEXT_BUDGET_EXCEEDED: {detail}") from exc
         if exc.code == 429 and "tokens per day" in lowered and not _model_fallback_attempted:
             primary_model = str(payload.get("model") or MODEL)
             return _try_groq_model_fallback(

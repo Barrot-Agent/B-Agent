@@ -808,11 +808,13 @@ def test_public_brain_corpus_export_is_inert_and_preserves_existing_dumps() -> N
     assert module.main() == 2
 
 
-def test_barrot_groq_tpm_413_fails_fast_without_retry_or_fallback(monkeypatch) -> None:
+def test_barrot_groq_tpm_413_skips_same_model_retry_and_fails_after_one_fallback(monkeypatch) -> None:
     import io
     import urllib.error
 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BRAIN_MODEL", "openai/gpt-oss-120b")
+    monkeypatch.setenv("BRAIN_FALLBACK_MODELS", "openai/gpt-oss-20b")
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
         "barrot_agent_groq_tpm_413_budget_test",
@@ -821,8 +823,9 @@ def test_barrot_groq_tpm_413_fails_fast_without_retry_or_fallback(monkeypatch) -
     calls = []
 
     def fake_urlopen(request, timeout=0):
-        del request, timeout
-        calls.append(True)
+        del timeout
+        payload = json.loads(request.data.decode("utf-8"))
+        calls.append(payload["model"])
         body = (
             b'{"error":{"message":"Request too large for model on tokens per minute '
             b'(TPM): Limit 8000, Requested 8099.","code":"rate_limit_exceeded"}}'
@@ -843,4 +846,4 @@ def test_barrot_groq_tpm_413_fails_fast_without_retry_or_fallback(monkeypatch) -
     else:
         raise AssertionError("HTTP 413 TPM budget failure must fail closed.")
 
-    assert len(calls) == 1
+    assert calls == ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
