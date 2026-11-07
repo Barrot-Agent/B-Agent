@@ -23,7 +23,7 @@ def test_direct_exchange_receipts_are_exact_and_content_addressed():
         assert len(encoded) == source["raw_response_bytes"]
         assert hashlib.sha256(encoded).hexdigest() == source["raw_response_sha256"]
         assert json.loads(raw)
-        assert source["response_headers_captured"] if "response_headers_captured" in source else True
+        assert source["raw_response_hash_scope"].startswith("SHA-256 of the exact")
 
     assert sources["Kraken"]["data_as_of_utc"] is None
     assert sources["OKX"]["data_as_of_utc"] == "2026-11-06T23:38:50.666Z"
