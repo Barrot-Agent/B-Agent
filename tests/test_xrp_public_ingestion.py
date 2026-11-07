@@ -332,6 +332,20 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
+    walk_forward = json.loads((tmp_path / "run" / "walk_forward.json").read_text(encoding="utf-8"))
+    assert walk_forward["calibration_is_diagnostic_only"] is False
+    assert walk_forward["calibration_method"] == "rolling_temporal_temperature_scaling_v1"
+    assert any(
+        "rolling temporal temperature scaling" in item.lower()
+        and "independent shadow evaluation" in item.lower()
+        for item in walk_forward["limitations"]
+    )
+    assert any(
+        "rolling temporal temperature scaling" in item.lower()
+        and "trained predictive model" in item.lower()
+        and "independent shadow evaluation" in item.lower()
+        for item in summary["limitations"]
+    )
     assert summary["coinbase_backfill"]["status"] == "NOT_REQUESTED"
     assert summary["coinbase_backfill"]["pages_requested"] == 0
     assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES), (
