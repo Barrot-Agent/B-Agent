@@ -22,11 +22,13 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     _default_public_fetcher,
     run_ingestion,
     ALLOWED_HOSTS,
+    BITBANK_SOURCE_IDS,
     ENDPOINTS,
     SCHEDULED_ENDPOINTS,
     PARSERS,
     XRPL_NODE_SOURCES,
     _reconcile_xrpl_node_records,
+    _bitbank_transactions_research_summary,
 )
 
 
@@ -166,6 +168,57 @@ def _fake_fetcher(captured: datetime):
                     "checksum": 123456,
                 }],
             }
+        elif source_id == "bitbank_spot_circuit_break":
+            payload = {
+                "success": 1,
+                "data": {
+                    "mode": "NONE",
+                    "estimated_itayose_price": None,
+                    "estimated_itayose_amount": None,
+                    "fee_type": "NORMAL",
+                    "timestamp": captured_ms - 500,
+                },
+            }
+        elif source_id == "bitbank_spot_transactions":
+            payload = {
+                "success": 1,
+                "data": {
+                    "transactions": [
+                        {"transaction_id": 101, "side": "buy", "price": "180.15", "amount": "100", "executed_at": captured_ms - 4000},
+                        {"transaction_id": 102, "side": "sell", "price": "180.10", "amount": "60", "executed_at": captured_ms - 3000},
+                    ]
+                },
+            }
+        elif source_id == "bitbank_spot_ticker":
+            payload = {
+                "success": 1,
+                "data": {
+                    "sell": "180.2",
+                    "buy": "180.1",
+                    "high": "185.0",
+                    "low": "175.0",
+                    "open": "182.0",
+                    "last": "180.15",
+                    "vol": "250000",
+                    "timestamp": captured_ms - 1000,
+                },
+            }
+        elif source_id == "bitbank_spot_depth":
+            payload = {
+                "success": 1,
+                "data": {
+                    "asks": [["180.2", "1000"], ["180.3", "1500"]],
+                    "bids": [["180.1", "900"], ["180.0", "1100"]],
+                    "asks_over": "0",
+                    "bids_under": "0",
+                    "asks_under": "0",
+                    "bids_over": "0",
+                    "ask_market": "0",
+                    "bid_market": "0",
+                    "timestamp": captured_ms - 2000,
+                    "sequenceId": "123456",
+                },
+            }
         elif source_id == "binance_spot_depth":
             payload = {
                 "lastUpdateId": 123456,
@@ -261,7 +314,7 @@ def _fake_fetcher(captured: datetime):
             raise AssertionError(source_id)
         raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
         response = {"raw_bytes": raw, "payload": payload}
-        if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth", "xrp_exchange_balances_json"} or source_id in XRPL_NODE_SOURCES:
+        if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth", "xrp_exchange_balances_json"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
             response["http_date"] = http_date
         return response
 
@@ -1669,3 +1722,208 @@ def test_coinbase_historical_backfill_is_manual_only_and_does_not_expand_permiss
     assert "secrets." not in workflow
     assert "cron: '3 * * * *'" in workflow
     assert "cron: '15 0 * * *'" in workflow
+
+
+def test_bitbank_xrp_jpy_public_sources_are_allowlisted_and_scheduled():
+    endpoint_map = dict(ENDPOINTS)
+    assert endpoint_map["bitbank_spot_circuit_break"] == "https://public.bitbank.cc/xrp_jpy/circuit_break_info"
+    assert endpoint_map["bitbank_spot_transactions"] == "https://public.bitbank.cc/xrp_jpy/transactions"
+    assert endpoint_map["bitbank_spot_ticker"] == "https://public.bitbank.cc/xrp_jpy/ticker"
+    assert endpoint_map["bitbank_spot_depth"] == "https://public.bitbank.cc/xrp_jpy/depth"
+    assert "public.bitbank.cc" in ALLOWED_HOSTS
+    assert BITBANK_SOURCE_IDS == {
+        "bitbank_spot_circuit_break",
+        "bitbank_spot_transactions",
+        "bitbank_spot_ticker",
+        "bitbank_spot_depth",
+    }
+    assert BITBANK_SOURCE_IDS.issubset({source_id for source_id, _url in SCHEDULED_ENDPOINTS})
+    assert BITBANK_SOURCE_IDS.issubset(PARSERS)
+
+
+def test_bitbank_ticker_uses_jpy_and_requires_synchronized_continuous_quotes():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    circuit = fetcher("bitbank_spot_circuit_break", dict(ENDPOINTS)["bitbank_spot_circuit_break"])
+    response = fetcher("bitbank_spot_ticker", dict(ENDPOINTS)["bitbank_spot_ticker"])
+    records, source_as_of, eligible, reason = PARSERS["bitbank_spot_ticker"](
+        response["payload"],
+        source_id="bitbank_spot_ticker",
+        url=dict(ENDPOINTS)["bitbank_spot_ticker"],
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+        circuit_break_info=circuit["payload"],
+    )
+    by_id = {item["feature_id"]: item for item in records}
+    assert eligible is True
+    assert reason == ""
+    assert source_as_of is not None
+    assert by_id["xrp.spot.bitbank.best_bid"]["unit"] == "JPY/XRP"
+    assert by_id["xrp.spot.bitbank.best_bid"]["model_eligible"] is True
+    assert by_id["xrp.spot.bitbank.mid_price"]["model_eligible"] is True
+    assert by_id["xrp.spot.bitbank.base_volume_24h"]["unit"] == "XRP/24h"
+    assert by_id["xrp.spot.bitbank.last_price_snapshot"]["model_eligible"] is False
+    assert by_id["xrp.spot.bitbank.last_price_snapshot"]["eligibility_reason"] == "ticker_snapshot_not_trade_event"
+
+
+def test_bitbank_ticker_circuit_break_mode_quarantines_quotes_without_losing_volume():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    circuit = fetcher("bitbank_spot_circuit_break", dict(ENDPOINTS)["bitbank_spot_circuit_break"])["payload"]
+    circuit["data"]["mode"] = "CIRCUIT_BREAK"
+    circuit["data"]["estimated_itayose_price"] = "180.15"
+    ticker = fetcher("bitbank_spot_ticker", dict(ENDPOINTS)["bitbank_spot_ticker"])["payload"]
+    ticker["data"]["sell"] = "180.1"
+    ticker["data"]["buy"] = "180.2"
+    records, _source_as_of, eligible, _reason = PARSERS["bitbank_spot_ticker"](
+        ticker,
+        source_id="bitbank_spot_ticker",
+        url=dict(ENDPOINTS)["bitbank_spot_ticker"],
+        digest="a" * 64,
+        captured=captured,
+        circuit_break_info=circuit,
+    )
+    by_id = {item["feature_id"]: item for item in records}
+    assert eligible is True
+    assert by_id["xrp.spot.bitbank.best_bid"]["model_eligible"] is False
+    assert "not_continuous" in by_id["xrp.spot.bitbank.best_bid"]["eligibility_reason"]
+    assert by_id["xrp.spot.bitbank.base_volume_24h"]["model_eligible"] is True
+
+
+def test_bitbank_depth_requires_fresh_circuit_state_and_rejects_crossed_normal_book():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    circuit = fetcher("bitbank_spot_circuit_break", dict(ENDPOINTS)["bitbank_spot_circuit_break"])["payload"]
+    depth = fetcher("bitbank_spot_depth", dict(ENDPOINTS)["bitbank_spot_depth"])["payload"]
+    records, _source_as_of, eligible, reason = PARSERS["bitbank_spot_depth"](
+        depth,
+        source_id="bitbank_spot_depth",
+        url=dict(ENDPOINTS)["bitbank_spot_depth"],
+        digest="b" * 64,
+        captured=captured,
+        circuit_break_info=circuit,
+    )
+    by_id = {item["feature_id"]: item for item in records}
+    assert eligible is True
+    assert reason == ""
+    assert by_id["xrp.spot.bitbank.orderbook.mid_price"]["model_eligible"] is True
+    assert by_id["xrp.spot.bitbank.orderbook.bid_depth_10bps"]["unit"] == "JPY"
+    crossed = json.loads(json.dumps(depth))
+    crossed["data"]["bids"] = [["180.3", "1000"]]
+    crossed["data"]["asks"] = [["180.2", "1000"]]
+    with pytest.raises(XRPIngestionError, match="crossed or locked"):
+        PARSERS["bitbank_spot_depth"](
+            crossed,
+            source_id="bitbank_spot_depth",
+            url=dict(ENDPOINTS)["bitbank_spot_depth"],
+            digest="c" * 64,
+            captured=captured,
+            circuit_break_info=circuit,
+        )
+
+
+def test_bitbank_depth_circuit_break_snapshot_is_retained_but_not_model_eligible():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+    circuit = fetcher("bitbank_spot_circuit_break", dict(ENDPOINTS)["bitbank_spot_circuit_break"])["payload"]
+    circuit["data"]["mode"] = "CIRCUIT_BREAK"
+    circuit["data"]["estimated_itayose_price"] = "180.15"
+    depth = fetcher("bitbank_spot_depth", dict(ENDPOINTS)["bitbank_spot_depth"])["payload"]
+    depth["data"]["bids"] = [["180.3", "1000"]]
+    depth["data"]["asks"] = [["180.2", "1000"]]
+    records, _source_as_of, eligible, _reason = PARSERS["bitbank_spot_depth"](
+        depth,
+        source_id="bitbank_spot_depth",
+        url=dict(ENDPOINTS)["bitbank_spot_depth"],
+        digest="d" * 64,
+        captured=captured,
+        circuit_break_info=circuit,
+    )
+    assert eligible is True
+    assert records
+    assert all(item["model_eligible"] is False for item in records)
+    assert all("not_continuous" in item["eligibility_reason"] for item in records)
+
+
+def test_bitbank_circuit_break_context_is_raw_only_and_validates_mode():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    response = _fake_fetcher(captured)("bitbank_spot_circuit_break", dict(ENDPOINTS)["bitbank_spot_circuit_break"])
+    records, source_as_of, eligible, reason = PARSERS["bitbank_spot_circuit_break"](
+        response["payload"],
+        source_id="bitbank_spot_circuit_break",
+        url=dict(ENDPOINTS)["bitbank_spot_circuit_break"],
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+    )
+    assert records == []
+    assert source_as_of is not None
+    assert eligible is False
+    assert reason == "market_state_context_only_not_numeric_feature"
+    invalid = json.loads(json.dumps(response["payload"]))
+    invalid["data"]["mode"] = "UNKNOWN"
+    with pytest.raises(XRPIngestionError, match="mode is unknown"):
+        PARSERS["bitbank_spot_circuit_break"](
+            invalid,
+            source_id="bitbank_spot_circuit_break",
+            url=dict(ENDPOINTS)["bitbank_spot_circuit_break"],
+            digest="e" * 64,
+            captured=captured,
+        )
+
+
+def test_bitbank_transactions_create_point_in_time_taker_events_and_research_summary():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    response = _fake_fetcher(captured)("bitbank_spot_transactions", dict(ENDPOINTS)["bitbank_spot_transactions"])
+    records, source_as_of, eligible, reason = PARSERS["bitbank_spot_transactions"](
+        response["payload"],
+        source_id="bitbank_spot_transactions",
+        url=dict(ENDPOINTS)["bitbank_spot_transactions"],
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+    )
+    assert eligible is True
+    assert reason == ""
+    assert source_as_of is not None
+    assert len(records) == 12
+    assert len({item["record_id"] for item in records}) == 12
+    assert all(item["model_eligible"] is True for item in records)
+    assert all(item["known_at_utc"] > item["event_time_utc"] for item in records)
+    signed_amounts = [item["value"] for item in records if item["feature_id"] == "xrp.spot.bitbank.trade.signed_amount"]
+    assert signed_amounts == [100.0, -60.0]
+    summary = _bitbank_transactions_research_summary(response["payload"])
+    assert summary["window_kind"] == "latest_60_trades_variable_duration"
+    assert summary["net_taker_flow_xrp"] == 40.0
+    assert summary["net_taker_flow_jpy"] == 7209.0
+    assert summary["model_eligible"] is False
+
+
+def test_bitbank_transactions_reject_duplicate_ids_and_future_execution_times():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    response = _fake_fetcher(captured)("bitbank_spot_transactions", dict(ENDPOINTS)["bitbank_spot_transactions"])
+    parser = PARSERS["bitbank_spot_transactions"]
+    duplicate = json.loads(json.dumps(response["payload"]))
+    duplicate["data"]["transactions"][1]["transaction_id"] = 101
+    with pytest.raises(XRPIngestionError, match="positive and unique"):
+        parser(duplicate, source_id="bitbank_spot_transactions", url=dict(ENDPOINTS)["bitbank_spot_transactions"], digest="f" * 64, captured=captured)
+    future = json.loads(json.dumps(response["payload"]))
+    future["data"]["transactions"][0]["executed_at"] = _iso_ms(captured + timedelta(seconds=1))
+    with pytest.raises(XRPIngestionError, match="later than capture"):
+        parser(future, source_id="bitbank_spot_transactions", url=dict(ENDPOINTS)["bitbank_spot_transactions"], digest="1" * 64, captured=captured)
+
+
+def test_bitbank_sources_integrate_into_full_ingestion_and_research_only_flow_summary(tmp_path):
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    summary = run_ingestion(tmp_path / "bitbank-run", fetcher=_fake_fetcher(captured), now=captured)
+    snapshot = json.loads((tmp_path / "bitbank-run" / "snapshot.json").read_text(encoding="utf-8"))
+    research = json.loads((tmp_path / "bitbank-run" / "research_only_observations.json").read_text(encoding="utf-8"))
+    raw_only = json.loads((tmp_path / "bitbank-run" / "raw_only_sources.json").read_text(encoding="utf-8"))
+    bitbank = [item for item in snapshot["records"] if item.get("venue") == "Bitbank"]
+    assert summary["snapshot_status"] == "verified"
+    assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES)
+    assert summary["source_failure_count"] == 0
+    assert any(item["feature_id"] == "xrp.spot.bitbank.orderbook.mid_price" for item in bitbank)
+    assert any(item["feature_id"] == "xrp.spot.bitbank.trade.signed_amount" for item in bitbank)
+    trade_summary = next(item for item in research["observations"] if item["observation_type"] == "bitbank_latest_60_trade_sample")
+    assert trade_summary["net_taker_flow_xrp"] == 40.0
+    assert trade_summary["model_eligible"] is False
+    assert any(item["source_id"] == "bitbank_spot_circuit_break" for item in raw_only)
