@@ -1,3 +1,124 @@
+## Run 11 — 2026-11-07 02:22 UTC
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Main is unchanged at `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+
+Repository tree at this capture:
+- Main: 1,298 files, 493 Python files, 87 test modules, 78 workflow files.
+- V3 integration branch: 1,352 files, 535 Python files, 115 test modules, 79 workflow files.
+- XRP research branch: 1,669 files, 633 Python files, 227 test modules, 78 workflow files.
+
+Open PR inventory: 371 total, 355 drafts, 16 non-drafts. No new PR was created, no PR was closed, and no merge was performed.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+- Head: `04b61ca77468a3e848100ef842e9fb2dd58ceda0`.
+- Full repository suite: 1,080 passed, 8 subtests passed.
+- Core suite: 629 passed, 8 subtests passed.
+- Inclusive package coverage: 57.64%, above the 53% threshold.
+- Installed-wheel verification: passed; wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- [Full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42328619207), [six-manifest dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42328619241), and [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42328619269) passed. The gate intentionally leaves merging disabled.
+
+**PR #1643 — XRP research**
+- Head: `864868d31a17e12950e3453933739afd2acf066d`.
+- Full repository suite: 1,658 passed, 8 subtests passed.
+- Core suite: 498 passed, 8 subtests passed.
+- [Full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42328712817), [six-manifest dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42328712774), and [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42328712884) passed.
+
+These are branch-head results, not main-branch results. Neither branch is merged. The cache service still emits a read-only budget warning; the recovery path does not depend on cache writes.
+
+### Work executed
+
+**New Binance/Soter evidence artifact on #1643**
+
+Added `research/xrp_intelligence/20261107T020636Z-xrp-binance-outflow-soter-institutional-insurance-reconciliation.json` and `tests/test_xrp_binance_outflow_soter_institutional_insurance_20261107.py`.
+
+The artifact preserves 10 source records and SHA-256 receipts over normalized UTF-8 excerpts, not original HTTP wire bytes or raw PDF bytes.
+
+- CryptoQuant analyst Darkfost reports 418.5M XRP leaving Binance on 4 November, compared with 315M on 29 October, valued near $540M. This is an analyst-reported exchange-flow metric, not a primary Binance ledger observation. No address universe, wallet-level transfer list, or independent reserve reconciliation was captured.
+- Reuters reports XRP was included when Binance resumed phased withdrawals on 1 November. Reuters separately reports $3.64B in aggregate all-asset customer net withdrawals as of 15:30 UTC that day, while Binance disputed a higher aggregator total because exchange-owned hot-wallet deposits were not included.
+- Reuters relays Binance's report that 233.46M XRP moved from five hot wallets to an attacker-controlled address in four minutes on 29 October. This theft transfer is not equivalent to CryptoQuant's 315M exchange-outflow metric; the difference is not decomposed.
+- BeInCrypto repeats CryptoQuant's 418.5M figure, reports a 7.66% 24-hour XRP price decline to $1.21 at its 6 November publication time, and attributes zero ETF net flows on 3–5 November to SoSoValue. It is not independent corroboration of the outflow amount, and SoSoValue's raw daily records were not captured in this run.
+- Soter's 5 November first-party Series B announcement names SC Ventures and SBI Group in the second close, Token Bay Capital as a follow-on investor, and Coinbase Ventures, Franklin Templeton and Brevan Howard Digital in the first close, with Galaxy leading. The issuer does not disclose investor allocations or round size.
+- The BMA's December 2024 register lists Soter Insurance Limited as a Class IIGB insurer effective 5 December 2024. Soter separately announces DFSA Category 4 insurance-intermediation authorization for a DIFC entity; that legal entity name was not independently resolved.
+- Soter's January 2026 BTC-denominated crime policy names no insured exchange. Do not infer Binance or Coinbase. The reviewed materials provide no XRP/XRPL/RLUSD-specific policy or direct Ripple/Circle relationship.
+- SBI is described only as “SBI Group”; the exact legal investing entity is not disclosed. Do not equate it with SBI Holdings or Japan's regional SBIC East/Central/West. Coinbase Ventures is an investor, not evidence of a Coinbase exchange operating partnership. SC Ventures is Standard Chartered's venture arm, not evidence that the bank itself directly invested.
+
+The Binance observation and Soter network are not admitted as XRP model features. Competing hypotheses, source lineage, disconfirming evidence and follow-up tests are stored in the artifact.
+
+**Kamilah/Camilla identity gate corrected on both branches**
+
+The earlier 4 November `UNRESOLVED_NOT_EQUIVALENT` assessment remains preserved in history. Later first-person interview and branded-source evidence confirms the person identity and makes the public-channel match probable, but does not verify the exact YouTube channel ID/handle at platform level.
+
+Both branches now record:
+- Person identity: confirmed.
+- Candidate channel match: probable, not first-party/platform-verified.
+- Canonical channel verified: false.
+- Verified video inventory count: zero.
+- Candidate video references remain candidate-only and are ineligible for model features.
+
+#1640 retains 10 candidate video references. #1643 retains 18; its eight additional IDs are unique to that branch. The two lists have no duplicate IDs. Any later consolidation must preserve all 18 as candidate-only references and must not relabel them as a verified inventory.
+
+The new `tests/test_kamilah_channel_identity_gate.py` tests this boundary on both branches. The #1640 full suite and #1643 full suite above include these tests.
+
+**Nine-platform capability/authentication/data-flow map added to #1640**
+
+Added `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json` and `tests/test_nine_platform_capability_authentication_dataflow_map.py`.
+
+Current map:
+- ChatGPT-to-GitHub connector: verified in this session for repository metadata, files, branches, PRs and workflow evidence.
+- Copilot: one-off GitHub PR review comments observed; not a persistent connection and not an approval.
+- Claude, Grok, Gemini and Codex: no authentication or data flow verified.
+- Hugging Face: inconclusive; the latest Pillars check reported Space `BUILD_ERROR`; no successful upload or healthy runtime was verified.
+- Kaggle: not tested; the manual submission workflow was not run.
+- Databricks: read-only validation returned HTTP 403; no successful query or write verified.
+- Groq is distinct from Grok and is not one of the nine. No Groq call occurred in this run.
+
+Cross-platform task assignment and structured evidence exchange remain DESIGNED, not EXECUTED. No data was sent to an unverified external model platform.
+
+### Macro context and forecast boundary
+
+The 6 November BLS Employment Situation reported payroll growth of 165,000, unemployment of 4.1%, average hourly earnings growth of 0.4% month over month and 3.1% year over year ([BLS](https://www.bls.gov/news.release/empsit.nr0.htm)). Reuters reported stronger rate-hike pricing for December after the release ([Reuters](https://www.reuters.com/business/view-strong-october-jobs-report-sends-yields-higher-2026-11-06/)). Reuters also reported a broad 5 November technology-led selloff, with the Nasdaq down about 5.5%, S&P 500 down about 4.4%, Dow down about 3.4%, and VIX at 28.18 ([Reuters](https://www.reuters.com/business/nasdaq-futures-rise-after-steep-ai-selloff-chip-stocks-stabilize-2026-11-06/)). These are macro counter-hypotheses for the XRP price decline, not proof of causation.
+
+No directional forecast or shadow forecast was issued. The current ingestion design has 23 endpoint records and 21 scheduled sources, but its historical coverage is still inadequate for multi-venue, multi-regime evaluation: Binance spot candles are capped at 1,000 hourly bars; Coinbase candles at 300 with pagination not implemented; Binance derivatives history is roughly 30 days; Kraken and OKX currently contribute live ticker/depth rather than long historical candle series. The scheduled XRP workflow exists on #1640 but is not active on main.
+
+The evaluator still has four baselines, a one-hour horizon and a limited single-feature/single-venue evaluation. Fitted probability recalibration, sufficient shadow outcomes, and broad multivariate drift validation remain unverified. The next technical priority is a reproducible multi-venue historical backfill with per-page raw receipts, then synchronized point-in-time features and a calibrated multi-feature walk-forward model. No forecast should be issued until that evidence exists.
+
+### Main-branch workflow and security audit
+
+Main still contains an issue-triggered `barrot-agent.yml` workflow with repository write permissions and a legacy Groq call. Main run [42321751663](https://github.com/Barrot-Agent/B-Agent/actions/runs/42321751663) failed the deterministic quality gate with `TASK_FIELD_EMPTY` and `AUTHORIZATION_CONSTRAINT_MISSING` before repository repair began; it only recorded an attempted task label. #1640 quarantines that workflow as manual-only, no-permission and disabled.
+
+#1640 also quarantines the main-branch writer paths for task allocation, BTC signal publication, self-upgrade and unsafe paper-trader execution. The existing manual Databricks deployment, Kaggle submission, Space restart and Hugging Face upload workflows remain explicitly gated; none was run. The `barrot-approve-pr.yml` workflow applies a label/comment and does not create a GitHub APPROVED review.
+
+The scheduled read-only Pillars check [42222193811](https://github.com/Barrot-Agent/B-Agent/actions/runs/42222193811) failed to verify platform access: GitHub App credentials were missing, Databricks returned HTTP 403, and the Hugging Face Space reported BUILD_ERROR. Main's read-only Cross Analysis run [42326300423](https://github.com/Barrot-Agent/B-Agent/actions/runs/42326300423) succeeded.
+
+### Backlog, overlap and merge gate
+
+- **#1640:** active V3 integration candidate; 159 changed files, 490 commits ahead of main; 22/22 review threads resolved; zero approving reviews.
+- **#1643:** active XRP research candidate; 373 changed files, 527 commits ahead of main; 19/19 review threads resolved; zero approving reviews.
+- #1640 and #1643 share two changed paths. `.github/workflows/dependency-audit.yml` is identical. The Kamilah profile is semantically aligned on identity gating but differs in candidate references (10 versus 18); preserve the 18-reference union when consolidating.
+- **#1642:** exact ancestor/superseded candidate of #1640; zero unique commits relative to #1640. Keep open until successor content is merged and verified on main.
+- **#1655:** draft, eight changed files; three overlap #1640 and five are unique. Preserve its unique structural-analysis/catalog work for reconciliation.
+- **#1653:** blocked, seven changed files; one overlaps #1640 and six are unique; eight unresolved review threads include unsafe overwrite, lost arguments, stale repository-state and submodule/fetch boundary findings. Do not merge.
+- Older unique work #1317, #1318, #1320 and #1269 remains preserved. Older dependency updates #1254/#1255 and #1644–#1650 remain open pending successor verification; no bulk closure.
+
+Main reports protected status, but detailed branch-protection settings return HTTP 403. The visible fallback ruleset is disabled. Pages settings remain inaccessible; a previous main push triggered Pages deployment run `41799855489`. `.github/CODEOWNERS` names only `@Barrot-Agent`. A review request to `Scribedpengenius` was rejected by GitHub as not a collaborator. Copilot/CodeRabbit comments do not count as human approvals. No independent human approving review is currently available through the tested path.
+
+**No merge was performed.** No branch protection or required check was bypassed. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete sequence
+
+1. Obtain an eligible independent human reviewer and resolve Pages deployment authorization; do not merge while either gate is unresolved.
+2. Merge #1640 only after the current head remains conflict-free and all required approvals, full-suite checks, dependency/security gates and side-effect controls are satisfied.
+3. Verify the merge commit, merged files, main CI and all automatic workflow effects.
+4. Consolidate #1643's unique research onto the verified new main; do not merge its divergent branch directly. Preserve the 18 candidate-only Kamilah references and the identity gate.
+5. Reconcile #1655's five unique paths and #1653's six unique paths only after resolving their review and safety findings.
+6. Expand historical XRP coverage across Binance, Coinbase, Kraken and OKX with pagination/backfill and immutable per-page receipts before fitting or calibrating a directional model.
+
 # Latest verified mission run — 2026-11-07T00:04:51Z
 
 This section supersedes earlier status statements where dates, branch heads, inventory counts or test totals differ. Prior run records remain below as history.
