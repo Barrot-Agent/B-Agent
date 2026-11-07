@@ -377,6 +377,21 @@
         "Transaction explorer pages returned JavaScript-only shells; full transaction payloads were not independently fetched.",
         "Escrow release and re-escrow change locked supply, not proof of market sale, exchange deposit or immediately tradable supply."
       ]
+    },
+    {
+      "source_id": "xrp_insights_escrow_infographic_interpretation",
+      "publisher": "XRP Insights",
+      "source_type": "publisher_interpretation_of_on_chain_escrow_data",
+      "independence_group": "xrp_insights_editorial_interpretation",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "excerpt": {
+        "text": "USED ~300.0M XRP — ODL, Partners, Sales.",
+        "sha256": "171a8bd858243b6882b382ba9bd479cad4de5bc332471d19e4769a3a78546516"
+      },
+      "web_reference": "turn791268search0",
+      "quality_flag": "UNVERIFIED_USE_ATTRIBUTION",
+      "limitation": "The escrow transaction table identifies EscrowFinish and EscrowCreate events but does not provide transaction-level evidence that the net 300M was sent to ODL counterparties, partners or sales. The label is an editorial interpretation, not a verified destination or use."
     }
   ],
   "market_reconciliation": {
@@ -659,7 +674,24 @@
         "re_escrowed_share_pct": 70,
         "net_reduction_in_locked_supply_xrp": 3600000000
       },
-      "interpretation": "The 1B gross unlock is not a 1B market supply injection. 700M was re-escrowed; the remaining 300M is outside escrow but not proven sold, distributed or deposited on exchanges."
+      "interpretation": "The 1B gross unlock is not a 1B market supply injection. 700M was re-escrowed; the remaining 300M is outside escrow but not proven sold, distributed or deposited on exchanges.",
+      "publisher_interpretation": {
+        "claimed_use_label": "ODL, Partners, Sales",
+        "claimed_amount_xrp": 300000000,
+        "status": "UNVERIFIED_INTERPRETATION",
+        "evidence_gap": "The listed November transaction set proves 1B gross escrow finish and 700M re-escrow. It does not identify an external payment, exchange deposit, counterparty, sale or commercial use for the remaining 300M.",
+        "accepted_description": "300M XRP remained outside the newly created escrow objects after the November cycle; owner-account balance and subsequent disposition were not independently verified in this run."
+      },
+      "mixed_vintage_company_holdings": {
+        "total_reported_xrp": 35840000000,
+        "components": {
+          "on_chain_escrow_xrp": 31100000000,
+          "non_escrow_operational_xrp": 4740000000
+        },
+        "non_escrow_component_source_period": "Ripple Q3 2024 company report",
+        "current_total_claim_allowed": false,
+        "reason": "The 4.74B non-escrow component is static Q3 2024 company-reported data, not a live on-chain balance. Do not describe 35.84B as a current live Ripple holding."
+      }
     }
   },
   "competing_hypotheses": [
@@ -715,7 +747,8 @@
       "Derivatives aggregators have materially different OI coverage and incomplete liquidation data.",
       "ETF providers disagree on 6 Nov; one row is partial and carries impossible future-dated file metadata.",
       "Macro data is contextual and not a direct XRP feature without a point-in-time model specification.",
-      "Ripple escrow records describe locked-supply state, not a market sale or exchange deposit; keep the event in the supply timeline only."
+      "Ripple escrow records describe locked-supply state, not a market sale or exchange deposit; keep the event in the supply timeline only.",
+      "The XRP Radar infographic's attribution of the 300M net escrow remainder to ODL, partners or sales is not supported by the listed EscrowFinish/EscrowCreate records; preserve as an unverified publisher interpretation only."
     ]
   },
   "forecast": {

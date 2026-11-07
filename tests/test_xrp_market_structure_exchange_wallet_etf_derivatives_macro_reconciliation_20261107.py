@@ -130,3 +130,13 @@ def test_november_escrow_gross_release_is_separated_from_net_locked_supply():
     assert sum(x["amount_xrp"] for x in nov["escrow_create_transactions"]) == 700_000_000
     assert "not proven sold" in escrow["interpretation"]
     assert artifact["forecast"]["status"] == "NOT_ISSUED"
+
+
+def test_escrow_remainder_is_not_attributed_to_sales_or_odl_without_payment_evidence():
+    artifact = load_artifact()
+    escrow = artifact["market_reconciliation"]["ripple_escrow"]
+    interpretation = escrow["publisher_interpretation"]
+    assert interpretation["status"] == "UNVERIFIED_INTERPRETATION"
+    assert interpretation["claimed_amount_xrp"] == 300_000_000
+    assert "does not identify an external payment" in interpretation["evidence_gap"]
+    assert escrow["mixed_vintage_company_holdings"]["current_total_claim_allowed"] is False
