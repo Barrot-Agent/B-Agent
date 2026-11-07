@@ -1418,7 +1418,7 @@ def _parse_coinbase_candles(
         raise XRPIngestionError("Coinbase backfill page requires both start and end boundaries")
     page_start = _from_iso8601(page_start_utc, "Coinbase backfill page start") if page_start_utc is not None else None
     page_end = _from_iso8601(page_end_utc, "Coinbase backfill page end") if page_end_utc is not None else None
-    if page_start is not None and page_start >= page_end:
+    if page_start is not None and page_end is not None and page_start >= page_end:
         raise XRPIngestionError("Coinbase backfill page start must precede its end")
     if not payload and page_start is None:
         raise XRPIngestionError("Coinbase candle response must be a non-empty array")
@@ -1445,7 +1445,7 @@ def _parse_coinbase_candles(
         if not isinstance(row, list) or len(row) < 6:
             raise XRPIngestionError("Coinbase candle row does not match the documented schema")
         open_time = _from_seconds(row[0], "Coinbase candle open time")
-        if page_start is not None and (open_time < page_start or open_time >= page_end):
+        if page_start is not None and page_end is not None and (open_time < page_start or open_time >= page_end):
             continue
         if open_time in seen_open_times:
             raise XRPIngestionError("Coinbase candle response contains a duplicate timestamp")
