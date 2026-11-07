@@ -58,7 +58,7 @@
       "age_seconds_at_reference": 685,
       "stated_method": "Full visible depth from Binance spot and OKX XRP-USDT perpetual, sampled every minute, grouped into 0.05% price buckets and averaged per 15 minutes.",
       "excerpt": "Edge or Not snapshot 2026-11-07 23:31 UTC: XRP mid 1.1605; within ±1% bids $9.4M and asks $9.1M (50.81% bid); Binance spot and OKX perpetual combined. Largest asks 1.1640/$1.4M, 1.1628/$1.7M, 1.1617/$2.4M; largest bids 1.1593/$1.7M, 1.1582/$2.0M, 1.1570/$1.2M. Books are sampled every minute and averaged per 15 minutes. Orders can be pulled.",
-      "excerpt_sha256": "cec8972547fce23d9722dd682d1af64b62b7b9b9440832595e9ebbd3a234bf94",
+      "excerpt_sha256": "e9a12343448148feda1577a3bf4c5c056e597914a724a29966fe302610502a94",
       "venue_universe": [
         "Binance spot",
         "OKX XRP-USDT perpetual"
@@ -85,7 +85,7 @@
     "data_as_of_utc": "2026-11-07T08:01:00Z",
     "age_seconds_at_reference": 56485,
     "excerpt": "XRP Insights as of 2026-11-07 08:01 UTC: 22.33B XRP in 701 XRPL wallets attributed to 24 exchanges. Same-wallet change -150.7M XRP (-0.67%) over 7d and -161.2M (-0.73%) over 30d. Naive total change +350.8M includes two newly tracked wallets holding 512.0M. Upbit 6.44B; Coinbase 5.79B including 150.8M cbXRP reserve; Binance 2.73B including non-customer Binance-Peg XRP reserve and other affiliate balances; SBI VC Trade 56.6M, -2.9M 7d and -4.2M 30d. 487.8M XRP in tracked exchange wallets is wrapped-asset/insurance/charity reserves; 48.4% is cold-labeled and 39.9% unlabeled. Data are daily rippled account_info balances attributed by XRPSCAN labels; this is not tradable float.",
-    "excerpt_sha256": "bb13fefac64a3a3ce2e3b412362a245be185401cb1a620a2534ce5e6ad4703ca",
+    "excerpt_sha256": "1281cc6029bbc6f960cabdcdd129f52feebc397282a1501d31c2b5cf93c08366",
     "method": {
       "balances": "Daily XRP Ledger rippled account_info reads on the latest validated ledger.",
       "attribution": "XRPSCAN public account labels; labels are not the underlying ledger balances.",

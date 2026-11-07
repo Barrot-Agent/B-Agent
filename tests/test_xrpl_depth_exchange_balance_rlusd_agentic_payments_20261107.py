@@ -26,7 +26,7 @@ def test_fuelmaps_depth_is_spot_only_and_preserves_bid_share():
     bid_share = values["bid_within_1pct_usd"] / (
         values["bid_within_1pct_usd"] + values["ask_within_1pct_usd"]
     ) * 100
-    assert math.isclose(bid_share, values["bid_share_within_1pct_pct"], abs_tol=1e-9)
+    assert math.isclose(bid_share, values["bid_share_within_1pct_pct"], abs_tol=0.05)  # source amounts are rounded to $0.1M
     assert values["bid_share_within_1pct_pct"] == 58.2
     assert values["bid_share_within_5pct_pct"] == 69.4
     assert source["model_feature_eligible"] is False
