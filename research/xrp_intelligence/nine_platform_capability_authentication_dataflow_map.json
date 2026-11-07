@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T10:48:00Z",
+  "captured_at_utc": "2026-11-07T10:56:51Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "5ad04396b0319276c2f6693ce3843440bfb2bc7f",
-  "observed_research_head": "388a3aa1f794714df83529de971fbea57fb1bdcc",
+  "observed_integration_head_before_map_commit": "1a5492bd33d0c3e12d255af99e50305a9c48bbdb",
+  "observed_research_head": "2b272931befa9764fb3edd90bafacfabef6b5660",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -28,7 +28,9 @@
         "Current #1640 exact-head full suite, wheel verification and six-manifest dependency audit passed; current #1643 newest-head CI is running.",
         "Run 11: refetched current main tree, all four open-PR API pages, current PR heads, full changed-path inventories, review records, inline review threads, branch ancestry and exact-head workflow logs.",
         "Committed two fail-closed regression corrections on existing #1640 and verified its current head with 1,108 full-suite tests, 631 core tests, 57.90% coverage and installed-wheel verification.",
-        "Committed one visible-depth/taker-flow reconciliation artifact and eight offline regression tests to existing #1643; its exact-head full suite and dependency audit are pending."
+        "Committed one visible-depth/taker-flow reconciliation artifact and eight offline regression tests to existing #1643; its exact-head full suite and dependency audit are pending.",
+        "Run 11: current exact-head full repository suites passed on #1640 and #1643; six-manifest dependency audits and fail-closed gates passed on both current heads.",
+        "Run 11: existing-branch GitHub commits added temporal calibration event-order validation, two append-only XRP market-evidence artifacts and deterministic regression tests; no main write, secret read or external model transfer occurred."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -55,14 +57,15 @@
           "Current-session GitHub connector successfully committed evidence and tests to the existing XRP research branch; no main-branch write occurred.",
           "Current-session GitHub connector successfully inspected the existing V3 integration branch; this handoff/map update is being committed to that existing branch only.",
           "No secret values were read, no external model received repository data, and no deployment or financial action was performed.",
-          "Run 11 used the existing GitHub connector to commit the current durable handoff and this capability map on the existing integration branch; no main write, secret read or external model transfer occurred."
+          "Run 11 used the existing GitHub connector to commit the current durable handoff and this capability map on the existing integration branch; no main write, secret read or external model transfer occurred.",
+          "Run 11: current GitHub connector access verified by reading full repository trees, enumerating all open PR pages, comparing branch ancestry and paths, reading reviews/threads, inspecting Actions jobs/logs, and committing to existing branches only."
         ]
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-07T10:48:00Z"
+      "last_verified_at_utc": "2026-11-07T10:56:51Z"
     },
     "Claude": {
       "intended_role": [
@@ -235,7 +238,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-07T10:48:00Z",
+    "last_reviewed_at_utc": "2026-11-07T10:56:51Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -283,31 +286,31 @@
     "Treat one-off Copilot/CodeRabbit review comments as critique, not as independent human approval."
   ],
   "current_run_observations": {
-    "captured_at_utc": "2026-11-07T10:48:00Z",
+    "captured_at_utc": "2026-11-07T10:56:51Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "5ad04396b0319276c2f6693ce3843440bfb2bc7f",
-    "research_head": "388a3aa1f794714df83529de971fbea57fb1bdcc",
+    "integration_head_before_map_commit": "1a5492bd33d0c3e12d255af99e50305a9c48bbdb",
+    "research_head": "2b272931befa9764fb3edd90bafacfabef6b5660",
     "repository_inventory": {
       "main": {
         "tree_entries": 1403,
         "files": 1298,
         "python_files": 493,
-        "test_modules": 87,
-        "workflow_files": 86
+        "test_modules": 90,
+        "workflow_yaml_files": 78
       },
       "integration": {
         "tree_entries": 1470,
         "files": 1357,
         "python_files": 539,
         "test_modules": 121,
-        "workflow_files": 79
+        "workflow_yaml_files": 79
       },
       "research": {
-        "tree_entries": 1823,
-        "files": 1717,
-        "python_files": 657,
-        "test_modules": 254,
-        "workflow_files": 78
+        "tree_entries": 1825,
+        "files": 1719,
+        "python_files": 658,
+        "test_modules": 255,
+        "workflow_yaml_files": 78
       },
       "open_pull_requests": {
         "total": 371,
@@ -317,16 +320,16 @@
     },
     "branch_relationships": {
       "pr_1640": {
-        "head": "5ad04396b0319276c2f6693ce3843440bfb2bc7f",
-        "ahead_of_main": 544,
+        "head": "1a5492bd33d0c3e12d255af99e50305a9c48bbdb",
+        "ahead_of_main": 546,
         "behind_main": 0,
         "changed_paths": 165
       },
       "pr_1643": {
-        "head": "388a3aa1f794714df83529de971fbea57fb1bdcc",
-        "ahead_of_main": 586,
+        "head": "2b272931befa9764fb3edd90bafacfabef6b5660",
+        "ahead_of_main": 588,
         "behind_main": 0,
-        "changed_paths": 422
+        "changed_paths": 424
       },
       "compare_pr_1640_to_1643": {
         "status": "diverged",
@@ -369,29 +372,26 @@
     },
     "mission_ci": {
       "pr_1640": {
-        "head": "5ad04396b0319276c2f6693ce3843440bfb2bc7f",
-        "ci_run": "42365176472",
-        "full_suite": "1108 passed, 8 subtests",
+        "head": "1a5492bd33d0c3e12d255af99e50305a9c48bbdb",
+        "ci_run": "42365700364",
+        "full_suite": "1110 passed, 8 subtests",
         "core_suite": "631 passed, 8 subtests",
-        "coverage_pct": 57.9,
+        "coverage_pct": 57.91,
         "installed_wheel": "passed; packaged primary mission resource verified; installed wheel loaded Barrot V3 and mission assets",
-        "dependency_audit_run": "42365176491",
+        "dependency_audit_run": "42365700418",
         "dependency_audit": "passed; six manifests",
-        "fail_closed_gate_run": "42365176497",
+        "fail_closed_gate_run": "42365700360",
         "fail_closed_gate": "passed; automatic merge disabled"
       },
       "pr_1643": {
-        "head": "388a3aa1f794714df83529de971fbea57fb1bdcc",
-        "ci_run": "42365312554",
-        "full_suite": "in progress; no final count yet",
-        "core_suite": "passed; exact count available in run logs",
-        "dependency_audit_run": "42365312614",
-        "dependency_audit": "in progress",
-        "fail_closed_gate_run": "42365312555",
-        "fail_closed_gate": "passed; automatic merge disabled",
-        "previous_head": "b32b707ac72251eb92272dfdca956f24decf8e2a",
-        "previous_head_full_suite": "1791 passed, 8 subtests",
-        "previous_head_core_suite": "498 passed, 8 subtests"
+        "head": "2b272931befa9764fb3edd90bafacfabef6b5660",
+        "ci_run": "42365909911",
+        "full_suite": "1806 passed, 8 subtests",
+        "core_suite": "498 passed, 8 subtests",
+        "dependency_audit_run": "42365909908",
+        "dependency_audit": "passed; six manifests",
+        "fail_closed_gate_run": "42365909938",
+        "fail_closed_gate": "passed; automatic merge disabled"
       }
     },
     "review_state": {
@@ -410,15 +410,46 @@
       "independent_approval_present": false
     },
     "new_research_artifacts": [
-      "research/xrp_intelligence/20261107T091900Z-xrp-visible-depth-taker-flow-reconciliation.json"
+      "research/xrp_intelligence/20261107T091900Z-xrp-visible-depth-taker-flow-reconciliation.json",
+      "tests/test_xrp_visible_depth_taker_flow_reconciliation_20261107.py",
+      "research/xrp_intelligence/20261107T105341Z-xrp-kraken-okx-direct-spot-snapshot.json",
+      "tests/test_xrp_kraken_okx_direct_spot_snapshot_20261107.py"
     ],
+    "verified_youtube_inventory": {
+      "verified_public_videos": 1,
+      "verified_personal_youtube_channels": 0,
+      "video_id": "VSgeDgOCexs",
+      "title": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+      "publisher_channel": "TEDx Talks",
+      "published_at": "2018-05-18",
+      "attribution_confidence": "HIGH_FOR_THIS_VIDEO",
+      "seed_video_references_preserved": 18,
+      "related_public_references_preserved": 2,
+      "candidate_personal_channel": "@drkamilahstevenson",
+      "candidate_channel_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
+    },
+    "prediction_engine": {
+      "temporal_calibration_event_time_guard": "EXECUTED_AND_VERIFIED_BY_FULL_SUITE",
+      "calibration_scope": "Deterministic baseline probabilities; not a trained XRP model",
+      "requires_outcome_event_after_forecast_cutoff": true,
+      "requires_outcome_availability_at_or_after_event": true,
+      "max_outcome_event_timestamp_recorded": true,
+      "directional_forecast_status": "NOT_ISSUED",
+      "mature_synchronized_historical_dataset": false,
+      "validated_real_data_out_of_sample_lift": false,
+      "sufficient_shadow_outcomes": false
+    },
     "verified_findings": [
-      "Edge or Not reported 09:19 UTC visible XRP bids $9.8M and asks $10.4M within 1%, combining Binance spot and OKX perpetual depth sampled each minute and averaged over 15 minutes; it explicitly says the signal is untested and orders can be pulled.",
-      "Swiftedge reported 09:06 UTC XRP net taker flow -17.1%, funding +0.0100% per eight hours, OI -1.5% and large-order net flow -$10.0M; venue coverage was not fully disclosed in the retrieved page.",
-      "The two secondary price references differed by 0.33285%, but their page timestamps, venues and contract types are not synchronized; no executable arbitrage inference is permitted.",
-      "Alpha Finance's five-fund ETF series reports zero November 6 flow and +$45.9M over 30 sessions but publishes no AUM or holdings; do not merge it with different ETF universes.",
-      "Evernorth's Cantor facility and warrant capacity remain conditional financing mechanisms, not verified XRP purchases; SEC primary records distinguish optional ELOC draws and cash warrant exercise from realized proceeds.",
-      "No directional XRP forecast was issued; new secondary market observations remain event-timeline-only and model-ineligible."
+      "Direct Kraken XRP/USD snapshot at 10:53:41 UTC: last $1.16799, bid $1.16799, ask $1.16800, rolling 24h volume 27.214M XRP and VWAP $1.17707089; no provider event timestamp.",
+      "Direct OKX XRP-USDT snapshot at 10:53:41 UTC: last 1.1706, bid 1.1703, ask 1.1704, rolling 24h volume 50.007M XRP; provider timestamp 10:43:26.666 UTC was 614.334 seconds old and fails the 300-second freshness limit.",
+      "The raw Kraken/OKX last-price difference is 0.22346%; no synchronized USD/USDT normalization or executable depth exists, so no arbitrage inference is permitted.",
+      "Edge or Not's 09:19 UTC secondary depth page reported $9.8M bids and $10.4M asks within 1%, combining Binance spot and OKX perpetual depth; it says the signal is untested and orders can be pulled.",
+      "Swiftedge's 09:06 UTC brief reported -17.1% net taker flow, +0.0100% funding per eight hours, OI down 1.5% and -$10.0M large-order net flow; venue coverage is incomplete.",
+      "Alpha Finance's five-fund ETF series reported $0 November 6 flow and +$45.9M over 30 sessions, but publishes no AUM or holdings and is not issuer-confirmed AP cash flow.",
+      "Coinbase's Oct 28 RLUSD listing spans Prime, Coinbase Exchange and retail app with XRPL, Base and Ethereum rails; Coinbase Global Exchange and RLUSD collateral were explicitly to follow, while Ripple would provide liquidity on Base.",
+      "SBI VC Trade announced RLUSD availability June 24 and already handled USDC since March 2025; SBI's evidence supports a multi-stablecoin distribution strategy, not an XRP purchase.",
+      "One TEDx Kamilah Stevenson video is identity-verified; personal YouTube channel ownership remains unverified, and 18 seed plus two related references remain candidates.",
+      "No directional XRP forecast was issued; latest spot, depth, taker-flow and ETF observations remain model-ineligible."
     ],
     "merge_state": {
       "pr_1640_approving_reviews": 0,
@@ -427,6 +458,7 @@
       "visible_fallback_ruleset_enforcement": "disabled",
       "github_pages_enabled": true,
       "github_pages_configuration_accessible": false,
+      "codeowners": "* @Barrot-Agent",
       "merge_performed": false,
       "reason": "Independent approving review and Pages deployment authorization remain unresolved."
     }
