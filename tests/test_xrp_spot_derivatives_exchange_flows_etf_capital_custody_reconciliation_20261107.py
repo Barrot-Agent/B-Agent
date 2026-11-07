@@ -163,8 +163,8 @@ def test_ripple_seed_and_coinbase_custody_are_indirect_edges_through_toxr(eviden
 def test_cash_vs_in_kind_and_beneficial_ownership_are_not_inferred(evidence: dict) -> None:
     source = _source(evidence, "sec_21shares_q2_2026_10q")
     joined = " ".join(source["limitations"])
-    assert "does not split Q2/H1 activity by cash versus in-kind" in joined
-    assert "current beneficial holdings" in joined
+    assert "does not split Q2/H1 XRP contributions/redemptions between cash and in-kind" in joined
+    assert "does not publish a current beneficial-ownership table for Ripple Markets" in joined
     assert source["observations"]["dtc_record_participants"] == 1
 
 
