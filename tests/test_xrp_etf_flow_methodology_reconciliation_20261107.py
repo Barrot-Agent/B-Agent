@@ -65,7 +65,7 @@ def test_bitwise_primary_custody_edge_is_scoped_to_one_issuer_fund() -> None:
         if item["predicate"] == "digital_asset_custody_by"
     )
     assert edge["status"] == "PRIMARY_SOURCE_CONFIRMED"
-    assert "not prove Coinbase Exchange purchased XRP" in edge["scope_limit"]
+    assert "does not prove Coinbase Exchange purchased the XRP" in edge["scope_limit"]
 
 
 def test_flow_disagreements_keep_shared_upstream_sources_and_minority_views() -> None:
