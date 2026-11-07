@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107-sbi-jpysc-reserve-collateral-public-chain-status-reconciliation",
+  "artifact_type": "sbi_jpysc_reserve_collateral_and_public_chain_status_reconciliation",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "source_capture": {
+    "captured_on_utc_date": "2026-11-07",
+    "exact_retrieval_clock_available": false,
+    "limitation": "The web retrieval interface exposed page content and publication/data dates but not an independently verifiable HTTP retrieval timestamp. No exact capture time is manufactured."
+  },
+  "source_independence": {
+    "group": "SBI_GROUP_PRIMARY_RELEASES",
+    "status": "Multiple first-party releases from SBI-group entities; primary for what those entities announced, but not independent corroboration across unrelated publishers.",
+    "caution": "Do not count the four releases as four independent confirmations."
+  },
+  "sources": [
+    {
+      "source_id": "sbi_jpysc_launch_roles_and_initial_account_scope",
+      "publisher": "SBI Holdings, SBI Shinsei Bank, SBI Shinsei Trust Bank, SBI VC Trade and Startale Group",
+      "source_type": "first_party_joint_issuer_release",
+      "publication_date": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "claims": {
+        "stablecoin": "JPYSC",
+        "issuer": "SBI Shinsei Trust Bank",
+        "issuance_commissioner_and_distribution_operator": "SBI VC Trade Co., Ltd.",
+        "parent_support": "SBI Shinsei Bank supports the initiative as parent of SBI Shinsei Trust Bank.",
+        "technology_partner": "Startale Group Pte. Ltd. supports technical development and ecosystem formation.",
+        "initial_access": "VCTRADE account-internal use only at launch",
+        "external_wallet_withdrawal": "Disabled at launch",
+        "public_chain_transition": "Planned after legal and tax treatment is clarified and subject to supervisory confirmation"
+      },
+      "exact_japanese_excerpt": "JPYSCはSBI新生信託銀行が発行者、暗号資産交換業及び電子決済手段等取引業のSBI VCトレードが流通を担います。なお、JPYSCは先行提供の時点において、SBI VCトレードの口座内における利用に限定され、外部ウォレットへの移転（出庫）はできません。",
+      "excerpt_sha256": "c5ae0685360372c34de5733583695452267478412dd6eee7ae0f8df2271154e2",
+      "hash_scope": "SHA-256 of the exact UTF-8 Japanese excerpt stored in this artifact; not the full source page or original HTTP bytes."
+    },
+    {
+      "source_id": "sbi_jpysc_short_term_jgb_reserve_allocation",
+      "publisher": "SBI Shinsei Trust Bank and SBI VC Trade",
+      "source_type": "first_party_reserve_management_announcement",
+      "publication_date": "2026-09-07",
+      "data_as_of_date": "2026-09-07",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "claims": {
+        "legal_change_effective_date": "2026-06-01",
+        "eligible_reserve_investments": "Eligible short-term government securities and time deposits subject to statutory and regulatory requirements",
+        "maximum_allocation_pct_of_issuance": 50,
+        "maximum_eligible_government_security_maturity_days": 90,
+        "actual_short_term_jgb_allocation_jpy": 1000000000,
+        "reported_jpysc_issuance_balance_jpy_approx": 20100000000,
+        "calculated_jgb_allocation_pct_of_reported_issuance": 4.975124378109452,
+        "reported_lending_applications_jpy_approx": 6900000000,
+        "publisher_reported_combined_scale_jpy_approx": 27000000000,
+        "reserve_manager": "SBI Shinsei Trust Bank",
+        "investment_instruction_entity": "SBI VC Trade as issuance commissioner",
+        "lending_applications_classification": "APPLICATIONS_NOT_VERIFIED_OUTSTANDING"
+      },
+      "exact_japanese_excerpt": "今回、SBI新生信託銀行はこの制度を活用し、JPYSCの裏付けとなる信託財産のうち10億円について短期国債による運用を開始しました。2026年9月7日現在、JPYSCの発行残高は約201億円相当となっています。",
+      "excerpt_sha256": "965ae875e99dab29817e37277f3c792a0bade3756f637caf89853af90be22b0c",
+      "additional_exact_japanese_excerpt": "発行額の50％を上限として3ヵ月を超えない国債証券（短期国債）や定期預金による運用が可能となりました。SBI VCトレードが提供している「JPYSCレンディング」お申し込み分は約69億円相当に上り、発行残高とレンディング残高を合わせた規模は約270億円相当となります。",
+      "additional_excerpt_sha256": "f8e24984c871dc1b85fb9372e685aa96c72585ab7bcaab2ac7d37e1974e44f83",
+      "accounting_qualification": "The release describes approximately JPY 6.9B as lending applications (お申し込み分). It is not independently established as funded, settled or outstanding loan balance. The issuer's approximately JPY 27B combined scale is preserved as its own reported figure, not independently reconstructed market capitalization."
+    },
+    {
+      "source_id": "sbi_jpysc_lending_and_handled_balance_update",
+      "publisher": "SBI VC Trade",
+      "source_type": "first_party_product_balance_announcement",
+      "publication_date": "2026-11-02",
+      "data_as_of_date": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "claims": {
+        "jpysc_lending_balance_jpy": "greater_than_10000000000",
+        "jpysc_handled_balance_jpy": "greater_than_30000000000",
+        "handled_balance_definition": "On-chain balance plus lending balance",
+        "lending_terms_announced": [
+          {
+            "term_days": 28,
+            "annual_rate_pct": 2
+          },
+          {
+            "term_days": 84,
+            "annual_rate_pct": 2.5
+          },
+          {
+            "term_days": 168,
+            "annual_rate_pct": 3
+          }
+        ],
+        "public_chain_status": "Public-chain conversion remains a future step after legal amendments; this release does not announce a completed public-chain launch.",
+        "handled_balance_is_market_cap": false
+      },
+      "exact_japanese_excerpt": "2026年11月2日（月）時点で、円建てステーブルコイン「ジェイピーワイエスシー（JPYSC）」を活用した「JPYSCレンディング（貸コイン）」の残高が100億円を突破しました。また、JPYSCの取扱残高も300億円を突破しました。JPYSC取扱残高は、オンチェーンでの残高とレンディングでの残高の合計値を指します。",
+      "excerpt_sha256": "a39c51dcbf6cd0c7191ee985557ebced65ec720c871934e4d3aa4a8fbf8513ef",
+      "public_chain_excerpt": "今後、法令改正等を経てJPYSCのパブリック化が実現した際には、オンチェーン金融における多様なニーズに対応するため、ユースケースの創出に取り組んでまいります。",
+      "public_chain_excerpt_sha256": "6a185eb2704e944c3bb6ca18b799d9faac27c02197ca30d08952153da9664d08",
+      "qualification": "Handled balance is a combined service metric, not a standalone public circulating supply, reserve balance, market capitalization or XRP demand measure."
+    },
+    {
+      "source_id": "sbi_ripple_asia_xrpl_tokenized_deposit_concept_poc",
+      "publisher": "SBI Ripple Asia",
+      "source_type": "first_party_conceptual_proof_of_concept_announcement",
+      "publication_date": "2026-02-26",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "claims": {
+        "project": "Conceptual proof of concept for low-cost tokenized deposits and deposit-type digital money using existing financial infrastructure",
+        "contemplated_existing_infrastructure": [
+          "SBI MoneyTap domestic remittance service",
+          "SBI Ripple Asia token issuance platform"
+        ],
+        "contemplated_blockchain": "XRP Ledger (XRPL)",
+        "status": "Conceptual PoC; not evidence of a production JPYSC deployment on XRPL",
+        "relationship_to_jpysc": "Separate project; the announcement does not identify JPYSC as the token or product"
+      },
+      "exact_japanese_excerpt": "ブロックチェーン技術としては、世界的に金融機関での実装が進む「XRP Ledger（以下「XRPL」）の活用を想定して検討",
+      "excerpt_sha256": "44573a02f8636355c09b5bdb0554dd3560a5a23bcc5b6c68fcf4bfe01cc36584"
+    }
+  ],
+  "calculations": {
+    "jgb_allocation_share_of_reported_issuance_pct": 4.975124378109452,
+    "method": "JPY 1,000,000,000 / JPY 20,100,000,000 * 100",
+    "interpretation": "This is a calculated ratio of the issuer-reported September 7 allocation and issuance balance. It is not a reserve audit or independently verified asset valuation."
+  },
+  "reconciled_interpretation": [
+    "JPYSC is issued by SBI Shinsei Trust Bank; SBI VC Trade acts as issuance commissioner and distribution/operator; Startale supports technical development. These roles are distinct.",
+    "The September 7 JPY 1B short-term JGB allocation was about 4.98% of the reported JPY 20.1B issuance balance. The statutory 50% limit is a ceiling, not evidence that SBI allocated 50%.",
+    "The September 7 JPY 6.9B figure is described as lending applications. Do not relabel it as funded or outstanding lending balance.",
+    "The November 2 release reports lending balance above JPY 10B and handled balance above JPY 30B; handled balance explicitly combines on-chain balance and lending balance.",
+    "The June 24 launch was limited to VCTRADE accounts with external wallet withdrawals disabled. The November 2 release still describes public-chain conversion as a future step after legal amendments.",
+    "SBI Ripple Asia's February 26 XRPL tokenized-deposit PoC is a separate conceptual project. It does not prove that JPYSC is issued, circulated or settled on XRPL.",
+    "The reserve JGB allocation and JPYSC lending are relevant to SBI's yen stablecoin reserve management and institutional capital strategy, but they are not evidence of XRP purchases, XRP collateral usage, XRP liquidity or an XRP bridge-asset role."
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "SBI is building a multi-rail digital-finance strategy in which JPYSC, RLUSD/USDC distribution and separate XRPL initiatives may eventually interoperate.",
+      "supporting_evidence": [
+        "JPYSC issuer/distributor structure",
+        "SBI distribution of RLUSD and USDC in separate disclosures",
+        "SBI Ripple Asia's separate XRPL tokenized-deposit PoC"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "JPYSC was account-internal at launch",
+        "November 2 still described public-chain conversion as future",
+        "The XRPL PoC does not identify JPYSC",
+        "No production JPYSC-to-XRP bridge or XRP purchase is established"
+      ]
+    },
+    {
+      "hypothesis": "JPYSC growth can occur without increasing XRP demand because its initial issuance, lending and reserve management are account-based and yen-denominated.",
+      "supporting_evidence": [
+        "VCTRADE account-only launch",
+        "JPYSC trust reserve invested in short-term JGBs",
+        "JPYSC lending/handled-balance metrics are not XRP metrics"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "SBI separately researches XRPL tokenized-deposit infrastructure",
+        "Future public-chain and cross-stablecoin use cases remain possible but unimplemented in the cited releases"
+      ]
+    }
+  ],
+  "model_admission": {
+    "event_timeline_only": true,
+    "admitted_to_xrp_price_features": false,
+    "admitted_to_xrp_exchange_flow_features": false,
+    "admitted_as_xrp_demand": false,
+    "reason": "Issuer-reported JPYSC reserve and lending figures are SBI yen-stablecoin events. No causal XRP flow, public XRPL issuance, XRP purchase or XRP collateral utilization is established."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_made": false
+  },
+  "receipt_limits": {
+    "source_excerpt_hashes_present": true,
+    "raw_full_page_bytes_retained": false,
+    "original_http_headers_retained": false,
+    "independent_timestamp_anchor": false,
+    "note": "Hashes authenticate the exact excerpt strings stored here. They do not authenticate the complete web page or original transport bytes."
+  }
+}
