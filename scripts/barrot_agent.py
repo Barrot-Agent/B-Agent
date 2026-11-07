@@ -360,6 +360,8 @@ def _send_groq_request(
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:600]
         lowered = detail.lower()
+        if exc.code == 413:
+            raise RuntimeError(f"LLM_CONTEXT_BUDGET_EXCEEDED: {detail}") from exc
         if (
             exc.code == 400
             and "tool choice is none" in lowered

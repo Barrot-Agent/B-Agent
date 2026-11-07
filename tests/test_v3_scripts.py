@@ -806,3 +806,41 @@ def test_public_brain_corpus_export_is_inert_and_preserves_existing_dumps() -> N
 
     module = load_script(script_path, "dump_brain_corpus_inert_regression_test")
     assert module.main() == 2
+
+
+def test_barrot_groq_tpm_413_fails_fast_without_retry_or_fallback(monkeypatch) -> None:
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_groq_tpm_413_budget_test",
+    )
+    monkeypatch.setattr(module, "GROQ_KEY", "test-key")
+    calls = []
+
+    def fake_urlopen(request, timeout=0):
+        del request, timeout
+        calls.append(True)
+        body = (
+            b'{"error":{"message":"Request too large for model on tokens per minute '
+            b'(TPM): Limit 8000, Requested 8099.","code":"rate_limit_exceeded"}}'
+        )
+        raise urllib.error.HTTPError(
+            "https://api.groq.com/openai/v1/chat/completions",
+            413,
+            "Request Entity Too Large",
+            hdrs=None,
+            fp=io.BytesIO(body),
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+    try:
+        module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": []})
+    except RuntimeError as exc:
+        assert "LLM_CONTEXT_BUDGET_EXCEEDED" in str(exc)
+    else:
+        raise AssertionError("HTTP 413 TPM budget failure must fail closed.")
+
+    assert len(calls) == 1

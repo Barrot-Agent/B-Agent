@@ -41,6 +41,7 @@ class RepairState(str, Enum):
 
 class ModelFailureCode(str, Enum):
     RATE_LIMITED = "LLM_RATE_LIMITED"
+    CONTEXT_BUDGET = "LLM_CONTEXT_BUDGET_EXCEEDED"
     TOOL_CONFLICT = "LLM_TOOL_CONFLICT"
     INVALID_JSON = "LLM_INVALID_JSON"
     TIMEOUT = "LLM_TIMEOUT"
@@ -988,7 +989,27 @@ class WorkQueueController:
 
 
 class AuditEngine:
-    """Builds the grounded prompt context used by the planner."""
+    """Builds grounded, deterministic, provider-bounded prompt context."""
+
+    MAX_PROMPT_CHARS = 14_000
+    SECTION_LIMITS = {
+        "note": 1_500,
+        "previous_failure": 1_200,
+        "file_context": 5_000,
+        "barrett_autonomous_audit": 2_000,
+        "github_context": 2_500,
+        "inventory": 1_200,
+        "directory_context": 1_200,
+    }
+
+    @staticmethod
+    def _bounded_excerpt(value: str, limit: int, label: str) -> str:
+        if len(value) <= limit:
+            return value
+        marker = f"\n...[TRUNCATED {label}; original_length={len(value)} characters.]"
+        if limit <= len(marker):
+            return marker[:limit]
+        return value[: limit - len(marker)] + marker
 
     def build_prompt(
         self,
@@ -998,17 +1019,51 @@ class AuditEngine:
         audit_context: dict[str, str],
         previous_failure: str = "",
     ) -> str:
-        prompt = (
-            f"TASK:\n{task_title}\n{task_body}\n\n"
-            f"CURRENT REPO FILES:\n{audit_context.get('inventory', '')}"
-            f"{audit_context.get('file_context', '')}"
-            f"{audit_context.get('directory_context', '')}"
-            f"{audit_context.get('github_context', '')}"
-            f"{audit_context.get('note', '')}"
+        mandatory = f"TASK:\n{task_title}\n{task_body}"
+        evidence_heading = "\n\nCURRENT REPOSITORY EVIDENCE:"
+        suffix = "\n\nReturn JSON only using the deterministic repair schema."
+        mandatory_size = len(mandatory) + len(evidence_heading) + len(suffix)
+        if mandatory_size > self.MAX_PROMPT_CHARS:
+            raise ModelFailure(
+                ModelFailureCode.CONTEXT_BUDGET,
+                "The complete task title/body exceed the bounded repair-planner prompt budget. "
+                "No model request or repository patch was made; split the task or reduce nonessential "
+                "narrative without removing authorization or safety constraints.",
+            )
+
+        remaining = self.MAX_PROMPT_CHARS - mandatory_size
+        parts = [mandatory, evidence_heading]
+        sections = (
+            ("note", "OPERATOR SAFETY AND PRESERVATION NOTES", (audit_context or {}).get("note", "")),
+            ("previous_failure", "PREVIOUS FAILURE", previous_failure),
+            ("file_context", "NAMED FILE CONTENT", (audit_context or {}).get("file_context", "")),
+            ("barrett_autonomous_audit", "READ-ONLY REPOSITORY AUDIT (SECONDARY MODEL SUMMARY)", (audit_context or {}).get("barrett_autonomous_audit", "")),
+            ("github_context", "GITHUB PULL REQUEST AND ISSUE CONTEXT", (audit_context or {}).get("github_context", "")),
+            ("inventory", "REPOSITORY INVENTORY", (audit_context or {}).get("inventory", "")),
+            ("directory_context", "SCOPED DIRECTORY CONTENT", (audit_context or {}).get("directory_context", "")),
         )
-        if previous_failure:
-            prompt += f"\n\nPREVIOUS FAILURE:\n{previous_failure}\n"
-        prompt += "\n\nReturn JSON only using the deterministic repair schema."
+        for key, label, raw_value in sections:
+            if raw_value is None or raw_value == "":
+                continue
+            value = raw_value if isinstance(raw_value, str) else str(raw_value)
+            header = f"\n\n{label}:\n"
+            if remaining <= len(header):
+                break
+            excerpt_limit = min(self.SECTION_LIMITS[key], remaining - len(header))
+            excerpt = self._bounded_excerpt(value, excerpt_limit, key)
+            chunk = header + excerpt
+            if len(chunk) > remaining:
+                break
+            parts.append(chunk)
+            remaining -= len(chunk)
+
+        prompt = "".join(parts) + suffix
+        if len(prompt) > self.MAX_PROMPT_CHARS:
+            raise ModelFailure(
+                ModelFailureCode.CONTEXT_BUDGET,
+                "The bounded repair-planner prompt exceeded its hard character limit. "
+                "No model request or repository patch was made.",
+            )
         return prompt
 
 
@@ -1060,7 +1115,9 @@ Rules:
 - Use mode=no_repair_required when the repository is already healthy for the requested issue.
 - Use mode=report when the task is audit-only or cannot be repaired deterministically.
 - For mode=repair, identify exactly one concrete issue.
-- If repository inspection is needed, use the available repo_browser tools with non-empty relative paths such as ".".
+- The repair-planner call is tool-free. Use only the supplied bounded repository context and read-only audit report.
+- Any section marked [TRUNCATED] is incomplete. Never infer omitted file contents or unseen PR/issue facts; if required evidence is missing, use mode=report.
+- Treat the read-only audit as a secondary model summary, not primary evidence; verify its claims against supplied file excerpts and explicit source evidence.
 - reproduction_commands must fail before repair when the issue exists.
 - validation_commands must pass after repair.
 - resolution_commands must specifically re-test the original failure condition.
@@ -1106,6 +1163,12 @@ Rules:
             return exc
         message = str(exc)
         lowered = message.lower()
+        if (
+            "llm_context_budget_exceeded" in lowered
+            or "http 413" in lowered
+            or "request too large" in lowered
+        ):
+            return ModelFailure(ModelFailureCode.CONTEXT_BUDGET, message)
         if "429" in lowered or "rate limit" in lowered or "rate-limited" in lowered:
             return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
         if "tool_choice" in lowered or "tool choice" in lowered or "tool conflict" in lowered:
@@ -1122,27 +1185,22 @@ Rules:
             return ModelFailure(ModelFailureCode.API_ERROR, message)
         return ModelFailure(ModelFailureCode.UNAVAILABLE, message)
 
+
     def generate(self, prompt: str) -> RepairDirective:
         last_failure: ModelFailure | None = None
         for attempt in range(1, self.max_attempts + 1):
             try:
-
                 try:
                     parameters = inspect.signature(self.brain.think).parameters
                 except (TypeError, ValueError):
                     parameters = {}
 
+                call_kwargs: dict[str, Any] = {"system": self.SYSTEM}
                 if "use_tools" in parameters:
-                    raw = self.brain.think(
-                        prompt,
-                        system=self.SYSTEM,
-                        use_tools=False,
-                    )
-                else:
-                    raw = self.brain.think(
-                        prompt,
-                        system=self.SYSTEM,
-                    )
+                    call_kwargs["use_tools"] = False
+                if "max_output_tokens" in parameters:
+                    call_kwargs["max_output_tokens"] = 768
+                raw = self.brain.think(prompt, **call_kwargs)
                 payload = self._extract_json(raw)
                 mode = str(payload.get("mode", "")).strip().lower()
                 if mode not in {"repair", "report", "no_repair_required"}:
@@ -1169,6 +1227,7 @@ Rules:
                 raise last_failure
         assert last_failure is not None
         raise last_failure
+
 
 
 class StructuredCommandExecutor:
@@ -1734,16 +1793,12 @@ class RepositoryRepairController:
         repo="",
         branch="",
     ):
-        """Perform a read-only repository investigation before repair planning."""
+        """Perform a bounded, read-only repository investigation before repair planning."""
         brain = getattr(self.repair_planner, "brain", None)
         think = getattr(brain, "think", None)
         if not callable(think):
             return ""
 
-        # The autonomous audit is an additional investigative model call.
-        # Only invoke it when the brain explicitly supports the tool-capable
-        # audit contract. Compatibility brains without use_tools must not
-        # consume the repair planner's bounded retry budget.
         try:
             think_parameters = inspect.signature(think).parameters
         except (TypeError, ValueError):
@@ -1751,29 +1806,21 @@ class RepositoryRepairController:
 
         if "use_tools" not in think_parameters:
             return ""
+        if len(str(task_title)) + len(str(task_body)) > 6_000:
+            return (
+                "Read-only audit skipped because the task title/body exceed its 6,000-character "
+                "audit-input budget; use the bounded deterministic repository context."
+            )
 
         system = """
-You are Barrett performing the repository investigation phase of a repair.
+You are Barrot performing a read-only repository investigation before repair planning.
 
-Use your repository inspection tools yourself before making factual claims.
-
-Rules:
-- Inspect the actual repository.
-- Inspect relevant workflow files and relevant tests.
-- Do not invent filenames, directories, CI runs, failures, or evidence.
-- A configured workflow is not proof that a GitHub run failed.
-- Distinguish observed evidence from inference.
-- This phase is READ ONLY. Do not write, patch, commit, push, merge, or mutate.
-- Report:
-  1. files actually inspected,
-  2. observed facts,
-  3. relevant tests and CI configuration,
-  4. reproducibility evidence,
-  5. evidence still required.
-
-Return a plain-text evidence report.
+Inspect only the actual repository using the available read-only repository tools.
+Do not write, patch, commit, push, merge, or mutate.
+Do not invent filenames, test results, CI runs, branches, PRs, or evidence.
+Report the files actually inspected, observed facts, relevant tests/workflows, and missing evidence.
+Return a concise evidence report; distinguish confirmed facts from inference.
 """.strip()
-
         message = f"""
 Repository: {repo}
 Branch: {branch}
@@ -1781,29 +1828,20 @@ Task title: {task_title}
 Task body:
 {task_body}
 
-Perform the repository investigation now. Do not ask the operator to inspect
-the repository for you. Use your repository tools and report only evidence you
-actually observed.
+Inspect the repository for this task and return only the evidence report.
 """.strip()
-
+        call_kwargs: dict[str, Any] = {"system": system, "use_tools": True}
+        if "max_output_tokens" in think_parameters:
+            call_kwargs["max_output_tokens"] = 384
         try:
-            try:
-                return str(
-                    think(
-                        message,
-                        system=system,
-                        use_tools=True,
-                    )
-                )
-            except TypeError as exc:
-                if "use_tools" not in str(exc):
-                    raise
-                return str(think(message, system=system))
+            report = str(think(message, **call_kwargs)).strip()
+            if len(report) > 2_500:
+                marker = "\n...[TRUNCATED read-only audit report]"
+                report = report[: 2_500 - len(marker)] + marker
+            return report
         except Exception as exc:
-            return (
-                "BARRETT_AUTONOMOUS_AUDIT_FAILED: "
-                f"{type(exc).__name__}: {exc}"
-            )
+            return f"READ_ONLY_AUDIT_UNAVAILABLE: {type(exc).__name__}"
+
 
     def __init__(
         self,
@@ -1956,20 +1994,35 @@ actually observed.
         cycle.transition(RepairState.AUDITING)
         self._persist(cycle)
         barrett_audit = self._barrett_autonomous_audit(
-            task_title=str(locals().get("title", "")),
-            task_body=str(locals().get("task", "")),
-            repo=str(locals().get("repo", "")),
-            branch=str(locals().get("branch", "")),
-        )
-        if barrett_audit:
-            audit_context = dict(locals().get("audit_context") or {})
-            audit_context["barrett_autonomous_audit"] = barrett_audit
-
-        prompt = self.audit_engine.build_prompt(
             task_title=task_title,
             task_body=task_body,
-            audit_context=audit_context,
+            repo=repo_name,
+            branch=branch_name,
         )
+        if barrett_audit:
+            audit_context = dict(audit_context or {})
+            audit_context["barrett_autonomous_audit"] = barrett_audit
+
+        try:
+            prompt = self.audit_engine.build_prompt(
+                task_title=task_title,
+                task_body=task_body,
+                audit_context=audit_context,
+            )
+        except ModelFailure as exc:
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED if exc.code == ModelFailureCode.CONTEXT_BUDGET else RepairState.FAILED,
+                exc.code.value,
+                str(exc),
+                failed_operation="build_repair_prompt",
+                required_external_action=(
+                    "Split the task or reduce nonessential narrative while preserving all authorization "
+                    "and safety constraints; no model request or patch was made."
+                    if exc.code == ModelFailureCode.CONTEXT_BUDGET
+                    else ""
+                ),
+            )
         cycle.audit_completed = True
 
         cycle.transition(RepairState.ANALYZING)
@@ -1977,12 +2030,18 @@ actually observed.
         try:
             directive = self.repair_planner.generate(prompt)
         except ModelFailure as exc:
+            context_blocked = exc.code == ModelFailureCode.CONTEXT_BUDGET
             return self._failure(
                 cycle,
-                RepairState.FAILED,
+                RepairState.BLOCKED if context_blocked else RepairState.FAILED,
                 exc.code.value,
                 str(exc),
                 failed_operation="repair_planner.generate",
+                required_external_action=(
+                    "Reduce optional context or split the task; no patch was applied."
+                    if context_blocked
+                    else ""
+                ),
             )
 
         if directive.mode == "report":
