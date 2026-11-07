@@ -694,10 +694,10 @@ def test_feature_store_recovery_contract_docs_match_workflow_policy():
 
     for contract in (feature_contract, forecast_contract):
         assert "exact cache" in contract.lower()
-    assert "deletes any restore-key file" in feature_contract.lower()
         assert "7-day retention" in contract
         assert "90-day retention" in contract
         assert "30 pages of 100" in contract
+    assert "deletes any restore-key file" in feature_contract.lower()
     assert "external WORM" in feature_contract
     assert "no scheduled main-branch run is verified" in forecast_contract
 
