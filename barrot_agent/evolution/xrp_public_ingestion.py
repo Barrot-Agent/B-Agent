@@ -2744,8 +2744,12 @@ def run_ingestion(
         latest_coinbase_close_times = [
             record["event_time_utc"]
             for record in records
-            if record.get("source_id") == "coinbase_spot_candles"
-            and record.get("feature_id") == "xrp.spot.coinbase.1h.close_price"
+            if record.get("feature_id") == "xrp.spot.coinbase.1h.close_price"
+            and any(
+                source.get("source_id") == "coinbase_spot_candles"
+                for source in record.get("sources", [])
+                if isinstance(source, Mapping)
+            )
         ]
         if not latest_coinbase_close_times:
             coinbase_backfill["status"] = "BLOCKED_NO_BASELINE_CANDLE_BOUNDARY"
