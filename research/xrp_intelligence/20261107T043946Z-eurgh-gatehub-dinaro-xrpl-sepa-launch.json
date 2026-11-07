@@ -126,11 +126,14 @@
         "issuer": "Dinaro d.o.o.",
         "redemption_at_par": true,
         "issuer_redemption_fee": "free",
-        "competent_authority_approval_of_terms_or_whitepaper": false,
+        "product_approved_by_competent_authority": false,
+        "whitepaper_approval_status": "NOT_STATED_IN_RETRIEVED_PRIMARY_TEXT",
         "issuer_responsible_for_content": true
       },
       "limitations": [
-        "The full white paper was linked by GateHub but returned no extractable text in this run; reserve composition, attestations, concentration limits and detailed redemption mechanics remain unverified here."
+        "The official terms state that EURGH has not been approved by a competent authority; this is recorded as a product-status statement.",
+        "The full white paper was linked by GateHub but returned no extractable text in this run, so no claim is made about a separate white-paper approval status.",
+        "The general Banka Slovenije guidance describes a notification timetable for EMT white papers; notification must not be represented as regulatory approval."
       ]
     },
     {
@@ -181,7 +184,9 @@
     "reserve_composition_verified": false,
     "reserve_attestation_verified": false,
     "whitepaper_notification_date_secondary_reported": "2026-08-03",
-    "note": "Do not use secondary summaries of 30% safeguarding-account / 70% low-risk-asset allocations until the official white paper is independently retrieved and parsed."
+    "note": "Do not use secondary summaries of 30% safeguarding-account / 70% low-risk-asset allocations until the official white paper is independently retrieved and parsed.",
+    "whitepaper_approval_status": "NOT_STATED_IN_RETRIEVED_PRIMARY_TEXT",
+    "product_approval_status": "NOT_APPROVED_PER_OFFICIAL_TERMS"
   },
   "network_and_xrp_relevance": {
     "deployment_claimed_on": [
