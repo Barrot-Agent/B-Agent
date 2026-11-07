@@ -70,7 +70,7 @@ def test_224221_direct_exchange_hashes_match_exact_rendered_response_text():
     assert artifact["captured_at_utc"] == "2026-11-07T22:42:21Z"
     assert len(artifact["sources"]) == 3
     for source in artifact["sources"]:
-        assert source["raw_capture_status"] if "raw_capture_status" in source else artifact["source_capture_contract"]["raw_capture_status"] == "rendered_response_text_only"
+        assert artifact["source_capture_contract"]["raw_capture_status"] == "rendered_response_text_only"
         assert source["model_eligible"] is False
         digest = hashlib.sha256(source["raw_response_text"].encode("utf-8")).hexdigest()
         assert digest == source["raw_response_sha256"]
