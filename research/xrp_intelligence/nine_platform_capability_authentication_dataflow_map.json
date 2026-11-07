@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T02:15:17Z",
+  "captured_at_utc": "2026-11-07T02:52:00.000000Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "1590b1d1f7d68fa924572353522e9d43e05ad2ff",
-  "observed_research_head": "9f7bdeb4e5db305c78941907b8d155deec8abb1c",
+  "observed_integration_head_before_map_commit": "83778232fa8b6526e46000fe16a6c1bcd2aa78fb",
+  "observed_research_head": "b8edfb8da40a8c325451b4499b41b617cf4555a3",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -218,7 +218,17 @@
       "CodeRabbit review comments; CodeRabbit is not one of the nine requested platforms"
     ],
     "no_unverified_platform_calls": true,
-    "no_external_model_data_transfer": true
+    "no_external_model_data_transfer": true,
+    "last_reviewed_at_utc": "2026-11-07T02:52:00.000000Z",
+    "external_platform_data_exchange_performed": false,
+    "minority_objections_preserved_in": {
+      "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
+      "evernorth_capital_reconciliation": "20261107T024800Z-evernorth-cantor-facility-actual-capital-reconciliation.json",
+      "github_review_threads": [
+        "PR #1653: 8 unresolved review threads",
+        "PR #1640/#1643: COMMENTED reviews are not approving reviews"
+      ]
+    }
   },
   "least_privilege_and_safety": {
     "secret_values_read": false,
@@ -228,12 +238,59 @@
     "deployment": false,
     "kaggle_submission": false,
     "paper_trade": false,
-    "real_money_action": false
+    "real_money_action": false,
+    "current_repository_controls": {
+      "main_branch_protected": true,
+      "branch_protection_detail_accessible": false,
+      "branch_protection_detail_http_status": 403,
+      "visible_repository_rulesets_count": 0,
+      "github_pages_enabled": true,
+      "github_pages_configuration_accessible": false,
+      "main_branch_write_performed": false,
+      "mission_branch_writes_performed": true,
+      "secret_values_read_or_exported": false,
+      "external_model_data_transfer": false,
+      "deployment_or_financial_action_performed": false
+    }
   },
   "next_actions": [
     "Keep all unverified platforms disconnected from XRP evidence until authentication, permissions, data classification and tested data-flow are recorded.",
     "Resolve Hugging Face Space health and Databricks HTTP 403 only through approved credential/permission repair; do not rotate or expose secrets.",
     "Use one bounded independent task per platform only after its connection is verified; return source IDs, timestamps, exact claims, counter-evidence and hashes in a common evidence schema.",
     "Treat one-off Copilot/CodeRabbit review comments as critique, not as independent human approval."
-  ]
+  ],
+  "current_run_observations": {
+    "captured_at_utc": "2026-11-07T02:52:00.000000Z",
+    "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "integration_head_before_map_commit": "83778232fa8b6526e46000fe16a6c1bcd2aa78fb",
+    "research_head": "b8edfb8da40a8c325451b4499b41b617cf4555a3",
+    "github_connector": {
+      "authentication": "verified for repository reads and writes on existing mission branches",
+      "repository_permission": "admin reported by repository metadata",
+      "external_model_transfer": false
+    },
+    "copilot": {
+      "evidence": "one-off pull-request review comments on #1640 and #1643; review state COMMENTED, not APPROVED",
+      "persistent_authenticated_connection": false
+    },
+    "mission_ci": {
+      "pr_1640": {
+        "head": "7110d1105ed2e00d69d53626b0b9e2af2df452a4",
+        "full_suite": "1089 passed, 8 subtests",
+        "coverage_pct": 57.75,
+        "dependency_audit": "passed",
+        "fail_closed_gate": "passed"
+      },
+      "pr_1643": {
+        "head": "b8edfb8da40a8c325451b4499b41b617cf4555a3",
+        "full_suite": "1660 passed, 8 subtests",
+        "dependency_audit": "passed",
+        "fail_closed_gate": "passed"
+      }
+    },
+    "no_approving_reviews_on_active_mission_prs": true,
+    "no_merge_performed": true,
+    "no_deployment_performed": true,
+    "no_paper_trade_or_real_money_action": true
+  }
 }
