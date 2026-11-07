@@ -17,13 +17,24 @@ def load_graph() -> dict:
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def test_all_primary_source_excerpt_hashes_match() -> None:
+def test_all_primary_source_excerpt_hashes_match_the_append_only_correction() -> None:
     graph = load_graph()
+    correction_path = (
+        REPO_ROOT
+        / "research"
+        / "xrp_intelligence"
+        / "20261107T194149Z-sbi-circle-ripple-source-excerpt-hash-correction.json"
+    )
+    correction = json.loads(correction_path.read_text(encoding="utf-8"))
+    corrected = {item["source_id"]: item for item in correction["corrections"]}
     assert len(graph["source_receipts"]) >= 13
+    assert len(corrected) == len(graph["source_receipts"])
     for receipt in graph["source_receipts"]:
+        item = corrected[receipt["source_id"]]
+        assert item["original_sha256"] == receipt["captured_excerpt_sha256"]
         assert hashlib.sha256(
             receipt["captured_excerpt_text"].encode("utf-8")
-        ).hexdigest() == receipt["captured_excerpt_sha256"]
+        ).hexdigest() == item["corrected_sha256"]
 
 
 def test_sbi_circle_and_startale_equity_relationships_are_separate() -> None:
@@ -57,7 +68,7 @@ def test_coinbase_ripple_rlusd_collateral_status_is_not_misreported() -> None:
     edge = next(x for x in load_graph()["relationship_edges"] if x["from"] == "Ripple" and x["to"] == "Coinbase")
     assert "XRPL" in edge["networks"]
     assert "Base" in edge["networks"]
-    assert "Global Exchange access and RLUSD collateral availability" in " ".join(load_graph()["key_distinctions"])
+    assert "described as future at October 28 launch" in " ".join(load_graph()["key_distinctions"])
 
 
 def test_standard_chartered_planned_collateral_is_conditioned() -> None:
