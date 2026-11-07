@@ -11,6 +11,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
+from .probability_calibration import apply_temporal_temperature_calibration
 
 _CLASSES = ("down", "flat", "up")
 _BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
@@ -219,21 +220,30 @@ def _metrics(forecasts: list[dict[str, Any]], bin_count: int) -> dict[str, Any]:
         if item["scoring"]["predicted_class"] in {"down", "up"}
         and item["scoring"]["predicted_class"] == item["outcome"]["actual_class"]
     ]
+    recalibrated = [
+        item for item in forecasts if item["calibration"]["recalibration_applied"]
+    ]
     return {
         "forecast_count": count,
         "accuracy": sum(item["scoring"]["correct"] for item in forecasts) / count,
         "mean_brier_score": statistics.fmean(item["scoring"]["brier_score"] for item in forecasts),
         "mean_log_loss": statistics.fmean(item["scoring"]["log_loss"] for item in forecasts),
+        "raw_mean_brier_score": statistics.fmean(item["raw_scoring"]["brier_score"] for item in forecasts),
+        "raw_mean_log_loss": statistics.fmean(item["raw_scoring"]["log_loss"] for item in forecasts),
         "directional_outcome_count": len(directional),
         "directional_accuracy": (
             len(directional_correct) / len(directional) if directional else None
         ),
         "calibration": {
-            "method": "classwise_reliability_bins",
+            "method": "rolling_temporal_temperature_scaling_v1",
             "weighted_calibration_error": weighted_error,
             "bin_count": bin_count,
             "bins": calibration_bins,
-            "recalibration_applied": False,
+            "recalibration_applied": bool(recalibrated),
+            "recalibrated_forecast_count": len(recalibrated),
+            "maximum_prior_calibration_samples": max(
+                item["calibration"]["calibration_sample_count"] for item in forecasts
+            ),
         },
     }
 
@@ -257,6 +267,10 @@ def evaluate_chronological_walk_forward(
     directional_confidence: float = 0.60,
     flat_probability: float = 0.30,
     calibration_bin_count: int = 5,
+    min_calibration_samples: int = 50,
+    calibration_validation_fraction: float = 0.20,
+    calibration_minimum_log_loss_improvement: float = 0.005,
+    calibration_max_history: int = 250,
     max_source_age_seconds: int | None = None,
 ) -> dict[str, Any]:
     """Evaluate four deterministic baselines with purged, embargoed point-in-time windows.
@@ -287,6 +301,24 @@ def evaluate_chronological_walk_forward(
         raise WalkForwardEvaluationError("embargo_seconds must be a non-negative integer")
     if isinstance(calibration_bin_count, bool) or not isinstance(calibration_bin_count, int) or calibration_bin_count < 2:
         raise WalkForwardEvaluationError("calibration_bin_count must be an integer of at least two")
+    if isinstance(min_calibration_samples, bool) or not isinstance(min_calibration_samples, int) or min_calibration_samples < 50:
+        raise WalkForwardEvaluationError("min_calibration_samples must be an integer of at least 50")
+    if isinstance(calibration_max_history, bool) or not isinstance(calibration_max_history, int) or calibration_max_history < min_calibration_samples:
+        raise WalkForwardEvaluationError("calibration_max_history must be at least min_calibration_samples")
+    if (
+        isinstance(calibration_validation_fraction, bool)
+        or not isinstance(calibration_validation_fraction, (int, float))
+        or not math.isfinite(float(calibration_validation_fraction))
+        or not 0.10 <= float(calibration_validation_fraction) <= 0.50
+    ):
+        raise WalkForwardEvaluationError("calibration_validation_fraction must be between 0.10 and 0.50")
+    if (
+        isinstance(calibration_minimum_log_loss_improvement, bool)
+        or not isinstance(calibration_minimum_log_loss_improvement, (int, float))
+        or not math.isfinite(float(calibration_minimum_log_loss_improvement))
+        or calibration_minimum_log_loss_improvement < 0
+    ):
+        raise WalkForwardEvaluationError("calibration_minimum_log_loss_improvement must be finite and non-negative")
     if not isinstance(flat_band_bps, (int, float)) or isinstance(flat_band_bps, bool) or not math.isfinite(float(flat_band_bps)) or flat_band_bps <= 0:
         raise WalkForwardEvaluationError("flat_band_bps must be a finite positive number")
     if not isinstance(prior_alpha, (int, float)) or isinstance(prior_alpha, bool) or not math.isfinite(float(prior_alpha)) or prior_alpha <= 0:
@@ -498,8 +530,31 @@ def evaluate_chronological_walk_forward(
             continue
 
         for model_id in _BASELINES:
-            probabilities = _normalize_probabilities(baselines[model_id])
+            raw_probabilities = _normalize_probabilities(baselines[model_id])
+            calibration_history = [
+                {
+                    "forecast_id": item["forecast_id"],
+                    "target_record_id": item["target_record_id"],
+                    "data_cutoff_utc": item["data_cutoff_utc"],
+                    "outcome_available_at_utc": item["outcome"]["outcome_available_at_utc"],
+                    "raw_probabilities": item["raw_probabilities"],
+                    "actual_class": item["outcome"]["actual_class"],
+                }
+                for item in forecasts
+                if item["model_id"] == model_id
+            ]
+            calibration = apply_temporal_temperature_calibration(
+                calibration_history,
+                raw_probabilities,
+                calibration_cutoff_utc=training_cutoff_s,
+                min_samples=min_calibration_samples,
+                validation_fraction=float(calibration_validation_fraction),
+                minimum_log_loss_improvement=float(calibration_minimum_log_loss_improvement),
+                max_history=calibration_max_history,
+            )
+            probabilities = calibration["probabilities"]
             scoring = _score(probabilities, actual_class)
+            raw_scoring = _score(raw_probabilities, actual_class)
             identity = {
                 "model_id": model_id,
                 "data_cutoff_utc": cutoff_s,
@@ -530,9 +585,17 @@ def evaluate_chronological_walk_forward(
                     "observed_target_event_time_utc": target["event_time_utc"],
                     "origin_record_id": current["record_id"],
                     "target_record_id": target["record_id"],
+                    "raw_probabilities": raw_probabilities,
                     "probabilities": probabilities,
+                    "calibration": {
+                        key: value for key, value in calibration.items() if key != "probabilities"
+                    },
                     "alternative_scenarios": [
-                        {"class": label, "probability": probabilities[label]}
+                        {
+                            "class": label,
+                            "probability": probabilities[label],
+                            "raw_probability": raw_probabilities[label],
+                        }
                         for label in _CLASSES
                     ],
                     "assumptions": {
@@ -561,6 +624,7 @@ def evaluate_chronological_walk_forward(
                         "outcome_available_at_utc": _format(target_available),
                     },
                     "scoring": scoring,
+                    "raw_scoring": raw_scoring,
                     "live_forecast_issued": False,
                     "paper_trade_executed": False,
                 }
@@ -601,12 +665,22 @@ def evaluate_chronological_walk_forward(
         "metrics": metrics,
         "forecasts": forecasts,
         "skipped_origins": skipped,
-        "calibration_is_diagnostic_only": True,
+        "calibration_is_diagnostic_only": False,
+        "calibration_method": "rolling_temporal_temperature_scaling_v1",
+        "calibration_policy": (
+            "Each forecast is calibrated only from earlier out-of-sample forecasts whose "
+            "outcomes were available by training_cutoff_utc. The earliest 80% of eligible "
+            "history fits temperature; the later 20% validates it. Identity is retained "
+            "until the minimum sample count and temporal validation improvement are met."
+        ),
+        "min_calibration_samples": min_calibration_samples,
+        "calibration_max_history": calibration_max_history,
         "live_forecast_issued": False,
         "paper_trade_executed": False,
         "prediction_boundary": (
             "Backtest results only. No live directional forecast or paper trade is issued. "
-            "Baseline superiority must be demonstrated on a sufficiently large, independent "
+            "Rolling calibration uses only prior resolved out-of-sample outcomes. Baseline "
+            "superiority must still be demonstrated on a sufficiently large, independent "
             "chronological holdout before any forecast is enabled."
         ),
     }
