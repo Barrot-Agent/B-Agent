@@ -1,0 +1,549 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "binance-breach-xrp-crosschain-trace-and-issuer-freezes-20261107T110558Z",
+  "artifact_type": "xrp_security_event_and_cross_chain_flow_reconciliation",
+  "captured_at_utc": "2026-11-07T11:05:58Z",
+  "event_scope": "2026-10-29 Binance hot-wallet signing compromise; XRP Ledger theft tranche and subsequent cross-chain laundering; issuer freeze response for RLUSD, USDC and USDT.",
+  "receipt_policy": {
+    "hash_algorithm": "SHA-256",
+    "raw_http_bytes_preserved": false,
+    "raw_rpc_payloads_preserved": false,
+    "stored_hash_scope": "Hashes cover the exact evidence paraphrase strings stored in this artifact. Transaction hashes are identifiers reported by the cited trace; XRPLScan returned HTTP 403 in this retrieval, so the underlying transaction JSON was not independently downloaded.",
+    "independent_timestamp_anchor": false,
+    "source_timestamps_preserved": true
+  },
+  "source_registry": [
+    {
+      "source_id": "binance_official_incident_report",
+      "publisher": "Binance",
+      "source_type": "first_party_exchange_statement",
+      "independence_group": "binance_first_party",
+      "url": "https://www.binance.com/en-IN/blog/community/3229153443759566763",
+      "published_at": "2026-11-03",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "web_references": [
+        "turn935226view0",
+        "turn218773search10"
+      ],
+      "evidence_paraphrases": [
+        {
+          "text": "Binance says five of its hot wallets transferred 233.46 million XRP to one attacker-controlled XRPL account between 20:05 and 20:09 UTC on 29 October.",
+          "sha256": "bee99cac6a223112de3f3e834d719ce0219f51cc78c538f30bbb7abb97b5cd66"
+        },
+        {
+          "text": "Binance says the attacker used a compromised engineer endpoint and an internal AI tool to reach other engineers' machines and obtain a deployment permission token.",
+          "sha256": "6c9de8c758a55fd9c8f2d53ae5e1cc0760e0a641ac85a4f96fc104c35d92783b"
+        },
+        {
+          "text": "Binance's 3 November update says 98% of impacted token assets had been replenished as of 31 October and more than 100% of required loss coverage was reserved.",
+          "sha256": "92c464aae963188428a9384724c995061422bc12ea5427f3231cc0107ce887d1"
+        }
+      ],
+      "limitations": [
+        "The incident report is Binance's own account; Binance says some technical details remain confidential and independent firms would review the findings.",
+        "The 98% replenishment statement is aggregate across impacted token assets; it does not establish that Binance bought 233.46M XRP in the spot market.",
+        "The report describes compromised endpoints, credentials/deployment permission and wallet-signing access; it does not establish that an LLM itself was compromised or autonomously signed transactions."
+      ]
+    },
+    {
+      "source_id": "fbi_tradertraitor_alert",
+      "publisher": "Federal Bureau of Investigation",
+      "source_type": "government_law_enforcement_statement",
+      "independence_group": "fbi_official",
+      "url": "https://www.ic3.gov/PSA/2026/PSA261031",
+      "published_at": "2026-10-31",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "web_references": [
+        "turn740844view0",
+        "turn993480search0"
+      ],
+      "evidence_paraphrases": [
+        {
+          "text": "The FBI officially attributes the Binance theft of more than $6 billion to the DPRK cyber activity it calls TraderTraitor.",
+          "sha256": "ecf57ec8fd8c1b38ce3e307d8434b48b576540279391d7999878c34212ac7677"
+        },
+        {
+          "text": "The public FBI alert lists Ethereum, Bitcoin and Solana addresses but does not list the XRPL attacker account identified by the on-chain tracing sources.",
+          "sha256": "ed9feb370ff7bb06d76c79a7fdb5ec87fba652d8db27952527ae756803c7ef9a"
+        }
+      ],
+      "limitations": [
+        "The public alert does not publish the FBI's underlying attribution evidence or a transaction-level XRPL account mapping.",
+        "The FBI attribution is an official assessment, not a judicial finding; public blockchain data alone cannot identify the human controller."
+      ]
+    },
+    {
+      "source_id": "ap_north_korea_denial_and_trump_comment",
+      "publisher": "Associated Press",
+      "source_type": "independent_news_reporting",
+      "independence_group": "ap_news",
+      "url": "https://apnews.com/article/north-korea-binance-hack-crypto-trump-2026-11-03",
+      "published_at": "2026-11-03",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "web_references": [
+        "turn695784search0",
+        "turn695784search1"
+      ],
+      "evidence_paraphrases": [
+        {
+          "text": "North Korea denied responsibility for the Binance theft and characterized the FBI attribution as a provocation.",
+          "sha256": "da261bd23fa6ce79ace2a159fbe640e9c3d67a36ee094fe236d68a99031fc3aa"
+        },
+        {
+          "text": "AP also reported President Trump saying investigators had not yet established whether North Korea was responsible.",
+          "sha256": "bb81d597d701a0b7ad5c6176f3ccac82cc6bcc516d6be64635c50d9696379cef"
+        }
+      ],
+      "limitations": [
+        "The denial is a reported state position; it does not independently disprove the FBI attribution."
+      ]
+    },
+    {
+      "source_id": "panoptic_public_node_xrpl_trace",
+      "publisher": "Panoptic Protocol",
+      "source_type": "independent_on_chain_trace_using_public_nodes",
+      "independence_group": "panoptic_xrplcluster_full_history_reads",
+      "url": "https://panopticprotocol.com/binance-hack-2026.html",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "latest_read_utc": "2026-11-06T03:25:00Z",
+      "xrpl_read_source": "xrplcluster.com full-history servers",
+      "web_references": [
+        "turn634980view0",
+        "turn385706view0",
+        "turn225981view2",
+        "turn872777view0",
+        "turn872777view1",
+        "turn872777view2",
+        "turn872777view3",
+        "turn872777view4",
+        "turn872777view5"
+      ],
+      "evidence_paraphrases": [
+        {
+          "text": "Panoptic says every amount, address and time is its own read of public blockchains; for XRPL it reads each Payment's delivered amount and result.",
+          "sha256": "07b63c82befeda88186419b2e2b3dcf18421fcd9fe59451d84eaa50cad966de7"
+        },
+        {
+          "text": "A 42.75 million RLUSD payment to the new XRPL account failed at 20:04:52 UTC because the destination account did not yet exist.",
+          "sha256": "c049109df43ce9946a4395f2af77bc41eeca35abd7487601932b0e37832a125f"
+        },
+        {
+          "text": "Panoptic traces 233.46 million XRP from five Binance wallets to one new XRPL account; its account split on 2 November reached seven new accounts.",
+          "sha256": "d35e4f5d050566e8218bf650cb8d5c2da4f637e3065ca1d32e148603939288af"
+        },
+        {
+          "text": "One recipient later sent 26.96 million XRP to 19 accounts; three deposited 6.55 million XRP into THORChain, which paid 75.89 BTC.",
+          "sha256": "2b0985143af621458ad2199d82fee3b8c895cfd2526aaaa1dbc35649c79db512"
+        },
+        {
+          "text": "At least 1.42 million XRP in those THORChain deposits came from other senders, so the full 75.89 BTC output cannot be attributed to the Binance theft.",
+          "sha256": "1a1c9a70b22ce66fb6559e8a7aaf447aa22d5008d8f08ba750fa68170da55314"
+        },
+        {
+          "text": "At 02:37 UTC on 6 November, Panoptic's eight tracked accounts held 206.50 million XRP; it had read only five of the 19 downstream accounts in full.",
+          "sha256": "9dd6a20b6802b760684292bdf7c31656cd08e50b8ed8351f2f9845f16504dae4"
+        }
+      ],
+      "transaction_proofs": [
+        {
+          "event": "failed_42_75m_rlusd_payment",
+          "tx": "AE08D54F8E7B05473AD5A1E3BF2C1D76A818B119DFBD3396C9C9F7BC7EF55A59"
+        },
+        {
+          "event": "185_02m_xrp_first_account_creation_payment",
+          "tx": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A"
+        },
+        {
+          "event": "14_69m_xrp_second_payment",
+          "tx": "6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67"
+        },
+        {
+          "event": "13_14m_xrp_third_payment",
+          "tx": "9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA"
+        },
+        {
+          "event": "11_96m_xrp_fourth_payment",
+          "tx": "27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5"
+        },
+        {
+          "event": "8_66m_xrp_fifth_payment",
+          "tx": "0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0"
+        },
+        {
+          "event": "thorchain_xrp_deposit_proof_1",
+          "tx": "25BF676FABD729B16D0653E2C7152879CFCA9DF42F4BC6CA387566DB94C06A23"
+        },
+        {
+          "event": "thorchain_xrp_deposit_proof_2",
+          "tx": "64DB796FF26B8256C494554537F2FC95A0FB0D7BB37A40D218617D1D5F801176"
+        },
+        {
+          "event": "thorchain_bitcoin_payout_proof",
+          "tx": "76b223ec520fa90c6b886c403e1e7737ab11beca52a76d6cde3151caa0490a9e"
+        },
+        {
+          "event": "ripple_rlusd_account_paused",
+          "tx": "0xafd52fb222019aa5eefd5a8331e7a1197484863184b589cc458fc0c8442c8c0f"
+        }
+      ],
+      "limitations": [
+        "The source's latest XRP read is 03:25 UTC on 6 November, not current at the 7 November capture.",
+        "XRPLScan proof links returned HTTP 403 in this retrieval; transaction JSON was not independently downloaded.",
+        "Panoptic says only five of 19 downstream accounts were read in full; some recipients mix stolen XRP with unrelated senders.",
+        "Panoptic's $2.65B frozen total is an address-level read at its cutoff, not Binance's broader frozen-or-intercepted accounting."
+      ]
+    },
+    {
+      "source_id": "elliptic_xrp_laundering_update",
+      "publisher": "Elliptic",
+      "source_type": "independent_blockchain_analytics",
+      "independence_group": "elliptic_proprietary_cross_chain_tracing",
+      "url": "https://www.elliptic.co/insights/how-north-korea-is-laundering-the-6-4-billion-stolen-from-binance/",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "latest_update_utc": "2026-11-07T08:00:00Z",
+      "web_references": [
+        "turn535878view0"
+      ],
+      "evidence_paraphrases": [
+        {
+          "text": "Elliptic estimates about 42 million XRP had left by 08:45 UTC on 6 November and about 192 million XRP remained.",
+          "sha256": "c11cd3e8e4e0be57ac27761f1966babba84c677067462dacba5bc2915fa8ab21"
+        },
+        {
+          "text": "Elliptic's 08:00 UTC 7 November update says about 44 million more XRP left overnight and about 148 million XRP remained.",
+          "sha256": "9ba687928dfdcf475af1a3460b31a68c19bcc79249363d7504fef9905432635f"
+        },
+        {
+          "text": "Elliptic says the laundering is automated but has seen no evidence of an AI agent making decisions.",
+          "sha256": "4a7772fa864af7b999974b5225fec7e8efd066a6d5f76c4cee15ad1b39a4a8e3"
+        },
+        {
+          "text": "Elliptic says blockchain traces identify wallets and movements, not the human controller behind them.",
+          "sha256": "106248c3840fc92a22c66b0423497877da90d1610ca5e3d2aeb7e3c3a7bcfa02"
+        }
+      ],
+      "limitations": [
+        "Elliptic's address attribution and cross-chain clustering are proprietary; the public article does not provide every underlying transaction receipt.",
+        "Its 148M XRP remaining figure is an approximate tracked balance at 08:00 UTC on 7 November.",
+        "Elliptic says a negligible amount has likely been cashed out; most activity is conversion between public-chain assets, not fiat realization."
+      ]
+    },
+    {
+      "source_id": "bitquery_binance_laundering_report",
+      "publisher": "Bitquery",
+      "source_type": "independent_on_chain_analytics",
+      "independence_group": "bitquery_public_nodes_and_address_labels",
+      "url": "https://bitquery.io/investigations/binance-hack-laundering",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "data_cutoff_utc": "2026-11-06T10:00:00Z",
+      "web_references": [
+        "turn932230view0"
+      ],
+      "evidence_paraphrases": [
+        {
+          "text": "Bitquery reports 44.2 million XRP swapped out by 10:00 UTC on 6 November, equal to 19% of the stolen XRP tranche.",
+          "sha256": "a812f204508934ae10e988d61234fe0390ee26cb4423e548db46c8a9c6ac99cc"
+        },
+        {
+          "text": "Bitquery says THORChain carried about 113 million dollars, split between 57 million dollars from XRP and 56 million dollars from TRON.",
+          "sha256": "8b280f3a5adf6a6065489ea32b756723dab9ffa81388033cb4f6ba54c5460212"
+        },
+        {
+          "text": "By its cutoff, Bitquery traced 620 BTC paid to 28 Bitcoin addresses by XRP swaps; other routes also paid those addresses.",
+          "sha256": "dcac008b9f88ebea6ddb421500e244f2e40834394bc6e62dd807aa0bcb1149f7"
+        },
+        {
+          "text": "Bitquery counts each coin once at first exit and counts only the attacker's share when wallets contain mixed funds.",
+          "sha256": "033427605213357cd26c0fc2a03cfd9e145ce8d5e921c5f0e6b728f217ebcd9a"
+        }
+      ],
+      "limitations": [
+        "The full XRP transaction history is sold as a dataset; this run used the public investigation summary only.",
+        "Bitquery says 71 million dollars went to wallets it did not follow and three ownership calls move the total laundering estimate between 315 million and 344 million dollars.",
+        "Its first-exit method differs from Elliptic's and Panoptic's account-level tracing; do not add the BTC output to XRP amounts or double-count later hops."
+      ]
+    },
+    {
+      "source_id": "xrplwin_initial_static_snapshot",
+      "publisher": "XRPLWin",
+      "source_type": "secondary_on_chain_snapshot",
+      "independence_group": "xrplwin_public_xrpl_snapshot",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "published_at": "2026-10-30",
+      "captured_at_utc": "2026-11-07T11:05:58Z",
+      "web_references": [
+        "turn218773search5",
+        "turn476160search10"
+      ],
+      "evidence_paraphrases": [
+        {
+          "text": "The 30 October article said the 233.46 million XRP had not moved from the initial attacker account as of its publication snapshot.",
+          "sha256": "ceca286cfc5fa802fb702bf79344d1d3019da1551598de8ee0c08475dd089cfc"
+        }
+      ],
+      "quality_flag": "STALE_SNAPSHOT_SUPERSEDED",
+      "limitations": [
+        "Its no-movement statement was true only for its 30 October cutoff; it is superseded by observed 2 November splitting and 5–7 November cross-chain activity."
+      ]
+    }
+  ],
+  "event_timeline": [
+    {
+      "time_utc": "2026-10-29T20:04:52Z",
+      "event": "A Binance wallet attempted a 42.75M RLUSD payment to the new XRPL destination; it failed because the account did not exist.",
+      "tx": "AE08D54F8E7B05473AD5A1E3BF2C1D76A818B119DFBD3396C9C9F7BC7EF55A59",
+      "status": "FAILED_PAYMENT_NO_RLUSD_TRANSFER"
+    },
+    {
+      "time_utc": "2026-10-29T20:05:00Z",
+      "event": "The first 185.02M XRP payment created the destination XRPL account.",
+      "tx": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+      "status": "CONFIRMED_BY_TRACE_SOURCE"
+    },
+    {
+      "time_window_utc": [
+        "2026-10-29T20:05:00Z",
+        "2026-10-29T20:09:20Z"
+      ],
+      "event": "Five Binance hot wallets transferred a total 233.4619431 XRP million to one new XRPL account.",
+      "status": "BINANCE_STATEMENT_AND_ON_CHAIN_TRACING_AGREE"
+    },
+    {
+      "time_utc": "2026-10-29T21:04:59Z",
+      "event": "Circle froze 823M USDC at the main Ethereum receiving address before the source says any of it had been swapped.",
+      "status": "ISSUER_CONTRACT_EVENT_REPORTED_BY_PANOPTIC"
+    },
+    {
+      "time_utc": "2026-10-29T22:00:59Z",
+      "event": "Ripple paused 40.54M RLUSD on Ethereum after approximately 48M RLUSD had been swapped away.",
+      "tx": "0xafd52fb222019aa5eefd5a8331e7a1197484863184b589cc458fc0c8442c8c0f",
+      "status": "ISSUER_CONTRACT_EVENT_REPORTED_BY_PANOPTIC"
+    },
+    {
+      "time_window_utc": [
+        "2026-11-02T02:12:00Z",
+        "2026-11-02T04:00:00Z"
+      ],
+      "event": "The original attacker account redistributed all but 23.7 XRP to new XRPL accounts; Panoptic reports seven recipients while Elliptic reports six.",
+      "status": "RECIPIENT_COUNT_DISAGREEMENT"
+    },
+    {
+      "time_window_utc": [
+        "2026-11-05T14:56:00Z",
+        "2026-11-06T02:28:00Z"
+      ],
+      "event": "One recipient sent 26.96M XRP in 122 payments to 19 accounts; a tracked subset deposited 6.55M XRP into THORChain.",
+      "status": "PANOPTIC_PARTIAL_TRACE"
+    },
+    {
+      "time_utc": "2026-11-06T08:45:00Z",
+      "event": "Elliptic estimated about 42M XRP had left and about 192M remained.",
+      "status": "ANALYTIC_ESTIMATE"
+    },
+    {
+      "time_utc": "2026-11-06T10:00:00Z",
+      "event": "Bitquery estimated 44.2M XRP had left the original chain, 19% of the stolen tranche.",
+      "status": "ANALYTIC_ESTIMATE_DIFFERENT_METHOD"
+    },
+    {
+      "time_utc": "2026-11-07T08:00:00Z",
+      "event": "Elliptic estimated 44M additional XRP had left overnight and about 148M remained.",
+      "status": "LATEST_PUBLIC_ANALYTIC_ESTIMATE_AT_CAPTURE"
+    }
+  ],
+  "theft_and_trace": {
+    "source_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "stolen_xrp": 233461943.1,
+    "estimated_value_at_theft_usd": 296600000,
+    "first_outflow_chain": "XRP Ledger",
+    "source_wallet_count": 5,
+    "source_wallets": [
+      {
+        "address_label": "rDAE53…JPxr",
+        "amount_xrp": 185020000,
+        "time_utc": "2026-10-29T20:05:00Z",
+        "tx": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A"
+      },
+      {
+        "address_label": "rBtttd…eA1A",
+        "amount_xrp": 14690000,
+        "time_utc": "2026-10-29T20:07:00Z",
+        "tx": "6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67"
+      },
+      {
+        "address_label": "rfQ9Ec…8Cvi",
+        "amount_xrp": 13140000,
+        "time_utc": "2026-10-29T20:08:20Z",
+        "tx": "9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA"
+      },
+      {
+        "address_label": "rarG6F…bZKk",
+        "amount_xrp": 11960000,
+        "time_utc": "2026-10-29T20:08:50Z",
+        "tx": "27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5"
+      },
+      {
+        "address_label": "rNU4eA…ExpK",
+        "amount_xrp": 8660000,
+        "time_utc": "2026-10-29T20:09:20Z",
+        "tx": "0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0"
+      }
+    ],
+    "account_split": {
+      "panoptic_recipient_count": 7,
+      "elliptic_recipient_count": 6,
+      "status": "UNRESOLVED_COUNT_DISAGREEMENT",
+      "original_account_retained_xrp": 23.7
+    },
+    "movement_progress": {
+      "panoptic_as_of_utc": "2026-11-06T03:25:00Z",
+      "panoptic_moved_from_one_recipient_xrp": 26960000,
+      "panoptic_downstream_accounts": 19,
+      "panoptic_thorchain_deposits_xrp": 6550000,
+      "panoptic_thorchain_btc_output": 75.89,
+      "panoptic_minimum_other_sender_xrp": 1420000,
+      "panoptic_eight_tracked_accounts_balance_xrp": 206500000,
+      "bitquery_as_of_utc": "2026-11-06T10:00:00Z",
+      "bitquery_xrp_first_exit_xrp": 44200000,
+      "bitquery_share_of_stolen_tranche_pct": 19,
+      "bitquery_thorchain_btc_paid_to_28_addresses": 620,
+      "elliptic_nov6_0845_xrp_left": 42000000,
+      "elliptic_nov6_0845_xrp_remaining": 192000000,
+      "elliptic_nov7_0800_additional_xrp_left": 44000000,
+      "elliptic_nov7_0800_xrp_remaining": 148000000,
+      "elliptic_approx_cumulative_xrp_left": 86000000,
+      "elliptic_approx_share_of_stolen_tranche_pct": 36.83,
+      "elliptic_approx_share_remaining_pct": 63.42
+    },
+    "interpretation": {
+      "cross_chain_route": "Most of the later XRP movement was swapped through THORChain into BTC; this is a cross-chain conversion, not proof of centralized-exchange sale or fiat cashout.",
+      "current_cashout_status": "Elliptic says only a negligible amount had likely been cashed out as of its 7 November 08:00 UTC update.",
+      "panoptic_output_attribution": "The 75.89 BTC Panoptic traced from its 6.55M XRP deposit subset is contaminated by at least 1.42M XRP from other senders; do not attribute all 75.89 BTC to the theft.",
+      "scale": "The approximately 86M XRP movement is about 36.8% of the original stolen tranche, but it is not equivalent to 86M XRP sold on centralized order books."
+    }
+  },
+  "stablecoin_and_freeze_reconciliation": {
+    "ripple_rlusd": {
+      "network": "Ethereum",
+      "paused_xrp_incident_rlusd": 40540000,
+      "pause_time_utc": "2026-10-29T22:00:59Z",
+      "reported_rlusd_swapped_before_pause": 48000000,
+      "control": "Issuer contract pause/account pause",
+      "source": "Panoptic on-chain contract-event trace",
+      "caveat": "This is RLUSD on Ethereum, distinct from the failed 42.75M RLUSD payment to a not-yet-created XRPL account."
+    },
+    "circle_usdc": {
+      "ethereum_main_receiving_address_frozen_usdc": 823000000,
+      "panoptic_total_usdc_read_on_attacker_addresses": 824720000,
+      "additional_usdc_frozen_on_binance_hot_wallets": 3008457,
+      "circle_reported_incident_freeze_usd": 1100000000,
+      "first_freeze_time_utc": "2026-10-29T21:04:59Z",
+      "caveat": "Circle's $1.1B statement does not list addresses; Panoptic's 824.7M is its read of attacker addresses and is not the full Circle incident scope."
+    },
+    "tether_usdt": {
+      "ethereum_frozen_usdt": 1380000000,
+      "tron_frozen_usdt": 378700000,
+      "reported_usdt_swapped_before_freeze_usd": 669000000,
+      "first_freeze_time_utc": "2026-10-29T21:01:35Z",
+      "caveat": "The 669M is combined USDT converted to ETH/TRX before freezes; it is not XRP."
+    },
+    "usd1_frozen_usd": 27824040,
+    "native_xrp_freeze_function": false,
+    "freeze_total_disagreement": {
+      "panoptic_address_level_frozen_usd": 2650000000,
+      "binance_reported_frozen_or_intercepted_usd": 2850000000,
+      "elliptic_reported_frozen_usd": 2850000000,
+      "status": "UNRESOLVED_SCOPE_AND_CUTOFF_DIFFERENCE",
+      "do_not_average": true
+    }
+  },
+  "incident_scope_disagreement": {
+    "total_incident_usd": {
+      "binance": 6340000000,
+      "trm": 6360000000,
+      "panoptic": 6410000000,
+      "elliptic": 6430000000,
+      "bitquery_rounded": 6300000000
+    },
+    "network_count": {
+      "trm": 10,
+      "binance": "about 10",
+      "panoptic": 11,
+      "elliptic": 11,
+      "bitquery": 9
+    },
+    "note": "These totals use different chain coverage, wallet scopes and valuation cutoffs. The XRP tranche itself is consistently reported at 233.46M XRP; do not average incident totals."
+  },
+  "attribution": {
+    "official_fbi_assessment": "DPRK / TraderTraitor",
+    "north_korea_position": "Denied responsibility",
+    "us_president_public_comment": "Said investigators had not yet established responsibility",
+    "on_chain_identity_limit": "Blockchain traces establish transfers and wallet relationships, not the human identity or nationality of the controller.",
+    "status": "OFFICIAL_ATTRIBUTION_WITH_PUBLIC_DENIAL_AND_UNRESOLVED_IDENTITY"
+  },
+  "ai_security_assessment": {
+    "binance_reported_attack_chain": [
+      "Compromised engineer endpoint through tampered developer tooling.",
+      "Separate engineer targeted through a fake recruitment/interview assignment and malware.",
+      "Internal AI tool used as a pivot to reach additional engineer machines.",
+      "Attacker obtained a container/software deployment permission token.",
+      "Access reached Binance's internal wallet signing service."
+    ],
+    "what_is_not_established": [
+      "No evidence in the reviewed sources that an LLM model itself was exploited through prompt injection.",
+      "No evidence that an AI agent independently decided to transfer funds or held a signing key.",
+      "Elliptic describes the laundering as conventional automation and says it has seen no evidence of AI-agent decision-making."
+    ],
+    "barrot_v3_controls": {
+      "existing_on_1640_not_main": [
+        "Issue-triggered autonomous writer workflows quarantined with empty permissions.",
+        "Ask Barrot writer workflow disabled.",
+        "Self-upgrade workflow disabled.",
+        "Coinbase paper-trader changed to explicit YES, exact-main-SHA, read-only artifact output."
+      ],
+      "designed_not_verified": [
+        "Separate agent runtime credentials from deployment and wallet-signing credentials.",
+        "No persistent deployment token in agent-visible environment or workspace.",
+        "Short-lived identity tokens and task-scoped least privilege.",
+        "Read-only default for research and analysis agents.",
+        "Human dual control for any external write or privileged operation.",
+        "Immutable audit receipts for tool calls and permission changes."
+      ]
+    }
+  },
+  "cross_source_reconciliation": {
+    "xrp_amount": "Binance, Panoptic, Elliptic and Bitquery all anchor the initial XRP tranche at approximately 233.46M XRP.",
+    "account_count": "Panoptic reports seven new recipients on 2 November; Elliptic reports six. Unresolved, likely a tracking/definition difference; retain both.",
+    "laundering_progress": "Panoptic's 6.55M XRP THORChain trace is a subset from three downstream accounts and an earlier cutoff. Bitquery's 44.2M XRP first-exit estimate at 10:00 UTC 6 November and Elliptic's 42M at 08:45 UTC are close but use different labels/methods. Elliptic's later 44M additional outflow through 08:00 UTC 7 November is a later observation, not a direct contradiction.",
+    "freeze_amount": "Panoptic reads $2.65B frozen on attacker addresses; Binance and Elliptic report $2.85B frozen/intercepted. Scope, timing and intercepted-versus-frozen definitions differ.",
+    "cashout": "Elliptic reports negligible fiat cashout by 08:00 UTC 7 November; Bitquery counts first exit from chain as laundered, not necessarily fiat cashout.",
+    "source_independence": "Binance and FBI are primary institutional statements; AP reports political positions; Panoptic, Elliptic and Bitquery are separate on-chain analytics pipelines over overlapping public ledgers. Their estimates are independent analyses, not independent underlying transactions."
+  },
+  "model_admission": {
+    "event_timeline_only": true,
+    "price_feature_eligible": false,
+    "exchange_flow_feature_eligible": false,
+    "directional_signal": false,
+    "reasons": [
+      "The stolen XRP is a security-event outflow from Binance hot wallets, not ordinary customer withdrawals or a normal exchange-flow observation.",
+      "Subsequent movement is cross-chain swapping through THORChain, not proof of centralized order-book sales.",
+      "Analytics providers use different address sets, cutoffs and ownership labels; some destination accounts mix funds from unrelated senders.",
+      "No direct evidence establishes fiat cashout or the effect on consolidated XRP spot depth.",
+      "The event must be timestamped and evaluated as a one-off security shock before any predictive feature use."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "next_actions": [
+    "Fetch and hash direct XRPL public-node transaction JSON for the five Binance outflows, failed RLUSD attempt, recipient splits and THORChain deposit proofs; XRPLScan was HTTP 403 in this run.",
+    "Track the 148M XRP Elliptic balance at the next public update and reconcile with Bitquery's first-exit definition; do not add BTC outputs to XRP amounts.",
+    "Measure THORChain XRP pool depth, swap size, price impact and fees at the actual deposit times before estimating market impact.",
+    "Check Binance Proof of Reserves XRP liabilities and hot-wallet/cold-wallet balances separately; do not infer 233M XRP repurchase from aggregate 98% replenishment.",
+    "Keep issuer freeze events for RLUSD/USDC/USDT separate from native XRP transfers and freeze capabilities."
+  ]
+}
