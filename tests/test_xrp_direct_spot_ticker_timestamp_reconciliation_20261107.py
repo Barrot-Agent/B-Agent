@@ -74,7 +74,7 @@ def test_cross_venue_difference_is_not_normalized_or_admitted():
         (k["normalized"]["last_usd"] + o["normalized"]["last_usdt"]) / 2
     ) * 100
     assert abs(difference - artifact["reconciliation"]["raw_last_price_difference_pct"]) < 1e-8
-    assert "not normalized" in artifact["reconciliation"]["currency_basis"].lower()
+    assert "no timestamped usd/usdt conversion" in artifact["reconciliation"]["currency_basis"].lower()
     assert artifact["model_admission"]["admitted_to_live_price_features"] is False
     assert artifact["model_admission"]["admitted_to_historical_price_features"] is False
 
