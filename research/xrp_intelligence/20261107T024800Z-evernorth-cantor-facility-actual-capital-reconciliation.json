@@ -60,7 +60,7 @@
       "published_at": "2026-09-17T21:16:03Z",
       "url": "https://www.kucoin.com/news/articles/xrp-army-sits-on-473m-xrp-while-institutions-build-their-own-xrp-treasuries",
       "quoted_excerpt": "actual capital stack around the treasury",
-      "excerpt_sha256": "2e2b0bde6b52dbcb4e3a830d4c1842f4cbe877af4e1b9d20a9e0c57dfc54e86d",
+      "excerpt_sha256": "f96e4ec3797cd7e7db70b72f3805de57a147b8276a467800e0d41cc4e30d504a",
       "source_classification": "user-generated third-party commentary; the page disclaims that such content need not reflect KuCoin views",
       "interpretation": "The post predates the Cantor agreement and discusses the $30M PIK note and XRP treasury structure. It is not an issuer disclosure and does not establish an ELOC draw."
     }
@@ -79,7 +79,7 @@
         ]
       ],
       "evidence_note": "SEC Form 8-K dated 2026-10-23: Evernorth may, at its sole discretion and subject to conditions, direct CF Principal Investments LLC (Cantor) to purchase up to 5,218,935 newly issued Class A shares. Purchase price is 97% of applicable VWAP, subject to 4.99% beneficial-ownership and 20% trading-volume limits. A $521,893.50 cash commitment fee is fully earned and non-refundable regardless of purchases.",
-      "evidence_note_sha256": "f4f5f6db2e4c2b2e59f48e9b5fb56b7a9d5d55b3d12a1a39b21f86f2d0b9f7d9",
+      "evidence_note_sha256": "dd4f7a2f743556661b4e05e99cb0b3ad2f7ce5ed41b801f5053ed7f5cc5fa6a9",
       "original_filing_bytes_retained": false
     },
     {
@@ -116,9 +116,9 @@
         "Full-document exact phrase search for actual capital in the SEC 424B3 returned no matching text."
       ],
       "evidence_note_sha256": [
-        "d8e8a2c1c8c36a0a6d6fdd4b4b8e2f8e3a12a7a4f5e6a6b4a2e4d6c7f9a1b2c3",
-        "c3f4e5d6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4",
-        "a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4"
+        "f10f8fc34ea79a77f1b14062dae1519ecf353a990a4268dfcb730adbd5eeddf8",
+        "29c23ef5df0c32b258e17a759da6c77021987d87eb29d48cc20b2ee399f2b124",
+        "72a3fcc8faa3d2f6755bcf0778d310a86ac017851558a20b1bf4e667345d5c95"
       ],
       "original_filing_bytes_retained": false
     },
@@ -135,7 +135,8 @@
         ]
       ],
       "evidence_note": "The preliminary prospectus illustrates up to approximately $80.7M of potential gross proceeds using the October 22, 2026 closing price of $15.46 and the maximum 5,218,935-share commitment; it is conditional, not cash received.",
-      "original_filing_bytes_retained": false
+      "original_filing_bytes_retained": false,
+      "evidence_note_sha256": "0c13970255deb8362089f85ba03a468e7b69ee98fe0bdf1f2535bbac74cd5f8d"
     }
   ],
   "provenance": {
