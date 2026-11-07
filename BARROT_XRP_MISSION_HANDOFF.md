@@ -1,3 +1,7 @@
+## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z
+
+The handoff/map-only tip `ad4a91aa1763dfdcccd2b3e873f68fb4f56b3925` triggered exact-head CI run [42402000097](https://github.com/Barrot-Agent/B-Agent/actions/runs/42402000097). Core tests passed (643 passed, 8 subtests), the six-manifest dependency audit passed ([42402000196](https://github.com/Barrot-Agent/B-Agent/actions/runs/42402000196)), and the fail-closed gate passed ([42402000138](https://github.com/Barrot-Agent/B-Agent/actions/runs/42402000138)). The full suite reported 1,148 passed, 8 subtests and four failures, all stale run-27 handoff/map assertions after the current snapshot advanced to run 28. No product-code test failed. This commit updates those assertions and the run-28 market schema; exact-head full-suite verification of the corrected successor is pending.
+
 # Run 28 — 2026-11-07T18:28:03Z
 
 ## Executive state
@@ -9,7 +13,7 @@ XRP intelligence and prediction-engine mastery remain the highest-priority Barro
 - Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
 - Complete recursive trees: main 1,403 entries / 1,298 files; #1640 integration 1,474 / 1,361; #1643 research 1,880 / 1,774. All trees were complete, not truncated.
 - Open PR inventory: 371 total, 355 drafts and 16 non-drafts.
-- #1640: `6229acd8367d9fedf73a86f8b5923dc480904aff`, 171 changed paths, 584 commits ahead of main, zero behind.
+- #1640 code-bearing head: `6229acd8367d9fedf73a86f8b5923dc480904aff` (full suite green). The handoff/map-only tip `ad4a91aa1763dfdcccd2b3e873f68fb4f56b3925` had four stale run-27 documentation assertions fail; those assertions are corrected in this successor. Current exact-head CI is pending. The branch has 171 changed paths, 584 commits ahead of main, zero behind.
 - #1643: `d0ba9aa89feba4cb6ace650c94c9f58a6584c340`, 479 changed paths, 670 commits ahead, zero behind.
 - Exactly three shared changed paths: `.github/workflows/dependency-audit.yml` (identical), `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different), and `tests/test_kamilah_channel_identity_gate.py` (different). Preserve #1643's 18 candidate video references during consolidation.
 

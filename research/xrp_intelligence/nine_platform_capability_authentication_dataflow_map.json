@@ -1,7 +1,7 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-07T18:28:03Z",
+  "captured_at_utc": "2026-11-07T18:39:19Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
   "observed_integration_head_before_map_commit": "6229acd8367d9fedf73a86f8b5923dc480904aff",
@@ -53,7 +53,8 @@
         "Run 28: exact-head #1643 CI passed 2,043 full-suite tests and 498 core tests; six-manifest dependency audit and fail-closed gate passed.",
         "Run 28: committed V3 TPM-specific 413 classification and bounded read-only local Git snapshot handling to existing #1640; no same-provider retry, patch or remote write on rate limit.",
         "Run 28: committed append-only XRPC future-dated holdings/timestamp corrections, Coinbase Q3 metric correction, SBI/Circle/Coinbase/Ripple network update and raw spot ticker receipts/tests to existing #1643.",
-        "Run 28: refreshed main tree, all four open-PR pages (371 total), current branch ancestry, full changed-path lists, reviews/threads and exact-head Actions logs. Main remained unchanged."
+        "Run 28: refreshed main tree, all four open-PR pages (371 total), current branch ancestry, full changed-path lists, reviews/threads and exact-head Actions logs. Main remained unchanged.",
+        "Run 28 follow-up: documentation-only tip ad4a91aa had 1,148 passed/8 subtests and four failures limited to stale run-27 handoff/map assertions; core 643 passed, dependency audit and fail-closed gate passed. Run-28 assertions and market-map schema are corrected in the current successor; exact-head full suite pending."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -92,7 +93,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-07T18:28:03Z"
+      "last_verified_at_utc": "2026-11-07T18:39:19Z"
     },
     "Claude": {
       "intended_role": [
@@ -269,7 +270,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-07T18:28:03Z",
+    "last_reviewed_at_utc": "2026-11-07T18:39:19Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -462,7 +463,14 @@
         "OKX stale beyond 300 seconds",
         "USD/USDT not normalized",
         "No synchronized executable depth"
-      ]
+      ],
+      "binance_perpetual": {
+        "status": "not_retrieved_http_451",
+        "provider_timestamp": null,
+        "age_seconds": null,
+        "model_eligible": false,
+        "reason": "The Binance perpetual premium-index endpoint returned HTTP 451 through the current web access path. No quote, funding or timestamp was admitted; this is not evidence of an exchange outage."
+      }
     },
     "institutional_network": {
       "coinbase_circle": "Direct distribution/revenue-sharing relationship renewed on same terms in Q3 2026. Coinbase Q3 stablecoin revenue corrected to $307M; average USDC balances $22B on Coinbase products and $51B off-platform. Circle Coinbase-related distribution costs $331.3M Q3/$986.6M nine months; do not net.",
@@ -471,7 +479,9 @@
       "sbi_coinbase": "Shared Open Standard membership only; no bilateral commercial agreement established by cited source.",
       "xrpl_poc": "SBI Ripple Asia tokenized-deposit proof of concept uses XRPL but does not establish XRP bridge-asset usage.",
       "coinbase_ripple": "RLUSD listing across XRPL, Base and Ethereum; Ripple provides Base liquidity; RLUSD collateral on Coinbase Global Exchange was stated to follow; XRP collateral eligibility is separate.",
-      "evernorth": "Coinbase principal-market and Circle USDC market references are not disclosed direct partnerships."
+      "evernorth": "Coinbase principal-market and Circle USDC market references are not disclosed direct partnerships.",
+      "sbi_circle_arc": "SBI's Circle investment/USDC distribution is a separate relationship. SBI and Coinbase share Open Standard participation; the cited evidence does not establish a direct SBI-Coinbase XRP partnership.",
+      "coinbase_collateral": "Coinbase documents XRP collateral eligibility separately from RLUSD collateral availability. Actual XRP-specific collateral balances and utilization are not disclosed."
     },
     "exact_phrase_research": {
       "ask_coin": "Permission Coin ASK and separate Ask Coin listing remain distinct; no XRP relationship established.",
@@ -523,7 +533,20 @@
       "Consolidate #1643 unique research onto verified main, preserving the three shared paths and 18 Kamilah candidates.",
       "Close only exact superseded PRs after successor content is verified on main; preserve #1653/#1655 unique work.",
       "Verify scheduled ingestion on main and accumulate synchronized historical data before model evaluation or forecast issuance."
-    ]
+    ],
+    "handoff_map_commit": "ad4a91aa1763dfdcccd2b3e873f68fb4f56b3925",
+    "handoff_map_commit_ci": {
+      "full_suite": "1,148 passed; 8 subtests; 4 failures, all stale run-27 handoff/map assertions",
+      "core_suite": "643 passed; 8 subtests",
+      "dependency_audit": "passed; six manifests",
+      "fail_closed_gate": "passed; merge disabled",
+      "runs": {
+        "full": 42402000097,
+        "dependency": 42402000196,
+        "gate": 42402000138
+      },
+      "correction": "run-28 assertions and market-map schema updated in the next successor; exact-head full suite pending"
+    }
   },
   "prior_run_observations": [
     {

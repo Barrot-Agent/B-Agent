@@ -25,7 +25,8 @@ def test_run26_platform_map_is_preserved_as_prior_run_and_fail_closed():
     )
     prior = next(item for item in data["prior_run_observations"] if item.get("run_id") == 26)
     current = data["current_run_observations"]
-    assert current["run_id"] == 27
+    assert current["run_id"] == 28
+    assert any(item.get("run_id") == 27 for item in data["prior_run_observations"])
     assert prior["main_sha"] == "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
     assert prior["integration_head_before_map_commit"] == "e44c3cc6e18df6715d3e78575a02b1bbca38531b"
     assert prior["research_head"] == "42f5c98c6ebe19c066d938909cecc72aadefa258"
