@@ -406,15 +406,16 @@
     "tradradar_vs_trdesk_oi_difference_pct_of_perps": 37.8947,
     "trdesk_less_cme_oi_usd": 2193400000,
     "alpha_vs_trdesk_oi_difference_pct": 4.1985,
-    "oi_contract_scope_gap_liqwall_to_alpha_pct": 98.5401,
     "etf_30_session_flow_difference_usd": 93800000,
     "etf_30_session_flow_ratio_cryptoetf_to_alpha": 3.0392,
     "etf_cumulative_flow_difference_usd": 80000000,
-    "ripple_seed_lockup_days_remaining_at_capture": 43
+    "ripple_seed_lockup_days_remaining_at_capture": 43,
+    "invalid_future_liqwall_to_alpha_oi_gap_pct_not_comparable": 98.5401,
+    "trdesk_ex_cme_vs_tradradar_perps_oi_difference_pct": 15.4421
   },
   "reconciliations": {
     "spot": "Kraken last $1.15882, bid $1.15879, ask $1.15880; provider event time absent. OKX last 1.1623 USDT but provider timestamp is 1,347.435 seconds old and identical to the previous artifact. Raw price difference 0.299855% is not arbitrage because USD/USDT are unnormalized, timestamps unsynchronized, and multi-level executable depth/costs are missing.",
-    "derivatives": "Perpetual-only or narrower aggregates: TradRadar $1.90B across seven named perp venues, page-updated 14:55 UTC with 15-minute delay; Liqwall $1.37B but its displayed 15:42 UTC timestamp is future-dated relative to capture and excluded. Broader futures aggregate: TRdesk $2.62B across 26 exchanges including CME and quarterly futures; CME alone $426.6M (16.3%). Alpha Finance reports $2.73B all-exchange OI but does not fully specify contract scope. The gap is likely driven partly by perps-only versus broader futures/quarterly coverage and venue differences; do not average.",
+    "derivatives": "Perpetual-only or narrower aggregates: TradRadar $1.90B across seven named perp venues, page-updated 14:55 UTC with a 15-minute delay; Liqwall $1.37B but its displayed 15:42 UTC timestamp is future-dated and excluded. Broader futures aggregate: TRdesk $2.62B across 26 exchanges including CME and quarterly futures; CME alone $426.6M (16.3%). Removing CME leaves $2.1934B, still 15.4% above TradRadar's $1.90B perps-only figure. Alpha Finance reports $2.73B all-exchange OI, 4.2% above TRdesk, but does not fully specify contract scope. Contract-universe and venue differences plausibly explain part, not all, of the gap; do not average.",
     "exchange_balances": "XRP Insights' same-wallet tracked balance fell 150.7M XRP over 7 days and 161.2M over 30 days. Two new wallets holding 512M XRP make the naive total change +350.8M. The 22.33B attributed-wallet total includes cold storage, customer omnibus balances, cbXRP/Binance-Peg reserves and other non-customer funds; it is not tradable float and does not identify customer withdrawals.",
     "etf_flows": "Alpha Finance and CryptoETF daily headline/issue both report zero for the five-fund Nov6 snapshot, but CryptoETF's own table displays -$0.5M in the Nov6 column while its daily time series assigns that outflow to Nov2. Their 30-session flow totals differ by $93.8M ($45.9M versus $139.7M) and cumulative totals by $80M ($1.73B versus $1.81B). XRP Insights covers six spot funds plus BITW and computes holdings changes, reporting -663,043 XRP; this is a different universe and method.",
     "institutional_capital": "The 21Shares Q2 10-Q provides issuer-primary share and XRP transaction quantities. Q2 net share creation was +260,000 and net capital transactions +$3.702M; H1 net shares were -2.78M and net capital transactions -$49.501M. These dollar values are not cash-only because the Trust permits both cash and in-kind creation/redemption. Ripple Markets Inc. was the historical seed investor for 10M TOXR shares and $220.676M proceeds; its initial seed shares remain locked through 2026-12-20. Coinbase Custody is one of three TOXR custodians, creating an indirect Ripple-to-Coinbase institutional link through TOXR, not a direct Ripple-Coinbase partnership."
