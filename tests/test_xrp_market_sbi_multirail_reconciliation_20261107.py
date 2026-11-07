@@ -175,7 +175,7 @@ def test_rlusd_distribution_is_not_xrp_purchase_or_xrp_collateral() -> None:
     document = artifact()
     sbi = event(document, "sbi_vctrade_rlusd_distribution")
     coinbase = event(document, "coinbase_rlusd_multichain_launch")
-    assert "does not establish XRP purchases" in sbi["xrp_implication"]
+    assert "not evidence of XRP purchases" in sbi["xrp_implication"]
     assert coinbase["coinbase_global_exchange_rlusd_collateral_at_launch"] is False
     assert "RLUSD collateral must not be confused with XRP collateral" in coinbase["xrp_implication"]
 
