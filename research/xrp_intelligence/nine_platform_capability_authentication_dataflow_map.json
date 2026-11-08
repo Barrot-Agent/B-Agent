@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T17:16:19Z",
+  "captured_at_utc": "2026-11-08T17:28:40Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "d27c0067a251af7ffb9ba3199a70ecca5d5caa96",
-  "observed_research_head": "e60073612a570c6f1de6abaa8cc022086f700395",
+  "observed_integration_head_before_map_commit": "854d3341ec226f3c6eac060ee828077a5a6082f2",
+  "observed_research_head": "b51bc25797b94e18fddff05fe7bea9d2325cd454",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -489,20 +489,20 @@
     }
   },
   "next_actions": [
-    "Finish exact-head full-suite, installed-wheel and dependency verification on the Run 60 integration handoff/map commit.",
-    "Finish exact-head full-suite and dependency audit on research head e60073612a570c6f1de6abaa8cc022086f700395.",
+    "Finish exact-head full-suite, wheel and dependency verification on the Run 60 integration/map commit.",
+    "Finish exact-head full-suite and dependency verification on the SBI research head.",
     "Obtain independent approving reviews and resolve branch-protection and Pages deployment authorization.",
-    "Merge #1640 only after all required checks and authorizations pass; verify merge commit, files, side effects and main CI.",
+    "Merge #1640 only after every required check and authorization passes; verify merge commit, merged files, automatic workflow effects and main CI.",
     "Consolidate #1643's unique research paths onto verified main, reconciling all six shared paths.",
-    "Verify scheduled XRP ingestion on main and establish independent durable raw-source archival before predictive validation."
+    "Verify scheduled ingestion on main and establish independent durable raw-source archival before predictive validation."
   ],
   "current_run_observations": {
     "run_id": 60,
-    "revision": "Run 60 exact-head audit, handoff/map contract correction and institutional-rails correction",
-    "captured_at_utc": "2026-11-08T17:16:19Z",
+    "revision": "Run 60 final exact-head reconciliation after handoff-order and SBI digest corrections",
+    "captured_at_utc": "2026-11-08T17:28:40Z",
     "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_handoff_commit": "d27c0067a251af7ffb9ba3199a70ecca5d5caa96",
-    "research_head": "e60073612a570c6f1de6abaa8cc022086f700395",
+    "integration_head_before_handoff_commit": "854d3341ec226f3c6eac060ee828077a5a6082f2",
+    "research_head": "b51bc25797b94e18fddff05fe7bea9d2325cd454",
     "open_pr_inventory": {
       "total": 372,
       "drafts": 356,
@@ -644,16 +644,16 @@
       "merge_allowed": false,
       "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
       "pr_1640": {
-        "head": "d27c0067a251af7ffb9ba3199a70ecca5d5caa96",
+        "head": "854d3341ec226f3c6eac060ee828077a5a6082f2",
         "approving_reviews": 0,
         "threads_unresolved": 0,
-        "exact_head_ci": "FAILED: 1,209 passed, 6 failed, 8 subtests; dependency audit and fail-closed gate passed"
+        "exact_head_ci": "PENDING at capture"
       },
       "pr_1643": {
-        "head": "e60073612a570c6f1de6abaa8cc022086f700395",
+        "head": "b51bc25797b94e18fddff05fe7bea9d2325cd454",
         "approving_reviews": 0,
         "threads_unresolved": 0,
-        "exact_head_ci": "PENDING at capture after test-only assertion correction; fail-closed gate passed"
+        "exact_head_ci": "PENDING at capture"
       }
     },
     "external_actions": {
@@ -672,59 +672,71 @@
     },
     "ci_evidence": {
       "integration": {
-        "head": "d27c0067a251af7ffb9ba3199a70ecca5d5caa96",
-        "full_suite": {
-          "run_id": 42503267108,
-          "result": "failure",
-          "passed": 1209,
-          "failed": 6,
-          "subtests_passed": 8,
-          "coverage_percent": 58.98
+        "previous_head": {
+          "head": "7e30c2ae28d20d82821585529fa2ee369d1f9eda",
+          "full_suite": {
+            "run_id": 42504953473,
+            "result": "failure",
+            "passed": 1212,
+            "failed": 3,
+            "subtests_passed": 8
+          },
+          "core_suite": "success",
+          "dependency_audit": "success",
+          "fail_closed_gate": "success",
+          "failure_reason": "Run 58 heading ended beyond first 3,000 characters"
         },
-        "core_suite": {
-          "result": "success"
-        },
-        "dependency_audit": {
-          "run_id": 42503267095,
-          "result": "success",
-          "manifests": 6
-        },
-        "fail_closed_gate": {
-          "run_id": 42503267137,
-          "result": "success",
-          "automatic_merge_disabled": true
-        },
-        "installed_wheel": "skipped because full repository suite failed"
+        "current_pre_map_head": {
+          "head": "854d3341ec226f3c6eac060ee828077a5a6082f2",
+          "full_suite": {
+            "run_id": 42505239678,
+            "status": "in_progress"
+          },
+          "dependency_audit": {
+            "run_id": 42505239516,
+            "status": "in_progress"
+          },
+          "fail_closed_gate": {
+            "run_id": 42505239654,
+            "status": "in_progress"
+          }
+        }
       },
       "research": {
-        "head": "e60073612a570c6f1de6abaa8cc022086f700395",
-        "previous_head_failure": {
-          "head": "ec574483bdd2e833fd0ab2430b191f9356ca5d9c",
-          "run_id": 42503137736,
-          "passed": 2500,
-          "failed": 1,
-          "subtests_passed": 8,
-          "root_cause": "stale exact list-element assertion; corrected on current head"
+        "previous_head": {
+          "head": "ba63c15c3417187eb691474dde02eab47e4b851d",
+          "full_suite": {
+            "run_id": 42504868752,
+            "result": "failure",
+            "passed": 2510,
+            "failed": 1,
+            "subtests_passed": 8
+          },
+          "failure_reason": "normalized-record digest reflected 1.0 while JSON canonical serialization emitted 1"
         },
-        "full_suite": {
-          "run_id": 42504381538,
-          "status": "in_progress"
-        },
-        "dependency_audit": {
-          "run_id": 42504381595,
-          "status": "in_progress"
-        },
-        "fail_closed_gate": {
-          "run_id": 42504381644,
-          "result": "success",
-          "automatic_merge_disabled": true
+        "current_head": {
+          "head": "b51bc25797b94e18fddff05fe7bea9d2325cd454",
+          "full_suite": {
+            "run_id": 42505132892,
+            "status": "in_progress"
+          },
+          "dependency_audit": {
+            "run_id": 42505132999,
+            "status": "in_progress"
+          },
+          "fail_closed_gate": {
+            "run_id": 42505132911,
+            "result": "success"
+          }
         }
       }
     },
     "new_research_artifacts": [
       "research/xrp_intelligence/20261108T162835Z-xrp-derivatives-oi-universe-late-session-reconciliation.json",
       "research/xrp_intelligence/20261108T164100Z-sbi-vc-trade-rlusd-chain-and-reserve-snapshot-correction.json",
-      "tests/test_xrp_coinbase_circle_sbi_robinhood_institutional_rails_correction_20261108.py (list assertion corrected; exact-head CI pending)"
+      "tests/test_xrp_coinbase_circle_sbi_robinhood_institutional_rails_correction_20261108.py (list assertion corrected; exact-head CI pending)",
+      "research/xrp_intelligence/20261108T171619Z-sbi-ripple-xrpl-tokenization-and-remittance-network-reconciliation.json",
+      "tests/test_xrp_sbi_ripple_xrpl_tokenization_and_remittance_network_reconciliation_20261108.py"
     ],
     "forecast_status": "NOT_ISSUED",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
@@ -732,7 +744,8 @@
       "status": "PARTIAL_REFRESH",
       "last_complete_recursive_audit_run_id": 59,
       "note": "Run 60 rechecked refs, branch comparisons and targeted files; recursive tree counts are carried forward from Run 59."
-    }
+    },
+    "integration_head_before_map_commit": "854d3341ec226f3c6eac060ee828077a5a6082f2"
   },
   "prior_run_observations": [
     {
@@ -12419,7 +12432,7 @@
       "reason": "Independent approving reviews are absent; detailed branch-protection configuration returns HTTP 403; Pages is enabled but configuration is inaccessible and #1640 changes public web paths."
     }
   ],
-  "last_verified_at_utc": "2026-11-08T17:16:19Z",
+  "last_verified_at_utc": "2026-11-08T17:28:40Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -12433,16 +12446,16 @@
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
     "integration": {
       "pr": 1640,
-      "head": "d27c0067a251af7ffb9ba3199a70ecca5d5caa96",
-      "ahead": 705,
+      "head": "854d3341ec226f3c6eac060ee828077a5a6082f2",
+      "ahead": 709,
       "behind": 0,
       "changed_paths": 180,
       "changed_paths_last_complete_audit": 180
     },
     "research": {
       "pr": 1643,
-      "head": "e60073612a570c6f1de6abaa8cc022086f700395",
-      "ahead": 854,
+      "head": "b51bc25797b94e18fddff05fe7bea9d2325cd454",
+      "ahead": 859,
       "behind": 0,
       "changed_paths": 634,
       "changed_paths_last_complete_audit": 634
@@ -12456,57 +12469,67 @@
       "branches_diverged": true
     },
     "reconciliation_order": "Finish and verify #1640 first. Then build one consolidated XRP successor directly on the resulting main, preserving the 628 research-only paths and reconciling all six shared paths. Do not merge #1643 directly after #1640 without rebasing/consolidation.",
-    "comparison_observed_at_utc": "2026-11-08T17:16:19Z",
+    "comparison_observed_at_utc": "2026-11-08T17:28:40Z",
     "path_count_note": "Changed-path counts are carried forward from Run 59's complete path audit; Run 60 compare confirms ancestry but large file lists are capped."
   },
   "ci_evidence": {
     "integration": {
-      "head": "d27c0067a251af7ffb9ba3199a70ecca5d5caa96",
-      "full_suite": {
-        "run_id": 42503267108,
-        "result": "failure",
-        "passed": 1209,
-        "failed": 6,
-        "subtests_passed": 8,
-        "coverage_percent": 58.98
+      "previous_head": {
+        "head": "7e30c2ae28d20d82821585529fa2ee369d1f9eda",
+        "full_suite": {
+          "run_id": 42504953473,
+          "result": "failure",
+          "passed": 1212,
+          "failed": 3,
+          "subtests_passed": 8
+        },
+        "core_suite": "success",
+        "dependency_audit": "success",
+        "fail_closed_gate": "success",
+        "failure_reason": "Run 58 heading ended beyond first 3,000 characters"
       },
-      "core_suite": {
-        "result": "success"
-      },
-      "dependency_audit": {
-        "run_id": 42503267095,
-        "result": "success",
-        "manifests": 6
-      },
-      "fail_closed_gate": {
-        "run_id": 42503267137,
-        "result": "success",
-        "automatic_merge_disabled": true
-      },
-      "installed_wheel": "skipped because full repository suite failed"
+      "current_pre_map_head": {
+        "head": "854d3341ec226f3c6eac060ee828077a5a6082f2",
+        "full_suite": {
+          "run_id": 42505239678,
+          "status": "in_progress"
+        },
+        "dependency_audit": {
+          "run_id": 42505239516,
+          "status": "in_progress"
+        },
+        "fail_closed_gate": {
+          "run_id": 42505239654,
+          "status": "in_progress"
+        }
+      }
     },
     "research": {
-      "head": "e60073612a570c6f1de6abaa8cc022086f700395",
-      "previous_head_failure": {
-        "head": "ec574483bdd2e833fd0ab2430b191f9356ca5d9c",
-        "run_id": 42503137736,
-        "passed": 2500,
-        "failed": 1,
-        "subtests_passed": 8,
-        "root_cause": "stale exact list-element assertion; corrected on current head"
+      "previous_head": {
+        "head": "ba63c15c3417187eb691474dde02eab47e4b851d",
+        "full_suite": {
+          "run_id": 42504868752,
+          "result": "failure",
+          "passed": 2510,
+          "failed": 1,
+          "subtests_passed": 8
+        },
+        "failure_reason": "normalized-record digest reflected 1.0 while JSON canonical serialization emitted 1"
       },
-      "full_suite": {
-        "run_id": 42504381538,
-        "status": "in_progress"
-      },
-      "dependency_audit": {
-        "run_id": 42504381595,
-        "status": "in_progress"
-      },
-      "fail_closed_gate": {
-        "run_id": 42504381644,
-        "result": "success",
-        "automatic_merge_disabled": true
+      "current_head": {
+        "head": "b51bc25797b94e18fddff05fe7bea9d2325cd454",
+        "full_suite": {
+          "run_id": 42505132892,
+          "status": "in_progress"
+        },
+        "dependency_audit": {
+          "run_id": 42505132999,
+          "status": "in_progress"
+        },
+        "fail_closed_gate": {
+          "run_id": 42505132911,
+          "result": "success"
+        }
       }
     }
   },
@@ -12773,16 +12796,16 @@
     "merge_allowed": false,
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
     "pr_1640": {
-      "head": "d27c0067a251af7ffb9ba3199a70ecca5d5caa96",
+      "head": "854d3341ec226f3c6eac060ee828077a5a6082f2",
       "approving_reviews": 0,
       "threads_unresolved": 0,
-      "exact_head_ci": "FAILED: 1,209 passed, 6 failed, 8 subtests; dependency audit and fail-closed gate passed"
+      "exact_head_ci": "PENDING at capture"
     },
     "pr_1643": {
-      "head": "e60073612a570c6f1de6abaa8cc022086f700395",
+      "head": "b51bc25797b94e18fddff05fe7bea9d2325cd454",
       "approving_reviews": 0,
       "threads_unresolved": 0,
-      "exact_head_ci": "PENDING at capture after test-only assertion correction; fail-closed gate passed"
+      "exact_head_ci": "PENDING at capture"
     }
   },
   "external_actions": {
@@ -12923,7 +12946,7 @@
     ],
     "note": "The 356 draft PRs remain unreviewed/unique until path-by-path reconciliation. No PR was created or closed in this run."
   },
-  "last_run_status": "Run 60: #1640 full suite exposed six stale handoff/map assertions; Run 60 artifacts now restore the expected compatibility fields and ordering. #1643's single exact-list assertion was corrected; its exact-head CI/audit remain pending. No merge or external action. Forecast NOT_ISSUED.",
+  "last_run_status": "Run 60: #1640 handoff ordering correction and #1643 SBI digest correction are committed on existing branches. Exact-head CI and dependency checks are running on the latest heads; fail-closed gate status recorded. No merge or external action. Forecast NOT_ISSUED.",
   "integration_head_before_map_commit": "9f7e3797b6385ed9737668102cc7eb7a7284e7aa",
   "research_updates": {
     "derivatives_oi_artifact": "research/xrp_intelligence/20261108T162835Z-xrp-derivatives-oi-universe-late-session-reconciliation.json",
@@ -12945,6 +12968,21 @@
       "path": "tests/test_xrp_coinbase_circle_sbi_robinhood_institutional_rails_correction_20261108.py",
       "commit": "e60073612a570c6f1de6abaa8cc022086f700395",
       "finding": "Corrected the assertion to test substring presence within live_at_announcement list items; no source artifact changed."
+    },
+    "run60_sbi_ripple_xrpl": {
+      "artifact": "research/xrp_intelligence/20261108T171619Z-sbi-ripple-xrpl-tokenization-and-remittance-network-reconciliation.json",
+      "test": "tests/test_xrp_sbi_ripple_xrpl_tokenization_and_remittance_network_reconciliation_20261108.py",
+      "test_count": 10,
+      "finding": "SBI Ripple Asia completed an XRPL token issuance platform and issuer registration; SBI reports a 60/40 SBI Ripple Asia JV, approximate 9% Ripple stake and historical XRP bridge remittances. Evernorth $200M SBI cash investment is distinct from >$1B aggregate raise. No current volume or XRP purchase inferred.",
+      "model_eligible": false
+    },
+    "market_data_quality_20261108": {
+      "sources": [
+        "Kraken public ticker",
+        "OKX public ticker"
+      ],
+      "finding": "Repeated surfaced responses were identical; OKX event time was 864.438 seconds old at 17:28:40Z; Kraken event time absent; full depth, Binance and Coinbase endpoints inaccessible through this retrieval path.",
+      "model_eligible": false
     }
   },
   "coinbase_circle_q3_update": {
