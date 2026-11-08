@@ -150,6 +150,114 @@
       "sha256": "e6cc160840b164dc3f09c6f3c8515985f397613e91faea4ba06dc1a64ba54877",
       "retrieved_at_utc": null,
       "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_sbi_stockholder_entities",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Consists of 9,431,914 shares of Pubco Class A Common Stock held by SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc., each of which are entities controlled by SBI (the “SBI Stockholders”), collectively. Each such SBI Stockholder is either a subsidiary of or partnership directly or indirectly managed by SBI Holdings, Inc.",
+      "sha256": "97ec274917b893feff650a0a946f8204c8d15a53fea42a1950b01da4ced22dc8",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_sbi_class_c_allocation",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "On the Closing Date, based on a Closing XRP Price of $1.43069, the Company issued the following equity interests at a $10.00 per share equity valuation: Advance and Delayed Subscription Agreements: 11,748,249 shares of Pubco Class A Common Stock and 2,359,038 shares of Pubco Class C Common Stock. The Class C shares were issued to certain investors affiliated with SBI Holdings, Inc. as a result of the 39.9% ownership threshold.",
+      "sha256": "a48f8db757ce604218cd1de650fcb1c801e9b50d2aff0cf376c3f1c7a0436d56",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "bitgo_trust_company_custodian_identity",
+      "publisher": "BitGo Trust Company, Inc. / SEC exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092032/000119312526114155/d944435dex1019.htm",
+      "document_date": "2025-10-09",
+      "source_class": "primary_executed_contract",
+      "source_independence_group": "bitgo_executed_custody_agreement",
+      "excerpt": "Custodian means BitGo Trust Company, Inc., a South Dakota trust company duly organized and chartered under § 51A-6A-1(12A) of the South Dakota Banking Law and licensed to act as custodian of Client’s Assets on Client’s behalf.",
+      "sha256": "7a9823b99014dd89c0f7f686f2bccda14aedce045e1658400a6275de4ee77ea5",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "bitgo_custody_contract_segregation_clause",
+      "publisher": "BitGo Trust Company, Inc. / SEC exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092032/000119312526114155/d944435dex1019.htm",
+      "document_date": "2025-10-09",
+      "source_class": "primary_executed_contract",
+      "source_independence_group": "bitgo_executed_custody_agreement",
+      "excerpt": "The Digital Assets stored in Client’s Custodial Account are segregated from both (a) the property of Custodian, and (b) the Assets of other customers of Custodian, except for Digital Assets specifically moved into shared accounts by Client.",
+      "sha256": "e00d539916c6c890699b0eb03651da26234daa5f0a378547a93e4aae0cf52bfa",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_pubco_xrp_custody_wallet",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Pubco established custodial arrangements for the cash and XRP contributions. In aggregate, the Company purchased 84,365,876.3625 XRP tokens with cash proceeds from the Advance Funding Subscription Agreements. Such purchased XRP, together with XRP originally contributed by the Private Placement Investors, was held in an unencumbered digital custody wallet maintained in Pubco’s name for the benefit of the Private Placement Investors pending the Closing and was released at the Closing.",
+      "sha256": "88c7dca720a2a5822c6525095e098e3123ca7c185a2a5d42980bdc887dc08e26",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_purchase_average_price",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "On November 4, 2025, the Company and Pubco issued a joint press release announcing the purchase by Pubco of 84,365,876.3625 XRP using the aggregate cash proceeds from the Advance Funding Subscription Agreements at an average price of $2.53657058 per XRP.",
+      "sha256": "60725709b27d029e5fe4e6f5ffbaff2d7a7662404db7057157b797bd4ede7b35",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_note_purchaser",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Note Purchase Agreement, dated as of September 11, 2026, between Evernorth Holdings Inc. and NH Investment & Securities Co. as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3.",
+      "sha256": "869cbe162cc28a2d96d73dd5e4dbd2696fb147b431daa11cd581e809c01a66f6",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_delayed_funding_total_at_close",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Reflects $10,500,000 in cash and 200,000 XRP tokens received from the delayed subscription agreements at closing under similar terms. The digital assets recognized from the Delayed Funding Subscription Agreements funded in XRP were valued at the Closing XRP Price of $1.43069, resulting in the recognition of $286,138 of digital assets. Cash and XRP contributed from the Delayed Funding Subscription Agreements totaled $10,786,138. In total, shares issuable under the delayed funding agreements were 1,078,613.",
+      "sha256": "4afda21b7150e45a300588f055ec39bbd6cb29536e75fb29251fd87ed30ce36e",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_residual_cash_used_for_xrp_at_close",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Reflects release of contributed XRP from escrow to effect the Business Combination at Closing and purchase of XRP with the remaining $49,995 of cash.",
+      "sha256": "5ac6518d1427ac19f616c5ea671bbff6fc42363c2f6ee7b3c8a2282ec8dd9498",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
     }
   ],
   "capital_ledger": {
@@ -200,16 +308,22 @@
       "rounded_gross_cash_usd": 272600000,
       "in_kind_xrp": 388910554.061435,
       "cash_purchased_xrp": 84365876.3625,
-      "reconstructed_total_xrp": 473276430.423935,
       "issuer_reported_total_xrp": "approximately 473 million as of 2026-10-09",
-      "arithmetic_scope": "Derived from disclosed component amounts. Not a wallet-level reserve reconciliation."
+      "arithmetic_scope": "Known in-kind components plus the disclosed 84,365,876.3625 XRP cash-purchased lot; excludes the additional XRP bought with $49,995 residual cash at closing because its quantity is not disclosed. Issuer reports approximately 473 million XRP held at close.",
+      "known_component_xrp_excluding_residual_cash_purchase": 473276430.423935,
+      "residual_cash_purchase_xrp_quantity": null
     },
     "actual_xrp_purchase": {
-      "cash_used_usd": 214100000,
+      "cash_used_usd": 214000000,
       "xrp_purchased": 84365876.3625,
       "period": "2025-10-31 through 2025-11-06 receipts; aggregate purchase disclosed in 2026 S-1",
       "status": "issuer-reported actual acquisition with cash proceeds",
-      "distinction": "This is the identified cash-funded XRP purchase. It is not equivalent to the full 473 million XRP holdings, much of which came from in-kind contributions."
+      "distinction": "This is the identified cash-funded XRP purchase. It is not equivalent to the full 473 million XRP holdings, much of which came from in-kind contributions.",
+      "cash_received_usd": 214049995,
+      "average_price_usd": 2.53657058,
+      "residual_cash_purchase_at_close_usd": 49995,
+      "residual_cash_purchase_xrp_quantity": null,
+      "note": "The $214,049,995 advance cash included approximately $214,000,000 used for the 84,365,876.3625 XRP lot at $2.53657058 average. The S-1 separately records use of the remaining $49,995 to purchase XRP at closing but does not disclose the quantity; do not add a guessed amount."
     },
     "convertible_note": {
       "principal_usd": 30000000,
@@ -251,6 +365,32 @@
       "total_cantor_fee_cap_usd": 1000000,
       "drawdown_verified": false,
       "classification": "potential equity financing capacity, not cash received"
+    },
+    "sbi_holdings_equity": {
+      "entities_controlled_by_or_managed_by_sbi_holdings": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc."
+      ],
+      "class_a_shares_held": 9431914,
+      "class_c_shares_issued_to_sbi_affiliated_investors": 2359038,
+      "class_c_allocation_reason": "39.9% ownership threshold",
+      "relationship": "Equity ownership in Evernorth; not direct XRP ownership and not a subscription by SBIC East/Central/West.",
+      "evidence_status": "issuer SEC filing"
+    },
+    "custody": {
+      "client": "Evernorth Holdings Inc. (Pubco)",
+      "custodian": "BitGo Trust Company, Inc.",
+      "custodian_charter": "South Dakota trust company",
+      "agreement_date": "2025-10-09",
+      "executed_contract_confirmed": true,
+      "pubco_wallet_description": "Unencumbered digital custody wallet maintained in Pubco's name for the benefit of private-placement investors pending closing; released at closing.",
+      "contract_segregation_clause": "Digital assets in Client's Custodial Account are contractually segregated from custodian property and other customer assets, except assets moved into shared accounts by Client.",
+      "wallet_address_disclosed": false,
+      "onchain_address_reconciliation_performed": false,
+      "wallet_specific_linkage_to_bitgo": "The S-1 identifies a BitGo Custodial Services Agreement and separately describes Pubco's custody wallet. The association is supported by the same-client filing and executed contract, but no public wallet address was disclosed to independently link a specific XRP wallet to BitGo.",
+      "evidence_status": "contract and issuer custody description confirmed; address-level verification unavailable"
     }
   },
   "derived_reconciliations": {
@@ -263,7 +403,10 @@
       "closing_shares": 1078613,
       "shares_times_10_usd": 10786130,
       "difference_usd": -8,
-      "interpretation": "The issued share count is arithmetically consistent with the disclosed $10.5 million cash plus 200,000 XRP at the closing reference price, subject to whole-share rounding. Exact per-subscriber cash/XRP mix is not separately itemized in the cited summary."
+      "interpretation": "The S-1 directly reports $10,500,000 cash plus 200,000 XRP valued at $286,138, total $10,786,138, and 1,078,613 shares. The $8 difference from shares times $10 is consistent with whole-share rounding.",
+      "source_reported_total_usd": 10786138,
+      "source_reported_xrp_value_usd": 286138,
+      "exact_subscriber_cash_xrp_split_not_itemized": false
     },
     "eloc_14_71_row": {
       "shares": 5218935,
@@ -310,6 +453,16 @@
       "from": "Cantor",
       "to": "Evernorth",
       "relationship": "optional committed equity facility up to 5,218,935 shares; drawdown not verified"
+    },
+    {
+      "from": "Evernorth Holdings Inc.",
+      "to": "BitGo Trust Company, Inc.",
+      "relationship": "2025-10-09 custodial services agreement; S-1 describes Pubco XRP in an unencumbered custody wallet; specific wallet address not disclosed"
+    },
+    {
+      "from": "SBI Venture Fund 2023A Investment LPS; SBI Venture Fund 2023B Investment LPS; SBI PE Holdings Co., Ltd.; SBI Holdings USA, Inc.",
+      "to": "Evernorth",
+      "relationship": "SBI-controlled/managed stockholders; 9,431,914 Class A shares; 2,359,038 Class C shares issued to SBI-affiliated investors at the 39.9% threshold; not SBIC regional companies"
     }
   ],
   "competing_hypotheses": [
@@ -358,11 +511,13 @@
       "The $29m note has no traced XRP purchase.",
       "The 388.9m in-kind contribution is not open-market demand.",
       "The $9.7m related-party debt repayment status is unknown.",
-      "The ELOC is contingent capacity, not actual drawdown."
+      "The ELOC is contingent capacity, not actual drawdown.",
+      "The S-1 records a separate $49,995 residual-cash XRP purchase at closing but does not disclose its XRP quantity; do not infer total holdings from only the large disclosed lots."
     ],
     "forecast_status": "NOT_ISSUED"
   },
   "next_actions": [
+    "Reconcile the BitGo custody agreement to any publicly disclosed XRP wallet addresses or later custody statements; no address-level link was verified.",
     "Locate a post-October-30 filing or audited cash-flow disclosure confirming whether the $9.7m Ripple Company Facility was repaid by its contractual due date.",
     "Track subsequent XRP wallet movements for the 84.365876m purchased lot and 388.910554m in-kind contribution lots without assuming wallet labels establish ownership.",
     "Verify whether any Cantor ELOC VWAP purchase notices or settlements occurred after the October 30 prospectus.",
