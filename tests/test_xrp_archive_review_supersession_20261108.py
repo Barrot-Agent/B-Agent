@@ -23,7 +23,7 @@ def load(path: Path) -> dict:
 
 def git_blob_sha1(path: Path) -> str:
     raw = path.read_bytes()
-    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
 
 
 def test_c09_supersedes_only_the_incorrect_C07_average_cost():
