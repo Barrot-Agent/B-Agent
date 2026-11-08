@@ -58,6 +58,8 @@ def test_cash_deployed_debt_and_in_kind_xrp_are_not_double_counted():
     assert capital["private_placement_cash_used_to_purchase_xrp_usd_approx"] == 214_000_000
     assert capital["xrp_purchased_with_cash"] == 84_365_876
     assert capital["in_kind_xrp_contributions"] == 388_910_554
+    assert capital["xrp_raised_under_private_placement_subscription_agreements"] == 261_919_096
+    assert "do not add the figures" in capital["xrp_in_kind_overlap_rule"]
     assert capital["xrp_holdings_as_of_2026_10_09_approx"] == 473_000_000
     assert capital["cash_balance_as_of_2026_06_30_usd"] == 100_000
     assert capital["ripple_intercompany_facility"]["borrowed_as_of_2026_10_07_usd"] == 9_700_000
