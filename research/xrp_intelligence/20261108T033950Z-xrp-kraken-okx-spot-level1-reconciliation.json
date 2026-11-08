@@ -19,7 +19,8 @@
       "raw_response_sha256": "6309b771770084e09b8f000870148983de78fccffed30e74d5122f716f9a3836",
       "raw_response_utf8_bytes": 316,
       "evidence_family": "kraken_exchange",
-      "independence_note": "Independent exchange venue; provider event timestamp absent."
+      "independence_note": "Independent exchange venue; provider event timestamp absent.",
+      "raw_response": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15851000\",\"13688\",\"13688.000\"],\"b\":[\"1.15850000\",\"216\",\"216.000\"],\"c\":[\"1.15851000\",\"4.00000000\"],\"v\":[\"636129.87027165\",\"15500285.54560454\"],\"p\":[\"1.15894065\",\"1.16194358\"],\"t\":[1626,19731],\"l\":[\"1.15376000\",\"1.14888000\"],\"h\":[\"1.16357000\",\"1.18067000\"],\"o\":\"1.16234000\"}}}"
     },
     {
       "source_id": "okx_xrp_usdt_ticker",
@@ -34,7 +35,8 @@
       "raw_response_sha256": "2862821a6e06dc59381e62c512a977bc84ec3592e36a4f7d5fe172a45748b0fd",
       "raw_response_utf8_bytes": 351,
       "evidence_family": "okx_exchange",
-      "independence_note": "Independent exchange venue; provider event time is within the 300-second age threshold at artifact assembly."
+      "independence_note": "Independent exchange venue; provider event time is within the 300-second age threshold at artifact assembly.",
+      "raw_response": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1583\",\"lastSz\":\"88.2\",\"askPx\":\"1.1584\",\"askSz\":\"1061.4\",\"bidPx\":\"1.1583\",\"bidSz\":\"4301.000942\",\"open24h\":\"1.1561\",\"high24h\":\"1.1821\",\"low24h\":\"1.1495\",\"volCcy24h\":\"28555093.2455027885\",\"vol24h\":\"24572502.698454\",\"ts\":\"1794109037569\",\"sodUtc0\":\"1.1639\",\"sodUtc8\":\"1.1587\"}],\"msg\":\"\"}"
     }
   ],
   "market_snapshot": {
