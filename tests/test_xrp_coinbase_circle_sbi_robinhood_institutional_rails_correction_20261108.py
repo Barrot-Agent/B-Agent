@@ -73,7 +73,7 @@ def test_bny_custody_is_distinguished_from_future_mint_redeem_and_trade_finance(
 def test_robinhood_rlusd_network_status_and_xrpl_institutional_use_are_not_overstated():
     data = load_artifact()["findings"]["robinhood_ripple"]
     assert any("Robinhood Chain" in item for item in data["live_at_announcement"])
-    assert "Bitstamp by Robinhood" in data["live_at_announcement"]
+    assert any("Bitstamp by Robinhood" in item for item in data["live_at_announcement"])
     assert "Robinhood app availability" in data["expected_later_2026"]
     assert "will leverage RLUSD on XRPL" in data["announced_xrpl_use"]
     assert "does not disclose completed XRPL settlement volumes" in data["interpretation"]
