@@ -1,10 +1,10 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T11:44:00Z",
+  "captured_at_utc": "2026-11-08T11:59:38Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
+  "observed_integration_head_before_map_commit": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
   "observed_research_head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -481,21 +481,21 @@
     }
   },
   "next_actions": [
-    "Obtain genuine independent APPROVED reviews for #1640 and #1643; COMMENTED reviews do not satisfy approval.",
-    "Resolve branch-protection visibility and Pages deployment authorization.",
-    "Merge #1640 only after exact-head full suite, coverage, installed-wheel, six-manifest audit, fail-closed gate, approvals and deployment authorization pass; verify merge commit, files, workflow side effects and main CI.",
-    "After verified #1640 merge, consolidate #1643's 602 unique paths onto new main, reconcile all six shared paths and carry #1640's stronger CI.",
-    "Close only exact superseded PRs after main verification; preserve unique work.",
-    "Verify scheduled ingestion on main; expand SEC/regulatory, macro-vintage, stablecoin, custody, collateral, institutional and payment-rail coverage.",
-    "Implement a general correction-overlay resolver, independent WORM archival and complete raw-source rebuild.",
-    "Accumulate synchronized history and demonstrate OOS lift, calibration, drift stability and independent shadow outcomes before directional forecasting."
+    "Finish exact-head full-suite, inclusive coverage and installed-wheel verification on the corrected #1640 head.",
+    "Re-check all 22 #1640 review threads against current code; resolve only findings verified fixed, preserve any still-valid objections.",
+    "Reconcile the 19 #1643 research review threads against append-only corrections; do not close them merely because CI passes.",
+    "Obtain genuine independent APPROVED reviews and resolve branch-protection/Pages authorization.",
+    "Merge #1640 only after every exact-head, approval, security and deployment condition passes; verify merge commit, files, workflow side effects and main CI.",
+    "Consolidate #1643's 602 unique paths onto verified main, reconcile all six shared paths and carry #1640's stronger CI.",
+    "Close only exact superseded PRs after successor content is verified on main.",
+    "Verify scheduled ingestion on main and build synchronized historical data before any directional forecasting."
   ],
   "current_run_observations": {
-    "run_id": 51,
+    "run_id": 52,
     "automation_turn": 11,
-    "captured_at_utc": "2026-11-08T11:44:00Z",
+    "captured_at_utc": "2026-11-08T11:59:38Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
+    "integration_head_before_map_commit": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
     "research_head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
     "open_pr_inventory": {
       "total": 372,
@@ -523,7 +523,6 @@
         "python_files": 548,
         "test_modules": 129,
         "workflow_yaml": 79,
-        "xrp_json_artifacts": 18,
         "truncated": false
       },
       "research": {
@@ -532,26 +531,21 @@
         "python_files": 738,
         "test_modules": 335,
         "workflow_yaml": 78,
-        "xrp_json_artifacts": 363,
         "truncated": false
       }
     },
     "branch_ancestry": {
       "integration": {
-        "head": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
-        "ahead": 670,
+        "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+        "ahead": 671,
         "behind": 0,
-        "changed_paths": 177,
-        "added": 68,
-        "modified": 109
+        "changed_paths": 177
       },
       "research": {
         "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
         "ahead": 813,
         "behind": 0,
-        "changed_paths": 608,
-        "added": 602,
-        "modified": 6
+        "changed_paths": 608
       },
       "shared_paths": [
         ".github/workflows/dependency-audit.yml",
@@ -566,18 +560,22 @@
     },
     "ci_evidence": {
       "integration": {
-        "head": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
-        "full_suite": "1,198 passed, 8 subtests passed",
+        "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+        "full_suite": "FAILED: 1,196 passed, 2 failed, 8 subtests passed; two handoff-contract assertions; corrected in Run 52 commit, exact-head rerun pending",
         "core_suite": "660 passed, 8 subtests passed",
         "inclusive_coverage_pct": 58.81,
-        "installed_wheel": "passed",
+        "installed_wheel": "SKIPPED because full repository suite failed",
         "dependency_audit": "passed; six manifests",
         "fail_closed_gate": "passed; merging disabled",
         "runs": {
-          "ci": 42475843935,
-          "dependency_audit": 42475843999,
-          "fail_closed": 42475843967
-        }
+          "ci": 42477624879,
+          "dependency_audit": 42477624905,
+          "fail_closed": 42477624841
+        },
+        "failed_tests": [
+          "tests/test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads",
+          "tests/test_xrp_mission_handoff_run34.py::test_run34_endpoint_count_and_fail_closed_prediction_status_are_current"
+        ]
       },
       "research": {
         "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
@@ -595,14 +593,16 @@
     },
     "reviews": {
       "pr_1640": {
-        "threads_resolved": "22/22",
+        "threads_total": 22,
+        "threads_unresolved": 22,
         "commented_reviews": 62,
         "approving_reviews": 0,
         "mergeable": true,
         "draft": false
       },
       "pr_1643": {
-        "threads_resolved": "19/19",
+        "threads_total": 19,
+        "threads_unresolved": 19,
         "commented_reviews": 10,
         "approving_reviews": 0,
         "mergeable": true,
@@ -615,95 +615,16 @@
       },
       "independent_approving_reviews": 0
     },
-    "workflow_safety_audit": {
-      "main_privileged_workflows": {
-        "barrot_agent": "active on main with contents/issues/pull-requests write permissions and issue-label triggers",
-        "ask_barrot": "active on main with contents/issues write and git push capability",
-        "sync_self_hosted_brain": "push-triggered workflow can upload to Hugging Face and update a Space secret",
-        "deploy_a2a_worker": "push-triggered workflow can deploy Cloudflare worker and upload secrets"
-      },
-      "integration_branch_mitigations": {
-        "barrot_agent_and_ask_barrot": "quarantined with empty permissions and false job conditions",
-        "sync_self_hosted_brain_and_deploy_a2a_worker": "manual-only, exact-main-SHA pinned, explicit YES and secret-rotation confirmation; not dispatched",
-        "coinbase_paper_trader": "manual, exact-main-SHA, explicit YES, artifact-only; not dispatched"
-      },
-      "pages": {
-        "enabled": true,
-        "configuration_accessible": false,
-        "prior_successful_deployment_run": 41799855489,
-        "changed_public_paths": [
-          "web/index.html",
-          "web/latest_signal.json",
-          "web/paper_trading_state.json",
-          "web/signal_summary.json",
-          "web/signal_ledger.json",
-          "web/metrics.html"
-        ],
-        "deployment_authorized": false
-      },
-      "no_external_workflow_dispatched": true
-    },
-    "new_research": {
-      "artifacts_added": [
-        "research/xrp_intelligence/20261108T113700Z-xrp-exchange-rlusd-x402-phrase-reconciliation.json",
-        "tests/test_xrp_exchange_rlusd_x402_phrase_reconciliation_20261108.py",
-        "research/xrp_intelligence/20261108T114400Z-xrp-derivatives-open-interest-funding-cross-provider-reconciliation.json",
-        "tests/test_xrp_derivatives_cross_provider_reconciliation_20261108.py"
-      ],
-      "latest_head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
-      "full_suite_on_latest_head": "VERIFIED: 2,398 passed, 8 subtests passed",
-      "summary": [
-        "CoinGecko rendered XRP $1.16, +0.8%/24h, $1.15–$1.17 range, $865.081M volume, $3.995B perpetual OI, +0.0077%/8h funding and 15x perp/spot ratio; no provider timestamp/raw bytes.",
-        "TradRadar 11:10 UTC update: $1.1598, -0.87%/24h, $1.90B OI, +0.16% OI/24h, +0.0067%/8h funding, at least $1.35M liquidations (long $1.27M, short $76.64K), 79.2% long accounts; 15-minute delay.",
-        "Kodexius 07:54 UTC OI $785.31M; Bentley Markets 10:01 UTC funding +0.0069%/8h across 18 exchanges, 16 positive. Different universes; do not average.",
-        "XRP Insights 08:00 UTC exchange snapshot: 22.34B XRP in 701 attributed wallets across 24 exchanges; same-wallet -104.4M over 7d and -149.3M over 30d. Cold/omnibus/reserve balances included; not tradable float or customer withdrawals.",
-        "Coinbase attributed wallets 5.79B (151.3M cbXRP reserve; 5.74B cold-labeled); Binance 2.73B (327.4M Binance-Peg reserve); SBI VC Trade 56.7M, >99% cold-labeled, -3.0M/7d and +374K/30d.",
-        "Circulating-supply definitions disagree: CoinGecko 63.517B vs XRP Insights 68.89B; unresolved, do not average.",
-        "XRP Insights ETF Nov2–6 holdings delta -812,529 XRP (~-$978K) is not issuer cash creation/redemption; GXRP flow excluded, BITW rebalancing/fees counted, some rows reconstructed.",
-        "RLUSD supply disagreement: XRP Insights ~$2.68B total (XRPL ~$878.3M/Ethereum ~$1.80B) vs RWA.xyz ~$2.616B (XRPL ~$884.3M/Ethereum ~$1.731B). No raw contract receipts; do not average. RWA.xyz lists Standard Custody & Trust Company LLC as issuer, BNY as custodian, BPM LLP as auditor.",
-        "XRPL RWA headline $4.33B: $276M distributed/transferable, $4.06B registry-represented notional; registry is not investor float.",
-        "x402 counts disagree: XRP Insights 15,335,356 transactions/5,865 services vs T54 15,343,857/5,393; difference 8,501. T54 reports $68,810.25 all-time; XRP Insights 7,027 XRP + 59,764 RLUSD. Many are RLUSD micro-payments; recent T54 rows marked unverified.",
-        "ASK Coin remains distinct from Permission Coin ASK; no XRP relationship. 'Actual capital' is secondary commentary, not issuer accounting. Tokyo SBIC ChatGPT course is education, not an OpenAI partnership; SBIC East/Central/West are distinct from SBI Holdings.",
-        "Dr. Kamilah Stevenson identity corroborated; personal YouTube channel ownership unverified. Third-party video summaries and channel metrics conflict; no personal-channel uploads attributed."
-      ],
-      "model_admission": false,
-      "forecast_status": "NOT_ISSUED"
-    },
     "prediction_engine": {
-      "scheduled_ingestion": "DESIGNED on #1640 only; absent from main and not verified running on main",
       "endpoints": 29,
       "scheduled_public_sources": 27,
       "excluded_xrpl_node_sources": 2,
-      "implemented_on_integration_branch": [
-        "SHA-256 source receipts/hash chain",
-        "point-in-time SQLite feature store",
-        "four deterministic baselines",
-        "chronological walk-forward with embargo",
-        "temporal calibration diagnostics",
-        "univariate PSI drift diagnostics",
-        "forecast ledger and issuance-time feature snapshot verification"
-      ],
-      "limitations": [
-        "No independent external WORM storage or complete raw-source rebuild.",
-        "Historical evaluator limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes; not synchronized multi-venue/multi-domain history.",
-        "No demonstrated trained-model OOS lift or validated real-data calibration.",
-        "PSI is univariate and does not detect label/concept drift.",
-        "No sufficient independent shadow outcomes or trusted evaluator key.",
-        "General correction-overlay artifacts are not consumed by a production parser; research_timestamp_corrections.py handles timestamp overlays only. Corrected artifacts remain model-ineligible."
-      ],
-      "forecast_status": "NOT_ISSUED"
-    },
-    "nine_platform_status": {
-      "ChatGPT": "VERIFIED_CURRENT_SESSION GitHub connector",
-      "Claude": "UNVERIFIED_NO_AUTH_TEST",
-      "Grok": "UNVERIFIED_NO_AUTH_TEST; distinct from Groq",
-      "Gemini": "UNVERIFIED_NO_AUTH_TEST",
-      "Copilot": "ONE_OFF_COMMENTED_REVIEW_ACTIVITY; not approval",
-      "Codex": "UNVERIFIED_NO_AUTH_TEST",
-      "Hugging_Face": "HEALTH_CHECK_FAILED_BUILD_ERROR; no persistent flow verified",
-      "Kaggle": "NOT_TESTED",
-      "Databricks": "AUTHORIZATION_FAILED_HTTP_403",
-      "external_data_exchange": false
+      "forecast_status": "NOT_ISSUED",
+      "oos_lift": false,
+      "real_data_calibration": false,
+      "shadow_outcomes": false,
+      "trusted_evaluator_key": false,
+      "independent_worm_archive": false
     },
     "merge_state": {
       "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
@@ -720,20 +641,24 @@
       "pages_configuration_accessible": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
-        "head": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
+        "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
         "mergeable": true,
-        "approving_reviews": 0
+        "approving_reviews": 0,
+        "unresolved_review_threads": 22
       },
       "pr_1643": {
         "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
         "mergeable": true,
-        "approving_reviews": 0
+        "approving_reviews": 0,
+        "unresolved_review_threads": 19
       },
       "merge_performed": false,
-      "reason": "Zero independent APPROVED reviews; detailed branch protection inaccessible; #1640 changes public web paths and Pages deployment authorization is absent."
+      "reason": "Exact-head #1640 full suite failed two handoff-contract assertions; both PRs have zero APPROVED reviews; branch protection returns HTTP 403; #1640 changes public web paths and Pages deployment authorization is absent."
     },
     "external_actions": {
       "main_write": false,
+      "github_branch_commit": true,
+      "non_github_external_write": false,
       "merge": false,
       "deployment": false,
       "secret_read_or_rotation": false,
@@ -746,16 +671,23 @@
       "force_push": false,
       "destructive_worktree_action": false
     },
+    "latest_main_workflow_run": {
+      "name": "Cross Analysis",
+      "run_id": 42477603287,
+      "conclusion": "success",
+      "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "created_at": "2026-11-08T11:51:57Z"
+    },
     "forecast_status": "NOT_ISSUED",
-    "next_actions": [
-      "Obtain genuine independent APPROVED reviews for #1640 and #1643; COMMENTED reviews do not satisfy approval.",
-      "Resolve branch-protection visibility and Pages deployment authorization.",
-      "Merge #1640 only after exact-head full suite, coverage, installed-wheel, six-manifest audit, fail-closed gate, approvals and deployment authorization pass; verify merge commit, files, workflow side effects and main CI.",
-      "After verified #1640 merge, consolidate #1643's 602 unique paths onto new main, reconcile all six shared paths and carry #1640's stronger CI.",
-      "Close only exact superseded PRs after main verification; preserve unique work.",
-      "Verify scheduled ingestion on main; expand SEC/regulatory, macro-vintage, stablecoin, custody, collateral, institutional and payment-rail coverage.",
-      "Implement a general correction-overlay resolver, independent WORM archival and complete raw-source rebuild.",
-      "Accumulate synchronized history and demonstrate OOS lift, calibration, drift stability and independent shadow outcomes before directional forecasting."
+    "current_failures": [
+      {
+        "test": "tests/test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads",
+        "cause": "Current handoff section heading did not match the historical current-repository heading contract; Run 52 adds a current-repository heading."
+      },
+      {
+        "test": "tests/test_xrp_mission_handoff_run34.py::test_run34_endpoint_count_and_fail_closed_prediction_status_are_current",
+        "cause": "Per-run observation omitted the prediction_engine snapshot; Run 52 adds the snapshot and explicit readiness booleans."
+      }
     ]
   },
   "prior_run_observations": [
@@ -10055,7 +9987,7 @@
       ]
     }
   ],
-  "last_verified_at_utc": "2026-11-08T11:44:00Z",
+  "last_verified_at_utc": "2026-11-08T11:59:38Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -10069,20 +10001,16 @@
   },
   "branch_ancestry": {
     "integration": {
-      "head": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
-      "ahead": 670,
+      "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+      "ahead": 671,
       "behind": 0,
-      "changed_paths": 177,
-      "added": 68,
-      "modified": 109
+      "changed_paths": 177
     },
     "research": {
       "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
       "ahead": 813,
       "behind": 0,
-      "changed_paths": 608,
-      "added": 602,
-      "modified": 6
+      "changed_paths": 608
     },
     "shared_paths": [
       ".github/workflows/dependency-audit.yml",
@@ -10097,18 +10025,22 @@
   },
   "ci_evidence": {
     "integration": {
-      "head": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
-      "full_suite": "1,198 passed, 8 subtests passed",
+      "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+      "full_suite": "FAILED: 1,196 passed, 2 failed, 8 subtests passed; two handoff-contract assertions; corrected in Run 52 commit, exact-head rerun pending",
       "core_suite": "660 passed, 8 subtests passed",
       "inclusive_coverage_pct": 58.81,
-      "installed_wheel": "passed",
+      "installed_wheel": "SKIPPED because full repository suite failed",
       "dependency_audit": "passed; six manifests",
       "fail_closed_gate": "passed; merging disabled",
       "runs": {
-        "ci": 42475843935,
-        "dependency_audit": 42475843999,
-        "fail_closed": 42475843967
-      }
+        "ci": 42477624879,
+        "dependency_audit": 42477624905,
+        "fail_closed": 42477624841
+      },
+      "failed_tests": [
+        "tests/test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads",
+        "tests/test_xrp_mission_handoff_run34.py::test_run34_endpoint_count_and_fail_closed_prediction_status_are_current"
+      ]
     },
     "research": {
       "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
@@ -10126,14 +10058,16 @@
   },
   "reviews": {
     "pr_1640": {
-      "threads_resolved": "22/22",
+      "threads_total": 22,
+      "threads_unresolved": 22,
       "commented_reviews": 62,
       "approving_reviews": 0,
       "mergeable": true,
       "draft": false
     },
     "pr_1643": {
-      "threads_resolved": "19/19",
+      "threads_total": 19,
+      "threads_unresolved": 19,
       "commented_reviews": 10,
       "approving_reviews": 0,
       "mergeable": true,
@@ -10274,7 +10208,12 @@
       "No sufficient independent shadow outcomes or trusted evaluator key.",
       "General correction-overlay artifacts are not consumed by a production parser; research_timestamp_corrections.py handles timestamp overlays only. Corrected artifacts remain model-ineligible."
     ],
-    "forecast_status": "NOT_ISSUED"
+    "forecast_status": "NOT_ISSUED",
+    "oos_lift": false,
+    "real_data_calibration": false,
+    "shadow_outcomes": false,
+    "trusted_evaluator_key": false,
+    "independent_worm_archive": false
   },
   "nine_platform_status": {
     "ChatGPT": "VERIFIED_CURRENT_SESSION GitHub connector",
@@ -10303,20 +10242,24 @@
     "pages_configuration_accessible": false,
     "pages_deployment_authorized": false,
     "pr_1640": {
-      "head": "8a8f84ceb133a4f9547c3b7eaae534d1618b56de",
+      "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
       "mergeable": true,
-      "approving_reviews": 0
+      "approving_reviews": 0,
+      "unresolved_review_threads": 22
     },
     "pr_1643": {
       "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
       "mergeable": true,
-      "approving_reviews": 0
+      "approving_reviews": 0,
+      "unresolved_review_threads": 19
     },
     "merge_performed": false,
-    "reason": "Zero independent APPROVED reviews; detailed branch protection inaccessible; #1640 changes public web paths and Pages deployment authorization is absent."
+    "reason": "Exact-head #1640 full suite failed two handoff-contract assertions; both PRs have zero APPROVED reviews; branch protection returns HTTP 403; #1640 changes public web paths and Pages deployment authorization is absent."
   },
   "external_actions": {
     "main_write": false,
+    "github_branch_commit": true,
+    "non_github_external_write": false,
     "merge": false,
     "deployment": false,
     "secret_read_or_rotation": false,
@@ -10332,44 +10275,31 @@
   "forecast_status": "NOT_ISSUED",
   "main_workflow_status": {
     "latest_cross_analysis": {
-      "run_id": 42473217606,
-      "conclusion": "success",
-      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
-    },
-    "barrot_agent_issue_run": {
-      "run_id": 42388663091,
-      "conclusion": "failure",
-      "failure": "Groq HTTP 413/TPM: requested 8,099 against 8,000 after retries; integration branch contains context-budget preflight fix, not on main."
-    },
-    "pillars_health_run": {
-      "run_id": 42375034124,
-      "conclusion": "failure",
-      "failures": [
-        "GitHub App credentials unavailable",
-        "Databricks HTTP 403",
-        "Hugging Face Space BUILD_ERROR"
-      ],
-      "external_restart_performed": false
-    },
-    "pages_deployment_run": {
-      "run_id": 41799855489,
+      "run_id": 42477603287,
       "conclusion": "success",
       "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-      "configuration_accessible": false
+      "created_at": "2026-11-08T11:51:57Z"
+    },
+    "current_main_full_repository_suite": "NOT_RUN_ON_CURRENT_MAIN_SHA_DURING_RUN_52",
+    "pages_deployment_configuration_accessible": false,
+    "prior_pages_deployment_run": {
+      "run_id": 41799855489,
+      "conclusion": "success",
+      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
     }
   },
   "backlog_classification": {
-    "#1640": "Active V3 integration candidate; 177 changed paths, 670 commits ahead; exact-head full suite 1,198/8, core 660/8, 58.81% coverage, installed wheel, six-manifest audit and fail-closed gate passed; zero approvals.",
-    "#1643": "Active XRP research candidate; 608 changed paths, 813 commits ahead; exact-head full suite 2,398/8, core 498/8, six-manifest audit and fail-closed gate passed; six shared paths; carry stronger #1640 CI during consolidation.",
-    "#1642": "Superseded/overlapping draft; seven paths represented in #1640; retain until main verification.",
-    "#1644-#1650": "Dependency/workflow updates overlap #1640; retain until exact main verification and supersession.",
-    "#1317/#1318/#1320": "Structural/schema overlap with differing content; preserve pending main verification.",
-    "#1254/#1255": "Older dependency updates represented by newer work in #1640; retain pending main verification.",
-    "#1653": "Blocked; eight unresolved review threads; six unique repository-graph paths; preserve.",
-    "#1655/#1641/#1269/#1659": "Unique draft/structural/mesh/local experimentation work; preserve.",
-    "#1477/#1547/#1586": "Unique XRP institutional/research work; preserve pending path-by-path reconciliation.",
-    "#1597/#1591": "Unique Kamilah video-discovery work; preserve; channel identity gate remains closed.",
+    "#1640": "Active V3 integration candidate; current exact-head full suite failed two handoff-contract assertions; Run 52 adds the expected heading and per-run prediction-engine snapshot; exact-head rerun pending.",
+    "#1643": "Active XRP research candidate; exact-head full suite 2,398 passed plus 8 subtests; six-manifest audit and fail-closed gate passed; 19 unresolved review threads; carry stronger #1640 CI on consolidation.",
+    "#1642": "Overlapping prediction snapshot-gate draft; retain until path-by-path main verification.",
+    "#1644-#1650": "Dependency/workflow PRs overlap #1640; retain until exact main verification and supersession.",
+    "#1317/#1318/#1320": "Structural/schema/safety overlaps with differing content; preserve pending main verification.",
+    "#1254/#1255": "Older dependency updates; retain pending exact-version reconciliation.",
+    "#1653": "Blocked by eight unresolved review threads; preserve six unique repository-graph paths.",
+    "#1655/#1641/#1269/#1659": "Preserve unique structural, mesh and local-experimentation work.",
+    "#1477/#1547/#1586": "Preserve unique XRP institutional/research work pending path-by-path reconciliation.",
+    "#1597/#1591": "Preserve unique Kamilah video-discovery work; personal channel identity gate remains closed.",
     "other_open_prs": "Unique/unreviewed until individually reconciled; no bulk close."
   },
-  "last_run_status": "VERIFIED_ON_EXISTING_MISSION_BRANCHES; NOT_MERGED"
+  "last_run_status": "Run 52 inspected current main, all four open-PR pages, complete recursive trees for main and both mission branches, exact branch ancestry, current CI, reviews, security visibility and durable handoff; diagnosed two exact-head #1640 handoff-contract failures and added the matching per-run snapshot/heading correction on the existing branch. Exact-head rerun pending; no merge or main write."
 }
