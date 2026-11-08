@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any, Callable, ClassVar
 
 from .shared_runtime import Capability, DefensiveWatchdog
-from .context_budget import (
+from barrot_agent.context_budget import (
     MAX_ESTIMATED_INPUT_TOKENS,
     context_budget_marker,
     estimate_messages_tokens,

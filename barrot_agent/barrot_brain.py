@@ -18,7 +18,7 @@ import requests
 from barrot_agent.evolution.cognitive_integrity import CognitiveIntegrityLoop
 from barrot_agent.evolution.event_bus import CognitiveEvent, CognitiveEventBus
 from barrot_agent.evolution.reactive_observers import ReactiveCorroborationObserver
-from barrot_agent.orchestration.context_budget import (
+from barrot_agent.context_budget import (
     context_budget_marker,
     exceeds_context_budget,
     MAX_RESERVED_OUTPUT_TOKENS,
