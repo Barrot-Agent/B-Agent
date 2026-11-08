@@ -42,7 +42,7 @@ def test_alpha_fund_rows_reconcile_net_total_and_positive_share_denominator():
     assert round(positive, 1) == 1748.8
     assert round(net, 1) == 1730.4
     assert data["displayed_share_denominator_usd_m"] == 1750
-    assert data["headline_cumulative_net_inflow_usd_m"] == 1730
+    assert data["headline_cumulative_net_inflow_usd"] == 1_730_000_000
     expected = {
         "XRP": 38.9,
         "XRPZ": 30.3,
