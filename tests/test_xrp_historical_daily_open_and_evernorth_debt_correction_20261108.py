@@ -75,9 +75,9 @@ def test_existing_purchase_cost_and_arc_validator_corrections_remain_canonical()
         stored = Decimal(str(cost["correction"]["exact_unrounded_recomputed_value"]))
         assert abs(stored - exact) < Decimal("0.000000000000001")
         assert stored.quantize(Decimal("0.00000001")) == Decimal("2.53657058")
-    assert capital["actual_xrp_purchase"]["cash_used_usd"] == 214_000_000
-    assert capital["actual_xrp_purchase"]["xrp_purchased"] == 84_365_876.3625
-    assert capital["actual_xrp_purchase"]["average_price_usd"] == 2.53657058
+    assert capital["capital_ledger"]["actual_xrp_purchase"]["cash_used_usd"] == 214_000_000
+    assert capital["capital_ledger"]["actual_xrp_purchase"]["xrp_purchased"] == 84_365_876.3625
+    assert capital["capital_ledger"]["actual_xrp_purchase"]["average_price_usd"] == 2.53657058
     assert arc["corrected_views"]["sbi_circle_arc"]["source_ids"] == ["circle_arc_founding_validator_20260805", "circle_arc_mainnet_launch_20260916"]
     assert overlay["append_only"] is True
 
