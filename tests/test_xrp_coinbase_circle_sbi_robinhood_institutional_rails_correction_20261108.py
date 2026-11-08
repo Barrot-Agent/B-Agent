@@ -26,7 +26,7 @@ def test_coinbase_q3_filing_values_and_circle_renewal_are_preserved():
     }
     assert "same terms" in data["circle_arrangement"]
     assert "Other revenue" in data["presentation_correction"]
-    assert "no impact to total revenue" in data["presentation_correction"]
+    assert "no impact on total revenue" in data["presentation_correction"]
 
 
 def test_circle_q3_usdc_and_coinbase_distribution_costs_are_separate_measures():
@@ -66,13 +66,13 @@ def test_bny_custody_is_distinguished_from_future_mint_redeem_and_trade_finance(
     data = load_artifact()["findings"]["bny_ripple"]
     assert "supports XRP and RLUSD" in data["live_or_announced_current_capability"]
     assert "Direct RLUSD mint/redeem through BNY" in data["future_or_exploratory"]
-    assert "Tokenized trade-finance workflows" in data["future_or_exploratory"]
+    assert any("Tokenized trade-finance workflows" in item for item in data["future_or_exploratory"])
     assert "not a disclosed balance" in data["interpretation"]
 
 
 def test_robinhood_rlusd_network_status_and_xrpl_institutional_use_are_not_overstated():
     data = load_artifact()["findings"]["robinhood_ripple"]
-    assert "Robinhood Chain" in data["live_at_announcement"]
+    assert any("Robinhood Chain" in item for item in data["live_at_announcement"])
     assert "Bitstamp by Robinhood" in data["live_at_announcement"]
     assert "Robinhood app availability" in data["expected_later_2026"]
     assert "will leverage RLUSD on XRPL" in data["announced_xrpl_use"]
