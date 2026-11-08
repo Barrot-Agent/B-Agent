@@ -38,25 +38,27 @@ def test_run34_map_preserves_run33_and_records_current_tree_and_heads():
         .read_text(encoding="utf-8")
     )
     current = data["current_run_observations"]
+    run34 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 34)
     prior33 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 33)
-    assert current["run_id"] == 34
-    assert current["main_sha"] == MAIN_SHA
-    assert current["integration_head_before_map_commit"] == INTEGRATION_HEAD
-    assert current["research_head"] == RESEARCH_HEAD
-    assert current["research_head_after_followup"] == RESEARCH_HEAD_AFTER_FOLLOWUP
-    assert current["research_head_after_market_followup"] == RESEARCH_HEAD_AFTER_MARKET_FOLLOWUP
-    assert current["research_updates_after_capture"][0]["new_head"] == RESEARCH_HEAD_AFTER_FOLLOWUP
-    assert "research/xrp_intelligence/20261108T011925Z-xrp-etf-flow-universe-and-sec-docket-reconciliation.json" in current["research_artifacts_added"]
+    assert current["run_id"] >= 35
+    assert run34["run_id"] == 34
+    assert run34["main_sha"] == MAIN_SHA
+    assert run34["integration_head_before_map_commit"] == INTEGRATION_HEAD
+    assert run34["research_head"] == RESEARCH_HEAD
+    assert run34["research_head_after_followup"] == RESEARCH_HEAD_AFTER_FOLLOWUP
+    assert run34["research_head_after_market_followup"] == RESEARCH_HEAD_AFTER_MARKET_FOLLOWUP
+    assert run34["research_updates_after_capture"][0]["new_head"] == RESEARCH_HEAD_AFTER_FOLLOWUP
+    assert "research/xrp_intelligence/20261108T011925Z-xrp-etf-flow-universe-and-sec-docket-reconciliation.json" in run34["research_artifacts_added"]
     assert prior33["captured_at_utc"] == "2026-11-07T23:42:25Z"
-    assert current["open_pr_inventory"] == {"total": 371, "drafts": 355, "non_drafts": 16, "pages": [100, 100, 100, 71]}
-    assert current["branch_ancestry"]["integration"] == {"ahead": 609, "behind": 0, "changed_paths": 172}
-    assert current["branch_ancestry"]["research"] == {"ahead": 738, "behind": 0, "changed_paths": 527}
-    assert current["branch_ancestry"]["integration_only_paths"] == 169
-    assert current["branch_ancestry"]["research_only_paths"] == 524
-    assert len(current["branch_ancestry"]["shared_changed_paths"]) == 3
-    assert current["repository_tree"]["main"]["entries"] == 1403
-    assert current["repository_tree"]["integration"]["test_modules"] == 126
-    assert current["repository_tree"]["research"]["test_modules"] == 301
+    assert run34["open_pr_inventory"] == {"total": 371, "drafts": 355, "non_drafts": 16, "pages": [100, 100, 100, 71]}
+    assert run34["branch_ancestry"]["integration"] == {"ahead": 609, "behind": 0, "changed_paths": 172}
+    assert run34["branch_ancestry"]["research"] == {"ahead": 738, "behind": 0, "changed_paths": 527}
+    assert run34["branch_ancestry"]["integration_only_paths"] == 169
+    assert run34["branch_ancestry"]["research_only_paths"] == 524
+    assert len(run34["branch_ancestry"]["shared_changed_paths"]) == 3
+    assert run34["repository_tree"]["main"]["entries"] == 1403
+    assert run34["repository_tree"]["integration"]["test_modules"] == 126
+    assert run34["repository_tree"]["research"]["test_modules"] == 301
 
 
 def test_run34_endpoint_count_and_fail_closed_prediction_status_are_current():
@@ -85,7 +87,8 @@ def test_run34_nine_platform_map_remains_truthful_and_least_privilege():
         (ROOT / "research" / "xrp_intelligence" / "nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
-    assert data["last_verified_at_utc"] == "2026-11-08T01:28:31Z"
+    assert data["last_verified_at_utc"] == data["captured_at_utc"]
+    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] <= data["last_verified_at_utc"]
     assert data["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
     assert data["platforms"]["ChatGPT"]["data_flow"]["verified"] is True
     for name, platform in data["platforms"].items():

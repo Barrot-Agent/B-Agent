@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 
@@ -10,9 +11,10 @@ RESEARCH_HEAD = "d0ba9aa89feba4cb6ace650c94c9f58a6584c340"
 
 def test_run28_handoff_is_latest_and_preserves_verified_heads():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
-    assert handoff.startswith("## Exact-head test follow-up — 2026-11-07T18:42:51Z")
-    assert "## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z" in handoff[:2_000]
-    assert "# Run 28 — 2026-11-07T18:28:03Z" in handoff[:3_000]
+    assert handoff.startswith("# Current integrated Barrot handoff — ")
+    assert re.search(r"(?m)^## Run \d+ — 2026-\d{2}-\d{2}T", handoff[:3_000])
+    assert "## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z" in handoff
+    assert "# Run 28 — 2026-11-07T18:28:03Z" in handoff
     for value in (MAIN_SHA, INTEGRATION_HEAD, RESEARCH_HEAD):
         assert value in handoff
     assert "1,152 passed, 8 subtests passed" in handoff
@@ -33,7 +35,9 @@ def test_run28_platform_map_is_preserved_and_run33_is_historical():
     prior28 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 28)
     prior30 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 30)
     assert run33["run_id"] == 33
-    assert data["current_run_observations"]["run_id"] == 34
+    prior34 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 34)
+    assert prior34["run_id"] == 34
+    assert data["current_run_observations"]["run_id"] >= 34
     prior31 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 31)
     assert run33["main_sha"] == MAIN_SHA
     assert run33["integration_head_before_map_commit"] == "073250e307ffdca29a68a888a6d9454e71ba8f4b"
@@ -63,7 +67,8 @@ def test_run28_platform_map_is_preserved_and_run33_is_historical():
     assert prior31["main_sha"] == MAIN_SHA
     assert any(item.get("run_id") == 26 for item in data["prior_run_observations"])
     assert run33["captured_at_utc"] == "2026-11-07T23:42:25Z"
-    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-08T01:28:31Z"
+    assert data["last_verified_at_utc"] == data["captured_at_utc"]
+    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] <= data["last_verified_at_utc"]
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
 
