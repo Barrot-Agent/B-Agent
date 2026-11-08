@@ -89,6 +89,7 @@ def test_ripple_related_party_facility_is_not_external_equity_capital():
     assert facility["drawn_as_of_2026_10_07_usd"] == 9_700_000
     assert facility["annual_interest_pct"] == 3.81
     assert facility["repayment_status"] == "UNKNOWN"
+    assert "does not confirm repayment" in facility["repayment_status_note"]
     assert "five business days" in facility["repayment_term"]
     assert facility["classification"] == "related-party debt, not independent third-party capital"
 
