@@ -3141,7 +3141,7 @@ def _normalize_walk_forward_horizons(value: str | tuple[str, ...] | list[str]) -
         parts = list(value)
     else:
         raise XRPIngestionError("walk_forward_horizons must be a comma-separated string, tuple or list")
-    if not parts:
+    if not parts or all(isinstance(part, str) and not part.strip() for part in parts):
         raise XRPIngestionError("walk_forward_horizons must contain at least one supported horizon")
     normalized: list[str] = []
     for part in parts:

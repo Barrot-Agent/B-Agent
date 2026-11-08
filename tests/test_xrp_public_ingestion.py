@@ -845,7 +845,7 @@ def test_feature_store_recovery_contract_docs_match_workflow_policy():
     assert "external WORM" in feature_contract
     assert "no scheduled main-branch run is verified" in forecast_contract
     assert "daily 00:15 UTC schedule and manual dispatch evaluate" in forecast_contract
-    assert "block-bootstrap scoring" in forecast_contract
+    assert "block-bootstrap adjustment" in forecast_contract
 
 
 def test_walk_forward_overall_status_is_partial_until_every_venue_is_scored(tmp_path, monkeypatch):
