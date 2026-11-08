@@ -1,10 +1,31 @@
-# Run 49 current-head clarification — 2026-11-08T09:47:59Z
+# Current integrated Barrot handoff — 2026-11-08T09:47:59Z
 
-The #1640 code/test head `68fa88292ecfcd24a96b0c656172e59bb7ac1112` passed its exact full suite, coverage, installed-wheel, dependency-audit and fail-closed checks. The current integration branch head before this final combined handoff/map update is `df3ab4f957ff75df16d87748b1dd63220f2aaeaf`, a documentation-only handoff commit. This combined commit updates the handoff and nine-platform map. Exact-head CI must be rerun on the resulting branch head; do not substitute the 68fa results for that documentation-only head. Live exact-head checks are available at [PR #1640 checks](https://github.com/Barrot-Agent/B-Agent/pull/1640/checks).
+## Run 49 follow-up — 2026-11-08T09:54:28Z
+
+### Exact-head corrections
+
+- **PR #1640:** code/test head `68fa88292ecfcd24a96b0c656172e59bb7ac1112` passed 1,189 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. The documentation-only head `f347f8cac339df18e53a16336f9d98631564a2da` passed core tests, dependency audit and fail-closed gate but failed the full suite with 1,188 passed and one failed assertion: `test_run28_handoff_is_latest_and_preserves_verified_heads` requires the file to begin with the canonical `# Current integrated Barrot handoff — ` heading. The prior Run49 clarification had been prepended before that heading. This follow-up moves the clarification below the canonical first heading; no test is weakened. Exact-head CI must pass on the new documentation-only handoff/map commit before merge. Live checks: [PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640/checks).
+- **PR #1643:** latest research head `3db89c6c2eb319e70fb5aefabacfd901ca559817`. Core tests and fail-closed gate passed; six-manifest dependency audit passed; full repository suite was still running at this handoff capture. The immediately preceding head `cf1d33527007a745cdb148d4c41b9a6c57169e7b` passed 2,350 full-suite tests. Do not substitute that result for 3db89. Live checks: [PR #1643](https://github.com/Barrot-Agent/B-Agent/checks).
+
+### New append-only source-vintage correction
+
+Added on #1643:
+
+- `research/xrp_intelligence/20261108T094759Z-xrp-secondary-source-vintage-correction.json`
+- `tests/test_xrp_secondary_source_vintage_correction_20261108.py`
+
+The correction quarantines the earlier Webeconomia search snippet that claimed a Nov 8 03:13 snapshot. The currently rendered Webeconomia page says its data are from Nov 6 20:43, not Nov 8: OI $1.61B, $10.2M 24-hour liquidations (95% long), +0.0001% average funding per 8h, and −12.4% 30-day OI change for Binance. Its methodology says it includes exchanges publishing verifiable liquidations and explains that other aggregators add venues or estimate Binance liquidations, which can make totals roughly double. The prior search-snippet OI $1.58B, $6.2M liquidations and $292.3B/$293.6B stablecoin totals are quarantined; the rendered page does not substantiate those Nov 8 claims. Do not use those stablecoin figures.
+
+TradRadar's later page update (Nov 8 09:05 UTC) shows $1.91B OI, +0.11% 24-hour OI change, +0.0073% weighted funding per 8h, at least $1.30M liquidations, $1.23M long and $72.19K short liquidations, 79.2% long accounts. Preserve the earlier 07:35 observation separately; do not overwrite it.
+
+CryptoKeyhole updated its XRP ETF page at Nov 8 09:47 UTC. Nov 6 remains partial at −752,048 XRP (3/4 funds, Franklin XRPZ missing); Nov 5 is the latest complete day; Oct 30–Nov 5 complete five-session flow is −1,137,098 XRP; Oct 23–Nov 5 ten-session flow is +3,374,507 XRP. The Nov 6 partial is not added to the cumulative total. Bitwise issuer stamp is Nov 8 09:32 UTC; 21Shares is Nov 8 09:00 UTC.
+
+XRP Insights' live dashboard shows $1.40723B AUM, 1.19518B XRP locked and week-45 flow −0.81M XRP. Its separate dated Nov 6 row remains −663,043 XRP and Nov 2–6 −812,500 XRP. Do not compare the live undated AUM directly with its historical Nov 6 $1.43B net-assets figure. Alpha Finance remains a five-fund, through-Nov-6 series: Nov 6 $0, seven-session +$8.4M, 30-session +$45.9M.
+
+These are secondary sources with overlapping upstream exchange or issuer data. The new correction remains research-only, not admitted to the feature store. Forecast remains `NOT_ISSUED`.
 
 ---
 
-# Current integrated Barrot handoff — 2026-11-08T09:47:59Z
 
 ## Run 49 — 2026-11-08T09:47:59Z
 

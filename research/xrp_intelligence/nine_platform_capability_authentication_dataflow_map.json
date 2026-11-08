@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T09:47:59Z",
+  "captured_at_utc": "2026-11-08T09:54:28Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "df3ab4f957ff75df16d87748b1dd63220f2aaeaf",
-  "observed_research_head": "cf1d33527007a745cdb148d4c41b9a6c57169e7b",
+  "observed_integration_head_before_map_commit": "f347f8cac339df18e53a16336f9d98631564a2da",
+  "observed_research_head": "3db89c6c2eb319e70fb5aefabacfd901ca559817",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -112,7 +112,8 @@
         "Run 44 final #1640 exact code/test head d2b8085 passed 1,188 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. Cache-save warning was non-fatal.",
         "Run 46 (2026-11-08T07:10:27Z): refetched main, recursive trees, all four open-PR pages, exact PR heads, full changed-path inventories, ancestry, reviews/threads, workflow runs and exact-head job logs. #1640 head 81894 passed 1,188 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. Added two append-only market/ETF/exchange/derivatives/macro research artifacts plus regression tests to existing #1643; latest head 33ee4 CI/audit pending, fail-closed gate passed. No main write, merge, deployment or external model transfer.",
         "Run 46 follow-up (2026-11-08T07:22:26Z): #1640 handoff/map head 1ac625 passed exact full suite (1,188), core (660), 58.78% inclusive coverage, installed-wheel, six-manifest dependency audit and fail-closed gate. #1643 exact head 64f403 includes market/ETF/exchange/derivatives/macro reconciliation, source-internal reserve correction and SBIC/ChatGPT/Kamilah identity disambiguation; full CI queued, dependency audit in progress, fail-closed gate passed. SBIC is the Social Bias Inference Corpus; Kamilah channel ownership remains unverified. No external platform transfer.",
-        "Run 49 (2026-11-08T09:47:59Z): verified current-session ChatGPT-to-GitHub access; inspected main tree, all four open-PR pages, current #1640/#1643 heads, branch ancestry, shared diffs, review threads, workflow/security settings and exact-head CI. #1640 code/test head 68fa passed 1,189 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. #1643 latest research head cf1d passed 2,350 full-suite tests, core tests and fail-closed gate; its exact-head dependency audit remains pending. Added a timestamp-qualified Kraken/OKX spot, ETF, derivatives and stablecoin-disagreement artifact plus regression tests on existing #1643. No external platform data exchange, main write, merge or deployment."
+        "Run 49 (2026-11-08T09:47:59Z): verified current-session ChatGPT-to-GitHub access; inspected main tree, all four open-PR pages, current #1640/#1643 heads, branch ancestry, shared diffs, review threads, workflow/security settings and exact-head CI. #1640 code/test head 68fa passed 1,189 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. #1643 latest research head cf1d passed 2,350 full-suite tests, core tests and fail-closed gate; its exact-head dependency audit remains pending. Added a timestamp-qualified Kraken/OKX spot, ETF, derivatives and stablecoin-disagreement artifact plus regression tests on existing #1643. No external platform data exchange, main write, merge or deployment.",
+        "Run 49 follow-up 2026-11-08T09:54:28Z: corrected the canonical handoff heading after exact-head full-suite failure on documentation-only head f347; exact-head CI on the corrected handoff/map commit is pending. Added append-only Webeconomia source-vintage quarantine, TradRadar 09:05 update, CryptoKeyhole 09:47 update, XRP Insights live-versus-dated snapshot reconciliation and Alpha Finance through-Nov-6 evidence on #1643. #1643 head 3db89: core tests and fail-closed gate passed, dependency audit passed, full suite still running. No merge or external action."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -162,7 +163,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T09:47:59Z"
+      "last_verified_at_utc": "2026-11-08T09:54:28Z"
     },
     "Claude": {
       "intended_role": [
@@ -361,7 +362,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-08T09:47:59Z",
+    "last_reviewed_at_utc": "2026-11-08T09:54:28Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -373,7 +374,7 @@
       "xrp_live_market_snapshot": "Run 36 handoff raw Kraken/OKX response text and SHA-256 receipts; research-only, not feature-store eligible",
       "treasury_macro_reconciliation": "research/xrp_intelligence/20261108T021527Z-tga-actual-versus-projection-reconciliation.json"
     },
-    "last_run_summary": "Run 49 (2026-11-08T09:47:59Z): ChatGPT-to-GitHub is the only verified persistent/current-session connector. Copilot activity is COMMENTED, not approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. No external model received repository data and no cross-platform task exchange occurred."
+    "last_run_summary": "Run 49 follow-up: ChatGPT-to-GitHub remains the only verified current-session connector; no external platform data exchange or model transfer occurred."
   },
   "least_privilege_and_safety": {
     "secret_values_read": false,
@@ -473,22 +474,22 @@
     }
   },
   "next_actions": [
-    "Allow exact-head dependency audit 42468479555 on #1643 cf1d to complete; diagnose any failure without weakening checks.",
-    "Finish exact-head CI and dependency audit on the final #1640 handoff/map head; do not substitute 68fa code-head results.",
-    "Obtain genuine independent APPROVED reviews for #1640 and #1643; COMMENTED reviews are not approvals.",
-    "Resolve detailed branch-protection requirements and GitHub Pages deployment authorization.",
-    "Merge #1640 only after every requirement passes; verify merge commit, merged files, automatic workflow effects and main CI.",
-    "Consolidate #1643's 586 unique research paths onto verified main; preserve 21 Kamilah candidates and reconcile all six shared paths.",
-    "Close only exact superseded/duplicate source PRs after successor content is verified on main; preserve unique work.",
+    "Finish exact-head full-suite verification on #1643 3db89; its core, dependency audit and fail-closed gate have passed.",
+    "Finish exact-head full-suite verification on the corrected #1640 handoff/map head; the prior f347 failure was only the canonical-heading assertion.",
+    "Obtain genuine independent APPROVED reviews for #1640 and #1643.",
+    "Resolve branch-protection requirements and Pages deployment authorization.",
+    "Merge #1640 only after all conditions pass; verify merge commit, files, automatic workflow effects and main CI.",
+    "Consolidate #1643's 586 unique research paths onto verified main; preserve 21 Kamilah candidates and reconcile six shared paths.",
+    "Close only exact superseded/duplicate source PRs after main verification; preserve unique work.",
     "Verify scheduled ingestion on main; establish independent WORM archival/raw-source rebuild and add missing SEC, macro, stablecoin, custody, collateral, institutional and payment-rail coverage.",
     "Accumulate synchronized history and demonstrate OOS lift, calibration, drift stability and independent shadow outcomes before any forecast."
   ],
   "current_run_observations": {
     "run_id": 49,
-    "captured_at_utc": "2026-11-08T09:47:59Z",
+    "captured_at_utc": "2026-11-08T09:54:28Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "df3ab4f957ff75df16d87748b1dd63220f2aaeaf",
-    "research_head": "cf1d33527007a745cdb148d4c41b9a6c57169e7b",
+    "integration_head_before_map_commit": "f347f8cac339df18e53a16336f9d98631564a2da",
+    "research_head": "3db89c6c2eb319e70fb5aefabacfd901ca559817",
     "open_pr_inventory": {
       "total": 372,
       "drafts": 356,
@@ -574,18 +575,26 @@
         "warnings": [
           "Actions cache-save budget warning was non-fatal.",
           "Wheel packaging emitted non-fatal setuptools metadata/deprecation warnings."
-        ]
+        ],
+        "latest_docs_head": {
+          "sha": "f347f8cac339df18e53a16336f9d98631564a2da",
+          "full_suite": "FAILED: 1,188 passed, 1 failed, 8 subtests; handoff heading assertion only",
+          "core_suite": "passed",
+          "dependency_audit": "passed",
+          "fail_closed_gate": "passed",
+          "correction": "Moved clarification below canonical first heading; exact-head CI on resulting commit pending."
+        }
       },
       "research": {
-        "head": "cf1d33527007a745cdb148d4c41b9a6c57169e7b",
-        "full_suite": "2,350 passed, 8 subtests passed",
+        "head": "3db89c6c2eb319e70fb5aefabacfd901ca559817",
+        "full_suite": "IN_PROGRESS at handoff capture; do not substitute prior cf1d result",
         "core_suite": "passed; prior exact core count 498 passed, 8 subtests",
-        "dependency_audit": "PENDING on exact head; do not claim security verification until run 42468479555 completes",
-        "fail_closed_gate": "passed; automatic merging disabled",
+        "dependency_audit": "PASSED on exact head",
+        "fail_closed_gate": "PASSED on exact head",
         "runs": {
-          "ci": 42468479590,
-          "dependency_audit": 42468479555,
-          "fail_closed": 42468479492
+          "ci": 42469076250,
+          "dependency_audit": 42469076110,
+          "fail_closed": 42469076097
         },
         "prior_verified_head": {
           "sha": "c95e169b1bdf94499f3c301a3f237913d8ab62ca",
@@ -634,9 +643,9 @@
         "research/xrp_intelligence/20261108T093447Z-xrp-spot-etf-derivatives-liquidity-refresh.json",
         "tests/test_xrp_spot_etf_derivatives_liquidity_refresh_20261108.py"
       ],
-      "latest_head": "cf1d33527007a745cdb148d4c41b9a6c57169e7b",
-      "full_suite_on_latest_head": "VERIFIED: 2,350 passed, 8 subtests passed",
-      "dependency_audit_on_latest_head": "PENDING",
+      "latest_head": "3db89c6c2eb319e70fb5aefabacfd901ca559817",
+      "full_suite_on_latest_head": "IN_PROGRESS at handoff capture",
+      "dependency_audit_on_latest_head": "PASSED",
       "summary": [
         "Kraken XRP/USD last $1.16000; event timestamp absent; 24h volume 10.934M XRP; VWAP $1.16029489.",
         "OKX XRP-USDT last 1.1615; provider timestamp 09:21:14.170Z, 812.83 seconds old at reference; 24h volume 17.783M XRP.",
@@ -648,7 +657,12 @@
         "All new observations are research-only, not admitted to the feature store; forecast NOT_ISSUED."
       ],
       "model_admission": false,
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "correction_artifacts": [
+        "research/xrp_intelligence/20261108T094759Z-xrp-secondary-source-vintage-correction.json",
+        "tests/test_xrp_secondary_source_vintage_correction_20261108.py"
+      ],
+      "source_vintage_correction": "Webeconomia Nov8 03:13 search snippet quarantined against rendered Nov6 20:43 page; stablecoin supply figures from that snippet quarantined. TradRadar 09:05, CryptoKeyhole 09:47, XRP Insights live/daily separation and Alpha Finance through Nov6 preserved."
     },
     "latest_market_crosscheck": {
       "reference_time_utc": "2026-11-08T09:34:47Z",
@@ -716,7 +730,30 @@
         "status": "UNRESOLVED_SOURCE_INTERNAL_TOTAL_MISMATCH",
         "model_eligible": false
       },
-      "limitations": "No synchronized fresh multi-venue cutoff, full depth, normalized USD/USDT basis, exchange-native OI, direct issuer raw files or raw HTTP wire receipts."
+      "limitations": "No synchronized fresh multi-venue cutoff, full depth, normalized USD/USDT basis, exchange-native OI, direct issuer raw files or raw HTTP wire receipts.",
+      "secondary_source_correction": {
+        "webeconomia_rendered_page_as_of": "2026-11-06T20:43:00Z",
+        "prior_nov8_0313_search_snippet": "QUARANTINED",
+        "rendered_oi_usd": 1610000000,
+        "rendered_liquidations_usd": 10200000,
+        "rendered_funding_pct_per_8h": 0.0001,
+        "rendered_binance_oi_30d_pct": -12.4,
+        "stablecoin_values_from_search_snippet": "QUARANTINED",
+        "tradradar_updated_at": "2026-11-08T09:05:00Z",
+        "tradradar_oi_usd": 1910000000,
+        "tradradar_funding_pct_per_8h": 0.0073,
+        "tradradar_liquidations_lower_bound_usd": 1300000,
+        "cryptokeyhole_updated_at": "2026-11-08T09:47:00Z",
+        "cryptokeyhole_nov6_partial_flow_xrp": -752048,
+        "cryptokeyhole_oct23_to_nov5_flow_xrp": 3374507,
+        "xrp_insights_live_aum_usd": 1407230000,
+        "xrp_insights_live_xrp_locked": 1195180000,
+        "xrp_insights_dated_nov6_flow_xrp": -663043,
+        "xrp_insights_week_flow_xrp": -812500,
+        "alpha_finance_nov6_flow_usd": 0,
+        "alpha_finance_30_session_flow_usd": 45900000,
+        "model_eligible": false
+      }
     },
     "prediction_engine": {
       "scheduled_ingestion": "DESIGNED on #1640 only; absent from main and not verified running on main.",
@@ -824,11 +861,11 @@
       "pages_deployment_authorized": false,
       "pr_1640_code_head_verified": "68fa88292ecfcd24a96b0c656172e59bb7ac1112",
       "pr_1640_current_docs_head": "Run49 handoff/map documentation-only commit; exact-head checks pending",
-      "pr_1643_head": "cf1d33527007a745cdb148d4c41b9a6c57169e7b",
-      "pr_1643_full_suite": "passed",
-      "pr_1643_dependency_audit": "pending",
+      "pr_1643_head": "3db89c6c2eb319e70fb5aefabacfd901ca559817",
+      "pr_1643_full_suite": "IN_PROGRESS",
+      "pr_1643_dependency_audit": "PASSED",
       "merge_performed": false,
-      "reason": "No independent APPROVED reviews; detailed branch-protection rules inaccessible; Pages configuration and merge-triggered public deployment behavior unresolved; #1643 exact-head dependency audit pending."
+      "reason": "No independent APPROVED reviews; branch-protection details inaccessible; Pages configuration and merge-triggered public deployment unresolved; #1640 corrected documentation-only exact-head CI pending."
     },
     "external_actions": {
       "main_write": false,
@@ -846,13 +883,13 @@
     },
     "forecast_status": "NOT_ISSUED",
     "next_actions": [
-      "Allow exact-head dependency audit 42468479555 on #1643 cf1d to complete; diagnose any failure without weakening checks.",
-      "Finish exact-head CI and dependency audit on the final #1640 handoff/map head; do not substitute 68fa code-head results.",
-      "Obtain genuine independent APPROVED reviews for #1640 and #1643; COMMENTED reviews are not approvals.",
-      "Resolve detailed branch-protection requirements and GitHub Pages deployment authorization.",
-      "Merge #1640 only after every requirement passes; verify merge commit, merged files, automatic workflow effects and main CI.",
-      "Consolidate #1643's 586 unique research paths onto verified main; preserve 21 Kamilah candidates and reconcile all six shared paths.",
-      "Close only exact superseded/duplicate source PRs after successor content is verified on main; preserve unique work.",
+      "Finish exact-head full-suite verification on #1643 3db89; its core, dependency audit and fail-closed gate have passed.",
+      "Finish exact-head full-suite verification on the corrected #1640 handoff/map head; the prior f347 failure was only the canonical-heading assertion.",
+      "Obtain genuine independent APPROVED reviews for #1640 and #1643.",
+      "Resolve branch-protection requirements and Pages deployment authorization.",
+      "Merge #1640 only after all conditions pass; verify merge commit, files, automatic workflow effects and main CI.",
+      "Consolidate #1643's 586 unique research paths onto verified main; preserve 21 Kamilah candidates and reconcile six shared paths.",
+      "Close only exact superseded/duplicate source PRs after main verification; preserve unique work.",
       "Verify scheduled ingestion on main; establish independent WORM archival/raw-source rebuild and add missing SEC, macro, stablecoin, custody, collateral, institutional and payment-rail coverage.",
       "Accumulate synchronized history and demonstrate OOS lift, calibration, drift stability and independent shadow outcomes before any forecast."
     ],
@@ -8981,5 +9018,5 @@
       }
     }
   ],
-  "last_verified_at_utc": "2026-11-08T09:47:59Z"
+  "last_verified_at_utc": "2026-11-08T09:54:28Z"
 }
