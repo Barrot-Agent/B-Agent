@@ -1,0 +1,454 @@
+{
+  "artifact_type": "xrp_binance_security_event_exchange_flow_derivatives_reconciliation",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108T211453Z-binance-hack-xrp-flow-derivatives-cross-ledger-reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "be1eb7da7b2a6a724d3e921e8ef9a2425b1430f1",
+  "append_only": true,
+  "captured_at_utc": "2026-11-08T21:14:53.532908Z",
+  "capture_policy": {
+    "lawful_public_sources_only": true,
+    "full_raw_http_pages_or_wire_bytes_captured": false,
+    "receipt_scope": "SHA-256 of exact UTF-8 short source excerpts reproduced in this artifact; not a hash of full pages, raw HTTP wire bytes or headers.",
+    "quote_limit": "Every retained verbatim excerpt is at most 25 words per source.",
+    "source_policy": "Official exchange/government statements, independent on-chain analytics and secondary aggregators remain separate source classes. Re-publication of an upstream dataset is not independent corroboration.",
+    "model_admission_policy": "No event-flow or derivatives aggregate is admitted without synchronized timestamps, explicit wallet/venue universe, source lineage and reproducible raw data."
+  },
+  "source_receipts": [
+    {
+      "id": "binance_xrp_transfer",
+      "publisher": "Binance",
+      "source_class": "official_exchange_statement",
+      "independence_group": "binance_first_party",
+      "url": "https://www.binance.com/en/square/post/384336744180903",
+      "published_or_event_date": "2026-10-29",
+      "data_as_of": "2026-10-31",
+      "excerpt": "Between 20:05 and 20:09 UTC, five Binance hot wallets sent 233.46 million XRP to an address controlled by the attacker.",
+      "sha256": "0093cf677b7528f479a10ca86e1782c1aa6eb2b4d7802250cc75001ba144fede"
+    },
+    {
+      "id": "binance_op_distinction",
+      "publisher": "Binance",
+      "source_class": "official_exchange_statement",
+      "independence_group": "binance_first_party",
+      "url": "https://www.binance.com/en/square/post/384336744180903",
+      "published_or_event_date": "2026-10-29",
+      "excerpt": "Binance hot wallets on Solana and Optimism sent approximately 970,500 SOL and 44.2 million OP to addresses controlled by the attacker.",
+      "sha256": "e7e3a7c7b1f7a4b50d7eae20e9c4e3e6b2f3fbe2f7d2d9c1f4b4c2a8e3a5b7c9"
+    },
+    {
+      "id": "binance_restoration",
+      "publisher": "Binance",
+      "source_class": "official_exchange_statement",
+      "independence_group": "binance_first_party",
+      "url": "https://www.binance.com/en/square/post/384336744180903",
+      "data_as_of": "2026-10-31",
+      "excerpt": "As of October 31, 2026, 98% of the affected token assets had been restored.",
+      "sha256": "a5560958991c8b7a51f3822a597a427771172dda4aebd56c6773ba4578d1ab2f"
+    },
+    {
+      "id": "fbi_tradertraitor_attribution",
+      "publisher": "Federal Bureau of Investigation",
+      "source_class": "official_government_attribution",
+      "independence_group": "us_federal_law_enforcement",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack/layout_view",
+      "published_at_utc": "2026-10-31",
+      "excerpt": "North Korea was responsible for the theft of more than $6 billion USD in virtual assets from cryptocurrency exchange Binance",
+      "sha256": "904c9370e85fb11197259583d6b306a54b8fbed704c91ac0e68d667dfa2b25ea"
+    },
+    {
+      "id": "north_korea_denial",
+      "publisher": "Associated Press reporting a North Korean official statement",
+      "source_class": "secondary_media_relay_of_official_denial",
+      "independence_group": "ap_reported_dprk_statement",
+      "url": "https://apnews.com/article/01c9b80d938dd67c747e268c410f265d",
+      "published_at_utc": "2026-11-03",
+      "excerpt": "North Korea denied responsibility for a reported theft of more than $6 billion from Binance",
+      "sha256": "306d950811b4251af144b2420fd700c90a2b27e65c85cc8e89a8637652fb6cab"
+    },
+    {
+      "id": "elliptic_44m_xrp_movement",
+      "publisher": "Elliptic",
+      "source_class": "independent_blockchain_analytics",
+      "independence_group": "elliptic_onchain_analysis",
+      "url": "https://www.elliptic.co/insights/how-north-korea-is-laundering-the-6-4-billion-stolen-from-binance/",
+      "last_updated_at_utc": "2026-11-07T08:00:00Z",
+      "excerpt": "About 44 million more XRP ($51 million) left the attacker's XRP addresses, most of it swapped through THORChain into bitcoin.",
+      "sha256": "d2cffc3433038ac3e28378586b14b2876ff2756eaf039920f3178367f016ce11"
+    },
+    {
+      "id": "elliptic_wallet_controller_caveat",
+      "publisher": "Elliptic",
+      "source_class": "independent_blockchain_analytics",
+      "independence_group": "elliptic_onchain_analysis",
+      "url": "https://www.elliptic.co/insights/how-north-korea-is-laundering-the-6-4-billion-stolen-from-binance/",
+      "last_updated_at_utc": "2026-11-07T08:00:00Z",
+      "excerpt": "The blockchain shows us those wallets, but not who is behind them.",
+      "sha256": "106248c3840fc92a22c66b0423497877da90d1610ca5e3d2aeb7e3c3a7bcfa02"
+    },
+    {
+      "id": "elliptic_automation_caveat",
+      "publisher": "Elliptic",
+      "source_class": "independent_blockchain_analytics",
+      "independence_group": "elliptic_onchain_analysis",
+      "url": "https://www.elliptic.co/insights/how-north-korea-is-laundering-the-6-4-billion-stolen-from-binance/",
+      "last_updated_at_utc": "2026-11-07T08:00:00Z",
+      "excerpt": "The laundering is clearly automated, but nothing we have seen shows an AI agent making decisions.",
+      "sha256": "4a7772fa864af7b999974b5225fec7e8efd066a6d5f76c4cee15ad1b39a4a8e3"
+    },
+    {
+      "id": "elliptic_cashout_caveat",
+      "publisher": "Elliptic",
+      "source_class": "independent_blockchain_analytics",
+      "independence_group": "elliptic_onchain_analysis",
+      "url": "https://www.elliptic.co/insights/how-north-korea-is-laundering-the-6-4-billion-stolen-from-binance/",
+      "last_updated_at_utc": "2026-11-07T08:00:00Z",
+      "excerpt": "A negligible amount has likely been cashed out so far.",
+      "sha256": "8180cace74536895cd74fc8f74660c368d301d07c8147c2b1ab38531e185ff5c"
+    },
+    {
+      "id": "cryptoquant_reserve_replenishment",
+      "publisher": "CryptoQuant",
+      "source_class": "third_party_exchange_wallet_analytics",
+      "independence_group": "cryptoquant_native_dataset",
+      "url": "https://cryptoquant.com/insights/quicktake/6aebfff6d730cb7df44c09e3-Binance-XRP-Reserves-Surge-280-Million-in-Two-Days-Following-634-Billion-Hack",
+      "published_at_utc": "2026-11-05",
+      "excerpt": "Binance's XRP reserves climbed from 2.35 billion on November 3 to 2.63 billion on November 5, a 280 million XRP gain (+11.9%).",
+      "sha256": "86ed2e84493758ef270ed8d42878b4bde7436640a100428d2756d584d94310e4"
+    },
+    {
+      "id": "cryptoquant_unverified_inflow_source",
+      "publisher": "CryptoQuant",
+      "source_class": "third_party_exchange_wallet_analytics",
+      "independence_group": "cryptoquant_native_dataset",
+      "url": "https://cryptoquant.com/insights/quicktake/6aebfff6d730cb7df44c09e3-Binance-XRP-Reserves-Surge-280-Million-in-Two-Days-Following-634-Billion-Hack",
+      "published_at_utc": "2026-11-05",
+      "excerpt": "The source of the latest XRP inflows remains unverified.",
+      "sha256": "97dcd67e8b0af2293d5155f0585eb22323e414dbd743e86e6b9b7d77b1bd9fc2"
+    },
+    {
+      "id": "cryptoticker_exchange_outflow",
+      "publisher": "CryptoTicker",
+      "source_class": "secondary_analysis_citing_cryptoquant",
+      "independence_group": "cryptoticker_cryptoquant_upstream",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-binance-scarcity-index-weekly-close-november-8-2026/",
+      "published_at_utc": "2026-11-08",
+      "excerpt": "On November 4, users withdrew 418.5 million XRP from Binance, worth just under $540 million at the time.",
+      "sha256": "c3f723f4c97d64effd8b2109f6fe01eea6c4b28891bd0fd5d0e7fdc7eaf8268d"
+    },
+    {
+      "id": "cryptoticker_internal_transfer_caveat",
+      "publisher": "CryptoTicker",
+      "source_class": "secondary_analysis_citing_cryptoquant",
+      "independence_group": "cryptoticker_cryptoquant_upstream",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-binance-scarcity-index-weekly-close-november-8-2026/",
+      "published_at_utc": "2026-11-08",
+      "excerpt": "Part of the movement may reflect internal transfers between the exchange's own wallets rather than fresh demand from investors.",
+      "sha256": "d930e86f7b439ee334081e647b3041fcdf1b26bda3322cd1bc5d088e9fa7e1a1"
+    },
+    {
+      "id": "cryptoticker_etf_flow_week",
+      "publisher": "CryptoTicker quoting SoSoValue",
+      "source_class": "secondary_dashboard_republication",
+      "independence_group": "sosovalue_upstream_via_cryptoticker",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-binance-scarcity-index-weekly-close-november-8-2026/",
+      "data_window": "2026-11-02 through 2026-11-06",
+      "excerpt": "On Monday, Canary Capital's XRPC fund saw $529,500 withdrawn. From Tuesday to Friday, every XRP spot ETF showed a zero.",
+      "sha256": "7a8c70b1f9794768e67b17add1f474c3f5bce168cf1c8651f2713406ca142ffb"
+    },
+    {
+      "id": "coingecko_derivatives",
+      "publisher": "CoinGecko",
+      "source_class": "multi_venue_derivatives_aggregator",
+      "independence_group": "coingecko_derivatives_universe",
+      "url": "https://www.coingecko.com/en/derivatives",
+      "provider_timestamp_available": false,
+      "excerpt": "XRP XRP $1.17 0.7% $4,075,989,283 +0.1% -6.0% 0.0076% $15,232,986,467 5.51% 15.3×",
+      "sha256": "ed04921e8bf3292aeea1eac9e84d96d59e080bcebd225027476b7728131d22a6"
+    },
+    {
+      "id": "tradradar_derivatives",
+      "publisher": "TradRadar",
+      "source_class": "multi_venue_derivatives_aggregator",
+      "independence_group": "tradradar_seven_venue_universe",
+      "url": "https://tradradar.io/markets/xrp",
+      "updated_at_utc": "2026-11-08T19:35:00Z",
+      "stated_delay_minutes": 15,
+      "excerpt": "Open interest, 7 exchanges $1.89B OI 24h change -0.51% Funding, OI-weighted +0.0083% per 8h",
+      "sha256": "30bebe3381a3cf7eea8afb315db12718b0aad2fe71b9ae3164ad94cc346f0d6f"
+    },
+    {
+      "id": "kodexius_derivatives",
+      "publisher": "Kodexius",
+      "source_class": "multi_venue_derivatives_aggregator",
+      "independence_group": "kodexius_seven_contract_universe",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "updated_at_utc": "2026-11-08T19:59:00Z",
+      "excerpt": "Open interest $781.47M Funding (8h) +0.0092% 24h volume $709.57M Updated Nov 8, 2026, 19:59 UTC",
+      "sha256": "7e6f2406afe384a1f9b53eca4790b8a8b80bf5155feefff44aaf56e8967aaa4f"
+    },
+    {
+      "id": "optimistfi_derivatives",
+      "publisher": "OptimistFi",
+      "source_class": "multi_venue_derivatives_aggregator",
+      "independence_group": "optimistfi_37_venue_universe",
+      "url": "https://optimistfi.com/perps/open-interest/xrp",
+      "provider_timestamp_utc": "2026-11-07T21:45:00Z",
+      "excerpt": "XRP open interest is $1.6B across 37 perp venues, -1.5% in 24 hours. As of Nov 7, 21:45 UTC.",
+      "sha256": "2e4a06116f1fcfaec8f07b9bb5c6752159a32e60bfdf36e9c748a599d4474e46"
+    }
+  ],
+  "event_facts": {
+    "binance_official": {
+      "affected_assets_estimate_usd": 6340000000,
+      "xrp_stolen": 233460000,
+      "op_stolen": 44200000,
+      "sol_stolen": 970500,
+      "btc_stolen": 18270,
+      "frozen_or_intercepted_usd": 2850000000,
+      "affected_token_assets_restored_pct_as_of_2026_10_31": 98,
+      "restoration_interpretation": "Binance says customer losses are covered/replenished from company resources. This is not the same as recovery of all stolen assets or proof that attacker-held funds were frozen."
+    },
+    "fbi": {
+      "attribution": "TraderTraitor",
+      "attributed_to": "Democratic People's Republic of Korea",
+      "published_at_utc": "2026-10-31",
+      "scope": "FBI attribution of the October 29 Binance theft",
+      "note": "Official government attribution; North Korea denied responsibility in a statement reported by AP."
+    },
+    "elliptic_as_of_2026_11_07_0800_utc": {
+      "total_stolen_estimate_usd": 6430000000,
+      "frozen_or_seized_usd": 2850000000,
+      "remaining_in_linked_addresses_usd": 3130000000,
+      "original_xrp_stolen_rounded": 233000000,
+      "xrp_moved_by_2026_11_06_0845_utc": 42000000,
+      "additional_xrp_moved_overnight_to_2026_11_07_0800_utc": 44000000,
+      "xrp_remaining": 148000000,
+      "xrp_value_swapped_cumulative_usd_approx": 100000000,
+      "btc_converted_from_other_stolen_assets": 2300,
+      "btc_value_converted_usd_approx": 175000000,
+      "wallets_used": 20000,
+      "blockchains_used": 16,
+      "services_used_at_least": 36,
+      "transactions_at_least": 65000,
+      "likely_cashout": "negligible",
+      "controller_identity_limit": "On-chain wallet attribution does not prove who currently controls wallets or who receives later off-chain proceeds.",
+      "automation_limit": "Elliptic reports conventional automation and explicitly says it has seen no evidence of an AI agent making decisions."
+    },
+    "cryptoquant_as_of_2026_11_05": {
+      "binance_xrp_reserves_nov_03": 2350000000,
+      "binance_xrp_reserves_nov_05": 2630000000,
+      "reserve_change_xrp": 280000000,
+      "reserve_change_pct": 11.9,
+      "large_transfer_netflow_xrp_oct_29": -226000000,
+      "large_transfer_netflow_xrp_nov_04": 273000000,
+      "deposit_transaction_share_nov_05_pct": 56.2,
+      "withdrawal_transaction_share_nov_05_pct": 43.7,
+      "source_of_latest_inflows": "unverified",
+      "proof_of_reserves_note": "CryptoQuant reported zero-knowledge verification was still being generated for the November 4 snapshot.",
+      "xrp_100pct_reserve_backed_by_oct_31_claim": "CryptoQuant's statement, not a separately reproduced proof in this artifact."
+    },
+    "cryptoticker_as_of_2026_11_08": {
+      "binance_xrp_outflow_nov_04": 418500000,
+      "binance_xrp_outflow_value_usd_approx": 540000000,
+      "binance_xrp_outflow_oct_29": 315000000,
+      "internal_wallet_transfer_caveat": true,
+      "etf_flow_window": "2026-11-02/2026-11-06",
+      "xrpc_monday_outflow_usd": 529500,
+      "other_etf_daily_net_flows_tuesday_friday_usd": 0,
+      "aum_start_usd": 1425000000,
+      "aum_end_usd": 1340000000,
+      "aum_change_interpretation": "CryptoTicker attributes most of the AUM decline to price rather than redemptions.",
+      "cumulative_net_inflows_since_launch_usd": 1810000000,
+      "whale_purchase_claim_xrp": 60000000,
+      "whale_purchase_claim_admission": "Excluded: secondary attribution, no primary wallet evidence retained."
+    },
+    "derivatives_aggregators": {
+      "coingecko": {
+        "open_interest_usd": 4075989283,
+        "funding_rate_8h_pct": 0.0076,
+        "derivative_volume_24h_usd": 15232986467,
+        "derivative_to_spot_volume_ratio": 15.3,
+        "oi_to_market_cap_pct": 5.51,
+        "provider_timestamp_available": false,
+        "market_count": 129
+      },
+      "tradradar": {
+        "open_interest_usd": 1890000000,
+        "open_interest_change_24h_pct": -0.51,
+        "funding_rate_8h_pct": 0.0083,
+        "liquidations_24h_min_usd": 1360000,
+        "long_liquidations_usd": 1150000,
+        "short_liquidations_usd": 207570,
+        "long_short_account_ratio": 3.95,
+        "venues": 7,
+        "updated_at_utc": "2026-11-08T19:35:00Z",
+        "stated_delay_minutes": 15
+      },
+      "kodexius": {
+        "open_interest_usd": 781470000,
+        "funding_rate_8h_pct": 0.0092,
+        "volume_24h_usd": 709570000,
+        "contracts": 7,
+        "updated_at_utc": "2026-11-08T19:59:00Z",
+        "venue_oi_usd": {
+          "Binance": 420830000,
+          "Bybit": 143450000,
+          "Hyperliquid": 97220000,
+          "OKX": 95090000,
+          "HTX": 24880000
+        }
+      },
+      "optimistfi": {
+        "open_interest_usd": 1600000000,
+        "venues": 37,
+        "open_interest_change_24h_pct": -1.5,
+        "price_change_24h_pct": -1.7,
+        "provider_timestamp_utc": "2026-11-07T21:45:00Z"
+      }
+    }
+  },
+  "derived_reconciliation": {
+    "attacker_xrp_movement": {
+      "moved_2026_11_06_plus_2026_11_07": 86000000,
+      "original_xrp_less_nov_07_remaining": 85460000,
+      "difference_xrp": 540000,
+      "difference_pct_of_moved": 0.627906976744186,
+      "conclusion": "The two daily Elliptic movement estimates and the November 7 remaining balance reconcile within rounding."
+    },
+    "usd_value_crosscheck": {
+      "cumulative_usd_value_swapped_approx": 100000000,
+      "illustrative_xrp_equivalent_at_usd_1_16": 86206896.55172414,
+      "conclusion": "The approximate $100M value is consistent with roughly 86M XRP at the cited $1.16 context; this is not a fiat cashout estimate."
+    },
+    "exchange_outflow_vs_theft": {
+      "nov_04_exchange_outflow_xrp": 418500000,
+      "originally_stolen_xrp": 233460000,
+      "ratio": 1.792593165,
+      "conclusion": "These are different measures and dates. The exchange-wide outflow cannot be equated to the attacker wallet balance or fresh investor accumulation."
+    },
+    "reserve_change_vs_exchange_outflow": {
+      "reserve_increase_xrp_nov_03_to_nov_05": 280000000,
+      "exchange_outflow_xrp_nov_04": 418500000,
+      "conclusion": "The series use different wallet labels, windows and metrics. They are not netted; CryptoQuant says the source of new inflows is unverified."
+    },
+    "restoration_vs_recovery": {
+      "binance_affected_assets_restored_pct": 98,
+      "frozen_or_intercepted_usd": 2850000000,
+      "conclusion": "Customer replenishment/restoration, on-chain freezes and attacker-held balances are separate concepts; do not add or equate them."
+    },
+    "derivatives_provider_dispersion": {
+      "max_open_interest_usd": 4075989283,
+      "min_open_interest_usd": 781470000,
+      "max_to_min_ratio": 5.215797513660154,
+      "funding_range_8h_pct": [
+        0.0076,
+        0.0092
+      ],
+      "conclusion": "Different provider universes and contract coverage produce more than 5.2x OI dispersion. Do not average or admit as one OI series."
+    }
+  },
+  "source_independence_and_disagreement": {
+    "official_vs_analytics": "Binance is primary for its incident/restoration statements; FBI is primary for its attribution; Elliptic is an independent analytics publisher for its own tracing; CryptoQuant is an independent analytics publisher for its own wallet labels.",
+    "secondary_dependence": "CryptoTicker's 418.5M outflow cites CryptoQuant analyst Darkfost; its ETF figures cite SoSoValue. These are not independent confirmations of the upstream datasets.",
+    "derivatives_dependence": "CoinGecko, TradRadar, Kodexius and OptimistFi are distinct aggregators but may share exchange APIs and differ in venue, contract and OI definitions. Their values are not independent raw observations.",
+    "geopolitical_disagreement": "The FBI attributes the theft to TraderTraitor/North Korea; North Korea denied responsibility in a statement reported by AP. Elliptic's wallet tracing cannot identify the current controller or prove who receives off-chain proceeds.",
+    "security_event_confounder": "Post-hack customer self-custody, internal wallet rotation, Binance replenishment and reserve changes can create large exchange-flow signals unrelated to new investment demand."
+  },
+  "scenario_and_counterhypothesis_register": [
+    {
+      "id": "supply_tightening_if_confirmed",
+      "hypothesis": "Sustained net XRP withdrawals could reduce immediately available exchange inventory if the flows are external customer transfers and not internal wallet rotation.",
+      "confirming_evidence_needed": [
+        "Venue-attributed raw wallet balances",
+        "independent exchange-wallet labels",
+        "persistent multi-day net outflow",
+        "rising spot taker demand",
+        "normalized order-book depth"
+      ],
+      "disconfirming_evidence": [
+        "Internal wallet rotation",
+        "reserve replenishment",
+        "weak spot demand",
+        "ETF net outflows or zero creations"
+      ]
+    },
+    {
+      "id": "post_hack_security_rotation",
+      "hypothesis": "A material share of Binance outflows may reflect post-incident self-custody or internal wallet reorganization rather than accumulation.",
+      "confirming_evidence": [
+        "Wallet cluster continuity",
+        "known Binance hot/cold wallet migrations",
+        "post-hack timing",
+        "no corresponding external buyer or destination exchange evidence"
+      ],
+      "disconfirming_evidence": [
+        "Independent destination ownership",
+        "sustained net withdrawal across multiple venues",
+        "corroborating spot purchases"
+      ]
+    },
+    {
+      "id": "stolen_xrp_cross_chain_conversion",
+      "hypothesis": "The attacker's XRP conversions through THORChain into BTC may create episodic swap pressure but do not prove a fiat sale or market-wide net sell flow.",
+      "confirming_evidence": [
+        "Elliptic's dated on-chain tracing",
+        "THORChain route receipts",
+        "BTC outputs in newly created addresses"
+      ],
+      "disconfirming_evidence": [
+        "Evidence of OTC or centralized-exchange cashout",
+        "verified fiat settlement"
+      ]
+    },
+    {
+      "id": "derivatives_leverage_fragility",
+      "hypothesis": "Positive funding and a long-skewed account ratio in one aggregator could amplify volatility if spot weakens, but OI universes disagree materially.",
+      "confirming_evidence": [
+        "Synchronized venue-level OI/funding",
+        "liquidation feed coverage",
+        "spot/perp basis and depth"
+      ],
+      "disconfirming_evidence": [
+        "Falling OI with stable funding",
+        "balanced venue positioning",
+        "spot-led demand"
+      ]
+    }
+  ],
+  "market_admission": {
+    "exchange_flow_features_admitted": false,
+    "attacker_wallet_flows_admitted": false,
+    "derivatives_oi_admitted": false,
+    "funding_admitted": false,
+    "liquidation_admitted": false,
+    "etf_flow_admitted": false,
+    "reasons": [
+      "No synchronized raw exchange-wallet data or reproducible wallet-label universe.",
+      "Post-hack security and internal-transfer confounders are unresolved.",
+      "ETF publisher universes and vintages disagree.",
+      "Derivatives aggregator OI differs by more than 5.2x.",
+      "No raw venue-level OI/funding/liq snapshots were admitted."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "scenario_probabilities": null,
+    "shadow_forecast": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "external_actions": {
+    "repository_main_write": false,
+    "deployment": false,
+    "secret_operation": false,
+    "external_model_transfer": false,
+    "feature_store_write": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false
+  }
+}
