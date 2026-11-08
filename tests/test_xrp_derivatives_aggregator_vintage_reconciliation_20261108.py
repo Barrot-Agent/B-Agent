@@ -82,7 +82,7 @@ def test_current_oi_provider_dispersion_is_not_averaged(record: dict) -> None:
 def test_funding_observations_remain_provider_specific(record: dict) -> None:
     facts = record["current_page_dispersion"]["funding_observations_8h_pct"]
     assert facts == {"CoinGecko": 0.0092, "TradRadar": 0.0086, "Kodexius": 0.0061}
-    assert "different venue and contract universes" in record["source_independence"]["aggregators"]
+    assert "differing in venue and contract coverage" in record["source_independence"]["aggregators"]
 
 
 def test_repeated_spot_payloads_are_not_called_live_updates(record: dict) -> None:
