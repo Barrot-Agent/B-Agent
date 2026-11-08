@@ -224,6 +224,6 @@ def test_primary_issuer_excerpts_hash_and_keep_rex_exclusion_method():
     for row in data["source_receipts"]:
         assert hashlib.sha256(row["excerpt"].encode("utf-8")).hexdigest() == row["excerpt_sha256"]
     ckh = data["source_receipts"][-1]["excerpt"]
-    assert "not total underlying exposure" in ckh
+    assert "neither its holdings nor a measure of its flows" in ckh
     assert data["model_admission"]["eligible"] is False
     assert data["forecast"]["status"] == "NOT_ISSUED"
