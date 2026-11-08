@@ -57,7 +57,7 @@ def test_derivatives_oi_and_funding_universes_remain_separate():
     assert data["market_observations"]["derivatives"]["cross_provider_reconciliation"]["oi_change_sign_disagreement"] is True
 
 
-def test_etf_flow_partial_coverage_and_future_vintage_are_quarantined():
+def test_initial_etf_artifact_preserves_its_original_file_date_assessment():
     data = load_artifact()
     providers = {row["provider"]: row for row in data["market_observations"]["etf_flows"]["providers"]}
     assert providers["CryptoKeyhole"]["nov6_coverage"] == "3 of 4; Franklin Templeton XRPZ missing"
@@ -180,5 +180,50 @@ def test_previous_future_stamp_interpretation_is_explicitly_superseded():
         "20261108T090727Z-xrp-source-vintage-and-hash-correction.json"
     )
     assert "not future availability" in data["correction_to_prior_artifact"]["reason"]
+    assert data["model_admission"]["eligible"] is False
+    assert data["forecast"]["status"] == "NOT_ISSUED"
+
+
+def test_rex_is_mixed_direct_and_lookthrough_exposure_not_a_pure_spot_holding():
+    path = ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrpr-direct-and-lookthrough-exposure-correction.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    rex = data["rex_holdings"]
+    assert rex["direct_xrp_units"] == 19_885_382
+    assert rex["coinshares_etp_shares"] == 362_750
+    assert rex["direct_xrp_pct"] == 59.49
+    assert rex["coinshares_physical_xrp_pct"] == 40.49
+    assert "not equivalent to directly holding XRP" in rex["issuer_warning"]
+    assert data["product_classification"]["corrected_label"] == (
+        "Five direct XRP spot/ETP products, one mixed direct/indirect XRP-exposure fund, and one multi-asset index product."
+    )
+
+
+def test_xrpinsights_rex_amount_is_lookthrough_not_direct_custody():
+    path = ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrpr-direct-and-lookthrough-exposure-correction.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    look = data["lookthrough_reconciliation"]
+    assert look["xrp_insights_reported_xrpr_lookthrough_xrp"] == 33_400_000
+    assert look["rex_direct_xrp_units"] == 19_885_382
+    assert look["implied_indirect_xrp_equivalent_from_dashboard"] == 13_514_618
+    assert look["status"] == "SECONDARY_LOOKTHROUGH_ESTIMATE_NOT_PRIMARY_UNIT_DISCLOSURE"
+
+
+def test_seven_product_aggregate_reconciliation_is_hypothesis_not_verified_total():
+    path = ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrpr-direct-and-lookthrough-exposure-correction.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    agg = data["aggregate_reconciliation_hypothesis"]
+    assert agg["arithmetic_sum_xrp"] == 1_195_944_176.2993
+    assert agg["xrp_insights_dashboard_total_xrp_undated"] == 1_195_180_000
+    assert agg["difference_pct_of_dashboard"] < 0.1
+    assert "not an exact verified total" in agg["interpretation"]
+
+
+def test_primary_issuer_excerpts_hash_and_keep_rex_exclusion_method():
+    path = ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrpr-direct-and-lookthrough-exposure-correction.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    for row in data["source_receipts"]:
+        assert hashlib.sha256(row["excerpt"].encode("utf-8")).hexdigest() == row["excerpt_sha256"]
+    ckh = data["source_receipts"][-1]["excerpt"]
+    assert "not total underlying exposure" in ckh
     assert data["model_admission"]["eligible"] is False
     assert data["forecast"]["status"] == "NOT_ISSUED"
