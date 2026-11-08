@@ -20,7 +20,7 @@ def test_feature_store_contract_endpoint_counts_match_registry() -> None:
     assert len(ENDPOINTS) == 32
     assert len(SCHEDULED_ENDPOINTS) == 30
     assert "32 public endpoint records, of which 30 are scheduled" in contract
-    assert "32 endpoint records, 30 scheduled" in contract
+    assert "32 public endpoint records, of which 30 are scheduled" in contract
 
 
 def test_exchange_wallet_balance_source_is_scheduled_digest_only() -> None:
