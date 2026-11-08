@@ -1,7 +1,7 @@
 # Barrot XRP Mission — Current Durable Handoff
 
 **Run:** 71  
-**Captured:** 2026-11-08 22:48 UTC research supplement; repository and PR evidence captured through 22:48 UTC  
+**Captured:** 2026-11-08 22:55 UTC research supplement; repository and PR evidence captured through 22:55 UTC  
 **Repository:** `Barrot-Agent/B-Agent`  
 **Canonical current handoff:** this file  
 **Historical handoff archive:** `BARROT_XRP_MISSION_HANDOFF.md` (1,054,795 bytes; connector range retrieval returned empty content, so do not treat its old trailing status as current)
@@ -97,7 +97,7 @@ Primary-source reconciliation confirms:
 - Exact-head full repository suite: 1,215 passed, 8 subtests passed; core suite 660 passed, 8 subtests; inclusive coverage 58.98%.
 - Installed-wheel verification passed. Six-manifest dependency audit passed. Fail-closed merge gate passed.
 - Evidence: full CI 42531812897; dependency audit 42531813020; fail-closed gate 42531812931.
-- This verifies the map correction on 9b0c2. The following research-handoff supplement creates a new documentation head and requires its own exact-head CI.
+- This verifies the map correction on 9b0c2. The research-handoff supplement committed as 1ebd209f21204196fe09b5d9d294a618e10f10dc passed exact-head CI: 1,215 full-suite passes plus 8 subtests; 660 core passes plus 8 subtests; 58.98% inclusive coverage; installed-wheel verification passed; six-manifest dependency audit passed; fail-closed gate passed. Evidence: full CI 42532174348, dependency audit 42532174336, fail-closed gate 42532174337. The additional corrections below create another documentation-only head and will be verified separately.
 
 ### XRP collateral research — Coinbase cbXRP and Morpho
 **Product and custody structure**
@@ -122,7 +122,7 @@ Primary-source reconciliation confirms:
 **Public API ingestion candidate**
 - Morpho documents public read-only REST endpoints for market metadata/state, position health and oracle state. The positions-health endpoint supports cursor pagination, up to 1,000 rows per page, and exposes ltv_computed_at and last_indexed_block. Pages can span refreshes and LTV can lag; never aggregate pages unless block/time consistency is verified.
 - The REST API does not provide every USD aggregate directly; derive debt from raw borrow shares and market state, retain token units/decimals, and obtain oracle values separately.
-- Documented limits: 750 requests/minute; HTTP 429 supplies Retry-After (600 seconds); severe abuse above 20,000 requests/hour can trigger a seven-day cooldown. No SLA. Use a small scheduled request budget, caching and exponential backoff.
+- The Morpho documentation says the public REST API has standard public rate limits and no SLA; the documentation reviewed here does not publish numeric thresholds. Honor any HTTP 429/Retry-After response, cache results, use exponential backoff and keep the request budget deliberately small.
 - Direct REST API retrieval was not successfully completed in this run; the Morpho UI and API documentation were inspected. This is a high-priority source candidate, not an implemented or verified Barrot ingestion adapter. Do not resolve wallet addresses to real-world people; retain only the public protocol data needed for aggregate risk features.
 
 ### SBI XRP distribution channels and Circle payment rails
@@ -136,6 +136,21 @@ Primary-source reconciliation confirms:
 - Circle's Q3 2026 release describes Arc mainnet with native USDC, a pending Tazapay acquisition (expected 2027 subject to approvals), Visa Direct stablecoin prefunding with Inyo Global, and Samsung Wallet USDC transfers to bank accounts in 60+ countries. Tazapay's reported annualized TPV and stablecoin share are not equivalent to USDC volume. These are USDC payment rails, not XRP usage.
 - Circle's $100M Binance share sale is equity capital raised by Circle; the monthly USDC incentive fee is a distribution cost. Circle/SBI Japan's approximately $3M initial contributions fund that JV, not XRP purchases. Keep these capital categories separate.
 
+
+### Additional SBI/XRPL corporate-structure findings
+- SBI Ripple Asia, SBI Shinsei Bank and TIS announced a proof of concept for tokenized deposits and deposit-type digital money using existing banking infrastructure, with XRPL considered as the ledger. This is a POC, not production deployment, and a deposit token on XRPL is not the XRP asset.
+- SBI Ripple Asia's 2026 token-issuance platform and prepaid-payment-instrument registration are XRPL ecosystem development, but do not by themselves establish XRP token demand.
+- SBI Holdings' SBI START bond was a JPY 100 billion, three-year, 2.15% security-token debt issue, sold out and issued through ODX START/ibet for Fin, not XRPL. The initial reward was JPY 200 worth of XRP per JPY 100,000 subscription, with the initial reward distributed by May 15, 2026. Future coupon-date rewards were not guaranteed to be XRP. Treat the JPY 100 billion as SBI debt financing proceeds; treat the XRP reward as a promotional distribution, not an XRP purchase or XRP-denominated bond.
+- SBI Global Asset Management's 2026 shareholder benefit included the regular JPY 2,500/10,000/12,000 XRP-equivalent tiers and a separate JPY 3,000 commemorative XRP benefit for holders of at least 1,000 shares. The 2026 record date was March 31.
+- On September 30, 2026, SBI Global Asset Management and SBI Insurance Group signed a basic agreement to merge, with SBI Global Asset Management as survivor and SBI Insurance Group absorbed; the planned effective date is April 1, 2027, subject to final agreement, shareholder approvals and regulatory approvals. Their 2026 XRP benefit programs were separate pre-merger programs.
+- SBI Holdings is the parent of both subsidiaries and of SBI Ripple Asia. The 60% SBI Ripple Asia voting-rights figure is an aggregate SBI Group figure, not a direct parent ownership percentage. The current direct equity percentage in Ripple Labs was not established from the sources reviewed.
+
+### Public forecast and monetization surface audit
+- The #1640 branch's web/latest_signal.json says forecast_issued=false and status NOT_ISSUED; its status timestamp is November 5 and therefore stale, but it contains no directional forecast.
+- web/latest_signal_summary.json and web/signals.html also state NOT_ISSUED. web/signal_accuracy.json states NOT_EVALUATED and exposes no predictive-accuracy claim.
+- web/legacy/signal_accuracy_unvalidated.json retains a 45.5% historical metric, but labels it unvalidated; the landing/signals surfaces do not present it as model accuracy.
+- webmcp_monetization.js returns checkout_available=false and purchase_url=null for XRP signal subscriptions. No active purchase/charge flow was found. It does contain user-triggered Gumroad license verification for legacy research tools; this is an external license-validation request, not a payment, and should remain explicitly disclosed.
+- The branch's public pages are not on main. The main Pages deployment after d4d43be did not contain these #1640 branch web changes. A future merge would publish the branch web paths and still requires explicit deployment authorization.
 
 ### Prediction-engine implementation boundary
 Main is still materially behind the V3 branch:
