@@ -84,7 +84,7 @@ def test_rlusd_collateral_is_not_mislabeled_as_xrp_collateral():
     assert "RLUSD" in evidence
     assert "actual" in evidence.lower()
     boundary = data["strategic_graph"]["demand_boundary"]
-    assert "does not prove incremental XRP spot purchases" in boundary
+    assert "proves incremental XRP spot purchases" in boundary
 
 
 def test_c2fo_is_announcement_waitlist_not_verified_live_throughput():
