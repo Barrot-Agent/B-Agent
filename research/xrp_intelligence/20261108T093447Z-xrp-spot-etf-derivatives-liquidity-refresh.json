@@ -11,7 +11,7 @@
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "reference_time_utc": "2026-11-08T09:34:47Z",
-  "capture_clock_note": "Exact retrieval wall-clock times and HTTP headers were not exposed. Kraken provides no event timestamp. OKX provider timestamp is preserved; its age at the run reference is 812.83 seconds. This is not a synchronized market cutoff.",
+  "capture_clock_note": "The run reference is 2026-11-08T09:34:47Z. Exact browser/API retrieval wall-clock times and HTTP headers were not exposed. Kraken provides no provider event timestamp; OKX provider snapshot time is 09:21:14.170Z and is 812.83 seconds old at the run reference. Secondary dashboards without publisher update times are recorded with retrieval_time_exact=false and are not assigned a false exact observation time. This is not a synchronized market cutoff.",
   "market_observations": {
     "spot": {
       "kraken_xrp_usd": {
@@ -80,7 +80,7 @@
         "liquidation_max_to_min_ratio": 4.2465753425
       }
     },
-    "etf": {
+    "etf_flows": {
       "cryptokeyhole": {
         "page_updated_at_utc": "2026-11-08T09:22:00Z",
         "nov6_partial_flow_xrp": -752048,
@@ -99,6 +99,21 @@
         "fund_count": 5
       },
       "reconciliation": "Different universes, vintages and completeness; not independent confirmations; do not average."
+    },
+    "stablecoin_context": {
+      "publisher": "Webeconomia / DefiLlama-attributed dashboard",
+      "as_of_utc": "2026-11-08T03:13:00Z",
+      "headline_total_supply_usd": 292300000000,
+      "headline_30d_change_usd": -15060000000,
+      "usdt_supply_usd": 176700000000,
+      "usdt_30d_change_usd": -7440000000,
+      "usdc_supply_usd": 70700000000,
+      "usdc_30d_change_usd": -2630000000,
+      "same_page_later_total_supply_usd": 293600000000,
+      "same_page_later_30d_change_usd": -12730000000,
+      "status": "UNRESOLVED_SOURCE_INTERNAL_TOTAL_MISMATCH",
+      "admission": "EXCLUDED_FROM_FEATURE_STORE",
+      "note": "Secondary dashboard shows two different total-supply/30-day-change pairs. No XRP-specific settlement or route demand is inferred."
     }
   },
   "counter_hypotheses": [
@@ -165,22 +180,26 @@
       "publisher": "Kraken",
       "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "source_class": "exchange_native_public_api",
-      "observed_at_utc": "2026-11-08T09:34:47Z",
+      "observed_at_utc": null,
       "provider_event_timestamp_utc": null,
       "hash_scope": "SHA-256 of exact JSON response text; not raw HTTP wire bytes or headers.",
       "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16013000\",\"604\",\"604.000\"],\"b\":[\"1.16000000\",\"2697\",\"2697.000\"],\"c\":[\"1.16000000\",\"177.16129000\"],\"v\":[\"2216081.01903727\",\"10933587.27871456\"],\"p\":[\"1.16065684\",\"1.16029489\"],\"t\":[4055,16079],\"l\":[\"1.15376000\",\"1.14888000\"],\"h\":[\"1.16541000\",\"1.17261000\"],\"o\":\"1.16234000\"}}}",
-      "excerpt_sha256": "92da35549cad570544a6ed3b4d6db842e8553ce46e0e26496c1a822beb864adf"
+      "excerpt_sha256": "92da35549cad570544a6ed3b4d6db842e8553ce46e0e26496c1a822beb864adf",
+      "retrieval_time_exact": false,
+      "reference_time_utc": "2026-11-08T09:34:47Z"
     },
     {
       "source_id": "okx_xrp_usdt_ticker",
       "publisher": "OKX",
       "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
       "source_class": "exchange_native_public_api",
-      "observed_at_utc": "2026-11-08T09:34:47Z",
+      "observed_at_utc": null,
       "provider_event_timestamp_utc": "2026-11-08T09:21:14.170Z",
       "hash_scope": "SHA-256 of exact JSON response text; not raw HTTP wire bytes or headers.",
       "excerpt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1615\",\"lastSz\":\"31.814324\",\"askPx\":\"1.1617\",\"askSz\":\"3858.944515\",\"bidPx\":\"1.1616\",\"bidSz\":\"1879.778847\",\"open24h\":\"1.1716\",\"high24h\":\"1.1743\",\"low24h\":\"1.1495\",\"volCcy24h\":\"20655375.2927097528\",\"vol24h\":\"17783019.774678\",\"ts\":\"1794129674170\",\"sodUtc0\":\"1.1639\",\"sodUtc8\":\"1.1587\"}],\"msg\":\"\"}",
-      "excerpt_sha256": "bb4e0af51fa1aacce7a7dbdfa3ad0a722c1bf1f49bf1b82db665ffea114d129b"
+      "excerpt_sha256": "bb4e0af51fa1aacce7a7dbdfa3ad0a722c1bf1f49bf1b82db665ffea114d129b",
+      "retrieval_time_exact": false,
+      "reference_time_utc": "2026-11-08T09:34:47Z"
     },
     {
       "source_id": "tradradar_xrp_derivatives",
@@ -217,20 +236,24 @@
       "publisher": "XRP Insights",
       "url": "https://xrp-insights.com/",
       "source_class": "secondary_issuer_holdings_aggregator",
-      "observed_at_utc": "2026-11-08T09:34:47Z",
+      "observed_at_utc": null,
       "hash_scope": "SHA-256 of normalized rendered excerpt; not raw issuer-file bytes or HTTP wire bytes.",
       "excerpt": "On Fri, Nov 6, 2026, US XRP ETFs (the 6 spot funds plus BITW) recorded net outflows of 663,043 XRP (≈ $775.8K at that day's XRP price). Combined holdings ended the day at 1.20 billion XRP, with $1.43 billion in net assets.\nLatest week net flow: Nov 2–6, 2026 · 5 trading days · −812.5K XRP (≈ −$978.3K).",
-      "excerpt_sha256": "be4ac907a3d688a7358a980224fcfa06b237bee965e99bcc09cc9ea9690dac5a"
+      "excerpt_sha256": "be4ac907a3d688a7358a980224fcfa06b237bee965e99bcc09cc9ea9690dac5a",
+      "retrieval_time_exact": false,
+      "reference_time_utc": "2026-11-08T09:34:47Z"
     },
     {
       "source_id": "alpha_finance_xrp_etf_dashboard",
       "publisher": "Alpha Finance",
       "url": "https://alphafinance.io/etf/xrp/",
       "source_class": "secondary_etf_flow_aggregator",
-      "observed_at_utc": "2026-11-08T09:34:47Z",
+      "observed_at_utc": null,
       "hash_scope": "SHA-256 of normalized rendered excerpt; not raw issuer-file bytes or HTTP wire bytes.",
       "excerpt": "US spot XRP ETFs, through the 6 Nov 2026 session. Covering 5 funds.\nXRP ETF net flow, 6 Nov 2026: $0 inflow.\nXRP ETF 30-session flow: $45.9M inflow.\nCumulative flow: $1.73B.",
-      "excerpt_sha256": "cebba8e03e5cf800c05c05a1ba93c470a78ae37a2f0613a6bc949ae964e1224661"
+      "excerpt_sha256": "cebba8e03e5cf800c05b80aa93c470a78ae37a2f0613a6bc949ae964e1224661",
+      "retrieval_time_exact": false,
+      "reference_time_utc": "2026-11-08T09:34:47Z"
     }
   ]
 }
