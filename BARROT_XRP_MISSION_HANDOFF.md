@@ -1,5 +1,79 @@
 # Current integrated Barrot handoff — 2026-11-08T01:40:58Z
 
+
+## Run 37 — current repository state (2026-11-08T02:59:08Z)
+
+### Mission and mainline
+
+- XRP intelligence and measured prediction-engine mastery remain the highest-priority mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main was not modified.
+- Complete recursive main tree: 1,403 entries; 1,298 files; 493 Python files; 90 test modules; 86 workflow YAML files. The tree response was not truncated.
+- Open PR inventory: 372 total, 356 drafts and 16 non-drafts. Four REST pages were read (100, 100, 100, 72). Fourteen open PRs target the current main SHA; 358 target other base revisions and require individual stack/ancestry triage rather than bulk closure.
+
+### Current mission PRs and exact-head CI
+
+**PR #1640 — V3 integration**
+
+- Current head: `3a0363225c89d0f3a40ce451fbad7c50b8f780b6`; 176 changed paths; 627 commits ahead of main, zero behind.
+- Full repository CI run `42440311352`: **1,182 passed, 1 failed, 8 subtests**. The only failure is `tests/test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads`. Its first-3,000-character check expects a heading matching `## Run N — current repository`; the handoff currently starts with `## Run 36 — 2026-11-08 02:43:45 UTC`. This is a stale handoff-format assertion, not a product-code failure. This run is not green.
+- Core test job passed. Inclusive coverage was 58.78%, above the 53% threshold. Installed-wheel verification passed on the same code/test head.
+- Dependency audit `42440311334` passed. Fail-closed gate `42440311336` passed and kept merging disabled.
+- This run's corrective action is an append-only Run 37 handoff section placed before Run 36, preserving the prior run record and its assertions. The resulting new head must pass its own exact-head full suite, coverage, wheel, dependency audit and fail-closed gate.
+
+**PR #1643 — XRP research**
+
+- Current head: `a2243683433c4dd4f3e2da5bfaa9adb254900b2b`; 541 changed paths; 749 commits ahead of main, zero behind.
+- Exact-head full repository suite: **2,237 passed, 8 subtests passed** in CI run `42437780299` (job `128600254335`). Core tests passed. Dependency audit `42437780238` and fail-closed gate `42437780258` passed.
+- This branch still uses checkout@v4/setup-python@v5 and does not include #1640's stronger inclusive-coverage and installed-wheel checks. Carry those checks forward during consolidation.
+
+**Branch relationship and shared paths**
+
+- Main is the common merge base. Comparing #1640 head to #1643 head reports #1643 749 commits ahead and #1640 627 commits behind.
+- Exactly three changed paths overlap: `.github/workflows/dependency-audit.yml` (identical); `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different candidate registries); and `tests/test_kamilah_channel_identity_gate.py` (different assertions). Preserve the larger research candidate registry and combine both sets of identity-gate assertions.
+- No new branch or PR was created. No PR was merged or closed.
+
+### Review and backlog state
+
+- #1640 has 22 unresolved inline review threads; #1643 has 19. Each has ten COMMENTED reviews and zero APPROVED reviews. COMMENTED is not approval. Do not treat the unresolved threads as cleared.
+- Several #1640 findings are already addressed in the current tree but still have unresolved threads: IP-literal publisher rejection is implemented and tested; structural descriptors sort complete canonical records; inexact numeric invariant tolerances are honored; non-finite floats are rejected; and dust-sized paper positions are rejected. Verify each thread against the current head before resolving it. Other MMI malformed-input findings and paper-trader workflow findings still require explicit triage.
+- #1643 still has unresolved evidence-quality issues, including the stale Kraken daily-open label, unsupported YouTube subscriber attribution, the Evernorth lender/cost-basis/duplicate-edge corrections, Circle/SBI Arc evidence mismatch, and citation-scope errors. Preserve the original evidence and append scoped corrections; do not silently rewrite history.
+- #1642 is a draft prediction/feature-snapshot workstream, not a duplicate of #1640 until its unique paths and tests are reconciled. #1653 remains blocked with unique repository-graph work; #1655 and #1641 remain unique drafts. Dependency PRs #1644–#1650 overlap the integration branch but are not closed before main verification. Older stacked PRs (#1269, #1317, #1318, #1320, #1477, #1591, #1597) remain individually classified; do not bulk-close.
+
+### New XRP market snapshot — direct venue endpoints
+
+Capture time: 2026-11-08 02:59:08 UTC. These are direct public endpoint responses, but they are not synchronized depth snapshots.
+
+- Kraken XRP/USD: last `1.15436000`; bid `1.15427000`; ask `1.15436000`; rolling-24h volume `16,973,345.1721 XRP`; rolling-24h VWAP `1.16203833`; daily open `1.16234000`; daily high/low `1.16357000 / 1.15376000`. Provider event timestamp was absent. Best displayed bid/ask sizes were 2,143 / 2,888 XRP.
+- OKX XRP-USDT: last `1.1555`; bid/ask `1.1555 / 1.1556`; rolling-24h volume `27,927,411.2241 XRP`; 24h open/high/low `1.1704 / 1.1821 / 1.1495`; best displayed bid/ask sizes `5,287.36404 / 4,085.603105 XRP`. Provider timestamp was 2026-11-08 02:33:06.762 UTC, 1,561.238 seconds old at capture and therefore outside the 300-second freshness threshold.
+- Kraken last was approximately 0.686% below its daily open and 0.661% below its rolling-24h VWAP. OKX last was approximately 1.273% below its 24h open. The raw OKX/Kraken last-price difference was approximately 0.099%, but USD/USDT normalization, synchronization, fees, slippage and multi-level depth are missing; this is not an arbitrage observation.
+- Kraken top-level bid share was approximately 42.6%; OKX approximately 56.4%. These opposing Level-1 imbalances do not establish broad-book support or directional order flow. Both snapshots are research-only and model-ineligible.
+- Binance perpetual premium-index endpoint returned HTTP 451 through this retrieval route. No current funding or open-interest value is inferred from that failed request.
+
+### XRP institutional flows and major event timeline
+
+- XRP Insights' November 7 report says the six US spot XRP ETFs plus BITW had approximately 1.20B XRP and $1.43B net assets at the November 6 close; its derived November 2–6 flow was about **-812.5K XRP / -$978.3K**, including -663K XRP on November 6. The method is day-over-day change in issuer-reported XRP holdings, not dollar-flow estimation. GXRP daily flows are excluded during a stated data-gap correction while its holdings remain in totals. This is a secondary aggregator's reconstruction from issuer pages, not an independently fetched issuer-by-issuer receipt; it is not a model feature. Source: https://xrp-insights.com/ (ETF tracker and November 7 supply report).
+- Binance's verified official November 3 incident report states that five Binance hot wallets sent **233.46M XRP** to one attacker-controlled XRPL address between 20:05 and 20:09 UTC on October 29. Binance reports approximately $6.34B in affected assets, approximately $2.85B frozen/intercepted, and 98% of affected token assets replenished by October 31. Replenishment of customer liabilities is not proof that the stolen XRP was recovered. Official source: https://www.binance.com/en/square/post/384336744180903 . Reuters independently reports the same 233.46M XRP event and the multi-stage compromise; https://www.reuters.com/world/binance-says-hackers-used-fake-job-interview-compromise-computer-before-63-2026-11-03/ .
+- XRPLWin's ledger-derived report identifies the attacker holding account as `rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx`, records 233,461,943.1 XRP from five Binance wallets, and says the initial holding remained untouched at its October 30 observation. Bitcoin.com News later reports that on November 2 the attacker account distributed about 233.45M XRP to six new wallets, five near 40M and one near 33.46M; at 04:37 UTC none of the six had sent onward. This is a dated November 2 observation, not a verified November 8 balance. Sources: https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger and https://news.bitcoin.com/security/binance-hacker-moves-293m-stolen-xrp/ .
+- A conflicting U.Today/Coinotag narrative describes the 80M XRP moved on November 2 as Binance sweeping funds into internal wallets. The identified sender was the attacker-tagged account, not a Binance hot wallet, and the destination wallets are described as unidentified. Do not classify this as a Binance recovery or confirmed sale without a traceable destination. The 80M was two 40M transfers; the wider distribution report describes nine large payments and six destinations. Preserve the disagreement and require fresh ledger checks before updating balances.
+- Native XRP has no issuer freeze control. XRPLWin reports Ripple froze 40.5M RLUSD on Ethereum, while the broader breach involved 88.5M RLUSD; these stablecoin controls do not extend to native XRP. FBI attribution to North Korea's TraderTraitor is an official law-enforcement assessment dated October 31; North Korea rejected the accusation, as Reuters reported. Retain attribution as an attributed claim, not an independently established identity.
+- Swiftedge's November 8 02:06 UTC market brief reported XRP near 1.1575, -1.79% over 24 hours, net taker flow -14.9% of volume, volume 0.8x its recent normal, +0.0034% funding per 8 hours and a displayed $4.5M bid wall near 1.1500. This is a secondary provider observation roughly 53 minutes old at the direct-market capture; it is not an executable-depth receipt or model feature.
+
+### Prediction and platform status
+
+- Forecast status: NOT_ISSUED. No synchronized multi-venue depth/flow dataset, validated trained-model out-of-sample lift, real-data probability calibration or sufficient independent shadow outcomes has been demonstrated. The new market observations remain quarantined from model features.
+- Scheduled ingestion remains on #1640, not main. No successful scheduled ingestion on main has been verified. External WORM archival and independently rebuildable raw-source receipts remain incomplete.
+- Nine-platform state is unchanged: ChatGPT-to-GitHub is the only verified persistent connection; Copilot activity is COMMENTED, not APPROVED; Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. No cross-platform task exchange or data transfer occurred.
+- Main Cross Analysis run `42440295043` succeeded. Detailed branch-protection access remains HTTP 403 through the current integration. The two mission PRs have no approving review, and the Pages deployment configuration/automatic merge side effects are not authorized or fully inspectable. No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete actions
+
+1. Verify the Run 37 handoff-only commit on #1640 with its own full suite, inclusive coverage, wheel verification, dependency audit and fail-closed gate.
+2. Reconcile all 22 #1640 and 19 #1643 review threads against current code/evidence; fix substantive findings and explicitly document stale findings before resolving them.
+3. Obtain independent approving reviews and authorized confirmation of branch-protection and Pages behavior. Do not merge before every gate passes.
+4. Merge #1640 only after exact-head verification and required approvals; then verify merge SHA, files, workflow side effects and main CI.
+5. Consolidate #1643's 538 non-overlapping research paths plus the reconciled three shared paths onto verified main, preserving source hashes, minority objections and stronger CI.
+6. Re-check the six/seven reported Binance-hack XRP destination wallets directly against a validated XRPL ledger before claiming their current balances or movement; distinguish stolen-asset tracing from Binance's user-liability replenishment.
+
 ## Run 36 — 2026-11-08 02:43:45 UTC
 
 ## Mission priority
