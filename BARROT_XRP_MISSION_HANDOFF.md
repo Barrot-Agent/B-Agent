@@ -1,11 +1,13 @@
-# Current integrated Barrot handoff — 2026-11-08T09:47:59Z
+# Current integrated Barrot handoff — 2026-11-08T09:58:05Z
 
-## Run 49 follow-up — 2026-11-08T09:54:28Z
+## Run 49 — current repository and XRP mission status
+
+### Run 49 follow-up — 2026-11-08T09:58:05Z
 
 ### Exact-head corrections
 
 - **PR #1640:** code/test head `68fa88292ecfcd24a96b0c656172e59bb7ac1112` passed 1,189 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. The documentation-only head `f347f8cac339df18e53a16336f9d98631564a2da` passed core tests, dependency audit and fail-closed gate but failed the full suite with 1,188 passed and one failed assertion: `test_run28_handoff_is_latest_and_preserves_verified_heads` requires the file to begin with the canonical `# Current integrated Barrot handoff — ` heading. The prior Run49 clarification had been prepended before that heading. This follow-up moves the clarification below the canonical first heading; no test is weakened. Exact-head CI must pass on the new documentation-only handoff/map commit before merge. Live checks: [PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640/checks).
-- **PR #1643:** latest research head `3db89c6c2eb319e70fb5aefabacfd901ca559817`. Core tests and fail-closed gate passed; six-manifest dependency audit passed; full repository suite was still running at this handoff capture. The immediately preceding head `cf1d33527007a745cdb148d4c41b9a6c57169e7b` passed 2,350 full-suite tests. Do not substitute that result for 3db89. Live checks: [PR #1643](https://github.com/Barrot-Agent/B-Agent/checks).
+- **PR #1643:** latest research head `3db89c6c2eb319e70fb5aefabacfd901ca559817`. Exact-head full repository suite: **2,357 passed, 8 subtests passed**; core tests, six-manifest dependency audit and fail-closed gate also passed. Evidence: [full CI 42469076250](https://github.com/Barrot-Agent/B-Agent/actions/runs/42469076250), [dependency audit 42469076110](https://github.com/Barrot-Agent/B-Agent/actions/runs/42469076110), [fail-closed gate 42469076097](https://github.com/Barrot-Agent/B-Agent/actions/runs/42469076097). The preceding `cf1d335` head passed 2,350 full-suite tests. Do not substitute that result for 3db89. Live checks: [PR #1643](https://github.com/Barrot-Agent/B-Agent/pull/1643/checks).
 
 ### New append-only source-vintage correction
 
