@@ -340,11 +340,17 @@ def _fake_fetcher(captured: datetime):
             "xrp_etf_xrpr_issuer_page",
             "xrp_etf_bitwise_issuer_page",
             "xrp_etf_grayscale_gxrp_issuer_page",
+            "ripple_rlusd_transparency_dashboard",
+            "xrpldashboard_rlusd_cross_chain_supply",
+            "circle_usdc_transparency_dashboard",
         }:
             html_by_source = {
                 "xrp_etf_xrpr_issuer_page": "<html><title>REX-Osprey XRP ETF XRPR</title><p>As of 11/03/2026</p><table><tr><td>CoinShares XRP ETP</td></tr></table></html>",
                 "xrp_etf_bitwise_issuer_page": "<html><title>Bitwise XRP ETF</title><p>Data as of 11/03/2026</p><td>XRP in Trust</td><td>Digital Asset Custodian</td></html>",
                 "xrp_etf_grayscale_gxrp_issuer_page": "<html><title>Grayscale XRP Trust ETF</title><p>As of 11/04/2026</p><td>TOTAL XRP IN FUND</td><td>DIGITAL ASSET CUSTODIAN</td></html>",
+                "ripple_rlusd_transparency_dashboard": "<html><title>Ripple USD Transparency</title><h1>Ripple USD (RLUSD)</h1><h2>Total Circulating RLUSD</h2><p>RLUSD Reserve Funds</p><p>As of 11/05/2026</p></html>",
+                "xrpldashboard_rlusd_cross_chain_supply": "<html><title>RLUSD cross-chain supply</title><h1>RLUSD</h1><p>Ethereum</p><p>XRP Ledger</p><p>Snapshot</p></html>",
+                "circle_usdc_transparency_dashboard": "<html><title>Transparency and stability</title><h1>USDC</h1><p>EURC</p><p>Reserves</p><p>As of Nov 05, 2026</p></html>",
             }
             html_text = html_by_source[source_id]
             return {
@@ -505,6 +511,9 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "xrp_etf_xrpr_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_bitwise_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_grayscale_gxrp_issuer_page" for item in raw_only)
+    assert any(item["source_id"] == "ripple_rlusd_transparency_dashboard" for item in raw_only)
+    assert any(item["source_id"] == "xrpldashboard_rlusd_cross_chain_supply" for item in raw_only)
+    assert any(item["source_id"] == "circle_usdc_transparency_dashboard" for item in raw_only)
     receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     manifest = {item["source_id"]: item for item in receipts}
     # The default/scheduled collector must not request non-commercial public-node endpoints.
@@ -513,6 +522,14 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
     assert manifest["xrp_exchange_balances_json"]["model_eligible_source"] is False
     assert manifest["xrp_exchange_balances_json"]["source_data_as_of_utc"] is None
+
+    for source_id in (
+        "ripple_rlusd_transparency_dashboard",
+        "xrpldashboard_rlusd_cross_chain_supply",
+        "circle_usdc_transparency_dashboard",
+    ):
+        assert manifest[source_id]["model_eligible_source"] is False
+        assert manifest[source_id]["source_data_as_of_utc"] is None
     assert manifest["xrp_exchange_balances_json"]["raw_bytes_retained"] is False
     assert manifest["xrp_exchange_balances_json"]["raw_payload_path"] is None
     assert "attribution" in manifest["xrp_exchange_balances_json"]["raw_retention_reason"]
@@ -1015,6 +1032,87 @@ def test_additional_primary_issuer_pages_are_registered_and_retained_raw_only(so
     assert source_as_of is None
     assert eligible is False
     assert "raw_only" in reason
+
+
+
+@pytest.mark.parametrize(
+    ("source_id", "host", "url"),
+    [
+        (
+            "ripple_rlusd_transparency_dashboard",
+            "ripple.com",
+            "https://ripple.com/products/stablecoin/transparency/",
+        ),
+        (
+            "xrpldashboard_rlusd_cross_chain_supply",
+            "xrpldashboard.com",
+            "https://xrpldashboard.com/rlusd",
+        ),
+        (
+            "circle_usdc_transparency_dashboard",
+            "www.circle.com",
+            "https://www.circle.com/transparency",
+        ),
+    ],
+)
+def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(source_id, host, url):
+    captured = datetime(2026, 11, 8, 11, 0, tzinfo=timezone.utc)
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        payload, source_id=source_id, url=url, digest="e" * 64, captured=captured
+    )
+    assert host in ALLOWED_HOSTS
+    assert dict(ENDPOINTS)[source_id] == url
+    assert source_id in dict(SCHEDULED_ENDPOINTS)
+    assert len(ENDPOINTS) == 32
+    assert len(SCHEDULED_ENDPOINTS) == 30
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert "raw_only" in reason
+
+
+@pytest.mark.parametrize(
+    "source_id",
+    [
+        "ripple_rlusd_transparency_dashboard",
+        "xrpldashboard_rlusd_cross_chain_supply",
+        "circle_usdc_transparency_dashboard",
+    ],
+)
+def test_stablecoin_transparency_pages_reject_wrong_publisher_markup(source_id):
+    captured = datetime(2026, 11, 8, 11, 0, tzinfo=timezone.utc)
+    with pytest.raises(XRPIngestionError):
+        PARSERS[source_id](
+            {"html_text": "<html><title>unrelated page</title></html>"},
+            source_id=source_id,
+            url=dict(ENDPOINTS)[source_id],
+            digest="f" * 64,
+            captured=captured,
+        )
+
+
+@pytest.mark.parametrize(
+    "source_id",
+    [
+        "ripple_rlusd_transparency_dashboard",
+        "xrpldashboard_rlusd_cross_chain_supply",
+        "circle_usdc_transparency_dashboard",
+    ],
+)
+def test_default_public_fetcher_routes_stablecoin_transparency_pages_to_html(monkeypatch, source_id):
+    calls = []
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.fetch_public_html",
+        lambda sid, url: calls.append(("html", sid, url)) or {"kind": "html"},
+    )
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.fetch_public_json",
+        lambda sid, url: calls.append(("json", sid, url)) or {"kind": "json"},
+    )
+    url = dict(ENDPOINTS)[source_id]
+    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    assert calls == [("html", source_id, url)]
 
 
 @pytest.mark.parametrize(

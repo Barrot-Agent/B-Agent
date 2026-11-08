@@ -28,9 +28,9 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io"}
-ADAPTER_VERSION = "xrp-public-market-v3.14"
-PARSER_VERSION = "xrp-public-market-v3.13"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com"}
+ADAPTER_VERSION = "xrp-public-market-v3.15"
+PARSER_VERSION = "xrp-public-market-v3.14"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -67,6 +67,9 @@ ENDPOINTS = (
     ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
     ("xrp_etf_bitwise_issuer_page", "https://bitxrpetf.com/"),
     ("xrp_etf_grayscale_gxrp_issuer_page", "https://etfs.grayscale.com/gxrp"),
+    ("ripple_rlusd_transparency_dashboard", "https://ripple.com/products/stablecoin/transparency/"),
+    ("xrpldashboard_rlusd_cross_chain_supply", "https://xrpldashboard.com/rlusd"),
+    ("circle_usdc_transparency_dashboard", "https://www.circle.com/transparency"),
     ("xrpl_inftf_server_info", "https://xrplcluster.com/"),
     ("xrpl_honeycluster_server_info", "https://honeycluster.io/"),
 )
@@ -2952,6 +2955,55 @@ def _raw_only_grayscale_gxrp_issuer_page(payload: Any, *, captured: datetime, **
     )
 
 
+
+def _raw_only_ripple_rlusd_transparency_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Retain Ripple's issuer transparency dashboard without promoting dashboard values to features."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("Ripple RLUSD transparency page response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = ("ripple usd", "rlusd", "total circulating rlusd", "rlusd reserve funds")
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("Ripple RLUSD issuer-transparency identity or reserve markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_transparency_html_retained_raw_only_until_supply_and_attestation_vintages_are_normalized",
+    )
+
+
+def _raw_only_xrpldashboard_rlusd_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Retain the cross-chain RLUSD dashboard as a secondary, non-feature research receipt."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("XRPL Dashboard RLUSD page response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = ("rlusd", "ethereum", "xrp ledger")
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("XRPL Dashboard RLUSD cross-chain identity markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "secondary_cross_chain_supply_html_retained_raw_only_until_chain_supply_and_timestamp_are_reconciled",
+    )
+
+
+def _raw_only_circle_transparency_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Retain Circle's issuer transparency page without parsing dynamic values into features."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("Circle transparency page response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = ("transparency", "usdc", "eurc", "reserves")
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("Circle stablecoin-transparency identity or reserve markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_transparency_html_retained_raw_only_until_dynamic_supply_and_reserve_fields_are_normalized",
+    )
+
+
 PARSERS = {
     "xrpl_inftf_server_info": _parse_xrpl_server_info,
     "xrpl_honeycluster_server_info": _parse_xrpl_server_info,
@@ -2982,6 +3034,9 @@ PARSERS = {
     "xrp_etf_xrpr_issuer_page": _raw_only_xrpr_issuer_page,
     "xrp_etf_bitwise_issuer_page": _raw_only_bitwise_xrp_etf_page,
     "xrp_etf_grayscale_gxrp_issuer_page": _raw_only_grayscale_gxrp_issuer_page,
+    "ripple_rlusd_transparency_dashboard": _raw_only_ripple_rlusd_transparency_page,
+    "xrpldashboard_rlusd_cross_chain_supply": _raw_only_xrpldashboard_rlusd_page,
+    "circle_usdc_transparency_dashboard": _raw_only_circle_transparency_page,
 }
 
 
@@ -3154,7 +3209,7 @@ def _walk_forward_report(
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
         return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page"}:
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard"}:
         return fetch_public_html(source_id, url)
     if source_id == "xrp_etf_flows_csv":
         return fetch_public_csv(source_id, url)
