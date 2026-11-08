@@ -1210,7 +1210,7 @@ def test_execution_ledger_append_skips_trailing_blank_lines(tmp_path):
     ledger = MMIExecutionLedger(tmp_path / "mmi-execution.jsonl")
     first_hash = ledger.append({"event_type": "ingestion_started", "dataset_id": "xrp-test"})
     with ledger.path.open("a", encoding="utf-8") as handle:
-        handle.write("\\n\\n")
+        handle.write("\n\n")
 
     assert ledger.verify() is True
     second_hash = ledger.append({"event_type": "ingestion_completed", "dataset_id": "xrp-test"})
