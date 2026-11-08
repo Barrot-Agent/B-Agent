@@ -667,7 +667,8 @@
       "funds_transfer": false,
       "external_model_transfer": false,
       "force_push": false,
-      "destructive_worktree_action": false
+      "destructive_worktree_action": false,
+      "deployment": false
     },
     "latest_main_workflow_run": {
       "name": "Cross Analysis",
@@ -10276,7 +10277,8 @@
     "funds_transfer": false,
     "external_model_transfer": false,
     "force_push": false,
-    "destructive_worktree_action": false
+    "destructive_worktree_action": false,
+    "deployment": false
   },
   "forecast_status": "NOT_ISSUED",
   "main_workflow_status": {
