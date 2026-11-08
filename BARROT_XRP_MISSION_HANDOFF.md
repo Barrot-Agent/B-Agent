@@ -107,6 +107,36 @@ No deployment, secret rotation, Space restart, Kaggle submission, paper trade, f
 6. Verify scheduled ingestion on main; expand primary macro, regulatory, stablecoin, custody, collateral, institutional and payment-rail capture; establish independent raw-source archival/rebuild and accumulate synchronized historical data before model training or forecast issuance.
 
 
+## Run 50 supplemental — XRPL validator vote integrity and latest exact heads
+
+**Reference:** 2026-11-08, approximately 10:15 UTC. This supplement supersedes the earlier Run 50 branch-head snapshot where noted.
+
+### Latest branch heads and CI
+
+- **#1640 V3 integration:** current head `0317bd62550d8194f2aefd6a3d7a814fab1068de`, 665 commits ahead of main, zero behind, 177 changed files. Exact-head full suite **1,189 passed, 8 subtests**; core **660 passed, 8 subtests**; inclusive coverage **58.78%**; installed-wheel verification passed; six-manifest pip-audit passed; fail-closed gate passed. Runs: [full suite 42470267535](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470267535), [audit 42470267483](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470267483), [gate 42470267505](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470267505). Cache budget remains read-only; this is a non-fatal cache-write warning.
+- **#1643 XRP research:** current head `b587981d3a8d38f25b2efcbbd2e19eb682cf04a8`, 805 commits ahead of main, zero behind, 600 changed files. Core suite passed; dependency audit passed; fail-closed gate passed. The full repository suite is still running on this exact head. Do not reuse the prior head's **2,363 passed, 8 subtests** as evidence for this newer head. Runs: [full suite 42470530046](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470530046), [audit 42470530029](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470530029), [gate 42470530033](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470530033).
+- #1640 has 22/22 inline review threads resolved; #1643 has 19/19. Both still have zero APPROVED reviews; comments remain COMMENTED.
+- Six paths remain shared between the two mission branches. With 177 versus 600 changed files, this leaves 171 V3-only and 594 research-only paths. No new PR was created.
+
+### New upstream XRPL amendment-vote integrity evidence
+
+Added to the existing #1643 research branch in commit `b587981d3a8d38f25b2efcbbd2e19eb682cf04a8`, with a regression test:
+
+- `research/xrp_intelligence/20261108T101200Z-xrpl-validator-signing-key-rotation-amendment-vote-integrity.json`
+- `tests/test_xrpl_validator_signing_key_rotation_vote_integrity_20261108.py`
+
+XRPLF/rippled issue [#8534](https://github.com/XRPLF/rippled/issues/8534), opened October 8, remains open with zero comments and no linked fix observed. It reports that a long-running proposing validator can stop counting a trusted validator's amendment votes after the validator rotates its ephemeral signing key while retaining the same master key on the UNL. Because the recorded-vote map is keyed by signing key and refreshes only when trusted master-key membership changes, the old vote may persist for about 24 hours and then the validator can disappear from both the vote count and denominator until restart or UNL membership change.
+
+The issue's reported example had 35 trusted keys and 35 current signing keys, but one node showed 33 validations, threshold 26 and 28 BatchV1_1 votes. The reporter says a public explorer showed the same count. **The issue explicitly says no amendment's pass/fail outcome currently differs in that example.**
+
+A fresh read of current `XRPLF/rippled` develop commit `192b77d456ef0c14faf6095454b9bbc9476f4ce3` still showed the described mechanism in `AmendmentTable.cpp`, `NetworkOPs.cpp` and `ValidatorList.cpp`. This is code-path corroboration, not independent proof that every validator is affected or that the specific LendingProtocol 21/35 and SingleAssetVault 23/35 tracker counts are wrong.
+
+**Research consequence:** qualify amendment vote/threshold counts as node-specific until cross-checked across multiple independent nodes with provider timestamps, ledger indices, rippled versions, node uptime, UNL membership and current validator manifests. Keep the prior counts as observations, not a canonical network-wide vote total. Do not admit this as a price feature; it is a governance/event-quality caveat only. No production validator was restarted or modified.
+
+The new #1643 full-suite result is pending; its core tests, dependency audit and fail-closed gate passed. Forecast remains `NOT_ISSUED`.
+
+
+
 ## Run 49 — current repository and XRP mission status
 
 ### Run 49 follow-up — 2026-11-08T09:58:05Z
