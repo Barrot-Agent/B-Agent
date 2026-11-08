@@ -34,7 +34,7 @@ def test_provider_event_times_are_not_replaced_by_retrieval_time():
     assert receipts["Kraken"]["provider_event_timestamp_utc"] is None
     assert receipts["OKX"]["provider_event_timestamp_utc"] == "2026-11-08T12:34:36.967Z"
     assert receipts["Binance"]["provider_event_timestamp_utc"] == "2026-11-08T12:35:59Z"
-    assert artifact["retrieval_limits"]["retrieval_wall_clock_exposed"] is False
+    assert artifact["retrieval_limits"]["exact_http_retrieval_time_exposed"] is False
 
 
 def test_stale_and_boundary_market_observations_fail_closed():
@@ -83,7 +83,7 @@ def test_no_averaging_or_false_independent_confirmation():
     artifact = load_artifact()
     flows = artifact["etf_flow_reconciliation"]
     assert "not independent confirmations" in flows["source_independence"]
-    assert "not be averaged" in " ".join(flows["why_not_comparable"])
+    assert "prevent the values from being averaged" in " ".join(flows["why_not_comparable"])
 
 
 def test_no_feature_store_write_or_forecast():
