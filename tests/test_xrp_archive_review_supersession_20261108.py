@@ -74,9 +74,11 @@ def test_delayed_funding_correction_prevents_double_counting():
     field = next(item for item in correction["field_corrections"] if item["json_pointer"] == "/separate_capital_categories/2/amount_usd")
     derived["amount_usd"] = field["corrected_value"]
     assert derived["amount_usd"] == 214000000
-    assert derived["amount_xrp_exact"] == 84365876.3625 or correction["field_additions"][-1]["value"] == 84365876.3625
+    amount_xrp_exact = next(item for item in correction["field_additions"] if item["field"] == "amount_xrp_exact")
+    no_double_count = next(item for item in correction["field_additions"] if item["field"] == "do_not_add_delayed_subscriber_cash_separately")
+    assert amount_xrp_exact["value"] == 84365876.3625
     assert derived["amount_usd"] != 214050000
-    assert correction["field_additions"][-1]["value"] is True
+    assert no_double_count["value"] is True
 
 
 def test_c10_quarantines_historical_pillars_clean_result_without_http_status():
@@ -96,6 +98,6 @@ def test_source_artifact_git_blob_bindings_match_exact_files():
     for source in correction["source_artifacts"]:
         path = ROOT / source["path"]
         if "corrected_git_blob_sha" in source:
-            assert git_blob_sha1(path) == source["previous_git_blob_sha"] or source["previous_git_blob_sha"] != git_blob_sha1(path)
+            assert git_blob_sha1(path) == source["corrected_git_blob_sha"]
             continue
         assert git_blob_sha1(path) == source["git_blob_sha"]
