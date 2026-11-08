@@ -27,28 +27,28 @@ def test_run33_platform_map_preserves_run31_and_records_current_research():
         (ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
-    current = data["current_run_observations"]
+    run33 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 33)
     prior31 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 31)
-    assert current["run_id"] == 33
-    assert current["main_sha"] == MAIN_SHA
-    assert current["integration_head_before_map_commit"] == INTEGRATION_HEAD
-    assert current["research_head"] == RESEARCH_HEAD
+    assert run33["run_id"] == 33
+    assert run33["main_sha"] == MAIN_SHA
+    assert run33["integration_head_before_map_commit"] == INTEGRATION_HEAD
+    assert run33["research_head"] == RESEARCH_HEAD
     assert prior31["main_sha"] == MAIN_SHA
-    assert current["open_pr_inventory"] == {"total": 371, "drafts": 355, "non_drafts": 16}
-    assert current["branch_ancestry"]["integration"]["ahead"] == 607
-    assert current["branch_ancestry"]["research"]["ahead"] == 733
-    assert current["branch_ancestry"]["integration_only_paths"] == 168
-    assert current["branch_ancestry"]["research_only_paths"] == 517
-    assert len(current["branch_ancestry"]["shared_changed_paths"]) == 3
-    assert current["ci_evidence"]["integration"]["full_suite"].startswith("1,166 passed")
-    assert current["ci_evidence"]["research"]["full_suite"].startswith("2,188 passed")
-    assert current["ci_evidence"]["research"]["dependency_audit"].startswith("passed")
-    assert current["ci_evidence"]["research"]["fail_closed_gate"].startswith("passed")
-    assert current["reviews"]["pr_1640"]["approving_reviews"] == 0
-    assert current["reviews"]["pr_1643"]["approving_reviews"] == 0
-    assert current["merge_state"]["merge_performed"] is False
-    assert current["forecast_status"] == "NOT_ISSUED"
-    assert any("20261107T234225Z-xrpl-depth-exchange-balance-rlusd-agentic-payments.json" in p for p in current["research_artifacts_added"])
+    assert run33["open_pr_inventory"] == {"total": 371, "drafts": 355, "non_drafts": 16}
+    assert run33["branch_ancestry"]["integration"]["ahead"] == 607
+    assert run33["branch_ancestry"]["research"]["ahead"] == 733
+    assert run33["branch_ancestry"]["integration_only_paths"] == 168
+    assert run33["branch_ancestry"]["research_only_paths"] == 517
+    assert len(run33["branch_ancestry"]["shared_changed_paths"]) == 3
+    assert run33["ci_evidence"]["integration"]["full_suite"].startswith("1,166 passed")
+    assert run33["ci_evidence"]["research"]["full_suite"].startswith("2,188 passed")
+    assert run33["ci_evidence"]["research"]["dependency_audit"].startswith("passed")
+    assert run33["ci_evidence"]["research"]["fail_closed_gate"].startswith("passed")
+    assert run33["reviews"]["pr_1640"]["approving_reviews"] == 0
+    assert run33["reviews"]["pr_1643"]["approving_reviews"] == 0
+    assert run33["merge_state"]["merge_performed"] is False
+    assert run33["forecast_status"] == "NOT_ISSUED"
+    assert any("20261107T234225Z-xrpl-depth-exchange-balance-rlusd-agentic-payments.json" in p for p in run33["research_artifacts_added"])
 
 
 def test_run33_fuelmaps_candidate_is_not_misrepresented_as_a_connection():
@@ -56,7 +56,8 @@ def test_run33_fuelmaps_candidate_is_not_misrepresented_as_a_connection():
         (ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
-    candidate = data["current_run_observations"]["fuelmaps_mcp_candidate"]
+    run33 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 33)
+    candidate = run33["fuelmaps_mcp_candidate"]
     assert candidate["current_run_status"] == "NOT_CONNECTED_NOT_TESTED"
     assert candidate["endpoint"] == "https://fuelmaps.io/mcp"
     assert candidate["provider_claims"]["read_only"] is True
@@ -73,6 +74,7 @@ def test_run33_nine_platform_map_and_forecast_remain_fail_closed():
     assert data["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
     assert data["platforms"]["Copilot"]["authentication_status"] != "VERIFIED_CURRENT_SESSION"
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
-    assert data["current_run_observations"]["prediction_engine"]["forecast_status"] == "NOT_ISSUED"
-    assert data["current_run_observations"]["external_actions"]["real_money"] is False
-    assert data["last_verified_at_utc"] == "2026-11-07T23:42:25Z"
+    run33 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 33)
+    assert run33["prediction_engine"]["forecast_status"] == "NOT_ISSUED"
+    assert run33["external_actions"]["real_money"] is False
+    assert run33["captured_at_utc"] == "2026-11-07T23:42:25Z"
