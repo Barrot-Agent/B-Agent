@@ -780,7 +780,8 @@
         "approved_reviews": 0,
         "threads_total": 22,
         "threads_resolved": 22,
-        "threads_unresolved": 0
+        "threads_unresolved": 0,
+        "approving_reviews": 0
       },
       "pr_1643": {
         "review_records": 10,
@@ -788,7 +789,8 @@
         "approved_reviews": 0,
         "threads_total": 19,
         "threads_resolved": 19,
-        "threads_unresolved": 0
+        "threads_unresolved": 0,
+        "approving_reviews": 0
       },
       "independent_approving_reviews": 0,
       "interpretation": "COMMENTED reviews do not satisfy independent approval."
@@ -1010,7 +1012,8 @@
       "funds_transfer": false,
       "real_money": false,
       "external_model_transfer": false,
-      "feature_store_admission": false
+      "feature_store_admission": false,
+      "feature_store_write": false
     },
     "forecast_status": "NOT_ISSUED",
     "intervening_run_note": "Run 61 map snapshot was not captured. Run 62 and Run 63 observations are preserved in prior_run_observations.",
@@ -15206,7 +15209,8 @@
       "approved_reviews": 0,
       "threads_total": 22,
       "threads_resolved": 22,
-      "threads_unresolved": 0
+      "threads_unresolved": 0,
+      "approving_reviews": 0
     },
     "pr_1643": {
       "review_records": 10,
@@ -15214,7 +15218,8 @@
       "approved_reviews": 0,
       "threads_total": 19,
       "threads_resolved": 19,
-      "threads_unresolved": 0
+      "threads_unresolved": 0,
+      "approving_reviews": 0
     },
     "independent_approving_reviews": 0,
     "interpretation": "COMMENTED reviews do not satisfy independent approval."
@@ -15598,7 +15603,8 @@
     "funds_transfer": false,
     "real_money": false,
     "external_model_transfer": false,
-    "feature_store_admission": false
+    "feature_store_admission": false,
+    "feature_store_write": false
   },
   "forecast_status": "NOT_ISSUED",
   "main_workflow_status": {
