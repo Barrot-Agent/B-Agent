@@ -1,3 +1,33 @@
+# Current integrated Barrot handoff — 2026-11-08T13:17:32Z
+
+## Run 55 — current repository and verification
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main write.
+- Current #1640 handoff/map branch head before this heading-compatibility correction: `ec5f9b73e1f113c259587cd8f88c2b732f82641f`.
+- Current #1643 research head: `58c65e4277d7b95193452538ef063462aa95af8f`.
+- #1643 exact-head full suite: **2,433 passed, 8 subtests passed**; core 498 passed; six-manifest dependency audit passed; fail-closed gate passed. New orderbook/derivatives/ETF-vintage regression module passed.
+- #1640 head `636d7fa` had one historical map-schema failure (`current_run_observations.prediction_engine` missing); the field was restored from the preserved top-level prediction-engine contract.
+- #1640 head `ec5f9b7` then passed the 660-test core suite, six-manifest dependency audit and fail-closed gate, but its full suite found one historical handoff-heading assertion: `test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads` requires the first line to start with `# Current integrated Barrot handoff —` and a `## Run N — current repository` heading within the first 3,000 characters. The Run 55 CI addendum had been prepended before the required heading. This is a documentation-contract failure, not a product-code or research-data failure. This current heading restores the expected format; the new exact head must complete its own full suite and wheel check.
+- #1640 exact-head checks on `ec5f9b7`: core passed; six-manifest audit passed; fail-closed gate passed; full suite failed only the heading assertion; wheel verification skipped after that failure.
+- Review threads: #1640 22/22 resolved; #1643 19/19 resolved. Approvals: **zero APPROVED reviews** on either PR.
+- Main branch-protection read remains HTTP 403; visible fallback ruleset disabled. GitHub Pages enabled, configuration inaccessible. #1640 changes public web paths; merge-triggered deployment authorization is absent.
+- Main Pillars health run 42482972244 failed on missing GitHub App credentials, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. Deploy-sync and fiction scan passed. No external action was taken.
+- New #1643 artifact: `research/xrp_intelligence/20261108T130321Z-xrp-orderbook-derivatives-etf-vintage-reconciliation.json`; seven regression tests pass on #1643 head 58c65e.
+- Fuelmaps 12:00 UTC composite: $1.1645 XRP mid, 56.5% displayed bid share within 1%, 69.7% within 5%; Binance/Bitget excluded and hourly averages used. Binance perpetual response is stale by 1,642 seconds, mark/index -3.113 bps, funding +0.009823%/8h, OI/liquidations unavailable. ETF providers remain methodologically inconsistent; future-dated CryptoKeyhole issuer-file label quarantined. None admitted to the feature store.
+- Nine-platform state remains ChatGPT-to-GitHub verified only; Copilot comments are not approval; Claude, Grok, Gemini, Codex unverified; Hugging Face BUILD_ERROR; Kaggle untested; Databricks 403. No external model exchange.
+- Prediction engine remains implemented on #1640 branch but not main. Scheduled ingestion not verified on main; independent WORM archive, synchronized multi-domain history, out-of-sample lift, real-data calibration, concept-drift monitoring and shadow outcomes remain incomplete.
+- **Forecast: NOT_ISSUED.** No paper trade, real-money action, deployment, secret rotation, Space restart, Kaggle submission, funds transfer, external model transfer or merge occurred.
+
+Exact current checks:
+- #1643 full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561562
+- #1643 dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561547
+- #1643 fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561518
+- #1640 core CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42484012400
+- #1640 dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42484012442
+- #1640 fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42484012406
+
+---
+
 # Run 55 CI addendum — 2026-11-08T13:13:08Z
 
 The new #1643 research head `58c65e4277d7b95193452538ef063462aa95af8f` completed exact-head verification:
