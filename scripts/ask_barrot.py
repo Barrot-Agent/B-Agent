@@ -9,6 +9,7 @@ import requests
 from pathlib import Path
 
 from barrot_agent.repo_state_corroborator import RepoStateCorroborator
+from barrot_agent.orchestration.shared_inference import ask as shared_inference_ask, get_provider
 
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
@@ -340,48 +341,29 @@ def append_memory(question, answer):
 
 
 INFRASTRUCTURE_CONSTRAINTS = (
-    "\n\nYour real, hard infrastructure constraints - ground every "
-    "proposal in these, they are not negotiable:\n"
-    "- Runtime is ONLY: Termux on an Android phone (ARM64, no root, no "
-    "GPU), and GitHub Actions runners (ephemeral - nothing persists "
-    "between runs except what's explicitly git-committed and pushed; "
-    "actions/cache is NOT reliable persistent storage, don't propose "
-    "relying on it for a database or vector store).\n"
-    "- No GPU anywhere in your own pipeline. The only GPU access that "
-    "exists is free external Hugging Face ZeroGPU Spaces, called via "
-    "raw HTTP - not something your own scripts run on directly.\n"
-    "- huggingface_hub and anything that depends on it (gradio_client, "
-    "many ML framework installs) CANNOT be pip installed on the phone - "
-    "compiling a transitive dependency SIGKILLs from OOM. Avoid "
-    "proposing local ML framework installs (transformers, torch, "
-    "sentence-transformers) - assume they will hit the same wall unless "
-    "explicitly proven otherwise.\n"
-    "- No training or fine-tuning infrastructure exists. Any capability "
-    "must come from calling an existing API, not training a model.\n"
-    "- Real, confirmed-working external APIs you can propose using: Groq "
-    "(chat completions ONLY - it does NOT have a real embeddings API, "
-    "confirmed via a real 404 on the endpoint; never propose Groq "
-    "embeddings again), "
-    "GitHub's own API, Gumroad (aggregate product metrics only, never "
-    "individual customer data), free HF ZeroGPU Spaces (image "
-    "generation via raw HTTP), NIH RePORTER / ClinicalTrials.gov / "
-    "openFDA (free public government data, no key needed).\n"
-    "- Scite: only trial-tier access exists and even that currently "
-    "requires a Pro subscription upgrade - do not propose Scite data "
-    "pulls unless told access has changed.\n"
-    "- Prefer plain Python stdlib (urllib, json) over heavy frameworks "
-    "(LangChain, ChromaDB, etc.) - minimal dependencies are what "
-    "actually install reliably on this hardware; a framework wrapping "
-    "something already achievable with a few lines of stdlib code is "
-    "unnecessary complexity, not a real improvement."
+    "\\n\\nYour real infrastructure constraints and available local hardware:\\n"
+    "- Runtime includes Termux on Sean's Android ARM64 phone and GitHub Actions runners. "
+    "The phone has a Mali-G57 MC2 GPU; llama.cpp Vulkan GPU offload was previously "
+    "verified on-device. GitHub-hosted runners cannot reach the phone's 127.0.0.1 endpoint.\\n"
+    "- Local model: Llama 3.2 1B Instruct Q4_K_M, served by llama.cpp at "
+    "http://127.0.0.1:8081/v1 when the Termux server is running. Preserve context "
+    "2048 and generation threads 4 unless Sean explicitly authorizes a change.\\n"
+    "- Treat the 1B local model as lightweight/offline assistance, summaries, "
+    "classification, and short transformations. Do not assume it can perform "
+    "complex XRP research or reliable tool orchestration.\\n"
+    "- No local model training or fine-tuning infrastructure is established.\\n"
+    "- Prefer Python standard library and small dependencies on the phone. "
+    "Do not propose heavyweight ML installs without evidence they fit the device.\\n"
 )
 
 
 def main():
-    key = os.getenv("GROQ_API_KEY", "")
-    if not key:
-        print("no GROQ_API_KEY, exiting")
-        return
+    try:
+        provider = get_provider()
+    except Exception as exc:
+        print(f"Barrot inference configuration error: {exc}", file=sys.stderr)
+        return 2
+
     question = (
         " ".join(sys.argv[1:]).strip()
         or os.getenv("ASK_BARROT_QUESTION", "").strip()
@@ -400,50 +382,42 @@ def main():
         + load_gumroad_metrics()
         + load_ingestion_metrics()
         + load_recent_failures()
-        + load_last_groq_usage()
+        + (load_last_groq_usage() if provider["name"] == "groq" else "")
         + load_referenced_file_contents(question)
     )
 
-    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-    payload = {
-        "model": DEFAULT_GROQ_MODEL,
-        "max_tokens": 2000,
-        "messages": [
-            {"role": "system", "content": system},
-            {"role": "user", "content":
-                "BACKEND IDENTITY: The API endpoint used by this script is api.groq.com, "
-                "therefore the inference backend is Groq. A model name containing OpenAI, "
-                "such as openai/gpt-oss-120b, does not mean OpenAI is the API backend. "
-                "Report Groq as the backend when this script is using the Groq endpoint.\n\n"
-                "CURRENT QUESTION — ANSWER ONLY THIS QUESTION. Do not answer any "
-                "previous question from memory or background context. Follow all "
-                "exact format, sentence-count, and length instructions exactly.\n\n"
-                + question},
-        ],
-        "temperature": 0.5,
-    }
-    r = None
-    for attempt in range(6):
-        r = requests.post(GROQ_ENDPOINT, headers=headers, json=payload, timeout=TIMEOUT)
-        if r.status_code == 429 and attempt < 5:
-            wait = min(60, 2 ** attempt)
-            print(f"Groq rate-limited. Retrying in {wait}s...")
-            time.sleep(wait)
-            continue
-        r.raise_for_status()
-        break
-    log_groq_usage(r)
-    response_data = r.json()
-    answer = response_data["choices"][0]["message"]["content"].strip()
-    actual_model = response_data.get("model", DEFAULT_GROQ_MODEL)
-    print(f"[BARROT BACKEND: Groq | MODEL: {actual_model}]")
+    user_prompt = (
+        f"BACKEND IDENTITY: The active inference backend is {provider['name']}. "
+        f"The selected model is {provider['default_model']}. Report these exact "
+        "identities; do not infer the backend from the model name.\\n\\n"
+        "CURRENT QUESTION — ANSWER ONLY THIS QUESTION. Do not answer any "
+        "previous question from memory or background context. Follow all "
+        "exact format, sentence-count, and length instructions exactly.\\n\\n"
+        + question
+    )
+
+    try:
+        answer = shared_inference_ask(
+            user_prompt,
+            system=system,
+            model=provider["default_model"],
+            max_tokens=2000,
+            temperature=0.5,
+            timeout=int(TIMEOUT),
+        )
+    except Exception as exc:
+        print(f"Barrot inference failed ({provider['name']}): {exc}", file=sys.stderr)
+        return 1
+
+    print(f"[BARROT BACKEND: {provider['name']} | MODEL: {provider['default_model']}]")
 
     with open("barrot_answer.md", "w", encoding="utf-8") as f:
         f.write(answer)
 
     append_memory(question, answer)
-
     print(answer)
+    return 0
+
 
 
 if __name__ == "__main__":
