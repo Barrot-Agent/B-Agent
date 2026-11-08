@@ -27,9 +27,16 @@ def test_sbic_chatgpt_academic_benchmark_is_separated_from_japan_sbic() -> None:
     assert sbic["relation_to_sbi_holdings"] == "NONE_ESTABLISHED"
     assert sbic["relation_to_openai_partnership"].startswith("NONE")
 
+    correction = json.loads(
+        (ROOT / "research/xrp_intelligence/20261108T072226Z-vling-channel-excerpt-hash-correction.json").read_text(encoding="utf-8")
+    )
     for receipt in data["source_receipts"]:
         actual = hashlib.sha256(receipt["excerpt"].encode("utf-8")).hexdigest()
-        assert actual == receipt["excerpt_sha256"]
+        if receipt["source_id"] == "vling_channel_candidate":
+            assert receipt["excerpt_sha256"] == correction["original_excerpt_sha256"]
+            assert actual == correction["corrected_excerpt_sha256"]
+        else:
+            assert actual == receipt["excerpt_sha256"]
 
     identity = data["kamilah_identity"]
     assert identity["person_identity"]["status"].startswith("CONFIRMED")
