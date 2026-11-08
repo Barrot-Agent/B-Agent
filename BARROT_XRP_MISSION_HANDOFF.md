@@ -7258,3 +7258,120 @@ Both mission PRs are mergeable and all inline threads are resolved (#1640 22/22;
 6. Close only exact duplicates/superseded PRs after successor content is verified on main.
 7. Verify scheduled ingestion on main; add missing regulatory, macro, stablecoin, custody, collateral, institutional and payment-rail data.
 8. Establish independently controlled WORM archival and raw-source rebuild, then accumulate synchronized multi-domain history and measure out-of-sample lift, calibration, drift and independent shadow outcomes before forecasting.
+
+
+## Run 48 — 2026-11-08T08:25:45Z
+
+### Current verified repository state
+
+Main remains unchanged at `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Open PR inventory remains **372: 356 drafts and 16 non-drafts**.
+
+| PR | Current head | Ahead of main | Changed paths | Exact-head full suite |
+|---|---|---:|---:|---:|
+| [#1640 V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640) | `4ccd096279f7dc7e466a6fd2b8fee6ea5b87201e` | 658 | 177 | **1,189 passed, 8 subtests** |
+| [#1643 XRP research](https://github.com/Barrot-Agent/B-Agent/pull/1643) | `3271eb4cd595b2f31d8286bcdd1065fafb50e8b7` | 789 | 583 | **2,323 passed, 8 subtests** |
+
+Both are zero commits behind main and remain divergent. They share six paths, leaving 171 integration-only and 577 research-only paths. The shared paths are the dependency-audit workflow, durable handoff, Kamilah source registry, Pillars verification script, Kamilah identity-gate test and Pillars read-only test. Do not merge these branches together directly.
+
+**PR #1640 exact-head evidence on 4ccd:**
+- Full repository suite: 1,189 passed, 8 subtests.
+- Core suite: 660 passed, 8 subtests.
+- Inclusive coverage: 58.78%.
+- Installed-wheel verification passed; the installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit passed; no known vulnerabilities reported.
+- Fail-closed gate passed; automatic merging disabled.
+- [Full CI 42462675811](https://github.com/Barrot-Agent/B-Agent/actions/runs/42462675811) · [Dependency audit 42462675833](https://github.com/Barrot-Agent/B-Agent/actions/runs/42462675833) · [Fail-closed gate 42462675843](https://github.com/Barrot-Agent/B-Agent/actions/runs/42462675843).
+- Non-failing warnings: Actions cache budget is read-only; setuptools reports package-discovery/license-metadata deprecations. Installed-wheel smoke passed.
+
+**PR #1643 exact-head evidence on 3271:**
+- Full repository suite: 2,323 passed, 8 subtests.
+- Core suite: 498 passed, 8 subtests.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed.
+- [Full CI 42461799002](https://github.com/Barrot-Agent/B-Agent/actions/runs/42461799002) · [Dependency audit 42461798980](https://github.com/Barrot-Agent/B-Agent/actions/runs/42461798980) · [Fail-closed gate 42461798944](https://github.com/Barrot-Agent/B-Agent/actions/runs/42461798944).
+
+### Integration and documentation corrections
+
+The Run 47 handoff/map refresh at ce15 passed its exact-head suite. A subsequent correction commit at 4ccd also passed its exact-head suite and added one regression test.
+
+The collector defines **29 endpoint records, 27 scheduled**, with two non-commercial XRPL public-node sources excluded. `research/xrp_intelligence/forecast-ledger-contract.md` had stale 23/21 counts in two places. Both are now corrected, and `tests/test_xrp_forecast_contract_endpoint_count_20261108.py` asserts the contract matches `ENDPOINTS` and `SCHEDULED_ENDPOINTS`.
+
+**Feature-snapshot verification correction:** an earlier handoff incorrectly claimed forecast snapshot IDs were not resolved. Code inspection established that `ForecastLedger.record_forecast` invokes `_verify_feature_snapshots` before recording. It resolves IDs through the injected `HistoricalFeatureStore.verified_snapshot` and verifies exact ID, integrity, asset scope, cutoff, capture/storage times, manifest/source lineage, feature IDs and maximum information-availability time. This path is implemented and test-covered. It is not a production-readiness blocker.
+
+Production issuance remains fail-closed for different reasons: no trusted evaluator public key is configured, no mature synchronized independent XRP dataset has demonstrated out-of-sample lift, real-data calibration and drift are not validated, and independent shadow outcomes are insufficient.
+
+### XRP research status
+
+The new primary exchange receipt and six regression tests are on #1643 and passed its exact-head full suite.
+
+At the receipt's run reference (November 8, 08:04:38 UTC):
+- Kraken XRP/USD: $1.16337 last, $1.16335/$1.16336 bid/ask, 12.865M XRP 24h volume, $1.16308546 VWAP; provider timestamp missing.
+- OKX XRP-USDT: 1.1655 last, 1.1651/1.1652 bid/ask, 19.245M XRP 24h volume; provider snapshot 07:48:17.772 UTC, 980.228 seconds old.
+- Binance XRPUSDT perpetual: 1.1624 mark, 1.16286357 index, -3.99 bps mark/index basis; returned funding +0.009747% per 8h, but response timestamp 07:27:58.002 UTC was 2,199.998 seconds old. OI was unavailable, not zero.
+- Raw Kraken USD/OKX USDT last-price gap 0.1831% is not arbitrage: USD/USDT and timestamps are not normalized. Full depth and synchronized trade tape were unavailable.
+
+The receipt hashes exact browser-returned JSON text, not raw HTTP wire bytes or headers. All three observations remain model-ineligible; none entered the feature store.
+
+The exact phrase “SBIC, ChatGPT SBIC” resolves to the **Social Bias Inference Corpus**, not Japan's statutory SBIC East/Central/West companies or SBI Holdings. Sap et al. (ACL 2020) is the original dataset paper; Ziems et al. (Computational Linguistics 2024) evaluates explanation quality. Its 65.9% GPT-3.5 figure is a unanimous pairwise human preference share for generated explanations over gold explanations, not classification accuracy or XRP prediction performance. A secondary review's COVID-19 expansion and political-ideology gold-label description conflict with the primary papers; the conflict remains recorded.
+
+Exchange-wallet, ETF and derivatives data remain secondary and non-comparable:
+- XRP Insights' 22.33B XRP across 701 wallets/24 exchanges is attributed cold/omnibus/exchange wallet inventory, not tradable float; its same-wallet 7d/30d changes are -150.7M/-161.2M. Its Binance-Peg reserve components disagree internally by 1.6M XRP.
+- XRP Insights Nov 6 ETF flow -663,043 XRP and weekly -812.5K; CryptoKeyhole partial Nov 6 -752,048; Alpha Finance Nov 6 $0 and +$45.9M over 30 sessions. Different universes, settlement vintages and methods.
+- Derivatives OI aggregators report roughly $775M versus $1.89B under different contract/exchange scopes and timestamps; not model-eligible.
+
+Ripple/BNY's October 27 first-party release confirms eligible-client XRP/RLUSD custody support, but no balances, XRP purchases or payment-settlement volume. Kamilah Stevenson's person identity is supported by first-party biography/professional evidence; the candidate YouTube channel is not reciprocally linked and verified personal-channel uploads remain zero. No separate Camilla identity is verified. ASK Coin has no new primary XRP relationship; “actual capital” remains not an issuer-defined metric.
+
+### Prediction-engine readiness
+
+On #1640, 29 endpoints include 27 scheduled public sources and two excluded XRPL-node sources. The intended schedule is hourly at minute 3 and daily at 00:15 UTC, read-only. It is not on main and has not been verified running on main.
+
+Implemented on #1640:
+- SHA-256 raw-source receipts and per-run hash chain.
+- Point-in-time SQLite feature store.
+- Naive, momentum, mean-reversion and volatility baselines.
+- Chronological walk-forward evaluation with embargo.
+- Temporal calibration diagnostics and event-time leakage guards.
+- PSI drift diagnostics.
+- Fail-closed forecast ledger and issuance-time feature-snapshot verification.
+
+Remaining gaps:
+- Historical evaluator covers Binance XRP/USDT and Coinbase XRP/USD hourly closes only.
+- Scheduled SEC/regulatory, FRED/Treasury/BOJ, stablecoin mint/burn, custody, collateral, institutional holdings and payment-rail throughput sources are missing.
+- Raw receipts retain 90 days, per-run feature checkpoints seven days, daily feature-store archives 90 days.
+- SQLite triggers and unkeyed hashes are not adversarially immutable; external WORM storage and complete raw-source rebuild are absent.
+- PSI is univariate and does not detect concept/label drift.
+- No trained-model out-of-sample lift, validated real-data calibration or sufficient independent shadow outcomes.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, shadow trade, paper trade or real-money action occurred.
+
+### Nine-platform and main safety
+
+ChatGPT-to-GitHub is the only verified persistent connection. Copilot review activity is COMMENTED, not APPROVED. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. Groq is distinct from Grok. No external model received repository data.
+
+Main's latest scheduled Cross Analysis run [42460490047](https://github.com/Barrot-Agent/B-Agent/actions/runs/42460490047) succeeded. Main's Barrot Agent issue run [42388663091](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388663091) failed because Groq rejected 8,099 TPM against an 8,000 limit after retries; #1640 contains a deterministic preflight/rate-limit fix, not on main. Pillars run [42375034124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42375034124) failed on Databricks HTTP 403 and Hugging Face Space BUILD_ERROR; no restart occurred.
+
+Main still has active privileged workflows: `barrot-agent.yml` and `ask-barrot.yml` have contents/issues write; `deploy-a2a-worker.yml` and `sync-self-hosted-brain.yml` have push-triggered secret-bearing deployment paths; `coinbase-paper-trader.yml` remains manual and was not invoked. #1640 changes 41 workflow files to quarantine/gate these paths. Main is protected, but detailed branch-protection settings return HTTP 403, visible fallback ruleset 10863829 is disabled, CODEOWNERS assigns all paths to `@Barrot-Agent`, and Pages configuration remains inaccessible. A prior Pages deployment completed on main; merge-triggered public deployment is not authorized.
+
+### Backlog and merge decision
+
+- #1640 and #1643 remain active mission candidates.
+- #1653 remains blocked by eight unresolved review threads; six unique repository-graph paths are preserved.
+- #1644–#1650 overlap #1640; older dependency/workflow updates are represented at newer versions or identical sampled content. Keep until main verification.
+- #1320, #1318 and #1317 overlap #1640 but have different content; preserve until main verification.
+- #1269 has eight unique rendering/topology paths; preserve.
+- #1254/#1255 are older dependency floors superseded by newer combined versions in #1640, pending main verification.
+- Preserve unique drafts/research including #1655, #1641, #1659, #1477, #1547, #1586, #1597 and #1591.
+
+Both mission PRs remain mergeable with all inline threads resolved (#1640 22/22, #1643 19/19), but both have **zero independent APPROVED reviews**. COMMENTED reviews do not satisfy approval. No PR was merged or closed.
+
+**No merge was performed.** Independent approvals and confirmation of branch-protection/Pages behavior remain unresolved. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree operation occurred.
+
+### Next actions
+
+1. Obtain genuine independent APPROVED reviews for #1640 and #1643.
+2. Resolve branch-protection requirements and GitHub Pages deployment authorization.
+3. Merge #1640 only when every condition passes; verify merge commit, files, automatic workflow effects and main CI.
+4. Consolidate #1643's 577 unique research paths onto verified main, reconcile all six shared paths and carry #1640's stronger coverage, installed-wheel and security checks.
+5. Close only exact duplicates/superseded PRs after successor content is verified on main.
+6. Verify scheduled ingestion on main and add SEC/regulatory, macro-vintage, stablecoin mint/burn, custody, collateral, institutional and payment-rail sources.
+7. Establish independently controlled WORM archival and deterministic raw-source rebuild; accumulate synchronized multi-domain history and measure out-of-sample lift, calibration, drift and independent shadow outcomes before any directional forecast.
