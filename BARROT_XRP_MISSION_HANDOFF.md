@@ -9,6 +9,75 @@ The user explicitly authorized merging every change that is genuinely ready. The
 
 Both recurring Barrot automations were updated with this integration-first protocol. They now require checking current main, the complete PR backlog and the latest handoff before creating work; at most one active integration PR per coherent workstream; full-suite verification; merge of genuinely ready work; and post-merge verification.
 
+## Run 37 — current repository state (2026-11-08T03:15:00Z)
+
+### Mission and mainline
+
+- XRP intelligence and prediction-engine mastery remain the highest-priority mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Current main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main is unchanged; no merge occurred.
+- Complete recursive main tree: 1,403 entries; 1,298 files; 493 Python files; 90 test modules; 86 workflow YAML files. The tree response was not truncated.
+- Open PR inventory: 372 total, 356 drafts and 16 non-drafts. Fourteen target the current main SHA; 358 target other base revisions and require individual ancestry/stack triage. Do not bulk-close them.
+
+### Mission PR status
+
+**PR #1640 — Barrot V3 integration**
+
+- Exact current head: `af2bfc734a1fd27c353d020f332be342a97d16f2`; 176 changed paths; 627 commits ahead of main and zero behind.
+- Full repository suite: **1,183 passed, 8 subtests passed**; inclusive coverage **58.78%**, above the 53% threshold. Run [42441119269](https://github.com/Barrot-Agent/B-Agent/actions/runs/42441119269).
+- Core suite: **655 passed, 8 subtests passed** in the same run.
+- Installed-wheel verification passed: the built and installed wheel loads Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit passed: [42441119259](https://github.com/Barrot-Agent/B-Agent/actions/runs/42441119259).
+- Fail-closed merge gate passed and kept merging disabled: [42441119309](https://github.com/Barrot-Agent/B-Agent/actions/runs/42441119309).
+- The preceding exact head failed one stale handoff-heading assertion. Run 37 added the expected current-repository heading without deleting prior run history; the new exact head passed the full suite.
+
+**PR #1643 — XRP intelligence and research**
+
+- Current head: `0b37cae70f1f74d1bec731aa9d3675e797039f2d`; 544 changed paths; 749 commits ahead of main and zero behind.
+- Previous exact head `a2243683433c4dd4f3e2da5bfaa9adb254900b2b` passed **2,237 tests and 8 subtests** in run `42437780299`. This result does not verify the new Run 37 artifact/test commits.
+- New work is on the existing research branch: direct Kraken/OKX spot receipts, a Binance-hack XRPL event reconciliation, an append-only receipt-hash correction, and regression tests. Exact-head CI for `0b37cae` has not yet been verified.
+- The research branch still needs #1640's stronger inclusive-coverage and installed-wheel checks carried forward when the work is consolidated.
+
+### Branch ancestry and overlap
+
+- Main is the common base. Comparing the two mission heads reports #1643 749 commits ahead and #1640 627 commits behind.
+- Exactly three changed paths overlap: `.github/workflows/dependency-audit.yml` (identical); `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different candidate registries); and `tests/test_kamilah_channel_identity_gate.py` (different assertions). Preserve the larger research candidate registry and combine both assertion sets.
+- Relative to the three shared paths, #1640 has 173 integration-only paths and #1643 has 541 research-only paths. #1643 now has three additional research files (market/security artifact, hash-correction artifact and test file).
+- No new branch or PR was created. No PR was merged or closed.
+
+### Review and merge gates
+
+- #1640 has 22 unresolved inline review threads; #1643 has 19. Each has ten COMMENTED reviews and zero APPROVED reviews. COMMENTED is not approval.
+- Several #1640 findings are already addressed in current code but still have unresolved threads: IP-literal publisher rejection, complete canonical structural descriptor sorting, tolerance-aware invariant comparison, non-finite float rejection and dust-sized paper-position rejection. Verify each thread against the current head before resolving it. MMI malformed-input and paper-trader workflow findings still require explicit triage.
+- #1643's unresolved evidence threads still include Kraken daily-open labeling, Kamilah subscriber-source attribution, Evernorth lender/cost-basis/duplicate-edge corrections, Circle/SBI Arc evidence mismatch and citation-scope errors. Preserve original evidence and use append-only corrections.
+- #1640 is currently mergeable/clean and all exact-head checks passed, but it has no approving review and branch-protection details remain inaccessible (HTTP 403). GitHub Pages configuration and automatic deployment side effects remain unverified/unauthorized. Do not merge.
+- #1643 remains unstable while exact-head checks for its new artifact/test work are pending. Do not merge.
+
+### New market and security evidence
+
+- The 2026-11-08 02:59:08 UTC Kraken/OKX direct ticker snapshot records Kraken XRP/USD at 1.15436 (bid 1.15427, ask 1.15436, 16.973M XRP rolling-24h volume, 1.16203833 rolling-24h VWAP, 1.16234 daily open) and OKX XRP-USDT at 1.1555 (bid 1.1555, ask 1.1556, 27.927M XRP rolling-24h volume, 1.1704 24h open). Kraken event time is absent; OKX timestamp age is 1,561.238 seconds, beyond the 300-second limit. No multi-level synchronized depth was captured. Both observations are model-ineligible.
+- The artifact preserves exact UTF-8 response strings and SHA-256 receipts. A subsequent append-only correction records the correct hashes: Kraken `2c3eddf82fa86ff7a9c5291958c28a1a5c3582ddfe22ab4013ef448fd916c3e5`; OKX `3c7cd7995609788cc15462a1a4f699dafeb677c70f68cb94c1d89f51a020a51c`. Original response text and initial artifact remain unchanged; tests apply the correction overlay.
+- Binance's verified official report says five hot wallets sent 233.46M XRP to an attacker-controlled XRPL address between 20:05 and 20:09 UTC on Oct 29. XRPLWin identifies the attacker-tagged account as `rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx`; Bitcoin.com reports that on Nov 2 the account distributed about 233.45M XRP to six reported wallets. Some monitoring counts a seventh destination due to a separate 1,000-XRP test payment. The last cited no-outgoing snapshot is Nov 2 04:37 UTC; no current Nov 8 balances are claimed.
+- U.Today describes the two 40M transfers from the attacker-tagged rK21 account as Binance moving assets to internal wallets. The sender is the attacker-tagged account and the receiver is described as unknown. That is not proof of Binance recovery or a sale; reject the internal-sweep interpretation until destination control is proven.
+- Binance's statement that 98% of affected token assets were replenished by Oct 31 is a customer-liability/replenishment claim, not proof the stolen XRP was recovered. XRPLWin reports Ripple froze 40.5M RLUSD on Ethereum; that stablecoin issuer control does not apply to native XRP.
+- XRP Insights reports approximately -812.5K XRP in holdings changes across six US spot XRP ETFs plus BITW for Nov 2–6, including -663K on Nov 6. It excludes GXRP from daily flow totals during a stated data-gap correction. This is secondary aggregation, not a raw issuer-by-issuer receipt or direct cash-flow measurement.
+- Swiftedge's 02:06 UTC brief reports XRP -1.79% over 24h, net taker flow -14.9% of volume, volume 0.8x normal, +0.0034% funding per 8h and a displayed $4.5M bid wall at 1.1500. It is a stale secondary observation, not executable-depth evidence.
+- FBI attribution to North Korea's TraderTraitor is an official law-enforcement assessment; North Korea rejected it. Preserve the attribution as contested, not as independently proven identity.
+
+### Prediction and nine-platform status
+
+- Forecast status remains **NOT_ISSUED**. The direct market observations are asynchronous and quarantined; the stolen-XRP destination wallets have not been re-queried at a current validated ledger; ETF flows remain secondary; no measured out-of-sample predictive lift or real-data calibration has been demonstrated.
+- Scheduled ingestion remains on #1640, not main. No scheduled ingestion run on main is verified. Independent external WORM archival and independently rebuildable raw-source receipts remain incomplete.
+- Nine-platform state is unchanged: ChatGPT-to-GitHub is the only verified persistent connection; Copilot activity is COMMENTED, not APPROVED; Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. No external task exchange or data transfer occurred.
+
+### Next concrete actions
+
+1. Verify exact-head full suite, inclusive coverage, installed-wheel packaging, dependency audit and fail-closed gate on the new #1643 head after this handoff update.
+2. Re-query the attacker account and every reported destination against a validated XRPL ledger; record ledger index/hash, transaction hashes, retrieval time and exact response hashes.
+3. Reconcile all 22 #1640 and 19 #1643 review threads against current code/evidence; fix substantive findings and explicitly document stale findings before resolving them.
+4. Obtain independent approving reviews and authorized confirmation of branch-protection and Pages behavior. Merge #1640 only after every required gate passes; verify merge SHA, files, workflow side effects and main CI.
+5. Consolidate #1643's 541 research-only paths plus the reconciled three shared paths onto verified main, preserving the larger Kamilah registry, minority objections and #1640's stronger CI.
+6. Close only exact superseded PRs after successor content is verified on main.
+
 ## Current repository state
 
 - Repository: `Barrot-Agent/B-Agent`
