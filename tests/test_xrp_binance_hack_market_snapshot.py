@@ -9,20 +9,38 @@ ARTIFACT = (
     / "xrp_intelligence"
     / "20261108T025908Z-binance-hack-xrp-ledger-and-market-reconciliation.json"
 )
+CORRECTION = (
+    ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261108T031500Z-xrp-market-receipt-hash-correction.json"
+)
 
 
 def _load():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
+def _corrections():
+    data = json.loads(CORRECTION.read_text(encoding="utf-8"))
+    return {item["field_path"]: item for item in data["corrections"]}
+
+
 def test_direct_exchange_receipts_hash_and_quarantine():
     data = _load()
+    fixes = _corrections()
     assert data["artifact_type"] == "xrp_security_event_and_market_snapshot"
     assert data["captured_at_utc"] == "2026-11-08T02:59:08Z"
     venues = {item["source_id"]: item for item in data["market_snapshot"]["venue_observations"]}
-    for item in venues.values():
+    paths = {
+        "kraken_xrp_usd_ticker": "market_snapshot.venue_observations[kraken_xrp_usd_ticker].raw_response_sha256",
+        "okx_xrp_usdt_ticker": "market_snapshot.venue_observations[okx_xrp_usdt_ticker].raw_response_sha256",
+    }
+    for source_id, item in venues.items():
+        fix = fixes[paths[source_id]]
+        assert item["raw_response_sha256"] == fix["original_value"]
         digest = hashlib.sha256(item["raw_response"].encode("utf-8")).hexdigest()
-        assert digest == item["raw_response_sha256"]
+        assert digest == fix["corrected_value"]
         assert item["model_eligible"] is False
     kraken = venues["kraken_xrp_usd_ticker"]
     okx = venues["okx_xrp_usdt_ticker"]
@@ -33,6 +51,10 @@ def test_direct_exchange_receipts_hash_and_quarantine():
     assert abs(kraken["last_vs_daily_open_pct"] - (-0.6865461053)) < 1e-8
     assert abs(okx["last_vs_rolling_24h_open_pct"] - (-1.2730690362)) < 1e-8
     assert data["market_snapshot"]["derived_comparison"]["arbitrage_claim_permitted"] is False
+    registry = next(item for item in data["source_registry"] if item["id"] == "kraken_xrp_usd_ticker")
+    registry_fix = fixes["source_registry[kraken_xrp_usd_ticker].raw_body_hash"]
+    assert registry["raw_body_hash"] == registry_fix["original_value"]
+    assert registry_fix["corrected_value"] == "sha256:" + hashlib.sha256(kraken["raw_response"].encode("utf-8")).hexdigest()
 
 
 def test_rendered_source_excerpt_hashes_are_preserved():
@@ -49,9 +71,9 @@ def test_binance_xrp_theft_is_not_conflated_with_customer_replenishment():
     drain = claims["binance_xrp_drain"]
     replenishment = claims["binance_customer_replenishment"]
     assert "233.46M XRP" in drain["claim"]
-    assert "not recovery proof" in replenishment["status"]
-    assert "not proof the stolen XRP was recovered" in replenishment["limitations"][0]
-    assert claims["attacker_holding_account"]["claim"].find("rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx") >= 0
+    assert "not_recovery_proof" in replenishment["status"]
+    assert "distinct from recovering the stolen XRP" in replenishment["limitations"][0]
+    assert "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx" in claims["attacker_holding_account"]["claim"]
 
 
 def test_misattributed_internal_sweep_is_not_accepted_as_recovery():
@@ -59,7 +81,7 @@ def test_misattributed_internal_sweep_is_not_accepted_as_recovery():
     claim = next(item for item in data["claim_reconciliation"] if item["id"] == "utoday_internal_sweep")
     assert claim["status"] == "not_accepted_contradicted_by_sender_attribution"
     assert "No evidence establishes Binance control" in claim["limitations"][0]
-    assert any("six" in item["resolution"] for item in data["disagreements"] if item["id"] == "nov2_destination_count")
+    assert any("Recipient count is unresolved" in item["resolution"] for item in data["disagreements"] if item["id"] == "nov2_destination_count")
 
 
 def test_source_independence_and_prediction_boundary_are_explicit():
