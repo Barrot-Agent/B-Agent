@@ -68,7 +68,8 @@ def test_run58_endpoint_count_and_fail_closed_prediction_status_are_current():
     )
     current = data["current_run_observations"]
     engine = current["prediction_engine"]
-    assert current["run_id"] == 58
+    assert current["run_id"] >= 58
+    assert any(item.get("run_id") == 58 for item in data["prior_run_observations"])
     assert engine["endpoints"] == 35
     assert engine["scheduled_public_sources"] == 33
     assert engine["excluded_xrpl_node_sources"] == 2
@@ -114,14 +115,15 @@ def test_run56_handoff_and_map_record_exact_pre_handoff_heads_and_ci():
     )
     current = data["current_run_observations"]
     prior56 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 56)
-    assert current["run_id"] == 58
+    prior58 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 58)
+    assert current["run_id"] >= 59
     assert current["main_sha"] == MAIN_SHA
     assert prior56["integration_head_before_handoff_commit"] == "5ec7c8036775e8b7c8e82741b6455af53c955cc9"
     assert prior56["research_head"] == "58c65e4277d7b95193452538ef063462aa95af8f"
-    assert current["integration_head_before_handoff_commit"] == "eeb4950d6cbda6a32870dfe074f671c4ccbc843e"
-    assert current["research_head"] == "674919abe365e915877e7f1f4211df347dfc39a9"
-    assert current["ci_evidence"]["integration"]["full_suite"].startswith("1,208 passed")
-    assert current["ci_evidence"]["research"]["full_suite"].startswith("2,472 passed")
+    assert prior58["integration_head_before_handoff_commit"] == "eeb4950d6cbda6a32870dfe074f671c4ccbc843e"
+    assert prior58["research_head"] == "674919abe365e915877e7f1f4211df347dfc39a9"
+    assert prior58["ci_evidence"]["integration"]["full_suite"].startswith("1,208 passed")
+    assert prior58["ci_evidence"]["research"]["full_suite"].startswith("2,472 passed")
     assert current["prediction_engine"]["endpoints"] == 35
     assert current["prediction_engine"]["scheduled_public_sources"] == 33
     assert current["reviews"]["pr_1640"]["approving_reviews"] == 0
