@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAIN_SHA = "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
 INTEGRATION_HEAD = "fdd5e60d971ff3e0f21cd574d860cd5281fdced7"
 RESEARCH_HEAD = "06769f1d9667d5cb877e6e0321f9d9a9694b1dd6"
+RESEARCH_HEAD_AFTER_FOLLOWUP = "a554dc3814fb0a9ed935fa83a2805caa3544915e"
 
 
 def test_run34_handoff_records_exact_current_heads_and_ci():
@@ -15,6 +16,10 @@ def test_run34_handoff_records_exact_current_heads_and_ci():
     assert MAIN_SHA in handoff
     assert INTEGRATION_HEAD in handoff
     assert RESEARCH_HEAD in handoff
+    assert RESEARCH_HEAD_AFTER_FOLLOWUP in handoff
+    assert "20261108T011925Z-xrp-etf-flow-universe-and-sec-docket-reconciliation.json" in handoff
+    assert "Coinbase's October 20, 2026 comment letter is on proposed Regulation Crypto Assets, **S7-2026-27**" in handoff
+    assert "Ripple's May 7, 2026 letter is on the separate March 2026 interpretive release, **S7-2026-09**" in handoff
     assert "1,170 passed, 8 subtests passed" in handoff
     assert "2,214 passed, 8 subtests passed" in handoff
     for run_id in ("42429304866", "42429304980", "42429304893", "42429625747", "42429625684", "42429625687"):
@@ -34,6 +39,9 @@ def test_run34_map_preserves_run33_and_records_current_tree_and_heads():
     assert current["main_sha"] == MAIN_SHA
     assert current["integration_head_before_map_commit"] == INTEGRATION_HEAD
     assert current["research_head"] == RESEARCH_HEAD
+    assert current["research_head_after_followup"] == RESEARCH_HEAD_AFTER_FOLLOWUP
+    assert current["research_updates_after_capture"][0]["new_head"] == RESEARCH_HEAD_AFTER_FOLLOWUP
+    assert "research/xrp_intelligence/20261108T011925Z-xrp-etf-flow-universe-and-sec-docket-reconciliation.json" in current["research_artifacts_added"]
     assert prior33["captured_at_utc"] == "2026-11-07T23:42:25Z"
     assert current["open_pr_inventory"] == {"total": 371, "drafts": 355, "non_drafts": 16, "pages": [100, 100, 100, 71]}
     assert current["branch_ancestry"]["integration"] == {"ahead": 609, "behind": 0, "changed_paths": 172}

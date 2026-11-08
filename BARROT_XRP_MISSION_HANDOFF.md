@@ -5133,3 +5133,62 @@ Key findings and limitations:
 3. Consolidate #1643's 524 unique paths onto verified main, preserving its 21 Kamilah candidate references and combining both identity-gate test versions; carry #1640's inclusive coverage, installed-wheel and dependency/security checks.
 4. Close only exact duplicate/superseded PRs after successor content is verified on main. Preserve #1653, #1655, #1641, #1269, #1477, #1597, #1591 and other unique work.
 5. Verify the first scheduled ingestion on main, add independently controlled durable raw-source archival and raw-artifact rebuild, accumulate synchronized multi-domain history, then measure out-of-sample lift/calibration/drift/shadow outcomes before any directional forecast.
+
+
+## Run 34 follow-up — 2026-11-08T01:19:25Z
+
+### Additional research committed to the existing #1643 branch
+
+The existing XRP research branch advanced from `06769f1d9667d5cb877e6e0321f9d9a9694b1dd6` to `a554dc3814fb0a9ed935fa83a2805caa3544915e` with two files: one append-only research artifact and one regression test. No branch or PR was created.
+
+Artifact: `research/xrp_intelligence/20261108T011925Z-xrp-etf-flow-universe-and-sec-docket-reconciliation.json`
+
+Test: `tests/test_xrp_etf_flow_and_sec_docket_reconciliation_20261108.py`
+
+The research branch's exact-head CI is running on `a554dc3814fb0a9ed935fa83a2805caa3544915e`; it is not yet verified:
+- [CI 42433853191](https://github.com/Barrot-Agent/B-Agent/actions/runs/42433853191)
+- [Dependency audit 42433853179](https://github.com/Barrot-Agent/B-Agent/actions/runs/42433853179)
+- [Fail-closed gate 42433853242](https://github.com/Barrot-Agent/B-Agent/actions/runs/42433853242)
+
+### XRP ETF flow disagreement — resolved as non-comparable, not netted
+
+Two public dashboards report different recent XRP fund-flow results:
+
+| Source | Universe | Latest reported window/result | Method |
+|---|---|---|---|
+| Alpha Finance | 5 tickers: XRP, XRPZ, XRPC, GXRP, TOXR | Nov 6: $0; last 7 sessions +$8.4M; 30 sessions +$45.9M; cumulative +$1.73B | Secondary dashboard; Alpha's methodology page identifies Coinglass as its ETF dashboard feed |
+| XRP Insights | 7 tickers: XRPC, XRP, XRPR, XRPZ, GXRP, TOXR, BITW | Oct 30–Nov 6: -813K XRP, approximately -$978K; 1.20B XRP holdings and $1.43B AUM | Daily change in issuer-reported holdings, computed by XRP Insights |
+
+These are not directly comparable and must not be averaged or netted:
+
+- Alpha includes GXRP but excludes XRPR and BITW. XRP Insights includes XRPR and BITW; it includes GXRP holdings/AUM but withholds GXRP flow.
+- Alpha's flow feed is Coinglass. XRP Insights says current holdings are read from issuer websites, then computes daily holdings deltas.
+- BITW is a multi-asset index fund; its XRP sleeve can change with index rebalancing. Keep it separate from dedicated XRP ETFs.
+- XRPR's issuer page, as of October 1, shows 39.90% exposure through CoinShares Physical XRP ETP. Do not treat all XRPR exposure as direct XRP custody.
+- XRP Insights warns that its holdings-delta method can count index rebalancing and fees paid in XRP as flow; some historical rows were reconstructed from third-party estimates. GXRP flow is excluded across its history due a September 2–28 scrape gap.
+- Alpha's visible recent daily table omits October 30 and November 2 even though its headline window spans October 27–November 6. Missing is not zero.
+- XRP Insights metadata was generated November 8 at 00:19:23.133 UTC, with settled data through November 6. Its weekly article is not a live flow feed.
+
+Policy: retain provider-specific series and their fund universe, date window, source method, row status, direct/indirect exposure and reconstruction flags. Neither aggregate is model-eligible until common-fund, same-date issuer holdings and creation/redemption evidence are reconciled. The artifact contains normalized excerpt hashes only; raw HTTP/PDF bytes were not captured, so it does not claim raw-source hashes.
+
+Issuer/custody cross-checks remain stale relative to November 6: Franklin XRPZ's indexed holdings/AUM dates are September 4/7; REX-Osprey XRPR is October 1; the 21Shares TOXR indexed net-assets result has no reliable as-of date. Franklin's page names Coinbase Custody Trust Company as XRP custodian and BNY as administrator/transfer agent/cash custodian. 21Shares names Anchorage, BitGo and Coinbase Custody International. These are relationship/custody evidence, not a current holdings receipt.
+
+### SEC docket assignment correction
+
+The company letters belong to different SEC dockets:
+
+- Coinbase's October 20, 2026 comment letter is on proposed Regulation Crypto Assets, **S7-2026-27**. Coinbase supports much of the covered-investment-contract framework but asks for explicit treatment of aftermarket token purchases without assigned issuer-contract rights and clearer post-functionality guidance.
+- Ripple's May 7, 2026 letter is on the separate March 2026 interpretive release, **S7-2026-09**. Ripple requests further guidance on common enterprise, explicit issuer representations/promises and secondary-market purchaser expectations.
+
+The November 3 and November 5 SEC staff memoranda on S7-2026-27 document meetings with University of Toronto professor Andreas Park on November 2 and 4. They are staff meeting records, not Commission endorsement or a final rule. The SEC page continues to label S7-2026-27 as proposed.
+
+This follow-up explicitly corrects any reading of the preceding Run 34 regulatory summary that could place Ripple's May 7 letter on the Coinbase S7-2026-27 docket.
+
+### Research branch and map state
+
+- Research head at Run 34 capture: `06769f1d9667d5cb877e6e0321f9d9a9694b1dd6`.
+- Research head after this follow-up: `a554dc3814fb0a9ed935fa83a2805caa3544915e`.
+- New artifact and regression test are now included in the current research branch.
+- No new market observations were admitted to the feature store.
+- Forecast status remains `NOT_ISSUED`.
+- No merge, deployment, external model transfer, paper trade or real-money action occurred.
