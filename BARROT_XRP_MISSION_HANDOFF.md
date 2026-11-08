@@ -1,4 +1,118 @@
-# Current integrated Barrot handoff — 2026-11-08T06:48:42Z
+# Current integrated Barrot handoff — 2026-11-08T07:10:27Z
+
+## Run 46 — current repository and XRP mission status
+
+**Mission priority:** XRP intelligence and prediction-engine mastery.  
+**Foundation:** Barrot V3 execution, orchestration, safety and verification.  
+**Current main:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` (unchanged).  
+**Current PR #1640 head before this handoff commit:** `81894d9c2966676b0f26ce5dabcc31ae45530316`.  
+**Current PR #1643 head:** `33ee4b456915d76bb0be2936143dd7534f3a731b`.
+
+### Repository inspection and exact-head CI
+
+At the start of this run, I fetched main, the complete recursive trees for main and both active mission branches, all four pages of open PRs, the exact PR heads, all changed filenames, ancestry, reviews, inline threads, workflow runs, dependency/security audit logs and the latest durable handoff.
+
+- Open PR inventory: **372 total, 356 drafts, 16 non-drafts**; pages [100, 100, 100, 72].
+- Main tree: 1,403 entries, 1,298 files, 493 Python files, 90 test modules, 86 workflow YAML files.
+- #1640 tree: 1,478 entries, 1,365 files, 547 Python files, 128 test modules, 87 workflow YAML files.
+- #1643 tree: 1,976 entries, 1,870 files, 726 Python files, 324 test modules, 86 workflow YAML files, 348 XRP JSON artifacts.
+- #1640: 654 commits ahead, zero behind main; 176 changed paths.
+- #1643: 785 commits ahead, zero behind main; 578 changed paths.
+- Six changed paths overlap: dependency-audit workflow, handoff, Kamilah source registry, Pillars script, Kamilah identity test and Pillars read-only test. #1640 has 170 unique paths; #1643 has 572 unique paths. The branches are divergent; do not merge #1643 directly.
+
+**PR #1640 — Barrot V3 integration**
+
+[PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640)
+
+Exact head `81894d9c2966676b0f26ce5dabcc31ae45530316` passed:
+
+- Full repository suite: **1,188 passed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **58.78%**, above the 53% threshold.
+- Installed-wheel verification passed; the installed package loaded Barrot V3, the XRP mission and canonical mission/data assets.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Evidence: [CI 42456591271](https://github.com/Barrot-Agent/B-Agent/actions/runs/42456591271), [dependency audit 42456591159](https://github.com/Barrot-Agent/B-Agent/actions/runs/42456591159), [fail-closed gate 42456591190](https://github.com/Barrot-Agent/B-Agent/actions/runs/42456591190).
+
+The six audited manifests are `requirements.txt`, `requirements-dev.txt`, `requirements.tx`, `hf_space/requirements.txt`, `legacy/requirements_legacy.txt` and `pyproject.toml`. The audit materialized 15 PEP 621 dependencies. Cache-save warnings were non-fatal.
+
+**PR #1643 — XRP research**
+
+[PR #1643](https://github.com/Barrot-Agent/B-Agent/pull/1643)
+
+Previous exact head `0dac2d1ad35990b4e99ede9e431de24b44df1d05` passed 2,315 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate. The latest exact head `33ee4b456915d76bb0be2936143dd7534f3a731b` adds four append-only research/test files. At capture, its full CI and dependency audit were still running; its fail-closed gate passed. Do not reuse the previous head's green result as evidence for the latest head.
+
+Latest runs: [CI 42457857250](https://github.com/Barrot-Agent/B-Agent/actions/runs/42457857250), [dependency audit 42457857244](https://github.com/Barrot-Agent/B-Agent/actions/runs/42457857244), [fail-closed gate 42457857278](https://github.com/Barrot-Agent/B-Agent/actions/runs/42457857278).
+
+### New XRP market and capital-flow reconciliation
+
+New append-only research on the existing #1643 branch:
+
+- [Market, ETF, exchange, derivatives and macro reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T070200Z-xrp-market-etf-exchange-derivatives-macro-reconciliation.json)
+- [Regression test](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_market_etf_exchange_derivatives_macro_reconciliation_20261108.py)
+- [Exchange reserve component discrepancy correction](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T071027Z-xrp-exchange-wallet-reserve-component-disagreement-correction.json)
+- [Correction regression test](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_exchange_wallet_reserve_component_disagreement_correction_20261108.py)
+
+Key findings:
+
+1. **ETF flows are not reconciled.** XRP Insights reports Week 45 net outflows of 813,000 XRP (about $978,000), including a 663,000 XRP Nov 6 daily change, with GXRP excluded from flow calculations. CryptoKeyhole reports only a partial Nov 6 figure of −752,048 XRP for three of four daily-readable funds; Franklin XRPZ was missing. Alpha Finance reports $0 Nov 6 flow for its five-fund universe, +$8.4M over seven sessions and +$45.9M over 30 sessions. The providers use different fund universes, issuer-file vintages and settlement windows; they share issuer-file upstream data and are not independent confirmations. CryptoKeyhole also displays one issuer file dated Nov 9 but read Nov 7 at 05:12 UTC; that future-date anomaly is quarantined.
+
+2. **Exchange balances are not tradable float.** XRP Insights attributes 22.33B XRP to 701 wallets across 24 exchanges. Its same-wallet set declined 150.7M XRP over seven days and 161.2M over 30 days. Newly tracked wallets contain 512M XRP, making naive total-balance changes coverage-sensitive. The aggregate includes cold/omnibus wallets and wrapped-asset backing reserves; it cannot identify customer withdrawals or available sell supply.
+
+3. **A source-internal reserve discrepancy is preserved.** The same XRP Insights page lists 327.4M XRP as Binance-Peg reserve in its exchange table but 325.8M in its methodology breakdown. The methodology's 487.8M non-customer reserve total reconciles to 325.8M + 150.8M cbXRP + 11.2M insurance/charity, not the 327.4M table figure. The 1.6M difference is unresolved. The original artifact is preserved; neither value was silently selected or averaged.
+
+4. **Visible order-book depth is slightly ask-heavy but not executable.** Edge or Not's 06:26 UTC composite combines Binance spot and OKX perpetual. Within 1%, it shows $9.0M bids and $9.9M asks around a $1.1652 composite mid. Orders can be pulled; no per-venue raw book receipt or fill probability was retained.
+
+5. **Derivatives OI is scope-sensitive.** Kodexius at 06:34 UTC reports $782.97M OI across seven contracts and five exchanges, $774.77M 24-hour volume and +0.0080% weighted funding per eight hours. Hyperliquid OI is $98.12M in Kodexius versus $196.0M on HyperAcademy at 05:00 UTC. The roughly 2x discrepancy is unresolved; do not average or combine it. Kraken's separate futures page shows about $20M OI and $9.6M 24-hour volume, but its 2:13 AM update omits timezone and is single-venue.
+
+6. **Macro evidence is mixed.** Reuters reports $117.97B US money-market fund inflows, $14.81B equity-fund inflows and $7.31B bond-fund inflows for the week to Nov 4, alongside sharp Thursday equity-index declines. Risk aversion is a plausible backdrop; positive equity and bond fund flows are counterevidence. No XRP-specific causal link is established.
+
+7. **Historical Binance exchange-flow readings remain confounded.** CryptoQuant's Nov 2 Binance XRP netflow of −14.97M XRP and 7-day average of −48.39M XRP are retained as historical context only. The Oct 29 Binance hot-wallet incident may distort wallet-flow readings; the source also warns that funding may be API carry-forward.
+
+All new market observations remain research-only and model-ineligible. Browser-rendered excerpt hashes are not raw HTTP wire-byte hashes; headers and raw per-venue payloads were not retained. There is no synchronized spot/derivatives/ETF/custody cutoff.
+
+### V3 provider-budget and safety work
+
+The current main-branch Barrot Agent issue run [42388663091](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388663091) failed because Groq rejected a repair-planner request: **8,099 TPM requested against an 8,000 limit**. The worker retried and ended blocked; no patch or commit was created. Pillars health run [42375034124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42375034124) failed with Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. No restart occurred.
+
+#1640 contains a deterministic, fail-closed correction for the Groq request-size problem, not yet on main:
+
+- `barrot_agent/context_budget.py`: conservative two-characters-per-estimated-token preflight, 4,800 estimated input tokens, 2,048 reserved output tokens and 7,000 total.
+- `scripts/barrot_agent.py`: 6,500 request-token cap, 7,000 rolling per-process TPM cap and 1,800-character tool-result cap; drops oldest complete optional history/tool groups while preserving system, current task and latest tool round.
+- HTTP 413/429 is classified and stopped without same-provider retry; Fireworks fallback requires explicit `BARROT_ALLOW_FIREWORKS_FALLBACK=true`.
+- Repair planner returns blocked without patch, commit or remote write when budget/rate-limit conditions are reached.
+- Regression tests prove oversized contexts are blocked before HTTP, 429 is not retried, unverified fallback is disabled by default, safety instructions are preserved and no patch/commit/remote write occurs.
+
+The broader Codespaces prebuild deliverable in issue #1658 remains unverified; only its token-budget subproblem is addressed on #1640.
+
+### Nine-platform and safety status
+
+ChatGPT-to-GitHub remains the only verified current-session connection. Copilot activity is COMMENTED, not APPROVED. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flow. No external model received repository data; no cross-platform task exchange occurred.
+
+Main still has active privileged `barrot-agent.yml` and `ask-barrot.yml` workflows. #1640 quarantines them. It converts Hugging Face and A2A push-triggered deployments to manual exact-main-SHA workflows requiring explicit confirmation and secret-rotation confirmation; the paper-trader workflow is manual and artifact-only. No such external action was dispatched.
+
+### Backlog, merge and forecast status
+
+- #1640: active V3 integration candidate; exact-head tests, inclusive coverage, installed wheel, dependency audit and fail-closed gate green.
+- #1643: active XRP research candidate; 572 unique research paths relative to #1640; latest exact-head CI was pending at capture.
+- #1642: superseded candidate; seven paths represented in #1640; retain until main verification.
+- #1644–#1650: dependency/workflow candidates represented in #1640; retain until main verification.
+- #1653: blocked by eight unresolved review threads; six unique repository-graph paths preserved.
+- #1655, #1641 and #1269: unique/unreviewed structural and experimentation work; preserve.
+- #1254/#1255: older dependency updates; exact-version reconciliation pending.
+- #1477/#1547/#1586: unique XRP research; preserve.
+- #1597/#1591: Kamilah public-video discovery; preserve identity-gated inventory.
+- #1659: unique local Llama phone-chat experimentation; preserve.
+- #1658: open Codespaces/prebuild issue; context-budget portion is implemented on #1640, Codespaces deliverable remains unverified.
+
+#1640 has 22/22 resolved review threads and 62 COMMENTED reviews; #1643 has 19/19 resolved threads and 10 COMMENTED reviews. Both have **zero APPROVED reviews**. Main is protected, but detailed branch-protection settings return HTTP 403; the visible fallback ruleset is disabled. CODEOWNERS is `* @Barrot-Agent`. GitHub Pages is enabled, configuration is inaccessible, and a previous main push triggered a successful public Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). #1640 changes public `web/` paths, so the merge-triggered Pages side effect remains unauthorized.
+
+**No merge was performed.** No main write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree operation occurred.
+
+**Forecast status: NOT_ISSUED.** The engine still lacks synchronized multi-domain historical coverage, independent WORM archival/rebuild, demonstrated out-of-sample lift, validated real-data calibration, concept/label drift monitoring and sufficient independent shadow outcomes.
+
+---
 
 ## Run 45 — current repository state (corrected addendum)
 
