@@ -16,25 +16,29 @@ def load_map():
 def test_run59_preserves_run58_and_records_current_research_head():
     data = load_map()
     current = data["current_run_observations"]
-    assert current["run_id"] == 59
+    prior59 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 59)
+    assert current["run_id"] >= 59
     assert any(item.get("run_id") == 58 for item in data["prior_run_observations"])
-    assert current["observed_main_sha"] == MAIN_SHA
-    assert current["research_head"] == RESEARCH_HEAD
+    assert prior59["observed_main_sha"] == MAIN_SHA
+    assert prior59["research_head"] == RESEARCH_HEAD
+    assert any("20261108T162835Z-xrp-derivatives-oi-universe-late-session-reconciliation.json" in item for item in prior59["new_research_artifacts"])
+    assert any("20261108T164100Z-sbi-vc-trade-rlusd-chain-and-reserve-snapshot-correction.json" in item for item in prior59["new_research_artifacts"])
     assert current["prediction_engine"]["endpoints"] == 35
     assert current["prediction_engine"]["scheduled_public_sources"] == 33
-    assert data["new_research"]["evidence_commit"] == RESEARCH_HEAD
     assert data["forecast_status"] == "NOT_ISSUED"
 
 
 def test_run59_research_ci_is_bound_to_exact_head_and_full_suite():
     data = load_map()
-    ci = data["ci_evidence"]["research"]
+    prior59 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 59)
+    ci = prior59["exact_head_ci"]["research"]
     assert ci["head"] == RESEARCH_HEAD
-    assert ci["full_suite_run"] == 42501293664
-    assert ci["full_suite_result"] == "2493 passed, 8 subtests passed"
-    assert ci["core_result"] == "498 passed, 8 subtests passed"
-    assert ci["dependency_audit_run"] == 42501293459
-    assert ci["fail_closed_gate_run"] == 42501293434
+    assert ci["full_suite"]["run_id"] == 42501293664
+    assert ci["full_suite"]["passed"] == 2493
+    assert ci["full_suite"]["subtests_passed"] == 8
+    assert ci["core_suite"]["passed"] == 498
+    assert ci["dependency_audit"]["run_id"] == 42501293459
+    assert ci["fail_closed_gate"]["run_id"] == 42501293434
 
 
 def test_run59_merge_gate_remains_closed_without_approvals_or_pages_authority():
