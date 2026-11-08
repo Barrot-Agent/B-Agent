@@ -12,7 +12,8 @@
     "exact_http_retrieval_times_utc": null,
     "raw_http_bytes_captured": false,
     "normalized_excerpt_hashes": "SHA-256 over the exact visible excerpt strings recorded below; these are not raw-response hashes.",
-    "limitation": "Browser-rendered source text was available, but raw HTTP bodies and exact per-request retrieval timestamps were not. The vote pages are time-bounded snapshots, not a synchronized forecast feature."
+    "limitation": "Browser-rendered source text was available, but raw HTTP bodies and exact per-request retrieval timestamps were not. The vote pages are time-bounded snapshots, not a synchronized forecast feature.",
+    "copyright_note": "Source preservation uses short identifying excerpts (within quotation limits) plus original paraphrased summaries; hashes cover the short excerpts, not raw HTTP bytes."
   },
   "executive_findings": [
     "XRPLWin's current pages show LendingProtocol 21/35, SingleAssetVault 23/35 and LendingProtocolV1_1 21/35; each remains below the 29-vote threshold and has not entered a majority countdown.",
@@ -124,7 +125,7 @@
       "funding_source": "Pooled funds from a Single Asset Vault",
       "underwriting": "Off-chain underwriting and risk management assess borrower creditworthiness.",
       "specification_url": "https://xrpl.org/resources/known-amendments",
-      "excerpt_sha256": "cd6c975318a9d23198097116c206e2e0e5961a0b5c2d0b5f44ee8d4f5f73a211"
+      "excerpt_sha256": "29c09ce8af6f5f5f7430e5683f2b3a527c77d9e80de049c4298b81cc2d7dbb35"
     },
     "single_asset_vault": {
       "standard": "XLS-65",
@@ -137,7 +138,7 @@
         "Closed-ended vault with subscription, investment and redemption phases.",
         "Cash-basis accounting recognizes interest as income when payments are actually made."
       ],
-      "excerpt_sha256": "8f4a042a65ee501f735390613bd06dfabd12bc3ad5f2e2bcb4ea9b318254577f",
+      "excerpt_sha256": "1ed8dc296270a18e46137cd2b6a40d4f13cc697fd0b98f7020494318bcc93240",
       "status": "OPEN_FOR_VOTING_BELOW_SUPERMAJORITY"
     },
     "fix_cleanup_3_4_0": {
@@ -167,10 +168,11 @@
       "source_type": "official_protocol_documentation",
       "url": "https://xrpl.org/resources/known-amendments",
       "independence_group": "xrpl_official_docs",
-      "normalized_excerpt": "The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.",
-      "normalized_excerpt_sha256": "cd6c975318a9d23198097116c206e2e0e5961a0b5c2d0b5f44ee8d4f5f73a211",
+      "normalized_excerpt": "uncollateralized loans",
+      "normalized_excerpt_sha256": "29c09ce8af6f5f5f7430e5683f2b3a527c77d9e80de049c4298b81cc2d7dbb35",
       "raw_http_bytes_captured": false,
-      "exact_retrieval_time_utc": null
+      "exact_retrieval_time_utc": null,
+      "summary": "The official protocol description characterizes XLS-66 loans as fixed-term and uncollateralized, funded from pooled Single Asset Vault assets with off-chain underwriting."
     },
     {
       "source_id": "xrpl_official_lending_v11",
@@ -178,10 +180,11 @@
       "source_type": "official_protocol_documentation",
       "url": "https://xrpl.org/resources/known-amendments",
       "independence_group": "xrpl_official_docs",
-      "normalized_excerpt": "Extends the LendingProtocol and SingleAssetVault amendments with a new closed-ended vault and cash-basis accounting. Closed-ended vaults have a defined lifecycle split into three phases: subscription, investment, and redemption; these phases determine when assets can be deposited into vaults, loans can be originated, and when assets can be redeemed. After the amendment is enabled, new loan brokers can only be created against closed-ended vaults. Cash-basis accounting changes vault accounting to only realize interest as income when payments are actually made, shifting from an instant interest recognition model where all scheduled interest was recognized at the time of loan origination.",
-      "normalized_excerpt_sha256": "8f4a042a65ee501f735390613bd06dfabd12bc3ad5f2e2bcb4ea9b318254577f",
+      "normalized_excerpt": "closed-ended vault",
+      "normalized_excerpt_sha256": "1ed8dc296270a18e46137cd2b6a40d4f13cc697fd0b98f7020494318bcc93240",
       "raw_http_bytes_captured": false,
-      "exact_retrieval_time_utc": null
+      "exact_retrieval_time_utc": null,
+      "summary": "LendingProtocolV1_1 adds closed-ended vault phases and cash-basis accounting; it remains a separate amendment requiring activation."
     },
     {
       "source_id": "xrpl_official_amendment_mechanics",
@@ -189,10 +192,11 @@
       "source_type": "official_protocol_documentation",
       "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
       "independence_group": "xrpl_official_docs",
-      "normalized_excerpt": "Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts.",
-      "normalized_excerpt_sha256": "3a701b6f05dffee739863f8698e703a3aac0a2abaf908b268d8505acb769b597",
+      "normalized_excerpt": "more than 80%",
+      "normalized_excerpt_sha256": "5fba94e6ab245cec9259389f778e95f2b6d4c4ed25d3475a0a78b1d8e3fadf26",
       "raw_http_bytes_captured": false,
-      "exact_retrieval_time_utc": null
+      "exact_retrieval_time_utc": null,
+      "summary": "The official amendment process requires more than 80% trusted-validator support to remain uninterrupted for two weeks."
     },
     {
       "source_id": "xrplwin_lendingprotocol_current",
@@ -202,10 +206,11 @@
       "independence_group": "xrplwin_ledger_reader",
       "state_ledger": 108184783,
       "voting_ledger": 108184575,
-      "normalized_excerpt": "LendingProtocol is open for voting: 21 of 35 trusted validators (60.0%) support it. To activate, it needs 29 votes (more than 80%), held for 14 days.",
-      "normalized_excerpt_sha256": "f607378354fca3acc846ae0e37b7c419ad66dae2fcbda7618be6b6689459f4df",
+      "normalized_excerpt": "21 of 35 trusted validators",
+      "normalized_excerpt_sha256": "5747f379b057e556d5edf1ff6dbc6e7b04635f324b3221ee486979c21ac27f6e",
       "raw_http_bytes_captured": false,
-      "exact_retrieval_time_utc": null
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin's ledger-indexed page reports 21 affirmative votes out of its 35-validator denominator."
     },
     {
       "source_id": "xrplwin_single_asset_vault_current",
@@ -215,10 +220,11 @@
       "independence_group": "xrplwin_ledger_reader",
       "state_ledger": 108184574,
       "voting_ledger": 108184575,
-      "normalized_excerpt": "SingleAssetVault is open for voting: 23 of 35 trusted validators (65.7%) support it. To activate, it needs 29 votes (more than 80%), held for 14 days.",
-      "normalized_excerpt_sha256": "bda8bef10ea81f1c2b2daf3283a93c5701a0dbef7128db98b60aff8164be032b",
+      "normalized_excerpt": "23 of 35 trusted validators",
+      "normalized_excerpt_sha256": "c170beaf0bd422083bddc607cd942e471f784c9b92264ddb26d264e7c831c085",
       "raw_http_bytes_captured": false,
-      "exact_retrieval_time_utc": null
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin's ledger-indexed page reports 23 affirmative votes out of its 35-validator denominator."
     },
     {
       "source_id": "xrplwin_lending_v11_current",
@@ -228,10 +234,11 @@
       "independence_group": "xrplwin_ledger_reader",
       "state_ledger": 108184574,
       "voting_ledger": 108184575,
-      "normalized_excerpt": "LendingProtocolV1_1 is open for voting: 21 of 35 trusted validators (60.0%) support it. To activate, it needs 29 votes (more than 80%), held for 14 days.",
-      "normalized_excerpt_sha256": "cffcb4769df58a7a6ae67241b8c2881a530a18d7ff5b8bcf0ab4cc2765d25337",
+      "normalized_excerpt": "21 of 35 trusted validators",
+      "normalized_excerpt_sha256": "5747f379b057e556d5edf1ff6dbc6e7b04635f324b3221ee486979c21ac27f6e",
       "raw_http_bytes_captured": false,
-      "exact_retrieval_time_utc": null
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin's ledger-indexed page reports 21 affirmative votes out of its 35-validator denominator."
     },
     {
       "source_id": "xrplwin_fixcleanup_activation",
@@ -240,10 +247,11 @@
       "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
       "independence_group": "xrplwin_ledger_reader",
       "state_ledger": 108184517,
-      "normalized_excerpt": "fixCleanup3_4_0 has been enabled on the XRP Ledger since Nov 4, 2026 (ledger 108,112,129).",
-      "normalized_excerpt_sha256": "fdf279f408cb7d343cb890b968634359a41a22110f7831880b62741cdad51f29",
+      "normalized_excerpt": "enabled on the XRP Ledger",
+      "normalized_excerpt_sha256": "86e017cb462110b92693eacacbe9f23675d07dfcaad4abfb83df37dce97e868f",
       "raw_http_bytes_captured": false,
-      "exact_retrieval_time_utc": null
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin records fixCleanup3_4_0 as enabled on Nov 4 at ledger 108112129."
     },
     {
       "source_id": "xrpl_to_denominator_snapshot",
@@ -252,11 +260,12 @@
       "url": "https://xrpl.to/insights/xrpl-amendments-explained",
       "independence_group": "xrpl_to_dashboard",
       "page_as_of_date": "2026-11-07",
-      "normalized_excerpt": "Every amendment the current server software supports and validators are voting on, read from the ledger on 7 November 2026: Validators voting for each amendment now, of 36 trusted 29 needed. SingleAssetVault 23. ConfidentialTransfer 21. LendingProtocol 21. LendingProtocolV1_1 21.",
-      "normalized_excerpt_sha256": "1126d09d31cdd9d350ca47768d48886e464282faaad8ea745145e6529f13dc16",
+      "normalized_excerpt": "36 trusted",
+      "normalized_excerpt_sha256": "bf7e68f77d0e6b72775a58b1ebf855d7d65702486d3e9c08582171a0e29d2800",
       "raw_http_bytes_captured": false,
       "exact_retrieval_time_utc": null,
-      "limitation": "The page directs automated clients to its API. No API access was attempted or verified; retained only as a reported denominator discrepancy."
+      "limitation": "The page directs automated clients to its API. No API access was attempted or verified; retained only as a reported denominator discrepancy.",
+      "summary": "The alternative dashboard reports a 36-validator denominator; retained only as an unresolved discrepancy because its API was not tested."
     },
     {
       "source_id": "crypto_basic_nov6",
