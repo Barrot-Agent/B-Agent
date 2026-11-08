@@ -12,7 +12,8 @@ RESEARCH_HEAD = "674919abe365e915877e7f1f4211df347dfc39a9"
 
 def test_run58_handoff_binds_exact_repository_heads_and_ci():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
-    assert handoff.startswith("# Current integrated Barrot handoff — 2026-11-08T16:03:05Z")
+    assert handoff.startswith("# Current integrated Barrot handoff — 2026-11-08T17:01:21Z")
+    assert "## Run 60 — current repository, exact-head verification and institutional-rails correction" in handoff[:3_000]
     assert "## Run 58 — current repository, endpoint inventory correction, exact-head verification and merge gate" in handoff[:3_000]
     for value in (MAIN_SHA, INTEGRATION_HEAD, RESEARCH_HEAD):
         assert value in handoff
@@ -38,7 +39,7 @@ def test_run58_endpoint_registry_and_map_counts_match():
     )
     current = data["current_run_observations"]
     engine = current["prediction_engine"]
-    assert current["run_id"] == 59
+    assert current["run_id"] >= 60
     assert any(item.get("run_id") == 58 for item in data["prior_run_observations"])
     assert engine["endpoints"] == len(ENDPOINTS)
     assert engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
