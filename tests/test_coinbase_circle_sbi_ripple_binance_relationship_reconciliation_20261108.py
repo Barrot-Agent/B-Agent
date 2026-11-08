@@ -133,3 +133,17 @@ def test_relationship_evidence_is_not_a_directional_feature_or_forecast() -> Non
     assert artifact["forecast"]["directional_forecast"] is False
     assert artifact["external_actions"]["financial_action"] is False
     assert artifact["external_actions"]["external_model_transfer"] is False
+
+
+def test_circle_binance_exact_share_count_and_rounded_proceeds_are_preserved() -> None:
+    artifact = load_artifact()
+    relationship = artifact["relationship_graph"]["circle_binance"]
+    computed = round(relationship["shares_issued"] * relationship["price_per_share_usd"], 2)
+    assert relationship["shares_issued"] == 1_237_011
+    assert relationship["reported_aggregate_proceeds_usd"] == 100_000_000
+    assert computed == 99_999_969.24
+    assert round(relationship["reported_aggregate_proceeds_usd"] - computed, 2) == 30.76
+    receipt = next(r for r in artifact["source_receipts"] if r["id"] == "circle_binance_equity")
+    assert receipt["url"].endswith("/000187604226000276/crcl-20260917.htm")
+    assert "1,237,011 shares" in receipt["excerpt"]
+    assert relationship["monthly_incentive_fee_based_on_usdc_wallet_balances"] is True
