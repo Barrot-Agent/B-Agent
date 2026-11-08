@@ -18,7 +18,7 @@ def load_artifact():
 
 def test_all_normalized_sec_and_secondary_excerpt_hashes_match():
     artifact = load_artifact()
-    assert len(artifact["source_receipts"]) == 12
+    assert len(artifact["source_receipts"]) == 21
     for receipt in artifact["source_receipts"]:
         assert hashlib.sha256(receipt["excerpt"].encode("utf-8")).hexdigest() == receipt["sha256"]
         assert receipt["retrieved_at_utc"] is None
@@ -59,10 +59,13 @@ def test_in_kind_xrp_and_cash_purchased_xrp_remain_separate():
 
     purchased = ledger["actual_xrp_purchase"]["xrp_purchased"]
     assert math.isclose(purchased, 84_365_876.3625, abs_tol=1e-6)
-    assert ledger["actual_xrp_purchase"]["cash_used_usd"] == 214_100_000
+    assert ledger["actual_xrp_purchase"]["cash_received_usd"] == 214_049_995
+    assert ledger["actual_xrp_purchase"]["cash_used_usd"] == 214_000_000
+    assert ledger["actual_xrp_purchase"]["residual_cash_purchase_at_close_usd"] == 49_995
+    assert ledger["actual_xrp_purchase"]["residual_cash_purchase_xrp_quantity"] is None
     assert math.isclose(
         in_kind + purchased,
-        ledger["reconstructed_totals"]["reconstructed_total_xrp"],
+        ledger["reconstructed_totals"]["known_component_xrp_excluding_residual_cash_purchase"],
         abs_tol=1e-6,
     )
     assert ledger["actual_xrp_purchase"]["status"] == "issuer-reported actual acquisition with cash proceeds"
@@ -134,6 +137,27 @@ def test_sbi_holdings_equity_edge_is_not_mislabeled_as_sbic_or_direct_xrp_purcha
     assert "equity" in sbi["relationship"]
     assert "SBIC" in artifact["competing_hypotheses"][4]["statement"]
     assert artifact["competing_hypotheses"][4]["status"] == "disconfirmed"
+
+
+def test_bitgo_custody_contract_and_wallet_attribution_limits_are_preserved():
+    artifact = load_artifact()
+    custody = artifact["capital_ledger"]["custody"]
+
+    assert custody["custodian"] == "BitGo Trust Company, Inc."
+    assert custody["executed_contract_confirmed"] is True
+    assert custody["agreement_date"] == "2025-10-09"
+    assert custody["wallet_address_disclosed"] is False
+    assert custody["onchain_address_reconciliation_performed"] is False
+    assert "no public wallet address" in custody["wallet_specific_linkage_to_bitgo"]
+
+
+def test_sbi_holdings_entities_are_distinct_from_sbic_regional_companies():
+    sbi = load_artifact()["capital_ledger"]["sbi_holdings_equity"]
+
+    assert len(sbi["entities_controlled_by_or_managed_by_sbi_holdings"]) == 4
+    assert sbi["class_a_shares_held"] == 9_431_914
+    assert sbi["class_c_shares_issued_to_sbi_affiliated_investors"] == 2_359_038
+    assert "not a subscription by SBIC" in sbi["relationship"]
 
 
 def test_financing_events_are_context_not_directional_price_features():
