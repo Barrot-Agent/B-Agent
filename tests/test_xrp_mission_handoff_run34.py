@@ -8,6 +8,7 @@ MAIN_SHA = "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
 INTEGRATION_HEAD = "fdd5e60d971ff3e0f21cd574d860cd5281fdced7"
 RESEARCH_HEAD = "06769f1d9667d5cb877e6e0321f9d9a9694b1dd6"
 RESEARCH_HEAD_AFTER_FOLLOWUP = "a554dc3814fb0a9ed935fa83a2805caa3544915e"
+RESEARCH_HEAD_AFTER_MARKET_FOLLOWUP = "6ee1942fc7702bad582adb939705c841f1d77755"
 
 
 def test_run34_handoff_records_exact_current_heads_and_ci():
@@ -17,6 +18,9 @@ def test_run34_handoff_records_exact_current_heads_and_ci():
     assert INTEGRATION_HEAD in handoff
     assert RESEARCH_HEAD in handoff
     assert RESEARCH_HEAD_AFTER_FOLLOWUP in handoff
+    assert RESEARCH_HEAD_AFTER_MARKET_FOLLOWUP in handoff
+    assert "2,222 passed, 8 subtests passed" in handoff
+    assert "20261108T012448Z-xrp-market-depth-and-derivatives-provider-reconciliation.json" in handoff
     assert "20261108T011925Z-xrp-etf-flow-universe-and-sec-docket-reconciliation.json" in handoff
     assert "Coinbase's October 20, 2026 comment letter is on proposed Regulation Crypto Assets, **S7-2026-27**" in handoff
     assert "Ripple's May 7, 2026 letter is on the separate March 2026 interpretive release, **S7-2026-09**" in handoff
@@ -40,6 +44,7 @@ def test_run34_map_preserves_run33_and_records_current_tree_and_heads():
     assert current["integration_head_before_map_commit"] == INTEGRATION_HEAD
     assert current["research_head"] == RESEARCH_HEAD
     assert current["research_head_after_followup"] == RESEARCH_HEAD_AFTER_FOLLOWUP
+    assert current["research_head_after_market_followup"] == RESEARCH_HEAD_AFTER_MARKET_FOLLOWUP
     assert current["research_updates_after_capture"][0]["new_head"] == RESEARCH_HEAD_AFTER_FOLLOWUP
     assert "research/xrp_intelligence/20261108T011925Z-xrp-etf-flow-universe-and-sec-docket-reconciliation.json" in current["research_artifacts_added"]
     assert prior33["captured_at_utc"] == "2026-11-07T23:42:25Z"
@@ -80,7 +85,7 @@ def test_run34_nine_platform_map_remains_truthful_and_least_privilege():
         (ROOT / "research" / "xrp_intelligence" / "nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
-    assert data["last_verified_at_utc"] == "2026-11-08T01:08:03Z"
+    assert data["last_verified_at_utc"] == "2026-11-08T01:28:31Z"
     assert data["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
     assert data["platforms"]["ChatGPT"]["data_flow"]["verified"] is True
     for name, platform in data["platforms"].items():

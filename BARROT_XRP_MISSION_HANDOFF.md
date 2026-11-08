@@ -5214,3 +5214,45 @@ The intermediate integration head `4b547dc0b54e1e4c74dbeab10b20de7b270551f8` has
 The ETF-flow and SEC-docket reconciliation is committed on #1643 at `a554dc3814fb0a9ed935fa83a2805caa3544915e`. Its exact-head CI, six-manifest dependency audit and fail-closed gate are still in progress/pending. Do not mark this new artifact verified until those exact-head checks complete.
 
 No merge, main-branch write, deployment, external transfer or financial action occurred.
+
+
+## Run 34 market and CI follow-up — 2026-11-08T01:28:31Z
+
+### Fresh public order-book observation
+
+Added to the existing #1643 research branch:
+- `research/xrp_intelligence/20261108T012448Z-xrp-market-depth-and-derivatives-provider-reconciliation.json`
+- `tests/test_xrp_market_depth_and_derivatives_provider_reconciliation_20261108.py`
+
+Fuelmaps' 01:00 UTC composite snapshot showed XRP at $1.1598 across six venues. Visible bid/ask depth was $14.4M/$9.5M within 1%, $19.2M/$11.2M within 2%, and $25.8M/$12.5M within 5%. At ±10%, it reported $34.7M/$15.8M but only five of six venues. Binance and Bitget were excluded. Resting orders can be pulled; this is not executable support or a directional signal.
+
+CoinGlass's rendered page showed $0 open interest and no futures-volume value while its indexed variants showed roughly $2.74–2.75B OI and $1.88–1.92B futures volume. The rendered zeros are treated as unavailable, not economic zero. CoinMarketCap's $1.38–1.54B aggregated 24-hour volume is not comparable to CoinGlass's $405M spot-only volume. Swiftedge's 18:50 UTC perpetual snapshot was stale; its daily report included a 03:40 UTC low later than the page's own update and later than the 01:24 UTC capture, so that intraday path is quarantined.
+
+Three competing explanations remain unresolved: genuine visible bid absorption, fragile/pulled bids or venue-sample bias, and broader risk-off pressure coexisting with a bid-heavy book. No new observation was admitted to the feature store.
+
+The market artifact contains normalized web-excerpt hashes only, not raw HTTP bytes or per-venue exchange receipts. It remains model-ineligible.
+
+### Research branch exact-head results
+
+PR #1643 research head: `6ee1942fc7702bad582adb939705c841f1d77755`.
+
+- Full repository suite: **2,222 passed, 8 subtests passed**.
+- Core suite passed.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed with automatic merging disabled.
+- Full-suite log: [CI 42434231581](https://github.com/Barrot-Agent/B-Agent/actions/runs/42434231581).
+- Dependency audit: [42434231567](https://github.com/Barrot-Agent/B-Agent/actions/runs/42434231567).
+- Fail-closed gate: [42434231667](https://github.com/Barrot-Agent/B-Agent/actions/runs/42434231667).
+- The full-suite command completed successfully; at capture, Actions was still performing post-job cleanup and reported a non-fatal cache reservation collision and Node 20 deprecation warning from checkout@v4/setup-python@v5.
+
+### Integration historical-test correction
+
+PR #1640 head `10d29d310365d63275ba932950948fdf5fe9f6f0` had one full-suite failure after the prior historical-run migration:
+
+- **1,173 passed, 1 failed, 8 subtests passed**.
+- The only failure was `test_run34_nine_platform_map_remains_truthful_and_least_privilege`: it expected the map's old `last_verified_at_utc` value from Run 34 capture (01:08:03Z), while a later Run 34 follow-up correctly advanced the map verification timestamp to 01:22:49Z.
+- Core tests passed; coverage remained 58.49%; wheel verification was skipped because the full suite failed.
+- The test is corrected to assert the current map verification timestamp, now `2026-11-08T01:28:31Z`, while the original Run 34 capture timestamp remains preserved in `captured_at_utc` and prior-run history. No product behavior or safety threshold is changed.
+- The next exact-head full suite, wheel verification, dependency audit and fail-closed gate must pass before this branch can be considered verified.
+
+No merge, deployment, main-branch write, external model transfer, paper trade or real-money action occurred.
