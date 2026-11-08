@@ -84,7 +84,7 @@ def test_alpha_finance_etf_flow_is_secondary_and_not_comparable_to_holdings_delt
     assert source["source_type"] == "secondary_market_data_aggregator"
     comparison = next(item for item in data["source_disagreements"] if item["topic"] == "XRP ETF flows versus holdings deltas")
     assert comparison["comparable"] is False
-    assert "zero" in comparison["source_a"].lower()
+    assert "$0" in comparison["source_a"]
     assert "812,529" in comparison["source_b"]
 
 
