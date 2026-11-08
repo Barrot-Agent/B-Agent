@@ -1,3 +1,147 @@
+# Current integrated Barrot handoff — 2026-11-08T13:03:21Z
+
+## Run 55 — current repository, market-depth and provider-health verification
+
+**Mission:** XRP intelligence and prediction-engine mastery remains priority one. **Foundation:** Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Current repository state
+
+- Main SHA: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; unchanged.
+- Main recursive tree: 1,403 entries, 1,298 files; response not truncated.
+- Open PR inventory: **372 total (356 drafts, 16 non-drafts)** across four complete pages (100, 100, 100, 72).
+- #1640 current head: `6cfed834511dbfa1175c1e46a5042acfe489a6c9`; 676 commits ahead, zero behind; 177 changed paths.
+- #1643 current head after this run's evidence append: `58c65e4277d7b95193452538ef063462aa95af8f`; 820 commits ahead, zero behind; 618 changed paths.
+- Six shared paths remain: `.github/workflows/dependency-audit.yml`, `BARROT_XRP_MISSION_HANDOFF.md`, Kamilah source registry, `scripts/pillars_check.py`, Kamilah identity-gate tests and Pillars read-only tests. Unique paths: 171 on #1640 and 612 on #1643. The branches diverge; consolidate #1643 only after #1640 is merged and verified.
+
+### Exact-head CI
+
+**#1640 — V3 integration, exact head `6cfed834511dbfa1175c1e46a5042acfe489a6c9`**
+
+- Full repository suite: **1,198 passed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **59% rounded**, above the 53% threshold.
+- Installed-wheel verification passed, including Barrot V3, the XRP mission and canonical assets.
+- Six-manifest dependency audit passed; no known vulnerabilities reported.
+- Fail-closed gate passed and explicitly keeps merging disabled.
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42482238513
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42482238598
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42482238555
+
+**#1643 — XRP research**
+
+- Prior exact head `fa8a20289d5a16273dcba3820098bf910747dda9` passed **2,426 full-suite tests, 8 subtests**, 498 core tests, six-manifest dependency audit and fail-closed gate.
+- This run appended a new research artifact and seven regression tests to the existing research branch, advancing it to `58c65e4277d7b95193452538ef063462aa95af8f`.
+- On the new exact head, the fail-closed gate passed; full repository suite, core suite and dependency audit were still running at capture. Do not substitute the prior head's green results for the new head.
+
+### New XRP research artifact
+
+Added on the existing #1643 branch:
+
+- `research/xrp_intelligence/20261108T130321Z-xrp-orderbook-derivatives-etf-vintage-reconciliation.json`
+- `tests/test_xrp_orderbook_derivatives_etf_vintage_reconciliation_20261108.py`
+
+**Displayed spot depth — Fuelmaps, 12:00 UTC, November 8**
+
+XRP mid: **$1.1645**, six reporting venues.
+
+| Band | Bids | Asks | Bid share | Coverage |
+|---|---:|---:|---:|---:|
+| ±0.5% | $6.8M | $4.5M | 60.2% | 6/6 |
+| ±1% | $10.8M | $8.3M | 56.5% | 6/6 |
+| ±2% | $16.6M | $8.9M | 65.1% | 6/6 |
+| ±5% | $23.3M | $10.1M | 69.7% | 6/6 |
+| ±10% | $32.1M | $13.7M | 70.2% | 5/6 |
+
+The composite covers Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini. Binance and Bitget are excluded. The hourly columns average one-minute snapshots; displayed resting orders can be cancelled, hidden/iceberg orders are absent, and perpetual books are not included. The 12:00 snapshot was 3,801 seconds old at the 13:03:21 reference. This is a bid-skewed displayed-book observation, not executed demand or a forecast. Source: https://fuelmaps.io/order-book/
+
+**Derivatives — Binance XRPUSDT perpetual**
+
+The public premium-index payload carries provider timestamp **12:35:59 UTC**. At 13:03:21 UTC it was **1,642 seconds old**, beyond the 300-second freshness limit.
+
+- Mark: 1.16440000 USDT.
+- Index: 1.16476259 USDT.
+- Mark/index basis: **-3.113 bps**.
+- Last funding rate: **+0.009823% per eight hours**.
+- Open interest and liquidation totals: unavailable.
+- The response matched the payload/timestamp from the earlier 12:40 capture; cache headers were unavailable, so cache status is unknown.
+
+It is stale and model-ineligible.
+
+**ETF flow measurement disagreement**
+
+- CryptoKeyhole's page updated November 8 at 12:47 UTC reports a November 5 four-fund holdings change of -3,339 XRP, October 30–November 5 change of -1,137,098 XRP, and a November 6 partial change of -752,048 XRP across three of four funds. It also labels its latest issuer file November 9 while saying it was read November 7. That future-dated file label is quarantined pending correction.
+- Hold Hub's November 6 review says none of the five issuer pages it opened showed daily dollar flows; aggregator figures came from sources such as SoSoValue. Franklin XRPZ holdings rose by 8,635,002 XRP from October 16 to November 5 while net assets fell 1.673%. Holdings and NAV/net assets are not interchangeable flow measures.
+- Alpha Finance reports $0 daily flow on November 6, +$45.9M over 30 sessions and $1.73B cumulative across five funds, using CoinGlass as its upstream dashboard feed.
+
+These series differ in fund universe, upstream and measurement definition. They are not independent confirmations of primary-market capital and must not be averaged. Source pages: https://cryptokeyhole.com/etf-flows/xrp/ · https://hold-hub.com/xrp-etf-inflows-check-real-numbers/ · https://alphafinance.io/etf/xrp/
+
+All five preserved source excerpts have SHA-256 digests in the artifact. Hashes cover the normalized surfaced text, not raw HTTP wire bytes or headers. No feature-store write was made.
+
+### Main provider-health finding
+
+Main's scheduled Pillars Consistency Check **42482972244** failed on the unchanged main SHA. Its read-only checks reported:
+
+- GitHub App: missing `GITHUB_APP_ID`, `GITHUB_APP_PRIVATE_KEY` and `GITHUB_INSTALLATION_ID`.
+- Databricks: read-only SQL validation returned HTTP 403.
+- Hugging Face Space: runtime stage `BUILD_ERROR`.
+- Deploy-sync check: passed.
+- System-prompt fiction scan: passed.
+
+No Space restart, upload, deployment, Databricks write, token rotation or secret read occurred. The failure is an integration-health blocker, not evidence that the local repository test suite failed.
+
+The latest main Cross Analysis run, [42482207862](https://github.com/Barrot-Agent/B-Agent/actions/runs/42482207862), succeeded on main. It does not establish that the XRP-specific ingestion workflow is running on main.
+
+### Review, protection and merge state
+
+- #1640 inline threads: **22/22 resolved**; 62 COMMENTED review records; zero APPROVED reviews.
+- #1643 inline threads: **19/19 resolved**; 10 COMMENTED review records; zero APPROVED reviews.
+- COMMENTED is not approval.
+- Main branch-protection read returns HTTP 403. The only visible ruleset, ID 10863829 (“Fall Back”), is disabled. CODEOWNERS is `* @Barrot-Agent`; independent review policy cannot be verified.
+- GitHub Pages is enabled but its configuration is inaccessible. Prior main deployment run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) succeeded. #1640 changes public web paths, and merge-triggered deployment authorization is absent.
+
+**No merge.** Both mission PRs lack independent APPROVED reviews. Branch-protection enforcement and Pages deployment authorization remain unresolved. #1643 must follow #1640 because six paths differ between the branches.
+
+### Nine-platform coordination
+
+- ChatGPT-to-GitHub: verified current-session connection.
+- Copilot: one-off COMMENTED review activity only, not approval.
+- Claude, Grok, Gemini and Codex: no persistent authenticated data flow verified.
+- Hugging Face: BUILD_ERROR health check.
+- Kaggle: not authenticated/tested.
+- Databricks: read-only HTTP 403.
+- No cross-platform evidence exchange or external model transfer occurred. Groq is distinct from Grok.
+
+### Prediction-engine status
+
+Implemented on the #1640 branch: 29 endpoint records, 27 scheduled public sources, SHA-256 receipts, point-in-time SQLite feature store, four deterministic baselines, chronological embargoed walk-forward evaluation, temporal calibration diagnostics, PSI drift diagnostics, feature-snapshot verification and fail-closed forecast ledger.
+
+Not verified on main: scheduled ingestion, independent WORM storage, complete raw-source rebuild, synchronized multi-domain history, trained-model out-of-sample lift, real-data calibration, concept-drift monitoring, sufficient independent shadow outcomes and trusted evaluator key.
+
+**Forecast: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+### Backlog and next actions
+
+- #1640: active V3 integration candidate; exact-head checks green.
+- #1643: active XRP research candidate; new exact-head full suite and dependency audit pending.
+- #1653: blocked by eight unresolved threads; preserve six unique paths.
+- #1644–#1650: dependency/workflow work overlaps #1640; retain until main verification.
+- #1317/#1318/#1320: overlapping structural/schema/safety work; preserve pending reconciliation.
+- #1254/#1255: older dependency updates; retain pending main verification.
+- #1269, #1655, #1641, #1659, #1477, #1547, #1586, #1597 and #1591: preserve unique work.
+
+1. Finish exact-head full-suite, core-suite and six-manifest dependency verification on #1643 head `58c65e4`.
+2. Obtain genuine independent APPROVED reviews.
+3. Resolve branch-protection visibility and Pages deployment authorization.
+4. Merge #1640 only after every condition is satisfied; verify merge commit, files, workflow side effects and main CI.
+5. Consolidate #1643's 612 unique paths onto verified main, reconciling all six shared paths and carrying #1640's stronger coverage/wheel checks.
+6. Close only exact superseded PRs after successor content is verified on main.
+7. Verify scheduled ingestion on main, establish independent archival/rebuild and expand SEC, macro, stablecoin, custody, collateral, institutional and payment-rail coverage.
+8. Demonstrate leakage-safe out-of-sample lift, validated calibration, stable concept drift and independent shadow outcomes before issuing any directional forecast.
+
+No new PR was created. No main write, merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree operation occurred.
+
+---
+
 # Current integrated Barrot handoff — 2026-11-08T11:59:38Z
 
 ## Run 52 — current repository and verification
