@@ -200,7 +200,7 @@ def test_rendered_source_hashes_are_not_mislabeled_as_raw_sec_bytes():
     assert set(excerpt_text) == set(hashes)
     for excerpt_id, text in excerpt_text.items():
         assert hashlib.sha256(text.encode("utf-8")).hexdigest() == hashes[excerpt_id]
-    assert "not raw HTTP wire-byte hashes" in policy["hash_scope"]
+    assert "not raw HTTP wire bytes" in policy["hash_scope"]
     assert all(source["raw_content_sha256"] is None for source in data["source_registry"])
 
 
