@@ -43,4 +43,5 @@ def test_sbic_chatgpt_academic_benchmark_is_separated_from_japan_sbic() -> None:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     assert len(registry["seed_videos"]) == 21
     assert registry["video_inventory_status"]["verified_inventory_count"] == 0
-    assert registry["identity_status"]["canonical_channel_verified"] is False
+    assert registry["video_inventory_status"]["canonical_channel_verified"] is False
+    assert registry["video_inventory_status"]["attribution_verified"] is False
