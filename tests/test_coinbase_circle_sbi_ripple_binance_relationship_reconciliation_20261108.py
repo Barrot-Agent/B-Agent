@@ -19,7 +19,7 @@ def load_artifact() -> dict:
 
 def test_all_coinbase_circle_relationship_receipts_are_reproducible() -> None:
     artifact = load_artifact()
-    assert len(artifact["source_receipts"]) == 27
+    assert len(artifact["source_receipts"]) == 29
     for receipt in artifact["source_receipts"]:
         assert len(receipt["excerpt"].split()) <= 25
         assert hashlib.sha256(receipt["excerpt"].encode("utf-8")).hexdigest() == receipt["sha256"]
@@ -38,7 +38,11 @@ def test_circle_sbi_japan_is_a_funded_50_50_entity_with_no_significant_results()
 def test_circle_binance_equity_and_commercial_agreement_are_separate_from_xrp() -> None:
     relationship = load_artifact()["relationship_graph"]["circle_binance"]
     assert relationship["binance_equity_investment_usd"] == 100_000_000
-    assert relationship["shares_issued"] == 1_200_000
+    assert relationship["shares_issued"] == 1_237_011
+    assert relationship["shares_issued_exact"] is True
+    assert relationship["monthly_incentive_fee_based_on_usdc_wallet_balances"] is True
+    assert relationship["term_years"] == 5
+    assert relationship["rounding_difference_usd"] == 30.76
     assert relationship["price_per_share_usd"] == 80.84
     assert relationship["five_year_commercial_agreement_announced"] is True
     assert relationship["xrp_specific_investment_or_flow_proven"] is False
