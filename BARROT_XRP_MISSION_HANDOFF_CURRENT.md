@@ -1,3 +1,43 @@
+## Run 72 final supplement — regulated derivatives and reserve structure (2026-11-08T23:25:51.610Z)
+
+### CFTC primary derivatives positioning
+
+The CFTC's official **Traders in Financial Futures — Futures Only** report, updated November 6, 2026, reports positions as of Tuesday, November 3, 2026. This is a weekly, lagged regulatory snapshot, not a live feed: https://www.cftc.gov/dea/futures/financial_lf.htm
+
+- CME XRP futures (CFTC code 176740; 50,000 XRP per contract): open interest 7,216 contracts, or 360.8M XRP contract units; weekly change -845 contracts (-42.25M units, -10.48% from the prior week's 8,061 contracts).
+- Position categories: dealers 4,228 long / 4,431 short (net -203); asset managers 868 / 802 (net +66); leveraged funds 1,976 / 1,696 (net +280); nonreportables 84 / 227 (net -143). Total reporting traders: 29.
+- Coinbase Derivatives Nano XRP (code 176LM1; 500 XRP per contract): open interest 32,505 contracts (16.2525M XRP units), weekly change -32,864 contracts from 65,369 (-50.27%). This large contract-specific reduction may reflect expiry, roll, position closure or reporting/product reclassification; the CFTC table alone does not identify the cause.
+- Coinbase Derivatives Nano XRP Perp Style (code 176LM3; 500 XRP per contract): open interest 38,392 contracts, weekly change -465.
+
+Contract units are not cash invested, margin posted or spot XRP held. CFTC trader categories are not a directional forecast; dealer positions may be hedged, and the report excludes non-CFTC venues. The Nano XRP open-interest contraction is a data-quality/event lead, not proof of liquidation or migration. Preserve it separately from secondary OKX/global open-interest aggregators, whose venue universes and USD-denominated metrics differ. Do not average them.
+
+The CFTC weekly file is not yet among the 35 source records / 33 scheduled endpoints on the V3 branch. Add it only through a separately tested, timestamp-aware parser (report date, publication date, contract code, multiplier, trader categories, revision receipt); consider futures-only and futures-plus-options as separate series.
+
+### Circle reserve composition and risk boundary
+
+Circle's Q3 2026 Form 10-Q reports approximately $73.957B of reserve assets at September 30:
+- Circle Reserve Fund: $62.467B (about 84.5%).
+- Cash: $9.732B (about 13.2%).
+- U.S. Treasury securities outside the fund: $1.758B (about 2.4%).
+
+The Reserve Fund is a Rule 2a-7 government money-market fund managed by BlackRock, with short-term Treasury/repo/cash exposure and a $1 NAV. The filing says fund shares are not FDIC-insured or government-guaranteed; BlackRock is not obligated to provide support. Cash balances at banks exceed applicable FDIC insurance limits; the filing reports only about $2.3M of aggregate deposit-insurance coverage across the disclosed banks. This is a reserve/counterparty concentration disclosure, not evidence of insolvency or a reserve shortfall. Keep fund shares, bank deposits, outside Treasury securities, circulating USDC and issuer attestations as separate fields. https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+
+### Exact-head verification on the preceding Run 72 handoff commit
+
+The current code/data handoff commit before this final supplement, `fe956e1169c60dd8e7faee42c050e0f91f2e4df0`, passed:
+- Full repository suite: **1,215 passed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **58.98%**, above the 53% threshold.
+- Installed-wheel verification passed, including Barrot V3, the XRP mission and canonical assets.
+- Six-manifest dependency audit passed; all six reported no known vulnerabilities.
+- Fail-closed gate passed and explicitly kept automatic merging disabled.
+- CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42534824759
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42534824769
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42534824757
+- The pip-cache write-budget warning was non-failing; it did not affect test, wheel or audit results.
+
+The current PR #1640 is mergeable/clean, 743 commits ahead and zero behind main, with 182 changed files. It still has zero independent APPROVED reviews and the Pages deployment authorization blocker. This final handoff-only commit will create a new exact head; its full suite/audit/gate must be checked before any merge decision.
+
 ## Run 72 supplement — primary-source identity and institutional network (2026-11-08T23:21:50.079Z)
 
 ### Japan SBIC identity resolved from primary corporate records
