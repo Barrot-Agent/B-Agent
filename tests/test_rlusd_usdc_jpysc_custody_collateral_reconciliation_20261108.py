@@ -70,3 +70,20 @@ def test_usdc_secondary_transcription_and_rlusd_supply_event_remain_unconfirmed(
     assert coindaro["source_type"] == "secondary_onchain_analysis"
     assert any("not independently reproduced" in v for v in coindaro["limitations"])
     assert data["model_admission"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_rlusd_secondary_supply_source_correction_invalidates_unverified_coindaro_record():
+    correction_path = ROOT / "research" / "xrp_intelligence" / "20261108T061626Z-rlusd-xrpl-secondary-source-correction.json"
+    correction = json.loads(correction_path.read_text(encoding="utf-8"))
+    assert correction["correction"]["do_not_use_original_record"] is True
+    assert correction["correction"]["status"] == "INVALIDATED_UNVERIFIED_URL_AND_CLAIM"
+    source = correction["corrected_secondary_source"]
+    assert source["source_id"] == "xrp_insights_rlusd_onchain_split_20261107"
+    assert hashlib.sha256(source["captured_excerpt_text"].encode("utf-8")).hexdigest() == source["captured_excerpt_sha256"]
+    assert source["normalized"]["xrpl_ethereum_total_usd"] == 2_670_000_000
+    assert source["normalized"]["xrpl_supply_usd"] == 884_300_000
+    assert source["normalized"]["ethereum_supply_usd"] == 1_790_000_000
+    assert len(source["exclusions"]) == 5
+    assert correction["reconciliation"]["numeric_difference_usd"] == 37_100_000
+    assert "Not a valid supply-growth calculation" in correction["reconciliation"]["difference_interpretation"]
+    assert correction["model_admission"]["forecast_status"] == "NOT_ISSUED"
