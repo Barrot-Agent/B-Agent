@@ -9,7 +9,7 @@
     "retrieval_date_utc": "2026-11-08",
     "raw_http_bytes_captured": false,
     "response_headers_captured": false,
-    "receipt_scope": "Normalized excerpt hashes preserve the exact extracted text used in this artifact. They are not raw-page or wire-byte hashes.",
+    "receipt_scope": "SHA-256 hashes apply only to the five normalized source excerpts in source_receipts. The secondary commentary summary is cited separately and is not hash-receipted. No raw page bytes or HTTP headers were captured.",
     "lawful_public_sources": true
   },
   "entities": [
@@ -275,24 +275,6 @@
         "BNY is identified as primary RLUSD reserve custodian and supports XRP and RLUSD custody for eligible clients.",
         "BNY/Ripple/C2FO describe a separate exploratory tokenized trade-finance initiative; it must not be conflated with C2FO Instant Pay settlement."
       ]
-    },
-    {
-      "source_id": "crypto_news_c2fo_rlusd_analysis",
-      "publisher": "crypto.news",
-      "source_type": "secondary_analysis",
-      "published_on": "2026-11-06",
-      "url": "https://crypto.news/ripple-wants-to-pay-suppliers-in-rlusd-where-does-xrp-fit/",
-      "independence_cluster": "secondary_analysis_of_c2fo_ripple_release_and_xrpl_docs",
-      "independent_confirmation": false,
-      "raw_source_bytes_captured": false,
-      "http_headers_captured": false,
-      "hash_scope": "SHA-256 of normalized web-rendered excerpt UTF-8, not raw page bytes",
-      "normalized_excerpt_sha256": "227da9d68a9f1d442006746c16e51f85bb2e3efcbec81fa3a8a37cd6de81f37a",
-      "normalized_excerpt": "Ripple and C2FO plan to bring financing and settlement for Instant Pay onto the XRP Ledger so suppliers can receive funds against approved invoices.\nThe companies named RLUSD as the settlement currency, meaning suppliers would receive a dollar stablecoin even though the payments would use the XRP Ledger.\nThe ledger charges transaction fees in XRP and requires account reserves, so the operators submitting transactions or maintaining accounts would need XRP balances.\nThe amount invoiced and the XRP needed to process it can move independently because operational demand depends on transaction count and account design.",
-      "claims": [
-        "Secondary analysis distinguishes RLUSD settlement from XRP fees/reserves and undisclosed bridge conversion.",
-        "It is derived from the same joint announcement and XRPL protocol documentation, not independent evidence."
-      ]
     }
   ],
   "model_admission": {
@@ -310,10 +292,27 @@
       "XRP transaction fees and account/owner reserves are separated from invoice notional.",
       "C2FO and Ripple pages are one joint-announcement source cluster.",
       "All SHA-256 values cover normalized web-rendered excerpts, not raw HTTP bytes.",
-      "No directional forecast or price-feature admission is permitted."
+      "No directional forecast or price-feature admission is permitted.",
+      "The secondary crypto.news commentary is cited separately as an unreceipted analyst summary, not misrepresented as a normalized source excerpt."
     ],
     "exact_head_full_suite_required": true,
     "dependency_audit_required": true,
     "fail_closed_gate_required": true
-  }
+  },
+  "secondary_context": [
+    {
+      "source_id": "crypto_news_c2fo_rlusd_analysis",
+      "publisher": "crypto.news",
+      "source_type": "secondary_analysis",
+      "published_on": "2026-11-06",
+      "url": "https://crypto.news/ripple-wants-to-pay-suppliers-in-rlusd-where-does-xrp-fit/",
+      "independence_cluster": "secondary_analysis_of_c2fo_ripple_release_and_xrpl_docs",
+      "independent_confirmation": false,
+      "capture_status": "NOT_HASH_RECEIPTED",
+      "raw_source_bytes_captured": false,
+      "http_headers_captured": false,
+      "normalized_excerpt_sha256": null,
+      "analyst_summary": "Secondary commentary distinguishes RLUSD settlement from XRP fees/reserves and undisclosed bridge conversion. It derives from the same C2FO/Ripple joint announcement and XRPL protocol documentation; it is not independent confirmation and its summary is not represented as a verbatim source excerpt."
+    }
+  ]
 }

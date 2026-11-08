@@ -47,6 +47,7 @@ def test_xrp_fees_and_reserves_are_separate_from_invoice_notional():
 def test_primary_sources_are_clustered_and_normalized_hashes_are_truthfully_scoped():
     data = load_artifact()
     receipts = data["source_receipts"]
+    assert len(receipts) == 5
     by_id = {x["source_id"]: x for x in receipts}
     assert by_id["c2fo_instant_pay_joint_release"]["independence_cluster"] == by_id["ripple_instant_pay_joint_release"]["independence_cluster"]
     assert by_id["c2fo_instant_pay_joint_release"]["independent_confirmation"] is False
