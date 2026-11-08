@@ -1,6 +1,6 @@
 # Current integrated Barrot handoff — 2026-11-08T14:05:10Z
 
-## Run 57 — repository verification, Bybit/Kraken spot receipt, and integration status
+## Run 57 — current repository, Bybit/Kraken spot receipt, and integration status
 
 ### Repository reality
 
@@ -8,28 +8,29 @@
 - Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; unchanged in this run.
 - Complete recursive main tree: 1,403 entries, 1,298 files, 493 Python files, 90 test modules, 86 workflow files.
 - Open PR inventory: 372 total across four complete API pages (100, 100, 100, 72); 356 drafts and 16 non-drafts at the prior complete inventory. No new PR was created and none was closed.
+- Run 57 handoff content commit: `1b5858ee21980b05d9b8fccbd56808bd344cec99`; initial handoff regression-test commit: `8e017085825cc4dfcff68f17d6d66764f297f621`.
 - Main scheduled health: Cross Analysis run [42486942084](https://github.com/Barrot-Agent/B-Agent/actions/runs/42486942084) succeeded at 13:51 UTC. Pillars Consistency Check [42482972244](https://github.com/Barrot-Agent/B-Agent/actions/runs/42482972244) failed at 13:01 UTC. Its actual job log reports missing GitHub App credentials, Databricks HTTP 403, and Hugging Face Space `BUILD_ERROR`; GitHub source marker and fiction scan passed. This is an external-service verification failure, not evidence that the read-only script should report success. No credential, service, or Space action was taken.
 
 ### PR #1640 — current V3/MMI/XRP integration branch
 
-- Current exact head: `4b29632edbd635b4c04559cbb141d6a0f067a69a`.
+- Current exact head: `8e017085825cc4dfcff68f17d6d66764f297f621`.
 - Base main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
-- Compare: 682 commits ahead, zero behind; 177 changed files. Branch tree: 1,479 entries, 1,366 files, 548 Python files, 129 test modules, 87 workflows.
+- Compare before the two handoff-only/test commits: 682 commits ahead, zero behind; 177 changed files. Branch tree: 1,479 entries, 1,366 files, 548 Python files, 129 test modules, 87 workflows.
 - State: open, non-draft, GitHub reports mergeable.
-- Exact-head full repository CI [42487509336](https://github.com/Barrot-Agent/B-Agent/actions/runs/42487509336): **1,201 passed, 8 subtests passed** in 44.05 seconds; inclusive coverage **58.86%** (53% required). Installed wheel built and packaged Barrot V3, the primary XRP mission, and canonical data assets.
-- Exact-head core job in the same CI run: **660 passed, 8 subtests passed** in 12.06 seconds.
-- Exact-head six-manifest dependency audit [42487509177](https://github.com/Barrot-Agent/B-Agent/actions/runs/42487509177): passed; all six declared manifest audits reported no known vulnerabilities.
-- Exact-head fail-closed gate [42487509265](https://github.com/Barrot-Agent/B-Agent/actions/runs/42487509265): passed; its only merge-related job explicitly says merging is disabled.
+- Pre-handoff code head `4b29632edbd635b4c04559cbb141d6a0f067a69a` passed full repository CI [42487509336](https://github.com/Barrot-Agent/B-Agent/actions/runs/42487509336): **1,201 passed, 8 subtests passed** in 44.05 seconds; inclusive coverage **58.86%** (53% required). Installed wheel built and packaged Barrot V3, the primary XRP mission, and canonical data assets. Core job: **660 passed, 8 subtests passed**.
+- Pre-handoff six-manifest dependency audit [42487509177](https://github.com/Barrot-Agent/B-Agent/actions/runs/42487509177) and fail-closed gate [42487509265](https://github.com/Barrot-Agent/B-Agent/actions/runs/42487509265) passed.
+- Current exact-head CI [42488534267](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488534267): core Tests job **498 passed, 8 subtests passed**; full repository suite **3 failed, 1,199 passed, 8 subtests passed** in 59.13 seconds. All three failures are handoff-history assertions in `test_xrp_mission_handoff_run27.py`, `test_xrp_mission_handoff_run34.py`, and `test_xrp_mission_handoff_run57.py`. They were caused by prepending Run 57 and not updating older tests that expected Run 56 in the first 3,000 characters, plus one missing handoff-commit assertion. No production-code regression was reported. Correct the assertions while preserving the historical Run 56 section, then rerun the entire suite on the new exact head.
+- Current exact-head six-manifest dependency audit [42488534416](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488534416) passed; all six declared manifests reported no known vulnerabilities. Current fail-closed gate [42488534367](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488534367) passed with merging disabled.
 - Non-fatal warnings: GitHub Actions cache budget is read-only; existing TOML license/package-discovery deprecations remain.
 - Review: 22/22 inline threads resolved, 62 review submissions, **zero APPROVED** reviews (all 62 are COMMENTED). No independent approval exists.
 
 ### PR #1643 — consolidated XRP research workstream
 
-- Previous tested head: `58c65e4277d7b95193452538ef063462aa95af8f`; full repository suite **2,433 passed, 8 subtests passed** in 18.73 seconds; six-manifest audit passed; fail-closed gate passed. Exact runs: [CI 42483561562](https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561562), [audit 42483561547](https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561547), [gate 42483561518](https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561518).
-- This run appended one new spot timestamp-quality artifact and one regression test to the existing research branch. New exact head: `fc4c4f4a4618bc95067c623775ac614c411b8afe`; compare: 822 commits ahead, zero behind. The PR remains open, non-draft and mergeable.
-- New exact-head CI [42488386422](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488386422) and dependency audit [42488386380](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488386380) were still in progress at this handoff. Fail-closed gate [42488386375](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488386375) passed. Do not claim the new artifact/test verified until both exact-head jobs complete.
+- Prior research head `58c65e4277d7b95193452538ef063462aa95af8f` passed full suite **2,433 passed, 8 subtests passed** in 18.73 seconds; six-manifest audit and fail-closed gate passed.
+- Bybit/Kraken spot artifact and test were then verified on predecessor head `fc4c4f4a4618bc95067c623775ac614c411b8afe`: **2,438 full-suite tests passed, 8 subtests passed** in 18.44 seconds; core Tests job **498 passed, 8 subtests passed**; six-manifest dependency audit [42488386380](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488386380) passed with no known vulnerabilities; fail-closed gate [42488386375](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488386375) passed. Full CI: [42488386422](https://github.com/Barrot-Agent/B-Agent/actions/runs/42488386422).
+- This run then appended the Evernorth closing-capital/XRP-flow artifact and regression tests to the same research branch. Current exact head: `b27b0643dcd5e5087223ae9d89ec92ced6f7d4d3`; compare remains 822 commits ahead, zero behind. PR remains open, non-draft and mergeable. Exact-head CI/audit for this newest head are not yet verified.
 - Review: 19/19 inline threads resolved; 10 review submissions, **zero APPROVED** reviews (all COMMENTED).
-- The research branch remains a large append-only archive (618 PR changed files reported by PR metadata; compare endpoint caps per-file results at 300). Do not merge it directly or create another research PR. After #1640 is merged and verified on main, create one fresh-main successor carrying its unique paths and explicitly reconcile shared paths.
+- The research branch remains a large append-only archive (618 PR changed files reported by PR metadata; compare endpoint caps per-file results at 300). Do not merge it directly or create another research PR. After #1640 is merged and verified on main, create one fresh-main successor carrying unique research paths and explicitly reconcile shared paths.
 
 ### New public spot observation — research-only, not model eligible
 
@@ -39,6 +40,18 @@
 - Exact JSON response-text SHA-256 values are recorded and tested. These hashes cover the text rendered by the retrieval interface, not raw HTTP wire bytes or headers. Exact retrieval-start times were unavailable.
 - The Bybit server timestamp was 901.404 seconds before the run reference time; actual age at retrieval is therefore at least that old. Kraken event time is unknown. The quote currencies differ (USDT versus USD), and observations are not synchronized. No cross-venue basis, arbitrage, depth, or common-cutoff feature was calculated. No feature-store write, model admission, or forecast was made.
 - The new artifact/test commit is on #1643 only; its exact-head CI/audit were pending at this checkpoint. Sources: Bybit result captured at [turn499137view0] and Kraken result at [turn871840view2].
+
+### New primary-source Evernorth actual-capital reconciliation
+
+- SEC's October 30 S-1 states approximately **$272.6M gross cash** at closing: $224.6M private-placement cash plus $48.0M released from the SPAC trust after redemptions, before transaction expenses. It separately reports approximately **388,910,554 XRP contributed in kind**.
+- The same filing says approximately **$214.1M cash was used to purchase 84,365,876 XRP**. This is the identified cash-funded XRP acquisition; it is not the same as the full approximately 473M XRP held at October 9 closing. The in-kind components include 211.319M XRP through Arrington XRP Capital Fund/RippleWorks, 126.791M from Ripple, 50M from Larsen Lam Children’s Remainder Trust (an investor affiliated with Ripple), and 600,000 plus 200,000 XRP from advance/delayed subscribers. Exact component sum: 388,910,554.061435 XRP.
+- Evernorth's $30M 4.00% Convertible Senior PIK Note was issued and paid on **October 12, 2026** (not the October 9 business-combination date). The POS AM states **$29M net cash after a $1M capital-markets-advisor fee**. Intended use includes XRP acquisition and other XRP ecosystem activities, but no specific XRP purchase from these proceeds is traced. Purchaser: NH Investment & Securities as trustee for Kyobo AIM Corporate Finance General Private Investment Trust No. 3.
+- Ripple's Pathfinder/Company revolving facility had a $10M cap and **$9.7M drawn as of October 7**, at 3.81%. The filing says it was due within five business days after the October 9 closing or earlier on five business days' notice. The reviewed October 30 S-1 does not confirm repayment; status remains **UNKNOWN**. This is related-party debt, not independent institutional capital. The separate $1M Evernorth facility was undrawn as of June 30; later status is not established.
+- Cantor's October 30 ELOC is optional capacity for up to 5,218,935 newly issued shares at 97% of VWAP. The prospectus says no shares were being sold under it as of that prospectus and issuance is at Evernorth's discretion subject to conditions. No drawdown was verified. The $76.8M illustrative row at $14.71 does not reconcile with the stated 97% formula: recomputation is $74.467M, a $2.333M difference; the $10.00 row does reconcile to approximately $50.6M. Preserve as an unresolved prospectus arithmetic inconsistency, not evidence of fraud.
+- SBI Holdings-affiliated investors received Evernorth equity at closing; this is an SBI Holdings relationship, not evidence that SBIC East/Central/West subscribed or bought XRP.
+- The exact phrase “actual capital stack” appears in a user-generated KuCoin Insights post. It is commentary, not an accounting category. SEC filings require separating cash equity, in-kind XRP, cash-funded XRP purchases, related-party debt, note proceeds and optional ELOC capacity.
+- Durable artifact and tests on #1643: `research/xrp_intelligence/20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation.json` and `tests/test_xrp_evernorth_closing_capital_and_xrp_flow_reconciliation_20261108.py`. Sources: [October 30 S-1](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm), [October 30 ELOC prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm), [October 13 POS AM](https://www.sec.gov/Archives/edgar/data/2092592/000119312526420749/R24.htm).
+- Model treatment: financing/custody events are context features only. The $29M note is not counted as XRP buying; 388.9M in-kind XRP is not counted as market demand; $9.7M Ripple debt is not external capital; ELOC capacity is not cash. Forecast remains NOT_ISSUED.
 
 ### Prediction engine and ingestion status
 
@@ -63,14 +76,14 @@
 
 ### Next concrete actions
 
-1. Verify completion and exact SHA of #1643 runs 42488386422 and 42488386380; inspect job logs and test totals. If failed, fix only the new snapshot/test defect on the same branch.
-2. Keep #1640 as the only V3 integration PR. Obtain genuine independent approval and resolve the branch-protection/Pages deployment boundary before merge; no workaround or bypass.
+1. Correct the three #1640 handoff-test expectations without removing Run 56 history, then run the entire repository suite on the resulting exact head.
+2. Verify full-suite and dependency/security results for #1643 exact head `b27b0643dcd5e5087223ae9d89ec92ced6f7d4d3`. Keep #1640 as the only V3 integration PR. Obtain genuine independent approval and resolve the branch-protection/Pages deployment boundary before merge; no workaround or bypass.
 3. After any authorized merge, fetch main, verify merge commit and integrated files, inspect automatic workflow side effects, and run main full-suite CI.
 4. Only after main verification, create one consolidated successor from the resulting main for #1643's unique research paths, reconcile the shared paths, then run full suite, dependency/security audit and fail-closed gate.
 5. Continue exchange-native synchronized spot/order-book capture with raw-byte receipts and exact retrieval clocks. Keep USDT/USD distinct and exclude unsynchronized observations.
 6. Preserve the forecast boundary until walk-forward, calibration, drift and shadow requirements are met.
 
-No merge, deployment, secret rotation, Space restart, Kaggle submission, funds transfer, paper trade, real-money trade, external model transfer, force-push, reset, clean, stash or discard occurred.
+No merge performed. No merge was performed. No deployment, secret rotation, Space restart, Kaggle submission, funds transfer, paper trade, real-money trade, external model transfer, force-push, reset, clean, stash or discard occurred.
 
 ---
 
