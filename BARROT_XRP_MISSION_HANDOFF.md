@@ -1,4 +1,207 @@
-# Current integrated Barrot handoff — 2026-11-08T03:39:50Z
+# Current integrated Barrot handoff — 2026-11-08T04:04:59Z
+
+## Run 40 — current repository state (2026-11-08T04:04:59Z)
+
+### Mission priority and main repository
+
+XRP intelligence and prediction-engine mastery remain Barrot's priority-one mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Main is unchanged at `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; its tree root remains `359c0540106d6003b22588339e69f10b80489cb0`. The complete recursive main tree contains 1,403 entries, 1,298 files, 493 Python files, 89 test modules and 86 workflow YAML files (78 active plus 8 disabled).
+
+All four open-PR pages were retrieved: **372 open PRs, 356 drafts and 16 non-drafts**. 364 target main; eight target other research/security branches. No PR was created, closed or merged in this run.
+
+### Exact-head engineering verification
+
+**PR #1640 — V3 integration**
+
+Current code/test head before this handoff/map refresh: `905eaad9c0da2212048cf87b4d631461c9873ffb` (634 commits ahead of main, zero behind; 176 changed files).
+
+- Full repository suite: **1,188 passed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive package coverage: **58.78%**, above the 53% threshold.
+- Installed-wheel verification passed; the wheel loads Barrot V3, the priority-one XRP mission and canonical data assets.
+- Six-manifest dependency audit passed; no known vulnerabilities were reported.
+- Fail-closed merge gate passed and explicitly kept automatic merging disabled.
+
+Exact-head evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42444279625
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42444279576
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42444279632
+
+This handoff/map refresh is a documentation-only child of the verified code/test head. Its resulting commit requires its own exact-head CI before it can be treated as the verified PR tip.
+
+**PR #1643 — XRP research**
+
+The previously verified research head `61c21ca3e564c15e9db87a987139e70b51e8ad10` passed:
+
+- Full repository suite: **2,252 passed, 8 subtests passed**.
+- Core suite: 498 passed, 8 subtests.
+- Six-manifest dependency audit passed.
+- Fail-closed merge gate passed.
+
+Evidence on that prior head:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42443708537
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42443708721
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42443708683
+
+A new combined BNY/SBI/Kamilah/spot artifact and regression test were committed to the same existing research branch. New head: `4ddf16fe68ea3586bb52617bc2c26fc243f02baa`. At capture:
+- CI run 42445324811 was in progress.
+- Six-manifest dependency audit run 42445324904 was in progress.
+- Fail-closed gate run 42445324842 passed and kept merging disabled.
+
+The 2,252-test result belongs to the previous head, not the new head. The new research commit is not yet fully verified.
+
+### Branch ancestry, overlap and backlog
+
+The two active mission branches remain zero commits behind main and diverge from their common main ancestor.
+
+| Branch | Ahead | Changed paths | Tree entries / files |
+|---|---:|---:|---:|
+| #1640 integration | 634 | 176 | 1,478 / 1,365 |
+| #1643 research | 760 | 553 | 1,951 / 1,845 |
+
+Six paths overlap:
+1. `.github/workflows/dependency-audit.yml` — identical.
+2. `BARROT_XRP_MISSION_HANDOFF.md` — different content; keep the integrated branch as canonical and preserve research history.
+3. `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` — different content; preserve all 21 research-branch candidate references versus 10 on integration.
+4. `scripts/pillars_check.py` — different implementation; reconcile against the read-only safety requirements.
+5. `tests/test_kamilah_channel_identity_gate.py` — combine both assertion sets.
+6. `tests/test_pillars_check_readonly.py` — preserve the HTTP 404/500 fail-closed and HTTP 200 response assertions.
+
+That leaves 170 integration-only paths and 547 research-only paths. The consolidated research successor must carry #1640's stronger inclusive coverage and installed-wheel checks.
+
+**Non-draft PR classifications**
+- #1640: active V3 integration candidate; exact code/test head green.
+- #1643: active XRP research candidate; newest evidence/test head awaits exact-head full CI and audit.
+- #1653: preserve six unique repository-intelligence paths; blocked by eight unresolved review threads.
+- #1644–#1650: all changed paths are contained in #1640; superseded/path-contained, but do not close before successor content is verified on main.
+- #1317, #1318 and #1320: all changed paths are contained in #1640; preserve until main verification.
+- #1254 and #1255: older dependency updates on paths represented in #1640; preserve until main verification.
+- #1269: eight unique mesh/rendering paths plus the shared CI file; preserve as unique/unreviewed.
+
+**Important draft work to preserve**
+- #1655: five unique bundle/structural catalog paths plus three structural paths shared with #1640.
+- #1641: three unique experimentation paths.
+- #1659: four unique local-Llama/Termux paths plus two overlapping scripts.
+- #1477, #1597 and #1591: preserve unique XRP research; no bulk closure.
+- The remaining 356 drafts are not individually reconciled; do not bulk-close them.
+
+**Existing Codespaces branch — no new PR**
+The existing branch `barrot/task-1658-codespaces-prebuild` is one commit ahead of main with 13 changed paths and no PR. It overlaps #1640 on `.github/workflows/ci.yml`, `barrot_agent/orchestration/repository_repair.py` and `tests/test_repository_repair.py`. #1640 already has the stronger context-budget implementation: token estimation before the model call, bounded optional context, mandatory task/safety text preserved, no repeated same-provider request on 413/TPM failure, and a bounded read-only Git snapshot fallback. The Codespaces branch's 10 unique devcontainer, setup, requirements, Makefile, documentation and contract-test paths are preserved for later selective integration after #1640 is on main. Do not open a competing PR or overwrite this branch.
+
+### New XRP and institutional evidence
+
+New append-only artifact on the existing #1643 research branch:
+`research/xrp_intelligence/20261108T035906Z-bny-sbi-kamilah-and-spot-reconciliation.json`
+
+Regression test:
+`tests/test_xrp_bny_sbi_kamilah_spot_reconciliation_20261108.py`
+
+**BNY and Ripple — October 27, 2026**
+BNY's first-party release says it now supports XRP and RLUSD custody for eligible institutional clients. BNY is RLUSD's primary reserve custodian and has a custody relationship with Ripple Prime. Direct RLUSD mint/redeem through BNY, broader XRPL tokenized-asset support and the C2FO supply-chain/trade-finance initiative are future/exploratory work, subject to approvals. No XRP or RLUSD customer custody balances, incremental XRP purchases or collateral utilization were disclosed.
+Source: https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+
+**SBI, Startale and BlackRock — October 27, 2026**
+The MOU explores connecting tokenized money-market funds with JPYSC across technology, distribution and regulatory workstreams. It does not name XRP as a bridge asset or announce production XRP settlement. SBI/Startale's separate JPYSC/OUSD interoperability work is also exploratory. Open Standard membership that includes Coinbase is not evidence of a bilateral SBI-Coinbase XRP partnership.
+Source: https://www.startale.com/en/news/blackrock-startale-sbi
+SBI source: https://www.sbigroup.co.jp/news/2026/1027_16682.html
+Open Standard source: https://www.sbigroup.co.jp/news/2026/1016_16665.html
+
+**Regulation**
+The SEC's S7-2026-27 Regulation Crypto Assets page still labels the proposal Proposed; the proposal is not an effective final rule.
+Source: https://www.sec.gov/rules-regulations/2026/08/s7-2026-27
+
+**Kamilah/Camila Stevenson**
+Two additional public YouTube video IDs were surfaced by Glasp:
+- `rv0BAV0vLgo` — “How Much XRP Do You ACTUALLY Need?”, March 19, 2026, Glasp byline Kamilah Stevenson.
+- `QslbjGQD0MU` — “Ripple Just Became a BANK — And XRP Holders Need to Understand This”, December 14, 2025, Glasp byline Kamilah Stevenson; the displayed transcript excerpt says “Camila Stevenson”.
+
+Glasp is a secondary index. These are candidate public-video attributions only, not verified uploads from the probable personal channel. Canonical YouTube channel ownership remains unverified.
+
+**Exact phrases**
+No new primary-source match was found for “ASK Coin”, issuer-defined “actual capital”, or an entity called “SBIC, ChatGPT SBIC”. Preserve prior distinctions: Ask Coin is not Permission Coin's ASK token; financing capacity is not cash received or deployed; Japan's SBIC East/Central/West entities are not SBI Holdings; Tokyo SBIC's ChatGPT material is educational training, not an OpenAI partnership.
+
+### Direct XRP spot observation — research only
+
+Capture assembly time: 2026-11-08T03:59:06Z.
+
+| Metric | Kraken XRP/USD | OKX XRP-USDT |
+|---|---:|---:|
+| Last | 1.15971 USD | 1.1583 USDT |
+| Best bid / ask | 1.15976 / 1.15979 | 1.1583 / 1.1584 |
+| Level-1 bid / ask size | 1,567 / 4,312 XRP | 4,301.001 / 1,061.4 XRP |
+| Level-1 bid share | 26.65% | 80.21% |
+| Spread | 0.2587 bps | 0.8633 bps |
+| Rolling 24h XRP volume | 14.477M | 24.573M |
+
+Kraken's provider event time is absent. OKX's event timestamp is 03:37:17.569Z, 1,308.431 seconds old at capture and beyond the 300-second freshness limit. The raw last-price gap is 0.1217%, but USD/USDT is not normalized, timestamps are asynchronous, and no multi-level depth, executions, fees or slippage were captured. The conflicting Level-1 bid shares are venue-specific observations, not a market-wide directional signal.
+
+SHA-256 receipts cover the exact JSON response strings surfaced by retrieval, not HTTP wire bytes or headers:
+- Kraken: `f05b27b7f5773e18819fc238c2bf3a068e8c4e2a280098725e5c8f9bb3c2a223`
+- OKX: `2862821a6e06dc59381e62c512a977bc84ec3592e36a4f7d5fe172a45748b0fd`
+
+This snapshot is model-ineligible. No observation was added to the feature store.
+
+### Prediction-engine status
+
+The #1640 branch contains:
+- 29 endpoint records: 27 scheduled public sources and two noncommercial XRPL-node sources excluded from scheduled collection.
+- Hourly ingestion at minute 3 and daily ingestion at 00:15 UTC; read-only Actions/contents permissions and main-only execution.
+- Content-addressed raw receipts and per-run receipt chains.
+- Point-in-time SQLite feature storage with as-of reconstruction and revision lineage.
+- Historical evaluator limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes.
+- Naive/class-prior, momentum, mean-reversion and volatility-normal baselines.
+- Chronological walk-forward evaluation, temporal calibration and event-time/availability guards.
+- Univariate PSI drift diagnostics and a fail-closed forecast ledger.
+
+The ingestion workflow and primary mission registry remain absent from main. No scheduled ingestion run has been verified on main. Raw receipts and daily archives have 90-day artifact retention; per-run feature checkpoints have seven-day retention. SQLite triggers and unkeyed hashes are not an adversarial tamper-proof boundary. Independent external WORM storage and complete raw-artifact rebuild are not implemented.
+
+The forecast ledger requires at least 100 OOS samples, 100 shadow samples, two independent source groups, a ten-horizon evaluation span, weighted calibration error no greater than 0.05, stable drift and an independent Ed25519 evaluator attestation. No trusted production evaluator key/attestation, mature synchronized multi-domain dataset, demonstrated trained-model OOS lift, validated real-data calibration or sufficient independent shadow outcomes has been verified.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+### Nine-platform coordination
+
+The capability/authentication/permission/data-flow map remains explicit:
+- ChatGPT-to-GitHub: verified current-session read/write on existing mission branches.
+- Claude, Grok, Gemini and Codex: no persistent authenticated data flow verified.
+- Copilot: one-off COMMENTED review activity only; not an approval.
+- Hugging Face: prior Space BUILD_ERROR; no healthy persistent data flow verified.
+- Kaggle: not authenticated or tested.
+- Databricks: prior read-only HTTP 403; no verified access.
+
+No structured nine-platform task exchange or external model data transfer occurred. Grok and Groq are different providers.
+
+### Main workflow, security and merge decision
+
+Main's latest scheduled Cross Analysis run 42444464398 succeeded on the unchanged main SHA.
+
+Main's Barrot Agent issue runs 42388663091 and 42388645777 failed under Groq limits. One request was rejected at 8,099 TPM against an 8,000 TPM limit after retries; the other received HTTP 429. The worker did not complete a repair or open a PR. Issue #1657 (SerpApi integration) and issue #1658 (Codespaces/runtime reliability) remain open.
+
+Main still has active privileged writer workflows:
+- `.github/workflows/barrot-agent.yml`: contents, pull-request and issue write permissions; issue-label/dispatch execution; Groq secret loaded.
+- `.github/workflows/ask-barrot.yml`: contents and issue write permissions; Groq call; issue creation and memory commit/push to main.
+
+#1640 quarantines both with empty permissions and disabled job conditions. Main's scheduler-tick and merge-queue workflows are already disabled. The XRP ingestion workflow and priority-one mission registry exist only on #1640, not main.
+
+GitHub Pages build/deployment run 41799855489 succeeded on main. Its event is reported as dynamic; the exact Pages configuration/trigger is inaccessible. A merge may cause a public deployment. That deployment is not authorized.
+
+Main reports protected=true, but detailed branch-protection retrieval returns HTTP 403. The visible fallback ruleset (ID 10863829) is disabled. CODEOWNERS is `* @Barrot-Agent`. #1640 has 62 COMMENTED reviews, zero APPROVED and 22/22 resolved threads. #1643 has 10 COMMENTED reviews, zero APPROVED and 19/19 resolved threads. #1653 has eight unresolved review threads. COMMENTED reviews are not approvals.
+
+**No merge was performed.** Independent approval and authorized confirmation of branch-protection and Pages deployment behavior remain unresolved. No main write, deployment, secret read/rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+### Next concrete actions
+
+1. Verify exact-head full-suite and six-manifest audit results on #1643 head `4ddf16fe68ea3586bb52617bc2c26fc243f02baa`; repair any failure without weakening evidence gates.
+2. Verify exact-head CI for the documentation/map refresh child of #1640 head `905eaad9c0da2212048cf87b4d631461c9873ffb`.
+3. Obtain independent approving reviews and authorized confirmation of branch-protection requirements and Pages deployment behavior.
+4. Merge #1640 only when every condition is met; then verify the merge commit, merged files, automatic workflow effects and main CI.
+5. Consolidate #1643's 547 unique research paths onto verified main, reconcile all six shared paths, preserve the 21 Kamilah candidates and carry #1640's stronger CI/coverage/wheel checks.
+6. After #1640 is verified on main, selectively reconcile the 10 unique Codespaces paths from `barrot/task-1658-codespaces-prebuild`; do not duplicate the stronger #1640 context-budget implementation.
+7. Close only exact superseded/path-contained PRs after successor content is verified on main. Preserve unique research and feature work.
+8. Verify scheduled ingestion on main, establish independent raw-source archival/rebuild, accumulate synchronized historical data and demonstrate out-of-sample predictive performance before issuing any directional forecast.
+
+---
 
 ## Run 39 — current repository state (2026-11-08T03:39:50Z)
 
