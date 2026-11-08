@@ -214,7 +214,6 @@
     "convertible_note": {
       "principal_usd": 30000000,
       "issue_and_payment_date": "2026-10-12",
-      "net_cash_after_advisor_fee_usd": 29000000,
       "advisor_fee_usd": 1000000,
       "rate_pct": 4,
       "interest_type": "PIK, capitalized semi-annually",
@@ -222,7 +221,8 @@
       "intended_use": "general corporate purposes, including XRP acquisition and other XRP ecosystem activities",
       "specific_xrp_purchase_traced": false,
       "classification": "actual debt cash proceeds; not confirmed XRP spot buying",
-      "wording_reconciliation": "The October 30 S-1 describes approximately $30 million of net proceeds before transaction expenses; the October 13 POS AM states $29 million net cash after a $1 million advisor fee. Use $29 million as the more specific after-fee cash figure and retain the disclosure wording difference."
+      "wording_reconciliation": "The October 30 S-1 describes approximately $30 million of net proceeds before transaction expenses; the October 13 POS AM states $29 million net cash after a $1 million advisor fee. Use $29 million as the more specific after-fee cash figure and retain the disclosure wording difference.",
+      "net_cash_after_fee_usd": 29000000
     },
     "ripple_related_party_facility": {
       "borrower": "Pathfinder Digital Assets LLC (Company)",
@@ -231,8 +231,9 @@
       "drawn_as_of_2026_10_07_usd": 9700000,
       "annual_interest_pct": 3.81,
       "repayment_term": "within five business days after the 2026-10-09 Closing Date, or earlier on five business days’ notice of demand by Ripple",
-      "repayment_status": "UNKNOWN; reviewed S-1 discloses the draw and due term but does not confirm repayment",
-      "classification": "related-party debt, not independent third-party capital"
+      "repayment_status": "UNKNOWN",
+      "classification": "related-party debt, not independent third-party capital",
+      "repayment_status_note": "The reviewed October 30 S-1 discloses the $9.7 million draw and five-business-day post-closing repayment term but does not confirm repayment."
     },
     "eloc": {
       "holder": "CF Principal Investments LLC (Cantor)",
