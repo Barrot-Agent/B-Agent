@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T13:37:23Z",
+  "captured_at_utc": "2026-11-08T16:03:05Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
-  "observed_research_head": "58c65e4277d7b95193452538ef063462aa95af8f",
+  "observed_integration_head_before_map_commit": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
+  "observed_research_head": "674919abe365e915877e7f1f4211df347dfc39a9",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -117,7 +117,8 @@
         "Run 49 final verification 2026-11-08T10:02:55Z: #1640 code/test head 0e959 exact full suite 1,189 passed/8 subtests, core 660 passed/8, coverage 59% rounded, installed-wheel verification passed, six-manifest pip-audit passed with no known vulnerabilities, fail-closed gate passed. #1643 head 3db89 exact full suite 2,357 passed/8 subtests, core tests, six-manifest audit and fail-closed gate passed. PR metadata: #1640 177 paths/663 commits; #1643 596 paths/803 commits; six shared, 171/590 unique; both zero behind and mergeable/clean. Zero APPROVED reviews. No merge due approval, branch-protection and Pages authorization blockers. No external action.",
         "Run 50 final verification 2026-11-08T10:19:57Z: #1640 head a08f2a8 exact full suite 1,189/8 subtests, core 660/8, coverage 59% rounded, installed wheel, six-manifest audit and fail-closed gate passed. #1643 head 6f441f exact full suite 2,368/8 subtests, core, six-manifest audit and fail-closed gate passed. New XRPL validator signing-key rotation issue #8534 and ETF holdings-delta methodology corrections were preserved on the existing research branch. No independent approvals; no merge or external action.",
         "Run 51: verified GitHub access; inspected complete main/integration/research trees, all four open-PR pages, branch ancestry, six shared paths, CI/security runs, CODEOWNERS and workflow side effects. #1640 exact head 8a8f84 passed 1,198 full tests/8 subtests, 660 core/8, 58.81% coverage and installed-wheel verification; dependency audit and fail-closed gate passed. #1643 exact head c32fec passed 2,398 full tests/8 subtests and 498 core/8; dependency audit and fail-closed gate passed. Added two research artifacts and regression tests on existing #1643. No main write, merge or external action.",
-        "Run 55: refetched current main SHA and complete tree, all four open-PR pages, current PR heads, full changed-path lists, branch ancestry, review records/threads, exact-head checks and main Pillars job logs; added timestamped research and refreshed durable handoff/map on existing branches only."
+        "Run 55: refetched current main SHA and complete tree, all four open-PR pages, current PR heads, full changed-path lists, branch ancestry, review records/threads, exact-head checks and main Pillars job logs; added timestamped research and refreshed durable handoff/map on existing branches only.",
+        "Run 58: fetched current main ref and complete main tree; fetched complete #1640/#1643 trees; enumerated all four open-PR pages; compared mission branches and six shared-path blob identities; read PR metadata, reviews, resolved inline threads, exact-head full-suite/core logs, six-manifest audits, fail-closed gates, latest main Cross Analysis and the current XRP ingestion registry/workflow."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -163,13 +164,13 @@
           "Run 40: current-session connector read the complete main/integration/research trees, all four open-PR pages, branch ancestry, shared paths, PR reviews/threads, exact-head CI job logs, dependency audits and fail-closed gates; wrote research evidence only to existing #1643 and the durable handoff/map only to existing #1640.",
           "Run 41: inspected exact-head CI/security evidence on both existing mission PRs, appended research artifacts/tests to #1643 and refreshed handoff/map on #1640; no new branch or PR was created."
         ],
-        "last_verified_at_utc": "2026-11-08T08:25:45Z"
+        "last_verified_at_utc": "2026-11-08T16:03:05Z"
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T13:37:23Z"
+      "last_verified_at_utc": "2026-11-08T16:03:05Z"
     },
     "Claude": {
       "intended_role": [
@@ -486,21 +487,20 @@
     }
   },
   "next_actions": [
-    "Finish exact-head full-suite and installed-wheel verification on the corrective #1640 handoff/map commit; the single failure on 636d was a missing current_run_observations.prediction_engine map field and is corrected.",
-    "Obtain genuine independent APPROVED reviews for #1640 and #1643; COMMENTED reviews do not satisfy approval.",
-    "Resolve branch-protection visibility and GitHub Pages merge-triggered deployment authorization.",
-    "Merge #1640 only when every condition is satisfied; verify merge commit, files, automatic workflow effects and main CI.",
-    "Consolidate #1643's 612 unique paths onto verified main, reconciling all six shared paths and carrying #1640's stronger coverage and installed-wheel checks.",
-    "Close only exact superseded PRs after successor content is verified on main.",
-    "Verify scheduled ingestion on main; establish independent WORM archival and raw-source rebuild; expand SEC, macro, stablecoin, custody, collateral, institutional and payment-rail ingestion.",
-    "Demonstrate leakage-safe out-of-sample lift, validated real-data calibration, concept-drift stability and independent shadow outcomes before any directional forecast."
+    "Finish exact-head full-suite, installed-wheel and dependency verification on the Run 58 handoff/map/test commit.",
+    "Obtain independent APPROVED reviews and establish required branch-protection checks.",
+    "Resolve Pages deployment authorization or prevent an unapproved public deployment.",
+    "Merge #1640 only after all requirements pass; verify merge commit, paths, workflow side effects and main CI.",
+    "Create one consolidated #1643 successor directly on verified resulting main, preserving 623 unique paths and reconciling all six shared paths.",
+    "Verify scheduled XRP ingestion on main and expand SEC, macro, regulatory, custody, collateral and payment-rail primary-source coverage.",
+    "Establish independent WORM archival and measured out-of-sample performance before forecast issuance."
   ],
   "current_run_observations": {
-    "run_id": 56,
-    "captured_at_utc": "2026-11-08T13:37:23Z",
+    "run_id": 58,
+    "captured_at_utc": "2026-11-08T16:03:05Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_handoff_commit": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
-    "research_head": "58c65e4277d7b95193452538ef063462aa95af8f",
+    "integration_head_before_handoff_commit": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
+    "research_head": "674919abe365e915877e7f1f4211df347dfc39a9",
     "open_pr_inventory": {
       "total": 372,
       "drafts": 356,
@@ -522,34 +522,34 @@
         "truncated": false
       },
       "integration": {
-        "entries": 1479,
-        "files": 1366,
-        "python_files": 548,
-        "test_modules": 129,
+        "entries": 1481,
+        "files": 1368,
+        "python_files": 550,
+        "test_modules": 131,
         "workflows": 87,
         "truncated": false
       },
       "research": {
-        "entries": 2016,
-        "files": 1910,
-        "python_files": 743,
-        "test_modules": 340,
+        "entries": 2027,
+        "files": 1921,
+        "python_files": 748,
+        "test_modules": 345,
         "workflows": 86,
         "truncated": false
       }
     },
     "branch_ancestry": {
       "integration": {
-        "head": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
-        "ahead": 679,
+        "head": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
+        "ahead": 694,
         "behind": 0,
-        "changed_paths": 177
+        "changed_paths": 179
       },
       "research": {
-        "head": "58c65e4277d7b95193452538ef063462aa95af8f",
-        "ahead": 820,
+        "head": "674919abe365e915877e7f1f4211df347dfc39a9",
+        "ahead": 841,
         "behind": 0,
-        "changed_paths": 618
+        "changed_paths": 629
       },
       "shared_paths": [
         ".github/workflows/dependency-audit.yml",
@@ -559,43 +559,59 @@
         "tests/test_kamilah_channel_identity_gate.py",
         "tests/test_pillars_check_readonly.py"
       ],
-      "integration_unique": 171,
-      "research_unique": 612,
+      "integration_unique": 173,
+      "research_unique": 623,
+      "shared_path_blob_comparison": {
+        "identical": [
+          ".github/workflows/dependency-audit.yml"
+        ],
+        "differing": [
+          "BARROT_XRP_MISSION_HANDOFF.md",
+          "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+          "scripts/pillars_check.py",
+          "tests/test_kamilah_channel_identity_gate.py",
+          "tests/test_pillars_check_readonly.py"
+        ]
+      },
       "compare_between_mission_heads": {
         "status": "diverged",
-        "research_ahead": 820,
-        "integration_ahead": 679
+        "research_ahead": 841,
+        "integration_ahead": 694
       }
     },
     "ci_evidence": {
       "integration": {
-        "head": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
-        "full_suite": "1,198 passed, 8 subtests passed in 49.08s",
-        "core_suite": "660 passed, 8 subtests passed in 10.29s",
-        "inclusive_coverage_pct": 58.81,
+        "head": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
+        "full_suite": "1,208 passed, 8 subtests passed in 38.88s",
+        "core_suite": "660 passed, 8 subtests passed in 9.62s",
+        "inclusive_coverage_pct": 58.98,
         "installed_wheel": "passed; packaged Barrot V3, XRP mission and canonical assets verified",
         "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
         "fail_closed_gate": "passed; merging explicitly disabled",
         "runs": {
-          "ci": 42484323445,
-          "full_suite_job": 128742781627,
-          "core_job": 128742781469,
-          "dependency_audit": 42484323318,
-          "fail_closed": 42484323336
+          "ci": 42494136348,
+          "full_suite_job": 128772631938,
+          "core_job": 128772632140,
+          "dependency_audit": 42494136372,
+          "dependency_audit_job": 128772632275,
+          "fail_closed": 42494136346,
+          "fail_closed_job": 128772632150
         }
       },
       "research": {
-        "head": "58c65e4277d7b95193452538ef063462aa95af8f",
-        "full_suite": "2,433 passed, 8 subtests passed in 18.73s",
-        "core_suite": "498 passed, 8 subtests passed",
+        "head": "674919abe365e915877e7f1f4211df347dfc39a9",
+        "full_suite": "2,472 passed, 8 subtests passed in 17.09s",
+        "core_suite": "498 passed, 8 subtests passed in 11.49s",
         "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
         "fail_closed_gate": "passed; merging explicitly disabled",
         "runs": {
-          "ci": 42483561562,
-          "full_suite_job": 128740466973,
-          "core_job": 128740467158,
-          "dependency_audit": 42483561547,
-          "fail_closed": 42483561518
+          "ci": 42494763390,
+          "full_suite_job": 128774586842,
+          "core_job": 128774587214,
+          "dependency_audit": 42494763413,
+          "dependency_audit_job": 128774587035,
+          "fail_closed": 42494763434,
+          "fail_closed_job": 128774587176
         }
       }
     },
@@ -627,25 +643,21 @@
     },
     "main_workflow_status": {
       "latest_cross_analysis": {
-        "run_id": 42482207862,
+        "run_id": 42496905484,
         "conclusion": "success",
-        "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
+        "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+        "created_at": "2026-11-08T15:51:22Z"
       },
       "pillars_health_run": {
         "run_id": 42482972244,
         "conclusion": "failure",
         "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-        "job_id": 128738709208,
         "failures": [
-          "github_app: missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
-          "databricks: HTTP 403",
-          "hf_space: stage=BUILD_ERROR"
+          "GitHub App credentials missing",
+          "Databricks HTTP 403",
+          "Hugging Face Space BUILD_ERROR"
         ],
-        "passed": [
-          "deploy_sync: checked main branch hf_space/app.py",
-          "system_prompt_fiction: clean"
-        ],
-        "action": "No restart, upload, deployment, credential rotation or workspace write performed."
+        "action": "No credential, workspace or Space action taken."
       },
       "prior_pages_deployment": {
         "run_id": 41799855489,
@@ -654,20 +666,11 @@
       }
     },
     "new_research": {
-      "artifacts_added": [
-        "research/xrp_intelligence/20261108T130321Z-xrp-orderbook-derivatives-etf-vintage-reconciliation.json",
-        "tests/test_xrp_orderbook_derivatives_etf_vintage_reconciliation_20261108.py"
-      ],
-      "evidence_commit": "58c65e4277d7b95193452538ef063462aa95af8f",
-      "exact_head_verification": "PASS: 2,433 full-suite tests, 8 subtests; 498 core tests; six-manifest audit; fail-closed gate.",
-      "summary": [
-        "Fuelmaps 12:00 UTC six-venue XRP spot-book composite: $1.1645 mid; bid share 56.5% within 1%, 69.7% within 5%; Binance and Bitget excluded; hourly averages of one-minute snapshots.",
-        "Binance XRPUSDT perpetual premium-index payload provider timestamp 12:35:59 UTC; age 1,642 seconds at 13:03:21 UTC and 3,684 seconds at Run 56; mark/index basis -3.113 bps; funding +0.009823% per 8h; OI/liquidations unavailable; model-ineligible.",
-        "CryptoKeyhole, Hold Hub and Alpha Finance ETF observations differ in fund universe, source vintage and measurement method; not comparable or independently confirming.",
-        "All source excerpt hashes are scoped to normalized surfaced text, not raw HTTP wire bytes; no feature-store admission or forecast."
-      ],
+      "artifacts_added": [],
       "model_admission": false,
-      "forecast_status": "NOT_ISSUED"
+      "summary": [
+        "No new market observation was admitted in Run 58. The bounded engineering correction reconciles the durable handoff/map endpoint inventory with the current executable 35/33 collector and adds regression coverage."
+      ]
     },
     "latest_market_depth_derivatives": {
       "reference_time_utc": "2026-11-08T13:03:21Z",
@@ -736,6 +739,7 @@
     },
     "merge_state": {
       "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "main_protected": true,
       "branch_protection_status": "UNVERIFIED_HTTP_403",
       "visible_ruleset": {
         "id": 10863829,
@@ -747,23 +751,32 @@
       "pages_configuration_accessible": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
-        "head": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
+        "head": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
         "mergeable": true,
         "approving_reviews": 0,
         "threads_resolved": 22,
         "threads_unresolved": 0,
-        "checks": "Exact-head full suite 1,198 passed; core 660 passed; 58.81% inclusive coverage; wheel, six-manifest audit and fail-closed gate passed."
+        "checks": "Exact-head full suite 1,208 passed; core 660 passed; 58.98% inclusive coverage; installed wheel, six-manifest audit and fail-closed gate passed.",
+        "public_web_paths_changed": [
+          "web/landing.html",
+          "web/latest_signal.json",
+          "web/latest_signal_summary.json",
+          "web/legacy/signal_accuracy_unvalidated.json",
+          "web/signal_accuracy.json",
+          "web/signals.html",
+          "web/webmcp_monetization.js"
+        ]
       },
       "pr_1643": {
-        "head": "58c65e4277d7b95193452538ef063462aa95af8f",
+        "head": "674919abe365e915877e7f1f4211df347dfc39a9",
         "mergeable": true,
         "approving_reviews": 0,
         "threads_resolved": 19,
         "threads_unresolved": 0,
-        "checks": "Exact-head full suite 2,433 passed; core 498 passed; six-manifest audit and fail-closed gate passed."
+        "checks": "Exact-head full suite 2,472 passed; core 498 passed; six-manifest audit and fail-closed gate passed."
       },
       "merge_performed": false,
-      "reason": "No independent APPROVED reviews; branch-protection details inaccessible; #1640 changes public web paths and merge-triggered Pages deployment authorization is absent."
+      "reason": "No independent APPROVED reviews; detailed branch-protection settings inaccessible; #1640 changes public web paths and merge-triggered Pages deployment remains unauthorized."
     },
     "external_actions": {
       "main_write": false,
@@ -783,8 +796,8 @@
     "prediction_engine": {
       "scheduled_ingestion": "DESIGNED on #1640 only; absent from main and not verified running on main.",
       "schedule": "Hourly at minute 3 and daily at 00:15 UTC; read-only contents/actions permissions; workflow runs only on main.",
-      "endpoints": 32,
-      "scheduled_public_sources": 30,
+      "endpoints": 35,
+      "scheduled_public_sources": 33,
       "excluded_xrpl_node_sources": 2,
       "endpoint_ids": [
         "binance_spot_ticker",
@@ -804,6 +817,9 @@
         "okx_spot_depth",
         "bybit_spot_ticker",
         "bybit_spot_depth",
+        "bybit_linear_ticker",
+        "bybit_linear_open_interest",
+        "bybit_linear_funding_history",
         "coinbase_spot_candles",
         "coinbase_spot_book",
         "kraken_spot_depth",
@@ -838,6 +854,9 @@
         "okx_spot_depth",
         "bybit_spot_ticker",
         "bybit_spot_depth",
+        "bybit_linear_ticker",
+        "bybit_linear_open_interest",
+        "bybit_linear_funding_history",
         "coinbase_spot_candles",
         "coinbase_spot_book",
         "kraken_spot_depth",
@@ -911,20 +930,35 @@
       "real_data_calibration": false,
       "shadow_outcomes": false,
       "trusted_evaluator_key": false,
-      "independent_worm_archive": false
+      "independent_worm_archive": false,
+      "endpoint_inventory_verified_at_utc": "2026-11-08T16:03:05Z",
+      "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
+      "endpoint_inventory_source_blob_sha": "cb915c4fbad454fec70cf5a13632602307ebff06",
+      "endpoint_inventory_contract": "research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
+      "endpoint_inventory_correction": "Current collector is 35 total/33 scheduled. Earlier handoff/map values 29/27 and 32/30 are historical/stale and are superseded by this Run 58 current observation.",
+      "source_coverage_gaps": [
+        "Primary SEC filing and issuer-filing vintage ingestion",
+        "Federal Reserve, Treasury and BLS macro time-series vintages",
+        "Regulatory docket and enforcement-event ingestion",
+        "Institutional XRP/RLUSD custody balances and verified changes",
+        "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
+        "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
+      ]
     },
-    "integration_head_before_map_commit": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
+    "integration_head_before_map_commit": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
     "backlog_classification": {
-      "#1640": "Technically green on exact head 5ec7c803; blocked by zero independent APPROVED reviews, inaccessible branch-protection details and unauthorized/uninspectable Pages deployment side effect.",
-      "#1643": "Unique XRP research workstream; exact-head full suite and six-manifest audit green; 612 unique paths. Five of six shared paths differ from #1640; consolidate from verified main only after #1640 is merged.",
-      "#1642": "Superseded by #1640 pending main verification: its one-commit branch is an ancestor of #1640 (678 commits ahead from #1642 to #1640, zero behind); close only after #1640 merges and its seven paths are verified on main.",
-      "#1641": "Unique bounded-experimentation foundation; diverged from #1640; preserve as draft/unreviewed.",
-      "#1653": "Blocked: eight unresolved review threads; preserve six unique repository-graph paths.",
-      "#1655": "Unique structural-analysis/foundation-catalog draft; unreviewed.",
-      "#1659": "Unique local llama.cpp/phone integration draft; unreviewed.",
-      "#1615/#1614/#1611": "Older security/prediction branches are divergent from current integration; preserve until changed-path and content reconciliation is complete.",
-      "#1644-#1650": "Open dependency/action-version updates; review against the six-manifest current integration audit and merge only after current-main reconciliation.",
-      "older repeated security/prediction proposals": "Candidate duplicate or superseded work; no bulk closure. Close only exact duplicates after a consolidated successor is merged and verified on main."
+      "#1640": "Active V3 integration candidate; exact-head full suite, core, 58.98% coverage, installed wheel, six-manifest audit and fail-closed gate green. Blocked from merge by zero independent APPROVED reviews, inaccessible branch-protection details and unauthorized Pages side effect.",
+      "#1643": "Active unique XRP research candidate; exact-head full suite, six-manifest audit and fail-closed gate green; 623 unique paths. Blocked from merge by zero approvals and sequencing; consolidate onto verified main only after #1640 is merged and verified.",
+      "#1642": "Draft forecast-snapshot work; retain pending exact path/ancestry reconciliation against #1640 and main verification.",
+      "#1644-#1650": "Open dependency/action-version PRs; reconcile exact versions against the current six-manifest #1640 audit and close only after successor content is verified on main.",
+      "#1653": "Blocked by eight unresolved review threads; preserve six unique repository-graph paths.",
+      "#1641": "Unique bounded-experimentation foundation; preserve as draft/unreviewed.",
+      "#1655": "Unique structural-analysis/foundation-catalog draft; preserve.",
+      "#1659": "Unique local llama.cpp/phone-chat draft; preserve.",
+      "#1317/#1318/#1320": "Older structural, schema-validation and paper-trader safety work; preserve pending path-by-path reconciliation.",
+      "#1269": "Unique mesh/topology work; preserve.",
+      "#1254/#1255": "Older dependency updates; reconcile exact versions against current integration before classification as superseded.",
+      "#1477/#1547/#1586/#1597/#1591": "Preserve unique XRP institutional, capital and identity research; no bulk closure."
     },
     "forecast_status": "NOT_ISSUED",
     "nine_platform_status": {
@@ -939,7 +973,7 @@
       "Databricks": "AUTHORIZATION_FAILED_HTTP_403",
       "external_data_exchange": false
     },
-    "last_run_status": "Run 56: exact-head verification on pre-handoff integration head 5ec7c803 passed 1,198 full-suite tests plus 8 subtests, 660 core tests, 58.81% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. Research head 58c65e42 passed 2,433 full-suite tests plus 8 subtests, 498 core tests, six-manifest audit and fail-closed gate. The handoff/map/test synchronization commit now being created is documentation/map/test-only; its own exact-head CI must complete before this new commit is considered verified. No approvals or merge.",
+    "last_run_status": "Run 58: inspected current main and complete trees; enumerated all four open-PR pages; #1640 exact head eeb4950d passed 1,208 full-suite tests/8 subtests, 660 core tests/8 subtests, 58.98% coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate; #1643 exact head 674919ab passed 2,472 full-suite tests/8 subtests, 498 core tests/8 subtests, six-manifest audit and fail-closed gate. Current collector defines 35 endpoints/33 scheduled, correcting stale handoff/map counts. New Run 58 docs/map/test commit awaits its own exact-head CI. Zero APPROVED reviews; no merge.",
     "review_threads_and_approvals": {
       "pr_1640": {
         "threads_total": 22,
@@ -11962,9 +11996,40 @@
       },
       "no_merge_performed": true,
       "no_new_pr_created": true
+    },
+    {
+      "run_id": 57,
+      "captured_at_utc": "2026-11-08T14:05:10Z",
+      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "integration_head_before_handoff_commit": "8e017085825cc4dfcff68f17d6d66764f297f621",
+      "research_head": "b27b0643dcd5e5087223ae9d89ec92ced6f7d4d3",
+      "open_pr_inventory": {
+        "total": 372,
+        "drafts": 356,
+        "non_drafts": 16,
+        "pages": [
+          100,
+          100,
+          100,
+          72
+        ]
+      },
+      "ci_evidence": {
+        "integration": {
+          "full_suite": "FAILED: 3 historical handoff assertions; 1,199 passed, 8 subtests passed",
+          "status": "FAIL"
+        },
+        "research": {
+          "full_suite": "not yet verified at Run 57 capture",
+          "status": "PENDING"
+        }
+      },
+      "forecast_status": "NOT_ISSUED",
+      "merge_performed": false,
+      "note": "Historical Run 57 snapshot preserved; Run 58 supersedes its heads and test states."
     }
   ],
-  "last_verified_at_utc": "2026-11-08T13:37:23Z",
+  "last_verified_at_utc": "2026-11-08T16:03:05Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -11978,16 +12043,16 @@
   },
   "branch_ancestry": {
     "integration": {
-      "head": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
-      "ahead": 679,
+      "head": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
+      "ahead": 694,
       "behind": 0,
-      "changed_paths": 177
+      "changed_paths": 179
     },
     "research": {
-      "head": "58c65e4277d7b95193452538ef063462aa95af8f",
-      "ahead": 820,
+      "head": "674919abe365e915877e7f1f4211df347dfc39a9",
+      "ahead": 841,
       "behind": 0,
-      "changed_paths": 618
+      "changed_paths": 629
     },
     "shared_paths": [
       ".github/workflows/dependency-audit.yml",
@@ -11997,43 +12062,59 @@
       "tests/test_kamilah_channel_identity_gate.py",
       "tests/test_pillars_check_readonly.py"
     ],
-    "integration_unique": 171,
-    "research_unique": 612,
+    "integration_unique": 173,
+    "research_unique": 623,
+    "shared_path_blob_comparison": {
+      "identical": [
+        ".github/workflows/dependency-audit.yml"
+      ],
+      "differing": [
+        "BARROT_XRP_MISSION_HANDOFF.md",
+        "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+        "scripts/pillars_check.py",
+        "tests/test_kamilah_channel_identity_gate.py",
+        "tests/test_pillars_check_readonly.py"
+      ]
+    },
     "compare_between_mission_heads": {
       "status": "diverged",
-      "research_ahead": 820,
-      "integration_ahead": 679
+      "research_ahead": 841,
+      "integration_ahead": 694
     }
   },
   "ci_evidence": {
     "integration": {
-      "head": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
-      "full_suite": "1,198 passed, 8 subtests passed in 49.08s",
-      "core_suite": "660 passed, 8 subtests passed in 10.29s",
-      "inclusive_coverage_pct": 58.81,
+      "head": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
+      "full_suite": "1,208 passed, 8 subtests passed in 38.88s",
+      "core_suite": "660 passed, 8 subtests passed in 9.62s",
+      "inclusive_coverage_pct": 58.98,
       "installed_wheel": "passed; packaged Barrot V3, XRP mission and canonical assets verified",
       "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
       "fail_closed_gate": "passed; merging explicitly disabled",
       "runs": {
-        "ci": 42484323445,
-        "full_suite_job": 128742781627,
-        "core_job": 128742781469,
-        "dependency_audit": 42484323318,
-        "fail_closed": 42484323336
+        "ci": 42494136348,
+        "full_suite_job": 128772631938,
+        "core_job": 128772632140,
+        "dependency_audit": 42494136372,
+        "dependency_audit_job": 128772632275,
+        "fail_closed": 42494136346,
+        "fail_closed_job": 128772632150
       }
     },
     "research": {
-      "head": "58c65e4277d7b95193452538ef063462aa95af8f",
-      "full_suite": "2,433 passed, 8 subtests passed in 18.73s",
-      "core_suite": "498 passed, 8 subtests passed",
+      "head": "674919abe365e915877e7f1f4211df347dfc39a9",
+      "full_suite": "2,472 passed, 8 subtests passed in 17.09s",
+      "core_suite": "498 passed, 8 subtests passed in 11.49s",
       "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
       "fail_closed_gate": "passed; merging explicitly disabled",
       "runs": {
-        "ci": 42483561562,
-        "full_suite_job": 128740466973,
-        "core_job": 128740467158,
-        "dependency_audit": 42483561547,
-        "fail_closed": 42483561518
+        "ci": 42494763390,
+        "full_suite_job": 128774586842,
+        "core_job": 128774587214,
+        "dependency_audit": 42494763413,
+        "dependency_audit_job": 128774587035,
+        "fail_closed": 42494763434,
+        "fail_closed_job": 128774587176
       }
     }
   },
@@ -12174,8 +12255,8 @@
   "prediction_engine": {
     "scheduled_ingestion": "DESIGNED on #1640 only; absent from main and not verified running on main.",
     "schedule": "Hourly at minute 3 and daily at 00:15 UTC; read-only contents/actions permissions; workflow runs only on main.",
-    "endpoints": 32,
-    "scheduled_public_sources": 30,
+    "endpoints": 35,
+    "scheduled_public_sources": 33,
     "excluded_xrpl_node_sources": 2,
     "endpoint_ids": [
       "binance_spot_ticker",
@@ -12195,6 +12276,9 @@
       "okx_spot_depth",
       "bybit_spot_ticker",
       "bybit_spot_depth",
+      "bybit_linear_ticker",
+      "bybit_linear_open_interest",
+      "bybit_linear_funding_history",
       "coinbase_spot_candles",
       "coinbase_spot_book",
       "kraken_spot_depth",
@@ -12229,6 +12313,9 @@
       "okx_spot_depth",
       "bybit_spot_ticker",
       "bybit_spot_depth",
+      "bybit_linear_ticker",
+      "bybit_linear_open_interest",
+      "bybit_linear_funding_history",
       "coinbase_spot_candles",
       "coinbase_spot_book",
       "kraken_spot_depth",
@@ -12302,7 +12389,20 @@
     "real_data_calibration": false,
     "shadow_outcomes": false,
     "trusted_evaluator_key": false,
-    "independent_worm_archive": false
+    "independent_worm_archive": false,
+    "endpoint_inventory_verified_at_utc": "2026-11-08T16:03:05Z",
+    "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
+    "endpoint_inventory_source_blob_sha": "cb915c4fbad454fec70cf5a13632602307ebff06",
+    "endpoint_inventory_contract": "research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
+    "endpoint_inventory_correction": "Current collector is 35 total/33 scheduled. Earlier handoff/map values 29/27 and 32/30 are historical/stale and are superseded by this Run 58 current observation.",
+    "source_coverage_gaps": [
+      "Primary SEC filing and issuer-filing vintage ingestion",
+      "Federal Reserve, Treasury and BLS macro time-series vintages",
+      "Regulatory docket and enforcement-event ingestion",
+      "Institutional XRP/RLUSD custody balances and verified changes",
+      "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
+      "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
+    ]
   },
   "nine_platform_status": {
     "ChatGPT": "VERIFIED_CURRENT_SESSION GitHub connector",
@@ -12318,6 +12418,7 @@
   },
   "merge_state": {
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "main_protected": true,
     "branch_protection_status": "UNVERIFIED_HTTP_403",
     "visible_ruleset": {
       "id": 10863829,
@@ -12329,23 +12430,32 @@
     "pages_configuration_accessible": false,
     "pages_deployment_authorized": false,
     "pr_1640": {
-      "head": "5ec7c8036775e8b7c8e82741b6455af53c955cc9",
+      "head": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e",
       "mergeable": true,
       "approving_reviews": 0,
       "threads_resolved": 22,
       "threads_unresolved": 0,
-      "checks": "Exact-head full suite 1,198 passed; core 660 passed; 58.81% inclusive coverage; wheel, six-manifest audit and fail-closed gate passed."
+      "checks": "Exact-head full suite 1,208 passed; core 660 passed; 58.98% inclusive coverage; installed wheel, six-manifest audit and fail-closed gate passed.",
+      "public_web_paths_changed": [
+        "web/landing.html",
+        "web/latest_signal.json",
+        "web/latest_signal_summary.json",
+        "web/legacy/signal_accuracy_unvalidated.json",
+        "web/signal_accuracy.json",
+        "web/signals.html",
+        "web/webmcp_monetization.js"
+      ]
     },
     "pr_1643": {
-      "head": "58c65e4277d7b95193452538ef063462aa95af8f",
+      "head": "674919abe365e915877e7f1f4211df347dfc39a9",
       "mergeable": true,
       "approving_reviews": 0,
       "threads_resolved": 19,
       "threads_unresolved": 0,
-      "checks": "Exact-head full suite 2,433 passed; core 498 passed; six-manifest audit and fail-closed gate passed."
+      "checks": "Exact-head full suite 2,472 passed; core 498 passed; six-manifest audit and fail-closed gate passed."
     },
     "merge_performed": false,
-    "reason": "No independent APPROVED reviews; branch-protection details inaccessible; #1640 changes public web paths and merge-triggered Pages deployment authorization is absent."
+    "reason": "No independent APPROVED reviews; detailed branch-protection settings inaccessible; #1640 changes public web paths and merge-triggered Pages deployment remains unauthorized."
   },
   "external_actions": {
     "main_write": false,
@@ -12365,25 +12475,21 @@
   "forecast_status": "NOT_ISSUED",
   "main_workflow_status": {
     "latest_cross_analysis": {
-      "run_id": 42482207862,
+      "run_id": 42496905484,
       "conclusion": "success",
-      "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
+      "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "created_at": "2026-11-08T15:51:22Z"
     },
     "pillars_health_run": {
       "run_id": 42482972244,
       "conclusion": "failure",
       "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-      "job_id": 128738709208,
       "failures": [
-        "github_app: missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
-        "databricks: HTTP 403",
-        "hf_space: stage=BUILD_ERROR"
+        "GitHub App credentials missing",
+        "Databricks HTTP 403",
+        "Hugging Face Space BUILD_ERROR"
       ],
-      "passed": [
-        "deploy_sync: checked main branch hf_space/app.py",
-        "system_prompt_fiction: clean"
-      ],
-      "action": "No restart, upload, deployment, credential rotation or workspace write performed."
+      "action": "No credential, workspace or Space action taken."
     },
     "prior_pages_deployment": {
       "run_id": 41799855489,
@@ -12392,16 +12498,19 @@
     }
   },
   "backlog_classification": {
-    "#1640": "Technically green on exact head 5ec7c803; blocked by zero independent APPROVED reviews, inaccessible branch-protection details and unauthorized/uninspectable Pages deployment side effect.",
-    "#1643": "Unique XRP research workstream; exact-head full suite and six-manifest audit green; 612 unique paths. Five of six shared paths differ from #1640; consolidate from verified main only after #1640 is merged.",
-    "#1642": "Superseded by #1640 pending main verification: its one-commit branch is an ancestor of #1640 (678 commits ahead from #1642 to #1640, zero behind); close only after #1640 merges and its seven paths are verified on main.",
-    "#1641": "Unique bounded-experimentation foundation; diverged from #1640; preserve as draft/unreviewed.",
-    "#1653": "Blocked: eight unresolved review threads; preserve six unique repository-graph paths.",
-    "#1655": "Unique structural-analysis/foundation-catalog draft; unreviewed.",
-    "#1659": "Unique local llama.cpp/phone integration draft; unreviewed.",
-    "#1615/#1614/#1611": "Older security/prediction branches are divergent from current integration; preserve until changed-path and content reconciliation is complete.",
-    "#1644-#1650": "Open dependency/action-version updates; review against the six-manifest current integration audit and merge only after current-main reconciliation.",
-    "older repeated security/prediction proposals": "Candidate duplicate or superseded work; no bulk closure. Close only exact duplicates after a consolidated successor is merged and verified on main."
+    "#1640": "Active V3 integration candidate; exact-head full suite, core, 58.98% coverage, installed wheel, six-manifest audit and fail-closed gate green. Blocked from merge by zero independent APPROVED reviews, inaccessible branch-protection details and unauthorized Pages side effect.",
+    "#1643": "Active unique XRP research candidate; exact-head full suite, six-manifest audit and fail-closed gate green; 623 unique paths. Blocked from merge by zero approvals and sequencing; consolidate onto verified main only after #1640 is merged and verified.",
+    "#1642": "Draft forecast-snapshot work; retain pending exact path/ancestry reconciliation against #1640 and main verification.",
+    "#1644-#1650": "Open dependency/action-version PRs; reconcile exact versions against the current six-manifest #1640 audit and close only after successor content is verified on main.",
+    "#1653": "Blocked by eight unresolved review threads; preserve six unique repository-graph paths.",
+    "#1641": "Unique bounded-experimentation foundation; preserve as draft/unreviewed.",
+    "#1655": "Unique structural-analysis/foundation-catalog draft; preserve.",
+    "#1659": "Unique local llama.cpp/phone-chat draft; preserve.",
+    "#1317/#1318/#1320": "Older structural, schema-validation and paper-trader safety work; preserve pending path-by-path reconciliation.",
+    "#1269": "Unique mesh/topology work; preserve.",
+    "#1254/#1255": "Older dependency updates; reconcile exact versions against current integration before classification as superseded.",
+    "#1477/#1547/#1586/#1597/#1591": "Preserve unique XRP institutional, capital and identity research; no bulk closure."
   },
-  "last_run_status": "Run 56: exact-head verification on pre-handoff integration head 5ec7c803 passed 1,198 full-suite tests plus 8 subtests, 660 core tests, 58.81% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. Research head 58c65e42 passed 2,433 full-suite tests plus 8 subtests, 498 core tests, six-manifest audit and fail-closed gate. The handoff/map/test synchronization commit now being created is documentation/map/test-only; its own exact-head CI must complete before this new commit is considered verified. No approvals or merge."
+  "last_run_status": "Run 58: inspected current main and complete trees; enumerated all four open-PR pages; #1640 exact head eeb4950d passed 1,208 full-suite tests/8 subtests, 660 core tests/8 subtests, 58.98% coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate; #1643 exact head 674919ab passed 2,472 full-suite tests/8 subtests, 498 core tests/8 subtests, six-manifest audit and fail-closed gate. Current collector defines 35 endpoints/33 scheduled, correcting stale handoff/map counts. New Run 58 docs/map/test commit awaits its own exact-head CI. Zero APPROVED reviews; no merge.",
+  "integration_head_before_map_commit": "eeb4950d6cbda6a32870dfe074f671c4ccbc843e"
 }
