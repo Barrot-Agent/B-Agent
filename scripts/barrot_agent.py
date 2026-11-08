@@ -56,9 +56,19 @@ TITLE = os.environ.get("TASK_TITLE", "Barrot task")
 TASK_MODE = os.environ.get("TASK_MODE", "engineering").strip().lower()
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
+INFERENCE_PROVIDER = os.environ.get("BARROT_INFERENCE_PROVIDER", "groq").strip().lower()
+MODEL = (
+    os.environ.get("LUNAROUTE_MODEL", "").strip()
+    if INFERENCE_PROVIDER == "lunaroute"
+    else os.environ.get("BRAIN_MODEL", "").strip()
+) or "openai/gpt-oss-120b"
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
+LUNAROUTE_KEY = os.environ.get("LUNAROUTE_API_KEY", "")
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
+LUNAROUTE_ENDPOINT = (
+    os.environ.get("LUNAROUTE_BASE_URL", "https://gw.lunaroute.com/v1").rstrip("/")
+    + "/chat/completions"
+)
 MAX_TOOL_ROUNDS = 4
 MAX_SEARCH_RESULTS = 50
 
@@ -309,11 +319,22 @@ def _send_groq_request(
     if request_sender is not None:
         return request_sender(payload)
     body = json.dumps(payload).encode()
+    if INFERENCE_PROVIDER == "lunaroute":
+        endpoint, api_key, provider_name = LUNAROUTE_ENDPOINT, LUNAROUTE_KEY, "LunaRoute"
+    elif INFERENCE_PROVIDER == "groq":
+        endpoint, api_key, provider_name = GROQ_ENDPOINT, GROQ_KEY, "Groq"
+    else:
+        raise RuntimeError(
+            "Native tool orchestration supports LunaRoute or Groq. "
+            "Local Llama remains a lightweight text-only provider."
+        )
+    if not api_key:
+        raise RuntimeError(f"{provider_name} API key is not configured.")
     request = urllib.request.Request(
-        GROQ_ENDPOINT,
+        endpoint,
         data=body,
         headers={
-            "Authorization": "Bearer " + GROQ_KEY,
+            "Authorization": "Bearer " + api_key,
             "Content-Type": "application/json",
             "User-Agent": "Barrot-Agent/1.0",
         },
@@ -337,7 +358,7 @@ def _send_groq_request(
             and not _json_mode_retry
         ):
             print(
-                "Groq rejected strict JSON mode; retrying once without response_format.",
+                "{provider_name} rejected strict JSON mode; retrying once without response_format.",
                 file=sys.stderr,
             )
             fallback_payload = dict(payload)
@@ -357,7 +378,7 @@ def _send_groq_request(
                 retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
                 if 0 < retry_seconds <= 60:
                     print(
-                        f"Groq per-minute rate limit reached; retrying current model once in {retry_seconds:.1f}s.",
+                        f"{provider_name} per-minute rate limit reached; retrying current model once in {retry_seconds:.1f}s.",
                         file=sys.stderr,
                     )
                     time.sleep(retry_seconds)
@@ -375,7 +396,7 @@ def _send_groq_request(
                 fallback_payload = dict(payload)
                 fallback_payload["model"] = fallback_model
                 print(
-                    f"Groq daily token quota reached for {primary_model}; trying fallback model {fallback_model}.",
+                    f"{provider_name} daily token quota reached for {primary_model}; trying fallback model {fallback_model}.",
                     file=sys.stderr,
                 )
                 try:
@@ -390,11 +411,11 @@ def _send_groq_request(
             raise RuntimeError(
                 f"Groq daily token quota exhausted for {primary_model}; all configured fallback models failed. {details}"
             ) from exc
-        raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
+        raise RuntimeError(f"{provider_name} HTTP {exc.code}: {detail}") from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM network error: {exc}") from exc
     except TimeoutError as exc:
-        raise TimeoutError("Groq request timed out") from exc
+        raise TimeoutError(f"{provider_name} request timed out") from exc
 
 
 class ScriptBrain:
