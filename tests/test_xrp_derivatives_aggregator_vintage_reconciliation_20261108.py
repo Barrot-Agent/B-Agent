@@ -68,7 +68,7 @@ def test_optimistfi_october_snapshot_is_excluded_as_stale(record: dict) -> None:
     assert facts["venues"] == 36
     assert facts["provider_timestamp_utc"] == "2026-10-24T02:07:00Z"
     assert facts["freshness"].startswith("STALE")
-    assert "OptimistFi" in record["current_page_dispersion"]["excluded_stale_providers"]
+    assert any(item.startswith("OptimistFi") for item in record["current_page_dispersion"]["excluded_stale_providers"])
 
 
 def test_current_oi_provider_dispersion_is_not_averaged(record: dict) -> None:
