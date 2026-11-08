@@ -68,8 +68,8 @@ def test_run34_endpoint_count_and_fail_closed_prediction_status_are_current():
     )
     current = data["current_run_observations"]
     engine = current["prediction_engine"]
-    assert engine["endpoints"] == 29
-    assert engine["scheduled_public_sources"] == 27
+    assert engine["endpoints"] == 32
+    assert engine["scheduled_public_sources"] == 30
     assert engine["excluded_xrpl_node_sources"] == 2
     assert engine["forecast_status"] == "NOT_ISSUED"
     assert engine["oos_lift"] is False
@@ -93,3 +93,32 @@ def test_run34_nine_platform_map_remains_truthful_and_least_privilege():
         if name != "ChatGPT":
             assert platform["data_flow"]["verified"] is False
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
+
+
+def test_run56_handoff_and_map_record_exact_pre_handoff_heads_and_ci():
+    handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
+    assert handoff.startswith("# Current integrated Barrot handoff — ")
+    assert "## Run 56 — current repository and exact-head verification" in handoff[:3_000]
+    assert "5ec7c8036775e8b7c8e82741b6455af53c955cc9" in handoff
+    assert "58c65e4277d7b95193452538ef063462aa95af8f" in handoff
+    assert "1,198 passed, 8 subtests passed" in handoff
+    assert "2,433 passed, 8 subtests passed" in handoff
+    assert "Forecast status: NOT_ISSUED" in handoff
+    assert "No merge." in handoff
+
+    data = json.loads(
+        (ROOT / "research" / "xrp_intelligence" / "nine_platform_capability_authentication_dataflow_map.json")
+        .read_text(encoding="utf-8")
+    )
+    current = data["current_run_observations"]
+    assert current["run_id"] == 56
+    assert current["main_sha"] == MAIN_SHA
+    assert current["integration_head_before_handoff_commit"] == "5ec7c8036775e8b7c8e82741b6455af53c955cc9"
+    assert current["research_head"] == "58c65e4277d7b95193452538ef063462aa95af8f"
+    assert current["ci_evidence"]["integration"]["full_suite"].startswith("1,198 passed")
+    assert current["ci_evidence"]["research"]["full_suite"].startswith("2,433 passed")
+    assert current["prediction_engine"]["endpoints"] == 32
+    assert current["prediction_engine"]["scheduled_public_sources"] == 30
+    assert current["reviews"]["pr_1640"]["approving_reviews"] == 0
+    assert current["reviews"]["pr_1643"]["approving_reviews"] == 0
+    assert current["merge_state"]["merge_performed"] is False

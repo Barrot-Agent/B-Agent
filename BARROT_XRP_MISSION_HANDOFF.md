@@ -1,3 +1,82 @@
+# Current integrated Barrot handoff — 2026-11-08T13:37:23Z
+
+## Run 56 — current repository and exact-head verification
+
+**Mission:** XRP intelligence and prediction-engine mastery remains priority one. **Foundation:** Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Repository and integration state
+
+- Current main: `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main write. The complete recursive main tree contains 1,403 entries (1,298 files, 493 Python files, 90 test modules and 86 workflows).
+- Open PR inventory: **372 total (356 drafts, 16 non-drafts)** across four complete pages (100, 100, 100, 72). No new PR was created and no PR was closed.
+- PR #1640 pre-handoff head: `5ec7c8036775e8b7c8e82741b6455af53c955cc9`; 679 commits ahead, zero behind; 177 changed paths. Its branch tree has 1,479 entries, 1,366 files, 548 Python files, 129 test modules and 87 workflows.
+- PR #1643 head: `58c65e4277d7b95193452538ef063462aa95af8f`; 820 commits ahead, zero behind; 618 changed paths. Its branch tree has 2,016 entries, 1,910 files, 743 Python files, 340 test modules and 86 workflows.
+- The two mission branches share six paths. Only `.github/workflows/dependency-audit.yml` is byte-identical (blob `6515307991420ab90d8671034b13ac2eb56190b3`). The other five differ: the handoff, Kamilah source registry, Pillars checker and their two regression tests. #1643 has 612 unique paths. Do not merge the divergent research branch directly; after #1640 is merged and verified, create one successor from resulting main, carry the 612 unique paths and reconcile the five differing shared paths.
+- PR #1642's one-commit prediction snapshot-gate branch is an ancestor of #1640 (678 commits from #1642 to #1640, zero behind); its seven paths are carried in the integration branch. Classify it as superseded pending main verification; close only after #1640 merges and all seven paths are verified on main.
+- Other backlog: #1641 is unique and diverged; #1653 is blocked by eight unresolved review threads; #1655 and #1659 remain unique/unreviewed; #1615/#1614/#1611 are older divergent security/prediction branches requiring path reconciliation; #1644–#1650 are dependency/action-version updates that must be reconciled against the integrated six-manifest audit. Preserve all until a successor is merged and verified. No bulk closure.
+
+### Exact-head verification
+
+**PR #1640 — `5ec7c8036775e8b7c8e82741b6455af53c955cc9`**
+- Full repository suite: **1,198 passed, 8 subtests passed** in 49.08 seconds.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive package coverage: **58.81%**, above the 53% threshold.
+- Installed wheel built and installed; packaged Barrot V3, XRP mission and canonical data assets verified.
+- Six-manifest dependency audit passed; no known vulnerabilities reported.
+- Fail-closed gate passed and explicitly keeps merging disabled.
+- Evidence: [CI 42484323445](https://github.com/Barrot-Agent/B-Agent/actions/runs/42484323445), [dependency audit 42484323318](https://github.com/Barrot-Agent/B-Agent/actions/runs/42484323318), [fail-closed gate 42484323336](https://github.com/Barrot-Agent/B-Agent/actions/runs/42484323336).
+- Non-fatal warnings: Actions cache budget is read-only; setuptools reports package-discovery/license deprecations for existing package configuration.
+
+**PR #1643 — `58c65e4277d7b95193452538ef063462aa95af8f`**
+- Full repository suite: **2,433 passed, 8 subtests passed** in 18.73 seconds.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed; no known vulnerabilities reported.
+- Fail-closed gate passed and explicitly keeps merging disabled.
+- Evidence: [CI 42483561562](https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561562), [dependency audit 42483561547](https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561547), [fail-closed gate 42483561518](https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561518).
+
+### Review and merge gates
+
+- #1640: 22/22 inline threads resolved; 62 review submissions, **zero APPROVED**.
+- #1643: 19/19 inline threads resolved; 10 review submissions, **zero APPROVED**.
+- COMMENTED reviews are not approvals. Copilot and CodeRabbit comments are not independent approvals.
+- Main branch-protection endpoint returns HTTP 403. The only visible repository ruleset, ID 10863829 (“Fall Back”), is disabled. CODEOWNERS is `* @Barrot-Agent`; required approval/check enforcement cannot be independently verified.
+- GitHub Pages is enabled, its configuration is inaccessible, and a previous main push successfully ran Pages deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). #1640 changes public web paths; authorization for a merge-triggered deployment is absent.
+- **No merge.** Technical checks are green on the recorded heads, but independent approvals, branch-protection visibility and Pages deployment authorization remain blockers.
+
+### XRP ingestion and prediction-engine state
+
+- The integration branch defines **32 public endpoint records, 30 scheduled**; the two free non-commercial XRPL node sources are excluded from scheduled capture. Newly included venues cover Bybit XRP/USDT and Bitbank XRP/JPY, alongside Binance, Coinbase, Kraken and OKX. JPY and USDT are not silently normalized to USD.
+- `.github/workflows/xrp-public-ingestion.yml` is designed for hourly capture at minute 3 and a daily 00:15 UTC archive, with read-only contents/actions permissions and main-only execution. It is not merged and has not executed on main.
+- Raw receipts are write-once/content-addressed, with canonical receipt IDs and a per-run SHA-256 chain. The chain is tamper-evident relative to its head, not an independent external anchor. Raw artifacts retain 90 days; per-run feature-store checkpoints retain 7 days; daily feature-store archives retain 90 days; Actions cache is evictable. Independent WORM storage and a complete raw-source rebuild remain unimplemented.
+- The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes. Four deterministic baselines, a 1-hour horizon, 100 minimum training samples, 100 minimum out-of-sample samples and a 1-hour embargo are implemented. Temporal temperature scaling exists for deterministic baselines but is not validated on mature independent live XRP history. PSI is univariate; label/concept drift and shadow evaluation are not implemented. No trusted production evaluator key is configured.
+- **Forecast status: NOT_ISSUED.** No mature synchronized multi-domain history, verified out-of-sample lift, real-data calibration or independent shadow outcomes justify a directional forecast.
+
+### Latest market-evidence limitations
+
+- The latest preserved Fuelmaps composite is a 12:00 UTC six-venue displayed-book snapshot, referenced at 13:03:21 UTC: $1.1645 mid, 56.5% displayed bid share within 1% and 69.7% within 5%. It was 3,801 seconds old at that reference and 5,843 seconds old at Run 56 capture; it is stale and model-ineligible.
+- The Binance XRPUSDT perpetual premium-index response carried 12:35:59 UTC provider time. It was 1,642 seconds old at 13:03:21 and 3,684 seconds old at Run 56 capture; open interest and liquidation totals were unavailable. It is stale and model-ineligible.
+- ETF sources retain different fund universes, vintages and definitions. No averaging or independent-confirmation claim is permitted. No new feature-store write was made.
+
+### Nine-platform status
+
+Only ChatGPT-to-GitHub access is verified in this run. Copilot activity is one-off review commentary, not a persistent connection or approval. Claude, Grok, Gemini and Codex remain unverified; Hugging Face health is BUILD_ERROR; Kaggle is untested; Databricks read-only validation returned HTTP 403. No external model exchange or data transfer occurred.
+
+### Main-branch workflow health
+
+- Cross Analysis on main succeeded: [42482207862](https://github.com/Barrot-Agent/B-Agent/actions/runs/42482207862).
+- Pillars Consistency Check failed on main: [42482972244](https://github.com/Barrot-Agent/B-Agent/actions/runs/42482972244), due to missing GitHub App credentials, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. No restart, upload, deployment, credential rotation or workspace write was attempted.
+
+### Next actions
+
+1. Obtain genuine independent reviews and resolve branch-protection visibility and Pages deployment authorization before considering #1640 for merge.
+2. If #1640 is merged, fetch main again, verify the merge commit and all integrated files, inspect automatic workflow side effects, and run main CI.
+3. Only after main verification, close #1642 as superseded and build one fresh-main successor for #1643, carrying its 612 unique paths and manually reconciling the five conflicting shared paths.
+4. Verify the scheduled ingestion workflow on main; then prioritize independently anchored long-term raw receipts/WORM retention and synchronized multi-domain history.
+5. Run leakage-safe chronological walk-forward evaluation against naive, momentum, mean-reversion and volatility-aware baselines; require independent calibration and shadow evidence before forecast issuance.
+
+**This handoff/map/test synchronization is being committed on the existing #1640 branch only.** The results above apply to the pre-handoff code head `5ec7c8036775e8b7c8e82741b6455af53c955cc9`; the new documentation/map/test commit must complete its own exact-head CI, dependency audit and fail-closed gate before it is considered verified. No merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, external model transfer, force-push or destructive worktree operation occurred.
+
+---
+
 # Current integrated Barrot handoff — 2026-11-08T13:17:32Z
 
 ## Run 55 — current repository and verification
