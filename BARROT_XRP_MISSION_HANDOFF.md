@@ -5192,3 +5192,25 @@ This follow-up explicitly corrects any reading of the preceding Run 34 regulator
 - No new market observations were admitted to the feature store.
 - Forecast status remains `NOT_ISSUED`.
 - No merge, deployment, external model transfer, paper trade or real-money action occurred.
+
+
+## Run 34 engineering follow-up — 2026-11-08T01:22:49Z
+
+### Historical handoff tests corrected without weakening assertions
+
+The first exact-head CI after adding Run 34 exposed two historical-map assertions that still expected Run 33 to remain in `current_run_observations`:
+
+- `tests/test_xrp_mission_handoff_run25.py::test_run26_platform_map_is_preserved_as_prior_run_and_fail_closed`
+- `tests/test_xrp_mission_handoff_run27.py::test_run28_platform_map_is_preserved_and_run33_is_current`
+
+On integration commit `594dd2bc4b8b810c949de3e01086ddb1bfe40828`, the full suite reported **1,172 passed, 2 failed, 8 subtests passed**. The two failures were both stale run-number expectations (`assert 34 == 33`); the new Run 34 tests passed, the core suite passed and inclusive coverage remained 58.49%. Wheel verification was skipped because the full-suite job failed.
+
+The historical records are preserved: Run 33 was moved intact into `prior_run_observations`; Run 34 is now the current map observation. The two tests are being updated to assert Run 33 from the prior-run archive while retaining their original Run 26/28 evidence checks and verifying Run 34 as current. No product behavior, safety gate, threshold or test expectation about the underlying historical evidence is being weakened.
+
+The intermediate integration head `4b547dc0b54e1e4c74dbeab10b20de7b270551f8` has a new CI cycle in progress, but its full-suite result is not being claimed as verified. This historical-test correction is committed to the same existing #1640 branch; no new branch or PR is created.
+
+### Research branch follow-up status
+
+The ETF-flow and SEC-docket reconciliation is committed on #1643 at `a554dc3814fb0a9ed935fa83a2805caa3544915e`. Its exact-head CI, six-manifest dependency audit and fail-closed gate are still in progress/pending. Do not mark this new artifact verified until those exact-head checks complete.
+
+No merge, main-branch write, deployment, external transfer or financial action occurred.

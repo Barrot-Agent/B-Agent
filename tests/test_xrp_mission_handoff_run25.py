@@ -24,8 +24,9 @@ def test_run26_platform_map_is_preserved_as_prior_run_and_fail_closed():
         .read_text(encoding="utf-8")
     )
     prior = next(item for item in data["prior_run_observations"] if item.get("run_id") == 26)
-    current = data["current_run_observations"]
-    assert current["run_id"] == 33
+    prior33 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 33)
+    assert prior33["run_id"] == 33
+    assert data["current_run_observations"]["run_id"] == 34
     assert any(item.get("run_id") == 31 for item in data["prior_run_observations"])
     assert any(item.get("run_id") == 30 for item in data["prior_run_observations"])
     assert any(item.get("run_id") == 27 for item in data["prior_run_observations"])

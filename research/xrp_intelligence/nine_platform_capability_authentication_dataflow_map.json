@@ -99,14 +99,15 @@
           "Run 24: the current GitHub connector read all four open-PR search pages (371 total), current main and mission branch trees, exact-head Actions jobs/logs, PR reviews/threads and the scheduled main Pillars Consistency Check log; no main write or external model transfer occurred.",
           "Run 31: ChatGPT-to-GitHub read and existing-branch write path verified; no main write, secret read or external model transfer.",
           "Run 34: fetched complete main and mission-branch trees, all four open-PR pages, exact PR heads/ancestry/changed paths, shared-path blob hashes, exact-head full-suite/core logs, six-manifest audits, fail-closed gate jobs, current main workflow configuration and latest main Cross Analysis run. Existing integration branch only; no main write, secret read, external model transfer or deployment.",
-          "Run 34 follow-up: committed the ETF flow universe/methodology and SEC docket reconciliation artifact plus regression test to the existing #1643 research branch; verified the research branch advanced from 06769f1d9667d5cb877e6e0321f9d9a9694b1dd6 to a554dc3814fb0a9ed935fa83a2805caa3544915e. No main write, external model transfer or deployment."
+          "Run 34 follow-up: committed the ETF flow universe/methodology and SEC docket reconciliation artifact plus regression test to the existing #1643 research branch; verified the research branch advanced from 06769f1d9667d5cb877e6e0321f9d9a9694b1dd6 to a554dc3814fb0a9ed935fa83a2805caa3544915e. No main write, external model transfer or deployment.",
+          "Run 34 engineering follow-up: inspected exact-head CI failure on 594dd2bc; two historical map tests expected Run 33 as current after Run 34 was added. Updated those tests to read preserved Run 33 from prior_run_observations; no product code or safety thresholds weakened."
         ]
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T01:19:25Z"
+      "last_verified_at_utc": "2026-11-08T01:22:49Z"
     },
     "Claude": {
       "intended_role": [
@@ -305,7 +306,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-08T01:19:25Z",
+    "last_reviewed_at_utc": "2026-11-08T01:22:49Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -737,7 +738,25 @@
         ],
         "exact_head_ci_status": "in_progress_at_capture"
       }
-    ]
+    ],
+    "integration_head_before_test_correction": "4b547dc0b54e1e4c74dbeab10b20de7b270551f8",
+    "integration_test_correction": {
+      "previous_head_failure": {
+        "head": "594dd2bc4b8b810c949de3e01086ddb1bfe40828",
+        "run_id": 42433588827,
+        "full_suite": "1,172 passed, 2 failed, 8 subtests passed",
+        "core_suite": "passed",
+        "coverage_pct": 58.49,
+        "failures": [
+          "tests/test_xrp_mission_handoff_run25.py::test_run26_platform_map_is_preserved_as_prior_run_and_fail_closed",
+          "tests/test_xrp_mission_handoff_run27.py::test_run28_platform_map_is_preserved_and_run33_is_current"
+        ],
+        "failure_cause": "historical tests expected Run 33 in current_run_observations after current map advanced to Run 34"
+      },
+      "correction": "preserve Run 33 intact in prior_run_observations and update historical tests to locate it there; assert Run 34 is current",
+      "current_head_at_correction_start": "4b547dc0b54e1e4c74dbeab10b20de7b270551f8",
+      "exact_head_ci_after_correction": "pending"
+    }
   },
   "prior_run_observations": [
     {
@@ -4112,5 +4131,5 @@
       "forecast_status": "NOT_ISSUED"
     }
   ],
-  "last_verified_at_utc": "2026-11-08T01:19:25Z"
+  "last_verified_at_utc": "2026-11-08T01:22:49Z"
 }
