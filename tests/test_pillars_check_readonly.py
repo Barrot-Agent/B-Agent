@@ -43,3 +43,28 @@ def test_pillars_check_workflow_is_read_only_and_does_not_persist_checkout_crede
     assert "git push" not in WORKFLOW
     assert "workflow_dispatch:" in WORKFLOW
     assert "schedule:" in WORKFLOW
+
+
+
+def test_pillars_check_fiction_scan_rejects_non_200(monkeypatch):
+    for status in (404, 500):
+        response = Mock(status_code=status, text="clean-looking error body")
+        monkeypatch.setattr(pillars_check.requests, "get", lambda *args, **kwargs: response)
+        ok, detail = pillars_check.check_system_prompt_fiction()
+        assert ok is False
+        assert detail == f"HTTP {status}"
+
+
+def test_pillars_check_fiction_scan_reports_http_200_and_scans_body(monkeypatch):
+    response = Mock(status_code=200, text="")
+    monkeypatch.setattr(pillars_check.requests, "get", lambda *args, **kwargs: response)
+    ok, detail = pillars_check.check_system_prompt_fiction()
+    assert ok is True
+    assert detail == "HTTP 200; clean"
+
+    fiction_term = next(iter(pillars_check.FICTION_TERMS))
+    response = Mock(status_code=200, text=fiction_term)
+    monkeypatch.setattr(pillars_check.requests, "get", lambda *args, **kwargs: response)
+    ok, detail = pillars_check.check_system_prompt_fiction()
+    assert ok is False
+    assert detail.startswith("HTTP 200; fiction terms present")
