@@ -1,6 +1,6 @@
 # Current integrated Barrot handoff — 2026-11-08T03:39:50Z
 
-## Run 39 — 2026-11-08T03:39:50Z
+## Run 39 — current repository state (2026-11-08T03:39:50Z)
 
 ### Mission priority and repository state
 
