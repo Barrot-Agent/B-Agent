@@ -1,7 +1,7 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T06:24:01.084Z",
+  "captured_at_utc": "2026-11-08T06:24:42.324Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
   "observed_integration_head_before_map_commit": "da014501cebc8b8a964485549ac791b26ce88262",
@@ -105,7 +105,10 @@
         "Run 44: preserved the #1615 stale draft's four unique automation-audit records for later reconciliation; confirmed its workflow containment outcomes are already present on main. No PR created/closed, no main write, no merge or external action.",
         "Run 44 follow-up: added three append-only XRP research artifacts (stablecoin/custody, secondary-source correction, and timestamped Kraken/OKX/Binance spot snapshot) plus two regression test modules on the existing #1643 branch.",
         "Run 44 follow-up exact-head verification: #1643 head 18551055 passed 2,311 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate. #1640 head da014501 passed 1,188 full-suite tests, 660 core tests, 58.78% coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate.",
-        "Run 44 follow-up: preserved and corrected RLUSD/USDC/JPYSC supply, custody, collateral and source-independence claims; archived a fresh spot snapshot but rejected it from model admission due missing/stale timestamps, conflicting Level-1 imbalances and Binance HTTP 451. No forecast or external action."
+        "Run 44 follow-up: preserved and corrected RLUSD/USDC/JPYSC supply, custody, collateral and source-independence claims; archived a fresh spot snapshot but rejected it from model admission due missing/stale timestamps, conflicting Level-1 imbalances and Binance HTTP 451. No forecast or external action.",
+        "Run 44 follow-up: added stablecoin/custody, secondary-source correction and timestamped Kraken/OKX/Binance spot artifacts plus two regression test modules on existing #1643.",
+        "Run 44 follow-up exact-head verification: #1643 head 18551055 passed 2,311 full-suite tests, 498 core tests, six-manifest audit and fail-closed gate; #1640 head da014501 passed 1,188 full-suite tests, 660 core tests, 58.78% coverage, installed-wheel verification, six-manifest audit and fail-closed gate.",
+        "Run 44 follow-up: no XRP forecast issued; all new stablecoin/spot observations remain model-ineligible. No PR created/closed, no main write, no merge or external action."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -154,7 +157,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T06:24:01.084Z"
+      "last_verified_at_utc": "2026-11-08T06:24:42.324Z"
     },
     "Claude": {
       "intended_role": [
@@ -454,7 +457,7 @@
     "Obtain genuine independent approving reviews for #1640 and #1643; all inline threads are resolved but both PRs still have zero APPROVED reviews.",
     "Obtain authorized confirmation of classic branch-protection requirements and GitHub Pages deployment behavior; detailed branch-protection API returns HTTP 403 and Pages configuration is inaccessible.",
     "After approvals, exact-head checks, security gates and external-side-effect authorization are satisfied, merge #1640; verify the merge commit, resulting main tree, automatic workflow side effects and main CI.",
-    "Consolidate #1643's 564 research-only paths onto the verified new main, reconcile all six shared paths, preserve the 21-candidate Kamilah registry and Evernorth corrections, and carry #1640's stronger coverage and installed-wheel CI.",
+    "Consolidate #1643's 564 research-only paths onto verified main, reconcile all six shared paths, preserve the 21-candidate Kamilah registry and Evernorth corrections, and carry #1640's stronger coverage and installed-wheel CI.",
     "Preserve #1615's four unique automation-audit artifacts; its workflow containment outcomes are already present on main. Do not merge or close the stale draft until the four records are reconciled.",
     "Reconcile dependency PRs #1644–#1650 against exact versions in #1640 and close only exact superseded duplicates after successor content is verified on main.",
     "Extend scheduled context ingestion to SEC/regulatory, FRED/Treasury/BOJ, USDC/RLUSD/JPYSC, custody, collateral, institutional disclosure and payment-rail sources with event-time/versioned records.",
@@ -462,7 +465,7 @@
   ],
   "current_run_observations": {
     "run_id": 44,
-    "captured_at_utc": "2026-11-08T06:24:01.084Z",
+    "captured_at_utc": "2026-11-08T06:24:42.324Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
     "integration_head_before_map_commit": "da014501cebc8b8a964485549ac791b26ce88262",
     "research_head": "18551055debe4e39814fdf54c7cc297430e656c0",
@@ -696,8 +699,7 @@
         "total_xrpl_plus_ethereum_usd": 2670000000,
         "source": "XRP Insights secondary dashboard; excludes Base, Optimism, Ink, Unichain and XRPL EVM sidechain; raw ledger receipts not preserved.",
         "comparison_warning": "Do not compare the Nov 7 XRPL+Ethereum subtotal directly with Ripple's Nov 5 all-chain dashboard total; dates and network scopes differ."
-      },
-      "correction": "The first Run 44 stablecoin artifact included an unverified Coindaro URL/claim. An append-only correction invalidates that record for use and substitutes the XRP Insights secondary chain split; the original artifact is preserved for auditability."
+      }
     },
     "custody_collateral_status": {
       "standard_custody": "Current RLUSD issuer; NYDFS limited-purpose trust company.",
@@ -894,7 +896,7 @@
       "Obtain genuine independent approving reviews for #1640 and #1643; all inline threads are resolved but both PRs still have zero APPROVED reviews.",
       "Obtain authorized confirmation of classic branch-protection requirements and GitHub Pages deployment behavior; detailed branch-protection API returns HTTP 403 and Pages configuration is inaccessible.",
       "After approvals, exact-head checks, security gates and external-side-effect authorization are satisfied, merge #1640; verify the merge commit, resulting main tree, automatic workflow side effects and main CI.",
-      "Consolidate #1643's 564 research-only paths onto the verified new main, reconcile all six shared paths, preserve the 21-candidate Kamilah registry and Evernorth corrections, and carry #1640's stronger coverage and installed-wheel CI.",
+      "Consolidate #1643's 564 research-only paths onto verified main, reconcile all six shared paths, preserve the 21-candidate Kamilah registry and Evernorth corrections, and carry #1640's stronger coverage and installed-wheel CI.",
       "Preserve #1615's four unique automation-audit artifacts; its workflow containment outcomes are already present on main. Do not merge or close the stale draft until the four records are reconciled.",
       "Reconcile dependency PRs #1644–#1650 against exact versions in #1640 and close only exact superseded duplicates after successor content is verified on main.",
       "Extend scheduled context ingestion to SEC/regulatory, FRED/Treasury/BOJ, USDC/RLUSD/JPYSC, custody, collateral, institutional disclosure and payment-rail sources with event-time/versioned records.",
@@ -923,8 +925,16 @@
       "Main Cross Analysis is read-only and artifact-only; latest scheduled run 42452394419 succeeded at 2026-11-08T05:51:30Z.",
       "The #1640 XRP ingestion workflow is read-only and scheduled but absent from main; it does not yet ingest regulatory, macro, stablecoin, custody, collateral, institutional-balance or payment-rail histories.",
       "Walk-forward ingestion uses a one-hour embargo; the evaluator is historical-baseline-only and not a trained model or independent shadow evaluation.",
-      "No directional forecast is supported or issued."
-    ]
+      "No directional forecast is supported or issued.",
+      "#1643 exact head 18551055 passed 2,311 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate.",
+      "New stablecoin research separates RLUSD issuer dashboard, Circle secondary USDC supply, JPYSC handling/lending and chain-specific RLUSD supply; none is admitted as XRP capital flow.",
+      "New spot snapshot preserves exact Kraken/OKX JSON receipts and Binance HTTP 451; timestamps and opposing Level-1 imbalances fail model admission.",
+      "Append-only correction invalidates an unverified Coindaro URL/claim and substitutes the XRP Insights secondary chain split."
+    ],
+    "correction_notes": {
+      "coindaro_record": "INVALIDATED_UNVERIFIED_URL_AND_CLAIM; do not cite or model.",
+      "replacement": "XRP Insights Nov 7 XRPL/Ethereum split; secondary, scope-limited, no raw ledger receipts."
+    }
   },
   "prior_run_observations": [
     {
@@ -6849,5 +6859,5 @@
       ]
     }
   ],
-  "last_verified_at_utc": "2026-11-08T06:24:01.084Z"
+  "last_verified_at_utc": "2026-11-08T06:24:42.324Z"
 }
