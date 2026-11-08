@@ -17,7 +17,7 @@ def test_in_kind_xrp_bridge_reconciles_exactly():
     assert pubco == Decimal("261919096.061435")
     assert total == Decimal("388910554.061435")
     assert total == Decimal(bridge["total_in_kind_xrp"])
-    assert "contained within" in bridge["overlap_rule"]
+    assert "contained within" in bridge["reconciliation"]
 
 
 def test_cash_subscription_bridge_is_rounded_without_double_counting():
