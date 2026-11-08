@@ -1,4 +1,4 @@
-# Current integrated Barrot handoff — 2026-11-08T10:02:55Z
+# Current integrated Barrot handoff — 2026-11-08T10:19:57Z
 
 ## Run 50 — current repository and XRP mission status
 
@@ -136,6 +136,44 @@ A fresh read of current `XRPLF/rippled` develop commit `192b77d456ef0c14faf60954
 The new #1643 full-suite result is pending; its core tests, dependency audit and fail-closed gate passed. Forecast remains `NOT_ISSUED`.
 
 
+
+## Run 50 final verification — 2026-11-08T10:19:57Z
+
+### Current exact heads and CI
+
+- **PR #1640 — V3 integration:** current branch head `a08f2a8ea65bdb5d425f154a9e631253b92a83ad`, 666 commits ahead of main, zero behind, 177 changed files, mergeable/clean. Exact-head full suite **1,189 passed, 8 subtests**; core **660 passed, 8 subtests**; inclusive coverage **59% rounded**; installed-wheel verification passed; six-manifest dependency audit passed with no known vulnerabilities; fail-closed gate passed. Evidence: [full CI 42470680175](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470680175), [dependency audit 42470680263](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470680263), [fail-closed gate 42470680242](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470680242). The exact-head full-suite log reports 59% rounded coverage. The current branch includes the Run50 XRPL vote-integrity supplement.
+- **PR #1643 — XRP research:** current head `6f441fdf183db0b707556a7806a3abb5e60f5ec9`, 806 commits ahead of main, zero behind, 600 changed files, mergeable/clean. Exact-head full suite **2,368 passed, 8 subtests**; core suite passed; six-manifest dependency audit passed with no known vulnerabilities; fail-closed gate passed. Evidence: [full CI 42470698047](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470698047), [dependency audit 42470698050](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470698050), [fail-closed gate 42470698123](https://github.com/Barrot-Agent/B-Agent/actions/runs/42470698123).
+- The prior #1643 head `b587981` had 2,367 passed and one failed assertion because the test omitted a terminal period in a captured observation. The assertion was corrected to match the artifact's exact punctuation; no test was weakened. The correction is commit `6f441fdf`; its full suite now passes.
+- Current PR path counts: #1640 177; #1643 600; six shared paths; unique counts 171 V3 and **594 research**. Both are zero commits behind main. No PR was created or closed.
+
+### XRPL validator signing-key rotation research — verified on #1643
+
+Artifact: `research/xrp_intelligence/20261108T101200Z-xrpl-validator-signing-key-rotation-amendment-vote-integrity.json`; test: `tests/test_xrpl_validator_signing_key_rotation_vote_integrity_20261108.py`.
+
+XRPLF/rippled issue [#8534](https://github.com/XRPLF/rippled/issues/8534), opened Oct 8, remains open with no comments or linked fix observed. It reports that a long-running proposing node may stop counting a trusted validator's amendment votes after ephemeral signing-key rotation while the master key remains on the UNL. The issue traces the mechanism to vote records keyed by signing key and a refresh path tied to trusted master-key membership changes. The current `develop` code was rechecked at commit `192b77d456ef0c14faf6095454b9bbc9476f4ce3`; the described code path remains present in `AmendmentTable.cpp`, `NetworkOPs.cpp` and `ValidatorList.cpp`.
+
+The report's example: 35 trusted keys/current signing keys, but one node showed 33 validations, threshold 26 and 28 BatchV1_1 votes. The issue explicitly says **no amendment pass/fail outcome currently differs** in that example. This is a node-specific integrity caveat, not proof that every validator or the previously tracked LendingProtocol/SingleAssetVault counts are wrong.
+
+For Barrot, amendment counts must retain node version, ledger index, provider timestamp, uptime, UNL membership and current manifest/signing-key state; corroborate across independent nodes. Do not turn a single node's `validations`/threshold into a network-wide truth. No production validator was restarted or modified.
+
+### ETF holdings-delta methodology and latest source vintage
+
+Artifact: `research/xrp_intelligence/20261108T100358Z-xrp-etf-holdings-flow-methodology-correction.json`; test: `tests/test_xrp_etf_holdings_flow_methodology_correction_20261108.py`.
+
+XRP Insights' daily “flow” is the change in issuer-reported XRP holdings versus the previous trading day, not a verified issuer-reported cash creation/redemption. BITW index rebalancing and XRP-denominated fee accrual can change holdings without primary-market subscriptions/redemptions. Use `issuer_reported_xrp_holdings_delta_proxy`, not `verified_net_creation_redemption`. GXRP's flow is withheld for its Sep 2–28 capture gap; some daily rows are reconstructed; latest rows can be provisional/revised; USD values may use NAV-implied prices when spot snapshots are absent. Commercial redistribution of the full dataset requires written permission.
+
+The current XRP Insights JSON was re-opened at `https://xrp-insights.com/data/xrp-etf-flows.json`: `generated_at=2026-11-08T09:54:19.704Z`, `data_as_of=2026-11-06`, 231 trading days, 1,597 fund-day rows, seven tickers, no provisional row. The committed artifact preserves an earlier 08:47:49.641Z generation snapshot; the 09:54:19.704Z metadata is a later refresh of the same Nov 6 settled dataset and should receive its own append-only metadata receipt on the next research pass. Publisher methodology, holdings-delta caveats, update cadence and license are documented at [XRP Insights data methodology](https://xrp-insights.com/data) and [current JSON metadata](https://xrp-insights.com/data/xrp-etf-flows.json).
+
+### Merge decision and blockers
+
+- #1640: 22/22 review threads resolved, 62 COMMENTED reviews, **zero APPROVED**.
+- #1643: 19/19 resolved, 10 COMMENTED reviews, **zero APPROVED**.
+- Main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Main is protected, but detailed branch-protection settings return HTTP 403; visible fallback ruleset ID 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`.
+- GitHub Pages is enabled but configuration is inaccessible; a prior Pages deployment succeeded and #1640 changes public web paths. Merge-triggered public deployment remains unauthorized.
+- The fail-closed merge job passed while keeping merging disabled. No merge was performed.
+- No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree action occurred.
+
+The current Run50 handoff/map update is documentation-only; exact-head checks must pass on its resulting #1640 commit before merge consideration. Live checks: [PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640/checks).
 
 ## Run 49 — current repository and XRP mission status
 
