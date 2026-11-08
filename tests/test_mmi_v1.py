@@ -1168,3 +1168,60 @@ def test_malformed_source_provenance_class_fails_closed_without_type_error():
     assert any("invalid source provenance class" in error for error in record.validate())
     assert record._independence_groups_for(["bad", "good"]) is None
     assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+def test_malformed_component_parent_id_blocks_without_type_error():
+    record = complete_record_with_two_sources()
+    record.component_map.append(
+        ComponentRecord(
+            component_id="malformed-parent",
+            parent_id={},
+            depth=1,
+            state=ParseState.PARSED,
+        )
+    )
+
+    errors = record.validate()
+    assert any("component parent ID must be a non-empty string or null" in error for error in errors)
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_malformed_independent_evidence_source_ids_block_without_type_error():
+    for malformed_source_ids in (5, [{}], [None]):
+        record = complete_record_with_two_sources()
+        record.evidence[0].source_ids = malformed_source_ids
+        record.evidence[0].independent = True
+
+        errors = record.validate()
+        assert errors
+        assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_malformed_source_provenance_class_blocks_without_type_error():
+    record = complete_record_with_two_sources()
+    record.source_graph[0].provenance_class = {}
+    record.evidence[0].independent = True
+
+    errors = record.validate()
+    assert any("invalid source provenance class" in error for error in errors)
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_execution_ledger_append_skips_trailing_blank_lines(tmp_path):
+    ledger = MMIExecutionLedger(tmp_path / "mmi-execution.jsonl")
+    first_hash = ledger.append({"event_type": "ingestion_started", "dataset_id": "xrp-test"})
+    with ledger.path.open("a", encoding="utf-8") as handle:
+        handle.write("\\n\\n")
+
+    assert ledger.verify() is True
+    second_hash = ledger.append({"event_type": "ingestion_completed", "dataset_id": "xrp-test"})
+    assert second_hash != first_hash
+    assert ledger.verify() is True
+
+    records = [
+        json.loads(line)
+        for line in ledger.path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    assert len(records) == 2
+    assert records[1]["previous_hash"] == first_hash
+
