@@ -1,7 +1,7 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T19:41:00Z",
+  "captured_at_utc": "2026-11-08T19:49:01Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
   "observed_integration_head_before_map_commit": "b7396cfdec0716c36a761093dc4133888a0601e7",
@@ -121,7 +121,8 @@
         "Run 58: fetched current main ref and complete main tree; fetched complete #1640/#1643 trees; enumerated all four open-PR pages; compared mission branches and six shared-path blob identities; read PR metadata, reviews, resolved inline threads, exact-head full-suite/core logs, six-manifest audits, fail-closed gates, latest main Cross Analysis and the current XRP ingestion registry/workflow.",
         "Run 59: GitHub repository read/write access verified through existing authorized connection; research artifacts and handoff/map commits created on existing PR branches only. No external platform data flow verified.",
         "Run 65: current-session GitHub access re-verified by fetching the complete main/V3/research trees, all four open-PR pages, both mission PRs and their complete changed-path inventories, branch ancestry, reviews, review threads, exact-head Actions jobs/logs, dependency audits and fail-closed gates; only the existing #1640 handoff/map files were updated.",
-        "Run 66: current-session GitHub access re-verified by fetching complete main/V3/research trees, all open-PR pages, PR metadata/diffs/reviews/threads, exact-head full-suite logs, installed-wheel evidence, six-manifest audits and fail-closed gates; only the existing #1640 handoff/map files and existing #1643 research branch were updated."
+        "Run 66: current-session GitHub access re-verified by fetching complete main/V3/research trees, all open-PR pages, PR metadata/diffs/reviews/threads, exact-head full-suite logs, installed-wheel evidence, six-manifest audits and fail-closed gates; only the existing #1640 handoff/map files and existing #1643 research branch were updated.",
+        "Run 66 provenance correction and CI recheck: verified exact #1643 head 66bea with 2,562/8 full suite, 498/8 core, six-manifest audit and fail-closed gate; #1640 documentation head 1251714 exposed one historical first-180-lines assertion, now corrected without weakening tests; exact-head rerun pending."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -170,13 +171,13 @@
           "Run 65 map-schema correction: restored the full current_run_observations.prediction_engine endpoint IDs, readiness flags and external_actions object from the preserved Run 64 schema after exact-head CI exposed missing fields; no tests were weakened.",
           "Run 66: verified read/write access to existing mission branches only; main unchanged, no secret values read, no external model data transfer."
         ],
-        "last_verified_at_utc": "2026-11-08T19:41:00Z"
+        "last_verified_at_utc": "2026-11-08T19:49:01Z"
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T19:41:00Z"
+      "last_verified_at_utc": "2026-11-08T19:49:01Z"
     },
     "Claude": {
       "intended_role": [
@@ -503,12 +504,12 @@
   ],
   "current_run_observations": {
     "run_id": 66,
-    "revision": "Run 66 exact-head CI completion, C2FO Instant Pay evidence, six-shared-path reconciliation and prediction-ledger verification",
-    "captured_at_utc": "2026-11-08T19:41:00Z",
+    "revision": "Run 66 provenance correction, exact-head CI and historical handoff-anchor restoration",
+    "captured_at_utc": "2026-11-08T19:49:01Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
     "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_handoff_commit": "e1208a12558b6882305059c959f089e26c724a79",
-    "research_head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
+    "integration_head_before_handoff_commit": "12517143cf10797bc2c2366fe2029714adb90a15",
+    "research_head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
     "open_pr_inventory": {
       "total": 372,
       "drafts": 356,
@@ -549,14 +550,14 @@
     },
     "branch_ancestry": {
       "integration": {
-        "head": "e1208a12558b6882305059c959f089e26c724a79",
-        "ahead": 718,
+        "head": "12517143cf10797bc2c2366fe2029714adb90a15",
+        "ahead": 719,
         "behind": 0,
         "changed_paths": 181
       },
       "research": {
-        "head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
-        "ahead": 872,
+        "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
+        "ahead": 874,
         "behind": 0,
         "changed_paths": 647
       },
@@ -762,70 +763,78 @@
     },
     "ci_evidence": {
       "integration": {
-        "head": "e1208a12558b6882305059c959f089e26c724a79",
+        "head": "12517143cf10797bc2c2366fe2029714adb90a15",
+        "last_verified_code_test_head": "e1208a12558b6882305059c959f089e26c724a79",
         "full_suite": {
-          "run_id": 42515868897,
-          "job_id": 128838639422,
-          "result": "success",
-          "passed": 1215,
-          "failed": 0,
+          "run_id": 42516618028,
+          "job_id": 128840923226,
+          "result": "failure",
+          "passed": 1214,
+          "failed": 1,
           "subtests_passed": 8,
-          "coverage_pct": 58.98
+          "reason": "Historical Run57/58 evidence anchor eeb495... fell outside first 180 lines after Run66 sections were inserted; current handoff correction restores anchors."
         },
         "core_suite": {
-          "run_id": 42515868897,
-          "job_id": 128838639173,
+          "run_id": 42516618028,
+          "job_id": 128840923446,
           "result": "success",
           "passed": 660,
           "subtests_passed": 8
         },
         "installed_wheel": {
-          "result": "success",
-          "package": "b-agent-0.1.0",
-          "mission_resource": true,
-          "canonical_assets": true
+          "result": "skipped",
+          "reason": "Full suite failed before wheel step."
         },
         "dependency_audit": {
-          "run_id": 42515868896,
-          "job_id": 128838638952,
+          "run_id": 42516618144,
+          "job_id": 128840923510,
           "result": "success",
           "manifests": 6,
           "known_vulnerabilities": 0
         },
         "fail_closed_gate": {
-          "run_id": 42515868903,
-          "job_id": 128838639133,
+          "run_id": 42516618022,
+          "job_id": 128840923396,
           "result": "success",
           "automatic_merge_disabled": true
+        },
+        "prior_code_test_head": {
+          "head": "e1208a12558b6882305059c959f089e26c724a79",
+          "full_suite_passed": 1215,
+          "subtests_passed": 8,
+          "coverage_pct": 58.98,
+          "installed_wheel": "success",
+          "dependency_audit": "success",
+          "fail_closed_gate": "success"
         }
       },
       "research": {
-        "head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
+        "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
         "full_suite": {
-          "run_id": 42516041496,
-          "job_id": 128839158994,
+          "run_id": 42516734726,
+          "job_id": 128841279689,
           "result": "success",
-          "passed": 2561,
+          "passed": 2562,
           "failed": 0,
           "subtests_passed": 8
         },
         "core_suite": {
-          "run_id": 42516041496,
-          "job_id": 128839158665,
+          "run_id": 42516734726,
+          "job_id": 128841279824,
           "result": "success",
           "passed": 498,
           "subtests_passed": 8
         },
         "dependency_audit": {
-          "run_id": 42516041588,
-          "job_id": 128839202067,
+          "run_id": 42516734766,
+          "job_id": 128841279921,
           "result": "success",
           "manifests": 6,
           "known_vulnerabilities": 0
         },
         "fail_closed_gate": {
-          "run_id": 42516041572,
-          "job_id": 128839159050,
+          "run_id": 42516734707,
+          "job_id": 128841279615,
           "result": "success",
           "automatic_merge_disabled": true
         }
@@ -932,20 +941,20 @@
       "pages_configuration_accessible": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
-        "head": "e1208a12558b6882305059c959f089e26c724a79",
+        "head": "12517143cf10797bc2c2366fe2029714adb90a15",
         "mergeable": true,
         "approving_reviews": 0,
         "threads_resolved": 22,
         "threads_unresolved": 0,
-        "exact_head_ci": "GREEN: full repository suite, core, 58.98% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate passed."
+        "exact_head_ci": "BLOCKED: latest documentation-only head failed one historical Run57/58 first-180-lines assertion; Run66 anchor correction committed, exact-head rerun pending."
       },
       "pr_1643": {
-        "head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
+        "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
         "mergeable": true,
         "approving_reviews": 0,
         "threads_resolved": 19,
         "threads_unresolved": 0,
-        "exact_head_ci": "GREEN: full repository suite, core, six-manifest dependency audit and fail-closed gate passed."
+        "exact_head_ci": "GREEN: full repository suite 2,562/8, core 498/8, six-manifest dependency audit and fail-closed gate passed."
       },
       "merge_performed": false,
       "merge_allowed": false
@@ -967,12 +976,15 @@
     "forecast_status": "NOT_ISSUED",
     "intervening_run_note": "Run 61 map snapshot was not captured. Run 62 and Run 63 observations are preserved in prior_run_observations.",
     "integration_head_after_handoff_commit": "b7396cfdec0716c36a761093dc4133888a0601e7",
-    "integration_head_before_map_commit": "e1208a12558b6882305059c959f089e26c724a79",
+    "integration_head_before_map_commit": "12517143cf10797bc2c2366fe2029714adb90a15",
     "integration_head_before_map_schema_correction": "3bd09ac84c4d3a673c837121e3a9fcc46f820dc7",
     "execution": {
       "handoff_updated": true,
       "map_updated": true,
-      "exact_head_ci_verified": true,
+      "exact_head_ci_verified_for_code_test_heads": true,
+      "latest_handoff_map_head_failed_one_historical_anchor": true,
+      "anchor_correction_committed": true,
+      "final_exact_head_rerun_pending": true,
       "new_research_artifact_added_to_existing_research_pr": true,
       "new_pr_created": false,
       "pr_closed": false,
@@ -986,12 +998,12 @@
       "destructive_worktree_action": false
     },
     "next_actions": [
-      "Resolve independent approving reviews and branch-protection/Pages deployment authorization.",
-      "Merge #1640 only after every required condition is satisfied; verify merge commit, main files, automatic workflow side effects and main CI.",
-      "Consolidate #1643's 641 unique paths onto verified main, applying all six Run 66 reconciliation decisions.",
+      "Verify exact-head full suite on the Run 66 handoff/map correction after historical anchors are restored.",
+      "Obtain independent approving reviews and resolve branch-protection/Pages deployment authorization.",
+      "Merge #1640 only when all conditions pass; verify merge commit, main files, automatic workflow side effects and main CI.",
+      "Consolidate #1643's 641 unique paths onto verified main using all six path-level decisions.",
       "Close only exact superseded PRs after successor content is verified on main.",
-      "Verify scheduled ingestion on main, establish independent WORM archival/rebuild, and expand synchronized regulatory, macro, stablecoin, custody, collateral, institutional and payment-rail history.",
-      "Demonstrate leakage-safe out-of-sample lift, calibrated probabilities, stable drift and independent shadow outcomes before forecast issuance."
+      "Verify scheduled ingestion on main, establish independent WORM archival/rebuild, expand synchronized public-source coverage and measure out-of-sample performance before forecasting."
     ],
     "shared_path_reconciliation": [
       {
@@ -1055,7 +1067,91 @@
         "url": "https://blockchain.news/news/20261108-price-prediction-xrp-buyers-defend-the-lower-band-as"
       }
     ],
-    "market_evidence_status": "No new synchronized direct spot/depth/derivatives receipt admitted in Run 66; the Kraken recheck lacked provider event time, Binance spot API returned HTTP 451 and the OKX public response was not usable. Secondary OI observations retained by venue/time, not averaged."
+    "market_evidence_status": "No new synchronized direct spot/depth/derivatives receipt admitted in Run 66; Kraken recheck lacked provider event time, Binance spot API returned HTTP 451, and OKX public response was not usable. Secondary OI observations retained by venue/time, not averaged.",
+    "current_ci": {
+      "integration": {
+        "head": "12517143cf10797bc2c2366fe2029714adb90a15",
+        "last_verified_code_test_head": "e1208a12558b6882305059c959f089e26c724a79",
+        "full_suite": {
+          "run_id": 42516618028,
+          "job_id": 128840923226,
+          "result": "failure",
+          "passed": 1214,
+          "failed": 1,
+          "subtests_passed": 8,
+          "reason": "Historical Run57/58 evidence anchor eeb495... fell outside first 180 lines after Run66 sections were inserted; current handoff correction restores anchors."
+        },
+        "core_suite": {
+          "run_id": 42516618028,
+          "job_id": 128840923446,
+          "result": "success",
+          "passed": 660,
+          "subtests_passed": 8
+        },
+        "installed_wheel": {
+          "result": "skipped",
+          "reason": "Full suite failed before wheel step."
+        },
+        "dependency_audit": {
+          "run_id": 42516618144,
+          "job_id": 128840923510,
+          "result": "success",
+          "manifests": 6,
+          "known_vulnerabilities": 0
+        },
+        "fail_closed_gate": {
+          "run_id": 42516618022,
+          "job_id": 128840923396,
+          "result": "success",
+          "automatic_merge_disabled": true
+        },
+        "prior_code_test_head": {
+          "head": "e1208a12558b6882305059c959f089e26c724a79",
+          "full_suite_passed": 1215,
+          "subtests_passed": 8,
+          "coverage_pct": 58.98,
+          "installed_wheel": "success",
+          "dependency_audit": "success",
+          "fail_closed_gate": "success"
+        }
+      },
+      "research": {
+        "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
+        "full_suite": {
+          "run_id": 42516734726,
+          "job_id": 128841279689,
+          "result": "success",
+          "passed": 2562,
+          "failed": 0,
+          "subtests_passed": 8
+        },
+        "core_suite": {
+          "run_id": 42516734726,
+          "job_id": 128841279824,
+          "result": "success",
+          "passed": 498,
+          "subtests_passed": 8
+        },
+        "dependency_audit": {
+          "run_id": 42516734766,
+          "job_id": 128841279921,
+          "result": "success",
+          "manifests": 6,
+          "known_vulnerabilities": 0
+        },
+        "fail_closed_gate": {
+          "run_id": 42516734707,
+          "job_id": 128841279615,
+          "result": "success",
+          "automatic_merge_disabled": true
+        }
+      }
+    },
+    "c2fo_source_receipt_counts": {
+      "normalized_excerpt_sha256_receipts": 5,
+      "secondary_context_summaries_not_hash_receipted": 1,
+      "regression_tests": 6
+    }
   },
   "prior_run_observations": [
     {
@@ -14783,7 +14879,7 @@
       ]
     }
   ],
-  "last_verified_at_utc": "2026-11-08T19:41:00Z",
+  "last_verified_at_utc": "2026-11-08T19:49:01Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -14798,14 +14894,14 @@
   },
   "branch_ancestry": {
     "integration": {
-      "head": "e1208a12558b6882305059c959f089e26c724a79",
-      "ahead": 718,
+      "head": "12517143cf10797bc2c2366fe2029714adb90a15",
+      "ahead": 719,
       "behind": 0,
       "changed_paths": 181
     },
     "research": {
-      "head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
-      "ahead": 872,
+      "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
+      "ahead": 874,
       "behind": 0,
       "changed_paths": 647
     },
@@ -14826,70 +14922,78 @@
   },
   "ci_evidence": {
     "integration": {
-      "head": "e1208a12558b6882305059c959f089e26c724a79",
+      "head": "12517143cf10797bc2c2366fe2029714adb90a15",
+      "last_verified_code_test_head": "e1208a12558b6882305059c959f089e26c724a79",
       "full_suite": {
-        "run_id": 42515868897,
-        "job_id": 128838639422,
-        "result": "success",
-        "passed": 1215,
-        "failed": 0,
+        "run_id": 42516618028,
+        "job_id": 128840923226,
+        "result": "failure",
+        "passed": 1214,
+        "failed": 1,
         "subtests_passed": 8,
-        "coverage_pct": 58.98
+        "reason": "Historical Run57/58 evidence anchor eeb495... fell outside first 180 lines after Run66 sections were inserted; current handoff correction restores anchors."
       },
       "core_suite": {
-        "run_id": 42515868897,
-        "job_id": 128838639173,
+        "run_id": 42516618028,
+        "job_id": 128840923446,
         "result": "success",
         "passed": 660,
         "subtests_passed": 8
       },
       "installed_wheel": {
-        "result": "success",
-        "package": "b-agent-0.1.0",
-        "mission_resource": true,
-        "canonical_assets": true
+        "result": "skipped",
+        "reason": "Full suite failed before wheel step."
       },
       "dependency_audit": {
-        "run_id": 42515868896,
-        "job_id": 128838638952,
+        "run_id": 42516618144,
+        "job_id": 128840923510,
         "result": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 42515868903,
-        "job_id": 128838639133,
+        "run_id": 42516618022,
+        "job_id": 128840923396,
         "result": "success",
         "automatic_merge_disabled": true
+      },
+      "prior_code_test_head": {
+        "head": "e1208a12558b6882305059c959f089e26c724a79",
+        "full_suite_passed": 1215,
+        "subtests_passed": 8,
+        "coverage_pct": 58.98,
+        "installed_wheel": "success",
+        "dependency_audit": "success",
+        "fail_closed_gate": "success"
       }
     },
     "research": {
-      "head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
+      "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
       "full_suite": {
-        "run_id": 42516041496,
-        "job_id": 128839158994,
+        "run_id": 42516734726,
+        "job_id": 128841279689,
         "result": "success",
-        "passed": 2561,
+        "passed": 2562,
         "failed": 0,
         "subtests_passed": 8
       },
       "core_suite": {
-        "run_id": 42516041496,
-        "job_id": 128839158665,
+        "run_id": 42516734726,
+        "job_id": 128841279824,
         "result": "success",
         "passed": 498,
         "subtests_passed": 8
       },
       "dependency_audit": {
-        "run_id": 42516041588,
-        "job_id": 128839202067,
+        "run_id": 42516734766,
+        "job_id": 128841279921,
         "result": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 42516041572,
-        "job_id": 128839159050,
+        "run_id": 42516734707,
+        "job_id": 128841279615,
         "result": "success",
         "automatic_merge_disabled": true
       }
@@ -15211,20 +15315,20 @@
     "pages_configuration_accessible": false,
     "pages_deployment_authorized": false,
     "pr_1640": {
-      "head": "e1208a12558b6882305059c959f089e26c724a79",
+      "head": "12517143cf10797bc2c2366fe2029714adb90a15",
       "mergeable": true,
       "approving_reviews": 0,
       "threads_resolved": 22,
       "threads_unresolved": 0,
-      "exact_head_ci": "GREEN: full repository suite, core, 58.98% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate passed."
+      "exact_head_ci": "BLOCKED: latest documentation-only head failed one historical Run57/58 first-180-lines assertion; Run66 anchor correction committed, exact-head rerun pending."
     },
     "pr_1643": {
-      "head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
+      "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
       "mergeable": true,
       "approving_reviews": 0,
       "threads_resolved": 19,
       "threads_unresolved": 0,
-      "exact_head_ci": "GREEN: full repository suite, core, six-manifest dependency audit and fail-closed gate passed."
+      "exact_head_ci": "GREEN: full repository suite 2,562/8, core 498/8, six-manifest dependency audit and fail-closed gate passed."
     },
     "merge_performed": false,
     "merge_allowed": false
@@ -15385,70 +15489,78 @@
   "observed_integration_head_before_run64_handoff_commit": "f2afa5225eb27bb4035078cd7b0f49ca7abe4fef",
   "current_ci": {
     "integration": {
-      "head": "e1208a12558b6882305059c959f089e26c724a79",
+      "head": "12517143cf10797bc2c2366fe2029714adb90a15",
+      "last_verified_code_test_head": "e1208a12558b6882305059c959f089e26c724a79",
       "full_suite": {
-        "run_id": 42515868897,
-        "job_id": 128838639422,
-        "result": "success",
-        "passed": 1215,
-        "failed": 0,
+        "run_id": 42516618028,
+        "job_id": 128840923226,
+        "result": "failure",
+        "passed": 1214,
+        "failed": 1,
         "subtests_passed": 8,
-        "coverage_pct": 58.98
+        "reason": "Historical Run57/58 evidence anchor eeb495... fell outside first 180 lines after Run66 sections were inserted; current handoff correction restores anchors."
       },
       "core_suite": {
-        "run_id": 42515868897,
-        "job_id": 128838639173,
+        "run_id": 42516618028,
+        "job_id": 128840923446,
         "result": "success",
         "passed": 660,
         "subtests_passed": 8
       },
       "installed_wheel": {
-        "result": "success",
-        "package": "b-agent-0.1.0",
-        "mission_resource": true,
-        "canonical_assets": true
+        "result": "skipped",
+        "reason": "Full suite failed before wheel step."
       },
       "dependency_audit": {
-        "run_id": 42515868896,
-        "job_id": 128838638952,
+        "run_id": 42516618144,
+        "job_id": 128840923510,
         "result": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 42515868903,
-        "job_id": 128838639133,
+        "run_id": 42516618022,
+        "job_id": 128840923396,
         "result": "success",
         "automatic_merge_disabled": true
+      },
+      "prior_code_test_head": {
+        "head": "e1208a12558b6882305059c959f089e26c724a79",
+        "full_suite_passed": 1215,
+        "subtests_passed": 8,
+        "coverage_pct": 58.98,
+        "installed_wheel": "success",
+        "dependency_audit": "success",
+        "fail_closed_gate": "success"
       }
     },
     "research": {
-      "head": "2861eaf2b3b60653bf518f80bacafc002a12638d",
+      "head": "66bea8dfcaf14dcdcd81fdebcd95dc877211b8ba",
       "full_suite": {
-        "run_id": 42516041496,
-        "job_id": 128839158994,
+        "run_id": 42516734726,
+        "job_id": 128841279689,
         "result": "success",
-        "passed": 2561,
+        "passed": 2562,
         "failed": 0,
         "subtests_passed": 8
       },
       "core_suite": {
-        "run_id": 42516041496,
-        "job_id": 128839158665,
+        "run_id": 42516734726,
+        "job_id": 128841279824,
         "result": "success",
         "passed": 498,
         "subtests_passed": 8
       },
       "dependency_audit": {
-        "run_id": 42516041588,
-        "job_id": 128839202067,
+        "run_id": 42516734766,
+        "job_id": 128841279921,
         "result": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 42516041572,
-        "job_id": 128839159050,
+        "run_id": 42516734707,
+        "job_id": 128841279615,
         "result": "success",
         "automatic_merge_disabled": true
       }
