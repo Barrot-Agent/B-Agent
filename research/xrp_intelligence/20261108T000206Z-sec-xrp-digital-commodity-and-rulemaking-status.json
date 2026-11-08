@@ -1,0 +1,295 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_type": "sec_xrp_digital_commodity_and_rulemaking_status",
+  "artifact_id": "sec-xrp-digital-commodity-and-rulemaking-status-20261108T000206Z",
+  "recorded_at_utc": "2026-11-08T00:02:06Z",
+  "mission_priority": 1,
+  "status": "PRIMARY_SOURCE_RECONCILIATION_MODEL_INELIGIBLE",
+  "capture": {
+    "capture_time_utc": "2026-11-08T00:02:06Z",
+    "exact_http_retrieval_times_utc": null,
+    "raw_http_bytes_captured": false,
+    "hash_scope": "SHA-256 of normalized visible excerpts only, not raw HTTP response bytes.",
+    "limitation": "SEC pages and PDFs were read as rendered public documents. No raw HTTP body archive or exact per-request retrieval timestamp was captured."
+  },
+  "key_findings": [
+    "The SEC/CFTC Commission-level interpretive release S7-2026-09, effective 2026-03-23, explicitly lists XRP among digital commodities based on the Commission's understanding of its characteristics, terms and functions as of the release date.",
+    "The interpretation says digital commodities are not themselves securities, but a non-security crypto asset can still be offered or sold subject to an investment contract. Asset classification does not immunize every issuer, promoter, offering or transaction.",
+    "SEC Division of Corporation Finance FAQs were updated 2026-11-02. The SEC page explicitly says they are staff views, not a rule or Commission statement, and have no legal force or effect. They clarify that functional and decentralized are distinct and that decentralization depends on operational, economic and voting control.",
+    "The separate Regulation Crypto Assets proposal S7-2026-27 remains labelled Proposed on the SEC page after its 2026-10-20 comment deadline. The proposal is not an effective exemption. The SEC public docket shows additional post-deadline comments and meeting memoranda through 2026-11-05; docket activity is not adoption.",
+    "John Reed Stark and Lee Reiners filed an opposition letter on 2026-10-16 urging withdrawal and arguing the proposal conflicts with judicial precedent, including Ripple. This is a commenter position, not the SEC's conclusion or a court ruling.",
+    "The Senate's 2026-09-15 cloture vote on the motion to proceed to H.R. 3633 failed 49-50. The bill did not advance on that vote; this is not a final enactment."
+  ],
+  "commission_interpretation": {
+    "file_number": "S7-2026-09",
+    "release_numbers": [
+      "33-11412",
+      "34-105020"
+    ],
+    "issue_date": "2026-03-17",
+    "effective_date": "2026-03-23",
+    "federal_register_date": "2026-03-23",
+    "classification": "DIGITAL_COMMODITY",
+    "xrp_explicitly_listed": true,
+    "classification_basis": "Based on characteristics, terms and functions as of the date of the release; linked to the programmatic operation of a functional crypto system and supply/demand dynamics.",
+    "legal_scope": "The Commission interpretation says digital commodities are not themselves securities. It also expressly states that a non-security crypto asset can be offered and sold subject to an investment contract, which is a security.",
+    "not_established": [
+      "That every XRP sale or distribution is outside securities laws.",
+      "That every Ripple product, financing, custody or institutional arrangement is exempt.",
+      "That the interpretation is legislation or cannot be revised, challenged or applied differently to later facts."
+    ]
+  },
+  "staff_faq": {
+    "page": "https://www.sec.gov/about/divisions-offices/division-corporation-finance/faqs-crypto-assets",
+    "originally_issued": "2026-09-25",
+    "updated": "2026-11-02",
+    "status": "NONBINDING_STAFF_VIEWS",
+    "explicit_disclaimer": "The SEC page says the FAQs are not a rule, regulation or Commission statement, and have no legal force or effect.",
+    "clarification": "Functional and decentralized are distinct. Functional concerns use of the native asset according to programmatic utility. Decentralized concerns autonomous operation without a person, entity or group having operational, economic or voting control.",
+    "xrp_specific_effect": "No new XRP-specific reclassification was identified in the Nov 2 FAQ. It provides general interpretive context only."
+  },
+  "proposed_rule": {
+    "file_number": "S7-2026-27",
+    "release_numbers": [
+      "33-11434",
+      "34-106150"
+    ],
+    "issue_date": "2026-08-18",
+    "federal_register_date": "2026-08-21",
+    "public_comment_due": "2026-10-20",
+    "current_sec_page_status": "PROPOSED",
+    "terms": [
+      "Proposed exemption for offerings up to $5 million over four years.",
+      "Proposed exemption for offerings up to $75 million in each 12-month period.",
+      "Principles-based disclosures, continuing antifraud/antimanipulation provisions and a conditional investment-contract safe harbor."
+    ],
+    "not_effective": true,
+    "docket_activity_through": "2026-11-05",
+    "docket_examples": [
+      "Nov 5 memorandum for Nov 4 meeting with Andreas Park.",
+      "Nov 3 memorandum for Nov 2 meeting with Andreas Park.",
+      "Nov 2 public comment from Emmanuel Asamoah.",
+      "Oct 21 comments from AFREF, Bitwise Asset Management, Nasdaq and others."
+    ],
+    "interpretation": "Post-deadline docket additions do not extend the stated comment deadline or prove adoption. The SEC rule page still labels the item Proposed."
+  },
+  "counter_positions": {
+    "commenter_names": [
+      "John Reed Stark",
+      "Lee Reiners"
+    ],
+    "letter_date": "2026-10-16",
+    "position": "Oppose and withdraw proposed Regulation Crypto Assets.",
+    "argument_scope": [
+      "Proposal conflicts with parts of the judicial record and prior SEC positions.",
+      "Proposal's offering exemptions and safe harbor may exceed statutory authority.",
+      "Ripple case is discussed as part of the judicial record."
+    ],
+    "self_reported_independence": "The authors state they hold no crypto positions, represent no crypto clients and derive no revenue dependent on the rulemaking outcome.",
+    "evidentiary_status": "ADVOCACY_COMMENT_NOT_COMMISSION_FINDING_NOT_COURT_HOLDING"
+  },
+  "legislative_context": {
+    "bill": "H.R. 3633, Digital Asset Market Clarity Act of 2025",
+    "senate_vote_date": "2026-09-15",
+    "vote": "49-50",
+    "motion": "Cloture on motion to proceed",
+    "result": "NOT_INVOKED",
+    "implication": "The bill did not advance on that procedural vote; do not describe it as enacted or as a final merits rejection."
+  },
+  "event_timeline": [
+    {
+      "date": "2026-03-17",
+      "event": "SEC/CFTC Commission-level interpretive release issued."
+    },
+    {
+      "date": "2026-03-23",
+      "event": "Interpretive release effective; XRP explicitly listed as a digital commodity."
+    },
+    {
+      "date": "2026-08-18",
+      "event": "SEC proposed Regulation Crypto Assets."
+    },
+    {
+      "date": "2026-08-21",
+      "event": "Proposal published in Federal Register."
+    },
+    {
+      "date": "2026-09-15",
+      "event": "Senate cloture on motion to proceed to H.R. 3633 not invoked, 49-50."
+    },
+    {
+      "date": "2026-10-16",
+      "event": "Stark/Reiners opposition comment letter filed."
+    },
+    {
+      "date": "2026-10-20",
+      "event": "Stated public-comment deadline for S7-2026-27."
+    },
+    {
+      "date": "2026-11-02",
+      "event": "SEC Corporation Finance staff FAQs updated."
+    },
+    {
+      "date": "2026-11-05",
+      "event": "SEC docket lists a meeting memorandum dated Nov 5 for a Nov 4 meeting."
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "sec_commission_interpretation_pdf",
+      "publisher": "SEC/CFTC",
+      "type": "commission_level_interpretive_release",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "independence_group": "sec_commission_release",
+      "normalized_excerpt": "Examples of digital commodities include Aptos (APT); Avalanche (AVAX); Bitcoin (BTC); Bitcoin Cash (BCH); Cardano (ADA); Chainlink (LINK); Dogecoin (DOGE); Ether (ETH); Hedera (HBAR); Litecoin (LTC); Polkadot (DOT); Shiba Inu (SHIB); Solana (SOL); Stellar (XLM); Tezos (XTZ); and XRP (XRP).",
+      "normalized_excerpt_sha256": "d82e95132712851187fb2fd728fb2e233efcf24a75bf430bee633690fb5c42ba",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "id": "sec_commission_transaction_caveat",
+      "publisher": "SEC/CFTC",
+      "type": "commission_level_interpretive_release",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "independence_group": "sec_commission_release",
+      "normalized_excerpt": "Digital commodities, digital collectibles, and digital tools, each as further described below, are not themselves securities. However, as with any asset that is not a security, a non-security crypto asset can be offered and sold subject to an investment contract, which is a security.",
+      "normalized_excerpt_sha256": "476cc268b1e33bb5c1ba1b90679cc05f8aa3c0f1ed580302af392f89b200b3f8",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "id": "sec_corpfin_faq",
+      "publisher": "SEC Division of Corporation Finance",
+      "type": "nonbinding_staff_faq",
+      "url": "https://www.sec.gov/about/divisions-offices/division-corporation-finance/faqs-crypto-assets",
+      "independence_group": "sec_staff_faq",
+      "publication_date": "2026-09-25",
+      "updated_date": "2026-11-02",
+      "normalized_excerpt": "The answers to these frequently asked questions (FAQs) represent the views of the staff of the Division of Corporation Finance. They are not a rule, regulation or statement of the Securities and Exchange Commission. The Commission has neither approved nor disapproved their content. Like all staff guidance, these FAQs have no legal force or effect, do not alter or amend applicable law, and do not create any new or additional obligations for any person.",
+      "normalized_excerpt_sha256": "76f3c08dcc33c8335057e8bbd31818a3d4c0c57df0bb9b9af2ee55d04e1b260b",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "id": "sec_regulation_crypto_assets_proposal",
+      "publisher": "SEC",
+      "type": "proposed_rule",
+      "url": "https://www.sec.gov/rules-regulations/2026/08/s7-2026-27",
+      "independence_group": "sec_proposed_rule",
+      "normalized_excerpt": "The proposal includes two exemptions from the registration requirements of the Securities Act of 1933. The first exemption would permit offerings of up to $5 million during a four-year period, and the second exemption would permit offerings of up to $75 million during each 12-month period. Issuers would provide principles-based disclosures and remain subject to the securities laws’ antifraud and antimanipulation provisions. The proposal also includes a conditional safe harbor from the term “investment contract” in the definition of “security.”",
+      "normalized_excerpt_sha256": "d6886d0de6652f64131e37bf0a154885d5406df40e75b926d22ea2293fd391d5",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "id": "sec_public_comment_docket",
+      "publisher": "SEC",
+      "type": "official_public_docket",
+      "url": "https://www.sec.gov/rules-regulations/public-comments/s7-2026-27",
+      "independence_group": "sec_public_docket",
+      "normalized_excerpt": "Nov. 5, 2026: Memorandum regarding a Nov. 4 meeting with Andreas Park. Nov. 3, 2026: Memorandum regarding a Nov. 2 meeting with Andreas Park. Nov. 2, 2026: Public comment from Emmanuel Asamoah. Oct. 28, 2026: Public comment from Nick Tommarello, Founder and CEO, Wefunder Inc. Oct. 27, 2026: Public comments from Anonymous and Devin D. Thorpe. Oct. 21, 2026: Public comments from AFREF, Bitwise Asset Management, Nasdaq, and others.",
+      "normalized_excerpt_sha256": "0cc8e6c6befeb310a5b1e79d7276f5bab1ff105aad2d9a19e4f11c96b11ebd96",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "id": "stark_reiners_comment_letter",
+      "publisher": "John Reed Stark and Lee Reiners",
+      "type": "public_comment_letter",
+      "url": "https://www.sec.gov/comments/S7-2026-27/s7202627-1096499-3852606.pdf",
+      "independence_group": "named_commenters",
+      "publication_date": "2026-10-16",
+      "normalized_excerpt": "We respectfully submit this comment letter in opposition to the Commission’s proposed Regulation Crypto Assets. We urge the Commission to withdraw the Proposal in its entirety. If the Proposal is adopted in anything resembling its current form, the resulting rule will be challenged immediately, and we believe a reviewing court will vacate it.",
+      "normalized_excerpt_sha256": "0589cd1739149158832773ba051124639a8ace9f4b407214d6fd15a1c46b1e3a",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "id": "senate_roll_call_234",
+      "publisher": "U.S. Senate",
+      "type": "primary_legislative_record",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm",
+      "independence_group": "senate_primary_record",
+      "normalized_excerpt": "On September 15, 2026, the Senate declined even to take up the CLARITY Act; cloture on the motion to proceed to H.R. 3633 was not invoked, 49-50.",
+      "normalized_excerpt_sha256": "630e1c7d4ec75f644ce7496fe1e10b29e066373fbe3b84c7d00e727893c2bec1",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "id": "ap_senate_vote_reporting",
+      "publisher": "Associated Press",
+      "type": "secondary_reporting",
+      "url": "https://apnews.com/article/e3caf262dc138147941787299e5f0a66",
+      "independence_group": "ap_reporting",
+      "publication_date": "2026-09-15",
+      "claims_supported": [
+        "Senate procedural vote was 49-50 and the bill did not advance."
+      ],
+      "limitation": "Senate roll call is the primary vote source."
+    }
+  ],
+  "source_independence": {
+    "primary_sources": [
+      "SEC/CFTC interpretive release",
+      "SEC staff FAQ",
+      "SEC proposed-rule docket",
+      "SEC public-comment docket",
+      "U.S. Senate roll call"
+    ],
+    "secondary_or_advocacy": [
+      "Stark/Reiners comment letter",
+      "Associated Press reporting"
+    ],
+    "disagreement": "The Commission interpretation's favorable asset-level classification and the Stark/Reiners critique of the later proposed offering regime are different legal questions and different source positions; do not collapse them into a single 'SEC says XRP is safe' conclusion.",
+    "independence_rule": "The comment letter is not independent proof of its legal conclusions. The SEC docket is authoritative for filings and dates; the Senate roll call is authoritative for the procedural vote."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "The Commission's explicit digital-commodity classification reduces baseline U.S. uncertainty around XRP as an asset.",
+      "supporting": [
+        "XRP is named in the Commission-level interpretive release effective March 23, 2026."
+      ],
+      "disconfirming": [
+        "Classification is based on characteristics as of the release date and is not legislation.",
+        "Specific offers, sales or arrangements can still be investment contracts."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "Transaction-specific securities exposure remains possible even when XRP itself is classified as a digital commodity.",
+      "supporting": [
+        "The Commission release expressly preserves investment-contract analysis for non-security crypto assets.",
+        "The SEC staff FAQ addresses representations, central parties and facts-and-circumstances analysis."
+      ],
+      "disconfirming": [
+        "The Commission's current interpretation provides a clearer asset-level taxonomy than the earlier enforcement-only posture."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "The proposed offering regime may face legal and political obstacles before becoming effective.",
+      "supporting": [
+        "The SEC docket still labels S7-2026-27 Proposed.",
+        "The Senate procedural vote failed 49-50.",
+        "Stark/Reiners filed a detailed opposition letter."
+      ],
+      "disconfirming": [
+        "The SEC may still adopt a revised rule under its existing authority; the comment letter is advocacy, not a ruling."
+      ]
+    }
+  ],
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "model_ineligibility_reasons": [
+    "Legal status is an event/context feature, not a directional price signal by itself.",
+    "No point-in-time market-response study or out-of-sample event study was completed.",
+    "The proposed rule is unresolved and the legal effects remain transaction-specific."
+  ],
+  "next_tests": [
+    "Retrieve and hash the SEC comment docket in paginated form, recording commenter identity, date, organization and letter type.",
+    "Track any final action or extension for S7-2026-27; do not infer adoption from docket activity.",
+    "Map each Ripple, Coinbase, Circle and SBI activity to the exact issuer, asset, transaction type, jurisdiction and legal capacity.",
+    "Separate XRP token classification from Ripple's primary sales, institutional agreements, RLUSD, custody and exchange collateral."
+  ]
+}
