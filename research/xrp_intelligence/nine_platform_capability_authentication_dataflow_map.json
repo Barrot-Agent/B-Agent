@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T07:22:26Z",
+  "captured_at_utc": "2026-11-08T08:04:38Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "1ac6254b2e813dd7be2da68d3b17b57d76815325",
-  "observed_research_head": "64f403822716989d5d9830d498d32e4fc5f14cd5",
+  "observed_integration_head_before_map_commit": "323f906026d133c5f9727b740e3ecf47860a6078",
+  "observed_research_head": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -154,13 +154,14 @@
           "Run 36: complete main and mission trees, PR inventory, exact-head workflow logs, reviews and dependency/security results were inspected; no secret values were read.",
           "Run 40: current-session connector read the complete main/integration/research trees, all four open-PR pages, branch ancestry, shared paths, PR reviews/threads, exact-head CI job logs, dependency audits and fail-closed gates; wrote research evidence only to existing #1643 and the durable handoff/map only to existing #1640.",
           "Run 41: inspected exact-head CI/security evidence on both existing mission PRs, appended research artifacts/tests to #1643 and refreshed handoff/map on #1640; no new branch or PR was created."
-        ]
+        ],
+        "last_verified_at_utc": "2026-11-08T08:04:38Z"
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T07:22:26Z"
+      "last_verified_at_utc": "2026-11-08T08:04:38Z"
     },
     "Claude": {
       "intended_role": [
@@ -470,22 +471,21 @@
     }
   },
   "next_actions": [
-    "Finish exact-head full-suite, core-suite and six-manifest dependency verification on research PR #1643 head 64f403822716989d5d9830d498d32e4fc5f14cd5; do not substitute the prior 33ee4b result.",
-    "Keep V3 integration PR #1640 at exact head 1ac6254b2e813dd7be2da68d3b17b57d76815325 verified; its full suite, inclusive coverage, installed wheel, six-manifest dependency audit and fail-closed gate passed.",
-    "Obtain genuine independent approving reviews for #1640 and #1643; COMMENTED review records are not approvals.",
-    "Resolve GitHub Pages deployment authorization and verify classic branch-protection requirements; the current connection receives HTTP 403 for detailed protection settings.",
-    "Merge #1640 only after every required condition passes and no merge-triggered public deployment remains unauthorized; verify merge commit, files, workflow side effects and main CI.",
-    "After #1640 is verified on main, consolidate #1643's 574 research-only paths into one successor directly on current main, reconcile all six shared paths and carry #1640's stronger coverage and installed-wheel CI.",
-    "Preserve unique/unreviewed structural, research and video-identity PRs; close only exact duplicates after successor content is verified on main.",
-    "Expand scheduled ingestion to SEC/regulatory, FRED/Treasury/BOJ, stablecoin supply/mint/burn, custody, collateral, institutional disclosures, payment-rail throughput and synchronized exchange depth.",
-    "Establish independently controlled WORM archival and deterministic raw-source rebuild; validate synchronized point-in-time history, trained-model lift, calibration, drift and independent shadow outcomes before forecasting."
+    "Obtain genuine independent APPROVED reviews for #1640 and #1643; COMMENTED reviews are not approvals.",
+    "Resolve branch-protection requirements and GitHub Pages deployment authorization before any merge that can trigger public side effects.",
+    "Finish exact-head full-suite, core-suite, installed-wheel, inclusive coverage, dependency and fail-closed verification on the Run 47 handoff/map update commit on #1640.",
+    "Merge #1640 only after every merge condition is satisfied; verify merge commit, files, automatic workflow side effects and main CI.",
+    "Consolidate #1643's 577 unique paths onto verified main, reconcile all six shared paths and carry #1640's stronger coverage/wheel/security checks.",
+    "Close only exact duplicates/superseded PRs after successor content is verified on main; preserve unique structural, mesh, research and identity work.",
+    "Verify scheduled ingestion on main; add SEC/regulatory, macro-vintage, stablecoin mint/burn, custody, collateral, institutional and payment-rail sources.",
+    "Establish independently controlled WORM archival and deterministic raw-source rebuild; accumulate synchronized multi-domain history and measure out-of-sample lift, calibration, drift and independent shadow outcomes before any directional forecast."
   ],
   "current_run_observations": {
-    "run_id": 46,
-    "captured_at_utc": "2026-11-08T07:22:26Z",
+    "run_id": 47,
+    "captured_at_utc": "2026-11-08T08:04:38Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "1ac6254b2e813dd7be2da68d3b17b57d76815325",
-    "research_head": "64f403822716989d5d9830d498d32e4fc5f14cd5",
+    "integration_head_before_map_commit": "323f906026d133c5f9727b740e3ecf47860a6078",
+    "research_head": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
     "open_pr_inventory": {
       "total": 372,
       "drafts": 356,
@@ -503,7 +503,7 @@
         "files": 1298,
         "python_files": 493,
         "test_modules": 90,
-        "workflow_yaml": 86,
+        "workflow_yaml": 78,
         "truncated": false
       },
       "integration": {
@@ -511,31 +511,31 @@
         "files": 1365,
         "python_files": 547,
         "test_modules": 128,
-        "workflow_yaml": 87,
+        "workflow_yaml": 79,
         "truncated": false
       },
       "research": {
-        "entries": 1978,
-        "files": 1872,
-        "python_files": 726,
-        "test_modules": 325,
-        "workflow_yaml": 86,
-        "xrp_json_artifacts": 349,
+        "entries": 1981,
+        "files": 1875,
+        "python_files": 728,
+        "test_modules": 326,
+        "workflow_yaml": 78,
+        "xrp_json_artifacts": 351,
         "truncated": false
       }
     },
     "branch_ancestry": {
       "integration": {
-        "head": "81894d9c2966676b0f26ce5dabcc31ae45530316",
-        "ahead": 654,
+        "head": "323f906026d133c5f9727b740e3ecf47860a6078",
+        "ahead": 656,
         "behind": 0,
         "changed_paths": 176
       },
       "research": {
-        "head": "64f403822716989d5d9830d498d32e4fc5f14cd5",
-        "ahead": 787,
+        "head": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
+        "ahead": 789,
         "behind": 0,
-        "changed_paths": 580
+        "changed_paths": 583
       },
       "shared_paths": [
         ".github/workflows/dependency-audit.yml",
@@ -546,56 +546,46 @@
         "tests/test_pillars_check_readonly.py"
       ],
       "integration_unique": 170,
-      "research_unique": 574,
+      "research_unique": 577,
       "branch_to_branch": {
         "status": "diverged",
-        "research_ahead": 787,
-        "integration_ahead": 654
+        "research_ahead": 789,
+        "integration_ahead": 656
       }
     },
     "ci_evidence": {
       "integration": {
-        "head": "1ac6254b2e813dd7be2da68d3b17b57d76815325",
+        "head": "323f906026d133c5f9727b740e3ecf47860a6078",
         "full_suite": "1,188 passed, 8 subtests passed",
         "core_suite": "660 passed, 8 subtests passed",
         "inclusive_coverage_pct": 58.78,
-        "installed_wheel": "passed; installed package loaded Barrot V3, the XRP mission and canonical mission/data assets",
+        "installed_wheel": "passed; installed wheel loaded Barrot V3, the XRP mission and canonical data assets",
         "dependency_audit": "passed; six manifests audited; no known vulnerabilities reported",
         "fail_closed_gate": "passed; automatic merging disabled",
         "runs": {
-          "ci": 42458058968,
-          "dependency_audit": 42458058974,
-          "fail_closed": 42458058938
+          "ci": 42458608352,
+          "dependency_audit": 42458608368,
+          "fail_closed": 42458608301
         }
       },
       "research": {
-        "head": "64f403822716989d5d9830d498d32e4fc5f14cd5",
-        "full_suite": "QUEUED at capture; no exact-head result yet",
-        "core_suite": "QUEUED at capture; no exact-head result yet",
-        "dependency_audit": "IN_PROGRESS at capture",
-        "fail_closed_gate": "passed",
+        "head": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
+        "full_suite": "2,323 passed, 8 subtests passed",
+        "core_suite": "498 passed, 8 subtests passed",
+        "dependency_audit": "passed; six manifests audited; no known vulnerabilities reported",
+        "fail_closed_gate": "passed; automatic merging disabled",
         "runs": {
-          "ci": 42458532054,
-          "dependency_audit": 42458532051,
-          "fail_closed": 42458532069
+          "ci": 42461799002,
+          "dependency_audit": 42461798980,
+          "fail_closed": 42461798944
         },
         "previous_verified_head": {
-          "head": "33ee4b456915d76bb0be2936143dd7534f3a731b",
-          "full_suite": "2,316 passed, 8 subtests passed",
+          "head": "456f6c67df74ffef6b1913b819277a2727ebc4d7",
+          "full_suite": "2,317 passed, 8 subtests passed",
           "core_suite": "498 passed, 8 subtests passed",
           "dependency_audit": "passed; six manifests",
-          "fail_closed_gate": "passed; merging disabled",
-          "runs": {
-            "ci": 42457857250,
-            "dependency_audit": 42457857244,
-            "fail_closed": 42457857278
-          }
-        },
-        "intermediate_head": {
-          "head": "a04bad95349e4419fd65c8b7ddef09187ca93bef",
-          "status": "CI was still running when the registry-schema assertion was corrected; do not use it as final evidence."
-        },
-        "correction": "The new Kamilah regression test initially looked for canonical_channel_verified under a nonexistent top-level identity_status key. The current registry stores that field under video_inventory_status; the assertion was corrected on 64f403 without weakening the identity gate."
+          "fail_closed_gate": "passed"
+        }
       }
     },
     "reviews": {
@@ -615,54 +605,87 @@
       },
       "pr_1653": {
         "threads_unresolved": 8,
-        "last_checked_utc": "2026-11-08T07:10:27Z"
+        "unique_paths": 6,
+        "last_checked_utc": "2026-11-08T08:04:38Z"
       },
       "independent_approving_reviews": 0
     },
     "workflow_safety_audit": {
       "changed_workflow_files_in_pr_1640": 41,
-      "summary": "The integration branch quarantines the active write-capable barrot-agent and ask-barrot workflows with empty permissions/false job conditions; changes self-hosted-brain and A2A deployment to manual exact-main-SHA workflows with explicit YES and secret-rotation confirmation; makes the paper-trader manual and artifact-only; and preserves read-only scheduled XRP ingestion. The GitHub Pages public deployment side effect remains unresolved and unauthorized.",
+      "summary": "The integration branch quarantines the active write-capable barrot-agent and ask-barrot workflows with empty permissions/false job conditions; changes deploy-a2a-worker and sync-self-hosted-brain from push-triggered secret-bearing deployment paths to manual exact-main-SHA confirmation; and makes the paper-trader manual, explicit-confirmation, read-only and artifact-only. Main still has active issue/dispatch Barrot Agent and Ask Barrot workflows with contents/issues write, push-triggered A2A and self-hosted-brain deployment workflows, and a manual paper-trader workflow that reads the Groq secret. Pages configuration remains inaccessible.",
       "pages_is_unresolved": true,
-      "external_workflow_review": "autonomous_self_deployment, force-deploy-space, scheduler-tick and subscriber-sync are disabled on main. Main's current sync-self-hosted-brain and deploy-a2a-worker push triggers are replaced by manual exact-SHA confirmation gates in #1640."
+      "external_workflow_review": "No workflow was dispatched in this run. Main's Cross Analysis workflow is read-only and its latest scheduled run succeeded. The main-branch deployment and paper-trader workflows remain untouched pending integration."
     },
     "new_research": {
       "artifacts_added": [
-        "research/xrp_intelligence/20261108T070200Z-xrp-market-etf-exchange-derivatives-macro-reconciliation.json",
-        "tests/test_xrp_market_etf_exchange_derivatives_macro_reconciliation_20261108.py",
+        "research/xrp_intelligence/20261108T080438Z-xrp-primary-exchange-spot-perpetual-snapshot.json",
+        "tests/test_xrp_primary_exchange_spot_perpetual_snapshot_20261108.py",
         "research/xrp_intelligence/20261108T071027Z-xrp-exchange-wallet-reserve-component-disagreement-correction.json",
-        "tests/test_xrp_exchange_wallet_reserve_component_disagreement_correction_20261108.py",
-        "research/xrp_intelligence/20261108T071910Z-sbic-chatgpt-benchmark-kamilah-identity-disambiguation.json",
-        "tests/test_xrp_sbic_chatgpt_kamilah_identity_disambiguation_20261108.py"
+        "research/xrp_intelligence/20261108T071910Z-sbic-chatgpt-benchmark-kamilah-identity-disambiguation.json"
       ],
-      "verified_by_exact_head_ci": false,
-      "current_exact_head_status": "PENDING: full CI queued and dependency audit running on 64f403822716989d5d9830d498d32e4fc5f14cd5; fail-closed gate passed.",
+      "verified_by_exact_head_ci": true,
+      "current_exact_head_status": "VERIFIED: 2,323 full-suite tests and 8 subtests passed on 3271eb4cd595b2f31d8286bcdd1065fafb50e8b7; six-manifest dependency audit and fail-closed gate passed.",
       "previous_market_artifact_verified_by_exact_head_ci": true,
       "summary": [
-        "ETF providers disagree because their fund universes and settlement vintages differ: XRP Insights reports week 45 −813K XRP and Nov 6 −663K; CryptoKeyhole reports partial Nov 6 −752,048 XRP for 3/4 funds with Franklin missing; Alpha Finance reports $0 on Nov 6, +$8.4M over seven sessions and +$45.9M over 30 sessions. These are not independent confirmations.",
-        "CryptoKeyhole has a future-date anomaly: one issuer file is labeled 9 Nov while the page says it was read 7 Nov at 05:12 UTC; it is quarantined.",
-        "XRP Insights attributes 22.33B XRP to 701 wallets across 24 exchanges; same-wallet changes are −150.7M over 7 days and −161.2M over 30 days. The aggregate is not tradable float; 512M XRP in newly tracked wallets changes naive totals.",
-        "The same XRP Insights page reports 327.4M Binance-Peg XRP in the exchange table but 325.8M in its reserve methodology. The 1.6M discrepancy makes the 487.8M non-customer reserve total internally inconsistent if the table figure is used; an append-only correction preserves both values.",
-        "Edge or Not's 06:26 UTC combined Binance spot/OKX perpetual order book shows $9.0M bids versus $9.9M asks within 1%; resting orders can be pulled and no per-venue raw book receipt was retained.",
-        "Kodexius at 06:34 UTC reports $782.97M OI across seven contracts and five exchanges, weighted funding +0.0080%/8h. Hyperliquid OI is $98.12M there versus $196.0M on HyperAcademy at 05:00 UTC; unresolved ~2x convention/source discrepancy.",
-        "Kraken's futures page reports about $20M OI, $9.6M 24h volume and 0.000011485%/hour funding, but its page timestamp timezone is unspecified and it is single-venue.",
-        "Reuters reports $117.97B US money-market inflows, $14.81B equity-fund inflows and $7.31B bond-fund inflows in the week to Nov 4; equity-index declines and positive equity/bond fund flows are retained as competing macro evidence.",
-        "Exact phrase SBIC/ChatGPT is resolved to the Social Bias Inference Corpus benchmark used in Ziems et al. The 2023 China Journal of Econometrics review expands SBIC as a COVID-19 corpus and describes the gold standard as political ideology; this conflicts with the cited primary 2024 Ziems paper, which defines SBIC as Social Bias Inference Corpus (34K hate-speech inferences with free-text explanations). Its 65.9% GPT-3.5 result is unanimous pairwise expert preference for generated explanations over gold explanations, not classification accuracy or market prediction. This is unrelated to Japan's SBIC companies and SBI Holdings.",
-        "Kamilah identity gate remains closed. The person Dr. Kamilah Stevenson is supported by an All Nations first-party biography and matching LinkedIn profile, but the candidate finance/crypto YouTube channel @drkamilahstevenson / UCqUPJMQdkCN6lsLVDnichPA lacks a reciprocal first-party link. Third-party directories list 20 same-name YouTube profiles and many duplicate bios; two new video search-result IDs could not be inspected because direct metadata fetch was throttled. They were not added to the 21 candidate seed videos; verified personal-channel uploads remain zero.",
-        "No new primary evidence was found for ASK Coin or an issuer-defined 'actual capital' metric in this pass."
+        "Primary Kraken, OKX and Binance public exchange endpoints were captured. Kraken has no provider event timestamp; OKX is 980.228 seconds old and Binance premium-index is 2,199.998 seconds old at the run reference. Both timestamped observations fail the 300-second freshness threshold.",
+        "The raw Kraken USD versus OKX USDT last-price gap is 0.1831%; currencies and timestamps are not normalized, so it is not an arbitrage signal. Level-1 spreads are approximately 0.086 bps on Kraken and 0.858 bps on OKX; full depth and synchronized trade tape are unavailable.",
+        "Binance perpetual mark/index basis is approximately -3.99 bps; the returned last funding rate is +0.009747% per 8 hours, but the response is stale and its next-funding timestamp is already past at the run reference. Open interest is unavailable, not zero.",
+        "The exact phrase 'SBIC, ChatGPT SBIC' resolves in the reviewed primary academic papers to the Social Bias Inference Corpus, a social-bias explanation dataset. It is unrelated to Japan's statutory SBIC East/Central/West companies and unrelated to SBI Holdings.",
+        "Ziems et al. Table 7's 65.9% GPT-3.5 result is the share of unanimous pairwise human rankings preferring generated explanations to gold explanations for the SBIC task. It is not classification accuracy, model confidence, XRP prediction performance or evidence of an OpenAI partnership.",
+        "A secondary review's COVID-19 expansion of SBIC and its description of the gold standard as political ideology conflict with the cited primary dataset/evaluation papers; preserve the disagreement and prefer the primary definitions.",
+        "Dr. Kamilah Stevenson is supported as a person by a first-party organization biography and a matching professional profile; the candidate finance/crypto YouTube channel is not reciprocally linked from a first-party source. Verified personal-channel uploads remain zero; two metadata-throttled candidate IDs were not added. No separate Camilla identity was verified.",
+        "ASK Coin remains distinct from Permission Coin's ASK token; no XRP relationship or new primary evidence was found. 'Actual capital' remains not an issuer-defined metric; continue separating financing capacity, cash received, cash deployed, XRP purchased, in-kind contributions, debt and undrawn facilities.",
+        "XRP Insights reports 22.33B XRP across 701 attributed wallets and 24 exchanges, with same-wallet changes of -150.7M over seven days and -161.2M over 30 days. This includes cold/omnibus wallets and is not tradable float; newly tracked wallets and label gaps affect naive totals.",
+        "XRP Insights internally reports Binance-Peg reserve components of 327.4M and 325.8M XRP, a 1.6M discrepancy. Both figures are preserved; no exact reserve-adjusted float is admitted.",
+        "ETF flow providers remain non-comparable: XRP Insights reports a settled weekly -812.5K XRP and Nov 6 -663K; CryptoKeyhole's Nov 6 is partial (3/4 funds) at -752,048 XRP; Alpha Finance reports $0 on Nov 6 and +$45.9M over 30 sessions. Universes, methods and settlement vintages differ.",
+        "Derivatives aggregators disagree materially: Kodexius reports roughly $775M OI across seven contracts, while TradRadar reports roughly $1.89B across seven exchanges at a later timestamp. Hyperliquid OI also differs by about 2x between aggregators. Neither is model-eligible without raw contract receipts and convention reconciliation.",
+        "Ripple/BNY's Oct 27 first-party announcement confirms BNY custody support for XRP and RLUSD for eligible institutional clients; no custody balance, new XRP purchase or settlement volume was disclosed."
       ],
-      "source_independence": "Distinct market aggregators share issuer-file upstream data; no independent ETF-flow confirmation is inferred. The SBIC primary dataset paper, Ziems evaluation and Cheng review are distinct documents but the latter two use the same benchmark. All Nations is first-party for its leader biography; Vling, IDCrawl and Telemetr are third-party and do not authenticate the YouTube channel.",
+      "source_independence": "Kraken, OKX and Binance are separate primary exchange endpoints, but their timestamps and instruments are not synchronized. ETF aggregators share issuer-file upstream data and are not independent confirmations. XRP Insights is one publisher for exchange-wallet and reserve components; its internal reserve discrepancy is not two independent observations. Sap et al. is the original dataset paper; Ziems et al. is the later benchmark evaluation using that dataset; the secondary review is not an independent dataset. All Nations is first-party for its leader biography; Vling, IDCrawl and Telemetr do not authenticate the candidate YouTube channel.",
       "model_admission": false,
       "forecast_status": "NOT_ISSUED",
       "exact_phrase_status": {
         "sbic_chatgpt": "ACADEMIC_BENCHMARK_RESOLVED_NOT_JAPAN_SBIC",
         "ask_coin": "NO_NEW_PRIMARY_EVIDENCE_NO_XRP_LINK",
-        "actual_capital": "NO_NEW_ISSUER_DEFINED_METRIC",
+        "actual_capital": "NO_ISSUER_DEFINED_METRIC",
         "kamilah_channel": "PERSON_CONFIRMED_CHANNEL_RELATION_UNVERIFIED_NO_NEW_VIDEO_ATTRIBUTIONS"
       }
     },
     "latest_market_crosscheck": {
-      "reference_time_utc": "2026-11-08T07:02:00Z",
+      "reference_time_utc": "2026-11-08T08:04:38Z",
       "synchronized_spot_price": null,
+      "primary_exchange_snapshot": {
+        "kraken": {
+          "last_usd": 1.16337,
+          "bid_usd": 1.16335,
+          "ask_usd": 1.16336,
+          "volume_24h_xrp": 12864859.95770978,
+          "vwap_24h_usd": 1.16308546,
+          "open_24h_usd": 1.16234,
+          "high_24h_usd": 1.18067,
+          "low_24h_usd": 1.14888,
+          "provider_timestamp": null
+        },
+        "okx": {
+          "last_usdt": 1.1655,
+          "bid_usdt": 1.1651,
+          "ask_usdt": 1.1652,
+          "volume_24h_xrp": 19244995.456667,
+          "provider_timestamp_utc": "2026-11-08T07:48:17.772Z",
+          "age_seconds": 980.228
+        },
+        "binance_perpetual": {
+          "mark_usdt": 1.1624,
+          "index_usdt": 1.16286357,
+          "mark_index_basis_bps": -3.9864521682,
+          "last_funding_pct_per_8h": 0.009747,
+          "provider_timestamp_utc": "2026-11-08T07:27:58.002Z",
+          "age_seconds": 2199.998,
+          "next_funding_timestamp_utc": "2026-11-08T08:00:00Z"
+        },
+        "raw_kraken_usd_vs_okx_usdt_last_difference_pct": 0.1830887852,
+        "model_eligible": false
+      },
       "orderbook": {
         "source": "Edge or Not",
         "snapshot_utc": "2026-11-08T06:26:00Z",
@@ -684,6 +707,15 @@
           "kodexius": 98120000,
           "hyperacademy": 196000000
         },
+        "secondary_counterview": {
+          "source": "TradRadar",
+          "snapshot_utc": "2026-11-08T04:40:00Z",
+          "open_interest_usd": 1890000000,
+          "exchanges": 7,
+          "liquidations_24h_usd_min": 1500000,
+          "long_liquidations_usd": 1250000,
+          "short_liquidations_usd": 247280
+        },
         "model_eligible": false
       },
       "exchange_wallets": {
@@ -694,6 +726,7 @@
         "exchanges": 24,
         "same_wallet_7d_change_xrp": -150700000,
         "same_wallet_30d_change_xrp": -161200000,
+        "newly_tracked_wallets_xrp": 512000000,
         "model_eligible": false
       },
       "etf_flows": {
@@ -702,10 +735,16 @@
           "CryptoKeyhole",
           "Alpha Finance"
         ],
+        "xrp_insights_week_net_flow_xrp": -812500,
+        "xrp_insights_nov6_flow_xrp": -663043,
+        "cryptokeyhole_nov6_partial_flow_xrp": -752048,
+        "cryptokeyhole_nov6_coverage": "3 of 4 funds",
+        "alpha_nov6_flow_usd": 0,
+        "alpha_30_session_flow_usd": 45900000,
         "status": "PROVIDER_SCOPE_AND_SETTLEMENT_DISAGREEMENT",
         "model_eligible": false
       },
-      "limitations": "No synchronized exchange-native spot ticker, raw HTTP bytes, per-venue full-depth snapshots, raw derivatives contract payloads or common issuer-file backfill. No directional signal."
+      "limitations": "No synchronized fresh multi-venue spot snapshot, full depth, normalized USD/USDT basis, current open interest, raw derivatives contracts, exchange-flow raw receipts or raw HTTP wire bytes. The three direct endpoint responses are freshness-limited or timestamp-missing. No directional signal."
     },
     "prediction_engine": {
       "scheduled_ingestion": "DESIGNED on #1640 only; absent from main and not verified running on main.",
@@ -731,12 +770,13 @@
         "Fail-closed forecast ledger"
       ],
       "limitations": [
-        "SQLite triggers and unkeyed hashes are not adversarially immutable",
-        "Independent external WORM storage and complete raw-source rebuild are absent",
-        "Historical evaluator is Binance XRP/USDT and Coinbase XRP/USD hourly closes only",
-        "Forecast ledger feature snapshot IDs are not yet resolved against the feature store at issuance",
-        "PSI does not detect concept/label drift",
-        "No trained-model out-of-sample lift, validated real-data calibration or sufficient independent shadow outcomes"
+        "SQLite triggers and unkeyed hashes are not adversarially immutable.",
+        "Independent external WORM storage and complete raw-source rebuild are absent.",
+        "Historical evaluator covers Binance XRP/USDT and Coinbase XRP/USD hourly closes only.",
+        "Coinbase historical backfill is manual-only and bounded; scheduled runs do not backfill.",
+        "Forecast-ledger feature snapshot IDs are not yet resolved against the feature store at issuance.",
+        "PSI is univariate and does not detect label/concept drift.",
+        "No trained-model out-of-sample lift, validated real-data calibration or sufficient independent shadow outcomes."
       ],
       "readiness_gate": "At least 100 independent out-of-sample samples, 100 shadow samples, two independent source groups, ten horizon spans, weighted calibration error <=0.05, stable drift, improvement over all four baselines and independent Ed25519 readiness attestation.",
       "forecast_status": "NOT_ISSUED",
@@ -793,7 +833,7 @@
       "pages_configuration_accessible": false,
       "pages_deployment_authorized": false,
       "merge_performed": false,
-      "reason": "Zero independent APPROVED reviews; detailed branch-protection requirements cannot be confirmed through the current connection; #1640 changes public web paths and a successful prior Pages deployment shows a possible automatic public side effect that is not authorized."
+      "reason": "Both mission PRs are mergeable and exact-head CI/security checks pass, but both have zero independent APPROVED reviews. Detailed branch-protection settings are inaccessible (HTTP 403), the only visible fallback ruleset is disabled, and Pages configuration/deployment side effects remain unresolved and unauthorized."
     },
     "external_actions": {
       "main_write": false,
@@ -810,15 +850,14 @@
     },
     "forecast_status": "NOT_ISSUED",
     "next_actions": [
-      "Finish exact-head full-suite, core-suite and six-manifest dependency verification on research PR #1643 head 64f403822716989d5d9830d498d32e4fc5f14cd5; do not substitute the prior 33ee4b result.",
-      "Keep V3 integration PR #1640 at exact head 1ac6254b2e813dd7be2da68d3b17b57d76815325 verified; its full suite, inclusive coverage, installed wheel, six-manifest dependency audit and fail-closed gate passed.",
-      "Obtain genuine independent approving reviews for #1640 and #1643; COMMENTED review records are not approvals.",
-      "Resolve GitHub Pages deployment authorization and verify classic branch-protection requirements; the current connection receives HTTP 403 for detailed protection settings.",
-      "Merge #1640 only after every required condition passes and no merge-triggered public deployment remains unauthorized; verify merge commit, files, workflow side effects and main CI.",
-      "After #1640 is verified on main, consolidate #1643's 574 research-only paths into one successor directly on current main, reconcile all six shared paths and carry #1640's stronger coverage and installed-wheel CI.",
-      "Preserve unique/unreviewed structural, research and video-identity PRs; close only exact duplicates after successor content is verified on main.",
-      "Expand scheduled ingestion to SEC/regulatory, FRED/Treasury/BOJ, stablecoin supply/mint/burn, custody, collateral, institutional disclosures, payment-rail throughput and synchronized exchange depth.",
-      "Establish independently controlled WORM archival and deterministic raw-source rebuild; validate synchronized point-in-time history, trained-model lift, calibration, drift and independent shadow outcomes before forecasting."
+      "Obtain genuine independent APPROVED reviews for #1640 and #1643; COMMENTED reviews are not approvals.",
+      "Resolve branch-protection requirements and GitHub Pages deployment authorization before any merge that can trigger public side effects.",
+      "Finish exact-head full-suite, core-suite, installed-wheel, inclusive coverage, dependency and fail-closed verification on the Run 47 handoff/map update commit on #1640.",
+      "Merge #1640 only after every merge condition is satisfied; verify merge commit, files, automatic workflow side effects and main CI.",
+      "Consolidate #1643's 577 unique paths onto verified main, reconcile all six shared paths and carry #1640's stronger coverage/wheel/security checks.",
+      "Close only exact duplicates/superseded PRs after successor content is verified on main; preserve unique structural, mesh, research and identity work.",
+      "Verify scheduled ingestion on main; add SEC/regulatory, macro-vintage, stablecoin mint/burn, custody, collateral, institutional and payment-rail sources.",
+      "Establish independently controlled WORM archival and deterministic raw-source rebuild; accumulate synchronized multi-domain history and measure out-of-sample lift, calibration, drift and independent shadow outcomes before any directional forecast."
     ],
     "integration_tree_recovery": {
       "invalid_tree_commit": "56dd2c6004c5f62a22a6040a9b9002c84a011930",
@@ -846,14 +885,15 @@
     },
     "main_workflow_status": {
       "latest_cross_analysis": {
-        "run_id": 42456443033,
+        "run_id": 42460490047,
         "conclusion": "success",
-        "note": "Hourly Cross Analysis workflow completed successfully on main."
+        "created_at_utc": "2026-11-08T07:51:39Z",
+        "note": "Scheduled Cross Analysis completed successfully on unchanged main; workflow permissions are contents:read and outputs are uploaded as artifacts."
       },
       "barrot_agent_issue_run": {
         "run_id": 42388663091,
         "conclusion": "failure",
-        "failure": "Groq HTTP 413/TPM: requested 8,099 against 8,000 limit in repair_planner.generate after retries; issue #1658 task remains blocked on main."
+        "failure": "Groq HTTP 413/TPM: requested 8,099 against 8,000 after retries; current main workflow remains unpatched. #1640 contains a verified deterministic preflight/rate-limit fix, but it is not on main."
       },
       "pillars_health_run": {
         "run_id": 42375034124,
@@ -864,7 +904,14 @@
         ],
         "external_restart_performed": false
       },
-      "context_budget_fix": "Implemented and fully tested on #1640; not on main until merge."
+      "main_workflow_permissions_observation": {
+        "barrot_agent": "issues/dispatch triggers; contents:write and issues:write; reads GITHUB_TOKEN and GROQ_API_KEY",
+        "ask_barrot": "workflow_dispatch; contents:write and issues:write; reads GROQ_API_KEY",
+        "deploy_a2a_worker": "push trigger on a2a/**; reads Cloudflare and Groq secrets",
+        "sync_self_hosted_brain": "push trigger on self_hosted_brain/**; reads HF_TOKEN",
+        "coinbase_paper_trader": "manual workflow_dispatch; reads GROQ_API_KEY; not invoked"
+      },
+      "context_budget_fix": "Implemented and exact-head tested on #1640; not on main until merge."
     },
     "provider_rate_limit_failure": {
       "source_run": 42388663091,
@@ -876,17 +923,19 @@
       "status": "MAIN_BLOCKED_INTEGRATION_BRANCH_FIX_VERIFIED"
     },
     "backlog_classification": {
-      "#1640": "active V3 integration candidate; exact-head full suite, inclusive coverage, installed-wheel, dependency audit and fail-closed gate passed; blocked from merge by independent approval and Pages authorization.",
-      "#1643": "active XRP research candidate; 574 research-only paths relative to #1640; exact-head CI pending after six append-only research/test files and one schema-aligned test correction.",
-      "#1642": "superseded candidate; seven paths represented in #1640; retain until main verification.",
-      "#1644-#1650": "dependency/workflow candidates represented in #1640; retain until main verification.",
-      "#1653": "blocked by eight unresolved review threads; six unique repository-graph paths preserved.",
-      "#1655/#1641/#1269": "unique/unreviewed structural and experimentation work; preserve.",
-      "#1254/#1255": "older dependency updates; exact-version reconciliation pending.",
-      "#1477/#1547/#1586": "unique XRP research; preserve pending integrated review.",
-      "#1597/#1591": "unique Kamilah public-video discovery work; preserve identity-gated inventory.",
-      "#1659": "unique local Llama phone-chat experimentation; preserve.",
-      "#1658": "open Codespaces/prebuild issue; context-budget/rate-limit subproblem is implemented on #1640, while the Codespaces build/prebuild deliverable remains unverified."
+      "#1640": "Active V3 integration candidate; exact-head code/test CI, inclusive coverage, installed wheel, six-manifest audit and fail-closed gate passed on 323f. Run 47 handoff/map refresh is being added after that verified head; its new exact-head CI must pass before merge.",
+      "#1643": "Active XRP research candidate; exact-head full suite 2,323 passed plus 8 subtests, core suite and six-manifest audit passed on 3271; fail-closed gate passed.",
+      "#1653": "Blocked; eight unresolved review threads, six unique repository-graph paths preserved; one shared CI path requires reconciliation.",
+      "#1644-#1650": "Dependabot/workflow candidates whose changed paths all overlap #1640. #1647 and #1645 sampled workflow blobs are identical; #1644 has older setup-python v5 versus #1640 v7; #1648/#1646 have older requirement baselines than #1640; #1649/#1650 each update a separate dependency in the same legacy requirements file that #1640 already combines at newer versions. Keep open until #1640 is merged and exact supersession is verified on main.",
+      "#1320": "Five paths overlap #1640; integration version replaces paper trading with manual exact-SHA explicit-confirmation read-only artifact-only behavior. Preserve until main verification.",
+      "#1318": "Two paths overlap #1640 but contents differ; preserve until integrated version is verified on main.",
+      "#1317": "Six paths overlap #1640 but contents differ; preserve until integrated structural/MMI version is verified on main.",
+      "#1269": "Eight unique rendering/topology paths; unique/unreviewed, preserve.",
+      "#1254/#1255": "Older Hugging Face and Databricks dependency floors on the same legacy manifest; newer floors are included in #1640; superseded pending main verification.",
+      "#1655/#1641": "Unique drafts; preserve.",
+      "#1659": "Unique local Llama phone-chat draft; preserve.",
+      "#1477/#1547/#1586": "Preserve unique XRP institutional/research work pending path-by-path review.",
+      "#1597/#1591": "Preserve unique Kamilah video-discovery work; identity gate remains closed."
     }
   },
   "prior_run_observations": [
@@ -7571,7 +7620,416 @@
         },
         "original_artifact_preserved": true
       }
+    },
+    {
+      "run_id": 46,
+      "captured_at_utc": "2026-11-08T07:22:26Z",
+      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "integration_head_before_map_commit": "1ac6254b2e813dd7be2da68d3b17b57d76815325",
+      "research_head": "64f403822716989d5d9830d498d32e4fc5f14cd5",
+      "open_pr_inventory": {
+        "total": 372,
+        "drafts": 356,
+        "non_drafts": 16,
+        "pages": [
+          100,
+          100,
+          100,
+          72
+        ]
+      },
+      "repository_tree": {
+        "main": {
+          "entries": 1403,
+          "files": 1298,
+          "python_files": 493,
+          "test_modules": 90,
+          "workflow_yaml": 86,
+          "truncated": false
+        },
+        "integration": {
+          "entries": 1478,
+          "files": 1365,
+          "python_files": 547,
+          "test_modules": 128,
+          "workflow_yaml": 87,
+          "truncated": false
+        },
+        "research": {
+          "entries": 1978,
+          "files": 1872,
+          "python_files": 726,
+          "test_modules": 325,
+          "workflow_yaml": 86,
+          "xrp_json_artifacts": 349,
+          "truncated": false
+        }
+      },
+      "branch_ancestry": {
+        "integration": {
+          "head": "81894d9c2966676b0f26ce5dabcc31ae45530316",
+          "ahead": 654,
+          "behind": 0,
+          "changed_paths": 176
+        },
+        "research": {
+          "head": "64f403822716989d5d9830d498d32e4fc5f14cd5",
+          "ahead": 787,
+          "behind": 0,
+          "changed_paths": 580
+        },
+        "shared_paths": [
+          ".github/workflows/dependency-audit.yml",
+          "BARROT_XRP_MISSION_HANDOFF.md",
+          "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+          "scripts/pillars_check.py",
+          "tests/test_kamilah_channel_identity_gate.py",
+          "tests/test_pillars_check_readonly.py"
+        ],
+        "integration_unique": 170,
+        "research_unique": 574,
+        "branch_to_branch": {
+          "status": "diverged",
+          "research_ahead": 787,
+          "integration_ahead": 654
+        }
+      },
+      "ci_evidence": {
+        "integration": {
+          "head": "1ac6254b2e813dd7be2da68d3b17b57d76815325",
+          "full_suite": "1,188 passed, 8 subtests passed",
+          "core_suite": "660 passed, 8 subtests passed",
+          "inclusive_coverage_pct": 58.78,
+          "installed_wheel": "passed; installed package loaded Barrot V3, the XRP mission and canonical mission/data assets",
+          "dependency_audit": "passed; six manifests audited; no known vulnerabilities reported",
+          "fail_closed_gate": "passed; automatic merging disabled",
+          "runs": {
+            "ci": 42458058968,
+            "dependency_audit": 42458058974,
+            "fail_closed": 42458058938
+          }
+        },
+        "research": {
+          "head": "64f403822716989d5d9830d498d32e4fc5f14cd5",
+          "full_suite": "QUEUED at capture; no exact-head result yet",
+          "core_suite": "QUEUED at capture; no exact-head result yet",
+          "dependency_audit": "IN_PROGRESS at capture",
+          "fail_closed_gate": "passed",
+          "runs": {
+            "ci": 42458532054,
+            "dependency_audit": 42458532051,
+            "fail_closed": 42458532069
+          },
+          "previous_verified_head": {
+            "head": "33ee4b456915d76bb0be2936143dd7534f3a731b",
+            "full_suite": "2,316 passed, 8 subtests passed",
+            "core_suite": "498 passed, 8 subtests passed",
+            "dependency_audit": "passed; six manifests",
+            "fail_closed_gate": "passed; merging disabled",
+            "runs": {
+              "ci": 42457857250,
+              "dependency_audit": 42457857244,
+              "fail_closed": 42457857278
+            }
+          },
+          "intermediate_head": {
+            "head": "a04bad95349e4419fd65c8b7ddef09187ca93bef",
+            "status": "CI was still running when the registry-schema assertion was corrected; do not use it as final evidence."
+          },
+          "correction": "The new Kamilah regression test initially looked for canonical_channel_verified under a nonexistent top-level identity_status key. The current registry stores that field under video_inventory_status; the assertion was corrected on 64f403 without weakening the identity gate."
+        }
+      },
+      "reviews": {
+        "pr_1640": {
+          "threads_resolved": "22/22",
+          "commented_reviews": 62,
+          "approving_reviews": 0,
+          "mergeable": true,
+          "draft": false
+        },
+        "pr_1643": {
+          "threads_resolved": "19/19",
+          "commented_reviews": 10,
+          "approving_reviews": 0,
+          "mergeable": true,
+          "draft": false
+        },
+        "pr_1653": {
+          "threads_unresolved": 8,
+          "last_checked_utc": "2026-11-08T07:10:27Z"
+        },
+        "independent_approving_reviews": 0
+      },
+      "workflow_safety_audit": {
+        "changed_workflow_files_in_pr_1640": 41,
+        "summary": "The integration branch quarantines the active write-capable barrot-agent and ask-barrot workflows with empty permissions/false job conditions; changes self-hosted-brain and A2A deployment to manual exact-main-SHA workflows with explicit YES and secret-rotation confirmation; makes the paper-trader manual and artifact-only; and preserves read-only scheduled XRP ingestion. The GitHub Pages public deployment side effect remains unresolved and unauthorized.",
+        "pages_is_unresolved": true,
+        "external_workflow_review": "autonomous_self_deployment, force-deploy-space, scheduler-tick and subscriber-sync are disabled on main. Main's current sync-self-hosted-brain and deploy-a2a-worker push triggers are replaced by manual exact-SHA confirmation gates in #1640."
+      },
+      "new_research": {
+        "artifacts_added": [
+          "research/xrp_intelligence/20261108T070200Z-xrp-market-etf-exchange-derivatives-macro-reconciliation.json",
+          "tests/test_xrp_market_etf_exchange_derivatives_macro_reconciliation_20261108.py",
+          "research/xrp_intelligence/20261108T071027Z-xrp-exchange-wallet-reserve-component-disagreement-correction.json",
+          "tests/test_xrp_exchange_wallet_reserve_component_disagreement_correction_20261108.py",
+          "research/xrp_intelligence/20261108T071910Z-sbic-chatgpt-benchmark-kamilah-identity-disambiguation.json",
+          "tests/test_xrp_sbic_chatgpt_kamilah_identity_disambiguation_20261108.py"
+        ],
+        "verified_by_exact_head_ci": false,
+        "current_exact_head_status": "PENDING: full CI queued and dependency audit running on 64f403822716989d5d9830d498d32e4fc5f14cd5; fail-closed gate passed.",
+        "previous_market_artifact_verified_by_exact_head_ci": true,
+        "summary": [
+          "ETF providers disagree because their fund universes and settlement vintages differ: XRP Insights reports week 45 −813K XRP and Nov 6 −663K; CryptoKeyhole reports partial Nov 6 −752,048 XRP for 3/4 funds with Franklin missing; Alpha Finance reports $0 on Nov 6, +$8.4M over seven sessions and +$45.9M over 30 sessions. These are not independent confirmations.",
+          "CryptoKeyhole has a future-date anomaly: one issuer file is labeled 9 Nov while the page says it was read 7 Nov at 05:12 UTC; it is quarantined.",
+          "XRP Insights attributes 22.33B XRP to 701 wallets across 24 exchanges; same-wallet changes are −150.7M over 7 days and −161.2M over 30 days. The aggregate is not tradable float; 512M XRP in newly tracked wallets changes naive totals.",
+          "The same XRP Insights page reports 327.4M Binance-Peg XRP in the exchange table but 325.8M in its reserve methodology. The 1.6M discrepancy makes the 487.8M non-customer reserve total internally inconsistent if the table figure is used; an append-only correction preserves both values.",
+          "Edge or Not's 06:26 UTC combined Binance spot/OKX perpetual order book shows $9.0M bids versus $9.9M asks within 1%; resting orders can be pulled and no per-venue raw book receipt was retained.",
+          "Kodexius at 06:34 UTC reports $782.97M OI across seven contracts and five exchanges, weighted funding +0.0080%/8h. Hyperliquid OI is $98.12M there versus $196.0M on HyperAcademy at 05:00 UTC; unresolved ~2x convention/source discrepancy.",
+          "Kraken's futures page reports about $20M OI, $9.6M 24h volume and 0.000011485%/hour funding, but its page timestamp timezone is unspecified and it is single-venue.",
+          "Reuters reports $117.97B US money-market inflows, $14.81B equity-fund inflows and $7.31B bond-fund inflows in the week to Nov 4; equity-index declines and positive equity/bond fund flows are retained as competing macro evidence.",
+          "Exact phrase SBIC/ChatGPT is resolved to the Social Bias Inference Corpus benchmark used in Ziems et al. The 2023 China Journal of Econometrics review expands SBIC as a COVID-19 corpus and describes the gold standard as political ideology; this conflicts with the cited primary 2024 Ziems paper, which defines SBIC as Social Bias Inference Corpus (34K hate-speech inferences with free-text explanations). Its 65.9% GPT-3.5 result is unanimous pairwise expert preference for generated explanations over gold explanations, not classification accuracy or market prediction. This is unrelated to Japan's SBIC companies and SBI Holdings.",
+          "Kamilah identity gate remains closed. The person Dr. Kamilah Stevenson is supported by an All Nations first-party biography and matching LinkedIn profile, but the candidate finance/crypto YouTube channel @drkamilahstevenson / UCqUPJMQdkCN6lsLVDnichPA lacks a reciprocal first-party link. Third-party directories list 20 same-name YouTube profiles and many duplicate bios; two new video search-result IDs could not be inspected because direct metadata fetch was throttled. They were not added to the 21 candidate seed videos; verified personal-channel uploads remain zero.",
+          "No new primary evidence was found for ASK Coin or an issuer-defined 'actual capital' metric in this pass."
+        ],
+        "source_independence": "Distinct market aggregators share issuer-file upstream data; no independent ETF-flow confirmation is inferred. The SBIC primary dataset paper, Ziems evaluation and Cheng review are distinct documents but the latter two use the same benchmark. All Nations is first-party for its leader biography; Vling, IDCrawl and Telemetr are third-party and do not authenticate the YouTube channel.",
+        "model_admission": false,
+        "forecast_status": "NOT_ISSUED",
+        "exact_phrase_status": {
+          "sbic_chatgpt": "ACADEMIC_BENCHMARK_RESOLVED_NOT_JAPAN_SBIC",
+          "ask_coin": "NO_NEW_PRIMARY_EVIDENCE_NO_XRP_LINK",
+          "actual_capital": "NO_NEW_ISSUER_DEFINED_METRIC",
+          "kamilah_channel": "PERSON_CONFIRMED_CHANNEL_RELATION_UNVERIFIED_NO_NEW_VIDEO_ATTRIBUTIONS"
+        }
+      },
+      "latest_market_crosscheck": {
+        "reference_time_utc": "2026-11-08T07:02:00Z",
+        "synchronized_spot_price": null,
+        "orderbook": {
+          "source": "Edge or Not",
+          "snapshot_utc": "2026-11-08T06:26:00Z",
+          "composite_mid_usd": 1.1652,
+          "bids_within_1pct_usd": 9000000,
+          "asks_within_1pct_usd": 9900000,
+          "instrument_scope": "Binance spot plus OKX perpetual combined",
+          "model_eligible": false
+        },
+        "derivatives": {
+          "source": "Kodexius",
+          "snapshot_utc": "2026-11-08T06:34:00Z",
+          "open_interest_usd": 782970000,
+          "contracts": 7,
+          "exchanges": 5,
+          "volume_24h_usd": 774770000,
+          "funding_weighted_pct_per_8h": 0.008,
+          "hyperliquid_oi_disagreement_usd": {
+            "kodexius": 98120000,
+            "hyperacademy": 196000000
+          },
+          "model_eligible": false
+        },
+        "exchange_wallets": {
+          "source": "XRP Insights",
+          "ledger_read_utc": "2026-11-07T08:01:00Z",
+          "attributed_xrp": 22330000000,
+          "wallets": 701,
+          "exchanges": 24,
+          "same_wallet_7d_change_xrp": -150700000,
+          "same_wallet_30d_change_xrp": -161200000,
+          "model_eligible": false
+        },
+        "etf_flows": {
+          "sources": [
+            "XRP Insights",
+            "CryptoKeyhole",
+            "Alpha Finance"
+          ],
+          "status": "PROVIDER_SCOPE_AND_SETTLEMENT_DISAGREEMENT",
+          "model_eligible": false
+        },
+        "limitations": "No synchronized exchange-native spot ticker, raw HTTP bytes, per-venue full-depth snapshots, raw derivatives contract payloads or common issuer-file backfill. No directional signal."
+      },
+      "prediction_engine": {
+        "scheduled_ingestion": "DESIGNED on #1640 only; absent from main and not verified running on main.",
+        "schedule": "Hourly at minute 3 and daily at 00:15 UTC; contents/actions read-only.",
+        "endpoints": 29,
+        "scheduled_public_sources": 27,
+        "excluded_xrpl_node_sources": 2,
+        "scope": "Binance/Coinbase/Kraken/OKX/Bybit/Bitbank spot, book endpoints, Binance derivatives, ETF issuer/flow pages and exchange-balance aggregator.",
+        "missing_scheduled_domains": [
+          "SEC EDGAR and regulatory events",
+          "FRED/Treasury/BOJ macro vintages",
+          "USDC/RLUSD/JPYSC mint-burn and supply history",
+          "Custody balances and collateral utilization",
+          "Institutional holdings and payment-rail throughput"
+        ],
+        "implemented": [
+          "SHA-256 source receipts and per-run hash chain",
+          "Point-in-time SQLite feature store",
+          "Four deterministic baselines",
+          "Chronological walk-forward with one-hour embargo",
+          "Temporal calibration diagnostics",
+          "Univariate PSI drift diagnostics",
+          "Fail-closed forecast ledger"
+        ],
+        "limitations": [
+          "SQLite triggers and unkeyed hashes are not adversarially immutable",
+          "Independent external WORM storage and complete raw-source rebuild are absent",
+          "Historical evaluator is Binance XRP/USDT and Coinbase XRP/USD hourly closes only",
+          "Forecast ledger feature snapshot IDs are not yet resolved against the feature store at issuance",
+          "PSI does not detect concept/label drift",
+          "No trained-model out-of-sample lift, validated real-data calibration or sufficient independent shadow outcomes"
+        ],
+        "readiness_gate": "At least 100 independent out-of-sample samples, 100 shadow samples, two independent source groups, ten horizon spans, weighted calibration error <=0.05, stable drift, improvement over all four baselines and independent Ed25519 readiness attestation.",
+        "forecast_status": "NOT_ISSUED",
+        "oos_lift": false,
+        "real_data_calibration": false,
+        "shadow_outcomes": false,
+        "provider_rate_limit_guard": {
+          "status": "IMPLEMENTED_ON_1640_NOT_MAIN",
+          "brain_preflight": {
+            "chars_per_estimated_token": 2,
+            "max_input_tokens": 4800,
+            "reserved_output_tokens": 2048,
+            "max_total_tokens": 7000
+          },
+          "script_budget": {
+            "max_request_tokens": 6500,
+            "max_tpm_tokens": 7000,
+            "max_tool_result_chars": 1800
+          },
+          "behavior": [
+            "preserve system/current task/latest tool round while dropping oldest complete optional history/tool groups",
+            "fail closed before HTTP when context/request budget is exceeded",
+            "no same-provider retry on Groq HTTP 413/429",
+            "Fireworks fallback requires explicit BARROT_ALLOW_FIREWORKS_FALLBACK=true",
+            "repair planner maps budget/rate-limit markers to blocked state; no patch, commit or remote write"
+          ],
+          "tests": "tests/test_barrot_brain_context_budget.py and tests/test_ask_barrot_context.py; full #1640 suite passed on head 81894"
+        }
+      },
+      "nine_platform_status": {
+        "ChatGPT": "VERIFIED_CURRENT_SESSION GitHub connector",
+        "Claude": "UNVERIFIED_NO_AUTH_TEST",
+        "Grok": "UNVERIFIED_NO_AUTH_TEST; distinct from Groq",
+        "Gemini": "UNVERIFIED_NO_AUTH_TEST",
+        "Copilot": "ONE_OFF_COMMENTED_REVIEW_ACTIVITY; not approval",
+        "Codex": "UNVERIFIED_NO_AUTH_TEST",
+        "Hugging_Face": "INCONCLUSIVE_FAILED_HEALTH_CHECK; no verified persistent data flow",
+        "Kaggle": "NOT_TESTED",
+        "Databricks": "AUTHORIZATION_FAILED_HTTP_403",
+        "external_data_exchange": false
+      },
+      "merge_state": {
+        "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+        "branch_protected": true,
+        "detailed_branch_protection_http_403": true,
+        "visible_ruleset": {
+          "id": 10863829,
+          "name": "Fall Back",
+          "enforcement": "disabled"
+        },
+        "codeowners": "* @Barrot-Agent",
+        "independent_approvals": 0,
+        "pages_enabled": true,
+        "pages_configuration_accessible": false,
+        "pages_deployment_authorized": false,
+        "merge_performed": false,
+        "reason": "Zero independent APPROVED reviews; detailed branch-protection requirements cannot be confirmed through the current connection; #1640 changes public web paths and a successful prior Pages deployment shows a possible automatic public side effect that is not authorized."
+      },
+      "external_actions": {
+        "main_write": false,
+        "merge": false,
+        "deployment": false,
+        "secret_read_or_rotation": false,
+        "space_restart": false,
+        "kaggle_submission": false,
+        "paper_trade": false,
+        "real_money": false,
+        "external_model_transfer": false,
+        "force_push": false,
+        "destructive_worktree_action": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "next_actions": [
+        "Finish exact-head full-suite, core-suite and six-manifest dependency verification on research PR #1643 head 64f403822716989d5d9830d498d32e4fc5f14cd5; do not substitute the prior 33ee4b result.",
+        "Keep V3 integration PR #1640 at exact head 1ac6254b2e813dd7be2da68d3b17b57d76815325 verified; its full suite, inclusive coverage, installed wheel, six-manifest dependency audit and fail-closed gate passed.",
+        "Obtain genuine independent approving reviews for #1640 and #1643; COMMENTED review records are not approvals.",
+        "Resolve GitHub Pages deployment authorization and verify classic branch-protection requirements; the current connection receives HTTP 403 for detailed protection settings.",
+        "Merge #1640 only after every required condition passes and no merge-triggered public deployment remains unauthorized; verify merge commit, files, workflow side effects and main CI.",
+        "After #1640 is verified on main, consolidate #1643's 574 research-only paths into one successor directly on current main, reconcile all six shared paths and carry #1640's stronger coverage and installed-wheel CI.",
+        "Preserve unique/unreviewed structural, research and video-identity PRs; close only exact duplicates after successor content is verified on main.",
+        "Expand scheduled ingestion to SEC/regulatory, FRED/Treasury/BOJ, stablecoin supply/mint/burn, custody, collateral, institutional disclosures, payment-rail throughput and synchronized exchange depth.",
+        "Establish independently controlled WORM archival and deterministic raw-source rebuild; validate synchronized point-in-time history, trained-model lift, calibration, drift and independent shadow outcomes before forecasting."
+      ],
+      "integration_tree_recovery": {
+        "invalid_tree_commit": "56dd2c6004c5f62a22a6040a9b9002c84a011930",
+        "recovery_commit": "8e2762fadb9023c5d10643e3ea698e1ed3b731f4",
+        "exact_tree_restoration_commit": "bcdca6a1aae19e4b90d955bafd2c3caa5b1327f5",
+        "restored_tree_sha": "9391fd2ae5f54c58165d1ad7f51d9868dedff345",
+        "verification": "RESTORED_TREE_IDENTICAL_TO_PRE_UPDATE_E0CD_HEAD; compare e0cd62ea..bcdca6a1 reports zero changed files. All commits remain in history; no force-push, main write or external action.",
+        "note": "A temporary tree update used a tree SHA from the wrong API response and unintentionally reverted branch paths. It was not merged. Fast-forward commits restored the exact pre-update tree before continuing."
+      },
+      "source_capture_correction": {
+        "original_artifact": "research/xrp_intelligence/20261108T063207Z-xrp-etf-flow-coverage-and-institutional-demand-reconciliation.json",
+        "correction_artifact": "research/xrp_intelligence/20261108T063932Z-xrp-etf-flow-capture-time-correction.json",
+        "original_field_value": "2026-11-08T06:32:07Z",
+        "correct_interpretation": "run start/reference time, not exact page retrieval time",
+        "exact_page_retrieval_time_utc": null,
+        "bounded_interval_utc": {
+          "start": "2026-11-08T06:32:07Z",
+          "end": "2026-11-08T06:36:01Z"
+        },
+        "original_artifact_preserved": true,
+        "latest_source_internal_disagreement_correction": "research/xrp_intelligence/20261108T071027Z-xrp-exchange-wallet-reserve-component-disagreement-correction.json",
+        "disagreement": "XRP Insights table 327.4M vs methodology 325.8M Binance-Peg reserve; 1.6M unresolved difference; original artifact preserved.",
+        "latest_identity_disambiguation": "research/xrp_intelligence/20261108T071910Z-sbic-chatgpt-benchmark-kamilah-identity-disambiguation.json",
+        "identity_decision": "Dr Kamilah person identity supported; candidate YouTube channel relation remains unverified. Two video IDs remain unverified and were not added to inventory."
+      },
+      "main_workflow_status": {
+        "latest_cross_analysis": {
+          "run_id": 42456443033,
+          "conclusion": "success",
+          "note": "Hourly Cross Analysis workflow completed successfully on main."
+        },
+        "barrot_agent_issue_run": {
+          "run_id": 42388663091,
+          "conclusion": "failure",
+          "failure": "Groq HTTP 413/TPM: requested 8,099 against 8,000 limit in repair_planner.generate after retries; issue #1658 task remains blocked on main."
+        },
+        "pillars_health_run": {
+          "run_id": 42375034124,
+          "conclusion": "failure",
+          "failures": [
+            "Databricks HTTP 403",
+            "Hugging Face Space BUILD_ERROR"
+          ],
+          "external_restart_performed": false
+        },
+        "context_budget_fix": "Implemented and fully tested on #1640; not on main until merge."
+      },
+      "provider_rate_limit_failure": {
+        "source_run": 42388663091,
+        "issue": 1658,
+        "provider": "Groq (out of nine-platform list; not Grok)",
+        "exact_failure": "Groq HTTP 413: TPM limit 8000, requested 8099; repair_planner.generate; repeated retries occurred on main.",
+        "branch_fix": "PR #1640 adds deterministic preflight, bounded prompt/history/tool context, local rolling token budget, fail-fast 413/429 handling and no unverified fallback.",
+        "verification": "The #1640 exact-head full suite includes regression tests proving oversized requests are blocked before HTTP, 429 is not retried, no patch/commit/remote write occurs, and repair safety instructions remain intact.",
+        "status": "MAIN_BLOCKED_INTEGRATION_BRANCH_FIX_VERIFIED"
+      },
+      "backlog_classification": {
+        "#1640": "active V3 integration candidate; exact-head full suite, inclusive coverage, installed-wheel, dependency audit and fail-closed gate passed; blocked from merge by independent approval and Pages authorization.",
+        "#1643": "active XRP research candidate; 574 research-only paths relative to #1640; exact-head CI pending after six append-only research/test files and one schema-aligned test correction.",
+        "#1642": "superseded candidate; seven paths represented in #1640; retain until main verification.",
+        "#1644-#1650": "dependency/workflow candidates represented in #1640; retain until main verification.",
+        "#1653": "blocked by eight unresolved review threads; six unique repository-graph paths preserved.",
+        "#1655/#1641/#1269": "unique/unreviewed structural and experimentation work; preserve.",
+        "#1254/#1255": "older dependency updates; exact-version reconciliation pending.",
+        "#1477/#1547/#1586": "unique XRP research; preserve pending integrated review.",
+        "#1597/#1591": "unique Kamilah public-video discovery work; preserve identity-gated inventory.",
+        "#1659": "unique local Llama phone-chat experimentation; preserve.",
+        "#1658": "open Codespaces/prebuild issue; context-budget/rate-limit subproblem is implemented on #1640, while the Codespaces build/prebuild deliverable remains unverified."
+      }
     }
   ],
-  "last_verified_at_utc": "2026-11-08T07:22:26Z"
+  "last_verified_at_utc": "2026-11-08T08:04:38Z"
 }
