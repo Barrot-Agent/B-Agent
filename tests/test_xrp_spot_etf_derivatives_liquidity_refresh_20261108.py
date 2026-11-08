@@ -87,3 +87,24 @@ def test_counter_hypotheses_and_forecast_abstention_are_present():
         "funds_transfer": False,
         "external_model_transfer": False,
     }
+
+
+def test_stablecoin_context_preserves_internal_total_mismatch_and_exclusion():
+    data = load_artifact()
+    context = data["market_observations"]["stablecoin_context"]
+    assert context["headline_total_supply_usd"] == 292_300_000_000
+    assert context["same_page_later_total_supply_usd"] == 293_600_000_000
+    assert context["headline_30d_change_usd"] == -15_060_000_000
+    assert context["same_page_later_30d_change_usd"] == -12_730_000_000
+    assert context["status"] == "UNRESOLVED_SOURCE_INTERNAL_TOTAL_MISMATCH"
+    assert context["admission"] == "EXCLUDED_FROM_FEATURE_STORE"
+
+
+def test_unstamped_secondary_dashboard_receipts_do_not_claim_exact_retrieval_times():
+    data = load_artifact()
+    receipts = {row["source_id"]: row for row in data["source_receipts"]}
+    for source_id in ("xrp_insights_xrp_etf_dashboard", "alpha_finance_xrp_etf_dashboard"):
+        row = receipts[source_id]
+        assert row["observed_at_utc"] is None
+        assert row["retrieval_time_exact"] is False
+        assert row["reference_time_utc"] == data["reference_time_utc"]
