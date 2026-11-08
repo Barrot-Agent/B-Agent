@@ -33,9 +33,19 @@ def get_provider() -> dict[str, str]:
             "base_url": _env("LOCAL_LLAMA_BASE_URL") or "http://127.0.0.1:8081/v1",
             "default_model": _env("LOCAL_LLAMA_MODEL") or "local",
         }
+    if selected == "lunaroute":
+        key = _env("LUNAROUTE_API_KEY")
+        if not key:
+            raise InferenceError("LUNAROUTE_API_KEY is not configured.")
+        return {
+            "name": "lunaroute",
+            "api_key": key,
+            "base_url": _env("LUNAROUTE_BASE_URL") or "https://gw.lunaroute.com/v1",
+            "default_model": _env("LUNAROUTE_MODEL") or "openai/gpt-oss-120b",
+        }
     if selected not in {"auto", "groq", "fireworks"}:
         raise InferenceError(
-            "Unsupported BARROT_INFERENCE_PROVIDER. Choose auto, groq, fireworks, or local_llama."
+            "Unsupported BARROT_INFERENCE_PROVIDER. Choose auto, lunaroute, groq, fireworks, or local_llama."
         )
 
     if selected in {"auto", "groq"}:
@@ -65,7 +75,7 @@ def get_provider() -> dict[str, str]:
 
     raise InferenceError(
         "No inference provider configured. Set GROQ_API_KEY or FIREWORKS_API_KEY, "
-        "or select BARROT_INFERENCE_PROVIDER=local_llama."
+        "or select BARROT_INFERENCE_PROVIDER=lunaroute with LUNAROUTE_API_KEY, or BARROT_INFERENCE_PROVIDER=local_llama."
     )
 
 
