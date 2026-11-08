@@ -1,4 +1,17 @@
-# Current integrated Barrot handoff — 2026-11-08T16:03:05Z
+# Current integrated Barrot handoff — 2026-11-08T17:16:19Z
+
+## Run 60 — current repository, exact-head verification and institutional-rails correction
+
+Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`. Existing #1640 head before this handoff update: `d27c0067a251af7ffb9ba3199a70ecca5d5caa96` (705 ahead, 0 behind). Existing #1643 head after the research-test correction: `e60073612a570c6f1de6abaa8cc022086f700395` (854 ahead, 0 behind). The last complete recursive-tree and four-page PR inventory is Run 59: 1,403 main-tree entries and 372 open PRs (356 drafts, 16 non-drafts). Current refs, comparisons, mission files, review records and exact-head workflow runs were rechecked; full recursive tree enumeration was not repeated in this run.
+
+**Exact-head CI:** #1640 run [42503267108](https://github.com/Barrot-Agent/B-Agent/actions/runs/42503267108) failed with 1,209 passed, 6 failed, 8 subtests; 58.98% coverage. Core passed; six-manifest dependency audit [42503267095](https://github.com/Barrot-Agent/B-Agent/actions/runs/42503267095) and fail-closed gate [42503267137](https://github.com/Barrot-Agent/B-Agent/actions/runs/42503267137) passed. All six failures are stale handoff/map contract assertions: missing current `main_sha` and `excluded_xrpl_node_sources` aliases, a stale Run 58/59 header, and a run counter still at 59. This Run 60 handoff/map update corrects the evidence contract; tests are not weakened. Wheel verification was skipped after the suite failed.
+
+#1643's previous head failed one assertion (2,500 passed, 1 failed, 8 subtests) because a test expected an exact list element while the artifact correctly stored “RLUSD on Bitstamp by Robinhood.” The test was corrected on `e60073612a570c6f1de6abaa8cc022086f700395`. Current CI [42504381538](https://github.com/Barrot-Agent/B-Agent/actions/runs/42504381538) and dependency audit [42504381595](https://github.com/Barrot-Agent/B-Agent/actions/runs/42504381595) were still running; fail-closed gate [42504381644](https://github.com/Barrot-Agent/B-Agent/actions/runs/42504381644) passed.
+
+## Run 59 — institutional and derivatives evidence retained
+
+- `research/xrp_intelligence/20261108T162835Z-xrp-derivatives-oi-universe-late-session-reconciliation.json`: Kodexius reports about $779.66M XRP open interest; TradRadar about $1.90B. Contract/venue universes differ; do not average. A Binance XRPUSDT cross-check is close but 96 minutes apart and may share the same exchange source. Model-ineligible.
+- `research/xrp_intelligence/20261108T164100Z-sbi-vc-trade-rlusd-chain-and-reserve-snapshot-correction.json`: SBI VC Trade's Japan RLUSD distribution is live, but VCTRADE currently supports Ethereum RLUSD only; XRPL support is planned, not live. Do not attribute current SBI VCTRADE RLUSD handling to XRPL settlement or XRP demand. Coinbase's RLUSD network support, BNY custody and Standard Chartered custody are separate capabilities; actual balances/throughput remain undisclosed or future/exploratory as specified in the artifact.
 
 ## Run 58 — current repository, endpoint inventory correction, exact-head verification and merge gate
 
