@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T06:39:32Z",
+  "captured_at_utc": "2026-11-08T06:48:42Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "9397f79c80c00014adff0f2350edab83745f8909",
-  "observed_research_head": "c3926a793bdfc89eac7b99c62ad4be7dfec794c1",
+  "observed_integration_head_before_map_commit": "bcdca6a1aae19e4b90d955bafd2c3caa5b1327f5",
+  "observed_research_head": "380e6077002e0270cccfbb7c46de214e5a2c9e02",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -357,7 +357,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-08T06:39:32Z",
+    "last_reviewed_at_utc": "2026-11-08T06:48:42Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -369,7 +369,7 @@
       "xrp_live_market_snapshot": "Run 36 handoff raw Kraken/OKX response text and SHA-256 receipts; research-only, not feature-store eligible",
       "treasury_macro_reconciliation": "research/xrp_intelligence/20261108T021527Z-tga-actual-versus-projection-reconciliation.json"
     },
-    "last_run_summary": "Run 45 (2026-11-08T06:39:32Z): ChatGPT-to-GitHub remains the only verified current-session connection. Copilot and CodeRabbit review activity is COMMENTED, not APPROVED. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks still have no verified persistent authenticated data flow. No external model received repository data and no cross-platform task exchange occurred."
+    "last_run_summary": "Run 45 (2026-11-08T06:48:42Z): ChatGPT-to-GitHub remains the only verified current-session connection. Copilot and CodeRabbit activity is COMMENTED, not APPROVED. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flow. No external model received repository data and no cross-platform task exchange occurred."
   },
   "least_privilege_and_safety": {
     "secret_values_read": false,
@@ -457,20 +457,21 @@
     }
   },
   "next_actions": [
-    "Obtain genuine independent approvals for #1640 and #1643 and confirm classic branch-protection requirements; the current review records are COMMENTED, not APPROVED.",
-    "Obtain explicit authorization for the public GitHub Pages side effect or establish a verified non-deploying merge path; do not merge while Pages behavior is unresolved.",
-    "After all approvals, exact-head CI, dependency/security checks and external-side-effect conditions pass, merge #1640; verify merge commit, resulting main tree, automatic workflow side effects and main CI.",
-    "Consolidate #1643's 566 research-only paths onto verified main, reconcile all six shared paths, preserve all append-only evidence and carry #1640's stronger inclusive-coverage and installed-wheel checks.",
+    "Finish exact-head full-suite, inclusive coverage, installed-wheel and six-manifest dependency verification on the Run 45 map/handoff schema correction commit.",
+    "Obtain genuine independent approvals for #1640 and #1643 and verify classic branch-protection requirements.",
+    "Resolve GitHub Pages deployment authorization before merging #1640.",
+    "Merge #1640 only after every required condition passes; verify merge commit, merged files, automatic workflow effects and main CI.",
+    "Consolidate #1643's 568 research-only paths onto verified main, reconcile all six shared paths and carry #1640's stronger CI.",
     "Close only exact superseded PRs after successor content is verified on main; preserve unique research and structural work.",
     "Extend scheduled ingestion to SEC/regulatory, FRED/Treasury/BOJ, stablecoin supply/mint/burn, custody, collateral, institutional disclosures and payment-rail throughput.",
-    "Establish independently controlled WORM archival and deterministic raw-source/feature-store rebuild; validate synchronized multi-domain historical data, trained-model lift, calibration and independent shadow outcomes before forecasting."
+    "Establish independent WORM archival and deterministic raw-source rebuild; validate synchronized multi-domain history, trained-model lift, calibration and independent shadow outcomes before forecasting."
   ],
   "current_run_observations": {
     "run_id": 45,
-    "captured_at_utc": "2026-11-08T06:39:32Z",
+    "captured_at_utc": "2026-11-08T06:48:42Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "9397f79c80c00014adff0f2350edab83745f8909",
-    "research_head": "c3926a793bdfc89eac7b99c62ad4be7dfec794c1",
+    "integration_head_before_map_commit": "bcdca6a1aae19e4b90d955bafd2c3caa5b1327f5",
+    "research_head": "380e6077002e0270cccfbb7c46de214e5a2c9e02",
     "open_pr_inventory": {
       "total": 372,
       "drafts": 356,
@@ -502,27 +503,27 @@
         "truncated": false
       },
       "research": {
-        "entries": 1970,
-        "files": 1864,
-        "python_files": 724,
-        "test_modules": 321,
+        "entries": 1972,
+        "files": 1866,
+        "python_files": 725,
+        "test_modules": 322,
         "workflow_yaml": 78,
-        "xrp_json_artifacts": 345,
+        "xrp_json_artifacts": 346,
         "truncated": false
       }
     },
     "branch_ancestry": {
       "integration": {
-        "head": "9397f79c80c00014adff0f2350edab83745f8909",
-        "ahead": 647,
+        "head": "bcdca6a1aae19e4b90d955bafd2c3caa5b1327f5",
+        "ahead": 652,
         "behind": 0,
         "changed_paths": 176
       },
       "research": {
-        "head": "c3926a793bdfc89eac7b99c62ad4be7dfec794c1",
-        "ahead": 781,
+        "head": "380e6077002e0270cccfbb7c46de214e5a2c9e02",
+        "ahead": 783,
         "behind": 0,
-        "changed_paths": 572
+        "changed_paths": 574
       },
       "shared_paths": [
         ".github/workflows/dependency-audit.yml",
@@ -533,47 +534,49 @@
         "tests/test_pillars_check_readonly.py"
       ],
       "integration_unique": 170,
-      "research_unique": 566,
+      "research_unique": 568,
       "branch_to_branch": {
         "status": "diverged",
-        "research_ahead": 781,
-        "integration_ahead": 647
+        "research_ahead": 783,
+        "integration_ahead": 652
       }
     },
     "ci_evidence": {
       "integration": {
-        "head": "9397f79c80c00014adff0f2350edab83745f8909",
-        "full_suite": "1,188 passed, 8 subtests passed",
-        "core_suite": "660 passed, 8 subtests passed",
-        "inclusive_coverage_pct": 58.78,
-        "installed_wheel": "passed; packaged mission resource exists and installed wheel loads Barrot V3, XRP mission and canonical data assets",
+        "code_head_previously_verified": "9397f79c80c00014adff0f2350edab83745f8909",
+        "code_head_full_suite": "1,188 passed, 8 subtests passed",
+        "code_head_core_suite": "660 passed, 8 subtests passed",
+        "code_head_inclusive_coverage_pct": 58.78,
+        "code_head_installed_wheel": "passed; packaged mission resource and installed Barrot V3/XRP mission/canonical assets verified",
+        "latest_documentation_tree_before_schema_fix": "e0cd62ea1b41fbaf6146b4a62b93fbfdff014e85 (same tree restored at bcdca6a1)",
+        "latest_documentation_tree_full_suite": "FAILED: 1,187 passed, 1 failed, 8 subtests; tests/test_xrp_mission_handoff_run34.py raised KeyError 'endpoints' because current Run 45 map omitted required prediction_engine fields",
+        "latest_documentation_tree_core_suite": "660 passed, 8 subtests passed",
+        "latest_documentation_tree_coverage_pct": 58.78,
+        "latest_documentation_tree_installed_wheel": "not reached after full-suite failure",
         "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
-        "fail_closed_gate": "passed; merge disabled",
+        "fail_closed_gate": "passed; merging disabled",
         "runs": {
-          "ci": 42454939484,
-          "dependency_audit": 42454939495,
-          "fail_closed": 42454939490
+          "ci": 42455747296,
+          "dependency_audit": 42455747268,
+          "fail_closed": 42455747266
         },
-        "warnings": [
-          "GitHub Actions cache is read-only because the cache budget is exhausted; cache-save warning did not fail tests or wheel verification.",
-          "Build emitted non-fatal setuptools warnings about project.license deprecation and package-discovery metadata; required mission resource was verified inside the wheel."
-        ]
+        "correction": "This map update restores endpoints=29, scheduled_public_sources=27, excluded_xrpl_node_sources=2, oos_lift=false, real_data_calibration=false and shadow_outcomes=false. Exact-head CI after this correction is pending."
       },
       "research": {
-        "head": "c3926a793bdfc89eac7b99c62ad4be7dfec794c1",
-        "full_suite": "2,313 passed, 8 subtests passed",
+        "head": "380e6077002e0270cccfbb7c46de214e5a2c9e02",
+        "full_suite": "2,314 passed, 8 subtests passed",
         "core_suite": "498 passed, 8 subtests passed",
         "inclusive_coverage_pct": null,
-        "installed_wheel": "not run on this branch; carry #1640's stronger installed-wheel verification during consolidation",
+        "installed_wheel": "not run on this branch; carry #1640's inclusive coverage and installed-wheel checks during consolidation",
         "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
-        "fail_closed_gate": "passed; merge disabled",
+        "fail_closed_gate": "passed; merging disabled",
         "runs": {
-          "ci": 42455425123,
-          "dependency_audit": 42455425100,
-          "fail_closed": 42455425114
+          "ci": 42455803759,
+          "dependency_audit": 42455803732,
+          "fail_closed": 42455803795
         },
         "warnings": [
-          "Research branch retains older checkout@v4/setup-python@v5 and does not run inclusive coverage or installed-wheel verification; carry #1640's stronger CI during consolidation."
+          "Research branch uses older checkout@v4/setup-python@v5 and does not run #1640's inclusive coverage or installed-wheel verification; carry #1640's stronger CI during consolidation."
         ]
       }
     },
@@ -613,11 +616,15 @@
         "CryptoKeyhole: four daily issuer-file funds; latest complete Nov 5 flow -3,338.61 XRP; Nov 6 partial -886,665 XRP across three of four funds. Its latest issuer-file check was 06:22 UTC. It leaves missing data unfilled, shows Grayscale from quarterly SEC filings and excludes XRPR look-through.",
         "CryptoKeyhole's Q2 2026 13F transcription reports 117 managers and $154.3M of ETF-share positions across four funds; these are lagged ETF-share positions, not direct XRP wallet holdings or direct XRP purchases.",
         "TradRadar at 05:30 UTC reports seven-exchange OI $1.90B, +0.44% 24h, funding +0.0056%/8h, long/short account ratio 3.79 (79.1% long) and at least $1.50M liquidations. Secondary, delayed and stale at this run; not a forecast.",
-        "BNY's Oct 27 primary announcement says it now supports XRP and RLUSD custody for eligible institutional clients and is RLUSD's primary reserve custodian. Direct mint/redeem through BNY and XRPL tokenized trade finance with C2FO remain planned/exploratory subject to approvals; no actual customer balances or realized XRP settlement volume disclosed."
+        "BNY's Oct 27 primary announcement says it now supports XRP and RLUSD custody for eligible institutional clients and is RLUSD's primary reserve custodian. Direct mint/redeem through BNY and XRPL tokenized trade finance with C2FO remain planned/exploratory subject to approvals; no actual customer balances or realized XRP settlement volume disclosed.",
+        "Append-only capture-time correction: the original 06:32:07Z field is the automation run-start/reference time, not an exact source-page retrieval timestamp; individual retrieval time is unavailable within 06:32:07Z–06:36:01Z. Original artifact remains unchanged."
       ],
       "source_independence": "XRP Insights, Alpha Finance and CryptoKeyhole are secondary aggregators with overlapping issuer-file upstream data. They are not three independent confirmations. No ETF-flow claim has two independently corroborated source groups in this artifact.",
       "model_admission": false,
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "correction_artifact": "research/xrp_intelligence/20261108T063932Z-xrp-etf-flow-capture-time-correction.json",
+      "correction_test": "tests/test_xrp_etf_flow_capture_time_correction_20261108.py",
+      "correction_verified_by_exact_head_ci": true
     },
     "latest_market_crosscheck": {
       "source": "Kraken public XRP/USD ticker endpoint",
@@ -665,7 +672,12 @@
         "No trained-model out-of-sample lift, validated real-data calibration or sufficient independent shadow outcomes"
       ],
       "readiness_gate": "At least 100 independent out-of-sample samples, 100 shadow samples, two independent source groups, ten horizon spans, weighted calibration error <=0.05, stable drift, improvement over all four baselines and independent Ed25519 readiness attestation.",
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "endpoints": 29,
+      "scheduled_public_sources": 27,
+      "oos_lift": false,
+      "real_data_calibration": false,
+      "shadow_outcomes": false
     },
     "nine_platform_status": {
       "ChatGPT": "VERIFIED_CURRENT_SESSION GitHub connector",
@@ -718,7 +730,27 @@
       "Close only exact superseded PRs after successor content is verified on main.",
       "Extend scheduled ingestion into regulatory, macro, stablecoin, custody, collateral, institutional and payment-rail domains.",
       "Implement independently controlled WORM archival, deterministic rebuild, synchronized multi-domain history, trained-model lift, real-data calibration and independent shadow evaluation before forecasting."
-    ]
+    ],
+    "integration_tree_recovery": {
+      "invalid_tree_commit": "56dd2c6004c5f62a22a6040a9b9002c84a011930",
+      "recovery_commit": "8e2762fadb9023c5d10643e3ea698e1ed3b731f4",
+      "exact_tree_restoration_commit": "bcdca6a1aae19e4b90d955bafd2c3caa5b1327f5",
+      "restored_tree_sha": "9391fd2ae5f54c58165d1ad7f51d9868dedff345",
+      "verification": "RESTORED_TREE_IDENTICAL_TO_PRE_UPDATE_E0CD_HEAD; compare e0cd62ea..bcdca6a1 reports zero changed files. All commits remain in history; no force-push, main write or external action.",
+      "note": "A temporary tree update used a tree SHA from the wrong API response and unintentionally reverted branch paths. It was not merged. Fast-forward commits restored the exact pre-update tree before continuing."
+    },
+    "source_capture_correction": {
+      "original_artifact": "research/xrp_intelligence/20261108T063207Z-xrp-etf-flow-coverage-and-institutional-demand-reconciliation.json",
+      "correction_artifact": "research/xrp_intelligence/20261108T063932Z-xrp-etf-flow-capture-time-correction.json",
+      "original_field_value": "2026-11-08T06:32:07Z",
+      "correct_interpretation": "run start/reference time, not exact page retrieval time",
+      "exact_page_retrieval_time_utc": null,
+      "bounded_interval_utc": {
+        "start": "2026-11-08T06:32:07Z",
+        "end": "2026-11-08T06:36:01Z"
+      },
+      "original_artifact_preserved": true
+    }
   },
   "prior_run_observations": [
     {
@@ -7118,5 +7150,5 @@
       }
     }
   ],
-  "last_verified_at_utc": "2026-11-08T06:39:32Z"
+  "last_verified_at_utc": "2026-11-08T06:48:42Z"
 }
