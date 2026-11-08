@@ -1179,9 +1179,15 @@ Rules:
             "tokens per minute" in lowered
             or "token-per-minute" in lowered
             or "tpm limit" in lowered
+            or ("tpm" in lowered and any(term in lowered for term in ("exceed", "limit", "quota")))
         ):
             return ModelFailure(ModelFailureCode.RATE_LIMITED_TPM, message)
-        if "429" in lowered or "rate limit" in lowered or "rate-limited" in lowered:
+        if (
+            "429" in lowered
+            or "rate limit" in lowered
+            or "rate-limited" in lowered
+            or "rate_limited" in lowered
+        ):
             return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
         if (
             "llm_context_budget_exceeded" in lowered
