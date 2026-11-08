@@ -26,9 +26,9 @@ def test_fed_and_boj_policy_votes_and_planned_etf_sales_are_distinguished():
     boj = next(x for x in data["sources"] if x["source_id"] == "boj_oct30_statement")
     assert fed["facts"]["federal_funds_target_low_pct"] == 3.75
     assert fed["facts"]["federal_funds_target_high_pct"] == 4.0
-    assert fed["facts"]["vote_against"] == 2
+    assert fed["facts"]["votes_against"] == 2
     assert boj["facts"]["overnight_call_rate_target_pct"] == 1.25
-    assert boj["facts"]["vote_against"] == 1
+    assert boj["facts"]["votes_against"] == 1
     assert boj["facts"]["dissenter_proposed_rate_pct"] == 1.5
     assert boj["facts"]["etf_sales_book_value_annual_yen_bn"] == 860
     assert boj["facts"]["etf_sales_change_implementation"] == "2027-01"
