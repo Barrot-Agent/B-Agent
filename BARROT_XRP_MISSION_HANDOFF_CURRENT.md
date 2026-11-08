@@ -1,7 +1,7 @@
 # Barrot XRP Mission — Current Durable Handoff
 
 **Run:** 71  
-**Captured:** 2026-11-08 22:30 UTC reference; current main and PR evidence captured through 22:30 UTC  
+**Captured:** 2026-11-08 22:48 UTC research supplement; repository and PR evidence captured through 22:48 UTC  
 **Repository:** `Barrot-Agent/B-Agent`  
 **Canonical current handoff:** this file  
 **Historical handoff archive:** `BARROT_XRP_MISSION_HANDOFF.md` (1,054,795 bytes; connector range retrieval returned empty content, so do not treat its old trailing status as current)
@@ -89,6 +89,53 @@ Primary-source reconciliation confirms:
 - Exact ASK Coin research distinguishes the inactive/untracked Ask Coin exchange listing at askcoin.net from Permission Coin's ASK token. No XRP relationship is established. The exact phrase actual capital still has no standardized issuer-defined XRP metric; cash received, cash deployed, XRP purchased, in-kind contributions, debt and undrawn capacity must remain separate.
 - Exact “SBIC, ChatGPT SBIC” searches produced no verified new entity. The previously resolved Social Bias Inference Corpus academic usage remains distinct from the Japanese SBIC companies.
 - Kamilah Stevenson remains a corroborated person, but no first-party YouTube channel ownership was verified. No video inventory was attributed to her or to a separate Camilla Stevenson identity.
+
+### Run 71 exact-head handoff/map verification
+- The first map metadata update advanced the map capture timestamp but left last_verified_at_utc at the prior value. Two historical timestamp-consistency tests correctly failed; no tests were weakened.
+- Corrected the map by aligning top-level last_verified_at_utc and ChatGPT.last_verified_at_utc with captured_at_utc, while preserving the historical Run 70 observation records.
+- Corrected map commit/current branch head: 9b0c2bc877d5978c6083e7fef80f02deb59c715c.
+- Exact-head full repository suite: 1,215 passed, 8 subtests passed; core suite 660 passed, 8 subtests; inclusive coverage 58.98%.
+- Installed-wheel verification passed. Six-manifest dependency audit passed. Fail-closed merge gate passed.
+- Evidence: full CI 42531812897; dependency audit 42531813020; fail-closed gate 42531812931.
+- This verifies the map correction on 9b0c2. The following research-handoff supplement creates a new documentation head and requires its own exact-head CI.
+
+### XRP collateral research — Coinbase cbXRP and Morpho
+**Product and custody structure**
+- Coinbase's official loan documentation confirms XRP is eligible collateral for USDC loans powered by Morpho on Base. Coinbase provides the interface; collateral is deposited into Morpho smart contracts, not held as a Coinbase balance-sheet loan asset. The product is unavailable to some jurisdictions, including New York, and Coinbase's documentation says loan proceeds cannot be used for trading on Coinbase.
+- cbXRP is a wrapped Base asset backed 1:1 by native XRP reserves. Base cbXRP token contract: 0xcb585250f852c6c6bf90434ab21a00f02833a4af. Base USDC loan token: 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913.
+- Coinbase proof-of-reserves captures on November 8 show 1:1 backing, but localized pages expose different snapshots: one reports 153,662,229.25 cbXRP supply against 153,664,475.78 XRP reserves; another reports 153,593,901.49 cbXRP against 153,596,148.02 XRP. The 68,327.76 XRP difference may reflect separate update times, but page-local time zones and underlying capture receipts are not normalized. Do not label it a confirmed burn, redemption or reserve outflow.
+
+**Morpho cbXRP/USDC market snapshot**
+- Market selector/ID: Base chain 8453, market 0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109.
+- Morpho UI capture approximately 2026-11-08 22:48 UTC: outstanding loans $56.74M; displayed total liquidity $23.59M; displayed total market size $80.33M; displayed utilization 87.85%; target utilization 90%; borrow rate 7.03%; lend rate 6.16%; LLTV 62.5%; liquidation penalty 12.67%; 1,176 borrower addresses and 199 supplier addresses; displayed realized and unrealized bad debt both zero.
+- The UI's outstanding-loan, total-liquidity and utilization figures do not reconcile under a simple borrow/(borrow+available-liquidity) calculation. Preserve the raw displayed fields separately; verify market state from the REST API before deriving utilization or liquidity headroom.
+- The displayed Chainlink XRP/USD oracle price was 1.11584, close to the 22:30 UTC Kraken/OKX spot observations. An earlier cached UI view showed 1.15147; that older value is superseded and does not establish a current stale-oracle condition. The market UI identifies a one-day heartbeat and 0.5% deviation configuration. Direct on-chain updatedAt was not retrieved in this run.
+- The ten latest liquidation rows displayed at capture (seven at 22:35:35 UTC and three around 21:57 UTC) sum to approximately 34,182.522 USDC repaid and 34,826.96 cbXRP seized. All ten displayed zero bad debt. A separate set of borrower actions around 22:43 UTC showed approximately 1,254.225 USDC repaid and 1,971.64 cbXRP withdrawn by one borrower; this is voluntary deleveraging, not liquidation. These are displayed recent rows, not a complete lifetime event ledger.
+- Coinbase Q3 balance-sheet collateral tables do not identify XRP as a named line item. That does not contradict the Morpho product: the XRP collateral is held in an external on-chain Morpho market rather than necessarily appearing as Coinbase-recognized lending collateral.
+
+**Stress exposure and model implications**
+- A November 6 secondary analysis of public Morpho positions reported 119.87M cbXRP collateral and $59.24M USDC debt across 1,070 positions. Under unchanged borrower positions, a 10% oracle-price shock put $8.84482M debt across 1,070 positions in the conditional liquidation zone; a 5% shock put $3.22961M across 462 positions in that zone. The 10% bucket included 12.73M cbXRP collateral. These are conditional stress buckets, not actual liquidations or forecasts. The source paged 500/500/70 positions and acknowledged snapshot-timing limitations.
+- With LLTV 62.5%, unchanged-position eligibility thresholds are current LTV >=59.375% for a 5% price decline, >=56.25% for 10%, and >=53.125% for 15%. This is a scenario calculation only; borrower repayments, added collateral, oracle timing and liquidator behavior change the result.
+- Liquidation seizes cbXRP, not automatically native XRP. A liquidator may hold or sell cbXRP; native XRP redemption or spot sale requires separate transaction evidence. The product can let holders borrow USDC without immediately selling XRP, but it also creates leverage, liquidation and collateral-concentration risk. Both hypotheses must remain in the scenario set.
+- Priority feature candidates: cbXRP supply/reserve deltas; Morpho total borrow/supply assets and shares; LLTV/IRM/oracle parameters; position LTV distribution; cbXRP collateral amount; oracle price and updatedAt; liquidation debt repaid/collateral seized/bad debt; and 5/10/15% stress buckets.
+
+**Public API ingestion candidate**
+- Morpho documents public read-only REST endpoints for market metadata/state, position health and oracle state. The positions-health endpoint supports cursor pagination, up to 1,000 rows per page, and exposes ltv_computed_at and last_indexed_block. Pages can span refreshes and LTV can lag; never aggregate pages unless block/time consistency is verified.
+- The REST API does not provide every USD aggregate directly; derive debt from raw borrow shares and market state, retain token units/decimals, and obtain oracle values separately.
+- Documented limits: 750 requests/minute; HTTP 429 supplies Retry-After (600 seconds); severe abuse above 20,000 requests/hour can trigger a seven-day cooldown. No SLA. Use a small scheduled request budget, caching and exponential backoff.
+- Direct REST API retrieval was not successfully completed in this run; the Morpho UI and API documentation were inspected. This is a high-priority source candidate, not an implemented or verified Barrot ingestion adapter. Do not resolve wallet addresses to real-world people; retain only the public protocol data needed for aggregate risk features.
+
+### SBI XRP distribution channels and Circle payment rails
+- SBI Holdings' 2026 shareholder benefit offered JPY 2,000 or JPY 8,000 equivalent XRP coupons depending on share count and holding period; its July 31 application deadline has passed.
+- SBI ARUHI's 2026 benefit offered JPY 500 or JPY 1,000 equivalent XRP; its August application period has passed.
+- SBI Shinsei Bank's 2026 benefit offered a JPY 2,000 XRP coupon to eligible shareholders holding at least 100 shares as of March 31. Applications closed August 27 and coupons were mailed October 9; the bank page says the conversion price is scheduled for early December. This is not an open application program.
+- SBI Global Asset Management and SBI Insurance Group announced separate 2026 shareholder-benefit schedules with JPY 2,500/10,000/12,000 XRP-equivalent tiers. Their eligible-share and holding-period rules differ; do not combine them as one SBI Holdings benefit.
+- SBI Shinsei Bank's 2026 yen-term-deposit campaign offered JPY 500 to JPY 20,000 equivalent XRP vouchers for deposits from JPY 300,000 upward. The campaign ended March 31; vouchers were scheduled by May and XRP quantity was to be calculated from the July 2 SBI VC Trade price.
+- SBI VC Trade, Aplus and Visa launched a crypto rewards card on May 1, 2026, allowing card points to be converted into BTC, ETH or XRP. This is an ongoing consumer distribution/onboarding rail.
+- These programs distribute XRP-equivalent rewards; aggregate XRP quantities, treasury sourcing and market-purchase requirements are undisclosed. They are not proof of net spot buying. Distinguish cash deposited into SBI Bank, equity capital contributed to a joint venture, XRP rewards distributed in kind, and XRP purchased in the market.
+- Circle's Q3 2026 release describes Arc mainnet with native USDC, a pending Tazapay acquisition (expected 2027 subject to approvals), Visa Direct stablecoin prefunding with Inyo Global, and Samsung Wallet USDC transfers to bank accounts in 60+ countries. Tazapay's reported annualized TPV and stablecoin share are not equivalent to USDC volume. These are USDC payment rails, not XRP usage.
+- Circle's $100M Binance share sale is equity capital raised by Circle; the monthly USDC incentive fee is a distribution cost. Circle/SBI Japan's approximately $3M initial contributions fund that JV, not XRP purchases. Keep these capital categories separate.
+
 
 ### Prediction-engine implementation boundary
 Main is still materially behind the V3 branch:
