@@ -6,7 +6,7 @@ import pytest
 import requests
 
 from barrot_agent.barrot_brain import BarrotBrain
-from barrot_agent.orchestration.context_budget import (
+from barrot_agent.context_budget import (
     MAX_ESTIMATED_INPUT_TOKENS,
     estimate_messages_tokens,
 )
