@@ -4,7 +4,7 @@
   "captured_at_utc": "2026-11-08T08:04:38Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "323f906026d133c5f9727b740e3ecf47860a6078",
+  "observed_integration_head_before_map_commit": "ce15bc2077eec1b96a329b57fe5673c0bdab31ac",
   "observed_research_head": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -484,7 +484,7 @@
     "run_id": 47,
     "captured_at_utc": "2026-11-08T08:04:38Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "323f906026d133c5f9727b740e3ecf47860a6078",
+    "integration_head_before_map_commit": "ce15bc2077eec1b96a329b57fe5673c0bdab31ac",
     "research_head": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
     "open_pr_inventory": {
       "total": 372,
@@ -526,8 +526,8 @@
     },
     "branch_ancestry": {
       "integration": {
-        "head": "323f906026d133c5f9727b740e3ecf47860a6078",
-        "ahead": 656,
+        "head": "ce15bc2077eec1b96a329b57fe5673c0bdab31ac",
+        "ahead": 657,
         "behind": 0,
         "changed_paths": 176
       },
@@ -555,7 +555,7 @@
     },
     "ci_evidence": {
       "integration": {
-        "head": "323f906026d133c5f9727b740e3ecf47860a6078",
+        "head": "ce15bc2077eec1b96a329b57fe5673c0bdab31ac",
         "full_suite": "1,188 passed, 8 subtests passed",
         "core_suite": "660 passed, 8 subtests passed",
         "inclusive_coverage_pct": 58.78,
@@ -563,10 +563,11 @@
         "dependency_audit": "passed; six manifests audited; no known vulnerabilities reported",
         "fail_closed_gate": "passed; automatic merging disabled",
         "runs": {
-          "ci": 42458608352,
-          "dependency_audit": 42458608368,
-          "fail_closed": 42458608301
-        }
+          "ci": 42462337008,
+          "dependency_audit": 42462336976,
+          "fail_closed": 42462337044
+        },
+        "cache_warning": "GitHub Actions cache-save step reported configured cache budget read-only; it did not fail tests, coverage or wheel verification."
       },
       "research": {
         "head": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
@@ -774,7 +775,6 @@
         "Independent external WORM storage and complete raw-source rebuild are absent.",
         "Historical evaluator covers Binance XRP/USDT and Coinbase XRP/USD hourly closes only.",
         "Coinbase historical backfill is manual-only and bounded; scheduled runs do not backfill.",
-        "Forecast-ledger feature snapshot IDs are not yet resolved against the feature store at issuance.",
         "PSI is univariate and does not detect label/concept drift.",
         "No trained-model out-of-sample lift, validated real-data calibration or sufficient independent shadow outcomes."
       ],
@@ -804,6 +804,25 @@
           "repair planner maps budget/rate-limit markers to blocked state; no patch, commit or remote write"
         ],
         "tests": "tests/test_barrot_brain_context_budget.py and tests/test_ask_barrot_context.py; full #1640 suite passed on head 81894"
+      },
+      "feature_snapshot_verification": {
+        "status": "EXECUTED_AND_TESTED",
+        "implementation": "barrot_agent/evolution/forecast_ledger.py::_verify_feature_snapshots",
+        "call_path": "ForecastLedger.record_forecast invokes _verify_feature_snapshots before database recording.",
+        "checks": [
+          "injected HistoricalFeatureStore required",
+          "unique SHA-256 snapshot IDs",
+          "exact returned snapshot ID",
+          "verified integrity status",
+          "asset scope",
+          "snapshot data cutoff no later than forecast cutoff",
+          "capture and storage times no later than forecast cutoff",
+          "manifest model-facing records",
+          "exact source lineage",
+          "feature IDs present in readiness dataset",
+          "maximum information-availability timestamp equals declared feature_max_timestamp_utc"
+        ],
+        "production_readiness": "Forecast issuance remains fail-closed because no trusted evaluator key is configured and no mature synchronized independent XRP OOS dataset, validated calibration, stable drift or shadow outcomes exist."
       }
     },
     "nine_platform_status": {
@@ -923,7 +942,7 @@
       "status": "MAIN_BLOCKED_INTEGRATION_BRANCH_FIX_VERIFIED"
     },
     "backlog_classification": {
-      "#1640": "Active V3 integration candidate; exact-head code/test CI, inclusive coverage, installed wheel, six-manifest audit and fail-closed gate passed on 323f. Run 47 handoff/map refresh is being added after that verified head; its new exact-head CI must pass before merge.",
+      "#1640": "Active V3 integration candidate; exact-head ce15 verification passed: 1,188 full-suite tests plus 8 subtests, 660 core tests plus 8 subtests, 58.78% coverage, installed wheel, six-manifest dependency audit and fail-closed gate. Current documentation correction commit requires its own exact-head CI.",
       "#1643": "Active XRP research candidate; exact-head full suite 2,323 passed plus 8 subtests, core suite and six-manifest audit passed on 3271; fail-closed gate passed.",
       "#1653": "Blocked; eight unresolved review threads, six unique repository-graph paths preserved; one shared CI path requires reconciliation.",
       "#1644-#1650": "Dependabot/workflow candidates whose changed paths all overlap #1640. #1647 and #1645 sampled workflow blobs are identical; #1644 has older setup-python v5 versus #1640 v7; #1648/#1646 have older requirement baselines than #1640; #1649/#1650 each update a separate dependency in the same legacy requirements file that #1640 already combines at newer versions. Keep open until #1640 is merged and exact supersession is verified on main.",
@@ -936,6 +955,10 @@
       "#1659": "Unique local Llama phone-chat draft; preserve.",
       "#1477/#1547/#1586": "Preserve unique XRP institutional/research work pending path-by-path review.",
       "#1597/#1591": "Preserve unique Kamilah video-discovery work; identity gate remains closed."
+    },
+    "documentation_corrections": {
+      "forecast_ledger_contract_endpoint_count": "Corrected from stale 23/21 to 29/27 to match ENDPOINTS and SCHEDULED_ENDPOINTS in xrp_public_ingestion.py.",
+      "feature_snapshot_verification": "Corrected prior inaccurate claim; issuance-time feature snapshot verification is implemented and test-covered."
     }
   },
   "prior_run_observations": [

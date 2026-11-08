@@ -7100,10 +7100,10 @@ The two mission branches remain the only active mission integration candidates:
 
 | PR | Head | Commits ahead of main | Changed paths | Exact-head full suite |
 |---|---|---:|---:|---:|
-| [#1640 V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640) | `323f906026d133c5f9727b740e3ecf47860a6078` | 656 | 176 | 1,188 passed, 8 subtests |
+| [#1640 V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640) | `ce15bc2077eec1b96a329b57fe5673c0bdab31ac` | 657 | 176 | 1,188 passed, 8 subtests |
 | [#1643 XRP research](https://github.com/Barrot-Agent/B-Agent/pull/1643) | `3271eb4cd595b2f31d8286bcdd1065fafb50e8b7` | 789 | 583 | 2,323 passed, 8 subtests |
 
-Both branches are zero commits behind main but diverge from each other: #1643 is 789 commits ahead of #1640's base and #1640 is 656 commits ahead of #1643's base. They share exactly six changed paths:
+Both branches are zero commits behind main but diverge from each other: #1643 is 789 commits ahead of #1640's base and #1640 is 657 commits ahead of #1643's base. They share exactly six changed paths:
 
 - `.github/workflows/dependency-audit.yml`
 - `BARROT_XRP_MISSION_HANDOFF.md`
@@ -7114,7 +7114,7 @@ Both branches are zero commits behind main but diverge from each other: #1643 is
 
 This leaves 170 integration-only paths and 577 research-only paths. Do not merge the divergent branches together directly; consolidate research onto verified main after V3 integration.
 
-**Exact-head CI evidence before this Run 47 handoff/map refresh:**
+**Exact-head CI evidence on the Run 47 handoff/map head and current research head:**
 
 PR #1640, head `323f906`:
 - Full repository suite: **1,188 passed, 8 subtests passed**.
@@ -7123,7 +7123,7 @@ PR #1640, head `323f906`:
 - Installed-wheel verification passed; the installed package loaded Barrot V3, the XRP mission and canonical data assets.
 - Six-manifest dependency audit passed; no known vulnerabilities reported.
 - Fail-closed gate passed with automatic merging disabled.
-- [Full CI 42458608352](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458608352) · [Dependency audit 42458608368](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458608368) · [Fail-closed gate 42458608301](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458608301).
+- [Full CI 42462337008](https://github.com/Barrot-Agent/B-Agent/actions/runs/42462337008) · [Dependency audit 42462336976](https://github.com/Barrot-Agent/B-Agent/actions/runs/42462336976) · [Fail-closed gate 42462337044](https://github.com/Barrot-Agent/B-Agent/actions/runs/42462337044).
 
 PR #1643, head `3271eb4`:
 - Full repository suite: **2,323 passed, 8 subtests passed**.
@@ -7191,6 +7191,10 @@ The fund universes, missing files, settlement vintages and methods differ. These
 
 ### Prediction-engine status
 
+**Run 47 code-review correction:** the prior handoff statement that feature-snapshot IDs were not resolved at issuance was inaccurate. `barrot_agent/evolution/forecast_ledger.py` implements `_verify_feature_snapshots` at lines 826–934 and invokes it from `record_forecast` before writing a forecast (lines 936–941). The verifier resolves each ID through `HistoricalFeatureStore.verified_snapshot`, validates the exact ID and integrity result, asset coverage, point-in-time cutoff, capture/storage times, manifest source lineage, feature IDs and maximum information-availability timestamp. This is EXECUTED and regression-tested. It does not remove the production blockers: no trusted evaluator public key is configured, no mature synchronized dataset has passed independent OOS evaluation, and no validated model lift/calibration/shadow record supports issuance.
+
+**Documentation consistency correction:** the collector defines 29 endpoint records, 27 scheduled after excluding two non-commercial XRPL public-node sources. `forecast-ledger-contract.md` still said 23/21 in two places. The next integration commit corrects both and adds a regression test against `ENDPOINTS` and `SCHEDULED_ENDPOINTS`.
+
 On #1640 only, 29 endpoint records include 27 scheduled public sources and two excluded XRPL-node sources. The intended schedule is hourly at minute 3 and daily at 00:15 UTC; scheduled ingestion is not on main and has not been verified running on main.
 
 Implemented on the integration branch:
@@ -7207,7 +7211,7 @@ Remaining gaps:
 - Scheduled SEC/regulatory, FRED/Treasury/BOJ, stablecoin mint/burn, custody, collateral, institutional holdings and payment-rail throughput data are missing.
 - Raw receipts are retained 90 days, per-run feature checkpoints seven days and daily feature-store archives 90 days.
 - SQLite triggers and unkeyed hashes are not adversarially immutable; independent external WORM storage and full raw-source rebuild are absent.
-- Forecast-ledger feature snapshot IDs are not yet resolved against the feature store at issuance.
+- Feature snapshot IDs are verified at issuance through an injected `HistoricalFeatureStore`: `record_forecast` calls `_verify_feature_snapshots`, which checks unique SHA-256 IDs, exact snapshot identity, integrity status, asset scope, data cutoff, capture/storage times, manifest records, source lineage and the maximum information-availability timestamp. This path is implemented and covered by forecast-ledger tests. Production forecast issuance remains fail-closed because no trusted evaluator key is configured and no mature synchronized XRP dataset, validated out-of-sample lift/calibration, stable drift or independent shadow outcomes exist.
 - PSI is univariate and does not detect concept/label drift.
 - No trained model has demonstrated out-of-sample lift, validated real-data calibration or sufficient independent shadow outcomes.
 
