@@ -43,7 +43,9 @@ def test_evernorth_one_million_facility_is_ripple_debt_not_kyobo_note():
     assert final["entity_liquidity_and_debt"]["evernorth_facility"]["lender"] == "Ripple Labs Inc."
     assert final["entity_liquidity_and_debt"]["evernorth_facility"]["borrowed_as_of_2026_06_30_usd"] == 0
     assert final["entity_liquidity_and_debt"]["convertible_notes"]["principal_usd"] == 30_000_000
-    assert "NH Investment" in final["entity_liquidity_and_debt"]["convertible_notes"]["purchaser"]
+    note = correction["canonical_debt_view"]["separate_convertible_note"]
+    assert note["principal_usd"] == 30_000_000
+    assert note["purchaser"].startswith("NH Investment & Securities")
 
 
 def test_duplicate_ripple_facility_edges_are_counted_once():
