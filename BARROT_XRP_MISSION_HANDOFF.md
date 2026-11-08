@@ -1,3 +1,22 @@
+# Run 55 CI addendum — 2026-11-08T13:13:08Z
+
+The new #1643 research head `58c65e4277d7b95193452538ef063462aa95af8f` completed exact-head verification:
+
+- Full repository suite: **2,433 passed, 8 subtests passed**.
+- Core suite: 498 passed, 8 subtests.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed.
+- New orderbook/derivatives/ETF-vintage artifact's seven regression tests all passed.
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561562
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561547
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42483561518
+
+The #1640 handoff/map head `636d7fa211007d9750cef0e6419888dbd5b8b431` passed the 660-test core suite, six-manifest dependency audit and fail-closed gate. Its full suite failed one historical map-schema assertion: `test_run34_endpoint_count_and_fail_closed_prediction_status_are_current` raised `KeyError: 'prediction_engine'` because Run 55 replaced `current_run_observations` without copying the top-level prediction-engine contract into that observation. This was a handoff-map compatibility regression, not a Barrot V3 product-code failure. The corrective commit restores `current_run_observations.prediction_engine` from the preserved top-level object. The corrective head must run the full suite and installed-wheel check before it is considered verified.
+
+No test was weakened, no evidence was deleted, and no main write or merge occurred.
+
+---
+
 # Current integrated Barrot handoff — 2026-11-08T13:03:21Z
 
 ## Run 55 — current repository, market-depth and provider-health verification
