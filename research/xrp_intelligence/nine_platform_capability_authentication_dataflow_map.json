@@ -1,10 +1,10 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T11:59:38Z",
+  "captured_at_utc": "2026-11-08T12:10:35.238Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+  "observed_integration_head_before_map_commit": "28560133e39fd5c6e72032a5105fb686c4292188",
   "observed_research_head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -481,7 +481,7 @@
     }
   },
   "next_actions": [
-    "Finish exact-head full-suite, inclusive coverage and installed-wheel verification on the corrected #1640 head.",
+    "Finish exact-head full-suite, inclusive coverage, installed-wheel, dependency and fail-closed verification on the follow-up handoff/map-only commit.",
     "Re-check all 22 #1640 review threads against current code; resolve only findings verified fixed, preserve any still-valid objections.",
     "Reconcile the 19 #1643 research review threads against append-only corrections; do not close them merely because CI passes.",
     "Obtain genuine independent APPROVED reviews and resolve branch-protection/Pages authorization.",
@@ -493,9 +493,9 @@
   "current_run_observations": {
     "run_id": 52,
     "automation_turn": 11,
-    "captured_at_utc": "2026-11-08T11:59:38Z",
+    "captured_at_utc": "2026-11-08T12:10:35.238Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+    "integration_head_before_followup_handoff_commit": "28560133e39fd5c6e72032a5105fb686c4292188",
     "research_head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
     "open_pr_inventory": {
       "total": 372,
@@ -536,8 +536,8 @@
     },
     "branch_ancestry": {
       "integration": {
-        "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
-        "ahead": 671,
+        "head": "28560133e39fd5c6e72032a5105fb686c4292188",
+        "ahead": 672,
         "behind": 0,
         "changed_paths": 177
       },
@@ -560,22 +560,18 @@
     },
     "ci_evidence": {
       "integration": {
-        "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
-        "full_suite": "FAILED: 1,196 passed, 2 failed, 8 subtests passed; two handoff-contract assertions; corrected in Run 52 commit, exact-head rerun pending",
+        "head": "28560133e39fd5c6e72032a5105fb686c4292188",
+        "full_suite": "PASSED: 1,198 passed, 8 subtests passed",
         "core_suite": "660 passed, 8 subtests passed",
         "inclusive_coverage_pct": 58.81,
-        "installed_wheel": "SKIPPED because full repository suite failed",
-        "dependency_audit": "passed; six manifests",
+        "installed_wheel": "PASSED: built wheel, verified packaged mission resource, installed wheel and imported Barrot V3/XRP mission/canonical assets",
+        "dependency_audit": "passed; six manifests; no known vulnerabilities",
         "fail_closed_gate": "passed; merging disabled",
         "runs": {
-          "ci": 42477624879,
-          "dependency_audit": 42477624905,
-          "fail_closed": 42477624841
-        },
-        "failed_tests": [
-          "tests/test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads",
-          "tests/test_xrp_mission_handoff_run34.py::test_run34_endpoint_count_and_fail_closed_prediction_status_are_current"
-        ]
+          "ci": 42478637790,
+          "dependency_audit": 42478637776,
+          "fail_closed": 42478637782
+        }
       },
       "research": {
         "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
@@ -588,7 +584,7 @@
           "dependency_audit": 42477013360,
           "fail_closed": 42477013317
         },
-        "ci_workflow_limitation": "Uses checkout@v4/setup-python@v5; lacks integration branch inclusive coverage and installed-wheel checks. Carry stronger #1640 CI into consolidated successor."
+        "ci_workflow_limitation": "Uses checkout@v4/setup-python@v5; lacks integration branch inclusive coverage and installed-wheel checks."
       }
     },
     "reviews": {
@@ -641,7 +637,7 @@
       "pages_configuration_accessible": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
-        "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+        "head": "28560133e39fd5c6e72032a5105fb686c4292188",
         "mergeable": true,
         "approving_reviews": 0,
         "unresolved_review_threads": 22
@@ -653,14 +649,16 @@
         "unresolved_review_threads": 19
       },
       "merge_performed": false,
-      "reason": "Exact-head #1640 full suite failed two handoff-contract assertions; both PRs have zero APPROVED reviews; branch protection returns HTTP 403; #1640 changes public web paths and Pages deployment authorization is absent."
+      "reason": "Exact-head CI on #1640 code/test head 28560133 passed, but both PRs have zero APPROVED reviews; all 22/19 inline threads remain unresolved; branch protection returns HTTP 403; #1640 changes public web paths and Pages deployment authorization is absent."
     },
     "external_actions": {
       "main_write": false,
       "github_branch_commit": true,
       "non_github_external_write": false,
       "merge": false,
-      "deployment": false,
+      "intentional_or_manual_deployment": false,
+      "new_deployment_observed_this_run": false,
+      "historical_automatic_pages_deployment": true,
       "secret_read_or_rotation": false,
       "space_restart": false,
       "kaggle_submission": false,
@@ -679,16 +677,26 @@
       "created_at": "2026-11-08T11:51:57Z"
     },
     "forecast_status": "NOT_ISSUED",
-    "current_failures": [
-      {
-        "test": "tests/test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads",
-        "cause": "Current handoff section heading did not match the historical current-repository heading contract; Run 52 adds a current-repository heading."
-      },
-      {
-        "test": "tests/test_xrp_mission_handoff_run34.py::test_run34_endpoint_count_and_fail_closed_prediction_status_are_current",
-        "cause": "Per-run observation omitted the prediction_engine snapshot; Run 52 adds the snapshot and explicit readiness booleans."
+    "prior_pre_fix_observation": {
+      "integration_head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+      "full_suite": "FAILED: 1,196 passed, 2 handoff-contract failures, 8 subtests passed",
+      "failure_corrections": "Run 52 heading and per-run prediction-engine snapshot corrected both; exact-head verification now passed on 28560133."
+    },
+    "current_head_verification": {
+      "tested_head": "28560133e39fd5c6e72032a5105fb686c4292188",
+      "full_suite": "1,198 passed, 8 subtests passed",
+      "core_suite": "660 passed, 8 subtests passed",
+      "inclusive_coverage_pct": 58.81,
+      "installed_wheel": true,
+      "dependency_audit": true,
+      "fail_closed_gate": true,
+      "runs": {
+        "ci": 42478637790,
+        "dependency_audit": 42478637776,
+        "fail_closed": 42478637782
       }
-    ]
+    },
+    "next_head_status": "The handoff/map-only follow-up commit is being created now; exact-head checks for that new commit are pending."
   },
   "prior_run_observations": [
     {
@@ -9987,7 +9995,7 @@
       ]
     }
   ],
-  "last_verified_at_utc": "2026-11-08T11:59:38Z",
+  "last_verified_at_utc": "2026-11-08T12:10:35.238Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -10001,8 +10009,8 @@
   },
   "branch_ancestry": {
     "integration": {
-      "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
-      "ahead": 671,
+      "head": "28560133e39fd5c6e72032a5105fb686c4292188",
+      "ahead": 672,
       "behind": 0,
       "changed_paths": 177
     },
@@ -10025,22 +10033,18 @@
   },
   "ci_evidence": {
     "integration": {
-      "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
-      "full_suite": "FAILED: 1,196 passed, 2 failed, 8 subtests passed; two handoff-contract assertions; corrected in Run 52 commit, exact-head rerun pending",
+      "head": "28560133e39fd5c6e72032a5105fb686c4292188",
+      "full_suite": "PASSED: 1,198 passed, 8 subtests passed",
       "core_suite": "660 passed, 8 subtests passed",
       "inclusive_coverage_pct": 58.81,
-      "installed_wheel": "SKIPPED because full repository suite failed",
-      "dependency_audit": "passed; six manifests",
+      "installed_wheel": "PASSED: built wheel, verified packaged mission resource, installed wheel and imported Barrot V3/XRP mission/canonical assets",
+      "dependency_audit": "passed; six manifests; no known vulnerabilities",
       "fail_closed_gate": "passed; merging disabled",
       "runs": {
-        "ci": 42477624879,
-        "dependency_audit": 42477624905,
-        "fail_closed": 42477624841
-      },
-      "failed_tests": [
-        "tests/test_xrp_mission_handoff_run27.py::test_run28_handoff_is_latest_and_preserves_verified_heads",
-        "tests/test_xrp_mission_handoff_run34.py::test_run34_endpoint_count_and_fail_closed_prediction_status_are_current"
-      ]
+        "ci": 42478637790,
+        "dependency_audit": 42478637776,
+        "fail_closed": 42478637782
+      }
     },
     "research": {
       "head": "c32fec675b6285aca3445f1f47d5eb2e3480e6f8",
@@ -10053,7 +10057,7 @@
         "dependency_audit": 42477013360,
         "fail_closed": 42477013317
       },
-      "ci_workflow_limitation": "Uses checkout@v4/setup-python@v5; lacks integration branch inclusive coverage and installed-wheel checks. Carry stronger #1640 CI into consolidated successor."
+      "ci_workflow_limitation": "Uses checkout@v4/setup-python@v5; lacks integration branch inclusive coverage and installed-wheel checks."
     }
   },
   "reviews": {
@@ -10242,7 +10246,7 @@
     "pages_configuration_accessible": false,
     "pages_deployment_authorized": false,
     "pr_1640": {
-      "head": "db3434834fea60ad6e68d9aa8baeb0f7d49908aa",
+      "head": "28560133e39fd5c6e72032a5105fb686c4292188",
       "mergeable": true,
       "approving_reviews": 0,
       "unresolved_review_threads": 22
@@ -10254,14 +10258,16 @@
       "unresolved_review_threads": 19
     },
     "merge_performed": false,
-    "reason": "Exact-head #1640 full suite failed two handoff-contract assertions; both PRs have zero APPROVED reviews; branch protection returns HTTP 403; #1640 changes public web paths and Pages deployment authorization is absent."
+    "reason": "Exact-head CI on #1640 code/test head 28560133 passed, but both PRs have zero APPROVED reviews; all 22/19 inline threads remain unresolved; branch protection returns HTTP 403; #1640 changes public web paths and Pages deployment authorization is absent."
   },
   "external_actions": {
     "main_write": false,
     "github_branch_commit": true,
     "non_github_external_write": false,
     "merge": false,
-    "deployment": false,
+    "intentional_or_manual_deployment": false,
+    "new_deployment_observed_this_run": false,
+    "historical_automatic_pages_deployment": true,
     "secret_read_or_rotation": false,
     "space_restart": false,
     "kaggle_submission": false,
@@ -10282,14 +10288,15 @@
     },
     "current_main_full_repository_suite": "NOT_RUN_ON_CURRENT_MAIN_SHA_DURING_RUN_52",
     "pages_deployment_configuration_accessible": false,
-    "prior_pages_deployment_run": {
+    "historical_automatic_pages_deployment": {
       "run_id": 41799855489,
       "conclusion": "success",
-      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
-    }
+      "occurred_before_run_52": true
+    },
+    "no_new_pages_deployment_observed_this_run": true
   },
   "backlog_classification": {
-    "#1640": "Active V3 integration candidate; current exact-head full suite failed two handoff-contract assertions; Run 52 adds the expected heading and per-run prediction-engine snapshot; exact-head rerun pending.",
+    "#1640": "Active V3 integration candidate; code/test head 28560133 exact-head verified: 1,198 full-suite passed, 8 subtests; 660 core passed, 8 subtests; 58.81% coverage; installed wheel, six-manifest dependency audit and fail-closed gate passed. Follow-up handoff/map-only commit now pending its own exact-head rerun.",
     "#1643": "Active XRP research candidate; exact-head full suite 2,398 passed plus 8 subtests; six-manifest audit and fail-closed gate passed; 19 unresolved review threads; carry stronger #1640 CI on consolidation.",
     "#1642": "Overlapping prediction snapshot-gate draft; retain until path-by-path main verification.",
     "#1644-#1650": "Dependency/workflow PRs overlap #1640; retain until exact main verification and supersession.",
@@ -10301,5 +10308,5 @@
     "#1597/#1591": "Preserve unique Kamilah video-discovery work; personal channel identity gate remains closed.",
     "other_open_prs": "Unique/unreviewed until individually reconciled; no bulk close."
   },
-  "last_run_status": "Run 52 inspected current main, all four open-PR pages, complete recursive trees for main and both mission branches, exact branch ancestry, current CI, reviews, security visibility and durable handoff; diagnosed two exact-head #1640 handoff-contract failures and added the matching per-run snapshot/heading correction on the existing branch. Exact-head rerun pending; no merge or main write."
+  "last_run_status": "Run 52 corrected two #1640 handoff-contract failures. Exact-head code/test head 28560133 passed 1,198 full-suite tests plus 8 subtests, 660 core tests plus 8 subtests, 58.81% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. A follow-up handoff/map-only commit is being added to record these results and narrow deployment/write scope; its own exact-head checks remain pending."
 }

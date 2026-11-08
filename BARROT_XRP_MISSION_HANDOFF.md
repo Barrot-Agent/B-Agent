@@ -49,6 +49,26 @@
 - #1640 changes public `web/` paths. Deployment authorization remains absent.
 - **No merge.** Zero independent approvals, unresolved review threads, unverified branch-protection enforcement and unresolved Pages authorization remain blockers.
 
+### Run 52 exact-head verification addendum — 2026-11-08T12:10:35.238Z
+
+**#1640 code/test head `28560133e39fd5c6e72032a5105fb686c4292188` is now verified.**
+
+- Full repository suite: **1,198 passed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **58.81%**, above the 53% threshold.
+- Wheel build, packaged mission resource and installed-wheel imports passed; the installed wheel loads Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit passed; no known vulnerabilities found.
+- Fail-closed merge gate passed and explicitly kept automatic merging disabled.
+
+Exact-head evidence:
+- [Full repository CI — 42478637790](https://github.com/Barrot-Agent/B-Agent/actions/runs/42478637790)
+- [Dependency/security audit — 42478637776](https://github.com/Barrot-Agent/B-Agent/actions/runs/42478637776)
+- [Fail-closed gate — 42478637782](https://github.com/Barrot-Agent/B-Agent/actions/runs/42478637782)
+
+The preceding failing head `db3434834fea60ad6e68d9aa8baeb0f7d49908aa` had two handoff-contract failures. The Run 52 heading and per-run prediction-engine snapshot corrected both. The above results apply to `28560133`, not to a later commit.
+
+This follow-up changes only the durable handoff and nine-platform map to record the verification and narrow deployment/write scope. It will trigger a fresh exact-head run; do not treat this follow-up commit as verified until its own full suite, coverage, wheel, dependency audit and fail-closed gate finish.
+
 ### Current research and prediction status
 
 - The latest #1643 research artifacts remain the exchange-balance/RLUSD/x402/phrase reconciliation and cross-provider derivatives open-interest/funding reconciliation committed at Run 51. Their surfaced source text was not raw HTTP bytes, so they remain research-only and model-ineligible.
@@ -64,7 +84,7 @@
 
 ChatGPT-to-GitHub is the only verified persistent connection. Copilot activity is COMMENTED, not approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flow. No external model received repository data.
 
-This run performs a GitHub branch write only: one commit to the existing #1640 branch. No main-branch write, merge, non-GitHub external write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or destructive worktree operation is performed. No new PR is created.
+This run performs a GitHub branch write only: one commit to the existing #1640 branch. No main-branch write, merge or non-GitHub external write is performed. No intentional or manual deployment is triggered; the historical automatic Pages deployment run 41799855489 is recorded above, and no new Pages deployment is observed in Run 52. No secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or destructive worktree operation is performed. No new PR is created.
 
 ### Backlog classification
 
