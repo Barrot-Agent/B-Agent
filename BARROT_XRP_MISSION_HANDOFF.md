@@ -1,4 +1,4 @@
-# Current integrated Barrot handoff — 2026-11-08T06:04:16Z
+# Current integrated Barrot handoff — 2026-11-08T06:22:31.492Z
 
 ## Run 44 — current repository state
 
@@ -8,13 +8,13 @@
 
 ### Repository and branch state
 
-The current main tree has **1,403 entries, 1,298 files, 493 Python files, 90 test modules and 86 workflow YAML files**. The #1640 integration tree has 1,478 entries, 1,365 files, 547 Python files, 125 test modules and 79 workflow YAML files. The #1643 research tree has 1,963 entries, 1,857 files, 721 Python files, 315 test modules, 78 workflow YAML files and 341 XRP JSON artifacts. All inspected recursive trees were complete, not truncated.
+The current main tree has **1,403 entries, 1,298 files, 493 Python files, 90 test modules and 86 workflow YAML files**. The #1640 integration tree has 1,478 entries, 1,365 files, 547 Python files, 125 test modules and 79 workflow YAML files. The #1643 research tree has 1,968 entries, 1,862 files, 723 Python files, 320 test modules, 78 workflow YAML files and 344 XRP JSON artifacts. All inspected recursive trees were complete, not truncated.
 
 All four open-PR pages were fetched: **372 open PRs (356 drafts, 16 non-drafts)**; 364 target main and 8 target other bases. No PR was created or closed.
 
-- [#1640 — V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640): exact current head `3b5d7994f586e41dda3a13c72e2d29548a694148`, 176 changed paths, 640 commits ahead of main and zero behind.
-- [#1643 — XRP research](https://github.com/Barrot-Agent/B-Agent/pull/1643): exact current head `23f1cbfe5ef105701df22ac778ff32524ded2d76`, 565 changed paths, 773 commits ahead of main and zero behind.
-- The branches diverge (research is 773 commits ahead of integration; integration is 640 commits behind research). They share exactly six paths: dependency-audit workflow, durable handoff, Kamilah candidate registry, Pillars script, Kamilah identity-gate test and Pillars read-only test. Preserve all six deliberately. There are 170 integration-only and 559 research-only paths.
+- [#1640 — V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640): exact current head `da014501cebc8b8a964485549ac791b26ce88262`, 176 changed paths, 640 commits ahead of main and zero behind.
+- [#1643 — XRP research](https://github.com/Barrot-Agent/B-Agent/pull/1643): exact current head `18551055debe4e39814fdf54c7cc297430e656c0`, 570 changed paths, 779 commits ahead of main and zero behind.
+- The branches diverge (research is 779 commits ahead of integration; integration is 640 commits behind research). They share exactly six paths: dependency-audit workflow, durable handoff, Kamilah candidate registry, Pillars script, Kamilah identity-gate test and Pillars read-only test. Preserve all six deliberately. There are 170 integration-only and 564 research-only paths.
 
 ### Exact-head verification
 
@@ -27,16 +27,16 @@ All four open-PR pages were fetched: **372 open PRs (356 drafts, 16 non-drafts)*
 - Six-manifest dependency audit passed with no known vulnerabilities in root runtime, development, supplemental, Hugging Face Space, legacy and pyproject dependencies.
 - Fail-closed merge gate passed; automatic merging remains disabled.
 
-Evidence: [Full CI 42449861204](https://github.com/Barrot-Agent/B-Agent/actions/runs/42449861204) · [Six-manifest dependency audit 42449861171](https://github.com/Barrot-Agent/B-Agent/actions/runs/42449861171) · [Fail-closed gate 42449861191](https://github.com/Barrot-Agent/B-Agent/actions/runs/42449861191).
+Evidence: [Full CI 42453773374](https://github.com/Barrot-Agent/B-Agent/actions/runs/42453773374) · [Six-manifest dependency audit 42453773355](https://github.com/Barrot-Agent/B-Agent/actions/runs/42453773355) · [Fail-closed gate 42453773353](https://github.com/Barrot-Agent/B-Agent/actions/runs/42453773353).
 
-**#1643, exact head `23f1cbfe`: VERIFIED**
+**#1643, exact head `18551055`: VERIFIED**
 
-- Full repository suite: **2,302 passed, 8 subtests passed**.
+- Full repository suite: **2,311 passed, 8 subtests passed**.
 - Core suite: **498 passed, 8 subtests passed**.
 - Six-manifest dependency audit passed with no known vulnerabilities.
 - Fail-closed merge gate passed; automatic merging remains disabled.
 
-Evidence: [Full CI 42449672245](https://github.com/Barrot-Agent/B-Agent/actions/runs/42449672245) · [Six-manifest dependency audit 42449672209](https://github.com/Barrot-Agent/B-Agent/actions/runs/42449672209) · [Fail-closed gate 42449672194](https://github.com/Barrot-Agent/B-Agent/actions/runs/42449672194).
+Evidence: [Full CI 42454286278](https://github.com/Barrot-Agent/B-Agent/actions/runs/42454286278) · [Six-manifest dependency audit 42454286279](https://github.com/Barrot-Agent/B-Agent/actions/runs/42454286279) · [Fail-closed gate 42454286264](https://github.com/Barrot-Agent/B-Agent/actions/runs/42454286264).
 
 The research branch still inherits checkout@v4/setup-python@v5 and does not run #1640's inclusive coverage or installed-wheel verification. Carry the stronger #1640 CI during consolidation.
 
@@ -67,7 +67,7 @@ Both PRs are non-draft and mergeable, and their exact-head tests/security checks
 ### Backlog classification
 
 - **#1640:** active V3 integration candidate; exact-head full suite, core, coverage, wheel, dependency audit and fail-closed gate green.
-- **#1643:** active XRP research candidate; exact-head full suite, core, dependency audit and fail-closed gate green. Preserve 559 research-only paths and carry stronger #1640 CI.
+- **#1643:** active XRP research candidate; exact-head full suite, core, dependency audit and fail-closed gate green. Preserve 564 research-only paths and carry stronger #1640 CI.
 - **#1642:** draft; 7 paths represented in #1640; retain until #1640 content is verified on main.
 - **#1644–#1650:** seven open non-draft Dependabot PRs. Their dependency/workflow paths are represented in #1640; reconcile exact versions and verify on main before closing any.
 - **#1317, #1318, #1320:** older structural paths represented in #1640; retain pending content reconciliation and main verification.
@@ -88,13 +88,47 @@ Both PRs are non-draft and mergeable, and their exact-head tests/security checks
 
 The remaining drafts are not all individually reconciled. No bulk closure.
 
-### XRP research continuity
+### XRP research continuity and Run 44 follow-up
 
-No new market receipt or institutional research artifact was added in this run. The latest timestamped paired market receipt remains [20261108T033950Z Kraken/OKX Level-1 reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T033950Z-xrp-kraken-okx-spot-level1-reconciliation.json). Kraken last was $1.15851 without provider event time; OKX last was 1.1583 USDT with event time 03:37:17.569 UTC. It is Level-1 only, not synchronized executable depth; USD/USDT is not normalized. It remains model-ineligible.
+Three append-only research artifacts and two regression-test modules were added to the existing #1643 branch; no new PR was created.
 
-The #1643 branch retains the Evernorth capital-structure reconciliation and the correction that the 39.9% SBI-affiliated threshold is measured against outstanding Pubco Class A Common Stock, not a voting-power cap. The 2,359,038 Class C figure belongs to the October 30 424B3, not the October 9 8-K; the issuer filings' aggregate share-count difference remains unresolved and they are not independent sources.
+1. [RLUSD/USDC/JPYSC supply, custody and collateral reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T061536Z-rlusd-usdc-jpysc-custody-collateral-reconciliation.json)
+2. [Append-only RLUSD secondary-source correction](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T061626Z-rlusd-xrpl-secondary-source-correction.json)
+3. [Kraken/OKX/Binance timestamped spot snapshot](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T061808Z-xrp-kraken-okx-binance-spot-freshness-snapshot.json)
 
-Japan's SBIC East/Central/West entities remain distinct from SBI Holdings. Tokyo SBIC's ChatGPT training is educational activity, not an OpenAI partnership. ASK Coin remains distinct from Permission Coin's ASK token, with no verified XRP relationship. The seven-entry Kamilah video inventory remains publisher-side attribution only; personal-channel ownership is unverified.
+Regression coverage:
+- [Stablecoin/custody reconciliation tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_rlusd_usdc_jpysc_custody_collateral_reconciliation_20261108.py)
+- [Spot API freshness and venue-quality tests](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/tests/test_xrp_spot_api_snapshot_20261108.py)
+
+**Stablecoin supply and capital-flow distinctions**
+
+- Ripple's Nov 5 dashboard reports RLUSD circulation of **$2.6329B** and reserve funds of **$2.7480B**. The displayed difference is $115.1M (104.37% reserve-funds/circulation ratio). Compared with the Oct 29 dashboard snapshot, circulation is up $5.9M while displayed reserve funds are down $10.6M; the reported surplus is down $16.5M. These are two issuer-dashboard observations, not independent attestations.
+- The last independent report preserved in [the Deloitte reserve-attestation vintage reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261106T031500Z-rlusd-reserve-attestation-vintage-reconciliation.json) is dated Oct 26 and measures Sep 30: 2,399,995,528 outstanding units against $2,524,008,274 reserve market value (about 105.17%). Deloitte & Touche LLP's report lists U.S. Treasury bills, government money-market funds and cash deposits; no XRP/crypto reserve category. The Nov 5 dashboard is 36 days later and is not attested by that September report.
+- Cryptoeconomics' secondary transcription of Circle's dashboard reports USDC circulation of **$69.21B on Nov 5**, down from $69.76B on Nov 2 (about $550M / 0.79%). Circle's official page confirms the Nov 5 as-of date, but the numeric value was not exposed in this rendered capture. Treat the number as a secondary transcription, not an independent reserve attestation.
+- SBI VC Trade reported JPYSC handling balance above **¥30B** and lending balance above **¥10B** on Nov 2. The lending balance is included in the handling total, not additive. SBI says public-chain circulation remains a future objective subject to legal changes. These are not XRP liquidity, XRP collateral or public-chain supply.
+- SBI VC Trade's June 24 RLUSD launch notice classified RLUSD as a Type 4 electronic payment instrument under SBI's Japanese-law interpretation and specified Ethereum-only deposits/withdrawals at launch. No later primary confirmation of SBI VCTRADE XRPL deposits/withdrawals was located in this pass.
+- Coinbase's Oct 28 notice says RLUSD is available on Prime, Exchange and retail, with deposits/withdrawals on XRPL, Base and Ethereum. Coinbase Global Exchange collateral availability was future at launch. BNY reports XRP/RLUSD custody support for eligible institutional clients and primary RLUSD reserve custody, but discloses no customer balances; direct mint/redeem through BNY remains future. Standard Chartered's DIFC branch RLUSD custody on XRPL is reported live; LMAX collateral mirroring remains planned, not live.
+- OCC's corporate-application record is consummated/effective Oct 26 for Ripple National Trust Bank. Ripple describes reserve-management, collateral-trustee and fiduciary-custody permissions, but the bank is separate from Standard Custody & Trust Company LLC, the RLUSD issuer; commencement of customer operations is unverified.
+- XRP Insights' Nov 7 secondary dashboard reports about $884.3M RLUSD on XRPL and $1.79B on Ethereum (33%/67%), excluding Base, Optimism, Ink, Unichain and XRPL EVM sidechain. It did not preserve raw ledger receipts. Do not compare its two-chain subtotal directly with Ripple's Nov 5 all-chain dashboard total.
+
+**Source correction:** the first Run 44 stablecoin artifact contained an unverified Coindaro URL/claim for an Oct 30 XRPL supply event. The append-only correction artifact invalidates that record for citation/model use and substitutes the XRP Insights secondary split. The original artifact remains preserved for auditability; no claim is made that the unverified event is false.
+
+**Latest spot capture — 2026-11-08T06:18:08.678Z**
+
+| Metric | Kraken XRP/USD | OKX XRP-USDT |
+|---|---:|---:|
+| Last | $1.15945 | 1.1659 USDT |
+| Bid / ask | 1.15944 / 1.15953 | 1.1659 / 1.1660 |
+| 24h volume | 13.342M XRP | 20.232M XRP |
+| Level-1 spread | 0.776 bps | 0.858 bps |
+| Bid-size share | 44.18% | 66.64% |
+| Provider event time | Not supplied | 06:13:03.074Z |
+
+OKX was 305.604 seconds old at capture, beyond the 300-second freshness limit. Kraken supplied no provider event timestamp. Binance premium-index returned HTTP 451. The raw last-price gap was 0.556%, but USD/USDT is not normalized and the venues are asynchronous. Kraken's top-of-book was ask-heavier while OKX was bid-heavier. Level-1 only; no synchronized multi-level executable depth, fees or slippage. The exact response strings were hashed, but HTTP wire bytes and headers were not retained.
+
+**Market and stablecoin model admission: prohibited. Forecast: NOT_ISSUED.** No XRP purchase, XRP collateral balance, institutional custody balance or XRP settlement volume attributable to these stablecoin relationships was established.
+
+Japan's SBIC East/Central/West statutory regional investment companies remain distinct from SBI Holdings. Tokyo SBIC's ChatGPT training is educational activity, not an OpenAI partnership. ASK Coin remains distinct from Permission Coin's ASK token, with no verified XRP relationship. The seven-entry Kamilah video inventory remains publisher-side attribution only; personal-channel ownership is unverified.
 
 ### Prediction-engine readiness
 
@@ -125,13 +159,13 @@ Next actions:
 
 1. Obtain genuine independent approving reviews for #1640 and #1643, and authorized confirmation of branch-protection and Pages deployment behavior.
 2. Merge #1640 only after all approvals, exact-head checks, security gates and external-side-effect conditions are satisfied; verify the merge commit, resulting main tree, automatic workflow side effects and main CI.
-3. Consolidate #1643's 559 research-only paths onto verified main, reconcile all six shared paths, preserve the 21-candidate Kamilah registry and Evernorth corrections, and carry #1640's stronger CI.
+3. Consolidate #1643's 564 research-only paths onto verified main, reconcile all six shared paths, preserve the 21-candidate Kamilah registry and Evernorth corrections, and carry #1640's stronger CI.
 4. Preserve/reconcile #1615's four unique audit records and other unique research PRs; close only exact superseded duplicates after successor content is verified on main.
 5. Expand scheduled ingestion to regulatory, macro, stablecoin, custody, collateral, institutional and payment-rail sources.
 6. Establish independently controlled durable raw-source archival and deterministic feature-store rebuild.
 7. Accumulate synchronized historical data, validate out-of-sample lift/calibration/drift and independent shadow outcomes before any directional forecast.
 
-**Run 44 map update commit:** `d9be5bf0c2f0f05aec6f922deb9f80b0e0edb46f`. The handoff update follows the map commit on the same existing #1640 branch; the branch ref is authoritative for the resulting head.
+**Run 44 map update commit:** `ec13c0bc14c364602d79c65adecb887a9fe31838`. The handoff update follows the map commit on the same existing #1640 branch; the branch ref is authoritative for the resulting head.
 
 No PR was created or closed. No main write, merge, deployment, secret read/rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree operation occurred.
 
@@ -154,7 +188,7 @@ All four open-PR pages were fetched: **372 open PRs (356 drafts, 16 non-drafts)*
 
 - [#1640 — V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640): current head `ed0947d1fa606cb10b5d580efb396f8cc0e88cd3`, 176 changed paths, 638 commits ahead of main and zero behind.
 - [#1643 — XRP research](https://github.com/Barrot-Agent/B-Agent/pull/1643): current head `23f1cbfe5ef105701df22ac778ff32524ded2d76`, 565 changed paths, 772 commits ahead of main and zero behind.
-- The branches diverge (research is 772 commits ahead of integration; integration is 638 commits behind research). They share exactly six paths: dependency-audit workflow, durable handoff, Kamilah candidate registry, Pillars script, Kamilah identity-gate test and Pillars read-only test. Preserve all six deliberately. There are 170 integration-only and 559 research-only paths.
+- The branches diverge (research is 772 commits ahead of integration; integration is 638 commits behind research). They share exactly six paths: dependency-audit workflow, durable handoff, Kamilah candidate registry, Pillars script, Kamilah identity-gate test and Pillars read-only test. Preserve all six deliberately. There are 170 integration-only and 564 research-only paths.
 
 ### Exact-head verification
 
