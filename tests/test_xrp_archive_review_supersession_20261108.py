@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,9 +33,9 @@ def test_c09_supersedes_only_the_incorrect_C07_average_cost():
     archive = load(ARCHIVE_REVIEW)
     c07 = next(item for item in archive["correction_overlay"]["entries"] if item["correction_id"] == "C07_EVERNORTH_CAPITAL_LEDGER")
     old_avg = next(item for item in c07["field_corrections"] if item["path"] == "$.xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_usd_per_xrp")
-    assert old_avg["canonical_value"] == 214050000 / 84365876
+    assert math.isclose(old_avg["canonical_value"], 214050000 / 84365876, rel_tol=0, abs_tol=5e-9)
     assert c09["supersedes_correction_id"] == "C07_EVERNORTH_CAPITAL_LEDGER"
-    assert c09["superseded_value"] == old_avg["canonical_value"]
+    assert math.isclose(c09["superseded_value"], old_avg["canonical_value"], rel_tol=0, abs_tol=5e-9)
     assert c09["canonical_values"]["cash_received_exact_usd"] == 214049995
     assert c09["canonical_values"]["cash_received_summary_rounded_usd"] == 214050000
     assert c09["canonical_values"]["cash_used_for_xrp_purchase_usd"] == 214000000
@@ -85,7 +86,7 @@ def test_c10_quarantines_historical_pillars_clean_result_without_http_status():
     correction = load(CORRECTION)
     c10 = next(item for item in correction["corrections"] if item["correction_id"] == "C10_PILLARS_FICTION_SCAN_HTTP_STATUS_INCONCLUSIVE")
     observation = load(PILLARS_OBSERVATION)
-    item = next(x for x in observation["workflow"] if x["id"] == c10["target_observation_id"])
+    item = next(x for x in observation["workflow_observations"] if x["id"] == c10["target_observation_id"])
     assert item["status"] == c10["original_status"] == "PASS_SOURCE_ONLY"
     assert c10["canonical_status"] == "INCONCLUSIVE_HTTP_STATUS_NOT_CAPTURED"
     assert "without validating or recording HTTP status" in c10["canonical_detail"]

@@ -162,7 +162,7 @@
       "correction_id": "C10_PILLARS_FICTION_SCAN_HTTP_STATUS_INCONCLUSIVE",
       "target_artifact": "research/xrp_intelligence/20261104T141402Z-nine-platform-capability-authentication-observation.json",
       "target_observation_id": "PILLARS-REPO-SOURCE-FICTION-01",
-      "target_array_pointer": "/workflow/4",
+      "target_array_pointer": "/workflow_observations/4",
       "original_status": "PASS_SOURCE_ONLY",
       "canonical_status": "INCONCLUSIVE_HTTP_STATUS_NOT_CAPTURED",
       "original_detail": "GitHub main source fiction scan was clean; deployed runtime was not inspected.",
@@ -230,5 +230,16 @@
     "Use the corrected PILLARS script in a future authorized read-only run; do not deploy or change secrets.",
     "Keep the historical PILLARS fiction-scan result inconclusive until its HTTP status can be independently verified.",
     "Keep the Evernorth purchase-cost value at $214M; never use $214.05M rounded cash received as the purchase-cost numerator."
+  ],
+  "correction_revision": 2,
+  "revision_history": [
+    {
+      "revision": 2,
+      "at_utc": "2026-11-08T03:50:00Z",
+      "changes": [
+        "Corrected C10 target array pointer to workflow_observations.",
+        "Clarified that C07 stored average is rounded to eight decimals while C09 superseded_value retains unrounded arithmetic precision."
+      ]
+    }
   ]
 }
