@@ -18,6 +18,11 @@ import requests
 from barrot_agent.evolution.cognitive_integrity import CognitiveIntegrityLoop
 from barrot_agent.evolution.event_bus import CognitiveEvent, CognitiveEventBus
 from barrot_agent.evolution.reactive_observers import ReactiveCorroborationObserver
+from barrot_agent.orchestration.context_budget import (
+    context_budget_marker,
+    exceeds_context_budget,
+    MAX_RESERVED_OUTPUT_TOKENS,
+)
 
 ANCHOR = 0.707106781186548
 
@@ -97,6 +102,8 @@ class BarrotBrain:
     def __init__(self):
         self.auth = GitHubAppAuth()
         self.groq_key = os.getenv("GROQ_API_KEY", "")
+        self.fireworks_key = os.getenv("FIREWORKS_API_KEY", "")
+        self.allow_fireworks_fallback = os.getenv("BARROT_ALLOW_FIREWORKS_FALLBACK", "").strip().lower() in {"1", "true", "yes"}
         self.integrity = CognitiveIntegrityLoop()
         self.event_bus = CognitiveEventBus()
         self.reactive_observer = ReactiveCorroborationObserver()
@@ -156,7 +163,11 @@ class BarrotBrain:
             messages.extend(history)
         messages.append({"role": "user", "content": message})
 
-        # Try GitHub Models first
+        exceeded, estimated_input_tokens = exceeds_context_budget(messages)
+        if exceeded:
+            return context_budget_marker(estimated_input_tokens)
+
+        # Try GitHub Models first. Groq is the configured secondary provider.
         if self.auth.ready:
             try:
                 token = self.auth.get_token()
@@ -179,62 +190,79 @@ class BarrotBrain:
                     "github", message, r.json()["choices"][0]["message"]["content"]
                 )
             except Exception as e:
-                logger.warning("GitHub Models backend failed, falling back to Groq: %s", e)
+                logger.warning("GitHub Models backend failed; trying configured Groq fallback: %s", e)
 
-        # Groq fallback with rate-limit retry
+        groq_error = "GROQ_API_KEY is not configured."
         if self.groq_key:
-            import random
-
-            for attempt in range(6):
-                try:
-                    r = requests.post(
-                        self.GROQ_ENDPOINT,
-                        headers={
-                            "Authorization": f"Bearer {self.groq_key}",
-                            "Content-Type": "application/json",
-                        },
-                        json={"model": self.GROQ_MODEL, "messages": messages, "max_tokens": 4096},
-                        timeout=20,
+            try:
+                r = requests.post(
+                    self.GROQ_ENDPOINT,
+                    headers={
+                        "Authorization": f"Bearer {self.groq_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": self.GROQ_MODEL,
+                        "messages": messages,
+                        "max_tokens": MAX_RESERVED_OUTPUT_TOKENS,
+                    },
+                    timeout=20,
+                )
+                if r.status_code == 429:
+                    try:
+                        detail = str(r.json().get("error", r.json()))[:1000]
+                    except Exception:
+                        detail = str(getattr(r, "text", "HTTP 429"))[:1000]
+                    return (
+                        "[BARROT_RATE_LIMITED] provider=Groq; status=429; "
+                        f"detail={detail}; no retry or unverified provider fallback was attempted."
                     )
-                    if r.status_code == 429 and attempt < 5:
-                        wait = min(60, 2**attempt) + random.uniform(0, 1)
-                        logger.warning("Groq rate-limited; retrying in %.1fs", wait)
-                        time.sleep(wait)
-                        continue
-                    r.raise_for_status()
-                    return self._record_reasoning(
-                        "groq", message, r.json()["choices"][0]["message"]["content"]
-                    )
-                except requests.RequestException as e:
-                    if attempt == 5:
-                        logger.warning("Groq backend failed, falling back to Fireworks: %s", e)
-                        break
-                    wait = min(60, 2**attempt) + random.uniform(0, 1)
-                    logger.warning("Groq request failed; retrying in %.1fs: %s", wait, e)
-                    time.sleep(wait)
-            # fall through to Fireworks
+                r.raise_for_status()
+                return self._record_reasoning(
+                    "groq", message, r.json()["choices"][0]["message"]["content"]
+                )
+            except requests.RequestException as e:
+                groq_error = str(e)
+                logger.warning("Groq backend unavailable; automatic retry is disabled: %s", e)
 
-        # Fireworks fallback
-        fw_key = os.getenv("FIREWORKS_API_KEY", "")
-        if fw_key:
+        # Fireworks is outside the nine-platform coordination map. It is never
+        # used unless an operator explicitly opts in through configuration.
+        if self.fireworks_key and self.allow_fireworks_fallback:
             try:
                 r = requests.post(
                     self.FIREWORKS_ENDPOINT,
                     headers={
-                        "Authorization": f"Bearer {fw_key}",
+                        "Authorization": f"Bearer {self.fireworks_key}",
                         "Content-Type": "application/json",
                     },
-                    json={"model": self.FIREWORKS_MODEL, "messages": messages, "max_tokens": 1024},
+                    json={
+                        "model": self.FIREWORKS_MODEL,
+                        "messages": messages,
+                        "max_tokens": 1024,
+                    },
                     timeout=20,
                 )
+                if r.status_code == 429:
+                    try:
+                        detail = str(r.json().get("error", r.json()))[:1000]
+                    except Exception:
+                        detail = str(getattr(r, "text", "HTTP 429"))[:1000]
+                    return (
+                        "[BARROT_RATE_LIMITED] provider=Fireworks; status=429; "
+                        f"detail={detail}; no retry was attempted."
+                    )
                 r.raise_for_status()
                 return self._record_reasoning(
                     "fireworks", message, r.json()["choices"][0]["message"]["content"]
                 )
             except Exception as e:
-                logger.error("Fireworks backend failed: %s", e)
-        logger.error("All backends failed for this request.")
-        return "[BARROT] All backends failed."
+                logger.error("Explicitly enabled Fireworks fallback failed: %s", e)
+
+        return (
+            "[BARROT_PROVIDER_UNAVAILABLE] "
+            f"GitHub Models/Groq unavailable: {groq_error} "
+            "Fireworks fallback is disabled unless BARROT_ALLOW_FIREWORKS_FALLBACK=true."
+        )
 
     @property
     def backend_name(self) -> str:
@@ -242,6 +270,8 @@ class BarrotBrain:
             return "GitHub Models"
         if self.groq_key:
             return f"Groq {self.GROQ_MODEL}"
+        if self.fireworks_key and self.allow_fireworks_fallback:
+            return f"Fireworks {self.FIREWORKS_MODEL}"
         return "None"
 
 
