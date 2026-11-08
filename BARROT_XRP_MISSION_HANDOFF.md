@@ -8048,3 +8048,68 @@ Artifact: [live market and ETF cross-publisher reconciliation](https://github.co
 - Not on main or not verified: scheduled ingestion execution on main; external WORM storage; complete raw-source rebuild; synchronized multi-domain historical history; SEC/regulatory, macro-vintage, stablecoin mint/burn, custody, collateral, institutional holdings and payment-rail sources; concept/label drift; trained-model out-of-sample lift; validated real-data calibration; sufficient independent shadow outcomes; trusted evaluator key.
 - **Forecast status: NOT_ISSUED.** No directional XRP forecast is justified.
 - Next: finish exact-head CI/audit/gate on #1643 head `87c5f62`; obtain genuine independent APPROVED reviews; resolve branch-protection and Pages authorization; merge #1640 only when every condition is satisfied, then verify merge commit, files, automatic workflow effects and main CI; consolidate #1643's 610 unique paths onto verified main with all six overlaps reconciled; close only exact superseded PRs after main verification; verify scheduled ingestion on main and build synchronized multi-domain history before forecasting.
+
+
+### Run 54 — final exact-head verification and secondary-source cross-check — 2026-11-08T12:50:40Z
+
+This addendum supersedes the pending #1643 status in Run 53.
+
+#### Final exact-head CI
+
+**#1640 V3 integration — current head `589d76184cba93ec177fe88e4b0745d84981421d` — VERIFIED**
+- Full repository suite: **1,198 passed, 8 subtests passed** (1,198 collected).
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **59%** rounded.
+- Installed-wheel verification passed; packaged Barrot V3, XRP mission resources and canonical assets imported successfully.
+- Six-manifest dependency audit passed; all six reported no known vulnerabilities.
+- Fail-closed gate passed and kept merging disabled.
+- Exact-head runs: [CI 42481830429](https://github.com/Barrot-Agent/B-Agent/actions/runs/42481830429), [dependency audit 42481830352](https://github.com/Barrot-Agent/B-Agent/actions/runs/42481830352), [fail-closed gate 42481830410](https://github.com/Barrot-Agent/B-Agent/actions/runs/42481830410).
+
+**#1643 XRP research — current head `fa8a20289d5a16273dcba3820098bf910747dda9` — VERIFIED**
+- Full repository suite: **2,426 passed, 8 subtests passed** (2,426 collected).
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed; all six reported no known vulnerabilities.
+- Fail-closed gate passed and kept merging disabled.
+- Exact-head runs: [CI 42481900054](https://github.com/Barrot-Agent/B-Agent/actions/runs/42481900054), [dependency audit 42481899946](https://github.com/Barrot-Agent/B-Agent/actions/runs/42481899946), [fail-closed gate 42481899951](https://github.com/Barrot-Agent/B-Agent/actions/runs/42481899951).
+
+**Research test correction history:** the preceding research head `87c5f622` had 2,424 passed and two failed assertions. The failures were test-only mismatches: the test used the wrong retrieval-time field name and expected wording not present in the artifact. The assertions were corrected without changing the research artifact; the exact new head `fa8a202` passed the full 2,426-test suite. The failed run is retained as evidence, not hidden.
+
+#### Updated branch/backlog state
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- #1640: 675 commits ahead/zero behind; 177 changed paths.
+- #1643: 819 commits ahead/zero behind; 616 changed paths.
+- Six shared paths; #1640 has 171 unique paths and #1643 has 610 unique paths.
+- Main tree: 1,403 entries/1,298 files/493 Python/90 tests/78 active workflow YAML plus 8 disabled.
+- #1640 tree: 1,479 entries/1,366 files/548 Python/129 tests/79 active workflow YAML plus 8 disabled.
+- #1643 tree: 2,014 entries/1,908 files/742 Python/339 tests/78 active workflow YAML plus 8 disabled/367 XRP JSON artifacts.
+- Open PR inventory remains 372 (356 drafts, 16 non-drafts).
+- #1640 and #1643 are both non-draft, mergeable and clean. #1640 has 22/22 review threads resolved; #1643 has 19/19 resolved. Both still have **zero APPROVED reviews**; their review records are COMMENTED.
+- #1653 remains blocked by eight unresolved threads; preserve its six unique paths. Dependency updates #1644–#1650 overlap #1640; #1317/#1318/#1320 contain overlapping structural/safety work; preserve unique #1269, #1655, #1641, #1659 and the older unique research drafts.
+- No PR was created or closed.
+
+#### New secondary-source research leads — not model-admitted
+
+**Binance reserve versus immediately tradable scarcity**
+- A Nov 5 99Bitcoins/TradingView summary reports CryptoQuant's XRP Scarcity Index around 2.1 (described as its highest since 2022) while Binance's total XRP reserve rose from approximately 2.35B on Nov 3 to 2.63B on Nov 5; it attributes the reserve series to CryptoQuant contributor Amr Taha and cites a +273M XRP net-flow reading on Nov 4.
+- The same summary says the scarcity index measures XRP immediately available for trading, not a percentage of total supply. Therefore a higher total reserve and a higher scarcity reading can coexist if the immediately available pool is smaller or reserves include non-trading wallets.
+- Binance's prior incident statement that it had replenished 98% of affected token assets by Oct 31 makes post-hack reserve restoration a plausible explanation for some of the increase, but the CryptoQuant source says the origin of the new coins was not confirmed.
+- The underlying CryptoQuant Quicktake could not be retrieved through the available web route. Treat the 2.1 index and 2.35B-to-2.63B reserve series as a secondary research lead only; require the raw CryptoQuant chart/export, address labels, methodology and independent exchange-wallet evidence before admission.
+- Source: [99Bitcoins/TradingView summary, Nov 5](https://www.tradingview.com/news/99Bitcoins%3A0e23f3025094b%3A0-ripple-xrp-scarcity-on-binance-hits-highest-level-since-2022-as-reserves-jump-by-280m-what-does-the-weekly-chart-say/).
+
+**ETF cumulative-flow source disagreement**
+- Altcoin Buzz's Nov 7 review reports seven US spot XRP ETFs holding 1,196.54M XRP and $1,470.41M net assets through Nov 5. It cites $1.81B cumulative net inflows through Oct 30 from SoSoValue-based reporting and explicitly says the SoSoValue page was behind a bot check; it also flags issuer-level daily attribution disagreements.
+- The article says the XRP Insights flow line covers six spot funds plus BITW while its holdings table counts seven ETFs; its reported holdings and daily holdings-delta methodology are not equivalent to verified net creations/redemptions.
+- Alpha Finance's Nov 6 dashboard reports $1.73B cumulative flow and identifies CoinGlass as its ETF-dashboard feed. Its five-fund panel differs from the XRP Insights/SoSoValue universe. The apparent $1.73B later cumulative total versus $1.81B at the earlier Oct 30 cutoff is not a valid same-series time comparison; it is evidence of provider/universe/methodology disagreement, not proof of an $80M redemption.
+- Source: [Altcoin Buzz, Nov 7](https://www.altcoinbuzz.io/xrp-etfs-hold-1-20b-tokens-did-the-price-lead-the-flows), especially its explicit SoSoValue access and attribution caveats. This is a secondary summary of XRP Insights/SoSoValue, not an independent issuer confirmation.
+
+#### Merge decision and remaining blockers
+
+No merge was performed. Exact-head CI, full-suite tests, dependency/security audits and fail-closed gates are green on both current heads, but:
+1. Neither PR has an independent APPROVED review.
+2. Main branch-protection details remain inaccessible (HTTP 403); the visible fallback ruleset is disabled.
+3. Main CODEOWNERS is `* @Barrot-Agent`, not an independent reviewer.
+4. GitHub Pages configuration is inaccessible; a prior main push produced a successful Pages deployment, and #1640 changes public web paths. Deployment authorization is not present.
+5. #1643 must be consolidated after #1640, not merged first, because the branches have six differing shared paths.
+
+The next action remains obtaining genuine approvals and deployment/branch-protection authorization, then merging #1640 only if every condition is satisfied. After main verification, consolidate #1643's 610 unique paths, reconcile the six overlaps, and close only exact superseded PRs. Scheduled ingestion remains unverified on main; no forecast is justified.
