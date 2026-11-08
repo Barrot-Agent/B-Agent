@@ -1,0 +1,140 @@
+{
+  "artifact_type": "xrp_primary_exchange_spot_perpetual_freshness_snapshot",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108T080438Z-xrp-primary-exchange-spot-perpetual-snapshot",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "run_reference_time_utc": "2026-11-08T08:04:38Z",
+  "retrieval_time_utc": null,
+  "capture_note": "The reference time is the automation run's UTC start time. Exact browser retrieval wall-clock timestamps and HTTP response headers were not retained. Provider timestamps are preserved separately; no missing timestamp is inferred.",
+  "market_observations": {
+    "kraken_xrp_usd": {
+      "last_usd": 1.16337,
+      "bid_usd": 1.16335,
+      "ask_usd": 1.16336,
+      "bid_size_xrp": 67,
+      "ask_size_xrp": 3824,
+      "volume_24h_xrp": 12864859.95770978,
+      "vwap_24h_usd": 1.16308546,
+      "open_24h_usd": 1.16234,
+      "high_24h_usd": 1.18067,
+      "low_24h_usd": 1.14888,
+      "trades_24h": 17274,
+      "provider_event_timestamp_utc": null,
+      "timestamp_status": "MISSING_FROM_ENDPOINT_RESPONSE"
+    },
+    "okx_xrp_usdt": {
+      "last_usdt": 1.1655,
+      "bid_usdt": 1.1651,
+      "ask_usdt": 1.1652,
+      "bid_size_xrp": 1013.283093,
+      "ask_size_xrp": 11402.915679,
+      "volume_24h_xrp": 19244995.456667,
+      "volume_24h_usdt": 22383885.830251336,
+      "open_24h_usdt": 1.1736,
+      "high_24h_usdt": 1.1821,
+      "low_24h_usdt": 1.1495,
+      "provider_snapshot_timestamp_utc": "2026-11-08T07:48:17.772Z",
+      "provider_snapshot_age_seconds_at_reference": 980.228,
+      "timestamp_semantics": "OKX ticker response ts; snapshot timestamp, not a last-trade execution timestamp"
+    },
+    "binance_xrp_usdt_perpetual": {
+      "mark_usdt": 1.1624,
+      "index_usdt": 1.16286357,
+      "estimated_settlement_usdt": 1.16355415,
+      "last_funding_rate_decimal": 0.00009747,
+      "last_funding_rate_pct_per_8h": 0.009747,
+      "next_funding_timestamp_utc": "2026-11-08T08:00:00Z",
+      "provider_response_timestamp_utc": "2026-11-08T07:27:58.002Z",
+      "provider_response_age_seconds_at_reference": 2199.998,
+      "timestamp_semantics": "premiumIndex response time, not an independently timestamped trade or open-interest observation"
+    }
+  },
+  "derived_metrics": {
+    "kraken_level1_spread_bps": 0.0859582844,
+    "okx_level1_spread_bps": 0.8582585933,
+    "raw_kraken_usd_vs_okx_usdt_last_difference_pct": 0.1830887852,
+    "binance_perpetual_mark_vs_index_basis_bps": -3.9864521682,
+    "kraken_last_vs_24h_open_pct": 0.0886143469,
+    "kraken_last_vs_24h_vwap_pct": 0.0244642384,
+    "okx_last_vs_24h_open_pct": -0.6901840491,
+    "comparison_limit": "The USD and USDT instruments are not normalized, venue timestamps are asynchronous, and the raw last-price difference is not an executable spread or arbitrage."
+  },
+  "quality_controls": {
+    "freshness_policy_seconds": 300,
+    "kraken": "Provider event timestamp absent; freshness cannot be established.",
+    "okx": "Snapshot is 980.228 seconds old at the run reference; fails the 300-second threshold.",
+    "binance_perpetual": "Response is 2,199.998 seconds old at the run reference; fails the 300-second threshold. The returned next-funding time precedes the run reference and must not be treated as a future funding event.",
+    "unavailable_endpoints": [
+      "Binance spot 24-hour ticker endpoint was inaccessible through this retrieval path.",
+      "Binance open-interest endpoint was inaccessible through this retrieval path; OI is unavailable, not zero.",
+      "Kraken and OKX depth endpoints were inaccessible through this retrieval path.",
+      "Coinbase Exchange XRP-USD level-2 order-book endpoint was inaccessible through this retrieval path."
+    ],
+    "raw_http_bytes_captured": false,
+    "response_headers_captured": false,
+    "full_depth_captured": false,
+    "synchronized_trade_tape_captured": false,
+    "exchange_flow_receipts_captured": false
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis": "The small raw Kraken/OKX last-price gap reflects asynchronous venue snapshots and USD/USDT basis rather than an executable arbitrage.",
+      "support": "Different instruments and provider timestamps; Kraken timestamp missing and OKX snapshot is stale.",
+      "status": "PRIMARY_DATA_QUALITY_EXPLANATION"
+    },
+    {
+      "hypothesis": "Spot is trading near Kraken's 24-hour open/VWAP while remaining below OKX's 24-hour open.",
+      "support": "Kraken last is 0.089% above its open and 0.024% above VWAP; OKX last is 0.690% below its open.",
+      "status": "DESCRIPTIVE_ONLY"
+    },
+    {
+      "hypothesis": "Perpetual positioning may have a small negative mark/index basis alongside positive last funding.",
+      "support": "Binance mark/index basis is approximately -3.99 bps and returned last funding is +0.009747% per 8h.",
+      "counterevidence": "The premium-index response is stale; open interest and liquidation tape are unavailable; funding interval freshness is not established.",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "source_independence": "Kraken, OKX and Binance are separate primary venue endpoints. Their instruments, timestamp semantics and data scopes differ; they do not constitute a synchronized multi-venue observation.",
+  "model_admission": {
+    "eligible": false,
+    "reason": "No provider-synchronized fresh snapshot, Kraken event timestamp, normalized USD/USDT basis, full depth, current open interest, liquidation tape, exchange flows or raw HTTP wire-byte receipts."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_actions": {
+    "paper_trade": false,
+    "real_money": false
+  },
+  "source_receipts": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "publisher": "Kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_class": "primary_exchange_public_rest",
+      "provider_timestamp_utc": null,
+      "hash_scope": "SHA-256 of the exact JSON text returned by the browser retrieval; not raw HTTP wire bytes or headers",
+      "excerpt_sha256": "cdea454df944d094e9f6b329917697c11af567dea07b4e2aefbfabe06b3e28dd",
+      "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16336000\",\"3824\",\"3824.000\"],\"b\":[\"1.16335000\",\"67\",\"67.000\"],\"c\":[\"1.16337000\",\"46.05412600\"],\"v\":[\"1969360.05357807\",\"12864859.95770978\"],\"p\":[\"1.16053612\",\"1.16308546\"],\"t\":[3484,17274],\"l\":[\"1.15376000\",\"1.14888000\"],\"h\":[\"1.16541000\",\"1.18067000\"],\"o\":\"1.16234000\"}}}"
+    },
+    {
+      "source_id": "okx_xrp_usdt_ticker",
+      "publisher": "OKX",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_class": "primary_exchange_public_rest",
+      "provider_timestamp_utc": "2026-11-08T07:48:17.772Z",
+      "hash_scope": "SHA-256 of the exact JSON text returned by the browser retrieval; not raw HTTP wire bytes or headers",
+      "excerpt_sha256": "14dd0cf3099016d41e8f914f18acc9174c84e928902e2e118af78289e69f3e5f",
+      "excerpt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1655\",\"lastSz\":\"3\",\"askPx\":\"1.1652\",\"askSz\":\"11402.915679\",\"bidPx\":\"1.1651\",\"bidSz\":\"1013.283093\",\"open24h\":\"1.1736\",\"high24h\":\"1.1821\",\"low24h\":\"1.1495\",\"volCcy24h\":\"22383885.8302513343\",\"vol24h\":\"19244995.456667\",\"ts\":\"1794124097772\",\"sodUtc0\":\"1.1639\",\"sodUtc8\":\"1.1587\"}],\"msg\":\"\"}"
+    },
+    {
+      "source_id": "binance_xrpusdt_perpetual_premium_index",
+      "publisher": "Binance Futures",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "source_class": "primary_derivatives_public_rest",
+      "provider_timestamp_utc": "2026-11-08T07:27:58.002Z",
+      "hash_scope": "SHA-256 of the exact JSON text returned by the browser retrieval; not raw HTTP wire bytes or headers",
+      "excerpt_sha256": "5fb6e340b1f697290ae73964e0eb8fd8b87c299915d2d6a150c64a3aed8d554c",
+      "excerpt": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.16240000\",\"indexPrice\":\"1.16286357\",\"estimatedSettlePrice\":\"1.16355415\",\"lastFundingRate\":\"0.00009747\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794124800000,\"time\":1794122878002}"
+    }
+  ]
+}
