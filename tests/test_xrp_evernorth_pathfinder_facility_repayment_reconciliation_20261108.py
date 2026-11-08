@@ -7,22 +7,58 @@ ARTIFACT = ROOT / "research/xrp_intelligence/20261108T142607Z-evernorth-pathfind
 PRIOR = ROOT / "research" / "xrp_intelligence" / "20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation.json"
 
 
+CORRECTION = (
+    Path(__file__).resolve().parents[1]
+    / "research"
+    / "xrp_intelligence"
+    / "20261108T143010Z-evernorth-pathfinder-facility-repayment-hash-correction.json"
+)
+
 def load_artifact():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def test_sec_excerpt_hashes_and_lineage_are_explicit():
+def load_correction():
+    return json.loads(CORRECTION.read_text(encoding="utf-8"))
+
+
+def test_corrected_sec_excerpt_hashes_and_lineage_are_explicit():
     artifact = load_artifact()
-    assert len(artifact["source_excerpts"]) == 4
-    for receipt in artifact["source_excerpts"]:
+    correction = load_correction()
+    assert correction["supersedes_artifact_id"] == artifact["artifact_id"]
+    assert correction["previous_artifact_blob_sha"] == "0f81bf15dae14b7760d3ecf10483a63276a6e0ed"
+    assert correction["previous_test_blob_sha"] == "5d7099cda4544d3165121cf8ad665eac52df1ab6"
+    assert correction["supersedes_fields"] == ["source_excerpts[*].sha256"]
+    assert len(correction["corrected_source_excerpts"]) == 4
+    for receipt in correction["corrected_source_excerpts"]:
         assert hashlib.sha256(receipt["text"].encode("utf-8")).hexdigest() == receipt["sha256"]
         assert receipt["hash_algorithm"] == "SHA-256"
         assert "not raw HTTP bytes" in receipt["hash_scope"]
         assert receipt["source_id"] == "sec_s1_20261030"
-    assert artifact["primary_sources"][0]["accession"] == "0001628280-26-068609"
-    assert artifact["source_independence"]["primary_source_groups"] == 1
-    assert artifact["source_independence"]["independent_primary_confirmations"] == 0
+    assert correction["source_independence"]["primary_source_groups"] == 1
+    assert correction["source_independence"]["independent_primary_confirmations"] == 0
 
+
+def test_original_excerpt_hashes_are_preserved_and_explicitly_superseded():
+    artifact = load_artifact()
+    correction = load_correction()
+    assert [item["sha256"] for item in artifact["source_excerpts"]] == [
+        "dc75e0dc07e3c0f696b9e8bafbbd967805ac0bd1d71d89d0efe009bdb82bb875",
+        "f9562531b166a4aeecdf3b3f76a44cb397b5f6b8a339cdcd5f44483209fcdfa7",
+        "acb2ec0eb551825938e8251fcb6e68056b18417ab7aced9a0ae3d80df7033224",
+        "31f469c5fb666929ecfdc54c9b8629da1c54011ee899fb34b93bf83ec4bf3f9d"
+    ]
+    assert correction["append_only"] is True
+    assert correction["reconciliation_facts_unchanged"] is True
+
+
+def test_hash_correction_does_not_change_facility_or_forecast_interpretation():
+    artifact = load_artifact()
+    correction = load_correction()
+    assert correction["full_oct_7_balance_repayment_status"] == "UNKNOWN"
+    assert artifact["reconciliation"]["full_oct_7_balance_repayment_status"] == "UNKNOWN"
+    assert artifact["model_admission"]["eligible"] is False
+    assert artifact["forecast_status"] == "NOT_ISSUED"
 
 def test_june_30_balance_and_october_7_balance_are_not_conflated():
     facility = load_artifact()["facility"]
