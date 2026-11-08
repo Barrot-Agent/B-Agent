@@ -176,7 +176,7 @@ def test_previous_future_stamp_interpretation_is_explicitly_superseded():
     data = json.loads(
         (ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation.json").read_text(encoding="utf-8")
     )
-    assert data["correction_to_prior_artifact"]["prior_artifact"] == (
+    assert data["correction_to_prior_artifact"]["artifact"] == (
         "20261108T090727Z-xrp-source-vintage-and-hash-correction.json"
     )
     assert "not future availability" in data["correction_to_prior_artifact"]["reason"]
