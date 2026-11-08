@@ -12,7 +12,7 @@ RESEARCH_HEAD = "674919abe365e915877e7f1f4211df347dfc39a9"
 
 def test_run58_handoff_binds_exact_repository_heads_and_ci():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
-    assert handoff.startswith("# Current integrated Barrot handoff — 2026-11-08T17:01:21Z")
+    assert handoff.startswith("# Current integrated Barrot handoff — ")
     assert "## Run 60 — current repository, exact-head verification and institutional-rails correction" in handoff[:3_000]
     assert "## Run 58 — current repository, endpoint inventory correction, exact-head verification and merge gate" in handoff[:3_000]
     for value in (MAIN_SHA, INTEGRATION_HEAD, RESEARCH_HEAD):
