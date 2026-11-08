@@ -1,0 +1,260 @@
+{
+  "schema_version": "barrot.xrp.derivatives_reconciliation.v1",
+  "artifact_id": "xrp-derivatives-oi-universe-late-session-20261108",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "reference_time_utc": "2026-11-08T16:28:35Z",
+  "capture_method": "Lawful public rendered publisher pages opened during this run. Publisher update/data-as-of timestamps are preserved. The retrieval interface did not expose exact HTTP retrieval time, response headers, or raw wire bytes.",
+  "source_capture": {
+    "lawful_public_sources_only": true,
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256_available": false,
+    "normalized_observation_sha256_available": true,
+    "retrieval_interface_timestamp_exposed": false,
+    "model_eligible": false
+  },
+  "source_receipts": [
+    {
+      "source_id": "kodexius_xrp_perpetuals_20261108_1419",
+      "publisher": "Kodexius",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "source_class": "secondary_contract_level_derivatives_aggregator",
+      "source_time_utc": "2026-11-08T14:19:00Z",
+      "age_seconds_at_reference": 7775,
+      "displayed_refresh_claim": "Read again every 5 minutes; displayed update time remains 14:19 UTC.",
+      "independence_group": "kodexius_derivatives_aggregator",
+      "independence_assessment": "Distinct publisher. Underlying exchange endpoints and aggregation method are not fully disclosed; not an independent confirmation of another aggregator's total.",
+      "normalized_observation_record": {
+        "updated_at_utc": "2026-11-08T14:19:00Z",
+        "open_interest_usd": 779660000,
+        "contracts": 7,
+        "funding_oi_weighted_pct_per_8h": 0.0061,
+        "volume_24h_usd": 666190000,
+        "open_interest_to_volume_ratio": 1.17,
+        "contracts_by_exchange": {
+          "Binance_XRPUSDC_USDC": 32810000,
+          "Binance_XRPUSDT_USDT": 387530000,
+          "Bybit_XRPPERP_USDC": 2580000,
+          "Bybit_XRPUSDT_USDT": 140270000,
+          "HTX_XRPUSDT_USDT": 24980000,
+          "Hyperliquid_XRP_USDC": 97190000,
+          "OKX_XRP_USDT_SWAP": 94290000
+        }
+      },
+      "normalized_record_sha256": "781a496007df1ea8aff905cb6fd60972827ed0c1c276b365a7b4e26f619b593f",
+      "hash_scope": "SHA-256 of the canonical normalized observation record stored in this artifact; not source-page bytes or an HTTP response hash.",
+      "raw_http_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "source_id": "tradradar_xrp_perpetuals_20261108_1550",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_class": "secondary_multi_exchange_derivatives_aggregator",
+      "source_time_utc": "2026-11-08T15:50:00Z",
+      "age_seconds_at_reference": 2315,
+      "reported_data_delay_minutes": 15,
+      "independence_group": "tradradar_multi_exchange_aggregator",
+      "independence_assessment": "Distinct publisher. The page says it collects from exchanges but does not expose raw exchange payloads or contract-level normalization; independence from other aggregators is not established.",
+      "normalized_observation_record": {
+        "updated_at_utc": "2026-11-08T15:50:00Z",
+        "reported_delay_minutes": 15,
+        "mark_price_usd": 1.1554,
+        "change_24h_pct": 0.22,
+        "open_interest_usd": 1900000000,
+        "open_interest_change_24h_pct": 0.76,
+        "funding_oi_weighted_pct_per_8h": 0.0064,
+        "liquidations_24h_minimum_usd": 1100000,
+        "long_liquidations_usd": 963560,
+        "short_liquidations_usd": 132470,
+        "long_short_account_ratio": 3.96,
+        "long_account_share_pct": 79.8,
+        "account_ratio_venue_count": 5,
+        "exchange_open_interest_usd": {
+          "Binance": 477900000,
+          "Bybit": 329010000,
+          "Gate": 284160000,
+          "MEXC": 261280000,
+          "Bitget": 245240000,
+          "Hyperliquid": 193220000,
+          "OKX": 106630000
+        }
+      },
+      "normalized_record_sha256": "68032931229f5b5d86c25556eddd588ba89e920ae12a9be5a328f63f4287eb74",
+      "hash_scope": "SHA-256 of the canonical normalized observation record stored in this artifact; not source-page bytes or an HTTP response hash.",
+      "raw_http_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "source_id": "seandra_binance_xrpusdt_perpetual_20261108_1555",
+      "publisher": "Seandra AI",
+      "url": "https://seandra.ai/perp/xrp",
+      "source_class": "secondary_single_venue_contract_specific_derivatives_display",
+      "source_time_utc": "2026-11-08T15:55:00Z",
+      "age_seconds_at_reference": 2015,
+      "displayed_refresh_claim": "Refreshed every 5 minutes.",
+      "independence_group": "seandra_binance_perpetual_display",
+      "independence_assessment": "Distinct publisher and Binance XRPUSDT-specific view. It may consume the same Binance public market data as other vendors; independent exchange-source confirmation is not established.",
+      "normalized_observation_record": {
+        "data_as_of_utc": "2026-11-08T15:55:00Z",
+        "instrument": "Binance XRPUSDT perpetual",
+        "open_interest_usd": 389200000,
+        "open_interest_change_24h_pct": -0.4,
+        "funding_pct_per_8h": 0.0091,
+        "account_long_share_pct": 74,
+        "top_traders_long_share_pct": 68,
+        "liquidations_24h_minimum_usd": 520000,
+        "liquidations_direction": "mostly_longs",
+        "price_7d_change_pct": -7.6,
+        "open_interest_coin_units_7d_change_pct": 26
+      },
+      "normalized_record_sha256": "266bf78c4722178754c8b6a6e5caedb842d0401f95318205e8ac0b33043561da",
+      "hash_scope": "SHA-256 of the canonical normalized observation record stored in this artifact; not source-page bytes or an HTTP response hash.",
+      "raw_http_bytes_captured": false,
+      "model_eligible": false
+    }
+  ],
+  "cross_provider_reconciliation": {
+    "open_interest": {
+      "reported_total_usd": {
+        "kodexius": 779660000,
+        "tradradar": 1900000000
+      },
+      "tradradar_to_kodexius_ratio": 2.4369597004,
+      "kodexius_listed_contract_sum_usd": 779650000,
+      "tradradar_listed_exchange_sum_usd": 1897440000,
+      "status": "UNRESOLVED_UNIVERSE_CONTRACT_SCOPE_AND_AGGREGATION_DIFFERENCE",
+      "do_not_average": true,
+      "same_contract_crosscheck": {
+        "instrument": "Binance XRPUSDT perpetual",
+        "kodexius_usd": 387530000,
+        "seandra_usd": 389200000,
+        "absolute_difference_usd": 1670000,
+        "difference_pct": 0.4309343793,
+        "source_time_gap_seconds": 5760,
+        "interpretation": "Close values for the same named contract, but 96 minutes apart and potentially based on a shared Binance endpoint. This is a useful consistency check, not independent confirmation."
+      },
+      "exchange_level_crosscheck": {
+        "tradradar_binance_exchange_total_usd": 477900000,
+        "seandra_binance_xrpusdt_contract_usd": 389200000,
+        "difference_pct": 22.7903391572,
+        "interpretation": "Not like-for-like: exchange-level total versus a single XRPUSDT contract. TradRadar's displayed contract breakdown was not exposed."
+      },
+      "venue_scope_notes": [
+        "Kodexius lists seven contracts across Binance, Bybit, Hyperliquid, OKX and HTX, including Binance USDC and USDT and Bybit USDC and USDT contracts.",
+        "TradRadar lists seven exchange totals: Binance, Bybit, Gate, MEXC, Bitget, Hyperliquid and OKX.",
+        "The overlapping venue totals differ materially for Bybit and Hyperliquid; contract coverage and notional methodology are not sufficiently disclosed to reconcile them.",
+        "Kodexius and TradRadar displayed update times differ by 91 minutes; neither is synchronized to Seandra's 15:55 UTC observation."
+      ]
+    },
+    "funding": {
+      "oi_weighted_pct_per_8h": {
+        "kodexius": 0.0061,
+        "tradradar": 0.0064
+      },
+      "binance_xrpusdt_pct_per_8h": {
+        "kodexius": 0.0076,
+        "seandra": 0.0091
+      },
+      "status": "POSITIVE_DISPLAYED_FUNDING_BUT_DIFFERENT_UNIVERSES_AND_TIMESTAMPS",
+      "do_not_average": true,
+      "interpretation": "The OI-weighted values are close but are not a shared-universe estimate. Binance-specific rates are asynchronous and publisher methodology is not fully disclosed."
+    },
+    "liquidation_and_positioning": {
+      "tradradar": {
+        "liquidation_floor_usd": 1100000,
+        "long_liquidations_usd": 963560,
+        "short_liquidations_usd": 132470,
+        "long_short_account_ratio": 3.96,
+        "long_account_share_pct": 79.8,
+        "liquidation_venue_count": 5,
+        "account_ratio_venue_count": 5,
+        "oi_venue_count": 7
+      },
+      "seandra": {
+        "binance_only_liquidation_floor_usd": 520000,
+        "liquidation_direction": "mostly_longs",
+        "account_long_share_pct": 74,
+        "top_traders_long_share_pct": 68
+      },
+      "status": "NOT_COMPARABLE_VENUE_COVERAGE_AND_METRIC_DENOMINATORS_DIFFER",
+      "interpretation": "TradRadar's long/short ratio is an account ratio, not notional exposure. Seandra's account and top-trader percentages are Binance-only. Liquidation values are lower bounds, not complete exchange totals."
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "contract_universe_and_aggregation_explain_gap",
+      "hypothesis": "The large total open-interest difference is driven by contract coverage, exchange inclusion and vendor aggregation conventions.",
+      "support": [
+        "The publishers expose different exchange/contract universes.",
+        "Kodexius and Seandra are close on Binance XRPUSDT despite different capture times."
+      ],
+      "counterevidence": [
+        "TradRadar and Kodexius differ materially on overlapping Bybit and Hyperliquid exchange totals."
+      ],
+      "status": "PLAUSIBLE_NOT_RESOLVED"
+    },
+    {
+      "id": "vendor_mapping_or_notional_error",
+      "hypothesis": "At least one aggregator may have a stale instrument map, duplicated contracts or inconsistent USD conversion.",
+      "support": [
+        "TradRadar and Kodexius totals differ by about 2.44x.",
+        "Several overlapping venue totals differ substantially."
+      ],
+      "counterevidence": [
+        "Exact contract IDs, raw exchange payloads and conversion methodology are unavailable; a true error cannot be assigned to either vendor."
+      ],
+      "status": "POSSIBLE_NOT_ESTABLISHED"
+    },
+    {
+      "id": "crowded_long_liquidation_risk",
+      "hypothesis": "Long-heavy account statistics and long-skewed forced closures indicate positioning concentration and liquidation vulnerability.",
+      "support": [
+        "TradRadar reports 79.8% long accounts and a 3.96 account ratio, with more reported long than short liquidations.",
+        "Seandra reports 74% Binance accounts long and forced closures mostly on longs."
+      ],
+      "counterevidence": [
+        "Account counts are not notional exposure; the venue sets differ; liquidations are incomplete lower bounds; positive funding is modest and can persist."
+      ],
+      "status": "RISK_CONTEXT_ONLY_NOT_DIRECTIONAL"
+    },
+    {
+      "id": "open_interest_growth_is_fresh_capital",
+      "hypothesis": "Higher open interest represents fresh net capital entering XRP.",
+      "support": [
+        "TradRadar reports a 0.76% 24-hour OI increase; Seandra reports 26% higher OI in XRP units over seven days."
+      ],
+      "counterevidence": [
+        "Open interest is outstanding contract exposure, not net cash flow; leverage, mark-price conversion, contract scope and position turnover can change it."
+      ],
+      "status": "NOT_ESTABLISHED"
+    }
+  ],
+  "data_quality": {
+    "freshness_limit_seconds": 300,
+    "source_ages_seconds": {
+      "kodexius": 7775,
+      "tradradar": 2315,
+      "seandra": 2015
+    },
+    "all_sources_exceed_freshness_limit": true,
+    "source_timestamps_synchronized": false,
+    "raw_exchange_payloads": false,
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256_available": false,
+    "normalized_record_sha256_available": true,
+    "contract_universe_reconciled": false,
+    "notional_conversion_methodology_verified": false,
+    "long_short_metric_denominators_comparable": false,
+    "liquidation_coverage_complete": false,
+    "model_eligible": false
+  },
+  "admission": {
+    "model_eligible": false,
+    "feature_store_admission": "PROHIBITED",
+    "forecast_issued": false,
+    "reason": "All three observations exceed the 300-second freshness limit; provider universes and contract-level scope are unresolved; raw exchange payloads and synchronized timestamps are absent."
+  },
+  "forecast_status": "NOT_ISSUED"
+}
