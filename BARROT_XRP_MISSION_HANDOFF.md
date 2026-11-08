@@ -1,4 +1,4 @@
-# Current integrated Barrot handoff — Run 64 — 2026-11-08T19:21:54Z
+# Current integrated Barrot handoff — Run 65 — 2026-11-08T19:28:56Z
 
 ## Run 60 — current repository, exact-head verification and institutional-rails correction
 
@@ -11,14 +11,14 @@ Historical regression anchor; complete Run 58 record remains preserved below.
 ## Mission and repository state
 
 - Priority one: XRP intelligence and prediction-engine mastery. Foundation: preserve Barrot V3 for execution, orchestration, safety and verification.
-- Main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` unchanged. Complete main tree: 1,403 entries, 1,298 files, 493 Python files, 87 root test modules, 86 workflows.
+- Main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` unchanged. Complete main tree: 1,403 entries, 1,298 files, 493 Python files, 87 root test modules, 86 workflows. Collector inventory verified directly against `ENDPOINTS` and `SCHEDULED_ENDPOINTS`: **35 endpoint records, of which 33 are scheduled**; two non-commercial XRPL-node endpoints are excluded.
 - #1640 tree: 1,483 entries, 1,370 files, 552 Python files, 130 root test modules, 87 workflows. #1643 tree: 2,043 entries, 1,937 files, 756 Python files, 350 root test modules, 86 workflows. All recursive trees untruncated.
 - Open PR inventory: 372 (356 drafts, 16 non-drafts); all four REST pages inspected: 100, 100, 100, 72.
 
 ## Current mission branches
 
-- #1640 V3: exact head `f2afa5225eb27bb4035078cd7b0f49ca7abe4fef`, 714 commits ahead, zero behind, 181 changed paths. Open, non-draft, mergeable.
-- #1643 XRP research: exact head `a18c299aa889925f8791f59a9b8f445401bb3d85`, 870 commits ahead, zero behind, 645 changed paths. Open, non-draft, mergeable.
+- #1640 V3: current head `3ff35a373c1d0ac5995f3769a2586340d4062fcc`, 715 commits ahead, zero behind, 181 changed paths. Open, non-draft, GitHub reports mergeable. Run 65 exact-head core suite passed (660 tests); full suite reported 1,214 passed and one failed historical handoff assertion because the endpoint-count phrase was absent from the first 180 lines. The dependency audit and fail-closed gate passed; wheel verification was skipped after the suite failure. The Run 65 handoff correction below restores the required phrase without weakening the test; exact-head rerun is pending. Prior Run 64 code/test head `f2afa5225eb27bb4035078cd7b0f49ca7abe4fef` passed 1,215 tests, 8 subtests, 58.98% coverage and installed-wheel verification.
+- #1643 XRP research: exact head `a18c299aa889925f8791f59a9b8f445401bb3d85`, 870 commits ahead, zero behind, 645 changed paths. Open, non-draft, mergeable. Run 65 exact-head full suite passed 2,556 tests and 8 subtests; core suite, six-manifest dependency audit and fail-closed gate passed.
 - Six shared paths: `.github/workflows/dependency-audit.yml`, `BARROT_XRP_MISSION_HANDOFF.md`, `data/xrp_intelligence/sources/kamilah_stevenson_channel.json`, `scripts/pillars_check.py`, `tests/test_kamilah_channel_identity_gate.py`, `tests/test_pillars_check_readonly.py`. Unique: 175 V3-only, 639 research-only. All PR-file pages inspected.
 - Branches diverged. Integrate #1640 first; consolidate #1643 afterward. No new integration PR.
 
