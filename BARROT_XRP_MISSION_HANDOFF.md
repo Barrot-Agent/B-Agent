@@ -1,4 +1,4 @@
-# Current integrated Barrot handoff — 2026-11-08T06:22:31.492Z
+# Current integrated Barrot handoff — 2026-11-08T06:29:09.124Z
 
 ## Run 44 — current repository state
 
@@ -6,19 +6,21 @@
 
 **Main SHA:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` (unchanged; no main write or merge).
 
+The #1640 product/code head `d2b8085d` passed exact-head CI, full suite, coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. The subsequent Run 44 map/handoff commits are documentation-only.
+
 ### Repository and branch state
 
 The current main tree has **1,403 entries, 1,298 files, 493 Python files, 90 test modules and 86 workflow YAML files**. The #1640 integration tree has 1,478 entries, 1,365 files, 547 Python files, 125 test modules and 79 workflow YAML files. The #1643 research tree has 1,968 entries, 1,862 files, 723 Python files, 320 test modules, 78 workflow YAML files and 344 XRP JSON artifacts. All inspected recursive trees were complete, not truncated.
 
 All four open-PR pages were fetched: **372 open PRs (356 drafts, 16 non-drafts)**; 364 target main and 8 target other bases. No PR was created or closed.
 
-- [#1640 — V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640): exact current head `da014501cebc8b8a964485549ac791b26ce88262`, 176 changed paths, 640 commits ahead of main and zero behind.
+- [#1640 — V3 integration](https://github.com/Barrot-Agent/B-Agent/pull/1640): exact current code/test head `d2b8085d7b309efc17a1e6747f08143237719520`, 176 changed paths, 640 commits ahead of main and zero behind.
 - [#1643 — XRP research](https://github.com/Barrot-Agent/B-Agent/pull/1643): exact current head `18551055debe4e39814fdf54c7cc297430e656c0`, 570 changed paths, 779 commits ahead of main and zero behind.
 - The branches diverge (research is 779 commits ahead of integration; integration is 640 commits behind research). They share exactly six paths: dependency-audit workflow, durable handoff, Kamilah candidate registry, Pillars script, Kamilah identity-gate test and Pillars read-only test. Preserve all six deliberately. There are 170 integration-only and 564 research-only paths.
 
 ### Exact-head verification
 
-**#1640, exact head `3b5d7994`: VERIFIED**
+**#1640, exact code/test head `d2b8085d`: VERIFIED**
 
 - Full repository suite: **1,188 passed, 8 subtests passed**.
 - Core suite: **660 passed, 8 subtests passed**.
@@ -26,8 +28,9 @@ All four open-PR pages were fetched: **372 open PRs (356 drafts, 16 non-drafts)*
 - Installed-wheel verification passed; the wheel loads Barrot V3, the priority-one XRP mission and canonical data assets.
 - Six-manifest dependency audit passed with no known vulnerabilities in root runtime, development, supplemental, Hugging Face Space, legacy and pyproject dependencies.
 - Fail-closed merge gate passed; automatic merging remains disabled.
+- The cache-save step warned that the GitHub Actions cache budget is read-only. This did not fail the run, coverage or installed-wheel verification; the workflow's artifact fallback remains available.
 
-Evidence: [Full CI 42453773374](https://github.com/Barrot-Agent/B-Agent/actions/runs/42453773374) · [Six-manifest dependency audit 42453773355](https://github.com/Barrot-Agent/B-Agent/actions/runs/42453773355) · [Fail-closed gate 42453773353](https://github.com/Barrot-Agent/B-Agent/actions/runs/42453773353).
+Evidence: [Full CI 42454670916](https://github.com/Barrot-Agent/B-Agent/actions/runs/42454670916) · [Six-manifest dependency audit 42454671023](https://github.com/Barrot-Agent/B-Agent/actions/runs/42454671023) · [Fail-closed gate 42454670945](https://github.com/Barrot-Agent/B-Agent/actions/runs/42454670945).
 
 **#1643, exact head `18551055`: VERIFIED**
 
@@ -165,7 +168,7 @@ Next actions:
 6. Establish independently controlled durable raw-source archival and deterministic feature-store rebuild.
 7. Accumulate synchronized historical data, validate out-of-sample lift/calibration/drift and independent shadow outcomes before any directional forecast.
 
-**Run 44 map update commit:** `ec13c0bc14c364602d79c65adecb887a9fe31838`. The handoff update follows the map commit on the same existing #1640 branch; the branch ref is authoritative for the resulting head.
+**Run 44 final map update commit:** `7bd1cc7f96f239e7973cbd96c8c0c98bbfa225b5`. This handoff update follows the map commit on the same existing #1640 branch. The tested product/code head is `d2b8085d7b309efc17a1e6747f08143237719520`; the final branch ref is authoritative for the documentation-only commits that follow.
 
 No PR was created or closed. No main write, merge, deployment, secret read/rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree operation occurred.
 
