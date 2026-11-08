@@ -59,7 +59,7 @@ def test_elliptic_xrp_laundering_reconciles_with_remaining_balance(record: dict)
 def test_attacker_conversion_is_not_mislabeled_as_fiat_cashout(record: dict) -> None:
     facts = record["event_facts"]["elliptic_as_of_2026_11_07_0800_utc"]
     assert facts["likely_cashout"] == "negligible"
-    assert "cannot prove who currently controls" in facts["controller_identity_limit"]
+    assert "does not prove who currently controls" in facts["controller_identity_limit"]
     assert record["derived_reconciliation"]["usd_value_crosscheck"]["illustrative_xrp_equivalent_at_usd_1_16"] == pytest.approx(86_206_896.55172414)
 
 
