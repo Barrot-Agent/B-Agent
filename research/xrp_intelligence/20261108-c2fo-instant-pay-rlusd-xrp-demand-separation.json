@@ -301,5 +301,19 @@
     "event_timeline_only": true,
     "reason": "Public web-rendered excerpts were captured without raw HTTP bytes/headers; the initiative has no verified production throughput, XRP bridge route, XRP purchases or actual capital deployment."
   },
-  "forecast_status": "NOT_ISSUED"
+  "forecast_status": "NOT_ISSUED",
+  "verification_contract": {
+    "tests_file": "tests/test_xrp_c2fo_instant_pay_rlusd_xrp_demand_separation_20261108.py",
+    "required_assertions": [
+      "RLUSD is the announced settlement asset; XRP bridge use is not disclosed.",
+      "C2FO $525B and Ripple 520-billion figures are preserved as a source discrepancy and not treated as XRPL/Instant Pay volume.",
+      "XRP transaction fees and account/owner reserves are separated from invoice notional.",
+      "C2FO and Ripple pages are one joint-announcement source cluster.",
+      "All SHA-256 values cover normalized web-rendered excerpts, not raw HTTP bytes.",
+      "No directional forecast or price-feature admission is permitted."
+    ],
+    "exact_head_full_suite_required": true,
+    "dependency_audit_required": true,
+    "fail_closed_gate_required": true
+  }
 }
