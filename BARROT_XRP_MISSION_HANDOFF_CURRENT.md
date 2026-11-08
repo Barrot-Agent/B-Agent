@@ -217,3 +217,70 @@ Next:
 6. Verify scheduled ingestion on main, establish independent WORM archival/rebuild, expand lawful regulatory/macro/stablecoin/custody/collateral/institutional/payment-rail coverage, and accumulate synchronized history before forecast issuance.
 
 **Forecast: NOT_ISSUED.** The integrated build is not yet on main and predictive superiority over the baselines remains unproven.
+
+
+## Run 70 addendum — exact-head regression, new institutional evidence and current research head
+
+**Captured:** 2026-11-08 21:39:12 UTC.
+
+### Latest branch heads and ancestry
+
+- Main remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`.
+- #1640 current head at addendum capture: `a585b45969e86c9b72a44a244df87aa368cbf3b8`; 732 commits ahead, zero behind; 182 changed paths.
+- #1643 current head: `40a253eca0121f712380c2fa281768273455309e`; 896 commits ahead, zero behind; 665 changed paths.
+- Six shared paths remain; 176 V3-only paths and 659 research-only paths.
+- Open PR inventory remains 372 (356 drafts, 16 non-drafts).
+
+### Exact-head verification correction
+
+#1640's code/test head `e28bdd493cb2deac76981a20f46442d462567ebc` remains fully green: 1,215 full-suite tests plus 8 subtests; 660 core tests plus 8 subtests; 58.98% inclusive coverage; installed-wheel verification; six-manifest dependency audit; fail-closed gate.
+
+The later documentation/map head `a585b45969e86c9b72a44a244df87aa368cbf3b8` failed two regression assertions:
+- `tests/test_xrp_mission_handoff_run34.py::test_run58_endpoint_count_and_fail_closed_prediction_status_are_current` raised `KeyError: excluded_xrpl_node_sources`.
+- `tests/test_xrp_mission_handoff_run58.py::test_run58_endpoint_registry_and_map_counts_match` raised `KeyError: endpoint_ids`.
+
+The map update had replaced the complete current prediction-engine observation with a shortened summary and accidentally dropped the endpoint inventory fields. The full-suite run reported 1,213 passed, 2 failed, 8 subtests; coverage remained 58.98%. The wheel step was skipped after test failure. Dependency audit and fail-closed gate passed.
+
+**Correction in progress:** restore the complete endpoint inventory and scheduled endpoint IDs from the preceding verified map observation, preserve the 35 total / 33 scheduled / 2 excluded-source contract, and retain the new Run 70 evidence. No tests are being weakened. The corrected map commit must run the complete suite and installed-wheel job on its exact new head.
+
+#1643 exact prior head `3f7cf1de5f23b423d71be632016ca2f5ad73e57a` passed 2,623 full-suite tests plus 8 subtests; 498 core tests plus 8; six-manifest dependency audit; fail-closed gate. The current head `40a253e` adds two more append-only research artifacts and two nine-test regression modules. Its core job has passed; full suite and six-manifest audit are still running; fail-closed gate passed. Do not substitute the 3f7cf1 results for 40a253.
+
+### New append-only research packages on #1643
+
+1. `research/xrp_intelligence/20261108T211453Z-binance-hack-xrp-flow-derivatives-cross-ledger-reconciliation.json` and `tests/test_xrp_binance_hack_flow_derivatives_reconciliation_20261108.py`.
+2. `research/xrp_intelligence/20261108T213528Z-xrp-stablecoin-freeze-native-asset-control-reconciliation.json` and `tests/test_xrp_stablecoin_freeze_native_asset_control_reconciliation_20261108.py`.
+3. `research/xrp_intelligence/20261108T213528Z-sbi-ripple-asia-ownership-xrp-utility-reconciliation.json` and `tests/test_sbi_ripple_asia_ownership_xrp_utility_reconciliation_20261108.py`.
+
+The stablecoin-control supplement reconciles TRM's 88.5M RLUSD attacker receipt into 48M sold before the freeze and 40.5M frozen on-chain by Ripple at 22:01 UTC. TRM also reports Binance co-CEO Yi He's broader statement that Ripple helped stop about $200M; the $200M claim is not reconciled to the 40.5M verified attacker-wallet freeze. Do not call the difference missing or recovered. XRPL documentation distinguishes issuer-freezable issued tokens from native XRP, which cannot be frozen at protocol level; custodial exchanges can still restrict customer accounts and withdrawals.
+
+The SBI relationship supplement records:
+- SBI Ripple Asia is a joint venture between SBI Holdings and Ripple.
+- SBI Group aggregate voting rights were reported at 60% as of 2026-03-31. This is not proof that SBI Holdings parent directly owns 60%; the remaining voting-rights holder is not identified in the cited profile.
+- SBI Remit/SBI VC Trade's 2021 and 2023 releases explicitly describe XRP as the bridge asset in ODL remittances, expanded to bank-account recipients in the Philippines, Vietnam and Indonesia. Current throughput and net XRP purchases are not disclosed.
+- The February 2026 MoneyTap/tokenized-deposit PoC and DSRV Japan-Korea research contemplate XRPL but do not establish XRP as the bridge asset or a production launch.
+- SBI VC Trade's June 2026 RLUSD handling and the May 2026 Visa crypto-reward card are separate distribution channels; neither proves XRP purchases or transaction volumes.
+
+Primary-source references are in the artifacts and include SBI Group company/press-release pages, TRM Labs and XRPL protocol documentation. Related-party SBI announcements are one source group, not independent confirmation.
+
+### Review and merge status
+
+- #1640: 22/22 inline threads resolved; zero independent APPROVED reviews.
+- #1643: 19/19 inline threads resolved; zero independent APPROVED reviews.
+- COMMENTED reviews are not approvals.
+- Branch-protection settings remain unavailable (HTTP 403); visible fallback ruleset remains disabled.
+- Pages configuration remains inaccessible; public web-path changes still require deployment authorization.
+
+No merge, new PR, PR closure, deployment, secret operation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade or real-money action occurred.
+
+### Current forecast status
+
+**NOT_ISSUED.** The Binance event and institutional relationship evidence are event-timeline context only. Neither is admitted as a directional XRP price feature. Predictive superiority over the four baselines remains unproven.
+
+### Next concrete actions
+
+1. Complete the map schema correction without dropping endpoint IDs or excluded-source fields.
+2. Verify exact-head full suite, inclusive coverage, wheel packaging, six-manifest audit and fail-closed gate on the corrected #1640 head.
+3. Complete exact-head full suite and dependency audit on #1643 head `40a253e`.
+4. Obtain independent APPROVED reviews and resolve Pages/branch-protection authorization.
+5. Merge #1640 only after all requirements pass; verify merge commit, files, workflow side effects and main CI.
+6. Consolidate #1643's 659 unique paths onto verified main, reconcile all six shared paths, rerun full CI and close only exact superseded PRs after main verification.
