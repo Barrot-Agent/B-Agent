@@ -1,6 +1,70 @@
 # Current integrated Barrot handoff — 2026-11-08T01:40:58Z
 
 
+## Run 38 — current repository state (2026-11-08T03:18:00Z)
+
+### Mainline and complete repository inspection
+
+- Main SHA remains `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; no main change or merge occurred.
+- Recursive main tree: 1,403 entries; 1,298 files; 493 Python files; 90 test modules; 86 workflow YAML files. Tree response was complete and not truncated.
+- Open PR inventory: 372 total, 356 drafts and 16 non-drafts. Fourteen target current main; 358 target other base revisions. Those stacked/older bases require individual ancestry triage; no bulk closure.
+
+### Exact-head engineering status
+
+**PR #1640 — V3 integration**
+
+- Current head: `270234105fe8a99d5fad735892d5ebdf0cf90439`; 176 changed paths; 627 commits ahead of main, zero behind.
+- Full repository suite: **1,186 passed, 8 subtests passed**; inclusive coverage **58.78%** (53% threshold). Exact-head run: [42441687934](https://github.com/Barrot-Agent/B-Agent/actions/runs/42441687934).
+- Core suite: **658 passed, 8 subtests passed**.
+- Installed-wheel verification passed; installed wheel loads Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit passed with no known vulnerabilities: [42441687899](https://github.com/Barrot-Agent/B-Agent/actions/runs/42441687899).
+- Fail-closed merge gate passed and kept merging disabled: [42441687924](https://github.com/Barrot-Agent/B-Agent/actions/runs/42441687924).
+- Added regression coverage for malformed MMI parent IDs, malformed independent-evidence source IDs, malformed source provenance classes and trailing blank-line recovery in the append-only execution ledger. The new tests passed in this exact full suite.
+- The Actions cache could not be saved because the repository cache budget is read-only. This is a non-blocking warning; it did not change test results.
+
+**PR #1643 — XRP research**
+
+- Current head: `95bb6bbde83a2a6395dd7e028a4e35179e4722b4`; 544 changed paths; 749 commits ahead of main, zero behind.
+- Previous exact head `c082688c830d5bd2aa9f2b03f92453e75798bcf7` passed **2,242 tests, 8 subtests**. This does not verify the latest Run 38 code/test/overlay changes.
+- Latest head CI `42442128711` and dependency audit `42442128720` are in progress; fail-closed gate `42442128728` passed and keeps merging disabled. No full-suite claim is made for `95bb6bb` until its own run finishes.
+- Added an append-only Evernorth correction superseding the wrong C07 average-cost numerator while retaining C07's valid Ripple Labs lender and duplicate-edge corrections. Added a fail-closed HTTP-status check to the Pillars source-fiction scan and quarantined the historical unverified clean result.
+
+### Current branch relationship
+
+- Main is the common merge base. Comparing the two mission heads reports #1643 749 commits ahead and #1640 627 commits behind.
+- Exactly three paths overlap: `.github/workflows/dependency-audit.yml` (identical); `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` (different registries); and `tests/test_kamilah_channel_identity_gate.py` (different assertions). Preserve the larger research registry and combine both assertion sets.
+- #1640 has 173 integration-only paths. #1643 has 541 research-only paths after the three shared paths; the three newest research files are the Binance-hack/market snapshot, its hash-correction overlay and its regression test, plus the archive-integrity/Pillars correction, script and tests.
+
+### Review threads and merge authorization
+
+- #1640: 22 unresolved inline review threads; zero APPROVED reviews. Ten COMMENTED reviews do not satisfy approval.
+- #1643: 19 unresolved inline review threads; zero APPROVED reviews. Ten COMMENTED reviews do not satisfy approval.
+- Verified stale/fixed #1640 findings are being replied to with exact current-code/test evidence before resolution. Remaining substantive findings stay open.
+- Main branch-protection details remain inaccessible through the current integration (HTTP 403). Both mission PRs still lack an independent approving review. GitHub Pages configuration is not available for verification.
+
+### Deployment and write-scope correction
+
+- A prior main push did trigger an automatic GitHub Pages deployment: [run 41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). The earlier wording that no deployment had ever occurred was inaccurate. This run initiated no manual deployment and no new Pages dispatch; the prior automatic workflow side effect remains documented and must be authorized/understood before merge.
+- This run made GitHub repository writes only on the two existing mission branches (handoff, tests, research artifacts and correction overlays). These are repository changes, not evidence of connections or writes to the other eight platforms. No external platform write or data transfer occurred.
+- No merge, secret rotation, Hugging Face Space restart/deployment, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+### New XRP evidence and correction state
+
+- Direct Kraken/OKX spot snapshot captured 2026-11-08 02:59:08 UTC: Kraken XRP/USD 1.15436 (bid 1.15427, ask 1.15436, 16.973M XRP 24h volume, 1.16203833 24h VWAP, 1.16234 daily open); OKX XRP-USDT 1.1555 (bid 1.1555, ask 1.1556, 27.927M XRP 24h volume, 1.1704 24h open). Kraken event timestamp absent; OKX event timestamp age 1,561.238 seconds. No synchronized multi-level depth; both are model-ineligible.
+- Exact response strings and source excerpts are stored in `20261108T025908Z-binance-hack-xrp-ledger-and-market-reconciliation.json`. An append-only correction file supersedes two incorrectly transcribed digest fields; corrected Kraken SHA-256 is `2c3eddf82fa86ff7a9c5291958c28a1a5c3582ddfe22ab4013ef448fd916c3e5`; corrected OKX SHA-256 is `3c7cd7995609788cc15462a1a4f699dafeb677c70f68cb94c1d89f51a020a51c`. Original response text remains unchanged.
+- Binance's official report says five hot wallets sent approximately 233.46M XRP to an attacker-controlled XRPL account on Oct 29. XRPLWin identifies the rK21 account as attacker-controlled; Bitcoin.com reports distribution of approximately 233.45M XRP to six wallets on Nov 2. The last cited no-outgoing status is Nov 2 04:37 UTC, not current. A U.Today claim that Binance swept 80M into internal wallets is not accepted: the sender is the attacker-tagged account and the destination is unknown.
+- Binance's 98% affected-token replenishment statement is not proof of recovery of the stolen XRP. XRPLWin reports a 40.5M RLUSD freeze on Ethereum; that is not a freeze of native XRP. FBI attribution to North Korea's TraderTraitor is preserved as a contested official attribution.
+- XRP Insights' secondary ETF tracker reports approximately -812.5K XRP holdings change across six spot funds plus BITW for Nov 2–6; GXRP is excluded from daily flow calculations during a data-gap correction. Not model-eligible.
+- The C09 Evernorth overlay supersedes only C07's incorrect `$214.05M / 84,365,876` average-cost calculation with the SEC-supported `$214M / 84,365,876.3625 = $2.53657058`. It preserves the exact $214,049,995 cash receipt, rounded $214,050,000 summary, and $49,995 restricted cash. C07's Ripple Labs lender attribution and duplicate-edge removal remain valid. The delayed-funding correction already changes the purchase-cost category to $214M and prevents double-counting the $10.5M subscriber cash.
+- C10 marks the historical Pillars source-fiction scan inconclusive because the old script did not check/record HTTP status. The current script now fails closed on non-200 responses and reports HTTP 200 explicitly; regression tests cover 404, 500 and 200. This is code on the research branch, not a live external scan or deployment.
+- The nine-platform map remains unchanged in access status: ChatGPT-to-GitHub is the only verified persistent connection. Copilot is a one-off COMMENTED review event; Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows.
+
+### Prediction status and next actions
+
+- Forecast status: **NOT_ISSUED**. No synchronized multi-venue depth/flow dataset, current attacker-wallet ledger reconciliation, validated trained-model out-of-sample lift, real-data calibration or sufficient independent shadow outcomes exists. No directional forecast is justified.
+- Scheduled ingestion remains on #1640, not main; no scheduled ingestion run on main has been verified. Independent external WORM archival and independently rebuildable raw-source receipts remain incomplete.
+- Next: finish exact-head #1643 full suite/dependency audit; reply to and resolve only review threads demonstrably addressed; preserve unresolved objections; obtain independent approvals and authorized Pages/branch-protection confirmation; merge #1640 only when every gate is satisfied; verify main merge SHA, files, automatic workflow effects and main CI; then consolidate #1643's research-only paths onto verified main.
+
 ## Run 37 — current repository state (2026-11-08T02:59:08Z)
 
 ### Mission and mainline
