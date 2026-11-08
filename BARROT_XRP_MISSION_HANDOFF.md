@@ -87,9 +87,15 @@ OKX XRP-USDT:
 
 Raw-source receipts:
 - Kraken public ticker URL: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
-- SHA-256 of the exact UTF-8 response text exposed by the retrieval layer: 6b1e3a4b6c8b7a0b0c0e2a5d9d9f9d2a6b1e3a4b6c8b7a0b0c0e2a5d9d9f2a6b
+- SHA-256 of the exact UTF-8 response text exposed by the retrieval layer: 2702c6a468ce6482b8159694414caf0144f15c723c284911688e9ef658221f8a
 - OKX public ticker URL: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
-- SHA-256 of the exact UTF-8 response text exposed by the retrieval layer: 8ab1c2caba750b59700b524549e2c8184b5808ab58176d4592ca8d2c065dddde
+- SHA-256 of the exact UTF-8 response text exposed by the retrieval layer: 3c7cd7995609788cc15462a1a4f699dafeb677c70f68cb94c1d89f51a020a51c
+
+Exact response text returned by the retrieval layer (preserved verbatim; hashes above cover these UTF-8 strings):
+
+Kraken: {"error":[],"result":{"XXRPZUSD":{"a":["1.15548000","2864","2864.000"],"b":["1.15539000","3835","3835.000"],"c":["1.15543000","22.10106117"],"v":["476778.84260791","17347052.06841902"],"p":["1.15989832","1.16226360"],"t":[1176,21478],"l":["1.15405000","1.14888000"],"h":["1.16357000","1.18067000"],"o":"1.16234000"}}}
+
+OKX: {"code":"0","data":[{"instType":"SPOT","instId":"XRP-USDT","last":"1.1555","lastSz":"32.1","askPx":"1.1556","askSz":"4085.603105","bidPx":"1.1555","bidSz":"5287.36404","open24h":"1.1704","high24h":"1.1821","low24h":"1.1495","volCcy24h":"32462122.520173587","vol24h":"27927411.224096","ts":"1794105186762","sodUtc0":"1.1639","sodUtc8":"1.1587"}],"msg":""}
 
 Hash scope is the exact response text returned by the web retrieval layer, not raw HTTP wire bytes. Kraken's event time is absent. USD and USDT have not been normalized. This is Level 1 only, not multi-level executable depth; no trade aggressor, cancellation rate, slippage or synchronized venue-depth record is available. The repeated identical response is treated as cache/stale evidence, not a new tick. The cross-venue price gap is not an arbitrage signal.
 
@@ -98,6 +104,8 @@ Competing interpretations are preserved: bid-heavy displayed top-of-book could i
 ## Macro, liquidity and institutional context
 
 A new #1643 research addendum records Treasury cash, borrowing, Federal Reserve and Bank of Japan context:
+- Macro source registry: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T021417Z-us-treasury-fed-boj-liquidity-context.json
+- TGA actual-versus-projection reconciliation: https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T021527Z-tga-actual-versus-projection-reconciliation.json
 - Treasury's November 2 estimate: $618B privately held net marketable borrowing for October-December 2026 and $800B for January-March 2027. These are estimates, not realized flows.
 - November 4 refunding: $125B gross offering, $97B privately held maturities refunded and approximately $28B estimated new private cash. Gross issuance must not be treated as net new cash.
 - Treasury projected a TGA peak near $1.025T in late November and late January, with ±$50B tolerance. This is a projection, not the current balance.
