@@ -55,7 +55,7 @@ def test_aggregator_open_interest_totals_are_not_averaged():
         "kodexius": 779_660_000,
         "tradradar": 1_900_000_000,
     }
-    assert comparison["tradRadar_to_kodexius_ratio"] == 2.4369597004
+    assert comparison["tradradar_to_kodexius_ratio"] == 2.4369597004
     assert comparison["do_not_average"] is True
     assert comparison["status"] == "UNRESOLVED_UNIVERSE_CONTRACT_SCOPE_AND_AGGREGATION_DIFFERENCE"
 
@@ -74,8 +74,8 @@ def test_funding_and_liquidation_denominators_remain_separate():
     assert comparison["liquidation_and_positioning"]["status"] == (
         "NOT_COMPARABLE_VENUE_COVERAGE_AND_METRIC_DENOMINATORS_DIFFER"
     )
-    assert comparison["liquidation_and_positioning"]["tradRadar"]["oi_venue_count"] == 7
-    assert comparison["liquidation_and_positioning"]["tradRadar"]["liquidation_venue_count"] == 5
+    assert comparison["liquidation_and_positioning"]["tradradar"]["oi_venue_count"] == 7
+    assert comparison["liquidation_and_positioning"]["tradradar"]["liquidation_venue_count"] == 5
 
 
 def test_competing_positioning_hypotheses_retain_counterevidence():
