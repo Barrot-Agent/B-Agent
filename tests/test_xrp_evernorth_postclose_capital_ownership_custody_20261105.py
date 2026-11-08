@@ -138,3 +138,62 @@ def test_evernorth_research_remains_ineligible_and_forecast_is_not_issued():
     assert data["source_capture_policy"]["raw_sec_bytes_captured"] is False
     assert all(source["raw_content_sha256"] is None for source in data["source_registry"])
     assert all(source["model_eligible"] is False for source in data["source_registry"])
+
+
+def test_goldman_q2_13f_five_fund_rows_reconcile_to_sec_primary_filing():
+    data = load()
+    item = data["goldman_sachs_institutional_exposure"]
+    positions = item["q2_2026_xrp_etf_positions"]
+    assert len(positions) == 5
+    assert sum(row["value_usd"] for row in positions) == 86_506_129
+    assert sum(row["shares"] for row in positions) == 7_390_191
+    assert {row["ticker"] for row in positions} == {"TOXR", "XRP", "XRPC", "XRPZ", "GXRP"}
+    filing = item["q2_2026_filing_metadata"]
+    assert filing["accession"] == "0000886982-26-000519"
+    assert filing["filing_date"] == "2026-08-14"
+    assert filing["position_as_of_date"] == "2026-06-30"
+    universe = item["q2_2026_universe_reconciliation"]
+    assert universe["cryptokeyhole_four_fund_subset_usd"] == 78_859_344
+    assert universe["excluded_grayscale_value_usd"] == 7_646_785
+    assert universe["cryptokeyhole_four_fund_subset_usd"] + universe["excluded_grayscale_value_usd"] == universe["sec_five_fund_total_usd"]
+    assert universe["sum_verified"] is True
+
+
+def test_cryptokeyhole_four_fund_scope_and_usd_thousands_are_not_confused_with_xrp():
+    item = load()["etf_flow_vintage_reconciliation"]["cryptokeyhole"]
+    assert item["latest_complete_trading_day"] == "2026-11-05"
+    assert item["nov_5_complete_four_fund_xrp"] == -3_339
+    assert item["oct_30_to_nov_5_complete_five_day_xrp"] == -1_137_098
+    assert item["nov_6_partial_funds_reported"] == 3
+    assert item["nov_6_partial_funds_expected"] == 4
+    assert item["nov_6_partial_xrp"] == -752_048
+    assert item["nov_6_partial_usd"] == -886_665
+    assert item["nov_6_usd_thousands_table_value"] == -887
+    assert item["nov_6_usd_table_unit"] == "USD thousands"
+    assert item["nov_6_xrp_table_unit"] == "XRP"
+    assert item["model_eligible"] is False
+
+
+def test_etf_aggregator_universes_are_not_independent_or_direct_capital_flows():
+    data = load()
+    item = data["etf_flow_vintage_reconciliation"]
+    assert item["xrp_insights"]["nov_6_holdings_delta_xrp"] == -663_043
+    assert item["xrp_insights"]["nov_2_to_6_weekly_holdings_delta_xrp"] == -812_529
+    assert item["alpha_finance"]["nov_6_daily_usd_flow"] == 0
+    assert item["alpha_finance"]["fund_count"] == 5
+    assert item["comparability"]["independent_confirmation"] is False
+    assert item["comparability"]["directly_comparable"] is False
+    assert data["model_eligible"] is False
+    assert data["forecast_issued"] is False
+
+
+def test_rendered_source_hashes_are_not_mislabeled_as_raw_sec_bytes():
+    data = load()
+    policy = data["source_capture_policy"]
+    assert policy["raw_sec_bytes_captured"] is False
+    assert policy["raw_content_sha256"] is None
+    hashes = policy["normalized_visible_excerpt_hashes"]
+    assert len(hashes) == 5
+    assert all(len(value) == 64 for value in hashes.values())
+    assert "not raw HTTP wire-byte hashes" in policy["hash_scope"]
+    assert all(source["raw_content_sha256"] is None for source in data["source_registry"])
