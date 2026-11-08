@@ -63,7 +63,7 @@ def test_run28_platform_map_is_preserved_and_run33_is_historical():
     assert prior31["main_sha"] == MAIN_SHA
     assert any(item.get("run_id") == 26 for item in data["prior_run_observations"])
     assert run33["captured_at_utc"] == "2026-11-07T23:42:25Z"
-    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-08T01:22:49Z"
+    assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-08T01:28:31Z"
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
 

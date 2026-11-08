@@ -5256,3 +5256,14 @@ PR #1640 head `10d29d310365d63275ba932950948fdf5fe9f6f0` had one full-suite fail
 - The next exact-head full suite, wheel verification, dependency audit and fail-closed gate must pass before this branch can be considered verified.
 
 No merge, deployment, main-branch write, external model transfer, paper trade or real-money action occurred.
+
+
+## Run 34 historical timestamp assertion follow-up — 2026-11-08T01:32:34Z
+
+The exact-head integration run on `928971f47e0a9f96acfbdf9659a41095a023f8e8` reported **1,173 passed, 1 failed, 8 subtests passed**. The only failure was a historical assertion in `tests/test_xrp_mission_handoff_run27.py` that still expected the ChatGPT map's `last_verified_at_utc` to be 01:22:49Z after the Run 34 market follow-up had advanced it to 01:28:31Z. All Run 33/34 tests passed; inclusive coverage remained 58.49%; core tests passed. Wheel verification was skipped because the full suite failed.
+
+The historical Run 33 capture remains preserved at 23:42:25Z; the current map verification timestamp correctly remains 01:28:31Z. The stale test assertion is corrected to that value. This changes no product behavior, safety rule, evidence or test threshold. The next exact-head full-suite, wheel, dependency and fail-closed results remain pending.
+
+On #1643, the market-depth artifact passed its full-suite command on head `6ee1942fc7702bad582adb939705c841f1d77755` (2,222 passed, 8 subtests), but the subsequent SEC signatory/memo-hash correction advanced research to `639d00584b57da41d2d5e8884a59e20083988012`; exact-head CI for that latest research commit remains pending.
+
+No merge, main write, deployment, external transfer, paper trade or real-money action occurred.
