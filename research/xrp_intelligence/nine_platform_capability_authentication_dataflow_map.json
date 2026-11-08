@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T21:39:12Z",
+  "captured_at_utc": "2026-11-08T22:30:23Z",
   "repository": "Barrot-Agent/B-Agent",
-  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "cbab9115cc40e829bab04585d59b71886bc0e6c1",
-  "observed_research_head": "40a253eca0121f712380c2fa281768273455309e",
+  "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "observed_integration_head_before_map_commit": "bce81de092245bf2464900226e5d7443059eaa1f",
+  "observed_research_head": "92b66e11844313b1316429bc3b5678915af68565",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -125,7 +125,8 @@
         "Run 66 provenance correction and CI recheck: verified exact #1643 head 66bea with 2,562/8 full suite, 498/8 core, six-manifest audit and fail-closed gate; #1640 documentation head 1251714 exposed one historical first-180-lines assertion, now corrected without weakening tests; exact-head rerun pending.",
         "Run 67: fetched complete main/V3/research trees, all four open-PR pages, exact PR heads/changed paths/ancestry, reviews/threads, current Actions jobs/logs and security/workflow settings; verified #1640 exact code/test CI (1,215/8, 58.98%, wheel, six-manifest audit, fail-closed) and #1643 exact latest CI (2,569/8, core 498/8, six-manifest audit, fail-closed); committed one new evidence artifact and seven tests to existing #1643 and updated handoff/map on existing #1640 only.",
         "Run 68: re-fetched complete main/V3/research trees, all four open-PR pages, current #1640/#1643 metadata and all changed-file pages, exact-head full-suite/core/wheel/audit/gate logs, review records/threads, main workflow/security state, mission/forecast/ingestion code and durable handoff; verified exact-head CI on both PRs and recorded a hash-receipted Kraken-only web recheck. No main write, merge, deployment, secret operation or external model transfer.",
-        "Run 70: fetched complete main/V3/research trees, all four open-PR pages, current PR heads/diffs/ancestry/reviews/threads, exact-head Actions logs, dependency audits, fail-closed gates, and committed a concise current handoff/map update on existing #1640 only."
+        "Run 70: fetched complete main/V3/research trees, all four open-PR pages, current PR heads/diffs/ancestry/reviews/threads, exact-head Actions logs, dependency audits, fail-closed gates, and committed a concise current handoff/map update on existing #1640 only.",
+        "Run 71 (2026-11-08 22:30 UTC): current-session GitHub access re-verified by fetching the current main ref and complete recursive trees for main, the V3 integration branch and the XRP research branch; inspected all four open-PR inventory pages, current #1640/#1643 metadata, changed-path overlaps, review threads, exact-head Actions checks/logs, dependency audits, fail-closed gates, CODEOWNERS, rulesets and branch-protection visibility. Verified #1640 head e401f089 with 1,215 full-suite passes plus 8 subtests, 660 core passes plus 8 subtests, 58.98% coverage, installed-wheel verification, dependency audit and fail-closed gate. Verified #1643 head 92b66e1 is dirty due a conflicting same-path relationship artifact and has no exact-head Actions full-suite run. Main advanced to d4d43be through a single-parent direct commit adding that artifact; the push triggered a successful GitHub Pages deployment. No external-platform authentication, data transfer, main write, merge, deployment, secret operation or financial action was performed by this run."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
