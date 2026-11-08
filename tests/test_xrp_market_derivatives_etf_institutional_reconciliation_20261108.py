@@ -192,7 +192,7 @@ def test_rex_is_mixed_direct_and_lookthrough_exposure_not_a_pure_spot_holding():
     assert rex["coinshares_etp_shares"] == 362_750
     assert rex["direct_xrp_pct"] == 59.49
     assert rex["coinshares_physical_xrp_pct"] == 40.49
-    assert "not equivalent to directly holding XRP" in rex["issuer_warning"]
+    assert "not equivalent to investing directly in XRP" in rex["issuer_warning"]
     assert data["product_classification"]["corrected_label"] == (
         "Five direct XRP spot/ETP products, one mixed direct/indirect XRP-exposure fund, and one multi-asset index product."
     )
