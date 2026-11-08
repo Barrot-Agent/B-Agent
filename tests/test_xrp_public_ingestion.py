@@ -2389,7 +2389,7 @@ def test_bybit_linear_open_interest_history_normalizes_order_and_preserves_point
     mixed = json.loads(json.dumps(response["payload"]))
     mixed["result"]["list"].append({
         "openInterest": "2505000",
-        "timestamp": _iso_ms(captured - timedelta(hours=2)),
+        "timestamp": _iso_ms(captured - timedelta(minutes=90)),
     })
     with pytest.raises(XRPIngestionError, match="not strictly monotonic"):
         parser(mixed, source_id=source_id, url=url, digest=digest, captured=captured)
