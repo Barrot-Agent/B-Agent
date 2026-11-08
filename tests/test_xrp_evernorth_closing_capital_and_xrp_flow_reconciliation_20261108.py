@@ -119,7 +119,9 @@ def test_delayed_funding_share_count_is_consistent_with_cash_and_xrp_value():
     assert item["aggregate_value_usd"] == 10_786_138
     assert item["shares_times_10_usd"] == 10_786_130
     assert item["difference_usd"] == -8
-    assert item["exact_subscriber_cash_xrp_split_not_itemized"] if "exact_subscriber_cash_xrp_split_not_itemized" in item else True
+    delayed = load_artifact()["capital_ledger"]["private_placement_components"]["delayed_funding"]
+    assert delayed["closing_shares_issued"] is True
+    assert delayed["exact_subscriber_cash_xrp_split_not_itemized"] is True
 
 
 def test_sbi_holdings_equity_edge_is_not_mislabeled_as_sbic_or_direct_xrp_purchase():
