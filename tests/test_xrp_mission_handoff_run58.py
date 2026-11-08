@@ -38,7 +38,8 @@ def test_run58_endpoint_registry_and_map_counts_match():
     )
     current = data["current_run_observations"]
     engine = current["prediction_engine"]
-    assert current["run_id"] == 58
+    assert current["run_id"] == 59
+    assert any(item.get("run_id") == 58 for item in data["prior_run_observations"])
     assert engine["endpoints"] == len(ENDPOINTS)
     assert engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
     assert engine["endpoint_ids"] == [source_id for source_id, _ in ENDPOINTS]
