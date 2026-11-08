@@ -1,3 +1,9 @@
+# Run 49 current-head clarification — 2026-11-08T09:47:59Z
+
+The #1640 code/test head `68fa88292ecfcd24a96b0c656172e59bb7ac1112` passed its exact full suite, coverage, installed-wheel, dependency-audit and fail-closed checks. The current integration branch head before this final combined handoff/map update is `df3ab4f957ff75df16d87748b1dd63220f2aaeaf`, a documentation-only handoff commit. This combined commit updates the handoff and nine-platform map. Exact-head CI must be rerun on the resulting branch head; do not substitute the 68fa results for that documentation-only head. Live exact-head checks are available at [PR #1640 checks](https://github.com/Barrot-Agent/B-Agent/pull/1640/checks).
+
+---
+
 # Current integrated Barrot handoff — 2026-11-08T09:47:59Z
 
 ## Run 49 — 2026-11-08T09:47:59Z
