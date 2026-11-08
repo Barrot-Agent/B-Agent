@@ -12,7 +12,7 @@ RESEARCH_HEAD = "d0ba9aa89feba4cb6ace650c94c9f58a6584c340"
 def test_run28_handoff_is_latest_and_preserves_verified_heads():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
     assert handoff.startswith("# Current integrated Barrot handoff — ")
-    assert re.search(r"(?m)^## Run \d+ — 2026-\d{2}-\d{2}T", handoff[:3_000])
+    assert re.search(r"(?m)^## Run \d+ — current repository", handoff[:3_000])
     assert "## Exact-head handoff/map CI follow-up — 2026-11-07T18:39:19Z" in handoff
     assert "# Run 28 — 2026-11-07T18:28:03Z" in handoff
     for value in (MAIN_SHA, INTEGRATION_HEAD, RESEARCH_HEAD):
