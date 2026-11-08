@@ -22,7 +22,9 @@ def test_circle_q2_2026_sec_filing_uses_correct_10q_accession():
 def test_circle_occ_charter_is_finally_approved_and_effective():
     data = load()
     item = data["bank_charter_status"]["circle"]
+    assert item["final_approval_date"] == "2026-07-09"
     assert item["final_approval_announcement_date"] == "2026-07-10"
+    assert item["opening_date"] == "2026-07-24"
     assert item["occ_cas_effective_date"] == "2026-07-24"
     assert "D79Z71vmerN8" in item["sources"][0]
     assert "not an ordinary deposit-taking" in item["issuer_boundary"]
@@ -42,6 +44,8 @@ def test_coinbase_occ_cas_effective_status_supersedes_conditional_only_snapshot(
     item = data["bank_charter_status"]["coinbase"]
     assert item["conditional_approval_date"] == "2026-04-02"
     assert item["occ_cas_effective_date"] == "2026-11-06"
+    assert item["insured_depository_institution"] is False
+    assert "finder" in item["planned_scope"]
     assert item["status"] == "OCC_CAS_CONSUMMATED_EFFECTIVE_2026_11_06"
     assert "NOT_LOCATED" in item["separate_final_approval_document"]
     assert "3RAoRRek6o4j" in item["sources"][0]
