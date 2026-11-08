@@ -60,6 +60,8 @@ Exact evidence:
 
 The research branch still uses checkout@v4 and setup-python@v5 and does not carry #1640's inclusive coverage and installed-wheel verification. Those stronger CI controls must be retained when the research is consolidated onto verified main.
 
+Run 36 verification follow-up: the Git Data API commit 3b86370f8faa01be742b2f8963de8905455afe63 corrected handoff ordering and synchronized the map capture/verification timestamps. That ref update did not create an Actions run, so this contents-API handoff-only commit is used to trigger exact-head PR CI. No product code or test expectation is changed by this trigger. The latest code/test head 5c546a581db22ee28e1c067f2d04d160c26b0a6a remains fully verified; this documentation/map head must pass its own full suite, inclusive coverage, wheel, dependency audit and fail-closed gate before it can be called green.
+
 ## V3 operational safety and rate-limit diagnosis
 
 The latest inspected main Cross Analysis run succeeded: https://github.com/Barrot-Agent/B-Agent/actions/runs/42436065756.
