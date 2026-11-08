@@ -1,4 +1,6 @@
-# Run 36 — 2026-11-08 02:43:45 UTC
+# Current integrated Barrot handoff — 2026-11-08T01:40:58Z
+
+## Run 36 — 2026-11-08 02:43:45 UTC
 
 ## Mission priority
 
@@ -187,7 +189,6 @@ No merge was performed. Do not bypass protection or merge while approvals/requir
 
 ---
 
-# Current integrated Barrot handoff — 2026-11-08T01:40:58Z
 
 ## Run 35 — current repository, research and prediction-engine state
 
