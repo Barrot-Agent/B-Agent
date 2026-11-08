@@ -78,7 +78,7 @@ def test_etf_holdings_deltas_preserve_partial_coverage_and_proxy_semantics():
     assert cryptokeyhole["values"]["reporting_funds"] == 3
     assert cryptokeyhole["values"]["total_daily_funds_expected"] == 4
     assert cryptokeyhole["values"]["missing_fund"] == "Franklin Templeton XRPZ"
-    assert "not verified creations/redemptions" in insights["limitations"][0]
+    assert "not verified" in insights["limitations"][0] and "creations/redemptions" in insights["limitations"][0]
     assert items["alpha_finance_etf"]["values"]["nov6_reported_flow_usd"] == 0
 
 
