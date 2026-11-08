@@ -211,6 +211,66 @@ def _fake_fetcher(captured: datetime):
                 },
                 "time": captured_ms - 1000,
             }
+        elif source_id == "bybit_linear_ticker":
+            payload = {
+                "retCode": 0,
+                "retMsg": "OK",
+                "result": {
+                    "category": "linear",
+                    "list": [{
+                        "symbol": "XRPUSDT",
+                        "lastPrice": "1.290",
+                        "markPrice": "1.291",
+                        "indexPrice": "1.290",
+                        "prevPrice24h": "1.280",
+                        "price24hPcnt": "0.0078",
+                        "highPrice24h": "1.310",
+                        "lowPrice24h": "1.270",
+                        "openInterest": "2500000",
+                        "singleOpenInterest": "1250000",
+                        "openInterestValue": "3225000",
+                        "singleOpenInterestValue": "1612500",
+                        "volume24h": "1000000",
+                        "turnover24h": "1290000",
+                        "fundingRate": "0.0001",
+                        "nextFundingTime": captured_ms + 8 * 3600000,
+                        "fundingIntervalHour": "8",
+                        "bid1Price": "1.2899",
+                        "ask1Price": "1.2901",
+                        "bid1Size": "1000",
+                        "ask1Size": "900",
+                    }],
+                },
+                "time": captured_ms - 2000,
+            }
+        elif source_id == "bybit_linear_open_interest":
+            payload = {
+                "retCode": 0,
+                "retMsg": "OK",
+                "result": {
+                    "category": "linear",
+                    "symbol": "XRPUSDT",
+                    "list": [
+                        {"openInterest": "2510000", "timestamp": captured_ms - 3600000},
+                        {"openInterest": "2500000", "timestamp": captured_ms - 7200000},
+                    ],
+                    "nextPageCursor": "next-page",
+                },
+                "time": captured_ms - 1000,
+            }
+        elif source_id == "bybit_linear_funding_history":
+            payload = {
+                "retCode": 0,
+                "retMsg": "OK",
+                "result": {
+                    "category": "linear",
+                    "list": [
+                        {"symbol": "XRPUSDT", "fundingRate": "0.0001", "fundingRateTimestamp": captured_ms - 3600000},
+                        {"symbol": "XRPUSDT", "fundingRate": "-0.0002", "fundingRateTimestamp": captured_ms - 6 * 3600000},
+                    ],
+                },
+                "time": captured_ms - 1000,
+            }
         elif source_id == "bitbank_spot_circuit_break":
             payload = {
                 "success": 1,
@@ -475,8 +535,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.15"
-    assert summary["parser_version"] == "xrp-public-market-v3.14"
+    assert summary["adapter_version"] == "xrp-public-market-v3.16"
+    assert summary["parser_version"] == "xrp-public-market-v3.15"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -1126,8 +1186,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 32
-    assert len(SCHEDULED_ENDPOINTS) == 30
+    assert len(ENDPOINTS) == 35
+    assert len(SCHEDULED_ENDPOINTS) == 33
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -2231,6 +2291,157 @@ def test_bybit_orderbook_fails_closed_on_missing_matching_engine_time_or_crossed
     with pytest.raises(XRPIngestionError, match="crossed or locked"):
         parser(crossed, source_id=source_id, url=url, digest="b" * 64, captured=captured)
 
+
+
+
+def test_bybit_linear_sources_are_allowlisted_and_scheduled():
+    endpoint_map = dict(ENDPOINTS)
+    expected = {
+        "bybit_linear_ticker": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=XRPUSDT",
+        "bybit_linear_open_interest": "https://api.bybit.com/v5/market/open-interest?category=linear&symbol=XRPUSDT&intervalTime=1h&limit=200",
+        "bybit_linear_funding_history": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=XRPUSDT&limit=200",
+    }
+    assert all(endpoint_map[source_id] == url for source_id, url in expected.items())
+    assert set(expected).issubset(xrp_ingestion.BYBIT_SOURCE_IDS)
+    assert set(expected).issubset(PARSERS)
+    assert set(expected).issubset({source_id for source_id, _url in SCHEDULED_ENDPOINTS})
+
+
+def test_bybit_linear_ticker_preserves_open_interest_conventions_and_funding_interval():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    source_id = "bybit_linear_ticker"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    parser = PARSERS[source_id]
+    digest = hashlib.sha256(response["raw_bytes"]).hexdigest()
+    records, event_time, eligible, reason = parser(
+        response["payload"], source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert event_time == (captured - timedelta(seconds=2)).isoformat(timespec="microseconds").replace("+00:00", "Z")
+    assert eligible is True
+    assert reason == ""
+    by_feature = {item["feature_id"]: item for item in records}
+    assert by_feature["xrp.perpetual.bybit.open_interest_xrp_both_sides"]["value"] == 2_500_000
+    assert "both sides" in by_feature["xrp.perpetual.bybit.open_interest_xrp_both_sides"]["unit"]
+    assert by_feature["xrp.perpetual.bybit.open_interest_xrp_single_side"]["value"] == 1_250_000
+    assert by_feature["xrp.perpetual.bybit.open_interest_value_usdt_both_sides"]["value"] == 3_225_000
+    assert by_feature["xrp.perpetual.bybit.open_interest_value_usdt_single_side"]["value"] == 1_612_500
+    assert by_feature["xrp.perpetual.bybit.current_funding_rate"]["value"] == pytest.approx(0.0001)
+    assert by_feature["xrp.perpetual.bybit.current_funding_rate"]["unit"] == "fraction_per_funding_interval"
+    assert by_feature["xrp.perpetual.bybit.current_funding_rate"]["model_eligible"] is True
+    assert by_feature["xrp.perpetual.bybit.funding_interval_hours"]["value"] == 8
+    assert any("USDT is not converted to USD" in item for item in by_feature["xrp.perpetual.bybit.last_price"]["limitations"])
+
+    stale = json.loads(json.dumps(response["payload"]))
+    stale["time"] = _iso_ms(captured - timedelta(seconds=301))
+    _stale_records, _stale_time, stale_eligible, stale_reason = parser(
+        stale, source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert stale_eligible is False
+    assert "older_than_300_seconds" in stale_reason
+
+    crossed = json.loads(json.dumps(response["payload"]))
+    crossed["result"]["list"][0]["ask1Price"] = crossed["result"]["list"][0]["bid1Price"]
+    with pytest.raises(XRPIngestionError, match="crossed or locked"):
+        parser(crossed, source_id=source_id, url=url, digest=digest, captured=captured)
+
+    missing_interval = json.loads(json.dumps(response["payload"]))
+    del missing_interval["result"]["list"][0]["fundingIntervalHour"]
+    partial, _partial_time, partial_eligible, _partial_reason = parser(
+        missing_interval, source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    partial_features = {item["feature_id"]: item for item in partial}
+    assert partial_eligible is True
+    assert partial_features["xrp.perpetual.bybit.last_price"]["model_eligible"] is True
+    assert partial_features["xrp.perpetual.bybit.current_funding_rate"]["model_eligible"] is False
+    assert partial_features["xrp.perpetual.bybit.current_funding_rate"]["eligibility_reason"] == "funding_interval_missing"
+
+
+def test_bybit_linear_open_interest_history_normalizes_order_and_preserves_point_in_time_availability():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    source_id = "bybit_linear_open_interest"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    parser = PARSERS[source_id]
+    digest = hashlib.sha256(response["raw_bytes"]).hexdigest()
+    records, latest_time, eligible, reason = parser(
+        response["payload"], source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert eligible is True
+    assert reason == ""
+    assert latest_time == (captured - timedelta(hours=1)).isoformat(timespec="microseconds").replace("+00:00", "Z")
+    assert [item["value"] for item in records] == [2_500_000, 2_510_000]
+    assert records[0]["event_time_utc"] < records[1]["event_time_utc"]
+    assert all(item["known_at_utc"] == captured.isoformat(timespec="microseconds").replace("+00:00", "Z") for item in records)
+    assert all(item["model_eligible"] is True for item in records)
+    assert any("nextPageCursor" in item for item in records[0]["limitations"])
+
+    duplicate = json.loads(json.dumps(response["payload"]))
+    duplicate["result"]["list"][1]["timestamp"] = duplicate["result"]["list"][0]["timestamp"]
+    with pytest.raises(XRPIngestionError, match="duplicate event timestamp"):
+        parser(duplicate, source_id=source_id, url=url, digest=digest, captured=captured)
+
+    future = json.loads(json.dumps(response["payload"]))
+    future["result"]["list"][0]["timestamp"] = _iso_ms(captured + timedelta(seconds=1))
+    with pytest.raises(XRPIngestionError, match="later than capture time"):
+        parser(future, source_id=source_id, url=url, digest=digest, captured=captured)
+
+    mixed = json.loads(json.dumps(response["payload"]))
+    mixed["result"]["list"].append({
+        "openInterest": "2505000",
+        "timestamp": _iso_ms(captured - timedelta(hours=2)),
+    })
+    with pytest.raises(XRPIngestionError, match="not strictly monotonic"):
+        parser(mixed, source_id=source_id, url=url, digest=digest, captured=captured)
+
+
+def test_bybit_linear_funding_history_uses_actual_settlement_times_without_assuming_eight_hours():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    source_id = "bybit_linear_funding_history"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    parser = PARSERS[source_id]
+    digest = hashlib.sha256(response["raw_bytes"]).hexdigest()
+    records, latest_time, eligible, reason = parser(
+        response["payload"], source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert eligible is True
+    assert reason == ""
+    assert latest_time == (captured - timedelta(hours=1)).isoformat(timespec="microseconds").replace("+00:00", "Z")
+    assert [item["value"] for item in records] == pytest.approx([-0.0002, 0.0001])
+    assert records[0]["event_time_utc"] == (captured - timedelta(hours=6)).isoformat(timespec="microseconds").replace("+00:00", "Z")
+    assert records[1]["event_time_utc"] == (captured - timedelta(hours=1)).isoformat(timespec="microseconds").replace("+00:00", "Z")
+    assert records[0]["unit"] == "fraction_per_settlement"
+    assert records[0]["aggregation_window"] == "funding_event"
+    first = datetime.fromisoformat(records[0]["event_time_utc"].replace("Z", "+00:00"))
+    second = datetime.fromisoformat(records[1]["event_time_utc"].replace("Z", "+00:00"))
+    assert (second - first).total_seconds() == 5 * 3600
+    assert any("not assumed to be eight hours" in item for item in records[0]["limitations"])
+    assert all(item["known_at_utc"] == captured.isoformat(timespec="microseconds").replace("+00:00", "Z") for item in records)
+
+    duplicate = json.loads(json.dumps(response["payload"]))
+    duplicate["result"]["list"][1]["fundingRateTimestamp"] = duplicate["result"]["list"][0]["fundingRateTimestamp"]
+    with pytest.raises(XRPIngestionError, match="duplicate event timestamp"):
+        parser(duplicate, source_id=source_id, url=url, digest=digest, captured=captured)
+
+    future = json.loads(json.dumps(response["payload"]))
+    future["result"]["list"][0]["fundingRateTimestamp"] = _iso_ms(captured + timedelta(seconds=1))
+    with pytest.raises(XRPIngestionError, match="later than capture time"):
+        parser(future, source_id=source_id, url=url, digest=digest, captured=captured)
+
+
+def test_bybit_linear_403_is_recorded_as_provider_access_failure():
+    failure = _source_failure_record(
+        "bybit_linear_ticker",
+        "https://api.bybit.com/v5/market/tickers?category=linear&symbol=XRPUSDT",
+        "2026-11-07T14:00:00Z",
+        XRPSourceHTTPError("bybit_linear_ticker", 403, "Forbidden"),
+    )
+    assert failure["http_status_code"] == 403
+    assert failure["error_category"] == "provider_http_forbidden"
+    assert failure["model_eligible"] is False
+    assert failure["retryable"] is False
+    assert failure["provider_access_documentation_url"] == "https://bybit-exchange.github.io/docs/v5/guide"
 
 
 def test_public_json_fetch_preserves_http_status_and_reason(monkeypatch):

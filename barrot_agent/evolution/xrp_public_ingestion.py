@@ -29,8 +29,8 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.15"
-PARSER_VERSION = "xrp-public-market-v3.14"
+ADAPTER_VERSION = "xrp-public-market-v3.16"
+PARSER_VERSION = "xrp-public-market-v3.15"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -68,6 +68,9 @@ ENDPOINTS = (
     ("okx_spot_depth", "https://us.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100"),
     ("bybit_spot_ticker", "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT"),
     ("bybit_spot_depth", "https://api.bybit.com/v5/market/orderbook?category=spot&symbol=XRPUSDT&limit=100"),
+    ("bybit_linear_ticker", "https://api.bybit.com/v5/market/tickers?category=linear&symbol=XRPUSDT"),
+    ("bybit_linear_open_interest", "https://api.bybit.com/v5/market/open-interest?category=linear&symbol=XRPUSDT&intervalTime=1h&limit=200"),
+    ("bybit_linear_funding_history", "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=XRPUSDT&limit=200"),
     ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
     ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
@@ -143,7 +146,7 @@ class XRPSourceHTTPError(XRPIngestionError):
         super().__init__(f"public fetch failed for {source_id} (HTTP {self.status_code})")
 
 
-BYBIT_SOURCE_IDS = frozenset({"bybit_spot_ticker", "bybit_spot_depth"})
+BYBIT_SOURCE_IDS = frozenset({"bybit_spot_ticker", "bybit_spot_depth", "bybit_linear_ticker", "bybit_linear_open_interest", "bybit_linear_funding_history"})
 BYBIT_ACCESS_DOCUMENTATION_URL = "https://bybit-exchange.github.io/docs/v5/guide"
 
 
@@ -3015,6 +3018,286 @@ def _raw_only_circle_transparency_page(payload: Any, *, captured: datetime, **_k
     )
 
 
+
+def _ordered_bybit_history_rows(
+    rows: Any,
+    *,
+    timestamp_key: str,
+    source_name: str,
+    captured: datetime,
+) -> list[tuple[datetime, Mapping[str, Any]]]:
+    if not isinstance(rows, list) or not rows:
+        raise XRPIngestionError(f"Bybit {source_name} history must be a non-empty array")
+    parsed: list[tuple[datetime, Mapping[str, Any]]] = []
+    seen: set[str] = set()
+    for row in rows:
+        if not isinstance(row, Mapping):
+            raise XRPIngestionError(f"Bybit {source_name} history row shape mismatch")
+        event_time = _from_ms(row.get(timestamp_key), f"Bybit {source_name} {timestamp_key}")
+        if event_time > captured:
+            raise XRPIngestionError(f"Bybit {source_name} event time is later than capture time")
+        event_s = _iso(event_time)
+        if event_s in seen:
+            raise XRPIngestionError(f"Bybit {source_name} history contains a duplicate event timestamp")
+        seen.add(event_s)
+        parsed.append((event_time, row))
+    if len(parsed) > 1:
+        ascending = all(parsed[i][0] < parsed[i + 1][0] for i in range(len(parsed) - 1))
+        descending = all(parsed[i][0] > parsed[i + 1][0] for i in range(len(parsed) - 1))
+        if descending:
+            parsed.reverse()
+        elif not ascending:
+            raise XRPIngestionError(f"Bybit {source_name} history is not strictly monotonic")
+    return parsed
+
+
+def _parse_bybit_linear_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Parse Bybit XRPUSDT linear-perpetual ticker without normalizing venue units."""
+    result = _bybit_result(payload, "linear ticker")
+    if result.get("category") != "linear":
+        raise XRPIngestionError("Bybit ticker category is not linear")
+    rows = result.get("list")
+    if not isinstance(rows, list) or len(rows) != 1 or not isinstance(rows[0], Mapping):
+        raise XRPIngestionError("Bybit linear ticker must contain exactly one row")
+    row = rows[0]
+    if row.get("symbol") != "XRPUSDT":
+        raise XRPIngestionError("Bybit linear ticker symbol mismatch")
+
+    source_time = _from_ms(payload.get("time"), "Bybit linear ticker response time")
+    if source_time > captured:
+        raise XRPIngestionError("Bybit linear ticker response time is later than capture time")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    event_s, captured_s = _iso(source_time), _iso(captured)
+
+    bid = _number(row.get("bid1Price"), "Bybit linear best bid", allow_zero=False)
+    ask = _number(row.get("ask1Price"), "Bybit linear best ask", allow_zero=False)
+    if ask <= bid:
+        raise XRPIngestionError("Bybit linear ticker bid/ask is crossed or locked")
+
+    interval_hours = None
+    interval_raw = row.get("fundingIntervalHour")
+    if interval_raw not in (None, ""):
+        interval_value = _number(interval_raw, "Bybit fundingIntervalHour", allow_zero=False)
+        if not interval_value.is_integer() or not 1 <= interval_value <= 24:
+            raise XRPIngestionError("Bybit fundingIntervalHour must be a whole number from 1 to 24")
+        interval_hours = int(interval_value)
+
+    limitations = [
+        "Single Bybit XRPUSDT linear-perpetual venue; USDT is not converted to USD.",
+        "The top-level Bybit time field is REST response/server time, not an individual trade or funding-settlement event time.",
+        "Bybit documents openInterest and openInterestValue as both-sides totals and the singleOpenInterest fields as single-side values; preserve both conventions separately.",
+        "The ticker fundingRate is a current snapshot, not a settled historical funding event; use the funding-history endpoint for settlement events.",
+    ]
+    fields = (
+        ("lastPrice", "last_price", "USDT/XRP", False, ""),
+        ("markPrice", "mark_price", "USDT/XRP", False, ""),
+        ("indexPrice", "index_price", "USDT/XRP", False, ""),
+        ("bid1Price", "best_bid", "USDT/XRP", False, ""),
+        ("ask1Price", "best_ask", "USDT/XRP", False, ""),
+        ("openInterest", "open_interest_xrp_both_sides", "XRP (venue-reported both sides)", False, ""),
+        ("singleOpenInterest", "open_interest_xrp_single_side", "XRP (venue-reported single side)", False, ""),
+        ("openInterestValue", "open_interest_value_usdt_both_sides", "USDT (venue-reported both sides)", False, ""),
+        ("singleOpenInterestValue", "open_interest_value_usdt_single_side", "USDT (venue-reported single side)", False, ""),
+        ("volume24h", "base_volume_24h", "XRP/24h", True, "24h"),
+        ("turnover24h", "quote_volume_24h", "USDT/24h", True, "24h"),
+    )
+    records = []
+    for field, name, unit, allow_zero, window in fields:
+        records.append(
+            _feature_record(
+                feature_id=f"xrp.perpetual.bybit.{name}",
+                value=_number(row.get(field), f"Bybit linear ticker {field}", allow_zero=allow_zero),
+                unit=unit,
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="bybit",
+                venue="Bybit",
+                instrument="XRPUSDT linear perpetual",
+                currency_pair="XRP/USDT",
+                market_type="perpetual",
+                aggregation_window=window,
+                model_eligible=eligible,
+                eligibility_reason=reason,
+                quality_status=quality,
+                limitations=limitations,
+            )
+        )
+
+    funding_rate = _signed_number(row.get("fundingRate"), "Bybit current fundingRate")
+    funding_eligible = eligible and interval_hours is not None
+    funding_reason = reason if not eligible else ("" if interval_hours is not None else "funding_interval_missing")
+    funding_quality = quality if interval_hours is not None else "unverified"
+    records.append(
+        _feature_record(
+            feature_id="xrp.perpetual.bybit.current_funding_rate",
+            value=funding_rate,
+            unit="fraction_per_funding_interval",
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="bybit",
+            venue="Bybit",
+            instrument="XRPUSDT linear perpetual",
+            currency_pair="XRP/USDT",
+            market_type="perpetual",
+            aggregation_window="current_rate",
+            model_eligible=funding_eligible,
+            eligibility_reason=funding_reason,
+            quality_status=funding_quality,
+            limitations=limitations + [
+                "The current funding rate is not annualized and is not assumed to be an eight-hour rate; its reported interval is stored separately."
+            ],
+        )
+    )
+    if interval_hours is not None:
+        records.append(
+            _feature_record(
+                feature_id="xrp.perpetual.bybit.funding_interval_hours",
+                value=float(interval_hours),
+                unit="hours",
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="bybit",
+                venue="Bybit",
+                instrument="XRPUSDT linear perpetual",
+                currency_pair="XRP/USDT",
+                market_type="perpetual",
+                model_eligible=eligible,
+                eligibility_reason=reason,
+                quality_status=quality,
+                limitations=limitations,
+            )
+        )
+    return records, event_s, eligible, reason
+
+
+def _parse_bybit_linear_open_interest_history(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    result = _bybit_result(payload, "linear open-interest history")
+    if result.get("category") != "linear" or result.get("symbol") != "XRPUSDT":
+        raise XRPIngestionError("Bybit linear open-interest history identity mismatch")
+    ordered = _ordered_bybit_history_rows(
+        result.get("list"),
+        timestamp_key="timestamp",
+        source_name="linear open-interest",
+        captured=captured,
+    )
+    captured_s = _iso(captured)
+    limitations = [
+        "Single Bybit XRPUSDT linear-perpetual venue; linear open-interest size is retained in the base asset (XRP), with no USD or contract-count conversion.",
+        "Historical rows are first known to this collector at captured_at_utc and cannot be used at earlier point-in-time origins.",
+        "The public endpoint returns at most 200 rows per request; this collector captures one page and does not claim a complete lifetime history.",
+    ]
+    if result.get("nextPageCursor"):
+        limitations.append("Bybit returned a nextPageCursor; additional historical pages exist and were not fetched by this one-page adapter.")
+    records = []
+    for event_time, row in ordered:
+        if row.get("symbol") not in (None, "XRPUSDT"):
+            raise XRPIngestionError("Bybit linear open-interest history row symbol mismatch")
+        event_s = _iso(event_time)
+        records.append(
+            _feature_record(
+                feature_id="xrp.perpetual.bybit.1h.open_interest_xrp",
+                value=_number(row.get("openInterest"), "Bybit historical openInterest", allow_zero=False),
+                unit="XRP (venue-reported linear open-interest size)",
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="bybit",
+                venue="Bybit",
+                instrument="XRPUSDT linear perpetual",
+                currency_pair="XRP/USDT",
+                market_type="perpetual",
+                aggregation_window="1h",
+                model_eligible=True,
+                quality_status="verified",
+                limitations=limitations,
+            )
+        )
+    return records, _iso(ordered[-1][0]), True, ""
+
+
+def _parse_bybit_linear_funding_history(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    result = _bybit_result(payload, "linear funding history")
+    if result.get("category") != "linear":
+        raise XRPIngestionError("Bybit funding-history category is not linear")
+    ordered = _ordered_bybit_history_rows(
+        result.get("list"),
+        timestamp_key="fundingRateTimestamp",
+        source_name="linear funding",
+        captured=captured,
+    )
+    captured_s = _iso(captured)
+    limitations = [
+        "Single Bybit XRPUSDT linear-perpetual venue.",
+        "Funding is a signed fraction per actual settlement event; interval length is not assumed to be eight hours or annualized.",
+        "Historical rows are first known to this collector at captured_at_utc and cannot be used at earlier point-in-time origins.",
+        "The public endpoint returns at most 200 settlement events per request; this collector captures one page and does not claim a complete lifetime history.",
+    ]
+    records = []
+    for event_time, row in ordered:
+        if row.get("symbol") != "XRPUSDT":
+            raise XRPIngestionError("Bybit funding-history symbol mismatch")
+        event_s = _iso(event_time)
+        records.append(
+            _feature_record(
+                feature_id="xrp.perpetual.bybit.funding_rate",
+                value=_signed_number(row.get("fundingRate"), "Bybit historical fundingRate"),
+                unit="fraction_per_settlement",
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="bybit",
+                venue="Bybit",
+                instrument="XRPUSDT linear perpetual",
+                currency_pair="XRP/USDT",
+                market_type="perpetual",
+                aggregation_window="funding_event",
+                model_eligible=True,
+                quality_status="verified",
+                limitations=limitations,
+            )
+        )
+    return records, _iso(ordered[-1][0]), True, ""
+
+
 PARSERS = {
     "xrpl_inftf_server_info": _parse_xrpl_server_info,
     "xrpl_honeycluster_server_info": _parse_xrpl_server_info,
@@ -3038,6 +3321,9 @@ PARSERS = {
     "okx_spot_depth": _parse_okx_depth,
     "bybit_spot_ticker": _parse_bybit_ticker,
     "bybit_spot_depth": _parse_bybit_depth,
+    "bybit_linear_ticker": _parse_bybit_linear_ticker,
+    "bybit_linear_open_interest": _parse_bybit_linear_open_interest_history,
+    "bybit_linear_funding_history": _parse_bybit_linear_funding_history,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
     "xrp_exchange_balances_json": _raw_only_xrp_exchange_balances,
