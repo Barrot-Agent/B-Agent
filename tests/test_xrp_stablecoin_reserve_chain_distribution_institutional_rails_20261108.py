@@ -44,7 +44,7 @@ def test_rlusd_cross_chain_supply_discrepancy_is_not_reconciled_or_averaged():
     assert metrics["difference_usd_millions"] == 47.1
     assert metrics["reconciliation_status"] == "UNRESOLVED"
     assert artifact["unresolved_reconciliations"][0]["id"] == "rlusd_issuer_vs_cross_chain_dashboard"
-    assert "Do not average" not in artifact["unresolved_reconciliations"][0]["decision"] if "decision" in artifact["unresolved_reconciliations"][0] else True
+    assert "Do not average" in artifact["unresolved_reconciliations"][0]["decision"]
 
 
 def test_rlusd_signed_snapshot_is_not_marked_cryptographically_verified():
@@ -71,7 +71,8 @@ def test_sbi_ripple_and_circle_relationships_are_dated_and_distinct():
     graph = _load()["relationship_graph"]
     ripple_stake = next(x for x in graph if x["from"] == "SBI Holdings" and x["to"] == "Ripple")
     circle = next(x for x in graph if x["from"] == "SBI Holdings and SBI Shinsei Bank" and x["to"] == "Circle")
-    assert "June 2025" in ripple_stake["status"]
+    assert "historical primary disclosure" in ripple_stake["status"]
+    assert "current 2026 percentage unverified" in ripple_stake["status"]
     assert "$50M" in circle["relationship"]
     assert any(x["from"] == "SBI Remit" and x["to"] == "XRP" for x in graph)
 
@@ -82,7 +83,7 @@ def test_sbi_rlusd_chain_support_is_secondary_corroborated_not_primary_verified(
     assert "secondary reports" in item["excerpt"]
     edge = next(x for x in _load()["relationship_graph"] if x["from"] == "SBI VC Trade" and x["to"] == "RLUSD")
     assert "secondary-reported Ethereum-only" in edge["status"]
-    assert "not verified XRPL distribution" in item["excerpt"]
+    assert "do not count this as verified XRPL distribution" in item["excerpt"]
 
 
 def test_jpysc_public_chain_status_and_onchain_wording_remain_unresolved():
@@ -92,7 +93,7 @@ def test_jpysc_public_chain_status_and_onchain_wording_remain_unresolved():
     assert metrics["nov2_customer_lending_balance_jpy_billions"] == 10.0
     assert metrics["public_chain_circulation_status"].startswith("NOT_VERIFIED")
     issue = next(x for x in artifact["unresolved_reconciliations"] if x["id"] == "jpysc_onchain_definition")
-    assert "unresolved" in issue["decision"]
+    assert "Do not infer public-chain circulation" in issue["decision"]
 
 
 def test_jpysc_customer_lending_is_not_mislabeled_as_external_credit():
