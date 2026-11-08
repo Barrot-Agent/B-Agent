@@ -17,9 +17,13 @@ import re
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
-from .point_in_time_features import FeatureSnapshotError, validate_feature_record
+from .point_in_time_features import (
+    FeatureSnapshotError,
+    build_feature_snapshot,
+    validate_feature_record,
+)
 
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _SCHEMA_VERSION = 1
@@ -54,6 +58,65 @@ def _utc(value: Any, field: str) -> tuple[datetime, str]:
         raise FeatureStoreError(f"{field} must include a timezone")
     normalized = parsed.astimezone(timezone.utc)
     return normalized, normalized.isoformat(timespec="microseconds").replace("+00:00", "Z")
+
+
+def _record_identity(record: Mapping[str, Any]) -> tuple[Any, ...]:
+    source_ids = tuple(sorted(source["source_id"] for source in record["sources"]))
+    return (
+        record["asset"],
+        record["feature_id"],
+        record["event_time_utc"],
+        record.get("venue"),
+        record.get("instrument"),
+        record.get("currency_pair"),
+        record.get("market_type"),
+        source_ids,
+    )
+
+
+def _record_semantics(record: Mapping[str, Any]) -> str:
+    return _canonical(
+        {
+            "value": record["value"],
+            "unit": record["unit"],
+            "source_data_as_of_utc": record["source_data_as_of_utc"],
+            "quality_status": record["quality_status"],
+            "model_eligible": record["model_eligible"],
+        }
+    )
+
+
+def _base_record_id(record_id: str) -> str:
+    return re.sub(r":v[0-9]+$", "", record_id)
+
+
+def _stored_record(
+    record: Mapping[str, Any],
+    *,
+    stored_at_utc: str,
+    as_of_utc: str,
+    snapshot_id: str,
+) -> dict[str, Any] | None:
+    candidate = dict(record)
+    for field in ("ingested_at_utc", "revision_available_at_utc"):
+        _, current_s = _utc(candidate[field], field)
+        _, stored_s = _utc(stored_at_utc, "stored_at_utc")
+        if _utc(current_s, field)[0] < _utc(stored_s, "stored_at_utc")[0]:
+            candidate[field] = stored_s
+    candidate.pop("normalized_content_sha256", None)
+    try:
+        checked = validate_feature_record(
+            candidate,
+            as_of_utc,
+            captured_at_utc=as_of_utc,
+        )
+    except FeatureSnapshotError as exc:
+        raise FeatureStoreError(
+            f"snapshot {snapshot_id} contains an invalid historical feature record: {exc}"
+        ) from exc
+    if not checked["eligible"]:
+        return None
+    return checked["record"]
 
 
 def _validate_manifest(snapshot: Mapping[str, Any]) -> dict[str, Any]:
@@ -126,6 +189,8 @@ def _validate_manifest(snapshot: Mapping[str, Any]) -> dict[str, Any]:
                 + ",".join(checked["exclusion_reasons"])
             )
         normalized = checked["record"]
+        if record != normalized:
+            raise FeatureStoreError("feature record must be in canonical normalized form")
         if record.get("normalized_content_sha256") != normalized["normalized_content_sha256"]:
             raise FeatureStoreError("normalized feature content hash does not match")
         record_ids.append(normalized["record_id"])
@@ -171,9 +236,15 @@ def _validate_manifest(snapshot: Mapping[str, Any]) -> dict[str, Any]:
 class HistoricalFeatureStore:
     """Append-only local store with point-in-time retrieval semantics."""
 
-    def __init__(self, database_path: str | Path):
+    def __init__(
+        self,
+        database_path: str | Path,
+        *,
+        clock: Callable[[], datetime] | None = None,
+    ):
         self.database_path = Path(database_path)
         self.database_path.parent.mkdir(parents=True, exist_ok=True)
+        self._clock = clock or (lambda: datetime.now(timezone.utc))
         self._initialize()
 
     def _connect(self) -> sqlite3.Connection:
@@ -267,7 +338,10 @@ class HistoricalFeatureStore:
     def append_snapshot(self, snapshot: Mapping[str, Any]) -> dict[str, Any]:
         """Validate and append a complete manifest; receipt time cannot precede capture."""
         validated = _validate_manifest(snapshot)
-        stored_at = datetime.now(timezone.utc)
+        stored_at = self._clock()
+        if not isinstance(stored_at, datetime) or stored_at.tzinfo is None or stored_at.utcoffset() is None:
+            raise FeatureStoreError("feature-store clock must return a timezone-aware datetime")
+        stored_at = stored_at.astimezone(timezone.utc)
         captured = datetime.fromisoformat(
             validated["captured_at_utc"].replace("Z", "+00:00")
         )
@@ -366,6 +440,33 @@ class HistoricalFeatureStore:
             "source_count": validated["source_count"],
         }
 
+    def verified_snapshot(self, snapshot_id: str) -> dict[str, Any]:
+        """Return one exact snapshot only after full manifest, row and lineage verification."""
+        if not isinstance(snapshot_id, str) or not _SHA256.fullmatch(snapshot_id):
+            raise FeatureStoreError("snapshot_id must be a SHA-256 hex digest")
+        verification = self.verify_snapshot(snapshot_id)
+        if not verification["valid"]:
+            raise FeatureStoreError(
+                f"snapshot integrity verification failed for {snapshot_id}"
+            )
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT snapshot_id, data_cutoff_utc, captured_at_utc, stored_at_utc, "
+                "asset_scope_json, manifest_json FROM snapshots WHERE snapshot_id = ?",
+                (snapshot_id,),
+            ).fetchone()
+        if row is None:
+            raise FeatureStoreError(f"unknown snapshot_id {snapshot_id}")
+        return {
+            "snapshot_id": row["snapshot_id"],
+            "data_cutoff_utc": row["data_cutoff_utc"],
+            "captured_at_utc": row["captured_at_utc"],
+            "stored_at_utc": row["stored_at_utc"],
+            "asset_scope": json.loads(row["asset_scope_json"]),
+            "manifest": json.loads(row["manifest_json"]),
+            "verification": verification,
+        }
+
     def snapshot_as_of(self, asset: str, as_of_utc: str) -> dict[str, Any] | None:
         """Return the latest snapshot actually stored by the requested as-of time."""
         if not isinstance(asset, str) or not asset.strip():
@@ -400,16 +501,245 @@ class HistoricalFeatureStore:
             }
         return None
 
+    def records_through(self, asset: str, as_of_utc: str) -> list[dict[str, Any]]:
+        """Return every verified feature version available by an as-of time.
+
+        Snapshots contain deltas, not repeated copies of the entire history. This
+        method verifies their content-addressed manifests, applies actual store
+        receipt time to feature availability, and reconstructs revision chains.
+        """
+        if not isinstance(asset, str) or not asset.strip():
+            raise FeatureStoreError("asset must be a non-empty string")
+        asset_key = asset.strip().upper()
+        _, as_of_s = _utc(as_of_utc, "as_of_utc")
+        with self._connect() as connection:
+            integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
+            rows = connection.execute(
+                """
+                SELECT snapshot_id, data_cutoff_utc, captured_at_utc, stored_at_utc,
+                       asset_scope_json, manifest_json, manifest_sha256, record_count
+                FROM snapshots
+                WHERE data_cutoff_utc <= ? AND stored_at_utc <= ?
+                ORDER BY stored_at_utc ASC, data_cutoff_utc ASC, snapshot_id ASC
+                """,
+                (as_of_s, as_of_s),
+            ).fetchall()
+        if integrity != "ok":
+            raise FeatureStoreError(f"SQLite integrity check failed: {integrity}")
+
+        observations: list[tuple[datetime, dict[str, Any]]] = []
+        for row in rows:
+            assets = json.loads(row["asset_scope_json"])
+            if asset_key not in assets:
+                continue
+            manifest_json = row["manifest_json"]
+            if _sha256(manifest_json) != row["manifest_sha256"]:
+                raise FeatureStoreError(
+                    f"snapshot integrity verification failed: manifest hash mismatch for {row['snapshot_id']}"
+                )
+            try:
+                manifest = json.loads(manifest_json)
+                base = dict(manifest)
+                manifest_id = base.pop("snapshot_id", None)
+                cutoff_s = _utc(manifest["cutoff_utc"], "cutoff_utc")[1]
+                captured_s = _utc(manifest["captured_at_utc"], "captured_at_utc")[1]
+                stored_dt, stored_s = _utc(row["stored_at_utc"], "stored_at_utc")
+                expected_assets = sorted({item.strip().upper() for item in manifest["asset_scope"]})
+            except (KeyError, TypeError, ValueError, FeatureStoreError) as exc:
+                raise FeatureStoreError(
+                    f"snapshot metadata is malformed for {row['snapshot_id']}"
+                ) from exc
+            if (
+                manifest_id != row["snapshot_id"]
+                or _sha256(_canonical(base)) != row["snapshot_id"]
+                or row["data_cutoff_utc"] != cutoff_s
+                or row["captured_at_utc"] != captured_s
+                or row["asset_scope_json"] != _canonical(expected_assets)
+                or stored_dt < _utc(captured_s, "captured_at_utc")[0]
+                or row["record_count"] != len(manifest.get("records", []))
+            ):
+                raise FeatureStoreError(
+                    f"snapshot metadata verification failed for {row['snapshot_id']}"
+                )
+            for record in manifest.get("records", []):
+                if record.get("asset") != asset_key:
+                    continue
+                normalized = _stored_record(
+                    record,
+                    stored_at_utc=stored_s,
+                    as_of_utc=as_of_s,
+                    snapshot_id=row["snapshot_id"],
+                )
+                if normalized is not None:
+                    observations.append((stored_dt, normalized))
+
+        observations.sort(
+            key=lambda item: (
+                item[0],
+                _utc(item[1]["event_time_utc"], "event_time_utc")[0],
+                item[1]["record_id"],
+            )
+        )
+        versions: list[dict[str, Any]] = []
+        latest_by_identity: dict[tuple[Any, ...], dict[str, Any]] = {}
+        by_record_id: dict[str, dict[str, Any]] = {}
+
+        for _, record in observations:
+            identity = _record_identity(record)
+            prior = latest_by_identity.get(identity)
+            record_id = record["record_id"]
+            seen_id = by_record_id.get(record_id)
+
+            if seen_id is not None and _record_identity(seen_id) != identity:
+                raise FeatureStoreError("record_id is reused for a different feature identity")
+            if prior is not None and _record_semantics(prior) == _record_semantics(record):
+                continue
+
+            if seen_id is not None:
+                if prior is None:
+                    raise FeatureStoreError("conflicting duplicate record has no revision predecessor")
+                candidate = dict(record)
+                if candidate["unit"] != prior["unit"]:
+                    raise FeatureStoreError("feature unit changed across snapshots")
+                version = prior["feature_version"] + 1
+                candidate["record_id"] = f"{_base_record_id(record_id)}:v{version}"
+                candidate["feature_version"] = version
+                candidate["revision_status"] = "revised"
+                candidate["supersedes_record_id"] = prior["record_id"]
+                candidate.pop("normalized_content_sha256", None)
+                checked = validate_feature_record(
+                    candidate, as_of_s, captured_at_utc=as_of_s
+                )
+                if not checked["eligible"]:
+                    continue
+                candidate = checked["record"]
+                versions.append(candidate)
+                latest_by_identity[identity] = candidate
+                by_record_id[candidate["record_id"]] = candidate
+                continue
+
+            if prior is None:
+                if record["revision_status"] == "revised":
+                    raise FeatureStoreError("stored feature revision is missing its predecessor")
+                versions.append(record)
+                latest_by_identity[identity] = record
+                by_record_id[record_id] = record
+                continue
+
+            if record["revision_status"] == "revised":
+                if record["supersedes_record_id"] != prior["record_id"]:
+                    raise FeatureStoreError(
+                        "stored feature revision does not supersede the latest known predecessor"
+                    )
+                if record["feature_version"] <= prior["feature_version"]:
+                    raise FeatureStoreError(
+                        "stored feature revision version does not exceed its predecessor"
+                    )
+                versions.append(record)
+                latest_by_identity[identity] = record
+                by_record_id[record_id] = record
+                continue
+
+            if record_id == prior["record_id"]:
+                if _record_semantics(prior) == _record_semantics(record):
+                    continue
+                raise FeatureStoreError("conflicting feature revision was not normalized")
+
+            if record["unit"] != prior["unit"]:
+                raise FeatureStoreError("feature unit changed across snapshots")
+            candidate = dict(record)
+            version = prior["feature_version"] + 1
+            candidate["record_id"] = f"{_base_record_id(record_id)}:v{version}"
+            candidate["feature_version"] = version
+            candidate["revision_status"] = "revised"
+            candidate["supersedes_record_id"] = prior["record_id"]
+            candidate.pop("normalized_content_sha256", None)
+            checked = validate_feature_record(
+                candidate, as_of_s, captured_at_utc=as_of_s
+            )
+            if not checked["eligible"]:
+                continue
+            candidate = checked["record"]
+            versions.append(candidate)
+            latest_by_identity[identity] = candidate
+            by_record_id[candidate["record_id"]] = candidate
+
+        versions.sort(
+            key=lambda record: (
+                _utc(record["event_time_utc"], "event_time_utc")[0],
+                max(
+                    _utc(record[field], field)[0]
+                    for field in (
+                        "known_at_utc",
+                        "source_data_as_of_utc",
+                        "ingested_at_utc",
+                        "revision_available_at_utc",
+                    )
+                ),
+                record["record_id"],
+            )
+        )
+        return versions
+
     def features_as_of(self, asset: str, as_of_utc: str) -> list[dict[str, Any]]:
-        """Return model-facing records from the latest snapshot available by as-of time."""
-        snapshot = self.snapshot_as_of(asset, as_of_utc)
-        if snapshot is None:
+        """Return the latest point-in-time feature version across all stored snapshots."""
+        if not isinstance(asset, str) or not asset.strip():
+            raise FeatureStoreError("asset must be a non-empty string")
+        _, as_of_s = _utc(as_of_utc, "as_of_utc")
+        history = self.records_through(asset, as_of_s)
+        if not history:
             return []
-        return [
-            record
-            for record in snapshot["manifest"]["records"]
-            if record["asset"] == asset.strip().upper()
+        try:
+            snapshot = build_feature_snapshot(
+                history,
+                cutoff_utc=as_of_s,
+                captured_at_utc=as_of_s,
+                asset_scope=[asset.strip().upper()],
+            )
+        except FeatureSnapshotError as exc:
+            if "no point-in-time eligible records" in str(exc):
+                return []
+            raise FeatureStoreError(f"cannot build as-of feature view: {exc}") from exc
+        return snapshot["records"]
+
+    def verify_all_snapshots(self) -> dict[str, Any]:
+        """Audit every stored snapshot and its relational rows."""
+        with self._connect() as connection:
+            snapshot_ids = [
+                row["snapshot_id"]
+                for row in connection.execute(
+                    "SELECT snapshot_id FROM snapshots ORDER BY stored_at_utc, snapshot_id"
+                ).fetchall()
+            ]
+        checks = [self.verify_snapshot(snapshot_id) for snapshot_id in snapshot_ids]
+        invalid = [
+            snapshot_id
+            for snapshot_id, check in zip(snapshot_ids, checks)
+            if not check.get("valid")
         ]
+        return {
+            "valid": not invalid,
+            "snapshot_count": len(snapshot_ids),
+            "verified_count": len(snapshot_ids) - len(invalid),
+            "invalid_snapshot_ids": invalid,
+        }
+
+    def checkpoint(self) -> dict[str, Any]:
+        """Checkpoint the WAL so the database file can be safely cached as one artifact."""
+        with self._connect() as connection:
+            result = connection.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+            integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
+        if result is not None and result[0] != 0:
+            raise FeatureStoreError("SQLite WAL checkpoint is busy")
+        if integrity != "ok":
+            raise FeatureStoreError(f"SQLite integrity check failed after checkpoint: {integrity}")
+        return {"valid": True, "sqlite_integrity": integrity, "wal_checkpoint": list(result or [])}
+
+    def snapshot_count(self) -> int:
+        """Return the number of immutable snapshots currently stored."""
+        with self._connect() as connection:
+            row = connection.execute("SELECT COUNT(*) AS count FROM snapshots").fetchone()
+        return int(row["count"])
 
     def source_lineage(self, snapshot_id: str) -> list[dict[str, str]]:
         verification = self.verify_snapshot(snapshot_id)
