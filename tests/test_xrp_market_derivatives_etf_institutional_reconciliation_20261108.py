@@ -54,7 +54,7 @@ def test_etf_flow_partial_coverage_and_future_vintage_are_quarantined():
 def test_institutional_access_is_not_mislabeled_as_xrp_capital_flow():
     data = load_artifact()
     rel = data["institutional_relationships"]
-    assert "Coinbase Global Exchange collateral support was future at launch" in rel["ripple_coinbase_rlusd"]["future_at_launch"]
+    assert "RLUSD collateral use on Coinbase Global Exchange" in rel["ripple_coinbase_rlusd"]["future_at_launch"]
     assert rel["bny_ripple_custody"]["status"] == "CUSTODY_SUPPORT_ANNOUNCED"
     assert "different accounting line items" in rel["circle_coinbase_q3_2026"]["reconciliation"]
     assert "not XRP purchases" in rel["circle_coinbase_q3_2026"]["xrp_implication"]
