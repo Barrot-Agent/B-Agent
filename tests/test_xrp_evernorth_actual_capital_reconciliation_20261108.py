@@ -62,8 +62,12 @@ def test_cash_deployed_debt_and_in_kind_xrp_are_not_double_counted():
     assert "do not add the figures" in capital["xrp_in_kind_overlap_rule"]
     assert capital["xrp_holdings_as_of_2026_10_09_approx"] == 473_000_000
     assert capital["cash_balance_as_of_2026_06_30_usd"] == 100_000
-    assert capital["ripple_intercompany_facility"]["borrowed_as_of_2026_10_07_usd"] == 9_700_000
+    assert capital["pathfinder_company_facility"]["borrower"] == "Pathfinder Digital Assets LLC (the prospectus-defined Company)"
+    assert capital["pathfinder_company_facility"]["borrowed_as_of_2026_10_07_usd"] == 9_700_000
+    assert capital["evernorth_facility"]["borrower"] == "Evernorth Holdings Inc. (Pubco)"
+    assert capital["evernorth_facility"]["borrowed_as_of_2026_06_30_usd"] == 0
     assert "do not add it to" in capital["overlap_rule"]
+    assert "not to Pubco" in capital["overlap_rule"]
 
 
 def test_prospectus_internal_14_71_row_inconsistency_is_preserved():

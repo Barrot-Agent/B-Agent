@@ -67,7 +67,7 @@
       "relevant_lines": "3023-3043; 3108-3117; 6231-6243; 6676-6685",
       "facts": [
         "Evernorth unrestricted cash $0.1 million and net working capital deficit $696.1 million as of 2026-06-30",
-        "Pubco borrowed $9.7 million under the $10 million Ripple intercompany facility as of 2026-10-07",
+        "Pathfinder Digital Assets LLC (the prospectus-defined Company) had borrowed $9.7 million under the $10 million Ripple Company Facility as of 2026-10-07; Evernorth Holdings Inc. (Pubco) has a separate $1 million Evernorth Facility and had not borrowed under that facility as of 2026-06-30",
         "Pubco reports $214.1 million cash raised under private placement subscriptions and 84,365,876 XRP purchased with that cash",
         "Approximately 473 million XRP held as of 2026-10-09",
         "At closing, gross cash proceeds approximately $272.6 million before transaction expenses, including approximately $224.6 million private placements and $48.0 million trust-account release after redemptions",
@@ -110,7 +110,7 @@
   "event_timeline": [
     {
       "date": "2026-10-07",
-      "event": "Pubco reports $9.7M drawn under a $10M Ripple intercompany facility; debt, not equity proceeds."
+      "event": "Pathfinder Digital Assets LLC (the prospectus-defined Company) reports $9.7M drawn under its $10M Ripple Company Facility; this is subsidiary-level debt, separate from the $1M Evernorth Facility."
     },
     {
       "date": "2026-10-09",
@@ -223,11 +223,6 @@
     "cash_balance_as_of_2026_06_30_usd": 100000,
     "net_working_capital_deficit_as_of_2026_06_30_usd": 696100000,
     "accumulated_deficit_as_of_2026_06_30_usd": 340900000,
-    "ripple_intercompany_facility": {
-      "limit_usd": 10000000,
-      "borrowed_as_of_2026_10_07_usd": 9700000,
-      "classification": "debt"
-    },
     "separate_evernorth_facility_as_of_2026_06_30": {
       "limit_usd": 1000000,
       "borrowed_usd": 0,
@@ -239,9 +234,27 @@
       "pik_due_year": 2031,
       "classification": "debt, not equity proceeds"
     },
-    "overlap_rule": "The $214.1M private-placement cash is part of the broader closing financing picture; do not add it to the $224.6M private-placement total or $272.6M gross closing proceeds. The 388.91M in-kind XRP and 84.365M cash-purchased XRP reconcile to approximately 473M XRP holdings; do not add the separately described 261.919M 'Pubco XRP' subtotal again without a documented non-overlap bridge.",
+    "overlap_rule": "The $214.1M private-placement cash is part of the broader closing financing picture; do not add it to the $224.6M private-placement total or $272.6M gross closing proceeds. The 261,919,096 XRP described under private placement subscription agreements is a separately reported subtotal whose overlap with the 388,910,554 XRP total in-kind contributions requires an agreement-level bridge; do not add the figures. The 388,910,554 in-kind XRP plus 84,365,876 cash-purchased XRP reconcile to approximately 473M consolidated holdings. The $9.7M draw belongs to Pathfinder's $10M Ripple Company Facility, not to Pubco; Pubco's separate $1M Evernorth Facility had no borrowings as of 2026-06-30.",
     "xrp_raised_under_private_placement_subscription_agreements": 261919096,
-    "xrp_in_kind_overlap_rule": "The prospectus separately describes 261,919,096 XRP associated with Private Placement Subscription Agreements and 388,910,554 XRP contributed in kind at closing. Treat the 261,919,096 as a separately reported subtotal whose overlap with the total in-kind figure requires an agreement-level bridge; do not add the figures. The 388,910,554 in-kind total plus 84,365,876 cash-purchased XRP reconciles to approximately 473M holdings."
+    "xrp_in_kind_overlap_rule": "The prospectus separately describes 261,919,096 XRP associated with Private Placement Subscription Agreements and 388,910,554 XRP contributed in kind at closing. Treat the 261,919,096 as a separately reported subtotal whose overlap with the total in-kind figure requires an agreement-level bridge; do not add the figures. The 388,910,554 in-kind total plus 84,365,876 cash-purchased XRP reconciles to approximately 473M holdings.",
+    "pathfinder_company_facility": {
+      "borrower": "Pathfinder Digital Assets LLC (the prospectus-defined Company)",
+      "lender": "Ripple Labs Inc.",
+      "limit_usd": 10000000,
+      "borrowed_as_of_2026_10_07_usd": 9700000,
+      "classification": "debt at the operating-subsidiary level; not Pubco equity proceeds"
+    },
+    "evernorth_facility": {
+      "borrower": "Evernorth Holdings Inc. (Pubco)",
+      "lender": "Ripple Labs Inc.",
+      "limit_usd": 1000000,
+      "borrowed_as_of_2026_06_30_usd": 0,
+      "classification": "separate undrawn debt capacity as of the stated date"
+    },
+    "cash_balance_as_of_2026_06_30_entity": "Evernorth Holdings Inc. (Pubco)",
+    "net_working_capital_deficit_as_of_2026_06_30_entity": "Evernorth Holdings Inc. (Pubco)",
+    "accumulated_deficit_as_of_2026_06_30_entity": "Evernorth Holdings Inc. (Pubco)",
+    "xrp_holdings_as_of_2026_10_09_entity": "consolidated Evernorth group; operational asset holder is Pathfinder Digital Assets LLC"
   },
   "scenarios_and_counter_hypotheses": [
     {
