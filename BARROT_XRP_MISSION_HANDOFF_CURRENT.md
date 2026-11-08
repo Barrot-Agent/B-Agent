@@ -23,11 +23,17 @@
   - Second parent: current main `d4d43be3427375cf79d190e768976de062e20287`
 - Verified compare after synchronization: 740 commits ahead, zero behind, 182 changed files; PR metadata reported mergeable and clean.
 - Exact prior-head verification on `24646e19`: full suite 1,215 passed plus 8 subtests; core 660 passed plus 8; inclusive coverage 58.98% against 53%; installed wheel built/installed and verified Barrot V3, XRP mission and canonical assets; six-manifest dependency audit passed with no known vulnerabilities; fail-closed gate passed and explicitly kept merging disabled.
-- Exact new-head CI is running and must be rechecked before any merge:
-  - CI run 42533986970: https://github.com/Barrot-Agent/B-Agent/actions/runs/42533986970
-  - Dependency audit 42533986972: https://github.com/Barrot-Agent/B-Agent/actions/runs/42533986972
-  - Fail-closed gate 42533986877: https://github.com/Barrot-Agent/B-Agent/actions/runs/42533986877
-- The previous-head pass is not evidence that the new merge head passed.
+- Exact-head verification on `5cc8e29ea5a286e787af94456b6c3fad8616f1be` completed successfully:
+  - Full repository suite: **1,215 passed, 8 subtests passed**; 22,776 statements, 8,902 missed, inclusive coverage **58.98%**, above the 53% gate.
+  - Core suite: **660 passed, 8 subtests passed**.
+  - Installed wheel built and installed; verification loaded Barrot V3, the XRP mission and canonical data assets.
+  - Six-manifest dependency audit passed; all six audits reported no known vulnerabilities.
+  - Fail-closed gate passed and explicitly kept automatic merging disabled.
+  - CI run 42534117356: https://github.com/Barrot-Agent/B-Agent/actions/runs/42534117356
+  - Dependency audit 42534117369: https://github.com/Barrot-Agent/B-Agent/actions/runs/42534117369
+  - Fail-closed gate 42534117357: https://github.com/Barrot-Agent/B-Agent/actions/runs/42534117357
+  - A cache-budget warning prevented saving a new pip cache; it did not affect tests, wheel verification or security audit.
+- The next handoff-only commit will trigger another exact-head run. Do not merge until that newest head also passes.
 
 ## Main advancement and automatic deployment
 
