@@ -17,9 +17,18 @@
       "sec_13f_position_rows": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31",
       "cryptokeyhole_etf_flow_excerpt": "a8be02fd200e05ea200c230ea724f8468c74e7d8a624543fbf6c09b1fe004a83",
       "xrp_insights_etf_flow_excerpt": "d7e41fd7d560a295ca228f7378ebc7dadfbc1d48efcf788dd3b337fc0c2e4a04",
-      "alpha_finance_etf_flow_excerpt": "99be1b861bd291c3c601b13cd1e9b6f21eb7801e19bd939f6571d3767d0da120"
+      "alpha_finance_etf_flow_excerpt": "99be1b861bd291c3c601b13cd1e9b6f21eb7801e19bd939f6571d3767d0da120",
+      "sec_13f_units_and_deadline_faq": "9ed20808109bcc0bb5b87513cbe21f9f2df2679180682358d70f75276fcbb8e6"
     },
-    "hash_scope": "SHA-256 hashes cover normalized visible text excerpts transcribed from rendered SEC/aggregator pages. They are not raw HTTP wire-byte hashes, signed publisher receipts or independent timestamp anchors."
+    "hash_scope": "SHA-256 hashes are reproducible from the corresponding normalized_visible_excerpt_text values retained in this artifact. They cover normalized visible text transcribed from rendered SEC/aggregator pages, not raw HTTP wire bytes, signed publisher receipts or independent timestamp anchors.",
+    "normalized_visible_excerpt_text": {
+      "sec_filing_index": "Form 13F-HR - Quarterly report filed by institutional managers, Holdings\nSEC Accession No. 0000886982-26-000519\nFiling Date 2026-08-14\nAccepted 2026-08-14 17:15:03 UTC\nPeriod of Report 2026-06-30\nEffectiveness Date 2026-08-14\nDocument: InfoTable_2026-08-13_Final_1.html / INFORMATION TABLE\nFiler: GOLDMAN SACHS GROUP INC (CIK 0000886982)",
+      "sec_13f_position_rows": "21SHARES XRP ETF | CMN | 90137T103 | 8,206,363 | 806,126 | SH | DFND | 1\nBITWISE XRP ETF | CMN | 09174F107 | 25,756,345 | 2,208,949 | SH | DFND | 1\nCANARY XRP ETF | CMN | 13723M100 | 19,490,717 | 1,759,090 | SH | DFND | 1\nFRANKLIN XRP TRUST | CMN | 355233107 | 25,405,919 | 2,238,407 | SH | DFND | 1\nGRAYSCALE XRP TR ETF | CMN | 38965L106 | 7,646,785 | 377,619 | SH | DFND | 1",
+      "cryptokeyhole_etf_flow_excerpt": "On 5 November 2026 the 4 US spot XRP ETFs that CryptoKeyhole reads daily (of 6 listed) paid out a net 3,339 XRP. Last 5 complete trading days: -1,137,098 XRP, 30 Oct to 5 Nov 2026. Partial 6 November 2026: 3 of 4 funds published; waiting for Franklin XRPZ. Updated 8 Nov 2026, 15:33 UTC.\nDaily USD-thousands row 6 Nov 2026: XRP 0 | XRPZ … | XRPC -887 | TOXR 0 | total -887 (3/4).\nDaily XRP row 6 Nov 2026: XRP 0 | XRPZ … | XRPC -752,048 | TOXR 0 | total -752,048 (3/4).\nToday so far: -$886,665 (3 of 4 funds reported), not in the complete total.\nGoldman Sachs Group Inc: XRP, XRPZ, XRPC, TOXR; $78.9M.\nThe four-fund universe excludes the Grayscale XRP TR ETF.\nThe page's issuer-file table labels a Canary 9 Nov file as published 7 Nov 2026, 05:07-05:12 UTC; this date/publication ordering is anomalous and is quarantined.",
+      "xrp_insights_etf_flow_excerpt": "On Fri, Nov 6, 2026, US XRP ETFs (the 6 spot funds plus BITW) recorded net outflows of 663,043 XRP. Latest week Nov 2-6, 2026: -812.5K XRP. Combined holdings: 1.20 billion XRP. The six spot ETFs alone held 1.17 billion XRP. GXRP is left out of flow totals while a data gap is corrected; its holdings still count. BITW is included in the total. Flows are calculated as changes in issuer-reported XRP holdings.",
+      "alpha_finance_etf_flow_excerpt": "US spot XRP ETF dashboard through the 6 Nov 2026 session. Daily net flow 6 Nov: $0. 30-session flow: +$45.9M. Five-fund universe. Dashboard identifies CoinGlass as upstream source. This is not an issuer-file primary source.",
+      "sec_13f_units_and_deadline_faq": "SEC Form 13F FAQ, updated March 6, 2026:\nThe January 3, 2023 amended Form 13F requires individual position values to be rounded to the nearest dollar, rather than the prior nearest-thousand-dollar convention.\n3Q 2026 (September) Form 13F filing deadline: November 16, 2026 (Monday).\nThe SEC states that when a filing deadline falls on a Saturday, Sunday or holiday, the due date moves to the first business day thereafter."
+    }
   },
   "source_registry": [
     {
@@ -154,6 +163,22 @@
         "Five-fund dashboard; CoinGlass identified as upstream source.",
         "USD dashboard values are not directly comparable with XRP-denominated holdings deltas.",
         "Zero daily dollar flow does not establish zero XRP holdings change across a different fund universe."
+      ]
+    },
+    {
+      "id": "sec_form13f_faq_20260306",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "primary_regulatory_guidance",
+      "url": "https://www.sec.gov/rules-regulations/staff-guidance/frequently-asked-questions-about-form-13f",
+      "retrieved_at_utc": "2026-11-08T16:14:56Z",
+      "raw_content_sha256": null,
+      "normalized_visible_excerpt_sha256": "9ed20808109bcc0bb5b87513cbe21f9f2df2679180682358d70f75276fcbb8e6",
+      "raw_capture_status": "rendered_SEC_FAQ_excerpt; normalized text hash only",
+      "independence_group": "sec_form13f_official_guidance",
+      "model_eligible": false,
+      "limitations": [
+        "Rendered SEC FAQ excerpt; raw HTTP bytes and signed receipt not captured.",
+        "The FAQ states the deadline and value-unit rule; it does not verify the Goldman holdings themselves."
       ]
     }
   ],
@@ -388,8 +413,8 @@
     },
     "q1_2026_positions_in_five_xrp_etf_cusips_found": false,
     "proprietary_capital_status": "UNKNOWN; Form 13F manager positions may represent client assets and do not identify beneficial owners.",
-    "q3_2026_13f_status": "NOT_YET_FILED_AS_OF_2026-11-05",
-    "expected_q3_2026_13f_due_date": "2026-11-14",
+    "q3_2026_13f_status": "NOT_YET_DUE_AS_OF_2026-11-08",
+    "expected_q3_2026_13f_due_date": "2026-11-16",
     "q2_2026_xrp_etf_positions": [
       {
         "fund": "21Shares XRP ETF",
@@ -441,7 +466,8 @@
       "position_as_of_date": "2026-06-30",
       "filing_index_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm",
       "information_table_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
-      "sec_disclaimer": "The SEC states it has not necessarily reviewed the filing and has not determined whether it is accurate and complete."
+      "sec_disclaimer": "The SEC states it has not necessarily reviewed the filing and has not determined whether it is accurate and complete.",
+      "value_unit_rule": "Individual 13F position values are rounded to the nearest dollar for filings on or after 2023-01-03; these values are USD, not USD thousands."
     },
     "q2_2026_universe_reconciliation": {
       "sec_five_fund_total_usd": 86506129,
@@ -456,6 +482,14 @@
       "excluded_grayscale_value_usd": 7646785,
       "reconciliation": "The SEC five-fund total exceeds CryptoKeyhole's four-fund subset by exactly the Grayscale row ($7,646,785). CryptoKeyhole's displayed $78.9M Goldman total is the four-fund subset, not a conflicting five-fund total.",
       "sum_verified": true
+    },
+    "q3_2026_13f_deadline_source_id": "sec_form13f_faq_20260306",
+    "q3_2026_filing_deadline_reconciliation": {
+      "previous_recorded_date": "2026-11-14",
+      "corrected_due_date": "2026-11-16",
+      "correction_reason": "November 14, 2026 is Saturday. The SEC Form 13F FAQ lists the 3Q 2026 filing deadline as Monday, November 16, 2026.",
+      "source_id": "sec_form13f_faq_20260306",
+      "verified_as_of": "2026-11-08"
     }
   },
   "counter_hypotheses": [
@@ -528,6 +562,16 @@
       "prior_claim": "A CryptoKeyhole search-result excerpt appeared to show a 6 Nov flow of -887 XRP.",
       "corrected_claim": "The -887 value is in the USD-thousands table. The separate XRP table reports -752,048 XRP for the 6 Nov partial day (3 of 4 funds).",
       "reason": "CryptoKeyhole page lines 207-223; separate unit-labelled tables."
+    },
+    {
+      "prior_claim": "Goldman Q3 2026 Form 13F was expected due 2026-11-14.",
+      "corrected_claim": "The SEC Form 13F FAQ lists the 3Q 2026 deadline as Monday 2026-11-16; as of 2026-11-08 the filing is not yet due.",
+      "reason": "SEC Form 13F FAQ, updated 2026-03-06; 3Q 2026 filing deadline table."
+    },
+    {
+      "prior_claim": "13F information-table position values could be interpreted using the older nearest-thousand-dollar convention.",
+      "corrected_claim": "For filings on or after 2023-01-03, individual Form 13F position values are rounded to the nearest dollar.",
+      "reason": "SEC Form 13F FAQ, updated 2026-03-06; amended reporting requirements."
     }
   ],
   "predictive_admission": {
@@ -542,7 +586,8 @@
       "13F holdings are manager-reported ETF shares, not direct XRP and not necessarily proprietary capital.",
       "No synchronized historical feature set or out-of-sample predictive lift has been established.",
       "The Q2 13F is a lagged ETF-share snapshot as of 2026-06-30, not a direct XRP token holding, current position or net capital flow.",
-      "ETF flow aggregators use different fund universes and units; the 6 Nov CryptoKeyhole partial value must be read from the XRP table, not the USD-thousands table."
+      "ETF flow aggregators use different fund universes and units; the 6 Nov CryptoKeyhole partial value must be read from the XRP table, not the USD-thousands table.",
+      "SEC Form 13F position values are nearest-dollar USD from 2023-01-03, not thousands; this interpretation is now bound to the SEC FAQ excerpt hash."
     ],
     "next_data_requirements": [
       "Obtain post-close daily XRP holdings, NAV and XRP-per-share disclosures.",
@@ -552,7 +597,8 @@
       "Track PIK note conversion, cash settlement and ELOC drawdowns.",
       "Reconcile warrant exercises, lock-up expirations and Company Unit exchanges.",
       "Review Goldman Q3 2026 13F after its filing deadline.",
-      "Reconcile the Q3 2026 Goldman Form 13F after the November 14 filing deadline and compare exact CUSIPs/share counts; keep 13F positions as lagged ETF-share exposure, separate from direct XRP custody and capital flows."
+      "Reconcile the Q3 2026 Goldman Form 13F after the November 14 filing deadline and compare exact CUSIPs/share counts; keep 13F positions as lagged ETF-share exposure, separate from direct XRP custody and capital flows.",
+      "Check the Q3 2026 Goldman 13F after the SEC's corrected November 16, 2026 deadline; compare exact ETF CUSIPs and shares, and retain the lagged manager-position versus beneficial-owner distinction."
     ]
   },
   "etf_flow_vintage_reconciliation": {

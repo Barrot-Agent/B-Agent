@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -193,7 +194,26 @@ def test_rendered_source_hashes_are_not_mislabeled_as_raw_sec_bytes():
     assert policy["raw_sec_bytes_captured"] is False
     assert policy["raw_content_sha256"] is None
     hashes = policy["normalized_visible_excerpt_hashes"]
-    assert len(hashes) == 5
+    assert len(hashes) == 6
     assert all(len(value) == 64 for value in hashes.values())
+    excerpt_text = policy["normalized_visible_excerpt_text"]
+    assert set(excerpt_text) == set(hashes)
+    for excerpt_id, text in excerpt_text.items():
+        assert hashlib.sha256(text.encode("utf-8")).hexdigest() == hashes[excerpt_id]
     assert "not raw HTTP wire-byte hashes" in policy["hash_scope"]
     assert all(source["raw_content_sha256"] is None for source in data["source_registry"])
+
+
+def test_sec_form_13f_faq_confirms_nearest_dollar_units_and_q3_deadline():
+    data = load()
+    item = data["goldman_sachs_institutional_exposure"]
+    assert "nearest dollar" in item["q2_2026_filing_metadata"]["value_unit_rule"]
+    assert item["q3_2026_13f_status"] == "NOT_YET_DUE_AS_OF_2026-11-08"
+    assert item["expected_q3_2026_13f_due_date"] == "2026-11-16"
+    deadline = item["q3_2026_filing_deadline_reconciliation"]
+    assert deadline["previous_recorded_date"] == "2026-11-14"
+    assert deadline["corrected_due_date"] == "2026-11-16"
+    faq = next(source for source in data["source_registry"] if source["id"] == "sec_form13f_faq_20260306")
+    assert faq["publisher"] == "U.S. Securities and Exchange Commission"
+    assert faq["model_eligible"] is False
+    assert data["goldman_sachs_institutional_exposure"]["q2_2026_universe_reconciliation"]["sum_verified"] is True
