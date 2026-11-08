@@ -1,0 +1,372 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "evernorth_closing_capital_and_xrp_flow_reconciliation",
+  "artifact_id": "20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "reference_time_utc": "2026-11-08T14:05:10Z",
+  "data_cutoff_utc": "2026-10-30T00:00:00Z",
+  "capture_method": "Public SEC filings and a public KuCoin Insights user post retrieved through web search/open. Exact retrieval-start times and raw HTTP bytes/headers were not exposed. Receipt hashes cover the exact normalized excerpt strings stored below, not raw source documents.",
+  "source_receipts": [
+    {
+      "source_id": "evernorth_s1_oct30_advance_cash_and_xrp_purchase",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Since inception, Pubco has raised $214.1 million in cash and 261,919,096 XRP relating to Private Placement Subscription Agreements (“Pubco XRP”) dated on or about the Signing Date. The Company, as required by certain of such Private Placement Subscription Agreements, subsequently used the $214.1 million of cash proceeds to purchase 84,365,876 XRP. As of October 9, 2026, we held approximately 473 million XRP.",
+      "sha256": "a651a0f81950c06dfb5c9f644cf393b3695bf28d68b7fcfbd22d37a1300dffd3",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_oct30_gross_cash_and_inkind",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "In connection with the Closing, we received aggregate gross cash proceeds of approximately $272.6 million, consisting of approximately $224.6 million from the Private Placement Investments and approximately $48.0 million released from the Trust Account after giving effect to the Redemptions, before transaction expenses. Investors also contributed approximately 388,910,554 XRP in kind.",
+      "sha256": "58b8da73d33b82bffaad1600b2f413c62d6a74d2d0260ff9cea6c9425b5a7cd5",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_oct30_private_placement_components",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "At the Closing, Evernorth issued shares and units for aggregate consideration of approximately $214.05 million in cash and 600,000 XRP tokens under the Advance Funding Subscription Agreements; $10.5 million in cash and 200,000 XRP tokens under the Delayed Funding Subscription Agreements; 211,319,096.061435 XRP tokens under the Series C Subscription Agreement; and 50,000,000 XRP tokens under the Contributor Related Party Entity Subscription Agreement.",
+      "sha256": "0fd9ce06b22fe31b380b1175cb683576e2cc06b06fd80a76b14e6a137cc0ca0c",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_ripple_contribution",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Ripple contributed 126,791,458 XRP to Pathfinder in exchange for units of Pathfinder.",
+      "sha256": "c2ea8f358386dbc665fb1a65a5c521027fea758f7a9d2680d9d77b592f4d77b4",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_series_c_contribution",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "The Series C Sponsor contributed 211,319,096.061435 XRP tokens in exchange for Pubco Class A and Class C equity interests.",
+      "sha256": "fddc5252e7836ad40f40e03b004ffb3f6f49815ab14b8c9f18ab0a9a6f97c9ee",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_larsen_lam_trust_contribution",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "The Contributor Related Party Entity is Larsen Lam Children’s Remainder Trust, an investor affiliated with Ripple, which contributed 50,000,000 XRP.",
+      "sha256": "49e0d7796c6e960f058055ece4fc3168613bfa57a0b179e57ed25229744fc292",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_ripple_related_party_credit_facility",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "The Company Facility is a revolving credit facility from Ripple. The borrowing limit was increased to $10.0 million on October 7, 2026, and the Company had borrowed $9.7 million as of that date. Amounts borrowed were required to be repaid within five business days after the Closing Date or earlier upon five business days’ notice of demand by Ripple. Interest accrues at 3.81% per annum.",
+      "sha256": "d77e880e3ab265343a013a044b9626dbb1d48292c1cc7a92dc765f17ba4ede21",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_oct12_note_issuance",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "Payment for and issuance of the $30.0 million principal amount of 4.00% Convertible Senior PIK Notes occurred on October 12, 2026. The proceeds were intended for general corporate purposes, including XRP acquisition and other XRP ecosystem activities.",
+      "sha256": "6d35c8c9a68e40de5e4b9dd729ce86a8e5c88f764cb8644c3c96b61ff717cafb",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_posam_oct13_note_net_cash",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526420749/R24.htm",
+      "filing_date": "2026-10-14",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "On the Closing Date, the Company issued the Convertible Notes and received net cash proceeds of $29.0 million, after deducting a $1.0 million fee paid to its capital markets advisor.",
+      "sha256": "d4d8fc3b2381451b6f067e566e153a65a0adc7378d0068a0cc9779c0c5b60037",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_oct30_eloc_capacity_and_no_current_sales",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "The October 30, 2026 prospectus covers up to 5,218,935 shares under a committed equity facility. Evernorth stated it was not selling securities under the prospectus and would not receive proceeds from the Holder’s resale. Evernorth may elect, in its sole discretion and subject to conditions, to issue and sell shares to Cantor.",
+      "sha256": "890021f24cc54b75e7c8d37bdf8d0daa9d60220769d618cb8075c2a7b96b3b6b",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "evernorth_s1_eloc_97pct_table",
+      "publisher": "Evernorth Holdings Inc. / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "source_class": "primary_sec_filing",
+      "source_independence_group": "sec_issuer_filing",
+      "excerpt": "The VWAP Purchase Price is 97% of VWAP. The illustrative table shows $76.8 million at an assumed $14.71 share price and $50.6 million at $10.00 for 5,218,935 shares. The table footnote states that both amounts assume a 97% VWAP Purchase Price.",
+      "sha256": "f9eb0c6a576778ae64a52a8272b87a72e6bd2840e28c9318123be5d75732cb8d",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    },
+    {
+      "source_id": "kucoin_user_post_actual_capital_phrase",
+      "publisher": "KuCoin Insights user-generated post by SonOfaRichard",
+      "url": "https://www.kucoin.com/news/insight/XRP/6aac57a07d10fa0007ce3c56",
+      "published_at_utc": "2026-09-17T21:16:03Z",
+      "source_class": "secondary_user_generated_commentary",
+      "source_independence_group": "kucoin_user_post",
+      "excerpt": "They can build an actual capital stack around the treasury.",
+      "sha256": "e6cc160840b164dc3f09c6f3c8515985f397613e91faea4ba06dc1a64ba54877",
+      "retrieved_at_utc": null,
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not raw HTTP bytes or full filing bytes."
+    }
+  ],
+  "capital_ledger": {
+    "closing": {
+      "closing_date": "2026-10-09",
+      "reported_gross_cash_usd_approx": 272600000,
+      "private_placement_cash_usd_approx": 224600000,
+      "trust_account_cash_released_after_redemptions_usd_approx": 48000000,
+      "transaction_expenses_deducted": false,
+      "reported_in_kind_xrp_approx": 388910554,
+      "reported_xrp_holdings_at_close_approx": 473000000
+    },
+    "private_placement_components": {
+      "advance_funding": {
+        "cash_usd": 214050000,
+        "inkind_xrp": 600000,
+        "actual_cash_received": true,
+        "actual_xrp_contributed": true
+      },
+      "delayed_funding": {
+        "cash_usd": 10500000,
+        "inkind_xrp": 200000,
+        "closing_shares_issued": true,
+        "exact_subscriber_cash_xrp_split_not_itemized": true
+      },
+      "series_c": {
+        "inkind_xrp": 211319096.061435,
+        "sponsor": "Arrington XRP Capital Fund, LP",
+        "source_of_xrp": "RippleWorks, Inc.",
+        "escrowed_before_close": true
+      },
+      "ripple_contribution": {
+        "inkind_xrp": 126791458,
+        "contributor": "Ripple Labs Inc.",
+        "received_in_exchange_for_pathfinder_units": true
+      },
+      "contributor_related_party": {
+        "inkind_xrp": 50000000,
+        "entity": "Larsen Lam Children’s Remainder Trust",
+        "relationship": "investor affiliated with Ripple",
+        "transferred_to_escrow_2025_10_20": true
+      }
+    },
+    "reconstructed_totals": {
+      "private_placement_cash_usd": 224550000,
+      "rounded_private_placement_cash_usd": 224600000,
+      "gross_cash_including_trust_usd": 272550000,
+      "rounded_gross_cash_usd": 272600000,
+      "in_kind_xrp": 388910554.061435,
+      "cash_purchased_xrp": 84365876.3625,
+      "reconstructed_total_xrp": 473276430.423935,
+      "issuer_reported_total_xrp": "approximately 473 million as of 2026-10-09",
+      "arithmetic_scope": "Derived from disclosed component amounts. Not a wallet-level reserve reconciliation."
+    },
+    "actual_xrp_purchase": {
+      "cash_used_usd": 214100000,
+      "xrp_purchased": 84365876.3625,
+      "period": "2025-10-31 through 2025-11-06 receipts; aggregate purchase disclosed in 2026 S-1",
+      "status": "issuer-reported actual acquisition with cash proceeds",
+      "distinction": "This is the identified cash-funded XRP purchase. It is not equivalent to the full 473 million XRP holdings, much of which came from in-kind contributions."
+    },
+    "convertible_note": {
+      "principal_usd": 30000000,
+      "issue_and_payment_date": "2026-10-12",
+      "net_cash_after_advisor_fee_usd": 29000000,
+      "advisor_fee_usd": 1000000,
+      "rate_pct": 4,
+      "interest_type": "PIK, capitalized semi-annually",
+      "purchaser": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+      "intended_use": "general corporate purposes, including XRP acquisition and other XRP ecosystem activities",
+      "specific_xrp_purchase_traced": false,
+      "classification": "actual debt cash proceeds; not confirmed XRP spot buying",
+      "wording_reconciliation": "The October 30 S-1 describes approximately $30 million of net proceeds before transaction expenses; the October 13 POS AM states $29 million net cash after a $1 million advisor fee. Use $29 million as the more specific after-fee cash figure and retain the disclosure wording difference."
+    },
+    "ripple_related_party_facility": {
+      "borrower": "Pathfinder Digital Assets LLC (Company)",
+      "lender": "Ripple",
+      "facility_cap_usd": 10000000,
+      "drawn_as_of_2026_10_07_usd": 9700000,
+      "annual_interest_pct": 3.81,
+      "repayment_term": "within five business days after the 2026-10-09 Closing Date, or earlier on five business days’ notice of demand by Ripple",
+      "repayment_status": "UNKNOWN; reviewed S-1 discloses the draw and due term but does not confirm repayment",
+      "classification": "related-party debt, not independent third-party capital"
+    },
+    "eloc": {
+      "holder": "CF Principal Investments LLC (Cantor)",
+      "maximum_new_shares": 5218935,
+      "pricing_formula": "97% of applicable VWAP, subject to stated conditions and block/threshold provisions",
+      "issuer_discretion": true,
+      "prospectus_date": "2026-10-30",
+      "shares_being_sold_under_prospectus_as_of_date": false,
+      "potential_gross_proceeds_narrative_usd": 76800000,
+      "formula_recalculation_at_14_71_usd": 74467417.8345,
+      "table_discrepancy_usd": 2332582.1655,
+      "table_10_dollar_row_formula_result_usd": 50623669.5,
+      "table_10_dollar_row_displayed_usd": 50600000,
+      "commitment_fee_usd": 521893.5,
+      "total_cantor_fee_cap_usd": 1000000,
+      "drawdown_verified": false,
+      "classification": "potential equity financing capacity, not cash received"
+    }
+  },
+  "derived_reconciliations": {
+    "delayed_funding": {
+      "cash_usd": 10500000,
+      "xrp": 200000,
+      "closing_xrp_price_usd": 1.43069,
+      "xrp_value_usd": 286138,
+      "aggregate_value_usd": 10786138,
+      "closing_shares": 1078613,
+      "shares_times_10_usd": 10786130,
+      "difference_usd": -8,
+      "interpretation": "The issued share count is arithmetically consistent with the disclosed $10.5 million cash plus 200,000 XRP at the closing reference price, subject to whole-share rounding. Exact per-subscriber cash/XRP mix is not separately itemized in the cited summary."
+    },
+    "eloc_14_71_row": {
+      "shares": 5218935,
+      "assumed_price_usd": 14.71,
+      "formula_discount": 0.97,
+      "calculated_usd": 74467417.8345,
+      "prospectus_table_usd": 76800000,
+      "difference_usd": 2332582.1655,
+      "status": "unresolved arithmetic inconsistency; table row equals approximately undiscounted share-price multiplication while its footnote says 97%"
+    }
+  },
+  "relationship_edges": [
+    {
+      "from": "Ripple",
+      "to": "Pathfinder/Evernorth",
+      "relationship": "$9.7m related-party facility drawn as of 2026-10-07; 3.81%; repayment status unknown"
+    },
+    {
+      "from": "Ripple",
+      "to": "Pathfinder",
+      "relationship": "126,791,458 XRP contribution for Pathfinder units"
+    },
+    {
+      "from": "RippleWorks",
+      "to": "Arrington XRP Capital Fund",
+      "relationship": "211,319,096.061435 XRP supplied for Series C investment"
+    },
+    {
+      "from": "Larsen Lam Children’s Remainder Trust",
+      "to": "Evernorth/Pathfinder",
+      "relationship": "50,000,000 XRP in-kind subscription; investor affiliated with Ripple"
+    },
+    {
+      "from": "SBI Holdings-affiliated investors",
+      "to": "Evernorth",
+      "relationship": "Class A/Class C equity issued at closing; distinct from SBIC regional companies"
+    },
+    {
+      "from": "NH Investment & Securities / Kyobo AIM trust",
+      "to": "Evernorth",
+      "relationship": "$30m principal 4% PIK note issued 2026-10-12; $29m after-fee cash disclosed"
+    },
+    {
+      "from": "Cantor",
+      "to": "Evernorth",
+      "relationship": "optional committed equity facility up to 5,218,935 shares; drawdown not verified"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Evernorth’s approximately 473m XRP at closing should not be treated as 473m of new spot buying.",
+      "status": "strongly_supported",
+      "evidence": "SEC filing separates 84.366m XRP purchased with $214.1m cash from approximately 388.911m XRP contributed in kind."
+    },
+    {
+      "id": "H2",
+      "statement": "The $29m net note proceeds may support later XRP acquisition but do not prove that such purchases occurred.",
+      "status": "supported_with_limitation",
+      "evidence": "SEC states intended use includes XRP acquisition but no specific post-issuance purchase is traced."
+    },
+    {
+      "id": "H3",
+      "statement": "The $9.7m Ripple facility is independent external institutional capital.",
+      "status": "disconfirmed",
+      "evidence": "The filing identifies Ripple as lender and the facility as related-party debt."
+    },
+    {
+      "id": "H4",
+      "statement": "The Cantor ELOC provides $76.8m of cash already available to Evernorth.",
+      "status": "disconfirmed",
+      "evidence": "The prospectus says no securities were being sold under it as of 2026-10-30 and issuance is at Evernorth’s discretion subject to conditions."
+    },
+    {
+      "id": "H5",
+      "statement": "SBI Holdings-affiliated investors have an equity relationship with Evernorth, which is proof that SBIC East/Central/West bought XRP.",
+      "status": "disconfirmed",
+      "evidence": "The filing identifies SBI Holdings-affiliated investors in Evernorth; SBIC regional companies are distinct legal entities and no SBIC subscription is identified."
+    }
+  ],
+  "exact_phrase_resolution": {
+    "actual_capital": "The phrase appears in a 2026-09-17 user-generated KuCoin Insights post. It is commentary, not an issuer or SEC accounting term. The SEC filings independently establish the actual proceeds and token contributions listed above.",
+    "ask_coin": "CoinMarketCap’s Ask Coin page describes an inactive, untracked exchange listing with no reserve/market data; Permission Coin is a separate token whose ticker is ASK. No XRP relationship is established.",
+    "sbic_chatgpt": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) hosted/co-hosted a 2025-02-26 generative-AI/ChatGPT seminar with a Microsoft Japan executive evangelist. This establishes educational use, not an OpenAI partnership.",
+    "camilla_kamilah_stevenson": "Identity remains unresolved at exact-name level; do not attribute a broader YouTube catalog to Camilla/Kamilah Stevenson without channel/person corroboration."
+  },
+  "model_admission": {
+    "eligible_as_xrp_price_feature": false,
+    "eligible_as_event_or_supply_context": true,
+    "reasons": [
+      "Financing/custody disclosures are event/context features, not direct price signals.",
+      "The $29m note has no traced XRP purchase.",
+      "The 388.9m in-kind contribution is not open-market demand.",
+      "The $9.7m related-party debt repayment status is unknown.",
+      "The ELOC is contingent capacity, not actual drawdown."
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Locate a post-October-30 filing or audited cash-flow disclosure confirming whether the $9.7m Ripple Company Facility was repaid by its contractual due date.",
+    "Track subsequent XRP wallet movements for the 84.365876m purchased lot and 388.910554m in-kind contribution lots without assuming wallet labels establish ownership.",
+    "Verify whether any Cantor ELOC VWAP purchase notices or settlements occurred after the October 30 prospectus.",
+    "Trace the $29m net note proceeds to bank/cash-flow and subsequent XRP purchases; do not infer use from stated intent.",
+    "Preserve the distinction between cash proceeds, in-kind XRP, related-party debt, note proceeds, SPAC trust cash and optional equity-line capacity."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}
