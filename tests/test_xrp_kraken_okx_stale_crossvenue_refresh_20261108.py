@@ -35,7 +35,7 @@ def test_identical_kraken_response_is_not_assumed_to_be_fresh():
     artifact = load_artifact()
     kraken = next(item for item in artifact["sources"] if item["source_id"] == "kraken_xrp_usd_ticker")
     assert kraken["raw_response_sha256"] == "f05b27b7f5773e18819fc238c2bf3a068e8c4e2a280098725e5c8f9bb3c2a223"
-    assert "not enough metadata to distinguish" in kraken["limitations"][1]
+    assert "did not expose enough metadata to distinguish them" in kraken["limitations"][1]
 
 
 def test_conflicting_venue_quotes_are_not_admitted_as_a_signal():
