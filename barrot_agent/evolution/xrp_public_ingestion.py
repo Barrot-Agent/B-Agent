@@ -29,8 +29,8 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.16"
-PARSER_VERSION = "xrp-public-market-v3.15"
+ADAPTER_VERSION = "xrp-public-market-v3.17"
+PARSER_VERSION = "xrp-public-market-v3.16"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -3209,9 +3209,12 @@ def _parse_bybit_linear_open_interest_history(
     captured_s = _iso(captured)
     limitations = [
         "Single Bybit XRPUSDT linear-perpetual venue; linear open-interest size is retained in the base asset (XRP), with no USD or contract-count conversion.",
+        "Bybit openInterest is the venue-reported sum of both sides; singleOpenInterest is the venue-reported single-side value. They are retained as separate features.",
         "Historical rows are first known to this collector at captured_at_utc and cannot be used at earlier point-in-time origins.",
         "The public endpoint returns at most 200 rows per request; this collector captures one page and does not claim a complete lifetime history.",
     ]
+    if any(row.get("singleOpenInterest") in (None, "") for _event_time, row in ordered):
+        limitations.append("At least one Bybit history row omitted singleOpenInterest; no single-side value is inferred from the both-sides total.")
     if result.get("nextPageCursor"):
         limitations.append("Bybit returned a nextPageCursor; additional historical pages exist and were not fetched by this one-page adapter.")
     records = []
@@ -3221,9 +3224,9 @@ def _parse_bybit_linear_open_interest_history(
         event_s = _iso(event_time)
         records.append(
             _feature_record(
-                feature_id="xrp.perpetual.bybit.1h.open_interest_xrp",
+                feature_id="xrp.perpetual.bybit.1h.open_interest_xrp_both_sides",
                 value=_number(row.get("openInterest"), "Bybit historical openInterest", allow_zero=False),
-                unit="XRP (venue-reported linear open-interest size)",
+                unit="XRP (venue-reported both-sides open-interest size)",
                 event_time_utc=event_s,
                 source_data_as_of_utc=event_s,
                 captured_at_utc=captured_s,
@@ -3241,6 +3244,30 @@ def _parse_bybit_linear_open_interest_history(
                 limitations=limitations,
             )
         )
+        single_value = row.get("singleOpenInterest")
+        if single_value not in (None, ""):
+            records.append(
+                _feature_record(
+                    feature_id="xrp.perpetual.bybit.1h.open_interest_xrp_single_side",
+                    value=_number(single_value, "Bybit historical singleOpenInterest", allow_zero=False),
+                    unit="XRP (venue-reported single-side open-interest size)",
+                    event_time_utc=event_s,
+                    source_data_as_of_utc=event_s,
+                    captured_at_utc=captured_s,
+                    source_id=source_id,
+                    source_uri=url,
+                    raw_sha256=digest,
+                    independence_group="bybit",
+                    venue="Bybit",
+                    instrument="XRPUSDT linear perpetual",
+                    currency_pair="XRP/USDT",
+                    market_type="perpetual",
+                    aggregation_window="1h",
+                    model_eligible=True,
+                    quality_status="verified",
+                    limitations=limitations,
+                )
+            )
     return records, _iso(ordered[-1][0]), True, ""
 
 

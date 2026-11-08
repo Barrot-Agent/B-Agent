@@ -251,8 +251,8 @@ def _fake_fetcher(captured: datetime):
                     "category": "linear",
                     "symbol": "XRPUSDT",
                     "list": [
-                        {"openInterest": "2510000", "timestamp": captured_ms - 3600000},
-                        {"openInterest": "2500000", "timestamp": captured_ms - 7200000},
+                        {"openInterest": "2510000", "singleOpenInterest": "1255000", "timestamp": captured_ms - 3600000},
+                        {"openInterest": "2500000", "singleOpenInterest": "1250000", "timestamp": captured_ms - 7200000},
                     ],
                     "nextPageCursor": "next-page",
                 },
@@ -535,8 +535,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.16"
-    assert summary["parser_version"] == "xrp-public-market-v3.15"
+    assert summary["adapter_version"] == "xrp-public-market-v3.17"
+    assert summary["parser_version"] == "xrp-public-market-v3.16"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -2357,7 +2357,7 @@ def test_bybit_linear_ticker_preserves_open_interest_conventions_and_funding_int
     assert partial_features["xrp.perpetual.bybit.current_funding_rate"]["eligibility_reason"] == "funding_interval_missing"
 
 
-def test_bybit_linear_open_interest_history_normalizes_order_and_preserves_point_in_time_availability():
+def test_bybit_linear_open_interest_history_preserves_both_sides_and_point_in_time_availability():
     captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
     source_id = "bybit_linear_open_interest"
     url = dict(ENDPOINTS)[source_id]
@@ -2370,11 +2370,25 @@ def test_bybit_linear_open_interest_history_normalizes_order_and_preserves_point
     assert eligible is True
     assert reason == ""
     assert latest_time == (captured - timedelta(hours=1)).isoformat(timespec="microseconds").replace("+00:00", "Z")
-    assert [item["value"] for item in records] == [2_500_000, 2_510_000]
-    assert records[0]["event_time_utc"] < records[1]["event_time_utc"]
+    both_sides = [item for item in records if item["feature_id"] == "xrp.perpetual.bybit.1h.open_interest_xrp_both_sides"]
+    single_side = [item for item in records if item["feature_id"] == "xrp.perpetual.bybit.1h.open_interest_xrp_single_side"]
+    assert [item["value"] for item in both_sides] == [2_500_000, 2_510_000]
+    assert [item["value"] for item in single_side] == [1_250_000, 1_255_000]
+    assert both_sides[0]["event_time_utc"] < both_sides[1]["event_time_utc"]
+    assert single_side[0]["event_time_utc"] < single_side[1]["event_time_utc"]
     assert all(item["known_at_utc"] == captured.isoformat(timespec="microseconds").replace("+00:00", "Z") for item in records)
     assert all(item["model_eligible"] is True for item in records)
     assert any("nextPageCursor" in item for item in records[0]["limitations"])
+
+    missing_single = json.loads(json.dumps(response["payload"]))
+    del missing_single["result"]["list"][0]["singleOpenInterest"]
+    partial, _partial_time, partial_eligible, _partial_reason = parser(
+        missing_single, source_id=source_id, url=url, digest=digest, captured=captured
+    )
+    assert partial_eligible is True
+    assert len([item for item in partial if item["feature_id"] == "xrp.perpetual.bybit.1h.open_interest_xrp_both_sides"]) == 2
+    assert len([item for item in partial if item["feature_id"] == "xrp.perpetual.bybit.1h.open_interest_xrp_single_side"]) == 1
+    assert any("no single-side value is inferred" in item for item in partial[0]["limitations"])
 
     duplicate = json.loads(json.dumps(response["payload"]))
     duplicate["result"]["list"][1]["timestamp"] = duplicate["result"]["list"][0]["timestamp"]
@@ -2389,6 +2403,7 @@ def test_bybit_linear_open_interest_history_normalizes_order_and_preserves_point
     mixed = json.loads(json.dumps(response["payload"]))
     mixed["result"]["list"].append({
         "openInterest": "2505000",
+        "singleOpenInterest": "1252500",
         "timestamp": _iso_ms(captured - timedelta(minutes=90)),
     })
     with pytest.raises(XRPIngestionError, match="not strictly monotonic"):
