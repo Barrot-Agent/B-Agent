@@ -68,7 +68,13 @@
         "Run 35 (2026-11-08T01:40:58Z): fetched main commit/tree, complete recursive trees for both mission heads, all four open-PR inventory pages, full changed-path lists, branch ancestry, PR metadata, review threads, exact-head check runs and workflow job logs.",
         "Run 35: #1640 exact head 8ad4761bf7cb250586c33b08de7056e7628ca5a4 passed 1,174 full-suite tests, 655 core tests, 58.49% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate.",
         "Run 35: #1643 prior head 639d00584b57da41d2d5e8884a59e20083988012 passed 2,222 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate. A new append-only Kraken/OKX research receipt and test advanced it to 84c24cec3d3728f56416ecd2a427ad2685aa18a4; at capture the core job and fail-closed gate passed while full suite and dependency audit remained in progress.",
-        "Run 35: captured Kraken and OKX public ticker excerpts. Kraken provider event time was absent; OKX event data was 422.532 seconds old at capture. Exact visible excerpt hashes were stored, explicitly not represented as raw HTTP byte hashes. No feature admission or forecast."
+        "Run 35: captured Kraken and OKX public ticker excerpts. Kraken provider event time was absent; OKX event data was 422.532 seconds old at capture. Exact visible excerpt hashes were stored, explicitly not represented as raw HTTP byte hashes. No feature admission or forecast.",
+        "Run 36 (2026-11-08T02:43:45Z): verified current GitHub connector access by fetching main SHA and complete recursive tree, all four open-PR pages (371 total), both mission branch trees, full changed-path inventories, branch ancestry, review records and inline threads, exact-head CI jobs/logs, six-manifest dependency audits, fail-closed gates and latest main workflow runs.",
+        "Run 36: #1640 code/test head 5c546a581db22ee28e1c067f2d04d160c26b0a6a passed 1,183 full-suite tests, 655 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. A documentation-only handoff update is on the same existing branch and its exact-head CI is being re-run.",
+        "Run 36: #1643 exact head a2243683433c4dd4f3e2da5bfaa9adb254900b2b passed 2,237 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate.",
+        "Run 36: resolved the context-budget regression import path and corrected Barrot rate-limit marker classification on the existing #1640 branch. The latest main Barrot Agent run had failed on Groq 8,099 TPM versus an 8,000 limit; no branch or repository mutation was produced by that main run.",
+        "Run 36: all 22 #1640 and 19 #1643 inline review threads are resolved, but both PRs have zero APPROVED reviews and ten COMMENTED reviews each. COMMENTED is not approval.",
+        "Run 36: main remained unchanged at 9100dbacb5f9f1b973b053a65ef1e91e96b64f72. No merge, deployment, secret read/rotation, Space restart, Kaggle submission, paper simulation, funds transfer, real-money action or external model transfer occurred."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -77,7 +83,8 @@
           "read repository metadata",
           "read branches and trees",
           "read PRs, reviews, workflows and logs",
-          "create/update files on existing mission branches"
+          "create/update files on existing mission branches",
+          "updated the existing durable handoff and nine-platform map on the existing integration branch"
         ],
         "secret_values_read": false
       },
@@ -105,7 +112,9 @@
           "Run 34: fetched complete main and mission-branch trees, all four open-PR pages, exact PR heads/ancestry/changed paths, shared-path blob hashes, exact-head full-suite/core logs, six-manifest audits, fail-closed gate jobs, current main workflow configuration and latest main Cross Analysis run. Existing integration branch only; no main write, secret read, external model transfer or deployment.",
           "Run 34 follow-up: committed the ETF flow universe/methodology and SEC docket reconciliation artifact plus regression test to the existing #1643 research branch; verified the research branch advanced from 06769f1d9667d5cb877e6e0321f9d9a9694b1dd6 to a554dc3814fb0a9ed935fa83a2805caa3544915e. No main write, external model transfer or deployment.",
           "Run 34 engineering follow-up: inspected exact-head CI failure on 594dd2bc; two historical map tests expected Run 33 as current after Run 34 was added. Updated those tests to read preserved Run 33 from prior_run_observations; no product code or safety thresholds weakened.",
-          "Run 34 market follow-up: added Fuelmaps composite depth, CoinGlass/CMC/Swiftedge provider disagreement and three competing hypotheses to existing #1643 branch; exact #1643 full-suite command passed 2,222 tests with 8 subtests, six-manifest audit and fail-closed gate passed."
+          "Run 34 market follow-up: added Fuelmaps composite depth, CoinGlass/CMC/Swiftedge provider disagreement and three competing hypotheses to existing #1643 branch; exact #1643 full-suite command passed 2,222 tests with 8 subtests, six-manifest audit and fail-closed gate passed.",
+          "Run 36: current-session connector wrote only to the existing integration branch handoff and capability map; no main-branch write or external data transfer occurred.",
+          "Run 36: complete main and mission trees, PR inventory, exact-head workflow logs, reviews and dependency/security results were inspected; no secret values were read."
         ]
       },
       "limitations": [
@@ -311,7 +320,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-08T01:40:58Z",
+    "last_reviewed_at_utc": "2026-11-08T02:43:45Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -319,7 +328,9 @@
       "github_review_threads": [
         "PR #1653: 8 unresolved review threads",
         "PR #1640/#1643: COMMENTED reviews are not approving reviews"
-      ]
+      ],
+      "xrp_live_market_snapshot": "Run 36 handoff raw Kraken/OKX response text and SHA-256 receipts; research-only, not feature-store eligible",
+      "treasury_macro_reconciliation": "research/xrp_intelligence/20261108T021527Z-tga-actual-versus-projection-reconciliation.json"
     }
   },
   "least_privilege_and_safety": {
@@ -4542,5 +4553,5 @@
       "research_head_after_market_followup": "6ee1942fc7702bad582adb939705c841f1d77755"
     }
   ],
-  "last_verified_at_utc": "2026-11-08T01:40:58Z"
+  "last_verified_at_utc": "2026-11-08T02:43:45Z"
 }
