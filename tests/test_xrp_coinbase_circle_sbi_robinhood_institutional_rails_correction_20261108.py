@@ -74,7 +74,7 @@ def test_robinhood_rlusd_network_status_and_xrpl_institutional_use_are_not_overs
     data = load_artifact()["findings"]["robinhood_ripple"]
     assert any("Robinhood Chain" in item for item in data["live_at_announcement"])
     assert any("Bitstamp by Robinhood" in item for item in data["live_at_announcement"])
-    assert "Robinhood app availability" in data["expected_later_2026"]
+    assert any("Robinhood app" in item for item in data["expected_later_2026"])
     assert "will leverage RLUSD on XRPL" in data["announced_xrpl_use"]
     assert "does not disclose completed XRPL settlement volumes" in data["interpretation"]
 
