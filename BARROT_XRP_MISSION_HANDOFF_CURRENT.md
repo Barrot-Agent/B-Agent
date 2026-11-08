@@ -1,3 +1,56 @@
+## Run 72 supplement — primary-source identity and institutional network (2026-11-08T23:21:50.079Z)
+
+### Japan SBIC identity resolved from primary corporate records
+
+These are three separate regional companies established under Japan's Small and Medium Business Investment & Consultation Company Act (Act No. 101 of June 10, 1963):
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; established November 15, 1963; corporate number 9011001030621; capital ¥6.6734B; its profile lists shareholders including 18 prefectures/local governments, chambers of commerce, financial institutions and business companies. https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established November 18, 1963; capital ¥4.3008B; service area Aichi, Gifu, Mie, Toyama and Ishikawa. https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established November 20, 1963; capital ¥6.822B; service area Fukui, Shiga, Nara, Wakayama and westward (24 prefectures). https://www.sbic-wj.co.jp/profiles/profile/
+
+The East and Central corporate pages identify the three as sister companies. They are not SBI Holdings subsidiaries by the evidence reviewed. **SBI Holdings, Inc. is a different company**, established July 8, 1999, whose stated principal business is control and management of the SBI Group through share ownership; its paid-in capital was ¥238.019B as of March 31, 2026. https://www.sbigroup.co.jp/english/company/information/profile.html
+
+The exact "SBIC / ChatGPT" search also surfaced SBIC East's June 2025 generative-AI training course, which taught ChatGPT use to investee-company participants, plus SBIC East editorial material discussing ChatGPT. This is training/portfolio support, not evidence of an OpenAI partnership or a product named "ChatGPT SBIC". https://www.sbic.co.jp/training/20250612co/ The separate academic expansion "Social Bias Inference Corpus" is also unrelated to these Japanese companies.
+
+### SBI–Ripple–Circle–Coinbase relationship graph: verified distinctions
+
+- **SBI–Ripple equity:** SBI's June 2025 investor presentation says SBI invested in Ripple in 2016 and held approximately 9% of Ripple shares, describing SBI as Ripple's largest external shareholder at that date. This is a dated company disclosure, not a live 2026 cap-table confirmation. https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf
+- **SBI Ripple Asia:** SBI's group-company page reports SBI Group holds 60% of voting rights as of March 31, 2026 and identifies SBI Ripple Asia as its JV with Ripple. https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- **Actual XRP remittance use:** SBI's September 6, 2023 release states SBI Remit, SBI VC Trade, Ripple and SBI Ripple Asia expanded an XRP-bridged remittance service to bank accounts in the Philippines, Vietnam and Indonesia. The disclosed flow has SBI Remit send a customer request and SBI VC Trade transmit XRP in real time. This is primary evidence of an operational XRP use case, unlike mere XRPL adoption. Transaction counts, XRP inventory, turnover, corridor-level value and current 2026 volumes are not disclosed. https://www.sbigroup.co.jp/news/2023/0906_14052.html
+- **XRPL without demonstrated XRP use:** SBI Ripple Asia's February 2026 Japan–Korea remittance research and other tokenized-payment pilots describe XRPL as the proposed ledger. They are research/implementation exploration, not proof that XRP is the bridge asset or that a production service launched. Partner-specific tokens are distinct from XRP. https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html
+- **SBI–Circle equity:** SBI Holdings and SBI Shinsei Bank disclosed a combined $50M strategic investment in Circle in June 2025 ($25M each). This is separate from the Japan distribution JV. https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- **Circle SBI Japan / SBI Circle Holdings:** SBI's 2025 presentation explicitly labels "Circle SBI Japan K.K." as the English name and "SBI Circle Holdings K.K." as the Japanese name for the same 50/50 JV. Circle's Q3 2026 10-Q says Circle owns 50%, consolidates the VIE because it controls the activities most affecting it, and presents SBI's interest as noncontrolling; each contributed about $1.5M equivalent in November 2025, and there were no significant operating results through September 30, 2026. The JV is for USDC distribution, not RLUSD or XRP. https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- **Circle–Coinbase:** Coinbase's Q3 2026 10-Q says its arrangement with Circle was renewed on the same terms and average USDC balances held in Coinbase products reached an all-time high. Coinbase reported $306.905M stablecoin revenue in Q3 2026 (-5% YoY) and $904.487M for nine months (approximately flat YoY). Its filing attributes the Q3 stablecoin-revenue change to +$84.6M from higher average USDC balances and -$52.8M from lower average interest rates. This is a material rate-sensitive distribution relationship, not an XRP flow. https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- **Circle distribution economics:** Circle's same-quarter filing reports $331.3M of Coinbase-related distribution costs in Q3 and $986.6M for nine months. These are Circle expenses, not a disclosed Coinbase profit share and not directly reconcilable dollar-for-dollar to Coinbase's stablecoin-revenue line. Circle reports average USDC circulation of $73.264B, quarter-end circulation of $73.879B and $13.9T of on-chain transaction volume (+49% YoY); its volume definition excludes Solana and represents gross chain activity, not unique economic payment principal. The daily weighted-average share of USDC on Circle's own platform was 18.1%. https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- **Circle–Binance:** The September 17, 2026 8-K discloses a five-year USDC promotion agreement with a monthly incentive fee calculated by reference to USDC held through Circle's Modular Smart Contract Wallet infrastructure, plus a separate $100M Circle equity placement to Binance (1,237,011 shares at $80.84). The fee rate, actual qualifying balances and payouts are not disclosed. This is not an XRP purchase or Ripple investment. https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm
+- **SBI distribution of both issuers' stablecoins:** SBI VC Trade's RLUSD support is separate from the Circle/SBI USDC JV. SBI therefore has disclosed equity/JV/distribution relationships with both Circle and Ripple, while Circle and Ripple remain separate stablecoin issuers. Coinbase also lists RLUSD, but no direct Circle–Ripple corporate partnership was established by these sources.
+
+### "Actual capital", ASK Coin and creator-identity gates
+
+- The exact phrase "actual capital" surfaced secondary XRP commentary, not a standardized issuer or regulator metric. An XRP-specific claim that 18% of institutions already hold XRP and 25% plan to add it was not corroborated by the official 2026 Coinbase/EY institutional survey. That survey covers 351 institutional investors and reports general digital-asset allocation intentions (73% plan to increase overall digital-asset allocations; 65% of those increasers cite regulatory clarity); it does not report XRP-specific deployed capital. Treat the XRP-specific percentages as unverified and do not use them as capital-flow features. https://www.coinbase.com/institutional/research-insights/research/market-intelligence/2026-institutional-investor-digital-assets-survey
+- Exact "ASK Coin" searches resolve to Permission's ASK reward/token ecosystem in the relevant results; Permission's own support material describes ASK withdrawals to Permission or connected external wallets. No XRPL/XRP relationship was found. Keep it distinct from XRP and from any other token merely sharing the ticker ASK. https://support.permission.io/kb/articles/pdf/to-which-wallet-can-i-withdraw-my-ask-currently-in-pending
+- Kamilah Stevenson is a corroborated person, but the candidate YouTube channel still lacks first-party reciprocal ownership evidence. No personal-channel video inventory or creator attribution is admitted until the identity gate passes. No separate Camilla identity is established.
+
+### Automatic workflow side-effect audit
+
+The #1640 change set contains 41 workflow files. Read-only inspection found:
+- `xrp-public-ingestion.yml`: hourly at minute 3 and daily at 00:15 UTC; public HTTPS allowlist; read-only GitHub contents/actions permissions; raw receipts uploaded as 90-day artifacts, feature-store checkpoint 7 days, daily backup 90 days. It does not write to main or execute trades. These artifacts are not independent WORM storage and can be deleted by repository administrators.
+- `cross-analysis.yml`: hourly public-data analysis with read-only repository permission.
+- `webmcp-monetization-enrich.yml`: workflow-run follow-up with read-only artifact access; no repository write permission.
+- CI, full-suite, wheel and dependency-audit workflows run tests/audits only.
+- Autonomous Barrot agent/self-upgrade, Hugging Face sync, WebMCP live sandbox and several experimental workflows are disabled or quarantined.
+- Databricks/Kaggle sync, Groq-assisted design/triage, A2A deployment, self-hosted-brain deployment/secret rotation and Coinbase paper-trader workflows are manual and gated; none was dispatched.
+- Seven changed `web/` paths mean merging #1640 to main can trigger GitHub Pages publication. The observed prior main push did publish Pages. That remains a specific deployment authorization blocker.
+
+### Six shared-path reconciliation plan for #1640/#1643
+
+The dependency-audit workflow is byte-identical. For the five differing shared paths:
+1. Use the V3 `scripts/pillars_check.py` as the safety base: it distinguishes GitHub source checks from deployed-runtime checks, validates malformed JSON, and does not claim that an uninspected live Space is healthy. Do not copy the research branch's ambiguous deploy-sync/system-prompt labels unless their runtime semantics are independently verified.
+2. Keep the V3 read-only regression tests; carry only research-specific assertions whose underlying behavior is actually merged.
+3. Merge the research branch's additional Kamilah candidate references into the V3 channel registry, but preserve `channel_identity_status=PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED`, `identity_gate_passed=false`, and forecast-feature admission disabled. Candidate videos are not verified creator uploads.
+4. Keep `BARROT_XRP_MISSION_HANDOFF_CURRENT.md` as the canonical current handoff. Preserve the divergent historical `BARROT_XRP_MISSION_HANDOFF.md` in Git history rather than replacing the current record with a stale snapshot.
+5. Preserve the SEC relationship artifact's schema 1.0.1 detail and its source receipts when consolidating #1643; main's schema 1.0.0 version remains recoverable in main's Git history. Do not redistribute commercial raw datasets.
+
 # Run 72 — 2026-11-08 23:12 UTC
 
 **Current main:** `d4d43be3427375cf79d190e768976de062e20287`  
