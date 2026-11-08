@@ -134,6 +134,85 @@
         "No XRP fund AUM/holdings are published in this series; flows are not verified end-of-day XRP holdings.",
         "No weekend 7 or 8 Nov US ETF session is inferred."
       ]
+    },
+    "direct_exchange_snapshot": {
+      "reference_time_utc": "2026-11-08T19:15:07Z",
+      "freshness_threshold_seconds": 300,
+      "binance_perpetual": {
+        "endpoint": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+        "provider_event_time_utc": "2026-11-08T18:56:48Z",
+        "age_at_reference_seconds": 1099,
+        "stale_at_reference": true,
+        "mark_price_usdt": 1.1591,
+        "index_price_usdt": 1.15944723,
+        "estimated_settle_price_usdt": 1.15811034,
+        "mark_index_basis_bps": -2.9948,
+        "last_funding_rate_pct_per_8h": 0.01,
+        "next_funding_time_utc": "2026-11-09T00:00:00Z",
+        "model_admission": "raw_only_not_admitted"
+      },
+      "okx_spot": {
+        "endpoint": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_event_time_utc": "2026-11-08T18:48:15.210Z",
+        "age_at_reference_seconds": 1011.79,
+        "stale_at_reference": true,
+        "last_usdt": 1.1589,
+        "best_bid_usdt": 1.1588,
+        "best_ask_usdt": 1.1589,
+        "best_bid_size_xrp": 2210.893755,
+        "best_ask_size_xrp": 6742.046465,
+        "spread_bps": 0.8629,
+        "open_24h_usdt": 1.1633,
+        "high_24h_usdt": 1.1697,
+        "low_24h_usdt": 1.1495,
+        "volume_24h_xrp": 18018756.504749,
+        "volume_24h_quote_usdt": 20881926.351042382,
+        "model_admission": "raw_only_not_admitted"
+      },
+      "kraken_spot": {
+        "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "provider_event_time_utc": null,
+        "retrieval_time_embedded_in_payload": false,
+        "last_usd": 1.15224,
+        "best_bid_usd": 1.15224,
+        "best_ask_usd": 1.15225,
+        "best_bid_size_xrp": 13619,
+        "best_ask_size_xrp": 10021,
+        "spread_bps": 0.0868,
+        "open_24h_usd": 1.16234,
+        "high_24h_usd": 1.16816,
+        "low_24h_usd": 1.14888,
+        "vwap_24h_usd": 1.1580463,
+        "volume_24h_xrp": 7543880.38515829,
+        "trades_24h": 13829,
+        "model_admission": "raw_only_not_admitted"
+      },
+      "cross_venue_reconciliation": {
+        "okx_last_vs_kraken_last_pct": 0.578,
+        "okx_mid_vs_kraken_mid_pct": 0.5732,
+        "binance_mark_vs_okx_last_pct": 0.0173,
+        "conclusion": "The OKX and Binance observations are timestamp-stale at the 19:15:07 UTC reference; Kraken has no provider event timestamp in the response. USD and USDT quotes are not normalized. The 0.57%-0.58% apparent spot dispersion cannot be interpreted as executable arbitrage or a market-wide price.",
+        "competing_hypotheses": [
+          "Stale OKX snapshot versus newer Kraken ticker.",
+          "Venue-specific liquidity or basis differences.",
+          "Different USD/USDT conversion basis.",
+          "A publisher or transport cache may have delayed one response."
+        ],
+        "disconfirming_evidence": [
+          "Binance perpetual mark and OKX spot last are close (about 0.017%), although both observations are stale at the reference time.",
+          "Kraken's response has no provider event timestamp, so its relative freshness cannot be proven."
+        ]
+      },
+      "depth_status": {
+        "level2_depth_captured": false,
+        "attempted_endpoints": [
+          "Binance spot depth",
+          "OKX market books",
+          "Kraken public depth"
+        ],
+        "retrieval_result": "not accessible through this web retrieval path",
+        "top_of_book_sizes_are_not_full_depth": true
+      }
     }
   },
   "provenance": {
@@ -193,6 +272,33 @@
         "upstream_provider": "CoinGlass",
         "excerpt_sha256": "e65d3c0901612751a1cc3b0a446570b35ee93ce96e47352fa4d6b70d6d7e1ab0",
         "hash_scope": "normalized surfaced dashboard and methodology excerpt; not raw HTTP response bytes"
+      },
+      {
+        "id": "binance_xrp_perpetual_premium_index",
+        "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+        "publisher": "Binance",
+        "provider_updated_at_utc": "2026-11-08T18:56:48Z",
+        "source_class": "direct_exchange_public_api",
+        "excerpt_sha256": "c796d0f287ec1babdea7cdf85d20bbe42458cc26df1973fd915fbb8ee007217d",
+        "hash_scope": "normalized surfaced JSON; not raw HTTP bytes or headers"
+      },
+      {
+        "id": "okx_xrp_usdt_spot_ticker",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "publisher": "OKX",
+        "provider_updated_at_utc": "2026-11-08T18:48:15.210Z",
+        "source_class": "direct_exchange_public_api",
+        "excerpt_sha256": "f9f5e9da4bb4b8e6acf03c9ee24f2725862510599d373e6d80753389548dc097",
+        "hash_scope": "normalized surfaced JSON; not raw HTTP bytes or headers"
+      },
+      {
+        "id": "kraken_xrp_usd_spot_ticker",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "publisher": "Kraken",
+        "provider_updated_at_utc": null,
+        "source_class": "direct_exchange_public_api",
+        "excerpt_sha256": "cb4443b62265a8a10d176d84172b0e9d4185c580bfc3eaca968afc3688d43bb2",
+        "hash_scope": "normalized surfaced JSON; not raw HTTP bytes or headers"
       }
     ],
     "source_independence_groups": {
@@ -205,7 +311,10 @@
       "No direct exchange API payloads or HTTP headers were captured.",
       "Hashes cover normalized surfaced excerpts, not raw wire bytes.",
       "Provider timestamps differ and the Fexr rendered page is stale relative to its search snippet.",
-      "No external WORM archive or independent timestamp authority was used."
+      "No external WORM archive or independent timestamp authority was used.",
+      "Binance/OKX/Kraken Level-2 depth endpoints were inaccessible through the retrieval path; no L2 book or synchronized trade tape was captured.",
+      "Binance premium-index and OKX ticker timestamps were stale at the later 19:15:07 UTC reference; Kraken ticker omitted provider event time.",
+      "The USD/USDT cross-venue price gap is not normalized for stablecoin basis, fees, latency or executable size."
     ]
   },
   "interpretation": {
@@ -226,8 +335,11 @@
       "Fexr's current search result cannot be inspected in the stale rendered page.",
       "Swiftedge does not disclose its underlying order-book venue universe in the surfaced content.",
       "ETF data are upstream CoinGlass aggregates, not independent issuer-level raw files.",
-      "No synchronized raw payloads, headers or transport receipts were captured."
+      "No synchronized raw payloads, headers or transport receipts were captured.",
+      "Direct Binance and OKX responses were stale at the later capture reference; Kraken omitted provider event time.",
+      "No Level-2 depth or synchronized trades were captured; top-of-book sizes are not executable multi-level liquidity."
     ],
     "forecast_status": "NOT_ISSUED"
-  }
+  },
+  "updated_at_utc": "2026-11-08T19:15:07Z"
 }

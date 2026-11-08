@@ -75,3 +75,41 @@ def test_no_model_admission_or_directional_forecast():
     assert data["model_admission"]["admitted"] is False
     assert data["model_admission"]["forecast_status"] == "NOT_ISSUED"
     assert data["interpretation"]["no_directional_conclusion"] is True
+
+
+def test_direct_exchange_snapshot_keeps_provider_timestamps_and_freshness():
+    data = load()["market_observations"]["direct_exchange_snapshot"]
+    assert data["reference_time_utc"] == "2026-11-08T19:15:07Z"
+    assert data["binance_perpetual"]["age_at_reference_seconds"] == 1099
+    assert data["okx_spot"]["age_at_reference_seconds"] == 1011.79
+    assert data["binance_perpetual"]["stale_at_reference"] is True
+    assert data["okx_spot"]["stale_at_reference"] is True
+
+def test_direct_binance_mark_basis_funding_and_next_funding_are_unit_explicit():
+    data = load()["market_observations"]["direct_exchange_snapshot"]["binance_perpetual"]
+    assert data["mark_price_usdt"] == 1.1591
+    assert data["index_price_usdt"] == 1.15944723
+    assert data["mark_index_basis_bps"] == -2.9948
+    assert data["last_funding_rate_pct_per_8h"] == 0.01
+    assert data["next_funding_time_utc"] == "2026-11-09T00:00:00Z"
+
+def test_okx_and_kraken_top_of_book_sizes_are_not_mislabeled_as_depth():
+    data = load()["market_observations"]["direct_exchange_snapshot"]
+    assert data["okx_spot"]["best_bid_size_xrp"] == 2210.893755
+    assert data["okx_spot"]["best_ask_size_xrp"] == 6742.046465
+    assert data["kraken_spot"]["best_bid_size_xrp"] == 13619
+    assert data["kraken_spot"]["best_ask_size_xrp"] == 10021
+    assert data["depth_status"]["level2_depth_captured"] is False
+    assert data["depth_status"]["top_of_book_sizes_are_not_full_depth"] is True
+
+def test_kraken_missing_provider_timestamp_is_explicit():
+    data = load()["market_observations"]["direct_exchange_snapshot"]["kraken_spot"]
+    assert data["provider_event_time_utc"] is None
+    assert data["retrieval_time_embedded_in_payload"] is False
+
+def test_cross_venue_price_gap_is_not_treated_as_arbitrage():
+    data = load()["market_observations"]["direct_exchange_snapshot"]["cross_venue_reconciliation"]
+    assert data["okx_last_vs_kraken_last_pct"] == 0.578
+    assert data["okx_mid_vs_kraken_mid_pct"] == 0.5732
+    assert "cannot be interpreted as executable arbitrage" in data["conclusion"]
+    assert data["competing_hypotheses"] and data["disconfirming_evidence"]
