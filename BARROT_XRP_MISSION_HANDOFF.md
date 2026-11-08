@@ -1,4 +1,4 @@
-# Current integrated Barrot handoff — Run 67 — 2026-11-08T19:49:01Z
+# Current integrated Barrot handoff — Run 67 — 2026-11-08T20:09:12Z
 
 ## Run 60 — current repository, exact-head verification and institutional-rails correction
 
