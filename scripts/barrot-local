@@ -1,0 +1,28 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT"
+
+export BARROT_INFERENCE_PROVIDER="${BARROT_INFERENCE_PROVIDER:-local_llama}"
+export LOCAL_LLAMA_BASE_URL="${LOCAL_LLAMA_BASE_URL:-http://127.0.0.1:8081/v1}"
+export LOCAL_LLAMA_MODEL="${LOCAL_LLAMA_MODEL:-local}"
+
+python - <<'PY'
+import os
+import sys
+import urllib.error
+import urllib.request
+
+url = os.environ["LOCAL_LLAMA_BASE_URL"].rsplit("/v1", 1)[0] + "/health"
+try:
+    with urllib.request.urlopen(url, timeout=5) as response:
+        if response.status != 200:
+            raise RuntimeError(f"health endpoint returned HTTP {response.status}")
+except Exception as exc:
+    print(f"Local Llama is not reachable at {url}: {exc}", file=sys.stderr)
+    print("Start the existing Termux GPU server with: ~/barrot/start-gpu.sh", file=sys.stderr)
+    raise SystemExit(2)
+PY
+
+exec python scripts/ask_barrot.py "$@"
