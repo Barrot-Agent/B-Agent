@@ -79,7 +79,7 @@ def test_unreconciled_claim_retains_competing_hypotheses() -> None:
     disagreement = artifact["source_independence_and_disagreement"]
     assert "not reconciled" in disagreement["disagreement"]
     assert len(disagreement["competing_hypotheses"]) >= 2
-    assert "No primary breakdown" in disagreement["competing_hypotheses"][1]
+    assert "no calculation or asset breakdown was provided" in disagreement["competing_hypotheses"][1]
 
 
 def test_freeze_event_is_not_admitted_as_a_directional_price_feature() -> None:

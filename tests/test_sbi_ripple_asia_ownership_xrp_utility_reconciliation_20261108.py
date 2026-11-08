@@ -73,7 +73,8 @@ def test_visa_reward_option_does_not_prove_open_market_xrp_purchases() -> None:
     event = next(e for e in artifact["event_timeline"] if e["date"] == "2026-05-01")
     assert event["classification"] == "consumer_product_announcement"
     assert artifact["entity_relationships"]["visa_aplus"]["xrp_purchase_volume_disclosed"] is False
-    assert "no cardholder selection share" in artifact["counterhypotheses"][3]
+    assert "does not prove equivalent open-market XRP purchases" in artifact["counterhypotheses"][3]
+    assert "no cardholder selection share" in artifact["source_independence_and_disagreement"]["consumer_card_caveat"]
 
 
 def test_related_party_announcements_are_not_independent_volume_confirmation() -> None:
