@@ -33,7 +33,7 @@ def test_sbi_specific_class_c_count_is_attributed_to_424b3_not_october_9_8k():
 
 def test_sbi_is_not_over_attributed_and_thresholds_remain_distinct():
     facts = load_artifact()["corrected_facts"]
-    assert "certain investors affiliated with SBI Holdings" in facts["sbi_affiliated_class_a_threshold"]["issuer_named_party"].lower()
+    assert "certain investors affiliated with sbi holdings" in facts["sbi_affiliated_class_a_threshold"]["issuer_named_party"].lower()
     assert "Do not attribute" in facts["attribution_limit"]
     thresholds = facts["distinct_thresholds"]
     assert thresholds["sbi_affiliated_investors"]["denominator"] == "Outstanding Pubco Class A Common Stock"
