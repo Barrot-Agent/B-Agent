@@ -39,6 +39,9 @@ def test_coinbase_and_ripple_letters_are_assigned_to_distinct_sec_dockets():
     assert regulatory["coinbase_letter"]["docket"] == "S7-2026-27"
     assert regulatory["ripple_letter"]["docket"] == "S7-2026-09"
     assert regulatory["coinbase_letter"]["date"] == "2026-10-20"
+    assert regulatory["coinbase_letter"]["signatories"][1].startswith("Scott Baugess")
+    memo_hashes = {source["id"]: source["normalized_excerpt_sha256"] for source in data["source_receipts"] if source["id"] in {"sec_corpfin_andreas_park_memo", "sec_dera_andreas_park_memo"}}
+    assert memo_hashes["sec_corpfin_andreas_park_memo"] != memo_hashes["sec_dera_andreas_park_memo"]
     assert regulatory["ripple_letter"]["date"] == "2026-05-07"
     assert regulatory["proposed_rule"]["status"] == "PROPOSED"
     assert len(regulatory["later_staff_activity"]) == 2

@@ -102,10 +102,11 @@
       "document_date": "2026-11-05",
       "meeting_date": "2026-11-04",
       "retrieved_at_utc": "2026-11-08T01:19:25Z",
-      "normalized_excerpt_sha256": "401a93ac64edb7a79f4b9dc432e952ae9d4c7dcd82ad095a28c231e418f35b2a",
+      "normalized_excerpt_sha256": "96ec70c592e0e46a9c65967169426cdd9f15cb9ddeee59d788d3aa9d14b601c1",
       "raw_response_sha256": null,
       "raw_bytes_captured": false,
-      "model_eligible": false
+      "model_eligible": false,
+      "visual_verification": "PDF page image confirms printed signatory Scott Baugess; OCR whitespace error corrected."
     },
     {
       "id": "sec_dera_andreas_park_memo",
@@ -116,10 +117,11 @@
       "document_date": "2026-11-03",
       "meeting_date": "2026-11-02",
       "retrieved_at_utc": "2026-11-08T01:19:25Z",
-      "normalized_excerpt_sha256": "401a93ac64edb7a79f4b9dc432e952ae9d4c7dcd82ad095a28c231e418f35b2a",
+      "normalized_excerpt_sha256": "fc9797a861e70f333b6e8b966772c1a473de0c79e178d2665b3bb9d6340b97c1",
       "raw_response_sha256": null,
       "raw_bytes_captured": false,
-      "model_eligible": false
+      "model_eligible": false,
+      "visual_verification": "Separate normalized memo excerpt hash; not shared with the Corporation Finance memo."
     },
     {
       "id": "franklin_xrpz_product_page",
@@ -263,7 +265,7 @@
       "url": "https://www.sec.gov/comments/S7-2026-27/s7202627-1103000-3882608.pdf",
       "signatories": [
         "Molly Abraham, General Counsel",
-        "Scott Baug uess, Vice President, Global Regulatory Policy"
+        "Scott Baugess, Vice President, Global Regulatory Policy"
       ],
       "position": "supports much of the covered-investment-contract offering framework; requests explicit treatment that an aftermarket purchase from an unaffiliated holder without assigned issuer-contract rights is not an investment contract/securities transaction; seeks clarity on post-functionality activity",
       "status": "company advocacy, not adopted law"
