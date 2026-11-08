@@ -74,7 +74,7 @@ def test_derivatives_aggregator_disagreement_is_retained_not_averaged():
 def test_etf_holdings_deltas_preserve_partial_coverage_and_proxy_semantics():
     items = {x["source_id"]: x for x in _load()["secondary_observations"]}
     cryptokeyhole = items["cryptokeyhole_etf_partial"]
-    insights = items["xrp_insights_etf"]
+    insights = items["xrp_insights_etf_holdings_delta"]
     assert cryptokeyhole["values"]["reporting_funds"] == 3
     assert cryptokeyhole["values"]["total_daily_funds_expected"] == 4
     assert cryptokeyhole["values"]["missing_fund"] == "Franklin Templeton XRPZ"
