@@ -1,4 +1,4 @@
-# Current integrated Barrot handoff — Run 65 — 2026-11-08T19:28:56Z
+# Current integrated Barrot handoff — Run 66 — 2026-11-08T19:41:00Z
 
 ## Run 60 — current repository, exact-head verification and institutional-rails correction
 
@@ -12,17 +12,33 @@ Historical regression anchor; complete Run 58 record remains preserved below.
 
 - Priority one: XRP intelligence and prediction-engine mastery. Foundation: preserve Barrot V3 for execution, orchestration, safety and verification.
 - Main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` unchanged. Complete main tree: 1,403 entries, 1,298 files, 493 Python files, 87 root test modules, 86 workflows. Collector inventory verified directly against `ENDPOINTS` and `SCHEDULED_ENDPOINTS`: **35 endpoint records, of which 33 are scheduled**; two non-commercial XRPL-node endpoints are excluded.
-- #1640 tree: 1,483 entries, 1,370 files, 552 Python files, 130 root test modules, 87 workflows. #1643 tree: 2,043 entries, 1,937 files, 756 Python files, 350 root test modules, 86 workflows. All recursive trees untruncated.
+- #1640 tree: 1,483 entries, 1,370 files, 552 Python files, 130 root test modules, 87 workflows. #1643 tree: 2,045 entries, 1,939 files, 757 Python files, 351 root test modules, 86 workflows after the C2FO artifact and regression module. All recursive trees untruncated.
 - Open PR inventory: 372 (356 drafts, 16 non-drafts); all four REST pages inspected: 100, 100, 100, 72.
 
 ## Current mission branches
 
-- #1640 V3: current head `3ff35a373c1d0ac5995f3769a2586340d4062fcc`, 715 commits ahead, zero behind, 181 changed paths. Open, non-draft, GitHub reports mergeable. Run 65 exact-head core suite passed (660 tests); full suite reported 1,214 passed and one failed historical handoff assertion because the endpoint-count phrase was absent from the first 180 lines. The dependency audit and fail-closed gate passed; wheel verification was skipped after the suite failure. The Run 65 handoff correction below restores the required phrase without weakening the test; exact-head rerun is pending. Prior Run 64 code/test head `f2afa5225eb27bb4035078cd7b0f49ca7abe4fef` passed 1,215 tests, 8 subtests, 58.98% coverage and installed-wheel verification.
-- #1643 XRP research: exact head `a18c299aa889925f8791f59a9b8f445401bb3d85`, 870 commits ahead, zero behind, 645 changed paths. Open, non-draft, mergeable. Run 65 exact-head full suite passed 2,556 tests and 8 subtests; core suite, six-manifest dependency audit and fail-closed gate passed.
-- Six shared paths: `.github/workflows/dependency-audit.yml`, `BARROT_XRP_MISSION_HANDOFF.md`, `data/xrp_intelligence/sources/kamilah_stevenson_channel.json`, `scripts/pillars_check.py`, `tests/test_kamilah_channel_identity_gate.py`, `tests/test_pillars_check_readonly.py`. Unique: 175 V3-only, 639 research-only. All PR-file pages inspected.
-- Branches diverged. Integrate #1640 first; consolidate #1643 afterward. No new integration PR.
+- #1640 V3: exact code/test head `e1208a12558b6882305059c959f089e26c724a79`, 718 commits ahead, zero behind, 181 changed paths. Open, non-draft, GitHub reports mergeable. Exact-head full repository suite **1,215 passed, 8 subtests passed**; core **660 passed, 8 subtests**; inclusive coverage **58.98%**; installed-wheel verification passed for Barrot V3, the primary XRP mission and canonical assets; six-manifest dependency audit passed with no known vulnerabilities; fail-closed gate passed and kept automatic merging disabled. Evidence: [full CI 42515868897](https://github.com/Barrot-Agent/B-Agent/actions/runs/42515868897), job 128838639422; [dependency audit 42515868896](https://github.com/Barrot-Agent/B-Agent/actions/runs/42515868896), job 128838638952; [fail-closed gate 42515868903](https://github.com/Barrot-Agent/B-Agent/actions/runs/42515868903), job 128838639133. Intermediate `3bd09ac` failed four map-schema assertions because the abbreviated current-run object omitted historical `oos_lift`, endpoint-ID and `external_actions` fields; `e1208a1` restored the full Run 64 schema and passed the complete suite. No test was weakened.
+- #1643 XRP research: exact head `2861eaf2b3b60653bf518f80bacafc002a12638d`, 872 commits ahead, zero behind, 647 changed paths. Open, non-draft, GitHub reports mergeable. Exact-head full repository suite **2,561 passed, 8 subtests passed**; core **498 passed, 8 subtests**; six-manifest dependency audit passed; fail-closed gate passed. Evidence: [full CI 42516041496](https://github.com/Barrot-Agent/B-Agent/actions/runs/42516041496), job 128839158994; [dependency audit 42516041588](https://github.com/Barrot-Agent/B-Agent/actions/runs/42516041588), job 128839202067; [fail-closed gate 42516041572](https://github.com/Barrot-Agent/B-Agent/actions/runs/42516041572), job 128839159050. The new C2FO Instant Pay artifact and five regression tests are included on this exact head.
+- Six shared paths: `.github/workflows/dependency-audit.yml`, `BARROT_XRP_MISSION_HANDOFF.md`, `data/xrp_intelligence/sources/kamilah_stevenson_channel.json`, `scripts/pillars_check.py`, `tests/test_kamilah_channel_identity_gate.py`, `tests/test_pillars_check_readonly.py`. Unique: **175 V3-only, 641 research-only**. All PR-file pages inspected.
+- Branches diverged. Integrate #1640 first; consolidate #1643 afterward. No new integration PR. Both exact-head CI sets are green; merge remains blocked by zero independent approvals and unresolved Pages/branch-protection authorization.
 
-## Exact-head verification — Run 64
+## Exact-head verification — Run 66
+
+### #1640 — Barrot V3 integration
+
+- Exact code/test head `e1208a12558b6882305059c959f089e26c724a79`: **1,215 passed, 8 subtests passed**; inclusive coverage **58.98%** (53% threshold passed).
+- Core suite: **660 passed, 8 subtests**. Installed wheel `b-agent-0.1.0` built, installed and smoke-verified Barrot V3, the primary XRP mission and canonical data assets.
+- Six-manifest dependency audit passed; no known vulnerabilities. Fail-closed merge gate passed and left automatic merging disabled.
+- Evidence: [CI 42515868897](https://github.com/Barrot-Agent/B-Agent/actions/runs/42515868897), full-suite job 128838639422; [dependency audit 42515868896](https://github.com/Barrot-Agent/B-Agent/actions/runs/42515868896), job 128838638952; [gate 42515868903](https://github.com/Barrot-Agent/B-Agent/actions/runs/42515868903), job 128838639133.
+
+### #1643 — XRP research
+
+- Exact head `2861eaf2b3b60653bf518f80bacafc002a12638d`: **2,561 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests**. Six-manifest dependency audit and fail-closed gate passed.
+- Evidence: [CI 42516041496](https://github.com/Barrot-Agent/B-Agent/actions/runs/42516041496), full-suite job 128839158994; [dependency audit 42516041588](https://github.com/Barrot-Agent/B-Agent/actions/runs/42516041588), job 128839202067; [gate 42516041572](https://github.com/Barrot-Agent/B-Agent/actions/runs/42516041572), job 128839159050.
+- The new C2FO Instant Pay/RLUSD research artifact and its five regression tests are included in this exact-head suite. A GitHub cache-save reservation warning did not affect test or workflow success.
+
+## Historical exact-head verification — Run 64
 
 ### #1640 — V3 integration
 
@@ -46,6 +62,15 @@ Historical regression anchor; complete Run 58 record remains preserved below.
 - #1640's `forecast_ledger.py` (blob `8b9cfe521fa02cdbd8cb8042377d41892d7026b6`, 67,160 characters) contains issuance-time snapshot verification and walk-forward integration. The primary mission resource and scheduled ingestion workflow exist on #1640, not main.
 - The installed-wheel verification proves the integration branch packages the primary mission and canonical assets; it does not mean they are already on main.
 
+## Six shared-path reconciliation decisions
+
+1. `.github/workflows/dependency-audit.yml`: identical blob on both branches; retain one copy.
+2. `BARROT_XRP_MISSION_HANDOFF.md`: preserve the V3 branch's durable, append-only handoff as canonical. Merge research-only evidence as dated appendices; do not replace the longer V3 history with the shorter research-branch copy.
+3. `data/xrp_intelligence/sources/kamilah_stevenson_channel.json`: V3 has 10 seed-video candidates; research has 21. Preserve the research branch's 21 candidate references and provenance. They remain candidate/byline references, not 21 verified personal-channel uploads; personal-channel ownership remains unverified.
+4. `scripts/pillars_check.py`: keep the V3 implementation's fail-closed HTTP-status and JSON-object-shape validation. The research version's `check_hf_space` path does not validate those conditions as strictly. Its `check_deploy_sync` and `check_system_prompt_fiction` source reads fetch GitHub `main` content; they do not prove the deployed Hugging Face Space is running that source. Do not retain a misleading deployed-runtime claim. Any useful source scan must be named as a source check and remain read-only.
+5. `tests/test_kamilah_channel_identity_gate.py`: combine V3's historical identity-gate regression with research's expanded candidate registry, podcast/video addenda and source-attribution checks.
+6. `tests/test_pillars_check_readonly.py`: retain V3's HTTP error, malformed JSON/object-shape and fail-closed assertions. Adapt research-only fiction/source tests to the accurate GitHub-main source contract; do not weaken the V3 safety checks.
+
 ## New XRP market evidence
 
 - Direct Binance perpetual premium-index response: mark 1.1591 USDT, index 1.15944723, mark/index basis -2.994 bps, funding +0.0100% per 8h, next funding 2026-11-09 00:00 UTC. Provider event time 18:56:48 UTC; age 1,099 seconds at the 19:15:07 UTC reference, therefore stale.
@@ -63,6 +88,25 @@ Historical regression anchor; complete Run 58 record remains preserved below.
 - Alpha Finance through Nov 6: five funds, reports $0 for 5/5; +$45.9M/30 sessions and about $1.73B cumulative. Its methodology identifies CoinGlass upstream and warns about delayed issuer reporting.
 - The three figures are not averaged. Fund universes, source lineage and definitions differ. XRP Insights/CryptoKeyhole scrape overlapping issuer pages; Alpha uses CoinGlass. Holdings delta is not actual capital or verified cash creations/redemptions.
 - Artifacts on #1643: `20261108T190139Z-xrp-oi-scope-and-weekend-etf-reconciliation.json` (direct exchange snapshot and OI scope) and `20261108T190139Z-xrp-etf-issuer-holdings-vs-provider-flow-disagreement.json`, with regression tests. Hashes cover normalized surfaced excerpts, not raw HTTP bytes. Neither dataset is admitted to the feature store.
+
+
+## C2FO Instant Pay — RLUSD settlement versus XRP demand
+
+- C2FO and Ripple's October 27, 2026 joint announcement says C2FO Instant Pay will bring financing/settlement activity onto XRPL and names **RLUSD as the settlement asset**. Participating capital providers fund the instant payment; their identities and committed/deployed amounts are not disclosed. The announcement offers a waitlist and gives no production launch date, recurring payout count, RLUSD throughput, XRP purchases or XRP bridge-conversion volume.
+- C2FO's page says its existing Early Pay programs have facilitated more than **$525B** in working capital; Ripple's mirror says more than **520 billion**. These are two versions of the same joint announcement, not independent confirmations. Preserve the $5B wording discrepancy. Neither figure is XRPL volume or C2FO Instant Pay volume.
+- The same announcement claims RLUSD market capitalization above $2.5B and more than $1B issued on XRPL as of October 27; these are issuer/partner claims, not independently reconciled figures.
+- XRPL protocol documentation states transaction costs are destroyed in XRP; the documented standard minimum is 10 drops. At that minimum, 100,000 standard transactions burn 1 XRP. Mainnet reserves are documented as 1 XRP base and 0.2 XRP per owner object; reserve balances are held in XRP and can pay fees, but are not equivalent to permanently burned fees. Invoice notional does not set the fee; transaction count/type, load, account architecture and owner objects do.
+- No XRP bridge route is disclosed. More XRPL/RLUSD activity therefore does not establish proportional XRP demand or a price effect. BNY's role as RLUSD reserve custodian and eligible-client XRP/RLUSD custodian, plus its separate exploratory trade-finance work with C2FO, must not be conflated with Instant Pay production activity.
+- Durable artifact: `research/xrp_intelligence/20261108-c2fo-instant-pay-rlusd-xrp-demand-separation.json`; five-test contract: `tests/test_xrp_c2fo_instant_pay_rlusd_xrp_demand_separation_20261108.py`. Six source receipts hash normalized web-rendered excerpts; raw HTTP bytes and headers were not captured. The artifact is event-timeline research only and is not admitted to the price feature store or directional forecasts.
+- Primary sources: [C2FO/Ripple Instant Pay announcement](https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/), [Ripple mirror](https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/), [XRPL transaction costs](https://xrpl.org/docs/concepts/transactions/transaction-cost), [XRPL reserves](https://xrpl.org/docs/concepts/accounts/reserves), [separate BNY/Ripple/C2FO custody and trade-finance announcement](https://c2fo.com/newsroom/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance/).
+
+
+## Secondary derivatives snapshots — Nov 6–8; not comparable
+
+- CryptoTicker's November 6 OKX analysis reports XRP open interest falling from $128.9M to $117.4M (-8.9%), while the long/short account ratio rose to 3.91 and the latest funding observation was +0.0024% per eight hours. [CryptoTicker](https://cryptoticker.io/en/xrp-price-drop-etf-standstill/).
+- TokenPost's November 7 report describes a November 6, 06:01 ET snapshot: $396.1M XRP open interest (-12.69%/24h), 75.3% long accounts and +0.0100% per-eight-hour funding. [TokenPost](https://www.tokenpost.com/news/investing/51350).
+- Blockchain.News' November 8, 07:22 UTC snapshot reports $394.83M Binance XRP open-interest value (+1.94%/24h) and +0.0099% per-eight-hour funding. [Blockchain.News](https://blockchain.news/news/20261108-price-prediction-xrp-buyers-defend-the-lower-band-as).
+- These are different venues, snapshot times and provider universes. They are not a single time series and must not be averaged. No new synchronized direct spot/depth/derivatives receipt was admitted this run; the Kraken recheck lacked provider event time, Binance's public spot endpoint was unavailable (HTTP 451), and the OKX public endpoint did not yield a usable fresh response.
 
 ## Reviews, security and merge decision
 
@@ -86,9 +130,11 @@ Historical regression anchor; complete Run 58 record remains preserved below.
 
 ## Prediction-engine readiness
 
-- On #1640: 35 endpoint records, 33 scheduled, two XRPL-node sources excluded; SHA-256 receipts/hash chain; point-in-time SQLite feature store; four deterministic baselines; chronological embargoed walk-forward; temporal calibration diagnostics; PSI drift diagnostics; feature-snapshot verification; fail-closed forecast ledger.
-- Not verified on main: scheduled ingestion, independent WORM archive, complete raw-source rebuild, synchronized multi-domain history, concept/label drift, trained-model out-of-sample lift, real-data calibration, independent shadow outcomes and trusted evaluator key.
-- Historical evaluator limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes; PSI univariate; calibration not validated on mature independent outcomes.
+- On #1640: 35 endpoint records, 33 scheduled public sources and two excluded non-commercial XRPL-node sources; allowlisted public JSON/CSV raw-byte capture, SHA-256 receipts and per-run hash-chain support; point-in-time SQLite feature store; naive, momentum, mean-reversion and volatility baselines; chronological embargoed walk-forward evaluation; rolling temporal temperature calibration; PSI drift diagnostics; issuance-time feature-snapshot verification; fail-closed forecast ledger.
+- `record_forecast` verifies the readiness certificate and feature/source lineage before live-shadow recording. `resolve_forecast` records one immutable outcome after the horizon, enforces outcome-time tolerance, venue/source lineage and explicit cross-venue normalization, scores Brier/log loss against the baseline, and marks missing outcomes unscorable rather than as misses. This outcome-resolution code is implemented and test-covered; there are no independent shadow outcomes yet.
+- Calibration uses prior out-of-sample outcomes available by cutoff, requires at least 50 samples (maximum history 250), fits on the earlier 80% and validates on the later 20%, retaining the identity transform unless temporal validation improves log loss by at least 0.005.
+- Not verified on main: scheduled ingestion, independent WORM archive, complete raw-source rebuild, synchronized multi-domain history, concept/label drift, trained-model out-of-sample lift, real-data calibration, independent shadow outcomes and trusted evaluator key. FRED/ALFRED remains excluded absent an authorized ML/storage basis; Treasury Fiscal Data is only a candidate source, not integrated.
+- Historical evaluator remains limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes; PSI is univariate; calibration is not validated on mature independent outcomes.
 - Forecast: **NOT_ISSUED**. No paper trade or real-money action.
 
 ## Nine-platform status
@@ -101,10 +147,17 @@ Historical regression anchor; complete Run 58 record remains preserved below.
 
 1. Obtain independent approvals and resolve branch-protection/Pages authorization.
 2. Merge #1640 only after every required condition is satisfied; verify merge commit, files, workflow side effects and main CI.
-3. Consolidate #1643's 639 unique paths onto verified main and reconcile six shared paths.
+3. Consolidate #1643's 641 unique paths onto verified main and reconcile six shared paths using the Run 66 decisions.
 4. Close only exact superseded PRs after successor content is verified on main.
 5. Verify scheduled ingestion on main, establish independent WORM archival/rebuild, and expand synchronized regulatory, macro, stablecoin, custody, collateral, institutional and payment-rail history.
 6. Demonstrate leakage-safe out-of-sample lift, calibrated probabilities, stable drift and independent shadow outcomes before forecast issuance.
+
+## Run 66 action record
+
+- DESIGNED: preserve V3's safer Pillars checks while reconciling the six shared paths; separate RLUSD settlement, XRP fees/reserves, bridge use and actual capital; keep source disagreements and source-cluster independence explicit.
+- EXECUTED: corrected the Run 65 map-schema omissions without weakening tests; added the C2FO Instant Pay/RLUSD artifact and five regression tests to the existing #1643 branch; refreshed the existing #1640 handoff and nine-platform map; re-inspected complete trees, all open-PR pages, both mission PRs, branch ancestry, shared diffs, CI, reviews and security visibility.
+- VERIFIED: #1640 exact head `e1208a1` full suite 1,215/8, core 660/8, coverage 58.98%, wheel, six-manifest audit and fail-closed gate passed. #1643 exact head `2861eaf` full suite 2,561/8, core 498/8, six-manifest audit and fail-closed gate passed.
+- NOT EXECUTED: merge, main write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, external model transfer, force-push or destructive worktree operation.
 
 ## Run 64 action record
 
