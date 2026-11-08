@@ -38,7 +38,7 @@ def test_current_develop_code_recheck_preserves_reported_mechanism():
     data = load_artifact()
     row = data["current_code_recheck"]
     assert row["commit"] == "192b77d456ef0c14faf6095454b9bbc9476f4ce3"
-    assert "recordedVotes_ remains keyed by PublicKey" in row["files"]["amendment_table"]["observations"]
+    assert row["files"]["amendment_table"]["observations"][0] == "recordedVotes_ remains keyed by PublicKey."
     assert "val->getSignerPublic()" in row["files"]["amendment_table"]["observations"][1]
     assert "non-empty TrustChanges.added or TrustChanges.removed" in row["files"]["network_ops"]["observation"]
     assert "non-empty trustChanges.added or trustChanges.removed" in row["files"]["validator_list"]["observation"]
