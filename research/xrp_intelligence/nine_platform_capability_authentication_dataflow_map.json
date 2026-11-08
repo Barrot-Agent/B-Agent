@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T02:43:45Z",
+  "captured_at_utc": "2026-11-08T03:39:50Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "8ad4761bf7cb250586c33b08de7056e7628ca5a4",
-  "observed_research_head": "84c24cec3d3728f56416ecd2a427ad2685aa18a4",
+  "observed_integration_head_before_map_commit": "ad0c3c238e02e6b074342cae79171c94ac76d773",
+  "observed_research_head": "61c21ca3e564c15e9db87a987139e70b51e8ad10",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -74,7 +74,13 @@
         "Run 36: #1643 exact head a2243683433c4dd4f3e2da5bfaa9adb254900b2b passed 2,237 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate.",
         "Run 36: resolved the context-budget regression import path and corrected Barrot rate-limit marker classification on the existing #1640 branch. The latest main Barrot Agent run had failed on Groq 8,099 TPM versus an 8,000 limit; no branch or repository mutation was produced by that main run.",
         "Run 36: all 22 #1640 and 19 #1643 inline review threads are resolved, but both PRs have zero APPROVED reviews and ten COMMENTED reviews each. COMMENTED is not approval.",
-        "Run 36: main remained unchanged at 9100dbacb5f9f1b973b053a65ef1e91e96b64f72. No merge, deployment, secret read/rotation, Space restart, Kaggle submission, paper simulation, funds transfer, real-money action or external model transfer occurred."
+        "Run 36: main remained unchanged at 9100dbacb5f9f1b973b053a65ef1e91e96b64f72. No merge, deployment, secret read/rotation, Space restart, Kaggle submission, paper simulation, funds transfer, real-money action or external model transfer occurred.",
+        "Run 39: refetched main SHA/tree root and all four open-PR pages (372 total: 356 drafts, 16 non-drafts); compared current #1640/#1643 heads, all changed paths, six shared paths, reviews, review threads and exact-head workflow logs.",
+        "Run 39: #1640 code/test head ad0c3c238e02e6b074342cae79171c94ac76d773 passed 1,188 full-suite tests, 660 core tests, 8 subtests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate.",
+        "Run 39: #1643 head 61c21ca3e564c15e9db87a987139e70b51e8ad10 passed 2,252 full-suite tests, 498 core tests, 8 subtests, six-manifest dependency audit and fail-closed gate.",
+        "Run 39: added a fresh Kraken/OKX Level-1 spot receipt with exact surfaced-response SHA-256 digests and a regression test to the existing #1643 branch; model eligibility remains false because raw HTTP wire bytes, synchronized depth/trades and USD/USDT normalization are unavailable.",
+        "Run 39: added two Pillars HTTP-status regression tests to the existing #1640 branch; exact code/test head passed. The current handoff/map refresh is a new documentation head and requires its own exact-head CI.",
+        "Run 39: all 22 #1640 and 19 #1643 inline review threads are resolved, but both PRs have zero APPROVED reviews. Main remains unchanged; no merge, deployment, external model transfer or financial action occurred."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
