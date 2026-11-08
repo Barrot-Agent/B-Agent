@@ -1,10 +1,10 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T06:24:42.324Z",
+  "captured_at_utc": "2026-11-08T06:28:33.600Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "da014501cebc8b8a964485549ac791b26ce88262",
+  "observed_integration_head_before_map_commit": "d2b8085d7b309efc17a1e6747f08143237719520",
   "observed_research_head": "18551055debe4e39814fdf54c7cc297430e656c0",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -108,7 +108,8 @@
         "Run 44 follow-up: preserved and corrected RLUSD/USDC/JPYSC supply, custody, collateral and source-independence claims; archived a fresh spot snapshot but rejected it from model admission due missing/stale timestamps, conflicting Level-1 imbalances and Binance HTTP 451. No forecast or external action.",
         "Run 44 follow-up: added stablecoin/custody, secondary-source correction and timestamped Kraken/OKX/Binance spot artifacts plus two regression test modules on existing #1643.",
         "Run 44 follow-up exact-head verification: #1643 head 18551055 passed 2,311 full-suite tests, 498 core tests, six-manifest audit and fail-closed gate; #1640 head da014501 passed 1,188 full-suite tests, 660 core tests, 58.78% coverage, installed-wheel verification, six-manifest audit and fail-closed gate.",
-        "Run 44 follow-up: no XRP forecast issued; all new stablecoin/spot observations remain model-ineligible. No PR created/closed, no main write, no merge or external action."
+        "Run 44 follow-up: no XRP forecast issued; all new stablecoin/spot observations remain model-ineligible. No PR created/closed, no main write, no merge or external action.",
+        "Run 44 final #1640 exact code/test head d2b8085 passed 1,188 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. Cache-save warning was non-fatal."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -157,7 +158,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T06:24:42.324Z"
+      "last_verified_at_utc": "2026-11-08T06:28:33.600Z"
     },
     "Claude": {
       "intended_role": [
@@ -465,9 +466,9 @@
   ],
   "current_run_observations": {
     "run_id": 44,
-    "captured_at_utc": "2026-11-08T06:24:42.324Z",
+    "captured_at_utc": "2026-11-08T06:28:33.600Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "da014501cebc8b8a964485549ac791b26ce88262",
+    "integration_head_before_map_commit": "d2b8085d7b309efc17a1e6747f08143237719520",
     "research_head": "18551055debe4e39814fdf54c7cc297430e656c0",
     "open_pr_inventory": {
       "total": 372,
@@ -514,7 +515,7 @@
     },
     "branch_ancestry": {
       "integration": {
-        "head": "da014501cebc8b8a964485549ac791b26ce88262",
+        "head": "d2b8085d7b309efc17a1e6747f08143237719520",
         "ahead": 640,
         "behind": 0,
         "changed_paths": 176
@@ -546,7 +547,7 @@
     },
     "ci_evidence": {
       "integration": {
-        "head": "da014501cebc8b8a964485549ac791b26ce88262",
+        "head": "d2b8085d7b309efc17a1e6747f08143237719520",
         "full_suite": "1,188 passed, 8 subtests passed",
         "core_suite": "660 passed, 8 subtests passed",
         "inclusive_coverage_pct": 58.78,
@@ -554,9 +555,9 @@
         "dependency_audit": "passed; six manifests; no known vulnerabilities found in any audited manifest",
         "fail_closed_gate": "passed; automatic merging remains disabled",
         "runs": {
-          "ci": 42453773374,
-          "dependency_audit": 42453773355,
-          "fail_closed": 42453773353
+          "ci": 42454670916,
+          "dependency_audit": 42454671023,
+          "fail_closed": 42454670945
         }
       },
       "research": {
@@ -595,7 +596,7 @@
     },
     "backlog": {
       "active_integration_candidates": {
-        "1640": "Non-draft, mergeable V3 integration candidate. Exact current head passed full suite, core suite, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. Merge remains blocked by zero independent approvals and unresolved Pages/branch-protection authorization.",
+        "1640": "Non-draft, mergeable V3 integration candidate. Exact current code/test head d2b8085 passed 1,188 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. The latest map/handoff commits are documentation-only; merge remains blocked by zero independent approvals and unresolved Pages/branch-protection authorization.",
         "1643": "Non-draft, mergeable XRP research candidate. Exact current head passed 2,311 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate. Preserve 564 research-only paths and carry #1640's stronger CI."
       },
       "path_contained_pending_main_verification": {
@@ -929,7 +930,9 @@
       "#1643 exact head 18551055 passed 2,311 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate.",
       "New stablecoin research separates RLUSD issuer dashboard, Circle secondary USDC supply, JPYSC handling/lending and chain-specific RLUSD supply; none is admitted as XRP capital flow.",
       "New spot snapshot preserves exact Kraken/OKX JSON receipts and Binance HTTP 451; timestamps and opposing Level-1 imbalances fail model admission.",
-      "Append-only correction invalidates an unverified Coindaro URL/claim and substitutes the XRP Insights secondary chain split."
+      "Append-only correction invalidates an unverified Coindaro URL/claim and substitutes the XRP Insights secondary chain split.",
+      "#1640 exact code/test head d2b8085 passed 1,188 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate.",
+      "The #1640 CI cache-save step reported the GitHub cache budget is read-only; the cache save warning did not fail the suite, coverage or installed-wheel verification."
     ],
     "correction_notes": {
       "coindaro_record": "INVALIDATED_UNVERIFIED_URL_AND_CLAIM; do not cite or model.",
@@ -6859,5 +6862,5 @@
       ]
     }
   ],
-  "last_verified_at_utc": "2026-11-08T06:24:42.324Z"
+  "last_verified_at_utc": "2026-11-08T06:28:33.600Z"
 }
