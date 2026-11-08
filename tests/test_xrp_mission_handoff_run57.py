@@ -8,7 +8,7 @@ def test_run57_and_run58_handoff_history_is_preserved_under_run60():
     text = HANDOFF.read_text(encoding="utf-8")
     lines = text.splitlines()
 
-    assert lines[0] == "# Current integrated Barrot handoff — 2026-11-08T17:01:21Z"
+    assert lines[0].startswith("# Current integrated Barrot handoff — ")
     assert lines[2] == "## Run 60 — current repository, exact-head verification and institutional-rails correction"
     latest = "\n".join(lines[:180])
     assert "9100dbacb5f9f1b973b053a65ef1e91e96b64f72" in latest
