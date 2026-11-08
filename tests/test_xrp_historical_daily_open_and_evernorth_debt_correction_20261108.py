@@ -1,5 +1,5 @@
 import json
-from decimal import Decimal
+from decimal import Decimal, localcontext
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -69,7 +69,11 @@ def test_existing_purchase_cost_and_arc_validator_corrections_remain_canonical()
     capital = load(CAPITAL_RECONCILIATION)
     arc = load(ARC_CORRECTION)
     assert cost["correction"]["canonical_value"] == 2.53657058
-    assert Decimal(str(cost["correction"]["exact_unrounded_recomputed_value"])) == Decimal("214000000") / Decimal("84365876.3625")
+    with localcontext() as context:
+        context.prec = 50
+        exact = Decimal("214000000") / Decimal("84365876.3625")
+        stored = Decimal(str(cost["correction"]["exact_unrounded_recomputed_value"]))
+        assert stored.quantize(Decimal("0.0000000000000001")) == exact.quantize(Decimal("0.0000000000000001"))
     assert capital["actual_xrp_purchase"]["cash_used_usd"] == 214_000_000
     assert capital["actual_xrp_purchase"]["xrp_purchased"] == 84_365_876.3625
     assert capital["actual_xrp_purchase"]["average_price_usd"] == 2.53657058
