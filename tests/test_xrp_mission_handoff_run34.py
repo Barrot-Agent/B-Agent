@@ -68,15 +68,13 @@ def test_run34_endpoint_count_and_fail_closed_prediction_status_are_current():
     )
     current = data["current_run_observations"]
     engine = current["prediction_engine"]
-    assert engine["endpoint_registry"] == {
-        "total": 29,
-        "scheduled": 27,
-        "excluded_noncommercial_xrpl_node_sources": 2,
-    }
+    assert engine["endpoints"] == 29
+    assert engine["scheduled_public_sources"] == 27
+    assert engine["excluded_xrpl_node_sources"] == 2
     assert engine["forecast_status"] == "NOT_ISSUED"
-    assert engine["demonstrated_out_of_sample_lift"] is False
-    assert engine["validated_real_data_calibration"] is False
-    assert engine["sufficient_shadow_outcomes"] is False
+    assert engine["oos_lift"] is False
+    assert engine["real_data_calibration"] is False
+    assert engine["shadow_outcomes"] is False
     assert current["merge_state"]["merge_performed"] is False
     assert current["external_actions"]["deployment"] is False
     assert current["external_actions"]["real_money"] is False
