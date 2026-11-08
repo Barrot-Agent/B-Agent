@@ -17,6 +17,11 @@ from pathlib import Path
 from typing import Any, Callable, ClassVar
 
 from .shared_runtime import Capability, DefensiveWatchdog
+from .context_budget import (
+    MAX_ESTIMATED_INPUT_TOKENS,
+    context_budget_marker,
+    estimate_messages_tokens,
+)
 from ..repository.causality import RepositoryCausality
 
 
@@ -1142,6 +1147,12 @@ Rules:
     @staticmethod
     def _extract_json(raw: str) -> dict[str, Any]:
         text = raw.strip()
+        if text.startswith("[BARROT_CONTEXT_BUDGET_EXCEEDED]"):
+            raise ModelFailure(ModelFailureCode.CONTEXT_BUDGET, text)
+        if text.startswith("[BARROT_RATE_LIMITED]"):
+            raise RepairPlanner._normalize_exception(RuntimeError(text))
+        if text.startswith("[BARROT_PROVIDER_UNAVAILABLE]"):
+            raise ModelFailure(ModelFailureCode.UNAVAILABLE, text)
         if text.startswith("```"):
             lines = text.splitlines()
             if lines and lines[0].startswith("```"):
@@ -1195,6 +1206,17 @@ Rules:
 
 
     def generate(self, prompt: str) -> RepairDirective:
+        estimated_input_tokens = estimate_messages_tokens(
+            [
+                {"role": "system", "content": self.SYSTEM},
+                {"role": "user", "content": prompt},
+            ]
+        )
+        if estimated_input_tokens > MAX_ESTIMATED_INPUT_TOKENS:
+            raise ModelFailure(
+                ModelFailureCode.CONTEXT_BUDGET,
+                context_budget_marker(estimated_input_tokens),
+            )
         last_failure: ModelFailure | None = None
         for attempt in range(1, self.max_attempts + 1):
             try:
@@ -1840,6 +1862,11 @@ Inspect the repository for this task and return only the evidence report.
             call_kwargs["max_output_tokens"] = 384
         try:
             report = str(think(message, **call_kwargs)).strip()
+            if report.startswith("[BARROT_RATE_LIMITED]"):
+                failure = RepairPlanner._normalize_exception(RuntimeError(report))
+                return f"READ_ONLY_AUDIT_RATE_LIMITED:{failure.code.value}:{report}"
+            if report.startswith("[BARROT_CONTEXT_BUDGET_EXCEEDED]"):
+                return f"READ_ONLY_AUDIT_CONTEXT_BUDGET_SKIPPED:{report}"
             if len(report) > 2_500:
                 marker = "\n...[TRUNCATED read-only audit report]"
                 report = report[: 2_500 - len(marker)] + marker
