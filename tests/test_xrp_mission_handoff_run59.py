@@ -58,7 +58,8 @@ def test_run59_merge_gate_remains_closed_without_approvals_or_pages_authority():
 
 def test_run59_handoff_keeps_the_historical_run58_header_and_appends_run59():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
-    assert handoff.startswith("# Current integrated Barrot handoff — 2026-11-08T16:03:05Z")
+    assert handoff.startswith("# Current integrated Barrot handoff — ")
+    assert "## Run 60 — current repository, exact-head verification and institutional-rails correction" in handoff[:3000]
     assert "## Run 58 — current repository, endpoint inventory correction, exact-head verification and merge gate" in handoff[:3000]
     assert "## Run 59 —" in handoff
     assert "20261108T162835Z-xrp-derivatives-oi-universe-late-session-reconciliation.json" in handoff
