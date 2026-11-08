@@ -98,7 +98,8 @@ def test_run34_nine_platform_map_remains_truthful_and_least_privilege():
 def test_run56_handoff_and_map_record_exact_pre_handoff_heads_and_ci():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
     assert handoff.startswith("# Current integrated Barrot handoff — ")
-    assert "## Run 56 — current repository and exact-head verification" in handoff[:3_000]
+    assert "## Run 57 — current repository, Bybit/Kraken spot receipt, and integration status" in handoff[:3_000]
+    assert "## Run 56 — current repository and exact-head verification" in handoff
     assert "5ec7c8036775e8b7c8e82741b6455af53c955cc9" in handoff
     assert "58c65e4277d7b95193452538ef063462aa95af8f" in handoff
     assert "1,198 passed, 8 subtests passed" in handoff
