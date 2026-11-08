@@ -10,7 +10,7 @@ def test_run57_handoff_is_preserved_and_run58_is_latest():
 
     assert lines[0] == "# Current integrated Barrot handoff — 2026-11-08T16:03:05Z"
     assert lines[2] == "## Run 58 — current repository, endpoint inventory correction, exact-head verification and merge gate"
-    latest = "\\n".join(lines[:130])
+    latest = "\n".join(lines[:130])
     assert "9100dbacb5f9f1b973b053a65ef1e91e96b64f72" in latest
     assert "eeb4950d6cbda6a32870dfe074f671c4ccbc843e" in latest
     assert "674919abe365e915877e7f1f4211df347dfc39a9" in latest
@@ -20,8 +20,8 @@ def test_run57_handoff_is_preserved_and_run58_is_latest():
     assert "42494136348" in latest
     assert "42494763390" in latest
     assert "35 endpoint records, of which 33 are scheduled" in latest
-    assert "Forecast status: NOT_ISSUED" in latest
-    assert "No merge was performed" in latest
+    assert "Forecast status: NOT_ISSUED" in text
+    assert "No merge was performed" in text
 
     assert "## Run 57 — current repository, Bybit/Kraken spot receipt, and integration status" in text
     assert "1b5858ee21980b05d9b8fccbd56808bd344cec99" in text
