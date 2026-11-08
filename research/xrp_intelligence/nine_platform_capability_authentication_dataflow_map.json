@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T04:04:59Z",
+  "captured_at_utc": "2026-11-08T04:22:21Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-  "observed_integration_head_before_map_commit": "905eaad9c0da2212048cf87b4d631461c9873ffb",
-  "observed_research_head": "4ddf16fe68ea3586bb52617bc2c26fc243f02baa",
+  "observed_integration_head_before_map_commit": "2962b497226983714a8affc81b8368bf17b9d72e",
+  "observed_research_head": "fac7b630408e25607798b3dd30786b92cf2b7672",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -89,7 +89,11 @@
         "Run 40: exact #1640 code/test head 905eaad passed 1,188 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate. The handoff/map refresh is a new documentation head and requires its own exact-head CI.",
         "Run 40: added the BNY/SBI/Kamilah/spot reconciliation artifact and regression test to the existing #1643 research branch. Research head advanced from 61c21ca to 4ddf16f; its CI and dependency audit were in progress at capture, while the fail-closed gate passed.",
         "Run 40: verified two additional Glasp-indexed Kamilah Stevenson video attributions as candidates only; canonical personal YouTube channel ownership remains unverified.",
-        "Run 40: no main write, secret read, external model transfer, deployment, merge, paper trade or real-money action occurred."
+        "Run 40: no main write, secret read, external model transfer, deployment, merge, paper trade or real-money action occurred.",
+        "Run 41: #1640 exact head 2962b497226983714a8affc81b8368bf17b9d72e passed 1,188 full-suite tests, 660 core tests, 58.78% inclusive coverage, installed-wheel verification, six-manifest dependency audit and fail-closed gate.",
+        "Run 41: #1643 exact head fac7b630408e25607798b3dd30786b92cf2b7672 passed 2,270 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate; all new BNY/SBI/spot, Kraken/OKX and Kamilah inventory tests passed.",
+        "Run 41: verified YouTube channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson; person-to-channel match remains strongly corroborated, not conclusive. Inventory records 10 channel-associated candidates and three external appearances; direct watch-page metadata remains unverified.",
+        "Run 41: no main write, secret read, external model transfer, deployment, merge, paper trade or real-money action occurred."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -130,14 +134,15 @@
           "Run 34 market follow-up: added Fuelmaps composite depth, CoinGlass/CMC/Swiftedge provider disagreement and three competing hypotheses to existing #1643 branch; exact #1643 full-suite command passed 2,222 tests with 8 subtests, six-manifest audit and fail-closed gate passed.",
           "Run 36: current-session connector wrote only to the existing integration branch handoff and capability map; no main-branch write or external data transfer occurred.",
           "Run 36: complete main and mission trees, PR inventory, exact-head workflow logs, reviews and dependency/security results were inspected; no secret values were read.",
-          "Run 40: current-session connector read the complete main/integration/research trees, all four open-PR pages, branch ancestry, shared paths, PR reviews/threads, exact-head CI job logs, dependency audits and fail-closed gates; wrote research evidence only to existing #1643 and the durable handoff/map only to existing #1640."
+          "Run 40: current-session connector read the complete main/integration/research trees, all four open-PR pages, branch ancestry, shared paths, PR reviews/threads, exact-head CI job logs, dependency audits and fail-closed gates; wrote research evidence only to existing #1643 and the durable handoff/map only to existing #1640.",
+          "Run 41: inspected exact-head CI/security evidence on both existing mission PRs, appended research artifacts/tests to #1643 and refreshed handoff/map on #1640; no new branch or PR was created."
         ]
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T04:04:59Z"
+      "last_verified_at_utc": "2026-11-08T04:22:21Z"
     },
     "Claude": {
       "intended_role": [
@@ -336,7 +341,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-08T04:04:59Z",
+    "last_reviewed_at_utc": "2026-11-08T04:22:21Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -348,7 +353,7 @@
       "xrp_live_market_snapshot": "Run 36 handoff raw Kraken/OKX response text and SHA-256 receipts; research-only, not feature-store eligible",
       "treasury_macro_reconciliation": "research/xrp_intelligence/20261108T021527Z-tga-actual-versus-projection-reconciliation.json"
     },
-    "last_run_summary": "Run 40 verified only the current ChatGPT-to-GitHub connector. No Claude/Grok/Gemini/Copilot/Codex/Hugging Face/Kaggle/Databricks persistent authentication or cross-platform data exchange was executed."
+    "last_run_summary": "Run 41: current ChatGPT-to-GitHub connector verified; no persistent external platform authentication or cross-platform exchange was executed."
   },
   "least_privilege_and_safety": {
     "secret_values_read": false,
@@ -363,7 +368,6 @@
       "main_branch_protected": true,
       "branch_protection_detail_accessible": false,
       "branch_protection_detail_http_status": 403,
-      "visible_repository_rulesets_count": 1,
       "visible_repository_rulesets": [
         {
           "id": 10863829,
@@ -375,7 +379,7 @@
       "github_pages_enabled": true,
       "github_pages_configuration_accessible": false,
       "prior_pages_deployment_run": 41799855489,
-      "prior_pages_run_event": "dynamic; build and deploy jobs succeeded; exact trigger/configuration inaccessible",
+      "prior_pages_run_event": "dynamic; build and deploy succeeded; exact configuration inaccessible",
       "pages_deployment_authorized": false,
       "main_branch_write_performed": false,
       "mission_branch_writes_performed": true,
@@ -384,10 +388,10 @@
       "deployment_or_financial_action_performed": false,
       "main_writer_workflows": {
         "barrot_agent": "active on main with contents/pull-requests/issues write; Groq secret loaded; issue-label/dispatch trigger",
-        "ask_barrot": "active on main with contents/issues write; can create issue and commit/push memory to main",
+        "ask_barrot": "active on main with contents/issues write; Groq calls; can create issues and commit/push memory",
         "scheduler_tick": "disabled on main",
         "merge_queue": "disabled on main",
-        "integration_branch_replacements": "barrot-agent and ask-barrot are quarantined with empty permissions and false job conditions on #1640; not active on main"
+        "integration_branch_replacements": "barrot-agent and ask-barrot quarantined with empty permissions and false job conditions on #1640; not active on main"
       },
       "xrp_ingestion_workflow_on_main": false,
       "primary_mission_registry_on_main": false
@@ -402,12 +406,11 @@
     "Verify scheduled ingestion on main, establish independent durable raw-source archival and raw rebuild, then accumulate synchronized multi-domain history and demonstrate measured out-of-sample performance before forecasting."
   ],
   "current_run_observations": {
-    "run_id": 40,
-    "captured_at_utc": "2026-11-08T04:04:59Z",
+    "run_id": 41,
+    "captured_at_utc": "2026-11-08T04:22:21Z",
     "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-    "integration_head_before_map_commit": "905eaad9c0da2212048cf87b4d631461c9873ffb",
-    "research_head_before_spot_artifact": "61c21ca3e564c15e9db87a987139e70b51e8ad10",
-    "research_head_after_spot_artifact": "4ddf16fe68ea3586bb52617bc2c26fc243f02baa",
+    "integration_head_before_map_commit": "2962b497226983714a8affc81b8368bf17b9d72e",
+    "research_head": "fac7b630408e25607798b3dd30786b92cf2b7672",
     "open_pr_inventory": {
       "total": 372,
       "drafts": 356,
@@ -418,15 +421,8 @@
         100,
         72
       ],
-      "base_targets": {
-        "main": 364,
-        "security/mmi-claim-bound-source-provenance-20261103-run11": 1,
-        "verify/xrp-ledger-archive-20261101T070712Z": 1,
-        "research/binance-xrp-hack-graph-20261101T0108Z": 2,
-        "research/xrp-ledger-shard-migration-20261029T2210Z": 2,
-        "research/xrp-ledger-index-pointer-migration-20261028T1959Z": 1,
-        "research/xrp-ledger-fresh-main-20261028-1217z": 1
-      }
+      "main_targeted": 364,
+      "other_base_targeted": 8
     },
     "repository_tree": {
       "main": {
@@ -434,148 +430,105 @@
         "files": 1298,
         "python_files": 493,
         "test_modules": 89,
-        "active_workflow_yaml": 78,
-        "disabled_workflow_files": 8,
-        "truncated": false
+        "workflow_yaml": 86
       },
       "integration": {
         "entries": 1478,
         "files": 1365,
-        "directories": 113,
-        "changed_paths": 176,
-        "truncated": false
+        "changed_paths": 176
       },
       "research": {
         "entries": 1951,
         "files": 1845,
-        "directories": 106,
-        "changed_paths": 553,
-        "truncated": false
+        "changed_paths": 557
       }
     },
     "branch_ancestry": {
       "integration": {
-        "head": "905eaad9c0da2212048cf87b4d631461c9873ffb",
-        "ahead": 634,
+        "ahead": 635,
         "behind": 0,
         "changed_paths": 176
       },
       "research": {
-        "head": "4ddf16fe68ea3586bb52617bc2c26fc243f02baa",
-        "ahead": 760,
+        "ahead": 764,
         "behind": 0,
-        "changed_paths": 553
+        "changed_paths": 557
       },
-      "shared_changed_paths": [
-        {
-          "path": ".github/workflows/dependency-audit.yml",
-          "status": "identical"
-        },
-        {
-          "path": "BARROT_XRP_MISSION_HANDOFF.md",
-          "status": "different_content"
-        },
-        {
-          "path": "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
-          "status": "different_content",
-          "integration_candidate_references": 10,
-          "research_candidate_references": 21,
-          "canonical_channel_verified": false
-        },
-        {
-          "path": "scripts/pillars_check.py",
-          "status": "different_implementation"
-        },
-        {
-          "path": "tests/test_kamilah_channel_identity_gate.py",
-          "status": "different_tests",
-          "reconcile": "combine both assertion sets"
-        },
-        {
-          "path": "tests/test_pillars_check_readonly.py",
-          "status": "different_tests",
-          "reconcile": "preserve 404/500 fail-closed and 200-response assertions"
-        }
+      "shared_paths": [
+        ".github/workflows/dependency-audit.yml",
+        "BARROT_XRP_MISSION_HANDOFF.md",
+        "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+        "scripts/pillars_check.py",
+        "tests/test_kamilah_channel_identity_gate.py",
+        "tests/test_pillars_check_readonly.py"
       ],
-      "integration_only_paths": 170,
-      "research_only_paths": 547,
-      "status": "diverged; both mission branches are based on current main with zero behind",
-      "task_1658_branch": {
+      "integration_unique": 170,
+      "research_unique": 551,
+      "task_1658": {
         "branch": "barrot/task-1658-codespaces-prebuild",
         "ahead": 1,
         "behind": 0,
         "changed_paths": 13,
-        "shared_with_integration": [
-          ".github/workflows/ci.yml",
-          "barrot_agent/orchestration/repository_repair.py",
-          "tests/test_repository_repair.py"
-        ],
-        "unique_paths": 10,
-        "disposition": "preserve branch; #1640 has stronger token-aware context budgeting on the three shared paths; port unique Codespaces files only after #1640 main verification"
+        "shared_with_1640": 3,
+        "unique_paths": 10
       }
     },
     "ci_evidence": {
-      "integration": {
-        "head": "905eaad9c0da2212048cf87b4d631461c9873ffb",
-        "full_suite": "1,188 passed, 8 subtests passed",
-        "core_suite": "660 passed, 8 subtests passed",
-        "inclusive_coverage_pct": 58.78,
-        "installed_wheel": "passed; packaged Barrot V3, priority-one XRP mission and canonical data assets load",
-        "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
-        "fail_closed_gate": "passed; automatic merging disabled",
-        "runs": {
-          "ci": 42444279625,
-          "dependency_audit": 42444279576,
-          "fail_closed": 42444279632
-        }
-      },
-      "research_previous_verified_head": {
-        "head": "61c21ca3e564c15e9db87a987139e70b51e8ad10",
-        "full_suite": "2,252 passed, 8 subtests passed",
-        "core_suite": "498 passed, 8 subtests passed",
+      "pr_1640": {
+        "head": "2962b497226983714a8affc81b8368bf17b9d72e",
+        "full_suite": "1,188 passed; 8 subtests",
+        "core": "660 passed; 8 subtests",
+        "coverage_pct": 58.78,
+        "installed_wheel": "passed",
         "dependency_audit": "passed; six manifests",
-        "fail_closed_gate": "passed",
+        "fail_closed_gate": "passed; auto-merge disabled",
         "runs": {
-          "ci": 42443708537,
-          "dependency_audit": 42443708721,
-          "fail_closed": 42443708683
+          "ci": 42445593323,
+          "audit": 42445593294,
+          "gate": 42445593307
         }
       },
-      "research_current_head": {
-        "head": "4ddf16fe68ea3586bb52617bc2c26fc243f02baa",
-        "full_suite": "IN_PROGRESS_AT_CAPTURE",
-        "dependency_audit": "IN_PROGRESS_AT_CAPTURE",
-        "fail_closed_gate": "passed; automatic merging disabled",
+      "pr_1643": {
+        "head": "fac7b630408e25607798b3dd30786b92cf2b7672",
+        "full_suite": "2,270 passed; 8 subtests",
+        "core": "498 passed; 8 subtests",
+        "dependency_audit": "passed; six manifests; no known vulnerabilities",
+        "fail_closed_gate": "passed; auto-merge disabled",
+        "new_test_groups": {
+          "bny_sbi_spot": 7,
+          "kraken_okx_freshness": 4,
+          "kamilah_identity_video": 7
+        },
         "runs": {
-          "ci": 42445324811,
-          "dependency_audit": 42445324904,
-          "fail_closed": 42445324842
-        }
-      },
-      "handoff_map_refresh": "new documentation-only child of the verified #1640 code/test head; exact-head CI required"
+          "ci": 42446351632,
+          "audit": 42446351634,
+          "gate": 42446351663
+        },
+        "action_versions": "checkout@v4/setup-python@v5; Node 20 deprecation warnings; pip cache save read-only"
+      }
     },
     "reviews": {
       "pr_1640": {
-        "threads_resolved": "22/22",
-        "commented_reviews": 62,
-        "approving_reviews": 0
+        "resolved": "22/22",
+        "commented": 62,
+        "approved": 0
       },
       "pr_1643": {
-        "threads_resolved": "19/19",
-        "commented_reviews": 10,
-        "approving_reviews": 0
+        "resolved": "19/19",
+        "commented": 10,
+        "approved": 0
       },
       "pr_1653": {
-        "threads_unresolved": 8
+        "unresolved": 8
       },
-      "independent_approving_reviews": 0
+      "independent_approvals": 0
     },
     "backlog": {
-      "active_integration_prs": [
-        "#1640 Barrot V3 foundation",
-        "#1643 XRP intelligence and research"
+      "active": [
+        "#1640 V3 integration",
+        "#1643 XRP research"
       ],
-      "superseded_or_path_contained_pending_main_verification": [
+      "path_contained_pending_main_verification": [
         "#1642",
         "#1644",
         "#1645",
@@ -584,194 +537,151 @@
         "#1648",
         "#1649",
         "#1650",
-        "#1320",
         "#1317",
         "#1318",
+        "#1320",
         "#1254",
         "#1255"
       ],
       "blocked": [
-        "#1640 independent approval and Pages/branch-protection authorization",
-        "#1643 newest exact-head CI/audit pending",
-        "#1653 eight unresolved review threads; preserve six unique paths"
+        "#1653 eight unresolved review threads"
       ],
-      "unique_unreviewed_preserve": [
-        "#1269 eight mesh/rendering paths",
-        "#1655 five unique bundle/structural catalog paths",
-        "#1641 three experimentation paths",
-        "#1659 four unique local-Llama/Termux paths",
-        "#1477 XRP research",
-        "#1597 XRP research",
-        "#1591 XRP research"
+      "unique_preserve": [
+        "#1269 eight paths",
+        "#1655 five paths",
+        "#1641 three paths",
+        "#1659 four paths",
+        "#1477",
+        "#1597",
+        "#1591"
       ],
-      "task_1658_branch": "one-commit branch, 13 paths; preserve 10 unique Codespaces paths; reconcile 3 overlaps with #1640 after integration",
-      "remaining_drafts": "356 drafts remain individually untriaged; preserve and do not bulk-close."
+      "task_1658": "preserve 10 unique Codespaces paths; three overlaps are superseded by stronger #1640 context-budget code",
+      "remaining_drafts": 356
     },
-    "research_artifacts_added": [
-      "research/xrp_intelligence/20261108T035906Z-bny-sbi-kamilah-and-spot-reconciliation.json",
-      "tests/test_xrp_bny_sbi_kamilah_spot_reconciliation_20261108.py"
+    "research_artifacts": [
+      "20261108T035906Z-bny-sbi-kamilah-and-spot-reconciliation.json",
+      "20261108T040927Z-xrp-kraken-okx-stale-crossvenue-refresh.json",
+      "20261108T041850Z-kamilah-channel-identity-and-public-video-inventory.json"
     ],
-    "verified_findings": {
-      "bny_ripple": "BNY first-party release confirms current XRP and RLUSD custody support for eligible institutional clients. Direct RLUSD mint/redeem, broader XRPL tokenized-asset support and C2FO trade finance remain future/exploratory; no customer balances or XRP purchases disclosed.",
-      "sbi_startale_blackrock": "October 27 MOU explores tokenized MMF/JPYSC connectivity; does not name XRP or production XRP settlement. SBI/Startale JPYSC/OUSD interoperability is a separate exploratory initiative.",
-      "sbi_open_standard": "SBI/Startale Open Standard participation includes Coinbase among 140+ reported participants; shared membership is not a bilateral Coinbase-SBI XRP agreement.",
-      "regulation": "SEC S7-2026-27 remains Proposed on the SEC page; not an effective final rule.",
-      "exact_phrases": "No new primary-source match for ASK Coin XRP, issuer-defined actual capital or an entity named SBIC, ChatGPT SBIC. Preserve previous entity distinctions.",
-      "kamilah": "Two new Glasp-indexed public video attributions: rv0BAV0vLgo (2026-03-19) and QslbjGQD0MU (2025-12-14). Both are candidate publisher/byline attributions only; personal channel uploads and canonical channel ownership remain unverified.",
-      "direct_spot": "03:59:06Z surfaced Kraken XRP/USD last 1.15971, bid/ask 1.15976/1.15979, 14.477M XRP 24h volume, no provider event time; OKX XRP-USDT last 1.1583, bid/ask 1.1583/1.1584, 24.573M XRP 24h volume, provider timestamp 03:37:17.569Z and 1,308.431s old. Level-1 bid shares conflict 26.65% vs 80.21%. USD/USDT unnormalized; no multi-level depth, tape or flows; model-ineligible.",
-      "source_hashes": "Kraken surfaced JSON SHA-256 f05b27b7f5773e18819fc238c2bf3a068e8c4e2a280098725e5c8f9bb3c2a223; OKX surfaced JSON SHA-256 2862821a6e06dc59381e62c512a977bc84ec3592e36a4f7d5fe172a45748b0fd. These are not raw HTTP wire-byte hashes."
+    "market_snapshot": {
+      "captured_at_utc": "2026-11-08T04:09:27Z",
+      "kraken": {
+        "last": 1.15971,
+        "bid": 1.15976,
+        "ask": 1.15979,
+        "bid_share_pct": 26.65,
+        "volume_24h_xrp": 14476739.06092584,
+        "event_time": "ABSENT",
+        "response_unchanged_from_prior": true
+      },
+      "okx": {
+        "last": 1.1624,
+        "bid": 1.1623,
+        "ask": 1.1624,
+        "bid_share_pct": 84.87,
+        "volume_24h_xrp": 23267152.471484,
+        "event_time": "2026-11-08T04:09:01.568Z",
+        "age_seconds": 25.432
+      },
+      "raw_gap_pct": -0.2314,
+      "comparable": false,
+      "model_eligible": false
+    },
+    "identity_video_inventory": {
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "handle": "@drkamilahstevenson",
+      "channel_identity": "verified by first-party YouTube search result",
+      "person_match": "strongly corroborated, not conclusive",
+      "channel_associated_candidates": 10,
+      "external_appearances": 3,
+      "total_entries": 13,
+      "complete": false,
+      "direct_watch_metadata_verified": false
     },
     "prediction_engine": {
-      "scheduled_ingestion": "DESIGNED on #1640 branch only; absent from main and no scheduled main run verified",
-      "endpoint_registry": {
-        "total": 29,
-        "scheduled": 27,
-        "excluded_noncommercial_xrpl_node_sources": 2
-      },
-      "scheduled_workflow": {
-        "path": ".github/workflows/xrp-public-ingestion.yml",
-        "hourly_cron": "3 * * * *",
-        "daily_cron": "15 0 * * *",
-        "runs_only_on_main": true,
-        "permissions": {
-          "actions": "read",
-          "contents": "read"
-        }
-      },
-      "raw_receipt_retention_days": 90,
-      "per_run_feature_checkpoint_retention_days": 7,
-      "daily_archive_retention_days": 90,
-      "sha256_raw_source_receipts": true,
-      "point_in_time_sqlite_feature_store": true,
-      "historical_evaluator": "Binance XRP/USDT and Coinbase XRP/USD hourly closes only",
-      "deterministic_baselines": [
-        "naive_class_prior",
-        "momentum_sign",
-        "mean_reversion_sign",
-        "volatility_normal"
-      ],
+      "endpoints": 29,
+      "scheduled_public_sources": 27,
+      "excluded_xrpl_node_sources": 2,
+      "scheduled_ingestion": "branch only; absent main",
+      "point_in_time_store": true,
+      "baselines": 4,
       "chronological_walk_forward": true,
-      "temporal_calibration_event_time_guard": true,
-      "psi_drift_diagnostics": "univariate feature-distribution PSI; not concept/label drift",
-      "fail_closed_forecast_ledger": true,
-      "readiness_requirements": {
-        "minimum_oos_samples": 100,
-        "minimum_shadow_samples": 100,
-        "minimum_independent_source_groups": 2,
-        "minimum_horizon_span_multiple": 10,
-        "maximum_weighted_calibration_error": 0.05,
-        "stable_drift": true,
-        "independent_ed25519_attestation": true
-      },
-      "independent_external_worm": false,
-      "raw_artifact_rebuild_implemented": false,
-      "synchronized_multi_domain_historical_dataset": false,
-      "demonstrated_out_of_sample_lift": false,
-      "validated_real_data_calibration": false,
-      "sufficient_shadow_outcomes": false,
-      "forecast_status": "NOT_ISSUED",
-      "new_observations_admitted_to_model": false
+      "temporal_calibration": true,
+      "univariate_psi": true,
+      "external_worm": false,
+      "raw_rebuild": false,
+      "synchronized_history": false,
+      "oos_lift": false,
+      "real_data_calibration": false,
+      "shadow_outcomes": false,
+      "forecast_status": "NOT_ISSUED"
     },
     "nine_platform_status": {
       "ChatGPT": "current-session GitHub connector verified",
-      "Claude": "no persistent authenticated data flow",
-      "Grok": "no persistent authenticated data flow; Groq is a separate provider",
-      "Gemini": "no persistent authenticated data flow",
-      "Copilot": "one-off COMMENTED review activity only; not approval",
-      "Codex": "no persistent authenticated data flow",
-      "HuggingFace": "prior Space BUILD_ERROR; no verified persistent data flow",
-      "Kaggle": "not authenticated/tested",
-      "Databricks": "prior read-only HTTP 403; no verified access",
-      "external_model_data_transfer": false,
-      "structured_cross_platform_exchange": false
+      "Claude": "no persistent auth",
+      "Grok": "no persistent auth",
+      "Gemini": "no persistent auth",
+      "Copilot": "COMMENTED only, not approval",
+      "Codex": "no persistent auth",
+      "HuggingFace": "prior BUILD_ERROR",
+      "Kaggle": "not authenticated",
+      "Databricks": "prior HTTP 403",
+      "cross_platform_exchange": false
     },
     "main_health": {
-      "latest_cross_analysis": {
-        "run": 42444464398,
-        "status": "success",
-        "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
-      },
-      "barrot_agent_issue_runs": [
-        {
-          "run": 42388663091,
-          "status": "failure",
-          "reason": "Groq HTTP 413/TPM: 8,099 requested against 8,000 limit after retries; no repair completed"
-        },
-        {
-          "run": 42388645777,
-          "status": "failure",
-          "reason": "Groq HTTP 429/TPM; repair authoring stopped safely"
-        }
+      "latest_cross_analysis_run": 42444464398,
+      "latest_cross_analysis_status": "success",
+      "barrot_agent_failures": [
+        42438663091,
+        42388645777
       ],
       "related_issues": [
-        "#1657 SerpApi research discovery",
-        "#1658 Codespaces/runtime reliability"
+        "#1657",
+        "#1658"
       ],
-      "task_1658_branch": {
-        "branch": "barrot/task-1658-codespaces-prebuild",
-        "ahead": 1,
-        "behind": 0,
-        "changed_paths": 13,
-        "open_pr": false
-      },
-      "latest_pages_deployment": {
-        "run": 41799855489,
-        "status": "success",
-        "event": "dynamic",
-        "build_job": "success",
-        "deploy_job": "success",
-        "configuration_accessible": false
-      },
-      "xrp_ingestion_workflow_on_main": false,
-      "primary_mission_registry_on_main": false,
-      "active_privileged_writers": {
-        "barrot_agent": true,
-        "ask_barrot": true
-      }
+      "pages_deployment_run": 41799855489,
+      "pages_configuration_accessible": false,
+      "main_xrp_ingestion_workflow": false,
+      "main_priority_registry": false,
+      "active_privileged_writers": [
+        "barrot-agent.yml",
+        "ask-barrot.yml"
+      ]
     },
     "merge_state": {
-      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
-      "main_branch_protected": true,
+      "main_protected": true,
       "branch_protection_detail_http_403": true,
-      "visible_ruleset": {
-        "id": 10863829,
-        "name": "Fall Back",
-        "enforcement": "disabled"
-      },
+      "visible_ruleset_id": 10863829,
+      "visible_ruleset_disabled": true,
       "codeowners": "* @Barrot-Agent",
       "pr_1640_approvals": 0,
       "pr_1643_approvals": 0,
       "pages_enabled": true,
-      "pages_configuration_accessible": false,
-      "prior_pages_deployment_run": 41799855489,
-      "pages_run_event": "dynamic",
+      "pages_config_accessible": false,
       "pages_deployment_authorized": false,
-      "branch_protection_requirements_verified": false,
-      "merge_performed": false,
-      "independent_approvals": 0
+      "merge_performed": false
     },
     "external_actions": {
       "main_write": false,
       "merge": false,
       "deployment": false,
-      "secret_read_or_rotation": false,
+      "secret_read": false,
+      "secret_rotation": false,
       "space_restart": false,
       "kaggle_submission": false,
       "paper_trade": false,
       "real_money": false,
-      "external_model_transfer": false,
+      "external_transfer": false,
       "force_push": false,
       "destructive_worktree_action": false
     },
     "next_actions": [
-      "Verify exact-head full-suite and six-manifest dependency-audit results on #1643 head 4ddf16fe68ea3586bb52617bc2c26fc243f02baa.",
-      "Verify exact-head CI on the documentation/map refresh child of #1640 head 905eaad9c0da2212048cf87b4d631461c9873ffb.",
-      "Obtain independent approving reviews and authorized confirmation of branch-protection requirements and Pages deployment behavior.",
-      "Merge #1640 only after every required condition passes; verify merge commit, files, workflow side effects and main CI.",
-      "Consolidate #1643's 547 unique research paths onto verified main, reconcile six shared paths, preserve 21 Kamilah candidates and carry #1640's stronger CI.",
-      "After #1640 main verification, selectively reconcile the 10 unique Codespaces paths from barrot/task-1658-codespaces-prebuild; do not duplicate its superseded context-budget changes.",
-      "Close only exact superseded/path-contained PRs after successor content is verified on main; preserve unique research and feature work.",
-      "Verify scheduled ingestion on main, establish independent raw-source archival/rebuild, accumulate synchronized history and demonstrate out-of-sample performance before forecasting."
+      "Obtain independent approvals and authorized confirmation of branch-protection and Pages deployment behavior.",
+      "Merge #1640 only when all required conditions pass; verify merge commit, files, automatic workflow effects and main CI.",
+      "Consolidate #1643's 551 unique paths onto verified main, reconcile six shared paths, preserve 21 Kamilah candidate references and carry #1640's stronger CI.",
+      "After #1640 main verification, selectively port the 10 unique Codespaces paths from barrot/task-1658-codespaces-prebuild.",
+      "Close only exact superseded PRs after main verification; preserve unique work.",
+      "Verify scheduled ingestion on main, external WORM/raw rebuild, synchronized history and OOS lift before forecasting."
     ],
     "forecast_status": "NOT_ISSUED"
   },
@@ -5288,7 +5198,381 @@
         "Verify scheduled ingestion on main and establish independent raw-source archival/rebuild before training or forecasting."
       ],
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "run_id": 40,
+      "captured_at_utc": "2026-11-08T04:04:59Z",
+      "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "integration_head_before_map_commit": "905eaad9c0da2212048cf87b4d631461c9873ffb",
+      "research_head_before_spot_artifact": "61c21ca3e564c15e9db87a987139e70b51e8ad10",
+      "research_head_after_spot_artifact": "4ddf16fe68ea3586bb52617bc2c26fc243f02baa",
+      "open_pr_inventory": {
+        "total": 372,
+        "drafts": 356,
+        "non_drafts": 16,
+        "pages": [
+          100,
+          100,
+          100,
+          72
+        ],
+        "base_targets": {
+          "main": 364,
+          "security/mmi-claim-bound-source-provenance-20261103-run11": 1,
+          "verify/xrp-ledger-archive-20261101T070712Z": 1,
+          "research/binance-xrp-hack-graph-20261101T0108Z": 2,
+          "research/xrp-ledger-shard-migration-20261029T2210Z": 2,
+          "research/xrp-ledger-index-pointer-migration-20261028T1959Z": 1,
+          "research/xrp-ledger-fresh-main-20261028-1217z": 1
+        }
+      },
+      "repository_tree": {
+        "main": {
+          "entries": 1403,
+          "files": 1298,
+          "python_files": 493,
+          "test_modules": 89,
+          "active_workflow_yaml": 78,
+          "disabled_workflow_files": 8,
+          "truncated": false
+        },
+        "integration": {
+          "entries": 1478,
+          "files": 1365,
+          "directories": 113,
+          "changed_paths": 176,
+          "truncated": false
+        },
+        "research": {
+          "entries": 1951,
+          "files": 1845,
+          "directories": 106,
+          "changed_paths": 553,
+          "truncated": false
+        }
+      },
+      "branch_ancestry": {
+        "integration": {
+          "head": "905eaad9c0da2212048cf87b4d631461c9873ffb",
+          "ahead": 634,
+          "behind": 0,
+          "changed_paths": 176
+        },
+        "research": {
+          "head": "4ddf16fe68ea3586bb52617bc2c26fc243f02baa",
+          "ahead": 760,
+          "behind": 0,
+          "changed_paths": 553
+        },
+        "shared_changed_paths": [
+          {
+            "path": ".github/workflows/dependency-audit.yml",
+            "status": "identical"
+          },
+          {
+            "path": "BARROT_XRP_MISSION_HANDOFF.md",
+            "status": "different_content"
+          },
+          {
+            "path": "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+            "status": "different_content",
+            "integration_candidate_references": 10,
+            "research_candidate_references": 21,
+            "canonical_channel_verified": false
+          },
+          {
+            "path": "scripts/pillars_check.py",
+            "status": "different_implementation"
+          },
+          {
+            "path": "tests/test_kamilah_channel_identity_gate.py",
+            "status": "different_tests",
+            "reconcile": "combine both assertion sets"
+          },
+          {
+            "path": "tests/test_pillars_check_readonly.py",
+            "status": "different_tests",
+            "reconcile": "preserve 404/500 fail-closed and 200-response assertions"
+          }
+        ],
+        "integration_only_paths": 170,
+        "research_only_paths": 547,
+        "status": "diverged; both mission branches are based on current main with zero behind",
+        "task_1658_branch": {
+          "branch": "barrot/task-1658-codespaces-prebuild",
+          "ahead": 1,
+          "behind": 0,
+          "changed_paths": 13,
+          "shared_with_integration": [
+            ".github/workflows/ci.yml",
+            "barrot_agent/orchestration/repository_repair.py",
+            "tests/test_repository_repair.py"
+          ],
+          "unique_paths": 10,
+          "disposition": "preserve branch; #1640 has stronger token-aware context budgeting on the three shared paths; port unique Codespaces files only after #1640 main verification"
+        }
+      },
+      "ci_evidence": {
+        "integration": {
+          "head": "905eaad9c0da2212048cf87b4d631461c9873ffb",
+          "full_suite": "1,188 passed, 8 subtests passed",
+          "core_suite": "660 passed, 8 subtests passed",
+          "inclusive_coverage_pct": 58.78,
+          "installed_wheel": "passed; packaged Barrot V3, priority-one XRP mission and canonical data assets load",
+          "dependency_audit": "passed; six manifests; no known vulnerabilities reported",
+          "fail_closed_gate": "passed; automatic merging disabled",
+          "runs": {
+            "ci": 42444279625,
+            "dependency_audit": 42444279576,
+            "fail_closed": 42444279632
+          }
+        },
+        "research_previous_verified_head": {
+          "head": "61c21ca3e564c15e9db87a987139e70b51e8ad10",
+          "full_suite": "2,252 passed, 8 subtests passed",
+          "core_suite": "498 passed, 8 subtests passed",
+          "dependency_audit": "passed; six manifests",
+          "fail_closed_gate": "passed",
+          "runs": {
+            "ci": 42443708537,
+            "dependency_audit": 42443708721,
+            "fail_closed": 42443708683
+          }
+        },
+        "research_current_head": {
+          "head": "4ddf16fe68ea3586bb52617bc2c26fc243f02baa",
+          "full_suite": "IN_PROGRESS_AT_CAPTURE",
+          "dependency_audit": "IN_PROGRESS_AT_CAPTURE",
+          "fail_closed_gate": "passed; automatic merging disabled",
+          "runs": {
+            "ci": 42445324811,
+            "dependency_audit": 42445324904,
+            "fail_closed": 42445324842
+          }
+        },
+        "handoff_map_refresh": "new documentation-only child of the verified #1640 code/test head; exact-head CI required"
+      },
+      "reviews": {
+        "pr_1640": {
+          "threads_resolved": "22/22",
+          "commented_reviews": 62,
+          "approving_reviews": 0
+        },
+        "pr_1643": {
+          "threads_resolved": "19/19",
+          "commented_reviews": 10,
+          "approving_reviews": 0
+        },
+        "pr_1653": {
+          "threads_unresolved": 8
+        },
+        "independent_approving_reviews": 0
+      },
+      "backlog": {
+        "active_integration_prs": [
+          "#1640 Barrot V3 foundation",
+          "#1643 XRP intelligence and research"
+        ],
+        "superseded_or_path_contained_pending_main_verification": [
+          "#1642",
+          "#1644",
+          "#1645",
+          "#1646",
+          "#1647",
+          "#1648",
+          "#1649",
+          "#1650",
+          "#1320",
+          "#1317",
+          "#1318",
+          "#1254",
+          "#1255"
+        ],
+        "blocked": [
+          "#1640 independent approval and Pages/branch-protection authorization",
+          "#1643 newest exact-head CI/audit pending",
+          "#1653 eight unresolved review threads; preserve six unique paths"
+        ],
+        "unique_unreviewed_preserve": [
+          "#1269 eight mesh/rendering paths",
+          "#1655 five unique bundle/structural catalog paths",
+          "#1641 three experimentation paths",
+          "#1659 four unique local-Llama/Termux paths",
+          "#1477 XRP research",
+          "#1597 XRP research",
+          "#1591 XRP research"
+        ],
+        "task_1658_branch": "one-commit branch, 13 paths; preserve 10 unique Codespaces paths; reconcile 3 overlaps with #1640 after integration",
+        "remaining_drafts": "356 drafts remain individually untriaged; preserve and do not bulk-close."
+      },
+      "research_artifacts_added": [
+        "research/xrp_intelligence/20261108T035906Z-bny-sbi-kamilah-and-spot-reconciliation.json",
+        "tests/test_xrp_bny_sbi_kamilah_spot_reconciliation_20261108.py"
+      ],
+      "verified_findings": {
+        "bny_ripple": "BNY first-party release confirms current XRP and RLUSD custody support for eligible institutional clients. Direct RLUSD mint/redeem, broader XRPL tokenized-asset support and C2FO trade finance remain future/exploratory; no customer balances or XRP purchases disclosed.",
+        "sbi_startale_blackrock": "October 27 MOU explores tokenized MMF/JPYSC connectivity; does not name XRP or production XRP settlement. SBI/Startale JPYSC/OUSD interoperability is a separate exploratory initiative.",
+        "sbi_open_standard": "SBI/Startale Open Standard participation includes Coinbase among 140+ reported participants; shared membership is not a bilateral Coinbase-SBI XRP agreement.",
+        "regulation": "SEC S7-2026-27 remains Proposed on the SEC page; not an effective final rule.",
+        "exact_phrases": "No new primary-source match for ASK Coin XRP, issuer-defined actual capital or an entity named SBIC, ChatGPT SBIC. Preserve previous entity distinctions.",
+        "kamilah": "Two new Glasp-indexed public video attributions: rv0BAV0vLgo (2026-03-19) and QslbjGQD0MU (2025-12-14). Both are candidate publisher/byline attributions only; personal channel uploads and canonical channel ownership remain unverified.",
+        "direct_spot": "03:59:06Z surfaced Kraken XRP/USD last 1.15971, bid/ask 1.15976/1.15979, 14.477M XRP 24h volume, no provider event time; OKX XRP-USDT last 1.1583, bid/ask 1.1583/1.1584, 24.573M XRP 24h volume, provider timestamp 03:37:17.569Z and 1,308.431s old. Level-1 bid shares conflict 26.65% vs 80.21%. USD/USDT unnormalized; no multi-level depth, tape or flows; model-ineligible.",
+        "source_hashes": "Kraken surfaced JSON SHA-256 f05b27b7f5773e18819fc238c2bf3a068e8c4e2a280098725e5c8f9bb3c2a223; OKX surfaced JSON SHA-256 2862821a6e06dc59381e62c512a977bc84ec3592e36a4f7d5fe172a45748b0fd. These are not raw HTTP wire-byte hashes."
+      },
+      "prediction_engine": {
+        "scheduled_ingestion": "DESIGNED on #1640 branch only; absent from main and no scheduled main run verified",
+        "endpoint_registry": {
+          "total": 29,
+          "scheduled": 27,
+          "excluded_noncommercial_xrpl_node_sources": 2
+        },
+        "scheduled_workflow": {
+          "path": ".github/workflows/xrp-public-ingestion.yml",
+          "hourly_cron": "3 * * * *",
+          "daily_cron": "15 0 * * *",
+          "runs_only_on_main": true,
+          "permissions": {
+            "actions": "read",
+            "contents": "read"
+          }
+        },
+        "raw_receipt_retention_days": 90,
+        "per_run_feature_checkpoint_retention_days": 7,
+        "daily_archive_retention_days": 90,
+        "sha256_raw_source_receipts": true,
+        "point_in_time_sqlite_feature_store": true,
+        "historical_evaluator": "Binance XRP/USDT and Coinbase XRP/USD hourly closes only",
+        "deterministic_baselines": [
+          "naive_class_prior",
+          "momentum_sign",
+          "mean_reversion_sign",
+          "volatility_normal"
+        ],
+        "chronological_walk_forward": true,
+        "temporal_calibration_event_time_guard": true,
+        "psi_drift_diagnostics": "univariate feature-distribution PSI; not concept/label drift",
+        "fail_closed_forecast_ledger": true,
+        "readiness_requirements": {
+          "minimum_oos_samples": 100,
+          "minimum_shadow_samples": 100,
+          "minimum_independent_source_groups": 2,
+          "minimum_horizon_span_multiple": 10,
+          "maximum_weighted_calibration_error": 0.05,
+          "stable_drift": true,
+          "independent_ed25519_attestation": true
+        },
+        "independent_external_worm": false,
+        "raw_artifact_rebuild_implemented": false,
+        "synchronized_multi_domain_historical_dataset": false,
+        "demonstrated_out_of_sample_lift": false,
+        "validated_real_data_calibration": false,
+        "sufficient_shadow_outcomes": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_observations_admitted_to_model": false
+      },
+      "nine_platform_status": {
+        "ChatGPT": "current-session GitHub connector verified",
+        "Claude": "no persistent authenticated data flow",
+        "Grok": "no persistent authenticated data flow; Groq is a separate provider",
+        "Gemini": "no persistent authenticated data flow",
+        "Copilot": "one-off COMMENTED review activity only; not approval",
+        "Codex": "no persistent authenticated data flow",
+        "HuggingFace": "prior Space BUILD_ERROR; no verified persistent data flow",
+        "Kaggle": "not authenticated/tested",
+        "Databricks": "prior read-only HTTP 403; no verified access",
+        "external_model_data_transfer": false,
+        "structured_cross_platform_exchange": false
+      },
+      "main_health": {
+        "latest_cross_analysis": {
+          "run": 42444464398,
+          "status": "success",
+          "head_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
+        },
+        "barrot_agent_issue_runs": [
+          {
+            "run": 42388663091,
+            "status": "failure",
+            "reason": "Groq HTTP 413/TPM: 8,099 requested against 8,000 limit after retries; no repair completed"
+          },
+          {
+            "run": 42388645777,
+            "status": "failure",
+            "reason": "Groq HTTP 429/TPM; repair authoring stopped safely"
+          }
+        ],
+        "related_issues": [
+          "#1657 SerpApi research discovery",
+          "#1658 Codespaces/runtime reliability"
+        ],
+        "task_1658_branch": {
+          "branch": "barrot/task-1658-codespaces-prebuild",
+          "ahead": 1,
+          "behind": 0,
+          "changed_paths": 13,
+          "open_pr": false
+        },
+        "latest_pages_deployment": {
+          "run": 41799855489,
+          "status": "success",
+          "event": "dynamic",
+          "build_job": "success",
+          "deploy_job": "success",
+          "configuration_accessible": false
+        },
+        "xrp_ingestion_workflow_on_main": false,
+        "primary_mission_registry_on_main": false,
+        "active_privileged_writers": {
+          "barrot_agent": true,
+          "ask_barrot": true
+        }
+      },
+      "merge_state": {
+        "main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+        "main_branch_protected": true,
+        "branch_protection_detail_http_403": true,
+        "visible_ruleset": {
+          "id": 10863829,
+          "name": "Fall Back",
+          "enforcement": "disabled"
+        },
+        "codeowners": "* @Barrot-Agent",
+        "pr_1640_approvals": 0,
+        "pr_1643_approvals": 0,
+        "pages_enabled": true,
+        "pages_configuration_accessible": false,
+        "prior_pages_deployment_run": 41799855489,
+        "pages_run_event": "dynamic",
+        "pages_deployment_authorized": false,
+        "branch_protection_requirements_verified": false,
+        "merge_performed": false,
+        "independent_approvals": 0
+      },
+      "external_actions": {
+        "main_write": false,
+        "merge": false,
+        "deployment": false,
+        "secret_read_or_rotation": false,
+        "space_restart": false,
+        "kaggle_submission": false,
+        "paper_trade": false,
+        "real_money": false,
+        "external_model_transfer": false,
+        "force_push": false,
+        "destructive_worktree_action": false
+      },
+      "next_actions": [
+        "Verify exact-head full-suite and six-manifest dependency-audit results on #1643 head 4ddf16fe68ea3586bb52617bc2c26fc243f02baa.",
+        "Verify exact-head CI on the documentation/map refresh child of #1640 head 905eaad9c0da2212048cf87b4d631461c9873ffb.",
+        "Obtain independent approving reviews and authorized confirmation of branch-protection requirements and Pages deployment behavior.",
+        "Merge #1640 only after every required condition passes; verify merge commit, files, workflow side effects and main CI.",
+        "Consolidate #1643's 547 unique research paths onto verified main, reconcile six shared paths, preserve 21 Kamilah candidates and carry #1640's stronger CI.",
+        "After #1640 main verification, selectively reconcile the 10 unique Codespaces paths from barrot/task-1658-codespaces-prebuild; do not duplicate its superseded context-budget changes.",
+        "Close only exact superseded/path-contained PRs after successor content is verified on main; preserve unique research and feature work.",
+        "Verify scheduled ingestion on main, establish independent raw-source archival/rebuild, accumulate synchronized history and demonstrate out-of-sample performance before forecasting."
+      ],
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "last_verified_at_utc": "2026-11-08T04:04:59Z"
+  "last_verified_at_utc": "2026-11-08T04:22:21Z"
 }

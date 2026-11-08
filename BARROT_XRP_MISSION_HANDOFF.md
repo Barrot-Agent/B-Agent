@@ -1,4 +1,126 @@
-# Current integrated Barrot handoff — 2026-11-08T04:04:59Z
+# Current integrated Barrot handoff — 2026-11-08T04:22:21Z
+
+## Run 41 — current repository state (2026-11-08T04:22:21Z)
+
+### Mission and main build
+
+XRP intelligence and prediction-engine mastery remain Barrot's priority-one mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Main is unchanged at `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; tree root `359c0540106d6003b22588339e69f10b80489cb0`. The complete recursive tree contains 1,403 entries, 1,298 files, 493 Python files, 89 test modules and 86 workflow YAML files.
+
+All four open-PR pages were inspected: **372 open PRs, 356 drafts and 16 non-drafts**. 364 target main; eight target other research/security branches. No PR was created, closed or merged.
+
+### Exact-head verification
+
+**PR #1640 — V3 integration**
+
+Current head: `2962b497226983714a8affc81b8368bf17b9d72e` (635 commits ahead of main, zero behind; 176 changed paths).
+
+- Full repository suite: **1,188 passed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **58.78%**, above the 53% threshold.
+- Installed-wheel verification passed; packaged Barrot V3, the priority-one XRP mission and canonical assets load.
+- Six-manifest dependency audit passed; no known vulnerabilities reported.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Evidence: [Full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42445593323) · [Dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42445593294) · [Fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42445593307).
+
+**PR #1643 — XRP research**
+
+Current head: `fac7b630408e25607798b3dd30786b92cf2b7672` (764 commits ahead of main, zero behind; 557 changed paths).
+
+- Full repository suite: **2,270 passed, 8 subtests passed**.
+- Core suite: **498 passed, 8 subtests passed**.
+- Six-manifest dependency audit passed; no known vulnerabilities found.
+- Fail-closed merge gate passed.
+- Seven new Kamilah identity/video tests, four Kraken/OKX freshness tests and seven BNY/SBI/spot reconciliation tests passed.
+
+Evidence: [Full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42446351632) · [Dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42446351634) · [Fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42446351663).
+
+The research branch still uses checkout@v4/setup-python@v5 and emitted Node.js 20 deprecation warnings. Its pip cache save was read-only, not a test failure. Consolidation must carry #1640's newer actions, inclusive coverage and installed-wheel checks.
+
+### Branch topology and backlog
+
+The two mission branches are zero commits behind main and share six paths: dependency-audit workflow (identical), handoff (different), Kamilah source registry (different: 21 research candidates versus 10 integration), Pillars script (different), Kamilah identity tests (different), and Pillars read-only tests (different). Preserve both test sets and reconcile the implementation. #1640 has 170 unique paths; #1643 has 551 unique paths.
+
+`barrot/task-1658-codespaces-prebuild` is one commit ahead of main with 13 paths, no PR, three overlaps with #1640 and ten unique devcontainer/setup/requirements/Makefile/docs/test paths. #1640 already has stronger token-aware context budgeting, pre-call token estimation, mandatory safety text preservation and bounded local read-only snapshot fallback. Preserve the ten unique Codespaces paths for selective integration after #1640 reaches main; do not duplicate the weaker character-budget implementation.
+
+Backlog:
+- #1640: active V3 integration candidate; exact current head fully verified.
+- #1643: active XRP research candidate; exact current head fully verified.
+- #1642, #1644–#1650, #1317, #1318, #1320, #1254 and #1255: changed paths are contained in #1640; superseded/path-contained, but keep open until successor content is verified on main.
+- #1653: six unique repository-intelligence paths; blocked by eight unresolved review threads.
+- #1269: eight unique mesh/rendering paths plus shared CI; preserve.
+- #1655: five unique bundle/structural catalog paths plus three shared paths; preserve.
+- #1641: three unique experimentation paths; preserve.
+- #1659: four unique local-Llama/Termux paths plus two shared scripts; preserve.
+- #1477, #1597 and #1591: preserve unique XRP research.
+- 356 remaining drafts are not individually reconciled; do not bulk-close.
+
+### New XRP and institutional evidence
+
+**BNY/Ripple:** BNY's October 27 first-party release confirms XRP and RLUSD custody support for eligible institutional clients. BNY is RLUSD's primary reserve custodian and has a custody relationship with Ripple Prime. Direct RLUSD mint/redeem, broader XRPL tokenized-asset support and C2FO trade finance remain future/exploratory work. No XRP/RLUSD client balances, purchases or collateral utilization were disclosed.
+Source: https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+
+**SBI/Startale/BlackRock:** The October 27 MOU explores tokenized money-market funds and JPYSC; it does not name XRP as a bridge asset or announce production XRP settlement. SBI/Startale's JPYSC/OUSD interoperability is separate and exploratory. Open Standard membership that includes Coinbase is not a bilateral Coinbase-SBI XRP agreement.
+Source: https://www.startale.com/en/news/blackrock-startale-sbi
+
+**Regulation:** SEC S7-2026-27 remains Proposed, not an effective final rule.
+Source: https://www.sec.gov/rules-regulations/2026/08/s7-2026-27
+
+**Exact phrases:** No new primary-source match for “ASK Coin” XRP, issuer-defined “actual capital” or an entity named “SBIC, ChatGPT SBIC”. Preserve previous distinctions between Ask Coin and Permission Coin's ASK token, financing capacity and actual cash, and Japan's SBIC East/Central/West and SBI Holdings.
+
+**Kamilah Stevenson:** YouTube first-party search metadata resolves channel ID `UCqUPJMQdkCN6lsLVDnichPA`, display name Kamilah Stevenson and handle `@drkamilahstevenson`. The person-to-channel match is strongly corroborated by the Wealth Doctor brand and public publisher records, but not conclusive because no reciprocal first-party site link to the exact channel ID was verified. The inventory has ten channel-associated candidates, three external publisher appearances and 13 known public entries total. Direct watch-page upload metadata was not retrieved; inventory remains incomplete. “Camila” appears in three transcript excerpts and “Camilla” in one earlier interview; do not infer separate people from spelling variants.
+Channel: https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA
+Glasp channel catalog: https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA
+
+### Direct spot freshness — not a signal
+
+Capture: 2026-11-08T04:09:27Z.
+
+| Metric | Kraken XRP/USD | OKX XRP-USDT |
+|---|---:|---:|
+| Last | 1.15971 USD | 1.1624 USDT |
+| Bid / ask | 1.15976 / 1.15979 | 1.1623 / 1.1624 |
+| Level-1 bid share | 26.65% | 84.87% |
+| 24h XRP volume | 14.477M | 23.267M |
+
+OKX event time 04:09:01.568Z was 25.432 seconds old. Kraken supplied no provider event time and its surfaced response digest was identical to the prior capture. This could be a stable quote or a cached/stale response; available metadata cannot distinguish. The raw last-price gap was -0.2314%, but USD/USDT is not normalized, Kraken freshness is unverifiable, and synchronized depth, tape, fees and slippage are absent. No feature admission.
+
+### Prediction engine
+
+The #1640 branch has 29 endpoint records (27 scheduled public sources, two XRPL-node sources excluded), hourly ingestion at minute 3, daily ingestion at 00:15 UTC, SHA-256 receipts, point-in-time SQLite features, as-of reconstruction, revision lineage, four deterministic baselines, chronological walk-forward tests, temporal calibration/event-time guards, univariate PSI and a fail-closed forecast ledger.
+
+The ingestion workflow and priority-one registry remain absent from main. No scheduled main ingestion run is verified. Receipt/archive retention is 90 days; per-run feature checkpoint retention is seven days. Independent external WORM storage and complete raw-artifact rebuild are absent. Readiness requires 100 OOS samples, 100 shadow samples, two independent source groups, ten-horizon evaluation, weighted calibration error no greater than 0.05, stable drift and independent Ed25519 attestation. No mature synchronized dataset, demonstrated trained-model OOS lift, validated real-data calibration or sufficient shadow outcomes exists.
+
+**Forecast: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+### Nine-platform status
+
+ChatGPT-to-GitHub is the only verified persistent connection. Claude, Grok, Gemini and Codex have no persistent authenticated data flow. Copilot activity is COMMENTED, not approval. Hugging Face has a prior Space BUILD_ERROR; Kaggle is untested; Databricks previously returned read-only HTTP 403. No cross-platform exchange or external model transfer occurred.
+
+### Main workflow safety and merge decision
+
+Main's latest scheduled Cross Analysis run 42444464398 succeeded on the unchanged main SHA. Barrot Agent issue runs 42388663091 and 42388645777 failed under Groq limits (8,099 TPM against 8,000 after retries; HTTP 429). Issues #1657 and #1658 remain open.
+
+Main still has active privileged `barrot-agent.yml` and `ask-barrot.yml` writer workflows. #1640 quarantines both with empty permissions and disabled job conditions; those changes are not active on main. Main's scheduler-tick and merge-queue workflows are disabled. XRP ingestion and the primary mission registry are not on main.
+
+Pages deployment run 41799855489 succeeded with a dynamic event, but configuration/trigger is inaccessible. A merge may cause a public deployment and is not authorized.
+
+Main reports protected=true; detailed branch-protection retrieval returns HTTP 403. Visible fallback ruleset ID 10863829 is disabled. CODEOWNERS is `* @Barrot-Agent`. #1640 has 62 COMMENTED reviews, zero APPROVED and 22/22 resolved threads. #1643 has 10 COMMENTED reviews, zero APPROVED and 19/19 resolved threads. #1653 has eight unresolved threads. COMMENTED reviews are not approvals.
+
+**No merge was performed.** Independent approval and authorized confirmation of branch-protection and Pages behavior remain unresolved. No main write, deployment, secret read/rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+### Next actions
+
+1. Obtain independent approving reviews and authorized confirmation of branch-protection and Pages deployment behavior.
+2. Merge #1640 only when every required condition passes; verify merge commit, files, workflow side effects and main CI.
+3. Consolidate #1643's 551 unique paths onto verified main, reconcile six shared paths, preserve the 21 Kamilah candidates and carry #1640's stronger CI/coverage/wheel checks.
+4. After #1640 main verification, selectively port the ten unique Codespaces paths; do not duplicate its superseded context-budget code.
+5. Close only exact superseded PRs after main verification; preserve unique work.
+6. Verify scheduled ingestion on main, establish independent raw-source archival/rebuild, accumulate synchronized historical data and demonstrate out-of-sample performance before any directional forecast.
+
+---
 
 ## Run 40 — current repository state (2026-11-08T04:04:59Z)
 
