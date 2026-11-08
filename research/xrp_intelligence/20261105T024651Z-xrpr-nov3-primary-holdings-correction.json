@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_etf_issuer_holdings_vintage_correction",
+  "record_id": "xrpr-holdings-correction-20261105T024651Z",
+  "recorded_at_utc": "2026-11-05T02:46:51.346Z",
+  "correction_of": "research/xrp_intelligence/20261105T023852Z-xrp-etf-flow-scope-reconciliation.json",
+  "correction_scope": "Replace the earlier October 1 XRPR issuer observation with the later November 3 issuer-page snapshot; preserve the prior observation as historical evidence.",
+  "forecast_issued": false,
+  "model_eligible": false,
+  "source": {
+    "publisher": "REX Shares / Osprey Funds",
+    "source_type": "primary_issuer_fund_holdings_page",
+    "url": "https://www.rexshares.com/xrpr/",
+    "issuer_data_as_of_date": "2026-11-03",
+    "retrieved_at_utc": null,
+    "raw_content_sha256": null,
+    "capture_status": "rendered_primary_issuer_page_only_original_http_bytes_not_captured",
+    "independence_group": "rexshares_issuer",
+    "primary_evidence": [
+      "The issuer page says XRPR is not equivalent to investing directly in XRP.",
+      "The issuer page states that, under normal market conditions, at least 80% of net assets are invested in XRP and other assets providing XRP exposure.",
+      "The issuer's holdings table separately identifies direct XRP and CoinShares XRP ETP shares."
+    ]
+  },
+  "latest_observation": {
+    "as_of_date": "2026-11-03",
+    "ticker": "XRPR",
+    "fund_assets_usd": 42380000,
+    "shares_outstanding": 4075000,
+    "number_of_holdings": 4,
+    "direct_xrp": {
+      "quantity": 19885382,
+      "weight_pct": 59.86,
+      "net_value_usd": 25364798.82
+    },
+    "indirect_coinshares_xrp_etp": {
+      "shares": 362750,
+      "ticker": "XRPL SW",
+      "weight_pct": 40.12,
+      "net_value_usd": 16998465
+    },
+    "cash_and_other": {
+      "weight_pct": -0.01,
+      "net_value_usd": -3308.29
+    },
+    "other_cash_equivalent": {
+      "ticker": "FGXXX",
+      "weight_pct": 0.03,
+      "net_value_usd": 12654.05
+    },
+    "median_30_day_bid_ask_spread_pct": 0.99
+  },
+  "prior_observation_preserved": {
+    "as_of_date": "2026-10-01",
+    "direct_xrp_quantity": 21260382,
+    "coinshares_physical_xrp_etp_shares": 386750,
+    "direct_xrp_weight_pct": 60.05,
+    "indirect_etp_weight_pct": 39.9,
+    "source_note": "Earlier rendered issuer-page observation retained in the correction target artifact; no original source-byte hash was captured."
+  },
+  "comparisons": {
+    "direct_xrp_quantity_change_between_displayed_snapshots": -1375000,
+    "coinshares_etp_share_count_change_between_displayed_snapshots": -24000,
+    "interpretation": "These are differences between two displayed issuer snapshots, not verified creations, redemptions, transfers, cash flows or market purchases. Do not label the change as net outflow without transaction and settlement records.",
+    "xrp_insights_xrpr_displayed_xrp_quantity": 33211763,
+    "aggregator_comparability": "Not directly comparable to the issuer's direct XRP quantity. The aggregator's XRP-equivalent methodology and exact XRPR source vintage were not captured; the fund also holds a separate CoinShares XRP ETP position."
+  },
+  "data_quality": {
+    "original_issuer_bytes_hashed": false,
+    "precise_intraday_timestamp": false,
+    "daily_creation_redemption_records": false,
+    "direct_and_indirect_exposure_separated": true,
+    "model_eligibility": "NONE",
+    "reason": "This is a rendered point-in-time issuer holdings page. It is a useful direct-versus-indirect exposure classification, but not a daily flow series or a byte-receipted feature."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "ordinary_fund_activity",
+      "hypothesis": "The displayed change in direct XRP and CoinShares ETP shares between October 1 and November 3 reflects ordinary fund holdings changes.",
+      "support": [
+        "The issuer page publishes separate quantities and weights for each holding."
+      ],
+      "missing_or_disconfirming": [
+        "No daily creation/redemption ledger, settlement records or transaction receipts were retrieved."
+      ]
+    },
+    {
+      "id": "classification_or_source_vintage_change",
+      "hypothesis": "Some difference between aggregator XRP-equivalent holdings and direct issuer XRP quantity reflects indirect ETP look-through or different source vintages.",
+      "support": [
+        "The issuer page explicitly separates XRP from CoinShares XRP ETP shares.",
+        "The aggregator does not expose a precise XRPR source timestamp in the rendered page."
+      ],
+      "missing_or_disconfirming": [
+        "No underlying CoinShares XRP-per-share look-through ratio and matching timestamp were captured."
+      ]
+    }
+  ],
+  "required_next_actions": [
+    "Capture the issuer holdings page or downloadable source bytes with UTC retrieval time and SHA-256.",
+    "Keep direct XRP units, ETP share units, fund NAV and XRP-equivalent exposure as separate fields.",
+    "Obtain daily creation/redemption and settlement data before treating issuer holdings deltas as flows.",
+    "Do not infer a spot-market buy or sell from the displayed holdings change."
+  ],
+  "supersedes_prior_calculations": [
+    {
+      "artifact_path": "research/xrp_intelligence/20261105T023852Z-xrp-etf-flow-scope-reconciliation.json",
+      "fields": [
+        "flow_reconciliation.arithmetic.holdings_total_difference_xrp",
+        "flow_reconciliation.arithmetic.additional_holdings_sum_xrp",
+        "flow_reconciliation.arithmetic.remaining_holdings_reconciliation_difference_xrp"
+      ],
+      "status": "invalidated_as_direct_xrp_holdings_reconciliation",
+      "reason": "The earlier arithmetic treated the XRP Insights XRPR aggregate quantity as if it were directly comparable to XRP units held in wallets. The later primary REX issuer page shows XRPR contains both direct XRP and CoinShares XRP ETP shares. The 18,141 XRP residual therefore is not a valid direct-custody reconciliation and must not be used as a quality check or feature.",
+      "replacement": "Keep the aggregator's XRPR quantity as an unverified aggregate exposure observation; keep direct XRP units and CoinShares ETP share units separate. Reconcile only after a timestamp-matched ETP look-through ratio and original issuer bytes are captured."
+    }
+  ]
+}

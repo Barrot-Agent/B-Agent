@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "artifact_type": "institutional_custody_collateral_and_stablecoin_network",
+  "captured_on_utc_date": "2026-11-03",
+  "sources": [
+    {
+      "id": "S70",
+      "publisher": "BNY",
+      "title": "Ripple Expands Strategic Digital Assets Collaboration with BNY Across Custody and Tokenized Trade Finance",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_on": "2026-10-27"
+    },
+    {
+      "id": "S71",
+      "publisher": "Ripple",
+      "title": "Ripple Receives Final OCC Approval to Establish National Trust Bank",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "published_on": "2026-10-26"
+    },
+    {
+      "id": "S72",
+      "publisher": "C2FO",
+      "title": "C2FO and Ripple Partner to Modernize Trade Finance Using the XRP Ledger",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "published_on": "2026-10-27"
+    },
+    {
+      "id": "S73",
+      "publisher": "Ripple",
+      "title": "Ripple and Coinbase Partner to Expand Access to Ripple USD",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "published_on": "2026-10-28"
+    },
+    {
+      "id": "S74",
+      "publisher": "Nodal Clear",
+      "title": "Ripple Offers Clients Access to Coinbase Derivatives Contracts Cleared by Nodal Clear",
+      "url": "https://www.nodalclear.com/ripple-offers-clients-access-to-coinbase-derivatives-contracts-cleared-by-nodal-clear/",
+      "published_on": "2026-03-05"
+    },
+    {
+      "id": "S75",
+      "publisher": "OCC",
+      "title": "Ripple National Trust Bank Corporate Applications Search",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "retrieved_on": "2026-11-03"
+    },
+    {
+      "id": "S76",
+      "publisher": "OCC",
+      "title": "First National Digital Currency Bank Corporate Applications Search",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "retrieved_on": "2026-11-03"
+    }
+  ],
+  "graph": [
+    {
+      "from": "BNY",
+      "to": "RLUSD",
+      "relation": "primary_reserve_custodian",
+      "status": "confirmed_by_BNY_and_Ripple",
+      "evidence": [
+        "S70"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple Prime",
+      "relation": "custody_relationship",
+      "status": "confirmed_by_BNY",
+      "evidence": [
+        "S70"
+      ]
+    },
+    {
+      "from": "BNY Digital Asset Custody",
+      "to": "XRP",
+      "relation": "supports_custody_for_eligible_institutional_clients",
+      "status": "announced_live",
+      "evidence": [
+        "S70"
+      ]
+    },
+    {
+      "from": "BNY Digital Asset Custody",
+      "to": "RLUSD",
+      "relation": "supports_custody_for_eligible_institutional_clients",
+      "status": "announced_live",
+      "evidence": [
+        "S70"
+      ]
+    },
+    {
+      "from": "Ripple National Trust Bank",
+      "to": "RLUSD",
+      "relation": "approved_reserve_management_and_collateral_trustee_scope",
+      "status": "OCC_CAS_consummated_effective; operational_volume_unverified",
+      "evidence": [
+        "S71",
+        "S75"
+      ]
+    },
+    {
+      "from": "Ripple Prime",
+      "to": "RLUSD",
+      "relation": "used_as_collateral",
+      "status": "Ripple_corporate_claim_no_amount_or_independent_balance_data",
+      "evidence": [
+        "S71"
+      ]
+    },
+    {
+      "from": "C2FO Instant Pay",
+      "to": "RLUSD",
+      "relation": "settlement_asset",
+      "status": "announced_product_design_waitlist",
+      "evidence": [
+        "S72"
+      ]
+    },
+    {
+      "from": "C2FO Instant Pay",
+      "to": "XRPL",
+      "relation": "financing_and_settlement_activity_planned_on_ledger",
+      "status": "announced_waitlist_limited_rollout",
+      "evidence": [
+        "S72"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Coinbase",
+      "relation": "RLUSD_distribution_partnership",
+      "status": "live_on_Prime_Exchange_Retail; Global_Exchange_collateral_future",
+      "evidence": [
+        "S73"
+      ]
+    },
+    {
+      "from": "Ripple Prime clients",
+      "to": "Coinbase Derivatives XRP futures",
+      "relation": "client_access_through_Nodal_Clear",
+      "status": "announced_access_live",
+      "evidence": [
+        "S74"
+      ]
+    },
+    {
+      "from": "Circle First National Digital Currency Bank",
+      "to": "USDC",
+      "relation": "approved_reserve_management_and_collateral_trustee_scope",
+      "status": "OCC_CAS_consummated_effective; operational_volume_unverified",
+      "evidence": [
+        "S76"
+      ]
+    }
+  ],
+  "activity_status": {
+    "bny_custody": "BNY states it now supports XRP and RLUSD custody for eligible institutional clients. No balances, client counts or transfer volumes disclosed.",
+    "bny_rlusd_mint_redeem": "Intended future functionality; subject to final BNY and regulatory approvals.",
+    "ripple_national_trust_bank": "OCC CAS records Consummated/Effective 2026-10-26. Ripple says the bank will provide RLUSD reserve management, collateral trustee and fiduciary custody; the release says it is beginning operations, but live client balances and service throughput are not disclosed.",
+    "circle_national_trust_bank": "OCC CAS records Consummated/Effective 2026-07-24. The bank's initial OCC scope supports USDC reserve management, collateral trusteeship and affiliate custody; operational balances are not disclosed.",
+    "c2fo_instant_pay": "Waitlist and limited rollout; capital-provider names and actual funded invoice/settlement volumes not disclosed.",
+    "coinbase_rlusd": "Live on Coinbase Prime, Exchange and Retail with XRPL, Base and Ethereum support. RLUSD collateral for Coinbase Global Exchange customers is a future rollout, not live at announcement.",
+    "coinbase_derivatives": "Ripple Prime client access to Coinbase Derivatives contracts, including XRP futures, through Nodal Clear is announced. Actual client utilization and contract-level volume attributable to Ripple Prime are unknown."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "name": "Institutional custody access increases XRP's investability and operational availability",
+      "support": [
+        "BNY supports XRP custody for eligible institutions",
+        "Ripple Prime and Coinbase Derivatives provide regulated XRP futures access"
+      ],
+      "disconfirming_or_limiting": [
+        "No BNY XRP balances or client volumes disclosed",
+        "Futures access is not spot ownership",
+        "No evidence of net new spot buying attributable to the relationships"
+      ],
+      "status": "plausible_but_unquantified"
+    },
+    {
+      "id": "H2",
+      "name": "RLUSD distribution and payments increase XRPL activity but do not automatically create material XRP demand",
+      "support": [
+        "RLUSD is supported on XRPL and Coinbase",
+        "C2FO Instant Pay plans RLUSD settlement on XRPL",
+        "BNY supports RLUSD custody and Ripple says RLUSD is used as Ripple Prime collateral"
+      ],
+      "disconfirming_or_limiting": [
+        "Instant Pay remains waitlist/limited rollout",
+        "RLUSD, not XRP, is the stated settlement/collateral asset in these use cases",
+        "No XRPL fee, bridge-liquidity or XRP inventory volume attributable to the use cases is disclosed"
+      ],
+      "status": "best_supported_network_hypothesis"
+    },
+    {
+      "id": "H3",
+      "name": "Coinbase is positioning as a multi-stablecoin distribution and institutional access venue",
+      "support": [
+        "Existing Circle/USDC relationship",
+        "New Ripple/RLUSD distribution partnership",
+        "Coinbase Prime, exchange, retail, derivatives and FCM stack"
+      ],
+      "disconfirming_or_limiting": [
+        "No revenue-share or volume data for RLUSD listing",
+        "No evidence that USDC share is being displaced"
+      ],
+      "status": "plausible_competitive_hypothesis"
+    },
+    {
+      "id": "H4",
+      "name": "Ripple Prime and Coinbase Derivatives have a cooperative clearing/distribution relationship while competing in other product areas",
+      "support": [
+        "Ripple Prime clients access Coinbase Derivatives through Nodal Clear",
+        "Both FCMs are Nodal Clear members"
+      ],
+      "disconfirming_or_limiting": [
+        "No bilateral ownership or exclusive agreement",
+        "No client-level usage or revenue data"
+      ],
+      "status": "confirmed_relationship_plausible_economic_significance"
+    }
+  ],
+  "xrp_specific_conclusions": {
+    "confirmed": [
+      "BNY supports XRP custody for eligible institutional clients.",
+      "Coinbase Derivatives lists XRP futures and Ripple Prime clients can access the suite through Nodal Clear.",
+      "RLUSD can be moved on XRPL through Coinbase's distribution partnership."
+    ],
+    "not_confirmed": [
+      "XRP is a required reserve asset of Ripple National Trust Bank.",
+      "XRP is the settlement asset in C2FO Instant Pay.",
+      "XRP is used as collateral in the new BNY/Ripple or Coinbase RLUSD integrations.",
+      "Any material net spot XRP purchases resulting from the relationships.",
+      "Any specific amount of XRP held by BNY, Ripple Prime, Coinbase or institutional clients through these arrangements."
+    ]
+  },
+  "next_actions": [
+    "Request or locate BNY digital-asset custody disclosures with asset-level balances or transfer volume.",
+    "Monitor Ripple Prime for RLUSD collateral eligibility, haircut, outstanding collateral and client utilization data.",
+    "Monitor C2FO Instant Pay for named funding providers, first funded invoices and XRPL transaction volume.",
+    "Monitor Coinbase Global Exchange for actual RLUSD collateral activation and subsequent use.",
+    "Track Coinbase Derivatives XRP futures open interest and volume, and compare with Nodal Clear clearing data when public.",
+    "Separate XRP custody, XRP futures, RLUSD collateral and RLUSD settlement as distinct demand channels."
+  ],
+  "safety": {
+    "public_company_and_regulatory_sources_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_action": true
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp_bls_market_reaction_time_vintage_correction_20261106",
+  "created_at_utc": "2026-11-06T14:00:00Z",
+  "status": "APPEND_ONLY_SECONDARY_MARKET_REACTION_UPDATE",
+  "canonical_event_artifact": {
+    "path": "research/xrp_intelligence/20261106T134313Z-bls-october-employment-and-xrp-post-release-market-reconciliation.json",
+    "git_blob_sha1": "4b1bccaccb4c4b24fbd9df3b5be7c87a02b0433f",
+    "event_time_utc": "2026-11-06T13:30:00Z",
+    "release_id": "USDL-26-1632"
+  },
+  "market_reaction_timeline": [
+    {
+      "source_id": "ft_initial_market_reaction",
+      "publisher": "Financial Times",
+      "source_url": "https://www.ft.com/content/f84c722c-99a9-4628-84dc-c42a192cb35c",
+      "publication_date": "2026-11-06",
+      "reported": {
+        "two_year_treasury_yield_pct": 4.53,
+        "change_basis_points": 6,
+        "dollar_direction": "initially higher"
+      },
+      "qualitative_update": "FT's accessible search summary says yields and the dollar initially rose, but those moves quickly reversed.",
+      "publication_time_precision": "date_only",
+      "normalized_excerpt_sha256": null,
+      "raw_html_or_http_bytes_captured": false,
+      "evidence_class": "secondary_intraday_market_reporting"
+    },
+    {
+      "source_id": "reuters_market_reaction_1349z",
+      "publisher": "Reuters",
+      "source_url": "https://www.reuters.com/business/view-strong-october-jobs-report-sends-yields-higher-2026-11-06/",
+      "published_at_utc": "2026-11-06T13:49:00Z",
+      "reported": {
+        "two_year_treasury_yield_pct": 4.52,
+        "two_year_change_basis_points": 5,
+        "ten_year_treasury_yield_pct": 4.88,
+        "ten_year_change_basis_points": 4,
+        "thirty_year_treasury_yield_pct": 5.29,
+        "thirty_year_change_basis_points": 3.6,
+        "dollar_index": 102.18,
+        "dollar_index_change_pct": 0.7,
+        "nasdaq_futures_change_pct": 1.4,
+        "sp500_futures_change_pct": 0.3,
+        "implied_december_fed_hike_probability_pct": 78,
+        "prior_implied_december_fed_hike_probability_pct": 70
+      },
+      "reported_path": "Treasury yields rose after the release before pulling back.",
+      "normalized_excerpt_sha256": "b7294fd032fc1af3fba00318b260bd83f12ac8c6e69a301b5739d12575b46598",
+      "normalized_excerpt_characters": 1215,
+      "raw_html_or_http_bytes_captured": false,
+      "evidence_class": "secondary_intraday_market_reporting"
+    },
+    {
+      "source_id": "marketwatch_factset_last_check",
+      "publisher": "MarketWatch / Dow Jones",
+      "source_url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-nasdaq-tech-stocks-worst-day-since-2020-employment-report/card/treasury-yields-up-after-stronger-than-expected-u-s-jobs-report-Ri9AN0U2EUmAYY8jDl4E",
+      "capture_window_utc": "2026-11-06T14:00Z approximately",
+      "page_relative_update_text": "6 min ago",
+      "reported": {
+        "two_year_treasury_yield_pct": 4.51,
+        "two_year_change_basis_points": 5,
+        "ten_year_treasury_yield_pct": 4.87,
+        "ten_year_change_basis_points": 3
+      },
+      "measurement_timestamp_utc": null,
+      "data_attribution": "FactSet, at last check",
+      "normalized_excerpt_sha256": "3f1ac45d29ded206e2f0d8b791bcfcd00175a700797b4764a088eec06064ae47",
+      "normalized_excerpt_characters": 349,
+      "raw_html_or_http_bytes_captured": false,
+      "evidence_class": "secondary_intraday_market_reporting"
+    },
+    {
+      "source_id": "guardian_real_wage_and_geopolitical_context",
+      "publisher": "The Guardian",
+      "source_url": "https://www.theguardian.com/business/2026/nov/06/us-job-growth-october",
+      "published_at_utc": "2026-11-06T13:42:00Z",
+      "reported": {
+        "nominal_hourly_earnings_yoy_pct": 3.1,
+        "september_cpi_yoy_pct": 3.7,
+        "real_wage_growth_gap_percentage_points": -0.6
+      },
+      "context": [
+        "Iran war and elevated fuel costs",
+        "AI-led technology selloff before the BLS release",
+        "midterm political/economic context"
+      ],
+      "normalized_excerpt_sha256": "674a793a5e0b8f58b0e8570683a005e6de9cce42b2ddeda963baa8da5be1c1db",
+      "normalized_excerpt_characters": 217,
+      "raw_html_or_http_bytes_captured": false,
+      "evidence_class": "secondary_macro_and_geopolitical_context"
+    },
+    {
+      "source_id": "wsj_policy_path_counterinterpretation",
+      "publisher": "Wall Street Journal",
+      "source_url": "https://www.wsj.com/economy/jobs/october-jobs-report-unemployment-d7392948",
+      "publication_date": "2026-11-06",
+      "reported_interpretation": "The strong payroll number may not change the Fed's rate plans because inflation remains above target and officials are cautious about reacting to one report.",
+      "publication_time_precision": "not established in retrieved page",
+      "raw_html_or_http_bytes_captured": false,
+      "evidence_class": "secondary_policy_interpretation"
+    }
+  ],
+  "time_vintage_reconciliation": {
+    "no_averaging": true,
+    "observations_are_not_identical_ticks": true,
+    "earlier_ft_snapshot": {
+      "two_year_yield_pct": 4.53,
+      "change_basis_points": 6
+    },
+    "later_reuters_report": {
+      "published_at_utc": "2026-11-06T13:49:00Z",
+      "two_year_yield_pct": 4.52,
+      "change_basis_points": 5
+    },
+    "marketwatch_last_check": {
+      "two_year_yield_pct": 4.51,
+      "change_basis_points": 5,
+      "exact_measurement_time_utc": null
+    },
+    "interpretation": "The values differ by source and capture vintage. Reuters explicitly reports that yields rose after the release and then pulled back. Preserve each source/time separately; do not average the levels or infer a persistent one-way rates shock."
+  },
+  "cross_asset_interpretation": {
+    "initial_hawkish_repricing_supported_by": [
+      "Treasury yields initially higher",
+      "dollar index reported +0.7%",
+      "implied December rate-hike probability rose from 70% to 78%"
+    ],
+    "counterevidence_or_offsets": [
+      "Treasury yields had pulled back by Reuters reporting",
+      "Nasdaq futures +1.4% and S&P 500 futures +0.3% at Reuters reporting",
+      "nominal wage growth of 3.1% was below September CPI inflation of 3.7%",
+      "WSJ interpretation says one report may not alter the Fed policy path"
+    ],
+    "confounders": [
+      "prior-session AI/technology selloff",
+      "Middle East conflict and energy prices",
+      "midterm political transition",
+      "market positioning before the release"
+    ],
+    "conclusion": "The macro impulse is mixed and time-varying. It does not justify a persistent risk-off label or an XRP directional inference."
+  },
+  "xrp_alignment": {
+    "canonical_kraken_provider_event_timestamp_utc": null,
+    "canonical_kraken_capture_time_upper_bound_utc": "2026-11-06T13:43:13Z",
+    "reuters_publication_time_utc": "2026-11-06T13:49:00Z",
+    "provider_timestamped_xrp_response_after_reuters_publication_available": false,
+    "synchronized_btc_rates_fx_equity_xrp_panel_available": false,
+    "event_return_computable": false,
+    "causal_attribution_permitted": false
+  },
+  "competing_hypotheses": [
+    {
+      "id": "hawkish_shock_then_partial_reversal",
+      "status": "plausible_but_not_persistent_from_available_reports",
+      "support": [
+        "initial yield/dollar rise",
+        "market-implied December hike odds increased"
+      ],
+      "counterevidence": [
+        "yields pulled back",
+        "equity futures positive",
+        "no synchronized XRP return"
+      ]
+    },
+    {
+      "id": "growth_risk_on_offset",
+      "status": "plausible",
+      "support": [
+        "Nasdaq and S&P futures positive in Reuters report",
+        "strong payroll and upward revisions"
+      ],
+      "counterevidence": [
+        "initial rates/dollar response",
+        "higher rate expectations can still tighten financial conditions"
+      ]
+    },
+    {
+      "id": "real_income_and_affordability_drag",
+      "status": "context_not_xrp_catalyst",
+      "support": [
+        "3.1% nominal wage growth versus 3.7% September CPI",
+        "elevated energy costs"
+      ],
+      "counterevidence": [
+        "nominal employment and wages are not direct crypto-flow measures"
+      ]
+    },
+    {
+      "id": "xrp_specific_flows_and_positioning_dominate",
+      "status": "unresolved",
+      "support": [
+        "existing ETF and derivatives provider disagreement",
+        "no timestamped cross-venue event window"
+      ],
+      "counterevidence": [
+        "no direct evidence identifying a single XRP-specific driver"
+      ]
+    }
+  ],
+  "source_receipts": {
+    "method": "SHA-256 of explicitly normalized excerpts displayed by the retrieval interface; not original HTML or byte-complete HTTP bodies.",
+    "reuters_sha256": "b7294fd032fc1af3fba00318b260bd83f12ac8c6e69a301b5739d12575b46598",
+    "marketwatch_sha256": "3f1ac45d29ded206e2f0d8b791bcfcd00175a700797b4764a088eec06064ae47",
+    "guardian_sha256": "674a793a5e0b8f58b0e8570683a005e6de9cce42b2ddeda963baa8da5be1c1db"
+  },
+  "model_admission": {
+    "eligible_for_feature_store": false,
+    "reason": "Secondary reporting vintages are not exchange-native timestamped market receipts; the XRP quote has no provider timestamp; the cross-asset event panel is incomplete."
+  },
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "artifact_type": "nine_platform_capability_authentication_and_data_flow_map",
+  "captured_on_utc_date": "2026-11-03",
+  "status": "DESIGNED_NOT_EXECUTED_AS_A_MULTI_PLATFORM_NETWORK",
+  "platform_count": 9,
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "role": "research coordinator; claim ledger; source provenance; scenario and prediction design; cross-agent synthesis",
+      "connection_status": "verified_current_session",
+      "auth_status": "current ChatGPT session; no external platform credentials assumed",
+      "permissions": "Use only tools exposed in this session; no direct exchange or broker access",
+      "deliverable": "Evidence packets, forecasts with cutoff/horizon/probability, durable handoff"
+    },
+    {
+      "name": "Claude",
+      "role": "independent adversarial review; counter-hypotheses; source-credibility critique; red-team of prediction methodology",
+      "connection_status": "not_verified_connected",
+      "auth_status": "no authenticated session or connector verified",
+      "permissions": "Proposed read-only access to public evidence packets; no repository write",
+      "deliverable": "Structured dissent and disconfirming evidence"
+    },
+    {
+      "name": "Grok",
+      "role": "public social discussion and event discovery; sentiment/event signals with bot/manipulation filtering",
+      "connection_status": "not_verified_connected",
+      "auth_status": "no authenticated session or connector verified",
+      "permissions": "Proposed public-data-only; no posting, messaging or market actions",
+      "deliverable": "Timestamped public discussion samples with source-quality flags"
+    },
+    {
+      "name": "Gemini",
+      "role": "independent factual cross-check; multilingual Japanese regulatory and corporate-source research",
+      "connection_status": "not_verified_connected",
+      "auth_status": "no authenticated session or connector verified",
+      "permissions": "Proposed read-only public-source research",
+      "deliverable": "Independent claim verification and Japanese/English source comparison"
+    },
+    {
+      "name": "Copilot",
+      "role": "repository review; PR/workflow/dependency analysis; code-review findings",
+      "connection_status": "not_verified_connected",
+      "auth_status": "No Copilot session or repository app connection verified; GitHub connector is separate",
+      "permissions": "Proposed read-only review, with comments only after authorization",
+      "deliverable": "Review findings tied to commit SHA and file/line evidence"
+    },
+    {
+      "name": "Codex",
+      "role": "code implementation; deterministic ingestion/evaluation scripts; regression tests; branch/PR preparation",
+      "connection_status": "not_verified_connected",
+      "auth_status": "No Codex session or execution connection verified; GitHub connector is separate",
+      "permissions": "Proposed branch-only writes, no main merge, no secrets, no deployments",
+      "deliverable": "Minimal diffs, test evidence and reproducible build/run instructions"
+    },
+    {
+      "name": "Hugging Face",
+      "role": "public dataset/model discovery; model cards; licensing and evaluation review",
+      "connection_status": "not_verified_connected",
+      "auth_status": "No Hugging Face connector or authenticated session verified",
+      "permissions": "Proposed public dataset/model metadata and downloads only; respect licenses",
+      "deliverable": "Dataset/model candidates with provenance, license, freshness and quality checks"
+    },
+    {
+      "name": "Kaggle",
+      "role": "baseline datasets, reproducible notebooks and benchmark/backtest experiments",
+      "connection_status": "not_verified_connected",
+      "auth_status": "No Kaggle connector or authenticated session verified",
+      "permissions": "Proposed public dataset/notebook access; no scheduled submissions or external writes",
+      "deliverable": "Reproducible baseline notebooks and benchmark results"
+    },
+    {
+      "name": "Databricks",
+      "role": "historical lakehouse, point-in-time feature store, scheduled ingestion and drift monitoring",
+      "connection_status": "not_verified_connected",
+      "auth_status": "No Databricks workspace connection or credentials verified",
+      "permissions": "Proposed isolated development workspace; least-privilege service principal; no public exporter",
+      "deliverable": "Versioned feature tables, lineage, data-quality and drift reports"
+    }
+  ],
+  "verified_live_platforms": [
+    "ChatGPT current session",
+    "GitHub repository connector"
+  ],
+  "separate_tool_status": {
+    "vidIQ": "Tool available, but channel enumeration failed because connected account had insufficient credits; no credits charged. vidIQ is not one of the nine target platforms."
+  },
+  "proposed_workflow": {
+    "intake": "Coordinator creates a research question with a unique task_id, data cutoff, target, scope and source-quality requirements.",
+    "independent_assignment": "Assign the same core question to at least two independent agents where practical; keep assignments narrow and avoid sharing another agent's conclusion before first-pass research.",
+    "evidence_packet_schema": [
+      "task_id",
+      "claim_id",
+      "source_id",
+      "publisher",
+      "source_url",
+      "published_at",
+      "retrieved_at_utc",
+      "source_type",
+      "quoted_or_paraphrased_claim",
+      "evidence_classification",
+      "confidence",
+      "method",
+      "data_cutoff",
+      "counterevidence",
+      "unknowns",
+      "artifact_hash",
+      "agent_id"
+    ],
+    "provenance": "Preserve original URLs, retrieval timestamp, content hash, source vintage and exact commit SHA. Never overwrite an earlier source snapshot.",
+    "disagreement_resolution": "Compare source quality, independence, definitions, timestamps and methodology. Keep minority objections and competing hypotheses; no forced unanimity.",
+    "red_team": "A separate reviewer attempts to falsify the leading explanation, identify leakage, survivorship bias, data snooping, regime shift and source circularity.",
+    "handoff": "Only structured evidence packets and immutable artifacts move between agents. Code moves through branch/PR and exact-head CI; no agent may write to main or execute market actions.",
+    "prediction_record": [
+      "forecast_id",
+      "data_cutoff_utc",
+      "target_asset",
+      "target_definition",
+      "horizon",
+      "probability",
+      "confidence",
+      "assumptions",
+      "alternative_scenarios",
+      "baseline",
+      "model_version",
+      "feature_snapshot_hash",
+      "later_observation",
+      "scoring_rule",
+      "calibration_result"
+    ]
+  },
+  "least_privilege_policy": {
+    "research_agents": "Read-only public/authorized sources; no private accounts or secrets.",
+    "coding_agents": "Branch-only repository access; no main write, merge, force-push, deployment or secret retrieval.",
+    "data_platforms": "Dedicated least-privilege service accounts; no public exports of private corpora; immutable provenance and audit logs.",
+    "market_access": "No exchange trading credentials or real-money actions. Paper/shadow evaluation only after validated backtests.",
+    "secrets": "Never commit API keys, OAuth tokens or credentials to GitHub; store only in each platform's approved secret manager."
+  },
+  "fallback_plan": {
+    "when_agent_unavailable": "Continue with local deterministic scripts and public sources; record the unavailable platform and timestamp.",
+    "when_provider_rate_limited": "Use cached, timestamped snapshots and retry only within provider limits; do not silently substitute a different data source.",
+    "when_dataset_unavailable": "Mark the feature missing; do not synthesize or interpolate an observation.",
+    "when_agents_disagree": "Retain both positions, document evidence and confidence, and use independent adjudication."
+  },
+  "execution_status": {
+    "designed": [
+      "Nine role definitions",
+      "Structured evidence packet",
+      "Least-privilege permissions",
+      "Disagreement and red-team process",
+      "Prediction record schema"
+    ],
+    "executed": [
+      "ChatGPT research and GitHub repository work in current session"
+    ],
+    "verified": [
+      "GitHub read/write connector used to inspect repo, create draft branches and PRs; exact-head CI and fail-closed gates verified for listed PRs"
+    ],
+    "not_executed": [
+      "No live Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks collaboration/authentication verified."
+    ]
+  },
+  "next_actions": [
+    "Create a capability/authentication test for each target platform only after the user authorizes and the platform connection is available.",
+    "Start with read-only evidence packet exchange; do not grant write scopes to research agents.",
+    "Use a common claim/source schema and commit-hash handoffs before attempting shared model training or data-platform writes.",
+    "Keep minority objections and red-team outputs in the durable ledger."
+  ],
+  "safety": {
+    "public_and_authorized_data_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_manipulation": true,
+    "no_real_money_trading": true
+  }
+}

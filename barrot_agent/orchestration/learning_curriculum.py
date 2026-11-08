@@ -5,44 +5,35 @@ from __future__ import annotations
 from pathlib import Path
 
 from .verified_learning_store import VerifiedLearningStore
-from .mission_registry import MissionRegistry
 
 
 class LearningCurriculum:
-    """Choose repository learning goals that require validated learning records."""
+    """Choose repository learning goals that require deeper inspection."""
 
     def __init__(
         self,
         workspace: str = ".",
         learning_store: VerifiedLearningStore | None = None,
-        mission_registry: MissionRegistry | None = None,
     ):
         self.workspace = Path(workspace)
-        self.learning_store = learning_store or VerifiedLearningStore()
-        self.mission_registry = mission_registry or MissionRegistry()
+        self.learning_store = (
+            learning_store
+            or VerifiedLearningStore()
+        )
 
     def _known_text(self) -> str:
-        """Use only records that pass the store's current verification contract."""
         try:
-            read_verified = getattr(self.learning_store, "read_verified", None)
-            if not callable(read_verified):
-                return ""
-            records = read_verified()
+            records = self.learning_store.read_all()
         except Exception:
             return ""
 
         return "\n".join(
-            record["lesson"]
+            str(record.get("lesson", ""))
             for record in records
-            if isinstance(record, dict)
-            and isinstance(record.get("lesson"), str)
         )
 
     def next_goal(self) -> str:
         known = self._known_text().lower()
-        mission_goal = self.mission_registry.next_goal(known)
-        if mission_goal:
-            return mission_goal
 
         candidates = [
             (

@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_single_venue_spot_ticker_receipt",
+  "record_id": "kraken-xrpusd-tool-capture-20261105T021146Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "recorded_at_utc": "2026-11-05T02:11:46.795Z",
+  "source_retrieval_timestamp_precision": "The exact HTTP retrieval instant and response headers were not exposed by the web reader. recorded_at_utc is the time this returned response text was hashed and recorded, not a claimed exchange event timestamp.",
+  "forecast_issued": false,
+  "prediction_status": "NOT_ISSUED",
+  "model_eligible": false,
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_tool_text_20261105T021146Z",
+      "publisher": "Kraken",
+      "source_type": "public_exchange_rest_ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "instrument": "XRP/USD spot",
+      "source_time_utc": null,
+      "retrieved_at_utc": null,
+      "response_observed_by_tool_at_utc": "2026-11-05T02:11:46.795Z",
+      "capture_method": "web reader returned one-line JSON response text; SHA-256 computed over the exact returned UTF-8 text",
+      "raw_content_encoding": "UTF-8 tool-returned response text",
+      "raw_content_bytes": 311,
+      "raw_content_sha256": "4c7b713440b421e8cbed066595380cf3b09648e453fb841c114de5086113ce0d",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.30795000\",\"661\",\"661.000\"],\"b\":[\"1.30794000\",\"4\",\"4.000\"],\"c\":[\"1.30795000\",\"1446.95330600\"],\"v\":[\"765609.36781296\",\"34547330.82930944\"],\"p\":[\"1.30352533\",\"1.30178067\"],\"t\":[1648,32368],\"l\":[\"1.29590000\",\"1.24016000\"],\"h\":[\"1.30957000\",\"1.34000000\"],\"o\":\"1.30410000\"}}}",
+      "raw_capture_status": "tool_returned_text_hashed_not_original_http_byte_stream",
+      "independence_group": "kraken_spot_venue",
+      "model_eligible": false,
+      "limitations": [
+        "Kraken ticker response contains no provider event timestamp.",
+        "The web reader did not expose original HTTP headers or exact network retrieval time.",
+        "Hash verifies the exact UTF-8 text returned by the tool, not an independently captured original HTTP byte stream.",
+        "Single-venue best bid/ask only; no full order-book depth, trade aggressor classification or cross-venue synchronization."
+      ]
+    }
+  ],
+  "market_observation": {
+    "venue": "Kraken",
+    "instrument": "XRP/USD spot",
+    "last_usd": 1.30795,
+    "best_bid_usd": 1.30794,
+    "best_ask_usd": 1.30795,
+    "mid_usd": 1.307945,
+    "spread_usd": 0.00001,
+    "spread_basis_points": 0.0764558143,
+    "best_bid_size_xrp": 4,
+    "best_ask_size_xrp": 661,
+    "last_trade_size_xrp": 1446.953306,
+    "volume_24h_xrp": 34547330.82930944,
+    "trades_24h": 32368,
+    "vwap_24h_usd": 1.30178067,
+    "last_vs_vwap_pct": 0.4739147,
+    "open_24h_usd": 1.3041,
+    "last_vs_open_pct": 0.2952228,
+    "high_24h_usd": 1.34,
+    "low_24h_usd": 1.24016,
+    "source_time_utc": null,
+    "recorded_at_utc": "2026-11-05T02:11:46.795Z",
+    "model_eligible": false,
+    "interpretation": "The displayed spread is narrow, but the best bid size is only 4 XRP versus 661 XRP at the best ask. This is top-of-book size, not total depth; it must not be described as deep liquidity or a robust buy-side wall."
+  },
+  "data_quality": {
+    "raw_text_hash": "4c7b713440b421e8cbed066595380cf3b09648e453fb841c114de5086113ce0d",
+    "raw_http_bytes_verified": false,
+    "provider_event_timestamp_available": false,
+    "model_eligibility": "NONE",
+    "limitations": [
+      "No exchange event timestamp.",
+      "No synchronized Coinbase/Binance/Bybit quote.",
+      "Top-of-book quantity is not a depth curve.",
+      "A very small best-bid size can change immediately and does not establish broader order-book imbalance."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "One venue's untimestamped ticker text is insufficient for a directional forecast or point-in-time feature admission."
+  }
+}

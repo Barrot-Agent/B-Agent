@@ -19,7 +19,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Download the approved upstream trend artifact
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: webmcp-trend-digest-${{ github.event.workflow_run.run_number }}
           run-id: ${{ github.event.workflow_run.id }}

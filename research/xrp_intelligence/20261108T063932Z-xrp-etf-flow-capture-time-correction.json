@@ -1,0 +1,38 @@
+{
+  "artifact_type": "xrp_etf_flow_capture_time_correction",
+  "schema_version": "1.0.0",
+  "correction_recorded_at_utc": "2026-11-08T06:39:32Z",
+  "references": {
+    "original_artifact": "research/xrp_intelligence/20261108T063207Z-xrp-etf-flow-coverage-and-institutional-demand-reconciliation.json",
+    "original_artifact_commit": "8a4c36ba0ddf11b12af1e551b9e489e4dfad44cc",
+    "original_artifact_commit_time_utc": "2026-11-08T06:36:01Z",
+    "original_test_commit": "c3926a793bdfc89eac7b99c62ad4be7dfec794c1",
+    "original_test_commit_time_utc": "2026-11-08T06:36:04Z"
+  },
+  "correction": {
+    "field": "captured_at_utc",
+    "original_value": "2026-11-08T06:32:07Z",
+    "status": "MISLABELED_RUN_START_AS_CAPTURE_TIME",
+    "correct_interpretation": "2026-11-08T06:32:07Z is the automation run's reference/start time, not the exact time at which the web-rendered source pages were fetched.",
+    "source_page_retrieval_time_utc": null,
+    "bounded_interval": {
+      "not_before_utc": "2026-11-08T06:32:07Z",
+      "not_after_utc": "2026-11-08T06:36:01Z",
+      "basis": "The web source pages were inspected during this run after its 06:32:07Z start and before the original artifact was committed at 06:36:01Z. The exact individual page-fetch timestamps were not retained."
+    },
+    "required_use": "Do not use the original captured_at_utc field as a source retrieval timestamp or exact feature availability time. Retain the original artifact unchanged and use this correction for provenance interpretation."
+  },
+  "source_vintage_times_remain_valid": [
+    "XRP Insights displayed data as of 2026-11-06.",
+    "Alpha Finance displayed data through the 2026-11-06 session.",
+    "CryptoKeyhole displayed its last issuer-file check at 2026-11-08T06:22:00Z.",
+    "TradRadar displayed an update at 2026-11-08T05:30:00Z with a stated 15-minute delay.",
+    "BNY's primary announcement date is 2026-10-27."
+  ],
+  "model_admission": {
+    "original_artifact_feature_eligible": false,
+    "correction_feature_eligible": false,
+    "reason": "The correction only clarifies provenance timing. It does not create raw HTTP receipts, resolve ETF universe/vintage differences, or establish independent source corroboration.",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

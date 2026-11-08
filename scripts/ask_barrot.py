@@ -19,24 +19,31 @@ MEMORY_INJECT_COUNT = 5
 
 LATEST_SIGNAL_XRP = "web/latest_signal.json"
 LATEST_SIGNAL_BTC = "web/latest_signal_btc.json"
+SIGNAL_ACCURACY = "web/signal_accuracy.json"
 GUMROAD_METRICS = "ping-pongings/knowledge-base/gumroad_metrics.json"
 GROQ_USAGE_LOG = "ping-pongings/knowledge-base/groq_usage_log.jsonl"
 
 SYSTEM_BASE = (
-    "You are Barrot, the autonomous agent built and operated by Sean. Your "
-    "highest-priority mission is XRP intelligence and evidence-gated "
-    "prediction-engine mastery. Barrot V3 remains the execution, orchestration, "
-    "safety, persistence, and verification foundation for that mission. "
-    "Operate from current repository code, durable task state, mission handoff, "
-    "and recorded runtime evidence. Do not repeat historical capability claims "
-    "as current facts. Distinguish implemented code from scheduled workflows, "
-    "workflow definitions from verified scheduled runs, research artifacts from "
-    "live runtime data, feature snapshots from forecasts, forecast ledgers from "
-    "predictive models, and paper simulations from real trading. Never claim "
-    "predictive edge, calibration, model readiness, production ingestion, or "
-    "forecast issuance unless the current evidence explicitly verifies it. "
-    "When evidence is absent, say so plainly. Be precise about what is built, "
-    "what has actually run, what passed, and what remains blocked."
+    "You are Barrot, an autonomous crypto/fintech AI agent built and run "
+    "by Sean. Real, current facts about you: you run hourly knowledge "
+    "ingestion and distillation cycles for both XRP and BTC, each "
+    "extracting sentiment (bullish/bearish/neutral), catalyst, relevance, "
+    "and named entities from real news via Groq, then emit a blended "
+    "trading signal per asset; you draft articles automatically from that "
+    "knowledge base; you have a signal accuracy tracker that logs price "
+    "at signal emission and checks real directional correctness after 24 "
+    "hours; your XRP signal tools are gated behind a Gumroad license as "
+    "your monetized product. You do not have technical indicators (RSI, "
+    "moving averages), a dedicated ML/forecasting model beyond LLM "
+    "classification, real-time (sub-hourly) data, or risk/position-sizing "
+    "logic. You have a real persistent memory: barrot_memory.jsonl records "
+    "every question you're asked and how you answered it, and your most "
+    "recent reflections are shown to you below so you have real continuity "
+    "across conversations, not a fresh start each time. You also see your "
+    "real, current signal emission and accuracy data below - use it to "
+    "check your own claims rather than assume them. Answer honestly "
+    "and specifically about your own project, using these real facts, not "
+    "outdated assumptions. Do not be vague or grandiose."
 )
 
 
@@ -100,55 +107,37 @@ def format_memory_block(entries):
 
 
 def load_signal_snapshot():
-    lines = [
-        "- forecast_status=NOT_ISSUED; forecast_issued=False; forecast_model_eligible=False.",
-        "- Directional XRP forecast status: NOT_ISSUED. Legacy accuracy is "
-        "UNVALIDATED_VARIABLE_HORIZON and is not a valid model-performance measure.",
-        "- Do not treat a sentiment/signal score as a validated forecast."
-    ]
+    lines = []
     for label, path in (("XRP", LATEST_SIGNAL_XRP), ("BTC", LATEST_SIGNAL_BTC)):
         if not os.path.exists(path):
             continue
         try:
-            with open(path, encoding="utf-8") as f:
-                data = json.load(f)
-        except (OSError, UnicodeError, json.JSONDecodeError):
+            with open(path) as f:
+                d = json.load(f)
+        except Exception:
             continue
-        generated_at = data.get("generated_at_utc", data.get("timestamp", "unknown"))
-        if data.get("signal_kind") == "sentiment_feature_only":
-            lines.append(
-                f'- Latest {label} sentiment feature (as of {generated_at}): '
-                f'label={data.get("sentiment_label", "unclassified")}, '
-                f'score={data.get("score")}/100, '
-                f'model_confidence={data.get("confidence")} '
-                f'(uncalibrated; not a price probability), source={data.get("source")}. '
-                "This is sentiment context, not a price forecast."
-            )
-        else:
-            lines.append(
-                f'- Latest {label} record (as of {generated_at}) is not classified '
-                "as a verified sentiment feature or forecast; do not interpret its "
-                "score or confidence as a price probability."
-            )
-    return "\n\nYour real, current sentiment-feature and evaluation-status data:\n" + "\n".join(lines)
-
-
-def load_xrp_intelligence_status():
-    """Load repository-authored mission and forecast readiness boundaries."""
-    sections = []
-    sources = (
-        ("Current Barrot/XRP mission handoff", "BARROT_XRP_MISSION_HANDOFF.md", 10000),
-        ("XRP point-in-time feature-store contract", "research/xrp_intelligence/feature-store-contract.md", 5000),
-        ("XRP forecast-ledger contract", "research/xrp_intelligence/forecast-ledger-contract.md", 5000),
-    )
-    for label, path, limit in sources:
+        lines.append(
+            f'- Latest {label} signal (as of {d.get("timestamp", "unknown")}): '
+            f'score={d.get("score")}, confidence={d.get("confidence")}, '
+            f'source={d.get("source")}'
+        )
+    if os.path.exists(SIGNAL_ACCURACY):
         try:
-            content = Path(path).read_text(encoding="utf-8")[:limit]
-        except (OSError, UnicodeError):
-            continue
-        if content.strip():
-            sections.append(f"\n\n{label} (repository source; includes explicit unimplemented gates):\n{content}")
-    return "".join(sections)
+            with open(SIGNAL_ACCURACY) as f:
+                acc = json.load(f)
+            lines.append(
+                f'- XRP signal accuracy tracker: {acc.get("checked_count", 0)} signals '
+                f'checked so far, {acc.get("correct_count", 0)} correct '
+                f'({acc.get("accuracy_pct")}% if available). Low or zero counts mean '
+                f'not enough signals have reached the 24-hour check window yet, or '
+                f'the pipeline is newly fixed - not a claim of poor performance.'
+            )
+        except Exception:
+            pass
+    if not lines:
+        return ""
+    return "\n\nYour real, current signal data:\n" + "\n".join(lines)
+
 
 def load_gumroad_metrics():
     if not os.path.exists(GUMROAD_METRICS):
@@ -180,7 +169,7 @@ def load_ingestion_metrics():
     for name, s in sources.items():
         count = s.get("entries_ingested", 0)
         if count > 0:
-            real_lines.append(f"- {name}: {count} entries recorded by this counter (verify execution separately)")
+            real_lines.append(f"- {name}: {count} entries ingested (real, active)")
         else:
             dead_sources.append(name)
     if not real_lines and not dead_sources:
@@ -189,12 +178,12 @@ def load_ingestion_metrics():
     out.extend(real_lines)
     if dead_sources:
         out.append(
-            f"- No entries are recorded for: "
-            f"{', '.join(dead_sources)}. The zero counter shows only that no "
-            f"entries are recorded by this counter; it does not establish whether "
-            f"implementation code exists or whether "
-            f"another counter is authoritative. Do not cite "
-            f"these as active without separate execution evidence."
+            f"- NOT yet real, despite being marked 'enabled' in config: "
+            f"{', '.join(dead_sources)}. These show 0 entries because no "
+            f"actual ingestion code exists for them yet, or (for "
+            f"ping_pong_cycles specifically) the real capability exists "
+            f"but was never wired to increment this counter. Do not cite "
+            f"these as active capabilities."
         )
     return "\n".join(out)
 
@@ -407,7 +396,6 @@ def main():
         + INFRASTRUCTURE_CONSTRAINTS
         + format_memory_block(memory_entries)
         + load_signal_snapshot()
-        + load_xrp_intelligence_status()
         + load_recent_commits()
         + load_gumroad_metrics()
         + load_ingestion_metrics()

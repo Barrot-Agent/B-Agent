@@ -1,0 +1,456 @@
+{
+  "schema_version": "barrot.xrp.market-disagreement-update.v1",
+  "artifact_id": "xrp_market_derivatives_etf_crosscheck_20261104T210500Z",
+  "artifact_type": "timestamped_public_market_microstructure_and_source_disagreement",
+  "captured_at_utc": "2026-11-04T21:05:00Z",
+  "data_cutoff_utc": "2026-11-04T21:05:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "branch": "research/xrp-evidence-archive-20261104",
+    "review_pr": 1643,
+    "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "branch_parent_sha": "f82eaf4b379a1474b0bdd910760f516e8ac388ff"
+  },
+  "preservation": {
+    "prior_artifacts_modified": false,
+    "append_only": true,
+    "raw_source_bytes_archived": false,
+    "forecast_issued": false,
+    "real_money_actions": false
+  },
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_20261104T2105Z",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "source_event_timestamp_utc": null,
+      "raw_capture_status": "web_rendered_json_result_only",
+      "raw_content_sha256": null,
+      "independence_group": "kraken_primary_exchange",
+      "model_eligible": false,
+      "limitations": [
+        "The tool exposed a rendered JSON response, not byte-complete response bytes; no immutable raw receipt or SHA-256 payload hash can be asserted.",
+        "The endpoint provides ticker and top-of-book quantities, not a full depth ladder or executable market impact curve.",
+        "No exchange event timestamp is included in the returned ticker object."
+      ]
+    },
+    {
+      "id": "coinmarketcap_xrp_page_20261104",
+      "publisher": "CoinMarketCap",
+      "source_type": "secondary_market_data_aggregator",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": null,
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "secondary_market_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "price_usd": 1.31,
+        "change_24h_pct": 2.63,
+        "market_cap_usd": 83270000000,
+        "volume_24h_usd": 3000000000
+      },
+      "limitations": [
+        "Page-level quote has no exact provider event timestamp in the retrieved excerpt.",
+        "Underlying venue coverage and quote synchronization were not independently reconstructed."
+      ]
+    },
+    {
+      "id": "swiftedge_xrp_price_20261104T1637Z",
+      "publisher": "Swiftedge",
+      "source_type": "secondary_market_data_page",
+      "url": "https://swiftedge.uk/xrp-price-today",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": "2026-11-04T16:37:00Z",
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "secondary_market_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "price_usd": 1.3139,
+        "change_24h_pct": 2.89,
+        "low_24h_usd": 1.2411,
+        "high_24h_usd": 1.3422
+      },
+      "limitations": [
+        "The displayed snapshot is 4 hours 28 minutes older than this artifact cutoff.",
+        "The page describes a live quote but the excerpt does not provide venue-level constituents or raw payload receipts."
+      ]
+    },
+    {
+      "id": "tradradar_xrp_perps_20261104T1530Z",
+      "publisher": "TradRadar",
+      "source_type": "secondary_multi_exchange_derivatives_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": "2026-11-04T15:30:00Z",
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "secondary_derivatives_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "mark_price_usd": 1.3246,
+        "change_24h_pct": 3.91,
+        "open_interest_usd": 2060000000,
+        "open_interest_change_24h_pct": 3.01,
+        "funding_8h_pct": 0.01,
+        "liquidations_24h_usd_at_least": 7520000,
+        "long_account_share_pct": 72.6,
+        "venues": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ]
+      },
+      "limitations": [
+        "Provider states 15-minute delay; snapshot is approximately 5 hours 35 minutes old at cutoff.",
+        "Venue-level constituents are not independently reconciled against native exchange contracts.",
+        "Funding and account long/short measures do not establish net directional exposure."
+      ]
+    },
+    {
+      "id": "alpha_finance_xrp_liquidation_20261104T1550Z",
+      "publisher": "Alpha Finance",
+      "source_type": "secondary_derivatives_and_modelled_liquidation_aggregator",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": "2026-11-04T15:50:00Z",
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "secondary_derivatives_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "spot_usd": 1.3212,
+        "change_24h_pct": 3.18,
+        "open_interest_usd": 2990000000,
+        "perpetual_volume_24h_usd": 2970000000,
+        "modelled_long_liquidation_pressure_below_usd": 78300000,
+        "modelled_short_liquidation_pressure_above_usd": 27800000,
+        "largest_modelled_long_cluster": {
+          "price_usd": 1.311,
+          "notional_usd": 5800000
+        },
+        "largest_modelled_short_cluster": {
+          "price_usd": 1.3428,
+          "notional_usd": 3900000
+        }
+      },
+      "limitations": [
+        "The provider explicitly describes liquidation levels as modelled from open interest and standard leverage tiers, not actual exchange liquidation queues.",
+        "Exchange and instrument coverage is not reconciled to other aggregators.",
+        "Snapshot is approximately 5 hours 15 minutes old at cutoff."
+      ]
+    },
+    {
+      "id": "kodexius_xrp_perps_20261104T1249Z",
+      "publisher": "Kodexius",
+      "source_type": "secondary_multi_exchange_derivatives_aggregator",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": "2026-11-04T12:49:00Z",
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "secondary_derivatives_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "open_interest_usd": 865530000,
+        "contracts": 7,
+        "funding_8h_pct": 0.01,
+        "volume_24h_usd": 1470000000,
+        "open_interest_to_volume_ratio": 0.59,
+        "binance_open_interest_usd": 469860000
+      },
+      "limitations": [
+        "Snapshot is approximately 8 hours 16 minutes old at cutoff.",
+        "Seven-contract scope and quote conversion are not reconciled to the TradRadar or Alpha Finance universes.",
+        "Underlying exchange values were not fetched as byte-complete receipts."
+      ]
+    },
+    {
+      "id": "liqwall_xrp_perps_20261104T0032Z",
+      "publisher": "Liqwall",
+      "source_type": "secondary_multi_exchange_derivatives_aggregator",
+      "url": "https://liqwall.com/coins/xrp",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": "2026-11-04T00:32:00Z",
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "secondary_derivatives_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "open_interest_usd": 1440000000,
+        "open_interest_change_24h_pct": 1.4,
+        "funding_8h_pct": 0.0101,
+        "liquidations_24h_usd": 4500000,
+        "long_liquidations_usd": 1800000,
+        "short_liquidations_usd": 2700000,
+        "binance_long_account_share_pct": 70.4
+      },
+      "limitations": [
+        "Snapshot is approximately 20 hours 33 minutes old at cutoff.",
+        "All-exchange scope is not reconciled to instrument-level contracts or other provider universes."
+      ]
+    },
+    {
+      "id": "bykaranteli_xrp_etf_20261104T0909Z",
+      "publisher": "ByKaranteli",
+      "source_type": "secondary_issuer_holdings_derived_etf_aggregator",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": "2026-11-04T09:09:00Z",
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "issuer_holdings_secondary_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "trading_day": "2026-11-03",
+        "daily_net_flow_usd": 0,
+        "five_day_net_flow_usd": 7400000,
+        "total_net_assets_usd": 1460000000,
+        "cumulative_net_inflow_usd": 1810000000,
+        "visible_fund_rows": 5
+      },
+      "limitations": [
+        "Nov 3 value is provisional until issuer settlement.",
+        "Visible five-fund universe does not reconcile with other trackers' six-spot-plus-index or broader universes.",
+        "Holdings changes do not by themselves prove cash creation/redemption or beneficial owner demand."
+      ]
+    },
+    {
+      "id": "xrp_insights_etf_20261103",
+      "publisher": "XRP Insights",
+      "source_type": "secondary_holdings_derived_etf_aggregator",
+      "url": "https://xrp-insights.com/",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": null,
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "issuer_holdings_secondary_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "trading_day": "2026-11-03",
+        "daily_net_flow_xrp": -162050,
+        "estimated_usd_at_provider_price": -207400,
+        "total_xrp_held": 1200000000,
+        "spot_funds": 6,
+        "index_product": "BITW"
+      },
+      "limitations": [
+        "Landing-page excerpt says Nov 3 flow; exact capture/update time is not stated.",
+        "The six-spot-plus-index universe differs from ByKaranteli's five visible rows.",
+        "Underlying issuer files and treatment of index exposure were not reconstructed in this run."
+      ]
+    },
+    {
+      "id": "maketo_xrp_etf_20261104T0226Z",
+      "publisher": "Maketo",
+      "source_type": "secondary_etf_flow_aggregator",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "retrieved_at_utc": "2026-11-04T21:05:00Z",
+      "provider_data_as_of_utc": "2026-11-04T02:26:00Z",
+      "raw_capture_status": "search_result_excerpt_only",
+      "raw_content_sha256": null,
+      "independence_group": "issuer_holdings_secondary_aggregators",
+      "model_eligible": false,
+      "reported": {
+        "trading_day": "2026-11-03",
+        "daily_net_flow_usd": 0,
+        "past_week_net_flow_usd": 7400000,
+        "past_month_net_flow_usd": 18000000,
+        "visible_funds": 5
+      },
+      "limitations": [
+        "Provider says five funds reported no movement; a blank/missing issuer report is not a zero flow.",
+        "Underlying issuer holdings and fund coverage were not independently rebuilt."
+      ]
+    }
+  ],
+  "raw_rendered_source_excerpt": {
+    "source_id": "kraken_xrpusd_ticker_20261104T2105Z",
+    "content": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.30042000\",\"561\",\"561.000\"],\"b\":[\"1.30041000\",\"1921\",\"1921.000\"],\"c\":[\"1.30059000\",\"3.77822713\"],\"v\":[\"37672535.84450642\",\"42977237.51961062\"],\"p\":[\"1.29209099\",\"1.29066544\"],\"t\":[32044,35274],\"l\":[\"1.24016000\",\"1.24016000\"],\"h\":[\"1.34000000\",\"1.34000000\"],\"o\":\"1.27513000\"}}}",
+    "content_status": "rendered_response_text_not_verified_original_http_bytes",
+    "hash_status": "NO_RAW_SHA256_RECEIPT"
+  },
+  "spot_market_observation": {
+    "venue": "Kraken",
+    "instrument": "XRP/USD spot",
+    "retrieved_at_utc": "2026-11-04T21:05:00Z",
+    "exchange_event_timestamp_utc": null,
+    "last_usd": 1.30059,
+    "best_bid_usd": 1.30041,
+    "best_bid_size_xrp": 1921,
+    "best_ask_usd": 1.30042,
+    "best_ask_size_xrp": 561,
+    "mid_usd": 1.300415,
+    "spread_usd": 0.000009999999999843467,
+    "spread_basis_points": 0.07689852854545255,
+    "displayed_top_of_book_imbalance": 0.547945205479452,
+    "volume_today_xrp": 37672535.84450642,
+    "volume_24h_xrp": 42977237.51961062,
+    "vwap_today_usd": 1.29209099,
+    "vwap_24h_usd": 1.29066544,
+    "trades_today": 32044,
+    "trades_24h": 35274,
+    "high_24h_usd": 1.34,
+    "low_24h_usd": 1.24016,
+    "utc_day_open_usd": 1.27513,
+    "last_vs_utc_day_open_pct": 1.99665916416365,
+    "last_vs_24h_vwap_pct": 0.7689490779268171,
+    "position_in_24h_range_fraction": 0.6052684294871784,
+    "model_eligible": false,
+    "limitations": [
+      "Kraken's o field is UTC-day open, not rolling 24-hour open.",
+      "Bid/ask quantities are only the displayed best levels; not a full depth curve.",
+      "A single top-of-book imbalance can be transient or spoofed.",
+      "No synchronized Coinbase/Binance depth snapshot was obtained through this research interface.",
+      "Rendered JSON cannot support the required byte-complete immutable raw receipt."
+    ]
+  },
+  "derivatives_disagreement": {
+    "provider_snapshots": [
+      {
+        "provider": "Kodexius",
+        "as_of_utc": "2026-11-04T12:49:00Z",
+        "open_interest_usd": 865530000,
+        "contract_count": 7
+      },
+      {
+        "provider": "Liqwall",
+        "as_of_utc": "2026-11-04T00:32:00Z",
+        "open_interest_usd": 1440000000,
+        "contract_universe": "all exchanges; unreconciled"
+      },
+      {
+        "provider": "TradRadar",
+        "as_of_utc": "2026-11-04T15:30:00Z",
+        "open_interest_usd": 2060000000,
+        "venues": 7
+      },
+      {
+        "provider": "Alpha Finance",
+        "as_of_utc": "2026-11-04T15:50:00Z",
+        "open_interest_usd": 2990000000,
+        "universe": "aggregated/modelled; venue list not exposed in excerpt"
+      }
+    ],
+    "interpretation": "The displayed open-interest estimates range from $865.53M to $2.99B, a 3.46x spread. This is not a valid same-time market range: providers use different contract/venue universes, quote conversions, update times and likely methodology. Do not average, train on, or treat the difference as an actual OI move.",
+    "common_signal": "Where displayed, funding is mildly positive near +0.0100% per 8 hours and long-account share is elevated around 70%-76%; these are secondary snapshots, not a verified synchronized positioning measure.",
+    "liquidation_data_status": "Alpha Finance's price-level clusters are modelled pressure estimates, not confirmed resting orders or actual exchange liquidation triggers.",
+    "model_eligible": false
+  },
+  "etf_flow_disagreement": {
+    "trading_day": "2026-11-03",
+    "observations": [
+      {
+        "provider": "ByKaranteli",
+        "reported_daily_net_flow_usd": 0,
+        "visible_fund_count": 5,
+        "provider_as_of_utc": "2026-11-04T09:09:00Z",
+        "settlement": "provisional"
+      },
+      {
+        "provider": "XRP Insights",
+        "reported_daily_net_flow_xrp": -162050,
+        "provider_estimated_usd": -207400,
+        "coverage": "six spot funds plus BITW index product",
+        "provider_as_of_utc": null
+      },
+      {
+        "provider": "Maketo",
+        "reported_daily_net_flow_usd": 0,
+        "visible_fund_count": 5,
+        "provider_as_of_utc": "2026-11-04T02:26:00Z"
+      }
+    ],
+    "interpretation": "Do not average. The zero-flow reports may reflect unchanged reported holdings or missing/partial issuer rows; XRP Insights reports a negative holdings-derived estimate over a broader universe. None is a final issuer-settled creation/redemption reconciliation.",
+    "model_eligible": false
+  },
+  "event_context": {
+    "xrpl_fixCleanup3_4_0": {
+      "status": "ENABLED",
+      "enabled_at_utc": "2026-11-04T14:52:00Z",
+      "ledger_index": 108112129,
+      "interpretation": "Protocol cleanup is active; native lending and SingleAssetVault remain unactivated, so no lending utilization or collateral-demand effect is inferred."
+    },
+    "macro_context_reference": "research/xrp_intelligence/20261104T183900Z-macro-geopolitical-market-update.json",
+    "circle_q3_reference": "research/xrp_intelligence/20261104T200200Z-circle-q3-source-correction.json",
+    "sbic_and_ask_coin_reference": "research/xrp_intelligence/20261104T200600Z-exact-phrase-entity-resolution-addendum.json"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "name": "spot-led recovery",
+      "supporting_evidence": [
+        "Kraken last is above its displayed 24-hour VWAP and UTC-day open.",
+        "Kraken spread is narrow at the displayed top of book."
+      ],
+      "disconfirming_evidence": [
+        "Only one venue is captured.",
+        "No synchronized multi-venue depth or trade-flow delta is available.",
+        "ETF flow reports for Nov 3 are flat or negative depending on universe and methodology."
+      ],
+      "status": "unresolved"
+    },
+    {
+      "id": "H2",
+      "name": "leverage-amplified move with crowded-long vulnerability",
+      "supporting_evidence": [
+        "Secondary providers show positive funding near +0.01% per 8h.",
+        "Two aggregators show 70%-76% long-account shares."
+      ],
+      "disconfirming_evidence": [
+        "Open-interest estimates differ by 3.46x and are not synchronized.",
+        "Account ratios are not notional net exposure.",
+        "Liquidation clusters are modelled, not actual order-book liquidity."
+      ],
+      "status": "unresolved"
+    },
+    {
+      "id": "H3",
+      "name": "institutional ETF demand is neutral rather than accelerating",
+      "supporting_evidence": [
+        "Two providers report zero Nov 3 net flow; one broader-universe provider reports approximately 162,050 XRP of outflow."
+      ],
+      "disconfirming_evidence": [
+        "All values are secondary holdings-derived estimates; the underlying issuer files have not been rebuilt to a common close."
+      ],
+      "status": "unresolved"
+    },
+    {
+      "id": "H4",
+      "name": "XRPL infrastructure adoption is advancing but not yet native-lending demand",
+      "supporting_evidence": [
+        "fixCleanup3_4_0 is enabled."
+      ],
+      "disconfirming_evidence": [
+        "LendingProtocol and SingleAssetVault remain below their required validator threshold and inactive."
+      ],
+      "status": "unresolved"
+    }
+  ],
+  "model_eligibility": {
+    "status": "INELIGIBLE",
+    "reasons": [
+      "No byte-complete raw payload receipts or immutable hashes for the web-rendered sources.",
+      "No synchronized cross-venue spot/depth/derivatives snapshot.",
+      "Derivative venue and contract universes are not normalized.",
+      "ETF flow universe and issuer settlement are not reconciled.",
+      "No historical point-in-time feature series is supplied by this artifact."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Capture raw bytes directly from Kraken, Coinbase and Binance public APIs; hash the exact bytes and persist immutable receipts.",
+    "Collect full depth ladders and synchronized trade/ticker snapshots with explicit venue timestamps and local receipt times.",
+    "Normalize exchange-native XRP perpetual contract identifiers, open-interest units, funding timestamps and quote currencies before aggregation.",
+    "Rebuild Nov 3 ETF flows from each issuer's daily holdings/creation-redemption files at a common close; preserve missing rows as missing, not zero.",
+    "Extend chronological point-in-time history before any walk-forward evaluation or directional forecast."
+  ]
+}

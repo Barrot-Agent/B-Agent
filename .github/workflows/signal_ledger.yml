@@ -1,18 +1,45 @@
-name: Barrot Signal Ledger (quarantined pending validated XRP forecast engine)
+name: Barrot Signal Ledger
+
+# Scheduled write-back was removed intentionally. Manual flow:
+# 1. Dispatch this workflow to generate fresh ledger artifacts.
+# 2. Download and review the uploaded snapshot artifact.
+# 3. Commit only the accepted `data/signal_ledger.jsonl` / `web/latest_signal.json`
+#    changes in a normal reviewed pull request.
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
-  disabled:
-    if: ${{ false }}
+  emit:
     runs-on: ubuntu-latest
     steps:
-      - name: Explain quarantine
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Dependencies
+        run: pip install numpy requests
+      - name: Emit signal
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python3 scripts/emit_signal.py
+      - name: Upload ledger snapshot
+        uses: actions/upload-artifact@v7
+        with:
+          name: signal-ledger-snapshot
+          path: |
+            data/signal_ledger.jsonl
+            web/latest_signal.json
+      - name: Document manual follow-up
         run: |
-          echo "The legacy signal emitter produces model-scored sentiment output, not a calibrated fixed-horizon XRP forecast."
-          echo "It can overwrite web/latest_signal.json and append a price-at-emission history without immutable outcome labels or leakage-safe evaluation."
-          echo "It remains disabled until it is replaced by the verified forecast ledger and publication-readiness gate."
-          echo "No model provider is called, no signal is emitted, and no repository or external mutation occurs."
+          {
+            echo "Ledger artifacts are emitted for review only."
+            echo ""
+            echo "Manual follow-up:"
+            echo "1. Download the artifact from this run."
+            echo "2. Review the generated JSONL/JSON files."
+            echo "3. Commit accepted changes through a reviewed pull request."
+          } >> "$GITHUB_STEP_SUMMARY"

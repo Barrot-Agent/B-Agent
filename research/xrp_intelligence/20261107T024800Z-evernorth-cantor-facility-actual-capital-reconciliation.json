@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "artifact_type": "evernorth_cantor_facility_actual_capital_reconciliation",
+  "captured_at_utc": "2026-11-07T02:48:00.000000Z",
+  "scope": "Evernorth XRP-treasury financing, optional Cantor equity-line mechanics, and exact-phrase provenance for actual capital",
+  "issuer": "Evernorth Holdings Inc.",
+  "instruments": [
+    {
+      "instrument_id": "evernorth_2026_10_12_convertible_senior_pik_notes",
+      "instrument_type": "debt",
+      "principal_usd": 30000000,
+      "funding_date": "2026-10-12",
+      "reported_proceeds_before_transaction_expenses_usd": 30000000,
+      "reported_net_cash_after_advisor_fee_usd": 29000000,
+      "capital_markets_advisor_fee_usd": 1000000,
+      "intended_use": "general corporate purposes, including potential XRP acquisition and XRP-ecosystem activities; no specific XRP purchase amount is committed by the note disclosure",
+      "status": "FUNDED_PER_ISSUER_SEC_DISCLOSURE",
+      "interpretation": "The $30M principal and $29M net cash after the disclosed $1M advisor fee are different accounting stages, not contradictory amounts."
+    },
+    {
+      "instrument_id": "evernorth_2026_10_23_cantor_common_stock_purchase_agreement",
+      "instrument_type": "optional_committed_equity_facility",
+      "counterparty": "CF Principal Investments LLC (Cantor)",
+      "agreement_date": "2026-10-23",
+      "maximum_new_shares": 5218935,
+      "ownership_cap_pct": 4.99,
+      "pre_agreement_share_cap_pct": 19.99,
+      "purchase_price_formula": "97% of applicable VWAP",
+      "purchase_volume_cap_pct_of_daily_trading_volume": 20,
+      "company_purchase_obligation": false,
+      "company_discretion": "Evernorth chooses whether and when to submit a VWAP purchase notice, subject to contractual conditions.",
+      "upfront_commitment_fee_usd": 521893.5,
+      "upfront_fee_character": "cash fee, fully earned and non-refundable regardless of whether any VWAP purchases are made or settled",
+      "additional_fee_cap_total_usd": 1000000,
+      "preliminary_s1_conditional_gross_proceeds_illustration_usd": 80700000,
+      "preliminary_s1_reference_closing_price_usd": 15.46,
+      "preliminary_s1_reference_date": "2026-10-22",
+      "final_424b3_conditional_gross_proceeds_illustration_usd": 76800000,
+      "final_424b3_reference_date": "2026-10-29",
+      "final_424b3_prospectus_date": "2026-10-30",
+      "confirmed_eLoc_proceeds_received_usd": null,
+      "confirmed_eLoc_share_purchases_disclosed_in_reviewed_filings": false,
+      "status": "FACILITY_DISCLOSED; ACTUAL_DRAW_NOT_ESTABLISHED_BY_REVIEWED_FILINGS",
+      "interpretation": "The $80.7M preliminary and $76.8M final prospectus figures are date-specific conditional gross-proceeds illustrations assuming the full share commitment is sold. They are not cash already received, not guaranteed proceeds, and not a committed XRP purchase."
+    }
+  ],
+  "exact_phrase_research": {
+    "phrase": "actual capital",
+    "issuer_primary_document_searches": [
+      {
+        "document": "SEC Form 424B3, filed 2026-10-30",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+        "result": "NO_MATCH",
+        "scope": "full document search returned no matching text"
+      }
+    ],
+    "non_primary_match": {
+      "publisher": "KuCoin Community Insights",
+      "author": "SonOfaRichard",
+      "published_at": "2026-09-17T21:16:03Z",
+      "url": "https://www.kucoin.com/news/articles/xrp-army-sits-on-473m-xrp-while-institutions-build-their-own-xrp-treasuries",
+      "quoted_excerpt": "actual capital stack around the treasury",
+      "excerpt_sha256": "f96e4ec3797cd7e7db70b72f3805de57a147b8276a467800e0d41cc4e30d504a",
+      "source_classification": "user-generated third-party commentary; the page disclaims that such content need not reflect KuCoin views",
+      "interpretation": "The post predates the Cantor agreement and discusses the $30M PIK note and XRP treasury structure. It is not an issuer disclosure and does not establish an ELOC draw."
+    }
+  },
+  "primary_sources": [
+    {
+      "source_id": "sec_8k_cantor_purchase_agreement",
+      "filing": "Form 8-K",
+      "filed_date": "2026-10-23",
+      "accession": "0001628280-26-067061",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "relevant_line_ranges": [
+        [
+          54,
+          71
+        ]
+      ],
+      "evidence_note": "SEC Form 8-K dated 2026-10-23: Evernorth may, at its sole discretion and subject to conditions, direct CF Principal Investments LLC (Cantor) to purchase up to 5,218,935 newly issued Class A shares. Purchase price is 97% of applicable VWAP, subject to 4.99% beneficial-ownership and 20% trading-volume limits. A $521,893.50 cash commitment fee is fully earned and non-refundable regardless of purchases.",
+      "evidence_note_sha256": "dd4f7a2f743556661b4e05e99cb0b3ad2f7ce5ed41b801f5053ed7f5cc5fa6a9",
+      "original_filing_bytes_retained": false
+    },
+    {
+      "source_id": "sec_424b3_cantor_facility_and_note_proceeds",
+      "filing": "Form 424B3",
+      "filed_date": "2026-10-30",
+      "accession": "0001628280-26-068590",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "relevant_line_ranges": [
+        [
+          10,
+          20
+        ],
+        [
+          1938,
+          1945
+        ],
+        [
+          1951,
+          1965
+        ],
+        [
+          3105,
+          3109
+        ],
+        [
+          6713,
+          6719
+        ]
+      ],
+      "evidence_notes": [
+        "SEC Form 424B3 dated 2026-10-30: up to approximately $76.8 million in aggregate gross proceeds is a conditional illustration assuming all 5,218,935 shares are sold at the cover-page closing price. It is not reported cash received. The facility remains subject to purchase notices, conditions and share/volume limits.",
+        "SEC Form 424B3: the $30.0 million Convertible Senior PIK Notes were funded on 2026-10-12. The prospectus describes approximately $30.0 million of proceeds before transaction expenses; the financial-statement note reports $29.0 million net cash after a $1.0 million capital-markets-advisor fee.",
+        "Full-document exact phrase search for actual capital in the SEC 424B3 returned no matching text."
+      ],
+      "evidence_note_sha256": [
+        "f10f8fc34ea79a77f1b14062dae1519ecf353a990a4268dfcb730adbd5eeddf8",
+        "29c23ef5df0c32b258e17a759da6c77021987d87eb29d48cc20b2ee399f2b124",
+        "72a3fcc8faa3d2f6755bcf0778d310a86ac017851558a20b1bf4e667345d5c95"
+      ],
+      "original_filing_bytes_retained": false
+    },
+    {
+      "source_id": "sec_s1_preliminary_cantor_facility_estimate",
+      "filing": "Form S-1",
+      "filed_date": "2026-10-23",
+      "accession": "0001628280-26-067081",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "relevant_line_ranges": [
+        [
+          11,
+          20
+        ]
+      ],
+      "evidence_note": "The preliminary prospectus illustrates up to approximately $80.7M of potential gross proceeds using the October 22, 2026 closing price of $15.46 and the maximum 5,218,935-share commitment; it is conditional, not cash received.",
+      "original_filing_bytes_retained": false,
+      "evidence_note_sha256": "0c13970255deb8362089f85ba03a468e7b69ee98fe0bdf1f2535bbac74cd5f8d"
+    }
+  ],
+  "provenance": {
+    "retrieval_time_utc": "2026-11-07T02:48:00.000000Z",
+    "hash_scope": "Hashes on evidence notes or quoted excerpts are hashes of the exact recorded note/excerpt text, not raw SEC HTML or HTTP wire bytes. SEC URLs, accession identifiers and line ranges are retained for primary-source retrieval.",
+    "source_independence": [
+      "SEC filings are issuer-filed primary disclosures.",
+      "The KuCoin Community Insights post is user-generated commentary, not independent confirmation of issuer financing."
+    ],
+    "accounting_reconciliation": {
+      "note_principal_usd": 30000000,
+      "cash_after_advisor_fee_usd": 29000000,
+      "advisor_fee_usd": 1000000,
+      "arithmetic": "30,000,000 - 1,000,000 = 29,000,000",
+      "status": "RECONCILED"
+    }
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "Capital-structure event evidence is retained for event-study research, but no timestamped point-in-time event feature or predictive effect has been validated."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "unresolved": [
+    "The reviewed SEC filings do not disclose an actual Cantor VWAP purchase amount or cash draw; absence from these filings does not prove that no purchase occurred.",
+    "No evidence in these filings earmarks a specific Cantor-facility draw for XRP purchases.",
+    "The preliminary and final potential-proceeds illustrations use different reference prices and should not be interpreted as a change in cash already raised."
+  ]
+}

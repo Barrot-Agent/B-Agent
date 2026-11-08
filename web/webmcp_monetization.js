@@ -31,10 +31,9 @@ function paywallResponse(toolName) {
   return {
     error: "payment_required",
     tool: toolName,
-    message: "Paid directional XRP signal access is paused pending validated fixed-horizon out-of-sample performance.",
-    purchase_url: null,
-    service_status: "PAUSED_PENDING_VALIDATION",
-    hint: "No new directional XRP signal subscriptions are available while the validation gate is closed.",
+    message: "This tool requires an active XRP Signal Service license.",
+    purchase_url: "https://prostarelite.gumroad.com/l/opvxi",
+    hint: "Pass your Gumroad license key as the 'license_key' parameter.",
   };
 }
 

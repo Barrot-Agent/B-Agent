@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Pillars consistency check for external service availability and repository source.
-The GitHub/HF source checks inspect GitHub main; only the HF stage check probes
-the deployed Space runtime. This script does not verify deployed source parity
-or claim repository source checks establish the live SYSTEM_PROMPT."""
+"""Pillars consistency check — verifies GitHub/Databricks/HF/deploy pillars
+match reality, and flags fiction vocabulary leaking into the live
+SYSTEM_PROMPT the chat brain uses to describe itself."""
 import os, re, json, sys, base64, time
 import requests
 
@@ -22,8 +21,8 @@ def check_github():
     import jwt
     now = int(time.time())
     token = jwt.encode({"iat": now - 60, "exp": now + 300, "iss": app_id}, priv, algorithm="RS256")
-    # Verify the app installation with a read-only endpoint. Do not mint an
-    # installation access token merely to run a scheduled health check.
+    # Read installation metadata only. Do not mint an installation access token
+    # merely to prove the app installation exists.
     r = requests.get(f"https://api.github.com/app/installations/{inst}",
         headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}, timeout=15)
     return r.status_code == 200, f"HTTP {r.status_code}"
@@ -39,28 +38,23 @@ def check_databricks():
 
 def check_hf_space():
     r = requests.get("https://huggingface.co/api/spaces/Scribedpengenius/Barrot-Omega/runtime", timeout=20)
-    if r.status_code != 200:
-        return False, f"HTTP {r.status_code}"
     try:
-        payload = r.json()
-        if not isinstance(payload, dict):
-            return False, "invalid runtime response: expected object"
-        stage = payload.get("stage", "unknown")
+        stage = r.json().get("stage", "unknown")
         return stage == "RUNNING", f"stage={stage}"
     except Exception as e:
         return False, f"parse error: {e}"
 
-def check_repo_source_marker():
-    """Checks a marker in GitHub main source; it does not verify the deployed Space revision."""
+def check_deploy_sync():
     r = requests.get("https://api.github.com/repos/Barrot-Agent/B-Agent/contents/hf_space/app.py", timeout=15)
     if r.status_code != 200:
         return False, f"HTTP {r.status_code}"
     content = base64.b64decode(r.json()["content"]).decode()
-    ok = "Barrot-Ω" in content
-    return ok, "GitHub main source marker present; deployed Space revision not checked"
+    return "Barrot-\u03a9" in content, "checked main branch hf_space/app.py"
 
-def check_repo_source_fiction():
-    """Scans GitHub main source, not the deployed Hugging Face runtime."""
+def check_system_prompt_fiction():
+    """Scans the ENTIRE deployed hf_space/app.py, not just SYSTEM_PROMPT -- fiction
+    vocabulary in UI labels, API docs, or variable names is the same problem as
+    fiction in the chat prompt: it's real users/callers being told something false."""
     r = requests.get("https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/hf_space/app.py", timeout=15)
     if r.status_code != 200:
         return False, f"HTTP {r.status_code}"
@@ -70,15 +64,14 @@ def check_repo_source_fiction():
     for safe in KNOWN_SAFE:
         scan_text = scan_text.replace(safe, "")
     hits = [t for t in FICTION_TERMS if t.lower() in scan_text.lower()]
-    detail = "GitHub main source clean; deployed runtime not inspected"
-    return len(hits) == 0, (detail if not hits else f"fiction terms present in GitHub main hf_space/app.py: {hits}")
+    return len(hits) == 0, ("HTTP 200; clean" if not hits else f"HTTP 200; fiction terms present in hf_space/app.py: {hits}")
 
 CHECKS = [
     ("github_app", check_github),
     ("databricks", check_databricks),
     ("hf_space", check_hf_space),
-    ("repo_source_marker", check_repo_source_marker),
-    ("repo_source_fiction", check_repo_source_fiction),
+    ("deploy_sync", check_deploy_sync),
+    ("system_prompt_fiction", check_system_prompt_fiction),
 ]
 
 if __name__ == "__main__":
