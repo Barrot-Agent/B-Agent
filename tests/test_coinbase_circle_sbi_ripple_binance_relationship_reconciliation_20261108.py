@@ -96,7 +96,7 @@ def test_coinbase_rlusd_distribution_is_live_but_global_exchange_collateral_was_
     assert relationship["product_availability"] == ["Coinbase Prime", "Coinbase Exchange", "Coinbase retail"]
     assert relationship["chains"] == ["XRPL", "Base", "Ethereum"]
     assert relationship["global_exchange_collateral_status"] == "planned_later_phase_not_live_at_2026-10-28_launch"
-    assert "does not imply XRP settlement" in relationship["inference_limit"]
+    assert "does not imply XRP settlement" in load_artifact()["source_independence_and_disagreement"]["rlusd_limit"]
 
 
 def test_sbi_ripple_asia_and_circle_sbi_japan_are_distinct_joint_ventures() -> None:
