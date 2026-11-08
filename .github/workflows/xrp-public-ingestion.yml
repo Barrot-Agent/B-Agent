@@ -107,9 +107,12 @@ jobs:
             echo "No trusted unexpired feature-store checkpoint or daily archive; bootstrapping."
           fi
       - name: Capture public XRP market sources and evaluate historical baselines
+        env:
+          WALK_FORWARD_HORIZONS: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *') && '1h,4h,24h,7d,30d' || '1h' }}
         run: >-
           python -m barrot_agent.evolution.xrp_public_ingestion
           --output-dir artifacts/xrp_ingestion
+          --walk-forward-horizons "$WALK_FORWARD_HORIZONS"
           --coinbase-backfill-days "${{ github.event_name == 'workflow_dispatch' && inputs.coinbase_backfill_days || 0 }}"
       - name: Upload immutable raw-source receipts
         uses: actions/upload-artifact@v7

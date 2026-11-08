@@ -14,6 +14,7 @@ import barrot_agent.evolution.xrp_public_ingestion as xrp_ingestion
 from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.xrp_public_ingestion import (
     RawReceiptArchive,
+    _normalize_walk_forward_horizons,
     _walk_forward_report,
     _coinbase_candle_backfill_ranges,
     XRPIngestionError,
@@ -843,6 +844,8 @@ def test_feature_store_recovery_contract_docs_match_workflow_policy():
     assert "deletes any restore-key file" in feature_contract.lower()
     assert "external WORM" in feature_contract
     assert "no scheduled main-branch run is verified" in forecast_contract
+    assert "daily 00:15 UTC schedule and manual dispatch evaluate" in forecast_contract
+    assert "block-bootstrap scoring" in forecast_contract
 
 
 def test_walk_forward_overall_status_is_partial_until_every_venue_is_scored(tmp_path, monkeypatch):
@@ -898,6 +901,65 @@ def test_walk_forward_overall_status_is_scored_only_when_all_venues_are_scored(t
 
     assert report["all_venues_scored"] is True
     assert report["overall_status"] == "SCORED"
+    assert report["live_forecast_issued"] is False
+    assert report["paper_trade_executed"] is False
+
+
+def test_walk_forward_horizon_parser_accepts_only_unique_supported_labels():
+    assert _normalize_walk_forward_horizons("1h,4h,24h,7d,30d") == (
+        "1h",
+        "4h",
+        "24h",
+        "7d",
+        "30d",
+    )
+    assert _normalize_walk_forward_horizons(("30d", "1h")) == ("30d", "1h")
+    with pytest.raises(XRPIngestionError, match="duplicate walk-forward horizon"):
+        _normalize_walk_forward_horizons("1h,1h")
+    with pytest.raises(XRPIngestionError, match="unsupported walk-forward horizon"):
+        _normalize_walk_forward_horizons("1h,2h")
+    with pytest.raises(XRPIngestionError, match="at least one supported horizon"):
+        _normalize_walk_forward_horizons("")
+
+
+def test_walk_forward_report_evaluates_daily_horizon_matrix_with_horizon_sized_embargo(tmp_path, monkeypatch):
+    store = HistoricalFeatureStore(tmp_path / "features.sqlite3")
+    calls = []
+
+    def fake_evaluator(records, **kwargs):
+        calls.append(kwargs)
+        return {
+            "status": "SCORED",
+            "forecast_count": 1,
+            "forecasts": [],
+            "live_forecast_issued": False,
+            "paper_trade_executed": False,
+        }
+
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.evaluate_chronological_walk_forward",
+        fake_evaluator,
+    )
+    report, history = _walk_forward_report(
+        store,
+        evaluation_as_of_utc="2026-11-08T13:00:00Z",
+        horizons=("1h", "4h", "24h", "7d", "30d"),
+    )
+
+    assert history == []
+    assert len(calls) == 10
+    assert report["evaluation_count"] == 10
+    assert report["requested_horizons"] == ["1h", "4h", "24h", "7d", "30d"]
+    assert set(report["requested_horizons_seconds"]) == {3600, 14400, 86400, 604800, 2592000}
+    assert all(call["embargo_seconds"] == call["horizon_seconds"] for call in calls)
+    assert report["all_venue_horizon_pairs_scored"] is True
+    assert report["all_horizons_scored"] is True
+    assert report["all_venues_scored"] is True
+    assert report["overall_status"] == "SCORED"
+    assert report["forecast_count"] == 10
+    assert report["evaluations"]["binance_xrpusdt_30d"]["horizon_label"] == "30d"
+    assert report["model_eligible"] is False
+    assert "target windows overlap" in report["oos_dependence_policy"]
     assert report["live_forecast_issued"] is False
     assert report["paper_trade_executed"] is False
 
@@ -1870,6 +1932,10 @@ def test_coinbase_historical_backfill_is_manual_only_and_does_not_expand_permiss
     assert "default: 0" in workflow
     assert "maximum 365 days" in workflow
     assert "--coinbase-backfill-days" in workflow
+    assert "--walk-forward-horizons" in workflow
+    assert "WALK_FORWARD_HORIZONS" in workflow
+    assert "'1h,4h,24h,7d,30d'" in workflow
+    assert "github.event.schedule == '15 0 * * *'" in workflow
     assert "github.event_name == 'workflow_dispatch'" in workflow
     assert "contents: read" in workflow
     assert "contents: write" not in workflow

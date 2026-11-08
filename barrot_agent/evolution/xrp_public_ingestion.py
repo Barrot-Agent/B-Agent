@@ -39,6 +39,17 @@ MAX_COINBASE_BACKFILL_DAYS = 365
 MAX_COINBASE_BACKFILL_PAGES = 30
 COINBASE_BACKFILL_PAGE_DELAY_SECONDS = 0.5
 
+WALK_FORWARD_HORIZON_SECONDS = {
+    "1h": 3_600,
+    "4h": 14_400,
+    "24h": 86_400,
+    "7d": 604_800,
+    "30d": 2_592_000,
+}
+DEFAULT_WALK_FORWARD_HORIZONS = ("1h",)
+FULL_WALK_FORWARD_HORIZONS = tuple(WALK_FORWARD_HORIZON_SECONDS)
+WALK_FORWARD_REPORT_VERSION = "xrp-walk-forward-matrix-v1"
+
 ENDPOINTS = (
     ("binance_spot_ticker", "https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT"),
     ("binance_spot_klines", "https://api.binance.com/api/v3/klines?symbol=XRPUSDT&interval=1h&limit=1000"),
@@ -3123,59 +3134,105 @@ def _prepare_feature_delta(
     return delta
 
 
+def _normalize_walk_forward_horizons(value: str | tuple[str, ...] | list[str]) -> tuple[str, ...]:
+    if isinstance(value, str):
+        parts = value.split(",")
+    elif isinstance(value, (tuple, list)):
+        parts = list(value)
+    else:
+        raise XRPIngestionError("walk_forward_horizons must be a comma-separated string, tuple or list")
+    if not parts:
+        raise XRPIngestionError("walk_forward_horizons must contain at least one supported horizon")
+    normalized: list[str] = []
+    for part in parts:
+        if not isinstance(part, str) or not part.strip():
+            raise XRPIngestionError("walk_forward_horizons must contain non-empty horizon labels")
+        label = part.strip().lower()
+        if label not in WALK_FORWARD_HORIZON_SECONDS:
+            raise XRPIngestionError(f"unsupported walk-forward horizon: {label}")
+        if label in normalized:
+            raise XRPIngestionError(f"duplicate walk-forward horizon: {label}")
+        normalized.append(label)
+    return tuple(normalized)
+
+
 def _walk_forward_report(
     store: HistoricalFeatureStore,
     *,
     evaluation_as_of_utc: str,
+    horizons: tuple[str, ...] | list[str] | str = DEFAULT_WALK_FORWARD_HORIZONS,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    horizon_labels = _normalize_walk_forward_horizons(horizons)
     history = store.records_through("XRP", evaluation_as_of_utc)
     evaluations: dict[str, Any] = {}
     configurations = (
         {
-            "key": "binance_xrpusdt_1h",
+            "key": "binance_xrpusdt",
             "feature_id": "xrp.spot.binance.1h.close_price",
             "venue": "binance",
             "currency_pair": "XRP/USDT",
         },
         {
-            "key": "coinbase_xrpusd_1h",
+            "key": "coinbase_xrpusd",
             "feature_id": "xrp.spot.coinbase.1h.close_price",
             "venue": "coinbase",
             "currency_pair": "XRP/USD",
         },
     )
     for config in configurations:
-        try:
-            evaluations[config["key"]] = evaluate_chronological_walk_forward(
-                history,
-                feature_id=config["feature_id"],
-                evaluation_as_of_utc=evaluation_as_of_utc,
-                horizon_seconds=3600,
-                embargo_seconds=3600,
-                min_train_samples=100,
-                min_out_of_sample_samples=100,
-                target_tolerance_seconds=300,
-                max_origin_age_seconds=3600,
-                venue=config["venue"],
-                currency_pair=config["currency_pair"],
-            )
-        except WalkForwardEvaluationError as exc:
-            evaluations[config["key"]] = {
-                "status": "BLOCKED",
-                "reason": str(exc),
-                "forecast_count": 0,
-                "forecasts": [],
-                "live_forecast_issued": False,
-            }
+        for horizon_label in horizon_labels:
+            horizon_seconds = WALK_FORWARD_HORIZON_SECONDS[horizon_label]
+            evaluation_key = f"{config['key']}_{horizon_label}"
+            try:
+                result = evaluate_chronological_walk_forward(
+                    history,
+                    feature_id=config["feature_id"],
+                    evaluation_as_of_utc=evaluation_as_of_utc,
+                    horizon_seconds=horizon_seconds,
+                    embargo_seconds=horizon_seconds,
+                    min_train_samples=100,
+                    min_out_of_sample_samples=100,
+                    target_tolerance_seconds=300,
+                    max_origin_age_seconds=3600,
+                    venue=config["venue"],
+                    currency_pair=config["currency_pair"],
+                )
+                result = dict(result)
+                result["horizon_label"] = horizon_label
+                evaluations[evaluation_key] = result
+            except WalkForwardEvaluationError as exc:
+                evaluations[evaluation_key] = {
+                    "status": "BLOCKED",
+                    "reason": str(exc),
+                    "venue": config["venue"],
+                    "currency_pair": config["currency_pair"],
+                    "feature_id": config["feature_id"],
+                    "horizon_label": horizon_label,
+                    "horizon_seconds": horizon_seconds,
+                    "embargo_seconds": horizon_seconds,
+                    "forecast_count": 0,
+                    "forecasts": [],
+                    "live_forecast_issued": False,
+                    "paper_trade_executed": False,
+                }
     forecast_count = sum(
         int(result.get("forecast_count", 0))
         for result in evaluations.values()
     )
     statuses = {result.get("status", "UNKNOWN") for result in evaluations.values()}
-    all_venues_scored = bool(evaluations) and all(
-        result.get("status") == "SCORED" for result in evaluations.values()
+    all_venue_horizon_pairs_scored = (
+        len(evaluations) == len(configurations) * len(horizon_labels)
+        and bool(evaluations)
+        and all(result.get("status") == "SCORED" for result in evaluations.values())
     )
-    if all_venues_scored:
+    all_horizons_scored = all(
+        all(
+            evaluations.get(f"{config['key']}_{horizon_label}", {}).get("status") == "SCORED"
+            for config in configurations
+        )
+        for horizon_label in horizon_labels
+    )
+    if all_venue_horizon_pairs_scored:
         overall_status = "SCORED"
     elif "SCORED" in statuses or "BLOCKED" in statuses:
         overall_status = "PARTIAL_OR_BLOCKED"
@@ -3184,27 +3241,40 @@ def _walk_forward_report(
     report = {
         "schema_version": 1,
         "artifact_type": "xrp_historical_walk_forward_evaluation",
+        "evaluation_matrix_version": WALK_FORWARD_REPORT_VERSION,
         "evaluation_as_of_utc": evaluation_as_of_utc,
         "history_record_count": len(history),
         "feature_store_snapshot_count": store.snapshot_count(),
+        "requested_horizons": list(horizon_labels),
+        "requested_horizons_seconds": [WALK_FORWARD_HORIZON_SECONDS[label] for label in horizon_labels],
+        "evaluation_count": len(evaluations),
         "overall_status": overall_status,
-        "all_venues_scored": all_venues_scored,
+        "all_venues_scored": all_venue_horizon_pairs_scored,
+        "all_venue_horizon_pairs_scored": all_venue_horizon_pairs_scored,
+        "all_horizons_scored": all_horizons_scored,
         "forecast_count": forecast_count,
         "evaluations": evaluations,
         "historical_backtest_only": True,
         "live_forecast_issued": False,
         "paper_trade_executed": False,
         "model_eligible": False,
+        "oos_dependence_policy": (
+            "Origins remain hourly. For horizons longer than one hour, target windows overlap and "
+            "out-of-sample scores are dependent; no block bootstrap, HAC interval or effective-sample-size "
+            "adjustment is implemented. Results remain descriptive and model-ineligible."
+        ),
         "limitations": [
             "These are chronological historical baseline evaluations, not live directional forecasts.",
-            "The evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly close features only.",
+            "The evaluator uses Binance XRP/USDT and Coinbase XRP/USD hourly close features across the configured horizon matrix.",
+            "The hourly schedule evaluates only 1h; the daily 00:15 UTC schedule and manual dispatch evaluate 1h, 4h, 24h, 7d and 30d.",
+            "Every horizon uses an embargo equal to its horizon and requires at least 100 point-in-time training examples and 100 out-of-sample origins; insufficient history is reported, never relaxed.",
+            "Origins remain hourly and target windows overlap for horizons longer than one hour; dependence-aware confidence intervals and block-bootstrap scoring are not implemented.",
             "The feature store cache is derived and evictable; raw per-run artifacts are the source receipts.",
             "Rolling temporal temperature scaling is applied only to deterministic baseline probabilities using earlier resolved out-of-sample outcomes; this is not a trained model or independent shadow evaluation.",
             "Shadow evaluation remains unimplemented. A separate univariate PSI drift report is generated by the scheduled collector but does not measure label/concept drift or authorize forecasts.",
         ],
     }
     return report, history
-
 
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
@@ -3350,12 +3420,14 @@ def run_ingestion(
     now: datetime | None = None,
     include_noncommercial_xrpl_nodes: bool = False,
     coinbase_backfill_days: int = 0,
+    walk_forward_horizons: tuple[str, ...] | list[str] | str = DEFAULT_WALK_FORWARD_HORIZONS,
 ) -> dict[str, Any]:
-    """Capture public XRP data; optional Coinbase history backfill is manual-only."""
+    """Capture public XRP data; scheduled hourly runs use 1h and daily runs may evaluate the full horizon matrix."""
     if not isinstance(include_noncommercial_xrpl_nodes, bool):
         raise XRPIngestionError("include_noncommercial_xrpl_nodes must be a boolean")
     if isinstance(coinbase_backfill_days, bool) or not isinstance(coinbase_backfill_days, int) or not 0 <= coinbase_backfill_days <= MAX_COINBASE_BACKFILL_DAYS:
         raise XRPIngestionError(f"coinbase_backfill_days must be an integer from 0 to {MAX_COINBASE_BACKFILL_DAYS}")
+    normalized_walk_forward_horizons = _normalize_walk_forward_horizons(walk_forward_horizons)
     captured = now or datetime.now(timezone.utc)
     captured_s = _iso(captured)
     selected_endpoints = (
@@ -3615,6 +3687,7 @@ def run_ingestion(
     walk_forward, history_records = _walk_forward_report(
         store,
         evaluation_as_of_utc=evaluation_as_of_s,
+        horizons=normalized_walk_forward_horizons,
     )
     drift_report = monitor_feature_drift(
         history_records,
@@ -3685,6 +3758,9 @@ def run_ingestion(
         "feature_store_restore_source": os.getenv("BARROT_FEATURE_STORE_RESTORE_SOURCE", "unknown"),
         "walk_forward_status": walk_forward["overall_status"],
         "walk_forward_forecast_count": walk_forward["forecast_count"],
+        "walk_forward_report_version": WALK_FORWARD_REPORT_VERSION,
+        "walk_forward_horizon_labels": list(normalized_walk_forward_horizons),
+        "walk_forward_horizons_seconds": [WALK_FORWARD_HORIZON_SECONDS[label] for label in normalized_walk_forward_horizons],
         "drift_monitor_version": DRIFT_MONITOR_VERSION,
         "drift_status": drift_report["status"],
         "drift_report_path": "drift_report.json",
@@ -3719,7 +3795,7 @@ def run_ingestion(
             "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase history beyond the latest endpoint page is manual-only, bounded to 365 additional days, paged at no more than 300 hourly candles per request, and never polled by the scheduled workflow.",
             "Raw source bytes and receipts are retained in per-run artifacts for 90 days; independent external timestamp anchoring and long-term immutable object storage are not configured.",
             "The cumulative SQLite feature store uses an exact-key cache when available, otherwise the latest successful per-run checkpoint (7-day retention), with the daily/manual archive (90-day retention) as fallback. Cache remains derived and evictable; if no checkpoint or daily archive is available, continuity can still fall back to bootstrap. Automatic rebuild from raw receipts is not yet implemented.",
-            "The historical evaluator currently covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; no synchronized derivatives, ETF, exchange-wallet-flow, institutional collateral, stablecoin, custody, payment-rail or regulatory feature history is included.",
+            "The historical evaluator covers Binance XRP/USDT and Coinbase XRP/USD hourly closes across the configured 1h, 4h, 24h, 7d and 30d horizon matrix; hourly scheduled runs evaluate 1h, while daily/manual runs evaluate the full matrix with horizon-sized embargoes. Multi-day target windows overlap and no dependence-aware confidence interval or block-bootstrap adjustment is implemented; results remain descriptive and model-ineligible.",
             "XRP Insights attributed exchange-wallet balances are scheduled for hash-only raw capture; they are not promoted to exchange-flow features until date, wallet-set, same-wallet and coverage-change semantics are parsed and independently checked.",
             "XRP Insights ETF metadata is retained with a raw receipt; its CSV is schema-validated in memory, recorded as a hash-only receipt under the publisher redistribution terms, and reduced to one attributed latest-date aggregate that is never promoted to model features.",
             "Bitwise XRP ETF, Grayscale GXRP and REX XRPR primary issuer pages are captured as SHA-256-receipted raw-only HTML; holdings are not parsed into features until page-vintage and parser validation are implemented.",
@@ -3742,8 +3818,18 @@ def main() -> None:
         default=0,
         help="Manual-only additional Coinbase XRP-USD hourly history before the latest candle page (0 disables; maximum 365 days).",
     )
+    parser.add_argument(
+        "--walk-forward-horizons",
+        default="1h",
+        help="Comma-separated historical evaluation horizons: 1h,4h,24h,7d,30d. The scheduled workflow selects 1h hourly and the full matrix daily.",
+    )
     args = parser.parse_args()
-    summary = run_ingestion(args.output_dir, coinbase_backfill_days=args.coinbase_backfill_days)
+    horizons = _normalize_walk_forward_horizons(args.walk_forward_horizons)
+    summary = run_ingestion(
+        args.output_dir,
+        coinbase_backfill_days=args.coinbase_backfill_days,
+        walk_forward_horizons=horizons,
+    )
     print(json.dumps(summary, indent=2, sort_keys=True))
 
 
