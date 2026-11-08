@@ -56,13 +56,15 @@ def check_system_prompt_fiction():
     vocabulary in UI labels, API docs, or variable names is the same problem as
     fiction in the chat prompt: it's real users/callers being told something false."""
     r = requests.get("https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/hf_space/app.py", timeout=15)
+    if r.status_code != 200:
+        return False, f"HTTP {r.status_code}"
     text = r.text
     KNOWN_SAFE = ["mrp_label AS signal_label"]  # real DB column, aliased not renamed
     scan_text = text
     for safe in KNOWN_SAFE:
         scan_text = scan_text.replace(safe, "")
     hits = [t for t in FICTION_TERMS if t.lower() in scan_text.lower()]
-    return len(hits) == 0, ("clean" if not hits else f"fiction terms present in hf_space/app.py: {hits}")
+    return len(hits) == 0, ("HTTP 200; clean" if not hits else f"HTTP 200; fiction terms present in hf_space/app.py: {hits}")
 
 CHECKS = [
     ("github_app", check_github),

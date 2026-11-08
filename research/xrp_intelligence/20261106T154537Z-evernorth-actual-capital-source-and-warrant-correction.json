@@ -1,0 +1,93 @@
+{
+  "schema_version": "barrot.xrp-research.correction.v1",
+  "artifact_id": "evernorth_actual_capital_source_and_warrant_correction_20261106T154537Z",
+  "artifact_type": "append_only_source_metadata_and_capital_reconciliation_correction",
+  "recorded_at_utc": "2026-11-06T15:45:37Z",
+  "supersedes_artifact_id": "evernorth_actual_capital_eloc_warrant_reconciliation_20261106T154537Z",
+  "superseded_artifact_blob_sha": "5cafe9338521909969fac9a63b785df1aa944e2d",
+  "correction_reason": [
+    "Correct the ELOC Form 8-K URL to the issuer's actual evernorth-elocx8xk.htm primary filing.",
+    "Correct the public-warrant prospectus URL and its prospectus date.",
+    "Correct the EFFECT date for registration 333-294417 to 2026-08-27; it is not an ELOC registration.",
+    "Add the contractual 12-month post-business-combination warrant exercise commencement, which means the public warrants were not yet exercisable on 2026-11-06.",
+    "Reconcile the 388.910554M XRP in-kind total from the five disclosed contribution channels."
+  ],
+  "source_overrides": {
+    "eloc_8k": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "display_time_utc": "2026-10-23"
+    },
+    "warrant_prospectus": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419096/d824062d424b3.htm",
+      "display_time_utc": "2026-10-09",
+      "normalized_excerpt": "Evernorth prospectus supplement dated 2026-10-09 under Registration No. 333-294417 covers 11,499,992 public warrants. The company receives proceeds only if warrants are exercised for cash. Each Pubco Warrant is exercisable for one Class A share at $11.50, commencing 12 months after the October 9, 2026 business-combination closing; earliest contractual commencement is approximately 2027-10-09, subject to the warrant agreement and other conditions.",
+      "normalized_excerpt_sha256": "ec7eb9407db7f18d18d8f3cf36713f143d1b3a2190d0195f1f00ba90bc40166c"
+    },
+    "registration_disambiguation": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526002777/9999999995-26-002777-index-headers.html",
+      "display_time_utc": "2026-08-27",
+      "normalized_excerpt": "SEC EDGAR EFFECT filing for Evernorth file number 333-294417 shows effectiveness date 2026-08-27. That registration relates to the public-warrant share registration. The separate ELOC resale prospectus is filed under registration number 333-299620 and dated 2026-10-30. Do not attribute the 333-294417 EFFECT date to the ELOC.",
+      "normalized_excerpt_sha256": "513aaec64fb8fb84809e1b17f9cfcecfcf3f5f678b8c696a46f2f6da4690b2ba"
+    },
+    "in_kind_breakdown": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419096/d824062d424b3.htm",
+      "display_time_utc": "2026-10-09",
+      "normalized_excerpt": "The SEC prospectus describes XRP contributions of 126,791,458 XRP from Ripple; 600,000 XRP from Advance Funding Subscribers; 200,000 XRP from Delayed Funding Subscribers; 211,319,096.061435 XRP through the Series C Subscription; and 50,000,000 XRP from the Contributor Related Party Entity. These sum to 388,910,554.061435 XRP, reported in rounded form as approximately 388,910,554 XRP. The 261,919,096 XRP 'Pubco XRP' subtotal is 600,000 + 211,319,096 + 50,000,000 and is not the full in-kind total.",
+      "normalized_excerpt_sha256": "84dc127c09380522ea5b3c84cad36c696085ddaf717a2fb90eb3f8e4f2cfc468",
+      "raw_http_bytes_captured": false,
+      "independence_group": "evernorth_sec_primary"
+    }
+  },
+  "registration_statement_disambiguation": {
+    "eloc_file_number": "333-299620",
+    "eloc_final_prospectus_date": "2026-10-30",
+    "eloc_effect_notice_date_independently_located": false,
+    "public_warrant_file_number": "333-294417",
+    "public_warrant_effective_date": "2026-08-27",
+    "warning": "The 333-294417 EFFECT applies to the public-warrant registration. It is not the ELOC registration."
+  },
+  "public_warrants_correction": {
+    "warrant_count": 11499992,
+    "exercise_price_usd": 11.5,
+    "business_combination_closing_date": "2026-10-09",
+    "contractual_exercise_commencement": "12 months after business-combination closing",
+    "earliest_exercise_date_approx": "2027-10-09",
+    "exercisable_as_of_2026_11_06": false,
+    "cash_proceeds_only_if_exercised_for_cash": true,
+    "maximum_cash_exercise_gross_proceeds_usd": 132249908,
+    "actual_exercises_verified": false,
+    "interpretation": "The $132.25M is a future conditional maximum, not current or realized capital. The warrants were not yet contractually exercisable as of 2026-11-06."
+  },
+  "in_kind_contribution_reconciliation": {
+    "components_xrp": {
+      "ripple_contribution": 126791458,
+      "advance_funding_subscribers": 600000,
+      "delayed_funding_subscribers": 200000,
+      "series_c_subscription": 211319096.061435,
+      "contributor_related_party_entity": 50000000
+    },
+    "total_xrp_exact": 388910554.061435,
+    "total_xrp_reported_rounded": 388910554,
+    "pubco_xrp_subtotal": 261919096,
+    "pubco_xrp_subtotal_components": {
+      "advance_funding_subscribers": 600000,
+      "series_c_subscription_rounded": 211319096,
+      "contributor_related_party_entity": 50000000
+    },
+    "distinction": "The 261,919,096 Pubco XRP subtotal is not the full 388,910,554 in-kind total; Ripple's 126,791,458 and delayed-funding 200,000 XRP are separate components."
+  },
+  "source_receipt_scope": "Normalized excerpt hashes only; complete SEC HTTP response bytes and headers were not captured.",
+  "no_other_source_or_capital_value_changed": true,
+  "model_eligibility": {
+    "eligible": false
+  },
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false
+  },
+  "safety": {
+    "research_only": true,
+    "no_paper_trade": true,
+    "no_real_money_action": true
+  }
+}

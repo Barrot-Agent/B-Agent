@@ -1,0 +1,318 @@
+{
+  "schema_version": "barrot-xrp-research-artifact-v1",
+  "artifact_id": "c2fo_instant_pay_rlusd_xrp_demand_separation_20261108",
+  "captured_on_utc_date": "2026-11-08",
+  "event_date": "2026-10-27",
+  "title": "C2FO Instant Pay on XRPL: RLUSD settlement versus XRP operational demand",
+  "evidence_capture": {
+    "method": "web-rendered public page extraction",
+    "retrieval_date_utc": "2026-11-08",
+    "raw_http_bytes_captured": false,
+    "response_headers_captured": false,
+    "receipt_scope": "SHA-256 hashes apply only to the five normalized source excerpts in source_receipts. The secondary commentary summary is cited separately and is not hash-receipted. No raw page bytes or HTTP headers were captured.",
+    "lawful_public_sources": true
+  },
+  "entities": [
+    {
+      "name": "C2FO",
+      "role": "working-capital platform and Instant Pay product operator/partner"
+    },
+    {
+      "name": "Ripple",
+      "role": "XRPL/RLUSD infrastructure and product partner"
+    },
+    {
+      "name": "XRP Ledger",
+      "role": "public ledger used for financing/settlement activity"
+    },
+    {
+      "name": "RLUSD",
+      "role": "announced settlement asset"
+    },
+    {
+      "name": "XRP",
+      "role": "native asset used for transaction costs and account/owner reserves"
+    },
+    {
+      "name": "BNY",
+      "role": "primary RLUSD reserve custodian; eligible-client XRP/RLUSD custody; separate exploratory trade-finance relationship"
+    }
+  ],
+  "commercial_activity": {
+    "c2fo_existing_early_pay_working_capital_claims": [
+      {
+        "publisher": "C2FO",
+        "reported_value_usd": 525000000000,
+        "qualifier": "more than",
+        "scope": "existing C2FO Early Pay programs",
+        "source_id": "c2fo_instant_pay_joint_release",
+        "is_xrpl_volume": false,
+        "is_instant_pay_volume": false
+      },
+      {
+        "publisher": "Ripple",
+        "reported_value_usd": 520000000000,
+        "qualifier": "more than",
+        "scope": "existing C2FO Early Pay programs",
+        "source_id": "ripple_instant_pay_joint_release",
+        "is_xrpl_volume": false,
+        "is_instant_pay_volume": false
+      }
+    ],
+    "discrepancy": {
+      "status": "UNRESOLVED_SOURCE_WORDING_DIFFERENCE",
+      "difference_usd": 5000000000,
+      "interpretation": "C2FO's own page says more than $525B; Ripple's mirror says more than 520 billion. They are mirrors of the same joint announcement and not independent measurements. Preserve both; do not average or silently choose."
+    },
+    "rlusd_announcement_claim": {
+      "market_cap_usd_greater_than": 2500000000,
+      "issued_on_xrpl_usd_greater_than": 1000000000,
+      "as_of": "2026-10-27 announcement",
+      "attribution": "issuer/partner announcement claim; not independently reconciled in this artifact"
+    }
+  },
+  "product_state": {
+    "name": "C2FO Instant Pay",
+    "status": "ANNOUNCED_INITIATIVE_WAITLIST; PRODUCTION_THROUGHPUT_NOT_DISCLOSED",
+    "announced_financing_and_settlement_ledger": "XRPL",
+    "settlement_asset": "RLUSD",
+    "funding_source": "participating capital providers; individual providers and committed/deployed amounts not disclosed",
+    "supplier_value_proposition": "receive funds against approved invoices in seconds rather than days, while invoice terms and due dates remain as agreed",
+    "production_launch_date": null,
+    "verified_transaction_count": null,
+    "verified_settlement_volume_usd": null,
+    "verified_rlusd_payment_volume": null,
+    "verified_xrp_bridge_volume": null,
+    "verified_xrp_purchases": null
+  },
+  "xrp_protocol_utility": {
+    "transaction_fee_asset": "XRP",
+    "standard_transaction_minimum_drops": 10,
+    "drops_per_xrp": 1000000,
+    "illustrative_xrp_burn_per_100000_standard_transactions_at_minimum": 1,
+    "fee_behavior": "Transaction cost is destroyed in XRP and can rise with network load; actual fee depends on transaction type and load.",
+    "mainnet_base_reserve_xrp": 1,
+    "mainnet_owner_reserve_xrp_per_object": 0.2,
+    "reserve_behavior": "Reserve balances are held in XRP, are not the same as burned fees, can be used to pay fees, and may be partly recovered by deleting an account.",
+    "bridge_asset_use": "NOT_DISCLOSED",
+    "inference_limit": "Invoice notional does not determine XRP fees. XRP operational demand depends on transaction count/types, fee levels, account architecture, owner objects and any separately disclosed XRP conversion/bridge route."
+  },
+  "relationship_separation": {
+    "c2fo_instant_pay": "XRPL financing/settlement initiative with RLUSD as the disclosed payment asset.",
+    "bny_custody": "Separate BNY/Ripple custody and reserve-custody role; eligible-client XRP/RLUSD custody does not establish balances or purchases.",
+    "bny_c2fo_trade_finance": "Separate exploratory tokenized trade-finance initiative; not proof that it is part of Instant Pay production flows.",
+    "do_not_conflate": [
+      "C2FO lifetime Early Pay working capital with Instant Pay volume",
+      "RLUSD market capitalization with XRP purchases",
+      "RLUSD settlement on XRPL with XRP bridge conversion",
+      "BNY custody capability with actual custody balances",
+      "announced initiative/waitlist with recurring production payments"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1_RLUSD_DIRECT_SETTLEMENT",
+      "statement": "Instant Pay settles supplier payments directly in RLUSD; XRP is used only for protocol fees and account/owner reserves.",
+      "status": "BEST_SUPPORTED_BY_ANNOUNCEMENT",
+      "evidence": [
+        "C2FO and Ripple both name RLUSD as settlement currency",
+        "XRPL docs require transaction fees in XRP and account/owner reserves in XRP"
+      ],
+      "limitations": [
+        "No production wallet attribution or transaction data"
+      ]
+    },
+    {
+      "id": "H2_XRP_BRIDGE_CONVERSION",
+      "statement": "Some cross-currency conversion stages may route through XRP.",
+      "status": "POSSIBLE_NOT_DISCLOSED",
+      "evidence": [
+        "XRP can serve as a bridge asset in other XRPL payment routes"
+      ],
+      "limitations": [
+        "No C2FO/Ripple announcement identifies XRP as an Instant Pay bridge asset; invoice size and RLUSD settlement do not prove it"
+      ]
+    },
+    {
+      "id": "H3_LOW_DIRECT_XRP_VALUE_CAPTURE",
+      "statement": "The initiative could generate ledger activity while producing small XRP fee burn relative to invoice notional.",
+      "status": "PLAUSIBLE_COUNTER_HYPOTHESIS",
+      "evidence": [
+        "10-drop standard minimum; 100,000 standard transactions at minimum equal 1 XRP burned",
+        "fees depend on operation count/type and load, not invoice value"
+      ],
+      "limitations": [
+        "Actual transaction mix, fees, account structure and throughput are undisclosed"
+      ]
+    }
+  ],
+  "disconfirming_evidence": [
+    "The $520B/$525B figures describe existing C2FO Early Pay programs, not XRPL settlement or Instant Pay throughput.",
+    "The release describes a waitlist and does not disclose a production launch date or recurring payment metrics.",
+    "RLUSD is the announced settlement asset; no XRP bridge conversion route is disclosed.",
+    "XRP fees are determined by ledger operations and load, not by the notional dollar value of an invoice.",
+    "The standard fee minimum is small; no market-price impact can be inferred without actual transaction counts and replenishment/purchase data."
+  ],
+  "required_future_disclosures": [
+    "Production launch date, markets and eligible supplier count",
+    "Recurring invoice and payout counts, with internal transfers separated from supplier receipts",
+    "RLUSD principal settled and verified XRPL transaction hashes",
+    "XRP fees destroyed by the attributed service wallets",
+    "XRP balances held for account and owner reserves",
+    "Whether any cross-currency conversion explicitly routes through XRP",
+    "Identity of participating capital providers and cash actually funded/deployed",
+    "BNY custody balances only if disclosed by BNY/Ripple"
+  ],
+  "source_independence": {
+    "primary_joint_release_cluster": [
+      "c2fo_instant_pay_joint_release",
+      "ripple_instant_pay_joint_release"
+    ],
+    "cluster_note": "C2FO and Ripple pages are two publisher mirrors of one joint announcement, not independent confirmations. Their $525B versus 520-billion wording discrepancy is preserved.",
+    "independent_technical_sources": [
+      "xrpl_transaction_cost_documentation",
+      "xrpl_reserve_documentation"
+    ],
+    "related_but_separate_primary_announcement": [
+      "bny_ripple_c2fo_trade_finance_release"
+    ],
+    "secondary_commentary_not_independent": [
+      "crypto_news_c2fo_rlusd_analysis"
+    ]
+  },
+  "source_receipts": [
+    {
+      "source_id": "c2fo_instant_pay_joint_release",
+      "publisher": "C2FO",
+      "source_type": "primary_joint_announcement",
+      "published_on": "2026-10-27",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "independence_cluster": "c2fo_ripple_instant_pay_joint_release_20261027",
+      "independent_confirmation": false,
+      "raw_source_bytes_captured": false,
+      "http_headers_captured": false,
+      "hash_scope": "SHA-256 of normalized web-rendered excerpt UTF-8, not raw page bytes",
+      "normalized_excerpt_sha256": "e806ed817499771ef59fe5ea1ce7e69ca7b83a6d7c33d86f1154d71b57ba8e32",
+      "normalized_excerpt": "The collaboration will bring financing and settlement activity supporting the new C2FO Instant Pay™ solution onto the XRP Ledger, using Ripple USD (RLUSD) for settlement.\nAcross global supply chains, businesses can wait 30, 60 or even 90 days after delivering goods and services to be paid, tying up cash they could otherwise use for payroll, inventory and new orders. Today, C2FO Early Pay™ programs, including C2FO Dynamic Discounting™ and C2FO Dynamic Supply Chain Finance™, have already helped businesses access more than $525B in working capital through the accelerated payment of approved invoices. But even when an invoice is paid early, they can still wait several days for funds to move through legacy bank settlement infrastructure. C2FO Instant Pay™ addresses that challenge by enabling businesses to receive payments instantly, using XRPL and RLUSD, Ripple’s U.S. dollar-backed stablecoin, for settlement.\nBusinesses will continue to access early payment through C2FO as they do today. Instant payment is funded by participating capital providers and settled on the XRP Ledger, letting suppliers receive funds in seconds rather than days, against invoices whose terms and due dates stay exactly as agreed.\nPurpose-built for institutional use, RLUSD has grown to more than $2.5 billion in market capitalization, with more than $1 billion issued on XRPL.",
+      "claims": [
+        "RLUSD is the named settlement currency for C2FO Instant Pay on XRPL.",
+        "Instant Pay is funded by participating capital providers.",
+        "C2FO reports more than $525B of working capital through existing Early Pay programs; that is not disclosed XRPL/Instant Pay throughput.",
+        "The announcement offers a waitlist; it does not disclose production payment volume, transaction count, XRP purchases or XRP bridge routing."
+      ]
+    },
+    {
+      "source_id": "ripple_instant_pay_joint_release",
+      "publisher": "Ripple",
+      "source_type": "primary_joint_announcement_mirror",
+      "published_on": "2026-10-27",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "independence_cluster": "c2fo_ripple_instant_pay_joint_release_20261027",
+      "independent_confirmation": false,
+      "raw_source_bytes_captured": false,
+      "http_headers_captured": false,
+      "hash_scope": "SHA-256 of normalized web-rendered excerpt UTF-8, not raw page bytes",
+      "normalized_excerpt_sha256": "5709d111b9e4b8e11a1af51bc1969db760bb6ffedba4542fd9e70959ff6af99b",
+      "normalized_excerpt": "The collaboration will bring financing and settlement activity supporting the new C2FO Instant Pay™ solution onto the XRP Ledger, using Ripple USD (RLUSD) for settlement.\nAcross global supply chains, businesses can wait 30, 60 or even 90 days after delivering goods and services to be paid, tying up cash they could otherwise use for payroll, inventory and new orders. Today, C2FO Early Pay™ programs, including C2FO Dynamic Discounting™ and C2FO Dynamic Supply Chain Finance™, have already helped businesses access more than 520 billion in working capital through the accelerated payment of approved invoices. But even when an invoice is paid early, they can still wait several days for funds to move through legacy bank settlement infrastructure. C2FO Instant Pay™ addresses that challenge by enabling businesses to receive payments instantly, using XRPL and RLUSD, Ripple’s U.S. dollar-backed stablecoin, for settlement.\nBusinesses will continue to access early payment through C2FO as they do today. Instant payment is funded by participating capital providers and settled on the XRP Ledger, letting suppliers receive funds in seconds rather than days, against invoices whose terms and due dates stay exactly as agreed.\nPurpose-built for institutional use, RLUSD has grown to more than $2.5 billion in market capitalization, with more than $1 billion issued on XRPL.",
+      "claims": [
+        "RLUSD is the named settlement currency for C2FO Instant Pay on XRPL.",
+        "Ripple's mirrored release reports more than 520 billion in existing C2FO Early Pay working capital, differing from C2FO's $525B wording.",
+        "This is the same joint announcement cluster, not an independent confirmation."
+      ]
+    },
+    {
+      "source_id": "xrpl_transaction_cost_documentation",
+      "publisher": "XRP Ledger documentation",
+      "source_type": "primary_protocol_documentation",
+      "published_on": null,
+      "page_last_updated": "2026-08 (page rendered as last updated three months before retrieval)",
+      "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+      "independence_cluster": "xrpl_protocol_documentation",
+      "independent_confirmation": true,
+      "raw_source_bytes_captured": false,
+      "http_headers_captured": false,
+      "hash_scope": "SHA-256 of normalized web-rendered excerpt UTF-8, not raw page bytes",
+      "normalized_excerpt_sha256": "2e2b64ae2afe1e6931e46bfab8bb4d7f05540779f9994017ec2cb5b88031e287",
+      "normalized_excerpt": "To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This transaction cost is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.\nEvery transaction must specify how much XRP to destroy to pay the transaction cost.\nThe current minimum transaction cost required by the network for a standard transaction is 10 drops. It sometimes increases due to higher than usual load.",
+      "claims": [
+        "XRPL transaction fees are destroyed in XRP.",
+        "The documented minimum standard transaction cost is 10 drops, subject to load-based increases."
+      ]
+    },
+    {
+      "source_id": "xrpl_reserve_documentation",
+      "publisher": "XRP Ledger documentation",
+      "source_type": "primary_protocol_documentation",
+      "published_on": null,
+      "page_last_updated": "2026-08 (page rendered as last updated three months before retrieval)",
+      "url": "https://xrpl.org/docs/concepts/accounts/reserves",
+      "independence_cluster": "xrpl_protocol_documentation",
+      "independent_confirmation": true,
+      "raw_source_bytes_captured": false,
+      "http_headers_captured": false,
+      "hash_scope": "SHA-256 of normalized web-rendered excerpt UTF-8, not raw page bytes",
+      "normalized_excerpt_sha256": "eb720e2937e043ba00cd4130a43181667bbeef12c92827f151ac8a5f1f4fb704",
+      "normalized_excerpt": "The XRP Ledger applies reserve requirements, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage.\nTo have an account, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send the reserved XRP to others, but you can recover some of the XRP by deleting the account.\nThe XRP reserve is not dormant, however. You can use your reserves to pay transaction fees. Another way to look at your reserves is that you are pre-funding your account to handle your transaction fees.\nThe current reserve requirements on Mainnet are: Base reserve: 1 XRP; Owner reserve: 0.2 XRP per item.",
+      "claims": [
+        "Mainnet base reserve is documented as 1 XRP and owner reserve as 0.2 XRP per object.",
+        "Reserves are XRP balances that can be used to pay transaction fees; they are not equivalent to permanently burned XRP."
+      ]
+    },
+    {
+      "source_id": "bny_ripple_c2fo_trade_finance_release",
+      "publisher": "C2FO (joint Ripple/BNY announcement)",
+      "source_type": "primary_joint_announcement",
+      "published_on": "2026-10-27",
+      "url": "https://c2fo.com/newsroom/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "independence_cluster": "ripple_bny_custody_trade_finance_20261027",
+      "independent_confirmation": false,
+      "raw_source_bytes_captured": false,
+      "http_headers_captured": false,
+      "hash_scope": "SHA-256 of normalized web-rendered excerpt UTF-8, not raw page bytes",
+      "normalized_excerpt_sha256": "090ae840ae462b4fe44945e3b26eec14cc478ca541e003d3b44b578d431a347a",
+      "normalized_excerpt": "Building on BNY’s role as primary reserve custodian for Ripple’s stablecoin, RLUSD, and its custody relationship with Ripple Prime, BNY now supports XRP, the native digital asset of the XRP Ledger, and RLUSD on its Digital Asset Custody platform.\nBNY intends to broaden its support for tokenized assets and investment products issued on the XRPL as institutional use cases on the ledger continue to develop and work with Ripple to enable BNY clients to mint and redeem RLUSD directly through BNY.\nRipple and BNY also intend to advance tokenized trade finance on the XRPL, subject to client requirements. As a first step toward this ambition, Ripple and BNY are exploring a supply chain finance initiative with C2FO, a global platform for working capital, focused on expanding investor access to the asset class.",
+      "claims": [
+        "BNY is identified as primary RLUSD reserve custodian and supports XRP and RLUSD custody for eligible clients.",
+        "BNY/Ripple/C2FO describe a separate exploratory tokenized trade-finance initiative; it must not be conflated with C2FO Instant Pay settlement."
+      ]
+    }
+  ],
+  "model_admission": {
+    "eligible_for_price_feature_store": false,
+    "eligible_for_directional_forecast": false,
+    "event_timeline_only": true,
+    "reason": "Public web-rendered excerpts were captured without raw HTTP bytes/headers; the initiative has no verified production throughput, XRP bridge route, XRP purchases or actual capital deployment."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "verification_contract": {
+    "tests_file": "tests/test_xrp_c2fo_instant_pay_rlusd_xrp_demand_separation_20261108.py",
+    "required_assertions": [
+      "RLUSD is the announced settlement asset; XRP bridge use is not disclosed.",
+      "C2FO $525B and Ripple 520-billion figures are preserved as a source discrepancy and not treated as XRPL/Instant Pay volume.",
+      "XRP transaction fees and account/owner reserves are separated from invoice notional.",
+      "C2FO and Ripple pages are one joint-announcement source cluster.",
+      "All SHA-256 values cover normalized web-rendered excerpts, not raw HTTP bytes.",
+      "No directional forecast or price-feature admission is permitted.",
+      "The secondary crypto.news commentary is cited separately as an unreceipted analyst summary, not misrepresented as a normalized source excerpt."
+    ],
+    "exact_head_full_suite_required": true,
+    "dependency_audit_required": true,
+    "fail_closed_gate_required": true
+  },
+  "secondary_context": [
+    {
+      "source_id": "crypto_news_c2fo_rlusd_analysis",
+      "publisher": "crypto.news",
+      "source_type": "secondary_analysis",
+      "published_on": "2026-11-06",
+      "url": "https://crypto.news/ripple-wants-to-pay-suppliers-in-rlusd-where-does-xrp-fit/",
+      "independence_cluster": "secondary_analysis_of_c2fo_ripple_release_and_xrpl_docs",
+      "independent_confirmation": false,
+      "capture_status": "NOT_HASH_RECEIPTED",
+      "raw_source_bytes_captured": false,
+      "http_headers_captured": false,
+      "normalized_excerpt_sha256": null,
+      "analyst_summary": "Secondary commentary distinguishes RLUSD settlement from XRP fees/reserves and undisclosed bridge conversion. It derives from the same C2FO/Ripple joint announcement and XRPL protocol documentation; it is not independent confirmation and its summary is not represented as a verbatim source excerpt."
+    }
+  ]
+}
