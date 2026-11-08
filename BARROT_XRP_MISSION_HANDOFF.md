@@ -1,4 +1,120 @@
-# Current integrated Barrot handoff — 2026-11-08T07:10:27Z
+# Current integrated Barrot handoff — 2026-11-08T07:22:26Z
+
+## Run 46 — current repository and XRP mission status
+
+**Mission priority:** XRP intelligence and prediction-engine mastery.  
+**Foundation:** Barrot V3 execution, orchestration, safety and verification.  
+**Main:** `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` (unchanged).  
+**PR #1640 verified head:** `1ac6254b2e813dd7be2da68d3b17b57d76815325`.  
+**PR #1643 latest head:** `64f403822716989d5d9830d498d32e4fc5f14cd5`.
+
+### Repository inspection and integration state
+
+Fetched main, recursive trees, all four open-PR pages, exact PR heads, complete changed-path inventories, branch ancestry, reviews/threads, current workflow runs, job logs, six-manifest dependency audits, fail-closed gates, security settings and the latest durable handoff.
+
+- Open PR inventory: **372 total, 356 drafts, 16 non-drafts**.
+- Main tree: 1,403 entries, 1,298 files, 493 Python files, 90 test modules, 86 workflows.
+- #1640 tree: 1,478 entries, 1,365 files, 547 Python files, 128 test modules, 87 workflows.
+- #1643 tree: 1,978 entries, 1,872 files, 726 Python files, 325 test modules, 86 workflows, 349 XRP JSON artifacts.
+- #1640: 654 commits ahead, zero behind main; 176 changed paths.
+- #1643: 787 commits ahead, zero behind main; 580 changed paths.
+- Six paths overlap; #1640 has 170 unique paths and #1643 has 574 unique research paths. The branches are divergent.
+
+### Exact-head CI
+
+**PR #1640 — Barrot V3 integration**
+
+[PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640)
+
+Exact head `1ac6254b2e813dd7be2da68d3b17b57d76815325` passed:
+
+- Full repository suite: **1,188 passed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **58.78%**, above the 53% threshold.
+- Installed-wheel verification passed; installed package loaded Barrot V3, the XRP mission and canonical mission/data assets.
+- Six-manifest dependency audit passed; no known vulnerabilities reported.
+- Fail-closed merge gate passed; automatic merging disabled.
+
+Evidence: [CI 42458058968](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458058968), [dependency audit 42458058974](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458058974), [fail-closed gate 42458058938](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458058938).
+
+**PR #1643 — XRP research**
+
+[PR #1643](https://github.com/Barrot-Agent/B-Agent/pull/1643)
+
+Previous exact head `33ee4b456915d76bb0be2936143dd7534f3a731b` passed 2,316 full-suite tests, 498 core tests, six-manifest dependency audit and fail-closed gate. The current head `64f403822716989d5d9830d498d32e4fc5f14cd5` contains additional SBIC/Kamilah research and a corrected registry-schema assertion. Its full suite is queued and dependency audit is running; the fail-closed gate passed. The prior head's green result is not substituted for current-head verification.
+
+Current runs: [CI 42458532054](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458532054), [dependency audit 42458532051](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458532051), [fail-closed gate 42458532069](https://github.com/Barrot-Agent/B-Agent/actions/runs/42458532069).
+
+The first version of the new identity test referenced a nonexistent top-level registry key. The actual canonical-channel gate is under `video_inventory_status`. The test was corrected to assert that field and `attribution_verified=false`; the gate was not weakened. Exact-head verification on 64f403 remains pending.
+
+### New XRP market and capital-flow evidence
+
+The existing #1643 branch now contains three append-only research packages and their tests:
+
+- [Market, ETF, exchange, derivatives and macro reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T070200Z-xrp-market-etf-exchange-derivatives-macro-reconciliation.json)
+- [Exchange reserve component discrepancy correction](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T071027Z-xrp-exchange-wallet-reserve-component-disagreement-correction.json)
+- [SBIC/ChatGPT benchmark and Kamilah identity disambiguation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T071910Z-sbic-chatgpt-benchmark-kamilah-identity-disambiguation.json)
+
+The associated regression tests preserve excerpt hashes, source disagreements, identity gates and forecast abstention.
+
+**Market findings:** Edge or Not's 06:26 UTC composite of Binance spot and OKX perpetual showed $9.0M bids versus $9.9M asks within 1% around a $1.1652 composite mid. This is displayed, cancellable, cross-product liquidity—not executable depth. Kodexius at 06:34 UTC reported $782.97M OI across seven contracts/five exchanges, $774.77M 24-hour volume and +0.0080% weighted funding per eight hours. Hyperliquid OI disagrees across aggregators ($98.12M versus $196.0M); do not average or combine. Kraken's separate ~$20M OI snapshot is single-venue and lacks timezone.
+
+**Exchange-wallet findings:** XRP Insights attributes 22.33B XRP to 701 wallets across 24 exchanges; same-wallet changes were −150.7M over seven days and −161.2M over 30 days. Newly tracked wallets contain 512M XRP. This is not tradable float. The same page's Binance-Peg reserve component is internally inconsistent: 327.4M in the exchange table versus 325.8M in the methodology, a 1.6M discrepancy. Both values are preserved; the reserve-adjusted total is not admitted.
+
+**ETF flows:** XRP Insights reports Week 45 −813K XRP and Nov 6 −663K, excluding GXRP from flow. CryptoKeyhole reports partial Nov 6 −752,048 XRP for three of four daily-readable funds; Franklin XRPZ was missing. Alpha Finance reports $0 on Nov 6, +$8.4M over seven sessions and +$45.9M over 30 sessions for its five-fund universe. The universes, settlement vintages and methods differ; they share issuer-file upstream data and are not independent confirmations. CryptoKeyhole's issuer-file row dated Nov 9 but read Nov 7 is quarantined as a future-date anomaly.
+
+**Macro:** Reuters reports $117.97B US money-market inflows, $14.81B equity-fund inflows and $7.31B bond-fund inflows in the week to Nov 4, alongside sharp Thursday equity-index declines. Risk aversion is plausible, but positive equity/bond flows are counterevidence. No XRP-specific causal link is established.
+
+### Exact phrase: “SBIC, ChatGPT SBIC”
+
+The exact phrase is resolved to an academic benchmark, not Japan's SBIC companies and not SBI Holdings.
+
+- The primary dataset paper by Sap et al. (2020), DOI 10.18653/v1/2020.acl-main.486, defines the **Social Bias Inference Corpus** with 150,000 structured annotations and more than 34,000 implications across about 1,000 demographic groups.
+- Ziems et al., *Can Large Language Models Transform Computational Social Science?* (Computational Linguistics, 2024; DOI 10.1162/coli_a_00502), explicitly defines SBIC as the Social Bias Inference Corpus. Its Table 7 reports **65.9% for GPT-3.5** on the SBIC generation task.
+- That 65.9% is the proportion of unanimous pairwise expert rankings in which generated explanations were preferred to gold-standard explanations. It is not classification accuracy, a confidence score or XRP forecasting performance.
+- Cheng Bing's 2023 China Journal of Econometrics review (DOI 10.12012/CJoE2023-0032) expands SBIC as a COVID-19 social/behavioral-impact corpus and describes the gold standard as political ideology. Those statements conflict with the cited primary Ziems paper; treat them as likely acronym/description errors.
+- No Japan SBIC, SBI Holdings or OpenAI corporate relationship is established by this academic result.
+
+### Kamilah/Camilla video identity gate
+
+The person Dr. Kamilah Stevenson is supported by a first-party All Nations leadership biography and a matching professional profile. The candidate finance/crypto YouTube channel `@drkamilahstevenson` / candidate channel ID `UCqUPJMQdkCN6lsLVDnichPA` is **not verified as belonging to that person**.
+
+Vling and IDCrawl report differing subscriber counts and list 20 same-name YouTube profiles with repeated finance/crypto descriptions. A third-party Telegram channel linking to the candidate handle is marked unverified. The official biography describes health/wellness leadership and does not reciprocally link to the candidate channel. This is an identity collision/impersonation risk, not proof that a specific channel is fraudulent.
+
+Two YouTube search-result IDs (`M8TmDXO7B-0` and `RDLPKjFMeS4`) could not be inspected because direct metadata retrieval was throttled. They remain outside the video inventory. The existing registry remains at 21 candidate references and **zero verified personal-channel uploads**. No new video attribution was made. The Camilla spelling remains separate until verified.
+
+No new primary evidence was found for ASK Coin or an issuer-defined “actual capital” metric in this pass. Continue distinguishing financing capacity, cash received, cash deployed, revenue recognized, XRP acquired, in-kind contributions, debt and undrawn financing.
+
+### V3 provider budget and safety
+
+Main issue run [42388663091](https://github.com/Barrot-Agent/B-Agent/actions/runs/42388663091) failed because Groq rejected a repair-planner request: **8,099 TPM requested against an 8,000 limit**. The worker retried and ended blocked without a patch or commit. Pillars health run [42375034124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42375034124) failed with Databricks HTTP 403 and Hugging Face Space BUILD_ERROR; no restart occurred.
+
+#1640 contains the tested correction, not yet on main: conservative context preflight (4,800 estimated input tokens, 2,048 reserved output, 7,000 total), 6,500 request and 7,000 rolling TPM caps, bounded tool/history context, fail-fast 413/429 behavior, no unverified fallback, and no patch/commit/remote write on budget failure. The broader Codespaces prebuild deliverable in #1658 remains unverified.
+
+### Nine-platform, backlog and merge decision
+
+ChatGPT-to-GitHub is the only verified current-session connection. Copilot activity is COMMENTED, not APPROVED. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flow. No external model received repository data.
+
+Backlog:
+- #1640: active V3 integration candidate; exact-head full suite, inclusive coverage, installed wheel, dependency audit and fail-closed gate green.
+- #1643: active XRP research candidate; 574 unique research paths relative to #1640; latest exact-head CI pending.
+- #1642: superseded candidate; seven paths represented in #1640; retain until main verification.
+- #1644–#1650: dependency/workflow candidates represented in #1640; retain until main verification.
+- #1653: blocked by eight unresolved review threads; six unique repository-graph paths preserved.
+- #1655, #1641 and #1269: unique/unreviewed structural and experimentation work; preserve.
+- #1254/#1255: older dependency updates; exact-version reconciliation pending.
+- #1477/#1547/#1586: unique XRP research; preserve.
+- #1597/#1591: Kamilah public-video discovery; preserve identity-gated inventory.
+- #1659: unique local Llama phone-chat experimentation; preserve.
+- #1658: open Codespaces/prebuild issue; context-budget subproblem implemented on #1640, Codespaces deliverable unverified.
+
+#1640 has 22/22 resolved threads and 62 COMMENTED reviews; #1643 has 19/19 resolved threads and 10 COMMENTED reviews. Both have **zero APPROVED reviews**. Main is protected, but detailed branch-protection settings return HTTP 403; visible fallback ruleset is disabled. CODEOWNERS is `* @Barrot-Agent`. GitHub Pages configuration is inaccessible; a prior main push triggered a successful public deployment [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489). #1640 changes public `web/` paths, so that merge-triggered side effect remains unauthorized.
+
+**No merge was performed.** No main write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, external model transfer, force-push or destructive worktree operation occurred.
+
+**Forecast status: NOT_ISSUED.** The engine still lacks synchronized multi-domain historical coverage, independent WORM archival/rebuild, demonstrated out-of-sample lift, validated real-data calibration, concept/label drift monitoring and sufficient independent shadow outcomes.
+
+---
 
 ## Run 46 — current repository and XRP mission status
 
