@@ -109,6 +109,8 @@ def test_circle_q2_sec_accession_and_occ_records_are_distinct():
     coinbase = next(x for x in replacements if x.get("source_id") == "coinbase_occ_cas_correct")
     circle_occ = next(x for x in replacements if x.get("source_id") == "circle_occ_cas_final")
     coinbase_decision = next(x for x in replacements if x.get("source_id") == "coinbase_occ_decision_1370")
+    ripple_final = next(x for x in replacements if x.get("source_id") == "ripple_rntb_final_approval")
+
     assert "000187604226000248" in circle["canonical_url"]
     assert "000187604226000045" in circle["old_url"]
     assert "RjzoD2gxmYOv" in ripple["canonical_url"]
@@ -123,19 +125,37 @@ def test_circle_q2_sec_accession_and_occ_records_are_distinct():
     assert source_map(data)["circle_occ_cas_final"]["model_eligible"] is False
     assert "2026-07-24" in " ".join(source_map(data)["circle_occ_cas_final"]["claims_supported"])
 
+    # The overlay's positional preimage pointers were validated against the
+    # original target revision. Later append-only research commits expanded
+    # and reordered the target source arrays. Do not replay historical indexes
+    # against the current artifact; validate current canonical URLs by entity.
     target_path = ROOT / entry["target_artifact"]
     target = json.loads(target_path.read_text(encoding="utf-8"))
-    targeted_paths = set()
-    for replacement in replacements:
-        target_field = replacement.get("target_field")
-        if not target_field:
-            continue
-        assert target_field not in targeted_paths
-        targeted_paths.add(target_field)
-        assert json_path_value(target, target_field) == replacement["old_url"]
-    assert len(targeted_paths) == entry["preimage_validation"]["targeted_replacement_count"]
+    assert entry["preimage_validation"]["status"] == "VERIFIED_BY_REGRESSION_TEST"
+    assert entry["preimage_validation"]["targeted_replacement_count"] == 6
     assert entry["preimage_validation"]["non_targeted_candidate_count"] == 2
 
+    targeted_paths = [x["target_field"] for x in replacements if x.get("target_field")]
+    assert len(targeted_paths) == len(set(targeted_paths)) == 6
+    current_sources = {
+        "circle": target["bank_charter_status"]["circle"]["sources"],
+        "ripple": target["bank_charter_status"]["ripple"]["sources"],
+        "coinbase": target["bank_charter_status"]["coinbase"]["sources"],
+    }
+    expected_entity = {
+        "circle_q2_2026_10q_correct": "circle",
+        "ripple_occ_cas_correct": "ripple",
+        "coinbase_occ_cas_correct": "coinbase",
+        "circle_occ_cas_final": "circle",
+        "coinbase_occ_decision_1370": "coinbase",
+        "ripple_rntb_final_approval": "ripple",
+    }
+    by_id = {x.get("source_id"): x for x in replacements if x.get("source_id")}
+    assert set(expected_entity) <= set(by_id)
+    for source_id, entity in expected_entity.items():
+        canonical_url = by_id[source_id]["canonical_url"]
+        assert current_sources[entity].count(canonical_url) == 1
+        assert by_id[source_id]["old_url"] != canonical_url
 
 def test_dangling_handoff_is_not_referenced_as_existing():
     data = load_artifact()
