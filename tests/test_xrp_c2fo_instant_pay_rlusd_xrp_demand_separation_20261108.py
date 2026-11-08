@@ -69,3 +69,16 @@ def test_bny_custody_and_trade_finance_are_not_conflated_with_instant_pay():
     assert data["model_admission"]["eligible_for_price_feature_store"] is False
     assert data["model_admission"]["eligible_for_directional_forecast"] is False
     assert data["forecast_status"] == "NOT_ISSUED"
+
+
+def test_secondary_context_is_not_misrepresented_as_a_receipted_excerpt():
+    data = load_artifact()
+    secondary = data["secondary_context"]
+    assert len(secondary) == 1
+    item = secondary[0]
+    assert item["source_id"] == "crypto_news_c2fo_rlusd_analysis"
+    assert item["capture_status"] == "NOT_HASH_RECEIPTED"
+    assert item["raw_source_bytes_captured"] is False
+    assert item["http_headers_captured"] is False
+    assert item["normalized_excerpt_sha256"] is None
+    assert "not represented as a verbatim source excerpt" in item["analyst_summary"]
