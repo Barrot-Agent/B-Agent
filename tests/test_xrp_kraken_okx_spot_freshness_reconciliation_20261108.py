@@ -8,7 +8,7 @@ def test_kraken_okx_spot_capture_remains_research_only_and_timestamp_qualified()
     artifact = json.loads(path.read_text(encoding="utf-8"))
     assert artifact["captured_at_utc"] == "2026-11-08T01:39:00Z"
     assert artifact["capture_method"]["raw_http_bytes_captured"] is False
-    assert "not hashes of the underlying HTTP wire bytes" in artifact["capture_method"]["hashes_are"]
+    assert "not hashes of underlying HTTP wire bytes" in artifact["capture_method"]["hashes_are"]
     kraken = artifact["observations"]["kraken"]
     okx = artifact["observations"]["okx"]
     assert kraken["last_usd"] == 1.15873
