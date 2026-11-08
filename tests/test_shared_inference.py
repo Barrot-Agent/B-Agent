@@ -87,3 +87,40 @@ def test_explicit_local_selection_does_not_silently_fallback_to_cloud(monkeypatc
     monkeypatch.setattr(shared_inference.urllib.request, "urlopen", fail_urlopen)
     with pytest.raises(shared_inference.InferenceError, match="local_llama request failed"):
         shared_inference.ask("hello")
+
+
+def test_ask_barrot_main_uses_selected_local_provider(monkeypatch, tmp_path):
+    import importlib.util
+    from pathlib import Path
+
+    script_path = Path(__file__).resolve().parents[1] / "scripts" / "ask_barrot.py"
+    spec = importlib.util.spec_from_file_location("ask_barrot_local_provider_test", script_path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    monkeypatch.setenv("BARROT_INFERENCE_PROVIDER", "local_llama")
+    monkeypatch.setenv("LOCAL_LLAMA_MODEL", "llama-local-test")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(module, "load_recent_memory", lambda: [])
+    monkeypatch.setattr(module, "load_signal_snapshot", lambda: "")
+    monkeypatch.setattr(module, "load_recent_commits", lambda: "")
+    monkeypatch.setattr(module, "load_gumroad_metrics", lambda: "")
+    monkeypatch.setattr(module, "load_ingestion_metrics", lambda: "")
+    monkeypatch.setattr(module, "load_recent_failures", lambda: "")
+    monkeypatch.setattr(module, "load_referenced_file_contents", lambda question: "")
+    calls = {}
+
+    def fake_ask(prompt, **kwargs):
+        calls["prompt"] = prompt
+        calls["kwargs"] = kwargs
+        return "Local Barrot response."
+
+    monkeypatch.setattr(module, "shared_inference_ask", fake_ask)
+    monkeypatch.setattr(module, "append_memory", lambda question, answer: None)
+    monkeypatch.setattr(module.sys, "argv", ["ask_barrot.py", "Use local inference."])
+
+    assert module.main() == 0
+    assert calls["kwargs"]["model"] == "llama-local-test"
+    assert "BACKEND IDENTITY: The active inference backend is local_llama." in calls["prompt"]
+    assert (tmp_path / "barrot_answer.md").read_text() == "Local Barrot response."
