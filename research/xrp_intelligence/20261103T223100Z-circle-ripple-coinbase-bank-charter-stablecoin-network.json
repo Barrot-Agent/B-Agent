@@ -10,13 +10,16 @@
       "final_approval_announcement_date": "2026-07-10",
       "occ_cas_approved_date": "2025-12-12",
       "occ_cas_effective_date": "2026-07-24",
-      "initial_scope": "Fiduciary custody for Circle and affiliates. Circle's Q2 2026 filing described reserve management as not yet offered at opening; do not treat that pre-opening statement as proof of a later service launch.",
+      "initial_scope": "At opening on 2026-07-24, Circle National Trust offered fiduciary digital-asset custody services to Circle and its affiliates. Circle's Q2 2026 filing is explicit on opening scope; do not infer that reserve management had begun.",
       "issuer_boundary": "Circle Internet Financial remains the USDC issuer; First National Digital Currency Bank is a separate national trust-bank entity, not an ordinary deposit-taking commercial bank.",
       "sources": [
         "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
         "https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank",
         "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
-      ]
+      ],
+      "final_approval_date": "2026-07-09",
+      "occ_cas_initial_approval_date": "2025-12-12",
+      "opening_date": "2026-07-24"
     },
     "ripple": {
       "entity": "Ripple National Trust Bank",
@@ -27,11 +30,13 @@
       "occ_cas_effective_date": "2026-10-26",
       "planned_scope": "Manage segregated RLUSD reserves, act as collateral trustee for RLUSD holders and provide fiduciary digital-asset custody services upon opening.",
       "issuer_boundary": "RLUSD remains issued by Standard Custody & Trust Company, Ripple's NYDFS-regulated limited-purpose trust company; Ripple National Trust Bank is a separate federal trust-bank entity.",
-      "limitations": "OCC CAS records consummated/effective 2026-10-26. Ripple announced final approval. The first operating date and actual reserve/custody balances are not disclosed in the cited sources.",
+      "limitations": "OCC CAS records consummated/effective 2026-10-26. Ripple announced final approval. Its release describes reserve management, collateral-trustee and custody authority, with custody upon opening. The first operating date and actual reserve/custody balances are not disclosed.",
       "sources": [
         "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
         "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/"
-      ]
+      ],
+      "final_approval_date": "2026-10-26",
+      "effective_date": "2026-10-26"
     },
     "coinbase": {
       "entity": "Coinbase National Trust Company",
@@ -40,13 +45,16 @@
       "occ_cas_approved_date": "2026-04-02",
       "occ_cas_effective_date": "2026-11-06",
       "separate_final_approval_document": "NOT_LOCATED_IN_SOURCES_REVIEWED; OCC CAS later shows Consummated/Effective 2026-11-06.",
-      "limitations": "The April 2, 2026 OCC Corporate Decision 1370 is a preliminary conditional approval. The later OCC CAS status supersedes a conditional-only description. The CAS effective date does not independently establish the first date of customer-facing operations or actual custody balances.",
+      "limitations": "The April 2, 2026 OCC CD1370 is preliminary conditional approval only. OCC CAS now records Consummated/Effective 2026-11-06. No separate final-approval letter or first customer-operating date was located in the sources reviewed.",
       "sources": [
         "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
         "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf"
-      ]
+      ],
+      "planned_scope": "Fiduciary digital-asset custody primarily for institutional clients; related transactional services only for custody customers and custodied assets; the bank may act as a finder for affiliate staking, prime trading and prime financing, but does not itself provide those underlying affiliate services.",
+      "insured_depository_institution": false,
+      "operating_start_date": "NOT_SEPARATELY_CONFIRMED"
     },
-    "interpretation": "As of 2026-11-08, OCC CAS records show Circle's national trust bank effective 2026-07-24, Ripple National Trust Bank effective 2026-10-26 and Coinbase National Trust Company effective 2026-11-06. These are distinct national trust-bank charters, not ordinary FDIC-insured deposit-taking commercial banks. Charter status does not prove actual XRP demand, customer balances or operating volume."
+    "interpretation": "As of 2026-11-08, OCC CAS records Circle's First National Digital Currency Bank effective 2026-07-24, Ripple National Trust Bank effective 2026-10-26 and Coinbase National Trust Company effective 2026-11-06. Coinbase's April 2 OCC decision was preliminary conditional approval; its later CAS consummated/effective status supersedes a conditional-only snapshot. These are distinct national trust-bank charters, not ordinary deposit-taking commercial banks. The Coinbase decision explicitly says the bank will not be an insured depository institution. Charter status does not prove actual XRP demand, customer balances or operating volume."
   },
   "circle_coinbase_economics": {
     "circle_q2_2026_distribution_cost_to_coinbase_usd": 324600000,
