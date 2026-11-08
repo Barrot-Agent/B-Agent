@@ -110,3 +110,75 @@ def test_forecast_and_external_actions_remain_disabled():
         "external_model_transfer": False,
     }
     assert len(data["competing_hypotheses"]) >= 5
+
+
+def test_primary_issuer_etf_observations_preserve_each_publisher_cutoff():
+    path = ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    issuers = {row["ticker"]: row for row in data["issuer_observations"]}
+    assert issuers["GXRP"]["as_of_date"] == "2026-11-06"
+    assert issuers["GXRP"]["xrp_units"] == 64_838_291.2993
+    assert issuers["TOXR"]["xrp_units"] is None
+    assert issuers["XRPZ"]["as_of_date"] == "2026-11-04"
+    assert issuers["XRP"]["as_of_date"] == "2026-11-05"
+    assert issuers["XRPC"]["nov6_daily_nav_table"]["shares_outstanding"] == 22_990_000
+    assert issuers["XRPC"]["separate_holdings_section"]["shares_outstanding"] == 22_920_000
+    assert issuers["XRPR"]["xrp_units"] is None
+
+
+def test_canary_nov9_file_label_is_not_mislabeled_as_future_availability():
+    data = json.loads(
+        (ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation.json").read_text(encoding="utf-8")
+    )
+    correction = data["correction_to_prior_artifact"]
+    assert correction["prior_interpretation"] == "QUARANTINED"
+    assert correction["corrected_interpretation"] == (
+        "FUTURE_FILE_DATE_LABEL_AVAILABLE_BEFORE_REFERENCE_TIME; "
+        "EFFECTIVE_DATE_MAPPED_TO_2026-11-06_BY_PUBLISHER_METHOD"
+    )
+    windows = data["aggregator_reconciliation"]["file_availability_windows"]
+    assert windows["canary_file_date_label"] == "2026-11-09"
+    assert windows["canary_file_published_utc"][0] == "2026-11-07T05:07:00Z"
+    assert windows["canary_effective_trading_date_by_publisher"] == "2026-11-06"
+
+
+def test_crypto_keyhole_partial_flow_and_canary_share_conflict_are_not_resolved_by_assumption():
+    data = json.loads(
+        (ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation.json").read_text(encoding="utf-8")
+    )
+    partial = data["aggregator_reconciliation"]["nov6_partial"]
+    assert partial["coverage"] == "3 of 4"
+    assert partial["missing"] == "Franklin Templeton XRPZ"
+    assert partial["partial_total_xrp"] == -752_048
+    assert partial["complete_total"] is False
+    assert data["primary_aggregator_disagreements"][0]["status"] == "UNRESOLVED_VINTAGE_AND_SHARE_COUNT_CONFLICT"
+
+
+def test_grayscale_and_rex_are_not_silently_added_to_daily_spot_flow_universe():
+    data = json.loads(
+        (ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation.json").read_text(encoding="utf-8")
+    )
+    excluded = data["aggregator_reconciliation"]["excluded_from_daily_flow_universe"]
+    assert "quarterly SEC holdings" in excluded["GXRP"]
+    assert "not total underlying exposure" in excluded["XRPR"]
+    assert data["data_quality"]["rex_total_underlying_xrp_unknown"] is True
+
+
+def test_primary_issuer_excerpt_hashes_match():
+    data = json.loads(
+        (ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation.json").read_text(encoding="utf-8")
+    )
+    for row in data["source_receipts"]:
+        assert hashlib.sha256(row["excerpt"].encode("utf-8")).hexdigest() == row["excerpt_sha256"]
+
+
+def test_previous_future_stamp_interpretation_is_explicitly_superseded():
+    data = json.loads(
+        (ROOT / "research" / "xrp_intelligence" / "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation.json").read_text(encoding="utf-8")
+    )
+    assert data["correction_to_prior_artifact"]["prior_artifact"] == (
+        "20261108T090727Z-xrp-source-vintage-and-hash-correction.json"
+    )
+    assert "not future availability" in data["correction_to_prior_artifact"]["reason"]
+    assert data["model_admission"]["eligible"] is False
+    assert data["forecast"]["status"] == "NOT_ISSUED"
