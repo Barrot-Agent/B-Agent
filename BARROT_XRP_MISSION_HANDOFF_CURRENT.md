@@ -1606,3 +1606,118 @@ Nine-platform status remains: ChatGPT-to-GitHub verified for this session; Copil
 Next: obtain genuine independent reviews; resolve Pages and branch-protection authorization; let provider checks finish; merge #1640 only through normal branch protection if every condition passes; verify the merge commit and main CI; then consolidate #1643's unique research paths onto verified main. Close only exact superseded PRs after successor content is verified.
 
 Run 77 updated the existing #1640 handoff/map/test on the existing branch only. Main remains unchanged at `d4d43be3427375cf79d190e768976de062e20287`. No new PR, merge, deployment, secret operation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree action occurred.
+
+
+## Run 77 addendum — primary SEC capital/custody evidence, Coinbase collateral, Circle reserves and survey correction
+
+Captured: 2026-11-09T02:25:07.763Z. Parent integration head before this addendum: `f92aafdc25fce42c60c04d70b8e6cca47969cfdf`.
+
+### Exact-head engineering verification before this addendum
+
+On #1640 head `f92aafdc25fce42c60c04d70b8e6cca47969cfdf`:
+
+- Full repository suite: **1,238 passed, 0 failed, 8 subtests passed**.
+- Core suite: **660 passed, 8 subtests passed**.
+- Inclusive coverage: **58.98%**.
+- Installed wheel verified, including Barrot V3, the priority-one XRP mission and canonical data assets.
+- Six-manifest dependency audit passed with **zero known vulnerabilities**.
+- Fail-closed gate passed and explicitly kept automatic merging disabled.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42549540799
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42549540768
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42549540832
+
+This addendum updates the existing handoff, current platform map and regression tests in one commit on the existing #1640 branch. The resulting new head requires its own exact-head full-suite, wheel, dependency and fail-closed verification. The passing `f92aafdc25fce42c60c04d70b8e6cca47969cfdf` results must not be substituted for that new head.
+
+### Evernorth — actual cash, XRP contributions, SBI ownership and custody
+
+Primary SEC evidence: the October 23 prospectus and October 30 S-1:
+- https://www.sec.gov/Archives/edgar/data/2092592/000162828026067194/xrpn-20261023.htm
+- https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm
+
+As of the October 9, 2026 business-combination closing:
+
+| Category | Reported amount | Correct interpretation |
+|---|---:|---|
+| Cash used to purchase XRP | $214.1M | Actual cash deployed to buy XRP |
+| XRP purchased with that cash | 84,365,876 XRP | Cash-purchased units |
+| XRP contributed in kind | 388,910,554 XRP | Non-cash contribution |
+| Total XRP holdings | 473,276,430 XRP | Cash-purchased plus in-kind units |
+| Gross cash proceeds at closing | $272.6M | $224.6M private-placement cash plus $48M trust cash, before expenses |
+| Convertible-note net proceeds | $30M | Received October 12; intended for general corporate purposes including possible XRP acquisition; no additional XRP purchase amount established |
+| Committed equity facility | 5,218,935 shares / approximately $80M capacity | Zero proceeds as of October 30; capacity is not cash received |
+
+The separately described 261.9M XRP private-placement subscription figure is not added again to the 388.91M aggregate in-kind contribution without holder-level reconciliation.
+
+**SBI Holdings relationship:** SBI-controlled stockholders are reported with 9,431,914 Class A shares and 2,359,038 Class C shares, representing 21.4% of common stock and 39.9% voting power. Their exact individual cash contribution is not separately disclosed in the cited ownership table. These are SBI Holdings-related funds and subsidiaries, not SBIC East/Central/West.
+
+**Ripple-related contributions and financing:** the filings separately identify 126,791,458 XRP contributed by Ripple and 211,319,096 XRP contributed by RippleWorks to the Arrington sponsor. RippleWorks is a separate entity from Ripple Labs. The prospectus also describes 50M XRP Ripple Group and related-party subscription arrangements; reconcile the holder-level schedule before attribution or double-counting. A separate $10M Ripple company facility had $9.7M drawn as of October 7, with repayment due within five business days after closing or earlier on five business days' notice. This is debt/bridge liquidity, not XRP purchased.
+
+**Custody:** the October 30 S-1 states 100% of XRP was in BitGo cold storage. The disclosed $250M insurance policy is shared across BitGo clients and was described as approximately 36.9% of the reported holdings value; it is not dedicated full-value insurance.
+
+**Unresolved filing tension:** the same S-1 says DeFi protocol participation commenced after closing, while also stating that 100% of XRP remained in cold storage. It gives no deployed amount, named protocol or realized yield amount to reconcile the statements. The Q4 partner announcement names Ripple, Kraken, Coinbase and BitGo, but agreements remain subject to conditions and approvals. Do not infer how much XRP has been deployed.
+
+**Valuation:** Coinbase is identified as the principal market for XRP fair-value measurement. This is not proof that Coinbase is the custodian or executed counterparty. The S-1 says XRP is accounted for as an indefinite-lived intangible asset at historical cost less impairment, not mark-to-market; it reports $233.651M of 2025 impairment and $264.146M for H1 2026. These are accounting impairment charges, not realized cash-sale losses.
+
+### Coinbase Q3 collateral disclosure — no XRP-specific amount
+
+Coinbase's Q3 2026 Form 10-Q, quarter ended September 30:
+https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+
+The filing does not contain an XRP-specific collateral line or an XRP text match. It reports:
+
+- Recognized lending collateral: $1.009297B, including $920.649M BTC, $67.005M ETH, $9.903M other crypto assets and $11.740M fiat/stablecoins.
+- Borrower collateral not recognized: $2.804112B crypto assets and $480.450M fiat/stablecoins; the crypto amount is not broken down by token.
+- Derivative collateral: $325.766M, including $322.341M BTC and $3.425M ETH.
+- Loan receivables: $1.976102B, including $1.958504B fiat/stablecoins and $17.598M crypto assets.
+- Loan collateral requirements: 100%–250% of loan fair value; derivative collateral at least 100% of derivative notional.
+
+The $9.903M 'other crypto' bucket is not asset-level identified. The $2.804B borrower crypto collateral is also unitemized. The correct conclusion is **no XRP-specific amount disclosed**, not zero XRP collateral. The filing does not establish a positive XRP balance either.
+
+### Circle Q3 reserves, SBI Japan VIE and Coinbase distribution economics
+
+Circle's Q3 2026 Form 10-Q:
+https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+
+Reported reserve assets total $73.957B:
+- $62.467B in the Circle Reserve Fund.
+- $9.732B cash.
+- $1.758B U.S. Treasury securities outside the fund.
+
+Approximately 84.46% of reported reserves are in the Circle Reserve Fund. The filing states fund shares are not FDIC-insured or government-guaranteed; BlackRock has no obligation to support the fund. Aggregate FDIC coverage across nine banks is reported at $2.3M.
+
+The SBI Japan VIE received approximately $1.5M contributions from Circle and $1.5M from SBI; Circle owns 50%, controls and consolidates the VIE, and reported no significant operating results through September 30, 2026.
+
+Circle reported $331.3M Q3 and $986.6M nine-month Coinbase distribution costs. Coinbase reported $306.905M Q3 and $904.487M nine-month stablecoin revenue. These are different accounting measures and must not be netted or called a disclosed profit split. Circle's average Q3 USDC circulation was $73.264B; its reserve return rate was 3.5%; reserve income represented 76% of Q3 revenue and 87.5% of nine-month revenue.
+
+### Correction — Coinbase/EY 2026 institutional survey confirms XRP allocation percentages
+
+Primary report:
+https://www.coinbase.com/institutional/research-insights/research/2026-institutional-investor-digital-assets-survey
+
+The report's XRP allocation chart states:
+- 18% of responding firms currently report XRP allocation (question n=310).
+- 25% plan to add XRP allocation in 2026 (question n=343).
+- Overall survey sample: 351; fieldwork January 13–30, 2026.
+
+This corrects the prior Run 76 statement that the primary Coinbase/EY survey did not corroborate the 18%/25% figures. That statement was wrong.
+
+The percentages are self-reported shares of firms, not dollars invested, token balances, AUM allocation weights or verified purchases. They do not quantify 'actual capital' and are not a direct flow measure.
+
+### Kamilah/Camila Stevenson identity gate
+
+Dr. Kamilah Stevenson / The Wealth Doctor is corroborated by her official learning site:
+https://learn.kamilahstevenson.com
+
+The site does not visibly provide a reciprocal first-party link to `@drkamilahstevenson`. Third-party directories and an unverified Telegram account are not proof of channel ownership. Four candidate video leads are preserved as unverified; several third-party transcripts self-identify as “Camila Stevenson,” while publisher metadata says Kamilah. This may be an alias, transcription issue or a different person.
+
+**Verified personal-channel inventory remains zero.** No candidate video is attributed to the verified person until a first-party cross-link is established.
+
+### Prediction and merge status
+
+No new directional XRP forecast is justified. The Evernorth, Coinbase, Circle and survey findings are point-in-time research evidence, not validated price predictors. Forecast status remains **NOT_ISSUED**.
+
+#1640 remains technically green on parent head `f92aafdc25fce42c60c04d70b8e6cca47969cfdf`, but still has zero independent APPROVED reviews, four queued external provider checks, inaccessible branch-protection configuration, self-only CODEOWNERS and unresolved Pages publication authorization. #1643 remains one commit behind and dirty. No merge, deployment, secret operation, external-model transfer, paper trade, funds transfer, force-push or destructive worktree action occurred.
+
+The next action is exact-head verification of this addendum commit, followed by genuine independent approvals and Pages/branch-protection authorization. Only then can #1640 be considered for a normal protected merge; #1643 must be consolidated after main verification.

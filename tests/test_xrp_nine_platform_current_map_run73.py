@@ -17,6 +17,7 @@ def test_run77_current_snapshot_preserves_run76_and_historical_map():
     current = load_current()
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
     observation = current["current_run_observations"]
+    prior77 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 77 and item.get("captured_at_utc") == "2026-11-09T02:01:02Z")
     prior76 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 76)
     prior75 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 75)
     prior73 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 73)
@@ -27,8 +28,9 @@ def test_run77_current_snapshot_preserves_run76_and_historical_map():
     assert observation["run_id"] == 77
     assert observation["captured_at_utc"] == "2026-11-09T02:01:02Z"
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "e31a951939bcdd638f190d9d2ff8c5faae9b2091"
+    assert observation["integration_head_before_handoff_commit"] == "f92aafdc25fce42c60c04d70b8e6cca47969cfdf"
     assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
+    assert prior77["integration_head_before_handoff_commit"] == "e31a951939bcdd638f190d9d2ff8c5faae9b2091"
     assert prior76["captured_at_utc"] == "2026-11-09T01:50:00Z"
     assert prior76["ci_evidence"]["integration"]["full_suite"]["passed"] == 1234
     assert prior75["captured_at_utc"] == "2026-11-09T01:36:00Z"
@@ -120,19 +122,19 @@ def test_run77_merge_and_forecast_safety_gates_remain_closed():
 def test_run77_exact_head_ci_is_recorded_without_overstating_research_branch():
     observation = load_current()["current_run_observations"]
     integration = observation["ci_evidence"]["integration"]
-    assert integration["verified_code_test_head"] == "e31a951939bcdd638f190d9d2ff8c5faae9b2091"
-    assert integration["full_suite"]["run_id"] == 42547603193
+    assert integration["verified_code_test_head"] == "f92aafdc25fce42c60c04d70b8e6cca47969cfdf"
+    assert integration["full_suite"]["run_id"] == 42549540799
     assert integration["full_suite"]["result"] == "success"
-    assert integration["full_suite"]["passed"] == 1235
+    assert integration["full_suite"]["passed"] == 1238
     assert integration["full_suite"]["failed"] == 0
     assert integration["full_suite"]["subtests_passed"] == 8
     assert integration["full_suite"]["coverage_pct"] == 58.98
     assert integration["core_suite"]["passed"] == 660
     assert integration["installed_wheel"]["result"] == "success"
-    assert integration["dependency_audit"]["run_id"] == 42547603245
+    assert integration["dependency_audit"]["run_id"] == 42549540768
     assert integration["dependency_audit"]["manifests"] == 6
     assert integration["dependency_audit"]["known_vulnerabilities"] == 0
-    assert integration["fail_closed_gate"]["run_id"] == 42547603095
+    assert integration["fail_closed_gate"]["run_id"] == 42549540832
     assert integration["fail_closed_gate"]["automatic_merge_disabled"] is True
     research = observation["ci_evidence"]["research"]
     assert research["head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
@@ -191,3 +193,71 @@ def test_run77_workflow_safety_audit_distinguishes_main_from_integration():
     assert audit["workflows_dispatched"] is False
     assert audit["secrets_read_or_rotated"] is False
     assert audit["external_deployments_performed"] is False
+
+
+def test_run77_evernorth_actual_capital_separates_cash_in_kind_debt_and_capacity():
+    data = load_current()["current_run_observations"]["evernorth_xrp_treasury"]
+    assert data["cash_used_to_purchase_xrp_usd"] == 214100000
+    assert data["xrp_purchased_with_cash"] == 84365876
+    assert data["xrp_in_kind_contributions"] == 388910554
+    assert data["xrp_holdings_at_closing"] == 473276430
+    assert data["xrp_purchased_with_cash"] + data["xrp_in_kind_contributions"] == data["xrp_holdings_at_closing"]
+    assert data["gross_cash_proceeds_at_closing_usd"] == 272600000
+    assert data["convertible_note"]["net_proceeds_usd"] == 30000000
+    assert data["committed_equity_facility"]["proceeds_usd"] == 0
+    assert data["sbi_holdings_ownership"]["voting_power_pct"] == 39.9
+    assert data["sbi_holdings_ownership"]["common_stock_pct"] == 21.4
+    assert data["custody"]["cold_storage_pct"] == 100
+    assert data["custody"]["insurance_shared_across_all_bitgo_clients"] is True
+    assert data["strategy"]["defi_protocol_participation_commenced_after_closing"] is True
+    assert data["strategy"]["same_s1_states_100_pct_cold_storage"] is True
+    assert data["strategy"]["deployed_xrp_amount_disclosed"] is False
+    assert data["model_eligible"] is False
+
+
+def test_run77_coinbase_q3_collateral_does_not_infer_zero_xrp():
+    data = load_current()["current_run_observations"]["coinbase_q3_collateral_disclosure"]
+    assert data["xrp_named_in_filing"] is False
+    assert data["recognized_lending_collateral_usd"]["other_crypto"] == 9903000
+    assert data["unrecognized_borrower_collateral_usd"]["crypto"] == 2804112000
+    assert data["derivative_collateral_usd"]["total"] == 325766000
+    assert data["unrecognized_borrower_collateral_usd"]["asset_level_breakdown"] is False
+    assert "Do not infer zero" in data["interpretation"]
+    assert data["model_eligible"] is False
+
+
+def test_run77_circle_reserves_sbi_jv_and_coinbase_distribution_are_separate():
+    data = load_current()["current_run_observations"]["circle_q3_reserve_and_distribution_disclosure"]
+    assert data["reserve_assets_usd"]["total"] == 73957000000
+    assert data["reserve_assets_usd"]["circle_reserve_fund"] == 62467000000
+    assert data["sbi_japan_vie"]["circle_contribution_usd"] == 1500000
+    assert data["sbi_japan_vie"]["sbi_contribution_usd"] == 1500000
+    assert data["sbi_japan_vie"]["circle_ownership_pct"] == 50
+    assert data["sbi_japan_vie"]["significant_operating_results_through_2026_09_30"] is False
+    assert data["coinbase_distribution"]["circle_distribution_cost_q3_usd"] == 331300000
+    assert data["coinbase_distribution"]["coinbase_stablecoin_revenue_q3_usd"] == 306905000
+    assert data["coinbase_distribution"]["directly_nettable"] is False
+    assert data["reserve_risk"]["fund_fdic_insured"] is False
+    assert data["model_eligible"] is False
+
+
+def test_run77_coinbase_ey_survey_corrects_xrp_allocation_claim_without_claiming_dollar_capital():
+    data = load_current()["current_run_observations"]["coinbase_ey_survey_2026"]
+    assert data["current_xrp_allocation_pct"] == 18
+    assert data["planned_add_xrp_2026_pct"] == 25
+    assert data["current_question_n"] == 310
+    assert data["planned_2026_question_n"] == 343
+    assert "not dollar amounts" in data["interpretation"]
+    actual = load_current()["current_run_observations"]["exact_phrase_research"]["actual_capital"]
+    assert "18%" in actual and "25%" in actual
+    assert data["model_eligible"] is False
+
+
+def test_run77_kamilah_channel_identity_gate_keeps_video_inventory_unverified():
+    data = load_current()["current_run_observations"]["kamilah_video_identity_research"]
+    assert data["person_identity"].startswith("Dr. Kamilah Stevenson")
+    assert data["first_party_channel_ownership_verified"] is False
+    assert data["verified_video_inventory_count"] == 0
+    assert len(data["candidate_videos"]) == 4
+    assert any(x.get("transcript_self_identification") == "Camila Stevenson" for x in data["candidate_videos"])
+    assert "Do not inventory" in data["status"]
