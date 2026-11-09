@@ -1,20 +1,62 @@
-## Run 96 follow-up — map history restored; exact-head checks queued
+## Run 96 final — exact-head tests and dependency audit passed; merge remains blocked
 
-The compact map regression is repaired without discarding history. Original blob `235843dd0b4e138ecf1eb7cb9189cf72d46ca2ac` was restored, preserving the Run 73–82 snapshots and all raw-response preimages. Run 95 and Run 96 are appended to `prior_run_observations`/`run_history`; Run 96 is also `latest_run_snapshot`. The legacy `current_run_observations` remains Run 82 because historical tests assert its exact timestamp and receipt hashes. The top-level endpoint inventory is updated to 39 total, 36 hourly, one weekly raw-only CFTC, and two excluded XRPL node endpoints.
+Current main SHA: `d4d43be3427375cf79d190e768976de062e20287`.  
+Current PR #1640 head: `e11b544972da225778ceb5a6316286e11c1b2cbf` (831 commits ahead, zero behind, 210 changed paths).  
+Current integration: existing PR #1640 only; no new branch or PR.
 
-Current PR #1640 head is `b81374064bbe31d080088f1e2c76fa50abf566aa`, 830 commits ahead of main, zero behind, 210 changed paths. Exact-head CI run [42672233350](https://github.com/Barrot-Agent/B-Agent/actions/runs/42672233350), dependency audit [42672233730](https://github.com/Barrot-Agent/B-Agent/actions/runs/42672233730), and fail-closed gate [42672233383](https://github.com/Barrot-Agent/B-Agent/actions/runs/42672233383) are queued; no result is claimed yet. The immediately preceding head 4dcece4 had 1,289 passed / 19 failed because the compact map replaced historical snapshots. The 677-test core job passed on that head. Exact-head verification must finish on b813740 before further changes or merge.
+### Exact-head verification on e11b544
 
-### New secondary-source XRP context (not model-admitted)
+- [Full repository CI — run 42672532535](https://github.com/Barrot-Agent/B-Agent/actions/runs/42672532535): **1,308 passed, 0 failed, 8 subtests passed; 59.12% inclusive coverage** against the 53% floor.
+- Core suite: **677 passed, 0 failed, 8 subtests passed**.
+- Wheel build and installed-wheel smoke passed; the installed package loaded Barrot V3, the priority-one XRP mission and canonical data assets.
+- [Dependency audit — run 42672532670](https://github.com/Barrot-Agent/B-Agent/actions/runs/42672532670): all six manifests passed; zero known vulnerabilities.
+- [Fail-closed gate — run 42672532716](https://github.com/Barrot-Agent/B-Agent/actions/runs/42672532716): **workflow-level FAILURE**. GitHub created no job and no check run. The workflow definition is intended to run a single audit-only step that prints the automatic-merge-disabled state, but that step did not execute. The retry endpoint returned HTTP 403 (“workflow run cannot be retried”). Do not describe this as a gate pass.
+- GitHub Actions cache reservation emitted a quota warning after tests and wheel verification; it did not fail CI.
 
-- Derivatives snapshots at source-reported cutoffs: Liqwall 17:42 UTC, about $1.23B open interest and $36.8M liquidations ($35.5M longs); TradRadar 17:25 UTC, about $1.66B open interest and at least $38.45M liquidations ($36.98M longs); Alpha Finance 17:50 UTC, about $2.49B open interest and $39.2M long liquidations. Their venue coverage overlaps and cutoffs differ; aggregate funding is near-zero/mixed. Do not average. The common long-heavy liquidation pattern indicates deleveraging, not a directional forecast. Sources: https://liqwall.com/coins/xrp ; https://tradradar.io/markets/xrp ; https://alphafinance.io/liquidation-heatmap/xrp/ .
-- ETF trackers disagree. Alpha Finance through Nov 8 reports five funds, +$8.4M over seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; it says XRP fund holdings/net assets are not published and uses a flow series. XRP Insights through Nov 6 reports issuer-page holdings changes for six spot funds plus BITW: −812,529 XRP (about −$939K) Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. Different fund scopes, methods and cutoffs; preserve both, do not average or treat as complete cash subscriptions. Sources: https://alphafinance.io/etf/xrp/ ; https://xrp-insights.com/data .
-- Reuters reports a limited PNC/Coinbase pilot for eligible corporate/institutional clients to receive Circle USDC and automatically convert to USD. This is a competing stablecoin rail, not an XRP corridor: https://www.reuters.com/technology/pnc-coinbase-circle-usdc-pilot-2026-11-09/ .
-- Exact-phrase checks: Permission Coin ASK remains a candidate only; no XRP/XRPL link verified. “Actual capital” is not a standardized XRP metric. “SBIC, ChatGPT SBIC” has no primary-source exact match; the Tokyo SBIC course does not establish an OpenAI partnership.
-- Kamilah Stevenson: two direct YouTube byline observations were found — “Ripple Just Became a BANK” (2025-12-13) and “Why XRP Matters More Than Your Paycheck” (2026-04-17). Three additional titles remain Glasp-only candidates, not verified channel uploads. A third-party Alina X upload is excluded from her authored inventory. Canonical personal-channel ownership remains not conclusively established.
+The 19 historical-map failures on 4dcece4 were caused by replacing a large history-bearing JSON map with a compact summary. The original blob `235843dd0b4e138ecf1eb7cb9189cf72d46ca2ac` has been restored. Run 95/96 are appended to `prior_run_observations`/`run_history`; Run 96 is in `latest_run_snapshot`. The legacy Run 82 `current_run_observations`, its original timestamps and raw-market receipt preimages remain intact. The subsequent exact-head run on e11b544 passed all 1,308 tests.
 
-Forecast status remains **NOT_ISSUED**. These web observations lack raw HTTP bytes and SHA-256 receipts; they are context only and are not admitted to the point-in-time feature store. No paper trade or real-money action occurred.
+### Main branch and workflows
+
+Main's current full CI on SHA `d4d43be3427375cf79d190e768976de062e20287` succeeded in [run 42526890841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890841): 718 full-suite tests, 485 core tests and 8 subtests passed. Cross Analysis run 42668727211 succeeded. Separate main workflows remain failed: Pillars Consistency Check (42621970927; GitHub App credentials absent, Databricks HTTP 403 and Hugging Face health/build error), Hover Bike Updates (42572261311; expected artifact missing), and Riemann Research Harvest (42556313011; `pydantic` missing because that workflow installs pytest only). The integration branch adds `pydantic-settings` to the Riemann workflow; this fix is not on main.
+
+### Fresh XRP evidence — secondary context only
+
+- Liqwall, as of 18:12 UTC Nov 9: XRP around $1.09; $1.23B open interest (−5.6% 24h); $36.9M liquidations, $35.5M longs and $1.4M shorts; average funding +0.0005%/8h, Binance +0.0057%; 74.5% of Binance XRP accounts long. Source: https://liqwall.com/coins/xrp .
+- TradRadar, updated 17:25 UTC: mark $1.0943 (−5.16% 24h); $1.66B OI (−12.29%); OI-weighted funding −0.0007%/8h; at least $38.45M liquidations, $36.98M longs and $1.48M shorts; 79.7% long accounts. Its exchange table shows mixed funding across Binance, Bybit, Gate, Bitget, MEXC, Hyperliquid and OKX. Source: https://tradradar.io/markets/xrp .
+- Alpha Finance, 17:50 UTC: $1.0952 spot reference (−5.09%); $2.49B aggregated OI; $3.93B 24h volume; $39.2M long and $1.6M short liquidations. Its liquidation clusters are modelled from OI and leverage tiers, not verified individual liquidation prints. Source: https://alphafinance.io/liquidation-heatmap/xrp/ .
+- OI spans $1.23B–$2.49B across these aggregators, with overlapping venue coverage and different cutoffs; funding is near-zero/mixed. Do not average. The common long-heavy liquidation pattern is a deleveraging observation, not a directional forecast.
+- ETF trackers disagree. Alpha Finance through Nov 8 covers five funds and reports +$8.4M over its last seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; its daily table shows +$8.4M on Oct 29 and $0 on Nov 3–8, and the page says net assets/holdings are not published. XRP Insights through Nov 6 covers six US spot funds plus BITW and derives flows from issuer-page day-over-day holdings changes: −812,529 XRP (about −$939K) for Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. Different fund sets, methods and cutoffs; preserve the disagreement and do not equate either to complete cash subscriptions/redemptions. Sources: https://alphafinance.io/etf/xrp/ ; https://xrp-insights.com/data .
+- Reuters reported Nov 9 that PNC and Coinbase are piloting USDC receipts for eligible corporate/institutional clients, with automatic conversion to USD. This is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand: https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/ .
+- Exact-phrase research remains unresolved: Permission Coin ASK is only a candidate and has no verified XRP/XRPL link; “actual capital” is not a standardized XRP metric; “SBIC, ChatGPT SBIC” has no primary-source exact match. Regional SBIC East/Central/West remain distinct from SBI Holdings; the Tokyo SBIC training-course listing does not establish an OpenAI partnership.
+- Kamilah Stevenson: two direct YouTube byline observations were found — “Ripple Just Became a BANK — And XRP Holders Need to Understand This” (Dec 13, 2025) and “Why XRP Matters More Than Your Paycheck” (Apr 17, 2026). Three other titles remain Glasp-only candidates, not verified channel uploads; a third-party Alina X upload is excluded from her authored inventory. Person identity is strongly corroborated, but canonical personal-channel ownership is not conclusively established.
+
+These web excerpts have no captured raw HTTP bodies or SHA-256 receipts. They remain secondary context and are **not admitted to the point-in-time feature store**. Forecast status: **NOT_ISSUED**. No paper trade or real-money action occurred.
+
+### Merge decision and backlog
+
+PR #1640 is open, non-draft and GitHub reports it mergeable. It has 62 COMMENTED reviews, **zero APPROVED reviews**, and 22/22 inline threads resolved. Main reports `protected=true`, but detailed branch-protection inspection returns HTTP 403; the visible “Fall Back” ruleset is disabled. A previous main push triggered GitHub Pages publication; configuration is inaccessible and that automatic public deployment is not authorized. The current fail-closed workflow run also failed before job creation. **No merge.**
+
+- #1643: unique research archive; 663 paths unique to #1640 and seven overlaps; 906 ahead / one behind. Preserve; no exact-head CI.
+- #1653: unique knowledge graph; six unique paths and one CI overlap; eight threads resolved, zero approvals. Preserve.
+- #1642: all seven paths overlap #1640; superseded-content candidate only.
+- #1644–#1650: path-overlap dependency/action candidates; verify exact blob content before closure.
+- #1317/#1318/#1320: structural/schema/paper-trader overlap candidates; retain until verified on main.
+- #1254/#1255: older dependency candidates; exact version reconciliation required.
+- #1269: unique mesh/topology work; preserve.
+- Complete open-PR inventory remains 372 (356 drafts, 16 non-drafts). No PRs were closed.
+
+### Next concrete actions
+
+1. Diagnose why the fail-closed workflow produced a failed run with zero jobs/check runs; restore a verifiable exact-head gate without bypassing protections.
+2. Obtain an independent APPROVED review, verify effective branch-protection requirements and resolve Pages deployment authorization.
+3. Only when all gates pass, consider merging #1640; fetch main again, verify merge commit/files, run main CI and inspect automatic workflow side effects.
+4. Preserve #1643's unique research and #1653's graph work; close only exact duplicates after verified integration.
+5. Continue source-quality work: external WORM/timestamp anchoring, synchronized history, CFTC TFF receipt parsing (raw-only until validated), walk-forward lift, calibration and shadow outcomes.
+
+No main write, merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
 
 ---
+
 
 ## Run 96 — current repository audit and exact-head regression repair
 
@@ -42,7 +84,7 @@ On exact PR #1640 head `39f0e94a5738056345e5e17ac9dfa07cc0530616`:
 
 The 11 failures are regression-test drift introduced with the new weekly CFTC endpoint, not evidence that CFTC should be collected hourly. The registry correctly contains 39 endpoint records: 36 hourly sources, one weekly raw-only CFTC source and two non-commercial XRPL nodes excluded by default. Three test groups still asserted the old 38-total count; scheduled-count assertions failed to subtract the weekly endpoint; the CFTC HTML fixture had the page body but omitted the CFTC source ID from its accepted HTML source set; and the parser-failure test patched ENDPOINTS without patching the precomputed SCHEDULED_ENDPOINTS fixture. The current platform map is a history-bearing 1.5 MB artifact. The initial fetch_file response returned no body for this large file; a compact replacement inadvertently discarded Run 73–82 snapshots and raw market-receipt preimages. The full suite exposed 19 historical-map regression failures. The original blob (235843dd0b4e138ecf1eb7cb9189cf72d46ca2ac) has now been restored; Run 95/96 were appended to prior_run_observations/run_history and latest_run_snapshot without overwriting the legacy Run 82 current_run_observations or its receipt preimages.
 
-Corrections are being applied to the existing #1640 branch only. The test changes preserve the production collection policy: 36 hourly sources, CFTC only in the Saturday 00:10–01:59 UTC daily window, and two non-commercial XRPL nodes excluded from scheduled collection. Exact-head verification after the repair is pending; do not inherit the failed-head or predecessor results.
+Corrections were applied only to the existing #1640 branch. The production collection policy remains 36 hourly sources, CFTC only in the Saturday 00:10–01:59 UTC window, and two non-commercial XRPL nodes excluded from scheduled collection. The history-preserving map restoration and exact-head results are recorded in the Run 96 final section above.
 
 ### Main workflows and merge boundary
 

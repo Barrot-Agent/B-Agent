@@ -29345,26 +29345,29 @@
   },
   "latest_market_crosscheck": {
     "model_admission": false,
-    "source_capture_type": "secondary web excerpts only; no raw HTTP bytes or SHA-256 receipts",
+    "source_capture_type": "secondary web excerpts only; raw HTTP bytes and SHA-256 receipts were not captured",
     "derivatives": [
       {
         "source": "Liqwall",
-        "as_of_utc": "2026-11-09T17:42:00Z",
+        "as_of_utc": "2026-11-09T18:12:00Z",
         "url": "https://liqwall.com/coins/xrp",
+        "price_usd": 1.09,
         "open_interest_usd": 1230000000,
-        "oi_change_24h_pct": -5.8,
-        "liquidations_24h_usd": 36800000,
+        "oi_change_24h_pct": -5.6,
+        "liquidations_24h_usd": 36900000,
         "long_liquidations_usd": 35500000,
         "short_liquidations_usd": 1400000,
         "binance_funding_8h_pct": 0.0057,
-        "average_funding_8h_pct": -0.0002,
-        "binance_accounts_long_pct": 74.6,
+        "average_funding_8h_pct": 0.0005,
+        "binance_accounts_long_pct": 74.5,
         "model_eligible": false
       },
       {
         "source": "TradRadar",
         "as_of_utc": "2026-11-09T17:25:00Z",
         "url": "https://tradradar.io/markets/xrp",
+        "price_usd": 1.0943,
+        "price_change_24h_pct": -5.16,
         "open_interest_usd": 1660000000,
         "oi_change_24h_pct": -12.29,
         "funding_oi_weighted_8h_pct": -0.0007,
@@ -29380,6 +29383,8 @@
         "source": "Alpha Finance",
         "as_of_utc": "2026-11-09T17:50:00Z",
         "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+        "price_usd": 1.0952,
+        "price_change_24h_pct": -5.09,
         "open_interest_usd": 2490000000,
         "volume_24h_usd": 3930000000,
         "long_liquidations_24h_usd": 39200000,
@@ -29388,6 +29393,7 @@
         "model_eligible": false
       }
     ],
+    "derivatives_interpretation": "OI aggregates range from $1.23B to $2.49B (about 2.03x) with overlapping venue coverage and different cutoffs. Funding is near-zero/mixed. All three show materially more long than short liquidations. Do not average; this is a deleveraging observation, not a directional signal.",
     "etf_flows": {
       "alpha_finance": {
         "through": "2026-11-08",
@@ -29395,7 +29401,8 @@
         "last_7_sessions_usd": 8400000,
         "last_30_sessions_usd": 23300000,
         "cumulative_usd": 1730000000,
-        "method": "publisher flow series; holdings/net assets not published"
+        "source_url": "https://alphafinance.io/etf/xrp/",
+        "method": "publisher flow series; page says net assets/holdings are not published; daily table shows +$8.4M Oct 29 and $0 on Nov 3-8"
       },
       "xrp_insights": {
         "through": "2026-11-06",
@@ -29405,10 +29412,12 @@
         "net_holdings_change_xrp": -812529,
         "approx_value_usd": -939000,
         "total_holdings_xrp": 1195182552,
-        "method": "day-over-day issuer-page holdings changes"
+        "source_url": "https://xrp-insights.com/data",
+        "method": "issuer-page holdings changes day-over-day; flow-excluded funds count as zero"
       },
-      "reconciliation": "Different fund scopes, methods and cutoffs; do not average or infer complete issuer-wide cash flows."
-    }
+      "reconciliation": "Different fund sets, methods and cutoffs. Preserve disagreement; do not average or equate either series to complete cash subscriptions/redemptions."
+    },
+    "model_eligible": false
   },
   "prediction_engine": {
     "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
@@ -29612,32 +29621,42 @@
   },
   "merge_state": {
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-    "protected_flag": true,
-    "protection_details": "HTTP 403; required review/status rules unverified",
+    "main_protected": true,
+    "branch_protection_status": "UNVERIFIED_HTTP_403",
     "visible_ruleset": {
       "id": 10863829,
       "name": "Fall Back",
       "enforcement": "disabled"
     },
-    "codeowners": "* @Barrot-Agent",
-    "pages_enabled": true,
-    "pages_config_accessible": false,
-    "pages_authorized": false,
+    "pages_configuration_accessible": false,
+    "pages_deployment_authorized": false,
     "pr_1640": {
-      "head": "2685c1744aa5a7972da9063a18be665077c4548c",
+      "state": "OPEN",
+      "draft": false,
       "mergeable": true,
+      "head_sha": "e11b544972da225778ceb5a6316286e11c1b2cbf",
+      "ahead_by": 831,
+      "behind_by": 0,
+      "changed_paths": 210,
       "approvals": 0,
+      "commented_reviews": 62,
       "threads_resolved": 22,
-      "full_suite": "1299 passed + 8 subtests",
-      "audit": "6 manifests; 0 known vulnerabilities",
-      "gate": "passed; auto-merge disabled"
+      "threads_unresolved": 0
+    },
+    "fail_closed_gate_run": {
+      "id": 42672532716,
+      "conclusion": "FAILURE",
+      "jobs": 0,
+      "check_runs": 0,
+      "retry_forbidden": true
     },
     "merge_performed": false,
     "merge_allowed": false,
     "blockers": [
-      "No independent APPROVED review",
-      "Branch-protection details inaccessible",
-      "Automatic Pages publication not authorized"
+      "Zero independent APPROVED reviews",
+      "Effective branch-protection requirements inaccessible through current connector (HTTP 403)",
+      "Fail-closed gate workflow failed before creating a job/check run; retry endpoint rejects retry (HTTP 403)",
+      "Automatic Pages deployment side effect previously observed; explicit authorization absent"
     ]
   },
   "external_actions": {
@@ -29678,7 +29697,7 @@
       "run_id": 42556313011,
       "result": "FAILURE",
       "cause": "ModuleNotFoundError: pydantic after workflow installed pytest only",
-      "integration_branch_fix": "pydantic-settings is installed by the integration workflow; not verified on main"
+      "integration_branch_fix": "pydantic-settings installed by integration workflow; not verified on main"
     },
     "pillars_consistency": {
       "run_id": 42621970927,
@@ -29696,7 +29715,7 @@
     }
   },
   "backlog_classification": {
-    "#1640": "BLOCKED; history-preserving map restored on b813740; exact-head CI/audit/gate queued; zero independent approvals; Pages deployment authorization absent.",
+    "#1640": "BLOCKED; exact-head full suite 1,308 passed, 8 subtests, 59.12% coverage; six-manifest audit passed; fail-closed gate workflow failed before job creation; zero independent approvals; branch-protection visibility and Pages authorization unresolved.",
     "#1643": "UNIQUE/UNREVIEWED; 663 unique paths, seven overlaps; preserve.",
     "#1653": "UNIQUE/UNREVIEWED; six unique paths, one overlap; preserve.",
     "#1642": "SUPERSEDED candidate: 7/7 paths overlap and commit is ancestor of #1640.",
@@ -29708,7 +29727,7 @@
     "#1659": "DRAFT; preserve 4 unique local Llama/Termux paths.",
     "remaining_drafts": "356; no bulk closure."
   },
-  "last_run_status": "Run96 history-preserving map restoration committed on b813740; exact-head CI, dependency audit and fail-closed gate are queued.",
+  "last_run_status": "Run96 exact-head full suite and six-manifest audit passed on e11b544; fail-closed gate workflow failed before creating jobs/checks; PR #1640 remains blocked.",
   "integration_head_before_map_commit": "2685c1744aa5a7972da9063a18be665077c4548c",
   "research_updates": {
     "run93": {
@@ -29730,9 +29749,9 @@
       }
     },
     "retrieval_context": "Public web secondary-source cross-check captured during Run 96. Search/open excerpts only; raw HTTP response bytes were not captured, no SHA-256 receipt exists, and none of these figures is model-admitted.",
-    "derivatives": "At source-reported cutoffs Liqwall showed about $1.23B OI and $36.8M liquidations ($35.5M longs); TradRadar about $1.66B OI and at least $38.45M liquidations ($36.98M longs); Alpha Finance about $2.49B OI and $39.2M long liquidations. Venue coverage overlaps and timestamps/methods differ; funding is near-zero/mixed. Do not average. Long-heavy liquidation supports deleveraging, not direction.",
-    "etf_flows": "Alpha Finance through 2026-11-08 reports five funds, +$8.4M over seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; it says holdings/net assets are not published and the flow series is its own method. XRP Insights through 2026-11-06 reports issuer-page holdings changes for six spot funds plus BITW: -812,529 XRP (about -$939K) Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. Different fund scope, data method and cutoff; preserve disagreement, do not average or equate either to complete cash subscriptions.",
-    "coinbase_pnc": "Reuters, 2026-11-09: limited PNC corporate/institutional pilot with Coinbase enables eligible clients to receive Circle USDC and automatically convert it to USD. This is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand.",
+    "derivatives": "OI aggregates range from $1.23B to $2.49B (about 2.03x) with overlapping venue coverage and different cutoffs. Funding is near-zero/mixed. All three show materially more long than short liquidations. Do not average; this is a deleveraging observation, not a directional signal.",
+    "etf_flows": "Different fund sets, methods and cutoffs. Preserve disagreement; do not average or equate either series to complete cash subscriptions/redemptions.",
+    "coinbase_pnc": "Reuters 2026-11-09: PNC limited pilot lets eligible corporate/institutional clients receive Circle USDC automatically converted to USD; competing stablecoin rail, not XRP demand.",
     "ask_coin": "Permission Coin ASK remains a plausible candidate; exact intended ASK Coin identity and any XRP/XRPL integration remain unverified.",
     "actual_capital": "The exact phrase did not resolve to a standardized XRP metric. Separate disclosed cash used to buy XRP, in-kind contributions, debt proceeds, drawn credit and undrawn equity capacity.",
     "sbic_chatgpt": "No exact primary-source match for 'SBIC, ChatGPT SBIC'. The prior Tokyo SBIC ChatGPT/Copilot training-course evidence does not establish an OpenAI partnership.",
@@ -30662,7 +30681,7 @@
       "description": "Three SHA-256-bound public spot JSON bodies and six secondary derivatives views; research-only."
     }
   ],
-  "updated_at_utc": "2026-11-09T18:14:09Z",
+  "updated_at_utc": "2026-11-09T18:20:00Z",
   "current_run_snapshot": {
     "run": 82,
     "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -31567,15 +31586,30 @@
       "short_liquidations_24h_usd": 1600000,
       "liquidation_clusters_modelled_from_open_interest": true,
       "model_eligible": false
+    },
+    {
+      "source": "Liqwall",
+      "as_of_utc": "2026-11-09T18:12:00Z",
+      "url": "https://liqwall.com/coins/xrp",
+      "price_usd": 1.09,
+      "open_interest_usd": 1230000000,
+      "oi_change_24h_pct": -5.6,
+      "liquidations_24h_usd": 36900000,
+      "long_liquidations_usd": 35500000,
+      "short_liquidations_usd": 1400000,
+      "binance_funding_8h_pct": 0.0057,
+      "average_funding_8h_pct": 0.0005,
+      "binance_accounts_long_pct": 74.5,
+      "model_eligible": false
     }
   ],
-  "latest_run_verified_at_utc": "2026-11-09T18:14:09Z",
+  "latest_run_verified_at_utc": "2026-11-09T18:18:58Z",
   "latest_run_snapshot": {
     "run_id": 96,
     "captured_at_utc": "2026-11-09T18:01:15Z",
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "integration_head_before_run96_repairs": "39f0e94a5738056345e5e17ac9dfa07cc0530616",
-    "integration_code_test_head": "4dcece4a7148cf6fe4eb491a4f6e35a892aacd2f",
+    "integration_code_test_head": "e11b544972da225778ceb5a6316286e11c1b2cbf",
     "repository_trees": {
       "main": {
         "entries": 1404,
@@ -31619,8 +31653,8 @@
     },
     "branch_ancestry": {
       "pr_1640": {
-        "head_sha": "4dcece4a7148cf6fe4eb491a4f6e35a892aacd2f",
-        "ahead_by": 829,
+        "head_sha": "e11b544972da225778ceb5a6316286e11c1b2cbf",
+        "ahead_by": 831,
         "behind_by": 0,
         "changed_paths": 210
       },
@@ -31741,14 +31775,37 @@
         }
       },
       "post_restore_verification": {
-        "head": "b81374064bbe31d080088f1e2c76fa50abf566aa",
-        "ci_run_id": 42672233350,
-        "ci_status": "QUEUED",
-        "dependency_audit_run_id": 42672233730,
-        "dependency_audit_status": "QUEUED",
-        "fail_closed_gate_run_id": 42672233383,
-        "fail_closed_gate_status": "QUEUED",
-        "no_results_yet": true
+        "head": "e11b544972da225778ceb5a6316286e11c1b2cbf",
+        "ci_run_id": 42672532535,
+        "ci_status": "SUCCESS",
+        "full_repository_suite": {
+          "passed": 1308,
+          "failed": 0,
+          "subtests_passed": 8,
+          "coverage_pct": 59.12
+        },
+        "core_suite": {
+          "run_id": 42672532535,
+          "passed": 677,
+          "failed": 0,
+          "subtests_passed": 8
+        },
+        "wheel_build": "SUCCESS",
+        "installed_wheel_smoke": "SUCCESS: Barrot V3, primary XRP mission and canonical assets loaded",
+        "dependency_audit": {
+          "run_id": 42672532670,
+          "status": "SUCCESS",
+          "manifests": 6,
+          "known_vulnerabilities": 0
+        },
+        "fail_closed_gate": {
+          "run_id": 42672532716,
+          "status": "WORKFLOW_LEVEL_FAILURE",
+          "jobs": 0,
+          "check_runs": 0,
+          "retry_result": "403 workflow run cannot be retried"
+        },
+        "code_rabbit": "SKIPPED"
       }
     },
     "main_workflows": {
@@ -31768,7 +31825,7 @@
         "run_id": 42556313011,
         "result": "FAILURE",
         "cause": "ModuleNotFoundError: pydantic after workflow installed pytest only",
-        "integration_branch_fix": "pydantic-settings is installed by the integration workflow; not verified on main"
+        "integration_branch_fix": "pydantic-settings installed by integration workflow; not verified on main"
       },
       "pillars_consistency": {
         "run_id": 42621970927,
@@ -31786,6 +31843,7 @@
       }
     },
     "merge_state": {
+      "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
       "main_protected": true,
       "branch_protection_status": "UNVERIFIED_HTTP_403",
       "visible_ruleset": {
@@ -31799,41 +31857,56 @@
         "state": "OPEN",
         "draft": false,
         "mergeable": true,
-        "head_sha": "4dcece4a7148cf6fe4eb491a4f6e35a892aacd2f",
+        "head_sha": "e11b544972da225778ceb5a6316286e11c1b2cbf",
+        "ahead_by": 831,
+        "behind_by": 0,
+        "changed_paths": 210,
         "approvals": 0,
-        "threads_resolved": 22
+        "commented_reviews": 62,
+        "threads_resolved": 22,
+        "threads_unresolved": 0
+      },
+      "fail_closed_gate_run": {
+        "id": 42672532716,
+        "conclusion": "FAILURE",
+        "jobs": 0,
+        "check_runs": 0,
+        "retry_forbidden": true
       },
       "merge_performed": false,
       "merge_allowed": false,
       "blockers": [
         "Zero independent APPROVED reviews",
-        "Effective branch-protection requirements inaccessible through current connector",
-        "Automatic Pages deployment side effect previously observed; explicit authorization absent",
-        "Exact-head full repository suite failed 19 historical map tests"
+        "Effective branch-protection requirements inaccessible through current connector (HTTP 403)",
+        "Fail-closed gate workflow failed before creating a job/check run; retry endpoint rejects retry (HTTP 403)",
+        "Automatic Pages deployment side effect previously observed; explicit authorization absent"
       ]
     },
     "latest_market_crosscheck": {
       "model_admission": false,
-      "source_capture_type": "secondary web excerpts only; no raw HTTP bytes or SHA-256 receipts",
+      "source_capture_type": "secondary web excerpts only; raw HTTP bytes and SHA-256 receipts were not captured",
       "derivatives": [
         {
           "source": "Liqwall",
-          "as_of_utc": "2026-11-09T17:42:00Z",
+          "as_of_utc": "2026-11-09T18:12:00Z",
           "url": "https://liqwall.com/coins/xrp",
+          "price_usd": 1.09,
           "open_interest_usd": 1230000000,
-          "oi_change_24h_pct": -5.8,
-          "liquidations_24h_usd": 36800000,
+          "oi_change_24h_pct": -5.6,
+          "liquidations_24h_usd": 36900000,
           "long_liquidations_usd": 35500000,
           "short_liquidations_usd": 1400000,
           "binance_funding_8h_pct": 0.0057,
-          "average_funding_8h_pct": -0.0002,
-          "binance_accounts_long_pct": 74.6,
+          "average_funding_8h_pct": 0.0005,
+          "binance_accounts_long_pct": 74.5,
           "model_eligible": false
         },
         {
           "source": "TradRadar",
           "as_of_utc": "2026-11-09T17:25:00Z",
           "url": "https://tradradar.io/markets/xrp",
+          "price_usd": 1.0943,
+          "price_change_24h_pct": -5.16,
           "open_interest_usd": 1660000000,
           "oi_change_24h_pct": -12.29,
           "funding_oi_weighted_8h_pct": -0.0007,
@@ -31849,6 +31922,8 @@
           "source": "Alpha Finance",
           "as_of_utc": "2026-11-09T17:50:00Z",
           "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+          "price_usd": 1.0952,
+          "price_change_24h_pct": -5.09,
           "open_interest_usd": 2490000000,
           "volume_24h_usd": 3930000000,
           "long_liquidations_24h_usd": 39200000,
@@ -31857,6 +31932,7 @@
           "model_eligible": false
         }
       ],
+      "derivatives_interpretation": "OI aggregates range from $1.23B to $2.49B (about 2.03x) with overlapping venue coverage and different cutoffs. Funding is near-zero/mixed. All three show materially more long than short liquidations. Do not average; this is a deleveraging observation, not a directional signal.",
       "etf_flows": {
         "alpha_finance": {
           "through": "2026-11-08",
@@ -31864,7 +31940,8 @@
           "last_7_sessions_usd": 8400000,
           "last_30_sessions_usd": 23300000,
           "cumulative_usd": 1730000000,
-          "method": "publisher flow series; holdings/net assets not published"
+          "source_url": "https://alphafinance.io/etf/xrp/",
+          "method": "publisher flow series; page says net assets/holdings are not published; daily table shows +$8.4M Oct 29 and $0 on Nov 3-8"
         },
         "xrp_insights": {
           "through": "2026-11-06",
@@ -31874,16 +31951,18 @@
           "net_holdings_change_xrp": -812529,
           "approx_value_usd": -939000,
           "total_holdings_xrp": 1195182552,
-          "method": "day-over-day issuer-page holdings changes"
+          "source_url": "https://xrp-insights.com/data",
+          "method": "issuer-page holdings changes day-over-day; flow-excluded funds count as zero"
         },
-        "reconciliation": "Different fund scopes, methods and cutoffs; do not average or infer complete issuer-wide cash flows."
-      }
+        "reconciliation": "Different fund sets, methods and cutoffs. Preserve disagreement; do not average or equate either series to complete cash subscriptions/redemptions."
+      },
+      "model_eligible": false
     },
     "research_updates": {
       "retrieval_context": "Public web secondary-source cross-check captured during Run 96. Search/open excerpts only; raw HTTP response bytes were not captured, no SHA-256 receipt exists, and none of these figures is model-admitted.",
-      "derivatives": "At source-reported cutoffs Liqwall showed about $1.23B OI and $36.8M liquidations ($35.5M longs); TradRadar about $1.66B OI and at least $38.45M liquidations ($36.98M longs); Alpha Finance about $2.49B OI and $39.2M long liquidations. Venue coverage overlaps and timestamps/methods differ; funding is near-zero/mixed. Do not average. Long-heavy liquidation supports deleveraging, not direction.",
-      "etf_flows": "Alpha Finance through 2026-11-08 reports five funds, +$8.4M over seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; it says holdings/net assets are not published and the flow series is its own method. XRP Insights through 2026-11-06 reports issuer-page holdings changes for six spot funds plus BITW: -812,529 XRP (about -$939K) Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. Different fund scope, data method and cutoff; preserve disagreement, do not average or equate either to complete cash subscriptions.",
-      "coinbase_pnc": "Reuters, 2026-11-09: limited PNC corporate/institutional pilot with Coinbase enables eligible clients to receive Circle USDC and automatically convert it to USD. This is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand.",
+      "derivatives": "OI aggregates range from $1.23B to $2.49B (about 2.03x) with overlapping venue coverage and different cutoffs. Funding is near-zero/mixed. All three show materially more long than short liquidations. Do not average; this is a deleveraging observation, not a directional signal.",
+      "etf_flows": "Different fund sets, methods and cutoffs. Preserve disagreement; do not average or equate either series to complete cash subscriptions/redemptions.",
+      "coinbase_pnc": "Reuters 2026-11-09: PNC limited pilot lets eligible corporate/institutional clients receive Circle USDC automatically converted to USD; competing stablecoin rail, not XRP demand.",
       "ask_coin": "Permission Coin ASK remains a plausible candidate; exact intended ASK Coin identity and any XRP/XRPL integration remain unverified.",
       "actual_capital": "The exact phrase did not resolve to a standardized XRP metric. Separate disclosed cash used to buy XRP, in-kind contributions, debt proceeds, drawn credit and undrawn equity capacity.",
       "sbic_chatgpt": "No exact primary-source match for 'SBIC, ChatGPT SBIC'. The prior Tokyo SBIC ChatGPT/Copilot training-course evidence does not establish an OpenAI partnership.",
@@ -31951,7 +32030,7 @@
       "destructive_worktree_action": false,
       "existing_integration_branch_write": true
     },
-    "post_restore_head": "b81374064bbe31d080088f1e2c76fa50abf566aa",
+    "post_restore_head": "e11b544972da225778ceb5a6316286e11c1b2cbf",
     "history_restoration": {
       "status": "RESTORED",
       "source_blob_sha": "235843dd0b4e138ecf1eb7cb9189cf72d46ca2ac",
@@ -31962,7 +32041,8 @@
         96
       ],
       "note": "The full historical map and raw market receipt preimages were restored; Run96 is stored as latest_run_snapshot/run_history without overwriting the legacy Run82 current_run_observations expected by historical regression tests."
-    }
+    },
+    "finalized_at_utc": "2026-11-09T18:18:58Z"
   },
   "endpoint_inventory_source_blob_sha": "281f5f0e748ab8683d6031e926ba37c6659d0fe1",
   "endpoint_inventory_verified_at_utc": "2026-11-09T18:01:15Z",
