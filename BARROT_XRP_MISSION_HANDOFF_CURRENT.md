@@ -1,3 +1,115 @@
+## Run 92 — exact-head repository audit, XRP market update and institutional rail reconciliation — 2026-11-09T15:09:00Z
+
+### Mission and repository state
+
+**Priority one:** XRP intelligence and measured prediction-engine mastery.  
+**Preserved foundation:** Barrot V3 execution, orchestration, safety and verification.
+
+- Current main: d4d43be3427375cf79d190e768976de062e20287.
+- Main recursive Git tree: 1,404 entries, not truncated.
+- Active integration branch: integration/core-capabilities-mmi-structural-paper-20261104, head 38e39c13bef76c6984bb4d876f86b4f3e9991fec.
+- Integration recursive Git tree: 1,504 entries, not truncated.
+- PR [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640) is open, non-draft and reported mergeable; 815 commits ahead, zero behind, 206 changed paths, 91,594 additions and 3,548 deletions. It remains the sole V3/XRP integration PR. No new branch or PR was created.
+- The branch contains the priority-one mission manifest, packaged mission resource, mission registry, scheduled XRP public-ingestion workflow, point-in-time feature pipeline and current research map. The mission manifest/registry and xrp-public-ingestion workflow are not on main.
+- Main already contains the SQLite feature-store prototype, fixed-horizon forecast ledger and prior XRP research artifacts. Main's BARROT_XRP_MISSION_HANDOFF.md still reports the November 4 main SHA 58425d038a0a16082267d9de28757fd5c4eb499d; it is stale relative to current main. This branch's BARROT_XRP_MISSION_HANDOFF_CURRENT.md is the current integration handoff.
+
+### Exact-head verification on 38e39c13bef76c6984bb4d876f86b4f3e9991fec
+
+- [Full repository CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42630079170): **1,299 passed, 8 subtests passed; inclusive coverage 59.09%** against the 53% floor.
+- Core suite: **677 passed, 8 subtests passed**.
+- Wheel build and installed-wheel verification passed; the installed wheel loaded Barrot V3, the priority-one XRP mission and canonical data assets.
+- [Dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42630079204): all six manifests passed; no known vulnerabilities reported.
+- [Fail-closed merge gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42630079161): passed; the workflow explicitly keeps automatic merging disabled.
+- The Actions cache quota is read-only; this was a non-failing warning. It does not establish durable external feature-store archival.
+
+This is exact-head evidence for 38e39c. This Run 92 handoff append creates a new documentation-only commit; the successor commit requires its own exact-head CI, dependency audit and fail-closed gate. Do not transfer the preceding results to that successor.
+
+### Merge and authorization state
+
+- PR #1640 review submissions: 62, all COMMENTED; **zero APPROVED reviews**. No reviewer is currently requested.
+- Inline review threads: 22 total, **22 resolved, zero unresolved**.
+- Main branch metadata reports protected=true. The detailed branch-protection endpoint returns HTTP 403, so effective required approvals/checks remain unverified. The visible repository ruleset named “Fall Back” is disabled.
+- PR #1640 changes 42 workflow files and 10 public web assets. A prior main push triggered successful [GitHub Pages deployment run 42526890275](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890275). A merge can therefore cause a public Pages deployment. Specific authorization for that automatic public deployment is not recorded.
+- **Decision: do not merge.** Independent approval, verifiable protection requirements and explicit Pages-deployment authorization remain missing. No bypass or merge attempt occurred.
+
+### Main workflow state
+
+Latest [Cross Analysis run 42638848347](https://github.com/Barrot-Agent/B-Agent/actions/runs/42638848347) succeeded on main at 2026-11-09 14:51:57–14:52:11 UTC. Its entity profile contained 286 XRP mentions with net corpus sentiment +0.46, but the sentiment-shift detector reported recent n=0 and prior n=0. This is not a time-series signal or price probability. Outputs were uploaded as a read-only artifact; no repository files were committed or pushed.
+
+### Fresh XRP spot, liquidity and derivatives cross-check — research-only
+
+**Kraken XRP/USD public ticker, retrieved in this run around 15:09 UTC:**
+- Last trade: $1.09456.
+- Best bid: $1.09451; best ask: $1.09468; displayed spread approximately 1.55 basis points.
+- Rolling 24-hour volume: 43.641 million XRP.
+- Rolling 24-hour VWAP: $1.11316677.
+- Rolling 24-hour high/low: $1.16358 / $1.07502.
+- The response has no provider event timestamp. The retrieval did not preserve raw HTTP bytes or response headers and did not create a SHA-256 receipt. It is a descriptive cross-check only, not a model-admitted feature.
+- Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+
+**Visible order-book aggregation:**
+- Edge or Not snapshot at 15:09 UTC: mid $1.0971; within 1% of mid, displayed bids $9.1M and asks $8.3M.
+- Largest displayed ask wall: $2.8M at $1.0982. Largest displayed bid walls: $1.7M at $1.0939 and $1.2M at $1.0928.
+- The aggregator combines Binance spot and OKX perpetual books, samples every minute and averages 15-minute buckets. It is not a pure-spot venue snapshot; displayed walls can be pulled and are not executable-depth guarantees.
+- Source: https://edgeornot.com/order-book-heatmap/xrp
+
+**Derivatives providers remain materially inconsistent:**
+- Liqwall at 15:02 UTC: $1.23B open interest, down 5.1% in 24 hours; $36.4M liquidations, including $35.2M longs and $1.2M shorts; average funding +0.0047% per eight hours, Binance +0.0080%; 74.0% of Binance XRP-position accounts long. Source: https://liqwall.com/coins/xrp
+- Alpha Finance at 14:04 UTC: $2.50B open interest; $38.8M long and $1.4M short liquidations. Its liquidation clusters are modeled from open interest and standard leverage tiers, not observed individual liquidation prices. Source: https://alphafinance.io/liquidation-heatmap/xrp/
+- TradRadar at 10:50 UTC: $1.69B open interest, down 11.07%; +0.0059% OI-weighted funding; at least $36.94M liquidations, including $35.95M longs. Source: https://tradradar.io/markets/xrp
+- Swiftedge's daily brief showed negative funding (-0.0037% per eight hours), demonstrating a funding-sign disagreement across provider windows and scopes. Source: https://swiftedge.uk/markets/today
+- Open-interest aggregates range from $1.23B to $2.50B, approximately a 103% low-to-high difference. Venue coverage, instruments, aggregation methods and timestamps differ; do not average these figures or treat them as independent venue evidence.
+
+**Competing explanations retained:**
+1. Long-side deleveraging is supported by the common observation of large long liquidations and declining reported open interest.
+2. A short-term stabilization/reversion hypothesis is consistent with the near-price displayed bid depth being slightly larger than ask depth, but the mixed spot/perpetual aggregation and cancelable orders make this weak evidence.
+3. Continued downside pressure remains plausible because price is below the displayed rolling 24-hour VWAP and some sources show crowded long positioning; funding signs and open-interest totals disagree.
+4. None of these hypotheses has a validated probability or out-of-sample edge. No directional forecast is issued.
+
+### New institutional and regulatory evidence
+
+**Coinbase National Trust Company:** the OCC's Corporate Applications Search is primary evidence that filing 2025-Charter-343449 was approved on April 2, 2026 and consummated/effective on November 6, 2026. The record identifies Coinbase National Trust Company, proposed charter 25390, and trust powers requested. This corrects the prior uncertainty that lacked a regulator-side consummation date. It establishes the charter filing's effective status; it does not establish XRP purchases, XRP collateral use or a specific XRP custody mandate.
+- Primary OCC record: https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2
+
+**PNC–Coinbase–USDC:** Reuters reported November 9 at 14:06 UTC that PNC and Coinbase are piloting a limited stablecoin payment service for eligible corporate/institutional PNC clients. Clients receive Circle USDC, automatically converted to U.S. dollars. PNC previously selected Coinbase's institutional crypto-as-a-service platform for customer crypto trading and said it would provide banking services to Coinbase. The new pilot is a USDC distribution/settlement rail, not an XRP rail and not evidence of XRP demand.
+- Source: https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/
+
+**Model boundary:** Coinbase's trust-bank effectiveness and the PNC/USDC pilot are institutional custody/payment-network events. They are not direct XRP capital flows. The PNC pilot is a relevant counter-hypothesis to claims that broader stablecoin adoption automatically increases XRP utility or demand. Preserve the separate legal entities and products: Coinbase National Trust, Coinbase Global/Custody, Circle/USDC, Ripple National Trust, Standard Custody/RLUSD, SBI entities and SBI Remit.
+
+### Exact-phrase, identity and nine-platform status
+
+- No new primary-source match for “SBIC, ChatGPT SBIC” or a standardized XRP metric called “actual capital” was verified in this run.
+- Permission ASK remains a candidate for “ASK Coin”; the official active-network documentation reviewed previously did not establish XRPL/XRP integration. Do not admit ASK as an XRP feature.
+- The Camilla/Kamilah identity distinction remains open: do not conflate the user's requested Camilla identity with the Kamilah Stevenson YouTube candidate. No new personal-channel inventory is claimed in this run.
+- The nine-platform capability/authentication/data-flow map exists on the integration branch. Only this ChatGPT session's authenticated GitHub connector path is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks still have no verified persistent authenticated data flows in this run.
+
+### Open PR inventory and backlog
+
+The complete paginated GitHub open-PR inventory contains **372 open PRs: 356 drafts and 16 non-drafts**. No PR was closed.
+
+- **#1640 — active integration; blocked for merge.** Single V3/XRP workstream; exact-head CI/audit/gate above. Approval/protection/Pages blockers remain.
+- **#1643 — unique/unreviewed XRP research archive.** 670 changed paths; 663 unique relative to #1640 and seven overlapping. Compare against current main is diverged: 906 commits ahead, one behind; GitHub reports mergeable=false. Preserve the 663 unique research paths and reconcile append-only; do not merge wholesale.
+- **#1653 — unique/unreviewed repository knowledge graph.** Seven paths, six unique and one shared CI path with #1640; compare is diverged 18 commits ahead, one behind. Its exact head has successful CI, but eight inline review threads remain unresolved, two review submissions are COMMENTED, and no approval is present. Preserve the unique graph work; do not merge.
+- **#1642 — superseded-content candidate.** Draft; all seven changed paths overlap #1640. Retain until #1640 is merged and its exact contents are verified on main.
+- **#1644–#1650 — dependency/action overlap candidates.** All seven are non-draft and based on old main 9100dbacb5f9f1b973b053a65ef1e91e96b64f72. Their changed paths overlap #1640: #1644 eight workflow paths; #1645 one workflow path; #1646 requirements-dev; #1647 six workflow paths; #1648 requirements-dev; #1649 and #1650 legacy requirements. Reconcile exact blobs and dependency versions before classifying as duplicates or closing.
+- **#1317, #1318 and #1320 — structural-analysis, scientific-schema and paper-trader safety candidates.** All changed paths overlap #1640; old bases. Do not merge separately or close before verifying successor content on main.
+- **#1254 and #1255 — older dependency candidates.** Both modify legacy requirements already touched by newer dependency work; exact blob/version reconciliation remains required.
+- **#1269 — unique mesh/topology work.** Preserve.
+- **#1655 and #1659 — unique draft structural-analysis refinement and phone/local-inference work.** Preserve their unique content.
+
+No bulk closure, force-push, branch rewrite, reset, clean, stash or destructive worktree operation occurred.
+
+### Prediction readiness and next action
+
+Forecast status remains **NOT_ISSUED**. The public-ingestion collector, content-addressed SHA-256 raw receipts, per-run hash chain, point-in-time SQLite feature store, deterministic baselines, chronological walk-forward evaluator, calibration diagnostics, drift report and fail-closed forecast ledger are implemented on #1640. The scheduled workflow is not active on main.
+
+The raw receipt chain is tamper-evident relative to its final head, but its own manifest states that an independent external timestamp anchor is absent. GitHub Actions run identity does not independently timestamp each provider observation. Raw artifacts have 90-day retention and the feature-store checkpoint has 7-day retention; the Actions cache is currently read-only due to quota. Durable cross-run immutable/WORM anchoring, complete synchronized history, independent provider timestamps and measured out-of-sample lift remain open.
+
+**Next concrete action:** keep #1640 as the sole V3/XRP integration path; obtain an independent approving review, verify effective branch-protection requirements, and resolve the automatic Pages-deployment authorization before merge. Then, only after the merge conditions pass, merge without bypassing controls, fetch main again, verify the merge commit/files, run main CI and inspect automatic workflow side effects. Reconcile #1643's 663 unique research paths and #1653's graph work afterward. Do not issue a directional forecast until the full dataset, leakage-safe evaluation, calibration, drift and shadow-evaluation gates pass.
+
+No merge, production deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model data transfer, paper trade, funds transfer or real-money action occurred.
+
+
 ## Run 91 — 2026-11-09T13:53:34Z — main/PR audit, exact-head verification and fresh XRP source reconciliation
 
 ### Mission and integrated repository state
