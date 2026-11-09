@@ -2192,3 +2192,52 @@ Fresh public observations retrieved at approximately **2026-11-09T06:59Z**:
 - Next: (1) let the documentation-only handoff commit receive exact-head CI, full-suite, dependency-audit and fail-closed checks; (2) obtain an independent APPROVED review and verify branch-protection requirements; (3) obtain explicit authorization for the automatic Pages deployment side effect before merging #1640; (4) after a verified merge, fetch main again, verify the merge commit and files, run main CI and account for Pages deployment; (5) selectively reconcile #1643's 388 unique research artifacts and #1653's graph work on fresh main. Keep forecasts disabled until synchronized point-in-time data and measured out-of-sample predictive performance support issuance.
 
 Treat DESIGNED, EXECUTED and VERIFIED as separate. This run created no new PR and merged nothing.
+
+
+## Run 80 research extension — 2026-11-09
+
+### Exact-head CI closure for the first Run 80 handoff commit
+
+The documentation-only handoff commit `87e54b4ea5877a747ba43b1cfc0cd47dc3c5fba3` completed exact-head verification:
+
+- [CI 42577782762](https://github.com/Barrot-Agent/B-Agent/actions/runs/42577782762): full repository suite collected **1,280 tests**, **1,280 passed**, **8 subtests passed**, inclusive coverage **59.09%** against the 53% floor; core suite **677 passed, 8 subtests passed**; wheel and installed-wheel mission-resource verification passed.
+- [Dependency audit 42577782646](https://github.com/Barrot-Agent/B-Agent/actions/runs/42577782646): all six declared manifests passed; each audit reported **no known vulnerabilities**.
+- [Fail-closed gate 42577782624](https://github.com/Barrot-Agent/B-Agent/actions/runs/42577782624): passed and kept merging disabled.
+- The only CI warning was GitHub Actions cache storage being read-only after the cache budget was reached; it did not fail tests, wheel packaging, dependency audit or the gate.
+
+### SBIC / ChatGPT exact-phrase follow-up
+
+A primary-source match explains one plausible source of the phrase “SBIC, ChatGPT SBIC” without establishing a partnership:
+
+- Tokyo Small and Medium Business Investment & Consultation Co. (東京中小企業投資育成株式会社; SBIC) published a two-day **Generative AI and Machine Learning for Manufacturing** training course for June 12–13, 2025. Its official curriculum explicitly includes ChatGPT usage, Microsoft Copilot, prompt/business use, RAG, API implementation and data-leakage risk. The course was restricted to SBIC investee companies, cost ¥35,000 for investees and is marked completed. Primary source: https://www.sbic.co.jp/training/20250612co/ and its official PDF https://www.sbic.co.jp/wordpress/file/250612_%E7%94%9F%E6%88%90AI%E3%83%BB%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E6%A1%88%E5%86%85%E7%8A%B6-1.pdf
+- This establishes that Tokyo SBIC offered ChatGPT training to investee companies. It does **not** establish a ChatGPT/OpenAI corporate partnership, an XRP relationship, or that the course was run by SBIC East/Central/West collectively.
+
+### ASK Coin candidate
+
+The strongest concrete ASK match found is **Permission's ASK token**, but the intended referent is not yet confirmed:
+
+- Permission's own documentation describes ASK as the Permission ecosystem's token for participation, rewards and agent-to-agent (A2A) coordination/value exchange. It is an omnichain LayerZero OFT token with official contracts on Base (`0xBB146326778227A8498b105a18f84E0987A684b4`) and Polygon (`0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff`). Primary sources: https://docs.permission.ai/ask-token and https://docs.permission.ai/ask-token/contract-addresses
+- Permission's documentation does not establish an XRP Ledger deployment, Ripple relationship or XRP-specific utility. Coinbase's ASK/XRP converter page is a conversion calculator/quote, not proof of an ASK spot listing or partnership: https://www.coinbase.com/converter/ask/xrp
+- Treat Permission ASK as a **candidate**, not a confirmed identification. Do not conflate it with any unrelated token using the same ticker.
+
+### “Actual capital” exact-phrase follow-up
+
+The exact phrase still does not resolve to a recognized XRP metric, named entity or Ripple/SBI program. Search results include generic bank regulatory tables labelled “Actual Capital” and editorial commentary using the phrase informally. No XRP-specific primary-source definition was found. Keep it as an unresolved phrase and do not turn it into a feature or entity.
+
+### Kamilah/Camilla Stevenson identity and public-video inventory
+
+Identity is now **strongly corroborated for one primary YouTube candidate**, but platform ownership/verification remains unconfirmed:
+
+- In the June 11, 2026 XRP Podcast interview, the guest identified as Dr. Kamilah Stevenson says viewers can find her on YouTube as “doctor Camilla Stevenson” and explicitly warns that fake pages exist. The official Paul Barron Podcast YouTube upload is titled **“Crypto Panics! W/ @drkamilahstevenson”**, independently tagging the handle. Sources: https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/ and https://www.youtube.com/watch?v=Sulo54IlQ60
+- The channel search results for **Kamilah Stevenson** (138K–140K followers in the indexed captures) return matching XRP/finance content. Use `@drkamilahstevenson` as the primary candidate channel for inventory; exclude similarly named clones and do not rely on comment links, WhatsApp or Telegram accounts. The guest's own fake-page warning remains an active anti-impersonation constraint.
+- Public videos identified in the channel/search inventory:
+  1. **XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)** — 2025-12-03; https://www.youtube.com/watch?v=Gy4BuGhAWE8
+  2. **XRP Was Built for What's Coming** — 2026-03-03; https://www.youtube.com/watch?v=ywQEoYPzhlQ
+  3. **May 5, 2026 video, title not reliably surfaced** — ID `SId2NMmBi3s`; description discusses a Motley Fool XRP-under-$1 thesis, Evernorth lending, Ripple Prime/DTCC and Japanese bank cost claims; https://www.youtube.com/watch?v=SId2NMmBi3s
+  4. **Crypto Panics! W/ @drkamilahstevenson** — guest appearance on Paul Barron Podcast, 2026-06-11; https://www.youtube.com/watch?v=Sulo54IlQ60
+  5. **XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This** — 2026-07-30; https://www.youtube.com/watch?v=8xiy8w2YlfY
+  6. **Aug 25, 2026 video, title not reliably surfaced** — ID `qtT2hLeFkM0`; description discusses more than 100 million XRP entering Flare FXRP and wrapped-asset lending/collateral/yield; https://www.youtube.com/watch?v=qtT2hLeFkM0
+- These are creator statements and video descriptions, not verified market facts. In particular, the May 5 video's “60% cheaper than SWIFT,” “400 million XRP” lending and Ripple Prime/DTCC claims, and the Aug 25 FXRP supply/utility claims require independent primary-source verification before entering the evidence ledger or model features.
+- The June 11 interview transcript is automatically generated and may mis-transcribe the spelling of “Camilla/Kamilah”; the channel tag in the podcast video is the stronger handle cross-reference. This is a bounded initial inventory, not a claim that every public video has been found.
+
+The new research items are provenance leads, not forecast features. No model eligibility or forecast status changes: **NOT_ISSUED**.
