@@ -3486,13 +3486,16 @@ def _parse_cftc_tff(
             f"{contract['contract_multiplier_xrp']} XRP per contract)"
         )
         metrics = [
-            ("open_interest_contracts", contract["open_interest_contracts"]),
-            ("open_interest_change_contracts", contract["open_interest_change_contracts"]),
+            ("open_interest_contracts", contract["open_interest_contracts"], "contracts"),
+            ("open_interest_change_contracts", contract["open_interest_change_contracts"], "contracts"),
         ]
+        if contract["total_traders"] is not None:
+            metrics.append(("total_traders", contract["total_traders"], "traders"))
         metrics.extend(
             (
                 metric_name,
                 contract["positions"][category_slug]["net_long_short_contracts"],
+                "contracts",
             )
             for metric_name, category_slug in category_metrics
         )
@@ -3501,12 +3504,12 @@ def _parse_cftc_tff(
             f"Contract multiplier is {contract['contract_multiplier_xrp']} XRP per contract; contract counts are not USD notional.",
             f"Positions changed from {contract['change_from_date']} to {parsed['positions_as_of_date']}; weekly deltas are not intraday flows.",
         ]
-        for metric_name, value in metrics:
+        for metric_name, value, unit in metrics:
             records.append(
                 _feature_record(
                     feature_id=f"xrp.derivatives.cftc.tff.{contract['slug']}.{metric_name}",
                     value=value,
-                    unit="contracts",
+                    unit=unit,
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
                     captured_at_utc=captured_s,
