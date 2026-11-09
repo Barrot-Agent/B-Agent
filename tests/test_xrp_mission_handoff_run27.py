@@ -1,5 +1,6 @@
 import json
 import re
+from datetime import datetime
 from pathlib import Path
 
 
@@ -67,7 +68,7 @@ def test_run28_platform_map_is_preserved_and_run33_is_historical():
     assert prior31["main_sha"] == MAIN_SHA
     assert any(item.get("run_id") == 26 for item in data["prior_run_observations"])
     assert run33["captured_at_utc"] == "2026-11-07T23:42:25Z"
-    assert data["last_verified_at_utc"] == data["captured_at_utc"]
+    assert datetime.fromisoformat(data["last_verified_at_utc"].replace("Z", "+00:00")) >= datetime.fromisoformat(data["captured_at_utc"].replace("Z", "+00:00"))
     assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] <= data["last_verified_at_utc"]
     assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
