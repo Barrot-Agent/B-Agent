@@ -17181,7 +17181,7 @@
       }
     }
   ],
-  "last_verified_at_utc": "2026-11-08T22:30:23Z",
+  "last_verified_at_utc": "2026-11-09T04:19:35.183703Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -17997,5 +17997,479 @@
       }
     }
   },
-  "canonical_handoff_path": "BARROT_XRP_MISSION_HANDOFF_CURRENT.md"
+  "canonical_handoff_path": "BARROT_XRP_MISSION_HANDOFF_CURRENT.md",
+  "updated_at_utc": "2026-11-09T04:19:35.183703Z",
+  "observed_integration_head_before_run73_commit": "e6c2051a26c7418122645b108939103aaf4d715c",
+  "current_run_snapshot": {
+    "run": 73,
+    "captured_at_utc": "2026-11-09T04:19:35.183703Z",
+    "mission": {
+      "id": "xrp_intelligence_prediction_engine",
+      "priority": 1,
+      "foundation": "Barrot V3 remains the execution, orchestration, safety and verification foundation."
+    },
+    "repository": {
+      "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+      "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+      "integration_head_before_commit": "e6c2051a26c7418122645b108939103aaf4d715c",
+      "research_branch": "research/xrp-evidence-archive-20261104",
+      "research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
+      "trees": {
+        "main": {
+          "entries": 1404,
+          "files": 1299,
+          "python_files": 493,
+          "test_modules": 87,
+          "workflow_files": 78
+        },
+        "integration": {
+          "entries": 1492,
+          "files": 1379,
+          "python_files": 555,
+          "test_modules": 133,
+          "workflow_files": 79
+        },
+        "research": {
+          "entries": 2068,
+          "files": 1962,
+          "python_files": 768,
+          "test_modules": 362,
+          "workflow_files": 78
+        }
+      }
+    },
+    "pull_requests": {
+      "open_total": 372,
+      "draft": 356,
+      "non_draft": 16,
+      "integration_1640": {
+        "head_before_commit": "e6c2051a26c7418122645b108939103aaf4d715c",
+        "base_sha": "d4d43be3427375cf79d190e768976de062e20287",
+        "commits_ahead": 773,
+        "commits_behind": 0,
+        "changed_files": 192,
+        "mergeable": true,
+        "review_threads_resolved": 22,
+        "review_threads_unresolved": 0,
+        "approved_reviews": 0
+      },
+      "research_1643": {
+        "head": "238f3ff4a69420882c77d225626a352ba19a412c",
+        "base_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+        "commits_ahead": 906,
+        "commits_behind": 1,
+        "changed_files": 670,
+        "changed_paths_shared_with_1640": 7,
+        "unique_changed_paths_vs_1640": 663,
+        "exact_head_ci": "NOT_FOUND"
+      },
+      "dependency_updates": {
+        "prs": [
+          1644,
+          1645,
+          1646,
+          1647,
+          1648,
+          1649,
+          1650
+        ],
+        "status": "All dependency versions/actions represented in integration branch; keep source PRs open until successor merge and verification."
+      }
+    },
+    "ci_evidence_on_parent_head": {
+      "commit": "e6c2051a26c7418122645b108939103aaf4d715c",
+      "core_suite": {
+        "run_id": 42560377419,
+        "job_id": 128975261918,
+        "result": "PASS",
+        "tests_passed": 660,
+        "subtests_passed": 8
+      },
+      "full_repository_suite": {
+        "run_id": 42560377419,
+        "job_id": 128975262186,
+        "result": "PASS",
+        "tests_passed": 1258,
+        "subtests_passed": 8,
+        "coverage_percent": 58.98,
+        "coverage_floor_percent": 53
+      },
+      "dependency_audit": {
+        "run_id": 42560377547,
+        "job_id": 128975263144,
+        "result": "PASS",
+        "manifests_checked": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 42560377586,
+        "result": "PASS_WITH_MERGE_DISABLED",
+        "automatic_merge": false
+      }
+    },
+    "main_workflows": {
+      "main_ci": {
+        "run_id": 42526890841,
+        "result": "PASS",
+        "tests_passed": 718,
+        "subtests_passed": 8,
+        "coverage_measurement": false
+      },
+      "riemann_harvest": {
+        "run_id": 42556313011,
+        "result": "FAIL",
+        "cause": "pydantic-settings missing from workflow environment; integration branch adds it."
+      },
+      "cross_analysis": {
+        "run_id": 42558643703,
+        "artifact_id": 13647529320,
+        "result": "PASS",
+        "xrp_entries": 1208,
+        "btc_entries": 1245,
+        "recent_24h_entries": 0,
+        "sentiment_shift": null,
+        "interpretation": "No current 24-hour sentiment signal; aggregate corpus is not a live market feature."
+      },
+      "pages_deployment": {
+        "run_id": 42526890275,
+        "result": "SUCCESS",
+        "trigger": "push to main",
+        "authorization_for_future_merge": "NOT_GRANTED"
+      }
+    },
+    "workflow_safety": {
+      "changed_workflow_files_reviewed": 41,
+      "xrp_public_ingestion": {
+        "status": "DESIGNED_ON_INTEGRATION_BRANCH",
+        "scheduled": true,
+        "public_sources": 33,
+        "excluded_xrpl_node_sources": 2,
+        "permissions": "read-only",
+        "external_writes": false
+      },
+      "manual_external_workflows": "Require explicit confirmation and expected main SHA; none dispatched.",
+      "main_active_privileged_writers": [
+        ".github/workflows/barrot-agent.yml",
+        ".github/workflows/ask-barrot.yml"
+      ],
+      "integration_branch_mitigations": "Quarantine legacy privileged writers; keep deployment, Hugging Face, Databricks, Kaggle, and paper-trader actions manual and confirmation-gated.",
+      "auto_pr_workflow": "barrot-auto-pr.yml only emits configuration; it does not create pull requests.",
+      "merge_workflow": "barrot-gated-merge.yml is fail-closed and explicitly disables merging.",
+      "pages": "Merge would trigger a GitHub Pages build/deployment; no specific deployment approval is present."
+    },
+    "merge_controls": {
+      "classic_branch_protection_endpoint": "HTTP_403_UNVERIFIED",
+      "visible_rulesets_endpoint": "NO_ENABLED_RULESET_RETURNED",
+      "required_approvals_and_checks": "UNVERIFIED",
+      "pages_configuration_accessible": false,
+      "merge_performed": false,
+      "blockers": [
+        "0 approved reviews",
+        "branch-protection requirements inaccessible",
+        "automatic GitHub Pages deployment would be triggered without specific deployment approval"
+      ]
+    },
+    "platform_verification": {
+      "verified_live_platforms": 1,
+      "ChatGPT": "Authenticated GitHub connector used for repository read and integration-branch writes in this run; no secrets read or external model transfer.",
+      "Copilot": "Review comments only; no persistent authenticated cross-platform data flow.",
+      "Claude": "Not authenticated or tested.",
+      "Grok": "Not authenticated or tested.",
+      "Gemini": "Not authenticated or tested.",
+      "Codex": "Not authenticated or tested.",
+      "HuggingFace": "Historical Space build error; no current authenticated data flow.",
+      "Kaggle": "Not tested; no submission.",
+      "Databricks": "Historical HTTP 403; no current authenticated data flow or write."
+    },
+    "research_updates": {
+      "coinbase_circle_sbi_ripple_binance": "Transferred from PR #1643 source blob e431254c1bed9e3994dae6dc60b7e866699b2ec2 into #1640; 29 excerpt receipts; one source excerpt digest mismatch corrected in destination copy with original digest preserved; raw HTTP bytes not captured; model-ineligible; no forecast.",
+      "goldman_sachs_13f": "PR #1643 research artifact: Q2 2026 13F lists five XRP ETF positions totaling $86,506,129 and 7,390,191 shares; all rows map to Other Manager No.1, Goldman Sachs & Co. LLC (CIK 0000769993). Q1 2026 information table has no XRP name or matching five CUSIPs. Not evidence of parent proprietary holdings, beneficial ownership, current holdings after 2026-06-30, XRP token purchases, or independent demand. Not yet transferred to #1640.",
+      "sbic": "Primary profiles identify three distinct sister companies: Tokyo/SBIC East Japan, Nagoya/SBIC Central Japan, and Osaka/SBIC West Japan. They are distinct legal entities from SBI Holdings, Inc.; no direct ownership link to SBI Holdings is established by these profiles.",
+      "youtube_identity": "Person identity confirmed; three verified third-party public appearances (Paul Barron Network, All Nations, TEDxWillowCreek). Personal channel ownership remains probable, not first-party verified; three personal-channel videos remain candidates and zero personal-channel uploads are verified.",
+      "exact_phrases": "ASK Coin has multiple unrelated candidates including Permission.io ASK; no verified XRP link. 'actual capital' remains non-standard/ambiguous. Exact phrase 'SBIC, ChatGPT SBIC' has no verified primary-source match."
+    },
+    "prediction_engine": {
+      "status": "NO_DIRECTIONAL_FORECAST",
+      "implemented_on_integration_branch": [
+        "scheduled public-source ingestion workflow",
+        "raw-source receipt/hash-chain capture",
+        "point-in-time feature store",
+        "chronological leakage-safe walk-forward evaluation",
+        "naive/momentum/mean-reversion/volatility baselines",
+        "probability calibration",
+        "drift monitoring",
+        "forecast/outcome ledger",
+        "fail-closed issuance gate"
+      ],
+      "gaps": [
+        "no durable external WORM anchor",
+        "no independently attested historical dataset with full byte retention across the complete required horizon",
+        "no verified evaluator signing key",
+        "no measured out-of-sample superiority sufficient to issue a forecast"
+      ],
+      "model_eligible_current_dataset": false,
+      "real_money_or_paper_trading": false
+    },
+    "backlog": {
+      "1269": "Unique mesh/topology work; preserve and review separately.",
+      "1640": "Active integration candidate; exact parent head green; new safety-guard commit pending exact-head CI; merge blocked by approvals, branch-protection visibility and Pages deployment authorization.",
+      "1641": "Draft autonomous experimentation; Docker/no-network/temp-copy isolation is present, but secret exclusions do not cover all common credential files; blocked pending hardening.",
+      "1642": "Draft point-in-time gate; code is older/less complete than #1640 feature store and forecast ledger; superseded pending #1640 merge.",
+      "1643": "Unique research archive; 663 unique changed paths vs #1640; 906 commits ahead, 1 behind; no exact-head CI; do not merge wholesale.",
+      "1653": "Unique repository knowledge graph; 7 changed files, 18 commits, 8 unresolved review threads, no exact-head CI; preserve.",
+      "1655": "Draft structural refinement; destructive recovery-command guard extracted into #1640; structural-core replacement not copied because #1640 implementation has stronger immutability.",
+      "1320/1318/1317": "Their paper-trader, scientific-schema, and structural-core work is represented more safely/completely in #1640; close only after #1640 is merged and verified on main.",
+      "1644-1650": "Dependency/action updates represented in #1640; close only after successor merge and verification.",
+      "1254/1255": "Older dependency updates superseded by the newer dependency batch; do not close until successor is verified.",
+      "356_draft_prs": "Not individually adjudicated; no bulk closure."
+    },
+    "actions_this_run": {
+      "branch_updated": true,
+      "new_pr_created": false,
+      "merge_performed": false,
+      "source_branches_rewritten": false,
+      "unsafe_commands_executed": false,
+      "external_deployments_or_writes": false,
+      "recovery_guard_added_to_bundle_engineering": true,
+      "exact_head_ci_for_resulting_commit": "PENDING"
+    },
+    "next_action": "Run full repository CI and dependency audit on the resulting integration head. Do not merge until exact-head checks, required approvals, branch-protection requirements, and explicit Pages deployment authorization are all satisfied."
+  },
+  "run_history": [
+    {
+      "run": 73,
+      "captured_at_utc": "2026-11-09T04:19:35.183703Z",
+      "mission": {
+        "id": "xrp_intelligence_prediction_engine",
+        "priority": 1,
+        "foundation": "Barrot V3 remains the execution, orchestration, safety and verification foundation."
+      },
+      "repository": {
+        "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+        "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+        "integration_head_before_commit": "e6c2051a26c7418122645b108939103aaf4d715c",
+        "research_branch": "research/xrp-evidence-archive-20261104",
+        "research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
+        "trees": {
+          "main": {
+            "entries": 1404,
+            "files": 1299,
+            "python_files": 493,
+            "test_modules": 87,
+            "workflow_files": 78
+          },
+          "integration": {
+            "entries": 1492,
+            "files": 1379,
+            "python_files": 555,
+            "test_modules": 133,
+            "workflow_files": 79
+          },
+          "research": {
+            "entries": 2068,
+            "files": 1962,
+            "python_files": 768,
+            "test_modules": 362,
+            "workflow_files": 78
+          }
+        }
+      },
+      "pull_requests": {
+        "open_total": 372,
+        "draft": 356,
+        "non_draft": 16,
+        "integration_1640": {
+          "head_before_commit": "e6c2051a26c7418122645b108939103aaf4d715c",
+          "base_sha": "d4d43be3427375cf79d190e768976de062e20287",
+          "commits_ahead": 773,
+          "commits_behind": 0,
+          "changed_files": 192,
+          "mergeable": true,
+          "review_threads_resolved": 22,
+          "review_threads_unresolved": 0,
+          "approved_reviews": 0
+        },
+        "research_1643": {
+          "head": "238f3ff4a69420882c77d225626a352ba19a412c",
+          "base_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+          "commits_ahead": 906,
+          "commits_behind": 1,
+          "changed_files": 670,
+          "changed_paths_shared_with_1640": 7,
+          "unique_changed_paths_vs_1640": 663,
+          "exact_head_ci": "NOT_FOUND"
+        },
+        "dependency_updates": {
+          "prs": [
+            1644,
+            1645,
+            1646,
+            1647,
+            1648,
+            1649,
+            1650
+          ],
+          "status": "All dependency versions/actions represented in integration branch; keep source PRs open until successor merge and verification."
+        }
+      },
+      "ci_evidence_on_parent_head": {
+        "commit": "e6c2051a26c7418122645b108939103aaf4d715c",
+        "core_suite": {
+          "run_id": 42560377419,
+          "job_id": 128975261918,
+          "result": "PASS",
+          "tests_passed": 660,
+          "subtests_passed": 8
+        },
+        "full_repository_suite": {
+          "run_id": 42560377419,
+          "job_id": 128975262186,
+          "result": "PASS",
+          "tests_passed": 1258,
+          "subtests_passed": 8,
+          "coverage_percent": 58.98,
+          "coverage_floor_percent": 53
+        },
+        "dependency_audit": {
+          "run_id": 42560377547,
+          "job_id": 128975263144,
+          "result": "PASS",
+          "manifests_checked": 6,
+          "known_vulnerabilities": 0
+        },
+        "fail_closed_gate": {
+          "run_id": 42560377586,
+          "result": "PASS_WITH_MERGE_DISABLED",
+          "automatic_merge": false
+        }
+      },
+      "main_workflows": {
+        "main_ci": {
+          "run_id": 42526890841,
+          "result": "PASS",
+          "tests_passed": 718,
+          "subtests_passed": 8,
+          "coverage_measurement": false
+        },
+        "riemann_harvest": {
+          "run_id": 42556313011,
+          "result": "FAIL",
+          "cause": "pydantic-settings missing from workflow environment; integration branch adds it."
+        },
+        "cross_analysis": {
+          "run_id": 42558643703,
+          "artifact_id": 13647529320,
+          "result": "PASS",
+          "xrp_entries": 1208,
+          "btc_entries": 1245,
+          "recent_24h_entries": 0,
+          "sentiment_shift": null,
+          "interpretation": "No current 24-hour sentiment signal; aggregate corpus is not a live market feature."
+        },
+        "pages_deployment": {
+          "run_id": 42526890275,
+          "result": "SUCCESS",
+          "trigger": "push to main",
+          "authorization_for_future_merge": "NOT_GRANTED"
+        }
+      },
+      "workflow_safety": {
+        "changed_workflow_files_reviewed": 41,
+        "xrp_public_ingestion": {
+          "status": "DESIGNED_ON_INTEGRATION_BRANCH",
+          "scheduled": true,
+          "public_sources": 33,
+          "excluded_xrpl_node_sources": 2,
+          "permissions": "read-only",
+          "external_writes": false
+        },
+        "manual_external_workflows": "Require explicit confirmation and expected main SHA; none dispatched.",
+        "main_active_privileged_writers": [
+          ".github/workflows/barrot-agent.yml",
+          ".github/workflows/ask-barrot.yml"
+        ],
+        "integration_branch_mitigations": "Quarantine legacy privileged writers; keep deployment, Hugging Face, Databricks, Kaggle, and paper-trader actions manual and confirmation-gated.",
+        "auto_pr_workflow": "barrot-auto-pr.yml only emits configuration; it does not create pull requests.",
+        "merge_workflow": "barrot-gated-merge.yml is fail-closed and explicitly disables merging.",
+        "pages": "Merge would trigger a GitHub Pages build/deployment; no specific deployment approval is present."
+      },
+      "merge_controls": {
+        "classic_branch_protection_endpoint": "HTTP_403_UNVERIFIED",
+        "visible_rulesets_endpoint": "NO_ENABLED_RULESET_RETURNED",
+        "required_approvals_and_checks": "UNVERIFIED",
+        "pages_configuration_accessible": false,
+        "merge_performed": false,
+        "blockers": [
+          "0 approved reviews",
+          "branch-protection requirements inaccessible",
+          "automatic GitHub Pages deployment would be triggered without specific deployment approval"
+        ]
+      },
+      "platform_verification": {
+        "verified_live_platforms": 1,
+        "ChatGPT": "Authenticated GitHub connector used for repository read and integration-branch writes in this run; no secrets read or external model transfer.",
+        "Copilot": "Review comments only; no persistent authenticated cross-platform data flow.",
+        "Claude": "Not authenticated or tested.",
+        "Grok": "Not authenticated or tested.",
+        "Gemini": "Not authenticated or tested.",
+        "Codex": "Not authenticated or tested.",
+        "HuggingFace": "Historical Space build error; no current authenticated data flow.",
+        "Kaggle": "Not tested; no submission.",
+        "Databricks": "Historical HTTP 403; no current authenticated data flow or write."
+      },
+      "research_updates": {
+        "coinbase_circle_sbi_ripple_binance": "Transferred from PR #1643 source blob e431254c1bed9e3994dae6dc60b7e866699b2ec2 into #1640; 29 excerpt receipts; one source excerpt digest mismatch corrected in destination copy with original digest preserved; raw HTTP bytes not captured; model-ineligible; no forecast.",
+        "goldman_sachs_13f": "PR #1643 research artifact: Q2 2026 13F lists five XRP ETF positions totaling $86,506,129 and 7,390,191 shares; all rows map to Other Manager No.1, Goldman Sachs & Co. LLC (CIK 0000769993). Q1 2026 information table has no XRP name or matching five CUSIPs. Not evidence of parent proprietary holdings, beneficial ownership, current holdings after 2026-06-30, XRP token purchases, or independent demand. Not yet transferred to #1640.",
+        "sbic": "Primary profiles identify three distinct sister companies: Tokyo/SBIC East Japan, Nagoya/SBIC Central Japan, and Osaka/SBIC West Japan. They are distinct legal entities from SBI Holdings, Inc.; no direct ownership link to SBI Holdings is established by these profiles.",
+        "youtube_identity": "Person identity confirmed; three verified third-party public appearances (Paul Barron Network, All Nations, TEDxWillowCreek). Personal channel ownership remains probable, not first-party verified; three personal-channel videos remain candidates and zero personal-channel uploads are verified.",
+        "exact_phrases": "ASK Coin has multiple unrelated candidates including Permission.io ASK; no verified XRP link. 'actual capital' remains non-standard/ambiguous. Exact phrase 'SBIC, ChatGPT SBIC' has no verified primary-source match."
+      },
+      "prediction_engine": {
+        "status": "NO_DIRECTIONAL_FORECAST",
+        "implemented_on_integration_branch": [
+          "scheduled public-source ingestion workflow",
+          "raw-source receipt/hash-chain capture",
+          "point-in-time feature store",
+          "chronological leakage-safe walk-forward evaluation",
+          "naive/momentum/mean-reversion/volatility baselines",
+          "probability calibration",
+          "drift monitoring",
+          "forecast/outcome ledger",
+          "fail-closed issuance gate"
+        ],
+        "gaps": [
+          "no durable external WORM anchor",
+          "no independently attested historical dataset with full byte retention across the complete required horizon",
+          "no verified evaluator signing key",
+          "no measured out-of-sample superiority sufficient to issue a forecast"
+        ],
+        "model_eligible_current_dataset": false,
+        "real_money_or_paper_trading": false
+      },
+      "backlog": {
+        "1269": "Unique mesh/topology work; preserve and review separately.",
+        "1640": "Active integration candidate; exact parent head green; new safety-guard commit pending exact-head CI; merge blocked by approvals, branch-protection visibility and Pages deployment authorization.",
+        "1641": "Draft autonomous experimentation; Docker/no-network/temp-copy isolation is present, but secret exclusions do not cover all common credential files; blocked pending hardening.",
+        "1642": "Draft point-in-time gate; code is older/less complete than #1640 feature store and forecast ledger; superseded pending #1640 merge.",
+        "1643": "Unique research archive; 663 unique changed paths vs #1640; 906 commits ahead, 1 behind; no exact-head CI; do not merge wholesale.",
+        "1653": "Unique repository knowledge graph; 7 changed files, 18 commits, 8 unresolved review threads, no exact-head CI; preserve.",
+        "1655": "Draft structural refinement; destructive recovery-command guard extracted into #1640; structural-core replacement not copied because #1640 implementation has stronger immutability.",
+        "1320/1318/1317": "Their paper-trader, scientific-schema, and structural-core work is represented more safely/completely in #1640; close only after #1640 is merged and verified on main.",
+        "1644-1650": "Dependency/action updates represented in #1640; close only after successor merge and verification.",
+        "1254/1255": "Older dependency updates superseded by the newer dependency batch; do not close until successor is verified.",
+        "356_draft_prs": "Not individually adjudicated; no bulk closure."
+      },
+      "actions_this_run": {
+        "branch_updated": true,
+        "new_pr_created": false,
+        "merge_performed": false,
+        "source_branches_rewritten": false,
+        "unsafe_commands_executed": false,
+        "external_deployments_or_writes": false,
+        "recovery_guard_added_to_bundle_engineering": true,
+        "exact_head_ci_for_resulting_commit": "PENDING"
+      },
+      "next_action": "Run full repository CI and dependency audit on the resulting integration head. Do not merge until exact-head checks, required approvals, branch-protection requirements, and explicit Pages deployment authorization are all satisfied."
+    }
+  ]
 }

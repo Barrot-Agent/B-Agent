@@ -1,3 +1,81 @@
+# Run 73 — 2026-11-09T04:19:35.183703Z
+
+## Mission and repository state
+
+- The active primary mission remains **XRP Intelligence and Prediction-Engine Mastery**, priority 1. **Barrot V3 remains the execution, orchestration, safety and verification foundation.**
+- Current main SHA: d4d43be3427375cf79d190e768976de062e20287.
+- Existing integration workstream: integration/core-capabilities-mmi-structural-paper-20261104. Parent head verified before this run's integration commit: e6c2051a26c7418122645b108939103aaf4d715c.
+- No new branch or PR was created. No PR was merged or closed. No existing branch was rewritten or force-pushed.
+- Repository trees were fetched recursively and were not truncated:
+  - main: 1,404 tree entries; 1,299 files; 493 Python files; 87 test modules; 78 workflow files.
+  - Integration branch: 1,492 tree entries; 1,379 files; 555 Python files; 133 test modules; 79 workflow files.
+  - Research archive branch: 2,068 tree entries; 1,962 files; 768 Python files; 362 test modules; 78 workflow files.
+
+## Exact verification evidence before this run's safety-guard commit
+
+The parent integration head e6c2051a26c7418122645b108939103aaf4d715c passed:
+
+- Core suite: 660 passed, 8 subtests passed (CI run 42560377419, job 128975261918).
+- Full repository suite: 1,258 passed, 8 subtests passed; coverage 58.98% against a 53% floor (same CI run, job 128975262186).
+- Dependency audit: 6 manifests checked, no known vulnerabilities (run 42560377547, job 128975263144).
+- Fail-closed merge gate: passed but explicitly left automatic merging disabled (run 42560377586).
+
+This run extracts the destructive-recovery guard from draft PR #1655 into the existing integration branch. The guard rejects destructive recovery or rollback instructions such as git reset --hard, git clean, git stash, git restore, destructive git checkout, recursive deletion, force-push, branch deletion, rebase/history rewriting, and discard-work commands. Explicit prohibitions remain valid. Tests cover the destructive patterns and ensure a prohibition does not mask a later positive destructive instruction. **The resulting commit must receive a new exact-head full-suite and dependency-audit run before it can be considered verified.**
+
+## Main-branch workflow evidence and side effects
+
+- Main CI run 42526890841 passed the full repository suite: 718 tests and 8 subtests. Main CI did not measure coverage.
+- Main Riemann Harvest run 42556313011 failed because pydantic-settings was absent from that workflow's environment. The integration branch adds pydantic-settings to the workflow install step; this fix is not on main yet.
+- Main Cross Analysis run 42558643703 produced artifact 13647529320. It contained 1,208 XRP-tagged and 1,245 BTC-tagged corpus entries, but **zero recent 24-hour entries** and a null sentiment shift. This is not a current sentiment signal and is not model-eligible.
+- A push to main triggered GitHub Pages build/deployment run 42526890275, which succeeded. PR #1640 changes public web paths. Merging it would therefore trigger a Pages deployment. The user has not separately authorized that deployment; **do not merge until that specific side effect is authorized**.
+- The classic branch-protection endpoint returned HTTP 403. Required approvals and checks therefore remain unverified. No approved review is present on PR #1640. The 22 review threads are resolved, but the submitted reviews are comments, not approvals.
+- The 41 workflow files changed by PR #1640 were reviewed. The new XRP public-ingestion workflow is scheduled and read-only, with 33 public sources and two XRPL node sources excluded. Legacy privileged writers are quarantined on the integration branch. Deployment, Hugging Face, Databricks, Kaggle and paper-trader workflows remain manual and confirmation-gated. None was dispatched. The active barrot-auto-pr.yml only emits configuration; it does not create PRs. The gated merge workflow is fail-closed and does not merge.
+
+## Pull-request inventory and integration decisions
+
+The repository currently has **372 open PRs: 356 drafts and 16 non-drafts**. No bulk closure was performed.
+
+- **#1640 — active integration candidate.** Parent head e6c2051a26c7418122645b108939103aaf4d715c was based directly on current main, 773 commits ahead, zero behind, 192 changed files, and mergeable. It has 22 resolved review threads and zero approved reviews. The new safety-guard commit requires fresh exact-head CI.
+- **#1643 — unique XRP research archive.** Head 238f3ff4a69420882c77d225626a352ba19a412c; 906 commits ahead, one behind, 670 changed files. Seven changed paths overlap with #1640; 663 changed paths remain unique relative to #1640. There is no exact-head CI for this head. Do not merge this archive wholesale or close it.
+- **#1642 — draft point-in-time gate.** Its feature-store and forecast-ledger versions are older and less complete than the versions in #1640. Treat as superseded only after #1640 is merged and verified on main.
+- **#1641 — draft autonomous experimentation.** Docker execution is network-disabled, read-only at the container root, and uses a temporary copy, but the copy filter does not exclude every common credential file (for example, .npmrc, .netrc, and cloud credential directories). Keep blocked until the secret-exclusion boundary is hardened.
+- **#1655 — draft structural refinement.** Its destructive recovery guard is extracted into #1640. Its structural-core replacement was not copied: the current #1640 implementation has stronger immutable snapshot behavior, so a wholesale replacement would regress that property.
+- **#1653 — unique repository knowledge graph.** Seven changed files, 18 commits, eight unresolved review threads, and no exact-head CI. Preserve and review separately.
+- **#1320, #1318 and #1317** contain paper-trader pause, scientific-response schema, and structural-core work already represented more completely/safely in #1640. Close only after #1640 is merged and the successor content is verified on main.
+- **#1644–#1650** dependency/action updates are represented in #1640: pytest 9.2.0, types-requests 2.33.0.20261030, databricks-sdk 0.158.0, huggingface-hub 2.4.0, checkout v7, upload-artifact v7 and download-artifact v8. Keep the source PRs open until the successor is merged and verified.
+- **#1269** remains unique mesh/topology work. **#1254/#1255** are older dependency updates superseded by the newer batch; do not close before successor verification.
+- The 356 draft PRs remain unadjudicated. No bulk closure.
+
+## XRP research updates
+
+- The Coinbase/Circle/SBI/Ripple/Binance relationship artifact was transferred from PR #1643's exact source blob e431254c1bed9e3994dae6dc60b7e866699b2ec2 into #1640. The transfer preserves 29 excerpt receipts and records one source-artifact excerpt-digest correction in the destination copy while preserving the original digest and source blob. Raw HTTP bytes were not captured, so the artifact remains research-only and model-ineligible; no forecast was issued.
+- The newest Goldman Sachs Q2 2026 13F correction remains on the #1643 research branch, not yet transferred into #1640. The SEC information table lists five XRP ETF positions totaling **$86,506,129** and **7,390,191 shares**. Every row maps to Other Included Manager No. 1, **Goldman Sachs & Co. LLC (CIK 0000769993)**. The Q1 2026 information table has no XRP name or matching five CUSIPs. This is manager-attributed reportable ETF-share exposure, not proof of parent-company proprietary holdings, beneficial ownership, current holdings after 2026-06-30, XRP token purchases, or independent market demand. Primary SEC records:
+  - Q2 filing index: https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.html
+  - Q2 cover/manager mapping: https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/primary_doc.xml
+  - Q2 information table: https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml
+  - Q1 filing index: https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/0000886982-26-000274-index.html
+  - Q1 information table: https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml
+- Japan's SBIC identity is resolved at the legal-entity level: Tokyo/SBIC East Japan, Nagoya/SBIC Central Japan and Osaka/SBIC West Japan are three distinct sister companies. They are not the same entity as SBI Holdings, Inc. The cited official regional profiles do not establish a direct ownership link to SBI Holdings:
+  - https://www.sbic.co.jp/company/profile/
+  - https://www.sbic-cj.co.jp/company/about/
+  - https://www.sbic-wj.co.jp/profiles/profile/
+  - https://www.sbigroup.co.jp/english/company/information/profile.html
+- The person identity for Kamilah/Camilla Stevenson is supported by first-person and publisher evidence. Three third-party public appearances are verified: Paul Barron Network's “Crypto Panics! W/ @drkamilahstevenson” (Sulo54IlQ60), All Nations' “The Study of Job | Dr. Kamilah Stevenson” (E-jdY7gy7mQ), and TEDxWillowCreek's “Thinking Your Way Into Health” (VSgeDgOCexs). The candidate personal YouTube channel is still not first-party verified; three personal-channel videos remain candidates, with zero verified personal-channel uploads.
+- “ASK Coin” has multiple unrelated candidates, including Permission.io ASK, with no verified XRP link. “Actual capital” remains non-standard/ambiguous. Exact-phrase research for “SBIC, ChatGPT SBIC” has no verified primary-source match.
+
+## Prediction-engine readiness
+
+The integration branch contains the scheduled public-source ingestion workflow, raw receipt/hash-chain capture, point-in-time feature store, chronological leakage-safe walk-forward evaluation, naive/momentum/mean-reversion/volatility baselines, probability calibration, drift monitoring, forecast/outcome ledger and a fail-closed issuance gate. Barrot V3 remains the execution/orchestration/safety/verification base.
+
+These components are **implemented on the integration branch, not merged to main**. The full required historical dataset is not yet independently attested with durable raw-byte retention across the full horizon; no external WORM anchor or verified independent evaluator signing key is available; measured out-of-sample superiority is not established. The market snapshot on the research branch is stale relative to this run, and Cross Analysis had no recent 24-hour observations. **No directional XRP forecast is authorized or issued. No real-money action or paper trade occurred.**
+
+## Next concrete action
+
+1. Verify the new safety-guard commit with exact-head full-suite CI, coverage, dependency/security audit and fail-closed gate.
+2. Resolve the Pages deployment approval and obtain verifiable branch-protection/approval evidence before considering a merge.
+3. Continue selective, provenance-preserving reconciliation of #1643's unique research artifacts; do not merge its stale 670-file archive wholesale.
+4. Keep the prediction gate closed until raw-source durability, independent evaluator attestation and leakage-safe out-of-sample evidence meet the documented thresholds.
+
 ## Run 72 final supplement — regulated derivatives and reserve structure (2026-11-08T23:25:51.610Z)
 
 ### CFTC primary derivatives positioning

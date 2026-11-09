@@ -30,6 +30,71 @@ TASK_STRING_LIST_FIELDS = ("files", "acceptance_criteria", "tests", "depends_on"
 SEVERITY_WEIGHT = {"critical": 25, "high": 12, "medium": 5, "low": 1}
 
 
+# Recovery-plan guard: these operations can discard operator work or rewrite history.
+# The module only reviews plans; it never executes the commands.
+_UNSAFE_RECOVERY_PATTERNS = (
+    ("GIT_RESET_HARD", re.compile(r"\bgit\s+reset\s+--hard\b", re.IGNORECASE)),
+    ("GIT_CLEAN", re.compile(r"\bgit\s+clean\b", re.IGNORECASE)),
+    ("GIT_STASH", re.compile(r"\bgit\s+stash\b", re.IGNORECASE)),
+    ("GIT_RESTORE", re.compile(r"\bgit\s+restore\b", re.IGNORECASE)),
+    ("GIT_CHECKOUT_DISCARD", re.compile(r"\bgit\s+checkout\s+--(?:\s|$)|\bgit\s+checkout\s+\.(?:\s|$)", re.IGNORECASE)),
+    ("RM_RECURSIVE", re.compile(r"\brm\s+-rf?\b", re.IGNORECASE)),
+    ("POWERSHELL_REMOVE_RECURSIVE", re.compile(r"\bremove-item\b.*-recurse", re.IGNORECASE)),
+    ("GIT_FORCE_PUSH", re.compile(r"\bgit\s+push\b(?:(?![\r\n]).)*(?:--force(?:-with-lease)?|-f)\b", re.IGNORECASE)),
+    ("FORCE_PUSH", re.compile(r"\bforce[- ]push\b", re.IGNORECASE)),
+    ("GIT_BRANCH_DELETE", re.compile(r"\bgit\s+branch\s+-D\b", re.IGNORECASE)),
+    ("GIT_REBASE", re.compile(r"\bgit\s+rebase\b", re.IGNORECASE)),
+    ("GIT_AMEND", re.compile(r"\bgit\s+commit\s+--amend\b", re.IGNORECASE)),
+    ("GIT_HISTORY_REWRITE", re.compile(r"\bgit\s+filter-(?:branch|repo)\b", re.IGNORECASE)),
+    ("DISCARD_USER_WORK", re.compile(r"\bdiscard(?:\s+all)?\s+(?:uncommitted|untracked|local|user)\s+(?:changes|work|files)\b", re.IGNORECASE)),
+)
+_NEGATION_BEFORE_UNSAFE_ACTION = re.compile(
+    r"\b(?:never|do\s+not|don't|must\s+not|must\s+never|prohibited|forbidden)\b(?:\s+\w+){0,4}\s*$",
+    re.IGNORECASE,
+)
+
+
+def _unsafe_recovery_actions(instruction: str) -> list[tuple[str, str]]:
+    """Return destructive recovery actions, ignoring direct, explicit prohibitions."""
+    matches: list[tuple[str, str]] = []
+    for code, pattern in _UNSAFE_RECOVERY_PATTERNS:
+        for match in pattern.finditer(instruction):
+            sentence_start = max(
+                (instruction.rfind(delimiter, 0, match.start()) for delimiter in ".;!\n"),
+                default=-1,
+            ) + 1
+            prefix = instruction[sentence_start:match.start()]
+            if _NEGATION_BEFORE_UNSAFE_ACTION.search(prefix):
+                continue
+            matches.append((code, match.group(0)))
+    return matches
+
+
+def _bundle_instruction_strings(bundle: dict[str, Any]):
+    """Yield instruction-bearing text fields without scanning identifiers or file paths."""
+    for field in ("constraints", "prerequisites", "completion_gate", "recovery_plan"):
+        value = bundle.get(field)
+        if isinstance(value, str):
+            yield field, value
+        elif isinstance(value, list):
+            for index, item in enumerate(value):
+                if isinstance(item, str):
+                    yield f"{field}[{index}]", item
+    tasks = bundle.get("tasks")
+    if isinstance(tasks, list):
+        for index, task in enumerate(tasks):
+            if not isinstance(task, dict):
+                continue
+            for field in ("description", "acceptance_criteria", "tests", "rollback_plan"):
+                value = task.get(field)
+                if isinstance(value, str):
+                    yield f"tasks[{index}].{field}", value
+                elif isinstance(value, list):
+                    for item_index, item in enumerate(value):
+                        if isinstance(item, str):
+                            yield f"tasks[{index}].{field}[{item_index}]", item
+
+
 @dataclass(frozen=True)
 class BundleFinding:
     code: str
@@ -207,6 +272,15 @@ def review_work_bundle(bundle: Any) -> BundleReview:
             "RECOVERY_BEHAVIOR_MISSING", "high", "recovery_plan",
             "Specify safe interruption recovery, bounded retry, rollback, or blocking behavior.",
         ))
+
+    for instruction_path, instruction in _bundle_instruction_strings(bundle):
+        for action_code, matched_action in _unsafe_recovery_actions(instruction):
+            findings.append(_finding(
+                "UNSAFE_RECOVERY_ACTION",
+                "critical",
+                instruction_path,
+                f"Destructive recovery operation {matched_action!r} ({action_code}) is prohibited; preserve operator work and block instead.",
+            ))
 
     penalty = sum(SEVERITY_WEIGHT.get(item.severity, 1) for item in findings)
     score = max(0, 100 - penalty)
