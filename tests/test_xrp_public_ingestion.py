@@ -409,6 +409,7 @@ def _fake_fetcher(captured: datetime):
             "ripple_rlusd_transparency_dashboard",
             "xrpldashboard_rlusd_cross_chain_supply",
             "circle_usdc_transparency_dashboard",
+            "cftc_contract_status_index",
             "cftc_tff_financial_futures",
         }:
             html_by_source = {
@@ -421,6 +422,16 @@ def _fake_fetcher(captured: datetime):
                 "ripple_rlusd_transparency_dashboard": "<html><title>Ripple USD Transparency</title><h1>Ripple USD (RLUSD)</h1><h2>Total Circulating RLUSD</h2><p>RLUSD Reserve Funds</p><p>As of 11/05/2026</p></html>",
                 "xrpldashboard_rlusd_cross_chain_supply": "<html><title>RLUSD cross-chain supply</title><h1>RLUSD</h1><p>Ethereum</p><p>XRP Ledger</p><p>Snapshot</p></html>",
                 "circle_usdc_transparency_dashboard": "<html><title>Transparency and stability</title><h1>USDC</h1><p>EURC</p><p>Reserves</p><p>As of Nov 05, 2026</p></html>",
+                "cftc_contract_status_index": """<html><body>
+<h2>New Futures Markets Added This Week</h2>
+<table><tr><td>123456</td><td>EXAMPLE NEW FUTURE</td></tr></table>
+<h2>Futures Markets Dropped From Reporting This Week</h2>
+<table><tr><td>176LM2</td><td>XRP - COINBASE DERIVATIVES, LLC</td></tr></table>
+<h2>New Futures and Options Combined Markets Added This Week</h2>
+<table><tr><td>234567</td><td>EXAMPLE COMBINED FUTURE</td></tr></table>
+<h2>New Futures and Options Combined Markets Dropped From Reporting This Week</h2>
+<table><tr><td>176LM2</td><td>XRP - COINBASE DERIVATIVES, LLC</td></tr></table>
+<h2>Reports Dated November 03, 2026</h2></body></html>""",
                 "cftc_tff_financial_futures": """<html><title>CFTC Traders in Financial Futures</title><pre>
 Traders in Financial Futures - Futures Only Positions as of November 3, 2026
 XRP - CHICAGO MERCANTILE EXCHANGE (Contracts of 50,000 XRP)
@@ -555,7 +566,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
     assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is False
     assert summary["weekly_source_policy"]["captured_source_ids"] == []
-    assert summary["weekly_source_policy"]["skipped_source_ids"] == ["cftc_tff_financial_futures"]
+    assert summary["weekly_source_policy"]["skipped_source_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
     assert set(summary["collection_policy"]["excluded_noncommercial_xrpl_node_source_ids"]) == set(XRPL_NODE_SOURCES)
 
     snapshot = json.loads((tmp_path / "run" / "snapshot.json").read_text(encoding="utf-8"))
@@ -2584,8 +2595,11 @@ def test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication(monke
     delayed_monday_run = datetime(2026, 11, 16, 21, 3, tzinfo=timezone.utc)
     unlisted_monday_run = datetime(2026, 11, 9, 21, 3, tzinfo=timezone.utc)
 
-    assert len(WEEKLY_ENDPOINTS) == 1
-    assert WEEKLY_ENDPOINTS[0][0] == "cftc_tff_financial_futures"
+    assert len(WEEKLY_ENDPOINTS) == 2
+    assert [item[0] for item in WEEKLY_ENDPOINTS] == [
+        "cftc_contract_status_index",
+        "cftc_tff_financial_futures",
+    ]
     assert _weekly_endpoints_for_capture(saturday_daily_run) == WEEKLY_ENDPOINTS
     assert _weekly_endpoints_for_capture(saturday_hourly_run) == ()
     assert _weekly_endpoints_for_capture(friday_hourly_run) == ()
@@ -2605,19 +2619,23 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     captured = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
     summary = run_ingestion(tmp_path / "weekly", fetcher=_fake_fetcher(captured), now=captured)
 
-    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 1
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 2
     assert summary["source_failure_count"] == 0
     assert summary["weekly_source_policy"]["captured_source_ids"] == [
-        "cftc_tff_financial_futures"
+        "cftc_contract_status_index",
+        "cftc_tff_financial_futures",
     ]
     assert summary["weekly_source_policy"]["parsed_source_ids"] == [
         "cftc_tff_financial_futures"
     ]
-    assert summary["weekly_source_policy"]["raw_only_source_ids"] == []
+    assert summary["weekly_source_policy"]["raw_only_source_ids"] == [
+        "cftc_contract_status_index"
+    ]
 
     raw_only = json.loads(
         (tmp_path / "weekly" / "raw_only_sources.json").read_text(encoding="utf-8")
     )
+    assert any(item["source_id"] == "cftc_contract_status_index" for item in raw_only)
     assert not any(item["source_id"] == "cftc_tff_financial_futures" for item in raw_only)
 
     research_only_payload = json.loads(
@@ -2631,6 +2649,16 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     assert cftc_observation["source_data_as_of_utc"] == "2026-11-03T00:00:00.000000Z"
     assert cftc_observation["timestamp_precision"] == "date_only"
     assert cftc_observation["model_eligible"] is False
+    status_observation = next(
+        item for item in research_only_payload["observations"]
+        if item["source_id"] == "cftc_contract_status_index"
+    )
+    assert status_observation["observation_type"] == "cftc_weekly_contract_reporting_status"
+    assert status_observation["reports_dated"] == "2026-11-03"
+    assert status_observation["futures_only_dropped"] == ["176LM2"]
+    assert status_observation["futures_and_options_combined_dropped"] == ["176LM2"]
+    assert status_observation["model_eligible"] is False
+
     assert cftc_observation["feature_count"] == 21
     features = {item["feature_id"]: item for item in cftc_observation["features"]}
     assert features["xrp.derivatives.cftc.tff.cme_xrp.open_interest_contracts"]["value"] == 7216
@@ -2643,6 +2671,13 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     receipt_manifest = json.loads(
         (tmp_path / "weekly" / "receipt_manifest.json").read_text(encoding="utf-8")
     )
+    status_receipt = next(
+        item for item in receipt_manifest
+        if item["source_id"] == "cftc_contract_status_index"
+    )
+    assert status_receipt["model_eligible_source"] is False
+    assert status_receipt["raw_bytes_retained"] is True
+    assert len(status_receipt["raw_content_sha256"]) == 64
     cftc_receipt = next(
         item for item in receipt_manifest
         if item["source_id"] == "cftc_tff_financial_futures"
