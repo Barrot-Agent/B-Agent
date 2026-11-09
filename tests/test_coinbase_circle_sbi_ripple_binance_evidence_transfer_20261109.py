@@ -19,7 +19,9 @@ def load_artifact() -> dict:
 
 def test_all_coinbase_circle_relationship_receipts_are_reproducible() -> None:
     artifact = load_artifact()
-    assert len(artifact["source_receipts"]) == 29
+    receipts = artifact["source_receipts"]
+    assert len(receipts) == 27
+    assert len({receipt["id"] for receipt in receipts}) == 27
     for receipt in artifact["source_receipts"]:
         assert len(receipt["excerpt"].split()) <= 25
         assert hashlib.sha256(receipt["excerpt"].encode("utf-8")).hexdigest() == receipt["sha256"]
