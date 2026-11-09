@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-09T00:23:14Z",
+  "captured_at_utc": "2026-11-09T01:36:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-  "observed_integration_head_before_map_commit": "5b09c4ac686e6a4b9166b383b4c261a61e511462",
-  "observed_research_head": "92b66e11844313b1316429bc3b5678915af68565",
+  "observed_integration_head_before_map_commit": "cf3a89fd8fe9d20217836e99a90065aa24fb5db0",
+  "observed_research_head": "e15b16c7a02a0f65554423de5d97d8749df1624e",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -130,7 +130,13 @@
         "Run 71 map metadata correction: aligned top-level last_verified_at_utc and ChatGPT.last_verified_at_utc with captured_at_utc (2026-11-08T22:30:23Z), preserving the prior Run 70 current_run_observations and all historical run observations. This fixes the two timestamp-consistency regression failures without changing or weakening tests.",
         "Run 73 current-map snapshot (2026-11-09T00:10:13Z): current main d4d43be, integration head before map commit 26a69a35, research head 92b66e11; complete tree and 372-PR inventory; #1640/#1643 ancestry, overlap, reviews and exact CI; #1640 current head's two historical-map regression failures and correction; main CI/Pages/Cross Analysis; direct Kraken/OKX raw-body hashes and stale-timestamp recheck; SBIC West ChatGPT seminar, Kamilah attribution lead, Reuters risk-off event and BLS CPI schedule. No external platform data exchange.",
         "Run 73 second phase (2026-11-09T00:17:21Z): exact-head CI on cf2cba had 1,220 passed/1 failed/8 subtests; the only failure is the new regression test expecting 'skipped' instead of the exact evidence value 'skipped after full-suite failure'. Core 660/8 passed, coverage 58.98%, six-manifest audit and fail-closed gate passed, wheel skipped. Added primary SBI START bond reconciliation: completed/sold-out JPY 10bn debt, 2.15% JPY coupon, separate 0.2% initial XRP reward, ibet for Fin bond ledger, XRP Ledger reward, no direct Ripple role. Added stale CoinPaprika receipt/hash; no market feature admitted.",
-        "Run 73 CI correction (2026-11-09T00:23:14Z): exact-head full suite on 5b09 recorded 1,221 passed/1 failed/8 subtests; core 660/8 passed, 58.98% coverage, six-manifest audit passed with no known vulnerabilities, fail-closed gate passed, wheel skipped. Only failure is the current-map regression test hard-coding the prior 00:10:13Z timestamp after the snapshot advanced to 00:17:21Z. Correcting the test to assert timestamp consistency and updating the expected pre-update head; historical Run 70 map remains preserved."
+        "Run 73 CI correction (2026-11-09T00:23:14Z): exact-head full suite on 5b09 recorded 1,221 passed/1 failed/8 subtests; core 660/8 passed, 58.98% coverage, six-manifest audit passed with no known vulnerabilities, fail-closed gate passed, wheel skipped. Only failure is the current-map regression test hard-coding the prior 00:10:13Z timestamp after the snapshot advanced to 00:17:21Z. Correcting the test to assert timestamp consistency and updating the expected pre-update head; historical Run 70 map remains preserved.",
+        "Run 75: fetched complete recursive trees for main, V3 integration and XRP research; all four open-PR inventory pages (372 total); current #1640/#1643 metadata, changed paths, ancestry, review states/threads, exact-head CI jobs/logs, dependency audit and main workflow runs.",
+        "Run 75: #1640 exact head cf3a89fd passed 1,233 full-suite tests, 8 subtests, 58.98% inclusive coverage, 660 core tests, installed-wheel mission/V3/canonical-asset verification, six-manifest dependency audit and fail-closed gate.",
+        "Run 75: #1640 has 22/22 resolved review threads but zero APPROVED reviews; main is protected and branch-protection review/status endpoints return HTTP 403. Main Pages deployment workflow was verified to run on main SHA d4d43be.",
+        "Run 75: #1643 advanced on its existing research branch to e15b16c with a primary SEC Goldman Sachs 13F manager-attribution correction and regression test. Five check suites were queued at capture; no exact-head result was yet available.",
+        "Run 75: #1640 has 751 commits ahead and zero behind main; #1643 has 904 ahead and one behind. Their changed-path inventories share six files, leaving 180 V3-only and 664 research-only paths.",
+        "Run 75: added primary SEC Form 13F-HR reconciliation showing five XRP ETF rows totaling $86,506,129, all assigned to Other Included Manager No. 1, Goldman Sachs & Co. LLC. This is delayed ETF-share exposure, not proof of parent proprietary capital or XRP-token purchases."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
