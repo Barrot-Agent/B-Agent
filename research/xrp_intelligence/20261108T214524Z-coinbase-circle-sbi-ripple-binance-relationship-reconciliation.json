@@ -1,6 +1,6 @@
 {
   "artifact_type": "coinbase_circle_sbi_ripple_binance_stablecoin_and_xrp_relationship_reconciliation",
-  "schema_version": "1.0.0",
+  "schema_version": "1.0.1",
   "artifact_id": "20261108T214524Z-coinbase-circle-sbi-ripple-binance-relationship-reconciliation",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-evidence-archive-20261104",
@@ -9,14 +9,14 @@
     "research/xrp_intelligence/20261108T213528Z-sbi-ripple-asia-ownership-xrp-utility-reconciliation.json",
     "research/xrp_intelligence/20261108T213528Z-xrp-stablecoin-freeze-native-asset-control-reconciliation.json"
   ],
-  "observed_research_head_before_artifact": "813f5bba7b38fe374ec250b7a64666f6c97c0aaa",
+  "observed_research_head_before_artifact": "c814d09ea216b09799aace102f00364c6d0f2659",
   "append_only": true,
   "captured_at_utc": "2026-11-08T21:45:24Z",
   "capture_policy": {
     "lawful_public_sources_only": true,
     "raw_http_wire_bytes_captured": false,
-    "receipt_scope": "SHA-256 of exact short source excerpts reproduced in this artifact; not raw HTTP wire bytes or headers. Each excerpt is at most 25 words.",
-    "source_independence": "Coinbase and Circle SEC filings and official releases are primary party disclosures. They corroborate their own arrangements but are not independent third-party verification of market activity. Related-party source groups remain separate and explicit.",
+    "receipt_scope": "SHA-256 of exact short source excerpts reproduced here; not raw HTTP wire bytes or headers. Excerpts are at most 25 words; normalized summaries are not represented as verbatim quotations.",
+    "source_independence": "Coinbase and Circle SEC filings and official releases are primary party disclosures. They corroborate their own arrangements but are not independent third-party verification of XRP market activity.",
     "model_admission_policy": "Corporate relationships, balance-sheet disclosures, stablecoin supply and payment-rail milestones are event/context facts. They are not admitted as XRP directional features without point-in-time validation and measured predictive value."
   },
   "source_receipts": [
@@ -27,6 +27,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Circle and SBI each contributed Japanese Yen worth approximately $1.5 million to Circle SBI Japan K.K.",
       "sha256": "3074df9037a732dd6d157a86752c7ec22df6dc907431fdd6f957a6273b772737"
     },
@@ -37,6 +38,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "The Company owns a 50% interest in Circle Japan and controls the variable interest entity.",
       "sha256": "2fe350e27a9760d4f4ac0bda8166ee60379c4de0d174ec2c9027d088db43a3af"
     },
@@ -47,18 +49,42 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "verbatim_excerpt",
       "excerpt": "There have been no significant operating results to date.",
       "sha256": "8f7c602ff4a8132ff6db695c6c0021f9f4f76c51b7a3a5f037ae6ecd7f43a388"
     },
     {
       "id": "circle_binance_equity",
-      "publisher": "Circle Internet Group Q3 2026 Form 10-Q",
+      "publisher": "Circle Internet Group September 17, 2026 Form 8-K",
       "source_class": "primary_sec_filing",
       "independence_group": "circle_first_party_sec",
-      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
-      "period": "2026-09",
-      "excerpt": "In September 2026, Circle issued and sold 1.2 million Class A shares to Binance at $80.84 per share for $100.0 million.",
-      "sha256": "478e5fd3eb74ed1626bdefd412d2b1685c3aa186e66b219367ddb086c5c52910"
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+      "period": "2026-09-17",
+      "excerpt_type": "verbatim_excerpt",
+      "excerpt": "issued and sold to Binance 1,237,011 shares at a purchase price of $80.84 per share, for aggregate proceeds of $100 million",
+      "sha256": "9682e077cb21e35b3df92947b1929d27285428aa2aeea9301d9d6f907f9cc158"
+    },
+    {
+      "id": "circle_binance_monthly_incentive_fee",
+      "publisher": "Circle Internet Group September 17, 2026 Form 8-K",
+      "source_class": "primary_sec_filing",
+      "independence_group": "circle_first_party_sec",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+      "period": "2026-09-17",
+      "excerpt_type": "verbatim_excerpt",
+      "excerpt": "a monthly incentive fee representing a percentage of the amount of USDC held through the Modular Smart Contract Wallet infrastructure service",
+      "sha256": "10b141c8699fe6caa34d47ff0f38b3e0d998caf918b37cbfdcff231ecf1609f3"
+    },
+    {
+      "id": "circle_binance_five_year_term",
+      "publisher": "Circle Internet Group September 17, 2026 Form 8-K",
+      "source_class": "primary_sec_filing",
+      "independence_group": "circle_first_party_sec",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+      "period": "2026-09-17",
+      "excerpt_type": "verbatim_excerpt",
+      "excerpt": "The arrangement has a term of five years.",
+      "sha256": "48732681ce591a9c4f32b984eb806ed04e7f3fa0b9eabc60646b3d21cf9b323a"
     },
     {
       "id": "circle_usdc_average_end",
@@ -67,6 +93,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "USDC in circulation averaged $73.264 billion and ended the quarter at $73.879 billion.",
       "sha256": "b288563670844b9245b1d46ed1bcf57ebf09d98dfef52600c8c16aed04d1ddc3"
     },
@@ -77,6 +104,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "USDC minted $104.304 billion and redeemed $103.694 billion in the quarter.",
       "sha256": "9873e3ae23bc2919017f04897a87320a350656f648c3ce5557aac022a9331f8b"
     },
@@ -87,6 +115,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Reserve income was $657.624 million; total revenue and reserve income was $864.888 million.",
       "sha256": "699853d3995cad938c83a071d236f486d0727024989aa7c9e003923c5ac893a2"
     },
@@ -97,6 +126,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Distribution and transaction costs were $409.169 million.",
       "sha256": "7db0785787408dc3dac9c23f166f2c8deadb4d4b86721b2208f2a549218f745d"
     },
@@ -107,6 +137,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Distribution costs paid to Coinbase decreased by $30.0 million year over year.",
       "sha256": "932ea3c5e606a76ac505c76d9ca45f5dd2e3a948b2b342a82232e7826f78e522"
     },
@@ -117,6 +148,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "The decrease was driven by lower reserve income, partly offset by Coinbase's increased share of average on-platform USDC balances.",
       "sha256": "da7f3982cb38f924e183ea8366587f36aa2f89c6bbcad888ba86453e716a985d"
     },
@@ -127,6 +159,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Other revenue increased due to $181.8 million of revenue related to the ARC token presale.",
       "sha256": "09b3a07c6fd2885272e31c2876651f6646020a51bf82543fa3ce3a9303d1b229"
     },
@@ -137,6 +170,7 @@
       "independence_group": "circle_first_party_release",
       "url": "https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "USDC onchain transaction volume was $13.9 trillion, up 49% year over year.",
       "sha256": "475db1d69cea724e19f46aed3c74f515dfc04cd2251df3cd8d5a7e22908d306e"
     },
@@ -147,6 +181,7 @@
       "independence_group": "circle_first_party_release",
       "url": "https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Binance invested $100 million in Circle and renewed a five-year USDC partnership.",
       "sha256": "ca2bcf2e33c25bd297dd784c6f1d9bd1736ac018ea5b380c3669f751c8e86768"
     },
@@ -157,6 +192,7 @@
       "independence_group": "coinbase_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "verbatim_excerpt",
       "excerpt": "renewed our arrangement with Circle on the same terms",
       "sha256": "0004cfaf167b4490823d511194dcc3e331d6d54a0e5d0a3443640c066098be67"
     },
@@ -165,8 +201,9 @@
       "publisher": "Coinbase Q3 2026 earnings release",
       "source_class": "official_company_earnings_release",
       "independence_group": "coinbase_first_party_release",
-      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Average USDC Held in Coinbase Products reached $22 billion in Q3 2026, up 49% year over year.",
       "sha256": "e9cd1f18486a0c62e997a8a05a681f224e74254652e616f78e65f4026a130a89"
     },
@@ -175,8 +212,9 @@
       "publisher": "Coinbase Q3 2026 earnings release",
       "source_class": "official_company_earnings_release",
       "independence_group": "coinbase_first_party_release",
-      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "This represented roughly 30% of average USDC Market Cap.",
       "sha256": "3f46b5556ce9a42e6cecf049e722b7fedcb63d4d14a82f9fded461b288db6989"
     },
@@ -185,8 +223,9 @@
       "publisher": "Coinbase Q3 2026 earnings release",
       "source_class": "management_statement_in_earnings_release",
       "independence_group": "coinbase_first_party_release",
-      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
       "period": "trailing_12_months_to_2026-Q3",
+      "excerpt_type": "management_characterization",
       "excerpt": "Over the past year, Coinbase captured approximately 50% of all USDC economics.",
       "sha256": "9e55f81f56284c06231fc37ce347c97e3fb1e15fbd9f210fcd342c1035df31fe",
       "measurement_type": "management_characterization_not_audited_share_of_total_reserve_income"
@@ -198,6 +237,7 @@
       "independence_group": "coinbase_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
       "period": "2026-Q3",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Stablecoin revenue was $306.9 million for the three months ended September 30, 2026.",
       "sha256": "64e1d9a60dfed8f869a381a16b5afbaf32266e0ccf005047659f784703e2f400"
     },
@@ -208,6 +248,7 @@
       "independence_group": "coinbase_first_party_disclosure",
       "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
       "data_as_of": "2026-03-31",
+      "excerpt_type": "verbatim_excerpt",
       "excerpt": "Coinbase Holdings are provided as of March 31, 2026.",
       "sha256": "2f36324eda342ba04beaf00bc86a3b6f30734f3e8615db1e113a43d5a17a541d"
     },
@@ -218,6 +259,7 @@
       "independence_group": "coinbase_first_party_disclosure",
       "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
       "data_as_of": "2026-03-31",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Commercial Engagement is construed broadly to capture financial engagements, business engagements, or similar engagements.",
       "sha256": "08ef25944060df2e23b1a9a6a9e50526fba1a5dbe3f1a45f3dc86bea3637fe52"
     },
@@ -228,6 +270,7 @@
       "independence_group": "coinbase_first_party_disclosure",
       "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
       "data_as_of": "2026-03-31",
+      "excerpt_type": "verbatim_table_row",
       "excerpt": "XRP | XRP | Yes | Yes",
       "sha256": "eed5436946ee8301d8ab88863a02b7be4292b19cc35d919bbdb8bb056cce5a54"
     },
@@ -238,6 +281,7 @@
       "independence_group": "coinbase_first_party_disclosure",
       "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
       "data_as_of": "2026-03-31",
+      "excerpt_type": "verbatim_table_row",
       "excerpt": "Ripple USD | RLUSD | No | Yes",
       "sha256": "8d725927a46cff2c77fbd727f3cd1c1b4efea51dd4bfd886cfe7d404a650060e"
     },
@@ -248,6 +292,7 @@
       "independence_group": "coinbase_first_party_disclosure",
       "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
       "data_as_of": "2026-03-31",
+      "excerpt_type": "verbatim_table_row",
       "excerpt": "Coinbase Wrapped XRP | cbXRP | Yes | Yes",
       "sha256": "d65227cafae8f18c8c4fab191cff2e4dc1e1b772df8d915e4317feff3f8c0f2b"
     },
@@ -258,6 +303,7 @@
       "independence_group": "coinbase_first_party_disclosure",
       "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
       "data_as_of": "2026-03-31",
+      "excerpt_type": "verbatim_table_row",
       "excerpt": "USD Coin | USDC | Yes | Yes",
       "sha256": "2c404f036fd6b2a30e93ffcce3cd2b93824e649f8bccdfa8d693627de2d50813"
     },
@@ -268,6 +314,7 @@
       "independence_group": "coinbase_first_party_release",
       "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
       "published_at": "2026-10-28",
+      "excerpt_type": "normalized_summary",
       "excerpt": "RLUSD is available on Coinbase Prime, Exchange and retail across XRPL, Base and Ethereum.",
       "sha256": "48cd4a20e2ba2755c553df776f20d8676f76a0bb698303d02ab766f44fc94b97"
     },
@@ -278,6 +325,7 @@
       "independence_group": "coinbase_first_party_release",
       "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
       "published_at": "2026-10-28",
+      "excerpt_type": "normalized_summary",
       "excerpt": "Coinbase Global Exchange collateral availability is planned for a later phase.",
       "sha256": "a596103f9942eacbe3d5ccc59927220d2fcee206fd2bcb019f1f25bc7573188b"
     },
@@ -288,6 +336,7 @@
       "independence_group": "circle_first_party_sec",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000150/crcl-20260331.htm",
       "period": "2026-Q1",
+      "excerpt_type": "verbatim_excerpt",
       "excerpt": "For the three months ended March 31, 2026, we incurred $330.6 million of distribution costs in connection with our agreements with Coinbase.",
       "sha256": "d708b47c6fff9ac237737e5070628798e7e477e13fb6f4a69e2794a95b8e7bb0"
     }
@@ -322,9 +371,15 @@
     "circle_binance": {
       "relationship": "equity_investment_and_five_year_USDC_commercial_partnership",
       "binance_equity_investment_usd": 100000000,
-      "shares_issued": 1200000,
+      "shares_issued": 1237011,
+      "shares_issued_exact": true,
       "price_per_share_usd": 80.84,
-      "transaction_month": "2026-09",
+      "reported_aggregate_proceeds_usd": 100000000,
+      "rounded_price_arithmetic_usd": 99999969.24,
+      "rounding_difference_usd": 30.76,
+      "rounding_note": "The SEC filing reports $100.0M aggregate proceeds and an $80.84 per-share purchase price. Multiplying the exact share count by the rounded per-share price gives $99,999,969.24; preserve the $30.76 difference as a rounding/precision residual, not an inferred shortfall.",
+      "monthly_incentive_fee_based_on_usdc_wallet_balances": true,
+      "term_years": 5,
       "five_year_commercial_agreement_announced": true,
       "xrp_specific_investment_or_flow_proven": false
     },
@@ -401,7 +456,8 @@
     "management_claim": "Coinbase's approximately 50% of USDC economics statement is a company characterization; it is not an audited claim that Coinbase receives 50% of Circle's total reserve income or revenue.",
     "coinbase_disclosure_limit": "Coinbase's holdings/engagement table is as of 2026-03-31. 'Commercial engagement' is broad. 'Holding: Yes' does not disclose amount or prove customer collateral usage.",
     "circle_sbi_limit": "Circle SBI Japan K.K. is 50/50 equity funded but Circle controls and consolidates the VIE; the Q3 filing says no significant operating results to date.",
-    "circle_binance_limit": "The $100M Binance equity investment and five-year USDC partnership are direct Circle/Binance relationships, not XRP purchases or a Ripple partnership.",
+    "circle_binance_limit": "The $100M Binance equity investment and five-year USDC partnership are direct Circle/Binance relationships, not XRP purchases or a Ripple partnership. The monthly incentive fee is tied to USDC held through Circle's Modular Smart Contract Wallet service.",
+    "circle_binance_rounding_note": "The exact share count and reported aggregate proceeds are from the September 17 Form 8-K. The per-share price is stated to cents, so the $30.76 arithmetic residual is preserved rather than interpreted as a missing payment.",
     "rlusd_limit": "Coinbase RLUSD availability is live on Prime/Exchange/retail, but Global Exchange collateral was planned for a later phase at launch. RLUSD distribution does not imply XRP settlement.",
     "sbi_entity_limit": "Circle SBI Japan K.K., SBI Ripple Asia and SBIC East/Central/West are separate entities and must never be conflated."
   },
@@ -427,5 +483,15 @@
     "financial_action": false,
     "external_model_transfer": false,
     "account_or_asset_action": false
+  },
+  "integration_transfer": {
+    "source_pr": 1643,
+    "source_branch_head_sha": "238f3ff4a69420882c77d225626a352ba19a412c",
+    "source_git_blob_sha": "e431254c1bed9e3994dae6dc60b7e866699b2ec2",
+    "destination_pr": 1640,
+    "transfer_method": "Copied from the exact source-branch blob through the authenticated GitHub file reader; original evidence values and source receipts preserved.",
+    "raw_http_bytes_captured": false,
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED"
   }
 }
