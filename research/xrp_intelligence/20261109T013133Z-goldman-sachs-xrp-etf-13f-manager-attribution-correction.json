@@ -1,0 +1,111 @@
+{
+  "artifact_type": "sec_13f_xrp_etf_position_manager_attribution_correction",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-09T01:31:33Z",
+  "filing": {
+    "form": "13F-HR",
+    "accession": "0000886982-26-000519",
+    "cik": "0000886982",
+    "filer": "GOLDMAN SACHS GROUP INC",
+    "filing_date": "2026-08-14",
+    "accepted_at_utc": "2026-08-14T17:15:03Z",
+    "report_period_end": "2026-06-30",
+    "primary_urls": {
+      "filing_index": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.html",
+      "primary_document": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/primary_doc.xml",
+      "information_table": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml"
+    }
+  },
+  "included_manager_attribution": {
+    "row_manager_number": 1,
+    "included_manager_name": "GOLDMAN SACHS & CO. LLC",
+    "form_13f_file_number": "028-00687",
+    "cik": "0000769993",
+    "primary_document_location": "Other Included Managers list, row No. 1",
+    "correction": "The parent Goldman Sachs Group Inc is the filing manager, but every XRP ETF row below is assigned to included manager No. 1, Goldman Sachs & Co. LLC. Do not attribute the positions directly to the parent or describe them as parent-company proprietary capital."
+  },
+  "positions": [
+    {
+      "issuer": "21SHARES XRP ETF",
+      "cusip": "90137T103",
+      "value_usd": 8206363,
+      "shares": 806126,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 38
+    },
+    {
+      "issuer": "BITWISE XRP ETF",
+      "cusip": "09174F107",
+      "value_usd": 25756345,
+      "shares": 2208949,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 1672
+    },
+    {
+      "issuer": "CANARY XRP ETF",
+      "cusip": "13723M100",
+      "value_usd": 19490717,
+      "shares": 1759090,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 2182
+    },
+    {
+      "issuer": "FRANKLIN XRP TRUST",
+      "cusip": "355233107",
+      "value_usd": 25405919,
+      "shares": 2238407,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 4973
+    },
+    {
+      "issuer": "GRAYSCALE XRP TR ETF",
+      "cusip": "38965L106",
+      "value_usd": 7646785,
+      "shares": 377619,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 5516
+    }
+  ],
+  "reconciliation": {
+    "position_count": 5,
+    "aggregate_reported_value_usd": 86506129,
+    "aggregate_reported_shares_across_distinct_funds": 7390191,
+    "arithmetic_verified": true,
+    "interpretation": "The sum is the reported value of five ETF-share positions in a delayed 13F snapshot, not XRP tokens, XRP custody, net ETF creations/redemptions, or cash deployed into XRP."
+  },
+  "provenance": {
+    "normalized_excerpt_sha256": {
+      "filing_index": "c10f271e396b81baaf4ebfd8edfd2ec7182f07f5d1a2f5b35e04c60a16c9c217",
+      "primary_document_manager_mapping": "a437982dea5d9abc0ffdf814aa6b5c0502c5ef4b7f2b8b0610515b211c7e3c75",
+      "information_table_xrp_rows": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31"
+    },
+    "hash_scope": "SHA-256 hashes cover the exact normalized text excerpts recorded in this artifact, not the raw SEC HTTP response bytes.",
+    "source_independence": "All three records are parts of one SEC filing and are not independent confirmations."
+  },
+  "correction": {
+    "secondary_claim": "Goldman Sachs Group Inc holds approximately $86.5M of XRP ETFs.",
+    "corrected_claim": "Goldman Sachs Group Inc's 2026-06-30 Form 13F-HR reports five XRP ETF share positions with aggregate reported value $86,506,129; each position row assigns Other Manager No. 1, Goldman Sachs & Co. LLC.",
+    "unresolved": "The filing does not establish whether these positions are proprietary, client, advisory, or otherwise beneficially owned by Goldman Sachs Group Inc. The filing does not establish current holdings after 2026-06-30."
+  },
+  "limitations": [
+    "A 13F is a delayed quarter-end snapshot; this report was filed 45 days after 2026-06-30.",
+    "It reports specified long reportable securities and does not provide a complete view of shorts, futures, most non-U.S. instruments, or direct XRP-token custody.",
+    "ETF shares are not equivalent to XRP held by the reporting manager.",
+    "The included-manager attribution is not proof of beneficial ownership or proprietary investment.",
+    "This observation is not a primary-market ETF creation/redemption flow."
+  ],
+  "actual_capital_classification": "Reported ETF-share securities exposure; not verified XRP-token capital deployment.",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "admission_reason": "A single delayed 13F filing is an institutional ownership/manager-attribution observation, not a synchronized spot-flow feature. Preserve as point-in-time research context only."
+}
