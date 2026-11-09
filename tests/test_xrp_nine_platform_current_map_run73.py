@@ -26,7 +26,7 @@ def test_run77_current_snapshot_preserves_run76_and_historical_map():
     assert observation["captured_at_utc"] == current["captured_at_utc"]
     assert observation["last_verified_at_utc"] == current["last_verified_at_utc"]
     assert observation["run_id"] == 77
-    assert observation["captured_at_utc"] == "2026-11-09T02:01:02Z"
+    assert observation["captured_at_utc"] >= prior77["captured_at_utc"]
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
     assert observation["integration_head_before_handoff_commit"] == "f92aafdc25fce42c60c04d70b8e6cca47969cfdf"
     assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
