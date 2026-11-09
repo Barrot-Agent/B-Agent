@@ -3488,7 +3488,20 @@ def _parse_cftc_tff(
         metrics = [
             ("open_interest_contracts", contract["open_interest_contracts"], "contracts"),
             ("open_interest_change_contracts", contract["open_interest_change_contracts"], "contracts"),
+            (
+                "open_interest_xrp_equivalent",
+                contract["open_interest_xrp_equivalent"],
+                "xrp_equivalent_contracts",
+            ),
         ]
+        if contract["open_interest_change_contracts"] is not None:
+            metrics.append(
+                (
+                    "open_interest_change_xrp_equivalent",
+                    contract["open_interest_change_contracts"] * contract["contract_multiplier_xrp"],
+                    "xrp_equivalent_contracts",
+                )
+            )
         if contract["total_traders"] is not None:
             metrics.append(("total_traders", contract["total_traders"], "traders"))
         metrics.extend(
