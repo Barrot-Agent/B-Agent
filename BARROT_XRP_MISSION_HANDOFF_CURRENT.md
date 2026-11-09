@@ -860,3 +860,49 @@ Next:
 **Forecast: NOT_ISSUED.** The two direct spot observations show a broad intraday decline but do not establish predictive advantage or a reliable directional signal. No paper trade or real-money action occurred.
 
 No new PR was created. No PR was merged or closed. Main was not modified. No deployment, secret operation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer or destructive worktree operation occurred.
+
+
+---
+
+## Run 73 correction addendum — historical map preservation and additional source research
+
+**Correction to the preceding Run 73 map update:** the file `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json` is a historical snapshot. Its original `captured_at_utc` is `2026-11-08T22:30:23Z`, its original integration-head observation is `a98ce73d392294a31303001891ca8ede5fd9703c`, and its current observation is Run 70. The first Run 73 update changed the historical capture timestamp without advancing the historical current-run object. Exact-head CI correctly caught this.
+
+- Failed exact head: `26a69a359eec58e3dcc74d85cdd2ec9958711bae`.
+- Full suite: **1,213 passed, 2 failed, 8 subtests passed**; inclusive coverage remained 58.98%.
+- Core suite: 660 passed, 8 subtests.
+- Failures: `tests/test_xrp_mission_handoff_run27.py::test_run28_platform_map_is_preserved_and_run33_is_historical` and `tests/test_xrp_mission_handoff_run34.py::test_run34_nine_platform_map_remains_truthful_and_least_privilege`.
+- Root cause: historical map timestamp was overwritten; the tests correctly require the historical timestamp and root `last_verified_at_utc` to remain consistent.
+- Dependency audit and fail-closed gate passed; wheel verification was skipped after the full-suite failure.
+
+**Correction strategy:** restore the historical map file to its exact prior blob and add a separate current snapshot at `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json`. Add regression tests for both historical preservation and the new Run 73 snapshot. No assertions are weakened. Exact-head full-suite and wheel verification remain pending on the corrective commit.
+
+### Raw spot response preimages
+
+The exact JSON bodies below are the preimages for the SHA-256 receipts in Run 73. They are response bodies surfaced by the public endpoints, not raw HTTP wire bytes or headers.
+
+Kraken `XRP/USD`:
+
+```json
+{"error":[],"result":{"XXRPZUSD":{"a":["1.10943000","411","411.000"],"b":["1.10941000","1638","1638.000"],"c":["1.10944000","150.00000000"],"v":["27284874.96638142","27289701.10514775"],"p":["1.13001247","1.13001819"],"t":[25190,25208],"l":["1.09309000","1.09309000"],"h":["1.16816000","1.16816000"],"o":"1.16234000"}}}
+```
+
+OKX `XRP-USDT`:
+
+```json
+{"code":"0","data":[{"instType":"SPOT","instId":"XRP-USDT","last":"1.1071","lastSz":"100","askPx":"1.1072","askSz":"1998.6","bidPx":"1.1071","bidSz":"4992.574747","volCcy24h":"52559537.028700469","vol24h":"46424633.749449","ts":"1794182692769","sodUtc0":"1.1132","sodUtc8":"1.1563"}],"msg":""}
+```
+
+The 00:10:13Z recheck returned byte-identical bodies. The OKX provider event time `2026-11-09T00:04:52.769Z` was 320.231 seconds old at recheck, beyond the 300-second freshness threshold. Kraken still has no provider event timestamp. Cache status is unknown. No new market feature was admitted.
+
+### Macro and identity research addenda
+
+- **BLS:** the official November 2026 schedule lists October CPI for Tuesday, November 10, 2026, at 08:30 ET. This is an event-timeline entry, not a directional XRP catalyst: https://www.bls.gov/schedule/2026/11_sched_list.htm
+- **SBIC West:** an official Osaka Small and Medium Business Investment & Consultation Company (SBIC West Japan) PDF documents a December 4, 2025 Miyazaki seminar, co-hosted with Japan Finance Corporation, titled “Accelerate business with generative AI,” explicitly including ChatGPT. This confirms educational use by/through SBIC West; it does not establish an OpenAI partnership: https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf
+- **Kamilah Stevenson video lead:** her official learning site identifies Dr. Kamilah Stevenson as “The Wealth Doctor”: https://learn.kamilahstevenson.com/. DailyCoin's August 17, 2026 article links a YouTube video titled “Quantum Is Coming for Crypto. XRP Already Has a Defense Plan” (video ID `EKwRA2PF5mw`) and attributes it to Kamilah Stevenson: https://dailycoin.com/xrps-quantum-resistance-roadmap-takes-aim-at-2028/. The official learning site does not cross-link the candidate YouTube channel; YouTube's channel page was inaccessible and third-party directories show numerous lookalike accounts. Channel ownership remains unverified, so the video is a lead, not a verified-channel inventory item.
+- **Japanese remittance-pilot claim:** DailyCoin's August 28, 2026 article repeats a YouTube claim that unnamed Japanese-bank XRP remittance pilots were about 60% cheaper and settled in under four seconds. It names no banks and provides no primary pilot documents. The same article says an SBI Digital Finance institutional-XRP-finance project was still under construction. These remain unverified secondary claims, not adoption metrics or forecast features: https://pro.edgex.exchange/pl-PL/news/article/japanese-banks-xrp-remittance-pilots
+- Exact-phrase searches found no new primary XRP-specific ASK Coin relationship or issuer-defined “actual capital” measurement. The SBIC/ChatGPT results remain acronym collisions plus the official educational seminar above.
+
+The new current map snapshot preserves the prior run history and current nine-platform permissions. ChatGPT-to-GitHub is verified for this session; Copilot activity remains comments only; the other seven platforms have no verified persistent authenticated data flows. No external-model data exchange occurred.
+
+**Forecast remains NOT_ISSUED.** No directional signal, paper trade or real-money action was produced.
