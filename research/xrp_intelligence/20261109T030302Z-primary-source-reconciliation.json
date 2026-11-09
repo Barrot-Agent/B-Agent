@@ -7,7 +7,8 @@
     "integration_pr": 1640,
     "integration_head": "6e49d7cd1d6c302636354791046f8d9f0f904c48",
     "integration_head_at_research_capture": "6e49d7cd1d6c302636354791046f8d9f0f904c48",
-    "integration_head_after_handoff_commit": "a399e1ff61ddaa9094f0a7f465521c9219870262"
+    "integration_head_after_handoff_commit": "a399e1ff61ddaa9094f0a7f465521c9219870262",
+    "integration_head_before_final_research_update": "8f2c5416879efbd77af0bfaef6681ec31b7b0573"
   },
   "receipt_integrity": {
     "raw_http_body_hashes_captured": false,
@@ -203,6 +204,14 @@
         },
         {
           "text": "$986.6 million in the nine months ended September 30, 2026"
+        },
+        {
+          "text": "1.2 million shares of the Company’s Class A common stock at $80.84 per share, for aggregate proceeds of $100.0 million",
+          "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
+        },
+        {
+          "text": "The relationship between interest rates and USDC in circulation is complex, highly uncertain and unproven",
+          "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
         }
       ],
       "raw_response_sha256": null,
@@ -449,6 +458,22 @@
         "KRAKEN_XRPUSD_TICKER",
         "OKX_XRPUSDT_TICKER"
       ]
+    },
+    {
+      "claim_id": "CIRCLE_BINANCE",
+      "status": "VERIFIED_PRIMARY",
+      "statement": "Circle's Q3 2026 10-Q records a $100.0 million private placement to Binance for 1.2 million Class A shares at $80.84 per share; the same filing refers to ongoing commercial arrangements with Binance. This is an equity and commercial relationship, not evidence of XRP usage.",
+      "source_ids": [
+        "CIRCLE_2026Q3_10Q"
+      ]
+    },
+    {
+      "claim_id": "CIRCLE_MACRO_RATE_SENSITIVITY",
+      "status": "ISSUER_DISCLOSURE_WITH_LIMITATION",
+      "statement": "Circle states the relationship between interest rates and USDC in circulation is complex, highly uncertain and unproven. Reserve-income sensitivity must not be treated as a deterministic forecast of USDC supply or XRP demand.",
+      "source_ids": [
+        "CIRCLE_2026Q3_10Q"
+      ]
     }
   ],
   "market_observations": {
@@ -569,5 +594,67 @@
     ],
     "next_validation_gate": "Run the scheduled ingestion only after the integration is merged with required approvals and deployment side effects authorized; preserve raw response bytes and SHA-256 receipts, then complete chronological walk-forward and shadow evaluation before any directional forecast."
   },
-  "capture_method": "Public-source research via rendered pages and public API observations; no raw response body capture."
+  "capture_method": "Public-source research via rendered pages and public API observations; no raw response body capture.",
+  "relationship_graph": [
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "type": "USDC distribution agreement",
+      "evidence": "Q3 2026 distribution costs; Coinbase independently confirms renewal on same terms"
+    },
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "type": "$100m equity investment plus commercial arrangements",
+      "evidence": "Q3 2026 Circle 10-Q"
+    },
+    {
+      "from": "Circle",
+      "to": "SBI Group",
+      "type": "Circle SBI Japan KK 50% interest",
+      "evidence": "$1.5m contribution each; no significant operating results to date"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Ripple",
+      "type": "SBI Ripple Asia joint venture and strategic relationship",
+      "evidence": "SBI Group 60% voting rights; Ripple says the JV does not handle XRP"
+    },
+    {
+      "from": "SBI Remit",
+      "to": "XRP",
+      "type": "ODL bridge asset",
+      "evidence": "Ripple press release identifies XRP use in Japan-to-Philippines remittances"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "type": "Japan distribution",
+      "evidence": "RLUSD launch on VCTRADE; separate from XRP"
+    },
+    {
+      "from": "SBI-controlled stockholders",
+      "to": "Evernorth",
+      "type": "equity ownership",
+      "evidence": "21.4% common stock and 39.9% voting power at closing"
+    },
+    {
+      "from": "Ripple and related contributors",
+      "to": "Evernorth",
+      "type": "in-kind XRP contributions",
+      "evidence": "SEC prospectus distinguishes Ripple, sponsor and related-party contributions"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Evernorth",
+      "type": "principal market for XRP fair-value reporting",
+      "evidence": "Accounting designation; BitGo is named custodian"
+    },
+    {
+      "from": "Circle",
+      "to": "Ripple",
+      "type": "no direct corporate relationship verified",
+      "evidence": "No direct partnership or ownership tie established in sources reviewed"
+    }
+  ]
 }

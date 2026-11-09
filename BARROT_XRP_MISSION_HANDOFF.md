@@ -9691,3 +9691,10 @@ Re-run exact-head CI after this handoff/evidence commit. Keep #1640 as the singl
 - Attempted raw-source downloads were unavailable in this execution environment. The evidence artifact therefore preserves source URLs, publisher/date metadata, visible excerpts, independence groups and limitations only. The ingestion workflow must fetch the actual response bodies, hash them, store immutable receipts and verify them before any feature-store admission.
 - Exact-head CI for `a399e1ff61ddaa9094f0a7f465521c9219870262` is pending and must be rechecked before merge consideration.
 
+## Run 78B — direct relationship graph and macro caveat
+
+- Circle's Q3 2026 10-Q also records a $100.0 million private placement to Binance for 1.2 million Class A shares at $80.84 per share, and refers to ongoing commercial arrangements with Binance. This is a direct equity/commercial relationship, separate from Circle's Coinbase distribution arrangement.
+- Circle explicitly warns that the relationship between interest rates and USDC in circulation is complex, highly uncertain and unproven. Reserve-income sensitivity must not be converted into a deterministic USDC-supply or XRP-demand forecast.
+- The current relationship graph is: Circle–Coinbase (USDC distribution economics); Circle–Binance ($100m equity plus commercial arrangements); Circle–SBI (50% Japan JV with no significant operating results); SBI–Ripple (SBI Ripple Asia JV, with the JV itself not handling XRP); SBI Remit–XRP (ODL bridge asset); SBI VC Trade–RLUSD (separate stablecoin distribution); SBI-controlled stockholders–Evernorth (21.4% common / 39.9% voting at closing); Ripple and related contributors–Evernorth (in-kind XRP); Coinbase–Evernorth (principal market for valuation, not custody; BitGo custody). No direct Circle–Ripple or Coinbase–SBI corporate tie was established in the primary filings reviewed.
+- This update is being committed on top of integration head `8f2c5416879efbd77af0bfaef6681ec31b7b0573`. The resulting documentation/evidence head must receive fresh exact-head CI; previous CI results do not transfer to it.
+
