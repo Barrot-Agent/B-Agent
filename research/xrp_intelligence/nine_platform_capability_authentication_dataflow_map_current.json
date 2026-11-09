@@ -29005,7 +29005,7 @@
   },
   "ci_evidence": {
     "integration": {
-      "verified_head": "97a2308ca34decc5d5dc47b72951457deb53035d",
+      "verified_head": "77fb404ff8b09db8d51a7d36e4da0335dc3c325d",
       "code_test_parent": {
         "head": "1a3861f5144b499be3115f14abda2affc0b024cc",
         "full_suite": {
@@ -29056,7 +29056,16 @@
         "automatic_merge_disabled": true
       },
       "failure": "tests/test_xrp_mission_handoff_run58.py::test_run96_endpoint_registry_counts_match_current_map; stale expected run_id 96, actual latest Run98",
-      "repair": "Update the test to assert Run98 and preserve legacy current_run_observations Run82."
+      "repair": "Update the test to assert Run98 and preserve legacy current_run_observations Run82.",
+      "latest_descendant": {
+        "head": "77fb404ff8b09db8d51a7d36e4da0335dc3c325d",
+        "full_suite": "PENDING",
+        "core": "PENDING",
+        "wheel": "PENDING",
+        "dependency_audit": "PENDING",
+        "fail_closed_gate": "PENDING",
+        "repair": "test now expects latest Run98 and run_history contains run=98"
+      }
     },
     "main": {
       "head": "d4d43be3427375cf79d190e768976de062e20287",
@@ -29670,15 +29679,15 @@
       "draft": false,
       "mergeable": true,
       "mergeable_state": "clean",
-      "head_sha": "97a2308ca34decc5d5dc47b72951457deb53035d",
-      "ahead_by": 834,
+      "head_sha": "77fb404ff8b09db8d51a7d36e4da0335dc3c325d",
+      "ahead_by": 835,
       "behind_by": 0,
       "changed_paths": 212,
       "approvals": 0,
       "commented_reviews": 62,
       "threads_resolved": 22,
       "threads_unresolved": 0,
-      "full_suite": "1307 passed, 1 failed, 8 subtests; 59.12% coverage",
+      "full_suite": "PENDING on 77fb404 after stale Run96 assertion repair",
       "dependency_audit": "6 manifests; 0 known vulnerabilities",
       "fail_closed_gate": "passed; automatic merge disabled"
     },
@@ -29690,7 +29699,7 @@
     "merge_performed": false,
     "merge_allowed": false,
     "blockers": [
-      "Exact-head full repository suite currently has one stale regression-test assertion failure; fix and rerun.",
+      "Exact-head full repository suite, installed-wheel smoke, dependency audit and fail-closed gate are pending on repair head 77fb404.",
       "Zero independent APPROVED reviews.",
       "Detailed branch-protection endpoint returns HTTP 403; effective required review/status rules remain unverified.",
       "GitHub Pages is enabled; prior push to main produced a successful deployment and PR #1640 changes seven public web assets; explicit publication authorization is absent."
@@ -29762,7 +29771,7 @@
     }
   },
   "backlog_classification": {
-    "#1640": "BLOCKED integration PR; code/test parent 1a3861f passed 1,308 full-suite tests, but latest handoff/map descendant 97a2308 has 1,307 passed and one stale hard-coded Run96 test failure. Core 677 passed, coverage 59.12%, six-manifest audit and fail-closed gate passed. Fix the test and rerun; approvals/protection/Pages authorization remain blockers.",
+    "#1640": "BLOCKED integration PR; 97a2308 had 1,307 passed and one stale Run96 assertion failure; test/map corrected on 77fb404, exact-head CI pending. Zero approvals; protection visibility and Pages authorization unresolved.",
     "#1643": "UNIQUE/UNREVIEWED research archive; 663 unique paths and seven overlaps; 906 commits ahead, one behind, GitHub merge state dirty, no exact-head CI; preserve unique evidence.",
     "#1653": "UNIQUE/UNREVIEWED knowledge graph; six unique paths and one overlap; 18 commits ahead, one behind; eight unresolved review threads; preserve and review separately.",
     "#1642": "SUPERSEDED candidate: all seven changed paths overlap #1640 and its head is an ancestor of #1640.",
@@ -29774,7 +29783,7 @@
     "#1659": "DRAFT; preserve four unique local Llama/Termux paths.",
     "remaining_drafts": "356 not individually adjudicated; no bulk closure."
   },
-  "last_run_status": "Run98 descendant 97a2308: full suite 1,307 passed and one failed because a historical test hard-coded latest_run_snapshot.run_id==96 after the current map advanced to Run98. Core 677 passed; coverage 59.12%; dependency audit passed six manifests with zero known vulnerabilities; fail-closed gate passed. The failure is a stale test expectation and is being corrected on the same integration branch.",
+  "last_run_status": "Run98: stale Run96 assertion identified on 97a2308 and corrected on existing #1640 branch at 77fb404. The current map's run_history entry now explicitly carries run=98 while preserving the legacy Run82 current_run_observations. Exact-head CI/audit/gate on 77fb404 are pending.",
   "integration_head_before_map_commit": "2685c1744aa5a7972da9063a18be665077c4548c",
   "research_updates": {
     "run93": {
@@ -30738,7 +30747,7 @@
       "description": "Three SHA-256-bound public spot JSON bodies and six secondary derivatives views; research-only."
     }
   ],
-  "updated_at_utc": "2026-11-09T20:20:17Z",
+  "updated_at_utc": "2026-11-09T20:21:30Z",
   "current_run_snapshot": {
     "run": 82,
     "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -31948,7 +31957,8 @@
         "trusted_evaluator_key": false,
         "forecast_status": "NOT_ISSUED"
       },
-      "handoff_map_descendant_head": "97a2308ca34decc5d5dc47b72951457deb53035d"
+      "handoff_map_descendant_head": "97a2308ca34decc5d5dc47b72951457deb53035d",
+      "run": 98
     }
   ],
   "secondary_derivatives_observations": [
@@ -32134,7 +32144,7 @@
       "model_eligible": false
     }
   ],
-  "latest_run_verified_at_utc": "2026-11-09T20:20:17Z",
+  "latest_run_verified_at_utc": "2026-11-09T20:21:30Z",
   "latest_run_snapshot": {
     "run_id": 98,
     "captured_at_utc": "2026-11-09T20:08:23Z",
@@ -32323,7 +32333,9 @@
         },
         "wheel": "SKIPPED_AFTER_TEST_FAILURE",
         "repair": "Update regression test to assert latest Run98 and preserve Run82 historical observation."
-      }
+      },
+      "repair_commit": "77fb404ff8b09db8d51a7d36e4da0335dc3c325d",
+      "repair_status": "COMMITTED_EXACT_HEAD_CI_PENDING"
     },
     "main_workflows": {
       "main_ci": {
@@ -32583,7 +32595,7 @@
       ]
     },
     "forecast_status": "NOT_ISSUED",
-    "next_action": "Fix the Run96 hard-coded latest-map test assertion on the same integration branch, then rerun the full repository suite, wheel smoke, dependency audit and fail-closed gate.",
+    "next_action": "Verify full repository suite, installed-wheel smoke, dependency audit and fail-closed gate on repair head 77fb404.",
     "prediction_engine": {
       "endpoints": 39,
       "scheduled_public_sources": 36,
@@ -32607,7 +32619,8 @@
       "trusted_evaluator_key": false,
       "forecast_status": "NOT_ISSUED"
     },
-    "handoff_map_descendant_head": "97a2308ca34decc5d5dc47b72951457deb53035d"
+    "handoff_map_descendant_head": "77fb404ff8b09db8d51a7d36e4da0335dc3c325d",
+    "run": 98
   },
   "endpoint_inventory_source_blob_sha": "281f5f0e748ab8683d6031e926ba37c6659d0fe1",
   "endpoint_inventory_verified_at_utc": "2026-11-09T18:01:15Z",

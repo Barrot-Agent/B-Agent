@@ -4091,3 +4091,9 @@ The full repository suite collected 1,308 tests and completed with **1,307 passe
 The wheel build/installed-wheel smoke was skipped because the full-suite step failed. The test is being corrected to assert Run98, retain Run82 as the legacy current observation, and verify 39 endpoints / 36 scheduled sources / one weekly CFTC raw-only source / two excluded XRPL nodes. The repair stays on the existing #1640 branch; no new PR or branch.
 
 Merge remains blocked. The corrected test must pass on a new exact head together with the full repository suite, installed-wheel smoke, six-manifest dependency audit and fail-closed gate.
+
+## Run 98 repair commit — 2026-11-09T20:21:30Z
+
+The first correction updated the regression assertion to Run98 but exposed a second schema mismatch: historical run_history entries use a `run` field, while the new snapshot originally carried only `run_id`. The Run98 history entry now carries `run: 98` while the latest snapshot retains `run_id: 98`; the legacy `current_run_observations` remains Run82 for historical compatibility.
+
+Repair commit: `77fb404ff8b09db8d51a7d36e4da0335dc3c325d`. The current map and handoff were advanced to this commit. Exact-head full-suite CI, installed-wheel verification, dependency audit and fail-closed gate are pending; no result from 97a2308 or its parent is being transferred to this head.
