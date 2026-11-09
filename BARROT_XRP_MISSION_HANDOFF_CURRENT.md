@@ -1,3 +1,116 @@
+## Run 91 — 2026-11-09T13:53:34Z — main/PR audit, exact-head verification and fresh XRP source reconciliation
+
+### Mission and integrated repository state
+
+- Current `main`: `d4d43be3427375cf79d190e768976de062e20287`. The recursive tree returned 1,404 entries with no truncation. The branch API reports `protected=true`.
+- Active integration branch: `integration/core-capabilities-mmi-structural-paper-20261104`, current pre-handoff head `c99a3b8fb31913d8423e63f6e9f4b3357c2610c6`, based directly on current main, 814 commits ahead and zero behind.
+- PR [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640) is open, non-draft and reported cleanly mergeable. It changes 206 paths, including 42 workflow files and 10 public web assets. It remains the single V3/XRP integration workstream; no branch or PR was created in this run.
+- The branch contains `barrot_agent/data/missions/primary_mission.json`: mission `xrp_intelligence_prediction_engine`, priority 1, active, with Barrot V3 explicitly preserved for execution, orchestration, safety and verification. `MissionRegistry` validates the priority, V3 invariants, safety guardrails, seven ordered workstreams and acceptance criteria. The manifest and registry are not on main yet.
+- The branch's public signal files remain fail-closed: `web/latest_signal.json` and `web/latest_signal_summary.json` say `NOT_ISSUED`; `web/signal_accuracy.json` says `NOT_EVALUATED`. The legacy sentiment observation is stale/descriptive only. The signal timestamp is older than this run and is not presented as a live forecast.
+
+### Exact-head verification on the pre-handoff code head
+
+Head `c99a3b8fb31913d8423e63f6e9f4b3357c2610c6` passed:
+
+- [Full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/42626536036): **1,299 passed, 8 subtests passed; 59.09% inclusive coverage** against a 53% floor.
+- Core suite: **677 passed, 8 subtests passed**.
+- Wheel build and installed-wheel verification passed, including packaged primary-mission assets and Barrot V3 imports.
+- [Six-manifest dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/42626536117): all manifests passed, no known vulnerabilities reported.
+- [Fail-closed merge gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/42626536042): passed and explicitly kept automatic merging disabled.
+
+The cache-quota warning was non-failing. These results are exact for the code head above. This Run 91 handoff-only commit changes the branch head; exact-head CI must run again on the resulting commit before the PR can be called verified.
+
+### Merge and authorization state
+
+- Review records: 62 total; states {"COMMENTED":62}. There are **zero APPROVED reviews**.
+- Inline review threads: 22 total; 22 resolved; 0 unresolved.
+- No independent approving review is present. The PR has no requested reviewer in the current metadata.
+- The main branch API confirms `protected=true`, but the branch-protection details endpoint returns HTTP 403 `Resource not accessible by integration`. The effective required-review and required-check configuration therefore cannot be independently verified.
+- The PR modifies public web assets. Main push `d4d43be` previously triggered successful [GitHub Pages deployment run 42526890275](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890275). The Pages deployment is an automatic public side effect of merging this PR; no specific deployment authorization is recorded.
+- **Decision: do not merge.** No check was bypassed and no merge was attempted.
+
+### Main-branch workflow health
+
+- Latest [Cross Analysis run 42629165001](https://github.com/Barrot-Agent/B-Agent/actions/runs/42629165001) succeeded on current main. Its XRP sentiment-shift detector reported recent (n=0) and prior (n=0). The corpus entity profile showed 286 XRP mentions and net sentiment +0.46; this is corpus-level descriptive sentiment, not a time-series price signal or forecast.
+- [Riemann Research Harvest run 42556313011](https://github.com/Barrot-Agent/B-Agent/actions/runs/42556313011) failed because the workflow installs only pytest while the shared test conftest imports `AppConfig`, which requires `pydantic-settings`. PR #1640 changes the workflow to install `pytest pydantic-settings`; that fix has passed the branch suite but has not run on main.
+- [Pillars Consistency Check run 42621970927](https://github.com/Barrot-Agent/B-Agent/actions/runs/42621970927) failed on external platform conditions: missing GitHub App credentials, Databricks HTTP 403 and the historical Hugging Face Space BUILD_ERROR. These require separately authorized provider setup; no secrets were rotated and no external system was modified.
+- [Hover Bike Updates run 42572261311](https://github.com/Barrot-Agent/B-Agent/actions/runs/42572261311) failed because its expected `hover_bike_revolution/hover_bike_spec.json` artifact was absent. This is an unrelated product workflow, not an XRP test failure.
+
+### Fresh XRP market cross-check — research-only, not model-admitted
+
+At approximately 13:53 UTC, Kraken's public XRP/USD ticker returned:
+
+- Last **$1.09150**; bid **$1.09154**; ask **$1.09178**; top spread approximately **2.2 bps**.
+- Rolling 24-hour volume **43.10 million XRP**, rolling 24-hour VWAP **$1.11391932**, 41,410 trades, high **$1.16358**, low **$1.07502**.
+- The response's `o=1.11203` is the UTC-day open, not the rolling 24-hour open. The 24-hour values are the second elements of the volume/VWAP/trade-count/high/low arrays. Do not calculate a rolling-24-hour return from `o`.
+- The endpoint response has no provider event timestamp. This web retrieval did not preserve raw HTTP bytes or create a SHA-256 receipt; retain it as descriptive cross-check only, not a feature-store observation.
+
+Sources: [Kraken public ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [Kraken public endpoint examples](https://support.kraken.com/articles/360000919986-public-endpoint-examples-you-can-try-them-directly-in-a-web-browser).
+
+Derivatives providers captured at different times on November 9 remain materially inconsistent:
+
+- Liqwall, 11:42 UTC: approximately **$1.23B** open interest, about **$36.2M** liquidations, **$35.2M** longs, funding **+0.0078% per 8h**.
+- TradRadar, 10:50 UTC: approximately **$1.69B** open interest, down **11.07%**, at least **$36.94M** liquidations including **$35.95M** longs, funding **+0.0059%**, long-account share **79.5%**.
+- Alpha Finance, 07:34 UTC: approximately **$2.51B** open interest, **$37.4M** long liquidations versus **$1.1M** short liquidations; displayed liquidation clusters are modeled from open interest, not verified individual executions.
+- Kraken Futures' venue-specific page around 13:20 UTC showed approximately **$13.1M** XRP open interest and **$36.9M** 24-hour volume. This single-venue contract series is not comparable to the multi-venue aggregates above.
+
+The multi-provider aggregate open-interest range differs by roughly 104% from low to high. Venue coverage and aggregation windows overlap and differ; do not average these series or call them independent confirmations. Long-side liquidation/deleveraging is the common descriptive observation. It does not establish the next price direction. No synchronized multi-venue order-book depth or executable-slippage observation was admitted.
+
+### CFTC and institutional capital evidence
+
+The current [CFTC Traders in Financial Futures, futures-only report](https://www.cftc.gov/dea/futures/financial_lf.htm) reports positions **as of November 3, 2026**:
+
+- CME XRP futures: open interest **7,216 contracts**, contract size 50,000 XRP.
+- Coinbase Nano XRP: open interest **32,505 contracts**, contract size 500 XRP.
+- Coinbase Nano XRP Perp Style: open interest **38,392 contracts**, contract size 500 XRP.
+
+These are lagged futures positions, not spot exchange flows, not cash investment and not proof of collateral use. A scheduled CFTC TFF adapter remains absent from main and is an explicit ingestion backlog item.
+
+The existing Run 90 Evernorth artifact was independently checked against the primary [SEC Form 424B-3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm) and [SEC EFFECT record](https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/xslEFFECTX01/primary_doc.xml):
+
+- The filing reports **$214.1M cash** and **261,919,096 XRP** relating to private-placement subscription agreements. It says the $214.1M cash proceeds were used to purchase **84,365,876 XRP**. It separately reports approximately **388,910,554 XRP contributed in kind at closing** and approximately **473M XRP held as of October 9**. The 261.919M figure is not reconciled to the 388.911M in-kind figure by an investor-level schedule in the cited disclosure; do not add them. The cash-funded purchase and in-kind contributions are distinct categories.
+- The filing reports a **$30M** 4.00% convertible senior PIK note issued October 12, with proceeds intended for general corporate purposes including possible XRP acquisition. No subsequent XRP purchase from those proceeds is established by the filing.
+- The **$9.7M** draw as of October 7 is under the Company's $10M Ripple intercompany facility, not a verified Evernorth draw. Evernorth's separate $1M facility was reported undrawn as of June 30.
+- The Cantor committed-equity facility covers up to **5,218,935 Pubco shares**, at a purchase price based on **97% of VWAP**, subject to conditions, company discretion, a 20% daily-volume cap and a 4.99% beneficial-ownership cap. The SEC EFFECT record is dated October 30. No Commencement Date, VWAP purchase notice, settled share issuance, cash drawdown or incremental XRP purchase was verified.
+- The **$521,893.50** upfront commitment fee was due within five business days after the effectiveness date (November 6); payment was not verified. The filing describes the fee as non-refundable subject to a later true-up, with an aggregate fee cap of $1M.
+- Apparent internal arithmetic inconsistency requiring issuer reconciliation: the $14.71 assumed-price row shows **$76.8M**, which is the 100%-of-price amount for 5,218,935 shares; the table footnote says purchase prices assume **97%** of the assumed trading price, which computes to approximately **$74.47M**. The narrative separately estimates **$74.4M net after fees and expenses**, approximately the discounted gross amount before separately stated costs. Do not treat $76.8M or $74.4M as realized proceeds or verified XRP purchases.
+
+This improves the actual-capital taxonomy: cash actually used to buy XRP, XRP contributed in kind, debt proceeds merely available/intended for XRP, undrawn or drawn intercompany facilities, and contingent equity-line capacity must remain separate. No current incremental Cantor-funded XRP demand is established.
+
+### PR inventory and classification
+
+The paginated open-PR inventory is **372 total: 356 drafts and 16 non-drafts**. No PR was closed.
+
+- **#1640 — BLOCKED integration PR:** 206 paths; exact-head checks passed before this handoff-only commit, but zero approving reviews, branch-protection requirements cannot be inspected, and a Pages deployment side effect lacks specific authorization.
+- **#1643 — UNIQUE/UNREVIEWED research archive:** 670 paths, **663 unique** relative to #1640 and seven overlapping; 906 commits ahead of current main and one behind, diverged from old merge base `9100dbac`; no exact-head CI. Preserve its unique research.
+- **#1653 — UNIQUE/UNREVIEWED knowledge graph:** seven paths, six unique and one shared CI path; 18 commits ahead and one behind current main, diverged from old merge base; all eight review threads remain unresolved. Preserve.
+- **#1642 — SUPERSEDED-CANDIDATE forecast subset:** all seven changed paths overlap #1640; retain until the successor is verified on main.
+- **#1644–#1650 — SUPERSEDED-CANDIDATE dependency/action subsets:** every changed path overlaps #1640. The integration branch includes checkout/upload/download action updates, pytest and types-requests updates, and newer legacy requirements (`databricks-sdk>=0.158.0`, `huggingface_hub>=2.4.0`). Retain until verified on main.
+- **#1317, #1318 and #1320 — SUPERSEDED-CANDIDATE structural/schema/paper-trader changes:** all changed paths overlap #1640. Preserve branch history until the integrated successor is on main.
+- **#1254 and #1255 — DUPLICATE-CANDIDATES:** their legacy dependency path is covered by newer versions in #1640; retain until main verification.
+- **#1269 — UNIQUE/UNREVIEWED mesh-topology work:** eight unique geometry/rendering paths and one shared CI path; preserve.
+- Draft **#1655** has three unique structural/source-catalog paths and five overlaps; preserve the unique material.
+- Draft **#1659** has four unique local llama.cpp/Termux paths and two overlaps; preserve the unique material.
+- The remaining drafts were not bulk-closed or treated as duplicates. The current classifications in this Run 91 handoff supersede the older backlog snapshot where they differ.
+
+### Nine-platform coordination and prediction gate
+
+Only this ChatGPT session's authenticated GitHub connector path is verified. Copilot activity is comment-only, not an approval. Persistent authenticated data flows for Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks are not verified. The Pillars failure is not evidence of successful platform authentication. No external model received repository data.
+
+**Forecast status: NOT_ISSUED.** The ingestion workflow and mission manifest are implemented on #1640, not main. The scheduled ingestion workflow has not run from main. Raw-source receipts and point-in-time features exist on the branch, but cross-run storage is still bounded by GitHub cache/artifact retention (90-day archive), without independent WORM anchoring. CFTC TFF, complete macro/event vintages, durable long-history synchronization, mature out-of-sample lift and shadow outcomes remain incomplete. No directional forecast, paper trade or real-money action is permitted.
+
+### Next concrete action
+
+1. Obtain an independent approving review and verify effective main branch-protection requirements.
+2. Obtain specific authorization for the automatic GitHub Pages deployment triggered by merging #1640.
+3. Run exact-head full CI, inclusive suite, dependency/security audit and fail-closed gate after this handoff commit. If all merge conditions are then satisfied, merge #1640 without bypassing controls; fetch main again, verify the merge commit and files, run main CI and inspect all automatic workflow side effects.
+4. Only after the successor is verified on main, close exact superseded source PRs with cross-references. Preserve #1643, #1653, #1269 and unique portions of #1655/#1659.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push, reset, clean, stash or destructive worktree operation occurred.
+
+
+---
+
 ## Run 89 — 2026-11-09T13:24:46Z — repeated market retrieval and Kraken UTC-day-open correction
 
 ### Repository and integration status
