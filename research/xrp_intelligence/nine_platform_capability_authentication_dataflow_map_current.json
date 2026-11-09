@@ -1,7 +1,7 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-09T05:09:01Z",
+  "captured_at_utc": "2026-11-09T05:18:42Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
   "observed_integration_head_before_map_commit": "4b3c048b8cea43bfe87846b6b05641963b397803",
@@ -200,13 +200,13 @@
           "Run 67: current-session GitHub connector read/write on existing mission branches only; no main write, secrets, deployment, external model transfer or financial action.",
           "Run 78: current-session GitHub connector read/write verified; no ChatGPT account-history ingestion, no external model transfer and no main write."
         ],
-        "last_verified_at_utc": "2026-11-09T05:09:01Z"
+        "last_verified_at_utc": "2026-11-09T05:18:42Z"
       },
       "limitations": [
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-09T05:09:01Z"
+      "last_verified_at_utc": "2026-11-09T05:18:42Z"
     },
     "Claude": {
       "intended_role": [
@@ -410,7 +410,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-09T05:09:01Z",
+    "last_reviewed_at_utc": "2026-11-09T05:18:42Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -537,7 +537,7 @@
   "current_run_observations": {
     "run_id": 78,
     "revision": "Run 78: current repository, PR and workflow audit; exact-head safety/test repairs; preserve Run 77 research evidence; correct current-vs-historical map separation.",
-    "captured_at_utc": "2026-11-09T05:09:01Z",
+    "captured_at_utc": "2026-11-09T05:18:42Z",
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "integration_head_before_handoff_commit": "4b3c048b8cea43bfe87846b6b05641963b397803",
@@ -602,8 +602,8 @@
       "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
       "pr_1640": {
         "head": "4b3c048b8cea43bfe87846b6b05641963b397803",
-        "commits": 777,
-        "ahead_by": 777,
+        "commits": 781,
+        "ahead_by": 781,
         "behind_by": 0,
         "changed_paths": 194,
         "mergeable": true,
@@ -787,7 +787,7 @@
         "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
         "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
       ],
-      "last_verified_at_utc": "2026-11-09T05:09:01Z",
+      "last_verified_at_utc": "2026-11-09T05:18:42Z",
       "outcome_resolution_implemented": true,
       "outcome_resolution_contract": "Immutable resolve_forecast outcome; predeclared timestamp tolerance; outcome venue/source IDs; explicit cross-venue normalization; Brier/log-loss scoring versus baseline; missing outcome recorded as unscorable.",
       "calibration_contract": {
@@ -1025,7 +1025,7 @@
       "repeated_fetch_interpretation": "No repeat request was performed in Run 77.",
       "derivative_access": "No fresh derivatives endpoint capture in Run 77. The latest preserved CFTC TFF snapshot remains positions as of 2026-11-03; the prior Coinbase perpetual-style page lacked provider event time. No current open interest, funding or liquidation data admitted.",
       "model_admission": false,
-      "rechecked_at_utc": "2026-11-09T05:09:01Z",
+      "rechecked_at_utc": "2026-11-09T05:18:42Z",
       "new_snapshot_collected": false,
       "status_note": "No new market snapshot was collected in Run 78. Run 77's raw response bodies and receipt hashes remain preserved in prior_run_observations; provider timestamps are stale (>300 seconds) or absent and cross-venue quotes are not normalized."
     },
@@ -1054,7 +1054,9 @@
         "threads_unresolved": 0,
         "github_actions_ci": "success on code/test parent; current map/test correction pending",
         "full_suite": "success on code/test parent; current map/test correction pending",
-        "external_provider_check_suites": "not all verified"
+        "external_provider_check_suites": "not all verified",
+        "ahead_by": 781,
+        "behind_by": 0
       },
       "pr_1643": {
         "head": "238f3ff4a69420882c77d225626a352ba19a412c",
@@ -1102,7 +1104,7 @@
       "repository_audit": "EXECUTED complete recursive trees, four paginated open-PR pages, PR metadata/changed paths/ancestry/overlaps/reviews/threads, workflow runs/logs, dependency audit and fail-closed gate.",
       "code_fixes": "EXECUTED on #1640: detect 'discard all uncommitted user changes'; correct last_verified_at_utc >= captured_at_utc chronology assertions.",
       "exact_ci": "VERIFIED on code/test head eb629348: 1,275 full-suite/8, 677 core/8, 59.08% coverage, wheel, six-manifest audit with zero known vulnerabilities, fail-closed gate.",
-      "current_map_correction": "EXECUTED: restore immutable historical Run 70 map and advance current map to Run 78; update Run 77 tests to read preserved prior snapshots.",
+      "current_map_correction": "EXECUTED: restore immutable historical Run 70 map and advance the separate current map to Run 78; Run 77 test migration to preserved prior snapshots is in progress, with exact-head CI pending.",
       "workflow_audit": "EXECUTED review of all 42 changed workflow files; no workflow dispatched.",
       "research_update": "EXECUTED reconciliation from existing source artifacts; no new market snapshot admitted and no forecast issued.",
       "main_write": false,
@@ -1308,9 +1310,9 @@
       "secondary_context_summaries_not_hash_receipted": 1,
       "regression_tests": 6
     },
-    "last_verified_at_utc": "2026-11-09T05:09:01Z",
+    "last_verified_at_utc": "2026-11-09T05:18:42Z",
     "backlog_classification": {
-      "#1640": "READY on code/test head eb629348: 1,275 full-suite passes/8, 677 core passes/8, 59.08% coverage against 53%, installed-wheel verification, six-manifest dependency audit with zero known vulnerabilities and fail-closed gate. BLOCKED for merge by zero approvals, inaccessible branch-protection requirements and unapproved Pages publication.",
+      "#1640": "READY on code/test head eb629348: 1,275 full-suite passes/8, 677 core passes/8, 59.08% coverage, installed-wheel verification, six-manifest dependency audit with zero known vulnerabilities and fail-closed gate. At the Run 78 map parent it is 781 commits ahead, zero behind, 194 changed paths. BLOCKED for merge by zero approvals, inaccessible branch-protection requirements and unapproved Pages publication.",
       "#1643": "UNIQUE/UNREVIEWED research archive: 906 commits ahead, one behind main, 670 changed paths, 663 unique vs #1640 and seven shared. No exact-head CI on current head 238f3ff. Preserve; do not merge wholesale or close.",
       "#1653": "UNIQUE repository knowledge graph: exact current-head CI passed 730 full-suite/8 and 497 core/8; fail-closed gate passed. Eight unresolved review threads; no approval or dependency-audit evidence.",
       "#1644-#1650": "Dependency/action updates represented in #1640; retain until successor is merged and verified on main.",
@@ -2134,7 +2136,7 @@
     },
     "current_handoff_map_test_commit": {
       "parent_head": "4b3c048b8cea43bfe87846b6b05641963b397803",
-      "status": "pending exact-head CI after Run 78 current-map update"
+      "status": "pending exact-head CI after Run 78 current-map and historical-test correction"
     },
     "research_updates": {
       "latest_market_artifact": "research/xrp_intelligence/20261109T010332Z-xrp-market-derivatives-etf-regulatory-reconciliation.json",
@@ -24203,7 +24205,7 @@
       }
     }
   ],
-  "last_verified_at_utc": "2026-11-09T05:09:01Z",
+  "last_verified_at_utc": "2026-11-09T05:18:42Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -24238,8 +24240,8 @@
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "pr_1640": {
       "head": "4b3c048b8cea43bfe87846b6b05641963b397803",
-      "commits": 777,
-      "ahead_by": 777,
+      "commits": 781,
+      "ahead_by": 781,
       "behind_by": 0,
       "changed_paths": 194,
       "mergeable": true,
@@ -24727,7 +24729,9 @@
       "threads_unresolved": 0,
       "github_actions_ci": "success on code/test parent; current map/test correction pending",
       "full_suite": "success on code/test parent; current map/test correction pending",
-      "external_provider_check_suites": "not all verified"
+      "external_provider_check_suites": "not all verified",
+      "ahead_by": 781,
+      "behind_by": 0
     },
     "pr_1643": {
       "head": "238f3ff4a69420882c77d225626a352ba19a412c",
@@ -24792,7 +24796,7 @@
     }
   },
   "backlog_classification": {
-    "#1640": "READY on code/test head eb629348: 1,275 full-suite passes/8, 677 core passes/8, 59.08% coverage against 53%, installed-wheel verification, six-manifest dependency audit with zero known vulnerabilities and fail-closed gate. BLOCKED for merge by zero approvals, inaccessible branch-protection requirements and unapproved Pages publication.",
+    "#1640": "READY on code/test head eb629348: 1,275 full-suite passes/8, 677 core passes/8, 59.08% coverage, installed-wheel verification, six-manifest dependency audit with zero known vulnerabilities and fail-closed gate. At the Run 78 map parent it is 781 commits ahead, zero behind, 194 changed paths. BLOCKED for merge by zero approvals, inaccessible branch-protection requirements and unapproved Pages publication.",
     "#1643": "UNIQUE/UNREVIEWED research archive: 906 commits ahead, one behind main, 670 changed paths, 663 unique vs #1640 and seven shared. No exact-head CI on current head 238f3ff. Preserve; do not merge wholesale or close.",
     "#1653": "UNIQUE repository knowledge graph: exact current-head CI passed 730 full-suite/8 and 497 core/8; fail-closed gate passed. Eight unresolved review threads; no approval or dependency-audit evidence.",
     "#1644-#1650": "Dependency/action updates represented in #1640; retain until successor is merged and verified on main.",
@@ -24802,7 +24806,7 @@
     "#1269": "Unique mesh/topology work; preserve.",
     "356 drafts": "Unreviewed; counted but not individually adjudicated. No bulk closure."
   },
-  "last_run_status": "Run 78: restored the immutable historical Run 70 map, preserved Run 77 snapshots, and advanced the current map to Run 78. The #1640 code/test head eb629348 passed 1,275 full-suite/8, 677 core/8, 59.08% coverage, wheel verification, six-manifest audit and fail-closed gate. A later documentation head exposed four stale current-vs-historical map tests; corrections are committed and exact-head CI is pending. No merge or external action.",
+  "last_run_status": "Run 78: immutable historical Run 70 map restored; Run 77 snapshots preserved in prior history; current map advanced to Run 78. The verified code/test head eb629348 passed 1,275 full-suite/8, 677 core/8, 59.08% coverage, wheel verification, six-manifest dependency audit and fail-closed gate. One remaining stale Run 77 exact-head assertion was identified in the current-map test and is being corrected. No merge or external action.",
   "integration_head_before_map_commit": "4b3c048b8cea43bfe87846b6b05641963b397803",
   "research_updates": {
     "latest_head": "40a253eca0121f712380c2fa281768273455309e",
