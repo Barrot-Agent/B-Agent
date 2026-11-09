@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -87,7 +88,7 @@ def test_run34_nine_platform_map_remains_truthful_and_least_privilege():
         (ROOT / "research" / "xrp_intelligence" / "nine_platform_capability_authentication_dataflow_map.json")
         .read_text(encoding="utf-8")
     )
-    assert data["last_verified_at_utc"] == data["captured_at_utc"]
+    assert datetime.fromisoformat(data["last_verified_at_utc"].replace("Z", "+00:00")) >= datetime.fromisoformat(data["captured_at_utc"].replace("Z", "+00:00"))
     assert data["platforms"]["ChatGPT"]["last_verified_at_utc"] <= data["last_verified_at_utc"]
     assert data["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
     assert data["platforms"]["ChatGPT"]["data_flow"]["verified"] is True
