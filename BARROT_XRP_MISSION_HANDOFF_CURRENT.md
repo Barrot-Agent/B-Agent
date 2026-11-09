@@ -956,3 +956,21 @@ This is an aggregator cross-check, not independent executable depth. It is stale
 On head `cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2`, the full suite recorded **1,220 passed, 1 failed, 8 subtests passed**, with 58.98% inclusive coverage. The only failure was in the newly added Run 73 regression test: it expected `wheel_verification == "skipped"`, while the map correctly recorded `"skipped after full-suite failure"`. Core tests passed (660 plus 8 subtests), the six-manifest dependency audit passed, and the fail-closed gate passed; wheel verification was skipped because the suite had one test failure. The assertion is being corrected to the exact recorded state. This is a test-only correction; no product code or evidence is being weakened. Exact-head full-suite and wheel verification on the corrective commit remain pending.
 
 The mission remains priority one; no directional forecast is issued.
+
+
+---
+
+## Run 73 CI correction 2 — current-map timestamp assertion
+
+On exact head `5b09c4ac686e6a4b9166b383b4c261a61e511462`:
+
+- Full repository suite: **1,221 passed, 1 failed, 8 subtests passed**.
+- Core suite: 660 passed, 8 subtests.
+- Inclusive coverage: 58.98%.
+- Six-manifest dependency audit: passed, no known vulnerabilities.
+- Fail-closed gate: passed, automatic merge disabled.
+- Installed-wheel verification: skipped after the one full-suite failure.
+
+The sole failure was the new Run 73 map regression test hard-coding the earlier `00:10:13Z` capture time after the current snapshot was correctly advanced to `00:17:21Z`. The historical map remains intact; the failure is in the new test's timestamp expectation. The correction replaces the fixed timestamp with equality checks across the current map's `captured_at_utc`, `last_verified_at_utc` and `current_run_observations.captured_at_utc`, and updates the recorded pre-update integration head. This preserves the test's intent and does not weaken historical assertions.
+
+The earlier #1640 code/test head `b663f7b` remains the last fully green wheel-verified code head (1,215 passed, 8 subtests; 660 core; 58.98% coverage; six-manifest audit; fail-closed gate). Exact-head full-suite and wheel verification on the next corrective commit remain pending.

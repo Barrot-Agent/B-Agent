@@ -14,12 +14,13 @@ def test_run73_current_snapshot_preserves_historical_map():
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
     observation = current["current_run_observations"]
 
-    assert current["captured_at_utc"] == "2026-11-09T00:10:13Z"
+    assert current["captured_at_utc"] == current["last_verified_at_utc"]
     assert current["last_verified_at_utc"] == current["captured_at_utc"]
     assert observation["run_id"] == 73
     assert observation["captured_at_utc"] == current["captured_at_utc"]
+    assert current["captured_at_utc"].startswith("2026-11-09T")
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "26a69a359eec58e3dcc74d85cdd2ec9958711bae"
+    assert observation["integration_head_before_handoff_commit"] == "5b09c4ac686e6a4b9166b383b4c261a61e511462"
     assert observation["research_head"] == "92b66e11844313b1316429bc3b5678915af68565"
 
     assert historical["captured_at_utc"] == "2026-11-08T22:30:23Z"
