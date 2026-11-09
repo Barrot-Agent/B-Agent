@@ -1056,7 +1056,7 @@ def test_xrp_insights_etf_aggregator_is_captured_raw_only_and_never_promoted_to_
     assert records == []
     assert source_as_of is None
     assert eligible is False
-    assert "raw_only" in reason
+    assert "hash_only" in reason
     assert "primary_receipts" in reason
 
     invalid = dict(payload)
@@ -1205,8 +1205,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 35
-    assert len(SCHEDULED_ENDPOINTS) == 33
+    assert len(ENDPOINTS) == 38
+    assert len(SCHEDULED_ENDPOINTS) == 36
     assert records == []
     assert source_as_of is None
     assert eligible is False

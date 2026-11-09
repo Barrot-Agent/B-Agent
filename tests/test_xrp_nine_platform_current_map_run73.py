@@ -23,12 +23,22 @@ def load_run77_snapshot():
     )
 
 
-def test_run77_current_snapshot_preserves_run76_and_historical_map():
+def load_run78_snapshot():
+    return next(
+        item
+        for item in load_current()["prior_run_observations"]
+        if item.get("run_id") == 78
+        and item.get("captured_at_utc") == "2026-11-09T05:18:42Z"
+    )
+
+
+def test_run80_current_snapshot_preserves_run78_run77_and_historical_map():
     current = load_current()
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
     observation = current["current_run_observations"]
     prior77 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 77 and item.get("captured_at_utc") == "2026-11-09T02:01:02Z")
     prior77_addendum = load_run77_snapshot()
+    prior78 = load_run78_snapshot()
     prior76 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 76)
     prior75 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 75)
     prior73 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 73)
@@ -36,11 +46,13 @@ def test_run77_current_snapshot_preserves_run76_and_historical_map():
     assert current["captured_at_utc"] == current["last_verified_at_utc"]
     assert observation["captured_at_utc"] == current["captured_at_utc"]
     assert observation["last_verified_at_utc"] == current["last_verified_at_utc"]
-    assert observation["run_id"] == 78
-    assert observation["captured_at_utc"] >= prior77_addendum["captured_at_utc"]
+    assert observation["run_id"] == 80
+    assert observation["captured_at_utc"] >= prior78["captured_at_utc"]
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "4b3c048b8cea43bfe87846b6b05641963b397803"
+    assert observation["integration_head_before_handoff_commit"] == "7284e3b52314d05b6bc86ae18a05e143d8c35e9f"
     assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
+    assert prior78["prediction_engine"]["endpoints"] == 35
+    assert prior78["prediction_engine"]["scheduled_public_sources"] == 33
     assert prior77["integration_head_before_handoff_commit"] == "e31a951939bcdd638f190d9d2ff8c5faae9b2091"
     assert prior77_addendum["integration_head_before_handoff_commit"] == "f92aafdc25fce42c60c04d70b8e6cca47969cfdf"
     assert prior76["captured_at_utc"] == "2026-11-09T01:50:00Z"
@@ -272,25 +284,26 @@ def test_run77_kamilah_channel_identity_gate_keeps_video_inventory_unverified():
     assert any(x.get("transcript_self_identification") == "Camila Stevenson" for x in data["candidate_videos"])
     assert "Do not inventory" in data["status"]
 
-def test_run78_current_snapshot_records_latest_repository_and_safe_status():
+def test_run80_current_snapshot_records_latest_repository_and_safe_status():
     data = load_current()
     observation = data["current_run_observations"]
     assert data["captured_at_utc"] == data["last_verified_at_utc"]
     assert observation["captured_at_utc"] == data["captured_at_utc"]
     assert observation["last_verified_at_utc"] == data["last_verified_at_utc"]
-    assert observation["run_id"] == 78
+    assert observation["run_id"] == 80
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "4b3c048b8cea43bfe87846b6b05641963b397803"
+    assert observation["integration_head_before_handoff_commit"] == "7284e3b52314d05b6bc86ae18a05e143d8c35e9f"
     assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
     assert observation["open_pr_inventory"]["total"] == 372
     assert observation["open_pr_inventory"]["drafts"] == 356
-    assert observation["branch_ancestry"]["pr_1640"]["ahead_by"] == 781
+    assert observation["branch_ancestry"]["pr_1640"]["ahead_by"] == 788
     assert observation["branch_ancestry"]["pr_1643"]["behind_by"] == 1
     assert observation["branch_ancestry"]["shared_path_count"] == 7
     assert observation["workflow_safety_audit"]["integration_changed_workflow_files"] == 42
-    assert observation["ci_evidence"]["integration"]["verified_code_test_head"] == "eb629348c4af5b3d4ef71ed3f019db69ffa96795"
-    assert observation["ci_evidence"]["integration"]["full_suite"]["passed"] == 1275
-    assert observation["ci_evidence"]["integration"]["documentation_head_before_correction"]["full_suite"]["failed_tests"] == 4
+    assert observation["ci_evidence"]["integration"]["verified_code_test_head"] == "9e437f5c806070f2dfbfb70a7394a250d5c257c4"
+    assert observation["ci_evidence"]["integration"]["full_suite"]["passed"] == 1276
+    assert observation["ci_evidence"]["integration"]["current_head_failure"]["run_id"] == 42572144014
+    assert observation["ci_evidence"]["integration"]["current_head_failure"]["failed_tests"] == 10
     assert observation["reviews"]["pr_1640"]["approving_reviews"] == 0
     assert observation["merge_state"]["branch_protection_status"] == "UNVERIFIED_HTTP_403"
     assert observation["merge_state"]["pages_deployment_authorized"] is False
@@ -299,7 +312,7 @@ def test_run78_current_snapshot_records_latest_repository_and_safe_status():
     assert observation["external_actions"]["deployment"] is False
     assert observation["external_actions"]["manual_deployment"] is False
     assert observation["forecast_status"] == "NOT_ISSUED"
-    assert observation["prediction_engine"]["endpoints"] == 35
-    assert observation["prediction_engine"]["scheduled_public_sources"] == 33
+    assert observation["prediction_engine"]["endpoints"] == 38
+    assert observation["prediction_engine"]["scheduled_public_sources"] == 36
     assert observation["prediction_engine"]["oos_lift"] is False
 

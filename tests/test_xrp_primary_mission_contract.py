@@ -17,10 +17,10 @@ def test_feature_store_contract_endpoint_counts_match_registry() -> None:
     contract = (ROOT / "research" / "xrp_intelligence" / "feature-store-contract.md").read_text(
         encoding="utf-8"
     )
-    assert len(ENDPOINTS) == 35
-    assert len(SCHEDULED_ENDPOINTS) == 33
-    assert "35 public endpoint records, of which 33 are scheduled" in contract
-    assert "35 public endpoint records, of which 33 are scheduled" in contract
+    assert len(ENDPOINTS) == 38
+    assert len(SCHEDULED_ENDPOINTS) == 36
+    assert "38 public endpoint records, of which 36 are scheduled" in contract
+    assert "38 public endpoint records, of which 36 are scheduled" in contract
 
 
 def test_exchange_wallet_balance_source_is_scheduled_digest_only() -> None:
