@@ -1251,7 +1251,7 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 39
+    assert len(ENDPOINTS) == 40
     assert len(SCHEDULED_ENDPOINTS) == 36
     assert records == []
     assert source_as_of is None
