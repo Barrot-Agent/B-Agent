@@ -62,7 +62,7 @@
       "period": "2026-09-17",
       "excerpt_type": "verbatim_excerpt",
       "excerpt": "issued and sold to Binance 1,237,011 shares at a purchase price of $80.84 per share, for aggregate proceeds of $100 million",
-      "sha256": "9682e077cb21e35b3df92947b1929d27285428aa2aeea9301d9d6f907f9cc158"
+      "sha256": "79cfa8ca5c3438bd9062b0149b97c75f64102c6ab7349e53e0619cde876af7b0"
     },
     {
       "id": "circle_binance_monthly_incentive_fee",
@@ -492,6 +492,14 @@
     "transfer_method": "Copied from the exact source-branch blob through the authenticated GitHub file reader; original evidence values and source receipts preserved.",
     "raw_http_bytes_captured": false,
     "model_eligible": false,
-    "forecast_status": "NOT_ISSUED"
+    "forecast_status": "NOT_ISSUED",
+    "source_receipt_hash_corrections": [
+      {
+        "receipt_id": "circle_binance_equity",
+        "original_source_blob_sha256": "9682e077cb21e35b3df92947b1929d27285428aa2aeea9301d9d6f907f9cc158",
+        "corrected_excerpt_sha256": "79cfa8ca5c3438bd9062b0149b97c75f64102c6ab7349e53e0619cde876af7b0",
+        "correction_reason": "The source artifact's stored SHA-256 did not match the exact UTF-8 excerpt bytes. The corrected digest was independently recomputed; the original source artifact blob remains preserved on PR #1643."
+      }
+    ]
   }
 }
