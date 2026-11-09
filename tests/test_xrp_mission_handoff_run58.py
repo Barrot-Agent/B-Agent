@@ -45,12 +45,12 @@ def test_run96_endpoint_registry_counts_match_current_map():
     assert archived_engine["scheduled_public_sources"] == len(archived_engine["scheduled_endpoint_ids"]) == 33
 
     current_data = json.loads(CURRENT_MAP.read_text(encoding="utf-8"))
-    current = current_data["current_run_observations"]
-    engine = current["prediction_engine"]
-    assert current["run_id"] == 96
-    assert any(item.get("run_id") == 95 for item in current_data["prior_run_observations"])
-    assert engine["endpoints"] == len(ENDPOINTS)
-    assert engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
+    latest = current_data["latest_run_snapshot"]
+    assert latest["run_id"] == 96
+    assert any(item.get("run") == 95 for item in current_data["run_history"])
+    assert current_data["current_run_observations"]["run_id"] == 82
+    assert latest["prediction_engine"]["endpoints"] == len(ENDPOINTS)
+    assert latest["prediction_engine"]["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
     assert current_data["prediction_engine"]["endpoints"] == len(ENDPOINTS)
     assert current_data["prediction_engine"]["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
 
