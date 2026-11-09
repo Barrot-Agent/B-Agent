@@ -31,9 +31,10 @@ def test_run58_handoff_binds_exact_repository_heads_and_ci():
     assert "No merge was performed" in handoff
 
 
-def test_run98_endpoint_registry_counts_match_current_map():
+def test_run103_endpoint_registry_counts_match_current_map():
     assert len(ENDPOINTS) == 40
     assert len(SCHEDULED_ENDPOINTS) == 36
+    assert len(WEEKLY_ENDPOINTS) == 2
     assert len({source_id for source_id, _ in ENDPOINTS}) == 40
 
     historical = json.loads(HISTORICAL_MAP.read_text(encoding="utf-8"))
@@ -46,22 +47,40 @@ def test_run98_endpoint_registry_counts_match_current_map():
 
     current_data = json.loads(CURRENT_MAP.read_text(encoding="utf-8"))
     latest = current_data["latest_run_snapshot"]
-    assert latest["run_id"] == 98
+    assert latest["run_id"] == 103
     assert latest["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert latest["integration_code_test_head"] == "1a3861f5144b499be3115f14abda2affc0b024cc"
+    assert latest["integration_code_test_head"] == "0cced5af3b673b5d39e45cfc18c53416e1ed394a"
     assert any(item.get("run") == 95 for item in current_data["run_history"])
     assert any(item.get("run") == 96 for item in current_data["run_history"])
     assert any(item.get("run") == 98 for item in current_data["run_history"])
+    assert any(item.get("run") == 103 for item in current_data["run_history"])
     assert current_data["current_run_observations"]["run_id"] == 82
-    assert latest["prediction_engine"]["endpoints"] == 39
-    assert latest["prediction_engine"]["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
-    assert latest["prediction_engine"]["weekly_sources"] == 1
-    assert latest["prediction_engine"]["excluded_xrpl_node_sources"] == 2
+
+    engine = latest["prediction_engine"]
+    assert engine["endpoints"] == len(ENDPOINTS) == 40
+    assert engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS) == 36
+    assert engine["weekly_sources"] == len(WEEKLY_ENDPOINTS) == 2
+    assert engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
+    assert engine["excluded_xrpl_node_sources"] == 2
     assert latest["forecast_status"] == "NOT_ISSUED"
-    assert latest["ci_evidence"]["full_suite"]["passed"] == 1308
+    assert latest["ci_evidence"]["full_suite"]["passed"] == 1316
     assert latest["ci_evidence"]["full_suite"]["failed"] == 0
-    assert current_data["prediction_engine"]["endpoints"] == 39
-    assert current_data["prediction_engine"]["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
+    assert latest["ci_evidence"]["full_suite"]["subtests"] == 8
+    assert latest["ci_evidence"]["full_suite"]["coverage_pct"] == 59.36
+    assert latest["cftc_contract_universe"]["dropped_contract"]["code"] == "176LM2"
+    assert latest["cftc_contract_universe"]["threshold_hypothesis"]["assessment"] == "PLAUSIBLE_UNCONFIRMED"
+    assert round(latest["cftc_contract_universe"]["comparable_change_pct"], 2) == -12.94
+    assert latest["reviews"]["pr_1640"]["approved"] == 0
+    assert latest["reviews"]["pr_1640"]["threads_unresolved"] == 0
+    assert latest["merge_state"]["pages_deployment_authorized"] is False
+
+    current_engine = current_data["prediction_engine"]
+    assert current_engine["endpoints"] == 40
+    assert current_engine["endpoint_ids"] == [source_id for source_id, _ in ENDPOINTS]
+    assert current_engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
+    assert current_engine["weekly_sources"] == len(WEEKLY_ENDPOINTS)
+    assert current_engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
+    assert current_engine["endpoint_inventory_source_blob_sha"] == "f5fc3c4a45aaf826241e32faf00443e98bfa341a"
 
 
 def test_run58_merge_gate_remains_blocked_without_approvals_or_deployment_authority():

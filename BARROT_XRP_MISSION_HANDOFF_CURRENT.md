@@ -4453,3 +4453,56 @@ Exact-head evidence: [CI 42692318967](https://github.com/Barrot-Agent/B-Agent/ac
 The current handoff/map update is a documentation-only descendant of `6eaadf4`; its own exact-head checks are pending. The code/test head above is verified. No test result is transferred to a different SHA.
 
 PR #1640 remains open and cleanly mergeable at the verified code/test head, 836 commits ahead and zero behind, 212 changed paths. It remains blocked by zero independent approvals, inaccessible effective branch-protection rules (HTTP 403), and missing authorization for the automatic GitHub Pages publication side effect.
+---
+
+## Run 103 — 2026-11-09: exact-head verification, CFTC contract-universe and endpoint correction
+
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+Main SHA: d4d43be3427375cf79d190e768976de062e20287. Integration code/test head inspected and verified: 0cced5af3b673b5d39e45cfc18c53416e1ed394a. PR #1640 is open, non-draft, 859 ahead / zero behind, 218 changed paths, and GitHub reports it cleanly mergeable.
+
+Exact-head evidence on 0cced5: full repository suite 1,316 passed, zero failed, eight subtests, 59.36% inclusive coverage; core suite 677 passed, eight subtests; wheel and installed-wheel verification passed; six dependency manifests passed with zero known vulnerabilities; fail-closed gate passed and automatic merging remained disabled. Runs: 42719594970, 42719595379 and 42719594943.
+
+The handoff/map/test-regression descendant created by this update has not yet completed its own exact-head CI. The parent-head results are not being represented as descendant verification.
+
+### CFTC contract universe
+
+The November 3 CFTC TFF futures-only report lists CME XRP 7,216 × 50,000 XRP, Coinbase Nano XRP 32,505 × 500, and Coinbase Nano XRP Perp Style 38,392 × 500: 396.2485 million XRP-equivalent across the three continuing contracts.
+
+The October 27 report also listed Coinbase standard XRP contract 176LM2: 28,246 × 10,000 XRP = 282.46 million XRP-equivalent, with 20 total traders. The CFTC weekly status index lists 176LM2 as dropped from reporting for the November 3 week.
+
+The CFTC FAQ says a contract may disappear when reportable Large Traders fall below 20. The prior 20-trader observation is at the threshold; the threshold explanation is plausible but unconfirmed because the current-week count is unavailable and the status index gives no reason. Do not infer delisting or zero open interest.
+
+Comparable continuing-contract XRP-equivalent open interest fell from 455.163 million to 396.2485 million, or 12.94%. Including the dropped 176LM2 in the prior universe would produce an apparent 46.28% decline, but that comparison mixes reporting universes. These are contract units, not USD notional, cash capital, spot holdings, collateral or directional net exposure.
+
+The current integration code already handles the CFTC contract-status index, optional 176LM2, dropped-versus-zero state, dot changes as null and total-trader counts. The Run102 parser-gap note is superseded by code and tests on the verified integration head. CFTC sources remain raw-only and not model-admitted.
+
+### Endpoint inventory correction
+
+The actual registry contains 40 endpoint records: 36 scheduled hourly public sources, two weekly CFTC sources (contract-status index and TFF report), and two non-commercial XRPL node endpoints excluded by default. The previous map's 39 total / 36 hourly / one weekly count was stale. The current map and regression test are corrected.
+
+### Market and derivatives
+
+Kraken XRP/USD returned $1.09921 with bid $1.09899 / ask $1.09900, 32.34M XRP 24-hour volume, $1.09951735 VWAP, $1.13139 high and $1.07502 low; event time absent. OKX XRP-USDT returned 1.1024 at 23:12:27.269 UTC; Kraken USDT/USD returned 0.99876 without event time. Indicative normalized OKX is $1.10103, about 0.166% above Kraken's displayed last. These are asynchronous and not an arbitrage signal.
+
+Liquidation estimates conflict by time window and collection: BeInCrypto/CoinGlass about $39M longs versus $366K shorts for Nov. 8; Edge or Not's live Binance/Bybit page at 23:30 UTC $4.7M total, $4.3M longs and $359K shorts, with a lower-bound warning; an earlier 19:00 UTC Edge or Not rolling-window snapshot showed $23.8M; Liqwall's search snippet was contradicted by a stale Nov. 3 opened page and is excluded; CoinDesk reports XRP OI down 9.2% against a 6.5% price decline in its 24-hour window. Scope and provider overlap prevent averaging. Deleveraging and broad risk-off are competing hypotheses, not a forecast.
+
+### Regulation, institutional rails and macro
+
+Reuters reports a U.S. perpetual-futures classification dispute involving CME's challenge to the CFTC crypto-perps approval and a Cboe/Citadel challenge to single-stock perps. Margin, capital, reporting, counterparty and 24/7 liquidity are central issues. This is derivatives-market structure, not an XRP-specific enforcement action.
+
+Reuters reports a limited PNC/Coinbase pilot allowing eligible corporate/institutional clients to receive Circle USDC and automatically convert it to USD. This is a competing dollar rail, not an XRP corridor. BLS scheduled October 2026 CPI for November 10 at 08:30 ET / 13:30 UTC.
+
+No new primary SBIC/ChatGPT identity match, ASK Coin resolution, standardized actual-capital metric or Kamilah Stevenson personal-channel upload passed verification. Only the ChatGPT GitHub connector is authenticated; Copilot activity is comment-only; no external-model exchange occurred.
+
+### Merge, backlog and forecast
+
+PR #1640 has 62 COMMENTED reviews, zero APPROVED reviews, and 22/22 resolved inline threads. Branch-protection details return HTTP 403; visible fallback ruleset is disabled. GitHub Pages is enabled and a prior push to main triggered publication; explicit authorization for the next automatic public publication is absent. No merge or external workflow dispatch occurred.
+
+Backlog: #1643 unique research (663 unique paths, seven shared) preserve; #1653 unique graph (six unique paths, one shared, eight unresolved threads) preserve and repair; #1642 seven-path superseded candidate; #1644–#1650 all changed paths overlap #1640; #1317/#1318/#1320 structural/schema overlap candidates; #1254/#1255 dependency reconciliation; #1269 eight unique mesh paths; #1655 three unique paths; #1659 four unique paths. No PRs closed.
+
+Forecast status remains NOT_ISSUED. Synchronized history, measured out-of-sample lift, real-data calibration, shadow outcomes and independent WORM anchoring remain insufficient. Web-rendered observations were not preserved as raw HTTP bytes, no SHA-256 receipts were created, and none were model-admitted.
+
+Sources: https://www.cftc.gov/dea/futures/financial_lf.htm ; https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf102726.htm ; https://www.cftc.gov/es/node/128971 ; https://beincrypto.com/xrp-price-risk-40-million-liquidation-november-2026/ ; https://edgeornot.com/liquidations/xrp ; https://liqwall.com/ru/coins/xrp ; https://www.coindesk.com/markets/2026/11/09/tech-selloff-weighs-on-crypto-majors ; https://www.reuters.com/legal/government/trump-administrations-embrace-perp-futures-sets-off-risk-alarms-wall-street-2026-11-09/ ; https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/ ; https://www.bls.gov/schedule/news_release/cpi.htm .
+
+Detailed CFTC calculations and market data are embedded in the current capability map's Run103 snapshot. Next: exact-head CI on this descendant; independent approval; effective branch-protection visibility; Pages publication authorization; then conditional merge and post-merge main verification.
