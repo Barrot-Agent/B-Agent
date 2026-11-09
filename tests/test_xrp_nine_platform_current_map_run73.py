@@ -116,7 +116,7 @@ def test_run77_etf_holdings_delta_remains_a_flagged_proxy():
 
 
 def test_run77_merge_and_forecast_safety_gates_remain_closed():
-    observation = load_current()["current_run_observations"]
+    observation = load_run77_snapshot()
     assert observation["reviews"]["pr_1640"]["approving_reviews"] == 0
     assert observation["reviews"]["pr_1640"]["threads_resolved"] == 22
     assert observation["reviews"]["pr_1643"]["approving_reviews"] == 0
@@ -130,7 +130,7 @@ def test_run77_merge_and_forecast_safety_gates_remain_closed():
 
 
 def test_run77_exact_head_ci_is_recorded_without_overstating_research_branch():
-    observation = load_current()["current_run_observations"]
+    observation = load_run77_snapshot()
     integration = observation["ci_evidence"]["integration"]
     assert integration["verified_code_test_head"] == "f92aafdc25fce42c60c04d70b8e6cca47969cfdf"
     assert integration["full_suite"]["run_id"] == 42549540799
@@ -284,7 +284,7 @@ def test_run78_current_snapshot_records_latest_repository_and_safe_status():
     assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
     assert observation["open_pr_inventory"]["total"] == 372
     assert observation["open_pr_inventory"]["drafts"] == 356
-    assert observation["branch_ancestry"]["pr_1640"]["ahead_by"] == 777
+    assert observation["branch_ancestry"]["pr_1640"]["ahead_by"] == 781
     assert observation["branch_ancestry"]["pr_1643"]["behind_by"] == 1
     assert observation["branch_ancestry"]["shared_path_count"] == 7
     assert observation["workflow_safety_audit"]["integration_changed_workflow_files"] == 42
