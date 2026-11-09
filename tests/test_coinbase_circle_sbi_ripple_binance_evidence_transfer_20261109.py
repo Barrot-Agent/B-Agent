@@ -20,8 +20,8 @@ def load_artifact() -> dict:
 def test_all_coinbase_circle_relationship_receipts_are_reproducible() -> None:
     artifact = load_artifact()
     receipts = artifact["source_receipts"]
-    assert len(receipts) == 27
-    assert len({receipt["id"] for receipt in receipts}) == 27
+    assert len(receipts) == 29
+    assert len({receipt["id"] for receipt in receipts}) == 29
     for receipt in artifact["source_receipts"]:
         assert len(receipt["excerpt"].split()) <= 25
         assert hashlib.sha256(receipt["excerpt"].encode("utf-8")).hexdigest() == receipt["sha256"]
@@ -121,7 +121,7 @@ def test_circle_arc_is_an_alternative_usdc_rail_not_xrpl_or_xrp() -> None:
 
 def test_related_party_financial_disclosures_do_not_establish_xrp_net_demand() -> None:
     caveats = load_artifact()["source_independence_and_disagreement"]
-    assert "not independent third-party verification of XRP market demand" in caveats["related_party_limit"]
+    assert "do not constitute independent verification of XRP market demand" in caveats["related_party_limit"]
     assert "does not disclose amount" in caveats["coinbase_disclosure_limit"]
     assert "no significant operating results to date" in caveats["circle_sbi_limit"]
 
