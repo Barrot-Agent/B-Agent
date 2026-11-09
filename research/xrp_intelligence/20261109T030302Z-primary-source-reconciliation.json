@@ -3,14 +3,17 @@
   "captured_on_utc_date": "2026-11-09",
   "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution, orchestration, safety and verification foundation",
   "repository_snapshot": {
-    "main_sha": "d4d43be7e8f6cfcfae1e0a9c1b4c4a4d5f2e2c4a",
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "integration_pr": 1640,
-    "integration_head": "6e49d7cd1d6c302636354791046f8d9f0f904c48"
+    "integration_head": "6e49d7cd1d6c302636354791046f8d9f0f904c48",
+    "integration_head_at_research_capture": "6e49d7cd1d6c302636354791046f8d9f0f904c48",
+    "integration_head_after_handoff_commit": "a399e1ff61ddaa9094f0a7f465521c9219870262"
   },
   "receipt_integrity": {
     "raw_http_body_hashes_captured": false,
-    "hash_semantics": "SHA-256 values below cover the normalized excerpt or normalized snapshot strings stored beside each hash. They are not hashes of the original HTTP response bodies.",
-    "reason": "The research interface exposed rendered excerpts and API values, not original response bytes. The repository ingestion pipeline must capture raw bytes and compute immutable raw-source SHA-256 receipts before these records enter the model feature store."
+    "normalized_excerpt_hashes_captured": false,
+    "raw_response_sha256": null,
+    "note": "This artifact preserves source URLs, publishers, dates, excerpts, source-independence groups and caveats. No raw HTTP body bytes were captured in this run, so no raw-source SHA-256 is claimed. Earlier excerpt-hash fields were removed rather than retained as unverifiable values. The ingestion pipeline must capture response bytes and compute raw SHA-256 receipts before model use."
   },
   "source_receipts": [
     {
@@ -22,10 +25,11 @@
       "independence_group": "SBIC_EAST",
       "excerpts": [
         {
-          "text": "Tokyo Small and Medium Business Investment & Consultation CO., LTD. (SBIC East Japan )",
-          "sha256": "8a95c5b8e9db93b8c7d6ed0f32d12f1603a7e4b46f56d18e66e92b1a90d04e08"
+          "text": "Tokyo Small and Medium Business Investment & Consultation CO., LTD. (SBIC East Japan )"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "SBIC_CENTRAL_PROFILE",
@@ -36,10 +40,11 @@
       "independence_group": "SBIC_CENTRAL",
       "excerpts": [
         {
-          "text": "Nagoya Small and Medium Business Investment & Consultation Co.,Ltd. (略称「SBIC Central Japan」)",
-          "sha256": "2a62a87b7a8a4f9d6e39e8d2a2d9c8e7a2baf5c5f40d5a2b6b8d5f6e8a0b7d14"
+          "text": "Nagoya Small and Medium Business Investment & Consultation Co.,Ltd. (略称「SBIC Central Japan」)"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "SBIC_WEST_PROFILE",
@@ -50,10 +55,11 @@
       "independence_group": "SBIC_WEST",
       "excerpts": [
         {
-          "text": "Osaka Small and Medium Business Investment & Consultation Co.,Ltd. （SBIC West Japan）",
-          "sha256": "8f7d7a4a9d8c0a7e2b6d6e0f2b1f9e7d8a9b7c6d5e4f3a2b1c0d9e8f7a6b5c4d"
+          "text": "Osaka Small and Medium Business Investment & Consultation Co.,Ltd. （SBIC West Japan）"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "SBIC_EAST_CHATGPT_COURSE",
@@ -64,14 +70,14 @@
       "independence_group": "SBIC_EAST",
       "excerpts": [
         {
-          "text": "ChatGPTの使い方",
-          "sha256": "ec2c48a9e7d2d2f0b86a7d9a1c7a0d6a5f6c0c9a6c9c0c6e6a7f7e5a4d3c2b1a"
+          "text": "ChatGPTの使い方"
         },
         {
-          "text": "一般企業：ご受講いただけません",
-          "sha256": "8ce0c1d6e9b9b4c5a2d7f1e6c0a9b8d7f6e5c4b3a2d1e0f9a8b7c6d5e4f3a2b1"
+          "text": "一般企業：ご受講いただけません"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "SBI_GROUP_SBI_RIPPLE_ASIA_OWNERSHIP",
@@ -82,10 +88,11 @@
       "independence_group": "SBI_HOLDINGS",
       "excerpts": [
         {
-          "text": "SBI Group 60％",
-          "sha256": "d19d4c9b3f3e8b7a5c6d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b"
+          "text": "SBI Group 60％"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "RIPPLE_SBI_RIPPLE_ASIA",
@@ -96,10 +103,11 @@
       "independence_group": "RIPPLE",
       "excerpts": [
         {
-          "text": "SBI Ripple Asiaは、暗号資産(XRP)の取扱いは一切行っておりません。",
-          "sha256": "9bf95fa883abd3007c06946d7ab83a0532eb88903e2a7360094db2fb2497c3eb"
+          "text": "SBI Ripple Asiaは、暗号資産(XRP)の取扱いは一切行っておりません。"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "RIPPLE_SBI_REMIT_ODL",
@@ -110,10 +118,11 @@
       "independence_group": "RIPPLE",
       "excerpts": [
         {
-          "text": "customers can leverage the digital asset XRP to eliminate pre-funding and reduce operational costs",
-          "sha256": "a74b7b3b3b7b3b7b3b7b3b7b3b7b3b7b3b7b3b7b3b7b3b7b3b7b3b7b3b7b3b7b"
+          "text": "customers can leverage the digital asset XRP to eliminate pre-funding and reduce operational costs"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "RIPPLE_SBI_RLUSD",
@@ -124,10 +133,11 @@
       "independence_group": "RIPPLE",
       "excerpts": [
         {
-          "text": "RLUSD will be offered to both institutional and retail users through SBI VC Trade’s VCTRADE platform",
-          "sha256": "ae25f9c3c8e7d6b5a4938271605f4e3d2c1b0a9f8e7d6c5b4a39281706f5e4d3"
+          "text": "RLUSD will be offered to both institutional and retail users through SBI VC Trade’s VCTRADE platform"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "EVERNORTH_424B3",
@@ -138,14 +148,14 @@
       "independence_group": "EVERNORTH_ISSUER",
       "excerpts": [
         {
-          "text": "84,365,876.3625 XRP tokens with the cash proceeds from the Advance Funding Subscription Agreements",
-          "sha256": "5028c96a19d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2"
+          "text": "84,365,876.3625 XRP tokens with the cash proceeds from the Advance Funding Subscription Agreements"
         },
         {
-          "text": "at least 473,276,430 XRP at Closing",
-          "sha256": "da182f4a5c6d7e8f90123456789abcdef0123456789abcdef0123456789abcdef"
+          "text": "at least 473,276,430 XRP at Closing"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "EVERNORTH_20261030",
@@ -156,22 +166,20 @@
       "independence_group": "EVERNORTH_ISSUER",
       "excerpts": [
         {
-          "text": "SBI | 9,431,914 | 2,359,038 | — | 21.4% | 39.9%",
-          "sha256": "f2c4c2e1d0b9a8f7e6d5c4b3a29180706050403020100ffeeddccbbaa9988776"
+          "text": "SBI | 9,431,914 | 2,359,038 | — | 21.4% | 39.9%"
         },
         {
-          "text": "Pubco has not received any proceeds under the Committed Equity Facility as of the date of this prospectus.",
-          "sha256": "7ec6c5b4a39281706f5e4d3c2b1a0f9e8d7c6b5a4938271605f4e3d2c1b0a9f8"
+          "text": "Pubco has not received any proceeds under the Committed Equity Facility as of the date of this prospectus."
         },
         {
-          "text": "Based on this assessment, we selected Coinbase as the trading platform market that represents the principal market for XRP for financial reporting purposes.",
-          "sha256": "937e1dd49e2e0aa2e4749eadddaa9a6a0511f931a6b6044146be5c4d3e4e70c2"
+          "text": "Based on this assessment, we selected Coinbase as the trading platform market that represents the principal market for XRP for financial reporting purposes."
         },
         {
-          "text": "As of the date of this prospectus, 100% of our XRP is maintained in offline, or “cold,” storage.",
-          "sha256": "519909423020e6b99edee26dc0689324dfb09167dc5550849cb149dc7fb17a9d"
+          "text": "As of the date of this prospectus, 100% of our XRP is maintained in offline, or “cold,” storage."
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "CIRCLE_2026Q3_10Q",
@@ -182,26 +190,23 @@
       "independence_group": "CIRCLE_ISSUER",
       "excerpts": [
         {
-          "text": "each contributed Japanese Yen worth approximately $1.5 million",
-          "sha256": "d31d4f5a6b7c8d9e0f1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f70"
+          "text": "each contributed Japanese Yen worth approximately $1.5 million"
         },
         {
-          "text": "owns a 50% interest in Circle SBI Japan KK",
-          "sha256": "bfdd4a3b2c1d0e9f8a7b6c5d4e3f2a1908172635445362718091a2b3c4d5e6f7"
+          "text": "owns a 50% interest in Circle SBI Japan KK"
         },
         {
-          "text": "There have been no significant operating results to date",
-          "sha256": "6ac1b2d3e4f5061728394a5b6c7d8e9f00112233445566778899aabbccddeeff"
+          "text": "There have been no significant operating results to date"
         },
         {
-          "text": "$331.3 million in the three months ended September 30, 2026",
-          "sha256": "8cbf7b6a594837261504f3e2d1c0b9a8f7e6d5c4b3a29180706050403020100ff"
+          "text": "$331.3 million in the three months ended September 30, 2026"
         },
         {
-          "text": "$986.6 million in the nine months ended September 30, 2026",
-          "sha256": "777e6d5c4b3a29180706050403020100ffeeddccbbaa99887766554433221100"
+          "text": "$986.6 million in the nine months ended September 30, 2026"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "COINBASE_2026Q3_10Q",
@@ -212,18 +217,17 @@
       "independence_group": "COINBASE_ISSUER",
       "excerpts": [
         {
-          "text": "renewed our arrangement with Circle Internet Financial, LLC on the same terms",
-          "sha256": "0574b65f08795080345aa97f71dacaaefccb0f9118a1d59eefd0306fe75a2ef6"
+          "text": "renewed our arrangement with Circle Internet Financial, LLC on the same terms"
         },
         {
-          "text": "Includes various other crypto asset balances, none of which individually represented more than 5% of the fair value of total crypto assets held as collateral.",
-          "sha256": "7186e5d4c3b2a1908172635445362718091a2b3c4d5e6f708192a3b4c5d6e7f8"
+          "text": "Includes various other crypto asset balances, none of which individually represented more than 5% of the fair value of total crypto assets held as collateral."
         },
         {
-          "text": "Crypto assets 2,804,112; Total customer collateral not recognized as collateral $3,284,562",
-          "sha256": "abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234"
+          "text": "Crypto assets 2,804,112; Total customer collateral not recognized as collateral $3,284,562"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "COINGECKO_2026_LIQUIDITY",
@@ -234,10 +238,11 @@
       "independence_group": "COINGECKO",
       "excerpts": [
         {
-          "text": "There’s close to $18 million in bids, compared to $14 million in asks.",
-          "sha256": "d51c2e3f4a5b6c7d8e9f00112233445566778899aabbccddeeff001122334455"
+          "text": "There’s close to $18 million in bids, compared to $14 million in asks."
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "XRP_INSIGHTS_EXCHANGE_BALANCES",
@@ -248,14 +253,14 @@
       "independence_group": "XRP_INSIGHTS",
       "excerpts": [
         {
-          "text": "22.34 billion XRP sits in 701 XRP Ledger wallets attributed to 24 exchanges",
-          "sha256": "e626f2a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f"
+          "text": "22.34 billion XRP sits in 701 XRP Ledger wallets attributed to 24 exchanges"
         },
         {
-          "text": "This is every publicly labeled exchange wallet we track, cold storage included",
-          "sha256": "0e4b5c6d7e8f90123456789abcdef0123456789abcdef0123456789abcdef0123"
+          "text": "This is every publicly labeled exchange wallet we track, cold storage included"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "PERMISSION_ASK_CANDIDATE",
@@ -266,10 +271,11 @@
       "independence_group": "COINMARKETCAP",
       "excerpts": [
         {
-          "text": "ASK is an omnichain token deployed using the LayerZero OFT standard, with official contracts on Base and Polygon",
-          "sha256": "42d8c7b6a594837261504f3e2d1c0b9a8f7e6d5c4b3a29180706050403020100"
+          "text": "ASK is an omnichain token deployed using the LayerZero OFT standard, with official contracts on Base and Polygon"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "KAMILAH_LINKTREE_CANDIDATE",
@@ -280,10 +286,11 @@
       "independence_group": "SELF_PUBLISHED_SOCIAL",
       "excerpts": [
         {
-          "text": "Joined October 2026",
-          "sha256": "01bee3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708"
+          "text": "Joined October 2026"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "KRAKEN_XRPUSD_TICKER",
@@ -294,10 +301,11 @@
       "independence_group": "KRAKEN_MARKET_DATA",
       "excerpts": [
         {
-          "text": "XRP/USD last 1.11463; 24h high 1.16816; 24h low 1.09309; volume 29,946,000 XRP",
-          "sha256": "afb6e2c5d7a9b0c1d2e3f4a5b6c7d8e9f00112233445566778899aabbccddeeff"
+          "text": "XRP/USD last 1.11463; 24h high 1.16816; 24h low 1.09309; volume 29,946,000 XRP"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     },
     {
       "source_id": "OKX_XRPUSDT_TICKER",
@@ -308,10 +316,11 @@
       "independence_group": "OKX_MARKET_DATA",
       "excerpts": [
         {
-          "text": "XRP-USDT last 1.1203; 24h volume 52,798,000 XRP; provider timestamp 2026-11-09T02:37:18.238Z",
-          "sha256": "e510f2a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f"
+          "text": "XRP-USDT last 1.1203; 24h volume 52,798,000 XRP; provider timestamp 2026-11-09T02:37:18.238Z"
         }
-      ]
+      ],
+      "raw_response_sha256": null,
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
     }
   ],
   "claim_ledger": [
@@ -559,5 +568,6 @@
       "no calibrated shadow outcomes or independent timestamp/WORM anchor"
     ],
     "next_validation_gate": "Run the scheduled ingestion only after the integration is merged with required approvals and deployment side effects authorized; preserve raw response bytes and SHA-256 receipts, then complete chronological walk-forward and shadow evaluation before any directional forecast."
-  }
+  },
+  "capture_method": "Public-source research via rendered pages and public API observations; no raw response body capture."
 }
