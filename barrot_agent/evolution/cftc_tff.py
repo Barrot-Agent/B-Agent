@@ -109,7 +109,19 @@ def parse_cftc_contract_status(html_text: str) -> dict:
         "NEW FUTURES AND OPTIONS COMBINED MARKETS DROPPED FROM REPORTING THIS WEEK"
     )
     reports_heading = "REPORTS DATED "
+    report_date_match = re.search(
+        r"REPORTS DATED\\s+([A-Z]+\\s+\\d{1,2},\\s+\\d{4})", plain
+    )
+    report_date = None
+    if report_date_match:
+        try:
+            report_date = datetime.strptime(
+                report_date_match.group(1).title(), "%B %d, %Y"
+            ).date().isoformat()
+        except ValueError as exc:
+            raise CFTCTFFParseError("CFTC contract-status report date is invalid") from exc
     return {
+        "reports_dated": report_date,
         "futures_only_added": _codes_in_section(
             plain,
             "NEW FUTURES MARKETS ADDED THIS WEEK",
@@ -173,6 +185,10 @@ def parse_cftc_tff_report(
         if contract_status_html is not None
         else None
     )
+    if contract_status is not None and contract_status["reports_dated"] != as_of_date.isoformat():
+        raise CFTCTFFParseError(
+            "CFTC contract-status report date does not match the TFF report date"
+        )
     all_specs = CFTC_CONTRACTS + CFTC_OPTIONAL_CONTRACTS
     labels = [spec["label"] for spec in all_specs]
     required_codes = {spec["code"] for spec in CFTC_CONTRACTS}
