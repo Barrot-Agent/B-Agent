@@ -79,7 +79,10 @@ def test_run103_endpoint_registry_counts_match_current_map():
     assert latest["ci_evidence"]["full_suite"]["subtests"] == 8
     assert latest["ci_evidence"]["full_suite"]["coverage_pct"] == 59.36
     assert latest["cftc_contract_universe"]["dropped_contract"]["code"] == "176LM2"
-    assert latest["cftc_contract_universe"]["threshold_hypothesis"]["assessment"] == "PLAUSIBLE_UNCONFIRMED"
+    assessment = latest["cftc_contract_universe"]["threshold_hypothesis"]["assessment"]
+    assert assessment.startswith("PLAUSIBLE_UNCONFIRMED")
+    assert "current-week reportable-trader count is unavailable" in assessment
+    assert "status index does not state the reason" in assessment
     assert round(latest["cftc_contract_universe"]["comparable_change_pct"], 2) == -12.94
     assert latest["reviews"]["pr_1640"]["approved"] == 0
     assert latest["reviews"]["pr_1640"]["threads_unresolved"] == 0
