@@ -31,6 +31,8 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     BITBANK_SOURCE_IDS,
     ENDPOINTS,
     SCHEDULED_ENDPOINTS,
+    WEEKLY_ENDPOINTS,
+    _weekly_endpoints_for_capture,
     PARSERS,
     XRPL_NODE_SOURCES,
     _reconcile_xrpl_node_records,
@@ -418,6 +420,7 @@ def _fake_fetcher(captured: datetime):
                 "ripple_rlusd_transparency_dashboard": "<html><title>Ripple USD Transparency</title><h1>Ripple USD (RLUSD)</h1><h2>Total Circulating RLUSD</h2><p>RLUSD Reserve Funds</p><p>As of 11/05/2026</p></html>",
                 "xrpldashboard_rlusd_cross_chain_supply": "<html><title>RLUSD cross-chain supply</title><h1>RLUSD</h1><p>Ethereum</p><p>XRP Ledger</p><p>Snapshot</p></html>",
                 "circle_usdc_transparency_dashboard": "<html><title>Transparency and stability</title><h1>USDC</h1><p>EURC</p><p>Reserves</p><p>As of Nov 05, 2026</p></html>",
+                "cftc_tff_financial_futures": "<html><title>CFTC Traders in Financial Futures</title><pre>Traders in Financial Futures - Futures Only Positions as of November 3, 2026\nXRP - CHICAGO MERCANTILE EXCHANGE (Contracts of 50,000 XRP)\nCFTC Code #176740 Open Interest is 7,216\nNANO XRP - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)\nCFTC Code #176LM1 Open Interest is 32,505\nNANO XRP PERP STYLE - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)\nCFTC Code #176LM3 Open Interest is 38,392</pre></html>",
             }
             html_text = html_by_source[source_id]
             return {
@@ -514,7 +517,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["coinbase_backfill"]["status"] == "NOT_REQUESTED"
     assert summary["coinbase_backfill"]["pages_requested"] == 0
-    assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES), (
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + len(_weekly_endpoints_for_capture(captured)), (
         summary,
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
@@ -530,6 +533,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["xrpl_node_reconciliation"]["status"] == "NOT_COLLECTED_PROVIDER_TERMS_POLICY"
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
     assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is False
+    assert summary["weekly_source_policy"]["captured_source_ids"] == []
+    assert summary["weekly_source_policy"]["skipped_source_ids"] == ["cftc_tff_financial_futures"]
     assert set(summary["collection_policy"]["excluded_noncommercial_xrpl_node_source_ids"]) == set(XRPL_NODE_SOURCES)
 
     snapshot = json.loads((tmp_path / "run" / "snapshot.json").read_text(encoding="utf-8"))
@@ -541,8 +546,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.18"
-    assert summary["parser_version"] == "xrp-public-market-v3.17"
+    assert summary["adapter_version"] == "xrp-public-market-v3.19"
+    assert summary["parser_version"] == "xrp-public-market-v3.18"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -2547,3 +2552,59 @@ def test_ingestion_records_bybit_403_with_source_url_and_capture_time(tmp_path):
     assert bybit_failure["error_category"] == "provider_http_forbidden"
     assert bybit_failure["model_eligible"] is False
     assert not any(item["source_id"] == "bybit_spot_ticker" for item in receipts)
+
+
+def test_weekly_cftc_endpoint_is_selected_only_after_friday_publication():
+    saturday_daily_run = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
+    saturday_hourly_run = datetime(2026, 11, 7, 0, 3, tzinfo=timezone.utc)
+    friday_hourly_run = datetime(2026, 11, 6, 21, 3, tzinfo=timezone.utc)
+    saturday_late_run = datetime(2026, 11, 7, 2, 15, tzinfo=timezone.utc)
+
+    assert len(WEEKLY_ENDPOINTS) == 1
+    assert WEEKLY_ENDPOINTS[0][0] == "cftc_tff_financial_futures"
+    assert _weekly_endpoints_for_capture(saturday_daily_run) == WEEKLY_ENDPOINTS
+    assert _weekly_endpoints_for_capture(saturday_hourly_run) == ()
+    assert _weekly_endpoints_for_capture(friday_hourly_run) == ()
+    assert _weekly_endpoints_for_capture(saturday_late_run) == ()
+
+
+def test_weekly_cftc_tff_capture_is_receipted_raw_only_on_saturday_daily_run(tmp_path):
+    captured = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
+    summary = run_ingestion(tmp_path / "weekly", fetcher=_fake_fetcher(captured), now=captured)
+
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 1
+    assert summary["source_failure_count"] == 0
+    assert summary["weekly_source_policy"]["captured_source_ids"] == [
+        "cftc_tff_financial_futures"
+    ]
+
+    raw_only = json.loads(
+        (tmp_path / "weekly" / "raw_only_sources.json").read_text(encoding="utf-8")
+    )
+    cftc_raw_only = next(
+        item for item in raw_only
+        if item["source_id"] == "cftc_tff_financial_futures"
+    )
+    assert "positions_as_of_november_3_2026" in cftc_raw_only["reason"]
+    assert "raw_only" in cftc_raw_only["reason"]
+
+    receipt_manifest = json.loads(
+        (tmp_path / "weekly" / "receipt_manifest.json").read_text(encoding="utf-8")
+    )
+    cftc_receipt = next(
+        item for item in receipt_manifest
+        if item["source_id"] == "cftc_tff_financial_futures"
+    )
+    assert cftc_receipt["model_eligible_source"] is False
+    assert cftc_receipt["source_data_as_of_utc"] is None
+    assert cftc_receipt["raw_bytes_retained"] is True
+    assert len(cftc_receipt["raw_content_sha256"]) == 64
+
+    snapshot = json.loads(
+        (tmp_path / "weekly" / "snapshot.json").read_text(encoding="utf-8")
+    )
+    assert not any(
+        source["source_id"] == "cftc_tff_financial_futures"
+        for record in snapshot["records"]
+        for source in record["sources"]
+    )

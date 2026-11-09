@@ -1,3 +1,93 @@
+## Run 95 — weekly CFTC TFF ingestion and institutional-source reconciliation
+
+Capture reference: 2026-11-09T17:16:49Z.  
+Main SHA: d4d43be3427375cf79d190e768976de062e20287.  
+Integration parent: af430b3d0e5baa87749094bbda667f54a593c55b.  
+Active integration: existing PR #1640 only; no new branch or PR.
+
+### Exact-head verification boundary
+
+The preceding Run 94 code/evidence head af430b3d0e5baa87749094bbda667f54a593c55b passed:
+
+- Full repository suite: 1,306 passed, 8 subtests passed.
+- Inclusive package coverage: 59.09%, above the 53% floor.
+- Core suite: 677 passed, 8 subtests passed.
+- Wheel build and installed-wheel smoke passed.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed gate passed and kept automatic merging disabled.
+
+Exact evidence: [full CI 42664765648](https://github.com/Barrot-Agent/B-Agent/actions/runs/42664765648), [dependency audit 42664765679](https://github.com/Barrot-Agent/B-Agent/actions/runs/42664765679), [fail-closed gate 42664765649](https://github.com/Barrot-Agent/B-Agent/actions/runs/42664765649).
+
+This Run 95 commit adds the weekly CFTC source adapter, raw-only identity validation, schedule tests and contract-count updates. Its exact-head full suite, core suite, dependency audit and fail-closed gate are pending. Do not inherit the predecessor's results.
+
+### New primary derivatives source: CFTC Traders in Financial Futures
+
+Official source: [CFTC Financial Traders in Markets — Futures Only](https://www.cftc.gov/dea/futures/financial_lf.htm). The current page says positions are as of November 3, 2026 and was updated November 6, 2026.
+
+It identifies three XRP futures products:
+
+- CME XRP, CFTC code 176740: 7,216 contracts, 50,000 XRP per contract = 360.8M XRP-equivalent futures open interest.
+- Coinbase Nano XRP, code 176LM1: 32,505 contracts, 500 XRP per contract = 16.2525M XRP-equivalent futures open interest.
+- Coinbase Nano XRP Perp Style, code 176LM3: 38,392 contracts, 500 XRP per contract = 19.196M XRP-equivalent futures open interest.
+
+The combined underlying-equivalent open interest is approximately 396.2485M XRP across these three contracts. This is futures notional, not spot holdings, collateral posted, cash invested or net directional exposure. The CFTC report breaks positions into dealer/intermediary, asset-manager/institutional, leveraged-fund, other-reportable and nonreportable categories; those long/short/spreading fields must be kept separate.
+
+Nano XRP's reported total open-interest change from October 27 is -32,864 contracts. That is a contract-count change, not proof of liquidation or a directional trade; expiry, roll and contract lifecycle effects are competing explanations. The product name "Perp Style" does not turn this CFTC futures-only instrument into a crypto-exchange perpetual swap.
+
+Executed on the integration branch: the public collector now defines 39 endpoint records: 36 hourly sources, one weekly CFTC TFF source and two non-commercial XRPL public-node endpoints excluded from default collection. The CFTC page is selected only during the Saturday 00:10-01:59 UTC daily-ingestion window, after the Friday 15:30 America/New_York report release in both standard and daylight time. The hourly run at minute 03 is excluded. The existing daily workflow runs at 00:15 UTC.
+
+The CFTC page is allowlisted, fetched as HTML, checked for the TFF report identity and all three XRP contract codes, and stored as a raw receipt. It is deliberately raw-only: no numeric positions are parsed into features yet, source_data_as_of_utc is not fabricated from a date-only report heading, and model_eligible_source=false. Adapter version advances to v3.19 and parser version to v3.18. The scheduled main workflow is not active because #1640 is not merged; no CFTC scheduled capture occurred in this run.
+
+### SBIC identity: primary-source resolution
+
+Japan's 1963 Small and Medium-Sized Enterprise Investment & Consultation Company Act defines the regional investment-development company structure. The official regional company profiles identify:
+
+- SBIC East Japan — Tokyo.
+- SBIC Central Japan — Nagoya.
+- SBIC West Japan — Osaka.
+
+Their official profiles describe the three as sister companies. Tokyo's shareholder categories include local governments, chambers of commerce, financial institutions and business corporations. SBI Holdings' own group-company listing separately identifies SBI Ripple Asia, SBI Remit and SBI VC Trade. No primary-source evidence surfaced that the three regional SBIC companies are subsidiaries of or controlled by SBI Holdings.
+
+Tokyo SBIC's official 2025 training listing includes a ChatGPT course for its investee companies. That establishes training content for portfolio/investee companies, not an OpenAI partnership, ChatGPT equity relationship or XRP connection.
+
+Primary references: [Japan e-Gov law](https://elaws.e-gov.go.jp/document?lawid=338AC0000000101), [SBIC East/Tokyo](https://www.sbic.co.jp/), [SBIC Central/Nagoya](https://www.sbic-cj.co.jp/), [SBIC West/Osaka](https://www.sbic-wj.co.jp/), [SBI Holdings group companies](https://www.sbigroup.co.jp/english/company/group/).
+
+### SBI, Ripple, Coinbase and Circle: role separation
+
+- SBI Ripple Asia is the SBI/Ripple joint venture; SBI Group's official profile reports 60% voting rights. It is distinct from the three regional SBICs.
+- SBI Remit is a separate SBI Group subsidiary; the group profile reports 82.96% voting rights as of August 28, 2026. The 2023 SBI release names SBI Remit, SBI VC Trade and SBI Ripple Asia in the XRP-powered remittance expansion to the Philippines, Vietnam and Indonesia. The XRP bridge-asset execution described in the corridor is associated with SBI Remit/SBI VC Trade; do not attribute it to a regional SBIC.
+- SBI Ripple Asia's February 2026 Japan–Korea research explores blockchain-based payments using XRPL. It does not establish that XRP is the settlement asset in that proof-of-concept.
+- SBI VISA Crypto Card: SBI, Aplus and Visa announced a card that lets customers select BTC, ETH or XRP; points automatically convert monthly and without exchange fees into the selected asset in the customer's SBI VC Trade account. The October 1 business/sole-proprietor card extends the product. This is a real XRP distribution/accumulation channel, but reward volume, inventory sourcing and incremental open-market purchases are undisclosed.
+- SBI shareholder benefits separately offer an XRP voucher credited through an SBI VC Trade account. This is a shareholder distribution, not evidence of an open-market purchase.
+- SBI VC Trade's RLUSD/JPYSC activity is stablecoin distribution and must not be conflated with XRP ODL or assumed to use XRP as a bridge asset.
+- Coinbase/PNC/USDC: November 9 reporting describes a limited pilot for eligible corporate/institutional clients to receive Circle USDC through Coinbase infrastructure, automatically converted to dollars. This is a competing stablecoin payment rail, not XRP demand. No pilot volume or measured settlement advantage is disclosed.
+- BNY/Ripple: BNY's October 27 release says its custody platform supports XRP and RLUSD for eligible clients and that it is exploring RLUSD mint/redeem and tokenized trade-finance use cases. The future plans remain subject to final approvals. Custody availability does not establish assets under custody, XRP collateral utilization, lending, or incremental spot purchases.
+- Evernorth capital remains separated into cash used to purchase XRP, in-kind XRP contributions, debt proceeds, drawn facilities and contingent equity-line capacity. SBI's announced $200M cash commitment is not investor-level proof that a specific portion of Evernorth's $214.1M disclosed cash purchase proceeds came from SBI. Do not double-count the 388.9M XRP in-kind contribution as cash buying.
+
+### Exact-phrase and identity research
+
+- "SBIC, ChatGPT SBIC": the primary match is Tokyo SBIC's investee-company ChatGPT training, not an OpenAI partnership.
+- "actual capital": no standardized XRP metric or unique primary-source phrase match. Use separate ledger fields for cash purchases, in-kind contributions, debt, credit drawdowns and contingent equity capacity.
+- "ASK Coin": still ambiguous. Permission's ASK token remains a candidate, but no XRPL/XRP integration is verified.
+- Camilla/Kamilah Stevenson: the previously verified guest appearance remains attributable to the interviewee; no new primary-channel ownership proof or exhaustive personal-channel video inventory was established in this pass.
+
+### Later spot refresh — not a new raw receipt
+
+A later display-only API refresh during this run showed Kraken XRP/USD last $1.09071 (bid $1.09073, ask $1.09074) and OKX XRP/USDT last 1.0942 with provider timestamp 2026-11-09T17:25:24.070Z. Kraken's ticker did not expose an event timestamp; the earlier Kraken USDT/USD normalization quote was not synchronized to this refresh. These later quotes are not added to the hashed Run 94 receipt and remain model-ineligible. Do not interpret the asynchronous venue difference as executable arbitrage.
+
+### Prediction and next actions
+
+Forecast status: NOT_ISSUED. The current market, wallet and ETF observations remain research-only; no measured out-of-sample lift, calibrated directional probability or shadow outcome series supports a forecast. No paper trade or real-money action occurred.
+
+Next:
+1. Complete exact-head CI on this Run 95 commit.
+2. Parse CFTC contract rows in a separate tested step, preserving report date, publication/known-at time, contract multipliers, long/short/spreading categories and product lifecycle effects. Keep them futures-only, not spot/cash.
+3. Add official macro and regulatory series (Treasury/FRED, CFTC and regulator event timelines) with point-in-time availability.
+4. Obtain independent approval and verify effective branch-protection requirements for #1640.
+5. Resolve explicit authorization for the automatic public GitHub Pages deployment side effect before any merge.
+6. Only after all merge gates pass, merge #1640 without bypassing protections; fetch main again, verify merge commit/files and run main CI. Then reconcile unique research/graph work and close only exact duplicates after verification.
+
+
 ## Run 94 — live spot receipts, exchange-wallet and ETF-flow reconciliation, integration audit
 
 **Capture reference:** 2026-11-09T17:16:49Z  

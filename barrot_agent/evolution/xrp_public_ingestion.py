@@ -28,9 +28,9 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.18"
-PARSER_VERSION = "xrp-public-market-v3.17"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov"}
+ADAPTER_VERSION = "xrp-public-market-v3.19"
+PARSER_VERSION = "xrp-public-market-v3.18"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -87,6 +87,7 @@ ENDPOINTS = (
     ("ripple_rlusd_transparency_dashboard", "https://ripple.com/products/stablecoin/transparency/"),
     ("xrpldashboard_rlusd_cross_chain_supply", "https://xrpldashboard.com/rlusd"),
     ("circle_usdc_transparency_dashboard", "https://www.circle.com/transparency"),
+    ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
     ("xrpl_inftf_server_info", "https://xrplcluster.com/"),
     ("xrpl_honeycluster_server_info", "https://honeycluster.io/"),
 )
@@ -140,11 +141,28 @@ XRPL_NODE_SOURCES = {
 # non-commercial. Keep them available for explicitly requested one-off research,
 # but never include them in the default/scheduled collection set.
 NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS = frozenset(XRPL_NODE_SOURCES)
+WEEKLY_ENDPOINTS = (
+    ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
+)
+WEEKLY_SOURCE_IDS = frozenset(source_id for source_id, _url in WEEKLY_ENDPOINTS)
 SCHEDULED_ENDPOINTS = tuple(
     (source_id, url)
     for source_id, url in ENDPOINTS
     if source_id not in NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS
+    and source_id not in WEEKLY_SOURCE_IDS
 )
+
+
+def _weekly_endpoints_for_capture(captured: datetime) -> tuple[tuple[str, str], ...]:
+    """Select the CFTC weekly report only on the Saturday daily-ingestion window."""
+    if captured.tzinfo is None or captured.utcoffset() is None:
+        raise XRPIngestionError("weekly source schedule requires a timezone-aware capture clock")
+    utc = captured.astimezone(timezone.utc)
+    # The daily workflow runs at 00:15 UTC. The hourly run at minute 03 is
+    # intentionally excluded; a delayed daily run may still capture through 01:59.
+    if utc.weekday() == 5 and utc.hour in {0, 1} and utc.minute >= 10:
+        return WEEKLY_ENDPOINTS
+    return ()
 
 
 class XRPIngestionError(ValueError):
@@ -3388,6 +3406,41 @@ def _parse_bybit_linear_funding_history(
     return records, _iso(ordered[-1][0]), True, ""
 
 
+def _raw_only_cftc_tff(payload: Any, **_kwargs):
+    """Validate the official CFTC TFF page and preserve it raw-only until numeric parsing is tested."""
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError("CFTC TFF response must be a mapping")
+    html_text = payload.get("html_text")
+    if not isinstance(html_text, str) or not html_text.strip():
+        raise XRPIngestionError("CFTC TFF response has no HTML text")
+    plain = re.sub(r"<[^>]+>", " ", html_text)
+    plain = re.sub(r"&nbsp;|&#160;", " ", plain, flags=re.IGNORECASE)
+    plain = re.sub(r"\s+", " ", plain).upper()
+    required = (
+        "TRADERS IN FINANCIAL FUTURES",
+        "XRP - CHICAGO MERCANTILE EXCHANGE",
+        "CFTC CODE #176740",
+        "NANO XRP - COINBASE DERIVATIVES, LLC",
+        "CFTC CODE #176LM1",
+        "NANO XRP PERP STYLE - COINBASE DERIVATIVES, LLC",
+        "CFTC CODE #176LM3",
+    )
+    missing = [token for token in required if token not in plain]
+    if missing:
+        raise XRPIngestionError("CFTC TFF XRP contract identity mismatch")
+    as_of = re.search(r"POSITIONS AS OF ([A-Z]+ \d{1,2}, \d{4})", plain)
+    if as_of is None:
+        raise XRPIngestionError("CFTC TFF report has no recognizable positions-as-of date")
+    return (
+        [],
+        None,
+        False,
+        "official_cftc_tff_futures_only_positions_as_of_"
+        + as_of.group(1).replace(" ", "_").replace(",", "").lower()
+        + "_date_only_raw_only_until_contract_rows_are_parsed_and_validated",
+    )
+
+
 PARSERS = {
     "xrpl_inftf_server_info": _parse_xrpl_server_info,
     "xrpl_honeycluster_server_info": _parse_xrpl_server_info,
@@ -3427,6 +3480,7 @@ PARSERS = {
     "ripple_rlusd_transparency_dashboard": _raw_only_ripple_rlusd_transparency_page,
     "xrpldashboard_rlusd_cross_chain_supply": _raw_only_xrpldashboard_rlusd_page,
     "circle_usdc_transparency_dashboard": _raw_only_circle_transparency_page,
+    "cftc_tff_financial_futures": _raw_only_cftc_tff,
 }
 
 
@@ -3658,7 +3712,7 @@ def _walk_forward_report(
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
         return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard"}:
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "cftc_tff_financial_futures"}:
         return fetch_public_html(source_id, url)
     if source_id == "xrp_etf_flows_csv":
         return fetch_public_csv(source_id, url)
@@ -3809,15 +3863,15 @@ def run_ingestion(
     normalized_walk_forward_horizons = _normalize_walk_forward_horizons(walk_forward_horizons)
     captured = now or datetime.now(timezone.utc)
     captured_s = _iso(captured)
-    selected_endpoints = (
-        ENDPOINTS
-        if include_noncommercial_xrpl_nodes
-        else tuple(
+    selected_endpoints = list(SCHEDULED_ENDPOINTS)
+    if include_noncommercial_xrpl_nodes:
+        selected_endpoints.extend(
             (source_id, url)
             for source_id, url in ENDPOINTS
-            if source_id not in NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS
+            if source_id in NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS
         )
-    )
+    weekly_endpoints = _weekly_endpoints_for_capture(captured)
+    selected_endpoints.extend(weekly_endpoints)
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     archive = RawReceiptArchive(output / "raw")
@@ -4119,6 +4173,20 @@ def run_ingestion(
             "reason": (
                 "The official XRPL public-server directory classifies the free InFTF and Honeycluster endpoints as non-commercial. "
                 "Scheduled collection requires a self-hosted or contracted commercial endpoint."
+            ),
+        },
+        "weekly_source_policy": {
+            "source_ids": sorted(WEEKLY_SOURCE_IDS),
+            "capture_window_utc": "Saturday 00:10-01:59",
+            "captured_source_ids": [source_id for source_id, _url in weekly_endpoints],
+            "skipped_source_ids": sorted(
+                WEEKLY_SOURCE_IDS - {source_id for source_id, _url in weekly_endpoints}
+            ),
+            "reason": (
+                "The official CFTC Traders in Financial Futures report is weekly and published "
+                "Friday at 15:30 America/New_York. Capture it on the Saturday daily-ingestion "
+                "window after publication in both standard and daylight time. The page is "
+                "validated and retained raw-only; no XRP futures positions are normalized yet."
             ),
         },
         "xrpl_node_reconciliation": xrpl_node_reconciliation,

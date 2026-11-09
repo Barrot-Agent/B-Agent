@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from barrot_agent.evolution.xrp_public_ingestion import ENDPOINTS, SCHEDULED_ENDPOINTS
+from barrot_agent.evolution.xrp_public_ingestion import ENDPOINTS, SCHEDULED_ENDPOINTS, WEEKLY_ENDPOINTS
 
 
 def test_forecast_ledger_contract_endpoint_counts_match_collector():
@@ -12,7 +12,9 @@ def test_forecast_ledger_contract_endpoint_counts_match_collector():
     )
     contract = contract_path.read_text(encoding="utf-8")
 
-    assert len(ENDPOINTS) == 38
+    assert len(ENDPOINTS) == 39
     assert len(SCHEDULED_ENDPOINTS) == 36
-    assert contract.count("38 public endpoint records") == 2
+    assert len(WEEKLY_ENDPOINTS) == 1
+    assert contract.count("39 public endpoint records") == 2
+    assert "38 public endpoint records" not in contract
     assert "23 public endpoint records" not in contract
