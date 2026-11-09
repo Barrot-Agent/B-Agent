@@ -32,7 +32,7 @@ def load_run78_snapshot():
     )
 
 
-def test_run81_current_snapshot_preserves_run78_run77_and_historical_map():
+def test_run82_current_snapshot_preserves_run78_run77_and_historical_map():
     current = load_current()
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
     observation = current["current_run_observations"]
@@ -46,7 +46,7 @@ def test_run81_current_snapshot_preserves_run78_run77_and_historical_map():
     assert current["captured_at_utc"] == current["last_verified_at_utc"]
     assert observation["captured_at_utc"] == current["captured_at_utc"]
     assert observation["last_verified_at_utc"] == current["last_verified_at_utc"]
-    assert observation["run_id"] == 81
+    assert observation["run_id"] == 82
     assert observation["captured_at_utc"] >= prior78["captured_at_utc"]
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
     assert observation["integration_head_before_handoff_commit"] == "94f3b34197c51004e2471049139c18d31375b42c"
