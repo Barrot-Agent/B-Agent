@@ -6,8 +6,8 @@
 - Current main SHA: d4d43be3427375cf79d190e768976de062e20287.
 - Main recursive tree: 1,404 entries, 1,299 files, 493 Python files and 78 active workflow files.
 - Existing integration workstream: PR #1640, branch integration/core-capabilities-mmi-structural-paper-20261104. Its head before this handoff update was ba38abe3f26cff2a1c2f55a9c0c6bde68bedadf7; the preceding tested code/test head was 10c108ced5ba2b96529df8afdee9d268478e8901.
-- The current nine-platform map was a zero-byte file. It is now populated with nine explicit authentication, permission and data-flow states in research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json. The map commit is ba38abe3f26cff2a1c2f55a9c0c6bde68bedadf7.
-- No main write, merge, new branch or new PR occurred. This handoff update is being committed only to the existing #1640 branch.
+- The canonical current nine-platform map is a 1.44 MB history-bearing JSON snapshot captured at 2026-11-09T07:37:35Z (Run 81), with 52 prior observations. A file-fetch helper returned an empty body because it could not return this large file; the file was not empty. A compact replacement on ba38abe3f26cff2a1c2f55a9c0c6bde68bedadf7 removed required history/schema fields and caused 20 full-suite failures. The original map was restored from the exact pre-change 10c108 blob in commit 3d26bcd59aaba5894f21db8e8efb70ef1213b8be. No tests were weakened. The latest Run 83 platform authentication/data-flow state is recorded in this handoff; advancing the canonical map requires a schema-preserving migration with its regression tests.
+- No main write, merge, new branch or new PR occurred. The map restoration and this corrective handoff update are commits on the existing #1640 branch only.
 
 ## Exact-head verification and merge status
 
@@ -21,7 +21,7 @@ PR #1640 preceding code/test head 10c108ced5ba2b96529df8afdee9d268478e8901:
 - Fail-closed merge gate: passed; its log explicitly says automatic merge is intentionally disabled.
 - Exact evidence: CI https://github.com/Barrot-Agent/B-Agent/actions/runs/42594128371 ; dependency audit https://github.com/Barrot-Agent/B-Agent/actions/runs/42594128404 ; fail-closed gate https://github.com/Barrot-Agent/B-Agent/actions/runs/42594128499 .
 
-The map commit and this handoff commit are later than the tested head. Do not reuse the 10c108 test result as proof for the resulting documentation head. Exact-head CI, full-suite, dependency audit and fail-closed gate must pass again before merge.
+The map replacement at ba38abe3f26cff2a1c2f55a9c0c6bde68bedadf7 and the handoff commit a6a7f6d6fd54f39c6fe8a7b35a7a14f5385dc658 both failed the full-suite job with 20 schema-related failures: the compact replacement omitted current_run_observations, prior_run_observations and the established platform data_flow structure. The complete original map was restored on 3d26bcd59aaba5894f21db8e8efb70ef1213b8be. The restored-map head has not yet received final exact-head verification. The 10c108 pass remains evidence for that earlier code/test head only. No tests or safety thresholds were weakened.
 
 Main current SHA d4d43be3427375cf79d190e768976de062e20287:
 
@@ -82,13 +82,13 @@ Forecast status remains NOT_ISSUED.
 
 ## Nine-platform status
 
-The current map now records ChatGPT-to-GitHub repository read/write as verified in this session. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain NOT_VERIFIED with no tested persistent authentication/data flow. Historical Copilot comments are not approvals; the prior Databricks HTTP 403 is not treated as a current test. Do not transfer repository evidence or secrets to external models. Use public sources and deterministic local work as fallback.
+The preserved canonical map's latest full snapshot is Run 81. This Run 83 handoff records the current status: ChatGPT-to-GitHub repository read/write is verified in this session; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain NOT_VERIFIED with no tested persistent authentication/data flow. Historical Copilot comments are not approvals; the prior Databricks HTTP 403 is not treated as a current test. Do not transfer repository evidence or secrets to external models. Use public sources and deterministic local work as fallback.
 
 ## Open PR inventory and classifications
 
 All four paginated open-pull pages were fetched: 372 open PRs, 356 drafts and 16 non-drafts. No bulk close was performed.
 
-- #1640 — active integration workstream. Current head before this handoff update: ba38abe3f26cff2a1c2f55a9c0c6bde68bedadf7; 801 commits ahead, 198 changed paths. The previous exact-head test evidence is on 10c108, not the newer documentation/map head. Zero approving reviews; branch protection is unverified; automatic Pages deployment is a known prior merge side effect. Blocked from merge.
+- #1640 — active integration workstream. Current head after restoring the history-bearing map: 3d26bcd59aaba5894f21db8e8efb70ef1213b8be; 803 commits ahead, zero behind, 198 changed paths. The previous exact-head test evidence is on 10c108, not the restored-map head. Zero approving reviews; branch protection is unverified; automatic Pages deployment is a known prior merge side effect. Blocked from merge pending final exact-head CI.
 - #1643 — unique/unreviewed research archive. Head 238f3c2a8e3d8d16a3e0d58a3a6a1ecb8a9d3d19; 906 commits ahead, one behind, 670 changed paths; seven overlap #1640 and 663 are unique. No PR-triggered CI run was found for this head. Preserve; do not merge wholesale. Reconcile unique paths selectively after the integration successor is verified.
 - #1642 — duplicate/superseded candidate. All seven changed paths overlap #1640. Its old head passed 725 full-suite tests, but it is draft and one commit behind current main. Keep open until #1640 content is merged and verified; then close only with an explicit cross-reference.
 - #1653 — unique repository knowledge-graph work with one shared CI path and six unique paths. Head 2e449ca28739a73b00dee021c9fb5f38819557c4 is 18 commits ahead and one behind; its exact-head full suite passed 730 tests, but all eight review threads remain unresolved and it has zero approvals. Rebase/reconcile and audit before considering.
