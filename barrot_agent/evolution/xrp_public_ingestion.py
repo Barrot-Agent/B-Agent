@@ -30,8 +30,8 @@ from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov"}
-ADAPTER_VERSION = "xrp-public-market-v3.20"
-PARSER_VERSION = "xrp-public-market-v3.19"
+ADAPTER_VERSION = "xrp-public-market-v3.21"
+PARSER_VERSION = "xrp-public-market-v3.20"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
