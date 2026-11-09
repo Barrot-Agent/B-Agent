@@ -1385,3 +1385,97 @@ Forecast status: NOT_ISSUED. No directional forecast, paper trade or real-money 
 8. Verify scheduled ingestion on main, establish independent archival/rebuild, expand primary regulatory/macro/custody/collateral/payment-rail coverage, and demonstrate calibrated out-of-sample lift before forecast issuance.
 
 Run 75 was executed on existing branches only. Main remained unchanged at d4d43be. No merge, deployment, secret operation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree action occurred.
+
+
+## Run 76 — Q1/Q2 SEC 13F comparison, Coinbase derivatives cross-check, and exact-head CI
+
+Captured: 2026-11-09T01:50:00Z.
+
+### Exact-head V3 verification
+
+PR #1640 head a87af9c9a37d145994f425aa3e9746dce89c5bd8 is 753 commits in the PR, 751 ahead and zero behind main, with 186 changed paths. GitHub reports mergeable and clean.
+
+Exact-head verification:
+- Full repository suite: 1,234 passed, 0 failed, 8 subtests passed.
+- Inclusive coverage: 58.98%, above the 53% threshold.
+- Core suite: 660 passed, 8 subtests passed.
+- Installed wheel built and installed; Barrot V3, primary XRP mission and canonical assets verified.
+- Six-manifest dependency audit passed with zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge remained disabled.
+
+Evidence:
+- CI 42547102628: https://github.com/Barrot-Agent/B-Agent/actions/runs/42547102628
+- Dependency audit 42547102740: https://github.com/Barrot-Agent/B-Agent/actions/runs/42547102740
+- Fail-closed gate 42547102647: https://github.com/Barrot-Agent/B-Agent/actions/runs/42547102647
+
+The GitHub Actions cache-budget warning made the cache read-only; it did not fail tests, coverage, wheel or dependency verification. The combined Run 76 documentation/map/test update below creates a new head, so that new head requires its own exact-head verification.
+
+### Q1/Q2 SEC 13F correction — Goldman Sachs
+
+Updated the existing #1643 artifact and regression test with the prior-quarter primary filing comparison:
+- research/xrp_intelligence/20261109T013133Z-goldman-sachs-xrp-etf-13f-manager-attribution-correction.json
+- tests/test_xrp_goldman_sachs_13f_manager_attribution_correction_20261109.py
+
+Q1 Form 13F-HR accession 0000886982-26-000274, report date March 31, 2026, filed May 15, 2026: the primary information table has 13,579 entries and an exact XRP search returned no matching row. Its included manager No. 1 is already Goldman Sachs & Co. LLC, CIK 0000769993.
+
+Q2 Form 13F-HR accession 0000886982-26-000519, report date June 30, 2026, filed August 14, 2026: five XRP ETF-share rows total $86,506,129, and every row assigns included manager No. 1, Goldman Sachs & Co. LLC.
+
+Interpretation: the five XRP ETF-share positions first appear in the Q2 reportable table after no XRP-named row was found in Q1. This is a first observed reportable appearance between sequential quarter-end snapshots, not proof of a purchase, beneficial ownership, parent-company proprietary exposure, direct XRP-token custody, or current holdings. The report is not a direct XRP capital-flow feature.
+
+Q1 primary sources:
+- Filing index: https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/0000886982-26-000274-index.html
+- Primary document: https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/primary_doc.xml
+- Information table: https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml
+
+Q2 primary sources remain linked in the Run 75 artifact and handoff section. The artifact hashes normalized source excerpts and the Q1 absence-search record, not raw SEC HTTP bytes.
+
+### Coinbase derivatives cross-check
+
+Coinbase's XRP perpetual-style futures page displayed during this run:
+- XRP reference price: $1.16.
+- Open interest: $22.66M.
+- 24-hour volume: $7.55M.
+- Funding: -0.0008%.
+- Contract size: 500 XRP.
+- Provider event timestamp: not surfaced.
+
+The CFTC TFF report's November 3 open interest for Coinbase Nano XRP Perp Style was 38,392 contracts. At 500 XRP per contract this is 19,196,000 XRP; at $1.16 it is approximately $22.267M, about 1.7% below the Coinbase page's $22.66M. These observations are not synchronized and are not independent confirmation. The negative funding rate means shorts pay longs on the displayed contract; it is not a directional forecast.
+
+Source: https://www.coinbase.com/derivatives/market-statistics/xpp
+
+All market and derivatives snapshots remain model-ineligible unless provider event time, contract identity, currency, freshness and cross-source comparability pass quality controls.
+
+### Current research branch
+
+PR #1643 head 8fc9813e15ed925c2e9bc0c689ab4091398a82fb has 905 commits in the PR, 904 ahead and one behind current main, with 670 changed paths. GitHub reports dirty mergeability. Its five provider check suites (Netlify, Barrot-Agent, Cloudflare Workers and Pages, Cursor, CodeRabbit) are queued/skipped; no exact-head CI result is claimed yet.
+
+The six shared changed paths with #1640 remain unchanged. #1640 has 180 unique paths and #1643 has 664 unique paths. Keep #1640 first; do not merge #1643 directly.
+
+### Review, branch protection and deployment
+
+#1640: 22/22 inline threads resolved, 62 COMMENTED review records, zero APPROVED reviews. #1643: 19/19 threads resolved, 10 COMMENTED records, zero APPROVED reviews.
+
+Main remains protected. Detailed branch-protection review/status settings return HTTP 403. The visible fallback ruleset is disabled. Pages is enabled but configuration is inaccessible. An earlier main push triggered Pages deployment; merging #1640 changes public web paths. Netlify, Cloudflare Workers and Pages, Cursor and Barrot-Agent checks are queued on #1640. Their final preview/deployment state is not confirmed; no manual deployment was initiated.
+
+No merge was performed. The remaining blockers are independent approval, unavailable branch-protection details, unresolved Pages authorization, and provider check completion.
+
+### Backlog and prediction status
+
+Non-draft backlog remains: #1640 blocked for approval/deployment authorization; #1643 blocked for one-commit divergence/dirty mergeability and queued checks; #1653 unique/unreviewed knowledge-graph work; #1644–#1650 dependency/workflow supersession candidates; #1317/#1318/#1320 structural/scientific/paper-trader supersession candidates; #1254/#1255 older dependency supersession candidates; #1269 unique mesh topology work. Preserve all until successor verification on main. The other 356 open PRs are drafts; no bulk closure.
+
+Prediction architecture remains designed/implemented on #1640, not verified running on main. Independent WORM storage, complete raw-source rebuild, synchronized multi-domain history, out-of-sample lift, real-data calibration, concept drift, independent shadow outcomes and trusted evaluator attestation remain incomplete.
+
+Nine-platform status is unchanged: ChatGPT-to-GitHub verified for this session; Copilot comment activity only; Claude, Grok, Gemini and Codex unverified; Hugging Face health check inconclusive/failed; Kaggle untested; Databricks HTTP 403. No external model received repository data.
+
+Forecast: NOT_ISSUED. No directional forecast, paper trade or real-money action occurred.
+
+### Next actions
+
+1. Complete exact-head full-suite, wheel, dependency and fail-closed verification on the combined Run 76 handoff/map/test commit.
+2. Complete provider checks on #1643 head 8fc9813; keep it blocked while behind and dirty.
+3. Obtain independent APPROVED reviews and resolve branch-protection/Pages authorization; verify provider preview/deployment behavior before any merge.
+4. Merge #1640 only when every condition passes; verify merge commit, files, automatic Pages/workflow effects and main CI.
+5. Consolidate #1643's 664 unique paths onto verified main, reconcile six shared paths and close only exact superseded PRs after successor verification.
+6. Add the weekly CFTC TFF parser, then verify scheduled ingestion and independent archival on main before predictive evaluation.
+
+Run 76 used the existing #1640 and #1643 branches only. Main remained unchanged at d4d43be. No new PR, merge, manual deployment, secret operation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree action occurred.
