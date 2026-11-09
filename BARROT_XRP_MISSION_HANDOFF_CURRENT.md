@@ -1,3 +1,88 @@
+# Run 79 — 2026-11-09T06:01:50Z
+
+## Mission and repository state
+
+- Priority one remains **XRP intelligence and prediction-engine mastery**. **Barrot V3 remains the execution, orchestration, safety and verification foundation.**
+- Current main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Existing integration workstream: [PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), branch `integration/core-capabilities-mmi-structural-paper-20261104`. Head at run start: `2be7ea0c44e737098516bd93741748e6b285912e`.
+- No new branch or PR was created. No PR was merged or closed. No existing branch was rewritten or force-pushed.
+- Recursive repository trees were fetched and were not truncated:
+  - main: 1,404 entries / 1,299 files / 493 Python files / 87 test modules / 78 workflows;
+  - #1640: 1,492 entries / 1,379 files / 555 Python files / 133 test modules / 79 workflows;
+  - #1643: 2,068 entries / 1,962 files / 768 Python files / 362 test modules / 78 workflows.
+- All four open-PR inventory pages were fetched: **372 open PRs (356 drafts, 16 non-drafts)**.
+
+## Exact-head verification
+
+**PASS** on the pre-run integration head `2be7ea0c44e737098516bd93741748e6b285912e`:
+
+- Full repository suite: **1,276 passed, 0 failed, 8 subtests passed**; inclusive coverage **59.08%** against a 53% floor. [Full CI run](https://github.com/Barrot-Agent/B-Agent/actions/runs/42566979452).
+- Core suite: **677 passed, 0 failed, 8 subtests passed**.
+- Installed wheel built and installed; the wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Dependency audit [run 42566979308](https://github.com/Barrot-Agent/B-Agent/actions/runs/42566979308): six manifests audited; **zero known vulnerabilities**.
+- Fail-closed gate [run 42566979358](https://github.com/Barrot-Agent/B-Agent/actions/runs/42566979358): passed and kept automatic merging disabled.
+- The cache-budget warning was non-fatal; the suite, wheel build and installed-wheel verification completed.
+
+The new market artifact and this handoff update are commits after `2be7ea0c44e737098516bd93741748e6b285912e`. The above green results **do not verify the new head**. Exact-head CI must complete again before merge consideration.
+
+## Main versus integration implementation
+
+- Main contains the SQLite point-in-time feature store and fixed-horizon forecast ledger. The main feature-store code explicitly says local triggers and unkeyed hashes are not adversarially tamper-proof; production use still needs an externally signed/checkpointed receipt or independently controlled immutable log.
+- Main does **not** contain `.github/workflows/xrp-public-ingestion.yml`, `barrot_agent/evolution/xrp_public_ingestion.py`, the walk-forward evaluator or probability-calibration module.
+- Those scheduled public-ingestion, SHA-256 receipt-chain, point-in-time snapshot, baseline, walk-forward, calibration, drift and fail-closed issuance components are implemented on #1640 only. They are not merged to main.
+- The current historical evaluator remains limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes; synchronized multi-domain history, durable external raw-source anchoring, trusted evaluator signing and mature live shadow outcomes remain incomplete.
+
+## Fresh XRP market capture
+
+Added `research/xrp_intelligence/20261109T060150Z-live-spot-derivatives-corroboration.json`. Capture cutoff: **2026-11-09T06:01:50Z**.
+
+- Kraken XRP/USD: last **$1.09931**; best bid **$1.09906**; best ask **$1.09923**; derived top-quote spread **1.55 bps**. The ticker returned no provider event timestamp. The spread is not full depth or executable slippage. Kraken's reported 24-hour volume was 34.54M XRP; 24-hour VWAP $1.12359; last was 1.14% below its 24-hour open and 2.16% below its 24-hour VWAP.
+- Binance Futures XRPUSDT premium index: mark **1.09995789**, index **1.10051690**, raw last-funding-rate decimal **-0.00000756**, event time **05:40:27Z**. It was **1,283 seconds old** at capture, beyond the 900-second freshness limit.
+- TradRadar at 05:10Z reported $1.72B open interest across seven venues, down 9.80% over 24 hours, OI-weighted funding +0.0003%/8h and at least $31.52M liquidations, $30.59M long. Its per-venue table shows Binance funding negative while several other venues are positive; the weighted rate masks venue heterogeneity. Its feed includes Binance and overlaps the direct Binance observation.
+- Swiftedge at 05:39Z reported XRP perpetual-futures walls at 1.0720 (4.04M XRP bid) and 1.1050 (3.72M XRP ask). These are aggregator-reported futures walls, not spot depth; resting orders can be pulled.
+- Liqwall's current search snippet could not be reproduced from the opened page body, which displayed a November 3 snapshot with materially different values. The November 9 snippet is excluded rather than treated as current.
+- No synchronized multi-venue spot depth, executable slippage, direct current open-interest receipt, exchange-flow receipt, collateral-utilization receipt or primary ETF-creation/redemption receipt was admitted.
+
+**Forecast status: NOT_ISSUED.** No directional forecast or paper trade was made. No feature from this snapshot is model-eligible.
+
+## Primary-source relationship updates
+
+- Circle's Q3 2026 Form 10-Q says Circle and SBI each contributed about $1.5M to Circle SBI Japan K.K.; Circle owns 50%, controls and consolidates the VIE, and reports no significant operating results to date. [SEC filing](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+- Circle reported Q3-end USDC circulation of $73.879B and quarterly average circulation of $73.264B. Its Q3 filing also explains that reserve income depends on circulation and reserve return rates; neither should be mistaken for XRP capital flow.
+- Coinbase's Q3 2026 Form 10-Q says it renewed its Circle arrangement on the same terms and records Q3 stablecoin revenue of $306.905M. It reports stablecoin revenue sensitivity to both higher average USDC balances and lower average interest rates. [SEC filing](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+- Circle's Q3 filing says Q3 distribution costs paid to Coinbase decreased $30M, mainly due to lower reserve income, partly offset by a higher Coinbase share of average USDC on-platform balances.
+- Circle's September 17, 2026 filing confirms a $100M private placement to Binance (1.2M shares at $80.84). This is a corporate/economic relationship, not evidence of XRP purchases or XRP settlement.
+- SBI Group's profile assigns 60% voting rights in SBI Ripple Asia as of March 31, 2026. Ripple's official profile says SBI Ripple Asia does not handle XRP; separate SBI Remit/SBI VC Trade ODL corridors use XRP. SBI VC Trade's RLUSD distribution is a separate stablecoin activity.
+- Tokyo SBIC East, Nagoya SBIC Central and Osaka SBIC West are separate regional Small and Medium Business Investment & Consultation companies. Their official profiles do not establish SBI Holdings ownership.
+- Exact-phrase status remains unresolved: “ASK Coin” has no verified XRP link; “actual capital” remains non-standard; “SBIC, ChatGPT SBIC” has no verified primary-source match.
+- Kamilah/Camilla Stevenson person identity remains supported, but canonical YouTube channel ownership is not first-party/platform-verified. Candidate videos remain excluded from a verified creator inventory.
+
+## PR inventory, overlap and merge decision
+
+- **#1640 — READY on the previously verified head; BLOCKED for merge.** At run start it was 785 commits ahead of main, zero behind, 194 changed paths, 84,451 additions and 3,548 deletions. It is non-draft and GitHub reports it mergeable. All 22 inline review threads are resolved, but it has **zero APPROVED reviews** (62 COMMENTED reviews are not approvals).
+- **#1643 — UNIQUE / UNREVIEWED research archive.** Current head `238f3ff4a69420882c77d225626a352ba19a412c`; 906 commits ahead and one behind main, 670 changed paths. The latest available CI run is on an older head and failed; there is no exact-current-head CI evidence. Preserve its 663 paths unique relative to #1640; do not merge wholesale or close.
+- **#1653 — UNIQUE repository-knowledge-graph work.** Current head `2e449ca28739a73b00dee021c9fb5f38819557c4`; 18 commits ahead and one behind main, seven changed paths. Exact-head CI passed previously, but eight inline review threads remain unresolved and no dependency-audit evidence was found. Preserve and review separately.
+- **#1642 — DRAFT / OVERLAPPING prediction subset.** One commit ahead and one behind main; overlaps the #1640 feature-store/forecast-ledger paths. Retain until the integrated successor is verified on main.
+- **#1644–#1650 — dependency/action PRs represented in #1640.** Do not close until successor content is verified on main.
+- **#1641, #1655 and #1659** remain distinct draft experimentation, structural-analysis and local-inference workstreams; preserve rather than bulk-close.
+- The remaining 356 drafts were counted but not individually adjudicated. No bulk closure.
+- No merge: the classic branch-protection endpoint returned HTTP 403; the only visible “Fall Back” ruleset is disabled; independent approval is absent. #1640 changes public web paths, and a prior main push triggered GitHub Pages deployment. No deployment authorization is present. Do not bypass checks.
+
+## Nine-platform coordination and safety
+
+- **Verified:** this ChatGPT session's authenticated GitHub connector read/write path to the existing repository branch.
+- **Not verified:** Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows. Copilot comments are not independent approval.
+- No workflow dispatch, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+## Next concrete action
+
+1. Complete full-suite CI, dependency audit and fail-closed gate on the new #1640 head created by this run.
+2. Obtain an independent APPROVED review, verify required branch-protection checks and resolve Pages deployment authorization before any merge.
+3. After #1640 is merged and verified on main, selectively reconcile #1643's unique research and #1653's graph work; close only exact duplicates with explicit cross-references.
+4. Keep forecast issuance closed until synchronized point-in-time data, durable external receipt anchoring, calibrated walk-forward lift and sufficient shadow outcomes are demonstrated.
+
+---
+
 # Run 74 — 2026-11-09T05:09:01Z
 
 ## Mission and repository state
