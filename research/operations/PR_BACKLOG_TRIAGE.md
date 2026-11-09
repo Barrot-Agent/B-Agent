@@ -1,11 +1,11 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
 
-## Run 80 — current integration and backlog classification (2026-11-09T07:37:35Z)
+## Run 81 — current integration and backlog classification (2026-11-09T07:37:35Z)
 
 - Main SHA: `d4d43be3427375cf79d190e768976de062e20287`; main tree: 1,404 entries / 1,299 files.
 - Complete open inventory: **372 PRs (356 drafts, 16 non-drafts)**. Non-drafts: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
-- #1640 current code/test head `bc01824d4987c47ac47bf365750dca9e2d3a7367`: 794 ahead / 0 behind / 198 paths; branch tree 1,496 entries / 1,383 files / 556 Python / 134 test modules / 79 workflows. Exact-head full suite 1,280 passed + 8 subtests, 59.09% inclusive coverage; core 677 passed + 8 subtests; six-manifest dependency audit zero known vulnerabilities; fail-closed gate passed and kept merge disabled. Runs: [CI 42579039413](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039413), [audit 42579039371](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039371), [gate 42579039370](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039370).
+- #1640 current branch head at Run 81 start `94f3b34197c51004e2471049139c18d31375b42c`; code/test head `bc01824d4987c47ac47bf365750dca9e2d3a7367` is 794 ahead / 0 behind / 198 paths; CI and audit on `94f3` were in progress at capture; branch tree 1,496 entries / 1,383 files / 556 Python / 134 test modules / 79 workflows. Exact-head full suite 1,280 passed + 8 subtests, 59.09% inclusive coverage; core 677 passed + 8 subtests; six-manifest dependency audit zero known vulnerabilities; fail-closed gate passed and kept merge disabled. Runs: [CI 42579039413](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039413), [audit 42579039371](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039371), [gate 42579039370](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039370).
 - #1640 has 22/22 resolved inline threads but zero APPROVED reviews. Branch-protection detail endpoint returns HTTP 403; visible fallback ruleset is disabled. A previous main push triggered Pages deployment, and #1640 changes public web assets. **Classification: BLOCKED, not ready to merge.**
 - #1643: 906 ahead / 1 behind / 670 changed paths; 19/19 threads resolved, zero approvals, no exact-head CI on current head. Seven paths overlap #1640; 663 are unique. **Classification: UNIQUE/UNREVIEWED and BLOCKED on divergence/overlap; preserve, do not merge wholesale.**
 - #1642: its source commit is an ancestor of #1640; seven paths overlap. **Classification: SUPERSEDED candidate, retain until #1640 is merged and verified on main.**

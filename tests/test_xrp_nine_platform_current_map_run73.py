@@ -284,12 +284,11 @@ def test_run77_kamilah_channel_identity_gate_keeps_video_inventory_unverified():
     assert any(x.get("transcript_self_identification") == "Camila Stevenson" for x in data["candidate_videos"])
     assert "Do not inventory" in data["status"]
 
-def test_run80_current_snapshot_records_latest_repository_and_safe_status():
+def test_run80_prior_snapshot_records_repository_and_safe_status():
     data = load_current()
-    observation = data["current_run_observations"]
-    assert data["captured_at_utc"] == data["last_verified_at_utc"]
-    assert observation["captured_at_utc"] == data["captured_at_utc"]
-    assert observation["last_verified_at_utc"] == data["last_verified_at_utc"]
+    observation = next(item for item in data["prior_run_observations"] if item.get("run_id") == 80 and item.get("captured_at_utc") == "2026-11-09T06:29:05Z")
+    assert observation["captured_at_utc"] == "2026-11-09T06:29:05Z"
+    assert observation["last_verified_at_utc"] == "2026-11-09T06:29:05Z"
     assert observation["run_id"] == 80
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
     assert observation["integration_head_before_handoff_commit"] == "7284e3b52314d05b6bc86ae18a05e143d8c35e9f"
@@ -316,3 +315,44 @@ def test_run80_current_snapshot_records_latest_repository_and_safe_status():
     assert observation["prediction_engine"]["scheduled_public_sources"] == 36
     assert observation["prediction_engine"]["oos_lift"] is False
 
+
+
+def test_run81_current_snapshot_records_latest_repository_and_safe_status():
+    data = load_current()
+    observation = data["current_run_observations"]
+    assert data["captured_at_utc"] == data["last_verified_at_utc"] == "2026-11-09T07:37:35Z"
+    assert observation["captured_at_utc"] == data["captured_at_utc"]
+    assert observation["last_verified_at_utc"] == data["last_verified_at_utc"]
+    assert observation["run_id"] == 81
+    assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
+    assert observation["integration_head_before_handoff_commit"] == "94f3b34197c51004e2471049139c18d31375b42c"
+    assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
+    assert observation["open_pr_inventory"]["total"] == 372
+    assert observation["open_pr_inventory"]["drafts"] == 356
+    assert observation["branch_ancestry"]["pr_1640"]["ahead_by"] == 795
+    assert observation["branch_ancestry"]["pr_1640"]["behind_by"] == 0
+    assert observation["branch_ancestry"]["pr_1643"]["behind_by"] == 1
+    assert observation["branch_ancestry"]["pr_1643"]["shared_path_count"] == 7
+    assert observation["workflow_safety_audit"]["integration_changed_workflow_files"] == 42
+    integration = observation["ci_evidence"]["integration"]
+    assert integration["verified_code_test_head"] == "bc01824d4987c47ac47bf365750dca9e2d3a7367"
+    assert integration["full_suite"]["passed"] == 1280
+    assert integration["full_suite"]["failed"] == 0
+    assert integration["full_suite"]["subtests_passed"] == 8
+    assert integration["full_suite"]["coverage_pct"] == 59.09
+    assert integration["core_suite"]["passed"] == 677
+    assert integration["installed_wheel"]["result"] == "NOT_RUN_ON_THIS_HEAD"
+    assert integration["dependency_audit"]["manifests"] == 6
+    assert integration["dependency_audit"]["known_vulnerabilities"] == 0
+    assert integration["fail_closed_gate"]["automatic_merge_disabled"] is True
+    assert observation["reviews"]["pr_1640"]["approving_reviews"] == 0
+    assert observation["reviews"]["pr_1640"]["threads_resolved"] == 22
+    assert observation["merge_state"]["branch_protection_status"] == "UNVERIFIED_HTTP_403"
+    assert observation["merge_state"]["pages_deployment_authorized"] is False
+    assert observation["merge_state"]["merge_performed"] is False
+    assert observation["external_actions"]["main_write"] is False
+    assert observation["external_actions"]["deployment"] is False
+    assert observation["forecast_status"] == "NOT_ISSUED"
+    assert observation["prediction_engine"]["endpoints"] == 38
+    assert observation["prediction_engine"]["scheduled_public_sources"] == 36
+    assert observation["prediction_engine"]["oos_lift"] is False

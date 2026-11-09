@@ -1,10 +1,10 @@
-# Run 80 — 2026-11-09T07:37:35Z
+# Run 81 — 2026-11-09T07:37:35Z
 
 ## Mission and repository state
 
 - Priority one remains **XRP intelligence and prediction-engine mastery**. **Barrot V3 remains the execution, orchestration, safety and verification foundation.**
 - Current main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
-- Existing integration workstream: [PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), branch `integration/core-capabilities-mmi-structural-paper-20261104`, exact pre-handoff head `bc01824d4987c47ac47bf365750dca9e2d3a7367`; comparison against current main is **794 commits ahead / 0 behind / 198 changed paths**.
+- Existing integration workstream: [PR #1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), branch `integration/core-capabilities-mmi-structural-paper-20261104`. Run 81 began on head `bc01824d4987c47ac47bf365750dca9e2d3a7367`; the first documentation handoff commit advanced it to `94f3b34197c51004e2471049139c18d31375b42c`. The 1,280-test evidence below is for code/test head `bc018`; exact-head CI and dependency audit on `94f3` were still running at capture, and this corrective map/test commit requires its own exact-head checks.
 - Recursive trees were fetched without truncation: main **1,404 entries / 1,299 files / 493 Python files / 87 test modules / 78 workflows**; #1640 **1,496 entries / 1,383 files / 556 Python files / 134 test modules / 79 workflows**.
 - All four paginated open-PR API pages were fetched: **372 open PRs (356 drafts, 16 non-drafts)**.
 - No new branch or PR was created. The existing #1640 branch is the only branch updated. Main was not written. No merge, PR closure, force-push, branch rewrite, reset, cleanup, stash or user-work discard occurred.
