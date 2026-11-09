@@ -1,3 +1,90 @@
+## Run 97 — exact-head repository audit, current XRP market update, and CI conclusion anomaly
+
+Capture reference: 2026-11-09T19:35:25Z.  
+Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.  
+PR #1640 head at audit start: `5a681950f23830357930f99748ce71729243378a` (832 commits ahead, zero behind, 210 changed paths).  
+Active integration: existing PR #1640 only. No new branch or PR.
+
+### Repository inventory and integration state
+
+- Recursive main tree: 1,404 entries, 1,299 files, 105 directories, 86 workflow files, 87 `tests/test*.py` files and 30 XRP research artifacts. Main does not contain `data/missions/primary_mission.json`, `barrot_agent/data/missions/primary_mission.json`, or `BARROT_XRP_MISSION_HANDOFF_CURRENT.md`.
+- Recursive integration tree: 1,507 entries, 1,394 files, 113 directories, 87 workflow files, 140 `tests/test*.py` files and 47 XRP research artifacts. It contains both packaged mission-manifest paths, the scheduled XRP ingestion workflow, and the current handoff.
+- Complete paginated open-PR inventory: 372 open PRs, 356 drafts and 16 non-drafts: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- PR #1640 is open, non-draft and GitHub reports `mergeable=true`, `mergeable_state=clean`. It is 832 commits ahead / zero behind, with 210 changed paths. Its `auto_merge` field is null. Review submissions: 62 COMMENTED, zero APPROVED; inline review threads: 22/22 resolved. REST reports 76 review comments and 59 top-level comments.
+- Repository metadata says `protected=true`; detailed classic branch-protection inspection returns HTTP 403. The only visible repository ruleset, “Fall Back”, is disabled and contains only deletion/non-fast-forward rules. Effective required reviews/checks remain unverified.
+- Repository-level auto-merge capability is enabled, but PR #1640 has no auto-merge configuration and the fail-closed gate explicitly disables automatic merging.
+
+### Exact-head verification and CI anomaly
+
+On exact PR head `5a681950f23830357930f99748ce71729243378a`:
+
+- Full repository test job in [CI run 42673252828](https://github.com/Barrot-Agent/B-Agent/actions/runs/42673252828): **1,308 passed, zero failed, 8 subtests passed; 59.12% inclusive coverage** against the 53% floor. Installed-wheel build and primary-mission smoke passed.
+- The same GitHub Actions run has workflow-level conclusion **failure**, despite its only returned job, “Full repository test suite”, concluding success. The workflow file defines both a “Tests” core job and a “Full repository test suite” job, but the run's jobs endpoint and check suite expose only the full-suite job. No failing step or failed check run was returned. Treat overall exact-head CI as unresolved/not green until this workflow-level discrepancy and missing core job are explained or a fresh exact-head CI run concludes success.
+- [Dependency audit 42673252493](https://github.com/Barrot-Agent/B-Agent/actions/runs/42673252493): all six manifests passed; no known vulnerabilities.
+- [Fail-closed gate 42673252814](https://github.com/Barrot-Agent/B-Agent/actions/runs/42673252814): passed; automatic merging explicitly remains disabled.
+- The preceding code/test head `e11b544972da225778ceb5a6316286e11c1b2cbf` also passed the full suite, wheel verification and dependency audit. Its fail-closed workflow run 42672532716 failed before creating a job/check; the later 5a681950 gate did execute and pass. Do not carry predecessor results forward as a substitute for the current head.
+- Main CI on exact main SHA `d4d43be3427375cf79d190e768976de062e20287` passed in [run 42526890841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890841): both the core “Tests” job and full repository test job succeeded. Main remains unchanged.
+- Latest main Cross Analysis [run 42677771078](https://github.com/Barrot-Agent/B-Agent/actions/runs/42677771078) succeeded. Its XRP sentiment-shift detector reported zero observations in both recent and prior windows; the corpus profiler reported 286 XRP mentions and +0.46 net sentiment. This is corpus sentiment, not a price signal or forecast.
+- Separate current-main workflow failures remain: Pillars Consistency Check 42621970927 (missing GitHub App ID/private key/installation ID, Databricks HTTP 403, Hugging Face BUILD_ERROR); Hover Bike Updates 42572261311 (artifact upload failed because `hover_bike_spec.json` and `bill_of_materials.md` were absent); Riemann Research Harvest 42556313011 (test conftest import failed because `pydantic` was not installed). The integration branch adds `pydantic-settings` to the Riemann validation install; this is not on main.
+
+### Workflow and external-action review
+
+All 43 workflow paths changed by #1640 were inspected, along with the principal deployment/operations workflows.
+
+- `.github/workflows/xrp-public-ingestion.yml` is scheduled hourly at minute 03 UTC and daily at 00:15 UTC, with a manual Coinbase backfill input. Its collector job runs only when `github.ref == refs/heads/main`; permissions are `actions: read` and `contents: read`. It uploads raw receipts with 90-day retention, per-run SQLite checkpoints with 7-day retention and daily/manual feature archives with 90-day retention. It does not write repository contents. It is not active on main until the PR is merged.
+- Legacy Groq, audio, lyric, game-state, signal-ledger, free-image and subscriber/corpus workflows changed to manual no-op/quarantine states. The remaining capability-design, capability-discovery, data-value-triage and signal-summary Groq workflows are manual, artifact-only and require public/authorized-input confirmation plus an exact main SHA. None was dispatched.
+- `barrot-ops.yml` is manual-only and requires `confirm_external_change=YES` plus exact main SHA. It can overwrite a Databricks workspace notebook and download a Kaggle dataset; it does not submit a Kaggle competition entry. No run occurred.
+- `barrot-merge.yml` is manual-only and requires explicit confirmation and exact main SHA before uploading a merged model artifact to Hugging Face. No run occurred.
+- `deploy-a2a-worker.yml` is manual-only and requires Cloudflare deployment confirmation, exact main SHA and a separate secret-rotation YES before deploying the Worker and uploading secrets. No run occurred.
+- `sync-self-hosted-brain.yml` is manual-only and requires Hugging Face deployment confirmation, exact main SHA and a separate secret-rotation YES; it verifies the target Space is private before upload. No run occurred.
+- `databricks-bundle.yml`, `sync-huggingface.yml`, Cloudflare diagnostics and other legacy privileged writers are no-op quarantines. The Coinbase paper-trader workflow is manual, requires explicit confirmation and exact main SHA, and is artifact-only; it was not dispatched.
+- Cross Analysis, Riemann Harvest, Hover Bike and WebMCP enrichment are artifact-oriented; no repository write or production deployment was triggered in this run.
+
+No external workflow was dispatched. No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or external-model data transfer occurred.
+
+### Fresh XRP spot, depth, derivatives and ETF evidence
+
+A separate research-only artifact was added at `research/xrp_intelligence/20261109T193525Z-run97-live-market-institutional-update.json` with a Markdown companion. The web-rendered values below were not captured as raw HTTP byte streams; no SHA-256 receipt was fabricated and none is admitted to the feature store.
+
+- Kraken XRP/USD ticker retrieved 19:35:25 UTC, with no provider event timestamp: last $1.09120; bid $1.09113; ask $1.09119; top spread approximately 0.55 bp; 24-hour volume 47.657M XRP; 24-hour VWAP $1.10966982; 24-hour high/low $1.15640/$1.07502. Kraken's `o` field is the UTC-day open ($1.11203), not the rolling 24-hour open.
+- OKX XRP-USDT ticker event timestamp 2026-11-09T19:35:03.368Z: last 1.0895 USDT; bid/ask 1.0894/1.0895; 24-hour volume 94.792M XRP and quote turnover 104.803M USDT. USDT was not normalized to USD, so no cross-venue spread or arbitrage claim is made.
+- Edge or Not order-book snapshot at 19:15 UTC: mid $1.0918; $8.8M bids and $8.2M asks within 1%; largest displayed ask $2.4M at $1.0929 and bid $2.1M at $1.0897. Its own methodology says it combines Binance spot and OKX perpetual books, samples each minute and averages over 15 minutes. It is not independent of OKX data, excludes other venues/hidden size, and resting orders can be pulled.
+- Liqwall at 17:42 UTC: $1.23B aggregated OI (−5.8% 24h), $36.8M liquidations ($35.5M longs, $1.4M shorts), average funding −0.0002%/8h while Binance funding was +0.0057%; 74.6% of Binance XRP accounts were long.
+- TradRadar at 17:25 UTC: $1.66B OI (−12.29%), OI-weighted funding −0.0007%/8h, at least $38.45M liquidations ($36.98M longs, $1.48M shorts), 79.7% long accounts across its seven-venue table.
+- Alpha Finance at 14:04 UTC: $2.50B OI, $3.71B 24h volume, $38.8M long and $1.4M short liquidations. Its $4.8M short cluster at $1.1157 and $3.3M long cluster at $1.0739 are modeled from OI/leverage tiers, not observed individual liquidation orders.
+- Aggregated OI ranges from $1.23B to $2.50B, a little over 2.0x. Venue sets, aggregation and cutoffs differ; do not average these figures or count the providers as independent. The common observation is long-heavy deleveraging; funding is near-zero/mixed. Continuation and exhaustion/mean-reversion remain competing hypotheses.
+- XRP Insights' issuer-page holdings dataset is as of Nov 6: 231 trading days, 1,597 fund/day rows, 1,195,182,552 XRP held across its six US spot funds plus BITW, and a derived −812,529 XRP holdings change for Nov 2–6 (about −$939K at its reference prices). Its methodology explicitly derives flows from holdings deltas; this is not an issuer-confirmed cash creation/redemption series. The dataset includes excluded and reconstructed periods; row-level status must be inspected before use.
+- Coin365 reported −$509.3M on Nov 9 across 25 US spot crypto ETFs spanning BTC, ETH, SOL, XRP, LTC and HBAR. This is an all-asset total, not an XRP-specific flow.
+- Coinbase's Digital Asset Disclosures page says its Coinbase Holdings data are as of Mar 31, 2026 and defines “Commercial Engagement” broadly. It lists XRP as Coinbase Holding “Yes” and Commercial Engagement “Yes” in both the US trading-assets and Coinbase Custody Trust Company tables; the custody table also lists cbXRP as “Yes/Yes” and RLUSD as “No/Yes”. This establishes supported/engaged asset relationships under Coinbase's disclosure definitions, not quantities, proprietary inventory, collateral utilization or XRP buying demand.
+- Reuters reported Nov 9 that PNC and Coinbase are piloting USDC receipts for eligible corporate/institutional clients with automatic USD conversion. This is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand.
+- Japan's Ministry of Finance intervention breakdown reported Nov 9 covers earlier July 30–Aug 3 activity totaling about ¥15.3993T. Publication time and intervention event dates must remain separate; it is a macro/carry-trade variable, not a proven XRP cause.
+
+Sources and caveats are recorded in the companion artifact. Forecast status remains **NOT_ISSUED**. These web-rendered observations have no raw-byte SHA-256 receipts and are not model-admitted.
+
+### Institutional/identity threads carried forward
+
+No new primary-source resolution was made this run for Japan's regional SBIC companies, ASK Coin, “actual capital”, “SBIC, ChatGPT SBIC”, or the Camilla/Kamilah Stevenson channel inventory. Preserve the previous findings as unresolved/qualified: SBIC East/Central/West are distinct regional investment companies, not SBI Holdings; Permission Coin ASK is only a candidate; “actual capital” is not a standardized XRP metric; no primary exact match for “SBIC, ChatGPT SBIC” has been established; identity corroboration does not prove ownership of every similarly named YouTube channel.
+
+### Backlog and next actions
+
+- #1640: blocked integration PR; no independent approval, branch-protection visibility or Pages deployment authorization.
+- #1643: unique research archive, 670 paths total, 663 unique and seven overlapping #1640; base is stale and GitHub reports mergeable=false. Preserve all unique research.
+- #1653: unique repository knowledge graph, seven paths total, six unique and one overlapping #1640. Preserve unique graph work; no wholesale merge.
+- #1644–#1650: all changed paths overlap #1640; candidate superseded dependency/action subsets. Verify exact blobs/versions before closing.
+- #1317, #1318 and #1320: all changed paths overlap #1640; preserve until the successor is verified on main.
+- #1254 and #1255: each changes one path already changed by #1640; verify exact version/content before closing.
+- #1269: nine paths, eight unique mesh/topology paths and one CI overlap; preserve.
+- Draft #1642's seven changed paths overlap #1640; do not close before verified successor integration.
+- No PRs were closed. Complete inventory remains 372 open PRs.
+
+The prediction engine's receipt chain, point-in-time feature store, four baselines, chronological purge/embargo walk-forward evaluator, calibration diagnostics, drift checks and fail-closed forecast ledger are implemented on #1640, not main. The 39-source registry has 36 hourly sources, one weekly CFTC TFF raw-only source and two non-commercial XRPL node endpoints excluded from scheduled collection. External WORM anchoring, independent timestamp authority, mature synchronized history, demonstrated out-of-sample lift, real-data calibration and sufficient shadow outcomes remain absent.
+
+Next concrete actions: (1) explain/fix the CI workflow-level failure and missing “Tests” job, then obtain a fresh exact-head green workflow conclusion; (2) obtain an independent APPROVED review and verify effective branch-protection requirements; (3) resolve the automatic GitHub Pages deployment authorization boundary; (4) only then consider merge, fetch main, verify merge commit/files, run main CI and inspect side effects; (5) preserve #1643/#1653/#1269 unique work and close only exact duplicates after verified integration; (6) advance external receipt anchoring, CFTC parser validation and synchronized history.
+
+No merge, main write, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+---
+
 ## Run 96 final — exact-head tests and dependency audit passed; merge remains blocked
 
 Current main SHA: `d4d43be3427375cf79d190e768976de062e20287`.  
