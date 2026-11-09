@@ -1,3 +1,39 @@
+## Run 89 — 2026-11-09T13:24:46Z — repeated market retrieval and Kraken UTC-day-open correction
+
+### Repository and integration status
+
+- Main remains `d4d43be3427375cf79d190e768976de062e20287`. The priority-one XRP mission registry, scheduled public-ingestion workflow, point-in-time feature store, leakage-safe evaluation, calibration/drift controls and forecast ledger remain on the existing integration branch, not main.
+- PR [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640) pre-update head: `1fa8bf351a9b26ab4c803394c83a72ea13c7aa17`, base current main, 812 commits ahead / 0 behind / 202 changed paths; open, non-draft and GitHub reports mergeable.
+- Exact-head predecessor CI [42625425030](https://github.com/Barrot-Agent/B-Agent/actions/runs/42625425030) core suite passed **677 tests + 8 subtests**; full suite was still running at capture. [Dependency audit 42625425385](https://github.com/Barrot-Agent/B-Agent/actions/runs/42625425385) and [fail-closed gate 42625424893](https://github.com/Barrot-Agent/B-Agent/actions/runs/42625424893) passed. This Run 89 update creates a new commit; all exact-head checks must rerun on it.
+- #1640 still has 62 COMMENTED review submissions, zero APPROVED reviews and 22/22 resolved inline threads. Detailed branch-protection returns HTTP 403; visible fallback ruleset is disabled. A previous main push triggered Pages deployment, and no specific authorization for that automatic public deployment is present. **No merge.**
+
+### Kraken Ticker field correction and retrieval-quality finding
+
+- Kraken's official Ticker documentation says today's prices start at midnight UTC. The Kraken SDK's field map explicitly labels `o` as today's opening price, while `v`, `p`, `t`, `l` and `h` each expose today and rolling-24-hour values separately.
+- The previous `20261109T062905Z-live-spot-quote-staleness-crosscheck.json` mislabeled `o=1.11203` as `open_24h_usd` and `last_vs_24h_open_pct`. The correct label is `utc_day_open_usd`; the Kraken Ticker payload does not provide a rolling 24-hour open. The earlier artifact remains unchanged and is explicitly corrected by the new artifact.
+- The production adapter already emits `xrp.spot.kraken.utc_day_open` with `aggregation_window="utc_day"`; no parser implementation change was required. The new regression test exercises that behavior and verifies the legacy mislabel is not silently reused.
+- Two public endpoint renderings captured 279 seconds apart were identical for both Kraken and OKX. No HTTP Date/Age/ETag/Last-Modified or cache headers were exposed. Cache versus unchanged exchange response is unresolved; this is not proof of a no-trade interval.
+- Kraken surfaced last 1.09609 USD; bid 1.09604 (2,281 XRP), ask 1.09605 (229 XRP); top spread 0.0912 bps; 24h volume 43.0966M XRP; 24h VWAP 1.11442417; high 1.16816 / low 1.07502. Its UTC-day open is 1.11203; last is 1.4334% below that and 1.6452% below 24h VWAP. Provider event time is absent.
+- OKX last 1.1032 USDT carries provider timestamp 13:07:55.572Z, 1,010.428 seconds old at second capture; it is stale beyond the 300-second limit and not normalized to USD.
+- Swiftedge's 13:09Z XRP perpetual-futures book page was 946 seconds old at capture; its venue coverage is undisclosed. It is not spot depth or model input.
+- **Market admission: none. Forecast status: NOT_ISSUED.** No synchronized Level-2 spot depth or trade tape was captured.
+
+New artifact: `research/xrp_intelligence/20261109T132446Z-market-repeat-and-kraken-utc-day-open-correction.json`. Regression test: `tests/test_xrp_kraken_utc_day_open_repeat_correction_20261109.py`.
+
+### OCC/SBIC and ASK research retained
+
+- Run 87's OCC CAS records verify Coinbase National Trust Company effective 2026-11-06, Ripple National Trust Bank effective 2026-10-26 and First National Digital Currency Bank (Circle company-reported Circle National Trust name) effective 2026-07-24. Those are legal charter statuses, not AUC, paid-in capital, XRP purchases or XRP collateral.
+- Run 87's primary SBIC profiles identify East/Tokyo, Central/Nagoya and West/Osaka as separate sister companies, not SBI Holdings. The SBIC/ChatGPT reference is an educational course for Tokyo SBIC investee companies, not an OpenAI partnership.
+- Run 88's Permission ASK documentation supports ASK as a candidate for the exact phrase, but the user's intended referent is unconfirmed. Official active networks are Base and Polygon; no direct XRP/XRPL integration is listed. Keep ASK out of XRP model features. Token supply is not actual cash capital or XRP purchases.
+
+### Backlog and next action
+
+- Complete open inventory last verified in Run 86: 372 PRs (356 drafts, 16 non-drafts). #1643 preserves 663 unique research paths; #1653 preserves six unique graph paths; #1642 is an exact-overlap supersession candidate; #1644–#1650 and #1317/#1318/#1320 require path/blob reconciliation; #1269 remains unique; #1254/#1255 remain dependency candidates; #1659 is a separate Termux/llama.cpp draft. No PR closure.
+- Next: verify exact-head full CI, dependency audit and fail-closed gate for this Run 89 commit; keep #1640 blocked pending independent approval, effective branch-protection evidence and specific Pages-deployment authorization; continue raw-source anchoring and synchronized market ingestion.
+- No merge, main write, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+
+
 ## Run 84 institutional, corporate-strategy and macro addendum — 2026-11-09
 
 ### Regulatory status: three distinct trust-bank timelines

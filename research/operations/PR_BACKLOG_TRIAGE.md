@@ -1,5 +1,18 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
+## Run 83 — current integration and backlog classification (2026-11-09T13:24Z)
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Complete open inventory last verified in Run 86: **372 PRs (356 drafts, 16 non-drafts)**.
+- #1640 pre-update head `1fa8bf351a9b26ab4c803394c83a72ea13c7aa17`: 812 ahead / 0 behind / 202 changed paths; 22/22 inline threads resolved; 62 COMMENTED submissions and zero APPROVED reviews. Main protection details return HTTP 403; visible fallback ruleset disabled; automatic Pages deployment side effect remains unauthorized. **BLOCKED; do not merge.**
+- Exact-head predecessor: core 677 passed + 8 subtests; full suite was still in progress. Dependency audit and fail-closed gate passed. Runs: [CI 42625425030](https://github.com/Barrot-Agent/B-Agent/actions/runs/42625425030), [audit 42625425385](https://github.com/Barrot-Agent/B-Agent/actions/runs/42625425385), [gate 42625424893](https://github.com/Barrot-Agent/B-Agent/actions/runs/42625424893). New Run 89 commit requires fresh exact-head checks.
+- #1643: 906 ahead / 1 behind / 670 paths; seven overlap #1640 and 663 unique; dirty/diverged. **UNIQUE/UNREVIEWED; preserve.**
+- #1653: six unique graph paths plus one CI overlap; eight unresolved review threads. **UNIQUE/UNREVIEWED; preserve.**
+- #1642: seven paths all overlap #1640. **SUPERSEDED candidate; retain until verified on main.**
+- #1644–#1650: dependency/action overlap candidates. #1317/#1318/#1320: structural/schema/paper-trader supersession candidates. #1269: unique geometry/topology. #1254/#1255: dependency candidates. #1659: separate Termux/llama.cpp draft. No PRs closed.
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+---
 
 ## Run 81 — current integration and backlog classification (2026-11-09T07:37:35Z)
 
