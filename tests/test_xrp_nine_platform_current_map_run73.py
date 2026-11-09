@@ -91,7 +91,7 @@ def test_run73_current_ci_failure_is_recorded_without_relabeling_as_green():
     failed = integration["latest_handoff_map_head"]
 
     assert failed["full_suite"]["result"] == "failure"
-    assert failed["full_suite"]["passed"] == 1220
+    assert failed["full_suite"]["passed"] == 1221
     assert failed["full_suite"]["failed"] == 1
     assert failed["core_suite"]["result"] == "success"
     assert failed["wheel_verification"] == "skipped after full-suite failure"
