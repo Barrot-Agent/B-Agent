@@ -1056,7 +1056,7 @@ def test_xrp_insights_etf_aggregator_is_captured_raw_only_and_never_promoted_to_
     assert records == []
     assert source_as_of is None
     assert eligible is False
-    assert "hash_only" in reason
+    assert "raw_only" in reason
     assert "primary_receipts" in reason
 
     invalid = dict(payload)
@@ -1161,7 +1161,7 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
         ("xrp_etf_21shares_toxr_issuer_page", "www.21shares.com", "https://www.21shares.com/en-us/products-us/toxr"),
     ],
 )
-def test_additional_primary_issuer_pages_are_registered_and_retained_raw_only(source_id, host, url):
+def test_additional_primary_issuer_pages_are_registered_and_retained_hash_only(source_id, host, url):
     captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
     payload = _fake_fetcher(captured)(source_id, url)["payload"]
     records, source_as_of, eligible, reason = PARSERS[source_id](
@@ -1172,7 +1172,7 @@ def test_additional_primary_issuer_pages_are_registered_and_retained_raw_only(so
     assert records == []
     assert source_as_of is None
     assert eligible is False
-    assert "raw_only" in reason
+    assert "hash_only" in reason
 
 
 
