@@ -3186,3 +3186,51 @@ Source capture is rendered public-page text; raw HTTP bytes and response headers
 Forecast status remains **NOT_ISSUED**. No ASK data is admitted to XRP features.
 
 Exact-head predecessor verification: `dccc86af2f806cf467ec82687c2e508586c659d0` passed core 677 tests + 8 subtests; full repository suite 1,286 tests + 8 subtests, 59.09% inclusive coverage; wheel/mission verification; six-manifest dependency audit; and fail-closed gate. The Run 88 append, artifact and test below create a new commit; those results do not transfer to the new head.
+
+
+## Run 90 — Evernorth actual-capital, XRP purchase and Cantor facility reconciliation — 2026-11-09T13:32:22Z
+
+Primary-source update: the SEC-filed Evernorth 424B3 and the SEC EFFECT notice materially improve the distinction between **cash raised, XRP actually purchased, XRP contributed in kind, financing capacity and executed drawdown**.
+
+### Historical capital and XRP holdings actually disclosed
+
+The October 30, 2026 prospectus states:
+- Since inception, Pubco raised **$214.1 million cash** and received **261,919,096 XRP** relating to private-placement subscription agreements.
+- It used the $214.1 million cash proceeds to purchase **84,365,876 XRP**.
+- Total in-kind XRP contributions at closing were approximately **388,910,554 XRP**.
+- As of **October 9, 2026**, Evernorth reported approximately **473 million XRP held**. The arithmetic 388,910,554 + 84,365,876 = 473,276,430 is consistent with the rounded 473m holding. Do not add the 261.919m component to the 388.911m total without an investor-level schedule.
+- Closing gross cash proceeds were approximately **$272.6 million** ($224.6m private-placement investments plus $48.0m trust-account release after redemptions), before transaction expenses. This is a related closing cash presentation, not additive to the $214.1m advance-funding cash.
+- A separate **$30.0 million convertible-note** issuance was paid and issued on October 12, with approximately $30.0m net proceeds before transaction expenses. The purchaser was documented as NH Investment & Securities Co. acting as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3. The prospectus does not establish that these note proceeds were subsequently used to buy XRP.
+- The prospectus identifies BitGo Trust as the initial third-party XRP custodian and Coinbase as Evernorth's selected principal market for financial-reporting impairment analysis. The latter is the issuer's accounting determination, not proof Coinbase bought or held Evernorth XRP.
+
+Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm
+
+### Ripple credit facilities — borrower identity matters
+
+- The **Company** (not Evernorth) had a Ripple revolving facility increased to $10.0m; the prospectus says $9.7m was borrowed as of October 7, including third-party payments Ripple made on behalf of the Company and Evernorth.
+- Evernorth's separate $1.0m Ripple revolving facility had **no borrowings as of June 30, 2026**.
+- Do not attribute the Company's $9.7m borrowing to Evernorth or classify it as direct XRP purchases.
+
+### Cantor facility: registration effective, but commencement and drawdown remain unverified
+
+The SEC EFFECT notice for Form S-1 file 333-299620 records effectiveness **October 30, 2026 at 4:00 p.m.** (accepted November 2). https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/xslEFFECTX01/primary_doc.xml
+
+The Cantor facility covers up to 5,218,935 Evernorth Class A shares, at 97% of applicable VWAP, with issuer discretion, a 20%-of-volume per-purchase limit unless expressly agreed otherwise and a 4.99% beneficial-ownership cap. The defined Commencement Date requires satisfaction or waiver of all Section 7.2 conditions; registration effectiveness is only one condition. Other conditions include current SEC filings, representations/covenants, no stop order, listing approval, no continuing Material Adverse Effect, and legal opinions/auditor comfort letters. No public Commencement Date, purchase notice, share issuance, Cantor cash settlement or incremental XRP purchase was verified in the reviewed public record as of this capture.
+
+The $521,893.50 upfront commitment fee was due within five business days after the Upfront Determination Date (the October 30 effectiveness date, making November 6 the contractual five-business-day deadline). It is described as fully earned and non-refundable regardless of whether any VWAP purchases occur. **Payment itself is not verified.** The aggregate Cantor commitment-fee cap is $1.0m; documented expense reimbursement cap $500k; qualified independent underwriter fee $200k and its expense cap $1k. The combined $1.701m is a maximum disclosed envelope scenario, not an amount confirmed paid.
+
+### Prospectus arithmetic issue requiring reconciliation
+
+The agreement says Cantor's purchase price is **97% of VWAP**. At 5,218,935 shares and the October 29 XRPN close of $14.71:
+- Undiscounted multiplication: **$76,770,533.85**.
+- 97% calculation: **$74,467,417.83**.
+- The prospectus cover narrative and the $14.71 table row show approximately **$76.8m gross**, while the table footnote says table purchase prices assume 97% of the assumed price.
+- The narrative calls approximately **$74.4m** “net” after estimated fees and expenses, but that is approximately the 97%-discounted gross amount before separately disclosed fees. The table's $10, $15 and $20 rows are consistent with the 97% formula; the $14.71 row is not.
+
+This is an internal arithmetic/disclosure inconsistency requiring issuer reconciliation. It is not evidence of misconduct. The $76.8m/$74.4m figures are potential facility proceeds, not actual cash received.
+
+### Prediction and actual-capital boundary
+
+Confirmed historical cash-funded XRP purchases and the October 9 treasury holding can be stored as dated descriptive institutional-flow evidence. The Cantor facility's registration effectiveness, maximum share capacity and possible future proceeds are **not** a current XRP capital-flow feature. No incremental XRP purchase from the Cantor facility is established. Forecast status remains **NOT_ISSUED**.
+
+Exact-head predecessor verification: `92da73ddb5f83389b9976ef3438f4b25af6e21df` passed core **677 tests + 8 subtests**; full repository suite **1,293 tests + 8 subtests**, inclusive coverage **59.09%**; wheel/mission verification; six-manifest dependency audit (no known vulnerabilities); and fail-closed gate. The Run 90 artifact, regression tests and handoff append form a new commit; those predecessor results do not transfer to the new head.
