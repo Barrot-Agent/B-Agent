@@ -3069,3 +3069,61 @@ Artifacts:
 - The XRP ingestion workflow is guarded to main and therefore is **not active on main**. Its GitHub artifacts/cache are retention-limited (90-day raw/daily artifacts; 7-day per-run feature checkpoint/cache), not independent WORM storage or external receipt anchoring.
 - Next: (1) obtain a genuine independent APPROVED review and verify effective branch-protection requirements; (2) resolve the specific Pages deployment authorization boundary; (3) re-run exact-head full suite, dependency audit and fail-closed gate after any further change; (4) only then merge #1640 if all conditions are satisfied; (5) fetch main and verify merge commit/files and main CI; (6) reconcile #1643's 663 unique paths and #1653's graph work in one successor per coherent workstream; (7) verify the scheduled ingestion and Riemann workflows after their changes reach main.
 - No merge, main write, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push, reset, clean, stash, restore-overwrite or discard occurred in this run.
+
+
+## Run 87 — OCC CAS final-status correction and SBIC primary identity resolution — 2026-11-09T13:18:21Z
+
+### OCC regulator records resolve all three trust-bank effective dates
+
+The individual OCC Corporate Applications Search (CAS) records now provide primary regulator evidence for each filing's **Consummated/Effective** status. This supersedes the earlier Coinbase label OCC-DOCUMENT-PENDING and the earlier reliance on the slower Interpretations & Decisions index.
+
+- **Coinbase National Trust Company**, OCC control `2025-Charter-343449`, proposed charter `25390`: received 2025-10-03; approved 2026-04-02; **Consummated/Effective 2026-11-06**. OCC CAS: https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2
+- **Ripple National Trust Bank**, OCC control `2025-Charter-342347`, proposed charter `25364`: received 2025-07-02; approved 2025-12-12; **Consummated/Effective 2026-10-26**. OCC CAS: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+- **First National Digital Currency Bank, N.A.** (Circle's company-reported Circle National Trust name), OCC control `2025-Charter-342299`, proposed charter `25361`: received 2025-06-30; approved 2025-12-12; **Consummated/Effective 2026-07-24**. OCC CAS: https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2
+
+Each CAS filing is a separate new bank charter under a holding company, trust-bank transaction. These status records do not establish commencement of every proposed service, AUC, paid-in capital, XRP holdings, XRP purchases or XRP collateral use.
+
+### Coinbase charter scope and actual-capital distinction
+
+OCC Corporate Decision #1370 (2026-04-02) describes Coinbase National Trust Company as a fiduciary digital-asset custodian primarily for institutional clients, with related transactional services limited to custodied fiat/digital assets in customer custody accounts. It may act as a finder for access to affiliate staking, prime trading and prime financing; the trust bank does not provide those underlying affiliate services itself. Custodied fiat is held in FBO accounts at third-party banks. The OCC decision states that the bank does not propose to issue stablecoins and will not be an insured depository institution. Source: https://www.occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf
+
+The decision's first-three-year conditions include minimum Tier 1 capital of **$60 million**, Eligible Liquid Assets of the greater of 50% of Tier 1 capital or $30 million, and separate liquidity equal to 180 days of operating expenses. These are regulatory requirements, not evidence that $60 million was actually raised, not client assets under custody, and not XRP purchases. Affiliate financing access is not lending by the trust bank.
+
+### Ripple and Circle scope remains entity-specific
+
+- Ripple's company-reported RNTB scope covers segregated RLUSD reserve management, collateral-trustee services for RLUSD holders and fiduciary custody. This is not XRP collateral.
+- Circle's First National Digital Currency Bank/Circle National Trust remains distinct from the regulated Circle affiliates that issue USDC. A trust-bank effective date or future reserve-management capability is not evidence of XRP reserve allocation.
+- Coinbase's trust bank is a custody/trust entity, not a stablecoin issuer; the OCC decision explicitly says it did not propose stablecoin issuance.
+
+### SBIC East/Central/West identity and ChatGPT reference
+
+Primary regional company profiles resolve the names:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number `9011001030621`; established 1963-11-15. https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-18. https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-20. https://www.sbic-wj.co.jp/profiles/profile/
+
+Their official profiles identify the regional companies as sister companies. They are distinct legal entities; do not collapse them into SBI Holdings or infer an SBI Holdings parent/subsidiary relationship.
+
+The exact SBIC/ChatGPT public reference is now primary-source resolved to Tokyo SBIC's **June 12–13, 2025** two-day introductory generative-AI and machine-learning course for its investee companies. Day one listed ChatGPT use; day two listed Microsoft Copilot features. General companies were not eligible to register. https://www.sbic.co.jp/training/20250612co/
+
+Classification: educational training event. It does not establish an OpenAI–SBI Holdings commercial partnership, an SBI Holdings deployment, XRP integration or live platform collaboration.
+
+### Actual-capital taxonomy and prediction boundary
+
+Keep separate: regulatory minimum capital; paid-in/raised capital; customer assets under custody; stablecoin reserves; executed XRP spot purchases; and outstanding XRP collateral utilization. No verified XRP purchase/collateral amount is established by these OCC or SBIC records. All new evidence is research-only and model-ineligible.
+
+**Forecast status: NOT_ISSUED.** No directional XRP probability is inferred from charter effective dates, regulatory capital requirements or an educational AI course.
+
+### Exact-head verification before this correction
+
+On prior handoff head `451f7d02994ded115e2bcb654d304fe9202b0371`:
+- Full repository CI [42624086929](https://github.com/Barrot-Agent/B-Agent/actions/runs/42624086929): **1,281 passed, 8 subtests passed**; inclusive coverage **59.09%** against the 53% floor.
+- Core suite: **677 passed, 8 subtests passed**.
+- Wheel build and installed primary-mission smoke passed.
+- Six-manifest dependency audit [42624086796](https://github.com/Barrot-Agent/B-Agent/actions/runs/42624086796) passed with no known vulnerabilities reported.
+- Fail-closed gate [42624086816](https://github.com/Barrot-Agent/B-Agent/actions/runs/42624086816) passed and kept merging disabled.
+
+This Run 87 artifact, test and handoff append form a new commit; their exact-head CI, dependency audit and fail-closed gate must complete before any merge consideration. The preceding results are not evidence for the new commit.
+
+No main write, merge, deployment, external model transfer, paper trade, real-money action, force-push or destructive worktree operation occurred.
