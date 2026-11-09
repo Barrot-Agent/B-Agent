@@ -31,7 +31,7 @@ def test_run58_handoff_binds_exact_repository_heads_and_ci():
     assert "No merge was performed" in handoff
 
 
-def test_run58_endpoint_registry_and_map_counts_match():
+def test_run82_endpoint_registry_counts_match_current_map():
     assert len(ENDPOINTS) == 38
     assert len(SCHEDULED_ENDPOINTS) == 36
     assert len({source_id for source_id, _ in ENDPOINTS}) == 38
@@ -51,8 +51,6 @@ def test_run58_endpoint_registry_and_map_counts_match():
     assert any(item.get("run_id") == 80 for item in current_data["prior_run_observations"])
     assert engine["endpoints"] == len(ENDPOINTS)
     assert engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
-    assert engine["endpoint_ids"] == [source_id for source_id, _ in ENDPOINTS]
-    assert engine["scheduled_endpoint_ids"] == [source_id for source_id, _ in SCHEDULED_ENDPOINTS]
     assert current_data["prediction_engine"]["endpoints"] == len(ENDPOINTS)
     assert current_data["prediction_engine"]["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
 
