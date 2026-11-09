@@ -49,7 +49,7 @@ def test_run81_current_snapshot_preserves_run78_run77_and_historical_map():
     assert observation["run_id"] == 81
     assert observation["captured_at_utc"] >= prior78["captured_at_utc"]
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "7284e3b52314d05b6bc86ae18a05e143d8c35e9f"
+    assert observation["integration_head_before_handoff_commit"] == "94f3b34197c51004e2471049139c18d31375b42c"
     assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
     assert prior78["prediction_engine"]["endpoints"] == 35
     assert prior78["prediction_engine"]["scheduled_public_sources"] == 33
