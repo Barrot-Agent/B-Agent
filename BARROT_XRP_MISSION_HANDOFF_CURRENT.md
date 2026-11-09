@@ -4081,3 +4081,13 @@ PR #1640 has 62 review records, all COMMENTED, zero APPROVED reviews, and 22/22 
 - NOT EXECUTED: main write, merge, deployment, secret read/rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation.
 
 Next concrete action: verify exact-head CI/audit/fail-closed gate on the handoff/map descendant, then keep #1640 blocked until independent approval, effective branch-protection requirements and specific Pages publication authorization are established.
+
+## Run 98 follow-up — exact-head test diagnosis (2026-11-09T20:20:17Z)
+
+The documentation/map descendant `97a2308ca34decc5d5dc47b72951457deb53035d` triggered fresh checks. Core tests passed **677/677**. The six-manifest dependency audit passed with zero known vulnerabilities, and the fail-closed gate passed with automatic merging disabled.
+
+The full repository suite collected 1,308 tests and completed with **1,307 passed, one failed, eight subtests passed**, and 59.12% inclusive coverage. The single failure is `tests/test_xrp_mission_handoff_run58.py::test_run96_endpoint_registry_counts_match_current_map`: it hard-codes `latest_run_snapshot.run_id == 96` even though the current map correctly advanced to Run98. The map intentionally preserves `current_run_observations` Run82 for historical regression compatibility and retains Run95/96 in run history. This is a stale test expectation, not a runtime or prediction-engine failure.
+
+The wheel build/installed-wheel smoke was skipped because the full-suite step failed. The test is being corrected to assert Run98, retain Run82 as the legacy current observation, and verify 39 endpoints / 36 scheduled sources / one weekly CFTC raw-only source / two excluded XRPL nodes. The repair stays on the existing #1640 branch; no new PR or branch.
+
+Merge remains blocked. The corrected test must pass on a new exact head together with the full repository suite, installed-wheel smoke, six-manifest dependency audit and fail-closed gate.

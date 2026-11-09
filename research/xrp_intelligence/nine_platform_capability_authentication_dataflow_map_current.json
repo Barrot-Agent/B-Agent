@@ -29005,11 +29005,37 @@
   },
   "ci_evidence": {
     "integration": {
-      "verified_head": "1a3861f5144b499be3115f14abda2affc0b024cc",
+      "verified_head": "97a2308ca34decc5d5dc47b72951457deb53035d",
+      "code_test_parent": {
+        "head": "1a3861f5144b499be3115f14abda2affc0b024cc",
+        "full_suite": {
+          "run_id": 42686093454,
+          "passed": 1308,
+          "failed": 0,
+          "subtests": 8,
+          "coverage_pct": 59.12
+        },
+        "core": {
+          "passed": 677,
+          "failed": 0,
+          "subtests": 8
+        },
+        "wheel": "PASS",
+        "dependency_audit": {
+          "run_id": 42686092767,
+          "manifests": 6,
+          "known_vulnerabilities": 0
+        },
+        "fail_closed_gate": {
+          "run_id": 42686093370,
+          "passed": true,
+          "automatic_merge_disabled": true
+        }
+      },
       "full_suite": {
-        "run_id": 42686093454,
-        "passed": 1308,
-        "failed": 0,
+        "run_id": 42691540102,
+        "passed": 1307,
+        "failed": 1,
         "subtests": 8,
         "coverage_pct": 59.12
       },
@@ -29018,18 +29044,19 @@
         "failed": 0,
         "subtests": 8
       },
-      "wheel": "PASS",
+      "wheel": "SKIPPED_AFTER_FULL_SUITE_FAILURE",
       "dependency_audit": {
-        "run_id": 42686092767,
+        "run_id": 42691540301,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 42686093370,
+        "run_id": 42691540024,
         "passed": true,
         "automatic_merge_disabled": true
       },
-      "handoff_map_descendant_exact_head_ci": "PENDING"
+      "failure": "tests/test_xrp_mission_handoff_run58.py::test_run96_endpoint_registry_counts_match_current_map; stale expected run_id 96, actual latest Run98",
+      "repair": "Update the test to assert Run98 and preserve legacy current_run_observations Run82."
     },
     "main": {
       "head": "d4d43be3427375cf79d190e768976de062e20287",
@@ -29643,15 +29670,15 @@
       "draft": false,
       "mergeable": true,
       "mergeable_state": "clean",
-      "head_sha": "1a3861f5144b499be3115f14abda2affc0b024cc",
-      "ahead_by": 833,
+      "head_sha": "97a2308ca34decc5d5dc47b72951457deb53035d",
+      "ahead_by": 834,
       "behind_by": 0,
       "changed_paths": 212,
       "approvals": 0,
       "commented_reviews": 62,
       "threads_resolved": 22,
       "threads_unresolved": 0,
-      "full_suite": "1308 passed + 8 subtests; 59.12% coverage",
+      "full_suite": "1307 passed, 1 failed, 8 subtests; 59.12% coverage",
       "dependency_audit": "6 manifests; 0 known vulnerabilities",
       "fail_closed_gate": "passed; automatic merge disabled"
     },
@@ -29663,9 +29690,10 @@
     "merge_performed": false,
     "merge_allowed": false,
     "blockers": [
+      "Exact-head full repository suite currently has one stale regression-test assertion failure; fix and rerun.",
       "Zero independent APPROVED reviews.",
-      "Detailed branch-protection endpoint returns HTTP 403; visible required status contexts are empty and the visible fallback ruleset is disabled, so effective review/check requirements remain unverified.",
-      "GitHub Pages is enabled; a prior push to main triggered a successful Pages deployment. PR #1640 changes seven public web assets; explicit publication authorization is absent."
+      "Detailed branch-protection endpoint returns HTTP 403; effective required review/status rules remain unverified.",
+      "GitHub Pages is enabled; prior push to main produced a successful deployment and PR #1640 changes seven public web assets; explicit publication authorization is absent."
     ]
   },
   "external_actions": {
@@ -29686,7 +29714,8 @@
     "real_money": false,
     "force_push": false,
     "destructive_worktree_action": false,
-    "workflows_dispatched": false
+    "workflows_dispatched": false,
+    "existing_integration_branch_write": true
   },
   "forecast_status": "NOT_ISSUED",
   "main_workflow_status": {
@@ -29733,7 +29762,7 @@
     }
   },
   "backlog_classification": {
-    "#1640": "BLOCKED integration PR; exact code/test head 1a3861f passed 1,308 full-suite tests, 677 core tests, 59.12% coverage, wheel smoke, six-manifest dependency audit and fail-closed gate. Zero approvals; protection visibility and Pages authorization unresolved.",
+    "#1640": "BLOCKED integration PR; code/test parent 1a3861f passed 1,308 full-suite tests, but latest handoff/map descendant 97a2308 has 1,307 passed and one stale hard-coded Run96 test failure. Core 677 passed, coverage 59.12%, six-manifest audit and fail-closed gate passed. Fix the test and rerun; approvals/protection/Pages authorization remain blockers.",
     "#1643": "UNIQUE/UNREVIEWED research archive; 663 unique paths and seven overlaps; 906 commits ahead, one behind, GitHub merge state dirty, no exact-head CI; preserve unique evidence.",
     "#1653": "UNIQUE/UNREVIEWED knowledge graph; six unique paths and one overlap; 18 commits ahead, one behind; eight unresolved review threads; preserve and review separately.",
     "#1642": "SUPERSEDED candidate: all seven changed paths overlap #1640 and its head is an ancestor of #1640.",
@@ -29745,7 +29774,7 @@
     "#1659": "DRAFT; preserve four unique local Llama/Termux paths.",
     "remaining_drafts": "356 not individually adjudicated; no bulk closure."
   },
-  "last_run_status": "Run98: current main/integration trees, all 372 open PRs, PR overlap, review states, exact-head CI, dependency audit, fail-closed gate, workflow safety and fresh XRP/ETF/macro evidence inspected. Code/test head 1a3861f passed 1,308 full-suite tests, 677 core tests, 59.12% coverage, wheel verification, six-manifest audit and fail-closed gate. Latest handoff/map descendant requires its own exact-head CI.",
+  "last_run_status": "Run98 descendant 97a2308: full suite 1,307 passed and one failed because a historical test hard-coded latest_run_snapshot.run_id==96 after the current map advanced to Run98. Core 677 passed; coverage 59.12%; dependency audit passed six manifests with zero known vulnerabilities; fail-closed gate passed. The failure is a stale test expectation and is being corrected on the same integration branch.",
   "integration_head_before_map_commit": "2685c1744aa5a7972da9063a18be665077c4548c",
   "research_updates": {
     "run93": {
@@ -30709,7 +30738,7 @@
       "description": "Three SHA-256-bound public spot JSON bodies and six secondary derivatives views; research-only."
     }
   ],
-  "updated_at_utc": "2026-11-09T20:08:23Z",
+  "updated_at_utc": "2026-11-09T20:20:17Z",
   "current_run_snapshot": {
     "run": 82,
     "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -31604,7 +31633,38 @@
           "conclusion": "success",
           "automatic_merge_disabled": true
         },
-        "handoff_map_commit_exact_head_ci": "PENDING"
+        "handoff_map_commit_exact_head_ci": "FAILURE_ONE_STALE_RUN_ID_ASSERTION",
+        "descendant_verification": {
+          "head": "97a2308ca34decc5d5dc47b72951457deb53035d",
+          "full_suite": {
+            "run_id": 42691540102,
+            "passed": 1307,
+            "failed": 1,
+            "subtests": 8,
+            "coverage_pct": 59.12,
+            "conclusion": "failure"
+          },
+          "failed_test": "tests/test_xrp_mission_handoff_run58.py::test_run96_endpoint_registry_counts_match_current_map",
+          "failure_cause": "The test hard-coded latest_run_snapshot.run_id == 96; the map correctly advanced to Run98 while preserving current_run_observations Run82 for historical compatibility.",
+          "core": {
+            "passed": 677,
+            "failed": 0,
+            "subtests": 8
+          },
+          "dependency_audit": {
+            "run_id": 42691540301,
+            "manifests": 6,
+            "known_vulnerabilities": 0,
+            "conclusion": "success"
+          },
+          "fail_closed_gate": {
+            "run_id": 42691540024,
+            "conclusion": "success",
+            "automatic_merge_disabled": true
+          },
+          "wheel": "SKIPPED_AFTER_TEST_FAILURE",
+          "repair": "Update regression test to assert latest Run98 and preserve Run82 historical observation."
+        }
       },
       "main_workflows": {
         "main_ci": {
@@ -31864,7 +31924,31 @@
         ]
       },
       "forecast_status": "NOT_ISSUED",
-      "next_action": "Commit the Run98 handoff/map update on the existing #1640 branch, verify exact-head CI/audit/fail-closed gate on that descendant, then keep merge blocked until approval/protection and Pages authorization are resolved."
+      "next_action": "Fix the Run96 hard-coded latest-map test assertion on the same integration branch, then rerun the full repository suite, wheel smoke, dependency audit and fail-closed gate.",
+      "prediction_engine": {
+        "endpoints": 39,
+        "scheduled_public_sources": 36,
+        "weekly_sources": 1,
+        "excluded_xrpl_node_sources": 2,
+        "weekly_cftc_status": "RAW_ONLY_NOT_MODEL_ADMITTED",
+        "implemented_on_integration_branch": [
+          "SHA-256 raw receipts and receipt-chain validation",
+          "point-in-time SQLite feature store",
+          "naive, momentum, mean-reversion and volatility baselines",
+          "purged/embargoed chronological walk-forward evaluation",
+          "probability calibration diagnostics and drift monitoring",
+          "fail-closed forecast/outcome ledger"
+        ],
+        "verified_on_main": false,
+        "independent_worm_anchor": false,
+        "synchronized_historical_dataset": false,
+        "measured_out_of_sample_lift": false,
+        "real_data_calibration": false,
+        "shadow_outcomes": false,
+        "trusted_evaluator_key": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "handoff_map_descendant_head": "97a2308ca34decc5d5dc47b72951457deb53035d"
     }
   ],
   "secondary_derivatives_observations": [
@@ -32050,7 +32134,7 @@
       "model_eligible": false
     }
   ],
-  "latest_run_verified_at_utc": "2026-11-09T20:08:23Z",
+  "latest_run_verified_at_utc": "2026-11-09T20:20:17Z",
   "latest_run_snapshot": {
     "run_id": 98,
     "captured_at_utc": "2026-11-09T20:08:23Z",
@@ -32208,7 +32292,38 @@
         "conclusion": "success",
         "automatic_merge_disabled": true
       },
-      "handoff_map_commit_exact_head_ci": "PENDING"
+      "handoff_map_commit_exact_head_ci": "FAILURE_ONE_STALE_RUN_ID_ASSERTION",
+      "descendant_verification": {
+        "head": "97a2308ca34decc5d5dc47b72951457deb53035d",
+        "full_suite": {
+          "run_id": 42691540102,
+          "passed": 1307,
+          "failed": 1,
+          "subtests": 8,
+          "coverage_pct": 59.12,
+          "conclusion": "failure"
+        },
+        "failed_test": "tests/test_xrp_mission_handoff_run58.py::test_run96_endpoint_registry_counts_match_current_map",
+        "failure_cause": "The test hard-coded latest_run_snapshot.run_id == 96; the map correctly advanced to Run98 while preserving current_run_observations Run82 for historical compatibility.",
+        "core": {
+          "passed": 677,
+          "failed": 0,
+          "subtests": 8
+        },
+        "dependency_audit": {
+          "run_id": 42691540301,
+          "manifests": 6,
+          "known_vulnerabilities": 0,
+          "conclusion": "success"
+        },
+        "fail_closed_gate": {
+          "run_id": 42691540024,
+          "conclusion": "success",
+          "automatic_merge_disabled": true
+        },
+        "wheel": "SKIPPED_AFTER_TEST_FAILURE",
+        "repair": "Update regression test to assert latest Run98 and preserve Run82 historical observation."
+      }
     },
     "main_workflows": {
       "main_ci": {
@@ -32468,7 +32583,31 @@
       ]
     },
     "forecast_status": "NOT_ISSUED",
-    "next_action": "Commit the Run98 handoff/map update on the existing #1640 branch, verify exact-head CI/audit/fail-closed gate on that descendant, then keep merge blocked until approval/protection and Pages authorization are resolved."
+    "next_action": "Fix the Run96 hard-coded latest-map test assertion on the same integration branch, then rerun the full repository suite, wheel smoke, dependency audit and fail-closed gate.",
+    "prediction_engine": {
+      "endpoints": 39,
+      "scheduled_public_sources": 36,
+      "weekly_sources": 1,
+      "excluded_xrpl_node_sources": 2,
+      "weekly_cftc_status": "RAW_ONLY_NOT_MODEL_ADMITTED",
+      "implemented_on_integration_branch": [
+        "SHA-256 raw receipts and receipt-chain validation",
+        "point-in-time SQLite feature store",
+        "naive, momentum, mean-reversion and volatility baselines",
+        "purged/embargoed chronological walk-forward evaluation",
+        "probability calibration diagnostics and drift monitoring",
+        "fail-closed forecast/outcome ledger"
+      ],
+      "verified_on_main": false,
+      "independent_worm_anchor": false,
+      "synchronized_historical_dataset": false,
+      "measured_out_of_sample_lift": false,
+      "real_data_calibration": false,
+      "shadow_outcomes": false,
+      "trusted_evaluator_key": false,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "handoff_map_descendant_head": "97a2308ca34decc5d5dc47b72951457deb53035d"
   },
   "endpoint_inventory_source_blob_sha": "281f5f0e748ab8683d6031e926ba37c6659d0fe1",
   "endpoint_inventory_verified_at_utc": "2026-11-09T18:01:15Z",

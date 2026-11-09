@@ -31,7 +31,7 @@ def test_run58_handoff_binds_exact_repository_heads_and_ci():
     assert "No merge was performed" in handoff
 
 
-def test_run96_endpoint_registry_counts_match_current_map():
+def test_run98_endpoint_registry_counts_match_current_map():
     assert len(ENDPOINTS) == 39
     assert len(SCHEDULED_ENDPOINTS) == 36
     assert len({source_id for source_id, _ in ENDPOINTS}) == 39
@@ -46,11 +46,20 @@ def test_run96_endpoint_registry_counts_match_current_map():
 
     current_data = json.loads(CURRENT_MAP.read_text(encoding="utf-8"))
     latest = current_data["latest_run_snapshot"]
-    assert latest["run_id"] == 96
+    assert latest["run_id"] == 98
+    assert latest["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
+    assert latest["integration_code_test_head"] == "1a3861f5144b499be3115f14abda2affc0b024cc"
     assert any(item.get("run") == 95 for item in current_data["run_history"])
+    assert any(item.get("run") == 96 for item in current_data["run_history"])
+    assert any(item.get("run") == 98 for item in current_data["run_history"])
     assert current_data["current_run_observations"]["run_id"] == 82
     assert latest["prediction_engine"]["endpoints"] == len(ENDPOINTS)
     assert latest["prediction_engine"]["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
+    assert latest["prediction_engine"]["weekly_sources"] == 1
+    assert latest["prediction_engine"]["excluded_xrpl_node_sources"] == 2
+    assert latest["forecast_status"] == "NOT_ISSUED"
+    assert latest["ci_evidence"]["full_suite"]["passed"] == 1308
+    assert latest["ci_evidence"]["full_suite"]["failed"] == 0
     assert current_data["prediction_engine"]["endpoints"] == len(ENDPOINTS)
     assert current_data["prediction_engine"]["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
 
