@@ -26,7 +26,7 @@ Repairs were committed only to the existing #1640 branch:
 - `3a2ce1993598d0379ae5bf92e82ca3337c36144f` — corrected the Run 27 timestamp chronology assertion.
 - `eb629348c4af5b3d4ef71ed3f019db69ffa96795` — corrected the Run 34 timestamp chronology assertion.
 
-<badge>PASS</badge> Exact code/test head `eb629348c4af5b3d4ef71ed3f019db69ffa96795`:
+**PASS** Exact code/test head `eb629348c4af5b3d4ef71ed3f019db69ffa96795`:
 
 - Full repository suite: **1,275 passed, 0 failed, 8 subtests passed**; inclusive package coverage **59.08%** against a 53% floor.
 - Core suite: **677 passed, 0 failed, 8 subtests passed**.
