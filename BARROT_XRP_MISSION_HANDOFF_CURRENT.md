@@ -906,3 +906,53 @@ The 00:10:13Z recheck returned byte-identical bodies. The OKX provider event tim
 The new current map snapshot preserves the prior run history and current nine-platform permissions. ChatGPT-to-GitHub is verified for this session; Copilot activity remains comments only; the other seven platforms have no verified persistent authenticated data flows. No external-model data exchange occurred.
 
 **Forecast remains NOT_ISSUED.** No directional signal, paper trade or real-money action was produced.
+
+
+---
+
+## Run 73 second-phase addendum — SBI START bond and market-source quality
+
+### SBI START: primary-source correction to the “10bn yen bond pays in XRP” claim
+
+SBI's own product page and issuer release establish:
+
+- Issuer: SBI Holdings.
+- Issue amount: **JPY 10 billion**, three-year security-token bond; the product page says the offering sold out.
+- Coupon: **2.150% annually in JPY**, not XRP; principal issue/redemption at 100% of face.
+- Issue date: March 24, 2026; ODX START PTS trading began March 25, 2026.
+- Bond-token infrastructure: BOOSTRY's **ibet for Fin**, not XRPL.
+- Separate XRP purchase reward: **JPY 200 equivalent per JPY 100,000 face (0.2%)** for qualifying offering-period purchases of at least JPY 100,000, subject to domestic eligibility, SBI VC Trade account and claim procedure. The initial reward was scheduled by May 15, 2026, using SBI VC Trade's May 13 06:59 JST sales-counter price.
+- Future benefits at the 2027, 2028 and final 2029 coupon dates were not determined in the February 20 terms. The product page explicitly says the initial XRP reward does not imply XRP is paid as coupon; later benefits may differ or may not be XRP.
+- The XRP reward is delivered through SBI VC Trade as an XRP Ledger asset. No direct Ripple role in the bond issuance is established.
+
+Primary sources:
+- [SBI Securities product page](https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html)
+- [SBI Holdings issuer release](https://www.sbigroup.co.jp/news/2026/0220_16127.html)
+- [SBI Holdings — START PTS trading began March 25](https://www.sbigroup.co.jp/news/2026/0325_16200.html)
+
+Theoretical maximum initial reward: if the entire JPY 10bn issue qualified, the 0.2% initial reward would equal **JPY 20m equivalent**. This is an upper bound, not the actual distribution. The actual XRP quantity, eligible face amount, claims and XRP sourcing are undisclosed.
+
+This is a completed JPY debt issuance and an XRP incentive, not JPY 10bn of XRP demand. The DailyCoin/Kamilah phrasing that the bond “pays investors in XRP” is materially imprecise: the coupon is JPY, while XRP is a separate reward. This distinction is now represented in the current relationship map. The bond itself uses ibet for Fin; the reward asset uses XRPL.
+
+### CoinPaprika cross-check
+
+Direct public API response:
+https://api.coinpaprika.com/v1/tickers/xrp-xrp
+
+Provider `last_updated`: 2026-11-09T00:07:13Z. At the 00:17:21Z recheck it was **608 seconds old**, and a second retrieval returned the identical body. Cache status is unknown.
+
+- Price: $1.107159.
+- 24h volume: approximately $1.023bn; provider-reported volume change +26.69%.
+- 24h: -4.55%; 7d: -11.18%; 30d: -20.65%; 1y: -52.99%.
+- Market capitalization: approximately $70.323bn.
+
+SHA-256 of the exact surfaced JSON response body:
+`e71bf24848523361dd2773dacd559900af08357827a06b9c86f3016013ca4949`.
+
+This is an aggregator cross-check, not independent executable depth. It is stale at the recheck and remains model-ineligible. The repeated Kraken/OKX bodies are also unchanged; Kraken lacks a provider event timestamp, OKX is over the 300-second freshness gate, and no Coinbase/Binance direct quote was available through this retrieval path.
+
+### Exact-head test correction
+
+On head `cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2`, the full suite recorded **1,220 passed, 1 failed, 8 subtests passed**, with 58.98% inclusive coverage. The only failure was in the newly added Run 73 regression test: it expected `wheel_verification == "skipped"`, while the map correctly recorded `"skipped after full-suite failure"`. Core tests passed (660 plus 8 subtests), the six-manifest dependency audit passed, and the fail-closed gate passed; wheel verification was skipped because the suite had one test failure. The assertion is being corrected to the exact recorded state. This is a test-only correction; no product code or evidence is being weakened. Exact-head full-suite and wheel verification on the corrective commit remain pending.
+
+The mission remains priority one; no directional forecast is issued.

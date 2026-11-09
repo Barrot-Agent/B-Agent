@@ -1,10 +1,10 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-09T00:10:13Z",
+  "captured_at_utc": "2026-11-09T00:17:21Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-  "observed_integration_head_before_map_commit": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
+  "observed_integration_head_before_map_commit": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
   "observed_research_head": "92b66e11844313b1316429bc3b5678915af68565",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -128,7 +128,8 @@
         "Run 70: fetched complete main/V3/research trees, all four open-PR pages, current PR heads/diffs/ancestry/reviews/threads, exact-head Actions logs, dependency audits, fail-closed gates, and committed a concise current handoff/map update on existing #1640 only.",
         "Run 71 (2026-11-08 22:30 UTC): current-session GitHub access re-verified by fetching the current main ref and complete recursive trees for main, the V3 integration branch and the XRP research branch; inspected all four open-PR inventory pages, current #1640/#1643 metadata, changed-path overlaps, review threads, exact-head Actions checks/logs, dependency audits, fail-closed gates, CODEOWNERS, rulesets and branch-protection visibility. Verified #1640 head e401f089 with 1,215 full-suite passes plus 8 subtests, 660 core passes plus 8 subtests, 58.98% coverage, installed-wheel verification, dependency audit and fail-closed gate. Verified #1643 head 92b66e1 is dirty due a conflicting same-path relationship artifact and has no exact-head Actions full-suite run. Main advanced to d4d43be through a single-parent direct commit adding that artifact; the push triggered a successful GitHub Pages deployment. No external-platform authentication, data transfer, main write, merge, deployment, secret operation or financial action was performed by this run.",
         "Run 71 map metadata correction: aligned top-level last_verified_at_utc and ChatGPT.last_verified_at_utc with captured_at_utc (2026-11-08T22:30:23Z), preserving the prior Run 70 current_run_observations and all historical run observations. This fixes the two timestamp-consistency regression failures without changing or weakening tests.",
-        "Run 73 current-map snapshot (2026-11-09T00:10:13Z): current main d4d43be, integration head before map commit 26a69a35, research head 92b66e11; complete tree and 372-PR inventory; #1640/#1643 ancestry, overlap, reviews and exact CI; #1640 current head's two historical-map regression failures and correction; main CI/Pages/Cross Analysis; direct Kraken/OKX raw-body hashes and stale-timestamp recheck; SBIC West ChatGPT seminar, Kamilah attribution lead, Reuters risk-off event and BLS CPI schedule. No external platform data exchange."
+        "Run 73 current-map snapshot (2026-11-09T00:10:13Z): current main d4d43be, integration head before map commit 26a69a35, research head 92b66e11; complete tree and 372-PR inventory; #1640/#1643 ancestry, overlap, reviews and exact CI; #1640 current head's two historical-map regression failures and correction; main CI/Pages/Cross Analysis; direct Kraken/OKX raw-body hashes and stale-timestamp recheck; SBIC West ChatGPT seminar, Kamilah attribution lead, Reuters risk-off event and BLS CPI schedule. No external platform data exchange.",
+        "Run 73 second phase (2026-11-09T00:17:21Z): exact-head CI on cf2cba had 1,220 passed/1 failed/8 subtests; the only failure is the new regression test expecting 'skipped' instead of the exact evidence value 'skipped after full-suite failure'. Core 660/8 passed, coverage 58.98%, six-manifest audit and fail-closed gate passed, wheel skipped. Added primary SBI START bond reconciliation: completed/sold-out JPY 10bn debt, 2.15% JPY coupon, separate 0.2% initial XRP reward, ibet for Fin bond ledger, XRP Ledger reward, no direct Ripple role. Added stale CoinPaprika receipt/hash; no market feature admitted."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -184,7 +185,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-09T00:10:13Z"
+      "last_verified_at_utc": "2026-11-09T00:17:21Z"
     },
     "Claude": {
       "intended_role": [
@@ -515,10 +516,10 @@
   "current_run_observations": {
     "run_id": 73,
     "revision": "Run 73 current-main integration audit, exact-head verification correction, live market receipts and institutional research",
-    "captured_at_utc": "2026-11-09T00:10:13Z",
+    "captured_at_utc": "2026-11-09T00:17:21Z",
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-    "integration_head_before_handoff_commit": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
+    "integration_head_before_handoff_commit": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
     "research_head": "92b66e11844313b1316429bc3b5678915af68565",
     "open_pr_inventory": {
       "total": 372,
@@ -566,13 +567,13 @@
         "head": "d4d43be3427375cf79d190e768976de062e20287"
       },
       "integration": {
-        "entries": 1485,
-        "files": 1372,
-        "python_files": 552,
-        "root_test_modules": 130,
+        "entries": 1487,
+        "files": 1374,
+        "python_files": 553,
+        "root_test_modules": 131,
         "workflow_files": 87,
         "truncated": false,
-        "head": "26a69a359eec58e3dcc74d85cdd2ec9958711bae"
+        "head": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2"
       },
       "research": {
         "entries": 2066,
@@ -587,11 +588,12 @@
     "branch_ancestry": {
       "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
       "pr_1640": {
-        "head_before_map_commit": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
-        "ahead_by": 744,
+        "head": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
+        "ahead_by": 746,
         "behind_by": 0,
-        "changed_paths": 182,
+        "changed_paths": 184,
         "mergeable": true,
+        "mergeable_state": "unstable",
         "draft": false
       },
       "pr_1643": {
@@ -843,6 +845,39 @@
           "automatic_merge_disabled": true
         },
         "latest_handoff_map_head": {
+          "sha": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
+          "full_suite": {
+            "run_id": 42539066229,
+            "result": "failure",
+            "passed": 1220,
+            "failed": 1,
+            "subtests_passed": 8,
+            "coverage_pct": 58.98,
+            "duration_seconds": 52.64
+          },
+          "core_suite": {
+            "run_id": 42539066229,
+            "result": "success",
+            "passed": 660,
+            "subtests_passed": 8
+          },
+          "wheel_verification": "skipped after full-suite failure",
+          "dependency_audit": {
+            "run_id": 42539066246,
+            "result": "success",
+            "manifests": 6,
+            "known_vulnerabilities": 0
+          },
+          "fail_closed_gate": {
+            "run_id": 42539066279,
+            "result": "success",
+            "automatic_merge_disabled": true
+          },
+          "failure": "The newly added Run 73 regression test expected the literal wheel_verification value 'skipped'; the recorded evidence correctly says 'skipped after full-suite failure'. This is a test assertion mismatch in the new test, not a product-code failure.",
+          "correction": "Assert the exact recorded value and retain the failure-state assertion. No production code change and no test weakening.",
+          "corrected_head_exact_ci": "PENDING"
+        },
+        "previous_map_metadata_head": {
           "sha": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
           "full_suite": {
             "run_id": 42538503506,
@@ -858,15 +893,16 @@
             "subtests_passed": 8
           },
           "wheel_verification": "skipped after full-suite failure",
-          "dependency_audit": "success; six manifests; no known vulnerabilities",
-          "fail_closed_gate": "success; automatic merge disabled",
-          "failures": [
-            "tests/test_xrp_mission_handoff_run27.py::test_run28_platform_map_is_preserved_and_run33_is_historical",
-            "tests/test_xrp_mission_handoff_run34.py::test_run34_nine_platform_map_remains_truthful_and_least_privilege"
-          ],
-          "cause": "The prior Run 73 edit advanced captured_at_utc on a historical map without advancing its last_verified_at_utc/current_run_observations. The tests correctly rejected rewriting historical map time.",
-          "correction": "Restore the historical map blob byte-for-byte and create a separate versioned Run 73 current-map snapshot. Preserve all historical assertions; add tests for the new current snapshot. No test weakening.",
-          "corrected_head_exact_ci": "PENDING"
+          "dependency_audit": {
+            "run_id": 42538503523,
+            "result": "success",
+            "manifests": 6
+          },
+          "fail_closed_gate": {
+            "run_id": 42538503504,
+            "result": "success"
+          },
+          "cause": "Historical map timestamp was changed without advancing its historical run object; corrected by restoring the historical map and creating a separate current Run 73 snapshot."
         }
       },
       "research": {
@@ -921,7 +957,8 @@
       "source_receipt_scope": "SHA-256 of exact JSON response bodies surfaced by the public endpoints, not raw HTTP wire bytes or headers; exact request timestamps and headers were unavailable.",
       "raw_response_bodies": {
         "kraken_xrpusd": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.10943000\",\"411\",\"411.000\"],\"b\":[\"1.10941000\",\"1638\",\"1638.000\"],\"c\":[\"1.10944000\",\"150.00000000\"],\"v\":[\"27284874.96638142\",\"27289701.10514775\"],\"p\":[\"1.13001247\",\"1.13001819\"],\"t\":[25190,25208],\"l\":[\"1.09309000\",\"1.09309000\"],\"h\":[\"1.16816000\",\"1.16816000\"],\"o\":\"1.16234000\"}}}",
-        "okx_xrpusdt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1071\",\"lastSz\":\"100\",\"askPx\":\"1.1072\",\"askSz\":\"1998.6\",\"bidPx\":\"1.1071\",\"bidSz\":\"4992.574747\",\"volCcy24h\":\"52559537.028700469\",\"vol24h\":\"46424633.749449\",\"ts\":\"1794182692769\",\"sodUtc0\":\"1.1132\",\"sodUtc8\":\"1.1563\"}],\"msg\":\"\"}"
+        "okx_xrpusdt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1071\",\"lastSz\":\"100\",\"askPx\":\"1.1072\",\"askSz\":\"1998.6\",\"bidPx\":\"1.1071\",\"bidSz\":\"4992.574747\",\"volCcy24h\":\"52559537.028700469\",\"vol24h\":\"46424633.749449\",\"ts\":\"1794182692769\",\"sodUtc0\":\"1.1132\",\"sodUtc8\":\"1.1563\"}],\"msg\":\"\"}",
+        "coinpaprika_xrp": "{\"id\":\"xrp-xrp\",\"name\":\"XRP\",\"symbol\":\"XRP\",\"rank\":5,\"total_supply\":99985583260,\"max_supply\":100000000000,\"beta_value\":1.39201,\"first_data_at\":\"2013-08-04T00:00:00Z\",\"last_updated\":\"2026-11-09T00:07:13Z\",\"quotes\":{\"USD\":{\"price\":1.1071590015853074,\"volume_24h\":1022668672.4542879,\"volume_24h_change_24h\":26.690000534057617,\"market_cap\":70322983138,\"market_cap_change_24h\":-4.550000190734863,\"percent_change_15m\":-0.36000001430511475,\"percent_change_30m\":-1.149999976158142,\"percent_change_1h\":-2,\"percent_change_6h\":-4.53000020980835,\"percent_change_12h\":-4.869999885559082,\"percent_change_24h\":-4.550000190734863,\"percent_change_7d\":-11.180000305175781,\"percent_change_30d\":-20.649999618530273,\"percent_change_1y\":-52.9900016784668,\"ath_price\":3.84194,\"ath_date\":\"2018-01-04T07:14:00Z\",\"percent_from_price_ath\":-71.1}}}"
       },
       "spot": {
         "kraken_xrpusd": {
@@ -961,6 +998,30 @@
           "spread_bps": 0.9,
           "receipt_sha256": "07e937378fb3f86663f42a94f207442ab723aaaeed222b2b0e2dd3568c68f229",
           "model_eligible": false
+        },
+        "coinpaprika_xrp": {
+          "source_url": "https://api.coinpaprika.com/v1/tickers/xrp-xrp",
+          "provider_event_time_utc": "2026-11-09T00:07:13Z",
+          "age_seconds_at_recheck": 608,
+          "price_usd": 1.1071590015853074,
+          "volume_24h_usd": 1022668672.4542879,
+          "volume_24h_change_pct": 26.69,
+          "market_cap_usd": 70322983138,
+          "market_cap_change_24h_pct": -4.55,
+          "change_15m_pct": -0.36,
+          "change_30m_pct": -1.15,
+          "change_1h_pct": -2,
+          "change_6h_pct": -4.53,
+          "change_12h_pct": -4.87,
+          "change_24h_pct": -4.55,
+          "change_7d_pct": -11.18,
+          "change_30d_pct": -20.65,
+          "change_1y_pct": -52.99,
+          "percent_from_ath_pct": -71.1,
+          "receipt_sha256": "e71bf24848523361dd2773dacd559900af08357827a06b9c86f3016013ca4949",
+          "repeated_fetch_bodies_identical": true,
+          "model_eligible": false,
+          "ineligibility_reason": "Provider event timestamp is 608 seconds old at the 00:17:21Z recheck; the repeated response body was identical and cache status is unknown. Aggregator volume is not independent executable exchange depth."
         }
       },
       "raw_last_gap_pct": 0.2114,
@@ -970,7 +1031,9 @@
       "repeated_fetch_bodies_identical": true,
       "repeated_fetch_interpretation": "The second retrieval returned byte-identical bodies. OKX provider timestamp was 321 seconds old at the recheck, beyond the 300-second freshness threshold; Kraken has no provider event timestamp. Cache status is unknown.",
       "derivative_access": "Binance public perpetual endpoint returned HTTP 451 in this run; no current OI/funding/liquidation data admitted.",
-      "model_admission": false
+      "model_admission": false,
+      "aggregator_reference_time_utc": "2026-11-09T00:07:13Z",
+      "aggregator_recheck_reference_time_utc": "2026-11-09T00:17:21Z"
     },
     "merge_state": {
       "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
@@ -986,13 +1049,14 @@
       "pages_configuration_accessible": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
-        "head": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
+        "head": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
         "mergeable": true,
+        "mergeable_state": "unstable",
         "draft": false,
         "approving_reviews": 0,
         "threads_resolved": 22,
         "threads_unresolved": 0,
-        "exact_head_ci": "Full suite failed two historical map-snapshot assertions after the Run 73 map metadata edit; core passed, audit and fail-closed gate passed; wheel skipped. Correcting by restoring historical map and adding versioned current map."
+        "exact_head_ci": "Core passed; full suite 1,220 passed/1 failed due a new regression-test string mismatch; coverage 58.98%; dependency audit and fail-closed gate passed; wheel skipped. Test correction pending."
       },
       "pr_1643": {
         "head": "92b66e11844313b1316429bc3b5678915af68565",
@@ -1037,17 +1101,17 @@
     },
     "forecast_status": "NOT_ISSUED",
     "intervening_run_note": "Run 73 initially advanced metadata on a historical map snapshot. Exact-head CI correctly failed two historical-map assertions. Correction: restore the historical map blob exactly and create a separate versioned current Run 73 map snapshot with explicit current_run_observations, preserving all historical run data and regression anchors. Do not weaken tests.",
-    "integration_head_after_handoff_commit": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
-    "integration_head_before_map_commit": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
+    "integration_head_after_handoff_commit": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
+    "integration_head_before_map_commit": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
     "integration_head_before_map_schema_correction": "26a69a359eec58e3dcc74d85cdd2ec9958711bae",
     "execution": {
       "github_access": "VERIFIED current-session read/write on existing #1640 branch",
       "repository_audit": "EXECUTED complete main/integration/research trees, all four open-PR inventory pages, 16 non-drafts, title-relevant PR search, branch ancestry/overlaps, reviews/threads, Actions runs/logs, six-manifest audit, fail-closed gate, main CI and Pages side effect.",
       "market_research": "EXECUTED direct Kraken/OKX spot capture, identical recheck, SHA-256 body receipts, freshness/normalization/quote-size calculations; all model-ineligible.",
-      "institutional_research": "EXECUTED new SBIC West primary flyer, DailyCoin Kamilah video attribution lead, Japanese pilot-claim qualification and BLS CPI event schedule.",
+      "institutional_research": "Added primary SBI START bond terms and completion evidence; corrected the claim that coupon is paid in XRP.",
       "handoff": "UPDATED current handoff on existing #1640 branch with Run 73 audit and market evidence; adding raw body preimages and map-preservation correction.",
       "map": "CORRECTING: restore historical map at canonical historical path; add versioned current map snapshot and regression tests.",
-      "exact_head_ci": "VERIFIED previous code/test head b663 green. Current documentation/map head 26a69 failed two historical snapshot assertions; correction in progress.",
+      "exact_head_ci": "Corrected historical map snapshot. Current cf2cba full suite has one new test assertion mismatch; correcting exact expected status string. No production code failure.",
       "main_write": false,
       "merge": false,
       "new_pr": false,
@@ -1056,9 +1120,12 @@
       "external_model_transfer": false,
       "financial_action": false,
       "force_push": false,
-      "destructive_worktree_action": false
+      "destructive_worktree_action": false,
+      "latest_market_research": "Added a timestamped CoinPaprika aggregator cross-check; repeated body stale by 608 seconds, not model-eligible."
     },
     "next_actions": [
+      "Preserve the SBI START bond primary-source distinction: JPY coupon, separate XRP reward, ibet for Fin bond ledger, XRP Ledger reward, no Ripple role established.",
+      "Correct the Run 73 test assertion to expect the recorded wheel status 'skipped after full-suite failure'; rerun the exact-head full suite, coverage and installed-wheel check.",
       "Restore the historical map at its original path and add the versioned Run 73 current map snapshot with tests that preserve history and validate the new observation.",
       "Run exact-head full repository suite, inclusive coverage and installed-wheel verification on the corrected #1640 head; verify six-manifest dependency audit and fail-closed gate.",
       "Obtain genuine independent APPROVED reviews for #1640 and #1643.",
@@ -1122,7 +1189,7 @@
         "url": "https://blockchain.news/news/20261108-price-prediction-xrp-buyers-defend-the-lower-band-as"
       }
     ],
-    "market_evidence_status": "Raw-only. Kraken timestamp absent; OKX stale by 320.231 seconds at recheck; repeated bodies identical and cache status unknown. USD/USDT not normalized, only top-level quote sizes, no synchronized trades or L2 depth. No feature-store admission.",
+    "market_evidence_status": "Raw-only. Kraken event timestamp absent; OKX timestamp 320.231 seconds old at 00:10:13Z; CoinPaprika timestamp 608 seconds old at 00:17:21Z and repeated body identical. USD/USDT not normalized, only top-level quote sizes, no synchronized trades or L2 depth. No feature-store admission.",
     "current_ci": {
       "integration": {
         "verified_code_test_head": "fbef23271bdbd247539ee60bf4b61fcef560178a",
@@ -1201,7 +1268,7 @@
       "secondary_context_summaries_not_hash_receipted": 1,
       "regression_tests": 6
     },
-    "last_verified_at_utc": "2026-11-09T00:10:13Z",
+    "last_verified_at_utc": "2026-11-09T00:17:21Z",
     "backlog_classification": {
       "#1640": "Active V3 integration candidate; previous code/test head b663 passed 1,215 full-suite/8, 660 core/8, 58.98% coverage, wheel, six-manifest audit and fail-closed gate. Current handoff/map head 26a69 has two historical-map assertion failures being corrected. Merge blocked by zero independent approvals and Pages authorization.",
       "#1643": "Active XRP research candidate; 902 commits ahead/1 behind, dirty mergeability, six shared paths with #1640, no exact-head CI beyond skipped CodeRabbit. Blocked; consolidate after #1640.",
@@ -1237,6 +1304,26 @@
       {
         "topic": "Exact-phrase searches",
         "finding": "New exact-phrase searches found no new primary XRP-specific ASK Coin relationship or issuer-defined 'actual capital' measurement. SBIC/ChatGPT returns acronym collisions; the official SBIC West seminar is an educational event, not a corporate partnership."
+      },
+      {
+        "topic": "SBI START 10bn JPY security-token bond and XRP reward",
+        "sources": [
+          "https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html",
+          "https://www.sbigroup.co.jp/news/2026/0220_16127.html",
+          "https://www.sbigroup.co.jp/news/2026/0325_16200.html"
+        ],
+        "finding": "SBI START was a completed and sold-out JPY 10bn, three-year SBI Holdings security-token bond. The coupon is 2.15% in JPY and principal redemption is 100% of face. The security token uses BOOSTRY's ibet for Fin and trades on ODX START; it is not an XRPL bond. The initial XRP reward is a separate 200 JPY equivalent per JPY 100,000 face (0.2%) for qualifying offering-period buyers, delivered through SBI VC Trade; later coupon-date benefits were not specified and are not guaranteed to be XRP. The theoretical initial reward ceiling is JPY 20m equivalent if the full issue qualifies; actual XRP quantity/distribution is undisclosed. No direct Ripple role is established.",
+        "issue_amount_jpy": 10000000000,
+        "coupon_currency": "JPY",
+        "coupon_rate_percent": 2.15,
+        "initial_reward_percent_of_face": 0.2,
+        "maximum_theoretical_initial_reward_jpy_if_full_issue_qualifies": 20000000,
+        "direct_ripple_involvement_verified": false
+      },
+      {
+        "topic": "CoinPaprika timestamped XRP cross-check",
+        "source": "https://api.coinpaprika.com/v1/tickers/xrp-xrp",
+        "finding": "Provider last_updated 2026-11-09T00:07:13Z reported XRP at $1.107159, 24h volume about $1.023bn, 24h change -4.55%, 7d -11.18%, 30d -20.65% and 1y -52.99%. The body repeated unchanged at recheck and was 608 seconds old, so it is a stale aggregator cross-check, not a fresh feature."
       }
     ],
     "macro_event_timeline": [
@@ -1269,6 +1356,54 @@
       "regional_entities": "SBIC East, SBIC Central and SBIC West are Japan's regional Small and Medium Business Investment & Consultation Companies, distinct from SBI Holdings.",
       "new_primary_evidence": "SBIC West Japan's official PDF documents a ChatGPT/generative-AI business seminar co-hosted with Japan Finance Corporation on 2025-12-04.",
       "partnership_inference": false
+    },
+    "integration_head_before_current_map_update": "cf2cba7a1cea09001d9ce0f8e5cd8a18c99ef8f2",
+    "sbi_start_bond": {
+      "source_primary_sbi_securities": "https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html",
+      "source_primary_sbi_holdings": "https://www.sbigroup.co.jp/news/2026/0220_16127.html",
+      "source_primary_trading_start": "https://www.sbigroup.co.jp/news/2026/0325_16200.html",
+      "issuer": "SBI Holdings, Inc.",
+      "distributor_and_lead_manager": "SBI Securities",
+      "issue_amount_jpy": 10000000000,
+      "sold_out": true,
+      "issue_date": "2026-03-24",
+      "trading_start_date": "2026-03-25",
+      "maturity_date": "2029-03-23",
+      "tenor_years": 3,
+      "coupon_rate_percent": 2.15,
+      "coupon_currency": "JPY",
+      "issue_price_percent_of_face": 100,
+      "redemption_price_percent_of_face": 100,
+      "rating": "A- (R&I)",
+      "bond_token_ledger": "ibet for Fin (BOOSTRY)",
+      "trading_venue": "ODX START PTS",
+      "reward_asset": "XRP",
+      "reward_asset_ledger": "XRP Ledger",
+      "reward_delivery_provider": "SBI VC Trade",
+      "xrp_reward_separate_from_coupon": true,
+      "initial_reward_jpy_per_100k_face": 200,
+      "initial_reward_percent_of_face": 0.2,
+      "initial_reward_eligibility": "Offering-period purchases of at least JPY 100,000, qualifying domestic individual/corporate holders, with SBI VC Trade account and completed claim procedure.",
+      "initial_reward_delivery_deadline": "2026-05-15",
+      "initial_reward_price_reference": "SBI VC Trade sales-counter price at 2026-05-13 06:59 JST",
+      "maximum_theoretical_initial_reward_jpy_if_full_issue_qualifies": 20000000,
+      "actual_xrp_quantity_distributed": null,
+      "actual_initial_reward_value_distributed_jpy": null,
+      "future_coupon_date_reward_asset_guaranteed": false,
+      "future_benefit_dates": [
+        "2027-03-24",
+        "2028-03-24",
+        "2029-03-23"
+      ],
+      "future_coupon_date_benefit_content": "Not determined in the February 20, 2026 terms; issuer to announce near each date. The product page expressly says the initial XRP benefit does not imply XRP is paid as coupon and the later benefit may not be the same asset or amount.",
+      "direct_ripple_involvement_verified": false,
+      "interpretation": "The JPY 10bn is a completed, sold-out debt issuance. Coupon and principal are JPY. XRP is a separate purchase/holding reward; it is not the bond coupon and does not imply JPY 10bn of XRP purchases or demand. The bond token is on ibet for Fin, not XRPL. The XRP reward is delivered through SBI VC Trade to an XRP Ledger asset account.",
+      "evidence_class": "PRIMARY_CORPORATE_AND_PRODUCT_DISCLOSURE"
+    },
+    "exact_phrase_research": {
+      "ask_coin": "No new primary XRP relationship established.",
+      "actual_capital": "The SBI START bond is a completed JPY 10bn debt issuance; the 0.2% XRP reward is separate. It is not JPY 10bn of XRP purchases or demand. Actual XRP quantity and reward distribution remain undisclosed.",
+      "sbic_chatgpt": "SBIC East/Central/West remain distinct from SBI Holdings. Official SBIC West seminar flyer documents a scheduled ChatGPT/generative-AI business seminar, not an OpenAI partnership."
     }
   },
   "prior_run_observations": [
@@ -17941,7 +18076,7 @@
       "canonical_handoff_path": "BARROT_XRP_MISSION_HANDOFF_CURRENT.md"
     }
   ],
-  "last_verified_at_utc": "2026-11-09T00:10:13Z",
+  "last_verified_at_utc": "2026-11-09T00:17:21Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,

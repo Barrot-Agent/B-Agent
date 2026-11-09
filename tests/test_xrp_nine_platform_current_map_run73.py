@@ -65,6 +65,9 @@ def test_run73_market_receipt_preimages_match_sha256_and_staleness_gate():
     assert market["spot"]["okx_xrpusdt"]["age_seconds_at_recheck"] > 300
     assert market["usd_usdt_normalized"] is False
     assert market["model_admission"] is False
+    assert hashlib.sha256(bodies["coinpaprika_xrp"].encode()).hexdigest() == market["spot"]["coinpaprika_xrp"]["receipt_sha256"]
+    assert market["spot"]["coinpaprika_xrp"]["age_seconds_at_recheck"] > 300
+    assert market["spot"]["coinpaprika_xrp"]["model_eligible"] is False
 
 
 def test_run73_merge_and_forecast_safety_gates_remain_closed():
@@ -87,9 +90,27 @@ def test_run73_current_ci_failure_is_recorded_without_relabeling_as_green():
     failed = integration["latest_handoff_map_head"]
 
     assert failed["full_suite"]["result"] == "failure"
-    assert failed["full_suite"]["passed"] == 1213
-    assert failed["full_suite"]["failed"] == 2
+    assert failed["full_suite"]["passed"] == 1220
+    assert failed["full_suite"]["failed"] == 1
     assert failed["core_suite"]["result"] == "success"
-    assert failed["wheel_verification"] == "skipped"
+    assert failed["wheel_verification"] == "skipped after full-suite failure"
     assert integration["dependency_audit"]["result"] == "success"
     assert integration["fail_closed_gate"]["automatic_merge_disabled"] is True
+
+
+def test_run73_sbi_start_bond_separates_jpy_coupon_from_xrp_reward():
+    data = json.loads(CURRENT.read_text(encoding="utf-8"))
+    bond = data["current_run_observations"]["sbi_start_bond"]
+
+    assert bond["issue_amount_jpy"] == 10_000_000_000
+    assert bond["sold_out"] is True
+    assert bond["coupon_currency"] == "JPY"
+    assert bond["coupon_rate_percent"] == 2.15
+    assert bond["xrp_reward_separate_from_coupon"] is True
+    assert bond["initial_reward_jpy_per_100k_face"] == 200
+    assert bond["initial_reward_percent_of_face"] == 0.2
+    assert bond["maximum_theoretical_initial_reward_jpy_if_full_issue_qualifies"] == 20_000_000
+    assert bond["bond_token_ledger"] == "ibet for Fin (BOOSTRY)"
+    assert bond["reward_asset_ledger"] == "XRP Ledger"
+    assert bond["future_coupon_date_reward_asset_guaranteed"] is False
+    assert bond["direct_ripple_involvement_verified"] is False
