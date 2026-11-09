@@ -88,10 +88,17 @@ def test_cftc_tff_parser_reconciles_three_xrp_contracts_and_categories() -> None
 def test_cftc_contract_status_distinguishes_futures_only_and_combined_universe() -> None:
     status = parse_cftc_contract_status(STATUS_HTML)
 
+    assert status["reports_dated"] == "2026-11-03"
     assert status["futures_only_added"] == ["123456"]
     assert status["futures_only_dropped"] == ["176LM2"]
     assert status["futures_and_options_combined_added"] == ["234567"]
     assert status["futures_and_options_combined_dropped"] == ["176LM2"]
+
+
+def test_cftc_contract_status_must_match_report_date() -> None:
+    stale_status = STATUS_HTML.replace("November 03, 2026", "October 27, 2026")
+    with pytest.raises(CFTCTFFParseError, match="does not match the TFF report date"):
+        parse_cftc_tff_report(REPORT, stale_status)
 
 
 def test_absent_optional_contract_is_dropped_only_with_primary_status_evidence() -> None:
