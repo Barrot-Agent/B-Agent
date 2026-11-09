@@ -185,7 +185,7 @@ def test_run76_sbi_start_bond_separates_jpy_coupon_from_xrp_reward():
 def test_run77_workflow_safety_audit_distinguishes_main_from_integration():
     audit = load_current()["current_run_observations"]["workflow_safety_audit"]
     assert audit["integration_changed_workflow_files"] == 41
-    assert any("cross-analysis.yml" in item and "read-only" in item for item in audit["main_read_only_or_disabled_workflows"])
+    assert any("cross-analysis.yml" in item and "contents:read" in item for item in audit["main_read_only_or_disabled_workflows"])
     assert any("barrot-agent.yml" in item and "contents:write" in item for item in audit["main_currently_active_risks"])
     assert any("barrot-agent.yml" in item and "quarantined" in item for item in audit["integration_branch_mitigations"])
     assert audit["workflows_dispatched"] is False
