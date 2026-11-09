@@ -4097,3 +4097,13 @@ Merge remains blocked. The corrected test must pass on a new exact head together
 The first correction updated the regression assertion to Run98 but exposed a second schema mismatch: historical run_history entries use a `run` field, while the new snapshot originally carried only `run_id`. The Run98 history entry now carries `run: 98` while the latest snapshot retains `run_id: 98`; the legacy `current_run_observations` remains Run82 for historical compatibility.
 
 Repair commit: `77fb404ff8b09db8d51a7d36e4da0335dc3c325d`. The current map and handoff were advanced to this commit. Exact-head full-suite CI, installed-wheel verification, dependency audit and fail-closed gate are pending; no result from 97a2308 or its parent is being transferred to this head.
+
+## Run 98 final exact-head verification — 2026-11-09T20:25:22Z
+
+Repair commit `77fb404ff8b09db8d51a7d36e4da0335dc3c325d` corrected the stale Run96 assertion and preserved the Run82 historical observation. Exact-head verification then passed on `6eaadf4dc5f09b26fa78ed1a34ca50474dec47fd`: **1,308 full-suite tests passed, zero failed, eight subtests passed, 59.12% inclusive coverage**; the core suite passed **677/677** with eight subtests; wheel build and installed-wheel verification passed, loading Barrot V3, the priority-one XRP mission and canonical data assets.
+
+Exact-head evidence: [CI 42692318967](https://github.com/Barrot-Agent/B-Agent/actions/runs/42692318967), [six-manifest dependency audit 42692318937](https://github.com/Barrot-Agent/B-Agent/actions/runs/42692318937) with zero known vulnerabilities, and [fail-closed gate 42692319824](https://github.com/Barrot-Agent/B-Agent/actions/runs/42692319824), which passed and kept automatic merging disabled.
+
+The current handoff/map update is a documentation-only descendant of `6eaadf4`; its own exact-head checks are pending. The code/test head above is verified. No test result is transferred to a different SHA.
+
+PR #1640 remains open and cleanly mergeable at the verified code/test head, 836 commits ahead and zero behind, 212 changed paths. It remains blocked by zero independent approvals, inaccessible effective branch-protection rules (HTTP 403), and missing authorization for the automatic GitHub Pages publication side effect.
