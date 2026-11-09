@@ -421,13 +421,33 @@ def _fake_fetcher(captured: datetime):
                 "ripple_rlusd_transparency_dashboard": "<html><title>Ripple USD Transparency</title><h1>Ripple USD (RLUSD)</h1><h2>Total Circulating RLUSD</h2><p>RLUSD Reserve Funds</p><p>As of 11/05/2026</p></html>",
                 "xrpldashboard_rlusd_cross_chain_supply": "<html><title>RLUSD cross-chain supply</title><h1>RLUSD</h1><p>Ethereum</p><p>XRP Ledger</p><p>Snapshot</p></html>",
                 "circle_usdc_transparency_dashboard": "<html><title>Transparency and stability</title><h1>USDC</h1><p>EURC</p><p>Reserves</p><p>As of Nov 05, 2026</p></html>",
-                "cftc_tff_financial_futures": "<html><title>CFTC Traders in Financial Futures</title><pre>Traders in Financial Futures - Futures Only Positions as of November 3, 2026\nXRP - CHICAGO MERCANTILE EXCHANGE (Contracts of 50,000 XRP)\nCFTC Code #176740 Open Interest is 7,216\nNANO XRP - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)\nCFTC Code #176LM1 Open Interest is 32,505\nNANO XRP PERP STYLE - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)\nCFTC Code #176LM3 Open Interest is 38,392</pre></html>",
+                "cftc_tff_financial_futures": """<html><title>CFTC Traders in Financial Futures</title><pre>
+Traders in Financial Futures - Futures Only Positions as of November 3, 2026
+XRP - CHICAGO MERCANTILE EXCHANGE (Contracts of 50,000 XRP)
+CFTC Code #176740 Open Interest is 7,216
+Positions
+4,228 4,431 17 868 802 21 1,976 1,696 22 0 0 0 84 227
+Changes from: October 27, 2026 Total Change is: -845
+163 -210 0 -53 36 20 -410 -258 -501 0 0 0 -64 68
+NANO XRP - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)
+CFTC Code #176LM1 Open Interest is 32,505
+Positions
+0 0 0 0 0 0 29,317 31,625 120 2,693 601 0 375 159
+Changes from: October 27, 2026 Total Change is: -32,864
+0 0 0 0 0 0 -26,142 -28,053 -4,911 -1,607 28 0 -204 72
+NANO XRP PERP STYLE - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)
+CFTC Code #176LM3 Open Interest is 38,392
+Positions
+0 0 0 0 0 0 1,780 29,554 0 28,858 2,853 0 7,754 5,985
+Changes from: October 27, 2026 Total Change is: -465
+0 0 0 0 0 0 82 -1,313 0 -1,217 753 0 670 95
+</pre></html>""",
             }
             html_text = html_by_source[source_id]
             return {
                 "raw_bytes": html_text.encode("utf-8"),
                 "payload": {"html_text": html_text},
-                "http_date": "Thu, 05 Nov 2026 04:00:00 GMT",
+                "http_date": "Fri, 06 Nov 2026 20:30:00 GMT",
             }
         else:
             raise AssertionError(source_id)
@@ -547,8 +567,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.19"
-    assert summary["parser_version"] == "xrp-public-market-v3.18"
+    assert summary["adapter_version"] == "xrp-public-market-v3.20"
+    assert summary["parser_version"] == "xrp-public-market-v3.19"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -2556,11 +2576,13 @@ def test_ingestion_records_bybit_403_with_source_url_and_capture_time(tmp_path):
     assert not any(item["source_id"] == "bybit_spot_ticker" for item in receipts)
 
 
-def test_weekly_cftc_endpoint_is_selected_only_after_friday_publication():
+def test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication(monkeypatch):
     saturday_daily_run = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
     saturday_hourly_run = datetime(2026, 11, 7, 0, 3, tzinfo=timezone.utc)
     friday_hourly_run = datetime(2026, 11, 6, 21, 3, tzinfo=timezone.utc)
     saturday_late_run = datetime(2026, 11, 7, 2, 15, tzinfo=timezone.utc)
+    delayed_monday_run = datetime(2026, 11, 16, 21, 3, tzinfo=timezone.utc)
+    unlisted_monday_run = datetime(2026, 11, 9, 21, 3, tzinfo=timezone.utc)
 
     assert len(WEEKLY_ENDPOINTS) == 1
     assert WEEKLY_ENDPOINTS[0][0] == "cftc_tff_financial_futures"
@@ -2568,9 +2590,18 @@ def test_weekly_cftc_endpoint_is_selected_only_after_friday_publication():
     assert _weekly_endpoints_for_capture(saturday_hourly_run) == ()
     assert _weekly_endpoints_for_capture(friday_hourly_run) == ()
     assert _weekly_endpoints_for_capture(saturday_late_run) == ()
+    assert _weekly_endpoints_for_capture(delayed_monday_run) == WEEKLY_ENDPOINTS
+    assert _weekly_endpoints_for_capture(unlisted_monday_run) == ()
 
+    monkeypatch.setattr(xrp_ingestion, "CFTC_SEMIWEEKLY_EFFECTIVE_DATE", "2026-12-01")
+    wednesday_after_effective = datetime(2026, 12, 2, 21, 3, tzinfo=timezone.utc)
+    friday_after_effective = datetime(2026, 12, 4, 21, 3, tzinfo=timezone.utc)
+    monday_after_effective = datetime(2026, 12, 7, 21, 3, tzinfo=timezone.utc)
+    assert _weekly_endpoints_for_capture(wednesday_after_effective) == WEEKLY_ENDPOINTS
+    assert _weekly_endpoints_for_capture(friday_after_effective) == WEEKLY_ENDPOINTS
+    assert _weekly_endpoints_for_capture(monday_after_effective) == ()
 
-def test_weekly_cftc_tff_capture_is_receipted_raw_only_on_saturday_daily_run(tmp_path):
+def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_daily_run(tmp_path):
     captured = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
     summary = run_ingestion(tmp_path / "weekly", fetcher=_fake_fetcher(captured), now=captured)
 
@@ -2579,16 +2610,35 @@ def test_weekly_cftc_tff_capture_is_receipted_raw_only_on_saturday_daily_run(tmp
     assert summary["weekly_source_policy"]["captured_source_ids"] == [
         "cftc_tff_financial_futures"
     ]
+    assert summary["weekly_source_policy"]["parsed_source_ids"] == [
+        "cftc_tff_financial_futures"
+    ]
+    assert summary["weekly_source_policy"]["raw_only_source_ids"] == []
 
     raw_only = json.loads(
         (tmp_path / "weekly" / "raw_only_sources.json").read_text(encoding="utf-8")
     )
-    cftc_raw_only = next(
-        item for item in raw_only
+    assert not any(item["source_id"] == "cftc_tff_financial_futures" for item in raw_only)
+
+    research_only = json.loads(
+        (tmp_path / "weekly" / "research_only_observations.json").read_text(encoding="utf-8")
+    )
+    cftc_observation = next(
+        item for item in research_only
         if item["source_id"] == "cftc_tff_financial_futures"
     )
-    assert "positions_as_of_november_3_2026" in cftc_raw_only["reason"]
-    assert "raw_only" in cftc_raw_only["reason"]
+    assert cftc_observation["observation_type"] == "cftc_tff_xrp_futures_only_position_features"
+    assert cftc_observation["source_data_as_of_utc"] == "2026-11-03T00:00:00.000000Z"
+    assert cftc_observation["timestamp_precision"] == "date_only"
+    assert cftc_observation["model_eligible"] is False
+    assert cftc_observation["feature_count"] == 21
+    features = {item["feature_id"]: item for item in cftc_observation["features"]}
+    assert features["xrp.derivatives.cftc.tff.cme_xrp.open_interest_contracts"]["value"] == 7216
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.open_interest_contracts"]["value"] == 32505
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.open_interest_change_contracts"]["value"] == -32864
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp_perp_style.open_interest_contracts"]["value"] == 38392
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.leveraged_funds_net_contracts"]["value"] == -2308
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp_perp_style.other_reportables_net_contracts"]["value"] == 26005
 
     receipt_manifest = json.loads(
         (tmp_path / "weekly" / "receipt_manifest.json").read_text(encoding="utf-8")
@@ -2598,7 +2648,8 @@ def test_weekly_cftc_tff_capture_is_receipted_raw_only_on_saturday_daily_run(tmp
         if item["source_id"] == "cftc_tff_financial_futures"
     )
     assert cftc_receipt["model_eligible_source"] is False
-    assert cftc_receipt["source_data_as_of_utc"] is None
+    assert cftc_receipt["source_data_as_of_utc"] == "2026-11-03T00:00:00.000000Z"
+    assert cftc_receipt["source_http_date"] == "Fri, 06 Nov 2026 20:30:00 GMT"
     assert cftc_receipt["raw_bytes_retained"] is True
     assert len(cftc_receipt["raw_content_sha256"]) == 64
 
@@ -2610,3 +2661,4 @@ def test_weekly_cftc_tff_capture_is_receipted_raw_only_on_saturday_daily_run(tmp
         for record in snapshot["records"]
         for source in record["sources"]
     )
+    assert summary["forecast_status"] == "NOT_ISSUED"
