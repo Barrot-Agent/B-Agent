@@ -47,7 +47,7 @@ def test_run58_endpoint_registry_and_map_counts_match():
     current_data = json.loads(CURRENT_MAP.read_text(encoding="utf-8"))
     current = current_data["current_run_observations"]
     engine = current["prediction_engine"]
-    assert current["run_id"] == 81
+    assert current["run_id"] == 82
     assert any(item.get("run_id") == 80 for item in current_data["prior_run_observations"])
     assert engine["endpoints"] == len(ENDPOINTS)
     assert engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
