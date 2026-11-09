@@ -29345,13 +29345,12 @@
   },
   "latest_market_crosscheck": {
     "model_admission": false,
-    "source_capture_type": "secondary web observations; no raw HTTP bytes or SHA-256 receipts",
+    "source_capture_type": "secondary web excerpts only; no raw HTTP bytes or SHA-256 receipts",
     "derivatives": [
       {
         "source": "Liqwall",
         "as_of_utc": "2026-11-09T17:42:00Z",
         "url": "https://liqwall.com/coins/xrp",
-        "price_usd": 1.09,
         "open_interest_usd": 1230000000,
         "oi_change_24h_pct": -5.8,
         "liquidations_24h_usd": 36800000,
@@ -29366,8 +29365,6 @@
         "source": "TradRadar",
         "as_of_utc": "2026-11-09T17:25:00Z",
         "url": "https://tradradar.io/markets/xrp",
-        "price_usd": 1.0943,
-        "price_change_24h_pct": -5.16,
         "open_interest_usd": 1660000000,
         "oi_change_24h_pct": -12.29,
         "funding_oi_weighted_8h_pct": -0.0007,
@@ -29383,8 +29380,6 @@
         "source": "Alpha Finance",
         "as_of_utc": "2026-11-09T17:50:00Z",
         "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
-        "price_usd": 1.0952,
-        "price_change_24h_pct": -5.09,
         "open_interest_usd": 2490000000,
         "volume_24h_usd": 3930000000,
         "long_liquidations_24h_usd": 39200000,
@@ -29400,7 +29395,7 @@
         "last_7_sessions_usd": 8400000,
         "last_30_sessions_usd": 23300000,
         "cumulative_usd": 1730000000,
-        "method": "published flow series; publisher says XRP fund holdings/net assets not published"
+        "method": "publisher flow series; holdings/net assets not published"
       },
       "xrp_insights": {
         "through": "2026-11-06",
@@ -29412,7 +29407,7 @@
         "total_holdings_xrp": 1195182552,
         "method": "day-over-day issuer-page holdings changes"
       },
-      "reconciliation": "Not directly comparable: different fund sets, source methods and cutoffs. Preserve both; do not average."
+      "reconciliation": "Different fund scopes, methods and cutoffs; do not average or infer complete issuer-wide cash flows."
     }
   },
   "prediction_engine": {
@@ -29564,7 +29559,7 @@
     "independent_worm_archive": false,
     "endpoint_inventory_verified_at_utc": "2026-11-09T18:01:15Z",
     "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
-    "endpoint_inventory_source_blob_sha": "4ccda89a1548e6f78e814069308f4e73834d4697",
+    "endpoint_inventory_source_blob_sha": "281f5f0e748ab8683d6031e926ba37c6659d0fe1",
     "endpoint_inventory_contract": "research/xrp_intelligence/feature-store-contract.md; research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_endpoint_inventory_documentation_consistency.py; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
     "endpoint_inventory_correction": "39 total: 36 hourly, one weekly raw-only CFTC TFF source, and two non-commercial XRPL node endpoints excluded by default. CFTC is not scheduled hourly and is not model-admitted.",
     "source_coverage_gaps": [
@@ -29670,39 +29665,40 @@
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "main_ci": {
       "run_id": 42526890841,
+      "result": "SUCCESS",
       "full_suite_passed": 718,
       "core_suite_passed": 485,
-      "subtests": 8
+      "subtests_passed": 8
     },
     "cross_analysis": {
       "run_id": 42668727211,
-      "result": "success"
+      "result": "SUCCESS"
     },
     "riemann_harvest": {
       "run_id": 42556313011,
-      "result": "failure",
-      "cause": "ModuleNotFoundError: pydantic after installing pytest only",
-      "integration_branch_fix": "workflow installs pydantic-settings; not yet verified on main"
+      "result": "FAILURE",
+      "cause": "ModuleNotFoundError: pydantic after workflow installed pytest only",
+      "integration_branch_fix": "pydantic-settings is installed by the integration workflow; not verified on main"
     },
     "pillars_consistency": {
       "run_id": 42621970927,
-      "result": "failure",
+      "result": "FAILURE",
       "causes": [
-        "missing GitHub App ID/private key/installation ID",
+        "GitHub App credentials absent",
         "Databricks HTTP 403",
-        "Hugging Face stage BUILD_ERROR"
+        "Hugging Face health/build error"
       ]
     },
     "hover_bike_updates": {
       "run_id": 42572261311,
-      "result": "failure",
-      "cause": "expected hover_bike_revolution/hover_bike_spec.json artifact missing"
+      "result": "FAILURE",
+      "cause": "Expected hover_bike_revolution/hover_bike_spec.json artifact missing"
     }
   },
   "backlog_classification": {
-    "#1640": "BLOCKED; exact-head full suite failed 19 historical map assertions after compact map replacement; restore history-preserving map before retest.",
+    "#1640": "BLOCKED; history-preserving map restored on b813740; exact-head CI/audit/gate queued; zero independent approvals; Pages deployment authorization absent.",
     "#1643": "UNIQUE/UNREVIEWED; 663 unique paths, seven overlaps; preserve.",
-    "#1653": "UNIQUE/UNREVIEWED; six unique paths, one CI overlap; preserve.",
+    "#1653": "UNIQUE/UNREVIEWED; six unique paths, one overlap; preserve.",
     "#1642": "SUPERSEDED candidate: 7/7 paths overlap and commit is ancestor of #1640.",
     "#1644-#1650": "OVERLAP candidates; exact blob/version reconciliation pending.",
     "#1317/#1318/#1320": "SUPERSEDED candidates; all paths overlap; reconcile before closure.",
@@ -29712,7 +29708,7 @@
     "#1659": "DRAFT; preserve 4 unique local Llama/Termux paths.",
     "remaining_drafts": "356; no bulk closure."
   },
-  "last_run_status": "Run 93 refreshed the current platform map, added SHA-256-bound public spot receipts and reconciled derivatives/institutional evidence. New commit requires exact-head CI.",
+  "last_run_status": "Run96 history-preserving map restoration committed on b813740; exact-head CI, dependency audit and fail-closed gate are queued.",
   "integration_head_before_map_commit": "2685c1744aa5a7972da9063a18be665077c4548c",
   "research_updates": {
     "run93": {
@@ -29733,13 +29729,13 @@
         "sbic_chatgpt": "NO OPENAI PARTNERSHIP ESTABLISHED. Official Tokyo SBIC June 12–13, 2025 course mentions ChatGPT and Copilot; SBIC East/Central/West are distinct from SBI Holdings."
       }
     },
-    "retrieval_context": "Public web secondary-source cross-check; no raw HTTP response bodies were captured and these values are not model-admitted.",
-    "derivatives": "Liqwall, TradRadar and Alpha Finance show OI of $1.23B, $1.66B and $2.49B at different cutoffs. Their venue coverage overlaps and is not comparable; do not average. All show materially more long than short liquidations, but aggregate funding differs and is near-zero/mixed. This supports a deleveraging observation, not a directional forecast.",
-    "etf_flows": "Alpha Finance through 2026-11-08 reports five funds, +$8.4M over its last seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; its methodology is a flow series and it says holdings/net assets are not published. XRP Insights through 2026-11-06 reports issuer-page holdings changes for six spot funds plus BITW: -812,529 XRP (about -$939K) over Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. The scopes and methods differ; preserve disagreement, do not average or call either complete issuer-wide cash flows.",
-    "coinbase_pnc": "Reuters, 2026-11-09: PNC's limited corporate/institutional pilot with Coinbase lets eligible clients receive Circle USDC, automatically converted to USD. It is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand.",
-    "ask_coin": "Permission Coin ASK remains one plausible ticker candidate; the exact intended ASK Coin identity and any XRP/XRPL integration remain unverified.",
-    "actual_capital": "The exact phrase did not surface as a standardized XRP metric. Keep it separate from documented cash purchases, in-kind XRP, debt proceeds, drawn credit and undrawn equity capacity.",
-    "sbic_chatgpt": "No exact primary-source match for the phrase SBIC, ChatGPT SBIC. Prior Tokyo SBIC training-course evidence does not establish an OpenAI partnership.",
+    "retrieval_context": "Public web secondary-source cross-check captured during Run 96. Search/open excerpts only; raw HTTP response bytes were not captured, no SHA-256 receipt exists, and none of these figures is model-admitted.",
+    "derivatives": "At source-reported cutoffs Liqwall showed about $1.23B OI and $36.8M liquidations ($35.5M longs); TradRadar about $1.66B OI and at least $38.45M liquidations ($36.98M longs); Alpha Finance about $2.49B OI and $39.2M long liquidations. Venue coverage overlaps and timestamps/methods differ; funding is near-zero/mixed. Do not average. Long-heavy liquidation supports deleveraging, not direction.",
+    "etf_flows": "Alpha Finance through 2026-11-08 reports five funds, +$8.4M over seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; it says holdings/net assets are not published and the flow series is its own method. XRP Insights through 2026-11-06 reports issuer-page holdings changes for six spot funds plus BITW: -812,529 XRP (about -$939K) Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. Different fund scope, data method and cutoff; preserve disagreement, do not average or equate either to complete cash subscriptions.",
+    "coinbase_pnc": "Reuters, 2026-11-09: limited PNC corporate/institutional pilot with Coinbase enables eligible clients to receive Circle USDC and automatically convert it to USD. This is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand.",
+    "ask_coin": "Permission Coin ASK remains a plausible candidate; exact intended ASK Coin identity and any XRP/XRPL integration remain unverified.",
+    "actual_capital": "The exact phrase did not resolve to a standardized XRP metric. Separate disclosed cash used to buy XRP, in-kind contributions, debt proceeds, drawn credit and undrawn equity capacity.",
+    "sbic_chatgpt": "No exact primary-source match for 'SBIC, ChatGPT SBIC'. The prior Tokyo SBIC ChatGPT/Copilot training-course evidence does not establish an OpenAI partnership.",
     "kamilah_videos": {
       "identity_status": "Person identity is strongly corroborated; canonical personal-channel ownership remains not conclusively established.",
       "verified_direct_youtube_byline": [
@@ -29747,15 +29743,13 @@
           "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
           "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
           "published": "2025-12-13",
-          "byline": "Kamilah Stevenson",
-          "views_at_search": 76750
+          "byline": "Kamilah Stevenson"
         },
         {
           "title": "Why XRP Matters More Than Your Paycheck",
           "url": "https://www.youtube.com/watch?v=Us_FIT4RByY",
           "published": "2026-04-17",
-          "byline": "Kamilah Stevenson",
-          "views_at_search": 30004
+          "byline": "Kamilah Stevenson"
         }
       ],
       "aggregator_only_candidates": [
@@ -30332,7 +30326,12 @@
   "exact_phrase_research": {
     "ask_coin": "UNRESOLVED. Permission Coin (ASK) is a candidate only; no verified intended entity or XRP/XRPL integration.",
     "actual_capital": "NO STANDARDIZED XRP METRIC. Separate cash purchases, in-kind contributions, debt proceeds, drawn facilities and contingent equity capacity.",
-    "sbic_chatgpt": "NO OPENAI PARTNERSHIP ESTABLISHED. Official Tokyo SBIC June 12–13, 2025 course mentions ChatGPT and Copilot; SBIC East/Central/West are distinct from SBI Holdings."
+    "sbic_chatgpt": "NO OPENAI PARTNERSHIP ESTABLISHED. Official Tokyo SBIC June 12–13, 2025 course mentions ChatGPT and Copilot; SBIC East/Central/West are distinct from SBI Holdings.",
+    "run96": {
+      "ask_coin": "Permission Coin ASK remains a plausible candidate; exact intended ASK Coin identity and any XRP/XRPL integration remain unverified.",
+      "actual_capital": "The exact phrase did not resolve to a standardized XRP metric. Separate disclosed cash used to buy XRP, in-kind contributions, debt proceeds, drawn credit and undrawn equity capacity.",
+      "sbic_chatgpt": "No exact primary-source match for 'SBIC, ChatGPT SBIC'. The prior Tokyo SBIC ChatGPT/Copilot training-course evidence does not establish an OpenAI partnership."
+    }
   },
   "kamilah_video_identity_gate": {
     "person_identity": "Dr. Kamilah Stevenson / The Wealth Doctor is corroborated by her official learning site.",
@@ -30424,7 +30423,50 @@
     ],
     "name_discrepancy": "Publisher metadata says Kamilah; several transcripts self-identify Camila. Alias, transcription error or different person remains unresolved.",
     "verified_video_inventory_count": 0,
-    "status": "Do not inventory as the verified personal channel until a first-party reciprocal link is established."
+    "status": "Do not inventory as the verified personal channel until a first-party reciprocal link is established.",
+    "run96_public_video_inventory": {
+      "identity_status": "Person identity is strongly corroborated; canonical personal-channel ownership remains not conclusively established.",
+      "verified_direct_youtube_byline": [
+        {
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+          "published": "2025-12-13",
+          "byline": "Kamilah Stevenson"
+        },
+        {
+          "title": "Why XRP Matters More Than Your Paycheck",
+          "url": "https://www.youtube.com/watch?v=Us_FIT4RByY",
+          "published": "2026-04-17",
+          "byline": "Kamilah Stevenson"
+        }
+      ],
+      "aggregator_only_candidates": [
+        {
+          "title": "How Much XRP Do You ACTUALLY Need?",
+          "video_id": "rv0BAV0vLgo",
+          "source": "Glasp",
+          "status": "not counted as verified channel upload"
+        },
+        {
+          "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+          "video_id": "ci0FH73lbCs",
+          "source": "Glasp",
+          "status": "not counted as verified channel upload"
+        },
+        {
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They’re Right)",
+          "video_id": "cxeX_eu_2H0",
+          "source": "Glasp",
+          "status": "not counted as verified channel upload"
+        }
+      ],
+      "third_party_exclusion": {
+        "title": "Kamilah Stevenson Breaks Down XRP’s Most Important Upgrade Yet",
+        "video_id": "5DzBk8DfoLs",
+        "publisher": "Alina X",
+        "status": "third-party upload; excluded from her authored channel inventory"
+      }
+    }
   },
   "research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
   "top_prediction_engine": {
@@ -30576,7 +30618,7 @@
     "independent_worm_archive": false,
     "endpoint_inventory_verified_at_utc": "2026-11-09T18:01:15Z",
     "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
-    "endpoint_inventory_source_blob_sha": "4ccda89a1548e6f78e814069308f4e73834d4697",
+    "endpoint_inventory_source_blob_sha": "281f5f0e748ab8683d6031e926ba37c6659d0fe1",
     "endpoint_inventory_contract": "research/xrp_intelligence/feature-store-contract.md; research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_endpoint_inventory_documentation_consistency.py; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
     "endpoint_inventory_correction": "39 total: 36 hourly, one weekly raw-only CFTC TFF source, and two non-commercial XRPL node endpoints excluded by default. CFTC is not scheduled hourly and is not model-admitted.",
     "source_coverage_gaps": [
@@ -30620,7 +30662,7 @@
       "description": "Three SHA-256-bound public spot JSON bodies and six secondary derivatives views; research-only."
     }
   ],
-  "updated_at_utc": "2026-11-09T18:01:15Z",
+  "updated_at_utc": "2026-11-09T18:14:09Z",
   "current_run_snapshot": {
     "run": 82,
     "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -31485,9 +31527,49 @@
       "short_liquidations_24h_usd": 1600000,
       "liquidation_clusters_modelled_from_open_interest": true,
       "model_eligible": false
+    },
+    {
+      "source": "Liqwall",
+      "as_of_utc": "2026-11-09T17:42:00Z",
+      "url": "https://liqwall.com/coins/xrp",
+      "open_interest_usd": 1230000000,
+      "oi_change_24h_pct": -5.8,
+      "liquidations_24h_usd": 36800000,
+      "long_liquidations_usd": 35500000,
+      "short_liquidations_usd": 1400000,
+      "binance_funding_8h_pct": 0.0057,
+      "average_funding_8h_pct": -0.0002,
+      "binance_accounts_long_pct": 74.6,
+      "model_eligible": false
+    },
+    {
+      "source": "TradRadar",
+      "as_of_utc": "2026-11-09T17:25:00Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "open_interest_usd": 1660000000,
+      "oi_change_24h_pct": -12.29,
+      "funding_oi_weighted_8h_pct": -0.0007,
+      "liquidations_24h_min_usd": 38450000,
+      "long_liquidations_usd": 36980000,
+      "short_liquidations_usd": 1480000,
+      "long_short_accounts_ratio": 3.93,
+      "long_accounts_pct": 79.7,
+      "venue_funding_mixed": true,
+      "model_eligible": false
+    },
+    {
+      "source": "Alpha Finance",
+      "as_of_utc": "2026-11-09T17:50:00Z",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "open_interest_usd": 2490000000,
+      "volume_24h_usd": 3930000000,
+      "long_liquidations_24h_usd": 39200000,
+      "short_liquidations_24h_usd": 1600000,
+      "liquidation_clusters_modelled_from_open_interest": true,
+      "model_eligible": false
     }
   ],
-  "latest_run_verified_at_utc": "2026-11-09T18:01:15Z",
+  "latest_run_verified_at_utc": "2026-11-09T18:14:09Z",
   "latest_run_snapshot": {
     "run_id": 96,
     "captured_at_utc": "2026-11-09T18:01:15Z",
@@ -31657,39 +31739,50 @@
           "run_id": 42671563503,
           "status": "WORKFLOW_LEVEL_FAILURE_NO_CHECK_RUNS"
         }
+      },
+      "post_restore_verification": {
+        "head": "b81374064bbe31d080088f1e2c76fa50abf566aa",
+        "ci_run_id": 42672233350,
+        "ci_status": "QUEUED",
+        "dependency_audit_run_id": 42672233730,
+        "dependency_audit_status": "QUEUED",
+        "fail_closed_gate_run_id": 42672233383,
+        "fail_closed_gate_status": "QUEUED",
+        "no_results_yet": true
       }
     },
     "main_workflows": {
       "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
       "main_ci": {
         "run_id": 42526890841,
+        "result": "SUCCESS",
         "full_suite_passed": 718,
         "core_suite_passed": 485,
-        "subtests": 8
+        "subtests_passed": 8
       },
       "cross_analysis": {
         "run_id": 42668727211,
-        "result": "success"
+        "result": "SUCCESS"
       },
       "riemann_harvest": {
         "run_id": 42556313011,
-        "result": "failure",
-        "cause": "ModuleNotFoundError: pydantic after installing pytest only",
-        "integration_branch_fix": "workflow installs pydantic-settings; not yet verified on main"
+        "result": "FAILURE",
+        "cause": "ModuleNotFoundError: pydantic after workflow installed pytest only",
+        "integration_branch_fix": "pydantic-settings is installed by the integration workflow; not verified on main"
       },
       "pillars_consistency": {
         "run_id": 42621970927,
-        "result": "failure",
+        "result": "FAILURE",
         "causes": [
-          "missing GitHub App ID/private key/installation ID",
+          "GitHub App credentials absent",
           "Databricks HTTP 403",
-          "Hugging Face stage BUILD_ERROR"
+          "Hugging Face health/build error"
         ]
       },
       "hover_bike_updates": {
         "run_id": 42572261311,
-        "result": "failure",
-        "cause": "expected hover_bike_revolution/hover_bike_spec.json artifact missing"
+        "result": "FAILURE",
+        "cause": "Expected hover_bike_revolution/hover_bike_spec.json artifact missing"
       }
     },
     "merge_state": {
@@ -31721,13 +31814,12 @@
     },
     "latest_market_crosscheck": {
       "model_admission": false,
-      "source_capture_type": "secondary web observations; no raw HTTP bytes or SHA-256 receipts",
+      "source_capture_type": "secondary web excerpts only; no raw HTTP bytes or SHA-256 receipts",
       "derivatives": [
         {
           "source": "Liqwall",
           "as_of_utc": "2026-11-09T17:42:00Z",
           "url": "https://liqwall.com/coins/xrp",
-          "price_usd": 1.09,
           "open_interest_usd": 1230000000,
           "oi_change_24h_pct": -5.8,
           "liquidations_24h_usd": 36800000,
@@ -31742,8 +31834,6 @@
           "source": "TradRadar",
           "as_of_utc": "2026-11-09T17:25:00Z",
           "url": "https://tradradar.io/markets/xrp",
-          "price_usd": 1.0943,
-          "price_change_24h_pct": -5.16,
           "open_interest_usd": 1660000000,
           "oi_change_24h_pct": -12.29,
           "funding_oi_weighted_8h_pct": -0.0007,
@@ -31759,8 +31849,6 @@
           "source": "Alpha Finance",
           "as_of_utc": "2026-11-09T17:50:00Z",
           "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
-          "price_usd": 1.0952,
-          "price_change_24h_pct": -5.09,
           "open_interest_usd": 2490000000,
           "volume_24h_usd": 3930000000,
           "long_liquidations_24h_usd": 39200000,
@@ -31776,7 +31864,7 @@
           "last_7_sessions_usd": 8400000,
           "last_30_sessions_usd": 23300000,
           "cumulative_usd": 1730000000,
-          "method": "published flow series; publisher says XRP fund holdings/net assets not published"
+          "method": "publisher flow series; holdings/net assets not published"
         },
         "xrp_insights": {
           "through": "2026-11-06",
@@ -31788,17 +31876,17 @@
           "total_holdings_xrp": 1195182552,
           "method": "day-over-day issuer-page holdings changes"
         },
-        "reconciliation": "Not directly comparable: different fund sets, source methods and cutoffs. Preserve both; do not average."
+        "reconciliation": "Different fund scopes, methods and cutoffs; do not average or infer complete issuer-wide cash flows."
       }
     },
     "research_updates": {
-      "retrieval_context": "Public web secondary-source cross-check; no raw HTTP response bodies were captured and these values are not model-admitted.",
-      "derivatives": "Liqwall, TradRadar and Alpha Finance show OI of $1.23B, $1.66B and $2.49B at different cutoffs. Their venue coverage overlaps and is not comparable; do not average. All show materially more long than short liquidations, but aggregate funding differs and is near-zero/mixed. This supports a deleveraging observation, not a directional forecast.",
-      "etf_flows": "Alpha Finance through 2026-11-08 reports five funds, +$8.4M over its last seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; its methodology is a flow series and it says holdings/net assets are not published. XRP Insights through 2026-11-06 reports issuer-page holdings changes for six spot funds plus BITW: -812,529 XRP (about -$939K) over Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. The scopes and methods differ; preserve disagreement, do not average or call either complete issuer-wide cash flows.",
-      "coinbase_pnc": "Reuters, 2026-11-09: PNC's limited corporate/institutional pilot with Coinbase lets eligible clients receive Circle USDC, automatically converted to USD. It is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand.",
-      "ask_coin": "Permission Coin ASK remains one plausible ticker candidate; the exact intended ASK Coin identity and any XRP/XRPL integration remain unverified.",
-      "actual_capital": "The exact phrase did not surface as a standardized XRP metric. Keep it separate from documented cash purchases, in-kind XRP, debt proceeds, drawn credit and undrawn equity capacity.",
-      "sbic_chatgpt": "No exact primary-source match for the phrase SBIC, ChatGPT SBIC. Prior Tokyo SBIC training-course evidence does not establish an OpenAI partnership.",
+      "retrieval_context": "Public web secondary-source cross-check captured during Run 96. Search/open excerpts only; raw HTTP response bytes were not captured, no SHA-256 receipt exists, and none of these figures is model-admitted.",
+      "derivatives": "At source-reported cutoffs Liqwall showed about $1.23B OI and $36.8M liquidations ($35.5M longs); TradRadar about $1.66B OI and at least $38.45M liquidations ($36.98M longs); Alpha Finance about $2.49B OI and $39.2M long liquidations. Venue coverage overlaps and timestamps/methods differ; funding is near-zero/mixed. Do not average. Long-heavy liquidation supports deleveraging, not direction.",
+      "etf_flows": "Alpha Finance through 2026-11-08 reports five funds, +$8.4M over seven sessions, +$23.3M over 30 sessions and +$1.73B cumulative; it says holdings/net assets are not published and the flow series is its own method. XRP Insights through 2026-11-06 reports issuer-page holdings changes for six spot funds plus BITW: -812,529 XRP (about -$939K) Nov 2–6, 1,195,182,552 XRP held and 1,597 fund/day rows. Different fund scope, data method and cutoff; preserve disagreement, do not average or equate either to complete cash subscriptions.",
+      "coinbase_pnc": "Reuters, 2026-11-09: limited PNC corporate/institutional pilot with Coinbase enables eligible clients to receive Circle USDC and automatically convert it to USD. This is a competing stablecoin payment rail, not an XRP corridor or evidence of XRP demand.",
+      "ask_coin": "Permission Coin ASK remains a plausible candidate; exact intended ASK Coin identity and any XRP/XRPL integration remain unverified.",
+      "actual_capital": "The exact phrase did not resolve to a standardized XRP metric. Separate disclosed cash used to buy XRP, in-kind contributions, debt proceeds, drawn credit and undrawn equity capacity.",
+      "sbic_chatgpt": "No exact primary-source match for 'SBIC, ChatGPT SBIC'. The prior Tokyo SBIC ChatGPT/Copilot training-course evidence does not establish an OpenAI partnership.",
       "kamilah_videos": {
         "identity_status": "Person identity is strongly corroborated; canonical personal-channel ownership remains not conclusively established.",
         "verified_direct_youtube_byline": [
@@ -31806,15 +31894,13 @@
             "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
             "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
             "published": "2025-12-13",
-            "byline": "Kamilah Stevenson",
-            "views_at_search": 76750
+            "byline": "Kamilah Stevenson"
           },
           {
             "title": "Why XRP Matters More Than Your Paycheck",
             "url": "https://www.youtube.com/watch?v=Us_FIT4RByY",
             "published": "2026-04-17",
-            "byline": "Kamilah Stevenson",
-            "views_at_search": 30004
+            "byline": "Kamilah Stevenson"
           }
         ],
         "aggregator_only_candidates": [
@@ -31864,6 +31950,21 @@
       "force_push": false,
       "destructive_worktree_action": false,
       "existing_integration_branch_write": true
+    },
+    "post_restore_head": "b81374064bbe31d080088f1e2c76fa50abf566aa",
+    "history_restoration": {
+      "status": "RESTORED",
+      "source_blob_sha": "235843dd0b4e138ecf1eb7cb9189cf72d46ca2ac",
+      "preserved_legacy_current_observation_run_id": 82,
+      "preserved_prior_observations": 53,
+      "appended_run_ids": [
+        95,
+        96
+      ],
+      "note": "The full historical map and raw market receipt preimages were restored; Run96 is stored as latest_run_snapshot/run_history without overwriting the legacy Run82 current_run_observations expected by historical regression tests."
     }
-  }
+  },
+  "endpoint_inventory_source_blob_sha": "281f5f0e748ab8683d6031e926ba37c6659d0fe1",
+  "endpoint_inventory_verified_at_utc": "2026-11-09T18:01:15Z",
+  "endpoint_inventory_correction": "39 total endpoint records: 36 hourly, one weekly raw-only CFTC TFF source, and two non-commercial XRPL node endpoints excluded by default. CFTC is not scheduled hourly and is not model-admitted."
 }
