@@ -26,7 +26,7 @@ from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
-from .cftc_tff import parse_cftc_tff_report
+from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov"}
@@ -88,6 +88,7 @@ ENDPOINTS = (
     ("ripple_rlusd_transparency_dashboard", "https://ripple.com/products/stablecoin/transparency/"),
     ("xrpldashboard_rlusd_cross_chain_supply", "https://xrpldashboard.com/rlusd"),
     ("circle_usdc_transparency_dashboard", "https://www.circle.com/transparency"),
+    ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
     ("xrpl_inftf_server_info", "https://xrplcluster.com/"),
     ("xrpl_honeycluster_server_info", "https://honeycluster.io/"),
@@ -143,6 +144,7 @@ XRPL_NODE_SOURCES = {
 # but never include them in the default/scheduled collection set.
 NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS = frozenset(XRPL_NODE_SOURCES)
 WEEKLY_ENDPOINTS = (
+    ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
 )
 WEEKLY_SOURCE_IDS = frozenset(source_id for source_id, _url in WEEKLY_ENDPOINTS)
@@ -3423,9 +3425,39 @@ def _parse_bybit_linear_funding_history(
     return records, _iso(ordered[-1][0]), True, ""
 
 
-def _parse_cftc_tff(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+def _parse_cftc_contract_status_index(
+    payload: Any, *, source_id: str, url: str, digest: str, captured: datetime
+):
     html_text = payload.get("html_text") if isinstance(payload, Mapping) else None
-    parsed = parse_cftc_tff_report(html_text)
+    status = parse_cftc_contract_status(html_text)
+    if not status.get("reports_dated"):
+        raise XRPIngestionError("CFTC contract-status index has no report date")
+    report_date = datetime.strptime(
+        status["reports_dated"], "%Y-%m-%d"
+    ).replace(tzinfo=timezone.utc)
+    if report_date.date() > captured.astimezone(timezone.utc).date():
+        raise XRPIngestionError("CFTC contract-status report date is later than capture time")
+    return (
+        [],
+        _iso(report_date),
+        False,
+        "official_cftc_weekly_added_dropped_contract_index_research_only",
+    )
+
+
+def _parse_cftc_tff(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    contract_status_html: str | None = None,
+):
+    html_text = payload.get("html_text") if isinstance(payload, Mapping) else None
+    parsed = parse_cftc_tff_report(
+        html_text, contract_status_html=contract_status_html
+    )
     report_date = datetime.strptime(parsed["positions_as_of_date"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
     if report_date.date() > captured.astimezone(timezone.utc).date():
         raise XRPIngestionError("CFTC TFF positions-as-of date is later than capture time")
@@ -3436,6 +3468,7 @@ def _parse_cftc_tff(payload: Any, *, source_id: str, url: str, digest: str, capt
         "The report provides a date-only positions-as-of field; event_time_utc is a date anchor, while captured_at_utc is the first verified availability time.",
         "CFTC trader categories are based on predominant business purpose and do not disclose individual trader identities or the specific reason for a position.",
         "Spreading positions are preserved in the raw report and are not included in long-minus-short net features.",
+        "Optional historical contracts absent from the current report are never zero-filled; the same-date CFTC added/dropped index is retained separately.",
     ]
     category_metrics = (
         ("dealer_intermediary_net_contracts", "dealer_intermediary"),
@@ -3446,6 +3479,8 @@ def _parse_cftc_tff(payload: Any, *, source_id: str, url: str, digest: str, capt
     )
     records = []
     for contract in parsed["contracts"]:
+        if contract["reporting_status"] != "reported":
+            continue
         instrument = (
             f"{contract['name']} ({contract['code']}; "
             f"{contract['contract_multiplier_xrp']} XRP per contract)"
@@ -3538,6 +3573,7 @@ PARSERS = {
     "ripple_rlusd_transparency_dashboard": _raw_only_ripple_rlusd_transparency_page,
     "xrpldashboard_rlusd_cross_chain_supply": _raw_only_xrpldashboard_rlusd_page,
     "circle_usdc_transparency_dashboard": _raw_only_circle_transparency_page,
+    "cftc_contract_status_index": _parse_cftc_contract_status_index,
     "cftc_tff_financial_futures": _parse_cftc_tff,
 }
 
@@ -3770,7 +3806,7 @@ def _walk_forward_report(
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
         return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "cftc_tff_financial_futures"}:
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "cftc_contract_status_index", "cftc_tff_financial_futures"}:
         return fetch_public_html(source_id, url)
     if source_id == "xrp_etf_flows_csv":
         return fetch_public_csv(source_id, url)
@@ -3941,6 +3977,7 @@ def run_ingestion(
     parsed_weekly_source_ids = []
     xrp_insights_metadata_payload: Mapping[str, Any] | None = None
     bitbank_circuit_break_payload: Mapping[str, Any] | None = None
+    cftc_contract_status_payload: Mapping[str, Any] | None = None
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
 
     for source_id, url in selected_endpoints:
@@ -3966,6 +4003,12 @@ def run_ingestion(
                 parser_kwargs["circuit_break_info"] = bitbank_circuit_break_payload
             if source_id == "xrp_etf_flows_csv":
                 parser_kwargs["metadata_payload"] = xrp_insights_metadata_payload
+            if source_id == "cftc_tff_financial_futures":
+                parser_kwargs["contract_status_html"] = (
+                    cftc_contract_status_payload.get("html_text")
+                    if isinstance(cftc_contract_status_payload, Mapping)
+                    else None
+                )
             parsed_records, source_as_of, source_eligible, reason = parser(
                 payload,
                 **parser_kwargs,
@@ -3974,6 +4017,8 @@ def run_ingestion(
                 parsed_weekly_source_ids.append(source_id)
             if source_id == "xrp_etf_flows_aggregator":
                 xrp_insights_metadata_payload = payload
+            if source_id == "cftc_contract_status_index":
+                cftc_contract_status_payload = payload
             if source_id == "bitbank_spot_circuit_break":
                 bitbank_circuit_break_payload = payload
             if source_id in XRPL_NODE_SOURCES and source_as_of is not None:
@@ -4055,6 +4100,30 @@ def run_ingestion(
                         "metadata_generated_at_utc": metadata.get("generated_at"),
                     }
                 )
+        elif source_id == "cftc_contract_status_index":
+            status = parse_cftc_contract_status(payload.get("html_text", ""))
+            research_only_observations.append(
+                {
+                    "observation_type": "cftc_weekly_contract_reporting_status",
+                    "source_id": source_id,
+                    "source_uri": url,
+                    "raw_content_sha256": receipt["raw_content_sha256"],
+                    "receipt_id": receipt["receipt_id"],
+                    "raw_bytes_retained": receipt["raw_bytes_retained"],
+                    "captured_at_utc": captured_s,
+                    "source_data_as_of_utc": source_as_of,
+                    "reports_dated": status["reports_dated"],
+                    "futures_only_added": status["futures_only_added"],
+                    "futures_only_dropped": status["futures_only_dropped"],
+                    "futures_and_options_combined_added": status["futures_and_options_combined_added"],
+                    "futures_and_options_combined_dropped": status["futures_and_options_combined_dropped"],
+                    "model_eligible": False,
+                    "interpretation_limits": [
+                        "This is a reporting-universe status index, not open interest or position data.",
+                        "A dropped contract is missing from the current report; its positions must not be interpreted as zero or as proof that positions were closed.",
+                    ],
+                }
+            )
         elif source_id == "cftc_tff_financial_futures":
             research_only_observations.append(
                 {
@@ -4288,14 +4357,14 @@ def run_ingestion(
                 WEEKLY_SOURCE_IDS - {source_id for source_id, _url in weekly_endpoints}
             ),
             "reason": (
-                "The CFTC TFF page is parsed into date-only futures-position research features "
-                "for CME XRP, Coinbase Nano XRP, and Coinbase Nano XRP Perp Style. All parsed "
-                "features remain model-ineligible. The official release schedule lists delayed "
-                "2026 dates on November 16, November 30, and December 28; the adapter captures "
-                "the listed Monday releases after 15:30 America/New_York. CFTC announced on "
-                "October 27 a plan to publish Monday data on Wednesday and Wednesday data on "
-                "Friday, but no effective date has been confirmed; the semiweekly capture path "
-                "remains disabled until that date is set."
+                "The weekly CFTC COT index and Traders in Financial Futures report are captured together after the official release. "
+                "The TFF report is parsed into date-only futures-position research features for reported XRP contract families; "
+                "the added/dropped index is stored as a separate research-only reporting-universe observation. "
+                "All CFTC features remain model-ineligible, and missing or dropped contracts are never zero-filled. "
+                "The official release schedule lists delayed 2026 dates on November 16, November 30, and December 28; "
+                "the adapter captures the listed Monday releases after 15:30 America/New_York. CFTC announced on "
+                "October 27 a plan to publish Monday data on Wednesday and Wednesday data on Friday, but no effective "
+                "date has been confirmed; the semiweekly capture path remains disabled until that date is set."
             ),
         },
         "xrpl_node_reconciliation": xrpl_node_reconciliation,
