@@ -7,6 +7,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     DIGEST_ONLY_RAW_SOURCE_REASONS,
     ENDPOINTS,
     SCHEDULED_ENDPOINTS,
+    WEEKLY_ENDPOINTS,
 )
 
 
@@ -17,10 +18,11 @@ def test_feature_store_contract_endpoint_counts_match_registry() -> None:
     contract = (ROOT / "research" / "xrp_intelligence" / "feature-store-contract.md").read_text(
         encoding="utf-8"
     )
-    assert len(ENDPOINTS) == 38
+    assert len(ENDPOINTS) == 39
     assert len(SCHEDULED_ENDPOINTS) == 36
-    assert "38 public endpoint records, of which 36 are scheduled" in contract
-    assert "38 public endpoint records, of which 36 are scheduled" in contract
+    assert len(WEEKLY_ENDPOINTS) == 1
+    assert "39 public endpoint records: 36 hourly endpoints, one weekly raw-only CFTC" in contract
+    assert "two free non-commercial XRPL public-node endpoints excluded by default" in contract
 
 
 def test_exchange_wallet_balance_source_is_scheduled_digest_only() -> None:

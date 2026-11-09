@@ -409,8 +409,9 @@ def _fake_fetcher(captured: datetime):
             "ripple_rlusd_transparency_dashboard",
             "xrpldashboard_rlusd_cross_chain_supply",
             "circle_usdc_transparency_dashboard",
+            "cftc_tff_financial_futures",
         }:
-            html_by_source = {
+            html_by_source =
                 "xrp_etf_xrpr_issuer_page": "<html><title>REX-Osprey XRP ETF XRPR</title><p>As of 11/03/2026</p><table><tr><td>CoinShares XRP ETP</td></tr></table></html>",
                 "xrp_etf_bitwise_issuer_page": "<html><title>Bitwise XRP ETF</title><p>Data as of 11/03/2026</p><td>XRP in Trust</td><td>Digital Asset Custodian</td></html>",
                 "xrp_etf_grayscale_gxrp_issuer_page": "<html><title>Grayscale XRP Trust ETF</title><p>As of 11/04/2026</p><td>TOTAL XRP IN FUND</td><td>DIGITAL ASSET CUSTODIAN</td></html>",
@@ -1216,7 +1217,7 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 38
+    assert len(ENDPOINTS) == 39
     assert len(SCHEDULED_ENDPOINTS) == 36
     assert records == []
     assert source_as_of is None
@@ -1662,6 +1663,7 @@ def test_parser_failure_preserves_exact_raw_bytes_as_ineligible_receipt(tmp_path
         raise XRPIngestionError("fixture parser rejection")
 
     monkeypatch.setattr(ingestion, "ENDPOINTS", ((source_id, url),))
+    monkeypatch.setattr(ingestion, "SCHEDULED_ENDPOINTS", ((source_id, url),))
     monkeypatch.setattr(ingestion, "PARSERS", {source_id: reject_payload})
 
     summary = ingestion.run_ingestion(
@@ -1827,7 +1829,7 @@ def test_raw_receipt_archive_can_record_digest_without_retaining_restricted_payl
 def test_scheduled_endpoint_set_excludes_noncommercial_xrpl_nodes():
     scheduled_ids = {source_id for source_id, _url in SCHEDULED_ENDPOINTS}
     assert not scheduled_ids.intersection(XRPL_NODE_SOURCES)
-    assert len(SCHEDULED_ENDPOINTS) == len(ENDPOINTS) - len(XRPL_NODE_SOURCES)
+    assert len(SCHEDULED_ENDPOINTS) == len(ENDPOINTS) - len(XRPL_NODE_SOURCES) - len(WEEKLY_ENDPOINTS)
 
 
 def test_explicit_noncommercial_xrpl_research_capture_is_never_model_eligible(tmp_path):
@@ -1839,7 +1841,7 @@ def test_explicit_noncommercial_xrpl_research_capture_is_never_model_eligible(tm
         include_noncommercial_xrpl_nodes=True,
     )
 
-    assert summary["source_receipt_count"] == len(ENDPOINTS)
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + len(XRPL_NODE_SOURCES) + len(_weekly_endpoints_for_capture(captured))
     assert summary["xrpl_node_reconciliation"]["status"] == "AGREED"
     assert summary["xrpl_node_reconciliation"]["integrity_check_only"] is True
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
@@ -1913,7 +1915,7 @@ def test_coinbase_manual_backfill_preserves_each_page_and_filters_boundary_overl
     assert backfill["pages_failed"] == 0
     assert backfill["empty_pages"] == 0
     assert backfill["candles_ingested"] == 2
-    assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES) + 2
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + len(_weekly_endpoints_for_capture(captured)) + 2
 
     receipts = json.loads((tmp_path / "coinbase-backfill" / "receipt_manifest.json").read_text(encoding="utf-8"))
     page_receipts = sorted(
@@ -2231,7 +2233,7 @@ def test_bitbank_sources_integrate_into_full_ingestion_and_research_only_flow_su
     raw_only = json.loads((tmp_path / "bitbank-run" / "raw_only_sources.json").read_text(encoding="utf-8"))
     bitbank = [item for item in snapshot["records"] if item.get("venue") == "Bitbank"]
     assert summary["snapshot_status"] == "verified"
-    assert summary["source_receipt_count"] == len(ENDPOINTS) - len(XRPL_NODE_SOURCES)
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + len(_weekly_endpoints_for_capture(captured))
     assert summary["source_failure_count"] == 0
     assert any(item["feature_id"] == "xrp.spot.bitbank.orderbook.mid_price" for item in bitbank)
     trade_summary = next(item for item in research["observations"] if item["observation_type"] == "bitbank_latest_60_trade_sample")

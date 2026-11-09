@@ -1,3 +1,55 @@
+## Run 96 — current repository audit and exact-head regression repair
+
+Capture reference: 2026-11-09T18:01:15Z.  
+Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.  
+Integration head at audit start: `39f0e94a5738056345e5e17ac9dfa07cc0530616`.  
+Active integration: existing PR #1640 only; no new branch or PR.
+
+### Repository and PR inventory
+
+- Complete recursive main tree: 1,404 entries / 1,299 files; integration tree: 1,507 entries / 1,394 files; neither tree was truncated.
+- Complete paginated open-PR inventory: **372 open PRs (356 drafts, 16 non-drafts)**. Non-drafts: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- #1640: 827 commits ahead / 0 behind; 210 changed paths; non-draft and GitHub reports mergeable. Reviews: 62 COMMENTED, zero APPROVED; inline threads 22/22 resolved.
+- #1643: 906 ahead / 1 behind; 670 paths, 663 unique relative to #1640 and seven overlapping. It has 10 COMMENTED reviews, zero approvals and 19/19 resolved threads. Preserve all unique research; do not merge wholesale.
+- #1653: 18 ahead / 1 behind; seven paths, six unique and one CI overlap with #1640. Two COMMENTED reviews, zero approvals, eight review threads resolved. Preserve unique graph work.
+- #1642's seven paths all overlap #1640. #1644–#1650 are path-overlap dependency/action candidates. #1317/#1318/#1320 are structural/schema/paper-trader overlap candidates. #1254/#1255 are older dependency candidates. #1269 has eight unique geometry/topology paths and one CI overlap.
+
+### Exact-head failure diagnosis
+
+On exact PR #1640 head `39f0e94a5738056345e5e17ac9dfa07cc0530616`:
+- Full repository suite: **1,297 passed, 11 failed, 8 subtests passed** ([CI 42666539316](https://github.com/Barrot-Agent/B-Agent/actions/runs/42666539316)).
+- Core suite: 677 passed, 8 subtests passed.
+- Six-manifest dependency audit passed with zero known vulnerabilities ([42666539154](https://github.com/Barrot-Agent/B-Agent/actions/runs/42666539154)).
+- Fail-closed gate passed and kept automatic merging disabled ([42666539208](https://github.com/Barrot-Agent/B-Agent/actions/runs/42666539208)).
+
+The 11 failures are regression-test drift introduced with the new weekly CFTC endpoint, not evidence that CFTC should be collected hourly. The registry correctly contains 39 endpoint records: 36 hourly sources, one weekly raw-only CFTC source and two non-commercial XRPL nodes excluded by default. Three test groups still asserted the old 38-total count; scheduled-count assertions failed to subtract the weekly endpoint; the CFTC HTML fixture had the page body but omitted the CFTC source ID from its accepted HTML source set; and the parser-failure test patched ENDPOINTS without patching the precomputed SCHEDULED_ENDPOINTS fixture. The current platform-map JSON file was also empty; its regression test was not reached before earlier count failures.
+
+Corrections are being applied to the existing #1640 branch only. The test changes preserve the production collection policy: 36 hourly sources, CFTC only in the Saturday 00:10–01:59 UTC daily window, and two non-commercial XRPL nodes excluded from scheduled collection. Exact-head verification after the repair is pending; do not inherit the failed-head or predecessor results.
+
+### Main workflows and merge boundary
+
+Main's current Cross Analysis runs succeeded at 17:51 UTC on SHA `d4d43be`. Separate main workflows had failures: Pillars Consistency Check (run 42621970927), Hover Bike Updates (42572261311) and Riemann Research Harvest (42556313011). No full repository CI run on current main was found in the latest 30 workflow runs. The detailed main branch-protection endpoint returns HTTP 403; the visible fallback ruleset is disabled. A prior main push triggered GitHub Pages publication, but configuration remains inaccessible and publication is not authorized.
+
+**No merge.** Zero independent approvals, unverified effective branch-protection requirements, unapproved Pages side effect, and the exact-head full suite failure all block merge. No branch protection was bypassed.
+
+### Prediction and research boundary
+
+The collector now has 39 endpoint records (36 hourly, one weekly CFTC TFF raw-only, two non-commercial XRPL nodes excluded). CFTC contract rows are validated for identity and preserved raw-only; no positions are admitted as numeric features. Feature-store, receipt chain, four deterministic baselines, chronological embargoed walk-forward, calibration diagnostics, drift monitoring and fail-closed forecast ledger are implemented on #1640, not main. External WORM anchoring, independent timestamp authority, mature synchronized history, validated out-of-sample lift, real-data calibration and shadow outcomes remain absent.
+
+Forecast status: **NOT_ISSUED**. No paper trade, real-money action or external-model transfer occurred.
+
+### Next concrete actions
+
+1. Finish the exact-head regression repairs and rerun the entire repository suite, core suite, wheel/install smoke, six-manifest dependency audit and fail-closed gate.
+2. Update this handoff and the current nine-platform map with exact results on the final head.
+3. Obtain a genuine independent APPROVED review, verify effective branch-protection requirements and resolve the Pages deployment authorization boundary.
+4. Only then consider merging #1640; after merge, fetch main, verify the merge commit/files, run main CI and inspect automatic workflow side effects.
+5. Preserve #1643's 663 unique research paths and #1653's six unique graph paths; close only exact duplicates after verified integration.
+
+No main write, merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+---
+
 ## Run 95 — weekly CFTC TFF ingestion and institutional-source reconciliation
 
 Capture reference: 2026-11-09T17:16:49Z.  
