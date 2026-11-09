@@ -1,5 +1,20 @@
 # Barrot-Agent/B-Agent pull-request backlog triage
 
+
+## Run 80 — current integration and backlog classification (2026-11-09T07:37:35Z)
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`; main tree: 1,404 entries / 1,299 files.
+- Complete open inventory: **372 PRs (356 drafts, 16 non-drafts)**. Non-drafts: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- #1640 current code/test head `bc01824d4987c47ac47bf365750dca9e2d3a7367`: 794 ahead / 0 behind / 198 paths; branch tree 1,496 entries / 1,383 files / 556 Python / 134 test modules / 79 workflows. Exact-head full suite 1,280 passed + 8 subtests, 59.09% inclusive coverage; core 677 passed + 8 subtests; six-manifest dependency audit zero known vulnerabilities; fail-closed gate passed and kept merge disabled. Runs: [CI 42579039413](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039413), [audit 42579039371](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039371), [gate 42579039370](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579039370).
+- #1640 has 22/22 resolved inline threads but zero APPROVED reviews. Branch-protection detail endpoint returns HTTP 403; visible fallback ruleset is disabled. A previous main push triggered Pages deployment, and #1640 changes public web assets. **Classification: BLOCKED, not ready to merge.**
+- #1643: 906 ahead / 1 behind / 670 changed paths; 19/19 threads resolved, zero approvals, no exact-head CI on current head. Seven paths overlap #1640; 663 are unique. **Classification: UNIQUE/UNREVIEWED and BLOCKED on divergence/overlap; preserve, do not merge wholesale.**
+- #1642: its source commit is an ancestor of #1640; seven paths overlap. **Classification: SUPERSEDED candidate, retain until #1640 is merged and verified on main.**
+- #1653: unique repository knowledge graph; seven paths, one CI-workflow overlap with #1640; exact-head full suite 730 passed + 8 subtests and fail-closed gate passed, but 8/8 review threads remain unresolved, zero approvals, no dependency audit. **Classification: UNIQUE/UNREVIEWED; preserve and reconcile CI overlap later.**
+- #1644–#1650: dependency/action changes overlap #1640 on workflow and manifest paths; complete blobs are not all identical. **Classification: BLOCKED pending exact reconciliation; do not close early.**
+- #1317/#1318/#1320: source work represented in #1640. **Classification: SUPERSEDED candidates, retain until successor is merged and files verified on main.** #1269 remains unique geometry/topology work. #1254/#1255 remain older dependency candidates. Preserve all drafts and unique work.
+- Main CI: 718 full-suite tests + 8 subtests; 485 core tests + 8 subtests. Main Riemann Harvest failed because Pydantic was missing; #1640 includes a workflow dependency correction, not yet workflow-executed. Main dependency audit passed.
+- No PR was merged or closed. No branch was rewritten/force-pushed. No deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
 **Snapshot:** 2026-11-04T19:27:02Z, after fresh-main inspection, exact-head CI review and complete 372-PR inventory.
 
 - Open pull requests: 372

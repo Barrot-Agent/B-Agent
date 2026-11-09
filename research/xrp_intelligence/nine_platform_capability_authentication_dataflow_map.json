@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-08T22:30:23Z",
+  "captured_at_utc": "2026-11-09T07:37:35Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-  "observed_integration_head_before_map_commit": "a98ce73d392294a31303001891ca8ede5fd9703c",
-  "observed_research_head": "92b66e11844313b1316429bc3b5678915af68565",
+  "observed_integration_head_before_map_commit": "bc01824d4987c47ac47bf365750dca9e2d3a7367",
+  "observed_research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
   "platforms": {
@@ -127,7 +127,8 @@
         "Run 68: re-fetched complete main/V3/research trees, all four open-PR pages, current #1640/#1643 metadata and all changed-file pages, exact-head full-suite/core/wheel/audit/gate logs, review records/threads, main workflow/security state, mission/forecast/ingestion code and durable handoff; verified exact-head CI on both PRs and recorded a hash-receipted Kraken-only web recheck. No main write, merge, deployment, secret operation or external model transfer.",
         "Run 70: fetched complete main/V3/research trees, all four open-PR pages, current PR heads/diffs/ancestry/reviews/threads, exact-head Actions logs, dependency audits, fail-closed gates, and committed a concise current handoff/map update on existing #1640 only.",
         "Run 71 (2026-11-08 22:30 UTC): current-session GitHub access re-verified by fetching the current main ref and complete recursive trees for main, the V3 integration branch and the XRP research branch; inspected all four open-PR inventory pages, current #1640/#1643 metadata, changed-path overlaps, review threads, exact-head Actions checks/logs, dependency audits, fail-closed gates, CODEOWNERS, rulesets and branch-protection visibility. Verified #1640 head e401f089 with 1,215 full-suite passes plus 8 subtests, 660 core passes plus 8 subtests, 58.98% coverage, installed-wheel verification, dependency audit and fail-closed gate. Verified #1643 head 92b66e1 is dirty due a conflicting same-path relationship artifact and has no exact-head Actions full-suite run. Main advanced to d4d43be through a single-parent direct commit adding that artifact; the push triggered a successful GitHub Pages deployment. No external-platform authentication, data transfer, main write, merge, deployment, secret operation or financial action was performed by this run.",
-        "Run 71 map metadata correction: aligned top-level last_verified_at_utc and ChatGPT.last_verified_at_utc with captured_at_utc (2026-11-08T22:30:23Z), preserving the prior Run 70 current_run_observations and all historical run observations. This fixes the two timestamp-consistency regression failures without changing or weakening tests."
+        "Run 71 map metadata correction: aligned top-level last_verified_at_utc and ChatGPT.last_verified_at_utc with captured_at_utc (2026-11-08T22:30:23Z), preserving the prior Run 70 current_run_observations and all historical run observations. This fixes the two timestamp-consistency regression failures without changing or weakening tests.",
+        "Run 80 (2026-11-09T07:37:35Z): re-fetched current main SHA and complete main/integration trees, all four open-PR inventory pages, current #1640/#1643/#1653 metadata, ancestry and changed-path overlaps, review records/threads, exact-head Actions jobs/logs, six-manifest dependency audit, fail-closed gate, main CI and security visibility. Verified #1640 full suite 1,280 passed + 8 subtests, core 677 passed + 8, 59.09% coverage, dependency audit clean and gate fail-closed. Verified read/write only on existing #1640 branch; no main write, secret read, external model transfer, deployment or financial action."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -175,7 +176,8 @@
           "Run 65: read/write access verified on the existing #1640 integration branch; main was not modified, no secret values were read, and no external model received repository data.",
           "Run 65 map-schema correction: restored the full current_run_observations.prediction_engine endpoint IDs, readiness flags and external_actions object from the preserved Run 64 schema after exact-head CI exposed missing fields; no tests were weakened.",
           "Run 66: verified read/write access to existing mission branches only; main unchanged, no secret values read, no external model data transfer.",
-          "Run 67: current-session GitHub connector read/write on existing mission branches only; no main write, secrets, deployment, external model transfer or financial action."
+          "Run 67: current-session GitHub connector read/write on existing mission branches only; no main write, secrets, deployment, external model transfer or financial action.",
+          "Run 80 (2026-11-09T07:37:35Z): re-fetched current main SHA and complete main/integration trees, all four open-PR inventory pages, current #1640/#1643/#1653 metadata, ancestry and changed-path overlaps, review records/threads, exact-head Actions jobs/logs, six-manifest dependency audit, fail-closed gate, main CI and security visibility. Verified #1640 full suite 1,280 passed + 8 subtests, core 677 passed + 8, 59.09% coverage, dependency audit clean and gate fail-closed. Verified read/write only on existing #1640 branch; no main write, secret read, external model transfer, deployment or financial action."
         ],
         "last_verified_at_utc": "2026-11-08T20:09:12Z"
       },
@@ -183,7 +185,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-08T22:30:23Z"
+      "last_verified_at_utc": "2026-11-09T07:37:35Z"
     },
     "Claude": {
       "intended_role": [
@@ -17181,7 +17183,7 @@
       }
     }
   ],
-  "last_verified_at_utc": "2026-11-09T04:19:35.183703Z",
+  "last_verified_at_utc": "2026-11-09T07:37:35Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
