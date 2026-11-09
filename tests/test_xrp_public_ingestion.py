@@ -401,6 +401,9 @@ def _fake_fetcher(captured: datetime):
             "xrp_etf_xrpr_issuer_page",
             "xrp_etf_bitwise_issuer_page",
             "xrp_etf_grayscale_gxrp_issuer_page",
+            "xrp_etf_franklin_xrpz_issuer_page",
+            "xrp_etf_canary_xrpc_issuer_page",
+            "xrp_etf_21shares_toxr_issuer_page",
             "ripple_rlusd_transparency_dashboard",
             "xrpldashboard_rlusd_cross_chain_supply",
             "circle_usdc_transparency_dashboard",
@@ -409,6 +412,9 @@ def _fake_fetcher(captured: datetime):
                 "xrp_etf_xrpr_issuer_page": "<html><title>REX-Osprey XRP ETF XRPR</title><p>As of 11/03/2026</p><table><tr><td>CoinShares XRP ETP</td></tr></table></html>",
                 "xrp_etf_bitwise_issuer_page": "<html><title>Bitwise XRP ETF</title><p>Data as of 11/03/2026</p><td>XRP in Trust</td><td>Digital Asset Custodian</td></html>",
                 "xrp_etf_grayscale_gxrp_issuer_page": "<html><title>Grayscale XRP Trust ETF</title><p>As of 11/04/2026</p><td>TOTAL XRP IN FUND</td><td>DIGITAL ASSET CUSTODIAN</td></html>",
+                "xrp_etf_franklin_xrpz_issuer_page": "<html><title>Franklin XRP ETF XRPZ</title><p>XRP in Fund</p><p>As of 09/04/2026</p></html>",
+                "xrp_etf_canary_xrpc_issuer_page": "<html><title>Canary XRP ETF XRPC</title><h2>Holdings</h2><p>As of 10/19/2026</p></html>",
+                "xrp_etf_21shares_toxr_issuer_page": "<html><title>21shares XRP ETF TOXR</title><h2>Holdings</h2><p>Value as of September 17, 2026</p></html>",
                 "ripple_rlusd_transparency_dashboard": "<html><title>Ripple USD Transparency</title><h1>Ripple USD (RLUSD)</h1><h2>Total Circulating RLUSD</h2><p>RLUSD Reserve Funds</p><p>As of 11/05/2026</p></html>",
                 "xrpldashboard_rlusd_cross_chain_supply": "<html><title>RLUSD cross-chain supply</title><h1>RLUSD</h1><p>Ethereum</p><p>XRP Ledger</p><p>Snapshot</p></html>",
                 "circle_usdc_transparency_dashboard": "<html><title>Transparency and stability</title><h1>USDC</h1><p>EURC</p><p>Reserves</p><p>As of Nov 05, 2026</p></html>",
@@ -535,8 +541,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.17"
-    assert summary["parser_version"] == "xrp-public-market-v3.16"
+    assert summary["adapter_version"] == "xrp-public-market-v3.18"
+    assert summary["parser_version"] == "xrp-public-market-v3.17"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -572,6 +578,9 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "xrp_etf_xrpr_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_bitwise_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_grayscale_gxrp_issuer_page" for item in raw_only)
+    assert any(item["source_id"] == "xrp_etf_franklin_xrpz_issuer_page" for item in raw_only)
+    assert any(item["source_id"] == "xrp_etf_canary_xrpc_issuer_page" for item in raw_only)
+    assert any(item["source_id"] == "xrp_etf_21shares_toxr_issuer_page" for item in raw_only)
     assert any(item["source_id"] == "ripple_rlusd_transparency_dashboard" for item in raw_only)
     assert any(item["source_id"] == "xrpldashboard_rlusd_cross_chain_supply" for item in raw_only)
     assert any(item["source_id"] == "circle_usdc_transparency_dashboard" for item in raw_only)
@@ -593,6 +602,13 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
         assert manifest[source_id]["source_data_as_of_utc"] is None
     assert manifest["xrp_exchange_balances_json"]["raw_bytes_retained"] is False
     assert manifest["xrp_exchange_balances_json"]["raw_payload_path"] is None
+    for source_id in ("xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page"):
+        assert manifest[source_id]["model_eligible_source"] is False
+        assert manifest[source_id]["source_data_as_of_utc"] is None
+        assert len(manifest[source_id]["raw_content_sha256"]) == 64
+        assert manifest[source_id]["raw_bytes_retained"] is False
+        assert manifest[source_id]["raw_payload_path"] is None
+        assert "redistribution" in manifest[source_id]["raw_retention_reason"]
     assert "attribution" in manifest["xrp_exchange_balances_json"]["raw_retention_reason"]
     assert manifest["xrp_etf_flows_csv"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_csv"]["source_data_as_of_utc"] is None
@@ -1140,6 +1156,9 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
     [
         ("xrp_etf_bitwise_issuer_page", "bitxrpetf.com", "https://bitxrpetf.com/"),
         ("xrp_etf_grayscale_gxrp_issuer_page", "etfs.grayscale.com", "https://etfs.grayscale.com/gxrp"),
+        ("xrp_etf_franklin_xrpz_issuer_page", "www.franklintempleton.com", "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ"),
+        ("xrp_etf_canary_xrpc_issuer_page", "canaryetfs.com", "https://canaryetfs.com/xrpc/"),
+        ("xrp_etf_21shares_toxr_issuer_page", "www.21shares.com", "https://www.21shares.com/en-us/products-us/toxr"),
     ],
 )
 def test_additional_primary_issuer_pages_are_registered_and_retained_raw_only(source_id, host, url):

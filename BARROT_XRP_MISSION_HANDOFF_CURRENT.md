@@ -23,7 +23,7 @@
 - Fail-closed gate [run 42566979358](https://github.com/Barrot-Agent/B-Agent/actions/runs/42566979358): passed and kept automatic merging disabled.
 - The cache-budget warning was non-fatal; the suite, wheel build and installed-wheel verification completed.
 
-The new market artifact and this handoff update are commits after `2be7ea0c44e737098516bd93741748e6b285912e`. The above green results **do not verify the new head**. Exact-head CI must complete again before merge consideration.
+The live market artifact and Run 79 handoff were verified on head `9e437f5c806070f2dfbfb70a7394a250d5c257c4` by CI run `42571306958` (1,276 passed, 8 subtests; 59.08% coverage), dependency audit `42571307080` (six manifests, zero known vulnerabilities) and fail-closed gate `42571307108`. The issuer-source expansion, exchange/ETF reconciliation artifact and handoff addendum in this commit follow that verified head. Their exact-head CI must complete again before merge consideration.
 
 ## Main versus integration implementation
 
@@ -44,6 +44,23 @@ Added `research/xrp_intelligence/20261109T060150Z-live-spot-derivatives-corrobor
 - No synchronized multi-venue spot depth, executable slippage, direct current open-interest receipt, exchange-flow receipt, collateral-utilization receipt or primary ETF-creation/redemption receipt was admitted.
 
 **Forecast status: NOT_ISSUED.** No directional forecast or paper trade was made. No feature from this snapshot is model-eligible.
+
+## Exchange inventory and ETF-flow reconciliation — captured 2026-11-09T06:12:56Z
+
+- XRP Insights reports **22.34B XRP** across 701 XRPL wallets / 24 labeled exchanges at 2026-11-08 08:00Z. Its same-wallet series is down 104.4M XRP over seven days and 149.3M over 30 days. It includes cold and unclassified wallets; this is not tradable float.
+- XRP Desk reports **37.05B XRP** across 62 labeled venues at 2026-11-08 16:36Z, including 6.62B attributed to Coinbase. Its stated method is XRPL `account_info` on labeled wallets, but the page exposes no wallet-address list or immutable per-wallet receipt. The 14.71B total difference from XRP Insights is a coverage/methodology difference, not a flow. Do not average.
+- XRP Insights itself has a 1.6M XRP internal discrepancy in its Binance wrapped-asset reserve figure (327.4M in its table versus 325.8M in its methodology note). Exclude that reserve feature until reconciled.
+- ETF flow trackers disagree on both date completeness and fund universe:
+  - XRP Insights reports Nov 6 holdings-change proxy of -663,043 XRP across six spot funds plus BITW, but excludes GXRP from flow totals while retaining its holdings in the total.
+  - Alpha Finance reports $0 for Nov 6 across five funds, while stating that it publishes no fund-level AUM or holdings; this is not issuer-confirmed no-flow.
+  - CryptoKeyhole's latest complete XRP flow is Nov 5: -3,339 XRP across four of six funds. Nov 6 remains partial while it awaits Franklin XRPZ.
+  - XRP Desk reports -752K XRP on Nov 7 across six named funds, but its page says the figure is a holdings change across additional sheet columns, not ETF trading volume.
+  - CryptoETF.today reports a five-fund holdings snapshot of 1.1416B XRP for Nov 6. NinjaTools shows AUM but zero XRP holdings for every fund and is excluded as internally inconsistent.
+- Do not average these outputs or label them cash flows. The six single-asset spot funds are XRP, XRPZ, XRPC, GXRP, TOXR and XRPR; BITW is a separate multi-asset index sleeve.
+- Primary SEC cross-check: Canary XRP ETF's Q2 2026 filing reports **+$45.071M** net capital share transactions while total net assets fell **$23.593M** over the quarter due to investment operations. This is direct evidence that AUM change is not investor flow.
+- Custody/benchmark mapping: Franklin XRPZ names Coinbase Custody Trust Company; 21Shares TOXR names Anchorage, BitGo and Coinbase Custody International and changed its benchmark to FTSE XRP Index on 2026-08-27; Canary XRPC names BitGo and Gemini. Their benchmarks and custody structures differ.
+- The ingestion registry now adds Franklin XRPZ, Canary XRPC and 21Shares TOXR issuer pages. They are scheduled **hash-only, raw-only, non-feature receipts** until source-vintage and redistribution terms are reviewed. No HTML is redistributed; no holdings parser or model feature is created. The workflow remains guarded to `refs/heads/main`, so scheduled production capture is not active until #1640 reaches main.
+- Source hashes in the accompanying artifact cover normalized excerpts only, not raw HTTP bytes. All these observations remain research-only; forecast status remains **NOT_ISSUED**.
 
 ## Primary-source relationship updates
 

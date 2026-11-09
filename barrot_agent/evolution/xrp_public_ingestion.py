@@ -28,9 +28,9 @@ from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_wal
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.17"
-PARSER_VERSION = "xrp-public-market-v3.16"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com"}
+ADAPTER_VERSION = "xrp-public-market-v3.18"
+PARSER_VERSION = "xrp-public-market-v3.17"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -81,6 +81,9 @@ ENDPOINTS = (
     ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
     ("xrp_etf_bitwise_issuer_page", "https://bitxrpetf.com/"),
     ("xrp_etf_grayscale_gxrp_issuer_page", "https://etfs.grayscale.com/gxrp"),
+    ("xrp_etf_franklin_xrpz_issuer_page", "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ"),
+    ("xrp_etf_canary_xrpc_issuer_page", "https://canaryetfs.com/xrpc/"),
+    ("xrp_etf_21shares_toxr_issuer_page", "https://www.21shares.com/en-us/products-us/toxr"),
     ("ripple_rlusd_transparency_dashboard", "https://ripple.com/products/stablecoin/transparency/"),
     ("xrpldashboard_rlusd_cross_chain_supply", "https://xrpldashboard.com/rlusd"),
     ("circle_usdc_transparency_dashboard", "https://www.circle.com/transparency"),
@@ -97,6 +100,18 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
     "xrp_exchange_balances_json": (
         "Publisher permits citation with attribution but does not expressly grant redistribution "
         "of the raw exchange-balance JSON; retain its SHA-256 receipt only."
+    ),
+    "xrp_etf_franklin_xrpz_issuer_page": (
+        "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "xrp_etf_canary_xrpc_issuer_page": (
+        "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "xrp_etf_21shares_toxr_issuer_page": (
+        "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
     ),
 }
 
@@ -2970,6 +2985,54 @@ def _raw_only_grayscale_gxrp_issuer_page(payload: Any, *, captured: datetime, **
 
 
 
+def _raw_only_franklin_xrpz_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate Franklin XRPZ issuer-page identity; retain only a digest receipt."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("Franklin XRPZ issuer page response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = ("franklin xrp etf", "xrpz", "xrp in fund", "as of")
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("Franklin XRPZ issuer-page identity or holdings markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_html_hash_only_until_holdings_parser_source_vintage_and_redistribution_terms_are_verified",
+    )
+
+
+def _raw_only_canary_xrpc_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate Canary XRPC issuer-page identity; retain only a digest receipt."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("Canary XRPC issuer page response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = ("canary xrp etf", "xrpc", "holdings", "as of")
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("Canary XRPC issuer-page identity or holdings markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_html_hash_only_until_holdings_parser_source_vintage_and_redistribution_terms_are_verified",
+    )
+
+
+def _raw_only_21shares_toxr_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate 21Shares TOXR issuer-page identity; retain only a digest receipt."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("21Shares TOXR issuer page response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = ("21shares xrp etf", "toxr", "holdings", "as of")
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("21Shares TOXR issuer-page identity or holdings markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "primary_issuer_html_hash_only_until_holdings_parser_source_vintage_and_redistribution_terms_are_verified",
+    )
+
+
 def _raw_only_ripple_rlusd_transparency_page(payload: Any, *, captured: datetime, **_kwargs):
     """Retain Ripple's issuer transparency dashboard without promoting dashboard values to features."""
     if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
@@ -3358,6 +3421,9 @@ PARSERS = {
     "xrp_etf_xrpr_issuer_page": _raw_only_xrpr_issuer_page,
     "xrp_etf_bitwise_issuer_page": _raw_only_bitwise_xrp_etf_page,
     "xrp_etf_grayscale_gxrp_issuer_page": _raw_only_grayscale_gxrp_issuer_page,
+    "xrp_etf_franklin_xrpz_issuer_page": _raw_only_franklin_xrpz_issuer_page,
+    "xrp_etf_canary_xrpc_issuer_page": _raw_only_canary_xrpc_issuer_page,
+    "xrp_etf_21shares_toxr_issuer_page": _raw_only_21shares_toxr_issuer_page,
     "ripple_rlusd_transparency_dashboard": _raw_only_ripple_rlusd_transparency_page,
     "xrpldashboard_rlusd_cross_chain_supply": _raw_only_xrpldashboard_rlusd_page,
     "circle_usdc_transparency_dashboard": _raw_only_circle_transparency_page,
@@ -3592,7 +3658,7 @@ def _walk_forward_report(
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
         return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard"}:
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard"}:
         return fetch_public_html(source_id, url)
     if source_id == "xrp_etf_flows_csv":
         return fetch_public_csv(source_id, url)
