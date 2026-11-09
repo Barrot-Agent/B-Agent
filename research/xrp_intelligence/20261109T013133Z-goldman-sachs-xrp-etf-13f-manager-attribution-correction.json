@@ -89,9 +89,14 @@
       "primary_document_manager_mapping": "a437982dea5d9abc0ffdf814aa6b5c0502c5ef4b7f2b8b0610515b211c7e3c75",
       "information_table_xrp_rows": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31",
       "q1_manager_mapping": "94aaebc9ab78f55e731e3a4be885f0cb797c2d888ee6c4e4ff6eb2da7e599e06",
-      "q1_xrp_absence_search_record": "a6566e739441ab70795535c4d7fcc311b75cfe08722825762d44f74fc2f5d4e9"
+      "q1_xrp_absence_search_record": "a6566e739441ab70795535c4d7fcc311b75cfe08722825762d44f74fc2f5d4e9",
+      "q1_cusip_90137T103_absence_search_record": "ab436af5434186ffffb3287df468cbab356b6773fff3fca09a3d4cdc6da26df9",
+      "q1_cusip_09174F107_absence_search_record": "f181ace165042bc1dbbca69966964bf9777488438dafc5d44b0b48a60e312b81",
+      "q1_cusip_13723M100_absence_search_record": "ebc0ad67ee3fff2aeee9e41be66fa6bf61dca8580745e075b0d488d9a3c4c35d",
+      "q1_cusip_355233107_absence_search_record": "f5d98089f4418da9c28f535ab4ccfa3408704ef841ea0d343d517ee34d73c327",
+      "q1_cusip_38965L106_absence_search_record": "40754ab0733b8c62965db5fb6b54b5886a19fd30cf9e076e3bbf219290eb98ce"
     },
-    "hash_scope": "SHA-256 hashes cover the exact normalized text excerpts and Q1 absence-search record stored in this artifact, not raw SEC HTTP response bytes.",
+    "hash_scope": "SHA-256 hashes cover normalized SEC excerpt/search records, including the Q1 issuer-name absence result and five exact Q1 CUSIP absence results, not raw SEC HTTP response bytes.",
     "source_independence": "Q1 and Q2 are separate SEC filings from the same reporting manager; the five Q2 ETF rows are not independent confirmations of the same exposure."
   },
   "correction": {
@@ -126,7 +131,40 @@
       "xrp_named_information_table_row_count": 0,
       "included_manager_no_1": "GOLDMAN SACHS & CO. LLC",
       "included_manager_no_1_cik": "0000769993",
-      "included_manager_count": 8
+      "included_manager_count": 8,
+      "q1_cusip_search_results": [
+        {
+          "cusip": "90137T103",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "ab436af5434186ffffb3287df468cbab356b6773fff3fca09a3d4cdc6da26df9"
+        },
+        {
+          "cusip": "09174F107",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "f181ace165042bc1dbbca69966964bf9777488438dafc5d44b0b48a60e312b81"
+        },
+        {
+          "cusip": "13723M100",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "ebc0ad67ee3fff2aeee9e41be66fa6bf61dca8580745e075b0d488d9a3c4c35d"
+        },
+        {
+          "cusip": "355233107",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "f5d98089f4418da9c28f535ab4ccfa3408704ef841ea0d343d517ee34d73c327"
+        },
+        {
+          "cusip": "38965L106",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "40754ab0733b8c62965db5fb6b54b5886a19fd30cf9e076e3bbf219290eb98ce"
+        }
+      ],
+      "q1_no_q2_cusips_present": true
     },
     "q2": {
       "accession": "0000886982-26-000519",
@@ -137,7 +175,7 @@
       "included_manager_no_1": "GOLDMAN SACHS & CO. LLC",
       "included_manager_no_1_cik": "0000769993"
     },
-    "temporal_interpretation": "The five XRP ETF-share rows appear in the Q2 2026 reportable information table and no XRP-named row was found in the Q1 2026 information table. This supports first observed reportable appearance between quarter-end snapshots; it does not prove purchases, beneficial ownership, parent-company proprietary exposure, or the reason for the change.",
+    "temporal_interpretation": "The five Q2 2026 XRP ETF-share rows were absent from the Q1 2026 information table by both issuer-name search (XRP) and exact searches for all five Q2 CUSIPs. This supports first observed reportable appearance between the Q1 and Q2 quarter-end snapshots; it does not prove purchases, beneficial ownership, parent-company proprietary exposure, or the reason for the change.",
     "comparability_limit": "Both filings are from the same parent reporting manager and share the same included-manager No. 1 identity. They are sequential snapshots, not independent confirmations."
   }
 }
