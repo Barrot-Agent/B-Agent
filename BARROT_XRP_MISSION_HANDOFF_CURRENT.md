@@ -1209,3 +1209,42 @@ No deployment, secret rotation, Space restart, external model transfer, Kaggle s
 9. Establish independent archival/rebuild, synchronized historical coverage and measured out-of-sample lift before any directional forecast.
 
 The integrated mission is still not on main. The current engineering blocker is exact-head verification of the new evidence commit; merge blockers remain independent approval and deployment authorization. Predictive superiority remains unproven.
+
+---
+
+## Run 74 supplement — Evernorth actual-capital workstream deduplication
+
+The exact-phrase search for `actual capital` surfaced Evernorth. I did **not** create a second Evernorth artifact because the existing #1643 XRP research branch already contains a substantially more complete SEC-backed reconciliation and correction chain. That work remains unique research and must be preserved when #1643 is consolidated onto verified main.
+
+Latest #1643 artifacts:
+- [Closing capital and XRP-flow reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation.json)
+- [Historical market-open and debt correction](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T150549Z-xrp-historical-daily-open-and-evernorth-debt-correction.json)
+- [Pathfinder facility repayment reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261108T142607Z-evernorth-pathfinder-facility-repayment-reconciliation.json)
+- [Actual capital versus potential capacity](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T222415Z-evernorth-actual-capital-vs-capacity-sec-reconciliation.json)
+- [Cantor ELOC registration and actual-capital status](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T231833Z-evernorth-cantor-eloc-registration-fee-and-actual-capital-status.json)
+- [SBI ownership cross-filing reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/research/xrp_intelligence/20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation.json)
+
+Key reconciled facts from those existing artifacts:
+- $214,049,995 advance cash was received; $214M was used to buy 84,365,876 XRP. A $49,995 residual was also used for additional XRP, but the additional quantity is not disclosed.
+- Advance funding also included 600,000 XRP. Delayed funding included $10.5M cash and 200,000 XRP.
+- In-kind XRP contributions total 388,910,554 XRP: Ripple 126,791,458; Arrington XRP Capital Fund 211,319,096; Larsen Lam Children's Remainder Trust 50M; plus the 600K and 200K funding XRP.
+- Evernorth reported approximately 473M XRP holdings as of October 9, 2026. These are existing treasury holdings, not a new November spot-flow observation.
+- Closing gross cash proceeds were approximately $272.6M, including $224.6M private-placement cash and $48M SPAC trust cash, before expenses.
+- A separate $30M 4% PIK note produced approximately $29M net cash after a $1M advisor fee. Purchaser: NH Investment & Securities as trustee of the Kyobo AIM trust. No specific XRP purchase is traced to those note proceeds.
+- The $10M Ripple Company Facility had $9.7M drawn as of October 7; repayment status is not independently verified. A separate $1M Evernorth Facility had no draw disclosed as of June 30; later draw status is unknown. The November 8 correction confirms Ripple as lender of the $1M facility; NH/Kyobo is the separate PIK-note purchaser.
+- The Cantor equity line permits up to 5,218,935 shares at 97% of applicable VWAP, subject to caps and issuer discretion. No actual drawdown/settlement was verified through November 7. The $521,893.50 commitment fee was due November 6; payment was not independently verified. A prospectus table contains an approximately $2.33M arithmetic discrepancy.
+- Public warrants cover 11,499,992 shares at $11.50, a maximum theoretical gross cash amount of $132,249,908 if all are exercised for cash. No exercise proceeds were verified. Registration effectiveness is not cash raised and is not SEC endorsement of the investment strategy.
+- SBI-affiliated holders are shown with 9,431,914 Class A and 2,359,038 Class C shares; 21.4% of Pubco common stock and 39.9% voting power in the cited capitalization snapshot. Class C is non-voting. The 39.9% contractual threshold is a Class A ownership threshold, not a voting-power cap.
+- BitGo Trust Company is the disclosed custodian; public wallet addresses are not disclosed, so address-level on-chain holdings cannot be independently reconciled.
+
+Exact-phrase findings retained in #1643:
+- `actual capital` appears in a user-generated KuCoin Insights post, not as an issuer or SEC accounting term.
+- `ASK Coin` resolves to an inactive/untracked Ask Coin listing; Permission Coin's ASK token is separate. No XRP relationship established.
+- `SBIC, ChatGPT SBIC` resolves to Tokyo SBIC East's 2025-02-26 generative-AI/ChatGPT seminar with Microsoft Japan; no OpenAI partnership established.
+- Kamilah Stevenson is not yet linked to a verified first-party YouTube channel; no personal-channel video inventory is admitted.
+
+This is a high-value research workstream but remains on #1643, not main. Preserve it; do not duplicate it on #1640. The Run 74 market/derivatives/ETF/regulatory artifact now links to these existing findings.
+
+## Run 74 exact-head test correction
+
+On head `9c5a478a0f2365caed964bab18f429fb9071e30c`, the full repository suite reported **1,231 passed, 1 failed, 8 subtests passed**, with 58.98% coverage. The sole failure was a wording mismatch in the new regression test: the artifact said "not a simple profit split" while the test expected "not a simple disclosed profit split." The research artifact and production code were not changed for that failure. The assertion is corrected to match the recorded source wording. The six-manifest dependency audit and fail-closed gate passed; wheel verification was skipped because the full-suite step failed. Re-run the entire suite and wheel verification on the corrected head.

@@ -123,7 +123,7 @@ def test_circle_coinbase_financials_and_reserve_definitions_remain_separate() ->
     reserves = relationships["circle_reserves"]
     assert circle["coinbase_q3_2026_stablecoin_revenue_usd"] == 306_905_000
     assert circle["circle_q3_2026_distribution_cost_to_coinbase_usd"] == 331_300_000
-    assert "not a simple disclosed profit split" in circle["relationship"]
+    assert "not a simple profit split" in circle["relationship"]
     assert reserves["reserve_fund_share_pct"] == 84
     assert "Do not infer an overcollateralization ratio" in reserves["measurement_note"]
     assert "cannot be predicted" in reserves["rate_sensitivity"]
@@ -146,3 +146,19 @@ def test_no_directional_forecast_is_issued() -> None:
     assert data["forecast"]["status"] == "NOT_ISSUED"
     assert data["forecast"]["directional_probability"] is None
     assert data["model_admission"]["admitted_sources"] == []
+
+
+def test_existing_evernorth_actual_capital_reconciliation_is_reused_not_duplicated() -> None:
+    related = load_artifact()["related_existing_research"]
+    assert related["owner_pr"] == 1643
+    assert related["do_not_duplicate"] is True
+    assert len(related["latest_artifacts"]) >= 8
+    ledger = related["primary_filing_reconciliation"]
+    assert ledger["cash_used_to_purchase_xrp_usd"] == 214_000_000
+    assert ledger["xrp_purchased_with_advance_cash"] == 84_365_876
+    assert ledger["in_kind_xrp_contributions_total"] == 388_910_554
+    assert ledger["xrp_holdings_as_of_2026_10_09_approx"] == 473_000_000
+    assert ledger["cantor_eloc"]["status"].startswith("optional")
+    assert ledger["public_warrants"]["status"].startswith("potential only")
+    assert ledger["sbi_ownership"]["class_c_voting_status"] == "non-voting"
+    assert "not an issuer or SEC accounting term" in related["exact_phrase_resolution"]["actual_capital"]

@@ -667,7 +667,7 @@
       "liquidations_24h_min_usd": 30440000,
       "long_liquidations_usd": 30020000,
       "short_liquidations_usd": 416650,
-      "long_liquidation_share_pct": 98.631,
+      "long_liquidation_share_pct": 98.6202,
       "oi_weighted_funding_percent_per_8h": -0.0039,
       "long_short_account_ratio": 4,
       "accounts_long_pct": 80,
@@ -1155,5 +1155,91 @@
     "horizon": null,
     "data_cutoff_utc": null,
     "reason": "No leakage-safe out-of-sample evidence demonstrating predictive superiority over baselines."
+  },
+  "related_existing_research": {
+    "workstream": "Evernorth / actual-capital / SBI ownership / exact-phrase research",
+    "owner_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "status": "EXTENSIVE_EXISTING_PRIMARY_SOURCE_RECONCILIATION",
+    "do_not_duplicate": true,
+    "latest_artifacts": [
+      "research/xrp_intelligence/20261108T150549Z-xrp-historical-daily-open-and-evernorth-debt-correction.json",
+      "research/xrp_intelligence/20261108T143010Z-evernorth-pathfinder-facility-repayment-hash-correction.json",
+      "research/xrp_intelligence/20261108T142607Z-evernorth-pathfinder-facility-repayment-reconciliation.json",
+      "research/xrp_intelligence/20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation.json",
+      "research/xrp_intelligence/20261108T050336Z-evernorth-sbi-class-a-threshold-correction.json",
+      "research/xrp_intelligence/20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation.json",
+      "research/xrp_intelligence/20261107T222415Z-evernorth-actual-capital-vs-capacity-sec-reconciliation.json",
+      "research/xrp_intelligence/20261107T231833Z-evernorth-cantor-eloc-registration-fee-and-actual-capital-status.json",
+      "research/xrp_intelligence/20261106T154537Z-evernorth-actual-capital-eloc-warrant-reconciliation.json"
+    ],
+    "primary_filing_reconciliation": {
+      "actual_cash_advance_received_usd": 214049995,
+      "cash_used_to_purchase_xrp_usd": 214000000,
+      "xrp_purchased_with_advance_cash": 84365876,
+      "residual_cash_used_for_additional_xrp_usd": 49995,
+      "additional_xrp_quantity": "not disclosed in the cited reconciliation",
+      "advance_funding_xrp_contribution": 600000,
+      "delayed_funding_cash_received_usd": 10500000,
+      "delayed_funding_xrp_contribution": 200000,
+      "in_kind_xrp_contributions_total": 388910554,
+      "in_kind_sources": {
+        "ripple_direct": 126791458,
+        "arrington_xrp_capital_fund": 211319096,
+        "larsen_lam_childrens_remainder_trust": 50000000,
+        "advance_funding": 600000,
+        "delayed_funding": 200000
+      },
+      "xrp_holdings_as_of_2026_10_09_approx": 473000000,
+      "closing_gross_cash_proceeds_usd": 272600000,
+      "closing_gross_cash_components_usd": {
+        "private_placement": 224600000,
+        "spac_trust": 48000000
+      },
+      "pik_notes_face_usd": 30000000,
+      "pik_notes_net_cash_usd": 29000000,
+      "pik_note_purchaser": "NH Investment & Securities as trustee of Kyobo AIM trust",
+      "ripple_company_facility": {
+        "limit_usd": 10000000,
+        "drawn_as_of_2026_10_07_usd": 9700000,
+        "repayment_status": "not independently verified"
+      },
+      "separate_evernorth_facility": {
+        "limit_usd": 1000000,
+        "drawn_as_of_2026_06_30_usd": 0,
+        "lender": "Ripple",
+        "later_draw_status": "not disclosed"
+      },
+      "cantor_eloc": {
+        "maximum_shares": 5218935,
+        "price_formula": "97% of applicable VWAP",
+        "status": "optional; no actual drawdown/settlement verified through 2026-11-07",
+        "commitment_fee_usd": 521893.5,
+        "fee_payment_status": "not independently verified",
+        "prospectus_arithmetic_discrepancy_usd": 2330000
+      },
+      "public_warrants": {
+        "shares": 11499992,
+        "exercise_price_usd": 11.5,
+        "maximum_gross_cash_proceeds_usd": 132249908,
+        "status": "potential only; no exercise proceeds verified"
+      },
+      "sbi_ownership": {
+        "class_a_shares": 9431914,
+        "class_c_shares": 2359038,
+        "common_stock_percentage": 21.4,
+        "voting_power_percentage": 39.9,
+        "class_c_voting_status": "non-voting",
+        "threshold_correction": "39.9% is a Class A ownership threshold, not a voting-power cap"
+      },
+      "custodian": "BitGo Trust Company; wallet addresses not publicly disclosed"
+    },
+    "exact_phrase_resolution": {
+      "actual_capital": "Exact phrase found in a user-generated KuCoin Insights post; not an issuer or SEC accounting term.",
+      "ask_coin": "CoinMarketCap Ask Coin appears as an inactive/untracked exchange listing; Permission Coin ASK is a separate token; no XRP relationship established.",
+      "sbic_chatgpt": "Tokyo SBIC East hosted/co-hosted a 2025-02-26 generative-AI/ChatGPT seminar with Microsoft Japan; no OpenAI partnership established.",
+      "kamilah_stevenson": "Identity remains unresolved at first-party YouTube channel level; no personal video inventory admitted."
+    },
+    "latest_debt_correction": "The 2026-11-08 15:05Z correction attributes the separate $1M Evernorth Facility to Ripple; NH Investment & Securities/Kyobo is the purchaser of the distinct $30M PIK note. Do not merge these instruments."
   }
 }
