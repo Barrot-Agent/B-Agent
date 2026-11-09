@@ -160,3 +160,7 @@ def test_transfer_metadata_preserves_source_branch_and_raw_byte_limit() -> None:
     assert metadata["raw_http_bytes_captured"] is False
     assert metadata["model_eligible"] is False
     assert metadata["forecast_status"] == "NOT_ISSUED"
+    correction = metadata["source_receipt_hash_corrections"][0]
+    assert correction["receipt_id"] == "circle_binance_equity"
+    assert correction["original_source_blob_sha256"] == "9682e077cb21e35b3df92947b1929d27285428aa2aeea9301d9d6f907f9cc158"
+    assert correction["corrected_excerpt_sha256"] == "79cfa8ca5c3438bd9062b0149b97c75f64102c6ab7349e53e0619cde876af7b0"
