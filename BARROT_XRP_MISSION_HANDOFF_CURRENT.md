@@ -1,3 +1,119 @@
+## Run 84 — 2026-11-09 current-main, integration and market-evidence checkpoint
+
+### Mission and repository baseline
+
+- Priority one: XRP intelligence and measured prediction-engine mastery. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Current main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Main recursive tree: 1,404 entries / 1,299 files / 493 Python files.
+- Existing integration PR: [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), branch `integration/core-capabilities-mmi-structural-paper-20261104`.
+- Pre-handoff code/test head: `6387503c2b9d7b161866da58efdf516eccc2c2e0`; 807 commits ahead / 0 behind; 198 changed paths. Branch tree: 1,496 entries / 1,383 files / 556 Python files / 134 test modules / 87 workflow files.
+- No new branch or PR was created. No main write occurred.
+
+### Exact-head verification on the pre-handoff head
+
+On `6387503c2b9d7b161866da58efdf516eccc2c2e0`:
+
+- Full repository suite: **1,281 passed, 8 subtests passed**; inclusive branch coverage **59.09%** against the 53% floor.
+- Core suite: **677 passed, 8 subtests passed**.
+- Installed wheel built and loaded Barrot V3, the primary XRP mission, orchestration imports and canonical data assets.
+- Six-manifest dependency audit passed; all six manifests reported no known vulnerabilities.
+- Fail-closed gate passed and explicitly kept automatic merging disabled.
+- Exact evidence: [CI 42606911080](https://github.com/Barrot-Agent/B-Agent/actions/runs/42606911080), [dependency audit 42606910998](https://github.com/Barrot-Agent/B-Agent/actions/runs/42606910998), [fail-closed gate 42606911067](https://github.com/Barrot-Agent/B-Agent/actions/runs/42606911067).
+- The only CI warning was that the Actions cache quota was read-only; test, coverage, wheel and security checks completed successfully.
+- This section is appended after those checks and therefore creates a new documentation commit. The new handoff commit requires its own exact-head CI, dependency audit and fail-closed-gate verification; the results above are not evidence for that later commit.
+
+### PR review, protection and merge decision
+
+- #1640 is open, non-draft and GitHub reports it mergeable. It has 807 commits ahead of main, zero behind and 198 changed paths.
+- GitHub reports 62 review submissions, all `COMMENTED`; there are **zero APPROVED reviews**. All 22 inline review threads are resolved (22/22). Comments containing the word “Approved” are not approval reviews.
+- The main branch endpoint reports `protected=true`, but the protection summary has no required status contexts; the detailed classic branch-protection endpoint returns HTTP 403. The only visible repository ruleset, “Fall Back,” is disabled. Effective required-approval/check enforcement cannot be verified.
+- A main push at `d4d43be3427375cf79d190e768976de062e20287` triggered [Pages build/deployment run 42526890275](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890275), which succeeded. #1640 changes public web assets. No specific authorization for this automatic public deployment side effect is present.
+- **Decision: DO NOT MERGE.** The user’s conditional merge authorization does not override missing independent approval, unverifiable protection requirements or the unresolved deployment side effect. Do not bypass any gate.
+
+### Main workflows and integration correction
+
+- Main CI on `d4d43be3427375cf79d190e768976de062e20287` passed in [run 42526890841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890841): 718 full-suite tests plus 8 subtests; 485 core tests plus 8 subtests.
+- Main dependency audit passed in [run 42579080840](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579080840).
+- Main Cross Analysis latest scheduled run [42612282683](https://github.com/Barrot-Agent/B-Agent/actions/runs/42612282683) succeeded at 2026-11-09T11:51Z.
+- Main Riemann Research Harvest [42556313011](https://github.com/Barrot-Agent/B-Agent/actions/runs/42556313011) failed in its validation step because `tests/conftest.py` imports Pydantic and the workflow installed only pytest. This is a confirmed `ModuleNotFoundError: No module named 'pydantic'`, not a harvest-data failure. The existing #1640 branch corrects the validation install to include `pydantic-settings` with pytest. That correction is not on main and has not yet been exercised by a main scheduled run.
+- The scheduled `xrp-public-ingestion.yml` workflow exists only on #1640. It is restricted to main, so it is not ingesting data while it remains on the PR branch. Its Actions artifacts/cache are retention-limited (90-day raw/daily artifacts, 7-day per-run feature checkpoint/cache); this is not independent WORM storage or external receipt anchoring.
+
+### PR inventory and overlap classification
+
+A complete paginated GitHub REST inventory returned **372 open PRs: 356 drafts and 16 non-drafts**. Non-drafts: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. No bulk closure was performed.
+
+- **#1643 — UNIQUE/UNREVIEWED; blocked on stale base and exact-head verification.** Base SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; head `238f3ff4a69420882c77d225626a352ba19a412c`; 670 changed paths. Exact path intersection with #1640 is seven files; **663 paths are unique**. Its latest runs were on older head `c814d09`; CI failed there, and there is no exact-head status evidence for `238f3ff`. Nineteen inline threads are resolved; ten review submissions are COMMENTED, with no approval. Preserve the unique evidence archive; do not merge wholesale.
+- **#1653 — UNIQUE/UNREVIEWED.** Base SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; head `2e449ca28739a73b00dee021c9fb5f38819557c4`; seven changed paths, six unique relative to #1640 and one overlap: `.github/workflows/ci.yml`. Exact-head CI [42292456982](https://github.com/Barrot-Agent/B-Agent/actions/runs/42292456982) and fail-closed gate [42292457010](https://github.com/Barrot-Agent/B-Agent/actions/runs/42292457010) passed. No dependency audit is recorded. Eight of eight inline threads remain unresolved; two review submissions are COMMENTED. Preserve; reconcile the CI overlap after the core integration.
+- **#1642 — SUPERSEDED-CANDIDATE, retain.** Draft; all seven changed paths overlap #1640: handoff, feature store, forecast ledger, both contracts and their tests. Verify exact content on main before closure.
+- **#1644 and #1645 — OVERLAPPING DEPENDENCY/ACTION CANDIDATES, retain.** #1644’s eight paths and #1645’s one path are all within #1640’s changed-path set. Path overlap alone does not prove identical blobs; perform exact content comparison after a verified successor reaches main.
+- **#1646–#1650 and older #1254/#1255 — DEPENDENCY/ACTION OVERLAP CANDIDATES.** Reconcile manifest/workflow versions and exact file blobs; do not close early.
+- **#1317/#1318/#1320 — SUPERSEDED-CANDIDATES.** Their structural-analysis, scientific-schema and paper-trader work is represented in #1640; retain until the successor is merged and those exact changes are verified on main.
+- **#1269 — UNIQUE/UNREVIEWED geometry/topology workstream.** Preserve; it is not part of the XRP integration.
+
+### Fresh spot-market receipts — 2026-11-09
+
+These are point-in-time public API responses surfaced by the research reader. SHA-256 covers the exact compact JSON text below, not raw HTTP wire bytes. Kraken did not include an exchange event timestamp; OKX did. The quote currencies differ (USD versus USDT), and timestamps are not perfectly aligned. Do not treat the price difference as an executable arbitrage or a synchronized cross-venue feature.
+
+**Kraken public XRP/USD ticker**
+
+- Last: 1.08478 USD; bid 1.08468 (displayed size 2,674 XRP); ask 1.08489 (1,674 XRP); top spread approximately 1.94 bps.
+- 24h volume: 41,295,484.15302838 XRP; 24h VWAP: 1.11570712; high 1.16816; low 1.07502; open 1.11203.
+- Provider event timestamp: absent.
+- SHA-256 of surfaced JSON text: `29a33995ef52e3b51479fba20340440cd489715ade070798446f94c030de4480`.
+- Exact surfaced response:
+```json
+{"error":[],"result":{"XXRPZUSD":{"a":["1.08489000","1674","1674.000"],"b":["1.08468000","2674","2674.000"],"c":["1.08478000","230.46147600"],"v":["16235743.68909176","41295484.15302838"],"p":["1.09844080","1.11570712"],"t":[18127,38636],"l":["1.07502000","1.07502000"],"h":["1.12503000","1.16816000"],"o":"1.11203000"}}}
+```
+Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+
+**OKX public XRP-USDT ticker**
+
+- Exchange timestamp: 2026-11-09T12:06:17.733Z.
+- Last: 1.0868 USDT; bid 1.0867 (1,601.9 XRP); ask 1.0868 (1,993.86842 XRP); top spread approximately 0.92 bps.
+- 24h volume: 77,126,734.520791 XRP / 85,946,309.27805331 USDT; open 1.1667; high 1.1697; low 1.0764.
+- SHA-256 of surfaced JSON text: `70c92fce82022383e9b1fe6fbe4e7586d33e549f5851bcca896a110217783899`.
+- Exact surfaced response:
+```json
+{"code":"0","data":[{"instType":"SPOT","instId":"XRP-USDT","last":"1.0868","lastSz":"100","askPx":"1.0868","askSz":"1993.86842","bidPx":"1.0867","bidSz":"1601.9","open24h":"1.1667","high24h":"1.1697","low24h":"1.0764","volCcy24h":"85946309.2780533111","vol24h":"77126734.520791","ts":"1794225977733","sodUtc0":"1.1132","sodUtc8":"1.1563"}],"msg":""}
+```
+Source: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
+
+These two API observations are preserved as research receipts but are **not yet model-admitted**: the Kraken event time is absent, the quote currencies differ, and this is only one snapshot, not synchronized history or full order-book depth.
+
+### Independent market-structure observations and disagreement
+
+Secondary sources are kept separate from the exchange API receipts; no raw-page hash was captured.
+
+- **Swiftedge**, page updated 2026-11-09T11:07Z: XRP 1.0807 USD, −6.85% over 24h; 24h range 8.26%; net taker flow −8.2%; volume 2.7× its recent average; funding −0.0154% per 8h; open interest −17.9%; large orders net +$27K. It reported a $4.1M bid wall at 1.0750 and $5.2M ask wall at 1.0860; price was below its 1.0820–1.1266 value area and 1.1126 volume POC. Walls are cancellable. Source: https://swiftedge.uk/markets/today
+- **Liqwall**, as of 2026-11-09T11:52Z: price about $1.09; $36.2M 24h liquidations, $35.2M longs and $975K shorts; average funding +0.0075% per 8h; open interest $1.23B, down 4.4%; 73.6% of Binance accounts with XRP positions were long. Source: https://liqwall.com/coins/xrp
+- **TradRadar**, updated 2026-11-09T11:10Z with a stated 15-minute delay: mark price $1.0784, −7.02% in 24h; OI $1.67B across seven exchanges, down 12.09%; OI-weighted funding +0.0062% per 8h; liquidations at least $37.79M, including $36.80M longs and $987K shorts; 79.6% long accounts across its five-exchange ratio sample. Source: https://tradradar.io/markets/xrp
+- OI aggregates differ by about 36% between Liqwall and TradRadar because venue coverage/aggregation differ; their exchange sets overlap, so they are not independent confirmation. Funding sign conflicts: Swiftedge is negative while Liqwall and TradRadar are positive. Do not average these values.
+- Common observation: price fell sharply, OI contracted, and reported liquidations were heavily long-dominated. Counter-hypotheses remain live: forced long deleveraging may explain the OI fall; positive large-order net flow on Swiftedge is inconsistent with a simple one-way seller narrative; funding disagreement may reflect venue composition and sampling windows. No reversal or continuation claim is established.
+- Cross-asset context from Swiftedge: BTC −2.39%, ETH −5.76%, SOL −3.75%, XRP −6.85%, while gold +0.90%, US 500 +0.66% and US 100 +0.37%. This indicates a crypto-heavy risk-off snapshot and XRP underperformance in that provider’s panel, not a causal macro explanation.
+
+### ETF-flow reconciliation — partial data only
+
+- CryptoKeyhole updated 2026-11-09T12:07Z. November 6 is **partial (3 of 4 daily-reporting funds)** because Franklin XRPZ had not published. Reported November 6 holdings change was −752,048 XRP, all attributed to XRPC in the three reported funds.
+- The five complete trading days October 30–November 5 sum to −1,137,098 XRP. The ten complete days October 23–November 5 sum to +3,374,507 XRP, with two inflow days and seven outflow days.
+- The aggregator defines a daily figure as change in XRP held and notes that the measure can include staking rewards, sponsor fee sales and cash payouts as well as creations/redemptions. It is not a pure cash subscription/redemption measure. Do not equate the −752,048 XRP partial holding change with net cash outflow or fresh spot selling without issuer-level reconciliation.
+- Source: https://cryptokeyhole.com/etf-flows/xrp/ . Treat as secondary parsing of issuer files, not a substitute for direct issuer receipts.
+
+### Access and prediction boundary
+
+- XRPL.to's token-market page instructs automated clients to use its documented API and not scrape/copy the UI; no UI data was ingested. API access must follow its published terms: https://api.xrpl.to/v1 and https://xrpl.to/docs .
+- The fresh web market observations and the two surfaced API receipts above are not a populated synchronized historical feature set. They do not satisfy the forecast issuance gate.
+- **Forecast status: NOT_ISSUED.** No directional forecast, paper trade, real-money action or automated external write occurred.
+- The canonical nine-platform map remains history-bearing and preserved. Only this ChatGPT session’s authenticated GitHub path is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks do not have verified persistent authenticated data flows in this run. No external model received repository data.
+
+### Next concrete actions
+
+1. Verify exact-head CI, full-suite coverage, six-manifest dependency audit and fail-closed gate on the new documentation commit.
+2. Keep #1640 unmerged until a genuine independent APPROVED review, effective protection requirements and the automatic Pages deployment authorization are resolved.
+3. After an authorized merge, fetch main again, verify the merge commit and all integrated files, run main CI and account for Pages/workflow side effects.
+4. Reconcile #1643’s 663 unique evidence paths and #1653’s six unique graph paths without dropping either; close only exact superseded sources after their content is verified on main.
+5. Once scheduled ingestion is on main, verify actual runs, collect synchronized multi-venue spot/depth/derivatives history, add CFTC TFF and issuer-level ETF data, and establish independent durable receipt anchoring before walk-forward evaluation.
+
+
 ## Run 83 final verification and institutional-capital supplement — 2026-11-09T10:10Z
 
 ### Final verification on the restored-map head
