@@ -110,7 +110,7 @@ def parse_cftc_contract_status(html_text: str) -> dict:
     )
     reports_heading = "REPORTS DATED "
     report_date_match = re.search(
-        r"REPORTS DATED\\s+([A-Z]+\\s+\\d{1,2},\\s+\\d{4})", plain
+        r"REPORTS DATED\s+([A-Z]+\s+\d{1,2},\s+\d{4})", plain
     )
     report_date = None
     if report_date_match:
