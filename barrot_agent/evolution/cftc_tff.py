@@ -96,7 +96,7 @@ def _codes_in_section(plain: str, start_heading: str, end_heading: str) -> list[
     end = plain.find(end_heading, start)
     if end < 0:
         end = len(plain)
-    return list(dict.fromkeys(re.findall(r"\b[A-Z0-9]{6}\b", plain[start:end])))
+    return list(dict.fromkeys(re.findall(r"\b\d{3}[A-Z0-9]{3}\b", plain[start:end])))
 
 
 def parse_cftc_contract_status(html_text: str) -> dict:
@@ -139,6 +139,15 @@ def parse_cftc_contract_status(html_text: str) -> dict:
             plain, combined_dropped_heading, reports_heading
         ),
     }
+
+
+def _contract_label_positions(plain: str, spec: dict) -> list[int]:
+    pattern = re.escape(spec["label"])
+    if spec["code"] == "176LM2":
+        # The XRL label is also a substring of the Nano XRP label. Exclude
+        # that occurrence so the historical contract cannot shadow 176LM1.
+        pattern = r"(?<!NANO )" + pattern
+    return [match.start() for match in re.finditer(pattern, plain)]
 
 
 def _missing_optional_contract(spec: dict, contract_status: dict | None) -> dict:
@@ -190,28 +199,32 @@ def parse_cftc_tff_report(
             "CFTC contract-status report date does not match the TFF report date"
         )
     all_specs = CFTC_CONTRACTS + CFTC_OPTIONAL_CONTRACTS
-    labels = [spec["label"] for spec in all_specs]
     required_codes = {spec["code"] for spec in CFTC_CONTRACTS}
+    label_positions = {
+        item["code"]: _contract_label_positions(plain, item) for item in all_specs
+    }
     contracts = []
 
     for spec in all_specs:
-        start = plain.find(spec["label"])
-        if start < 0:
+        matches = label_positions[spec["code"]]
+        if not matches:
             if spec["code"] in required_codes:
                 raise CFTCTFFParseError(
                     f"CFTC TFF report is missing contract {spec['code']}"
                 )
             contracts.append(_missing_optional_contract(spec, contract_status))
             continue
-        if plain.find(spec["label"], start + len(spec["label"])) >= 0:
+        if len(matches) > 1:
             raise CFTCTFFParseError(
                 f"CFTC TFF report has duplicate contract {spec['code']}"
             )
+        start = matches[0]
         next_starts = [
-            plain.find(label, start + len(spec["label"]))
-            for label in labels
-            if label != spec["label"]
-            and plain.find(label, start + len(spec["label"])) >= 0
+            position
+            for other in all_specs
+            if other["code"] != spec["code"]
+            for position in label_positions[other["code"]]
+            if position > start
         ]
         end = min(next_starts) if next_starts else len(plain)
         segment = plain[start:end]
@@ -225,7 +238,7 @@ def parse_cftc_tff_report(
         changes_match = re.search(
             r"CHANGES FROM:\s+([A-Z]+\s+\d{1,2},\s+\d{4})\s+"
             r"TOTAL CHANGE IS:\s+(-?\d[\d,]*|\.)\s+"
-            r"((?:(?:-?\d[\d,]*|\.)\s+){14})",
+            r"((?:(?:-?\d[\d,]*|\.)\s+){13}(?:-?\d[\d,]*|\.)(?=\s|$))",
             segment,
         )
         if not (code_match and oi_match and positions_match and changes_match):
