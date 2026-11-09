@@ -48,6 +48,17 @@ def test_run103_endpoint_registry_counts_match_current_map():
     current_data = json.loads(CURRENT_MAP.read_text(encoding="utf-8"))
     latest = current_data["latest_run_snapshot"]
     assert latest["run_id"] == 103
+    assert latest["run"] == 103
+    assert latest["mission"]
+    assert "main_workflows" in latest
+    assert "institutional_and_macro" in latest
+    assert latest["handoff_map_descendant_head"] == "32bd1c8c1ce76c1112a0daa8450e624c94c927fa"
+    assert latest["prior_market_crosschecks"]
+    assert "pages" in current_data["open_pr_inventory"]
+    assert "main_active_privileged_writers" in current_data["workflow_safety_audit"]
+    assert "additions" in current_data["branch_ancestry"]["pr_1640"]
+    assert "blockers" in current_data["merge_state"]
+    assert "circle_binance" in latest["institutional_and_macro"]
     assert latest["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
     assert latest["integration_code_test_head"] == "0cced5af3b673b5d39e45cfc18c53416e1ed394a"
     assert any(item.get("run") == 95 for item in current_data["run_history"])

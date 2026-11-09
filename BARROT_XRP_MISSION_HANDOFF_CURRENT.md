@@ -4506,3 +4506,9 @@ Forecast status remains NOT_ISSUED. Synchronized history, measured out-of-sample
 Sources: https://www.cftc.gov/dea/futures/financial_lf.htm ; https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf102726.htm ; https://www.cftc.gov/es/node/128971 ; https://beincrypto.com/xrp-price-risk-40-million-liquidation-november-2026/ ; https://edgeornot.com/liquidations/xrp ; https://liqwall.com/ru/coins/xrp ; https://www.coindesk.com/markets/2026/11/09/tech-selloff-weighs-on-crypto-majors ; https://www.reuters.com/legal/government/trump-administrations-embrace-perp-futures-sets-off-risk-alarms-wall-street-2026-11-09/ ; https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/ ; https://www.bls.gov/schedule/news_release/cpi.htm .
 
 Detailed CFTC calculations and market data are embedded in the current capability map's Run103 snapshot. Next: exact-head CI on this descendant; independent approval; effective branch-protection visibility; Pages publication authorization; then conditional merge and post-merge main verification.
+
+### Run103 map-preservation correction
+
+The first Run103 map replacement omitted nested fields from the prior latest snapshot. This follow-up repair merges Run103 into the parent map instead of replacing it: prior market/ETF crosschecks, institutional relationships, main workflow evidence, workflow quarantine lists, branch-ancestry details, review metadata, merge blockers and PR pagination are preserved. The prior market snapshot is archived under prior_market_crosschecks. The regression test now asserts preservation of these fields.
+
+This repair is a descendant of 32bd1c8c1ce76c1112a0daa8450e624c94c927fa. The verified code/test head remains 0cced5af3b673b5d39e45cfc18c53416e1ed394a. Exact-head CI for the handoff/map/test descendants is pending; no parent-head result is transferred. No merge or external action occurred.
