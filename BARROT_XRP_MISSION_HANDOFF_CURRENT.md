@@ -1248,3 +1248,140 @@ This is a high-value research workstream but remains on #1643, not main. Preserv
 ## Run 74 exact-head test correction
 
 On head `9c5a478a0f2365caed964bab18f429fb9071e30c`, the full repository suite reported **1,231 passed, 1 failed, 8 subtests passed**, with 58.98% coverage. The sole failure was a wording mismatch in the new regression test: the artifact said "not a simple profit split" while the test expected "not a simple disclosed profit split." The research artifact and production code were not changed for that failure. The assertion is corrected to match the recorded source wording. The six-manifest dependency audit and fail-closed gate passed; wheel verification was skipped because the full-suite step failed. Re-run the entire suite and wheel verification on the corrected head.
+
+
+## Run 75 — exact-head V3 verification, SEC 13F attribution correction, and integration backlog
+
+Captured: 2026-11-09T01:36:00Z.
+
+### Main and complete repository trees
+
+Current main remains d4d43be3427375cf79d190e768976de062e20287. The recursive trees were fetched without truncation.
+
+| Build | Entries | Files | Python files | Test modules |
+|---|---:|---:|---:|---:|
+| Main | 1,404 | 1,299 | 493 | 93 |
+| V3 integration | 1,489 | 1,376 | 554 | 138 |
+| XRP research | 2,068 | 1,962 | 768 | 368 |
+
+All four open-PR inventory pages were inspected: 100 + 100 + 100 + 72 = 372 open PRs, 356 drafts and 16 non-drafts.
+
+### PR #1640 — V3 integration
+
+Current code/test head verified in this run: cf3a89fd8fe9d20217836e99a90065aa24fb5db0. It is 751 commits ahead of main, zero behind, changes 186 paths, and GitHub reports clean mergeability.
+
+Exact-head checks:
+- Full repository suite: 1,233 passed, 0 failed, 8 subtests passed.
+- Inclusive coverage: 58.98%, above the 53% gate.
+- Core suite: 660 passed, 8 subtests passed.
+- Installed wheel built and installed successfully; Barrot V3, the primary XRP mission and canonical data assets loaded.
+- Six-manifest dependency audit passed with zero known vulnerabilities.
+- Fail-closed merge gate passed and explicitly kept automatic merging disabled.
+
+Evidence:
+- CI run 42545698911: https://github.com/Barrot-Agent/B-Agent/actions/runs/42545698911
+- Dependency audit 42545698932: https://github.com/Barrot-Agent/B-Agent/actions/runs/42545698932
+- Fail-closed gate 42545698924: https://github.com/Barrot-Agent/B-Agent/actions/runs/42545698924
+
+The full-suite job ran all tests under tests/ with inclusive coverage over barrot_agent packages, then built and installed the wheel. A GitHub Actions cache-budget warning made the cache read-only; it did not fail tests, coverage, wheel verification or security checks.
+
+All 22 inline review threads are resolved. There are 62 COMMENTED review records and zero APPROVED reviews.
+
+### PR #1643 — XRP research
+
+Latest head after this run's two existing-branch commits: e15b16c7a02a0f65554423de5d97d8749df1624e. It is 904 commits ahead and one behind current main, with 670 changed paths. It remains divergent/mergeability unknown.
+
+The six shared changed paths with #1640 remain:
+- .github/workflows/dependency-audit.yml
+- BARROT_XRP_MISSION_HANDOFF.md
+- data/xrp_intelligence/sources/kamilah_stevenson_channel.json
+- scripts/pillars_check.py
+- tests/test_kamilah_channel_identity_gate.py
+- tests/test_pillars_check_readonly.py
+
+This leaves 180 V3-only paths and 664 research-only paths. #1640 must be integrated first; #1643 must then be consolidated onto verified current main with all six overlaps reconciled.
+
+All 19 inline review threads on #1643 are resolved. Its 10 review records are COMMENTED and there are zero APPROVED reviews. Five check suites for the new research head were queued at capture; no exact-head CI result is claimed yet.
+
+### New primary-source SEC 13F correction
+
+Added to the existing #1643 research branch:
+- research/xrp_intelligence/20261109T013133Z-goldman-sachs-xrp-etf-13f-manager-attribution-correction.json
+- tests/test_xrp_goldman_sachs_13f_manager_attribution_correction_20261109.py
+
+SEC Form 13F-HR accession 0000886982-26-000519 was filed August 14, 2026 for holdings as of June 30, 2026. Goldman Sachs Group Inc is the filing manager. The primary document's Other Included Managers list identifies No. 1 as Goldman Sachs & Co. LLC, CIK 0000769993. Every XRP ETF row assigns manager No. 1.
+
+The five reported positions reconcile to $86,506,129:
+- 21Shares XRP ETF: $8,206,363.
+- Bitwise XRP ETF: $25,756,345.
+- Canary XRP ETF: $19,490,717.
+- Franklin XRP Trust: $25,405,919.
+- Grayscale XRP Trust ETF: $7,646,785.
+
+Correction: the filing reports ETF-share positions in a consolidated 13F. It does not prove that Goldman Sachs Group Inc itself owns the positions, that they are proprietary rather than client/advisory holdings, that the positions remain current after June 30, or that the filer bought/custodies XRP tokens. This is not an XRP spot-flow or actual-token-capital feature. The artifact hashes normalized SEC excerpts, not raw HTTP bytes, and marks the observation model-ineligible.
+
+Primary SEC sources:
+- Filing index: https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.html
+- Primary document: https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/primary_doc.xml
+- Information table: https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml
+
+### CFTC and market evidence
+
+The Run 75 market/derivatives/ETF/regulatory artifact on #1640 includes the CFTC Traders in Financial Futures report updated November 6 for positions as of November 3:
+- CME XRP: 7,216 contracts, down 845 (-10.48%) week over week; 50,000 XRP per contract.
+- Coinbase Nano XRP: 32,505 contracts, down 32,864 (-50.27%); 500 XRP per contract.
+- Coinbase Nano XRP Perp Style: 38,392 contracts, down 465 (-1.20%); 500 XRP per contract.
+
+These are weekly futures positions, not cash capital, spot XRP custody, or global derivatives. The large Nano XRP open-interest reduction could reflect expiry, roll, closure or reclassification; no migration is proven. The CFTC parser is not yet in the 35-endpoint/33-scheduled-source registry.
+
+No fresh direct spot/depth capture was performed in Run 75. The latest surfaced direct market observations remain stale or unsynchronized and model-ineligible.
+
+### Main workflow and authorization state
+
+Verified current-main workflow results on d4d43be:
+- Main CI 42526890841: success.
+- GitHub Pages build/deployment 42526890275: success after an existing main push.
+- Cross Analysis 42542724817: success.
+
+Main is protected, but the required-review and required-status-check branch-protection endpoints return HTTP 403. The visible fallback ruleset is disabled. Pages is enabled, but its configuration is inaccessible. Since #1640 changes public web paths and a main push triggered Pages deployment, the merge would cause a public deployment whose authorization is not established.
+
+Both mission PRs have zero independent APPROVED reviews. No merge was performed. #1640 is technically green on cf3a89, but independent approval and deployment authorization remain blockers. #1643 is additionally one commit behind and divergent.
+
+### Non-draft backlog classification
+
+| PR | Classification |
+|---|---|
+| #1640 | Blocked for merge: exact-head code/test CI green; approvals and Pages/branch-protection authorization missing |
+| #1643 | Blocked: one commit behind, divergent; new SEC artifact/test checks queued |
+| #1653 | Unique/unreviewed repository knowledge-graph work; seven paths, only ci.yml overlaps #1640 |
+| #1644–#1650 | Supersession candidates: dependency/workflow paths overlap #1640; preserve until exact successor content is verified on main |
+| #1317 | Supersession candidate: structural analysis/MMI paths represented in #1640; preserve until main verification |
+| #1318 | Supersession candidate: scientific-discovery script/test represented in #1640; preserve until main verification |
+| #1320 | Supersession candidate: paper-trader safety/workflow paths represented in #1640; preserve until main verification |
+| #1254/#1255 | Supersession candidates: older dependency updates overlap legacy requirements in #1640 |
+| #1269 | Unique mesh topology/rendering work; preserve; only CI workflow overlaps #1640 |
+
+All other open PRs are drafts. No PR was closed or created. Exact duplicate/superseded PRs will be closed only after successor content is verified on main.
+
+### Prediction engine and platform coordination
+
+Designed/implemented on #1640: 35 endpoint records, 33 scheduled public sources, two excluded XRPL-node sources, content-addressed SHA-256 receipts, receipt-chain verification, point-in-time SQLite feature store, four deterministic baselines, chronological embargoed walk-forward evaluation, temporal calibration diagnostics, PSI drift diagnostics, feature-snapshot verification and a fail-closed forecast ledger.
+
+Not verified on main: scheduled ingestion execution, independent WORM archival/rebuild, synchronized multi-domain history, trained-model out-of-sample lift, validated real-data calibration, concept/label drift monitoring, sufficient independent shadow outcomes and trusted evaluator key. GitHub Actions artifacts have finite retention (90 days for raw/daily artifacts and 7 days for per-run feature-store checkpoints); this is not independent WORM storage.
+
+Nine-platform status is unchanged: ChatGPT-to-GitHub verified for this session; Copilot one-off review activity only; Claude, Grok, Gemini and Codex unverified; Hugging Face health check inconclusive/failed; Kaggle not tested; Databricks HTTP 403. No external model received repository data.
+
+Forecast status: NOT_ISSUED. No directional forecast, paper trade or real-money action occurred.
+
+### Next actions
+
+1. Complete exact-head full-suite, wheel, dependency and fail-closed verification on the combined Run 75 handoff/map/test commit.
+2. Obtain independent APPROVED reviews and resolve branch-protection/Pages authorization.
+3. Merge #1640 only after all requirements pass; verify merge commit, files, Pages/workflow side effects and main CI.
+4. Complete all five queued checks on #1643; keep it blocked while behind/divergent.
+5. After #1640 is verified on main, consolidate #1643's 664 unique paths onto current main, reconciling six shared paths and the direct main-artifact conflict.
+6. Close only exact superseded dependency/structural/safety PRs after successor verification; preserve #1653 and #1269 unique work.
+7. Add a weekly CFTC TFF parser with publication-availability timestamps; keep futures positioning separate from spot capital.
+8. Verify scheduled ingestion on main, establish independent archival/rebuild, expand primary regulatory/macro/custody/collateral/payment-rail coverage, and demonstrate calibrated out-of-sample lift before forecast issuance.
+
+Run 75 was executed on existing branches only. Main remained unchanged at d4d43be. No merge, deployment, secret operation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree action occurred.
