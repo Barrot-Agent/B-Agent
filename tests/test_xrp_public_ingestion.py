@@ -2662,13 +2662,16 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     assert status_observation["futures_and_options_combined_dropped"] == ["176LM2"]
     assert status_observation["model_eligible"] is False
 
-    assert cftc_observation["feature_count"] == 24
+    assert cftc_observation["feature_count"] == 30
     features = {item["feature_id"]: item for item in cftc_observation["features"]}
     assert features["xrp.derivatives.cftc.tff.cme_xrp.open_interest_contracts"]["value"] == 7216
     assert features["xrp.derivatives.cftc.tff.cme_xrp.total_traders"]["value"] == 29
+    assert features["xrp.derivatives.cftc.tff.cme_xrp.open_interest_xrp_equivalent"]["value"] == 360800000
+    assert features["xrp.derivatives.cftc.tff.cme_xrp.open_interest_change_xrp_equivalent"]["value"] == -42250000
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.open_interest_contracts"]["value"] == 32505
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.open_interest_change_contracts"]["value"] == -32864
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.total_traders"]["value"] == 37
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.open_interest_xrp_equivalent"]["value"] == 16252500
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp_perp_style.open_interest_contracts"]["value"] == 38392
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp_perp_style.total_traders"]["value"] == 284
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.leveraged_funds_net_contracts"]["value"] == -2308
