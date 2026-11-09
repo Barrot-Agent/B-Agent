@@ -1,3 +1,111 @@
+## Run 93 — repository audit, XRP source receipts and institutional-rail reconciliation — 2026-11-09T16:14:36Z
+
+### Mission and repository state
+
+**Priority one:** XRP intelligence and measured prediction-engine mastery.  
+**Preserved foundation:** Barrot V3 execution, orchestration, safety and verification.
+
+- Main SHA: d4d43be3427375cf79d190e768976de062e20287.
+- Integration branch: integration/core-capabilities-mmi-structural-paper-20261104; head before this update: 2685c1744aa5a7972da9063a18be665077c4548c.
+- Main tree: 1,404 entries, 1,299 files, 493 Python files, 87 test modules, 86 workflows.
+- Integration tree at the parent head: 1,504 entries, 1,391 files, 560 Python files, 138 test modules, 87 workflows.
+- Main has the earlier feature-store and forecast-ledger foundations. The primary XRP mission manifest/registry, scheduled public ingestion, walk-forward evaluator, calibration, drift and research-eligibility modules remain on the integration branch.
+- PR #1640 is the single active V3/XRP integration path: 816 commits ahead, zero behind, 206 changed paths, 91,706 additions, 3,548 deletions, 42 workflow files and seven public web paths. No new branch or PR was created.
+
+### Exact-head evidence on parent 2685c174
+
+- Full repository CI run 42643060387: **1,299 passed, zero failed, eight subtests passed, 59.09% coverage**.
+- Core: **677 passed, eight subtests passed**.
+- Wheel build and installed-wheel smoke passed; Barrot V3 imports, priority-one XRP mission resource and canonical assets loaded.
+- Dependency audit run 42643060492: six manifests, zero known vulnerabilities. Includes requirements.txt, requirements-dev.txt, supplemental requirements.tx, Hugging Face Space requirements, legacy requirements and 15 PEP 621 dependencies.
+- Fail-closed gate run 42643060406 passed; automatic merge remained disabled.
+- Non-failing warnings: deprecated TOML license metadata, setuptools package-discovery declarations, and GitHub Actions cache quota read-only.
+- This Run 93 update changes the current map, its regression test and this handoff. Exact-head CI on the new commit is pending; parent-head evidence does not transfer.
+
+### XRP spot structure — SHA-256-bound public receipts
+
+Three public exchange JSON bodies were captured. Hashes cover the exact JSON text surfaced by retrieval, not original HTTP wire bytes or response headers.
+
+| Source | Observation |
+|---|---|
+| Kraken XRP/USD | No provider event timestamp. Last $1.11204; bid $1.11155; ask $1.11161; spread 0.54 bps; 24h volume 45.234M XRP; VWAP $1.11240931; high/low $1.16065/$1.07502. |
+| OKX XRP/USDT | Provider event time 15:45:58.670 UTC, about 28m37s old at capture. Last 1.1138 USDT; bid 1.1137; ask 1.1138; 24h volume 87.382M XRP; open/high/low 1.1563/1.1622/1.0764. |
+| Kraken USDT/USD | No provider event timestamp. Last/bid 0.99900; ask 0.99901. |
+
+Raw-body SHA-256 receipts:
+- Kraken XRP/USD: 9ff2a9a6954ad6fc5e933a1194f794eacb1a589cd62951964e534524b2ac1efe.
+- OKX XRP/USDT: 1a265dca95328c2d4fb9276257285d219ca0dca5d5f7659cddb0531f4d6ebd71.
+- Kraken USDT/USD: dbbee9ecb62201e24f41f5a9cfc452a6c65f79dcb3dbdfd55790c3d495d6df59.
+
+Indicative normalization with Kraken USDT/USD gives OKX XRP at $1.1126862 last, $1.1125863 bid and $1.112697338 ask. Normalized last gap against Kraken XRP/USD is 0.0581%; midpoint gap 0.0955%. Inputs are asynchronous; Kraken and USDT/USD lack event timestamps. Not an executable arbitrage signal. No L2 depth or synchronized trade tape. **Model admission: false.**
+
+Sources: https://api.kraken.com/0/public/Ticker?pair=XRPUSD ; https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT ; https://api.kraken.com/0/public/Ticker?pair=USDTUSD .
+
+### Derivatives, liquidity and competing hypotheses
+
+Six public views were reconciled without averaging:
+- Liqwall, 14:42 UTC: OI $1.23B, down 5.2%; $36.4M liquidations, $35.2M long/$1.2M short; funding +0.0052% per eight hours; 73.8% Binance accounts long.
+- TradRadar, 14:05 UTC: OI $1.67B across seven exchanges, down 10.88%; at least $38.02M liquidations, $36.72M long/$1.29M short; funding +0.0038%; 79.6% long accounts. Bitget and Hyperliquid funding negative.
+- Alpha Finance, 14:04 UTC: OI $2.50B; $38.8M long/$1.4M short liquidations. Its clusters are modelled from OI and leverage tiers, not verified executions.
+- Webeconomia, displayed 14:58 local time with timezone unstated: OI $1.41B, down 13.8% over 30 days; $28.5M liquidations, 96% long; funding +0.0046%.
+- Swiftedge, 13:08 UTC: XRP $1.1018, down 5.44%; net taker flow -8.7%; volume 3x recent average; funding -0.0242%; OI -21.5%; displayed $4.3M bid wall at $1.097 and $4.8M ask wall at $1.108. Walls can be cancelled.
+- BitcoinLeverage/Coinalyze, 10:14 UTC: partial Binance/Bybit coverage, not comparable to all-venue totals.
+
+Reported OI ranges $1.23B–$2.50B (about 103% high/low spread). Underlying venue coverage overlaps; windows differ; funding signs conflict. The common observation is long-heavy liquidation, not direction. Counter-hypotheses: continued risk-off deleveraging versus liquidation exhaustion and relief rebound. **No forecast issued.**
+
+Sources: https://liqwall.com/coins/xrp ; https://tradradar.io/markets/xrp ; https://alphafinance.io/liquidation-heatmap/xrp/ ; https://www.webeconomia.it/mercati/crypto/derivati/xrp/ ; https://swiftedge.uk/markets/today ; https://bitcoinleverage.com/xrp/liquidations .
+
+### Institutional, custody, collateral and payment-rail updates
+
+- PNC–Coinbase–Circle: Reuters, November 9, reports a limited PNC corporate/institutional pilot receiving Circle USDC with automatic USD conversion through Coinbase infrastructure. No XRP settlement stated. This is a counter-hypothesis to assuming stablecoin adoption automatically creates XRP demand. https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/.
+- Coinbase–Samsung: October 8 Coinbase announcement describes USDC distribution in Samsung Wallet, Coinbase Prime custody/subcustody infrastructure and licensed partner Bastion. USDC distribution, not XRP use. https://www.coinbase.com/en-sg/blog/coinbase-and-samsung-bring-usdc-to-samsung-wallet.
+- CFTC Release 9322-26, November 5: no-action letter addresses DCO use of trust companies for daily settlements when treated as settlement banks. No Ripple, Coinbase or XRP use established. https://www.cftc.gov/PressRoom/PressReleases/9322-26.
+- CFTC Release 9241-26, May 29: conditional Coinbase Financial Markets foreign-futures relief covers certain customer digital commodities and payment stablecoins posted as margin with an affiliated foreign broker. No XRP eligibility or actual XRP collateral posting established. https://www.cftc.gov/PressRoom/PressReleases/9241-26.
+
+### Identity and exact phrases
+
+- ASK Coin: Permission Coin (ASK) is a candidate only; intended entity and XRP/XRPL integration unverified.
+- “Actual capital”: no standardized XRP metric. Separate cash purchases, in-kind contributions, debt proceeds, drawn facilities and contingent equity capacity.
+- “SBIC, ChatGPT SBIC”: official Tokyo SBIC June 12–13, 2025 course mentions ChatGPT and Copilot. Training only; no OpenAI partnership. SBIC East/Central/West remain distinct regional companies, not SBI Holdings. https://www.sbic.co.jp/training/20250612co/.
+- Camilla/Kamilah Stevenson: previously corroborated guest appearance remains identity-linked; personal-channel ownership is not first-party conclusive. No new personal-channel videos admitted. https://www.youtube.com/watch?v=Sulo54IlQ60.
+
+### Nine-platform map
+
+Only the current ChatGPT-to-GitHub connector is verified. Copilot activity is COMMENTED, not APPROVED. Claude, Grok, Gemini and Codex have no tested persistent auth/data flow. Hugging Face health check previously BUILD_ERROR; Kaggle untested; Databricks HTTP 403. No external model data transfer.
+
+### PR backlog and integration
+
+372 open PRs: 356 drafts, 16 non-drafts.
+- #1640: BLOCKED; 62 COMMENTED reviews, zero approvals; 22/22 inline threads resolved.
+- #1643: UNIQUE/UNREVIEWED; 663 unique paths, seven overlaps; 906 ahead/one behind; no exact-head Actions CI.
+- #1653: UNIQUE/UNREVIEWED; six unique paths, one CI overlap; 730 tests/eight subtests passed on its head; eight unresolved threads; dependency audit not found.
+- #1642: seven paths overlap #1640; its commit is an ancestor. Superseded candidate, not closed.
+- #1644–#1650: all changed paths overlap #1640; exact blob/version reconciliation pending.
+- #1317/#1318/#1320: all changed paths overlap #1640; supersession candidates.
+- #1254/#1255: both touch legacy/requirements_legacy.txt, also changed by #1640; exact version reconciliation pending.
+- #1269: preserve eight unique mesh-topology paths and one CI overlap.
+- #1655: preserve three unique source-catalog/manifest paths.
+- #1659: preserve four unique local Llama/Termux paths.
+- No PRs closed or bulk-closed.
+
+### Merge and safety decision
+
+**No merge.** Main shows protected=true, but detailed branch-protection endpoint returns HTTP 403. Visible Fall Back ruleset is disabled; CODEOWNERS is * @Barrot-Agent; required review/status settings cannot be independently verified. Zero independent approvals. PR changes seven public web paths and a prior main push triggered successful Pages deployment; no specific publication authorization is recorded.
+
+The new ingestion workflow is read-only, main-only and artifact-oriented; not active on main. Raw artifacts retain 90 days and feature checkpoints seven days; no independent WORM archive. Manual Databricks/Kaggle, A2A/Space deployment and paper-trader workflows were not dispatched. Paper-trader workflow is configured for BTC-USD, not XRP.
+
+Main Cross Analysis run 42648921258 succeeded but recent and prior XRP sentiment windows each had zero observations. Its 286 mentions and +0.46 corpus sentiment are not price probabilities. Main Riemann Harvest fails because pydantic is missing; #1640 adds pydantic-settings. Main Pillars Check is blocked by missing GitHub App credentials, Databricks 403 and Hugging Face BUILD_ERROR. Hover Bike Updates failed on missing artifacts and is unrelated.
+
+### Prediction status and next action
+
+**Forecast status: NOT_ISSUED.** The 38-endpoint inventory includes 36 scheduled public sources on the integration branch. SHA-256 receipts, point-in-time feature store, four baselines, chronological purged/embargoed walk-forward, calibration diagnostics, drift diagnostics and fail-closed forecast ledger are implemented there, not on main. CFTC TFF ingestion, independent WORM anchoring, synchronized multi-domain history, demonstrated out-of-sample lift, real-data calibration and shadow outcomes remain open.
+
+Next: verify exact-head CI on this Run 93 map/handoff/test commit; resolve independent approval, branch-protection visibility and Pages authorization; only then consider merging #1640. After any merge, fetch main, verify merge commit/files, run main CI and inspect workflow side effects. Preserve unique research and graph work.
+
+No main write, merge, deployment, secret read/rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+---
+
 ## Run 92 — exact-head repository audit, XRP market update and institutional rail reconciliation — 2026-11-09T15:09:00Z
 
 ### Mission and repository state
