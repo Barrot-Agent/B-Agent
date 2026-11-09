@@ -3127,3 +3127,26 @@ On prior handoff head `451f7d02994ded115e2bcb654d304fe9202b0371`:
 This Run 87 artifact, test and handoff append form a new commit; their exact-head CI, dependency audit and fail-closed gate must complete before any merge consideration. The preceding results are not evidence for the new commit.
 
 No main write, merge, deployment, external model transfer, paper trade, real-money action, force-push or destructive worktree operation occurred.
+
+
+## Run 88 — Permission ASK primary-source scope correction — 2026-11-09T13:25:19Z
+
+The exact phrase **ASK Coin** now has a stronger, but still not conclusive, candidate. Permission's current official token documentation identifies ASK as the native token of the Permission ecosystem. The official homepage has repositioned Permission as a family-friendly AI/digital-wellbeing product; it describes ASK as a family-friendly reward token and says children can redeem rewards for gift cards. Official docs: https://docs.permission.ai/ask-token and https://www.permission.ai/
+
+The official token documentation states:
+- Fixed supply: 100,000,000,000 ASK.
+- Standard: LayerZero OFT.
+- Listed active networks: Base (`0xBB146326778227A8498b105a18f84E0987A684b4`) and Polygon (`0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff`).
+- Utility: incentives/rewards, agent-to-agent coordination and ecosystem alignment; governance/staking are described as future.
+
+The official active-network list does not include XRPL. No direct XRP/XRPL integration is established in the reviewed official documentation. This is not proof that no private, future or unlisted integration exists; it is sufficient to keep ASK out of XRP model features. Permission ASK remains a supported candidate for the phrase, not a confirmed match to the user's intended referent.
+
+The current homepage positioning differs from older third-party descriptions that emphasize Web3 advertising/data monetization. Prefer the current official documentation for present product scope; preserve older descriptions as historical/secondary claims, not current verified positioning.
+
+The phrase **actual capital** is not a metric in the reviewed ASK documentation. Token supply, market capitalization, reward issuance, exchange turnover, cash raised and XRP purchases remain separate quantities. This artifact records no capital flow and is model-ineligible.
+
+Source capture is rendered public-page text; raw HTTP bytes and response headers were not captured, so no raw-source SHA-256 is claimed. The two pages share one publisher and count as one source-independence group.
+
+Forecast status remains **NOT_ISSUED**. No ASK data is admitted to XRP features.
+
+Exact-head predecessor verification: `dccc86af2f806cf467ec82687c2e508586c659d0` passed core 677 tests + 8 subtests; full repository suite 1,286 tests + 8 subtests, 59.09% inclusive coverage; wheel/mission verification; six-manifest dependency audit; and fail-closed gate. The Run 88 append, artifact and test below create a new commit; those results do not transfer to the new head.
