@@ -2620,11 +2620,11 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     )
     assert not any(item["source_id"] == "cftc_tff_financial_futures" for item in raw_only)
 
-    research_only = json.loads(
+    research_only_payload = json.loads(
         (tmp_path / "weekly" / "research_only_observations.json").read_text(encoding="utf-8")
     )
     cftc_observation = next(
-        item for item in research_only
+        item for item in research_only_payload["observations"]
         if item["source_id"] == "cftc_tff_financial_futures"
     )
     assert cftc_observation["observation_type"] == "cftc_tff_xrp_futures_only_position_features"

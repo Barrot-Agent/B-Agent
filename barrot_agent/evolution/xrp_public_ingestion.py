@@ -4089,7 +4089,7 @@ def run_ingestion(
             records.extend(parsed_records)
         else:
             records.extend(parsed_records)
-        if reason and not source_eligible and not parsed_records:
+        if reason and not source_eligible and source_id != "cftc_tff_financial_futures":
             raw_only.append({"source_id": source_id, "reason": reason})
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
