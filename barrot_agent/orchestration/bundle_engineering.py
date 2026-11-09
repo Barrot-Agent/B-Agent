@@ -46,7 +46,7 @@ _UNSAFE_RECOVERY_PATTERNS = (
     ("GIT_REBASE", re.compile(r"\bgit\s+rebase\b", re.IGNORECASE)),
     ("GIT_AMEND", re.compile(r"\bgit\s+commit\s+--amend\b", re.IGNORECASE)),
     ("GIT_HISTORY_REWRITE", re.compile(r"\bgit\s+filter-(?:branch|repo)\b", re.IGNORECASE)),
-    ("DISCARD_USER_WORK", re.compile(r"\bdiscard(?:\s+all)?\s+(?:uncommitted|untracked|local|user)\s+(?:changes|work|files)\b", re.IGNORECASE)),
+    ("DISCARD_USER_WORK", re.compile(r"\bdiscard(?:\s+all)?\s+(?:(?:uncommitted|untracked|local|user)\s+){1,3}(?:changes|work|files)\b", re.IGNORECASE)),
 )
 _NEGATION_BEFORE_UNSAFE_ACTION = re.compile(
     r"\b(?:never|do\s+not|don't|must\s+not|must\s+never|prohibited|forbidden)\b(?:\s+\w+){0,4}\s*$",
