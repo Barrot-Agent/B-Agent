@@ -1161,7 +1161,7 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
         ("xrp_etf_21shares_toxr_issuer_page", "www.21shares.com", "https://www.21shares.com/en-us/products-us/toxr"),
     ],
 )
-def test_additional_primary_issuer_pages_are_registered_and_retained_hash_only(source_id, host, url):
+def test_primary_issuer_pages_are_registered_without_feature_promotion(source_id, host, url):
     captured = datetime(2026, 11, 5, 4, 0, tzinfo=timezone.utc)
     payload = _fake_fetcher(captured)(source_id, url)["payload"]
     records, source_as_of, eligible, reason = PARSERS[source_id](
@@ -1172,7 +1172,13 @@ def test_additional_primary_issuer_pages_are_registered_and_retained_hash_only(s
     assert records == []
     assert source_as_of is None
     assert eligible is False
-    assert "hash_only" in reason
+    hash_only_sources = {
+        "xrp_etf_franklin_xrpz_issuer_page",
+        "xrp_etf_canary_xrpc_issuer_page",
+        "xrp_etf_21shares_toxr_issuer_page",
+    }
+    expected_reason = "hash_only" if source_id in hash_only_sources else "raw_only"
+    assert expected_reason in reason
 
 
 
