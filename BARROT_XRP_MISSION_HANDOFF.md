@@ -9698,3 +9698,26 @@ Re-run exact-head CI after this handoff/evidence commit. Keep #1640 as the singl
 - The current relationship graph is: Circle–Coinbase (USDC distribution economics); Circle–Binance ($100m equity plus commercial arrangements); Circle–SBI (50% Japan JV with no significant operating results); SBI–Ripple (SBI Ripple Asia JV, with the JV itself not handling XRP); SBI Remit–XRP (ODL bridge asset); SBI VC Trade–RLUSD (separate stablecoin distribution); SBI-controlled stockholders–Evernorth (21.4% common / 39.9% voting at closing); Ripple and related contributors–Evernorth (in-kind XRP); Coinbase–Evernorth (principal market for valuation, not custody; BitGo custody). No direct Circle–Ripple or Coinbase–SBI corporate tie was established in the primary filings reviewed.
 - This update is being committed on top of integration head `8f2c5416879efbd77af0bfaef6681ec31b7b0573`. The resulting documentation/evidence head must receive fresh exact-head CI; previous CI results do not transfer to it.
 
+## Run 78C — regulation, institutional flows and macro regime
+
+### U.S. regulatory status
+- The SEC/CFTC interpretive release issued March 17, 2026 and effective March 23 explicitly lists XRP as a digital commodity. It also says digital commodities are not themselves securities, but a non-security crypto asset can still be offered or sold subject to an investment contract; the release does not replace or supersede Howey.
+- The SEC Division of Corporation Finance FAQ updated November 2, 2026 expressly says its answers are non-binding staff views with no legal force or effect. Do not treat the FAQ as a Commission rule.
+- The SEC's August 7, 2025 litigation release says dismissal of the Ripple cross-appeals left the final judgment in effect: a $125,035,150 civil penalty and an injunction against registration violations. The August 8, 2025 Commission order also says the injunction remains and Rule 506 exemptions are unavailable absent a waiver. The 2026 asset-level classification does not itself vacate the issuer-specific judgment.
+
+### Institutional capital and custody
+- XRP Insights' November 6 close tracker reports six U.S. spot XRP ETFs plus BITW holding 1.20B XRP and $1.43B net assets; the six spot funds alone held 1.17B XRP / $1.40B. It reports -663,043 XRP on Nov. 6 and -812.5K XRP for Nov. 2–6, but excludes GXRP from flow totals while a data gap is corrected.
+- Other ETF dashboards are not directly comparable: Alpha Finance covers five funds and reports $0 on Nov. 6 with +$45.9M over 30 sessions; Maketo covers five and reports $0 daily, -$530K weekly and +$14M monthly; Coin365 reports one XRP fund (XRPC) with -$1.1M daily and +$3.2M over 30 days; Corpstacking tracks ten global products and reports 1.415B XRP. The differences are fund-universe and methodology differences, not a basis for averaging. ETF holdings are custody balances, not proof of net exchange spot buying on the same day.
+- Historical derivatives context: Bitexen's Aug. 17–31, 2026 analysis reports total XRP futures OI down 16% (2.77B to 2.34B XRP) while CME OI rose 36% (284M to 387M), lifting CME share from 10% to 17%. Leveraged funds were net short about 116M XRP, while dealers and asset managers were net long. This is dated secondary context, not current OI.
+
+### Macro regime
+- The October 28, 2026 FOMC held the target range at 3.75%–4.00% by 10–2 vote; two members preferred a 25bp hike. The statement cited elevated inflation and geopolitical uncertainty.
+- The PBOC announced November 3 that the FX reserve requirement for financial institutions would rise from 4% to 6%, effective November 15, to strengthen forex-liquidity management. Treat this as an onshore China FX-liquidity event, not a direct global-dollar-supply shock.
+- Reuters reported $117.97B in U.S. money-market-fund inflows for the week ended November 4, the largest in six months. Treat as a broad risk-aversion/liquidity proxy, not an XRP-specific flow.
+- These are timestamped explanatory variables and competing hypotheses, not directional XRP signals.
+
+### Evidence artifact
+The structured reconciliation now includes SEC/CFTC classification, the remaining Ripple judgment, ETF coverage/methodology disagreement, CME historical positioning, Fed/PBOC macro events and source-independence notes. Raw HTTP bodies were not captured; no raw-source hashes are claimed. The ingestion pipeline must fetch and hash original response bytes before feature-store admission.
+
+This update is being committed on top of integration head `cd7b75df3d89446989b0733b16d6cb31c4e1adc9`. The resulting head must receive fresh exact-head CI; the passing checks below apply only to the stated parent head.
+

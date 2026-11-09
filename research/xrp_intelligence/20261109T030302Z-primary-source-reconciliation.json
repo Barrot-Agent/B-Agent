@@ -8,7 +8,7 @@
     "integration_head": "6e49d7cd1d6c302636354791046f8d9f0f904c48",
     "integration_head_at_research_capture": "6e49d7cd1d6c302636354791046f8d9f0f904c48",
     "integration_head_after_handoff_commit": "a399e1ff61ddaa9094f0a7f465521c9219870262",
-    "integration_head_before_final_research_update": "8f2c5416879efbd77af0bfaef6681ec31b7b0573"
+    "integration_head_before_final_research_update": "cd7b75df3d89446989b0733b16d6cb31c4e1adc9"
   },
   "receipt_integrity": {
     "raw_http_body_hashes_captured": false,
@@ -330,6 +330,282 @@
       ],
       "raw_response_sha256": null,
       "receipt_status": "WEB_RENDERED_EXCERPT_ONLY"
+    },
+    {
+      "source_id": "SEC_2026_INTERPRETIVE_RELEASE",
+      "publisher": "U.S. Securities and Exchange Commission / Commodity Futures Trading Commission",
+      "source_type": "official interpretive release and guidance",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "source_date": "issued 2026-03-17; effective 2026-03-23",
+      "independence_group": "SEC_CFTC",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "XRP (XRP)",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "The interpretation in this release does not supersede or replace the Howey test, which is binding legal precedent",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "a non-security crypto asset can be offered and sold subject to an investment contract",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "SEC_2026_CRYPTO_FAQ",
+      "publisher": "SEC Division of Corporation Finance",
+      "source_type": "official staff FAQ",
+      "url": "https://www.sec.gov/about/divisions-offices/division-corporation-finance/faqs-crypto-assets",
+      "source_date": "updated 2026-11-02",
+      "independence_group": "SEC_STAFF",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "These FAQs have no legal force or effect; they do not alter or amend applicable law, and they do not create any new or additional obligations for any person.",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "SEC_RIPPLE_FINAL_JUDGMENT",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "official litigation release",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369",
+      "source_date": "2025-08-07",
+      "independence_group": "SEC_ENFORCEMENT",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "Following the dismissal of the cross-appeals, that final judgment will remain in effect",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "$125,035,150 civil penalty",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "injunction prohibiting Ripple from violating the registration provisions",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "SEC_RIPPLE_RULE506_ORDER",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "official Commission order",
+      "url": "https://www.sec.gov/files/rules/other/2025/33-11383.pdf",
+      "source_date": "2025-08-08",
+      "independence_group": "SEC_ENFORCEMENT",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "The Final Judgment’s injunction against Ripple remains in effect",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "Rule 506 exemptions are unavailable absent a waiver",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "FED_FOMC_20261028",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "source_type": "official FOMC statement",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "source_date": "2026-10-28",
+      "independence_group": "FEDERAL_RESERVE",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "maintain the target range for the federal funds rate at 3-3/4 to 4 percent",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "10–2 vote",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "inflation remains elevated",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "uncertainty remains elevated owing, in part, to geopolitical developments",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "PBOC_FX_RESERVE_20261103",
+      "publisher": "People's Bank of China / State Council English portal",
+      "source_type": "official policy announcement",
+      "url": "https://english.www.gov.cn/news/202611/03/content_WS6ae98bb1c6d00ca5f9a0e103.html",
+      "source_date": "2026-11-03; effective 2026-11-15",
+      "independence_group": "PBOC",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "raise the foreign exchange reserve requirement ratio for financial institutions by 2 percentage points to 6 percent from Nov. 15",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "XRP_INSIGHTS_ETF_FLOWS",
+      "publisher": "XRP Insights",
+      "source_type": "secondary issuer-holdings aggregation",
+      "url": "https://xrp-insights.com/",
+      "source_date": "2026-11-06 close",
+      "independence_group": "XRP_INSIGHTS",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "6 spot funds plus BITW recorded net outflows of 663,043 XRP",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "combined holdings 1.20 billion XRP; $1.43 billion net assets",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "Nov. 2–6 weekly net flow -812.5K XRP",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "GXRP excluded from flow totals while a data gap is corrected",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "ALPHA_FINANCE_ETF_FLOWS",
+      "publisher": "Alpha Finance",
+      "source_type": "secondary ETF-flow aggregation",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_date": "through 2026-11-06",
+      "independence_group": "ALPHA_FINANCE",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "5 funds covered; 2026-11-06 daily net flow $0",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "30-session flow +$45.9 million; cumulative net flow $1.73 billion",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "MAKETO_ETF_FLOWS",
+      "publisher": "Maketo",
+      "source_type": "secondary ETF-flow aggregation",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "source_date": "2026-11-06",
+      "independence_group": "MAKETO",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "5 funds tracked; last trading day flow $0",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "past-week flow -$530K; past-month flow +$14M",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "COIN365_ETF_FLOWS",
+      "publisher": "Coin365",
+      "source_type": "secondary ETF-flow aggregation",
+      "url": "https://www.coin365.io/etf",
+      "source_date": "effective 2026-11-06",
+      "independence_group": "COIN365",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "XRP latest-session flow -$1.1 million; 30-day flow +$3.2 million; YTD +$27.5 million",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "AUM $285.8 million; only 1 of 1 XRP fund reported",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "CORPSTACKING_XRP_TREASURIES",
+      "publisher": "Corpstacking",
+      "source_type": "secondary cross-market treasury aggregation",
+      "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "source_date": "2026-11-06",
+      "independence_group": "CORPSTACKING",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "10 spot XRP funds tracked; 1,415,142,972 XRP held",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "approximately $1.6 billion; includes non-U.S. products and funds beyond the six U.S. spot ETFs",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "BITEXEN_CME_XRP_FUTURES",
+      "publisher": "Bitexen Research",
+      "source_type": "secondary analysis using futures and CFTC positioning data",
+      "url": "https://research.bitexen.com/en/post/institutional-presence-in-xrp-futures-grows-as-price-rallies",
+      "source_date": "2026-09-01; data window 2026-08-17 to 2026-08-31",
+      "independence_group": "BITEXEN",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "total XRP futures open interest fell from 2.77 billion to 2.34 billion XRP",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "CME open interest rose from 284 million to 387 million XRP",
+          "raw_response_sha256": null
+        },
+        {
+          "text": "leveraged funds net short approximately 116 million XRP",
+          "raw_response_sha256": null
+        }
+      ]
+    },
+    {
+      "source_id": "REUTERS_MONEY_MARKET_FLOWS",
+      "publisher": "Reuters",
+      "source_type": "secondary macro reporting",
+      "url": "https://www.reuters.com/business/caution-over-midterms-ai-cash-burn-drives-surge-us-money-market-fund-inflows-2026-11-06/",
+      "source_date": "2026-11-06; week ended 2026-11-04",
+      "independence_group": "REUTERS",
+      "receipt_status": "WEB_RENDERED_EXCERPT_ONLY",
+      "raw_response_sha256": null,
+      "excerpts": [
+        {
+          "text": "U.S. money market funds received $117.97 billion in weekly inflows, the largest in six months.",
+          "raw_response_sha256": null
+        }
+      ]
     }
   ],
   "claim_ledger": [
@@ -474,6 +750,75 @@
       "source_ids": [
         "CIRCLE_2026Q3_10Q"
       ]
+    },
+    {
+      "claim_id": "SEC_XRP_DIGITAL_COMMODITY",
+      "status": "VERIFIED_PRIMARY_WITH_TRANSACTION_CAVEAT",
+      "statement": "The SEC/CFTC March 17, 2026 interpretive release explicitly lists XRP as a digital commodity and says digital commodities are not themselves securities. The same release preserves Howey and says a non-security crypto asset may still be offered or sold subject to an investment contract. This is asset-level classification, not blanket clearance for every Ripple transaction.",
+      "source_ids": [
+        "SEC_2026_INTERPRETIVE_RELEASE"
+      ]
+    },
+    {
+      "claim_id": "SEC_RIPPLE_JUDGMENT_REMAINS",
+      "status": "VERIFIED_PRIMARY",
+      "statement": "The SEC's August 7, 2025 release says dismissal of the cross-appeals left the final judgment in effect, including a $125,035,150 civil penalty and an injunction against registration violations. The August 8, 2025 Commission order also says the injunction remains and Rule 506 exemptions are unavailable absent a waiver. Do not equate XRP's 2026 digital-commodity classification with vacatur of the issuer-specific judgment.",
+      "source_ids": [
+        "SEC_RIPPLE_FINAL_JUDGMENT",
+        "SEC_RIPPLE_RULE506_ORDER"
+      ]
+    },
+    {
+      "claim_id": "SEC_FAQ_STATUS",
+      "status": "VERIFIED_PRIMARY",
+      "statement": "The SEC Division of Corporation Finance's November 2, 2026 crypto FAQ expressly says its answers are non-binding staff views with no legal force or effect. Treat it as staff guidance, not a Commission rule.",
+      "source_ids": [
+        "SEC_2026_CRYPTO_FAQ"
+      ]
+    },
+    {
+      "claim_id": "FED_MACRO_20261028",
+      "status": "VERIFIED_PRIMARY",
+      "statement": "The October 28, 2026 FOMC held the federal funds target range at 3.75%–4.00% by 10–2 vote; two members preferred a 25bp hike. The statement cited elevated inflation and geopolitical uncertainty. Record this as a macro regime observation, not a directional XRP signal.",
+      "source_ids": [
+        "FED_FOMC_20261028"
+      ]
+    },
+    {
+      "claim_id": "PBOC_FX_LIQUIDITY_20261103",
+      "status": "VERIFIED_PRIMARY",
+      "statement": "The PBOC announced a 2-point increase in financial institutions' foreign-exchange reserve requirement to 6%, effective November 15, 2026, to strengthen forex liquidity management. This is an onshore FX-liquidity policy variable, not a direct measure of global dollar supply.",
+      "source_ids": [
+        "PBOC_FX_RESERVE_20261103"
+      ]
+    },
+    {
+      "claim_id": "XRP_ETF_FLOW_COVERAGE_DISAGREEMENT",
+      "status": "SECONDARY_SOURCES_NOT_COMPARABLE",
+      "statement": "ETF dashboards disagree because they cover different fund universes and calculate flows differently: XRP Insights covers six spot funds plus BITW and reports -663,043 XRP on Nov. 6; Alpha Finance covers five funds and reports $0 that day; Maketo covers five and reports $0; Coin365 reports one XRP fund with -$1.1M; Corpstacking tracks ten global products. Do not average these figures.",
+      "source_ids": [
+        "XRP_INSIGHTS_ETF_FLOWS",
+        "ALPHA_FINANCE_ETF_FLOWS",
+        "MAKETO_ETF_FLOWS",
+        "COIN365_ETF_FLOWS",
+        "CORPSTACKING_XRP_TREASURIES"
+      ]
+    },
+    {
+      "claim_id": "CME_XRP_FUTURES_HISTORICAL",
+      "status": "DATED_SECONDARY_CONTEXT",
+      "statement": "Between Aug. 17 and Aug. 31, 2026, total XRP futures OI fell about 16%, while CME OI rose about 36% and CME's share rose from 10% to 17%. Leveraged funds were net short about 116M XRP. This is historical positioning, not current OI.",
+      "source_ids": [
+        "BITEXEN_CME_XRP_FUTURES"
+      ]
+    },
+    {
+      "claim_id": "US_MONEY_MARKET_RISK_OFF",
+      "status": "SECONDARY_MACRO_OBSERVATION",
+      "statement": "Reuters reported $117.97B of U.S. money-market-fund inflows for the week ended Nov. 4, the largest in six months. This may be a risk-aversion/liquidity indicator, but it does not establish XRP-specific flows.",
+      "source_ids": [
+        "REUTERS_MONEY_MARKET_FLOWS"
+      ]
     }
   ],
   "market_observations": {
@@ -524,6 +869,49 @@
     "derivatives": {
       "status": "NO_SYNCHRONIZED_SNAPSHOT_ADMITTED_THIS_RUN",
       "note": "Prior public provider observations disagree materially on XRP open interest and liquidations. Do not merge them into one point estimate without synchronized timestamps, venue coverage and contract definitions."
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "coverage": "six U.S. spot ETFs plus BITW",
+        "as_of": "2026-11-06 close",
+        "net_flow_xrp": -663043,
+        "weekly_flow_xrp": -812500,
+        "holdings_xrp_billions": 1.2,
+        "net_assets_usd_billions": 1.43,
+        "limitations": [
+          "GXRP excluded from daily flow total while data gap is corrected",
+          "issuer-reported holdings changes, not direct exchange spot purchases"
+        ]
+      },
+      "alpha_finance": {
+        "coverage": "five funds",
+        "as_of": "2026-11-06",
+        "daily_net_flow_usd": 0,
+        "thirty_session_flow_usd_millions": 45.9,
+        "cumulative_flow_usd_billions": 1.73
+      },
+      "maketo": {
+        "coverage": "five funds",
+        "as_of": "2026-11-06",
+        "daily_flow_usd": 0,
+        "weekly_flow_usd_thousands": -530,
+        "monthly_flow_usd_millions": 14
+      },
+      "coin365": {
+        "coverage": "one XRP fund reported",
+        "as_of": "2026-11-06",
+        "daily_flow_usd_millions": -1.1,
+        "thirty_day_flow_usd_millions": 3.2,
+        "ytd_flow_usd_millions": 27.5,
+        "aum_usd_millions": 285.8
+      },
+      "corpstacking": {
+        "coverage": "ten global spot products",
+        "as_of": "2026-11-06",
+        "holdings_xrp": 1415142972,
+        "market_value_usd_billions": 1.6
+      },
+      "admission": "Do not aggregate or average across these dashboards. Fund universe, price conversion, flow method and data gaps differ."
     }
   },
   "disagreement_register": [
@@ -556,6 +944,21 @@
       "topic": "Spot price",
       "counter_hypothesis": "Kraken and OKX observations show a tradable cross-venue spread.",
       "resolution": "Quote currency and provider timestamps are not synchronized; no basis conclusion is admitted."
+    },
+    {
+      "topic": "XRP ETF flows",
+      "counter_hypothesis": "A single dashboard's daily ETF flow represents the whole market.",
+      "resolution": "Coverage differs materially: 1, 5, 6+BITW or 10 funds; some measure XRP holdings changes, others estimate dollar share/NAV flows. Keep each universe and method separate."
+    },
+    {
+      "topic": "XRP regulatory status",
+      "counter_hypothesis": "The 2026 digital-commodity classification eliminates every securities-law issue involving Ripple.",
+      "resolution": "The SEC/CFTC release preserves Howey and transaction-level investment-contract analysis; the SEC separately states the 2025 Ripple final judgment and injunction remain in effect."
+    },
+    {
+      "topic": "Macro liquidity",
+      "counter_hypothesis": "A higher PBOC FX reserve ratio is a direct global USD liquidity drain.",
+      "resolution": "The measure applies to financial institutions' foreign-exchange reserves in China; classify it as an onshore FX-liquidity policy event, not global dollar supply."
     }
   ],
   "platform_coordination": {
@@ -656,5 +1059,43 @@
       "type": "no direct corporate relationship verified",
       "evidence": "No direct partnership or ownership tie established in sources reviewed"
     }
-  ]
+  ],
+  "macro_observations": {
+    "fed": {
+      "date": "2026-10-28",
+      "target_range_pct": "3.75-4.00",
+      "vote": "10-2",
+      "dissents": "Two members preferred a 25bp hike",
+      "inflation": "elevated",
+      "geopolitical_uncertainty": "elevated"
+    },
+    "pboc": {
+      "announcement_date": "2026-11-03",
+      "effective_date": "2026-11-15",
+      "fx_reserve_requirement_old_pct": 4,
+      "new_pct": 6,
+      "change_percentage_points": 2,
+      "scope": "financial institutions' foreign-exchange reserves in China"
+    },
+    "us_money_market_funds": {
+      "week_ended": "2026-11-04",
+      "net_inflow_usd_billions": 117.97,
+      "source": "Reuters",
+      "interpretation": "risk-aversion/liquidity proxy only; not XRP-specific"
+    }
+  },
+  "derivatives_historical_context": {
+    "source": "Bitexen Research",
+    "window": "2026-08-17 through 2026-08-31",
+    "total_oi_xrp_billions_start": 2.77,
+    "total_oi_xrp_billions_end": 2.34,
+    "cme_oi_xrp_millions_start": 284,
+    "end": 387,
+    "cme_share_start_pct": 10,
+    "end_pct": 17,
+    "leveraged_funds_net_xrp_millions": -116,
+    "dealers_net_xrp_millions": 60,
+    "asset_managers_net_xrp_millions": 28,
+    "classification": "historical secondary snapshot; not current"
+  }
 }
