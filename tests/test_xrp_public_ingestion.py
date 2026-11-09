@@ -440,18 +440,21 @@ Positions
 4,228 4,431 17 868 802 21 1,976 1,696 22 0 0 0 84 227
 Changes from: October 27, 2026 Total Change is: -845
 163 -210 0 -53 36 20 -410 -258 -501 0 0 0 -64 68
+Number of Traders in Each Category Total Traders: 29
 NANO XRP - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)
 CFTC Code #176LM1 Open Interest is 32,505
 Positions
 0 0 0 0 0 0 29,317 31,625 120 2,693 601 0 375 159
 Changes from: October 27, 2026 Total Change is: -32,864
 0 0 0 0 0 0 -26,142 -28,053 -4,911 -1,607 28 0 -204 72
+Number of Traders in Each Category Total Traders: 37
 NANO XRP PERP STYLE - COINBASE DERIVATIVES, LLC (500 XRP x $2.00 = $1000)
 CFTC Code #176LM3 Open Interest is 38,392
 Positions
 0 0 0 0 0 0 1,780 29,554 0 28,858 2,853 0 7,754 5,985
 Changes from: October 27, 2026 Total Change is: -465
 0 0 0 0 0 0 82 -1,313 0 -1,217 753 0 670 95
+Number of Traders in Each Category Total Traders: 284
 </pre></html>""",
             }
             html_text = html_by_source[source_id]
@@ -2659,12 +2662,15 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     assert status_observation["futures_and_options_combined_dropped"] == ["176LM2"]
     assert status_observation["model_eligible"] is False
 
-    assert cftc_observation["feature_count"] == 21
+    assert cftc_observation["feature_count"] == 24
     features = {item["feature_id"]: item for item in cftc_observation["features"]}
     assert features["xrp.derivatives.cftc.tff.cme_xrp.open_interest_contracts"]["value"] == 7216
+    assert features["xrp.derivatives.cftc.tff.cme_xrp.total_traders"]["value"] == 29
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.open_interest_contracts"]["value"] == 32505
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.open_interest_change_contracts"]["value"] == -32864
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.total_traders"]["value"] == 37
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp_perp_style.open_interest_contracts"]["value"] == 38392
+    assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp_perp_style.total_traders"]["value"] == 284
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp.leveraged_funds_net_contracts"]["value"] == -2308
     assert features["xrp.derivatives.cftc.tff.coinbase_nano_xrp_perp_style.other_reportables_net_contracts"]["value"] == 26005
 
