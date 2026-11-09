@@ -22,6 +22,22 @@ def test_goldman_xrp_13f_positions_reconcile_to_primary_sec_rows():
     assert sum(row["shares"] for row in positions) == 7_390_191
 
 
+def test_goldman_q1_to_q2_13f_first_reportable_appearance_is_qualified():
+    artifact = json.loads(ARTIFACT.read_text(encoding="utf-8"))
+    comparison = artifact["prior_quarter_comparison"]
+    q1 = comparison["q1"]
+    q2 = comparison["q2"]
+    assert q1["accession"] == "0000886982-26-000274"
+    assert q1["report_period_end"] == "2026-03-31"
+    assert q1["xrp_named_information_table_row_count"] == 0
+    assert q1["exact_search_result"] == "No matching text found for XRP"
+    assert q1["included_manager_no_1"] == "GOLDMAN SACHS & CO. LLC"
+    assert q2["xrp_named_information_table_row_count"] == 5
+    assert q2["aggregate_reported_value_usd"] == 86_506_129
+    assert comparison["temporal_interpretation"].startswith("The five XRP ETF-share rows appear in the Q2 2026")
+    assert "does not prove purchases" in comparison["temporal_interpretation"]
+
+
 def test_goldman_13f_does_not_claim_parent_proprietary_xrp_capital():
     artifact = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     assert artifact["model_eligible"] is False
@@ -34,7 +50,7 @@ def test_goldman_13f_does_not_claim_parent_proprietary_xrp_capital():
 def test_goldman_13f_normalized_source_excerpt_hashes_are_sha256():
     artifact = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     hashes = artifact["provenance"]["normalized_excerpt_sha256"]
-    assert set(hashes) == {"filing_index", "primary_document_manager_mapping", "information_table_xrp_rows"}
+    assert set(hashes) == {"filing_index", "primary_document_manager_mapping", "information_table_xrp_rows", "q1_manager_mapping", "q1_xrp_absence_search_record"}
     for digest in hashes.values():
         assert len(digest) == 64
         int(digest, 16)

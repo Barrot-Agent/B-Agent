@@ -87,14 +87,16 @@
     "normalized_excerpt_sha256": {
       "filing_index": "c10f271e396b81baaf4ebfd8edfd2ec7182f07f5d1a2f5b35e04c60a16c9c217",
       "primary_document_manager_mapping": "a437982dea5d9abc0ffdf814aa6b5c0502c5ef4b7f2b8b0610515b211c7e3c75",
-      "information_table_xrp_rows": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31"
+      "information_table_xrp_rows": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31",
+      "q1_manager_mapping": "94aaebc9ab78f55e731e3a4be885f0cb797c2d888ee6c4e4ff6eb2da7e599e06",
+      "q1_xrp_absence_search_record": "a6566e739441ab70795535c4d7fcc311b75cfe08722825762d44f74fc2f5d4e9"
     },
-    "hash_scope": "SHA-256 hashes cover the exact normalized text excerpts recorded in this artifact, not the raw SEC HTTP response bytes.",
-    "source_independence": "All three records are parts of one SEC filing and are not independent confirmations."
+    "hash_scope": "SHA-256 hashes cover the exact normalized text excerpts and Q1 absence-search record stored in this artifact, not raw SEC HTTP response bytes.",
+    "source_independence": "Q1 and Q2 are separate SEC filings from the same reporting manager; the five Q2 ETF rows are not independent confirmations of the same exposure."
   },
   "correction": {
     "secondary_claim": "Goldman Sachs Group Inc holds approximately $86.5M of XRP ETFs.",
-    "corrected_claim": "Goldman Sachs Group Inc's 2026-06-30 Form 13F-HR reports five XRP ETF share positions with aggregate reported value $86,506,129; each position row assigns Other Manager No. 1, Goldman Sachs & Co. LLC.",
+    "corrected_claim": "Goldman Sachs Group Inc's Q2 2026 Form 13F-HR reports five XRP ETF-share positions totaling $86,506,129; each Q2 position row assigns Other Manager No. 1, Goldman Sachs & Co. LLC. The Q1 2026 information table contains no XRP-named row, so this is the first observed reportable appearance in these sequential filings, not proof of a proprietary purchase.",
     "unresolved": "The filing does not establish whether these positions are proprietary, client, advisory, or otherwise beneficially owned by Goldman Sachs Group Inc. The filing does not establish current holdings after 2026-06-30."
   },
   "limitations": [
@@ -102,10 +104,40 @@
     "It reports specified long reportable securities and does not provide a complete view of shorts, futures, most non-U.S. instruments, or direct XRP-token custody.",
     "ETF shares are not equivalent to XRP held by the reporting manager.",
     "The included-manager attribution is not proof of beneficial ownership or proprietary investment.",
-    "This observation is not a primary-market ETF creation/redemption flow."
+    "This observation is not a primary-market ETF creation/redemption flow.",
+    "Q1 absence is an exact search of the Q1 13F information table for XRP-named rows; it cannot exclude unreported, non-13F, private, derivative, short, offshore, or indirect exposure."
   ],
   "actual_capital_classification": "Reported ETF-share securities exposure; not verified XRP-token capital deployment.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
-  "admission_reason": "A single delayed 13F filing is an institutional ownership/manager-attribution observation, not a synchronized spot-flow feature. Preserve as point-in-time research context only."
+  "admission_reason": "A single delayed 13F filing is an institutional ownership/manager-attribution observation, not a synchronized spot-flow feature. Preserve as point-in-time research context only.",
+  "prior_quarter_comparison": {
+    "q1": {
+      "form": "13F-HR",
+      "accession": "0000886982-26-000274",
+      "filing_date": "2026-05-15",
+      "report_period_end": "2026-03-31",
+      "information_table_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+      "primary_document_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/primary_doc.xml",
+      "information_table_entries": 13579,
+      "information_table_value_total_usd": 870939686922,
+      "exact_search_term": "XRP",
+      "exact_search_result": "No matching text found for XRP",
+      "xrp_named_information_table_row_count": 0,
+      "included_manager_no_1": "GOLDMAN SACHS & CO. LLC",
+      "included_manager_no_1_cik": "0000769993",
+      "included_manager_count": 8
+    },
+    "q2": {
+      "accession": "0000886982-26-000519",
+      "filing_date": "2026-08-14",
+      "report_period_end": "2026-06-30",
+      "xrp_named_information_table_row_count": 5,
+      "aggregate_reported_value_usd": 86506129,
+      "included_manager_no_1": "GOLDMAN SACHS & CO. LLC",
+      "included_manager_no_1_cik": "0000769993"
+    },
+    "temporal_interpretation": "The five XRP ETF-share rows appear in the Q2 2026 reportable information table and no XRP-named row was found in the Q1 2026 information table. This supports first observed reportable appearance between quarter-end snapshots; it does not prove purchases, beneficial ownership, parent-company proprietary exposure, or the reason for the change.",
+    "comparability_limit": "Both filings are from the same parent reporting manager and share the same included-manager No. 1 identity. They are sequential snapshots, not independent confirmations."
+  }
 }
