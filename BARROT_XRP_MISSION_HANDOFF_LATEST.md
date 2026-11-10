@@ -1,4 +1,57 @@
-# Run 128 — XRP intelligence, repository integration and publication-safety reconciliation
+# Barrot XRP Mission — Canonical Handoff (latest: Run 134)
+
+## Current state — 2026-11-10
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Active integration PR: [#1660](https://github.com/Barrot-Agent/B-Agent/pull/1660), non-draft, clean/mergeable after checks; 1,893 commits ahead, zero behind; 947 changed files.
+- Latest fully tested code head: `5b5f09bb7a400426911657168bec9ced2ea671c3` — 3,350 passed, zero failed, eight subtests, 59.58% inclusive coverage; wheel build and installed-wheel verification passed; six dependency manifests audited with zero known vulnerabilities; fail-closed gate passed and kept merging disabled.
+- Run134 research artifact commit: `65ae3c391b4eeb91fd031ecace9ea8b2ba2ab273`. It adds one structured research JSON file only; exact-head CI for this artifact commit is pending. Do not treat the 5b5f tests as verification of 65ae.
+- Research artifact: `research/xrp_intelligence/20261110T155200Z-run134-market-institutional-capital-update.json`.
+- Open PR inventory: 373 total, 358 drafts, 15 non-drafts. #1640 and #1643 source histories and #1642 subset are incorporated in #1660 but remain open until successor merge and main verification. #1653 and other unique work remain preserved.
+- No formal approvals on #1660. Main branch-protection endpoint returns HTTP 403; visible fallback ruleset is disabled. A merge may trigger GitHub Pages public publication; specific authorization is not established.
+- 44 workflow files changed; 24 legacy workflows are quarantined. Barrot V3 code/package is preserved and passed installed-wheel verification, but full V3 workflow parity is not yet restored.
+- XRP public collector and schedule remain on the integration branch, not main. No successful main ingestion run exists.
+- Prediction engine has public-source collection, SHA-256 receipts, point-in-time SQLite features, deterministic baselines, chronological walk-forward with purge/embargo, calibration/drift diagnostics and a fail-closed Ed25519 forecast ledger. WORM/timestamp anchoring, complete historical data, event timeline, scenario generation, effective-sample-size correction, shadow outcomes and demonstrated OOS lift remain incomplete.
+- Forecast status: NOT_ISSUED. No directional forecast, paper trade or real-money action.
+- ChatGPT GitHub access is verified for this session. Other platform authentication/data flows are not verified; no external-model data transfer occurred.
+
+## Run 134 — market, macro, capital and institutional update
+
+- Kraken XRP/USD: $1.06176; OKX XRP-USDT: 1.0585, normalized to about $1.05723 using Kraken USDT/USD 0.9988. Both are approximately 3.3%–3.9% below their 24-hour opens. The quotes are asynchronous; no arbitrage inference.
+- Latest available spot-only depth is Fuelmaps 13:00 UTC: within 1%, $13.8M bids versus $9.2M asks. It is stale relative to 15:24 UTC quotes; no synchronized current L2 was obtained.
+- Derivatives aggregators show approximately $1.21B–$1.61B OI, declining OI and long-heavy liquidations. Their coverage differs; do not average.
+- November 9 ETF issuer-file partial: -9.217M XRP across three reporting funds; other trackers report about -$10.4M with inconsistent completeness/zero-fill. Holdings changes do not prove exchange sales or cash redemptions.
+- BLS October CPI: +0.4% headline and +0.3% core m/m. Affected year-over-year comparison unavailable because October 2025 survey data were not collected.
+- SBI disclosed approximately 9% Ripple equity as of June 2025; SBI Group's Evernorth PIPE contribution was $200M cash; SBI VC Trade RLUSD handling launched June 24, 2026; SBI/Circle 50/50 JV and $50M Circle equity investment are separate.
+- Circle's Q3 2026 filing reports $331.3M distribution costs to Coinbase; Coinbase reports $306.905M Q3 stablecoin revenue. Different accounting measures; not nettable.
+- BNY XRP/RLUSD custody is live; direct mint/redeem and trade-finance expansion remain future. Standard Chartered RLUSD custody is live; LMAX collateral mirroring planned.
+- No direct Ripple-Circle equity or operating partnership was established in reviewed primary filings. Shared counterparties do not prove direct affiliation.
+- Evernorth private-placement proceeds ($214.1M), cash used to buy XRP ($214.0M), cash-purchased quantity (84.365876M XRP), in-kind XRP and SBI's $200M PIPE contribution remain separate. The 9.070M BitGo inbound remains unattributed custody movement.
+- SBIC East/Central/West are separate regional companies, not SBI Holdings or SBI Circle Holdings. Tokyo SBIC ChatGPT training is not an OpenAI partnership. ASK Coin/XRP link and Kamilah Stevenson YouTube ownership remain unverified.
+
+## Integration corrections
+
+Eight failing test instances across the first two full-suite attempts were corrected with append-only evidence updates: two Pillars Git-blob bindings, two SBIC normalized-excerpt digests, two overly literal/case-sensitive assertions, and the Evernorth USD-cash versus XRP-quantity ambiguity. Exact tested head 5b5f09bb passed the full suite.
+
+A first correction commit was detected as based on the wrong tree because the PR diff fell from 947 to 286 paths. A forward-only restore commit reinstated the full consolidated successor tree and reapplied the corrections. No force-push, reset or user-work deletion occurred; the intermediate commit remains in history for auditability.
+
+## Merge decision and next actions
+
+PR #1660 is technically clean and the tested head passes full-suite/security/fail-closed checks. It remains unmerged because approvals are absent, branch-protection requirements are not visible, Pages publication authorization is unresolved, the latest research-artifact head still needs exact-head CI, and the 947-file semantic review is incomplete.
+
+1. Finish exact-head CI on the Run134 artifact/handoff commits.
+2. Review all 947 changed paths and 44 workflow changes, especially the 24 quarantined V3 workflows.
+3. Obtain independent approvals and authoritative branch-protection visibility.
+4. Resolve specific authorization for automatic GitHub Pages publication before merge.
+5. Extend ingestion with macro/event sources, event timelines and scenario/counter-hypothesis generation.
+6. Add independent WORM storage, trusted timestamp anchoring, raw-receipt replay, effective-sample-size correction, shadow evaluation and concept-drift monitoring.
+7. Preserve unique PRs; close only exact duplicates after a successor is merged and verified on main.
+8. Keep forecasts NOT_ISSUED until leakage-safe out-of-sample evaluation demonstrates lift over naive baselines.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, reset, clean, stash, destructive restore or PR closure occurred.
+
+---
+## Historical Run 128
 
 **Captured:** 2026-11-10 11:01:17 UTC  
 **Mission:** XRP intelligence and prediction-engine mastery — priority 1. Preserve Barrot V3 as execution, orchestration, safety and verification foundation.  
