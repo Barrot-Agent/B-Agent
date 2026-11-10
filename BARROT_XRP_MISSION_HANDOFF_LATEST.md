@@ -3898,3 +3898,107 @@ The 46-source registry contains 42 hourly sources, two weekly CFTC sources and t
 Manual event research must remain distinct from scheduled model features. Next implementation priority is a versioned macro/event adapter with point-in-time release timestamps, raw replay, source independence and reproducible feature-store rebuild. Forecast status remains **NOT_ISSUED**.
 
 [Structured Run131A supplemental evidence](https://github.com/Barrot-Agent/B-Agent/blob/integration/core-capabilities-mmi-structural-paper-20261104/research/xrp_intelligence/20261110T140611Z-run131a-cftc-futures-only-circle-mica-custody-update.json).
+
+
+---
+
+## Run131B — Coinbase national trust approval, PNC/USDC pilot, current cbXRP collateral and post-CPI market pricing
+
+**Captured:** 2026-11-10T14:10:58Z. This is an append-only addendum to Run131A. No earlier evidence was overwritten.
+
+### Repository and integration verification
+
+- Current main: `d4d43be3427375cf79d190e768976de062e20287`; 1,404 tree entries, 1,299 files and 86 workflow files. Main has no XRP ingestion module or `.github/workflows/xrp-public-ingestion.yml`; no workflow runs or combined statuses were returned for this main SHA.
+- Current #1640 integration branch parent head: `c869905562d0aeae552eca807fcbdf28c5ae0a1b`; 1,568 tree entries, 1,455 files and 87 workflow files. PR #1640 is open, non-draft, 964 commits ahead, zero behind, 273 changed files, mergeable and clean.
+- Exact-head CI on the parent head passed **1,380 full-suite tests**, zero failures, eight subtests, 59.58% inclusive coverage; wheel build and installed-wheel mission verification passed. Dependency audit passed all six manifests with zero known vulnerabilities. Fail-closed gate passed and explicitly states automatic merge is disabled.
+- Evidence: [CI 42830889965](https://github.com/Barrot-Agent/B-Agent/actions/runs/42830889965), [dependency audit 42830889854](https://github.com/Barrot-Agent/B-Agent/actions/runs/42830889854), [fail-closed gate 42830889942](https://github.com/Barrot-Agent/B-Agent/actions/runs/42830889942).
+- PR #1640 has 62 COMMENTED reviews, zero APPROVED reviews and 22/22 inline threads resolved but outdated. The branch is clean, but required independent approval is still absent. Main is marked protected; required-status contexts exposed by the branch endpoint are empty, and detailed branch-protection settings remain inaccessible. GitHub Pages previously deployed automatically after a main push; this PR changes public web assets, and publication authorization is not established. **Do not merge.**
+- The artifact/test/handoff evidence commit being added with this Run131B section is a new head; the parent-head CI above does not test that new commit. Exact-head CI must run again after the commit.
+- Open PR inventory remains 372. No new PR was created.
+
+### New Coinbase regulatory and payment-rail findings
+
+**Coinbase National Trust Company.** Coinbase's November 9 announcement says it received final OCC approval to charter Coinbase National Trust Company. The OCC CAS filing record identifies November 6, 2026 as the consummated/effective date. This supersedes the older conditional-approval-only description in prior handoffs. The new charter expands Coinbase's federal trust/custody framework; it does not establish FDIC-insured commercial deposit banking, XRP-specific custody balances or XRP purchases. [Coinbase announcement](https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering) · [OCC CAS record](https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2).
+
+**PNC/USDC pilot.** Coinbase announced on November 9 that eligible PNC Corporate and Institutional Banking clients can receive USDC through a pilot powered by Coinbase Payment APIs. Incoming USDC is automatically converted 1-to-1 into USD and deposited to a designated PNC account. No pilot volume, active-client count or independent PNC press release was located. The announced path is USDC-to-USD; no XRP, XRPL or RLUSD leg is specified. [Coinbase announcement](https://www.coinbase.com/blog/coinbase-and-pnc-expand-partnership-to-bring-stablecoin-payment-acceptance-to-corporate-clients).
+
+**Coinbase Q3 positioning.** The October 29 issuer release reports 10.7% crypto trading-volume market share, 12.5% assets-on-platform share, $22B average USDC held in Coinbase products, subscription/services revenue at 49% of net revenue, $200M annualized prediction-markets revenue and 179% two-year CAGR in crypto derivatives volume. These are company-reported, company-level metrics; none proves XRP spot demand. Coinbase's 10-Q says its Circle arrangement was renewed on the same terms. [Coinbase Q3 release](https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/) · [Coinbase SEC 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+
+### Circle Q3 economics and Coinbase distribution dependence
+
+Circle's November 4 Q3 results report average USDC circulation of **$73.3B**, end-period circulation of **$73.9B**, Q3 USDC onchain transaction volume of **$13.9T**, revenue and reserve income of **$865M**, reserve income of **$658M**, other revenue of **$207M** (including **$182M** ARC token presale revenue), total distribution/transaction/other costs of **$412M**, net income of **$226M** and adjusted EBITDA of **$317M**. The $182M ARC presale component is not recurring USDC reserve income. Q3 USDC minted and redeemed were each reported at $104B; gross mint/redemption volume is not net capital inflow. [Circle Q3 SEC exhibit](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm).
+
+Circle's Q3 10-Q reports **$331.3M** distribution costs in connection with Coinbase agreements for Q3 and **$986.6M** for the first nine months. The allocation formula depends on USDC held on Coinbase after issuer retention and broader ecosystem-growth arrangements. These are Circle-incurred distribution costs, not a direct measure of Coinbase-recognized revenue, and they must not be netted against Coinbase's stablecoin revenue. The relationship is economically material to both companies but is USDC distribution economics, not XRP demand. [Circle SEC 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+### Current cbXRP collateral market — 14:01 UTC
+
+MorphoWatch, reporting Morpho API data, updated the Base cbXRP/USDC market at **14:01 UTC**:
+
+| Metric | Snapshot |
+|---|---:|
+| USDC supplied | $62.93M |
+| USDC borrowed | $55.37M |
+| Utilization | 88.0% |
+| Available USDC | $7.56M |
+| cbXRP collateral | 120.40M |
+| Collateral value | $128.6M |
+| Open loans/borrowers displayed | 11,694 |
+| Borrow / supply APY | 6.98% / 6.12% |
+| LLTV / liquidation bonus | 62.5% / 12.68% |
+| Oracle / displayed cbXRP price | $1.07 / $1.0680 |
+| Liquidations, prior 30 days | 1,479 |
+| Debt repaid in those liquidations | $6.27M |
+
+One displayed top borrower has health factor 1.03 and a 3% price distance to liquidation. The three largest listed vaults supply $44.50M, approximately **70.71%** of total supply; the ten listed vaults supply $53.09M, approximately **84.36%**. These are vault-level concentration measures, not beneficial-lender concentration.
+
+Coinbase's proof-of-reserves page displayed 152,372,342.33 XRP reserves against 152,370,095.8 cbXRP supply, a 2,246.53 XRP displayed surplus. The page's refresh time is 9:34 AM with timezone unspecified. Dividing the Morpho market's 120.40M cbXRP by total displayed cbXRP supply gives an indicative 79.02%, but source timestamps are not synchronized and the ratio is **not model-admitted**.
+
+The Barrot ingestion branch already contains the exact Base market ID `0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109`, chain ID 8453, loan/collateral token addresses and Chainlink oracle address. Its Morpho parser/tests keep these observations digest-only/raw-only. The next step is direct block-height, oracle-round, borrower-health and liquidation-transaction reconciliation before any feature admission. [Morpho market snapshot](https://morphowatch.com/markets/base/cbxrp-usdc-62-5/) · [Coinbase reserves](https://www.coinbase.com/cbxrp/proof-of-reserves).
+
+### Post-CPI Federal Reserve pricing disagreement
+
+The October CPI release itself is already captured in Run131: headline +0.4% m/m and core +0.3% m/m, each 0.1 percentage point above the Reuters preview consensus; BLS cannot publish most October year-over-year comparisons because October 2025 data were not collected.
+
+This addendum locates post-release Fed-pricing reports that were unavailable in Run131:
+
+- Investing.com, using CME 30-Day Fed Funds futures, showed a **pre-release** snapshot at 08:25 ET: 97.8% for a 25bp December hike and 2.2% hold.
+- Barron's reported **post-release** CME FedWatch pricing of 86.4% for a 25bp hike, 13.6% for a 50bp hike and zero hold.
+- WSJ separately reported approximately 90% for 25bp and 10% for 50bp, versus the prior day's 84%/0% split.
+
+The common signal is that the December hike remained fully priced while a 50bp tail appeared after the CPI surprise. The 86.4/13.6 and 90/10 snapshots differ and their exact capture minutes are unavailable. Barron's and WSJ report the same CME underlying market, so they are not independent venues. Preserve both; do not average. This is a macro event feature, not an XRP directional signal. [Pre-release CME futures monitor](https://www.investing.com/central-banks/fed-rate-monitor) · [Barron's post-release report](https://www.barrons.com/livecoverage/stock-market-news-today-111026/card/odds-of-a-larger-december-rate-hike-jump-after-cpi-JCMu5hQ9u1Lqcae8Zr9k) · [WSJ post-release report](https://www.wsj.com/livecoverage/stock-market-cpi-inflation-11-10-2026/card/traders-dial-up-rate-hike-bets-UHxkB8mixxnMCsJGBcH6).
+
+### Spot, order-book and ETF data quality
+
+- OKX XRP-USDT ticker provider time was 13:48:36.536 UTC, **1,341.464 seconds** before the 14:10:58 UTC capture, exceeding the 300-second live-data threshold.
+- Kraken ticker returned no provider event timestamp and repeated an identical cached payload.
+- Binance and OKX depth requests returned HTTP 403 through this retrieval path. A 403 is access failure, not zero liquidity.
+- No synchronized cross-venue post-CPI XRP spot/depth window was available.
+- November 9 ETF flow observations remain partial: CryptoETF reported roughly $10.3M outflow across 3/5 funds; CryptoKeyhole reported approximately 9.217M XRP outflow across 3/4 daily funds; XRP Insights' latest settled row is November 9 but uses holdings-derived deltas and different exclusions. These sources overlap issuer files and are not independent confirmations. None proves spot execution or net cash outflow.
+
+### Architecture, prediction boundary and backlog
+
+The integration branch's 46-source collector, raw SHA-256 receipt archive, point-in-time SQLite prototype, chronological walk-forward baselines and fail-closed forecast ledger remain implemented on the branch, not main. The scheduled workflow is main-only and has not run successfully on main. The macro source gap remains: no scheduled BLS/PCE, Treasury yield-curve, Fed communication, energy, FX/USD or geopolitical event adapter; no unified event timeline/scenario generator; no shadow-evaluation runner; no concept-drift monitor; no reproducible raw-to-feature-store rebuild; no independent WORM/timestamp authority.
+
+Backlog classification:
+- #1640: **BLOCKED** — sole V3/XRP integration path; exact parent-head checks passed, but zero approving reviews and public Pages side-effect authorization unresolved.
+- #1642: **DUPLICATE CANDIDATE** — all seven changed paths overlap #1640; keep open until successor content is merged and verified.
+- #1643: **UNIQUE/UNREVIEWED, STALE/BLOCKED** — 670 paths, seven overlap #1640 and 663 unique; base is old, current head is dirty/unmergeable and has no current-head CI. Preserve unique research.
+- #1653: **UNIQUE/UNREVIEWED** — six unique knowledge-graph paths and one overlap with #1640.
+- #1614: **UNIQUE/STALE** — 49 paths unique to its older prediction work; preserve until reconciled.
+- #1611: **UNIQUE/STALE** — two unique research artifacts; preserve.
+- #1269: **UNIQUE/STALE** — eight unique topology paths; preserve.
+- 372 open PRs remain. No PR was closed.
+
+**Forecast status: NOT_ISSUED.** No synchronized post-CPI XRP market response, no new leakage-safe out-of-sample lift and no independent shadow outcomes. No paper-trading or real-money action occurred.
+
+**Safety:** No merge, deployment, PR closure, secret change, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push, reset, clean, stash or discard occurred.
+
+### Next concrete actions
+
+1. Verify the new Run131B artifact/test/handoff commit on exact-head full CI, dependency audit and fail-closed gate.
+2. Implement a versioned BLS/PCE/Fed/Treasury/FX/energy event adapter with first-release vintages, raw-byte receipts, exact availability timestamps and leakage-safe historical replay.
+3. Reconcile Morpho state directly by Base block height, oracle round, borrower health and liquidation transactions.
+4. Capture synchronized multi-venue XRP/USD and XRP/USDT spot/L2 snapshots with quote-currency conversion and freshness checks.
+5. Resolve #1640's independent approval and Pages publication blocker before merge.
+6. Keep #1643's 663 unique research paths intact; consolidate only after a current-main integration decision.
+7. Keep directional forecast issuance blocked until synchronized data and out-of-sample/shadow evaluation pass.

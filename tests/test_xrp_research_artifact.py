@@ -684,3 +684,97 @@ def test_xrp_market_provider_disagreement_is_not_averaged_or_model_eligible():
     assert market["coingecko"]["displayed_market_rows"] == 10
     assert market["coingecko"]["total_market_rows_reported"] == 130
     assert "Do not average" in data["data_quality"]["no_averaging_policy"]
+
+
+# Run131B institutional, collateral and macro-event reconciliation.
+
+RUN131B = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261110T141058Z-run131b-coinbase-occ-pnc-cbxrp-market-update.json"
+)
+
+
+def test_run131b_evidence_graph_and_platform_map_are_resolvable() -> None:
+    data = json.loads(RUN131B.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_coinbase_circle_pnc_occ_cbxrp_market_reconciliation"
+    assert _parse_utc(data["captured_at_utc"]) >= _parse_utc(data["data_cutoff_utc"])
+    sources = {item["id"] for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    observation_ids = [item["id"] for item in data["observations"]]
+    assert len(observation_ids) == len(set(observation_ids))
+    for item in data["observations"]:
+        assert item["classification"] and item["claim"]
+        assert item["evidence"]
+        assert set(item["evidence"]) <= sources
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert set(edge["evidence"]) <= sources
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"] and hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"] and hypothesis["tests"]
+    platforms = data["platform_map"]
+    assert len(platforms) == 9
+    assert {item["platform"] for item in platforms} == {
+        "ChatGPT", "Claude", "Grok", "Gemini", "Copilot",
+        "Codex", "Hugging Face", "Kaggle", "Databricks",
+    }
+    assert next(item for item in platforms if item["platform"] == "ChatGPT")[
+        "status"
+    ] == "tested_current_runtime"
+    assert data["agent_exchange_contract"]["disagreement_policy"]
+    assert data["agent_exchange_contract"]["least_privilege_policy"]
+    assert data["agent_exchange_contract"]["adapter_status"].startswith(
+        "Architecture designed"
+    )
+    assert data["predictions"]["issued"] is False
+    assert data["predictions"]["status"] == "NOT_ISSUED"
+
+
+def test_run131b_cbxrp_collateral_snapshot_is_reconciled_but_not_model_admitted() -> None:
+    data = json.loads(RUN131B.read_text(encoding="utf-8"))
+    market = data["market_snapshot"]["morpho_cbxrp_usdc"]
+    assert _parse_utc(market["source_timestamp_utc"]) <= _parse_utc(
+        data["data_cutoff_utc"]
+    )
+    assert market["market_id"].startswith("0xd4a903dc")
+    assert market["supplied_usdc_usd_millions"] == 62.93
+    assert market["borrowed_usdc_usd_millions"] == 55.37
+    assert market["utilization_pct"] == 88.0
+    assert market["collateral_cbxrp_millions"] == 120.40
+    assert market["lltv_pct"] == 62.5
+    assert market["liquidations_last_30d"] == 1479
+    assert market["model_eligible"] is False
+    assert data["market_snapshot"]["indicative_cbxrp_collateral_share"][
+        "model_eligible"
+    ] is False
+    spot = data["market_snapshot"]["spot_quality"]
+    assert spot["okx_age_at_capture_seconds"] > 300
+    assert spot["okx_model_eligible"] is False
+    assert spot["kraken_provider_timestamp"] is None
+    assert spot["kraken_model_eligible"] is False
+    assert data["market_snapshot"]["etf_flows"]["model_eligible"] is False
+    assert data["source_capture"]["raw_wire_bytes_available"] is False
+    assert data["source_capture"]["raw_source_sha256_receipts_created"] is False
+
+
+def test_run131b_coinbase_circle_and_pnc_relationships_are_scope_limited() -> None:
+    data = json.loads(RUN131B.read_text(encoding="utf-8"))
+    observations = {item["id"]: item for item in data["observations"]}
+    occ = observations["OBS-COINBASE-OCC-20261106"]
+    pnc = observations["OBS-PNC-USDC-PILOT-20261109"]
+    distribution = observations["OBS-CIRCLE-COINBASE-DISTRIBUTION-COSTS"]
+    assert set(occ["evidence"]) == {
+        "coinbase_occ_final_approval", "occ_coinbase_cas_record"
+    }
+    assert "no XRP" in " ".join(pnc["limitations"])
+    assert "331.3M" in distribution["claim"]
+    assert "986.6M" in distribution["claim"]
+    assert data["market_snapshot"]["coinbase_business"][
+        "average_usdc_held_usd_billions"
+    ] == 22
+    assert data["market_snapshot"]["circle_business"][
+        "average_usdc_circulation_usd_billions"
+    ] == 73.3
+    assert data["predictions"]["issued"] is False
