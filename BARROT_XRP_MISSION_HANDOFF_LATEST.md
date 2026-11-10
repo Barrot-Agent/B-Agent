@@ -3242,3 +3242,38 @@ No merge is authorized yet:
 Do not bypass branch protection or merge until the current PR head has current checks, required approval/protection conditions are satisfied, and Pages publication authorization is established.
 
 No source PRs were closed. Preserve unique research, prediction, topology and knowledge-graph work. No forecast was issued.
+
+
+## Run 129D — macro and geopolitical regime update
+
+### U.S. rates
+
+The Federal Reserve's published target range is 3.75%–4.00% (last official change shown September 17, 2026). [Federal Reserve rate history](https://www.federalreserve.gov/FOMC/fundsrate.htm).
+
+Two market-pricing sources disagree on the December 8–9 meeting:
+- Fisclear, updated November 10 at 06:31 ET, reports 99% odds of a 25bp hike from CME 30-Day Fed Funds Futures. [Fisclear](https://fisclear.com/fed-watch).
+- RateProbability's cached November 10 00:00 snapshot reports 84.8% odds using Kalshi prediction-market prices. [RateProbability](https://rateprobability.com/fed).
+
+These are different instruments and update times. Do not average them. Both are market-implied prices, not a Fed forecast.
+
+### Japan
+
+The October 30 BOJ decision held the policy rate at 1.25% with an 8–1 vote; one member proposed 1.50%. The BOJ also increased planned annual ETF sales from ¥330B to ¥860B book value, with implementation from January 2027. OANDA reports a market-value equivalent near ¥2.46T annually. [OANDA BOJ review](https://www.oanda.jp/lab-education/market_news/boj-oct-2026-review/).
+
+Reuters reported on November 10 that the BOJ estimated roughly ¥1T in additional annual proceeds from the accelerated sales. The amount remitted to government is not fixed and depends on year-end calculations and budget procedures; BOJ operations remain the central bank's legal responsibility. [Reuters](https://www.reuters.com/world/asia-pacific/boj-estimates-6-billion-annual-gain-from-faster-etf-sales-finance-minister-says-2026-11-10/).
+
+This is an indirect global-liquidity/equity-supply factor, not an XRP flow.
+
+### Iran / energy risk
+
+November 10 reporting indicates Brent briefly fell below $90 (FT cited approximately $89.21 before recovering near $91.25; the Guardian cited approximately $89.66) after U.S. signals of reduced likelihood of renewed strikes on Iran. Both reports caution that no formal agreement exists and Strait of Hormuz shipping has not fully normalized. The FT reported a greater than 22% November decline in Brent; the Guardian highlighted that unresolved supply and inflation risks remain.
+
+Sources: [Financial Times](https://www.ft.com/content/07bdb58c-4557-4def-b8cb-db9be304fd72), [The Guardian](https://www.theguardian.com/business/2026/nov/10/oil-prices-fall-donald-trump-iran-war-ftse-100-markets).
+
+Potential channel: lower energy prices may ease headline inflation and risk premia; unresolved shipping disruption preserves a geopolitical tail risk. This is a macro regime feature candidate, not a direct XRP catalyst or directional signal.
+
+### Scheduled U.S. inflation event
+
+BLS scheduled October CPI and Real Earnings for November 10 at 08:30 ET / 13:30 UTC. At the Run129 12:00 UTC cutoff, the release was still in the future. No result was inferred. [BLS official schedule](https://www.bls.gov/schedule/2026/11_sched.htm).
+
+The macro readings and source disagreements are recorded in the Run129 JSON under `macro.fed`, `macro.boj` and `macro.geopolitics`. Do not convert market-implied policy probabilities or oil headlines into an XRP forecast without synchronized time-series features and out-of-sample evidence.
