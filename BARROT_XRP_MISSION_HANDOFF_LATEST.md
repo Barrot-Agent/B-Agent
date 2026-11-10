@@ -5257,3 +5257,44 @@ The 44-workflow change set remains a material review area. The previous full aud
 6. Obtain independent review, authoritative branch-protection visibility and explicit Pages-publication authorization before any merge.
 
 Run139 structured evidence: [research/xrp_intelligence/20261110T190424Z-run139-market-repository-verification.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261110/research/xrp_intelligence/20261110T190424Z-run139-market-repository-verification.json).
+
+
+---
+
+## Run139A — public signal safety and late spot refresh
+
+**Captured:** 2026-11-10T19:14:34.744Z.
+
+### Public-facing signal safety correction
+
+A direct comparison of the current main and integration web assets confirms a material publication issue:
+
+- Main `web/latest_signal.json` is timestamped **2026-10-29 13:23:33 UTC**. It shows score 44, confidence **0.0**, news score 88 and 11 entries. Its source string records missing GitHub model credentials and a Groq HTTP 429; the output is news-only fallback, not a market forecast.
+- Main `web/landing.html` still calls the product an “XRP Signal Service” and advertises ternary trading signals for **$9.99/month**.
+- Integration `web/latest_signal.json` instead sets `status=NOT_ISSUED`, `forecast_issued=false`, reason `OUT_OF_SAMPLE_VALIDATION_INCOMPLETE`, null data cutoff and null probabilities. The old score is retained only as `STALE_DESCRIPTIVE_ONLY`, `forecast_eligible=false`.
+- Integration `web/landing.html` describes an evidence-first XRP intelligence research service and explicitly states directional forecasts remain disabled until point-in-time data and leakage-safe OOS evaluation pass.
+
+This is the correct safety state for the research system. Main still exposes the stale marketing/signal surface. PR #1660 contains the correction, but merging it would trigger the known GitHub Pages publication side effect. No publication authorization was found; do not merge or deploy until that external publication is specifically authorized and normal review/protection gates are satisfied.
+
+### Late spot refresh
+
+A newer OKX spot response at 19:12:35.472 UTC reports XRP-USDT **1.0697**, bid 1.0698, ask 1.0699, 24-hour open 1.0909 and 24-hour volume 76.450M XRP. The 24-hour change from the provider's open is approximately −1.943%. Its surfaced JSON-text SHA-256 is `5af35625a3d1bf1da731949379ead40dd3c57add5b49845b189d8adc3d3f3ccc`; the provider timestamp was 119 seconds old at retrieval.
+
+Kraken XRP/USD and USDT/USD responses retrieved again around 19:12 UTC were byte-for-byte identical to the 19:04 UTC responses, including trade counts and volumes, and provide no provider event timestamp. They are now classified `CACHE_OR_STALE_RESPONSE_SUSPECTED`, not new independent observations. Consequently, no normalized OKX/USD basis or synchronized cross-venue consensus is admitted from this capture. No current synchronized spot L2 snapshot was obtained.
+
+### Exact-head verification after Run139 documentation updates
+
+On `7887781fae4bba90b51fff86d59be7e5a8f79457`:
+
+- Full repository suite: **3,363 passed, zero failed, eight subtests passed**, 59.58% inclusive coverage.
+- Core suite: **697 passed**, eight subtests passed.
+- Wheel built and installed; Barrot V3, primary XRP mission and canonical assets verified.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merging remains disabled.
+
+Evidence:
+- [Full CI 42882824671](https://github.com/Barrot-Agent/B-Agent/actions/runs/42882824671)
+- [Dependency audit 42882833867](https://github.com/Barrot-Agent/B-Agent/actions/runs/42882833867)
+- [Fail-closed gate 42882833966](https://github.com/Barrot-Agent/B-Agent/actions/runs/42882833966)
+
+Run139A structured evidence: [research/xrp_intelligence/20261110T191434Z-run139a-public-signal-market-refresh.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261110/research/xrp_intelligence/20261110T191434Z-run139a-public-signal-market-refresh.json).
