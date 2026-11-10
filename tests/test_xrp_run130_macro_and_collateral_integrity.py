@@ -10,15 +10,17 @@ INTEL = ROOT / "research" / "xrp_intelligence"
 CPI = INTEL / "20261110T133108Z-run130b-october-cpi-release-and-market-reaction.json"
 REAL_EARNINGS = INTEL / "20261110T133404Z-run130c-real-earnings-release.json"
 COLLATERAL = INTEL / "20261110T132100Z-run130e-cbxrp-morpho-market-and-oracle-reconciliation.json"
+HASH_CORRECTION = INTEL / "20261110T134556Z-run130f-normalized-hash-corrections.json"
+SBIC = INTEL / "20261110T134556Z-run130f-japan-sbic-primary-identity-chatgpt-seminar.json"
 
 
 def _load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _assert_normalized_digest(data: dict) -> None:
+def _normalized_digest(data: dict, field: str = "normalized_evidence_sha256") -> str:
     normalized = dict(data)
-    expected = normalized.pop("normalized_evidence_sha256")
+    normalized.pop(field)
     canonical = json.dumps(
         normalized,
         sort_keys=True,
@@ -26,7 +28,7 @@ def _assert_normalized_digest(data: dict) -> None:
         ensure_ascii=False,
         allow_nan=False,
     )
-    assert hashlib.sha256(canonical.encode("utf-8")).hexdigest() == expected
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def test_run130b_cpi_keeps_unavailable_year_over_year_values_null():
@@ -43,12 +45,12 @@ def test_run130b_cpi_keeps_unavailable_year_over_year_values_null():
     )
 
 
-def test_run130c_real_earnings_preserves_nulls_and_normalized_digest():
+def test_run130c_real_earnings_preserves_nulls_and_provenance():
     data = _load(REAL_EARNINGS)
     results = data["release"]["results"]
     assert data["release"]["release_id"] == "USDL-26-1686"
-    assert results["all_employees"]["real_average_hourly_earnings_mom_sa_pct"] == 0.0
-    assert results["all_employees"]["real_average_weekly_earnings_mom_sa_pct"] == 0.0
+    assert results["all_employees"]["real_average_hourly_earnings_mom_sa_pct"] == 0
+    assert results["all_employees"]["real_average_weekly_earnings_mom_sa_pct"] == 0
     assert results["production_nonsupervisory"]["real_average_hourly_earnings_mom_sa_pct"] == 0.1
     assert results["production_nonsupervisory"]["real_average_weekly_earnings_mom_sa_pct"] == -0.3
     assert results["year_over_year"]["all_employees_real_earnings_pct"] is None
@@ -56,7 +58,21 @@ def test_run130c_real_earnings_preserves_nulls_and_normalized_digest():
     assert data["provenance"]["raw_http_wire_bytes_captured"] is False
     assert data["model_admission"]["status"] == "NOT_ADMITTED"
     assert data["forecast_status"] == "NOT_ISSUED"
-    _assert_normalized_digest(data)
+
+
+def test_run130f_append_only_receipt_corrects_both_normalized_hashes():
+    correction = _load(HASH_CORRECTION)
+    assert correction["status"] == "CORRECTED_BY_APPEND_ONLY_RECEIPT"
+    assert correction["preservation"]["original_artifacts_mutated"] is False
+    assert correction["preservation"]["corrections_append_only"] is True
+    assert len(correction["corrections"]) == 2
+    for item in correction["corrections"]:
+        source = _load(ROOT / item["artifact_path"])
+        recorded = source["normalized_evidence_sha256"]
+        recomputed = _normalized_digest(source)
+        assert recorded == item["original_recorded_normalized_sha256"]
+        assert recomputed == item["recomputed_normalized_sha256"]
+        assert recomputed != recorded
 
 
 def test_run130e_cbXRP_market_identity_and_liquidation_math():
@@ -75,7 +91,6 @@ def test_run130e_cbXRP_market_identity_and_liquidation_math():
     assert math.isclose((lif - 1) * 100, 12.67605634, rel_tol=0, abs_tol=1e-7)
     assert data["model_admission"]["status"] == "NOT_ADMITTED"
     assert data["forecast_status"] == "NOT_ISSUED"
-    _assert_normalized_digest(data)
 
 
 def test_run130e_oracle_timestamp_mismatch_stays_quarantined():
@@ -98,3 +113,33 @@ def test_run130e_credit_and_liquidation_values_are_not_mislabeled_as_xrp_spot_fl
     assert "Liquidation count/debt repaid are not XRP sold." in non_equivalences
     assert data["morphowatch_snapshot"]["borrowed_usdc_usd"] == 55_520_000
     assert data["morphowatch_snapshot"]["collateral_cbxrp"] == 120_450_000
+
+
+def test_run130f_sbic_east_central_west_are_distinct_regional_companies():
+    data = _load(SBIC)
+    entities = data["entities"]
+    assert entities["east"]["official_abbreviation"] == "SBIC East Japan"
+    assert entities["central"]["official_abbreviation"] == "SBIC Central Japan"
+    assert entities["west"]["official_abbreviation"] == "SBIC West Japan"
+    assert entities["east"]["legal_name_en"] != entities["central"]["legal_name_en"]
+    assert entities["central"]["legal_name_en"] != entities["west"]["legal_name_en"]
+    assert "Small and Medium Business Investment & Consultation" in entities["east"]["legal_name_en"]
+    assert data["identity_conclusion"]["not_sbi_holdings"].startswith("These are distinct legal entities")
+    assert data["identity_conclusion"]["shareholder_limitation"].startswith("SBIC East's public profile lists shareholder categories")
+
+
+def test_run130f_chatgpt_reference_is_an_educational_seminar_not_openai_partnership():
+    data = _load(SBIC)
+    event = data["chatgpt_event"]
+    assert event["date"] == "2026-03-05"
+    assert event["organizer"].endswith("(SBIC East Japan)")
+    assert event["co_host"] == "Hamamatsu Iwata Shinkin"
+    assert event["speaker_affiliation"] == "Microsoft Japan, executive officer and evangelist"
+    assert event["commercial_openai_relationship_evidenced"] is False
+    assert data["identity_conclusion"]["xrp_relationship"].startswith("No direct XRP")
+    assert data["forecast_status"] == "NOT_APPLICABLE"
+
+
+def test_run130f_sbic_normalized_evidence_digest_matches():
+    data = _load(SBIC)
+    assert _normalized_digest(data) == data["normalized_evidence_sha256"]

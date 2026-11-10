@@ -3589,3 +3589,42 @@ PR #1640 head `896e5a094bd3e8042e5d3f699c97e95d1ea99e0f` passed the full reposit
 **Next concrete action:** run the new macro/collateral regression tests and the full repository suite on the resulting exact head. Then retrieve Base block-level Morpho market state and the Chainlink feed round at a common block; do not admit the provider summaries or issue a directional forecast before that reconciliation.
 
 **Forecast status: NOT_ISSUED.** No new branch or PR, merge, deployment, paper-trading mutation, real-money transaction, force-push, secret change, external model transfer or destructive worktree operation occurred.
+
+
+---
+
+## Run 130F — Evidence-hash correction and primary SBIC identity resolution
+
+**Captured:** 2026-11-10 13:45:56 UTC. **Main:** `d4d43be3427375cf79d190e768976de062e20287`. **Integration head before this correction:** `ff16dea174fbe07ba3fa36f57c58bb7bf43f16b0`.
+
+### Full-suite failure isolated to two new normalized digests
+
+Exact-head CI on `ff16dea174fbe07ba3fa36f57c58bb7bf43f16b0` completed with **1,374 passed, 2 failed, 8 subtests** in 65.01 seconds. Both failures were the normalized SHA-256 checks for Run130C and Run130E; the core suite passed. Inclusive coverage was 59.58% and the 53% threshold was met. The failure was a serialization-integrity defect: the original digests were calculated from pre-serialization Python objects, while the committed JSON normalized numeric tokens. CI exposed the exact mismatches.
+
+The original evidence files are preserved unchanged. Run130F adds an append-only correction receipt:
+- Run130C original: `b7e43b7571476ac659a4266aff7f225ed089a4990d17dd92ce119481ebc9eaf2`; recomputed over committed JSON: `cba8af99983166b3df4816d38965e1da9b1ecf0660a13f3bd2ab3558c9ca1bb6`.
+- Run130E original: `fa396c143ff900a732278fa44ff99efeb21f379a73b671dce028f53fa9a081b7`; recomputed over committed JSON: `35289f68f656fce28d40538d5ef88f328aca00f90670bbcf0a35cd1a0674bfa4`.
+
+The regression suite now recomputes both digests from the committed files and validates the correction receipt. No original file is overwritten.
+
+### Japan SBIC identity — primary-source resolution
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. Its official profile identifies the legal name, corporate number, 1963 establishment, 18-prefecture shareholder categories and the Nagoya/Osaka companies as sister companies. [Official profile](https://www.sbic.co.jp/company/profile/).
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. Its official profile identifies its separate legal name, 1963 establishment, capital and five-prefecture territory. [Official profile](https://www.sbic-cj.co.jp/company/about/).
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. Its official profile identifies its separate legal name, 1963 establishment, 24-prefecture territory and statutory policy-institution status. [Official profile](https://www.sbic-wj.co.jp/profiles/profile/).
+
+These are three distinct regional Japanese Small and Medium Business Investment & Consultation companies, described by their official sites as sister companies. They are not SBI Holdings. SBIC East's public profile lists shareholder categories, not a complete register; this research does not claim to exclude every possible minority SBI Group holding.
+
+The exact **SBIC + ChatGPT** reference is explained by an official SBIC East seminar on March 5, 2026: “Generative AI (ChatGPT): Present and Future,” organized by Tokyo SBIC, co-hosted by Hamamatsu Iwata Shinkin, and presented by Microsoft Japan executive officer/evangelist Satoshi Nishiwaki. The event description includes ChatGPT demonstrations. This is a public educational event, not evidence of an OpenAI partnership, integration or XRP relationship. [Official event page](https://www.sbic.co.jp/seminar/20260305js/).
+
+Structured records: [Run130F hash corrections](research/xrp_intelligence/20261110T134556Z-run130f-normalized-hash-corrections.json) and [Run130F SBIC primary identity](research/xrp_intelligence/20261110T134556Z-run130f-japan-sbic-primary-identity-chatgpt-seminar.json).
+
+### Repository and merge state
+
+PR #1640 remains the sole active core integration branch. Its 22 review threads are resolved, but all 62 submitted reviews are COMMENTED and none is APPROVED. The exact-head full suite and dependency audit must be rerun after this correction. PR #1643 remains unique institutional/market research: 906 commits ahead, one behind main, 670 changed paths, 7 overlaps and 663 unique paths. No duplicate or unique PR was closed.
+
+The exact-head run on `ff16dea` had core CI success, six-manifest dependency audit success and fail-closed gate success, but full-suite failure described above. Do not carry forward the earlier 1,371-test pass as evidence for this head.
+
+**Next concrete action:** verify the Run130F commit SHA, then inspect exact-head core CI, full repository suite, dependency/security audit and fail-closed gate. If the full suite passes, continue the existing #1640 integration review. Branch-protection settings and Pages publication controls remain inaccessible; no merge until required approvals/checks and deployment side effects are resolved.
+
+**Forecast status: NOT_ISSUED.** No new branch or PR, merge, deployment, paper-trading mutation, real-money transaction, force-push, secret change, external model transfer or destructive worktree operation occurred.
