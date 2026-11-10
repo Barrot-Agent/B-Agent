@@ -1,3 +1,135 @@
+# Barrot XRP Mission — Run123: Spot Depth, Derivatives and ETF Flow Source Reconciliation
+
+**Research cutoff: 2026-11-10 07:17:43 UTC.** This addendum preserves Run122 and its primary-source corrections.
+
+## Run122 exact-head verification completed
+
+The Run122 commit `8a0d5d053caf529dfd7686919069f07c76c43a7f` has now passed all exact-head checks:
+
+- Full repository suite: **1,347 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.48%**, above the 53% floor.
+- Core suite: 677 passed, eight subtests.
+- Installed wheel and Barrot V3 / XRP mission / canonical asset verification passed.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merging remains disabled.
+
+Evidence: [CI 42771625175](https://github.com/Barrot-Agent/B-Agent/actions/runs/42771625175), [dependency audit 42771625284](https://github.com/Barrot-Agent/B-Agent/actions/runs/42771625284), [fail-closed gate 42771625224](https://github.com/Barrot-Agent/B-Agent/actions/runs/42771625224).
+
+## Current repository state
+
+- Main: `d4d43be3427375cf79d190e768976de062e20287`.
+- Integration head before Run123: `8a0d5d053caf529dfd7686919069f07c76c43a7f`.
+- PR #1640: 911 commits ahead, zero behind, 242 changed paths; open, non-draft, GitHub reports mergeable.
+- Main tree: 1,404 entries; integration tree: 1,539 entries. Main has 86 workflows; integration has 87.
+- All 372 open PRs were enumerated through four API pages: 356 drafts, 16 non-drafts.
+- Main's latest CI on the current SHA passed ([42526890841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890841)); scheduled six-manifest dependency audit passed ([42579080840](https://github.com/Barrot-Agent/B-Agent/actions/runs/42579080840)); latest scheduled Cross Analysis on main passed ([42771367141](https://github.com/Barrot-Agent/B-Agent/actions/runs/42771367141)).
+- Main still lacks `.github/workflows/xrp-public-ingestion.yml` and `data/missions/primary_mission.json`. The ingestion workflow is present only on the integration branch and its job is explicitly main-only.
+
+## Fresh spot and order-book snapshot
+
+**Kraken XRP/USD**, retrieved 07:17 UTC:
+- Last $1.10360; bid $1.10359; ask $1.10360; displayed spread approximately 0.091 bps.
+- 24-hour volume 25.166M XRP; VWAP $1.09437; 24-hour high/low $1.11573 / $1.07502.
+- Kraken response does not supply an exchange event timestamp.
+
+**OKX XRP-USDT**, provider event time 07:10:42.741 UTC:
+- Last 1.1026 USDT; bid 1.1026; ask 1.1027.
+- 24-hour volume 64.114M XRP; quote volume 70.232M USDT.
+- Kraken USDT/USD last was 0.99868. A mechanical conversion gives approximately $1.10114 for OKX, 0.2225% below Kraken's displayed last. This is asynchronous and excludes executable fees/latency; it is not an arbitrage signal.
+
+The surfaced JSON response-text SHA-256 values are recorded in the Run123 artifact. They hash the exact response text exposed by the retrieval, not original HTTP transport bytes or headers.
+
+**Fuelmaps six-venue spot-only depth**, 07:00 UTC, XRP mid $1.1008:
+- Within ±0.5%: $7.1M bids / $5.8M asks; 55.1% bid share.
+- Within ±1%: $12.4M / $10.0M; 55.4%.
+- Within ±2%: $17.7M / $10.7M; 62.4%.
+- Within ±5%: $24.1M / $12.9M; 65.1%.
+- Within ±10%: $31.8M / $14.7M; 68.3%, five venues.
+- Six venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini. Binance and Bitget are excluded.
+- Largest displayed near-price levels: $2.0M bid at $1.094, $1.9M ask at $1.102 and $1.9M bid at $1.098.
+
+This is resting spot liquidity, not executed volume. Orders can be cancelled. The ±10% band has only five venues. No directional inference is warranted from one hourly snapshot.
+
+## Derivatives cross-provider disagreement
+
+Latest accessible observations:
+- TradRadar 05:05 UTC: OI $1.65B, down 3.66% in 24h; funding +0.0056%/8h; at least $8.77M liquidations, including $8.02M longs; 79.5% long accounts across its reported ratio set.
+- Liqwall 02:22 UTC: OI $1.22B, down 1.8%; funding +0.0055%/8h; $8.2M liquidations, $7.5M longs; 74.5% of Binance XRP accounts long.
+- Alpha's 01:40 UTC heatmap: OI $2.48B; its liquidation bands are modeled from OI and leverage tiers, not confirmed liquidation orders.
+
+The OI range is about 2.03x. Timestamps, venue coverage and methodologies differ; do not average. The cross-source commonality is long-heavy liquidation pressure and reported OI contraction. Funding is mildly positive in aggregate, with venue-level disagreement. This describes positioning/deleveraging; it does not forecast price.
+
+## ETF flows — methodology and coverage conflict
+
+For 9 November:
+- Alpha Finance / Coinglass reports approximately **−$10.4M**, with Bitwise −$9.4M, Canary −$0.8114M, TOXR −$0.2129M and zero for Franklin/Grayscale. It reports five funds, $1.72B cumulative flows and only +$8.9M over 30 sessions. Alpha's methodology says ETF flow is supplied by Coinglass and displayed as reported; missing feeds should be marked missing.
+- CryptoETF.today reports **−$10.3M partial**, three of five funds: Bitwise −$9.4M, Canary −$0.7M and TOXR −$0.2M. XRPZ and GXRP are explicitly missing in the detailed table. It reports $1.80B cumulative and +$115M over 30 sessions. Its published method calculates flow from change in shares outstanding multiplied by NAV, generally T+1, with some issuer-specific same-day timing exceptions.
+- CryptoETF.today contains an internal inconsistency: the detailed status says three of five and the table marks two funds missing, while a lower summary line says five of five. Use the detailed 3-of-5 state; preserve the contradictory line.
+- CryptoKeyhole's latest complete day remains 6 November: −752,048 XRP / approximately −$887K, four of four tracked funds. Its 9 November view says none of its four daily-tracked funds had published a 9 November file. Its methodology reads issuer holdings/NAV files and does not bypass sites that refuse automated reads.
+
+The two 9 November partial trackers agree on approximately $10.3M–$10.4M outflow for the three named funds. Alpha's Franklin/Grayscale zeros are not independently confirmed by issuer files in this run. The $80M cumulative and $106.1M 30-session differences between Alpha and CryptoETF are material methodology/coverage discrepancies. CryptoKeyhole's 9 November absence is a freshness/coverage gap, not a conflicting 9 November dollar total.
+
+**ETF flow classification: partial / source-dependent / NOT MODEL-ADMITTED.** Do not average these trackers or substitute missing issuer reports with zero.
+
+## Macro event
+
+The BLS schedules October CPI and Real Earnings for **10 November at 08:30 ET / 13:30 UTC**. At the Run123 cutoff the release had not occurred. No CPI result was inferred. [Official BLS schedule](https://www.bls.gov/schedule/2026/).
+
+## Integrated prediction-engine and platform status
+
+The integration branch contains 40 public source records (36 hourly, two weekly CFTC, two excluded non-commercial XRPL nodes), raw-byte capture and SHA-256 receipt-chain logic, point-in-time SQLite feature storage, four baselines, chronological walk-forward with purge/embargo, calibration/drift diagnostics and a fail-closed forecast ledger requiring trusted Ed25519 attestation.
+
+Remaining blockers: independent WORM/timestamp anchoring; synchronized historical spot/L2/derivatives/exchange-flow/collateral data; effective-sample-size correction for overlapping horizons; sufficient independent shadow outcomes; and demonstrated out-of-sample lift. The workflow stores raw artifacts for 90 days, per-run feature checkpoints for seven days and daily feature backups for 90 days. These are GitHub Actions artifacts, not independent WORM storage.
+
+Nine-platform map remains unchanged: ChatGPT GitHub read/write verified; Copilot comment-only review activity; Claude, Grok, Gemini and Codex unverified; Hugging Face prior build error; Kaggle untested; Databricks prior HTTP 403. No cross-platform data transfer occurred.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+## Open PR and overlap classification
+
+The 16 non-draft PRs are #1640, #1643, #1653, #1644–#1650, #1320, #1318, #1317, #1269, #1255 and #1254. All 372 open PRs remain open; no PR was closed.
+
+Changed-path comparison against #1640:
+- #1643: 670 paths, seven overlap, 663 unique paths; non-draft but GitHub reports not mergeable. Preserve its research archive.
+- #1653: seven paths, one overlap, six unique; non-draft and mergeable, but eight unresolved review threads. Preserve the knowledge-graph work.
+- #1655: eight paths, five overlap, three unique; preserve.
+- #1659: six paths, two overlap, four unique; preserve.
+- #1641: three unique paths; preserve.
+- #1642: seven of seven exact path overlaps; duplicate candidate only after verified successor merge.
+- #1614: 57 paths, eight overlap, 49 unique; preserve prediction work.
+- #1611: eight paths, six overlap, two unique; reconcile prediction contracts.
+- #1608, #1605, #1597, #1591, #1586, #1583, #1581, #1571, #1568, #1556 and #1554 have zero path overlap in the sampled comparison and are retained as unique-path research candidates pending semantic review.
+- #1644 changes eight workflow paths all overlapping #1640; #1647 six paths all overlapping; #1645, #1646 and #1648–#1650 overlap their respective workflow/requirements paths.
+- #1320 (five paths), #1318 (two) and #1317 (six) are exact path-overlap candidates.
+- #1269 preserves eight unique mesh/topology paths; #1254/#1255 overlap the legacy requirements file.
+
+Path uniqueness is not proof of semantic uniqueness. Do not close any source PR until the successor is merged and the exact content is verified on main.
+
+## Merge decision — BLOCKED
+
+PR #1640 has 62 review submissions, all COMMENTED, zero APPROVED; 22 inline threads are resolved but outdated. Main is marked protected, but detailed branch-protection access returns HTTP 403. The visible `Fall Back` ruleset is disabled, so effective required approvals/checks remain unverified.
+
+A previous push to main triggered the dynamic GitHub Pages build-and-deploy run [42526890275](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890275), including successful build and deploy jobs. PR #1640 changes 43 workflows and `web/webmcp_monetization.js`. Authorization for another automatic public publication has not been established.
+
+The user's conditional merge authorization is not satisfied. Do not merge or bypass protection. No PRs were closed.
+
+## Next concrete actions
+
+1. Verify exact-head CI, dependency audit and fail-closed gate for the Run123 documentation/research commit.
+2. Obtain independent approval and authoritative branch-protection visibility; resolve the Pages publication side effect.
+3. After the 13:30 UTC BLS release, capture the official October CPI release with its publication timestamp; do not infer the result before publication.
+4. Re-fetch issuer ETF share/holdings files for 9 November and reconcile CryptoETF/Alpha/CryptoKeyhole coverage and the 30-session/cumulative differences before model admission.
+5. Keep current spot/L2 and derivatives observations point-in-time; extend direct multi-venue derivatives collection beyond Binance/Bybit before treating aggregate OI as complete.
+6. Preserve unique research, graph, mesh and prediction PRs. Close only exact duplicates after verified successor merges.
+7. Advance independent raw-source anchoring and synchronized historical features before forecast issuance.
+
+Run123 structured evidence: `research/xrp_intelligence/20261110T071743Z-run123-spot-depth-etf-flow-source-reconciliation.json`.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+
+---
+
 # Barrot XRP Mission — Run122: SBI Bond Capital, Doppler MOU, XRP Tokyo Claims and Creator Attribution
 
 **Research cutoff: approximately 2026-11-10 06:55 UTC.** This addendum preserves Run121 and adds primary-source corrections. Run121's exact-head verification is complete; this Run122 documentation/research descendant requires its own exact-head CI.
