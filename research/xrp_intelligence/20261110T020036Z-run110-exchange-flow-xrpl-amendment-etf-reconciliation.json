@@ -92,7 +92,7 @@
     "sbi_holdings_treasury_attribution": false,
     "model_eligible": false,
     "excerpt": "XRP Insights — latest ledger read 2026-11-09 08:01 UTC. 22.35B XRP in 701 XRPL wallets attributed to 24 exchanges; 7-day same-wallet change -25.8M; 30-day -138.1M. 483M of tracked balances are wrapped-asset reserves or funds; 48.4% cold-labeled; 40% without hot/cold labels. XRPSCAN public labels; balances read by publisher using rippled account_info daily. Not an estimate of tradable float.",
-    "excerpt_sha256": "090cc56f638e2fb924f2f04b48586a1ed0f189ef836f195458317a338b982431"
+    "excerpt_sha256": "db23476f2c9661b34a9719a662feaf1df3955394fa266ee2d5421513ba03e4bf"
   },
   "binance_whale_inflow": {
     "source": "CryptoQuant/Darkfost",
@@ -106,7 +106,7 @@
     "sale_confirmed": false,
     "model_eligible": false,
     "excerpt": "CryptoQuant/Darkfost, 2026-11-08: approximately 691M XRP, valued above $900M, reportedly reached Binance in one day. 90-day average gross inflow exceeded $100M/day. Deposits do not prove sales; exact event cutoff and address list not exposed. Reserve replenishment after Binance's October 29 incident is a possible, unconfirmed explanation.",
-    "excerpt_sha256": "434acc10ddd81c91cdbeb5a4972adbe2a71ff6466c87193faf1130289cb72141"
+    "excerpt_sha256": "fd76583ea7302ddcd80c261abb1f6262a8a656500aa6c50d9cce79ece4cbaaaa"
   },
   "binance_incident": {
     "source": "Binance preliminary issuer report",
@@ -117,7 +117,7 @@
     "replenished_affected_assets_pct_by_2026_10_31": 98,
     "independent_audit": false,
     "excerpt": "Binance preliminary report, 2026-11-03: 233.46M XRP transferred from five hot wallets to attacker-controlled addresses on October 29, 20:05–20:09 UTC. Binance said 98% of affected token assets had been replenished by October 31; company statement, not an independent audit.",
-    "excerpt_sha256": "06a7f470e79da752036ff18eecf01d6b6922ad763b5cb2acfad318da0a2117d6"
+    "excerpt_sha256": "65f3f7adfa0c9a207ea3a5bccef8c0bd4a09b74da100f1ecd25dfe5e5cc151f3"
   },
   "exchange_flow_reconciliation": {
     "gross_whale_inflow_xrp": 691000000,
@@ -159,7 +159,7 @@
     "confidential_transfer_active": false,
     "model_eligible": false,
     "excerpt": "XRPL Dashboard own-node snapshot 2026-11-10 01:39 UTC, ledger 108229375: 35/35 validators heard, 29 required; 98 enabled amendments, 9 in flight, 0 in 14-day countdown. LendingProtocol 22 yes; ConfidentialTransfer 21 yes. Official XRPL rule: more than 80% of trusted validators for two weeks; at 80% or below the period resets.",
-    "excerpt_sha256": "b4a94a40ce441f3c865c661f52d18093b9c5d78a600beb14034023ca0dcf86eb"
+    "excerpt_sha256": "22b74606542b024b47e8b674be051c2005e937c2fff077e75388e4af9e466fb6"
   },
   "etf": {
     "sources": [
@@ -174,7 +174,7 @@
         "gxrp_excluded_from_flow": true,
         "model_eligible": false,
         "excerpt": "XRP Insights: six US spot XRP ETFs plus BITW; Nov 6 net outflow 663,043 XRP; Nov 2–6 week -812.5K XRP; total 1.20B XRP and $1.41B AUM; GXRP excluded from flow totals during a data correction but included in holdings.",
-        "excerpt_sha256": "78e784c755285dc108862196c599bea458f7c8862b57b5c2cdf0e73ff900aa1a"
+        "excerpt_sha256": "25124174d1908d9791f33a94539af0c72a5ecadd3ede5969b59b9c74351d2d16"
       },
       {
         "name": "ByKaranteli",
@@ -187,7 +187,7 @@
         "cumulative_inflow_usd": 1810000000,
         "model_eligible": false,
         "excerpt": "ByKaranteli refreshed 2026-11-09 22:49 UTC: latest complete day Nov 6 $0; five-day -$530K; $1.34B net assets; $1.81B cumulative inflow; five displayed funds.",
-        "excerpt_sha256": "96bc9fb142668e347560a21acb2b78db69d008a16f37761ef91a68583958defe"
+        "excerpt_sha256": "e8f274bec19c9987dddf943ca213504258aaaf54b58f708a2a8f57841b72406b"
       },
       {
         "name": "Alpha Finance",
@@ -200,7 +200,7 @@
         "latest_row_flow_usd": 0,
         "model_eligible": false,
         "excerpt": "Alpha Finance through Nov 8: last 7 sessions +$8.4M; last 30 sessions +$23.3M; Nov 8 row $0. Nov 8 was Sunday; no explanation for a US ETF session on that date. Five funds; no AUM or holdings.",
-        "excerpt_sha256": "a557cbe6ec1f988abc14de6efd22fffdd36debcf5fd0e6b1bc80d6cd28ad527d"
+        "excerpt_sha256": "32ec17a57dc6ef3db4ca953641909912e9d83b7628517ea262fa65f042aa22f1"
       }
     ],
     "averaging": false,
