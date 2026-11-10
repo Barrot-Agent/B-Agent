@@ -713,7 +713,33 @@
       "source": "https://www.oanda.jp/lab-education/market_news/boj-oct-2026-review/",
       "additional_proceeds_estimate_yen_per_year": 1000000000000,
       "additional_proceeds_source": "https://www.reuters.com/world/asia-pacific/boj-estimates-6-billion-annual-gain-from-faster-etf-sales-finance-minister-says-2026-11-10/",
-      "limitation": "The approximately ¥1T additional annual proceeds figure is a BOJ estimate reported by the finance minister; the amount ultimately remitted to government depends on fiscal-year calculations and budget procedures. BOJ operations remain its independent legal responsibility."
+      "limitation": "The approximately ¥1T additional annual proceeds figure is a BOJ estimate reported by the finance minister; the amount ultimately remitted to government depends on fiscal-year calculations and budget procedures. BOJ operations remain its independent legal responsibility.",
+      "primary_statement": {
+        "source": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+        "findings": {
+          "meeting_date": "2026-10-30",
+          "policy_rate_percent": 1.25,
+          "vote": "8-1",
+          "dissent": "Takata Hajime proposed 1.50%; proposal defeated",
+          "annual_etf_sales_book_value_yen": 860000000000,
+          "prior_annual_etf_sales_book_value_yen": 330000000000,
+          "share_of_market_trading_value_percent": 0.1,
+          "market_value_equivalent_yen": 2460000000000,
+          "implementation": "2027-01",
+          "jreit_annual_sales_book_value_yen": 5000000000
+        },
+        "interpretation": "Primary-source confirmation. ETF sales may be temporarily adjusted or suspended within the annual pace in response to market conditions."
+      },
+      "primary_summary_of_opinions": {
+        "source": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi261030.pdf",
+        "release_time_jst": "2026-11-10 08:50",
+        "findings": [
+          "Some policy-board opinions judge underlying CPI inflation generally consistent with the 2% price-stability target.",
+          "Several opinions support gradual or earlier rate increases; others support holding to assess cumulative effects of past hikes.",
+          "The summary is a compilation of member opinions, not a new policy decision or consensus forecast.",
+          "The BOJ notes Middle East energy/raw-material prices may weigh on fiscal-2026 activity while AI-related global demand supports growth."
+        ]
+      }
     },
     "geopolitics": {
       "event": "US-Iran de-escalation signals; Strait of Hormuz shipping not fully normalized",
