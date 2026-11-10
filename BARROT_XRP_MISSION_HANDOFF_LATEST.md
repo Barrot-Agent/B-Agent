@@ -4631,3 +4631,100 @@ The exact-head run on `4f51c53b6cc798500f7249066e71ba8e44f60092` completed with 
 - one case-sensitive status substring that did not match the artifact wording.
 
 The JSON-key assertion was corrected in the next head; this commit corrects the remaining correction-count and status-text expectations. No production code or source data changed. Exact-head full-suite, dependency-audit and fail-closed verification must run on the resulting successor head. Previous successful tests on parent heads are not substituted.
+
+
+---
+
+## Run135G — Current main synchronization, final verification and blockers
+
+### Current repository state
+
+- Current main SHA: `e35f3d16b842d0f75847dd4bb0b51531f38c5f38`.
+- Main advanced from `d4d43be3427375cf79d190e768976de062e20287` through bot-authored commit `barrot: verified repository repair cycle`, changing only `data/autonomous_repair_status.md`. The initiating process is not established from visible checks.
+- That main push triggered CI (718 passed, eight subtests) and GitHub Pages build/deploy (both successful). I did not initiate or authorize the push or Pages publication. The `Barrot Auto PR` workflow is a read-only check; the auto-merge workflow is disabled.
+- Integration was synchronized with a two-parent merge commit `ef43ed2104352b18e7816cf3061ad326c3ab77b3` (parents: prior integration `2e27fdf05f9f4a0548688685e19d0afbf4328b77` and main `e35f3d16...`). The main status-file blob was verified in the merge tree. Compare result: 1,902 commits ahead, zero behind. No force-push or reset.
+- The current integration branch contains one active non-draft PR, #1660. Latest PR base is main `e35f3d16`; latest verified code merge commit is `ef43ed21`. This handoff-only append follows that merge commit; see PR #1660 for the exact branch tip and its new exact-head CI.
+
+### Verification on synchronized code head `ef43ed21`
+
+- Full repository suite: **3,363 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.58%**, above the 53% floor.
+- Core suite passed.
+- Wheel built, installed and verified Barrot V3, primary XRP mission and canonical resources.
+- Exact CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42857655419
+- Full-suite job: https://github.com/Barrot-Agent/B-Agent/actions/runs/42857655419/job/129974973232
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42857655232; passed, automatic merge disabled.
+- Dependency audit: six manifests, zero known vulnerabilities, on immediately preceding code-identical head `2e27fdf05f9f4a0548688685e19d0afbf4328b77`. The subsequent two-parent sync changed only `data/autonomous_repair_status.md`; the handoff append changes only this Markdown file. No dependency manifest or workflow input changed, so the audited dependency graph is unchanged. The path-filtered audit did not rerun on these data/documentation-only commits; this is not represented as a new exact-SHA audit.
+- Cache budget remains exhausted/read-only. Setuptools emits non-fatal license-table and package-discovery warnings.
+
+The new handoff-only commit triggers a fresh full CI and fail-closed run. Until those finish, use the above results only for the verified code head `ef43ed21`, not as exact-head evidence for the handoff append.
+
+### Current market and XRP structure
+
+Latest direct exchange snapshot retrieved around 16:35 UTC, November 10:
+- Kraken XRP/USD $1.04452; 24-hour VWAP $1.07648539; 24-hour high/low $1.10657/$1.03011; 33.935M XRP volume. Last is about 2.97% below 24-hour VWAP and 18.85% above the 24-hour low.
+- Kraken REST `o` is UTC-day open $1.09748, not a rolling 24-hour open. The REST endpoint does not provide a rolling 24-hour open. Use `p[1]`, `h[1]`, `l[1]`, `v[1]` for 24-hour VWAP, high, low and volume. Primary specification: https://docs.kraken.com/api/docs/rest-api/get-ticker-information
+- OKX XRP-USDT 1.0436, rolling 24-hour open 1.1003, high 1.1080, low 1.0311, 77.622M XRP volume; provider event time approximately 16:27:22 UTC. Normalized price about $1.04257, approximately 0.187% below Kraken. OKX rolling 24-hour change is about −5.15%; do not use Kraken's UTC-day open as a 24-hour return.
+- Derivatives OI aggregators disagree: approximately $1.16B Liqwall, $1.57B TradRadar, $2.33B Alpha Finance. No averaging. Funding modestly positive; reported 24-hour liquidations remain long-dominated (about 97% long in Liqwall, 96.7% in TradRadar). Alpha liquidation clusters are modeled, not executed liquidations.
+- No synchronized current spot L2 snapshot. Fuelmaps 08:00 UTC depth is stale.
+- Attributed exchange wallets total about 22.33B XRP across 701 wallets/24 exchanges; same-wallet-set change −8.9M in seven days and −150.9M in 30 days. Two newly tracked wallets add 512M to naive totals. Custody, cold storage and wrapped reserves mean this is not tradable float.
+- November 9 ETF issuer-file reporting is partial: −9.217M XRP across Bitwise, Canary and 21Shares; Franklin XRPZ pending. Tracker methods disagree and overlap issuer files. Holdings reductions do not prove exchange sales or cash redemptions. ETF flows remain model-ineligible.
+- October U.S. CPI released November 10: headline +0.4% m/m and core +0.3% m/m, both above consensus; BLS could not publish affected October year-over-year comparisons because October 2025 survey data were not collected.
+
+### Evernorth capital and financing reconciliation
+
+Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+- Exact Advance Funding cash received: $214,049,995.
+- Identified cash-funded lot: approximately $214,000,000 for 84,365,876.3625 XRP at $2.53657058 average.
+- Remaining $49,995 was restricted cash, contractually required to purchase XRP at closing; the filing says it was used at closing but does not disclose the additional XRP quantity. The identified lot's quantity/cost basis must not be used to guess that residual quantity.
+- In-kind XRP: 388,910,554.061435, comprising 600,000 advance; 211,319,096.061435 Arrington XRP Capital Fund Series C; 50,000,000 Ripple-affiliated Larsen Lam Children's Remainder Trust; 126,791,458 direct Ripple contribution; 200,000 delayed funding. The 200,000-XRP gap is resolved by the Delayed Funding tranche.
+- Known-component subtotal (in-kind plus identified cash lot): 473,276,430.423935 XRP, before the undisclosed $49,995 closing purchase. SEC says approximately 473M as of October 9; exact closing holdings cannot be reconstructed.
+- Separate Ripple facilities: $1M Evernorth Facility, undrawn as of June 30; $10M Company Facility (Pathfinder), $6.6M drawn as of June 30 and $9.7M as of October 7. Post-close repayment status unknown.
+- Separate NH Investment & Securities/Kyobo AIM PIK notes: $30M gross principal, $29M net after a $1M advisor fee. No specific XRP purchase from proceeds proven. Potential cash settlement up to approximately $120M and an 8% put in specified circumstances create contingent financing/supply risk if cash is unavailable; not a scheduled sale.
+- Cantor ELOC: zero proceeds received as of the November 9 prospectus; $521,893.50 commitment fee due after registration effectiveness, payment unverified.
+- June 30 Evernorth issuer figures: approximately $0.1M unrestricted cash, $696.1M working-capital deficit, $340.9M accumulated deficit and $188.1M six-month net loss. Historical issuer figures, not current balances.
+
+### Institutional, identity and collateral corrections
+
+- Coinbase Global Derivatives XRP X:PM haircut is not listed (dash/null; do not infer 0%); X:SM is 15%. Correction overlay and test are present. https://www.coinbase.com/en-gb/international-exchange/cross-collateral-specifications
+- Circle's September 16 Arc mainnet release identifies SBI Group as a founding validator. This is separate from the 50/50 Circle/SBI Japan JV, SBI's Circle investment and SBI/Ripple relationships; it is not an XRP corridor or a Ripple-Circle partnership. https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet
+- Japan's SBIC East/Central/West are separate Tokyo/Nagoya/Osaka regional investment-consultation companies, not SBI Holdings. Tokyo SBIC's ChatGPT seminar is training, not an OpenAI partnership.
+- ASK Coin remains unresolved as an XRP-linked identity; no XRP integration verified.
+- Kamilah Stevenson person identity is confirmed. The candidate YouTube channel ID/handle has first-party search-result support, but the person-to-channel match is not reciprocal first-party ownership verified. Four channel-associated videos are inventoried; no personal-channel attribution without stronger evidence. Subscriber counts conflict (137–140K versus a separate 9.8K channel result) and are not identity evidence. Camilla/Camila remains a transcript spelling variant.
+
+### Prediction engine and platform status
+
+Implemented on integration:
+- 46 source definitions (42 hourly, two weekly CFTC, two non-commercial XRPL nodes excluded by default).
+- Read-only public collector, SHA-256 receipt-chain logic, point-in-time SQLite feature store.
+- Four deterministic baselines, chronological walk-forward evaluation with purge/embargo, calibration and drift diagnostics.
+- Fail-closed fixed-horizon forecast ledger requiring trusted Ed25519 evaluator attestation.
+
+Not production-ready: independent WORM/timestamp anchoring; complete synchronized historical spot/L2/derivatives/exchange-flow/collateral data; source-independence authentication; raw-receipt replay; event timeline and scenario/counter-hypothesis runner; effective-sample-size correction; sufficient independent shadow outcomes; production evaluator key and demonstrated out-of-sample lift.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action.
+
+Platform status:
+- ChatGPT: current-session GitHub read/write on integration verified; no main write, secrets or branch-protection administration.
+- Copilot: comment-only review activity; no approval or separate authenticated data flow.
+- Claude, Grok, Gemini, Codex: unverified.
+- Hugging Face: prior BUILD_ERROR; no upload or Space restart.
+- Kaggle: untested; no submission.
+- Databricks: prior HTTP 403; no workspace write.
+- No external-model data transfer.
+
+### PR backlog and merge decision
+
+- PR #1660 is the sole active non-draft V3/XRP integration PR. It has zero formal reviews, zero approvals and zero inline review comments; one CodeRabbit summary comment.
+- Current inventory: 373 open PRs, 358 drafts, 15 non-drafts.
+- #1640: 22 resolved/outdated review threads; preserve until verified successor merge.
+- #1643: 19 resolved threads, three not outdated at last check; preserve unique research and review objections.
+- #1653: unique knowledge-graph work, eight unresolved threads (six Copilot, two CodeRabbit); **UNIQUE / BLOCKED / PRESERVE**. Do not merge until persistence=false overwrite, stdin/format precedence, repo-state races, recursive submodule URL scope, degraded-status handling and timeout exception handling are resolved or rebutted with tests.
+- #1642 and #1644–#1650: duplicate/shared-path or dependency candidates; keep open until exact successor merge.
+- #1317/#1318/#1320: structural/schema/paper-trading safety candidates; preserve and reconcile.
+- #1269 and unique draft research/prediction work: preserve.
+
+PR #1660 changes 44 workflow files; 25 unique paths are quarantined by explicit false conditions and/or empty permissions (23 explicit false, 25 empty-permission files, 25-path union). Barrot V3 code/package is preserved, but operational workflow parity is incomplete. GitHub Pages auto-published after the independent main push; authorization for another publication is not established. Main reports protected=true, but branch-protection details return HTTP 403 and the visible fallback ruleset is disabled. PR mergeability is reported as unknown. The 950-path/44-workflow semantic review is incomplete.
+
+No merge to main, branch-protection bypass, deployment initiated by this run, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or PR closure occurred.
