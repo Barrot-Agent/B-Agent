@@ -3277,3 +3277,25 @@ Potential channel: lower energy prices may ease headline inflation and risk prem
 BLS scheduled October CPI and Real Earnings for November 10 at 08:30 ET / 13:30 UTC. At the Run129 12:00 UTC cutoff, the release was still in the future. No result was inferred. [BLS official schedule](https://www.bls.gov/schedule/2026/11_sched.htm).
 
 The macro readings and source disagreements are recorded in the Run129 JSON under `macro.fed`, `macro.boj` and `macro.geopolitics`. Do not convert market-implied policy probabilities or oil headlines into an XRP forecast without synchronized time-series features and out-of-sample evidence.
+
+
+## Run 129E — BOJ primary-source verification
+
+The Japan macro section is now anchored to the Bank of Japan's own October 30 statement, not only secondary reporting.
+
+- Policy Board set the uncollateralized overnight call rate around 1.25%, with an 8–1 vote.
+- The dissenting member, Takata Hajime, proposed 1.50%; the proposal was defeated.
+- ETF sales were unanimously increased from approximately ¥330B to ¥860B annual book value, about 0.1% of Tokyo Stock Exchange Prime trading value.
+- The BOJ estimates the market-value equivalent at approximately ¥2.46T per year.
+- The new pace begins January 2027; temporary adjustments or suspension are allowed within the annual pace in response to market conditions.
+- J-REIT sales remain approximately ¥5B per year book value.
+
+Primary source: [BOJ Statement on Monetary Policy, October 30, 2026](https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf).
+
+The BOJ's November 10 Summary of Opinions was released at 08:50 JST. It shows differing views: some members see underlying inflation as generally consistent with the 2% target and support further increases, while others favor holding to assess cumulative effects. This is a compilation of individual views, not a new rate decision or consensus forecast. The BOJ also notes Middle East energy/raw-material prices as a downside to fiscal-2026 activity and AI-related global demand as a support.
+
+Primary source: [BOJ Summary of Opinions, October 29–30 meeting](https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi261030.pdf).
+
+Reuters' November 10 report of approximately ¥1T additional annual proceeds remains a separate estimate; the amount ultimately remitted to government depends on year-end calculations and budget procedures. [Reuters](https://www.reuters.com/world/asia-pacific/boj-estimates-6-billion-annual-gain-from-faster-etf-sales-finance-minister-says-2026-11-10/).
+
+This reinforces the distinction between central-bank asset sales, market-value supply, book-value accounting and fiscal remittances. None is an XRP flow.
