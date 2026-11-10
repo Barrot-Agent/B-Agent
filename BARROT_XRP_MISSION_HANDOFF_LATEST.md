@@ -1,3 +1,108 @@
+# Barrot XRP Mission — Run124: market microstructure, ETF reporting and integrated verification
+
+**Capture cutoff: 2026-11-10T07:58:51Z.** XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+## Repository state and exact-head evidence
+
+- Main SHA: d4d43be3427375cf79d190e768976de062e20287.
+- Existing integration PR: [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), branch integration/core-capabilities-mmi-structural-paper-20261104.
+- Integration head at start of Run124: f7dfd1747196f39051819491ee125b1d3eb3973a; 914 commits ahead, zero behind.
+- PR #1640 changes 245 paths (+118,490/−3,554), including 43 workflow files and seven public web assets.
+- Main tree: 1,404 entries / 1,299 files. Integration tree: 1,542 entries / 1,429 files.
+- Full open-PR inventory: 372 (356 drafts, 16 non-drafts), retrieved as four pages of 100/100/100/72.
+
+The exact integration head f7dfd1747196f39051819491ee125b1d3eb3973a passed all three required gates:
+
+- Full suite: **1,347 passed, zero failed, eight subtests passed**, inclusive coverage **59.48%** against a 53% floor.
+- Core suite: 677 passed, eight subtests passed.
+- Wheel build/install and packaged Barrot V3 / primary XRP mission verification passed.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed merge gate passed; automatic merge remains disabled.
+
+Evidence: [full CI 42776790058](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776790058), [dependency audit 42776790394](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776790394), [fail-closed gate 42776790052](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776790052).
+
+The cache-budget warning made Actions cache read-only but did not fail tests, wheel verification or dependency audit. The Run124 artifact, coordination snapshot, contract correction and regression tests are committed as a descendant of this verified head; their own exact-head CI is pending at this handoff capture.
+
+## Fresh XRP market evidence
+
+### Spot and order-book depth
+
+At the capture cutoff, Kraken's XRP/USD API response showed last **$1.09347**, bid/ask **$1.09323/$1.09324**, 24-hour volume **23.55M XRP**, VWAP **$1.09533**, high **$1.11573**, low **$1.07502**. Kraken did not provide a provider event timestamp.
+
+OKX's XRP-USDT response showed **1.1036 USDT**, bid/ask **1.1034/1.1035**, 24-hour volume **62.67M XRP**, provider timestamp **07:41:51.664 UTC**. Kraken USDT/USD was **0.99873**. Mechanical normalization gives OKX approximately **$1.10220**, about **0.80% above** Kraken's last trade. This is not an arbitrage signal: OKX was about 17 minutes old at capture, Kraken/USDT provider event times were unavailable, and HTTP cache-age headers were not preserved.
+
+Fuelmaps' **07:00 UTC** spot-only snapshot covered six venues (Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini). Within 1% of midpoint it showed **$12.4M bids vs $10.0M asks**, 55.4% bid share; within 2%, $17.7M vs $10.7M; within 5%, $24.1M vs $12.9M. Binance and Bitget were excluded. These are resting orders, not executed volume; they can be cancelled.
+
+### Derivatives
+
+Liqwall at 07:52 UTC reported OI **$1.23B**, down 3.0% over 24 hours, $3.7M liquidations (longs $3.0M, shorts $675K), average funding +0.0096% per eight hours and 74.6% Binance long accounts.
+
+TradRadar at 07:10 UTC reported OI **$1.66B**, down 2.5%, funding +0.0082% per eight hours, at least $4.98M liquidations (longs $4.17M, shorts $815K), and 79.5% long accounts. Venue coverage differs; the OI readings are not averaged.
+
+The common description is long-heavy deleveraging. Price rising while OI falls is consistent with position reduction or short-covering, but positive funding and long crowding preserve liquidation risk. No directional conclusion is established.
+
+### ETF flows — partial reporting and a zero-versus-missing disagreement
+
+CryptoKeyhole's issuer-file tracker updated 07:48 UTC and reports **3 of 4** daily-tracked funds for November 9: **−9,216,553 XRP (about −$10.1M)**. Bitwise −8,594,551 XRP, Canary −427,341 XRP, 21Shares TOXR −194,660 XRP; Franklin XRPZ is missing. Its latest complete day remains November 6: −752,048 XRP. The November monthly matrix value **−$903,489** is the completed-days month-to-date figure and excludes the November 9 partial; it is not the November 9 daily flow.
+
+CryptoETF, published 05:48 UTC, reports **3 of 5** funds and −$10.3M, with XRPZ and GXRP missing. Alpha Finance reports **5 of 5** and −$10.4M but shows zero for XRPZ and GXRP, does not publish fund holdings/AUM, and derives a flow series rather than issuer holdings. Its full-coverage claim is not corroborated by the issuer-file trackers. The totals are close, but coverage, zero-versus-missing treatment and 30-session totals disagree. These publishers may share underlying issuer series; independent source groups are not established. No averaging or model admission.
+
+### Exchange flows and custody-transfer disambiguation
+
+TrackWhale's 07:33 UTC seven-day large-transfer subset reports 64 tracked transfers: 501.72M XRP inflows (10 transfers), 608.96M XRP outflows (15 transfers), net **−107.24M XRP** (about −$130.76M). It is not a complete XRPL exchange-flow ledger.
+
+Its largest transfer, **368.48M XRP**, is explicitly a **Binance-to-Binance rotation** on November 4 at 19:08 UTC (transaction ED71D3EEE5A00362D5A1FDAC3EDE809FFD165EF27030A472144DC50C972A0D12). The provider excludes exchange-to-exchange/internal transfers from netflow. This transaction is not Evernorth and must not be counted as exchange outflow or attributed to the previously investigated BitGo custody reorganization. Recent Binance-to-unknown and OKX-to-unknown movements remain unlabelled; a transfer is not proof of a sale.
+
+### Macro and sentiment
+
+BLS reported October payrolls +165,000, unemployment 4.1%, average hourly earnings +3.1% year over year on November 6. October CPI and Real Earnings are scheduled for **November 10 at 13:30 UTC** (08:30 ET), after this cutoff; no result was recorded. October PPI is scheduled November 13 at 13:30 UTC.
+
+Main's read-only Cross Analysis workflow run 42778238470 succeeded at 07:51 UTC. Its entity profile reports XRP net sentiment +0.46 and Ripple +0.48, but the sentiment-shift detector had zero observations in both recent and prior windows. Corpus sentiment is not a current price signal and is not model-admitted.
+
+## Prediction-engine status and contract correction
+
+The integration branch's registry contains **40 records: 36 hourly sources, two weekly CFTC sources and two excluded non-commercial XRPL nodes**. Therefore, 38 sources are scheduled and two are excluded. Run124 corrects a stale sentence in research/xrp_intelligence/feature-store-contract.md that incorrectly said 38 total / 36 scheduled / two excluded, omitting the weekly CFTC sources. A regression test now prevents that count from recurring.
+
+Executed components: point-in-time validator, SQLite feature-store prototype, receipt/lineage checks, four deterministic baselines, chronological walk-forward evaluation with purge/embargo, temporal calibration diagnostics, drift reporting and fail-closed forecast ledger.
+
+Not implemented/verified: external WORM retention, independent timestamp authority, signed external source registry, complete synchronized historical spot/L2/derivatives/exchange-flow/collateral data, sufficient independent shadow outcomes and demonstrated out-of-sample lift. GitHub raw receipts have 90-day artifact retention; feature-store checkpoints have seven-day retention and daily/manual recovery artifacts 90 days. SQLite triggers are not adversarially tamper-proof. The scheduled ingestion workflow exists only on the integration branch; it is not active on main.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action.
+
+## Nine-platform coordination
+
+The Run124 snapshot records all nine platforms. Only this ChatGPT session's GitHub read/write route is verified. Copilot has comment-only activity (62 COMMENTED submissions, zero approvals), not an authenticated persistent data pipeline. Claude, Grok, Gemini and Codex remain unverified; Hugging Face has a prior BUILD_ERROR; Kaggle is untested; Databricks previously returned HTTP 403. No cross-platform data exchange occurred.
+
+## PR backlog and merge decision
+
+- **#1640 — blocked integration path.** 914 ahead / 0 behind, 245 changed paths, GitHub reports mergeable. 62 reviews are all COMMENTED, zero APPROVED. All 22 inline threads are resolved but outdated. Branch-protection details return HTTP 403; the visible fallback ruleset is disabled. A previous main push triggered GitHub Pages publication; the seven public web assets in this PR have no specific publication authorization.
+- **#1643 — unique research archive.** 670 changed paths; seven overlap #1640 and 663 are unique. Stale/unmergeable; preserve.
+- **#1653 — unique repository knowledge graph.** Seven paths; one shared CI path and six unique code/docs/tests. Eight unresolved review threads; preserve.
+- **#1642 — duplicate candidate.** All seven changed paths overlap #1640; draft. Do not close before a verified successor merge.
+- **#1614 — unique prediction work.** 57 paths, eight overlap #1640 and 49 unique; draft/unmergeable. Preserve unique research-artifact-clock and research material.
+- **#1611 — prediction contract.** Eight paths, six overlap and two unique research/handoff paths; preserve unique material.
+- **#1615 — security containment.** 14 paths, one overlap and 13 unique workflow/operations paths; preserve.
+- **#1610 — security containment.** 14 paths, seven overlap and seven unique workflow/operations paths; preserve.
+- **#1605 — unique market microstructure artifact; preserve.**
+- **#1597 — 17 unique XRP institutional research paths; preserve.**
+- #1644–#1650 dependency updates require exact version reconciliation; #1269, #1655, #1659 and #1641 retain unique work. No PRs were closed.
+
+**No merge.** Independent approval is absent; effective branch-protection requirements remain unverified; Pages publication is not authorized. No bypass attempted.
+
+## Run124 records
+
+- Structured market artifact: research/xrp_intelligence/20261110T075851Z-run124-market-depth-derivatives-etf-macro-update.json
+- Nine-platform snapshot: research/xrp_intelligence/nine_platform_coordination_snapshot_20261110T075851Z.json
+- Corrected contract: research/xrp_intelligence/feature-store-contract.md
+- Regression tests: tests/test_xrp_run124_market_evidence.py
+- Existing integration PR: [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640)
+
+Next actions: verify exact-head CI on the Run124 commit; resolve approval/branch-protection/Pages blockers; continue independent BitGo custody replay and ETF issuer cash-versus-in-kind reconciliation; build synchronized historical market data and external receipt anchoring; preserve unique PR work; keep forecasts NOT_ISSUED until readiness and out-of-sample requirements are met.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+---
+
 # Barrot XRP Mission — Run123B: ETF Issuer-File Refresh and Prior-Record Correction
 
 **Capture: approximately 2026-11-10 07:37 UTC.** This addendum corrects one stale statement in the original Run123 artifact and adds the refreshed issuer-file reconciliation. Historical artifacts remain unchanged.
