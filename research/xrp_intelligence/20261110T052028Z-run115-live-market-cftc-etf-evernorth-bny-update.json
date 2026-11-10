@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.xrp.research.v1",
   "run_id": "run115",
-  "captured_at_utc": "2026-11-10T05:20:28Z",
+  "captured_at_utc": "2026-11-10T05:26:47Z",
   "mission_priority": 1,
   "mission": "XRP intelligence and measured prediction-engine mastery",
   "preserved_foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -249,7 +249,20 @@
       "ledger": 108112129,
       "evidence_level": "Secondary reports; official release notes confirm amendment purpose but this run did not independently query current validator/ledger amendment state."
     },
-    "model_eligible": false
+    "model_eligible": false,
+    "official_docs_conflict": {
+      "permission_values_page_url": "https://xrpl.org/docs/references/protocol/data-types/permission-values",
+      "page_last_updated_text": "3 days ago",
+      "official_warning": "The page still says not to delegate PaymentBurn until fixCleanup3_4_0 is enabled.",
+      "known_amendments_page_url": "https://xrpl.org/resources/known-amendments",
+      "amendment_id": "98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76",
+      "status_rendering": "The Known Amendments page renders the status field as Loading in the text view.",
+      "secondary_activation_claim": {
+        "reported_at_utc": "2026-11-04T14:52:00Z",
+        "ledger": 108112129
+      },
+      "conclusion": "Conflicting evidence: secondary reports claim activation, while current official documentation still displays a pre-activation warning. Current validator/validated-ledger state must be queried before asserting enabled or disabled."
+    }
   },
   "macro": {
     "event": "US October 2026 CPI and Real Earnings release",
@@ -261,9 +274,139 @@
   "identity_research": {
     "japan_sbic": "SBIC East/Central/West remain distinct Tokyo/Nagoya/Osaka regional Small and Medium Business Investment & Consultation companies, not SBI Holdings.",
     "sbic_chatgpt_phrase": "No primary-source evidence of an OpenAI partnership; Tokyo SBIC's course includes ChatGPT/Copilot instruction for investee companies.",
-    "ask_coin": "Unresolved; Permission Coin ASK is a candidate only, no verified XRP integration.",
+    "ask_coin": {
+      "status": "Permission's ASK token is a strong candidate for an ASK Coin reference, but the exact intended identity remains unconfirmed.",
+      "official_name": "ASK Token / $ASK",
+      "official_site": "https://www.permission.ai/",
+      "official_token_documentation": "https://docs.permission.ai/ask-token",
+      "official_description": "Native Permission ecosystem token for family rewards, consent-based AI/data exchange and agent-to-agent coordination.",
+      "supply": 100000000000,
+      "official_networks": {
+        "base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+        "bridge_standard": "LayerZero OFT",
+        "stargate_integrated": true
+      },
+      "market_data_snapshot": {
+        "source": "CoinMarketCap",
+        "captured_page_at_utc": "2026-11-10T05:26:47Z",
+        "price_usd": 0.00008722,
+        "market_cap_usd": 1410000,
+        "volume_24h_usd": 10.6,
+        "circulating_supply": 16166619298,
+        "max_supply": 100000000000,
+        "url": "https://coinmarketcap.com/currencies/permission-coin/",
+        "conflicting_search_snippet": {
+          "price_usd": 0.0000871,
+          "volume_24h_usd": 891.78
+        },
+        "interpretation": "The two CoinMarketCap retrievals disagree sharply on 24-hour volume; treat the market quote as low-liquidity and scrape-sensitive, not a reliable live measure."
+      },
+      "xrp_relationship": "No XRP/XRPL integration was found in the reviewed official Permission materials. Do not conflate Permission ASK with XRP or with an unrelated historical 'Ask Coin' listing."
+    },
     "actual_capital": "Not a standardized XRP metric; maintain cash/in-kind/debt/drawn/contingent/resale categories.",
-    "camilla_kamilah_stevenson": "Identity and guest-appearance evidence remain separate from personal-channel ownership; no new personal-channel video admitted."
+    "camilla_kamilah_stevenson": {
+      "public_channel_attribution": "Corroborated at channel/video level, not a legal-identity verification.",
+      "public_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "channel_link": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "identity_evidence": [
+        "CryptoKrios creator profile links the named Kamilah Stevenson profile to the channel ID.",
+        "Direct YouTube search results display 'By: Kamilah Stevenson' on multiple videos.",
+        "Several indexed video transcripts introduce the speaker as 'Camila Stevenson', supporting a spelling/branding variant."
+      ],
+      "count_conflict": "CryptoKrios displayed 103,000 subscribers and 633 videos; direct YouTube search results displayed 137,000–141,000 followers on dated results. Subscriber counts are not used as identity evidence.",
+      "video_inventory": [
+        {
+          "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+          "video_id": "pmJTrXJQ8Vw",
+          "published_date": "2025-12-24",
+          "views_at_search": 44991,
+          "likes_at_search": 3100,
+          "attribution": "Direct YouTube search result: By Kamilah Stevenson",
+          "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+          "confidence": "HIGH_CHANNEL_BYLINE"
+        },
+        {
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "video_id": "QslbjGQD0MU",
+          "published_date": "2025-12-14",
+          "views_at_search": 76000,
+          "attribution": "Glasp video transcript archive by Kamilah Stevenson; transcript speaker says Camila Stevenson",
+          "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+          "archive_url": "https://glasp.co/youtube/QslbjGQD0MU",
+          "confidence": "SECONDARY_TRANSCRIPT_ATTRIBUTION"
+        },
+        {
+          "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+          "video_id": "ci0FH73lbCs",
+          "published_date": "2026-01-13",
+          "views_at_search": 20400,
+          "attribution": "Glasp video transcript archive by Kamilah Stevenson; transcript speaker says Camila Stevenson",
+          "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+          "archive_url": "https://glasp.co/youtube/ci0FH73lbCs",
+          "confidence": "SECONDARY_TRANSCRIPT_ATTRIBUTION"
+        },
+        {
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+          "video_id": "cxeX_eu_2H0",
+          "published_date": "2026-01-15",
+          "views_at_search": 23100,
+          "attribution": "Glasp video transcript archive by Kamilah Stevenson; transcript speaker says Camila Stevenson",
+          "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+          "archive_url": "https://glasp.co/youtube/cxeX_eu_2H0",
+          "confidence": "SECONDARY_TRANSCRIPT_ATTRIBUTION"
+        },
+        {
+          "title": "XRP Was Built for What's Coming",
+          "video_id": "ywQEoYPzhlQ",
+          "published_date": "2026-03-03",
+          "views_at_search": 13252,
+          "likes_at_search": 1100,
+          "attribution": "Direct YouTube search result: By Kamilah Stevenson",
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+          "confidence": "HIGH_CHANNEL_BYLINE"
+        },
+        {
+          "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+          "video_id": "iwhpNT73zpk",
+          "published_date": "2026-03-06",
+          "views_at_search": 32040,
+          "likes_at_search": 2300,
+          "attribution": "Direct YouTube search result: By Kamilah Stevenson",
+          "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+          "confidence": "HIGH_CHANNEL_BYLINE"
+        },
+        {
+          "title": "How Much XRP Do You ACTUALLY Need?",
+          "video_id": "rv0BAV0vLgo",
+          "published_date": "2026-03-19",
+          "views_at_search": 74900,
+          "attribution": "Glasp video transcript archive by Kamilah Stevenson",
+          "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+          "archive_url": "https://glasp.co/youtube/rv0BAV0vLgo",
+          "confidence": "SECONDARY_TRANSCRIPT_ATTRIBUTION"
+        },
+        {
+          "title": "Title not exposed in indexed result; description concerns XRP collateral for federally regulated derivatives",
+          "video_id": "M8TmDXO7B-0",
+          "published_date": "2025-12-06",
+          "attribution": "Direct YouTube search result: By Kamilah Stevenson; title unavailable in result",
+          "url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+          "confidence": "HIGH_CHANNEL_BYLINE_TITLE_UNRESOLVED"
+        }
+      ],
+      "excluded_or_separate": [
+        {
+          "title": "Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet",
+          "video_id": "5DzBk8DfoLs",
+          "published_date": "2025-12-16",
+          "channel": "Alina X",
+          "reason": "Third-party channel byline is Alina X; guest/subject attribution is not a personal-channel upload."
+        }
+      ],
+      "third_party_prediction_audit_caveat": "CryptoKrios assigns an 82/100 trust score but explicitly says there is no meaningful verified prediction-accuracy figure; it lists several missed targets. Do not use its score as a forecast-performance measure.",
+      "legal_identity": "Not independently verified; retain public channel attribution only."
+    }
   },
   "repository_quality_and_execution": {
     "current_main_ci": {
@@ -358,7 +501,10 @@
     "Liqwall and TradRadar are separate publishers with overlapping venue aggregates; they do not represent independent underlying exchange universes.",
     "XRP Insights ETF dashboard top-level week 46 flow conflicts with its detailed Nov 2-6 flow; retain both.",
     "XRP Insights Evernorth wallet attribution is third-party analysis based on direct rippled reads; XRPSCAN transaction pages returned 403 during independent verification.",
-    "BNY/Ripple custody and tokenized-finance announcements distinguish live custody support from future plans subject to approvals."
+    "BNY/Ripple custody and tokenized-finance announcements distinguish live custody support from future plans subject to approvals.",
+    "Permission's official ASK documentation confirms a token used for AI/family rewards and agent-to-agent coordination, but no XRP integration; CoinMarketCap volume snapshots conflict sharply.",
+    "Kamilah Stevenson video attribution is supported by direct YouTube bylines and third-party transcript indexing; channel page is too large to inspect directly and legal identity is not verified.",
+    "XRPL fixCleanup3_4_0 activation is disputed: secondary activation reports conflict with the current official Permission Values warning."
   ],
   "sources": [
     {
@@ -438,6 +584,90 @@
       "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
       "publisher": "BLS",
       "source_group": "bls_primary_calendar"
+    },
+    {
+      "id": "permission_ask_official",
+      "url": "https://docs.permission.ai/ask-token",
+      "publisher": "Permission",
+      "source_group": "permission_primary_docs"
+    },
+    {
+      "id": "permission_website",
+      "url": "https://www.permission.ai/",
+      "publisher": "Permission",
+      "source_group": "permission_primary_site"
+    },
+    {
+      "id": "permission_ask_market",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "publisher": "CoinMarketCap",
+      "source_group": "market_aggregator"
+    },
+    {
+      "id": "kamilah_creator_profile",
+      "url": "https://cryptokrios.com/creators/kamilah-stevenson",
+      "publisher": "CryptoKrios",
+      "source_group": "third_party_creator_analytics"
+    },
+    {
+      "id": "xrpl_permission_values",
+      "url": "https://xrpl.org/docs/references/protocol/data-types/permission-values",
+      "publisher": "XRPL.org",
+      "source_group": "xrpl_official_docs"
+    },
+    {
+      "id": "xrpl_known_amendments",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "publisher": "XRPL.org",
+      "source_group": "xrpl_official_docs"
+    },
+    {
+      "id": "kamilah_video_xrp_not_bitcoin",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "publisher": "YouTube / Kamilah Stevenson",
+      "source_group": "creator_channel_video"
+    },
+    {
+      "id": "kamilah_video_xrp_built",
+      "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "publisher": "YouTube / Kamilah Stevenson",
+      "source_group": "creator_channel_video"
+    },
+    {
+      "id": "kamilah_video_global_finance",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "publisher": "YouTube / Kamilah Stevenson",
+      "source_group": "creator_channel_video"
+    },
+    {
+      "id": "kamilah_video_collateral",
+      "url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "publisher": "YouTube / Kamilah Stevenson",
+      "source_group": "creator_channel_video"
+    },
+    {
+      "id": "kamilah_glasp_ripple_bank",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "publisher": "Glasp",
+      "source_group": "third_party_video_transcript"
+    },
+    {
+      "id": "kamilah_glasp_etfs",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "publisher": "Glasp",
+      "source_group": "third_party_video_transcript"
+    },
+    {
+      "id": "kamilah_glasp_wealth",
+      "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "publisher": "Glasp",
+      "source_group": "third_party_video_transcript"
+    },
+    {
+      "id": "kamilah_glasp_xrp_need",
+      "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "publisher": "Glasp",
+      "source_group": "third_party_video_transcript"
     }
   ]
 }

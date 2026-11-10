@@ -79,7 +79,7 @@ BNY's October 27 joint announcement with Ripple says BNY now supports XRP and RL
 
 ## XRPL and macro timeline
 
-XRPL's official September 16 release introduced rippled 3.4.0 and the fixCleanup3_4_0 amendment. November 4 activation at ledger 108112129 is reported by secondary sources; this run did not independently query current validator/ledger amendment state. Do not elevate the activation claim to primary-source verified.
+XRPL's official September 16 release introduced rippled 3.4.0 and fixCleanup3_4_0 (amendment ID 98433DD0…E4FEC A76). Secondary reports claim activation November 4 at ledger 108112129. However, the official Permission Values page, last updated three days ago, still warns not to delegate PaymentBurn until the amendment is enabled; the official Known Amendments page's status is dynamically rendered as Loading in the text view. This is a real source disagreement. Current validator/validated-ledger state must be queried before asserting enabled or disabled.
 
 The BLS October CPI and Real Earnings release is scheduled for November 10 at 08:30 ET / 13:30Z. At this research cutoff it is a future event, not a published result.
 
@@ -90,9 +90,28 @@ Sources: [XRPL 3.4.0 release](https://xrpl.org/blog/2026/xrpld-3.4.0), [BLS Nove
 - Japan's SBIC East/Central/West remain Tokyo/Nagoya/Osaka regional Small and Medium Business Investment & Consultation companies, distinct from SBI Holdings.
 - Tokyo SBIC's official course includes ChatGPT and Copilot instruction for investee companies; this is not an OpenAI partnership.
 - “SBIC, ChatGPT SBIC” has no verified primary-source partnership match.
-- ASK Coin remains unresolved; Permission Coin ASK is a candidate only, with no verified XRP integration.
+- **ASK token:** Permission's official docs identify ASK as its native token for family rewards, consent-based AI/data exchange and agent-to-agent coordination, with 100B fixed supply and LayerZero OFT contracts on Base and Polygon. CoinMarketCap's displayed 24-hour volume was only $10.60 at one capture, while an earlier search snippet showed $891.78; treat as thin and scrape-sensitive. No XRP/XRPL integration was found. This is a strong candidate for an “ASK Coin” reference, not a confirmed intended identity.
 - “Actual capital” is not a standardized XRP metric; keep cash, in-kind, debt, drawn capacity, contingent equity and secondary resales separate.
-- Camilla/Kamilah Stevenson identity/guest appearances remain separate from personal-channel ownership; no unverified personal-channel upload was added.
+- **Kamilah/Camila Stevenson video attribution:** a channel-level identity is corroborated by direct YouTube bylines and a third-party creator profile linking channel ID `UCqUPJMQdkCN6lsLVDnichPA`. Some transcripts introduce the speaker as “Camila Stevenson”; the public byline uses “Kamilah Stevenson”. Legal identity is not independently verified. See the video inventory below.
+
+## Run115 public video inventory — Kamilah/Camila Stevenson
+
+Channel-level attribution is corroborated, but legal identity is not independently verified. The creator analytics page links the named Kamilah Stevenson profile to YouTube channel ID `UCqUPJMQdkCN6lsLVDnichPA`; direct YouTube search results display the Kamilah Stevenson byline. Several indexed transcripts use the spoken introduction “Camila Stevenson”. Subscriber counts conflict across sources and are not used as identity proof.
+
+| Date | Public video | Attribution evidence |
+|---|---|---|
+| 2025-12-06 | [XRP collateral explainer](https://www.youtube.com/watch?v=M8TmDXO7B-0) — indexed title unavailable; description says XRP was accepted as collateral for regulated derivatives | Direct YouTube result by Kamilah Stevenson |
+| 2025-12-14 | [Ripple Just Became a BANK — And XRP Holders Need to Understand This](https://www.youtube.com/watch?v=QslbjGQD0MU) | Glasp transcript archive; speaker introduces herself as Camila |
+| 2025-12-24 | [XRP Is Not Bitcoin. And That's Exactly Why It Matters](https://www.youtube.com/watch?v=pmJTrXJQ8Vw) | Direct YouTube result by Kamilah Stevenson |
+| 2026-01-13 | [XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.](https://www.youtube.com/watch?v=ci0FH73lbCs) | Glasp transcript archive; speaker introduces herself as Camila |
+| 2026-01-15 | [Why Most People Will Lose Their Crypto Wealth (Even If They're Right)](https://www.youtube.com/watch?v=cxeX_eu_2H0) | Glasp transcript archive; speaker introduces herself as Camila |
+| 2026-03-03 | [XRP Was Built for What's Coming](https://www.youtube.com/watch?v=ywQEoYPzhlQ) | Direct YouTube result by Kamilah Stevenson |
+| 2026-03-06 | [Something Just Broke in Global Finance — And It's Connected to XRP](https://www.youtube.com/watch?v=iwhpNT73zpk) | Direct YouTube result by Kamilah Stevenson |
+| 2026-03-19 | [How Much XRP Do You ACTUALLY Need?](https://www.youtube.com/watch?v=rv0BAV0vLgo) | Glasp transcript archive by Kamilah Stevenson |
+
+Excluded from personal-channel inventory: [Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet](https://www.youtube.com/watch?v=5DzBk8DfoLs), because the YouTube byline is Alina X; this is a third-party video featuring/attributing commentary to Kamilah, not an upload by her channel.
+
+The CryptoKrios page assigns an 82/100 trust score but explicitly says there is no meaningful verified prediction-accuracy figure and lists several missed targets. That score is not used as forecast-performance evidence. Sources: [creator profile](https://cryptokrios.com/creators/kamilah-stevenson), [direct channel video](https://www.youtube.com/watch?v=pmJTrXJQ8Vw), [direct channel video](https://www.youtube.com/watch?v=ywQEoYPzhlQ), [direct channel video](https://www.youtube.com/watch?v=iwhpNT73zpk).
 
 ## Prediction-engine readiness
 
