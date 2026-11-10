@@ -26,7 +26,10 @@ import base64
 import logging
 import argparse
 from pathlib import Path
-from barrot_agent.orchestration.repository_repair_loop import run_repository_repair_loop
+from barrot_agent.orchestration.repository_repair_loop import (
+    assert_clean_feature_worktree,
+    run_repository_repair_loop,
+)
 
 import httpx
 from rich import print
@@ -519,10 +522,17 @@ def main():
         console.print(
             "[yellow]Starting explicitly authorized local repair loop...[/yellow]"
         )
+        try:
+            safe_workspace = assert_clean_feature_worktree(
+                ".",
+                default_branch=repo.default_branch,
+            )
+        except ValueError as exc:
+            raise SystemExit(f"Local repair blocked: {exc}") from exc
         repair_report = run_repository_repair_loop(
             repo=repo,
             llm=llm,
-            workspace=".",
+            workspace=safe_workspace,
             output_dir="data/repository_repair",
             max_subsystems=3,
         )
