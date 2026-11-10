@@ -127,7 +127,7 @@ ENDPOINTS = (
     ("morpho_cbxrp_market_liquidity", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/liquidity"),
     ("morpho_cbxrp_market_state_history", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state/history?lookback=thirty_days"),
     ("morpho_cbxrp_oracle_state", "https://api.morpho.org/v0/oracles/8453:0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde/state"),
-    ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/cbxrp/proof-of-reserves"),
+    ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"),
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
     ("xrpl_inftf_server_info", "https://xrplcluster.com/"),

@@ -2884,3 +2884,9 @@ def test_morpho_market_liquidity_rejects_missing_or_non_integer_fields():
     payload["data"]["market_liquidity"] = "-1"
     with pytest.raises(XRPIngestionError, match="market_liquidity"):
         PARSERS[source_id](payload, source_id=source_id, url=url, digest="e" * 64, captured=captured)
+
+
+def test_coinbase_cbxrp_proof_of_reserves_uses_redirectless_locale_route():
+    assert dict(ENDPOINTS)["coinbase_cbxrp_proof_of_reserves"] == (
+        "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"
+    )
