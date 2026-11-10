@@ -404,7 +404,11 @@
     "headers_preserved": false,
     "sha256_source_receipts_created": false,
     "model_admission": false,
-    "reason": "Rendered web pages and public exchange API pages were used; raw HTTP bodies and headers were not captured. No source hashes are fabricated."
+    "reason": "Rendered web pages and public exchange API pages were used; raw HTTP bodies and headers were not captured. No source hashes are fabricated.",
+    "source_url_corrections": {
+      "corrected": true,
+      "note": "Replaced previously guessed institutional URLs with verified SEC, OCC, Circle, Coinbase, Ripple and SBI source URLs. Raw HTTP bytes and response headers remain unpreserved; no SHA-256 source receipts are claimed."
+    }
   },
   "safety": {
     "merge": false,
@@ -423,10 +427,10 @@
   "institutional_network_addendum": {
     "sources": {
       "circle_q3_2026_10q": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
-      "coinbase_q3_2026_10q": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000089/coin-20260930.htm",
-      "coinbase_q3_2026_deck": "https://investor.coinbase.com/static-files/7a8f3e24-6d2e-4c4a-8f5a-2026-q3-earnings-presentation",
+      "coinbase_q3_2026_10q": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "coinbase_q3_2026_deck": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
       "circle_usdc_supply": "https://www.circle.com/usdc",
-      "arc_mainnet": "https://www.circle.com/pressroom/arc-mainnet-launch",
+      "arc_mainnet": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
       "sbi_circle_equity": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
       "sbi_circle_jv": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
       "sbi_jpysc_lending": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
@@ -435,9 +439,17 @@
       "sbi_ripple_asia": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
       "sbi_tokenized_deposits_xrpl": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
       "sbi_ripple_stake": "https://www.sbigroup.co.jp/english/others/newyear/2026.html",
-      "coinbase_rlusd": "https://www.coinbase.com/blog/coinbase-adds-rlusd",
-      "ripple_prime_rlusd": "https://ripple.com/insights/hidden-road-rlusd-collateral",
-      "standard_chartered_rlusd": "https://www.sc.com/en/press-release/standard-chartered-to-provide-custody-for-ripple-usd/"
+      "coinbase_rlusd": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "ripple_prime_rlusd": "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/",
+      "standard_chartered_rlusd": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "sbi_ripple_asia_shareholding_presentation": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+      "ripple_q3_2026": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "ripple_national_trust_announcement": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "circle_q2_2026_results": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "occ_public_index": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "coinbase_occ_cas": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "occ_genius_final_rule": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "orderbook_depth": "https://edgeornot.com/order-book-heatmap/xrp"
     },
     "circle": {
       "q3_2026": {
@@ -500,10 +512,14 @@
         "share_of_average_usdc_market_cap_pct": 30,
         "off_platform_average_usdc_usd": 51000000000,
         "assets_on_platform_usd": 376600000000,
-        "circle_agreement": "Renewed on same terms in 2026"
+        "circle_agreement": "Renewed on same terms in 2026",
+        "customer_assets_on_platform_usd": 376600000000,
+        "xrp_specific_aop": "Not separately disclosed; grouped under Other if present, with no single Other asset above 5% of total AOP.",
+        "xrp_specific_customer_collateral": "Not separately disclosed in the reviewed 10-Q.",
+        "deck_claim": "Coinbase management said it captured approximately 50% of USDC economics over the prior year; treat as a company claim, not independently reconciled."
       },
       "disclosure": "Coinbase's Q3 2026 AOP table does not separately disclose XRP; it groups various crypto assets and payment stablecoins as Other, none individually exceeding 5% of total AOP. No XRP-specific customer-collateral amount was disclosed.",
-      "accounting_caution": "Coinbase's stablecoin revenue and Circle's distribution costs to Coinbase are different accounting measures and must not be equated or netted."
+      "accounting_caution": "SEC 10-Q stablecoin revenue is not directly reconcilable to Circle's distribution-cost line; do not net the two."
     },
     "sbi": {
       "circle_equity_investment": {
@@ -568,7 +584,22 @@
       "rlusd_on_coinbase": "Retail, Exchange and Prime access announced in 2026; Coinbase Global Exchange collateral integration was described as future work, not verified live.",
       "prime_collateral": "Ripple Prime/Hidden Road announced RLUSD collateral use across prime-brokerage products; public utilization/volume not disclosed.",
       "custody_and_collateral": "Ripple National Trust final OCC approval is a custody/reserve-management development; Standard Chartered RLUSD custody is live, while LMAX collateral mirroring was described as planned.",
-      "xrp_caveat": "RLUSD collateral, USDC settlement, XRPL tokenized deposits and XRP bridge-currency use are distinct exposures."
+      "xrp_caveat": "RLUSD collateral, USDC settlement, XRPL tokenized deposits and XRP bridge-currency use are distinct exposures.",
+      "company_reported_q3_2026": {
+        "source": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+        "annualized_product_revenue_run_rate_claim_usd": 900000000,
+        "payout_markets_claim": 60,
+        "lifetime_volume_claim_usd": 150000000000,
+        "institution_customer_count_claim": 1700,
+        "rlusd_market_cap_claim_usd": 2600000000,
+        "rlusd_use_claims": [
+          "Ripple Prime collateral",
+          "on-chain repo markets",
+          "Ripple Treasury 24/7 Returns"
+        ],
+        "status": "COMPANY_REPORTED_NOT_AUDITED_IN_THIS_RESEARCH_RUN",
+        "caution": "Product transaction volume and RLUSD supply are not XRP spot flows or XRP demand."
+      }
     },
     "relationship_hypotheses": {
       "complement": "USDC/RLUSD issuance on XRPL and tokenized-deposit use may expand XRPL activity and liquidity, potentially creating ecosystem benefits.",
@@ -580,7 +611,7 @@
         "venue-level order-book depth and execution cost",
         "stablecoin mint/burn and bridge flows"
       ],
-      "current_conclusion": "No evidence in these announcements alone establishes incremental XRP spot demand."
+      "current_conclusion": "Circle/Coinbase/SBI stablecoin distribution and Arc validator relationships are well evidenced; Ripple/SBI ODL is a separate XRP-bridge use case. Stablecoin and XRPL tokenization announcements do not prove incremental XRP demand. Measure corridor conversion legs, XRP inventories, asset-specific on-chain flows and venue execution."
     },
     "workflow_failure_triage": {
       "main_pillars_consistency_check": {
@@ -610,6 +641,143 @@
       "source_hash_receipts_created": false,
       "model_admission": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    "market_depth": {
+      "source": "Edge or Not real-order-book heatmap",
+      "observed_utc": "2026-11-10T00:07:00Z",
+      "mid_usd": 1.1009,
+      "within_1pct": {
+        "bids_usd": 9400000,
+        "asks_usd": 8600000,
+        "bid_share_pct": 52.22,
+        "bid_ask_ratio": 1.093
+      },
+      "largest_ask_walls": [
+        {
+          "price_usd": 1.1042,
+          "size_usd": 1500000,
+          "distance_pct": 0.3
+        },
+        {
+          "price_usd": 1.1031,
+          "size_usd": 1100000,
+          "distance_pct": 0.2
+        },
+        {
+          "price_usd": 1.102,
+          "size_usd": 2200000,
+          "distance_pct": 0.1
+        }
+      ],
+      "largest_bid_walls": [
+        {
+          "price_usd": 1.0998,
+          "size_usd": 1600000,
+          "distance_pct": -0.1
+        },
+        {
+          "price_usd": 1.0976,
+          "size_usd": 1600000,
+          "distance_pct": -0.3
+        },
+        {
+          "price_usd": 1.0954,
+          "size_usd": 1400000,
+          "distance_pct": -0.5
+        }
+      ],
+      "methodology": "Binance spot and OKX XRP-USDT perpetual, full visible depth sampled each minute, averaged per 15 minutes, grouped in 0.05% buckets and converted to USD; within ±1.5%.",
+      "limitations": [
+        "spot and perpetual books are combined",
+        "other exchanges excluded",
+        "hidden/iceberg orders excluded",
+        "orders can be cancelled or spoofed",
+        "provider states its order-book signal has not been tested"
+      ],
+      "model_admission": false
+    },
+    "regulatory": {
+      "occ_public_index_observed": "2026-11-10",
+      "coinbase_national_trust": {
+        "status": "REGULATOR_VERIFIED_APPROVED_AND_CONSUMMATED",
+        "cas_control_number": "2025-Charter-343449",
+        "charter_number": 25390,
+        "approved": "2026-04-02",
+        "consummated_effective": "2026-11-06",
+        "trust_powers_requested": true,
+        "source": "OCC Corporate Applications Search"
+      },
+      "ripple_national_trust": {
+        "company_statement": "Ripple announced final OCC approval on 2026-10-26.",
+        "occ_public_index": "The OCC Interpretations & Decisions index still lists Conditional Approval 1359 dated 2025-12-12 as preliminary conditional approval; no final decision record surfaced in the index during this run.",
+        "classification": "COMPANY_REPORTED_FINAL_APPROVAL_NOT_INDEPENDENTLY_CONFIRMED_BY_PUBLIC_OCC_FINAL_ORDER"
+      },
+      "circle_national_trust": {
+        "company_statement": "Circle's 2026-08-05 Q2 results say Circle received final OCC approval to establish Circle National Trust.",
+        "occ_public_index": "No separate Circle National Trust final decision entry surfaced in the public OCC index during this run.",
+        "classification": "COMPANY_REPORTED_FINAL_APPROVAL_NOT_INDEPENDENTLY_CONFIRMED_BY_PUBLIC_OCC_FINAL_ORDER"
+      },
+      "genius_act_final_rule": {
+        "issued": "2026-10-21",
+        "effective": "2027-01-18",
+        "applications": "OCC says it will separately announce when it begins accepting/processing applications and waiver requests.",
+        "source": "OCC News Release 2026-92"
+      },
+      "interpretation": "Do not treat the Circle or Ripple trust-bank final-approval claims as regulator-index verified until a final OCC order is publicly located. Coinbase's charter is directly confirmed by OCC CAS. Trust charters are not deposit-taking bank status, stablecoin issuance approval, or evidence of XRP collateral."
     }
+  },
+  "market_depth": {
+    "source": "Edge or Not real-order-book heatmap",
+    "observed_utc": "2026-11-10T00:07:00Z",
+    "mid_usd": 1.1009,
+    "within_1pct": {
+      "bids_usd": 9400000,
+      "asks_usd": 8600000,
+      "bid_share_pct": 52.22,
+      "bid_ask_ratio": 1.093
+    },
+    "largest_ask_walls": [
+      {
+        "price_usd": 1.1042,
+        "size_usd": 1500000,
+        "distance_pct": 0.3
+      },
+      {
+        "price_usd": 1.1031,
+        "size_usd": 1100000,
+        "distance_pct": 0.2
+      },
+      {
+        "price_usd": 1.102,
+        "size_usd": 2200000,
+        "distance_pct": 0.1
+      }
+    ],
+    "largest_bid_walls": [
+      {
+        "price_usd": 1.0998,
+        "size_usd": 1600000,
+        "distance_pct": -0.1
+      },
+      {
+        "price_usd": 1.0976,
+        "size_usd": 1600000,
+        "distance_pct": -0.3
+      },
+      {
+        "price_usd": 1.0954,
+        "size_usd": 1400000,
+        "distance_pct": -0.5
+      }
+    ],
+    "methodology": "Binance spot and OKX XRP-USDT perpetual, full visible depth sampled each minute, averaged per 15 minutes, grouped in 0.05% buckets and converted to USD; within ±1.5%.",
+    "limitations": [
+      "spot and perpetual books are combined",
+      "other exchanges excluded",
+      "hidden/iceberg orders excluded",
+      "orders can be cancelled or spoofed",
+      "provider states its order-book signal has not been tested"
+    ],
+    "model_admission": false
   }
 }

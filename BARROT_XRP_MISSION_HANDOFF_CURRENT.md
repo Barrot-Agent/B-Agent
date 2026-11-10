@@ -4832,3 +4832,45 @@ Main's full CI passed 718 tests and 8 subtests; the six-manifest dependency audi
 Circle, Coinbase and SBI have a deeply integrated stablecoin distribution and settlement strategy. Ripple and SBI have a separate XRP remittance relationship and a separate XRPL technology partnership. Arc adds a Circle-led USDC-native L1 with SBI as validator and Coinbase as an exchange participant. These relationships establish infrastructure and distribution, not automatic XRP buying demand.
 
 The decisive evidence still needed is measured XRP bridge-currency volume, corridor conversion legs, venue inventory/flows, on-chain XRP asset-specific payment activity and public collateral balances. Forecast remains **NOT_ISSUED**.
+
+
+## Run 105 final research correction — depth, Arc economics and regulator-record reconciliation
+
+### Visible XRP order-book depth
+
+Edge or Not's observed-book snapshot at 2026-11-10 00:07 UTC showed a $1.1009 mid, $9.4M bids and $8.6M asks within 1%. The largest nearby ask wall was $2.2M at $1.1020; nearby bids included $1.6M at $1.0998 and $1.6M at $1.0976. The feed combines Binance spot with OKX perpetual depth, averages minute samples over 15 minutes, excludes other venues and hidden size, and warns that orders can be cancelled or spoofed. Its own documentation says this order-book signal has not been tested. It is observed resting liquidity, not executable depth or a forecast signal. [Method and snapshot](https://edgeornot.com/order-book-heatmap/xrp).
+
+### Source URL corrections
+
+The Run105 JSON artifact now uses verified URLs for the Coinbase Q3 2026 10-Q and earnings deck, Circle Arc mainnet release, Coinbase RLUSD listing, Ripple/Hidden Road collateral announcement, Standard Chartered RLUSD custody announcement, SBI releases and the OCC records. The previous placeholder-style Coinbase/Circle/Ripple URLs have been replaced. Raw HTTP bytes were not captured, so source SHA-256 receipts are still not claimed.
+
+### Regulatory status correction
+
+Earlier handoff wording treated Ripple's and Circle's national trust-bank final approvals as regulator-verified. Correct the evidence classification:
+
+- Coinbase National Trust Company is directly confirmed in OCC Corporate Applications Search: charter 25390, trust powers requested, approved April 2, 2026 and consummated/effective November 6, 2026.
+- Ripple announced final OCC approval on October 26, 2026. However, the OCC's public Interpretations & Decisions index still lists only Preliminary Conditional Approval 1359 dated December 12, 2025 for the proposed Ripple National Trust Bank. No final OCC order surfaced in the public index during this run. Classify Ripple's final approval as **company-reported; regulator-index confirmation pending**.
+- Circle's August 5, 2026 Q2 results say Circle received final OCC approval for Circle National Trust. No separate Circle final decision entry surfaced in the same public OCC index during this run. Classify it as **company-reported; regulator-index confirmation pending**.
+- The OCC's GENIUS Act final rule was issued October 21, 2026 and takes effect January 18, 2027. The OCC says it will separately announce when it begins accepting and processing issuer applications and waiver requests. Do not treat the rule as already effective or as an automatic issuer approval.
+
+This correction preserves the distinction between issuer statements and regulator records. Coinbase's charter is regulator-verified; Circle and Ripple final-approval claims remain company-reported pending a public final OCC order.
+
+### Institutional capital and network interpretation
+
+Circle's Q3 filing reports $242.2M of ARC token presale proceeds received in the nine months ended September 30, 2026, with $181.8M recognized as revenue and $60.4M deferred. Circle's Japan JV with SBI is 50/50, approximately $1.5M contributed by each party, with no significant operating results as of September 30. Circle's USDC supply was $73.879B at September 30 and $69.2B on November 5, approximately 6.3% lower; no cause is attributed.
+
+Coinbase's Q3 2026 10-Q reports $306.9M stablecoin revenue for Q3 and $904.5M for nine months. Its Q3 deck shows average USDC held on Coinbase products of about $22B, around 30% of $73B average USDC market capitalization, with approximately $51B off-platform. Circle's $331.3M Q3 and $986.6M nine-month Coinbase distribution-cost figures are a different accounting measure; do not net or equate them.
+
+SBI VC Trade reported JPYSC lending balances above ¥10B and total handled JPYSC balances above ¥30B as of November 2. SBI Group is a founding validator on Circle Arc; Coinbase is an exchange participant. Arc uses USDC for gas and launched with a permissioned validator set. This is a competing/complementary stablecoin settlement network, not an XRP payment corridor.
+
+Ripple's October 28 company announcement claims approximately $900M annualized product revenue run-rate, 60+ payout markets, nearly $150B lifetime volume, 1,700+ institutional customers and RLUSD market capitalization of $2.6B. These are company-reported figures, not independently audited XRP flows. Ripple says RLUSD is used in Ripple Prime collateral and on-chain repo markets; no utilization volume was disclosed.
+
+### Workflow failures and integrated status
+
+Main CI passed 718 tests and 8 subtests; the six-manifest dependency audit passed. The integration branch's exact code/test head `23cf9ee` passed 1,316 tests, 8 subtests and 59.36% coverage; the subsequent Run105 research handoff/artifact head `a486efc` also passed the full suite, dependency audit and fail-closed gate. The final source-correction descendant still requires its own exact-head CI.
+
+Main's scheduled Pillars Consistency Check remains blocked by missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR; it is left fail-closed. The integration branch contains a root-working-directory correction for Hover Bike artifact generation and adds `pydantic-settings` to the Riemann Harvest workflow; neither scheduled workflow has been dispatched on the PR branch, so those workflow-level fixes are not yet verified.
+
+### Forecast and safety
+
+Forecast remains **NOT_ISSUED**. No raw-source hashes were fabricated, no model admission occurred, and no merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer or real-money action occurred.
