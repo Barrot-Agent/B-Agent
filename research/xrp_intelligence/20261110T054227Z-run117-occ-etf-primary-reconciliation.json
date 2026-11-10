@@ -1,0 +1,284 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "run_id": "run117",
+  "captured_at_utc": "2026-11-10T05:42:27Z",
+  "supersedes_or_corrects_run116": true,
+  "mission_priority": 1,
+  "preserved_foundation": "Barrot V3 execution, orchestration, safety, permissions, evidence verification and fail-closed controls",
+  "repository_state_before_run117_commit": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "integration_head": "038af71b074ddd51421f81790da5ade84bfe3793",
+    "pr1640": {
+      "state": "open",
+      "draft": false,
+      "mergeable": true,
+      "ahead": 902,
+      "behind": 0,
+      "changed_paths": 236
+    },
+    "open_prs": 372,
+    "drafts": 356,
+    "non_drafts": 16
+  },
+  "exact_head_verification": {
+    "head": "038af71b074ddd51421f81790da5ade84bfe3793",
+    "full_ci": {
+      "run_id": 42763421873,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42763421873",
+      "conclusion": "success",
+      "tests_passed": 1347,
+      "tests_failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.48,
+      "coverage_floor_percent": 53,
+      "wheel_build": "PASS",
+      "installed_wheel": "PASS",
+      "mission_resource": "PASS",
+      "barrot_v3_import": "PASS"
+    },
+    "core_tests": {
+      "conclusion": "success",
+      "tests_passed": 677,
+      "subtests_passed": 8
+    },
+    "dependency_audit": {
+      "run_id": 42763421622,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42763421622",
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42763421634,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42763421634",
+      "conclusion": "success",
+      "automatic_merge": "DISABLED"
+    },
+    "nonfatal_warnings": [
+      "Actions cache budget read-only; cache save failed after tests and wheel verification, not a test failure.",
+      "Setuptools emitted non-fatal metadata/package-discovery warnings."
+    ]
+  },
+  "live_spot_refresh": {
+    "capture_cutoff_utc": "2026-11-10T05:39:42.905Z",
+    "kraken_xrp_usd": {
+      "last": 1.09548,
+      "bid": 1.09542,
+      "ask": 1.09543,
+      "volume_24h_xrp": 27204926.17079297,
+      "vwap_24h_usd": 1.09403156,
+      "high_24h_usd": 1.11573,
+      "low_24h_usd": 1.07502,
+      "event_time_utc": null,
+      "cache_age": null,
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "okx_xrp_usdt": {
+      "last": 1.0998,
+      "bid": 1.0997,
+      "ask": 1.0998,
+      "volume_24h_xrp": 68149849.731017,
+      "event_time_utc": "2026-11-10T05:38:47.575Z",
+      "age_seconds": 55.33,
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "kraken_usdt_usd": {
+      "last": 0.99868,
+      "event_time_utc": null,
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+    },
+    "derived_cross_quote": {
+      "okx_normalized_usd": 1.098348264,
+      "percent_vs_kraken_last": 0.2618271443,
+      "interpretation": "The OKX quote is fresh within the 300-second limit; Kraken and USDT/USD lack event timestamps. Cross-venue comparison is asynchronous and not an executable arbitrage opportunity."
+    },
+    "synchronized_pure_spot_l2": "NOT_CAPTURED; direct public order-book endpoints were inaccessible through the web renderer. Do not substitute a stale combined spot/perpetual heatmap."
+  },
+  "etf_primary_reconciliation": {
+    "secondary_tracker": {
+      "publisher": "CryptoETF.today",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "session": "2026-11-09",
+      "flow_usd": -10300000,
+      "reported_funds": 3,
+      "scope_funds": 5,
+      "rows": [
+        {
+          "ticker": "XRP",
+          "flow_usd": -9400000
+        },
+        {
+          "ticker": "XRPC",
+          "flow_usd": -700000
+        },
+        {
+          "ticker": "TOXR",
+          "flow_usd": -200000
+        }
+      ],
+      "unreported": [
+        "XRPZ",
+        "GXRP"
+      ],
+      "method": "Net creations/redemptions estimated from daily fund data; tracker calls day partial."
+    },
+    "canary_primary": {
+      "url": "https://canaryetfs.com/trxs/",
+      "as_of": "2026-11-09",
+      "ticker": "XRPC",
+      "xrp_quantity": 242962753.64,
+      "net_assets_usd": 285986592,
+      "shares_outstanding": 22920000,
+      "previous_daily_table": {
+        "date": "2026-11-06",
+        "net_assets_usd": 286858926.41,
+        "shares_outstanding": 22990000
+      },
+      "interpretation": "Sponsor holdings and share-count disclosure support a 70,000-share reduction between displayed dates; it does not independently confirm the tracker’s exact -$0.7M flow or a precise XRP sale quantity."
+    },
+    "twentyone_shares_primary": {
+      "url": "https://www.21shares.com/en-us/products-us/toxr",
+      "as_of": "2026-11-09",
+      "ticker": "TOXR",
+      "aum_usd": 117095818.31,
+      "nav_usd": 10.65,
+      "shares_outstanding": 11000000,
+      "previous_reported_shares": "11020000 at 2026-11-06 in earlier issuer-linked capture",
+      "interpretation": "The 20,000-share decrease implies an approximate redemption notional near $213,000 at the Nov 9 NAV, broadly consistent with the secondary tracker’s -$0.2M estimate; exact cash/in-kind settlement is not disclosed in this page."
+    },
+    "bitwise_primary": {
+      "url": "https://bitxrpetf.com/",
+      "as_of": "2026-11-05",
+      "xrp_quantity": 415365129.04,
+      "market_value_usd": 488726918.14,
+      "interpretation": "Issuer page is stale relative to Nov 9; it does not verify the secondary tracker’s -$9.4M Nov 9 Bitwise flow."
+    },
+    "coverage_rule": "The -$10.3M remains partial secondary flow data, not a complete five-fund total or a fully reconciled issuer cash-redemption series. Keep holdings, shares outstanding, NAV, AUM and estimated cash flows separate."
+  },
+  "occ_charter_correction": {
+    "status": "PRIMARY OCC CAS RECORDS NOW CONFIRM ALL THREE NATIONAL TRUST CHARTERS AS CONSUMMATED/EFFECTIVE.",
+    "ripple": {
+      "entity": "Ripple National Trust Bank",
+      "charter": 25364,
+      "control_number": "2025-Charter-342347",
+      "approved": "2025-12-12",
+      "consummated_effective": "2026-10-26",
+      "occ_cas": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "company_scope": "Ripple says RNTB is approved for segregated RLUSD reserve management, collateral-trustee functions and fiduciary digital-asset custody. RLUSD issuance continues through Standard Custody & Trust Company, Ripple’s NYDFS-regulated limited-purpose trust company; RNTB does not itself issue RLUSD.",
+      "company_release": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/"
+    },
+    "circle": {
+      "entity": "First National Digital Currency Bank, N.A. (operating as Circle National Trust)",
+      "charter": 25361,
+      "control_number": "2025-Charter-342299",
+      "approved": "2025-12-12",
+      "consummated_effective": "2026-07-24",
+      "occ_cas": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "company_release": "https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank",
+      "scope": "Fiduciary digital-asset custody for Circle and affiliates at opening; USDC reserve management is a future capability. OCC decision says the national trust bank itself will not issue USDC; issuance is to remain with Circle’s NY limited-purpose trust company."
+    },
+    "coinbase": {
+      "entity": "Coinbase National Trust Company",
+      "charter": 25390,
+      "control_number": "2025-Charter-343449",
+      "approved": "2026-04-02",
+      "consummated_effective": "2026-11-06",
+      "occ_cas": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "scope": "National trust charter is distinct from Coinbase exchange and does not establish proprietary XRP holdings or collateral use."
+    },
+    "correction": "Run115/Run116 wording that Ripple/Circle final approval was company-reported pending regulator-index confirmation is superseded. OCC CAS now explicitly records Consummated/Effective dates for Ripple, Circle and Coinbase.",
+    "limits": "A national trust charter is not a retail deposit-taking or lending bank charter. Charter effectiveness does not prove operating launch, XRP balances, collateral utilization or settlement throughput."
+  },
+  "institutional_network": {
+    "ripple_bny": {
+      "date": "2026-10-27",
+      "source": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "verified": "BNY says it now supports XRP and RLUSD on Digital Asset Custody; BNY remains primary reserve custodian for RLUSD; direct RLUSD mint/redeem through BNY and tokenized trade-finance expansion are future intended work subject to approvals/client requirements.",
+      "c2fo": "Ripple/BNY/C2FO are exploring a supply-chain finance initiative; not live production throughput."
+    },
+    "coinbase_ripple": {
+      "date": "2026-10-28",
+      "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "verified": "RLUSD live on Coinbase Prime, Coinbase Exchange and Coinbase app; deposits/withdrawals across XRPL, Base and Ethereum; USD conversion 1:1. Coinbase Global Exchange collateral support is explicitly future/follow-on, not live at launch."
+    },
+    "interpretation": "Ripple, Circle and Coinbase now each have OCC-effective national trust-bank entities, but their roles differ. Ripple’s bank is a reserve collateral trustee/custodian; Circle’s bank begins with affiliate custody while reserve management is future; Coinbase’s bank is a separate custody entity. None of these facts proves XRP proprietary buying or XRP collateral utilization."
+  },
+  "identity_and_prediction": {
+    "sbic": "SBIC East/Central/West remain Tokyo/Nagoya/Osaka regional investment-consultation companies, not SBI Holdings. Tokyo SBIC’s ChatGPT/Copilot training is not an OpenAI partnership.",
+    "ask": "Permission ASK is the strongest candidate for ASK Coin; official docs describe 100B fixed supply, family rewards, consent-based AI/data exchange and A2A coordination on Base/Polygon via LayerZero OFT. No XRP integration found; inactive Ask Coin exchange listing is a separate entity.",
+    "actual_capital": "Not a standardized metric; cash, in-kind XRP, debt, drawn facility, contingent capacity and secondary resales remain separate.",
+    "kamilah": "Person identity supported; exact handle-to-channel-ID mapping remains unverified. Verified personal-channel video count remains zero; ten candidate references are not a verified inventory. Run115’s channel-level wording is superseded by Run116 correction.",
+    "forecast_status": "NOT_ISSUED",
+    "model_admitted_run117_web_data": false
+  },
+  "source_independence": [
+    "Kraken and OKX are distinct exchanges but asynchronous; Kraken lacks provider event time.",
+    "CryptoETF.today is a secondary flow estimator; its Nov 9 partial is only 3/5 funds. Canary and 21Shares issuer pages expose holdings/share counts that help reconcile, but do not independently prove exact cash settlement.",
+    "Coinbase, Ripple, Circle and BNY press releases are primary company statements about their own products; OCC CAS is the regulator source for charter status.",
+    "Custody availability, reserve management, collateral-trustee role, token issuance and XRP bridge settlement are distinct functions."
+  ],
+  "provenance": {
+    "web_rendered_responses_not_original_wire_bytes": true,
+    "raw_http_wire_bytes_preserved": false,
+    "raw_hashes_created": false,
+    "model_admitted": false,
+    "source_event_time_separate_from_capture_time": true
+  },
+  "sources": [
+    {
+      "id": "occ_ripple_cas",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "publisher": "OCC",
+      "group": "regulator_primary"
+    },
+    {
+      "id": "occ_circle_cas",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "publisher": "OCC",
+      "group": "regulator_primary"
+    },
+    {
+      "id": "occ_coinbase_cas",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "publisher": "OCC",
+      "group": "regulator_primary"
+    },
+    {
+      "id": "ripple_bny",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publisher": "BNY",
+      "group": "joint_primary_company_release"
+    },
+    {
+      "id": "coinbase_rlusd",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "publisher": "Coinbase",
+      "group": "company_primary"
+    },
+    {
+      "id": "cryptoetf_partial",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "publisher": "CryptoETF.today",
+      "group": "secondary_flow_estimator"
+    },
+    {
+      "id": "canary_xrpc_primary",
+      "url": "https://canaryetfs.com/trxs/",
+      "publisher": "Canary Capital",
+      "group": "issuer_primary"
+    },
+    {
+      "id": "toxr_primary",
+      "url": "https://www.21shares.com/en-us/products-us/toxr",
+      "publisher": "21Shares",
+      "group": "issuer_primary"
+    },
+    {
+      "id": "bitwise_xrp_primary",
+      "url": "https://bitxrpetf.com/",
+      "publisher": "Bitwise",
+      "group": "issuer_primary"
+    }
+  ]
+}

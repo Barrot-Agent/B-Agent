@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from barrot_agent.ingestion.riemann_harvest import (
     classify_evidence,
     merge_records,
@@ -31,3 +33,13 @@ def test_atom_parser():
     records = parse_arxiv_atom(xml)
     assert len(records) == 1
     assert records[0]["evidence_class"] == "conjecture_or_hypothesis"
+
+
+def test_scheduled_validation_installs_shared_config_dependencies():
+    workflow = (
+        Path(__file__).resolve().parents[1]
+        / ".github"
+        / "workflows"
+        / "riemann-harvest.yml"
+    ).read_text(encoding="utf-8")
+    assert "pip install --quiet pytest pydantic-settings" in workflow

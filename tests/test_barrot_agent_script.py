@@ -406,12 +406,432 @@ def test_repo_browser_open_file_is_bounded_and_confined(tmp_path: Path, monkeypa
     assert "escapes the repository root" in escaped["error"]
 
 
-def test_barrot_agent_manual_dispatch_requires_explicit_confirmation() -> None:
+def test_barrot_agent_dispatch_remains_quarantined_until_integration_gates_are_verified() -> None:
     workflow = (
         Path(__file__).resolve().parents[1] / ".github" / "workflows" / "barrot-agent.yml"
     ).read_text(encoding="utf-8")
-    assert "confirm:" in workflow
-    assert "type: boolean" in workflow
-    assert "required: true" in workflow
-    assert "default: false" in workflow
-    assert "(github.event_name == 'workflow_dispatch' && inputs.confirm == true)" in workflow
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: \u0024{{ false }}" in workflow
+    assert "confirm:" not in workflow
+    for forbidden in (
+        "schedule:",
+        "issues:",
+        "contents: write",
+        "pull-requests: write",
+        "GROQ_API_KEY",
+        "GH_TOKEN",
+        "scripts/barrot_agent.py",
+    ):
+        assert forbidden not in workflow
+
+
+def test_mission_mode_dispatches_primary_xrp_goal_without_provider_or_repository_mutation(monkeypatch, tmp_path, capsys):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_MODE", "mission")
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+
+    module = load_script_module("barrot_agent_primary_mission_dispatch_test")
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("read-only mission mode must not configure git or check out a branch")
+
+    monkeypatch.setattr(module, "configure_git", forbidden)
+    monkeypatch.setattr(module, "checkout_branch", forbidden)
+
+    module.main()
+    result = json.loads(capsys.readouterr().out)
+
+    assert result["status"] == "READY"
+    assert result["mission_id"] == "xrp_intelligence_prediction_engine"
+    assert result["priority"] == 1
+    assert result["topic_id"] == "xrp_source_provenance"
+    assert result["foundation"]["id"] == "barrot_v3"
+    assert result["provider_calls"] is False
+    assert result["repository_mutation"] is False
+    assert result["external_actions_authorized"] is False
+
+
+def test_mission_mode_advances_only_from_verified_learning_records(monkeypatch, tmp_path, capsys):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_MODE", "mission")
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    from barrot_agent.orchestration.learning_filter import LearningRecord
+    from barrot_agent.orchestration.verified_learning_store import (
+        VERIFIED_LEARNING_REASON,
+        VerifiedLearningStore,
+    )
+
+    lesson_store = tmp_path / "data" / "evolution" / "verified_lessons.jsonl"
+    lesson_store.parent.mkdir(parents=True)
+    verified_store = VerifiedLearningStore(lesson_store)
+    assert verified_store.append(
+        LearningRecord(
+            accepted=True,
+            lesson=(
+                "Goal: MISSION_TOPIC_ID: xrp_source_provenance\n"
+                "Verified findings:\n"
+                "- READ_FILE: inspected source provenance requirements.\n"
+                "- RUN_TESTS: source receipt regression tests passed."
+            ),
+            reason=VERIFIED_LEARNING_REASON,
+        )
+    )
+
+    module = load_script_module("barrot_agent_primary_mission_progress_test")
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    monkeypatch.setattr(module, "configure_git", lambda: (_ for _ in ()).throw(AssertionError("unexpected git configuration")))
+    monkeypatch.setattr(module, "checkout_branch", lambda branch: (_ for _ in ()).throw(AssertionError("unexpected checkout")))
+
+    module.main()
+    result = json.loads(capsys.readouterr().out)
+
+    assert result["status"] == "READY"
+    assert result["topic_id"] == "xrp_public_data_ingestion"
+    assert result["provider_calls"] is False
+    assert result["repository_mutation"] is False
+
+
+def test_groq_tpm_rate_limit_fails_once_without_retry_or_fallback(monkeypatch):
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setenv("BRAIN_MODEL", "openai/gpt-oss-120b")
+    module = load_script_module("barrot_agent_groq_tpm_no_retry_test")
+
+    calls: list[str] = []
+    sleeps: list[float] = []
+
+    def fake_urlopen(request, timeout=90):
+        payload = json.loads(request.data.decode("utf-8"))
+        calls.append(payload["model"])
+        body = (
+            '{"error":{"message":"Rate limit reached for model '
+            '`openai/gpt-oss-120b` on tokens per minute: Limit 8000, '
+            'Used 4116, Requested 4521. Please try again in 0.5s.",'
+            '"type":"tokens","code":"rate_limit_exceeded"}}'
+        ).encode("utf-8")
+        raise urllib.error.HTTPError(
+            module.GROQ_ENDPOINT,
+            429,
+            "Too Many Requests",
+            {},
+            io.BytesIO(body),
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+    monkeypatch.setattr(module.time, "sleep", lambda *_args, **_kwargs: pytest.fail("TPM failure must not wait/retry"))
+
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request(
+            {
+                "model": "openai/gpt-oss-120b",
+                "messages": [{"role": "user", "content": "test"}],
+                "max_tokens": 128,
+            }
+        )
+
+    assert calls == ["openai/gpt-oss-120b"]
+    assert sleeps == []
+
+
+
+
+def test_groq_tpm_http_413_fails_once_without_fallback(monkeypatch):
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setenv("BRAIN_MODEL", "openai/gpt-oss-120b")
+    module = load_script_module("barrot_agent_groq_tpm_413_no_fallback_test")
+
+    calls: list[str] = []
+
+    def fake_urlopen(request, timeout=90):
+        payload = json.loads(request.data.decode("utf-8"))
+        calls.append(payload["model"])
+        body = (
+            '{"error":{"message":"Rate limit reached for model '
+            'openai/gpt-oss-120b. Tokens per minute (TPM): '
+            'Limit 8000, Requested 11534, Used 0."}}'
+        ).encode("utf-8")
+        raise urllib.error.HTTPError(
+            module.GROQ_ENDPOINT,
+            413,
+            "Content Too Large",
+            {},
+            io.BytesIO(body),
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request(
+            {
+                "model": "openai/gpt-oss-120b",
+                "messages": [{"role": "user", "content": "test"}],
+                "max_tokens": 128,
+            }
+        )
+
+    assert calls == ["openai/gpt-oss-120b"]
+
+def test_deterministic_rate_limit_report_is_explicitly_blocked_and_read_only(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_deterministic_rate_limit_report_test")
+
+    error = RuntimeError(
+        "Groq HTTP 413: Rate limit reached for openai/gpt-oss-120b; "
+        "Tokens per minute (TPM): Limit 8000, Requested 11534, Used 0."
+    )
+    assert module._is_groq_rate_limit_error(error)
+
+    report = module._build_deterministic_rate_limit_report(
+        task_title="Repository-wide integration audit",
+        issue_number="1652",
+        error=error,
+        audit_context={
+            "inventory": "tracked repository inventory",
+            "github_context": "PR #1640 and PR #1643",
+            "file_context": "read-only file excerpts",
+            "directory_context": "top-level tree",
+        },
+        snapshot={"head": "abc123", "working_tree": "clean", "actions": {"runs": []}},
+    )
+
+    assert "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`" in report
+    assert "Repository-wide integration audit" in report
+    assert "#1652" in report
+    assert "PR #1640 and PR #1643" in report
+    assert "No repository source file was changed" in report
+    assert "Repository repair is **not complete**" in report
+
+
+def test_bundle_provider_rate_limit_posts_deterministic_snapshot_without_starting_repair(
+    monkeypatch, tmp_path
+):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_BODY", "Implement the requested repository improvement.")
+    monkeypatch.setenv("TASK_TITLE", "Continue Barrot integration")
+    monkeypatch.setenv("TASK_MODE", "engineering")
+    monkeypatch.setenv("ISSUE_NUMBER", "1652")
+    monkeypatch.setenv("BRANCH", "barrot/task-1652")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+
+    module = load_script_module("barrot_agent_bundle_rate_limit_fallback_test")
+    calls: dict[str, object] = {}
+
+    class FakeBundleController:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def run(self, **kwargs):
+            raise RuntimeError(
+                "Groq HTTP 429: rate_limit_exceeded; tokens per minute limit exhausted."
+            )
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("rate-limit fallback must not start repository repair or PR creation")
+
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
+    monkeypatch.setattr(module, "configure_git", lambda: None)
+    monkeypatch.setattr(module, "checkout_branch", lambda branch: None)
+    monkeypatch.setattr(
+        module,
+        "build_audit_context",
+        lambda title, body: {
+            "inventory": "tracked files",
+            "github_context": "PR #1640",
+            "file_context": "read-only excerpts",
+            "directory_context": "repository tree",
+        },
+    )
+    monkeypatch.setattr(
+        module,
+        "build_read_only_audit_snapshot",
+        lambda: {"head": "abc123", "working_tree": "clean"},
+    )
+    monkeypatch.setattr(
+        module,
+        "post_issue_comment",
+        lambda message: calls.setdefault("comment", message),
+    )
+    monkeypatch.setattr(module, "RepositoryRepairController", forbidden)
+    monkeypatch.setattr(module, "WorkQueueController", forbidden)
+    monkeypatch.setattr(module, "create_pull_request", forbidden)
+
+    with pytest.raises(SystemExit):
+        module.main()
+
+    report = calls["comment"]
+    assert "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`" in report
+    assert "PR #1640" in report
+    assert "No repository source file was changed" in report
+    assert "Repository repair is **not complete**" in report
+
+
+def test_script_brain_bounds_old_history_and_tool_results_before_each_request(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_context_budget_test")
+    workspace = tmp_path / "repo"
+    workspace.mkdir()
+    payloads: list[dict[str, object]] = []
+
+    def sender(payload: dict[str, object]) -> dict[str, object]:
+        payloads.append(json.loads(json.dumps(payload)))
+        if len(payloads) == 1:
+            return {
+                "choices": [{
+                    "message": {
+                        "role": "assistant",
+                        "content": "",
+                        "tool_calls": [{
+                            "id": "budget-call",
+                            "type": "function",
+                            "function": {
+                                "name": "repo_browser.search",
+                                "arguments": json.dumps({"query": "BUDGET_TEST"}),
+                            },
+                        }],
+                    }
+                }]
+            }
+        return {"choices": [{"message": {"role": "assistant", "content": "done"}}]}
+
+    brain = module.ScriptBrain(
+        request_sender=sender,
+        repo_root=workspace,
+        max_tool_rounds=2,
+        max_request_tokens=6500,
+        max_tool_result_chars=1800,
+        token_budget=module.SlidingWindowTokenBudget(max_tokens=14000),
+    )
+    brain.tool_funcs["repo_browser.search"] = lambda _arguments: "TOOL_RESULT_START" + ("z" * 10000)
+    history = [
+        {"role": "user" if index % 2 == 0 else "assistant", "content": f"OLD-HISTORY-{index}-" + ("x" * 2500)}
+        for index in range(12)
+    ]
+
+    result = brain.think(
+        "CURRENT_TASK_SENTINEL",
+        history=history,
+        system="SYSTEM_SAFETY_SENTINEL",
+        use_tools=True,
+    )
+
+    assert result == "done"
+    assert len(payloads) == 2
+    for payload in payloads:
+        assert module._estimate_groq_request_tokens(payload) <= brain.max_request_tokens
+        combined = json.dumps(payload["messages"])
+        assert "SYSTEM_SAFETY_SENTINEL" in combined
+        assert "CURRENT_TASK_SENTINEL" in combined
+        assert "OLD-HISTORY-0-" not in combined
+    tool_messages = [item for item in payloads[1]["messages"] if item.get("role") == "tool"]
+    assert len(tool_messages) == 1
+    assert len(tool_messages[0]["content"]) <= 1800
+    assert "[TRUNCATED by Barrot request budget" in tool_messages[0]["content"]
+    assert brain.last_budget_stats["total_dropped_messages"] > 0
+
+
+def test_script_brain_fails_closed_when_required_system_and_task_context_exceeds_budget(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_required_context_budget_test")
+    calls: list[dict[str, object]] = []
+    brain = module.ScriptBrain(
+        request_sender=lambda payload: calls.append(payload) or {"choices": [{"message": {"content": "{}"}}]},
+        repo_root=tmp_path,
+        enable_tools=False,
+        max_request_tokens=100,
+    )
+
+    with pytest.raises(RuntimeError, match="LLM_CONTEXT_BUDGET_EXCEEDED"):
+        brain.think("CURRENT_TASK-" + ("x" * 2000), system="SYSTEM-" + ("s" * 1000), use_tools=False)
+
+    assert calls == []
+
+
+def test_sliding_window_token_budget_fails_closed_without_waiting_or_retrying(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_sliding_tpm_budget_test")
+    budget = module.SlidingWindowTokenBudget(max_tokens=100, window_seconds=60)
+    budget.reserve(80, now=0)
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        budget.reserve(30, now=1)
+    result = budget.reserve(30, now=61)
+    assert result == {"used_tokens": 30, "remaining_tokens": 70}
+
+
+def test_groq_tpm_413_is_not_retried_or_fallbacked(monkeypatch) -> None:
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_no_tpm_retry_test")
+    calls: list[object] = []
+
+    def rate_limited(request, timeout=90):
+        calls.append(request)
+        raise urllib.error.HTTPError(
+            request.full_url,
+            413,
+            "Too Large",
+            {},
+            io.BytesIO(b"Request too large on tokens per minute; requested 8099 tokens, limit 8000"),
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", rate_limited)
+    monkeypatch.setattr(module.time, "sleep", lambda *_args, **_kwargs: pytest.fail("TPM failures must not sleep/retry"))
+
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request(
+            {"model": module.MODEL, "messages": [{"role": "user", "content": "small"}], "max_tokens": 100}
+        )
+
+    assert len(calls) == 1
+
+
+def test_local_provider_requires_explicit_model_and_loopback_endpoint(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_LLM_PROVIDER", "local")
+    monkeypatch.setenv("BARROT_LLM_MODEL", "test-local-model")
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "http://127.0.0.1:8080/v1/chat/completions")
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    module = load_script_module("barrot_agent_local_provider_test")
+    assert module.LLM_PROVIDER == "local"
+    assert module.MODEL == "test-local-model"
+    assert module.GROQ_ENDPOINT == "http://127.0.0.1:8080/v1/chat/completions"
+    assert module.GROQ_KEY == ""
+
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "http://0.0.0.0:8080/v1/chat/completions")
+    with pytest.raises(ValueError, match="loopback"):
+        load_script_module("barrot_agent_public_local_endpoint_rejected_test")
+
+
+def test_local_provider_does_not_guess_a_model(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_LLM_PROVIDER", "local")
+    monkeypatch.delenv("BARROT_LLM_MODEL", raising=False)
+    monkeypatch.delenv("BRAIN_MODEL", raising=False)
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "http://127.0.0.1:8080/v1/chat/completions")
+    with pytest.raises(ValueError, match="BARROT_LLM_MODEL is required"):
+        load_script_module("barrot_agent_local_model_required_test")
+
+
+def test_groq_provider_rejects_untrusted_api_endpoint_before_import(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_LLM_PROVIDER", "groq")
+    monkeypatch.setenv("BARROT_LLM_BASE_URL", "https://attacker.example/v1/chat/completions")
+    monkeypatch.setenv("GROQ_API_KEY", "test-secret")
+    with pytest.raises(ValueError, match="api.groq.com"):
+        load_script_module("barrot_agent_untrusted_groq_endpoint_test")
+

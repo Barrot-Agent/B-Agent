@@ -1,5 +1,11 @@
 {
-  "checked_count": 1697,
-  "correct_count": 772,
-  "accuracy_pct": 45.5
+  "schema_version": 3,
+  "status": "NOT_EVALUATED",
+  "forecast_eligible": false,
+  "metric": "fixed_horizon_out_of_sample_predictive_accuracy",
+  "accuracy_pct": null,
+  "checked_count": null,
+  "correct_count": null,
+  "reason_code": "LEGACY_VARIABLE_HORIZON_SCORER_INVALID",
+  "explanation": "No validated fixed-horizon out-of-sample accuracy is available. The prior variable-horizon percentage is preserved separately under web/legacy/ and must not be used as predictive-performance evidence."
 }

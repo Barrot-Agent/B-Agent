@@ -1,7 +1,10 @@
 -r requirements.txt
 
 # Testing
-pytest>=9.1.1
+build>=1.6.1
+setuptools>=68.0
+wheel
+pytest>=9.2.0
 pytest-cov>=7.1.0
 pytest-mock>=3.17.0
 
@@ -20,4 +23,4 @@ sphinx-rtd-theme>=3.1.0
 pre-commit>=4.6.2
 
 # Type stubs
-types-requests>=2.33.0.20261006
+types-requests>=2.33.0.20261030
