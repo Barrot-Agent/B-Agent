@@ -79,3 +79,10 @@ def test_run132b_source_excerpt_hashes_reproduce_without_claiming_raw_bytes():
 def test_run132b_actual_capital_is_not_admitted_as_directional_market_flow():
     admission = _load()["forecast_admission"]
     assert admission["status"] == "EXCLUDED_FROM_DIRECTIONAL_XRP_FEATURES"
+
+def test_run132b_optional_principal_field_filter_handles_heterogeneous_records():
+    facilities = _load()["actual_capital_and_xrp"]["other_actual_financing"]
+    assert any("principal_usd" not in item for item in facilities)
+    notes = [item for item in facilities if item.get("principal_usd") == 30_000_000]
+    assert len(notes) == 1
+    assert notes[0]["xrp_purchase_proven"] is False
