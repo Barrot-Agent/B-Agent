@@ -1,3 +1,93 @@
+# Barrot XRP Mission — Run123B: ETF Issuer-File Refresh and Prior-Record Correction
+
+**Capture: approximately 2026-11-10 07:37 UTC.** This addendum corrects one stale statement in the original Run123 artifact and adds the refreshed issuer-file reconciliation. Historical artifacts remain unchanged.
+
+## Exact-head verification
+
+The Run123A documentation/research head `ddf3a2c1ca45c41acbacb9836f2c3978e8d55d58` passed all exact-head checks:
+
+- Full repository suite: **1,347 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.48%**, above the 53% floor.
+- Core suite: 677 passed, eight subtests passed.
+- Wheel build/install and packaged verification of Barrot V3, the XRP mission and canonical data assets passed.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge disabled.
+- CodeRabbit was skipped, not approved.
+
+Evidence: [full CI 42776159334](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776159334), [dependency audit 42776159082](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776159082), [fail-closed gate 42776159073](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776159073).
+
+The only warning was GitHub Actions cache storage being read-only after the cache budget was reached. Tests, wheel verification and audit succeeded.
+
+## Correction to Run123 ETF status
+
+The original Run123 artifact `20261110T071743Z-run123-spot-depth-etf-flow-source-reconciliation.json` stated that none of CryptoKeyhole's four daily-tracked funds had published a 9 November file. That status was stale/incorrect. The CryptoKeyhole page had refreshed and now explicitly reports **3 of 4** daily-tracked funds published, updated 10 November at 07:12 UTC. The original artifact remains unchanged as a point-in-time record; this correction supersedes its `nov_9_status` field.
+
+### CryptoKeyhole issuer-file collector — 9 November partial
+
+- Partial total: **−9,216,553 XRP**, approximately **−$10.1M**, 3 of 4 daily-tracked funds.
+- Bitwise: 406,770,578 XRP held; −8,594,551.4 XRP daily change. Its 9 Nov file was observed 10 Nov 01:37–01:42 UTC.
+- Canary: 242,535,412 XRP held; −427,341.2 XRP daily change. Its 9 Nov file was observed 10 Nov 05:22–05:27 UTC.
+- 21Shares TOXR: 107,100,961 XRP held; −194,660.1 XRP daily change. Its issuer file is stamped 10 Nov 06:01 UTC.
+- Franklin XRPZ: latest holdings 310,430,333 XRP for 6 Nov; its 6 Nov file was published 9 Nov 23:47–23:52 UTC. Its 9 Nov holdings file was still outstanding at 07:12 UTC.
+- Grayscale GXRP is not collected daily because automated reads are refused; its page shows quarterly SEC filing holdings. REX-Osprey XRPR is excluded because its 1940 Act fund structure and direct-only holdings file do not represent its full indirect exposure.
+
+The latest complete day remains 6 November: −752,048 XRP / approximately −$887K across four of four daily-tracked funds. The 9 November partial is not included in cumulative totals. CryptoKeyhole's 23 October–6 November cumulative window is +2,622,459 XRP / approximately +$3.45M over 11 sessions; it is not comparable to a 30-session metric.
+
+### Issuer-page cross-checks
+
+- Bitwise's official page displays 406,770,577.61 XRP and $444.763M, with 36.44M shares; the page labels the data 8 November. CryptoKeyhole labels essentially the same balance 9 November. The amount agrees to rounding; the date label needs reconciliation. Bitwise identifies Coinbase Custody Trust Co. as digital-asset custodian and BNY Mellon as trust custodian.
+- Canary's public page still displays 6 November figures ($286.86M net assets) while CryptoKeyhole reports a 9 November file observed 10 November 05:22–05:27 UTC. The newer file is not independently displayed on the issuer summary page.
+- 21Shares' official page shows 9 November AUM of $117.096M and 11M shares, consistent with the 9 November TOXR file date; the public summary view does not expose the XRP holding count.
+- Franklin's latest visible holdings remain 6 November.
+
+### Three-source flow reconciliation
+
+| Source/method | 9 Nov flow | Coverage |
+|---|---:|---|
+| CryptoKeyhole issuer holdings changes | −$10.1M / −9.217M XRP | 3/4 daily-tracked; Franklin pending |
+| CryptoETF share-count change × NAV | −$10.3M | 3/5; XRPZ and GXRP missing |
+| Alpha / Coinglass feed | −$10.4M | 5/5; Franklin and Grayscale shown as zero |
+
+The aggregate partial outflows are close, but the Canary component is not:
+- CryptoKeyhole: −427,341 XRP, approximately −$468K at its implied daily XRP/USD close.
+- CryptoETF: −$700K.
+- Alpha/Coinglass: −$811.4K.
+
+CryptoETF uses `(shares(T+1)-shares(T))*NAV(T)`, with issuer-specific same-day timing exceptions. CryptoKeyhole uses issuer holdings changes in XRP and values them at its own XRP/USD close. Alpha says its data comes from the Coinglass commercial feed. The detailed CryptoETF table says 3/5 funds reported, while a lower summary line says 5/5; preserve that internal contradiction and use the detailed table.
+
+Alpha's +$8.9M 30-session / $1.72B cumulative figures, CryptoETF's +$115M 30-session / $1.80B cumulative figures, and CryptoKeyhole's +$3.45M over 11 complete sessions are not like-for-like. Do not average or zero-fill missing funds.
+
+**ETF flow remains NOT MODEL-ADMITTED.** The 9 November report is partial, fund coverage differs, Canary's component remains unresolved, and daily holdings reductions do not prove the XRP was sold on an exchange rather than redeemed in-kind or transferred through custody.
+
+Sources: [CryptoKeyhole daily XRP ETF flows](https://cryptokeyhole.com/etf-flows/xrp/), [Bitwise official fund page](https://bitxrpetf.com/), [Canary official XRPC page](https://canaryetfs.com/xrpc/), [21Shares official TOXR page](https://www.21shares.com/en-us/products-us/toxr), [CryptoETF methodology](https://cryptoetf.today/en/methodology), [Alpha XRP ETF dashboard](https://alphafinance.io/etf/xrp/).
+
+## Current integration status
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Run123A verified head: `ddf3a2c1ca45c41acbacb9836f2c3978e8d55d58`.
+- PR #1640 remains the single V3/XRP integration path; 913 commits ahead, zero behind, 244 changed paths before this addendum.
+- 372 open PRs: 356 drafts, 16 non-drafts. No PRs were closed.
+- Main remains protected, but detailed branch-protection access returns HTTP 403. The visible `Fall Back` ruleset is disabled.
+- PR #1640 has zero approving reviews; 22 inline threads are resolved but outdated.
+- GitHub Pages has previously deployed automatically after a main push. Automatic publication authorization remains unresolved.
+- XRP public ingestion and the primary mission manifest remain absent from main.
+
+Merge remains blocked. No merge or branch-protection bypass occurred.
+
+Run123B structured correction: `research/xrp_intelligence/20261110T073700Z-run123b-etf-issuer-flow-reconciliation-correction.json`.
+
+## Next actions
+
+1. Verify exact-head CI for the Run123B correction commit.
+2. Recheck Franklin's 9 November issuer file; retain null until published and validated.
+3. Reconcile Bitwise's 8 Nov issuer-page label against the 9 Nov holdings file and Canary's issuer summary lag.
+4. Reconcile the Canary flow difference across XRP holdings change, share-count/NAV and Coinglass methods.
+5. Keep ETF flows excluded from the feature store until fund coverage and date alignment are explicit.
+6. Resolve approval, branch-protection visibility and Pages publication authorization before any merge.
+
+
+---
+
 # Barrot XRP Mission — Run123A: Latest Derivatives Refresh and Exact-Head Verification
 
 **Capture: approximately 2026-11-10 07:32 UTC.** This addendum preserves Run123's spot, order-book and ETF source reconciliation. The earlier Run123 derivatives values remain valid historical snapshots at their stated times; the newer provider snapshots below supersede them as the latest available readings.
