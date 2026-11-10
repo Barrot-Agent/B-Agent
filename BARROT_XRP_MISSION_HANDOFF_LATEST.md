@@ -3829,3 +3829,72 @@ No secret rotation, Space restart, Kaggle submission, Databricks write, external
 7. Populate synchronized historical data, then evaluate out-of-sample lift and independent shadow outcomes before any forecast issuance.
 
 **Forecast status: NOT_ISSUED.** Run131 records research and evidence only; no directional forecast was issued.
+
+
+---
+
+## Run131A — CFTC report-scope reconciliation, Coinbase/Circle filings and MiCA event
+
+**Captured:** 2026-11-10T14:06:11Z. This is a supplemental research addendum to Run131; no historical artifact was overwritten.
+
+### CFTC report-scope correction
+
+The scheduled Barrot CFTC adapter reads the **futures-only** TFF file `financial_lf.htm`. Run131 also reviewed the separate **futures-and-options combined** file `financial_lof.htm`.
+
+Both files show the same XRP open-interest counts as of November 3:
+- CME XRP: 7,216 contracts × 50,000 XRP = 360.800M XRP-equivalent.
+- Coinbase Nano XRP: 32,505 × 500 = 16.2525M.
+- Coinbase Nano XRP Perp Style: 38,392 × 500 = 19.196M.
+- Total gross underlying-equivalent OI: **396.2485M XRP**.
+
+The weekly CME change differs by five contracts:
+- Futures-only: −845 CME contracts; total underlying-equivalent weekly change **−58.9145M XRP**.
+- Futures-and-options combined: −850 CME contracts; total underlying-equivalent weekly change **−59.1645M XRP**.
+
+The reason for the five-contract difference is not established. Both series are preserved. The scheduled adapter must use the futures-only result; the combined report is a supplemental cross-check. Neither total represents cash invested, net directional exposure or spot demand.
+
+### Coinbase and Circle Q3 2026 filings
+
+Coinbase's September 30 Form 10-Q reports:
+- Q3 stablecoin revenue: **$306.905M**.
+- Nine-month stablecoin revenue: **$904.487M**.
+- Average USDC held on Coinbase products reached a company-reported all-time high.
+- The Circle arrangement was renewed on the same terms in 2026.
+- Total assets on platform: $376.6B; Q3 net revenue approximately $1.2B; net income $718.7M.
+
+The reviewed Coinbase 10-Q does not disclose XRP-specific holdings or collateral balances. This is a disclosure limitation, not proof of zero exposure. [Coinbase SEC 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+
+Circle's September 30 Form 10-Q reports:
+- Average USDC circulation **$73.3B**; September 30 circulation **$73.879B**.
+- Q3 USDC on-chain transaction volume **$13.9T**.
+- Q3 revenue and reserve income **$865M**; net income **$226M**; adjusted EBITDA **$317M**.
+- Reserve income represented 76.0% of Q3 total revenue; reserve return rate was 3.5%.
+- Distribution costs to Coinbase were **$331.3M in Q3** and **$986.6M for nine months**.
+- Circle issued **1.2M shares to Binance at $80.84**, a **$100M** September 17 private placement. Circle also describes Binance as distributing USDC across its product suite and using USDC for corporate treasury.
+
+Circle's USDC-on-platform measure is Circle's own platform, not Coinbase balances. Circle's distribution expense and Coinbase's stablecoin revenue are different accounting measures and must not be netted. The Binance relationship is a direct equity and USDC-distribution relationship, not evidence of XRP investment or demand. [Circle SEC 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+### MiCA regulatory event
+
+The EBA announced on **October 14, 2026** that USDC issued in the EU by Circle Internet Financial Europe SAS was the first significant e-money token under MiCA. Dual supervision begins **November 12, 2026**. The EBA assumes direct responsibility for own funds, reserve assets, liquidity and recovery/redemption plans; ACPR retains governance, qualifying holdings, fit-and-proper, outsourcing and conflicts. This is a regulatory event for USDC distribution, not an XRP-specific approval. [EBA primary announcement](https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union).
+
+Legal-entity separation remains mandatory:
+- Circle National Trust Bank (OCC), Circle Internet Trust Company LLC (NYDFS), Circle Internet Financial LLC (USDC issuer) and Circle Internet Financial Europe SAS (EU EMT issuer) are distinct.
+- Ripple National Trust Bank (OCC) is distinct from Standard Custody & Trust Company, the RLUSD issuer identified in reviewed materials.
+- Coinbase National Trust Company (OCC) is distinct from Coinbase Global, Inc.
+
+### Ripple/Coinbase/Standard Chartered/BNY collateral and custody boundaries
+
+- Coinbase confirms XRP as eligible collateral for USDC loans through Morpho on Base; Coinbase is the interface, Morpho the lending protocol. This is not native XRPL lending.
+- Coinbase's RLUSD trading and XRPL/Base/Ethereum transfer support is live; Global Exchange collateral support was described as future.
+- Standard Chartered custody support for RLUSD on XRPL is announced; LMAX collateral integration is planned, not verified live.
+- BNY announced XRP and RLUSD custody support. Custody does not prove proprietary purchases, beneficial ownership or collateral utilization.
+- No direct Ripple-Circle equity or operating partnership was established in the reviewed primary filings. Shared counterparties such as Coinbase and SBI do not prove a direct relationship.
+
+### Prediction-engine architecture gap audit
+
+The 46-source registry contains 42 hourly sources, two weekly CFTC sources and two non-commercial XRPL nodes excluded by default. It does **not** currently include scheduled BLS/PCE, Treasury yield-curve, Fed communications, oil/energy, FX/USD or geopolitical event sources. The collector does not yet generate a unified event timeline or generate scenarios/counter-hypotheses; the forecast ledger records assumptions and alternatives but does not generate them. Shadow-evaluation runner is not implemented. Feature drift is PSI-style and does not demonstrate label/concept-drift monitoring. Effective-sample-size correction for overlapping horizons, raw-artifact-to-feature-store replay, and independent WORM/timestamp anchoring remain absent.
+
+Manual event research must remain distinct from scheduled model features. Next implementation priority is a versioned macro/event adapter with point-in-time release timestamps, raw replay, source independence and reproducible feature-store rebuild. Forecast status remains **NOT_ISSUED**.
+
+[Structured Run131A supplemental evidence](https://github.com/Barrot-Agent/B-Agent/blob/integration/core-capabilities-mmi-structural-paper-20261104/research/xrp_intelligence/20261110T140611Z-run131a-cftc-futures-only-circle-mica-custody-update.json).
