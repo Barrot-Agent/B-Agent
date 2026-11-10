@@ -1,4 +1,4 @@
-"Regression tests for Evernorth actual-capital and Cantor ELOC reconciliation."""
+"""Regression tests for Evernorth actual-capital and Cantor ELOC reconciliation."""
 from __future__ import annotations
 
 import hashlib
