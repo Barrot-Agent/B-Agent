@@ -3512,3 +3512,35 @@ A fresh recursive Git tree was retrieved: main contains 1,404 entries; the curre
 **Next concrete action:** wait for exact-head full CI 42825344461 to complete, inspect the full-suite and installed-wheel results, then reconcile only actual failures on the existing #1640 branch. Do not create another integration PR. After #1640 is merge-ready and its governance/publication blockers are resolved, rebase the integration plan by carrying #1643's 663 unique paths into one successor on the then-current main and reconcile all seven shared paths.
 
 **Forecast status: NOT_ISSUED.** No merge, deployment, paper-trading mutation, real-money transaction, external model transfer, secret rotation, Space restart, Kaggle submission, Databricks write, force-push or destructive worktree operation occurred.
+
+## Run 130D — Coinbase primary collateral confirmation and live review-state correction
+
+**Captured:** 2026-11-10 13:36:43 UTC. The preceding code/evidence head `78e6eaf4a5191798fcb3010d8fe9332e3a8c5b6c` completed exact-head verification: **1,371 passed, zero failed, eight subtests in 62.12 seconds; inclusive coverage 59.58%; installed wheel verification passed; six dependency manifests passed with zero known vulnerabilities; fail-closed gate passed.** Evidence: [CI 42825344461](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825344461), [dependency audit 42825344586](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825344586), [fail-closed gate 42825344668](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825344668). Current branch head before this addendum is `e14c2f4dfc50259c1505efb2e69595cb294b47d6`; its full CI and dependency audit are still running ([CI 42825936890](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825936890), [dependency audit 42825936511](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825936511)); its fail-closed gate passed ([42825936530](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825936530)).
+
+### Coinbase confirms XRP-backed Morpho loans
+
+Coinbase's own help pages now directly confirm that XRP is eligible collateral for USDC crypto-backed loans through Morpho on Base. Its backup collateral page maps XRP to **cbXRP** on Base at contract `0xcb585250f852c6c6bf90434ab21a00f02833a4af`. Coinbase's September 29, 2026 product update states a maximum of up to $100,000 USDC against XRP, subject to account/product limits. Coinbase states that collateral is locked on Morpho and marked locked/not tradeable while the loan is active; it remains in the displayed total balance while the debt is not netted from that balance. [Coinbase loan intro](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro), [Coinbase XRP/cbXRP Base mapping](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup), [Coinbase collateral rules](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral), [Coinbase product update](https://www.coinbase.com/en-pt/blog/now-get-a-usdc-loan-without-selling-your-crypto).
+
+### Correct liquidation-threshold interpretation
+
+Coinbase says Morpho LLTV is fixed per market and varies by collateral asset. Its help material includes example thresholds at 86%, 77% and 62.5%. The XRP/cbXRP market matched by MorphoWatch reports **62.5% LLTV and 12.68% liquidation bonus**. The generic 4.38% Coinbase help text corresponds to an 86% LLTV example; it is not the XRP market's threshold/bonus. Morpho's official docs define liquidation at LTV ≥ the market's immutable LLTV (health factor ≤1), and the liquidator receives collateral plus the market-specific bonus. Do not apply the generic 86%/4.38% example to XRP. [Coinbase loan health](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-health), [Morpho LTV/LLTV](https://docs.morpho.org/developers/borrow/concepts/ltv/), [Morpho liquidation](https://docs.morpho.org/developers/borrow/concepts/liquidation/), [MorphoWatch LLTV/bonus formula](https://morphowatch.com/learn/morpho-lltv-and-liquidations/).
+
+MorphoWatch's latest captured Coinbase summary at 12:31 UTC reports $55.52M USDC borrowed against $129.9M cbXRP collateral, 6.98% borrow APY and 7.25% 30-day average. Its detailed 11:01 UTC market snapshot reports 120.41M cbXRP collateral, $55.58M debt, 88.2% utilization, $7.41M available, 1,466 liquidations in 30 days and $6.23M debt repaid. It models $26.01M collateral at risk in a 20% cbXRP decline scenario; this is not a forecast of actual liquidations. MorphoWatch explicitly says Coinbase does not publish the exact market ID; its attribution is matched from public on-chain data and Morpho API. Coinbase's primary docs corroborate the product, asset and network path, but not the exact market ID. [MorphoWatch summary](https://morphowatch.com/coinbase/), [detailed market](https://morphowatch.com/markets/base/cbxrp-usdc-62-5/).
+
+This is actual XRP-linked collateral use on Base, not native XRPL lending. Borrowing may let some holders obtain USDC without immediately selling XRP; the counter-hypothesis is liquidation-driven collateral supply during a decline. It is not proof of new XRP purchases or net spot demand. The approximate 79% cbXRP-supply share derived from one Morpho market and Coinbase's reserve page is not synchronized and is not model-admitted.
+
+### Corrections to the prior handoff's live PR state
+
+The live GitHub review-thread API for PR #1640 reports **22 total, 22 resolved, zero unresolved, all 22 outdated**. Run130C's statement that zero threads were resolved was incorrect; this is corrected here. Review submissions remain 62 COMMENTED and zero APPROVED.
+
+PR #1642 has seven changed paths and all seven overlap #1640, with zero unique paths. It is a duplicate candidate, not unique prediction work; keep it open until a successor is merged and verified on main. PR #1643 remains unique research: 670 changed paths, seven shared with #1640 and 663 unique; preserve it rather than bulk-closing. Its stale/dirty branch is not mergeable directly.
+
+PR #1640 remains open and technically mergeable, but blocked by no independent approval, inaccessible effective branch-protection details (HTTP 403), disabled visible fallback ruleset and unresolved GitHub Pages automatic-publication authorization. No merge or source-PR closure occurred.
+
+### Model treatment
+
+Admit only timestamped cbXRP collateral, USDC debt, utilization, oracle, LLTV, liquidation incentive and position-health observations with their Base network, Morpho market ID, source vintage and attribution confidence. Keep reserve backing separate from free float and locked collateral separate from exchange balances. Preserve both the non-sale borrowing and liquidation-supply hypotheses. The BLS CPI/real-earnings missing YoY fields remain null for the unavailable October 2025 base.
+
+**Forecast status: NOT_ISSUED.** No paper trade or real-money action occurred.
+
+Structured evidence: [Run130D JSON](research/xrp_intelligence/20261110T133643Z-run130d-coinbase-xrp-collateral-and-review-state-correction.json).
