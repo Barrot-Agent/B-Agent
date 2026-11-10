@@ -4,7 +4,7 @@
   "captured_at_utc": "2026-11-10T01:27:20Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-  "observed_integration_head_before_map_commit": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+  "observed_integration_head_before_map_commit": "930c939cd0a825a046b30e86519eabf827dabbbe",
   "observed_research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -983,7 +983,8 @@
         "No independent APPROVED review",
         "Detailed branch-protection requirements inaccessible via HTTP 403",
         "Automatic GitHub Pages publication not specifically authorized"
-      ]
+      ],
+      "pages_authorized": false
     },
     "backlog_classification": {
       "#1640": "BLOCKED integration PR; exact-head full suite, wheel, dependency audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
@@ -31904,7 +31905,8 @@
       "No independent APPROVED review",
       "Detailed branch-protection requirements inaccessible via HTTP 403",
       "Automatic GitHub Pages publication not specifically authorized"
-    ]
+    ],
+    "pages_authorized": false
   },
   "external_actions": {
     "main_write": false,
@@ -32021,9 +32023,10 @@
     "fail_closed_gate": "PASS_AUTO_MERGE_DISABLED",
     "forecast_status": "NOT_ISSUED",
     "merge_performed": false,
-    "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; continue synchronized historical data and independent receipt anchoring."
+    "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; continue synchronized historical data and independent receipt anchoring.",
+    "map_schema_compatibility": "Preserved pages_authorized boolean alongside pages_deployment_authorized for historical regression-test compatibility; exact-head CI rerun required."
   },
-  "integration_head_before_map_commit": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+  "integration_head_before_map_commit": "930c939cd0a825a046b30e86519eabf827dabbbe",
   "research_updates": {
     "run93": {
       "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -33655,7 +33658,8 @@
         "No independent APPROVED review",
         "Detailed branch-protection requirements inaccessible via HTTP 403",
         "Automatic GitHub Pages publication not specifically authorized"
-      ]
+      ],
+      "pages_authorized": false
     },
     "prediction_engine": {
       "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
@@ -35580,7 +35584,8 @@
         "No independent APPROVED review",
         "Detailed branch-protection requirements inaccessible via HTTP 403",
         "Automatic GitHub Pages publication not specifically authorized"
-      ]
+      ],
+      "pages_authorized": false
     },
     "prediction_engine": {
       "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
