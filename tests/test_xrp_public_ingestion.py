@@ -365,6 +365,17 @@ def _fake_fetcher(captured: datetime):
                     "last_accrual_timestamp": str(int(captured.timestamp()) - 5),
                 }
             }
+        elif source_id == "morpho_cbxrp_market_liquidity":
+            payload = {
+                "data": {
+                    "chain_id": 8453,
+                    "market_id": xrp_ingestion.MORPHO_CBXRP_MARKET_ID,
+                    "market_liquidity": "23540000000000",
+                    "reallocatable_liquidity": "5000000000000",
+                    "borrow_amount_to_target_utilization": "11130000000000",
+                    "last_indexed_block": "40855874",
+                }
+            }
         elif source_id == "morpho_cbxrp_market_state_history":
             captured_seconds = int(captured.timestamp())
             payload = {
@@ -1315,8 +1326,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 45
-    assert len(SCHEDULED_ENDPOINTS) == 41
+    assert len(ENDPOINTS) == 46
+    assert len(SCHEDULED_ENDPOINTS) == 42
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -2776,6 +2787,7 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     [
         ("morpho_cbxrp_market_parameters", "api.morpho.org"),
         ("morpho_cbxrp_market_state", "api.morpho.org"),
+        ("morpho_cbxrp_market_liquidity", "api.morpho.org"),
         ("morpho_cbxrp_market_state_history", "api.morpho.org"),
         ("morpho_cbxrp_oracle_state", "api.morpho.org"),
         ("coinbase_cbxrp_proof_of_reserves", "www.coinbase.com"),
@@ -2794,8 +2806,8 @@ def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admi
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
-    assert len(ENDPOINTS) == 45
-    assert len(SCHEDULED_ENDPOINTS) == 41
+    assert len(ENDPOINTS) == 46
+    assert len(SCHEDULED_ENDPOINTS) == 42
 
 
 def test_morpho_market_history_preserves_provider_event_time_and_collateral_total_without_feature_admission():
@@ -2806,7 +2818,7 @@ def test_morpho_market_history_preserves_provider_event_time_and_collateral_tota
     records, source_as_of, eligible, reason = PARSERS[source_id](
         payload, source_id=source_id, url=url, digest="e" * 64, captured=captured
     )
-    assert source_as_of == datetime.fromtimestamp(int(captured.timestamp()) - 3600, tz=timezone.utc)
+    assert source_as_of == datetime.fromtimestamp(int(captured.timestamp()) - 3600, tz=timezone.utc).isoformat().replace("+00:00", "Z")
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
@@ -2852,12 +2864,23 @@ def test_scheduled_cbxrp_sources_write_digest_receipts_without_retaining_raw_pay
     source_ids = {
         "morpho_cbxrp_market_parameters",
         "morpho_cbxrp_market_state",
+        "morpho_cbxrp_market_liquidity",
         "morpho_cbxrp_market_state_history",
         "morpho_cbxrp_oracle_state",
         "coinbase_cbxrp_proof_of_reserves",
     }
     selected = [item for item in receipts if item["source_id"] in source_ids]
-    assert len(selected) == 5
+    assert len(selected) == 6
     assert all(item["raw_bytes_retained"] is False for item in selected)
     assert all(len(item["raw_content_sha256"]) == 64 for item in selected)
     assert all(item["model_eligible_source"] is False for item in selected)
+
+
+def test_morpho_market_liquidity_rejects_missing_or_non_integer_fields():
+    captured = datetime(2026, 11, 10, 8, 0, tzinfo=timezone.utc)
+    source_id = "morpho_cbxrp_market_liquidity"
+    url = dict(ENDPOINTS)[source_id]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    payload["data"]["market_liquidity"] = "-1"
+    with pytest.raises(XRPIngestionError, match="market_liquidity"):
+        PARSERS[source_id](payload, source_id=source_id, url=url, digest="e" * 64, captured=captured)

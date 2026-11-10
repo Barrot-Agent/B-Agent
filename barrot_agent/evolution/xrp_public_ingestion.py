@@ -56,6 +56,7 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "bybit_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "morpho_cbxrp_market_parameters": 3_600,
     "morpho_cbxrp_market_state": 300,
+    "morpho_cbxrp_market_liquidity": 300,
     "morpho_cbxrp_market_state_history": 3_600,
     "morpho_cbxrp_oracle_state": 300,
     "coinbase_cbxrp_proof_of_reserves": 3_600,
@@ -123,9 +124,10 @@ ENDPOINTS = (
     ("circle_usdc_transparency_dashboard", "https://www.circle.com/transparency"),
     ("morpho_cbxrp_market_parameters", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109"),
     ("morpho_cbxrp_market_state", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state"),
+    ("morpho_cbxrp_market_liquidity", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/liquidity"),
     ("morpho_cbxrp_market_state_history", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state/history?lookback=thirty_days"),
     ("morpho_cbxrp_oracle_state", "https://api.morpho.org/v0/oracles/8453:0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde/state"),
-    ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/en-us/cbxrp/proof-of-reserves"),
+    ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/cbxrp/proof-of-reserves"),
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
     ("xrpl_inftf_server_info", "https://xrplcluster.com/"),
@@ -159,6 +161,10 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "so retain the SHA-256 receipt only until permission is established."
     ),
     "morpho_cbxrp_market_state": (
+        "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "morpho_cbxrp_market_liquidity": (
         "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
         "so retain the SHA-256 receipt only until permission is established."
     ),
@@ -3777,6 +3783,23 @@ def _raw_only_morpho_cbxrp_market_state(
     return [], None, False, "morpho_current_market_state_raw_only_until_token_units_and_indexer_block_time_are_normalized"
 
 
+
+def _raw_only_morpho_cbxrp_market_liquidity(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate current market and allocator liquidity without promoting raw token units to USD."""
+    data = _morpho_data(payload, source_id)
+    _morpho_market_identity(data, source_id)
+    for field in (
+        "market_liquidity",
+        "reallocatable_liquidity",
+        "borrow_amount_to_target_utilization",
+        "last_indexed_block",
+    ):
+        _morpho_uint(data.get(field), field)
+    return [], None, False, "morpho_market_liquidity_raw_only_until_token_units_and_indexer_block_alignment_are_normalized"
+
+
 def _raw_only_morpho_cbxrp_market_state_history(
     payload: Any, *, source_id: str, captured: datetime, **_kwargs
 ):
@@ -3806,7 +3829,8 @@ def _raw_only_morpho_cbxrp_market_state_history(
             _morpho_uint(row.get(field), field)
         previous_timestamp = timestamp
         latest_event = datetime.fromtimestamp(timestamp, tz=timezone.utc)
-    return [], latest_event, False, "morpho_market_state_history_raw_only_until_token_decimals_and_indexer_vintage_are_normalized"
+    source_as_of = latest_event.isoformat().replace("+00:00", "Z") if latest_event else None
+    return [], source_as_of, False, "morpho_market_state_history_raw_only_until_token_decimals_and_indexer_vintage_are_normalized"
 
 
 def _raw_only_morpho_cbxrp_oracle_state(
@@ -3823,6 +3847,9 @@ def _raw_only_morpho_cbxrp_oracle_state(
     price = data.get("price")
     if price is not None:
         _morpho_uint(price, "oracle price")
+    indexed_block = data.get("last_indexed_block")
+    if indexed_block is not None:
+        _morpho_uint(indexed_block, "oracle last_indexed_block")
     updated = data.get("last_updated_at", data.get("lastUpdatedAt"))
     source_as_of = None
     if updated is not None:
@@ -3842,7 +3869,8 @@ def _raw_only_morpho_cbxrp_oracle_state(
             raise XRPIngestionError("Morpho oracle update timestamp is invalid")
         if source_as_of > captured + timedelta(seconds=60):
             raise XRPIngestionError("Morpho oracle update timestamp is later than capture time")
-    return [], source_as_of, False, "morpho_oracle_state_raw_only_until_quote_scale_and_update_timestamp_semantics_are_normalized"
+    source_as_of_text = source_as_of.isoformat().replace("+00:00", "Z") if source_as_of else None
+    return [], source_as_of_text, False, "morpho_oracle_state_raw_only_until_quote_scale_and_update_timestamp_semantics_are_normalized"
 
 
 def _raw_only_coinbase_cbxrp_proof_of_reserves(
@@ -3905,6 +3933,7 @@ PARSERS = {
     "circle_usdc_transparency_dashboard": _raw_only_circle_transparency_page,
     "morpho_cbxrp_market_parameters": _raw_only_morpho_cbxrp_market_parameters,
     "morpho_cbxrp_market_state": _raw_only_morpho_cbxrp_market_state,
+    "morpho_cbxrp_market_liquidity": _raw_only_morpho_cbxrp_market_liquidity,
     "morpho_cbxrp_market_state_history": _raw_only_morpho_cbxrp_market_state_history,
     "morpho_cbxrp_oracle_state": _raw_only_morpho_cbxrp_oracle_state,
     "coinbase_cbxrp_proof_of_reserves": _raw_only_coinbase_cbxrp_proof_of_reserves,
