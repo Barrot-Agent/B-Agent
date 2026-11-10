@@ -1,3 +1,58 @@
+# Barrot XRP Mission — Run119: Second BitGo Inbound and Primary Custody Disclosure
+
+**Updated 2026-11-10T05:52:25Z · Supersedes the Run118 treatment of the rUWUJ-to-rBKr transfer as a single 5.2236M XRP event.**
+
+## Exact-head verification before Run119 commit
+
+Run118 head a1fca1dab45c1ba50a73fa5201e7a215bbc795c2 passed:
+- Full repository suite: **1,347 passed, zero failed, 8 subtests passed**; inclusive coverage **59.48%**, above the 53% floor.
+- Core suite: passed; 677 tests and 8 subtests.
+- Installed wheel, Barrot V3 import and packaged XRP mission: passed.
+- Six-manifest dependency audit: passed, zero known vulnerabilities.
+- Fail-closed gate: passed; automatic merge disabled.
+- Cache save warning was non-fatal; cache budget is read-only.
+
+Evidence: [Full CI 42764448841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42764448841), [dependency audit 42764448862](https://github.com/Barrot-Agent/B-Agent/actions/runs/42764448862), [fail-closed gate 42764448846](https://github.com/Barrot-Agent/B-Agent/actions/runs/42764448846).
+
+## Second BitGo-to-BitGo inbound: 3.846M XRP on October 28
+
+Q-Eternal reports a second payment from rUWUJ2F3aZknSd8PVutoMnxowMK792maTD to rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj on October 28 at 18:02:02Z, ledger 107963318: **3,846,153.846152 XRP**, destination tag 2. This is the same source, destination and tag as the 5,223,608.29 XRP transfer on October 23 at ledger 107840300. The October 28 amount equals 5,000,000 / 1.3 to six decimal places; this arithmetic does not prove $5M consideration. [Q-Eternal, October 29](https://q-eternal.com/blog/2026-10-29/).
+
+The two inbound payments total **9,069,762.136152 XRP**. Q-Eternal reports the ten-account set rose from 477,900,062.52 XRP at ledger 107956087 to 481,746,216.37 XRP at ledger 107977763, with the other nine accounts unchanged.
+
+### Primary issuer disclosure changes the interpretation
+
+Evernorth’s November 9 SEC prospectus states that all XRP the company owns is initially held in custody accounts at BitGo Bank & Trust, N.A.; custodial contracts generally do not restrict reallocating XRP among custodians; and the company says it does not actively trade XRP on digital-asset markets. It identifies Coinbase as its principal market for financial-reporting purposes. [SEC prospectus, lines 941 and 3055–58](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+This is primary evidence that BitGo is Evernorth’s initial custodian and makes internal BitGo-to-BitGo reallocation a strong hypothesis. It does not identify rUWUJ or rBKr as Evernorth-owned addresses, and it does not prove that the 9.070M XRP is a new purchase.
+
+### Reconciliation against the disclosed closing holdings
+
+- Company-reported closing holdings: 473,276,430.423935 XRP.
+- The ten-account base before the two inbound transfers is derived at 472,676,454.233848 XRP.
+- The 8-K separately discloses 600,000 XRP from Advance Funding Subscribers. Company-reported holdings less 600,000 XRP equal 472,676,430.423935 XRP, only 23.81 XRP below the derived ten-account base.
+- After the two inbound transfers, the ten-account total is 481,746,216.37 XRP, **8,469,785.95 XRP above** the company-reported closing holdings.
+
+This arithmetic suggests the 600,000 advance-subscriber tranche is outside the ten-account table and the two later payments add approximately 9.070M XRP to that wallet set. It does not establish who beneficially owns the additional XRP. The ten-account set may include existing Evernorth holdings moved from another BitGo account, an undisclosed acquisition/contribution, or third-party/shared custody funds.
+
+### Competing hypotheses and model treatment
+
+1. **Internal BitGo custody transfer of existing Evernorth XRP:** supported by the SEC BitGo custody disclosure, BitGo-created multisig source/destination accounts, repeated destination tag 2, and Evernorth’s statement that it does not actively trade XRP. No source-account ownership attestation is available.
+2. **Additional Evernorth acquisition or contribution:** supported by the two 9.070M XRP inbound payments, the ten-account balance increase, and the second transfer’s exact 5M/1.3 arithmetic. No SEC filing or company announcement confirms it.
+3. **Third-party/shared BitGo custody allocation:** supported by the source account’s many destination-tagged movements and lack of a public Evernorth label. BitGo-created multisig status alone does not identify the beneficial owner.
+
+Current classification: **UNATTRIBUTED BITGO CUSTODY INBOUND / POSSIBLE TREASURY ALLOCATION**. No exchange destination or sale execution was identified. Do not count these transfers as actual Evernorth capital, purchases, exchange inflows or directional features until ownership and economic purpose are established.
+
+Run118’s 370.347M wallet-set outflow remains classified as probable internal BitGo custody reorganization, not selling. Keep the 2-XRP row-sum discrepancy, tracker-versus-Q-Eternal transaction-count mismatch and ledger-index/time inconsistency unresolved.
+
+## Run119 structured evidence
+
+[Run119 Evernorth BitGo inbound reconciliation](research/xrp_intelligence/20261110T055225Z-run119-evernorth-bitgo-inbound-reconciliation.json)
+
+Next: replay both inbound transactions on validated XRPL ledgers 107840300 and 107963318; verify account signer/quorum metadata; reconcile the 600K advance-subscriber tranche; check subsequent SEC disclosures; and keep all movements model-ineligible until beneficial ownership is established.
+
+---
+
 # Barrot XRP Mission — Run118 Evernorth Custody-Flow Reconciliation
 
 **Updated 2026-11-10T05:46:46Z. This corrects the Run114/Run116 treatment of Evernorth's 370.35M XRP wallet-set outflow.**
