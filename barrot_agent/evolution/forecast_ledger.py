@@ -22,6 +22,10 @@ from .source_independence import canonical_independence_groups
 HORIZONS = (3600, 14400, 86400, 604800, 2592000)
 CLASSES = ("down", "flat", "up")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
+_HTTP_PROVENANCE_HEADER_NAMES = frozenset({
+    "age", "cache-control", "content-type", "content-encoding",
+    "etag", "expires", "last-modified", "cf-cache-status", "x-cache",
+})
 READINESS_POLICY_ID = "xrp_forecast_readiness_v3"
 _EVALUATOR_KEYS_ENV = "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON"
 _EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V3\0"
@@ -243,10 +247,27 @@ def _validate_canonical_raw_receipt(
         "raw_only_reason",
         "receipt_id",
     }
-    if set(canonical) != required_fields:
+    required_fields_v2 = required_fields | {"source_http_headers"}
+    if set(canonical) not in (required_fields, required_fields_v2):
         raise ForecastLedgerError(
             f"raw_source_receipts[{index}].raw_receipt must contain the exact RawReceiptArchive fields"
         )
+    source_http_headers = canonical.get("source_http_headers", {})
+    if not isinstance(source_http_headers, Mapping):
+        raise ForecastLedgerError(
+            f"raw_source_receipts[{index}].raw_receipt source_http_headers must be an object"
+        )
+    for name, value in source_http_headers.items():
+        if (
+            name not in _HTTP_PROVENANCE_HEADER_NAMES
+            or not isinstance(value, str)
+            or not value
+            or len(value) > 512
+            or any(ord(character) < 32 or ord(character) == 127 for character in value)
+        ):
+            raise ForecastLedgerError(
+                f"raw_source_receipts[{index}].raw_receipt contains invalid HTTP provenance headers"
+            )
     declared_id = canonical.get("receipt_id")
     outer_id = receipt.get("receipt_id")
     payload = {key: value for key, value in canonical.items() if key != "receipt_id"}
