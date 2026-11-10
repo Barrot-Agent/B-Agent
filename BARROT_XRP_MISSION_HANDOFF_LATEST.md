@@ -4971,3 +4971,129 @@ The Run136 current market record uses `admission_status: NOT_ADMITTED`; the pres
 ### Run137G — correct Run136 market field after exact-blob inspection
 
 The exact Run136 map blob confirms that `current_run_observations.latest_market_crosscheck` uses `model_eligible: false`. The `admission_status` field belongs to a different later market-artifact schema and was not present in this map snapshot. Both current-map tests now assert the exact Run136 field. Run77/Run82 historical observations continue to use their own `model_admission: false` field. No data or production code changed. Exact-head CI is pending.
+
+
+---
+
+## Run138 — exact-head CI repair, current market/CPI evidence, and workflow safety review
+
+**Cutoff:** 2026-11-10 17:56:23 UTC.  
+**Mission:** XRP intelligence and prediction-engine mastery remains priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Repository state
+
+- Main SHA: `e35f3d16b842d0f75847dd4bb0b51531f38c5f38`.
+- Existing integration PR: [#1660](https://github.com/Barrot-Agent/B-Agent/pull/1660).
+- Integration head before this handoff append: `ad19dd7c02eef56a12a338817e6b2b8d2277d615`.
+- 1,914 commits ahead, zero behind; 950 changed files; 266,683 additions; 3,655 deletions.
+- Complete recursive trees: main 1,404 entries / 1,299 files; integration 2,245 entries / 2,131 files. Main has 86 workflow files; integration has 87. XRP research tree: 30 files on main, 495 on integration.
+- Open PR inventory: 373 total, 358 drafts, 15 non-drafts.
+
+### Exact-head CI repair and verification
+
+The previous head `3e072065` failed two historical regression tests in `tests/test_xrp_nine_platform_current_map_run73.py` because the file used `math.isclose` without importing `math`. The repair added only the standard-library `import math`. No production code, market evidence, forecast threshold, workflow permission or safety gate changed.
+
+**Exact repaired head: `ad19dd7c02eef56a12a338817e6b2b8d2277d615`. All three gates passed on this exact head:**
+
+- Full repository suite: **3,363 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.58%**, above the 53% floor.
+- Full-suite duration: 75.19 seconds.
+- Core suite passed.
+- Wheel built and installed; installed wheel verified Barrot V3, primary XRP mission and canonical data assets.
+- Dependency audit: six manifests passed, zero known vulnerabilities.
+- Fail-closed gate passed and explicitly kept automatic merging disabled.
+- Both push and pull-request CI and dependency audit runs passed on the exact same SHA.
+
+Evidence:
+- [Push full CI 42870276639](https://github.com/Barrot-Agent/B-Agent/actions/runs/42870276639)
+- [PR full CI 42870287477](https://github.com/Barrot-Agent/B-Agent/actions/runs/42870287477)
+- [Push dependency audit 42870276602](https://github.com/Barrot-Agent/B-Agent/actions/runs/42870276602)
+- [PR dependency audit 42870287357](https://github.com/Barrot-Agent/B-Agent/actions/runs/42870287357)
+- [Push fail-closed gate 42870276859](https://github.com/Barrot-Agent/B-Agent/actions/runs/42870276859)
+- [PR fail-closed gate 42870287318](https://github.com/Barrot-Agent/B-Agent/actions/runs/42870287318)
+
+### Current XRP spot observations
+
+Public API responses were retrieved around 17:56 UTC. Hashes in the structured artifact cover exact surfaced JSON response text, **not original HTTP transport bytes or signed exchange receipts**.
+
+- Kraken XRP/USD: last **$1.05228**, bid $1.05236, ask $1.05237; top-of-book spread approximately 0.095 bps. 24-hour volume 35.924M XRP; 24-hour VWAP $1.07275135; last approximately 1.91% below VWAP; 24-hour high/low $1.10584 / $1.03011.
+- Kraken's `o` field is UTC-day open ($1.09748), not a rolling 24-hour open. It must not be mislabeled as a 24-hour open.
+- OKX XRP-USDT: last 1.0498 USDT, bid 1.0499, ask 1.0500; 24-hour open 1.0934, high 1.1073, low 1.0311, volume 75.954M XRP. Provider timestamp 17:31:10.269 UTC, approximately 25 minutes older than retrieval.
+- Kraken USDT/USD midpoint at retrieval: 0.998965. Mechanical normalized OKX reference: approximately $1.048713, around 0.339% below Kraken's last. This is asynchronous and not an executable arbitrage opportunity.
+- No synchronized current spot L2 or trade-tape snapshot was obtained. Do not substitute stale resting-depth heatmaps.
+
+Sources: [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX XRP-USDT](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken USDT/USD](https://api.kraken.com/0/public/Ticker?pair=USDTUSD).
+
+### Macro event — October U.S. CPI
+
+The BLS released October 2026 CPI on November 10 at 08:30 Eastern / 13:30 UTC:
+
+- Headline CPI: +0.4% month over month, seasonally adjusted, after +0.6% in September.
+- Core CPI: +0.3% month over month, unchanged from August and September.
+- Food: +0.5%; energy: +0.7%; shelter: +0.3%.
+- BLS did not publish affected October year-over-year comparisons because October 2025 survey data were not collected during the lapse in appropriations.
+
+No consensus comparison is included in the primary-source artifact. This event is not yet admitted as a feature because the official BLS vintage-aware adapter and event timeline are not integrated.
+
+Primary source: [BLS October 2026 CPI release](https://www.bls.gov/news.release/cpi.nr0.htm).
+
+### ETF flow disagreement
+
+For November 9:
+- CryptoKeyhole: partial 3/4 daily funds, −9,216,553 XRP (approximately −$10.1M); Franklin XRPZ pending.
+- Alpha Finance: approximately −$10.4M across five displayed funds.
+- XRP Insights' Nov 9 dataset displays 415.365M XRP for Bitwise, while CryptoKeyhole's latest issuer-file value is 406.771M XRP. The difference is approximately the 8.595M XRP Bitwise outflow reported by CryptoKeyhole and may reflect an asynchronous/stale holdings row.
+
+The aggregators overlap issuer sources and use different update times and flow methods. They are not independent confirmations. Holdings reductions do not prove exchange sales or cash redemptions. ETF flow remains model-ineligible.
+
+Sources: [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/), [Alpha Finance](https://alphafinance.io/etf/xrp/), [XRP Insights](https://xrp-insights.com/data).
+
+### Workflow safety and Barrot V3 parity review
+
+All 44 changed workflow files were inspected. **25 are explicitly quarantined** with empty permissions and disabled jobs because their former versions allowed unattended main writes, model-provider calls without per-run data authorization, external deployments, or unsafe broad tool invocation.
+
+Important quarantined paths include `barrot-agent.yml`, `ask-barrot.yml`, `barrot-self-upgrade.yml`, `task-allocator.yml`, `subagent-matrix.yml`, `subagent-spawn.yml`, `sync-huggingface.yml`, the legacy knowledge/signal writers, audio/media writers, Cloudflare diagnostics and WebMCP live sandbox.
+
+This is a real operational-parity gap: Barrot V3 code and tests are preserved, but several core automation entry points are paused. The remaining 19 changed workflows include read-only CI/analysis/harvest paths, artifact-only paper simulation, explicit-confirmation capability jobs and manual external-action workflows. Cloudflare/A2A and Hugging Face/self-hosted deployment workflows require explicit `YES`, a separate secret-rotation confirmation and exact main SHA; none was dispatched. XRP public ingestion is configured to run only from main and has no verified main-branch scheduled run.
+
+The next integration task is to replace quarantined V3 capabilities with branch-only, artifact-first, least-privilege workflows without restoring unattended main writes or unapproved external actions. Do not simply re-enable the legacy workflows.
+
+### PR backlog and merge decision
+
+PR #1660 is non-draft, technically clean and 1,914 commits ahead / zero behind. Its exact-head CI and security gates now pass. However:
+
+- Zero formal reviews, zero approvals and zero inline review comments; one CodeRabbit summary comment.
+- Main reports protected=true, but detailed branch-protection access returns HTTP 403; required approval/status contexts remain unverified.
+- Visible fallback ruleset is disabled.
+- GitHub Pages previously deployed automatically after a main push. Authorization for another public publication remains absent.
+- Semantic review of all 950 changed files is incomplete; 25 workflow paths are quarantined, so operational parity is not complete.
+
+**Decision: keep #1660 open and unmerged.** Do not bypass branch protection or trigger a Pages deployment.
+
+Backlog:
+- #1660: sole active consolidated V3/XRP integration PR; technically clean, approval/protection/publication/parity blocked.
+- #1640 and #1643: preserved source PRs; close only after #1660 is merged and every superseded path is verified on main.
+- #1642: exact subset/duplicate candidate; preserve until successor merge verification.
+- #1653: unique repository knowledge graph, eight unresolved review threads; preserve and repair.
+- #1641, #1269, #1614 and #1611: preserve unique experimentation, topology and prediction work.
+- #1644–#1650: dependency/action reconciliation candidates; do not merge separately without exact version and workflow review.
+
+No PRs were closed.
+
+### Prediction and platform status
+
+The 46-source registry, read-only collector, SHA-256 receipt-chain logic, point-in-time SQLite prototype, four deterministic baselines, chronological walk-forward with purge/embargo, calibration/drift diagnostics and fail-closed Ed25519 forecast ledger remain on the integration branch. Independent WORM/timestamp anchoring, raw-receipt replay, complete synchronized historical spot/L2/derivatives/flow/collateral coverage, event timeline, scenario/counter-hypothesis runner, effective-sample-size correction, sufficient shadow outcomes and production evaluator key remain incomplete.
+
+Nine-platform status is unchanged: ChatGPT current-session GitHub integration verified; Copilot comment-only/no approval; Claude, Grok, Gemini and Codex unverified; Hugging Face prior build error; Kaggle untested; Databricks prior HTTP 403. No external-model data transfer occurred.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+### Next concrete actions
+
+1. Continue semantic review of all 950 changed files, prioritizing 44 workflow changes and V3 operational parity.
+2. Build safe branch-only, artifact-first replacements for quarantined V3 workflows.
+3. Add official BLS CPI vintages and macro event timestamps to the scheduled source registry and event timeline.
+4. Obtain synchronized current multi-venue spot L2 and trade data with provider event timestamps.
+5. Reconcile issuer ETF holdings and cash-versus-in-kind redemptions before feature admission.
+6. Implement independent WORM/timestamp anchoring, raw receipt replay and durable cross-run feature-store reconstruction.
+7. Keep forecast issuance disabled until independent out-of-sample and shadow-evaluation thresholds pass.
