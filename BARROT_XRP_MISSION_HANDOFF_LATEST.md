@@ -1,3 +1,68 @@
+# Barrot XRP Mission — Run118 Evernorth Custody-Flow Reconciliation
+
+**Updated 2026-11-10T05:46:46Z. This corrects the Run114/Run116 treatment of Evernorth's 370.35M XRP wallet-set outflow.**
+
+## Exact-head verification before Run118 commit
+
+Run117 head c22ee9905bfcd795a9faf0385a20e7397e4f594b passed all exact-head gates:
+- Full repository suite: **1,347 passed, zero failed, 8 subtests passed**; inclusive coverage **59.48%**, above the 53% floor.
+- Core suite: 677 passed, 8 subtests passed.
+- Installed wheel, Barrot V3 import, packaged XRP mission and canonical data assets: passed.
+- Six-manifest dependency audit: passed, zero known vulnerabilities.
+- Fail-closed gate: passed; automatic merge disabled.
+- Actions cache is read-only; cache save failed after test and wheel verification. Setuptools metadata/package-discovery warnings are non-fatal.
+
+Evidence: [Full CI 42763890424](https://github.com/Barrot-Agent/B-Agent/actions/runs/42763890424), [dependency audit 42763890408](https://github.com/Barrot-Agent/B-Agent/actions/runs/42763890408), [fail-closed gate 42763890620](https://github.com/Barrot-Agent/B-Agent/actions/runs/42763890620).
+
+## Material Evernorth finding: 370.35M XRP is probably a BitGo custody reorganization, not selling
+
+XRP Insights reports 103.130M XRP in 13 attributed Evernorth wallets and 370.347M moved to addresses outside that 13-wallet set. Its field means outside the attributed set; it does not mean exchange deposit or sale. [Tracker JSON](https://xrp-insights.com/xrp-radar/evernorth/data.json).
+
+Q-Eternal's independent public-ledger analysis reports an October 22 batch of 16 Payment transactions from 9 source wallets to 10 destination wallets, ledger indexes 107832376–107832379. It reports all 19 involved accounts were 2-of-3 multisig accounts created by BitGo's initialization wallet. [Q-Eternal, October 23](https://q-eternal.com/blog/2026-10-23/).
+
+Bithomp independently shows the BitGo initializer and inspected destinations as multisig accounts activated by that initializer:
+- [BitGo initializer](https://bithomp.com/account/rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix).
+- [rK1BU](https://bithomp.com/account/rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf), [rJQ4](https://bithomp.com/account/rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW) and [rLyTy](https://bithomp.com/account/rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w): approximately 52.8M XRP each.
+- [rwtoky](https://bithomp.com/account/rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW) and [rDFr](https://bithomp.com/account/rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh): approximately 42.3M XRP each.
+- [rMNW](https://bithomp.com/account/rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw) and [rHuRnn](https://bithomp.com/account/rHuRnnWDUB4UBy8Sf2XvJDMEC4rFgts1xi): approximately 200K XRP each; [rLMYD](https://bithomp.com/account/rLMYD4r2WMsReN42naTzDLc8MAmHAbjyw5): approximately 100K.
+- [rPhQdy](https://bithomp.com/account/rPhQdyEaz4kcSoYKTAQhvkvdYxWKKw2vSC) and [rGy4](https://bithomp.com/account/rGy4zJtGfGtF7dtjZmBraQTcfZSQgwqpaa): approximately 50M and 52.8M XRP.
+- [rBKr](https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj): approximately 96.2M XRP at the current explorer capture.
+
+Q-Eternal's destination balances closely match SEC-disclosed contribution tranches: Arrington sponsor 211,319,096.061435 XRP versus about 211,319,104; Ripple 126,791,458 versus about 126,791,464; related-party entity 50M versus about 50,000,001; cash-purchased tranche 84,365,876.3625 versus about 84,365,878; delayed-funding XRP 200K versus about 200,001.
+
+The closing 8-K separately discloses **600,000 XRP from Advance Funding Subscribers**. Q-Eternal's five-row destination table does not separately reconcile that 600K. Do not call the full 473,276,430 XRP closing amount completely mapped by that table. [Evernorth SEC 8-K](https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm).
+
+### Separate 5.2236M XRP inbound remains unattributed
+
+Q-Eternal reports 5,223,608.29 XRP received by rBKr on October 23 at 02:47Z from rUWUJ2F3aZknSd8PVutoMnxowMK792maTD, destination tag 2. Both accounts are BitGo-created multisigs, but neither is publicly labeled Evernorth. The source account has many tagged movements and no verified Evernorth attribution. This could be a custody transfer or a possible purchase; it is not proof of an additional Evernorth acquisition or a BitGo omnibus account. No reviewed SEC filing confirms it. [Source account](https://bithomp.com/account/rUWUJ2F3aZknSd8PVutoMnxowMK792maTD).
+
+### Discrepancies retained
+
+- The tracker reports 370,346,663.22975004 XRP; its 18 displayed rows sum to approximately 370,346,661.22975, a 2-XRP difference.
+- The tracker lists 18 movements across October 20–22; Q-Eternal reports 16 in the October 22 18:08:12–22 batch. The surfaced tracker rows show 13 in that exact 18:08 window plus one at 00:51:42. The counts are not reconciled.
+- Run114 records ledger 108232177 at 03:45Z; the current tracker JSON says ledger 108232014 at 04:34:40Z. A lower index with a later timestamp is inconsistent. The tracker's older HTML snapshot also shows 108212382 at November 9 06:40Z. Do not treat these as one coherent point-in-time series.
+- Direct rippled transaction replay was not completed. Q-Eternal is secondary ledger analysis; Bithomp is an independent explorer, not an Evernorth ownership attestation.
+
+### Model and feature-taxonomy consequence
+
+Classify 370.347M as **probable internal BitGo custody reorganization, high confidence**, not exchange netflow, sell pressure, tradable-float increase or confirmed distribution. Beneficial ownership of every destination is not proven.
+
+Keep the raw wallet-set-outflow field, but do not alias it to exchange flow or sell pressure. Future classes must distinguish same-custodian reorganization, new custody wallet with owner unconfirmed, confirmed exchange deposit, confirmed exchange trade and unknown destination. Run110 already marks the exchange-balance dataset model-ineligible; preserve that fail-closed exclusion. No Run118 on-chain observation is model-admitted.
+
+## Current integration and merge status
+
+Before Run118 commit: main d4d43be3427375cf79d190e768976de062e20287; integration c22ee9905bfcd795a9faf0385a20e7397e4f594b; PR #1640 was 904 ahead, zero behind, 237 changed paths. It remains open and unmerged: 62 COMMENTED reviews, zero approvals; 22 inline threads resolved but outdated; branch-protection endpoint HTTP 403; visible fallback ruleset disabled; automatic Pages-publication authorization unresolved.
+
+No PRs were closed. Preserve #1643 research, #1653 graph, #1269 topology, #1614 prediction work and unique draft material.
+
+## Run118 structured evidence
+
+[Run118 Evernorth–BitGo wallet reconciliation](research/xrp_intelligence/20261110T054646Z-run118-evernorth-bitgo-wallet-reconciliation.json)
+
+Next: replay the October 22–23 transactions with an accessible public rippled endpoint or second ledger explorer; resolve the 600K advance-subscriber allocation, 2-XRP row-sum difference and ledger-index/time mismatch; determine whether rUWUJ/rBKr are custody-only or linked to a disclosed acquisition. Keep these movements excluded from directional model features until resolved.
+
+---
+
 # Barrot XRP Mission — Run117 Primary-Source Correction
 
 **Updated 2026-11-10T05:42:27Z · Supersedes the Run116 institutional-charter uncertainty and supplements the Run116 ETF snapshot.**
