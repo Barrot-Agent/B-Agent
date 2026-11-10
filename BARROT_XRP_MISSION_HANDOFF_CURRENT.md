@@ -18,6 +18,15 @@ Exact-head evidence on `a900c4df8833839ed847c0b307588cfb3f34f7d1`:
 
 Main remains `d4d43be3427375cf79d190e768976de062e20287`; no main write or main CI run was initiated in this capture.
 
+## Post-capture verification — final Run109 map/test descendant
+
+The handoff/map/test descendants were verified on exact head `209028f034fda7b5f86d56eeaf1c4e2457f7535c` at 2026-11-10T01:51:00Z. The final full repository CI run [42737690866](https://github.com/Barrot-Agent/B-Agent/actions/runs/42737690866) completed successfully: **1,316 passed, zero failed, eight subtests, 59.36% coverage**. The installed-wheel smoke passed and loaded Barrot V3 plus the primary XRP mission. [Dependency audit 42737690859](https://github.com/Barrot-Agent/B-Agent/actions/runs/42737690859) passed all six manifests with zero known vulnerabilities. [Fail-closed gate 42737690804](https://github.com/Barrot-Agent/B-Agent/actions/runs/42737690804) passed and kept automatic merging disabled. The GitHub Actions cache quota warning was non-failing.
+
+Two intermediate map/test descendants exposed stale historical Run82/Run104 assertions and a missing legacy `pages_authorized` compatibility field. The map now preserves Run82 and Run104 in `prior_run_observations`, makes Run109 current, and the regression tests verify both historical preservation and current receipts. The final exact head above passed the full suite.
+
+At this verified head, PR #1640 is 879 commits ahead, zero behind, 220 changed paths, 106,087 additions and 3,554 deletions; GitHub reports it cleanly mergeable. It still has 62 COMMENTED reviews, zero approvals and 22/22 resolved inline threads. Branch-protection details remain HTTP 403; the visible fallback ruleset is disabled; GitHub Pages publication is not specifically authorized. **No merge.**
+
+
 ## Fresh spot and derivatives observations
 
 Kraken XRP/USD API response retrieved at capture: last $1.10338, bid $1.10313, ask $1.10314, 24-hour volume 29.657M XRP, 24-hour VWAP $1.09686295, high $1.12232 and low $1.07502. Kraken supplied no provider event timestamp. The spread calculated from displayed top-of-book was about 0.091 basis points.

@@ -1106,7 +1106,50 @@
         "at_closing_xrp_holdings_approx": 473000000,
         "limitation": "Aggregate subscriber amounts are not SBI-only; do not attribute treasury XRP to SBI."
       }
-    }
+    },
+    "post_capture_verification": {
+      "verified_at_utc": "2026-11-10T01:51:00Z",
+      "verified_head": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+      "full_ci": {
+        "run_id": 42737690866,
+        "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+        "passed": 1316,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "run_id": 42737690859,
+        "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 42737690804,
+        "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+        "conclusion": "success",
+        "automatic_merge_disabled": true
+      },
+      "core_suite": {
+        "job": "Tests",
+        "conclusion": "success"
+      },
+      "wheel_build": "PASS",
+      "installed_wheel": "PASS; Barrot V3 and XRP mission assets loaded",
+      "prior_intermediate_failures": "Two intermediate descendants failed historical Run82/Run104 map assertions and the missing pages_authorized compatibility field; regression tests were updated to preserve Run82/Run104 in prior_run_observations and Run109 as current. This exact head passed.",
+      "cache_warning": "GitHub Actions cache quota reached; non-failing.",
+      "pr_state": {
+        "commits": 879,
+        "changed_files": 220,
+        "additions": 106087,
+        "deletions": 3554,
+        "mergeable": true,
+        "mergeable_state": "clean"
+      }
+    },
+    "current_integration_branch_head": "209028f034fda7b5f86d56eeaf1c4e2457f7535c"
   },
   "prior_run_observations": [
     {
@@ -31090,17 +31133,18 @@
   },
   "branch_ancestry": {
     "pr_1640": {
-      "head": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
-      "ahead": 877,
+      "head": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+      "ahead": 879,
       "behind": 0,
       "changed": 220,
-      "additions": 106060,
+      "additions": 106087,
       "deletions": 3554,
       "mergeable": true,
-      "head_sha": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
+      "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
       "changed_files": 220,
-      "commits": 877,
-      "observed_at_utc": "2026-11-10T01:40:48Z"
+      "commits": 879,
+      "observed_at_utc": "2026-11-10T01:51:00Z",
+      "mergeable_state": "clean"
     },
     "pr_1643": {
       "head": "238f3ff4a69420882c77d225626a352ba19a412c",
@@ -32120,19 +32164,20 @@
     "captured_at_utc": "2026-11-10T01:27:20Z",
     "code_test_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
     "full_suite": "PASS_1316_0_FAILURES_8_SUBTESTS",
-    "dependency_audit": "PASS_6_MANIFESTS",
+    "dependency_audit": "PASS_6_MANIFESTS_0_KNOWN_VULNERABILITIES",
     "fail_closed_gate": "PASS_AUTO_MERGE_DISABLED",
     "forecast_status": "NOT_ISSUED",
     "merge_performed": false,
     "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; continue synchronized historical data and independent receipt anchoring.",
     "map_schema_compatibility": "Preserved legacy fields and historical Run82/Run104 snapshots; latest snapshot now uses full schema.",
-    "current_branch_head": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
-    "current_branch_state_observed_at_utc": "2026-11-10T01:40:48Z",
+    "current_branch_head": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+    "current_branch_state_observed_at_utc": "2026-11-10T01:51:00Z",
     "commits_ahead": 877,
     "commits_behind": 0,
     "changed_files": 220,
     "additions": 106060,
-    "deletions": 3554
+    "deletions": 3554,
+    "coverage_pct": 59.36
   },
   "integration_head_before_map_commit": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
   "research_updates": {
@@ -33441,7 +33486,7 @@
     },
     "research/xrp_intelligence/20261110T012720Z-run109-xrp-spot-derivatives-sbi-evernorth-update.json"
   ],
-  "updated_at_utc": "2026-11-10T01:27:20Z",
+  "updated_at_utc": "2026-11-10T01:51:00Z",
   "current_run_snapshot": {
     "run_id": 109,
     "run": 109,
@@ -36453,9 +36498,30 @@
         "fail_closed_gate": "PASS; automatic merge disabled"
       },
       "run109_map_test_descendant_ci": {
-        "head": "7c074b1192de139b62fb0f46117fc5496aa0ebc9",
-        "status": "PENDING",
-        "reason": "Map and regression-test history refresh is being verified on the descendant; parent code/test head a900c4 passed."
+        "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+        "status": "PASS",
+        "full_suite": {
+          "run_id": 42737690866,
+          "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+          "passed": 1316,
+          "failed": 0,
+          "subtests": 8,
+          "coverage_pct": 59.36,
+          "conclusion": "success"
+        },
+        "dependency_audit": {
+          "run_id": 42737690859,
+          "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+          "manifests": 6,
+          "known_vulnerabilities": 0,
+          "conclusion": "success"
+        },
+        "fail_closed_gate": {
+          "run_id": 42737690804,
+          "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+          "conclusion": "success",
+          "automatic_merge_disabled": true
+        }
       }
     },
     "main_workflows": {
@@ -37738,7 +37804,50 @@
       "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
     },
     "no_pr_closed": true,
-    "integration_branch_current_head_before_map_compatibility_commit": "7c074b1192de139b62fb0f46117fc5496aa0ebc9"
+    "integration_branch_current_head_before_map_compatibility_commit": "7c074b1192de139b62fb0f46117fc5496aa0ebc9",
+    "current_integration_branch_head": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+    "latest_verified_descendant": {
+      "verified_at_utc": "2026-11-10T01:51:00Z",
+      "verified_head": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+      "full_ci": {
+        "run_id": 42737690866,
+        "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+        "passed": 1316,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "run_id": 42737690859,
+        "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 42737690804,
+        "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+        "conclusion": "success",
+        "automatic_merge_disabled": true
+      },
+      "core_suite": {
+        "job": "Tests",
+        "conclusion": "success"
+      },
+      "wheel_build": "PASS",
+      "installed_wheel": "PASS; Barrot V3 and XRP mission assets loaded",
+      "prior_intermediate_failures": "Two intermediate descendants failed historical Run82/Run104 map assertions and the missing pages_authorized compatibility field; regression tests were updated to preserve Run82/Run104 in prior_run_observations and Run109 as current. This exact head passed.",
+      "cache_warning": "GitHub Actions cache quota reached; non-failing.",
+      "pr_state": {
+        "commits": 879,
+        "changed_files": 220,
+        "additions": 106087,
+        "deletions": 3554,
+        "mergeable": true,
+        "mergeable_state": "clean"
+      }
+    }
   },
   "endpoint_inventory_source_blob_sha": "f5fc3c4a45aaf826241e32faf00443e98bfa341a",
   "endpoint_inventory_verified_at_utc": "2026-11-09T23:28:49Z",
@@ -38350,9 +38459,13 @@
     "write_access_tested": true,
     "action": "Fetched complete main/integration trees, all four open-PR pages, current PR metadata, ancestry and path overlaps, reviews/threads, exact-head CI jobs/logs, dependency audit, fail-closed gate, mission/code contracts and current handoff; updated only existing integration branch with fast-forward compare-and-swap.",
     "current_branch_state_observed_at_utc": "2026-11-10T01:40:48Z",
-    "current_branch_head": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
+    "current_branch_head": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
     "pr_commits_ahead": 877,
-    "pr_changed_files": 220
+    "pr_changed_files": 220,
+    "post_capture_verification_at_utc": "2026-11-10T01:51:00Z",
+    "full_ci_run": 42737690866,
+    "dependency_audit_run": 42737690859,
+    "fail_closed_gate_run": 42737690804
   },
   "xrpl_amendment_status": {
     "as_of_date": "2026-11-09",
@@ -38429,15 +38542,14 @@
     ]
   },
   "post_run109_branch_state": {
-    "observed_at_utc": "2026-11-10T01:40:48Z",
-    "head_sha": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
-    "commits_ahead": 877,
+    "observed_at_utc": "2026-11-10T01:51:00Z",
+    "head_sha": "209028f034fda7b5f86d56eeaf1c4e2457f7535c",
+    "commits_ahead": 879,
     "commits_behind": 0,
     "changed_files": 220,
-    "additions": 106060,
+    "additions": 106087,
     "deletions": 3554,
     "mergeable": true,
-    "draft": false,
-    "state": "open"
+    "mergeable_state": "clean"
   }
 }
