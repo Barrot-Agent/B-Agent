@@ -4782,3 +4782,53 @@ Nine-platform map last verified at Run104; no new persistent external authentica
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
 
 Next: verify full CI, six-manifest audit and fail-closed gate on the handoff/artifact descendant; keep #1640 blocked until an independent approval, effective protection requirements and explicit Pages-publication authorization are resolved. Then proceed with durable raw-source anchoring and synchronized historical XRP data before forecast admission.
+
+
+## Run 105 institutional-network addendum — primary filings and current SBI/Circle/Ripple links
+
+### Circle–Coinbase economics
+
+Circle's Q3 2026 Form 10-Q reports $331.3M of distribution costs under its Coinbase agreements for Q3 and $986.6M for the first nine months of 2026. The contract allocates value to Coinbase based on USDC held on Coinbase after issuer retention, plus half of the remaining ecosystem-growth amount after approved third-party participants. These are Circle expenses; they are not the same accounting measure as Coinbase stablecoin revenue. [Circle Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+Coinbase's Q3 2026 10-Q reports stablecoin revenue of approximately $306.9M for Q3 and $904.5M for nine months. Coinbase says its Circle arrangement was renewed on the same terms in 2026. Its Q3 earnings deck reports average USDC held in Coinbase products of about $22B, approximately 30% of average USDC market capitalization of $73B, with about $51B held off-platform. These balances and revenue measures have different scopes; do not net Coinbase revenue against Circle distribution costs.
+
+Coinbase's Q3 2026 AOP disclosure does not separately report XRP. It groups other crypto assets and payment stablecoins, none individually exceeding 5% of total AOP. No XRP-specific Coinbase customer-collateral amount is disclosed. Coinbase's $376.6B customer assets-on-platform figure is custody/administration scale, not Coinbase-owned assets.
+
+### Circle Japan, Arc and USDC supply
+
+Circle's Q3 2026 10-Q resolves the Circle Japan JV: Circle and SBI each contributed approximately $1.5M; each owns 50%. Circle consolidates the JV as a VIE because it controls the activities that most affect it and bears potentially significant losses/benefits. The filing says there had been no significant operating results through September 30, 2026.
+
+Circle's Q3 filing reports $242.2M of gross ARC token presale proceeds received during the nine months ended September 30, 2026. Of that, $181.8M was recognized as revenue and $60.4M remained deferred. This is actual Circle/Arc funding, not XRP capital or USDC reserve income.
+
+Circle's 10-Q reports USDC circulation of $73.879B at September 30; Circle's public USDC page showed $69.2B as of November 5, a decline of approximately 6.3%. This is a supply observation across different reporting dates; no cause is attributed. Circle's Q3 average circulation was $73.264B and reserve return was 3.5%.
+
+Arc mainnet launched September 16. Circle identifies SBI Group as a founding validator and Coinbase among exchange participants. Arc uses USDC for gas and launched with a permissioned validator set. Arc is a separate L1, not XRPL. Circle also issues USDC natively on XRPL, so stablecoin adoption can complement XRPL activity while substituting for XRP as bridge asset in some routes.
+
+### SBI, Ripple and stablecoin distribution
+
+SBI Holdings and SBI Shinsei Bank invested $25M each in Circle at its June 2025 listing, a $50M strategic equity investment. This is separate from the 50/50 Circle Japan JV and its approximately $1.5M each initial contributions.
+
+SBI VC Trade has offered USDC since March 2025 and RLUSD since June 24, 2026. SBI's November 2 release reports JPYSC lending balance above ¥10B and total JPYSC handled balance above ¥30B. Those are yen-stablecoin balances, not XRP flows.
+
+SBI's own company profile reports SBI Group holds 60% of SBI Ripple Asia voting rights as of March 31, 2026; SBI's 2025 investor presentation shows Ripple at 40%. SBI Holdings' January 2026 New Year's message says its Ripple investment represents approximately 10% of Ripple shares; its February 2025 presentation said approximately 9%. Treat this as an approximate 9–10% disclosed stake, not an exact current share register.
+
+SBI Remit, SBI VC Trade, Ripple and SBI Ripple Asia announced in September 2023 that an XRP-bridge remittance service would expand to the Philippines, Vietnam and Indonesia. Public corridor volumes are not disclosed. Separately, SBI Ripple Asia's February 2026 tokenized-deposit proof of concept uses XRPL as a ledger but does not specify XRP as a bridge asset or report commercial volume. Keep ODL/XRP bridge flows separate from XRPL tokenization.
+
+### Ripple/Coinbase collateral distinction
+
+SBI VC Trade's RLUSD listing is live. Coinbase's RLUSD retail/exchange/Prime availability is separate; Coinbase Global Exchange collateral integration was described as future work. Ripple Prime/Hidden Road announced RLUSD collateral use across prime-brokerage products, but utilization is not publicly quantified. Standard Chartered RLUSD custody and Ripple's National Trust approval are custody/reserve-management developments, not evidence of XRP collateral balances.
+
+### Main-branch workflow failure triage
+
+The current main branch has three scheduled workflow failures outside the main CI suite:
+- Pillars Consistency Check: GitHub App credentials unavailable, Databricks returned HTTP 403, and Hugging Face reported BUILD_ERROR. This remains blocked/unverified; the workflow is left fail-closed.
+- Hover Bike Updates: artifact paths were missing after generation. The integration workflow now runs the generator from repository root to align relative output paths; the workflow itself has not yet been dispatched on the PR branch.
+- Riemann Research Harvest: the main workflow environment lacked `pydantic-settings`. The integration workflow now installs that dependency before tests; the workflow itself has not yet been dispatched on the PR branch.
+
+Main's full CI passed 718 tests and 8 subtests; the six-manifest dependency audit passed. These scheduled workflow failures are distinct from the passing main CI suite and from the passing full suite on the integration code/test head.
+
+### Research interpretation
+
+Circle, Coinbase and SBI have a deeply integrated stablecoin distribution and settlement strategy. Ripple and SBI have a separate XRP remittance relationship and a separate XRPL technology partnership. Arc adds a Circle-led USDC-native L1 with SBI as validator and Coinbase as an exchange participant. These relationships establish infrastructure and distribution, not automatic XRP buying demand.
+
+The decisive evidence still needed is measured XRP bridge-currency volume, corridor conversion legs, venue inventory/flows, on-chain XRP asset-specific payment activity and public collateral balances. Forecast remains **NOT_ISSUED**.

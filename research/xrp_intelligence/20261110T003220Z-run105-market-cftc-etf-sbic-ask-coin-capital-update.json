@@ -419,5 +419,197 @@
     "real_money": false,
     "force_push": false,
     "destructive_worktree_operation": false
+  },
+  "institutional_network_addendum": {
+    "sources": {
+      "circle_q3_2026_10q": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "coinbase_q3_2026_10q": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000089/coin-20260930.htm",
+      "coinbase_q3_2026_deck": "https://investor.coinbase.com/static-files/7a8f3e24-6d2e-4c4a-8f5a-2026-q3-earnings-presentation",
+      "circle_usdc_supply": "https://www.circle.com/usdc",
+      "arc_mainnet": "https://www.circle.com/pressroom/arc-mainnet-launch",
+      "sbi_circle_equity": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "sbi_circle_jv": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "sbi_jpysc_lending": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "sbi_rlusd_listing": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "sbi_remit_xrp_odl": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "sbi_ripple_asia": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "sbi_tokenized_deposits_xrpl": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "sbi_ripple_stake": "https://www.sbigroup.co.jp/english/others/newyear/2026.html",
+      "coinbase_rlusd": "https://www.coinbase.com/blog/coinbase-adds-rlusd",
+      "ripple_prime_rlusd": "https://ripple.com/insights/hidden-road-rlusd-collateral",
+      "standard_chartered_rlusd": "https://www.sc.com/en/press-release/standard-chartered-to-provide-custody-for-ripple-usd/"
+    },
+    "circle": {
+      "q3_2026": {
+        "end_usdc_circulation_usd": 73879000000,
+        "average_usdc_circulation_usd": 73264000000,
+        "reserve_return_pct": 3.5,
+        "end_usdc_on_circle_platform_usd": 13868000000,
+        "daily_weighted_average_platform_share_pct": 18.1,
+        "total_revenue_and_reserve_income_usd": 865000000,
+        "distribution_costs_to_coinbase_q3_usd": 331300000,
+        "distribution_costs_to_coinbase_9m_usd": 986600000
+      },
+      "coinbase_distribution_terms": "Coinbase receives allocations based on USDC held on Coinbase after issuer retention, plus half of the remaining broader ecosystem-growth amount after approved third-party participants. Circle records these deductions as distribution costs, not a separate stablecoin-issuance service.",
+      "circle_japan_jv": {
+        "ownership_circle_pct": 50,
+        "ownership_sbi_pct": 50,
+        "capital_contribution_circle_usd_approx": 1500000,
+        "capital_contribution_sbi_usd_approx": 1500000,
+        "as_of": "2026-09-30",
+        "operating_results": "No significant operating results to date",
+        "accounting": "Circle consolidates the VIE because it directs the significant activities and absorbs potentially significant losses/benefits; SBI interest is noncontrolling."
+      },
+      "arc_presale": {
+        "gross_proceeds_usd": 242200000,
+        "revenue_recognized_usd": 181800000,
+        "deferred_revenue_usd": 60400000,
+        "tokens_sold_millions": 807.5,
+        "price_per_token_usd": 0.3,
+        "cash_flow_note": "Circle's 10-Q says $242.2M presale proceeds were received during the nine months ended Sep 30; $181.8M recognized as revenue and $60.4M deferred."
+      },
+      "reserve_income_mix": {
+        "q3_share_of_total_revenue_pct": 76,
+        "nine_month_share_of_total_revenue_pct": 87.5,
+        "interpretation": "Reserve income remains a major earnings driver; the exact percentages are management-disclosed composition, not a forecast."
+      },
+      "current_supply": {
+        "as_of": "2026-11-05",
+        "usdc_circulation_usd": 69200000000,
+        "change_from_sep30_usd": -4679000000,
+        "change_pct": -6.33,
+        "interpretation": "Issuer page's Nov 5 circulation compared with Sep 30 10-Q end-of-period circulation; no cause attribution."
+      },
+      "arc_network": {
+        "mainnet_launch": "2026-09-16",
+        "validators_at_launch": 11,
+        "founding_validator_includes_sbi_group": true,
+        "coinbase_role": "listed as an exchange participant, not a founding validator",
+        "gas_asset": "USDC",
+        "launch_consensus": "permissioned validator set",
+        "network_scope": "Circle's separate L1, not XRPL",
+        "implication": "Potential alternative stablecoin-native settlement rail; its relationship to XRP is competitive for some routes and complementary where USDC is native on XRPL."
+      }
+    },
+    "coinbase": {
+      "q3_2026": {
+        "stablecoin_revenue_q3_usd": 306900000,
+        "stablecoin_revenue_9m_usd": 904500000,
+        "average_usdc_on_coinbase_products_usd": 22000000000,
+        "average_usdc_market_cap_usd": 73000000000,
+        "share_of_average_usdc_market_cap_pct": 30,
+        "off_platform_average_usdc_usd": 51000000000,
+        "assets_on_platform_usd": 376600000000,
+        "circle_agreement": "Renewed on same terms in 2026"
+      },
+      "disclosure": "Coinbase's Q3 2026 AOP table does not separately disclose XRP; it groups various crypto assets and payment stablecoins as Other, none individually exceeding 5% of total AOP. No XRP-specific customer-collateral amount was disclosed.",
+      "accounting_caution": "Coinbase's stablecoin revenue and Circle's distribution costs to Coinbase are different accounting measures and must not be equated or netted."
+    },
+    "sbi": {
+      "circle_equity_investment": {
+        "total_usd": 50000000,
+        "sbi_holdings_usd": 25000000,
+        "sbi_shinsei_bank_usd": 25000000,
+        "date": "2025-06-05"
+      },
+      "circle_jv": {
+        "ownership_sbi_pct": 50,
+        "ownership_circle_pct": 50,
+        "contribution_each_usd_approx": 1500000,
+        "operating_results": "No significant operating results as of 2026-09-30"
+      },
+      "jpysc_lending": {
+        "as_of": "2026-11-02",
+        "lending_balance_jpy_over": 10000000000,
+        "handled_balance_jpy_over": 30000000000,
+        "source": "SBI VC Trade official release",
+        "not_xrp": true
+      },
+      "rlusd": {
+        "listing_start": "2026-06-24",
+        "platform": "SBI VC Trade VCTRADE service",
+        "source": "SBI VC Trade official release"
+      },
+      "ripple_relationship": {
+        "sbi_ripple_asia_sbi_group_voting_rights_pct": 60,
+        "ripple_pct": 40,
+        "as_of": "2026-03-31",
+        "sbi_holdings_ripple_equity_approx_pct": "9-10% based on SBI company disclosures in 2025-2026; exact current share register not public"
+      },
+      "remittance": {
+        "corridors": [
+          "Philippines",
+          "Vietnam",
+          "Indonesia"
+        ],
+        "announced": "2023-09-06",
+        "bridge_asset": "XRP",
+        "volume_publicly_disclosed": false
+      },
+      "xrpl_tokenized_deposit_poc": {
+        "date": "2026-02-26",
+        "status": "conceptual proof of concept",
+        "uses_xrpl": true,
+        "requires_xrp_bridge": false,
+        "commercial_volume": false
+      },
+      "card_rewards": {
+        "date": "2026-05-01",
+        "assets": [
+          "BTC",
+          "ETH",
+          "XRP"
+        ],
+        "interpretation": "Retail reward-conversion channel; scale and resulting spot demand not publicly quantified."
+      }
+    },
+    "ripple": {
+      "rlusd_on_sbi_vc_trade": "Live since 2026-06-24; SBI describes it as a Japan-first fourth-type electronic payment instrument.",
+      "rlusd_on_coinbase": "Retail, Exchange and Prime access announced in 2026; Coinbase Global Exchange collateral integration was described as future work, not verified live.",
+      "prime_collateral": "Ripple Prime/Hidden Road announced RLUSD collateral use across prime-brokerage products; public utilization/volume not disclosed.",
+      "custody_and_collateral": "Ripple National Trust final OCC approval is a custody/reserve-management development; Standard Chartered RLUSD custody is live, while LMAX collateral mirroring was described as planned.",
+      "xrp_caveat": "RLUSD collateral, USDC settlement, XRPL tokenized deposits and XRP bridge-currency use are distinct exposures."
+    },
+    "relationship_hypotheses": {
+      "complement": "USDC/RLUSD issuance on XRPL and tokenized-deposit use may expand XRPL activity and liquidity, potentially creating ecosystem benefits.",
+      "substitution": "USDC/RLUSD and Arc's USDC-gas settlement can route value without XRP as a bridge asset, potentially substituting for XRP in some corridors.",
+      "deciding_evidence": [
+        "public corridor-level XRP volume and conversion legs",
+        "issuer/venue XRP inventory and collateral disclosures",
+        "XRPL asset-specific payment/DEX/AMM volumes",
+        "venue-level order-book depth and execution cost",
+        "stablecoin mint/burn and bridge flows"
+      ],
+      "current_conclusion": "No evidence in these announcements alone establishes incremental XRP spot demand."
+    },
+    "workflow_failure_triage": {
+      "main_pillars_consistency_check": {
+        "run_id": 42621970927,
+        "status": "FAILURE",
+        "cause": "GitHub App credentials unavailable, Databricks HTTP 403, Hugging Face stage BUILD_ERROR",
+        "classification": "BLOCKED_UNVERIFIED_EXTERNAL_ACCESS",
+        "action": "left fail-closed; no credentials or external writes attempted"
+      },
+      "main_hover_bike_updates": {
+        "run_id": 42572261311,
+        "status": "FAILURE",
+        "cause": "artifact paths not found after generator step",
+        "integration_branch_fix": "workflow now invokes generator from repository root to align its relative output paths",
+        "verification": "workflow itself not dispatched on PR branch"
+      },
+      "main_riemann_research_harvest": {
+        "run_id": 42556313011,
+        "status": "FAILURE",
+        "cause": "missing pydantic-settings in workflow environment",
+        "integration_branch_fix": "workflow now installs pydantic-settings before tests",
+        "verification": "workflow itself not dispatched on PR branch"
+      }
+    },
+    "data_integrity": {
+      "raw_http_bytes_preserved": false,
+      "source_hash_receipts_created": false,
+      "model_admission": false,
+      "forecast_status": "NOT_ISSUED"
+    }
   }
 }
