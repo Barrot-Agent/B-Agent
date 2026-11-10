@@ -5413,3 +5413,88 @@ No merge, deployment, secret rotation, Space restart, Kaggle submission, Databri
 A read-only tree-path check found that the removed `.config/gh/hosts.yml` path is absent from current main and the active #1660 integration tree, but remains present at the tips of all 14 other currently open non-draft PR branches and three inspected draft branches: #1653, #1650–#1644, #1320, #1318, #1317, #1269, #1255, #1254, plus draft branches #1640, #1643 and #1642. Only tree path metadata was inspected; no file contents were read, and no source branch was modified. These branch tips therefore remain another exposure surface until the credential is revoked and the branches are safely updated. Treat the credential as compromised. The owner must revoke/reissue it; no rotation, branch rewrite, source-branch mutation or history rewrite was performed.
 
 At this follow-up, PR #1660 had 956 changed files, 268,663 additions and 3,655 deletions. The documentation/evidence head before this follow-up was `2a46e95c97a1cdca0188421264f27e4595c61b89`; the exact new follow-up commit and its CI state are recorded in the PR and latest branch ref. The full-suite result on parent code head `b2f6eb0ba77bc503de4eefabd07ba98d7414552a` remains 3,363 passed, zero failed, eight subtests and 59.58% coverage. The latest documentation head must still pass its own exact-head full suite and dependency audit.
+
+
+## Run 11 update — 2026-11-10 21:04 UTC
+
+### Repository and exact-head verification
+
+- Main SHA: `ec5f82122bf3fb2b74bd36ad72fc1e5d19067533`.
+- Existing integration branch: `integration/xrp-v3-unified-main-20261110`.
+- Integration head before this Run 11 evidence commit: `5c48f7af14dd95c8da141408bdcfd07a714f8947`.
+- PR #1660: open, non-draft, 1,925 commits ahead / zero behind, 956 changed files, 268,701 additions and 3,655 deletions.
+- Open PR inventory: 373 total, 358 drafts, 15 non-drafts.
+- Recursive trees: 1,403 main entries and 2,250 integration entries.
+
+Exact-head checks on `5c48f7af14dd95c8da141408bdcfd07a714f8947` completed successfully:
+- Full repository suite: **3,363 passed, zero failed, eight subtests**, 59.58% inclusive coverage.
+- Core suite: 697 passed.
+- Wheel build/install and installed Barrot V3/XRP resource verification passed.
+- Six dependency manifests audited; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merging disabled.
+- CodeRabbit skipped.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024488
+- Full-suite job: https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024488/job/130098782282
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024500
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024564
+
+Main's own full-suite job on `ec5f8212` passed 718 tests and eight subtests. The integration full-suite job exercises substantially more repository tests.
+
+### Critical credential exposure — owner action required
+
+The path `.config/gh/hosts.yml` is absent from current main and the active #1660 integration tree, but remains present at the tips of 17 other inspected open PR branches: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. This is 14 other non-draft branches plus three drafts. Only recursive tree-path metadata was inspected; no file contents were read. The historical Git blob remains.
+
+Treat the GitHub CLI credential as compromised. Its owner must revoke and reissue it, then safely remediate the affected branch tips and history under separate authorization. No secret was read, rotated or revoked; no source branch was modified and no Git history was rewritten.
+
+### Current XRP market and liquidity snapshot
+
+Capture: 2026-11-10 21:04 UTC.
+
+- Kraken XRP/USD: last $1.06490; bid $1.06425; ask $1.06434; 24-hour volume 37.724M XRP; 24-hour VWAP $1.06965; 24-hour range $1.03011–$1.10584. The ticker response supplied no provider event timestamp.
+- OKX XRP-USDT: last 1.0587; bid 1.0585; ask 1.0586; 24-hour volume 73.839M XRP; event timestamp 20:46:40.565 UTC. Mechanically normalized using Kraken USDT/USD at 0.99875 gives approximately $1.05738, but the cross-venue difference is asynchronous and not executable.
+- Fuelmaps spot-only hourly snapshot at 20:00 UTC: XRP mid $1.0643 across six venues. Within ±0.5%: $9.6M bids / $6.7M asks; ±1%: $14.4M / $11.2M; ±2%: $19.3M / $13.2M; ±5%: $24.4M / $15.6M. Bid share within 1% was 56.2%. Binance and Bitget are excluded; resting orders can be cancelled and the snapshot can be up to 65 minutes old.
+- XRP Insights' 08:00 UTC wallet snapshot: 22.33B XRP across 701 wallets and 24 exchanges, 32.4% of circulating supply. Same-wallet change was −8.9M over seven days and −150.9M over 30 days. Naive total change was +361.1M because two newly tracked wallets held 512M XRP. Cold storage and non-customer wrapped reserves are included; this is not tradable float.
+- TradRadar's 17:50 UTC derivatives snapshot: OI $1.57B, −5.55% 24-hour change, funding +0.0070% per eight hours, at least $16.42M liquidations, of which $15.70M longs and $0.723M shorts; 79.6% long accounts. Liqwall's older 14:42 UTC snapshot showed $1.19B OI and $8.8M liquidations. Coverage and timestamps differ; do not average.
+- CryptoKeyhole's 20:48 UTC ETF file: November 9 partial, three of four funds, −9.217M XRP (about −$10.1M); Franklin remained pending. The complete November 6 daily flow was −752,048 XRP. The October 23–November 6 cumulative was +2.622M XRP (about +$3.45M). The November 9 partial is excluded from that cumulative. Tracker universes overlap issuer files and are not independent confirmations.
+- XRPL Dashboard's 20:54 UTC own-node snapshot: 98 enabled amendments, nine in flight, zero in countdown, 35 trusted validators heard and 29 affirmative votes required. SingleAssetVault had 23/29 and LendingProtocol 22/29. Native XRPL lending remains inactive.
+
+### Evernorth actual-capital reconciliation — primary SEC correction
+
+The November 9 SEC prospectus materially clarifies the difference between capital received, XRP contributed, debt and conditional equity capacity.
+
+- Gross cash proceeds at the October 9 business-combination closing: approximately **$272.6M before transaction expenses**, consisting of approximately $224.6M private-placement cash and $48.0M SPAC trust cash after redemptions.
+- Investors also contributed **388,910,554 XRP in kind**.
+- Advance funding: $214.05M cash plus 600,000 XRP. The $214.05M cash was used to buy 84,365,876 XRP.
+- Delayed funding: $10.5M cash plus 200,000 XRP.
+- Series C: 211,319,096.061435 XRP sourced from RippleWorks and contributed by Arrington XRP Capital Fund LP sponsor.
+- Ripple-affiliated Larsen Lam Children’s Remainder Trust: 50M XRP.
+- Ripple directly contributed 126,791,458 XRP to Pathfinder in exchange for units.
+- The disclosed components reconcile to approximately **473.276M XRP**: 388.911M in-kind plus 84.366M cash-purchased. Evernorth reported approximately 473M holdings as of October 9. The $214.05M cash-purchased tranche has a calculated historical average cost of approximately $2.537/XRP; this is not the average cost of all treasury XRP.
+- The $30M 4.00% convertible senior PIK note due 2031 was issued October 12. The prospectus summary describes approximately $30M net before transaction expenses, while a detailed note says $29M net after a $1M advisor fee. Preserve both disclosure contexts. No XRP deployment of the note proceeds is established.
+- The Cantor ELOC permits up to 5,218,935 newly issued shares, at 97% of applicable VWAP, subject to ownership, volume and registration conditions. The SEC prospectus explicitly says **zero proceeds had been received under the ELOC as of November 9**. The $521,893.50 non-refundable commitment fee is due after ELOC registration effectiveness. The headline ELOC capacity is not capital received.
+- The Ripple Company Facility had a $10M limit and $9.7M drawn as of October 7; repayment was due within five business days after the October 9 closing, but repayment is not confirmed in the November 9 prospectus. A separate $1M Evernorth facility was undrawn as of June 30.
+
+Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+### Identity and nine-platform status
+
+- SBIC East/Central/West remain separate Tokyo/Nagoya/Osaka regional investment-consultation companies, not SBI Holdings. ChatGPT seminars establish training, not an OpenAI partnership.
+- ASK Coin exchange listing is inactive/untracked; Permission Coin ASK is a separate token candidate. No XRP integration is verified.
+- The official Wealth With Confidence site identifies Dr. Kamilah Stevenson but does not first-party link the candidate YouTube channel. One verified public guest appearance is the Paul Barron Podcast video from June 11, 2026; it is not her own channel. No personal-channel inventory is attributed.
+- ChatGPT GitHub read/write on the existing integration branch is verified. Claude, Grok, Gemini and Codex remain unverified; no current Copilot approval exists on #1660; Hugging Face has a prior build error; Kaggle is untested; Databricks previously returned HTTP 403. No external-model data transfer occurred.
+
+### Prediction and merge status
+
+The integration branch retains 46 source definitions, a read-only collector, SHA-256 receipt-chain prototype, point-in-time SQLite feature store, four baselines, chronological walk-forward tests with purge/embargo, calibration/drift diagnostics and a fail-closed Ed25519 forecast ledger.
+
+Production gaps remain: independent WORM/timestamp anchoring, raw receipt replay, synchronized historical spot/L2/derivatives/flow/collateral data, vintage-aware macro/event ingestion, scenario/counter-hypothesis generation, overlapping-horizon effective-sample correction, sufficient shadow outcomes, production evaluator key and demonstrated out-of-sample lift.
+
+The main branch still lacks the XRP mission manifest, collector and scheduled XRP workflow. Main's public signal remains the stale October 29 legacy observation and the landing page still promotes an XRP Signal Service. The integration branch has a safe `NOT_ISSUED` status, now timestamped at this run's capture time; no directional forecast is issued.
+
+PR #1660 remains open and unmerged. It has zero formal reviews, zero approvals and zero unresolved threads. Main reports protected=true, but the detailed branch-protection endpoint returns HTTP 403; the visible fallback ruleset is disabled. GitHub Pages automatically deployed after the prior main security-removal push, so a future merge would cause another public publication. Specific publication authorization is absent. Full semantic review of 956 changed files and 44 workflow definitions remains incomplete.
+
+No source PRs were closed. Unique work remains preserved: #1653 (six graph paths, eight unresolved review threads), #1614 (27 unique prediction paths), #1611 (one unique path) and #1269 (eight unique topology paths). Exact duplicates/superseded candidates remain open until successor content is merged and verified on main.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
