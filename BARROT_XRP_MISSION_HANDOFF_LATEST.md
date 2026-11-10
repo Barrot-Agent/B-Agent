@@ -1,3 +1,56 @@
+# Run127A — Morpho cbXRP collateral stress and API-access reconciliation
+
+**Research addendum captured:** 2026-11-10T10:22:50Z. This is a historical collateral-risk analysis, not a live market-state capture. It was added after Run127's 10:05:55Z run start; all underlying Morpho position observations are dated November 6 and therefore precede the cutoff.
+
+## Historical Morpho cbXRP/USDC market snapshot
+
+CryptoSlate's November 7 analysis of Morpho GraphQL position and market data reports a November 6 snapshot for the Base cbXRP/USDC market:
+
+- Market ID: 0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109.
+- Chain ID 8453; cbXRP collateral; USDC loan; Chainlink XRP/USD oracle with a 1:1 USDC leg; LLTV 62.5%.
+- Market state at 13:24:46 UTC: approximately $59.24M USDC debt against 119.87M cbXRP collateral, with oracle reference 1.1843 USDC per cbXRP.
+- Aggregate debt/collateral-value ratio at that oracle reference: approximately 41.73%.
+- Within a further 5% oracle-price decline: 462 positions, $3,229,610.99 USDC debt and 4,504,596.67 cbXRP collateral.
+- Within a further 10% decline: 1,070 positions, $8,844,820.21 USDC debt and approximately 12.73M cbXRP collateral. The 5% cohort is a subset of the 10% cohort; do not add them.
+- The position analysis paginated 500/500/70 rows, with page timestamps around 13:24:54–13:24:55 UTC. This was not a snapshot-isolated walk; position updates occurred around the same observation window.
+
+Sources: [CryptoSlate analysis](https://cryptoslate.com/), [public Dune query attributed to @morpho](https://dune.com/morpho), [Morpho API](https://api.morpho.org/graphql). The Dune query and article independently identify the same market and LLTV, but both depend on Morpho's underlying data and are not independent measurements of current positions.
+
+## Conditional comparison with the later XRP spot reference
+
+The same-run Kraken XRP/USD ticker showed $1.08792, but supplied no provider event timestamp. This is approximately 8.14% below the November 6 Morpho oracle reference of 1.1843. The corresponding historical thresholds are:
+
+- 5% decline threshold: 1.125085 USDC per cbXRP. The later Kraken spot reference is about 3.30% below this level.
+- 10% decline threshold: 1.06587 USDC per cbXRP. The later Kraken spot reference is about 2.07% above this level.
+
+**Conditional interpretation only:** if the current Morpho oracle moved in line with the Kraken spot reference and the November 6 positions were unchanged, the historical 5% cohort would be beyond its modeled LLTV threshold; the entire 10% cohort would not. Current Morpho oracle, current positions, repayments, collateral top-ups and executed liquidations were not retrieved. Do not call the 462 historical positions currently liquidatable. Do not infer any native XRP sale.
+
+The November 6 market collateral of 119.87M cbXRP is about 78.67% of Coinbase's November 10 reported 152.37M cbXRP supply. This is a cross-date concentration comparison only, not a current allocation or proof that all supply remained in the market.
+
+## Coinbase loan-protection mitigation and limits
+
+Coinbase's official USDC-loan collateral and loan-health help pages describe opt-in liquidation protection: it must be enabled for each loan, applies once, expires after one year, requires available collateral, and may be partial or fail. Coinbase explicitly says it is not a guarantee against liquidation. The public documentation does not establish that every cbXRP Morpho position is a Coinbase-app borrower or that every cbXRP position qualifies for this feature. Treat it as a possible mitigation for some borrowers, not a market-wide offset.
+
+Sources: [Coinbase collateral and loan protection](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral), [Coinbase USDC loan health](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-health), [Coinbase lending introduction](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/lending-intro). Coinbase describes USDC deposits into Morpho vaults that route funds to lending markets; that does not make Coinbase the borrower or the owner of all market positions.
+
+## Morpho API access conflict — do not add an unverified endpoint
+
+A specific Morpho documentation page describes a cursor-paginated GET market positions/health endpoint with LTV filters and indexed-block/ltv-computed timestamps. The current general API documentation says the Core REST spec no longer exposes a market-wide Blue position-health list; it describes GraphQL as still served for existing integrations. These statements conflict. No direct live positions/health response was retrieved, and no endpoint was added to the scheduled source registry.
+
+Decision: keep the existing Morpho market-parameters, market-state, liquidity, state-history and oracle endpoints as digest-only/raw-only sources. Do not add market-wide positions/health ingestion until lawful access, authentication/permission, current endpoint status, pagination consistency and terms are directly verified. If the REST endpoint is unavailable, investigate an authorized public GraphQL or on-chain event reconstruction path. Aggregate risk metrics only; do not publish borrower addresses.
+
+Sources: [specific Morpho positions-health reference](https://docs.morpho.org/api/markets/get-market-positions-health/), [general Morpho API documentation](https://docs.morpho.org/developers/api/morpho/).
+
+## Prediction and execution boundary
+
+- This historical snapshot is research-only and is not model-admitted.
+- No live current Morpho utilization, borrow, collateral, oracle or position-health metric was obtained.
+- No actual liquidation, cbXRP redemption or native XRP sale was verified.
+- Forecast status remains NOT_ISSUED. No directional forecast, paper trade or real-money action occurred.
+
+Updated structured evidence: [Run127 market and collateral reconciliation JSON](research/xrp_intelligence/20261110T100555Z-run127-spot-cbxrp-etf-derivatives-exchange-macro-reconciliation.json).
+
+---
 # Barrot XRP Mission — Run127: spot, cbXRP reserves, ETF vintages and derivatives reconciliation
 
 **Run start / cutoff:** 2026-11-10T10:05:55Z. Provider event/publication times are kept separate from retrieval time. A source timestamp after the cutoff is excluded; missing or unzoned timestamps are not inferred.
