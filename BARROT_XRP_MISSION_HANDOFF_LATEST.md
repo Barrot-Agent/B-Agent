@@ -1,3 +1,204 @@
+# Barrot XRP Mission — Run120: Market, ETF, CFTC TFF and Integration Audit
+
+**Updated 2026-11-10T06:35:24Z.** This update preserves Run119 and adds a new point-in-time research and repository audit. The tested code parent is `4d4a752aaa000353b4522bb8f83e7f7fe16d021b`; the combined handoff/artifact commit created by this run requires its own exact-head CI verification.
+
+## Current repository state
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Integration branch: `integration/core-capabilities-mmi-structural-paper-20261104`; parent head before this update: `4d4a752aaa000353b4522bb8f83e7f7fe16d021b`.
+- Existing integration PR: [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640), 908 commits ahead, zero behind, 239 changed paths.
+- Main tree: 1,404 entries, 1,299 files, 493 Python files, 87 test modules, 86 workflow files, 30 XRP research artifacts.
+- Integration tree: 1,536 entries, 1,423 files, 568 Python files, 145 test modules, 87 workflow files, 69 XRP research artifacts.
+- Main does not contain `data/missions/primary_mission.json`, `barrot_agent/data/missions/primary_mission.json`, or `.github/workflows/xrp-public-ingestion.yml`. Those remain on the integration branch.
+
+## Exact-head verification on the parent code head
+
+On `4d4a752aaa000353b4522bb8f83e7f7fe16d021b`:
+
+- Full repository suite: **1,347 passed, zero failed, 8 subtests passed**.
+- Inclusive coverage: **59.48%**, above the 53% floor.
+- Core suite: 677 passed, 8 subtests passed.
+- Wheel build and installed-wheel verification passed, including Barrot V3, the XRP mission and canonical data assets.
+- Six dependency manifests passed audit; zero known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Evidence: [Full CI 42764891140](https://github.com/Barrot-Agent/B-Agent/actions/runs/42764891140), [dependency audit 42764891132](https://github.com/Barrot-Agent/B-Agent/actions/runs/42764891132), [fail-closed gate 42764891383](https://github.com/Barrot-Agent/B-Agent/actions/runs/42764891383).
+
+**Verification boundary:** this run adds only a research artifact and this handoff update, but that new commit is a different head. Do not transfer the parent test result to the new commit. Its exact-head CI must complete independently.
+
+## PR #1640 review and merge gates
+
+- GitHub reports the PR mergeable and clean.
+- 62 review submissions: all COMMENTED; zero APPROVED.
+- 22 review threads: all 22 resolved; all 22 marked outdated.
+- CodeRabbit's latest review check was skipped.
+- Main branch-protection API returns HTTP 403, “Resource not accessible by integration.”
+- The visible repository ruleset “Fall Back” is disabled.
+- GitHub Pages previously deployed automatically after a main push. PR #1640 changes seven public web assets; authorization for that automatic publication remains unresolved.
+
+**Decision: BLOCKED; do not merge.** The conditional merge authorization is not satisfied. No branch-protection bypass was attempted.
+
+## Open PR inventory and overlap classification
+
+The complete open inventory is 372 PRs: 356 drafts and 16 non-drafts.
+
+- **#1640:** sole active V3/XRP integration path; blocked pending independent approval, authoritative branch-protection visibility and Pages side-effect authorization.
+- **#1643:** 670 changed paths; 7 overlap #1640 and 663 are unique research evidence. Preserve; do not close.
+- **#1653:** 7 changed paths; one CI overlap and 6 unique repository-knowledge-graph paths. Preserve; 8 review threads remain unresolved.
+- **#1642:** 7/7 changed paths overlap #1640. Superseded-content candidate; retain until successor is merged and verified on main.
+- **#1614:** 57 changed paths; 8 overlap and 49 are unique prediction/clock research. Preserve the unique work.
+- **#1317:** 6/6 paths overlap #1640; superseded candidate.
+- **#1318:** 2/2 paths overlap #1640; superseded candidate.
+- **#1320:** 5/5 paths overlap #1640; superseded candidate.
+- **#1644:** 8/8 workflow paths overlap #1640.
+- **#1645:** 1/1 workflow path overlaps #1640.
+- **#1646 and #1648:** each changes `requirements-dev.txt`, which overlaps #1640.
+- **#1647:** 6/6 workflow paths overlap #1640.
+- **#1649 and #1650:** each changes `legacy/requirements_legacy.txt`, which overlaps #1640.
+- **#1254 and #1255:** each changes only `legacy/requirements_legacy.txt`; older dependency candidates, fully overlapping #1640.
+- **#1269:** 9 changed paths; 8 unique mesh/topology paths and one CI overlap. Preserve.
+- **#1655:** 8 changed paths; 3 unique source-catalog/structural README paths and 5 overlaps. Preserve unique material.
+- **#1659:** 6 changed paths; 4 unique local inference/documentation/test paths and 2 overlaps. Preserve unique material.
+- **#1641:** 3/3 unique autonomous-experimentation paths. Preserve.
+
+No PRs were closed. No unique research, mesh, knowledge-graph, prediction or experimentation work was bulk-closed. Dependency candidates require version/diff reconciliation against the single integration path before any merge.
+
+## Main-branch scheduled workflow audit
+
+- Main has no XRP public-ingestion workflow. The integration branch's `xrp-public-ingestion.yml` is guarded by `github.ref == refs/heads/main`; it is therefore not operational from this branch.
+- Main's Cross Analysis workflow is `contents:read`, uses `persist-credentials:false`, uploads read-only analysis artifacts and does not commit or push repository files. The latest inspected run completed successfully.
+- Main Pillars Consistency Check failed closed: missing GitHub App ID/private key/installation ID, Databricks HTTP 403, Hugging Face Space `BUILD_ERROR`. No secrets were rotated and no external writes were attempted.
+- Main Hover Bike workflow failed artifact upload because its four expected output files were absent.
+- Main Riemann Harvest workflow failed test bootstrap because `pydantic` was unavailable through the shared test conftest. The integration workflow now installs `pydantic-settings`, but a successful integration-branch dispatch has not been verified.
+- The XRP workflow uploads raw-source artifacts with 90-day retention, per-run feature-store checkpoints with 7-day retention and daily feature-store backups with 90-day retention. These are GitHub Actions artifacts, not independent WORM storage or trusted timestamp anchoring. Cache is a convenience/fallback, not an immutable archive.
+
+## XRP spot and quote-normalization snapshot
+
+Capture cutoff: 2026-11-10T06:35:24Z.
+
+- Kraken XRP/USD response: last **$1.09923**, bid **$1.09909**, ask **$1.09921**, displayed spread approximately **1.09 bps**, 24-hour volume **26.0836M XRP**, 24-hour VWAP **$1.09399877**, high **$1.11573**, low **$1.07502**. Kraken did not supply a provider event timestamp in the returned ticker.
+- OKX XRP-USDT: last **1.0986 USDT**, bid **1.0986**, ask **1.0987**, 24-hour volume **66.69499M XRP**, provider event timestamp **2026-11-10T06:10:20.977Z**.
+- Kraken USDT/USD: bid **0.99866**, ask **0.99867**, midpoint **0.998665**. Mechanical normalization gives OKX last approximately **$1.097133**, about **0.191% below** Kraken's last. The snapshots are asynchronous and quote conversion is itself sampled separately; this is not an executable arbitrage signal.
+
+Sources: [Kraken XRP/USD ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX XRP-USDT ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken USDT/USD ticker](https://api.kraken.com/0/public/Ticker?pair=USDTUSD).
+
+## Spot order-book depth
+
+Fuelmaps' six-venue **spot-only** snapshot at **2026-11-10 02:00 UTC** covered Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini:
+
+- Within ±0.5%: $9.6M bids / $6.7M asks; 58.8% bid share.
+- Within ±1%: $14.0M bids / $11.2M asks; 55.5% bid share.
+- Within ±2%: $18.6M bids / $12.9M asks.
+- Within ±5%: $24.7M bids / $15.1M asks.
+- Six of six venues reporting at ±5%.
+
+This snapshot is 4 hours 35 minutes old at the capture cutoff. It is not current executable depth; displayed orders can be cancelled. A fresh direct raw L2 capture was not obtained in this run.
+
+Source: [Fuelmaps spot order-book heatmap](https://fuelmaps.io/order-book/).
+
+## Perpetual derivatives and liquidation disagreement
+
+- TradRadar, updated **05:30 UTC**: seven-exchange open interest **$1.65B**, 24-hour OI change **−4.12%**, OI-weighted funding **+0.0063% per 8 hours**, 24-hour liquidations **at least $8.40M** (longs $7.65M; shorts $0.749M), account long/short ratio 3.89 (79.5% long).
+- Liqwall, earlier **02:22 UTC** snapshot: approximately $1.22B OI.
+- Alpha Finance, earlier **01:40 UTC** snapshot: approximately $2.48B OI; modeled long/short liquidation clusters are estimates from leverage tiers, not verified executions.
+
+These aggregates have different venue coverage and timestamps. Do not average them. The fresh TradRadar observation supports declining OI and long-heavy reported liquidation, not a directional price forecast.
+
+Sources: [TradRadar](https://tradradar.io/markets/xrp), [Liqwall](https://liqwall.com/coins/xrp), [Alpha Finance](https://alphafinance.io/liquidation-heatmap/xrp/).
+
+## ETF issuer-flow reconciliation — November 9 partial
+
+CryptoKeyhole updated at **06:12 UTC** and had issuer files for 3 of its 4 daily-tracked funds:
+
+- Bitwise XRP: **−8,594,551 XRP**, issuer file stamped 05:51 UTC.
+- Canary XRPC: **−427,341 XRP**, published 05:22–05:27 UTC.
+- 21Shares TOXR: **−194,660 XRP**, issuer stamp 05:01 UTC.
+- Franklin XRPZ: not yet published for November 9.
+
+CryptoKeyhole's displayed total is **−9,216,553 XRP / approximately −$10.1M**. The three displayed component integers sum to −9,216,552 XRP, a 1-XRP display/reconciliation difference that is preserved rather than silently adjusted.
+
+Cross-provider disagreement:
+- Alpha Finance reports approximately **−$10.4M** through the November 9 session across five funds.
+- CryptoETF.today reports approximately **−$10.3M**, 3 of 5 funds reported.
+- CryptoKeyhole reports approximately **−$10.1M**, 3 of its 4 daily-tracked funds reported.
+
+These are different universes, file vintages and valuation methods. Do not average. CryptoKeyhole's complete-day cumulative figure through November 6 remains **+2,622,459 XRP / +$3.45M** and explicitly excludes the November 9 partial.
+
+Sources: [CryptoKeyhole issuer-file tracker](https://cryptokeyhole.com/etf-flows/xrp/), [Alpha Finance ETF tracker](https://alphafinance.io/etf/xrp/), [CryptoETF.today](https://cryptoetf.today/en/xrp-etf-flows).
+
+## CFTC Traders in Financial Futures — November 3 report
+
+The official CFTC **futures-only TFF** report lists three XRP products. Contract sizes differ:
+
+| Product | CFTC code | Open interest | Leveraged funds long / short | Net |
+|---|---:|---:|---:|---:|
+| CME XRP, 50,000 XRP/contract | 176740 | 7,216 | 1,976 / 1,696 | +280 |
+| Coinbase Nano XRP, 500 XRP/contract | 176LM1 | 32,505 | 29,317 / 31,625 | −2,308 |
+| Coinbase Nano XRP Perp Style, 500 XRP/contract | 176LM3 | 38,392 | 1,780 / 29,554 | −27,774 |
+
+Contract-size-normalized open interest is **396.2485M XRP-equivalent** (360.8M CME + 16.2525M Nano + 19.196M Nano Perp Style). This is XRP-equivalent contract exposure, not cash capital, collateral, spot demand or net directional risk.
+
+The CME leveraged-fund cohort is net long while both Coinbase Nano products are net short. Treat these instruments separately; leveraged funds may use basis and cross-venue hedges. Do not collapse them into a single bullish/bearish position. This TFF classification is also distinct from the Legacy COT non-commercial grouping.
+
+Primary sources: [CFTC TFF futures-only report](https://www.cftc.gov/dea/futures/financial_lf.htm), [CFTC TFF options-and-futures combined report](https://www.cftc.gov/dea/options/financial_lof.htm).
+
+## Evernorth / BitGo custody attribution correction
+
+- Evernorth's SEC prospectus states that all XRP owned by the company is initially held in custody accounts at BitGo Bank & Trust, National Association. [SEC Form 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+- Q-Eternal reports the October 28 transfer of **3,846,153.846152 XRP** from `rUWUJ2F3aZknSd8PVutoMnxowMK792maTD` to `rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj`, ledger 107963318, destination tag 2. The amount equals 5,000,000 / 1.3 to six decimal places; this arithmetic does not prove consideration or a $5M purchase. [Q-Eternal October 29 analysis](https://q-eternal.com/blog/2026-10-29/).
+- Bithomp shows both addresses as multisignature accounts activated by a BitGo account. The source has no username, was activated in 2019 and currently displays about 26.6M XRP. The destination has no username, was activated by BitGo on October 20, 2026 and currently displays about 96.2M XRP. These facts establish BitGo activation/multisig, not beneficial ownership by Evernorth. [Source account](https://bithomp.com/account/rUWUJ2F3aZknSd8PVutoMnxowMK792maTD), [destination account](https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj).
+- XRP Insights' latest read is ledger **108,233,072**, closed **2026-11-10 05:45 UTC**: 103,129,905 XRP in 13 attributed wallets, with 370,346,663 XRP moved outside that attributed set through October 22. The tracker does not attribute the destination account above. [XRP Insights Evernorth tracker](https://xrp-insights.com/xrp-radar/evernorth).
+
+Classification: **BitGo-originated multisig-to-multisig custody transfer; probable custody reallocation is a competing hypothesis, but beneficial owner and Evernorth attribution remain unresolved.** It is not evidence of an exchange deposit, executed sale or confirmed new Evernorth purchase. Keep the 9.070M XRP combined October 23/28 inbound out of confirmed new-capital and exchange-flow features until direct ledger replay and ownership evidence resolve it.
+
+## Macro event clock
+
+BLS schedules October 2026 CPI and Real Earnings for **Tuesday, November 10 at 08:30 ET / 13:30 UTC**. At this capture, release is still in the future. Do not treat consensus or pre-release estimates as actual data. [BLS CPI release page](https://www.bls.gov/news.release/cpi.htm).
+
+## Prediction-engine and ingestion status
+
+Implemented on the integration branch:
+- 40 registered public source records: 36 hourly, two weekly CFTC, two non-commercial XRPL nodes excluded from collection.
+- Raw-source byte capture/receipt contracts and SHA-256 receipt-chain validation.
+- Point-in-time feature validator that requires provenance hashes and rejects post-cutoff or late-ingested records.
+- SQLite feature store; four deterministic baselines; chronological walk-forward evaluator with purge/embargo; calibration and drift diagnostics.
+- Fixed-horizon forecast ledger; raw receipt bytes are rechecked during readiness-report registration; trusted independent Ed25519 evaluator key is required.
+
+Operational boundary:
+- Scheduled ingestion is guarded to run only on main; the workflow and mission manifests are not on main.
+- Raw receipts are configured as 90-day GitHub Actions artifacts; per-run feature-store checkpoints 7 days; daily feature-store backups 90 days. This is not independent WORM retention or trusted timestamp anchoring.
+- Independent external timestamp/WORM anchoring, complete synchronized history, effective-sample-size correction, sufficient independent shadow outcomes and demonstrated out-of-sample lift remain outstanding.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred. Run120 web observations are research-only: original transport bytes/headers were not retained, so no raw-byte receipt hash was fabricated and no feature was admitted to the model.
+
+## Nine-platform authentication and data flow
+
+- ChatGPT: current-session GitHub read/write and public-web research exercised.
+- Copilot: prior one-off COMMENTED PR review activity; no approval and no separately verified persistent data flow.
+- Claude, Grok, Gemini and Codex: unverified.
+- Hugging Face: prior build error; no deployment.
+- Kaggle: untested; no submission.
+- Databricks: prior HTTP 403; no workspace write.
+
+No persistent authenticated nine-platform exchange occurred and no external model received repository data.
+
+## Next concrete actions
+
+1. Verify exact-head full CI, dependency audit and fail-closed gate on the new Run120 commit; do not inherit parent results.
+2. Obtain independent approving review and authoritative branch-protection visibility; resolve authorization for the automatic GitHub Pages side effect.
+3. Activate XRP public ingestion only after the mission workflow is safely present on main; verify first scheduled run, raw receipts, feature-store restore, and source failures.
+4. Establish independent WORM/timestamp anchoring beyond GitHub Actions' 90-day artifact retention.
+5. Replay the October 22–28 Evernorth/BitGo transfers against a direct public rippled endpoint; resolve address ownership and the 9.070M XRP inbound classification.
+6. Reconcile final November 9 ETF issuer files after Franklin publishes; preserve missing values as missing, not zero.
+7. Capture the October CPI release only after BLS publication and maintain event-time boundaries.
+8. Continue synchronized historical spot, spot L2, derivatives, exchange-flow and collateral ingestion; evaluate out-of-sample performance and shadow outcomes before any forecast.
+9. Preserve unique #1643, #1653, #1614, #1269, #1655, #1659 and #1641 material. Close only exact duplicates after successor content is merged and verified on main.
+
+No merge, intentional deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+
+---
+
 # Barrot XRP Mission — Run119: Second BitGo Inbound and Primary Custody Disclosure
 
 **Updated 2026-11-10T05:52:25Z · Supersedes the Run118 treatment of the rUWUJ-to-rBKr transfer as a single 5.2236M XRP event.**
