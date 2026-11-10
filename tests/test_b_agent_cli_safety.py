@@ -105,3 +105,11 @@ def test_b_agent_external_repository_transfer_requires_explicit_confirmation():
     assert "SEND REPOSITORY CONTEXT TO LUNAROUTE" in main
     assert main.index("if not args.allow_lunaroute_data_transfer:") < main.index("llm = GroqLLM(")
     assert main.index("transfer_confirmation") < main.index("llm = GroqLLM(")
+
+
+def test_b_agent_local_repair_checks_clean_feature_worktree_before_loop():
+    source = SOURCE.read_text(encoding="utf-8")
+    main = source[source.index("def main():"):]
+    assert "assert_clean_feature_worktree" in source
+    assert "default_branch=repo.default_branch" in main
+    assert main.index("safe_workspace = assert_clean_feature_worktree(") < main.index("run_repository_repair_loop(")
