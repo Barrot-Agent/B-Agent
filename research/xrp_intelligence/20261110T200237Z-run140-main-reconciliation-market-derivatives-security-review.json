@@ -1,0 +1,336 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "run_id": "run140",
+  "captured_at_utc": "2026-11-10T20:02:37Z",
+  "mission": {
+    "priority": 1,
+    "id": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3 execution, orchestration, safety, verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "ec5f82122bf3fb2b74bd36ad72fc1e5d19067533",
+    "integration_branch": "integration/xrp-v3-unified-main-20261110",
+    "prior_integration_head": "7684e641d5ecb0d4794b0050d8bca3ba9a85576b",
+    "reconciliation_merge_commit": "b2f6eb0ba77bc503de4eefabd07ba98d7414552a",
+    "merge_parents": [
+      "7684e641d5ecb0d4794b0050d8bca3ba9a85576b",
+      "ec5f82122bf3fb2b74bd36ad72fc1e5d19067533"
+    ],
+    "main_tree_entries": 1403,
+    "integration_tree_entries": 2249,
+    "compare_status": "ahead",
+    "ahead_by": 1923,
+    "behind_by": 0,
+    "pr": {
+      "number": 1660,
+      "state": "open",
+      "draft": false,
+      "mergeable": true,
+      "mergeable_state": "unstable",
+      "head": "b2f6eb0ba77bc503de4eefabd07ba98d7414552a",
+      "base": "ec5f82122bf3fb2b74bd36ad72fc1e5d19067533",
+      "commits": 1923,
+      "changed_files": 955,
+      "additions": 268254,
+      "deletions": 3655,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "inline_threads": 0
+    }
+  },
+  "security_event": {
+    "id": "tracked-github-cli-auth-file",
+    "severity": "high",
+    "affected_path": ".config/gh/hosts.yml",
+    "main_removal_commit": "ec5f82122bf3fb2b74bd36ad72fc1e5d19067533",
+    "integration_remediation_commit": "b2f6eb0ba77bc503de4eefabd07ba98d7414552a",
+    "current_tree_status": {
+      "main_absent": true,
+      "integration_absent": true,
+      "gitignore_excludes": [
+        ".config/gh/hosts.yml",
+        ".config/gh/"
+      ]
+    },
+    "historical_exposure": "The prior tracked blob remains in repository history; current-tree deletion does not revoke the credential or erase historical exposure.",
+    "credential_value_recorded": false,
+    "rotation_or_revocation": "NOT_PERFORMED; specific owner authorization is required",
+    "recommended_owner_action": "Revoke/reissue the credential at its issuer; assess historical exposure and any separately authorized history-cleanup procedure.",
+    "no_force_push_or_history_rewrite": true
+  },
+  "verification": {
+    "exact_head": "b2f6eb0ba77bc503de4eefabd07ba98d7414552a",
+    "pr_ci": {
+      "run_id": 42891691049,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42891691049",
+      "conclusion": "success",
+      "full_suite_passed": 3363,
+      "failed": 0,
+      "subtests_passed": 8,
+      "inclusive_coverage_percent": 59.58,
+      "coverage_floor_percent": 53,
+      "wheel_build": true,
+      "installed_wheel_verification": true
+    },
+    "dependency_audit": {
+      "run_id": 42891691585,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42891691585",
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42891690825,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42891690825",
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "push_ci": {
+      "run_id": 42891678940,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42891678940",
+      "status": "in_progress_at_last_poll"
+    },
+    "main_ci": {
+      "run_id": 42890637613,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42890637613",
+      "conclusion": "success"
+    },
+    "main_auto_pr": {
+      "run_id": 42890637778,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42890637778",
+      "conclusion": "success"
+    },
+    "main_pages": {
+      "run_id": 42890636713,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42890636713",
+      "conclusion": "success",
+      "side_effect": "automatic Pages build/deployment after main push; not initiated by this run"
+    },
+    "branch_protection": "HTTP 403; required rules unavailable",
+    "visible_ruleset": "Fall Back disabled"
+  },
+  "workflow_review": {
+    "changed_workflows": 44,
+    "quarantined_false_condition": 26,
+    "first_pass_trigger_permission_gate_review": true,
+    "full_semantic_review_complete": false,
+    "active_workflows": "read-only or manually gated; exact job behavior still requires full semantic review"
+  },
+  "pr_inventory": {
+    "open": 373,
+    "drafts": 358,
+    "non_drafts": 15,
+    "classifications": {
+      "1254": "1/1 path represented in #1660",
+      "1255": "1/1 path represented in #1660",
+      "1269": "9 paths; one shared, eight unique; preserve",
+      "1317": "6/6 paths represented in #1660",
+      "1318": "2/2 paths represented in #1660",
+      "1320": "5/5 paths represented in #1660",
+      "1611": "8 paths; seven shared, one unique; preserve",
+      "1614": "57 paths; 30 shared, 27 unique; preserve",
+      "1640": "280/280 paths represented in #1660; source superseded only after successor merge and main verification",
+      "1642": "7/7 paths represented in #1660",
+      "1643": "670/670 paths represented in #1660; source superseded only after successor merge and main verification",
+      "1653": "7 paths; six unique and one shared; eight unresolved current review threads; preserve",
+      "1660": "sole consolidated V3/XRP integration; blocked pending approvals/protection visibility/Pages authorization/full semantic review",
+      "1644-1650": "all changed paths represented in #1660; dependency/action candidates"
+    },
+    "closed_prs": []
+  },
+  "market": {
+    "spot": {
+      "source": "OKX public ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time_utc": "2026-11-10T19:44:07.473Z",
+      "last_usdt": 1.0656,
+      "bid": 1.0654,
+      "ask": 1.0655,
+      "open24h": 1.0989,
+      "high24h": 1.1073,
+      "low24h": 1.0311,
+      "volume24h_xrp": 75596160.425481,
+      "return_from_open_percent": -3.0303,
+      "raw_bytes_captured": false
+    },
+    "orderbook": {
+      "status": "NO_SYNCHRONIZED_CURRENT_SPOT_L2_CAPTURE",
+      "notes": "OKX books and Binance API endpoints were inaccessible through the web retrieval path; no stale heatmap substituted."
+    },
+    "etf": {
+      "date": "2026-11-09",
+      "daily_net_outflow_usd_approx": 10400000,
+      "bitwise_outflow_usd_approx": 9400000,
+      "canary_outflow_usd_approx": 811400,
+      "twentyone_shares_outflow_usd_approx": 212900,
+      "secondary_window_oct12_nov9_net_outflow_usd_approx": 4200000,
+      "net_assets_usd_approx": 1240000000,
+      "source_disagreement": "247WallSt reports -$4.2M cumulative Oct 12-Nov 9; CCN cites +$8.9M in a separate latest 30-session window. Different windows/fund coverage; do not average.",
+      "eligibility": "EXCLUDED_PENDING_ISSUER_SETTLEMENT_AND_CASH_VS_IN_KIND_RECONCILIATION"
+    },
+    "derivatives": {
+      "binance_xrp_perp_30d_cumulative_funding_percent": 0.18,
+      "record_context": "reported highest in >1 year by CryptoQuant analyst Darkfost; cumulative 30-day measure, not one funding interval",
+      "oi_30d_sma_xrp_prior_approx": 512000000,
+      "oi_30d_sma_xrp_latest_approx": 453000000,
+      "spot_volume_usd_oct28_approx": 513000000,
+      "spot_volume_usd_nov9_approx": 786000000,
+      "volume_change_percent": 53.2,
+      "interpretation": "positive funding amid falling spot can indicate crowded longs; higher turnover during declines can be distribution or accumulation"
+    },
+    "options": {
+      "source": "OptimistFi Deribit snapshot",
+      "event_time_utc": "2026-11-10T14:00:00Z",
+      "atm_iv_30d_percent": 57.9,
+      "skew_25d_points": -1,
+      "put_call_ratio_dec25": 0.58,
+      "dec25_open_interest_usd_approx": 45300000,
+      "near_term": {
+        "nov11": {
+          "atm_iv_percent": 77.4,
+          "skew_points": -9.9
+        },
+        "nov12": {
+          "atm_iv_percent": 71.3,
+          "skew_points": -8.7
+        },
+        "nov13": {
+          "atm_iv_percent": 69.6,
+          "skew_points": -7.7
+        }
+      },
+      "raw_venue_receipt": false
+    },
+    "macro": {
+      "source": "BLS October 2026 CPI",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11102026.htm",
+      "release_time_utc": "2026-11-10T13:30:00Z",
+      "headline_mom_percent": 0.4,
+      "core_mom_percent": 0.3,
+      "food_mom_percent": 0.5,
+      "energy_mom_percent": 0.7,
+      "shelter_mom_percent": 0.3,
+      "year_over_year": "unavailable for affected series because October 2025 survey data were not collected"
+    }
+  },
+  "institutional": {
+    "ripple_mint": "Official Ripple release dated 2026-07-23 already described programmatic API access, mint/redemption, webhooks and lifecycle tracking. November 10 Coinpaper article is re-reporting, not a new API launch.",
+    "bny": "BNY primary release dated 2026-10-27 confirms XRP and RLUSD custody support; direct BNY RLUSD mint/redeem and tokenized trade-finance initiatives remain future/subject to client requirements.",
+    "demand_distinction": "Custody, RLUSD settlement, XRPL transactions, tokenized assets and actual XRP accumulation/bridge throughput remain separate metrics."
+  },
+  "identity": {
+    "ask_coin": "No verified XRP-linked ASK Coin identity. Permission Coin ASK is a separate candidate token on Base/Polygon; no XRP integration established.",
+    "actual_capital": "Not a standardized XRP metric; preserve cash, XRP purchased, in-kind XRP, debt, undrawn facilities, warrants and secondary resales separately.",
+    "sbic_chatgpt_exact_phrase": "No verified primary-source match for the exact phrase or partnership.",
+    "sbic_east_central_west": "Tokyo/Nagoya/Osaka regional investment-consultation companies, distinct from SBI Holdings; ChatGPT training is educational evidence, not an OpenAI partnership.",
+    "kamilah_stevenson": "Person/channel ownership remains unverified; no personal YouTube video inventory attributed."
+  },
+  "prediction_engine": {
+    "source_definitions": 46,
+    "hourly": 42,
+    "weekly_cftc": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "implemented": [
+      "read-only collector",
+      "SHA-256 receipt-chain prototype",
+      "point-in-time SQLite feature-store prototype",
+      "four deterministic baselines",
+      "chronological walk-forward with purge/embargo",
+      "calibration and drift diagnostics",
+      "fail-closed Ed25519 forecast ledger"
+    ],
+    "outstanding": [
+      "independent WORM/timestamp anchoring",
+      "raw receipt replay",
+      "synchronized historical spot/L2/derivatives/flows/collateral",
+      "vintage-aware macro/event timeline",
+      "scenario/counter-hypothesis runner",
+      "effective-sample-size correction",
+      "sufficient shadow outcomes",
+      "production evaluator key",
+      "demonstrated out-of-sample lift"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platforms": {
+    "ChatGPT": "current-session GitHub read/write on integration verified",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "comment-only review activity; no approval",
+    "Codex": "unverified",
+    "HuggingFace": "prior BUILD_ERROR; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "prior HTTP 403; no workspace write",
+    "external_model_data_transfer": false
+  },
+  "sources": [
+    {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time_utc": "2026-11-10T19:44:07.473Z",
+      "web_ref": "turn758851view6",
+      "independence_group": "OKX"
+    },
+    {
+      "url": "https://247wallst.com/investing/cryptocurrency/2026/11/10/xrp-etfs-lost-10-4-million-in-one-day-how-much-has-left-since-xrp-started-falling/",
+      "published": "2026-11-10",
+      "web_refs": [
+        "turn873093view0",
+        "turn873093view1"
+      ],
+      "independence_group": "SoSoValue-derived secondary reporting"
+    },
+    {
+      "url": "https://www.ccn.com/news/crypto/xrp-funding-year-high-spot-etf-outflows/",
+      "published": "2026-11-10",
+      "web_refs": [
+        "turn873093view2",
+        "turn873093view3"
+      ],
+      "independence_group": "CryptoQuant commentary / SoSoValue-derived secondary reporting"
+    },
+    {
+      "url": "https://optimistfi.com/perps/options/xrp",
+      "event_time_utc": "2026-11-10T14:00:00Z",
+      "web_ref": "turn278951view0",
+      "independence_group": "OptimistFi/Deribit aggregated options data"
+    },
+    {
+      "url": "https://www.bls.gov/news.release/archives/cpi_11102026.htm",
+      "published": "2026-11-10T13:30:00Z",
+      "web_ref": "turn278951view1",
+      "independence_group": "BLS primary"
+    },
+    {
+      "url": "https://ripple.com/insights/ripple-mint/",
+      "published": "2026-07-23",
+      "web_ref": "turn236757view0",
+      "independence_group": "Ripple primary"
+    },
+    {
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published": "2026-10-27",
+      "web_ref": "turn873093view5",
+      "independence_group": "BNY primary"
+    },
+    {
+      "url": "https://coinpaper.com/38628/ripple-expands-rlusd-with-api-based-minting-as-banks-accelerate-stablecoin-adoption",
+      "published": "2026-11-10",
+      "web_ref": "turn873093view4",
+      "independence_group": "secondary re-report of Ripple Mint"
+    },
+    {
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "web_ref": "turn121489search7",
+      "independence_group": "Permission Coin token profile"
+    }
+  ],
+  "limitations": [
+    "Web-search/open results did not expose raw HTTP bytes for immutable source receipts.",
+    "No synchronized current spot L2 snapshot was obtained.",
+    "Some derivative and ETF figures are secondary aggregator reports with overlapping upstream sources.",
+    "Exact-phrase searches produced no verified ASK Coin/XRP or SBIC-ChatGPT partnership match.",
+    "No directional forecast is supported or issued."
+  ]
+}
