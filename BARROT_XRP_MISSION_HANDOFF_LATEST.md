@@ -3395,3 +3395,44 @@ The 372 open PRs were enumerated (356 drafts, 16 non-drafts). Path comparisons a
 PR #1640 is technically green and mergeable, but remains **BLOCKED** by zero independent approvals, inaccessible effective branch-protection details and unresolved authorization for automatic GitHub Pages publication. Do not merge or bypass protection. Next actions: resolve approval/protection/publication authorization; after the BLS release, capture the official October CPI vintage with exact release time; preserve the one integration PR; keep scheduled ingestion off main until authorized; establish WORM/timestamp anchoring and synchronized historical data; do not issue forecasts until out-of-sample and shadow gates pass.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+## Run 130A — cbXRP collateral, Coinbase reserves and PNC/USDC payment rail
+
+**Captured:** 2026-11-10 13:26:11 UTC. The preceding exact integration head `e6794a2e82ced10472ffb6f1f5c115d0673d6841` passed the full suite (1,371 passed, zero failed, eight subtests), 59.58% coverage, installed-wheel verification, six-manifest dependency audit with zero known vulnerabilities and the fail-closed gate. Exact evidence: [CI 42824076149](https://github.com/Barrot-Agent/B-Agent/actions/runs/42824076149), [dependency audit 42824076046](https://github.com/Barrot-Agent/B-Agent/actions/runs/42824076046), [fail-closed gate 42824076086](https://github.com/Barrot-Agent/B-Agent/actions/runs/42824076086). This research-only descendant still requires its own exact-head checks before any merge.
+
+### Actual XRP-linked collateral usage
+
+Coinbase's own cbXRP proof-of-reserves page states cbXRP is backed 1:1 by XRP held by Coinbase. The US-locale search snapshot displayed **152,372,342.33 XRP reserve** against **152,370,095.8 cbXRP supply**, an apparent excess of 2,246.53 XRP. A different earlier locale snapshot displayed 151,921,083.53 XRP reserve and 151,918,836.99 cbXRP supply. The page variants expose different refresh-time labels (2:04 AM, 5:09 AM, and 9:34 AM) without an explicit timezone in the rendered result. Preserve the balances and the time-label ambiguity; do not treat this as a third-party attestation or an exact UTC-aligned reserve series. [Coinbase proof of reserves](https://www.coinbase.com/cbxrp/proof-of-reserves).
+
+MorphoWatch's detailed public on-chain market page, using Morpho API data, reports a Base **cbXRP/USDC** market snapshot at 11:01 UTC:
+
+- 120.41M cbXRP collateral, valued at $129.9M.
+- $55.58M USDC borrowed against it; 88.2% utilization of $62.98M supplied and $7.41M immediately available.
+- 11,694 borrowers.
+- Fixed 62.5% liquidation LTV and 12.68% liquidation bonus.
+- Borrow APY 7.00% (30-day average 7.25%); supply APY 6.15% (30-day average 6.52%).
+- ChainlinkOracleV2 price approximately 1.08 USDC.
+- 1,466 liquidations in the preceding 30 days, with $6.23M debt repaid.
+- The page models approximately $26.01M collateral at risk under a 20% cbXRP price decline. One of its largest borrowers had health 1.04 and a displayed 3.6% price drop to liquidation; that single borrower is not representative of all positions.
+
+MorphoWatch's later Coinbase summary at 12:31 UTC reports $55.52M borrowed, $129.9M collateral and 6.98% borrow APY. The detailed and summary snapshots differ slightly; both vintages are preserved. MorphoWatch says the Coinbase app market attribution is inferred from public on-chain matching; Coinbase does not publish the exact markets. [Detailed market](https://morphowatch.com/markets/base/cbxrp-usdc-62-5/), [Coinbase/Morpho summary](https://morphowatch.com/coinbase/).
+
+The 120.41M cbXRP collateral amount is approximately 79.0% of the Coinbase-displayed 152.37M cbXRP supply if the snapshots are comparable. This is a cross-source approximation only: the page timezones differ, the Morpho market is one of several, and the figure is not admitted as a point-in-time feature until vintages are synchronized.
+
+**Interpretation:** this is material XRP-linked collateral/credit use on Base, not native XRPL lending. It can support a holder-liquidity hypothesis (borrow USDC without immediate XRP sale) and a liquidation-supply counter-hypothesis (leveraged cbXRP collateral can be liquidated during a decline). It does not prove net XRP spot purchases or net XRP demand. Keep cbXRP/USDC Base lending separate from XRPL SingleAssetVault/LendingProtocol, which remain below activation thresholds (23/29 and 22/29 at the latest snapshot).
+
+### PNC, Coinbase and Circle stablecoin rail
+
+PNC's November 9 primary announcement and Coinbase's matching announcement establish a limited pilot for eligible PNC Corporate & Institutional Banking clients to receive **USDC on Ethereum** through Coinbase Payment APIs. Incoming USDC is automatically converted 1:1 into U.S. dollars and deposited into a designated PNC account. Reuters identifies the asset as Circle's USDC. PNC did not disclose payment volume or client count. [PNC primary release](https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients), [Coinbase announcement](https://www.coinbase.com/blog/coinbase-secures-mica-license-from-luxembourg), [Reuters](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/).
+
+This is a live PNC/Coinbase/Circle-issued-USDC institutional dollar rail, but it is **not** an XRP/XRPL route and no Ripple/XRP bridge leg is disclosed. It is a competing or adjacent payment path, not evidence that XRP use is displaced in other corridors.
+
+### Model treatment
+
+- Admit verified cbXRP collateral balances, USDC debt, utilization, oracle, LLTV, liquidation history and timestamped position-health data only as separate Base collateral features with provenance and vintage.
+- Do not count cbXRP reserve balances as free float or proprietary Coinbase holdings.
+- Do not count PNC USDC receipts as XRP demand.
+- Preserve both the non-sale borrowing hypothesis and the liquidation-supply counter-hypothesis.
+- No directional forecast issued; no paper trade or real-money action.
+
+Structured evidence: [Run130A JSON](research/xrp_intelligence/20261110T132611Z-run130a-cbxrp-morpho-pnc-institutional-update.json).
