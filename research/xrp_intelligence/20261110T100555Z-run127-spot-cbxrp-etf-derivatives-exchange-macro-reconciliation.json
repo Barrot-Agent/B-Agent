@@ -283,15 +283,102 @@
       "Fuelmaps aggregates six spot venues and excludes Binance/Bitget.",
       "Liqwall and TradRadar aggregate overlapping derivatives venues.",
       "CryptoKeyhole, CryptoETF and Alpha share issuer/flow inputs despite separate publishers.",
-      "Coinbase proof-of-reserves is issuer-published; XRP Insights uses public XRPL wallet labels and same-wallet balances."
+      "Coinbase proof-of-reserves is issuer-published; XRP Insights uses public XRPL wallet labels and same-wallet balances.",
+      "Morpho position-stress article uses Morpho GraphQL data and Dune query metadata; these are not independent measurements of the same market state.",
+      "Coinbase loan-protection help describes an opt-in per-loan feature, but does not prove protection was enabled or available for every cbXRP position."
     ]
   },
   "next_actions": [
+    "Resolve the Morpho positions/health documentation conflict and verify authorized endpoint access before adding market-wide position ingestion.",
+    "Reconstruct current cbXRP/USDC risk cohorts only from a consistent snapshot; compare current oracle and market-state block, preserve pagination metadata, and aggregate without publishing borrower addresses.",
     "Capture October CPI and Real Earnings only after 13:30 UTC and preserve the first-release vintage.",
     "Resolve the 2.272M XRP Coinbase cbXRP reserve-scope difference.",
     "Retrieve live Morpho cbXRP/USDC market parameters, state, liquidity, history and oracle data; no current utilization was obtained in this run.",
     "Expand synchronized historical spot, depth, derivatives, exchange-flow and collateral coverage with independent receipt anchoring.",
     "Preserve ETF vintages and resolve the one-XRP arithmetic discrepancy without zero-filling missing funds.",
     "Keep PR #1640 as the sole V3/XRP integration path; do not merge until approvals, branch-protection visibility and Pages authorization are satisfied."
-  ]
+  ],
+  "research_addendum_morpho_cbxrp": {
+    "captured_at_utc": "2026-11-10T10:22:50Z",
+    "source_snapshot_date": "2026-11-06",
+    "source_snapshot_market_state_utc": "2026-11-06T13:24:46Z",
+    "source_snapshot_position_pages_utc": [
+      "2026-11-06T13:24:54Z",
+      "2026-11-06T13:24:55Z"
+    ],
+    "source_type": "Secondary CryptoSlate analysis of Morpho GraphQL position and market data, cross-checked against a public Dune query attributed to @morpho. Not a live current-state capture.",
+    "market": {
+      "chain_id": 8453,
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "collateral_symbol": "cbXRP",
+      "collateral_token": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "loan_symbol": "USDC",
+      "loan_token": "0x833589fcd6edb6e08f4c7c32d4f71b54bdA02913",
+      "oracle": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+      "lltv_percent": 62.5,
+      "oracle_ratio_usdc_per_cbxrp": 1.1843,
+      "total_debt_usdc_approx": 59240000,
+      "total_collateral_cbxrp_approx": 119870000,
+      "aggregate_debt_to_collateral_value_ltv_percent": 41.7295
+    },
+    "historical_stress_cohorts": {
+      "within_5pct_additional_oracle_decline": {
+        "positions": 462,
+        "debt_usdc": 3229610.99,
+        "collateral_cbxrp": 4504596.67,
+        "subset_of_10pct_cohort": true
+      },
+      "within_10pct_additional_oracle_decline": {
+        "positions": 1070,
+        "debt_usdc": 8844820.21,
+        "collateral_cbxrp_approx": 12730000,
+        "share_of_total_market_debt_percent": 14.93
+      },
+      "pagination": {
+        "page_sizes": [
+          500,
+          500,
+          70
+        ],
+        "snapshot_isolation": false,
+        "warning": "The source analysis reports pages and position updates across multiple timestamps; do not treat the page walk as one perfectly synchronized snapshot."
+      }
+    },
+    "cross_date_spot_sensitivity": {
+      "current_kraken_spot_reference_usd": 1.08792,
+      "current_kraken_provider_timestamp_utc": null,
+      "percent_change_vs_nov6_morpho_oracle_reference": -8.13814067,
+      "price_threshold_for_5pct_decline_usd": 1.125085,
+      "current_spot_percent_below_5pct_threshold": -3.30330597,
+      "price_threshold_for_10pct_decline_usd": 1.06587,
+      "current_spot_percent_above_10pct_threshold": 2.06873258,
+      "conditional_interpretation": "If the current Morpho oracle tracked the Kraken spot reference and positions were unchanged, the historical 5pct cohort would be beyond its modeled LLTV threshold; the 10pct cohort would not all be beyond threshold. Current oracle, current positions, repayments, top-ups and executed liquidations were not retrieved.",
+      "current_oracle_verified": false,
+      "current_positions_verified": false,
+      "actual_liquidations_verified": false,
+      "native_xrp_sales_verified": false
+    },
+    "cbxrp_supply_concentration_cross_date": {
+      "nov6_morpho_collateral_cbxrp": 119870000,
+      "nov10_coinbase_total_cbxrp_supply": 152370095.8,
+      "approximate_percent": 78.6691,
+      "qualification": "Cross-date ratio only; not a current market allocation or evidence that all cbXRP supply remained in this market."
+    },
+    "coinbase_loan_protection": {
+      "official_help_url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+      "official_health_url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-health",
+      "terms": "Protection must be enabled for each loan, applies once, expires after one year, requires available collateral and may be partial or fail; Coinbase says it is not a guarantee against liquidation.",
+      "cbxrp_specific_eligibility": "Not independently established. Morpho market positions may include direct protocol borrowers who are not Coinbase app loan customers."
+    },
+    "morpho_api_access_conflict": {
+      "specific_positions_health_reference": "https://docs.morpho.org/api/markets/get-market-positions-health/",
+      "general_api_reference": "https://docs.morpho.org/developers/api/morpho/",
+      "specific_page_claim": "Documents a cursor-paginated GET market positions/health endpoint with LTV filters and indexed-block/ltv-computed timestamps.",
+      "general_spec_claim": "States that the Core REST spec no longer exposes a market-wide Blue position-health list; GraphQL remains served for existing integrations.",
+      "status": "DOCUMENTATION_CONFLICT_AND_ACCESS_UNVERIFIED",
+      "decision": "Do not add the positions/health endpoint to scheduled ingestion until a lawful authorized direct request succeeds and current endpoint/authentication terms are reconciled. Do not claim current market-wide position access."
+    },
+    "model_eligibility": false,
+    "reason": "Historical secondary snapshot; current position state and oracle are absent; page walk is not snapshot-isolated; API documentation conflicts; no raw HTTP bytes or source hashes retained."
+  }
 }
