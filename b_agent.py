@@ -39,12 +39,12 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger("b_agent")
 console = Console()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+LUNAROUTE_API_KEY = os.getenv("LUNAROUTE_API_KEY")
 GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
 TARGET_REPO = os.getenv("TARGET_REPO", "Barrot-Agent/B-Agent")
 
-if not GROQ_API_KEY or not GH_TOKEN:
-    console.print("[red]Missing GROQ_API_KEY or GH_TOKEN/GITHUB_TOKEN[/red]")
+if not LUNAROUTE_API_KEY:
+    console.print("[red]Missing LUNAROUTE_API_KEY[/red]")
     sys.exit(1)
 
 
@@ -52,7 +52,7 @@ class GroqLLM:
     def __init__(
         self,
         api_key,
-        model="openai/gpt-oss-20b",
+        model="glm-5.3-flash",
         temperature=0.2,
     ):
         import httpx
@@ -62,7 +62,7 @@ class GroqLLM:
         self.temperature = temperature
 
         self.client = httpx.Client(
-            base_url="https://api.groq.com/openai/v1",
+            base_url="https://gw.lunaroute.com/v1",
             headers={
                 "Authorization": f"Bearer {api_key}",
                 "Content-Type": "application/json",
@@ -520,8 +520,8 @@ def main():
     parser.add_argument(
         "--model",
         default=os.getenv(
-            "GROQ_MODEL",
-            "openai/gpt-oss-20b",
+            "LUNAROUTE_MODEL",
+            "glm-5.3-flash",
         ),
     )
 
@@ -533,7 +533,7 @@ def main():
     )
 
     llm = GroqLLM(
-        GROQ_API_KEY,
+        LUNAROUTE_API_KEY,
         args.model,
     )
 
