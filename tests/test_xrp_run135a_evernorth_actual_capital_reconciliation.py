@@ -137,7 +137,7 @@ def test_run135a_records_review_corrections_without_overwriting_historical_artif
 def test_run135a_residual_cash_was_used_for_xrp_at_close_but_quantity_is_unknown() -> None:
     cash = _artifact()["evernorth"]["cash_and_xrp_subscriptions"]
     assert cash["advance_funding_cash_received_usd"] == "214049995"
-    assert cash["cash_used_to_purchase_xrp_usd_approx"] == "214000000"
+    assert cash["advance_funding_cash_used_to_purchase_xrp_usd_approx"] == "214000000"
     assert cash["residual_cash_purchase_at_close_usd"] == "49995"
     assert cash["residual_cash_purchase_xrp_quantity"] is None
     assert cash["total_cash_deployed_to_xrp_usd"] == "214049995"

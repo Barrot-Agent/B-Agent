@@ -4612,3 +4612,10 @@ The person identity is confirmed as Dr. Kamilah Stevenson; the candidate channel
 The Kraken REST field correction and Evernorth capital correction from source PR #1643 are retained as review-driven corrections. Source PR #1643 has 19 resolved threads; three were not outdated when checked. Source PR #1640 has 22 resolved/outdated threads. Successor PR #1660 has zero formal reviews, zero approvals and zero inline review comments.
 
 PR #1653 remains unique and blocked by six Copilot findings and two CodeRabbit findings; no content was merged or closed. The integration PR remains unmerged because independent approval, authoritative branch-protection visibility, GitHub Pages publication authorization and complete 950-path/44-workflow semantic review remain outstanding.
+
+
+---
+
+## Run135D — Regression-test key correction
+
+A review of the new residual-cash test found one remaining test-only key mismatch before claiming verification: the artifact field is `advance_funding_cash_used_to_purchase_xrp_usd_approx`, not `cash_used_to_purchase_xrp_usd_approx`. The assertion is corrected in this commit. The production artifact values are unchanged. CI on parent head `4f51c53b6cc798500f7249066e71ba8e44f60092` is not used as final evidence; the corrected successor head must pass the full suite, dependency audit and fail-closed gate.
