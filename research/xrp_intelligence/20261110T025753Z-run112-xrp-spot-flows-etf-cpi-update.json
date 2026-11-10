@@ -163,6 +163,13 @@
       "scheduled_at_et": "2026-11-10T08:30:00-05:00",
       "source": "US Bureau of Labor Statistics",
       "status_at_capture": "FUTURE_NOT_RELEASED"
+    },
+    {
+      "event": "EBA direct supervision of significant USDC e-money token begins",
+      "scheduled_at_utc": "2026-11-12T00:00:00Z",
+      "source": "European Banking Authority",
+      "status_at_capture": "FUTURE_EFFECTIVE_DATE",
+      "xrp_relevance": "USDC regulatory oversight; no direct XRP demand inference."
     }
   ],
   "provenance": {
@@ -201,6 +208,12 @@
       "label": "Transfer/rebalancing and deleveraging exhaustion",
       "evidence": "Same-wallet exchange balances declined over 7 and 30 days; large gross transfers may include reserve replenishment or internal movement; open interest has contracted.",
       "disconfirming_or_limiting_evidence": "The reported 691M XRP Binance inflow is unusually large and could become sellable inventory; long-heavy liquidations and the partial ETF outflow remain real observations."
+    },
+    {
+      "id": "H3",
+      "label": "Institutional stablecoin rails can grow without requiring XRP bridge demand",
+      "evidence": "PNC-Coinbase USDC receipt-and-conversion pilot, EBA's forthcoming direct oversight of significant USDC, and BNY's custody support for XRP and RLUSD show that custody, stablecoin settlement and XRP custody can coexist.",
+      "disconfirming_or_limiting_evidence": "BNY's XRP custody support expands institutional access, and RLUSD/USDC activity on XRPL may increase XRPL utility; neither alone measures XRP bridge conversion, inventory or market purchases."
     }
   ],
   "model_admission": false,
@@ -216,6 +229,64 @@
     "xrp_insights": "https://xrp-insights.com/exchange-balances",
     "cryptoquant": "https://cryptoquant.com/insights/quicktake/6af0e5decd57dd300eaa1720-XRP-Whale-inflows-hit-900M-the-highest-since-2024",
     "etf_tracker": "https://cryptokeyhole.com/etf-flows/xrp/",
-    "bls": "https://www.bls.gov/schedule/2026/11_sched_list.htm"
-  }
+    "bls": "https://www.bls.gov/schedule/2026/11_sched_list.htm",
+    "eba_usdc_significant_emt": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union",
+    "ripple_bny_custody": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+    "coinbase_pnc_usdc": "https://www.coinbase.com/blog/coinbase-and-pnc-expand-partnership-to-bring-stablecoin-payment-acceptance-to-corporate-clients",
+    "circle_q3_2026": "https://www.circle.com/pressroom"
+  },
+  "institutional_regulatory_events": [
+    {
+      "event_date": "2026-10-27",
+      "parties": [
+        "Ripple",
+        "BNY",
+        "C2FO"
+      ],
+      "event": "Ripple and BNY expanded their digital-asset custody collaboration. BNY now supports XRP and RLUSD on its Digital Asset Custody platform; the parties are exploring tokenized trade-finance use cases with C2FO.",
+      "xrp_relevance": "Institutional custody availability for XRP expanded. This is not evidence of BNY proprietary XRP purchases, customer balances, collateral utilization or net XRP inflows.",
+      "source_type": "Ripple primary announcement",
+      "source_url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    },
+    {
+      "event_date": "2026-11-09",
+      "parties": [
+        "Coinbase",
+        "PNC",
+        "Circle"
+      ],
+      "event": "PNC and Coinbase announced a limited corporate/institutional pilot. Eligible PNC clients can receive USDC through Coinbase Payment APIs; incoming USDC is converted 1:1 into USD and deposited to a designated PNC account.",
+      "xrp_relevance": "A competing institutional dollar-payment rail. It is not an XRP corridor and does not prove substitution in any specific corridor.",
+      "source_type": "Coinbase primary announcement; Reuters corroboration",
+      "source_urls": [
+        "https://www.coinbase.com/blog/coinbase-and-pnc-expand-partnership-to-bring-stablecoin-payment-acceptance-to-corporate-clients",
+        "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/"
+      ]
+    },
+    {
+      "event_date": "2026-10-14",
+      "effective_date": "2026-11-12",
+      "parties": [
+        "European Banking Authority",
+        "Circle Internet Financial Europe SAS",
+        "ACPR",
+        "New York Department of Financial Services"
+      ],
+      "event": "EBA classified USDC as the first significant e-money token under MiCA. From November 12, the EBA assumes direct supervision of own funds, reserve assets, liquidity requirements, and recovery/redemption plans; ACPR retains governance and other specified supervisory areas. EBA and ACPR will cooperate, with an EBA-NYDFS information-sharing MoU.",
+      "xrp_relevance": "A material regulatory event for a competing stablecoin rail. It may affect institutional confidence and reserve/liquidity oversight for USDC; it does not create XRP demand or determine XRP collateral use.",
+      "source_type": "EBA primary press release",
+      "source_url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union",
+      "status_at_run_capture": "FUTURE_EFFECTIVE_DATE"
+    },
+    {
+      "event_date": "2026-11-04",
+      "parties": [
+        "Circle"
+      ],
+      "event": "Circle reported $73.3B average USDC circulation and $13.9T Q3 on-chain transaction volume.",
+      "xrp_relevance": "Stablecoin scale and payment-rail competition context only. These figures are not XRP flows, XRP liquidity or XRP collateral.",
+      "source_type": "Circle primary Q3 results",
+      "source_url": "https://www.circle.com/pressroom"
+    }
+  ]
 }

@@ -1,5 +1,28 @@
 # Run 112 — XRP market, exchange-wallet, ETF-flow and CPI update
 
+## Final exact-head verification and institutional update
+
+The code/test head `a570530a16f32f28a75e1e769d85357d82806c75` completed exact-head verification:
+- Full repository suite: **1,347 passed, zero failed, eight subtests passed**; inclusive coverage **59.48%**.
+- Core suite: **677 passed, eight subtests passed**.
+- Installed-wheel build and verification passed, including Barrot V3 and XRP mission resources.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Evidence: [Full CI 42748525154](https://github.com/Barrot-Agent/B-Agent/actions/runs/42748525154), [dependency audit 42748525451](https://github.com/Barrot-Agent/B-Agent/actions/runs/42748525451), [fail-closed gate 42748525061](https://github.com/Barrot-Agent/B-Agent/actions/runs/42748525061).
+
+The current handoff/artifact-only descendant does not change code or tests. It adds the following institutional/regulatory evidence and preserves the code/test head above as the verified execution baseline.
+
+- **BNY/Ripple, October 27:** BNY expanded custody support to XRP and RLUSD on its Digital Asset Custody platform and is exploring tokenized trade-finance use cases with Ripple and C2FO. This is custody availability, not evidence of BNY proprietary XRP purchases or collateral utilization. [Ripple primary announcement](https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/)
+- **PNC/Coinbase/Circle, November 9:** eligible PNC corporate/institutional clients can receive USDC via Coinbase Payment APIs, automatically converted 1:1 into USD in a PNC deposit account. This is a competing dollar-payment rail, not an XRP corridor. [Coinbase](https://www.coinbase.com/blog/coinbase-and-pnc-expand-partnership-to-bring-stablecoin-payment-acceptance-to-corporate-clients) · [Reuters](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/)
+- **EBA/USDC, effective November 12:** the EBA classified USDC as the EU's first significant e-money token. From November 12 it assumes direct oversight of own funds, reserve assets, liquidity, and recovery/redemption plans; ACPR retains governance and other specified responsibilities. This is a near-term regulatory event for USDC, not evidence of XRP demand. [EBA primary release](https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union)
+- **Circle Q3, November 4:** Circle reported $73.3B average USDC circulation and $13.9T Q3 on-chain transaction volume. These are stablecoin scale indicators, not XRP flows. [Circle Q3 results](https://www.circle.com/pressroom)
+
+Counter-hypothesis retained: institutional stablecoin rails can grow without requiring XRP bridge demand. XRP custody support, stablecoin settlement on XRPL, and XRP market purchases are separate variables.
+
+---
+
+
 ## Run112 follow-up — historical handoff test and receipt-preimage correction
 
 The Run112 handoff/data commit `7e64b1be83ec4040e974e6c6dd45f11165233e13` added the Run112 research artifact and refreshed the public `NOT_ISSUED` status timestamp. Its full-suite workflow found one stale test assertion: `tests/test_xrp_mission_handoff_run58.py` still required the current handoff to start with Run111. Run112 is now the current first section; the complete Run111 section remains preserved below it. The failure was a test-fixture expectation, not production prediction logic.
