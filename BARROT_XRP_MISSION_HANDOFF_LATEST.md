@@ -3654,3 +3654,178 @@ Runs: [CI 42827946400](https://github.com/Barrot-Agent/B-Agent/actions/runs/4282
 **Next concrete action:** verify the Run130G remote commit SHA and exact-head CI, full repository suite, six-manifest dependency audit and fail-closed gate. Do not merge until those pass and the previously recorded independent-approval, branch-protection and Pages-publication blockers are resolved.
 
 **Forecast status: NOT_ISSUED.** No original artifact was overwritten, no new branch or PR was created, and no merge, deployment, paper-trading mutation, real-money transaction, force-push or destructive worktree operation occurred.
+
+
+---
+
+## Run 131 — CPI surprise, synchronized market snapshot, CFTC XRP positions and integration verification
+
+**Captured:** 2026-11-10T13:55:30Z. **Main:** `d4d43be3427375cf79d190e768976de062e20287`. **Integration head before this Run131 evidence commit:** `12d9a32201199738a27030b0f6873a16fbce6597`. **Existing integration PR:** [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640).
+
+### Repository integration and exact-head verification
+
+The current main tree contains **1,299 files** (1,404 recursive entries); the integration tree at the verified parent head contains **1,453 files** (1,566 entries). The integration branch is **962 commits ahead and zero behind main**, with **270 changed files, 127,316 additions and 3,555 deletions**. The open PR inventory contains **372 PRs: 356 drafts and 16 non-drafts**.
+
+PR #1640 is open, non-draft and reported mergeable, but its merge state is unstable. It remains the sole active V3/XRP integration path.
+
+Exact-head verification on `12d9a32201199738a27030b0f6873a16fbce6597` completed:
+- Full repository suite: **1,380 passed, zero failed, eight subtests passed**.
+- Inclusive package coverage: **59.58%**, above the 53% floor.
+- Core suite passed.
+- Wheel build and installed-wheel verification passed; the installed wheel loads Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit passed with zero known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+- CodeRabbit check was skipped.
+
+Evidence:
+- [Full repository suite — 42828685337](https://github.com/Barrot-Agent/B-Agent/actions/runs/42828685337)
+- [Dependency audit — 42828685291](https://github.com/Barrot-Agent/B-Agent/actions/runs/42828685291)
+- [Fail-closed gate — 42828685280](https://github.com/Barrot-Agent/B-Agent/actions/runs/42828685280)
+
+The immediately preceding head `2bfb34bd0c49b5c78172193793ba1ed843a64880` had 1,379 passes and one failure in the Run130F SBIC normalized-evidence digest test. Commit `12d9a32201199738a27030b0f6873a16fbce6597` corrected the test against the committed JSON; the complete suite then passed. This Run131 commit adds research and handoff evidence only. Its own exact-head CI must finish before any merge decision.
+
+Non-failing warnings remain: deprecated setuptools license metadata, package-discovery warnings for `barrot_agent.data.missions` and `data.research`, and an exhausted GitHub Actions cache budget. The cache is read-only; wheel verification still passed.
+
+### Main workflow blockers
+
+Main's latest Cross Analysis workflow passed: [42828392035](https://github.com/Barrot-Agent/B-Agent/actions/runs/42828392035).
+
+The main Pillars Consistency Check failed: [42820781370](https://github.com/Barrot-Agent/B-Agent/actions/runs/42820781370). The log explicitly reports missing `GITHUB_APP_ID`, `GITHUB_APP_PRIVATE_KEY` and `GITHUB_INSTALLATION_ID`; Databricks HTTP 403; and Hugging Face Space `BUILD_ERROR`. Its `deploy_sync` and `system_prompt_fiction` checks passed. No credentials were fabricated, rotated or bypassed. This remains blocked pending valid provider access.
+
+### Latest XRP spot and liquidity observations
+
+**Exchange ticker observations.** Kraken's public XRP/USD response showed last **$1.06706**, bid **$1.06656**, ask **$1.06657**, 24-hour volume **27.459M XRP**, VWAP **$1.08912**, high **$1.11573**, low **$1.04750** and open **$1.09748**. Kraken supplied no provider event timestamp.
+
+OKX's XRP-USDT ticker supplied provider timestamp **2026-11-10 13:48:36.536 UTC** and showed last **1.0730 USDT**, bid **1.0729**, ask **1.0730**, 24-hour volume **67.947M XRP**, high **1.1167**, low **1.0486** and open **1.0946**. Kraken's USDT/USD last was **0.99881**. Mechanical normalization gives OKX **$1.07172**, about **0.437% above** Kraken's last. This is an asynchronous cross-venue discrepancy, not an executable arbitrage: fees, slippage, quote-currency basis, transfer latency and exact synchronized book state are not established.
+
+Tool-returned JSON response-text SHA-256 receipts:
+- Kraken XRP/USD: `3a257300f3eb72a5ddf24837febbfb193a0a3425087bbbb1b1d93ba20a165bc6`.
+- OKX XRP-USDT: `a912a9e448b7b5bf3763b9294f417ad1f7d0c77ec913d596f3c1727f47f0c956`.
+- Kraken USDT/USD: `637fd86c2b82a8afb50a2e3ef3702eca9d9dd7aaa18bf0b229a79e49b303fb55`.
+
+These hashes cover the exact JSON text returned by the web retrieval tool, not original HTTP wire bytes or transport headers. Kraken's missing provider timestamp remains null.
+
+**Spot order-book depth.** Fuelmaps' spot-only multi-venue snapshot at **13:00 UTC** reported XRP mid **$1.0786**, six of six venues:
+| Distance | Bids | Asks | Bid share |
+|---|---:|---:|---:|
+| ±0.5% | $8.2M | $6.7M | 54.9% |
+| ±1% | $13.8M | $9.2M | 60.1% |
+| ±2% | $18.4M | $10.8M | 63.0% |
+| ±5% | $23.2M | $13.0M | 64.1% |
+| ±10% | $34.3M | $15.0M | 69.6% (five venues) |
+
+The six covered venues are Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance and Bitget are excluded. These are resting orders that can be cancelled, not executed volume or guaranteed fillable depth. The snapshot precedes the 13:30 UTC CPI release and is not synchronized with the 13:48 UTC ticker observations. [Fuelmaps source](https://fuelmaps.io/order-book/).
+
+**Derivatives.** The latest retrieved aggregator snapshots disagree on venue coverage and open interest:
+- Liqwall at 08:32 UTC: **$1.21B** OI, down 3.2% over 24h; $3.7M liquidations, $3.1M longs and $631K shorts; average funding +0.0027%/8h; 74.9% of Binance XRP accounts long. [Liqwall](https://liqwall.com/coins/xrp).
+- TradRadar at 11:20 UTC: **$1.64B** OI across seven exchanges, down 2.36%; funding +0.0084%/8h; at least $3.82M liquidations, $3.15M longs and $667K shorts; account long/short ratio 3.94, 79.8% long. [TradRadar](https://tradradar.io/markets/xrp).
+- OptimistFi at 11:55 UTC: **$1.40B** OI across 37 venues, funding 9.2% annualized. [OptimistFi](https://optimistfi.com/perps/markets/xrp?tab=liquidations).
+
+The common description is long-heavy positioning and long-side deleveraging. The OI values are not averaged: venue coverage and aggregation differ, and these aggregators are not independent source groups. This is not a directional forecast.
+
+### Macro event: October U.S. CPI released
+
+BLS released October CPI at **08:30 Eastern / 13:30 UTC on November 10**:
+- Headline CPI: **+0.4% month over month**, versus Reuters consensus **+0.3%**.
+- Core CPI: **+0.3%**, versus Reuters consensus **+0.2%**.
+- Food: +0.5%; energy: +0.7%; shelter: +0.3%.
+- BLS could not publish October 2026 12-month changes for series whose October 2025 comparison data were not collected during the lapse in appropriations.
+
+Primary source: [BLS October 2026 CPI release](https://www.bls.gov/news.release/cpi.nr0.htm). Consensus and early policy-market context: [Reuters, November 10](https://www.reuters.com/world/us/us-consumer-prices-rise-above-expectations-october-2026-11-10/). Reuters reported that a 25bp December Fed hike was fully priced early Tuesday; no post-release probability series was captured. The CPI surprise is a macro event feature, not an XRP directional signal.
+
+### CFTC XRP derivatives positioning — November 3 report
+
+The CFTC Traders in Financial Futures **options-and-futures combined** report, updated November 6, identifies:
+| Contract | Multiplier | Open interest | XRP-equivalent OI | Change from Oct 27 |
+|---|---:|---:|---:|---:|
+| CME XRP | 50,000 XRP | 7,216 | 360.800M XRP | −850 contracts / −42.500M XRP |
+| Coinbase Nano XRP | 500 XRP | 32,505 | 16.2525M XRP | −32,864 / −16.432M XRP |
+| Coinbase Nano XRP Perp Style | 500 XRP | 38,392 | 19.196M XRP | −465 / −0.2325M XRP |
+| **Gross underlying equivalent** | — | — | **396.2485M XRP** | **−59.1645M XRP equivalent** |
+
+The large Nano XRP contract-count decline is notable, but the report is lagged and aggregates reportable categories. Underlying-equivalent open interest is not cash invested, net directional exposure, unique unhedged risk, collateral or spot demand. Do not interpret the total as capital flowing out of XRP. [CFTC combined report](https://www.cftc.gov/dea/options/financial_lof.htm).
+
+### ETF and exchange-flow reconciliation
+
+The November 9 CryptoKeyhole partial issuer-file set covers three of four daily-tracked funds:
+- Bitwise: −8.595M XRP.
+- Canary: −0.427M XRP.
+- 21Shares TOXR: −0.195M XRP.
+- Partial total: **−9.217M XRP**, approximately **−$10.1M**.
+- Franklin XRPZ: pending; its latest file remained dated November 6.
+
+TradRadar separately reports approximately **−$10.42M** for November 9. These are overlapping aggregators of issuer data, not independent confirmations. Cash versus in-kind redemptions, custody transfers and actual spot executions remain unresolved. ETF flow is **NOT_ADMITTED** to the prediction feature store.
+
+The XRP Insights labeled-wallet snapshot at 08:00 UTC tracks **22.33B XRP across 701 wallets and 24 exchanges**. Same-wallet-set changes were −8.9M XRP over seven days and −150.9M over 30 days. Two newly tracked wallets added 512M XRP, making the naive total change +361.1M. Upbit is listed at 6.46B, Coinbase 5.80B (including 150.1M non-customer cbXRP reserve) and Binance 2.69B (including 327.4M Binance-Peg reserve). These balances include cold/custody wallets and wrapped-token reserves; they are not tradable float or proof of customer deposits/withdrawals.
+
+### Institutional and collateral relationships
+
+**Coinbase XRP-backed borrowing.** Coinbase's official help page lists XRP as eligible collateral for USDC crypto-backed loans enabled by Morpho on Base. Coinbase supplies the interface; the underlying lending protocol is Morpho. Availability is limited by geography and product/asset terms. This verifies an XRP-linked collateral utility path on Base, not native XRPL lending or net XRP purchases. [Coinbase official help](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro).
+
+**Circle–Coinbase.** Circle's Q3 2026 SEC 10-Q reports **$331.3M** in distribution costs to Coinbase for Q3 and **$986.6M** for the first nine months. The formula allocates amounts based on USDC held on Coinbase after issuer retention and a share of broader ecosystem growth. This is a contractual USDC distribution relationship, not XRP demand. [Circle SEC 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+**Circle–Binance.** The same filing states Circle issued **1.2M Class A shares to Binance at $80.84 per share**, for **$100M**, under a September 17, 2026 private placement. This establishes a direct Circle equity relationship alongside the commercial USDC distribution relationship. It does not establish Binance investment in XRP or XRP demand.
+
+**SBI/Ripple/Circle/BNY.** Previously verified distinctions remain: Circle/SBI Japan 50/50 joint venture is separate from SBI's strategic equity investment in Circle; SBI Holdings/Ripple equity and SBI Ripple Asia are separate from SBI Remit's XRP bridge corridors; RLUSD distribution and JPYSC lending are separate products. BNY and Coinbase custody roles do not prove proprietary XRP holdings or collateral utilization. SBI Remit corridor throughput and XRP conversion volumes remain undisclosed in reviewed public records.
+
+### SBIC, ASK Coin, actual capital and Kamilah Stevenson
+
+Japan's SBIC East, Central and West are Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies. They are separate regional sister companies under Japan's 1963 Act, not SBI Holdings. Tokyo SBIC's March 5, 2026 seminar, “Generative AI (ChatGPT): Present and Future,” was an educational event co-hosted by Hamamatsu Iwata Shinkin and presented by a Microsoft Japan executive. It is not an OpenAI partnership or XRP relationship. [Official SBIC seminar](https://www.sbic.co.jp/seminar/20260305js/).
+
+The exact “ASK Coin” search still does not resolve one XRP-linked asset: Ask Coin exchange and Permission Coin ASK are distinct candidates; no XRP integration is verified. “Actual capital” is not a standardized XRP metric; settled cash, in-kind XRP, debt, contingent equity capacity, warrants and secondary resales remain separate categories. The Kamilah Stevenson person identity is confirmed, but canonical YouTube channel ID/handle ownership is not first-party verified. Ten candidate video references remain candidate-only; verified personal-channel inventory remains zero.
+
+### Prediction-engine readiness
+
+The integration branch has **46 source definitions**: 42 hourly, two weekly CFTC and two non-commercial XRPL nodes excluded by default. The collector's HTTP POST is restricted to the fixed read-only XRPL JSON-RPC `server_info` method on allowlisted public HTTPS nodes; no ledger mutation method is exposed.
+
+Implemented: raw payload SHA-256 receipts, canonical receipt IDs, per-run hash-chain verification, point-in-time SQLite prototype, four deterministic baselines, chronological walk-forward evaluation with purge/embargo, calibration/drift diagnostics and a fail-closed forecast ledger requiring trusted Ed25519 evaluator attestation.
+
+Limitations:
+1. Raw artifacts have 90-day GitHub Actions retention; feature-store artifacts have seven-day retention.
+2. No independent WORM store or trusted timestamp authority.
+3. Feature-store rebuild from raw artifacts is not implemented.
+4. The scheduled collector is main-only and has no verified successful main run. It uploads GitHub Actions artifacts and saves cache; it does not commit collected data to main.
+5. Historical spot/L2, derivatives, exchange-flow and collateral coverage is not yet synchronized.
+6. Source independence and effective sample size for overlapping horizons require stronger validation.
+7. No production evaluator key, sufficient independent shadow outcomes or demonstrated out-of-sample lift.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+### Nine-platform coordination
+
+- ChatGPT: current-session GitHub read/write on the existing integration branch and public web research verified; no main write, branch-protection administration, secret access, deployment or external-model data transfer.
+- Copilot: 62 COMMENTED reviews, zero approvals; 22 threads resolved but outdated; no persistent external data flow verified.
+- Claude, Grok, Gemini and Codex: no authenticated persistent connection or data flow verified.
+- Hugging Face: prior BUILD_ERROR; no upload or Space restart.
+- Kaggle: untested; no submission.
+- Databricks: prior/main Pillars HTTP 403; no workspace write.
+
+No external model received repository data. Independent assignments remain designed, not executed. Minority objections and source disagreements are retained in the evidence archive.
+
+### Backlog, merge decision and safety
+
+- #1640: **BLOCKED**, sole active V3/XRP integration path.
+- #1642: 7/7 changed paths overlap #1640; exact duplicate/superseded candidate, but keep open until a successor is merged and verified.
+- #1643: 670 changed paths, seven overlap and 663 unique; preserve unique research.
+- #1653: seven paths, one overlap and six unique; preserve knowledge-graph work. Prior review record shows eight unresolved threads.
+- #1614: 57 paths, eight overlap and 49 unique; preserve prediction work.
+- #1611: eight paths, six overlap and two unique; preserve unique material and reconcile shared files.
+- #1644–#1650: shared-path dependency/action candidates; exact content/version reconciliation remains required. Path overlap alone does not prove duplicate.
+- #1269: nine paths, one overlap and eight unique; preserve topology work.
+- No PRs were closed.
+
+PR #1640 still has 62 COMMENTED reviews and zero APPROVED reviews. All 22 inline threads are resolved but outdated. Main is protected, but detailed branch-protection access returns HTTP 403; the visible “Fall Back” ruleset is disabled. GitHub Pages previously deployed automatically after a main push. PR #1640 changes public web assets, and authorization for that automatic public publication is not established. The user-authorized merge conditions are therefore not satisfied. **No merge or deployment was performed.**
+
+No secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+### Next concrete actions
+
+1. Obtain an independent approving review and authoritative branch-protection visibility.
+2. Resolve explicit authorization for automatic GitHub Pages publication before merge.
+3. Complete semantic review of all 270 changed paths and the 42 changed workflow definitions; preserve #1640 as the single integration path.
+4. Verify exact-head full-suite, dependency/security and fail-closed gates on the Run131 evidence commit.
+5. Resolve Pillars provider blockers only with valid credentials/access; do not fabricate or rotate secrets.
+6. Extend raw receipt retention beyond 90-day GitHub artifacts and implement independent WORM/timestamp anchoring and reproducible feature-store rebuilds.
+7. Populate synchronized historical data, then evaluate out-of-sample lift and independent shadow outcomes before any forecast issuance.
+
+**Forecast status: NOT_ISSUED.** Run131 records research and evidence only; no directional forecast was issued.
