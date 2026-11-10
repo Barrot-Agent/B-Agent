@@ -4966,3 +4966,8 @@ The second exact-head full-suite run reached **3,361 passed, two failed, eight s
 ### Run137F — preserve the three market-admission schema versions
 
 The Run136 current market record uses `admission_status: NOT_ADMITTED`; the preserved Run77 and Run82 market observations use `model_admission: false`. The current-map assertions now use the categorical Run136 field, and the Run77/Run82 receipt tests use their historical boolean field. Other historical XRP artifact tests retain their own `model_eligible` fields. No raw receipt, market observation or production code changed. Exact-head verification on the follow-up commit is pending.
+
+
+### Run137G — correct Run136 market field after exact-blob inspection
+
+The exact Run136 map blob confirms that `current_run_observations.latest_market_crosscheck` uses `model_eligible: false`. The `admission_status` field belongs to a different later market-artifact schema and was not present in this map snapshot. Both current-map tests now assert the exact Run136 field. Run77/Run82 historical observations continue to use their own `model_admission: false` field. No data or production code changed. Exact-head CI is pending.

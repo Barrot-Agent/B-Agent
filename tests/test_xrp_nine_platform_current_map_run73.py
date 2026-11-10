@@ -83,7 +83,7 @@ def test_current_snapshot_preserves_run82_run78_run77_and_historical_map():
     assert current["merge_state"]["merge_performed"] is False
     assert current["forecast_status"] == "NOT_ISSUED"
     current_market = current["latest_market_crosscheck"]
-    assert current_market["admission_status"] == "NOT_ADMITTED"
+    assert current_market["model_eligible"] is False
     assert current_market["raw_http_bytes_preserved"] is False
 
     # Run82 remains a complete historical observation, including its original receipts.
@@ -412,7 +412,7 @@ def test_run82_historical_snapshot_remains_unchanged_as_current_map_advances():
     assert current["merge_state"]["merge_performed"] is False
     assert current["forecast_status"] == "NOT_ISSUED"
     current_market = current["latest_market_crosscheck"]
-    assert current_market["admission_status"] == "NOT_ADMITTED"
+    assert current_market["model_eligible"] is False
     assert current_market["raw_http_bytes_preserved"] is False
 
     # Run82 remains a complete historical observation, including its original receipts.
