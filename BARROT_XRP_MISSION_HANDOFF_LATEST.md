@@ -1,3 +1,147 @@
+# Barrot XRP Mission — Run126D: exchange-flow reconciliation and macro/geopolitical event update
+
+**Capture time:** `2026-11-10T09:50:02.435Z`
+**Main SHA:** `d4d43be3427375cf79d190e768976de062e20287`
+**Previously verified code/test head:** `dd655dc5b786c72e1b16cee768976fa38be19903`
+**Integration branch:** `integration/core-capabilities-mmi-structural-paper-20261104`
+**Mission:** XRP intelligence and prediction-engine mastery, priority one.
+**Foundation:** Preserve Barrot V3 as execution, orchestration, safety and verification.
+
+## 1. Exact-head verification carried forward — VERIFIED
+
+Run126C was fully verified on exact head `dd655dc5b786c72e1b16cee768976fa38be19903`:
+
+- Full repository suite: **1,368 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.58%**, above the 53% floor.
+- Core suite: 677 passed.
+- Wheel build and installed-wheel verification passed, including Barrot V3, XRP mission and canonical data assets.
+- Dependency audit: six manifests passed, zero known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Evidence:
+- [Full CI 42793432086](https://github.com/Barrot-Agent/B-Agent/actions/runs/42793432086)
+- [Dependency audit 42793431999](https://github.com/Barrot-Agent/B-Agent/actions/runs/42793431999)
+- [Fail-closed gate 42793432203](https://github.com/Barrot-Agent/B-Agent/actions/runs/42793432203)
+
+The Run126D handoff update is documentation-only and must receive its own exact-head CI, dependency audit and fail-closed verification. Do not claim its checks before they complete.
+
+## 2. New exchange-balance snapshot — November 10, 08:00 UTC
+
+XRP Insights reports **22.33B XRP** in 701 publicly labeled XRP Ledger wallets attributed to 24 exchanges, approximately 32.4% of its circulating-supply definition and 22.3% of total supply.
+
+Same-wallet changes:
+- Seven days, Nov 3–10: **−8.9M XRP** (−0.04%).
+- Thirty days, Oct 11–Nov 10: **−150.9M XRP** (−0.69%).
+- Naive total change is +361.1M XRP, but includes two newly tracked wallets holding 512M XRP. That is a coverage change, not an inflow.
+
+Largest attributed balances: Upbit 6.46B, Coinbase 5.80B, Binance 2.69B, Bithumb 1.81B, Uphold 1.69B, Kraken 982.3M, Gate 35.0M, Bitstamp 20.3M and SBI VC Trade 56.9M.
+
+Regional distribution: South Korea 8.59B (38.4%), United States 8.48B (37.9%), Japan 1.38B (6.2%), global/offshore 2.73B and rest of world 1.16B.
+
+The tracker reads rippled `account_info` from the latest validated ledger daily around 08:00 UTC and uses XRPSCAN public labels for attribution. It carries forward last-good values when reads fail. The total includes cold/omnibus custody, is a floor for publicly labeled wallets, and is **not tradable float**.
+
+Approximately 481M XRP in the tracked set is identified as non-customer reserves/funds: 325.8M Binance-Peg backing, 150.1M Coinbase cbXRP backing and 5.2M insurance/charity. The Coinbase proof-of-reserves page separately displayed 152.372M XRP reserves. The approximately 2.27M difference is unresolved; wallet coverage, label scope and snapshot time may differ. Do not force a reconciliation.
+
+Source: [XRP Insights exchange balances](https://xrp-insights.com/exchange-balances).
+
+## 3. Independent large-transfer flow series
+
+TrackWhale's November 10, 09:30 UTC snapshot reports, over its preceding seven days:
+
+| Measure | XRP | USD |
+|---|---:|---:|
+| Inflows | 501.72M | $636.86M |
+| Outflows | 608.96M | $767.62M |
+| Netflow | **−107.24M** | **−$130.76M** |
+
+The series covers 10 recorded inflow transfers and 15 outflow transfers. By venue, Binance accounts for −91.93M XRP, Kraken +14.99M, Gate −21.04M, Bitstamp +17.5M, Revolut −16.5M and OKX −10.27M.
+
+The tracker excludes internal and exchange-to-exchange transfers, but only records large transfers; it is not every transfer or every exchange balance. It disclaims accuracy/completeness and may rely on third-party data.
+
+A specific 40M XRP transfer from Binance to an unlabeled wallet occurred November 10 at 02:28 UTC, displayed value $43.76M. TrackWhale supplies transaction hash `C7388DFDF9DFD292E820FA8DBD3D033AFBAA0A207D16D06D7EEF8322FD78AD64` and truncated source/destination addresses. XRPSCAN direct explorer access returned HTTP 403, so independent raw transaction replay is outstanding. The transfer is an aggregator-classified exchange outflow, **not proof of a sale, customer withdrawal or intent**.
+
+Source: [TrackWhale XRP exchange flows](https://trackwhale.io/xrp-exchange-flows).
+
+## 4. Cross-source exchange-flow reconciliation
+
+XRP Insights' all-attributed-wallet same-wallet balance series shows −8.9M XRP over seven days. TrackWhale's large external transfer series shows −107.24M XRP over seven days. Both indicate net outflow, but the magnitude differs by about 12x because the methods are not comparable:
+
+- XRP Insights measures daily balance changes across a fixed set of attributed exchange wallets, including cold storage and omnibus custody.
+- TrackWhale measures only recorded large external transfers, excluding internal and exchange-to-exchange movements.
+
+Do not average them. Transfers to untracked wallets, custody reorganizations, institutional/OTC movements and customer withdrawals remain competing explanations. Neither series proves spot selling. The 40M Binance outflow is not attributed to the October 29 Binance hack; no causal evidence links the two.
+
+## 5. Cyber/geopolitical event timeline
+
+### Binance theft — October 29, 2026
+
+The FBI's October 31 advisory attributes a theft of more than $6B in virtual assets from Binance on or about October 29 to North Korea-linked TraderTraitor activity. The FBI says it observed stolen assets being converted primarily into ETH and expects further laundering through DeFi and instant-swap services.
+
+[Primary FBI advisory](https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack)
+
+### Exchange withdrawals and stablecoin effects — November 2–3
+
+Reuters reported $4.72B in net customer withdrawals after Binance reopened, approximately 3% of platform assets, with most withdrawals in USDT. Binance said $2.7B in inflows had followed reopening and that withdrawals were stabilizing. Binance said losses would be covered by company funds, treasury, insurance and reserves. Reuters also reported Circle had frozen more than $1.1B in USDC associated with the theft and cited Elliptic's estimate that hackers still controlled about $3.28B.
+
+On November 3, Binance co-CEO Richard Teng said 95% of affected tokens had been replenished, hourly flows had normalized and the remaining 5% were less liquid; he said a post-mortem would follow. These are company statements reported by Reuters, not independently verified reserve attestations.
+
+Sources:
+- [Reuters, November 2](https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/)
+- [Reuters, November 3](https://www.reuters.com/world/asia-pacific/binance-co-ceo-says-company-is-very-strong-financial-health-after-63-billion-2026-11-03/)
+
+Relevance: exchange counterparty risk, stablecoin liquidity, operational resilience and institutional risk appetite. Do not infer an XRP-specific causal effect from the Binance incident.
+
+## 6. Macro event — November 10
+
+Reuters reported at 09:12 UTC that Federal Reserve Governor Christopher Waller would support a 25-basis-point December rate increase even if October CPI cools, and said a 50-basis-point move should be considered if core CPI rises 0.3% or more month over month. Reuters reported approximately 85% market-implied odds of a 25bp December 8–9 hike as of Monday's close.
+
+This is one governor's view and market pricing, not an FOMC decision or consensus. October 2026 CPI was scheduled for 13:30 UTC on November 10 and remained a future release at this capture.
+
+[Reuters Waller report](https://www.reuters.com/business/feds-waller-plans-support-least-quarter-point-rate-hike-december-2026-11-10/)  
+[BLS release schedule](https://www.bls.gov/schedule/2026/11_sched.htm)
+
+## 7. Model admission and forecast status
+
+The exchange series remain research-only because:
+- same-wallet balances and large-transfer netflows measure different things;
+- wallet labels and coverage can change;
+- the 40M XRP transaction was not independently replayed from a raw XRPL response;
+- raw transport bytes and independent timestamp receipts were not preserved in this capture;
+- no sale, custody or customer-intent label is verified.
+
+Forecast status: **NOT_ISSUED**. No directional forecast, paper trade or real-money action.
+
+## 8. Repository, backlog and merge boundary
+
+Main remains `d4d43be3427375cf79d190e768976de062e20287`. PR #1640 remains the sole V3/XRP integration path; it is open, non-draft and GitHub reports mergeable. No new branch or PR was created.
+
+- #1643: 663 unique research paths; preserve.
+- #1653: six unique knowledge-graph paths and eight unresolved review threads; preserve.
+- #1642: seven changed paths overlap #1640; duplicate/superseded candidate only after verified merge.
+- #1644–#1650: dependency/action overlaps; current integration already contains newer versions in active files; retain until verified on main.
+- #1317/#1318/#1320: path-overlap candidates; semantic reconciliation still required.
+- #1254/#1255: older dependency candidates.
+- #1269: eight unique mesh/topology paths; preserve.
+- #1611/#1614: preserve unique/partially overlapping prediction work.
+- #1641/#1655/#1659: preserve unique material.
+
+All 372 open PRs remain open; 356 drafts and 16 non-drafts. No source PRs were closed.
+
+PR #1640 still has 62 COMMENTED review submissions and zero APPROVED reviews. The 22 inline threads are resolved but outdated. Main branch-protection detail access returns HTTP 403; the visible fallback ruleset is disabled. GitHub Pages is enabled and a main push previously triggered public deployment. The PR changes seven web assets and adds an hourly main-only XRP ingestion workflow; these automatic public and scheduled side effects remain part of the merge decision.
+
+No merge, branch-protection bypass, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+## 9. Next concrete actions
+
+1. Complete exact-head CI, dependency audit and fail-closed verification on the Run126D documentation/research update.
+2. Obtain independent approval, authoritative branch-protection visibility and explicit authorization for automatic Pages publication and scheduled ingestion activation.
+3. Replay the 40M XRP transaction using an accessible public rippled endpoint or independent explorer.
+4. Preserve the separate exchange-balance and large-transfer feature definitions; do not collapse them into one netflow.
+5. Normalize Morpho/cbXRP and Coinbase cross-collateral data only after token decimals, block alignment, oracle timestamps and policy/version semantics are verified.
+6. Expand synchronized historical spot/L2/derivatives/ETF/exchange-flow/collateral/macro-vintage data and independent receipt anchoring.
+7. Continue leakage-safe out-of-sample evaluation and shadow outcomes; issue no forecast until readiness criteria pass.
+8. After any authorized merge, fetch main, verify merge commit/files, run main CI, inspect automatic workflow side effects, and close only exact verified duplicates.
+
 # Barrot XRP Mission — Run126C: exact-head verification and Coinbase collateral network
 
 **Capture time:** `2026-11-10T09:44:51.310Z`  
