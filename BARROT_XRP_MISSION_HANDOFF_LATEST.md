@@ -4956,3 +4956,8 @@ No source PR was closed. No main write, merge, deployment, secret operation, Spa
 ### Run137B — current-map review-schema fix
 
 The first Run137 test correction exposed two remaining schema-name mismatches in the Run136 snapshot. The serialized review keys are `approved` and `review_threads_unresolved`. Both assertions now use the actual snapshot schema. No production code, forecast gate, historical record or approval policy changed. Exact-head full-suite verification on this follow-up commit is pending.
+
+
+### Run137C — remaining current-map field-name corrections
+
+The second exact-head full-suite run reached **3,361 passed, two failed, eight subtests passed**, with 59.58% coverage. The two remaining failures were assertions against incorrect current-map field names: the Run136 market record uses `model_eligible` (not `model_admission`), and current PR #1653 review data uses `review_threads_unresolved`. The regression tests now match the actual serialized schema. Historical Run82's older `threads_unresolved` field is retained unchanged. Product code, data, workflow permissions and forecast gates remain untouched. Exact-head CI on the next commit is pending.

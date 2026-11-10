@@ -83,7 +83,7 @@ def test_current_snapshot_preserves_run82_run78_run77_and_historical_map():
     assert current["merge_state"]["merge_performed"] is False
     assert current["forecast_status"] == "NOT_ISSUED"
     current_market = current["latest_market_crosscheck"]
-    assert current_market["model_admission"] is False
+    assert current_market["model_eligible"] is False
     assert current_market["raw_http_bytes_preserved"] is False
 
     # Run82 remains a complete historical observation, including its original receipts.
@@ -112,7 +112,7 @@ def test_current_snapshot_preserves_run82_run78_run77_and_historical_map():
     }
     for name, digest in expected.items():
         assert hashlib.sha256(market["raw_response_bodies"][name].encode("utf-8")).hexdigest() == digest
-    assert market["model_admission"] is False
+    assert market["model_eligible"] is False
     assert market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-09T15:45:58.670Z"
     assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
     assert market["spot"]["kraken_usdtusd"]["provider_event_time_utc"] is None
@@ -159,7 +159,7 @@ def test_run77_market_receipt_preimages_match_sha256_and_staleness_gate():
     assert market["usd_usdt_normalized"] is False
     assert market["level2_depth"] is False
     assert market["synchronized_trades"] is False
-    assert market["model_admission"] is False
+    assert market["model_eligible"] is False
 
 
 def test_run77_xrpl_amendment_snapshot_does_not_claim_lending_activation():
@@ -407,12 +407,12 @@ def test_run82_historical_snapshot_remains_unchanged_as_current_map_advances():
     assert current["ci_evidence"]["full_suite"]["subtests"] == 8
     assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.58
     assert current["reviews"]["pr_1640"]["approved"] == 0
-    assert current["reviews"]["pr_1653"]["threads_unresolved"] == 8
+    assert current["reviews"]["pr_1653"]["review_threads_unresolved"] == 8
     assert current["merge_state"]["pages_deployment_authorized"] is False
     assert current["merge_state"]["merge_performed"] is False
     assert current["forecast_status"] == "NOT_ISSUED"
     current_market = current["latest_market_crosscheck"]
-    assert current_market["model_admission"] is False
+    assert current_market["model_eligible"] is False
     assert current_market["raw_http_bytes_preserved"] is False
 
     # Run82 remains a complete historical observation, including its original receipts.
@@ -441,7 +441,7 @@ def test_run82_historical_snapshot_remains_unchanged_as_current_map_advances():
     }
     for name, digest in expected.items():
         assert hashlib.sha256(market["raw_response_bodies"][name].encode("utf-8")).hexdigest() == digest
-    assert market["model_admission"] is False
+    assert market["model_eligible"] is False
     assert market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-09T15:45:58.670Z"
     assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
     assert market["spot"]["kraken_usdtusd"]["provider_event_time_utc"] is None
