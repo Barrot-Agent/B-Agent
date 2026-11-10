@@ -56,6 +56,18 @@ def test_space_and_worker_secret_mutations_require_separate_explicit_approval() 
         assert "persist-credentials: false" in workflow, relative_path
 
 
+def test_barrot_ops_external_writes_require_independent_yes_inputs():
+    workflow = (REPO_ROOT / ".github/workflows/barrot-ops.yml").read_text(encoding="utf-8")
+    for input_name in ("confirm_databricks_workspace_import", "confirm_kaggle_dataset_download"):
+        assert f"{input_name}:" in workflow
+        assert "default: NO" in workflow
+        assert f"inputs.{input_name} == 'YES'" in workflow
+    assert "if: ${{ inputs.confirm_databricks_workspace_import == 'YES' }}" in workflow
+    assert "if: ${{ inputs.confirm_kaggle_dataset_download == 'YES' }}" in workflow
+    assert "databricks workspace import" in workflow
+    assert "kaggle datasets download" in workflow
+
+
 def test_databricks_setup_cli_uses_a_verified_immutable_commit():
     workflow = (REPO_ROOT / ".github/workflows/barrot-ops.yml").read_text(encoding="utf-8")
     assert "uses: databricks/setup-cli@9625fdde9ba2607df0087e0d3ec7449198bf2180" in workflow
