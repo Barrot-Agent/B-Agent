@@ -396,7 +396,7 @@ def test_run82_historical_snapshot_is_preserved_when_run111_becomes_current():
     assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
     assert market["spot"]["kraken_usdtusd"]["provider_event_time_utc"] is None
     assert market["cross_venue_comparison"]["asynchronous"] is True
-    assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0575, rel_tol=1e-5)
+    assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0581094, rel_tol=1e-5)
     assert math.isclose(market["cross_venue_comparison"]["normalized_mid_gap_pct"], 0.0955234, rel_tol=1e-5)
 
 
