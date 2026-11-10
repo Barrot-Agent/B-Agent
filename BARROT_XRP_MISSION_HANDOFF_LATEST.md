@@ -51,7 +51,7 @@ Separate enabled amendments must not be confused with the in-flight lending stac
 - `BatchV1_1` activated October 9 at ledger 107540993.
 - `PermissionDelegationV1_1` activated October 8 at ledger 107524865.
 - `fixBatchV1_2` activated October 9 at ledger 107540481.
-- The `rippled 3.3.0` institutional MPT release set separately lists `fixCleanup3_3_0` as enabled while ConfidentialTransfer, DynamicMPT, Sponsor and related changes remain in flight. Do not conflate the 3.3.0 cleanup amendment with the later 3.4.0 fix.
+- The dashboard's `rippled 3.3.0` release summary says the other five amendments still need support, but its own per-amendment majority history records `BatchV1_1` enabled October 9 and `PermissionDelegationV1_1` enabled October 8. Treat that release-summary sentence as stale/internally inconsistent; use the per-amendment EnableAmendment ledger records and flag ledgers for activation status. `fixCleanup3_3_0` and `fixCleanup3_4_0` are distinct amendments and must not be conflated.
 
 ### XLS-47 PriceOracle: important source-scope disagreement
 
