@@ -491,5 +491,166 @@
     "rendered_pages": "URLs and source dates retained; not mislabeled as raw bytes",
     "model_admission": false,
     "forecast_status": "NOT_ISSUED"
-  }
+  },
+  "last_updated_utc": "2026-11-10T04:21:37Z",
+  "repository_state": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_head_verified_before_institutional_addendum": "bb84e76278368aaf165628171fe36cfd4bf17fa4",
+    "active_integration_pr": 1640,
+    "pr_commits_ahead": 897,
+    "pr_commits_behind": 0,
+    "changed_paths": 233,
+    "branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "no_new_branch_or_pr": true,
+    "no_merge_or_deployment": true
+  },
+  "verification_on_code_test_head": {
+    "head_sha": "bb84e76278368aaf165628171fe36cfd4bf17fa4",
+    "full_repository_suite": {
+      "passed": 1347,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.48,
+      "coverage_floor_percent": 53,
+      "conclusion": "success",
+      "duration_seconds": 50.88
+    },
+    "core_suite": {
+      "passed": 677,
+      "subtests_passed": 8,
+      "conclusion": "success"
+    },
+    "installed_wheel": {
+      "conclusion": "success",
+      "checks": [
+        "Barrot V3 import",
+        "XRP mission resources",
+        "canonical data assets"
+      ]
+    },
+    "dependency_audit": {
+      "manifests_passed": 6,
+      "known_vulnerabilities": 0,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "conclusion": "success",
+      "automatic_merge": "disabled"
+    },
+    "workflow_runs": {
+      "full_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42754883526",
+      "dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42754883217",
+      "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42754883215"
+    },
+    "warnings": [
+      "GitHub Actions cache quota reached; cache remained read-only and cache save failed without affecting tests.",
+      "Setuptools warned about deprecated TOML license metadata and package-discovery entries; wheel built and installed successfully."
+    ]
+  },
+  "institutional_network_q3": {
+    "captured_at_utc": "2026-11-10T04:21:37Z",
+    "coinbase_circle": {
+      "circle_distribution_costs_to_coinbase_usd": {
+        "q3_2026": 331300000,
+        "nine_months_2026": 986600000
+      },
+      "coinbase_stablecoin_revenue_usd": {
+        "q3_2026": 306905000,
+        "nine_months_2026": 904487000
+      },
+      "agreement": "Coinbase reports renewal with Circle on the same terms in 2026; average USDC held in Coinbase products reached an all-time high.",
+      "interpretation": "Circle distribution costs and Coinbase stablecoin revenue are different accounting measures, not nettable profit, not a direct payment-flow series and not XRP demand. Higher USDC balances were partly offset by lower average reserve/interest rates.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+      ]
+    },
+    "circle_sbi_japan_jv": {
+      "legal_entity": "Circle SBI Japan K.K.",
+      "ownership_percent": {
+        "circle": 50,
+        "sbi": 50
+      },
+      "contributed_capital_usd_equivalent": {
+        "circle": 1500000,
+        "sbi": 1500000
+      },
+      "operating_status_as_of": "2026-09-30",
+      "operating_results": "no significant operating results to date",
+      "interpretation": "A 50/50 Japan distribution/operating vehicle, separate from SBI Holdings' strategic equity investment in Circle; not evidence of current XRP demand.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    },
+    "coinbase_custody_regulatory_capital": {
+      "as_of": "2026-09-30",
+      "subsidiary": "Coinbase Custody Trust Company, LLC",
+      "net_capital_usd": 618000000,
+      "required_net_capital_usd": 222000000,
+      "surplus_usd": 396000000,
+      "interpretation": "Regulatory custody-subsidiary capital buffer, not XRP assets, customer holdings or collateral utilization.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    "sbi_evernorth_ownership": {
+      "sbi_controlled_class_a_shares": 9431914,
+      "sbi_controlled_class_c_shares": 2359038,
+      "percent_of_common_stock": 21.4,
+      "percent_of_voting_power": 39.9,
+      "controlled_holders": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc."
+      ],
+      "interpretation": "Largest disclosed voting block but below majority control. The filing says voting/dispositive decisions are made by SBI's board on management recommendation by majority vote; no individual board member alone has that power.",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "sbi_ripple_relationship": {
+      "sbi_ripple_equity_estimate": "approximately 9-10%; exact current share register not publicly established in the sources reviewed",
+      "sbi_ripple_asia_ownership_percent": {
+        "sbi_group": 60,
+        "ripple": 40
+      },
+      "sbi_remit_corridors": [
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "xrp_role": "XRP is described as the bridge currency in the specified SBI Remit corridors; current corridor-level volumes are not disclosed.",
+      "caveat": "RLUSD distribution, JPYSC lending, tokenized-deposit POCs and XRPL usage are separate from verified XRP bridge conversion volumes."
+    },
+    "custody_network": {
+      "bitwise_xrp_etf": {
+        "digital_asset_custodian": "Coinbase Custody Trust Co., LLC",
+        "trust_custodian": "BNY Mellon"
+      },
+      "twentyone_shares_toxr": {
+        "custodians": [
+          "Anchorage Digital Bank N.A.",
+          "BitGo Bank & Trust N.A.",
+          "Coinbase Custody International Ltd"
+        ]
+      },
+      "evernorth": "BitGo Trust named as custodian in company filing; wallet-level current balances remain incompletely attributed.",
+      "interpretation": "Custody relationships prove service roles, not proprietary XRP holdings, collateral use or spot purchases."
+    }
+  },
+  "sources_institutional_primary": [
+    {
+      "id": "circle_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "SEC / Circle Internet Group",
+      "period": "Q3 and nine months ended 2026-09-30"
+    },
+    {
+      "id": "coinbase_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "SEC / Coinbase Global",
+      "period": "Q3 and nine months ended 2026-09-30"
+    },
+    {
+      "id": "evernorth_nov9_424b3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "publisher": "SEC / Evernorth",
+      "period": "filed 2026-11-09"
+    }
+  ]
 }

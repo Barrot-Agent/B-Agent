@@ -1,6 +1,6 @@
 # Barrot XRP Mission — Canonical Current Handoff
 
-**Run 114 · Updated 2026-11-10T04:09:55Z**
+**Run 114 · Updated 2026-11-10T04:21:37Z**
 
 ## Mission and foundation
 
@@ -8,25 +8,25 @@
 
 **Preserved foundation:** Barrot V3 remains the execution, orchestration, safety, permissions, evidence-verification and fail-closed foundation. No replacement of V3, no real-money execution and no automatic merge.
 
-## Repository state — VERIFIED before Run114 evidence commit
+## Repository state — VERIFIED on Run114 evidence head
 
 | Item | State |
 |---|---|
 | Main SHA | `d4d43be3427375cf79d190e768976de062e20287` |
-| Integration code/test head before Run114 evidence commit | `c028c31bb4410fa913a17959bec1755bbedae039` |
+| Latest verified integration head before this institutional addendum | `bb84e76278368aaf165628171fe36cfd4bf17fa4` |
 | Existing integration PR | [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640) |
-| Commits ahead / behind | 896 / 0 |
-| Changed paths | 231 |
+| Commits ahead / behind | 897 / 0 |
+| Changed paths | 233 |
 | Main tree | 1,404 entries / 1,299 files |
-| Integration tree | 1,528 entries / 1,415 files |
+| Integration tree | 1,530 entries / 1,417 files |
 | Main / integration workflow files | 86 / 87 |
 | Open PR inventory | 372: 356 drafts, 16 non-drafts |
 
 The branch already contains the priority-one mission manifest, 40-source registry, seven XRP workstreams, feature-store contracts, forecast ledger, prediction baselines and scheduled public-ingestion workflow. These assets are **not on main**. Main still lacks `data/missions/primary_mission.json` and `.github/workflows/xrp-public-ingestion.yml`.
 
-No new branch or PR was created. Run114 adds research evidence, a platform snapshot and this handoff on the existing #1640 branch. The code/test head before those evidence changes was `c028c31bb4410fa913a17959bec1755bbedae039`; the new evidence/handoff commit requires its own exact-head CI.
+No new branch or PR was created. Run114 research, the nine-platform snapshot and the canonical handoff were committed to the existing #1640 branch. The resulting evidence head `bb84e76278368aaf165628171fe36cfd4bf17fa4` subsequently passed exact-head full CI, dependency audit and fail-closed gate. This current institutional addendum is documentation/evidence-only and triggers another exact-head verification.
 
-## Verification — EXECUTED and VERIFIED on `c028c31bb4410fa913a17959bec1755bbedae039`
+## Verification — EXECUTED and VERIFIED on `bb84e76278368aaf165628171fe36cfd4bf17fa4`
 
 - Full repository suite: **1,347 passed, 0 failed, 8 subtests passed**.
 - Inclusive package coverage: **59.48%**, above the 53% floor.
@@ -36,11 +36,11 @@ No new branch or PR was created. Run114 adds research evidence, a platform snaps
 - Fail-closed merge gate: passed; automatic merge remains disabled.
 
 Evidence:
-- [Full CI 42751096329](https://github.com/Barrot-Agent/B-Agent/actions/runs/42751096329)
-- [Dependency audit 42751096350](https://github.com/Barrot-Agent/B-Agent/actions/runs/42751096350)
-- [Fail-closed gate 42751096208](https://github.com/Barrot-Agent/B-Agent/actions/runs/42751096208)
+- [Full CI 42754883526](https://github.com/Barrot-Agent/B-Agent/actions/runs/42754883526)
+- [Dependency audit 42754883217](https://github.com/Barrot-Agent/B-Agent/actions/runs/42754883217)
+- [Fail-closed gate 42754883215](https://github.com/Barrot-Agent/B-Agent/actions/runs/42754883215)
 
-These are exact-head results for `c028c31bb4410fa913a17959bec1755bbedae039`, not the later Run114 documentation/evidence commit. The latter needs its own exact-head CI. Packaging warnings remain for deprecated TOML license metadata and package-discovery warnings; they did not prevent wheel installation.
+These are exact-head results for `bb84e76278368aaf165628171fe36cfd4bf17fa4`. The institutional addendum now being committed is documentation/evidence-only and requires its own exact-head CI. Packaging warnings remain for deprecated TOML license metadata and package-discovery warnings; they did not prevent wheel installation.
 
 Main's latest CI [42526890841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890841) passed 718 tests and 8 subtests on main. Main remains at `d4d43be3427375cf79d190e768976de062e20287`.
 
@@ -127,12 +127,16 @@ The Nov 9 SEC prospectus provides a company-reported closing balance; aggregator
 
 **On-chain custody gap:** XRP Insights reports 103,129,905 XRP in 13 attributed Evernorth wallets at ledger 108,231,279 (Nov 10, 03:45 UTC) and 370,346,663 XRP transferred outside that attributed set, latest Oct 22. The tracker says the wallets use 2-of-3 multisig with master keys disabled. XRPSCAN transaction-detail requests returned HTTP 403 during this run, so those transfers were not independently re-read. The 370.3M XRP is **not evidence of sale, exchange deposit, loss or encumbrance**; destination wallets remain unclassified. This is a priority investigation, not a bearish flow feature.
 
-## Institutional relationship updates
+## Institutional relationship updates — Q3 2026 primary filings
 
-- Coinbase Custody is an issuer-confirmed digital-asset custodian for Bitwise's XRP ETP and one of TOXR's three custodians. BNY Mellon is Bitwise's trust custodian/administrator. These are distinct roles and legal entities.
-- BitGo Trust is the named Evernorth XRP custodian; 21Shares also uses BitGo Bank & Trust alongside Coinbase Custody International and Anchorage.
-- The $30M Evernorth note purchaser is NH Investment & Securities as trustee for a named Kyobo AIM trust.
-- Previously verified Coinbase–Circle USDC distribution economics, SBI–Circle Japan JV/equity, SBI–Ripple equity/SBI Ripple Asia, SBI Remit XRP bridge corridors, RLUSD distribution and PNC USDC payment pilot remain separate relationships. Stablecoin balances, custody balances and corporate revenue are not XRP demand.
+- **Coinbase–Circle USDC economics:** Circle's Q3 2026 10-Q reports $331.3M of distribution costs to Coinbase in Q3 and $986.6M for nine months. Coinbase's Q3 10-Q reports $306.905M stablecoin revenue in Q3 and $904.487M for nine months. Coinbase says its Circle agreement was renewed on the same terms in 2026 and average USDC held in Coinbase products reached an all-time high. These are different accounting measures, not nettable profit, not direct cash-flow equivalence and not XRP demand. Higher USDC balances were partly offset by lower reserve/interest rates.
+- **Circle–SBI Japan:** Circle SBI Japan K.K. is 50% Circle / 50% SBI; each contributed approximately $1.5M. Circle's Q3 filing says it had no significant operating results through September 30, 2026. This is an operating/distribution vehicle, separate from SBI's strategic equity investment in Circle.
+- **SBI–Evernorth ownership:** the Nov 9 SEC prospectus attributes 9,431,914 Class A shares and 2,359,038 Class C shares to four SBI-controlled stockholders. That equals 21.4% of common stock and 39.9% of voting power. It is the largest disclosed voting block, not majority control. The filing says voting/dispositive decisions are made by the SBI board on management recommendation by majority vote; no individual board member alone controls the shares.
+- **Coinbase custody capital:** Coinbase's Q3 filing reports Coinbase Custody Trust Company net capital of $618M against $222M required, a $396M regulatory capital surplus at September 30. This is a custody-subsidiary regulatory buffer, not XRP holdings or collateral.
+- **XRP custody network:** Coinbase Custody Trust Co. is Bitwise's digital-asset custodian; BNY Mellon is Bitwise's trust custodian/administrator. TOXR lists Coinbase Custody International, Anchorage and BitGo. Evernorth names BitGo Trust. These are service roles, not proof of proprietary XRP purchases.
+- **SBI–Ripple:** previously verified SBI's approximate 9–10% Ripple equity interest, SBI Ripple Asia's 60/40 SBI/Ripple ownership, and SBI Remit corridors in the Philippines, Vietnam and Indonesia that use XRP as a bridge currency. Current corridor volumes remain undisclosed. RLUSD distribution, JPYSC lending and tokenized-deposit POCs remain separate from XRP bridge conversion.
+- **Coinbase–Ripple/USDC alternatives:** Coinbase's prior asset-disclosure snapshot reported XRP and cbXRP holdings and commercial engagement, while RLUSD was commercially engaged but not held at that snapshot. The PNC/Coinbase/Circle USDC pilot remains an alternative institutional dollar rail, not an XRP corridor.
+- **Sources:** [Circle Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), [Coinbase Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm), [Evernorth Nov 9 prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
 
 ## Identity research
 
@@ -182,7 +186,7 @@ No PRs were closed. Do not bulk-close unique research, graph, mesh or draft work
 
 ## Merge decision — BLOCKED
 
-PR #1640 remains open, non-draft and GitHub reports mergeable/clean. It is 896 commits ahead, zero behind, with 231 changed paths.
+PR #1640 remains open, non-draft and GitHub reports mergeable/clean. It is 897 commits ahead, zero behind, with 233 changed paths. Current verified head before this addendum: `bb84e76278368aaf165628171fe36cfd4bf17fa4`.
 
 - 62 review submissions: all `COMMENTED`, zero `APPROVED`.
 - 22 review threads: all resolved, but outdated relative to the current head.
