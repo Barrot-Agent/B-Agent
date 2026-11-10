@@ -26,6 +26,23 @@ Main's `web/signal_accuracy.json` still displays 45.5% from 772/1,697 observatio
 
 This is a material safety correction. However, PR #1640 changes public web assets (`web/landing.html`, `web/latest_signal.json`, `web/latest_signal_summary.json`, `web/signal_accuracy.json`, `web/signals.html`, and related files). A prior main update triggered a successful GitHub Pages build/deployment (run 41799855489 on main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`). The automatic public publication is an external side effect. Specific authorization for that publication is not established; do not merge or deploy until it is.
 
+## XRPL amendment and validator snapshot — 2026-11-10
+
+XRPL Dashboard's live amendment page reports a snapshot as of **07:30 UTC**, ledger `108234660`, signed at 01:00 UTC. Its validator roll call at **07:19 UTC** heard 35 of 35 trusted validators; 29 affirmative votes are required.
+
+- 98 amendments enabled on mainnet.
+- 9 amendments in flight.
+- 0 amendments in the 14-day activation countdown.
+- Current votes: SingleAssetVault 23/29; LendingProtocol 22/29; LendingProtocolV1_1 22/29; ConfidentialTransfer 21/29; DynamicMPT 16/29; fixXChainRewardRounding 10/29; Sponsor 10/29; XChainBridge 4/29; CryptoConditionsSuite 0/29.
+- None has the required 29 votes in the displayed roll call. Do not treat LendingProtocol, SingleAssetVault or related lending/vault features as activated.
+- The page identifies `fixCleanup3_3_0` as already enabled; the other five amendments in the rippled 3.3.0 institutional-MPT set still need sustained validator support.
+
+The official XRPL documentation confirms that only trusted validators' votes count and an amendment must maintain **more than 80% support for two weeks**. If support falls to 80% or below, the majority is lost and the countdown restarts. This official rule corroborates the threshold mechanics; the live vote counts come from the dashboard's own-node validation recorder and are not independently replicated in this capture.
+
+Sources: [XRPL Dashboard live amendment status](https://xrpldashboard.com/amendments), [XRPL official amendment rules](https://xrpl.org/docs/concepts/networks-and-servers/amendments).
+
+This is a material ecosystem-state constraint: announced lending/vault capabilities, validator support, enabled amendments and actual live usage are separate states. Do not count an in-flight amendment as an activated lending market or collateral rail.
+
 ## Fresh market and collateral evidence
 
 - Kraken XRP/USD at retrieval 11:01:17 UTC: last $1.07713; bid $1.07714; ask $1.07734; 24-hour volume 25.408M XRP; VWAP $1.09387149; high/low $1.11573/$1.07502. Kraken supplied no provider event timestamp.
