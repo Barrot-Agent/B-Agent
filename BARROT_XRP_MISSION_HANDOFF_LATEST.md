@@ -3109,3 +3109,65 @@ The user's conditional merge authorization is therefore not satisfied. Do not by
 8. Continue leakage-safe walk-forward and shadow evaluation; issue no directional forecast until every readiness gate passes.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+
+## Run 129B — stablecoin, RWA and payment-rail reconciliation
+
+### RLUSD supply: two clocks and two measurement layers
+
+At approximately 11:57 UTC on November 10, XRPL Dashboard displayed:
+
+- Total RLUSD: $2.69B.
+- Ethereum: $1.81B, 67.4%.
+- XRP Ledger: $877.66M, 32.6%.
+- Rolling 24-hour net supply change: +$20.04M.
+- XRPL 24-hour net supply change: +$12.54M.
+- Ethereum mints: $19.40M; burns: $11.91M.
+
+The dashboard explicitly reported its live feed unavailable and warned that totals may be a few minutes stale. Ethereum-side data is not anchored in its daily signed snapshot chain. Its XRPL supply method uses `gateway_balances`; Ethereum uses `totalSupply()` and Etherscan V2 token-transfer data. It says the 24-hour net change was cross-checked against independent RPC for November 9 finalized data, not necessarily for the live November 10 snapshot.
+
+Ripple's own transparency page separately displays $2.6329B circulating RLUSD and $2.7480B reserve funds as of November 5. The implied reserve/circulation ratio is approximately 104.37%. The visible linked monthly attestations extend through September 2026; do not describe the November 5 balance as independently attested without the matching report.
+
+The displayed difference between the dashboard's $2.69B and Ripple's November 5 $2.6329B is $57.1M, approximately 2.17% of the issuer-page figure. It may reflect intervening growth, measurement timing or coverage. It is not a verified net mint or independent reconciliation.
+
+Sources:
+- [XRPL Dashboard RLUSD supply](https://xrpldashboard.com/rlusd)
+- [Ripple RLUSD transparency](https://ripple.com/products/stablecoin/transparency/)
+
+RLUSD on XRPL is stablecoin supply. It is not XRP demand, XRP collateral, or XRP bridge volume.
+
+### XRPL RWA: tokenized value is not executable liquidity
+
+XRPL Dashboard's November 10 RWA view reports:
+- Eight issuer families catalogued.
+- One strict two-way issuer-domain/TOML attestation.
+- Two labeled AMM families and five MPT-attested families.
+- Seven attributed pools.
+- $438.73 directly attributed AMM liquidity.
+- Attribution set last updated May 14, 2026; this is not a re-verification date.
+
+The dashboard itself characterizes direct AMM liquidity as nominal and institutional RWA activity as early phase. Ondo's OUSG is described as a canonical issuer-attested family with no standing AMM liquidity. Other entries are curated labels or one-way MPT attestations rather than the strict two-way issuer proof.
+
+The dashboard's May 3 third-party RWA.xyz footnote cites $3.6B represented on XRPL, divided into approximately $1.0B distributed and $2.6B represented value. This is a historical third-party estimate, not current direct liquidity and not a dashboard measurement.
+
+It also excludes or leaves pending several recognizable names where the issuer wallet/domain proof is incomplete. A vanity wallet or pool label is not issuer attestation.
+
+Source: [XRPL Dashboard RWA methodology and issuer list](https://xrpldashboard.com/rwa).
+
+### Institutional payment rails: confirmed announcements versus XRP demand
+
+1. **Ondo / Kinexys by J.P. Morgan / Mastercard / Ripple — May 6, 2026.** Ondo reported a completed cross-border, cross-bank redemption of a tokenized U.S. Treasury fund. The XRPL asset leg was reported under five seconds; Kinexys settled USD proceeds to Ripple's bank account in Singapore. This demonstrates an institutional XRPL asset leg, not an XRP bridge conversion. [Ondo announcement](https://www.prnewswire.com/news-releases/ondo-kinexys-by-jp-morgan-mastercard-and-ripple-complete-first-cross-border-cross-bank-redemption-of-tokenized-us-treasuries-302764324.html).
+
+2. **Mastercard — June 3, 2026.** Mastercard announced plans for additional intraday, weekend and holiday settlement, including regulated stablecoins such as USDC, RLUSD, SoFiUSD and Paxos-issued tokens across eight supported chains, including XRPL. The named initial partners include ARQ, CBW Bank, Cross River, Lead Bank and Nuvei. The release describes a network-level rollout subject to regulation and partner implementation, not a live XRP corridor. [Mastercard announcement](https://www.mastercard.com/global/en/news-and-trends/press/2026/june/mastercard-expands-settlement-capabilities-to-include-stablecoin.html).
+
+3. **Ripple / Flutterwave — June 16, 2026.** Flutterwave announced Ripple's strategic investment in its Series E and a partnership to embed RLUSD in payment rails and Send App remittance corridors, use XRPL for transaction clearing, and integrate Ripple Payments. Flutterwave stated a $3.2B Series E valuation but did not disclose Ripple's investment amount. This is an announced product/investment relationship; operational corridor volumes were not verified. [Flutterwave announcement](https://flutterwave.com/us/blog/ripple-participates-in-flutterwaves-series-e-with-strategic-investment-to-accelerate-african-stablecoin-payments).
+
+4. **Circle Ventures / Flutterwave — July 7, 2026.** Flutterwave subsequently announced a Circle Ventures investment and USDC settlement expansion, while describing RLUSD as the default stablecoin across its stablecoin products, supported by Ripple Payments and XRPL. This indicates a multi-stablecoin, multi-rail strategy: Ripple and Circle are both investors/partners in Flutterwave, but this does not establish a direct Ripple–Circle partnership or XRP conversion volumes. [Flutterwave stablecoin infrastructure update](https://flutterwave.com/cm/blog/building-the-stablecoin-infrastructure-for-africa).
+
+5. **SG-FORGE — February 18, 2026.** EUR CoinVertible launched on XRPL with Ripple custody support. SG-FORGE said collateral and trading-collateral use cases could be explored; the announcement does not establish current collateral utilization. [SG-FORGE announcement](https://www.sgforge.com/sgf-coinvertible-on-the-xrp-ledger/).
+
+### Analytical conclusion
+
+Institutional adoption on XRPL is increasingly stablecoin- and tokenized-asset-oriented. That can raise XRPL transaction activity without creating equivalent XRP bridge demand. Distinguish at least five features: stablecoin supply on XRPL, tokenized-asset represented value, distributed tokenized value, executable AMM/order-book liquidity, and XRP bridge conversion volume. Do not substitute one for another.
+
+The new structured evidence is in [Run129 market/flow/governance artifact](research/xrp_intelligence/20261110T120000Z-run129-market-exchange-flow-etf-governance-repository-update.json), under `stablecoin_rwa_payment_network`.
