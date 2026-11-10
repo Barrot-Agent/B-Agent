@@ -53,10 +53,10 @@ def test_run135a_cash_subscription_is_not_misreported_as_exact_xrp_purchase_cash
     purchased_xrp = Decimal(cash["xrp_purchased_with_cash"])
     average_price = Decimal(cash["average_purchase_price_usd"])
     arithmetic_purchase = purchased_xrp * average_price
-    assert cash["advance_funding_cash_raised_usd"] == "214050000"
+    assert cash["advance_funding_cash_raised_usd"] == "214049995"
     assert abs(arithmetic_purchase - Decimal("214000000")) < Decimal("1")
     assert cash["advance_funding_cash_used_to_purchase_xrp_usd_approx"] == "214000000"
-    assert cash["cash_raised_less_detailed_purchase_usd"] == "50000"
+    assert cash["cash_raised_less_detailed_purchase_usd"] == "49995"
 
 
 def test_run135a_distinguishes_debt_from_confirmed_xrp_purchase_capital() -> None:
@@ -81,9 +81,11 @@ def test_run135a_eloc_is_undrawn_capacity_not_actual_capital() -> None:
 
 def test_run135a_preserves_precision_and_conditional_mark_to_market_caveats() -> None:
     holdings = _artifact()["evernorth"]["derived_holdings_bridge"]
-    assert holdings["arithmetic_total_xrp"] == "473276430.423935"
+    assert holdings["known_component_subtotal_xrp"] == "473276430.423935"
     assert holdings["third_party_tracker_total_xrp"] == "473276430.061435"
-    assert holdings["difference_xrp"] == "0.3625"
+    assert holdings["difference_vs_known_component_subtotal_xrp"] == "0.3625"
+    assert holdings["complete_total_xrp"] is None
+    assert holdings["residual_cash_purchase_xrp_quantity"] is None
     sensitivity = _artifact()["evernorth"]["current_price_sensitivity"]
     assert sensitivity["conditional_return_pct_approx"] == "-58.9856"
     assert "conditional" in sensitivity["caveat"].lower()
@@ -130,3 +132,31 @@ def test_run135a_records_review_corrections_without_overwriting_historical_artif
     assert corrections[1]["source_artifact"].endswith(
         "20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json"
     )
+
+
+def test_run135a_residual_cash_was_used_for_xrp_at_close_but_quantity_is_unknown() -> None:
+    cash = _artifact()["evernorth"]["cash_and_xrp_subscriptions"]
+    assert cash["advance_funding_cash_received_usd"] == "214049995"
+    assert cash["cash_used_to_purchase_xrp_usd_approx"] == "214000000"
+    assert cash["residual_cash_purchase_at_close_usd"] == "49995"
+    assert cash["residual_cash_purchase_xrp_quantity"] is None
+    assert cash["total_cash_deployed_to_xrp_usd"] == "214049995"
+
+
+def test_run135a_does_not_claim_complete_evernorth_closing_holdings() -> None:
+    bridge = _artifact()["evernorth"]["derived_holdings_bridge"]
+    assert bridge["known_component_subtotal_xrp"] == "473276430.423935"
+    assert bridge["complete_total_xrp"] is None
+    assert bridge["residual_cash_purchase_at_close_usd"] == "49995"
+    assert bridge["residual_cash_purchase_xrp_quantity"] is None
+    assert "not the exact closing total" in bridge["status"]
+
+
+def test_run135a_preserves_evernorth_issuer_reported_liquidity_risk() -> None:
+    liquidity = _artifact()["evernorth"]["liquidity_snapshot"]
+    assert liquidity["as_of"] == "2026-06-30"
+    assert liquidity["evernorth"]["unrestricted_cash_usd_approx"] == "100000"
+    assert liquidity["evernorth"]["net_working_capital_deficit_usd_approx"] == "696100000"
+    assert liquidity["evernorth"]["accumulated_deficit_usd_approx"] == "340900000"
+    assert liquidity["evernorth"]["net_loss_usd"] == "188134733"
+    assert liquidity["pathfinder_company"]["unrestricted_cash_usd_approx"] == "800000"

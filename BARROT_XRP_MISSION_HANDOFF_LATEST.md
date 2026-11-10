@@ -4535,3 +4535,80 @@ PR #1653 remains unique knowledge-graph work and is not superseded by #1660. Its
 Classification: **UNIQUE / BLOCKED / PRESERVE**. Do not merge until every finding is checked against current code, fixed or explicitly rebutted with evidence, tested, and reconciled to current main. No source PR was closed.
 
 The current successor remains unmerged. The exact-head CI failure above is being corrected; branch-protection visibility, independent approval and GitHub Pages publication authorization remain blockers.
+
+
+---
+
+## Run135C — Evernorth residual-cash and liquidity correction
+
+### Exact-head verification on the corrected Run135A commit
+
+The corrected Run135A test commit `3199e4f5ac9333fcad0c209fc8cf29c7e529c61b` passed all exact-head gates:
+
+- Full repository suite: **3,360 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.58%**, above the 53% floor.
+- Core tests passed.
+- Wheel build and installed-wheel verification passed.
+- Six dependency manifests passed `pip-audit`; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merging remains disabled.
+
+Exact-head evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42854239904
+- Full-suite job: https://github.com/Barrot-Agent/B-Agent/actions/runs/42854239904/job/129962782875
+- Duplicate PR-triggered full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42854249339
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42854241578
+- Duplicate PR-triggered dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42854249644
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42854241652
+
+The prior a883ea run's one failed test was the wrong test key introduced in this research update; the key was corrected and the full suite now passes. Push and pull-request triggers run duplicate copies of the full suite and dependency audit on the same SHA; this is a CI-efficiency issue, not independent test evidence.
+
+### Corrected residual cash purchase at Evernorth closing
+
+The SEC filing and the November 8 capital reconciliation artifact show that the $49,995 difference is not unexplained:
+
+- Exact Advance Funding cash received: **$214,049,995**.
+- Identified purchase lot: approximately **$214,000,000** for 84,365,876.3625 XRP at $2.53657058 average.
+- Remaining **$49,995** was recorded as restricted cash and contractually required to purchase XRP at closing. The filing's pro forma closing adjustment records that it was used to purchase XRP at closing, but the additional XRP quantity is not disclosed.
+- Total Advance Funding cash used for XRP purchases is therefore $214,049,995, but only the $214M lot has a disclosed XRP quantity and average price. Do not allocate the residual to a guessed amount of XRP.
+
+The prior Run135B statement that the $49,995 was not separately reconciled is corrected. The exact known in-kind plus identified cash-lot subtotal is 473,276,430.423935 XRP. It excludes the unknown XRP bought with the $49,995 at closing; therefore it is not the exact closing holdings total. The SEC reports approximately 473 million XRP as of October 9. The third-party tracker figure of 473,276,430.061435 differs by 0.3625 XRP from the known subtotal, but its capture time is not aligned and it may not include the residual purchase. Do not describe that as a complete holdings discrepancy.
+
+### Evernorth liquidity and contingent supply risk
+
+The SEC prospectus reports as of June 30, 2026:
+- Evernorth unrestricted cash approximately $0.1M.
+- Evernorth net working-capital deficit approximately $696.1M.
+- Evernorth accumulated deficit approximately $340.9M.
+- Six-month loss from operations $265.594M; net loss $188.135M; net cash used in operations $1.330M.
+- Pathfinder Company unrestricted cash approximately $0.8M, working-capital deficit $3.7M and accumulated deficit $3.1M.
+
+These are issuer-reported June 30 figures, not November 10 balances. They make future liquidity and financing capacity material to XRP treasury risk, but do not prove a current sale.
+
+The separate Ripple facilities remain:
+- $1M Evernorth Facility, undrawn as of June 30; post-close status unknown.
+- $10M Company Facility (Pathfinder), $6.6M drawn as of June 30 and $9.7M drawn as of October 7; repayment status after the October 9 closing is unknown.
+- $30M PIK notes from NH Investment & Securities as trustee of Kyobo AIM; $29M net after a $1M advisor fee. No specific XRP purchase from note proceeds is proven. Potential cash settlement up to approximately $120M and an 8% put in specified circumstances create a contingent financing/sale risk, not a scheduled sale.
+- Cantor ELOC: zero proceeds as of the November 9 prospectus; $521,893.50 commitment fee due after registration effectiveness, payment not verified.
+
+Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+Relevant SEC sections: Liquidity and Capital Resources (lines 2933–2940); Advance Funding and Delayed Funding; Pro Forma Closing Adjustments (including the $49,995 residual); Cash Flows Used in Investing Activities; Convertible Notes; Committed Equity Facility.
+
+### Collateral and identity correction overlays verified
+
+The successor already contains the November 8 correction overlay and regression test for Coinbase Global Derivatives:
+- XRP X:PM haircut is **not listed** (dash), represented as null; do not infer 0%.
+- XRP X:SM haircut is 15%.
+- Official source: https://www.coinbase.com/en-gb/international-exchange/cross-collateral-specifications
+
+The same correction overlay now cites Circle's September 16 Arc mainnet launch release for SBI Group's founding-validator role, rather than using Circle Q3 earnings or the SBI/Circle JV as evidence for that specific validator claim:
+- https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet
+
+### Kamilah/Camilla video-attribution status
+
+The person identity is confirmed as Dr. Kamilah Stevenson; the candidate channel handle `@drkamilahstevenson` and channel ID `UCqUPJMQdkCN6lsLVDnichPA` have first-party YouTube search-result support. The person-to-channel relationship remains high-confidence/probable, not first-party reciprocal or platform-owner verified. Run122's inventory records four channel-associated XRP/crypto videos and keeps external publisher appearances separate. Do not label same-name uploads as personally authored by Dr. Kamilah without reciprocal first-party proof. “Camilla/Camila” is treated as a transcript spelling variant, not a separate verified person. Run122 explicitly says its web observations are not raw-byte or model-eligible receipts.
+
+### Review and merge state
+
+The Kraken REST field correction and Evernorth capital correction from source PR #1643 are retained as review-driven corrections. Source PR #1643 has 19 resolved threads; three were not outdated when checked. Source PR #1640 has 22 resolved/outdated threads. Successor PR #1660 has zero formal reviews, zero approvals and zero inline review comments.
+
+PR #1653 remains unique and blocked by six Copilot findings and two CodeRabbit findings; no content was merged or closed. The integration PR remains unmerged because independent approval, authoritative branch-protection visibility, GitHub Pages publication authorization and complete 950-path/44-workflow semantic review remain outstanding.

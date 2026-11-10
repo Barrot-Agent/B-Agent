@@ -20,15 +20,19 @@
     "measurement_date": "2026-10-09",
     "reported_total_holdings_approx_xrp": "473000000",
     "cash_and_xrp_subscriptions": {
-      "advance_funding_cash_raised_usd": "214050000",
+      "advance_funding_cash_raised_usd": "214049995",
       "advance_funding_xrp_contributed": "600000",
       "advance_funding_cash_used_to_purchase_xrp_usd_approx": "214000000",
       "xrp_purchased_with_cash": "84365876.3625",
       "average_purchase_price_usd": "2.53657058",
       "cash_purchase_arithmetic_usd": "213999999.9370349",
-      "cash_raised_less_detailed_purchase_usd": "50000",
-      "cash_flow_restricted_cash_disclosed_usd_approx": "100000",
-      "note": "The prospectus narrative rounds the advance cash amount to approximately $214.1M, while the investing cash-flow note reports approximately $214.0M. The disclosed quantity multiplied by the disclosed average purchase price is approximately $214.0M. The $50K difference between $214.05M subscribed cash and the detailed purchase amount is not separately reconciled; the filing also mentions approximately $0.1M restricted cash."
+      "cash_raised_less_detailed_purchase_usd": "49995",
+      "cash_flow_restricted_cash_disclosed_usd_approx": "49995",
+      "note": "The exact Advance Funding cash received was $214,049,995. The identified purchase lot used approximately $214,000,000 to acquire 84,365,876.3625 XRP at $2.53657058 average. The remaining $49,995 was recorded as restricted cash and contractually required to purchase XRP at closing; the prospectus says it was used at closing but does not disclose the additional XRP quantity. Do not treat the $49,995 as unexplained or add a guessed XRP amount.",
+      "advance_funding_cash_received_usd": "214049995",
+      "residual_cash_purchase_at_close_usd": "49995",
+      "residual_cash_purchase_xrp_quantity": null,
+      "total_cash_deployed_to_xrp_usd": "214049995"
     },
     "in_kind_xrp_reconciliation": {
       "advance_funding_xrp": "600000",
@@ -47,7 +51,9 @@
       "total_usd_approx": "272600000",
       "private_placement_cash_usd_approx": "224600000",
       "trust_account_release_usd_approx": "48000000",
-      "note": "Gross closing cash is not all XRP-purchase capital. The $214.05M advance cash subscription and $10.5M delayed cash subscription are components of private-placement cash; the $48M trust-account release is a separate source."
+      "note": "Reported figures are rounded to approximately $224.6M private-placement cash and $272.6M gross closing cash. The $214,049,995 Advance Funding cash plus $10.5M Delayed Funding cash reconstructs $224,549,995, rounded to $224.6M; the $48M trust release is separate.",
+      "reconstructed_private_placement_cash_usd": "224550000",
+      "reconstructed_gross_cash_including_trust_usd": "272550000"
     },
     "related_party_facility": {
       "lender": "Ripple",
@@ -56,7 +62,10 @@
       "classification": "DEBT",
       "xrp_purchase_use_proven": false,
       "facility_name": "Company Facility (Pathfinder)",
-      "post_close_repayment_status": "not disclosed"
+      "post_close_repayment_status": "not disclosed",
+      "drawn_as_of_2026_06_30_usd": "6600000",
+      "repayment_term": "Within five business days after the 2026-10-09 Closing Date, or earlier upon five business days' notice of demand by Ripple",
+      "repayment_status": "UNKNOWN"
     },
     "convertible_notes": {
       "gross_principal_usd": "30000000",
@@ -73,7 +82,8 @@
         "supply_risk": "The prospectus warns that cash obligations could require the company to sell XRP."
       },
       "disclosure_variance": "The narrative describes approximately $30M net proceeds before transaction expenses; the condensed financial statement note reports $29M net cash after a $1M capital-markets-advisor fee. Preserve both presentations; use $29M as the detailed after-fee cash figure.",
-      "counterparty": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3"
+      "counterparty": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+      "liquidity_risk": "The filing reports Evernorth's June 30 unrestricted cash of approximately $0.1M, net working-capital deficit of approximately $696.1M and accumulated deficit of approximately $340.9M. The note's potential cash settlement and other obligations could require XRP sales if external liquidity is unavailable; this is a contingent risk, not evidence of a current sale."
     },
     "committed_equity_facility": {
       "counterparty": "CF Principal Investments LLC (Cantor)",
@@ -85,13 +95,17 @@
       "classification": "UNDRAWN CONTINGENT EQUITY CAPACITY, NOT ACTUAL CAPITAL RECEIVED"
     },
     "derived_holdings_bridge": {
+      "known_component_subtotal_xrp": "473276430.423935",
       "in_kind_xrp": "388910554.061435",
-      "cash_purchased_xrp": "84365876.3625",
-      "arithmetic_total_xrp": "473276430.423935",
+      "cash_purchased_xrp_known_lot": "84365876.3625",
+      "residual_cash_purchase_at_close_usd": "49995",
+      "residual_cash_purchase_xrp_quantity": null,
+      "complete_total_xrp": null,
       "third_party_tracker_total_xrp": "473276430.061435",
-      "difference_xrp": "0.3625",
+      "tracker_capture_time": "not established in this artifact",
+      "difference_vs_known_component_subtotal_xrp": "0.3625",
       "sec_reported_total": "Approximately 473 million XRP as of 2026-10-09",
-      "status": "The approximately 473M SEC disclosure is consistent with the arithmetic. A 0.3625-XRP precision difference versus the tracker remains; it is separate from the now-resolved 200,000-XRP component gap."
+      "status": "Known-component subtotal only. The exact closing total cannot be reconstructed because the $49,995 residual cash purchase at closing has no disclosed XRP quantity. The 0.3625-XRP difference is only a comparison between the known subtotal and a third-party tracker figure whose capture time is not aligned; it is not a complete holdings discrepancy."
     },
     "current_price_sensitivity": {
       "reference_venue": "Kraken XRP/USD",
@@ -145,8 +159,32 @@
         "prior_issue": "The artifact combined $214.05M subscription cash with the exact XRP purchase quantity and average price, producing an inconsistent unit cost; the debt ledger also requires separate Ripple facilities and the NH/Kyobo note.",
         "correction": "$214.05M is Advance Funding cash subscribed; the detailed cash-flow purchase is approximately $214.0M for 84,365,876.3625 XRP at $2.53657058. Ripple is lender on both the distinct $1M Evernorth Facility and $10M Company Facility; NH/Kyobo is counterparty to the separate $30M PIK notes.",
         "disposition": "Historical artifact retained; this Run135A reconciliation supersedes the inconsistent cost-basis and facility mapping fields for current analysis."
+      },
+      {
+        "correction_id": "evernorth_residual_cash_purchase_and_close_holdings_scope",
+        "source_artifact": "research/xrp_intelligence/20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation.json",
+        "correction": "The exact Advance Funding cash received was $214,049,995. The identified cash-funded lot used approximately $214,000,000 to buy 84,365,876.3625 XRP at $2.53657058. The remaining $49,995 was restricted cash and was used to purchase additional XRP at closing; the quantity is not disclosed. The known-component holdings subtotal therefore excludes an unknown residual XRP quantity and is not the exact closing total.",
+        "disposition": "Use this scope for all current capital and holdings analysis; preserve earlier rounded statements as historical."
       }
-    ]
+    ],
+    "liquidity_snapshot": {
+      "as_of": "2026-06-30",
+      "evernorth": {
+        "unrestricted_cash_usd_approx": "100000",
+        "net_working_capital_deficit_usd_approx": "696100000",
+        "accumulated_deficit_usd_approx": "340900000",
+        "loss_from_operations_usd": "265593724",
+        "net_loss_usd": "188134733",
+        "net_cash_used_in_operating_activities_usd": "1329805"
+      },
+      "pathfinder_company": {
+        "unrestricted_cash_usd_approx": "800000",
+        "net_working_capital_deficit_usd_approx": "3700000",
+        "accumulated_deficit_usd_approx": "3100000",
+        "loss_from_operations_usd_approx": "2200000"
+      },
+      "interpretation": "Issuer-reported liquidity and loss position at June 30, 2026. These figures increase financing and potential XRP-sale sensitivity but do not prove a current sale or insolvency."
+    }
   },
   "market_context": {
     "spot_retrieval_utc": "2026-11-10T16:05:34Z",
@@ -261,6 +299,9 @@
     "No evidence proves the $29M after-fee convertible-note proceeds were used to buy XRP.",
     "No ELOC proceeds had been received as of the November 9 prospectus.",
     "Kraken REST Ticker field o is the UTC-day opening price, not a rolling 24-hour open. Historical artifacts containing open_24h_usd from this field are preserved but superseded for rolling-24-hour analysis.",
-    "The separate $1M Ripple Evernorth Facility (undrawn as of June 30) must not be confused with the $10M Ripple Company Facility (Pathfinder, $9.7M drawn as of October 7) or the $30M NH/Kyobo PIK notes."
+    "The separate $1M Ripple Evernorth Facility (undrawn as of June 30) must not be confused with the $10M Ripple Company Facility (Pathfinder, $9.7M drawn as of October 7) or the $30M NH/Kyobo PIK notes.",
+    "The exact $214,049,995 Advance Funding cash receipt is separated into the identified approximately $214,000,000 purchase lot and a $49,995 restricted-cash residual used to purchase XRP at closing; the residual XRP quantity is undisclosed.",
+    "The 473,276,430.423935 XRP figure is only the known-component subtotal before the $49,995 closing purchase. Exact closing holdings cannot be reconstructed without the residual purchase quantity.",
+    "Evernorth's June 30, 2026 liquidity and loss figures are issuer-reported and are not current November 10 balances."
   ]
 }
