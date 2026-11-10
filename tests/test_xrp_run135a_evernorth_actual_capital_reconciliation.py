@@ -55,7 +55,7 @@ def test_run135a_cash_subscription_is_not_misreported_as_exact_xrp_purchase_cash
     arithmetic_purchase = purchased_xrp * average_price
     assert cash["advance_funding_cash_raised_usd"] == "214050000"
     assert abs(arithmetic_purchase - Decimal("214000000")) < Decimal("1")
-    assert cash["cash_used_to_purchase_xrp_usd_approx"] == "214000000"
+    assert cash["advance_funding_cash_used_to_purchase_xrp_usd_approx"] == "214000000"
     assert cash["cash_raised_less_detailed_purchase_usd"] == "50000"
 
 
@@ -95,3 +95,38 @@ def test_run135a_is_not_a_forecast_or_model_eligible_dataset() -> None:
     assert data["source_capture"]["raw_sha256_receipts_available"] is False
     assert data["model_eligible"] is False
     assert data["forecast_status"] == "NOT_ISSUED"
+
+
+def test_run135a_kraken_rest_open_is_utc_day_not_rolling_24h() -> None:
+    market = _artifact()["market_context"]["kraken_xrp_usd"]
+    assert market["utc_day_open_usd"] == "1.09748"
+    assert market["open_24h_usd"] is None
+    assert market["vwap_24h_usd"] == "1.07906869"
+    assert market["high_24h_usd"] == "1.11511"
+    assert market["low_24h_usd"] == "1.03011"
+    assert "midnight UTC" in market["open_field_semantics"]
+
+
+def test_run135a_separates_the_two_ripple_credit_facilities_from_nh_kyobo_notes() -> None:
+    evernorth = _artifact()["evernorth"]
+    small = evernorth["evernorth_facility"]
+    company = evernorth["related_party_facility"]
+    notes = evernorth["convertible_notes"]
+    assert small["lender"] == "Ripple Labs Inc."
+    assert small["facility_limit_usd"] == "1000000"
+    assert small["drawn_as_of_2026_06_30_usd"] == "0"
+    assert company["lender"] == "Ripple"
+    assert company["facility_limit_usd"] == "10000000"
+    assert company["drawn_as_of_2026_10_07_usd"] == "9700000"
+    assert notes["counterparty"].startswith("NH Investment & Securities")
+
+
+def test_run135a_records_review_corrections_without_overwriting_historical_artifacts() -> None:
+    data = _artifact()
+    corrections = data["evernorth"]["corrections"]
+    assert len(corrections) == 2
+    assert corrections[0]["prior_field"] == "open_24h_usd"
+    assert corrections[0]["disposition"].startswith("Historical artifacts are preserved")
+    assert corrections[1]["source_artifact"].endswith(
+        "20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json"
+    )

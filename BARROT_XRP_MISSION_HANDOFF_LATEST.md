@@ -4471,3 +4471,67 @@ Primary filing: https://www.sec.gov/Archives/edgar/data/2092592/0001628280260722
 Relevant filing sections: Private Placement Subscription Agreements; Contribution Agreement; Use of Proceeds; Cash Flows Used in Investing Activities; Convertible Notes; Committed Equity Facility; Risk Factors.
 
 A structured research artifact and regression tests are added in this commit. The artifact is research-only, explicitly not model-eligible, and does not claim byte-complete raw receipts or trusted timestamp anchoring.
+
+
+---
+
+## Run 135B — Review-driven data-quality correction
+
+### Kraken REST ticker semantics
+
+A Copilot review comment on source PR #1643 identified that Kraken REST Ticker field `o` had been mislabeled as a rolling 24-hour open in two historical research artifacts. Kraken's primary API specification confirms the correction: **today's prices start at midnight UTC**. In the REST response, `o` is today's UTC open; `v[1]`, `p[1]`, `t[1]`, `l[1]` and `h[1]` are the last-24-hour volume, VWAP, trade count, low and high. The REST endpoint does not supply a rolling 24-hour open.
+
+For the November 10 snapshot:
+- Kraken UTC-day open: $1.09748 (not a 24-hour open).
+- Kraken last: $1.04036.
+- Kraken 24-hour VWAP: $1.07906869.
+- Kraken 24-hour high/low: $1.11511 / $1.03011.
+- Last versus UTC-day open: −5.205%.
+- Last versus 24-hour VWAP: −3.587%.
+- Position within the 24-hour high/low range: 12.06% above the low.
+- OKX's own `open24h` field is 1.1156 USDT; last 1.0395 USDT, or −6.821% for its provider window.
+
+The earlier Run135 sentence calling $1.09748 a “24-hour open” is corrected. The historical artifacts are retained, not overwritten; their `open_24h_usd` field is superseded for rolling-24-hour analysis. The Copilot objection is preserved as a minority review finding and is now corroborated by Kraken's primary specification: https://docs.kraken.com/api/docs/rest-api/get-ticker-information (the specification states that today's prices start at midnight UTC).
+
+### Evernorth capital and facility corrections
+
+The prior 200,000-XRP apparent gap is resolved by the Delayed Funding tranche as documented above. Two further distinctions are now explicit:
+
+1. The separate **$1M Evernorth Facility** is a Ripple Labs facility, undrawn as of June 30, 2026; its post-close draw status is not disclosed.
+2. The **$10M Company Facility (Pathfinder)** is also from Ripple Labs, with $9.7M drawn as of October 7. It is distinct from the $1M facility.
+3. The **$30M PIK notes** are from NH Investment & Securities as trustee of Kyobo AIM. They are not the Ripple facility.
+
+The detailed cash purchase is approximately $214.0M for 84,365,876.3625 XRP at $2.53657058. The $214.05M Advance Funding cash subscription is not the exact purchase-cash numerator; the detailed purchase arithmetic is approximately $214.0M. The old artifact's implied cost calculation is preserved historically and superseded by Run135A.
+
+### Exact-head CI correction and failure
+
+The Run135A artifact/test commit `a883ea972aa4d58aad8fa6e8fd5da108bbb24e8f` triggered exact-head full CI, dependency audit and fail-closed gate:
+
+- Full suite: **3,356 passed, 1 failed, eight subtests passed**; coverage 59.58%.
+- The sole failure was introduced by this run's regression test using the wrong JSON key (`cash_used_to_purchase_xrp_usd_approx` instead of the actual `advance_funding_cash_used_to_purchase_xrp_usd_approx`). This is a test defect, not a production-code failure.
+- Core test job passed.
+- Dependency audit passed on the exact head: six manifests, zero known vulnerabilities.
+- Fail-closed gate passed and performed no merge.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42853330112
+- Full-suite job: https://github.com/Barrot-Agent/B-Agent/actions/runs/42853330112/job/129959607397
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42853330176
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42853330417
+
+The incorrect test key is corrected in the current successor commit, and new regression assertions cover Kraken field semantics and the two separate Ripple facilities. The next exact-head CI must pass before the integration PR can be considered test-ready.
+
+### Unique PR #1653 — preserved and blocked
+
+PR #1653 remains unique knowledge-graph work and is not superseded by #1660. Its two review submissions are COMMENTED, with six Copilot findings and two CodeRabbit findings on the current reviewed commits. The safety-critical findings include:
+- `persistence=false` can still refresh/overwrite an existing shared graph artifact.
+- Tool arguments can be discarded because `--format` takes precedence over stdin.
+- Repository branch/HEAD/dirty state can change during long fetch/index operations.
+- Recursive submodule fetch can reach unvalidated remote URLs outside the GitHub-only boundary.
+- Upstream `status="degraded"` can exit successfully while the graph is not durable; success must require `status="indexed"`.
+- `subprocess.TimeoutExpired` can escape before the index refresh and structured partial result.
+- CodeRabbit separately flags executable metadata being inferred from an unrelated Python package and the need to handle fetch exceptions before indexing.
+
+Classification: **UNIQUE / BLOCKED / PRESERVE**. Do not merge until every finding is checked against current code, fixed or explicitly rebutted with evidence, tested, and reconciled to current main. No source PR was closed.
+
+The current successor remains unmerged. The exact-head CI failure above is being corrected; branch-protection visibility, independent approval and GitHub Pages publication authorization remain blockers.

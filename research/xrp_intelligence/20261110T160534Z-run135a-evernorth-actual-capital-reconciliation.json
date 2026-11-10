@@ -54,7 +54,9 @@
       "facility_limit_usd": "10000000",
       "drawn_as_of_2026_10_07_usd": "9700000",
       "classification": "DEBT",
-      "xrp_purchase_use_proven": false
+      "xrp_purchase_use_proven": false,
+      "facility_name": "Company Facility (Pathfinder)",
+      "post_close_repayment_status": "not disclosed"
     },
     "convertible_notes": {
       "gross_principal_usd": "30000000",
@@ -70,7 +72,8 @@
         "issuer_prepayment_option": false,
         "supply_risk": "The prospectus warns that cash obligations could require the company to sell XRP."
       },
-      "disclosure_variance": "The narrative describes approximately $30M net proceeds before transaction expenses; the condensed financial statement note reports $29M net cash after a $1M capital-markets-advisor fee. Preserve both presentations; use $29M as the detailed after-fee cash figure."
+      "disclosure_variance": "The narrative describes approximately $30M net proceeds before transaction expenses; the condensed financial statement note reports $29M net cash after a $1M capital-markets-advisor fee. Preserve both presentations; use $29M as the detailed after-fee cash figure.",
+      "counterparty": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3"
     },
     "committed_equity_facility": {
       "counterparty": "CF Principal Investments LLC (Cantor)",
@@ -107,6 +110,42 @@
       "Undrawn contingent equity capacity",
       "Commitment fees and transaction costs",
       "Secondary resale proceeds, which do not accrue to the issuer"
+    ],
+    "evernorth_facility": {
+      "facility_name": "Evernorth Facility",
+      "lender": "Ripple Labs Inc.",
+      "facility_limit_usd": "1000000",
+      "drawn_as_of_2026_06_30_usd": "0",
+      "post_close_draw_status": "UNKNOWN",
+      "classification": "DEBT FACILITY; not equity or confirmed current XRP purchase"
+    },
+    "corrections": [
+      {
+        "correction_id": "kraken_rest_ticker_open_semantics",
+        "source_artifacts": [
+          "research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json",
+          "research/xrp_intelligence/20261104T131226Z-circle-q3-coinbase-ripple-bny-sbic-market-addendum.json"
+        ],
+        "prior_field": "open_24h_usd",
+        "correction": "The Kraken REST Ticker `o` field is today's UTC-day open, not a rolling 24-hour open. Kraken's official REST documentation states that today's prices start at midnight UTC.",
+        "correct_fields": {
+          "utc_day_open": "o",
+          "volume_24h": "v[1]",
+          "vwap_24h": "p[1]",
+          "trade_count_24h": "t[1]",
+          "low_24h": "l[1]",
+          "high_24h": "h[1]",
+          "rolling_24h_open": "not supplied by this REST endpoint"
+        },
+        "disposition": "Historical artifacts are preserved; do not use their open_24h_usd field as a rolling-24-hour return. This correction is authoritative for subsequent research."
+      },
+      {
+        "correction_id": "evernorth_cash_cost_and_facility_attribution",
+        "source_artifact": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+        "prior_issue": "The artifact combined $214.05M subscription cash with the exact XRP purchase quantity and average price, producing an inconsistent unit cost; the debt ledger also requires separate Ripple facilities and the NH/Kyobo note.",
+        "correction": "$214.05M is Advance Funding cash subscribed; the detailed cash-flow purchase is approximately $214.0M for 84,365,876.3625 XRP at $2.53657058. Ripple is lender on both the distinct $1M Evernorth Facility and $10M Company Facility; NH/Kyobo is counterparty to the separate $30M PIK notes.",
+        "disposition": "Historical artifact retained; this Run135A reconciliation supersedes the inconsistent cost-basis and facility mapping fields for current analysis."
+      }
     ]
   },
   "market_context": {
@@ -116,14 +155,28 @@
       "bid": "1.04050",
       "ask": "1.04051",
       "volume_24h_xrp": "32719105.64769339",
-      "provider_event_timestamp": null
+      "provider_event_timestamp": null,
+      "utc_day_open_usd": "1.09748",
+      "open_24h_usd": null,
+      "open_field_semantics": "Kraken REST Ticker field o is today's opening price; Kraken documents that today's prices start at midnight UTC.",
+      "high_24h_usd": "1.11511",
+      "low_24h_usd": "1.03011",
+      "vwap_24h_usd": "1.07906869",
+      "last_vs_daily_open_pct": "-5.20465065",
+      "last_vs_24h_vwap_pct": "-3.58723132",
+      "position_in_24h_range_pct": "12.05882353"
     },
     "okx_xrp_usdt": {
       "last": "1.0395",
       "bid": "1.0395",
       "ask": "1.0396",
       "volume_24h_xrp": "77467120.861659",
-      "provider_event_timestamp_utc": "2026-11-10T15:55:07.267Z"
+      "provider_event_timestamp_utc": "2026-11-10T15:55:07.267Z",
+      "open_24h_usdt": "1.1156",
+      "high_24h_usdt": "1.1164",
+      "low_24h_usdt": "1.0311",
+      "last_vs_open_24h_pct": "-6.82144138",
+      "position_in_24h_range_pct": "9.84759672"
     },
     "kraken_usdt_usd": "0.99899",
     "normalized_okx_usd": "1.038450105",
@@ -185,6 +238,17 @@
       "source_independence_group": "exchange_direct_kraken",
       "raw_bytes_captured": false,
       "model_eligible": false
+    },
+    {
+      "source_id": "kraken_rest_ticker_field_semantics",
+      "publisher": "Kraken Developers",
+      "url": "https://docs.kraken.com/api/docs/rest-api/get-ticker-information",
+      "retrieved_at_utc": "2026-11-10T16:20:00Z",
+      "primary_specification": true,
+      "source_independence_group": "kraken_official_api_specification",
+      "raw_bytes_captured": false,
+      "model_eligible": false,
+      "relevant_statement": "Today's prices start at midnight UTC."
     }
   ],
   "forecast_status": "NOT_ISSUED",
@@ -195,6 +259,8 @@
     "The 200,000-XRP component gap is resolved by the disclosed delayed-funding tranche; the separate 0.3625-XRP tracker precision difference remains.",
     "The detailed cash-purchase amount is approximately $214.0M; the $214.05M subscription cash and rounded $214.1M narrative are not treated as exact deployed cash.",
     "No evidence proves the $29M after-fee convertible-note proceeds were used to buy XRP.",
-    "No ELOC proceeds had been received as of the November 9 prospectus."
+    "No ELOC proceeds had been received as of the November 9 prospectus.",
+    "Kraken REST Ticker field o is the UTC-day opening price, not a rolling 24-hour open. Historical artifacts containing open_24h_usd from this field are preserved but superseded for rolling-24-hour analysis.",
+    "The separate $1M Ripple Evernorth Facility (undrawn as of June 30) must not be confused with the $10M Ripple Company Facility (Pathfinder, $9.7M drawn as of October 7) or the $30M NH/Kyobo PIK notes."
   ]
 }
