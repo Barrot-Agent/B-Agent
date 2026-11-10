@@ -1,6 +1,6 @@
 # Barrot Autonomous Repository Repair
 
-Generated: 2026-11-10T16:14:26.893591+00:00
+Generated: 2026-11-10T22:06:15.344937+00:00
 
 ## Status
 
@@ -8,37 +8,35 @@ A repository repair cycle completed and the resulting GitHub commit was verified
 
 ## Audit Snapshot
 
-## What I'm looking at
+# Repository Audit — Structural Review (File-Listing Evidence Only)
 
-A truncated file listing (alphabetical, `git ls-files`-style). It begins mid-path — the first line is a fragment of `.barrot/collaboration_records/v3_acceptance_matrix/case-26.json` — and ends at `TRANSFORMATIVE_INSIGHTS_IMPLEMENTATION_SUMMARY.md`. **The actual source tree is not in this excerpt** (no `src/`, `tests/`, or package directories appear). Everything below is based strictly on the paths shown; I cannot verify file contents.
+## Scope and limitations
 
-## Inventory (paths only)
+What I received is a single file listing that **begins mid-entry** (`s/v3_acceptance_matrix/case-26.json` — almost certainly a truncated `.barrot/collaboration_records/...` path) and contains **no file contents**. Everything below is derived from names, paths, and counts only. Where I infer, I say so. I cannot verify code quality, workflow logic, test status, or secret exposure from names alone.
 
-- **~85 GitHub Actions workflows**, 8 explicitly `.disabled`; plus `.gitlab-ci.yml` (dual CI systems)
-- **`.barrot/` agent-state directory**: acceptance-matrix JSON cases, `mmi_execution_ledger.jsonl`, three manifests (`repo_state_manifest.json`, `repository_identity.json`, `target_registry.json`), and scripts including `practice/barrot_self_repair.py`
-- **4 test files** parked in `.barrot/disabled_tests/`
-- **~40 top-level markdown docs**, many resembling generated reports/dated responses
-- **Personal/environment files tracked**: `.bashrc`, `.gitconfig`, `.config/gh/hosts.yml`, `.termux/termux.properties`, `.termux_dna_harvest.log`
+Notably, the listing contains **almost no application source code** (no `src/`, no top-level `*.py` outside `.barrot/`, no `pyproject.toml`/`requirements.txt`/`package.json`). Either the listing is incomplete or source lives elsewhere. This audit therefore covers repo governance and meta-structure, not the actual software architecture.
 
-## Flags, in priority order (all require content verification)
+## Inventory (facts from the listing)
 
-1. **`.config/gh/hosts.yml` is committed.** The gh CLI's `hosts.yml` normally stores an OAuth token. If this is a real checkout artifact rather than a sanitized placeholder, that is a live credential in git history. Verify this first.
-2. **`.bashrc` and `.gitconfig` at repo root** — personal shell config is a common vector for exported tokens and identity leakage.
-3. **Committed runtime artifacts** — `.termux_dna_harvest.log` and `mmi_execution_ledger.jsonl` are logs/ledgers in version control; check for sensitive content and churn.
-4. **Disabled tests**: four integration tests moved to `.barrot/disabled_tests/` rather than fixed or skipped with documented reasons. Corresponding feature docs exist at root (`EMAIL_*`, `MERGE_CONFLICT_RESOLUTION_GUIDE.md`, `TRANSFORMATIVE_INSIGHTS_*`), which *suggests* features documented as shipped while their tests are sidelined — inference only.
-5. **Merge governance sprawl**: seven-plus workflows touch merging (`barrot-approve-pr`, `barrot-auto-pr`, `barrot-gated-merge`, `barrot-merge`, `barrot-merge-manual`, `barrot-pr-automerge` + its `.disabled` twin, `merge-queue`). Gated merge coexisting with multiple automerge paths indicates either conflicting policy or dead automation.
-6. **Self-modification loop risk**: `barrot-self-upgrade.yml`, `barrot-autonomous-resolver.yml`, `auto-resolve-issues.yml`, `autonomous_self_deployment.yml`, plus in-repo agent state and `barrot_self_repair.py`. Agent-writable state inside the repo the agent operates on warrants explicit provenance and approval controls.
-7. **Workflow numbering gap**: `capability-1`, `capability-9`, `capability-10` present; 2–8 absent — removed, or defined elsewhere.
-8. **Root doc clutter**: ~40 markdown files including dated one-offs (`INGESTION_RESPONSE_2025-12-30.md`) — generated artifacts committed as documentation.
+| Item | Count / observation |
+|---|---|
+| GitHub Actions workflows | ~86 files, of which 8 carry a `.disabled` suffix |
+| Top-level Markdown docs | ~45, predominantly status/summary-style (`*_SUMMARY.md`, `*_COMPLETE.md`, `*_RESPONSE_*.md`) |
+| `.barrot/` state directory | Acceptance-matrix records (cases 26–30 only), 4 disabled test files, execution ledger (`.jsonl`), identity/manifest/registry JSONs, 2 Python scripts |
+| CI systems | Both `.gitlab-ci.yml` and GitHub workflows present |
+| Committed personal environment files | `.bashrc`, `.gitconfig`, `.config/gh/config.yml`, `.termux/termux.properties`, `.termux_dna_harvest.log` |
+| Governance artifacts present | `SECURITY.md`, `CODEOWNERS`, `dependabot.yml`, `.pre-commit-config.yaml`, `dependency-audit.yml`, `barrot-transparency-audit.yml`, `LICENSE` |
 
-## Positive signals
+## Findings
 
-`CODEOWNERS`, `SECURITY.md`, `dependabot.yml`, `.pre-commit-config.yaml`, `.flake8`, `.editorconfig`, `CHANGELOG.md`, `LICENSE`, both Dockerfiles + devcontainer, and audit-flavored workflows (`dependency-audit`, `barrot-transparency-audit`) — baseline hygiene is present.
-
-## Cannot determine from a listing alone
-
-Whether `hosts.yml` holds a real token; what any workflow actually executes; whether the disabled tests are superseded or abandoned; anything about the source code itself; branch protection settings.
-
-## To proceed
-
-Tell me the audit scope (security, CI governance, test integrity, repo hygiene?) and paste the remainder of the listing or specific files. I'd start with `.config/gh/hosts.yml`, the merge-family workflows, and the headers of the four disabled tests.
+| # | Severity | Evidence | Concern | Verify by |
+|---|---|---|---|---|
+| 1 | **High** | `barrot-self-upgrade.yml`, `autonomous_self_deployment.yml`, `barrot-approve-pr.yml`, `barrot-pr-automerge.yml`, `barrot-merge.yml` | A self-modification loop combined with automated PR approval/merge is the highest-risk pattern in any repo: a buggy or manipulated workflow can merge its own changes without human review | Read all five workflow files; check permissions blocks, branch protection assumptions, and whether approval is human-gated |
+| 2 | **High** | `.bashrc`, `.gitconfig`, `.config/gh/config.yml`, `.termux/*` committed at repo root | Personal dotfiles in version control frequently leak tokens, host aliases, or history. `gh` config in particular warrants a secrets scan | Inspect contents; run `git log` on these paths; rotate any exposed credentials |
+| 3 | **High (hypothesis)** | `.barrot/disabled_tests/test_email_integration.py`, `test_transformative_insights.py`, `test_merge_conflict_integration.py`, `test_longevity_modules.py` — names correspond to root docs claiming completion (`EMAIL_FEATURE_SUMMARY.md`, `TRANSFORMATIVE_INSIGHTS_IMPLEMENTATION_SUMMARY.md`, `MERGE_CONFLICT_RESOLUTION_GUIDE.md`) | Pattern suggests features documented as delivered while their tests were disabled rather than fixed. This is a claim-vs-verification gap | Diff each disabled test against the corresponding feature code; check CI for whether these paths are excluded |
+| 4 | **Medium** | ~78 active workflows for one repo, including near-duplicates (`diag-cf`/`diag-cf2`, `barrot-merge`/`barrot-merge-manual`, `barrot-auto-pr`/`barrot-pr-automerge`, and `barrot-pr-automerge.yml` existing **both enabled and disabled**) | Workflow sprawl: expanded attack surface, Actions-minutes cost, unclear which path is authoritative | Map triggers (`push`/`schedule`/`workflow_dispatch`) per workflow; identify dead ones |
+| 5 | **Medium** | `capability-1`, `capability-9`, `capability-10` workflows present; `capability-2`–`8` absent | Numbering gap suggests removed or never-committed siblings; relevant if "capability" workflows are referenced by the agent's registry | Check `.barrot/target_registry.json` for references to missing capabilities |
+| 6 | **Medium** | `.gitlab-ci.yml` alongside GitHub workflows | Dual CI risks divergent pipelines (different gates on different platforms) | Compare job sets and gate strictness |
+| 7 | **Medium** | `dump-brain-corpus.yml`, `sync-self-hosted-brain.yml`, `sync-huggingface.yml`, `rotate-databricks-token.yml` | Data-egress and credential-rotation automation; destinations and secret scoping unverifiable from names | Audit target endpoints, token scopes, and least-privilege on the `GITHUB_TOKEN`/PATs used |
+| 8 | **Medium** | `.barrot/` contains `repository_identity.json`, `repo_state_manifest.json`, `barrot_self_repair.py`, `barrot_generated_practice.py` | An agent maintaining its own model of the repo inside the repo. If workflows read these files as input to merge/deploy decisions, the state files become a trust boundary | Trace which workflows consume these JSONs |
+| 9 | **Low** | ~45 status/summary Markdown files at root; no `docs/` visible | Root pollution; "implementation complete" docs are unverified claims, not documentation | Move to
