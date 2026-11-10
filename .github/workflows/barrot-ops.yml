@@ -11,6 +11,22 @@ on:
           - NO
           - YES
         default: NO
+      confirm_databricks_workspace_import:
+        description: "Set to YES only to authorize overwriting /Shared/barrot_databricks_job in Databricks for this run."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+      confirm_kaggle_dataset_download:
+        description: "Set to YES only to authorize downloading the named Kaggle dataset into this runner for this run."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
       expected_source_sha:
         description: "Expected exact main commit approved for this external operations run"
         required: true
@@ -24,7 +40,7 @@ concurrency:
 
 jobs:
   sync-platforms:
-    if: ${{ inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main' }}
+    if: ${{ inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main' && (inputs.confirm_databricks_workspace_import == 'YES' || inputs.confirm_kaggle_dataset_download == 'YES') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -51,9 +67,11 @@ jobs:
       # the Space has its own history and hf_space/ is the intended deploy source.
 
       - name: Setup Databricks CLI
+        if: ${{ inputs.confirm_databricks_workspace_import == 'YES' }}
         uses: databricks/setup-cli@9625fdde9ba2607df0087e0d3ec7449198bf2180 # v1.23.0; signed upstream commit
 
       - name: Run Databricks Job
+        if: ${{ inputs.confirm_databricks_workspace_import == 'YES' }}
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
@@ -66,6 +84,7 @@ jobs:
             echo "::warning::Notebook upload failed; skipping upload-only step"
 
       - name: Kaggle Data Refresh
+        if: ${{ inputs.confirm_kaggle_dataset_download == 'YES' }}
         env:
           KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
         run: |
