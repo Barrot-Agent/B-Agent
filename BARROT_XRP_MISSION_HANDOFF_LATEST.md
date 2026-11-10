@@ -3327,3 +3327,71 @@ Current PR #1640 state at `f8b0be`: open, non-draft, GitHub reports mergeable, 9
 Main remains `d4d43be3427375cf79d190e768976de062e20287`. Main is reported protected, but detailed required-review protection returns HTTP 403, visible required status contexts are empty and the fallback ruleset is disabled. GitHub Pages previously deployed after a main push; authorization for another automatic public publication is not established.
 
 No merge or deployment was performed. No source PRs were closed. The XRP mission manifest and scheduled read-only collector remain on the integration branch, not main. Forecast status remains `NOT_ISSUED`.
+
+## Run 130 — exact repository verification, live XRP structure and CPI event cutoff
+
+**Captured:** 2026-11-10 13:19:48 UTC.  
+**Mission:** XRP intelligence and measured prediction-engine mastery — priority 1. Preserve Barrot V3 as execution, orchestration, safety and verification foundation.  
+**Main:** `d4d43be3427375cf79d190e768976de062e20287`.  
+**Integration branch/head:** `integration/core-capabilities-mmi-structural-paper-20261104` / `a2f0c70535d00729beccb8b38d0dbad044c935ed`.  
+**Existing PR:** [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640).  
+**Structured evidence:** [Run130 JSON](research/xrp_intelligence/20261110T131948Z-run130-xrp-market-repo-integration-cpi-cutoff.json).
+
+### Repository and exact-head verification
+
+- Current main remains `d4d43be3427375cf79d190e768976de062e20287`; main tree has 1,404 entries / 1,299 files. Integration tree has 1,556 entries / 1,443 files.
+- PR #1640 remains the sole active V3/XRP integration path: open, non-draft, mergeable/clean, 954 commits ahead and zero behind, 260 changed files, 125,273 additions and 3,555 deletions.
+- Exact PR-head checks on `a2f0c70535d00729beccb8b38d0dbad044c935ed` all passed: full repository suite **1,371 passed, zero failed, eight subtests passed**; inclusive coverage **59.58%** against a 53% floor; wheel build/installation and packaged Barrot V3/XRP mission verification; six dependency manifests with zero known vulnerabilities; fail-closed gate passed with automatic merge disabled. CodeRabbit check was skipped.
+- Exact evidence: [CI 42814888613](https://github.com/Barrot-Agent/B-Agent/actions/runs/42814888613), [dependency audit 42814888645](https://github.com/Barrot-Agent/B-Agent/actions/runs/42814888645), [fail-closed gate 42814888651](https://github.com/Barrot-Agent/B-Agent/actions/runs/42814888651).
+- PR review state: 62 COMMENTED submissions, zero APPROVED, zero CHANGES_REQUESTED; all 22 inline threads resolved but outdated. No reviewer is currently requested.
+- Main branch-protection endpoint returns HTTP 403. The only visible repository ruleset, “Fall Back” (10863829), is disabled. Effective required approval/check settings remain unverified.
+- Prior GitHub Pages run [41799855489](https://github.com/Barrot-Agent/B-Agent/actions/runs/41799855489) deployed successfully after a main push. PR #1640 changes public web assets; specific authorization for the next automatic public publication is absent. **Merge remains blocked.**
+
+### Main workflow state and failure diagnosis
+
+- Main scheduled Pillars run [42820781370](https://github.com/Barrot-Agent/B-Agent/actions/runs/42820781370) failed at 13:01:40 UTC. Exact diagnostics: GitHub App ID/private key/installation ID missing; Databricks HTTP 403; Hugging Face Space `BUILD_ERROR`. Deploy-sync and system-prompt checks passed. The workflow remains fail-closed; no credentials were changed or bypassed.
+- Main scheduled Cross Analysis run [42819316779](https://github.com/Barrot-Agent/B-Agent/actions/runs/42819316779) succeeded. Its current workflow is read-only (`contents:read`, checkout credentials disabled, artifact upload only).
+- The integration XRP collector is designed as read-only (`actions:read`, `contents:read`, checkout credentials disabled) and writes only bounded GitHub Actions artifacts/cache. It is not on main, so no scheduled production ingestion has run. Artifacts/cache are not WORM or trusted timestamp anchoring.
+- Workflow audit covered 43 changed workflow files. Legacy writers/emitters and Hugging Face/Databricks bundle deployment paths are quarantined or reduced to manual approval. Self-hosted Brain and A2A deployment require explicit deployment confirmation, separate secret-rotation confirmation and exact-main-SHA checks. Barrot Ops requires external-change confirmation and exact SHA before Databricks workspace import; no dispatch occurred. Paper trader is manual artifact-only and was not dispatched.
+
+### Public web signal correction remains pending publication
+
+Main still exposes the stale `web/latest_signal.json` timestamp 2026-10-29 13:23:33 UTC, sentiment 44, confidence 0, news score 88 and 11 headlines. Main `web/signal_accuracy.json` still displays 45.5% (772/1,697) from a variable-horizon scorer. Integration correctly publishes `NOT_ISSUED` and `NOT_EVALUATED`, preserving the old sentiment only as stale descriptive history. This safety correction is not on main because the merge/publication gate remains blocked.
+
+### XRP spot, liquidity and derivatives — November 10, 2026
+
+**Spot retrieval cutoff 13:19:48 UTC:** Kraken XRP/USD last $1.07712, bid $1.07718, ask $1.07719, 24-hour volume 24.112M XRP, VWAP $1.09356134, high/low $1.11573/$1.07367. Kraken did not supply a provider event timestamp. OKX XRP-USDT last 1.0784, bid 1.0782, ask 1.0783, provider event time 13:17:53.462 UTC, 24-hour volume 58.448M XRP. Kraken USDT/USD last 0.99874. Mechanically normalized OKX last is $1.077041, approximately 0.0073% below Kraken last; normalized mid difference is approximately −0.0273%. Quotes are asynchronous; this is not executable arbitrage.
+
+The exact visible JSON response texts were SHA-256 hashed and recorded in the Run130 artifact. These are hashes of visible response text, **not** original HTTP transport bytes or headers.
+
+**Spot L2:** Fuelmaps' 13:00 UTC six-venue snapshot showed XRP mid $1.0786; within 1%, $13.8M bids versus $9.2M asks (60.1% bid share); within 5%, $23.2M bids versus $13.0M asks (64.1%). Venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance and Bitget excluded. These are displayed resting orders, cancellable and up to about 65 minutes old, not executed flow or guaranteed depth. [Fuelmaps](https://fuelmaps.io/order-book/).
+
+**Derivatives:** Liqwall at 13:02 UTC reported $1.20B OI (−0.1% 24h), +0.0089%/8h average funding and $3.7M liquidations, of which $3.3M longs. TradRadar at 12:20 UTC (15-minute delay) reported $1.65B OI (−2.7% 24h), +0.0090%/8h funding and at least $3.96M liquidations, of which $3.32M longs; its long/short account ratio was 3.89 (79.6% long). Alpha Finance's older 08:15 UTC aggregate was $2.43B. These aggregates have overlapping but different venue coverage and windows; do not average. The common descriptive evidence is positive funding and long-heavy liquidation/deleveraging, not a directional signal. [Liqwall](https://liqwall.com/coins/xrp), [TradRadar](https://tradradar.io/markets/xrp), [Alpha](https://alphafinance.io/liquidation-heatmap/xrp/).
+
+### ETF flow quality
+
+For the November 9 session, CryptoETF reports a partial 3/5 funds and −$10.3M, missing XRPZ and GXRP. CryptoKeyhole reports 3/4 daily-tracked funds, −9,216,553 XRP (about −$10.1M): Bitwise −8,594,551 XRP, Canary −427,341 XRP and 21Shares −194,660 XRP; Franklin XRPZ remained missing for November 9. Alpha Finance reports −$10.4M across five displayed funds. CryptoETF's detailed table says 3/5 while a summary elsewhere says 5/5; Alpha's five-fund total conflicts with issuer-file gaps visible in other trackers. These aggregators overlap the same issuer files and are not independent confirmations. Holdings reductions are not necessarily cash redemptions or exchange sales. ETF flows remain excluded from model admission; do not zero-fill or average.
+
+### XRPL governance and macro event cutoff
+
+XRPL Dashboard at 13:05 UTC, validated ledger 108239693: 98 amendments enabled, nine in-flight, zero in the 14-day activation countdown; 35/35 validators heard and 29 yes votes required. SingleAssetVault 23/29, LendingProtocol 22/29, LendingProtocolV1_1 22/29, ConfidentialTransfer 21/29, DynamicMPT 16/29, fixXChainRewardRounding 10/29, Sponsor 10/29, XChainBridge 4/29, CryptoConditionsSuite 0/29. Native XRPL lending remains inactive because both SingleAssetVault and LendingProtocol are below threshold. The official rule requires more than 80% trusted-validator support for 14 consecutive days. The curated dashboard identifies DIA as its production oracle provider; the broader XRPLWin directory has wider scope and lists additional oracle objects/providers. Preserve that scope disagreement and verify publisher/freshness; an oracle object does not prove collateral consumption.
+
+BLS October CPI and Real Earnings were scheduled for **13:30 UTC / 08:30 ET**. At the Run130 cutoff of 13:19:48 UTC, the October release was still future. The BLS page still displayed September CPI (+0.6% m/m headline, +0.3% m/m core, +3.7% y/y) and states the October release time. Fed Governor Christopher Waller said he would support at least a 25bp December hike even if October CPI cooled and said core CPI at 0.3% m/m or higher should prompt consideration of 50bp. Reuters reported approximately 85% futures-implied odds of a December hike; Barron's/LSEG reported 98% after Waller's remarks. These are different market-pricing snapshots; do not average. No October CPI result was inferred and no XRP direction was issued. [BLS](https://www.bls.gov/news.release/cpi.nr0.htm), [Reuters](https://www.reuters.com/business/feds-waller-plans-support-least-quarter-point-rate-hike-december-2026-11-10/).
+
+### Prediction and coordination status
+
+The integration branch contains 46 source definitions (42 hourly, two weekly CFTC, two excluded non-commercial XRPL nodes), read-only collection, SHA-256 receipt-chain logic, point-in-time SQLite feature-store prototype, four deterministic baselines, chronological walk-forward evaluation with purge/embargo, calibration/drift diagnostics and a fail-closed Ed25519-attested forecast ledger. Production readiness is not established: no successful main ingestion run, no independent WORM/timestamp authority, incomplete synchronized historical spot/L2/derivatives/flow/collateral coverage, no production evaluator key, no demonstrated out-of-sample lift or sufficient shadow outcomes.
+
+Nine-platform status is unchanged: ChatGPT current-session GitHub access verified; Copilot comment-only review; Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks lack verified persistent authenticated data flows. No external model received repository data.
+
+**Forecast status: NOT_ISSUED.** No paper trade, real-money action or external-model transfer occurred.
+
+### Backlog path-overlap audit
+
+The 372 open PRs were enumerated (356 drafts, 16 non-drafts). Path comparisons against #1640: #1642 7/7 overlapping; #1643 670 files with 663 unique; #1644 8/8; #1645 1/1; #1646 1/1; #1647 6/6; #1648 1/1; #1649 and #1650 each 1/1 on the same legacy dependency file; #1653 seven files with six unique; #1614 57 files with 49 unique; #1611 eight files with two unique; #1317 6/6; #1318 2/2; #1320 5/5; #1254/#1255 each one legacy dependency path; #1269 nine files with eight unique; #1655 eight files with three unique; #1659 six files with four unique; #1641 three unique paths. Path overlap is not by itself semantic equivalence. Preserve #1643, #1653, #1614, #1611, #1269, #1655, #1659 and #1641 unique work. Keep overlap candidates open until a verified successor merge; close no PRs now.
+
+### Merge decision and next action
+
+PR #1640 is technically green and mergeable, but remains **BLOCKED** by zero independent approvals, inaccessible effective branch-protection details and unresolved authorization for automatic GitHub Pages publication. Do not merge or bypass protection. Next actions: resolve approval/protection/publication authorization; after the BLS release, capture the official October CPI vintage with exact release time; preserve the one integration PR; keep scheduled ingestion off main until authorized; establish WORM/timestamp anchoring and synchronized historical data; do not issue forecasts until out-of-sample and shadow gates pass.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
