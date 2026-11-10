@@ -508,5 +508,117 @@
     "web_api_sha256_receipts_created": false,
     "reason": "This run's web retrieval exposed rendered API response text, not an exportable original HTTP transport body/header capture. The observations are research cross-checks, not admitted feature-store rows.",
     "next_step": "Run the repository's byte-capturing collector on main only after the mission workflow is authorized and merged; preserve provider event time, retrieval time, response headers, raw bytes, SHA-256 and receipt-chain manifest."
+  },
+  "stablecoin_rwa_payment_network": {
+    "captured_at_utc": "2026-11-10T11:57:00Z",
+    "rlusd": {
+      "onchain_dashboard": {
+        "total_circulating_usd": 2690000000,
+        "snapshot_label": "refreshed about 193 seconds before page capture",
+        "ethereum": {
+          "supply_usd": 1810000000,
+          "share_percent": 67.4,
+          "mints_24h_usd": 19400000,
+          "burns_24h_usd": 11910000
+        },
+        "xrpl": {
+          "supply_usd": 877660000,
+          "share_percent": 32.6,
+          "net_supply_change_24h_usd": 12540000
+        },
+        "total_net_supply_change_24h_usd": 20040000,
+        "feed_status": "LIVE_FEED_UNAVAILABLE; supply totals may be a few minutes stale",
+        "lineage": "Ethereum totalSupply/public RPC and Etherscan V2 token transfers; XRPL gateway_balances snapshot-diff. Dashboard says 24-hour net change was cross-checked against an independent RPC for 2026-11-09 finalized data.",
+        "integrity": "Ethereum-side data is explicitly not anchored in the dashboard's daily signed snapshot chain; current live feed unavailable.",
+        "source": "https://xrpldashboard.com/rlusd"
+      },
+      "issuer_transparency": {
+        "circulating_usd_as_of_2026_11_05": 2632900000,
+        "reserve_funds_usd_as_of_2026_11_05": 2748000000,
+        "implied_reserve_to_circulation_percent": 104.372,
+        "source": "https://ripple.com/products/stablecoin/transparency/",
+        "limitation": "The live page reports balances as of November 5. Its visible monthly attestation links extend through September 2026; do not label the November 5 balance as independently attested without the corresponding report."
+      },
+      "reconciliation": {
+        "dashboard_vs_issuer_displayed_circulation_difference_usd": 57100000,
+        "dashboard_vs_issuer_percent_of_issuer_value": 2.168,
+        "conclusion": "The difference may reflect growth since November 5, measurement timing or coverage; the dashboard live feed is unavailable and the issuer page has a dated balance. Do not treat the difference as a verified net mint or independent reconciliation."
+      },
+      "asset_classification": "RLUSD supply on XRPL is stablecoin supply, not XRP demand, XRP collateral or XRP bridge volume."
+    },
+    "xrpl_rwa": {
+      "dashboard_snapshot_age_minutes": 34,
+      "catalogued_issuer_families": 8,
+      "strict_two_way_toml_verified_families": 1,
+      "labeled_amm_families": 2,
+      "mpt_attested_families": 5,
+      "attributed_pools": 7,
+      "directly_attributed_amm_liquidity_usd": 438.73,
+      "attribution_set_last_updated": "2026-05-14",
+      "liquidity_assessment": "Nominal direct AMM liquidity; the dashboard describes institutional RWA activity as early phase. Attribution date is not a re-verification date.",
+      "ondofinance": {
+        "asset": "OUSG",
+        "status": "canonical issuer attested",
+        "standing_amm_liquidity": "none",
+        "note": "Institutional tokenized-Treasury presence and a reported cross-border redemption do not establish XRP as the settlement asset."
+      },
+      "excluded_or_pending_examples": [
+        "BlackRock vanity wallet is not treated as BlackRock-issued XRPL token; BUIDL is Ethereum-only via Securitize according to the dashboard.",
+        "Franklin Templeton sgBENJI lacks the required two-way issuer-domain attestation in the dashboard's review.",
+        "Archax remains pending; no issuer attestation was established in the cited check.",
+        "Aviva Investors remains pending until its issuer domain publishes a matching xrp-ledger.toml."
+      ],
+      "third_party_context": {
+        "rwa_xyz_snapshot_date": "2026-05-03",
+        "reported_total_usd": 3600000000,
+        "distributed_usd": 1000000000,
+        "represented_usd": 2600000000,
+        "classification": "third-party estimate; not current direct AMM liquidity and not independently measured by the dashboard"
+      },
+      "source": "https://xrpldashboard.com/rwa"
+    },
+    "institutional_payment_rails": [
+      {
+        "entity": "Ondo Finance / Kinexys by J.P. Morgan / Mastercard / Ripple",
+        "event_date": "2026-05-06",
+        "status": "completed transaction reported by Ondo",
+        "details": "Cross-border, cross-bank redemption of a tokenized U.S. Treasury fund; XRPL asset leg reported under five seconds; Kinexys settled USD proceeds to Ripple's bank account in Singapore.",
+        "xrp_bridge_use": "Not established; the asset was OUSG, not proof of XRP bridge conversion.",
+        "source": "https://www.prnewswire.com/news-releases/ondo-kinexys-by-jp-morgan-mastercard-and-ripple-complete-first-cross-border-cross-bank-redemption-of-tokenized-us-treasuries-302764324.html"
+      },
+      {
+        "entity": "Mastercard",
+        "event_date": "2026-06-03",
+        "status": "network-level expansion announced; rollout subject to regulation and partner implementation",
+        "details": "Plans to support regulated stablecoin card settlement including USDC, RLUSD, SoFiUSD and Paxos-issued stablecoins across Arbitrum, Base, Canton, Ethereum, Polygon, Solana, Tempo and XRPL. Named initial partners include ARQ, CBW Bank, Cross River, Lead Bank and Nuvei.",
+        "xrp_bridge_use": "Not established; RLUSD on XRPL is stablecoin settlement, not necessarily XRP bridge use.",
+        "source": "https://www.mastercard.com/global/en/news-and-trends/press/2026/june/mastercard-expands-settlement-capabilities-to-include-stablecoin.html"
+      },
+      {
+        "entity": "Ripple / Flutterwave",
+        "event_date": "2026-06-16",
+        "status": "strategic investment and product partnership announced",
+        "details": "Flutterwave says Ripple invested in its Series E (company valuation stated as $3.2B; Ripple amount undisclosed), with RLUSD planned for payment rails and Send App remittance corridors, XRPL for clearing and Ripple Payments API integration.",
+        "xrp_bridge_use": "Not established; RLUSD is the described settlement asset. Operational rollout was not independently verified in this run.",
+        "source": "https://flutterwave.com/us/blog/ripple-participates-in-flutterwaves-series-e-with-strategic-investment-to-accelerate-african-stablecoin-payments"
+      },
+      {
+        "entity": "Circle Ventures / Flutterwave",
+        "event_date": "2026-07-07",
+        "status": "strategic investment and USDC settlement expansion announced by Flutterwave",
+        "details": "Flutterwave says Circle Ventures invested and USDC settlement was added, while RLUSD remains the default stablecoin in its stablecoin product strategy, supported by Ripple Payments and XRPL.",
+        "xrp_bridge_use": "Not established; this is a multi-stablecoin, multi-rail arrangement, not an XRP conversion-volume disclosure.",
+        "source": "https://flutterwave.com/cm/blog/building-the-stablecoin-infrastructure-for-africa"
+      },
+      {
+        "entity": "SG-FORGE",
+        "event_date": "2026-02-18",
+        "status": "EUR CoinVertible launched on XRPL",
+        "details": "SG-FORGE says the launch is supported by Ripple custody and future collateral/trading-collateral use cases may be explored. XRPL Dashboard reports approximately EUR10M issued via gateway_balances.",
+        "xrp_bridge_use": "Not established; EURCV is a euro stablecoin, not XRP.",
+        "source": "https://www.sgforge.com/sgf-coinvertible-on-the-xrp-ledger/"
+      }
+    ],
+    "analytical_conclusion": "Institutional adoption on XRPL is increasingly stablecoin- and tokenized-asset-oriented. This can increase XRPL activity without creating equivalent XRP bridge demand. The current directly attributed AMM liquidity remains nominal, and several headline RWA names lack two-way issuer attestation."
   }
 }
