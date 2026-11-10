@@ -29,9 +29,9 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov"}
-ADAPTER_VERSION = "xrp-public-market-v3.21"
-PARSER_VERSION = "xrp-public-market-v3.20"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com"}
+ADAPTER_VERSION = "xrp-public-market-v3.22"
+PARSER_VERSION = "xrp-public-market-v3.21"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 HTTP_PROVENANCE_HEADER_NAMES = frozenset({
@@ -54,12 +54,24 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "bitbank_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "okx_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "bybit_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
+    "morpho_cbxrp_market_parameters": 3_600,
+    "morpho_cbxrp_market_state": 300,
+    "morpho_cbxrp_market_state_history": 3_600,
+    "morpho_cbxrp_oracle_state": 300,
+    "coinbase_cbxrp_proof_of_reserves": 3_600,
 }
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
 COINBASE_CANDLES_PER_REQUEST = 300
 MAX_COINBASE_BACKFILL_DAYS = 365
 MAX_COINBASE_BACKFILL_PAGES = 30
 COINBASE_BACKFILL_PAGE_DELAY_SECONDS = 0.5
+
+MORPHO_CBXRP_CHAIN_ID = 8453
+MORPHO_CBXRP_MARKET_ID = "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109"
+MORPHO_CBXRP_MARKET_SELECTOR = f"{MORPHO_CBXRP_CHAIN_ID}:{MORPHO_CBXRP_MARKET_ID}"
+MORPHO_CBXRP_LOAN_TOKEN_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS = "0xcb585250f852c6c6bf90434ab21a00f02833a4af"
+MORPHO_CBXRP_ORACLE_ADDRESS = "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde"
 
 WALK_FORWARD_HORIZON_SECONDS = {
     "1h": 3_600,
@@ -109,6 +121,11 @@ ENDPOINTS = (
     ("ripple_rlusd_transparency_dashboard", "https://ripple.com/products/stablecoin/transparency/"),
     ("xrpldashboard_rlusd_cross_chain_supply", "https://xrpldashboard.com/rlusd"),
     ("circle_usdc_transparency_dashboard", "https://www.circle.com/transparency"),
+    ("morpho_cbxrp_market_parameters", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109"),
+    ("morpho_cbxrp_market_state", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state"),
+    ("morpho_cbxrp_market_state_history", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state/history?lookback=thirty_days"),
+    ("morpho_cbxrp_oracle_state", "https://api.morpho.org/v0/oracles/8453:0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde/state"),
+    ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/en-us/cbxrp/proof-of-reserves"),
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
     ("xrpl_inftf_server_info", "https://xrplcluster.com/"),
@@ -134,6 +151,26 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "so retain the SHA-256 receipt only until permission is established."
     ),
     "xrp_etf_21shares_toxr_issuer_page": (
+        "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "morpho_cbxrp_market_parameters": (
+        "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "morpho_cbxrp_market_state": (
+        "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "morpho_cbxrp_market_state_history": (
+        "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "morpho_cbxrp_oracle_state": (
+        "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "coinbase_cbxrp_proof_of_reserves": (
         "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
         "so retain the SHA-256 receipt only until permission is established."
     ),
@@ -3662,6 +3699,171 @@ def _parse_cftc_tff(
     )
     return records, event_s, False, reason
 
+
+def _morpho_data(payload: Any, source_id: str) -> Mapping[str, Any]:
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("data"), Mapping):
+        raise XRPIngestionError(f"Morpho {source_id} response must contain a data object")
+    return payload["data"]
+
+
+def _morpho_uint(value: Any, field: str) -> int:
+    if isinstance(value, bool):
+        raise XRPIngestionError(f"Morpho {field} must be an unsigned integer")
+    if isinstance(value, int) and value >= 0:
+        return value
+    if isinstance(value, str) and re.fullmatch(r"[0-9]+", value.strip()):
+        return int(value.strip())
+    raise XRPIngestionError(f"Morpho {field} must be an unsigned integer")
+
+
+def _morpho_address(value: Any, field: str) -> str:
+    if isinstance(value, Mapping):
+        value = value.get("address")
+    if not isinstance(value, str) or not re.fullmatch(r"0x[0-9a-fA-F]{40}", value):
+        raise XRPIngestionError(f"Morpho {field} address is invalid")
+    return value.lower()
+
+
+def _morpho_market_identity(data: Mapping[str, Any], source_id: str, *, require: bool = True) -> None:
+    chain_value = data.get("chain_id", data.get("chainId"))
+    market_value = data.get("market_id", data.get("marketId", data.get("unique_key", data.get("id"))))
+    if chain_value is None and market_value is None:
+        if require:
+            raise XRPIngestionError(f"Morpho {source_id} market identity is incomplete")
+        return
+    if chain_value is not None and _morpho_uint(chain_value, f"{source_id} chain_id") != MORPHO_CBXRP_CHAIN_ID:
+        raise XRPIngestionError(f"Morpho {source_id} chain ID does not match Base")
+    if market_value is not None and (
+        not isinstance(market_value, str) or market_value.lower() != MORPHO_CBXRP_MARKET_ID
+    ):
+        raise XRPIngestionError(f"Morpho {source_id} market ID does not match cbXRP/USDC")
+    if require and (chain_value is None or market_value is None):
+        raise XRPIngestionError(f"Morpho {source_id} market identity is incomplete")
+
+
+def _raw_only_morpho_cbxrp_market_parameters(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate the immutable Base cbXRP/USDC market identity; retain only its digest receipt."""
+    data = _morpho_data(payload, source_id)
+    _morpho_market_identity(data, source_id, require=False)
+    loan_address = _morpho_address(data.get("loan_token", data.get("loanToken")), "loan token")
+    collateral_address = _morpho_address(data.get("collateral_token", data.get("collateralToken")), "collateral token")
+    oracle_address = _morpho_address(data.get("oracle_address", data.get("oracleAddress")), "oracle")
+    if loan_address != MORPHO_CBXRP_LOAN_TOKEN_ADDRESS:
+        raise XRPIngestionError("Morpho cbXRP market loan token is not Base USDC")
+    if collateral_address != MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS:
+        raise XRPIngestionError("Morpho market collateral token is not Coinbase cbXRP")
+    if oracle_address != MORPHO_CBXRP_ORACLE_ADDRESS:
+        raise XRPIngestionError("Morpho cbXRP market oracle address changed")
+    lltv = _morpho_uint(data.get("lltv_wad", data.get("lltvWad")), "LLTV")
+    if lltv != 625_000_000_000_000_000:
+        raise XRPIngestionError("Morpho cbXRP market LLTV is not the expected 62.5%")
+    return [], None, False, "morpho_immutable_market_parameters_raw_only_until_token_decimals_and_market_lineage_are_normalized"
+
+
+def _raw_only_morpho_cbxrp_market_state(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate current raw-unit supply/borrow state without promoting it to USD or XRP features."""
+    data = _morpho_data(payload, source_id)
+    _morpho_market_identity(data, source_id)
+    for field in (
+        "total_supply_assets", "total_borrow_assets",
+        "total_supply_shares", "total_borrow_shares",
+        "fee_wad", "last_indexed_block", "last_accrual_timestamp",
+    ):
+        _morpho_uint(data.get(field), field)
+    return [], None, False, "morpho_current_market_state_raw_only_until_token_units_and_indexer_block_time_are_normalized"
+
+
+def _raw_only_morpho_cbxrp_market_state_history(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate historical collateral totals and preserve the latest provider event timestamp."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("data"), list) or not payload["data"]:
+        raise XRPIngestionError("Morpho cbXRP market-state history must contain a non-empty data array")
+    params = payload.get("params")
+    if isinstance(params, Mapping):
+        _morpho_market_identity(params, source_id)
+    previous_timestamp = 0
+    latest_event = None
+    if payload.get("last_indexed_block") is not None:
+        _morpho_uint(payload["last_indexed_block"], "last_indexed_block")
+    for row in payload["data"]:
+        if not isinstance(row, Mapping):
+            raise XRPIngestionError("Morpho cbXRP market-state history row is invalid")
+        timestamp = _morpho_uint(row.get("timestamp"), "history timestamp")
+        if timestamp <= previous_timestamp:
+            raise XRPIngestionError("Morpho cbXRP market-state history timestamps are not strictly increasing")
+        if timestamp > int(captured.timestamp()) + 60:
+            raise XRPIngestionError("Morpho cbXRP market-state history contains a future event")
+        for field in (
+            "total_supply_assets", "total_borrow_assets",
+            "total_supply_shares", "total_borrow_shares",
+            "total_collateral_assets",
+        ):
+            _morpho_uint(row.get(field), field)
+        previous_timestamp = timestamp
+        latest_event = datetime.fromtimestamp(timestamp, tz=timezone.utc)
+    return [], latest_event, False, "morpho_market_state_history_raw_only_until_token_decimals_and_indexer_vintage_are_normalized"
+
+
+def _raw_only_morpho_cbxrp_oracle_state(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate the market oracle identity and retain its raw quote without assuming quote scale."""
+    data = _morpho_data(payload, source_id)
+    chain_value = data.get("chain_id", data.get("chainId"))
+    if chain_value is not None and _morpho_uint(chain_value, "oracle chain_id") != MORPHO_CBXRP_CHAIN_ID:
+        raise XRPIngestionError("Morpho cbXRP oracle chain ID does not match Base")
+    oracle_value = data.get("oracle_address", data.get("oracleAddress", data.get("address")))
+    if oracle_value is not None and _morpho_address(oracle_value, "oracle") != MORPHO_CBXRP_ORACLE_ADDRESS:
+        raise XRPIngestionError("Morpho cbXRP oracle address does not match the market configuration")
+    price = data.get("price")
+    if price is not None:
+        _morpho_uint(price, "oracle price")
+    updated = data.get("last_updated_at", data.get("lastUpdatedAt"))
+    source_as_of = None
+    if updated is not None:
+        if isinstance(updated, bool):
+            raise XRPIngestionError("Morpho oracle update timestamp is invalid")
+        if isinstance(updated, (int, float)) or (isinstance(updated, str) and updated.isdigit()):
+            source_as_of = datetime.fromtimestamp(int(updated), tz=timezone.utc)
+        elif isinstance(updated, str):
+            try:
+                parsed = datetime.fromisoformat(updated.replace("Z", "+00:00"))
+            except ValueError:
+                raise XRPIngestionError("Morpho oracle update timestamp is invalid") from None
+            if parsed.tzinfo is None:
+                raise XRPIngestionError("Morpho oracle update timestamp must include a timezone")
+            source_as_of = parsed.astimezone(timezone.utc)
+        else:
+            raise XRPIngestionError("Morpho oracle update timestamp is invalid")
+        if source_as_of > captured + timedelta(seconds=60):
+            raise XRPIngestionError("Morpho oracle update timestamp is later than capture time")
+    return [], source_as_of, False, "morpho_oracle_state_raw_only_until_quote_scale_and_update_timestamp_semantics_are_normalized"
+
+
+def _raw_only_coinbase_cbxrp_proof_of_reserves(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate Coinbase's cbXRP 1:1 reserve page; never infer a UTC event time from locale labels."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("Coinbase cbXRP proof-of-reserves response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = (
+        "cbxrp proof of reserves",
+        "backed 1:1 by xrp held by coinbase",
+        "total reserve",
+        "total supply",
+        "supply by network",
+    )
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("Coinbase cbXRP proof-of-reserves identity or reserve markers are missing")
+    return [], None, False, "coinbase_cbxrp_proof_of_reserves_raw_only_until_locale_refresh_timezone_and_cache_semantics_are_verified"
+
+
 PARSERS = {
     "xrpl_inftf_server_info": _parse_xrpl_server_info,
     "xrpl_honeycluster_server_info": _parse_xrpl_server_info,
@@ -3701,6 +3903,11 @@ PARSERS = {
     "ripple_rlusd_transparency_dashboard": _raw_only_ripple_rlusd_transparency_page,
     "xrpldashboard_rlusd_cross_chain_supply": _raw_only_xrpldashboard_rlusd_page,
     "circle_usdc_transparency_dashboard": _raw_only_circle_transparency_page,
+    "morpho_cbxrp_market_parameters": _raw_only_morpho_cbxrp_market_parameters,
+    "morpho_cbxrp_market_state": _raw_only_morpho_cbxrp_market_state,
+    "morpho_cbxrp_market_state_history": _raw_only_morpho_cbxrp_market_state_history,
+    "morpho_cbxrp_oracle_state": _raw_only_morpho_cbxrp_oracle_state,
+    "coinbase_cbxrp_proof_of_reserves": _raw_only_coinbase_cbxrp_proof_of_reserves,
     "cftc_contract_status_index": _parse_cftc_contract_status_index,
     "cftc_tff_financial_futures": _parse_cftc_tff,
 }
@@ -3934,7 +4141,7 @@ def _walk_forward_report(
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
         return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "cftc_contract_status_index", "cftc_tff_financial_futures"}:
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures"}:
         return fetch_public_html(source_id, url)
     if source_id == "xrp_etf_flows_csv":
         return fetch_public_csv(source_id, url)

@@ -340,6 +340,68 @@ def _fake_fetcher(captured: datetime):
                 "definition": "XRP held in XRP Ledger wallets publicly attributed to tracked exchanges (hot, deposit and cold wallets). Not an estimate of tradable float.",
                 "methodology": "Balances: rippled account_info on the validated ledger for every tracked wallet, daily at ~08:00 UTC. Attribution: XRPSCAN public labels only (XRPSCAN balances are never used).",
             }
+        elif source_id == "morpho_cbxrp_market_parameters":
+            payload = {
+                "data": {
+                    "chain_id": 8453,
+                    "market_id": xrp_ingestion.MORPHO_CBXRP_MARKET_ID,
+                    "loan_token": {"address": xrp_ingestion.MORPHO_CBXRP_LOAN_TOKEN_ADDRESS},
+                    "collateral_token": {"address": xrp_ingestion.MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS},
+                    "oracle_address": xrp_ingestion.MORPHO_CBXRP_ORACLE_ADDRESS,
+                    "lltv_wad": "625000000000000000",
+                }
+            }
+        elif source_id == "morpho_cbxrp_market_state":
+            payload = {
+                "data": {
+                    "chain_id": 8453,
+                    "market_id": xrp_ingestion.MORPHO_CBXRP_MARKET_ID,
+                    "total_supply_assets": "66300000000000",
+                    "total_borrow_assets": "58300000000000",
+                    "total_supply_shares": "65000000000000",
+                    "total_borrow_shares": "57000000000000",
+                    "fee_wad": "0",
+                    "last_indexed_block": "40855874",
+                    "last_accrual_timestamp": str(int(captured.timestamp()) - 5),
+                }
+            }
+        elif source_id == "morpho_cbxrp_market_state_history":
+            captured_seconds = int(captured.timestamp())
+            payload = {
+                "params": {
+                    "chain_id": "8453",
+                    "market_id": xrp_ingestion.MORPHO_CBXRP_MARKET_ID,
+                },
+                "last_indexed_block": "40855874",
+                "data": [
+                    {
+                        "timestamp": captured_seconds - 7200,
+                        "total_supply_assets": "66000000000000",
+                        "total_borrow_assets": "58000000000000",
+                        "total_supply_shares": "64700000000000",
+                        "total_borrow_shares": "56700000000000",
+                        "total_collateral_assets": "120600000000000",
+                    },
+                    {
+                        "timestamp": captured_seconds - 3600,
+                        "total_supply_assets": "66300000000000",
+                        "total_borrow_assets": "58300000000000",
+                        "total_supply_shares": "65000000000000",
+                        "total_borrow_shares": "57000000000000",
+                        "total_collateral_assets": "120800000000000",
+                    },
+                ],
+            }
+        elif source_id == "morpho_cbxrp_oracle_state":
+            payload = {
+                "data": {
+                    "chain_id": 8453,
+                    "oracle_address": xrp_ingestion.MORPHO_CBXRP_ORACLE_ADDRESS,
+                    "price": "1097820000000000000000000000000000000",
+                    "last_updated_at": captured.isoformat().replace("+00:00", "Z"),
+                    "last_indexed_block": "40855874",
+                }
+            }
         elif source_id in XRPL_NODE_SOURCES:
             payload = {
                 "result": {
@@ -409,6 +471,7 @@ def _fake_fetcher(captured: datetime):
             "ripple_rlusd_transparency_dashboard",
             "xrpldashboard_rlusd_cross_chain_supply",
             "circle_usdc_transparency_dashboard",
+            "coinbase_cbxrp_proof_of_reserves",
             "cftc_contract_status_index",
             "cftc_tff_financial_futures",
         }:
@@ -422,6 +485,7 @@ def _fake_fetcher(captured: datetime):
                 "ripple_rlusd_transparency_dashboard": "<html><title>Ripple USD Transparency</title><h1>Ripple USD (RLUSD)</h1><h2>Total Circulating RLUSD</h2><p>RLUSD Reserve Funds</p><p>As of 11/05/2026</p></html>",
                 "xrpldashboard_rlusd_cross_chain_supply": "<html><title>RLUSD cross-chain supply</title><h1>RLUSD</h1><p>Ethereum</p><p>XRP Ledger</p><p>Snapshot</p></html>",
                 "circle_usdc_transparency_dashboard": "<html><title>Transparency and stability</title><h1>USDC</h1><p>EURC</p><p>Reserves</p><p>As of Nov 05, 2026</p></html>",
+                "coinbase_cbxrp_proof_of_reserves": "<html><title>Coinbase cbXRP Proof of Reserves</title><p>cbXRP is a wrapped token backed 1:1 by XRP held by Coinbase.</p><h2>Total reserve</h2><p>152372342.33 XRP</p><h2>Total supply</h2><p>152370095.80 cbXRP</p><h2>Supply by network</h2><p>Base</p><p>XRP/cbXRP data refreshed at 11/10/2026, 5:09 AM</p></html>",
                 "cftc_contract_status_index": """<html><body>
 <h2>New Futures Markets Added This Week</h2>
 <table><tr><td>123456</td><td>EXAMPLE NEW FUTURE</td></tr></table>
@@ -1251,8 +1315,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 40
-    assert len(SCHEDULED_ENDPOINTS) == 36
+    assert len(ENDPOINTS) == 45
+    assert len(SCHEDULED_ENDPOINTS) == 41
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -2706,3 +2770,94 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
         for source in record["sources"]
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
+
+@pytest.mark.parametrize(
+    ("source_id", "host"),
+    [
+        ("morpho_cbxrp_market_parameters", "api.morpho.org"),
+        ("morpho_cbxrp_market_state", "api.morpho.org"),
+        ("morpho_cbxrp_market_state_history", "api.morpho.org"),
+        ("morpho_cbxrp_oracle_state", "api.morpho.org"),
+        ("coinbase_cbxrp_proof_of_reserves", "www.coinbase.com"),
+    ],
+)
+def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admitted(source_id, host):
+    captured = datetime(2026, 11, 10, 8, 0, tzinfo=timezone.utc)
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        response["payload"], source_id=source_id, url=url, digest="e" * 64, captured=captured
+    )
+    assert host in ALLOWED_HOSTS
+    assert source_id in dict(SCHEDULED_ENDPOINTS)
+    assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
+    assert records == []
+    assert eligible is False
+    assert "raw_only" in reason
+    assert len(ENDPOINTS) == 45
+    assert len(SCHEDULED_ENDPOINTS) == 41
+
+
+def test_morpho_market_history_preserves_provider_event_time_and_collateral_total_without_feature_admission():
+    captured = datetime(2026, 11, 10, 8, 0, tzinfo=timezone.utc)
+    source_id = "morpho_cbxrp_market_state_history"
+    url = dict(ENDPOINTS)[source_id]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        payload, source_id=source_id, url=url, digest="e" * 64, captured=captured
+    )
+    assert source_as_of == datetime.fromtimestamp(int(captured.timestamp()) - 3600, tz=timezone.utc)
+    assert records == []
+    assert eligible is False
+    assert "raw_only" in reason
+
+
+def test_morpho_market_parameters_reject_wrong_collateral_token():
+    captured = datetime(2026, 11, 10, 8, 0, tzinfo=timezone.utc)
+    source_id = "morpho_cbxrp_market_parameters"
+    url = dict(ENDPOINTS)[source_id]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    payload["data"]["collateral_token"]["address"] = "0x1111111111111111111111111111111111111111"
+    with pytest.raises(XRPIngestionError, match="collateral token"):
+        PARSERS[source_id](payload, source_id=source_id, url=url, digest="e" * 64, captured=captured)
+
+
+def test_morpho_market_history_rejects_missing_aggregate_collateral_total():
+    captured = datetime(2026, 11, 10, 8, 0, tzinfo=timezone.utc)
+    source_id = "morpho_cbxrp_market_state_history"
+    url = dict(ENDPOINTS)[source_id]
+    payload = _fake_fetcher(captured)(source_id, url)["payload"]
+    payload["data"][0].pop("total_collateral_assets")
+    with pytest.raises(XRPIngestionError, match="total_collateral_assets"):
+        PARSERS[source_id](payload, source_id=source_id, url=url, digest="e" * 64, captured=captured)
+
+
+def test_coinbase_cbxrp_proof_of_reserves_rejects_unrelated_html():
+    source_id = "coinbase_cbxrp_proof_of_reserves"
+    url = dict(ENDPOINTS)[source_id]
+    with pytest.raises(XRPIngestionError, match="identity or reserve markers"):
+        PARSERS[source_id](
+            {"html_text": "<html><title>Coinbase</title><p>Markets</p></html>"},
+            source_id=source_id, url=url, digest="e" * 64,
+            captured=datetime(2026, 11, 10, 8, 0, tzinfo=timezone.utc),
+        )
+
+
+def test_scheduled_cbxrp_sources_write_digest_receipts_without_retaining_raw_payload(tmp_path):
+    captured = datetime(2026, 11, 8, 12, 0, tzinfo=timezone.utc)
+    output = tmp_path / "cbxrp-collateral"
+    summary = run_ingestion(output, fetcher=_fake_fetcher(captured), now=captured)
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS)
+    receipts = json.loads((output / "receipt_manifest.json").read_text(encoding="utf-8"))
+    source_ids = {
+        "morpho_cbxrp_market_parameters",
+        "morpho_cbxrp_market_state",
+        "morpho_cbxrp_market_state_history",
+        "morpho_cbxrp_oracle_state",
+        "coinbase_cbxrp_proof_of_reserves",
+    }
+    selected = [item for item in receipts if item["source_id"] in source_ids]
+    assert len(selected) == 5
+    assert all(item["raw_bytes_retained"] is False for item in selected)
+    assert all(len(item["raw_content_sha256"]) == 64 for item in selected)
+    assert all(item["model_eligible_source"] is False for item in selected)
