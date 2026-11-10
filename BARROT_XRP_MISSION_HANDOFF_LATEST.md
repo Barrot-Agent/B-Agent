@@ -5298,3 +5298,38 @@ Evidence:
 - [Fail-closed gate 42882833966](https://github.com/Barrot-Agent/B-Agent/actions/runs/42882833966)
 
 Run139A structured evidence: [research/xrp_intelligence/20261110T191434Z-run139a-public-signal-market-refresh.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261110/research/xrp_intelligence/20261110T191434Z-run139a-public-signal-market-refresh.json).
+
+
+---
+
+## Run139B — institutional rails and actual-capital reconciliation
+
+**Captured:** 2026-11-10T19:17:57Z. Main remained `e35f3d16b842d0f75847dd4bb0b51531f38c5f38`; integration head before this addendum was `7e4a9605948cc4e343e9439de05a7fe5e170a00f`.
+
+### New primary-source institutional findings
+
+1. **C2FO–Ripple Instant Pay (October 27):** C2FO's own release confirms an initiative to place financing/settlement activity on XRPL using RLUSD. Participating capital providers fund early payment; suppliers are intended to receive funds in seconds. C2FO's live product page still shows a waitlist and limited U.S. rollout over the coming months. There is no disclosed provider identity, committed funding amount, live XRPL throughput or XRP bridge requirement. [C2FO primary announcement](https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/) · [C2FO Instant Pay rollout page](https://c2fo.com/instant-pay/).
+
+   C2FO says its existing Early Pay programs have supported more than $525B of historical working capital. That is platform-wide historical activity, not C2FO Instant Pay volume, not capital invested in XRP, and not Ripple financing. RLUSD is the announced settlement asset; XRP is not identified as the bridge asset.
+
+2. **Coinbase–Ripple RLUSD distribution (October 28):** Coinbase confirms RLUSD is live for supported regions on Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals on XRPL, Base and Ethereum and 1:1 USD conversion. Coinbase Global Exchange customer availability and RLUSD collateral use were explicitly future scope at launch. [Coinbase primary announcement](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase).
+
+3. **Ripple–Robinhood (October 27):** RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; app distribution was expected later. Robinhood plans RLUSD use on XRPL for institutional settlement, Ripple Treasury for its own operations and Ripple Prime financing/market access through Bitstamp. No XRP bridge volume or proprietary XRP purchases are quantified. [Ripple primary announcement](https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/).
+
+4. **Ripple–BNY–C2FO:** BNY now supports XRP and RLUSD on its Digital Asset Custody platform. Direct RLUSD mint/redeem through BNY, broader tokenized XRPL assets and the C2FO supply-chain-finance initiative remain future/exploratory scope subject to approvals and client requirements. XRP custody support is confirmed; balances and proprietary purchases are not disclosed. [BNY primary announcement](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+
+5. **PNC–Coinbase–Circle:** Reuters reports a limited corporate/institutional pilot in which eligible PNC clients receive Circle USDC, automatically converted to USD, using Coinbase infrastructure. This is a competing USDC rail, not an XRP corridor. [Reuters, November 9](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/).
+
+### Company-reported scale versus actual capital
+
+Ripple's October 28 release reports a $900M annualized product-revenue run rate, $16T of transactions enabled across products in 2025, 60+ payout markets, Ripple Payments lifetime volume approaching $150B by year-end, 1,700+ institutions/corporates/enterprises, 85+ licenses and RLUSD market capitalization around $2.6B. These are company-reported metrics, not independently audited in this review. The $900M run rate is not cash raised or realized annual revenue; $16T is all-product transaction value, not XRP volume; $150B is Ripple Payments lifetime volume, not XRP on-ledger volume; RLUSD market capitalization is not XRP capital. [Ripple primary release, October 28](https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/).
+
+**Actual-capital conclusion:** no new XRP purchase amount, XRP treasury contribution, C2FO capital-provider commitment or institutional XRP settlement volume was verified. Keep cash received, XRP purchased, in-kind XRP, drawn debt, contingent capacity, stablecoin reserves, custody balances and secondary resales separate.
+
+### Prediction and integration status
+
+- Forecast remains **NOT_ISSUED**. Announced RLUSD/XRPL use cases are not XRP-demand features unless actual XRP bridge use, fees, settlement volumes or liquidity requirements are independently observed.
+- PR #1660 remains open. Latest head before this addendum: `7e4a9605948cc4e343e9439de05a7fe5e170a00f`, 1,920 commits ahead/zero behind, 954 changed files. Core CI, six-manifest dependency audit and fail-closed gate passed; the full-suite job was still running at the last check. The preceding exact head `7887781fae4bba90b51fff86d59be7e5a8f79457` completed 3,363 tests, eight subtests, 59.58% coverage and installed-wheel verification.
+- No approval, merge, main write, deployment, paper trade or real-money action occurred.
+
+Run139B structured evidence: [research/xrp_intelligence/20261110T191757Z-run139b-institutional-rails-actual-capital-reconciliation.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261110/research/xrp_intelligence/20261110T191757Z-run139b-institutional-rails-actual-capital-reconciliation.json).
