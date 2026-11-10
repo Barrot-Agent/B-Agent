@@ -3299,3 +3299,31 @@ Primary source: [BOJ Summary of Opinions, October 29–30 meeting](https://www.b
 Reuters' November 10 report of approximately ¥1T additional annual proceeds remains a separate estimate; the amount ultimately remitted to government depends on year-end calculations and budget procedures. [Reuters](https://www.reuters.com/world/asia-pacific/boj-estimates-6-billion-annual-gain-from-faster-etf-sales-finance-minister-says-2026-11-10/).
 
 This reinforces the distinction between central-bank asset sales, market-value supply, book-value accounting and fiscal remittances. None is an XRP flow.
+
+
+## Run 129F — final integration-head verification
+
+The exact current integration head immediately before this handoff refresh was `f8b0be54158191c279c14947d14299c5a58a3fa7`.
+
+<badge>VERIFIED</badge>
+
+- Full repository suite: **1,371 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.58%**; required floor 53%.
+- Core suite: **677 passed, eight subtests passed**.
+- Wheel build and installed-wheel verification passed.
+- Barrot V3, primary XRP mission and canonical package assets loaded from the installed wheel.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge remains disabled.
+
+Exact-head evidence:
+- Full CI [42814368237](https://github.com/Barrot-Agent/B-Agent/actions/runs/42814368237).
+- Dependency audit [42814368174](https://github.com/Barrot-Agent/B-Agent/actions/runs/42814368174).
+- Fail-closed gate [42814368064](https://github.com/Barrot-Agent/B-Agent/actions/runs/42814368064).
+
+The Run129 implementation changes are therefore verified on `f8b0be`. This handoff-only update creates a documentation descendant; its own PR synchronization checks must be inspected before any merge. The current PR description was refreshed with the exact-head evidence and Run129 findings.
+
+Current PR #1640 state at `f8b0be`: open, non-draft, GitHub reports mergeable, 953 commits ahead / zero behind, 260 changed files, 125,245 additions and 3,555 deletions. There are 62 COMMENTED review submissions, zero approvals, and 22 resolved-but-outdated inline threads.
+
+Main remains `d4d43be3427375cf79d190e768976de062e20287`. Main is reported protected, but detailed required-review protection returns HTTP 403, visible required status contexts are empty and the fallback ruleset is disabled. GitHub Pages previously deployed after a main push; authorization for another automatic public publication is not established.
+
+No merge or deployment was performed. No source PRs were closed. The XRP mission manifest and scheduled read-only collector remain on the integration branch, not main. Forecast status remains `NOT_ISSUED`.
