@@ -673,5 +673,65 @@
       }
     ],
     "analytical_conclusion": "Institutional adoption on XRPL is increasingly stablecoin- and tokenized-asset-oriented. This can increase XRPL activity without creating equivalent XRP bridge demand. The current directly attributed AMM liquidity remains nominal, and several headline RWA names lack two-way issuer attestation."
+  },
+  "macro": {
+    "fed": {
+      "official_target_range_percent": [
+        3.75,
+        4
+      ],
+      "official_source": "https://www.federalreserve.gov/FOMC/fundsrate.htm",
+      "market_pricing": [
+        {
+          "provider": "Fisclear",
+          "updated_at_local": "2026-11-10 06:31 ET",
+          "next_meeting": "2026-12-08/09",
+          "market_implied_probability_of_25bp_hike_percent": 99,
+          "implied_mid_rate_percent": 4.12,
+          "underlying": "30-Day Fed Funds Futures (CME)",
+          "source": "https://fisclear.com/fed-watch"
+        },
+        {
+          "provider": "RateProbability",
+          "snapshot": "2026-11-10 00:00 (page says cached)",
+          "next_meeting": "2026-12-09",
+          "market_implied_probability_of_25bp_hike_percent": 84.8,
+          "underlying": "Kalshi prediction-market prices",
+          "source": "https://rateprobability.com/fed"
+        }
+      ],
+      "disagreement": "The 99% and 84.8% readings use different instruments, update times and providers (CME fed-funds futures versus Kalshi). Do not average. Both are market-implied prices, not a Fed forecast."
+    },
+    "boj": {
+      "policy_rate_percent": 1.25,
+      "decision_date": "2026-10-30",
+      "vote": "8-1; dissenting member proposed 1.50%",
+      "annual_etf_sales_book_value_yen_before": 330000000000,
+      "annual_etf_sales_book_value_yen_after": 860000000000,
+      "implementation_start": "2027-01",
+      "estimated_market_value_sales_yen_per_year": 2460000000000,
+      "source": "https://www.oanda.jp/lab-education/market_news/boj-oct-2026-review/",
+      "additional_proceeds_estimate_yen_per_year": 1000000000000,
+      "additional_proceeds_source": "https://www.reuters.com/world/asia-pacific/boj-estimates-6-billion-annual-gain-from-faster-etf-sales-finance-minister-says-2026-11-10/",
+      "limitation": "The approximately ¥1T additional annual proceeds figure is a BOJ estimate reported by the finance minister; the amount ultimately remitted to government depends on fiscal-year calculations and budget procedures. BOJ operations remain its independent legal responsibility."
+    },
+    "geopolitics": {
+      "event": "US-Iran de-escalation signals; Strait of Hormuz shipping not fully normalized",
+      "date": "2026-11-10",
+      "observations": [
+        {
+          "publisher": "Financial Times",
+          "observation": "Brent briefly fell to approximately $89.21 before recovering near $91.25; article reports a greater than 22% November decline and says no formal US-Iran agreement or full shipping normalization had occurred.",
+          "source": "https://www.ft.com/content/07bdb58c-4557-4def-b8cb-db9be304fd72"
+        },
+        {
+          "publisher": "The Guardian",
+          "observation": "Brent fell nearly 3% to approximately $89.66 on November 10; markets welcomed reduced escalation expectations while analysts cautioned that inflation and supply risks remained.",
+          "source": "https://www.theguardian.com/business/2026/nov/10/oil-prices-fall-donald-trump-iran-war-ftse-100-markets"
+        }
+      ],
+      "interpretation": "Lower oil can ease headline inflation pressure and risk premia, but Hormuz shipping normalization and a formal agreement are unconfirmed. This is a macro regime feature candidate, not a direct XRP catalyst or directional signal."
+    },
+    "cutoff_interpretation": "At the 2026-11-10T12:00Z research cutoff, the October U.S. CPI/Real Earnings release scheduled for 13:30Z had not yet occurred. No result is inferred."
   }
 }
