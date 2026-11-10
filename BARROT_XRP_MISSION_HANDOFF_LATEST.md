@@ -1,3 +1,153 @@
+# Barrot XRP Mission — Run122: SBI Bond Capital, Doppler MOU, XRP Tokyo Claims and Creator Attribution
+
+**Research cutoff: approximately 2026-11-10 06:55 UTC.** This addendum preserves Run121 and adds primary-source corrections. Run121's exact-head verification is complete; this Run122 documentation/research descendant requires its own exact-head CI.
+
+## Run121 exact-head verification
+
+Tested code head: `dd6abfd9fcf6196a2af0c4c10b7c186c6002423a`.
+
+- Full repository suite: **1,347 passed, zero failed, 8 subtests passed**.
+- Inclusive coverage: **59.48%**, above the 53% floor.
+- Core suite: 677 passed, 8 subtests passed.
+- Complete development dependencies installed; all repository tests executed.
+- Wheel built and installed; installed package verified Barrot V3, the XRP mission and canonical data assets.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Evidence: [Full CI 42771039298](https://github.com/Barrot-Agent/B-Agent/actions/runs/42771039298), [dependency audit 42771039251](https://github.com/Barrot-Agent/B-Agent/actions/runs/42771039251), [fail-closed gate 42771039703](https://github.com/Barrot-Agent/B-Agent/actions/runs/42771039703).
+
+Run122's new commit is a different head; verify it independently.
+
+## SBI START Bonds — actual capital versus XRP reward
+
+SBI Holdings' official product and issuance disclosures establish:
+
+- **¥10 billion** issue amount; the SBI Securities product page says the bond is sold out.
+- Three-year unsecured security-token bond, issued **2026-03-24**, maturity **2029-03-23**.
+- Final annual coupon **2.150% pre-tax**; ordinary coupon and principal repayment remain conventional yen bond obligations.
+- The security token is issued/managed on **BOOSTRY's ibet for Fin** platform and handled on Osaka Digital Exchange's **START** PTS. It is not issued on XRPL and is not XRP-denominated.
+- Qualified domestic-resident individual/corporate subscribers who purchased at least ¥100,000 and completed SBI VC Trade receipt requirements were eligible for a **¥200-equivalent XRP benefit per ¥100,000 subscribed** (0.2%), scheduled by May 15, 2026.
+- XRP quantity is calculated using SBI VC Trade's selling price at **2026-05-13 06:59 JST**.
+- SBI Securities explicitly says the XRP benefit is separate from the regular coupon and does **not** imply XRP will be granted with each interest payment. Benefits for the 2027, 2028 and 2029 interest dates were undecided in the February 20 disclosure and may differ or not be provided.
+
+If every yen of the ¥10B issue had qualified, the theoretical maximum for the initial 0.2% benefit would be **¥20M equivalent**. Actual eligible principal and total XRP distributed were not disclosed in the reviewed pages.
+
+**Capital classification:** ¥10B is debt capital raised by SBI Holdings. The XRP benefit is a conditional investor incentive, not an XRP purchase, XRP-denominated coupon, XRP collateral allocation or ¥10B XRP inflow. Do not count the bond proceeds as XRP demand.
+
+Primary sources: [SBI Holdings issuance notice, February 20, 2026](https://www.sbigroup.co.jp/english/news/pdf/2026/0220_a_en.pdf); [SBI Securities official product page](https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html).
+
+## SBI Ripple Asia / Doppler — correct entity and scope
+
+Doppler Finance's December 17, 2025 announcement says **SBI Ripple Asia** and Doppler signed an MOU to explore XRP-based yield infrastructure and RWA tokenization on XRPL. It identifies **SBI Digital Markets**, a MAS-regulated digital-asset entity, as institutional custodian for the initiative.
+
+This corrects the previously repeated “SBI Digital Finance + Doppler” description:
+
+- Named MOU parties: **SBI Ripple Asia and Doppler Finance**.
+- Named custodian: **SBI Digital Markets**.
+- These are not interchangeable with SBI Holdings, SBI VC Trade or SBI Digital Finance.
+- The source is Doppler's own announcement; no separate SBI co-published release was located in this check.
+- The MOU is exploratory. No launched product, committed AUM, XRP balance, client count, revenue, capital amount or production volume was disclosed.
+
+The official XRP Tokyo 2026 agenda independently lists a Doppler Finance institutional-adoption keynote at 15:35 on April 7, 2026. [Doppler announcement](https://blog.doppler.finance/blog/sbi-ripple-asia-partners-with-doppler-finance-for-xrp-yield-and-rwa-tokenization).
+
+## XRP Tokyo 2026 — primary agenda versus the 60% / four-second claims
+
+The official April 7, 2026 agenda confirms the event, speakers and sessions:
+
+- 11:05: stablecoins/tokenized-deposit panel with SBI VC Trade, HashPort, JPYC and Rakuten Wallet.
+- 11:40: Evernorth COO Meg Nakamura, “When Capital Commits”.
+- 11:55: institutional blockchain adoption panel with GMO Aozora Bank, HashHub and Fireblocks Japan.
+- 12:30: web3 investment/global expansion panel including Evernorth, SBI Ripple Asia and a16z.
+- 13:00: tokenized tourism payments with SBI Ripple Asia and Tobu Top Tours.
+- 13:25: SBI VC Trade keynote on RLUSD.
+- 15:35: Doppler Finance keynote on institutional XRPL adoption.
+
+The official agenda does **not** publish a 60% SWIFT-cost reduction, sub-four-second bank-pilot result, named participating remittance banks or a list of twelve new ODL currency pairs. The 60% / under-four-second / twelve-pair narrative appears in secondary articles, including DailyCoin and 24/7 Wall St, without the underlying bank data, named corridor participants, comparison methodology or a primary Ripple/SBI announcement in the reviewed sources.
+
+This is a **source-quality downgrade**, not proof that no private pilot occurred. The event's institutional-adoption panel is real; the specific numerical performance claims remain **UNVERIFIED** and must not be admitted as measured corridor performance or XRP demand.
+
+Primary event source: [XRP Tokyo 2026 official agenda](https://www.xrp-tokyo.io/agenda). Secondary claims: [DailyCoin, April 14](https://dailycoin.com/japanese-banks-report-60-cost-savings-using-xrp-over-swift/), [24/7 Wall St, April 10](https://247wallst.com/investing/2026/04/10/xrp-news-ripples-japanese-bank-pilots-just-showed-60-cost-savings-using-xrp-over-swift/).
+
+## Kamilah Stevenson — channel-level YouTube inventory
+
+The official finance-education site identifies Dr. Kamilah Stevenson as “The Wealth Doctor” and describes a finance/investing education brand with more than 20 years of experience and 2,000+ client transformations. YouTube search results directly attribute the following videos to a channel named **Kamilah Stevenson**, with 137K–140K followers and a matching wealth-building/investing description:
+
+| Published | Video | YouTube ID | Views / likes in indexed result |
+|---|---|---|---|
+| 2025-12-03 | XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea) | `Gy4BuGhAWE8` | 21,568 views; likes not returned |
+| 2026-03-06 | Something Just Broke in Global Finance — And It's Connected to XRP | `iwhpNT73zpk` | 32,040 / 2,300 |
+| 2026-08-25 | More Than 100 Million XRP Was Moved Into Flare's FXRP System — And XRP Holders Did It Voluntarily | `qtT2hLeFkM0` | 89,042 / 2,700 |
+| 2026-09-13 | The CLARITY Act Is Not XRP's Biggest Event This Week | `Wa0Teymjaks` | 19,984 / 1,131 |
+
+Direct YouTube references: [Gy4BuGhAWE8](https://www.youtube.com/watch?v=Gy4BuGhAWE8), [iwhpNT73zpk](https://www.youtube.com/watch?v=iwhpNT73zpk), [qtT2hLeFkM0](https://www.youtube.com/watch?v=qtT2hLeFkM0), [Wa0Teymjaks](https://www.youtube.com/watch?v=Wa0Teymjaks).
+
+Attribution standard: these are direct YouTube search-result bylines, so the **channel-level uploader attribution** is verified. The official Wealth Doctor site and the channel's finance-coaching language strongly corroborate the same public creator brand. A direct official-site-to-channel cross-link was not found. Third-party directories list many near-identical Kamilah/Dr Kamilah accounts and copied bios; the `@drkamilahstevenson` handle candidate is listed at about 138K subscribers, but smaller lookalike channels are not treated as affiliated. Do not merge all similarly named accounts.
+
+No “Camilla Stevenson” identity was independently verified as a separate creator. “Good Evening Crypto” show-host attributions are not counted as uploads on Kamilah's personal channel. BitPeaks-only titles without a direct YouTube ID remain candidates, not verified inventory.
+
+Identity sources: [official Wealth Doctor site](https://learn.kamilahstevenson.com/), [YouTube search result for the CLARITY Act video](https://www.youtube.com/watch?v=Wa0Teymjaks), [third-party profile directory](https://www.idcrawl.com/kamilah-stevenson). The directory is a lead source, not identity proof.
+
+## Exact-phrase research status
+
+- **“SBIC, ChatGPT SBIC”:** no direct exact-phrase match. Tokyo SBIC's official training page includes ChatGPT and Copilot instruction for investee companies; this is training, not an OpenAI partnership. Japan's SBIC East/Central/West remain distinct from SBI Holdings.
+- **“ASK Coin”:** unresolved. Permission Coin's ASK and an inactive Ask Coin exchange listing are separate candidates; neither has a verified XRP integration.
+- **“actual capital”:** no standardized XRP metric. Keep cash subscriptions, in-kind XRP, debt proceeds, drawn facilities, contingent equity capacity, secondary resales and token rewards in separate categories. The SBI START Bond correction above is a concrete example.
+
+## ETF-flow source conflict — downgrade November 9 partial
+
+Run120/Run121 recorded a CryptoKeyhole snapshot at 06:12 UTC showing three issuer files and a partial −9,216,553 XRP estimate for November 9. A later search-index result for the same CryptoKeyhole page says **none of its four daily-tracked funds had published a November 9 file**, with November 6 still the latest complete day (−752,048 XRP / −$887K, four of four funds reported).
+
+Other trackers still report:
+- Alpha Finance: approximately −$10.4M for November 9 across five funds.
+- CryptoETF.today: approximately −$10.3M, three of five funds reported.
+
+The search-index state and earlier rendered page state conflict. The direct issuer pages accessible in this check did not independently confirm all three November 9 component files. Therefore downgrade the November 9 aggregate to **DISPUTED / NOT MODEL-ELIGIBLE** pending issuer-file re-fetch and byte-level receipt. Preserve the earlier tracker observation as a historical capture; do not silently overwrite it or average the provider values. The November 6 complete-day tracker figure is separate.
+
+Sources: [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/), [Alpha Finance](https://alphafinance.io/etf/xrp/), [CryptoETF.today](https://cryptoetf.today/en/xrp-etf-flows), [Canary issuer page](https://canaryetfs.com/xrpc/), [21Shares issuer page](https://www.21shares.com/en-us/products-us/toxr).
+
+## Market-data freshness
+
+Run121 remains the last validated direct exchange capture (OKX provider timestamp 06:40:33.969 UTC; Kraken response had no event timestamp) and Fuelmaps' 06:00 UTC spot-only depth snapshot. A subsequent web open of the exchange API URLs returned August 2026 cached payloads, so those responses were rejected as stale. Search results after Run121 were older or differently cached; no new synchronized spot/L2 capture is admitted. The 05:50 UTC TradRadar snapshot remains the last validated derivatives observation.
+
+## Prediction and operational status
+
+- The 40-source registry, raw-byte capture contracts, SHA-256 receipt chain, point-in-time SQLite feature store, four baselines, chronological walk-forward evaluation, calibration/drift diagnostics and Ed25519-gated forecast ledger remain implemented on the integration branch.
+- The scheduled XRP workflow is main-only and absent from main. Production scheduled ingestion is not active.
+- GitHub Actions artifact retention (90 days raw, 7 days per-run feature checkpoint, 90 days daily feature backup) is not independent WORM or trusted timestamp anchoring.
+- Run122 web-rendered research did not preserve original HTTP transport bytes/headers. No raw-source hash is claimed; no observation is model-admitted.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+## Repository and merge status
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Parent integration head: `dd6abfd9fcf6196a2af0c4c10b7c186c6002423a`.
+- PR #1640: 910 commits ahead, zero behind, 241 changed paths; GitHub reports mergeable.
+- 62 review submissions: all COMMENTED, zero APPROVED.
+- 22 review threads: all resolved and outdated.
+- CodeRabbit check skipped.
+- Branch-protection details remain HTTP 403; visible fallback ruleset disabled; Pages publication authorization unresolved.
+- Open PR inventory remains 372 (356 drafts, 16 non-drafts). Run121's path-overlap classifications remain in force. Preserve unique #1643, #1653, #1614, #1269, #1655, #1659 and #1641; do not close exact-overlap candidates until successor content is merged and verified on main.
+
+**Merge decision: BLOCKED.** No approval, no authoritative protection visibility and no Pages side-effect authorization. Do not bypass protection or merge.
+
+## Next concrete actions
+
+1. Verify exact-head full CI, dependency audit and fail-closed gate for the Run122 commit.
+2. Obtain independent approval, authoritative branch-protection visibility and Pages-publication authorization.
+3. Re-fetch November 9 issuer files directly, retain raw bytes and resolve the CryptoKeyhole/Alpha/CryptoETF.today disagreement before model admission.
+4. Keep SBI START Bond as ¥10B debt issuance with a conditional XRP benefit, not XRP capital demand.
+5. Treat the SBI Ripple Asia/Doppler MOU as exploratory until production product, assets, counterparties and volume are disclosed.
+6. Obtain primary bank pilot data and Ripple confirmation before admitting the 60%/four-second or twelve-pair claims.
+7. Replay Evernorth/BitGo transfers via direct rippled and establish destination ownership before classifying the 9.070M XRP inbound.
+8. Activate XRP ingestion only after the mission manifest and workflow are on main; establish independent WORM/timestamp anchoring and complete synchronized history.
+9. Preserve unique PR work; close only exact duplicates after verified successor merges.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+
+---
+
 # Barrot XRP Mission — Run121: Fresh Spot Depth, Derivatives and Attribution Audit
 
 **Checked 2026-11-10 around 06:47 UTC.** This addendum supersedes only the Run120 02:00 UTC order-book snapshot and the older 05:30 UTC derivatives snapshot. It preserves Run120 and its complete exact-head CI evidence.
