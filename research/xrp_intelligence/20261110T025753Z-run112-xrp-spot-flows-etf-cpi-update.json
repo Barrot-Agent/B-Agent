@@ -182,6 +182,11 @@
       "whale_flows": "Single CryptoQuant analyst/provider; possible internal reserve movement is unconfirmed.",
       "etf": "Issuer holdings files aggregated by CryptoKeyhole; only one of four daily trackers reported for Nov 9.",
       "macro": "BLS official release calendar."
+    },
+    "raw_response_text": {
+      "kraken_xrpusd": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.09175000\",\"4579\",\"4579.000\"],\"b\":[\"1.09174000\",\"658\",\"658.000\"],\"c\":[\"1.09175000\",\"1.27107854\"],\"v\":[\"2021052.14922866\",\"29752437.78138496\"],\"p\":[\"1.09781917\",\"1.09622574\"],\"t\":[2397,36959],\"l\":[\"1.09081000\",\"1.07502000\"],\"h\":[\"1.10404000\",\"1.12191000\"],\"o\":\"1.09748000\"}}}",
+      "okx_xrpusdt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.0964\",\"lastSz\":\"145.792704\",\"askPx\":\"1.0965\",\"askSz\":\"5291.289898\",\"bidPx\":\"1.0964\",\"bidSz\":\"2084.7\",\"open24h\":\"1.1161\",\"high24h\":\"1.117\",\"low24h\":\"1.0764\",\"volCcy24h\":\"77148463.6835689722\",\"vol24h\":\"70378456.454059\",\"ts\":\"1794279389372\",\"sodUtc0\":\"1.0988\",\"sodUtc8\":\"1.1144\"}],\"msg\":\"\"}",
+      "kraken_usdtusd": "{\"error\":[],\"result\":{\"USDTZUSD\":{\"a\":[\"0.99872000\",\"108473\",\"108473.000\"],\"b\":[\"0.99871000\",\"235825\",\"235825.000\"],\"c\":[\"0.99872000\",\"10.90286538\"],\"v\":[\"33780236.48402377\",\"290828591.01258272\"],\"p\":[\"0.99872484\",\"0.99879572\"],\"t\":[6734,52778],\"l\":[\"0.99868000\",\"0.99850000\"],\"h\":[\"0.99877000\",\"0.99918000\"],\"o\":\"0.99872000\"}}}"
     }
   },
   "competing_hypotheses": [
@@ -201,5 +206,16 @@
   "model_admission": false,
   "forecast_status": "NOT_ISSUED",
   "directional_forecast_issued": false,
-  "real_money_action": false
+  "real_money_action": false,
+  "source_urls": {
+    "kraken_xrpusd": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "okx_xrpusdt": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "kraken_usdtusd": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+    "liqwall": "https://liqwall.com/coins/xrp",
+    "tradradar": "https://tradradar.io/markets/xrp",
+    "xrp_insights": "https://xrp-insights.com/exchange-balances",
+    "cryptoquant": "https://cryptoquant.com/insights/quicktake/6af0e5decd57dd300eaa1720-XRP-Whale-inflows-hit-900M-the-highest-since-2024",
+    "etf_tracker": "https://cryptokeyhole.com/etf-flows/xrp/",
+    "bls": "https://www.bls.gov/schedule/2026/11_sched_list.htm"
+  }
 }

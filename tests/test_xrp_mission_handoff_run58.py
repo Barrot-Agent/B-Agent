@@ -12,7 +12,7 @@ HISTORICAL_MAP = ROOT / "research" / "xrp_intelligence" / "nine_platform_capabil
 CURRENT_MAP = ROOT / "research" / "xrp_intelligence" / "nine_platform_capability_authentication_dataflow_map_current.json"
 
 
-def test_legacy_handoff_history_and_run111_current_handoff_bind_exact_heads_and_ci():
+def test_legacy_handoff_history_and_run112_current_handoff_bind_exact_heads_and_ci():
     handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF.md").read_text(encoding="utf-8")
     assert handoff.startswith("# Current integrated Barrot handoff — ")
     assert "## Run 60 — current repository, exact-head verification and institutional-rails correction" in handoff[:3_000]
@@ -31,10 +31,14 @@ def test_legacy_handoff_history_and_run111_current_handoff_bind_exact_heads_and_
     assert "No merge was performed" in handoff
 
     current_handoff = (ROOT / "BARROT_XRP_MISSION_HANDOFF_CURRENT.md").read_text(encoding="utf-8")
-    assert current_handoff.startswith("# Run 111 —")
-    assert "1,343 passed" in current_handoff
+    assert current_handoff.startswith("# Run 112 —")
+    assert "# Run 111 —" in current_handoff
+    assert "1,347 passed" in current_handoff
     assert "59.48%" in current_handoff
     assert "Forecast status: NOT_ISSUED" in current_handoff
+    assert "42747463986" in current_handoff
+    assert "42747463965" in current_handoff
+    assert "42747463968" in current_handoff
     assert "42743666268" in current_handoff
 
 
