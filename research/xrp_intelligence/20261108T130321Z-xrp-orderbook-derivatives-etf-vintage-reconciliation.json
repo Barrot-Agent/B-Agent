@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_orderbook_derivatives_etf_vintage_reconciliation",
+  "artifact_id": "20261108T130321Z-xrp-orderbook-derivatives-etf-vintage-reconciliation",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "reference_time_utc": "2026-11-08T13:03:21Z",
+  "data_cutoff_utc": "2026-11-08T12:35:59Z",
+  "capture_method": "Public rendered publisher pages and a public Binance USD-M perpetual premium-index endpoint. Retrieval interface did not expose HTTP headers or exact network retrieval timestamps.",
+  "source_receipts": [
+    {
+      "source_id": "fuelmaps_xrp_hourly_depth_20261108_1200",
+      "publisher": "Fuelmaps",
+      "url": "https://fuelmaps.io/order-book/",
+      "source_class": "third_party_multi_venue_composite",
+      "source_time_utc": "2026-11-08T12:00:00Z",
+      "excerpt": "Hourly snapshot as of 12:00 UTC, 8 Nov 2026: XRP mid $1.1645 across 6 of 6 venues.\nWithin ±0.5%: bids $6.8M; asks $4.5M; bid share 60.2%; venues 6/6.\nWithin ±1%: bids $10.8M; asks $8.3M; bid share 56.5%; venues 6/6.\nWithin ±2%: bids $16.6M; asks $8.9M; bid share 65.1%; venues 6/6.\nWithin ±5%: bids $23.3M; asks $10.1M; bid share 69.7%; venues 6/6.\nWithin ±10%: bids $32.1M; asks $13.7M; bid share 70.2%; venues 5/6.\nLargest resting levels: bid $1.050 $4.2M; bid $1.125 $3.0M; bid $1.100 $1.9M; ask $1.249 $1.6M; bid $1.160 $1.5M.\nSix spot venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini. Binance and Bitget excluded. Hourly columns average one-minute book snapshots. Resting orders can be cancelled; hidden/iceberg orders are absent; futures/perpetual books excluded.",
+      "sha256": "5031f9ade6ba69ddf82242886790a4da9140c96f41eb50f3997a41d4e8aae2e9",
+      "hash_scope": "SHA-256 of the normalized UTF-8 excerpt preserved in this artifact; not raw HTTP bytes.",
+      "source_independence_group": "fuelmaps_composite"
+    },
+    {
+      "source_id": "binance_xrpusdt_perpetual_premium_index_20261108_123559",
+      "publisher": "Binance Futures",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "source_class": "primary_exchange_public_rest",
+      "source_time_utc": "2026-11-08T12:35:59Z",
+      "excerpt": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.16440000\",\"indexPrice\":\"1.16476259\",\"estimatedSettlePrice\":\"1.16536344\",\"lastFundingRate\":\"0.00009823\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794153600000,\"time\":1794141359000}",
+      "sha256": "15ae3180433c6bf4337d784a887c508e8a567199c655b772601e8a1b8d7518b4",
+      "hash_scope": "SHA-256 of the exact JSON response text surfaced by the retrieval interface; not raw HTTP wire bytes or headers.",
+      "source_independence_group": "binance_futures"
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_page_20261108_1247",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_class": "secondary_issuer_file_aggregator",
+      "source_time_utc": "2026-11-08T12:47:00Z",
+      "excerpt": "Updated 8 Nov 2026, 12:47 UTC. On 5 November 2026 the 4 US spot XRP ETFs read daily paid a net 3,339 XRP ($4K) outflow. 30 Oct to 5 Nov: -1,137,098 XRP. 6 Nov partial: 3 of 4 funds published, -752,048 XRP, waiting for Franklin XRPZ. Page says latest issuer file dated 9 Nov 2026 and read at 05:12 UTC on 7 Nov 2026.",
+      "sha256": "303bb4cf8eec6f8f9525934de270729fa313f9f19a6a6715c4cf4102d6b733ff",
+      "hash_scope": "SHA-256 of the normalized UTF-8 excerpt preserved in this artifact; not raw HTTP bytes.",
+      "source_independence_group": "cryptokeyhole_issuer_file_parser"
+    },
+    {
+      "source_id": "holdhub_xrp_etf_methodology_20261106",
+      "publisher": "Hold Hub",
+      "url": "https://hold-hub.com/xrp-etf-inflows-check-real-numbers/",
+      "source_class": "secondary_methodology_review",
+      "source_time_utc": "2026-11-06",
+      "excerpt": "Hold Hub, 6 Nov 2026: none of the five US spot XRP ETF fund pages opened showed a daily dollar flow. Headline flow figures came from aggregators such as SoSoValue. Issuer-page figures read 5 Nov except Canary XRP holdings 6 Nov. Franklin XRPZ holdings rose from 301,795,331 XRP on 16 Oct to 310,430,333 XRP on 5 Nov while net assets fell from $390.92M to $384.38M. The article warns that NAV/net assets move with XRP price and are not flow measures. SoSoValue cumulative column had no as-of date.",
+      "sha256": "ae21cc9a7d9b18fd7f531565dc2b3d0aa8d2b97ddd532070568182a3cec3cea4",
+      "hash_scope": "SHA-256 of the normalized UTF-8 excerpt preserved in this artifact; not raw HTTP bytes.",
+      "source_independence_group": "holdhub_issuer_page_review"
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_dashboard_20261106",
+      "publisher": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_class": "secondary_aggregator_dashboard",
+      "source_time_utc": "2026-11-06",
+      "excerpt": "Alpha Finance XRP ETF dashboard, through the 6 Nov 2026 session: daily net flow on 6 Nov $0; 30-session flow +$45.9M; cumulative flow $1.73B; dashboard covers five funds; Alpha Finance identifies CoinGlass as its upstream ETF dashboard feed.",
+      "sha256": "8ea38176135302417db1753f555b686b8ad43e35bd2a08a415065312bab458dc",
+      "hash_scope": "SHA-256 of the normalized UTF-8 excerpt preserved in this artifact; not raw HTTP bytes.",
+      "source_independence_group": "coinglass_upstream_dashboard"
+    }
+  ],
+  "orderbook_depth": {
+    "publisher": "Fuelmaps",
+    "snapshot_time_utc": "2026-11-08T12:00:00Z",
+    "age_seconds_at_reference": 3801,
+    "mid_usd": 1.1645,
+    "venues_reporting": 6,
+    "venues_total": 6,
+    "bands": [
+      {
+        "within_pct": 0.5,
+        "bids_usd_m": 6.8,
+        "asks_usd_m": 4.5,
+        "bid_share_pct": 60.2,
+        "venues": "6/6"
+      },
+      {
+        "within_pct": 1,
+        "bids_usd_m": 10.8,
+        "asks_usd_m": 8.3,
+        "bid_share_pct": 56.5,
+        "venues": "6/6"
+      },
+      {
+        "within_pct": 2,
+        "bids_usd_m": 16.6,
+        "asks_usd_m": 8.9,
+        "bid_share_pct": 65.1,
+        "venues": "6/6"
+      },
+      {
+        "within_pct": 5,
+        "bids_usd_m": 23.3,
+        "asks_usd_m": 10.1,
+        "bid_share_pct": 69.7,
+        "venues": "6/6"
+      },
+      {
+        "within_pct": 10,
+        "bids_usd_m": 32.1,
+        "asks_usd_m": 13.7,
+        "bid_share_pct": 70.2,
+        "venues": "5/6"
+      }
+    ],
+    "largest_resting_levels": [
+      {
+        "side": "bid",
+        "price_usd": 1.05,
+        "resting_usd_m": 4.2
+      },
+      {
+        "side": "bid",
+        "price_usd": 1.125,
+        "resting_usd_m": 3
+      },
+      {
+        "side": "bid",
+        "price_usd": 1.1,
+        "resting_usd_m": 1.9
+      },
+      {
+        "side": "ask",
+        "price_usd": 1.249,
+        "resting_usd_m": 1.6
+      },
+      {
+        "side": "bid",
+        "price_usd": 1.16,
+        "resting_usd_m": 1.5
+      }
+    ],
+    "venue_universe": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "excluded_venues": [
+      "Binance",
+      "Bitget"
+    ],
+    "method": "Each hourly column averages one-minute book snapshots. Full-depth venues are Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken add near-price depth. USDT books are converted to USD using a live USDT/USD rate.",
+    "limitations": [
+      "Binance and Bitget are excluded, so the largest spot venue by volume is absent.",
+      "Displayed resting orders can be cancelled; hidden and iceberg orders are not shown.",
+      "Hourly averaging dilutes short-lived walls; the snapshot is not a point-in-time executable quote.",
+      "Futures/perpetual books are excluded.",
+      "No raw per-venue book snapshots or fill-probability model were captured in this run."
+    ],
+    "model_eligible": false
+  },
+  "derivatives": {
+    "publisher": "Binance Futures",
+    "instrument": "XRPUSDT perpetual",
+    "provider_event_timestamp_utc": "2026-11-08T12:35:59Z",
+    "age_seconds_at_reference": 1642,
+    "freshness_limit_seconds": 300,
+    "freshness_status": "STALE_BY_1342_SECONDS_BEYOND_300_SECOND_LIMIT",
+    "mark_price_usdt": 1.1644,
+    "index_price_usdt": 1.16476259,
+    "mark_index_basis_bps": -3.112994898,
+    "estimated_settle_price_usdt": 1.16536344,
+    "last_funding_rate_fraction_per_8h": 0.00009823,
+    "last_funding_rate_pct_per_8h": 0.009823,
+    "next_funding_time_utc": "2026-11-08T16:00:00Z",
+    "open_interest": null,
+    "liquidations": null,
+    "raw_response_text": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.16440000\",\"indexPrice\":\"1.16476259\",\"estimatedSettlePrice\":\"1.16536344\",\"lastFundingRate\":\"0.00009823\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794153600000,\"time\":1794141359000}",
+    "sha256": "15ae3180433c6bf4337d784a887c508e8a567199c655b772601e8a1b8d7518b4",
+    "cache_status": "UNKNOWN; the 13:03 retrieval returned the same provider timestamp and payload as the 12:40 market snapshot. No cache headers were exposed.",
+    "model_eligible": false
+  },
+  "spot_context": {
+    "prior_artifact_path": "research/xrp_intelligence/20261108T124058Z-xrp-live-market-etf-cross-publisher-reconciliation.json",
+    "prior_reference_time_utc": "2026-11-08T12:40:58Z",
+    "kraken_provider_event_time": "UNKNOWN",
+    "okx_provider_event_time_utc": "2026-11-08T12:34:36.967Z",
+    "okx_age_seconds_at_prior_reference": 382.033,
+    "limitation": "The prior Kraken/OKX spot snapshot is asynchronous; OKX was stale and Kraken lacked provider event time. No new spot quote was admitted in this run."
+  },
+  "etf_flow_reconciliation": {
+    "cryptokeyhole": {
+      "reported_nov5_holdings_change_xrp": -3339,
+      "reported_oct30_to_nov5_change_xrp": -1137098,
+      "reported_nov6_partial_change_xrp": -752048,
+      "nov6_fund_coverage": "3 of 4; Franklin XRPZ missing",
+      "daily_fund_universe": "Four daily issuer-file readers out of six listed funds.",
+      "page_update_utc": "2026-11-08T12:47:00Z",
+      "date_anomaly": "The page says its latest issuer file is dated 2026-11-09 but read at 2026-11-07T05:12Z, a future-dated issuer-file label relative to the 2026-11-08 reference. Quarantine that latest-file date until publisher correction or issuer confirmation.",
+      "definition": "Daily change in XRP held; publisher's description includes creations/redemptions, retained staking rewards where applicable, and XRP sold for fees or cash payouts. It is not a pure net-creation series.",
+      "status": "SECONDARY_PUBLISHER_DERIVED_HOLDINGS_CHANGE; PARTIAL_AND_DATE_ANOMALY"
+    },
+    "holdhub": {
+      "issuer_pages_reviewed": 5,
+      "issuer_pages_showing_daily_dollar_flow": 0,
+      "so_so_value_asof_date_present": false,
+      "franklin_xrpz_holdings_2026_10_16": 301795331,
+      "franklin_xrpz_holdings_2026_11_05": 310430333,
+      "franklin_xrpz_holdings_change": 8635002,
+      "franklin_xrpz_net_assets_2026_10_16_usd_m": 390.92,
+      "franklin_xrpz_net_assets_2026_11_05_usd_m": 384.38,
+      "net_assets_change_pct": -1.6729765681,
+      "holdings_change_pct": 2.8612112624,
+      "interpretation": "Holdings rose while net assets fell, demonstrating that NAV/net assets are not a direct flow proxy. Hold Hub is a secondary review of issuer pages and SoSoValue, not an issuer filing."
+    },
+    "alpha_finance": {
+      "nov6_daily_flow_usd": 0,
+      "thirty_session_flow_usd_m": 45.9,
+      "cumulative_flow_usd_b": 1.73,
+      "fund_universe_size": 5,
+      "upstream": "CoinGlass, per Alpha Finance's dashboard methodology."
+    },
+    "reconciliation_status": "UNRESOLVED_DIFFERENT_UNIVERSES_AND_MEASUREMENT_DEFINITIONS",
+    "why_not_comparable": [
+      "CryptoKeyhole computes changes in XRP held from selected issuer files and includes fee sales/cash payouts in its definition.",
+      "Hold Hub reports that issuer pages did not publish daily dollar flow fields in its November 6 review; SoSoValue cumulative figures lacked an as-of date.",
+      "Alpha Finance uses a five-fund CoinGlass-fed dashboard; its universe and upstream differ from CryptoKeyhole's four-fund daily reader.",
+      "The CryptoKeyhole 9 November issuer-file date is future-dated relative to the 8 November capture and is quarantined.",
+      "A zero aggregator flow can mean no update or no flow; issuer shares/holdings and aligned NAV are needed to distinguish them."
+    ],
+    "source_independence": "These publishers are separate interfaces but rely on overlapping issuer disclosures and aggregator inputs. They are not independent confirmations of primary-market XRP capital."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Displayed six-venue spot depth is bid-skewed near the snapshot mid.",
+      "support": "Fuelmaps shows 56.5% bid share within 1% and 69.7% within 5%.",
+      "counterevidence": "Binance and Bitget are excluded; hourly averages and cancellable resting orders are not executable demand."
+    },
+    {
+      "id": "H2",
+      "claim": "The bid skew may not persist or may be dominated by venue coverage and transient quotes.",
+      "support": "Near-price depth includes only a subset of full-depth venues at wider bands; hidden liquidity and cancellations are unobserved.",
+      "counterevidence": "The composite covers all six reporting venues within 5% at the snapshot."
+    },
+    {
+      "id": "H3",
+      "claim": "Perpetual positioning is mildly positive-carry but not demonstrably crowded.",
+      "support": "Funding is +0.009823% per 8h.",
+      "counterevidence": "Mark is 3.113 bps below index and open interest/liquidations are unavailable; the response is stale."
+    },
+    {
+      "id": "H4",
+      "claim": "ETF data does not currently provide a clean directional capital-flow signal.",
+      "support": "CryptoKeyhole, Hold Hub and Alpha Finance differ in fund universe, update timing and measurement definition.",
+      "counterevidence": "Some issuer holdings/share data can later support a reconstructed creation/redemption estimate if dates and NAV are aligned."
+    }
+  ],
+  "disconfirming_evidence": [
+    "The bid-heavy Fuelmaps composite is a single third-party snapshot and omits Binance/Bitget.",
+    "Resting bids may be cancelled; the data do not prove buyers executed at those levels.",
+    "The Binance premium-index payload is 1,642 seconds old at the reference time, beyond the 300-second freshness threshold.",
+    "No open-interest, liquidation or raw per-venue order-book data were captured.",
+    "CryptoKeyhole's reported latest issuer-file date is future-dated relative to the capture.",
+    "Hold Hub's Franklin example shows holdings up while net assets down, disconfirming the use of net assets as a demand proxy."
+  ],
+  "model_admission": {
+    "admitted_to_feature_store": false,
+    "reason": "Depth is an hourly third-party composite with venue exclusions and no raw per-venue receipt; Binance derivatives payload is stale; ETF flow measures are methodologically unresolved.",
+    "eligible_future_use": "Research-only context pending synchronized point-in-time raw per-venue depth, fresh derivatives OI/funding, issuer-aligned shares/holdings/NAV and validated flow definitions."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_actions": {
+    "feature_store_write": false,
+    "paper_trade": false,
+    "real_money": false,
+    "funds_transfer": false,
+    "external_model_transfer": false
+  }
+}

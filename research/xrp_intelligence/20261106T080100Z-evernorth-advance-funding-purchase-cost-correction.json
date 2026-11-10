@@ -1,0 +1,210 @@
+{
+  "correction_id": "evernorth_advance_funding_cash_vs_xrp_purchase_cost_20261106",
+  "schema_version": "1.0",
+  "created_at_utc": "2026-11-06T08:01:00Z",
+  "status": "append_only_source_bound_correction_overlay",
+  "purpose": "Separate exact subscription cash received from the exact cash cost of the XRP purchase, correcting later research artifacts that reused rounded subscription cash as purchase cost.",
+  "source_authority": {
+    "issuer": "Evernorth Holdings Inc.",
+    "filing_type": "SEC Form S-1/A prospectus with historical financial statements",
+    "filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+    "filing_accession": "0001628280-26-068609",
+    "source_independence_group": "evernorth_sec_issuer_filing",
+    "independence_note": "The filing is primary issuer evidence filed with the SEC; the cited summary, cash-flow statement, cost-basis table and quoted issuer press release are within the same filing and are not independent publishers."
+  },
+  "primary_source_evidence": {
+    "advance_funding_cash_received_exact_usd": 214049995,
+    "advance_funding_cash_received_summary_rounded_usd": 214050000,
+    "cash_used_to_purchase_digital_assets_usd": 214000000,
+    "restricted_cash_at_2025_12_31_usd": 49995,
+    "xrp_purchase_quantity_exact": 84365876.3625,
+    "issuer_reported_average_purchase_price_usd_per_xrp": 2.53657058,
+    "recomputed_purchase_cost_usd": 213999999.9370349,
+    "recomputed_average_price_usd_per_xrp": 2.5365705807463335,
+    "incorrect_average_if_214050000_is_used_as_purchase_cost": 2.5371632374240782,
+    "incorrect_average_if_214100000_is_divided_by_rounded_quantity": 2.537163248325662,
+    "source_line_ranges": {
+      "summary_subscription_definition": "L175-L177",
+      "cash_flow_and_restricted_cash": "L6012-L6024",
+      "advance_funding_receipt_and_quantity": "L6056-L6056",
+      "xrp_cost_basis_table": "L6230-L6238",
+      "issuer_reported_average_price": "L4941-L4944"
+    },
+    "interpretation": "The exact $214,049,995 advance-funding cash receipt is rounded to $214.05M in summary text. The cash-flow statement records $214,000,000 of digital-asset purchases and $49,995 of restricted cash at December 31, 2025. The XRP cost-basis table assigns $214,000,000 to 84,365,876 XRP. The November 4, 2025 issuer-reported average price of $2.53657058 multiplied by 84,365,876.3625 XRP reproduces approximately $214,000,000. The $49,995 is not XRP purchase cost."
+  },
+  "source_artifacts": [
+    {
+      "path": "research/xrp_intelligence/20261106T000715Z-evernorth-capital-in-kind-xrp-reconciliation.json",
+      "git_blob_sha": "a6509bd8b8ad4fb723d9300fe88003530780308f",
+      "role": "Later artifact that labels a rounded $214.1M amount as cash used for XRP purchase and derives an incorrect per-XRP ratio."
+    },
+    {
+      "path": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+      "git_blob_sha": "8239d085d72b0603da5a205e6fd4754ad3f944f9",
+      "role": "Earlier artifact that places rounded $214.05M subscription cash in the purchase-funding field while retaining an average-price value calculated from the $214M cost."
+    },
+    {
+      "path": "research/xrp_intelligence/20261105-evernorth-postclose-capital-ownership-custody-goldman-13f.json",
+      "git_blob_sha": "3fa8eca2ceec4e72dae3f77f1b76c616b311b233",
+      "role": "Post-close reconciliation that repeats rounded subscription cash in the use-of-advance-cash amount."
+    },
+    {
+      "path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-source-and-reference-price-addendum.json",
+      "git_blob_sha": "0bbe321d83f60ac983ad2e65a1c3890a6ba7c830",
+      "role": "Source/reference-price addendum that labels rounded subscription cash as cash used."
+    },
+    {
+      "path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json",
+      "git_blob_sha": "6d1a72976e13441525401ed8d1bb90e0b401f3aa",
+      "role": "ELOC correction whose cash-received field is correct but whose prose describes the $214.05M subscription as the purchase amount."
+    }
+  ],
+  "field_corrections": [
+    {
+      "artifact_path": "research/xrp_intelligence/20261106T000715Z-evernorth-capital-in-kind-xrp-reconciliation.json",
+      "source_git_blob_sha": "a6509bd8b8ad4fb723d9300fe88003530780308f",
+      "json_pointer": "/capital_reconciliation/cash_subscriptions/cash_from_advance_funding_used_to_purchase_xrp_usd_rounded",
+      "original_value": 214100000,
+      "corrected_value": 214000000,
+      "reason": "The $214.1M value is not the purchase-cost amount; the SEC cash-flow statement and historical cost table report $214M."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261106T000715Z-evernorth-capital-in-kind-xrp-reconciliation.json",
+      "source_git_blob_sha": "a6509bd8b8ad4fb723d9300fe88003530780308f",
+      "json_pointer": "/capital_reconciliation/cash_subscriptions/implied_cash_deployed_per_xrp_usd",
+      "original_value": 2.537163248325662,
+      "corrected_value": 2.53657058,
+      "reason": "Use the $214M purchase cost and exact XRP quantity; do not divide rounded subscription cash by rounded XRP quantity."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261106T000715Z-evernorth-capital-in-kind-xrp-reconciliation.json",
+      "source_git_blob_sha": "a6509bd8b8ad4fb723d9300fe88003530780308f",
+      "json_pointer": "/capital_reconciliation/cash_subscriptions/implied_cash_deployed_per_xrp_note",
+      "original_value": "Derived from $214.05M / 84,365,876 XRP. Not an exchange execution VWAP, not an independently verified trade-level average, and not a current market price.",
+      "corrected_value": "The $214.05M summary is rounded subscription cash received, not the purchase-cost numerator. Use $214,000,000 / 84,365,876.3625 XRP; the issuer-reported average price is $2.53657058. The $49,995 remained restricted cash at 2025-12-31. No execution venue or exchange-versus-OTC method is disclosed.",
+      "reason": "The prior note derived a ratio from the wrong cash category and rounded quantity."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261106T000715Z-evernorth-capital-in-kind-xrp-reconciliation.json",
+      "source_git_blob_sha": "a6509bd8b8ad4fb723d9300fe88003530780308f",
+      "json_pointer": "/capital_reconciliation/cash_subscriptions/xrp_purchased_with_that_cash",
+      "original_value": 84365876,
+      "corrected_value": 84365876.3625,
+      "reason": "Preserve the exact quantity from the SEC filing and distinguish it from the rounded summary quantity."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+      "source_git_blob_sha": "8239d085d72b0603da5a205e6fd4754ad3f944f9",
+      "json_pointer": "/xrp_asset_reconciliation/cash_funded_market_purchase/funding_cash_usd",
+      "original_value": 214050000,
+      "corrected_value": 214000000,
+      "reason": "This field describes purchase funding cost, not subscription cash received. The separate gross-cash component remains $214.05M rounded cash received."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+      "source_git_blob_sha": "8239d085d72b0603da5a205e6fd4754ad3f944f9",
+      "json_pointer": "/xrp_asset_reconciliation/cash_funded_market_purchase/implied_average_cost_status",
+      "original_value": "derived_from_214050000_usd_divided_by_84365876_xrp; not separately stated as an execution VWAP in the reviewed prospectus",
+      "corrected_value": "$2.53657058 is the issuer-reported average price; it is consistent with $214,000,000 / 84,365,876.3625 XRP. The venue and execution method are undisclosed; this is not a venue-specific exchange VWAP.",
+      "reason": "The status text cited the wrong numerator even though the stored average-price value was correct."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261105-evernorth-postclose-capital-ownership-custody-goldman-13f.json",
+      "source_git_blob_sha": "3fa8eca2ceec4e72dae3f77f1b76c616b311b233",
+      "json_pointer": "/closing_capital_reconciliation/use_of_advance_cash/amount_usd",
+      "original_value": 214050000,
+      "corrected_value": 214000000,
+      "reason": "The use-of-cash field is purchase cost. The separate advance_subscription_cash_usd field remains $214.05M rounded cash received."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-source-and-reference-price-addendum.json",
+      "source_git_blob_sha": "0bbe321d83f60ac983ad2e65a1c3890a6ba7c830",
+      "json_pointer": "/capital_taxonomy/historical_cash_xrp_purchase/cash_used_usd",
+      "original_value": 214050000,
+      "corrected_value": 214000000,
+      "reason": "This field is cash used for the XRP purchase; the separate cash-received field remains $214.05M rounded subscription proceeds."
+    }
+  ],
+  "prose_claims_to_supersede": [
+    {
+      "artifact_path": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+      "source_git_blob_sha": "8239d085d72b0603da5a205e6fd4754ad3f944f9",
+      "json_pointers": [
+        "/source_registry/2/claims_supported/1",
+        "/transaction_timeline/2/event",
+        "/capital_reconciliation/gross_cash_proceeds_definition",
+        "/capital_flow_interpretation/actual_capital_summary",
+        "/competing_hypotheses/1/support/0",
+        "/strategic_and_risk_context/principal_risks/1",
+        "/model_feature_policy/prohibited_shortcuts/2",
+        "/data_quality/cash_vs_xrp",
+        "/next_actions/10"
+      ],
+      "superseding_statement": "The exact advance-funding cash receipt was $214,049,995 (rounded to $214.05M in summary text). The financial statements record $214,000,000 used to purchase 84,365,876.3625 XRP and $49,995 restricted cash at 2025-12-31. The issuer-reported average price was $2.53657058. Do not treat $214.05M as the purchase-cost numerator or as a current cash balance."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json",
+      "source_git_blob_sha": "6d1a72976e13441525401ed8d1bb90e0b401f3aa",
+      "json_pointers": [
+        "/competing_interpretations/1/counterevidence",
+        "/red_team_objections/3"
+      ],
+      "superseding_statement": "The exact $214,049,995 advance-funding cash receipt (rounded to $214.05M in summary text) is cash received, not the XRP purchase-cost numerator. The financial statements record $214,000,000 of XRP purchase cost; the $49,995 difference was restricted cash at 2025-12-31. The purchase and in-kind contributions are not separate current cash injections."
+    }
+  ],
+  "preserved_fields": {
+    "rule": "Values below remain unchanged because they describe cash received, not purchase cost.",
+    "examples": [
+      {
+        "artifact_path": "research/xrp_intelligence/20261106T000715Z-evernorth-capital-in-kind-xrp-reconciliation.json",
+        "json_pointer": "/capital_reconciliation/cash_subscriptions/advance_funding/cash_usd",
+        "expected_value": 214050000,
+        "meaning": "Rounded subscription cash received."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+        "json_pointer": "/capital_reconciliation/gross_cash_components/0/amount_usd",
+        "expected_value": 214050000,
+        "meaning": "Rounded advance-funding cash received."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261105-evernorth-postclose-capital-ownership-custody-goldman-13f.json",
+        "json_pointer": "/closing_capital_reconciliation/components/advance_subscription_cash_usd",
+        "expected_value": 214050000,
+        "meaning": "Rounded subscription cash received."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-source-and-reference-price-addendum.json",
+        "json_pointer": "/capital_taxonomy/historical_cash_xrp_purchase/cash_received_under_advance_funding_subscriptions_usd",
+        "expected_value": 214050000,
+        "meaning": "Rounded subscription cash received."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json",
+        "json_pointer": "/capital_reconciliation/historical_cash_xrp_purchase/cash_received_under_advance_funding_subscriptions_usd",
+        "expected_value": 214050000,
+        "meaning": "Rounded subscription cash received."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261105T081500Z-evernorth-actual-capital-cantor-facility-reconciliation.json",
+        "json_pointer": "/capital_reconciliation/historical_cash_received_and_deployed/amount_usd",
+        "expected_value": 214050000,
+        "meaning": "Cash received; the same object separately records use_of_proceeds_usd as $214M."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261105T173711Z-evernorth-actual-vs-potential-capital-sec-reconciliation.json",
+        "json_pointer": "/capital_classification/actual_historical_advance_funding_cash_usd",
+        "expected_value": 214050000,
+        "meaning": "Rounded historical cash received."
+      }
+    ]
+  },
+  "corrected_interpretation": "Exact cash raised: $214,049,995. Summary-rounded subscription cash: $214,050,000. XRP purchase cost: $214,000,000. Restricted cash at 2025-12-31: $49,995. XRP purchased: 84,365,876.3625. Issuer-reported average purchase price: $2.53657058 per XRP. This is a historical issuer-disclosed purchase, not a current XRP flow, not a verified exchange execution VWAP, and not venue-specific order-flow evidence.",
+  "application_contract": {
+    "original_artifacts_mutated": false,
+    "correction_mode": "Apply only to a derived in-memory view after verifying every source Git blob SHA. If a current source blob differs, load research/xrp_intelligence/source_preimages/<git_blob_sha>.json and verify its Git blob SHA. Apply the affected correction to a derived view of that preimage and label the view as historical, not current.",
+    "if_any_source_blob_sha_mismatches": "Fail closed; do not apply the affected correction if neither the current source blob nor the archived preimage matches the expected Git blob SHA.",
+    "model_eligible": false,
+    "reason": "The correction resolves a historical capital-accounting classification. It does not establish a current market flow or a point-in-time predictive feature."
+  }
+}

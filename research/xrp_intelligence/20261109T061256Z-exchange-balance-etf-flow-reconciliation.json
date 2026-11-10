@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_exchange_inventory_etf_flow_reconciliation",
+  "artifact_id": "20261109T061256Z-exchange-balance-etf-flow-reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-09T06:12:56Z",
+  "data_cutoff_utc": "2026-11-09T06:12:56Z",
+  "capture_policy": {
+    "lawful_public_sources_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "hash_scope": "SHA-256 of exact normalized excerpts authored for this artifact; not raw HTTP bytes, issuer files, or signed exchange receipts.",
+    "model_admission": "Research-only. No wallet total or ETF tracker output is admitted as a model feature or direct cash-flow series."
+  },
+  "exchange_inventory": {
+    "observations": [
+      {
+        "publisher": "XRP Insights",
+        "url": "https://xrp-insights.com/exchange-balances",
+        "source_class": "secondary_on_chain_wallet_attribution",
+        "independence_group": "xrpscan_labeled_rippled_account_info",
+        "snapshot_at_utc": "2026-11-08T08:00:00Z",
+        "coverage": {
+          "exchange_count": 24,
+          "wallet_count": 701
+        },
+        "total_labeled_balance_xrp": 22340000000,
+        "same_wallet_change_7d_xrp": -104400000,
+        "same_wallet_change_7d_pct": -0.47,
+        "same_wallet_change_30d_xrp": -149300000,
+        "same_wallet_change_30d_pct": -0.68,
+        "custody_composition_pct": {
+          "cold": 48.4,
+          "hot": 11.6,
+          "unclassified": 40
+        },
+        "selected_balances_xrp": {
+          "Coinbase": 5790000000,
+          "Binance": 2730000000,
+          "Upbit": 6440000000,
+          "Bithumb": 1810000000,
+          "SBI VC Trade": 56700000
+        },
+        "selected_caveats": [
+          "Balances include hot, deposit and cold wallets; they are not exchange order-book inventory or immediately tradable float.",
+          "Method uses rippled account_info for XRPSCAN-labeled wallets; same-wallet windows exclude newly tracked wallets.",
+          "The page's Binance wrapped-asset reserve appears as 327.4M XRP in its table but 325.8M in its methodology note; the 1.6M internal discrepancy is unresolved."
+        ],
+        "normalized_excerpt_sha256": "d470a8c0e1ecbbad9c0c1a25b4a985de1a76cc8d14308ec2f38e6b5294e3de7d",
+        "hash_scope": "normalized excerpt only; not raw page or HTTP bytes",
+        "model_eligible": false
+      },
+      {
+        "publisher": "XRP Desk",
+        "url": "https://xrpdesk.app/",
+        "methodology_url": "https://xrpdesk.app/about",
+        "source_class": "secondary_on_chain_wallet_attribution",
+        "independence_group": "xrpdesk_assistant_full_scan",
+        "snapshot_at_utc": "2026-11-08T16:36:00Z",
+        "coverage": {
+          "venue_count": 62
+        },
+        "total_labeled_balance_xrp": 37050000000,
+        "selected_balances_xrp": {
+          "Coinbase": 6620000000
+        },
+        "source_label": "assistant-full-scan",
+        "methodology": "About page says the desk queries XRPL account_info for labeled wallets, refreshes about every eight minutes when a scan is fresh, and treats the reported total as a floor because unlabeled wallets are missing.",
+        "normalized_excerpt_sha256": "5cab1a945c0a4add04a87b0f9050273ec672017e191d0e1e9f892bf4ecab9af8",
+        "hash_scope": "normalized excerpt only; not raw page or HTTP bytes",
+        "model_eligible": false,
+        "caveats": [
+          "Wallet list and per-wallet source receipts are not exposed on the page.",
+          "The 62-venue coverage and 16:36Z timestamp differ from XRP Insights' 24-venue/701-wallet 08:00Z snapshot.",
+          "The 14.71B XRP total difference and 830M Coinbase difference are coverage/methodology differences, not measured flows."
+        ]
+      }
+    ],
+    "interpretation": "The two sources use labeled-wallet scans but different coverage universes and timestamps. Do not average their totals, subtract them as a flow, or equate either total with liquid exchange supply."
+  },
+  "etf_flow_reconciliation": {
+    "observations": [
+      {
+        "publisher": "XRP Insights",
+        "url": "https://xrp-insights.com/",
+        "snapshot_date": "2026-11-06",
+        "fund_universe": [
+          "XRPC",
+          "XRP",
+          "XRPZ",
+          "GXRP",
+          "TOXR",
+          "XRPR",
+          "BITW"
+        ],
+        "reported_net_holdings_change_xrp": -663043,
+        "reported_combined_holdings_xrp": 1200000000,
+        "reported_combined_net_assets_usd": 1430000000,
+        "spot_only_holdings_xrp": 1170000000,
+        "spot_only_net_assets_usd": 1400000000,
+        "normalized_excerpt_sha256": "571815bdda987c71e3f3f82f1f18f4d3bcfcf4f0363a9eeb1a24844c43844650",
+        "caveats": [
+          "Daily flow is the day-over-day change in issuer-reported XRP holdings, not a direct authorized-participant cash-flow file.",
+          "GXRP holdings are included in total holdings but GXRP is excluded from flow totals while a data gap is corrected.",
+          "BITW is a multi-asset index sleeve, not a single-asset spot XRP fund."
+        ],
+        "model_eligible": false
+      },
+      {
+        "publisher": "XRP Desk",
+        "url": "https://xrpdesk.app/",
+        "snapshot_date": "2026-11-07",
+        "fund_universe": [
+          "XRP",
+          "XRPZ",
+          "XRPC",
+          "GXRP",
+          "TOXR",
+          "XRPR"
+        ],
+        "reported_holdings_xrp": 1140000000,
+        "reported_holdings_change_xrp": -752000,
+        "normalized_excerpt_sha256": "1bfb3a0abebcfe699cf9bf8e043840d252c1a37b1c718cdf5224e8343eb88770",
+        "caveats": [
+          "Page says the change is reported holdings change, not ETF trading volume.",
+          "It references other columns in the XRP Tracker Google Sheet; exact comparability to a spot-only issuer AP flow series is not established."
+        ],
+        "model_eligible": false
+      },
+      {
+        "publisher": "Alpha Finance",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "snapshot_date": "2026-11-06",
+        "fund_count": 5,
+        "reported_daily_net_flow_usd": 0,
+        "reported_30_session_net_flow_usd": 45900000,
+        "reported_cumulative_net_flow_xrp": 989100000,
+        "normalized_excerpt_sha256": "f31ceac0566738ca60b5eafac564deb31c0f1f4419163757441cf5c45be57857",
+        "caveats": [
+          "The page says no fund list, AUM, holdings or fees are published for the XRP funds.",
+          "The daily series repeats zero values across several sessions; the zero is not issuer-confirmed no-flow."
+        ],
+        "model_eligible": false
+      },
+      {
+        "publisher": "CryptoKeyhole",
+        "url": "https://cryptokeyhole.com/etf-flows/all/",
+        "latest_complete_xrp_flow_date": "2026-11-05",
+        "reported_net_flow_xrp": -3339,
+        "coverage": "4 of 6 XRP funds",
+        "reported_holdings_xrp": 1076805885,
+        "nov6_status": "PARTIAL; awaiting Franklin Templeton XRPZ; no complete Nov 6 XRP flow reported",
+        "page_updated_at_utc": "2026-11-08T22:22:00Z",
+        "normalized_excerpt_sha256": "c6350360d5c7142bd3258d8568a9fb50c6fe56f59eae26e52297d733b6b59a7b",
+        "model_eligible": false
+      },
+      {
+        "publisher": "CryptoETF.today",
+        "url": "https://cryptoetf.today/en/xrp-etf-flows",
+        "snapshot_date": "2026-11-06",
+        "fund_count": 5,
+        "reported_holdings_xrp": 1141565554,
+        "normalized_excerpt_sha256": "c7c02e4edd2fb45e30aac03bfb50e5ce49073b446d952e97152b9c0de476744b",
+        "status": "HOLDINGS_CROSS_CHECK_ONLY",
+        "model_eligible": false
+      },
+      {
+        "publisher": "NinjaTools",
+        "url": "https://ninjatools.io/tools/xrp-etf-flows",
+        "snapshot_date": "2026-11-06",
+        "status": "EXCLUDED_INTERNAL_DATA_ERROR",
+        "normalized_excerpt_sha256": "5255bac1e66b5aeddd3f05c9e65148a5b2146018c48a14f5d3482044d9d44652",
+        "reason": "The page reports fund AUM but zero XRP holdings for all five funds; do not use its holdings/flow fields."
+      }
+    ],
+    "interpretation": "These trackers differ in fund universe, date, missing-issuer handling and whether they report XRP holdings changes or USD flow. The Nov 6 readings are not mutually confirming: XRP Insights reports -663,043 XRP; Alpha Finance reports $0 with incomplete published fund-level detail; CryptoKeyhole says Nov 6 is partial and gives no complete XRP flow. XRP Desk's -752K is dated Nov 7 and has broader sheet columns. Do not average or use these as direct cash flows.",
+    "primary_filing_cross_check": {
+      "publisher": "Canary Capital / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2039505/000199937126017438/xrpc-10q_063026.htm",
+      "period_end": "2026-06-30",
+      "reported_capital_share_transactions_net_usd": 45071186,
+      "reported_total_net_assets_change_usd": -23593051,
+      "interpretation": "The filing shows positive net capital share transactions while total net assets declined due to investment operations/mark-to-market. AUM change is not equivalent to investor flow."
+    }
+  },
+  "custody_and_benchmark_map": [
+    {
+      "issuer": "Franklin Templeton",
+      "fund": "XRPZ",
+      "url": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ",
+      "page_data_as_of": "2026-09-04",
+      "custodian": "Coinbase Custody Trust Company, LLC",
+      "benchmark": "CME CF XRP-Dollar Reference Rate, New York Variant",
+      "freshness_status": "STALE_66_DAYS_AT_CAPTURE"
+    },
+    {
+      "issuer": "Canary Capital",
+      "fund": "XRPC",
+      "url": "https://canaryetfs.com/xrpc/",
+      "page_data_as_of": "2026-10-19",
+      "custodians": [
+        "BitGo Trust Company LLC",
+        "Gemini Trust Company LLC"
+      ],
+      "benchmark": "CoinDesk XRP USD CCIXber 60m New York Rate (per SEC filing)",
+      "freshness_status": "STALE_21_DAYS_AT_CAPTURE"
+    },
+    {
+      "issuer": "21Shares",
+      "fund": "TOXR",
+      "url": "https://www.21shares.com/en-us/products-us/toxr",
+      "page_data_as_of": "2026-09-17",
+      "custodians": [
+        "Anchorage Digital Bank N.A.",
+        "BitGo Bank & Trust N.A.",
+        "Coinbase Custody International Ltd"
+      ],
+      "benchmark": "FTSE XRP Index effective 2026-08-27; prior CME CF XRP-Dollar reference rate",
+      "freshness_status": "STALE_53_DAYS_AT_CAPTURE"
+    }
+  ],
+  "ingestion_change": {
+    "branch_only": true,
+    "added_sources": [
+      {
+        "source_id": "xrp_etf_franklin_xrpz_issuer_page",
+        "url": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ"
+      },
+      {
+        "source_id": "xrp_etf_canary_xrpc_issuer_page",
+        "url": "https://canaryetfs.com/xrpc/"
+      },
+      {
+        "source_id": "xrp_etf_21shares_toxr_issuer_page",
+        "url": "https://www.21shares.com/en-us/products-us/toxr"
+      }
+    ],
+    "treatment": "All three are scheduled, primary-issuer HTML identity receipts only. They are SHA-256-only because redistribution terms have not been reviewed; no HTML bytes are persisted, no as-of time is inferred, and no feature is emitted.",
+    "parser_version": "xrp-public-market-v3.17",
+    "adapter_version": "xrp-public-market-v3.18",
+    "model_eligible": false,
+    "production_schedule_status": "NOT_ACTIVE_ON_MAIN; workflow is guarded to refs/heads/main and this change remains on PR #1640."
+  },
+  "evidence_assessment": {
+    "supported": [
+      "XRP Insights and XRP Desk report materially different labeled exchange-wallet totals because their venue/wallet coverage and timestamps differ; neither total is tradable float.",
+      "The six US single-asset spot XRP ETFs are XRP, XRPZ, XRPC, GXRP, TOXR and XRPR; BITW is a separate multi-asset index sleeve.",
+      "ETF trackers do not agree on Nov 6 completeness or flow: one excludes GXRP from flows, one reports zero with no fund-level holdings, and one marks the day partial awaiting Franklin."
+    ],
+    "competing_hypotheses": [
+      "A same-wallet decline at some exchanges could reflect withdrawals to self-custody, inter-exchange transfers or wallet relabeling rather than net market supply removal.",
+      "ETF holdings changes may approximate creations/redemptions but can also reflect fees, custody movements, data gaps or delayed issuer updates."
+    ],
+    "missing_or_disconfirming": [
+      "No complete daily authorized-participant creation/redemption series has been reconciled across all six issuers.",
+      "No issuer-level raw holdings capture has yet been executed by the scheduled pipeline for the new Franklin, Canary and 21Shares endpoints.",
+      "The issuer page vintages observed are stale; none is admitted as current holdings.",
+      "No wallet-address list or immutable raw balance receipt was captured for XRP Desk's 62-venue scan."
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "model_eligible_features": []
+  },
+  "source_receipts": [
+    {
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "snapshot_at_utc": "2026-11-08T08:00:00Z",
+      "sha256": "d470a8c0e1ecbbad9c0c1a25b4a985de1a76cc8d14308ec2f38e6b5294e3de7d",
+      "hash_scope": "normalized excerpt only"
+    },
+    {
+      "publisher": "XRP Desk",
+      "url": "https://xrpdesk.app/",
+      "snapshot_at_utc": "2026-11-08T16:36:00Z",
+      "sha256": "5cab1a945c0a4add04a87b0f9050273ec672017e191d0e1e9f892bf4ecab9af8",
+      "hash_scope": "normalized excerpt only"
+    },
+    {
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "snapshot_date": "2026-11-06",
+      "sha256": "571815bdda987c71e3f3f82f1f18f4d3bcfcf4f0363a9eeb1a24844c43844650",
+      "hash_scope": "normalized excerpt only"
+    },
+    {
+      "publisher": "XRP Desk",
+      "url": "https://xrpdesk.app/",
+      "snapshot_date": "2026-11-07",
+      "sha256": "1bfb3a0abebcfe699cf9bf8e043840d252c1a37b1c718cdf5224e8343eb88770",
+      "hash_scope": "normalized excerpt only"
+    },
+    {
+      "publisher": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "snapshot_date": "2026-11-06",
+      "sha256": "f31ceac0566738ca60b5eafac564deb31c0f1f4419163757441cf5c45be57857",
+      "hash_scope": "normalized excerpt only"
+    },
+    {
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/all/",
+      "snapshot_date": "2026-11-05",
+      "sha256": "c6350360d5c7142bd3258d8568a9fb50c6fe56f59eae26e52297d733b6b59a7b",
+      "hash_scope": "normalized excerpt only"
+    }
+  ]
+}

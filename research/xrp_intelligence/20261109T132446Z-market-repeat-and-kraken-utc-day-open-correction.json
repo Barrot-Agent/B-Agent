@@ -1,0 +1,192 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_market_retrieval_repeat_and_kraken_utc_day_open_correction",
+  "artifact_id": "20261109T132446Z-market-repeat-and-kraken-utc-day-open-correction",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-09T13:24:46Z",
+  "data_cutoff_utc": "2026-11-09T13:24:46Z",
+  "capture_policy": {
+    "lawful_public_sources_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "hash_scope": "SHA-256 covers the exact compact JSON text surfaced by the public endpoint renderer; no HTTP response headers, cache metadata, or signed exchange receipts were exposed.",
+    "model_admission_policy": "All observations are context-only. Kraken has no surfaced provider event timestamp; OKX is stale; USD and USDT are not normalized; no synchronized Level-2 spot book or trade tape was captured.",
+    "source_independence": "Kraken and OKX are distinct venue endpoints but the OKX observation is stale and the quote currencies differ. Swiftedge is a secondary perpetual-futures view with undisclosed venue coverage. Do not treat the three as independent directional confirmation."
+  },
+  "repeat_capture": {
+    "first_capture_at_utc": "2026-11-09T13:20:07Z",
+    "second_capture_at_utc": "2026-11-09T13:24:46Z",
+    "interval_seconds": 279,
+    "kraken_payload_sha256": "e420b6a71c398de37a1c0cd362814cee36b4dbece2342632d93d320a4f9fc73c",
+    "okx_payload_sha256": "ca0658c5b157f3484a4d0e4fa4a8400189a2169dba062082fa02402ed7d6e485",
+    "kraken_identical_payload": true,
+    "okx_identical_payload": true,
+    "cache_assessment": "UNRESOLVED_IDENTICAL_RENDERED_PAYLOAD",
+    "explanation": "Both endpoint renderings were byte-for-byte identical at captures 279 seconds apart. Without HTTP Date, Age, ETag, Last-Modified or cache headers, this cannot distinguish an unchanged exchange response from a retrieval-layer cache. Treat it as a stale/repeated retrieval, not proof that the market had no trades or price changes."
+  },
+  "correction": {
+    "corrects_artifact_id": "20261109T062905Z-live-spot-quote-staleness-crosscheck",
+    "invalidated_legacy_fields": [
+      "spot.kraken_xrpusd.observations.open_24h_usd",
+      "spot.kraken_xrpusd.observations.last_vs_24h_open_pct"
+    ],
+    "explanation": "Kraken Ticker field `o` is the UTC-day open, not a rolling 24-hour open. Kraken's official API documentation says today's prices start at midnight UTC; the Kraken SDK field map identifies `o` as today's opening price. The earlier artifact's open_24h_usd and last_vs_24h_open_pct labels are invalid. The endpoint payload does not supply a rolling 24-hour open. The production adapter already emits utc_day_open with aggregation_window utc_day; no parser code change was required.",
+    "authoritative_semantics_sources": [
+      "https://docs.kraken.com/api-reference/market-data/get-ticker-information",
+      "https://python-kraken-sdk.readthedocs.io/en/v3.2.0/spot/rest.html"
+    ],
+    "prior_artifact_preserved_unchanged": true
+  },
+  "spot": {
+    "kraken_xrpusd": {
+      "venue": "Kraken",
+      "instrument": "XRP/USD spot",
+      "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "first_retrieved_at_utc": "2026-11-09T13:20:07Z",
+      "repeated_retrieved_at_utc": "2026-11-09T13:24:46Z",
+      "provider_event_time_utc": null,
+      "event_time_status": "NOT_RETURNED_BY_ENDPOINT",
+      "raw_response_sha256": "e420b6a71c398de37a1c0cd362814cee36b4dbece2342632d93d320a4f9fc73c",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.09605000\",\"229\",\"229.000\"],\"b\":[\"1.09604000\",\"2281\",\"2281.000\"],\"c\":[\"1.09609000\",\"1556.71366900\"],\"v\":[\"18329428.52357913\",\"43096646.23133267\"],\"p\":[\"1.09816429\",\"1.11442417\"],\"t\":[21324,41056],\"l\":[\"1.07502000\",\"1.07502000\"],\"h\":[\"1.12503000\",\"1.16816000\"],\"o\":\"1.11203000\"}}}",
+      "observations": {
+        "last_usd": 1.09609,
+        "best_bid_usd": 1.09604,
+        "best_bid_size_xrp": 2281,
+        "best_ask_usd": 1.09605,
+        "best_ask_size_xrp": 229,
+        "top_quote_mid_usd": 1.096045,
+        "top_quote_spread_bps": 0.09123713,
+        "utc_day_open_usd": 1.11203,
+        "last_vs_utc_day_open_pct": -1.433414566,
+        "open_24h_usd": null,
+        "open_24h_status": "NOT_RETURNED_BY_ENDPOINT",
+        "last_vs_24h_vwap_pct": -1.64516981,
+        "volume_utc_day_xrp": 18329428.52357913,
+        "vwap_utc_day_usd": 1.09816429,
+        "trade_count_utc_day": 21324,
+        "volume_24h_xrp": 43096646.23133267,
+        "vwap_24h_usd": 1.11442417,
+        "high_24h_usd": 1.16816,
+        "low_24h_usd": 1.07502,
+        "trade_count_24h": 41056
+      },
+      "quality": {
+        "model_eligible": false,
+        "reason_codes": [
+          "MISSING_PROVIDER_EVENT_TIME",
+          "IDENTICAL_PAYLOAD_ON_REPEAT_CAPTURE",
+          "CACHE_STATUS_UNRESOLVED",
+          "SINGLE_VENUE",
+          "TOP_OF_BOOK_IS_NOT_DEPTH",
+          "NO_HTTP_HEADERS",
+          "NO_RAW_HTTP_WIRE_BYTES"
+        ]
+      }
+    },
+    "okx_xrpusdt": {
+      "venue": "OKX",
+      "instrument": "XRP-USDT spot",
+      "endpoint": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "first_retrieved_at_utc": "2026-11-09T13:20:07Z",
+      "repeated_retrieved_at_utc": "2026-11-09T13:24:46Z",
+      "provider_event_time_utc": "2026-11-09T13:07:55.572Z",
+      "age_seconds_at_capture": 1010.428,
+      "raw_response_sha256": "ca0658c5b157f3484a4d0e4fa4a8400189a2169dba062082fa02402ed7d6e485",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1032\",\"lastSz\":\"90.645396\",\"askPx\":\"1.1032\",\"askSz\":\"5325.809354\",\"bidPx\":\"1.1031\",\"bidSz\":\"1948\",\"open24h\":\"1.1656\",\"high24h\":\"1.1697\",\"low24h\":\"1.0764\",\"volCcy24h\":\"90343937.4182628165\",\"vol24h\":\"81141107.635085\",\"ts\":\"1794229675572\",\"sodUtc0\":\"1.1132\",\"sodUtc8\":\"1.1563\"}],\"msg\":\"\"}",
+      "observations": {
+        "last_usdt": 1.1032,
+        "best_bid_usdt": 1.1031,
+        "best_bid_size_xrp": 1948,
+        "best_ask_usdt": 1.1032,
+        "best_ask_size_xrp": 5325.809354,
+        "top_quote_spread_bps": 0.90649504,
+        "open_24h_usdt": 1.1656,
+        "last_vs_24h_open_pct": -5.35346603,
+        "high_24h_usdt": 1.1697,
+        "low_24h_usdt": 1.0764,
+        "volume_24h_xrp": 81141107.635085,
+        "quote_volume_24h_usdt": 90343937.41826281,
+        "utc_day_open_usdt": 1.1132,
+        "utc_day_8h_open_usdt": 1.1563
+      },
+      "quality": {
+        "model_eligible": false,
+        "freshness_limit_seconds": 300,
+        "reason_codes": [
+          "EVENT_AGE_EXCEEDS_300_SECONDS",
+          "NOT_SYNCHRONIZED_WITH_KRAKEN",
+          "USDT_NOT_NORMALIZED_TO_USD",
+          "TOP_OF_BOOK_IS_NOT_DEPTH",
+          "IDENTICAL_PAYLOAD_ON_REPEAT_CAPTURE"
+        ]
+      }
+    }
+  },
+  "secondary_market_structure": {
+    "source": "Swiftedge",
+    "source_url": "https://swiftedge.uk/xrp/levels",
+    "source_last_updated_at_utc": "2026-11-09T13:09:00Z",
+    "retrieved_at_utc": "2026-11-09T13:24:46Z",
+    "age_seconds_at_capture": 946,
+    "market_type": "XRP perpetual futures",
+    "venue_coverage": "NOT_DISCLOSED_IN_CAPTURED_PAGE",
+    "observations": {
+      "price_usd": 1.1002,
+      "day_change_pct": -1.1,
+      "day_low_usd": 1.076,
+      "day_high_usd": 1.1259,
+      "bid_wall": {
+        "price_usd": 1.095,
+        "size_xrp": 5011735
+      },
+      "ask_wall": {
+        "price_usd": 1.106,
+        "size_xrp": 4352722
+      },
+      "depth_within_1pct": {
+        "bids_usd_millions": 23,
+        "asks_usd_millions": 23,
+        "bids_xrp": 20669342,
+        "asks_xrp": 20791422
+      },
+      "depth_within_2pct": {
+        "bids_usd_millions": 27,
+        "asks_usd_millions": 31,
+        "bids_xrp": 24621842,
+        "asks_xrp": 27732284
+      }
+    },
+    "quality": {
+      "model_eligible": false,
+      "reason_codes": [
+        "SECONDARY_AGGREGATE",
+        "PERPETUAL_FUTURES_NOT_SPOT",
+        "VENUE_COVERAGE_NOT_DISCLOSED",
+        "STALE_OVER_300_SECONDS",
+        "RAW_PAGE_BYTES_NOT_CAPTURED"
+      ]
+    }
+  },
+  "evidence_assessment": {
+    "supported_observations": [
+      "Kraken's surfaced ticker response is below its UTC-day open and 24-hour VWAP, but provider event time and HTTP headers are absent.",
+      "The exact Kraken and OKX JSON renderings repeated unchanged across two captures 279 seconds apart; cache status is unresolved.",
+      "OKX's provider timestamp is 1,010.428 seconds old at the second capture.",
+      "Swiftedge's perpetual-futures book page is 946 seconds old at the second capture."
+    ],
+    "competing_hypotheses": [
+      "The observed venues may have been relatively quiet.",
+      "The public retrieval layer may have returned cached responses.",
+      "The venues may have updated without changing the fields in the surfaced payload."
+    ],
+    "disconfirming_evidence": [
+      "Kraken payload has no provider event timestamp and no surfaced HTTP/cache headers.",
+      "OKX is stale by over sixteen minutes and quoted in USDT.",
+      "Swiftedge is a stale secondary futures-book snapshot, not spot depth.",
+      "No synchronized multi-venue Level-2 spot book or trade tape was captured."
+    ],
+    "model_admission": false,
+    "conclusion": "Repeated payloads cannot establish a no-trade interval or current market state. No synchronized price, depth or flow feature is admitted."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "model_eligible_features": []
+}

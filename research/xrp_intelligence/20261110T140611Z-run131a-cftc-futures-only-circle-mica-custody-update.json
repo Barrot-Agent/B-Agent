@@ -1,0 +1,153 @@
+{
+  "schema_version": "barrot.xrp.supplemental-evidence.v1",
+  "run_id": "run131a",
+  "captured_at_utc": "2026-11-10T14:06:11Z",
+  "cftc_crosscheck": {
+    "scheduled_adapter_primary": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+    "scheduled_adapter_report_type": "Traders in Financial Futures — futures only",
+    "research_crosscheck": "https://www.cftc.gov/dea/options/financial_lof.htm",
+    "research_crosscheck_report_type": "Traders in Financial Futures — futures and options combined",
+    "positions_as_of": "2026-11-03",
+    "report_updated": "2026-11-06",
+    "common_open_interest": [
+      {
+        "contract": "CME XRP",
+        "multiplier_xrp": 50000,
+        "oi_contracts": 7216,
+        "oi_xrp_equivalent": 360800000,
+        "futures_only_weekly_change_contracts": -845,
+        "combined_weekly_change_contracts": -850
+      },
+      {
+        "contract": "Coinbase Nano XRP",
+        "multiplier_xrp": 500,
+        "oi_contracts": 32505,
+        "oi_xrp_equivalent": 16252500,
+        "weekly_change_contracts": -32864
+      },
+      {
+        "contract": "Coinbase Nano XRP Perp Style",
+        "multiplier_xrp": 500,
+        "oi_contracts": 38392,
+        "oi_xrp_equivalent": 19196000,
+        "weekly_change_contracts": -465
+      }
+    ],
+    "total_open_interest_xrp_equivalent": 396248500,
+    "futures_only_weekly_change_xrp_equivalent": -58914500,
+    "combined_weekly_change_xrp_equivalent": -59164500,
+    "unresolved_difference": "The two public files differ by five CME contracts in the weekly change (250,000 XRP-equivalent); cause not established. Preserve both series.",
+    "model_mapping": "The scheduled adapter uses the futures-only file; the combined report is supplemental research. Do not substitute combined change for the scheduled futures-only feature.",
+    "interpretation": "Gross contract-equivalent open interest, not cash, net directional exposure, unique risk or spot flow."
+  },
+  "institutional_update": {
+    "coinbase_q3_2026": {
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "stablecoin_revenue_q3_usd": 306905000,
+      "stablecoin_revenue_nine_months_usd": 904487000,
+      "average_usdc_on_coinbase_products": "Company reports an all-time high; exact amount not stated in the reviewed excerpt.",
+      "circle_agreement": "Renewed on the same terms in 2026.",
+      "total_assets_on_platform_q3_usd": 376600000000,
+      "net_revenue_q3_usd": 1200000000,
+      "net_income_q3_usd": 718700000,
+      "xrp_disclosure": "The reviewed 10-Q contains no XRP-specific holdings or collateral disclosure; this is absence of disclosure, not proof of zero exposure."
+    },
+    "circle_q3_2026": {
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "average_usdc_circulation_usd": 73300000000,
+      "usdc_circulation_september_30_usd": 73879000000,
+      "usdc_onchain_transaction_volume_q3_usd": 13900000000000,
+      "total_revenue_and_reserve_income_q3_usd": 865000000,
+      "net_income_q3_usd": 226000000,
+      "adjusted_ebitda_q3_usd": 317000000,
+      "reserve_income_share_of_total_revenue_q3_percent": 76,
+      "reserve_return_rate_q3_percent": 3.5,
+      "coinbase_distribution_costs_q3_usd": 331300000,
+      "coinbase_distribution_costs_nine_months_usd": 986600000,
+      "binance_equity_placement": {
+        "date": "2026-09-17",
+        "shares": 1200000,
+        "price_per_share_usd": 80.84,
+        "proceeds_usd": 100000000
+      },
+      "binance_commercial_relationship": "Circle describes Binance as making USDC broadly available across its product suite and using USDC as a dollar stablecoin for corporate treasury.",
+      "important_scope": "Circle's USDC-on-platform metric is Circle's own platform, not Coinbase balances. Circle distribution expense and Coinbase stablecoin revenue are different accounting measures and must not be netted."
+    },
+    "mica": {
+      "source": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union",
+      "announcement_date": "2026-10-14",
+      "effective_date": "2026-11-12",
+      "issuer_eu": "Circle Internet Financial Europe SAS",
+      "classification": "USDC is the first significant e-money token classified under MiCA.",
+      "supervision_from_effective_date": "EBA takes direct responsibility for own funds, reserve assets, liquidity requirements and recovery/redemption plans; ACPR retains governance, qualifying holdings, fit-and-proper, outsourcing and conflicts.",
+      "status_at_run": "ANNOUNCED; EFFECTIVE DATE IS TWO DAYS AFTER THIS CAPTURE"
+    },
+    "legal_entity_separation": {
+      "Circle": {
+        "OCC": "Circle National Trust Bank",
+        "NYDFS": "Circle Internet Trust Company LLC",
+        "EU_EMT_issuer": "Circle Internet Financial Europe SAS",
+        "US_USDC_issuer": "Circle Internet Financial LLC"
+      },
+      "Ripple": {
+        "OCC": "Ripple National Trust Bank",
+        "RLUSD_issuer_at_reviewed_cutoff": "Standard Custody & Trust Company"
+      },
+      "Coinbase": {
+        "OCC": "Coinbase National Trust Company",
+        "exchange_parent": "Coinbase Global, Inc."
+      },
+      "caveat": "National trust-bank charters, state limited-purpose trust charters and stablecoin issuing entities are distinct legal persons and permissions; do not collapse them into one license."
+    },
+    "rails_and_collateral": {
+      "coinbase_xrp": "XRP is listed as eligible collateral for USDC borrowing through Morpho on Base, with Coinbase as interface. This is not native XRPL lending.",
+      "coinbase_rlusd": "Coinbase supports RLUSD trading and XRPL/Base/Ethereum transfers; Global Exchange collateral support was announced as future, not verified live.",
+      "standard_chartered_lmax": "Standard Chartered custody support for RLUSD on XRPL is announced; LMAX collateral integration is planned, not verified live.",
+      "bny": "BNY announced XRP and RLUSD custody support. Custody does not establish proprietary purchases or collateral utilization.",
+      "ripple_circle": "No direct Ripple-Circle equity or operating partnership was established in the reviewed primary filings. Shared counterparties (Coinbase, SBI) do not prove a direct relationship."
+    },
+    "sbi_circle_ripple": {
+      "circle_sbi_japan": "50/50 Circle-SBI Japan JV, distinct from the strategic equity investment.",
+      "circle_equity": "SBI Holdings and SBI Shinsei Bank each invested $25M in Circle; distinct from the JV.",
+      "ripple_equity": "SBI Holdings' approximate 9-10% Ripple stake remains based on public disclosures, not an exact current share register.",
+      "sbi_ripple_asia": "60% SBI Group / 40% Ripple ownership.",
+      "remittance": "SBI Remit corridors in the Philippines, Vietnam and Indonesia explicitly use XRP as a bridge; corridor volumes and actual XRP conversion throughput remain undisclosed.",
+      "separation": "SBI VC Trade RLUSD distribution and JPYSC lending are separate from XRP bridge conversion."
+    }
+  },
+  "prediction_engine_gaps_confirmed": {
+    "source_registry": {
+      "total": 46,
+      "hourly": 42,
+      "weekly_cftc": 2,
+      "excluded_noncommercial_xrpl_nodes": 2
+    },
+    "scheduled_macro_sources": false,
+    "missing_macro_source_families": [
+      "BLS CPI/PCE event releases",
+      "Treasury yields and yield curve",
+      "Federal Reserve policy/communications",
+      "oil and energy benchmarks",
+      "FX/USD indices",
+      "geopolitical event feeds"
+    ],
+    "unified_event_timeline_generated_by_collector": false,
+    "scenario_and_counterhypothesis_generation_implemented": false,
+    "forecast_ledger_records_assumptions_and_alternatives": true,
+    "shadow_evaluation_runner_implemented": false,
+    "feature_drift": "Univariate PSI-style feature drift diagnostics; no demonstrated label/concept-drift monitoring.",
+    "effective_sample_size_for_overlapping_horizons": false,
+    "raw_archive_rebuild_into_feature_store": false,
+    "independent_worm_timestamp_anchor": false,
+    "action": "Keep manual event research separate from scheduled feature admission. Prioritize a versioned macro/event adapter, point-in-time release timestamps, raw replay and source-independence controls before forecast issuance."
+  },
+  "source_independence_and_counterhypotheses": {
+    "circle_coinbase": "SEC 10-Qs are primary filings but report different accounting measures; not nettable.",
+    "circle_binance": "Direct Circle equity and USDC distribution relationship; no XRP investment evidence.",
+    "cftc": "Official CFTC contract positions are lagged; futures-only and combined files differ by five CME contracts in weekly change.",
+    "etf": "Aggregators share issuer-file inputs; not independent confirmation; cash versus in-kind and custody transfer unresolved.",
+    "exchange_wallets": "Single labeled-wallet methodology; new-wallet additions and custody reserves distort naive totals.",
+    "spot": "Kraken and OKX observations are asynchronous and USDT normalization is approximate; no arbitrage inference.",
+    "custody": "BNY, Coinbase and BitGo custody roles are not evidence of beneficial ownership, proprietary holdings or market purchases."
+  }
+}
