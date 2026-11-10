@@ -1,0 +1,297 @@
+{
+  "artifact_type": "barrot_xrp_market_institutional_reconciliation",
+  "schema_version": "1.0.0",
+  "run_id": "127",
+  "run_started_at_utc": "2026-11-10T10:05:55Z",
+  "cutoff_policy": "Use provider event/publication times no later than run start. Do not infer missing or unzoned times. Exclude future-stamped observations.",
+  "repository": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_head_before_run": "6a9513a227e9db8b70ad14551cef9e390476df77",
+    "active_pr": 1640,
+    "ahead": 929,
+    "behind": 0,
+    "changed_files": 254
+  },
+  "ingestion_architecture": {
+    "endpoint_definitions": 46,
+    "scheduled_hourly": 42,
+    "weekly_cftc": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "schedule_utc": [
+      "hourly minute 03",
+      "daily 00:15"
+    ],
+    "workflow_main_only": true,
+    "active_on_main": false,
+    "retention_days": {
+      "raw_receipts": 90,
+      "per_run_feature_store": 7,
+      "daily_feature_store": 90
+    },
+    "integrity_limit": "GitHub Actions artifacts are retention-bounded, not WORM. SQLite triggers and manifest hashes are not an adversarial tamper-proof boundary."
+  },
+  "spot": {
+    "kraken": {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time_utc": null,
+      "last_usd": 1.08792,
+      "bid_usd": 1.08768,
+      "ask_usd": 1.08769,
+      "volume_24h_xrp": 24253981.90713789,
+      "vwap_24h_usd": 1.09460651,
+      "high_24h_usd": 1.11573,
+      "low_24h_usd": 1.07502,
+      "open_24h_usd": 1.09748
+    },
+    "okx": {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time_utc": "2026-11-10T09:51:27.078Z",
+      "last_usdt": 1.0894,
+      "bid_usdt": 1.0893,
+      "ask_usdt": 1.0894,
+      "volume_24h_xrp": 63360042.944461,
+      "high_24h_usdt": 1.1167,
+      "low_24h_usdt": 1.0764,
+      "open_24h_usdt": 1.0902
+    },
+    "kraken_usdtusd": {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "provider_event_time_utc": null,
+      "last_usd": 0.99873,
+      "bid_usd": 0.99873,
+      "ask_usd": 0.99874
+    },
+    "okx_normalized_usd": 1.088016462,
+    "difference_vs_kraken_last_percent": 0.0088666446,
+    "interpretation": "About 0.89 bps difference, but asynchronous and not executable. Kraken supplied no event timestamp."
+  },
+  "spot_order_book": {
+    "source_url": "https://fuelmaps.io/order-book/",
+    "snapshot_time_utc": "2026-11-10T08:00:00Z",
+    "xrp_mid_usd": 1.0938,
+    "venues": "6 of 6",
+    "bands": {
+      "0.5pct": {
+        "bids_usd": 8100000,
+        "asks_usd": 5500000,
+        "bid_share_pct": 59.4
+      },
+      "1pct": {
+        "bids_usd": 12700000,
+        "asks_usd": 10100000,
+        "bid_share_pct": 55.6
+      },
+      "2pct": {
+        "bids_usd": 18100000,
+        "asks_usd": 11100000,
+        "bid_share_pct": 61.9
+      },
+      "5pct": {
+        "bids_usd": 24300000,
+        "asks_usd": 13500000,
+        "bid_share_pct": 64.3
+      },
+      "10pct": {
+        "bids_usd": 32800000,
+        "asks_usd": 15000000,
+        "bid_share_pct": 68.7,
+        "venues": "5 of 6"
+      }
+    },
+    "limits": [
+      "Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini only; Binance and Bitget excluded.",
+      "Spot only; no perpetual books.",
+      "Hourly averages of one-minute snapshots.",
+      "Resting orders can be cancelled; hidden orders are not visible."
+    ]
+  },
+  "derivatives": {
+    "liqwall": {
+      "url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-10T10:02:00Z",
+      "oi_usd": 1210000000,
+      "oi_change_24h_pct": -2.2,
+      "liquidations_24h_usd": 4600000,
+      "longs_usd": 4000000,
+      "shorts_usd": 635000,
+      "average_funding_8h_pct": 0.0079,
+      "binance_funding_8h_pct": 0.0099,
+      "binance_accounts_long_pct": 74.9
+    },
+    "tradradar": {
+      "url": "https://tradradar.io/markets/xrp",
+      "as_of_utc": "2026-11-10T09:15:00Z",
+      "mark_price_usd": 1.0869,
+      "oi_usd": 1640000000,
+      "oi_change_24h_pct": -4.13,
+      "funding_oi_weighted_8h_pct": 0.0077,
+      "liquidations_24h_lower_bound_usd": 4800000,
+      "longs_usd": 4070000,
+      "shorts_usd": 731560,
+      "accounts_long_pct": 79.7,
+      "delay_minutes": 15
+    },
+    "disagreement": "OI differs by about 35.5%; venues and aggregation overlap. Do not average. Both show contracting OI, positive funding and long-heavy liquidations."
+  },
+  "cbxrp_reserves": {
+    "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+    "displayed_refresh": "2026-11-10 09:34 AM; timezone unspecified",
+    "reserve_xrp": 152372342.33,
+    "supply_cbxrp": 152370095.8,
+    "base_supply_cbxrp": 152370095.795,
+    "surplus_xrp": 2246.53,
+    "reserve_to_supply_ratio": 1.0000147439,
+    "source_type": "Issuer-published proof-of-reserves page, not an independent attestation.",
+    "xrp_insights_comparison": {
+      "url": "https://xrp-insights.com/exchange-balances",
+      "snapshot_utc": "2026-11-10T08:00:00Z",
+      "coinbase_wallet_total": "5.80B XRP",
+      "included_non_customer_cbxrp_reserve": "150.1M XRP",
+      "difference_vs_coinbase_page_xrp": 2272342.33,
+      "status": "UNRESOLVED_SCOPE_OR_LABEL_RECONCILIATION"
+    },
+    "model_eligible": false,
+    "reason": "The integration code classifies Coinbase cbXRP proof-of-reserves as digest-only/raw-only; tests explicitly prohibit model admission."
+  },
+  "exchange_balances": {
+    "url": "https://xrp-insights.com/exchange-balances",
+    "snapshot_utc": "2026-11-10T08:00:00Z",
+    "tracked_wallets": 701,
+    "exchanges": 24,
+    "tracked_xrp": "22.33B",
+    "circulating_supply_denominator": "68.89B",
+    "same_wallet_change_7d_xrp": -8900000,
+    "same_wallet_change_30d_xrp": -150900000,
+    "two_new_wallets_xrp": "512.0M",
+    "naive_total_change_xrp": "+361.1M",
+    "selected_7d_changes_xrp": {
+      "Coinbase": -28400000,
+      "Kraken": 26700000,
+      "Upbit": 26300000,
+      "Bithumb": -16200000,
+      "Binance": -9000000,
+      "SBI_VC_Trade": -3100000,
+      "Gate_io": -30000000,
+      "Bitstamp": 17400000
+    },
+    "limitation": "Includes cold/hot/deposit/omnibus wallets; not tradable float. Same-wallet changes cannot distinguish customer withdrawals from movements to untracked wallets."
+  },
+  "future_observation_quarantine": {
+    "url": "https://trackwhale.io/xrp-exchange-flows",
+    "page_snapshot_utc": "2026-11-10T10:07:00Z",
+    "run_cutoff_utc": "2026-11-10T10:05:55Z",
+    "status": "EXCLUDED_FUTURE_AT_CUTOFF",
+    "reason": "Page snapshot is 65 seconds after run start; do not backdate. Run126D 09:30 UTC remains the latest admissible capture."
+  },
+  "etf_flows": {
+    "cryptokeyhole": {
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "updated_utc": "2026-11-10T09:57:00Z",
+      "date": "2026-11-09",
+      "status": "PARTIAL_3_OF_4",
+      "reported_outflow_xrp": 9216553,
+      "reported_outflow_usd": "10.1M",
+      "components_xrp": {
+        "Bitwise": -8594551,
+        "Canary_XRPC": -427341,
+        "TOXR": -194660,
+        "Franklin_XRPZ": null
+      },
+      "arithmetic_sum_components_xrp": 9216552,
+      "one_xrp_discrepancy": true,
+      "latest_complete_day_2026_11_06_xrp": -752048,
+      "last_five_complete_days_xrp": -765403,
+      "cumulative_through_2026_11_06_xrp": 2622459
+    },
+    "cryptoetf": {
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "updated_utc": "2026-11-10T05:48:00Z",
+      "reported_outflow_usd": "10.3M",
+      "top_status": "3_OF_5_REPORTED",
+      "internal_conflict": "Later page text says 5 of 5 although the same page headline/table mark XRPZ and GXRP pending."
+    },
+    "alpha": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "date": "2026-11-09",
+      "reported_outflow_usd": "10.4M",
+      "claimed_status": "5_OF_5",
+      "selected_components_usd_thousands": {
+        "Bitwise": -9400,
+        "Franklin_XRPZ": 0,
+        "Canary_XRPC": -811.4,
+        "Grayscale_GXRP": 0,
+        "TOXR": -212.9
+      },
+      "limitation": "No fund list, AUM, holdings or fees published; flow series only."
+    },
+    "reconciliation": "Dashboards report roughly 10.1M-10.4M outflow but differ on completeness, Canary/TOXR values and missing-vs-zero treatment. Shared issuer inputs mean they are not independent confirmations. Do not average or zero-fill."
+  },
+  "macro": {
+    "bls_cpi": {
+      "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
+      "scheduled_eastern": "2026-11-10 08:30 AM",
+      "scheduled_utc": "2026-11-10T13:30:00Z",
+      "status_at_cutoff": "FUTURE_NOT_RELEASED"
+    },
+    "boj_etf_sales": {
+      "url": "https://www.reuters.com/world/asia-pacific/boj-estimates-6-billion-annual-gain-faster-etf-sales-finance-minister-says-2026-11-10/",
+      "published_utc": "2026-11-10T02:34:00Z",
+      "annual_book_value_sales_yen": 860000000000,
+      "prior_annual_book_value_sales_yen": 330000000000,
+      "effective": "2027-01",
+      "additional_annual_proceeds_estimate_yen": 1000000000000,
+      "additional_annual_proceeds_estimate_usd": "6.33B",
+      "qualification": "Finance minister said exact remittance depends on fiscal year-end calculations and budget procedures."
+    },
+    "japan_capital_flows": {
+      "url": "https://www.reuters.com/business/finance/japanese-investors-become-net-buyers-foreign-bonds-first-time-three-months-2026-11-10/",
+      "published_utc": "2026-11-10T05:42:00Z",
+      "october_foreign_bond_purchases_yen": 493900000000,
+      "october_foreign_equity_purchases_yen": 1460000000000,
+      "ytd_net_foreign_debt_sales_yen": 4160000000000,
+      "qualification": "Macro context only; no direct XRP causal relationship established."
+    }
+  },
+  "identity_research": {
+    "sbic": "SBIC East/Central/West remain Tokyo/Nagoya/Osaka regional investment-consultation companies, distinct from SBI Holdings. Tokyo SBIC's official 2025 course included ChatGPT and Copilot instruction for investee companies; not an OpenAI partnership.",
+    "ask_coin": "Ask Coin exchange listing and Permission Coin ASK token are separate candidates. No XRP integration verified.",
+    "actual_capital": "No standardized XRP metric or new primary-source exact-phrase match; preserve cash, in-kind XRP, debt, drawn facilities, contingent capacity and secondary resales as separate categories.",
+    "kamilah_stevenson": "A YouTube channel candidate surfaced through a third-party directory, but identity linkage to the previously corroborated guest-appearance person was not established. No personal-channel inventory or attribution made."
+  },
+  "prediction": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "paper_trade": false,
+    "real_money_action": false,
+    "readiness_thresholds": {
+      "training_samples": 100,
+      "out_of_sample_samples": 100,
+      "shadow_samples": 100,
+      "independent_source_groups": 2,
+      "minimum_horizon_span_multiple": 10,
+      "maximum_weighted_calibration_error": 0.05,
+      "trusted_ed25519_evaluator_attestation": true
+    }
+  },
+  "provenance": {
+    "web_tool_raw_http_bytes_retained": false,
+    "sha256_receipts_for_this_run": null,
+    "reason": "Rendered web/API results did not expose original transport bytes and headers; no hashes fabricated.",
+    "event_time_and_capture_time_distinguished": true,
+    "independence_notes": [
+      "Kraken and OKX are separate exchange APIs but quote timestamps are asynchronous.",
+      "Fuelmaps aggregates six spot venues and excludes Binance/Bitget.",
+      "Liqwall and TradRadar aggregate overlapping derivatives venues.",
+      "CryptoKeyhole, CryptoETF and Alpha share issuer/flow inputs despite separate publishers.",
+      "Coinbase proof-of-reserves is issuer-published; XRP Insights uses public XRPL wallet labels and same-wallet balances."
+    ]
+  },
+  "next_actions": [
+    "Capture October CPI and Real Earnings only after 13:30 UTC and preserve the first-release vintage.",
+    "Resolve the 2.272M XRP Coinbase cbXRP reserve-scope difference.",
+    "Retrieve live Morpho cbXRP/USDC market parameters, state, liquidity, history and oracle data; no current utilization was obtained in this run.",
+    "Expand synchronized historical spot, depth, derivatives, exchange-flow and collateral coverage with independent receipt anchoring.",
+    "Preserve ETF vintages and resolve the one-XRP arithmetic discrepancy without zero-filling missing funds.",
+    "Keep PR #1640 as the sole V3/XRP integration path; do not merge until approvals, branch-protection visibility and Pages authorization are satisfied."
+  ]
+}
