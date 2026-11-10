@@ -1,3 +1,66 @@
+# Barrot XRP Mission — Run123A: Latest Derivatives Refresh and Exact-Head Verification
+
+**Capture: approximately 2026-11-10 07:32 UTC.** This addendum preserves Run123's spot, order-book and ETF source reconciliation. The earlier Run123 derivatives values remain valid historical snapshots at their stated times; the newer provider snapshots below supersede them as the latest available readings.
+
+## Run123 exact-head verification
+
+The Run123 research commit `266a53e4fa6e58576c25b580d346b9fc7830d692` passed all exact-head gates:
+
+- Full repository suite: **1,347 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.48%**, above the 53% floor.
+- Core suite: **677 passed, eight subtests passed**.
+- Wheel build/install and packaged verification of Barrot V3, the XRP mission and canonical data assets passed.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge remains disabled.
+- CodeRabbit review check was skipped, not approved.
+
+Evidence: [full CI 42775579721](https://github.com/Barrot-Agent/B-Agent/actions/runs/42775579721), [dependency audit 42775579719](https://github.com/Barrot-Agent/B-Agent/actions/runs/42775579719), [fail-closed gate 42775579740](https://github.com/Barrot-Agent/B-Agent/actions/runs/42775579740).
+
+The only CI warning was the GitHub Actions cache budget being read-only. Cache saving failed after tests and wheel verification; it did not fail CI.
+
+## Latest derivatives snapshots
+
+- **TradRadar, 06:20 UTC:** mark $1.1006 (+0.53%/24h); OI $1.66B, down 3.99%; OI-weighted funding +0.0070%/8h; at least $6.85M liquidations, $6.07M longs and $777.81K shorts; 79.5% long accounts (ratio 3.89). OI covers seven exchanges; liquidation and long/short summaries cover five.
+- **Liqwall, 07:22 UTC:** spot reference $1.10; OI $1.23B, down 3.1%; average funding +0.0092%/8h (Binance +0.0081%); $3.8M liquidations, $3.1M longs and $676K shorts; 74.6% of Binance XRP accounts long.
+- **Alpha Finance, 06:08 UTC:** spot reference $1.0968; OI $2.45B; 24-hour volume $2.79B; reported long liquidations $6.0M and short liquidations $741.4K. Its modeled largest short cluster is $3.7M at $1.1193, and largest long cluster $2.8M at $1.0685. Modeled aggregate liquidity is $37.5M above and $45.3M below. Binance's heatmap is unavailable for this window.
+
+OI ranges from $1.23B to $2.45B, almost a 2x spread. Long liquidation shares are approximately 82%–89% across the three displays. The source universes, time windows and methodologies differ; underlying venue feeds overlap. Do not average these values.
+
+The descriptive signal is long-heavy liquidation pressure, with OI contraction in TradRadar and Liqwall and mildly positive aggregate funding. This supports a deleveraging description, not a directional forecast. A downside-continuation hypothesis competes with stabilization/mean reversion if spot bids absorb liquidation flow.
+
+Alpha's liquidation clusters are modeled from OI and standard leverage tiers, not observed individual positions or guaranteed triggers. The earlier Run123 Fuelmaps snapshot showed $12.4M bids versus $10.0M asks within 1% across six spot venues at 07:00 UTC; resting orders can be cancelled.
+
+Sources: [TradRadar](https://tradradar.io/markets/xrp), [Liqwall](https://liqwall.com/coins/xrp), [Alpha XRP heatmap](https://alphafinance.io/liquidation-heatmap/xrp/), [Fuelmaps spot book](https://fuelmaps.io/order-book/).
+
+**No forecast is issued.** These cross-provider snapshots are descriptive and are not admitted as synchronized model features.
+
+## Current repository and merge status
+
+- Main SHA remains `d4d43be3427375cf79d190e768976de062e20287`.
+- Run123 tested integration head: `266a53e4fa6e58576c25b580d346b9fc7830d692`.
+- PR #1640 is the sole active V3/XRP integration path; open, non-draft, GitHub reports mergeable. Its exact current compare before this addendum is 912 commits ahead, zero behind, 243 changed paths.
+- Full open PR inventory: 372 (356 drafts, 16 non-drafts); no PRs were closed.
+- Main remains protected, detailed branch-protection API returns HTTP 403, and the visible `Fall Back` ruleset is disabled.
+- #1640 has zero approving reviews. Its 22 inline threads are resolved but outdated.
+- Main's XRP ingestion workflow and primary mission manifest remain absent; the scheduled main-only collector is not active on main.
+- A previous main push triggered a successful dynamic GitHub Pages build-and-deploy. Authorization for another automatic publication remains unresolved.
+
+Merge remains blocked. No merge or bypass occurred.
+
+Run123A structured evidence: `research/xrp_intelligence/20261110T073200Z-run123a-latest-derivatives-refresh.json`.
+
+## Next actions
+
+1. Preserve the single #1640 integration path and complete the current exact-head checks after this documentation/research-only addendum.
+2. Resolve independent approval, branch-protection visibility and Pages publication authorization.
+3. Capture the official BLS October CPI release after 13:30 UTC; it had not yet been released at this cutoff.
+4. Reconcile the partial November 9 ETF flow reports with issuer share/holdings files; keep all missing values null.
+5. Expand synchronized direct derivatives collection beyond Binance/Bybit and preserve source/venue coverage.
+6. Continue independent WORM/timestamp anchoring and historical point-in-time feature coverage before forecast issuance.
+
+
+---
+
 # Barrot XRP Mission — Run123: Spot Depth, Derivatives and ETF Flow Source Reconciliation
 
 **Research cutoff: 2026-11-10 07:17:43 UTC.** This addendum preserves Run122 and its primary-source corrections.
