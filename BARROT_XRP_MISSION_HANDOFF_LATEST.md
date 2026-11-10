@@ -21,7 +21,7 @@ The exact integration head f7dfd1747196f39051819491ee125b1d3eb3973a passed all t
 
 Evidence: [full CI 42776790058](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776790058), [dependency audit 42776790394](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776790394), [fail-closed gate 42776790052](https://github.com/Barrot-Agent/B-Agent/actions/runs/42776790052).
 
-The cache-budget warning made Actions cache read-only but did not fail tests, wheel verification or dependency audit. The Run124 artifact, coordination snapshot, contract correction and regression tests are committed as a descendant of this verified head; their own exact-head CI is pending at this handoff capture.
+The Run124 code/test commit 4177a23050f9a17aad5467a22aba477e91fe674c passed exact-head CI: **1,355 passed, zero failed, eight subtests passed, 59.48% inclusive coverage**. All eight new Run124 evidence/contract tests passed. Core suite: 677 passed, eight subtests. Wheel build and packaged primary-mission verification passed. Six-manifest dependency audit passed with zero known vulnerabilities. Fail-closed gate passed with automatic merge disabled. Evidence: [full CI 42781477255](https://github.com/Barrot-Agent/B-Agent/actions/runs/42781477255), [dependency audit 42781477040](https://github.com/Barrot-Agent/B-Agent/actions/runs/42781477040), [fail-closed gate 42781477082](https://github.com/Barrot-Agent/B-Agent/actions/runs/42781477082). The cache-budget warning made Actions cache read-only but did not fail verification.
 
 ## Fresh XRP market evidence
 
@@ -88,6 +88,10 @@ The Run124 snapshot records all nine platforms. Only this ChatGPT session's GitH
 - #1644–#1650 dependency updates require exact version reconciliation; #1269, #1655, #1659 and #1641 retain unique work. No PRs were closed.
 
 **No merge.** Independent approval is absent; effective branch-protection requirements remain unverified; Pages publication is not authorized. No bypass attempted.
+
+
+
+**Post-Run124 integration head:** 4177a23050f9a17aad5467a22aba477e91fe674c; PR #1640 is now 915 commits ahead, zero behind, with 248 changed paths (+119,738/−3,554). The handoff refresh is documentation-only; the Run124 code/test commit above is the exact head on which the new 1,355-test result was produced.
 
 ## Run124 records
 
