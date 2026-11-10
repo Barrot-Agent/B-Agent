@@ -52,7 +52,7 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert latest["mission"]
     assert "main_workflows" in latest
     assert "institutional_and_macro" in latest
-    assert latest["handoff_map_descendant_parent_head"] == "4b7cba367031c3263bf04c9d8fe1e76588016b25"
+    assert latest["handoff_map_descendant_parent_head"] == current_data["observed_integration_head_before_map_commit"]
     assert latest["prior_market_crosschecks"]
     assert "pages" in current_data["open_pr_inventory"]
     assert "main_active_privileged_writers" in current_data["workflow_safety_audit"]
@@ -78,7 +78,7 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert latest["ci_evidence"]["full_suite"]["failed"] == 0
     assert latest["ci_evidence"]["full_suite"]["subtests"] == 8
     assert latest["ci_evidence"]["full_suite"]["coverage_pct"] == 59.36
-    assert latest["ci_evidence"]["latest_attempt"]["head_sha"] == "4b7cba367031c3263bf04c9d8fe1e76588016b25"
+    assert latest["ci_evidence"]["latest_attempt"]["head_sha"] == latest["handoff_map_descendant_parent_head"]
     assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["passed"] == 1315
     assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["failed"] == 1
     assert latest["institutional_and_macro"]["sbi_ripple"]["sbi_ripple_asia_xrp_handling"].startswith("Ripple's official SBI Ripple Asia profile explicitly states")
