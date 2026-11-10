@@ -32,10 +32,13 @@ def load_run78_snapshot():
     )
 
 
-def test_run82_historical_snapshot_preserves_run78_run77_and_historical_map():
+def test_run109_current_snapshot_preserves_run82_run78_run77_and_historical_map():
     current = load_current()
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
-    observation = current["current_run_observations"]
+    observation = next(
+        item for item in current["prior_run_observations"]
+        if item.get("run_id") == 82 and item.get("captured_at_utc") == "2026-11-09T16:14:36Z"
+    )
     prior77 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 77 and item.get("captured_at_utc") == "2026-11-09T02:01:02Z")
     prior77_addendum = load_run77_snapshot()
     prior78 = load_run78_snapshot()
@@ -44,8 +47,10 @@ def test_run82_historical_snapshot_preserves_run78_run77_and_historical_map():
     prior73 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 73)
 
     assert current["captured_at_utc"] == current["last_verified_at_utc"]
-    assert current["latest_run_snapshot"]["run_id"] == 104
+    assert current["latest_run_snapshot"]["run_id"] == 109
     assert current["latest_run_snapshot"]["captured_at_utc"] == current["captured_at_utc"]
+    assert current["current_run_observations"]["run_id"] == 109
+    assert any(item.get("run_id") == 104 for item in current["prior_run_observations"])
     assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["run_id"] == 82
@@ -63,6 +68,7 @@ def test_run82_historical_snapshot_preserves_run78_run77_and_historical_map():
     assert prior73["captured_at_utc"] == "2026-11-09T00:23:14Z"
     assert historical["captured_at_utc"] == "2026-11-08T22:30:23Z"
     assert historical["current_run_observations"]["run_id"] == 70
+
 def test_run77_prediction_engine_contract_remains_fail_closed():
     observation = load_run77_snapshot()
     engine = observation["prediction_engine"]
