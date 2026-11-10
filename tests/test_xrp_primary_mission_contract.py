@@ -21,7 +21,9 @@ def test_feature_store_contract_endpoint_counts_match_registry() -> None:
     assert len(ENDPOINTS) == 46
     assert len(SCHEDULED_ENDPOINTS) == 42
     assert len(WEEKLY_ENDPOINTS) == 2
-    assert "46 public endpoint records: 42 hourly endpoints, two weekly CFTC sources" in contract
+    assert "46 public endpoint records: 42 hourly scheduled sources, two weekly scheduled CFTC sources" in contract
+    assert "Thus 44 sources are scheduled (42 hourly plus two weekly) and two are excluded." in contract
+    assert "40 endpoint records: 36 hourly scheduled sources" not in contract
     assert "two free non-commercial XRPL public-node endpoints excluded by default" in contract
 
 

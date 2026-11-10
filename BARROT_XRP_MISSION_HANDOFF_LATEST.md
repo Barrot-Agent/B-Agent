@@ -1,3 +1,135 @@
+# Barrot XRP Mission — Run126B: second contract assertion repaired; fresh spot, ETF and cbXRP collateral evidence
+
+**Capture time:** `2026-11-10T09:38:55.286Z`  
+**Main SHA:** `d4d43be3427375cf79d190e768976de062e20287`  
+**Integration branch:** `integration/core-capabilities-mmi-structural-paper-20261104`  
+**Parent integration head:** `14a6d5bd0a2187cba4c0e9e71ce8aaaef2b4a880`  
+**Mission:** XRP intelligence and prediction-engine mastery, priority one.  
+**Foundation:** Preserve Barrot V3 as execution, orchestration, safety and verification.
+
+## Repository and CI diagnosis
+
+The first Run126 correction updated the feature-store contract and the Run124 market-evidence test. The next full-suite run exposed one remaining stale assertion in `tests/test_xrp_primary_mission_contract.py::test_feature_store_contract_endpoint_counts_match_registry`. It still expected “42 hourly endpoints” while the contract correctly says “42 hourly scheduled sources.” The Run124 regression test passed. This is a documentation-contract assertion, not a collector runtime failure.
+
+On pre-correction head `14a6d5bd0a2187cba4c0e9e71ce8aaaef2b4a880`:
+
+- Full suite: **1,367 passed, one failed, eight subtests passed**; coverage 59.58%.
+- Core suite: 677 passed.
+- Dependency audit: six manifests passed, zero known vulnerabilities.
+- Fail-closed gate: passed; automatic merge remains disabled.
+
+Exact evidence:
+- [Full CI 42791775896](https://github.com/Barrot-Agent/B-Agent/actions/runs/42791775896) — one stale assertion described above.
+- [Dependency audit 42791776039](https://github.com/Barrot-Agent/B-Agent/actions/runs/42791776039) — passed.
+- [Fail-closed gate 42791775891](https://github.com/Barrot-Agent/B-Agent/actions/runs/42791775891) — passed.
+
+The remaining assertion is corrected to require 46 total endpoint records, 42 hourly scheduled sources, two weekly CFTC sources, 44 scheduled sources total and two excluded non-commercial XRPL nodes. The correction commit must receive its own exact-head full-suite, dependency and fail-closed runs. No completion claim is made until they pass.
+
+## Integrated repository snapshot
+
+- PR #1640 is the sole V3/XRP integration path. It remains open and non-draft.
+- The preceding head was 925 commits ahead of main, zero behind, with 252 changed paths.
+- Open PR inventory: 372 unique PRs, 356 drafts and 16 non-drafts.
+- Main tree: 1,404 entries / 1,299 blobs / 86 workflow files / 90 Python test files / 30 XRP research files.
+- Integration tree: 1,549 entries / 1,436 blobs / 87 workflow files / 149 Python test files / 81 XRP research files before the Run126B artifact.
+- No new branch or PR was created; main was not modified.
+
+## Fresh market evidence
+
+### Spot and depth
+
+- Kraken XRP/USD: $1.08144; bid $1.08148; ask $1.08149; 24-hour volume 23.92M XRP; VWAP $1.09496; 24-hour high/low $1.11573/$1.07502; 24-hour open $1.09748. The displayed price is approximately 1.46% below the 24-hour open and 15.8% of the way up from the 24-hour low. Kraken supplied no provider event timestamp.
+- OKX XRP-USDT: 1.0812; bid 1.0811; ask 1.0812; 24-hour volume 63.124M XRP; provider event time 09:15:26.275 UTC. Its displayed price is approximately 1.39% below the 24-hour open and 11.9% of the way up from the low.
+- Kraken USDT/USD was 0.99865; mechanical normalized OKX reference approximately $1.07974. The venues and event times are not synchronized; this is not an executable arbitrage observation.
+- Fuelmaps' 07:00 UTC six-venue spot-depth snapshot showed $12.4M bids/$10.0M asks within 1%, and $17.7M/$10.7M within 2%. It is over two hours old at capture and represents cancellable resting liquidity, not executed volume. No fresh synchronized raw L2 was admitted.
+
+### Derivatives
+
+- Liqwall 09:32 UTC: OI $1.19B, down 2.5% on its 24-hour display; $4.8M liquidations, of which $4.2M were longs; funding +0.0068% per eight hours.
+- TradRadar 08:40 UTC: OI $1.64B, down 4.5%; at least $3.77M liquidations, $3.02M longs; funding +0.0060%.
+- OI differs by approximately 38% across aggregators. The common observation is declining OI with long-heavy liquidations and modest positive funding. Venue coverage overlaps; do not average the figures.
+- Competing hypotheses remain long-deleveraging continuation versus liquidation exhaustion/mean reversion. No directional forecast is justified.
+
+### ETF flows — arithmetic and coverage correction
+
+CryptoKeyhole's page updated 09:22 UTC reports a November 9 partial flow for three of four daily-collected funds:
+
+- Bitwise: −8,594,551 XRP.
+- Canary: −427,341 XRP.
+- 21Shares: −194,660 XRP.
+- Calculated component sum: **−9,216,552 XRP**.
+- Page-displayed aggregate: **−9,216,553 XRP**, a one-XRP arithmetic discrepancy that is preserved, not silently corrected.
+- Displayed USD partial: −$10.1M.
+
+Franklin's 9 November file was published 23:47–23:52 UTC on 9 November, but its latest holdings row remained dated 6 November; it is not counted as a 9 November flow. Grayscale is quarterly-only in this tracker; REX-Osprey is excluded because its direct-only file does not represent indirect holdings.
+
+Alpha Finance reports −$10.4M across five displayed funds but shows zeroes for Franklin and Grayscale that are not independently confirmed by current issuer daily files. The two trackers are not averaged. The latest complete day remains November 6: −752,048 XRP/−$887K across four of four daily-collected funds. The November 9 partial is excluded from the cumulative October 23–November 6 total.
+
+### Coinbase cbXRP reserves and Morpho collateral
+
+Coinbase's first-party proof-of-reserves page states cbXRP is backed 1:1 by XRP held by Coinbase. It displays 152,372,342.33 XRP reserves versus 152,370,095.8 cbXRP supply, a displayed surplus of 2,246.53 XRP. The page's refresh label is 8:54 AM on November 10, timezone unspecified. This is reserve/supply evidence, not customer deposits or tradable float.
+
+The Morpho Base USDC/cbXRP market page for market `0xd4a903…4109` displays:
+
+- 62.5% liquidation LTV.
+- $55.58M outstanding USDC debt.
+- $23.54M liquidity.
+- 88.23% utilization.
+- 7.00% borrow rate and 6.14% lend rate.
+- Zero displayed realized and unrealized bad debt.
+- Latest visible activity at 08:43 UTC, including repayments, withdrawals, lending and collateral supply.
+
+The Nov 6 CryptoSlate stress snapshot estimated $8.8448M debt across 1,070 positions within a further 10% oracle decline; $3.2296M across 462 positions within 5%. The Nov 8 Catenaa snapshot estimated $8.4M debt across 920 loans within 10%, and reported 384 liquidations on Nov 6–7, $1.6M debt repaid and 1.53M cbXRP seized, with no bad debt reported. These are dated, fixed-position stress estimates and secondary analyses, not current liquidation buckets.
+
+Morpho liquidations transfer cbXRP on Base. Native XRP sales are not automatic; they require subsequent redemption or sale evidence. The current collector already registers five Morpho endpoints and Coinbase's cbXRP proof-of-reserves endpoint, but their parsers deliberately remain raw-only. Do not promote them until token decimals, unit scaling, block/indexer alignment, oracle time semantics, page locale/timezone and cache freshness are normalized.
+
+## Identity and exact-phrase audit
+
+- Japan's SBIC East/Central/West remain the distinct Tokyo/Nagoya/Osaka regional investment-consultation companies, not SBI Holdings. Tokyo SBIC's official training course includes ChatGPT and Copilot instruction for investee companies; it is not an OpenAI partnership.
+- Exact phrase “SBIC, ChatGPT SBIC”: no exact match found.
+- Exact phrase “actual capital”: no standardized XRP metric or exact match in the reviewed Evernorth prospectus. Keep cash received, in-kind XRP, XRP purchased with cash, delayed funding, debt, contingent equity capacity, secondary resales and warrants separate.
+- “ASK Coin” remains ambiguous between Permission Coin ASK and an inactive Ask Coin exchange; no XRP integration verified.
+- Dr. Kamilah Stevenson person identity is supported by her branded site. A Linktree profile links to YouTube handle `@drkamilahstevenson`, but the canonical channel ID/handle relation remains unverified by first-party YouTube metadata or a reciprocal official-site link. Multiple lookalike channels exist. Keep all ten repository video references candidate-only; verified personal-channel inventory remains zero. Do not ingest or attribute candidate videos as creator uploads.
+- October 2026 U.S. CPI was scheduled for 13:30 UTC on November 10 and had not been released at capture.
+
+## Source and model admission
+
+The structured Run126B evidence artifact is `research/xrp_intelligence/20261110T093855Z-run126b-spot-etf-cbxrp-morpho-identity-update.json`.
+
+Web-rendered observations were not preserved as original HTTP transport bytes with independently anchored SHA-256 receipts. The artifact records provider timestamps where supplied, retrieval/capture limitations, source class and disagreements. These observations are research-only and not admitted to the feature store.
+
+Forecast status: **NOT_ISSUED**. No directional forecast, paper trade or real-money action.
+
+## Review, backlog and merge boundary
+
+- PR #1640: sole active integration path; blocked.
+- 62 review submissions remain COMMENTED; zero APPROVED.
+- 22 inline threads are resolved but outdated.
+- CodeRabbit's automatic review is paused.
+- Main branch-protection detail endpoint returns HTTP 403; the visible fallback ruleset is disabled.
+- GitHub Pages previously deployed automatically after a main push. The PR changes public web assets; specific authorization for automatic publication remains unresolved.
+- #1643: preserve unique research archive.
+- #1653: preserve unique knowledge graph and unresolved review threads.
+- #1642: seven changed paths all overlap #1640; retain until successor is merged and verified on main.
+- #1644–#1650: dependency/action path-overlap candidates; reconcile exact versions before closure.
+- #1317/#1318/#1320: structural/schema/paper-trader overlap candidates.
+- #1254/#1255: dependency candidates.
+- #1269: preserve unique mesh/topology work.
+- #1611/#1614: preserve unique or partially overlapping prediction contracts until exact reconciliation.
+- #1641/#1655/#1659: preserve unique material.
+
+No PRs were closed. No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+## Next concrete actions
+
+1. Complete full-suite CI, dependency audit and fail-closed verification on the new Run126B correction head.
+2. Preserve Morpho and Coinbase sources as raw-only until their timestamp/unit contracts are proven.
+3. Reconcile the one-XRP CryptoKeyhole aggregate arithmetic discrepancy and the Canary/Alpha flow-method disagreement.
+4. Obtain independent PR approval, effective branch-protection visibility and explicit Pages publication authorization.
+5. Continue synchronized historical spot/depth/derivatives/ETF/collateral ingestion and independent receipt anchoring.
+6. Require leakage-safe out-of-sample lift and sufficient independent shadow outcomes before any forecast issuance.
+7. After any authorized merge, fetch main, verify merge commit and files, run main CI, inspect automatic workflow side effects, and close only exact verified duplicates.
+
 # Barrot XRP Mission — Run126: source-registry count correction and exact-head CI repair
 
 **Capture cutoff:** 2026-11-10T09:30:00Z.  
