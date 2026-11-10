@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "run_id": "run11",
-  "captured_at_utc": "2026-11-10T21:04:35Z",
+  "captured_at_utc": "2026-11-10T21:19:02.416Z",
   "mission": {
     "priority": 1,
     "objective": "XRP intelligence and prediction-engine mastery",
@@ -27,8 +27,8 @@
     "pr_state": "OPEN",
     "pr_draft": false,
     "pr_mergeable": true,
-    "pr_changed_files": 956,
-    "pr_additions": 268701,
+    "pr_changed_files": 958,
+    "pr_additions": 269570,
     "pr_deletions": 3655,
     "open_prs": 373,
     "draft_prs": 358,
@@ -37,7 +37,7 @@
     "approvals": 0,
     "unresolved_review_threads": 0,
     "exact_head_checks": {
-      "sha": "5c48f7af14dd95c8da141408bdcfd07a714f8947",
+      "sha": "0f5fb37ac68a39c45ee44d6f15f7226bb51ea4e7",
       "full_repository_tests": {
         "passed": 3363,
         "failed": 0,
@@ -62,10 +62,13 @@
       "coderabbit": "skipped"
     },
     "ci_evidence": {
-      "full_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024488",
-      "full_suite_job": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024488/job/130098782282",
-      "dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024500",
-      "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42893024564",
+      "full_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928807",
+      "full_suite_job": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928807/job/130133371379",
+      "dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928782",
+      "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928795",
+      "push_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42902917639",
+      "push_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42902917584",
+      "push_fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42902917711",
       "main_full_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42890637613",
       "main_pages_deployment_side_effect": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42890636713"
     },
@@ -113,7 +116,10 @@
         "full semantic review of 956 changed files and 44 workflow files is incomplete",
         "credential remains exposed on historical and other open PR branch tips"
       ]
-    }
+    },
+    "integration_head_run11_commit": "0f5fb37ac68a39c45ee44d6f15f7226bb51ea4e7",
+    "integration_ahead_before_run11a": 1926,
+    "integration_tree_entries_before_run11a": 2252
   },
   "security": {
     "exposed_path": ".config/gh/hosts.yml",
@@ -317,7 +323,53 @@
         "short_liquidations_usd": 496000,
         "binance_long_accounts_pct": 74.5
       },
-      "disagreement": "OI differs by approximately 32%; timestamps and venue coverage differ. Do not average or treat aggregators as independent exchange-level observations."
+      "disagreement": "OI differs by approximately 32%; timestamps and venue coverage differ. Do not average or treat aggregators as independent exchange-level observations.",
+      "coinglass_english": {
+        "source": "https://www.coinglass.com/currencies/XRP/futures",
+        "provider_page_snapshot_time_utc": "2026-11-10T11:55:00Z",
+        "provider_display_timezone": "UTC+8",
+        "oi_usd": 2420000000,
+        "oi_change_24h_pct": -2.72,
+        "funding_pct_per_8h": 0.0084,
+        "futures_volume_24h_usd": 2620000000,
+        "spot_volume_24h_usd": 641190000,
+        "futures_to_spot_volume_ratio": 4.1,
+        "liquidations_24h_usd": 4230000,
+        "long_liquidation_share_pct": 84,
+        "venue_scope": "30+ exchanges; page includes CME",
+        "note": "Older localized page snapshot; not synchronized with later spot/L2 data."
+      },
+      "coinglass_french": {
+        "source": "https://www.coinglass.com/fr/currencies/XRP/futures",
+        "provider_event_timestamp": null,
+        "page_retrieved_during_run": true,
+        "oi_usd": 2380000000,
+        "oi_change_24h_pct": -5.02,
+        "funding_pct_per_8h": 0.0079,
+        "futures_volume_24h_usd": 2790000000,
+        "spot_volume_24h_usd": 683750000,
+        "futures_to_spot_volume_ratio": 4.1,
+        "liquidations_24h_usd": 10660000,
+        "long_liquidation_share_pct": 96,
+        "venue_scope": "30+ exchanges; displayed OI includes CME",
+        "note": "No explicit event timestamp; localized page disagrees with English page on OI change and liquidation totals. Preserve disagreement; not an independent source."
+      },
+      "kodexius": {
+        "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+        "updated_at_utc": "2026-11-10T19:34:00Z",
+        "oi_usd": 656430000,
+        "contracts": 7,
+        "funding_pct_per_8h": 0.0096,
+        "volume_24h_usd": 2020000000,
+        "venues": [
+          "Binance",
+          "Bybit",
+          "OKX",
+          "Hyperliquid",
+          "HTX"
+        ],
+        "note": "Perpetual-contract subset; not comparable to CoinGlass futures total including CME."
+      }
     },
     "etf_flows": {
       "source": "https://cryptokeyhole.com/etf-flows/xrp/",
@@ -340,11 +392,204 @@
       "partial_nov9_excluded_from_cumulative": true,
       "disagreement": "XRP Insights broader tracker includes BITW and reports a different universe/total. Trackers reuse issuer holdings data and are not independent confirmations.",
       "model_admission": "EXCLUDED_PENDING_ISSUER_HOLDINGS_AND_CASH_VS_IN_KIND_RECONCILIATION"
+    },
+    "spot_order_book_20utc": {
+      "source": "https://fuelmaps.io/order-book/",
+      "snapshot_time_utc": "2026-11-10T20:00:00Z",
+      "age_at_capture_seconds": 3875,
+      "xrp_mid": 1.0643,
+      "venues_reporting": "6 of 6",
+      "resting_depth_usd": {
+        "within_0_5_pct": {
+          "bids": 9600000,
+          "asks": 6700000,
+          "bid_share_pct": 58.7,
+          "venues": "6/6"
+        },
+        "within_1_pct": {
+          "bids": 14400000,
+          "asks": 11200000,
+          "bid_share_pct": 56.2,
+          "venues": "6/6"
+        },
+        "within_2_pct": {
+          "bids": 19300000,
+          "asks": 13200000,
+          "bid_share_pct": 59.5,
+          "venues": "6/6"
+        },
+        "within_5_pct": {
+          "bids": 24400000,
+          "asks": 15600000,
+          "bid_share_pct": 61.1,
+          "venues": "6/6"
+        },
+        "within_10_pct": {
+          "bids": 34000000,
+          "asks": 17000000,
+          "bid_share_pct": 66.7,
+          "venues": "5/6"
+        }
+      },
+      "largest_displayed_bid_levels": [
+        {
+          "price": 1,
+          "usd": 3400000
+        },
+        {
+          "price": 1.031,
+          "usd": 2700000
+        },
+        {
+          "price": 1.062,
+          "usd": 2600000
+        },
+        {
+          "price": 1.058,
+          "usd": 2100000
+        },
+        {
+          "price": 1.059,
+          "usd": 2000000
+        }
+      ],
+      "coverage_limitations": [
+        "Binance and Bitget are excluded.",
+        "Coinbase, Bitstamp, Bitfinex and Gemini provide full-depth books.",
+        "OKX and Kraken contribute near-price depth only.",
+        "Hourly snapshots can be up to approximately 65 minutes old.",
+        "Displayed resting orders can be cancelled; this is not executed volume."
+      ]
+    },
+    "spot_order_book_latest": {
+      "source": "https://fuelmaps.io/order-book/",
+      "snapshot_time_utc": "2026-11-10T21:00:00Z",
+      "age_at_run_capture_seconds": 1142,
+      "xrp_mid": 1.0603,
+      "venues_reporting": "6 of 6",
+      "resting_depth_usd": {
+        "within_0_5_pct": {
+          "bids": 8100000,
+          "asks": 8000000,
+          "bid_share_pct": 50.3,
+          "venues": "6/6"
+        },
+        "within_1_pct": {
+          "bids": 14600000,
+          "asks": 11800000,
+          "bid_share_pct": 55.2,
+          "venues": "6/6"
+        },
+        "within_2_pct": {
+          "bids": 19700000,
+          "asks": 13500000,
+          "bid_share_pct": 59.4,
+          "venues": "6/6"
+        },
+        "within_5_pct": {
+          "bids": 24700000,
+          "asks": 15600000,
+          "bid_share_pct": 61.3,
+          "venues": "6/6"
+        },
+        "within_10_pct": {
+          "bids": 34600000,
+          "asks": 16900000,
+          "bid_share_pct": 67.2,
+          "venues": "5/6"
+        }
+      },
+      "largest_resting_levels": [
+        {
+          "side": "bid",
+          "price": 1,
+          "usd": 5000000
+        },
+        {
+          "side": "bid",
+          "price": 1.053,
+          "usd": 2600000
+        },
+        {
+          "side": "bid",
+          "price": 1.057,
+          "usd": 2100000
+        },
+        {
+          "side": "ask",
+          "price": 1.062,
+          "usd": 2100000
+        },
+        {
+          "side": "bid",
+          "price": 1.058,
+          "usd": 2000000
+        }
+      ],
+      "coverage_limitations": [
+        "Coinbase, Bitstamp, Bitfinex and Gemini provide full-depth books.",
+        "OKX and Kraken provide near-price depth only.",
+        "Binance and Bitget are excluded.",
+        "The map updates hourly, can be up to approximately 65 minutes old, and averages one-minute book snapshots.",
+        "Resting orders can be cancelled or moved; no hidden/iceberg liquidity is visible."
+      ]
+    },
+    "xrpn_equity": {
+      "source": "https://stockanalysis.com/stocks/xrpn/history/",
+      "underlying_data_source": "S&P Global Market Intelligence",
+      "session_date": "2026-11-10",
+      "daily_close_usd": 7.88,
+      "daily_change_pct": -24.3,
+      "prior_close_usd": 10.41,
+      "intraday_high_usd": 9.99,
+      "intraday_low_usd": 7.39,
+      "daily_volume_shares": 1306938,
+      "close_vs_oct2_high_53_usd_pct": -85.13,
+      "close_vs_oct9_close_17_09_usd_pct": -53.89,
+      "xrp_spot_reference_usd": 1.0649,
+      "xrp_spot_24h_change_pct": -2.9686,
+      "cross_asset_note": "XRPN daily equity return and XRP rolling 24-hour return use different windows and are not a causal beta comparison. XRPN's decline is much larger; no confirmed filing/news catalyst for the November 10 move was identified.",
+      "potential_explanations_not_proven": [
+        "small public float and concentrated ownership",
+        "market repricing of the 73.7M potential resale registration",
+        "equity financing/dilution concerns",
+        "convertible and related-party debt structure",
+        "XRP price weakness and broad risk-off conditions",
+        "post-SPAC price discovery and profit-taking"
+      ],
+      "resale_overhang": {
+        "prospectus": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+        "potential_resale_shares_approx": 73690000,
+        "components_approx": {
+          "issued_class_a": 19100000,
+          "class_c_convertible": 31392746,
+          "company_units": 22953128,
+          "warrants": 239653
+        },
+        "lockup_for_major_holders_until": "2027-04-09",
+        "interpretation": "Registered resale capacity is not proof of shares sold or immediately available float; lock-ups and conversion mechanics apply."
+      },
+      "eloc_capacity_sensitivity": {
+        "max_shares": 5218935,
+        "price_reference_usd": 7.88,
+        "gross_mechanical_value_usd": 41125207.8,
+        "illustrative_97pct_value_usd": 39891451.566,
+        "proceeds_received_as_of_2026_11_09_usd": 0,
+        "note": "Illustrative share-count-times-price sensitivity only; not proceeds, not a commitment to draw, and subject to registration, ownership, volume and other conditions."
+      },
+      "gross_xrp_treasury_value_reference": {
+        "holdings_xrp_as_reported_2026_10_09": 473276430,
+        "xrp_reference_usd": 1.0649,
+        "gross_value_usd": 503992070.307,
+        "status": "NOT_NAV",
+        "caveat": "Uses October 9 holdings and a later XRP price; current holdings, cash, debt, liabilities, restricted shares and share-count basis are not reconciled. Do not calculate premium/discount from this figure."
+      },
+      "share_count_caution": "Third-party market-cap pages use approximately 66.53M shares. The SEC prospectus separately reports Class A, non-voting Class C, units, warrants, incentive-plan shares and ELOC capacity. The vendor share-count basis is not reconciled; no market-cap/NAV multiple is admitted."
     }
   },
   "xrpl_governance": {
     "source": "https://xrpldashboard.com/amendments",
-    "snapshot_time_utc": "2026-11-10T20:54:00Z",
+    "snapshot_time_utc": "2026-11-10T21:02:00Z",
     "enabled_amendments": 98,
     "in_flight": 9,
     "countdown": 0,
@@ -360,7 +605,9 @@
       "XChainBridge": 4
     },
     "lending_stack_active": false,
-    "reason": "SingleAssetVault and LendingProtocol both remain below 29/35 and must satisfy the protocol's consecutive voting threshold."
+    "reason": "SingleAssetVault and LendingProtocol both remain below 29/35 and must satisfy the protocol's consecutive voting threshold.",
+    "validated_ledger": 108246523,
+    "voting_ledger": 108246527
   },
   "macro": {
     "source": "https://www.bls.gov/news.release/cpi.nr0.htm",
@@ -444,7 +691,83 @@
       "drawn_as_of_2026_06_30_usd": 0,
       "repayment_term": "five business days after closing if drawn"
     },
-    "conclusion": "The 5.2M-share ELOC headline is not $80M of received capital. The SEC prospectus explicitly says no ELOC proceeds had been received as of November 9. Separate equity cash, in-kind XRP, cash-purchased XRP, convertible debt and related-party facility draws must remain distinct."
+    "conclusion": "The 5.2M-share ELOC headline is not $80M of received capital. The SEC prospectus explicitly says no ELOC proceeds had been received as of November 9. Separate equity cash, in-kind XRP, cash-purchased XRP, convertible debt and related-party facility draws must remain distinct.",
+    "sbi_cap_table": {
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "as_of": "2026-10-22",
+      "total_class_a_outstanding": 26094680,
+      "total_class_c_outstanding": 31392746,
+      "class_c_rights": "non-voting; economic rights; not freely transferable; conversion to Class A subject to ownership limits",
+      "sbi_controlled_entities": [
+        {
+          "entity": "SBI Holdings USA, Inc.",
+          "class_a": 6529787,
+          "class_c": 1633180,
+          "disclosed_class_a_pct": 25
+        },
+        {
+          "entity": "SBI Venture Fund 2023A Investment LPS",
+          "class_a": 198065,
+          "class_c": 49538,
+          "disclosed_class_a_pct": 0.8
+        },
+        {
+          "entity": "SBI Venture Fund 2023B Investment LPS",
+          "class_a": 285623,
+          "class_c": 71438,
+          "disclosed_class_a_pct": 1.1
+        },
+        {
+          "entity": "SBI PE Holdings Co., Ltd.",
+          "class_a": 2418439,
+          "class_c": 604882,
+          "disclosed_class_a_pct": 9.3
+        }
+      ],
+      "sbi_group_total": {
+        "class_a": 9431914,
+        "class_c": 2359038,
+        "disclosed_share_of_class_a_pct": 36.1,
+        "disclosed_share_of_class_c_pct": 7.5,
+        "maximum_group_voting_ownership_cap_pct": 39.9
+      },
+      "voting_governance": {
+        "sbi_holdings_board": "Voting/dispositive decisions are made by SBI Holdings' board based on management recommendations and majority vote; no single director alone controls the group decision.",
+        "sbi_holdings_usa_board": [
+          "Shohei Yamada",
+          "Yoshihiko Tezuka"
+        ],
+        "venture_fund_general_partner": "SBI Investment Co., Ltd.",
+        "venture_fund_voting_investment_control": "Yoshitaka Kitao",
+        "sbi_pe_holdings_board": [
+          "Yoshitaka Kitao",
+          "Takeshi Goto",
+          "Kenji Uesaka"
+        ]
+      },
+      "ripple_and_sponsor_comparison": {
+        "ripple_class_a": 1678382,
+        "ripple_company_units": 16461545,
+        "contributor_related_party_trust_class_a": 661867,
+        "contributor_related_party_trust_units": 6491583,
+        "ripple_group_voting_cap_pct": 9.9,
+        "arrington_sponsor_class_a": 4704137,
+        "arrington_sponsor_class_c": 29033708,
+        "sponsor_share_of_class_a_pct": 18,
+        "sponsor_share_of_class_c_pct": 92.5,
+        "rippleworks_attributed_ownership_cap_pct": 19.9,
+        "rippleworks_voting_instruction_shares": 4215479,
+        "note": "RippleWorks supplied the 211.319M XRP contribution to Arrington XRP Capital Fund LP sponsor and retains specified voting-instruction rights over 4.215M shares. RippleWorks is not the same legal entity as Ripple Labs."
+      },
+      "consideration_allocation": "The prospectus identifies the SBI-controlled shareholdings and subscription structure but does not allocate each entity's consideration between cash and XRP. Do not attribute the full $214.05M advance-funding cash or 600,000 XRP to SBI.",
+      "interpretation": "This is direct evidence of substantial SBI-controlled equity ownership in Evernorth, distinct from SBI's XRP remittance corridor, RLUSD distribution and the unrelated SBIC East/Central/West companies."
+    },
+    "resale_overhang": {
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "potential_resale_securities_approx": 73690000,
+      "major_holder_lockup_until": "2027-04-09",
+      "interpretation": "Registration is not a sale; class conversions, unit exchanges, warrants and lock-up conditions prevent treating the headline number as immediate free float."
+    }
   },
   "identity_research": {
     "sbic": "SBIC East/Central/West are separate Tokyo/Nagoya/Osaka regional Small and Medium Business Investment & Consultation companies, not SBI Holdings. ChatGPT training/seminars establish education, not OpenAI partnership or XRP integration.",
@@ -592,5 +915,116 @@
     "Add BLS/CPI vintage-aware ingestion, event timelines and scenario/counter-hypothesis generation.",
     "Build synchronized spot/L2/derivatives/collateral history and independent raw-source anchoring.",
     "Continue leakage-safe out-of-sample and shadow evaluation; do not issue a forecast before gates pass."
+  ],
+  "sources": [
+    {
+      "topic": "XRP spot",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "group": "direct_exchange_api",
+      "raw_hash": null
+    },
+    {
+      "topic": "XRP spot",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "group": "direct_exchange_api",
+      "raw_hash": null
+    },
+    {
+      "topic": "USDT/USD conversion",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "group": "direct_exchange_api",
+      "raw_hash": null
+    },
+    {
+      "topic": "Spot L2",
+      "url": "https://fuelmaps.io/order-book/",
+      "group": "single_aggregator_six_spot_venues",
+      "raw_hash": null
+    },
+    {
+      "topic": "Exchange wallet attribution",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "group": "single_wallet_label_aggregator",
+      "raw_hash": null
+    },
+    {
+      "topic": "ETF flows",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "group": "issuer_file_aggregator",
+      "raw_hash": null
+    },
+    {
+      "topic": "Derivatives",
+      "url": "https://www.coinglass.com/currencies/XRP/futures",
+      "group": "derivatives_aggregator",
+      "raw_hash": null
+    },
+    {
+      "topic": "Derivatives",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "group": "perpetual_subset_aggregator",
+      "raw_hash": null
+    },
+    {
+      "topic": "XRPL governance",
+      "url": "https://xrpldashboard.com/amendments",
+      "group": "independent_own_node_roll_call",
+      "raw_hash": null
+    },
+    {
+      "topic": "Evernorth SEC prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "group": "primary_regulatory_filing",
+      "raw_hash": null
+    },
+    {
+      "topic": "Evernorth resale registration",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "group": "primary_regulatory_filing",
+      "raw_hash": null
+    },
+    {
+      "topic": "XRPN equity price",
+      "url": "https://stockanalysis.com/stocks/xrpn/history/",
+      "group": "market_data_vendor_sourced_to_sp_global",
+      "raw_hash": null
+    },
+    {
+      "topic": "SBIC regional identity",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "group": "primary_company_source",
+      "raw_hash": null
+    },
+    {
+      "topic": "Kamilah Stevenson official site",
+      "url": "https://wealthwithconfidence.com",
+      "group": "first_party_identity_source",
+      "raw_hash": null
+    },
+    {
+      "topic": "Kamilah Stevenson guest appearance",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "group": "host_channel_video",
+      "raw_hash": null
+    }
+  ],
+  "research_addenda": [
+    {
+      "id": "run11a",
+      "captured_at_utc": "2026-11-10T21:19:02.416Z",
+      "findings": [
+        "Latest 21:00 UTC Fuelmaps spot-only XRP book shows $14.6M bids versus $11.8M asks within 1%; six venues.",
+        "CoinGlass futures OI snapshots vary materially by locale/time and include CME; Kodexius reports a smaller perpetual-only subset. Do not average.",
+        "XRPN closed November 10 at $7.88, down 24.30% on 1.307M shares; no confirmed catalyst identified.",
+        "SEC prospectus directly identifies four SBI-controlled Evernorth stockholders with 9,431,914 Class A and 2,359,038 Class C shares; Class C is non-voting.",
+        "SBI group holds 36.1% of Class A and 7.5% of Class C, with a 39.9% maximum group voting ownership cap.",
+        "The 73.7M resale registration is potential supply, not actual sales; major holders remain locked up through April 9, 2027."
+      ],
+      "caveats": [
+        "SBI-controlled entities' per-entity subscription consideration cash-versus-XRP allocation is not disclosed.",
+        "XRPN vendor market-cap share-count basis is not reconciled to SEC Class A/Class C/units/warrants; no NAV multiple issued.",
+        "No causal explanation for the November 10 XRPN decline was verified."
+      ]
+    }
   ]
 }

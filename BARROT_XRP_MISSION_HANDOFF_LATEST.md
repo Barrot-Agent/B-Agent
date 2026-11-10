@@ -5498,3 +5498,85 @@ PR #1660 remains open and unmerged. It has zero formal reviews, zero approvals a
 No source PRs were closed. Unique work remains preserved: #1653 (six graph paths, eight unresolved review threads), #1614 (27 unique prediction paths), #1611 (one unique path) and #1269 (eight unique topology paths). Exact duplicates/superseded candidates remain open until successor content is merged and verified on main.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+
+## Run 11A addendum — 2026-11-10T21:19:02.416Z
+
+### Latest spot depth and derivatives reconciliation
+
+Fuelmaps' latest hourly spot-only snapshot is 21:00 UTC, November 10, with XRP mid $1.0603 across six venues:
+- ±0.5%: $8.1M bids / $8.0M asks.
+- ±1%: $14.6M / $11.8M.
+- ±2%: $19.7M / $13.5M.
+- ±5%: $24.7M / $15.6M.
+- ±10%: $34.6M / $16.9M, five of six venues.
+- Bid share within 1%: 55.2%.
+
+Binance and Bitget remain excluded. The map averages one-minute snapshots into an hourly view; resting orders can be cancelled. This is not executed volume or a forecast.
+
+Derivatives providers disagree materially:
+- CoinGlass English page snapshot: approximately $2.42B OI, −2.72% 24-hour change, +0.0084% funding per eight hours, $4.23M liquidations with 84% long.
+- CoinGlass French page: approximately $2.38B OI, −5.02%, +0.0079% funding, $10.66M liquidations with 96% long; no explicit event timestamp.
+- Kodexius: $656.43M OI across seven perpetual contracts and five venues at 19:34 UTC, +0.0096% funding.
+
+CoinGlass includes CME and 30+ venues; Kodexius is a smaller perpetual subset. Localized CoinGlass pages also disagree. Do not average these figures or treat them as independent source groups.
+
+### Evernorth/SBI direct ownership discovery
+
+The November 9 SEC prospectus provides direct cap-table evidence that four SBI-controlled entities are Evernorth shareholders:
+- SBI Holdings USA: 6,529,787 Class A and 1,633,180 Class C.
+- SBI Venture Fund 2023A: 198,065 Class A and 49,538 Class C.
+- SBI Venture Fund 2023B: 285,623 Class A and 71,438 Class C.
+- SBI PE Holdings: 2,418,439 Class A and 604,882 Class C.
+
+Combined: **9,431,914 Class A shares (36.1% of Class A) and 2,359,038 Class C shares (7.5% of Class C)**. Class C shares are non-voting and have economic rights. The SBI group is subject to a maximum 39.9% voting-ownership cap. The filing says SBI Holdings board decisions on voting/dispositive matters follow management recommendations and majority vote.
+
+Relevant entities and people disclosed:
+- SBI Holdings USA board: Shohei Yamada and Yoshihiko Tezuka.
+- SBI Investment Co. is GP of the two SBI venture funds; Yoshitaka Kitao controls their voting/investment decisions.
+- SBI PE Holdings board: Yoshitaka Kitao, Takeshi Goto and Kenji Uesaka.
+
+Comparison:
+- Ripple: 1,678,382 Class A shares and 16,461,545 Pathfinder units.
+- Larsen Lam Children’s Remainder Trust: 661,867 Class A shares and 6,491,583 units.
+- Combined Ripple-group voting cap: 9.9%.
+- Arrington XRP Capital Fund LP sponsor: 4,704,137 Class A and 29,033,708 Class C; RippleWorks has specified voting-instruction rights over 4,215,479 shares acquired with its XRP contribution; 19.9% RippleWorks-attributed ownership cap.
+
+This is direct evidence of SBI-controlled equity exposure to Evernorth, separate from SBI Remit's XRP bridge corridors and SBI VC Trade's RLUSD distribution. The prospectus does not allocate each SBI entity's subscription consideration between cash and XRP; do not attribute the entire $214.05M advance-funding cash or 600,000 XRP to SBI.
+
+Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+### XRPN equity market dislocation
+
+StockAnalysis, using S&P Global Market Intelligence daily data, lists November 10 XRPN close at **$7.88**, down **24.30%** from $10.41, with 1,306,938 shares traded and a $7.39–$9.99 intraday range. This is approximately 85.1% below the October 2 $53 high and 53.9% below the October 9 $17.09 close.
+
+XRP's Kraken reference was $1.0649 with a rolling 24-hour change of approximately −2.97%; the stock and token windows differ, so this is not a causal beta comparison. No confirmed filing or company announcement explaining the November 10 XRPN move was identified.
+
+The SEC's resale registration covers approximately 73.7M potential securities, including issued Class A, non-voting Class C, exchangeable units and warrants. Major holders have lock-ups generally through April 9, 2027. Registration is not a sale or immediate free float.
+
+At the November 10 $7.88 close, the 5,218,935-share ELOC cap has a mechanical gross value of approximately $41.1M (approximately $39.9M at 97% of that price). The SEC prospectus states zero ELOC proceeds as of November 9. This is conditional capacity, not cash received.
+
+The third-party market-cap share-count basis is not reconciled to SEC Class A, Class C, units and warrants. No XRPN market-cap/NAV premium or discount is calculated. The 473.276M XRP holding figure is as of October 9; current holdings, cash and liabilities are not reconciled.
+
+Sources:
+- XRPN daily price: https://stockanalysis.com/stocks/xrpn/history/
+- SEC resale prospectus: https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm
+- ELOC terms: https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm
+
+### Exact-head CI after Run 11 commit
+
+The Run 11 commit `0f5fb37ac68a39c45ee44d6f15f7226bb51ea4e7` completed:
+- Full repository suite: **3,363 passed, zero failed, eight subtests**.
+- Inclusive coverage: **59.58%**.
+- Core tests: 697 passed.
+- Wheel build/install and mission-resource verification passed.
+- Six dependency manifests audited; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merging remains disabled.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928807
+- Full-suite job: https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928807/job/130133371379
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928782
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928795
+
+The next Run 11A research/handoff update is a separate commit and must receive its own exact-head checks. PR #1660 remains unmerged pending approvals, branch-protection visibility, credential remediation, complete workflow review and explicit authorization for automatic Pages publication. Forecast status remains `NOT_ISSUED`.
