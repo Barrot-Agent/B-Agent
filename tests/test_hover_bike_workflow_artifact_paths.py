@@ -52,3 +52,16 @@ def test_workflow_upload_paths_match_generator_outputs() -> None:
 
     for artifact in EXPECTED_ARTIFACTS:
         assert f"hover_bike_revolution/{artifact}" in workflow
+
+
+def test_riemann_harvest_installs_shared_test_dependencies_before_pytest() -> None:
+    workflow = (
+        REPOSITORY_ROOT
+        / ".github"
+        / "workflows"
+        / "riemann-harvest.yml"
+    ).read_text(encoding="utf-8")
+
+    install_step = workflow.index("python -m pip install --quiet pytest pydantic-settings")
+    pytest_step = workflow.index("python -m pytest tests/test_riemann_harvest.py -q")
+    assert install_step < pytest_step
