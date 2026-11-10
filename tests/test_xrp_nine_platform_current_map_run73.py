@@ -347,10 +347,10 @@ def test_run82_historical_snapshot_is_preserved_when_run111_becomes_current():
     assert current["repository_trees"]["integration"]["entries"] == 1522
     assert current["branch_ancestry"]["pr_1640"]["ahead"] == 887
     assert current["branch_ancestry"]["pr_1640"]["behind"] == 0
-    assert current["ci_evidence"]["integration"]["full_suite"]["passed"] == 1343
-    assert current["ci_evidence"]["integration"]["full_suite"]["failed"] == 0
-    assert current["ci_evidence"]["integration"]["full_suite"]["subtests"] == 8
-    assert current["ci_evidence"]["integration"]["full_suite"]["coverage_pct"] == 59.48
+    assert current["ci_evidence"]["full_suite"]["passed"] == 1343
+    assert current["ci_evidence"]["full_suite"]["failed"] == 0
+    assert current["ci_evidence"]["full_suite"]["subtests"] == 8
+    assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.48
     assert current["reviews"]["pr_1640"]["approved"] == 0
     assert current["reviews"]["pr_1653"]["threads_unresolved"] == 8
     assert current["merge_state"]["pages_authorized"] is False
