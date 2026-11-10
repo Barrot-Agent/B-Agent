@@ -81,9 +81,10 @@ def test_run133_evernorth_capacity_debt_and_xrp_purchases_are_separate() -> None
     actual = data["actual_financing"]
     assert actual["cash_used_to_purchase_xrp"] == 214100000
     assert actual["derived_xrp_total_as_of_2026_10_09"] == (
-        actual["in_kind_xrp_contributions"] + actual["cash_used_to_purchase_xrp"] * 0
-        + actual["derived_xrp_total_as_of_2026_10_09"] - actual["in_kind_xrp_contributions"]
+        actual["in_kind_xrp_contributions"]
+        + actual["xrp_reported_purchased_with_cash"]
     )
+    assert actual["xrp_reported_purchased_with_cash"] == 84365876
     notes = actual["convertible_senior_pik_notes"]
     assert notes["principal_usd"] == 30000000
     assert notes["specific_xrp_purchase_proven"] is False
