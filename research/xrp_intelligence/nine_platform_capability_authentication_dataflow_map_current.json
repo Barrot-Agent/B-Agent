@@ -539,8 +539,6 @@
         "ahead": 874,
         "behind": 0,
         "changed": 219,
-        "additions": 91706,
-        "deletions": 3548,
         "mergeable": true
       },
       "pr_1643": {
@@ -31092,13 +31090,17 @@
   },
   "branch_ancestry": {
     "pr_1640": {
-      "head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
-      "ahead": 874,
+      "head": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
+      "ahead": 877,
       "behind": 0,
-      "changed": 219,
-      "additions": 91706,
-      "deletions": 3548,
-      "mergeable": true
+      "changed": 220,
+      "additions": 106060,
+      "deletions": 3554,
+      "mergeable": true,
+      "head_sha": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
+      "changed_files": 220,
+      "commits": 877,
+      "observed_at_utc": "2026-11-10T01:40:48Z"
     },
     "pr_1643": {
       "head": "238f3ff4a69420882c77d225626a352ba19a412c",
@@ -32123,7 +32125,14 @@
     "forecast_status": "NOT_ISSUED",
     "merge_performed": false,
     "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; continue synchronized historical data and independent receipt anchoring.",
-    "map_schema_compatibility": "Preserved legacy fields and historical Run82/Run104 snapshots; latest snapshot now uses full schema."
+    "map_schema_compatibility": "Preserved legacy fields and historical Run82/Run104 snapshots; latest snapshot now uses full schema.",
+    "current_branch_head": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
+    "current_branch_state_observed_at_utc": "2026-11-10T01:40:48Z",
+    "commits_ahead": 877,
+    "commits_behind": 0,
+    "changed_files": 220,
+    "additions": 106060,
+    "deletions": 3554
   },
   "integration_head_before_map_commit": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
   "research_updates": {
@@ -33471,8 +33480,6 @@
         "ahead": 874,
         "behind": 0,
         "changed": 219,
-        "additions": 91706,
-        "deletions": 3548,
         "mergeable": true
       },
       "pr_1643": {
@@ -36314,8 +36321,6 @@
         "ahead": 874,
         "behind": 0,
         "changed": 219,
-        "additions": 91706,
-        "deletions": 3548,
         "mergeable": true
       },
       "pr_1643": {
@@ -38343,7 +38348,11 @@
     "branch": "integration/core-capabilities-mmi-structural-paper-20261104",
     "read_access": true,
     "write_access_tested": true,
-    "action": "Fetched complete main/integration trees, all four open-PR pages, current PR metadata, ancestry and path overlaps, reviews/threads, exact-head CI jobs/logs, dependency audit, fail-closed gate, mission/code contracts and current handoff; updated only existing integration branch with fast-forward compare-and-swap."
+    "action": "Fetched complete main/integration trees, all four open-PR pages, current PR metadata, ancestry and path overlaps, reviews/threads, exact-head CI jobs/logs, dependency audit, fail-closed gate, mission/code contracts and current handoff; updated only existing integration branch with fast-forward compare-and-swap.",
+    "current_branch_state_observed_at_utc": "2026-11-10T01:40:48Z",
+    "current_branch_head": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
+    "pr_commits_ahead": 877,
+    "pr_changed_files": 220
   },
   "xrpl_amendment_status": {
     "as_of_date": "2026-11-09",
@@ -38418,5 +38427,17 @@
       "https://xrpl.to/amendments",
       "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
     ]
+  },
+  "post_run109_branch_state": {
+    "observed_at_utc": "2026-11-10T01:40:48Z",
+    "head_sha": "dcb1f3873f6bd0caedc74194e2d834bdcd85f66e",
+    "commits_ahead": 877,
+    "commits_behind": 0,
+    "changed_files": 220,
+    "additions": 106060,
+    "deletions": 3554,
+    "mergeable": true,
+    "draft": false,
+    "state": "open"
   }
 }
