@@ -27,7 +27,6 @@ import logging
 import argparse
 from pathlib import Path
 from barrot_agent.orchestration.repository_repair_loop import run_repository_repair_loop
-from datetime import datetime
 
 import httpx
 from rich import print
@@ -422,93 +421,6 @@ Repository file tree:
     )
 
 
-def create_repository_repair_commit(repo, audit_text):
-    import base64
-    from datetime import datetime, timezone
-
-    repair_path = "data/autonomous_repair_status.md"
-
-    timestamp = datetime.now(
-        timezone.utc
-    ).isoformat()
-
-    content = (
-        "# Barrot Autonomous Repository Repair\n\n"
-        f"Generated: {timestamp}\n\n"
-        "## Status\n\n"
-        "A repository repair cycle completed and "
-        "the resulting GitHub commit was verified.\n\n"
-        "## Audit Snapshot\n\n"
-        f"{str(audit_text)[:5000]}\n"
-    )
-
-    encoded = base64.b64encode(
-        content.encode("utf-8")
-    ).decode("ascii")
-
-    headers = {
-        "Authorization": f"Bearer {repo.token}",
-        "Accept": "application/vnd.github+json",
-    }
-
-    url = (
-        "https://api.github.com/repos/"
-        f"{repo.full_name}/contents/{repair_path}"
-    )
-
-    existing = repo.client.get(
-        url,
-        headers=headers,
-    )
-
-    payload = {
-        "message": "barrot: verified repository repair cycle",
-        "content": encoded,
-    }
-
-    if existing.status_code == 200:
-        payload["sha"] = existing.json()["sha"]
-    elif existing.status_code != 404:
-        existing.raise_for_status()
-
-    response = repo.client.put(
-        url,
-        headers=headers,
-        json=payload,
-    )
-
-    response.raise_for_status()
-
-    result = response.json()
-
-    commit = result.get("commit") or {}
-    commit_sha = commit.get("sha")
-
-    if not commit_sha:
-        raise RuntimeError(
-            "GitHub returned no commit SHA."
-        )
-
-    verification = repo.client.get(
-        "https://api.github.com/repos/"
-        f"{repo.full_name}/commits/{commit_sha}",
-        headers=headers,
-    )
-
-    verification.raise_for_status()
-
-    if verification.json().get("sha") != commit_sha:
-        raise RuntimeError(
-            "Repository repair commit verification failed."
-        )
-
-    print("REPOSITORY REPAIR COMMIT VERIFIED")
-    print("PATH:", repair_path)
-    print("COMMIT:", commit_sha)
-
-    return commit_sha
-
-
 def main():
     parser = argparse.ArgumentParser()
 
@@ -518,6 +430,17 @@ def main():
             "LUNAROUTE_MODEL",
             "glm-5.3-flash",
         ),
+    )
+
+    parser.add_argument(
+        "--write-local-audit",
+        action="store_true",
+        help="Explicitly write the audit report to data/repository_architecture_audit.md.",
+    )
+    parser.add_argument(
+        "--execute-local-repair",
+        action="store_true",
+        help="Allow local workspace changes after an interactive confirmation.",
     )
 
     args = parser.parse_args()
@@ -546,56 +469,49 @@ def main():
         llm,
     )
 
-    audit_path = Path(
-        "data/repository_architecture_audit.md"
-    )
-
-    audit_path.parent.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    audit_path.write_text(
-        audit,
-        encoding="utf-8",
-    )
-
-    console.print(
-        f"[green]Audit saved to {audit_path}[/green]"
-    )
+    if args.write_local_audit:
+        audit_path = Path("data/repository_architecture_audit.md")
+        audit_path.parent.mkdir(parents=True, exist_ok=True)
+        audit_path.write_text(audit, encoding="utf-8")
+        console.print(f"[green]Audit saved to {audit_path}[/green]")
+    else:
+        console.print(
+            "[yellow]Read-only mode: audit was not written. "
+            "Use --write-local-audit to opt in to this local file write.[/yellow]"
+        )
 
     console.print(
         Markdown(audit)
     )
 
 
-    console.print(
-        "[yellow]Starting autonomous repository repair loop...[/yellow]"
-    )
-
-    repair_report = run_repository_repair_loop(
-        repo=repo,
-        llm=llm,
-        workspace=".",
-        output_dir="data/repository_repair",
-        max_subsystems=3,
-    )
-
-    commit_sha = create_repository_repair_commit(
-        repo,
-        audit,
-    )
-
-    console.print(
-        "Verified repair commit: "
-        f"{commit_sha}"
-    )
-
-    console.print(
-        "[bold green]"
-        "REPOSITORY REPAIR LOOP COMPLETE"
-        "[/bold green]"
-    )
+    if args.execute_local_repair:
+        if not sys.stdin.isatty():
+            raise SystemExit(
+                "--execute-local-repair requires an interactive terminal; "
+                "unattended local mutation is disabled."
+            )
+        confirmation = Prompt.ask(
+            "Type APPLY LOCAL REPAIRS to authorize changes in the current workspace"
+        ).strip()
+        if confirmation != "APPLY LOCAL REPAIRS":
+            raise SystemExit("Local repair was not authorized; no repair was run.")
+        console.print(
+            "[yellow]Starting explicitly authorized local repair loop...[/yellow]"
+        )
+        repair_report = run_repository_repair_loop(
+            repo=repo,
+            llm=llm,
+            workspace=".",
+            output_dir="data/repository_repair",
+            max_subsystems=3,
+        )
+        console.print(f"Local repair result: {repair_report.message}")
+    else:
+        console.print(
+            "[yellow]Read-only mode: local repair loop skipped. "
+            "Use --execute-local-repair only after reviewing the proposed changes.[/yellow]"
+        )
 
     context = build_repo_context(
         repo,
@@ -658,44 +574,12 @@ def main():
             console.print(Markdown(answer))
             continue
 
-        branch = (
-            "b-agent/"
-            + datetime.now().strftime(
-                "%Y%m%d-%H%M%S"
-            )
-        )
-
-        repo.ensure_branch(branch)
-
+        console.print("[yellow]PROPOSED PATCH — NOT APPLIED[/yellow]")
         console.print(
-            f"[yellow]Applying "
-            f"{len(changes)} file change(s)...[/yellow]"
+            "Read-only proposal mode: no branch, commit, file update, or pull request was created."
         )
+        console.print(json.dumps(changes, indent=2, sort_keys=True))
 
-        for path, content in changes.items():
-            repo.commit_file(
-                path=path,
-                content=content,
-                branch=branch,
-                message=f"B-Agent update: {path}",
-            )
-            console.print(
-                f"[green]Updated:[/green] {path}"
-            )
-
-        pr_url = repo.open_pr(
-            head=branch,
-            title="B-Agent automated changes",
-            body=(
-                "Automated changes generated "
-                "by B-Agent."
-            ),
-        )
-
-        console.print(
-            f"[bold green]PR CREATED:[/bold green] "
-            f"{pr_url}"
-        )
 
 if __name__ == "__main__":
     main()
