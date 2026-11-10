@@ -3436,3 +3436,31 @@ This is a live PNC/Coinbase/Circle-issued-USDC institutional dollar rail, but it
 - No directional forecast issued; no paper trade or real-money action.
 
 Structured evidence: [Run130A JSON](research/xrp_intelligence/20261110T132611Z-run130a-cbxrp-morpho-pnc-institutional-update.json).
+
+## Run 130B — October CPI release, missing annual base and immediate market-data quality
+
+**Captured:** 2026-11-10 13:31:08 UTC. The preceding code/evidence head `45895ec7494941cc5f09a7452a416e1e2ca7ca81` passed exact-head verification: **1,371 tests passed, zero failed, eight subtests passed in 65.23 seconds; inclusive coverage 59.58%; wheel build/install passed; six dependency manifests passed with zero known vulnerabilities; fail-closed gate passed.** Evidence: [full CI 42824636726](https://github.com/Barrot-Agent/B-Agent/actions/runs/42824636726), [dependency audit 42824636655](https://github.com/Barrot-Agent/B-Agent/actions/runs/42824636655), [fail-closed gate 42824636707](https://github.com/Barrot-Agent/B-Agent/actions/runs/42824636707). This following commit is documentation/evidence only; its own exact-head CI is pending.
+
+### October 2026 CPI — first release
+
+BLS published release **USDL-26-1685** at 08:30 ET / 13:30 UTC:
+
+- Headline CPI: **+0.4% m/m seasonally adjusted**, down from +0.6% in September.
+- Core CPI: **+0.3% m/m**, unchanged from September.
+- Reuters pre-release consensus: +0.3% headline and +0.2% core. Both monthly prints were 0.1 percentage point hotter than consensus.
+- Shelter +0.3%; food +0.5%; food at home +0.4%; food away +0.5%; energy +0.7%; gasoline +1.0%; used cars/trucks −1.2%.
+- BLS explicitly states that it did not collect October 2025 survey data because of the lapse in appropriations and cannot publish 12-month changes for most October 2026 CPI series. The October headline/core YoY fields are therefore **NULL**, not zero and not an estimate. [BLS first release](https://www.bls.gov/news.release/cpi.nr0.htm), [BLS missing-data methodology](https://www.bls.gov/cpi/factsheets/approximating-missing-data.htm), [Reuters pre-release consensus](https://www.reuters.com/business/us-consumer-prices-expected-have-risen-slower-pace-october-2026-11-10/).
+
+This matters for Barrot's point-in-time macro features: store first-release headline/core m/m with release ID and timestamp; store headline/core YoY as missing with the explicit base-period reason. Never carry September's 3.7% headline / 2.6% core YoY forward as October results, and never synthesize a 12-month comparison.
+
+### Fed interpretation and market pricing
+
+Waller had said core CPI of 0.3% m/m or higher should prompt consideration of a 50bp December move. The actual core print meets that stated threshold. It remains one governor's conditional view, not an FOMC decision. The latest Kalshi page showed 88% for a 25bp hike, 5% for 50bp, 9% hold and 3% cuts, but its displayed update was 06:34 ET, **before** the CPI release. Reuters' 85% futures and LSEG's 98% were also pre-release snapshots. No post-release repricing was independently verified at the capture time; preserve all instruments/timestamps and do not average them. [Reuters on Waller](https://www.reuters.com/business/feds-waller-plans-support-least-quarter-point-rate-hike-december-2026-11-10/), [Kalshi](https://kalshi.com/fed-rate-odds).
+
+### XRP market reaction — insufficient synchronized data
+
+Kraken's pre-release retrieval at 13:19:48 UTC showed last $1.07712, bid $1.07718 and ask $1.07719. Its post-release retrieval at 13:30:26 UTC showed last $1.07765, bid $1.07810 and ask $1.07811. The indicative last-price difference is only +0.049%, but Kraken supplies no provider event timestamp and the pre-print retrieval was over ten minutes before release. OKX still returned its 13:17:53.462 UTC ticker at the post-release check, making it stale. There is no synchronized post-release multi-venue event window. **Do not call this an XRP CPI reaction or use it as an event-study return.** [Kraken ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT).
+
+Structured evidence: [Run130B CPI event JSON](research/xrp_intelligence/20261110T133108Z-run130b-october-cpi-release-and-market-reaction.json).
+
+No directional forecast was issued. No paper trade or real-money action occurred.
