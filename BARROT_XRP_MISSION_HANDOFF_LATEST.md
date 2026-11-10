@@ -1,3 +1,104 @@
+# Barrot XRP Mission — Run126: source-registry count correction and exact-head CI repair
+
+**Capture cutoff:** 2026-11-10T09:30:00Z.  
+**Mission priority:** XRP intelligence and prediction-engine mastery.  
+**Foundation:** Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+## Repository snapshot
+
+- Repository: `Barrot-Agent/B-Agent`
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`
+- Integration branch: `integration/core-capabilities-mmi-structural-paper-20261104`
+- Inspected integration head before this correction: `f7cc3791ad19adefac9de791b8274aba854a06ea`
+- PR #1640: open, non-draft, GitHub reports mergeable; 925 commits ahead, zero behind; 252 changed paths.
+- Full open-PR inventory: 372 unique PRs, 356 drafts and 16 non-drafts.
+- Main tree: 1,404 entries / 1,299 blobs / 86 workflow files / 90 Python test files / 30 XRP research files.
+- Integration tree: 1,549 entries / 1,436 blobs / 87 workflow files / 149 Python test files / 81 XRP research files.
+- No new branch or PR created. Main was not modified.
+
+## Exact-head CI diagnosis
+
+On pre-correction head `f7cc3791ad19adefac9de791b8274aba854a06ea`:
+
+- Core test job passed.
+- Dependency audit passed.
+- Fail-closed gate passed and kept automatic merging disabled.
+- Full repository suite failed: **1,367 passed, 1 failed, 8 subtests passed**; coverage 59.58%.
+- The sole failure was `tests/test_xrp_run124_market_evidence.py::test_run124_feature_store_contract_counts_weekly_cftc_sources`.
+
+The failure was a stale test/documentation mismatch, not a runtime ingestion or prediction failure. The current endpoint registry contains 46 records: 42 hourly scheduled sources, two weekly CFTC sources, and two non-commercial XRPL public-node sources excluded by default. Therefore 44 sources are scheduled (42 hourly plus two weekly), and two are excluded. The test still expected the old 40-record / 36-hourly / 38-scheduled description.
+
+## Executed correction
+
+- Updated the feature-store contract's opening and historical endpoint-count statements to the current 46 / 42 / 2 / 2 inventory and 44 scheduled / 2 excluded split.
+- Updated the Run124 regression test to assert the current count and explicitly reject the obsolete 40 / 36 wording.
+- Preserved the historical Run124 artifact and all prior handoff sections.
+- No market data was fabricated or admitted into the model.
+
+## Exact-head verification boundary
+
+The following runs belong to pre-correction head `f7cc3791ad19adefac9de791b8274aba854a06ea` and must not be represented as verification of the correction commit:
+
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42789782020 — failed only on the stale count assertion above.
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42789781625 — passed.
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42789781552 — passed.
+
+The correction commit must receive its own full-suite CI, dependency audit and fail-closed gate. Exact-head verification is pending until those runs complete.
+
+## Review, branch protection and publication boundary
+
+- PR #1640 has 62 review submissions, all COMMENTED; zero APPROVED reviews.
+- All 22 inline review threads are resolved, but their review state predates the latest changes.
+- CodeRabbit has paused automatic review; its last reviewed commit is `ee280ed1d989f90dcc92f9ee3e8659377ef57dbc`, while `f7cc3791ad19adefac9de791b8274aba854a06ea` was unreviewed.
+- Main branch-protection endpoint returned HTTP 403.
+- The only visible repository ruleset is `10863829` ("Fall Back"), enforcement disabled.
+- GitHub Pages has previously deployed automatically following a main push. PR #1640 changes public web assets; authorization for that automatic publication remains unresolved.
+- Do not merge, bypass protection or deploy while these conditions remain unresolved.
+
+## Integrated architecture and implemented state
+
+On the integration branch, the XRP workstream includes the 46-record public endpoint inventory, 42 hourly scheduled sources, two conditional weekly CFTC sources, two excluded non-commercial XRPL nodes, raw-source receipt/hash logic, point-in-time SQLite feature store, four deterministic baselines, chronological walk-forward evaluation with purge/embargo, calibration and drift diagnostics, and a fail-closed forecast ledger requiring trusted evaluator attestation.
+
+The primary mission manifests and `.github/workflows/xrp-public-ingestion.yml` remain on the integration branch, not main. No scheduled ingestion has been verified on main. SQLite mutation guards and 90-day Actions artifacts are not independent WORM storage or trusted external timestamp anchoring. Synchronized historical market, depth, exchange-flow, derivatives and collateral coverage remains incomplete.
+
+## Backlog classification
+
+- #1640: sole active V3/XRP integration path; blocked on exact-head CI, independent approval, effective branch-protection visibility and Pages publication authorization.
+- #1643: unique XRP research archive; preserve its unique paths.
+- #1653: unique repository knowledge graph; preserve its unique paths and unresolved review threads.
+- #1642: forecast-snapshot work is integrated/overlapping; retain until #1640 is merged and content verified on main.
+- #1644–#1650: dependency/action update candidates; reconcile exact versions and workflow diffs before classifying as superseded.
+- #1317/#1318/#1320: structural, schema and paper-trader overlap candidates; do not close before verified successor merge.
+- #1254/#1255: older dependency candidates; compare against current requirements before classifying.
+- #1269: unique mesh/topology work; preserve.
+- #1614/#1611: unique or partially overlapping prediction contracts; preserve until exact path/commit reconciliation.
+- #1655/#1659/#1641: preserve unique structural, local-inference and autonomous-experimentation material.
+
+No PRs were closed. No merge or external action occurred.
+
+## Forecast and platform status
+
+- Forecast status: **NOT_ISSUED**. No directional forecast, paper trade or real-money action.
+- ChatGPT current-session GitHub read/write is verified.
+- Copilot activity is comment-only; it is not an approval or a verified independent data flow.
+- Claude, Grok, Gemini and Codex remain unverified.
+- Hugging Face has prior build failure evidence; no deployment.
+- Kaggle remains untested; no submission.
+- Databricks previously returned HTTP 403; no workspace write.
+- No persistent authenticated nine-platform exchange or external-model data transfer is verified.
+
+## Next concrete actions
+
+1. Complete full-suite CI, dependency audit and fail-closed gate on the correction head.
+2. Reconcile the full open-PR overlap matrix and preserve unique research/graph/mesh work.
+3. Obtain independent approval and authoritative branch-protection visibility.
+4. Resolve automatic GitHub Pages publication authorization.
+5. Expand synchronized historical XRP spot/depth/derivatives/flows/collateral data and independent raw-source anchoring.
+6. Continue leakage-safe out-of-sample and shadow evaluation; issue no directional forecast until the readiness gate is genuinely met.
+7. After any authorized merge, fetch main again, verify the merge commit and files, run main CI, inspect workflow side effects, then close only exact verified duplicates.
+
+---
+
 # Barrot XRP Mission — Run125C: Coinbase cbXRP reserves and Morpho collateral channel
 
 **Capture cutoff: 2026-11-10T08:50:00Z.** This is a research/handoff-only update on the existing integration branch. The preceding code/test head was ab70744f0ef0073f52933ff9908e8cec4204f5b8.
