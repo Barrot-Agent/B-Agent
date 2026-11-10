@@ -26,6 +26,11 @@ from barrot_agent.orchestration.repository_repair import (
     safe_checkout_branch,
 )
 
+from barrot_agent.orchestration.repository_repair_loop import (
+    assert_clean_feature_worktree,
+    run_repository_repair_loop,
+)
+
 
 class FakeBrain:
     def __init__(self, *responses):
@@ -1357,3 +1362,64 @@ def test_autonomous_audit_receives_real_task_and_uses_bounded_output(tmp_path: P
     assert brain.use_tools is True
     assert brain.max_output_tokens == 384
     assert len(report) <= 2_500
+
+
+def test_clean_nondefault_worktree_passes_local_repair_guard(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    assert assert_clean_feature_worktree(workspace, default_branch="main") == workspace.resolve()
+
+
+def test_local_repair_guard_rejects_dirty_tracked_changes(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    (workspace / path).write_text('FLAG = "USER CHANGE"\\n', encoding="utf-8")
+    with pytest.raises(ValueError, match="tracked or untracked changes"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_local_repair_guard_rejects_untracked_files(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    (workspace / "user-notes.txt").write_text("preserve me\\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="tracked or untracked changes"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_local_repair_guard_rejects_default_branch(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    assert git(workspace, "checkout", "main").returncode == 0
+    with pytest.raises(ValueError, match="non-default feature branch"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_local_repair_guard_rejects_non_git_workspace(tmp_path: Path) -> None:
+    workspace = tmp_path / "not-a-repository"
+    workspace.mkdir()
+    with pytest.raises(ValueError, match="unable to verify Git worktree"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_simple_repair_loop_cannot_modify_git_metadata(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    broken = workspace / "broken.py"
+    broken.write_text("def broken(:\\n", encoding="utf-8")
+    assert git(workspace, "add", "broken.py").returncode == 0
+    assert git(workspace, "commit", "-m", "add reproducible syntax defect").returncode == 0
+    git_config = workspace / ".git" / "config"
+    original_config = git_config.read_text(encoding="utf-8")
+
+    class FakeLLM:
+        def chat(self, messages):
+            del messages
+            return json.dumps({
+                "diagnosis": "attempt to change Git metadata",
+                "changes": [{
+                    "path": ".git/config",
+                    "old": original_config,
+                    "new": original_config + "\\n[unsafe]\\n",
+                }],
+            })
+
+    result = run_repository_repair_loop(workspace=workspace, llm=FakeLLM(), max_attempts=1)
+
+    assert result.success is False
+    assert "Protected repair path rejected" in result.message
+    assert git_config.read_text(encoding="utf-8") == original_config
