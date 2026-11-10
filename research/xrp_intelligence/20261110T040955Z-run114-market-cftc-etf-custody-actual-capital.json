@@ -1,0 +1,495 @@
+{
+  "schema_version": 1,
+  "run_id": 114,
+  "captured_at_utc": "2026-11-10T04:09:55Z",
+  "repository": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_code_test_head_before_run114": "c028c31bb4410fa913a17959bec1755bbedae039",
+    "active_pr": 1640,
+    "branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "no_new_branch_or_pr": true
+  },
+  "exact_head_verification": {
+    "head": "c028c31bb4410fa913a17959bec1755bbedae039",
+    "full_suite": {
+      "passed": 1347,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.48,
+      "floor_percent": 53
+    },
+    "core_suite": {
+      "passed": 677,
+      "subtests": 8
+    },
+    "wheel": "passed; Barrot V3 and XRP mission assets loaded",
+    "dependency_audit": "six manifests passed; zero known vulnerabilities",
+    "fail_closed_gate": "passed; automatic merge disabled",
+    "runs": {
+      "full": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42751096329",
+      "dependencies": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42751096350",
+      "gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42751096208"
+    },
+    "scope_note": "These results are for the code/test parent head. This Run114 evidence/handoff commit needs its own exact-head CI."
+  },
+  "spot": {
+    "retrieval_window_utc": [
+      "2026-11-10T04:06:43Z",
+      "2026-11-10T04:09:55Z"
+    ],
+    "kraken_xrp_usd": {
+      "last": 1.09053,
+      "bid": 1.09037,
+      "ask": 1.09038,
+      "spread_bps": 0.0917,
+      "volume_24h_xrp": 27709668.5423,
+      "vwap_24h": 1.09480105,
+      "high_24h": 1.11573,
+      "low_24h": 1.07502,
+      "provider_timestamp": null
+    },
+    "okx_xrp_usdt": {
+      "last": 1.0924,
+      "bid": 1.0922,
+      "ask": 1.0923,
+      "spread_bps": 0.9154,
+      "volume_24h_xrp": 69720921.429,
+      "high_24h": 1.1167,
+      "low_24h": 1.0764,
+      "provider_timestamp_utc": "2026-11-10T04:02:07.369Z"
+    },
+    "kraken_usdt_usd": {
+      "last": 0.99865,
+      "bid": 0.99864,
+      "ask": 0.99865
+    },
+    "normalized_okx_last_usd": 1.09092526,
+    "cross_venue_gap_percent": 0.0362,
+    "interpretation": "Asynchronous top-of-book quotes in different currencies; not executable arbitrage, synchronized depth or model-admitted data."
+  },
+  "api_receipts": [
+    {
+      "id": "kraken_xrpusd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "sha256": "7166bc4f9abd0527d845dd13f13977409b231034c56a0a8ea7a9b8dd4f6e4a03",
+      "hash_scope": "exact surfaced JSON text, not transport bytes",
+      "response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.09038000\",\"961\",\"961.000\"],\"b\":[\"1.09037000\",\"328\",\"328.000\"],\"c\":[\"1.09053000\",\"341.73636279\"],\"v\":[\"3330292.93239235\",\"27709668.54232824\"],\"p\":[\"1.09551579\",\"1.09480105\"],\"t\":[4014,36529],\"l\":[\"1.08851000\",\"1.07502000\"],\"h\":[\"1.10404000\",\"1.11573000\"],\"o\":\"1.09748000\"}}}"
+    },
+    {
+      "id": "okx_xrpusdt",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "sha256": "f74c28f950fccb1416d1a0bd76d1d7814b879db6556916485f46558165a7c635",
+      "hash_scope": "exact surfaced JSON text, not transport bytes",
+      "response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.0924\",\"lastSz\":\"0.000032\",\"askPx\":\"1.0923\",\"askSz\":\"5267.197796\",\"bidPx\":\"1.0922\",\"bidSz\":\"2026.347038\",\"open24h\":\"1.1127\",\"high24h\":\"1.1167\",\"low24h\":\"1.0764\",\"volCcy24h\":\"76393998.7028220853\",\"vol24h\":\"69720921.429033\",\"ts\":\"1794283327369\",\"sodUtc0\":\"1.0988\",\"sodUtc8\":\"1.1144\"}],\"msg\":\"\"}"
+    },
+    {
+      "id": "kraken_usdtusd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "sha256": "db235bf8899021338bd283ffa61e3efa72e675a6a6f1cad44711239ac76596c7",
+      "hash_scope": "exact surfaced JSON text, not transport bytes",
+      "response_text": "{\"error\":[],\"result\":{\"USDTZUSD\":{\"a\":[\"0.99865000\",\"485182\",\"485182.000\"],\"b\":[\"0.99864000\",\"251269\",\"251269.000\"],\"c\":[\"0.99865000\",\"6.83854818\"],\"v\":[\"54264294.21963448\",\"306206773.86420518\"],\"p\":[\"0.99870676\",\"0.99878813\"],\"t\":[8215,53653],\"l\":[\"0.99863000\",\"0.99850000\"],\"h\":[\"0.99877000\",\"0.99918000\"],\"o\":\"0.99872000\"}}}"
+    }
+  ],
+  "orderbook": [
+    {
+      "source": "EdgeOrNot",
+      "as_of_utc": "2026-11-10T01:39:00Z",
+      "mid": 1.103,
+      "bids_within_1pct_usd": 8500000,
+      "asks_within_1pct_usd": 8200000,
+      "venues": "Binance spot + OKX perpetual",
+      "method": "minute samples, 15-minute averages",
+      "caveat": "mixed markets; older than two hours; visible orders can be cancelled; not tested as a signal",
+      "url": "https://edgeornot.com/order-book-heatmap/xrp"
+    },
+    {
+      "source": "Fuelmaps",
+      "as_of_utc": "2026-11-09T21:00:00Z",
+      "mid": 1.0925,
+      "bids_within_1pct_usd": 7500000,
+      "asks_within_1pct_usd": 4500000,
+      "bid_share_percent": 62.8,
+      "venues_reporting": "5 of 6 spot venues",
+      "caveat": "Kraken degraded; older than seven hours at capture",
+      "url": "https://fuelmaps.io/order-book/"
+    },
+    {
+      "source": "XRPL book-health historical",
+      "as_of_utc": "2026-10-25T14:27:31Z",
+      "ledger": 107895089,
+      "bitstamp_usd_ask_quoted": 1230877.12,
+      "bitstamp_usd_ask_funded": 18041.81,
+      "bitstamp_funded_percent": 1.5,
+      "gatehub_usd_ask_quoted": 1531929.85,
+      "gatehub_usd_ask_funded": 840260.19,
+      "gatehub_funded_percent": 54.8,
+      "ripple_rlusd_ask_funded_percent": 100,
+      "ripple_rlusd_bid_funded_percent": 97.1,
+      "amm_pool_xrp": 1839294,
+      "amm_pool_rlusd": 2379857.61,
+      "caveat": "historical, not current",
+      "url": "https://www.noshashi.app/book-health/"
+    }
+  ],
+  "derivatives": [
+    {
+      "source": "Liqwall",
+      "as_of_utc": "2026-11-10T02:22:00Z",
+      "oi_usd": 1220000000,
+      "oi_change_24h_percent": -1.8,
+      "liquidations_usd": 8200000,
+      "long_usd": 7500000,
+      "short_usd": 706000,
+      "funding_8h_percent": 0.0055,
+      "binance_accounts_long_percent": 74.5,
+      "url": "https://liqwall.com/coins/xrp"
+    },
+    {
+      "source": "TradRadar",
+      "as_of_utc": "2026-11-10T02:00:00Z",
+      "oi_usd": 1660000000,
+      "venues_oi": 7,
+      "oi_change_24h_percent": -3.9,
+      "liquidations_lower_bound_usd": 9080000,
+      "long_usd": 8220000,
+      "short_usd": 864670,
+      "funding_8h_percent": 0.003,
+      "long_short_account_ratio": 3.96,
+      "long_accounts_percent": 79.8,
+      "url": "https://tradradar.io/markets/xrp"
+    },
+    {
+      "source": "Alpha Finance",
+      "as_of_utc": "2026-11-10T01:40:00Z",
+      "oi_usd": 2480000000,
+      "volume_24h_usd": 3030000000,
+      "long_liquidations_usd": 8000000,
+      "short_liquidations_usd": 831700,
+      "modeled_short_cluster": {
+        "price": 1.1192,
+        "usd": 6000000
+      },
+      "modeled_long_cluster": {
+        "price": 1.0833,
+        "usd": 3400000
+      },
+      "caveat": "modeled clusters, broader/different venue coverage",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/"
+    },
+    {
+      "source": "WhaleRadar Hyperliquid sample",
+      "as_of_utc": "2026-11-10T00:50:00Z",
+      "tracked_positions": 17,
+      "notional_usd": 67400000,
+      "short_share_percent": 61,
+      "caveat": "small venue-specific sample, not market-wide whale positioning",
+      "url": "https://whaleradar.com/xrp"
+    }
+  ],
+  "cftc": {
+    "report_date": "2026-11-03",
+    "contracts": [
+      {
+        "name": "CME XRP futures",
+        "code": "176740",
+        "oi_contracts": 7216,
+        "xrp_per_contract": 50000,
+        "xrp_equivalent_oi": 360800000,
+        "traders": 29,
+        "tff": {
+          "dealer_long": 4228,
+          "dealer_short": 4431,
+          "dealer_spread": 17,
+          "asset_manager_long": 868,
+          "asset_manager_short": 802,
+          "asset_manager_spread": 21,
+          "leveraged_long": 1976,
+          "leveraged_short": 1696,
+          "leveraged_spread": 22,
+          "nonreportable_long": 84,
+          "nonreportable_short": 227
+        },
+        "legacy": {
+          "noncommercial_long": 7011,
+          "noncommercial_short": 5546,
+          "noncommercial_spread": 60,
+          "commercial_long": 61,
+          "commercial_short": 1383
+        }
+      },
+      {
+        "name": "Coinbase Nano XRP futures",
+        "code": "176LM1",
+        "oi_contracts": 32505,
+        "xrp_per_contract": 500,
+        "xrp_equivalent_oi": 16252500,
+        "traders": 37,
+        "tff": {
+          "leveraged_long": 29317,
+          "leveraged_short": 31625,
+          "leveraged_spread": 120,
+          "other_reportables_long": 2693,
+          "other_reportables_short": 601,
+          "nonreportable_long": 375,
+          "nonreportable_short": 159
+        }
+      },
+      {
+        "name": "Coinbase Nano XRP Perp Style futures",
+        "code": "176LM3",
+        "oi_contracts": 38392,
+        "xrp_per_contract": 500,
+        "xrp_equivalent_oi": 19196000,
+        "traders": 284,
+        "tff": {
+          "leveraged_long": 1780,
+          "leveraged_short": 29554,
+          "other_reportables_long": 28858,
+          "other_reportables_short": 2853,
+          "nonreportable_long": 7754,
+          "nonreportable_short": 5985
+        }
+      }
+    ],
+    "gross_contract_equivalent_oi_xrp": 396248500,
+    "cme_legacy_noncommercial_net_contracts": 1465,
+    "status_note": "176LM2 appears in the CFTC futures-and-options-combined dropped section, not the futures-only dropped section. Its absence from the futures-only report is not proof of a futures-only drop; retain not_reported_status_unverified, never zero-fill.",
+    "caveat": "Gross contract-equivalent OI is not cash, collateral, unique net exposure or spot demand. TFF categories are not equivalent to Legacy noncommercial/commercial categories.",
+    "sources": [
+      "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "https://www.cftc.gov/dea/futures/deacmelf.htm",
+      "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    ]
+  },
+  "etf": {
+    "issuer_primary": [
+      {
+        "fund": "Bitwise XRP ETF",
+        "as_of": "2026-11-08",
+        "xrp_in_trust": 406770577.61,
+        "market_value_usd": 444762949.56,
+        "xrp_per_share": 11.162749,
+        "shares_outstanding": 36440000,
+        "aum_usd": 444716509,
+        "fee_percent": 0.34,
+        "administrator": "BNY Mellon",
+        "trust_custodian": "BNY Mellon",
+        "digital_asset_custodian": "Coinbase Custody Trust Co., LLC",
+        "benchmark": "CME CF XRP-Dollar Reference Rate NY Variant, 3-4pm ET TWAP",
+        "nav_date": "2026-11-05",
+        "premium_discount_percent": -0.56,
+        "url": "https://bitxrpetf.com/"
+      },
+      {
+        "fund": "21Shares TOXR",
+        "as_of": "2026-11-09",
+        "aum_usd": 117095818.31,
+        "shares_outstanding": 11000000,
+        "nav_per_unit_usd": 10.65,
+        "fee_percent": 0.3,
+        "custodians": [
+          "Anchorage Digital Bank N.A.",
+          "BitGo Bank & Trust N.A.",
+          "Coinbase Custody International Ltd"
+        ],
+        "benchmark": "FTSE XRP Index",
+        "benchmark_effective_date": "2026-08-27",
+        "previous_benchmark": "CME CF XRP-Dollar Reference Rate New York Variant",
+        "history_restated": false,
+        "issuer_holdings_units": "blank in captured page",
+        "url": "https://www.21shares.com/en-us/products-us/toxr"
+      }
+    ],
+    "aggregator_comparison": [
+      {
+        "source": "XRP Insights",
+        "universe": "6 US spot funds + BITW",
+        "holdings_xrp": 1195230000,
+        "aum_usd": 1405270000,
+        "last_complete_flow_date": "2026-11-06",
+        "flow_nov6_xrp": -663043,
+        "flow_week_nov2_6_xrp": -812500,
+        "nov9_status": "not yet shown; next-morning issuer settlement",
+        "displayed_bitwise_xrp": 415400000,
+        "displayed_toxr_aum_usd": 126300000,
+        "url": "https://xrp-insights.com/"
+      },
+      {
+        "source": "Corpstacking",
+        "universe": "10 global funds/ETPs/trusts",
+        "as_of": "2026-11-06",
+        "holdings_xrp": 1415142972,
+        "top_holdings": [
+          [
+            "Bitwise",
+            415365129
+          ],
+          [
+            "Franklin",
+            310430333
+          ],
+          [
+            "Canary",
+            243714802
+          ]
+        ],
+        "evernorth_label": "closed/awaiting first report is stale; Nov9 SEC prospectus reports about 473M at closing; corporate treasury is not an ETF/ETP",
+        "url": "https://www.corpstacking.com/treasuries/by-token/ripple"
+      },
+      {
+        "source": "Alpha Finance",
+        "universe": "5 funds as displayed",
+        "as_of": "2026-11-09",
+        "reported_flow_usd": -10400000,
+        "row_level_issuer_receipts_captured": false,
+        "url": "https://alphafinance.io/"
+      },
+      {
+        "source": "CryptoKeyhole partial",
+        "universe": "4 daily-tracked US funds",
+        "as_of": "2026-11-09",
+        "reported_funds": 2,
+        "partial_holdings_change_xrp": -8789212,
+        "components": {
+          "bitwise": -8594551,
+          "toxr": -194660
+        },
+        "caveat": "partial and not reconciled to all issuers; Bitwise delta matches the Nov6 aggregator vs Nov8 issuer difference"
+      }
+    ],
+    "quality_note": "The XRP Insights Bitwise value 415.4M is older than issuer-primary 406.7706M by 8.595M XRP; its TOXR AUM $126.3M is about $9.2M above 21Shares' Nov9 issuer AUM. Tracker universes and dates differ. Holdings deltas are not automatically cash subscriptions/redemptions or public-market sales."
+  },
+  "evernorth": {
+    "sec_filing_nov9": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "reported_xrp_at_oct9_close_approx": 473000000,
+    "closing_cash_gross_usd": 272600000,
+    "cash_components_usd": {
+      "private_placements": 224600000,
+      "trust_released": 48000000
+    },
+    "in_kind_xrp": 388910554,
+    "advance_cash_used_to_purchase_xrp_usd": 214050000,
+    "xrp_purchased": 84365876.3625,
+    "historical_average_purchase_price": 2.53657058,
+    "delayed_funding": {
+      "cash_usd": 10500000,
+      "xrp": 200000
+    },
+    "in_kind_components": {
+      "sponsor_series_c": 211319096,
+      "related_party_entity": 50000000,
+      "ripple_pathfinder_contribution": 126791458,
+      "advance_subscriber_xrp": 600000
+    },
+    "convertible_note": {
+      "principal_usd": 30000000,
+      "issued": "2026-10-12",
+      "net_cash_usd": 29000000,
+      "advisor_fee_usd": 1000000,
+      "purchaser": "NH Investment & Securities as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No.3",
+      "coupon_percent": 4,
+      "pik": true,
+      "maturity": 2031,
+      "intended_use": "general corporate, including possible XRP acquisition",
+      "actual_xrp_use": "not established"
+    },
+    "eloc": {
+      "shares": 5218935,
+      "price_formula": "97% VWAP; 4.99% ownership cap; 20% daily volume cap",
+      "commitment_fee_usd": 521893.5,
+      "additional_fee_cap_usd": 1000000,
+      "expense_cap_usd": 500000,
+      "stoneX_underwriter_fee_usd": 200000,
+      "prospectus_gross_estimate_usd": 76800000,
+      "prospectus_net_estimate_usd": 74400000,
+      "at_14_71_full_price_usd": 76767734.85,
+      "at_97_percent_usd": 74446702.8,
+      "arithmetic_issue": "disclosed table gross equals 100% of assumed price; 97% formula gives about $74.45M before expenses; narrative net $74.4M does not reconcile all fees",
+      "actual_notice_or_settlement": "not found"
+    },
+    "public_warrants": {
+      "shares": 11499992,
+      "exercise_price": 11.5,
+      "max_cash_if_all_exercised_usd": 132249908,
+      "exercises_verified": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067062/a424b3sticker8-k.htm"
+    },
+    "resale_registration": {
+      "shares_registered": 73688162,
+      "company_proceeds_from_holder_resales_usd": 0,
+      "sponsor_warrants": 239653,
+      "sponsor_warrant_exercise_price": 11.5,
+      "max_sponsor_warrant_cash_usd": 2756009.5,
+      "interpretation": "secondary XRPN equity supply, not new XRP capital"
+    },
+    "related_party_facility": {
+      "drawn_as_of_oct7_usd": 9700000,
+      "lender": "Ripple intercompany Company Facility",
+      "repayment_after_close": "not verified"
+    },
+    "on_chain_tracker": {
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "ledger": 108231279,
+      "closed_utc": "2026-11-10T03:45:00Z",
+      "wallets": 13,
+      "attributed_balance_xrp": 103129905,
+      "moved_outside_attributed_set_xrp": 370346663,
+      "latest_transfer_date": "2026-10-22",
+      "explorer_detail_fetch": "HTTP 403; not independently re-read",
+      "interpretation": "unattributed destinations; not proof of sale, exchange deposit, loss or encumbrance"
+    }
+  },
+  "macro": {
+    "next_event": "US October 2026 CPI and Real Earnings",
+    "scheduled_utc": "2026-11-10T13:30:00Z",
+    "scheduled_local": "2026-11-10 08:30 America/New_York",
+    "status": "future at capture",
+    "url": "https://www.bls.gov/schedule/2026/11_sched.htm"
+  },
+  "exact_phrase_status": {
+    "ask_coin": "Permission Coin ASK remains a candidate; no XRP integration verified",
+    "actual_capital": "not a standardized metric; use cash/in-kind/debt/contingent/secondary taxonomy",
+    "sbic_chatgpt": "no exact primary match; Tokyo SBIC ChatGPT/Copilot training is not an OpenAI partnership",
+    "japan_sbic": "East/Central/West are Tokyo/Nagoya/Osaka regional policy investment companies, not SBI Holdings",
+    "kamilah_stevenson": "identity/guest appearance evidence retained; no new personal-channel upload without verified channel ownership"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Long-heavy liquidation and declining OI may continue to pressure spot if bids weaken",
+      "counter": "OI aggregates disagree; spot depth snapshots differ and are asynchronous",
+      "test": "synchronized venue-level taker flow, L2 depletion/replenishment, funding and OI"
+    },
+    {
+      "id": "H2",
+      "claim": "ETF holdings reductions may indicate redemptions",
+      "counter": "cash vs in-kind AP redemption unknown; issuer and tracker dates differ; fees reduce XRP per share",
+      "test": "issuer holdings, share counts, AP basket files and custodian transfers"
+    },
+    {
+      "id": "H3",
+      "claim": "Evernorth transfers outside attributed wallets may be custody consolidation, venue transfer, OTC or deployment",
+      "counter": "destinations not attributed; explorer fetch blocked",
+      "test": "direct rippled account_tx/account_info or alternate accessible explorer"
+    },
+    {
+      "id": "H4",
+      "claim": "Stablecoin/custody growth can increase XRPL activity without increasing XRP bridge demand",
+      "counter": "corridor-level XRP conversions not disclosed",
+      "test": "asset-specific settlement, bridge conversions and corridor volumes"
+    },
+    {
+      "id": "H5",
+      "claim": "Displayed order-book imbalance may be transient",
+      "counter": "no pre-registered persistence/return test",
+      "test": "wall survival, cancellation, executed volume and post-event returns"
+    }
+  ],
+  "provenance": {
+    "raw_http_wire_bytes_preserved": false,
+    "api_hashes": "exact surfaced JSON text only; headers and wire bytes not captured",
+    "rendered_pages": "URLs and source dates retained; not mislabeled as raw bytes",
+    "model_admission": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}
