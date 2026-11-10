@@ -4512,3 +4512,123 @@ Detailed CFTC calculations and market data are embedded in the current capabilit
 The first Run103 map replacement omitted nested fields from the prior latest snapshot. This follow-up repair merges Run103 into the parent map instead of replacing it: prior market/ETF crosschecks, institutional relationships, main workflow evidence, workflow quarantine lists, branch-ancestry details, review metadata, merge blockers and PR pagination are preserved. The prior market snapshot is archived under prior_market_crosschecks. The regression test now asserts preservation of these fields.
 
 This repair is a descendant of 32bd1c8c1ce76c1112a0daa8450e624c94c927fa. The verified code/test head remains 0cced5af3b673b5d39e45cfc18c53416e1ed394a. Exact-head CI for the handoff/map/test descendants is pending; no parent-head result is transferred. No merge or external action occurred.
+
+---
+
+## Run104 — 2026-11-10 — exact-head repair, SBIC identity resolution and institutional reconciliation
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+- Main: `d4d43be3427375cf79d190e768976de062e20287`.
+- Existing integration branch code/test head: `044a0428a5479bd8dac8ef56cd59fd428889ae5f`.
+- PR #1640: 862 commits ahead, zero behind; 218 changed paths; 99,401 additions and 3,554 deletions; GitHub reports cleanly mergeable.
+- Complete recursive trees: main 1,404 entries/1,299 files/101 test modules/86 workflow entries; integration 1,515 entries/1,402 files/155 test modules/87 workflow entries.
+- Open PR inventory: 372 total, 356 drafts and 16 non-drafts, paginated 100/100/100/72.
+- No new branch or PR was created.
+
+### Exact-head verification — code/test head 044a0428
+
+The previous full-suite run on `5ac45a24` had 1,315 passes and one failure. The failed assertion required an exact `PLAUSIBLE_UNCONFIRMED` string even though the parser correctly appended the explanation that the current-week reportable-trader count is unavailable and the CFTC status index does not disclose the drop reason. The repair changes the regression test to assert the stable prefix and both required rationale clauses. Production parsing behavior was not changed.
+
+Exact-head results on `044a0428`:
+
+- Full repository suite: **1,316 passed, 0 failed, 8 subtests passed; 59.36% inclusive coverage**. [CI 42724825928](https://github.com/Barrot-Agent/B-Agent/actions/runs/42724825928)
+- Core suite: **677 passed, 0 failed, 8 subtests passed**.
+- Wheel build and installed-wheel verification passed; the installed wheel loaded Barrot V3, the priority-one XRP mission and canonical data assets.
+- Six-manifest dependency audit passed with **zero known vulnerabilities**. [Audit 42724825921](https://github.com/Barrot-Agent/B-Agent/actions/runs/42724825921)
+- Fail-closed gate passed and explicitly kept automatic merging disabled. [Gate 42724825948](https://github.com/Barrot-Agent/B-Agent/actions/runs/42724825948)
+
+The following handoff/map/test commit is a documentation and regression-test descendant. Its own exact-head CI must complete before that descendant is described as verified.
+
+### Endpoint inventory correction
+
+The source adapter defines **40 endpoint records**: 36 scheduled hourly public sources, two weekly CFTC sources (TFF positions and the COT contract-status index), and two non-commercial XRPL public-node endpoints excluded from default/scheduled collection. Both CFTC sources remain raw-only and model-ineligible.
+
+The top-level `top_prediction_engine.endpoint_ids` list had omitted `cftc_contract_status_index` and its correction text said 39 total. This map inconsistency is corrected to the same 40 IDs as the production registry, and a regression assertion now requires exact ID/order equality. The scheduled workflow remains main-only, read-only and artifact-oriented; it is not active on main. Raw artifacts retain 90 days, feature checkpoints 7 days and daily archives 90 days. No independent WORM or timestamp anchor exists.
+
+### Fresh XRP market cross-check
+
+Web-rendered exchange observations are descriptive only; exact raw HTTP bytes and response headers were not preserved, no SHA-256 receipt was created, and none is model-admitted.
+
+- Kraken XRP/USD: last `$1.09944`, bid `$1.09944`, ask `$1.09945`, spread about `0.091 bps`; rolling 24-hour volume about `30.76M XRP`, VWAP `$1.09793`, high `$1.12503`, low `$1.07502`. Provider event timestamp was absent.
+- OKX XRP-USDT: last `1.1001 USDT`, bid `1.1000`, ask `1.1001`, 24-hour volume about `75.15M XRP`; provider event timestamp `2026-11-09T23:44:57.569Z`. Kraken USDT/USD displayed `0.99872`; indicative normalized OKX price is about `$1.09869`, roughly `0.068%` below the Kraken last. The observations are asynchronous and not an executable arbitrage signal.
+- Derivatives: Liqwall at 20:32 UTC showed about `$1.23B` OI, `$37.1M` liquidations (`$35.7M` longs), and average funding `+0.0045%/8h`. TradRadar at 20:10 UTC showed about `$1.66B` OI, at least `$38.66M` liquidations (`$37.21M` longs), and weighted funding `+0.0026%/8h`. Kingfisher displayed about `$2.49B` OI and `$40.56M` liquidations with 96% long share but no explicit provider event timestamp. An earlier Swiftedge snapshot at 13:08 UTC showed negative funding and a larger OI decline. The open-interest range is about 2.02x; venue scope and timestamps differ. Preserve, do not average.
+- ETF trackers disagree: Alpha Finance's five-fund view reported seven-session `+$8.4M` through November 8; XRP Insights' six spot funds plus BITW holdings view reported `1.195B XRP` held and a `-812,529 XRP` holdings change from November 2–6. These are different fund universes and methods. Holdings changes are not automatically cash subscriptions/redemptions.
+
+Sources: https://api.kraken.com/0/public/Ticker?pair=XRPUSD ; https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT ; https://api.kraken.com/0/public/Ticker?pair=USDTUSD ; https://liqwall.com/ru/coins/xrp ; https://tradradar.io/markets/xrp ; https://alphafinance.io/liquidation-heatmap/xrp/ ; https://xrp-insights.com/data/xrp-etf-flows.json .
+
+### Japan SBIC identity — resolved from primary company profiles
+
+- **SBIC East Japan** is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (corporation number 9011001030621; established 1963-11-15). Its official profile lists local governments (18 prefectures), chambers of commerce, financial institutions and business companies among shareholders.
+- **SBIC Central Japan** is Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (established 1963-11-18; capital ¥4.380B; Aichi, Gifu, Mie, Toyama and Ishikawa).
+- **SBIC West Japan** is Osaka Small and Medium Business Investment & Consultation Co., Ltd. (established 1963-11-20; capital ¥6.822B; 24 prefectures west of Fukui, Shiga, Nara and Wakayama).
+- The official company profiles call the three regional entities sister companies. Tokyo's official page describes the 1963 Small and Medium Business Investment & Consultation Companies Act and says it is a private corporation operating independently; Osaka identifies itself as a policy implementation institution under that law. These are not the same entity as SBI Holdings. No evidence in the reviewed official profiles establishes that they are SBI Holdings subsidiaries.
+
+### “SBIC, ChatGPT SBIC” — related entities separated
+
+Three distinct facts explain the likely name collision:
+
+1. Tokyo SBIC hosted a February 26, 2025 seminar on generative AI/ChatGPT and a June 12–13, 2025 generative-AI/machine-learning course for investee companies. This is education/training, not evidence of an OpenAI Enterprise contract or corporate partnership.
+2. **SBI Holdings and SBI Securities** separately announced adoption of OpenAI ChatGPT Enterprise on May 1, 2025 (SBI Securities from January 2025; SBI Holdings for some employees from March 2025).
+3. **SB OAI Japan** is a separate OpenAI/SoftBank Group and SoftBank Corp joint venture formed November 5, 2025. It is neither regional SBIC nor SBI Holdings.
+
+SBI Holdings itself was formerly SoftBank Investment Corporation, renamed in July 2005 and independent from the SoftBank Group in August 2006. Historical name origin does not imply current common ownership.
+
+Primary sources:
+- https://www.sbic.co.jp/company/profile/
+- https://www.sbic-cj.co.jp/company/about/
+- https://www.sbic-wj.co.jp/profiles/profile/
+- https://www.sbic.co.jp/seminar/20250226ym/
+- https://www.sbic.co.jp/training/20250612co/
+- https://www.sbigroup.co.jp/news/2025/0501_15410.html
+- https://www.sbigroup.co.jp/english/news/pdf/2011/0331_b_en.pdf
+- https://www.softbank.jp/corp/news/press/sbkk/2025/20251105_02/
+
+### Coinbase, Circle, Ripple and SBI — direct/indirect links and limits
+
+- Coinbase's September 30, 2026 Form 10-Q says average USDC held in Coinbase products reached an all-time high and its Circle arrangement was renewed on the same terms.
+- Circle's September 30, 2026 Form 10-Q says Q3 average daily USDC circulation grew 8% year over year. Reserve income fell 7.5% due mainly to a 61bp decline in average yield, partly offset by circulation growth. Q3 distribution costs paid to Coinbase fell $30M year over year; Circle attributes the decline primarily to lower reserve income, partly offset by a slight increase in Coinbase's share of average USDC on-platform balances. For the first nine months, Coinbase distribution costs fell $10.2M as Coinbase's share of average USDC platform balances declined despite higher reserve income.
+- Coinbase added RLUSD to Prime, Exchange and retail on October 28, 2026, supporting deposits/withdrawals on XRPL, Base and Ethereum in supported regions. Coinbase said Global Exchange access and RLUSD collateral use would follow.
+- Coinbase's Q3 2026 SEC filing does **not** name XRP or RLUSD. Its collateral disclosure aggregates “other crypto assets” and says no individual asset in that category exceeded 5% of total crypto collateral fair value. This does not establish XRP-specific collateral eligibility, balances or utilization; do not infer XRP collateral from the aggregate line.
+- SBI Holdings and SBI Shinsei Bank each announced a $25M investment in Circle at its June 2025 IPO; SBI Holdings later announced participation through subsidiaries in Circle's ARC token presale.
+- SBI Ripple Asia is a joint venture established by SBI Holdings and Ripple. SBI Group held 60% of its voting rights as of March 31, 2026. SBI Remit's 2023 corridor expansion to the Philippines, Vietnam and Indonesia explicitly used Ripple's XRP-using remittance solution. A February 2026 SBI Ripple Asia proof of concept contemplates XRPL for tokenized deposits/deposit-based digital money but does not establish XRP-token settlement.
+- SBI VC Trade began handling RLUSD in Japan on June 24, 2026 after JFSA approval. JPYSC is separate: issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. SBI reported JPYSC handling balance above ¥30B and lending balance above ¥10B on November 2, 2026. Neither RLUSD nor JPYSC balances are XRP capital flows.
+- SBI VC Trade's XRPL validator operation and SBI Aruhi's shareholder XRP transfer program are network participation/distribution events, not proof of incremental XRP purchases.
+
+Primary filings and company disclosures:
+- https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+- https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- https://www.sbigroup.co.jp/news/2026/0512_16310.html
+- https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+- https://www.sbigroup.co.jp/news/2026/0624_16425.html
+- https://www.sbigroup.co.jp/news/2026/1102_16704.html
+- https://www.sbigroup.co.jp/news/2024/0510_14639.html
+
+### Nine-platform state and forecast gate
+
+Only this ChatGPT session's GitHub connector is verified. Claude, Grok, Gemini and Codex remain unverified; Copilot activity is COMMENTED only, not approval; Hugging Face has a prior build error; Kaggle was not tested; Databricks previously returned HTTP 403. No cross-platform data exchange occurred.
+
+Forecast status remains **NOT_ISSUED**. The synchronized historical dataset, independent WORM/timestamp anchoring, measured out-of-sample lift, live-data calibration, trusted evaluator key and shadow outcomes remain insufficient. No directional forecast, paper trade or real-money action was taken.
+
+### PR inventory, merge hold and next action
+
+- #1640: sole active V3/XRP integration path; blocked.
+- #1643: unique research archive; 663 unique paths, seven shared with #1640; 906 commits ahead, one behind, diverged/dirty. Preserve.
+- #1653: unique knowledge graph; six unique paths, one shared; 18 commits ahead, one behind; eight unresolved threads. Preserve and review separately.
+- #1642: draft, seven overlapping paths; superseded-content candidate.
+- #1644–#1650: overlapping dependency/action source candidates; exact blob/version reconciliation pending.
+- #1317/#1318/#1320: structural/schema overlap candidates.
+- #1254/#1255: legacy dependency-version reconciliation candidates.
+- #1269: unique mesh/topology work; preserve eight unique paths.
+- #1655/#1659: preserve unique draft material.
+- No PRs were closed.
+
+PR #1640 has 62 COMMENTED reviews, zero APPROVED reviews, 22/22 resolved inline threads, and is reported mergeable. Main's detailed branch-protection endpoint returns HTTP 403; the visible fallback ruleset is disabled. A previous main push triggered public GitHub Pages deployment, and specific authorization for the next publication is absent. **No merge was performed.**
+
+Next: verify exact-head CI on this Run104 handoff/map/test descendant, obtain an independent APPROVED review, establish effective branch-protection requirements, and resolve Pages publication authorization. Only then consider merge, fetch main again, verify the merge commit and files, run main CI, and reconcile exact superseded duplicates after verification.

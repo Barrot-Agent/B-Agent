@@ -31,7 +31,7 @@ def test_run58_handoff_binds_exact_repository_heads_and_ci():
     assert "No merge was performed" in handoff
 
 
-def test_run103_endpoint_registry_counts_match_current_map():
+def test_run104_endpoint_registry_counts_match_current_map():
     assert len(ENDPOINTS) == 40
     assert len(SCHEDULED_ENDPOINTS) == 36
     assert len(WEEKLY_ENDPOINTS) == 2
@@ -47,12 +47,12 @@ def test_run103_endpoint_registry_counts_match_current_map():
 
     current_data = json.loads(CURRENT_MAP.read_text(encoding="utf-8"))
     latest = current_data["latest_run_snapshot"]
-    assert latest["run_id"] == 103
-    assert latest["run"] == 103
+    assert latest["run_id"] == 104
+    assert latest["run"] == 104
     assert latest["mission"]
     assert "main_workflows" in latest
     assert "institutional_and_macro" in latest
-    assert latest["handoff_map_descendant_head"] == "32bd1c8c1ce76c1112a0daa8450e624c94c927fa"
+    assert latest["handoff_map_descendant_parent_head"] == "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
     assert latest["prior_market_crosschecks"]
     assert "pages" in current_data["open_pr_inventory"]
     assert "main_active_privileged_writers" in current_data["workflow_safety_audit"]
@@ -60,11 +60,11 @@ def test_run103_endpoint_registry_counts_match_current_map():
     assert "blockers" in current_data["merge_state"]
     assert "circle_binance" in latest["institutional_and_macro"]
     assert latest["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert latest["integration_code_test_head"] == "0cced5af3b673b5d39e45cfc18c53416e1ed394a"
+    assert latest["integration_code_test_head"] == "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
     assert any(item.get("run") == 95 for item in current_data["run_history"])
     assert any(item.get("run") == 96 for item in current_data["run_history"])
     assert any(item.get("run") == 98 for item in current_data["run_history"])
-    assert any(item.get("run") == 103 for item in current_data["run_history"])
+    assert any(item.get("run") == 104 for item in current_data["run_history"])
     assert current_data["current_run_observations"]["run_id"] == 82
 
     engine = latest["prediction_engine"]
@@ -95,6 +95,19 @@ def test_run103_endpoint_registry_counts_match_current_map():
     assert current_engine["weekly_sources"] == len(WEEKLY_ENDPOINTS)
     assert current_engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
     assert current_engine["endpoint_inventory_source_blob_sha"] == "f5fc3c4a45aaf826241e32faf00443e98bfa341a"
+    top_engine = current_data["top_prediction_engine"]
+    assert top_engine["endpoints"] == len(top_engine["endpoint_ids"]) == len(ENDPOINTS) == 40
+    assert top_engine["endpoint_ids"] == [source_id for source_id, _ in ENDPOINTS]
+    assert top_engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
+    assert "40 total endpoint records" in top_engine["endpoint_inventory_correction"]
+    assert current_data["workflow_safety_audit"]["xrp_public_ingestion"]["total_endpoints"] == 40
+    assert current_data["workflow_safety_audit"]["xrp_public_ingestion"]["weekly_cftc_sources"] == 2
+    assert latest["identity_research"]["japan_sbic"]["regional_entities"]["east"]["public_name"] == "SBIC East Japan"
+    assert latest["identity_research"]["japan_sbic"]["regional_entities"]["central"]["public_name"] == "SBIC Central Japan"
+    assert latest["identity_research"]["japan_sbic"]["regional_entities"]["west"]["public_name"] == "SBIC West Japan"
+    assert latest["identity_research"]["japan_sbic"]["chatgpt_and_openai"]["sbi_holdings"].startswith("SBI Holdings")
+    assert latest["identity_research"]["japan_sbic"]["chatgpt_and_openai"]["softbank_openai"].startswith("SB OAI Japan")
+
 
 
 def test_run58_merge_gate_remains_blocked_without_approvals_or_deployment_authority():
