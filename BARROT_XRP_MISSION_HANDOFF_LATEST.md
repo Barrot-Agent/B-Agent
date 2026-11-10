@@ -4162,3 +4162,18 @@ No merge, deployment, paper-trading mutation, real-money trade, external model t
 ### Next action
 
 Run exact-head full-suite CI, inclusive coverage, packaged-wheel checks, dependency/security audit and fail-closed gate on the consolidated successor. Resolve approvals, branch-protection visibility and Pages deployment side effects before merge. Keep #1640, #1643 and subset #1642 open until successor merge and main verification; then close only those exact superseded sources with cross-references.
+
+
+## Run 132d — 2026-11-10T15:19:35.595Z
+
+### SBIC primary-source identity artifact
+
+Added `research/xrp_intelligence/20261110T151935Z-sbic-east-central-west-primary-identity-reconciliation.json` and `tests/test_xrp_sbic_identity_primary_sources.py` to the unified integration branch. The artifact records seven official source receipts, SHA-256 hashes of normalized excerpts (not raw response bytes), the statutory three-company identity, the separate SBI Holdings corporate identity, two AI-training/roundtable references, competing hypotheses, unknowns and explicit XRP feature exclusion.
+
+The controlling statute's Article 2 names Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation Companies as the three companies and places their head offices in the corresponding cities. Official company profiles identify their English labels as SBIC East Japan, SBIC Central Japan and SBIC West Japan. SBI Holdings, Inc. is a separate company established July 8, 1999.
+
+Tokyo SBIC's June 12–13, 2025 investee-company training explicitly included ChatGPT use and Copilot. Nagoya SBIC's July 31, 2026 investee-only roundtable concerned practical generative-AI use and did not name ChatGPT. Neither establishes an OpenAI partnership, an XRP investment, custody or payment-rail relationship.
+
+**Raw-source limitation:** raw HTML response bytes were not available from the connector; `raw_bytes_captured=false` and `raw_byte_sha256=null` are explicit. Only normalized excerpt hashes are recorded. This artifact is research evidence, not a directional XRP feature.
+
+The unified successor is PR #1660, branch `integration/xrp-v3-unified-main-20261110`. Its prior merge tree contained 942 changed paths; this append adds two research/test paths. The PR remains not merge-ready until exact-head CI, full-suite, coverage, package, dependency/security and fail-closed checks pass.

@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "sbic-east-central-west-primary-identity-20261110T151935Z",
+  "captured_at_utc": "2026-11-10T15:19:35.595Z",
+  "research_cutoff_utc": "2026-11-10T15:19:35.595Z",
+  "topic": "Resolve Japanese SBIC East/Central/West identities and distinguish them from SBI Holdings; investigate ChatGPT references without inferring a partnership.",
+  "evidence_classification": "PRIMARY_SOURCE_RECONCILIATION",
+  "source_receipts": [
+    {
+      "source_id": "sbic_law",
+      "url": "https://www.sbic-wj.co.jp/disclose/law/",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (publishes the statutory text)",
+      "source_type": "statutory_text",
+      "retrieved_at_utc": "2026-11-10T15:19:35.595Z",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "中小企業投資育成株式会社（以下「会社」という。）は、東京中小企業投資育成株式会社、名古屋中小企業投資育成株式会社及び大阪中小企業投資育成株式会社とし、それぞれ本店を東京都、名古屋市及び大阪市に置く。",
+      "normalized_excerpt_sha256": "5c1e5530b5673e12b54e3b5a87df5b882a3ab0c55ffdfc56b4e0ac98b50bce14",
+      "hash_scope": "normalized excerpt only; not the raw HTTP response",
+      "source_independence_group": "statutory_text",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_tokyo",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_corporate_profile",
+      "retrieved_at_utc": "2026-11-10T15:19:35.595Z",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "東京中小企業投資育成株式会社; Tokyo Small and Medium Business Investment & Consultation CO., LTD. (SBIC East Japan); established 1963-11-15; shareholders: local governments (18 prefectures), chambers of commerce, financial institutions, and business companies.",
+      "normalized_excerpt_sha256": "3b785962210c57590b7ab8c9bf6631707786d9bb42e837d266dea102890b5799",
+      "hash_scope": "normalized excerpt only; not the raw HTTP response",
+      "source_independence_group": "sbic_tokyo",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_nagoya",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_corporate_profile",
+      "retrieved_at_utc": "2026-11-10T15:19:35.595Z",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "名古屋中小企業投資育成株式会社; Nagoya Small and Medium Business Investment & Consultation Co.,Ltd. (SBIC Central Japan); established 1963-11-18; operating area: five central-region prefectures.",
+      "normalized_excerpt_sha256": "60a7082b71a7656653e0b0ba7440e51ab800fd1512a9f4afd16c8f9cf2a441f6",
+      "hash_scope": "normalized excerpt only; not the raw HTTP response",
+      "source_independence_group": "sbic_nagoya",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_osaka",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_corporate_profile",
+      "retrieved_at_utc": "2026-11-10T15:19:35.595Z",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "大阪中小企業投資育成株式会社; Osaka Small and Medium Business Investment & Consultation Co.,Ltd. (SBIC West Japan); established 1963-11-20; 24-prefecture operating area.",
+      "normalized_excerpt_sha256": "0681725fed3ec87181b56e5cc33e719aad65682719dd919ce220772ceb07bd1d",
+      "hash_scope": "normalized excerpt only; not the raw HTTP response",
+      "source_independence_group": "sbic_osaka",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_sbi",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "publisher": "SBI Holdings, Inc.",
+      "source_type": "official_corporate_profile",
+      "retrieved_at_utc": "2026-11-10T15:19:35.595Z",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "SBI Holdings, Inc.; established July 8, 1999; principal business: control and management of SBI Group through share ownership.",
+      "normalized_excerpt_sha256": "e790f0cbe6c3f6420ed881902153a82cac57eaf0182cd8c365996427372af613",
+      "hash_scope": "normalized excerpt only; not the raw HTTP response",
+      "source_independence_group": "sbi_holdings",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_tokyo_training",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_event_or_training_page",
+      "retrieved_at_utc": "2026-11-10T15:19:35.595Z",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Training held 2025-06-12 to 2025-06-13 for investee companies only; curriculum includes ChatGPT use, Copilot, generative-AI workflows, coding, RAG, and API implementation.",
+      "normalized_excerpt_sha256": "2f7d2f0884d98e7ddc0090dbd58183620a8d8a989f5b4eee28307f97f3141400",
+      "hash_scope": "normalized excerpt only; not the raw HTTP response",
+      "source_independence_group": "sbic_tokyo",
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_nagoya_salon",
+      "url": "https://www.sbic-cj.co.jp/news/5077/",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_event_or_training_page",
+      "retrieved_at_utc": "2026-11-10T15:19:35.595Z",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Investee-company-only roundtable scheduled 2026-07-31 for executives already using generative AI; experience sharing and practical use, no named ChatGPT or OpenAI partnership.",
+      "normalized_excerpt_sha256": "06df2295841619eab5759b6fdde92fea53b83b1d41818af5e08f1840f4cba136",
+      "hash_scope": "normalized excerpt only; not the raw HTTP response",
+      "source_independence_group": "sbic_nagoya",
+      "model_eligible": false
+    }
+  ],
+  "entities": [
+    {
+      "id": "SBIC_EAST",
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "regional_label": "SBIC East Japan",
+      "jurisdiction": "Japan",
+      "established": "1963-11-15",
+      "corporate_number": "9011001030621"
+    },
+    {
+      "id": "SBIC_CENTRAL",
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "regional_label": "SBIC Central Japan",
+      "jurisdiction": "Japan",
+      "established": "1963-11-18",
+      "operating_area": "Aichi, Gifu, Mie, Toyama, Ishikawa"
+    },
+    {
+      "id": "SBIC_WEST",
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "regional_label": "SBIC West Japan",
+      "jurisdiction": "Japan",
+      "established": "1963-11-20",
+      "operating_area": "24 prefectures"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "legal_name": "SBI Holdings, Inc.",
+      "jurisdiction": "Japan",
+      "established": "1999-07-08",
+      "principal_business": "Control and management of SBI Group through share ownership"
+    }
+  ],
+  "legal_identity": {
+    "statute_name": "Small and Medium Business Investment & Consultation Companies Act",
+    "enactment": "1963-06-10",
+    "act_number": "Act No. 101 of 1963",
+    "article_2_result": "The statute names Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation Companies as the three companies and places their head offices in Tokyo, Nagoya and Osaka respectively.",
+    "conclusion": "SBIC East/Central/West are regional English labels for three distinct Japanese statutory companies. They are not alternative names for SBI Holdings."
+  },
+  "relationship_edges": [
+    {
+      "from": "SBIC_STATUTE_ARTICLE_2",
+      "to": "SBIC_EAST",
+      "type": "defines_legal_company",
+      "evidence": "sbic_law",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SBIC_STATUTE_ARTICLE_2",
+      "to": "SBIC_CENTRAL",
+      "type": "defines_legal_company",
+      "evidence": "sbic_law",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SBIC_STATUTE_ARTICLE_2",
+      "to": "SBIC_WEST",
+      "type": "defines_legal_company",
+      "evidence": "sbic_law",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SBIC_EAST",
+      "to": "SBI_HOLDINGS",
+      "type": "corporate_identity_distinct_from",
+      "evidence": [
+        "sbic_tokyo",
+        "sbi_holdings_profile"
+      ],
+      "status": "CONFIRMED_DISTINCT_LEGAL_IDENTITIES"
+    },
+    {
+      "from": "SBIC_CENTRAL",
+      "to": "SBI_HOLDINGS",
+      "type": "corporate_identity_distinct_from",
+      "evidence": [
+        "sbic_nagoya",
+        "sbi_holdings_profile"
+      ],
+      "status": "CONFIRMED_DISTINCT_LEGAL_IDENTITIES"
+    },
+    {
+      "from": "SBIC_WEST",
+      "to": "SBI_HOLDINGS",
+      "type": "corporate_identity_distinct_from",
+      "evidence": [
+        "sbic_osaka",
+        "sbi_holdings_profile"
+      ],
+      "status": "CONFIRMED_DISTINCT_LEGAL_IDENTITIES"
+    },
+    {
+      "from": "SBIC_EAST",
+      "to": "ChatGPT",
+      "type": "training_curriculum_included_tool",
+      "evidence": "sbic_tokyo_training",
+      "status": "CONFIRMED_EDUCATIONAL_USE_ONLY"
+    },
+    {
+      "from": "SBIC_CENTRAL",
+      "to": "generative_AI",
+      "type": "investee_roundtable_topic",
+      "evidence": "sbic_nagoya_salon",
+      "status": "CONFIRMED_EDUCATIONAL_DISCUSSION_ONLY"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Japanese SBIC refers to three distinct companies: Tokyo, Nagoya and Osaka.",
+      "classification": "CONFIRMED",
+      "evidence": [
+        "sbic_law",
+        "sbic_tokyo",
+        "sbic_nagoya",
+        "sbic_osaka"
+      ]
+    },
+    {
+      "id": "C2",
+      "claim": "SBI Holdings, Inc. is a separate company established in 1999.",
+      "classification": "CONFIRMED",
+      "evidence": [
+        "sbi_holdings_profile"
+      ]
+    },
+    {
+      "id": "C3",
+      "claim": "Tokyo SBIC offered investee-company training that explicitly included ChatGPT.",
+      "classification": "CONFIRMED",
+      "evidence": [
+        "sbic_tokyo_training"
+      ]
+    },
+    {
+      "id": "C4",
+      "claim": "Nagoya SBIC hosted an investee-only practical generative-AI roundtable; the page does not name ChatGPT.",
+      "classification": "CONFIRMED",
+      "evidence": [
+        "sbic_nagoya_salon"
+      ]
+    },
+    {
+      "id": "C5",
+      "claim": "The reviewed sources establish an OpenAI commercial partnership or a direct XRP relationship with SBIC.",
+      "classification": "NOT_ESTABLISHED",
+      "evidence": []
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "SBIC is merely a spelling variant or subsidiary of SBI Holdings.",
+      "status": "DISCONFIRMED_BY_PRIMARY_IDENTITY_EVIDENCE",
+      "evidence": [
+        "sbic_law",
+        "sbic_tokyo",
+        "sbic_nagoya",
+        "sbic_osaka",
+        "sbi_holdings_profile"
+      ]
+    },
+    {
+      "id": "H2",
+      "hypothesis": "The phrase 'ChatGPT SBIC' refers to an OpenAI partnership.",
+      "status": "UNSUPPORTED",
+      "counterevidence": "The confirmed ChatGPT reference is a Tokyo SBIC training curriculum for investee companies; no partnership or procurement statement was found.",
+      "evidence": [
+        "sbic_tokyo_training"
+      ]
+    },
+    {
+      "id": "H3",
+      "hypothesis": "SBIC East/Central/West has a direct XRP investment or settlement role.",
+      "status": "UNKNOWN_NOT_ESTABLISHED",
+      "counterevidence": "The reviewed statutory and company sources describe SME equity investment/consultation; none identifies XRP, Ripple, XRPL, custody or crypto settlement.",
+      "evidence": [
+        "sbic_law",
+        "sbic_tokyo",
+        "sbic_nagoya",
+        "sbic_osaka"
+      ]
+    },
+    {
+      "id": "H4",
+      "hypothesis": "East/Central/West are branches of one single corporation.",
+      "status": "DISCONFIRMED",
+      "evidence": "Article 2 names three companies and separate head-office cities."
+    }
+  ],
+  "exact_phrase_research": {
+    "SBIC, ChatGPT SBIC": {
+      "exact_entity_or_partnership_found": false,
+      "likely_context": "conflation of the SBIC company acronym with Tokyo SBIC's ChatGPT training",
+      "confidence": "MEDIUM",
+      "model_eligible": false
+    },
+    "ASK Coin": {
+      "candidate": "Permission Coin (ASK)",
+      "identity_status": "PROVISIONAL",
+      "direct_xrp_relationship": "NOT_ESTABLISHED"
+    },
+    "actual capital": {
+      "measurement_rule": "separate committed capacity, cash received, cash used to purchase XRP, in-kind XRP contributions, debt drawdowns, secondary resales and on-chain transfers"
+    }
+  },
+  "xrp_admission": {
+    "status": "EXCLUDED_NO_DIRECT_XRP_RELATIONSHIP_ESTABLISHED",
+    "features": [],
+    "forecast_eligible": false
+  },
+  "limitations": [
+    "Raw HTTP response bytes were not captured in this run; raw_byte_sha256 is null. Only normalized excerpt hashes are supplied.",
+    "The three SBIC company websites are primary sources but the companies are sister statutory entities, so their claims are not fully independent.",
+    "The reviewed pages do not establish all beneficial ownership links among the SBIC companies, SBI Holdings, its subsidiaries or shareholders.",
+    "Absence of an XRP reference in these pages does not prove no indirect relationship exists elsewhere."
+  ]
+}
