@@ -13,8 +13,8 @@
 - Main's two post-common-base commits were inspected. The first introduced the LunaRoute/OpenCode work (`b_agent.py`, `b_agent.sh`, `opencode.json`, `data/repository_architecture_audit.md`); the second updated `data/autonomous_repair_status.md`.
 - Merge commit `b75764ae4f2d06c82d37816c292eec132d38b608` has parents integration `c9d975c877f89901946b9d9ad29e7e76744911ba` and main `afb3024fbcb976db5acdf52b85e253ff46859ce6`. The resulting tree was verified: 2,253 entries; current main's five changed paths are present; `.config/gh/hosts.yml` is absent.
 - A bounded safety repair removed the unsupported `--auto-merge` CLI flag and its call to nonexistent `GitHubRepo.merge_pr`. The CLI now requires both `LUNAROUTE_API_KEY` and `GH_TOKEN`/ `GITHUB_TOKEN` before entering repository-write operations. Three AST regression tests were added, including preservation of the CLI entry point. This is a code-level safety correction, not a provider authentication test.
-- Current integration head before this handoff update: `f62c2ed99045a4c093bfc8779f8c97ac441c4e53`; this commit adds the Run 11B structured research artifact. The handoff update itself will create the next commit.
-- Active consolidated PR: [#1660](https://github.com/Barrot-Agent/B-Agent/pull/1660), open and non-draft, base main `afb3024f`, 1,930 commits ahead / zero behind at head `1313521b`, 961 changed files, 270,144 additions and 3,695 deletions before the Run 11B artifact/handoff commits.
+- Current integration head after the Run 11B artifact, canonical handoff and audit-correction commits: `b774da459fd79d9a9df05b65fa9f3e017781f857`. The latest commit corrects the truncated-listing audit against the complete current Git trees.
+- Active consolidated PR: [#1660](https://github.com/Barrot-Agent/B-Agent/pull/1660), open and non-draft, base main `afb3024f`, current head `b774da459fd79d9a9df05b65fa9f3e017781f857`, 1933 commits ahead / zero behind, 964 changed files, 270680 additions and 3696 deletions after Run 11B research and audit corrections.
 - Recursive tree counts before the latest two research/handoff commits: main 1,404; integration 2,254.
 - Complete open-PR inventory: 373 total, 358 drafts, 15 non-drafts. No new branch or PR was created.
 
@@ -24,7 +24,7 @@
 - On integration head `1313521b98e3dec32ae8630fbb03363135c8abf8`, core tests passed and the fail-closed gate passed. Full repository suite and six-manifest dependency audit were still running at the last poll.
 - Exact-head runs: PR CI [42912478302](https://github.com/Barrot-Agent/B-Agent/actions/runs/42912478302), dependency audit [42912478348](https://github.com/Barrot-Agent/B-Agent/actions/runs/42912478348), fail-closed gate [42912478307](https://github.com/Barrot-Agent/B-Agent/actions/runs/42912478307). Push CI [42912469786](https://github.com/Barrot-Agent/B-Agent/actions/runs/42912469786), push fail-closed gate [42912469745](https://github.com/Barrot-Agent/B-Agent/actions/runs/42912469745).
 - The Run 11A parent head `c9d975c8` had passed core tests, full-suite CI, dependency audit and fail-closed checks, but those results are not substituted for the new head.
-- The latest artifact/handoff commits require their own exact-head CI. No full-suite pass is claimed for them.
+- The latest artifact, handoff and audit-correction commits require their own exact-head CI. No full-suite pass is claimed for them.
 
 ### Security
 
@@ -5684,3 +5684,8 @@ Evidence:
 - Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42902928795
 
 The next Run 11A research/handoff update is a separate commit and must receive its own exact-head checks. PR #1660 remains unmerged pending approvals, branch-protection visibility, credential remediation, complete workflow review and explicit authorization for automatic Pages publication. Forecast status remains `NOT_ISSUED`.
+
+
+### Run 11B audit correction — current tree evidence
+
+The main `data/repository_architecture_audit.md` and `data/autonomous_repair_status.md` were based on a truncated listing. Their current-tree correction is now committed on integration in `b774da459fd79d9a9df05b65fa9f3e017781f857`. The correction states that main has 1,404 tree entries including source/tests, integration has more than 2,250 entries, and the earlier missing-source inference was caused by incomplete input. It also records that `.config/gh/hosts.yml` is absent from main/integration but remains in 17 specifically checked open PR heads; this is not an exhaustive scan of all open PRs. File contents were not inspected.
