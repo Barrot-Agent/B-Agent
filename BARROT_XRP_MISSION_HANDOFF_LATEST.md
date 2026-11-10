@@ -6383,3 +6383,82 @@ Structured evidence: [Run11D current market, SEC capital, security and integrati
 - Real-money actions: 0.
 - Force-pushes/destructive worktree operations: 0.
 - PR closures: 0.
+
+
+## Run 11D-A — Collateral, OCC rulemaking and ETF disagreement addendum (2026-11-10)
+
+### Coinbase cbXRP reserves and Morpho collateral stress
+
+- Coinbase's own proof-of-reserves page refreshed November 10 at 10:39 UTC: **152,372,342.33 XRP reserves** against **152,370,095.8 cbXRP supply**, an arithmetic excess of approximately 2,246.53 XRP. This is issuer-published reserve data, not an independent audit of the custody system.
+- Morpho Base cbXRP/USDC snapshot at November 6, 13:24 UTC: approximately 59.24M USDC debt against 119.87M cbXRP collateral; oracle ratio approximately 1.1843 USDC/cbXRP; fixed liquidation threshold 62.5%.
+- CryptoSlate's paginated Morpho API analysis found 462 positions carrying 3.2296M USDC debt and 4.5046M cbXRP collateral within a further 5% oracle decline; 1,070 positions carrying 8.8448M USDC debt within a further 10% decline. These are conditional liquidation-eligibility buckets assuming debt and collateral quantities remain unchanged, not executed liquidations.
+- Catenaa's later November 8, 02:21 UTC snapshot differs: approximately 58.3M USDC debt, 120.6M cbXRP collateral, 920 loans / $8.4M debt within a further 10% decline. It reports 384 loans liquidated on November 6–7, approximately $1.6M USDC repaid and 1.53M cbXRP seized, with 3,713 liquidations since February and no bad debt recorded in its scan.
+- Preserve the two snapshots; do not average them. Position repayments, collateral additions, paginated observation times and liquidations explain why later counts differ.
+- Morpho liquidations transfer cbXRP on Base. They do not automatically sell native XRP on XRPL. A liquidator's subsequent redemption or native-XRP sale requires separate transaction evidence. Coinbase's optional automatic collateral protection must be enabled, funded and successfully executed; it is not guaranteed.
+- This is an XRP-backed collateral channel through Coinbase-wrapped XRP, not native XRPL LendingProtocol lending.
+
+Sources:
+- [Coinbase cbXRP proof of reserves](https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves)
+- [CryptoSlate November 7 Morpho analysis](https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/)
+- [Catenaa November 8 Morpho scan](https://catenaa.com/markets/cryptocurrencies/cbxrp-morpho-liquidation-risk/)
+- [Morpho liquidation mechanics](https://docs.morpho.org/)
+
+### Native XRPL lending: critical collateral distinction
+
+- Official XRPL.org Lending Protocol documentation and XLS-66 define fixed-term **uncollateralized** loans funded from a Single Asset Vault.
+- Borrower underwriting and credit-risk management remain off-chain.
+- First-loss capital is optional protection; it is not a mandatory XRP collateral sleeve.
+- The protocol does not provide automated on-ledger borrower collateral valuation or liquidation management in its current design.
+- A vault holds one funding asset (which may be XRP, RLUSD or another supported asset); vault deposits are funding capital, not borrower collateral.
+- SingleAssetVault and LendingProtocol remain below activation threshold (23/29 and 22/29 respectively in the 23:01 UTC validator snapshot). Native XRPL lending is not active.
+- Do not equate XLS-66 vault deposits with XRP collateral demand or a borrower posting XRP as security.
+
+Sources:
+- [Official XRPL Lending Protocol](https://xrpl.org/docs/concepts/tokens/lending-protocol)
+- [XLS-66 draft specification](https://xls.xrpl.org/xls/XLS-0066-lending-protocol.html)
+
+### ETF flow reconciliation — same issuer inputs, different coverage
+
+For the November 9 reporting date:
+- CryptoKeyhole: three of four daily-tracked funds reported; Franklin pending; Bitwise −8.595M XRP, Canary −0.427M, 21Shares −0.195M; partial total approximately −9.217M XRP / −$10.1M.
+- CryptoETF.today: three of five funds reported; XRPZ and GXRP missing; approximately −$10.4M, with Bitwise the largest outflow.
+- Alpha Finance: five-fund display, approximately −$10.4M; underlying issuer files overlap the other trackers.
+- XRP Insights: six spot funds plus BITW holdings universe; reports approximately −9.54M XRP / −$9.93M daily flow and 1.18564B XRP holdings, but excludes GXRP from flow totals while retaining its holdings because of a data gap.
+- These are not independent confirmations. Fund universe, timestamp, issuer-file vintage, holdings-delta versus NAV/share methodology and missing-fund treatment differ. A zero-flow tile from a stale tracker is not a valid rebuttal to a later issuer-file update.
+- No tracker value is admitted as an executed spot sale or cash redemption. ETF flow remains model-ineligible until cash/in-kind settlement and issuer custody movements are reconciled.
+
+Sources:
+- [CryptoKeyhole XRP ETF flows](https://cryptokeyhole.com/etf-flows/xrp/)
+- [CryptoETF.today XRP ETF flows](https://cryptoetf.today/xrp)
+- [Alpha Finance XRP ETF flows](https://alphafinance.io/etf/xrp/)
+- [XRP Insights ETF data](https://xrp-insights.com/data)
+
+### OCC GENIUS Act rulemaking event
+
+- OCC published its final rule implementing the GENIUS Act on October 21, 2026; effective date is January 18, 2027.
+- The rule covers OCC-supervised permitted payment stablecoin issuers and related activities. The OCC said it would separately announce when it begins accepting issuer applications and waiver requests.
+- A separate BSA/AML/OFAC rulemaking remains forthcoming.
+- Do not conflate this permitted-payment-stablecoin-issuer regime with the separate national trust bank charters already recorded for Circle, Ripple and Coinbase. A trust-bank charter does not itself prove that the entity has a GENIUS Act payment-stablecoin-issuer approval or that a stablecoin is issued by that bank.
+
+Sources:
+- [OCC final GENIUS Act rule, October 21, 2026](https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-118.html)
+- [OCC Corporate Applications Search — Circle](https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2)
+- [OCC Corporate Applications Search — Ripple](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2)
+- [OCC Corporate Applications Search — Coinbase](https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2)
+
+### Exact-head verification update
+
+- The post-artifact/documentation head `c5259f6c767ce0075606104afcc90704dd805d81` completed exact-head full CI: **3,376 passed, zero failed, eight subtests passed, 59.78% coverage**. Wheel build and installed primary-mission verification passed.
+- Dependency audit passed across six manifests with zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge remained disabled.
+- Exact evidence: [CI 42924775183](https://github.com/Barrot-Agent/B-Agent/actions/runs/42924775183), [dependency audit 42924775524](https://github.com/Barrot-Agent/B-Agent/actions/runs/42924775524), [fail-closed gate 42924775038](https://github.com/Barrot-Agent/B-Agent/actions/runs/42924775038). Push-triggered full suite also passed in [CI 42924769932](https://github.com/Barrot-Agent/B-Agent/actions/runs/42924769932).
+- The present addendum is a new documentation-only follow-on commit. Its own exact-head checks must complete before merge; do not carry forward the previous head's test result as if it tested the new head.
+
+### Updated backlog and safety
+
+- Main SHA remains `afb3024fbcb976db5acdf52b85e253ff46859ce6`.
+- PR #1660 remains the only consolidated V3/XRP integration PR; it is not merged.
+- 373 open PRs: 358 drafts, 15 non-drafts.
+- `.config/gh/hosts.yml` is absent from main and the integration branch but remains in the current tree of 17 other open PR branch tips: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255, #1254. File contents were not read. Historical blob remains. Owner revocation/reissue is required; no credential rotation, branch rewrite or source-PR modification occurred.
+- PR #1660 still has zero formal approvals, branch-protection detail endpoint HTTP 403, 25 quarantined workflows, incomplete semantic review of the full diff and unresolved GitHub Pages publication authorization.
+- Forecast remains `NOT_ISSUED`; no paper trade or real-money action.
