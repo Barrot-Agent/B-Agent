@@ -320,14 +320,46 @@ def test_run80_prior_snapshot_records_repository_and_safe_status():
 
 
 
-def test_run82_historical_snapshot_records_repository_market_receipts_and_safe_status():
+def test_run82_historical_snapshot_is_preserved_when_run109_becomes_current():
     import hashlib
     import math
     data = load_current()
-    observation = data["current_run_observations"]
-    assert data["captured_at_utc"] == data["last_verified_at_utc"]
-    assert data["latest_run_snapshot"]["run_id"] == 104
+    current = data["current_run_observations"]
+    observation = next(
+        item for item in data["prior_run_observations"]
+        if item.get("run_id") == 82 and item.get("captured_at_utc") == "2026-11-09T16:14:36Z"
+    )
+    assert data["captured_at_utc"] == data["last_verified_at_utc"] == "2026-11-10T01:27:20Z"
+    assert data["latest_run_snapshot"]["run_id"] == 109
     assert data["latest_run_snapshot"]["captured_at_utc"] == data["captured_at_utc"]
+    assert current["run_id"] == 109
+    assert current["captured_at_utc"] == "2026-11-10T01:27:20Z"
+    assert current["integration_head_before_handoff_commit"] == "a900c4df8833839ed847c0b307588cfb3f34f7d1"
+    assert current["open_pr_inventory"]["total"] == 372
+    assert current["open_pr_inventory"]["drafts"] == 356
+    assert current["repository_trees"]["main"]["entries"] == 1404
+    assert current["repository_trees"]["integration"]["entries"] == 1516
+    assert current["branch_ancestry"]["pr_1640"]["ahead"] == 874
+    assert current["branch_ancestry"]["pr_1640"]["behind"] == 0
+    assert current["ci_evidence"]["integration"]["full_suite"]["passed"] == 1316
+    assert current["ci_evidence"]["integration"]["full_suite"]["failed"] == 0
+    assert current["ci_evidence"]["integration"]["full_suite"]["subtests"] == 8
+    assert current["ci_evidence"]["integration"]["full_suite"]["coverage_pct"] == 59.36
+    assert current["reviews"]["pr_1640"]["approved"] == 0
+    assert current["reviews"]["pr_1653"]["threads_unresolved"] == 8
+    assert current["merge_state"]["pages_authorized"] is False
+    assert current["merge_state"]["merge_performed"] is False
+    assert current["forecast_status"] == "NOT_ISSUED"
+    current_market = current["latest_market_crosscheck"]
+    assert hashlib.sha256(current_market["raw_response_bodies"]["kraken_xrpusd"].encode("utf-8")).hexdigest() == "5710b000d3edd33437bede086347242c20adefc8407d04f534e11b2d9f06a35d"
+    assert hashlib.sha256(current_market["raw_response_bodies"]["okx_xrpusdt"].encode("utf-8")).hexdigest() == "3e85143fa53f2669ca7244b66c921e925df909b9963dd75bf5199906e35a51a8"
+    assert current_market["model_admission"] is False
+    assert current_market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-10T01:16:47.232Z"
+    assert current_market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
+    assert current_market["comparison"]["asynchronous"] is True
+    assert current_market["raw_http_bytes_preserved"] is False
+
+    # Run82 remains a complete historical observation, including its original receipts.
     assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["run_id"] == 82

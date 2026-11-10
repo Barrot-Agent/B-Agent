@@ -1,3 +1,85 @@
+# Run 109 — exact-head verification, XRP spot/derivatives and SBI–Evernorth ownership clarification
+
+Capture cutoff: 2026-11-10T01:27:20Z. Main SHA: `d4d43be3427375cf79d190e768976de062e20287`. Integration branch before this documentation/map/test update: `a900c4df8833839ed847c0b307588cfb3f34f7d1`.
+
+## Repository and exact-head verification
+
+The current main tree is 1,404 entries (1,299 files, 105 directories); the integration tree at `a900c4df8833839ed847c0b307588cfb3f34f7d1` is 1,516 entries (1,403 files, 113 directories), neither recursive tree truncated. The four-page open-PR inventory is 372 total: 356 drafts and 16 non-drafts.
+
+PR [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640) remains the sole active V3/XRP integration path: 874 commits ahead, zero behind, 219 changed paths, non-draft and GitHub reports mergeable. Its mission manifest, 40-source registry and read-only scheduled ingestion remain on the integration branch, not main.
+
+Exact-head evidence on `a900c4df8833839ed847c0b307588cfb3f34f7d1`:
+- [Full CI 42735035466](https://github.com/Barrot-Agent/B-Agent/actions/runs/42735035466): 1,316 passed, zero failed, eight subtests; 59.36% inclusive coverage.
+- Core suite: 677 passed, zero failed, eight subtests.
+- Wheel build and installed-wheel smoke passed; installed package loaded Barrot V3, the primary XRP mission and canonical data assets.
+- [Dependency audit 42735035690](https://github.com/Barrot-Agent/B-Agent/actions/runs/42735035690): six manifests passed, zero known vulnerabilities.
+- [Fail-closed gate 42735035186](https://github.com/Barrot-Agent/B-Agent/actions/runs/42735035186): passed; automatic merge remains disabled.
+- The only non-failing warning was the GitHub Actions cache quota; it did not affect test or audit conclusions.
+
+Main remains `d4d43be3427375cf79d190e768976de062e20287`; no main write or main CI run was initiated in this capture.
+
+## Fresh spot and derivatives observations
+
+Kraken XRP/USD API response retrieved at capture: last $1.10338, bid $1.10313, ask $1.10314, 24-hour volume 29.657M XRP, 24-hour VWAP $1.09686295, high $1.12232 and low $1.07502. Kraken supplied no provider event timestamp. The spread calculated from displayed top-of-book was about 0.091 basis points.
+
+OKX XRP-USDT response event timestamp: 2026-11-10 01:16:47.232 UTC. Last 1.1036 USDT, bid 1.1033, ask 1.1034, 24-hour volume 72.797M XRP, high 1.1236 and low 1.0764. Its displayed spread was about 0.906 basis points.
+
+These are different venues, different quote currencies and asynchronous observations. No contemporaneous USDT/USD normalization was captured; no arbitrage inference is permitted. Exact surfaced JSON response-text hashes are in the Run109 artifact. The original HTTP headers and transport bytes were not preserved, so these receipts are not represented as wire-level captures. Both observations remain model-ineligible.
+
+Derivatives snapshots also disagree:
+- Liqwall at 2026-11-09 20:32 UTC: $1.23B open interest, −5.9% over 24 hours, $37.1M liquidations ($35.7M longs), average funding +0.0045% per eight hours.
+- TradRadar at 2026-11-10 00:55 UTC: $1.66B open interest, −4.37% over 24 hours, funding +0.0034% per eight hours, at least $9.18M liquidations ($8.30M longs), 79.7% long accounts.
+
+The open-interest aggregates differ by about 35% with overlapping but non-identical venue coverage. Their liquidation windows end at different times and use different venue coverage; do not compare the 24-hour totals as if synchronized. Both snapshots are long-liquidation dominated. This is descriptive deleveraging evidence, not a directional forecast.
+
+## Primary-source SBI–Evernorth correction
+
+Evernorth's October 30 Form 424B-3 reports that, at the October 9 closing, the SBI group held 9,431,914 Pubco Class A shares and 2,359,038 Class C shares. The table reports 21.4% of outstanding Pubco common stock and 39.9% of voting power. The 39.9% figure is voting power under an ownership cap; it is not 39.9% of outstanding common stock, not a direct 39.9% holding of XRP and not a disclosed SBI-only XRP purchase amount.
+
+The filing identifies four SBI-controlled stockholders: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. It defines the SBI group by reference to SBI, affiliates and other holders deemed a Section 13(d) group.
+
+The filing's $214.05M cash plus 600,000 XRP advance-funding amount is aggregate subscriber consideration, not an SBI-only amount. It says the cash proceeds purchased 84,365,876.3625 XRP. Delayed subscriptions, sponsor XRP, Ripple-affiliated contributions and Ripple's own contribution are separate categories. Evernorth's approximately 473M XRP treasury must not be attributed to SBI. This is a direct SBI Holdings strategic equity/voting relationship with Evernorth, not proof that SBI directly owns the treasury XRP.
+
+Tokyo SBIC's official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. as SBIC East Japan and names Nagoya and Osaka sister companies. It is distinct from SBI Holdings. [Official Tokyo SBIC profile](https://www.sbic.co.jp/company/profile/).
+
+The U.S. October CPI release is scheduled for November 10 at 08:30 Eastern / 13:30 UTC. At this capture it was a future event, not a published result. [BLS calendar](https://www.bls.gov/schedule/2026/11_sched.htm).
+
+## Architecture and readiness
+
+The current code was inspected:
+- `xrp_public_ingestion.py` registers 40 public endpoints: 36 hourly sources, two weekly CFTC sources and two non-commercial XRPL node endpoints excluded from scheduled ingestion.
+- `feature_store.py` stores point-in-time snapshots in SQLite. Its SQL triggers deter ordinary application mutation but are not an adversarial tamper-proof boundary; external WORM/timestamp anchoring is still absent.
+- `walk_forward.py` uses chronological cutoffs based on the maximum of known-at, provider-as-of, ingestion and revision-availability timestamps.
+- `forecast_ledger.py` requires exact feature-store lineage and an externally trusted Ed25519 evaluator attestation. The default has no trusted keys and fails closed. The readiness policy requires at least 100 OOS samples, 100 shadow outcomes, two source-independence groups, weighted calibration error no greater than 0.05 and at least ten horizon multiples.
+
+The scheduled workflow is read-only and main-only; it is not active on main. No mature synchronized historical dataset, measured OOS lift, independent WORM archive or sufficient shadow outcomes is verified. **Forecast status: NOT_ISSUED.**
+
+## Nine-platform and backlog state
+
+The nine-platform map was refreshed. ChatGPT-to-GitHub read/write on this existing branch is verified for this run. Claude, Grok, Gemini and Codex remain unauthenticated/unverified; Copilot has only one-off COMMENTED review activity; Hugging Face has a prior BUILD_ERROR; Kaggle remains untested; Databricks previously returned HTTP 403. No external-model data exchange occurred.
+
+PR #1640 has 62 COMMENTED reviews, zero APPROVED reviews and 22/22 resolved inline threads. Detailed branch protection remains HTTP 403; the only visible fallback ruleset is disabled. A prior main push triggered public GitHub Pages deployment, and specific authorization for that automatic publication remains absent. No merge.
+
+Backlog:
+- #1643: preserve unique research archive; 663 paths unique to #1640, seven shared; 906 ahead/one behind; no exact-head CI.
+- #1653: preserve unique knowledge-graph work; six unique paths, one shared; 18 ahead/one behind; eight unresolved review threads with substantive data-loss, argument-transport, snapshot-race, submodule-boundary and degraded-indexing concerns; blocked.
+- #1642: all seven paths overlap #1640; superseded candidate.
+- #1644–#1650: all changed paths overlap #1640. Exact versions verified on #1640 include checkout v7, download-artifact v8, upload-artifact v7, pytest 9.2.0, types-requests 20261030, databricks-sdk 0.158.0 and huggingface_hub 2.4.0. Retain source PRs until successor content is verified on main.
+- #1317/#1318/#1320: all changed paths overlap #1640; retain until exact content is verified on main.
+- #1254/#1255: older dependency versions superseded in the integration branch; do not close before main verification.
+- #1269: preserve eight unique mesh/topology paths and one shared CI path.
+- #1655/#1659: preserve unique draft material.
+
+No PRs were closed. No deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+## Next concrete action
+
+Keep #1640 as the single integration path. Obtain an independent approving review, authoritative branch-protection visibility and explicit Pages-publication authorization. Then merge only if all conditions remain satisfied; fetch main, verify the merge commit/files, run main CI and inspect automatic workflow side effects. Preserve #1643 and #1653 unique work. Advance durable receipt anchoring and synchronized historical data before forecast issuance.
+
+Run109 market evidence: [JSON artifact](https://github.com/Barrot-Agent/B-Agent/blob/integration/core-capabilities-mmi-structural-paper-20261104/research/xrp_intelligence/20261110T012720Z-run109-xrp-spot-derivatives-sbi-evernorth-update.json).
+
+---
+
 # Run 108 — SBI Holdings strategic ownership in Evernorth
 
 Capture cutoff: 2026-11-10T01:20:00Z (local date 2026-11-09, America/New_York). Verified code/test parent before this documentation-only update: 9a52aa1cc615bac9f78b395d542cf98b8b4bd745. Exact-head CI 42734588233 passed 1,316 tests, zero failures, eight subtests, 59.36% inclusive coverage; core 677 passed plus eight subtests; wheel built and installed, loading Barrot V3 and the primary XRP mission. Dependency audit 42734588529 passed six manifests with zero known vulnerabilities. Fail-closed gate 42734588413 passed and kept automatic merging disabled. This update is documentation-only; its own exact-head CI must be checked separately.
