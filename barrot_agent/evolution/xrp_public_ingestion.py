@@ -34,6 +34,27 @@ ADAPTER_VERSION = "xrp-public-market-v3.21"
 PARSER_VERSION = "xrp-public-market-v3.20"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
+HTTP_PROVENANCE_HEADER_NAMES = frozenset({
+    "age", "cache-control", "content-type", "content-encoding",
+    "etag", "expires", "last-modified", "cf-cache-status", "x-cache",
+})
+LIVE_HTTP_CACHE_AGE_LIMITS = {
+    "binance_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "coinbase_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "kraken_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "bitbank_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "okx_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "bybit_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "binance_perp_premium": MAX_LIVE_AGE_SECONDS,
+    "binance_perp_open_interest": MAX_LIVE_AGE_SECONDS,
+    "bybit_linear_ticker": MAX_LIVE_AGE_SECONDS,
+    "bybit_linear_open_interest": MAX_LIVE_AGE_SECONDS,
+    "coinbase_spot_book": MAX_ORDERBOOK_AGE_SECONDS,
+    "kraken_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
+    "bitbank_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
+    "okx_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
+    "bybit_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
+}
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
 COINBASE_CANDLES_PER_REQUEST = 300
 MAX_COINBASE_BACKFILL_DAYS = 365
@@ -335,6 +356,58 @@ def _from_http_date(value: Any) -> datetime | None:
     return parsed.astimezone(timezone.utc)
 
 
+def _capture_http_headers(headers: Any) -> dict[str, str]:
+    """Retain only bounded, non-sensitive HTTP cache/validator metadata."""
+    if headers is None or not hasattr(headers, "items"):
+        return {}
+    captured: dict[str, str] = {}
+    try:
+        items = headers.items()
+    except Exception:
+        return {}
+    for raw_name, raw_value in items:
+        name = str(raw_name).strip().lower()
+        if name not in HTTP_PROVENANCE_HEADER_NAMES:
+            continue
+        value = str(raw_value).strip()
+        if not value or len(value) > 512 or any(ord(character) < 32 or ord(character) == 127 for character in value):
+            continue
+        captured[name] = value
+    return dict(sorted(captured.items()))
+
+
+def _http_cache_age_exclusion_reason(source_id: str, headers: Mapping[str, Any] | None) -> str:
+    """Fail closed when a live snapshot is served from an over-age or malformed cache."""
+    maximum_age = LIVE_HTTP_CACHE_AGE_LIMITS.get(source_id)
+    if maximum_age is None:
+        return ""
+    age = _capture_http_headers(headers).get("age")
+    if age is None:
+        return ""
+    if not re.fullmatch(r"[0-9]{1,10}", age):
+        return "invalid_http_cache_age_header"
+    if int(age) > maximum_age:
+        return f"http_cache_age_exceeds_{maximum_age}_seconds"
+    return ""
+
+
+def _apply_http_cache_age_gate(
+    source_id: str,
+    headers: Mapping[str, Any] | None,
+    records: list[dict[str, Any]],
+) -> str:
+    """Mark parsed live features ineligible when their HTTP cache age exceeds policy."""
+    reason = _http_cache_age_exclusion_reason(source_id, headers)
+    if not reason:
+        return ""
+    quality = "stale" if reason.startswith("http_cache_age_exceeds_") else "unverified"
+    for record in records:
+        record["model_eligible"] = False
+        record["eligibility_reason"] = reason
+        record["quality_status"] = quality
+    return reason
+
+
 def _number(value: Any, field: str, *, allow_zero: bool = True) -> float:
     if isinstance(value, bool):
         raise XRPIngestionError(f"{field} must be numeric")
@@ -379,6 +452,8 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
             if final_url.scheme != "https" or final_url.hostname not in ALLOWED_HOSTS:
                 raise XRPIngestionError("public fetch redirected outside allowlisted HTTPS hosts")
             raw = response.read(MAX_RESPONSE_BYTES + 1)
+            http_date = response.headers.get("Date")
+            http_headers = _capture_http_headers(response.headers)
     except XRPIngestionError:
         raise
     except Exception as exc:
@@ -389,7 +464,7 @@ def fetch_public_json(source_id: str, url: str) -> dict[str, Any]:
         payload = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, ValueError):
         raise XRPIngestionError(f"response is not valid JSON for {source_id}") from None
-    return {"raw_bytes": raw, "payload": payload, "http_date": response.headers.get("Date")}
+    return {"raw_bytes": raw, "payload": payload, "http_date": http_date, "http_headers": http_headers}
 
 
 def fetch_public_csv(source_id: str, url: str) -> dict[str, Any]:
@@ -415,6 +490,7 @@ def fetch_public_csv(source_id: str, url: str) -> dict[str, Any]:
                 raise XRPIngestionError(f"response is not CSV for {source_id}")
             raw = response.read(MAX_RESPONSE_BYTES + 1)
             http_date = response.headers.get("Date")
+            http_headers = _capture_http_headers(response.headers)
     except XRPIngestionError:
         raise
     except Exception as exc:
@@ -427,7 +503,7 @@ def fetch_public_csv(source_id: str, url: str) -> dict[str, Any]:
         raise XRPIngestionError(f"response is not valid UTF-8 CSV for {source_id}") from None
     if not csv_text.strip():
         raise XRPIngestionError(f"CSV response is empty for {source_id}")
-    return {"raw_bytes": raw, "payload": {"csv_text": csv_text}, "http_date": http_date}
+    return {"raw_bytes": raw, "payload": {"csv_text": csv_text}, "http_date": http_date, "http_headers": http_headers}
 
 
 
@@ -454,6 +530,7 @@ def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
                 raise XRPIngestionError(f"response is not HTML for {source_id}")
             raw = response.read(MAX_RESPONSE_BYTES + 1)
             http_date = response.headers.get("Date")
+            http_headers = _capture_http_headers(response.headers)
     except XRPIngestionError:
         raise
     except Exception as exc:
@@ -464,7 +541,7 @@ def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
         html_text = raw.decode("utf-8-sig")
     except UnicodeDecodeError:
         raise XRPIngestionError(f"response is not valid UTF-8 HTML for {source_id}") from None
-    return {"raw_bytes": raw, "payload": {"html_text": html_text}, "http_date": http_date}
+    return {"raw_bytes": raw, "payload": {"html_text": html_text}, "http_date": http_date, "http_headers": http_headers}
 
 
 def fetch_public_rpc(source_id: str, url: str) -> dict[str, Any]:
@@ -495,6 +572,7 @@ def fetch_public_rpc(source_id: str, url: str) -> dict[str, Any]:
                 raise XRPIngestionError("XRPL RPC redirected outside its registered operator host")
             raw = response.read(MAX_RESPONSE_BYTES + 1)
             http_date = response.headers.get("Date")
+            http_headers = _capture_http_headers(response.headers)
     except XRPIngestionError:
         raise
     except Exception:
@@ -512,7 +590,7 @@ def fetch_public_rpc(source_id: str, url: str) -> dict[str, Any]:
         or payload.get("status") not in (None, "success")
     ):
         raise XRPIngestionError(f"XRPL RPC response is not a successful server_info result for {source_id}")
-    return {"raw_bytes": raw, "payload": payload, "http_date": http_date}
+    return {"raw_bytes": raw, "payload": payload, "http_date": http_date, "http_headers": http_headers}
 
 
 class RawReceiptArchive:
@@ -587,7 +665,8 @@ class RawReceiptArchive:
             "raw_only_reason",
             "receipt_id",
         }
-        if set(receipt) != required:
+        required_v2 = required | {"source_http_headers"}
+        if set(receipt) not in (required, required_v2):
             raise XRPIngestionError("raw receipt does not match the canonical receipt schema")
         for field in ("source_id", "source_uri", "captured_at_utc"):
             if not isinstance(receipt.get(field), str) or not receipt[field].strip():
@@ -596,6 +675,18 @@ class RawReceiptArchive:
             raise XRPIngestionError("raw receipt source_data_as_of_utc must be a string or None")
         if receipt.get("source_http_date") is not None and not isinstance(receipt.get("source_http_date"), str):
             raise XRPIngestionError("raw receipt source_http_date must be a string or None")
+        source_http_headers = receipt.get("source_http_headers", {})
+        if not isinstance(source_http_headers, Mapping):
+            raise XRPIngestionError("raw receipt source_http_headers must be an object")
+        for name, value in source_http_headers.items():
+            if (
+                name not in HTTP_PROVENANCE_HEADER_NAMES
+                or not isinstance(value, str)
+                or not value
+                or len(value) > 512
+                or any(ord(character) < 32 or ord(character) == 127 for character in value)
+            ):
+                raise XRPIngestionError("raw receipt contains invalid or unapproved HTTP provenance headers")
         if not isinstance(receipt.get("raw_retention_reason"), str) or not isinstance(receipt.get("raw_only_reason"), str):
             raise XRPIngestionError("raw receipt retention and raw-only reasons must be strings")
         if not isinstance(receipt.get("raw_bytes_retained"), bool) or not isinstance(receipt.get("model_eligible_source"), bool):
@@ -744,6 +835,7 @@ class RawReceiptArchive:
         model_eligible: bool,
         raw_only_reason: str = "",
         source_http_date: str | None = None,
+        source_http_headers: Mapping[str, Any] | None = None,
         retain_raw_bytes: bool = True,
         raw_retention_reason: str = "",
     ) -> dict[str, Any]:
@@ -761,6 +853,25 @@ class RawReceiptArchive:
             or any(ord(character) < 32 for character in source_http_date)
         ):
             raise XRPIngestionError("source HTTP Date header must be a bounded printable string or None")
+        normalized_http_headers: dict[str, str] = {}
+        if source_http_headers is not None:
+            if not isinstance(source_http_headers, Mapping):
+                raise XRPIngestionError("source_http_headers must be a mapping or None")
+            for raw_name, raw_value in source_http_headers.items():
+                if not isinstance(raw_name, str):
+                    raise XRPIngestionError("source HTTP provenance header names must be strings")
+                name = raw_name.strip().lower()
+                if name not in HTTP_PROVENANCE_HEADER_NAMES:
+                    raise XRPIngestionError("source HTTP provenance header is not allowlisted")
+                if not isinstance(raw_value, str):
+                    raise XRPIngestionError("source HTTP provenance header values must be strings")
+                value = raw_value.strip()
+                if not value:
+                    continue
+                if len(value) > 512 or any(ord(character) < 32 or ord(character) == 127 for character in value):
+                    raise XRPIngestionError("source HTTP provenance header value is not bounded printable text")
+                normalized_http_headers[name] = value
+        normalized_http_headers = dict(sorted(normalized_http_headers.items()))
         digest = hashlib.sha256(raw_bytes).hexdigest()
         raw_payload_path = None
         if retain_raw_bytes:
@@ -787,6 +898,7 @@ class RawReceiptArchive:
             "captured_at_utc": captured_at_utc,
             "source_data_as_of_utc": source_data_as_of_utc,
             "source_http_date": source_http_date,
+            "source_http_headers": normalized_http_headers,
             "raw_content_sha256": digest,
             "payload_size_bytes": len(raw_bytes),
             "raw_payload_path": raw_payload_path,
@@ -3905,6 +4017,7 @@ def _run_coinbase_candle_backfill(
                     model_eligible=False,
                     raw_only_reason=raw_reason,
                     source_http_date=response.get("http_date"),
+                    source_http_headers=response.get("http_headers"),
                 )
                 receipts.append(receipt)
                 raw_only.append(
@@ -3929,6 +4042,7 @@ def _run_coinbase_candle_backfill(
                 model_eligible=source_eligible,
                 raw_only_reason=receipt_reason,
                 source_http_date=response.get("http_date"),
+                    source_http_headers=response.get("http_headers"),
             )
             receipts.append(receipt)
             records.extend(parsed_records)
@@ -4029,6 +4143,14 @@ def run_ingestion(
                 payload,
                 **parser_kwargs,
             )
+            cache_age_reason = _apply_http_cache_age_gate(
+                source_id,
+                response.get("http_headers"),
+                parsed_records,
+            )
+            if cache_age_reason:
+                source_eligible = False
+                reason = cache_age_reason
             if source_id in WEEKLY_SOURCE_IDS and parsed_records:
                 parsed_weekly_source_ids.append(source_id)
             if source_id == "xrp_etf_flows_aggregator":
@@ -4055,6 +4177,7 @@ def run_ingestion(
                     model_eligible=False,
                     raw_only_reason=raw_reason,
                     source_http_date=response.get("http_date"),
+                    source_http_headers=response.get("http_headers"),
                     retain_raw_bytes=source_id not in DIGEST_ONLY_RAW_SOURCE_REASONS,
                     raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
                 )
@@ -4082,6 +4205,7 @@ def run_ingestion(
             model_eligible=source_eligible,
             raw_only_reason=reason,
             source_http_date=response.get("http_date"),
+                    source_http_headers=response.get("http_headers"),
             retain_raw_bytes=source_id not in DIGEST_ONLY_RAW_SOURCE_REASONS,
             raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
         )
