@@ -5406,3 +5406,10 @@ The prediction engine remains not production-ready and forecast status remains *
 PR #1660 remains open, non-draft and currently mergeable, but has zero formal approvals. Branch-protection access returns HTTP 403 and the visible fallback ruleset is disabled. The 955-file semantic review is incomplete and Pages publication authorization remains absent. Do not merge or bypass protection.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+
+### Run140 security follow-up — source branch tips
+
+A read-only tree-path check found that the removed `.config/gh/hosts.yml` path is absent from current main and the active #1660 integration tree, but remains present at the tips of all 14 other currently open non-draft PR branches and three inspected draft branches: #1653, #1650–#1644, #1320, #1318, #1317, #1269, #1255, #1254, plus draft branches #1640, #1643 and #1642. Only tree path metadata was inspected; no file contents were read, and no source branch was modified. These branch tips therefore remain another exposure surface until the credential is revoked and the branches are safely updated. Treat the credential as compromised. The owner must revoke/reissue it; no rotation, branch rewrite, source-branch mutation or history rewrite was performed.
+
+At this follow-up, PR #1660 had 956 changed files, 268,663 additions and 3,655 deletions. The documentation/evidence head before this follow-up was `2a46e95c97a1cdca0188421264f27e4595c61b89`; the exact new follow-up commit and its CI state are recorded in the PR and latest branch ref. The full-suite result on parent code head `b2f6eb0ba77bc503de4eefabd07ba98d7414552a` remains 3,363 passed, zero failed, eight subtests and 59.58% coverage. The latest documentation head must still pass its own exact-head full suite and dependency audit.

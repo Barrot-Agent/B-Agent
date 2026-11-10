@@ -18,7 +18,7 @@
       "ec5f82122bf3fb2b74bd36ad72fc1e5d19067533"
     ],
     "main_tree_entries": 1403,
-    "integration_tree_entries": 2249,
+    "integration_tree_entries": 2250,
     "compare_status": "ahead",
     "ahead_by": 1923,
     "behind_by": 0,
@@ -31,13 +31,14 @@
       "head": "b2f6eb0ba77bc503de4eefabd07ba98d7414552a",
       "base": "ec5f82122bf3fb2b74bd36ad72fc1e5d19067533",
       "commits": 1923,
-      "changed_files": 955,
-      "additions": 268254,
+      "changed_files": 956,
+      "additions": 268663,
       "deletions": 3655,
       "formal_reviews": 0,
       "approvals": 0,
       "inline_threads": 0
-    }
+    },
+    "integration_head_before_security_followup": "2a46e95c97a1cdca0188421264f27e4595c61b89"
   },
   "security_event": {
     "id": "tracked-github-cli-auth-file",
@@ -57,7 +58,35 @@
     "credential_value_recorded": false,
     "rotation_or_revocation": "NOT_PERFORMED; specific owner authorization is required",
     "recommended_owner_action": "Revoke/reissue the credential at its issuer; assess historical exposure and any separately authorized history-cleanup procedure.",
-    "no_force_push_or_history_rewrite": true
+    "no_force_push_or_history_rewrite": true,
+    "additional_branch_tip_exposure": {
+      "current_main_absent": true,
+      "current_active_integration_absent": true,
+      "other_open_non_draft_source_branches_with_path": 14,
+      "additional_draft_branches_with_path": 3,
+      "inspected_pr_numbers": [
+        "1653",
+        "1650",
+        "1649",
+        "1648",
+        "1647",
+        "1646",
+        "1645",
+        "1644",
+        "1320",
+        "1318",
+        "1317",
+        "1269",
+        "1255",
+        "1254",
+        "1640",
+        "1643",
+        "1642"
+      ],
+      "content_read": false,
+      "branch_mutations": false,
+      "note": "The 14 other non-draft PR branch tips and three inspected draft branch tips still contain the tracked path. This is an additional current-branch exposure beyond the historical blob. No branch content was read and no source branch was modified."
+    }
   },
   "verification": {
     "exact_head": "b2f6eb0ba77bc503de4eefabd07ba98d7414552a",
@@ -108,7 +137,9 @@
       "side_effect": "automatic Pages build/deployment after main push; not initiated by this run"
     },
     "branch_protection": "HTTP 403; required rules unavailable",
-    "visible_ruleset": "Fall Back disabled"
+    "visible_ruleset": "Fall Back disabled",
+    "latest_documentation_head_before_security_followup": "2a46e95c97a1cdca0188421264f27e4595c61b89",
+    "latest_documentation_head_status": "CI in progress at last poll; do not substitute b2f6 parent-head verification"
   },
   "workflow_review": {
     "changed_workflows": 44,
