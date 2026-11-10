@@ -1,3 +1,146 @@
+# Barrot XRP Mission — Run126C: exact-head verification and Coinbase collateral network
+
+**Capture time:** `2026-11-10T09:44:51.310Z`  
+**Main SHA:** `d4d43be3427375cf79d190e768976de062e20287`  
+**Verified code/test head:** `483489f89c7e4a74c45c23e9b229b77565254ce1`  
+**Integration branch:** `integration/core-capabilities-mmi-structural-paper-20261104`  
+**Mission priority:** XRP intelligence and prediction-engine mastery.  
+**Foundation:** Barrot V3 remains execution, orchestration, safety and verification.
+
+## 1. Exact-head verification — VERIFIED
+
+The Run126B correction fixed the final stale endpoint-count assertion. The full suite now passes on exact head `483489f89c7e4a74c45c23e9b229b77565254ce1`.
+
+- Full repository suite: **1,368 passed, zero failed, eight subtests passed**.
+- Inclusive package coverage: **59.58%**, above the 53% floor.
+- Core suite: **677 passed**.
+- Wheel build and installed-wheel verification passed.
+- Installed package loads Barrot V3, the XRP primary mission and canonical data assets.
+- Dependency audit: six manifests passed, zero known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Exact-head evidence:
+
+- [Full CI — 42792815655](https://github.com/Barrot-Agent/B-Agent/actions/runs/42792815655)
+- [Dependency audit — 42792815588](https://github.com/Barrot-Agent/B-Agent/actions/runs/42792815588)
+- [Fail-closed gate — 42792815575](https://github.com/Barrot-Agent/B-Agent/actions/runs/42792815575)
+
+The prior two full-suite failures were stale contract assertions: first in the Run124 market-evidence test, then in the primary-mission contract test. Both now assert the actual 46-record registry: 42 hourly scheduled sources, two weekly CFTC sources, and two excluded non-commercial XRPL nodes (44 scheduled, two excluded). The endpoint implementation itself was not failing.
+
+Non-fatal packaging warnings remain for deprecated license metadata and package-discovery configuration. They did not prevent wheel installation or mission verification.
+
+## 2. Repository and PR inventory
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- PR #1640 head: `483489f89c7e4a74c45c23e9b229b77565254ce1`; 927 commits ahead, zero behind; 253 changed paths; open, non-draft and GitHub reports mergeable.
+- Main tree: 1,404 entries / 1,299 blobs / 86 workflow files / 90 Python test files / 30 XRP research files.
+- Integration tree after Run126B: 1,550 entries / 1,437 blobs / 87 workflow files / 149 Python test files / 82 XRP research files.
+- Open PR inventory: 372 unique PRs, 356 drafts and 16 non-drafts.
+- No new branch or PR was created. Main was not modified.
+
+## 3. PR overlap reconciliation
+
+Full file-list pagination confirms:
+
+- #1643 has 670 changed paths: **663 unique to #1643 and seven shared** with #1640. Preserve its unique research archive; do not close it as duplicate.
+- #1653 has seven changed paths: six unique repository-knowledge-graph paths and one shared CI path. Preserve the unique code/docs/tests and eight unresolved review threads.
+- #1642 has seven changed paths, all overlapping #1640. It is a duplicate/superseded-content candidate only after the successor is merged and verified on main.
+- #1644–#1650 are dependency/action update PRs whose changed paths overlap #1640. Current integration content already includes the newer checkout, upload/download artifact, pytest, types-requests, Databricks and Hugging Face versions in active files. Three workflows changed by #1644/#1647 (self-upgrade, IBM Bob audit, subagent matrix) are now quarantined with empty permissions and disabled jobs; their old checkout/artifact steps no longer execute. Keep these source PRs open until #1640 is merged and the resulting main files are verified.
+- #1254/#1255 contain older dependency versions than the current integration branch; retain until verified on main.
+- #1317/#1318/#1320 have path overlap with #1640, but do not close them until semantic/content reconciliation and verified successor merge.
+- #1269: preserve eight unique mesh/topology paths.
+- #1611/#1614: preserve unique or partially overlapping prediction work until exact contract reconciliation.
+- #1641/#1655/#1659: preserve unique material.
+
+No PRs were closed.
+
+## 4. New Coinbase collateral network evidence
+
+### Consumer XRP-backed USDC loans through Morpho
+
+Coinbase's current Help Center identifies XRP as eligible collateral for its USDC crypto-backed loan product. Coinbase says borrowing is powered by Morpho on Base and the collateral is held onchain. Its product page states a maximum **$100,000 USDC loan against XRP** for eligible customers; the Help Center excludes New York for U.S. access and notes limited UK/Canada availability subject to regional eligibility.
+
+Coinbase's backup collateral page maps native XRP to **cbXRP on Base**, contract `0xcb585250f852c6c6bf90434ab21a00f02833a4af`. This confirms the path:
+
+`XRP held by customer → cbXRP representation on Base → Morpho collateral → USDC loan`.
+
+The specific Morpho USDC/cbXRP market has a **62.5% LLTV**. Coinbase's generic loan page references 86% for the broader product, but that generic value must not be substituted for the XRP market's actual 62.5% immutable parameter.
+
+Coinbase states that Morpho collateral can be liquidated automatically and Coinbase cannot prevent a protocol liquidation. Optional loan protection must be enabled per loan, requires available collateral and is not guaranteed. Morpho liquidation transfers cbXRP on Base; it does not prove a native XRP sale. A subsequent redemption or sale must be observed separately.
+
+### Coinbase Global Derivatives cross-collateral
+
+A separate Coinbase Global Derivatives policy lists XRP as an accepted cross-collateral currency for eligible customers in supported regions outside the United States. The policy applies from October 1, 2026 for most customers.
+
+The published haircut table lists:
+- X:PM: no XRP haircut shown.
+- X:SM: **15% XRP haircut**.
+
+The haircut is an initial-margin reserve, not a reduction in account margin balance. Coinbase also applies asset limits based on average daily quantity at the user-business-organization level; excess collateral above the limit does not contribute to portfolio value. The XRP-specific cap and actual utilization are not publicly disclosed.
+
+This is distinct from consumer Morpho lending, Coinbase Custody, XRP spot holdings and Ripple/USDC settlement. It demonstrates collateral eligibility, not how much XRP is actually pledged.
+
+### Historical margin offset
+
+Coinbase's Global Exchange margin-offset table dated June 6, 2025 displayed a 0.93 offset between XRP-PERP and XRP-USDC spot. It is a historical, market-condition-dependent margin-offset weight, not a collateral haircut or current utilization figure.
+
+The structured Run126C evidence artifact is `research/xrp_intelligence/20261110T094451Z-run126c-coinbase-collateral-channels-update.json`. These policy pages are not admitted as quantitative collateral-utilization features. The Morpho and Coinbase proof-of-reserves adapters remain raw-only until token decimals, market/block alignment, oracle timestamps, locale refresh timezone and cache semantics are normalized.
+
+## 5. Current market and research conclusions carried forward
+
+- Spot: Kraken $1.08144 XRP/USD and OKX 1.0812 XRP-USDT in asynchronous snapshots; no executable arbitrage inference.
+- Spot depth: last multi-venue snapshot was 07:00 UTC and is stale relative to capture; displayed liquidity is cancellable.
+- Derivatives: OI aggregators disagree by about 38%, both show declining OI and long-heavy liquidations with modest positive funding. Do not average.
+- ETF flows: November 9 is partial. CryptoKeyhole component sum is −9,216,552 XRP while its displayed total is −9,216,553 XRP; preserve the one-XRP discrepancy. Alpha's −$10.4M and zero rows are not independently issuer-confirmed.
+- Coinbase cbXRP reserves: 152,372,342.33 XRP versus 152,370,095.8 cbXRP supply on the issuer page; refresh timezone unresolved.
+- Morpho Base market: $55.58M outstanding USDC, $23.54M liquidity, 88.23% utilization, 62.5% LLTV, 7.00% borrow and 6.14% lend rates; no displayed bad debt. Nov 6/8 liquidation stress estimates remain historical, not current.
+- Exact phrase “SBIC, ChatGPT SBIC”: no exact match; Tokyo SBIC's official ChatGPT/Copilot course is training for investee companies, not an OpenAI partnership.
+- Exact phrase “actual capital”: no standardized XRP metric or exact match in reviewed Evernorth filing. Keep cash, in-kind XRP, debt, contingent facilities, resales and warrants separate.
+- ASK Coin remains ambiguous; no XRP integration verified.
+- Dr. Kamilah Stevenson identity is supported, but the YouTube channel ID/handle relationship remains unverified. Ten candidate references remain candidate-only; verified personal-channel upload count remains zero.
+- October 2026 CPI was scheduled for 13:30 UTC on November 10; no release result was observed at the prior capture cutoff.
+
+## 6. Prediction-engine and platform status
+
+The integration branch retains 46 endpoint records: 42 hourly scheduled, two weekly CFTC, two excluded non-commercial XRPL nodes. Morpho and Coinbase cbXRP proof-of-reserves endpoints are already registered, but their parsers are deliberately raw-only. The point-in-time store, four baselines, chronological purge/embargo evaluator, calibration/drift diagnostics and fail-closed forecast ledger are implemented on the integration branch.
+
+Independent WORM/timestamp anchoring, synchronized historical market/collateral data, effective-sample-size correction, sufficient shadow outcomes and demonstrated out-of-sample lift remain incomplete.
+
+Forecast status: **NOT_ISSUED**. No directional forecast, paper trade or real-money action.
+
+Nine-platform status:
+- ChatGPT: current-session GitHub read/write verified.
+- Copilot: comment-only review activity; no approval.
+- Claude, Grok, Gemini, Codex: unverified.
+- Hugging Face: prior build error; no deployment.
+- Kaggle: untested; no submission.
+- Databricks: prior HTTP 403; no workspace write.
+- No persistent authenticated cross-platform exchange or external-model data transfer.
+
+## 7. Merge boundary
+
+PR #1640 remains unmerged despite exact-head full-suite, dependency and fail-closed success.
+
+- 62 review submissions remain COMMENTED; zero APPROVED.
+- 22 inline review threads are resolved but outdated.
+- CodeRabbit automatic review remains paused.
+- Detailed main branch-protection access returns HTTP 403; the visible fallback ruleset is disabled.
+- GitHub Pages has previously deployed automatically after a main push. PR #1640 changes public web assets; specific authorization for automatic publication remains unresolved.
+
+The user's conditional merge authorization is not satisfied. No branch-protection bypass or merge was attempted.
+
+## 8. Next actions
+
+1. Obtain independent approval, authoritative branch-protection visibility and explicit authorization for automatic Pages publication.
+2. Preserve unique research, knowledge-graph, mesh and prediction PRs; close only exact duplicates after verified successor merge.
+3. Normalize Morpho and Coinbase collateral sources using token decimals, block-aligned state, oracle timestamps and issuer refresh/cache semantics.
+4. Trace actual cbXRP redemptions and native XRP sales separately from Morpho liquidations.
+5. Expand synchronized historical spot, L2, derivatives, exchange-flow, ETF, collateral and macro-vintage data; independently anchor raw receipts.
+6. Require leakage-safe out-of-sample lift and sufficient independent shadow outcomes before any forecast issuance.
+7. After any authorized merge, fetch main, verify merge commit and files, run main CI, inspect automatic workflow side effects, then close only exact verified duplicates.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
 # Barrot XRP Mission — Run126B: second contract assertion repaired; fresh spot, ETF and cbXRP collateral evidence
 
 **Capture time:** `2026-11-10T09:38:55.286Z`  
