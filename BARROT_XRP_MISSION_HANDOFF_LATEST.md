@@ -3464,3 +3464,51 @@ Kraken's pre-release retrieval at 13:19:48 UTC showed last $1.07712, bid $1.0771
 Structured evidence: [Run130B CPI event JSON](research/xrp_intelligence/20261110T133108Z-run130b-october-cpi-release-and-market-reaction.json).
 
 No directional forecast was issued. No paper trade or real-money action occurred.
+
+
+---
+
+## Run 130C — October 2026 Real Earnings release and repository integration audit
+
+**Captured:** 2026-11-10 13:34:04 UTC. **Current main:** `d4d43be3427375cf79d190e768976de062e20287`. **Integration branch before this append:** `78e6eaf4a5191798fcb3010d8fe9332e3a8c5b6c`.
+
+### BLS Real Earnings — USDL-26-1686
+
+BLS published the October 2026 Real Earnings release at 08:30 ET / 13:30 UTC:
+
+- All-employee real average hourly earnings were unchanged month over month, seasonally adjusted.
+- Nominal average hourly earnings rose 0.4%, matching the 0.4% CPI-U increase.
+- All-employee real average weekly earnings were unchanged; the average workweek was unchanged.
+- Production/nonsupervisory real average hourly earnings rose 0.1% because nominal hourly earnings rose 0.4% while CPI-W rose 0.3%.
+- Production/nonsupervisory real weekly earnings fell 0.3%, matching a 0.3% decline in the average workweek.
+- Year-over-year real-earnings comparisons are unavailable because October 2025 CPI data were not collected during the lapse in appropriations.
+
+Primary source: [BLS Real Earnings release USDL-26-1686](https://www.bls.gov/news.release/realer.nr0.htm). Related primary source: [BLS October CPI release USDL-26-1685](https://www.bls.gov/news.release/cpi.nr0.htm).
+
+The CPI and Real Earnings releases are separate BLS publications but share the same publisher; they are not independent-publisher corroboration. The official page was inspected, but raw HTTP wire bytes and a raw-source digest were not captured. The artifact records a SHA-256 digest of its normalized evidence payload only; it does not misrepresent that digest as a raw BLS response hash.
+
+### Interpretation and model treatment
+
+The Real Earnings release shows no broad all-employee real hourly or weekly wage gain in October. It does not neutralize the CPI surprise: headline and core monthly CPI were each 0.1 percentage point above the Reuters preview consensus. October headline/core year-over-year values remain null because the comparison base is unavailable.
+
+The artifact preserves competing interpretations: sticky core may reinforce restrictive-policy expectations; slower headline inflation may temper that interpretation; and there may be no stable XRP response without synchronized multi-asset market repricing. These are hypotheses, not causal findings.
+
+The release is **NOT_ADMITTED** to the model feature store until a point-in-time record has a verified raw-source receipt and independent timestamp anchor. YoY values remain null. No directional forecast is issued.
+
+Structured evidence: [Run130C JSON](research/xrp_intelligence/20261110T133404Z-run130c-real-earnings-release.json).
+
+### Repository reality and integration gate
+
+A fresh recursive Git tree was retrieved: main contains 1,404 entries; the current integration branch contains 1,559 entries. All **372 open PRs** were enumerated across four pages: **356 draft, 16 non-draft**. No new branch or PR was created.
+
+- **PR #1640** remains the sole active core integration branch for MMI, XRP point-in-time ingestion, prediction safeguards and V3 foundation. Its head before this append was `78e6eaf4a5191798fcb3010d8fe9332e3a8c5b6c`, 957 commits ahead and zero behind current main, with 263 changed files. The 13:31:08 UTC Run130B commit changed only the canonical handoff and its CPI evidence JSON.
+- Exact-head checks on `78e6eaf`: core CI passed; dependency audit passed across six manifests; fail-closed gate passed. The full repository suite, inclusive coverage and installed-wheel verification were still **IN_PROGRESS** at the 13:34:04 UTC observation. Runs: [CI 42825344461](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825344461), [dependency audit 42825344586](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825344586), [fail-closed gate 42825344668](https://github.com/Barrot-Agent/B-Agent/actions/runs/42825344668). The full-suite result from the preceding head is not substituted for this head.
+- PR #1640 has 62 review submissions, all COMMENTED and zero APPROVED. The live review-thread API reports 22 threads and **zero resolved**; this corrects the stale prior handoff statement that those threads were resolved.
+- **PR #1643** remains unique institutional/market/capital research, not a duplicate. Its head is `238f3ff4a69420882c77d225626a352ba19a412c`, based on old main `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`; it is 906 commits ahead and one behind current main, 670 changed paths, 7 shared paths with #1640 and 663 paths unique to #1643. GitHub reports it dirty/unmergeable. It has 10 COMMENTED reviews, zero APPROVED, and 19 review threads with zero resolved. Do not merge it directly; preserve its unique research for a later current-main successor after the core integration is resolved.
+- Visible repository ruleset inventory contains only the fallback ruleset “Fall Back”, with enforcement disabled. The branch-protection endpoint returns HTTP 403, so effective required reviewers/status contexts remain unverified. GitHub Pages settings are also inaccessible through the available read path; a previous main update triggered publication. Do not merge while approvals, effective protection and the public publication side effect remain unresolved.
+
+**Backlog classification:** #1640 = active integration / blocked on current-head full-suite and governance gates; #1643 = unique research / stale-diverged / unmergeable; #1642 = unique prediction work pending path-level reconciliation; #1653, #1655 and #1659 = unique/unreviewed work to preserve; #1644–#1650 = dependency/path-overlap candidates requiring exact diff review, not bulk closure; historical safety/research PRs remain preserved until a verified successor lands. No PRs were closed.
+
+**Next concrete action:** wait for exact-head full CI 42825344461 to complete, inspect the full-suite and installed-wheel results, then reconcile only actual failures on the existing #1640 branch. Do not create another integration PR. After #1640 is merge-ready and its governance/publication blockers are resolved, rebase the integration plan by carrying #1643's 663 unique paths into one successor on the then-current main and reconcile all seven shared paths.
+
+**Forecast status: NOT_ISSUED.** No merge, deployment, paper-trading mutation, real-money transaction, external model transfer, secret rotation, Space restart, Kaggle submission, Databricks write, force-push or destructive worktree operation occurred.
