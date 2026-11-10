@@ -1,3 +1,65 @@
+# Barrot XRP Mission — Run125C: Coinbase cbXRP reserves and Morpho collateral channel
+
+**Capture cutoff: 2026-11-10T08:50:00Z.** This is a research/handoff-only update on the existing integration branch. The preceding code/test head was ab70744f0ef0073f52933ff9908e8cec4204f5b8.
+
+## Exact-head verification
+
+The preceding head passed exact-head CI: **1,355 passed, zero failed, eight subtests passed; 59.48% inclusive coverage; 677 core tests passed**. The installed wheel verified Barrot V3 and the XRP mission. Six dependency manifests passed strict pip-audit with no known vulnerabilities. The fail-closed gate passed and automatic merge remains disabled.
+
+Evidence: [Full CI 42785230391](https://github.com/Barrot-Agent/B-Agent/actions/runs/42785230391), [Dependency audit 42785230472](https://github.com/Barrot-Agent/B-Agent/actions/runs/42785230472), [Fail-closed gate 42785230083](https://github.com/Barrot-Agent/B-Agent/actions/runs/42785230083).
+
+## Coinbase primary proof-of-reserves: cbXRP
+
+Coinbase’s official cbXRP proof-of-reserves page explicitly states that cbXRP is backed 1:1 by XRP held by Coinbase. The public locale pages show these observations:
+
+| Locale page | Displayed refresh | XRP reserve | cbXRP supply | Excess reserve |
+|---|---|---:|---:|---:|
+| en-US | Nov 10, 02:04 AM | 151,921,083.53 | 151,918,836.99 | 2,246.54 |
+| en-GB | Nov 10, 04:44 AM | 152,372,342.33 | 152,370,095.80 | 2,246.53 |
+| en-ES | Nov 10, 06:34 AM | 152,372,342.33 | 152,370,095.80 | 2,246.53 |
+
+The reserve surplus is approximately 2,246.5 XRP in each snapshot, consistent with 1:1 backing. The locale pages expose different cached snapshots and local refresh labels; do not infer chronological growth until timezone and cache semantics are normalized. The 152M cbXRP reserve attributed by XRP Insights is now independently corroborated by Coinbase primary pages.
+
+Source: [Coinbase cbXRP proof of reserves](https://www.coinbase.com/cbxrp/proof-of-reserves).
+
+## Morpho cbXRP/USDC collateral channel
+
+Morpho’s public market page and REST market-parameter endpoint identify a Base market with USDC as the loan asset, cbXRP as collateral and a fixed **62.5% LLTV**. The immutable market configuration is:
+
+- Market ID: 0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109.
+- Loan token: USDC, contract 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913.
+- Collateral token: cbXRP, contract 0xcb585250f852C6c6bf90434AB21A00f02833a4af.
+- Oracle: 0x031b2EFC8d70042Ac8d9f5c793c4149eC4b60fdE.
+- Creation block: 40,855,874.
+
+Primary sources: [Morpho market](https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp), [Morpho market parameters API](https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109), [Morpho REST documentation](https://docs.morpho.org/developers/api/morpho/).
+
+Morpho’s public REST API exposes immutable market parameters, total supply/borrow assets and shares, fee, oracle quote and historical market state/APY. It does not expose aggregate collateral totals or a market-wide borrower-health list through the documented REST routes. GraphQL remains served for existing integrations. This is a concrete gap in the current 40-source XRP registry: neither Morpho nor Coinbase cbXRP proof-of-reserves is currently registered.
+
+### Liquidation-risk observations
+
+Catenaa’s November 8 02:21 UTC scan reports $58.3M USDC debt against 120.6M cbXRP collateral, $66.3M supplied USDC, $8.1M withdrawable liquidity, 88% utilization, 6.1% supplier APY and 7.0% borrower APY. It estimates $8.4M debt at risk under a further 10% XRP price decline. It reports 384 liquidations on November 6–7, $1.6M repaid and 1.53M cbXRP seized; 3,713 liquidations since February and no reported bad debt.
+
+CryptoSlate’s November 6 13:24:54 UTC snapshot separately reports $8.8448M debt across 1,070 positions within a further 10% oracle decline, and $3.2296M across 462 positions within 5%. The 5% set is included within the 10% set; do not add them. These are secondary analyses of public Morpho data, not independent issuer attestations.
+
+Sources: [Catenaa](https://catenaa.com/markets/cryptocurrencies/cbxrp-loans-morpho-liquidation-risk/), [CryptoSlate](https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/).
+
+Coinbase’s published product terms match the market’s 62.5% LLTV and a 49% maximum initial LTV. That supports the inference that the market serves Coinbase’s cbXRP-backed borrowing product, but Morpho is permissionless and the market itself does not identify Coinbase as the originator. Treat the relationship as strongly supported inference, not a market-level primary label.
+
+Using 120.6M cbXRP collateral from the November 8 secondary snapshot against the later 152.370M Coinbase supply gives an indicative 79.15% concentration. The timestamps differ, so this is not a synchronized market-share measure.
+
+**Market interpretation:** liquidations first seize cbXRP on Base. They do not automatically create native XRP spot selling. A native XRP effect requires redemption or another transfer from wrapped collateral into native XRP markets; no such sale is inferred. This collateral channel should be tracked separately from XRP spot exchange flows.
+
+## Integration and next action
+
+PR #1640 remains the single V3/XRP integration path. The code/test head above passed. This Run125C commit adds only the handoff and a research artifact; its own workflow checks will be inspected before any merge consideration.
+
+Next engineering action: add the public Morpho market-parameter, market-state, oracle-state and history endpoints, plus Coinbase cbXRP proof-of-reserves, to the existing source registry with distinct provider event/retrieval times, cache-age rules and fixture tests. Do not claim aggregate borrower-health coverage from the REST API; evaluate the documented GraphQL/position path separately. Keep wrapped-collateral liquidations separate from native XRP sales.
+
+PR #1640 remains blocked by zero approving reviews, inaccessible effective branch-protection requirements and unresolved GitHub Pages publication authorization. No merge, deployment, external-model transfer, paper trade or real-money action occurred. **Forecast status: NOT_ISSUED.**
+
+---
+
 # Barrot XRP Mission — Run125B: ETF arithmetic and exchange-reserve correction
 
 **Capture cutoff: 2026-11-10T08:46:00Z.** This correction preserves the Run125 and Run125A records and supersedes their inaccurate arithmetic/date descriptions.
