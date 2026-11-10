@@ -4177,3 +4177,27 @@ Tokyo SBIC's June 12–13, 2025 investee-company training explicitly included Ch
 **Raw-source limitation:** raw HTML response bytes were not available from the connector; `raw_bytes_captured=false` and `raw_byte_sha256=null` are explicit. Only normalized excerpt hashes are recorded. This artifact is research evidence, not a directional XRP feature.
 
 The unified successor is PR #1660, branch `integration/xrp-v3-unified-main-20261110`. Its prior merge tree contained 942 changed paths; this append adds two research/test paths. The PR remains not merge-ready until exact-head CI, full-suite, coverage, package, dependency/security and fail-closed checks pass.
+
+## Run 132e — 2026-11-10T15:22:04.421Z
+
+### Consolidated branch and concurrent safety work
+
+PR #1660 is the single current-main successor for the V3 and XRP research workstreams. Current head before this workflow-trigger change: `4bc63e9be466ecafc3205775871e0d1208562954`; current main remains `d4d43be3427375cf79d190e768976de062e20287`. The PR has 944 changed paths and remains not merge-ready.
+
+The branch received three concurrent commits after the SBIC research append. They were preserved and inspected:
+- `ac0457c0a623d78f73124d3339ceb8bf92a76d39`: separate Databricks workspace-import and Kaggle dataset-download confirmation inputs in `.github/workflows/barrot-ops.yml`.
+- `4bc63e9be466ecafc3205775871e0d1208562954`: regression tests for those separate confirmations.
+These changes scope external operations to distinct explicit approvals. No Databricks import, Kaggle download/submission, Hugging Face mutation, deployment or external action was executed.
+
+### Exact-head validation trigger repair
+
+The PR-open/ready events did not produce CI, dependency-audit or fail-closed runs for the successor. The available GitHub connector has no workflow-dispatch action. To make exact-head validation executable through safe branch pushes, this commit adds read-only push triggers for `integration/**`:
+- `.github/workflows/ci.yml`: full repository suite, inclusive coverage, package and existing validation jobs.
+- `.github/workflows/dependency-audit.yml`: six-manifest dependency/security audit when dependency, XRP research or XRP test paths change.
+- `.github/workflows/barrot-gated-merge.yml`: fail-closed audit-only gate; it has read permissions only and cannot approve or merge.
+
+The next push is expected to trigger these three workflows. Verify the run head SHA before claiming results. If GitHub still suppresses them, retain the blocker; do not substitute predecessor-head test results.
+
+### Backlog and safety
+
+PR #1640 and #1643 are source branches for PR #1660; #1642 is the exact seven-path subset of #1640. Keep source PRs open until #1660 is merged and verified on main; then close only these exact superseded sources with cross-references. No main change, merge, deployment, secret rotation, provider restart, paper-trading mutation or real-money action occurred.
