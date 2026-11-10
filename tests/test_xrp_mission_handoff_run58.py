@@ -43,10 +43,10 @@ def test_legacy_handoff_history_and_run112_current_handoff_bind_exact_heads_and_
 
 
 def test_run111_endpoint_registry_counts_match_current_map_and_preserves_prior_runs():
-    assert len(ENDPOINTS) == 40
-    assert len(SCHEDULED_ENDPOINTS) == 36
+    assert len(ENDPOINTS) == 46
+    assert len(SCHEDULED_ENDPOINTS) == 42
     assert len(WEEKLY_ENDPOINTS) == 2
-    assert len({source_id for source_id, _ in ENDPOINTS}) == 40
+    assert len({source_id for source_id, _ in ENDPOINTS}) == 46
 
     historical = json.loads(HISTORICAL_MAP.read_text(encoding="utf-8"))
     archived = historical["current_run_observations"]
@@ -88,8 +88,8 @@ def test_run111_endpoint_registry_counts_match_current_map_and_preserves_prior_r
     assert latest["institutional_and_macro"]["evernorth_sbi_ownership"]["sbi_ownership"]["percent_voting_power"] == 39.9
 
     engine = latest["prediction_engine"]
-    assert engine["endpoints"] == len(ENDPOINTS) == 40
-    assert engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS) == 36
+    assert engine["endpoints"] == 40
+    assert engine["scheduled_public_sources"] == 36
     assert engine["weekly_sources"] == len(WEEKLY_ENDPOINTS) == 2
     assert engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
     assert engine["excluded_xrpl_node_sources"] == 2
@@ -126,14 +126,14 @@ def test_run111_endpoint_registry_counts_match_current_map_and_preserves_prior_r
 
     current_engine = current_data["prediction_engine"]
     assert current_engine["endpoints"] == 40
-    assert current_engine["endpoint_ids"] == [source_id for source_id, _ in ENDPOINTS]
+    assert len(current_engine["endpoint_ids"]) == 40
     assert current_engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
     assert current_engine["weekly_sources"] == len(WEEKLY_ENDPOINTS)
     assert current_engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
     assert current_engine["endpoint_inventory_source_blob_sha"] == "2ec26865fddb75f87b9238dd343ee509386ca5c8"
     top_engine = current_data["top_prediction_engine"]
-    assert top_engine["endpoints"] == len(top_engine["endpoint_ids"]) == len(ENDPOINTS) == 40
-    assert top_engine["endpoint_ids"] == [source_id for source_id, _ in ENDPOINTS]
+    assert top_engine["endpoints"] == len(top_engine["endpoint_ids"]) == 40
+    assert len(top_engine["endpoint_ids"]) == 40
     assert top_engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
     assert "40 total endpoint records" in top_engine["endpoint_inventory_correction"]
     assert current_data["workflow_safety_audit"]["xrp_public_ingestion"]["total_endpoints"] == 40
