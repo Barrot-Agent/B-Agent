@@ -4071,3 +4071,23 @@ Exact runs:
 The next handoff-only commit changes no executable code but will still receive a fresh exact-head workflow run. Do not transfer the `2a19bade9767f146c5ebc058a8220cefedc231c6` test result to that later commit until its own checks complete.
 
 **Merge remains blocked:** PR #1640 has zero APPROVED reviews; its 22 inline threads are resolved but outdated. The PR changes public web assets, and the prior automatic GitHub Pages publication side effect is not authorized. No merge or deployment.
+
+
+---
+
+## Run131B workflow-path verification boundary correction
+
+**Captured:** 2026-11-10T14:21:02Z.
+
+The documentation-only handoff commit `81df7204ef1351703cc277aff3d96bebecf1c5ed` did **not** produce a new CI, dependency-audit or fail-closed workflow run in the observed Actions inventory. The workflows are path-filtered; a Markdown-only change does not guarantee a new run. This corrects the preceding sentence that expected a fresh run on that handoff-only commit.
+
+The latest executable artifact/test head is `2a19bade9767f146c5ebc058a8220cefedc231c6`. That exact head passed:
+- 682 core tests and 8 subtests.
+- 1,385 full-repository tests, zero failures, 8 subtests, 59.58% inclusive coverage.
+- Installed wheel build and mission-resource verification.
+- Six-manifest dependency audit with no known vulnerabilities.
+- Fail-closed gate, with automatic merge disabled.
+
+The subsequent `81df720` commit changes only `BARROT_XRP_MISSION_HANDOFF_LATEST.md`; it does not change executable code, tests or research artifacts. **Do not describe `81df720` as an exact-head CI pass.** No manual dispatch action is available in the connected GitHub tool set, and no workflow run was fabricated.
+
+Current main remains `d4d43be3427375cf79d190e768976de062e20287`. PR #1640 remains open and unmerged with zero approving reviews. No deployment or external write occurred.
