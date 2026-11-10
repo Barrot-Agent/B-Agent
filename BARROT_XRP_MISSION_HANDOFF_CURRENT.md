@@ -1,3 +1,66 @@
+# Run 110 — XRP intelligence, exchange-flow and XRPL governance reconciliation
+
+Capture anchor: 2026-11-10T02:00:36Z. This section supersedes the prior run only for the observations below; historical records remain preserved.
+
+## Mission and execution state
+
+- XRP intelligence and prediction-engine mastery remains priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Main: `d4d43be3427375cf79d190e768976de062e20287`. Existing integration PR #1640 only; no new branch or PR.
+- Code/test head `60648e1ed915b05362054703310b07f697fa50c6` passed exact-head CI: 1,322 tests, zero failures, eight subtests; inclusive coverage 59.36%; core suite 677 passed; wheel and installed mission verification passed.
+- [Full CI 42740433458](https://github.com/Barrot-Agent/B-Agent/actions/runs/42740433458), [dependency audit 42740433707](https://github.com/Barrot-Agent/B-Agent/actions/runs/42740433707), and [fail-closed gate 42740433680](https://github.com/Barrot-Agent/B-Agent/actions/runs/42740433680) passed on that exact code/test head. The handoff/map descendant being committed in this run requires its own exact-head CI.
+
+## Spot, derivatives and depth
+
+- Kraken XRP/USD surfaced ticker: last $1.09897; bid $1.09894; ask $1.09895; 24-hour volume 29.21M XRP; VWAP $1.09654; high $1.12232; low $1.07502. Kraken supplied no exchange event timestamp.
+- OKX XRP-USDT: last 1.1002 USDT; bid 1.1003; ask 1.1004; 24-hour volume 72.31M XRP; provider timestamp 01:49:35.459Z, 660.541 seconds old at capture, exceeding the 300-second live-data gate. Quotes are asynchronous and not USD-normalized; no arbitrage inference. Both are model-ineligible.
+- Liqwall reported $1.23B open interest and $7.8M long liquidations at 23:32Z; TradRadar $1.67B open interest and $8.59M long liquidations at 23:00Z. OI gap 35.8%; overlapping venue coverage and different windows mean no averaging.
+- Fuelmaps' spot-only five-of-six-venue snapshot at 21:00Z showed $7.5M bids and $4.5M asks within 1%, 62.8% bid share. It was over five hours old and Kraken was degraded. Edge or Not's older mixed spot/perpetual snapshot showed $8.8M bids and $8.2M asks. These are different universes, not synchronized evidence of a persistent imbalance.
+
+## Exchange flows and actual-capital taxonomy
+
+The new artifact is `research/xrp_intelligence/20261110T020036Z-run110-exchange-flow-xrpl-amendment-etf-reconciliation.json`.
+
+- XRP Insights reported 22.35B XRP in 701 XRP Ledger wallets attributed to 24 exchanges as of Nov 9 08:01Z. Same-wallet change: -25.8M over seven days and -138.1M over 30 days. The publisher reads balances through `rippled account_info` and attributes wallets using XRPSCAN public labels.
+- This total includes cold storage and wrapped reserves; it is not tradable float. The source reports 48.4% cold-labeled, 40% without hot/cold labels, 483M XRP of wrapped/insurance reserves, coverage gaps and an internal 1.6M XRP discrepancy between two Binance-Peg reserve figures.
+- Coinbase-attributed wallets: 5.80B XRP, seven-day change -46.9M; includes 152M cbXRP reserve and substantial cold storage. Not Coinbase proprietary XRP or customer tradable supply.
+- Binance-attributed wallets: 2.73B XRP, seven-day change +10.2M; includes Binance-Peg reserves and affiliate/charity balances.
+- SBI VC Trade-attributed wallets: 56.8M XRP, seven-day change -3.2M, 30-day +150K, two wallets and over 99% cold-labeled. This is SBI VC Trade custody, not SBI Holdings treasury, SBI Remit corridor inventory or direct SBI proprietary capital.
+- CryptoQuant reported 691M XRP of gross whale inflows to Binance in one day, exceeding $900M, in an article dated Nov 8. Exact event cutoff and address list were not exposed. Deposits do not prove sales.
+- Binance's preliminary Nov 3 report says 233.46M XRP was transferred from five hot wallets to attacker-controlled addresses on Oct 29; 98% of affected token assets had been replenished by Oct 31. Reserve rebalancing is a possible but unconfirmed explanation for some later deposits.
+- Gross whale deposits, same-wallet net balance changes, reserve replenishment, wrapped reserves, cold custody and customer trading balances are separate variables. The 691M gross inflow and -25.8M same-wallet net change are not contradictory and must not be summed or averaged.
+
+## ETF flows
+
+- XRP Insights (six spot funds plus BITW) reported Nov 6 net outflow of 663,043 XRP; Nov 2–6 week -812.5K XRP; combined holdings 1.20B XRP and $1.41B AUM. GXRP is excluded from flow totals during a data correction but included in holdings.
+- ByKaranteli's five-fund display reported Nov 6 $0, five-day -$530K, $1.34B net assets and $1.81B cumulative inflow.
+- Alpha Finance through Nov 8 reports 7 sessions +$8.4M and 30 sessions +$23.3M, but displays Nov 8 (Sunday) as a zero-flow session without explanation and publishes no AUM or holdings. No averaging; dollar flows, XRP holdings changes, AUM and volume are separate.
+
+## XRPL governance and macro
+
+- XRPL dashboard at 01:39Z, ledger 108229375: 35/35 validators heard, 29 required; 98 amendments enabled, 9 in flight, zero in the 14-day activation countdown.
+- LendingProtocol 22 yes votes; ConfidentialTransfer 21. Neither active. Official XRPL rule requires more than 80% of trusted validators for two weeks; support at 80% or below resets the period.
+- U.S. October CPI scheduled Nov 10 at 08:30 ET / 13:30Z; no result available at capture.
+
+## Main-build reality, review and workflow safety
+
+- Main's scheduled Cross Analysis run [42738713338](https://github.com/Barrot-Agent/B-Agent/actions/runs/42738713338) succeeded, but XRP sentiment shift had zero recent and zero prior observations. Its 286 XRP mentions and +0.46 corpus sentiment are not a temporal price signal.
+- `.github/workflows/xrp-public-ingestion.yml` exists on #1640 only and is main-only when merged. It is absent from main; no scheduled XRP ingestion is active on main.
+- The integration registry contains 40 public sources, including XRP Insights exchange balances as raw-only receipt data. That endpoint is not model-admitted. Local receipt chains are content-addressed and fsynced, but GitHub artifact retention is bounded; independent WORM and trusted timestamp anchoring remain absent.
+- The SQLite feature-store triggers deter ordinary mutation but are not adversarially tamper-proof. Forecast issuance still requires a trusted Ed25519 evaluator key; complete synchronized history, 100+ out-of-sample samples, 100+ shadow outcomes, two independent source groups, calibration error ≤0.05 and horizon coverage remain unmet.
+- PR #1640 is 881 commits ahead, zero behind, 222 changed paths at code/test head `60648e1`; 62 review submissions COMMENTED, zero APPROVED, all 22 inline threads resolved. Main reports protected=true, but detailed branch-protection access returns HTTP 403; visible fallback ruleset disabled. GitHub Pages is enabled and a prior main push triggered public publication; specific authorization remains absent.
+- Manual `barrot-approve-pr` applies an `approved` label and comment; it does not submit an approving GitHub review. It cannot satisfy independent approval. `barrot-ops` can overwrite a Databricks notebook after explicit YES and exact-main-SHA confirmation; it was not dispatched. Hugging Face sync remains quarantined; gated merge remains fail-closed; automatic merge disabled.
+- Open inventory: 372 PRs (356 drafts, 16 non-drafts). #1643 has 670 paths, seven overlap and 663 unique; diverged 906 ahead/one behind and not mergeable; preserve research. #1653 has seven paths, one overlap, six unique and eight unresolved review threads; preserve graph work, blocked. #1642 is seven-path overlap; #1644–#1650 dependency/action overlap; #1317/#1318/#1320 structural/schema overlap; #1254/#1255 dependency reconciliation; #1269 eight unique mesh paths; preserve #1655's three and #1659's four unique paths. No PRs closed.
+
+## Identity, platforms and forecast
+
+- Japan's SBIC East/Central/West remain separate regional policy-investment companies, not SBI Holdings. Tokyo SBIC's 2025 course included ChatGPT/Copilot training for investee companies; not an OpenAI partnership.
+- Permission Coin ASK remains a plausible candidate, not a confirmed ASK Coin identity; no XRP integration established. No new exact-phrase primary-source match for "actual capital". No new verified personal-channel uploads for Camilla/Kamilah Stevenson.
+- Run110 platform addendum reverified only ChatGPT-to-GitHub read/write. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. No external-model data transfer.
+- Forecast status: **NOT_ISSUED**. No directional forecast, paper trade or real-money action.
+- Next action: complete exact-head CI for the handoff/map descendant; obtain independent approval, authoritative branch-protection visibility and explicit Pages-publication authorization; continue synchronized historical exchange-flow and market-depth validation. Do not merge #1640 until all gates are satisfied.
+
+---
+
 # Run 109 — exact-head verification, XRP spot/derivatives and SBI–Evernorth ownership clarification
 
 Capture cutoff: 2026-11-10T01:27:20Z. Main SHA: `d4d43be3427375cf79d190e768976de062e20287`. Integration branch before this documentation/map/test update: `a900c4df8833839ed847c0b307588cfb3f34f7d1`.

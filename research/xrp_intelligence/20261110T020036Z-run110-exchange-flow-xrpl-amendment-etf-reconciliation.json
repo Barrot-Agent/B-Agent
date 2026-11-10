@@ -1,0 +1,233 @@
+{
+  "schema_version": "barrot.xrp.run110.exchange-flow-xrpl-etf-reconciliation.v1",
+  "run": 110,
+  "captured_at_utc": "2026-11-10T02:00:36Z",
+  "repository": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_code_test_head": "60648e1ed915b05362054703310b07f697fa50c6",
+    "pr": 1640,
+    "full_suite": {
+      "run_id": 42740433458,
+      "passed": 1322,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_pct": 59.36,
+      "core_passed": 677
+    },
+    "dependency_audit": {
+      "run_id": 42740433707,
+      "manifests": 6,
+      "vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42740433680,
+      "result": "success",
+      "automatic_merge_disabled": true
+    }
+  },
+  "provenance": {
+    "raw_http_transport_bytes_preserved": false,
+    "normalized_excerpt_text_preserved": true,
+    "excerpt_hash_scope": "SHA-256 over the normalized excerpt strings in this artifact, not source HTTP bytes or headers.",
+    "model_admission": false
+  },
+  "exchange_balances": {
+    "source": "XRP Insights",
+    "url": "https://xrp-insights.com/exchange-balances",
+    "dataset_url": "https://xrp-insights.com/exchange-balances/data.json",
+    "latest_read_utc": "2026-11-09T08:01:00Z",
+    "method": "rippled account_info daily; XRPSCAN public labels only",
+    "total_xrp": 22350000000,
+    "wallets": 701,
+    "exchanges": 24,
+    "circulating_supply_xrp": 68890000000,
+    "share_circulating_pct": 32.5,
+    "same_wallet_7d_xrp": -25800000,
+    "same_wallet_30d_xrp": -138100000,
+    "naive_total_change_xrp": 373900000,
+    "naive_change_includes_new_wallets_xrp": 512000000,
+    "cold_labeled_pct": 48.4,
+    "unlabeled_hot_cold_pct": 40,
+    "wrapped_reserves_xrp": 483000000,
+    "wrapped_reserve_components": {
+      "binance_peg_methodology": 325800000,
+      "coinbase_cbxrp": 152000000,
+      "insurance_charity": 5200000
+    },
+    "binance_peg_table_value": 327400000,
+    "binance_peg_methodology_value": 325800000,
+    "unresolved_internal_difference_xrp": 1600000,
+    "coverage_gaps": [
+      "OKX main wallets",
+      "Korbit main wallets",
+      "Coins.ph main wallets",
+      "about 323M XRP at other labeled exchanges outside the tracked set in a 2026-09-29 audit"
+    ],
+    "venues": [
+      {
+        "name": "Upbit",
+        "balance_xrp": 6450000000,
+        "change_7d_xrp": 15200000
+      },
+      {
+        "name": "Coinbase",
+        "balance_xrp": 5800000000,
+        "change_7d_xrp": -46900000,
+        "cbxrp_reserve_xrp": 152000000
+      },
+      {
+        "name": "Binance",
+        "balance_xrp": 2730000000,
+        "change_7d_xrp": 10200000
+      },
+      {
+        "name": "SBI VC Trade",
+        "balance_xrp": 56800000,
+        "change_7d_xrp": -3200000,
+        "change_30d_xrp": 150000,
+        "cold_labeled_pct": ">99"
+      }
+    ],
+    "tradable_float": false,
+    "sbi_holdings_treasury_attribution": false,
+    "model_eligible": false,
+    "excerpt": "XRP Insights — latest ledger read 2026-11-09 08:01 UTC. 22.35B XRP in 701 XRPL wallets attributed to 24 exchanges; 7-day same-wallet change -25.8M; 30-day -138.1M. 483M of tracked balances are wrapped-asset reserves or funds; 48.4% cold-labeled; 40% without hot/cold labels. XRPSCAN public labels; balances read by publisher using rippled account_info daily. Not an estimate of tradable float.",
+    "excerpt_sha256": "090cc56f638e2fb924f2f04b48586a1ed0f189ef836f195458317a338b982431"
+  },
+  "binance_whale_inflow": {
+    "source": "CryptoQuant/Darkfost",
+    "url": "https://cryptoquant.com/insights/quicktake/6af0e5decd57dd300eaa1720-XRP-Whale-inflows-hit-900M-the-highest-since-2024",
+    "published": "2026-11-08",
+    "gross_whale_inflow_xrp": 691000000,
+    "value_usd_min": 900000000,
+    "ma_90d_usd_per_day_min": 100000000,
+    "event_cutoff_utc": null,
+    "netflow": false,
+    "sale_confirmed": false,
+    "model_eligible": false,
+    "excerpt": "CryptoQuant/Darkfost, 2026-11-08: approximately 691M XRP, valued above $900M, reportedly reached Binance in one day. 90-day average gross inflow exceeded $100M/day. Deposits do not prove sales; exact event cutoff and address list not exposed. Reserve replenishment after Binance's October 29 incident is a possible, unconfirmed explanation.",
+    "excerpt_sha256": "434acc10ddd81c91cdbeb5a4972adbe2a71ff6466c87193faf1130289cb72141"
+  },
+  "binance_incident": {
+    "source": "Binance preliminary issuer report",
+    "url": "https://www.binance.com/en-NG/blog/community/3229153443759566763",
+    "published": "2026-11-03",
+    "event_date": "2026-10-29",
+    "xrp_stolen_xrp": 233460000,
+    "replenished_affected_assets_pct_by_2026_10_31": 98,
+    "independent_audit": false,
+    "excerpt": "Binance preliminary report, 2026-11-03: 233.46M XRP transferred from five hot wallets to attacker-controlled addresses on October 29, 20:05–20:09 UTC. Binance said 98% of affected token assets had been replenished by October 31; company statement, not an independent audit.",
+    "excerpt_sha256": "06a7f470e79da752036ff18eecf01d6b6922ad763b5cb2acfad318da0a2117d6"
+  },
+  "exchange_flow_reconciliation": {
+    "gross_whale_inflow_xrp": 691000000,
+    "same_wallet_net_change_7d_xrp": -25800000,
+    "direct_comparison_valid": false,
+    "averaged": false,
+    "competing_hypotheses": [
+      "potential distribution or sell readiness",
+      "reserve/internal wallet rebalancing after the Binance incident",
+      "market-maker, OTC or collateral inventory movements"
+    ],
+    "disconfirming_evidence": [
+      "address-level transfers and exact event cutoff",
+      "subsequent executed Binance XRP sell volume",
+      "matched-window reserve balances",
+      "stable cross-venue wallet attribution"
+    ],
+    "no_directional_conclusion": true
+  },
+  "xrpl": {
+    "source": "XRPL Dashboard own-node",
+    "url": "https://xrpldashboard.com/amendments",
+    "snapshot_utc": "2026-11-10T01:39:00Z",
+    "ledger": 108229375,
+    "validators_heard": 35,
+    "yes_required": 29,
+    "enabled": 98,
+    "in_flight": 9,
+    "countdown": 0,
+    "votes": {
+      "LendingProtocol": 22,
+      "ConfidentialTransfer": 21,
+      "SingleAssetVault": 23,
+      "LendingProtocolV1_1": 22
+    },
+    "official_rule_url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+    "activation_rule": "more than 80% of trusted validators for two weeks; at 80% or below the period resets",
+    "lending_active": false,
+    "confidential_transfer_active": false,
+    "model_eligible": false,
+    "excerpt": "XRPL Dashboard own-node snapshot 2026-11-10 01:39 UTC, ledger 108229375: 35/35 validators heard, 29 required; 98 enabled amendments, 9 in flight, 0 in 14-day countdown. LendingProtocol 22 yes; ConfidentialTransfer 21 yes. Official XRPL rule: more than 80% of trusted validators for two weeks; at 80% or below the period resets.",
+    "excerpt_sha256": "b4a94a40ce441f3c865c661f52d18093b9c5d78a600beb14034023ca0dcf86eb"
+  },
+  "etf": {
+    "sources": [
+      {
+        "name": "XRP Insights",
+        "scope": "6 spot funds plus BITW",
+        "latest_complete_day": "2026-11-06",
+        "daily_flow_xrp": -663043,
+        "week_flow_xrp": -812500,
+        "holdings_xrp": 1200000000,
+        "aum_usd": 1410000000,
+        "gxrp_excluded_from_flow": true,
+        "model_eligible": false,
+        "excerpt": "XRP Insights: six US spot XRP ETFs plus BITW; Nov 6 net outflow 663,043 XRP; Nov 2–6 week -812.5K XRP; total 1.20B XRP and $1.41B AUM; GXRP excluded from flow totals during a data correction but included in holdings.",
+        "excerpt_sha256": "78e784c755285dc108862196c599bea458f7c8862b57b5c2cdf0e73ff900aa1a"
+      },
+      {
+        "name": "ByKaranteli",
+        "scope": "5 displayed funds",
+        "updated_utc": "2026-11-09T22:49:00Z",
+        "latest_complete_day": "2026-11-06",
+        "daily_flow_usd": 0,
+        "five_day_flow_usd": -530000,
+        "net_assets_usd": 1340000000,
+        "cumulative_inflow_usd": 1810000000,
+        "model_eligible": false,
+        "excerpt": "ByKaranteli refreshed 2026-11-09 22:49 UTC: latest complete day Nov 6 $0; five-day -$530K; $1.34B net assets; $1.81B cumulative inflow; five displayed funds.",
+        "excerpt_sha256": "96bc9fb142668e347560a21acb2b78db69d008a16f37761ef91a68583958defe"
+      },
+      {
+        "name": "Alpha Finance",
+        "scope": "5 funds; no AUM/holdings",
+        "through": "2026-11-08",
+        "seven_sessions_usd": 8400000,
+        "thirty_sessions_usd": 23300000,
+        "latest_row_date": "2026-11-08",
+        "latest_row_is_sunday": true,
+        "latest_row_flow_usd": 0,
+        "model_eligible": false,
+        "excerpt": "Alpha Finance through Nov 8: last 7 sessions +$8.4M; last 30 sessions +$23.3M; Nov 8 row $0. Nov 8 was Sunday; no explanation for a US ETF session on that date. Five funds; no AUM or holdings.",
+        "excerpt_sha256": "a557cbe6ec1f988abc14de6efd22fffdd36debcf5fd0e6b1bc80d6cd28ad527d"
+      }
+    ],
+    "averaging": false,
+    "volume_or_aum_as_flow": false
+  },
+  "feature_taxonomy": [
+    "gross_whale_exchange_inflow_xrp",
+    "same_wallet_net_exchange_balance_change_xrp",
+    "reserve_replenishment_xrp",
+    "wrapped_asset_reserve_xrp",
+    "cold_storage_balance_xrp",
+    "wallet_label_coverage_change_count",
+    "issuer_etf_net_creations_redemptions_xrp",
+    "etf_aum_usd",
+    "etf_trading_volume_usd"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "no_directional_forecast": true,
+  "source_urls": [
+    "https://xrp-insights.com/exchange-balances",
+    "https://xrp-insights.com/exchange-balances/data.json",
+    "https://cryptoquant.com/insights/quicktake/6af0e5decd57dd300eaa1720-XRP-Whale-inflows-hit-900M-the-highest-since-2024",
+    "https://www.binance.com/en-NG/blog/community/3229153443759566763",
+    "https://xrpldashboard.com/amendments",
+    "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+    "https://xrp-insights.com/",
+    "https://bykaranteli.com/etf/xrp",
+    "https://alphafinance.io/etf/xrp/"
+  ]
+}

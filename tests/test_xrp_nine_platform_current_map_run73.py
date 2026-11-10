@@ -398,3 +398,22 @@ def test_run82_historical_snapshot_is_preserved_when_run109_becomes_current():
     assert market["cross_venue_comparison"]["asynchronous"] is True
     assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0581094, rel_tol=1e-5)
     assert math.isclose(market["cross_venue_comparison"]["normalized_mid_gap_pct"], 0.0955234, rel_tol=1e-5)
+
+
+def test_run110_verification_addendum_keeps_only_chatgpt_github_verified():
+    current = load_current()
+    addendum = current["latest_verification_addendum"]
+    assert addendum["run_id"] == 110
+    assert addendum["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
+    assert addendum["integration_code_test_head"] == "60648e1ed915b05362054703310b07f697fa50c6"
+    assert addendum["full_suite"]["passed"] == 1322
+    assert addendum["full_suite"]["coverage_pct"] == 59.36
+    assert addendum["external_platform_data_exchange"] is False
+    assert addendum["chatgpt_github_connector"]["read_access"] is True
+    assert addendum["chatgpt_github_connector"]["write_access_tested"] is True
+    assert current["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
+    assert current["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-10T02:00:36Z"
+    for name, platform in current["platforms"].items():
+        if name != "ChatGPT":
+            assert platform["data_flow"]["verified"] is False
+    assert current["coordination_status"]["external_platform_data_exchange_performed"] is False

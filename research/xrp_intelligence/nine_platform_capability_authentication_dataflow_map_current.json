@@ -156,7 +156,8 @@
         "Run104 2026-11-10T00:07:27.057Z: verified current main/integration trees, all 372 open PRs across four pages, #1640/#1643/#1653 ancestry and changed-path overlap, exact-head full suite 1,316/8 with 59.36% coverage, installed wheel, six-manifest audit, fail-closed gate; updated handoff/map/test on existing #1640 branch only.",
         "Run104 amendment 2026-11-10T00:12:15.048Z: verified Ripple's official SBI Ripple Asia page says the JV does not handle XRP; separated SBI Remit/SBI VC Trade ODL corridor. Added Aviva GBP tokenized fund share class and Franklin sgBENJI subscription evidence with explicit no-XRP-purchase limitations. Exact-head descendant 75f full suite found two stale Run82 timestamp assertions; repair pending.",
         "Run104 amendment 2026-11-10T00:17:38.904Z: recorded Nov 9 XRPL amendment ledger snapshot; red-teamed Kamilah Stevenson July 30 video against live validator votes; YouTube channel page unavailable so four uploads remain candidates, not verified personal uploads. Exact-head 4b7 full suite had one test-only taxonomy wording failure; 1,315 tests passed, eight subtests; repair pending.",
-        "Run104 CI follow-up 2026-11-10T00:22:06.048Z: full suite on 656b had 1,315 passed and one test-only canonical taxonomy wording mismatch; dependency audit and fail-closed gate passed. Repairing the test to use 'cash actually used to buy XRP'."
+        "Run104 CI follow-up 2026-11-10T00:22:06.048Z: full suite on 656b had 1,315 passed and one test-only canonical taxonomy wording mismatch; dependency audit and fail-closed gate passed. Repairing the test to use 'cash actually used to buy XRP'.",
+        "Run110 2026-11-10T02:00:36Z: ChatGPT-to-GitHub read/write verified on the existing integration branch; exact code/test head 60648e passed 1,322 full-suite tests, 59.36% coverage, six-manifest audit and fail-closed gate; no main write or external-model data transfer."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -216,17 +217,24 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-10T01:27:20Z",
+      "last_verified_at_utc": "2026-11-10T02:00:36Z",
       "latest_run_verification": {
         "status": "VERIFIED_CURRENT_SESSION_GITHUB_CONNECTOR",
         "repository": "Barrot-Agent/B-Agent",
         "branch": "integration/core-capabilities-mmi-structural-paper-20261104",
         "read_access": true,
         "write_access_tested": true,
-        "action": "Updated existing integration branch with expected-head compare-and-swap; no main write."
+        "action": "Committed Run110 XRP market cross-check and tests on existing integration branch using expected-head compare-and-swap; no main write.",
+        "code_test_head": "60648e1ed915b05362054703310b07f697fa50c6",
+        "full_suite_run_id": 42740433458,
+        "full_suite_passed": 1322,
+        "dependency_audit_run_id": 42740433707,
+        "fail_closed_gate_run_id": 42740433680,
+        "external_platform_data_exchange": false
       },
       "latest_evidence": [
-        "Run109 2026-11-10T01:27:20Z: ChatGPT-to-GitHub read/write path verified on existing integration branch; 1,316 full-suite tests, 59.36% coverage, six-manifest audit and fail-closed gate passed on exact head a900c4; no main write or external data transfer."
+        "Run109 2026-11-10T01:27:20Z: ChatGPT-to-GitHub read/write path verified on existing integration branch; 1,316 full-suite tests, 59.36% coverage, six-manifest audit and fail-closed gate passed on exact head a900c4; no main write or external data transfer.",
+        "Run110: current-session GitHub read/write verified; external platform authentication/data flows unchanged and unverified."
       ]
     },
     "Claude": {
@@ -431,7 +439,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-10T00:22:06.048Z",
+    "last_reviewed_at_utc": "2026-11-10T02:00:36Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -449,8 +457,8 @@
         "tests/test_xrp_derivatives_cross_provider_reconciliation_20261108.py"
       ]
     },
-    "last_run_summary": "Run104 CI follow-up: 656b full suite 1,315 passed, one test-only taxonomy assertion failed because expected wording differed from canonical 'cash actually used to buy XRP'. Audit and fail-closed gate passed. Repair pending.",
-    "last_checked_at_utc": "2026-11-10T00:22:06.048Z",
+    "last_run_summary": "Run110: ChatGPT-to-GitHub read/write verified; exact code/test head 60648e passed 1,322 full-suite tests, 59.36% coverage, six-manifest dependency audit and fail-closed gate. No external platform authenticated or received data; nine-platform coordination remains designed, not executed.",
+    "last_checked_at_utc": "2026-11-10T02:00:36Z",
     "external_data_exchange": false,
     "note": "Only the ChatGPT session GitHub connector was tested; no other platform authenticated or received data.",
     "external_data_exchange_performed": false,
@@ -38551,5 +38559,51 @@
     "deletions": 3554,
     "mergeable": true,
     "mergeable_state": "clean"
+  },
+  "latest_verification_addendum": {
+    "run_id": 110,
+    "captured_at_utc": "2026-11-10T02:00:36Z",
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_code_test_head": "60648e1ed915b05362054703310b07f697fa50c6",
+    "integration_pr": 1640,
+    "full_suite": {
+      "run_id": 42740433458,
+      "passed": 1322,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_pct": 59.36,
+      "core_passed": 677
+    },
+    "dependency_audit": {
+      "run_id": 42740433707,
+      "manifests": 6,
+      "known_vulnerabilities": 0,
+      "result": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 42740433680,
+      "result": "success",
+      "automatic_merge_disabled": true
+    },
+    "chatgpt_github_connector": {
+      "status": "VERIFIED_CURRENT_SESSION",
+      "repository": "Barrot-Agent/B-Agent",
+      "branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+      "read_access": true,
+      "write_access_tested": true,
+      "main_write": false
+    },
+    "external_platform_data_exchange": false,
+    "other_platforms_unchanged": {
+      "Claude": "UNVERIFIED_NO_AUTH_TEST",
+      "Grok": "UNVERIFIED_NO_AUTH_TEST",
+      "Gemini": "UNVERIFIED_NO_AUTH_TEST",
+      "Copilot": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY",
+      "Codex": "UNVERIFIED_NO_AUTH_TEST",
+      "Hugging Face": "INCONCLUSIVE_FAILED_HEALTH_CHECK",
+      "Kaggle": "NOT_TESTED",
+      "Databricks": "AUTHORIZATION_FAILED_HTTP_403"
+    },
+    "note": "Supplements preserved Run109 full-map snapshot; does not rewrite historical Run73-109 observations or promote any external platform."
   }
 }
