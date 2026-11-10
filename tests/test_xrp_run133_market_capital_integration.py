@@ -79,7 +79,10 @@ def test_run133_evernorth_capacity_debt_and_xrp_purchases_are_separate() -> None
     assert eloc["issuer_option_not_obligation"] is True
     assert eloc["fee_payment_status"] == "NOT_VERIFIED"
     actual = data["actual_financing"]
-    assert actual["cash_used_to_purchase_xrp"] == 214100000
+    assert actual["private_placement_cash_proceeds_usd"] == 214100000
+    assert actual["cash_used_to_purchase_xrp_usd"] == 214000000
+    assert actual["cash_used_to_purchase_xrp"] == 84365876
+    assert actual["xrp_quantity_purchased_with_cash"] == 84365876
     assert actual["derived_xrp_total_as_of_2026_10_09"] == (
         actual["in_kind_xrp_contributions"]
         + actual["xrp_reported_purchased_with_cash"]

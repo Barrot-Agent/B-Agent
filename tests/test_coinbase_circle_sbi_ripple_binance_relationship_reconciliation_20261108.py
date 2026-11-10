@@ -119,7 +119,7 @@ def test_circle_arc_is_an_alternative_usdc_rail_not_xrpl_or_xrp() -> None:
 
 def test_related_party_financial_disclosures_do_not_establish_xrp_net_demand() -> None:
     caveats = load_artifact()["source_independence_and_disagreement"]
-    assert "not independent third-party verification of XRP market demand" in caveats["related_party_limit"]
+    assert "do not constitute independent verification of XRP market demand" in caveats["related_party_limit"]
     assert "does not disclose amount" in caveats["coinbase_disclosure_limit"]
     assert "no significant operating results to date" in caveats["circle_sbi_limit"]
 

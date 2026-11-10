@@ -43,10 +43,11 @@
       "raw_bytes_captured": false,
       "raw_byte_sha256": null,
       "normalized_excerpt": "名古屋中小企業投資育成株式会社; Nagoya Small and Medium Business Investment & Consultation Co.,Ltd. (SBIC Central Japan); established 1963-11-18; operating area: five central-region prefectures.",
-      "normalized_excerpt_sha256": "60a7082b71a7656653e0b0ba7440e51ab800fd1512a9f4afd16c8f9cf2a441f6",
+      "normalized_excerpt_sha256": "c84250148b0d18255add8a06e1d01e9031d6a6a3cb791ef1a036a39b14bf1f13",
       "hash_scope": "normalized excerpt only; not the raw HTTP response",
       "source_independence_group": "sbic_nagoya",
-      "model_eligible": false
+      "model_eligible": false,
+      "previous_normalized_excerpt_sha256": "60a7082b71a7656653e0b0ba7440e51ab800fd1512a9f4afd16c8f9cf2a441f6"
     },
     {
       "source_id": "sbic_osaka",
@@ -322,5 +323,16 @@
     "The three SBIC company websites are primary sources but the companies are sister statutory entities, so their claims are not fully independent.",
     "The reviewed pages do not establish all beneficial ownership links among the SBIC companies, SBI Holdings, its subsidiaries or shareholders.",
     "Absence of an XRP reference in these pages does not prove no indirect relationship exists elsewhere."
+  ],
+  "hash_corrections": [
+    {
+      "source_id": "sbic_nagoya",
+      "previous_normalized_excerpt_sha256": "60a7082b71a7656653e0b0ba7440e51ab800fd1512a9f4afd16c8f9cf2a441f6",
+      "corrected_normalized_excerpt_sha256": "c84250148b0d18255add8a06e1d01e9031d6a6a3cb791ef1a036a39b14bf1f13",
+      "hash_scope": "SHA-256 of the exact normalized_excerpt UTF-8 bytes; not raw HTTP bytes",
+      "reason": "The prior digest did not match the preserved excerpt. The excerpt text is unchanged; only its digest binding is corrected.",
+      "raw_bytes_captured": false,
+      "model_eligible": false
+    }
   ]
 }

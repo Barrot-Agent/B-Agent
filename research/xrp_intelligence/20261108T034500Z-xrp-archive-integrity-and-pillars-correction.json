@@ -57,8 +57,9 @@
     {
       "path": "scripts/pillars_check.py",
       "previous_git_blob_sha": "fa18c7cfeee71fe50a85a8f37e38ebceb2f61877",
-      "corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5",
-      "role": "Code fix for non-200 response handling in the source-fiction scan."
+      "corrected_git_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221",
+      "role": "Code fix for non-200 response handling in the source-fiction scan.",
+      "previous_corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5"
     },
     {
       "path": "tests/test_pillars_check_readonly.py",
@@ -189,6 +190,15 @@
       },
       "status": "HISTORICAL_OBSERVATION_QUARANTINED_AND_FUTURE_CHECK_FIXED",
       "model_eligible_for_features": false
+    },
+    {
+      "correction_id": "C11_PILLARS_CHECK_BLOB_BINDING_SUPERSESSION",
+      "target_artifact": "scripts/pillars_check.py",
+      "supersedes_corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5",
+      "corrected_git_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221",
+      "reason": "The consolidated successor contains a later source revision. The current exact Git blob retains explicit non-200 response handling and read-only GitHub installation lookup; the correction overlay now binds the exact successor file.",
+      "model_eligible": false,
+      "status": "APPENDED_CORRECTION"
     }
   ],
   "source_preimage_resolution": {
@@ -231,7 +241,7 @@
     "Keep the historical PILLARS fiction-scan result inconclusive until its HTTP status can be independently verified.",
     "Keep the Evernorth purchase-cost value at $214M; never use $214.05M rounded cash received as the purchase-cost numerator."
   ],
-  "correction_revision": 2,
+  "correction_revision": 3,
   "revision_history": [
     {
       "revision": 2,
@@ -239,6 +249,14 @@
       "changes": [
         "Corrected C10 target array pointer to workflow_observations.",
         "Clarified that C07 stored average is rounded to eight decimals while C09 superseded_value retains unrounded arithmetic precision."
+      ]
+    },
+    {
+      "revision": 3,
+      "at_utc": "2026-11-10T15:35:00Z",
+      "changes": [
+        "Added C11 to preserve the previous Pillars script blob binding and bind the current consolidated-successor blob.",
+        "The source correction changes only the Git blob binding; normalized source excerpts and prior correction records remain intact."
       ]
     }
   ]

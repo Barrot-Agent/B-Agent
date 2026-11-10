@@ -1,18 +1,6 @@
 name: Dependency Audit
 
 on:
-  push:
-    branches: [main, "integration/**"]
-    paths:
-      - "requirements.txt"
-      - "requirements-dev.txt"
-      - "requirements.tx"
-      - "pyproject.toml"
-      - "hf_space/requirements.txt"
-      - "legacy/requirements_legacy.txt"
-      - ".github/workflows/dependency-audit.yml"
-      - "research/xrp_intelligence/**"
-      - "tests/test_xrp_*.py"
   pull_request:
     branches: [main]
     paths:

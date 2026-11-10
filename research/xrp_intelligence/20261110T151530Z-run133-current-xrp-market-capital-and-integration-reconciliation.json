@@ -282,7 +282,11 @@
       },
       "source_arithmetic_discrepancy_xrp": 200000,
       "discrepancy_note": "The 388,910,554.061435 XRP in-kind total exceeds the sum of 261,919,096 Pubco XRP and 126,791,458 Ripple contribution by 200,000 XRP. A 200,000-XRP delayed-funding tranche is separately disclosed; its exact mapping into the Pubco XRP subtotal remains unreconciled.",
-      "xrp_reported_purchased_with_cash": 84365876
+      "xrp_reported_purchased_with_cash": 84365876,
+      "cash_used_to_purchase_xrp_usd": 214000000,
+      "cash_used_to_purchase_xrp_unit": "XRP",
+      "cash_used_to_purchase_xrp_field_note": "Legacy field is the XRP quantity, not USD cash spend; use cash_used_to_purchase_xrp_usd for USD.",
+      "xrp_quantity_purchased_with_cash": 84365876
     },
     "resale_registration": "The November 9 selling-securityholder resale prospectus states Evernorth receives no proceeds from resales, apart from possible warrant exercise proceeds; resale registrations are not new issuer cash.",
     "model_admission": "Debt, optional ELOC capacity, issuer cash, XRP purchases, in-kind contributions and custody movements must remain separate feature classes. No new XRP purchase is inferred from the $30M note or $9.7M facility draw."
@@ -582,5 +586,21 @@
     "Preserve #1640 and #1643 as source PRs and #1642 as duplicate subset; close only after successor merge and main verification.",
     "Add synchronized historical spot L2, venue-level derivatives, exchange-flow and collateral/oracle data before model admission.",
     "Implement WORM/timestamp anchoring, effective-sample-size correction, label/concept drift and shadow evaluation before forecast issuance."
+  ],
+  "field_corrections": [
+    {
+      "correction_id": "C01_EVERNORTH_CASH_SPEND_UNIT_CLARIFICATION",
+      "path": "$.evernorth_capital_reconciliation.actual_financing.cash_used_to_purchase_xrp",
+      "prior_value": 84365876,
+      "prior_interpretation": "XRP quantity purchased with cash",
+      "explicit_cash_spend_field": "cash_used_to_purchase_xrp_usd",
+      "explicit_cash_spend_usd": 214000000,
+      "quantity_field": "xrp_reported_purchased_with_cash",
+      "quantity_xrp": 84365876,
+      "private_placement_cash_proceeds_usd": 214100000,
+      "source_basis": "November 9, 2026 Evernorth prospectus and the earlier SEC-based purchase-cost correction; $214.1M proceeds are distinct from $214.0M cash used for XRP purchases.",
+      "status": "APPENDED_FIELD_CLARIFICATION",
+      "model_eligible": false
+    }
   ]
 }
