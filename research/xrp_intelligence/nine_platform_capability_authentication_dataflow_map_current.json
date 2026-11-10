@@ -4,7 +4,7 @@
   "captured_at_utc": "2026-11-10T17:14:29Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "e35f3d16b842d0f75847dd4bb0b51531f38c5f38",
-  "observed_integration_head_before_map_commit": "3b1202cca38a41b2e6814f5687cc167df998af0e",
+  "observed_integration_head_before_map_commit": "7f7c0db55c9d04382ee28a80075a691e56e3dba3",
   "observed_research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -765,7 +765,11 @@
       "shadow_outcomes": 0,
       "trusted_evaluator_key": false,
       "independent_worm_archive": false,
-      "verified_on_main": false
+      "verified_on_main": false,
+      "endpoints": 46,
+      "scheduled_public_sources": 42,
+      "weekly_sources": 2,
+      "excluded_xrpl_node_sources": 2
     },
     "reviews": {
       "pr_1660": {
@@ -34943,7 +34947,7 @@
       }
     }
   ],
-  "last_verified_at_utc": "2026-11-10T17:15:00Z",
+  "last_verified_at_utc": "2026-11-10T17:17:00Z",
   "open_pr_inventory": {
     "total": 373,
     "drafts": 358,
@@ -35620,8 +35624,8 @@
   "prediction_engine": {
     "scheduled_ingestion": "DESIGNED_ON_INTEGRATION; not active on main",
     "schedule": "Hourly at minute 3 and daily at 00:15 UTC; read-only contents/actions permissions; workflow runs only on main.",
-    "endpoints": 40,
-    "scheduled_public_sources": 36,
+    "endpoints": 46,
+    "scheduled_public_sources": 42,
     "excluded_xrpl_node_sources": 2,
     "endpoint_ids": [
       "binance_spot_ticker",
@@ -35798,20 +35802,19 @@
     "shadow_outcomes": 0,
     "trusted_evaluator_key": false,
     "independent_worm_archive": false,
-    "endpoint_inventory_verified_at_utc": "2026-11-10T00:07:27.057Z",
+    "endpoint_inventory_verified_at_utc": "2026-11-10T17:17:00Z",
     "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
     "endpoint_inventory_source_blob_sha": "2ec26865fddb75f87b9238dd343ee509386ca5c8",
     "endpoint_inventory_contract": "research/xrp_intelligence/feature-store-contract.md; research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_endpoint_inventory_documentation_consistency.py; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
     "endpoint_inventory_correction": "40 total endpoint records: 36 scheduled hourly public sources, two weekly CFTC sources (contract-status index and TFF report), and two non-commercial XRPL node endpoints excluded by default. Both CFTC sources remain raw-only and are not model-admitted.",
     "source_coverage_gaps": [
-      "Primary SEC filing and issuer-filing vintage ingestion",
-      "Federal Reserve, Treasury and BLS macro time-series vintages; FRED/ALFRED excluded pending terms-compliant authorization; Treasury Fiscal Data is a candidate, not integrated",
-      "Regulatory docket and enforcement-event ingestion",
-      "Institutional XRP/RLUSD custody balances and verified changes",
-      "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
-      "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
+      "No official BLS CPI adapter in the scheduled registry.",
+      "No Treasury/FRED yield-curve adapter in the scheduled registry.",
+      "No Federal Reserve policy/event calendar adapter in the scheduled registry.",
+      "No EIA crude-oil/energy adapter in the scheduled registry.",
+      "No event timeline or scenario/counter-hypothesis runner."
     ],
-    "last_verified_at_utc": "2026-11-10T02:37:25Z",
+    "last_verified_at_utc": "2026-11-10T17:17:00Z",
     "outcome_resolution_implemented": true,
     "outcome_resolution_contract": "Immutable resolve_forecast outcome; predeclared timestamp tolerance; outcome venue/source IDs; explicit cross-venue normalization; Brier/log-loss scoring versus baseline; missing outcome recorded as unscorable.",
     "calibration_contract": {
@@ -36040,9 +36043,9 @@
     "fail_closed_gate": "PASS_AUTO_MERGE_DISABLED",
     "forecast_status": "NOT_ISSUED",
     "merge_performed": false,
-    "map_update_ci_status": "PENDING"
+    "map_update_ci_status": "PENDING_AFTER_FINAL_MAP_METADATA_CORRECTION"
   },
-  "integration_head_before_map_commit": "3b1202cca38a41b2e6814f5687cc167df998af0e",
+  "integration_head_before_map_commit": "7f7c0db55c9d04382ee28a80075a691e56e3dba3",
   "research_updates": {
     "run93": {
       "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -36374,10 +36377,10 @@
     "interpretation": "Circle distribution costs and Coinbase stablecoin revenue are different accounting measures, not a disclosed profit split. SBI Japan VIE had no significant operating results through 2026-09-30. Coinbase's Q3 filing does not name XRP in collateral tables; unitemized buckets prevent a zero inference."
   },
   "prediction_engine_status": {
-    "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
+    "scheduled_ingestion": "DESIGNED_ON_INTEGRATION; not active on main",
     "schedule": "Hourly at minute 3 and daily at 00:15 UTC; read-only contents/actions permissions; workflow runs only on main.",
-    "endpoints": 40,
-    "scheduled_public_sources": 36,
+    "endpoints": 46,
+    "scheduled_public_sources": 42,
     "excluded_xrpl_node_sources": 2,
     "endpoint_ids": [
       "binance_spot_ticker",
@@ -36416,6 +36419,12 @@
       "ripple_rlusd_transparency_dashboard",
       "xrpldashboard_rlusd_cross_chain_supply",
       "circle_usdc_transparency_dashboard",
+      "morpho_cbxrp_market_parameters",
+      "morpho_cbxrp_market_state",
+      "morpho_cbxrp_market_liquidity",
+      "morpho_cbxrp_market_state_history",
+      "morpho_cbxrp_oracle_state",
+      "coinbase_cbxrp_proof_of_reserves",
       "cftc_contract_status_index",
       "cftc_tff_financial_futures",
       "xrpl_inftf_server_info",
@@ -36457,26 +36466,27 @@
       "xrp_etf_21shares_toxr_issuer_page",
       "ripple_rlusd_transparency_dashboard",
       "xrpldashboard_rlusd_cross_chain_supply",
-      "circle_usdc_transparency_dashboard"
+      "circle_usdc_transparency_dashboard",
+      "morpho_cbxrp_market_parameters",
+      "morpho_cbxrp_market_state",
+      "morpho_cbxrp_market_liquidity",
+      "morpho_cbxrp_market_state_history",
+      "morpho_cbxrp_oracle_state",
+      "coinbase_cbxrp_proof_of_reserves"
     ],
     "excluded_xrpl_node_source_ids": [
       "xrpl_inftf_server_info",
       "xrpl_honeycluster_server_info"
     ],
     "implemented": [
-      "SHA-256 content-addressed raw payload receipts and canonical receipt IDs",
-      "per-run append-only receipt hash chain and verification manifest",
-      "point-in-time SQLite feature store and snapshot checks",
+      "read-only public collector",
+      "SHA-256 raw receipts and per-run chain",
+      "point-in-time SQLite feature store",
       "four deterministic baselines",
-      "chronological embargoed walk-forward evaluation",
-      "temporal baseline calibration diagnostics",
-      "univariate PSI feature-drift diagnostics",
-      "fail-closed fixed-horizon forecast ledger",
-      "issuance-time feature-snapshot verification",
-      "Binance, Coinbase, Kraken, OKX, Bitbank and Bybit public market adapters",
-      "Immutable forecast outcome resolution with event-time tolerance, source lineage, explicit cross-venue normalization and Brier/log-loss scoring against the baseline.",
-      "Missing or unavailable outcome is recorded as unscorable rather than as a directional miss.",
-      "CFTC contract-status index and TFF parser: optional 176LM2, dropped-versus-zero state, dot-change null handling and total-trader counts; weekly raw-only."
+      "chronological walk-forward with purge/embargo",
+      "calibration diagnostics",
+      "PSI-style drift diagnostics",
+      "fail-closed fixed-horizon forecast ledger with Ed25519 attestation"
     ],
     "raw_receipt_archive": {
       "mode": "write-once content-addressed payload files; canonical receipt log; per-run SHA-256 chain",
@@ -36485,7 +36495,30 @@
       "raw_artifact_retention_days": 90,
       "per_run_feature_store_artifact_retention_days": 7,
       "daily_feature_store_archive_retention_days": 90,
-      "actions_cache": "evictable accelerator only; not durable archive"
+      "actions_cache": "evictable accelerator only; not durable archive",
+      "schema_versions": [
+        "v1 legacy",
+        "v2 header-bound"
+      ],
+      "v2_http_header_allowlist": [
+        "age",
+        "cache-control",
+        "content-type",
+        "content-encoding",
+        "etag",
+        "expires",
+        "last-modified",
+        "cf-cache-status",
+        "x-cache"
+      ],
+      "header_values_max_chars": 512,
+      "legacy_v1_supported": true,
+      "receipt_id_binds_headers": true,
+      "age_gate_seconds": {
+        "live_tickers": 300,
+        "live_orderbooks": 60
+      },
+      "missing_age_header": "UNKNOWN_NOT_ASSUMED_FRESH"
     },
     "historical_evaluator": {
       "venues": [
@@ -36515,28 +36548,28 @@
       "No synchronized multi-domain history or scheduled SEC/macro/stablecoin/custody/collateral/institutional/payment-rail sources.",
       "No trained-model OOS lift, validated real-data calibration, sufficient independent shadow outcomes or trusted evaluator key.",
       "Scheduled workflow is not merged to main and has not executed on main.",
-      "CFTC status/TFF data remains raw-only and not model-admitted; no complete PRE historical backfill is verified."
+      "HTTP Age absence is unknown, not proof of freshness; provider event time/source_data_as_of gates remain mandatory.",
+      "No independent external WORM archive or trusted timestamp anchor."
     ],
     "forecast_status": "NOT_ISSUED",
-    "oos_lift": false,
-    "real_data_calibration": false,
-    "shadow_outcomes": false,
+    "oos_lift": "NOT_DEMONSTRATED",
+    "real_data_calibration": "INSUFFICIENT",
+    "shadow_outcomes": 0,
     "trusted_evaluator_key": false,
     "independent_worm_archive": false,
-    "endpoint_inventory_verified_at_utc": "2026-11-10T00:07:27.057Z",
+    "endpoint_inventory_verified_at_utc": "2026-11-10T17:17:00Z",
     "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
-    "endpoint_inventory_source_blob_sha": "f5fc3c4a45aaf826241e32faf00443e98bfa341a",
+    "endpoint_inventory_source_blob_sha": "2ec26865fddb75f87b9238dd343ee509386ca5c8",
     "endpoint_inventory_contract": "research/xrp_intelligence/feature-store-contract.md; research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_endpoint_inventory_documentation_consistency.py; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
     "endpoint_inventory_correction": "40 total endpoint records: 36 scheduled hourly public sources, two weekly CFTC sources (contract-status index and TFF report), and two non-commercial XRPL node endpoints excluded by default. Both CFTC sources remain raw-only and are not model-admitted.",
     "source_coverage_gaps": [
-      "Primary SEC filing and issuer-filing vintage ingestion",
-      "Federal Reserve, Treasury and BLS macro time-series vintages; FRED/ALFRED excluded pending terms-compliant authorization; Treasury Fiscal Data is a candidate, not integrated",
-      "Regulatory docket and enforcement-event ingestion",
-      "Institutional XRP/RLUSD custody balances and verified changes",
-      "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
-      "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
+      "No official BLS CPI adapter in the scheduled registry.",
+      "No Treasury/FRED yield-curve adapter in the scheduled registry.",
+      "No Federal Reserve policy/event calendar adapter in the scheduled registry.",
+      "No EIA crude-oil/energy adapter in the scheduled registry.",
+      "No event timeline or scenario/counter-hypothesis runner."
     ],
-    "last_verified_at_utc": "2026-11-10T00:07:27.057Z",
+    "last_verified_at_utc": "2026-11-10T17:17:00Z",
     "outcome_resolution_implemented": true,
     "outcome_resolution_contract": "Immutable resolve_forecast outcome; predeclared timestamp tolerance; outcome venue/source IDs; explicit cross-venue normalization; Brier/log-loss scoring versus baseline; missing outcome recorded as unscorable.",
     "calibration_contract": {
@@ -36558,6 +36591,24 @@
     "weekly_endpoint_ids": [
       "cftc_contract_status_index",
       "cftc_tff_financial_futures"
+    ],
+    "cftc_weekly_status": "RAW_ONLY_NOT_MODEL_ADMITTED",
+    "forecast_ledger_source_blob_sha": "0987f56ef19d3ec9ffae27c2fce1b10c825652e7",
+    "endpoint_total": 46,
+    "hourly_sources": 42,
+    "weekly_cftc_sources": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "missing": [
+      "official BLS/Treasury-FRED/Fed/EIA macro source adapters",
+      "event timeline",
+      "scenario and counter-hypothesis runner",
+      "independent WORM/timestamp anchoring",
+      "raw receipt replay/rebuild",
+      "source-independence authentication beyond publisher heuristics",
+      "effective-sample-size correction for overlapping horizons",
+      "sufficient independent shadow outcomes",
+      "production evaluator key",
+      "demonstrated out-of-sample lift"
     ]
   },
   "repository_trees": {
@@ -37149,219 +37200,19 @@
   },
   "research_head": "0cced5af3b673b5d39e45cfc18c53416e1ed394a",
   "top_prediction_engine": {
-    "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
-    "schedule": "Hourly at minute 3 and daily at 00:15 UTC; read-only contents/actions permissions; workflow runs only on main.",
-    "endpoints": 40,
-    "scheduled_public_sources": 36,
-    "excluded_xrpl_node_sources": 2,
-    "endpoint_ids": [
-      "binance_spot_ticker",
-      "binance_spot_klines",
-      "binance_perp_premium",
-      "binance_perp_open_interest",
-      "binance_perp_funding_history",
-      "binance_perp_open_interest_history",
-      "binance_perp_global_long_short_ratio",
-      "coinbase_spot_ticker",
-      "kraken_spot_ticker",
-      "bitbank_spot_circuit_break",
-      "bitbank_spot_transactions",
-      "bitbank_spot_ticker",
-      "bitbank_spot_depth",
-      "okx_spot_ticker",
-      "okx_spot_depth",
-      "bybit_spot_ticker",
-      "bybit_spot_depth",
-      "bybit_linear_ticker",
-      "bybit_linear_open_interest",
-      "bybit_linear_funding_history",
-      "coinbase_spot_candles",
-      "coinbase_spot_book",
-      "kraken_spot_depth",
-      "binance_spot_depth",
-      "xrp_etf_flows_aggregator",
-      "xrp_exchange_balances_json",
-      "xrp_etf_flows_csv",
-      "xrp_etf_xrpr_issuer_page",
-      "xrp_etf_bitwise_issuer_page",
-      "xrp_etf_grayscale_gxrp_issuer_page",
-      "xrp_etf_franklin_xrpz_issuer_page",
-      "xrp_etf_canary_xrpc_issuer_page",
-      "xrp_etf_21shares_toxr_issuer_page",
-      "ripple_rlusd_transparency_dashboard",
-      "xrpldashboard_rlusd_cross_chain_supply",
-      "circle_usdc_transparency_dashboard",
-      "cftc_contract_status_index",
-      "cftc_tff_financial_futures",
-      "xrpl_inftf_server_info",
-      "xrpl_honeycluster_server_info"
-    ],
-    "scheduled_endpoint_ids": [
-      "binance_spot_ticker",
-      "binance_spot_klines",
-      "binance_perp_premium",
-      "binance_perp_open_interest",
-      "binance_perp_funding_history",
-      "binance_perp_open_interest_history",
-      "binance_perp_global_long_short_ratio",
-      "coinbase_spot_ticker",
-      "kraken_spot_ticker",
-      "bitbank_spot_circuit_break",
-      "bitbank_spot_transactions",
-      "bitbank_spot_ticker",
-      "bitbank_spot_depth",
-      "okx_spot_ticker",
-      "okx_spot_depth",
-      "bybit_spot_ticker",
-      "bybit_spot_depth",
-      "bybit_linear_ticker",
-      "bybit_linear_open_interest",
-      "bybit_linear_funding_history",
-      "coinbase_spot_candles",
-      "coinbase_spot_book",
-      "kraken_spot_depth",
-      "binance_spot_depth",
-      "xrp_etf_flows_aggregator",
-      "xrp_exchange_balances_json",
-      "xrp_etf_flows_csv",
-      "xrp_etf_xrpr_issuer_page",
-      "xrp_etf_bitwise_issuer_page",
-      "xrp_etf_grayscale_gxrp_issuer_page",
-      "xrp_etf_franklin_xrpz_issuer_page",
-      "xrp_etf_canary_xrpc_issuer_page",
-      "xrp_etf_21shares_toxr_issuer_page",
-      "ripple_rlusd_transparency_dashboard",
-      "xrpldashboard_rlusd_cross_chain_supply",
-      "circle_usdc_transparency_dashboard"
-    ],
-    "excluded_xrpl_node_source_ids": [
-      "xrpl_inftf_server_info",
-      "xrpl_honeycluster_server_info"
-    ],
-    "implemented": [
-      "SHA-256 content-addressed raw payload receipts and canonical receipt IDs",
-      "per-run append-only receipt hash chain and verification manifest",
-      "point-in-time SQLite feature store and snapshot checks",
-      "four deterministic baselines",
-      "chronological embargoed walk-forward evaluation",
-      "temporal baseline calibration diagnostics",
-      "univariate PSI feature-drift diagnostics",
-      "fail-closed fixed-horizon forecast ledger",
-      "issuance-time feature-snapshot verification",
-      "Binance, Coinbase, Kraken, OKX, Bitbank and Bybit public market adapters",
-      "Immutable forecast outcome resolution with event-time tolerance, source lineage, explicit cross-venue normalization and Brier/log-loss scoring against the baseline.",
-      "Missing or unavailable outcome is recorded as unscorable rather than as a directional miss.",
-      "Allowlisted HTTP response cache/validator headers bound into canonical raw receipt schema v2 and per-run receipt chain.",
-      "Source-specific HTTP Age freshness gate: >300 seconds excludes live ticker snapshots; >60 seconds excludes live order-book snapshots; malformed Age excludes; missing Age remains unknown.",
-      "Forecast ledger validates both legacy v1 and header-bound v2 raw receipts."
-    ],
-    "raw_receipt_archive": {
-      "mode": "write-once content-addressed payload files; canonical receipt log; per-run SHA-256 chain",
-      "external_immutable_anchor": false,
-      "per_source_independent_timestamp_anchor": false,
-      "raw_artifact_retention_days": 90,
-      "per_run_feature_store_artifact_retention_days": 7,
-      "daily_feature_store_archive_retention_days": 90,
-      "actions_cache": "evictable accelerator only; not durable archive",
-      "schema_versions": [
-        "v1 legacy",
-        "v2 header-bound"
-      ],
-      "v2_http_header_allowlist": [
-        "age",
-        "cache-control",
-        "content-type",
-        "content-encoding",
-        "etag",
-        "expires",
-        "last-modified",
-        "cf-cache-status",
-        "x-cache"
-      ],
-      "header_values_max_chars": 512,
-      "legacy_v1_supported": true,
-      "receipt_id_binds_headers": true,
-      "age_gate_seconds": {
-        "live_tickers": 300,
-        "live_orderbooks": 60
-      },
-      "missing_age_header": "UNKNOWN_NOT_ASSUMED_FRESH"
-    },
-    "historical_evaluator": {
-      "venues": [
-        "Binance XRP/USDT",
-        "Coinbase XRP/USD"
-      ],
-      "horizon_seconds": 3600,
-      "minimum_train_samples": 100,
-      "minimum_out_of_sample_samples": 100,
-      "embargo_seconds": 3600,
-      "baselines": [
-        "naive",
-        "momentum",
-        "mean_reversion",
-        "volatility_aware"
-      ],
-      "mature_synchronized_live_history": false
-    },
-    "implemented_but_not_validated": [
-      "Temporal temperature scaling is implemented for deterministic baseline probabilities but not validated on mature independent live XRP outcomes.",
-      "PSI drift report is univariate and does not measure label/concept drift.",
-      "Walk-forward evaluator has not demonstrated out-of-sample lift on a sufficiently mature synchronized dataset."
-    ],
-    "limitations": [
-      "No independent external WORM storage or complete raw-source rebuild.",
-      "Historical evaluator limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes.",
-      "No synchronized multi-domain history or scheduled SEC/macro/stablecoin/custody/collateral/institutional/payment-rail sources.",
-      "No trained-model OOS lift, validated real-data calibration, sufficient independent shadow outcomes or trusted evaluator key.",
-      "Scheduled workflow is not merged to main and has not executed on main.",
-      "HTTP Age absence is unknown, not proof of freshness; provider event time/source_data_as_of gates remain mandatory.",
-      "No independent external WORM archive or trusted timestamp anchor."
-    ],
+    "mission_priority": 1,
+    "status": "DESIGNED_AND_PARTIALLY_IMPLEMENTED_NOT_PRODUCTION_READY",
+    "endpoint_total": 46,
+    "hourly_sources": 42,
+    "weekly_cftc_sources": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
     "forecast_status": "NOT_ISSUED",
-    "oos_lift": false,
-    "real_data_calibration": false,
-    "shadow_outcomes": false,
-    "trusted_evaluator_key": false,
-    "independent_worm_archive": false,
-    "endpoint_inventory_verified_at_utc": "2026-11-10T00:07:27.057Z",
-    "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
-    "endpoint_inventory_source_blob_sha": "2ec26865fddb75f87b9238dd343ee509386ca5c8",
-    "endpoint_inventory_contract": "research/xrp_intelligence/feature-store-contract.md; research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_endpoint_inventory_documentation_consistency.py; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
-    "endpoint_inventory_correction": "40 total endpoint records: 36 scheduled hourly public sources, two weekly CFTC sources (contract-status index and TFF report), and two non-commercial XRPL node endpoints excluded by default. Both CFTC sources remain raw-only and are not model-admitted.",
-    "source_coverage_gaps": [
-      "Primary SEC filing and issuer-filing vintage ingestion",
-      "Federal Reserve, Treasury and BLS macro time-series vintages; FRED/ALFRED excluded pending terms-compliant authorization; Treasury Fiscal Data is a candidate, not integrated",
-      "Regulatory docket and enforcement-event ingestion",
-      "Institutional XRP/RLUSD custody balances and verified changes",
-      "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
-      "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
-    ],
-    "last_verified_at_utc": "2026-11-10T02:37:25Z",
-    "outcome_resolution_implemented": true,
-    "outcome_resolution_contract": "Immutable resolve_forecast outcome; predeclared timestamp tolerance; outcome venue/source IDs; explicit cross-venue normalization; Brier/log-loss scoring versus baseline; missing outcome recorded as unscorable.",
-    "calibration_contract": {
-      "method": "rolling_temporal_temperature_scaling_v1",
-      "min_samples": 50,
-      "max_history": 250,
-      "fit_fraction": 0.8,
-      "validation_fraction": 0.2,
-      "minimum_log_loss_improvement": 0.005,
-      "identity_transform_retained_without_validation_improvement": true
-    },
-    "implemented_on_integration_branch": true,
-    "verified_on_main": false,
-    "mature_synchronized_live_history": false,
-    "weekly_sources": 2,
-    "excluded_noncommercial_xrpl_node_sources": 2,
-    "weekly_cftc_capture_window_utc": "Saturday 00:10-01:59",
-    "weekly_cftc_status": "RAW_ONLY_NOT_MODEL_ADMITTED",
-    "weekly_endpoint_ids": [
-      "cftc_contract_status_index",
-      "cftc_tff_financial_futures"
-    ],
-    "cftc_weekly_status": "RAW_ONLY_NOT_MODEL_ADMITTED",
-    "forecast_ledger_source_blob_sha": "0987f56ef19d3ec9ffae27c2fce1b10c825652e7"
+    "oos_lift": "NOT_DEMONSTRATED",
+    "shadow_outcomes": 0,
+    "independent_worm": false,
+    "macro_event_adapters": false,
+    "event_timeline": false,
+    "scenario_counterhypothesis_runner": false
   },
   "new_research_artifacts": [
     "research/xrp_intelligence/20261109T060150Z-live-spot-derivatives-corroboration.json",
@@ -37384,7 +37235,7 @@
       "description": "Human-readable Run111 research summary."
     }
   ],
-  "updated_at_utc": "2026-11-10T17:15:00Z",
+  "updated_at_utc": "2026-11-10T17:17:00Z",
   "current_run_snapshot": {
     "run_id": 136,
     "run": 136,
@@ -37897,7 +37748,11 @@
       "shadow_outcomes": 0,
       "trusted_evaluator_key": false,
       "independent_worm_archive": false,
-      "verified_on_main": false
+      "verified_on_main": false,
+      "endpoints": 46,
+      "scheduled_public_sources": 42,
+      "weekly_sources": 2,
+      "excluded_xrpl_node_sources": 2
     },
     "forecast_status": "NOT_ISSUED",
     "backlog_classification": {
@@ -39183,7 +39038,7 @@
       "excluded_xrpl_nodes": 2,
       "forecast_status": "NOT_ISSUED",
       "merge_performed": false,
-      "map_update_ci_status": "PENDING"
+      "map_update_ci_status": "PENDING_AFTER_FINAL_MAP_METADATA_CORRECTION"
     }
   ],
   "secondary_derivatives_observations": [
@@ -39369,7 +39224,7 @@
       "model_eligible": false
     }
   ],
-  "latest_run_verified_at_utc": "2026-11-10T17:14:29Z",
+  "latest_run_verified_at_utc": "2026-11-10T17:17:00Z",
   "latest_run_snapshot": {
     "run_id": 136,
     "run": 136,
@@ -39882,7 +39737,11 @@
       "shadow_outcomes": 0,
       "trusted_evaluator_key": false,
       "independent_worm_archive": false,
-      "verified_on_main": false
+      "verified_on_main": false,
+      "endpoints": 46,
+      "scheduled_public_sources": 42,
+      "weekly_sources": 2,
+      "excluded_xrpl_node_sources": 2
     },
     "forecast_status": "NOT_ISSUED",
     "backlog_classification": {
@@ -40174,7 +40033,7 @@
     "structured_nine_platform_exchange": false
   },
   "latest_run_verification": {
-    "status": "VERIFIED_HANDOFF_HEAD; MAP_UPDATE_PENDING_EXACT_HEAD_CI",
+    "status": "HANDOFF_HEAD_CI_VERIFIED; MAP_METADATA_CORRECTION_COMMITTED; NEW_HEAD_CI_PENDING",
     "repository": "Barrot-Agent/B-Agent",
     "branch": "integration/xrp-v3-unified-main-20261110",
     "read_access": true,
@@ -40196,7 +40055,8 @@
     "duplicate_full_suite_status": "IN_PROGRESS_AT_CAPTURE",
     "no_main_write": true,
     "no_secret_read": true,
-    "no_external_model_transfer": true
+    "no_external_model_transfer": true,
+    "map_update_parent_head": "7f7c0db55c9d04382ee28a80075a691e56e3dba3"
   },
   "xrpl_amendment_status": {
     "as_of_date": "2026-11-09",
@@ -40329,6 +40189,6 @@
     },
     "note": "Supplements preserved Run109 full-map snapshot; does not rewrite historical Run73-109 observations or promote any external platform."
   },
-  "current_integration_branch_head": "3b1202cca38a41b2e6814f5687cc167df998af0e",
+  "current_integration_branch_head": "7f7c0db55c9d04382ee28a80075a691e56e3dba3",
   "no_pr_closed": true
 }
