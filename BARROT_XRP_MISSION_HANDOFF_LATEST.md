@@ -3171,3 +3171,74 @@ Source: [XRPL Dashboard RWA methodology and issuer list](https://xrpldashboard.c
 Institutional adoption on XRPL is increasingly stablecoin- and tokenized-asset-oriented. That can raise XRPL transaction activity without creating equivalent XRP bridge demand. Distinguish at least five features: stablecoin supply on XRPL, tokenized-asset represented value, distributed tokenized value, executable AMM/order-book liquidity, and XRP bridge conversion volume. Do not substitute one for another.
 
 The new structured evidence is in [Run129 market/flow/governance artifact](research/xrp_intelligence/20261110T120000Z-run129-market-exchange-flow-etf-governance-repository-update.json), under `stablecoin_rwa_payment_network`.
+
+
+## Run 129C — exact-head verification and identity resolution
+
+### Exact-head integrated verification
+
+The final code/test head for the Run129 implementation fixes was `04b3228ff44e5b738cd02fae7acac0f0f29638b3`.
+
+<badge>VERIFIED</badge>
+
+- Full repository suite: **1,371 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.58%**, above the 53% floor.
+- Core suite: **677 passed**.
+- Wheel build and installed-wheel verification passed.
+- Installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merging remains disabled.
+
+Exact evidence:
+- [CI — 42813504144](https://github.com/Barrot-Agent/B-Agent/actions/runs/42813504144)
+- [Dependency audit — 42813504079](https://github.com/Barrot-Agent/B-Agent/actions/runs/42813504079)
+- [Fail-closed gate — 42813504064](https://github.com/Barrot-Agent/B-Agent/actions/runs/42813504064)
+
+The full-suite log collected 1,371 tests and reported 59.58% coverage. The wheel step verified the packaged primary mission and imports. The only warning was the GitHub Actions cache budget becoming read-only; the tests, wheel and dependency audit succeeded.
+
+The final identity-research JSON update and this handoff addendum are documentation/evidence-only descendants of the verified code/test head. Their PR synchronization runs must still be checked separately; do not claim they were covered by the 04b322 test run.
+
+### Whole-repository workflow repairs
+
+- Hover Bike Updates: the generator entrypoint now resolves the output directory relative to its own file, so its four files land in the paths the workflow uploads. Regression tests execute a copied entrypoint in a temporary project and verify the four expected outputs and absence of a double-nested directory.
+- Riemann Research Harvest: a regression test verifies that `pytest` and `pydantic-settings` are installed before the test command, preventing the missing-`pydantic` conftest failure.
+- Both fixes are on the integration branch. The original failed main workflows have not yet been re-dispatched on the branch; they remain unverified operationally.
+- Pillars remains blocked by missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR. No credential workaround or success claim was made.
+
+### Exact-phrase and identity research update
+
+**ASK Coin is ambiguous and at least two distinct listings must remain separate:**
+
+1. CoinMarketCap's Ask Coin exchange listing is marked inactive/untracked, with no reserve data and no usable market table. [Listing](https://coinmarketcap.com/exchanges/ask-coin/).
+2. Permission Coin's ASK token is a separate Polygon/Base asset. The retrieved CoinMarketCap snapshot displayed 100B maximum supply, approximately 16.1666B circulating, approximately $1.4M market capitalization, approximately $891.78 24-hour volume and approximately 206.18K holders. [Permission Coin](https://coinmarketcap.com/currencies/permission-coin/).
+
+Neither listing establishes an XRP integration. Do not infer that either is the user's intended ASK Coin without additional primary evidence.
+
+**“SBIC, ChatGPT SBIC”:** no exact-phrase evidence of a formal ChatGPT–SBIC partnership was found. Tokyo SBIC's official 2025 course lists ChatGPT and Copilot training for investee companies. This is training activity, not an OpenAI partnership. [Tokyo SBIC course](https://www.sbic.co.jp/training/20250612co/).
+
+**“Actual capital”:** no standardized XRP project metric by that exact name was established. Continue separating settled cash subscriptions/purchases, in-kind XRP, debt actually drawn, contingent facilities/warrants and secondary resales. Market capitalization, registered resale capacity, undrawn financing and custody balances are not realized XRP capital.
+
+**Kamilah Stevenson YouTube attribution:**
+
+- A likely candidate surfaced: `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`. Third-party analytics report roughly 139K–143K subscribers and approximately 1.2K videos; its description matches stocks, crypto, macro and long-term investing.
+- A first-party page, [learn.kamilahstevenson.com](https://learn.kamilahstevenson.com/), identifies Dr. Kamilah Stevenson as “The Wealth Doctor.” A separate [Buy Me a Coffee page](https://buymeacoffee.com/kamilahstevenson) uses the same name and health/wealth-coach description.
+- Neither visible first-party page links to the candidate YouTube channel. A third-party Telegram directory links to the handle, which is insufficient proof of ownership.
+- Several same-name channels exist, including `@CoachKamilahStevensonxrp` and Kamilah Stevenson Digital Network. A Vimeo listing titled “How $23 Turned Into $27,000” is a separate candidate, not proof of YouTube channel ownership.
+
+**Identity status: UNVERIFIED CANDIDATE ONLY.** No personal YouTube video inventory was created or attributed. Require a first-party cross-link or equivalent primary identity proof before inventorying the candidate channel's videos.
+
+The detailed candidate records and caveats are in [Run129 structured evidence](research/xrp_intelligence/20261110T120000Z-run129-market-exchange-flow-etf-governance-repository-update.json).
+
+### Current merge posture
+
+The latest verified code/test head is `04b3228`; the evidence/handoff descendants advance the integration branch but do not change application code. PR #1640 remains the sole active V3/XRP integration path.
+
+No merge is authorized yet:
+- 62 review submissions remain COMMENTED, zero APPROVED.
+- Main branch protection is reported as enabled, but detailed protection and required-review settings remain inaccessible (HTTP 403).
+- Required status contexts are not exposed; the fallback ruleset is disabled.
+- GitHub Pages has previously deployed automatically after a main push. Specific authorization for that public deployment side effect remains absent.
+
+Do not bypass branch protection or merge until the current PR head has current checks, required approval/protection conditions are satisfied, and Pages publication authorization is established.
+
+No source PRs were closed. Preserve unique research, prediction, topology and knowledge-graph work. No forecast was issued.
