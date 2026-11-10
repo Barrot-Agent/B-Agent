@@ -1,3 +1,104 @@
+# Run 112 — XRP market, exchange-wallet, ETF-flow and CPI update
+
+**Capture start:** 2026-11-10 02:57:53 UTC  
+**Mission:** `xrp_intelligence_prediction_engine`, priority 1. Barrot V3 remains the preserved execution, orchestration, safety and verification foundation.
+
+## Repository state
+
+- Main SHA: `d4d43be3427375cf79d190e768976de062e20287`.
+- Integration code/test head: `6b34115c2301007ee20f52a74b9f9742938b3f88`.
+- Existing PR #1640: 891 commits ahead, zero behind; 228 changed paths; 111,670 additions and 3,554 deletions. No new branch or PR was created.
+- Main tree: 1,404 entries / 1,299 files / 86 workflows / 493 Python files / 90 test files.
+- Integration tree: 1,525 entries / 1,412 files / 87 workflows / 568 Python files / 148 test files.
+- Open PR inventory: 372 total; 356 drafts and 16 non-drafts.
+
+## Exact-head verification
+
+**VERIFIED — `6b34115c2301007ee20f52a74b9f9742938b3f88`**
+
+- Full repository suite: **1,347 passed, zero failed, eight subtests passed** in 44.19 seconds.
+- Inclusive package coverage: **59.48%**, above the 53% floor.
+- Core suite: **677 passed, eight subtests passed**.
+- Wheel build and installed-wheel verification passed; the packaged primary XRP mission and Barrot V3 imports loaded.
+- Six-manifest dependency audit passed; no known vulnerabilities.
+- Fail-closed merge gate passed; automatic merging remains disabled.
+
+Evidence:
+- [Full CI — 42747463986](https://github.com/Barrot-Agent/B-Agent/actions/runs/42747463986)
+- [Dependency audit — 42747463965](https://github.com/Barrot-Agent/B-Agent/actions/runs/42747463965)
+- [Fail-closed gate — 42747463968](https://github.com/Barrot-Agent/B-Agent/actions/runs/42747463968)
+
+Three stale assertions in `tests/test_xrp_nine_platform_current_map_run73.py` were reconciled with the preserved historical map: the current `ci_evidence.full_suite` schema, Run111 raw-response hashes, and Run82 normalized last-gap value. These were test-fixture corrections; no production prediction logic was changed. The final exact-head suite passed.
+
+Main's latest recorded CI on `d4d43be` also passed 718 tests and eight subtests ([run 42526890841](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890841)). Main's full-suite scope remains narrower than the integration branch's inclusive package suite.
+
+## Research update
+
+The new Run112 market/flow artifact is:
+`research/xrp_intelligence/20261110T025753Z-run112-xrp-spot-flows-etf-cpi-update.json`.
+
+Key findings:
+- Kraken XRP/USD displayed $1.09175; OKX XRP-USDT displayed 1.0964 USDT at provider time 02:56:29.372 UTC. Kraken's event time and Kraken USDT/USD event time were absent. Normalized cross-venue gap is asynchronous and not an arbitrage signal.
+- Liqwall (02:22 UTC) and TradRadar (02:00 UTC) reported OI of $1.22B and $1.66B respectively, both declining, with long-heavy liquidations and modest positive funding. The approximately 36.1% OI gap reflects differing/overlapping venue coverage; do not average.
+- XRP Insights' Nov 9 08:01 UTC same-wallet exchange balance set was 22.35B XRP across 701 wallets/24 exchanges; same-wallet change was −25.8M over seven days and −138.1M over 30 days. A naive +373.9M total change included 512M XRP in two newly tracked wallets. 483M XRP of wrapped-token/insurance/charity reserves are included in the exchange total. This is not tradable float.
+- CryptoQuant/Darkfost reported 691M XRP transferred to Binance on Nov 8, valued above $900M at the then-prevailing price. The article notes possible reserve replenishment after the Oct 29 theft as one hypothesis; it does not prove a sale.
+- CryptoKeyhole's Nov 9 ETF reading was partial: 1 of 4 daily-tracked funds had published, with Bitwise holdings down 8,594,551 XRP (derived −$9.445M). The other three were missing at capture; no aggregate daily flow is inferred. The last complete day, Nov 6, was −752,048 XRP across four funds.
+- BLS October CPI and Real Earnings were scheduled for Nov 10 at 08:30 ET / 13:30 UTC; not released at capture.
+
+Raw receipts hash the exact JSON response text surfaced by the public fetch, not original HTTP wire bytes. Headers and exact retrieval timestamps were unavailable. The observations are descriptive cross-checks and remain excluded from the feature store.
+
+## Prediction engine
+
+Implemented on the integration branch:
+- 40 public endpoints: 36 hourly scheduled, two weekly CFTC sources and two non-commercial XRPL nodes excluded from scheduled ingestion.
+- Read-only main-only ingestion workflow; raw artifacts retained 90 days, feature checkpoint cache seven days, daily archive 90 days.
+- SHA-256 receipt chain, point-in-time SQLite feature store, four deterministic baselines, chronological walk-forward evaluation, temporal calibration, drift diagnostics and fail-closed forecast ledger.
+- Forecast readiness requires at least 100 OOS samples, 100 shadow outcomes, ten horizon multiples, two independent source groups, weighted calibration error no greater than 0.05, and a trusted Ed25519 evaluator key.
+- SQLite triggers are not an adversarial WORM boundary. Independent signed/timestamped receipt anchoring remains missing.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action.
+
+## Platform coordination
+
+The full nine-platform map remains at `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json`, last full snapshot Run111. This run again verified ChatGPT-session GitHub read/write through the existing branch update. No new authenticated data flows were established for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks. No cross-platform data exchange occurred.
+
+## Workflow and security findings
+
+- Main CI passed, but three scheduled main workflows remain failed: Pillars Consistency Check (missing GitHub App credentials, Databricks HTTP 403, Hugging Face BUILD_ERROR); Hover Bike artifact upload path; Riemann test environment missing `pydantic-settings`. The integration branch contains fixes for the Hover Bike path and Riemann test dependency, but those workflows have not yet been dispatched on the integration branch. The Pillars external-service blockers remain.
+- Main's Barrot Agent and Ask Barrot workflows still have contents/issues write permissions; integration quarantines both. Legacy signal emission is quarantined on integration. Scheduler Tick and Merge Queue remain disabled.
+- XRP ingestion is read-only and main-only; it is not active on main.
+- The integration PR changes 43 workflow files and seven public web assets. The public `web/latest_signal.json` remains `NOT_ISSUED`; its status timestamp was refreshed to this capture. Legacy 45.5% accuracy is preserved only as invalid historical data; fixed-horizon accuracy remains `NOT_EVALUATED`.
+- GitHub Pages previously deployed successfully after a main push ([run 42526890275](https://github.com/Barrot-Agent/B-Agent/actions/runs/42526890275)). A merge of #1640 would trigger public publication of changed web assets. Specific authorization for that automatic publication is absent.
+
+## PR backlog
+
+- **#1640 — blocked integration:** sole active V3/XRP path; GitHub reports mergeable. 62 review submissions are all COMMENTED; zero approvals; all 22 inline threads resolved.
+- **#1643 — unique/unreviewed:** 670 changed paths; 663 unique to that PR and seven shared with #1640; branch diverged (906 ahead, one behind). Preserve unique research archive.
+- **#1653 — unique/unreviewed:** seven paths; six unique and one shared; 18 ahead, one behind; eight unresolved review threads. Preserve knowledge graph.
+- **#1642 — superseded candidate:** seven of seven paths overlap #1640.
+- **#1644–#1650 — superseded/duplicate candidates:** changed paths overlap #1640; retain until successor content is verified on main.
+- **#1317/#1318/#1320 — superseded candidates:** all changed paths overlap #1640.
+- **#1254/#1255 — dependency reconciliation candidates:** one shared legacy requirements path each.
+- **#1269 — unique/unreviewed:** eight unique mesh/topology paths; preserve.
+- Preserve unique portions of #1614 (49), #1615 (13), #1611 (2), #1608 (3), #1597 (17), #1583 (8), #1655 (3), #1659 (4) and #1641 (3) paths. No PRs were closed.
+
+## Merge decision
+
+**Do not merge #1640 yet.** Main branch-protection details still return HTTP 403; the visible fallback ruleset is disabled, so effective required approvals/checks remain unverified. The PR has zero independent approvals. The Pages publication side effect is not authorized. The fail-closed gate remains enabled and was not bypassed.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+## Next concrete actions
+
+1. Keep #1640 as the single active V3/XRP integration path.
+2. Resolve independent approval, effective branch-protection visibility and explicit Pages-publication authorization.
+3. Once all conditions are satisfied, merge without bypass; fetch main, verify merge commit and files, run main CI, and inspect workflow side effects.
+4. Preserve unique research and graph work in #1643/#1653 and other backlog PRs.
+5. Build durable independent receipt anchoring and synchronized historical spot, L2, exchange-flow and derivatives features before any forecast issuance.
+
+---
+
+
 # Run 111 — XRP source-provenance hardening and exchange-flow reconciliation
 
 **Run capture:** 2026-11-10 02:28:18 UTC  

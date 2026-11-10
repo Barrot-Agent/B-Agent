@@ -1,0 +1,205 @@
+{
+  "artifact_type": "barrot_xrp_run112_market_flows_etf_macro_snapshot",
+  "schema_version": 1,
+  "run_id": 112,
+  "captured_at_utc": "2026-11-10T02:57:53Z",
+  "repository_state": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_code_test_head": "6b34115c2301007ee20f52a74b9f9742938b3f88",
+    "pr_number": 1640,
+    "commits_ahead": 891,
+    "commits_behind": 0,
+    "changed_paths": 228
+  },
+  "spot": {
+    "kraken_xrpusd": {
+      "last_usd": 1.09175,
+      "bid_usd": 1.09174,
+      "ask_usd": 1.09175,
+      "bid_size_xrp": 658,
+      "ask_size_xrp": 4579,
+      "spread_bps": 0.091596,
+      "volume_24h_xrp": 29752437.78138496,
+      "vwap_24h_usd": 1.09622574,
+      "high_24h_usd": 1.12191,
+      "low_24h_usd": 1.07502,
+      "provider_event_time_utc": null
+    },
+    "okx_xrpusdt": {
+      "last_usdt": 1.0964,
+      "bid_usdt": 1.0964,
+      "ask_usdt": 1.0965,
+      "bid_size_xrp": 2084.7,
+      "ask_size_xrp": 5291.289898,
+      "spread_bps": 0.912034,
+      "volume_24h_xrp": 70378456.454059,
+      "volume_24h_usdt": 77148463.68356897,
+      "high_24h_usdt": 1.117,
+      "low_24h_usdt": 1.0764,
+      "provider_event_time_utc": "2026-11-10T02:56:29.372Z",
+      "age_seconds_at_run_start": 83.628
+    },
+    "kraken_usdtusd": {
+      "last_usd": 0.99872,
+      "bid_usd": 0.99871,
+      "ask_usd": 0.99872,
+      "provider_event_time_utc": null
+    },
+    "normalized_comparison": {
+      "okx_last_normalized_usd": 1.094996608,
+      "gap_vs_kraken_last_pct": 0.2973765,
+      "asynchronous": true,
+      "executable_arbitrage_inference": false,
+      "level2_depth_available": false
+    }
+  },
+  "derivatives": [
+    {
+      "source": "Liqwall",
+      "as_of_utc": "2026-11-10T02:22:00Z",
+      "open_interest_usd": 1220000000,
+      "open_interest_change_24h_pct": -1.8,
+      "liquidations_24h_usd": 8200000,
+      "long_liquidations_usd": 7500000,
+      "short_liquidations_usd": 706000,
+      "funding_per_8h_pct": 0.0055,
+      "binance_accounts_long_pct": 74.5,
+      "coverage": "All-exchange aggregator; Binance account ratio separately reported."
+    },
+    {
+      "source": "TradRadar",
+      "as_of_utc": "2026-11-10T02:00:00Z",
+      "open_interest_usd": 1660000000,
+      "open_interest_change_24h_pct": -3.9,
+      "open_interest_venues": 7,
+      "liquidations_24h_min_usd": 9080000,
+      "long_liquidations_usd": 8220000,
+      "short_liquidations_usd": 864670,
+      "liquidation_venues": 5,
+      "funding_per_8h_pct": 0.003,
+      "long_short_ratio": 3.96,
+      "long_accounts_pct": 79.8
+    }
+  ],
+  "derivatives_disagreement": {
+    "oi_low_to_high_gap_pct": 36.0656,
+    "long_liquidation_to_short_ratio_liqwall": 10.6232,
+    "long_liquidation_to_short_ratio_tradradar": 9.5066,
+    "common_observation": "Both aggregators show declining open interest and long-heavy liquidations.",
+    "caveat": "Venue coverage overlaps and is not independent; do not average OI or liquidations."
+  },
+  "exchange_wallet_balances": {
+    "source": "XRP Insights",
+    "as_of_utc": "2026-11-09T08:01:00Z",
+    "tracked_wallets": 701,
+    "tracked_exchanges": 24,
+    "tracked_xrp": 22350000000,
+    "circulating_supply_reference_xrp": 68890000000,
+    "share_of_circulating_supply_pct": 32.5,
+    "same_wallet_change_7d_xrp": -25800000,
+    "same_wallet_change_30d_xrp": -138100000,
+    "november_9_daily_same_wallet_change_xrp": 9700000,
+    "naive_total_change_xrp": 373900000,
+    "newly_tracked_wallets": 2,
+    "newly_tracked_xrp": 512000000,
+    "exchange_balances_xrp": {
+      "Upbit": 6450000000,
+      "Coinbase": 5800000000,
+      "Binance": 2730000000,
+      "Bithumb": 1810000000,
+      "Uphold": 1690000000,
+      "Kraken": 983000000,
+      "SBI VC Trade": 56800000
+    },
+    "wrapped_and_non_customer_reserves_xrp": 483000000,
+    "reserve_breakdown_xrp": {
+      "Binance_Peg_XRP_BF2": 325800000,
+      "Coinbase_cbXRP_Base": 152000000,
+      "insurance_and_charity": 5200000
+    },
+    "caveat": "Labeled omnibus/custody wallets, cold storage and wrapped-token reserves are not an estimate of tradable float."
+  },
+  "whale_transfers": {
+    "source": "CryptoQuant / Darkfost",
+    "event_date": "2026-11-08",
+    "xrp_inflow_to_binance": 691000000,
+    "value_at_event_usd_greater_than": 900000000,
+    "valuation_context": "The article describes XRP trading below $1.30 at the time; this is not a current-dollar mark.",
+    "90_day_average_inflow_usd_per_day_greater_than": 100000000,
+    "hypotheses": [
+      "Deposits may have been made available for sale or loss protection; no sale is proven.",
+      "Some transfers may have replenished Binance reserves after the reported October 29 theft of approximately 233.5M XRP; this is a hypothesis, not confirmed attribution."
+    ],
+    "independence_warning": "The same CryptoQuant analyst/source reported a separate November 4 outflow observation in earlier research; these are not independent confirmations and must not be netted without wallet-level reconciliation."
+  },
+  "etf_flows": {
+    "source": "CryptoKeyhole, derived from issuer daily holdings files",
+    "page_updated_at_utc": "2026-11-10T02:52:00Z",
+    "november_9_partial": {
+      "reporting_funds": 1,
+      "expected_daily_reporting_funds": 4,
+      "fund": "Bitwise XRP ETF",
+      "holdings_change_xrp": -8594551,
+      "derived_usd_change": -9445000,
+      "other_funds": "Not yet published in this snapshot.",
+      "aggregate_status": "PARTIAL_1_OF_4; no total-market daily flow may be inferred."
+    },
+    "november_6_last_complete_day": {
+      "reporting_funds": 4,
+      "net_change_xrp": -752048,
+      "derived_usd_change": -887000,
+      "holdings_xrp": 1076053837
+    },
+    "last_five_complete_trading_days_xrp": -765403,
+    "listed_funds": 6,
+    "daily_tracker_coverage": 4,
+    "cumulative_net_flow_through_november_6_xrp": 2622459,
+    "caveat": "Holdings deltas include creations/redemptions, staking rewards retained, fee sales and cash payouts; this is not a pure cash-subscription series."
+  },
+  "macro_events": [
+    {
+      "event": "US October 2026 CPI and Real Earnings",
+      "scheduled_at_utc": "2026-11-10T13:30:00Z",
+      "scheduled_at_et": "2026-11-10T08:30:00-05:00",
+      "source": "US Bureau of Labor Statistics",
+      "status_at_capture": "FUTURE_NOT_RELEASED"
+    }
+  ],
+  "provenance": {
+    "raw_response_scope": "Exact JSON response text surfaced by public endpoint retrieval.",
+    "raw_http_wire_bytes_preserved": false,
+    "response_headers_preserved": false,
+    "retrieval_timestamp_exactly_exposed": false,
+    "sha256": {
+      "kraken_xrpusd": "9611d8a0ff3d2c87bb168d3e4f498950679827a05bddaca06925a7f3a0293c90",
+      "okx_xrpusdt": "fbfa48e3bbfd2a78a46fbbb6aca04c05d73d2b021dec6973d1212cf2528a286f",
+      "kraken_usdtusd": "3e629bbc2c0c6668c21a11176dcd1a460bc1ad6c1abe46ed4a2ca99dc794fa36"
+    },
+    "source_independence": {
+      "spot": "Direct venue API response text, but asynchronous and incomplete provenance.",
+      "derivatives": "Liqwall and TradRadar have overlapping venue coverage; not independent.",
+      "exchange_wallets": "XRPL label-based same-wallet methodology; not equivalent to exchange trading balances or CryptoQuant transfers.",
+      "whale_flows": "Single CryptoQuant analyst/provider; possible internal reserve movement is unconfirmed.",
+      "etf": "Issuer holdings files aggregated by CryptoKeyhole; only one of four daily trackers reported for Nov 9.",
+      "macro": "BLS official release calendar."
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "label": "Near-term sell-pressure risk",
+      "evidence": "Large reported Binance inflow, partial Bitwise holdings reduction and long-heavy liquidations with falling open interest.",
+      "disconfirming_or_limiting_evidence": "Binance deposits do not prove sales; Nov 9 ETF flow is only 1/4; wallet same-set balances fell over 7 and 30 days."
+    },
+    {
+      "id": "H2",
+      "label": "Transfer/rebalancing and deleveraging exhaustion",
+      "evidence": "Same-wallet exchange balances declined over 7 and 30 days; large gross transfers may include reserve replenishment or internal movement; open interest has contracted.",
+      "disconfirming_or_limiting_evidence": "The reported 691M XRP Binance inflow is unusually large and could become sellable inventory; long-heavy liquidations and the partial ETF outflow remain real observations."
+    }
+  ],
+  "model_admission": false,
+  "forecast_status": "NOT_ISSUED",
+  "directional_forecast_issued": false,
+  "real_money_action": false
+}
