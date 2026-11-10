@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "artifact_type": "cftc_monthly_fcm_capital_and_customer_funds_comparison",
+  "captured_on_utc_date": "2026-11-03",
+  "sources": [
+    {
+      "id": "S50",
+      "publisher": "CFTC",
+      "title": "Financial Data for FCMs — index and field definitions",
+      "url": "https://www.cftc.gov/MarketReports/financialfcmdata/index.htm",
+      "retrieved_on": "2026-11-03",
+      "type": "regulatory_data_index"
+    },
+    {
+      "id": "S51",
+      "publisher": "CFTC",
+      "title": "Selected FCM Financial Data as of December 31, 2025",
+      "url": "https://www.cftc.gov/sites/default/files/2026-02/01%20-%20FCM%20Webpage%20Update%20-%20December%202025.pdf",
+      "data_as_of": "2025-12-31",
+      "reports_filed_by": "2026-01-30",
+      "type": "monthly_regulatory_data"
+    },
+    {
+      "id": "S52",
+      "publisher": "CFTC",
+      "title": "Selected FCM Financial Data as of August 31, 2026",
+      "url": "https://www.cftc.gov/sites/default/files/2026-10/01%20-%20FCM%20Webpage%20Update%20-%20August%202026.pdf",
+      "data_as_of": "2026-08-31",
+      "reports_filed_by": "2026-10-01",
+      "type": "monthly_regulatory_data"
+    },
+    {
+      "id": "S53",
+      "publisher": "Nodal Clear",
+      "title": "Ripple Offers Clients Access to Coinbase Derivatives Contracts Cleared by Nodal Clear",
+      "url": "https://www.nodalclear.com/ripple-offers-clients-access-to-coinbase-derivatives-contracts-cleared-by-nodal-clear/",
+      "published_on": "2026-03-05",
+      "type": "joint_commercial_announcement"
+    },
+    {
+      "id": "S54",
+      "publisher": "Nodal Clear",
+      "title": "Clearing Members — Coinbase Derivatives",
+      "url": "https://www.nodalclear.com/services/clearing-membership/clearing-members/",
+      "retrieved_on": "2026-11-03",
+      "type": "clearing_membership_directory"
+    }
+  ],
+  "reporting_rules": {
+    "monthly_reports": "FCMs file monthly financial reports within 17 business days after month-end; selected information is published by CFTC.",
+    "publication_lag": "CFTC says the most recent month-end information is generally added within 12 business days after filing.",
+    "amendments": "CFTC states it does not revise the published data to reflect amended financial information subsequently received.",
+    "key_definitions": {
+      "adjusted_net_capital": "Regulatory capital measure reported by the FCM; not equivalent to cash, GAAP equity, AUM or XRP-specific capital.",
+      "excess_net_capital": "Adjusted net capital less the firm's net capital requirement.",
+      "customer_assets_in_segregation": "Money, securities and property held in segregated accounts for futures and options customers under CEA Section 4d(a)(2); customer property, not proprietary capital.",
+      "customer_seg_required": "Amount the FCM is required to segregate for customers trading on a designated contract market.",
+      "excess_or_deficient_segregation": "Customer assets in segregation less the customer segregation requirement."
+    }
+  },
+  "entities": {
+    "ripple_prime_us_fcm": {
+      "legal_name": "Hidden Road Partners CIV US LLC",
+      "business_context": "Primary U.S. regulated FCM/broker-dealer operating entity within Ripple Prime; ultimate parent changed to Ripple after the Hidden Road acquisition in October 2025.",
+      "dec_2025": {
+        "adjusted_net_capital_usd": 518602419,
+        "net_capital_requirement_usd": 33801636,
+        "excess_net_capital_usd": 484800783,
+        "customer_assets_in_segregation_usd": 765805235,
+        "customer_seg_required_usd": 703539898,
+        "excess_or_deficient_segregation_usd": 62265337,
+        "target_residual_interest_usd": 27300000
+      },
+      "aug_2026": {
+        "adjusted_net_capital_usd": 968424304,
+        "net_capital_requirement_usd": 30689221,
+        "excess_net_capital_usd": 937735083,
+        "customer_assets_in_segregation_usd": 720131906,
+        "customer_seg_required_usd": 657476347,
+        "excess_or_deficient_segregation_usd": 62655559,
+        "target_residual_interest_usd": 27300000,
+        "section_30_7_accounts_usd": 0,
+        "cleared_swap_segregation_usd": 0
+      },
+      "change_dec_to_aug": {
+        "adjusted_net_capital_pct": 86.74,
+        "excess_net_capital_pct": 93.43,
+        "customer_assets_in_segregation_pct": -5.96,
+        "customer_seg_required_pct": -6.55,
+        "excess_segregation_pct": 0.63
+      },
+      "source_rows": {
+        "dec_2025": 32,
+        "aug_2026": 31
+      }
+    },
+    "coinbase_fcm": {
+      "legal_name": "Coinbase Financial Markets Inc.",
+      "business_context": "Coinbase's CFTC-registered FCM; separate from Coinbase National Trust Company, Coinbase Custody Trust Company and Coinbase Derivatives Exchange.",
+      "dec_2025": {
+        "adjusted_net_capital_usd": 153482931,
+        "net_capital_requirement_usd": 6711776,
+        "excess_net_capital_usd": 146771155,
+        "customer_assets_in_segregation_usd": 224078669,
+        "customer_seg_required_usd": 167709124,
+        "excess_or_deficient_segregation_usd": 56369545,
+        "target_residual_interest_usd": 15000000
+      },
+      "aug_2026": {
+        "adjusted_net_capital_usd": 321158656,
+        "net_capital_requirement_usd": 11796995,
+        "excess_net_capital_usd": 309361661,
+        "customer_assets_in_segregation_usd": 346894116,
+        "customer_seg_required_usd": 211435154,
+        "excess_or_deficient_segregation_usd": 135458962,
+        "target_residual_interest_usd": 15000000,
+        "section_30_7_accounts_usd": 6006278,
+        "section_30_7_required_usd": 5258,
+        "section_30_7_excess_usd": 6001020,
+        "section_30_7_target_residual_interest_usd": 5000000,
+        "cleared_swap_segregation_usd": 166134616,
+        "cleared_swap_required_usd": 6158943,
+        "cleared_swap_excess_usd": 159975673,
+        "cleared_swap_target_residual_interest_usd": 5000000
+      },
+      "change_dec_to_aug": {
+        "adjusted_net_capital_pct": 109.25,
+        "excess_net_capital_pct": 110.78,
+        "customer_assets_in_segregation_pct": 54.81,
+        "customer_seg_required_pct": 26.07,
+        "excess_segregation_pct": 140.31
+      },
+      "source_rows": {
+        "dec_2025": 20,
+        "aug_2026": 19
+      }
+    }
+  },
+  "same_date_comparison_aug_2026": {
+    "ripple_prime_to_coinbase_fcm_ratio": {
+      "adjusted_net_capital": 3.015,
+      "excess_net_capital": 3.031,
+      "customer_assets_in_segregation": 2.076,
+      "customer_seg_required": 3.11
+    },
+    "interpretation": "Raw legal-entity regulatory measures only. These ratios do not establish superior credit quality, profitability, market share, risk management, or XRP exposure. Product mix and customer base differ."
+  },
+  "relationship_graph": [
+    {
+      "from": "Ripple Labs",
+      "to": "Hidden Road Partners CIV US LLC",
+      "relation": "ultimate_parent_after_acquisition",
+      "classification": "confirmed",
+      "evidence": [
+        "S50",
+        "S51",
+        "S52"
+      ]
+    },
+    {
+      "from": "Ripple Prime clients",
+      "to": "Coinbase Derivatives contracts",
+      "relation": "commercial_access_via_Nodal_Clear",
+      "classification": "confirmed",
+      "date": "2026-03-05",
+      "evidence": [
+        "S53"
+      ]
+    },
+    {
+      "from": "Hidden Road Partners CIV US LLC",
+      "to": "Nodal Clear",
+      "relation": "clearing_member",
+      "classification": "confirmed",
+      "evidence": [
+        "S54"
+      ]
+    },
+    {
+      "from": "Coinbase Financial Markets Inc.",
+      "to": "Nodal Clear",
+      "relation": "clearing_member",
+      "classification": "confirmed",
+      "evidence": [
+        "S54"
+      ]
+    },
+    {
+      "from": "Coinbase Derivatives Exchange",
+      "to": "Nodal Clear",
+      "relation": "exchange_contracts_cleared_by_DCO",
+      "classification": "confirmed",
+      "evidence": [
+        "S53",
+        "S54"
+      ]
+    }
+  ],
+  "xrp_specific_interpretation": {
+    "confirmed": "The March 5, 2026 Nodal Clear/Ripple announcement says Ripple Prime clients can access Coinbase Derivatives contracts, including XRP futures, through Nodal Clear.",
+    "not_established": [
+      "Actual XRP futures open interest attributable to Ripple Prime clients",
+      "XRP-specific collateral held by either FCM",
+      "Actual XRP spot purchases by either FCM",
+      "Net directional exposure of Ripple Prime or Coinbase customers",
+      "Whether access produces net XRP demand rather than hedging or offsetting exposure"
+    ],
+    "warning": "Access to an XRP futures contract is not equivalent to buying spot XRP or holding XRP as collateral."
+  },
+  "capital_context": {
+    "recovered_original_phrase_context": "Prior research context associates 'actual capital' with Ripple Prime/Hidden Road regulatory net capital, customer-segregated funds, repo financing and parent contributions. This CFTC dataset is the strongest current public monthly regulatory capital source found in this run.",
+    "parent_contribution_link": "A separate SEC audited statement reports $70m of capital contributions from the immediate Parent through 2026-02-26. The CFTC adjusted-net-capital increase from Dec 2025 to Aug 2026 is $449.822m; do not attribute the full increase to that $70m contribution.",
+    "distinctions": [
+      "Adjusted net capital is not GAAP equity.",
+      "Customer-segregated assets are not proprietary capital.",
+      "Gross repo financing is not capital.",
+      "No XRP-specific exposure is disclosed in the CFTC FCM data."
+    ]
+  },
+  "unknowns": [
+    "September and October 2026 FCM reports were not yet present on the CFTC index at retrieval.",
+    "The cause and composition of the $449.822m increase in Ripple Prime's adjusted net capital are not disclosed in the selected CFTC table.",
+    "No breakdown of customer assets by crypto asset, contract or XRP exposure is provided.",
+    "No customer concentration, revenue, profitability or margin-by-product data is provided.",
+    "Coinbase Financial Markets' cleared-swaps segregation is reported, but instrument-level XRP positions are not."
+  ],
+  "next_actions": [
+    "Ingest the next CFTC monthly FCM report when posted and preserve each vintage because CFTC says it does not revise published datasets.",
+    "Reconcile the SEC audited December 2025 financial statement with CFTC monthly FCM data, noting that the year-end figures match numerically but the CFTC series labels the measure adjusted net capital.",
+    "Track Coinbase Financial Markets and Hidden Road Partners CIV US LLC separately from their parent companies and trust-bank entities.",
+    "Monitor Nodal Clear/Coinbase Derivatives XRP futures open interest, volume, margin and clearing data; distinguish product access from realized customer utilization.",
+    "Do not infer spot XRP demand from FCM capital or futures access."
+  ],
+  "safety": {
+    "public_regulatory_data_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_action": true
+  }
+}

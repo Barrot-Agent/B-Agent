@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "evernorth_c07_average_cost_supersession_20261107T113335Z",
+  "artifact_type": "append_only_field_correction_supersession",
+  "recorded_at_utc": "2026-11-07T11:33:35Z",
+  "purpose": "Supersede only the erroneous average-cost override introduced by C07_EVERNORTH_CAPITAL_LEDGER. Preserve C07's correct Ripple lender attribution and duplicate-edge removal.",
+  "target_artifact": {
+    "path": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+    "git_blob_sha1": "8239d085d72b0603da5a205e6fd4754ad3f944f9"
+  },
+  "prior_overlay": {
+    "path": "research/xrp_intelligence/20261104T144241Z-archive-review-corrections-and-point-in-time-quarantine.json",
+    "git_blob_sha1": "7fcde1ae40352531dfc52d58220b0c30240dadbb",
+    "correction_id": "C07_EVERNORTH_CAPITAL_LEDGER",
+    "target_field": "$.xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_usd_per_xrp",
+    "prior_canonical_value": 2.53716325,
+    "prior_exact_unrounded_value": 2.537163248325662,
+    "prior_formula": "214050000 / 84365876",
+    "status": "SUPERSEDED_FOR_THIS_FIELD_ONLY"
+  },
+  "supersession": {
+    "supersedes_correction_id": "C07_EVERNORTH_CAPITAL_LEDGER",
+    "supersedes_only_field": "$.xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_usd_per_xrp",
+    "retained_c07_corrections": [
+      "Ripple Labs Inc. is the lender under the separate $1.0M Evernorth Facility; NH Investment & Securities, as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3, purchased the separate $30M PIK notes.",
+      "Remove the two duplicate Ripple–Pathfinder and Ripple–Evernorth facility edges from the canonical derived graph; retain one edge per facility."
+    ],
+    "original_artifacts_mutated": false,
+    "append_only": true
+  },
+  "correction": {
+    "target_json_pointer": "/xrp_asset_reconciliation/cash_funded_market_purchase/implied_average_cost_usd_per_xrp",
+    "expected_prior_canonical_value": 2.53716325,
+    "canonical_value": 2.53657058,
+    "exact_unrounded_recomputed_value": 2.5365705807463335,
+    "formula": "214000000 / 84365876.3625",
+    "issuer_reported_average_price_usd_per_xrp": 2.53657058,
+    "reason": "The prior C07 formula used rounded subscription cash and rounded XRP quantity as if they were purchase cost and exact quantity. The issuer filing distinguishes $214,049,995 cash received, $214,000,000 used for the XRP purchase, and $49,995 remaining as restricted cash. The purchase-cost numerator is $214,000,000."
+  },
+  "cash_bridge": {
+    "advance_funding_cash_received_exact_usd": 214049995,
+    "advance_funding_cash_received_summary_rounded_usd": 214050000,
+    "cash_used_to_purchase_xrp_usd": 214000000,
+    "restricted_cash_at_2025_12_31_usd": 49995,
+    "xrp_purchased_exact": 84365876.3625,
+    "issuer_reported_average_purchase_price_usd_per_xrp": 2.53657058,
+    "recomputed_average_purchase_price_usd_per_xrp": 2.5365705807463335,
+    "recomputed_purchase_cost_usd": 213999999.9370349,
+    "arithmetic_check": "214049995 - 214000000 = 49995",
+    "venue_or_execution_method_disclosed": false,
+    "not_a_venue_specific_execution_vwap": true
+  },
+  "source_authority": {
+    "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+    "filing": "Form S-1, accession 0001628280-26-068609",
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+    "source_independence_group": "evernorth_issuer_sec_disclosure",
+    "source_line_ranges": {
+      "summary_subscription_definition": "L175-L177",
+      "cash_flow_and_restricted_cash": "L6012-L6024",
+      "advance_funding_receipt_and_quantity": "L6056",
+      "xrp_cost_basis_table": "L6230-L6238",
+      "issuer_reported_average_price": "L4941-L4944"
+    },
+    "source_evidence_artifact": "research/xrp_intelligence/20261106T080100Z-evernorth-advance-funding-purchase-cost-correction.json",
+    "source_evidence_artifact_git_blob_sha1": "e4445c1817b9ac4f685a0bbed4880a63ef49fd80",
+    "raw_sec_bytes_retained": false,
+    "receipt_scope": "The supporting correction artifact stores source line ranges and normalized evidence; it does not contain the complete raw SEC HTTP response or headers."
+  },
+  "application_contract": {
+    "application_order": "Apply the exact-source C07 lender/graph correction, then this field-only supersession to the same deep-copied historical target artifact.",
+    "target_blob_must_match": "8239d085d72b0603da5a205e6fd4754ad3f944f9",
+    "prior_overlay_blob_must_match": "7fcde1ae40352531dfc52d58220b0c30240dadbb",
+    "prior_value_must_match": 2.53716325,
+    "original_artifacts_mutated": false,
+    "apply_only_to_derived_in_memory_view": true,
+    "if_any_blob_or_prior_value_mismatches": "Fail closed; do not apply this correction.",
+    "model_eligible": false,
+    "reason": "This is a historical issuer capital-accounting correction, not a current XRP flow or point-in-time predictive feature."
+  },
+  "forecast_status": {
+    "directional_forecast_issued": false,
+    "shadow_forecast_issued": false,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  }
+}

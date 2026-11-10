@@ -4091,3 +4091,113 @@ The latest executable artifact/test head is `2a19bade9767f146c5ebc058a8220cefedc
 The subsequent `81df720` commit changes only `BARROT_XRP_MISSION_HANDOFF_LATEST.md`; it does not change executable code, tests or research artifacts. **Do not describe `81df720` as an exact-head CI pass.** No manual dispatch action is available in the connected GitHub tool set, and no workflow run was fabricated.
 
 Current main remains `d4d43be3427375cf79d190e768976de062e20287`. PR #1640 remains open and unmerged with zero approving reviews. No deployment or external write occurred.
+
+
+## Run 132c — 2026-11-10T15:15:48.787Z
+
+### Current repository and consolidation
+
+Current main is `d4d43be3427375cf79d190e768976de062e20287` (1,404 recursive tree entries, not truncated). The open PR inventory contains 372 PRs: 356 drafts and 16 non-drafts.
+
+Source PR #1640 is based on current main at head `2d01d46650e7abd154bd3a6fda3e563d7c657e56` (280 changed paths, 974 commits ahead). Source PR #1643 is based on `9100dbacb5f9f1b973b053a65ef1e91e96b64f72` at head `238f3ff4a69420882c77d225626a352ba19a412c` (670 changed paths, 906 commits ahead; one main commit behind and unmergeable).
+
+Complete recursive-tree comparison found 8 overlapping changed paths, 7 differing and one identical. No path deletions. The consolidated successor is being constructed directly from current main, preserving both source heads as merge parents. Neither source branch is rewritten.
+
+Conflict decisions:
+- Keep the shared six-manifest dependency audit.
+- Keep #1640's legacy handoff and canonical latest handoff.
+- Keep #1643's richer 21-reference Kamilah candidate catalog; person identity is confirmed, but channel ownership is not first-party verified.
+- Keep #1640's corrected Coinbase/Circle/SBI/Ripple relationship artifact and normalized-excerpt digest.
+- Keep #1640's read-only Pillars Check implementation and tests; it distinguishes GitHub-main source checks from the HF runtime-stage probe.
+- Merge distinct Kamilah identity tests from both branches.
+- Keep the broader #1643 research-archive tests and append #1640's Run131B collateral/correction tests.
+- PR #1642's seven changed paths are a subset of #1640; keep it open/draft until the consolidated successor is merged and verified on main.
+
+### Exact validation state
+
+PR #1640 predecessor head `94ba2e400f55d22c9b7b675421f1b69f8506ac67` passed the full repository suite: **1,398 tests and 8 subtests in 48.08 seconds**, inclusive coverage **59.58%** against a 53% threshold. CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42840501476. Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42840501464. Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42840501533.
+
+The later #1640 head `2d01d46650e7abd154bd3a6fda3e563d7c657e56` adds a heterogeneous-financing regression test after that successful run; no exact-head workflow was found for that SHA. PR #1643 current head `238f3ff4a69420882c77d225626a352ba19a412c` also has no matching exact-head workflow run in the Actions API. Neither predecessor result is substituted for exact-head verification of the consolidated successor.
+
+Main scheduled Cross Analysis succeeded in run 42838363600. Pillars Consistency Check failed in run 42820781370 due to missing GitHub App environment values, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. No credentials or external services were changed. The visible repository ruleset is disabled; classic branch-protection retrieval returned 403. Required approval/protection state remains unverified. GitHub Pages deployment side effects remain a separate blocker.
+
+### SBIC identity — resolved from primary evidence
+
+The 1963 Japanese Small and Medium Business Investment & Consultation Companies Act defines three statutory investment-and-consultation companies: Tokyo, Nagoya and Osaka. Their official organizations use the English labels SBIC East Japan, SBIC Central Japan and SBIC West Japan. They are separate legal entities from SBI Holdings, Inc.
+
+Primary references:
+- Tokyo: https://www.sbic.co.jp/company/profile/
+- Nagoya: https://www.sbic-cj.co.jp/company/
+- Osaka: https://www.sbic-wj.co.jp/company/
+- SBI Holdings: https://www.sbigroup.co.jp/english/company/information/profile.html
+
+Tokyo SBIC's June 12–13, 2025 training included ChatGPT and Copilot. Nagoya SBIC's July 31, 2026 investee-only roundtable concerned practical generative-AI use. These are training/knowledge-sharing activities, not evidence of an OpenAI commercial partnership or XRP relationship. No direct SBI Holdings ownership/agency relationship with the three statutory SBIC entities is established by the reviewed sources.
+
+### Evernorth actual-capital reconciliation
+
+The November 9 SEC prospectus states Evernorth had received **zero proceeds** under the Cantor committed equity facility as of the prospectus date. The facility permits, but does not obligate, the issuer to sell up to 5,218,935 new Class A shares at 97% of applicable VWAP, subject to conditions. This is financing capacity, not actual cash received or XRP purchased.
+
+The same filing distinguishes:
+- Approximately $272.6M gross cash proceeds at business-combination closing, before transaction expenses.
+- Approximately $214.1M cash raised through private placements, subsequently used to purchase 84,365,876 XRP.
+- Approximately 388,910,554 XRP contributed in kind.
+- Approximately 473,276,430 XRP derived total holdings at the disclosed measurement point.
+- A $9.7M Ripple-related Company Facility draw as of October 7; repayment status is not confirmed in the prospectus.
+- $30M convertible notes; the reviewed disclosure does not establish that note proceeds funded XRP purchases.
+
+Primary filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+### Kamilah/Camilla, ASK Coin and actual capital
+
+The XRP Family Live organizer identifies Dr. Kamilah Stevenson as a speaker on September 5, 2026. Person identity is confirmed; canonical YouTube channel ownership and candidate handle/channel-ID relation remain unverified. The research profile preserves 21 candidate video references but forbids calling them a verified creator inventory or admitting them as forecast features. Exact "Camilla Stephenson" identity remains unresolved. Source: https://xrpfamilylive.com/event/
+
+Permission Coin (ASK) remains a plausible candidate for the exact phrase "ASK Coin"; no direct XRP/XRPL integration is established. "Actual capital" remains a measurement taxonomy: committed capacity, issuer cash received, cash used for XRP purchases, in-kind contributions, debt draws, secondary resales and on-chain transfers are separate events.
+
+### Forecast and platform state
+
+XRP directional forecast remains **NOT_ISSUED**. Institutional announcements, custody, ETF dashboard disagreements and unsynchronized spot/derivatives observations are not admitted as directional signals. Only ChatGPT/GitHub access is verified live; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain designed adapters without tested live authentication/data-flow evidence.
+
+No merge, deployment, paper-trading mutation, real-money trade, external model transfer, secret rotation or provider restart occurred.
+
+### Next action
+
+Run exact-head full-suite CI, inclusive coverage, packaged-wheel checks, dependency/security audit and fail-closed gate on the consolidated successor. Resolve approvals, branch-protection visibility and Pages deployment side effects before merge. Keep #1640, #1643 and subset #1642 open until successor merge and main verification; then close only those exact superseded sources with cross-references.
+
+
+## Run 132d — 2026-11-10T15:19:35.595Z
+
+### SBIC primary-source identity artifact
+
+Added `research/xrp_intelligence/20261110T151935Z-sbic-east-central-west-primary-identity-reconciliation.json` and `tests/test_xrp_sbic_identity_primary_sources.py` to the unified integration branch. The artifact records seven official source receipts, SHA-256 hashes of normalized excerpts (not raw response bytes), the statutory three-company identity, the separate SBI Holdings corporate identity, two AI-training/roundtable references, competing hypotheses, unknowns and explicit XRP feature exclusion.
+
+The controlling statute's Article 2 names Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation Companies as the three companies and places their head offices in the corresponding cities. Official company profiles identify their English labels as SBIC East Japan, SBIC Central Japan and SBIC West Japan. SBI Holdings, Inc. is a separate company established July 8, 1999.
+
+Tokyo SBIC's June 12–13, 2025 investee-company training explicitly included ChatGPT use and Copilot. Nagoya SBIC's July 31, 2026 investee-only roundtable concerned practical generative-AI use and did not name ChatGPT. Neither establishes an OpenAI partnership, an XRP investment, custody or payment-rail relationship.
+
+**Raw-source limitation:** raw HTML response bytes were not available from the connector; `raw_bytes_captured=false` and `raw_byte_sha256=null` are explicit. Only normalized excerpt hashes are recorded. This artifact is research evidence, not a directional XRP feature.
+
+The unified successor is PR #1660, branch `integration/xrp-v3-unified-main-20261110`. Its prior merge tree contained 942 changed paths; this append adds two research/test paths. The PR remains not merge-ready until exact-head CI, full-suite, coverage, package, dependency/security and fail-closed checks pass.
+
+## Run 132e — 2026-11-10T15:22:04.421Z
+
+### Consolidated branch and concurrent safety work
+
+PR #1660 is the single current-main successor for the V3 and XRP research workstreams. Current head before this workflow-trigger change: `4bc63e9be466ecafc3205775871e0d1208562954`; current main remains `d4d43be3427375cf79d190e768976de062e20287`. The PR has 944 changed paths and remains not merge-ready.
+
+The branch received three concurrent commits after the SBIC research append. They were preserved and inspected:
+- `ac0457c0a623d78f73124d3339ceb8bf92a76d39`: separate Databricks workspace-import and Kaggle dataset-download confirmation inputs in `.github/workflows/barrot-ops.yml`.
+- `4bc63e9be466ecafc3205775871e0d1208562954`: regression tests for those separate confirmations.
+These changes scope external operations to distinct explicit approvals. No Databricks import, Kaggle download/submission, Hugging Face mutation, deployment or external action was executed.
+
+### Exact-head validation trigger repair
+
+The PR-open/ready events did not produce CI, dependency-audit or fail-closed runs for the successor. The available GitHub connector has no workflow-dispatch action. To make exact-head validation executable through safe branch pushes, this commit adds read-only push triggers for `integration/**`:
+- `.github/workflows/ci.yml`: full repository suite, inclusive coverage, package and existing validation jobs.
+- `.github/workflows/dependency-audit.yml`: six-manifest dependency/security audit when dependency, XRP research or XRP test paths change.
+- `.github/workflows/barrot-gated-merge.yml`: fail-closed audit-only gate; it has read permissions only and cannot approve or merge.
+
+The next push is expected to trigger these three workflows. Verify the run head SHA before claiming results. If GitHub still suppresses them, retain the blocker; do not substitute predecessor-head test results.
+
+### Backlog and safety
+
+PR #1640 and #1643 are source branches for PR #1660; #1642 is the exact seven-path subset of #1640. Keep source PRs open until #1660 is merged and verified on main; then close only these exact superseded sources with cross-references. No main change, merge, deployment, secret rotation, provider restart, paper-trading mutation or real-money action occurred.

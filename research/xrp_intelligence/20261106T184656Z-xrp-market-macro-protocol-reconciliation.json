@@ -1,0 +1,718 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp_market_macro_protocol_reconciliation_20261106T184656Z",
+  "artifact_type": "XRP_MARKET_MACRO_PROTOCOL_RECONCILIATION",
+  "recorded_at_utc": "2026-11-06T18:53:54Z",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 remains the execution, orchestration, safety and verification foundation.",
+  "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+  "capture_contract": {
+    "rendered_source_text_only": true,
+    "original_http_wire_bytes_captured": false,
+    "raw_http_headers_captured": false,
+    "common_point_in_time_cutoff_utc": null,
+    "retrieval_time_upper_bound_utc": "2026-11-06T18:53:54Z",
+    "hash_scope": "SHA-256 hashes bind the normalized excerpts stored below; they do not prove the rendered pages were byte-identical to original HTTP responses.",
+    "timestamp_policy": "Publication times, approximate provider snapshots, event times and ledger state reads are stored separately. No common market cutoff is inferred."
+  },
+  "source_independence_groups": [
+    "coindesk_daybook",
+    "reuters_macro_reporting",
+    "cryptoticker_okx_coingecko_derived",
+    "sosovalue_tokenpost_etf",
+    "alpha_finance_etf_aggregation",
+    "xrp_insights_holdings_aggregation",
+    "xrpl_official_release_notes",
+    "xrpl_official_protocol_docs",
+    "xrplwin_ledger_tracker",
+    "coindesk_paymentburn_reporting",
+    "bls_primary_release"
+  ],
+  "source_registry": [
+    {
+      "source_id": "COINDESK_DAYBOOK_20261106T1230Z",
+      "publisher": "CoinDesk",
+      "url": "https://www.coindesk.com/daybook-us/2026/11/06/over-usd1-billion-in-bullish-bets-liquidated-while-etf-flows-suggest-no-help-in-spot-market",
+      "source_type": "secondary_crypto_market_news",
+      "independence_group": "coindesk_daybook",
+      "publication_time_utc": "2026-11-06T12:30:00Z",
+      "upstream_dependencies": [
+        "CoinDesk market-data and derivatives aggregation"
+      ],
+      "limitations": [
+        "Liquidations are all-crypto, not XRP-specific.",
+        "The $430.2M ETF outflow is Bitcoin-only, not XRP."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "CoinDesk Daybook, 2026-11-06 07:30 ET (12:30 UTC): more than $1.27B in crypto derivatives positions liquidated over 24 hours; more than $1.1B were bullish positions. U.S. spot bitcoin ETFs recorded $430.2M net outflows on Thursday. This is broad crypto context, not an XRP-specific liquidation or ETF-flow measurement.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "7f927b77ad03f0311d8adb1a9f6a865aaa84c2f72c6a69debd74cb8961184625",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "REUTERS_MONEY_MARKET_FLOWS_20261106T1123Z",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/caution-over-midterms-ai-cash-burn-drives-surge-us-money-market-fund-inflows-2026-11-06/",
+      "source_type": "secondary_macro_reporting",
+      "independence_group": "reuters_macro_reporting",
+      "publication_time_utc": "2026-11-06T11:23:00Z",
+      "upstream_dependencies": [
+        "LSEG Lipper"
+      ],
+      "limitations": [
+        "Weekly fund-flow aggregates are not XRP-specific.",
+        "Equity-fund inflows were positive despite large money-market inflows."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "Reuters, 2026-11-06 11:23 UTC: U.S. money-market funds received $117.97B in the week to Nov 4, the largest weekly inflow in six months. U.S. equity funds nevertheless received $14.81B net inflows. Technology, industrials and communication-services funds saw outflows of $160.23M, $624.67M and $965.68M. On Thursday Nasdaq, S&P 500 and Dow fell 5.52%, 4.36% and 3.44%, respectively. Reuters attributes caution to midterm-election uncertainty and AI spending/cash-burn concerns.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "c6355d321bd55bfe46727ad1433b7b66764ff8b13f712a31fd49a1360dbf03f1",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "CRYPTOTICKER_XRP_MARKET_DERIVATIVES_20261106",
+      "publisher": "CryptoTicker",
+      "url": "https://cryptoticker.io/en/xrp-price-drop-etf-standstill/",
+      "source_type": "secondary_derived_market_analysis",
+      "independence_group": "cryptoticker_okx_coingecko_derived",
+      "publication_date": "2026-11-06",
+      "underlying_price_snapshot_time_approx_utc": "2026-11-06T05:50:00Z",
+      "upstream_dependencies": [
+        "OKX public XRP futures data",
+        "CoinGecko daily price data"
+      ],
+      "limitations": [
+        "Exact API request timestamps and raw responses are not exposed.",
+        "OKX values are secondary calculations, not a direct exchange receipt.",
+        "The article is AI-assisted according to its transparency note.",
+        "Its claim that no comparable XRPL event occurred is too broad: fixCleanup3_4_0 activated Nov 4, although it did not affect native XRP."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "CryptoTicker, 2026-11-06; price snapshot described as around 06:50 CET (05:50 UTC), exact API capture time not exposed: XRP about $1.20, down 8.3% over 24h, 18.1% over 30d and 49.3% over 12m; 200-day average about $1.27. Its own OKX-derived analysis reports XRP futures open interest falling from $128.9M Thursday midday to $117.4M Friday morning (-8.9%), long/short account ratio 3.91, and latest funding 0.0024% per 8h. Article says it used public OKX hourly OI, 21 funding observations, 30-day account ratio and 365 CoinGecko daily prices; exact provider request timestamps are not exposed.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "f302ca2cf948923a50aab9ea363f64af07ce3311397d7ff6cf2715ae756056ef",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "TOKENPOST_SOSOVALUE_XRP_ETF_FLOWS_20261106T0345Z",
+      "publisher": "TokenPost",
+      "url": "https://www.tokenpost.com/news/investing/49788",
+      "source_type": "secondary_etf_flow_reporting",
+      "independence_group": "sosovalue_tokenpost_etf",
+      "publication_time_utc": "2026-11-06T03:45:00Z",
+      "upstream_dependencies": [
+        "SoSoValue XRP spot ETF flow dataset"
+      ],
+      "limitations": [
+        "Five-fund universe as reported by TokenPost.",
+        "No net flow is not an outflow.",
+        "Cumulative inflows and net assets are different measures."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "TokenPost, published 2026-11-05 22:45 EST (2026-11-06 03:45 UTC), citing SoSoValue: five-fund U.S. XRP spot ETF universe recorded no net flows for three consecutive trading days through Nov 5; cumulative net inflows $1.81B; trading volume $22.30M; net assets $1.41B, about 1.85% of XRP market capitalization.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "df87471bb7b6a9d745b51a4d97dba2f0aa58bbf4e808dc1f498c0683f032926b",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "ALPHA_FINANCE_XRP_ETF_AGGREGATE_20261106",
+      "publisher": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_type": "secondary_etf_flow_aggregator",
+      "independence_group": "alpha_finance_etf_aggregation",
+      "publication_date": "2026-11-06",
+      "upstream_dependencies": [
+        "Five-fund U.S. XRP ETF flow series"
+      ],
+      "limitations": [
+        "Five-fund XRP-specific flow series through the Nov 5 session.",
+        "No net assets or holdings are published for these five funds.",
+        "Cumulative total differs from TokenPost/SoSoValue by $80M; methodology/universe difference unresolved."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:53:54Z",
+      "excerpt": "Alpha Finance XRP ETF dashboard, retrieved 2026-11-06 18:53:54 UTC: covers five U.S. spot XRP ETF funds through the Nov 5, 2026 session; Nov 5 net flow $0; last seven sessions Oct 26-Nov 5 net +$4.8M; 30-session flow +$60.8M; cumulative net inflow +$1.73B. The page publishes no net assets or holdings for these funds. This is a flow-series aggregation, not issuer cash-flow records.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "609c91c71e570f6cb5043dc96f897497584895e3f833bee8e8c67f376a3ca7d1",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "XRPL_OFFICIAL_RELEASE_3_4_0_20260916",
+      "publisher": "XRPL.org",
+      "url": "https://xrpl.org/blog/2026/xrpld-3.4.0",
+      "source_type": "primary_protocol_release_notes",
+      "independence_group": "xrpl_official_release_notes",
+      "publication_date": "2026-09-16",
+      "limitations": [
+        "Release notes establish the fix was shipped in 3.4.0, not its activation time.",
+        "LendingProtocolV1_1 is a separate amendment."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "XRPL.org, Introducing XRP Ledger version 3.4.0, published 2026-09-16: fixCleanup3_4_0 bundles amendment-gated fixes; the full changelog includes rejection of PaymentBurn payments that cross a zero balance (commit c8e767a). LendingProtocolV1_1 is a separate amendment in the same release, so this release note does not establish that the lending amendment activated.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "b0ebed569c3e12e191f3be7e56e93a823d71994aace20bc36645b3a1d80b3df5",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "XRPL_OFFICIAL_PERMISSION_VALUES_DOC_20261106",
+      "publisher": "XRPL.org",
+      "url": "https://xrpl.org/docs/references/protocol/data-types/permission-values",
+      "source_type": "primary_protocol_reference",
+      "independence_group": "xrpl_official_protocol_docs",
+      "last_updated_approx": "2026-10",
+      "limitations": [
+        "The displayed pre-activation warning is stale relative to the Nov 4 ledger activation.",
+        "The page defines permission behavior but is not a live amendment-state feed."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "XRPL.org Permission Values reference, last updated about one month before 2026-11-06: warns not to delegate PaymentBurn until fixCleanup3_4_0 is enabled, and describes PaymentBurn as burning fungible tokens/MPTs but not past a zero balance. The warning remains visible after the independent amendment tracker records activation on 2026-11-04, indicating documentation lag.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "f64bb8b1848a3188d4bee7f560925bb54f677cc651f82df3405c4fbb818a5de5",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "XRPLWIN_FIXCLEANUP_ACTIVATION_20261104T1452Z",
+      "publisher": "XRPLWin",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "source_type": "third_party_ledger_amendment_tracker",
+      "independence_group": "xrplwin_ledger_tracker",
+      "event_time_utc": "2026-11-04T14:52:00Z",
+      "event_ledger": 108112129,
+      "limitations": [
+        "Third-party tracker reads ledger amendment state.",
+        "CoinDesk's activation report cites XRPLWin and is not independent confirmation."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "XRPLWin amendment tracker, retrieved 2026-11-06 18:46:56 UTC: fixCleanup3_4_0 status Enabled; enabled 2026-11-04 14:52:00 UTC at ledger 108112129. Second voting attempt ran Oct 21-Nov 4 for 14 days 5 minutes; first attempt Oct 9-Oct 21 lost majority after 12 days 3 hours. XRPLWin is a third-party ledger tracker, not the XRPL protocol authority.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "6c5df40acfb6361e3e44574f7e0311cd73c5567925007decb6970c911f1adcd0",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "COINDESK_PAYMENTBURN_FIX_20261105T0525Z",
+      "publisher": "CoinDesk",
+      "url": "https://www.coindesk.com/markets/2026/11/05/xrp-ledger-closes-bug-that-let-approved-token-burners-create-new-tokens",
+      "source_type": "secondary_protocol_security_reporting",
+      "independence_group": "coindesk_paymentburn_reporting",
+      "publication_time_utc": "2026-11-05T05:25:00Z",
+      "upstream_dependencies": [
+        "XRPLWin amendment tracker",
+        "XRPL protocol release notes"
+      ],
+      "limitations": [
+        "No issuer-specific exposure or confirmed exploitation is identified.",
+        "Activation time is sourced from XRPLWin, so it is not independent of the tracker."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "CoinDesk, published 2026-11-05 00:25 EST (05:25 UTC): reports fixCleanup3_4_0 went live Nov 4 at 14:52 UTC, ledger 108112129; a PaymentBurn-only delegate could under certain conditions create issued tokens while burning; affected issued assets including stablecoins, not native XRP; no public exploitation has been confirmed. This is secondary reporting.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "d764d6e7e66dda2e512619f50c17ea1dcefabd17d85538dbcaf32c29fefd9a7b",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "PREVIOUS_XRP_INSIGHTS_HOLDINGS_DELTA_20261106",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/data",
+      "source_type": "secondary_issuer_holdings_aggregator",
+      "independence_group": "xrp_insights_holdings_aggregation",
+      "publication_date": "2026-11-06",
+      "upstream_dependencies": [
+        "Issuer-reported holdings files"
+      ],
+      "limitations": [
+        "Includes six spot ETF products plus BITW per the prior capture.",
+        "Holdings delta is not AP cash creation/redemption.",
+        "Fund universe differs from the five-fund SoSoValue/Alpha series."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:10:24Z",
+      "excerpt": "XRP Insights snapshot previously captured through Nov 5: six U.S. spot XRP ETFs plus BITW; 1,196,450,700 XRP held; AUM $1,499.59M; Nov 5 holdings delta +110,214 XRP; Nov 2-5 net holdings delta -149,487 XRP across four settled trading days. This is a holdings-derived change across a different stated fund universe, not direct AP cash creations/redemptions and not directly comparable to the five-fund SoSoValue/Alpha flow series.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "576927090ad15d51791e0127c5d8c8bc1c4bb470a976edb2d4b1fd49bf64f240",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      },
+      "capture_method": "reused_prior_artifact"
+    },
+    {
+      "source_id": "XRPLWIN_LENDING_PROTOCOL_PAGE_20261106T184656Z",
+      "publisher": "XRPLWin",
+      "url": "https://xrplwin.com/amendment/LendingProtocolV1_1",
+      "source_type": "third_party_ledger_amendment_tracker",
+      "independence_group": "xrplwin_ledger_tracker",
+      "state_ledger": 108140476,
+      "homepage_latest_ledger": 108153915,
+      "limitations": [
+        "Third-party ledger tracker, not protocol authority.",
+        "The detail page state ledger trails the homepage latest ledger; homepage amendment cards corroborate the 60% status."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "XRPLWin LendingProtocolV1_1 amendment page, retrieved 2026-11-06 18:46:56 UTC: status Voting; 21 of 35 trusted validators support (60.0%); 29 votes are required (>80%) and support must remain above threshold for 14 days. The page reads amendment state at ledger 108140476, while the explorer homepage at retrieval shows latest ledger 108153915. This is a ledger-derived tracker observation, not proof of activated lending functionality.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "54a8e163fbf8af0a4b3262100ccafe922948cb2a6daf3b561cf5d4d2415f1c9f",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "XRPLWIN_EXPLORER_AMENDMENT_OVERVIEW_20261106T184656Z",
+      "publisher": "XRPLWin",
+      "url": "https://xrplwin.com/",
+      "source_type": "third_party_ledger_amendment_overview",
+      "independence_group": "xrplwin_ledger_tracker",
+      "latest_ledger": 108153915,
+      "limitations": [
+        "Same publisher and underlying ledger tracker as the amendment detail page; not an independent source group."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:46:56Z",
+      "excerpt": "XRPLWin explorer homepage, retrieved 2026-11-06 18:46:56 UTC: latest ledger 108153915; amendment cards show SingleAssetVault 23/35 validators (65.71%), LendingProtocol 21/35 (60.0%), and LendingProtocolV1_1 21/35 (60.0%). The explorer is a third-party ledger tracker, not the protocol authority.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "eb47f9d3efb80e07bca1e1f17762396430a5ff2ef90d9e77e0f5e3463f98d94a",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      }
+    },
+    {
+      "source_id": "BLS_OCTOBER_EMPLOYMENT_20261106T1330Z",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+      "source_type": "primary_official_macro_release",
+      "independence_group": "bls_primary_release",
+      "publication_time_utc": "2026-11-06T13:30:00Z",
+      "limitations": [
+        "Macro context, not an XRP-specific event study."
+      ],
+      "retrieval_time_upper_bound_utc": "2026-11-06T18:10:24Z",
+      "excerpt": "U.S. Bureau of Labor Statistics, Employment Situation for October 2026, released 2026-11-06 13:30 UTC: total nonfarm payroll employment increased by 165,000; unemployment rate was 4.1%; average hourly earnings increased 0.4% month over month and 3.1% year over year; combined August and September payroll revisions were +84,000.",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "22ab369ebc8d8cfaba7cc72aece1e2ccb85fce4dbdce44da008224f42a7bda33",
+        "scope": "SHA-256 of the normalized excerpt stored in this artifact; not original HTTP wire bytes, headers or an independently anchored source timestamp."
+      },
+      "capture_method": "reused_prior_artifact"
+    }
+  ],
+  "market_context": {
+    "xrp_price_snapshot_secondary": {
+      "price_usd": 1.2,
+      "change_24h_pct": -8.3,
+      "change_30d_pct": -18.1,
+      "change_12m_pct": -49.3,
+      "moving_average_200d_usd": 1.27,
+      "approximate_snapshot_time_utc": "2026-11-06T05:50:00Z",
+      "source_id": "CRYPTOTICKER_XRP_MARKET_DERIVATIVES_20261106",
+      "status": "SECONDARY_COIN_GECKO_DERIVED_SNAPSHOT",
+      "limitations": [
+        "Not a direct exchange ticker capture.",
+        "The 200-day average is source-calculated; raw daily series not archived in this artifact.",
+        "Not synchronized with later Kraken/OKX spot observations in the preceding 18:10Z artifact."
+      ]
+    },
+    "broad_crypto_liquidations": {
+      "total_liquidations_at_least_usd": 1270000000,
+      "bullish_liquidations_at_least_usd": 1100000000,
+      "period": "24 hours before CoinDesk Daybook publication",
+      "source_id": "COINDESK_DAYBOOK_20261106T1230Z",
+      "scope": "ALL_CRYPTO_NOT_XRP_SPECIFIC",
+      "interpretation_limit": "Cannot be used as XRP liquidation volume."
+    }
+  },
+  "derivatives": {
+    "okx_xrp_perpetuals_secondary": {
+      "oi_thursday_midday_usd": 128900000,
+      "oi_friday_morning_usd": 117400000,
+      "oi_change_pct": -8.9,
+      "long_short_account_ratio_friday_morning": 3.91,
+      "funding_rate_pct_per_8h": 0.0024,
+      "provider_request_timestamps_exposed": false,
+      "source_id": "CRYPTOTICKER_XRP_MARKET_DERIVATIVES_20261106",
+      "status": "SECONDARY_DERIVED_SINGLE_VENUE",
+      "limitations": [
+        "OKX account ratio is account-count based, not notional exposure.",
+        "USD open interest can change with price and contract exposure.",
+        "No raw OKX response or exact hourly row timestamps were captured."
+      ]
+    }
+  },
+  "etf_flow_reconciliation": {
+    "sosovalue_tokenpost": {
+      "fund_count": 5,
+      "zero_net_flow_sessions": [
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05"
+      ],
+      "cumulative_net_inflows_usd": 1810000000,
+      "net_assets_usd": 1410000000,
+      "trading_volume_usd": 22300000,
+      "market_cap_share_pct": 1.85,
+      "source_id": "TOKENPOST_SOSOVALUE_XRP_ETF_FLOWS_20261106T0345Z",
+      "measurement": "reported net fund flows and assets",
+      "status": "SECONDARY_SO_SOVALUE_CITED"
+    },
+    "alpha_finance": {
+      "fund_count": 5,
+      "nov5_net_flow_usd": 0,
+      "seven_day_net_flow_usd": 4800000,
+      "thirty_day_net_flow_usd": 15400000,
+      "cumulative_net_inflows_usd": 1730000000,
+      "source_id": "ALPHA_FINANCE_XRP_ETF_AGGREGATE_20261106",
+      "measurement": "aggregated fund-flow series",
+      "status": "SECONDARY_AGGREGATOR",
+      "seven_day_flow_window": "2026-10-26 through 2026-11-05, seven sessions",
+      "thirty_day_flow_usd": 60800000,
+      "net_assets_published": false,
+      "holdings_published": false
+    },
+    "xrp_insights_holdings": {
+      "fund_universe": "six U.S. spot XRP ETF products plus BITW",
+      "total_xrp_holdings": 1196450700,
+      "aum_usd": 1499590000,
+      "nov5_holdings_delta_xrp": 110214,
+      "nov2_to_nov5_net_holdings_delta_xrp": -149487,
+      "settled_trading_days": 4,
+      "source_id": "PREVIOUS_XRP_INSIGHTS_HOLDINGS_DELTA_20261106",
+      "measurement": "issuer-reported holdings-derived change",
+      "not_ap_cash_flow": true
+    },
+    "reconciliation": {
+      "sosovalue_vs_alpha_cumulative_difference_usd": 80000000,
+      "sosovalue_and_alpha_nov5_daily_flow_agree_at_zero": true,
+      "holdings_delta_vs_ap_flow_comparable": false,
+      "reasons": [
+        "Different stated fund universes: five-fund flow series versus six spot products plus BITW.",
+        "Holdings-derived XRP changes are not direct AP cash creations/redemptions.",
+        "Alpha Finance and SoSoValue cumulative totals differ by $80M."
+      ],
+      "status": "UNRESOLVED_UNIVERSE_AND_METHODOLOGY_DIFFERENCE",
+      "aggregation": "do_not_average"
+    }
+  },
+  "macro_event": {
+    "reuters_week_to_nov4": {
+      "money_market_fund_net_inflows_usd": 117970000000,
+      "equity_fund_net_inflows_usd": 14810000000,
+      "technology_sector_outflows_usd": 160230000,
+      "industrials_sector_outflows_usd": 624670000,
+      "communication_services_outflows_usd": 965680000,
+      "thursday_nasdaq_change_pct": -5.52,
+      "thursday_sp500_change_pct": -4.36,
+      "thursday_dow_change_pct": -3.44,
+      "source_id": "REUTERS_MONEY_MARKET_FLOWS_20261106T1123Z"
+    },
+    "bls_october_release": {
+      "release_time_utc": "2026-11-06T13:30:00Z",
+      "payroll_change": 165000,
+      "unemployment_rate_pct": 4.1,
+      "average_hourly_earnings_mom_pct": 0.4,
+      "average_hourly_earnings_yoy_pct": 3.1,
+      "august_september_revisions_combined": 84000,
+      "source_id": "BLS_OCTOBER_EMPLOYMENT_20261106T1330Z"
+    },
+    "interpretation_limit": "Large money-market inflows and sector outflows indicate selective risk aversion, but positive aggregate equity-fund inflows contradict a simple claim that all equity capital exited risk assets. The BLS release is a separate later event. No synchronized XRP event study establishes causality."
+  },
+  "protocol_events": {
+    "fixCleanup3_4_0": {
+      "status": "ENABLED",
+      "enabled_at_utc": "2026-11-04T14:52:00Z",
+      "enabled_ledger": 108112129,
+      "code_release": "xrpld 3.4.0",
+      "fix_scope": "rejects delegated PaymentBurn payments that cross a zero balance",
+      "affected_asset_scope": [
+        "issued trust-line tokens",
+        "Multi-Purpose Tokens",
+        "potential stablecoin issuer assets"
+      ],
+      "native_xrp_affected": false,
+      "publicly_confirmed_exploitation": false,
+      "issuer_specific_exposure": "UNKNOWN_NO_ISSUER_LEVEL_PUBLIC_AUDIT_IDENTIFIED",
+      "source_ids": [
+        "XRPL_OFFICIAL_RELEASE_3_4_0_20260916",
+        "XRPLWIN_FIXCLEANUP_ACTIVATION_20261104T1452Z",
+        "COINDESK_PAYMENTBURN_FIX_20261105T0525Z"
+      ],
+      "documentation_lag": {
+        "official_permission_values_page_still_shows_pre_activation_warning": true,
+        "source_id": "XRPL_OFFICIAL_PERMISSION_VALUES_DOC_20261106",
+        "interpretation": "The reference page is stale relative to the tracker-recorded Nov 4 activation; do not treat the warning text as current amendment state."
+      },
+      "causal_boundary": "This was a material XRPL issued-asset permission fix, but it did not change native XRP supply. No evidence ties it to the Nov 6 XRP price decline."
+    },
+    "lending_and_vault_amendments": {
+      "captured_at_utc": "2026-11-06T18:46:56Z",
+      "latest_homepage_ledger": 108153915,
+      "lending_protocol_v1_1": {
+        "status": "VOTING",
+        "yes_validators": 21,
+        "total_trusted_validators": 35,
+        "support_pct": 60,
+        "required_yes_votes": 29,
+        "activation_requirement": "more than 80% for 14 consecutive days"
+      },
+      "single_asset_vault": {
+        "status": "VOTING",
+        "yes_validators": 23,
+        "total_trusted_validators": 35,
+        "support_pct": 65.71
+      },
+      "lending_protocol": {
+        "status": "VOTING",
+        "yes_validators": 21,
+        "total_trusted_validators": 35,
+        "support_pct": 60
+      },
+      "source_ids": [
+        "XRPLWIN_LENDING_PROTOCOL_PAGE_20261106T184656Z",
+        "XRPLWIN_EXPLORER_AMENDMENT_OVERVIEW_20261106T184656Z"
+      ],
+      "production_lending_or_collateral_activation_verified": false,
+      "interpretation_limit": "fixCleanup3_4_0 activation does not activate the separate LendingProtocolV1_1, SingleAssetVault or LendingProtocol amendments. Do not model production XRPL lending/collateral volume from these voting states."
+    }
+  },
+  "event_timeline": [
+    {
+      "time_utc": "2026-09-16",
+      "event": "xrpld 3.4.0 released with fixCleanup3_4_0 and separate LendingProtocolV1_1 amendment code",
+      "source_ids": [
+        "XRPL_OFFICIAL_RELEASE_3_4_0_20260916"
+      ]
+    },
+    {
+      "time_utc": "2026-11-04T14:52:00Z",
+      "event": "fixCleanup3_4_0 enabled at ledger 108112129",
+      "source_ids": [
+        "XRPLWIN_FIXCLEANUP_ACTIVATION_20261104T1452Z"
+      ]
+    },
+    {
+      "time_utc": "2026-11-05T05:25:00Z",
+      "event": "CoinDesk reports PaymentBurn delegated-issued-token flaw and activation; no public exploitation confirmed",
+      "source_ids": [
+        "COINDESK_PAYMENTBURN_FIX_20261105T0525Z"
+      ]
+    },
+    {
+      "time_utc": "2026-11-06T03:45:00Z",
+      "event": "TokenPost reports three zero-flow sessions for five-fund XRP spot ETF universe through Nov 5",
+      "source_ids": [
+        "TOKENPOST_SOSOVALUE_XRP_ETF_FLOWS_20261106T0345Z"
+      ]
+    },
+    {
+      "time_utc": "2026-11-06T05:50:00Z",
+      "event": "Approximate CryptoTicker CoinGecko price snapshot and secondary OKX derivatives analysis",
+      "source_ids": [
+        "CRYPTOTICKER_XRP_MARKET_DERIVATIVES_20261106"
+      ]
+    },
+    {
+      "time_utc": "2026-11-06T11:23:00Z",
+      "event": "Reuters reports money-market/equity-fund flows and prior-day equity selloff",
+      "source_ids": [
+        "REUTERS_MONEY_MARKET_FLOWS_20261106T1123Z"
+      ]
+    },
+    {
+      "time_utc": "2026-11-06T12:30:00Z",
+      "event": "CoinDesk reports broad crypto liquidations and BTC ETF outflows ahead of BLS release",
+      "source_ids": [
+        "COINDESK_DAYBOOK_20261106T1230Z"
+      ]
+    },
+    {
+      "time_utc": "2026-11-06T13:30:00Z",
+      "event": "October BLS employment release",
+      "source_ids": [
+        "BLS_OCTOBER_EMPLOYMENT_20261106T1330Z"
+      ]
+    },
+    {
+      "time_utc": "2026-11-06T18:46:56Z",
+      "event": "Research reconciliation captured; no common market cutoff established",
+      "source_ids": [
+        "XRPLWIN_LENDING_PROTOCOL_PAGE_20261106T184656Z"
+      ]
+    }
+  ],
+  "source_disagreements": [
+    {
+      "topic": "XRP ETF cumulative inflows",
+      "values": [
+        {
+          "source_id": "TOKENPOST_SOSOVALUE_XRP_ETF_FLOWS_20261106T0345Z",
+          "usd": 1810000000
+        },
+        {
+          "source_id": "ALPHA_FINANCE_XRP_ETF_AGGREGATE_20261106",
+          "usd": 1730000000
+        }
+      ],
+      "difference_usd": 80000000,
+      "status": "UNRESOLVED_DO_NOT_AVERAGE"
+    },
+    {
+      "topic": "ETF daily flows versus holdings delta",
+      "values": [
+        {
+          "source_id": "TOKENPOST_SOSOVALUE_XRP_ETF_FLOWS_20261106T0345Z",
+          "value": "zero net flows for Nov 3-5 across five funds"
+        },
+        {
+          "source_id": "PREVIOUS_XRP_INSIGHTS_HOLDINGS_DELTA_20261106",
+          "value": "+110,214 XRP Nov 5 holdings delta across six spot products plus BITW"
+        }
+      ],
+      "status": "DIFFERENT_UNIVERSE_AND_MEASUREMENT_NOT_DIRECT_CONTRADICTION"
+    },
+    {
+      "topic": "XRPL protocol event versus price narrative",
+      "values": [
+        {
+          "source_id": "CRYPTOTICKER_XRP_MARKET_DERIVATIVES_20261106",
+          "value": "article says no comparable event at Ripple or XRPL"
+        },
+        {
+          "source_id": "XRPLWIN_FIXCLEANUP_ACTIVATION_20261104T1452Z",
+          "value": "fixCleanup3_4_0 enabled Nov 4"
+        }
+      ],
+      "status": "ARTICLE_STATEMENT_TOO_BROAD_BUT_NO_NATIVE_XRP_CAUSAL_LINK"
+    },
+    {
+      "topic": "Official protocol documentation freshness",
+      "values": [
+        {
+          "source_id": "XRPL_OFFICIAL_PERMISSION_VALUES_DOC_20261106",
+          "value": "still displays pre-activation PaymentBurn warning"
+        },
+        {
+          "source_id": "XRPLWIN_FIXCLEANUP_ACTIVATION_20261104T1452Z",
+          "value": "amendment enabled Nov 4"
+        }
+      ],
+      "status": "DOCUMENTATION_LAG"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H1_BROAD_RISK_OFF",
+      "description": "The AI/technology equity selloff, election-related policy uncertainty and macro repricing pressured high-beta crypto broadly.",
+      "supporting_sources": [
+        "REUTERS_MONEY_MARKET_FLOWS_20261106T1123Z",
+        "COINDESK_DAYBOOK_20261106T1230Z",
+        "CRYPTOTICKER_XRP_MARKET_DERIVATIVES_20261106"
+      ],
+      "counter_evidence": [
+        "REUTERS_MONEY_MARKET_FLOWS_20261106T1123Z reports +$14.81B equity-fund inflows despite money-market inflows."
+      ],
+      "status": "PLAUSIBLE_NOT_CAUSALLY_ESTABLISHED"
+    },
+    {
+      "hypothesis_id": "H2_XRP_LEVERAGE_UNWIND",
+      "description": "XRP-specific long crowding and falling OKX open interest amplified the decline.",
+      "supporting_sources": [
+        "CRYPTOTICKER_XRP_MARKET_DERIVATIVES_20261106"
+      ],
+      "counter_evidence": [
+        "Single-venue secondary OI lacks exact API timestamps; account ratios are not notional exposure; all-crypto liquidations cannot be attributed to XRP."
+      ],
+      "status": "PLAUSIBLE_SINGLE_VENUE_SECONDARY"
+    },
+    {
+      "hypothesis_id": "H3_ETF_MARGINAL_BID_PAUSE",
+      "description": "Three zero-flow sessions removed a recent marginal source of spot creations without proving net redemptions.",
+      "supporting_sources": [
+        "TOKENPOST_SOSOVALUE_XRP_ETF_FLOWS_20261106T0345Z",
+        "ALPHA_FINANCE_XRP_ETF_AGGREGATE_20261106"
+      ],
+      "counter_evidence": [
+        "Historical cumulative net inflows remain positive; zero flow is not outflow; cumulative totals differ by $80M."
+      ],
+      "status": "PLAUSIBLE_BUT_NOT_A_NET_OUTFLOW_CLAIM"
+    },
+    {
+      "hypothesis_id": "H4_PROTOCOL_RISK_NOT_NATIVE_XRP_SUPPLY",
+      "description": "The PaymentBurn flaw was material to delegated issued-token operations, including potential stablecoin issuer assets, but did not affect native XRP supply.",
+      "supporting_sources": [
+        "XRPL_OFFICIAL_RELEASE_3_4_0_20260916",
+        "XRPLWIN_FIXCLEANUP_ACTIVATION_20261104T1452Z",
+        "COINDESK_PAYMENTBURN_FIX_20261105T0525Z"
+      ],
+      "counter_evidence": [
+        "No publicly confirmed exploitation or issuer-specific exposure is identified; the fix was active before the Nov 6 market snapshot."
+      ],
+      "status": "PROTOCOL_RISK_EVENT_NO_PRICE_CAUSALITY_ESTABLISHED"
+    },
+    {
+      "hypothesis_id": "H5_XRPL_LENDING_NOT_YET_LIVE",
+      "description": "Institutional narratives about XRPL lending/collateral must be discounted until the separate lending and vault amendments activate.",
+      "supporting_sources": [
+        "XRPLWIN_LENDING_PROTOCOL_PAGE_20261106T184656Z",
+        "XRPLWIN_EXPLORER_AMENDMENT_OVERVIEW_20261106T184656Z",
+        "XRPL_OFFICIAL_RELEASE_3_4_0_20260916"
+      ],
+      "counter_evidence": [
+        "The fixCleanup amendment itself is active and includes accounting corrections, but it is not the lending activation vote."
+      ],
+      "status": "VOTING_NOT_ACTIVE"
+    },
+    {
+      "hypothesis_id": "H6_SELECTIVE_ROTATION_COUNTER_HYPOTHESIS",
+      "description": "The macro data may reflect selective rotation and hedging rather than a universal liquidation of risk assets.",
+      "supporting_sources": [
+        "REUTERS_MONEY_MARKET_FLOWS_20261106T1123Z"
+      ],
+      "counter_evidence": [
+        "Large money-market inflows and technology/communication sector outflows still indicate caution."
+      ],
+      "status": "COUNTER_HYPOTHESIS_RETAINED"
+    }
+  ],
+  "model_eligibility": {
+    "eligible": false,
+    "reasons": [
+      "No common point-in-time cutoff across XRP spot, OKX derivatives, ETF flows, macro and XRPL protocol state.",
+      "CryptoTicker OKX derivatives figures are secondary-derived and do not expose exact provider request timestamps or raw responses.",
+      "CoinDesk liquidation figures are all-crypto, not XRP-specific.",
+      "ETF cumulative totals differ by $80M and the stated fund universes differ; holdings delta is not AP cash flow.",
+      "The PaymentBurn amendment is a protocol-security event, not evidence of native XRP supply change or price causality.",
+      "LendingProtocolV1_1, SingleAssetVault and LendingProtocol remain in voting states in the captured tracker view.",
+      "Rendered excerpt hashes are not original HTTP wire receipts or independent timestamp anchors.",
+      "No synchronized historical event study, leakage-safe out-of-sample predictive lift, probability calibration or evaluator attestation is available."
+    ]
+  },
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "target": null,
+    "horizon": null,
+    "probabilities": null,
+    "assumptions": null,
+    "alternatives": null
+  },
+  "safety": {
+    "paper_trade_executed": false,
+    "real_money_action": false,
+    "external_submission": false,
+    "external_ai_data_transfer": false,
+    "secret_rotation": false,
+    "deployment": false
+  }
+}
