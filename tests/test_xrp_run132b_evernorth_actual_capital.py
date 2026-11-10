@@ -1,4 +1,4 @@
-"""Regression tests for Evernorth actual-capital and Cantor ELOC reconciliation."""
+"Regression tests for Evernorth actual-capital and Cantor ELOC reconciliation."""
 from __future__ import annotations
 
 import hashlib
@@ -53,7 +53,7 @@ def test_run132b_ripple_credit_and_convertible_notes_are_not_assumed_xrp_purchas
     assert ripple_company["facility_limit_usd"] == 10_000_000
     assert ripple_company["borrowed_usd"] == 9_700_000
     assert ripple_company["xrp_purchase_proven"] is False
-    notes = next(x for x in facilities if x["principal_usd"] == 30_000_000)
+    notes = next(x for x in facilities if x.get("principal_usd") == 30_000_000)
     assert notes["interest"] == "4.00% paid in kind"
     assert notes["xrp_purchase_proven"] is False
 
