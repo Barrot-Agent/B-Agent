@@ -4951,3 +4951,8 @@ Still incomplete: independent WORM/timestamp anchoring, raw receipt replay/rebui
 PR #1660 remains the sole active consolidated V3/XRP integration PR. Its current head has zero formal reviews, zero approvals and zero inline review threads; one CodeRabbit summary comment exists. Main branch-protection details return HTTP 403, and the visible fallback ruleset is disabled. GitHub Pages has previously deployed automatically after a main push; authorization for another public publication remains unresolved. The 950-file semantic review and 44-workflow parity review are incomplete; 25 workflows are quarantined, including core Barrot agent/task/subagent orchestration workflows. Do not merge or bypass protection.
 
 No source PR was closed. No main write, merge, deployment, secret operation, Space restart, external-model transfer, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+
+### Run137B — current-map review-schema fix
+
+The first Run137 test correction exposed two remaining schema-name mismatches in the Run136 snapshot. The serialized review keys are `approved` and `review_threads_unresolved`. Both assertions now use the actual snapshot schema. No production code, forecast gate, historical record or approval policy changed. Exact-head full-suite verification on this follow-up commit is pending.

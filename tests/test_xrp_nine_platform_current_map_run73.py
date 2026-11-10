@@ -77,8 +77,8 @@ def test_current_snapshot_preserves_run82_run78_run77_and_historical_map():
     assert current["ci_evidence"]["full_suite"]["failed"] == 0
     assert current["ci_evidence"]["full_suite"]["subtests"] == 8
     assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.58
-    assert current["reviews"]["pr_1660"]["approvals"] == 0
-    assert current["reviews"]["pr_1653"]["threads_unresolved"] == 8
+    assert current["reviews"]["pr_1660"]["approved"] == 0
+    assert current["reviews"]["pr_1653"]["review_threads_unresolved"] == 8
     assert current["merge_state"]["pages_deployment_authorized"] is False
     assert current["merge_state"]["merge_performed"] is False
     assert current["forecast_status"] == "NOT_ISSUED"
