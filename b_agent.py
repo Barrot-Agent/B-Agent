@@ -433,6 +433,11 @@ def main():
     )
 
     parser.add_argument(
+        "--allow-lunaroute-data-transfer",
+        action="store_true",
+        help="Explicitly authorize sending repository context to the external LunaRoute model gateway.",
+    )
+    parser.add_argument(
         "--write-local-audit",
         action="store_true",
         help="Explicitly write the audit report to data/repository_architecture_audit.md.",
@@ -449,6 +454,21 @@ def main():
         GH_TOKEN,
         TARGET_REPO,
     )
+
+    if not args.allow_lunaroute_data_transfer:
+        raise SystemExit(
+            "External repository-context transfer to LunaRoute is disabled by default. "
+            "Use --allow-lunaroute-data-transfer only after authorizing this provider."
+        )
+    if not sys.stdin.isatty():
+        raise SystemExit(
+            "LunaRoute repository-context transfer requires an interactive terminal."
+        )
+    transfer_confirmation = Prompt.ask(
+        "Type SEND REPOSITORY CONTEXT TO LUNAROUTE to authorize this transfer"
+    ).strip()
+    if transfer_confirmation != "SEND REPOSITORY CONTEXT TO LUNAROUTE":
+        raise SystemExit("External model transfer was not authorized.")
 
     llm = GroqLLM(
         LUNAROUTE_API_KEY,
