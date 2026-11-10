@@ -5920,3 +5920,128 @@ This is a leadership transition in an acquired institutional business. It does n
 - No external-model data transfer.
 - No deployment, secret rotation, Databricks write or Kaggle submission.
 - PR #1660 remains the sole integration path; no new PR or source-PR closure.
+
+
+---
+
+## Run 11E — exact-head verification and current integration status — 2026-11-10 22:46 UTC
+
+### Current repository state
+
+- Main SHA: `afb3024fbcb976db5acdf52b85e253ff46859ce6`.
+- Integration head at verification: `ef4e8a1689a7cc0eb716a16b17b9cfbf6f3e847d`.
+- Sole consolidated PR: #1660.
+- 1,941 commits ahead, zero behind; 966 changed files; 271,346 additions; 3,863 deletions.
+- Main tree: 1,404 entries; integration tree: 2,257 entries.
+- Main workflows/tests: 86/90; integration workflows/tests: 87/431.
+- Open PR inventory: 373 (358 drafts, 15 non-drafts).
+
+### Exact-head verification — ef4e8a16
+
+All substantive jobs completed successfully on the exact head `ef4e8a1689a7cc0eb716a16b17b9cfbf6f3e847d`:
+
+- Full repository suite: **3,369 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **60%**.
+- Core suite passed.
+- Wheel build and installed primary-mission verification passed.
+- Six dependency manifests audited; **zero known vulnerabilities**.
+- Fail-closed gate passed; automatic merging remained disabled.
+
+Exact evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42916902049
+- Full-suite job: https://github.com/Barrot-Agent/B-Agent/actions/runs/42916902049/job/130181569908
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/42916902053
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42916901942
+
+Main SHA `afb3024` separately passed 718 tests and eight subtests in run 42911392830.
+
+This handoff/status correction commit changes documentation only. The executable code remains the same as the fully tested `ef4e8a16` code tree; exact-head CI will run again on the resulting documentation commit.
+
+### Implemented safety changes
+
+The integration branch's standalone B-Agent CLI now:
+- Has no direct default-branch Contents API writer.
+- Has no automatic branch, commit, file-update or PR-creation calls.
+- Defaults to read-only audit/proposal behavior.
+- Requires `--write-local-audit` for the audit file.
+- Requires `--execute-local-repair`, an interactive TTY and `APPLY LOCAL REPAIRS` for local repair.
+- Requires `--allow-lunaroute-data-transfer`, an interactive TTY and `SEND REPOSITORY CONTEXT TO LUNAROUTE` before repository context is sent externally.
+
+**Remaining CLI safety gap:** the optional local-repair path does not yet enforce a clean, non-default Git worktree. Treat `--execute-local-repair` as disabled until that guard is implemented. No local repair was run.
+
+The main commit `afb3024` was authored by Barrot-Agent and created directly on main, changing five files. Its diff is consistent with the legacy CLI's default-branch writer, but the exact invoking process was not independently established. The “verified repository repair cycle” claim is not supported by the diff alone. The integration status report records this limitation.
+
+### Security incident — still blocked
+
+- `.config/gh/hosts.yml` is absent from current main and integration trees.
+- The path was present in 17/17 targeted source PR branch tips: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+- Credential contents were not read or reproduced.
+- No revocation or rotation occurred.
+
+Credential owner action remains required: revoke/reissue the exposed GitHub CLI credential, then remediate the affected source branches under authorization.
+
+### XRP intelligence corrections and new events
+
+- CoinGecko's captured market snapshot: XRP approximately $1.06; market cap $67.47B; 24-hour spot volume $2.253B; perpetual OI $2.363B; aggregate eight-hour funding +0.0087%; perps/spot volume 13.9x. Exact provider event timestamp unavailable; return signs inconsistent; depth rows not time-stamped. These are descriptive aggregator observations only.
+- Direct Kraken/OKX quotes were stale/asynchronous. No synchronized executable spot L2 was admitted.
+- ETF correction: Alpha Finance reports approximately -$10.4M daily flow but +$8.9M five-fund 30-session aggregate. The -$4.2M figure is Bitwise's 30-session component, not the aggregate. ChainCatcher/SoSoValue reports approximately -$10.4216M daily, with Bitwise -$9.3972M and Canary -$0.810M. Sources overlap and are not independent; Run11C's aggregate -$4.2M field is superseded by Run11D.
+- Ripple Prime leadership: CoinDesk reports Marc Asch leaves at year-end 2026 and Noel Kimmel succeeds him. No XRP-specific flow or collateral-policy change is established.
+- XRPL post-quantum support remains a draft roadmap proposal with no XLS number. A force-quantum guard defect was identified in a non-mainnet draft branch; fork PR #46 is open, unreviewed and has no CI/full node build. This is not evidence of a live mainnet vulnerability.
+- The reported 1.16B XRP November 9 Payment volume is gross ledger movement, not unique users or commercial settlement; primary XRPScan chart retrieval was blocked.
+- SBIC East/Central/West remain separate regional investment-consultation companies, not SBI Holdings. ASK Coin exchange and Permission Coin ASK remain distinct; no XRP integration verified. Kamilah Stevenson YouTube channel ownership remains unverified; no personal-channel inventory attributed.
+
+### Prediction-engine state
+
+Implemented on integration:
+- 46 public source definitions (42 hourly, two weekly CFTC, two excluded non-commercial XRPL nodes).
+- Read-only collector, SHA-256 receipts and receipt-chain logic.
+- Point-in-time SQLite feature-store prototype.
+- Four deterministic baselines.
+- Chronological walk-forward evaluation with purge/embargo.
+- Calibration and drift diagnostics.
+- Fail-closed forecast ledger requiring trusted Ed25519 evaluator attestation.
+
+Production gaps remain: independent WORM/timestamp anchoring, raw receipt replay, durable feature-store reconstruction, synchronized historical spot/L2/derivatives/exchange-flow/collateral data, macro event timeline, scenario/counter-hypothesis generation, effective-sample-size correction, shadow outcomes, production signing key and demonstrated out-of-sample lift.
+
+**Forecast status: NOT_ISSUED.**
+
+### Nine-platform coordination
+
+- ChatGPT: current-session GitHub read/write on integration verified.
+- Copilot: historical comment-only activity; zero formal approvals on #1660.
+- Claude, Grok, Gemini and Codex: authentication/data flow unverified.
+- Hugging Face: prior BUILD_ERROR; no deployment.
+- Kaggle: untested; no submission.
+- Databricks: prior HTTP 403; no workspace write.
+- LunaRoute is an additional unverified gateway, not one of the nine platforms; no repository-context transfer occurred.
+
+### Backlog and merge decision
+
+Exact overlap:
+- #1640: 280/280 paths represented.
+- #1643: 670/670 paths represented.
+- #1642: 7/7 paths represented.
+- #1644–#1650, #1317/#1318/#1320 and #1254/#1255 are overlap/dependency/action candidates.
+- Preserve unique work: #1653 (six unique graph paths, eight unresolved review threads), #1269 (eight unique topology paths), #1614 (27 unique prediction paths), #1611 (one), #1612 (two), #1610 (seven) and #1608 (two).
+
+PR #1660 remains unmerged:
+- Zero formal approvals and zero review threads.
+- Main branch-protection details return HTTP 403; visible fallback ruleset disabled.
+- GitHub Pages publication is an unresolved external side effect and remains unauthorized.
+- The 966-file diff and 44 workflow changes have not received complete semantic review.
+- The 17-branch credential exposure remains unresolved.
+- Safe Barrot V3 operational parity remains incomplete because multiple legacy workflows are quarantined; replacements require review.
+
+No PR was merged or closed. No new branch or PR was created. No merge bypass, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+### Next concrete actions
+
+1. Credential owner revokes/reissues the exposed GitHub CLI credential; remediate affected source branches under authorization.
+2. Add a clean, non-default-worktree guard to the optional local-repair CLI path.
+3. Obtain independent approval and authoritative branch-protection visibility.
+4. Resolve authorization for automatic GitHub Pages publication.
+5. Complete semantic review of the 966-file diff and 44 workflow changes.
+6. Restore safe V3 operational parity without re-enabling unsafe legacy workflows.
+7. Continue synchronized historical XRP data, independent receipt anchoring, shadow evaluation and leakage-safe walk-forward testing.
+
+**No directional forecast is authorized.** The objective remains a working integrated Barrot build and measured XRP predictive performance.
