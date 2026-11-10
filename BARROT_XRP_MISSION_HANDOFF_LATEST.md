@@ -5874,3 +5874,49 @@ No merge, deployment, secret rotation/revocation, Space restart, Kaggle submissi
 8. Continue leakage-safe walk-forward and shadow evaluation before any forecast issuance.
 
 **Forecast status: NOT_ISSUED.** No directional forecast or paper trade was produced.
+
+
+---
+
+## Run 11D — ETF-flow correction and Ripple Prime leadership update — 2026-11-10 22:43 UTC
+
+### ETF flow correction — supersedes the Run11C aggregate field
+
+The Run11C artifact recorded approximately -$4.2M as an aggregate October 12–November 9 flow. That value is **not supported as the aggregate by the Alpha Finance fund table** and must not be used as a total. The Alpha Finance table shows approximately -$4.2M as Bitwise's 30-session flow row; its five-fund 30-session aggregate is approximately **+$8.9M**. The -$4.2M aggregate field in the Run11C artifact is superseded and retained only as historical provenance.
+
+Alpha Finance, through November 9:
+- One-day aggregate net flow: approximately -$10.4M.
+- Bitwise one-day flow: approximately -$9.4M.
+- Canary: approximately -$0.811M.
+- 21Shares TOXR: approximately -$0.213M.
+- Franklin and Grayscale: displayed as zero.
+- Five-fund 30-session aggregate: approximately +$8.9M.
+- Bitwise 30-session component: approximately -$4.2M.
+- Other displayed 30-session components include Franklin +$23.2M and Canary -$9.8M.
+- The page summary reports approximately $1.74B cumulative inflows, while its daily table displays approximately $1.72B; preserve this internal reporting discrepancy.
+
+Source: https://alphafinance.io/etf/xrp/
+
+ChainCatcher's November 10 report citing SoSoValue gives a one-day outflow of approximately $10.4216M, with Bitwise -$9.3972M and Canary -$0.810M, net assets approximately $1.238B and historical cumulative net inflows approximately $1.798B.
+
+Source: https://www.chaincatcher.com/en/article/2201719
+
+The daily totals broadly agree, but the trackers use overlapping issuer-derived inputs and different fund coverage, periods, timestamps and accounting methods. They are not independent confirmations. Do not average their cumulative figures. A one-day outflow concentrated in Bitwise is not evidence of a sustained institutional exit; Alpha Finance's five-fund 30-session aggregate is positive.
+
+### Ripple Prime leadership change
+
+CoinDesk reported on November 10, citing a Ripple spokesperson, that Marc Asch will leave Ripple Prime at year-end 2026 and Noel Kimmel, currently SVP of Ripple Prime, will succeed him. Asch founded Hidden Road; Ripple acquired the prime broker for approximately $1.25B in 2025 and renamed it Ripple Prime.
+
+Ripple Prime provides institutional prime brokerage, clearing and financing across digital assets and traditional markets. Ripple has said RLUSD is used as collateral for some prime-brokerage products.
+
+Source: https://www.coindesk.com/business/2026/11/09/ripple-prime-head-marc-asch-to-step-down-noel-kimmel-named-successor
+
+This is a leadership transition in an acquired institutional business. It does not establish financial distress, a change in RLUSD collateral policy, XRP bridge volume, or XRP purchases. Treat it as a corporate-strategy event, not a directional XRP signal.
+
+### Run 11D forecast and execution status
+
+- Forecast: NOT_ISSUED.
+- No paper trade or real-money action.
+- No external-model data transfer.
+- No deployment, secret rotation, Databricks write or Kaggle submission.
+- PR #1660 remains the sole integration path; no new PR or source-PR closure.

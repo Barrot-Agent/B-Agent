@@ -1,0 +1,63 @@
+{
+  "run_id": "barrot-xrp-run-11d",
+  "captured_at_utc": "2026-11-10T22:43:00Z",
+  "supersedes": [
+    {
+      "artifact": "research/xrp_intelligence/20261110T223300Z-run11c-security-cli-quantum-market-update.json",
+      "field": "market.etf_flows.october_12_to_november_9_cumulative_net_flow_usd",
+      "correction": "Do not treat -4.2M USD as aggregate; Alpha Finance identifies approximately -4.2M as Bitwise 30-session component and reports approximately +8.9M aggregate 30-session flow."
+    }
+  ],
+  "alpha_finance": {
+    "as_of": "2026-11-09",
+    "funds_reported": 5,
+    "one_day_total_net_flow_usd": -10400000,
+    "one_day_by_fund_usd": {
+      "bitwise": -9400000,
+      "canary": -811000,
+      "21shares_toxr": -213000,
+      "franklin": 0,
+      "grayscale": 0
+    },
+    "thirty_session_total_net_flow_usd": 8900000,
+    "thirty_session_by_fund_usd": {
+      "bitwise": -4200000,
+      "franklin": 23200000,
+      "canary": -9800000,
+      "grayscale": 0,
+      "21shares_toxr": -212900
+    },
+    "cumulative_historical_inflow_summary_usd": 1740000000,
+    "cumulative_historical_inflow_table_usd": 1720000000,
+    "source_url": "https://alphafinance.io/etf/xrp/",
+    "note": "The page's own summary and daily table differ on cumulative historical inflows; do not reconcile by averaging."
+  },
+  "chaincatcher_sosovalue": {
+    "report_date": "2026-11-10",
+    "one_day_total_net_flow_usd": -10421600,
+    "one_day_by_fund_usd": {
+      "bitwise": -9397200,
+      "canary": -810000
+    },
+    "net_assets_usd": 1238000000,
+    "cumulative_historical_net_inflows_usd": 1798000000,
+    "source_url": "https://www.chaincatcher.com/en/article/2201719",
+    "source_relationship": "Secondary report citing SoSoValue; not independent of issuer-derived ETF trackers."
+  },
+  "reconciliation": {
+    "daily_outflow_agreement": "Both trackers show approximately -10.4M USD, predominantly Bitwise.",
+    "thirty_session_disagreement": "Alpha Finance reports +8.9M USD aggregate; -4.2M USD is Bitwise's component, not total.",
+    "independence": "Trackers overlap issuer-derived data and are not independent confirmations.",
+    "model_admission": "ETF flow remains excluded until issuer holdings, share creations, cash/in-kind redemptions and XRP movements are reconciled."
+  },
+  "ripple_prime_leadership": {
+    "announced": "2026-11-10",
+    "departure": "Marc Asch at year-end 2026",
+    "successor": "Noel Kimmel, current SVP of Ripple Prime",
+    "source": "CoinDesk report citing a Ripple spokesperson",
+    "source_url": "https://www.coindesk.com/business/2026/11/09/ripple-prime-head-marc-asch-to-step-down-noel-kimmel-named-successor",
+    "context": "Asch founded Hidden Road; Ripple acquired it for approximately 1.25B USD in 2025 and rebranded it Ripple Prime.",
+    "relevance": "Institutional prime brokerage leadership transition; RLUSD is collateral for some products. No XRP-specific flow or change in collateral policy established."
+  },
+  "forecast_status": "NOT_ISSUED"
+}
