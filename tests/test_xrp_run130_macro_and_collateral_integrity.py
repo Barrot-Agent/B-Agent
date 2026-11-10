@@ -12,6 +12,7 @@ REAL_EARNINGS = INTEL / "20261110T133404Z-run130c-real-earnings-release.json"
 COLLATERAL = INTEL / "20261110T132100Z-run130e-cbxrp-morpho-market-and-oracle-reconciliation.json"
 HASH_CORRECTION = INTEL / "20261110T134556Z-run130f-normalized-hash-corrections.json"
 SBIC = INTEL / "20261110T134556Z-run130f-japan-sbic-primary-identity-chatgpt-seminar.json"
+SBIC_HASH_CORRECTION = INTEL / "20261110T135238Z-run130g-sbic-normalized-hash-correction.json"
 
 
 def _load(path: Path) -> dict:
@@ -140,6 +141,14 @@ def test_run130f_chatgpt_reference_is_an_educational_seminar_not_openai_partners
     assert data["forecast_status"] == "NOT_APPLICABLE"
 
 
-def test_run130f_sbic_normalized_evidence_digest_matches():
+def test_run130g_sbic_hash_correction_matches_committed_json():
     data = _load(SBIC)
-    assert _normalized_digest(data) == data["normalized_evidence_sha256"]
+    correction = _load(SBIC_HASH_CORRECTION)
+    item = correction["correction"]
+    recorded = data["normalized_evidence_sha256"]
+    recomputed = _normalized_digest(data)
+    assert correction["status"] == "CORRECTED_BY_APPEND_ONLY_RECEIPT"
+    assert correction["preservation"]["original_artifact_mutated"] is False
+    assert item["original_recorded_normalized_sha256"] == recorded
+    assert item["recomputed_normalized_sha256"] == recomputed
+    assert recomputed != recorded

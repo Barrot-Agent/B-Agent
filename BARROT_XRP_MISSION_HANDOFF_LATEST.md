@@ -3628,3 +3628,29 @@ The exact-head run on `ff16dea` had core CI success, six-manifest dependency aud
 **Next concrete action:** verify the Run130F commit SHA, then inspect exact-head core CI, full repository suite, dependency/security audit and fail-closed gate. If the full suite passes, continue the existing #1640 integration review. Branch-protection settings and Pages publication controls remain inaccessible; no merge until required approvals/checks and deployment side effects are resolved.
 
 **Forecast status: NOT_ISSUED.** No new branch or PR, merge, deployment, paper-trading mutation, real-money transaction, force-push, secret change, external model transfer or destructive worktree operation occurred.
+
+
+---
+
+## Run 130G — SBIC normalized-evidence digest correction
+
+**Captured:** 2026-11-10 13:52:38 UTC. **Main:** `d4d43be3427375cf79d190e768976de062e20287`. **Integration head before correction:** `2bfb34bd0c49b5c78172193793ba1ed843a64880`.
+
+The exact-head full-suite run on `2bfb34bd0c49b5c78172193793ba1ed843a64880` completed with **1,379 passed, 1 failed, 8 subtests** in 51.02 seconds; inclusive coverage remained 59.58% and the 53% threshold was met. The sole failure was the Run130F SBIC artifact's normalized digest check. All other new macro, collateral, identity and correction tests passed.
+
+The committed SBIC JSON text differed from the Python draft used to compute its stored digest: the draft contained an extra “legal entities” in the `not_sbi_holdings` sentence. The CI-computed digest over the committed artifact is `7a6bd33043ca9a3f3618051b7e496d19b29c132e658f635162e47cad9eb510db`, not the earlier recorded `997029646b9f34eccc2707d4b3eb781ca3c8c8f0b715b70ad37fb5a58631b4ee`.
+
+Run130G adds a separate append-only correction receipt referencing the original Git blob and both digests. The original SBIC artifact is not overwritten. The regression test now validates the correction against the committed JSON content rather than falsely asserting the original digest.
+
+Exact-head run evidence before this correction:
+- Core CI passed.
+- Six-manifest dependency audit passed.
+- Fail-closed gate passed, with merging disabled.
+- Full repository suite failed only on the SBIC digest test above.
+- The wheel/package verification step did not execute because the full-suite step failed.
+
+Runs: [CI 42827946400](https://github.com/Barrot-Agent/B-Agent/actions/runs/42827946400), [dependency audit 42827946311](https://github.com/Barrot-Agent/B-Agent/actions/runs/42827946311), [fail-closed gate 42827946255](https://github.com/Barrot-Agent/B-Agent/actions/runs/42827946255).
+
+**Next concrete action:** verify the Run130G remote commit SHA and exact-head CI, full repository suite, six-manifest dependency audit and fail-closed gate. Do not merge until those pass and the previously recorded independent-approval, branch-protection and Pages-publication blockers are resolved.
+
+**Forecast status: NOT_ISSUED.** No original artifact was overwritten, no new branch or PR was created, and no merge, deployment, paper-trading mutation, real-money transaction, force-push or destructive worktree operation occurred.
