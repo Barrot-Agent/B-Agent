@@ -5210,3 +5210,12 @@ Forecast remains **NOT_ISSUED**. No raw-source hashes were fabricated, no model 
 ## Run 110 post-commit verification note
 
 The Git Data API evidence commit `647f4278315866d969012cf59fef802bfc0a72f6` updated the current handoff, capability-map addendum, exchange-flow artifact and regression tests. The preceding code/test head `60648e1` passed 1,322 tests and all three gates. No workflow run was visible for the Git Data API descendant at the time of this note. This note is a documentation-only Contents API commit intended to request a fresh PR-head check. Do not treat the descendant as verified until its own full-suite, dependency-audit and fail-closed checks complete. Main remains unchanged; no merge or deployment is authorized by this note.
+
+
+## Run 110 exact-head test diagnosis and repair
+
+The first full-suite run on documentation/evidence head `1979dcd8fbbbf6accc1028d130ab5b18e5db94f1` completed with 1,328 passed, 1 failed and 8 subtests passed; inclusive coverage remained 59.36%. The core test job passed, the six-manifest dependency audit passed, and the fail-closed gate passed. Wheel verification was skipped because the full-suite job failed.
+
+The single failure was `tests/test_xrp_run110_exchange_flow_amendments.py::test_run110_excerpt_hashes_are_not_misrepresented_as_raw_http_receipts`. The artifact stored shortened normalized excerpts but retained SHA-256 values calculated from longer drafts. This was a metadata-integrity mismatch, not a market-data or application-code failure. All seven normalized-excerpt hashes were recalculated against the exact text now stored in the artifact and corrected in commit `7c40d5c86db93008f96db5329ab48c520b72dac1`.
+
+The handoff update in this commit requests a fresh exact-head full-suite, dependency-audit and fail-closed verification. Do not treat the corrected descendant as verified until those checks complete. Raw HTTP response bytes remain unpreserved; the artifact explicitly labels these as normalized-excerpt hashes.
