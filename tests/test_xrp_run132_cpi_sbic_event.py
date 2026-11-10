@@ -61,7 +61,7 @@ def test_run132_chatgpt_sbic_event_is_education_not_openai_partnership():
     edge = next(edge for edge in data["sbic_identity"]["relationships"] if edge["type"] == "educational_seminar_topic")
     assert edge["date"] == "2025-02-26"
     assert "Microsoft Japan" in edge["note"]
-    assert "not as partner or sponsor" in edge["note"]
+    assert "not as event partner" in edge["note"]
 
 
 def test_run132_source_receipt_hashes_cover_surfaced_text_not_claimed_wire_bytes():
