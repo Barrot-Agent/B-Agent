@@ -1,3 +1,106 @@
+# Barrot XRP Mission — Run117 Primary-Source Correction
+
+**Updated 2026-11-10T05:42:27Z · Supersedes the Run116 institutional-charter uncertainty and supplements the Run116 ETF snapshot.**
+
+## Verified exact-head baseline before Run117 commit
+
+Run116's final handoff head `038af71b074ddd51421f81790da5ade84bfe3793` passed all three exact-head gates:
+
+- Full repository suite: **1,347 passed, zero failed, 8 subtests passed**; inclusive coverage **59.48%** (53% floor).
+- Core suite: 677 passed, 8 subtests passed.
+- Installed wheel, Barrot V3 imports, packaged XRP mission and canonical data assets: passed.
+- Six-manifest dependency audit: passed; zero known vulnerabilities.
+- Fail-closed merge gate: passed; automatic merging disabled.
+
+Evidence: [CI 42763421873](https://github.com/Barrot-Agent/B-Agent/actions/runs/42763421873), [dependency audit 42763421622](https://github.com/Barrot-Agent/B-Agent/actions/runs/42763421622), [fail-closed gate 42763421634](https://github.com/Barrot-Agent/B-Agent/actions/runs/42763421634).
+
+The GitHub Actions cache budget is read-only; cache save failed after test and wheel verification. This was non-fatal. Setuptools emitted non-fatal metadata/package-discovery warnings.
+
+## Major regulatory correction: three OCC trust charters are now regulator-confirmed effective
+
+The OCC Corporate Applications Search now supplies the primary status records. The previous Run115/Run116 wording that Ripple and Circle approvals were company-reported but not regulator-index-confirmed is superseded.
+
+| Entity | OCC charter | Approved | Consummated/effective |
+|---|---:|---|---|
+| Ripple National Trust Bank | 25364 | Dec 12, 2025 | **Oct 26, 2026** |
+| First National Digital Currency Bank, N.A. (Circle National Trust) | 25361 | Dec 12, 2025 | **Jul 24, 2026** |
+| Coinbase National Trust Company | 25390 | Apr 2, 2026 | **Nov 6, 2026** |
+
+Primary OCC records:
+- [Ripple National Trust Bank — CAS 2025-Charter-342347](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2)
+- [Circle / First National Digital Currency Bank — CAS 2025-Charter-342299](https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2)
+- [Coinbase National Trust Company — CAS 2025-Charter-343449](https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2)
+
+These are national trust banks, not retail deposit-taking/lending banks. Effective charter status does not prove launch scale, XRP balances, collateral utilization or payment throughput.
+
+### Their approved roles are not interchangeable
+
+- **Ripple National Trust Bank:** Ripple says the bank is approved for segregated RLUSD reserve management, collateral-trustee functions for the benefit of RLUSD holders and fiduciary digital-asset custody. RLUSD issuance continues through Standard Custody & Trust Company, Ripple’s NYDFS-regulated limited-purpose trust company. The national trust bank itself is not the RLUSD issuer. [Ripple’s final-approval announcement](https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/).
+- **Circle National Trust:** Circle says the bank begins with fiduciary digital-asset custody for Circle and affiliates. Reserve management is a future capability. The OCC decision letter says the national trust bank will not issue USDC; issuance remains with Circle’s NY limited-purpose trust company. [Circle announcement](https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank) and [OCC decision letter](https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125a.pdf).
+- **Coinbase National Trust Company:** its effective charter is separate from Coinbase Exchange, Coinbase Prime and Coinbase’s operating entities. Its existence is not evidence of proprietary XRP holdings or XRP collateral use.
+
+### BNY, Coinbase and Ripple product status
+
+- BNY’s October 27 joint release says it now supports XRP and RLUSD on Digital Asset Custody and remains primary reserve custodian for RLUSD. Direct RLUSD mint/redeem through BNY and tokenized trade-finance initiatives are intended future work subject to approvals and client requirements. [BNY primary release](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- Coinbase’s October 28 official post confirms RLUSD live on Coinbase Prime, Coinbase Exchange and the Coinbase app, with deposits/withdrawals on XRPL, Base and Ethereum and 1:1 USD conversion. Coinbase Global Exchange collateral support was explicitly future/follow-on, not live at launch. [Coinbase primary announcement](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase).
+- BNY custody, Ripple reserve-collateral trustee, Circle affiliate custody and Coinbase trust custody are distinct roles. None independently proves XRP is being used as collateral or bridge settlement in those products.
+
+## November 9 ETF flow: issuer-primary cross-check
+
+CryptoETF.today displays a **partial −$10.3M** for November 9 across 3 of 5 funds: Bitwise −$9.4M, Canary/XRPC −$0.7M, 21Shares/TOXR −$0.2M; XRPZ and GXRP were not yet reported. Its flow is a secondary calculation, not an issuer cash-redemption filing. [Tracker and methodology](https://cryptoetf.today/en/xrp-etf-flows).
+
+Issuer-page checks add useful reconciliation:
+
+- **Canary XRPC:** sponsor page shows November 9 XRP quantity **242,962,753.64**, net assets **$285,986,592**, and **22.92M shares**. Its November 6 daily table showed 22.99M shares and $286.859M net assets. The 70,000-share reduction supports a redemption-like share change, but the exact −$0.7M tracker estimate and cash-versus-in-kind settlement are not directly confirmed. [Canary sponsor page](https://canaryetfs.com/trxs/).
+- **21Shares TOXR:** official page shows November 9 AUM **$117.096M**, NAV **$10.65**, and **11.00M shares**. The earlier November 6 issuer-linked capture showed 11.02M shares; the 20,000-share change implies roughly $213K at the November 9 NAV, broadly consistent with the tracker’s −$0.2M estimate. Exact settlement form is not disclosed. [21Shares issuer page](https://www.21shares.com/en-us/products-us/toxr).
+- **Bitwise XRP:** the accessible sponsor page still shows **415,365,129.04 XRP as of November 5**, so it does not verify the tracker’s November 9 −$9.4M estimate. [Bitwise sponsor page](https://bitxrpetf.com/).
+
+Keep shares outstanding, holdings, NAV, AUM, estimated creations/redemptions and cash/in-kind settlement separate. Do not treat the partial tracker total as the final five-fund complex flow.
+
+## Spot refresh after Run116 capture
+
+At approximately 05:39:43Z:
+- Kraken XRP/USD last $1.09548; bid $1.09542 / ask $1.09543; 24h volume 27.205M XRP; VWAP $1.09403. Kraken provided no event timestamp/cache age.
+- OKX XRP-USDT last 1.0998; bid 1.0997 / ask 1.0998; event time 05:38:47.575Z (about 55 seconds old); 24h volume 68.150M XRP.
+- Kraken USDT/USD last 0.99868, with no event timestamp. Mechanically normalized OKX quote is about $1.09835, 0.262% above Kraken; asynchronous, not executable arbitrage.
+- No synchronized pure-spot L2 book was obtained. Do not substitute mixed spot/perpetual depth.
+
+These rendered web responses are not original HTTP wire bytes or receipt-chain entries and remain model-ineligible.
+
+## Prediction and identity gates
+
+- **Forecast: NOT_ISSUED.** No Run117 web data admitted. No directional forecast, paper trade or real-money action.
+- **SBIC:** East/Central/West remain Tokyo/Nagoya/Osaka regional Small and Medium Business Investment & Consultation companies, distinct from SBI Holdings. Tokyo SBIC's ChatGPT/Copilot training is not an OpenAI partnership.
+- **ASK Coin:** Permission ASK remains the strongest candidate, distinct from the inactive Ask Coin exchange listing; no XRP/XRPL integration found.
+- **Actual capital:** cash, in-kind XRP, debt, drawn facilities, contingent capacity and secondary resales remain separate.
+- **Kamilah Stevenson:** person identity supported; exact YouTube handle/channel-ID mapping not first-party verified. Verified personal-channel inventory remains zero; candidate references are not published as a verified inventory.
+
+## Repository, PR and merge status
+
+Before Run117 commits: main `d4d43be3427375cf79d190e768976de062e20287`; integration `038af71b074ddd51421f81790da5ade84bfe3793`; PR #1640 is 902 commits ahead, zero behind, 236 changed paths. All 372 open PRs were paginated (100+100+100+72).
+
+PR #1640 remains the sole active integration path. It has 62 COMMENTED reviews and zero approvals; 22 inline threads are resolved but outdated; CodeRabbit check is skipped. Branch-protection endpoint remains HTTP 403 and the visible fallback ruleset is disabled. A prior main push triggered Pages publication; authorization for this PR's automatic public Pages side effect is not established. **Do not merge.**
+
+Backlog:
+- #1643: preserve 663 unique paths; 7 overlap with #1640; 906 ahead/1 behind, not mergeable.
+- #1653: preserve 6 unique paths; 1 overlap; 18 ahead/1 behind; 8 unresolved review threads.
+- #1642: 7/7 paths overlap #1640.
+- #1644–#1650: all changed paths overlap #1640; exact dependency/version reconciliation before any closure.
+- #1317/#1318/#1320: 6/6, 2/2 and 5/5 paths overlap.
+- #1254/#1255: each one path overlaps.
+- #1269: preserve 8 unique paths; 1 overlap.
+- #1655: preserve 3 unique paths; 5 overlap.
+- #1659: preserve 4 unique paths; 2 overlap.
+- #1641: preserve 3 unique paths.
+- #1614: preserve 49 unique paths; 8 overlap; 36 ahead/42 behind, stale.
+- No PRs closed.
+
+## Run117 structured evidence
+
+[Run117 OCC charter and ETF primary-source reconciliation](research/xrp_intelligence/20261110T054227Z-run117-occ-etf-primary-reconciliation.json)
+
+Next: obtain an independent approval and authoritative branch-protection visibility; resolve Pages authorization; preserve unique research/prediction work; trace Evernorth's unclassified 370.35M XRP movement; continue synchronized market history and durable receipts; keep forecasts disabled until out-of-sample and shadow gates pass.
+
 # Barrot XRP Mission — Canonical Current Handoff
 
 **Run 116 · Updated 2026-11-10T05:33:23Z**
