@@ -656,8 +656,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.21"
-    assert summary["parser_version"] == "xrp-public-market-v3.20"
+    assert summary["adapter_version"] == "xrp-public-market-v3.22"
+    assert summary["parser_version"] == "xrp-public-market-v3.21"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]

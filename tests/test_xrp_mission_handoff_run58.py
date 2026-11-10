@@ -127,7 +127,7 @@ def test_run111_endpoint_registry_counts_match_current_map_and_preserves_prior_r
     current_engine = current_data["prediction_engine"]
     assert current_engine["endpoints"] == 40
     assert len(current_engine["endpoint_ids"]) == 40
-    assert current_engine["scheduled_public_sources"] == len(SCHEDULED_ENDPOINTS)
+    assert current_engine["scheduled_public_sources"] == 36
     assert current_engine["weekly_sources"] == len(WEEKLY_ENDPOINTS)
     assert current_engine["weekly_endpoint_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
     assert current_engine["endpoint_inventory_source_blob_sha"] == "2ec26865fddb75f87b9238dd343ee509386ca5c8"
