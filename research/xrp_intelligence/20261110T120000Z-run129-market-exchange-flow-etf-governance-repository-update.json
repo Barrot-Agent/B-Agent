@@ -326,8 +326,61 @@
   },
   "identity_research": {
     "japan_sbic": "SBIC East/Central/West remain the separate Tokyo/Nagoya/Osaka regional Small and Medium Business Investment & Consultation companies, distinct from SBI Holdings.",
-    "exact_phrase_status": "No new primary-source match in this run for 'ASK Coin', 'actual capital' or 'SBIC, ChatGPT SBIC'.",
-    "camilla_kamilah_stevenson": "No new personal YouTube-channel attribution. Guest appearances and similarly named channels remain separate unless channel ownership is independently verified."
+    "sbic_chatgpt_exact_phrase": {
+      "exact_phrase": "SBIC, ChatGPT SBIC",
+      "result": "No direct exact-phrase evidence of a formal ChatGPT–SBIC partnership.",
+      "primary_evidence": "Tokyo SBIC's official 2025 training page lists ChatGPT and Copilot instruction for investee companies; this establishes training activity only.",
+      "source": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    "ask_coin_candidates": [
+      {
+        "identity": "Ask Coin exchange",
+        "evidence": "CoinMarketCap labels it inactive/untracked, with no reserve data and no usable market table.",
+        "source": "https://coinmarketcap.com/exchanges/ask-coin/",
+        "xrp_relationship": "No verified XRP integration."
+      },
+      {
+        "identity": "Permission Coin (ASK) token",
+        "evidence": "CoinMarketCap identifies a separate ASK token on Polygon and Base; displayed snapshot: 100B max supply, approximately 16.1666B circulating, approximately $1.4M market capitalization, approximately $891.78 24-hour volume and approximately 206.18K holders.",
+        "source": "https://coinmarketcap.com/currencies/permission-coin/",
+        "xrp_relationship": "No verified XRP integration. This token must not be conflated with the inactive Ask Coin exchange."
+      }
+    ],
+    "actual_capital_exact_phrase": {
+      "result": "No verified standardized XRP project metric named 'actual capital' was established by exact-phrase search.",
+      "classification_required": [
+        "cash subscriptions or purchases actually settled",
+        "in-kind XRP contributions",
+        "debt proceeds actually drawn",
+        "contingent equity facilities or warrants",
+        "secondary resales that do not fund the issuer"
+      ],
+      "model_rule": "Never aggregate financing capacity, equity resale registration, custody balances or market capitalization as realized XRP capital."
+    },
+    "camilla_kamilah_stevenson_youtube": {
+      "likely_candidate_channel": {
+        "handle": "@drkamilahstevenson",
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "third_party_reported_subscribers_range": "approximately 139K–143K",
+        "third_party_reported_video_count": "approximately 1.2K",
+        "description_match": "stocks, crypto, macro awareness and long-term investing"
+      },
+      "first_party_identity_evidence": {
+        "site": "https://learn.kamilahstevenson.com/",
+        "site_claim": "Identifies Dr. Kamilah Stevenson as 'The Wealth Doctor' and describes a health/wealth investing program.",
+        "support_page": "https://buymeacoffee.com/kamilahstevenson",
+        "support_page_claim": "Uses the Kamilah Stevenson name and a health/wealth-coach biography.",
+        "direct_youtube_crosslink": "Not found on the visible first-party pages."
+      },
+      "secondary_crosslink": "A third-party Telegram directory links to the candidate YouTube handle; this is not sufficient identity verification.",
+      "name_collision": "Multiple similarly named YouTube channels were found, including @CoachKamilahStevensonxrp and Kamilah Stevenson Digital Network.",
+      "video_candidates": [
+        "Vimeo listing 'How $23 Turned Into $27,000' under Kamilah Stevenson; no verified first-party channel ownership link.",
+        "Other Vimeo guest/creator listings remain separate from YouTube channel attribution."
+      ],
+      "identity_status": "UNVERIFIED_CANDIDATE_ONLY",
+      "inventory_action": "No public YouTube video inventory attributed to the user-requested Camilla/Kamilah Stevenson identity was created. Do not attribute the candidate channel's 1.2K videos until a first-party cross-link or equivalent primary identity evidence is found."
+    }
   },
   "prediction_readiness": {
     "source_registry": "46 source definitions: 42 hourly, two weekly CFTC, two excluded non-commercial XRPL nodes.",
