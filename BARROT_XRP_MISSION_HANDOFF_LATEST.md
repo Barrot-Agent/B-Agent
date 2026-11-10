@@ -5097,3 +5097,68 @@ Nine-platform status is unchanged: ChatGPT current-session GitHub integration ve
 5. Reconcile issuer ETF holdings and cash-versus-in-kind redemptions before feature admission.
 6. Implement independent WORM/timestamp anchoring, raw receipt replay and durable cross-run feature-store reconstruction.
 7. Keep forecast issuance disabled until independent out-of-sample and shadow-evaluation thresholds pass.
+
+
+---
+
+## Run138A — SBIC West primary evidence, exact PR overlap reconciliation, and verified handoff parent
+
+**Cutoff:** 2026-11-10T18:07:43Z.
+
+### SBIC identity research correction
+
+The exact phrase "SBIC, ChatGPT SBIC" still has no verified partnership/entity match. New primary-source evidence expands the regional training record:
+
+- Tokyo / SBIC East: official March 5, 2026 ChatGPT seminar, presented by a Microsoft Japan executive; separate June 12–13, 2025 investee-company training included ChatGPT, Copilot, RAG and API implementation.
+- Osaka / SBIC West: its official 2024 Investment Forum PDF advertises a generative-AI/ChatGPT introductory seminar for accounting firms and support organizations on October 23, 2024.
+- Nagoya / SBIC Central: its official July 31, 2026 investee roundtable concerns generative AI but does not name ChatGPT.
+
+These are educational activities, not evidence of an OpenAI partnership, a common SBIC procurement, SBI Holdings control, or an XRP relationship. The statutory identity distinction remains confirmed: Tokyo, Nagoya and Osaka are separate legal companies.
+
+Primary sources:
+- [Tokyo SBIC, March 2026 ChatGPT seminar](https://www.sbic.co.jp/seminar/20260305js/)
+- [Tokyo SBIC, June 2025 training](https://www.sbic.co.jp/training/20250612co/)
+- [Osaka SBIC West, 2024 official forum PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf)
+- [Nagoya SBIC Central, 2026 generative-AI roundtable](https://www.sbic-cj.co.jp/news/5077/)
+
+ASK Coin remains unresolved and has no verified XRP integration. "Actual capital" remains a classification problem rather than a standardized XRP metric. Third-party YouTube directories surface multiple similarly named Kamilah Stevenson channels and inconsistent subscriber counts; no first-party ownership cross-link was established. Verified personal-channel video inventory remains zero.
+
+### Exact PR path reconciliation
+
+- PR #1640: 280 changed paths; all 280 occur in #1660.
+- PR #1643: 670 changed paths; all 670 occur in #1660.
+- #1640/#1643 share eight paths; their 942-path union is fully represented in #1660.
+- PR #1642: all seven changed paths occur in #1660.
+- #1653: seven paths; only `.github/workflows/ci.yml` overlaps. Six unique repository-graph code/documentation/test paths remain unique, with eight unresolved review threads. Preserve #1653.
+
+Dependency PR reconciliation:
+- #1645 download-artifact v8, #1646 types-requests 20261030, #1648 pytest 9.2.0, #1649 Databricks SDK 0.158.0 and #1650 Hugging Face Hub 2.4.0 are present in #1660 at the exact reviewed versions.
+- #1644 checkout v7 and #1647 upload-artifact v7 paths are present, but some of their workflow files are intentionally quarantined. Their path overlap is not by itself proof that the prior executable functionality is preserved. Keep them open until the V3 workflow-parity decision is resolved.
+
+No PRs were closed. Exact duplicate/superseded source PRs remain open until #1660 is merged and content is verified on main.
+
+### Exact-head verification on the Run138 parent
+
+On `26980d28cda7f68b09780a3706b6186e5c18c7d6`:
+
+- Push full suite: **3,363 passed, zero failed, eight subtests passed; 59.58% coverage**.
+- Pull-request full suite: **3,363 passed, zero failed, eight subtests passed; 59.58% coverage**.
+- Wheel built and installed; Barrot V3, primary XRP mission and canonical assets verified.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Push and PR fail-closed gates passed; automatic merging disabled.
+
+Evidence:
+- [Push CI 42871250382](https://github.com/Barrot-Agent/B-Agent/actions/runs/42871250382)
+- [PR CI 42871260747](https://github.com/Barrot-Agent/B-Agent/actions/runs/42871260747)
+- [Push dependency audit 42871250045](https://github.com/Barrot-Agent/B-Agent/actions/runs/42871250045)
+- [PR dependency audit 42871260574](https://github.com/Barrot-Agent/B-Agent/actions/runs/42871260574)
+- [Push fail-closed gate 42871250049](https://github.com/Barrot-Agent/B-Agent/actions/runs/42871250049)
+- [PR fail-closed gate 42871260523](https://github.com/Barrot-Agent/B-Agent/actions/runs/42871260523)
+
+The current handoff/evidence append is a documentation-and-research-only descendant; its own exact-head checks will be verified before this run closes.
+
+### Merge decision
+
+PR #1660 remains technically clean on its tested parent but blocked by zero formal approvals, branch-protection details returning HTTP 403, disabled fallback ruleset, absent Pages-publication authorization and incomplete 950-file/44-workflow semantic review. Twenty-five changed workflows remain quarantined, creating a real V3 operational-parity gap. No merge or branch-protection bypass is authorized under the unmet conditions.
+
+Forecast status remains `NOT_ISSUED`. No paper trade or real-money action occurred.
