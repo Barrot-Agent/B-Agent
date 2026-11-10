@@ -778,3 +778,64 @@ def test_run131b_coinbase_circle_and_pnc_relationships_are_scope_limited() -> No
         "average_usdc_circulation_usd_billions"
     ] == 73.3
     assert data["predictions"]["issued"] is False
+
+
+# Run131B append-only correction and Circle network expansion checks.
+
+RUN131B_CORRECTION = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261110T141651Z-run131b-cbxrp-address-circle-network-correction.json"
+)
+
+
+def test_run131b_morpho_collateral_token_correction_is_append_only_and_exact() -> None:
+    data = json.loads(RUN131B_CORRECTION.read_text(encoding="utf-8"))
+    assert data["corrects_artifact"].endswith(
+        "20261110T141058Z-run131b-coinbase-occ-pnc-cbxrp-market-update.json"
+    )
+    correction = data["corrections"][0]
+    assert correction["field"] == "market_snapshot.morpho_cbxrp_usdc.collateral_token"
+    assert correction["original_value"] == (
+        "0xcb585250f852b6e08f4c7c32d4f71b54bda02913"
+    )
+    assert correction["corrected_value"] == (
+        "0xcb585250f852b6c6bf90434ab21a00f02833a4af"
+    )
+    identity = data["corrected_market_identity"]
+    assert identity["loan_token"] == (
+        "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+    )
+    assert identity["collateral_token"] == correction["corrected_value"]
+    assert identity["oracle"] == (
+        "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde"
+    )
+    assert identity["chain_id"] == 8453
+    assert data["corrections"][0]["model_eligible"] is False
+    assert data["model_admission"]["predictions_issued"] is False
+
+
+def test_run131b_circle_network_expansion_is_not_misclassified_as_xrp_capital() -> None:
+    data = json.loads(RUN131B_CORRECTION.read_text(encoding="utf-8"))
+    circle = data["circle_network_expansion"]
+    assert circle["cpn_annualized_tpv_usd_billions"] == 41.3
+    assert circle["tazapay_acquisition"]["status"] == (
+        "definitive_agreement_signed_pending_regulatory_approvals"
+    )
+    assert circle["tazapay_acquisition"]["expected_close_year"] == 2027
+    assert circle["tazapay_acquisition"]["model_eligible"] is False
+    assert circle["visa_direct_usdc_prefunding"]["status"] == (
+        "commercial_deployment_announced"
+    )
+    assert circle["arc_mainnet"]["native_asset_integration"] == "USDC"
+    assert all(
+        item["model_eligible"] is False
+        for key, item in circle.items()
+        if isinstance(item, dict) and "model_eligible" in item
+    )
+    assert data["prediction_boundary"]["issued"] is False
+    assert all(
+        item["limitations"]
+        for item in data["additional_observations"]
+    )

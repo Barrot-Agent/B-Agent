@@ -4002,3 +4002,45 @@ Backlog classification:
 5. Resolve #1640's independent approval and Pages publication blocker before merge.
 6. Keep #1643's 663 unique research paths intact; consolidate only after a current-main integration decision.
 7. Keep directional forecast issuance blocked until synchronized data and out-of-sample/shadow evaluation pass.
+
+
+---
+
+## Run131B correction — Morpho collateral-token address and Circle payment-network expansion
+
+**Captured:** 2026-11-10T14:16:51Z. Append-only correction; the original Run131B artifact remains unchanged.
+
+### Contract-address correction
+
+The original Run131B JSON contains a transcription error in `market_snapshot.morpho_cbxrp_usdc.collateral_token`. Its recorded value `0xcb585250f852b6e08f4c7c32d4f71b54bda02913` is **not authoritative**. The correct cbXRP collateral token is:
+
+`0xcb585250f852b6c6bf90434ab21a00f02833a4af`
+
+The loan token remains:
+
+`0x833589fcd6edb6e08f4c7c32d4f71b54bda02913`
+
+The oracle remains:
+
+`0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde`
+
+These values match the versioned Barrot source constants at `barrot_agent/evolution/xrp_public_ingestion.py` lines 73–75 and the abbreviated token/oracle identities displayed by MorphoWatch. The original artifact was not edited; the correction file records the original and corrected values and is authoritative for this field. The correction does **not** promote Morpho collateral data into model features; direct block-height/oracle verification is still required.
+
+[Append-only correction artifact](research/xrp_intelligence/20261110T141651Z-run131b-cbxrp-address-circle-network-correction.json).
+
+### Additional Circle network evidence from its November 4 Q3 release
+
+Circle's Q3 release reports:
+- Circle Payments Network annualized TPV of **$41.3B** in Q3. This is annualized gross throughput, not net capital inflow or XRP demand.
+- A definitive agreement to acquire Tazapay, expected to close in 2027 subject to regulatory approvals. Circle quotes Tazapay at **$25B+** annualized payment volume, **60+** bank/fintech partners, local payout rails in **100+** markets and approximately **60%** stablecoin-related transaction volume. Tazapay has not yet been acquired; do not add its volume to Circle's current TPV.
+- Visa Direct stablecoin prefunding moved from pilots to commercial deployment with Inyo Global, using **USDC** for eligible cross-border prefunding across **180+** countries.
+- Arc public mainnet launched September 16 with **100+** institutional/ecosystem builders on day one and native USDC integration.
+- Samsung Wallet USDC payment support to qualifying bank accounts in **60+** countries and Tereina's USDC/EURC integration into SAP-related enterprise workflows.
+
+These are issuer-reported operating/partnership announcements. The Q3 release does not specify an XRP or XRPL settlement leg for these channels. This strengthens the competing hypothesis that Circle is building an independent stablecoin/payment network across bank, wallet, enterprise and L1 channels; it does not prove displacement of Ripple or XRP. [Circle Q3 primary release](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm).
+
+### Verification boundary
+
+The Run131B parent head `cb0ad2833a2b8dd2517bca061b9b32db75c07418` had a full-suite CI run in progress when this correction was prepared. The new correction/test/handoff commit is a different head and requires its own full-suite CI, dependency audit and fail-closed gate. Do not transfer parent-head test claims to the correction head.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade, real-money action, merge or deployment occurred.
