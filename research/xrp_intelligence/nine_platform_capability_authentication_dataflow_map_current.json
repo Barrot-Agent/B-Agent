@@ -1,10 +1,10 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-10T00:07:27.057Z",
+  "captured_at_utc": "2026-11-10T00:12:15.048Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-  "observed_integration_head_before_map_commit": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
+  "observed_integration_head_before_map_commit": "75f138c8231c61dbf55608b67de4aa1038dd4526",
   "observed_research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -153,7 +153,8 @@
         "Run 81 (2026-11-09T07:37:35Z): current-session GitHub access re-verified by fetching complete main/integration/research trees, all four open-PR pages, PR heads/ancestry/overlaps, review records/threads, exact-head CI logs, six-manifest dependency audit, fail-closed gate and main workflow runs. Existing #1640 branch only; no main write, secret read, external model transfer, deployment or financial action.",
         "Run 93 verified repository/tree/PR/review/CI/dependency/security/handoff access.",
         "Run98: fetched current main and complete recursive trees, all four open-PR pages (372 total), #1640/#1643/#1653 heads and ancestry, complete changed-path overlaps, review records/threads, exact-head CI job logs, six-manifest dependency audit, fail-closed gate, main workflow runs/logs and current handoff/map. No external platform authentication or data exchange was attempted.",
-        "Run104 2026-11-10T00:07:27.057Z: verified current main/integration trees, all 372 open PRs across four pages, #1640/#1643/#1653 ancestry and changed-path overlap, exact-head full suite 1,316/8 with 59.36% coverage, installed wheel, six-manifest audit, fail-closed gate; updated handoff/map/test on existing #1640 branch only."
+        "Run104 2026-11-10T00:07:27.057Z: verified current main/integration trees, all 372 open PRs across four pages, #1640/#1643/#1653 ancestry and changed-path overlap, exact-head full suite 1,316/8 with 59.36% coverage, installed wheel, six-manifest audit, fail-closed gate; updated handoff/map/test on existing #1640 branch only.",
+        "Run104 amendment 2026-11-10T00:12:15.048Z: verified Ripple's official SBI Ripple Asia page says the JV does not handle XRP; separated SBI Remit/SBI VC Trade ODL corridor. Added Aviva GBP tokenized fund share class and Franklin sgBENJI subscription evidence with explicit no-XRP-purchase limitations. Exact-head descendant 75f full suite found two stale Run82 timestamp assertions; repair pending."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -212,7 +213,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-10T00:07:27.057Z",
+      "last_verified_at_utc": "2026-11-10T00:12:15.048Z",
       "latest_run_verification": {
         "status": "VERIFIED_CURRENT_SESSION_GITHUB_CONNECTOR",
         "repository": "Barrot-Agent/B-Agent",
@@ -424,7 +425,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-10T00:07:27.057Z",
+    "last_reviewed_at_utc": "2026-11-10T00:12:15.048Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -442,8 +443,8 @@
         "tests/test_xrp_derivatives_cross_provider_reconciliation_20261108.py"
       ]
     },
-    "last_run_summary": "Run104: current ChatGPT-to-GitHub connector verified; no other platform authenticated or sent data. Full suite passed 1,316 plus 8 subtests on exact code/test head 044a0428. SBIC East/Central/West identity resolved as three Japanese regional investment-development companies, distinct from SBI Holdings; SBI Holdings ChatGPT Enterprise and SoftBank Group/OpenAI SB OAI Japan are separate relationships. No forecast or merge.",
-    "last_checked_at_utc": "2026-11-10T00:07:27.057Z",
+    "last_run_summary": "Run104 amendment: corrected SBI Ripple Asia role (it does not handle XRP); identified SBI Remit/SBI VC Trade as XRP ODL entities. Added Aviva/Franklin institutional XRPL tokenized-fund evidence, separating fund subscriptions/issuer seed capital from XRP purchases. Latest descendant CI found two historical Run82 timestamp assertions; repair pending.",
+    "last_checked_at_utc": "2026-11-10T00:12:15.048Z",
     "external_data_exchange": false,
     "note": "Only the ChatGPT session GitHub connector was tested; no other platform authenticated or received data.",
     "external_data_exchange_performed": false
@@ -28944,7 +28945,7 @@
       "forecast_status": "NOT_ISSUED"
     }
   ],
-  "last_verified_at_utc": "2026-11-10T00:07:27.057Z",
+  "last_verified_at_utc": "2026-11-10T00:12:15.048Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -28958,8 +28959,8 @@
   },
   "branch_ancestry": {
     "pr_1640": {
-      "head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
-      "ahead": 862,
+      "head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "ahead": 863,
       "behind": 0,
       "changed_paths": 218,
       "additions": 99401,
@@ -29045,13 +29046,15 @@
       },
       "wheel": "PASS; installed wheel loaded Barrot V3, priority-one XRP mission and canonical data assets",
       "dependency_audit": {
-        "run_id": 42724825921,
+        "run_id": 42725905899,
+        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
         "manifests": 6,
         "known_vulnerabilities": 0,
         "conclusion": "success"
       },
       "fail_closed_gate": {
-        "run_id": 42724825948,
+        "run_id": 42725905941,
+        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
         "conclusion": "success",
         "automatic_merge_disabled": true
       },
@@ -29066,7 +29069,26 @@
         "cause": "Regression assertion required exact equality to PLAUSIBLE_UNCONFIRMED although the parser correctly appends explicit uncertainty rationale.",
         "repair": "Updated the test to assert the stable assessment prefix and both required rationale clauses; production parsing logic was unchanged."
       },
-      "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT"
+      "handoff_map_test_descendant_ci": "FAILED_ON_75F_HISTORICAL_RUN82_ASSERTIONS",
+      "latest_attempt": {
+        "run_id": 42725906404,
+        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "conclusion": "failure",
+        "full_suite": {
+          "passed": 1314,
+          "failed": 2,
+          "subtests": 8,
+          "coverage_pct": 59.36,
+          "duration_seconds": 42.98
+        },
+        "failed_tests": [
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+        ],
+        "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
+        "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+      },
+      "next_repair": "PENDING_ON_NEXT_DESCENDANT"
     },
     "main": {
       "head": "d4d43be3427375cf79d190e768976de062e20287",
@@ -29130,9 +29152,46 @@
         "run_id": 42724825948,
         "conclusion": "success",
         "automatic_merge_disabled": true
-      }
+      },
+      "head_sha": "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
     },
-    "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT"
+    "handoff_map_test_descendant_ci": "FAILED_ON_75F_HISTORICAL_RUN82_ASSERTIONS",
+    "latest_attempt": {
+      "run_id": 42725906404,
+      "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "conclusion": "failure",
+      "full_suite": {
+        "passed": 1314,
+        "failed": 2,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "duration_seconds": 42.98
+      },
+      "failed_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+      ],
+      "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
+      "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+    },
+    "latest_exact_head_attempt": {
+      "run_id": 42725906404,
+      "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "conclusion": "failure",
+      "full_suite": {
+        "passed": 1314,
+        "failed": 2,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "duration_seconds": 42.98
+      },
+      "failed_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+      ],
+      "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
+      "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+    }
   },
   "reviews": {
     "pr_1640": {
@@ -29937,8 +29996,8 @@
     "pr_1640": {
       "state": "OPEN",
       "draft": false,
-      "head_sha": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
-      "ahead_by": 862,
+      "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "ahead_by": 863,
       "behind_by": 0,
       "changed_paths": 218,
       "mergeable": true,
@@ -29948,15 +30007,17 @@
       "commented_reviews": 62,
       "resolved_threads": 22,
       "unresolved_threads": 0,
-      "full_suite": "1316 passed, 0 failed, 8 subtests; 59.36% inclusive coverage",
+      "full_suite": "Latest descendant 75f failed two historical Run82 timestamp assertions (1,314 passed, 2 failed, 8 subtests; 59.36%); code/test parent 044a passed 1,316, 0 failed, 8 subtests.",
       "core_suite": "677 passed, 0 failed, 8 subtests",
       "wheel": "PASS; installed wheel loaded Barrot V3, primary XRP mission and canonical assets",
-      "dependency_audit": "six manifests; zero known vulnerabilities",
-      "fail_closed_gate": "PASS; automatic merge disabled"
+      "dependency_audit": "PASS: six manifests, zero known vulnerabilities",
+      "fail_closed_gate": "PASS: automatic merge disabled",
+      "last_passing_code_test_head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
     },
     "merge_performed": false,
     "merge_allowed": false,
     "blockers": [
+      "Latest handoff/map/test descendant 75f has two historical Run82 timestamp assertions; repair in progress. The immediately preceding code/test head 044a passed 1,316 tests.",
       "No independent APPROVED review.",
       "Detailed branch-protection endpoint returns HTTP 403; the visible fallback ruleset is disabled and effective requirements remain unverified.",
       "A previous main push triggered successful public GitHub Pages deployment; PR #1640 changes seven public web assets and specific authorization for the next publication is absent."
@@ -30083,18 +30144,25 @@
         100,
         72
       ]
-    }
+    },
+    "last_descendant_ci": "FAILED_2_HISTORICAL_TIMESTAMP_ASSERTIONS"
   },
   "last_run_status": {
     "run": 104,
-    "captured_at_utc": "2026-11-10T00:07:27.057Z",
+    "captured_at_utc": "2026-11-10T00:12:15.048Z",
     "code_test_head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
-    "full_suite": "PASS_1316",
+    "full_suite": "FAILED_2_HISTORICAL_RUN82_ASSERTIONS",
     "dependency_audit": "PASS_6_MANIFESTS",
     "fail_closed_gate": "PASS_AUTO_MERGE_DISABLED",
-    "handoff_map_test_descendant": "PENDING"
+    "handoff_map_test_descendant": "PENDING",
+    "latest_handoff_map_test_head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+    "passed": 1314,
+    "failed": 2,
+    "subtests": 8,
+    "coverage_pct": 59.36,
+    "next_repair": "UPDATE_HISTORICAL_RUN82_TEST_EXPECTATIONS"
   },
-  "integration_head_before_map_commit": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
+  "integration_head_before_map_commit": "75f138c8231c61dbf55608b67de4aa1038dd4526",
   "research_updates": {
     "run93": {
       "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -30625,7 +30693,7 @@
       "truncated": false
     },
     "integration": {
-      "sha": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
+      "sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
       "entries": 1515,
       "files": 1402,
       "python": 564,
@@ -31410,7 +31478,7 @@
       "description": "Three SHA-256-bound public spot JSON bodies and six secondary derivatives views; research-only."
     }
   ],
-  "updated_at_utc": "2026-11-10T00:07:27.057Z",
+  "updated_at_utc": "2026-11-10T00:12:15.048Z",
   "current_run_snapshot": {
     "run": 82,
     "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -32694,7 +32762,12 @@
       "excluded_xrpl_nodes": 2,
       "sbic_identity": "SBIC East/Central/West resolved as regional Small and Medium Business Investment & Consultation companies, distinct from SBI Holdings; SBI Holdings ChatGPT Enterprise and SoftBank Group/OpenAI SB OAI Japan are separate.",
       "forecast_status": "NOT_ISSUED",
-      "merge_performed": false
+      "merge_performed": false,
+      "latest_handoff_map_test_head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "latest_handoff_map_test_ci": "FAILED_2_HISTORICAL_RUN82_ASSERTIONS",
+      "sbi_ripple_asia_handles_xrp": false,
+      "aviva_gbp_tokenized_share_class_issuer_investment_gbp": 50000000,
+      "franklin_sgbenji_cash_subscription_receipts_usd": 150000000
     }
   ],
   "secondary_derivatives_observations": [
@@ -32880,11 +32953,11 @@
       "model_eligible": false
     }
   ],
-  "latest_run_verified_at_utc": "2026-11-10T00:07:27.057Z",
+  "latest_run_verified_at_utc": "2026-11-10T00:12:15.048Z",
   "latest_run_snapshot": {
     "run_id": 104,
     "run": 104,
-    "captured_at_utc": "2026-11-10T00:07:27.057Z",
+    "captured_at_utc": "2026-11-10T00:12:15.048Z",
     "mission": "XRP intelligence and prediction-engine mastery priority one; preserve Barrot V3 execution, orchestration, safety and verification.",
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "integration_code_test_head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
@@ -33037,13 +33110,15 @@
       },
       "wheel": "PASS; installed wheel loaded Barrot V3, priority-one XRP mission and canonical data assets",
       "dependency_audit": {
-        "run_id": 42724825921,
+        "run_id": 42725905899,
+        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
         "manifests": 6,
         "known_vulnerabilities": 0,
         "conclusion": "success"
       },
       "fail_closed_gate": {
-        "run_id": 42724825948,
+        "run_id": 42725905941,
+        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
         "conclusion": "success",
         "automatic_merge_disabled": true
       },
@@ -33058,7 +33133,25 @@
         "cause": "Regression assertion required exact equality to PLAUSIBLE_UNCONFIRMED although the parser correctly appends explicit uncertainty rationale.",
         "repair": "Updated the test to assert the stable assessment prefix and both required rationale clauses; production parsing logic was unchanged."
       },
-      "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT"
+      "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT",
+      "latest_attempt": {
+        "run_id": 42725906404,
+        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "conclusion": "failure",
+        "full_suite": {
+          "passed": 1314,
+          "failed": 2,
+          "subtests": 8,
+          "coverage_pct": 59.36,
+          "duration_seconds": 42.98
+        },
+        "failed_tests": [
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+        ],
+        "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
+        "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+      }
     },
     "main_workflows": {
       "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
@@ -33244,24 +33337,125 @@
         ]
       },
       "sbi_ripple": {
-        "sbi_ripple_asia": "SBI Ripple Asia is a joint venture established by SBI Holdings and Ripple. SBI Group held 60% of its voting rights as of 2026-03-31.",
-        "xrp_corridors": "SBI Remit/SBI VC Trade/SBI Ripple Asia expanded Ripple's XRP-using remittance solution to the Philippines, Vietnam and Indonesia in 2023. Treat this as an actual XRP utility corridor, but do not extrapolate historical route use into current daily XRP notional without fresh throughput data.",
-        "xrpl_poc": "A 2026-02-26 SBI Ripple Asia proof of concept uses MoneyTap and a token-issuance platform and contemplates XRPL for tokenized deposits/deposit-based digital money. It does not establish that XRP itself is the settlement asset.",
+        "sbi_ripple_asia": "SBI Ripple Asia is a joint venture established in May 2016. SBI Holdings' February 7, 2025 presentation reports SBI 60% / Ripple 40%; SBI Group's 2026-03-31 profile reports 60% voting rights.",
+        "xrp_corridors": {
+          "operational_entities": [
+            "SBI Remit",
+            "SBI VC Trade",
+            "Coins.ph",
+            "Tranglo"
+          ],
+          "operational_role": "SBI Remit initiates the remittance and SBI VC Trade handles the XRP leg; SBI Ripple Asia is the JV/software-services partner, not the XRP-handling entity.",
+          "scope": "Ripple's official profile describes commercial ODL use in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
+          "limitation": "No current corridor-level daily/monthly XRP notional or settlement-volume series was found in this run. Historical service launch does not prove current throughput.",
+          "source_urls": [
+            "https://ripple.com/company/sbi-ripple-asia/",
+            "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+          ]
+        },
+        "xrpl_poc": "The February 2026 SBI Ripple Asia proof of concept contemplates XRPL for tokenized deposits/deposit-based digital money; it does not establish XRP-token settlement.",
         "validator": "SBI VC Trade began operating an XRPL validator in 2024; validator operation is network participation, not proof of XRP purchases.",
-        "rlusd": "SBI VC Trade began handling RLUSD in Japan on 2026-06-24 after JFSA approval. This is a stablecoin distribution rail separate from XRP remittance corridors.",
-        "jpy_sc": "JPYSC is a separate yen stablecoin issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. On 2026-11-02, SBI reported more than ¥30B in handling balance and more than ¥10B in lending balance. This is not XRP capital flow.",
+        "rlusd": "SBI VC Trade began handling RLUSD in Japan on 2026-06-24 after JFSA approval; this stablecoin distribution rail is separate from XRP remittance corridors.",
+        "jpy_sc": "JPYSC is a separate yen stablecoin issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. SBI reported handling balance above ¥30B and lending balance above ¥10B on 2026-11-02. Neither is XRP capital flow.",
         "source_urls": [
+          "https://ripple.com/company/sbi-ripple-asia/",
           "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+          "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+          "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
           "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
           "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
           "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
-          "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
-          "https://www.sbigroup.co.jp/news/2024/0510_14639.html"
-        ]
+          "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+        ],
+        "sbi_ripple_asia_xrp_handling": "Ripple's official SBI Ripple Asia profile explicitly states SBI Ripple Asia does not handle XRP at all. It sells RippleNet software services and provides cross-border payment infrastructure.",
+        "sbi_group_ripple_equity": {
+          "approximate_share_pct": 9,
+          "description": "SBI Group's February 7, 2025 investor presentation states it held approximately 9% of Ripple, based on actual holdings, as Ripple's largest external shareholder.",
+          "as_of": "2025-02-07",
+          "current_2026_percentage_verified": false,
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        },
+        "sbi_ripple_asia_ownership": {
+          "sbi_pct": 60,
+          "ripple_pct": 40,
+          "source_date": "2025-02-07",
+          "current_voting_rights": "SBI Group reports 60% of voting rights as of 2026-03-31.",
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        },
+        "shareholder_xrp_distribution": {
+          "status": "HISTORICAL_DISTRIBUTION_PROGRAM",
+          "source_date": "2025-02-07",
+          "detail": "SBI Holdings' February 2025 investor presentation lists XRP shareholder benefits and five distributions since March 2020.",
+          "interpretation": "A shareholder distribution is a transfer/benefit, not evidence of incremental market purchases or current institutional XRP accumulation.",
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        }
       },
       "softbank_group_openai": "SB OAI Japan is a SoftBank Group/OpenAI joint venture, not an SBI Holdings or SBIC relationship.",
       "circle_binance": "Circle disclosed a $100M strategic equity investment from Binance and a five-year USDC commercial agreement in September 2026.",
-      "actual_capital_taxonomy": "Separate realized cash used to buy XRP, in-kind XRP contributions, debt proceeds, drawn facilities, pledged collateral, contingent equity capacity and stablecoin balances. These are not interchangeable."
+      "actual_capital_taxonomy": {
+        "required_separation": [
+          "cash subscriptions into tokenized fund shares",
+          "issuer seed investment into a tokenized share class",
+          "new third-party subscriptions versus migration from another chain",
+          "XRP spot purchases",
+          "in-kind XRP contributions",
+          "XRP used as a bridge asset in payments",
+          "XRP collateral pledged, accepted and actually utilized",
+          "debt proceeds and drawn credit facilities",
+          "contingent equity capacity",
+          "stablecoin circulation and handling balances",
+          "tokenized asset AUM and on-chain share balances"
+        ],
+        "interpretation": "Aviva's £50M is issuer seed investment in a tokenized fund share class; Franklin's $150M are cash subscription receipts for fund shares with unknown investors/funding source. Neither is an XRP purchase or verified XRP capital inflow."
+      },
+      "xrpl_institutional_tokenization": {
+        "aviva": {
+          "issuer": "Aviva Investors",
+          "launch_date": "2026-10-26",
+          "asset": "GBP Sterling Liquidity Fund tokenized share class on XRPL",
+          "issuer_seed_investment_gbp": 50000000,
+          "issuer_seed_investment_usd_approx": 66000000,
+          "total_across_two_tokenized_share_classes_gbp_over": 86000000,
+          "underlying_fund_aum_gbp_approx": 22000000000,
+          "structure": "Digital-twin access layer; the conventional off-chain fund structure and underlying assets remain intact.",
+          "custody": "BNY Mellon is fund custodian; Komainu supported regulated digital-asset custody; Licuido supplied tokenization infrastructure.",
+          "actual_capital_interpretation": "£50M is Aviva's own investment in the new share class, not verified third-party subscription demand. The £22B underlying fund AUM is not all on-chain.",
+          "xrp_purchase_disclosed": false,
+          "direct_xrp_demand_established": false,
+          "primary_source": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/"
+        },
+        "franklin_templeton": {
+          "product": "Franklin OnChain U.S. Dollar Short-Term Money Market Fund (sgBENJI)",
+          "receipt_dates": [
+            "2026-10-21",
+            "2026-10-22"
+          ],
+          "cash_subscription_receipts_usd": 150000000,
+          "receipts": 2,
+          "shares_issued_each": 72184793.07,
+          "recorded_share_price_usd": 1.039,
+          "xrpl_holding_wallets": 1,
+          "xrpl_shares_after_issuance_approx": 192700000,
+          "wallet_signers_match_issuer": true,
+          "investor_identity_disclosed": false,
+          "funding_source_disclosed": false,
+          "omnibus_wallet_possible": true,
+          "fund_uses_other_networks": [
+            "Stellar"
+          ],
+          "migration_from_stellar_ruled_out": false,
+          "xrp_purchase": false,
+          "direct_xrp_demand_established": false,
+          "limitation": "CoinDesk's ledger review found two $75M cash subscription receipts and matching share batches. The investor(s), funding source, omnibus status and relationship to existing Stellar holdings remain undisclosed. These are tokenized fund shares, not XRP.",
+          "secondary_source": "https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet",
+          "ledger_links": [
+            "https://api.xrpscan.com/"
+          ]
+        },
+        "value_capture_interpretation": "Aviva and Franklin demonstrate live institutional issuance/representation of fund interests on XRPL. Their disclosed amounts are not XRP purchases. The tokenized assets may use XRP for minimal network fees, but no material XRP bridge, collateral or liquidity demand is established by these announcements.",
+        "planned_collateral": "Franklin/DBS/Ripple announced plans to explore token lending and trading; that is not evidence the collateral facility is live or that XRP is the collateral asset."
+      },
+      "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor."
     },
     "identity_research": {
       "japan_sbic": {
@@ -33324,10 +33518,19 @@
           "in-kind XRP contributions",
           "debt proceeds",
           "drawn credit facilities",
-          "collateral pledged/recognized",
+          "collateral pledged/recognized/actually utilized",
           "contingent equity capacity",
-          "stablecoin circulation/handling balances"
-        ]
+          "stablecoin circulation/handling balances",
+          "cash subscriptions into tokenized fund shares",
+          "issuer seed investment in tokenized funds",
+          "migration of tokenized assets from another chain",
+          "tokenized AUM/on-chain share balances",
+          "XRP used as a bridge asset"
+        ],
+        "current_examples": {
+          "aviva_gbp_50m": "Issuer's own investment in a tokenized GBP fund share class on XRPL; not an XRP purchase.",
+          "franklin_usd_150m": "Two on-ledger cash subscription receipts for sgBENJI fund shares; investors/source unknown; not an XRP purchase."
+        }
       },
       "camilla_kamilah_stevenson": {
         "identity": "Kamilah Stevenson / @drkamilahstevenson is strongly corroborated as the guest in a public interview; personal-channel ownership remains less conclusive.",
@@ -33369,8 +33572,8 @@
       "pr_1640": {
         "state": "OPEN",
         "draft": false,
-        "head_sha": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
-        "ahead_by": 862,
+        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "ahead_by": 863,
         "behind_by": 0,
         "changed_paths": 218,
         "mergeable": true,
@@ -33380,15 +33583,17 @@
         "commented_reviews": 62,
         "resolved_threads": 22,
         "unresolved_threads": 0,
-        "full_suite": "1316 passed, 0 failed, 8 subtests; 59.36% inclusive coverage",
+        "full_suite": "Latest descendant 75f failed two historical Run82 timestamp assertions (1,314 passed, 2 failed, 8 subtests; 59.36%); code/test parent 044a passed 1,316, 0 failed, 8 subtests.",
         "core_suite": "677 passed, 0 failed, 8 subtests",
         "wheel": "PASS; installed wheel loaded Barrot V3, primary XRP mission and canonical assets",
-        "dependency_audit": "six manifests; zero known vulnerabilities",
-        "fail_closed_gate": "PASS; automatic merge disabled"
+        "dependency_audit": "PASS: six manifests, zero known vulnerabilities",
+        "fail_closed_gate": "PASS: automatic merge disabled",
+        "last_passing_code_test_head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
       },
       "merge_performed": false,
       "merge_allowed": false,
       "blockers": [
+        "Latest handoff/map/test descendant 75f has two historical Run82 timestamp assertions; repair in progress. The immediately preceding code/test head 044a passed 1,316 tests.",
         "No independent APPROVED review.",
         "Detailed branch-protection endpoint returns HTTP 403; the visible fallback ruleset is disabled and effective requirements remain unverified.",
         "A previous main push triggered successful public GitHub Pages deployment; PR #1640 changes seven public web assets and specific authorization for the next publication is absent."
@@ -33854,16 +34059,17 @@
           100,
           72
         ]
-      }
+      },
+      "last_descendant_ci": "FAILED_2_HISTORICAL_TIMESTAMP_ASSERTIONS"
     },
     "raw_http_bytes_preserved": false,
     "sha256_receipts_created": false,
     "web_observations_model_admitted": false,
     "no_merge_performed": true,
     "no_new_pr_created": true,
-    "handoff_map_descendant_parent_head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
-    "descendant_ci_status": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT",
-    "next_action": "Verify exact-head CI on the Run104 handoff/map/test commit; retain merge hold until independent approval, effective branch-protection requirements and Pages publication authorization are established.",
+    "handoff_map_descendant_parent_head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+    "descendant_ci_status": "FAILED_ON_75F_HISTORICAL_RUN82_ASSERTIONS; NEXT_REPAIR_PENDING",
+    "next_action": "Repair the two Run82 historical timestamp assertions so the tests distinguish the current Run104 root snapshot from preserved historical Run82 observations; then rerun full suite, dependency audit and fail-closed gate on the new exact head.",
     "prior_market_crosschecks": [
       {
         "run": 98,
@@ -33977,6 +34183,12 @@
           "etf_interpretation": "Fund universes, holdings-versus-flow methods and complete-day cutoffs differ. Trading volume is not net flow. Preserve disagreement; do not average or treat the series as complete issuer-wide cash subscriptions/redemptions."
         }
       }
+    ],
+    "research_corrections": [
+      "Ripple's official SBI Ripple Asia profile states it does not handle XRP; SBI Remit/SBI VC Trade handle the XRP ODL corridor.",
+      "SBI Holdings' Feb 2025 presentation reports approximately 9% Ripple share and SBI Ripple Asia 60/40 ownership, date-stamped historical.",
+      "Aviva GBP tokenized share class: £50M issuer investment on XRPL, digital twin/off-chain fund assets.",
+      "Franklin sgBENJI: two $75M cash subscription receipts on XRPL; one wallet, unknown beneficial owner/source; not XRP purchases."
     ]
   },
   "endpoint_inventory_source_blob_sha": "f5fc3c4a45aaf826241e32faf00443e98bfa341a",
@@ -34205,24 +34417,125 @@
       ]
     },
     "sbi_ripple": {
-      "sbi_ripple_asia": "SBI Ripple Asia is a joint venture established by SBI Holdings and Ripple. SBI Group held 60% of its voting rights as of 2026-03-31.",
-      "xrp_corridors": "SBI Remit/SBI VC Trade/SBI Ripple Asia expanded Ripple's XRP-using remittance solution to the Philippines, Vietnam and Indonesia in 2023. Treat this as an actual XRP utility corridor, but do not extrapolate historical route use into current daily XRP notional without fresh throughput data.",
-      "xrpl_poc": "A 2026-02-26 SBI Ripple Asia proof of concept uses MoneyTap and a token-issuance platform and contemplates XRPL for tokenized deposits/deposit-based digital money. It does not establish that XRP itself is the settlement asset.",
+      "sbi_ripple_asia": "SBI Ripple Asia is a joint venture established in May 2016. SBI Holdings' February 7, 2025 presentation reports SBI 60% / Ripple 40%; SBI Group's 2026-03-31 profile reports 60% voting rights.",
+      "xrp_corridors": {
+        "operational_entities": [
+          "SBI Remit",
+          "SBI VC Trade",
+          "Coins.ph",
+          "Tranglo"
+        ],
+        "operational_role": "SBI Remit initiates the remittance and SBI VC Trade handles the XRP leg; SBI Ripple Asia is the JV/software-services partner, not the XRP-handling entity.",
+        "scope": "Ripple's official profile describes commercial ODL use in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
+        "limitation": "No current corridor-level daily/monthly XRP notional or settlement-volume series was found in this run. Historical service launch does not prove current throughput.",
+        "source_urls": [
+          "https://ripple.com/company/sbi-ripple-asia/",
+          "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+        ]
+      },
+      "xrpl_poc": "The February 2026 SBI Ripple Asia proof of concept contemplates XRPL for tokenized deposits/deposit-based digital money; it does not establish XRP-token settlement.",
       "validator": "SBI VC Trade began operating an XRPL validator in 2024; validator operation is network participation, not proof of XRP purchases.",
-      "rlusd": "SBI VC Trade began handling RLUSD in Japan on 2026-06-24 after JFSA approval. This is a stablecoin distribution rail separate from XRP remittance corridors.",
-      "jpy_sc": "JPYSC is a separate yen stablecoin issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. On 2026-11-02, SBI reported more than ¥30B in handling balance and more than ¥10B in lending balance. This is not XRP capital flow.",
+      "rlusd": "SBI VC Trade began handling RLUSD in Japan on 2026-06-24 after JFSA approval; this stablecoin distribution rail is separate from XRP remittance corridors.",
+      "jpy_sc": "JPYSC is a separate yen stablecoin issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. SBI reported handling balance above ¥30B and lending balance above ¥10B on 2026-11-02. Neither is XRP capital flow.",
       "source_urls": [
+        "https://ripple.com/company/sbi-ripple-asia/",
         "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+        "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
         "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
         "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
         "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
-        "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
-        "https://www.sbigroup.co.jp/news/2024/0510_14639.html"
-      ]
+        "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+      ],
+      "sbi_ripple_asia_xrp_handling": "Ripple's official SBI Ripple Asia profile explicitly states SBI Ripple Asia does not handle XRP at all. It sells RippleNet software services and provides cross-border payment infrastructure.",
+      "sbi_group_ripple_equity": {
+        "approximate_share_pct": 9,
+        "description": "SBI Group's February 7, 2025 investor presentation states it held approximately 9% of Ripple, based on actual holdings, as Ripple's largest external shareholder.",
+        "as_of": "2025-02-07",
+        "current_2026_percentage_verified": false,
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+      },
+      "sbi_ripple_asia_ownership": {
+        "sbi_pct": 60,
+        "ripple_pct": 40,
+        "source_date": "2025-02-07",
+        "current_voting_rights": "SBI Group reports 60% of voting rights as of 2026-03-31.",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+      },
+      "shareholder_xrp_distribution": {
+        "status": "HISTORICAL_DISTRIBUTION_PROGRAM",
+        "source_date": "2025-02-07",
+        "detail": "SBI Holdings' February 2025 investor presentation lists XRP shareholder benefits and five distributions since March 2020.",
+        "interpretation": "A shareholder distribution is a transfer/benefit, not evidence of incremental market purchases or current institutional XRP accumulation.",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+      }
     },
     "softbank_group_openai": "SB OAI Japan is a SoftBank Group/OpenAI joint venture, not an SBI Holdings or SBIC relationship.",
     "circle_binance": "Circle disclosed a $100M strategic equity investment from Binance and a five-year USDC commercial agreement in September 2026.",
-    "actual_capital_taxonomy": "Separate realized cash used to buy XRP, in-kind XRP contributions, debt proceeds, drawn facilities, pledged collateral, contingent equity capacity and stablecoin balances. These are not interchangeable."
+    "actual_capital_taxonomy": {
+      "required_separation": [
+        "cash subscriptions into tokenized fund shares",
+        "issuer seed investment into a tokenized share class",
+        "new third-party subscriptions versus migration from another chain",
+        "XRP spot purchases",
+        "in-kind XRP contributions",
+        "XRP used as a bridge asset in payments",
+        "XRP collateral pledged, accepted and actually utilized",
+        "debt proceeds and drawn credit facilities",
+        "contingent equity capacity",
+        "stablecoin circulation and handling balances",
+        "tokenized asset AUM and on-chain share balances"
+      ],
+      "interpretation": "Aviva's £50M is issuer seed investment in a tokenized fund share class; Franklin's $150M are cash subscription receipts for fund shares with unknown investors/funding source. Neither is an XRP purchase or verified XRP capital inflow."
+    },
+    "xrpl_institutional_tokenization": {
+      "aviva": {
+        "issuer": "Aviva Investors",
+        "launch_date": "2026-10-26",
+        "asset": "GBP Sterling Liquidity Fund tokenized share class on XRPL",
+        "issuer_seed_investment_gbp": 50000000,
+        "issuer_seed_investment_usd_approx": 66000000,
+        "total_across_two_tokenized_share_classes_gbp_over": 86000000,
+        "underlying_fund_aum_gbp_approx": 22000000000,
+        "structure": "Digital-twin access layer; the conventional off-chain fund structure and underlying assets remain intact.",
+        "custody": "BNY Mellon is fund custodian; Komainu supported regulated digital-asset custody; Licuido supplied tokenization infrastructure.",
+        "actual_capital_interpretation": "£50M is Aviva's own investment in the new share class, not verified third-party subscription demand. The £22B underlying fund AUM is not all on-chain.",
+        "xrp_purchase_disclosed": false,
+        "direct_xrp_demand_established": false,
+        "primary_source": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/"
+      },
+      "franklin_templeton": {
+        "product": "Franklin OnChain U.S. Dollar Short-Term Money Market Fund (sgBENJI)",
+        "receipt_dates": [
+          "2026-10-21",
+          "2026-10-22"
+        ],
+        "cash_subscription_receipts_usd": 150000000,
+        "receipts": 2,
+        "shares_issued_each": 72184793.07,
+        "recorded_share_price_usd": 1.039,
+        "xrpl_holding_wallets": 1,
+        "xrpl_shares_after_issuance_approx": 192700000,
+        "wallet_signers_match_issuer": true,
+        "investor_identity_disclosed": false,
+        "funding_source_disclosed": false,
+        "omnibus_wallet_possible": true,
+        "fund_uses_other_networks": [
+          "Stellar"
+        ],
+        "migration_from_stellar_ruled_out": false,
+        "xrp_purchase": false,
+        "direct_xrp_demand_established": false,
+        "limitation": "CoinDesk's ledger review found two $75M cash subscription receipts and matching share batches. The investor(s), funding source, omnibus status and relationship to existing Stellar holdings remain undisclosed. These are tokenized fund shares, not XRP.",
+        "secondary_source": "https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet",
+        "ledger_links": [
+          "https://api.xrpscan.com/"
+        ]
+      },
+      "value_capture_interpretation": "Aviva and Franklin demonstrate live institutional issuance/representation of fund interests on XRPL. Their disclosed amounts are not XRP purchases. The tokenized assets may use XRP for minimal network fees, but no material XRP bridge, collateral or liquidity demand is established by these announcements.",
+      "planned_collateral": "Franklin/DBS/Ripple announced plans to explore token lending and trading; that is not evidence the collateral facility is live or that XRP is the collateral asset."
+    },
+    "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor."
   },
   "identity_research": {
     "japan_sbic": {
@@ -34285,10 +34598,19 @@
         "in-kind XRP contributions",
         "debt proceeds",
         "drawn credit facilities",
-        "collateral pledged/recognized",
+        "collateral pledged/recognized/actually utilized",
         "contingent equity capacity",
-        "stablecoin circulation/handling balances"
-      ]
+        "stablecoin circulation/handling balances",
+        "cash subscriptions into tokenized fund shares",
+        "issuer seed investment in tokenized funds",
+        "migration of tokenized assets from another chain",
+        "tokenized AUM/on-chain share balances",
+        "XRP used as a bridge asset"
+      ],
+      "current_examples": {
+        "aviva_gbp_50m": "Issuer's own investment in a tokenized GBP fund share class on XRPL; not an XRP purchase.",
+        "franklin_usd_150m": "Two on-ledger cash subscription receipts for sgBENJI fund shares; investors/source unknown; not an XRP purchase."
+      }
     },
     "camilla_kamilah_stevenson": {
       "identity": "Kamilah Stevenson / @drkamilahstevenson is strongly corroborated as the guest in a public interview; personal-channel ownership remains less conclusive.",

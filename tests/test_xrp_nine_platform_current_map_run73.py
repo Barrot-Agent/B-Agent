@@ -32,7 +32,7 @@ def load_run78_snapshot():
     )
 
 
-def test_run82_current_snapshot_preserves_run78_run77_and_historical_map():
+def test_run82_historical_snapshot_preserves_run78_run77_and_historical_map():
     current = load_current()
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
     observation = current["current_run_observations"]
@@ -44,8 +44,10 @@ def test_run82_current_snapshot_preserves_run78_run77_and_historical_map():
     prior73 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 73)
 
     assert current["captured_at_utc"] == current["last_verified_at_utc"]
-    assert observation["captured_at_utc"] == current["captured_at_utc"]
-    assert observation["last_verified_at_utc"] == current["last_verified_at_utc"]
+    assert current["latest_run_snapshot"]["run_id"] == 104
+    assert current["latest_run_snapshot"]["captured_at_utc"] == current["captured_at_utc"]
+    assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
+    assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["run_id"] == 82
     assert observation["captured_at_utc"] >= prior78["captured_at_utc"]
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
@@ -318,12 +320,16 @@ def test_run80_prior_snapshot_records_repository_and_safe_status():
 
 
 
-def test_run82_current_snapshot_records_repository_market_receipts_and_safe_status():
+def test_run82_historical_snapshot_records_repository_market_receipts_and_safe_status():
     import hashlib
     import math
     data = load_current()
     observation = data["current_run_observations"]
-    assert data["captured_at_utc"] == data["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
+    assert data["captured_at_utc"] == data["last_verified_at_utc"]
+    assert data["latest_run_snapshot"]["run_id"] == 104
+    assert data["latest_run_snapshot"]["captured_at_utc"] == data["captured_at_utc"]
+    assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
+    assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["run_id"] == 82
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
     assert observation["integration_head_before_handoff_commit"] == "2685c1744aa5a7972da9063a18be665077c4548c"

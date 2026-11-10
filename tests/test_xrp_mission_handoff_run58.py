@@ -52,7 +52,7 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert latest["mission"]
     assert "main_workflows" in latest
     assert "institutional_and_macro" in latest
-    assert latest["handoff_map_descendant_parent_head"] == "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
+    assert latest["handoff_map_descendant_parent_head"] == "75f138c8231c61dbf55608b67de4aa1038dd4526"
     assert latest["prior_market_crosschecks"]
     assert "pages" in current_data["open_pr_inventory"]
     assert "main_active_privileged_writers" in current_data["workflow_safety_audit"]
@@ -78,6 +78,16 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert latest["ci_evidence"]["full_suite"]["failed"] == 0
     assert latest["ci_evidence"]["full_suite"]["subtests"] == 8
     assert latest["ci_evidence"]["full_suite"]["coverage_pct"] == 59.36
+    assert latest["ci_evidence"]["latest_attempt"]["head_sha"] == "75f138c8231c61dbf55608b67de4aa1038dd4526"
+    assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["passed"] == 1314
+    assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["failed"] == 2
+    assert latest["institutional_and_macro"]["sbi_ripple"]["sbi_ripple_asia_xrp_handling"].startswith("Ripple's official SBI Ripple Asia profile explicitly states")
+    assert latest["institutional_and_macro"]["sbi_ripple"]["xrp_corridors"]["operational_entities"] == ["SBI Remit", "SBI VC Trade", "Coins.ph", "Tranglo"]
+    assert latest["institutional_and_macro"]["sbi_ripple"]["sbi_group_ripple_equity"]["approximate_share_pct"] == 9
+    assert latest["institutional_and_macro"]["xrpl_institutional_tokenization"]["aviva"]["issuer_seed_investment_gbp"] == 50000000
+    assert latest["institutional_and_macro"]["xrpl_institutional_tokenization"]["franklin_templeton"]["cash_subscription_receipts_usd"] == 150000000
+    assert latest["institutional_and_macro"]["xrpl_institutional_tokenization"]["franklin_templeton"]["xrp_purchase"] is False
+
     assert latest["cftc_contract_universe"]["dropped_contract"]["code"] == "176LM2"
     assessment = latest["cftc_contract_universe"]["threshold_hypothesis"]["assessment"]
     assert assessment.startswith("PLAUSIBLE_UNCONFIRMED")
@@ -107,6 +117,9 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert latest["identity_research"]["japan_sbic"]["regional_entities"]["west"]["public_name"] == "SBIC West Japan"
     assert latest["identity_research"]["japan_sbic"]["chatgpt_and_openai"]["sbi_holdings"].startswith("SBI Holdings")
     assert latest["identity_research"]["japan_sbic"]["chatgpt_and_openai"]["softbank_openai"].startswith("SB OAI Japan")
+    assert "tokenized fund subscriptions" in latest["identity_research"]["actual_capital"]["required_separation"]
+    assert "XRP spot purchases" in latest["identity_research"]["actual_capital"]["required_separation"]
+
 
 
 

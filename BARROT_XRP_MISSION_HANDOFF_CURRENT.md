@@ -4632,3 +4632,44 @@ Forecast status remains **NOT_ISSUED**. The synchronized historical dataset, ind
 PR #1640 has 62 COMMENTED reviews, zero APPROVED reviews, 22/22 resolved inline threads, and is reported mergeable. Main's detailed branch-protection endpoint returns HTTP 403; the visible fallback ruleset is disabled. A previous main push triggered public GitHub Pages deployment, and specific authorization for the next publication is absent. **No merge was performed.**
 
 Next: verify exact-head CI on this Run104 handoff/map/test descendant, obtain an independent APPROVED review, establish effective branch-protection requirements, and resolve Pages publication authorization. Only then consider merge, fetch main again, verify the merge commit and files, run main CI, and reconcile exact superseded duplicates after verification.
+
+
+### Run104 research correction — SBI Ripple Asia role and live XRPL fund issuance
+
+**SBI Ripple Asia does not handle XRP.** Ripple's own official SBI Ripple Asia profile says the company sells RippleNet software services and explicitly states it does not handle the XRP cryptoasset. The same profile separately says commercial ODL is live in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release records expansion of the XRP-using remittance service to the Philippines, Vietnam and Indonesia. The operational XRP leg belongs to SBI Remit/SBI VC Trade; SBI Ripple Asia is the JV/software-services partner. Do not attribute XRP handling to SBI Ripple Asia.
+
+SBI Holdings' February 7, 2025 investor presentation reports:
+- SBI Group held approximately **9% of Ripple** based on actual holdings, described as Ripple's largest external shareholder at that time.
+- SBI Ripple Asia was established with **SBI 60% / Ripple 40%**.
+- SBI Remit began its XRP-bridge remittance service in 2021.
+- SBI's XRP shareholder-benefit program had made five distributions since March 2020. These are shareholder transfers/benefits, not proof of new market purchases.
+The 9% equity figure is explicitly date-stamped 2025-02-07; no current 2026 percentage was verified. SBI Group's official company profile separately reports 60% voting rights in SBI Ripple Asia as of 2026-03-31.
+
+Primary sources:
+- Ripple's SBI Ripple Asia profile: https://ripple.com/company/sbi-ripple-asia/
+- SBI 2023 corridor expansion: https://www.sbigroup.co.jp/news/2023/0906_14052.html
+- SBI February 7, 2025 financial presentation: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf
+- SBI Ripple Asia company profile: https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+
+### Institutional XRPL tokenization — actual capital separated from XRP demand
+
+**Aviva Investors — October 26, 2026.** Aviva launched a tokenized GBP Sterling Liquidity Fund share class on XRPL. Aviva itself invested **£50 million** in the new share class; the two tokenized share-class offerings together represented over **£86 million**. The underlying conventional fund has approximately £22 billion AUM, but the release describes a digital-twin access layer that preserves the off-chain fund structure. BNY Mellon holds the fund assets; Komainu supported digital-asset custody and Licuido supplied tokenization infrastructure. The £50 million is Aviva's own investment, not verified third-party demand, and no XRP purchase was disclosed.
+
+Primary issuer source: https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/
+
+**Franklin Templeton — October 21–22, 2026.** CoinDesk's review of public XRPL records identified two cash subscription receipts of **$75 million each** for sgBENJI fund shares and two matching issuance batches of approximately 72.18 million shares each at $1.039. All sgBENJI shares then visible on XRPL were in one wallet with the same eight authorized signers as the issuer. The investor(s), funding source and possible migration from the fund's Stellar representation remain undisclosed; the wallet may be omnibus. These are fund-share subscriptions, not XRP purchases. The $150 million must not be classified as XRP capital inflow.
+
+Source: https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet
+
+**Prediction implication:** Aviva and Franklin provide evidence of production institutional issuance/representation of fund interests on XRPL. They do not establish material XRP spot demand, collateral usage or bridge-asset notional. AUM, fund subscriptions, issuer seed capital, on-chain tokenized shares, RLUSD/USDC balances, XRP purchases and XRP used as a bridge asset must be separate features. The network-adoption thesis can strengthen without a proportional XRP-token demand response.
+
+### Exact-head verification correction on handoff/map descendant 75f
+
+- Full-suite run [42725906404](https://github.com/Barrot-Agent/B-Agent/actions/runs/42725906404): **1,314 passed, 2 failed, 8 subtests; 59.36% coverage**.
+- The two failures are historical Run82 tests in `tests/test_xrp_nine_platform_current_map_run73.py`. They incorrectly required the top-level current map timestamp to remain equal to the preserved Run82 observation timestamp after Run104 advanced the root/latest snapshot. The Run82 observation itself remains intact.
+- Repair: assert root/latest_run_snapshot is Run104 while `current_run_observations` remains the historical Run82 record. No production code change.
+- Dependency audit [42725905899](https://github.com/Barrot-Agent/B-Agent/actions/runs/42725905899): passed all six manifests, zero known vulnerabilities.
+- Fail-closed gate [42725905941](https://github.com/Barrot-Agent/B-Agent/actions/runs/42725905941): passed; automatic merging disabled.
+- The immediately preceding code/test head `044a0428` passed 1,316 tests, zero failures, eight subtests and 59.36% coverage. The 75f handoff/map/test descendant is not verified because of the two historical test assertions.
+
+No merge, deployment, secret rotation, external-model transfer, paper trade, funds transfer or destructive action occurred. PR #1640 remains blocked by the test repair, zero independent approvals, branch-protection visibility HTTP 403 and missing authorization for the automatic Pages publication.
