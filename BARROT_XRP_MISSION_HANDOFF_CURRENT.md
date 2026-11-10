@@ -1,3 +1,5 @@
+# Run 112 — XRP market, exchange-wallet, ETF-flow and CPI update
+
 ## Run112 follow-up — historical handoff test and receipt-preimage correction
 
 The Run112 handoff/data commit `7e64b1be83ec4040e974e6c6dd45f11165233e13` added the Run112 research artifact and refreshed the public `NOT_ISSUED` status timestamp. Its full-suite workflow found one stale test assertion: `tests/test_xrp_mission_handoff_run58.py` still required the current handoff to start with Run111. Run112 is now the current first section; the complete Run111 section remains preserved below it. The failure was a test-fixture expectation, not production prediction logic.
@@ -8,9 +10,9 @@ The verified code/test head remains `6b34115c2301007ee20f52a74b9f9742938b3f88` (
 
 Before this follow-up, PR #1640 was 892 commits ahead of main with 230 changed paths. This follow-up adds no new path. Main remains `d4d43be3427375cf79d190e768976de062e20287`. No merge, deployment, external write, paper trade or real-money action was performed.
 
+
 ---
 
-# Run 112 — XRP market, exchange-wallet, ETF-flow and CPI update
 
 **Capture start:** 2026-11-10 02:57:53 UTC  
 **Mission:** `xrp_intelligence_prediction_engine`, priority 1. Barrot V3 remains the preserved execution, orchestration, safety and verification foundation.
