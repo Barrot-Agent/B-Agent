@@ -4708,3 +4708,77 @@ The two prior Run82 timestamp tests pass. The new SBIC identity, SBI Ripple Asia
 - Fail-closed gate [42727236787](https://github.com/Barrot-Agent/B-Agent/actions/runs/42727236787): passed; automatic merge remains disabled.
 - Previous code/test head `044a0428`: 1,316 passed, zero failed, eight subtests, 59.36% coverage.
 - The next exact-head full-suite run is required after this final assertion correction.
+
+
+## Run 105 — 2026-11-10T00:32:20Z
+
+Mission remains XRP intelligence and prediction-engine mastery at priority one; Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Repository and exact-head verification
+
+- Main: `d4d43be3427375cf79d190e768976de062e20287`.
+- Code/test head: `23cf9ee6fa55376b233cc8f7564807b8fd3e4e74`; PR #1640 is 867 commits ahead, zero behind, 218 changed paths, open, non-draft and reported mergeable.
+- Main tree: 1,404 entries / 1,299 files / 493 Python files / 90 test files / 78 workflow files.
+- Integration tree: 1,515 entries / 1,402 files / 564 Python files / 144 test files / 79 workflow files.
+- Full repository suite on the exact code/test head: **1,316 passed, zero failed, 8 subtests passed; 59.36% coverage**. [Full CI 42729321874](https://github.com/Barrot-Agent/B-Agent/actions/runs/42729321874).
+- Core suite: 677 passed, 8 subtests passed. Wheel build and installed-wheel verification passed, including Barrot V3, the primary XRP mission and canonical data assets.
+- Six-manifest dependency audit passed with zero known vulnerabilities: [42729321904](https://github.com/Barrot-Agent/B-Agent/actions/runs/42729321904).
+- Fail-closed gate passed and kept automatic merge disabled: [42729321656](https://github.com/Barrot-Agent/B-Agent/actions/runs/42729321656).
+- The preceding failure on `794ef1a` was one stale hard-coded map-parent SHA assertion. The regression test now checks cross-field consistency against the map's recorded parent head. No production code changed in this repair.
+- This handoff/artifact commit is a documentation/data descendant of the verified code/test head; exact-head CI for the new descendant must complete before it is described as verified.
+
+### XRP market and positioning
+
+- Kraken XRP/USD displayed $1.10159, bid $1.10153, ask $1.10154, 24-hour volume 29.91M XRP and VWAP $1.09744. The response had no provider event timestamp.
+- OKX XRP-USDT event time was 2026-11-10T00:15:43.372Z, last 1.1027 USDT, bid 1.1028, ask 1.1029, 24-hour volume 73.94M XRP. It was about 16.6 minutes old at the run cutoff and is not normalized to USD. These asynchronous quotes are not an executable spread or model feature.
+- Derivatives aggregators reported OI of $1.23B (Liqwall), $1.67B (TradRadar) and $1.39B (WebEconomia), with positive but small funding and long-heavy liquidations/account positioning. Venue coverage and windows differ and overlap. Do not average; this supports a deleveraging/crowded-long description, not direction.
+- ETF coverage is incomplete. Coin365's Nov 9 figure was a one-fund-only XRPC observation of -$1.7M. ByKaranteli's latest complete day was Nov 6; XRP Insights uses holdings changes across a different universe. Do not treat these as one complete issuer-wide cash-flow series.
+- XRPL amendment dashboard at 00:09 UTC showed 35 validators reporting, 29 required, 98 enabled, nine in flight and zero countdown. The highest listed yes-vote count was 23; no listed amendment reached threshold.
+- U.S. October CPI was scheduled for Nov 10 at 13:30 UTC; it was still a future event at the capture cutoff.
+
+### CFTC TFF correction and parser handling
+
+The CFTC TFF report dated Nov 3, released Nov 6, shows CME XRP 7,216 contracts, Nano XRP 32,505 and Nano XRP Perp Style 38,392. Converted contract-equivalent notional is 396.2485M XRP, not cash capital or collateral.
+
+The CFTC index lists contract 176LM2 (XRP - Coinbase Derivatives, 10,000 XRP per contract) as dropped from reporting in both futures-only and futures-and-options-combined reports dated Nov 3. The Oct 27 report had 28,246 open-interest contracts and 20 total traders. CFTC staff FAQ says a contract may disappear if reportable Large Traders fall below 20; the prior total-trader count does not establish that this was the cause. The integration parser treats 176LM2 as optional, preserves missing values as null and records contract status rather than zero-filling. Weekly CFTC adapters remain raw-only and not model-admitted.
+
+### Capital, ASK Coin and SBIC identity
+
+- “Actual capital” is not a standardized XRP metric. Evernorth's Nov 9 SEC prospectus states it had received **zero proceeds under its 5,218,935-share committed equity facility** as of the prospectus date. The facility is contingent capacity, priced at 97% of VWAP subject to conditions and limits, with a $521,893.50 non-refundable upfront commitment fee. It is not realized capital.
+- The same prospectus distinguishes $214.05M cash plus 600,000 XRP in advance funding, $10.5M cash plus 200,000 XRP in delayed funding, 211,319,096 XRP contributed by the Series C sponsor and 50M XRP contributed by a Ripple affiliate. Cash subscriptions and in-kind XRP contributions must remain separate.
+- It also describes 239,653 sponsor warrants at $11.50, potentially yielding about $2.8M only if exercised. A separate public-warrant prospectus covers 11,499,992 shares at $11.50; its maximum potential proceeds are not actual proceeds and no exercise was verified.
+- The Nov 9 Evernorth prospectus includes a risk disclosure that current retail, commercial and payments use of XRP is limited and speculators make up a significant portion of users. Retain this as disconfirming evidence against treating every Ripple/institutional infrastructure announcement as XRP-token demand.
+- “Ask Coin” is a separate CoinMarketCap exchange listing marked inactive and untracked, with no reserve data and no markets loaded; askcoin.net redirected to a HugeDomains page. Permission Coin's ASK token is a different candidate. No XRP/XRPL integration was verified for either.
+- Primary company pages resolve SBIC East/Central/West as Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies, established in 1963 under Act No. 101 of 1963. They are three regional sister companies, not SBI Holdings subsidiaries.
+- SBI Holdings and SBI Securities adopted ChatGPT Enterprise; SoftBank Group/SoftBank Corp. and OpenAI separately launched SB OAI Japan; SBI Holdings separately announced an Anthropic collaboration. Do not conflate these organizations or partnerships.
+- Kamilah Stevenson identity remains strongly corroborated, but the direct YouTube channel page was unreadable to the retrieval tool. No additional personal-channel uploads were verified in this run; guest bylines remain separate from personal-channel uploads.
+
+### Integration backlog and merge state
+
+- Open PR inventory: 372 total, 356 drafts, 16 non-drafts.
+- #1640 is the single active V3/XRP integration path.
+- #1643: 670 paths, seven overlap #1640, 663 unique research paths; preserve.
+- #1653: seven paths, one overlap #1640, six unique knowledge-graph paths; preserve; eight review threads remain unresolved.
+- #1642: all seven paths overlap #1640; superseded-content candidate.
+- #1644–#1650: all changed paths overlap #1640; exact blob/version reconciliation remains required.
+- #1317/#1318/#1320: all changed paths overlap #1640; retain until successor verification and exact reconciliation.
+- #1254/#1255: both touch `legacy/requirements_legacy.txt`; reconcile exact dependency versions.
+- #1269: eight unique mesh/topology paths and one shared CI path; preserve.
+- #1655: three unique paths and five shared paths; preserve unique source material.
+- #1659: four unique paths and two shared paths; preserve local Llama/Termux work.
+- #1640 has 62 COMMENTED review submissions, zero APPROVED reviews and 22/22 resolved inline threads.
+- Main reports `protected=true`, but detailed branch-protection access returns HTTP 403. Visible required status contexts are empty; the only visible fallback ruleset is disabled. GitHub Pages is enabled and a previous main push triggered publication; this PR changes seven public web assets and explicit publication authorization is absent. No merge was attempted.
+
+### Prediction and platform status
+
+The integration branch contains 40 source records: 36 hourly public sources, two weekly CFTC sources and two excluded non-commercial XRPL node sources. The scheduled ingestion workflow is read-only and main-only, so it is not active on main. The branch includes SHA-256 receipt/chain logic, point-in-time SQLite features, four deterministic baselines, purged/embargoed chronological walk-forward evaluation, calibration diagnostics, drift monitoring and a fail-closed forecast/outcome ledger.
+
+Independent WORM/timestamp anchoring, complete synchronized history, measured out-of-sample lift, real-data calibration and shadow outcomes remain absent. CFTC remains raw-only. **Forecast status: NOT_ISSUED.**
+
+Nine-platform map last verified at Run104; no new persistent external authentication or data exchange was established. Only this ChatGPT session's GitHub connector is verified. Copilot activity is COMMENTED, not approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified or previously failed as recorded in the map.
+
+### Safety and next action
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+Next: verify full CI, six-manifest audit and fail-closed gate on the handoff/artifact descendant; keep #1640 blocked until an independent approval, effective protection requirements and explicit Pages-publication authorization are resolved. Then proceed with durable raw-source anchoring and synchronized historical XRP data before forecast admission.
