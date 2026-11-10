@@ -21,6 +21,16 @@ A future event can be a valid feature if announced by T: event_time may be after
 
 For issuer holdings and ETF/listed-product flow data, `source_data_as_of_utc` must be the effective/as-of date on the underlying issuer row, not the aggregator's displayed observation date, page update time, retrieval time, or a date inferred from a summary. If the page contains multiple dated rows, parse and validate the exact row used. If a future-dated row is present and the requested historical row cannot be isolated, mark the observation provisional and model-ineligible. Never backdate a later holdings snapshot to an earlier flow date. Holdings deltas are not creations/redemptions unless issuer evidence confirms that interpretation. Preserve the aggregator observation date, underlying issuer row date, page publication/update time, retrieval time, first public availability, and ingestion time separately.
 
+## Raw HTTP provenance schema v2 and cache-age gate
+
+Raw receipt schema v2 adds an allowlisted \`source_http_headers\` object to the canonical receipt. The selected, non-sensitive headers are \`age\`, \`cache-control\`, \`content-type\`, \`content-encoding\`, \`etag\`, \`expires\`, \`last-modified\`, \`cf-cache-status\` and \`x-cache\`. Values are normalized, printable and bounded to 512 characters. Authorization, cookies, Set-Cookie and unapproved headers are not retained.
+
+The header object is included in the canonical receipt ID and the per-run SHA-256 receipt chain. Legacy v1 receipts remain readable and verifiable; the archive does not rewrite historical receipts. The forecast ledger validates both v1 and v2.
+
+For live market snapshots, an HTTP \`Age\` value above 300 seconds excludes a ticker and above 60 seconds excludes an order-book snapshot. A malformed \`Age\` value also excludes the observation. If \`Age\` is absent, freshness is **unknown**, not assumed. Provider event time and source-data-as-of checks remain required. \`ETag\`, \`Last-Modified\` and cache-status headers are provenance/validation metadata, not provider event timestamps.
+
+This gate detects stale intermediary cache responses when the header is supplied. It does not prove origin freshness, provide a trusted timestamp or create independent WORM storage.
+
 ## Snapshot contract
 The validator computes normalized-content SHA-256 hashes and deterministic snapshot SHA-256 IDs over canonical manifests and eligible feature records. Manifests record asset scope, cutoff, capture time, adapters, parsers, source IDs/groups, record counts and quality exclusions. Excluded records contribute only record IDs and exclusion reasons; excluded values are not placed in the model-facing snapshot. Corrections create new versions and supersession links. Conflicting provider observations remain separate until reconciled. Persist normalized UTC timestamps. Schema v1 does not retain the original provider timestamp string in normalized feature rows. The first PR #1640 adapter preserves raw response bytes and hashes in per-run artifacts, but those artifacts have 90-day retention and are not a WORM store or independently timestamp-anchored archive.
 

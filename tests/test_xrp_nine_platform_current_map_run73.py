@@ -32,7 +32,7 @@ def load_run78_snapshot():
     )
 
 
-def test_run109_current_snapshot_preserves_run82_run78_run77_and_historical_map():
+def test_run111_current_snapshot_preserves_run82_run78_run77_and_historical_map():
     current = load_current()
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
     observation = next(
@@ -47,9 +47,9 @@ def test_run109_current_snapshot_preserves_run82_run78_run77_and_historical_map(
     prior73 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 73)
 
     assert current["captured_at_utc"] == current["last_verified_at_utc"]
-    assert current["latest_run_snapshot"]["run_id"] == 109
+    assert current["latest_run_snapshot"]["run_id"] == 111
     assert current["latest_run_snapshot"]["captured_at_utc"] == current["captured_at_utc"]
-    assert current["current_run_observations"]["run_id"] == 109
+    assert current["current_run_observations"]["run_id"] == 111
     assert any(item.get("run_id") == 104 for item in current["prior_run_observations"])
     assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
@@ -326,7 +326,7 @@ def test_run80_prior_snapshot_records_repository_and_safe_status():
 
 
 
-def test_run82_historical_snapshot_is_preserved_when_run109_becomes_current():
+def test_run82_historical_snapshot_is_preserved_when_run111_becomes_current():
     import hashlib
     import math
     data = load_current()
@@ -335,22 +335,22 @@ def test_run82_historical_snapshot_is_preserved_when_run109_becomes_current():
         item for item in data["prior_run_observations"]
         if item.get("run_id") == 82 and item.get("captured_at_utc") == "2026-11-09T16:14:36Z"
     )
-    assert data["captured_at_utc"] == data["last_verified_at_utc"] == "2026-11-10T01:27:20Z"
-    assert data["latest_run_snapshot"]["run_id"] == 109
+    assert data["captured_at_utc"] == data["last_verified_at_utc"] == "2026-11-10T02:37:25Z"
+    assert data["latest_run_snapshot"]["run_id"] == 111
     assert data["latest_run_snapshot"]["captured_at_utc"] == data["captured_at_utc"]
-    assert current["run_id"] == 109
-    assert current["captured_at_utc"] == "2026-11-10T01:27:20Z"
-    assert current["integration_head_before_handoff_commit"] == "a900c4df8833839ed847c0b307588cfb3f34f7d1"
+    assert current["run_id"] == 111
+    assert current["captured_at_utc"] == "2026-11-10T02:37:25Z"
+    assert current["integration_head_before_handoff_commit"] == "d28612a2ac04e93338b0a8774a75fdc8181c3bbd"
     assert current["open_pr_inventory"]["total"] == 372
     assert current["open_pr_inventory"]["drafts"] == 356
     assert current["repository_trees"]["main"]["entries"] == 1404
-    assert current["repository_trees"]["integration"]["entries"] == 1516
-    assert current["branch_ancestry"]["pr_1640"]["ahead"] == 874
+    assert current["repository_trees"]["integration"]["entries"] == 1522
+    assert current["branch_ancestry"]["pr_1640"]["ahead"] == 887
     assert current["branch_ancestry"]["pr_1640"]["behind"] == 0
-    assert current["ci_evidence"]["integration"]["full_suite"]["passed"] == 1316
+    assert current["ci_evidence"]["integration"]["full_suite"]["passed"] == 1343
     assert current["ci_evidence"]["integration"]["full_suite"]["failed"] == 0
     assert current["ci_evidence"]["integration"]["full_suite"]["subtests"] == 8
-    assert current["ci_evidence"]["integration"]["full_suite"]["coverage_pct"] == 59.36
+    assert current["ci_evidence"]["integration"]["full_suite"]["coverage_pct"] == 59.48
     assert current["reviews"]["pr_1640"]["approved"] == 0
     assert current["reviews"]["pr_1653"]["threads_unresolved"] == 8
     assert current["merge_state"]["pages_authorized"] is False
@@ -360,7 +360,7 @@ def test_run82_historical_snapshot_is_preserved_when_run109_becomes_current():
     assert hashlib.sha256(current_market["raw_response_bodies"]["kraken_xrpusd"].encode("utf-8")).hexdigest() == "5710b000d3edd33437bede086347242c20adefc8407d04f534e11b2d9f06a35d"
     assert hashlib.sha256(current_market["raw_response_bodies"]["okx_xrpusdt"].encode("utf-8")).hexdigest() == "3e85143fa53f2669ca7244b66c921e925df909b9963dd75bf5199906e35a51a8"
     assert current_market["model_admission"] is False
-    assert current_market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-10T01:16:47.232Z"
+    assert current_market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-10T02:23:18.267Z"
     assert current_market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
     assert current_market["comparison"]["asynchronous"] is True
     assert current_market["raw_http_bytes_preserved"] is False
@@ -396,11 +396,11 @@ def test_run82_historical_snapshot_is_preserved_when_run109_becomes_current():
     assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
     assert market["spot"]["kraken_usdtusd"]["provider_event_time_utc"] is None
     assert market["cross_venue_comparison"]["asynchronous"] is True
-    assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0581094, rel_tol=1e-5)
+    assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0575, rel_tol=1e-5)
     assert math.isclose(market["cross_venue_comparison"]["normalized_mid_gap_pct"], 0.0955234, rel_tol=1e-5)
 
 
-def test_run110_verification_addendum_keeps_only_chatgpt_github_verified():
+def test_run111_verification_preserves_run110_addendum_and_only_chatgpt_is_verified():
     current = load_current()
     addendum = current["latest_verification_addendum"]
     assert addendum["run_id"] == 110
@@ -412,7 +412,7 @@ def test_run110_verification_addendum_keeps_only_chatgpt_github_verified():
     assert addendum["chatgpt_github_connector"]["read_access"] is True
     assert addendum["chatgpt_github_connector"]["write_access_tested"] is True
     assert current["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
-    assert current["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-10T02:00:36Z"
+    assert current["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-10T02:37:25Z"
     for name, platform in current["platforms"].items():
         if name != "ChatGPT":
             assert platform["data_flow"]["verified"] is False

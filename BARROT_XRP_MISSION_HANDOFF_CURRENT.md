@@ -1,3 +1,111 @@
+# Run 111 — XRP source-provenance hardening and exchange-flow reconciliation
+
+**Run capture:** 2026-11-10 02:28:18 UTC  
+**Verification completed:** 2026-11-10 02:37:25 UTC  
+**Main:** \`d4d43be3427375cf79d190e768976de062e20287\`  
+**Verified code/test head:** \`d28612a2ac04e93338b0a8774a75fdc8181c3bbd\`  
+**Existing integration PR:** [#1640](https://github.com/Barrot-Agent/B-Agent/pull/1640)
+
+XRP intelligence and prediction-engine mastery remain Barrot's priority-one mission. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** source-provenance hardening for cache validators and response freshness; independent WORM/timestamp anchoring remains an unmet requirement.
+- **EXECUTED:** extended the existing public collector and raw-receipt contract to preserve allowlisted HTTP cache/validator headers; added source-specific cache-age exclusion; updated the forecast ledger to accept legacy and new receipt versions; added regression coverage. No new branch or PR.
+- **VERIFIED on code/test head \`d28612a2ac04e93338b0a8774a75fdc8181c3bbd\`:** full repository suite **1,343 passed, 0 failed, 8 subtests**, inclusive coverage **59.48%**; core suite 677 passed; installed wheel loaded Barrot V3 and the XRP mission; six-manifest dependency audit found zero known vulnerabilities; fail-closed merge gate passed with automatic merging disabled.
+
+Exact evidence:
+- [Full repository CI — run 42743666268](https://github.com/Barrot-Agent/B-Agent/actions/runs/42743666268)
+- [Dependency/security audit — run 42743666428](https://github.com/Barrot-Agent/B-Agent/actions/runs/42743666428)
+- [Fail-closed gate — run 42743666412](https://github.com/Barrot-Agent/B-Agent/actions/runs/42743666412)
+
+An intermediate head \`12d0ecf\` exposed two core-test failures because the forecast ledger still required receipt schema v1. The follow-up \`d28612a\` added explicit v1/v2 compatibility and validation; the full suite then passed on that exact code/test head. This handoff/map/test update is a documentation/data descendant of \`d28612a2ac04e93338b0a8774a75fdc8181c3bbd\`; its own CI is pending until the new commit's checks finish. Do not treat the descendant as verified before those exact-head checks pass.
+
+## Source-provenance implementation
+
+The scheduled collector now captures an allowlist of non-sensitive response headers: \`Age\`, \`Cache-Control\`, \`Content-Type\`, \`Content-Encoding\`, \`ETag\`, \`Expires\`, \`Last-Modified\`, \`CF-Cache-Status\` and \`X-Cache\`. Values are normalized, bounded to 512 characters and validated; cookies, authorization and unapproved headers are not retained.
+
+Raw receipt schema v2 binds \`source_http_headers\` into the canonical receipt ID and per-run SHA-256 chain. Legacy v1 receipts remain verifiable. The forecast ledger accepts and validates both versions.
+
+Live snapshot freshness gates now exclude a ticker when HTTP \`Age\` exceeds 300 seconds, exclude an order-book snapshot when it exceeds 60 seconds, and exclude a malformed \`Age\` value. A missing \`Age\` header remains **unknown**, not proof of freshness; provider event-time and source-data-as-of checks still apply. HTTP validators are provenance, not event timestamps.
+
+This does not create independent WORM storage, trusted timestamp anchoring or protection against a stale origin response with no usable cache-age header.
+
+## XRP market and flow research
+
+### Direct exchange API cross-check
+
+The web-rendered public API responses were captured during the run. Exact surfaced JSON-text SHA-256 hashes are recorded in the Run111 research artifact; these are **not hashes of original HTTP wire bytes**, because transport bytes and response headers were not retained by the web renderer.
+
+- Kraken XRP/USD: last **$1.09175**, bid $1.09174, ask $1.09175; 24-hour volume **29.752M XRP**, VWAP $1.09622574, high $1.12191, low $1.07502.
+- OKX XRP-USDT: last **1.0938 USDT**, bid 1.0938, ask 1.0939; 24-hour volume **71.886M XRP**; provider timestamp **2026-11-10 02:23:18.267 UTC**. It was approximately 300 seconds old at the run-start timestamp and its exact retrieval time is unavailable; treat it as edge-of-threshold and model-ineligible.
+- Kraken USDT/USD: last **0.99870**, with no provider event timestamp. Normalizing the OKX last through that asynchronous USDT/USD quote gives approximately **$1.092378**, about **0.0575%** above Kraken's displayed last. This is not an executable arbitrage signal: timestamps, quote currency, depth, fees and settlement are not synchronized.
+- The returned data contains top-of-book quotes/sizes only. No synchronized L2 depth snapshot was admitted.
+
+### Exchange balances: methodology correction
+
+XRP Insights' page reports **22.35B XRP** across **701 labeled wallets at 24 exchanges**, with an underlying balance snapshot as of **2026-11-09 08:01 UTC**. At the Run111 capture that snapshot was approximately **18.455 hours old**. Its page refresh cadence is hourly, but the underlying balances are read daily.
+
+The page reports:
+- same-wallet change: **−25.8M XRP over 7 days** and **−138.1M over 30 days**;
+- latest daily same-wallet change: **+9.7M XRP on November 9**;
+- naive total change: **+373.9M XRP**, including **two newly tracked wallets holding 512M XRP**;
+- approximately **48.4% cold-labeled**, **12% hot-labeled** and **40% unclassified**;
+- approximately **483M XRP** in wrapped/insurance/other reserves that are not customer deposits;
+- a further **323M XRP** in labeled wallets at roughly 36 exchanges outside the tracked set.
+
+The provider describes daily XRPL \`account_info\` reads, XRPSCAN-derived wallet labels, retention of the last good balance after a failed read, a new-wallet threshold of at least 100,000 XRP, and no per-wallet historical series. These totals are not total tradable float, customer balances or independently audited exchange liabilities. Wallet-label additions, cold-storage movements, wrapped reserves, stale last-good reads and transfers to unlabeled wallets can create apparent flow changes. The endpoint remains **raw-only / model-ineligible**.
+
+### Conflicting Binance flow observations
+
+CryptoQuant's Darkfost Quicktakes report:
+- **691M XRP gross inflow to Binance on November 8**, described as roughly $900M and the largest daily inflow in nearly six months; the 90-day average was reported above $100M/day.
+- **418.5M XRP outflow from Binance on November 4**, described as roughly $540M and the largest outflow in nine months.
+
+These are the same provider/analyst, different dates and gross directional-flow measures. Do not net them against each other or treat them as independent sources. Deposits do not prove sales; the analyst raised possible reserve replenishment after the October 29 Binance incident as one hypothesis. Withdrawals do not prove long-term accumulation; internal transfers remain possible.
+
+### Korea, ETF and macro context
+
+- CryptoTicker reports Upbit XRP turnover of **138.7B KRW** (about **$102M**) and 17.0% of Upbit's 24-hour venue volume on November 9. It also reports XRP turnover falling from 178.2B KRW on Nov 5 to 143.1B on Nov 6, 87.0B on Nov 7 and 76.8B on Nov 8, versus a 29-day average of 99.9B. Turnover is not net capital. Its approximately −0.03% kimchi-premium estimate uses the November 6 ECB USD/KRW reference rate, so the FX conversion is stale.
+- Bitcoin.com News, citing SoSoValue, reports a $529,500 XRPC outflow on Nov 2 and zero net flows across Nov 3–6; cumulative inflows were reported at $1.81B and net assets at $1.34B. This is a secondary tracker report, not a primary issuer reconciliation. Net assets can fall with XRP price without redemptions; tracker coverage must be recorded.
+- The U.S. BLS scheduled the October 2026 CPI release for **November 10 at 08:30 ET / 13:30 UTC**. It was a future event at this capture, not a released observation.
+
+Competing hypotheses remain open: (1) weak spot demand plus large Binance deposits and inactive ETF flows leave XRP vulnerable to continued selling; (2) some deposits may be reserve/internal rebalancing, while the November 4 outflow and seven-day same-wallet exchange-balance decline could reflect withdrawal or custody movement; (3) falling turnover and heavy long liquidations may indicate exhaustion rather than continuation. None is sufficiently identified to support a directional forecast.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred. Web-rendered observations are not model-admitted.
+
+## Repository, PR and merge state
+
+At capture:
+- main SHA \`d4d43be3427375cf79d190e768976de062e20287\`; main tree 1,404 entries / 1,299 files.
+- integration tree 1,522 entries / 1,409 files, including 87 workflow files, 567 Python files and 146 test files.
+- PR #1640: **887 commits ahead, 0 behind, 225 changed paths**, 107,410 additions and 3,554 deletions; GitHub reported clean/mergeable.
+- full open-PR inventory: **372** (356 drafts, 16 non-drafts), paged 100/100/100/72.
+
+PR #1640 remains the single active V3/XRP integration path. It has 62 review submissions, all COMMENTED, **zero approvals**, and 22 resolved inline threads. Main branch-protection detail remains HTTP 403; the visible fallback ruleset is disabled. GitHub Pages is enabled and a prior main push triggered publication; authorization for another automatic public publication is absent. **No merge was attempted.**
+
+Backlog:
+- #1643: unique research archive, 663 paths unique and 7 shared; preserve.
+- #1653: unique knowledge graph, 6 paths unique and 1 shared; 8 unresolved review threads; preserve and repair.
+- #1642: all 7 paths overlap #1640; superseded-content candidate, retain until verified on main.
+- #1644–#1650: dependency/action path overlaps; exact source-blob reconciliation and post-merge verification still required.
+- #1317/#1318/#1320: structural/schema/paper-trader path overlaps; retain until exact content is verified on main.
+- #1254/#1255: shared legacy requirements path; dependency reconciliation candidates.
+- #1269: preserve 8 unique mesh/topology paths.
+- #1641, #1655 and #1659: preserve unique draft material.
+- No PRs closed; no bulk closure.
+
+Only the ChatGPT GitHub connector is authenticated and tested in this session. Copilot has one-off COMMENTED review activity, not approval. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks have no verified persistent authenticated data flows. No external-model data exchange occurred.
+
+Main still lacks the priority-one mission manifest and the scheduled XRP ingestion workflow. The latter is read-only and main-only on #1640; it has not run on main. Main's prior CI passed 718 tests/8 subtests, but scheduled failures remain in Pillars Consistency (credentials/Databricks 403/Hugging Face build), Hover Bike artifact path and Riemann missing pydantic-settings. Integration-side fixes for the latter two have not been executed on main.
+
+## Preservation and next action
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+Next: finish exact-head CI on the Run111 handoff/map/test descendant; obtain an independent approving review and authoritative branch-protection visibility; resolve Pages-publication authorization; then merge only if every gate passes. After an authorized merge, fetch main, verify the merge commit/files, run main CI and inspect workflow side effects. Preserve unique research and graph PRs. Advance synchronized historical XRP data and independent receipt anchoring before any forecast issuance.
+
+---
 # Run 110 — XRP intelligence, exchange-flow and XRPL governance reconciliation
 
 Capture anchor: 2026-11-10T02:00:36Z. This section supersedes the prior run only for the observations below; historical records remain preserved.
