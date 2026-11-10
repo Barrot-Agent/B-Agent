@@ -43,8 +43,8 @@ LUNAROUTE_API_KEY = os.getenv("LUNAROUTE_API_KEY")
 GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
 TARGET_REPO = os.getenv("TARGET_REPO", "Barrot-Agent/B-Agent")
 
-if not LUNAROUTE_API_KEY:
-    console.print("[red]Missing LUNAROUTE_API_KEY[/red]")
+if not LUNAROUTE_API_KEY or not GH_TOKEN:
+    console.print("[red]Missing LUNAROUTE_API_KEY or GH_TOKEN/GITHUB_TOKEN[/red]")
     sys.exit(1)
 
 
@@ -513,11 +513,6 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "--auto-merge",
-        action="store_true",
-    )
-
-    parser.add_argument(
         "--model",
         default=os.getenv(
             "LUNAROUTE_MODEL",
@@ -702,38 +697,3 @@ def main():
             f"{pr_url}"
         )
 
-        if args.auto_merge:
-            pr_response = repo.client.get(
-                pr_url.replace(
-                    "https://github.com/",
-                    "https://api.github.com/repos/"
-                ).replace(
-                    "/pull/",
-                    "/pulls/"
-                )
-            )
-
-            if pr_response.status_code == 200:
-                pr_number = (
-                    pr_response.json()["number"]
-                )
-
-                merge_result = repo.merge_pr(
-                    pr_number
-                )
-
-                console.print(
-                    "[bold green]"
-                    "AUTO-MERGE RESULT:"
-                    "[/bold green]"
-                )
-                console.print(
-                    json.dumps(
-                        merge_result,
-                        indent=2,
-                    )
-                )
-
-
-if __name__ == "__main__":
-    main()
