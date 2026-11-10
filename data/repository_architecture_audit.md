@@ -32,3 +32,16 @@ Whether `hosts.yml` holds a real token; what any workflow actually executes; whe
 ## To proceed
 
 Tell me the audit scope (security, CI governance, test integrity, repo hygiene?) and paste the remainder of the listing or specific files. I'd start with `.config/gh/hosts.yml`, the merge-family workflows, and the headers of the four disabled tests.
+
+## Current-state correction — 2026-11-10 22:15 UTC
+
+This report is a historical first-pass audit based on an explicitly truncated path listing. It is not a complete or current repository inventory.
+
+Verified current tree facts:
+- Main tree at `afb3024fbcb976db5acdf52b85e253ff46859ce6`: 1,404 entries, including application packages, tests, project metadata and GitHub workflows.
+- XRP/V3 integration tree before this correction: 2,254 entries.
+- `.config/gh/hosts.yml` is absent from current main and integration trees.
+- The same path remains in 17 specifically inspected open PR branch trees. The 17-branch check is targeted, not exhaustive across every open PR.
+- File contents were not inspected. Treat the path as a potential GitHub CLI credential exposure; the owner must revoke/reissue if the file held a live token. No credential value is reproduced and no secret operation was performed.
+
+Do not interpret the truncated listing's missing `src/`, tests or package metadata as evidence that the repository lacks application source. The full Git tree contradicts that inference.

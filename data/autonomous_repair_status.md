@@ -40,3 +40,12 @@ Notably, the listing contains **almost no application source code** (no `src/`, 
 | 7 | **Medium** | `dump-brain-corpus.yml`, `sync-self-hosted-brain.yml`, `sync-huggingface.yml`, `rotate-databricks-token.yml` | Data-egress and credential-rotation automation; destinations and secret scoping unverifiable from names | Audit target endpoints, token scopes, and least-privilege on the `GITHUB_TOKEN`/PATs used |
 | 8 | **Medium** | `.barrot/` contains `repository_identity.json`, `repo_state_manifest.json`, `barrot_self_repair.py`, `barrot_generated_practice.py` | An agent maintaining its own model of the repo inside the repo. If workflows read these files as input to merge/deploy decisions, the state files become a trust boundary | Trace which workflows consume these JSONs |
 | 9 | **Low** | ~45 status/summary Markdown files at root; no `docs/` visible | Root pollution; "implementation complete" docs are unverified claims, not documentation | Move to
+
+
+## Current-state correction — 2026-11-10 22:15 UTC
+
+The structural audit above was generated from an incomplete, truncated path listing. Its statement that the listing contains almost no application source is a limitation of the supplied excerpt, not a verified description of the repository.
+
+The complete main Git tree at `afb3024fbcb976db5acdf52b85e253ff46859ce6` contains 1,404 entries, including `barrot_agent/`, `tests/`, package metadata and active workflows. The XRP/V3 integration tree contains more than 2,250 entries. Code-level conclusions require inspecting those actual files and CI evidence; the truncated-listing audit must not be used as a substitute.
+
+Security path correction: `.config/gh/hosts.yml` is absent from current main and integration, but remains present in 17 specifically checked open PR branch trees. This check is not exhaustive across all open PR heads. File contents were not inspected; treat as potential credential exposure and have the owner revoke/reissue if a live token was stored. No credential value was accessed, rotated or reproduced.
