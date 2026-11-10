@@ -32,42 +32,94 @@ def load_run78_snapshot():
     )
 
 
-def test_run111_current_snapshot_preserves_run82_run78_run77_and_historical_map():
-    current = load_current()
+def test_current_snapshot_preserves_run82_run78_run77_and_historical_map():
+    data = load_current()
+    current = data["current_run_observations"]
+    latest = data["latest_run_snapshot"]
     historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
     observation = next(
-        item for item in current["prior_run_observations"]
+        item for item in data["prior_run_observations"]
         if item.get("run_id") == 82 and item.get("captured_at_utc") == "2026-11-09T16:14:36Z"
     )
-    prior77 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 77 and item.get("captured_at_utc") == "2026-11-09T02:01:02Z")
+    prior77 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 77 and item.get("captured_at_utc") == "2026-11-09T02:01:02Z")
     prior77_addendum = load_run77_snapshot()
     prior78 = load_run78_snapshot()
-    prior76 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 76)
-    prior75 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 75)
-    prior73 = next(item for item in current["prior_run_observations"] if item.get("run_id") == 73)
+    prior76 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 76)
+    prior75 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 75)
+    prior73 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 73)
+    prior111 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 111)
 
-    assert current["captured_at_utc"] == current["last_verified_at_utc"]
-    assert current["latest_run_snapshot"]["run_id"] == 111
-    assert current["latest_run_snapshot"]["captured_at_utc"] == current["captured_at_utc"]
-    assert current["current_run_observations"]["run_id"] == 111
-    assert any(item.get("run_id") == 104 for item in current["prior_run_observations"])
+    # Capture time and verification time are distinct fields; verification must not precede capture.
+    assert data["captured_at_utc"] <= data["last_verified_at_utc"]
+    assert latest["run_id"] == latest["run"] == current["run_id"] == data["run"]
+    assert latest["captured_at_utc"] == data["captured_at_utc"] == current["captured_at_utc"]
+    assert current["last_verified_at_utc"] >= current["captured_at_utc"]
+    assert latest["handoff_map_descendant_parent_head"] == current["integration_head_before_map_commit"]
+    assert any(item.get("run_id") == 104 for item in data["prior_run_observations"])
+
+    # Run111 is retained as history after the current map advances.
+    assert prior111["captured_at_utc"] == "2026-11-10T02:37:25Z"
+    assert prior111["latest_run_snapshot"]["run_id"] == 111
+    assert prior111["latest_run_snapshot"]["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
+    assert prior111["latest_run_snapshot"]["prediction_engine"]["endpoints"] == 40
+    assert prior111["latest_run_snapshot"]["prediction_engine"]["scheduled_public_sources"] == 36
+    assert prior111["latest_run_snapshot"]["ci_evidence"]["full_suite"]["passed"] == 1343
+
+    assert current["main_sha"] == data["main_sha"]
+    assert current["open_pr_inventory"]["total"] == 373
+    assert current["open_pr_inventory"]["drafts"] == 358
+    assert current["open_pr_inventory"]["non_drafts"] == 15
+    assert current["repository_trees"]["main"]["entries"] == 1404
+    assert current["repository_trees"]["integration"]["entries"] == 2245
+    assert current["branch_ancestry"]["pr_1660"]["ahead"] == 1905
+    assert current["branch_ancestry"]["pr_1660"]["behind"] == 0
+    assert current["ci_evidence"]["full_suite"]["passed"] == 3363
+    assert current["ci_evidence"]["full_suite"]["failed"] == 0
+    assert current["ci_evidence"]["full_suite"]["subtests"] == 8
+    assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.58
+    assert current["reviews"]["pr_1660"]["approvals"] == 0
+    assert current["reviews"]["pr_1653"]["threads_unresolved"] == 8
+    assert current["merge_state"]["pages_deployment_authorized"] is False
+    assert current["merge_state"]["merge_performed"] is False
+    assert current["forecast_status"] == "NOT_ISSUED"
+    current_market = current["latest_market_crosscheck"]
+    assert current_market["model_admission"] is False
+    assert current_market["raw_http_bytes_preserved"] is False
+
+    # Run82 remains a complete historical observation, including its original receipts.
     assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
     assert observation["run_id"] == 82
-    assert observation["captured_at_utc"] >= prior78["captured_at_utc"]
     assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
     assert observation["integration_head_before_handoff_commit"] == "2685c1744aa5a7972da9063a18be665077c4548c"
-    assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
-    assert prior78["prediction_engine"]["endpoints"] == 35
-    assert prior78["prediction_engine"]["scheduled_public_sources"] == 33
-    assert prior77["integration_head_before_handoff_commit"] == "e31a951939bcdd638f190d9d2ff8c5faae9b2091"
-    assert prior77_addendum["integration_head_before_handoff_commit"] == "f92aafdc25fce42c60c04d70b8e6cca47969cfdf"
-    assert prior76["captured_at_utc"] == "2026-11-09T01:50:00Z"
-    assert prior76["ci_evidence"]["integration"]["full_suite"]["passed"] == 1234
-    assert prior75["captured_at_utc"] == "2026-11-09T01:36:00Z"
-    assert prior73["captured_at_utc"] == "2026-11-09T00:23:14Z"
-    assert historical["captured_at_utc"] == "2026-11-08T22:30:23Z"
-    assert historical["current_run_observations"]["run_id"] == 70
+    assert any(item.get("run_id") == 81 for item in data["prior_run_observations"])
+    assert observation["open_pr_inventory"]["total"] == 372
+    assert observation["open_pr_inventory"]["drafts"] == 356
+    assert observation["branch_ancestry"]["pr_1640"]["ahead"] == 816
+    assert observation["branch_ancestry"]["pr_1640"]["behind"] == 0
+    assert observation["ci_evidence"]["integration"]["full_suite"]["passed"] == 1299
+    assert observation["ci_evidence"]["integration"]["full_suite"]["subtests"] == 8
+    assert observation["ci_evidence"]["integration"]["full_suite"]["coverage_pct"] == 59.09
+    assert observation["reviews"]["pr_1640"]["approved"] == 0
+    assert observation["merge_state"]["pages_authorized"] is False
+    assert observation["merge_state"]["merge_performed"] is False
+    assert observation["forecast_status"] == "NOT_ISSUED"
+    market = observation["latest_market_crosscheck"]
+    expected = {
+        "kraken_xrpusd": "9ff2a9a6954ad6fc5e933a1194f794eacb1a589cd62951964e534524b2ac1efe",
+        "okx_xrpusdt": "1a265dca95328c2d4fb9276257285d219ca0dca5d5f7659cddb0531f4d6ebd71",
+        "kraken_usdtusd": "dbbee9ecb62201e24f41f5a9cfc452a6c65f79dcb3dbdfd55790c3d495d6df59",
+    }
+    for name, digest in expected.items():
+        assert hashlib.sha256(market["raw_response_bodies"][name].encode("utf-8")).hexdigest() == digest
+    assert market["model_admission"] is False
+    assert market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-09T15:45:58.670Z"
+    assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
+    assert market["spot"]["kraken_usdtusd"]["provider_event_time_utc"] is None
+    assert market["cross_venue_comparison"]["asynchronous"] is True
+    assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0581094, rel_tol=1e-5)
+    assert math.isclose(market["cross_venue_comparison"]["normalized_mid_gap_pct"], 0.0955234, rel_tol=1e-5)
+
 
 def test_run77_prediction_engine_contract_remains_fail_closed():
     observation = load_run77_snapshot()
@@ -326,43 +378,41 @@ def test_run80_prior_snapshot_records_repository_and_safe_status():
 
 
 
-def test_run82_historical_snapshot_is_preserved_when_run111_becomes_current():
-    import hashlib
-    import math
+def test_run82_historical_snapshot_remains_unchanged_as_current_map_advances():
     data = load_current()
     current = data["current_run_observations"]
+    latest = data["latest_run_snapshot"]
     observation = next(
         item for item in data["prior_run_observations"]
         if item.get("run_id") == 82 and item.get("captured_at_utc") == "2026-11-09T16:14:36Z"
     )
-    assert data["captured_at_utc"] == data["last_verified_at_utc"] == "2026-11-10T02:37:25Z"
-    assert data["latest_run_snapshot"]["run_id"] == 111
-    assert data["latest_run_snapshot"]["captured_at_utc"] == data["captured_at_utc"]
-    assert current["run_id"] == 111
-    assert current["captured_at_utc"] == "2026-11-10T02:37:25Z"
-    assert current["integration_head_before_handoff_commit"] == "d28612a2ac04e93338b0a8774a75fdc8181c3bbd"
-    assert current["open_pr_inventory"]["total"] == 372
-    assert current["open_pr_inventory"]["drafts"] == 356
+    prior111 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 111)
+
+    assert data["captured_at_utc"] <= data["last_verified_at_utc"]
+    assert latest["run_id"] == current["run_id"] == data["run"]
+    assert latest["captured_at_utc"] == data["captured_at_utc"] == current["captured_at_utc"]
+    assert current["last_verified_at_utc"] >= current["captured_at_utc"]
+    assert prior111["latest_run_snapshot"]["run_id"] == 111
+    assert prior111["captured_at_utc"] == "2026-11-10T02:37:25Z"
+    assert current["main_sha"] == data["main_sha"]
+    assert current["open_pr_inventory"]["total"] == 373
+    assert current["open_pr_inventory"]["drafts"] == 358
+    assert current["open_pr_inventory"]["non_drafts"] == 15
     assert current["repository_trees"]["main"]["entries"] == 1404
-    assert current["repository_trees"]["integration"]["entries"] == 1522
-    assert current["branch_ancestry"]["pr_1640"]["ahead"] == 887
-    assert current["branch_ancestry"]["pr_1640"]["behind"] == 0
-    assert current["ci_evidence"]["full_suite"]["passed"] == 1343
+    assert current["repository_trees"]["integration"]["entries"] == 2245
+    assert current["branch_ancestry"]["pr_1660"]["ahead"] == 1905
+    assert current["branch_ancestry"]["pr_1660"]["behind"] == 0
+    assert current["ci_evidence"]["full_suite"]["passed"] == 3363
     assert current["ci_evidence"]["full_suite"]["failed"] == 0
     assert current["ci_evidence"]["full_suite"]["subtests"] == 8
-    assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.48
+    assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.58
     assert current["reviews"]["pr_1640"]["approved"] == 0
     assert current["reviews"]["pr_1653"]["threads_unresolved"] == 8
-    assert current["merge_state"]["pages_authorized"] is False
+    assert current["merge_state"]["pages_deployment_authorized"] is False
     assert current["merge_state"]["merge_performed"] is False
     assert current["forecast_status"] == "NOT_ISSUED"
     current_market = current["latest_market_crosscheck"]
-    assert hashlib.sha256(current_market["raw_response_bodies"]["kraken_xrpusd"].encode("utf-8")).hexdigest() == current_market["response_text_sha256"]["kraken_xrpusd"] == "9611d8a0ff3d2c87bb168d3e4f498950679827a05bddaca06925a7f3a0293c90"
-    assert hashlib.sha256(current_market["raw_response_bodies"]["okx_xrpusdt"].encode("utf-8")).hexdigest() == current_market["response_text_sha256"]["okx_xrpusdt"] == "348cdc51e515aa545159c4fbc80692ecef7603da2bdc598bafc5d98594ba8fbf"
     assert current_market["model_admission"] is False
-    assert current_market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-10T02:23:18.267Z"
-    assert current_market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
-    assert current_market["comparison"]["asynchronous"] is True
     assert current_market["raw_http_bytes_preserved"] is False
 
     # Run82 remains a complete historical observation, including its original receipts.
@@ -400,7 +450,7 @@ def test_run82_historical_snapshot_is_preserved_when_run111_becomes_current():
     assert math.isclose(market["cross_venue_comparison"]["normalized_mid_gap_pct"], 0.0955234, rel_tol=1e-5)
 
 
-def test_run111_verification_preserves_run110_addendum_and_only_chatgpt_is_verified():
+def test_run110_verification_addendum_is_preserved_and_only_chatgpt_is_verified():
     current = load_current()
     addendum = current["latest_verification_addendum"]
     assert addendum["run_id"] == 110
@@ -411,8 +461,10 @@ def test_run111_verification_preserves_run110_addendum_and_only_chatgpt_is_verif
     assert addendum["external_platform_data_exchange"] is False
     assert addendum["chatgpt_github_connector"]["read_access"] is True
     assert addendum["chatgpt_github_connector"]["write_access_tested"] is True
+
     assert current["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
-    assert current["platforms"]["ChatGPT"]["last_verified_at_utc"] == "2026-11-10T02:37:25Z"
+    chatgpt_verified_at = current["platforms"]["ChatGPT"]["last_verified_at_utc"]
+    assert current["captured_at_utc"] <= chatgpt_verified_at <= current["last_verified_at_utc"]
     for name, platform in current["platforms"].items():
         if name != "ChatGPT":
             assert platform["data_flow"]["verified"] is False

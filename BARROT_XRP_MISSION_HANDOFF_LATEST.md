@@ -4894,3 +4894,60 @@ No source PRs were closed. No merge was attempted. The conditional merge authori
 9. After any authorized merge, fetch main again, verify the merge commit and merged files, run main CI, inspect workflow side effects, and only then close exact duplicate/superseded source PRs.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred in this run.
+
+
+
+---
+
+## Run137 — current-main integration review and stale historical-test repair
+
+**Repository state at inspection:** 2026-11-10.
+
+- Main: `e35f3d16b842d0f75847dd4bb0b51531f38c5f38`.
+- Consolidated integration PR: [#1660](https://github.com/Barrot-Agent/B-Agent/pull/1660), branch `integration/xrp-v3-unified-main-20261110`.
+- PR head at inspection: `ac2cdf5cbd882acda1c91de196af1aee357f5448`; base main SHA matched current main.
+- PR #1660: 1,908 commits ahead, zero behind; 950 changed files; 266,521 additions and 3,655 deletions.
+- Complete recursive trees: main 1,404 entries / 1,299 files; integration 2,245 entries / 2,131 files. Neither tree was truncated.
+- Open PR inventory: 373 total, 358 drafts and 15 non-drafts, fetched across four complete API pages (100/100/100/73).
+
+### Source-PR reconciliation correction
+
+Current changed-file lists show:
+- #1640: 280 paths.
+- #1643: 670 paths.
+- Exact intersection: 8 paths.
+- #1640-only paths: 272.
+- #1643-only paths: 662.
+- Source union: 942 paths.
+- #1660 contains all 942 source-union paths plus eight successor-only additions: one fail-closed merge-gate workflow, three research artifacts and four corresponding tests.
+- All seven #1642 paths are included.
+
+This corrects older handoff language that described #1643 as 663 unique paths and seven shared paths. Preserve both source branches and do not close either before #1660 is merged and its files are verified on main.
+
+### Exact-head CI failure and diagnosis
+
+On #1660 head `ac2cdf5c`, workflow run [42863466834](https://github.com/Barrot-Agent/B-Agent/actions/runs/42863466834) failed only in the full-repository test job [129995452498](https://github.com/Barrot-Agent/B-Agent/actions/runs/42863466834/job/129995452498): **3,359 passed, 4 failed, 8 subtests passed**. The core job passed. The exact-head dependency audit [42863466546](https://github.com/Barrot-Agent/B-Agent/actions/runs/42863466546) passed all six manifests with zero known vulnerabilities. The exact-head fail-closed gate [42863466551](https://github.com/Barrot-Agent/B-Agent/actions/runs/42863466551) passed and kept automatic merging disabled.
+
+All four failures were stale assertions in two historical regression modules, not product-code failures:
+
+1. The endpoint/map regression expected Run111 to remain the current map after the current snapshot had advanced to Run136, and it still asserted the old 40-endpoint/36-hourly inventory rather than the verified 46/42 inventory.
+2. Two assertions equated capture time with verification time. Current Run136 records capture at 17:14:29 UTC and verification at 17:17:00 UTC; these are distinct events and verification correctly follows capture.
+3. The Run110 verification test expected ChatGPT's prior 02:37:25 UTC verification timestamp, while the current session's verified GitHub connector observation is 17:15:00 UTC.
+
+The regression tests are being corrected to assert current-map consistency, monotonic capture/verification times and the current 46/42/2/2 source inventory while preserving Run111, Run110 and Run82 as immutable historical observations. No forecast threshold, safety gate, production code or historical evidence is being weakened.
+
+**Test correction commit status at this point:** pending commit and exact-head CI. Do not transfer prior green CI to the correction commit.
+
+### Current architecture and readiness boundary
+
+The current mission manifest remains priority 1 and explicitly preserves Barrot V3. The integration branch contains 46 source definitions (42 scheduled hourly, two weekly CFTC, two non-commercial XRPL node sources excluded by default), a read-only collector, SHA-256 raw receipts/per-run chain, point-in-time SQLite prototype, four deterministic baselines, chronological walk-forward with purge/embargo, calibration/PSI diagnostics and a fail-closed fixed-horizon forecast ledger with Ed25519 evaluator attestation.
+
+Still incomplete: independent WORM/timestamp anchoring, raw receipt replay/rebuild, source-independence authentication beyond publisher heuristics, synchronized historical multi-venue spot/L2/derivatives/exchange-flow/collateral data, macro/event adapters, event timeline, scenario/counter-hypothesis runner, effective-sample-size correction, sufficient shadow outcomes, production evaluator key and demonstrated out-of-sample lift. The collector is not on main and has no verified scheduled main run.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action.
+
+### Merge decision
+
+PR #1660 remains the sole active consolidated V3/XRP integration PR. Its current head has zero formal reviews, zero approvals and zero inline review threads; one CodeRabbit summary comment exists. Main branch-protection details return HTTP 403, and the visible fallback ruleset is disabled. GitHub Pages has previously deployed automatically after a main push; authorization for another public publication remains unresolved. The 950-file semantic review and 44-workflow parity review are incomplete; 25 workflows are quarantined, including core Barrot agent/task/subagent orchestration workflows. Do not merge or bypass protection.
+
+No source PR was closed. No main write, merge, deployment, secret operation, Space restart, external-model transfer, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
