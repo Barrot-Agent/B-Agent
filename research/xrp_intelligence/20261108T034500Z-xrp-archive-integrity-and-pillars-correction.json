@@ -64,8 +64,9 @@
     {
       "path": "tests/test_pillars_check_readonly.py",
       "previous_git_blob_sha": "0be1ab27f643e8cebae2d382501330e8c6796fc8",
-      "corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03",
-      "role": "Regression tests for 404, 500 and successful HTTP 200 source-fiction scans."
+      "corrected_git_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459",
+      "role": "Regression tests for 404, 500 and successful HTTP 200 source-fiction scans.",
+      "previous_corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03"
     }
   ],
   "source_registry": [
@@ -199,6 +200,15 @@
       "reason": "The consolidated successor contains a later source revision. The current exact Git blob retains explicit non-200 response handling and read-only GitHub installation lookup; the correction overlay now binds the exact successor file.",
       "model_eligible": false,
       "status": "APPENDED_CORRECTION"
+    },
+    {
+      "correction_id": "C12_PILLARS_TEST_BLOB_BINDING_SUPERSESSION",
+      "target_artifact": "tests/test_pillars_check_readonly.py",
+      "supersedes_corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03",
+      "corrected_git_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459",
+      "reason": "The consolidated successor includes additional read-only HTTP-status regression cases; the archive binding now records the exact current test blob.",
+      "model_eligible": false,
+      "status": "APPENDED_CORRECTION"
     }
   ],
   "source_preimage_resolution": {
@@ -241,7 +251,7 @@
     "Keep the historical PILLARS fiction-scan result inconclusive until its HTTP status can be independently verified.",
     "Keep the Evernorth purchase-cost value at $214M; never use $214.05M rounded cash received as the purchase-cost numerator."
   ],
-  "correction_revision": 3,
+  "correction_revision": 4,
   "revision_history": [
     {
       "revision": 2,
@@ -257,6 +267,13 @@
       "changes": [
         "Added C11 to preserve the previous Pillars script blob binding and bind the current consolidated-successor blob.",
         "The source correction changes only the Git blob binding; normalized source excerpts and prior correction records remain intact."
+      ]
+    },
+    {
+      "revision": 4,
+      "at_utc": "2026-11-10T15:45:00Z",
+      "changes": [
+        "Added C12 to bind the current read-only Pillars regression-test blob while retaining the prior binding."
       ]
     }
   ]

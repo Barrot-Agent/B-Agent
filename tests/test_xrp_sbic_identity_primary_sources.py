@@ -46,7 +46,7 @@ def test_chatgpt_reference_is_training_not_partnership():
 def test_nagoya_ai_salon_is_limited_to_investee_companies():
     receipt = next(x for x in _load()["source_receipts"] if x["source_id"] == "sbic_nagoya_salon")
     assert "investee-company-only" in receipt["normalized_excerpt"].casefold()
-    assert "ChatGPT" not in receipt["normalized_excerpt"]
+    assert "no named chatgpt or openai partnership" in receipt["normalized_excerpt"].casefold()
 
 
 def test_raw_capture_and_normalized_hash_scope_are_not_conflated():

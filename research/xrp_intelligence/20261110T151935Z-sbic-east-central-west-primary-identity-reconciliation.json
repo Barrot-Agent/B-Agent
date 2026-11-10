@@ -58,10 +58,11 @@
       "raw_bytes_captured": false,
       "raw_byte_sha256": null,
       "normalized_excerpt": "大阪中小企業投資育成株式会社; Osaka Small and Medium Business Investment & Consultation Co.,Ltd. (SBIC West Japan); established 1963-11-20; 24-prefecture operating area.",
-      "normalized_excerpt_sha256": "0681725fed3ec87181b56e5cc33e719aad65682719dd919ce220772ceb07bd1d",
+      "normalized_excerpt_sha256": "301077b2d49de114b3ea0351501eccf3c7f57ba6dad58f597d6177329441804e",
       "hash_scope": "normalized excerpt only; not the raw HTTP response",
       "source_independence_group": "sbic_osaka",
-      "model_eligible": false
+      "model_eligible": false,
+      "previous_normalized_excerpt_sha256": "0681725fed3ec87181b56e5cc33e719aad65682719dd919ce220772ceb07bd1d"
     },
     {
       "source_id": "sbic_sbi",
@@ -331,6 +332,15 @@
       "corrected_normalized_excerpt_sha256": "c84250148b0d18255add8a06e1d01e9031d6a6a3cb791ef1a036a39b14bf1f13",
       "hash_scope": "SHA-256 of the exact normalized_excerpt UTF-8 bytes; not raw HTTP bytes",
       "reason": "The prior digest did not match the preserved excerpt. The excerpt text is unchanged; only its digest binding is corrected.",
+      "raw_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "source_id": "sbic_osaka",
+      "previous_normalized_excerpt_sha256": "0681725fed3ec87181b56e5cc33e719aad65682719dd919ce220772ceb07bd1d",
+      "corrected_normalized_excerpt_sha256": "301077b2d49de114b3ea0351501eccf3c7f57ba6dad58f597d6177329441804e",
+      "hash_scope": "SHA-256 of the exact normalized_excerpt UTF-8 bytes; not raw HTTP bytes",
+      "reason": "The previous digest did not match the preserved Osaka profile excerpt. The excerpt is unchanged; only its digest binding is corrected.",
       "raw_bytes_captured": false,
       "model_eligible": false
     }
