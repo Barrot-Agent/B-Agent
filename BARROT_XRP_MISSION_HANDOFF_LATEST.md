@@ -1,3 +1,64 @@
+# Barrot XRP Mission — Run125B: ETF arithmetic and exchange-reserve correction
+
+**Capture cutoff: 2026-11-10T08:46:00Z.** This correction preserves the Run125 and Run125A records and supersedes their inaccurate arithmetic/date descriptions.
+
+## Exact-head verification
+
+The preceding code/test head 59aa9026d99f5a5a2712022cff3114d33daec594 passed exact-head CI: **1,355 passed, zero failed, eight subtests passed; 59.48% inclusive coverage; 677 core tests passed**. Six dependency manifests passed strict pip-audit with no known vulnerabilities. The fail-closed gate passed and keeps automatic merge disabled.
+
+Evidence: [Full CI 42784659000](https://github.com/Barrot-Agent/B-Agent/actions/runs/42784659000), [Dependency audit 42784659072](https://github.com/Barrot-Agent/B-Agent/actions/runs/42784659072), [Fail-closed gate 42784659233](https://github.com/Barrot-Agent/B-Agent/actions/runs/42784659233).
+
+## ETF arithmetic correction
+
+CryptoKeyhole shows three November 9 XRP holdings changes: Bitwise −8,594,551 XRP, Canary XRPC −427,341 XRP and 21Shares TOXR −194,660 XRP. Their arithmetic sum is **−9,216,552 XRP**, not −9,216,553. The page says 3 of 4 daily-reporting funds had published; Franklin XRPZ is missing for November 9.
+
+The page states it checks NAV × shares against net assets within 0.05% plus rounding. Its rendered summary does not satisfy that rule for two funds:
+
+| Fund | Displayed net assets | NAV × shares | Difference |
+|---|---:|---:|---:|
+| Bitwise | $444.7M | $478.676M | +7.64% |
+| Canary XRPC | $265.2M | $285.657M | +7.71% |
+| Franklin XRPZ | $339.5M | $339.654M | +0.045% |
+| 21Shares TOXR | $117.1M | $117.249M | +0.127% |
+
+The holdings divided by shares still approximately match the displayed XRP-per-share values for Bitwise and Canary. The NAV/AUM fields do not consistently reconcile. Raw issuer files were not independently fetched in this run. Treat holdings changes as provisional secondary issuer-file extractions; quarantine NAV/AUM fields and model-admit no ETF data until raw files are obtained.
+
+Source: [CryptoKeyhole ETF flow and holdings table](https://cryptokeyhole.com/etf-flows/xrp/).
+
+### Canary source conflicts
+
+The official Canary XRPC page publishes its visible daily table only through November 6, with $286.859M net assets, 22.99M shares and $12.48 NAV. It does not independently confirm November 9 holdings.
+
+CorpStacking displays 242,962,753.64 XRP as of November 9, but its own page says the last tracked event is “Awaiting first filing”; its balance-history table ends November 7 at 243,714,802.03 XRP. The difference is 752,048.39 XRP. This is an internal date/balance inconsistency, not a verified November 9 issuer balance. This corrects Run125A wording that described the last-tracked-event field as November 7.
+
+Coin365 reports 140,376,744 XRP, $153.3M AUM, $11.57 NAV, 22.99M shares and 6.105991 XRP per share. Shares × NAV equals $265.994M, not $153.3M. NAV divided by the Kraken spot price at capture implies about 10.635 XRP per share, not 6.106. Its 100% category share is based on one tracked fund. Quarantine the dashboard.
+
+Sources: [Canary official XRPC page](https://canaryetfs.com/xrpc/), [CorpStacking XRPC page](https://www.corpstacking.com/treasuries/canary-xrp-etf), [Coin365 XRPC dashboard](https://www.coin365.io/etf/xrp/xrpc).
+
+Alpha Finance's −$10.4M 5/5 flow-series remains a separate observation with zero-filled Franklin and Grayscale rows; it is not reconciled to issuer-file holdings. No ETF dashboard total is model-admitted.
+
+## Exchange-wallet reserve correction
+
+XRP Insights' November 9 ledger snapshot attributes 22.35B XRP to 701 wallets across 24 exchanges. It includes **483.0M XRP that are not customer deposits**: 325.8M Binance-Peg XRP reserves on BNB Chain, 152.0M cbXRP reserves on Base and 5.2M insurance/charity funds.
+
+Removing those known reserves leaves 21.867B XRP, but this is still not customer deposits or tradable float because cold, omnibus and institutional custody balances remain. The same-wallet change is −25.8M over seven days and −138.1M over 30 days, while the daily same-wallet change on November 9 was **+9.7M** and November 8 was +18.0M. A naive +373.9M total change includes two newly tracked wallets holding 512M XRP and is not a valid inflow.
+
+The tracker identifies about 323M XRP in XRPSCAN-labeled wallets of roughly 36 exchanges outside its list from a September 29 audit. Main wallets for OKX, Coins.ph and Korbit are coverage gaps. Balances are read directly from rippled account_info; exchange attribution uses XRPSCAN public labels.
+
+Source: [XRP Insights exchange balances and methodology](https://xrp-insights.com/exchange-balances).
+
+## Integration and forecast status
+
+PR #1640 remains the sole V3/XRP integration path. #1642's seven paths and all seven added tests are represented in #1640, with 19 additional readiness/receipt/embargo tests. #1644–#1650's dependency/action bumps are present in #1640. Keep these source PRs open until #1640 is merged and verified on main; then close only exact superseded changes. Preserve #1643's unique research archive, #1653's unique graph, and unique prediction/security/market/topology work.
+
+PR #1640 has 62 COMMENTED reviews and zero approvals; 22 inline threads are resolved but outdated. Main branch-protection details return HTTP 403; fallback ruleset 10863829 is disabled. A previous main push triggered GitHub Pages publication, and #1640 changes public web assets. Automatic publication authorization remains unresolved. Do not merge or bypass protection.
+
+The XRP mission manifest and scheduled ingestion workflow remain absent from main. The integration branch contains the 40-source registry, read-only main-only ingestion workflow, raw receipt logic, point-in-time store, four baselines, walk-forward evaluator, calibration/drift diagnostics and fail-closed forecast ledger. Independent WORM/timestamp anchoring, synchronized historical market data, effective-sample-size correction and sufficient shadow outcomes remain outstanding.
+
+**Forecast status: NOT_ISSUED.** No paper trade, real-money action or external-model data exchange occurred.
+
+---
+
 # Barrot XRP Mission — Run125A: ETF source-quality and exchange-reserve correction
 
 **Capture cutoff: 2026-11-10T08:39:00Z.** This is a documentation/research correction on the existing integration branch. The code/test head immediately before this update was 58589d163c7d9a15c0f7a9f14e2b46e93a207b0a. Its exact-head full suite, dependency audit and fail-closed gate all passed.
