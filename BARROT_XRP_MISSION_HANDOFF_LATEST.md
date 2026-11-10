@@ -1,3 +1,87 @@
+# Barrot XRP Mission — Run125A: ETF source-quality and exchange-reserve correction
+
+**Capture cutoff: 2026-11-10T08:39:00Z.** This is a documentation/research correction on the existing integration branch. The code/test head immediately before this update was 58589d163c7d9a15c0f7a9f14e2b46e93a207b0a. Its exact-head full suite, dependency audit and fail-closed gate all passed.
+
+## Exact-head verification on the preceding code/test head
+
+- Full repository suite: **1,355 passed, zero failed, eight subtests passed**; inclusive coverage **59.48%**; 32 fully covered files skipped.
+- Core suite: **677 passed, eight subtests passed**.
+- Wheel build/install and packaged Barrot V3/XRP mission verification passed.
+- Six dependency manifests passed strict pip-audit; **no known vulnerabilities** were found in any manifest.
+- Fail-closed merge gate passed; automatic merge remains disabled.
+- [Full CI 42783870195](https://github.com/Barrot-Agent/B-Agent/actions/runs/42783870195), [Dependency audit 42783870369](https://github.com/Barrot-Agent/B-Agent/actions/runs/42783870369), [Fail-closed gate 42783869910](https://github.com/Barrot-Agent/B-Agent/actions/runs/42783869910).
+- The cache budget remains read-only; this produced a non-failing cache-save warning.
+
+## Exchange-balance correction: 483M XRP are known non-customer reserves
+
+XRP Insights’ November 9 08:01 UTC ledger snapshot attributes **22.35B XRP** to 701 wallets across 24 exchanges. The tracker explicitly includes **483.0M XRP that are reserves or funds, not customer deposits**:
+
+- Binance-Peg XRP reserve on BNB Chain: **325.8M XRP**.
+- cbXRP reserve on Base held in Coinbase wallets: **152.0M XRP**.
+- Exchange insurance and charity funds: **5.2M XRP**.
+- Mechanical remainder after removing those known reserves: **21.867B XRP**. This is still not customer deposits or tradable float; other cold, omnibus and institutional custody balances remain.
+
+Other key corrections:
+- Same-wallet change is **−25.8M XRP over seven days** and **−138.1M over 30 days**, but the daily same-wallet change on November 9 was **+9.7M XRP** and November 8 was +18.0M. Do not describe every daily observation as an outflow.
+- A naive total-balance comparison shows +373.9M XRP because two newly tracked wallets added 512.0M. The tracker excludes those new wallets from same-wallet change.
+- The source identifies coverage gaps: an earlier September 29 audit found about 323M XRP in XRPSCAN-labeled wallets of roughly 36 exchanges outside its list; the main wallets for OKX, Coins.ph and Korbit are not in the tracked set.
+- Balances are read directly from rippled account_info; exchange attribution uses XRPSCAN public labels. This is a ledger-balance tracker, not an independent third-party exchange reserve attestation.
+- The 22.35B total includes cold/omnibus custody and known wrapped reserves. It is a floor for the tracked public labels, not tradable float.
+
+Source: [XRP Insights exchange-balance methodology and snapshot](https://xrp-insights.com/exchange-balances).
+
+## ETF source-quality correction: use file date, publication time and issuer page as-of date separately
+
+### Canary XRPC
+
+CryptoKeyhole’s issuer-file tracker reports **242,535,412 XRP** for November 9, with 22.88M shares, 10.6003 XRP per share, approximately $265.2M AUM and $12.485 NAV. It reports a November 9 change of **−427,341 XRP**. Its Canary file was observed on November 10 between **05:22 and 05:27 UTC**. The tracker says it checks coins against shares × XRP/share and NAV × shares against net assets, within 0.05% plus rounding. It has not yet obtained an overlapping quarter-end SEC filing for this new daily series.
+
+Canary’s own product page is still dated **November 6**: $286.859M net assets, 22.99M shares and $12.48 NAV. Its published daily table ends November 6. It cannot independently confirm a November 9 holdings figure.
+
+CorpStacking displays **242,962,753.64 XRP as of November 9**, but its last tracked balance event is November 7 and the sponsor page it cites is still dated November 6. Its number is 427,341 XRP above CryptoKeyhole’s newer issuer-file extraction, exactly the latter’s reported November 9 change. Classify CorpStacking’s Nov9 label as likely stale/misdated, not a competing primary observation.
+
+Coin365’s XRPC page reports only **140,376,744 XRP**, $153.3M AUM and 100% category share. This is inconsistent with the newer issuer-file extraction and the other fund series. Quarantine this dashboard until its underlying contract/asset identity and source mapping are resolved; do not use its holdings or flows.
+
+Alpha Finance continues to report −$10.4M across five flow-series tickers, assigning zero to Franklin and Grayscale. It is not reconciled to issuer-file holdings. Keep it as a separate dashboard observation; do not average it with CryptoKeyhole or treat zero as a missing issuer file.
+
+Sources: [CryptoKeyhole issuer-file timestamps and reconciliation method](https://cryptokeyhole.com/etf-flows/xrp/), [Canary official XRPC page](https://canaryetfs.com/xrpc/), [CorpStacking XRPC page](https://www.corpstacking.com/treasuries/canary-xrp-etf), [Coin365 XRPC dashboard](https://www.coin365.io/etf/xrp/xrpc), [Alpha Finance ETF series](https://alphafinance.io/etf/xrp/).
+
+## Latest spot refresh
+
+- Kraken XRP/USD retrieval at 08:39 UTC: **$1.08787**, bid/ask **$1.08772/$1.08773**, 24-hour volume **23.638M XRP**, VWAP **$1.09530**, high/low **$1.11573/$1.07502**. Kraken supplies no provider event timestamp.
+- OKX remains at 1.0920 USDT with provider event time 08:14:39.071 UTC; it was about 24 minutes old at this capture. Kraken USDT/USD was 0.99872.
+- The 08:00 Fuelmaps six-venue spot book remains the latest readable snapshot: $12.7M bids and $10.1M asks within 1%, 55.6% bid share. It is now 39 minutes old. Resting orders can be cancelled; no forecast follows.
+- Liqwall’s 08:22 snapshot remains $1.21B OI, down 3.3% over 24 hours; $3.6M liquidations, 82% long; average funding +0.0034% per eight hours. It is 17 minutes old at this capture.
+
+No synchronized venue comparison or directional forecast is justified. The BLS October CPI release remains scheduled for November 10 at 13:30 UTC; it was not released at this capture.
+
+## Integration and backlog reconciliation
+
+PR #1640 remains the single V3/XRP integration path. Exact-head code verification passed on the preceding head. This correction changes only the durable handoff and research JSON; the resulting documentation-only commit will receive its own CI checks.
+
+New exact-content reconciliation:
+- **#1642 is fully superseded by #1640’s current branch content.** All seven paths are present. The exact verified-snapshot lookup, injected feature-store receipt clock, forecast-ledger cross-store preflight, source-lineage match and cutoff/receipt-time checks are implemented. Every one of #1642’s seven added tests is present in #1640; #1640 adds 19 additional readiness, receipt-integrity, source-independence and embargo tests. Keep #1642 open until #1640 is merged and verified on main; then close it with an explicit cross-reference.
+- **#1644–#1650 dependency/action bumps are present in #1640.** The integration branch contains checkout@v7, download-artifact@v8, upload-artifact@v7, pytest>=9.2.0, types-requests>=2.33.0.20261030, databricks-sdk>=0.158.0 and huggingface_hub>=2.4.0. Several source PR files are byte-identical; others contain the same bump plus further integration changes. Keep the source PRs open until the successor is merged and verified on main; then close only the exact superseded bumps.
+- #1643: preserve 663 unique research paths; stale/unmergeable.
+- #1653: preserve six unique knowledge-graph paths; eight unresolved review threads.
+- #1614/#1611: preserve unique prediction-validator and contract research pending integrated review.
+- #1615/#1610: preserve security-containment work.
+- #1605/#1597/#1269/#1655/#1659/#1641: preserve unique market, institutional, topology, structural, local-LLM and bounded-experimentation work.
+
+No PRs were closed.
+
+## Merge decision and prediction status
+
+PR #1640 still has 62 COMMENTED reviews and **zero APPROVED reviews**. Its 22 inline review threads are resolved but outdated. Main branch-protection details return HTTP 403; visible fallback ruleset 10863829 is disabled. A previous main push triggered GitHub Pages publication, and #1640 changes seven public web assets. Automatic publication authorization is unresolved. **Do not merge or bypass protection.**
+
+The XRP mission manifest and scheduled public-ingestion workflow are still absent from main; ingestion is not active on main. The integration branch has the 40-source registry, read-only main-only workflow, raw-receipt logic, point-in-time store, four baselines, walk-forward evaluator, calibration/drift diagnostics and fail-closed forecast ledger. The store is not yet populated with a synchronized historical XRP dataset. Independent WORM/timestamp anchoring, effective-sample-size correction and sufficient independent shadow outcomes remain outstanding.
+
+**Forecast status: NOT_ISSUED.** No paper trade or real-money action occurred. No external-model data exchange occurred.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+---
+
 # Barrot XRP Mission — Run125: live spot, six-venue depth, derivatives, ETF and integration reconciliation
 
 **Capture cutoff: 2026-11-10T08:26:55Z.** XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
