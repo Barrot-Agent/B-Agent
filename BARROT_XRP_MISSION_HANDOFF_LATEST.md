@@ -4044,3 +4044,30 @@ These are issuer-reported operating/partnership announcements. The Q3 release do
 The Run131B parent head `cb0ad2833a2b8dd2517bca061b9b32db75c07418` had a full-suite CI run in progress when this correction was prepared. The new correction/test/handoff commit is a different head and requires its own full-suite CI, dependency audit and fail-closed gate. Do not transfer parent-head test claims to the correction head.
 
 **Forecast status: NOT_ISSUED.** No directional forecast, paper trade, real-money action, merge or deployment occurred.
+
+
+---
+
+## Run131B exact-head verification — correction artifact and regression tests
+
+**Verification captured:** 2026-11-10T14:21:02Z.
+
+The append-only correction artifact and its two regression tests are committed on the integration branch. The correction preserves the original Run131B JSON and identifies the correct cbXRP collateral-token contract. Circle's Q3 payment-network expansion is separately recorded with the pending Tazapay acquisition, CPN TPV, Visa Direct/USDC, Arc, Samsung Wallet and Tereina limitations.
+
+**Exact tested head:** `2a19bade9767f146c5ebc058a8220cefedc231c6`.
+
+- Core test job: **682 passed, 8 subtests passed**.
+- Full repository suite: **1,385 passed, 0 failed, 8 subtests passed in 44.53 seconds**.
+- Inclusive coverage: **59.58%**, above the 53% threshold.
+- Wheel build and installed-wheel verification passed; the installed wheel loads Barrot V3, the XRP mission and canonical data assets.
+- Dependency audit passed six manifests: root runtime, development, supplemental, Hugging Face Space, legacy and PEP 621 project dependencies. Each audit reported no known vulnerabilities.
+- Fail-closed gate passed and explicitly reported automatic merge disabled.
+
+Exact runs:
+- [CI 42832697319](https://github.com/Barrot-Agent/B-Agent/actions/runs/42832697319)
+- [Dependency audit 42832697303](https://github.com/Barrot-Agent/B-Agent/actions/runs/42832697303)
+- [Fail-closed gate 42832697288](https://github.com/Barrot-Agent/B-Agent/actions/runs/42832697288)
+
+The next handoff-only commit changes no executable code but will still receive a fresh exact-head workflow run. Do not transfer the `2a19bade9767f146c5ebc058a8220cefedc231c6` test result to that later commit until its own checks complete.
+
+**Merge remains blocked:** PR #1640 has zero APPROVED reviews; its 22 inline threads are resolved but outdated. The PR changes public web assets, and the prior automatic GitHub Pages publication side effect is not authorized. No merge or deployment.
