@@ -3544,3 +3544,48 @@ Admit only timestamped cbXRP collateral, USDC debt, utilization, oracle, LLTV, l
 **Forecast status: NOT_ISSUED.** No paper trade or real-money action occurred.
 
 Structured evidence: [Run130D JSON](research/xrp_intelligence/20261110T133643Z-run130d-coinbase-xrp-collateral-and-review-state-correction.json).
+
+
+---
+
+## Run 130E — Coinbase XRP-backed credit and Morpho oracle reconciliation
+
+**Captured:** 2026-11-10 13:39:06 UTC. **Current main:** `d4d43be3427375cf79d190e768976de062e20287`. **Integration head before this append:** `896e5a094bd3e8042e5d3f699c97e95d1ea99e0f`.
+
+### Primary product confirmation
+
+Coinbase's current help center explicitly lists XRP as eligible collateral for USDC loans powered by Morpho on Base. Its backup collateral mapping identifies cbXRP at `0xcb585250f852c6c6bf90434ab21a00f02833a4af`. Coinbase states collateral is locked on Morpho and marked not tradeable while the loan is active; it remains in displayed total balance while debt is not netted from that total. Coinbase's September 29, 2026 product update states up to $100,000 USDC may be borrowed against XRP, subject to account/product and regional limits. [Coinbase loan intro](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro), [cbXRP Base contract mapping](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup), [collateral treatment](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral), [XRP loan product update](https://www.coinbase.com/en-pt/blog/now-get-a-usdc-loan-without-selling-your-crypto).
+
+### Exact Morpho market identity
+
+The first-party Morpho app URL resolves the complete Base market ID:
+
+`0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109`
+
+It identifies USDC/cbXRP, variable rate, 62.5% immutable LLTV, Chainlink oracle contract `0x031b2EFC8d70042Ac8d9f5c793c4149eC4b60fdE`, and Chainlink XRP/USD feed `0x9f0C1dD78C4CBdF5b9cf923a549A201EdC676D34`. The interface displays a 1-day heartbeat and 0.5% deviation threshold. [Morpho market](https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp).
+
+Morpho's liquidation incentive formula is `min(1.15, 1 / (0.3 * LLTV + 0.7))`. At 62.5% LLTV it implies a 12.676% bonus, consistent with the displayed 12.67–12.68%. At 86% LLTV it implies 4.38%; Coinbase's generic 4.38% example must not be applied to the XRP 62.5% market. [Morpho LTV/LLTV](https://docs.morpho.org/developers/borrow/concepts/ltv/), [Morpho liquidation](https://docs.morpho.org/developers/borrow/concepts/liquidation/), [formula table](https://morphowatch.com/learn/morpho-lltv-and-liquidations/).
+
+### Market observations and disagreements
+
+MorphoWatch's 13:21 UTC snapshot reports $62.94M USDC supplied, $55.52M borrowed, 88.2% utilization, $7.42M immediately available, $7.73M including additional vault liquidity, 120.45M cbXRP collateral valued at $129.9M, 11,694 open borrowers, 7.00% borrow APY and 6.15% supply APY. It reports 1,479 liquidations and $6.27M debt repaid in 30 days. Its 20% cbXRP decline scenario models $26.81M collateral at risk; this is not an expected loss. The largest listed borrower has health factor 1.03 and a displayed 3.0% drop to liquidation. [MorphoWatch market snapshot](https://morphowatch.com/markets/base/cbxrp-usdc-62-5/).
+
+The Morpho app separately displays $55.57M outstanding loans, $23.54M total liquidity, 88.22% utilization, 0.00 USDC realized/unrealized bad debt, and top-three supplier allocations totaling about $44.41M. These are not identical definitions or capture times. The $23.54M “total liquidity” must not be substituted for MorphoWatch's $7.42M immediately available market liquidity. The app's $219.01M “value secured” label appears in oracle attributes; its scope is unresolved and it is not treated as this market's collateral.
+
+The Morpho app also displays a Chainlink feed latest price of $1.09782 without a feed round timestamp, while the market oracle is $1.08 and the asset page is $1.0783. The feed heartbeat/deviation metadata does not prove the feed is stale. This comparison is **QUARANTINED** until the Chainlink round ID, answer, `updatedAt`, decimals and Morpho oracle decoding are captured at the same Base block.
+
+### XRP value-capture interpretation
+
+This is verified XRP-linked collateral utility on Base, not native XRPL lending. Outstanding USDC borrowing is not proof of XRP purchases or net capital entering XRP. Locked cbXRP is not freely tradeable Coinbase inventory. The non-sale-liquidity hypothesis and liquidation-supply hypothesis remain in parallel; liquidator disposition after seizure is unknown. Vault allocations indicate curator concentration, not ultimate depositor concentration.
+
+The market balances, borrower health, liquidation counts and oracle comparisons are **NOT_ADMITTED** to the point-in-time model until block-level receipts, exact oracle rounds and consistent liquidity definitions are obtained. The Morpho app and MorphoWatch share underlying Morpho/on-chain data and are not independent publisher corroboration.
+
+Structured evidence: [Run130E JSON](research/xrp_intelligence/20261110T132100Z-run130e-cbxrp-morpho-market-and-oracle-reconciliation.json). Regression tests: `tests/test_xrp_run130_macro_and_collateral_integrity.py`.
+
+### Exact-head verification before this append
+
+PR #1640 head `896e5a094bd3e8042e5d3f699c97e95d1ea99e0f` passed the full repository suite: **1,371 passed, zero failed, eight subtests, 55.75 seconds; inclusive coverage 59.58%; wheel built and installed, packaged Barrot V3/XRP mission resources verified**. Six-manifest dependency audit passed with zero known vulnerabilities; fail-closed gate passed with automatic merging disabled. Runs: [CI 42826220540](https://github.com/Barrot-Agent/B-Agent/actions/runs/42826220540), [dependency audit 42826219853](https://github.com/Barrot-Agent/B-Agent/actions/runs/42826219853), [fail-closed gate 42826219887](https://github.com/Barrot-Agent/B-Agent/actions/runs/42826219887). The wheel build still emits non-failing setuptools package-discovery and deprecated-license warnings; GitHub Actions cache is read-only after budget exhaustion.
+
+**Next concrete action:** run the new macro/collateral regression tests and the full repository suite on the resulting exact head. Then retrieve Base block-level Morpho market state and the Chainlink feed round at a common block; do not admit the provider summaries or issue a directional forecast before that reconciliation.
+
+**Forecast status: NOT_ISSUED.** No new branch or PR, merge, deployment, paper-trading mutation, real-money transaction, force-push, secret change, external model transfer or destructive worktree operation occurred.
