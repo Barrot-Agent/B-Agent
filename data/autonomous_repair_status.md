@@ -1,6 +1,6 @@
 # Barrot Autonomous Repository Repair
 
-Generated: 2026-09-09T08:46:50.625488+00:00
+Generated: 2026-11-10T16:14:26.893591+00:00
 
 ## Status
 
@@ -8,68 +8,37 @@ A repository repair cycle completed and the resulting GitHub commit was verified
 
 ## Audit Snapshot
 
-## Evidence‑Based Architecture Audit  
-*(Based on the file list you supplied – no additional data was consulted.)*
+## What I'm looking at
 
----
+A truncated file listing (alphabetical, `git ls-files`-style). It begins mid-path — the first line is a fragment of `.barrot/collaboration_records/v3_acceptance_matrix/case-26.json` — and ends at `TRANSFORMATIVE_INSIGHTS_IMPLEMENTATION_SUMMARY.md`. **The actual source tree is not in this excerpt** (no `src/`, `tests/`, or package directories appear). Everything below is based strictly on the paths shown; I cannot verify file contents.
 
-### 1. Repository Overview
+## Inventory (paths only)
 
-| Category | Count | Notable Items |
-|----------|-------|---------------|
-| **CI/CD** | 30+ | `.github/workflows/*.yml`, `.gitlab-ci.yml` |
-| **Docs / Guides** | 20+ | `*.md`, `README.md`, `SECURITY.md`, `CHANGELOG.md` |
-| **Python Packages** | 3 | `apex_lattice/`, `barrot_agent/`, `a2a/` |
-| **Configuration** | 5 | `app.json`, `shrm-config.yaml`, `shrm-response-log.md` |
-| **Logs** | 5 | `apex_lattice/logs/*.log` |
-| **Misc** | 10+ | `Dockerfile`, `Dockerfile.dev`, `Makefile`, `LICENSE` |
+- **~85 GitHub Actions workflows**, 8 explicitly `.disabled`; plus `.gitlab-ci.yml` (dual CI systems)
+- **`.barrot/` agent-state directory**: acceptance-matrix JSON cases, `mmi_execution_ledger.jsonl`, three manifests (`repo_state_manifest.json`, `repository_identity.json`, `target_registry.json`), and scripts including `practice/barrot_self_repair.py`
+- **4 test files** parked in `.barrot/disabled_tests/`
+- **~40 top-level markdown docs**, many resembling generated reports/dated responses
+- **Personal/environment files tracked**: `.bashrc`, `.gitconfig`, `.config/gh/hosts.yml`, `.termux/termux.properties`, `.termux_dna_harvest.log`
 
-The repo is a **multi‑service, multi‑language** codebase that mixes:
+## Flags, in priority order (all require content verification)
 
-* **Python** (core logic, analysis, CI/CD, Docker images)
-* **JavaScript** (the `a2a` worker)
-* **YAML** (GitHub Actions, Docker Compose, SHRM config)
-* **Markdown** (documentation, audit reports)
+1. **`.config/gh/hosts.yml` is committed.** The gh CLI's `hosts.yml` normally stores an OAuth token. If this is a real checkout artifact rather than a sanitized placeholder, that is a live credential in git history. Verify this first.
+2. **`.bashrc` and `.gitconfig` at repo root** — personal shell config is a common vector for exported tokens and identity leakage.
+3. **Committed runtime artifacts** — `.termux_dna_harvest.log` and `mmi_execution_ledger.jsonl` are logs/ledgers in version control; check for sensitive content and churn.
+4. **Disabled tests**: four integration tests moved to `.barrot/disabled_tests/` rather than fixed or skipped with documented reasons. Corresponding feature docs exist at root (`EMAIL_*`, `MERGE_CONFLICT_RESOLUTION_GUIDE.md`, `TRANSFORMATIVE_INSIGHTS_*`), which *suggests* features documented as shipped while their tests are sidelined — inference only.
+5. **Merge governance sprawl**: seven-plus workflows touch merging (`barrot-approve-pr`, `barrot-auto-pr`, `barrot-gated-merge`, `barrot-merge`, `barrot-merge-manual`, `barrot-pr-automerge` + its `.disabled` twin, `merge-queue`). Gated merge coexisting with multiple automerge paths indicates either conflicting policy or dead automation.
+6. **Self-modification loop risk**: `barrot-self-upgrade.yml`, `barrot-autonomous-resolver.yml`, `auto-resolve-issues.yml`, `autonomous_self_deployment.yml`, plus in-repo agent state and `barrot_self_repair.py`. Agent-writable state inside the repo the agent operates on warrants explicit provenance and approval controls.
+7. **Workflow numbering gap**: `capability-1`, `capability-9`, `capability-10` present; 2–8 absent — removed, or defined elsewhere.
+8. **Root doc clutter**: ~40 markdown files including dated one-offs (`INGESTION_RESPONSE_2025-12-30.md`) — generated artifacts committed as documentation.
 
----
+## Positive signals
 
-### 2. High‑Level Architecture
+`CODEOWNERS`, `SECURITY.md`, `dependabot.yml`, `.pre-commit-config.yaml`, `.flake8`, `.editorconfig`, `CHANGELOG.md`, `LICENSE`, both Dockerfiles + devcontainer, and audit-flavored workflows (`dependency-audit`, `barrot-transparency-audit`) — baseline hygiene is present.
 
-| Layer | Responsibility | Key Files |
-|-------|----------------|-----------|
-| **Infrastructure / Deployment** | CI/CD pipelines and container-related files visible in the supplied snapshot | `.github/workflows/*.yml`, `Dockerfile`, `Dockerfile.dev`, `Makefile` |
-| **Core Services** | Business logic, AI/ML pipelines, data ingestion | `apex_lattice/`, `barrot_agent/`, `a2a/` |
-| **Data Layer** | Ingestion, transformation, storage | `INGESTION_MANIFEST.md`, `INGESTION_RESPONSE_*.md`, `DATA_TRANSFORMATION.md` |
-| **Analytics / Reporting** | Metrics, dashboards, digest generation | `*.yml` workflows for digests, `*.md` reports |
-| **Security / Compliance** | Audits, policy enforcement | `SECURITY.md`, `IBM_BOB_BARROT_AUDIT.md`, `AUTONOMOUS_DEPLOYMENT_REPORT.md` |
-| **Documentation** | Guides, design docs, change logs | `README.md`, `CHANGELOG.md`, `*.md` guides |
+## Cannot determine from a listing alone
 
-> **Evidence**: The presence of multiple `.yml` workflows (e.g., `daily-digest.yml`, `deploy.yml.disabled`) indicates a heavy reliance on GitHub Actions for CI/CD. The `Dockerfile` and `Dockerfile.dev` suggest containerized deployments. The `apex_lattice` and `barrot_agent` directories contain Python modules that appear to be the primary application logic.
+Whether `hosts.yml` holds a real token; what any workflow actually executes; whether the disabled tests are superseded or abandoned; anything about the source code itself; branch protection settings.
 
----
+## To proceed
 
-### 3. Key Findings
-
-| # | Finding | Evidence | Impact | Recommendation |
-|---|---------|----------|--------|----------------|
-| 1 | **Large number of disabled workflows** | Files ending with `.disabled` (e.g., `deploy.yml.disabled`, `omega_benchmarks.yml.disabled`) | Potentially stale or duplicated logic; risk of accidental re‑enabling. | Audit disabled workflows, remove or consolidate them. |
-| 2 | **Mixed language codebases** | `a2a/worker.js` (JavaScript) alongside Python packages | Increases cognitive load; may require separate CI pipelines. | Consider language‑specific tooling or unify language where feasible. |
-| 3 | **Test coverage breadth not established from this excerpt** | The limited snapshot mentioned at least one test file, but a repository-wide test inventory was not verified here. | Any coverage conclusion would be speculative without a full file inspection. | Re-run the audit against the actual repository tree before drawing test coverage conclusions. |
-| 4 | **Hard‑coded logs** | `apex_lattice/logs/*.log` | Logs are committed; may leak sensitive data or bloat repo. | Store logs in a separate artifact store or CI artifact. |
-| 5 | **Multiple audit reports** | `IBM_BOB_BARROT_AUDIT.md`, `AUTONOMOUS_DEPLOYMENT_REPORT.md`, `MMI_ANALYSIS_REPORT.md` | Indicates ongoing security/architecture reviews but no single consolidated audit. | Create a central audit log or dashboard. |
-| 6 | **Inconsistent naming conventions** | Workflow names use both snake_case and kebab-case (`signal-summary.yml` vs `signal_ledger.yml`). | Harder to search and maintain. | Adopt a single naming convention (e.g., snake_case). |
-| 7 | **Dependency lock-file status unknown from this excerpt** | The limited audit text does not establish the presence or absence of lock files. | Reproducibility conclusions would be unreliable if based only on the excerpt. | Inspect dependency manifests directly before recommending lock-file changes. |
-| 8 | **Docker image version-labeling not verified** | The supplied excerpt names Docker-related files but does not quote their contents. | Image provenance conclusions are unknown from the excerpt alone. | Inspect the actual Dockerfiles before recommending metadata changes. |
-| 9 | **Container security posture not verified** | The excerpt does not include a grounded Docker base image or image-scanning configuration. | Security conclusions would be speculative without the file contents. | Treat container-image security status as unknown until the Dockerfiles and workflows are inspected directly. |
-|10 | **Documentation fragmentation** | Many `.md` files scattered across root and subfolders. | Hard to find high‑level design docs. | Create a `docs/` directory with a clear structure (e.g., `architecture.md`, `deployment.md`). |
-
----
-
-### 4. Architecture‑Specific Observations
-
-#### 4.1 `apex_lattice`
-
-* **Modules**: `analyzers`, `pipeline`, `pr_framework`, `recommendations`, `sandbox`, `cycle`, `audit`.
-* **Design Pattern**: Appears to implement a **pipeline** pattern with analyzers as pluggable components.
-* **Potential Issue**: `analyzers` contain many specialized analyzers (e.g., `security_analyzer.py`, `performance_analyzer.py`), but this excerpt does not confirm how they are registered or wired together.  
-  *Recommendation*: Inspect the actual module-loading code before recommending a registry or plugin architecture change.
+Tell me the audit scope (security, CI governance, test integrity, repo hygiene?) and paste the remainder of the listing or specific files. I'd start with `.config/gh/hosts.yml`, the merge-family workflows, and the headers of the four disabled tests.
