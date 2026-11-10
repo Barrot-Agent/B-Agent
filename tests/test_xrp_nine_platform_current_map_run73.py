@@ -357,8 +357,8 @@ def test_run82_historical_snapshot_is_preserved_when_run111_becomes_current():
     assert current["merge_state"]["merge_performed"] is False
     assert current["forecast_status"] == "NOT_ISSUED"
     current_market = current["latest_market_crosscheck"]
-    assert hashlib.sha256(current_market["raw_response_bodies"]["kraken_xrpusd"].encode("utf-8")).hexdigest() == "5710b000d3edd33437bede086347242c20adefc8407d04f534e11b2d9f06a35d"
-    assert hashlib.sha256(current_market["raw_response_bodies"]["okx_xrpusdt"].encode("utf-8")).hexdigest() == "3e85143fa53f2669ca7244b66c921e925df909b9963dd75bf5199906e35a51a8"
+    assert hashlib.sha256(current_market["raw_response_bodies"]["kraken_xrpusd"].encode("utf-8")).hexdigest() == current_market["response_text_sha256"]["kraken_xrpusd"] == "9611d8a0ff3d2c87bb168d3e4f498950679827a05bddaca06925a7f3a0293c90"
+    assert hashlib.sha256(current_market["raw_response_bodies"]["okx_xrpusdt"].encode("utf-8")).hexdigest() == current_market["response_text_sha256"]["okx_xrpusdt"] == "348cdc51e515aa545159c4fbc80692ecef7603da2bdc598bafc5d98594ba8fbf"
     assert current_market["model_admission"] is False
     assert current_market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-10T02:23:18.267Z"
     assert current_market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
