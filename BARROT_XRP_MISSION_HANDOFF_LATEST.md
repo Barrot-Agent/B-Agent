@@ -26,22 +26,48 @@ Main's `web/signal_accuracy.json` still displays 45.5% from 772/1,697 observatio
 
 This is a material safety correction. However, PR #1640 changes public web assets (`web/landing.html`, `web/latest_signal.json`, `web/latest_signal_summary.json`, `web/signal_accuracy.json`, `web/signals.html`, and related files). A prior main update triggered a successful GitHub Pages build/deployment (run 41799855489 on main SHA `9100dbacb5f9f1b973b053a65ef1e91e96b64f72`). The automatic public publication is an external side effect. Specific authorization for that publication is not established; do not merge or deploy until it is.
 
-## XRPL amendment and validator snapshot — 2026-11-10
+## XRPL amendment, validator and on-ledger oracle snapshot — 2026-11-10
 
-XRPL Dashboard's live amendment page reports a snapshot as of **07:30 UTC**, ledger `108234660`, signed at 01:00 UTC. Its validator roll call at **07:19 UTC** heard 35 of 35 trusted validators; 29 affirmative votes are required.
+**Live amendment snapshot:** XRPL Dashboard reports XRP at $1.0788 and validated ledger #108237841 as of **11:00 UTC**. It reports 98 amendments enabled, nine in flight and zero in the 14-day activation countdown. The 10:59 UTC roll call heard 35/35 trusted validators; 29 affirmative votes are required.
 
-- 98 amendments enabled on mainnet.
-- 9 amendments in flight.
-- 0 amendments in the 14-day activation countdown.
-- Current votes: SingleAssetVault 23/29; LendingProtocol 22/29; LendingProtocolV1_1 22/29; ConfidentialTransfer 21/29; DynamicMPT 16/29; fixXChainRewardRounding 10/29; Sponsor 10/29; XChainBridge 4/29; CryptoConditionsSuite 0/29.
-- None has the required 29 votes in the displayed roll call. Do not treat LendingProtocol, SingleAssetVault or related lending/vault features as activated.
-- The page identifies `fixCleanup3_3_0` as already enabled; the other five amendments in the rippled 3.3.0 institutional-MPT set still need sustained validator support.
+| Amendment | Yes / 29 needed | Current status |
+|---|---:|---|
+| SingleAssetVault | 23 | 6 short |
+| LendingProtocol | 22 | 7 short |
+| LendingProtocolV1_1 | 22 | 7 short |
+| ConfidentialTransfer | 21 | 8 short |
+| DynamicMPT | 16 | 13 short |
+| fixXChainRewardRounding | 10 | 19 short |
+| Sponsor | 10 | 19 short |
+| XChainBridge | 4 | 25 short |
+| CryptoConditionsSuite | 0 | 29 short |
 
-The official XRPL documentation confirms that only trusted validators' votes count and an amendment must maintain **more than 80% support for two weeks**. If support falls to 80% or below, the majority is lost and the countdown restarts. This official rule corroborates the threshold mechanics; the live vote counts come from the dashboard's own-node validation recorder and are not independently replicated in this capture.
+The official XRPL documentation confirms that only trusted-validator votes count and an amendment must maintain **more than 80% support for two weeks**. If support falls to 80% or below, the majority is lost and the countdown restarts. The live vote counts come from XRPL Dashboard's own-node validation recorder; the official documentation independently corroborates the rule, not the individual counts.
 
-Sources: [XRPL Dashboard live amendment status](https://xrpldashboard.com/amendments), [XRPL official amendment rules](https://xrpl.org/docs/concepts/networks-and-servers/amendments).
+The native XRPL lending stack is **not active**: the dashboard states that both SingleAssetVault and LendingProtocol must be enabled, and both are below 29/35 with no activation countdown. Do not treat announced lending/vault features as live protocol capacity or current collateral rails.
 
-This is a material ecosystem-state constraint: announced lending/vault capabilities, validator support, enabled amendments and actual live usage are separate states. Do not count an in-flight amendment as an activated lending market or collateral rail.
+Separate enabled amendments must not be confused with the in-flight lending stack:
+- `fixCleanup3_4_0` activated November 4 at ledger 108112129.
+- `BatchV1_1` activated October 9 at ledger 107540993.
+- `PermissionDelegationV1_1` activated October 8 at ledger 107524865.
+- `fixBatchV1_2` activated October 9 at ledger 107540481.
+- The `rippled 3.3.0` institutional MPT release set separately lists `fixCleanup3_3_0` as enabled while ConfidentialTransfer, DynamicMPT, Sponsor and related changes remain in flight. Do not conflate the 3.3.0 cleanup amendment with the later 3.4.0 fix.
+
+### XLS-47 PriceOracle: important source-scope disagreement
+
+The XLS-47 PriceOracle amendment is already live. The current XRPL Dashboard curated-production page reports one production provider (DIA) and two DIA oracle objects. Its primary DIA object had a LastUpdateTime of **2026-11-10 08:45:43 UTC** and published XRP/USD $1.0857, RLUSD/USD $0.999938, EUROP/USD $1.1177, USDC/USD $0.999760 and USDT/USD $0.998720. The second DIA object was last updated **2025-02-24 11:44:09 UTC** and is explicitly cold; its old $2.4835 XRP quote is not current.
+
+The full XRPLWin on-ledger oracle directory has broader scope and disagrees with the curated page's claim that Band Protocol is not currently observed publishing:
+- At 07:11:10 UTC it listed Band Protocol XRP/USD $1.10166.
+- RubyOracle published XRP/USD $1.0999 at 07:00:01 UTC.
+- The latest DIA XRP/USD entry was dated November 9 at 19:41 UTC ($1.09717).
+- XRPLWin showed three providers for XRP/USD, four active providers across the directory, 31 provider labels in its provider table, 24 accounts, 16 active pairs of 333 ever published, and 62 oracle documents.
+
+This is a **scope/coverage disagreement**, not proof that all labels are production-grade independent providers. XRPL Dashboard curates named production accounts; XRPLWin enumerates a broader on-ledger directory including hobbyist, experimental and stale objects. Provider tags are self-declared; verify the owning account and methodology before trusting a feed. XRPLWin's page refresh time is not the same as each oracle object's LastUpdateTime. Band and RubyOracle XRP quotes were already about four hours old at the 11:01 UTC run cutoff; the DIA XRP quote was older still.
+
+XLS-47 can put signed price pairs on-ledger, but the presence of a PriceOracle object does not establish that Morpho, an XRPL lending protocol or an institutional collateral system consumes it. No such link was verified. Do not use a stale or unverified on-ledger quote for liquidation or collateral features.
+
+Sources: [XRPL Dashboard live amendments](https://xrpldashboard.com/amendments), [XRPL official amendment rules](https://xrpl.org/docs/concepts/networks-and-servers/amendments), [XRPL Dashboard PriceOracle objects](https://xrpldashboard.com/price-data), [XRPLWin full oracle directory](https://xrplwin.com/oracles), [XLS-47 official specification](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md).
 
 ## Fresh market and collateral evidence
 
