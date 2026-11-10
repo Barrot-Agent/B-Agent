@@ -4408,3 +4408,66 @@ PR #1660 has zero formal review submissions, zero approvals and zero inline revi
 9. Preserve unique PRs; close only exact superseded sources after a verified successor merge and main CI.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+
+---
+
+## Run 135A — Evernorth actual-capital reconciliation correction
+
+### Exact-head verification on the Run135 handoff commit
+
+The handoff-only commit `b39e5fc8f55daf80864f360613fd56bf7d11c855` was tested after the Run135 append:
+
+- Full repository suite: **3,350 passed, zero failed, eight subtests passed**.
+- Inclusive coverage: **59.58%**, above the 53% floor.
+- Core suite passed.
+- Wheel build and installed-wheel verification passed.
+- Fail-closed gate passed and did not approve, label or merge.
+- Dependency audit had passed on parent code head `788e1b0052a1e92242189b9102b8b7749c9a45c7`; no dependency file changed in the handoff-only commit. The next research/test commit is configured to retrigger the dependency audit through the `research/xrp_intelligence/**` and `tests/test_xrp_*.py` path filters.
+
+Exact CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/42852357260
+Full-suite job: https://github.com/Barrot-Agent/B-Agent/actions/runs/42852357260/job/129956164603
+Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/42852357437
+
+The full-suite log records 3,350 passed, eight subtests and 59.58% coverage. The only noted warnings are the exhausted/read-only Actions cache budget and setuptools package metadata/discovery warnings.
+
+### Primary-source correction: the apparent 200,000-XRP gap is resolved
+
+The November 9 Evernorth SEC prospectus now provides a complete component bridge. The prior Run134/Run135 note that a 200,000-XRP in-kind mapping discrepancy remained is superseded by this correction.
+
+The exact in-kind components are:
+
+| Contributor / agreement | XRP |
+|---|---:|
+| Advance Funding subscribers | 600,000 |
+| Arrington XRP Capital Fund Series C | 211,319,096.061435 |
+| Larsen Lam Children's Remainder Trust (Ripple-affiliated entity) | 50,000,000 |
+| Ripple direct Contribution Agreement | 126,791,458 |
+| Delayed Funding subscribers | 200,000 |
+| **Total in kind** | **388,910,554.061435** |
+
+The 200,000 XRP is explicitly part of the Delayed Funding Subscription Agreements. It was omitted from the earlier component bridge, not missing from the disclosed total.
+
+The prospectus's 261,919,096.061435 XRP “Pubco XRP” subtotal is 600,000 + 211,319,096.061435 + 50,000,000. Adding Ripple's separate 126,791,458-XRP contribution and the 200,000-XRP delayed tranche yields the full 388,910,554.061435 XRP total.
+
+A separate 0.3625-XRP precision difference remains between the derived sum of in-kind XRP plus the exact cash-purchased XRP quantity (473,276,430.423935) and the third-party tracker figure (473,276,430.061435). The SEC itself describes total holdings as approximately 473 million XRP as of October 9. Do not conflate this 0.3625 precision difference with the now-resolved 200,000-XRP component gap.
+
+### Actual cash, in-kind XRP, debt and undrawn capacity are separate
+
+The filing distinguishes:
+
+- $214.05M of Advance Funding cash subscription.
+- Approximately $214.0M used to purchase 84,365,876.3625 XRP at an average $2.53657058. Quantity multiplied by the disclosed average price equals approximately $214.0M. The narrative rounds the cash amount to approximately $214.1M; the cash-flow note reports approximately $214.0M. A $50K difference versus the $214.05M subscription is not separately reconciled; the filing also mentions approximately $0.1M restricted cash.
+- $10.5M of Delayed Funding cash plus 200,000 XRP in kind.
+- Approximately $272.6M gross closing cash, consisting of approximately $224.6M private-placement cash and $48.0M released from the SPAC trust account. This is not all XRP-purchase cash.
+- $9.7M drawn under the Ripple-related Company Facility as of October 7, against a $10M limit. This is debt, not equity capital.
+- $30M gross principal of 4% convertible senior PIK notes issued October 12. The condensed financial statement note reports $29M net cash after a $1M capital-markets-advisor fee; the narrative separately says approximately $30M net before transaction expenses. Preserve this presentation variance. The stated use is general corporate purposes, including XRP and ecosystem activities; no specific XRP purchase from these notes is proven.
+- The notes can create a potential cash settlement obligation up to approximately $120M under the described conversion terms; the holder may elect cash or shares after the one-year anniversary. The filing also describes an 8% yield-to-put in specified default/fundamental-transaction circumstances and warns that cash obligations could require the company to sell XRP. This is a contingent supply-risk scenario, not a scheduled sale.
+- The Cantor committed equity facility allows up to 5,218,935 shares, but the prospectus states **zero proceeds received** under the facility as of November 9. The $521,893.50 upfront commitment fee is due within five business days after the ELOC registration statement becomes effective; payment is not independently verified. Undrawn share capacity is not actual capital received.
+
+At the contemporaneous Kraken reference of $1.04036, the original 84.365876M cash-purchased tranche has a mechanical mark value of approximately $87.77M versus approximately $214.0M purchase cash (about −58.99%), conditional on that tranche remaining held and unhedged. This is not a realized loss, not an accounting impairment calculation and not proof of current wallet retention. The other in-kind XRP tranches have different economic bases.
+
+Primary filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+Relevant filing sections: Private Placement Subscription Agreements; Contribution Agreement; Use of Proceeds; Cash Flows Used in Investing Activities; Convertible Notes; Committed Equity Facility; Risk Factors.
+
+A structured research artifact and regression tests are added in this commit. The artifact is research-only, explicitly not model-eligible, and does not claim byte-complete raw receipts or trusted timestamp anchoring.
