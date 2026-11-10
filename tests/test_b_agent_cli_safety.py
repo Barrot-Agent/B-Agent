@@ -40,3 +40,17 @@ def test_b_agent_has_no_unverified_auto_merge_cli_or_call():
     ]
     assert not auto_merge_flags
     assert not direct_merge_calls
+
+
+
+def test_b_agent_keeps_cli_entrypoint():
+    tree = _tree()
+    assert any(
+        isinstance(node, ast.If)
+        and isinstance(node.test, ast.Compare)
+        and isinstance(node.test.left, ast.Name)
+        and node.test.left.id == "__name__"
+        and any(isinstance(value, ast.Constant) and value.value == "__main__" for value in node.test.comparators)
+        and any(isinstance(child, ast.Call) and isinstance(child.func, ast.Name) and child.func.id == "main" for child in node.body)
+        for node in tree.body
+    )

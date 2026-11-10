@@ -697,3 +697,5 @@ def main():
             f"{pr_url}"
         )
 
+if __name__ == "__main__":
+    main()
