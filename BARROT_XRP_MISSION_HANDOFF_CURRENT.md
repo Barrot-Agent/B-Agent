@@ -4673,3 +4673,26 @@ Source: https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd1
 - The immediately preceding code/test head `044a0428` passed 1,316 tests, zero failures, eight subtests and 59.36% coverage. The 75f handoff/map/test descendant is not verified because of the two historical test assertions.
 
 No merge, deployment, secret rotation, external-model transfer, paper trade, funds transfer or destructive action occurred. PR #1640 remains blocked by the test repair, zero independent approvals, branch-protection visibility HTTP 403 and missing authorization for the automatic Pages publication.
+
+
+### Run104 follow-up — amendment voting, video attribution and latest test repair
+
+**XRPL amendment state as of November 9, 2026.** The signed XRPL Dashboard own-node snapshot records 35 trusted validators and a rule requiring more than 80% support for 14 uninterrupted days. With 35 validators, 29 votes are required. The snapshot records:
+- Enabled: `PermissionDelegationV1_1` (October 8), `BatchV1_1` and `fixBatchV1_2` (October 9), and `fixCleanup3_4_0` (November 5); `fixCleanup3_3_0` had already enabled September 11.
+- Still pending: `ConfidentialTransfer` 21/35 (60%), `DynamicMPT` 16/35 (45.7%), `Sponsor` 10/35 (28.6%), `SingleAssetVault` 23/35, `LendingProtocol` 21/35, `LendingProtocolV1_1` 21/35 and `XChainBridge` 4/35.
+- Therefore, Confidential Transfers and Sponsored Fees/Reserves are **not enabled**. The July 30 Kamilah Stevenson video “XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This” discusses them as institutional features, but its sponsored-fee capability is not live on mainnet as of this snapshot. “Businesses can use XRP without owning it” is a future capability contingent on Sponsor activation, not a current fact.
+
+Source: https://xrpldashboard.com/amendments/2026-11-09 ; cross-check: https://xrpl.to/amendments .
+
+**Kamilah Stevenson video identity and inventory.** The June 11, 2026 Paul Barron Podcast appearance is titled “Crypto Panics! W/ @drkamilahstevenson” and identifies Dr. Kamilah Stevenson as the guest. This links the exact handle to the person, but the YouTube channel/About/RSS page was disabled or throttled in this run. Search surfaced four videos by the display name “Kamilah Stevenson” (March 3, March 6, December 24, 2025 and July 30, 2026). They remain **identity-linked attribution candidates**, not verified personal-channel uploads; no lookalike channels were counted. The July 30 video was red-teamed against the November 9 amendment snapshot above.
+
+Identity/appearance source: https://www.youtube.com/watch?v=Sulo54IlQ60
+Candidate uploads (not counted as verified personal uploads):
+- https://www.youtube.com/watch?v=ywQEoYPzhlQ — “XRP Was Built for What's Coming” (2026-03-03).
+- https://www.youtube.com/watch?v=iwhpNT73zpk — “Something Just Broke in Global Finance — And It's Connected to XRP” (2026-03-06).
+- https://www.youtube.com/watch?v=pmJTrXJQ8Vw — “XRP Is Not Bitcoin. And That's Exactly Why It Matters” (2025-12-24).
+- https://www.youtube.com/watch?v=8xiy8w2YlfY — “XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This” (2026-07-30).
+
+**Latest exact-head test result on 4b7.** Full suite [42726531988](https://github.com/Barrot-Agent/B-Agent/actions/runs/42726531988): 1,315 passed, one failed, eight subtests, 59.36% coverage. The only failure is a regression assertion expecting the label “tokenized fund subscriptions”; the canonical map uses the more precise label “cash subscriptions into tokenized fund shares.” The two historical Run82 timestamp tests now pass. Repair the test wording only; no production code defect.
+
+Dependency audit [42726531948](https://github.com/Barrot-Agent/B-Agent/actions/runs/42726531948) passed six manifests with zero known vulnerabilities. Fail-closed gate passed and kept automatic merging disabled. The next exact-head full suite is required after the wording repair.

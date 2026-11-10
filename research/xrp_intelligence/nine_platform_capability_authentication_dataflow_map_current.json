@@ -1,10 +1,10 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-10T00:12:15.048Z",
+  "captured_at_utc": "2026-11-10T00:17:38.904Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-  "observed_integration_head_before_map_commit": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+  "observed_integration_head_before_map_commit": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
   "observed_research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -154,7 +154,8 @@
         "Run 93 verified repository/tree/PR/review/CI/dependency/security/handoff access.",
         "Run98: fetched current main and complete recursive trees, all four open-PR pages (372 total), #1640/#1643/#1653 heads and ancestry, complete changed-path overlaps, review records/threads, exact-head CI job logs, six-manifest dependency audit, fail-closed gate, main workflow runs/logs and current handoff/map. No external platform authentication or data exchange was attempted.",
         "Run104 2026-11-10T00:07:27.057Z: verified current main/integration trees, all 372 open PRs across four pages, #1640/#1643/#1653 ancestry and changed-path overlap, exact-head full suite 1,316/8 with 59.36% coverage, installed wheel, six-manifest audit, fail-closed gate; updated handoff/map/test on existing #1640 branch only.",
-        "Run104 amendment 2026-11-10T00:12:15.048Z: verified Ripple's official SBI Ripple Asia page says the JV does not handle XRP; separated SBI Remit/SBI VC Trade ODL corridor. Added Aviva GBP tokenized fund share class and Franklin sgBENJI subscription evidence with explicit no-XRP-purchase limitations. Exact-head descendant 75f full suite found two stale Run82 timestamp assertions; repair pending."
+        "Run104 amendment 2026-11-10T00:12:15.048Z: verified Ripple's official SBI Ripple Asia page says the JV does not handle XRP; separated SBI Remit/SBI VC Trade ODL corridor. Added Aviva GBP tokenized fund share class and Franklin sgBENJI subscription evidence with explicit no-XRP-purchase limitations. Exact-head descendant 75f full suite found two stale Run82 timestamp assertions; repair pending.",
+        "Run104 amendment 2026-11-10T00:17:38.904Z: recorded Nov 9 XRPL amendment ledger snapshot; red-teamed Kamilah Stevenson July 30 video against live validator votes; YouTube channel page unavailable so four uploads remain candidates, not verified personal uploads. Exact-head 4b7 full suite had one test-only taxonomy wording failure; 1,315 tests passed, eight subtests; repair pending."
       ],
       "permission_scope": {
         "repository": "Barrot-Agent/B-Agent",
@@ -213,7 +214,7 @@
         "This verifies the current ChatGPT-to-GitHub connector path, not an external ChatGPT API credential or autonomous nine-platform orchestration.",
         "Classic branch-protection read returned HTTP 403; the only visible repository ruleset is disabled. GitHub Pages configuration is not accessible through the current connection."
       ],
-      "last_verified_at_utc": "2026-11-10T00:12:15.048Z",
+      "last_verified_at_utc": "2026-11-10T00:17:38.904Z",
       "latest_run_verification": {
         "status": "VERIFIED_CURRENT_SESSION_GITHUB_CONNECTOR",
         "repository": "Barrot-Agent/B-Agent",
@@ -425,7 +426,7 @@
     ],
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
-    "last_reviewed_at_utc": "2026-11-10T00:12:15.048Z",
+    "last_reviewed_at_utc": "2026-11-10T00:17:38.904Z",
     "external_platform_data_exchange_performed": false,
     "minority_objections_preserved_in": {
       "xrp_market_reconciliation": "20261107T023600Z-xrp-market-etf-derivatives-macro-reconciliation.json",
@@ -443,8 +444,8 @@
         "tests/test_xrp_derivatives_cross_provider_reconciliation_20261108.py"
       ]
     },
-    "last_run_summary": "Run104 amendment: corrected SBI Ripple Asia role (it does not handle XRP); identified SBI Remit/SBI VC Trade as XRP ODL entities. Added Aviva/Franklin institutional XRPL tokenized-fund evidence, separating fund subscriptions/issuer seed capital from XRP purchases. Latest descendant CI found two historical Run82 timestamp assertions; repair pending.",
-    "last_checked_at_utc": "2026-11-10T00:12:15.048Z",
+    "last_run_summary": "Run104 amendment: latest XRPL amendment snapshot shows ConfidentialTransfer 21/35, Sponsor 10/35 and DynamicMPT 16/35 below activation; sponsored fees not live. Kamilah video candidates remain unverified personal uploads because YouTube channel page was inaccessible. Latest 4b7 full suite had one test-only taxonomy wording failure; audit and fail-closed gate passed.",
+    "last_checked_at_utc": "2026-11-10T00:17:38.904Z",
     "external_data_exchange": false,
     "note": "Only the ChatGPT session GitHub connector was tested; no other platform authenticated or received data.",
     "external_data_exchange_performed": false
@@ -28945,7 +28946,7 @@
       "forecast_status": "NOT_ISSUED"
     }
   ],
-  "last_verified_at_utc": "2026-11-10T00:12:15.048Z",
+  "last_verified_at_utc": "2026-11-10T00:17:38.904Z",
   "open_pr_inventory": {
     "total": 372,
     "drafts": 356,
@@ -28959,8 +28960,8 @@
   },
   "branch_ancestry": {
     "pr_1640": {
-      "head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
-      "ahead": 863,
+      "head": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
+      "ahead": 864,
       "behind": 0,
       "changed_paths": 218,
       "additions": 99401,
@@ -29046,15 +29047,15 @@
       },
       "wheel": "PASS; installed wheel loaded Barrot V3, priority-one XRP mission and canonical data assets",
       "dependency_audit": {
-        "run_id": 42725905899,
-        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "run_id": 42726531948,
+        "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
         "manifests": 6,
         "known_vulnerabilities": 0,
         "conclusion": "success"
       },
       "fail_closed_gate": {
-        "run_id": 42725905941,
-        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "run_id": 42726531970,
+        "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
         "conclusion": "success",
         "automatic_merge_disabled": true
       },
@@ -29069,26 +29070,25 @@
         "cause": "Regression assertion required exact equality to PLAUSIBLE_UNCONFIRMED although the parser correctly appends explicit uncertainty rationale.",
         "repair": "Updated the test to assert the stable assessment prefix and both required rationale clauses; production parsing logic was unchanged."
       },
-      "handoff_map_test_descendant_ci": "FAILED_ON_75F_HISTORICAL_RUN82_ASSERTIONS",
+      "handoff_map_test_descendant_ci": "FAILED_ON_4B7_SINGLE_TAXONOMY_ASSERTION",
       "latest_attempt": {
-        "run_id": 42725906404,
-        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "run_id": 42726531988,
+        "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
         "conclusion": "failure",
         "full_suite": {
-          "passed": 1314,
-          "failed": 2,
+          "passed": 1315,
+          "failed": 1,
           "subtests": 8,
           "coverage_pct": 59.36,
-          "duration_seconds": 42.98
+          "duration_seconds": 50.54
         },
         "failed_tests": [
-          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
-          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+          "tests/test_xrp_mission_handoff_run58.py::test_run104_endpoint_registry_counts_match_current_map"
         ],
-        "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
-        "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+        "root_cause": "The regression assertion expected the phrase 'tokenized fund subscriptions', while the map's more precise taxonomy uses 'cash subscriptions into tokenized fund shares'. All other tests, including the Run82 historical snapshot preservation tests, passed.",
+        "repair": "Align the assertion to the actual canonical taxonomy phrase. No production code change."
       },
-      "next_repair": "PENDING_ON_NEXT_DESCENDANT"
+      "next_repair": "ALIGN_TEST_TO_CANONICAL_ACTUAL_CAPITAL_TAXONOMY"
     },
     "main": {
       "head": "d4d43be3427375cf79d190e768976de062e20287",
@@ -29155,42 +29155,40 @@
       },
       "head_sha": "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
     },
-    "handoff_map_test_descendant_ci": "FAILED_ON_75F_HISTORICAL_RUN82_ASSERTIONS",
+    "handoff_map_test_descendant_ci": "FAILED_ON_4B7_SINGLE_TAXONOMY_ASSERTION",
     "latest_attempt": {
-      "run_id": 42725906404,
-      "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "run_id": 42726531988,
+      "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
       "conclusion": "failure",
       "full_suite": {
-        "passed": 1314,
-        "failed": 2,
+        "passed": 1315,
+        "failed": 1,
         "subtests": 8,
         "coverage_pct": 59.36,
-        "duration_seconds": 42.98
+        "duration_seconds": 50.54
       },
       "failed_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+        "tests/test_xrp_mission_handoff_run58.py::test_run104_endpoint_registry_counts_match_current_map"
       ],
-      "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
-      "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+      "root_cause": "The regression assertion expected the phrase 'tokenized fund subscriptions', while the map's more precise taxonomy uses 'cash subscriptions into tokenized fund shares'. All other tests, including the Run82 historical snapshot preservation tests, passed.",
+      "repair": "Align the assertion to the actual canonical taxonomy phrase. No production code change."
     },
     "latest_exact_head_attempt": {
-      "run_id": 42725906404,
-      "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "run_id": 42726531988,
+      "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
       "conclusion": "failure",
       "full_suite": {
-        "passed": 1314,
-        "failed": 2,
+        "passed": 1315,
+        "failed": 1,
         "subtests": 8,
         "coverage_pct": 59.36,
-        "duration_seconds": 42.98
+        "duration_seconds": 50.54
       },
       "failed_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+        "tests/test_xrp_mission_handoff_run58.py::test_run104_endpoint_registry_counts_match_current_map"
       ],
-      "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
-      "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+      "root_cause": "The regression assertion expected the phrase 'tokenized fund subscriptions', while the map's more precise taxonomy uses 'cash subscriptions into tokenized fund shares'. All other tests, including the Run82 historical snapshot preservation tests, passed.",
+      "repair": "Align the assertion to the actual canonical taxonomy phrase. No production code change."
     }
   },
   "reviews": {
@@ -29996,8 +29994,8 @@
     "pr_1640": {
       "state": "OPEN",
       "draft": false,
-      "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
-      "ahead_by": 863,
+      "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
+      "ahead_by": 864,
       "behind_by": 0,
       "changed_paths": 218,
       "mergeable": true,
@@ -30007,7 +30005,7 @@
       "commented_reviews": 62,
       "resolved_threads": 22,
       "unresolved_threads": 0,
-      "full_suite": "Latest descendant 75f failed two historical Run82 timestamp assertions (1,314 passed, 2 failed, 8 subtests; 59.36%); code/test parent 044a passed 1,316, 0 failed, 8 subtests.",
+      "full_suite": "Latest descendant 4b7 failed one regression assertion (1,315 passed, 1 failed, 8 subtests; 59.36%). The immediately preceding code/test head 044a passed 1,316, 0 failed, 8 subtests.",
       "core_suite": "677 passed, 0 failed, 8 subtests",
       "wheel": "PASS; installed wheel loaded Barrot V3, primary XRP mission and canonical assets",
       "dependency_audit": "PASS: six manifests, zero known vulnerabilities",
@@ -30017,6 +30015,7 @@
     "merge_performed": false,
     "merge_allowed": false,
     "blockers": [
+      "Latest handoff/map/test descendant 4b7 failed one assertion because the test expected a different label than the canonical 'cash subscriptions into tokenized fund shares'; repair in next commit.",
       "Latest handoff/map/test descendant 75f has two historical Run82 timestamp assertions; repair in progress. The immediately preceding code/test head 044a passed 1,316 tests.",
       "No independent APPROVED review.",
       "Detailed branch-protection endpoint returns HTTP 403; the visible fallback ruleset is disabled and effective requirements remain unverified.",
@@ -30149,20 +30148,20 @@
   },
   "last_run_status": {
     "run": 104,
-    "captured_at_utc": "2026-11-10T00:12:15.048Z",
+    "captured_at_utc": "2026-11-10T00:17:38.904Z",
     "code_test_head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
-    "full_suite": "FAILED_2_HISTORICAL_RUN82_ASSERTIONS",
+    "full_suite": "FAILED_1_TAXONOMY_ASSERTION",
     "dependency_audit": "PASS_6_MANIFESTS",
     "fail_closed_gate": "PASS_AUTO_MERGE_DISABLED",
     "handoff_map_test_descendant": "PENDING",
-    "latest_handoff_map_test_head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
-    "passed": 1314,
-    "failed": 2,
+    "latest_handoff_map_test_head": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
+    "passed": 1315,
+    "failed": 1,
     "subtests": 8,
     "coverage_pct": 59.36,
-    "next_repair": "UPDATE_HISTORICAL_RUN82_TEST_EXPECTATIONS"
+    "next_repair": "ALIGN_CANONICAL_TAXONOMY_ASSERTION"
   },
-  "integration_head_before_map_commit": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+  "integration_head_before_map_commit": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
   "research_updates": {
     "run93": {
       "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -30693,7 +30692,7 @@
       "truncated": false
     },
     "integration": {
-      "sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+      "sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
       "entries": 1515,
       "files": 1402,
       "python": 564,
@@ -31478,7 +31477,7 @@
       "description": "Three SHA-256-bound public spot JSON bodies and six secondary derivatives views; research-only."
     }
   ],
-  "updated_at_utc": "2026-11-10T00:12:15.048Z",
+  "updated_at_utc": "2026-11-10T00:17:38.904Z",
   "current_run_snapshot": {
     "run": 82,
     "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -32763,11 +32762,15 @@
       "sbic_identity": "SBIC East/Central/West resolved as regional Small and Medium Business Investment & Consultation companies, distinct from SBI Holdings; SBI Holdings ChatGPT Enterprise and SoftBank Group/OpenAI SB OAI Japan are separate.",
       "forecast_status": "NOT_ISSUED",
       "merge_performed": false,
-      "latest_handoff_map_test_head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
-      "latest_handoff_map_test_ci": "FAILED_2_HISTORICAL_RUN82_ASSERTIONS",
+      "latest_handoff_map_test_head": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
+      "latest_handoff_map_test_ci": "FAILED_1_TAXONOMY_ASSERTION",
       "sbi_ripple_asia_handles_xrp": false,
       "aviva_gbp_tokenized_share_class_issuer_investment_gbp": 50000000,
-      "franklin_sgbenji_cash_subscription_receipts_usd": 150000000
+      "franklin_sgbenji_cash_subscription_receipts_usd": 150000000,
+      "xrpl_confidential_transfer_yes_votes": 21,
+      "xrpl_sponsor_yes_votes": 10,
+      "kamilah_video_candidates": 4,
+      "kamilah_personal_uploads_verified": 0
     }
   ],
   "secondary_derivatives_observations": [
@@ -32953,11 +32956,11 @@
       "model_eligible": false
     }
   ],
-  "latest_run_verified_at_utc": "2026-11-10T00:12:15.048Z",
+  "latest_run_verified_at_utc": "2026-11-10T00:17:38.904Z",
   "latest_run_snapshot": {
     "run_id": 104,
     "run": 104,
-    "captured_at_utc": "2026-11-10T00:12:15.048Z",
+    "captured_at_utc": "2026-11-10T00:17:38.904Z",
     "mission": "XRP intelligence and prediction-engine mastery priority one; preserve Barrot V3 execution, orchestration, safety and verification.",
     "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
     "integration_code_test_head": "044a0428a5479bd8dac8ef56cd59fd428889ae5f",
@@ -33110,15 +33113,15 @@
       },
       "wheel": "PASS; installed wheel loaded Barrot V3, priority-one XRP mission and canonical data assets",
       "dependency_audit": {
-        "run_id": 42725905899,
-        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "run_id": 42726531948,
+        "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
         "manifests": 6,
         "known_vulnerabilities": 0,
         "conclusion": "success"
       },
       "fail_closed_gate": {
-        "run_id": 42725905941,
-        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "run_id": 42726531970,
+        "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
         "conclusion": "success",
         "automatic_merge_disabled": true
       },
@@ -33135,22 +33138,21 @@
       },
       "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT",
       "latest_attempt": {
-        "run_id": 42725906404,
-        "head_sha": "75f138c8231c61dbf55608b67de4aa1038dd4526",
+        "run_id": 42726531988,
+        "head_sha": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
         "conclusion": "failure",
         "full_suite": {
-          "passed": 1314,
-          "failed": 2,
+          "passed": 1315,
+          "failed": 1,
           "subtests": 8,
           "coverage_pct": 59.36,
-          "duration_seconds": 42.98
+          "duration_seconds": 50.54
         },
         "failed_tests": [
-          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_preserves_run78_run77_and_historical_map",
-          "tests/test_xrp_nine_platform_current_map_run73.py::test_run82_current_snapshot_records_repository_market_receipts_and_safe_status"
+          "tests/test_xrp_mission_handoff_run58.py::test_run104_endpoint_registry_counts_match_current_map"
         ],
-        "root_cause": "The tests incorrectly required the top-level current map captured_at_utc to remain equal to the historical Run82 current_run_observations timestamp. Run104 correctly advanced the root/latest_run_snapshot timestamp while preserving Run82 as a historical observation.",
-        "repair": "Change the two tests to assert root/latest_run_snapshot is Run104 and current_run_observations remains the historical Run82 timestamp. No production code change."
+        "root_cause": "The regression assertion expected the phrase 'tokenized fund subscriptions', while the map's more precise taxonomy uses 'cash subscriptions into tokenized fund shares'. All other tests, including the Run82 historical snapshot preservation tests, passed.",
+        "repair": "Align the assertion to the actual canonical taxonomy phrase. No production code change."
       }
     },
     "main_workflows": {
@@ -33346,7 +33348,7 @@
             "Tranglo"
           ],
           "operational_role": "SBI Remit initiates the remittance and SBI VC Trade handles the XRP leg; SBI Ripple Asia is the JV/software-services partner, not the XRP-handling entity.",
-          "scope": "Ripple's official profile describes commercial ODL use in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
+          "scope": "Ripple's official profile describes commercial ODL in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
           "limitation": "No current corridor-level daily/monthly XRP notional or settlement-volume series was found in this run. Historical service launch does not prove current throughput.",
           "source_urls": [
             "https://ripple.com/company/sbi-ripple-asia/",
@@ -33455,7 +33457,89 @@
         "value_capture_interpretation": "Aviva and Franklin demonstrate live institutional issuance/representation of fund interests on XRPL. Their disclosed amounts are not XRP purchases. The tokenized assets may use XRP for minimal network fees, but no material XRP bridge, collateral or liquidity demand is established by these announcements.",
         "planned_collateral": "Franklin/DBS/Ripple announced plans to explore token lending and trading; that is not evidence the collateral facility is live or that XRP is the collateral asset."
       },
-      "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor."
+      "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor.",
+      "xrpl_amendment_status": {
+        "as_of_date": "2026-11-09",
+        "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+        "trusted_validator_count": 35,
+        "threshold": {
+          "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+          "minimum_votes_for_more_than_80pct": 29,
+          "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+        },
+        "enabled": {
+          "fixCleanup3_3_0": "2026-09-11",
+          "PermissionDelegationV1_1": "2026-10-08",
+          "BatchV1_1": "2026-10-09",
+          "fixBatchV1_2": "2026-10-09",
+          "fixCleanup3_4_0": "2026-11-05"
+        },
+        "pending": {
+          "ConfidentialTransfer": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "DynamicMPT": {
+            "yes_votes": 16,
+            "total_validators": 35,
+            "support_pct": 45.7,
+            "short_of_activation_votes": 13
+          },
+          "Sponsor": {
+            "yes_votes": 10,
+            "total_validators": 35,
+            "support_pct": 28.6,
+            "short_of_activation_votes": 19
+          },
+          "SingleAssetVault": {
+            "yes_votes": 23,
+            "total_validators": 35,
+            "support_pct": 65.7,
+            "short_of_activation_votes": 6
+          },
+          "LendingProtocol": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "LendingProtocolV1_1": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "XChainBridge": {
+            "yes_votes": 4,
+            "total_validators": 35,
+            "support_pct": 11.4,
+            "short_of_activation_votes": 25
+          },
+          "fixXChainRewardRounding": {
+            "yes_votes": 10,
+            "total_validators": 35,
+            "support_pct": 28.6,
+            "short_of_activation_votes": 19
+          }
+        },
+        "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+        "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+        "source_urls": [
+          "https://xrpldashboard.com/amendments/2026-11-09",
+          "https://xrpl.to/amendments",
+          "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+        ]
+      },
+      "video_red_team": {
+        "video": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+        "published": "2026-07-30",
+        "claims": "Confidential Transfers, Sponsored Fees/Reserves, Batch, Permission Delegation and Dynamic MPT as institutional upgrades.",
+        "as_of_2026_11_09": "BatchV1_1 and PermissionDelegationV1_1 are enabled; ConfidentialTransfer (21/35), Sponsor (10/35) and DynamicMPT (16/35) remain below 29/35 and are not enabled.",
+        "correction": "Sponsored fees/reserves are a pending Sponsor amendment, not a live mainnet capability. The video's feature discussion is forward-looking and should not be repeated as current functionality.",
+        "source": "https://xrpldashboard.com/amendments/2026-11-09"
+      }
     },
     "identity_research": {
       "japan_sbic": {
@@ -33533,9 +33617,61 @@
         }
       },
       "camilla_kamilah_stevenson": {
-        "identity": "Kamilah Stevenson / @drkamilahstevenson is strongly corroborated as the guest in a public interview; personal-channel ownership remains less conclusive.",
-        "inventory_status": "No new personal-channel video passed first-party ownership verification in this run; existing candidate list remains bounded and non-exhaustive.",
-        "rule": "Do not attribute similarly named channels or aggregator-indexed videos without first-party identity linkage."
+        "identity_linkage": {
+          "person": "Dr. Kamilah Stevenson",
+          "handle": "@drkamilahstevenson",
+          "verified_guest_appearance": {
+            "title": "Crypto Panics! W/ @drkamilahstevenson",
+            "publisher": "Paul Barron Podcast",
+            "published": "2026-06-11",
+            "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+            "significance": "The public interview identifies the guest and exact handle; it is a guest appearance, not her own upload."
+          },
+          "channel_page_status": "YouTube channel/About/RSS fetch was disabled or throttled in this run. The handle is linked through the guest appearance and third-party channel metadata, but YouTube's own channel page was not independently retrievable.",
+          "third_party_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+          "third_party_channel_id_status": "NON_PRIMARY_CORROBORATION_ONLY",
+          "ownership_status": "STRONGLY_IDENTITY_LINKED; CHANNEL_PAGE_NOT_PLATFORM_VERIFIED"
+        },
+        "video_candidates": [
+          {
+            "title": "XRP Was Built for What's Coming",
+            "published": "2026-03-03",
+            "views": 13252,
+            "likes": 1100,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+          },
+          {
+            "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+            "published": "2026-03-06",
+            "views": 32040,
+            "likes": 2300,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+          },
+          {
+            "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+            "published": "2025-12-24",
+            "views": 44991,
+            "likes": 3100,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+          },
+          {
+            "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+            "published": "2026-07-30",
+            "views": 10090,
+            "likes": 740,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; claims red-teamed against 2026-11-09 amendment state",
+            "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+          }
+        ],
+        "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
+        "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
       }
     },
     "platform_status": {
@@ -34067,9 +34203,9 @@
     "web_observations_model_admitted": false,
     "no_merge_performed": true,
     "no_new_pr_created": true,
-    "handoff_map_descendant_parent_head": "75f138c8231c61dbf55608b67de4aa1038dd4526",
-    "descendant_ci_status": "FAILED_ON_75F_HISTORICAL_RUN82_ASSERTIONS; NEXT_REPAIR_PENDING",
-    "next_action": "Repair the two Run82 historical timestamp assertions so the tests distinguish the current Run104 root snapshot from preserved historical Run82 observations; then rerun full suite, dependency audit and fail-closed gate on the new exact head.",
+    "handoff_map_descendant_parent_head": "4b7cba367031c3263bf04c9d8fe1e76588016b25",
+    "descendant_ci_status": "FAILED_ON_4B7_SINGLE_TAXONOMY_ASSERTION; REPAIR_IN_NEXT_COMMIT",
+    "next_action": "Align the one Run104 regression assertion with the canonical 'cash subscriptions into tokenized fund shares' taxonomy, update the handoff/map descendant parent to 4b7, and rerun full suite, dependency audit and fail-closed gate.",
     "prior_market_crosschecks": [
       {
         "run": 98,
@@ -34188,8 +34324,141 @@
       "Ripple's official SBI Ripple Asia profile states it does not handle XRP; SBI Remit/SBI VC Trade handle the XRP ODL corridor.",
       "SBI Holdings' Feb 2025 presentation reports approximately 9% Ripple share and SBI Ripple Asia 60/40 ownership, date-stamped historical.",
       "Aviva GBP tokenized share class: £50M issuer investment on XRPL, digital twin/off-chain fund assets.",
-      "Franklin sgBENJI: two $75M cash subscription receipts on XRPL; one wallet, unknown beneficial owner/source; not XRP purchases."
-    ]
+      "Franklin sgBENJI: two $75M cash subscription receipts on XRPL; one wallet, unknown beneficial owner/source; not XRP purchases.",
+      "As of 2026-11-09, ConfidentialTransfer 21/35, DynamicMPT 16/35 and Sponsor 10/35 remain below the 29/35 threshold; sponsored fees are not live.",
+      "Kamilah Stevenson video search returned four byline candidates; the guest identity/handle is linked, but the channel page was not retrievable, so candidates are not counted as verified personal uploads."
+    ],
+    "xrpl_amendment_status": {
+      "as_of_date": "2026-11-09",
+      "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+      "trusted_validator_count": 35,
+      "threshold": {
+        "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+        "minimum_votes_for_more_than_80pct": 29,
+        "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+      },
+      "enabled": {
+        "fixCleanup3_3_0": "2026-09-11",
+        "PermissionDelegationV1_1": "2026-10-08",
+        "BatchV1_1": "2026-10-09",
+        "fixBatchV1_2": "2026-10-09",
+        "fixCleanup3_4_0": "2026-11-05"
+      },
+      "pending": {
+        "ConfidentialTransfer": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "DynamicMPT": {
+          "yes_votes": 16,
+          "total_validators": 35,
+          "support_pct": 45.7,
+          "short_of_activation_votes": 13
+        },
+        "Sponsor": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        },
+        "SingleAssetVault": {
+          "yes_votes": 23,
+          "total_validators": 35,
+          "support_pct": 65.7,
+          "short_of_activation_votes": 6
+        },
+        "LendingProtocol": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "LendingProtocolV1_1": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "XChainBridge": {
+          "yes_votes": 4,
+          "total_validators": 35,
+          "support_pct": 11.4,
+          "short_of_activation_votes": 25
+        },
+        "fixXChainRewardRounding": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        }
+      },
+      "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+      "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+      "source_urls": [
+        "https://xrpldashboard.com/amendments/2026-11-09",
+        "https://xrpl.to/amendments",
+        "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+      ]
+    },
+    "video_research": {
+      "identity_linkage": {
+        "person": "Dr. Kamilah Stevenson",
+        "handle": "@drkamilahstevenson",
+        "verified_guest_appearance": {
+          "title": "Crypto Panics! W/ @drkamilahstevenson",
+          "publisher": "Paul Barron Podcast",
+          "published": "2026-06-11",
+          "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+          "significance": "The public interview identifies the guest and exact handle; it is a guest appearance, not her own upload."
+        },
+        "channel_page_status": "YouTube channel/About/RSS fetch was disabled or throttled in this run. The handle is linked through the guest appearance and third-party channel metadata, but YouTube's own channel page was not independently retrievable.",
+        "third_party_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "third_party_channel_id_status": "NON_PRIMARY_CORROBORATION_ONLY",
+        "ownership_status": "STRONGLY_IDENTITY_LINKED; CHANNEL_PAGE_NOT_PLATFORM_VERIFIED"
+      },
+      "video_candidates": [
+        {
+          "title": "XRP Was Built for What's Coming",
+          "published": "2026-03-03",
+          "views": 13252,
+          "likes": 1100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+        },
+        {
+          "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+          "published": "2026-03-06",
+          "views": 32040,
+          "likes": 2300,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+        },
+        {
+          "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+          "published": "2025-12-24",
+          "views": 44991,
+          "likes": 3100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+        },
+        {
+          "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+          "published": "2026-07-30",
+          "views": 10090,
+          "likes": 740,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; claims red-teamed against 2026-11-09 amendment state",
+          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+        }
+      ],
+      "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
+      "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
+    }
   },
   "endpoint_inventory_source_blob_sha": "f5fc3c4a45aaf826241e32faf00443e98bfa341a",
   "endpoint_inventory_verified_at_utc": "2026-11-09T23:28:49Z",
@@ -34426,7 +34695,7 @@
           "Tranglo"
         ],
         "operational_role": "SBI Remit initiates the remittance and SBI VC Trade handles the XRP leg; SBI Ripple Asia is the JV/software-services partner, not the XRP-handling entity.",
-        "scope": "Ripple's official profile describes commercial ODL use in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
+        "scope": "Ripple's official profile describes commercial ODL in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
         "limitation": "No current corridor-level daily/monthly XRP notional or settlement-volume series was found in this run. Historical service launch does not prove current throughput.",
         "source_urls": [
           "https://ripple.com/company/sbi-ripple-asia/",
@@ -34535,7 +34804,89 @@
       "value_capture_interpretation": "Aviva and Franklin demonstrate live institutional issuance/representation of fund interests on XRPL. Their disclosed amounts are not XRP purchases. The tokenized assets may use XRP for minimal network fees, but no material XRP bridge, collateral or liquidity demand is established by these announcements.",
       "planned_collateral": "Franklin/DBS/Ripple announced plans to explore token lending and trading; that is not evidence the collateral facility is live or that XRP is the collateral asset."
     },
-    "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor."
+    "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor.",
+    "xrpl_amendment_status": {
+      "as_of_date": "2026-11-09",
+      "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+      "trusted_validator_count": 35,
+      "threshold": {
+        "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+        "minimum_votes_for_more_than_80pct": 29,
+        "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+      },
+      "enabled": {
+        "fixCleanup3_3_0": "2026-09-11",
+        "PermissionDelegationV1_1": "2026-10-08",
+        "BatchV1_1": "2026-10-09",
+        "fixBatchV1_2": "2026-10-09",
+        "fixCleanup3_4_0": "2026-11-05"
+      },
+      "pending": {
+        "ConfidentialTransfer": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "DynamicMPT": {
+          "yes_votes": 16,
+          "total_validators": 35,
+          "support_pct": 45.7,
+          "short_of_activation_votes": 13
+        },
+        "Sponsor": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        },
+        "SingleAssetVault": {
+          "yes_votes": 23,
+          "total_validators": 35,
+          "support_pct": 65.7,
+          "short_of_activation_votes": 6
+        },
+        "LendingProtocol": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "LendingProtocolV1_1": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "XChainBridge": {
+          "yes_votes": 4,
+          "total_validators": 35,
+          "support_pct": 11.4,
+          "short_of_activation_votes": 25
+        },
+        "fixXChainRewardRounding": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        }
+      },
+      "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+      "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+      "source_urls": [
+        "https://xrpldashboard.com/amendments/2026-11-09",
+        "https://xrpl.to/amendments",
+        "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+      ]
+    },
+    "video_red_team": {
+      "video": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "published": "2026-07-30",
+      "claims": "Confidential Transfers, Sponsored Fees/Reserves, Batch, Permission Delegation and Dynamic MPT as institutional upgrades.",
+      "as_of_2026_11_09": "BatchV1_1 and PermissionDelegationV1_1 are enabled; ConfidentialTransfer (21/35), Sponsor (10/35) and DynamicMPT (16/35) remain below 29/35 and are not enabled.",
+      "correction": "Sponsored fees/reserves are a pending Sponsor amendment, not a live mainnet capability. The video's feature discussion is forward-looking and should not be repeated as current functionality.",
+      "source": "https://xrpldashboard.com/amendments/2026-11-09"
+    }
   },
   "identity_research": {
     "japan_sbic": {
@@ -34613,9 +34964,61 @@
       }
     },
     "camilla_kamilah_stevenson": {
-      "identity": "Kamilah Stevenson / @drkamilahstevenson is strongly corroborated as the guest in a public interview; personal-channel ownership remains less conclusive.",
-      "inventory_status": "No new personal-channel video passed first-party ownership verification in this run; existing candidate list remains bounded and non-exhaustive.",
-      "rule": "Do not attribute similarly named channels or aggregator-indexed videos without first-party identity linkage."
+      "identity_linkage": {
+        "person": "Dr. Kamilah Stevenson",
+        "handle": "@drkamilahstevenson",
+        "verified_guest_appearance": {
+          "title": "Crypto Panics! W/ @drkamilahstevenson",
+          "publisher": "Paul Barron Podcast",
+          "published": "2026-06-11",
+          "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+          "significance": "The public interview identifies the guest and exact handle; it is a guest appearance, not her own upload."
+        },
+        "channel_page_status": "YouTube channel/About/RSS fetch was disabled or throttled in this run. The handle is linked through the guest appearance and third-party channel metadata, but YouTube's own channel page was not independently retrievable.",
+        "third_party_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "third_party_channel_id_status": "NON_PRIMARY_CORROBORATION_ONLY",
+        "ownership_status": "STRONGLY_IDENTITY_LINKED; CHANNEL_PAGE_NOT_PLATFORM_VERIFIED"
+      },
+      "video_candidates": [
+        {
+          "title": "XRP Was Built for What's Coming",
+          "published": "2026-03-03",
+          "views": 13252,
+          "likes": 1100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+        },
+        {
+          "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+          "published": "2026-03-06",
+          "views": 32040,
+          "likes": 2300,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+        },
+        {
+          "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+          "published": "2025-12-24",
+          "views": 44991,
+          "likes": 3100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+        },
+        {
+          "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+          "published": "2026-07-30",
+          "views": 10090,
+          "likes": 740,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; claims red-teamed against 2026-11-09 amendment state",
+          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+        }
+      ],
+      "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
+      "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
     }
   },
   "platform_status": {
@@ -34642,5 +35045,79 @@
     "read_access": true,
     "write_access_tested": true,
     "action": "Read current main/integration trees, all open PR inventory pages, exact PR ancestry/overlaps/reviews/threads, exact-head CI/audit/gate logs, and updated only existing integration branch with compare-and-swap."
+  },
+  "xrpl_amendment_status": {
+    "as_of_date": "2026-11-09",
+    "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+    "trusted_validator_count": 35,
+    "threshold": {
+      "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+      "minimum_votes_for_more_than_80pct": 29,
+      "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+    },
+    "enabled": {
+      "fixCleanup3_3_0": "2026-09-11",
+      "PermissionDelegationV1_1": "2026-10-08",
+      "BatchV1_1": "2026-10-09",
+      "fixBatchV1_2": "2026-10-09",
+      "fixCleanup3_4_0": "2026-11-05"
+    },
+    "pending": {
+      "ConfidentialTransfer": {
+        "yes_votes": 21,
+        "total_validators": 35,
+        "support_pct": 60,
+        "short_of_activation_votes": 8
+      },
+      "DynamicMPT": {
+        "yes_votes": 16,
+        "total_validators": 35,
+        "support_pct": 45.7,
+        "short_of_activation_votes": 13
+      },
+      "Sponsor": {
+        "yes_votes": 10,
+        "total_validators": 35,
+        "support_pct": 28.6,
+        "short_of_activation_votes": 19
+      },
+      "SingleAssetVault": {
+        "yes_votes": 23,
+        "total_validators": 35,
+        "support_pct": 65.7,
+        "short_of_activation_votes": 6
+      },
+      "LendingProtocol": {
+        "yes_votes": 21,
+        "total_validators": 35,
+        "support_pct": 60,
+        "short_of_activation_votes": 8
+      },
+      "LendingProtocolV1_1": {
+        "yes_votes": 21,
+        "total_validators": 35,
+        "support_pct": 60,
+        "short_of_activation_votes": 8
+      },
+      "XChainBridge": {
+        "yes_votes": 4,
+        "total_validators": 35,
+        "support_pct": 11.4,
+        "short_of_activation_votes": 25
+      },
+      "fixXChainRewardRounding": {
+        "yes_votes": 10,
+        "total_validators": 35,
+        "support_pct": 28.6,
+        "short_of_activation_votes": 19
+      }
+    },
+    "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+    "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+    "source_urls": [
+      "https://xrpldashboard.com/amendments/2026-11-09",
+      "https://xrpl.to/amendments",
+      "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+    ]
   }
 }
