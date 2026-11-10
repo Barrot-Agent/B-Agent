@@ -4657,7 +4657,7 @@ The JSON-key assertion was corrected in the next head; this commit corrects the 
 - Dependency audit: six manifests, zero known vulnerabilities, on immediately preceding code-identical head `2e27fdf05f9f4a0548688685e19d0afbf4328b77`. The subsequent two-parent sync changed only `data/autonomous_repair_status.md`; the handoff append changes only this Markdown file. No dependency manifest or workflow input changed, so the audited dependency graph is unchanged. The path-filtered audit did not rerun on these data/documentation-only commits; this is not represented as a new exact-SHA audit.
 - Cache budget remains exhausted/read-only. Setuptools emits non-fatal license-table and package-discovery warnings.
 
-The new handoff-only commit triggers a fresh full CI and fail-closed run. Until those finish, use the above results only for the verified code head `ef43ed21`, not as exact-head evidence for the handoff append.
+The handoff append was subsequently verified on exact head `b820523c`: full repository suite 3,363 passed, zero failed, eight subtests; inclusive coverage 59.58%; core suite and wheel build/install passed; exact CI run https://github.com/Barrot-Agent/B-Agent/actions/runs/42858530061 and fail-closed gate https://github.com/Barrot-Agent/B-Agent/actions/runs/42858529041 passed. The exact-head dependency audit also passed on `b820523c` (six manifests, zero known vulnerabilities): https://github.com/Barrot-Agent/B-Agent/actions/runs/42858790944. This final handoff correction is documentation-only and changes no application code, dependency manifest or workflow; the current exact-head CI for the resulting tip is recorded in PR #1660.
 
 ### Current market and XRP structure
 
