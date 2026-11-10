@@ -104,6 +104,19 @@ def test_barrot_ops_requires_explicit_approval_and_exact_current_main_sha() -> N
     assert "kaggle competitions submit" not in content
 
 
+def test_barrot_ops_requires_separate_action_specific_external_approval() -> None:
+    content = _read("barrot-ops.yml")
+    assert "confirm_databricks_workspace_import:" in content
+    assert "confirm_kaggle_dataset_download:" in content
+    assert content.count("default: NO") >= 3
+    assert "inputs.confirm_databricks_workspace_import == 'YES'" in content
+    assert "inputs.confirm_kaggle_dataset_download == 'YES'" in content
+    assert "if: ${{ inputs.confirm_databricks_workspace_import == 'YES' }}" in content
+    assert "if: ${{ inputs.confirm_kaggle_dataset_download == 'YES' }}" in content
+    assert "databricks workspace import" in content
+    assert "kaggle datasets download" in content
+
+
 def test_existing_safe_external_deploys_keep_per_run_confirmation() -> None:
     for name in ("deploy-databricks.yml", "barrot-ops.yml"):
         content = _read(name)
