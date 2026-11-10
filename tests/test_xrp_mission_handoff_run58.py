@@ -124,7 +124,7 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert latest["identity_research"]["japan_sbic"]["chatgpt_and_openai"]["sbi_holdings"].startswith("SBI Holdings")
     assert latest["identity_research"]["japan_sbic"]["chatgpt_and_openai"]["softbank_openai"].startswith("SB OAI Japan")
     assert "cash subscriptions into tokenized fund shares" in latest["identity_research"]["actual_capital"]["required_separation"]
-    assert "XRP spot purchases" in latest["identity_research"]["actual_capital"]["required_separation"]
+    assert "cash actually used to buy XRP" in latest["identity_research"]["actual_capital"]["required_separation"]
 
 
 

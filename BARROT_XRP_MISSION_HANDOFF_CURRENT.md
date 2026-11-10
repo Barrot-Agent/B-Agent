@@ -4696,3 +4696,15 @@ Candidate uploads (not counted as verified personal uploads):
 **Latest exact-head test result on 4b7.** Full suite [42726531988](https://github.com/Barrot-Agent/B-Agent/actions/runs/42726531988): 1,315 passed, one failed, eight subtests, 59.36% coverage. The only failure is a regression assertion expecting the label “tokenized fund subscriptions”; the canonical map uses the more precise label “cash subscriptions into tokenized fund shares.” The two historical Run82 timestamp tests now pass. Repair the test wording only; no production code defect.
 
 Dependency audit [42726531948](https://github.com/Barrot-Agent/B-Agent/actions/runs/42726531948) passed six manifests with zero known vulnerabilities. Fail-closed gate passed and kept automatic merging disabled. The next exact-head full suite is required after the wording repair.
+
+
+### Run104 CI follow-up 3 — exact canonical capital label
+
+Full-suite run [42727236970](https://github.com/Barrot-Agent/B-Agent/actions/runs/42727236970) on `656b3557` reported **1,315 passed, one failed, eight subtests; 59.36% coverage**. The only failure is a test assertion expecting `XRP spot purchases`; the canonical map taxonomy calls this `cash actually used to buy XRP`. The assertion is being aligned to the canonical term. No production code defect was found.
+
+The two prior Run82 timestamp tests pass. The new SBIC identity, SBI Ripple Asia no-XRP-handling correction, Aviva/Franklin tokenization distinctions, XRPL amendment voting and Kamilah video-candidate assertions passed.
+
+- Dependency audit [42727236921](https://github.com/Barrot-Agent/B-Agent/actions/runs/42727236921): six manifests passed, zero known vulnerabilities.
+- Fail-closed gate [42727236787](https://github.com/Barrot-Agent/B-Agent/actions/runs/42727236787): passed; automatic merge remains disabled.
+- Previous code/test head `044a0428`: 1,316 passed, zero failed, eight subtests, 59.36% coverage.
+- The next exact-head full-suite run is required after this final assertion correction.
