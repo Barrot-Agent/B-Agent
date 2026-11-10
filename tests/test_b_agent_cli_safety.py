@@ -69,3 +69,39 @@ def test_b_agent_keeps_cli_entrypoint():
         for guard in main_guards
         for statement in guard.body
     )
+
+
+
+def test_b_agent_cli_has_no_direct_remote_write_or_pr_creation():
+    tree = _tree()
+    calls = [node for node in ast.walk(tree) if isinstance(node, ast.Call)]
+    forbidden_methods = {"put", "ensure_branch", "commit_file", "open_pr"}
+    assert not any(
+        isinstance(node.func, ast.Attribute) and node.func.attr in forbidden_methods
+        for node in calls
+    )
+    assert not any(
+        isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+        and node.name == "create_repository_repair_commit"
+        for node in tree.body
+    )
+
+
+def test_b_agent_local_mutations_require_explicit_interactive_opt_in():
+    source = SOURCE.read_text(encoding="utf-8")
+    assert '"--write-local-audit"' in source
+    assert "if args.write_local_audit:" in source
+    assert '"--execute-local-repair"' in source
+    assert "if args.execute_local_repair:" in source
+    assert "sys.stdin.isatty()" in source
+    assert "APPLY LOCAL REPAIRS" in source
+
+
+def test_b_agent_external_repository_transfer_requires_explicit_confirmation():
+    source = SOURCE.read_text(encoding="utf-8")
+    main = source[source.index("def main():"):]
+    assert '"--allow-lunaroute-data-transfer"' in main
+    assert "if not args.allow_lunaroute_data_transfer:" in main
+    assert "SEND REPOSITORY CONTEXT TO LUNAROUTE" in main
+    assert main.index("if not args.allow_lunaroute_data_transfer:") < main.index("llm = GroqLLM(")
+    assert main.index("transfer_confirmation") < main.index("llm = GroqLLM(")
