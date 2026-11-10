@@ -126,7 +126,7 @@ def test_run135a_separates_the_two_ripple_credit_facilities_from_nh_kyobo_notes(
 def test_run135a_records_review_corrections_without_overwriting_historical_artifacts() -> None:
     data = _artifact()
     corrections = data["evernorth"]["corrections"]
-    assert len(corrections) == 2
+    assert len(corrections) == 3
     assert corrections[0]["prior_field"] == "open_24h_usd"
     assert corrections[0]["disposition"].startswith("Historical artifacts are preserved")
     assert corrections[1]["source_artifact"].endswith(
@@ -149,7 +149,7 @@ def test_run135a_does_not_claim_complete_evernorth_closing_holdings() -> None:
     assert bridge["complete_total_xrp"] is None
     assert bridge["residual_cash_purchase_at_close_usd"] == "49995"
     assert bridge["residual_cash_purchase_xrp_quantity"] is None
-    assert "not the exact closing total" in bridge["status"]
+    assert "exact closing total cannot be reconstructed" in bridge["status"]
 
 
 def test_run135a_preserves_evernorth_issuer_reported_liquidity_risk() -> None:

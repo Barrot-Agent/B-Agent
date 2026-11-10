@@ -4619,3 +4619,15 @@ PR #1653 remains unique and blocked by six Copilot findings and two CodeRabbit f
 ## Run135D — Regression-test key correction
 
 A review of the new residual-cash test found one remaining test-only key mismatch before claiming verification: the artifact field is `advance_funding_cash_used_to_purchase_xrp_usd_approx`, not `cash_used_to_purchase_xrp_usd_approx`. The assertion is corrected in this commit. The production artifact values are unchanged. CI on parent head `4f51c53b6cc798500f7249066e71ba8e44f60092` is not used as final evidence; the corrected successor head must pass the full suite, dependency audit and fail-closed gate.
+
+
+---
+
+## Run135E — Final regression-test expectation repair
+
+The exact-head run on `4f51c53b6cc798500f7249066e71ba8e44f60092` completed with 3,360 passed, three failed and eight subtests. The failures were confined to the new Run135A regression test:
+- one stale JSON-key assertion,
+- one expected correction-array count that remained at two after a third correction was added,
+- one case-sensitive status substring that did not match the artifact wording.
+
+The JSON-key assertion was corrected in the next head; this commit corrects the remaining correction-count and status-text expectations. No production code or source data changed. Exact-head full-suite, dependency-audit and fail-closed verification must run on the resulting successor head. Previous successful tests on parent heads are not substituted.
