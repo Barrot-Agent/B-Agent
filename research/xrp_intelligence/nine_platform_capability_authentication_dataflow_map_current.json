@@ -4,7 +4,7 @@
   "captured_at_utc": "2026-11-10T01:27:20Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
-  "observed_integration_head_before_map_commit": "930c939cd0a825a046b30e86519eabf827dabbbe",
+  "observed_integration_head_before_map_commit": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
   "observed_research_head": "238f3ff4a69420882c77d225626a352ba19a412c",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -539,6 +539,8 @@
         "ahead": 874,
         "behind": 0,
         "changed": 219,
+        "additions": 91706,
+        "deletions": 3548,
         "mergeable": true
       },
       "pr_1643": {
@@ -798,6 +800,7 @@
         "verified_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
         "full_suite": {
           "run_id": 42735035466,
+          "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
           "passed": 1316,
           "failed": 0,
           "subtests": 8,
@@ -810,16 +813,17 @@
           "subtests": 8,
           "conclusion": "success"
         },
-        "wheel_build": "PASS",
         "installed_wheel": "PASS",
         "dependency_audit": {
           "run_id": 42735035690,
+          "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
           "manifests": 6,
           "known_vulnerabilities": 0,
           "conclusion": "success"
         },
         "fail_closed_gate": {
           "run_id": 42735035186,
+          "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
           "conclusion": "success",
           "automatic_merge_disabled": true
         }
@@ -842,7 +846,7 @@
     },
     "latest_market_crosscheck": {
       "captured_at_utc": "2026-11-10T01:27:20Z",
-      "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 calculated over the exact surfaced JSON text. Original transport headers and wire-level bytes were not retained.",
+      "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 over exact surfaced text; transport headers/wire bytes not retained.",
       "raw_http_bytes_preserved": false,
       "sha256_receipts_created": true,
       "model_admission": false,
@@ -862,7 +866,7 @@
           "response_text_sha256": "5710b000d3edd33437bede086347242c20adefc8407d04f534e11b2d9f06a35d"
         },
         {
-          "source": "OKX XRP-USDT spot",
+          "source": "OKX XRP-USDT",
           "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
           "provider_event_time_utc": "2026-11-10T01:16:47.232Z",
           "age_seconds_at_capture": 632.768,
@@ -912,7 +916,6 @@
           "short_liquidations_usd": 1300000,
           "average_funding_8h_pct": 0.0045,
           "binance_funding_8h_pct": 0.008,
-          "binance_accounts_long_pct": 74.8,
           "url": "https://liqwall.com/coins/xrp"
         },
         {
@@ -930,7 +933,7 @@
           "url": "https://tradradar.io/tr/markets/xrp"
         }
       ],
-      "derivatives_interpretation": "Open-interest aggregates differ by about 35% between these non-synchronized aggregators and their venue coverage overlaps. Their 24-hour liquidation windows end at different times and cover different venues, so the totals are not directly comparable. Both snapshots are long-liquidation dominated and show modest positive aggregate funding. Descriptive deleveraging evidence only; not a directional signal."
+      "derivatives_interpretation": "Open-interest aggregates differ by about 35% with overlapping but non-identical venue coverage. Their 24-hour liquidation windows end at different times; do not compare totals as synchronized. Both snapshots are long-liquidation dominated. Descriptive only."
     },
     "new_research_findings": [
       {
@@ -943,7 +946,53 @@
         "model_eligible": false
       }
     ],
-    "sbic_identity_research": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) is distinct from SBI Holdings. Its official profile identifies Nagoya and Osaka sister companies and cites the 1963 Small and Medium Business Investment & Consultation Companies Act.",
+    "sbic_identity_research": {
+      "conclusion": "Resolved from primary company profiles: SBIC East Japan, SBIC Central Japan and SBIC West Japan are three distinct regional Small and Medium Business Investment & Consultation companies established under Japan's Small and Medium Business Investment & Consultation Companies Act. They are not the same entity as SBI Holdings.",
+      "regional_entities": {
+        "east": {
+          "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "public_name": "SBIC East Japan",
+          "corporation_number": "9011001030621",
+          "established": "1963-11-15",
+          "shareholders": "Local governments (18 prefectures), chambers of commerce, financial institutions and business companies, per official profile.",
+          "source": "https://www.sbic.co.jp/company/profile/"
+        },
+        "central": {
+          "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "public_name": "SBIC Central Japan",
+          "established": "1963-11-18",
+          "capital_jpy": 4380000000,
+          "operating_area": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+          "source": "https://www.sbic-cj.co.jp/company/about/"
+        },
+        "west": {
+          "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "public_name": "SBIC West Japan",
+          "established": "1963-11-20",
+          "capital_jpy": 6822000000,
+          "operating_area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+          "source": "https://www.sbic-wj.co.jp/profiles/profile/"
+        }
+      },
+      "structure": "The three companies describe one another as sister companies and jointly cover Japan. Tokyo's official profile identifies its own shareholder categories; Osaka identifies itself as a policy implementation institution under the 1963 law.",
+      "distinction_from_sbi_holdings": "No evidence in the reviewed primary profiles that these regional SBIC companies are subsidiaries of SBI Holdings. SBI Holdings is a separate financial group.",
+      "chatgpt_and_openai": {
+        "tokyo_sbic": "Tokyo SBIC hosted public ChatGPT/Generative-AI seminars and training for investee companies, including a 2025-02-26 seminar and a 2025-06-12/13 Generative AI and machine-learning course. This is education/training, not proof of an OpenAI enterprise contract or corporate partnership.",
+        "sbi_holdings": "SBI Holdings and SBI Securities separately announced ChatGPT Enterprise adoption on 2025-05-01; SBI Securities began in January 2025 and SBI Holdings began for some employees in March 2025.",
+        "softbank_openai": "SB OAI Japan is a different joint venture between OpenAI and SoftBank Group/SoftBank Corp, formed 2025-11-05. It is not SBIC East/Central/West and not SBI Holdings.",
+        "historical_name_confusion": "SBI Holdings was formerly SoftBank Investment Corporation, renamed in July 2005 and independent from the SoftBank Group in August 2006. Historical name origin does not make SBI Holdings a current SoftBank Group subsidiary.",
+        "interpretation": "The phrase 'SBIC, ChatGPT SBIC' appears to conflate regional SBIC companies, SBI Holdings' separate ChatGPT Enterprise adoption, and the SoftBank Group/OpenAI SB OAI Japan venture. No single 'ChatGPT SBIC' legal entity or direct OpenAI partnership with the three regional SBIC companies was verified."
+      },
+      "sources": [
+        "https://www.sbic.co.jp/",
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic-cj.co.jp/company/about/",
+        "https://www.sbic-wj.co.jp/profiles/profile/",
+        "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+        "https://www.sbigroup.co.jp/english/news/pdf/2011/0331_b_en.pdf",
+        "https://www.softbank.jp/corp/news/press/sbkk/2025/20251105_02/"
+      ]
+    },
     "exact_phrase_research": "No new primary-source match for 'SBIC, ChatGPT SBIC' or a definitive intended ASK Coin identity in this run. Permission Coin ASK remains a separate candidate with no verified XRP link. 'Actual capital' remains a taxonomy, not a standardized XRP metric.",
     "workflow_safety_audit": {
       "workflows_dispatched": false,
@@ -955,6 +1004,7 @@
       "main_protected": true,
       "branch_protection_status": "UNVERIFIED_HTTP_403",
       "detailed_branch_protection": "HTTP 403 Resource not accessible by integration",
+      "visible_required_status_contexts": [],
       "visible_ruleset": {
         "id": 10863829,
         "name": "Fall Back",
@@ -962,6 +1012,7 @@
       },
       "pages_enabled": true,
       "pages_configuration_accessible": false,
+      "pages_authorized": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
         "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
@@ -969,6 +1020,7 @@
         "behind_by": 0,
         "changed_paths": 219,
         "mergeable": true,
+        "mergeable_state": "clean",
         "approvals": 0,
         "commented_reviews": 62,
         "threads_resolved": 22,
@@ -983,11 +1035,10 @@
         "No independent APPROVED review",
         "Detailed branch-protection requirements inaccessible via HTTP 403",
         "Automatic GitHub Pages publication not specifically authorized"
-      ],
-      "pages_authorized": false
+      ]
     },
     "backlog_classification": {
-      "#1640": "BLOCKED integration PR; exact-head full suite, wheel, dependency audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
+      "#1640": "BLOCKED integration PR; exact code/test head a900c4 full suite, wheel, six-manifest audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
       "#1643": "UNIQUE/UNREVIEWED research archive; 663 unique paths, 7 shared; 906 ahead/1 behind; preserve.",
       "#1653": "UNIQUE/BLOCKED knowledge graph; 6 unique paths, 1 shared; 18 ahead/1 behind; 8 unresolved substantive review threads; preserve and fix before integration.",
       "#1642": "SUPERSEDED_CANDIDATE; all 7 paths overlap #1640.",
@@ -1034,12 +1085,30 @@
       "research/xrp_intelligence/20261110T012720Z-run109-xrp-spot-derivatives-sbi-evernorth-update.json"
     ],
     "next_actions": [
-      "Obtain independent approval and effective branch-protection visibility.",
-      "Obtain explicit Pages-publication authorization.",
-      "After any authorized merge, fetch main, verify merge commit/files, run main CI and inspect automatic side effects.",
-      "Preserve #1643 and #1653 unique work; resolve #1653's eight review threads.",
-      "Establish independent WORM anchoring and synchronized historical data before forecast issuance."
-    ]
+      "Obtain independent approval, effective branch-protection visibility and Pages authorization.",
+      "After any authorized merge, verify main and CI.",
+      "Preserve #1643 and #1653 unique work.",
+      "Establish independent WORM anchoring and synchronized history before forecasts."
+    ],
+    "everNorth_sbi_ownership": {
+      "primary_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "as_of_closing": "2026-10-09",
+      "sbi_ownership": {
+        "class_a_shares": 9431914,
+        "class_c_shares": 2359038,
+        "percent_outstanding_pubco_common_stock": 21.4,
+        "percent_voting_power": 39.9,
+        "limitation": "39.9% is voting power under a cap, not 39.9% of common stock or XRP."
+      },
+      "actual_capital": {
+        "advance_funding_aggregate_cash_usd": 214050000,
+        "advance_funding_aggregate_in_kind_xrp": 600000,
+        "cash_used_to_purchase_xrp": 84365876.3625,
+        "at_closing_xrp_holdings_approx": 473000000,
+        "limitation": "Aggregate subscriber amounts are not SBI-only; do not attribute treasury XRP to SBI."
+      }
+    }
   },
   "prior_run_observations": [
     {
@@ -31027,6 +31096,8 @@
       "ahead": 874,
       "behind": 0,
       "changed": 219,
+      "additions": 91706,
+      "deletions": 3548,
       "mergeable": true
     },
     "pr_1643": {
@@ -31073,44 +31144,72 @@
     }
   },
   "ci_evidence": {
-    "integration": {
-      "verified_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+    "verified_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+    "full_suite": {
+      "run_id": 42735035466,
+      "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+      "passed": 1316,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_pct": 59.36,
+      "result": "success"
+    },
+    "core": {
+      "passed": 677,
+      "failed": 0,
+      "subtests": 8,
+      "result": "success"
+    },
+    "wheel": "PASS; installed wheel loaded Barrot V3, priority-one XRP mission and canonical data assets",
+    "dependency_audit": {
+      "run_id": 42735035690,
+      "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+      "manifests": 6,
+      "known_vulnerabilities": 0,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 42735035186,
+      "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+      "conclusion": "success",
+      "automatic_merge_disabled": true
+    },
+    "previous_stale_failure": {
+      "head": "5ac45a24a9430161dcff9bfdfd5f1058dab9bb0e",
+      "run_id": 42723355723,
+      "passed": 1315,
+      "failed": 1,
+      "subtests": 8,
+      "coverage_pct": 59.36,
+      "failed_test": "tests/test_xrp_mission_handoff_run58.py::test_run103_endpoint_registry_counts_match_current_map",
+      "cause": "Regression assertion required exact equality to PLAUSIBLE_UNCONFIRMED although the parser correctly appends explicit uncertainty rationale.",
+      "repair": "Updated the test to assert the stable assessment prefix and both required rationale clauses; production parsing logic was unchanged."
+    },
+    "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT",
+    "latest_attempt": {
+      "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
       "full_suite": {
-        "run_id": 42735035466,
         "passed": 1316,
         "failed": 0,
         "subtests": 8,
-        "coverage_pct": 59.36,
-        "conclusion": "success"
+        "coverage_pct": 59.36
       },
       "core": {
         "passed": 677,
         "failed": 0,
-        "subtests": 8,
-        "conclusion": "success"
-      },
-      "wheel_build": "PASS",
-      "installed_wheel": "PASS",
-      "dependency_audit": {
-        "run_id": 42735035690,
-        "manifests": 6,
-        "known_vulnerabilities": 0,
-        "conclusion": "success"
-      },
-      "fail_closed_gate": {
-        "run_id": 42735035186,
-        "conclusion": "success",
-        "automatic_merge_disabled": true
-      }
-    },
-    "main": {
-      "head": "d4d43be3427375cf79d190e768976de062e20287",
-      "ci_refreshed_this_run": false,
-      "last_known_full_suite": {
-        "run_id": 42526890841,
-        "passed": 718,
         "subtests": 8
-      }
+      },
+      "wheel": "PASS",
+      "dependency_audit": {
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": "PASS; automatic merge disabled"
+    },
+    "run109_map_test_descendant_ci": {
+      "head": "7c074b1192de139b62fb0f46117fc5496aa0ebc9",
+      "status": "PENDING",
+      "reason": "Map and regression-test history refresh is being verified on the descendant; parent code/test head a900c4 passed."
     }
   },
   "reviews": {
@@ -31578,7 +31677,7 @@
   },
   "latest_market_crosscheck": {
     "captured_at_utc": "2026-11-10T01:27:20Z",
-    "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 calculated over the exact surfaced JSON text. Original transport headers and wire-level bytes were not retained.",
+    "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 over exact surfaced text; transport headers/wire bytes not retained.",
     "raw_http_bytes_preserved": false,
     "sha256_receipts_created": true,
     "model_admission": false,
@@ -31598,7 +31697,7 @@
         "response_text_sha256": "5710b000d3edd33437bede086347242c20adefc8407d04f534e11b2d9f06a35d"
       },
       {
-        "source": "OKX XRP-USDT spot",
+        "source": "OKX XRP-USDT",
         "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
         "provider_event_time_utc": "2026-11-10T01:16:47.232Z",
         "age_seconds_at_capture": 632.768,
@@ -31648,7 +31747,6 @@
         "short_liquidations_usd": 1300000,
         "average_funding_8h_pct": 0.0045,
         "binance_funding_8h_pct": 0.008,
-        "binance_accounts_long_pct": 74.8,
         "url": "https://liqwall.com/coins/xrp"
       },
       {
@@ -31666,7 +31764,7 @@
         "url": "https://tradradar.io/tr/markets/xrp"
       }
     ],
-    "derivatives_interpretation": "Open-interest aggregates differ by about 35% between these non-synchronized aggregators and their venue coverage overlaps. Their 24-hour liquidation windows end at different times and cover different venues, so the totals are not directly comparable. Both snapshots are long-liquidation dominated and show modest positive aggregate funding. Descriptive deleveraging evidence only; not a directional signal."
+    "derivatives_interpretation": "Open-interest aggregates differ by about 35% with overlapping but non-identical venue coverage. Their 24-hour liquidation windows end at different times; do not compare totals as synchronized. Both snapshots are long-liquidation dominated. Descriptive only."
   },
   "prediction_engine": {
     "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
@@ -31770,8 +31868,7 @@
       "issuance-time feature-snapshot verification",
       "Binance, Coinbase, Kraken, OKX, Bitbank and Bybit public market adapters",
       "Immutable forecast outcome resolution with event-time tolerance, source lineage, explicit cross-venue normalization and Brier/log-loss scoring against the baseline.",
-      "Missing or unavailable outcome is recorded as unscorable rather than as a directional miss.",
-      "CFTC contract-status index and TFF parser: optional 176LM2, dropped-versus-zero state, dot-change null handling and total-trader counts; weekly raw-only."
+      "Missing or unavailable outcome is recorded as unscorable rather than as a directional miss."
     ],
     "raw_receipt_archive": {
       "mode": "write-once content-addressed payload files; canonical receipt log; per-run SHA-256 chain",
@@ -31809,8 +31906,7 @@
       "Historical evaluator limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes.",
       "No synchronized multi-domain history or scheduled SEC/macro/stablecoin/custody/collateral/institutional/payment-rail sources.",
       "No trained-model OOS lift, validated real-data calibration, sufficient independent shadow outcomes or trusted evaluator key.",
-      "Scheduled workflow is not merged to main and has not executed on main.",
-      "CFTC status/TFF data remains raw-only and not model-admitted; no complete PRE historical backfill is verified."
+      "Scheduled workflow is not merged to main and has not executed on main."
     ],
     "forecast_status": "NOT_ISSUED",
     "oos_lift": false,
@@ -31853,7 +31949,8 @@
     "weekly_endpoint_ids": [
       "cftc_contract_status_index",
       "cftc_tff_financial_futures"
-    ]
+    ],
+    "cftc_weekly_status": "RAW_ONLY_NOT_MODEL_ADMITTED"
   },
   "nine_platform_status": {
     "status": "DESIGNED_NOT_EXECUTED",
@@ -31877,6 +31974,7 @@
     "main_protected": true,
     "branch_protection_status": "UNVERIFIED_HTTP_403",
     "detailed_branch_protection": "HTTP 403 Resource not accessible by integration",
+    "visible_required_status_contexts": [],
     "visible_ruleset": {
       "id": 10863829,
       "name": "Fall Back",
@@ -31884,6 +31982,7 @@
     },
     "pages_enabled": true,
     "pages_configuration_accessible": false,
+    "pages_authorized": false,
     "pages_deployment_authorized": false,
     "pr_1640": {
       "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
@@ -31891,6 +31990,7 @@
       "behind_by": 0,
       "changed_paths": 219,
       "mergeable": true,
+      "mergeable_state": "clean",
       "approvals": 0,
       "commented_reviews": 62,
       "threads_resolved": 22,
@@ -31905,8 +32005,7 @@
       "No independent APPROVED review",
       "Detailed branch-protection requirements inaccessible via HTTP 403",
       "Automatic GitHub Pages publication not specifically authorized"
-    ],
-    "pages_authorized": false
+    ]
   },
   "external_actions": {
     "main_write": false,
@@ -31991,7 +32090,7 @@
     }
   },
   "backlog_classification": {
-    "#1640": "BLOCKED integration PR; exact-head full suite, wheel, dependency audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
+    "#1640": "BLOCKED integration PR; exact code/test head a900c4 full suite, wheel, six-manifest audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
     "#1643": "UNIQUE/UNREVIEWED research archive; 663 unique paths, 7 shared; 906 ahead/1 behind; preserve.",
     "#1653": "UNIQUE/BLOCKED knowledge graph; 6 unique paths, 1 shared; 18 ahead/1 behind; 8 unresolved substantive review threads; preserve and fix before integration.",
     "#1642": "SUPERSEDED_CANDIDATE; all 7 paths overlap #1640.",
@@ -32024,9 +32123,9 @@
     "forecast_status": "NOT_ISSUED",
     "merge_performed": false,
     "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; continue synchronized historical data and independent receipt anchoring.",
-    "map_schema_compatibility": "Preserved pages_authorized boolean alongside pages_deployment_authorized for historical regression-test compatibility; exact-head CI rerun required."
+    "map_schema_compatibility": "Preserved legacy fields and historical Run82/Run104 snapshots; latest snapshot now uses full schema."
   },
-  "integration_head_before_map_commit": "930c939cd0a825a046b30e86519eabf827dabbbe",
+  "integration_head_before_map_commit": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
   "research_updates": {
     "run93": {
       "captured_at_utc": "2026-11-09T16:14:36Z",
@@ -33372,6 +33471,8 @@
         "ahead": 874,
         "behind": 0,
         "changed": 219,
+        "additions": 91706,
+        "deletions": 3548,
         "mergeable": true
       },
       "pr_1643": {
@@ -33441,49 +33542,118 @@
       }
     },
     "ci_evidence": {
-      "integration": {
-        "verified_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+      "verified_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+      "full_suite": {
+        "run_id": 42735035466,
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+        "passed": 1316,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "result": "success"
+      },
+      "core": {
+        "passed": 677,
+        "failed": 0,
+        "subtests": 8,
+        "result": "success"
+      },
+      "wheel": "PASS; installed wheel loaded Barrot V3, priority-one XRP mission and canonical data assets",
+      "dependency_audit": {
+        "run_id": 42735035690,
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 42735035186,
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+        "conclusion": "success",
+        "automatic_merge_disabled": true
+      },
+      "previous_stale_failure": {
+        "head": "5ac45a24a9430161dcff9bfdfd5f1058dab9bb0e",
+        "run_id": 42723355723,
+        "passed": 1315,
+        "failed": 1,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "failed_test": "tests/test_xrp_mission_handoff_run58.py::test_run103_endpoint_registry_counts_match_current_map",
+        "cause": "Regression assertion required exact equality to PLAUSIBLE_UNCONFIRMED although the parser correctly appends explicit uncertainty rationale.",
+        "repair": "Updated the test to assert the stable assessment prefix and both required rationale clauses; production parsing logic was unchanged."
+      },
+      "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT",
+      "latest_attempt": {
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
         "full_suite": {
-          "run_id": 42735035466,
           "passed": 1316,
           "failed": 0,
           "subtests": 8,
-          "coverage_pct": 59.36,
-          "conclusion": "success"
+          "coverage_pct": 59.36
         },
         "core": {
           "passed": 677,
           "failed": 0,
-          "subtests": 8,
-          "conclusion": "success"
-        },
-        "wheel_build": "PASS",
-        "installed_wheel": "PASS",
-        "dependency_audit": {
-          "run_id": 42735035690,
-          "manifests": 6,
-          "known_vulnerabilities": 0,
-          "conclusion": "success"
-        },
-        "fail_closed_gate": {
-          "run_id": 42735035186,
-          "conclusion": "success",
-          "automatic_merge_disabled": true
-        }
-      },
-      "main": {
-        "head": "d4d43be3427375cf79d190e768976de062e20287",
-        "ci_refreshed_this_run": false,
-        "last_known_full_suite": {
-          "run_id": 42526890841,
-          "passed": 718,
           "subtests": 8
-        }
+        },
+        "wheel": "PASS",
+        "dependency_audit": {
+          "manifests": 6,
+          "known_vulnerabilities": 0
+        },
+        "fail_closed_gate": "PASS; automatic merge disabled"
+      },
+      "run109_map_test_descendant_ci": {
+        "head": "7c074b1192de139b62fb0f46117fc5496aa0ebc9",
+        "status": "PENDING",
+        "reason": "Map and regression-test history refresh is being verified on the descendant; parent code/test head a900c4 passed."
       }
+    },
+    "main_workflows": {
+      "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+      "main_ci": {
+        "run_id": 42526890841,
+        "passed": 718,
+        "subtests": 8,
+        "conclusion": "success"
+      },
+      "latest_cross_analysis": {
+        "run_id": 42723811761,
+        "conclusion": "success",
+        "created_at_utc": "2026-11-09T23:51:34Z"
+      }
+    },
+    "workflow_safety": {
+      "changed_workflow_files": 43,
+      "changed_public_web_paths": 7,
+      "xrp_public_ingestion": {
+        "schedule": "hourly at minute 3; daily at 00:15 UTC; CFTC weekly raw-only window Saturday 00:10-01:59 UTC",
+        "main_only": true,
+        "permissions": [
+          "actions:read",
+          "contents:read"
+        ],
+        "read_only": true,
+        "artifact_only": true,
+        "raw_retention_days": 90,
+        "feature_checkpoint_days": 7,
+        "independent_worm": false,
+        "active_on_main": false,
+        "total_endpoints": 40,
+        "hourly_public_sources": 36,
+        "weekly_cftc_sources": 2,
+        "excluded_noncommercial_xrpl_nodes": 2,
+        "raw_artifact_retention_days": 90,
+        "feature_checkpoint_cache_days": 7,
+        "independent_worm_anchor": false
+      },
+      "manual_external_workflows_dispatched": [],
+      "pages_side_effect": "Prior main push triggered Pages deployment; next publication not authorized."
     },
     "latest_market_crosscheck": {
       "captured_at_utc": "2026-11-10T01:27:20Z",
-      "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 calculated over the exact surfaced JSON text. Original transport headers and wire-level bytes were not retained.",
+      "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 over exact surfaced text; transport headers/wire bytes not retained.",
       "raw_http_bytes_preserved": false,
       "sha256_receipts_created": true,
       "model_admission": false,
@@ -33503,7 +33673,7 @@
           "response_text_sha256": "5710b000d3edd33437bede086347242c20adefc8407d04f534e11b2d9f06a35d"
         },
         {
-          "source": "OKX XRP-USDT spot",
+          "source": "OKX XRP-USDT",
           "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
           "provider_event_time_utc": "2026-11-10T01:16:47.232Z",
           "age_seconds_at_capture": 632.768,
@@ -33553,7 +33723,6 @@
           "short_liquidations_usd": 1300000,
           "average_funding_8h_pct": 0.0045,
           "binance_funding_8h_pct": 0.008,
-          "binance_accounts_long_pct": 74.8,
           "url": "https://liqwall.com/coins/xrp"
         },
         {
@@ -33571,47 +33740,393 @@
           "url": "https://tradradar.io/tr/markets/xrp"
         }
       ],
-      "derivatives_interpretation": "Open-interest aggregates differ by about 35% between these non-synchronized aggregators and their venue coverage overlaps. Their 24-hour liquidation windows end at different times and cover different venues, so the totals are not directly comparable. Both snapshots are long-liquidation dominated and show modest positive aggregate funding. Descriptive deleveraging evidence only; not a directional signal."
+      "derivatives_interpretation": "Open-interest aggregates differ by about 35% with overlapping but non-identical venue coverage. Their 24-hour liquidation windows end at different times; do not compare totals as synchronized. Both snapshots are long-liquidation dominated. Descriptive only."
     },
-    "institutional": {
-      "primary_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
-      "filing_type": "Evernorth Holdings Inc. Form 424B-3",
-      "filing_date": "2026-10-30",
-      "as_of_closing": "2026-10-09",
-      "sbi_identity": "The filing defines SBI as SBI Holdings, Inc. and names four SBI-controlled stockholders: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd., and SBI Holdings USA, Inc.",
-      "sbi_ownership": {
-        "class_a_shares": 9431914,
-        "class_c_shares": 2359038,
-        "percent_outstanding_pubco_common_stock": 21.4,
-        "percent_voting_power": 39.9,
-        "as_of": "2026-10-09",
-        "limitation": "39.9% is voting power under an ownership cap; it is not 39.9% of outstanding common stock, not direct ownership of 39.9% of XRP, and not a disclosed SBI-only XRP purchase amount."
+    "institutional_and_macro": {
+      "coinbase_circle": {
+        "coinbase_q3_2026": "Coinbase's 2026-09-30 Form 10-Q says average USDC held in Coinbase products reached an all-time high and its Circle arrangement was renewed on the same terms.",
+        "circle_q3_2026": "Circle's 2026-09-30 Form 10-Q reports average daily USDC in circulation up 8% year over year in Q3; reserve income down 7.5% due mainly to a 61bp lower average yield, partly offset by circulation growth. Q3 distribution costs paid to Coinbase fell $30M year over year; Circle says lower reserve income drove the decrease, partly offset by a slight increase in Coinbase's share of average USDC on-platform balances. For the first nine months, Coinbase distribution costs fell $10.2M as Coinbase's share of average USDC platform balances declined despite higher reserve income.",
+        "implication": "This is a direct distribution/revenue-sharing relationship and a major stablecoin liquidity channel. It is not XRP spot demand."
       },
-      "group_definition": "SBI Group Ownership Percentage includes SBI, its affiliates and other holders deemed to form a group under Exchange Act Section 13(d).",
+      "coinbase_ripple": {
+        "event": "Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and its retail app on 2026-10-28, with supported-region deposits/withdrawals on XRPL, Base and Ethereum.",
+        "limitation": "Coinbase said Global Exchange access and use of RLUSD as collateral would follow; launch does not establish XRP purchases or XRP collateral.",
+        "sources": [
+          "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
+        ]
+      },
+      "coinbase_collateral": {
+        "sec_filing": "Coinbase Q3 2026 Form 10-Q does not mention XRP or RLUSD by name. Its lending-collateral table aggregates 'other crypto assets' and says no individual asset in that category exceeded 5% of total crypto collateral fair value.",
+        "conclusion": "No XRP-specific collateral balance, eligibility or utilization is established by this filing. Do not infer XRP collateral from the aggregated 'other crypto assets' line.",
+        "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+      },
+      "sbi_circle": {
+        "equity": "SBI Holdings and SBI Shinsei Bank each announced a $25M investment in Circle at its June 2025 IPO.",
+        "arc": "SBI Holdings announced participation through subsidiaries in Circle's ARC token presale on 2026-05-12.",
+        "sources": [
+          "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+          "https://www.sbigroup.co.jp/news/2026/0512_16310.html"
+        ]
+      },
+      "sbi_ripple": {
+        "sbi_ripple_asia": "SBI Ripple Asia is a joint venture established in May 2016. SBI Holdings' February 7, 2025 presentation reports SBI 60% / Ripple 40%; SBI Group's 2026-03-31 profile reports 60% voting rights.",
+        "xrp_corridors": {
+          "operational_entities": [
+            "SBI Remit",
+            "SBI VC Trade",
+            "Coins.ph",
+            "Tranglo"
+          ],
+          "operational_role": "SBI Remit initiates the remittance and SBI VC Trade handles the XRP leg; SBI Ripple Asia is the JV/software-services partner, not the XRP-handling entity.",
+          "scope": "Ripple's official profile describes commercial ODL in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
+          "limitation": "No current corridor-level daily/monthly XRP notional or settlement-volume series was found in this run. Historical service launch does not prove current throughput.",
+          "source_urls": [
+            "https://ripple.com/company/sbi-ripple-asia/",
+            "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+          ]
+        },
+        "xrpl_poc": "The February 2026 SBI Ripple Asia proof of concept contemplates XRPL for tokenized deposits/deposit-based digital money; it does not establish XRP-token settlement.",
+        "validator": "SBI VC Trade began operating an XRPL validator in 2024; validator operation is network participation, not proof of XRP purchases.",
+        "rlusd": "SBI VC Trade began handling RLUSD in Japan on 2026-06-24 after JFSA approval; this stablecoin distribution rail is separate from XRP remittance corridors.",
+        "jpy_sc": "JPYSC is a separate yen stablecoin issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. SBI reported handling balance above ¥30B and lending balance above ¥10B on 2026-11-02. Neither is XRP capital flow.",
+        "source_urls": [
+          "https://ripple.com/company/sbi-ripple-asia/",
+          "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+          "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+          "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+          "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+          "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+          "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+          "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+        ],
+        "sbi_ripple_asia_xrp_handling": "Ripple's official SBI Ripple Asia profile explicitly states SBI Ripple Asia does not handle XRP at all. It sells RippleNet software services and provides cross-border payment infrastructure.",
+        "sbi_group_ripple_equity": {
+          "approximate_share_pct": 9,
+          "description": "SBI Group's February 7, 2025 investor presentation states it held approximately 9% of Ripple, based on actual holdings, as Ripple's largest external shareholder.",
+          "as_of": "2025-02-07",
+          "current_2026_percentage_verified": false,
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        },
+        "sbi_ripple_asia_ownership": {
+          "sbi_pct": 60,
+          "ripple_pct": 40,
+          "source_date": "2025-02-07",
+          "current_voting_rights": "SBI Group reports 60% of voting rights as of 2026-03-31.",
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        },
+        "shareholder_xrp_distribution": {
+          "status": "HISTORICAL_DISTRIBUTION_PROGRAM",
+          "source_date": "2025-02-07",
+          "detail": "SBI Holdings' February 2025 investor presentation lists XRP shareholder benefits and five distributions since March 2020.",
+          "interpretation": "A shareholder distribution is a transfer/benefit, not evidence of incremental market purchases or current institutional XRP accumulation.",
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        }
+      },
+      "softbank_group_openai": "SB OAI Japan is a SoftBank Group/OpenAI joint venture, not an SBI Holdings or SBIC relationship.",
+      "circle_binance": "Circle disclosed a $100M strategic equity investment from Binance and a five-year USDC commercial agreement in September 2026.",
+      "actual_capital_taxonomy": {
+        "required_separation": [
+          "cash subscriptions into tokenized fund shares",
+          "issuer seed investment into a tokenized share class",
+          "new third-party subscriptions versus migration from another chain",
+          "XRP spot purchases",
+          "in-kind XRP contributions",
+          "XRP used as a bridge asset in payments",
+          "XRP collateral pledged, accepted and actually utilized",
+          "debt proceeds and drawn credit facilities",
+          "contingent equity capacity",
+          "stablecoin circulation and handling balances",
+          "tokenized asset AUM and on-chain share balances"
+        ],
+        "interpretation": "Aviva's £50M is issuer seed investment in a tokenized fund share class; Franklin's $150M are cash subscription receipts for fund shares with unknown investors/funding source. Neither is an XRP purchase or verified XRP capital inflow."
+      },
+      "xrpl_institutional_tokenization": {
+        "aviva": {
+          "issuer": "Aviva Investors",
+          "launch_date": "2026-10-26",
+          "asset": "GBP Sterling Liquidity Fund tokenized share class on XRPL",
+          "issuer_seed_investment_gbp": 50000000,
+          "issuer_seed_investment_usd_approx": 66000000,
+          "total_across_two_tokenized_share_classes_gbp_over": 86000000,
+          "underlying_fund_aum_gbp_approx": 22000000000,
+          "structure": "Digital-twin access layer; the conventional off-chain fund structure and underlying assets remain intact.",
+          "custody": "BNY Mellon is fund custodian; Komainu supported regulated digital-asset custody; Licuido supplied tokenization infrastructure.",
+          "actual_capital_interpretation": "£50M is Aviva's own investment in the new share class, not verified third-party subscription demand. The £22B underlying fund AUM is not all on-chain.",
+          "xrp_purchase_disclosed": false,
+          "direct_xrp_demand_established": false,
+          "primary_source": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/"
+        },
+        "franklin_templeton": {
+          "product": "Franklin OnChain U.S. Dollar Short-Term Money Market Fund (sgBENJI)",
+          "receipt_dates": [
+            "2026-10-21",
+            "2026-10-22"
+          ],
+          "cash_subscription_receipts_usd": 150000000,
+          "receipts": 2,
+          "shares_issued_each": 72184793.07,
+          "recorded_share_price_usd": 1.039,
+          "xrpl_holding_wallets": 1,
+          "xrpl_shares_after_issuance_approx": 192700000,
+          "wallet_signers_match_issuer": true,
+          "investor_identity_disclosed": false,
+          "funding_source_disclosed": false,
+          "omnibus_wallet_possible": true,
+          "fund_uses_other_networks": [
+            "Stellar"
+          ],
+          "migration_from_stellar_ruled_out": false,
+          "xrp_purchase": false,
+          "direct_xrp_demand_established": false,
+          "limitation": "CoinDesk's ledger review found two $75M cash subscription receipts and matching share batches. The investor(s), funding source, omnibus status and relationship to existing Stellar holdings remain undisclosed. These are tokenized fund shares, not XRP.",
+          "secondary_source": "https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet",
+          "ledger_links": [
+            "https://api.xrpscan.com/"
+          ]
+        },
+        "value_capture_interpretation": "Aviva and Franklin demonstrate live institutional issuance/representation of fund interests on XRPL. Their disclosed amounts are not XRP purchases. The tokenized assets may use XRP for minimal network fees, but no material XRP bridge, collateral or liquidity demand is established by these announcements.",
+        "planned_collateral": "Franklin/DBS/Ripple announced plans to explore token lending and trading; that is not evidence the collateral facility is live or that XRP is the collateral asset."
+      },
+      "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor.",
+      "xrpl_amendment_status": {
+        "as_of_date": "2026-11-09",
+        "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+        "trusted_validator_count": 35,
+        "threshold": {
+          "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+          "minimum_votes_for_more_than_80pct": 29,
+          "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+        },
+        "enabled": {
+          "fixCleanup3_3_0": "2026-09-11",
+          "PermissionDelegationV1_1": "2026-10-08",
+          "BatchV1_1": "2026-10-09",
+          "fixBatchV1_2": "2026-10-09",
+          "fixCleanup3_4_0": "2026-11-05"
+        },
+        "pending": {
+          "ConfidentialTransfer": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "DynamicMPT": {
+            "yes_votes": 16,
+            "total_validators": 35,
+            "support_pct": 45.7,
+            "short_of_activation_votes": 13
+          },
+          "Sponsor": {
+            "yes_votes": 10,
+            "total_validators": 35,
+            "support_pct": 28.6,
+            "short_of_activation_votes": 19
+          },
+          "SingleAssetVault": {
+            "yes_votes": 23,
+            "total_validators": 35,
+            "support_pct": 65.7,
+            "short_of_activation_votes": 6
+          },
+          "LendingProtocol": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "LendingProtocolV1_1": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "XChainBridge": {
+            "yes_votes": 4,
+            "total_validators": 35,
+            "support_pct": 11.4,
+            "short_of_activation_votes": 25
+          },
+          "fixXChainRewardRounding": {
+            "yes_votes": 10,
+            "total_validators": 35,
+            "support_pct": 28.6,
+            "short_of_activation_votes": 19
+          }
+        },
+        "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+        "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+        "source_urls": [
+          "https://xrpldashboard.com/amendments/2026-11-09",
+          "https://xrpl.to/amendments",
+          "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+        ]
+      },
+      "video_red_team": {
+        "video": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+        "published": "2026-07-30",
+        "claims": "Confidential Transfers, Sponsored Fees/Reserves, Batch, Permission Delegation and Dynamic MPT as institutional upgrades.",
+        "as_of_2026_11_09": "BatchV1_1 and PermissionDelegationV1_1 are enabled; ConfidentialTransfer (21/35), Sponsor (10/35) and DynamicMPT (16/35) remain below 29/35 and are not enabled.",
+        "correction": "Sponsored fees/reserves are a pending Sponsor amendment, not a live mainnet capability. The video's feature discussion is forward-looking and should not be repeated as current functionality.",
+        "source": "https://xrpldashboard.com/amendments/2026-11-09"
+      },
+      "evernorth_sbi_ownership": {
+        "primary_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+        "filing_date": "2026-10-30",
+        "as_of_closing": "2026-10-09",
+        "sbi_ownership": {
+          "class_a_shares": 9431914,
+          "class_c_shares": 2359038,
+          "percent_outstanding_pubco_common_stock": 21.4,
+          "percent_voting_power": 39.9,
+          "limitation": "39.9% is voting power under a cap, not 39.9% of common stock or XRP."
+        },
+        "actual_capital": {
+          "advance_funding_aggregate_cash_usd": 214050000,
+          "advance_funding_aggregate_in_kind_xrp": 600000,
+          "cash_used_to_purchase_xrp": 84365876.3625,
+          "at_closing_xrp_holdings_approx": 473000000,
+          "limitation": "Aggregate subscriber amounts are not SBI-only; do not attribute treasury XRP to SBI."
+        }
+      }
+    },
+    "identity_research": {
+      "japan_sbic": {
+        "conclusion": "Resolved from primary company profiles: SBIC East Japan, SBIC Central Japan and SBIC West Japan are three distinct regional Small and Medium Business Investment & Consultation companies established under Japan's Small and Medium Business Investment & Consultation Companies Act. They are not the same entity as SBI Holdings.",
+        "regional_entities": {
+          "east": {
+            "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+            "public_name": "SBIC East Japan",
+            "corporation_number": "9011001030621",
+            "established": "1963-11-15",
+            "shareholders": "Local governments (18 prefectures), chambers of commerce, financial institutions and business companies, per official profile.",
+            "source": "https://www.sbic.co.jp/company/profile/"
+          },
+          "central": {
+            "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+            "public_name": "SBIC Central Japan",
+            "established": "1963-11-18",
+            "capital_jpy": 4380000000,
+            "operating_area": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+            "source": "https://www.sbic-cj.co.jp/company/about/"
+          },
+          "west": {
+            "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+            "public_name": "SBIC West Japan",
+            "established": "1963-11-20",
+            "capital_jpy": 6822000000,
+            "operating_area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+            "source": "https://www.sbic-wj.co.jp/profiles/profile/"
+          }
+        },
+        "structure": "The three companies describe one another as sister companies and jointly cover Japan. Tokyo's official profile identifies its own shareholder categories; Osaka identifies itself as a policy implementation institution under the 1963 law.",
+        "distinction_from_sbi_holdings": "No evidence in the reviewed primary profiles that these regional SBIC companies are subsidiaries of SBI Holdings. SBI Holdings is a separate financial group.",
+        "chatgpt_and_openai": {
+          "tokyo_sbic": "Tokyo SBIC hosted public ChatGPT/Generative-AI seminars and training for investee companies, including a 2025-02-26 seminar and a 2025-06-12/13 Generative AI and machine-learning course. This is education/training, not proof of an OpenAI enterprise contract or corporate partnership.",
+          "sbi_holdings": "SBI Holdings and SBI Securities separately announced ChatGPT Enterprise adoption on 2025-05-01; SBI Securities began in January 2025 and SBI Holdings began for some employees in March 2025.",
+          "softbank_openai": "SB OAI Japan is a different joint venture between OpenAI and SoftBank Group/SoftBank Corp, formed 2025-11-05. It is not SBIC East/Central/West and not SBI Holdings.",
+          "historical_name_confusion": "SBI Holdings was formerly SoftBank Investment Corporation, renamed in July 2005 and independent from the SoftBank Group in August 2006. Historical name origin does not make SBI Holdings a current SoftBank Group subsidiary.",
+          "interpretation": "The phrase 'SBIC, ChatGPT SBIC' appears to conflate regional SBIC companies, SBI Holdings' separate ChatGPT Enterprise adoption, and the SoftBank Group/OpenAI SB OAI Japan venture. No single 'ChatGPT SBIC' legal entity or direct OpenAI partnership with the three regional SBIC companies was verified."
+        },
+        "sources": [
+          "https://www.sbic.co.jp/",
+          "https://www.sbic.co.jp/company/profile/",
+          "https://www.sbic-cj.co.jp/company/about/",
+          "https://www.sbic-wj.co.jp/profiles/profile/",
+          "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+          "https://www.sbigroup.co.jp/english/news/pdf/2011/0331_b_en.pdf",
+          "https://www.softbank.jp/corp/news/press/sbkk/2025/20251105_02/"
+        ]
+      },
+      "ask_coin": {
+        "status": "UNRESOLVED_CANDIDATE",
+        "candidate": "Permission Coin ASK",
+        "conclusion": "A plausible token match only; no verified XRP integration or evidence that this is the intended 'ASK Coin'.",
+        "source": "https://permission.io/"
+      },
       "actual_capital": {
-        "advance_funding_aggregate_cash_usd": 214050000,
-        "advance_funding_aggregate_in_kind_xrp": 600000,
-        "delayed_funding_aggregate_cash_usd": 10500000,
-        "delayed_funding_aggregate_in_kind_xrp": 200000,
-        "series_c_sponsor_xrp": 211319096.061435,
-        "ripple_affiliated_entity_xrp": 50000000,
-        "ripple_contributed_xrp": 126791458,
-        "cash_used_to_purchase_xrp": 84365876.3625,
-        "at_closing_xrp_holdings_approx": 473000000,
-        "limitation": "The $214.05M and 600,000 XRP are aggregate advance-funding subscribers' amounts, not identified as SBI-only. The filing says cash proceeds purchased 84,365,876.3625 XRP. Do not attribute aggregate cash or the treasury's full XRP holdings to SBI."
+        "status": "NOT_A_STANDARDIZED_XRP_METRIC",
+        "required_separation": [
+          "cash actually used to buy XRP",
+          "in-kind XRP contributions",
+          "debt proceeds",
+          "drawn credit facilities",
+          "collateral pledged/recognized/actually utilized",
+          "contingent equity capacity",
+          "stablecoin circulation/handling balances",
+          "cash subscriptions into tokenized fund shares",
+          "issuer seed investment in tokenized funds",
+          "migration of tokenized assets from another chain",
+          "tokenized AUM/on-chain share balances",
+          "XRP used as a bridge asset"
+        ],
+        "current_examples": {
+          "aviva_gbp_50m": "Issuer's own investment in a tokenized GBP fund share class on XRPL; not an XRP purchase.",
+          "franklin_usd_150m": "Two on-ledger cash subscription receipts for sgBENJI fund shares; investors/source unknown; not an XRP purchase."
+        }
       },
-      "source_locations": [
-        "SEC filing lines 2353-2360: SBI shares and voting power",
-        "SEC filing lines 3438 and 3723: SBI-controlled stockholders and 13(d) group definition",
-        "SEC filing lines 682-684 and 2434-2435: aggregate funding and cash-purchased XRP",
-        "SEC filing lines 2981 and 3038: approximately 473M XRP holdings"
-      ]
-    },
-    "identity": {
-      "japan_sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) is distinct from SBI Holdings. Its official profile identifies Nagoya and Osaka sister companies and cites the 1963 Small and Medium Business Investment & Consultation Companies Act.",
-      "source": "https://www.sbic.co.jp/company/profile/",
-      "exact_phrase_updates": "No new primary-source match for 'SBIC, ChatGPT SBIC' or a definitive intended ASK Coin identity in this run. Permission Coin ASK remains a separate candidate with no verified XRP link. 'Actual capital' remains a taxonomy, not a standardized XRP metric.",
-      "kamilah_video_status": "No additional personal-channel uploads verified in this run; guest appearances and byline candidates remain separate from verified channel ownership."
+      "camilla_kamilah_stevenson": {
+        "identity_linkage": {
+          "person": "Dr. Kamilah Stevenson",
+          "handle": "@drkamilahstevenson",
+          "verified_guest_appearance": {
+            "title": "Crypto Panics! W/ @drkamilahstevenson",
+            "publisher": "Paul Barron Podcast",
+            "published": "2026-06-11",
+            "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+            "significance": "The public interview identifies the guest and exact handle; it is a guest appearance, not her own upload."
+          },
+          "channel_page_status": "YouTube channel/About/RSS fetch was disabled or throttled in this run. The handle is linked through the guest appearance and third-party channel metadata, but YouTube's own channel page was not independently retrievable.",
+          "third_party_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+          "third_party_channel_id_status": "NON_PRIMARY_CORROBORATION_ONLY",
+          "ownership_status": "STRONGLY_IDENTITY_LINKED; CHANNEL_PAGE_NOT_PLATFORM_VERIFIED"
+        },
+        "video_candidates": [
+          {
+            "title": "XRP Was Built for What's Coming",
+            "published": "2026-03-03",
+            "views": 13252,
+            "likes": 1100,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+          },
+          {
+            "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+            "published": "2026-03-06",
+            "views": 32040,
+            "likes": 2300,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+          },
+          {
+            "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+            "published": "2025-12-24",
+            "views": 44991,
+            "likes": 3100,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+          },
+          {
+            "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+            "published": "2026-07-30",
+            "views": 10090,
+            "likes": 740,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; claims red-teamed against 2026-11-09 amendment state",
+            "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+          }
+        ],
+        "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
+        "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
+      },
+      "run109_addendum": {
+        "japan_sbic": "Tokyo SBIC official profile labels Tokyo as SBIC East Japan and names Nagoya and Osaka sister companies; distinct from SBI Holdings.",
+        "exact_phrases": "No new primary-source match for 'SBIC, ChatGPT SBIC' or a definitive ASK Coin identity; Permission Coin ASK remains a candidate without verified XRP link.",
+        "actual_capital": "Evernorth Form 424B-3 separates aggregate cash subscriptions, in-kind XRP and cash used to purchase XRP; aggregate advance funding is not SBI-only."
+      }
     },
     "platform_status": {
       "ChatGPT": "VERIFIED_CURRENT_SESSION",
@@ -33630,6 +34145,7 @@
       "main_protected": true,
       "branch_protection_status": "UNVERIFIED_HTTP_403",
       "detailed_branch_protection": "HTTP 403 Resource not accessible by integration",
+      "visible_required_status_contexts": [],
       "visible_ruleset": {
         "id": 10863829,
         "name": "Fall Back",
@@ -33637,6 +34153,7 @@
       },
       "pages_enabled": true,
       "pages_configuration_accessible": false,
+      "pages_authorized": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
         "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
@@ -33644,6 +34161,7 @@
         "behind_by": 0,
         "changed_paths": 219,
         "mergeable": true,
+        "mergeable_state": "clean",
         "approvals": 0,
         "commented_reviews": 62,
         "threads_resolved": 22,
@@ -33658,8 +34176,7 @@
         "No independent APPROVED review",
         "Detailed branch-protection requirements inaccessible via HTTP 403",
         "Automatic GitHub Pages publication not specifically authorized"
-      ],
-      "pages_authorized": false
+      ]
     },
     "prediction_engine": {
       "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
@@ -33847,9 +34364,247 @@
       ],
       "cftc_weekly_status": "RAW_ONLY_NOT_MODEL_ADMITTED"
     },
+    "top_prediction_engine": {
+      "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
+      "schedule": "Hourly at minute 3 and daily at 00:15 UTC; read-only contents/actions permissions; workflow runs only on main.",
+      "endpoints": 40,
+      "scheduled_public_sources": 36,
+      "excluded_xrpl_node_sources": 2,
+      "endpoint_ids": [
+        "binance_spot_ticker",
+        "binance_spot_klines",
+        "binance_perp_premium",
+        "binance_perp_open_interest",
+        "binance_perp_funding_history",
+        "binance_perp_open_interest_history",
+        "binance_perp_global_long_short_ratio",
+        "coinbase_spot_ticker",
+        "kraken_spot_ticker",
+        "bitbank_spot_circuit_break",
+        "bitbank_spot_transactions",
+        "bitbank_spot_ticker",
+        "bitbank_spot_depth",
+        "okx_spot_ticker",
+        "okx_spot_depth",
+        "bybit_spot_ticker",
+        "bybit_spot_depth",
+        "bybit_linear_ticker",
+        "bybit_linear_open_interest",
+        "bybit_linear_funding_history",
+        "coinbase_spot_candles",
+        "coinbase_spot_book",
+        "kraken_spot_depth",
+        "binance_spot_depth",
+        "xrp_etf_flows_aggregator",
+        "xrp_exchange_balances_json",
+        "xrp_etf_flows_csv",
+        "xrp_etf_xrpr_issuer_page",
+        "xrp_etf_bitwise_issuer_page",
+        "xrp_etf_grayscale_gxrp_issuer_page",
+        "xrp_etf_franklin_xrpz_issuer_page",
+        "xrp_etf_canary_xrpc_issuer_page",
+        "xrp_etf_21shares_toxr_issuer_page",
+        "ripple_rlusd_transparency_dashboard",
+        "xrpldashboard_rlusd_cross_chain_supply",
+        "circle_usdc_transparency_dashboard",
+        "cftc_contract_status_index",
+        "cftc_tff_financial_futures",
+        "xrpl_inftf_server_info",
+        "xrpl_honeycluster_server_info"
+      ],
+      "scheduled_endpoint_ids": [
+        "binance_spot_ticker",
+        "binance_spot_klines",
+        "binance_perp_premium",
+        "binance_perp_open_interest",
+        "binance_perp_funding_history",
+        "binance_perp_open_interest_history",
+        "binance_perp_global_long_short_ratio",
+        "coinbase_spot_ticker",
+        "kraken_spot_ticker",
+        "bitbank_spot_circuit_break",
+        "bitbank_spot_transactions",
+        "bitbank_spot_ticker",
+        "bitbank_spot_depth",
+        "okx_spot_ticker",
+        "okx_spot_depth",
+        "bybit_spot_ticker",
+        "bybit_spot_depth",
+        "bybit_linear_ticker",
+        "bybit_linear_open_interest",
+        "bybit_linear_funding_history",
+        "coinbase_spot_candles",
+        "coinbase_spot_book",
+        "kraken_spot_depth",
+        "binance_spot_depth",
+        "xrp_etf_flows_aggregator",
+        "xrp_exchange_balances_json",
+        "xrp_etf_flows_csv",
+        "xrp_etf_xrpr_issuer_page",
+        "xrp_etf_bitwise_issuer_page",
+        "xrp_etf_grayscale_gxrp_issuer_page",
+        "xrp_etf_franklin_xrpz_issuer_page",
+        "xrp_etf_canary_xrpc_issuer_page",
+        "xrp_etf_21shares_toxr_issuer_page",
+        "ripple_rlusd_transparency_dashboard",
+        "xrpldashboard_rlusd_cross_chain_supply",
+        "circle_usdc_transparency_dashboard"
+      ],
+      "excluded_xrpl_node_source_ids": [
+        "xrpl_inftf_server_info",
+        "xrpl_honeycluster_server_info"
+      ],
+      "implemented": [
+        "SHA-256 content-addressed raw payload receipts and canonical receipt IDs",
+        "per-run append-only receipt hash chain and verification manifest",
+        "point-in-time SQLite feature store and snapshot checks",
+        "four deterministic baselines",
+        "chronological embargoed walk-forward evaluation",
+        "temporal baseline calibration diagnostics",
+        "univariate PSI feature-drift diagnostics",
+        "fail-closed fixed-horizon forecast ledger",
+        "issuance-time feature-snapshot verification",
+        "Binance, Coinbase, Kraken, OKX, Bitbank and Bybit public market adapters",
+        "Immutable forecast outcome resolution with event-time tolerance, source lineage, explicit cross-venue normalization and Brier/log-loss scoring against the baseline.",
+        "Missing or unavailable outcome is recorded as unscorable rather than as a directional miss."
+      ],
+      "raw_receipt_archive": {
+        "mode": "write-once content-addressed payload files; canonical receipt log; per-run SHA-256 chain",
+        "external_immutable_anchor": false,
+        "per_source_independent_timestamp_anchor": false,
+        "raw_artifact_retention_days": 90,
+        "per_run_feature_store_artifact_retention_days": 7,
+        "daily_feature_store_archive_retention_days": 90,
+        "actions_cache": "evictable accelerator only; not durable archive"
+      },
+      "historical_evaluator": {
+        "venues": [
+          "Binance XRP/USDT",
+          "Coinbase XRP/USD"
+        ],
+        "horizon_seconds": 3600,
+        "minimum_train_samples": 100,
+        "minimum_out_of_sample_samples": 100,
+        "embargo_seconds": 3600,
+        "baselines": [
+          "naive",
+          "momentum",
+          "mean_reversion",
+          "volatility_aware"
+        ],
+        "mature_synchronized_live_history": false
+      },
+      "implemented_but_not_validated": [
+        "Temporal temperature scaling is implemented for deterministic baseline probabilities but not validated on mature independent live XRP outcomes.",
+        "PSI drift report is univariate and does not measure label/concept drift.",
+        "Walk-forward evaluator has not demonstrated out-of-sample lift on a sufficiently mature synchronized dataset."
+      ],
+      "limitations": [
+        "No independent external WORM storage or complete raw-source rebuild.",
+        "Historical evaluator limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes.",
+        "No synchronized multi-domain history or scheduled SEC/macro/stablecoin/custody/collateral/institutional/payment-rail sources.",
+        "No trained-model OOS lift, validated real-data calibration, sufficient independent shadow outcomes or trusted evaluator key.",
+        "Scheduled workflow is not merged to main and has not executed on main."
+      ],
+      "forecast_status": "NOT_ISSUED",
+      "oos_lift": false,
+      "real_data_calibration": false,
+      "shadow_outcomes": false,
+      "trusted_evaluator_key": false,
+      "independent_worm_archive": false,
+      "endpoint_inventory_verified_at_utc": "2026-11-10T00:07:27.057Z",
+      "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
+      "endpoint_inventory_source_blob_sha": "f5fc3c4a45aaf826241e32faf00443e98bfa341a",
+      "endpoint_inventory_contract": "research/xrp_intelligence/feature-store-contract.md; research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_endpoint_inventory_documentation_consistency.py; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
+      "endpoint_inventory_correction": "40 total endpoint records: 36 scheduled hourly public sources, two weekly CFTC sources (contract-status index and TFF report), and two non-commercial XRPL node endpoints excluded by default. Both CFTC sources remain raw-only and are not model-admitted.",
+      "source_coverage_gaps": [
+        "Primary SEC filing and issuer-filing vintage ingestion",
+        "Federal Reserve, Treasury and BLS macro time-series vintages; FRED/ALFRED excluded pending terms-compliant authorization; Treasury Fiscal Data is a candidate, not integrated",
+        "Regulatory docket and enforcement-event ingestion",
+        "Institutional XRP/RLUSD custody balances and verified changes",
+        "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
+        "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
+      ],
+      "last_verified_at_utc": "2026-11-10T00:07:27.057Z",
+      "outcome_resolution_implemented": true,
+      "outcome_resolution_contract": "Immutable resolve_forecast outcome; predeclared timestamp tolerance; outcome venue/source IDs; explicit cross-venue normalization; Brier/log-loss scoring versus baseline; missing outcome recorded as unscorable.",
+      "calibration_contract": {
+        "method": "rolling_temporal_temperature_scaling_v1",
+        "min_samples": 50,
+        "max_history": 250,
+        "fit_fraction": 0.8,
+        "validation_fraction": 0.2,
+        "minimum_log_loss_improvement": 0.005,
+        "identity_transform_retained_without_validation_improvement": true
+      },
+      "implemented_on_integration_branch": true,
+      "verified_on_main": false,
+      "mature_synchronized_live_history": false,
+      "weekly_sources": 2,
+      "excluded_noncommercial_xrpl_node_sources": 2,
+      "weekly_cftc_capture_window_utc": "Saturday 00:10-01:59",
+      "weekly_cftc_status": "RAW_ONLY_NOT_MODEL_ADMITTED",
+      "weekly_endpoint_ids": [
+        "cftc_contract_status_index",
+        "cftc_tff_financial_futures"
+      ],
+      "cftc_weekly_status": "RAW_ONLY_NOT_MODEL_ADMITTED"
+    },
+    "cftc_contract_universe": {
+      "report_date_current": "2026-11-03",
+      "report_date_previous": "2026-10-27",
+      "current_contracts": [
+        {
+          "venue": "CME",
+          "contract": "XRP",
+          "code": "176740",
+          "contracts": 7216,
+          "xrp_per_contract": 50000,
+          "xrp_equivalent": 360800000
+        },
+        {
+          "venue": "Coinbase Derivatives",
+          "contract": "NANO XRP",
+          "code": "176LM1",
+          "contracts": 32505,
+          "xrp_per_contract": 500,
+          "xrp_equivalent": 16252500
+        },
+        {
+          "venue": "Coinbase Derivatives",
+          "contract": "NANO XRP PERP STYLE",
+          "code": "176LM3",
+          "contracts": 38392,
+          "xrp_per_contract": 500,
+          "xrp_equivalent": 19196000
+        }
+      ],
+      "current_continuing_three_contract_xrp_equivalent": 396248500,
+      "previous_continuing_three_contract_xrp_equivalent": 455163000,
+      "comparable_change_pct": -12.943604818493593,
+      "dropped_contract": {
+        "venue": "Coinbase Derivatives",
+        "contract": "XRP",
+        "code": "176LM2",
+        "prior_contracts": 28246,
+        "xrp_per_contract": 10000,
+        "prior_xrp_equivalent": 282460000,
+        "prior_report_total_traders": 20,
+        "status": "DROPPED_FROM_REPORTING_FOR_2026-11-03_REPORT_WEEK",
+        "reason": "Not disclosed by the CFTC status index."
+      },
+      "previous_universe_including_dropped_xrp_equivalent": 737623000,
+      "apparent_mixed_universe_change_pct": -46.280349175662906,
+      "threshold_hypothesis": {
+        "cftc_faq": "A contract may disappear when reportable Large Traders fall below 20.",
+        "prior_report_observation": "176LM2 showed 20 total traders in the October 27 report, at the threshold.",
+        "assessment": "PLAUSIBLE_UNCONFIRMED; the current-week reportable-trader count is unavailable after the contract was dropped, and the status index does not state the reason."
+      },
+      "interpretation": "XRP-equivalent contract units, not USD notional, cash capital, spot holdings, collateral or directional net exposure. CFTC report and status index are not independent sources."
+    },
     "forecast_status": "NOT_ISSUED",
     "backlog_classification": {
-      "#1640": "BLOCKED integration PR; exact-head full suite, wheel, dependency audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
+      "#1640": "BLOCKED integration PR; exact code/test head a900c4 full suite, wheel, six-manifest audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
       "#1643": "UNIQUE/UNREVIEWED research archive; 663 unique paths, 7 shared; 906 ahead/1 behind; preserve.",
       "#1653": "UNIQUE/BLOCKED knowledge graph; 6 unique paths, 1 shared; 18 ahead/1 behind; 8 unresolved substantive review threads; preserve and fix before integration.",
       "#1642": "SUPERSEDED_CANDIDATE; all 7 paths overlap #1640.",
@@ -33872,9 +34627,270 @@
         ]
       }
     },
+    "raw_http_bytes_preserved": false,
+    "sha256_receipts_created": false,
+    "web_observations_model_admitted": false,
     "no_merge_performed": true,
     "no_new_pr_created": true,
-    "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; continue synchronized historical data and independent receipt anchoring."
+    "handoff_map_descendant_parent_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+    "descendant_ci_status": "FAILED_ON_656B_ONE_CANONICAL_LABEL_ASSERTION; REPAIR_IN_NEXT_COMMIT",
+    "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; advance durable receipt anchoring and synchronized historical data.",
+    "prior_market_crosschecks": [
+      {
+        "run": 98,
+        "snapshot": {
+          "captured_at_utc": "2026-11-09T20:08:23Z",
+          "source_type": "public rendered web pages/search excerpts; raw HTTP bytes and response headers not captured",
+          "sha256_receipts_created": false,
+          "model_admission": false,
+          "spot": [
+            {
+              "source": "Binance.US",
+              "as_of_date": "2026-11-09",
+              "price_usd": 1.1,
+              "change_24h_pct": -5.23,
+              "range_24h_usd": [
+                1.08,
+                1.16
+              ],
+              "change_7d_pct": -12.15,
+              "change_30d_pct": -21.95,
+              "change_1y_pct": -52.09,
+              "provider_event_time_utc": null,
+              "url": "https://www.binance.us/price/xrp"
+            },
+            {
+              "source": "Capital Street FX / Bitstamp chart feed",
+              "as_of_utc": "2026-11-09T12:14:00Z",
+              "price_usd": 1.08488,
+              "change_day_pct": -2.45,
+              "change_24h_pct": -6.96,
+              "range_24h_usd": [
+                1.07537,
+                1.12501
+              ],
+              "url": "https://www.capitalstreetfx.com/market-analysis/daily-crypto-report-09-nov-2026/"
+            }
+          ],
+          "derivatives": [
+            {
+              "source": "Liqwall",
+              "as_of_utc": "2026-11-09T17:42:00Z",
+              "open_interest_usd": 1230000000,
+              "oi_change_24h_pct": -5.8,
+              "liquidations_24h_usd": 36800000,
+              "long_liquidations_usd": 35500000,
+              "short_liquidations_usd": 1400000,
+              "average_funding_8h_pct": -0.0002,
+              "binance_funding_8h_pct": 0.0057,
+              "binance_accounts_long_pct": 74.6,
+              "url": "https://liqwall.com/coins/xrp"
+            },
+            {
+              "source": "TradRadar",
+              "as_of_utc": "2026-11-09T17:25:00Z",
+              "open_interest_usd": 1660000000,
+              "oi_change_24h_pct": -12.29,
+              "liquidations_24h_min_usd": 38450000,
+              "long_liquidations_usd": 36980000,
+              "short_liquidations_usd": 1480000,
+              "funding_oi_weighted_8h_pct": -0.0007,
+              "long_short_account_ratio": 3.93,
+              "long_accounts_pct": 79.7,
+              "url": "https://tradradar.io/markets/xrp"
+            },
+            {
+              "source": "Alpha Finance",
+              "as_of_utc": "2026-11-09T14:04:00Z",
+              "open_interest_usd": 2500000000,
+              "volume_24h_usd": 3710000000,
+              "long_liquidations_24h_usd": 38800000,
+              "short_liquidations_24h_usd": 1400000,
+              "clusters_modelled_from_open_interest": true,
+              "url": "https://alphafinance.io/liquidation-heatmap/xrp/"
+            }
+          ],
+          "derivatives_interpretation": "Open-interest aggregates range from $1.23B to $2.50B (2.03x) with different cutoffs and overlapping venue coverage. Funding is near-zero/mixed. All three show materially more long than short liquidations. Do not average; deleveraging is descriptive evidence, not a directional signal.",
+          "etf_trackers": [
+            {
+              "source": "TheXRPInvestor",
+              "updated": "2026-11-09",
+              "aum_usd": 1310000000,
+              "xrp_in_trust": 1200000000,
+              "total_daily_volume_usd": 32070000,
+              "spot_daily_volume_usd": 14140000,
+              "derivative_daily_volume_usd": 17930000,
+              "interpretation": "volume and AUM are not net creations/redemptions",
+              "url": "https://thexrpinvestor.com/xrp-etf-flows"
+            },
+            {
+              "source": "CryptoKeyhole",
+              "updated_utc": "2026-11-09T15:22:00Z",
+              "latest_complete_day": "2026-11-05",
+              "funds_collected": 4,
+              "net_flow_latest_complete_day_xrp": -3339,
+              "net_flow_last_5_complete_days_xrp": -1137098,
+              "holdings_xrp": 1076805885,
+              "nov_6_status": "partial; 3 of 4 funds published, awaiting Franklin",
+              "url": "https://cryptokeyhole.com/etf-flows/xrp/"
+            },
+            {
+              "source": "ByKaranteli",
+              "refreshed_utc": "2026-11-09T09:09:00Z",
+              "last_trading_day": "2026-11-06",
+              "daily_net_flow_usd": 0,
+              "five_day_net_flow_usd": -530000,
+              "cumulative_net_inflow_usd": 1810000000,
+              "total_net_assets_usd": 1340000000,
+              "url": "https://bykaranteli.com/etf/xrp"
+            }
+          ],
+          "etf_interpretation": "Fund universes, holdings-versus-flow methods and complete-day cutoffs differ. Trading volume is not net flow. Preserve disagreement; do not average or treat the series as complete issuer-wide cash subscriptions/redemptions."
+        }
+      }
+    ],
+    "research_corrections": [
+      "Ripple's official SBI Ripple Asia profile states it does not handle XRP; SBI Remit/SBI VC Trade handle the XRP ODL corridor.",
+      "SBI Holdings' Feb 2025 presentation reports approximately 9% Ripple share and SBI Ripple Asia 60/40 ownership, date-stamped historical.",
+      "Aviva GBP tokenized share class: £50M issuer investment on XRPL, digital twin/off-chain fund assets.",
+      "Franklin sgBENJI: two $75M cash subscription receipts on XRPL; one wallet, unknown beneficial owner/source; not XRP purchases.",
+      "As of 2026-11-09, ConfidentialTransfer 21/35, DynamicMPT 16/35 and Sponsor 10/35 remain below the 29/35 threshold; sponsored fees are not live.",
+      "Kamilah Stevenson video search returned four byline candidates; the guest identity/handle is linked, but the channel page was not retrievable, so candidates are not counted as verified personal uploads.",
+      "Run 656b full-suite failure was one test-only taxonomy wording mismatch: canonical label is 'cash actually used to buy XRP'; no production code defect."
+    ],
+    "xrpl_amendment_status": {
+      "as_of_date": "2026-11-09",
+      "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+      "trusted_validator_count": 35,
+      "threshold": {
+        "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+        "minimum_votes_for_more_than_80pct": 29,
+        "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+      },
+      "enabled": {
+        "fixCleanup3_3_0": "2026-09-11",
+        "PermissionDelegationV1_1": "2026-10-08",
+        "BatchV1_1": "2026-10-09",
+        "fixBatchV1_2": "2026-10-09",
+        "fixCleanup3_4_0": "2026-11-05"
+      },
+      "pending": {
+        "ConfidentialTransfer": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "DynamicMPT": {
+          "yes_votes": 16,
+          "total_validators": 35,
+          "support_pct": 45.7,
+          "short_of_activation_votes": 13
+        },
+        "Sponsor": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        },
+        "SingleAssetVault": {
+          "yes_votes": 23,
+          "total_validators": 35,
+          "support_pct": 65.7,
+          "short_of_activation_votes": 6
+        },
+        "LendingProtocol": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "LendingProtocolV1_1": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "XChainBridge": {
+          "yes_votes": 4,
+          "total_validators": 35,
+          "support_pct": 11.4,
+          "short_of_activation_votes": 25
+        },
+        "fixXChainRewardRounding": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        }
+      },
+      "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+      "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+      "source_urls": [
+        "https://xrpldashboard.com/amendments/2026-11-09",
+        "https://xrpl.to/amendments",
+        "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+      ]
+    },
+    "video_research": {
+      "identity_linkage": {
+        "person": "Dr. Kamilah Stevenson",
+        "handle": "@drkamilahstevenson",
+        "verified_guest_appearance": {
+          "title": "Crypto Panics! W/ @drkamilahstevenson",
+          "publisher": "Paul Barron Podcast",
+          "published": "2026-06-11",
+          "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+          "significance": "The public interview identifies the guest and exact handle; it is a guest appearance, not her own upload."
+        },
+        "channel_page_status": "YouTube channel/About/RSS fetch was disabled or throttled in this run. The handle is linked through the guest appearance and third-party channel metadata, but YouTube's own channel page was not independently retrievable.",
+        "third_party_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "third_party_channel_id_status": "NON_PRIMARY_CORROBORATION_ONLY",
+        "ownership_status": "STRONGLY_IDENTITY_LINKED; CHANNEL_PAGE_NOT_PLATFORM_VERIFIED"
+      },
+      "video_candidates": [
+        {
+          "title": "XRP Was Built for What's Coming",
+          "published": "2026-03-03",
+          "views": 13252,
+          "likes": 1100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+        },
+        {
+          "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+          "published": "2026-03-06",
+          "views": 32040,
+          "likes": 2300,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+        },
+        {
+          "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+          "published": "2025-12-24",
+          "views": 44991,
+          "likes": 3100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+        },
+        {
+          "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+          "published": "2026-07-30",
+          "views": 10090,
+          "likes": 740,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; claims red-teamed against 2026-11-09 amendment state",
+          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+        }
+      ],
+      "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
+      "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
+    },
+    "no_pr_closed": true,
+    "integration_branch_current_head_before_map_compatibility_commit": "7c074b1192de139b62fb0f46117fc5496aa0ebc9"
   },
   "run_history": [
     {
@@ -35298,6 +36314,8 @@
         "ahead": 874,
         "behind": 0,
         "changed": 219,
+        "additions": 91706,
+        "deletions": 3548,
         "mergeable": true
       },
       "pr_1643": {
@@ -35367,49 +36385,118 @@
       }
     },
     "ci_evidence": {
-      "integration": {
-        "verified_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+      "verified_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+      "full_suite": {
+        "run_id": 42735035466,
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+        "passed": 1316,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "result": "success"
+      },
+      "core": {
+        "passed": 677,
+        "failed": 0,
+        "subtests": 8,
+        "result": "success"
+      },
+      "wheel": "PASS; installed wheel loaded Barrot V3, priority-one XRP mission and canonical data assets",
+      "dependency_audit": {
+        "run_id": 42735035690,
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 42735035186,
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+        "conclusion": "success",
+        "automatic_merge_disabled": true
+      },
+      "previous_stale_failure": {
+        "head": "5ac45a24a9430161dcff9bfdfd5f1058dab9bb0e",
+        "run_id": 42723355723,
+        "passed": 1315,
+        "failed": 1,
+        "subtests": 8,
+        "coverage_pct": 59.36,
+        "failed_test": "tests/test_xrp_mission_handoff_run58.py::test_run103_endpoint_registry_counts_match_current_map",
+        "cause": "Regression assertion required exact equality to PLAUSIBLE_UNCONFIRMED although the parser correctly appends explicit uncertainty rationale.",
+        "repair": "Updated the test to assert the stable assessment prefix and both required rationale clauses; production parsing logic was unchanged."
+      },
+      "handoff_map_test_descendant_ci": "PENDING_AFTER_RUN104_HANDOFF_MAP_TEST_COMMIT",
+      "latest_attempt": {
+        "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
         "full_suite": {
-          "run_id": 42735035466,
           "passed": 1316,
           "failed": 0,
           "subtests": 8,
-          "coverage_pct": 59.36,
-          "conclusion": "success"
+          "coverage_pct": 59.36
         },
         "core": {
           "passed": 677,
           "failed": 0,
-          "subtests": 8,
-          "conclusion": "success"
-        },
-        "wheel_build": "PASS",
-        "installed_wheel": "PASS",
-        "dependency_audit": {
-          "run_id": 42735035690,
-          "manifests": 6,
-          "known_vulnerabilities": 0,
-          "conclusion": "success"
-        },
-        "fail_closed_gate": {
-          "run_id": 42735035186,
-          "conclusion": "success",
-          "automatic_merge_disabled": true
-        }
-      },
-      "main": {
-        "head": "d4d43be3427375cf79d190e768976de062e20287",
-        "ci_refreshed_this_run": false,
-        "last_known_full_suite": {
-          "run_id": 42526890841,
-          "passed": 718,
           "subtests": 8
-        }
+        },
+        "wheel": "PASS",
+        "dependency_audit": {
+          "manifests": 6,
+          "known_vulnerabilities": 0
+        },
+        "fail_closed_gate": "PASS; automatic merge disabled"
+      },
+      "run109_map_test_descendant_ci": {
+        "head": "7c074b1192de139b62fb0f46117fc5496aa0ebc9",
+        "status": "PENDING",
+        "reason": "Map and regression-test history refresh is being verified on the descendant; parent code/test head a900c4 passed."
       }
+    },
+    "main_workflows": {
+      "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+      "main_ci": {
+        "run_id": 42526890841,
+        "passed": 718,
+        "subtests": 8,
+        "conclusion": "success"
+      },
+      "latest_cross_analysis": {
+        "run_id": 42723811761,
+        "conclusion": "success",
+        "created_at_utc": "2026-11-09T23:51:34Z"
+      }
+    },
+    "workflow_safety": {
+      "changed_workflow_files": 43,
+      "changed_public_web_paths": 7,
+      "xrp_public_ingestion": {
+        "schedule": "hourly at minute 3; daily at 00:15 UTC; CFTC weekly raw-only window Saturday 00:10-01:59 UTC",
+        "main_only": true,
+        "permissions": [
+          "actions:read",
+          "contents:read"
+        ],
+        "read_only": true,
+        "artifact_only": true,
+        "raw_retention_days": 90,
+        "feature_checkpoint_days": 7,
+        "independent_worm": false,
+        "active_on_main": false,
+        "total_endpoints": 40,
+        "hourly_public_sources": 36,
+        "weekly_cftc_sources": 2,
+        "excluded_noncommercial_xrpl_nodes": 2,
+        "raw_artifact_retention_days": 90,
+        "feature_checkpoint_cache_days": 7,
+        "independent_worm_anchor": false
+      },
+      "manual_external_workflows_dispatched": [],
+      "pages_side_effect": "Prior main push triggered Pages deployment; next publication not authorized."
     },
     "latest_market_crosscheck": {
       "captured_at_utc": "2026-11-10T01:27:20Z",
-      "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 calculated over the exact surfaced JSON text. Original transport headers and wire-level bytes were not retained.",
+      "capture_method": "Public API JSON response text surfaced by web retrieval; SHA-256 over exact surfaced text; transport headers/wire bytes not retained.",
       "raw_http_bytes_preserved": false,
       "sha256_receipts_created": true,
       "model_admission": false,
@@ -35429,7 +36516,7 @@
           "response_text_sha256": "5710b000d3edd33437bede086347242c20adefc8407d04f534e11b2d9f06a35d"
         },
         {
-          "source": "OKX XRP-USDT spot",
+          "source": "OKX XRP-USDT",
           "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
           "provider_event_time_utc": "2026-11-10T01:16:47.232Z",
           "age_seconds_at_capture": 632.768,
@@ -35479,7 +36566,6 @@
           "short_liquidations_usd": 1300000,
           "average_funding_8h_pct": 0.0045,
           "binance_funding_8h_pct": 0.008,
-          "binance_accounts_long_pct": 74.8,
           "url": "https://liqwall.com/coins/xrp"
         },
         {
@@ -35497,47 +36583,393 @@
           "url": "https://tradradar.io/tr/markets/xrp"
         }
       ],
-      "derivatives_interpretation": "Open-interest aggregates differ by about 35% between these non-synchronized aggregators and their venue coverage overlaps. Their 24-hour liquidation windows end at different times and cover different venues, so the totals are not directly comparable. Both snapshots are long-liquidation dominated and show modest positive aggregate funding. Descriptive deleveraging evidence only; not a directional signal."
+      "derivatives_interpretation": "Open-interest aggregates differ by about 35% with overlapping but non-identical venue coverage. Their 24-hour liquidation windows end at different times; do not compare totals as synchronized. Both snapshots are long-liquidation dominated. Descriptive only."
     },
-    "institutional": {
-      "primary_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
-      "filing_type": "Evernorth Holdings Inc. Form 424B-3",
-      "filing_date": "2026-10-30",
-      "as_of_closing": "2026-10-09",
-      "sbi_identity": "The filing defines SBI as SBI Holdings, Inc. and names four SBI-controlled stockholders: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd., and SBI Holdings USA, Inc.",
-      "sbi_ownership": {
-        "class_a_shares": 9431914,
-        "class_c_shares": 2359038,
-        "percent_outstanding_pubco_common_stock": 21.4,
-        "percent_voting_power": 39.9,
-        "as_of": "2026-10-09",
-        "limitation": "39.9% is voting power under an ownership cap; it is not 39.9% of outstanding common stock, not direct ownership of 39.9% of XRP, and not a disclosed SBI-only XRP purchase amount."
+    "institutional_and_macro": {
+      "coinbase_circle": {
+        "coinbase_q3_2026": "Coinbase's 2026-09-30 Form 10-Q says average USDC held in Coinbase products reached an all-time high and its Circle arrangement was renewed on the same terms.",
+        "circle_q3_2026": "Circle's 2026-09-30 Form 10-Q reports average daily USDC in circulation up 8% year over year in Q3; reserve income down 7.5% due mainly to a 61bp lower average yield, partly offset by circulation growth. Q3 distribution costs paid to Coinbase fell $30M year over year; Circle says lower reserve income drove the decrease, partly offset by a slight increase in Coinbase's share of average USDC on-platform balances. For the first nine months, Coinbase distribution costs fell $10.2M as Coinbase's share of average USDC platform balances declined despite higher reserve income.",
+        "implication": "This is a direct distribution/revenue-sharing relationship and a major stablecoin liquidity channel. It is not XRP spot demand."
       },
-      "group_definition": "SBI Group Ownership Percentage includes SBI, its affiliates and other holders deemed to form a group under Exchange Act Section 13(d).",
+      "coinbase_ripple": {
+        "event": "Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and its retail app on 2026-10-28, with supported-region deposits/withdrawals on XRPL, Base and Ethereum.",
+        "limitation": "Coinbase said Global Exchange access and use of RLUSD as collateral would follow; launch does not establish XRP purchases or XRP collateral.",
+        "sources": [
+          "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
+        ]
+      },
+      "coinbase_collateral": {
+        "sec_filing": "Coinbase Q3 2026 Form 10-Q does not mention XRP or RLUSD by name. Its lending-collateral table aggregates 'other crypto assets' and says no individual asset in that category exceeded 5% of total crypto collateral fair value.",
+        "conclusion": "No XRP-specific collateral balance, eligibility or utilization is established by this filing. Do not infer XRP collateral from the aggregated 'other crypto assets' line.",
+        "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+      },
+      "sbi_circle": {
+        "equity": "SBI Holdings and SBI Shinsei Bank each announced a $25M investment in Circle at its June 2025 IPO.",
+        "arc": "SBI Holdings announced participation through subsidiaries in Circle's ARC token presale on 2026-05-12.",
+        "sources": [
+          "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+          "https://www.sbigroup.co.jp/news/2026/0512_16310.html"
+        ]
+      },
+      "sbi_ripple": {
+        "sbi_ripple_asia": "SBI Ripple Asia is a joint venture established in May 2016. SBI Holdings' February 7, 2025 presentation reports SBI 60% / Ripple 40%; SBI Group's 2026-03-31 profile reports 60% voting rights.",
+        "xrp_corridors": {
+          "operational_entities": [
+            "SBI Remit",
+            "SBI VC Trade",
+            "Coins.ph",
+            "Tranglo"
+          ],
+          "operational_role": "SBI Remit initiates the remittance and SBI VC Trade handles the XRP leg; SBI Ripple Asia is the JV/software-services partner, not the XRP-handling entity.",
+          "scope": "Ripple's official profile describes commercial ODL in Japan with SBI Remit, Coins.ph and SBI VC Trade. SBI's 2023 release expanded the XRP-using remittance solution to the Philippines, Vietnam and Indonesia.",
+          "limitation": "No current corridor-level daily/monthly XRP notional or settlement-volume series was found in this run. Historical service launch does not prove current throughput.",
+          "source_urls": [
+            "https://ripple.com/company/sbi-ripple-asia/",
+            "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+          ]
+        },
+        "xrpl_poc": "The February 2026 SBI Ripple Asia proof of concept contemplates XRPL for tokenized deposits/deposit-based digital money; it does not establish XRP-token settlement.",
+        "validator": "SBI VC Trade began operating an XRPL validator in 2024; validator operation is network participation, not proof of XRP purchases.",
+        "rlusd": "SBI VC Trade began handling RLUSD in Japan on 2026-06-24 after JFSA approval; this stablecoin distribution rail is separate from XRP remittance corridors.",
+        "jpy_sc": "JPYSC is a separate yen stablecoin issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. SBI reported handling balance above ¥30B and lending balance above ¥10B on 2026-11-02. Neither is XRP capital flow.",
+        "source_urls": [
+          "https://ripple.com/company/sbi-ripple-asia/",
+          "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+          "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+          "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+          "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+          "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+          "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+          "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+        ],
+        "sbi_ripple_asia_xrp_handling": "Ripple's official SBI Ripple Asia profile explicitly states SBI Ripple Asia does not handle XRP at all. It sells RippleNet software services and provides cross-border payment infrastructure.",
+        "sbi_group_ripple_equity": {
+          "approximate_share_pct": 9,
+          "description": "SBI Group's February 7, 2025 investor presentation states it held approximately 9% of Ripple, based on actual holdings, as Ripple's largest external shareholder.",
+          "as_of": "2025-02-07",
+          "current_2026_percentage_verified": false,
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        },
+        "sbi_ripple_asia_ownership": {
+          "sbi_pct": 60,
+          "ripple_pct": 40,
+          "source_date": "2025-02-07",
+          "current_voting_rights": "SBI Group reports 60% of voting rights as of 2026-03-31.",
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        },
+        "shareholder_xrp_distribution": {
+          "status": "HISTORICAL_DISTRIBUTION_PROGRAM",
+          "source_date": "2025-02-07",
+          "detail": "SBI Holdings' February 2025 investor presentation lists XRP shareholder benefits and five distributions since March 2020.",
+          "interpretation": "A shareholder distribution is a transfer/benefit, not evidence of incremental market purchases or current institutional XRP accumulation.",
+          "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+        }
+      },
+      "softbank_group_openai": "SB OAI Japan is a SoftBank Group/OpenAI joint venture, not an SBI Holdings or SBIC relationship.",
+      "circle_binance": "Circle disclosed a $100M strategic equity investment from Binance and a five-year USDC commercial agreement in September 2026.",
+      "actual_capital_taxonomy": {
+        "required_separation": [
+          "cash subscriptions into tokenized fund shares",
+          "issuer seed investment into a tokenized share class",
+          "new third-party subscriptions versus migration from another chain",
+          "XRP spot purchases",
+          "in-kind XRP contributions",
+          "XRP used as a bridge asset in payments",
+          "XRP collateral pledged, accepted and actually utilized",
+          "debt proceeds and drawn credit facilities",
+          "contingent equity capacity",
+          "stablecoin circulation and handling balances",
+          "tokenized asset AUM and on-chain share balances"
+        ],
+        "interpretation": "Aviva's £50M is issuer seed investment in a tokenized fund share class; Franklin's $150M are cash subscription receipts for fund shares with unknown investors/funding source. Neither is an XRP purchase or verified XRP capital inflow."
+      },
+      "xrpl_institutional_tokenization": {
+        "aviva": {
+          "issuer": "Aviva Investors",
+          "launch_date": "2026-10-26",
+          "asset": "GBP Sterling Liquidity Fund tokenized share class on XRPL",
+          "issuer_seed_investment_gbp": 50000000,
+          "issuer_seed_investment_usd_approx": 66000000,
+          "total_across_two_tokenized_share_classes_gbp_over": 86000000,
+          "underlying_fund_aum_gbp_approx": 22000000000,
+          "structure": "Digital-twin access layer; the conventional off-chain fund structure and underlying assets remain intact.",
+          "custody": "BNY Mellon is fund custodian; Komainu supported regulated digital-asset custody; Licuido supplied tokenization infrastructure.",
+          "actual_capital_interpretation": "£50M is Aviva's own investment in the new share class, not verified third-party subscription demand. The £22B underlying fund AUM is not all on-chain.",
+          "xrp_purchase_disclosed": false,
+          "direct_xrp_demand_established": false,
+          "primary_source": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/"
+        },
+        "franklin_templeton": {
+          "product": "Franklin OnChain U.S. Dollar Short-Term Money Market Fund (sgBENJI)",
+          "receipt_dates": [
+            "2026-10-21",
+            "2026-10-22"
+          ],
+          "cash_subscription_receipts_usd": 150000000,
+          "receipts": 2,
+          "shares_issued_each": 72184793.07,
+          "recorded_share_price_usd": 1.039,
+          "xrpl_holding_wallets": 1,
+          "xrpl_shares_after_issuance_approx": 192700000,
+          "wallet_signers_match_issuer": true,
+          "investor_identity_disclosed": false,
+          "funding_source_disclosed": false,
+          "omnibus_wallet_possible": true,
+          "fund_uses_other_networks": [
+            "Stellar"
+          ],
+          "migration_from_stellar_ruled_out": false,
+          "xrp_purchase": false,
+          "direct_xrp_demand_established": false,
+          "limitation": "CoinDesk's ledger review found two $75M cash subscription receipts and matching share batches. The investor(s), funding source, omnibus status and relationship to existing Stellar holdings remain undisclosed. These are tokenized fund shares, not XRP.",
+          "secondary_source": "https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet",
+          "ledger_links": [
+            "https://api.xrpscan.com/"
+          ]
+        },
+        "value_capture_interpretation": "Aviva and Franklin demonstrate live institutional issuance/representation of fund interests on XRPL. Their disclosed amounts are not XRP purchases. The tokenized assets may use XRP for minimal network fees, but no material XRP bridge, collateral or liquidity demand is established by these announcements.",
+        "planned_collateral": "Franklin/DBS/Ripple announced plans to explore token lending and trading; that is not evidence the collateral facility is live or that XRP is the collateral asset."
+      },
+      "sbi_ripple_asia_role_correction": "Ripple's official profile says SBI Ripple Asia does not handle XRP; it sells RippleNet software services. SBI Remit and SBI VC Trade are the XRP-using operational entities in the ODL corridor.",
+      "xrpl_amendment_status": {
+        "as_of_date": "2026-11-09",
+        "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+        "trusted_validator_count": 35,
+        "threshold": {
+          "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+          "minimum_votes_for_more_than_80pct": 29,
+          "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+        },
+        "enabled": {
+          "fixCleanup3_3_0": "2026-09-11",
+          "PermissionDelegationV1_1": "2026-10-08",
+          "BatchV1_1": "2026-10-09",
+          "fixBatchV1_2": "2026-10-09",
+          "fixCleanup3_4_0": "2026-11-05"
+        },
+        "pending": {
+          "ConfidentialTransfer": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "DynamicMPT": {
+            "yes_votes": 16,
+            "total_validators": 35,
+            "support_pct": 45.7,
+            "short_of_activation_votes": 13
+          },
+          "Sponsor": {
+            "yes_votes": 10,
+            "total_validators": 35,
+            "support_pct": 28.6,
+            "short_of_activation_votes": 19
+          },
+          "SingleAssetVault": {
+            "yes_votes": 23,
+            "total_validators": 35,
+            "support_pct": 65.7,
+            "short_of_activation_votes": 6
+          },
+          "LendingProtocol": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "LendingProtocolV1_1": {
+            "yes_votes": 21,
+            "total_validators": 35,
+            "support_pct": 60,
+            "short_of_activation_votes": 8
+          },
+          "XChainBridge": {
+            "yes_votes": 4,
+            "total_validators": 35,
+            "support_pct": 11.4,
+            "short_of_activation_votes": 25
+          },
+          "fixXChainRewardRounding": {
+            "yes_votes": 10,
+            "total_validators": 35,
+            "support_pct": 28.6,
+            "short_of_activation_votes": 19
+          }
+        },
+        "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+        "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+        "source_urls": [
+          "https://xrpldashboard.com/amendments/2026-11-09",
+          "https://xrpl.to/amendments",
+          "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+        ]
+      },
+      "video_red_team": {
+        "video": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+        "published": "2026-07-30",
+        "claims": "Confidential Transfers, Sponsored Fees/Reserves, Batch, Permission Delegation and Dynamic MPT as institutional upgrades.",
+        "as_of_2026_11_09": "BatchV1_1 and PermissionDelegationV1_1 are enabled; ConfidentialTransfer (21/35), Sponsor (10/35) and DynamicMPT (16/35) remain below 29/35 and are not enabled.",
+        "correction": "Sponsored fees/reserves are a pending Sponsor amendment, not a live mainnet capability. The video's feature discussion is forward-looking and should not be repeated as current functionality.",
+        "source": "https://xrpldashboard.com/amendments/2026-11-09"
+      },
+      "evernorth_sbi_ownership": {
+        "primary_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+        "filing_date": "2026-10-30",
+        "as_of_closing": "2026-10-09",
+        "sbi_ownership": {
+          "class_a_shares": 9431914,
+          "class_c_shares": 2359038,
+          "percent_outstanding_pubco_common_stock": 21.4,
+          "percent_voting_power": 39.9,
+          "limitation": "39.9% is voting power under a cap, not 39.9% of common stock or XRP."
+        },
+        "actual_capital": {
+          "advance_funding_aggregate_cash_usd": 214050000,
+          "advance_funding_aggregate_in_kind_xrp": 600000,
+          "cash_used_to_purchase_xrp": 84365876.3625,
+          "at_closing_xrp_holdings_approx": 473000000,
+          "limitation": "Aggregate subscriber amounts are not SBI-only; do not attribute treasury XRP to SBI."
+        }
+      }
+    },
+    "identity_research": {
+      "japan_sbic": {
+        "conclusion": "Resolved from primary company profiles: SBIC East Japan, SBIC Central Japan and SBIC West Japan are three distinct regional Small and Medium Business Investment & Consultation companies established under Japan's Small and Medium Business Investment & Consultation Companies Act. They are not the same entity as SBI Holdings.",
+        "regional_entities": {
+          "east": {
+            "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+            "public_name": "SBIC East Japan",
+            "corporation_number": "9011001030621",
+            "established": "1963-11-15",
+            "shareholders": "Local governments (18 prefectures), chambers of commerce, financial institutions and business companies, per official profile.",
+            "source": "https://www.sbic.co.jp/company/profile/"
+          },
+          "central": {
+            "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+            "public_name": "SBIC Central Japan",
+            "established": "1963-11-18",
+            "capital_jpy": 4380000000,
+            "operating_area": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+            "source": "https://www.sbic-cj.co.jp/company/about/"
+          },
+          "west": {
+            "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+            "public_name": "SBIC West Japan",
+            "established": "1963-11-20",
+            "capital_jpy": 6822000000,
+            "operating_area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+            "source": "https://www.sbic-wj.co.jp/profiles/profile/"
+          }
+        },
+        "structure": "The three companies describe one another as sister companies and jointly cover Japan. Tokyo's official profile identifies its own shareholder categories; Osaka identifies itself as a policy implementation institution under the 1963 law.",
+        "distinction_from_sbi_holdings": "No evidence in the reviewed primary profiles that these regional SBIC companies are subsidiaries of SBI Holdings. SBI Holdings is a separate financial group.",
+        "chatgpt_and_openai": {
+          "tokyo_sbic": "Tokyo SBIC hosted public ChatGPT/Generative-AI seminars and training for investee companies, including a 2025-02-26 seminar and a 2025-06-12/13 Generative AI and machine-learning course. This is education/training, not proof of an OpenAI enterprise contract or corporate partnership.",
+          "sbi_holdings": "SBI Holdings and SBI Securities separately announced ChatGPT Enterprise adoption on 2025-05-01; SBI Securities began in January 2025 and SBI Holdings began for some employees in March 2025.",
+          "softbank_openai": "SB OAI Japan is a different joint venture between OpenAI and SoftBank Group/SoftBank Corp, formed 2025-11-05. It is not SBIC East/Central/West and not SBI Holdings.",
+          "historical_name_confusion": "SBI Holdings was formerly SoftBank Investment Corporation, renamed in July 2005 and independent from the SoftBank Group in August 2006. Historical name origin does not make SBI Holdings a current SoftBank Group subsidiary.",
+          "interpretation": "The phrase 'SBIC, ChatGPT SBIC' appears to conflate regional SBIC companies, SBI Holdings' separate ChatGPT Enterprise adoption, and the SoftBank Group/OpenAI SB OAI Japan venture. No single 'ChatGPT SBIC' legal entity or direct OpenAI partnership with the three regional SBIC companies was verified."
+        },
+        "sources": [
+          "https://www.sbic.co.jp/",
+          "https://www.sbic.co.jp/company/profile/",
+          "https://www.sbic-cj.co.jp/company/about/",
+          "https://www.sbic-wj.co.jp/profiles/profile/",
+          "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+          "https://www.sbigroup.co.jp/english/news/pdf/2011/0331_b_en.pdf",
+          "https://www.softbank.jp/corp/news/press/sbkk/2025/20251105_02/"
+        ]
+      },
+      "ask_coin": {
+        "status": "UNRESOLVED_CANDIDATE",
+        "candidate": "Permission Coin ASK",
+        "conclusion": "A plausible token match only; no verified XRP integration or evidence that this is the intended 'ASK Coin'.",
+        "source": "https://permission.io/"
+      },
       "actual_capital": {
-        "advance_funding_aggregate_cash_usd": 214050000,
-        "advance_funding_aggregate_in_kind_xrp": 600000,
-        "delayed_funding_aggregate_cash_usd": 10500000,
-        "delayed_funding_aggregate_in_kind_xrp": 200000,
-        "series_c_sponsor_xrp": 211319096.061435,
-        "ripple_affiliated_entity_xrp": 50000000,
-        "ripple_contributed_xrp": 126791458,
-        "cash_used_to_purchase_xrp": 84365876.3625,
-        "at_closing_xrp_holdings_approx": 473000000,
-        "limitation": "The $214.05M and 600,000 XRP are aggregate advance-funding subscribers' amounts, not identified as SBI-only. The filing says cash proceeds purchased 84,365,876.3625 XRP. Do not attribute aggregate cash or the treasury's full XRP holdings to SBI."
+        "status": "NOT_A_STANDARDIZED_XRP_METRIC",
+        "required_separation": [
+          "cash actually used to buy XRP",
+          "in-kind XRP contributions",
+          "debt proceeds",
+          "drawn credit facilities",
+          "collateral pledged/recognized/actually utilized",
+          "contingent equity capacity",
+          "stablecoin circulation/handling balances",
+          "cash subscriptions into tokenized fund shares",
+          "issuer seed investment in tokenized funds",
+          "migration of tokenized assets from another chain",
+          "tokenized AUM/on-chain share balances",
+          "XRP used as a bridge asset"
+        ],
+        "current_examples": {
+          "aviva_gbp_50m": "Issuer's own investment in a tokenized GBP fund share class on XRPL; not an XRP purchase.",
+          "franklin_usd_150m": "Two on-ledger cash subscription receipts for sgBENJI fund shares; investors/source unknown; not an XRP purchase."
+        }
       },
-      "source_locations": [
-        "SEC filing lines 2353-2360: SBI shares and voting power",
-        "SEC filing lines 3438 and 3723: SBI-controlled stockholders and 13(d) group definition",
-        "SEC filing lines 682-684 and 2434-2435: aggregate funding and cash-purchased XRP",
-        "SEC filing lines 2981 and 3038: approximately 473M XRP holdings"
-      ]
-    },
-    "identity": {
-      "japan_sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) is distinct from SBI Holdings. Its official profile identifies Nagoya and Osaka sister companies and cites the 1963 Small and Medium Business Investment & Consultation Companies Act.",
-      "source": "https://www.sbic.co.jp/company/profile/",
-      "exact_phrase_updates": "No new primary-source match for 'SBIC, ChatGPT SBIC' or a definitive intended ASK Coin identity in this run. Permission Coin ASK remains a separate candidate with no verified XRP link. 'Actual capital' remains a taxonomy, not a standardized XRP metric.",
-      "kamilah_video_status": "No additional personal-channel uploads verified in this run; guest appearances and byline candidates remain separate from verified channel ownership."
+      "camilla_kamilah_stevenson": {
+        "identity_linkage": {
+          "person": "Dr. Kamilah Stevenson",
+          "handle": "@drkamilahstevenson",
+          "verified_guest_appearance": {
+            "title": "Crypto Panics! W/ @drkamilahstevenson",
+            "publisher": "Paul Barron Podcast",
+            "published": "2026-06-11",
+            "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+            "significance": "The public interview identifies the guest and exact handle; it is a guest appearance, not her own upload."
+          },
+          "channel_page_status": "YouTube channel/About/RSS fetch was disabled or throttled in this run. The handle is linked through the guest appearance and third-party channel metadata, but YouTube's own channel page was not independently retrievable.",
+          "third_party_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+          "third_party_channel_id_status": "NON_PRIMARY_CORROBORATION_ONLY",
+          "ownership_status": "STRONGLY_IDENTITY_LINKED; CHANNEL_PAGE_NOT_PLATFORM_VERIFIED"
+        },
+        "video_candidates": [
+          {
+            "title": "XRP Was Built for What's Coming",
+            "published": "2026-03-03",
+            "views": 13252,
+            "likes": 1100,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+          },
+          {
+            "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+            "published": "2026-03-06",
+            "views": 32040,
+            "likes": 2300,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+          },
+          {
+            "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+            "published": "2025-12-24",
+            "views": 44991,
+            "likes": 3100,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; exact channel ID not exposed by video search result",
+            "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+          },
+          {
+            "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+            "published": "2026-07-30",
+            "views": 10090,
+            "likes": 740,
+            "byline": "Kamilah Stevenson",
+            "status": "CANDIDATE; claims red-teamed against 2026-11-09 amendment state",
+            "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+          }
+        ],
+        "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
+        "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
+      },
+      "run109_addendum": {
+        "japan_sbic": "Tokyo SBIC official profile labels Tokyo as SBIC East Japan and names Nagoya and Osaka sister companies; distinct from SBI Holdings.",
+        "exact_phrases": "No new primary-source match for 'SBIC, ChatGPT SBIC' or a definitive ASK Coin identity; Permission Coin ASK remains a candidate without verified XRP link.",
+        "actual_capital": "Evernorth Form 424B-3 separates aggregate cash subscriptions, in-kind XRP and cash used to purchase XRP; aggregate advance funding is not SBI-only."
+      }
     },
     "platform_status": {
       "ChatGPT": "VERIFIED_CURRENT_SESSION",
@@ -35556,6 +36988,7 @@
       "main_protected": true,
       "branch_protection_status": "UNVERIFIED_HTTP_403",
       "detailed_branch_protection": "HTTP 403 Resource not accessible by integration",
+      "visible_required_status_contexts": [],
       "visible_ruleset": {
         "id": 10863829,
         "name": "Fall Back",
@@ -35563,6 +36996,7 @@
       },
       "pages_enabled": true,
       "pages_configuration_accessible": false,
+      "pages_authorized": false,
       "pages_deployment_authorized": false,
       "pr_1640": {
         "head_sha": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
@@ -35570,6 +37004,7 @@
         "behind_by": 0,
         "changed_paths": 219,
         "mergeable": true,
+        "mergeable_state": "clean",
         "approvals": 0,
         "commented_reviews": 62,
         "threads_resolved": 22,
@@ -35584,8 +37019,7 @@
         "No independent APPROVED review",
         "Detailed branch-protection requirements inaccessible via HTTP 403",
         "Automatic GitHub Pages publication not specifically authorized"
-      ],
-      "pages_authorized": false
+      ]
     },
     "prediction_engine": {
       "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
@@ -35773,9 +37207,247 @@
       ],
       "cftc_weekly_status": "RAW_ONLY_NOT_MODEL_ADMITTED"
     },
+    "top_prediction_engine": {
+      "scheduled_ingestion": "DESIGNED on #1640 only; not on main and not verified running on main.",
+      "schedule": "Hourly at minute 3 and daily at 00:15 UTC; read-only contents/actions permissions; workflow runs only on main.",
+      "endpoints": 40,
+      "scheduled_public_sources": 36,
+      "excluded_xrpl_node_sources": 2,
+      "endpoint_ids": [
+        "binance_spot_ticker",
+        "binance_spot_klines",
+        "binance_perp_premium",
+        "binance_perp_open_interest",
+        "binance_perp_funding_history",
+        "binance_perp_open_interest_history",
+        "binance_perp_global_long_short_ratio",
+        "coinbase_spot_ticker",
+        "kraken_spot_ticker",
+        "bitbank_spot_circuit_break",
+        "bitbank_spot_transactions",
+        "bitbank_spot_ticker",
+        "bitbank_spot_depth",
+        "okx_spot_ticker",
+        "okx_spot_depth",
+        "bybit_spot_ticker",
+        "bybit_spot_depth",
+        "bybit_linear_ticker",
+        "bybit_linear_open_interest",
+        "bybit_linear_funding_history",
+        "coinbase_spot_candles",
+        "coinbase_spot_book",
+        "kraken_spot_depth",
+        "binance_spot_depth",
+        "xrp_etf_flows_aggregator",
+        "xrp_exchange_balances_json",
+        "xrp_etf_flows_csv",
+        "xrp_etf_xrpr_issuer_page",
+        "xrp_etf_bitwise_issuer_page",
+        "xrp_etf_grayscale_gxrp_issuer_page",
+        "xrp_etf_franklin_xrpz_issuer_page",
+        "xrp_etf_canary_xrpc_issuer_page",
+        "xrp_etf_21shares_toxr_issuer_page",
+        "ripple_rlusd_transparency_dashboard",
+        "xrpldashboard_rlusd_cross_chain_supply",
+        "circle_usdc_transparency_dashboard",
+        "cftc_contract_status_index",
+        "cftc_tff_financial_futures",
+        "xrpl_inftf_server_info",
+        "xrpl_honeycluster_server_info"
+      ],
+      "scheduled_endpoint_ids": [
+        "binance_spot_ticker",
+        "binance_spot_klines",
+        "binance_perp_premium",
+        "binance_perp_open_interest",
+        "binance_perp_funding_history",
+        "binance_perp_open_interest_history",
+        "binance_perp_global_long_short_ratio",
+        "coinbase_spot_ticker",
+        "kraken_spot_ticker",
+        "bitbank_spot_circuit_break",
+        "bitbank_spot_transactions",
+        "bitbank_spot_ticker",
+        "bitbank_spot_depth",
+        "okx_spot_ticker",
+        "okx_spot_depth",
+        "bybit_spot_ticker",
+        "bybit_spot_depth",
+        "bybit_linear_ticker",
+        "bybit_linear_open_interest",
+        "bybit_linear_funding_history",
+        "coinbase_spot_candles",
+        "coinbase_spot_book",
+        "kraken_spot_depth",
+        "binance_spot_depth",
+        "xrp_etf_flows_aggregator",
+        "xrp_exchange_balances_json",
+        "xrp_etf_flows_csv",
+        "xrp_etf_xrpr_issuer_page",
+        "xrp_etf_bitwise_issuer_page",
+        "xrp_etf_grayscale_gxrp_issuer_page",
+        "xrp_etf_franklin_xrpz_issuer_page",
+        "xrp_etf_canary_xrpc_issuer_page",
+        "xrp_etf_21shares_toxr_issuer_page",
+        "ripple_rlusd_transparency_dashboard",
+        "xrpldashboard_rlusd_cross_chain_supply",
+        "circle_usdc_transparency_dashboard"
+      ],
+      "excluded_xrpl_node_source_ids": [
+        "xrpl_inftf_server_info",
+        "xrpl_honeycluster_server_info"
+      ],
+      "implemented": [
+        "SHA-256 content-addressed raw payload receipts and canonical receipt IDs",
+        "per-run append-only receipt hash chain and verification manifest",
+        "point-in-time SQLite feature store and snapshot checks",
+        "four deterministic baselines",
+        "chronological embargoed walk-forward evaluation",
+        "temporal baseline calibration diagnostics",
+        "univariate PSI feature-drift diagnostics",
+        "fail-closed fixed-horizon forecast ledger",
+        "issuance-time feature-snapshot verification",
+        "Binance, Coinbase, Kraken, OKX, Bitbank and Bybit public market adapters",
+        "Immutable forecast outcome resolution with event-time tolerance, source lineage, explicit cross-venue normalization and Brier/log-loss scoring against the baseline.",
+        "Missing or unavailable outcome is recorded as unscorable rather than as a directional miss."
+      ],
+      "raw_receipt_archive": {
+        "mode": "write-once content-addressed payload files; canonical receipt log; per-run SHA-256 chain",
+        "external_immutable_anchor": false,
+        "per_source_independent_timestamp_anchor": false,
+        "raw_artifact_retention_days": 90,
+        "per_run_feature_store_artifact_retention_days": 7,
+        "daily_feature_store_archive_retention_days": 90,
+        "actions_cache": "evictable accelerator only; not durable archive"
+      },
+      "historical_evaluator": {
+        "venues": [
+          "Binance XRP/USDT",
+          "Coinbase XRP/USD"
+        ],
+        "horizon_seconds": 3600,
+        "minimum_train_samples": 100,
+        "minimum_out_of_sample_samples": 100,
+        "embargo_seconds": 3600,
+        "baselines": [
+          "naive",
+          "momentum",
+          "mean_reversion",
+          "volatility_aware"
+        ],
+        "mature_synchronized_live_history": false
+      },
+      "implemented_but_not_validated": [
+        "Temporal temperature scaling is implemented for deterministic baseline probabilities but not validated on mature independent live XRP outcomes.",
+        "PSI drift report is univariate and does not measure label/concept drift.",
+        "Walk-forward evaluator has not demonstrated out-of-sample lift on a sufficiently mature synchronized dataset."
+      ],
+      "limitations": [
+        "No independent external WORM storage or complete raw-source rebuild.",
+        "Historical evaluator limited to Binance XRP/USDT and Coinbase XRP/USD hourly closes.",
+        "No synchronized multi-domain history or scheduled SEC/macro/stablecoin/custody/collateral/institutional/payment-rail sources.",
+        "No trained-model OOS lift, validated real-data calibration, sufficient independent shadow outcomes or trusted evaluator key.",
+        "Scheduled workflow is not merged to main and has not executed on main."
+      ],
+      "forecast_status": "NOT_ISSUED",
+      "oos_lift": false,
+      "real_data_calibration": false,
+      "shadow_outcomes": false,
+      "trusted_evaluator_key": false,
+      "independent_worm_archive": false,
+      "endpoint_inventory_verified_at_utc": "2026-11-10T00:07:27.057Z",
+      "endpoint_inventory_source_file": "barrot_agent/evolution/xrp_public_ingestion.py",
+      "endpoint_inventory_source_blob_sha": "f5fc3c4a45aaf826241e32faf00443e98bfa341a",
+      "endpoint_inventory_contract": "research/xrp_intelligence/feature-store-contract.md; research/xrp_intelligence/forecast-ledger-contract.md; tests/test_xrp_endpoint_inventory_documentation_consistency.py; tests/test_xrp_forecast_contract_endpoint_count_20261108.py",
+      "endpoint_inventory_correction": "40 total endpoint records: 36 scheduled hourly public sources, two weekly CFTC sources (contract-status index and TFF report), and two non-commercial XRPL node endpoints excluded by default. Both CFTC sources remain raw-only and are not model-admitted.",
+      "source_coverage_gaps": [
+        "Primary SEC filing and issuer-filing vintage ingestion",
+        "Federal Reserve, Treasury and BLS macro time-series vintages; FRED/ALFRED excluded pending terms-compliant authorization; Treasury Fiscal Data is a candidate, not integrated",
+        "Regulatory docket and enforcement-event ingestion",
+        "Institutional XRP/RLUSD custody balances and verified changes",
+        "Collateral eligibility, haircut, utilization and actual pledged-balance disclosures",
+        "Payment-rail throughput, settlement principal and XRP-versus-stablecoin denomination"
+      ],
+      "last_verified_at_utc": "2026-11-10T00:07:27.057Z",
+      "outcome_resolution_implemented": true,
+      "outcome_resolution_contract": "Immutable resolve_forecast outcome; predeclared timestamp tolerance; outcome venue/source IDs; explicit cross-venue normalization; Brier/log-loss scoring versus baseline; missing outcome recorded as unscorable.",
+      "calibration_contract": {
+        "method": "rolling_temporal_temperature_scaling_v1",
+        "min_samples": 50,
+        "max_history": 250,
+        "fit_fraction": 0.8,
+        "validation_fraction": 0.2,
+        "minimum_log_loss_improvement": 0.005,
+        "identity_transform_retained_without_validation_improvement": true
+      },
+      "implemented_on_integration_branch": true,
+      "verified_on_main": false,
+      "mature_synchronized_live_history": false,
+      "weekly_sources": 2,
+      "excluded_noncommercial_xrpl_node_sources": 2,
+      "weekly_cftc_capture_window_utc": "Saturday 00:10-01:59",
+      "weekly_cftc_status": "RAW_ONLY_NOT_MODEL_ADMITTED",
+      "weekly_endpoint_ids": [
+        "cftc_contract_status_index",
+        "cftc_tff_financial_futures"
+      ],
+      "cftc_weekly_status": "RAW_ONLY_NOT_MODEL_ADMITTED"
+    },
+    "cftc_contract_universe": {
+      "report_date_current": "2026-11-03",
+      "report_date_previous": "2026-10-27",
+      "current_contracts": [
+        {
+          "venue": "CME",
+          "contract": "XRP",
+          "code": "176740",
+          "contracts": 7216,
+          "xrp_per_contract": 50000,
+          "xrp_equivalent": 360800000
+        },
+        {
+          "venue": "Coinbase Derivatives",
+          "contract": "NANO XRP",
+          "code": "176LM1",
+          "contracts": 32505,
+          "xrp_per_contract": 500,
+          "xrp_equivalent": 16252500
+        },
+        {
+          "venue": "Coinbase Derivatives",
+          "contract": "NANO XRP PERP STYLE",
+          "code": "176LM3",
+          "contracts": 38392,
+          "xrp_per_contract": 500,
+          "xrp_equivalent": 19196000
+        }
+      ],
+      "current_continuing_three_contract_xrp_equivalent": 396248500,
+      "previous_continuing_three_contract_xrp_equivalent": 455163000,
+      "comparable_change_pct": -12.943604818493593,
+      "dropped_contract": {
+        "venue": "Coinbase Derivatives",
+        "contract": "XRP",
+        "code": "176LM2",
+        "prior_contracts": 28246,
+        "xrp_per_contract": 10000,
+        "prior_xrp_equivalent": 282460000,
+        "prior_report_total_traders": 20,
+        "status": "DROPPED_FROM_REPORTING_FOR_2026-11-03_REPORT_WEEK",
+        "reason": "Not disclosed by the CFTC status index."
+      },
+      "previous_universe_including_dropped_xrp_equivalent": 737623000,
+      "apparent_mixed_universe_change_pct": -46.280349175662906,
+      "threshold_hypothesis": {
+        "cftc_faq": "A contract may disappear when reportable Large Traders fall below 20.",
+        "prior_report_observation": "176LM2 showed 20 total traders in the October 27 report, at the threshold.",
+        "assessment": "PLAUSIBLE_UNCONFIRMED; the current-week reportable-trader count is unavailable after the contract was dropped, and the status index does not state the reason."
+      },
+      "interpretation": "XRP-equivalent contract units, not USD notional, cash capital, spot holdings, collateral or directional net exposure. CFTC report and status index are not independent sources."
+    },
     "forecast_status": "NOT_ISSUED",
     "backlog_classification": {
-      "#1640": "BLOCKED integration PR; exact-head full suite, wheel, dependency audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
+      "#1640": "BLOCKED integration PR; exact code/test head a900c4 full suite, wheel, six-manifest audit and fail-closed gate pass; no approvals, protection visibility and Pages authorization remain blockers.",
       "#1643": "UNIQUE/UNREVIEWED research archive; 663 unique paths, 7 shared; 906 ahead/1 behind; preserve.",
       "#1653": "UNIQUE/BLOCKED knowledge graph; 6 unique paths, 1 shared; 18 ahead/1 behind; 8 unresolved substantive review threads; preserve and fix before integration.",
       "#1642": "SUPERSEDED_CANDIDATE; all 7 paths overlap #1640.",
@@ -35798,9 +37470,270 @@
         ]
       }
     },
+    "raw_http_bytes_preserved": false,
+    "sha256_receipts_created": false,
+    "web_observations_model_admitted": false,
     "no_merge_performed": true,
     "no_new_pr_created": true,
-    "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; continue synchronized historical data and independent receipt anchoring."
+    "handoff_map_descendant_parent_head": "a900c4df8833839ed847c0b307588cfb3f34f7d1",
+    "descendant_ci_status": "FAILED_ON_656B_ONE_CANONICAL_LABEL_ASSERTION; REPAIR_IN_NEXT_COMMIT",
+    "next_action": "Obtain independent approval, effective branch-protection visibility and Pages-publication authorization; advance durable receipt anchoring and synchronized historical data.",
+    "prior_market_crosschecks": [
+      {
+        "run": 98,
+        "snapshot": {
+          "captured_at_utc": "2026-11-09T20:08:23Z",
+          "source_type": "public rendered web pages/search excerpts; raw HTTP bytes and response headers not captured",
+          "sha256_receipts_created": false,
+          "model_admission": false,
+          "spot": [
+            {
+              "source": "Binance.US",
+              "as_of_date": "2026-11-09",
+              "price_usd": 1.1,
+              "change_24h_pct": -5.23,
+              "range_24h_usd": [
+                1.08,
+                1.16
+              ],
+              "change_7d_pct": -12.15,
+              "change_30d_pct": -21.95,
+              "change_1y_pct": -52.09,
+              "provider_event_time_utc": null,
+              "url": "https://www.binance.us/price/xrp"
+            },
+            {
+              "source": "Capital Street FX / Bitstamp chart feed",
+              "as_of_utc": "2026-11-09T12:14:00Z",
+              "price_usd": 1.08488,
+              "change_day_pct": -2.45,
+              "change_24h_pct": -6.96,
+              "range_24h_usd": [
+                1.07537,
+                1.12501
+              ],
+              "url": "https://www.capitalstreetfx.com/market-analysis/daily-crypto-report-09-nov-2026/"
+            }
+          ],
+          "derivatives": [
+            {
+              "source": "Liqwall",
+              "as_of_utc": "2026-11-09T17:42:00Z",
+              "open_interest_usd": 1230000000,
+              "oi_change_24h_pct": -5.8,
+              "liquidations_24h_usd": 36800000,
+              "long_liquidations_usd": 35500000,
+              "short_liquidations_usd": 1400000,
+              "average_funding_8h_pct": -0.0002,
+              "binance_funding_8h_pct": 0.0057,
+              "binance_accounts_long_pct": 74.6,
+              "url": "https://liqwall.com/coins/xrp"
+            },
+            {
+              "source": "TradRadar",
+              "as_of_utc": "2026-11-09T17:25:00Z",
+              "open_interest_usd": 1660000000,
+              "oi_change_24h_pct": -12.29,
+              "liquidations_24h_min_usd": 38450000,
+              "long_liquidations_usd": 36980000,
+              "short_liquidations_usd": 1480000,
+              "funding_oi_weighted_8h_pct": -0.0007,
+              "long_short_account_ratio": 3.93,
+              "long_accounts_pct": 79.7,
+              "url": "https://tradradar.io/markets/xrp"
+            },
+            {
+              "source": "Alpha Finance",
+              "as_of_utc": "2026-11-09T14:04:00Z",
+              "open_interest_usd": 2500000000,
+              "volume_24h_usd": 3710000000,
+              "long_liquidations_24h_usd": 38800000,
+              "short_liquidations_24h_usd": 1400000,
+              "clusters_modelled_from_open_interest": true,
+              "url": "https://alphafinance.io/liquidation-heatmap/xrp/"
+            }
+          ],
+          "derivatives_interpretation": "Open-interest aggregates range from $1.23B to $2.50B (2.03x) with different cutoffs and overlapping venue coverage. Funding is near-zero/mixed. All three show materially more long than short liquidations. Do not average; deleveraging is descriptive evidence, not a directional signal.",
+          "etf_trackers": [
+            {
+              "source": "TheXRPInvestor",
+              "updated": "2026-11-09",
+              "aum_usd": 1310000000,
+              "xrp_in_trust": 1200000000,
+              "total_daily_volume_usd": 32070000,
+              "spot_daily_volume_usd": 14140000,
+              "derivative_daily_volume_usd": 17930000,
+              "interpretation": "volume and AUM are not net creations/redemptions",
+              "url": "https://thexrpinvestor.com/xrp-etf-flows"
+            },
+            {
+              "source": "CryptoKeyhole",
+              "updated_utc": "2026-11-09T15:22:00Z",
+              "latest_complete_day": "2026-11-05",
+              "funds_collected": 4,
+              "net_flow_latest_complete_day_xrp": -3339,
+              "net_flow_last_5_complete_days_xrp": -1137098,
+              "holdings_xrp": 1076805885,
+              "nov_6_status": "partial; 3 of 4 funds published, awaiting Franklin",
+              "url": "https://cryptokeyhole.com/etf-flows/xrp/"
+            },
+            {
+              "source": "ByKaranteli",
+              "refreshed_utc": "2026-11-09T09:09:00Z",
+              "last_trading_day": "2026-11-06",
+              "daily_net_flow_usd": 0,
+              "five_day_net_flow_usd": -530000,
+              "cumulative_net_inflow_usd": 1810000000,
+              "total_net_assets_usd": 1340000000,
+              "url": "https://bykaranteli.com/etf/xrp"
+            }
+          ],
+          "etf_interpretation": "Fund universes, holdings-versus-flow methods and complete-day cutoffs differ. Trading volume is not net flow. Preserve disagreement; do not average or treat the series as complete issuer-wide cash subscriptions/redemptions."
+        }
+      }
+    ],
+    "research_corrections": [
+      "Ripple's official SBI Ripple Asia profile states it does not handle XRP; SBI Remit/SBI VC Trade handle the XRP ODL corridor.",
+      "SBI Holdings' Feb 2025 presentation reports approximately 9% Ripple share and SBI Ripple Asia 60/40 ownership, date-stamped historical.",
+      "Aviva GBP tokenized share class: £50M issuer investment on XRPL, digital twin/off-chain fund assets.",
+      "Franklin sgBENJI: two $75M cash subscription receipts on XRPL; one wallet, unknown beneficial owner/source; not XRP purchases.",
+      "As of 2026-11-09, ConfidentialTransfer 21/35, DynamicMPT 16/35 and Sponsor 10/35 remain below the 29/35 threshold; sponsored fees are not live.",
+      "Kamilah Stevenson video search returned four byline candidates; the guest identity/handle is linked, but the channel page was not retrievable, so candidates are not counted as verified personal uploads.",
+      "Run 656b full-suite failure was one test-only taxonomy wording mismatch: canonical label is 'cash actually used to buy XRP'; no production code defect."
+    ],
+    "xrpl_amendment_status": {
+      "as_of_date": "2026-11-09",
+      "source": "XRPL Dashboard signed own-node snapshot for 2026-11-09; amendment states are ledger-derived, not Ripple marketing claims.",
+      "trusted_validator_count": 35,
+      "threshold": {
+        "rule": "More than 80% of trusted validators for 14 uninterrupted days",
+        "minimum_votes_for_more_than_80pct": 29,
+        "note": "28/35 is exactly 80%; the rule requires more than 80%, so 29 votes are required."
+      },
+      "enabled": {
+        "fixCleanup3_3_0": "2026-09-11",
+        "PermissionDelegationV1_1": "2026-10-08",
+        "BatchV1_1": "2026-10-09",
+        "fixBatchV1_2": "2026-10-09",
+        "fixCleanup3_4_0": "2026-11-05"
+      },
+      "pending": {
+        "ConfidentialTransfer": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "DynamicMPT": {
+          "yes_votes": 16,
+          "total_validators": 35,
+          "support_pct": 45.7,
+          "short_of_activation_votes": 13
+        },
+        "Sponsor": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        },
+        "SingleAssetVault": {
+          "yes_votes": 23,
+          "total_validators": 35,
+          "support_pct": 65.7,
+          "short_of_activation_votes": 6
+        },
+        "LendingProtocol": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "LendingProtocolV1_1": {
+          "yes_votes": 21,
+          "total_validators": 35,
+          "support_pct": 60,
+          "short_of_activation_votes": 8
+        },
+        "XChainBridge": {
+          "yes_votes": 4,
+          "total_validators": 35,
+          "support_pct": 11.4,
+          "short_of_activation_votes": 25
+        },
+        "fixXChainRewardRounding": {
+          "yes_votes": 10,
+          "total_validators": 35,
+          "support_pct": 28.6,
+          "short_of_activation_votes": 19
+        }
+      },
+      "interpretation": "Batch and Permission Delegation are enabled. ConfidentialTransfer, DynamicMPT and Sponsor remain unenabled. Sponsored fees/reserves are not live; a business cannot yet rely on the Sponsor amendment to onboard accounts without XRP.",
+      "primary_verification": "Query the XRPL Amendments ledger object on a public node; the snapshot is an independent node's signed observation.",
+      "source_urls": [
+        "https://xrpldashboard.com/amendments/2026-11-09",
+        "https://xrpl.to/amendments",
+        "https://xrpl.org/docs/concepts/transactions/transaction-types/amendments"
+      ]
+    },
+    "video_research": {
+      "identity_linkage": {
+        "person": "Dr. Kamilah Stevenson",
+        "handle": "@drkamilahstevenson",
+        "verified_guest_appearance": {
+          "title": "Crypto Panics! W/ @drkamilahstevenson",
+          "publisher": "Paul Barron Podcast",
+          "published": "2026-06-11",
+          "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+          "significance": "The public interview identifies the guest and exact handle; it is a guest appearance, not her own upload."
+        },
+        "channel_page_status": "YouTube channel/About/RSS fetch was disabled or throttled in this run. The handle is linked through the guest appearance and third-party channel metadata, but YouTube's own channel page was not independently retrievable.",
+        "third_party_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "third_party_channel_id_status": "NON_PRIMARY_CORROBORATION_ONLY",
+        "ownership_status": "STRONGLY_IDENTITY_LINKED; CHANNEL_PAGE_NOT_PLATFORM_VERIFIED"
+      },
+      "video_candidates": [
+        {
+          "title": "XRP Was Built for What's Coming",
+          "published": "2026-03-03",
+          "views": 13252,
+          "likes": 1100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
+        },
+        {
+          "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+          "published": "2026-03-06",
+          "views": 32040,
+          "likes": 2300,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+        },
+        {
+          "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+          "published": "2025-12-24",
+          "views": 44991,
+          "likes": 3100,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; exact channel ID not exposed by video search result",
+          "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+        },
+        {
+          "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+          "published": "2026-07-30",
+          "views": 10090,
+          "likes": 740,
+          "byline": "Kamilah Stevenson",
+          "status": "CANDIDATE; claims red-teamed against 2026-11-09 amendment state",
+          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+        }
+      ],
+      "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
+      "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
+    },
+    "no_pr_closed": true,
+    "integration_branch_current_head_before_map_compatibility_commit": "7c074b1192de139b62fb0f46117fc5496aa0ebc9"
   },
   "endpoint_inventory_source_blob_sha": "f5fc3c4a45aaf826241e32faf00443e98bfa341a",
   "endpoint_inventory_verified_at_utc": "2026-11-09T23:28:49Z",
@@ -36228,6 +38161,25 @@
       "as_of_2026_11_09": "BatchV1_1 and PermissionDelegationV1_1 are enabled; ConfidentialTransfer (21/35), Sponsor (10/35) and DynamicMPT (16/35) remain below 29/35 and are not enabled.",
       "correction": "Sponsored fees/reserves are a pending Sponsor amendment, not a live mainnet capability. The video's feature discussion is forward-looking and should not be repeated as current functionality.",
       "source": "https://xrpldashboard.com/amendments/2026-11-09"
+    },
+    "evernorth_sbi_ownership": {
+      "primary_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "as_of_closing": "2026-10-09",
+      "sbi_ownership": {
+        "class_a_shares": 9431914,
+        "class_c_shares": 2359038,
+        "percent_outstanding_pubco_common_stock": 21.4,
+        "percent_voting_power": 39.9,
+        "limitation": "39.9% is voting power under a cap, not 39.9% of common stock or XRP."
+      },
+      "actual_capital": {
+        "advance_funding_aggregate_cash_usd": 214050000,
+        "advance_funding_aggregate_in_kind_xrp": 600000,
+        "cash_used_to_purchase_xrp": 84365876.3625,
+        "at_closing_xrp_holdings_approx": 473000000,
+        "limitation": "Aggregate subscriber amounts are not SBI-only; do not attribute treasury XRP to SBI."
+      }
     }
   },
   "identity_research": {
@@ -36361,6 +38313,11 @@
       ],
       "inventory_status": "CANDIDATE_LIST_ONLY_NOT_COUNTED_AS_VERIFIED_PERSONAL_UPLOADS",
       "exclusions": "Do not count similarly named duplicate channels; search results show multiple lookalike accounts. Do not attribute the Paul Barron guest appearance as her own upload."
+    },
+    "run109_addendum": {
+      "japan_sbic": "Tokyo SBIC official profile labels Tokyo as SBIC East Japan and names Nagoya and Osaka sister companies; distinct from SBI Holdings.",
+      "exact_phrases": "No new primary-source match for 'SBIC, ChatGPT SBIC' or a definitive ASK Coin identity; Permission Coin ASK remains a candidate without verified XRP link.",
+      "actual_capital": "Evernorth Form 424B-3 separates aggregate cash subscriptions, in-kind XRP and cash used to purchase XRP; aggregate advance funding is not SBI-only."
     }
   },
   "platform_status": {

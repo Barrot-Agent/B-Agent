@@ -31,7 +31,7 @@ def test_run58_handoff_binds_exact_repository_heads_and_ci():
     assert "No merge was performed" in handoff
 
 
-def test_run104_endpoint_registry_counts_match_current_map():
+def test_run109_endpoint_registry_counts_match_current_map_and_preserves_prior_runs():
     assert len(ENDPOINTS) == 40
     assert len(SCHEDULED_ENDPOINTS) == 36
     assert len(WEEKLY_ENDPOINTS) == 2
@@ -47,8 +47,8 @@ def test_run104_endpoint_registry_counts_match_current_map():
 
     current_data = json.loads(CURRENT_MAP.read_text(encoding="utf-8"))
     latest = current_data["latest_run_snapshot"]
-    assert latest["run_id"] == 104
-    assert latest["run"] == 104
+    assert latest["run_id"] == 109
+    assert latest["run"] == 109
     assert latest["mission"]
     assert "main_workflows" in latest
     assert "institutional_and_macro" in latest
@@ -60,12 +60,21 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert "blockers" in current_data["merge_state"]
     assert "circle_binance" in latest["institutional_and_macro"]
     assert latest["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert latest["integration_code_test_head"] == "044a0428a5479bd8dac8ef56cd59fd428889ae5f"
+    assert latest["integration_code_test_head"] == "a900c4df8833839ed847c0b307588cfb3f34f7d1"
     assert any(item.get("run") == 95 for item in current_data["run_history"])
     assert any(item.get("run") == 96 for item in current_data["run_history"])
     assert any(item.get("run") == 98 for item in current_data["run_history"])
     assert any(item.get("run") == 104 for item in current_data["run_history"])
-    assert current_data["current_run_observations"]["run_id"] == 82
+    assert current_data["current_run_observations"]["run_id"] == 109
+    assert any(item.get("run_id") == 104 for item in current_data["prior_run_observations"])
+    assert any(item.get("run_id") == 82 for item in current_data["prior_run_observations"])
+    assert latest["handoff_map_descendant_parent_head"] == "a900c4df8833839ed847c0b307588cfb3f34f7d1"
+    assert latest["ci_evidence"]["full_suite"]["run_id"] == 42735035466
+    assert latest["ci_evidence"]["full_suite"]["passed"] == 1316
+    assert latest["ci_evidence"]["full_suite"]["failed"] == 0
+    assert latest["ci_evidence"]["dependency_audit"]["run_id"] == 42735035690
+    assert latest["ci_evidence"]["fail_closed_gate"]["run_id"] == 42735035186
+    assert latest["institutional_and_macro"]["evernorth_sbi_ownership"]["sbi_ownership"]["percent_voting_power"] == 39.9
 
     engine = latest["prediction_engine"]
     assert engine["endpoints"] == len(ENDPOINTS) == 40
@@ -79,8 +88,8 @@ def test_run104_endpoint_registry_counts_match_current_map():
     assert latest["ci_evidence"]["full_suite"]["subtests"] == 8
     assert latest["ci_evidence"]["full_suite"]["coverage_pct"] == 59.36
     assert latest["ci_evidence"]["latest_attempt"]["head_sha"] == latest["handoff_map_descendant_parent_head"]
-    assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["passed"] == 1315
-    assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["failed"] == 1
+    assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["passed"] == 1316
+    assert latest["ci_evidence"]["latest_attempt"]["full_suite"]["failed"] == 0
     assert latest["institutional_and_macro"]["sbi_ripple"]["sbi_ripple_asia_xrp_handling"].startswith("Ripple's official SBI Ripple Asia profile explicitly states")
     assert latest["institutional_and_macro"]["sbi_ripple"]["xrp_corridors"]["operational_entities"] == ["SBI Remit", "SBI VC Trade", "Coins.ph", "Tranglo"]
     assert latest["institutional_and_macro"]["sbi_ripple"]["sbi_group_ripple_equity"]["approximate_share_pct"] == 9
