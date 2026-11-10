@@ -1,3 +1,122 @@
+# Barrot XRP Mission — Run121: Fresh Spot Depth, Derivatives and Attribution Audit
+
+**Checked 2026-11-10 around 06:47 UTC.** This addendum supersedes only the Run120 02:00 UTC order-book snapshot and the older 05:30 UTC derivatives snapshot. It preserves Run120 and its complete exact-head CI evidence.
+
+## Run120 exact-head verification completed
+
+Run120 handoff/artifact commit: `43aa63532969f61ad677a443f4bdcf2dc0f46e9d`.
+
+Its exact-head checks have now all completed successfully:
+
+- Full repository suite: **1,347 passed, zero failed, 8 subtests passed**.
+- Inclusive coverage: **59.48%**, above the 53% floor.
+- Core suite: 677 passed, 8 subtests passed.
+- Complete development dependencies installed; all repository tests executed.
+- Wheel built and installed; installed package verified Barrot V3, the XRP mission and canonical data assets.
+- Six dependency manifests passed; zero known vulnerabilities.
+- Fail-closed gate passed; automatic merging remains disabled.
+
+Evidence: [Full CI 42770438065](https://github.com/Barrot-Agent/B-Agent/actions/runs/42770438065), [dependency audit 42770437956](https://github.com/Barrot-Agent/B-Agent/actions/runs/42770437956), [fail-closed gate 42770437998](https://github.com/Barrot-Agent/B-Agent/actions/runs/42770437998).
+
+The Run121 handoff/artifact commit is a new head and must receive its own exact-head checks. Do not transfer Run120's test result to it.
+
+## Fresh exchange snapshot
+
+Capture window around 2026-11-10 06:40–06:47 UTC:
+
+- Kraken XRP/USD: last **$1.09923**, bid **$1.09909**, ask **$1.09921**, displayed spread about **1.09 bps**, 24-hour volume **26.0836M XRP**, VWAP **$1.09399877**, high **$1.10404**, low **$1.07502**. The ticker response contains no provider event timestamp.
+- OKX XRP-USDT: last **1.0999 USDT**, bid **1.0997**, ask **1.0998**, 24-hour volume **65.1118M XRP**, high **1.1167**, low **1.0764**, provider timestamp **2026-11-10T06:40:33.969Z**.
+- Kraken USDT/USD: bid **0.99866**, ask **0.99867**, midpoint **0.998665**. Mechanically normalized OKX last is approximately **$1.098437**, about **0.0721% below** Kraken's last. The quote conversion is sampled separately and the snapshots are asynchronous; this is not an executable arbitrage signal.
+
+Sources: [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX XRP-USDT](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken USDT/USD](https://api.kraken.com/0/public/Ticker?pair=USDTUSD).
+
+## Newest accessible spot-only order-book snapshot
+
+Fuelmaps published its **06:00 UTC, November 10** hourly XRP spot-book snapshot across Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini:
+
+- Mid: **$1.0977**; 6 of 6 venues cover ±5%.
+- ±0.5%: **$9.1M bids / $6.5M asks**, 58.5% bid share.
+- ±1%: **$13.8M bids / $10.8M asks**, 56.0% bid share.
+- ±2%: **$18.3M bids / $11.6M asks**, 61.2% bid share.
+- ±5%: **$24.4M bids / $14.2M asks**, 63.3% bid share.
+- ±10%: **$33.2M bids / $15.6M asks**, 68.0% bid share; 5 of 6 venues cover this wider band.
+- Largest displayed nearby levels: bids $2.5M at $1.050, $2.2M at $1.000, $2.1M at $1.095 and $1.8M at $1.092; ask $1.7M at $1.099.
+
+This replaces the older Run120 02:00 UTC depth snapshot for current market context. Fuelmaps publishes one-minute-book averages in hourly columns; its 06:00 snapshot was published at 06:05 UTC and is approximately 42 minutes old at this check. Binance and Bitget are not included. Full-depth venues and near-price venues have different reach, so venue coverage must remain a feature. Resting orders can be cancelled and are not commitments.
+
+Source and methodology: [Fuelmaps spot order-book heatmap](https://fuelmaps.io/order-book/).
+
+## Updated perpetual derivatives
+
+TradRadar's newest accessible snapshot is **2026-11-10 05:50 UTC**, with a 15-minute reporting delay:
+
+- Mark price $1.1007; 24-hour price change +0.18%.
+- Seven-exchange open interest **$1.66B**, down **3.97%** over 24 hours.
+- OI-weighted funding **+0.0069% per 8 hours**.
+- 24-hour liquidations at least **$7.58M**: $6.80M longs and $777.69K shorts.
+- Account long/short ratio **3.90**, 79.6% long.
+
+The older Run120 TradRadar 05:30 snapshot is superseded by this 05:50 observation. Liqwall's $1.22B and Alpha Finance's $2.48B are older aggregates with different venue coverage; do not average them with TradRadar's seven-exchange $1.66B. The current common description remains declining OI and long-heavy reported liquidation, not a directional price signal.
+
+Source: [TradRadar XRP futures market data](https://tradradar.io/markets/xrp).
+
+## ETF and CFTC status — unchanged since Run120
+
+CryptoKeyhole still reports the November 9 partial as **−9,216,553 XRP / approximately −$10.1M**, 3 of 4 daily-tracked funds, with Franklin XRPZ missing. The displayed component integers sum to −9,216,552 XRP, a one-XRP display difference. Alpha Finance's approximately −$10.4M across five funds and CryptoETF.today's approximately −$10.3M across three of five remain separate coverage/methodology observations. Do not average.
+
+The official CFTC TFF futures-only report remains as of November 3. It lists CME XRP, Coinbase Nano XRP and Coinbase Nano XRP Perp Style; contract-size-normalized OI is 396.2485M XRP-equivalent. Leveraged funds are net +280 CME contracts, −2,308 Nano contracts and −27,774 Nano Perp Style contracts. Keep the products and trader classifications separate.
+
+## Evernorth/BitGo custody attribution
+
+No new primary-source wallet ownership evidence was obtained. Retain Run120's classification: the October 23/28 multisig transfers are BitGo-originated custody movements; a custody reallocation is plausible, but beneficial owner and Evernorth attribution remain unresolved. The 9.070M XRP combined inbound is not confirmed new Evernorth capital, an exchange inflow or a sale.
+
+## Kamilah/Camilla Stevenson channel-attribution update
+
+A public channel-index search surfaced `@drkamilahstevenson` (channel ID candidate `UCqUPJMQdkCN6lsLVDnichPA`) with a matching investing/crypto/macro channel description; third-party counters disagree at approximately 138K versus 143K subscribers. Another directory lists `@CoachKamilahStevensonxrp` and `@KamilahStevensonDigitalNetwork` with near-identical descriptions but much smaller counts. YouTube's direct channel page could not be fully fetched in this check, and no independent cross-link established that these channels are controlled by the previously corroborated person. Treat all three as **unverified channel candidates**; add no personal-channel video to the verified inventory. Prior guest-appearance bylines remain separate.
+
+The connected vidIQ account returned an insufficient-credit response; no credits were charged and the tool instructed not to retry. Public search results were used instead. This does not establish channel ownership.
+
+## Prediction and operational status
+
+- The 40-source registry, raw-byte capture contracts, SHA-256 receipt chain, point-in-time feature store, four baselines, chronological walk-forward evaluation, calibration/drift diagnostics and Ed25519-gated forecast ledger remain implemented on the integration branch.
+- XRP scheduled ingestion remains main-only and is absent from main; no production ingestion run is active.
+- GitHub Actions raw artifacts are retained for 90 days, per-run feature checkpoints for 7 days and daily backups for 90 days. This is not independent WORM storage or trusted timestamp anchoring.
+- Run121 web-rendered observations did not retain original HTTP transport bytes/headers. No raw-source hash is claimed and no observation is model-admitted.
+- Complete synchronized historical spot/L2/derivatives/exchange-flow/collateral data, independent WORM/timestamp anchoring, sufficient shadow outcomes and demonstrated out-of-sample lift remain outstanding.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+## Repository, workflows and merge gates
+
+Main remains `d4d43be3427375cf79d190e768976de062e20287`. Run120's verified parent integration head was `43aa63532969f61ad677a443f4bdcf2dc0f46e9d`; this Run121 update creates a new descendant requiring exact-head CI.
+
+PR #1640 remains the only V3/XRP integration path. It was 909 commits ahead, zero behind, 240 changed paths before this update. The full open inventory remains 372 (356 drafts, 16 non-drafts). Review state remains 62 COMMENTED submissions, zero approvals; 22 threads are resolved and outdated; CodeRabbit is skipped. Branch-protection details remain inaccessible (HTTP 403), the visible fallback ruleset is disabled, and Pages publication authorization is unresolved.
+
+Main workflow repair status:
+- Hover Bike's main workflow failed because its generation step ran inside `hover_bike_revolution` while the generator and artifact paths assumed repository-root execution. The integration branch moves both generator steps to repository-root execution. `tests/test_hover_bike_workflow.py` asserts this path contract, and the full Run120 suite passed it. End-to-end dispatch on the integration branch remains unverified.
+- Riemann Harvest's main workflow failed because the shared pytest conftest imports `pydantic-settings`. The integration branch installs `pydantic-settings` before its subsystem test. A successful integration workflow dispatch remains unverified.
+- Pillars Consistency Check remains blocked by missing GitHub App credentials, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. It remains read-only and fail-closed. No secret rotation or external write occurred.
+- Main Cross Analysis continues to complete hourly as a read-only, artifact-only workflow. It is not the XRP ingestion workflow.
+
+Open-PR overlap classifications from Run120 remain in force: preserve unique #1643, #1653, #1614, #1269, #1655, #1659 and #1641; retain exact-overlap/superseded candidates #1642, #1317/#1318/#1320 and dependency candidates #1644–#1650/#1254/#1255 until a successor is merged and verified on main. No PRs were closed.
+
+**Merge decision: BLOCKED.** No independent approval, no authoritative branch-protection visibility and no Pages side-effect authorization. Do not bypass protection or merge.
+
+## Next concrete actions
+
+1. Verify exact-head full CI, dependency audit and fail-closed gate for the Run121 commit.
+2. Obtain independent approval, authoritative branch-protection visibility and Pages-publication authorization.
+3. After Franklin publishes, reconcile the final November 9 ETF issuer files without treating missing values as zero.
+4. Replay Evernorth/BitGo transactions through a direct public rippled endpoint; establish destination ownership before classifying the 9.070M XRP inbound.
+5. Activate the XRP workflow only after its mission manifest and workflow are safely on main; verify first scheduled capture, raw receipts and feature-store restore.
+6. Establish independent WORM/timestamp anchoring and complete synchronized historical features before any forecast.
+7. Preserve unique PR work; close only exact duplicates after verified successor merges.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
+
+
+---
+
 # Barrot XRP Mission — Run120: Market, ETF, CFTC TFF and Integration Audit
 
 **Updated 2026-11-10T06:35:24Z.** This update preserves Run119 and adds a new point-in-time research and repository audit. The tested code parent is `4d4a752aaa000353b4522bb8f83e7f7fe16d021b`; the combined handoff/artifact commit created by this run requires its own exact-head CI verification.
