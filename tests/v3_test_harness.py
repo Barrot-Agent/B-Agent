@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from barrot_agent.orchestration.repository_repair import RepairCycleEvidence, RepositoryRepairController
+from barrot_agent.orchestration.shared_runtime import Capability, DefensiveWatchdog
 
 
 class FakeBrain:
@@ -123,7 +124,28 @@ def repair_payload(
 
 
 def make_controller(workspace: Path, brain: FakeBrain) -> RepositoryRepairController:
-    return RepositoryRepairController(brain=brain, workspace=workspace, planner_attempts=3)
+    # Test fixtures use disposable local repositories and, when configured,
+    # a local bare origin. Grant EXTERNAL_ACTION explicitly so lifecycle tests
+    # can reach patch validation and local push verification. Production
+    # controllers retain the default fail-closed capability policy.
+    watchdog = DefensiveWatchdog(
+        workspace,
+        repository="Barrot-Agent/B-Agent",
+        task="test/repository-repair",
+        allowed_capabilities={
+            Capability.READ,
+            Capability.WRITE,
+            Capability.EXECUTE,
+            Capability.NETWORK,
+            Capability.EXTERNAL_ACTION,
+        },
+    )
+    return RepositoryRepairController(
+        brain=brain,
+        workspace=workspace,
+        planner_attempts=3,
+        watchdog=watchdog,
+    )
 
 
 def run_cycle(workspace: Path, brain: FakeBrain) -> RepairCycleEvidence:
