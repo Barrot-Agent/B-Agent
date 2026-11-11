@@ -1,3 +1,92 @@
+# Barrot XRP Mission — Canonical Handoff (latest: Run 16 — 2026-11-11T07:58:26.504Z)
+
+## Run 16 — current-head CI, market structure and theft-linked XRP reconciliation
+
+### Repository state — VERIFIED
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`.
+- Parent head before this handoff correction: `26d9cb967996cc48a0c0930d4d5acfb8c379f34a`.
+- PR #1661: open, draft, GitHub reports mergeable=true / mergeable_state=unstable; 1,996 commits ahead / zero behind; 986 changed files (44 workflow files, 942 other paths).
+- Main tree: 1,388 entries / 86 workflows. Integration tree: 2,252 entries / 87 workflows; both recursive trees complete and not truncated.
+- Open PR inventory: 374 total (360 drafts, 14 non-drafts), enumerated across four API pages.
+- GitHub compare endpoint returned only its first 300 file records for this large comparison; the PR API reports 986 changed files. Do not treat 300 as the complete diff.
+- Local Git transport still fails DNS resolution. Current refs, complete trees, PR inventory, files, PR metadata and CI were inspected through the GitHub API; no local clone is claimed.
+
+### Exact-head CI — VERIFIED FAILURE
+
+On exact head `26d9cb967996cc48a0c0930d4d5acfb8c379f34a`, PR CI [42980807226](https://github.com/Barrot-Agent/B-Agent/actions/runs/42980807226), full-suite job 130390518665: **3,405 passed, 2 failed, eight subtests**, 59.98% inclusive coverage, 92.98 seconds. The two failures are current-map assertion wording mismatches:
+
+1. `test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head` — the stored failure classification does not contain the test's required phrase “stale snapshot expectations”.
+2. `test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates` — the Kamilah note states the attribution limitation but uses lowercase wording rather than the exact sentence “No personal-channel inventory is attributed.”
+
+The full-suite job reports no application-runtime exception in these failures. Wheel build and packaged-mission verification were skipped after the suite failed. Do not call this head green.
+
+- [Dependency audit 42980807234](https://github.com/Barrot-Agent/B-Agent/actions/runs/42980807234): passed; six manifests, zero known vulnerabilities reported.
+- [Fail-closed gate 42980807254](https://github.com/Barrot-Agent/B-Agent/actions/runs/42980807254): passed; automatic merge disabled.
+- Previous code head `3b11e39f253ac8d07d02eb5da0c770155614f814` passed 3,407 tests, zero failures, eight subtests, 59.98% coverage and wheel/installed-mission verification in [CI 42964502259](https://github.com/Barrot-Agent/B-Agent/actions/runs/42964502259). This is not a substitute for current-head verification.
+- Current main SHA `84f28ee7755607236231545a14f3d093c1baaa85` has successful full CI [42944864014](https://github.com/Barrot-Agent/B-Agent/actions/runs/42944864014); latest main Cross Analysis [42982558265](https://github.com/Barrot-Agent/B-Agent/actions/runs/42982558265) also succeeded with read-only contents permission and artifact-only outputs.
+
+### Security and branch protection — VERIFIED
+
+- `.config/gh/hosts.yml` is absent from current main and #1661.
+- Rechecked the current branch tips of 17 other open PRs: all 17 still contain the path. PRs: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. Only recursive tree metadata was inspected; credential contents were not read.
+- Repository notes report OAuth revocation, but provider-side revocation remains unverified. No credential rotation/revocation or history rewrite was performed.
+- Main branch endpoint reports protected=true; detailed branch-protection API returns HTTP 403. Visible repository ruleset “Fall Back” remains disabled. Required checks and approval rules are not visible.
+- #1661 has zero formal reviews/approvals and zero unresolved review threads. It remains draft. #1660 remains open/draft, dirty and based on older main; preserve until #1661 is merged and verified on current main.
+
+### Market structure — RESEARCH ONLY, NOT MODEL ELIGIBLE
+
+**Spot:** OKX XRP-USDT at provider event time 07:50:55.569 UTC: last 1.0559, bid 1.0560, ask 1.0561, 24h open 1.0997, high 1.0998, low 1.0311, volume 72.516M XRP. Kraken XRP/USD returned 1.05632 with bid 1.05626 / ask 1.05636 and 35.866M XRP 24h volume, but the response body repeated unchanged across retrievals and has no provider event timestamp; treat it as potentially cached and exclude it from fresh cross-venue consensus. Kraken USDT/USD midpoint 0.998715 gives a mechanically normalized OKX midpoint near $1.05469, about 0.154% below the Kraken last; this is descriptive, not executable.
+
+**Spot depth:** Fuelmaps 07:00 UTC snapshot, mid $1.0548, six venues (Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini): ±0.5% bids/asks $6.7M/$6.9M; ±1% $13.5M/$10.1M; ±2% $18.1M/$12.8M; ±5% $23.2M/$13.8M; ±10% $33.0M/$16.3M. Six of six venues cover ±5%, five of six ±10%. Binance and Bitget are excluded. The snapshot is an hourly average of one-minute resting books; orders can cancel and this is not executed volume or guaranteed support.
+
+**Funding and OI:** CryptoQuant/Darkfost's Binance 30-day cumulative funding was reported at +0.18%, highest since October 2025; this is a rolling 30-day sum, not an 8-hour rate or annualized figure. A separate CryptoTicker query of OKX's public interface reported 76 of 100 settlements positive and +0.39% cumulative since October 9; OKX OI fell from $132.1M on Nov 4 to $101.9M on Nov 10 (−23% in USD, about −10% in XRP terms), with a 3.70 long/short account ratio. These are secondary, venue-specific observations, not a synchronized series. Positive funding while price falls is consistent with crowded-long risk, but may also reflect dip buying; no direction is established.
+
+**ETF flows:** SoSoValue data reported by Finbold and 24/7 Wall St show approximately $10.42M net outflows on November 9, about $9.4M from Bitwise. The same report gives October 12–November 9 cumulative net outflow of $4.2M against $1.24B net assets. Alpha Finance separately reports November 10 net outflow of $7.6M across five of five tracked funds, while its 30-session flow remains +$1.3M and cumulative net inflow +$1.71B. The dates and provider universes differ; Finbold and 24/7 Wall St share SoSoValue inputs and are not independent confirmations.
+
+### Binance theft-linked XRP overhang — MATERIAL EVENT
+
+The FBI's October 31 alert attributes the October 29 Binance theft of more than $6B to DPRK TraderTraitor. Elliptic's November 10 11:00 UTC update estimates about $190M of stolen XRP had been swapped, mostly through THORChain into bitcoin, with about 60M XRP (about $64M) remaining; roughly 33M XRP remained in the last previously untouched address. A CryptoTicker XRPL ledger query around November 10 06:49 UTC found 233.46092M XRP initially distributed across six wallets, 171.66M XRP out since November 5 and 61.804627M remaining. The two remaining-balance snapshots are time-consistent. CryptoTicker reports 46.63M XRP out on November 9 and 5.54M through 05:27 UTC November 10. Elliptic says THORChain halted XRP swaps again on the morning of November 10 and refunded new deposits.
+
+Interpretation: this is a specific illicit-asset supply overhang, not generic whale selling. The ledger proves transfers; Elliptic provides cross-chain swap attribution. Do not assume every XRP leaving the wallets was sold on a centralized exchange or infer a precise spot price impact. The overhang is shrinking, but its disappearance does not create a buyer.
+
+### Macro/geopolitics
+
+Reuters' November 11 01:19 UTC market snapshot reported Brent $92.01 and WTI $86.20 after a rebound from two-month lows, with 37 vessel attacks in October and 10 recorded in November around the Strait of Hormuz. A later syndicated Reuters copy showed Brent $92.20 / WTI $86.53; this is a later market snapshot of the same reporting, not an independent confirmation. Competing hypotheses remain diplomatic de-escalation reducing the oil risk premium versus continued attacks, mine-clearance requirements, insurance and rerouting sustaining it. No mechanical XRP macro coefficient is assumed.
+
+### Prediction and platform status
+
+Forecast remains `NOT_ISSUED`. Public web/API observations in this run have no byte-exact Barrot SHA-256 receipts and are not model-eligible. Existing collector, receipt-chain, point-in-time store, four baselines, chronological walk-forward, calibration/drift diagnostics and fail-closed attestation ledger remain implemented on the integration branch; production gaps remain independent WORM anchoring, replayable history, synchronized market/flow/collateral history, macro/event ingestion, scenario generation, independent shadow outcomes and production evaluator key.
+
+ChatGPT's current-session GitHub API data flow is verified. LunaRoute remains repository-declared but unauthenticated. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks persistent authenticated flows remain unverified. No external-model transfer occurred.
+
+### Backlog and merge decision
+
+- #1661: blocked, sole consolidated integration draft; 986 changed files, 44 workflows, 942 other paths; latest full suite fails two assertion wording checks.
+- #1660: superseded-source candidate; retain until #1661 merge and main verification.
+- #1653: unique graph work; preserve.
+- #1614, #1611, #1610, #1612, #1269: unique prediction/topology/safety work; preserve.
+- #1640, #1642, #1643, #1317, #1318, #1320, #1644–#1650, #1254 and #1255: overlap/supersession candidates; reconcile blob differences and retain until verified successor merge.
+- Other open PRs remain unique/unreviewed or blocked; no bulk closure.
+
+**No merge.** Exact-head full suite fails two tests, PR remains draft with zero approvals, branch-protection requirements are not visible, 942 non-workflow paths remain for semantic review, 17 branch-tip credential-path copies remain, and automatic GitHub Pages publication is unauthorized. No deployment, secret action, external-model transfer, paper trade or real-money action occurred.
+
+### Next actions
+
+1. Correct the two current-map assertion wording mismatches on this existing branch without skipping tests or lowering thresholds; rerun the full exact-head suite, dependency audit and fail-closed gate.
+2. Update the PR description to current head and CI evidence while keeping it draft.
+3. Complete semantic review of the 942 non-workflow paths and safe Barrot V3 operational parity.
+4. Verify provider-side OAuth revocation and remediate the 17 branch-tip copies additively, without reading contents or rewriting history.
+5. Obtain authoritative branch-protection/approval requirements and explicit GitHub Pages publication authorization.
+6. Raise the 53% inclusive coverage floor toward 70% through added tests.
+7. Keep the XRP collector off main until authorized merge; then verify first successful main ingestion and immutable receipts.
+8. Keep forecasts disabled until independent receipts, replay, calibration, drift, shadow outcomes and out-of-sample lift pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+---
+
 # Barrot XRP Mission — Canonical Handoff (latest: Run 15B — 2026-11-11T07:36:51Z)
 
 ## Run 15B — second exact-head CI correction
