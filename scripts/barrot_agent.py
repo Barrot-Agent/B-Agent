@@ -36,6 +36,7 @@ from sandbox import verify_result
 from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
 from barrot_agent.orchestration.mission_registry import MissionRegistry
 from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
+from barrot_agent.orchestration.shared_runtime import Capability, DefensiveWatchdog
 
 from barrot_agent.orchestration.repository_repair import (
     ProjectIdentity,
@@ -782,6 +783,94 @@ def run_gh(args: list[str]) -> subprocess.CompletedProcess[str]:
     )
 
 
+def external_action_approval_valid(action: str, branch: str) -> bool:
+    approved_actions = {
+        item.strip()
+        for item in os.environ.get("BARROT_EXTERNAL_ACTIONS", "").split(",")
+        if item.strip()
+    }
+    return (
+        os.environ.get("BARROT_EXTERNAL_ACTION_APPROVED", "").strip().upper() == "YES"
+        and bool(os.environ.get("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "").strip())
+        and os.environ.get("BARROT_EXTERNAL_ACTION_REPO", "").strip() == REPO
+        and os.environ.get("BARROT_EXTERNAL_ACTION_BRANCH", "").strip() == branch
+        and action in approved_actions
+    )
+
+
+def require_external_action_approval(action: str, branch: str) -> None:
+    if not external_action_approval_valid(action, branch):
+        raise RuntimeError(
+            f"Blocked external action {action!r} for {REPO}@{branch}: require "
+            "BARROT_EXTERNAL_ACTION_APPROVED=YES, a non-empty approval ID, exact repository/branch "
+            "scope, and the action in BARROT_EXTERNAL_ACTIONS."
+        )
+
+
+def require_pr_dedup_attestation() -> None:
+    if (
+        os.environ.get("BARROT_PR_DEDUP_VERIFIED", "").strip().upper() != "YES"
+        or not os.environ.get("BARROT_PR_DEDUP_EVIDENCE", "").strip()
+    ):
+        raise RuntimeError(
+            "Branch/PR creation requires BARROT_PR_DEDUP_VERIFIED=YES and "
+            "BARROT_PR_DEDUP_EVIDENCE referencing the completed open-PR, path-overlap, "
+            "commit-ancestry and prior-work review."
+        )
+
+
+def list_open_pull_requests() -> list[dict[str, Any]]:
+    result = run_gh(
+        [
+            "pr", "list", "--repo", REPO, "--state", "open", "--limit", "1000",
+            "--json", "number,title,headRefName,baseRefName",
+        ]
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            "Unable to enumerate the complete open-PR inventory; branch/PR creation is blocked. "
+            + (result.stderr.strip() or result.stdout.strip())[:1000]
+        )
+    try:
+        items = json.loads(result.stdout or "[]")
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError("Open-PR inventory was not valid JSON; creation is blocked.") from exc
+    if not isinstance(items, list) or len(items) >= 1000:
+        raise RuntimeError("Open-PR inventory may be truncated; creation is blocked.")
+    return [item for item in items if isinstance(item, dict)]
+
+
+def _normalize_pr_title(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
+
+
+def find_open_pr_conflict(branch: str, title: str) -> tuple[dict[str, Any] | None, str | None]:
+    wanted_title = _normalize_pr_title(title)
+    for item in list_open_pull_requests():
+        if str(item.get("headRefName") or "").strip() == branch:
+            return item, "branch"
+        if _normalize_pr_title(str(item.get("title") or "")) == wanted_title:
+            return item, "title"
+    return None, None
+
+
+def build_repository_watchdog() -> DefensiveWatchdog:
+    allowed = {
+        Capability.READ,
+        Capability.WRITE,
+        Capability.EXECUTE,
+        Capability.NETWORK,
+    }
+    if external_action_approval_valid("repository_sync", BRANCH):
+        allowed.add(Capability.EXTERNAL_ACTION)
+    return DefensiveWatchdog(
+        ROOT,
+        repository=REPO,
+        task=TITLE,
+        allowed_capabilities=allowed,
+    )
+
+
 def build_github_context(task_text: str) -> str:
     lowered = task_text.lower()
     github_context = ""
@@ -795,7 +884,7 @@ def build_github_context(task_text: str) -> str:
                 "--state",
                 "open",
                 "--limit",
-                "100",
+                "1000",
                 "--json",
                 "number,title,mergeable,additions,deletions,author",
                 "-q",
@@ -882,7 +971,27 @@ def configure_git() -> None:
 
 
 def checkout_branch(branch: str) -> None:
-    """Select a task branch without resetting local or remote refs."""
+    """Reuse an existing task branch; require approval and dedup evidence before creating one."""
+    existing, conflict_kind = find_open_pr_conflict(branch, TITLE)
+    if existing and conflict_kind == "title" and existing.get("headRefName") != branch:
+        raise RuntimeError(
+            f"Open PR #{existing.get('number')} already has this objective on another branch; "
+            "reuse/reconcile it instead of creating another branch."
+        )
+    local = run(
+        ["git", "show-ref", "--verify", "--quiet", f"refs/heads/{branch}"],
+        check=False,
+        quiet=True,
+    )
+    remote = run(
+        ["git", "ls-remote", "--exit-code", "--heads", "origin", branch],
+        check=False,
+        quiet=True,
+    )
+    branch_exists = local.returncode == 0 or remote.returncode == 0
+    if not branch_exists:
+        require_external_action_approval("repository_branch_create", branch)
+        require_pr_dedup_attestation()
     try:
         safe_checkout_branch(ROOT, branch)
     except Exception as exc:
@@ -944,6 +1053,16 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         or str(cycle_data.get("issue", {}).get("branch", "")).strip()
         or BRANCH
     )
+    existing, conflict_kind = find_open_pr_conflict(head_branch, f"Barrot: {safe_title}")
+    if existing:
+        if conflict_kind == "branch":
+            print(f"EXISTING_OPEN_PR=#{existing.get('number')}; reusing branch; no duplicate PR created.")
+            return
+        raise RuntimeError(
+            f"Open PR #{existing.get('number')} already has this objective; update/reconcile it instead."
+        )
+    require_external_action_approval("pull_request_create", head_branch)
+    require_pr_dedup_attestation()
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",
@@ -996,6 +1115,14 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
     cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(payload.get("cycle_id") or "unknown"))
     per_cycle = latest.parent / f"{cycle_id}.json"
     paths = [str(latest.relative_to(ROOT)), str(per_cycle.relative_to(ROOT))]
+    safe_title = TITLE.replace(chr(96), " ").replace('"', "'").replace("$", " ").replace("\n", " ").replace("\r", " ").strip()[:180] or "Scientific discovery"
+    existing_pr, conflict_kind = find_open_pr_conflict(BRANCH, f"Barrot research: {safe_title}")
+    if existing_pr and conflict_kind == "title" and existing_pr.get("headRefName") != BRANCH:
+        raise RuntimeError(
+            f"Open PR #{existing_pr.get('number')} already covers this research objective on another branch."
+        )
+    require_external_action_approval("repository_sync", BRANCH)
+    require_pr_dedup_attestation()
     staged = run(["git", "add", "--", *paths], check=False)
     if staged.returncode != 0:
         raise RuntimeError(staged.stderr.strip() or "Unable to stage scientific-discovery evidence")
@@ -1012,7 +1139,6 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
         if remote.returncode != 0:
             raise RuntimeError("No new evidence to commit and no remote task branch exists")
 
-    safe_title = TITLE.replace(chr(96), " ").replace('"', "'").replace("$", " ").replace("\n", " ").replace("\r", " ").strip()[:180] or "Scientific discovery"
     pr_body = (
         f"Barrot scientific-discovery evidence for issue #{ISSUE}.\n\n"
         f"- cycle_id: {cycle_id}\n"
@@ -1022,6 +1148,20 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
         f"- unresolved_questions: {len(payload.get('unresolved_questions', []))}\n\n"
         "This is an evidence-preserving draft. It makes no claim that the Millennium problem is solved."
     )
+    existing_pr, conflict_kind = find_open_pr_conflict(BRANCH, f"Barrot research: {safe_title}")
+    if existing_pr:
+        if conflict_kind == "branch":
+            return {
+                "record_path": str(latest.relative_to(ROOT)),
+                "commit_sha": commit_sha,
+                "remote_persisted": True,
+                "draft_pr": f"reused existing open PR #{existing_pr.get('number')}",
+            }
+        raise RuntimeError(
+            f"Open PR #{existing_pr.get('number')} already covers this research objective; no new PR created."
+        )
+    require_external_action_approval("pull_request_create", BRANCH)
+    require_pr_dedup_attestation()
     import tempfile
     with tempfile.TemporaryDirectory(prefix="barrot_research_pr_") as tmp_dir:
         body_path = Path(tmp_dir) / "research_pr_body.md"
@@ -1784,6 +1924,7 @@ def main() -> None:
         brain=brain,
         workspace=ROOT,
         workspace_verifier=verify_result,
+        watchdog=build_repository_watchdog(),
     )
     queue = WorkQueueController(repair_controller=controller)
     def execute_bundle_task(task: dict[str, Any]) -> Any:

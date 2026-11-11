@@ -272,6 +272,13 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
     monkeypatch.setenv("TASK_TITLE", "Repair issue")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVED", "YES")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "test-approval-123")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_BRANCH", "repair/from-cycle")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTIONS", "pull_request_create")
+    monkeypatch.setenv("BARROT_PR_DEDUP_VERIFIED", "YES")
+    monkeypatch.setenv("BARROT_PR_DEDUP_EVIDENCE", "test open-PR/path/commit review")
     module = load_script_module("barrot_agent_pr_test")
 
     calls: dict[str, object] = {}
@@ -281,6 +288,12 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
     cycle.issue = {"summary": "repair issue"}
 
     def fake_run_gh(args):
+        if args[:2] == ["pr", "list"]:
+            class ListResult:
+                returncode = 0
+                stdout = "[]"
+                stderr = ""
+            return ListResult()
         calls["args"] = args
         body_path = Path(args[7])
         calls["body_exists_during_call"] = body_path.is_file()
@@ -304,6 +317,67 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
     assert "abc123" in str(calls["body_text"])
     assert Path(calls["args"][7]).exists() is False
 
+
+
+def test_create_pull_request_fails_closed_without_explicit_approval(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_TITLE", "Repair issue")
+    for name in (
+        "BARROT_EXTERNAL_ACTION_APPROVED",
+        "BARROT_EXTERNAL_ACTION_APPROVAL_ID",
+        "BARROT_EXTERNAL_ACTION_REPO",
+        "BARROT_EXTERNAL_ACTION_BRANCH",
+        "BARROT_EXTERNAL_ACTIONS",
+        "BARROT_PR_DEDUP_VERIFIED",
+        "BARROT_PR_DEDUP_EVIDENCE",
+    ):
+        monkeypatch.delenv(name, raising=False)
+    module = load_script_module("barrot_agent_pr_gate_test")
+
+    class EmptyInventory:
+        returncode = 0
+        stdout = "[]"
+        stderr = ""
+
+    monkeypatch.setattr(module, "run_gh", lambda args: EmptyInventory())
+    cycle = RepairCycleEvidence(cycle_id="cycle-no-approval")
+    cycle.commit.branch = "repair/no-approval"
+
+    with pytest.raises(RuntimeError, match="BARROT_EXTERNAL_ACTION_APPROVED"):
+        module.create_pull_request(cycle)
+
+
+def test_persist_scientific_discovery_fails_closed_without_repository_sync_approval(monkeypatch, tmp_path) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_TITLE", "Scientific discovery")
+    monkeypatch.setenv("BRANCH", "barrot/research-test")
+    for name in (
+        "BARROT_EXTERNAL_ACTION_APPROVED",
+        "BARROT_EXTERNAL_ACTION_APPROVAL_ID",
+        "BARROT_EXTERNAL_ACTION_REPO",
+        "BARROT_EXTERNAL_ACTION_BRANCH",
+        "BARROT_EXTERNAL_ACTIONS",
+        "BARROT_PR_DEDUP_VERIFIED",
+        "BARROT_PR_DEDUP_EVIDENCE",
+    ):
+        monkeypatch.delenv(name, raising=False)
+    module = load_script_module("barrot_scientific_discovery_gate_test")
+    monkeypatch.setattr(module, "write_collaboration_record", lambda payload: tmp_path / "latest.json")
+
+    class EmptyInventory:
+        returncode = 0
+        stdout = "[]"
+        stderr = ""
+
+    monkeypatch.setattr(module, "run_gh", lambda args: EmptyInventory())
+    with pytest.raises(RuntimeError, match="repository_sync"):
+        module.persist_scientific_discovery({
+            "cycle_id": "cycle-1",
+            "problem_id": "problem-1",
+            "sources": [],
+            "claims": [],
+            "status": "COMPLETE",
+        })
 
 
 def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
