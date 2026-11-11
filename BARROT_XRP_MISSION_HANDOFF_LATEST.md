@@ -1,3 +1,78 @@
+# Run 26d — SBI VC Trade lending terms, XRP lending eligibility and raw-only source ingestion
+
+Captured: 2026-11-11T14:24:14.339Z
+
+## Repository and integration state
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`; main tree: 1,388 entries / 1,288 files / 86 workflows.
+- Consolidated integration PR: [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661), branch `integration/xrp-v3-unified-main-20261111`.
+- Pre-change branch head: `037d730244379d6e089c470b4034c12c337598ea`; 2,026 commits ahead of main, zero behind; 1,007 changed files.
+- Integration tree: 2,272 entries / 2,163 files / 87 workflows.
+- Open PR inventory: 374 total; 360 drafts; 14 non-drafts. No PR was created or closed.
+- PR #1661 remains draft with zero formal approving reviews and zero review threads. No merge.
+
+## DESIGNED and EXECUTED — SBI VC Trade source correction
+
+The official general lending page lists 29 eligible assets, including XRP, USDC and JPYSC; RLUSD is not in that lending list, although the separate service overview lists RLUSD for trading. The lending page identifies the contract as a consumption-loan transaction, states there is no early termination, and warns about asset-return and price risks.
+
+The same page shows a historical USDC course dated April 30, 2026: 84 days, 100–5,000 USDC, 10% annual rate. A separate USDC product page describes a 12-week term and approximately 5% annual rate as planned and market-dependent. These are distinct offer contexts; neither proves the rate currently available. Current subscriptions, participants, outstanding USDC/XRP and interest paid remain undisclosed.
+
+The general service overview/transfer page states generic collateral valuation factors of 50% for crypto assets and 100% for electronic payment instruments. This does not establish token-specific eligibility or actual collateral balances.
+
+Primary sources:
+- https://www.sbivc.co.jp/services/lending
+- https://home.sbivc.co.jp/usdc
+- https://www.sbivc.co.jp/services/service-overview
+- https://www.sbivc.co.jp/services/transfer
+
+The new artifact `research/xrp_intelligence/20261111T142003Z-run26d-sbi-vc-trade-lending-offer-and-xrp-eligibility-correction.json` preserves dated offer contexts, the XRP/USDC/JPYSC lending list, RLUSD exclusion from that list, competing hypotheses and unknown actual balances. Web page bytes were not captured; no raw receipt or model admission is claimed.
+
+A new scheduled collector source, `sbi_vc_trade_lending_page`, is added as digest-only and raw-only. It validates publisher/asset markers, creates a SHA-256 receipt when the collector runs, retains no HTML payload, and cannot emit features. The workflow remains on the integration branch and is not yet active on main.
+
+## Exact-head verification baseline before this change
+
+Pre-change head `037d730244379d6e089c470b4034c12c337598ea`:
+- Full repository suite: 3,443 passed, zero failed, eight subtests passed; 59.98% inclusive coverage.
+- Core suite: 714 passed plus eight subtests.
+- Installed wheel and packaged primary mission verification passed.
+- Six-manifest dependency audit passed with no known vulnerabilities.
+- Fail-closed merge gate passed with automatic merging disabled.
+
+Runs: [full CI 43035859694](https://github.com/Barrot-Agent/B-Agent/actions/runs/43035859694), [dependency audit 43035859651](https://github.com/Barrot-Agent/B-Agent/actions/runs/43035859651), [fail-closed gate 43035859649](https://github.com/Barrot-Agent/B-Agent/actions/runs/43035859649).
+
+The Run26d code/test/artifact/handoff commit created after this baseline requires fresh exact-head full-suite, dependency-audit and fail-closed verification. Do not transfer the predecessor's results to the new commit.
+
+## Workflow, security and integration review
+
+- The 44 workflow files changed by the integration contain 24 fully disabled stubs, one additional job-level `if: false` quarantine, and 19 active workflows.
+- Active external operations require explicit manual confirmations and exact-main-SHA checks. No Databricks import, Kaggle download, Cloudflare deployment, Hugging Face deployment, paper-trading run or external-model transfer was dispatched.
+- XRP ingestion is hourly plus daily, read-only (`actions: read`, `contents: read`), stores raw receipts as artifacts and feature-store checkpoints with 7/90-day artifact retention plus an evictable Actions cache. It has not executed on main because the workflow exists only on the integration branch and its job is guarded to `refs/heads/main`.
+- Main CI at `84f28ee` passed in [run 42944864014](https://github.com/Barrot-Agent/B-Agent/actions/runs/42944864014). Main Pages automatically deployed in [run 42944862534](https://github.com/Barrot-Agent/B-Agent/actions/runs/42944862534). This external publication remains unauthorized for another merge.
+- Main Pillars Consistency Check failed in [run 43025487840](https://github.com/Barrot-Agent/B-Agent/actions/runs/43025487840); prior diagnosis remains missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+- Main branch-protection endpoint returns HTTP 403. The only visible repository ruleset, “Fall Back”, is disabled. Repository metadata reports connector permissions admin/maintain/push. Required approval/check policy is not independently verified.
+- `.config/gh/hosts.yml` is absent from main and #1661; the previous 17-branch-tip exposure inventory remains a remediation candidate. Contents were not read; provider-side OAuth revocation remains unverified.
+
+## Backlog classification
+
+- **Blocked — active integration:** #1661, sole consolidated V3/XRP integration. Keep draft until semantic review, least-privilege/security remediation, independent approval, branch-protection visibility and Pages authorization are resolved.
+- **Superseded-source candidate:** #1660, stale base `afb3024`, mergeable false; retain until successor is merged and verified.
+- **Supersession/overlap candidates:** #1640, #1642, #1643 and dependency/action PRs #1644–#1650. Do not close until exact replacement content is verified on main.
+- **Unique/unreviewed; preserve:** #1653, #1614, #1611, #1610, #1612, #1269, #1608 and other unique research/security work. Reconcile paths and ancestry before any successor integration.
+
+## Prediction and platform state
+
+- Prediction remains **NOT_ISSUED**. No synchronized direct spot/depth panel, immutable external timestamp anchor, durable cross-run WORM store, sufficient overlap-adjusted out-of-sample/shadow outcomes or validated lift over all four baselines has been established.
+- ChatGPT/GitHub access is verified; connector privilege exceeds least privilege. Claude, Grok, Gemini and Codex are not authenticated; Copilot has no formal approval; Kaggle is untested; Databricks returned HTTP 403; Hugging Face reports BUILD_ERROR; LunaRoute authentication/data flow is unverified.
+- SBIC East/Central/West remain separate statutory companies, not SBI Holdings. SBIC ChatGPT references are educational, not a verified OpenAI partnership. ASK Coin remains unresolved. Kamilah Stevenson TEDx attribution is verified; personal channel ownership is not.
+
+## Safety and next action
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, reset, clean, stash, discard or PR closure occurred.
+
+Next: verify the new Run26d exact head with full suite, six-manifest dependency audit and fail-closed gate; then continue semantic review of the ingestion, feature-store, forecast-readiness and active workflow code. Keep forecast issuance disabled.
+
+---
+
 # Barrot XRP Mission Handoff — Run21
 
 As of 2026-11-11T10:26:35Z

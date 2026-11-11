@@ -29,9 +29,9 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.22"
-PARSER_VERSION = "xrp-public-market-v3.21"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp"}
+ADAPTER_VERSION = "xrp-public-market-v3.23"
+PARSER_VERSION = "xrp-public-market-v3.22"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 HTTP_PROVENANCE_HEADER_NAMES = frozenset({
@@ -122,6 +122,7 @@ ENDPOINTS = (
     ("ripple_rlusd_transparency_dashboard", "https://ripple.com/products/stablecoin/transparency/"),
     ("xrpldashboard_rlusd_cross_chain_supply", "https://xrpldashboard.com/rlusd"),
     ("circle_usdc_transparency_dashboard", "https://www.circle.com/transparency"),
+    ("sbi_vc_trade_lending_page", "https://www.sbivc.co.jp/services/lending"),
     ("morpho_cbxrp_market_parameters", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109"),
     ("morpho_cbxrp_market_state", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state"),
     ("morpho_cbxrp_market_liquidity", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/liquidity"),
@@ -179,6 +180,10 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
     "coinbase_cbxrp_proof_of_reserves": (
         "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
         "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "sbi_vc_trade_lending_page": (
+        "SBI VC Trade's public lending terms are captured for source-change detection; raw HTML redistribution "
+        "rights have not been reviewed, so retain only the SHA-256 receipt and do not publish the page bytes."
     ),
 }
 
@@ -3273,6 +3278,22 @@ def _raw_only_circle_transparency_page(payload: Any, *, captured: datetime, **_k
     )
 
 
+def _raw_only_sbi_vc_trade_lending_page(payload: Any, *, captured: datetime, **_kwargs):
+    """Validate SBI VC Trade's lending-page identity; keep it digest-only and model-ineligible."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
+        raise XRPIngestionError("SBI VC Trade lending page response must contain HTML text")
+    normalized = payload["html_text"].casefold()
+    required_markers = ("貸コイン", "usdc", "xrp")
+    if any(marker not in normalized for marker in required_markers):
+        raise XRPIngestionError("SBI VC Trade lending-page identity or asset markers are missing")
+    return (
+        [],
+        None,
+        False,
+        "sbi_vc_trade_lending_page_digest_only_until_offer_terms_are_versioned_and_actual_lending_balances_are_disclosed",
+    )
+
+
 
 def _ordered_bybit_history_rows(
     rows: Any,
@@ -3931,6 +3952,7 @@ PARSERS = {
     "ripple_rlusd_transparency_dashboard": _raw_only_ripple_rlusd_transparency_page,
     "xrpldashboard_rlusd_cross_chain_supply": _raw_only_xrpldashboard_rlusd_page,
     "circle_usdc_transparency_dashboard": _raw_only_circle_transparency_page,
+    "sbi_vc_trade_lending_page": _raw_only_sbi_vc_trade_lending_page,
     "morpho_cbxrp_market_parameters": _raw_only_morpho_cbxrp_market_parameters,
     "morpho_cbxrp_market_state": _raw_only_morpho_cbxrp_market_state,
     "morpho_cbxrp_market_liquidity": _raw_only_morpho_cbxrp_market_liquidity,
@@ -4170,7 +4192,7 @@ def _walk_forward_report(
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
         return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures"}:
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures"}:
         return fetch_public_html(source_id, url)
     if source_id == "xrp_etf_flows_csv":
         return fetch_public_csv(source_id, url)

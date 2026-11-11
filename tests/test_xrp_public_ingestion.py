@@ -1326,8 +1326,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 46
-    assert len(SCHEDULED_ENDPOINTS) == 42
+    assert len(ENDPOINTS) == 47
+    assert len(SCHEDULED_ENDPOINTS) == 43
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -2806,8 +2806,8 @@ def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admi
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
-    assert len(ENDPOINTS) == 46
-    assert len(SCHEDULED_ENDPOINTS) == 42
+    assert len(ENDPOINTS) == 47
+    assert len(SCHEDULED_ENDPOINTS) == 43
 
 
 def test_morpho_market_history_preserves_provider_event_time_and_collateral_total_without_feature_admission():
@@ -2890,3 +2890,80 @@ def test_coinbase_cbxrp_proof_of_reserves_uses_redirectless_locale_route():
     assert dict(ENDPOINTS)["coinbase_cbxrp_proof_of_reserves"] == (
         "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"
     )
+
+
+def test_sbi_vc_trade_lending_page_is_scheduled_digest_only_and_not_a_feature_source():
+    source_id = "sbi_vc_trade_lending_page"
+    url = "https://www.sbivc.co.jp/services/lending"
+    assert "www.sbivc.co.jp" in ALLOWED_HOSTS
+    assert dict(ENDPOINTS)[source_id] == url
+    assert source_id in dict(SCHEDULED_ENDPOINTS)
+    assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
+    assert len(ENDPOINTS) == 47
+    assert len(SCHEDULED_ENDPOINTS) == 43
+
+
+def test_sbi_vc_trade_lending_page_parser_is_raw_only_and_rejects_wrong_publisher():
+    source_id = "sbi_vc_trade_lending_page"
+    url = dict(ENDPOINTS)[source_id]
+    captured = datetime(2026, 11, 11, 14, 20, tzinfo=timezone.utc)
+    parser = PARSERS[source_id]
+    records, source_as_of, eligible, reason = parser(
+        {"html_text": "<html><title>SBI VCトレード 貸コイン</title><p>USDC XRP JPYSC</p></html>"},
+        source_id=source_id,
+        url=url,
+        digest="a" * 64,
+        captured=captured,
+    )
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert "digest_only" in reason
+    with pytest.raises(XRPIngestionError, match="identity or asset markers"):
+        parser(
+            {"html_text": "<html><title>Unrelated lending page</title></html>"},
+            source_id=source_id,
+            url=url,
+            digest="b" * 64,
+            captured=captured,
+        )
+
+
+def test_default_public_fetcher_routes_sbi_vc_trade_lending_page_to_html(monkeypatch):
+    calls = []
+    monkeypatch.setattr(
+        xrp_ingestion,
+        "fetch_public_html",
+        lambda source_id, url: calls.append(("html", source_id, url)) or {"kind": "html"},
+    )
+    monkeypatch.setattr(
+        xrp_ingestion,
+        "fetch_public_json",
+        lambda source_id, url: calls.append(("json", source_id, url)) or {"kind": "json"},
+    )
+    source_id = "sbi_vc_trade_lending_page"
+    url = dict(ENDPOINTS)[source_id]
+    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    assert calls == [("html", source_id, url)]
+
+
+def test_sbi_vc_trade_lending_page_receipt_retains_digest_but_not_restricted_html(tmp_path):
+    source_id = "sbi_vc_trade_lending_page"
+    raw = "貸コイン USDC XRP JPYSC".encode("utf-8")
+    archive = RawReceiptArchive(tmp_path / "raw")
+    receipt = archive.store(
+        source_id=source_id,
+        source_uri=dict(ENDPOINTS)[source_id],
+        captured_at_utc="2026-11-11T14:20:03.454000Z",
+        source_data_as_of_utc=None,
+        raw_bytes=raw,
+        model_eligible=False,
+        raw_only_reason="sbi_vc_trade_lending_page_digest_only_until_offer_terms_are_versioned_and_actual_lending_balances_are_disclosed",
+        retain_raw_bytes=False,
+        raw_retention_reason=xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS[source_id],
+    )
+    assert receipt["raw_content_sha256"] == hashlib.sha256(raw).hexdigest()
+    assert receipt["raw_bytes_retained"] is False
+    assert receipt["raw_payload_path"] is None
+    assert archive.verify()["digest_only_receipt_count"] == 1
+    assert not list((tmp_path / "raw" / "sha256").glob("*"))
