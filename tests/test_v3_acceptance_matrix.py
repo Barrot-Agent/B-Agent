@@ -14,7 +14,7 @@ from barrot_agent.orchestration.repository_repair import (
     SyncController,
     WorkQueueController,
 )
-from barrot_agent.orchestration.shared_runtime import ControlledToolExecutor, ToolRequest
+from barrot_agent.orchestration.shared_runtime import Capability, ControlledToolExecutor, DefensiveWatchdog, ToolRequest
 from barrot_agent.research import (
     ClaimStatus,
     ConvergenceScenarioEngine,
@@ -274,11 +274,40 @@ def _case_healthy_repository(tmp_path: Path) -> dict[str, object]:
 
 def _case_real_defect(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path, origin=True)
-    cycle = run_cycle(workspace, FakeBrain(repair_payload(path)))
+    # This fixture owns a temporary local bare origin. Explicitly grant
+    # EXTERNAL_ACTION only to this isolated test so the lifecycle can exercise
+    # push and independent remote-head verification without a real repository.
+    watchdog = DefensiveWatchdog(
+        workspace,
+        repository="Barrot-Agent/B-Agent",
+        task="repair/test",
+        allowed_capabilities={
+            Capability.READ,
+            Capability.WRITE,
+            Capability.EXECUTE,
+            Capability.NETWORK,
+            Capability.EXTERNAL_ACTION,
+        },
+    )
+    controller = RepositoryRepairController(
+        brain=FakeBrain(repair_payload(path)),
+        workspace=workspace,
+        planner_attempts=3,
+        watchdog=watchdog,
+    )
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
     assert cycle.issue_identified is True
     assert cycle.issue_reproduced is True
     assert RepairState.PATCHING.value in cycle.state_history
-    return {"status": cycle.status, "states": cycle.state_history}
+    assert cycle.commit.remote_verified is True
+    return {"status": cycle.status, "states": cycle.state_history, "remote_verified": cycle.commit.remote_verified}
 
 
 def _case_model_claims_success_without_change(tmp_path: Path) -> dict[str, object]:
