@@ -1,19 +1,19 @@
 ## Last State
 
-**Run31 — 2026-11-11T17:05:39Z**
+**Run31b — 2026-11-11T17:18:50Z**
 
-- Priority 1: XRP intelligence and prediction-engine mastery; Barrot V3 remains execution/orchestration/safety/verification foundation.
-- Main `84f28ee`; #1661 parent head `3e6a3ca8794cb90c7cb9c2add42fa8e722716e5d`, 2,036 ahead/0 behind, 1,014 files (44 workflows/970 other paths), 2,279 tree entries/2,170 blobs. Open PRs 374 (360 drafts/14 non-drafts).
-- Exact-head CI 43061303949: 3,445 passed/4 failed/eight subtests, 59.99%; core 714 passed. Four failures are stale current-map assertions only. Dependency audit 43061303705 and fail-closed gates 43061303654/43061294425 passed. Current-map correction committed; exact-head rerun pending.
-- All 17 affected open-PR tips rechecked for `.config/gh/hosts.yml`; all 17 contain the path. No contents read; provider-side revocation unverified.
-- OKX 1.0684 at 16:45:33.874 UTC; Kraken last $1.06924, bid/ask $1.06949/$1.06950, no event time; USDT/USD midpoint 0.998925; normalized asynchronous gap -0.1864%, not arbitrage.
-- Basis Binance perpetual book 16:16: within 1% $15.2M/$15.2M; Fuelmaps spot book 08:00: within 1% $14.0M/$11.1M. TradRadar 14:40 OI $1.57B (-2.83%); Liqwall 16:32 $1.17B (-2.0%); different universes, not averaged; later liquidation mix is counter-evidence.
-- Alpha ETF flows through Nov10: -$18M over seven sessions, +$1.3M over 30 sessions, +$1.71B cumulative net inflow; no Nov11 figure.
-- RLUSD Coinbase distribution/collateral future scope; BNY XRP/RLUSD custody with future mint/redeem and C2FO work exploratory. JPYSC initially SBI VC Trade-account-only; Open Standard JPYSC/OUSD POC exploratory; SMBC 5% stake in SBI Startale Marketing, not XRP.
-- SBIC East/Central/West distinct from SBI Holdings. Exact SBIC/ChatGPT and standardized “actual capital” unresolved. Permission ASK Base/Polygon only; no XRPL link. Kamilah/Camilla YouTube ownership unverified.
-- Prediction engine 47 definitions/45 scheduled; read-only collector, hash receipts, point-in-time SQLite, four baselines, walk-forward, calibration/drift, Ed25519 gate. WORM, replayable history, synchronized history, scenario engine, production key, shadow outcomes and OOS lift remain outstanding. Forecast NOT_ISSUED.
-- Workflow count discrepancy 26/18 vs 25/19; re-audit 44 diffs. Branch protection HTTP 403, fallback ruleset disabled, connector overprivileged, Pages auto-publish unauthorized. No merge/deployment/external action.
-- #1660 972 paths represented in #1661, 937 identical/35 different, three behind main; retain. Preserve unique research/prediction/safety/topology PRs.
+- Main84f28ee; #1661 parent1af8d45fd6352342248d0495f7cbdaf556784446,2037 ahead/0 behind,1,015 files(44 workflows/971 other),2,280 tree entries/2,171 blobs. Open PRs374(360 drafts/14 non-drafts).
+- Exact parent CI43065866159 passed3,449/0, eight subtests,59.99%,95.64s; core714/0; wheel/installed mission verified. Dependency audit43065866267, fail-closed gate43065866142 and push gate43065855296 passed. New Run31b commit needs exact-head CI.
+- Workflow audit44 diffs:26 quarantined/18 active,24 manual declarations,one schedule; no added write permissions/pull_request_target/workflow_run; no dispatch. Run30's25/19 narrative was wrong.
+- All17 affected open-PR tips contain `.config/gh/hosts.yml`; no contents read; provider revocation unverified.
+- OKX17:15:52 UTC1.0727; Kraken1.06924 without event time; normalized async gap+0.196%, stale-sensitive.
+- XRP Insights22.33B exchange wallets/701 addresses; same-wallet+1.3M/7d,-155.7M/30d; wrapped reserves480.5M included. TrackWhale-101.21M/7d uses different method.
+- ETF holdings1.19B/7 products; RWA$4.33B includes only$276M distributed; RLUSD$2.71B(33% XRPL/67% Ethereum); USDC XRPL$4.446M vs$69.89B total.
+- Coinbase cbXRP PoR151.9306M reserve/151.9283M supply. Morpho risk is conditional cbXRP liquidation, not native XRP sale.
+- SBI disclosed$50M Circle investment and~9% Ripple ownership in2025; USDC/RLUSD/JPYSC/Open Standard/SMBC stake are separate ventures, not automatic XRP demand.
+- SEC/CFTC interpretation and Senate H.R.3633 failed cloture; Reuters reports hawkish Fed repricing. No XRP-specific causal inference.
+- Forecast NOT_ISSUED. WORM, replayable history, synchronized history, scenario engine, production key, shadow outcomes and OOS lift remain outstanding.
+- Branch protection403, fallback ruleset disabled, connector overprivileged, Pages auto-publish unauthorized,971 non-workflow paths need review. #1660:972 paths represented in #1661(937 same/35 different), retain. No merge/deployment/external action.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.

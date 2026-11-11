@@ -1,3 +1,51 @@
+# Run31b — exact-head suite passed, workflow audit resolved, expanded XRP supply/collateral and regulatory research
+
+Captured: 2026-11-11T17:18:50Z
+
+## Exact-head repository verification
+Parent `1af8d45fd6352342248d0495f7cbdaf556784446` passed the full repository suite: **3,449 passed, 0 failed, eight subtests**, 59.99% coverage, 95.64 seconds. Core714/0; wheel build and installed primary-mission verification passed; six dependency manifests audited, zero known vulnerabilities; fail-closed PR/push gates passed.
+- [Full CI43065866159](https://github.com/Barrot-Agent/B-Agent/actions/runs/43065866159), [full-suite job130680728322](https://github.com/Barrot-Agent/B-Agent/actions/runs/43065866159/job/130680728322), [dependency audit43065866267](https://github.com/Barrot-Agent/B-Agent/actions/runs/43065866267), [fail-closed gate43065866142](https://github.com/Barrot-Agent/B-Agent/actions/runs/43065866142).
+- Four prior failures on3e6a3ca were stale current-map assertions. Run31 corrected the map; exact-head rerun passed. This verifies parent1af8d45 only; Run31b docs/research commit needs its own exact-head CI.
+
+## Repository state before Run31b commit
+Main84f28ee; PR#1661 parent1af8d45fd6352342248d0495f7cbdaf556784446,2037 ahead/0 behind;1,015 changed files(44 workflows/971 other); main tree1,388 entries/1,288 blobs; integration2,280 entries/2,171 blobs. Open PRs374(360 drafts/14 non-drafts). #1661 remains open/draft, zero formal reviews/approvals/threads.
+
+## Workflow audit discrepancy resolved
+All44 changed workflow diffs inspected:26 quarantined/disabled,18 active;24 manual-dispatch additions,one schedule; no added contents:write/actions:write/write-all/pull_request_target/workflow_run. No manual workflow dispatched. Self-hosted-brain job retains false guard. XRP collector is main-gated/read-only; Actions artifacts/cache are not WORM. Run30's25/19 narrative was incorrect.
+
+## XRP market, supply and flows
+Supplemental capture November11,17:16–17:18 UTC. Web observations remain research-only; no canonical raw-source hash/receipt was created.
+- OKX XRP-USDT event17:15:52.272: last1.0727, bid1.0726/ask1.0727, rolling24h open1.0465, high1.0797, low1.0456, volume44.18M XRP. Top ask size88,411 vs bid1,350 is cancellable.
+- Kraken last1.06924, bid/ask1.06949/1.06950 without event timestamp; USDT/USD midpoint0.999015. Normalized asynchronous gap+0.196%; Kraken freshness unverified, not arbitrage.
+- Basis Binance perpetual book16:16: within1% bids/asks both$15.2M. Fuelmaps six-venue spot book08:00: within1%$14.0M/$11.1M and within5%$23.8M/$14.3M. Different markets/windows.
+- XRP Insights22.33B XRP across701 attributed wallets/24 exchanges; same-wallet+1.3M/7d,-155.7M/30d;480.5M wrapped reserves included. Not customer deposits/tradable float. TrackWhale-101.21M/7d is a different method.
+- Escrow tracker31.10B; scheduled Dec1 unlock up to1B; circulating definition68.89B differs from vendors subtracting Ripple operational holdings.
+- ETF holdings tracker1.19B XRP/7 products,AUM$1.28B; Alpha five-fund flow series is a different universe.
+- XRPL RWA$4.33B across18 assets: only$276M distributed/transferable; $4.06B represented registry/issuer notional.
+- RLUSD tracker$2.71B: $906M(33%) XRPL,$1.81B(67%) Ethereum. USDC native XRPL supply tracker$4.446M vs~$69.89B total, rounded0.01%. Stablecoin supply does not prove XRP auto-bridge volume.
+
+## Coinbase collateral, SBI, Ripple and Circle
+- Coinbase cbXRP proof-of-reserves:151,930,567.32 XRP reserve vs151,928,320.78 cbXRP supply (page time04:46 AM, timezone unspecified), excess2,246.54 XRP.
+- CryptoSlate Nov6 Morpho/Base snapshot:$59.2M USDC debt against119.9M cbXRP/1,070 positions; $8.84M conditionally liquidation-eligible after10% further oracle decline; $3.23M/462 positions after5%. One secondary analysis, not independently corroborated. Conditional cbXRP risk, not native XRP sale.
+- SBI June9 2025 disclosure:$25M Circle investment by SBI Holdings+$25M by SBI Shinsei Bank; SBI said it held~9% Ripple then. Not a refreshed2026 register.
+- SBI VC Trade USDC distribution began March2025; SBI disclosed SBI Circle Holdings JV-establishment agreement.
+- SBI/Ripple RLUSD distribution began June24 2026 via SBI VC Trade. JPYSC is separate: SBI Shinsei Trust issuer, SBI VC Trade distributor, Startale co-developer; initial accounts only, external transfers disabled. Open Standard JPYSC/OUSD is POC exploration, not production. SMBC's5% stake is in SBI Startale Marketing, amount undisclosed; not XRP.
+- Ripple/Coinbase RLUSD distribution and Ripple/BNY XRP/RLUSD custody are not proof of XRP buying or bridge demand.
+
+## Actual capital, regulation and macro
+No standardized XRP “actual capital” metric was found. Separate cash committed, cash funded, cash deployed to buy XRP, in-kind XRP, debt, undrawn facilities, ELOC capacity, resale registrations, custody and transferable float.
+Evernorth:473.276M closing XRP=84.366M cash-purchased from$214.05M advance funding+388.911M in-kind; SBI's$200M is included in$214.05M; $30M PIK notes are debt; $9.7M Ripple facility drawn by Oct7 is subsidiary debt; ELOC proceeds zero. Parent/subsidiary SEC labels corrected in Run30.
+- SEC/CFTC March17 2026 interpretation, effective March23: five-token taxonomy/investment-contract guidance; not XRP-specific adjudication or comprehensive legislation.
+- Senate H.R.3633 Sep15 cloture vote49-50 rejected; Senator Coons did not vote; no market-structure statute enacted by this vote.
+- Reuters Nov11: third consecutive upside CPI surprise; Dec9 25bp hike fully priced; Goldman forecasts another25bp March2027, Deutsche Bank Jan2027; 50bp December probability13.5%. Oil amid Iran war, tariffs, demand and AI investment cited. Broad macro backdrop, not XRP causality.
+
+## Forecast and merge
+Forecast **NOT_ISSUED**. No directional forecast, paper trade or real-money action. PR#1661 remains draft/unmerged. Branch-protection detail HTTP403; fallback ruleset disabled; connector overprivileged; credential path remains in17 other open-PR tips(contents not read, provider revocation unverified); Pages auto-publication unauthorized;971 non-workflow paths need semantic review. Preserve unique PRs; no source PR closed.
+
+Run31b updates current map, canonical handoff, BARROT_SYNC and existing Run31 artifact. New docs/research commit triggers exact-head CI; parent1af8d45 is last verified head.
+
+---
+
 # Run31 — current-head CI diagnosis, XRP market refresh and institutional reconciliation
 
 Captured: 2026-11-11T17:05:39Z
