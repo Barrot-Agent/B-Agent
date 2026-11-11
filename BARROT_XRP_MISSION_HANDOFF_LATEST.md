@@ -6652,3 +6652,45 @@ No external-model data transfer occurred.
 Next: complete the 44-workflow review; resolve credential remediation with its owner; establish authoritative branch-protection/approval requirements; obtain publication authorization or a safe, separately reviewed publication design; restore V3 parity through least-privilege workflows; then continue synchronized historical spot/L2, derivatives, exchange-flow and collateral ingestion, vintage-aware macro events, scenario/counter-hypothesis generation, WORM anchoring and independent shadow evaluation.
 
 No PR was created or closed. No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or history rewrite occurred.
+
+
+### CFTC TFF primary-source reconciliation — 2026-11-11
+
+This is a primary-source validation of the existing integration parser, not a new model feature.
+
+**Official CFTC report vintage:** positions as of Tuesday, November 3, 2026; CFTC report page updated Friday, November 6, 2026. The CFTC describes these as weekly Tuesday positions generally released Friday. TFF categories are based on each trader's predominant business purpose as reported on Form 40; they do not reveal individual identities or the specific reason for a trade.
+
+Primary sources:
+- [CFTC TFF futures-only report](https://www.cftc.gov/dea/futures/financial_lf.htm).
+- [CFTC COT methodology, release schedule and added/dropped contract index](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm).
+
+**Three XRP contracts currently reported in TFF:**
+
+| Contract | CFTC code | Open interest | Multiplier | XRP-equivalent OI | Weekly OI change |
+|---|---|---:|---:|---:|---:|
+| XRP — CME | 176740 | 7,216 | 50,000 XRP | 360,800,000 XRP | -845 contracts / -42,250,000 XRP |
+| Nano XRP — Coinbase Derivatives | 176LM1 | 32,505 | 500 XRP | 16,252,500 XRP | -32,864 contracts / -16,432,000 XRP |
+| Nano XRP Perp Style — Coinbase Derivatives | 176LM3 | 38,392 | 500 XRP | 19,196,000 XRP | -465 contracts / -232,500 XRP |
+| **Three currently reported products** |  |  |  | **396,248,500 XRP** | **-58,914,500 XRP** |
+
+For these same three products, prior-week OI reconstructed from the CFTC weekly change fields was 455,163,000 XRP-equivalent. The three-product subset therefore declined approximately 12.94% week over week. Within this observed subset, CME represents approximately 91.05% and Coinbase Derivatives approximately 8.95% of XRP-equivalent OI.
+
+**Contract-universe caveat:** the CFTC's current added/dropped table lists standard XRP — Coinbase Derivatives contract 176LM2 as dropped from both futures-only and futures/options-combined reporting. Its current OI is unknown, not zero. The 396.2485M figure is therefore the sum of the three currently reported products, not a complete all-contract XRP futures total. Do not compare it with a prior all-contract aggregate that included 176LM2.
+
+**Position-category observations:**
+- CME: leveraged funds 1,976 long versus 1,696 short, net +280 contracts; prior net was +432, a reduction of 152. Dealers were net short 203, less short than the prior week's net -576.
+- Coinbase Nano XRP: leveraged funds net short 2,308 contracts, equivalent to -1.154M XRP.
+- Coinbase Nano XRP Perp Style: leveraged funds net short 27,774 contracts (-13.887M XRP-equivalent), while other reportables were net long 26,005 contracts (+13.0025M XRP-equivalent).
+
+These are different contract products and categories. The offsets demonstrate why a single “institutional long/short” number is misleading. Spreading positions must remain separate from outright long-minus-short features. CFTC suppresses trader counts below four for confidentiality; a dot is not zero. The CFTC also explains that markets can disappear from COT reporting when reportable large-trader counts fall below 20. That is a possible explanation for a dropped market, not a proven reason specific to 176LM2.
+
+**Existing integration code was checked against the primary report:**
+- `barrot_agent/evolution/cftc_tff.py` recognizes CME 176740, Coinbase 176LM1 and Coinbase 176LM3, plus optional 176LM2.
+- The same-date CFTC added/dropped index is parsed and matched to the TFF report date.
+- Missing optional 176LM2 is represented as `dropped_from_reporting` or `not_reported_status_unverified`, with null OI, never zero-filled.
+- `tests/test_cftc_tff_parser.py` asserts the 396,248,500 XRP-equivalent total, all three multipliers and current OI, and null handling for the dropped optional contract.
+- `xrp_public_ingestion.py` records the CFTC report date separately from first verified capture time, preserves raw SHA-256 receipts, and marks TFF features research-only with `model_eligible=false`.
+
+This correctly avoids look-ahead leakage: Tuesday is the position as-of date, but the feature cannot be known to a model until the Friday publication is captured. The CFTC data are weekly futures positioning, not spot holdings, exchange flows, cash capital, collateral utilization or a directional forecast.
+
+**No code change was needed.** This primary-source cross-check confirms that the existing integration parser and its contract-universe safeguards match the current CFTC report. The parser remains on the integration branch, not main.
